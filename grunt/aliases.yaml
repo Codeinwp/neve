@@ -1,0 +1,47 @@
+build_scripts:
+- 'sass:style'
+- 'concat:customizerStyle'
+- 'sass:min'
+- 'uglify:scripts'
+- 'uglify:customizerControls'
+
+check:
+- 'newer:imagemin'
+- 'sass:style'
+- 'sass:editorStyle'
+- 'sass:pagebuilderStyle'
+- 'sass:customizerStyle'
+- 'concat:customizer_style_pro'
+- 'sass:minified_pro'
+- 'uglify:pro'
+- 'uglify:customizer_pro'
+- 'rtlcss'
+- 'phpcbf'
+- 'newer:postcss:build'
+- 'makepot'
+- 'newer:addtextdomain:main'
+- 'check:css'
+- 'travis'
+
+check:php:
+- 'phpunit'
+
+deploy:
+- 'generate'
+- 'cachebuster'
+- 'mkdir:dist'
+- 'mkdir:artifact'
+- 'copy:pro'
+#  - 'deploy_lite'
+
+#deploy_lite:
+#  - 'compress:full'
+#  - 'copy:lite'
+#  - 'compress:lite'
+
+
+# Version:
+#         1. grunt version::patch
+#         2. grunt generate
+#         3. commit & push for version update
+#         4. zip & upload to wordpress.org

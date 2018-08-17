@@ -1,0 +1,39 @@
+{
+  "name": "neve",
+  "nicename": "Neve",
+  "version": "1.0.0",
+  "description": "Neve theme by ThemeIsle",
+  "category": "themes",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Codeinwp/neve.git"
+  },
+  "keywords": [
+    "wordpress-theme"
+  ],
+  "theme": {
+    "textdomain": "neve"
+  },
+  "author": "ThemeIsle <friends@themeisle.com>",
+  "license": "GPL-2.0+",
+  "bugs": {
+    "url": "https://github.com/Codeinwp/neve/issues"
+  },
+  "pot": {
+    "reportmsgidbugsto": "https://github.com/Codeinwp/neve/issues",
+    "languageteam": "Themeisle Translate <friends@themeisle.com>",
+    "lasttranslator": "Themeisle Translate Team <friends@themeisle.com>"
+  },
+  "devDependencies": {
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-cssmin": "^2.2.1",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-uglify": "^3.3.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-rtlcss": "^2.0.1",
+    "grunt-theme-fleet": "github:codeinwp/grunt-theme-fleet",
+    "grunt-version": "^1.1.1",
+    "load-project-config": "~0.2.0"
+  }
+}
