@@ -8,7 +8,7 @@ module.exports = {
 		},
 		files: [ {
 			'style.css': 'assets/sass/style.scss',
-			'assets/css/woocommerce.css': 'assets/sass/woocommerce.scss'
+			'assets/css/woocommerce.css': 'assets/sass/woocommerce.scss',
 		} ]
 	},
 

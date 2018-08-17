@@ -9,6 +9,10 @@
 
 define( 'NEVE_VERSION', '1.0.0' );
 define( 'NEVE_INC_DIR', trailingslashit( get_template_directory() ) . 'inc/' );
+define( 'NEVE_ASSETS_URL', trailingslashit( get_template_directory_uri() ) . 'assets/' );
+if ( ! defined( 'NEVE_DEBUG' ) ) {
+	define( 'NEVE_DEBUG', false );
+}
 
 /**
  * Adds notice for PHP < 5.3.29 hosts.

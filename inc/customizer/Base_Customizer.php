@@ -7,7 +7,7 @@
  * @package Neve\Customizer\Abstracts
  */
 
-namespace Neve\Customizer\Abstracts;
+namespace Neve\Customizer;
 
 use Neve\Customizer\Types\Control;
 use Neve\Customizer\Types\Panel;
@@ -70,16 +70,11 @@ abstract class Base_Customizer {
 	private $types_to_register = array();
 
 	/**
-	 * Base constructor.
+	 * Base initialization.
 	 */
-	public function __construct() {
+	public function init() {
 		add_action( 'customize_register', array( $this, 'register_controls_callback' ) );
 	}
-
-	/**
-	 * Initialize the control. Add all the hooks necessary.
-	 */
-	abstract public function init();
 
 	/**
 	 * The function tied to customize_register.

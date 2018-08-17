@@ -4,7 +4,7 @@
  *
  * Author:          Andrei Baicus <andrei@themeisle.com>
  * Created on:      17/08/2018
- * @package Module_Loader.php
+ * @package Neve\Addons\Abstracts
  */
 
 namespace Neve\Addons\Abstracts;

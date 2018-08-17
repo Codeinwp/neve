@@ -1,0 +1,92 @@
+.customize-control-radio-image .ui-buttonset {
+    text-align: center;
+}
+.customize-control-radio-image label {
+    float: left;
+    display: inline-block;
+    max-width: 33.3%;
+    padding: 3px;
+    font-size: inherit;
+    line-height: inherit;
+    height: auto;
+    cursor: pointer;
+    border-width: 0;
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    white-space: nowrap;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    color: inherit;
+    background: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    vertical-align: inherit;
+}
+.customize-control-radio-image label:first-of-type {
+    float: left;
+}
+.customize-control-radio-image label:nth-of-type(n + 3){
+    float: right;
+}
+.customize-control-radio-image label:hover {
+    background: none;
+    border-color: inherit;
+    color: inherit;
+}
+.customize-control-radio-image label:active {
+    background: none;
+    border-color: inherit;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -webkit-transform: none;
+    -ms-transform: none;
+    transform: none;
+}
+.customize-control-radio-image img { border: 1px solid transparent; }
+.customize-control-radio-image .ui-state-active img {
+    border-color: #00b6ff;
+    -webkit-box-shadow: 0 0 1px #3ec8ff;
+    box-shadow: 0 0 5px #3EC8FE;
+}
+
+#customize-control-header_video, #customize-control-external_header_video{
+    display: none;
+}
+
+/**
+ * Tab styling
+ */
+.customizer-tab:not(.customizer-subtab){
+    display: table;
+    width: calc(100% + 28px);
+    margin: -15px 0 0 -12px;
+}
+.customizer-tab:not(.customizer-subtab) label{
+    border-right: 1px solid #ddd;
+    display: inherit;
+    width: 50%;
+    vertical-align: top;
+    max-width: 100%;
+    text-transform: capitalize;
+    background: #fff;
+    padding: 10px 0;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all .3s ease;
+    color: #333;
+}
+.customizer-tab:not(.customizer-subtab) label i{
+    color: #333;
+    margin-right: 4px;
+}
+.customizer-tab:not(.customizer-subtab) label.ui-state-active{
+    box-shadow: inset 0 -3px 0 0 #0085ba;
+    color: #0085ba;
+    background-color: #fff;
+}
+
+.customizer-tab:not(.customizer-subtab) label:last-child{
+    border:none;
+}

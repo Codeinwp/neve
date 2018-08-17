@@ -2,11 +2,10 @@
 /**
  * Author:          Andrei Baicus <andrei@themeisle.com>
  * Created on:      17/08/2018
- * @package Main.php
+ * @package Neve\Addons
  */
 
 namespace Neve\Addons;
-
 
 use Neve\Addons\Abstracts\Addon_Loader;
 

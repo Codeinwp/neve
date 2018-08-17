@@ -2,7 +2,7 @@
 /**
  * Author:          Andrei Baicus <andrei@themeisle.com>
  * Created on:      17/08/2018
- * @package neve\views
+ * @package Neve\Views
  */
 
 namespace Neve\Views;

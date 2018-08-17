@@ -41,7 +41,8 @@ class Main {
 	private function define_modules() {
 		$this->features = apply_filters(
 			'neve_filter_main_modules', array(
-				'Customizer\Main'
+				'Customizer\Main',
+				'Views\Header'
 			)
 		);
 	}
@@ -55,7 +56,6 @@ class Main {
 		$factory = new Factory($this->features);
 		$factory->load_modules();
 	}
-
 
 	/**
 	 * Check if add-ons are available and load them if necessary.
@@ -79,10 +79,7 @@ class Main {
 	private function define_hooks() {
 
 		$admin = new Admin();
-
 //		add_action( 'admin_enqueue_scripts', array( $admin, 'enqueue_styles' ) );
-//		add_action( 'customize_preview_init', array( $admin, 'enqueue_customizer_script' ) );
-//		add_action( 'customize_controls_enqueue_scripts', array( $admin, 'enqueue_customizer_controls' ) );
 //		add_filter( 'admin_head', array( $admin, 'admin_head_editor_inline_style' ) );
 //		add_filter( 'tiny_mce_before_init', array( $admin, 'editor_inline_style' ) );
 //		add_filter( 'init', array( $admin, 'do_about_page' ) );

@@ -8,7 +8,7 @@ module.exports = {
 	},
 	customizerControls: {
 		files: {
-			'./assets/js/customizer-controls.min.js': [ './assets/js/admin/src/customizer-controls.js', './inc/customizer/controls/**/script.js', './inc/addons/customizer/controls/**/script.js' ],
+			'./assets/js/customizer-controls.min.js': [ './assets/js/admin/src/customizer-controls.js', './inc/customizer/controls/js/*.js', './inc/addons/customizer/controls/js/*.js' ],
 		}
 	},
 	options: {

@@ -9,7 +9,7 @@ module.exports = {
 	},
 	customizerJs: {
 		files: [
-			'inc/customizer/controls/**/script.js',
+			'inc/customizer/controls/js/*.js',
 		],
 		tasks: [ 'uglify:customizerControls' ]
 	},
@@ -19,9 +19,9 @@ module.exports = {
 	},
 	customizerSass: {
 		files: [
-			'inc/customizer/controls/**/style.css',
-			'inc/addons/customizer/controls/**/style.css',
+			'inc/customizer/controls/css/*.css',
+			'inc/addons/customizer/controls/css/*.css',
 		],
-		tasks: [ 'sass:customizerStyle', 'concat:customizerStyle' ]
+		tasks: [ 'concat:customizerStyle' ]
 	},
 };
