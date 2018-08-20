@@ -8,9 +8,9 @@
 namespace Neve\Customizer\Controls;
 
 /**
- * Class Select Hiding
+ * Class Reactive Select
  */
-class Select_Hiding extends \WP_Customize_Control {
+class Reactive_Select extends \WP_Customize_Control {
 	/**
 	 * The type of customize control being rendered.
 	 *
@@ -36,11 +36,11 @@ class Select_Hiding extends \WP_Customize_Control {
 	public $parent = '';
 
 	/**
-	 * Constructor.
+	 * Hestia_Select_Multiple constructor.
 	 *
 	 * @param \WP_Customize_Manager $manager Customize manager object.
-	 * @param string                $id      Control id.
-	 * @param array                 $args    Control arguments.
+	 * @param string               $id Control id.
+	 * @param array                $args Control arguments.
 	 */
 	public function __construct( \WP_Customize_Manager $manager, $id, array $args = array() ) {
 		parent::__construct( $manager, $id, $args );
@@ -81,26 +81,26 @@ class Select_Hiding extends \WP_Customize_Control {
 
 		<label>
 			<# if ( data.label ) { #>
-			<span class="customize-control-title">{{ data.label }}</span>
-			<# } #>
+				<span class="customize-control-title">{{ data.label }}</span>
+				<# } #>
 
-			<# if ( data.description ) { #>
-			<span class="description customize-control-description">{{{ data.description }}}</span>
-			<# } #>
+					<# if ( data.description ) { #>
+						<span class="description customize-control-description">{{{ data.description }}}</span>
+						<# } #>
 
-			<select {{{ data.link }}}>
-				<# _.each( data.choices, function( label, choice ) {
+							<select {{{ data.link }}}>
+								<# _.each( data.choices, function( label, choice ) {
 
-				var selected = '';
-				if ( choice === data.value ) {
-				selected = 'selected="selected"';
-				}
-				#>
+										var selected = '';
+										if ( choice === data.value ) {
+											selected = 'selected="selected"';
+										}
+										#>
 
-				<option value="{{ choice }}" {{selected}}>{{ label }}</option>
+									<option value="{{ choice }}" {{selected}}>{{ label }}</option>
 
-				<# } ) #>
-			</select>
+											<# } ) #>
+							</select>
 		</label>
 		<?php
 	}

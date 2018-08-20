@@ -2,7 +2,7 @@
 /**
  * Header View Manager
  *
- * @package Neve
+ * @package Neve\Views
  */
 
 namespace Neve\Views;
@@ -24,19 +24,19 @@ class Header {
 	public function navigation() {
 		$nav_classes = $this->header_classes(); ?>
 		<nav class="navbar <?php echo esc_attr( $nav_classes ); ?>">
-<!--			--><?php //hestia_before_header_content_trigger(); ?>
+			<?php neve_before_header_content_trigger(); ?>
 			<div class="container">
 				<?php
 				if ( ! $this->is_full_screen_menu() ) {
 					$this->navbar_sidebar();
 				}
-				if ( apply_filters( 'hestia_header_show_primary_menu', true ) ) {
+				if ( apply_filters( 'neve_header_show_primary_menu', true ) ) {
 					$this->navbar_header();
 					$this->render_primary_menu();
 				}
 				?>
 			</div>
-<!--			--><?php //hestia_after_header_content_trigger(); ?>
+<!--			--><?php neve_after_header_content_trigger(); ?>
 		</nav>
 		<?php
 	}
@@ -64,9 +64,9 @@ class Header {
 	 * @return string
 	 */
 	private function get_nav_alignment_class() {
-		$header_alignment = get_theme_mod( 'hestia_header_alignment', 'left' );
+		$header_alignment = get_theme_mod( 'neve_header_alignment', 'left' );
 		if ( ! empty( $header_alignment ) ) {
-			return ' hestia_' . $header_alignment;
+			return ' neve_' . $header_alignment;
 		}
 
 		return '';
@@ -95,7 +95,7 @@ class Header {
 		?>
 		<div class="navbar-toggle-wrapper">
 			<?php
-			hestia_before_navbar_toggle_trigger();
+			neve_before_navbar_toggle_trigger();
 			?>
 			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navigation">
 				<span class="icon-bar"></span>
@@ -104,7 +104,7 @@ class Header {
 				<span class="sr-only"><?php esc_html_e( 'Toggle Navigation', 'hestia-pro' ); ?></span>
 			</button>
 			<?php
-			hestia_after_navbar_toggle_trigger();
+			neve_after_navbar_toggle_trigger();
 			?>
 		</div>
 		<?php
@@ -114,7 +114,7 @@ class Header {
 	 * Render the navigation bar Sidebar.
 	 */
 	private function navbar_sidebar() {
-		$header_alignment = get_theme_mod( 'hestia_header_alignment', 'left' );
+		$header_alignment = get_theme_mod( 'neve_header_alignment', 'left' );
 
 		if ( $header_alignment !== 'right' ) {
 			return;
@@ -132,7 +132,7 @@ class Header {
 			<?php
 		}
 		if ( ! is_active_sidebar( 'header-sidebar' ) && is_customize_preview() ) {
-			hestia_sidebar_placeholder( 'hestia-sidebar-header', 'header-sidebar', 'no-variable-width header-sidebar-wrapper' );
+			neve_sidebar_placeholder( 'neve-sidebar-header', 'header-sidebar', 'no-variable-width header-sidebar-wrapper' );
 		}
 	}
 
@@ -157,13 +157,13 @@ class Header {
 			$class = '';
 		}
 
-		$is_nav_transparent = get_theme_mod( 'hestia_navbar_transparent', true );
+		$is_nav_transparent = get_theme_mod( 'neve_navbar_transparent', true );
 		if ( ! $is_nav_transparent ) {
 			$class = '';
 		}
 
-		$hestia_navbar_transparent = get_theme_mod( 'hestia_big_title_hide', false );
-		if ( $hestia_navbar_transparent ) {
+		$neve_navbar_transparent = get_theme_mod( 'neve_big_title_hide', false );
+		if ( $neve_navbar_transparent ) {
 			$class = ' no-slider';
 		}
 
@@ -189,7 +189,7 @@ class Header {
 	 * @return bool
 	 */
 	protected function is_full_screen_menu() {
-		$has_full_screen_menu = get_theme_mod( 'hestia_full_screen_menu', false );
+		$has_full_screen_menu = get_theme_mod( 'neve_full_screen_menu', false );
 		if ( (bool) $has_full_screen_menu === true ) {
 			return true;
 		}
@@ -203,7 +203,7 @@ class Header {
 	 * @return string
 	 */
 	private function get_top_bar_enabled_class() {
-		$is_top_bar_hidden = get_theme_mod( 'hestia_top_bar_hide', true );
+		$is_top_bar_hidden = get_theme_mod( 'neve_top_bar_hide', true );
 		if ( (bool) $is_top_bar_hidden === false ) {
 			return ' has-top-bar';
 		}
@@ -270,7 +270,7 @@ class Header {
 	private function display_filtered_navigation() {
 		$nav  = '<ul id="%1$s" class="%2$s">';
 		$nav .= '%3$s';
-		$nav .= apply_filters( 'hestia_after_primary_navigation_addons', $this->search_in_menu() );
+		$nav .= apply_filters( 'neve_after_primary_navigation_addons', $this->search_in_menu() );
 		$nav .= '</ul>';
 
 		return $nav;
@@ -280,7 +280,7 @@ class Header {
 	 * Display search form in menu.
 	 */
 	private function search_in_menu() {
-		$search_in_menu = get_theme_mod( 'hestia_search_in_menu', false );
+		$search_in_menu = get_theme_mod( 'neve_search_in_menu', false );
 
 		if ( (bool) $search_in_menu === false ) {
 			return '';
@@ -301,11 +301,11 @@ class Header {
 	 */
 	public function filter_search_form( $form ) {
 		$output  = '';
-		$output .= '<li class="hestia-search-in-menu">';
-		$output .= '<div class="hestia-nav-search">';
+		$output .= '<li class="neve-search-in-menu">';
+		$output .= '<div class="neve-nav-search">';
 		$output .= $form;
 		$output .= '</div>';
-		$output .= '<div class="hestia-toggle-search"><i class="fa fa-search"></i></div>';
+		$output .= '<div class="neve-toggle-search"><i class="fa fa-search"></i></div>';
 		$output .= '</li>';
 
 		return $output;

@@ -14,7 +14,7 @@ use Neve\Core\Factory;
  *
  * @package Neve\Customizer
  */
-class Main {
+class Loader {
 
 	/**
 	 * Customizer modules.
@@ -47,7 +47,11 @@ class Main {
 	 */
 	private function define_modules() {
 		$this->customizer_modules = apply_filters( 'neve_filter_customizer_modules', array(
-			'Customizer\Options\Header'
+			'Customizer\Options\Main',
+			'Customizer\Options\Container_Layout',
+			'Customizer\Options\Sidebar_Layout',
+			'Customizer\Options\Navigation_Layout',
+			'Customizer\Options\Blog_Layout',
 		) );
 	}
 

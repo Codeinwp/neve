@@ -11,7 +11,7 @@ namespace Neve\Customizer\Controls;
 /**
  * A customizer control to display text in customizer.
  *
- * @since Hestia 1.1.42
+ * @since 1.0.0
  */
 class Button extends \WP_Customize_Control {
 
@@ -58,7 +58,7 @@ class Button extends \WP_Customize_Control {
 	/**
 	 * Render content for the control.
 	 *
-	 * @since Hestia 1.1.42
+	 * @since 1.0.0
 	 */
 	public function render_content() {
 		if ( ! empty( $this->button_text ) ) {

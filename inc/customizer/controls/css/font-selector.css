@@ -1,0 +1,90 @@
+#customize-theme-controls #sub-accordion-section-hestia_typography.customize-pane-child.open {
+	height: 100%;
+}
+.hestia-ss-wrap {
+    position: relative;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+}
+.hestia-ss-wrap.active {
+    box-shadow: 0 0 2px rgba(30, 140, 190, .8);
+    border: 1px solid #5897fb;
+}
+.customize-control input.hestia-fs-main-input {
+	width: 90%;
+	background: #fff;
+	display: block;
+	float: left;
+	box-shadow: none;
+	cursor: pointer;
+    box-sizing: border-box;
+    border-right: 0;
+    height: 35px;
+}
+.customize-control input.hestia-fs-main-input:focus {
+    border-color: #ddd;
+}
+
+.hestia-fs-input-addon {
+	width: 10%;
+	background: #fff;
+	box-sizing: border-box;
+	padding: 7px 0;
+	line-height: 18px;
+	display: inline-block;
+	border: 1px solid #ddd;
+	text-align: center;
+	border-left: 0;
+    height: 35px;
+}
+
+.hestia-fs-options-wrapper {
+	max-height: 300px;
+	overflow-y: scroll;
+}
+
+.hestia-fs-options-group {
+	display: block;
+}
+
+.hestia-fs-search {
+	padding: 7px;
+	display: block;
+	border-bottom: 1px solid #ddd;
+}
+
+.hestia-fs-option, .hestia-fs-options-heading {
+	display: block;
+	padding: 3px 5px;
+	line-height: 18px;
+}
+
+.hestia-fs-option {
+	cursor: pointer;
+}
+
+.hestia-fs-options-heading {
+	font-weight: 600;
+	color: #777;
+	background: #eee;
+}
+
+.hestia-fs-option:hover {
+	background: #5897fb;
+	color: #fff;
+}
+
+
+.hestia-ss-wrap.active .hestia-fs-dropdown {
+	display: block;
+	width: 100%;
+    z-index: 1000;
+}
+
+.hestia-fs-dropdown {
+	background: #fff;
+	border: 1px solid #ddd;
+	border-top: 0;
+	display: none;
+	position: absolute;
+}

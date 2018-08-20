@@ -14,14 +14,14 @@ module.exports = {
 		tasks: [ 'uglify:customizerControls' ]
 	},
 	sass: {
-		files: [ 'assets/sass/**/*.scss' ],
-		tasks: [ 'sass:style' ]
+		files: [ 'assets/scss/**/*.scss' ],
+		tasks: [ 'sass:style', 'cssmiin' ]
 	},
 	customizerSass: {
 		files: [
 			'inc/customizer/controls/css/*.css',
 			'inc/addons/customizer/controls/css/*.css',
 		],
-		tasks: [ 'concat:customizerStyle' ]
+		tasks: [ 'concat:customizerStyle', 'cssmin:customizerStyle']
 	},
 };

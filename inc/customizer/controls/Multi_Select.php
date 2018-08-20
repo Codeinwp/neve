@@ -1,6 +1,6 @@
 <?php
 /**
- * Select control which allows to show/hide another control.
+ * Multi select control.
  *
  * @package    Neve\Customizer\Controls
  */
@@ -8,35 +8,32 @@
 namespace Neve\Customizer\Controls;
 
 /**
- * Class Select Hiding
+ * Multiple select customize control class.
+ *
+ * @since  1.1.40
+ * @access public
  */
-class Select_Hiding extends \WP_Customize_Control {
+class Multi_Select extends \WP_Customize_Control {
 	/**
 	 * The type of customize control being rendered.
 	 *
+	 * @since  1.1.40
 	 * @access public
 	 * @var    string
 	 */
-	public $type = 'select-hiding';
+	public $type = 'select-multiple';
 
 	/**
-	 * Subcontrols of each option
+	 * Custom classes to apply on select.
 	 *
+	 * @since  1.1.40
 	 * @access public
 	 * @var string
 	 */
-	public $subcontrols = array();
+	public $custom_class = '';
 
 	/**
-	 * Parent of control
-	 *
-	 * @access public
-	 * @var string
-	 */
-	public $parent = '';
-
-	/**
-	 * Constructor.
+	 * Hestia_Select_Multiple constructor.
 	 *
 	 * @param \WP_Customize_Manager $manager Customize manager object.
 	 * @param string                $id      Control id.
@@ -44,6 +41,9 @@ class Select_Hiding extends \WP_Customize_Control {
 	 */
 	public function __construct( \WP_Customize_Manager $manager, $id, array $args = array() ) {
 		parent::__construct( $manager, $id, $args );
+		if ( array_key_exists( 'custom_class', $args ) ) {
+			$this->custom_class = esc_attr( $args['custom_class'] );
+		}
 	}
 
 	/**
@@ -54,13 +54,12 @@ class Select_Hiding extends \WP_Customize_Control {
 	 * @return array
 	 */
 	public function json() {
-		$json                = parent::json();
-		$json['choices']     = $this->choices;
-		$json['link']        = $this->get_link();
-		$json['value']       = (array) $this->value();
-		$json['id']          = $this->id;
-		$json['subcontrols'] = $this->subcontrols;
-		$json['parent']      = $this->parent;
+		$json                 = parent::json();
+		$json['choices']      = $this->choices;
+		$json['link']         = $this->get_link();
+		$json['value']        = (array) $this->value();
+		$json['id']           = $this->id;
+		$json['custom_class'] = $this->custom_class;
 
 		return $json;
 	}
@@ -75,7 +74,8 @@ class Select_Hiding extends \WP_Customize_Control {
 	 */
 	public function content_template() {
 		?>
-		<# if ( ! data.choices ) {
+		<#
+		if ( ! data.choices ) {
 		return;
 		} #>
 
@@ -88,17 +88,16 @@ class Select_Hiding extends \WP_Customize_Control {
 			<span class="description customize-control-description">{{{ data.description }}}</span>
 			<# } #>
 
-			<select {{{ data.link }}}>
+			<#
+			var custom_class = ''
+			if ( data.custom_class ) {
+			custom_class = 'class='+data.custom_class
+			} #>
+			<select multiple="multiple" {{{ data.link }}} {{ custom_class }}>
 				<# _.each( data.choices, function( label, choice ) {
-
-				var selected = '';
-				if ( choice === data.value ) {
-				selected = 'selected="selected"';
-				}
+				var selected = ( data.value.indexOf( choice.toString() ) !== -1 ) ? 'selected="selected"' : ''
 				#>
-
-				<option value="{{ choice }}" {{selected}}>{{ label }}</option>
-
+				<option value="{{ choice }}" {{ selected }}>{{ label }}</option>
 				<# } ) #>
 			</select>
 		</label>

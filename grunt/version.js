@@ -17,7 +17,7 @@ module.exports = {
 		options: {
 			prefix: 'Version\\:\\s+'
 		},
-		src: 'assets/sass/style.scss'
+		src: 'assets/scss/style.scss'
 	},
 	functions: {
 		options: {

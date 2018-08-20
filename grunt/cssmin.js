@@ -3,7 +3,8 @@
 module.exports = {
 	options: {
 		mergeIntoShorthands: false,
-		roundingPrecision: -1
+		roundingPrecision: -1,
+		sourceMap: false
 	},
 	customizerStyle: {
 		files: {

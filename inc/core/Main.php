@@ -41,7 +41,7 @@ class Main {
 	private function define_modules() {
 		$this->features = apply_filters(
 			'neve_filter_main_modules', array(
-				'Customizer\Main',
+				'Customizer\Loader',
 				'Views\Header'
 			)
 		);
@@ -53,7 +53,7 @@ class Main {
 	 * @access  private
 	 */
 	private function load_modules() {
-		$factory = new Factory($this->features);
+		$factory = new Factory( $this->features );
 		$factory->load_modules();
 	}
 
@@ -86,11 +86,10 @@ class Main {
 //		add_action( 'init', array( $admin, 'load_site_import' ), 11 );
 
 		$front_end = new Front_End();
-//		add_filter( 'frontpage_template', array( $front_end, 'filter_front_page_template' ) );
+		add_action( 'wp_enqueue_scripts', array( $front_end, 'enqueue_scripts' ) );
+		add_action( 'after_setup_theme', array( $front_end, 'setup_theme' ) );
 //		add_action( 'after_switch_theme', array( $front_end, 'theme_activated' ), 0 );
-//		add_action( 'after_setup_theme', array( $front_end, 'setup_theme' ) );
 //		add_action( 'widgets_init', array( $front_end, 'initialize_widgets' ) );
-//		add_action( 'wp_enqueue_scripts', array( $front_end, 'enqueue_scripts' ) );
 //		add_action( 'elementor/frontend/before_register_styles', array( $front_end, 'enqueue_before_elementor' ) );
 	}
 }

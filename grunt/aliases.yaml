@@ -4,6 +4,7 @@ build_scripts:
 - 'sass:min'
 - 'uglify:scripts'
 - 'uglify:customizerControls'
+- 'cssmin'
 
 check:
 - 'newer:imagemin'

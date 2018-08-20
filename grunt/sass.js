@@ -7,8 +7,8 @@ module.exports = {
 			style: 'expanded',
 		},
 		files: [ {
-			'style.css': 'assets/sass/style.scss',
-			'assets/css/woocommerce.css': 'assets/sass/woocommerce.scss',
+			'style.css': 'assets/scss/style.scss',
+			'assets/css/woocommerce.css': 'assets/scss/woocommerce.scss',
 		} ]
 	},
 
@@ -19,9 +19,9 @@ module.exports = {
 			sourcemap: 'none',
 		},
 		files: [ {
-			'style.min.css': 'assets/sass/style.scss',
+			'style.min.css': 'assets/scss/style.scss',
 			'style-rtl.min.css': 'style-rtl.css',
-			'assets/css/woocommerce.min.css': 'assets/sass/woocommerce.scss',
+			'assets/css/woocommerce.min.css': 'assets/scss/woocommerce.scss',
 			'assets/css/woocommerce-rtl.min.css': 'assets/css/woocommerce-rtl.css',
 		} ]
 	},

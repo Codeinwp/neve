@@ -14,7 +14,7 @@
 namespace Neve\Customizer\Controls;
 
 /**
- * Class Hestia_Customize_Control_Radio_Image
+ * Class Radio_Image
  */
 class Radio_Image extends \WP_Customize_Control {
 
