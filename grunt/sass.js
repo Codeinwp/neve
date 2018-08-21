@@ -5,6 +5,7 @@ module.exports = {
 		options: {
 			noCache: true,
 			style: 'expanded',
+			sourcemap: 'auto',
 		},
 		files: [ {
 			'style.css': 'assets/scss/style.scss',

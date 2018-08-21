@@ -103,7 +103,6 @@ wp.customize.controlConstructor['interface-tabs'] = wp.customize.Control.extend(
 					control.showControls(allControls, section);
             });
         });
-
     },
 
 	hideAllControls: function ( section ) {

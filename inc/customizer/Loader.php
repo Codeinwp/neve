@@ -24,7 +24,7 @@ class Loader {
 	private $customizer_modules = array();
 
 	public function __construct() {
-//		add_action( 'customize_preview_init', array( $this, 'enqueue_customizer_script' ) );
+		add_action( 'customize_preview_init', array( $this, 'enqueue_customizer_preview' ) );
 		add_action( 'customize_controls_enqueue_scripts', array( $this, 'enqueue_customizer_controls' ) );
 	}
 
@@ -48,22 +48,31 @@ class Loader {
 	private function define_modules() {
 		$this->customizer_modules = apply_filters( 'neve_filter_customizer_modules', array(
 			'Customizer\Options\Main',
-			'Customizer\Options\Container_Layout',
-			'Customizer\Options\Sidebar_Layout',
-			'Customizer\Options\Navigation_Layout',
-			'Customizer\Options\Blog_Layout',
+			'Customizer\Options\Layout_Container',
+			'Customizer\Options\Layout_Sidebar',
+			'Customizer\Options\Layout_Navigation',
+			'Customizer\Options\Layout_Blog',
+			'Customizer\Options\Layout_Footer',
+			'Customizer\Options\Top_Bar',
+			'Customizer\Options\Typography',
+			'Customizer\Options\Colors_Background',
 		) );
 	}
 
 	public function enqueue_customizer_controls() {
 		wp_enqueue_style( 'neve-customizer-style', NEVE_ASSETS_URL . '/css/customizer-style' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), NEVE_VERSION );
 		wp_enqueue_script(
-			'neve-customizer-controls', NEVE_ASSETS_URL . '/js/customizer-controls.min.js',
+			'neve-customizer-controls', NEVE_ASSETS_URL . '/js/customizer-controls' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.js',
 			array(
 				'jquery',
 				'wp-color-picker',
 			), NEVE_VERSION, true
 		);
+	}
+
+	public function enqueue_customizer_preview() {
+		wp_enqueue_script(
+			'neve-customizer-preview', NEVE_ASSETS_URL . '/js/customizer-preview' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.js', array(), NEVE_VERSION, true );
 	}
 
 	/**

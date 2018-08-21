@@ -9,12 +9,15 @@
 
 namespace Neve\Customizer\Options;
 
-
 use Neve\Customizer\Base_Customizer;
 use Neve\Customizer\Types\Control;
 use Neve\Customizer\Types\Section;
 
-class Container_Layout extends Base_Customizer {
+/**
+ * Class Layout_Container
+ * @package Neve\Customizer\Options
+ */
+class Layout_Container extends Base_Customizer {
 	/**
 	 * Function that should be extended to add customizer controls.
 	 *

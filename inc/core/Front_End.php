@@ -15,7 +15,11 @@ namespace Neve\Core;
  * @package Neve\Core
  */
 class Front_End {
+	/**
+	 * Theme setup.
+	 */
 	public function setup_theme() {
+
 		// Maximum allowed width for any content in the theme, like oEmbeds and images added to posts.  https://codex.wordpress.org/Content_Width
 		global $content_width;
 		if ( ! isset( $content_width ) ) {
@@ -69,4 +73,44 @@ class Front_End {
 	public function enqueue_scripts() {
 		wp_enqueue_style( 'neve-style', get_template_directory_uri() . '/style' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
 	}
+
+
+	/**
+	 * Register widgets for the theme.
+	 *
+	 * @since    1.0.0
+	 */
+	public function register_sidebars() {
+		$sidebars = array(
+			'blog-sidebar'   => esc_html__( 'Sidebar', 'neve' ),
+			'woo-sidebar'    => esc_html__( 'WooCommerce Sidebar', 'neve' ),
+			'header-sidebar' => esc_html__( 'Navigation', 'neve' ),
+		);
+
+		$footer_sidebars = apply_filters(
+			'hestia_footer_widget_areas_array', array(
+				'footer-one-widgets'   => esc_html__( 'Footer One', 'neve' ),
+				'footer-two-widgets'   => esc_html__( 'Footer Two', 'neve' ),
+				'footer-three-widgets' => esc_html__( 'Footer Three', 'neve' ),
+				'footer-four-widgets'  => esc_html__( 'Footer Four', 'neve' ),
+			)
+		);
+
+		$footer_columns  = is_customize_preview() ? '4' : get_theme_mod( 'neve_footer_widget_columns', '3' );
+		$footer_sidebars = array_slice( $footer_sidebars, 0, $footer_columns );
+		$sidebars        = array_merge( $sidebars, $footer_sidebars );
+
+		foreach ( $sidebars as $sidebar_id => $sidebar_name ) {
+			$sidebar_settings = array(
+				'name'          => $sidebar_name,
+				'id'            => $sidebar_id,
+				'before_widget' => '<div id="%1$s" class="widget %2$s">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h5>',
+				'after_title'   => '</h5>',
+			);
+			register_sidebar( $sidebar_settings );
+		}
+	}
+
 }

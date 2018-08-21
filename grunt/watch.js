@@ -5,13 +5,14 @@ module.exports = {
 		files: [
 			'assets/js/src/**.js',
 		],
-		tasks: [ 'uglify:scripts' ]
+		tasks: [ 'uglify:scripts', 'uglify:unMinified' ]
 	},
 	customizerJs: {
 		files: [
 			'inc/customizer/controls/js/*.js',
+			'inc/customizer/options/js/*.js',
 		],
-		tasks: [ 'uglify:customizerControls' ]
+		tasks: [ 'uglify:customizerControls', 'uglify:unMinified' ]
 	},
 	sass: {
 		files: [ 'assets/scss/**/*.scss' ],

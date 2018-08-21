@@ -4,19 +4,10 @@
  *
  * Displays all of the head element and everything up until the page header div.
  *
- * @package Hestia
- * @since   Hestia 1.0
+ * @package Neve
+ * @since   1.0.0
  */
-$wrapper_div_classes = 'wrapper ';
-if ( is_single() ) {
-	$wrapper_div_classes .= join( ' ', get_post_class() );
-}
 
-$header_class = '';
-$hide_top_bar = get_theme_mod( 'hestia_top_bar_hide', true );
-if ( (bool) $hide_top_bar === false ) {
-	$header_class .= 'header-with-topbar';
-}
 
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -32,12 +23,15 @@ if ( (bool) $hide_top_bar === false ) {
 </head>
 
 <body <?php body_class(); ?>>
-<div class="<?php echo esc_attr( $wrapper_div_classes ); ?>">
+<div class="wrapper">
 	<header class="header <?php echo esc_attr( $header_class ); ?>">
 		<?php
-//		hestia_before_header_trigger();
+		neve_before_header_trigger();
+
 		do_action( 'neve_do_top_bar' );
+
 		do_action( 'neve_do_header' );
-//		hestia_after_header_trigger();
+
+		neve_after_header_trigger();
 		?>
 	</header>

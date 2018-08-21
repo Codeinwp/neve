@@ -17,7 +17,7 @@ use Neve\Customizer\Types\Section;
  * Header Options
  * @package Neve\Customizer\Options
  */
-class Navigation_Layout extends Base_Customizer {
+class Layout_Navigation extends Base_Customizer {
 	/**
 	 * Function that should be extended to add customizer controls.
 	 *

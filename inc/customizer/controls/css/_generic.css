@@ -26,3 +26,7 @@
 .has-media-queries .control-wrap.active {
     display: block;
 }
+
+#sub-accordion-section-neve_typography_body {
+    min-height: 600px;
+}

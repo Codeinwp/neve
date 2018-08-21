@@ -35,7 +35,7 @@ class Main extends Base_Customizer {
 		$this->register_type( 'Neve\Customizer\Controls\Tabs', 'control' );
 		$this->register_type( 'Neve\Customizer\Controls\Heading', 'control' );
 		$this->register_type( 'Neve\Customizer\Controls\Multi_Select', 'control' );
-		$this->register_type( 'Neve\Customizer\Controls\Reactive_Select', 'control' );
+		$this->register_type( 'Neve\Customizer\Controls\Reactive_Control', 'control' );
 	}
 
 	/**
@@ -50,6 +50,10 @@ class Main extends Base_Customizer {
 			'neve_header' => array(
 				'priority' => 30,
 				'title'    => __( 'Header', 'neve' ),
+			),
+			'neve_typography' => array(
+				'priority' => 35,
+				'title'    => __( 'Typography', 'neve' ),
 			),
 		);
 

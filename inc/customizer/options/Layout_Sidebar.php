@@ -9,12 +9,15 @@
 
 namespace Neve\Customizer\Options;
 
-
 use Neve\Customizer\Base_Customizer;
 use Neve\Customizer\Types\Control;
 use Neve\Customizer\Types\Section;
 
-class Sidebar_Layout extends Base_Customizer {
+/**
+ * Class Layout_Sidebar
+ * @package Neve\Customizer\Options
+ */
+class Layout_Sidebar extends Base_Customizer {
 	/**
 	 * Function that should be extended to add customizer controls.
 	 *
@@ -55,7 +58,7 @@ class Sidebar_Layout extends Base_Customizer {
 					'default'           => 15
 				),
 				array(
-					'label'       => esc_html__( 'Sidebar width (px)', 'neve' ),
+					'label'       => esc_html__( 'Sidebar width (%)', 'neve' ),
 					'section'     => 'neve_sidebar',
 					'type'        => 'range-value',
 					'media_query' => true,
@@ -92,11 +95,11 @@ class Sidebar_Layout extends Base_Customizer {
 
 		if ( class_exists( 'WooCommerce' ) ) {
 			$sidebar_layout_controls = array_merge( $sidebar_layout_controls, array(
-				'neve_shop_archive_container_style'   => array(
+				'neve_shop_archive_sidebar_layout'   => array(
 					'priority' => 45,
 					'label'    => __( 'Shop / Archive Sidebar Layout', 'neve' ),
 				),
-				'neve_single_product_container_style' => array(
+				'neve_single_product_sidebar_layout' => array(
 					'priority' => 50,
 					'label'    => __( 'Single Product Sidebar Layout', 'neve' ),
 				),

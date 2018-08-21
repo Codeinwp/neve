@@ -13,7 +13,11 @@ use Neve\Customizer\Base_Customizer;
 use Neve\Customizer\Types\Control;
 use Neve\Customizer\Types\Section;
 
-class Blog_Layout extends Base_Customizer {
+/**
+ * Class Layout_Blog
+ * @package Neve\Customizer\Options
+ */
+class Layout_Blog extends Base_Customizer {
 	/**
 	 * Function that should be extended to add customizer controls.
 	 *
@@ -112,7 +116,7 @@ class Blog_Layout extends Base_Customizer {
 					),
 					'parent'      => 'neve_blog_archive_layout',
 				),
-				'Neve\Customizer\Controls\Reactive_Select'
+				'Neve\Customizer\Controls\Reactive_Control'
 			)
 		);
 

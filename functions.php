@@ -53,4 +53,4 @@ function neve_run() {
 	new Neve\Core\Main();
 }
 
-add_action( 'init', 'neve_run' );
+neve_run();

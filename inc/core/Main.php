@@ -42,7 +42,8 @@ class Main {
 		$this->features = apply_filters(
 			'neve_filter_main_modules', array(
 				'Customizer\Loader',
-				'Views\Header'
+				'Views\Header',
+				'Views\Footer'
 			)
 		);
 	}
@@ -77,7 +78,6 @@ class Main {
 	 * @access   private
 	 */
 	private function define_hooks() {
-
 		$admin = new Admin();
 //		add_action( 'admin_enqueue_scripts', array( $admin, 'enqueue_styles' ) );
 //		add_filter( 'admin_head', array( $admin, 'admin_head_editor_inline_style' ) );
@@ -88,8 +88,8 @@ class Main {
 		$front_end = new Front_End();
 		add_action( 'wp_enqueue_scripts', array( $front_end, 'enqueue_scripts' ) );
 		add_action( 'after_setup_theme', array( $front_end, 'setup_theme' ) );
+		add_action( 'widgets_init', array( $front_end, 'register_sidebars' ) );
 //		add_action( 'after_switch_theme', array( $front_end, 'theme_activated' ), 0 );
-//		add_action( 'widgets_init', array( $front_end, 'initialize_widgets' ) );
 //		add_action( 'elementor/frontend/before_register_styles', array( $front_end, 'enqueue_before_elementor' ) );
 	}
 }

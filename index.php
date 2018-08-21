@@ -2,7 +2,6 @@
 /**
  * @package Neve
  */
-
 get_header(); ?>
 	<main id="primary" class="neve-main">
 		<?php
