@@ -16,7 +16,7 @@ module.exports = {
 	},
 	sass: {
 		files: [ 'assets/scss/**/*.scss' ],
-		tasks: [ 'sass:style', 'cssmiin' ]
+		tasks: [ 'sass:style', 'cssmin' ]
 	},
 	customizerSass: {
 		files: [

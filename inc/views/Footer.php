@@ -23,9 +23,73 @@ class Footer extends Base_View {
 		<footer>
 			<div class="container">
 				<?php echo $this->render_footer_sidebars(); ?>
+				<?php echo $this->render_footer_content(); ?>
 			</div>
 		</footer>
 	<?php }
+
+	/**
+	 * Render the footer sidebars.
+	 */
+	private function render_footer_sidebars() {
+		$sidebars = $this->get_footer_sidebars();
+
+		echo '<div class="row nv-footer-widgets">';
+		foreach ( $sidebars as $sidebar ) {
+			echo '<div class="' . esc_attr( $this->the_sidebar_class() ) . '">';
+			dynamic_sidebar( $sidebar );
+			echo '</div>';
+		}
+		echo '</div>';
+	}
+
+	/**
+	 * Render the footer content.
+	 */
+	public function render_footer_content() {
+		$content_type = get_theme_mod( 'neve_footer_content_type', 'text' );
+		if ( $content_type === 'none' ) {
+			return;
+		}
+
+		echo '<div class="row nv-footer-content">';
+		echo '<div class="col-12">';
+
+		switch ( $content_type ) {
+			case 'text':
+				$this->render_content_text();
+				break;
+			case 'footer_menu':
+				$this->render_content_menu();
+				break;
+			default:
+		}
+
+		echo '</div>';
+		echo '</div>';
+	}
+
+	private function render_content_text() {
+		$content = get_theme_mod( 'neve_footer_text', sprintf(
+		/* translators: %1$s is Theme Name (Neve), %2$s is WordPress */
+			esc_html__( '%1$s  | Powered by %2$s', 'neve' ),
+			wp_kses_post( '<a href="https://themeisle.com/themes/neve/" target="_blank" rel="nofollow">Neve</a>' ),
+			wp_kses_post( '<a href="http://wordpress.org" rel="nofollow">WordPress</a>' )
+		) );
+
+		echo wp_kses_post( $content );
+	}
+
+	private function render_content_menu() {
+		wp_nav_menu(
+			array(
+				'theme_location' => 'footer',
+				'depth'          => 1,
+				'container'      => 'ul',
+				'menu_class'     => 'footer-menu',
+			)
+		);
+	}
 
 	/**
 	 * Get an array of footer sidebars slugs.
@@ -45,164 +109,13 @@ class Footer extends Base_View {
 		return $sidebars;
 	}
 
+	/**
+	 * Get number of footer sidebars.
+	 *
+	 * @return string
+	 */
 	private function footer_sidebars_number() {
 		return get_theme_mod( 'neve_footer_widget_columns', '3' );
-	}
-
-	/**
-	 * Render the footer sidebars.
-	 */
-	private function render_footer_sidebars() {
-		$sidebars = $this->get_footer_sidebars();
-		if ( empty( $sidebars ) ) {
-			return '';
-		}
-
-		echo '<div class="row nv-footer-widgets">';
-		foreach ( $sidebars as $sidebar ) {
-			echo '<div class="' . esc_attr( $this->the_sidebar_class() ) . '">';
-			dynamic_sidebar( $sidebar );
-			echo '</div>';
-		}
-		echo '</div>';
-	}
-
-	/**
-	 * Function to display footer content.
-	 *
-	 * @since  1.1.24
-	 * @access public
-	 */
-	public function the_footer_content() {
-		hestia_before_footer_trigger();
-
-		?>
-		<footer class="footer <?php echo esc_attr( $this->the_footer_class() ); ?> footer-big">
-			<?php hestia_before_footer_content_trigger(); ?>
-			<div class="container">
-				<?php hestia_before_footer_widgets_trigger(); ?>
-				<?php $this->render_footer_sidebars(); ?>
-				<?php hestia_after_footer_widgets_trigger(); ?>
-				<?php $this->wrapped_bottom_footer_content(); ?>
-			</div>
-			<?php hestia_after_footer_content_trigger(); ?>
-		</footer>
-		<?php
-		hestia_after_footer_trigger();
-	}
-
-	/**
-	 * Filter footer menu classes to account for alignment.
-	 *
-	 * @param string $classes the footer classes.
-	 *
-	 * @return mixed
-	 */
-	public function modify_footer_menu_classes( $classes ) {
-		if ( 'footer' !== $classes['theme_location'] ) {
-			return $classes;
-		}
-		$classes['menu_class'] .= ' ' . $this->add_footer_menu_alignment_class();
-
-		return $classes;
-	}
-
-	/**
-	 * Function to display footer copyright and footer menu.
-	 */
-	private function wrapped_bottom_footer_content() {
-		echo '<div class="hestia-bottom-footer-content">';
-		do_action( 'hestia_do_bottom_footer_content' );
-		echo '</div>';
-	}
-
-	/**
-	 * Function to display footer copyright and footer menu.
-	 * Also used as callback for selective refresh.
-	 */
-	public function bottom_footer_content() {
-		$hestia_general_credits = get_theme_mod(
-			'hestia_general_credits',
-			sprintf(
-			/* translators: %1$s is Theme Name, %2$s is WordPress */
-				esc_html__( '%1$s | Powered by %2$s', 'hestia-pro' ),
-				sprintf(
-				/* translators: %s is Theme name */
-					'<a href="https://themeisle.com/themes/hestia/" target="_blank" rel="nofollow">%s</a>',
-					esc_html__( 'Hestia', 'hestia-pro' )
-				),
-				/* translators: %1$s is URL, %2$s is WordPress */
-				sprintf(
-					'<a href="%1$s" rel="nofollow">%2$s</a>',
-					esc_url( __( 'http://wordpress.org', 'hestia-pro' ) ),
-					esc_html__( 'WordPress', 'hestia-pro' )
-				)
-			)
-		);
-
-		wp_nav_menu(
-			array(
-				'theme_location' => 'footer',
-				'depth'          => 1,
-				'container'      => 'ul',
-				'menu_class'     => 'footer-menu',
-			)
-		);
-		?>
-		<?php if ( ! empty( $hestia_general_credits ) || is_customize_preview() ) : ?>
-			<div class="copyright <?php echo esc_attr( $this->add_footer_copyright_alignment_class() ); ?>">
-				<?php echo wp_kses_post( $hestia_general_credits ); ?>
-			</div>
-		<?php
-		endif;
-	}
-
-	/**
-	 * Add the footer copyright alignment class.
-	 *
-	 * @return string
-	 */
-	private function add_footer_copyright_alignment_class() {
-		$hestia_copyright_alignment = get_theme_mod( 'hestia_copyright_alignment', 'right' );
-		if ( $hestia_copyright_alignment === 'left' ) {
-			return 'pull-left';
-		}
-		if ( $hestia_copyright_alignment === 'center' ) {
-			return 'hestia-center';
-		}
-
-		return 'pull-right';
-	}
-
-	/**
-	 * Add the footer menu alignment class.
-	 *
-	 * @return string
-	 */
-	private function add_footer_menu_alignment_class() {
-		$hestia_copyright_alignment = get_theme_mod( 'hestia_copyright_alignment', 'right' );
-		if ( $hestia_copyright_alignment === 'left' ) {
-			return 'pull-right';
-		}
-		if ( $hestia_copyright_alignment === 'center' ) {
-			return 'hestia-center';
-		}
-
-		return 'pull-left';
-	}
-
-	/**
-	 * Utility to get the footer class for color changes.
-	 */
-	private function the_footer_class() {
-		$footer_style = get_theme_mod( 'hestia_alternative_footer_style', 'black_footer' );
-		$class        = 'footer-black';
-
-		if ( $footer_style === 'white_footer' ) {
-			$class = '';
-		}
-
-		return $class;
 	}
 
 	/**
@@ -222,26 +135,4 @@ class Footer extends Base_View {
 
 		return $class;
 	}
-
-	/**
-	 * Utility to check if any of the footer sidebars have widgets.
-	 *
-	 * @return bool
-	 */
-	private function footer_has_widgets() {
-		$sidebars = $this->get_footer_sidebars();
-		if ( empty( $sidebars ) ) {
-			return false;
-		}
-
-		foreach ( $sidebars as $footer_sidebar ) {
-			$has_widgets = is_active_sidebar( $footer_sidebar );
-			if ( $has_widgets ) {
-				return true;
-			}
-		}
-
-		return false;
-	}
-
 }

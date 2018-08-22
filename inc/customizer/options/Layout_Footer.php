@@ -12,6 +12,7 @@ namespace Neve\Customizer\Options;
 use Neve\Customizer\Base_Customizer;
 use Neve\Customizer\Types\Control;
 use Neve\Customizer\Types\Section;
+use Neve\Views\Footer;
 
 /**
  * Class Layout_Footer
@@ -74,7 +75,7 @@ class Layout_Footer extends Base_Customizer {
 							'neve_footer_content_type' => array(
 								'text'        => array( 'neve_footer_text' ),
 								'none'        => array(),
-								'footer_menu' => array()
+								'footer_menu' => array(),
 							),
 						),
 						'footer_widgets' => array(
@@ -122,6 +123,7 @@ class Layout_Footer extends Base_Customizer {
 			new Control(
 				'neve_footer_content_type',
 				array(
+					'transport'         => $this->selective_refresh,
 					'sanitize_callback' => array( $this, 'sanitize_footer_content_type' ),
 					'default'           => 'text',
 				),
@@ -138,14 +140,27 @@ class Layout_Footer extends Base_Customizer {
 						'none'        => array(),
 						'footer_menu' => array(),
 						'text'        => array(
-
 							'neve_footer_text',
 						),
 					),
 				),
-				'Neve\Customizer\Controls\Reactive_Control'
+				'Neve\Customizer\Controls\Reactive_Control',
+				array(
+					'selector'        => '.nv-footer-content',
+					'settings'        => array( 'neve_footer_content_type', 'neve_footer_text' ),
+					'render_callback' => array( $this, 'footer_content_callback' ),
+					'container_inclusive' => true,
+				)
 			)
 		);
+	}
+
+	/**
+	 * Footer content render callback.
+	 */
+	public function footer_content_callback() {
+		$footer = new Footer();
+		$footer->render_footer_content();
 	}
 
 	private function control_footer_text() {
@@ -153,8 +168,14 @@ class Layout_Footer extends Base_Customizer {
 			new Control(
 				'neve_footer_text',
 				array(
+					'transport'         => $this->selective_refresh,
 					'sanitize_callback' => 'wp_kses_post',
-					'default'           => $this->get_footer_copyright(),
+					'default'           => sprintf(
+					/* translators: %1$s is Theme Name (Neve), %2$s is WordPress */
+						esc_html__( '%1$s | Powered by %2$s', 'neve' ),
+						wp_kses_post( '<a href="https://themeisle.com/themes/neve/" target="_blank" rel="nofollow">Neve</a>' ),
+						wp_kses_post( '<a href="http://wordpress.org" rel="nofollow">WordPress</a>' )
+					),
 				),
 				array(
 					'priority' => 35,
@@ -180,19 +201,5 @@ class Layout_Footer extends Base_Customizer {
 		}
 
 		return esc_html( $value );
-	}
-
-	/**
-	 * Default for the footer text content.
-	 *
-	 * @return string
-	 */
-	private function get_footer_copyright() {
-		return sprintf(
-		/* translators: %1$s is Theme Name (Neve), %2$s is WordPress */
-			esc_html__( '%1$s | Powered by %2$s', 'neve' ),
-			wp_kses_post( '<a href="https://themeisle.com/themes/neve/" target="_blank" rel="nofollow">Neve</a>' ),
-			wp_kses_post( '<a href="http://wordpress.org" rel="nofollow">WordPress</a>' )
-		);
 	}
 }

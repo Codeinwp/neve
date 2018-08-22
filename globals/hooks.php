@@ -14,14 +14,6 @@
 function neve_before_header_trigger() {
 	do_action( 'neve_before_header_hook' );
 }
-/**
- * Hook just before the header ( navigation ) content
- *
- * HTML context: before `header nav div.container`
- */
-function neve_before_header_content_trigger() {
-	do_action( 'neve_before_header_content_hook' );
-}
 
 /**
  * Hook just before the responsive navbar-toggle.
@@ -40,14 +32,6 @@ function neve_after_navbar_toggle_trigger() {
 	do_action( 'neve_after_navbar_toggle_hook' );
 }
 
-/**
- * Hook just after the header ( navigation ) content
- *
- * HTML context: after `header nav div.container`
- */
-function neve_after_header_content_trigger() {
-	do_action( 'neve_after_header_content_hook' );
-}
 /**
  * Hook just after the header ( navigation ) area
  *

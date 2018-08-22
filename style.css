@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*
 Theme Name:     Neve
 Theme URI:      https://themeisle.com/themes/hestia-pro/
@@ -1060,6 +1061,84 @@ th {
   .offset-xl-11 {
     margin-left: 91.6666666667%;
   }
+}
+html {
+  font-size: 14px;
+}
+
+body {
+  font-family: "Op­tima", sans-serif;
+  font-size: 1rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Gill Sans", sans-serif;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+h5 {
+  font-size: 1.25rem;
+}
+
+h6 {
+  font-size: 1rem;
+}
+
+a {
+  color: #51bcda;
+  text-decoration: none;
+}
+a:hover {
+  color: #2ba9cd;
+}
+
+.navbar {
+  background-color: #fff;
+}
+
+footer {
+  background-color: #fff;
+}
+
+.nv-footer-content, .nv-footer-widgets {
+  padding: 32px 0;
+}
+
+.nv-footer-widgets + .nv-footer-content {
+  padding-top: 0;
+}
+
+.nv-footer-content .footer-menu {
+  display: flex;
+  flex-wrap: wrap;
+}
+.nv-footer-content .footer-menu li {
+  margin-right: 16px;
+}
+
+.wrapper {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.neve-main {
+  flex: 1;
 }
 
 /*# sourceMappingURL=style.css.map */

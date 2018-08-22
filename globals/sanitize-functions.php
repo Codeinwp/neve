@@ -133,6 +133,7 @@ function neve_sanitize_big_title_type( $input ) {
 	if ( in_array( $input, $options ) ) {
 		return $input;
 	}
+
 	return 'image';
 }
 
@@ -280,6 +281,8 @@ function neve_sanitize_range_value( $input ) {
  * Dimension sanitization callback
  *
  * @param string $val Input value.
+ *
+ * @return int
  */
 function neve_sanitize_dimension( $val ) {
 	$decoded_array = json_decode( $val );
@@ -297,5 +300,6 @@ function neve_sanitize_dimension( $val ) {
 			}
 		}
 	}
+
 	return $val;
 }

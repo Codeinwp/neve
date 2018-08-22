@@ -1,11 +1,17 @@
-$font-size-base:              1rem !default; // Assumes the browser default, typically `16px`
+$font-size-base: 1rem !default;
 
-$h1-font-size:                $font-size-base * 2.5 !default;
-$h2-font-size:                $font-size-base * 2 !default;
-$h3-font-size:                $font-size-base * 1.75 !default;
-$h4-font-size:                $font-size-base * 1.5 !default;
-$h5-font-size:                $font-size-base * 1.25 !default;
-$h6-font-size:                $font-size-base !default;
+$h1-font-size: $font-size-base * 2.5 !default;
+$h2-font-size: $font-size-base * 2 !default;
+$h3-font-size: $font-size-base * 1.75 !default;
+$h4-font-size: $font-size-base * 1.5 !default;
+$h5-font-size: $font-size-base * 1.25 !default;
+$h6-font-size: $font-size-base !default;
 
-$paragraph-margin-bottom:   1rem !default;
+$paragraph-margin-bottom: 1rem !default;
 
+$spacing-small: 16px;
+$spacing-normal: $spacing-small * 2;
+$spacing-large: $spacing-small * 3;
+
+$link_color: #51bcda;
+$link_hover_color: #2ba9cd;

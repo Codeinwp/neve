@@ -17,5 +17,5 @@ abstract class Base_View {
 	 *
 	 * @return void
 	 */
-	abstract protected function init();
+	abstract public function init();
 }

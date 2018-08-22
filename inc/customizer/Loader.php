@@ -23,6 +23,9 @@ class Loader {
 	 */
 	private $customizer_modules = array();
 
+	/**
+	 * Loader constructor.
+	 */
 	public function __construct() {
 		add_action( 'customize_preview_init', array( $this, 'enqueue_customizer_preview' ) );
 		add_action( 'customize_controls_enqueue_scripts', array( $this, 'enqueue_customizer_controls' ) );
@@ -59,6 +62,9 @@ class Loader {
 		) );
 	}
 
+	/**
+	 * Enqueue customizer controls script.
+	 */
 	public function enqueue_customizer_controls() {
 		wp_enqueue_style( 'neve-customizer-style', NEVE_ASSETS_URL . '/css/customizer-style' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), NEVE_VERSION );
 		wp_enqueue_script(
@@ -70,6 +76,9 @@ class Loader {
 		);
 	}
 
+	/**
+	 * Enqueue customizer preview script.
+	 */
 	public function enqueue_customizer_preview() {
 		wp_enqueue_script(
 			'neve-customizer-preview', NEVE_ASSETS_URL . '/js/customizer-preview' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.js', array(), NEVE_VERSION, true );

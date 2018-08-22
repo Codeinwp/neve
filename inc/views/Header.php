@@ -21,55 +21,19 @@ class Header {
 	/**
 	 * Render navigation
 	 */
-	public function navigation() {
-		$nav_classes = $this->header_classes(); ?>
-		<nav class="navbar <?php echo esc_attr( $nav_classes ); ?>">
-			<?php neve_before_header_content_trigger(); ?>
+	public function navigation() { ?>
+		<nav class="navbar">
 			<div class="container">
-				<?php
-				if ( ! $this->is_full_screen_menu() ) {
-					$this->navbar_sidebar();
-				}
-				if ( apply_filters( 'neve_header_show_primary_menu', true ) ) {
-					$this->navbar_header();
+				<div class="row">
+					<?php
+					$this->render_navbar_header();
 					$this->render_primary_menu();
-				}
-				?>
+					$this->render_navbar_toggle();
+					?>
+				</div>
 			</div>
-<!--			--><?php neve_after_header_content_trigger(); ?>
 		</nav>
 		<?php
-	}
-
-	/**
-	 * Get the header class.
-	 *
-	 * @return string
-	 */
-	private function header_classes() {
-		$class  = '';
-		$class .= $this->get_nav_alignment_class();
-		$class .= $this->get_full_screen_menu_class();
-		$class .= $this->get_top_bar_enabled_class();
-		if ( ! is_front_page() ) {
-			$class .= ' navbar-not-transparent';
-		}
-
-		return $class;
-	}
-
-	/**
-	 * Get the header alignment class.
-	 *
-	 * @return string
-	 */
-	private function get_nav_alignment_class() {
-		$header_alignment = get_theme_mod( 'neve_header_alignment', 'left' );
-		if ( ! empty( $header_alignment ) ) {
-			return ' neve_' . $header_alignment;
-		}
-
-		return '';
 	}
 
 	/**
@@ -79,7 +43,7 @@ class Header {
 		wp_nav_menu(
 			array(
 				'theme_location' => 'primary',
-				'menu_id'        => 'primary-menu',
+				'menu_id'        => 'neve-primary-navigation',
 				'container'      => 'ul',
 			)
 		);
@@ -137,53 +101,6 @@ class Header {
 	}
 
 	/**
-	 * Get class if navbar should be transparent.
-	 *
-	 * @return string
-	 */
-	private function get_transparent_nav_class() {
-		$class = ' navbar-color-on-scroll navbar-transparent';
-
-		if ( ! get_option( 'show_on_front' ) === 'page' ) {
-			$class = '';
-		}
-		if ( ! is_front_page() ) {
-			$class = '';
-		}
-		if ( is_front_page() && is_home() ) {
-			return '';
-		}
-		if ( is_page_template() ) {
-			$class = '';
-		}
-
-		$is_nav_transparent = get_theme_mod( 'neve_navbar_transparent', true );
-		if ( ! $is_nav_transparent ) {
-			$class = '';
-		}
-
-		$neve_navbar_transparent = get_theme_mod( 'neve_big_title_hide', false );
-		if ( $neve_navbar_transparent ) {
-			$class = ' no-slider';
-		}
-
-		return $class;
-	}
-
-	/**
-	 * Get the full screen menu class.
-	 *
-	 * @return string
-	 */
-	private function get_full_screen_menu_class() {
-		if ( $this->is_full_screen_menu() ) {
-			return ' full-screen-menu';
-		}
-
-		return '';
-	}
-
-	/**
 	 * Utility to check if is full screen menu.
 	 *
 	 * @return bool
@@ -198,28 +115,14 @@ class Header {
 	}
 
 	/**
-	 * Get the header class if top bar is enabled.
-	 *
-	 * @return string
-	 */
-	private function get_top_bar_enabled_class() {
-		$is_top_bar_hidden = get_theme_mod( 'neve_top_bar_hide', true );
-		if ( (bool) $is_top_bar_hidden === false ) {
-			return ' has-top-bar';
-		}
-
-		return '';
-	}
-
-	/**
 	 * Do the navbar header.
 	 */
-	private function navbar_header() {
+	private function render_navbar_header() {
 		?>
 		<div class="nav-header">
-				<a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>"
-						title="<?php bloginfo( 'name' ); ?>">
-					<?php echo $this->logo(); ?></a>
+			<a class="brand" href="<?php echo esc_url( home_url( '/' ) ); ?>"
+					title="<?php bloginfo( 'name' ); ?>">
+				<?php echo $this->get_logo(); ?></a>
 			<?php $this->render_navbar_toggle(); ?>
 		</div>
 		<?php
@@ -230,7 +133,7 @@ class Header {
 	 *
 	 * @since Hestia 1.0
 	 */
-	private function logo() {
+	private function get_logo() {
 		if ( get_theme_mod( 'custom_logo' ) ) {
 			$logo          = wp_get_attachment_image_src( get_theme_mod( 'custom_logo' ), 'full' );
 			$alt_attribute = get_post_meta( get_theme_mod( 'custom_logo' ), '_wp_attachment_image_alt', true );
@@ -268,7 +171,7 @@ class Header {
 	 * @return string
 	 */
 	private function display_filtered_navigation() {
-		$nav  = '<ul id="%1$s" class="%2$s">';
+		$nav = '<ul id="%1$s" class="%2$s">';
 		$nav .= '%3$s';
 		$nav .= apply_filters( 'neve_after_primary_navigation_addons', $this->search_in_menu() );
 		$nav .= '</ul>';
@@ -300,7 +203,7 @@ class Header {
 	 * @return string
 	 */
 	public function filter_search_form( $form ) {
-		$output  = '';
+		$output = '';
 		$output .= '<li class="neve-search-in-menu">';
 		$output .= '<div class="neve-nav-search">';
 		$output .= $form;

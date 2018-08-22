@@ -42,6 +42,7 @@ class Main {
 		$this->features = apply_filters(
 			'neve_filter_main_modules', array(
 				'Customizer\Loader',
+				'Views\Typography',
 				'Views\Header',
 				'Views\Footer'
 			)
