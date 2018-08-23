@@ -1,0 +1,22 @@
+@media (min-width: #{$tablet-sm}) {
+  @include grid-container--tablet-sm();
+  @include grid--tablet-sm();
+}
+
+@media (min-width: #{$tablet}) {
+  @include grid-container--tablet();
+  @include grid--tablet();
+
+}
+
+@media (min-width: #{$laptop}) {
+  @include grid-container--laptop();
+  @include grid--laptop();
+  @include nav-toggle--laptop();
+  @include nav-menu--laptop();
+}
+
+@media (min-width: #{$desktop}) {
+@include grid-container--desktop();
+  @include grid--desktop();
+}

@@ -11,6 +11,7 @@
 
 
 
+</main><!--/.neve-main-->
 <?php do_action( 'neve_do_footer' ); ?>
 </div><!--/.wrapper-->
 <?php wp_footer(); ?>

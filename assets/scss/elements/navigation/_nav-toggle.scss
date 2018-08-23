@@ -1,0 +1,23 @@
+@mixin nav-toggle--laptop() {
+  .navbar-toggle {
+    display: none;
+  }
+}
+
+.icon-bar {
+  transition: 250ms;
+  position: relative;
+  display: block;
+  background: $theme_color;
+  border-radius: 2px;
+  width: 15px;
+  height: 2px;
+  &:nth-child(2) {
+    margin: 3px 0;
+  }
+}
+
+.navbar-toggle {
+  border: none;
+  background: none;
+}

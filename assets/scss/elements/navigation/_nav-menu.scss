@@ -1,0 +1,119 @@
+.nv-navbar {
+  background-color: $navbar_background_color;
+}
+
+.nv-nav-header {
+  display: flex;
+  padding: $spacing-xs 0;
+}
+
+#nv-primary-navigation {
+  max-height: 0;
+  overflow: scroll;
+}
+
+.site-logo, .navbar-toggle-wrapper {
+  flex: 1;
+}
+
+.navbar-toggle-wrapper {
+  justify-content: flex-end;
+  display: flex;
+}
+
+@mixin nav-menu--laptop() {
+  .nv-navbar {
+    padding: $spacing-sm 0;
+    border-bottom: $muted-border;
+  }
+
+  .nv-nav-wrap {
+    flex-direction: row;
+    align-items: center;
+  }
+  .nv-nav-header {
+    display: inherit;
+    padding: 0;
+  }
+
+  #nv-primary-navigation {
+    max-height: inherit;
+    overflow: inherit;
+    @include horizontal-list($spacing-sm);
+    justify-content: flex-end;
+    > li {
+      padding: $spacing-sm 0;
+      cursor: pointer;
+    }
+    li:hover > a {
+      color: $link_hover_color;
+    }
+    li {
+      position: relative;
+    }
+  }
+
+  .sub-menu {
+    z-index: 10;
+    visibility: hidden;
+    opacity: 0;
+    transition: $transition_default;
+    background-color: $navbar_background_color;
+    position: absolute;
+    border-top: 3px solid $link_color;
+    .sub-menu {
+      left: 100%;
+      right: auto;
+      top: -3px;
+    }
+    li {
+      border: $muted-border;
+      border-top: none;
+      a {
+        white-space: nowrap;
+        display: block;
+        padding: 10px;
+        width: auto;
+        min-width: 180px;
+      }
+    }
+    .menu-item-has-children {
+      > a:after {
+        @include caret(-1px);
+        border-color: $link_color;
+        transform: rotate(135deg);
+        transition: $transition_default;
+      }
+      &:hover > a:after {
+        border-color: $link-hover_color;
+        transform: rotate(45deg);
+      }
+    }
+  }
+
+  .menu-item-has-children {
+    &:hover > .sub-menu {
+      display: block;
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  #nv-primary-navigation > .menu-item-has-children {
+    > a:after {
+      @include caret(-2px);
+      border-color: $link_color;
+      transform: rotate(135deg);
+      transition: $transition_default;
+    }
+    &:hover > a:after {
+      transform: rotate(-45deg);
+      top: 0;
+      border-color: $link_hover_color;
+    }
+    > .sub-menu {
+      left: auto;
+      right: 0;
+    }
+  }
+}

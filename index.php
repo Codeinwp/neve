@@ -3,7 +3,6 @@
  * @package Neve
  */
 get_header(); ?>
-	<main id="primary" class="neve-main">
 		<?php
 		if ( have_posts() ) :
 			/* Start the Loop. */
@@ -18,7 +17,6 @@ get_header(); ?>
 			get_template_part( 'template-parts/content', 'none' );
 		endif;
 		?>
-	</main><!-- #primary -->
 
 <?php
 get_sidebar();

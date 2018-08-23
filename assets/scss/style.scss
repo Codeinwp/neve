@@ -17,10 +17,14 @@ Use it to make something cool, have fun, and share what you've learned with othe
 */
 
 @import "main/variables";
+@import "main/mixins";
 @import "main/reset";
+
 @import "main/grid";
 @import "main/typography";
 
 @import "elements/navigation";
 @import "elements/footer";
 @import "elements/page";
+
+@import "main/media-queries";

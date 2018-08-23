@@ -9,9 +9,22 @@ $h6-font-size: $font-size-base !default;
 
 $paragraph-margin-bottom: 1rem !default;
 
-$spacing-small: 16px;
-$spacing-normal: $spacing-small * 2;
-$spacing-large: $spacing-small * 3;
+$spacing-xs: 8px;
+$spacing-sm: 16px;
+$spacing: $spacing-sm * 2;
+$spacing-lg: $spacing-sm * 3;
 
-$link_color: #51bcda;
-$link_hover_color: #2ba9cd;
+$theme_color: #1a9ac4;
+$link_color: #1a9ac4;
+$link_hover_color: #0366d6;
+$navbar_background_color: #fff;
+
+$transition_default: .1s ease;
+$muted-border: 1px solid #f0f0f0;
+
+
+$tablet-sm: "576px";
+$tablet: "768px";
+$laptop: "992px";
+$desktop : "1200px"
+

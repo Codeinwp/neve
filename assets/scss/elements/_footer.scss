@@ -1,9 +1,10 @@
 footer {
   background-color: #fff;
+  border-top: $muted-border;
 }
 
 .nv-footer-content, .nv-footer-widgets {
-  padding: $spacing-normal 0;
+  padding: $spacing 0;
 }
 
 .nv-footer-widgets + .nv-footer-content {
@@ -11,9 +12,5 @@ footer {
 }
 
 .nv-footer-content .footer-menu {
-  display: flex;
-  flex-wrap: wrap;
-  li {
-    margin-right: $spacing-small;
-  }
+  @include horizontal-list($spacing-sm);
 }

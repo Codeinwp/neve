@@ -72,6 +72,7 @@ class Front_End {
 
 	public function enqueue_scripts() {
 		wp_enqueue_style( 'neve-style', get_template_directory_uri() . '/style' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
+		wp_enqueue_script( 'neve-script', NEVE_ASSETS_URL . 'js/script' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.js', array( 'jquery' ), NEVE_VERSION, false );
 	}
 
 

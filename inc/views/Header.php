@@ -22,14 +22,20 @@ class Header {
 	 * Render navigation
 	 */
 	public function navigation() { ?>
-		<nav class="navbar">
+		<nav class="nv-navbar">
 			<div class="container">
 				<div class="row">
-					<?php
-					$this->render_navbar_header();
-					$this->render_primary_menu();
-					$this->render_navbar_toggle();
-					?>
+					<div class="col-md-12 nv-nav-wrap">
+						<div class="nv-nav-header">
+							<?php
+							$this->render_navbar_header();
+							$this->render_navbar_toggle();
+							?>
+						</div>
+						<?php
+						$this->render_primary_menu();
+						?>
+					</div>
 				</div>
 			</div>
 		</nav>
@@ -43,7 +49,7 @@ class Header {
 		wp_nav_menu(
 			array(
 				'theme_location' => 'primary',
-				'menu_id'        => 'neve-primary-navigation',
+				'menu_id'        => 'nv-primary-navigation',
 				'container'      => 'ul',
 			)
 		);
@@ -56,16 +62,17 @@ class Header {
 		if ( ! has_nav_menu( 'primary' ) && current_user_can( 'edit_theme_options' ) ) {
 			return;
 		}
+
 		?>
 		<div class="navbar-toggle-wrapper">
 			<?php
 			neve_before_navbar_toggle_trigger();
 			?>
-			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navigation">
+			<button type="button" class="navbar-toggle">
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
-				<span class="sr-only"><?php esc_html_e( 'Toggle Navigation', 'hestia-pro' ); ?></span>
+				<span class="screen-reader-text"><?php esc_html_e( 'Toggle Navigation', 'hestia-pro' ); ?></span>
 			</button>
 			<?php
 			neve_after_navbar_toggle_trigger();
@@ -119,11 +126,10 @@ class Header {
 	 */
 	private function render_navbar_header() {
 		?>
-		<div class="nav-header">
+		<div class="site-logo" itemtype="http://schema.org/Brand">
 			<a class="brand" href="<?php echo esc_url( home_url( '/' ) ); ?>"
 					title="<?php bloginfo( 'name' ); ?>">
 				<?php echo $this->get_logo(); ?></a>
-			<?php $this->render_navbar_toggle(); ?>
 		</div>
 		<?php
 	}
