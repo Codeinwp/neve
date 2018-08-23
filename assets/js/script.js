@@ -1,27 +1,41 @@
 (function($) {
+    $.neveUtilities = {
+        isMobile: function() {
+            var windowWidth = window.innerWidth;
+            if (windowWidth <= 992) {
+                return true;
+            }
+            return false;
+        }
+    };
+})(jQuery);
+
+(function($) {
+    var utils = $.neveUtilities;
     $.neveNavigation = {
         init: function() {
             this.repositionDropdowns();
             this.handleResponsiveNav();
+            this.handleMobileDropdowns();
         },
         repositionDropdowns: function() {
+            if (utils.isMobile()) {
+                return false;
+            }
             var windowWidth = window.innerWidth;
-            if (windowWidth <= 768) {
+            var dropDowns = $(".sub-menu .sub-menu");
+            if (dropDowns.length === 0) {
                 return false;
             }
-            var dropdowns = $(".sub-menu .sub-menu");
-            if (dropdowns.length === 0) {
-                return false;
-            }
-            $.each(dropdowns, function(key, dropdown) {
-                var submenu = $(dropdown);
+            $.each(dropDowns, function(key, dropDown) {
+                var submenu = $(dropDown);
                 var bounding = submenu.offset().left;
                 if (/webkit.*mobile/i.test(navigator.userAgent)) {
                     bounding -= window.scrollX;
                 }
-                var dropdownWidth = submenu.outerWidth();
-                if (bounding + dropdownWidth >= windowWidth) {
-                    $(dropdown).css({
+                var dropDownWidth = submenu.outerWidth();
+                if (bounding + dropDownWidth >= windowWidth) {
+                    $(dropDown).css({
                         right: "100%",
                         left: "auto"
                     });
@@ -30,7 +44,26 @@
             return false;
         },
         handleResponsiveNav: function() {
-            $(".navbar-toggle").on("click touchstart", function() {});
+            $(".navbar-toggle").on("click", function() {
+                if (!utils.isMobile()) {
+                    return false;
+                }
+                $(".dropdown-open").removeClass("dropdown-open");
+                $("#nv-primary-navigation").toggleClass("responsive-opened");
+                $(this).toggleClass("active");
+                $("html").toggleClass("menu-opened");
+            });
+        },
+        handleMobileDropdowns: function() {
+            $(".menu-item-has-children > a:after").on("touchstart", function(e) {
+                if (!utils.isMobile()) {
+                    return false;
+                }
+                if (!$(this).parent().hasClass("dropdown-open") === true) {
+                    e.preventDefault();
+                    $(this).parent().toggleClass("dropdown-open");
+                }
+            });
         }
     };
 })(jQuery);
@@ -39,5 +72,7 @@ var neveScripts = function($) {
     $.neveNavigation.init();
 };
 
-neveScripts(jQuery);
+jQuery(document).ready(function() {
+    neveScripts(jQuery);
+});
 //# sourceMappingURL=script.js.map

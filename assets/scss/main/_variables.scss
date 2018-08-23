@@ -19,9 +19,11 @@ $link_color: #1a9ac4;
 $link_hover_color: #0366d6;
 $navbar_background_color: #fff;
 
-$transition_default: .1s ease;
-$muted-border: 1px solid #f0f0f0;
+$transition_default: all .1s ease;
+$transition_med: all .3s ease;
+$transition_long: all .6s ease;
 
+$muted-border: 1px solid #f0f0f0;
 
 $tablet-sm: "576px";
 $tablet: "768px";

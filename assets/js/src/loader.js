@@ -6,4 +6,7 @@ var neveScripts = function ( $ ) {
 	$.neveNavigation.init();
 };
 
-neveScripts( jQuery );
+jQuery(document).ready( function() {
+	neveScripts( jQuery );
+});
+

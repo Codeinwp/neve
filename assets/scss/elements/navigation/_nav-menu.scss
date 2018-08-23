@@ -1,5 +1,10 @@
+.menu-opened {
+  overflow: hidden;
+}
+
 .nv-navbar {
   background-color: $navbar_background_color;
+  border-bottom: $muted-border;
 }
 
 .nv-nav-header {
@@ -9,7 +14,13 @@
 
 #nv-primary-navigation {
   max-height: 0;
-  overflow: scroll;
+  overflow-y: auto;
+  transition: $transition_long;
+  a {
+    width: 100%;
+    display: block;
+    padding: $spacing-xs 0;
+  }
 }
 
 .site-logo, .navbar-toggle-wrapper {
@@ -21,22 +32,44 @@
   display: flex;
 }
 
+#nv-primary-navigation.responsive-opened {
+  max-height: 2000px;
+}
+
+.menu-item-has-children > a:after {
+  @include caret(-1px);
+  transform: rotate(135deg);
+}
+
+.sub-menu {
+  max-height: 0;
+  overflow: hidden;
+  padding-left: 20px;
+  transition: $transition_med;
+}
+
+.dropdown-open > .sub-menu{
+  max-height: 2000px;
+}
+
+// Responsive first :) Please know SCSS.
 @mixin nav-menu--laptop() {
   .nv-navbar {
     padding: $spacing-sm 0;
-    border-bottom: $muted-border;
   }
 
   .nv-nav-wrap {
     flex-direction: row;
     align-items: center;
+    display: flex;
   }
   .nv-nav-header {
-    display: inherit;
+    display: block;
     padding: 0;
   }
 
   #nv-primary-navigation {
+    margin-left: auto;
     max-height: inherit;
     overflow: inherit;
     @include horizontal-list($spacing-sm);
@@ -54,11 +87,12 @@
   }
 
   .sub-menu {
+    max-height: 100%;
+    overflow: visible;
     z-index: 10;
     visibility: hidden;
     opacity: 0;
     transition: $transition_default;
-    background-color: $navbar_background_color;
     position: absolute;
     border-top: 3px solid $link_color;
     .sub-menu {
@@ -67,6 +101,7 @@
       top: -3px;
     }
     li {
+      background-color: $navbar_background_color;
       border: $muted-border;
       border-top: none;
       a {

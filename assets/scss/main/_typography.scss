@@ -1,6 +1,8 @@
 html {
   font-size: 14px;
   overflow-x: hidden;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -8,6 +10,7 @@ body {
   font-size: $font-size-base;
   line-height: 1.6;
   overflow-x: hidden;
+  direction: ltr;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -39,4 +42,8 @@ a {
   &:hover {
     color: $link_hover_color;
   }
+}
+
+.screen-reader-text {
+  display: none;
 }

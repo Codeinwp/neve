@@ -32,8 +32,11 @@ class Footer extends Base_View {
 	 * Render the footer sidebars.
 	 */
 	private function render_footer_sidebars() {
-		$sidebars = $this->get_footer_sidebars();
+		if( ! $this->footer_has_widgets() ) {
+			return;
+		}
 
+		$sidebars = $this->get_footer_sidebars();
 		echo '<div class="row nv-footer-widgets">';
 		foreach ( $sidebars as $sidebar ) {
 			echo '<div class="' . esc_attr( $this->the_sidebar_class() ) . '">';
@@ -135,4 +138,26 @@ class Footer extends Base_View {
 
 		return $class;
 	}
+
+	/**
+	 * Utility to check if any of the footer sidebars have widgets.
+	 *
+	 * @return bool
+	 */
+	private function footer_has_widgets() {
+		$sidebars = $this->get_footer_sidebars();
+		if ( empty( $sidebars ) ) {
+			return false;
+		}
+
+		foreach ( $sidebars as $footer_sidebar ) {
+			$has_widgets = is_active_sidebar( $footer_sidebar );
+			if ( $has_widgets ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
 }

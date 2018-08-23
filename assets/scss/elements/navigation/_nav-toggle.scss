@@ -1,11 +1,11 @@
 @mixin nav-toggle--laptop() {
-  .navbar-toggle {
+  .navbar-toggle-wrapper {
     display: none;
   }
 }
 
 .icon-bar {
-  transition: 250ms;
+  transition: $transition_default;
   position: relative;
   display: block;
   background: $theme_color;
@@ -20,4 +20,18 @@
 .navbar-toggle {
   border: none;
   background: none;
+}
+
+.navbar-toggle.active {
+  .icon-bar:nth-child(1) {
+    transform: rotate(45deg);
+    top: 5px;
+  }
+  .icon-bar:nth-child(2) {
+    opacity: 0;
+  }
+  .icon-bar:nth-child(3) {
+    transform: rotate(-45deg);
+    bottom: 5px;
+  }
 }

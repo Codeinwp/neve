@@ -72,7 +72,8 @@ html {
 }
 
 *, *:before, *:after {
-  box-sizing: inherit;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
 }
 
 img,
@@ -321,13 +322,16 @@ th {
 html {
   font-size: 14px;
   overflow-x: hidden;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
-  font-family: "Op­tima", sans-serif;
+  font-family: "Op┬¡tima", sans-serif;
   font-size: 1rem;
   line-height: 1.6;
   overflow-x: hidden;
+  direction: ltr;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -366,6 +370,10 @@ a:hover {
   color: #0366d6;
 }
 
+.screen-reader-text {
+  display: none;
+}
+
 .site-logo {
   max-width: 200px;
 }
@@ -375,7 +383,7 @@ a:hover {
 }
 
 .icon-bar {
-  transition: 250ms;
+  transition: all 0.1s ease;
   position: relative;
   display: block;
   background: #1a9ac4;
@@ -392,8 +400,25 @@ a:hover {
   background: none;
 }
 
+.navbar-toggle.active .icon-bar:nth-child(1) {
+  transform: rotate(45deg);
+  top: 5px;
+}
+.navbar-toggle.active .icon-bar:nth-child(2) {
+  opacity: 0;
+}
+.navbar-toggle.active .icon-bar:nth-child(3) {
+  transform: rotate(-45deg);
+  bottom: 5px;
+}
+
+.menu-opened {
+  overflow: hidden;
+}
+
 .nv-navbar {
   background-color: #fff;
+  border-bottom: 1px solid #f0f0f0;
 }
 
 .nv-nav-header {
@@ -403,7 +428,13 @@ a:hover {
 
 #nv-primary-navigation {
   max-height: 0;
-  overflow: scroll;
+  overflow-y: auto;
+  transition: all 0.6s ease;
+}
+#nv-primary-navigation a {
+  width: 100%;
+  display: block;
+  padding: 8px 0;
 }
 
 .site-logo, .navbar-toggle-wrapper {
@@ -413,6 +444,36 @@ a:hover {
 .navbar-toggle-wrapper {
   justify-content: flex-end;
   display: flex;
+}
+
+#nv-primary-navigation.responsive-opened {
+  max-height: 2000px;
+}
+
+.menu-item-has-children > a:after {
+  content: " ";
+  height: 6px;
+  width: 6px;
+  margin-left: 5px;
+  position: relative;
+  display: inline-block;
+  border: 2px solid;
+  border-radius: 1px;
+  border-left: 0;
+  border-bottom: 0;
+  top: -1px;
+  transform: rotate(135deg);
+}
+
+.sub-menu {
+  max-height: 0;
+  overflow: hidden;
+  padding-left: 20px;
+  transition: all 0.3s ease;
+}
+
+.dropdown-open > .sub-menu {
+  max-height: 2000px;
 }
 
 footer {
@@ -1004,26 +1065,27 @@ footer {
     margin-left: 91.6666666667%;
   }
 
-  .navbar-toggle {
+  .navbar-toggle-wrapper {
     display: none;
   }
 
   .nv-navbar {
     padding: 16px 0;
-    border-bottom: 1px solid #f0f0f0;
   }
 
   .nv-nav-wrap {
     flex-direction: row;
     align-items: center;
+    display: flex;
   }
 
   .nv-nav-header {
-    display: inherit;
+    display: block;
     padding: 0;
   }
 
   #nv-primary-navigation {
+    margin-left: auto;
     max-height: inherit;
     overflow: inherit;
     display: flex;
@@ -1048,11 +1110,12 @@ footer {
   }
 
   .sub-menu {
+    max-height: 100%;
+    overflow: visible;
     z-index: 10;
     visibility: hidden;
     opacity: 0;
-    transition: 0.1s ease;
-    background-color: #fff;
+    transition: all 0.1s ease;
     position: absolute;
     border-top: 3px solid #1a9ac4;
   }
@@ -1062,6 +1125,7 @@ footer {
     top: -3px;
   }
   .sub-menu li {
+    background-color: #fff;
     border: 1px solid #f0f0f0;
     border-top: none;
   }
@@ -1086,7 +1150,7 @@ footer {
     top: -1px;
     border-color: #1a9ac4;
     transform: rotate(135deg);
-    transition: 0.1s ease;
+    transition: all 0.1s ease;
   }
   .sub-menu .menu-item-has-children:hover > a:after {
     border-color: #0366d6;
@@ -1113,7 +1177,7 @@ footer {
     top: -2px;
     border-color: #1a9ac4;
     transform: rotate(135deg);
-    transition: 0.1s ease;
+    transition: all 0.1s ease;
   }
   #nv-primary-navigation > .menu-item-has-children:hover > a:after {
     transform: rotate(-45deg);

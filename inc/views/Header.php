@@ -15,9 +15,12 @@ class Header {
 	 */
 	public function init() {
 		add_action( 'neve_do_header', array( $this, 'navigation' ) );
-		add_filter( 'wp_nav_menu_args', array( $this, 'modify_primary_menu' ) );
+//		add_filter( 'wp_nav_menu_args', array( $this, 'modify_primary_menu' ) );
 	}
 
+	public function xxx($nm) {
+		var_dump( $nm );
+	}
 	/**
 	 * Render navigation
 	 */
