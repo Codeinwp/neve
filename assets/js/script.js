@@ -55,14 +55,12 @@
             });
         },
         handleMobileDropdowns: function() {
-            $(".menu-item-has-children > a:after").on("touchstart", function(e) {
+            $(".caret-wrap").on("click touchstart", function() {
                 if (!utils.isMobile()) {
                     return false;
                 }
-                if (!$(this).parent().hasClass("dropdown-open") === true) {
-                    e.preventDefault();
-                    $(this).parent().toggleClass("dropdown-open");
-                }
+                $(this).parent().toggleClass("dropdown-open");
+                return false;
             });
         }
     };

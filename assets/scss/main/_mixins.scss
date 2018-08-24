@@ -2,23 +2,22 @@
   display: flex;
   flex-wrap: wrap;
   > li:not(:last-child) {
-    margin-right: $margin;
+    padding-right: $margin;
   }
   >li:not(:first-child) {
-    margin-left: $margin;
+    padding-left: $margin;
   }
 }
 
-@mixin caret($top) {
+@mixin caret() {
   content: " ";
   height: 6px;
   width: 6px;
-  margin-left: 5px;
   position: relative;
   display: inline-block;
   border: 2px solid;
   border-radius: 1px;
   border-left: 0;
   border-bottom: 0;
-  top: $top;
+  left: 1px;
 }

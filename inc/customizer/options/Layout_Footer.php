@@ -11,6 +11,7 @@ namespace Neve\Customizer\Options;
 
 use Neve\Customizer\Base_Customizer;
 use Neve\Customizer\Types\Control;
+use Neve\Customizer\Types\Partial;
 use Neve\Customizer\Types\Section;
 use Neve\Views\Footer;
 
@@ -30,6 +31,7 @@ class Layout_Footer extends Base_Customizer {
 		$this->control_footer_widget_areas();
 		$this->control_footer_content_type();
 		$this->control_footer_text();
+		$this->partial_refresh();
 	}
 
 	/**
@@ -144,13 +146,7 @@ class Layout_Footer extends Base_Customizer {
 						),
 					),
 				),
-				'Neve\Customizer\Controls\Reactive_Control',
-				array(
-					'selector'        => '.nv-footer-content',
-					'settings'        => array( 'neve_footer_content_type', 'neve_footer_text' ),
-					'render_callback' => array( $this, 'footer_content_callback' ),
-					'container_inclusive' => true,
-				)
+				'Neve\Customizer\Controls\Reactive_Control'
 			)
 		);
 	}
@@ -202,4 +198,20 @@ class Layout_Footer extends Base_Customizer {
 
 		return esc_html( $value );
 	}
+
+	/**
+	 * Partial refresh
+	 */
+	private function partial_refresh() {
+		$this->add_partial( new Partial(
+			'neve_footer_content_partial',
+			array(
+				'selector'            => '.nv-footer-content',
+				'settings'            => array( 'neve_footer_content_type', 'neve_footer_text' ),
+				'render_callback'     => array( $this, 'footer_content_callback' ),
+				'container_inclusive' => true,
+			)
+		) );
+	}
+
 }

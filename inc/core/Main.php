@@ -44,7 +44,7 @@ class Main {
 				'Customizer\Loader',
 				'Views\Typography',
 				'Views\Header',
-				'Views\Footer'
+				'Views\Footer',
 			)
 		);
 	}

@@ -41,7 +41,8 @@ class Front_End {
 		$logo_settings = array(
 			'flex-width'  => true,
 			'flex-height' => true,
-			'height'      => 100,
+			'height'      => 50,
+			'width'      => 200,
 		);
 
 		$custom_background_settings = array(
@@ -61,7 +62,6 @@ class Front_End {
 			array(
 				'primary'      => esc_html__( 'Primary Menu', 'neve' ),
 				'footer'       => esc_html__( 'Footer Menu', 'neve' ),
-				'top-bar-menu' => esc_html__( 'Top Bar Menu', 'neve' ),
 			)
 		);
 

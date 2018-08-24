@@ -31,6 +31,9 @@
 			} );
 			return false;
 		},
+		/**
+		 * Handle the responsive navigation toggle.
+		 */
 		'handleResponsiveNav': function () {
 			$( '.navbar-toggle' ).on( 'click', function () {
 				if( ! utils.isMobile() ) {
@@ -42,15 +45,16 @@
 				$( 'html' ).toggleClass( 'menu-opened' );
 			} );
 		},
+		/**
+		 * Handle the mobile dropdowns.
+		 */
 		'handleMobileDropdowns': function () {
-			$( '.menu-item-has-children > a:after' ).on( 'touchstart', function (e) {
+			$( '.caret-wrap' ).on( 'click touchstart', function () {
 				if( ! utils.isMobile() ) {
 					return false;
 				}
-				if( ! $(this).parent().hasClass('dropdown-open') === true ) {
-					e.preventDefault();
-					$(this).parent().toggleClass('dropdown-open');
-				}
+				$(this).parent().toggleClass('dropdown-open');
+				return false;
 			} );
 		},
 	};

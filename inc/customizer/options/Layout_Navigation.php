@@ -11,7 +11,9 @@ namespace Neve\Customizer\Options;
 
 use Neve\Customizer\Base_Customizer;
 use Neve\Customizer\Types\Control;
+use Neve\Customizer\Types\Partial;
 use Neve\Customizer\Types\Section;
+use Neve\Views\Header;
 
 /**
  * Header Options
@@ -27,6 +29,7 @@ class Layout_Navigation extends Base_Customizer {
 		$this->section_navigation();
 		$this->control_navigation_layout();
 		$this->control_last_menu_item();
+		$this->partial_refresh();
 	}
 
 	/**
@@ -148,5 +151,22 @@ class Layout_Navigation extends Base_Customizer {
 				'url' => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqBAMAAACsf7WzAAAAD1BMVEX////V1dXF7v8Ahbo+yP+vNfjRAAAAWUlEQVR42u3TsQ2AMAxFQRAswAaIFViB/WeKlI4KgUJMwl3j7lXfA3+xXVvfas3HmZaWVtw/1mrRjmnPnl6tDlsAEcblFq2PtuhLyS1oxbWgjpIL1dICgEYlsKfbvyzuWeMAAAAASUVORK5CYII=',
 			),
 		);
+	}
+
+	private function partial_refresh() {
+		$this->add_partial( new Partial(
+			'neve_header_layout_partial',
+			array(
+				'selector'            => '.nv-navbar',
+				'settings'            => array( 'neve_navigation_layout', 'neve_last_menu_item' ),
+				'render_callback'     => array( $this, 'nav_content_callback' ),
+				'container_inclusive' => true,
+			)
+		) );
+	}
+
+	public function nav_content_callback() {
+		$nav_view = new Header();
+		$nav_view->render_navigation();
 	}
 }

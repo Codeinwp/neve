@@ -18,7 +18,7 @@ class Partial {
 	 *
 	 * @var string the control ID.
 	 */
-	public $control_id;
+	public $id;
 
 	/**
 	 * Args for the partial.
@@ -33,8 +33,8 @@ class Partial {
 	 * @param string $control_id the control id.
 	 * @param array  $args       the partial args.
 	 */
-	public function __construct( $control_id, $args ) {
-		$this->control_id   = $control_id;
+	public function __construct( $id, $args ) {
+		$this->id   = $id;
 		$this->args = $args;
 	}
 }

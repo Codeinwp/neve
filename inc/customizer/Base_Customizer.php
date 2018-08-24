@@ -161,7 +161,7 @@ abstract class Base_Customizer {
 			} else {
 				$this->wpc->add_control( $control->id, $control->control_args );
 			}
-			if ( $control->partial !== null ) {
+			if ( isset( $control->partial ) ) {
 				$this->add_partial( new Partial( $control->id, $control->partial ) );
 			}
 		}
@@ -183,6 +183,9 @@ abstract class Base_Customizer {
 	private function register_partials() {
 		$partials = $this->partials_to_register;
 		foreach ( $partials as $index => $partial ) {
+			if( empty( $partial ) ) {
+				continue;
+			}
 			$this->wpc->selective_refresh->add_partial( $partial->id, $partial->args );
 		}
 	}
@@ -235,6 +238,9 @@ abstract class Base_Customizer {
 	 * @param Partial $partial partial to add.
 	 */
 	public function add_partial( Partial $partial ) {
+		if( empty ( $partial->args ) ) {
+			return;
+		}
 		array_push( $this->partials_to_register, $partial );
 	}
 

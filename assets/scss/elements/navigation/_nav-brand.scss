@@ -1,7 +1,23 @@
-.site-logo{
-  max-width: 200px;
+.nv-nav-header {
+  display: flex;
+}
+
+.site-logo {
+  width: 200px;
   img {
-    max-height: 50px;
+    max-height: 60px;
     float: left;
+  }
+  p {
+    font-size: $h5-font-size;
+    text-align: center;
+  }
+  small {
+    width: 100%;
+    text-align: center;
+    display: block;
+  }
+  a {
+    display: block;
   }
 }

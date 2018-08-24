@@ -6,29 +6,28 @@
  */
 
 namespace Neve\Views;
+
 /**
- * Class Hestia_Header_Manager
+ * Class Header
+ * @package Neve\Views
  */
 class Header {
 	/**
 	 * Add hooks for the front end.
 	 */
 	public function init() {
-		add_action( 'neve_do_header', array( $this, 'navigation' ) );
-//		add_filter( 'wp_nav_menu_args', array( $this, 'modify_primary_menu' ) );
+		add_action( 'neve_do_header', array( $this, 'render_navigation' ) );
+		add_filter( 'wp_nav_menu_items', array( $this, 'add_last_menu_item' ), 10, 2 );
 	}
 
-	public function xxx($nm) {
-		var_dump( $nm );
-	}
 	/**
 	 * Render navigation
 	 */
-	public function navigation() { ?>
+	public function render_navigation() { ?>
 		<nav class="nv-navbar">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-12 nv-nav-wrap">
+					<div class="col-md-12 nv-nav-wrap <?php echo esc_attr( $this->get_navbar_class() ) ?>">
 						<div class="nv-nav-header">
 							<?php
 							$this->render_navbar_header();
@@ -45,6 +44,54 @@ class Header {
 		<?php
 	}
 
+	public function add_last_menu_item( $items, $args ) {
+		if ( ! $args->theme_location === 'primary' ) {
+			return $items;
+		}
+
+		$additional_item = get_theme_mod( 'neve_last_menu_item', 'none' );
+		if ( $additional_item === 'none' ) {
+			return $items;
+		}
+
+		if ( $additional_item === 'search' ) {
+			$items .= '<li><a><span class="dashicons dashicons-search"></span></a>';
+			add_filter( 'get_search_form', array( $this, 'filter_search_form' ) );
+			$items .= '<div class="nv-nav-search">';
+			$items .= get_search_form( false );
+			$items .= '</div>';
+			remove_filter( 'get_search_form', array( $this, 'filter_search_form' ) );
+			$items .= '</li>';
+		}
+
+		if ( 'cart' === $additional_item ) {
+			if ( ! class_exists( 'WooCommerce' ) ) {
+				return $items;
+			}
+			$items .= '<li><a><span class="dashicons dashicons-cart"></span></a>';
+			if ( ! is_cart() ) {
+				ob_start();
+				echo '<div class="sub-menu">';
+				the_widget( 'WC_Widget_Cart', 'title=' );
+				echo '</div>';
+				$cart = ob_get_contents();
+				ob_end_clean();
+				$items .= $cart;
+			}
+			$items .= '</li>';
+		}
+
+		return $items;
+	}
+
+	private function get_navbar_class() {
+		return 'nav-' . $this->navbar_layout();
+	}
+
+	private function navbar_layout() {
+		return get_theme_mod( 'neve_navigation_layout', 'left' );
+	}
+
 	/**
 	 * Render primary menu markup.
 	 */
@@ -54,6 +101,7 @@ class Header {
 				'theme_location' => 'primary',
 				'menu_id'        => 'nv-primary-navigation',
 				'container'      => 'ul',
+				'walker'         => new Nav_Walker(),
 			)
 		);
 	}
@@ -152,6 +200,7 @@ class Header {
 			$logo = '<img src="' . esc_url( $logo[0] ) . '" alt="' . esc_attr( $alt_attribute ) . '">';
 		} else {
 			$logo = '<p>' . get_bloginfo( 'name' ) . '</p>';
+			$logo .= '<small>' . get_bloginfo( 'description' ) . '</small>';
 		}
 
 		return $logo;
