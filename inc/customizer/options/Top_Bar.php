@@ -12,7 +12,9 @@ namespace Neve\Customizer\Options;
 
 use Neve\Customizer\Base_Customizer;
 use Neve\Customizer\Types\Control;
+use Neve\Customizer\Types\Partial;
 use Neve\Customizer\Types\Section;
+use Neve\Views\Top_Bar as Top_Bar_View;
 
 class Top_Bar extends Base_Customizer {
 	/**
@@ -25,6 +27,7 @@ class Top_Bar extends Base_Customizer {
 		$this->control_top_bar_enable();
 		$this->control_top_bar_layout();
 		$this->control_top_bar_content();
+		$this->partial_refresh();
 	}
 
 	/**
@@ -106,6 +109,7 @@ class Top_Bar extends Base_Customizer {
 				array(
 					'sanitize_callback' => 'wp_kses_post',
 					'default'           => '',
+					'transport'         => $this->selective_refresh,
 				),
 				array(
 					'priority' => 35,
@@ -115,6 +119,21 @@ class Top_Bar extends Base_Customizer {
 				)
 			)
 		);
+	}
+
+	/**
+	 * Partial refresh
+	 */
+	private function partial_refresh() {
+		$this->add_partial( new Partial(
+			'neve_top_bar_partial',
+			array(
+				'selector'            => '.nv-top-bar',
+				'settings'            => array( 'neve_top_bar_layout', 'neve_top_bar_content', 'neve_top_bar_enable' ),
+				'render_callback'     => array( $this, 'top_bar_content_callback' ),
+				'container_inclusive' => true,
+			)
+		) );
 	}
 
 	/**
@@ -133,4 +152,11 @@ class Top_Bar extends Base_Customizer {
 		return esc_html( $value );
 	}
 
+	/**
+	 * Render callback for the top bar content.
+	 */
+	public function top_bar_content_callback() {
+		$top_bar_view = new Top_Bar_View();
+		$top_bar_view->render_top_bar();
+	}
 }

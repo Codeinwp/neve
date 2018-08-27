@@ -37,7 +37,7 @@
 }
 
 .sub-menu {
-  max-height: 0px;
+  max-height: 0;
   overflow: hidden;
   padding-left: 20px;
   transition: $transition_med;
@@ -60,7 +60,7 @@
   @include caret();
   transform: rotate(135deg);
   color: $link_color;
-  top: -4px;
+  top: -6px;
   transition: $transition_med;
   .dropdown-open > .caret-wrap > & {
     color: #fff;
@@ -122,6 +122,7 @@
     }
 
     .sub-menu {
+      @include soft-box-shadow();
       max-height: inherit;
       padding: 0;
       top: 100%;
@@ -156,8 +157,7 @@
     }
 
     .menu-item-has-children {
-      &:hover
-      > .sub-menu {
+      &:hover > .sub-menu {
         display: block;
         visibility: visible;
         opacity: 1;
@@ -175,7 +175,6 @@
     position: relative;
     top: 0;
     display: inline;
-    padding-right: 0;
     padding-right: 0;
   }
   .sub-menu {

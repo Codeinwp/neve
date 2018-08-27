@@ -2,10 +2,7 @@
     $.neveUtilities = {
         isMobile: function() {
             var windowWidth = window.innerWidth;
-            if (windowWidth <= 992) {
-                return true;
-            }
-            return false;
+            return windowWidth <= 992;
         }
     };
 })(jQuery);
@@ -17,6 +14,7 @@
             this.repositionDropdowns();
             this.handleResponsiveNav();
             this.handleMobileDropdowns();
+            this.handleSearch();
         },
         repositionDropdowns: function() {
             if (utils.isMobile()) {
@@ -45,9 +43,6 @@
         },
         handleResponsiveNav: function() {
             $(".navbar-toggle").on("click", function() {
-                if (!utils.isMobile()) {
-                    return false;
-                }
                 $(".dropdown-open").removeClass("dropdown-open");
                 $("#nv-primary-navigation").toggleClass("responsive-opened");
                 $(this).toggleClass("active");
@@ -62,6 +57,38 @@
                 $(this).parent().toggleClass("dropdown-open");
                 return false;
             });
+        },
+        handleSearch: function() {
+            var self = this;
+            $(".nv-nav-search").on("click", function(e) {
+                e.stopPropagation();
+            });
+            $(".menu-item-nav-search").on("click", function() {
+                if (utils.isMobile()) {
+                    return false;
+                }
+                $(this).toggleClass("active");
+                self.createNavOverlay();
+                $(".nv-nav-search .search-field").focus();
+                return false;
+            });
+        },
+        createNavOverlay: function() {
+            if (utils.isMobile()) {
+                return false;
+            }
+            var navClickaway = $(".nav-clickaway-overlay");
+            if (navClickaway.length > 0) {
+                return false;
+            }
+            navClickaway = document.createElement("div");
+            navClickaway.setAttribute("class", "nav-clickaway-overlay");
+            $("#nv-primary-navigation").after(navClickaway);
+            $(navClickaway).on("touchstart click", function() {
+                this.remove();
+                $("#nv-primary-navigation li").removeClass("active");
+            });
+            return false;
         }
     };
 })(jQuery);
@@ -72,5 +99,14 @@ var neveScripts = function($) {
 
 jQuery(document).ready(function() {
     neveScripts(jQuery);
+});
+
+var resizeTimeout;
+
+jQuery(window).on("resize", function() {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(function() {
+        jQuery.neveNavigation.repositionDropdowns();
+    }, 500);
 });
 //# sourceMappingURL=script.js.map

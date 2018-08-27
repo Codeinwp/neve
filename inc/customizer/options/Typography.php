@@ -94,6 +94,7 @@ class Typography extends Base_Customizer {
 			new Control(
 				'neve_body_font_family',
 				array(
+					'transport'         => $this->selective_refresh,
 					'sanitize_callback' => 'sanitize_text_field',
 				),
 				array(
@@ -164,6 +165,7 @@ class Typography extends Base_Customizer {
 			new Control(
 				'neve_headings_font_family',
 				array(
+					'transport'         => $this->selective_refresh,
 					'sanitize_callback' => 'sanitize_text_field',
 				),
 				array(

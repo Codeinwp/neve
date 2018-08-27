@@ -32,7 +32,7 @@ class Footer extends Base_View {
 	 * Render the footer sidebars.
 	 */
 	private function render_footer_sidebars() {
-		if( ! $this->footer_has_widgets() ) {
+		if ( ! $this->footer_has_widgets() ) {
 			return;
 		}
 
@@ -74,10 +74,9 @@ class Footer extends Base_View {
 
 	private function render_content_text() {
 		$content = get_theme_mod( 'neve_footer_text', sprintf(
-		/* translators: %1$s is Theme Name (Neve), %2$s is WordPress */
-			esc_html__( '%1$s  | Powered by %2$s', 'neve' ),
-			wp_kses_post( '<a href="https://themeisle.com/themes/neve/" target="_blank" rel="nofollow">Neve</a>' ),
-			wp_kses_post( '<a href="http://wordpress.org" rel="nofollow">WordPress</a>' )
+		/* translators: %1$s is link to ThemeIsle */
+			esc_html__( 'Copyright - Neve by %1$s', 'neve' ),
+			wp_kses_post( '<a href="https://themeisle.com/themes/neve/" target="_blank" rel="nofollow">Themeisle</a>' )
 		) );
 
 		echo wp_kses_post( $content );

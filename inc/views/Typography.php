@@ -92,7 +92,7 @@ class Typography extends Base_View {
 		 */
 		$headings_font = get_theme_mod( 'neve_headings_font_family', apply_filters( 'neve_headings_default', false ) );
 		if ( ! empty( $headings_font ) ) {
-			$this->enqueue_google_font( $headings_font );
+			$this->enqueue_google_font( $headings_font, 'headings' );
 		}
 
 		/**
@@ -100,7 +100,7 @@ class Typography extends Base_View {
 		 */
 		$body_font = get_theme_mod( 'neve_body_font_family', apply_filters( 'neve_body_font_default', false ) );
 		if ( ! empty( $body_font ) ) {
-			$this->enqueue_google_font( $body_font );
+			$this->enqueue_google_font( $body_font, 'body' );
 		}
 	}
 
@@ -111,7 +111,7 @@ class Typography extends Base_View {
 	 *
 	 * @param string $font font string.
 	 */
-	private function enqueue_google_font( $font ) {
+	private function enqueue_google_font( $font, $handle ) {
 
 		// Get list of all Google Fonts
 		$google_fonts = $this->get_google_fonts();
@@ -120,11 +120,6 @@ class Typography extends Base_View {
 		if ( ! $google_fonts || ! in_array( $font, $google_fonts ) ) {
 			return;
 		}
-
-		// Sanitize handle
-		$handle = trim( $font );
-		$handle = strtolower( $handle );
-		$handle = str_replace( ' ', '-', $handle );
 
 		// Sanitize font name
 		$font = trim( $font );

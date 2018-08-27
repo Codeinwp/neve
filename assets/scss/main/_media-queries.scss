@@ -15,6 +15,9 @@
   @include nav-toggle--laptop();
   @include nav-menu--laptop();
   @include nav-menu-centered--laptop();
+  @include nav-search--laptop();
+  @include nav-cart--laptop();
+  @include top-bar--laptop();
 }
 
 @media (min-width: #{$desktop}) {

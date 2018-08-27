@@ -42,7 +42,7 @@ class Front_End {
 			'flex-width'  => true,
 			'flex-height' => true,
 			'height'      => 50,
-			'width'      => 200,
+			'width'       => 200,
 		);
 
 		$custom_background_settings = array(
@@ -60,8 +60,9 @@ class Front_End {
 
 		register_nav_menus(
 			array(
-				'primary'      => esc_html__( 'Primary Menu', 'neve' ),
-				'footer'       => esc_html__( 'Footer Menu', 'neve' ),
+				'primary' => esc_html__( 'Primary Menu', 'neve' ),
+				'footer'  => esc_html__( 'Footer Menu', 'neve' ),
+				'top-bar' => esc_html__( 'Top Bar Menu', 'neve' ),
 			)
 		);
 
@@ -70,11 +71,13 @@ class Front_End {
 //		add_editor_style();
 	}
 
+	/**
+	 * Enqueue scripts.
+	 */
 	public function enqueue_scripts() {
 		wp_enqueue_style( 'neve-style', get_template_directory_uri() . '/style' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
 		wp_enqueue_script( 'neve-script', NEVE_ASSETS_URL . 'js/script' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.js', array( 'jquery' ), NEVE_VERSION, false );
 	}
-
 
 	/**
 	 * Register widgets for the theme.

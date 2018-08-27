@@ -43,8 +43,10 @@ class Main {
 			'neve_filter_main_modules', array(
 				'Customizer\Loader',
 				'Views\Typography',
+				'Views\Top_Bar',
 				'Views\Header',
 				'Views\Footer',
+				'Views\Template_Parts',
 			)
 		);
 	}

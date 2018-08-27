@@ -1,12 +1,11 @@
 html {
   font-size: 14px;
   overflow-x: hidden;
-  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
   -webkit-tap-highlight-color: transparent;
 }
 
 body {
-  font-family: "Op­tima", sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: $font-size-base;
   line-height: 1.6;
   overflow-x: hidden;
@@ -14,7 +13,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Gill Sans", sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 h1 {

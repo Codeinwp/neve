@@ -11,6 +11,13 @@
             });
             $(".hestia-fs-option").on("click", function() {
                 var value = $(this).data("option");
+                var source = $(this).data("source");
+                var controlId = $(this).data("control");
+                wp.customize.previewer.send("font-selection", {
+                    value: value,
+                    source: source,
+                    controlId: controlId
+                });
                 var mainInput = $(".hestia-ss-wrap.active input.hestia-fs-main-input");
                 var collector = $(".hestia-ss-wrap.active .hestia-ss-collector");
                 $(".hestia-ss-wrap.active").removeClass("active");

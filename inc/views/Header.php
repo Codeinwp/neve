@@ -11,7 +11,7 @@ namespace Neve\Views;
  * Class Header
  * @package Neve\Views
  */
-class Header {
+class Header extends Base_View {
 	/**
 	 * Add hooks for the front end.
 	 */
@@ -45,7 +45,7 @@ class Header {
 	}
 
 	public function add_last_menu_item( $items, $args ) {
-		if ( ! $args->theme_location === 'primary' ) {
+		if ( $args->theme_location !== 'primary' ) {
 			return $items;
 		}
 
@@ -54,13 +54,11 @@ class Header {
 			return $items;
 		}
 
-		if ( $additional_item === 'search' ) {
-			$items .= '<li><a><span class="dashicons dashicons-search"></span></a>';
-			add_filter( 'get_search_form', array( $this, 'filter_search_form' ) );
+		if ( 'search' === $additional_item ) {
+			$items .= '<li class="menu-item-nav-search"><a><span class="dashicons dashicons-search"></span></a>';
 			$items .= '<div class="nv-nav-search">';
 			$items .= get_search_form( false );
 			$items .= '</div>';
-			remove_filter( 'get_search_form', array( $this, 'filter_search_form' ) );
 			$items .= '</li>';
 		}
 
@@ -68,10 +66,12 @@ class Header {
 			if ( ! class_exists( 'WooCommerce' ) ) {
 				return $items;
 			}
-			$items .= '<li><a><span class="dashicons dashicons-cart"></span></a>';
+			$items .= '<li class="menu-item-nav-cart"><a><span class="dashicons dashicons-cart"></span>';
+			$items .= '<span class="cart-count">' . WC()->cart->get_cart_contents_count() . '</span>';
+			$items .= '</a>';
 			if ( ! is_cart() ) {
 				ob_start();
-				echo '<div class="sub-menu">';
+				echo '<div class="nv-nav-cart">';
 				the_widget( 'WC_Widget_Cart', 'title=' );
 				echo '</div>';
 				$cart = ob_get_contents();
@@ -133,46 +133,6 @@ class Header {
 	}
 
 	/**
-	 * Render the navigation bar Sidebar.
-	 */
-	private function navbar_sidebar() {
-		$header_alignment = get_theme_mod( 'neve_header_alignment', 'left' );
-
-		if ( $header_alignment !== 'right' ) {
-			return;
-		}
-
-		if ( is_active_sidebar( 'header-sidebar' ) ) {
-			?>
-			<div class="header-sidebar-wrapper">
-				<div class="header-widgets-wrapper">
-					<?php
-					dynamic_sidebar( 'header-sidebar' );
-					?>
-				</div>
-			</div>
-			<?php
-		}
-		if ( ! is_active_sidebar( 'header-sidebar' ) && is_customize_preview() ) {
-			neve_sidebar_placeholder( 'neve-sidebar-header', 'header-sidebar', 'no-variable-width header-sidebar-wrapper' );
-		}
-	}
-
-	/**
-	 * Utility to check if is full screen menu.
-	 *
-	 * @return bool
-	 */
-	protected function is_full_screen_menu() {
-		$has_full_screen_menu = get_theme_mod( 'neve_full_screen_menu', false );
-		if ( (bool) $has_full_screen_menu === true ) {
-			return true;
-		}
-
-		return false;
-	}
-
-	/**
 	 * Do the navbar header.
 	 */
 	private function render_navbar_header() {
@@ -204,71 +164,5 @@ class Header {
 		}
 
 		return $logo;
-	}
-
-	/**
-	 * Filter Primary Navigation to add navigation cart and search.
-	 *
-	 * @param string $markup the markup for the navigation addons.
-	 *
-	 * @access public
-	 * @return mixed
-	 */
-	public function modify_primary_menu( $markup ) {
-		if ( 'primary' !== $markup['theme_location'] ) {
-			return $markup;
-		}
-		$markup['items_wrap'] = $this->display_filtered_navigation();
-
-		return $markup;
-	}
-
-	/**
-	 * Display navigation.
-	 *
-	 * @return string
-	 */
-	private function display_filtered_navigation() {
-		$nav = '<ul id="%1$s" class="%2$s">';
-		$nav .= '%3$s';
-		$nav .= apply_filters( 'neve_after_primary_navigation_addons', $this->search_in_menu() );
-		$nav .= '</ul>';
-
-		return $nav;
-	}
-
-	/**
-	 * Display search form in menu.
-	 */
-	private function search_in_menu() {
-		$search_in_menu = get_theme_mod( 'neve_search_in_menu', false );
-
-		if ( (bool) $search_in_menu === false ) {
-			return '';
-		}
-		add_filter( 'get_search_form', array( $this, 'filter_search_form' ) );
-		$form = get_search_form( false );
-		remove_filter( 'get_search_form', array( $this, 'filter_search_form' ) );
-
-		return $form;
-	}
-
-	/**
-	 * Filter the search form to adapt to our needs.
-	 *
-	 * @param string $form search form markup.
-	 *
-	 * @return string
-	 */
-	public function filter_search_form( $form ) {
-		$output = '';
-		$output .= '<li class="neve-search-in-menu">';
-		$output .= '<div class="neve-nav-search">';
-		$output .= $form;
-		$output .= '</div>';
-		$output .= '<div class="neve-toggle-search"><i class="fa fa-search"></i></div>';
-		$output .= '</li>';
-
-		return $output;
 	}
 }

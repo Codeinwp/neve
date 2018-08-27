@@ -4,7 +4,7 @@
   > li:not(:last-child) {
     padding-right: $margin;
   }
-  >li:not(:first-child) {
+  > li:not(:first-child) {
     padding-left: $margin;
   }
 }
@@ -20,4 +20,27 @@
   border-left: 0;
   border-bottom: 0;
   left: 1px;
+}
+
+@mixin soft-box-shadow() {
+  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+@mixin button() {
+  border-radius: 0;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: $spacing-sm $spacing;
+}
+
+@mixin button-secondary() {
+  border: 1px solid $theme_color;
+  background-color: #fff;
+  color: $theme_color;
+}
+@mixin button-primary() {
+  background-color: $theme_color;
+  color: #fff;
 }

@@ -1,0 +1,35 @@
+@mixin nav-search--laptop() {
+  .nv-nav-search {
+    visibility: hidden;
+    opacity: 0;
+    transition: $transition_med;
+    position: absolute;
+    right: 0;
+    width: auto;
+    background: #fff;
+    padding: $spacing-xs $spacing-sm;
+    border-top: 3px solid $theme_color;
+    cursor: default;
+    z-index: 100;
+    @include soft-box-shadow();
+    .search-submit {
+      display: none;
+    }
+    .menu-item-nav-search.active & {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+  .nav-clickaway-overlay {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    @if ( $debug == 'true' ) {
+      background-color: #333;
+    }
+    z-index: 0;
+    height: 100vh;
+  }
+}

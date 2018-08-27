@@ -24,7 +24,7 @@
 
 <body <?php body_class(); ?>>
 <div class="wrapper">
-	<header class="header <?php echo esc_attr( $header_class ); ?>">
+	<header class="header">
 		<?php
 		neve_before_header_trigger();
 
@@ -36,3 +36,4 @@
 		?>
 	</header>
 	<main id="primary" class="neve-main">
+

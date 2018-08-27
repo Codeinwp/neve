@@ -27,7 +27,8 @@
     display: block;
 }
 
-#sub-accordion-section-neve_typography_body {
+#sub-accordion-section-neve_typography_body,
+#sub-accordion-section-neve_typography_headings {
     min-height: 600px;
 }.customize-control-hestia-dimensions > ul { width: 100%; }
 .customize-control-hestia-dimensions .dimension-wrap { float: left; width: 17%; margin: 0; }

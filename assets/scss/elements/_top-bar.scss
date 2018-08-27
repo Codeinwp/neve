@@ -1,0 +1,31 @@
+#nv-top-bar-menu {
+  @include horizontal-list($spacing-xs);
+  flex: 1;
+}
+
+.nv-top-bar-content {
+  display: flex;
+  flex: 1;
+}
+
+.nv-top-bar {
+  background-color: $navbar_background_color;
+  border-bottom: $muted-border;
+}
+
+.nv-tb-wrap {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  min-height: 40px;
+  > *:first-child {
+    justify-content: flex-start;
+  }
+  > *:last-child {
+    justify-content: flex-end;
+  }
+}
+
+@mixin top-bar--laptop() {
+
+}
