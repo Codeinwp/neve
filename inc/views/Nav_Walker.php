@@ -28,11 +28,16 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	 * @param int      $id     id.
 	 */
 	public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
-		parent::start_el( $output, $item, $depth, $args, $id );
-		$item_classes = $item->classes;
-		if ( in_array( 'menu-item-has-children', $item_classes ) ) {
-			$output .= '<div class="caret-wrap"><span class="caret"></span></div>';
+		if ( ! is_object( $args ) ) {
+			return;
 		}
 
+		parent::start_el( $output, $item, $depth, $args, $id );
+		if ( ! isset( $item->classes ) || ! is_array( $item->classes ) ) {
+			return;
+		}
+		if ( in_array( 'menu-item-has-children', $item->classes ) ) {
+			$output .= '<div class="caret-wrap"><span class="caret"></span></div>';
+		}
 	}
 }

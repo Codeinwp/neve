@@ -96,6 +96,7 @@ class Typography extends Base_Customizer {
 				array(
 					'transport'         => $this->selective_refresh,
 					'sanitize_callback' => 'sanitize_text_field',
+					'default'           => 'Open Sans',
 				),
 				array(
 					'label'    => esc_html__( 'Font Family', 'neve' ),
@@ -167,6 +168,7 @@ class Typography extends Base_Customizer {
 				array(
 					'transport'         => $this->selective_refresh,
 					'sanitize_callback' => 'sanitize_text_field',
+					'default'           => 'Open Sans',
 				),
 				array(
 					'label'    => esc_html__( 'Font Family', 'neve' ),

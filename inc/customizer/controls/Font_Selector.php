@@ -21,6 +21,13 @@ class Font_Selector extends \WP_Customize_Control {
 	public $type = 'selector-font';
 
 	/**
+	 * Default Value for the control.
+	 *
+	 * @var string
+	 */
+	private $default = 'Open Sans';
+
+	/**
 	 * Render the control's content.
 	 * Allows the content to be overriden without having to rewrite the wrapper in $this->render().
 	 *
@@ -53,7 +60,7 @@ class Font_Selector extends \WP_Customize_Control {
 						<span class="hestia-fs-option"
 								data-source="<?php echo 'system'; ?>"
 								data-control="<?php echo esc_attr( $this->id ); ?>"
-								data-option="<?php esc_html_e( 'Default', 'neve' ); ?>"><?php esc_html_e( 'Default', 'neve' ); ?></span>
+								data-option="<?php echo esc_attr( $this->default ); ?>"><?php esc_html_e( 'Default', 'neve' ); echo ' ('. esc_html( $this->default ) .')' ?></span>
 					<?php
 					$this->render_dropdown_options_group( $std_fonts, esc_html__( 'Standard Fonts', 'neve' ), 'system' );
 					$this->render_dropdown_options_group( $google_fonts, esc_html__( 'Google Fonts', 'neve' ), 'google-fonts' );

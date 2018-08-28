@@ -142,10 +142,9 @@ class Layout_Blog extends Base_Customizer {
 	 */
 	private function control_excerpt() {
 		$this->add_control( new Control(
-				'neve_post_excerpt',
+				'neve_post_excerpt_length',
 				array(
 					'sanitize_callback' => 'neve_sanitize_range_value',
-					'transport'         => $this->selective_refresh,
 					'default'           => 40,
 				),
 				array(
@@ -154,7 +153,7 @@ class Layout_Blog extends Base_Customizer {
 					'type'       => 'range-value',
 					'input_attr' => array(
 						'min'  => 5,
-						'max'  => 100,
+						'max'  => 300,
 						'step' => 5,
 					),
 					'priority'   => 40,

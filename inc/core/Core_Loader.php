@@ -14,7 +14,7 @@ namespace Neve\Core;
  *
  * @package Neve\Core
  */
-class Main {
+class Core_Loader {
 	/**
 	 * Features that will be loaded.
 	 *
@@ -47,6 +47,10 @@ class Main {
 				'Views\Header',
 				'Views\Footer',
 				'Views\Template_Parts',
+				'Views\Page_Header',
+				'Views\Layout_Container',
+				'Views\Post_Meta',
+				'Views\Excerpt',
 			)
 		);
 	}

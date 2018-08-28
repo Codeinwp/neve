@@ -12,6 +12,8 @@ namespace Neve\Customizer\Options;
 
 use Neve\Customizer\Base_Customizer;
 use Neve\Customizer\Types\Panel;
+use Neve\Customizer\Types\Partial;
+use Neve\Views\Header;
 
 /**
  * Main customizer handler.
@@ -24,6 +26,7 @@ class Main extends Base_Customizer {
 		$this->register_types();
 		$this->add_main_panels();
 		$this->change_controls();
+		$this->generic_partials();
 	}
 
 	/**
@@ -43,11 +46,11 @@ class Main extends Base_Customizer {
 	 */
 	private function add_main_panels() {
 		$panels = array(
-			'neve_layout' => array(
+			'neve_layout'     => array(
 				'priority' => 25,
 				'title'    => __( 'Layout', 'neve' ),
 			),
-			'neve_header' => array(
+			'neve_header'     => array(
 				'priority' => 30,
 				'title'    => __( 'Header', 'neve' ),
 			),
@@ -76,7 +79,51 @@ class Main extends Base_Customizer {
 	 * @return void
 	 */
 	public function change_controls() {
-		//Move `Site Identity` section to `Header` panel.
+		// Move `Site Identity` section to `Header` panel.
 		$this->change_customizer_object( 'section', 'title_tagline', 'panel', 'neve_header' );
+
+		// Change the transport for blogdescription, blogname and custom_logo.
+		$this->change_customizer_object( 'setting', 'blogdescription', 'transport', $this->selective_refresh );
+		$this->change_customizer_object( 'setting', 'blogname', 'transport', $this->selective_refresh );
+		$this->change_customizer_object( 'setting', 'custom_logo', 'transport', $this->selective_refresh );
+	}
+
+	private function generic_partials() {
+		// Blog description.
+		$this->add_partial( new Partial(
+			'neve_description_partial',
+			array(
+				'selector'        => '.nv-blog-description > h1',
+				'settings'        => array( 'blogdescription' ),
+				'render_callback' => array( $this, 'blog_description_callback' ),
+			)
+		) );
+
+		// Site logo.
+		$this->add_partial( new Partial(
+			'neve_site_logo_partial',
+			array(
+				'selector'        => '.site-logo > a',
+				'settings'        => array( 'custom_logo', 'blogname' ),
+				'render_callback' => array( $this, 'logo_callback' ),
+			)
+		) );
+
+	}
+
+	/**
+	 * Blog description callback function
+	 */
+	public function blog_description_callback() {
+		bloginfo( 'description' );
+	}
+
+	/**
+	 * Logo callback
+	 */
+	public function logo_callback() {
+		$header = new Header();
+
+		return $header->get_logo();
 	}
 }

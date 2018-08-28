@@ -137,7 +137,7 @@ class Header extends Base_View {
 	 */
 	private function render_navbar_header() {
 		?>
-		<div class="site-logo" itemtype="http://schema.org/Brand">
+		<div class="site-logo">
 			<a class="brand" href="<?php echo esc_url( home_url( '/' ) ); ?>"
 					title="<?php bloginfo( 'name' ); ?>">
 				<?php echo $this->get_logo(); ?></a>
@@ -150,7 +150,7 @@ class Header extends Base_View {
 	 *
 	 * @since Hestia 1.0
 	 */
-	private function get_logo() {
+	public function get_logo() {
 		if ( get_theme_mod( 'custom_logo' ) ) {
 			$logo          = wp_get_attachment_image_src( get_theme_mod( 'custom_logo' ), 'full' );
 			$alt_attribute = get_post_meta( get_theme_mod( 'custom_logo' ), '_wp_attachment_image_alt', true );
@@ -160,7 +160,6 @@ class Header extends Base_View {
 			$logo = '<img src="' . esc_url( $logo[0] ) . '" alt="' . esc_attr( $alt_attribute ) . '">';
 		} else {
 			$logo = '<p>' . get_bloginfo( 'name' ) . '</p>';
-			$logo .= '<small>' . get_bloginfo( 'description' ) . '</small>';
 		}
 
 		return $logo;

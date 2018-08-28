@@ -114,6 +114,10 @@ th {
   margin-left: auto;
 }
 
+.w-100 {
+  width: 100%;
+}
+
 .container-fluid {
   width: 100%;
   padding-right: 15px;
@@ -121,10 +125,18 @@ th {
   margin-right: auto;
   margin-left: auto;
 }
+.container-fluid > div {
+  margin: 0 -15px;
+}
 
 .row {
   display: flex;
   flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.row-no-flex {
   margin-right: -15px;
   margin-left: -15px;
 }
@@ -326,10 +338,12 @@ html {
 
 body {
   font-family: Arial, Helvetica, sans-serif;
+  color: #333;
   font-size: 1rem;
   line-height: 1.6;
   overflow-x: hidden;
   direction: ltr;
+  background-color: #fff;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -395,16 +409,20 @@ a:hover {
 }
 
 .nv-tb-wrap {
+  padding-top: 8px;
+  padding-bottom: 8px;
   display: flex;
   align-items: center;
   flex-direction: row;
   min-height: 40px;
 }
-.nv-tb-wrap > *:first-child {
-  justify-content: flex-start;
-}
-.nv-tb-wrap > *:last-child {
+.nv-tb-wrap.menu-content .nv-top-bar-content, .nv-tb-wrap.content-menu #nv-top-bar-menu {
   justify-content: flex-end;
+  align-items: center;
+}
+.nv-tb-wrap.content-menu .nv-top-bar-content, .nv-tb-wrap.menu-content #nv-top-bar-menu {
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .nv-nav-header {
@@ -416,6 +434,7 @@ a:hover {
   width: 200px;
   align-items: center;
   display: flex;
+  padding: 8px 0;
 }
 .site-logo img {
   max-height: 60px;
@@ -431,7 +450,7 @@ a:hover {
   display: block;
 }
 .site-logo a {
-  display: block;
+  display: inline;
 }
 
 .icon-bar {
@@ -568,6 +587,10 @@ a:hover {
   padding: 3px;
 }
 
+.nv-nav-cart {
+  display: none;
+}
+
 footer {
   background-color: #fff;
   border-top: 1px solid #f0f0f0;
@@ -603,6 +626,19 @@ footer {
   flex: 1;
 }
 
+.archive-container, .single-page-container {
+  padding-top: 48px;
+}
+
+.nv-page-title-wrap.nv-big-title {
+  border-bottom: 1px solid #f0f0f0;
+  background-color: #f7f7f7;
+}
+.nv-page-title-wrap.nv-big-title .nv-page-title {
+  padding: 16px 0;
+  text-align: center;
+}
+
 form input[type="text"], form input[type="password"], form input[type="email"], form input[type="url"], form input[type="date"], form input[type="month"], form input[type="time"], form input[type="datetime"], form input[type="datetime-local"], form input[type="week"], form input[type="number"], form input[type="search"], form input[type="tel"], form input[type="color"], form select, form textarea {
   display: inline-block;
   min-height: 35px;
@@ -614,6 +650,59 @@ form input[type="text"], form input[type="password"], form input[type="email"], 
   border: 1px solid #dddddd;
   border-radius: 3px;
   transition: all 0.3s ease;
+}
+
+.button {
+  border-radius: 0;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 16px 32px;
+  border: none;
+  cursor: pointer;
+}
+.button.button-primary {
+  background-color: #1a9ac4;
+  color: #fff;
+}
+.button.button-secondary {
+  border: 1px solid #1a9ac4;
+  background-color: #fff;
+  color: #1a9ac4;
+}
+
+.nv-meta-list {
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #f0f0f0;
+  margin-bottom: 8px;
+  padding: 8px 0;
+}
+.nv-meta-list > li:not(:last-child) {
+  padding-right: 8px;
+}
+.nv-meta-list > li:not(:first-child) {
+  padding-left: 8px;
+}
+.nv-meta-list li,
+.nv-meta-list li > a,
+.nv-meta-list i {
+  color: #555;
+}
+.nv-meta-list i {
+  margin-right: 2px;
+  font-size: 1.2em;
+  line-height: normal;
+}
+.nv-meta-list li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.article-content-col {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
 }
 
 @media (min-width: 576px) {
@@ -1205,7 +1294,7 @@ form input[type="text"], form input[type="password"], form input[type="email"], 
     padding-right: 12px;
   }
   #nv-primary-navigation > li > .caret-wrap {
-    top: 12px;
+    top: 14px;
     position: absolute;
   }
   #nv-primary-navigation li:hover > a {
@@ -1287,6 +1376,9 @@ form input[type="text"], form input[type="password"], form input[type="email"], 
     top: 4px;
   }
 
+  .nav-center .site-logo {
+    justify-content: center;
+  }
   .nav-center .site-logo a {
     display: flex;
     justify-content: center;
@@ -1334,6 +1426,7 @@ form input[type="text"], form input[type="password"], form input[type="email"], 
   }
 
   .nv-nav-cart {
+    display: block;
     -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -1374,6 +1467,8 @@ form input[type="text"], form input[type="password"], form input[type="email"], 
     font-weight: 600;
     text-transform: uppercase;
     padding: 16px 32px;
+    border: none;
+    cursor: pointer;
     background-color: #1a9ac4;
     color: #fff;
   }
@@ -1382,6 +1477,8 @@ form input[type="text"], form input[type="password"], form input[type="email"], 
     font-weight: 600;
     text-transform: uppercase;
     padding: 16px 32px;
+    border: none;
+    cursor: pointer;
     border: 1px solid #1a9ac4;
     background-color: #fff;
     color: #1a9ac4;

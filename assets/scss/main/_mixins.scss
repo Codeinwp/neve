@@ -33,6 +33,8 @@
   font-weight: 600;
   text-transform: uppercase;
   padding: $spacing-sm $spacing;
+  border: none;
+  cursor: pointer;
 }
 
 @mixin button-secondary() {

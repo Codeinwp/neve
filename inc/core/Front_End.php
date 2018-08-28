@@ -46,7 +46,7 @@ class Front_End {
 		);
 
 		$custom_background_settings = array(
-			'default-color' => apply_filters( 'neve_default_background_color', 'FFFFFF' ),
+			'default-color' => apply_filters( 'neve_default_background_color', 'ffffff' ),
 		);
 
 		add_theme_support( 'title-tag' );

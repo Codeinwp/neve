@@ -8,3 +8,16 @@
 .neve-main {
   flex: 1;
 }
+
+.archive-container, .single-page-container {
+  padding-top: $spacing-lg;
+}
+
+.nv-page-title-wrap.nv-big-title {
+  border-bottom: $muted-border;
+  background-color: #f7f7f7;
+  .nv-page-title {
+    padding: $spacing-sm 0;
+    text-align: center;
+  }
+}

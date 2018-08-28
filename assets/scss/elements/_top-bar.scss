@@ -14,15 +14,22 @@
 }
 
 .nv-tb-wrap {
+  padding-top: $spacing-xs;
+  padding-bottom: $spacing-xs;
   display: flex;
   align-items: center;
   flex-direction: row;
   min-height: 40px;
-  > *:first-child {
-    justify-content: flex-start;
+  &.menu-content .nv-top-bar-content,
+  &.content-menu #nv-top-bar-menu {
+      justify-content: flex-end;
+      align-items: center;
   }
-  > *:last-child {
-    justify-content: flex-end;
+
+  &.content-menu .nv-top-bar-content,
+  &.menu-content #nv-top-bar-menu {
+    justify-content: flex-start;
+    align-items: center;
   }
 }
 

@@ -1,0 +1,28 @@
+.nv-meta-list {
+  @include horizontal-list($spacing-xs);
+  border-bottom: $muted-border;
+  margin-bottom: $spacing-xs;
+  padding: $spacing-xs 0;
+  li,
+  li > a,
+  i {
+    color: #555;
+  }
+  i {
+    margin-right: 2px;
+    font-size: 1.2em;
+    line-height: normal;
+  }
+  li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+}
+.article-content-col {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+}

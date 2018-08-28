@@ -6,12 +6,17 @@
   padding: 3px;
 }
 
+.nv-nav-cart {
+  display: none;
+}
+
 @mixin nav-cart--laptop() {
   .menu-item-nav-cart:hover .nv-nav-cart {
     opacity: 1;
     visibility: visible;
   }
   .nv-nav-cart {
+    display: block;
     @include soft-box-shadow;
     opacity: 0;
     visibility: hidden;

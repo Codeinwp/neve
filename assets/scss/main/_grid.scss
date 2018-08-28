@@ -13,6 +13,10 @@
   margin-left: auto;
 }
 
+.w-100 {
+  width: 100%;
+}
+
 @mixin grid-container--tablet-sm() {
   .container {
     max-width: 540px;
@@ -43,11 +47,19 @@
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+  > div {
+    margin: 0 -15px;
+  }
 }
 
 .row {
   display: flex;
   flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.row-no-flex {
   margin-right: -15px;
   margin-left: -15px;
 }

@@ -50,7 +50,7 @@ function neve_run() {
 
 	$autoloader->register();
 
-	new Neve\Core\Main();
+	new Neve\Core\Core_Loader();
 }
 
 neve_run();

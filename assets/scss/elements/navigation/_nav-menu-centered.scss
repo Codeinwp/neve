@@ -18,11 +18,13 @@
     }
   }
 
-  .nav-center .site-logo a {
-    display: flex;
+  .nav-center .site-logo {
     justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
   }
-
 }

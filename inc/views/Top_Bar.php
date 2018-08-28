@@ -11,6 +11,7 @@ namespace Neve\Views;
  * Class Top_Bar
  */
 class Top_Bar extends Base_View {
+
 	/**
 	 * Add hooks for the front end.
 	 */
@@ -29,7 +30,7 @@ class Top_Bar extends Base_View {
 		<div class="nv-top-bar">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-12 nv-tb-wrap">
+					<div class="col-md-12 nv-tb-wrap <?php echo esc_attr( $this->get_alignment() ); ?>">
 						<?php $this->inner_top_bar(); ?>
 					</div>
 				</div>
@@ -41,11 +42,10 @@ class Top_Bar extends Base_View {
 	/**
 	 * Get the inner top bar content.
 	 *
-	 * @return string
+	 * @return void
 	 */
 	private function inner_top_bar() {
-		$layout = get_theme_mod( 'neve_top_bar_layout', 'content-menu' );
-
+		$layout = $this->get_alignment();
 		if ( $layout === 'content-menu' ) {
 			$this->content();
 			$this->menu();
@@ -57,6 +57,16 @@ class Top_Bar extends Base_View {
 	}
 
 	/**
+	 * Get the top bar alignment option.
+	 *
+	 * @return string
+	 */
+
+	private function get_alignment() {
+		return get_theme_mod( 'neve_top_bar_layout', 'content-menu' );
+	}
+
+	/**
 	 * Render menu part of top bar.
 	 */
 	private function menu() {
@@ -65,7 +75,8 @@ class Top_Bar extends Base_View {
 				'theme_location' => 'top-bar',
 				'menu_id'        => 'nv-top-bar-menu',
 				'container'      => 'ul',
-				'depth'          => 1
+				'depth'          => 1,
+				'fallback_cb'    => '__return_false'
 			)
 		);
 	}
