@@ -44,15 +44,17 @@ class Template_Parts extends Base_View {
 
 	private function render_article_inner_content() {
 		// This can be used for later reordering. Just pass in the array as a theme mod with the default.
-		// get_theme_mod( 'neve_post_layout_ordering', $order )
-		$order = array(
+		$default_order = json_encode( array(
 			'thumbnail',
 			'title',
 			'meta',
 			'excerpt',
 			'read-more',
-		);
+		) );
+		$order         = get_theme_mod( 'neve_post_content_ordering', $default_order );
+		$order         = json_decode( $order );
 
+		// get_theme_mod( 'neve_post_layout_ordering', $order )
 		foreach ( $order as $content_bit ) {
 			switch ( $content_bit ) {
 				case 'thumbnail':
@@ -103,16 +105,16 @@ class Template_Parts extends Base_View {
 	}
 
 	private function meta() {
-		// This can be used for later reordering. Just pass in the array as a theme mod with the default.
-		// get_theme_mod( 'neve_post_meta_ordering', $default_meta_order )
-		$default_meta_order = array(
+		$default_meta_order = json_encode( array(
 			'author',
 			'category',
 			'date',
 			'comments',
-		);
+		) );
 
-		do_action( 'neve_post_meta_archive', $default_meta_order );
+		$meta_order = get_theme_mod( 'neve_post_meta_ordering', $default_meta_order );
+		$meta_order = json_decode( $meta_order );
+		do_action( 'neve_post_meta_archive', $meta_order );
 	}
 
 	private function excerpt() {

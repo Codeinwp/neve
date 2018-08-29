@@ -11,7 +11,7 @@ do_action( 'neve_page_header', 'index' );
 ?>
 	<div class="<?php echo esc_attr( $container_class ); ?> archive-container">
 		<div class="row">
-			<?php do_action( 'neve_blog_sidebar', 'left' ) ?>
+			<?php do_action( 'neve_do_sidebar', 'blog-archive', 'left' ); ?>
 			<div class="nv-index-posts-wrap col">
 				<?php
 				if ( have_posts() ) :
@@ -28,10 +28,7 @@ do_action( 'neve_page_header', 'index' );
 				endif;
 				?>
 			</div>
-			<div class="nv-sidebar-wrap col">
-			<?php get_sidebar(); ?>
-			</div>
-			<?php do_action( 'neve_blog_sidebar', 'right' ) ?>
+			<?php do_action( 'neve_do_sidebar', 'blog-archive', 'right' ); ?>
 		</div>
 	</div>
 <?php

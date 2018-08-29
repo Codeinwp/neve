@@ -10,6 +10,7 @@
 namespace Neve\Customizer\Options;
 
 use Neve\Customizer\Base_Customizer;
+use Neve\Customizer\Controls\Ordering;
 use Neve\Customizer\Types\Control;
 use Neve\Customizer\Types\Section;
 
@@ -29,6 +30,8 @@ class Layout_Blog extends Base_Customizer {
 		$this->control_excerpt();
 		$this->control_pagination_type();
 		$this->control_hide_categories();
+		$this->control_content_order();
+		$this->control_meta_order();
 	}
 
 	/**
@@ -239,5 +242,124 @@ class Layout_Blog extends Base_Customizer {
 		}
 
 		return esc_html( $value );
+	}
+
+
+	private function control_content_order() {
+		$order_default_components = array(
+			'thumbnail',
+			'title',
+			'meta',
+			'excerpt',
+			'read-more',
+		);
+
+		$this->add_control( new Control(
+				'neve_post_content_ordering',
+				array(
+					'sanitize_callback' => array( $this, 'sanitize_post_content_ordering' ),
+					'default'           => json_encode( $order_default_components ),
+				),
+				array(
+					'label'      => esc_html__( 'Post Content Order', 'neve' ),
+					'section'    => 'neve_blog_archive_layout',
+					'type'       => 'ordering',
+					'components' => $order_default_components,
+					'priority'   => 55,
+				),
+				'Neve\Customizer\Controls\Ordering'
+			)
+		);
+	}
+
+	private function control_meta_order() {
+		$order_default_components = array(
+			'author',
+			'category',
+			'date',
+			'comments',
+		);
+
+		$this->add_control( new Control(
+				'neve_post_meta_ordering',
+				array(
+					'sanitize_callback' => array( $this, 'sanitize_meta_ordering' ),
+					'default'           => json_encode( $order_default_components ),
+				),
+				array(
+					'label'           => esc_html__( 'Meta Order', 'neve' ),
+					'section'         => 'neve_blog_archive_layout',
+					'type'            => 'ordering',
+					'components'      => $order_default_components,
+					'priority'        => 60,
+					'active_callback' => array( $this, 'should_show_meta_order' ),
+				),
+				'Neve\Customizer\Controls\Ordering'
+			)
+		);
+	}
+
+	public function sanitize_meta_ordering( $value ) {
+		$allowed = array(
+			'author',
+			'category',
+			'date',
+			'comments',
+		);
+
+		if ( empty ( $value ) ) {
+			return $allowed;
+		}
+
+		$decoded = json_decode( $value );
+
+		foreach ( $decoded as $val ) {
+			if ( ! in_array( $val, $allowed ) ) {
+				return $allowed;
+			}
+		}
+
+		return $value;
+	}
+
+	public function sanitize_post_content_ordering( $value ) {
+		$allowed = array(
+			'thumbnail',
+			'title',
+			'meta',
+			'excerpt',
+			'read-more',
+		);
+
+		if ( empty ( $value ) ) {
+			return $allowed;
+		}
+
+		$decoded = json_decode( $value );
+
+		foreach ( $decoded as $val ) {
+			if ( ! in_array( $val, $allowed ) ) {
+				return $allowed;
+			}
+		}
+
+		return $value;
+	}
+
+	public function should_show_meta_order() {
+		$default       = array(
+			'thumbnail',
+			'title',
+			'meta',
+			'excerpt',
+			'read-more',
+		);
+		$content_order = get_theme_mod( 'neve_post_content_ordering', json_encode( $default ) );
+		$content_order = json_decode( $content_order, true );
+		if ( ! in_array( 'meta', $content_order ) ) {
+			return false;
+		}
+
+		return true;
 	}
 }

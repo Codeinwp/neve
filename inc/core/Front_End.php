@@ -87,7 +87,7 @@ class Front_End {
 	public function register_sidebars() {
 		$sidebars = array(
 			'blog-sidebar'   => esc_html__( 'Sidebar', 'neve' ),
-			'woo-sidebar'    => esc_html__( 'WooCommerce Sidebar', 'neve' ),
+			'shop-sidebar'    => esc_html__( 'Shop Sidebar', 'neve' ),
 			'header-sidebar' => esc_html__( 'Navigation', 'neve' ),
 		);
 

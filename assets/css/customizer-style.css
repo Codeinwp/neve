@@ -133,6 +133,66 @@
 	border-top: 0;
 	display: none;
 	position: absolute;
+}.ti-order-sortable li {
+    text-align: center;
+    background: #fff;
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    opacity: .7;
+}
+
+.ti-order-sortable li.enabled {
+    opacity: 1;
+    border: 1px solid #666;
+}
+
+.ti-order-sortable li:hover {
+    border: 1px solid #ccc;
+}
+
+.ti-order-sortable li p {
+    width: 100%;
+    padding: 7px 10px;
+    margin: 0
+}
+
+.ti-order-sortable li > * {
+    display: inline;
+}
+
+.ti-order-sortable span {
+    position: absolute;
+    z-index: 100;
+    cursor: pointer;
+    padding: 5px 10px;
+    left: 0;
+    transition: .3s ease-in-out;
+}
+
+.ti-order-sortable span.drag {
+    right: 0;
+    left: auto;
+    cursor: move;
+}
+
+.ti-order-sortable li .toggle-display:before {
+    font-family: Dashicons;
+    font-size: 20px;
+    top: 2px;
+    position: relative;
+    content: "\f530";
+}
+
+.ti-order-sortable li .toggle-display:hover {
+    background: #3ec8ff;
+    color: #fff;
+}
+
+.ti-order-sortable li.enabled .toggle-display:before {
+    content: "\f177";
 }.customize-control-radio-image .ui-buttonset {
     text-align: center;
 }
@@ -299,7 +359,7 @@
 	font-weight: 600;
 	color: #555;
 	-moz-appearance: textfield;
-
+	cursor: default;
 }
 
 .customize-control input[type=number].range-slider-value::-webkit-outer-spin-button,

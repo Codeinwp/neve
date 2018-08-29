@@ -241,7 +241,7 @@ class Range extends \WP_Customize_Control {
 				<input type="range" class="range-slider__range" title="{{{data.label}}}" min="{{min}}" max="{{max}}"
 						step="{{step}}" data-query="desktop" data-default="{{default_value}}" value="{{ value }}">
 				<input type="{{input_type}}" class="range-slider-value" title="{{{data.label}}}" min="{{min}}"
-						max="{{max}}" step="{{step}}"
+						max="{{max}}" step="{{step}}" readonly
 						value="<# if( data.sum_type === true && value >= 0 ){ #> +<# } #>{{ value }}">
 				<span class="range-reset-slider"><span class="dashicons dashicons-image-rotate"></span></span>
 			</div>
@@ -273,7 +273,7 @@ class Range extends \WP_Customize_Control {
 				<input type="range" class="range-slider__range" title="{{{data.label}}}" min="{{min}}" max="{{max}}"
 						step="{{step}}" data-query="tablet" data-default="{{default_value}}" value="{{ value }}">
 				<input type="{{input_type}}" class="range-slider-value" title="{{{data.label}}}" min="{{min}}"
-						max="{{max}}" step="{{step}}"
+						max="{{max}}" step="{{step}}" readonly
 						value="<# if( data.sum_type === true && value >= 0 ){ #> +<# } #>{{ value }}">
 				<span class="range-reset-slider"><span class="dashicons dashicons-image-rotate"></span></span>
 			</div>
@@ -302,7 +302,7 @@ class Range extends \WP_Customize_Control {
 				<input type="range" class="range-slider__range" title="{{{data.label}}}" min="{{min}}" max="{{max}}"
 						step="{{step}}" data-query="mobile" data-default="{{default_value}}" value="{{ value }}">
 				<input type="{{input_type}}" class="range-slider-value" title="{{{data.label}}}" min="{{min}}"
-						max="{{max}}" step="{{step}}"
+						max="{{max}}" step="{{step}}" readonly
 						value="<# if( data.sum_type === true && value >= 0 ){ #> +<# } #>{{ value }}">
 				<span class="range-reset-slider"><span class="dashicons dashicons-image-rotate"></span></span>
 			</div>

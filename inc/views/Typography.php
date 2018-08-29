@@ -21,24 +21,6 @@ class Typography extends Base_View {
 	public function init() {
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_google_fonts' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_custom_fonts' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'add_inline_font_styles' ) );
-	}
-
-	public function add_inline_font_styles() {
-		wp_add_inline_style( 'neve-style', $this->fonts_inline_style() );
-	}
-
-	private function fonts_inline_style() {
-		$headings_font = get_theme_mod( 'neve_headings_font_family', apply_filters( 'neve_headings_default', false ) );
-		$body_font     = get_theme_mod( 'neve_body_font_family', apply_filters( 'neve_body_font_default', false ) );
-		$custom_css    = '';
-		if ( ! empty( $headings_font ) ) {
-			$custom_css .= 'h1, h2, h3, h4, h5, h6 {font-family: ' . esc_html( $headings_font ) . ';}';
-		}
-		if ( ! empty( $body_font ) ) {
-			$custom_css .= 'body {font-family: ' . esc_html( $body_font ) . ';}';
-		}
-		return $custom_css;
 	}
 
 	/**

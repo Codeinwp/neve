@@ -2,11 +2,13 @@
 /**
  * Author:          Andrei Baicus <andrei@themeisle.com>
  * Created on:      28/08/2018
- * @package Excerpt.php
+ * @package Neve\Views\Partials
  */
 
-namespace Neve\Views;
+namespace Neve\Views\Partials;
 
+
+use Neve\Views\Base_View;
 
 class Excerpt extends Base_View {
 	/**
@@ -52,20 +54,25 @@ class Excerpt extends Base_View {
 	 * @return string
 	 */
 	private function get_excerpt( $length = 40 ) {
-		$content = '';
 		if ( $length === 300 ) {
-			$content .= get_the_content( '', '&hellip;' );
+			$content = get_the_content( '', '&hellip;' );
 
 			return $content;
 		}
 
 		if ( strpos( get_the_content(), '<!--more-->' ) ) {
-			$content .= apply_filters( 'the_content', get_the_content() );
+			$content = apply_filters( 'the_content', get_the_content() );
 
 			return $content;
 		}
 
-		$content .= wp_trim_words( strip_shortcodes( get_the_content() ), $length );
+		if ( has_excerpt() ) {
+			$content = get_the_excerpt();
+
+			return $content;
+		}
+
+		$content = wp_trim_words( strip_shortcodes( get_the_content() ), $length );
 
 		return $content;
 	}

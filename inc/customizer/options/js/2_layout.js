@@ -10,6 +10,12 @@ var layoutRanges = {
 		'unit': 'px',
 		'styleClass': 'container-width-css'
 	},
+	'neve_sidebar_width': {
+		'selector': '.nv-sidebar-wrap',
+		'cssProp': 'max-width',
+		'unit': '%',
+		'styleClass': 'sidebar-width-css'
+	},
 };
 
 var layoutLivePreview = function ( $ ) {
@@ -48,8 +54,6 @@ var containersLivePreview = function ( $ ) {
 	$.each( containersLayoutMap, function ( controlId, cssSelector ) {
 		wp.customize( controlId, function ( value ) {
 			value.bind( function ( newval ) {
-				console.log( newval );
-				console.log( $( cssSelector ) );
 				if ( newval === 'contained' ) {
 					$( cssSelector ).removeClass( 'container-fluid' ).addClass( 'container' );
 					return false;

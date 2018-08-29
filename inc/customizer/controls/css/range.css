@@ -73,7 +73,7 @@
 	font-weight: 600;
 	color: #555;
 	-moz-appearance: textfield;
-
+	cursor: default;
 }
 
 .customize-control input[type=number].range-slider-value::-webkit-outer-spin-button,

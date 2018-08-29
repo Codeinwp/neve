@@ -12,17 +12,21 @@ get_header();
 do_action( 'neve_page_header', 'single-post' );
 ?>
 	<div class="<?php echo esc_attr( $container_class ); ?> single-post-container">
-		<div class="row-no-flex">
-			<?php
-			if ( have_posts() ) {
-				while ( have_posts() ) {
-					the_post();
-					get_template_part( 'template-parts/content', 'single' );
+		<div class="row">
+			<?php do_action( 'neve_do_sidebar', 'single-post', 'left' ); ?>
+			<div class="nv-single-post-wrap col">
+				<?php
+				if ( have_posts() ) {
+					while ( have_posts() ) {
+						the_post();
+						get_template_part( 'template-parts/content', 'single' );
+					}
+				} else {
+					get_template_part( 'template-parts/content', 'none' );
 				}
-			} else {
-				get_template_part( 'template-parts/content', 'none' );
-			}
-			?>
+				?>
+			</div>
+			<?php do_action( 'neve_do_sidebar', 'single-post', 'right' ); ?>
 		</div>
 	</div>
 <?php

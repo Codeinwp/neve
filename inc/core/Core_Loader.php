@@ -48,9 +48,14 @@ class Core_Loader {
 				'Views\Footer',
 				'Views\Template_Parts',
 				'Views\Page_Header',
-				'Views\Layout_Container',
-				'Views\Post_Meta',
-				'Views\Excerpt',
+
+				'Views\Layouts\Layout_Container',
+				'Views\Layouts\Layout_Sidebar',
+
+				'Views\Partials\Post_Meta',
+				'Views\Partials\Excerpt',
+
+				'Views\Inline\Style_Manager',
 			)
 		);
 	}

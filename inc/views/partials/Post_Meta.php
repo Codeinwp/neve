@@ -7,7 +7,9 @@
  * @package Neve\Views
  */
 
-namespace Neve\Views;
+namespace Neve\Views\Partials;
+
+use Neve\Views\Base_View;
 
 /**
  * Class Post_Meta
@@ -43,7 +45,7 @@ class Post_Meta extends Base_View {
 					$markup .= '</li>';
 					break;
 				case 'date':
-					$markup .= '<li class="meta publish-date"><i class="dashicons dashicons-calendar-alt"></i>';
+					$markup .= '<li class="meta date"><i class="dashicons dashicons-calendar-alt"></i>';
 					$markup .= '<span>' . get_the_date() . '</span>';
 					$markup .= '</li>';
 					break;

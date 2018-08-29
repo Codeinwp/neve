@@ -2,14 +2,16 @@
 /**
  * Author:          Andrei Baicus <andrei@themeisle.com>
  * Created on:      27/08/2018
- * @package Neve\Views
+ * @package Neve\Views\Layouts
  */
 
-namespace Neve\Views;
+namespace Neve\Views\Layouts;
+
+use Neve\Views\Base_View;
 
 /**
  * Class Layout_Container
- * @package Neve\Views
+ * @package Neve\Views\Layouts
  */
 class Layout_Container extends Base_View {
 

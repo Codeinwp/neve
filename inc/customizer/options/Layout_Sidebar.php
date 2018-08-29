@@ -111,7 +111,6 @@ class Layout_Sidebar extends Base_Customizer {
 					$control_id,
 					array(
 						'sanitize_callback' => array( $this, 'sanitize_sidebar_layout' ),
-						'transport'         => $this->selective_refresh,
 						'default'           => 'right',
 					),
 					array(
