@@ -179,55 +179,118 @@ class Typography extends Base_Customizer {
 			)
 		);
 
-		/**
-		 * Headings font size
-		 */
-		$this->add_control(
-			new Control(
-				'neve_headings_font_size', array(
-				'sanitize_callback' => 'neve_sanitize_range_value',
-				'default'           => '16',
-				'transport'         => $this->selective_refresh,
+		$controls = array(
+			'neve_h1' => array(
+				'priority'            => 20,
+				'default_size'        => '2.5',
+				'default_line_height' => 1.6,
+				'heading'             => 'H1',
 			),
-				array(
-					'label'       => esc_html__( 'Font Size', 'neve' ),
-					'section'     => 'neve_typography_headings',
-					'input_attr'  => array(
-						'min'  => 10,
-						'max'  => 30,
-						'step' => 1,
-					),
-					'priority'    => 15,
-					'media_query' => true,
-				),
-				'Neve\Customizer\Controls\Range'
-			)
+			'neve_h2' => array(
+				'priority'            => 30,
+				'default_size'        => '2',
+				'default_line_height' => 1.6,
+				'heading'             => 'H2',
+			),
+			'neve_h3' => array(
+				'priority'            => 40,
+				'default_size'        => '1.75',
+				'default_line_height' => 1.6,
+				'heading'             => 'H3',
+			),
+			'neve_h4' => array(
+				'priority'            => 50,
+				'default_size'        => '1.5',
+				'default_line_height' => 1.6,
+				'heading'             => 'H4',
+			),
+			'neve_h5' => array(
+				'priority'            => 60,
+				'default_size'        => '1.25',
+				'default_line_height' => 1.6,
+				'heading'             => 'H5',
+			),
+			'neve_h6' => array(
+				'priority'            => 70,
+				'default_size'        => '1',
+				'default_line_height' => 1.6,
+				'heading'             => 'H6',
+			),
 		);
 
-		/**
-		 * Headings line height
-		 */
-		$this->add_control(
-			new Control(
-				'neve_headings_line_height', array(
-				'sanitize_callback' => 'neve_sanitize_range_value',
-				'default'           => 1.6,
-				'transport'         => $this->selective_refresh,
-			),
-				array(
-					'label'       => esc_html__( 'Line Height', 'neve' ),
-					'section'     => 'neve_typography_headings',
-					'input_attr'  => array(
-						'min'  => 0.5,
-						'max'  => 4,
-						'step' => 0.1,
-					),
-					'priority'    => 15,
-					'media_query' => true,
+		foreach ( $controls as $control_id => $control ) {
+			/**
+			 * Heading
+			 */
+			$this->add_control(
+				new Control(
+					$control_id . '_ui_heading', array(
+					'sanitize_callback' => 'sanitize_text_field',
+					'transport'         => $this->selective_refresh,
 				),
-				'Neve\Customizer\Controls\Range'
-			)
-		);
+					array(
+						'label'      => $control['heading'],
+						'section'    => 'neve_typography_headings',
+						'priority'   => $control['priority'],
+						'class'      => 'headings-accordion',
+						'accordion' => true,
+						'expanded' => $control_id === 'neve_h1' ? true : false,
+					),
+					'Neve\Customizer\Controls\Heading'
+				)
+			);
+
+
+			/**
+			 * Font size
+			 */
+			$this->add_control(
+				new Control(
+					$control_id . '_font_size', array(
+					'sanitize_callback' => 'neve_sanitize_range_value',
+					'default'           => $control['default_size'],
+					'transport'         => $this->selective_refresh,
+				),
+					array(
+						'label'       => esc_html__( 'Font Size', 'neve' ) . '(rem)',
+						'section'     => 'neve_typography_headings',
+						'input_attr'  => array(
+							'min'  => 1,
+							'max'  => 10,
+							'step' => 0.1,
+						),
+						'priority'    => $control['priority'] + 1,
+						'media_query' => true,
+					),
+					'Neve\Customizer\Controls\Range'
+				)
+			);
+
+			/**
+			 * Line height
+			 */
+			$this->add_control(
+				new Control(
+					$control_id . '_line_height', array(
+					'sanitize_callback' => 'neve_sanitize_range_value',
+					'default'           => $control['default_line_height'],
+					'transport'         => $this->selective_refresh,
+				),
+					array(
+						'label'       => esc_html__( 'Line Height', 'neve' ),
+						'section'     => 'neve_typography_headings',
+						'input_attr'  => array(
+							'min'  => 0.5,
+							'max'  => 4,
+							'step' => 0.1,
+						),
+						'priority'    => $control['priority'] + 2,
+						'media_query' => true,
+					),
+					'Neve\Customizer\Controls\Range'
+				)
+			);
+		}
 	}
 }
 

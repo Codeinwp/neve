@@ -20,6 +20,9 @@ class Typography extends Base_Inline {
 		$this->add_headings_styles();
 	}
 
+	/**
+	 * Add inline style for font families.
+	 */
 	private function fonts_family() {
 		$headings_font = get_theme_mod( 'neve_headings_font_family', 'Open Sans' );
 		$body_font     = get_theme_mod( 'neve_body_font_family', 'Open Sans' );
@@ -41,47 +44,58 @@ class Typography extends Base_Inline {
 			'body' );
 	}
 
+	/**
+	 * Body styles.
+	 */
 	private function add_body_style() {
-		$font_size     = get_theme_mod( 'neve_body_font_size' );
-		$line_height   = get_theme_mod( 'neve_body_line_height' );
-		$font_size     = json_decode( $font_size, true );
-		$line_height   = json_decode( $line_height, true );
-		$media_queries = array( 'mobile', 'tablet', 'desktop' );
-		foreach ( $media_queries as $media_query ) {
-			$settings = array(
-				array(
-					'css_prop' => 'font-size',
-					'value'    => $font_size[$media_query],
-					'suffix'   => 'px',
-				),
-				array(
-					'css_prop' => 'line-height',
-					'value'    => $line_height[$media_query],
-				),
-			);
-			$this->add_style( $settings, 'body, .nv-meta-list i', $media_query );
-		}
+		$font_size   = get_theme_mod( 'neve_body_font_size' );
+		$line_height = get_theme_mod( 'neve_body_line_height' );
+		$font_size   = json_decode( $font_size, true );
+		$line_height = json_decode( $line_height, true );
+		$settings    = array(
+			array(
+				'css_prop' => 'font-size',
+				'value'    => $font_size,
+				'suffix'   => 'px',
+			),
+			array(
+				'css_prop' => 'line-height',
+				'value'    => $line_height,
+			),
+		);
+		$this->add_responsive_style( $settings, 'body' );
 	}
 
+	/**
+	 * Headings font style.
+	 */
 	private function add_headings_styles() {
-		$font_size     = get_theme_mod( 'neve_headings_font_size' );
-		$line_height   = get_theme_mod( 'neve_headings_line_height' );
-		$font_size     = json_decode( $font_size, true );
-		$line_height   = json_decode( $line_height, true );
-		$media_queries = array( 'mobile', 'tablet', 'desktop' );
-		foreach ( $media_queries as $media_query ) {
-			$settings = array(
+		$controls = array(
+			'h1',
+			'h2',
+			'h3',
+			'h4',
+			'h5',
+			'h6',
+		);
+
+		foreach ( $controls as $control ) {
+			$font_size   = get_theme_mod( 'neve_' . $control . '_font_size' );
+			$line_height = get_theme_mod( 'neve_' . $control . '_line_height' );
+			$font_size   = json_decode( $font_size, true );
+			$line_height = json_decode( $line_height, true );
+			$settings    = array(
 				array(
 					'css_prop' => 'font-size',
-					'value'    => $font_size[$media_query],
-					'suffix'   => 'px',
+					'value'    => $font_size,
+					'suffix'   => 'rem',
 				),
 				array(
 					'css_prop' => 'line-height',
-					'value'    => $line_height[$media_query],
+					'value'    => $line_height,
 				),
 			);
-			$this->add_style( $settings, 'h1, h2, h3, h4, h5, h6', $media_query );
+			$this->add_responsive_style( $settings, $control );
 		}
 	}
 }

@@ -55,7 +55,7 @@ class Header extends Base_View {
 		}
 
 		if ( 'search' === $additional_item ) {
-			$items .= '<li class="menu-item-nav-search"><a><span class="dashicons dashicons-search"></span></a>';
+			$items .= '<li class="menu-item-nav-search"><a><span class="icon"></span></a>';
 			$items .= '<div class="nv-nav-search">';
 			$items .= get_search_form( false );
 			$items .= '</div>';

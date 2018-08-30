@@ -4,8 +4,9 @@
 			'use strict';
 			var result = '';
 			var styleClass = $( '.' + settings.styleClass );
-			if ( to === null && typeof to !== 'object' ) {
-				$( settings.selectors ).css( settings.cssProperty, to + 'px' );
+			if ( typeof to !== 'object' ) {
+				$( settings.selectors ).css( settings.cssProperty, to.toString() + settings.propertyUnit );
+				return false;
 			}
 
 			$.each( to, function ( key, value ) {

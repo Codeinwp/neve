@@ -30,7 +30,7 @@ class Partial {
 	/**
 	 * Constructor.
 	 *
-	 * @param string $control_id the control id.
+	 * @param string $id the control id.
 	 * @param array  $args       the partial args.
 	 */
 	public function __construct( $id, $args ) {

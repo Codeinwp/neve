@@ -3,6 +3,7 @@
   border-bottom: $muted-border;
   margin-bottom: $spacing-xs;
   padding: $spacing-xs 0;
+  width: 100%;
   li,
   li > a,
   i {
@@ -10,8 +11,8 @@
   }
   i {
     margin-right: 2px;
-    font-size: 1.2em;
-    line-height: normal;
+    font-size: inherit;
+    line-height: inherit;
   }
   li {
     display: flex;
@@ -19,7 +20,24 @@
     align-items: center;
 
   }
-
+  .meta .icon:before {
+    top: 1px;
+    position: relative;
+    margin-right: 5px;
+    font-family: Dashicons;
+  }
+  .author .icon:before {
+    content: "\f110";
+  }
+  .category .icon:before {
+    content: "\f318";
+  }
+  .date .icon:before {
+    content: "\f508";
+  }
+  .comments .icon:before {
+    content: "\f101";
+  }
 }
 .article-content-col {
   align-items: flex-start;

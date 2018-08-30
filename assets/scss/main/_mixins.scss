@@ -29,18 +29,35 @@
 }
 
 @mixin button() {
-  border-radius: 0;
+  font-size: 1rem;
   font-weight: 600;
+  line-height: 1.5;
+  display: inline-block;
+  padding: .625rem 1.25rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  border: 1px solid transparent;
+  border-radius: .25rem;
   text-transform: uppercase;
-  padding: $spacing-sm $spacing;
-  border: none;
-  cursor: pointer;
 }
 
 @mixin button-secondary() {
   border: 1px solid $theme_color;
   background-color: #fff;
+  font-weight: 600;
   color: $theme_color;
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 7px 14px rgba(50,50,93,.1), 0 3px 6px rgba(0,0,0,.08);
+    background-color: $theme_color;
+    color: #fff;
+  }
 }
 @mixin button-primary() {
   background-color: $theme_color;

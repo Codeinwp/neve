@@ -1,22 +1,23 @@
 html {
-  font-size: 14px;
+  font-size: 16px;
   overflow-x: hidden;
   -webkit-tap-highlight-color: transparent;
 }
 
 //todo: Responsive font sizes before desktop.
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Open Sans", sans-serif;
   color: $body_color;
   font-size: $font-size-base;
-  line-height: 1.6;
+  line-height: 1.68421;
   overflow-x: hidden;
   direction: ltr;
   background-color: #fff;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Open Sans", sans-serif;
+  line-height: 1.68421;
 }
 
 h1 {
@@ -36,6 +37,10 @@ h5 {
 }
 h6 {
   font-size: $h6-font-size;
+}
+
+p {
+  margin-bottom: 1.26316em;
 }
 
 a {

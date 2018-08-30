@@ -18,7 +18,16 @@ class Style_Manager extends Base_View {
 	 *
 	 * @var string
 	 */
-	private $style_path = '/neve/inline-style.css';
+	private $style_path = '';
+
+	/**
+	 * Generated inline style url.
+	 *
+	 * @var string
+	 */
+	private $style_url = '';
+
+	private $style_version_theme_mod_key = 'neve_generated_style_version';
 
 	/**
 	 * Inline style handlers
@@ -28,6 +37,8 @@ class Style_Manager extends Base_View {
 	private $style_classes = array(
 		'Typography'
 	);
+
+	private $css_file_name = 'neve-customizer.css';
 
 	/**
 	 * Mobile style -> global.
@@ -54,6 +65,15 @@ class Style_Manager extends Base_View {
 	 */
 	private $desktop_style = '';
 
+
+	public function __construct() {
+		$wp_upload_dir = wp_upload_dir( null, false );
+
+		$this->style_path = $wp_upload_dir['basedir'] . '/neve-theme/';
+		$this->style_url  = $wp_upload_dir['basedir'] . '/neve-theme/';
+	}
+
+
 	/**
 	 * Function that is run after instantiation.
 	 *
@@ -63,16 +83,67 @@ class Style_Manager extends Base_View {
 		if ( empty( $this->style_classes ) ) {
 			return;
 		}
+
 		$this->run_inline_styles();
 		$this->wrap_styles();
 
-		add_action( 'wp_enqueue_scripts', array( $this, 'inline_style' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue' ) );
+
+		add_action( 'customize_save_after', array( $this, 'wipe_customizer_css_file' ), 0 );
+
+		if ( ! is_admin() && ! is_customize_preview() ) {
+			add_action( 'shutdown', array( $this, 'generate_customizer_css_file' ), PHP_INT_MAX );
+		}
 	}
 
-	public function inline_style() {
-		wp_add_inline_style( 'neve-style', $this->get_style() );
+	public function maybe_enqueue() {
+		$full_css_path = $this->style_path . $this->css_file_name;
+		if ( ! file_exists( $full_css_path ) || ! is_readable( $full_css_path ) ) {
+			wp_add_inline_style( 'neve-style', $this->get_style() );
+
+			return;
+		}
+
+		$version = $this->get_style_version();
+
+		wp_enqueue_style( 'neve-generated-style', home_url( 'wp-content/uploads/neve-theme/' . $this->css_file_name ), array( 'neve-style' ), $version );
 	}
 
+	public function generate_customizer_css_file() {
+
+		$style = $this->get_style();
+
+		if ( empty( $style ) ) {
+			return;
+		}
+
+		if ( file_exists( $this->style_path . $this->css_file_name ) && is_readable( $this->style_path . $this->css_file_name ) ) {
+			return;
+		}
+
+		if ( ! is_dir( $this->style_path ) ) {
+			wp_mkdir_p( $this->style_path );
+		}
+
+		file_put_contents( $this->style_path . $this->css_file_name, $style );
+	}
+
+	/**
+	 * Delete customizer generated CSS.
+	 *
+	 * Remove css and delete version key.
+	 */
+	public function wipe_customizer_css_file() {
+		if ( ! file_exists( $this->style_path . $this->css_file_name ) || ! is_readable( $this->style_path . $this->css_file_name ) ) {
+			return;
+		}
+		remove_theme_mod( $this->style_version_theme_mod_key );
+		unlink( $this->style_path . $this->css_file_name );
+	}
+
+	/**
+	 * Instantiate classes and get the style.
+	 */
 	private function run_inline_styles() {
 		foreach ( $this->style_classes as $style_class ) {
 			$class_name = '\\Neve\\Views\\Inline\\' . $style_class;
@@ -110,7 +181,7 @@ class Style_Manager extends Base_View {
 	}
 
 	/**
-	 * Get the whole style.
+	 * Get the whole style from component.
 	 *
 	 * @return string
 	 */
@@ -118,4 +189,14 @@ class Style_Manager extends Base_View {
 		return esc_attr( $this->style . $this->tablet_style . $this->desktop_style );
 	}
 
+	private function get_style_version() {
+
+		$version = get_theme_mod( $this->style_version_theme_mod_key, false );
+
+		if ( empty( $version ) ) {
+			set_theme_mod( $this->style_version_theme_mod_key, time() );
+		}
+
+		return get_theme_mod( $this->style_version_theme_mod_key );
+	}
 }

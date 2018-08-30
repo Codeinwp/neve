@@ -60,7 +60,6 @@ class Page_Header extends Base_View {
 	}
 
 	private function get_blog_archive_title() {
-
 		if ( is_home() && get_option( 'show_on_front' ) === 'posts' ) {
 			return array(
 				'string' => get_bloginfo( 'description' ),
@@ -76,6 +75,7 @@ class Page_Header extends Base_View {
 				'class'  => '',
 			);
 		}
-	}
 
+		return array();
+	}
 }

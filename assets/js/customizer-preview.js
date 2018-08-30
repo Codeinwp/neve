@@ -4,8 +4,9 @@
             "use strict";
             var result = "";
             var styleClass = $("." + settings.styleClass);
-            if (to === null && typeof to !== "object") {
-                $(settings.selectors).css(settings.cssProperty, to + "px");
+            if (typeof to !== "object") {
+                $(settings.selectors).css(settings.cssProperty, to.toString() + settings.propertyUnit);
+                return false;
             }
             $.each(to, function(key, value) {
                 var style_to_add;
@@ -80,17 +81,100 @@ function generateLinkNode(elementId, googleFontName) {
 }
 
 var layoutRanges = {
+    neve_sidebar_width: {
+        selector: ".nv-sidebar-wrap",
+        cssProp: "max-width",
+        unit: "%"
+    },
     neve_container_width: {
         selector: ".container",
         cssProp: "max-width",
         unit: "px",
         styleClass: "container-width-css"
     },
-    neve_sidebar_width: {
-        selector: ".nv-sidebar-wrap",
-        cssProp: "max-width",
-        unit: "%",
-        styleClass: "sidebar-width-css"
+    neve_body_font_size: {
+        selector: "body",
+        cssProp: "font-size",
+        unit: "px",
+        styleClass: "body-font-size-css"
+    },
+    neve_body_line_height: {
+        selector: "body",
+        cssProp: "line-height",
+        unit: " ",
+        styleClass: "body-line-height-css"
+    },
+    neve_h1_font_size: {
+        selector: "h1",
+        cssProp: "font-size",
+        unit: "rem",
+        styleClass: "h1-font-size-css"
+    },
+    neve_h1_line_height: {
+        selector: "h1",
+        cssProp: "line-height",
+        unit: " ",
+        styleClass: "h1-line-height-css"
+    },
+    neve_h2_font_size: {
+        selector: "h2",
+        cssProp: "font-size",
+        unit: "rem",
+        styleClass: "h2-font-size-css"
+    },
+    neve_h2_line_height: {
+        selector: "h2",
+        cssProp: "line-height",
+        unit: " ",
+        styleClass: "h2-line-height-css"
+    },
+    neve_h3_font_size: {
+        selector: "h3",
+        cssProp: "font-size",
+        unit: "rem",
+        styleClass: "h3-font-size-css"
+    },
+    neve_h3_line_height: {
+        selector: "h3",
+        cssProp: "line-height",
+        unit: " ",
+        styleClass: "h3-line-height-css"
+    },
+    neve_h4_font_size: {
+        selector: "h4",
+        cssProp: "font-size",
+        unit: "rem",
+        styleClass: "h4-font-size-css"
+    },
+    neve_h4_line_height: {
+        selector: "h4",
+        cssProp: "line-height",
+        unit: " ",
+        styleClass: "h4-line-height-css"
+    },
+    neve_h5_font_size: {
+        selector: "h5",
+        cssProp: "font-size",
+        unit: "rem",
+        styleClass: "h5-font-size-css"
+    },
+    neve_h5_line_height: {
+        selector: "h5",
+        cssProp: "line-height",
+        unit: " ",
+        styleClass: "h5-line-height-css"
+    },
+    neve_h6_font_size: {
+        selector: "h6",
+        cssProp: "font-size",
+        unit: "rem",
+        styleClass: "h6-font-size-css"
+    },
+    neve_h6_line_height: {
+        selector: "h6",
+        cssProp: "line-height",
+        unit: " ",
+        styleClass: "h6-line-height-css"
     }
 };
 

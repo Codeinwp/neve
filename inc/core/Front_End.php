@@ -66,7 +66,7 @@ class Front_End {
 			)
 		);
 
-		add_image_size( 'neve-blog', 360, 240, true );
+		add_image_size( 'neve-blog', 510, 340, true );
 
 //		add_editor_style();
 	}

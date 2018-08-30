@@ -10,7 +10,6 @@
 namespace Neve\Customizer\Options;
 
 use Neve\Customizer\Base_Customizer;
-use Neve\Customizer\Controls\Ordering;
 use Neve\Customizer\Types\Control;
 use Neve\Customizer\Types\Section;
 

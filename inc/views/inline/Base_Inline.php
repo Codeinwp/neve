@@ -18,28 +18,11 @@ abstract class Base_Inline {
 		'tablet'  => '',
 		'desktop' => '',
 	);
-	/**
-	 * Tablet style
-	 *
-	 * @var string
-	 */
-	private $tablet_style = '';
-
-	/**
-	 * Desktop style
-	 *
-	 * @var string
-	 */
-	private $desktop_style = '';
-
-	/**
-	 * Final
-	 */
 
 	/**
 	 * Base_Inline constructor.
 	 */
-	public function __construct() {
+	final public function __construct() {
 		$this->init();
 	}
 
@@ -63,12 +46,36 @@ abstract class Base_Inline {
 			return;
 		}
 
+		$use_style = false;
+		foreach ( $styles as $style ) {
+			if ( $style['value'] === null ) {
+				continue;
+			}
+			$use_style = true;
+		}
+
+		if ( $use_style === false ) {
+			return;
+		}
+
 		$css = $selectors . '{';
 		foreach ( $styles as $id => $style ) {
 			$css .= $this->add_styles( $style );
 		}
 		$css                         .= '}';
 		$this->style[ $media_query ] .= $css;
+	}
+
+	protected final function add_responsive_style( $styles, $selectors ) {
+		$media_queries = array( 'mobile', 'tablet', 'desktop' );
+		foreach ( $media_queries as $media_query ) {
+			$settings = $styles;
+			foreach ( $settings as $index => $setting ) {
+				$settings[ $index ]['value'] = $setting['value'][ $media_query ];
+			}
+
+			$this->add_style( $settings, $selectors, $media_query );
+		}
 	}
 
 	/**
@@ -79,6 +86,9 @@ abstract class Base_Inline {
 	 * @return string
 	 */
 	private function add_styles( $style ) {
+		if ( ! isset( $style['css_prop'] ) || ! isset( $style['value'] ) ) {
+			return '';
+		}
 		$suffix = isset( $style['suffix'] ) ? $style['suffix'] : '';
 
 		return $style['css_prop'] . ':' . $style['value'] . $suffix . ';';

@@ -8,81 +8,6 @@
  * @package Neve\Globals
  */
 
-/**
- * Sanitize alignment control.
- *
- * @since 1.1.34
- *
- * @param string $value Control output.
- *
- * @return string
- */
-function neve_sanitize_alignment_options( $value ) {
-	$valid_values = array(
-		'video',
-		'parallax',
-		'left',
-		'center',
-		'right',
-		'true',
-		'false',
-		'slider',
-		'extra',
-	);
-
-	if ( ! in_array( $value, $valid_values ) ) {
-		wp_die( 'Invalid value, go back and try again.' );
-	}
-
-	return $value;
-}
-
-/**
- * Sanitize Footer Layout control.
- *
- * @since 1.1.59
- *
- * @param string $value Control output.
- *
- * @return string
- */
-function neve_sanitize_footer_layout_control( $value ) {
-	$value        = sanitize_text_field( $value );
-	$valid_values = array(
-		'white_footer',
-		'black_footer',
-	);
-
-	if ( ! in_array( $value, $valid_values ) ) {
-		wp_die( 'Invalid value, go back and try again.' );
-	}
-
-	return $value;
-}
-
-/**
- * Sanitize Blog Layout control.
- *
- * @since 1.1.59
- *
- * @param string $value Control output.
- *
- * @return string
- */
-function neve_sanitize_blog_layout_control( $value ) {
-	$value        = sanitize_text_field( $value );
-	$valid_values = array(
-		'blog_alternative_layout',
-		'blog_alternative_layout2',
-		'blog_normal_layout',
-	);
-
-	if ( ! in_array( $value, $valid_values ) ) {
-		wp_die( 'Invalid value, go back and try again.' );
-	}
-
-	return $value;
-}
 
 /**
  * Sanitize arrays.
@@ -123,18 +48,6 @@ function neve_sanitize_colors( $value ) {
 	} else {
 		return sanitize_hex_color( $value );
 	}
-}
-
-/**
- * Sanitize big title type
- */
-function neve_sanitize_big_title_type( $input ) {
-	$options = array( 'image', 'parallax', 'video' );
-	if ( in_array( $input, $options ) ) {
-		return $input;
-	}
-
-	return 'image';
 }
 
 /**

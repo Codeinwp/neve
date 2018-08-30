@@ -2,6 +2,7 @@
 /**
  * Author:          Andrei Baicus <andrei@themeisle.com>
  * Created on:      22/08/2018
+ *
  * @package Neve\Views
  */
 
@@ -91,24 +92,25 @@ class Typography extends Base_View {
 	 *
 	 * @since 1.1.38
 	 *
-	 * @param string $font font string.
+	 * @param string $font   font string.
+	 * @param string $handle body/headings.
 	 */
 	private function enqueue_google_font( $font, $handle ) {
 
-		// Get list of all Google Fonts
+		// Get list of all Google Fonts.
 		$google_fonts = $this->get_google_fonts();
 
-		// Make sure font is in our list of fonts
+		// Make sure font is in our list of fonts.
 		if ( ! $google_fonts || ! in_array( $font, $google_fonts ) ) {
 			return;
 		}
 
-		// Sanitize font name
+		// Sanitize font name.
 		$font = trim( $font );
 
 		$base_url = '//fonts.googleapis.com/css';
 
-		// Apply the chosen subset from customizer
+		// Apply the chosen subset from customizer.
 		$subsets     = '';
 		$get_subsets = get_theme_mod( 'neve_font_subsets', array( 'latin' ) );
 		if ( ! empty( $get_subsets ) ) {
@@ -119,10 +121,10 @@ class Typography extends Base_View {
 			$subsets .= implode( ',', $font_subsets );
 		}
 
-		// Weights
+		// Weights.
 		$weights = apply_filters( 'neve_filter_font_weights', array( '300', '400', '500', '700' ) );
 
-		// Add weights to URL
+		// Add weights to URL.
 		if ( ! empty( $weights ) ) {
 			$font .= ':' . implode( ',', $weights );
 		}

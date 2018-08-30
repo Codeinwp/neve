@@ -1,18 +1,4 @@
-.neve-customizer-heading {
-    display: block;
-    margin: 0 -12px;
-    padding: 13px 12px;
-    background-color: #fff;
-    color: #555;
-    border: 1px solid #ddd;
-    border-left: 0;
-    border-right: 0;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    line-height: 1;
-    text-transform: uppercase
-}
+
 
 .control-wrap {
     width: 100%;
@@ -30,6 +16,10 @@
 #sub-accordion-section-neve_typography_body,
 #sub-accordion-section-neve_typography_headings {
     min-height: 600px;
+}
+
+#sub-accordion-section-neve_typography_headings {
+    overflow-y: hidden;
 }.customize-control-hestia-dimensions > ul { width: 100%; }
 .customize-control-hestia-dimensions .dimension-wrap { float: left; width: 17%; margin: 0; }
 .customize-control-hestia-dimensions .dimension-wrap input,
@@ -133,6 +123,65 @@
 	border-top: 0;
 	display: none;
 	position: absolute;
+}.neve-customizer-heading {
+  display: block;
+  margin: 0 -12px;
+  padding: 13px 12px;
+  background-color: #fff;
+  color: #555;
+  border: 1px solid #ddd;
+  border-left: 0;
+  border-right: 0;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  line-height: 1;
+  text-transform: uppercase;
+  position: relative;
+}
+
+.accordion-expand-button {
+  font-family: Dashicons;
+  position: absolute;
+  right: 0;
+  top: 0;
+  cursor: pointer;
+  z-index: 10;
+  padding: 10px;
+  border: 1px solid transparent;
+  border-left-color: #ddd;
+}
+.accordion-expand-button:before {
+  content: "\f347";
+  font-size: 16px;
+  top: 1px;
+  position: relative;
+  display: block;
+  transition: .1s ease-in-out;
+  left: 1px;
+}
+
+.accordion-expand-button:hover {
+  background: #3ec8ff;
+  color: #fff;
+}
+
+.accordion.expanded .accordion-expand-button:before {
+  transform: rotate( 180deg );
+  top:0;
+}
+
+.accordion ~ li {
+  transition: opacity,height .3s ease-in-out;
+
+}
+
+/* Controls specific CSS */
+.accordion.headings-accordion:not(.expanded) + li + li, .accordion.headings-accordion:not(.expanded) + li {
+  /*transform: scaleY(0);*/
+  max-height: 0;
+  opacity: 0;
+  margin: 0;
 }.ti-order-sortable li {
     text-align: center;
     background: #fff;

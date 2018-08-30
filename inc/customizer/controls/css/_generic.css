@@ -1,18 +1,4 @@
-.neve-customizer-heading {
-    display: block;
-    margin: 0 -12px;
-    padding: 13px 12px;
-    background-color: #fff;
-    color: #555;
-    border: 1px solid #ddd;
-    border-left: 0;
-    border-right: 0;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    line-height: 1;
-    text-transform: uppercase
-}
+
 
 .control-wrap {
     width: 100%;
@@ -30,4 +16,8 @@
 #sub-accordion-section-neve_typography_body,
 #sub-accordion-section-neve_typography_headings {
     min-height: 600px;
+}
+
+#sub-accordion-section-neve_typography_headings {
+    overflow-y: hidden;
 }

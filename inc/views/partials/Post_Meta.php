@@ -40,17 +40,17 @@ class Post_Meta extends Base_View {
 		foreach ( $order as $meta ) {
 			switch ( $meta ) {
 				case 'author':
-					$markup .= '<li class="meta author"><i class="dashicons dashicons-admin-users"></i>';
+					$markup .= '<li class="meta author"><span class="icon"></span>';
 					$markup .= get_the_author_posts_link();
 					$markup .= '</li>';
 					break;
 				case 'date':
-					$markup .= '<li class="meta date"><i class="dashicons dashicons-calendar-alt"></i>';
+					$markup .= '<li class="meta date"><span class="icon"></span>';
 					$markup .= '<span>' . get_the_date() . '</span>';
 					$markup .= '</li>';
 					break;
 				case 'category':
-					$markup .= '<li class="meta category"><i class="dashicons dashicons-category"></i>';
+					$markup .= '<li class="meta category"><span class="icon"></span>';
 					$markup .= get_the_category_list( ' / ', get_the_ID() );
 					$markup .= '</li>';
 					break;
@@ -59,7 +59,7 @@ class Post_Meta extends Base_View {
 					if ( empty( $comments ) ) {
 						break;
 					}
-					$markup .= '<li class="meta comments"><i class="dashicons dashicons-admin-comments"></i>';
+					$markup .= '<li class="meta comments"><span class="icon"></span>';
 					$markup .= $this->get_comments();
 					$markup .= '</li>';
 					break;

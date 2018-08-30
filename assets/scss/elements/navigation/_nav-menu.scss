@@ -54,6 +54,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding-bottom: $spacing-sm;
 }
 
 .caret {
@@ -65,7 +66,6 @@
   .dropdown-open > .caret-wrap > & {
     color: #fff;
     transform: rotate(-45deg);
-    top: -4px;
   }
 }
 
@@ -89,6 +89,7 @@
   .nv-nav-wrap {
     flex-direction: row;
     align-items: center;
+    padding-bottom: 0;
   }
 
   #nv-primary-navigation {
@@ -128,7 +129,7 @@
       top: 100%;
       background: $navbar_background_color;
       border-left: none;
-      border-top: 3px solid $link_color;
+      border-top: 3px solid $theme_color;
       position: absolute;
       overflow: visible;
       z-index: 10;

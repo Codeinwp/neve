@@ -32,12 +32,14 @@ class Template_Parts extends Base_View {
 		}
 	}
 
-	private function render_default() { ?>
+	private function render_grid_post() { ?>
 		<article
 				id="post-<?php echo esc_attr( get_the_ID() ); ?>'"
-				class="<?php echo join( ' ', get_post_class( 'row' ) ); ?>">
+				class="<?php echo join( ' ', get_post_class( 'row ' . 'layout-' . $this->get_layout() ) ); ?>">
 			<div class="col article-content-col">
-				<?php $this->render_article_inner_content(); ?>
+				<div class="content">
+					<?php $this->render_article_inner_content(); ?>
+				</div>
 			</div>
 		</article>
 	<?php }
@@ -96,11 +98,11 @@ class Template_Parts extends Base_View {
 	}
 
 	private function title() { ?>
-		<h4 class="blog-entry-title entry-title">
+		<h3 class="blog-entry-title entry-title">
 			<a href="<?php the_permalink(); ?>">
 				<?php the_title(); ?>
 			</a>
-		</h4>
+		</h3>
 		<?php
 	}
 
@@ -122,7 +124,7 @@ class Template_Parts extends Base_View {
 	}
 
 	private function read_more_button() { ?>
-		<a href="<?php the_permalink() ?>" class="button button-primary"><?php esc_html_e( 'Read more', 'neve' ) ?></a>
+		<a href="<?php the_permalink() ?>" class="button button-secondary"><?php esc_html_e( 'Read more', 'neve' ) ?></a>
 		<?php
 	}
 

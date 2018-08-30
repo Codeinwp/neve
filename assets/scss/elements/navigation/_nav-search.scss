@@ -26,10 +26,17 @@
     left: 0;
     right: 0;
     top: 0;
-    @if ( $debug == 'true' ) {
+    @if ($debug == 'true') {
       background-color: #333;
     }
     z-index: 0;
     height: 100vh;
+  }
+
+  .menu-item-nav-search .icon {
+    font-family: Dashicons;
+    &:before {
+      content: "\f179";
+    }
   }
 }

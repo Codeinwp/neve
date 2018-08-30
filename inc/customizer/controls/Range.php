@@ -55,18 +55,7 @@ class Range extends \WP_Customize_Control {
 	 */
 	public function __construct( $manager, $id, $args = array() ) {
 		parent::__construct( $manager, $id, $args );
-
-		if ( ! empty( $args['media_query'] ) ) {
-			$this->media_query = (bool) $args['media_query'];
-		}
-
-		if ( ! empty( $args['input_attr'] ) ) {
-			$this->input_attr = $args['input_attr'];
-		}
-
-		if ( ! empty( $args['sum_type'] ) ) {
-			$this->sum_type = $args['sum_type'];
-		}
+		$this->args_to_props();
 	}
 
 	/**
@@ -80,7 +69,7 @@ class Range extends \WP_Customize_Control {
 
 		?>
 		<li id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $class ); ?>">
-		<?php $this->render_content(); ?>
+			<?php $this->render_content(); ?>
 		</li>
 		<?php
 	}
@@ -307,8 +296,28 @@ class Range extends \WP_Customize_Control {
 				<span class="range-reset-slider"><span class="dashicons dashicons-image-rotate"></span></span>
 			</div>
 			<# } #>
-			<input type="hidden" class="range-collector" title="{{{data.label}}}" value="{{ data.value }}" {{{ data.link }}}>
+			<input type="hidden" class="range-collector" title="{{{data.label}}}" value="{{ data.value }}" {{{ data.link
+					}}}>
 		</div>
 		<?php
+	}
+
+	/**
+	 * Utility function.
+	 *
+	 * Save args to class properties
+	 */
+	private function args_to_props() {
+		if ( ! empty( $args['media_query'] ) ) {
+			$this->media_query = (bool) $args['media_query'];
+		}
+
+		if ( ! empty( $args['input_attr'] ) ) {
+			$this->input_attr = $args['input_attr'];
+		}
+
+		if ( ! empty( $args['sum_type'] ) ) {
+			$this->sum_type = $args['sum_type'];
+		}
 	}
 }

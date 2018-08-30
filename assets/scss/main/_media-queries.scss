@@ -6,7 +6,7 @@
 @media (min-width: #{$tablet}) {
   @include grid-container--tablet();
   @include grid--tablet();
-
+  @include sidebar--tablet();
 }
 
 @media (min-width: #{$laptop}) {

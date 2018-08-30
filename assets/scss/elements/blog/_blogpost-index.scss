@@ -1,0 +1,25 @@
+.nv-post-thumbnail-wrap {
+  width: 100%;
+  a {
+    transition: $transition_med;
+    &:hover {
+      opacity: .95;
+    }
+  }
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.article-content-col .content {
+  width: 100%;
+  margin-bottom: $spacing;
+  padding-bottom: $spacing;
+  border-bottom: $muted-border;
+}
+
+.excerpt-wrap {
+  padding: $spacing 0;
+  margin-bottom: $spacing-sm;
+}

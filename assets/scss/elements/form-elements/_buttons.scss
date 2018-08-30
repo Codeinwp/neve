@@ -1,9 +1,12 @@
 .button {
+  //noinspection SassScssResolvedByNameOnly
   @include button();
   &.button-primary {
+    //noinspection SassScssResolvedByNameOnly
     @include button-primary();
   }
   &.button-secondary {
+    //noinspection SassScssResolvedByNameOnly
     @include button-secondary();
   }
 }

@@ -76,8 +76,8 @@ class Font_Selector extends \WP_Customize_Control {
 	 * Render the dropdown option group.
 	 *
 	 * @param array  $options Options in group.
-	 *
 	 * @param string $title   Title of options group.
+	 * @param string $source system/google-font
 	 */
 	protected function render_dropdown_options_group( $options, $title, $source ) {
 		if ( ! empty( $options ) ) {
