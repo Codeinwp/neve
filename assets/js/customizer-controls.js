@@ -252,12 +252,11 @@ jQuery(document).ready(function($) {
         },
         manageSwitchers: function() {
             jQuery(".customize-control .responsive-switchers button").on("click", function(event) {
-                var $this = $(this), $devices = $(".responsive-switchers"), $device = $(event.currentTarget).data("device"), $control = $(".customize-control.has-switchers"), $body = $(".wp-full-overlay"), $footer_devices = $(".wp-full-overlay-footer .devices");
+                var $this = $(this), $devices = $(".responsive-switchers"), $device = $(event.currentTarget).data("device"), $control = $(".customize-control .has-media-queries"), $body = $(".wp-full-overlay"), $footer_devices = $(".wp-full-overlay-footer .devices");
                 $devices.find("button").removeClass("active");
                 $devices.find("button.preview-" + $device).addClass("active");
                 $control.find(".control-wrap").removeClass("active");
                 $control.find(".control-wrap." + $device).addClass("active");
-                $control.removeClass("control-device-desktop control-device-tablet control-device-mobile").addClass("control-device-" + $device);
                 $body.removeClass("preview-desktop preview-tablet preview-mobile").addClass("preview-" + $device);
                 $footer_devices.find("button").removeClass("active").attr("aria-pressed", false);
                 $footer_devices.find("button.preview-" + $device).addClass("active").attr("aria-pressed", true);

@@ -114,16 +114,27 @@ class Typography extends Base_Customizer {
 			new Control(
 				'neve_body_font_size', array(
 				'sanitize_callback' => 'neve_sanitize_range_value',
-				'default'           => '16',
 				'transport'         => $this->selective_refresh,
 			),
 				array(
 					'label'       => esc_html__( 'Font Size', 'neve' ),
 					'section'     => 'neve_typography_body',
 					'input_attr'  => array(
-						'min'  => 10,
-						'max'  => 30,
-						'step' => 1,
+						'mobile'  => array(
+							'min'     => 10,
+							'max'     => 30,
+							'default' => 16,
+						),
+						'tablet'  => array(
+							'min'     => 10,
+							'max'     => 30,
+							'default' => 16,
+						),
+						'desktop' => array(
+							'min'     => 10,
+							'max'     => 30,
+							'default' => 16,
+						),
 					),
 					'priority'    => 15,
 					'media_query' => true,
@@ -139,16 +150,28 @@ class Typography extends Base_Customizer {
 			new Control(
 				'neve_body_line_height', array(
 				'sanitize_callback' => 'neve_sanitize_range_value',
-				'default'           => 1.6,
 				'transport'         => $this->selective_refresh,
 			),
 				array(
 					'label'       => esc_html__( 'Line Height', 'neve' ),
 					'section'     => 'neve_typography_body',
+					'step'        => 0.1,
 					'input_attr'  => array(
-						'min'  => 0.5,
-						'max'  => 4,
-						'step' => 0.1,
+						'mobile'  => array(
+							'min'     => 0.5,
+							'max'     => 4,
+							'default' => 1.6,
+						),
+						'tablet'  => array(
+							'min'     => 0.5,
+							'max'     => 4,
+							'default' => 1.6,
+						),
+						'desktop' => array(
+							'min'     => 0.5,
+							'max'     => 4,
+							'default' => 1.6,
+						),
 					),
 					'priority'    => 15,
 					'media_query' => true,
@@ -229,12 +252,12 @@ class Typography extends Base_Customizer {
 					'transport'         => $this->selective_refresh,
 				),
 					array(
-						'label'      => $control['heading'],
-						'section'    => 'neve_typography_headings',
-						'priority'   => $control['priority'],
-						'class'      => 'headings-accordion',
+						'label'     => $control['heading'],
+						'section'   => 'neve_typography_headings',
+						'priority'  => $control['priority'],
+						'class'     => 'headings-accordion',
 						'accordion' => true,
-						'expanded' => $control_id === 'neve_h1' ? true : false,
+						'expanded'  => $control_id === 'neve_h1' ? true : false,
 					),
 					'Neve\Customizer\Controls\Heading'
 				)
@@ -248,16 +271,28 @@ class Typography extends Base_Customizer {
 				new Control(
 					$control_id . '_font_size', array(
 					'sanitize_callback' => 'neve_sanitize_range_value',
-					'default'           => $control['default_size'],
 					'transport'         => $this->selective_refresh,
 				),
 					array(
 						'label'       => esc_html__( 'Font Size', 'neve' ) . '(rem)',
 						'section'     => 'neve_typography_headings',
+						'step'        => 0.1,
 						'input_attr'  => array(
-							'min'  => 1,
-							'max'  => 10,
-							'step' => 0.1,
+							'mobile'  => array(
+								'min'     => 1,
+								'max'     => 10,
+								'default' => $control['default_size'],
+							),
+							'tablet'  => array(
+								'min'     => 1,
+								'max'     => 10,
+								'default' => $control['default_size'],
+							),
+							'desktop' => array(
+								'min'     => 1,
+								'max'     => 10,
+								'default' => $control['default_size'],
+							),
 						),
 						'priority'    => $control['priority'] + 1,
 						'media_query' => true,
@@ -272,17 +307,29 @@ class Typography extends Base_Customizer {
 			$this->add_control(
 				new Control(
 					$control_id . '_line_height', array(
-					'sanitize_callback' => 'neve_sanitize_range_value',
-					'default'           => $control['default_line_height'],
-					'transport'         => $this->selective_refresh,
-				),
+						'sanitize_callback' => 'neve_sanitize_range_value',
+						'transport'         => $this->selective_refresh,
+					),
 					array(
 						'label'       => esc_html__( 'Line Height', 'neve' ),
 						'section'     => 'neve_typography_headings',
+						'step'        => 0.1,
 						'input_attr'  => array(
-							'min'  => 0.5,
-							'max'  => 4,
-							'step' => 0.1,
+							'mobile'  => array(
+								'min'     => 0.5,
+								'max'     => 4,
+								'default' => $control['default_line_height'],
+							),
+							'desktop' => array(
+								'min'     => 0.5,
+								'max'     => 4,
+								'default' => $control['default_line_height'],
+							),
+							'tablet'  => array(
+								'min'     => 0.5,
+								'max'     => 4,
+								'default' => $control['default_line_height'],
+							),
 						),
 						'priority'    => $control['priority'] + 2,
 						'media_query' => true,

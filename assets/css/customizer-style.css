@@ -349,6 +349,7 @@
 
 .range-slider__range {
 	background-color: rgba(0,0,0,.1);
+	border-radius: 5px;
 	height: 5px;
 	width: 67%;
 	padding: 0;
@@ -362,38 +363,38 @@
 
 .range-slider__range::-webkit-slider-thumb {
 	-webkit-appearance: none;
-	width: 15px;
-	height: 15px;
-	border: none;
+	width: 17px;
+	height: 17px;
+	border: 2px solid #2e86b9;
 	border-radius: 15px;
-	background-color: #2e86b9;
+	background-color: #fff;
 }
 
 .range-slider__range::-webkit-slider-thumb:hover {
-	background: #0085ba;
+	background: #fff;
 }
 
 .range-slider__range:active::-webkit-slider-thumb {
-	background: #0085ba;
+	background: #fff;
 }
 
 .range-slider__range::-moz-range-thumb {
 	width: 20px;
 	height: 20px;
-	border: 0;
 	border-radius: 50%;
-	background: #0085ba;
+	border: 2px solid #2e86b9;
+	background-color: #fff;
 	cursor: pointer;
 	-webkit-transition: background .15s ease-in-out;
 	transition: background .15s ease-in-out;
 }
 
 .range-slider__range::-moz-range-thumb:hover {
-	background: #0085ba;
+	background: #fff;
 }
 
 .range-slider__range:active::-moz-range-thumb {
-	background: #0085ba;
+	background: #fff;
 }
 
 .customize-control input[type=number].range-slider-value,

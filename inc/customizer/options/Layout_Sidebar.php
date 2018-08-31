@@ -55,18 +55,18 @@ class Layout_Sidebar extends Base_Customizer {
 				array(
 					'sanitize_callback' => 'absint',
 					'transport'         => $this->selective_refresh,
-					'default'           => 25
 				),
 				array(
-					'label'       => esc_html__( 'Sidebar width (%)', 'neve' ),
-					'section'     => 'neve_sidebar',
-					'type'        => 'range-value',
-					'input_attr'  => array(
-						'min'  => 10,
-						'max'  => 50,
-						'step' => 1,
+					'label'      => esc_html__( 'Sidebar width (%)', 'neve' ),
+					'section'    => 'neve_sidebar',
+					'type'       => 'range-value',
+					'step'       => 1,
+					'input_attr' => array(
+						'min'     => 10,
+						'max'     => 50,
+						'default' => 25,
 					),
-					'priority'    => 30,
+					'priority'   => 30,
 				),
 				'Neve\Customizer\Controls\Range'
 			)

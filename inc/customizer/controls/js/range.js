@@ -1,7 +1,5 @@
 /**
  * Range control in customizer
- *
- * @package Hestia
  */
 
 /* global wp */
@@ -45,7 +43,6 @@ wp.customize.controlConstructor['range-value'] = wp.customize.Control.extend(
 					collector.val( values.desktop );
 				}
 				collector.trigger( 'change' );
-
 			}
 
 			function getSliderValues( control ) {
@@ -125,7 +122,6 @@ wp.customize.controlConstructor['range-value'] = wp.customize.Control.extend(
 					updateValues( control );
 				}
 			);
-
 
 			if ( 'postMessage' === control.setting.transport ) {
 				changeAction = 'mousemove change';

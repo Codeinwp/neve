@@ -135,16 +135,16 @@ class Layout_Blog extends Base_Customizer {
 				'neve_post_excerpt_length',
 				array(
 					'sanitize_callback' => 'neve_sanitize_range_value',
-					'default'           => 40,
 				),
 				array(
 					'label'      => esc_html__( 'Excerpt Length', 'neve' ),
 					'section'    => 'neve_blog_archive_layout',
 					'type'       => 'range-value',
+					'step'       => 5,
 					'input_attr' => array(
-						'min'  => 5,
-						'max'  => 300,
-						'step' => 5,
+						'min'     => 5,
+						'max'     => 300,
+						'default' => 40,
 					),
 					'priority'   => 40,
 				),
@@ -344,7 +344,7 @@ class Layout_Blog extends Base_Customizer {
 
 	public function should_show_masonry() {
 		$blog_layout = get_theme_mod( 'neve_blog_archive_layout', 'default' );
-		$columns     = get_theme_mod( 'neve_grid_layout', '1' );
+		$columns     = get_theme_mod( 'neve_grid_layout', 1 );
 		if ( $blog_layout !== 'grid' || $columns === 1 ) {
 			return false;
 		}

@@ -1,3 +1,4 @@
+
 jQuery( document ).ready(
     function ($) {
         'use strict';
@@ -17,7 +18,7 @@ jQuery( document ).ready(
                         var $this 		= $( this ),
                             $devices 	= $( '.responsive-switchers' ),
                             $device 	= $( event.currentTarget ).data( 'device' ),
-                            $control 	= $( '.customize-control.has-switchers' ),
+                            $control 	= $( '.customize-control .has-media-queries' ),
                             $body 		= $( '.wp-full-overlay' ),
                             $footer_devices = $( '.wp-full-overlay-footer .devices' );
 
@@ -28,7 +29,6 @@ jQuery( document ).ready(
                         // Control class
                         $control.find( '.control-wrap' ).removeClass( 'active' );
                         $control.find( '.control-wrap.' + $device ).addClass( 'active' );
-                        $control.removeClass( 'control-device-desktop control-device-tablet control-device-mobile' ).addClass( 'control-device-' + $device );
 
                         // Wrapper class
                         $body.removeClass( 'preview-desktop preview-tablet preview-mobile' ).addClass( 'preview-' + $device );
