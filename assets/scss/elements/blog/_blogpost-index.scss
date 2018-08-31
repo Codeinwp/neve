@@ -12,6 +12,10 @@
   }
 }
 
+.blog-entry-title {
+  margin-bottom: $spacing-xs;
+}
+
 .article-content-col .content {
   width: 100%;
   margin-bottom: $spacing;
@@ -21,5 +25,23 @@
 
 .excerpt-wrap {
   padding: $spacing 0;
-  margin-bottom: $spacing-sm;
+}
+
+.nv-index-posts .posts-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.nv-index-posts {
+  margin-bottom: $spacing-lg;
+}
+
+.nv-index-posts .page-numbers {
+  @include horizontal-list($spacing-xs);
+  justify-content: center;
+  margin: $spacing-xs auto;
+}
+
+.layout-grid > .article-content-col, .layout-grid > .article-content-col .content {
+  height: 100%;
 }

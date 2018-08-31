@@ -12,8 +12,6 @@ namespace Neve\Customizer\Controls;
  * Class Customizer_Range_Value_Control
  *
  * @package  Neve\Customizer\Controls
- *
- * @since    1.0.0
  */
 class Range extends \WP_Customize_Control {
 
@@ -26,7 +24,7 @@ class Range extends \WP_Customize_Control {
 	public $type = 'range-value';
 
 	/**
-	 * Flag that enables media queries
+	 * Enable media queries
 	 *
 	 * @var bool
 	 */
@@ -35,7 +33,7 @@ class Range extends \WP_Customize_Control {
 	/**
 	 * Settings for range inputs.
 	 *
-	 * @var array|mixed
+	 * @var array
 	 */
 	public $input_attr = array();
 
@@ -55,7 +53,7 @@ class Range extends \WP_Customize_Control {
 	 */
 	public function __construct( $manager, $id, $args = array() ) {
 		parent::__construct( $manager, $id, $args );
-		$this->args_to_props();
+		$this->args_to_props( $args );
 	}
 
 	/**
@@ -149,10 +147,6 @@ class Range extends \WP_Customize_Control {
 
 	/**
 	 * Render the control's content.
-	 *
-	 * @since    1.1.31
-	 * @modified 1.1.38
-	 * @access   public
 	 */
 	protected function content_template() {
 		?>
@@ -307,7 +301,7 @@ class Range extends \WP_Customize_Control {
 	 *
 	 * Save args to class properties
 	 */
-	private function args_to_props() {
+	private function args_to_props( $args ) {
 		if ( ! empty( $args['media_query'] ) ) {
 			$this->media_query = (bool) $args['media_query'];
 		}

@@ -55,6 +55,9 @@ class Core_Loader {
 				'Views\Partials\Post_Meta',
 				'Views\Partials\Excerpt',
 
+				'Views\Pluggable\Pagination',
+				'Views\Pluggable\Masonry',
+
 				'Views\Inline\Style_Manager',
 			)
 		);

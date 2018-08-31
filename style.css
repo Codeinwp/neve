@@ -118,6 +118,10 @@ th {
   width: 100%;
 }
 
+.gapless {
+  padding: 0 !important;
+}
+
 .container-fluid {
   width: 100%;
   padding-right: 15px;
@@ -501,6 +505,7 @@ a:hover {
 }
 #nv-primary-navigation.responsive-opened {
   max-height: calc(100vh - 70px);
+  padding-bottom: 16px;
 }
 #nv-primary-navigation a {
   width: 100%;
@@ -540,7 +545,6 @@ a:hover {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-bottom: 16px;
 }
 
 .caret {
@@ -757,6 +761,10 @@ form input[type="text"], form input[type="password"], form input[type="email"], 
   height: auto;
 }
 
+.blog-entry-title {
+  margin-bottom: 8px;
+}
+
 .article-content-col .content {
   width: 100%;
   margin-bottom: 32px;
@@ -766,7 +774,66 @@ form input[type="text"], form input[type="password"], form input[type="email"], 
 
 .excerpt-wrap {
   padding: 32px 0;
-  margin-bottom: 16px;
+}
+
+.nv-index-posts .posts-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.nv-index-posts {
+  margin-bottom: 48px;
+}
+
+.nv-index-posts .page-numbers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 8px auto;
+}
+.nv-index-posts .page-numbers > li:not(:last-child) {
+  padding-right: 8px;
+}
+.nv-index-posts .page-numbers > li:not(:first-child) {
+  padding-left: 8px;
+}
+
+.layout-grid > .article-content-col, .layout-grid > .article-content-col .content {
+  height: 100%;
+}
+
+.nv-loader {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: 2px solid #2dce89;
+  border-left: 1px solid transparent;
+  animation: spin;
+  -webkit-animation: spin 1s ease infinite;
+  -moz-animation: spin 1s ease infinite;
+  animation: spin 1s ease infinite;
+  margin: 0 auto;
+  display: block;
+}
+
+@-moz-keyframes spin {
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+.nv-sidebar-wrap {
+  margin-bottom: 48px;
 }
 
 @media (min-width: 576px) {
@@ -1332,6 +1399,10 @@ form input[type="text"], form input[type="password"], form input[type="email"], 
     display: none;
   }
 
+  .menu-opened {
+    overflow: inherit;
+  }
+
   .nv-nav-wrap {
     flex-direction: row;
     align-items: center;
@@ -1351,6 +1422,9 @@ form input[type="text"], form input[type="password"], form input[type="email"], 
   }
   #nv-primary-navigation > li:not(:first-child) {
     padding-left: 16px;
+  }
+  #nv-primary-navigation.responsive-opened {
+    padding-bottom: 0;
   }
   #nv-primary-navigation > li {
     width: inherit;
@@ -1423,6 +1497,13 @@ form input[type="text"], form input[type="password"], form input[type="email"], 
     top: 0;
     display: inline;
     padding-right: 0;
+  }
+  .dropdown-open > .caret-wrap > .caret {
+    color: #20948b;
+    transform: rotate(135deg);
+  }
+  .dropdown-open > .caret-wrap {
+    background: transparent;
   }
 
   .sub-menu .caret-wrap {

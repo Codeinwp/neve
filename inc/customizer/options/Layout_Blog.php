@@ -28,7 +28,6 @@ class Layout_Blog extends Base_Customizer {
 		$this->control_blog_layout();
 		$this->control_excerpt();
 		$this->control_pagination_type();
-		$this->control_hide_categories();
 		$this->control_content_order();
 		$this->control_meta_order();
 	}
@@ -61,10 +60,10 @@ class Layout_Blog extends Base_Customizer {
 					'sanitize_callback' => array( $this, 'sanitize_blog_layout' ),
 				),
 				array(
-					'label'       => esc_html__( 'Blog', 'hestia-pro' ) . ' ' . esc_html__( 'Layout', 'hestia-pro' ),
-					'section'     => 'neve_blog_archive_layout',
-					'priority'    => 25,
-					'choices'     => array(
+					'label'    => esc_html__( 'Blog', 'hestia-pro' ) . ' ' . esc_html__( 'Layout', 'hestia-pro' ),
+					'section'  => 'neve_blog_archive_layout',
+					'priority' => 25,
+					'choices'  => array(
 						'default'     => array(
 							'url' => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqAgMAAAAjP0ATAAAACVBMVEX///8+yP/V1dXG9YqxAAAAS0lEQVRYw2NgGAXDE4RCQMDAKONahQ5WUKBs1AujXqDEC6NgiANRSDyH0EwZRvJZ1UCBslEvjHqBZl4YBYMUjNb1o14Y9cIoGH4AALJWvPSk+QsLAAAAAElFTkSuQmCC',
 						),
@@ -75,13 +74,13 @@ class Layout_Blog extends Base_Customizer {
 							'url' => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqCAMAAABpj1iyAAAACVBMVEUAyv/V1dX////o4eoDAAAAfUlEQVR42u3ZoQ0AMAgAQej+Q3cDCI6QQyNOvKGNt3KwsLCwsLB2sKKc4V6/iIWFhYWFhYWFhXWN5cQ4xcpyhos9K8tZytKW5CWvLclLXltYWFhYWFj+Ez0kYWFhYWFhYWFhYTkxrrGyHC/N2pK85LUleclrCwsLCwvrMOsDUDxdDThzw38AAAAASUVORK5CYII=',
 						),
 					),
-					'subcontrols' => array(
-						'alternative' => array(),
-						'default'     => array(),
-						'grid'        => array(
-							'neve_grid_layout',
-						),
-					),
+//					'subcontrols' => array(
+//						'alternative' => array(),
+//						'default'     => array(),
+//						'grid'        => array(
+//							'neve_grid_layout',
+//						),
+//					),
 				),
 				'Neve\Customizer\Controls\Radio_Image'
 			)
@@ -95,30 +94,18 @@ class Layout_Blog extends Base_Customizer {
 					'default'           => '1',
 				),
 				array(
-					'priority'    => 30,
-					'section'     => 'neve_blog_archive_layout',
-					'label'       => esc_html__( 'Grid Layout', 'neve' ),
-					'choices'     => array(
+					'priority'        => 30,
+					'section'         => 'neve_blog_archive_layout',
+					'label'           => esc_html__( 'Grid Layout', 'neve' ),
+					'choices'         => array(
 						'1' => esc_html__( '1 Column', 'neve' ),
 						'2' => esc_html__( '2 Columns', 'neve' ),
 						'3' => esc_html__( '3 Columns', 'neve' ),
 						'4' => esc_html__( '4 Columns', 'neve' ),
 					),
-					'subcontrols' => array(
-						'1' => array(),
-						'2' => array(
-							'neve_enable_masonry',
-						),
-						'3' => array(
-							'neve_enable_masonry',
-						),
-						'4' => array(
-							'neve_enable_masonry',
-						),
-					),
-					'parent'      => 'neve_blog_archive_layout',
-				),
-				'Neve\Customizer\Controls\Reactive_Control'
+					'type'            => 'select',
+					'active_callback' => array( $this, 'should_show_grid_cols' ),
+				)
 			)
 		);
 
@@ -130,10 +117,11 @@ class Layout_Blog extends Base_Customizer {
 					'default'           => false,
 				),
 				array(
-					'type'     => 'checkbox',
-					'priority' => 35,
-					'section'  => 'neve_blog_archive_layout',
-					'label'    => esc_html__( 'Enable Masonry', 'neve' ),
+					'type'            => 'checkbox',
+					'priority'        => 35,
+					'section'         => 'neve_blog_archive_layout',
+					'label'           => esc_html__( 'Enable Masonry', 'neve' ),
+					'active_callback' => array( $this, 'should_show_masonry' ),
 				)
 			)
 		);
@@ -193,23 +181,6 @@ class Layout_Blog extends Base_Customizer {
 	/**
 	 * Add categories toggle control
 	 */
-	private function control_hide_categories() {
-		$this->add_control(
-			new Control(
-				'neve_hide_categories',
-				array(
-					'sanitize_callback' => 'neve_sanitize_checkbox',
-					'default'           => false,
-				),
-				array(
-					'type'     => 'checkbox',
-					'priority' => 50,
-					'section'  => 'neve_blog_archive_layout',
-					'label'    => esc_html__( 'Hide Categories', 'neve' ),
-				)
-			)
-		);
-	}
 
 	/**
 	 * Sanitize the container layout value
@@ -356,6 +327,25 @@ class Layout_Blog extends Base_Customizer {
 		$content_order = get_theme_mod( 'neve_post_content_ordering', json_encode( $default ) );
 		$content_order = json_decode( $content_order, true );
 		if ( ! in_array( 'meta', $content_order ) ) {
+			return false;
+		}
+
+		return true;
+	}
+
+	public function should_show_grid_cols() {
+		$blog_layout = get_theme_mod( 'neve_blog_archive_layout', 'default' );
+		if ( $blog_layout !== 'grid' ) {
+			return false;
+		}
+
+		return true;
+	}
+
+	public function should_show_masonry() {
+		$blog_layout = get_theme_mod( 'neve_blog_archive_layout', 'default' );
+		$columns     = get_theme_mod( 'neve_grid_layout', '1' );
+		if ( $blog_layout !== 'grid' || $columns === 1 ) {
 			return false;
 		}
 

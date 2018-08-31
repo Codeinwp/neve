@@ -66,9 +66,8 @@ class Front_End {
 			)
 		);
 
-		add_image_size( 'neve-blog', 510, 340, true );
+		add_image_size( 'neve-blog', 930, 620, true );
 
-//		add_editor_style();
 	}
 
 	/**
@@ -76,7 +75,13 @@ class Front_End {
 	 */
 	public function enqueue_scripts() {
 		wp_enqueue_style( 'neve-style', get_template_directory_uri() . '/style' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
-		wp_enqueue_script( 'neve-script', NEVE_ASSETS_URL . 'js/script' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.js', array( 'jquery' ), NEVE_VERSION, false );
+
+		wp_register_script( 'neve-script', NEVE_ASSETS_URL . 'js/script' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.js', apply_filters( 'neve_filter_main_script_dependencies', array( 'jquery' ) ), NEVE_VERSION, false );
+		wp_localize_script( 'neve-script', 'NeveProperties', apply_filters( 'neve_filter_main_script_localization', array(
+			'ajaxurl' => admin_url( 'admin-ajax.php' ),
+			'nonce'   => wp_create_nonce( 'neve-theme-nonce' ),
+		) ) );
+		wp_enqueue_script( 'neve-script' );
 	}
 
 	/**
@@ -86,9 +91,8 @@ class Front_End {
 	 */
 	public function register_sidebars() {
 		$sidebars = array(
-			'blog-sidebar'   => esc_html__( 'Sidebar', 'neve' ),
-			'shop-sidebar'    => esc_html__( 'Shop Sidebar', 'neve' ),
-			'header-sidebar' => esc_html__( 'Navigation', 'neve' ),
+			'blog-sidebar' => esc_html__( 'Sidebar', 'neve' ),
+			'shop-sidebar' => esc_html__( 'Shop Sidebar', 'neve' ),
 		);
 
 		$footer_sidebars = apply_filters(

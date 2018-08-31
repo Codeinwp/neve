@@ -30,5 +30,4 @@ do_action( 'neve_page_header', 'single-post' );
 		</div>
 	</div>
 <?php
-get_sidebar();
 get_footer();

@@ -65,19 +65,19 @@ class Layout_Container extends Base_Customizer {
 						'mobile'  => array(
 							'min'           => 200,
 							'max'           => 748,
-							'step'          => 0.1,
+							'step'          => 1,
 							'default_value' => 748,
 						),
 						'tablet'  => array(
 							'min'           => 300,
 							'max'           => 992,
-							'step'          => 0.1,
+							'step'          => 1,
 							'default_value' => 992,
 						),
 						'desktop' => array(
 							'min'           => 700,
 							'max'           => 2000,
-							'step'          => 0.1,
+							'step'          => 1,
 							'default_value' => 1170,
 						),
 					),

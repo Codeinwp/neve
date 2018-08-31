@@ -24,10 +24,10 @@ class Template_Parts extends Base_View {
 				$this->render_grid_post();
 				break;
 			case 'alternative':
-				$this->render_alternative_post();
+//				$this->render_alternative_post();
 				break;
 			case 'default':
-				$this->render_default();
+//				$this->render_default();
 				break;
 		}
 	}
@@ -35,8 +35,8 @@ class Template_Parts extends Base_View {
 	private function render_grid_post() { ?>
 		<article
 				id="post-<?php echo esc_attr( get_the_ID() ); ?>'"
-				class="<?php echo join( ' ', get_post_class( 'row ' . 'layout-' . $this->get_layout() ) ); ?>">
-			<div class="col article-content-col">
+				class="<?php echo join( ' ', get_post_class( 'col-12 ' . $this->get_grid_columns_class() . ' layout-' . $this->get_layout() ) ); ?>">
+			<div class="article-content-col">
 				<div class="content">
 					<?php $this->render_article_inner_content(); ?>
 				</div>
@@ -124,12 +124,15 @@ class Template_Parts extends Base_View {
 	}
 
 	private function read_more_button() { ?>
-		<a href="<?php the_permalink() ?>" class="button button-secondary"><?php esc_html_e( 'Read more', 'neve' ) ?></a>
+		<a href="<?php the_permalink() ?>"
+				class="button button-secondary"><?php esc_html_e( 'Read more', 'neve' ) ?></a>
 		<?php
 	}
 
-	private function get_grid_columns_number() {
-		return get_theme_mod( 'neve_grid_layout', 1 );
+	private function get_grid_columns_class() {
+		$column_numbers = get_theme_mod( 'neve_grid_layout', 1 );
+
+		return 'col-sm-' . ( 12 / $column_numbers );
 	}
 
 }

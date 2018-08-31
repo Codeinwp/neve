@@ -14,6 +14,7 @@
   transition: $transition_med;
   &.responsive-opened {
     max-height: calc(100vh - 70px);
+    padding-bottom: $spacing-sm;
   }
   a {
     width: 100%;
@@ -54,7 +55,6 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-bottom: $spacing-sm;
 }
 
 .caret {
@@ -86,6 +86,10 @@
 }
 
 @mixin nav-menu--laptop() {
+  .menu-opened {
+    overflow: inherit;
+  }
+
   .nv-nav-wrap {
     flex-direction: row;
     align-items: center;
@@ -98,6 +102,9 @@
     max-height: inherit;
     margin-left: auto;
     justify-content: flex-end;
+    &.responsive-opened {
+      padding-bottom: 0;
+    }
     > li {
       width: inherit;
       > a {
@@ -177,7 +184,15 @@
     top: 0;
     display: inline;
     padding-right: 0;
+    .dropdown-open > & > .caret {
+      color: $link_color;
+      transform: rotate( 135deg );
+    }
+    .dropdown-open > & {
+      background: transparent;
+    }
   }
+
   .sub-menu {
     .caret-wrap {
       padding-right: 25px;

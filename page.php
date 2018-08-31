@@ -11,10 +11,10 @@ get_header();
 
 do_action( 'neve_page_header', 'single-page' );
 ?>
-<div class="<?php echo esc_attr( $container_class ) ?> single-page-container">
+<div class="<?php echo esc_attr( $container_class ); ?> single-page-container">
 	<div class="row">
 		<?php do_action( 'neve_do_sidebar', 'single-page', 'left' ); ?>
-		<div class="nv-single-page-wrap col">
+		<div class="nv-single-page-wrap col gapless">
 			<?php
 			if ( have_posts() ) {
 				while ( have_posts() ) {
