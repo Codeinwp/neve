@@ -24,8 +24,8 @@ class Typography extends Base_Inline {
 	 * Add inline style for font families.
 	 */
 	private function fonts_family() {
-		$headings_font = get_theme_mod( 'neve_headings_font_family', 'Open Sans' );
-		$body_font     = get_theme_mod( 'neve_body_font_family', 'Open Sans' );
+		$headings_font = get_theme_mod( 'neve_headings_font_family', false );
+		$body_font     = get_theme_mod( 'neve_body_font_family', false );
 		$this->add_style( array(
 			array(
 				'css_prop' => 'font-family',

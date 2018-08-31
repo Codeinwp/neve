@@ -14,6 +14,11 @@ use Neve\Customizer\Base_Customizer;
 use Neve\Customizer\Types\Control;
 use Neve\Customizer\Types\Section;
 
+/**
+ * Class Typography
+ *
+ * @package Neve\Customizer\Options
+ */
 class Typography extends Base_Customizer {
 	/**
 	 * Add controls
@@ -86,6 +91,9 @@ class Typography extends Base_Customizer {
 		);
 	}
 
+	/**
+	 * Add body typography controls.
+	 */
 	private function controls_typography_body() {
 		/**
 		 * Body font family
@@ -96,7 +104,7 @@ class Typography extends Base_Customizer {
 				array(
 					'transport'         => $this->selective_refresh,
 					'sanitize_callback' => 'sanitize_text_field',
-					'default'           => 'Open Sans',
+					'default'           => 'Graphik,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif',
 				),
 				array(
 					'label'    => esc_html__( 'Font Family', 'neve' ),
@@ -181,6 +189,9 @@ class Typography extends Base_Customizer {
 		);
 	}
 
+	/**
+	 * Add controls for typography headings.
+	 */
 	private function controls_typography_headings() {
 		/**
 		 * Headings font family
@@ -191,7 +202,7 @@ class Typography extends Base_Customizer {
 				array(
 					'transport'         => $this->selective_refresh,
 					'sanitize_callback' => 'sanitize_text_field',
-					'default'           => 'Open Sans',
+					'default'           => 'Graphik,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif',
 				),
 				array(
 					'label'    => esc_html__( 'Font Family', 'neve' ),
@@ -202,44 +213,7 @@ class Typography extends Base_Customizer {
 			)
 		);
 
-		$controls = array(
-			'neve_h1' => array(
-				'priority'            => 20,
-				'default_size'        => '2.5',
-				'default_line_height' => 1.6,
-				'heading'             => 'H1',
-			),
-			'neve_h2' => array(
-				'priority'            => 30,
-				'default_size'        => '2',
-				'default_line_height' => 1.6,
-				'heading'             => 'H2',
-			),
-			'neve_h3' => array(
-				'priority'            => 40,
-				'default_size'        => '1.75',
-				'default_line_height' => 1.6,
-				'heading'             => 'H3',
-			),
-			'neve_h4' => array(
-				'priority'            => 50,
-				'default_size'        => '1.5',
-				'default_line_height' => 1.6,
-				'heading'             => 'H4',
-			),
-			'neve_h5' => array(
-				'priority'            => 60,
-				'default_size'        => '1.25',
-				'default_line_height' => 1.6,
-				'heading'             => 'H5',
-			),
-			'neve_h6' => array(
-				'priority'            => 70,
-				'default_size'        => '1',
-				'default_line_height' => 1.6,
-				'heading'             => 'H6',
-			),
-		);
+		$controls = $this->get_headings_controls();
 
 		foreach ( $controls as $control_id => $control ) {
 			/**
@@ -252,12 +226,13 @@ class Typography extends Base_Customizer {
 					'transport'         => $this->selective_refresh,
 				),
 					array(
-						'label'     => $control['heading'],
-						'section'   => 'neve_typography_headings',
-						'priority'  => $control['priority'],
-						'class'     => 'headings-accordion',
-						'accordion' => true,
-						'expanded'  => $control_id === 'neve_h1' ? true : false,
+						'label'            => $control['heading'],
+						'section'          => 'neve_typography_headings',
+						'priority'         => $control['priority'],
+						'class'            => 'headings-accordion',
+						'accordion'        => true,
+						'controls_to_wrap' => 2,
+						'expanded'         => $control_id === 'neve_h1' ? true : false,
 					),
 					'Neve\Customizer\Controls\Heading'
 				)
@@ -307,9 +282,9 @@ class Typography extends Base_Customizer {
 			$this->add_control(
 				new Control(
 					$control_id . '_line_height', array(
-						'sanitize_callback' => 'neve_sanitize_range_value',
-						'transport'         => $this->selective_refresh,
-					),
+					'sanitize_callback' => 'neve_sanitize_range_value',
+					'transport'         => $this->selective_refresh,
+				),
 					array(
 						'label'       => esc_html__( 'Line Height', 'neve' ),
 						'section'     => 'neve_typography_headings',
@@ -338,6 +313,52 @@ class Typography extends Base_Customizer {
 				)
 			);
 		}
+	}
+
+	/**
+	 * Get the controls for the headings.
+	 *
+	 * @return array
+	 */
+	private function get_headings_controls() {
+		return array(
+			'neve_h1' => array(
+				'priority'            => 20,
+				'default_size'        => '2.5',
+				'default_line_height' => 1.6,
+				'heading'             => 'H1',
+			),
+			'neve_h2' => array(
+				'priority'            => 30,
+				'default_size'        => '2',
+				'default_line_height' => 1.6,
+				'heading'             => 'H2',
+			),
+			'neve_h3' => array(
+				'priority'            => 40,
+				'default_size'        => '1.75',
+				'default_line_height' => 1.6,
+				'heading'             => 'H3',
+			),
+			'neve_h4' => array(
+				'priority'            => 50,
+				'default_size'        => '1.5',
+				'default_line_height' => 1.6,
+				'heading'             => 'H4',
+			),
+			'neve_h5' => array(
+				'priority'            => 60,
+				'default_size'        => '1.25',
+				'default_line_height' => 1.6,
+				'heading'             => 'H5',
+			),
+			'neve_h6' => array(
+				'priority'            => 70,
+				'default_size'        => '1',
+				'default_line_height' => 1.6,
+				'heading'             => 'H6',
+			),
+		);
 	}
 }
 

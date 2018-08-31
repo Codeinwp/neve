@@ -18,6 +18,7 @@
     min-height: 600px;
 }
 
-#sub-accordion-section-neve_typography_headings {
-    overflow-y: hidden;
+#customize-theme-controls .customize-pane-child.accordion-section-content#sub-accordion-section-neve_typography_headings,
+#customize-theme-controls .customize-pane-child.accordion-section-content#sub-accordion-section-neve_sidebar {
+    overflow: initial;
 }

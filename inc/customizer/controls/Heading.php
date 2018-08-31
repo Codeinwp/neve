@@ -27,14 +27,18 @@ class Heading extends \WP_Customize_Control {
 
 	public $expanded = true;
 
+	public $controls_to_wrap = 1;
+
 	public function json() {
-		$json               = parent::json();
-		$json['classes']    = $this->class;
+		$json              = parent::json();
+		$json['classes']   = $this->class;
 		$json['accordion'] = $this->accordion;
 
 		if ( $this->accordion === true ) {
 			$json['classes'] .= ' accordion';
 		}
+
+		$json['style'] = $this->print_style();
 
 		return $json;
 	}
@@ -52,7 +56,6 @@ class Heading extends \WP_Customize_Control {
 		}
 
 		echo '<li id="' . esc_attr( $id ) . '" class="' . esc_attr( $class ) . '">';
-		$this->render_content();
 		echo '</li>';
 	}
 
@@ -73,6 +76,28 @@ class Heading extends \WP_Customize_Control {
 		expandButton = '<span class="accordion-expand-button"></span>';
 		} #>
 		<h4 class="neve-customizer-heading">{{{ data.label }}}{{{expandButton}}}</h4>
+		{{{data.style}}}
 		<?php
+	}
+
+	/**
+	 * Print the style for the accordion.
+	 */
+	protected function print_style() {
+		$style = '';
+		$style .= '<style>';
+		for ( $i = 1; $i <= $this->controls_to_wrap; $i ++ ) {
+			$style .= '.accordion.' . $this->class . ':not(.expanded)';
+			for ( $j = 1; $j <= $i; $j ++ ) {
+				$style .= ' + li';
+			}
+			if ( $i !== $this->controls_to_wrap ) {
+				$style .= ',';
+			}
+		}
+		$style .= '{max-height: 0;opacity: 0;margin: 0;}';
+		$style .= '</style>';
+
+		return $style;
 	}
 }

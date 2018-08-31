@@ -74,13 +74,6 @@ class Layout_Blog extends Base_Customizer {
 							'url' => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqCAMAAABpj1iyAAAACVBMVEUAyv/V1dX////o4eoDAAAAfUlEQVR42u3ZoQ0AMAgAQej+Q3cDCI6QQyNOvKGNt3KwsLCwsLB2sKKc4V6/iIWFhYWFhYWFhXWN5cQ4xcpyhos9K8tZytKW5CWvLclLXltYWFhYWFj+Ez0kYWFhYWFhYWFhYTkxrrGyHC/N2pK85LUleclrCwsLCwvrMOsDUDxdDThzw38AAAAASUVORK5CYII=',
 						),
 					),
-//					'subcontrols' => array(
-//						'alternative' => array(),
-//						'default'     => array(),
-//						'grid'        => array(
-//							'neve_grid_layout',
-//						),
-//					),
 				),
 				'Neve\Customizer\Controls\Radio_Image'
 			)
@@ -117,12 +110,13 @@ class Layout_Blog extends Base_Customizer {
 					'default'           => false,
 				),
 				array(
-					'type'            => 'checkbox',
+					'type'            => 'checkbox-toggle',
 					'priority'        => 35,
 					'section'         => 'neve_blog_archive_layout',
 					'label'           => esc_html__( 'Enable Masonry', 'neve' ),
 					'active_callback' => array( $this, 'should_show_masonry' ),
-				)
+				),
+				'Neve\Customizer\Controls\Checkbox'
 			)
 		);
 	}
@@ -135,6 +129,7 @@ class Layout_Blog extends Base_Customizer {
 				'neve_post_excerpt_length',
 				array(
 					'sanitize_callback' => 'neve_sanitize_range_value',
+					'default'           => 40,
 				),
 				array(
 					'label'      => esc_html__( 'Excerpt Length', 'neve' ),
@@ -179,10 +174,6 @@ class Layout_Blog extends Base_Customizer {
 	}
 
 	/**
-	 * Add categories toggle control
-	 */
-
-	/**
 	 * Sanitize the container layout value
 	 *
 	 * @param string $value value from the control.
@@ -214,7 +205,9 @@ class Layout_Blog extends Base_Customizer {
 		return esc_html( $value );
 	}
 
-
+	/**
+	 * Add content order control.
+	 */
 	private function control_content_order() {
 		$order_default_components = array(
 			'thumbnail',
@@ -242,6 +235,9 @@ class Layout_Blog extends Base_Customizer {
 		);
 	}
 
+	/**
+	 * Add meta order control.
+	 */
 	private function control_meta_order() {
 		$order_default_components = array(
 			'author',
@@ -269,6 +265,9 @@ class Layout_Blog extends Base_Customizer {
 		);
 	}
 
+	/**
+	 * Sanitize meta order control.
+	 */
 	public function sanitize_meta_ordering( $value ) {
 		$allowed = array(
 			'author',
@@ -292,6 +291,9 @@ class Layout_Blog extends Base_Customizer {
 		return $value;
 	}
 
+	/**
+	 * Sanitize content order control.
+	 */
 	public function sanitize_post_content_ordering( $value ) {
 		$allowed = array(
 			'thumbnail',
@@ -316,6 +318,11 @@ class Layout_Blog extends Base_Customizer {
 		return $value;
 	}
 
+	/**
+	 * Callback to show the meta order control.
+	 *
+	 * @return bool
+	 */
 	public function should_show_meta_order() {
 		$default       = array(
 			'thumbnail',
@@ -333,6 +340,11 @@ class Layout_Blog extends Base_Customizer {
 		return true;
 	}
 
+	/**
+	 * Callback to show grid columns control.
+	 *
+	 * @return bool
+	 */
 	public function should_show_grid_cols() {
 		$blog_layout = get_theme_mod( 'neve_blog_archive_layout', 'default' );
 		if ( $blog_layout !== 'grid' ) {
@@ -342,10 +354,18 @@ class Layout_Blog extends Base_Customizer {
 		return true;
 	}
 
+	/**
+	 * Callback to show masonry control.
+	 *
+	 * @return bool
+	 */
 	public function should_show_masonry() {
 		$blog_layout = get_theme_mod( 'neve_blog_archive_layout', 'default' );
 		$columns     = get_theme_mod( 'neve_grid_layout', 1 );
-		if ( $blog_layout !== 'grid' || $columns === 1 ) {
+		if ( $blog_layout !== 'grid' ) {
+			return false;
+		}
+		if ( $columns == 1 ) {
 			return false;
 		}
 

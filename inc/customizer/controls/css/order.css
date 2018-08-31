@@ -1,7 +1,7 @@
 .ti-order-sortable li {
     text-align: center;
     background: #fff;
-    border: 1px solid #ccc;
+    border: 1px dashed #ccc;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,10 +12,6 @@
 .ti-order-sortable li.enabled {
     opacity: 1;
     border: 1px solid #666;
-}
-
-.ti-order-sortable li:hover {
-    border: 1px solid #ccc;
 }
 
 .ti-order-sortable li p {

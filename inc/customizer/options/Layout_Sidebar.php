@@ -4,6 +4,7 @@
  *
  * Author:          Andrei Baicus <andrei@themeisle.com>
  * Created on:      20/08/2018
+ *
  * @package Neve\Customizer\Options
  */
 
@@ -26,6 +27,7 @@ class Layout_Sidebar extends Base_Customizer {
 	public function add_controls() {
 		$this->section_sidebar();
 		$this->control_sidebar_width();
+		$this->accordion_heading();
 		$this->control_sidebar_layout();
 	}
 
@@ -71,6 +73,28 @@ class Layout_Sidebar extends Base_Customizer {
 				'Neve\Customizer\Controls\Range'
 			)
 		);
+	}
+
+	private function accordion_heading() {
+		$this->add_control(
+			new Control(
+				'sidebars_ui_heading', array(
+					'sanitize_callback' => 'sanitize_text_field',
+					'transport'         => $this->selective_refresh,
+				),
+				array(
+					'label'            => __( 'Advanced', 'neve' ),
+					'section'          => 'neve_sidebar',
+					'priority'         => 33,
+					'class'            => 'advanced-sidebar-accordion',
+					'accordion'        => true,
+					'controls_to_wrap' => class_exists( 'WooCommerce' ) ? 4 : 2,
+					'expanded'         => false,
+				),
+				'Neve\Customizer\Controls\Heading'
+			)
+		);
+
 	}
 
 	/**

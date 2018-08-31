@@ -18,8 +18,65 @@
     min-height: 600px;
 }
 
-#sub-accordion-section-neve_typography_headings {
-    overflow-y: hidden;
+#customize-theme-controls .customize-pane-child.accordion-section-content#sub-accordion-section-neve_typography_headings,
+#customize-theme-controls .customize-pane-child.accordion-section-content#sub-accordion-section-neve_sidebar {
+    overflow: initial;
+}.customize-control-checkbox-toggle {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: flex !important;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 7px 0;
+}
+.customize-control-checkbox-toggle span {
+    margin-left: 20px;
+    font-weight: 600;
+}
+.customize-control-checkbox-toggle input[type=checkbox] {
+    display: none;
+}
+
+.customize-control-checkbox-toggle label {
+    cursor: pointer;
+    width: 50px;
+    height: 25px;
+    background: grey;
+    display: block;
+    border-radius: 100px;
+    position: relative;
+    margin-right: 20px;
+}
+
+.customize-control-checkbox-toggle label:after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 15px;
+    height: 15px;
+    background: #fff;
+    border-radius: 90px;
+    transition: 0.3s;
+}
+
+.customize-control-checkbox-toggle input:checked + label {
+    background: #13aff0;
+}
+
+.customize-control-checkbox-toggle input:checked + label:after {
+    left: calc(100% - 5px);
+    transform: translateX(-100%);
+}
+
+.customize-control-checkbox-toggle label:active:after {
+    width: 30px;
+}
+
+.customize-control-checkbox-toggle > * {
+    display: flex;
+    flex-direction: row;
 }.customize-control-hestia-dimensions > ul { width: 100%; }
 .customize-control-hestia-dimensions .dimension-wrap { float: left; width: 17%; margin: 0; }
 .customize-control-hestia-dimensions .dimension-wrap input,
@@ -170,22 +227,10 @@
   transform: rotate( 180deg );
   top:0;
 }
-
-.accordion ~ li {
-  transition: opacity,height .3s ease-in-out;
-
-}
-
-/* Controls specific CSS */
-.accordion.headings-accordion:not(.expanded) + li + li, .accordion.headings-accordion:not(.expanded) + li {
-  /*transform: scaleY(0);*/
-  max-height: 0;
-  opacity: 0;
-  margin: 0;
-}.ti-order-sortable li {
+.ti-order-sortable li {
     text-align: center;
     background: #fff;
-    border: 1px solid #ccc;
+    border: 1px dashed #ccc;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -196,10 +241,6 @@
 .ti-order-sortable li.enabled {
     opacity: 1;
     border: 1px solid #666;
-}
-
-.ti-order-sortable li:hover {
-    border: 1px solid #ccc;
 }
 
 .ti-order-sortable li p {

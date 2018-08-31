@@ -60,7 +60,7 @@ class Font_Selector extends \WP_Customize_Control {
 						<span class="hestia-fs-option"
 								data-source="<?php echo 'system'; ?>"
 								data-control="<?php echo esc_attr( $this->id ); ?>"
-								data-option="<?php echo esc_attr( $this->default ); ?>"><?php esc_html_e( 'Default', 'neve' ); echo ' ('. esc_html( $this->default ) .')' ?></span>
+								data-option="<?php esc_html_e( 'Default', 'neve' ); ?>"><?php esc_html_e( 'Default', 'neve' ); ?></span>
 					<?php
 					$this->render_dropdown_options_group( $std_fonts, esc_html__( 'Standard Fonts', 'neve' ), 'system' );
 					$this->render_dropdown_options_group( $google_fonts, esc_html__( 'Google Fonts', 'neve' ), 'google-fonts' );
@@ -77,7 +77,7 @@ class Font_Selector extends \WP_Customize_Control {
 	 *
 	 * @param array  $options Options in group.
 	 * @param string $title   Title of options group.
-	 * @param string $source system/google-font
+	 * @param string $source  system/google-font
 	 */
 	protected function render_dropdown_options_group( $options, $title, $source ) {
 		if ( ! empty( $options ) ) {
@@ -101,7 +101,7 @@ class Font_Selector extends \WP_Customize_Control {
 	 *
 	 * @since 1.1.38
 	 */
-	function get_standard_fonts() {
+	private function get_standard_fonts() {
 		return apply_filters(
 			'hestia_standard_fonts_array', array(
 				'Arial, Helvetica, sans-serif',
@@ -132,7 +132,7 @@ class Font_Selector extends \WP_Customize_Control {
 	 *
 	 * @since 1.1.38
 	 */
-	function get_google_fonts() {
+	private function get_google_fonts() {
 		return apply_filters( 'hestia_google_fonts_array', array(
 			'ABeeZee',
 			'Abel',
@@ -940,5 +940,4 @@ class Font_Selector extends \WP_Customize_Control {
 			'Zeyada'
 		) );
 	}
-
 }

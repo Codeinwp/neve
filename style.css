@@ -336,7 +336,7 @@ html {
 }
 
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: Graphik,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;
   color: #333;
   font-size: 1rem;
   line-height: 1.68421;
@@ -346,7 +346,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Open Sans", sans-serif;
+  font-family: Graphik,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;
   line-height: 1.68421;
 }
 
@@ -1603,6 +1603,8 @@ form input[type="text"], form input[type="password"], form input[type="email"], 
   }
   .nv-nav-cart .woocommerce-mini-cart__empty-message {
     text-align: center;
+    margin-bottom: 0;
+    padding: 10px 0;
   }
   .nv-nav-cart .woocommerce.widget_shopping_cart .total {
     border-top: 1px solid #f0f0f0;

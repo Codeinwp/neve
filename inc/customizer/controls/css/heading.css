@@ -45,16 +45,3 @@
   transform: rotate( 180deg );
   top:0;
 }
-
-.accordion ~ li {
-  transition: opacity,height .3s ease-in-out;
-
-}
-
-/* Controls specific CSS */
-.accordion.headings-accordion:not(.expanded) + li + li, .accordion.headings-accordion:not(.expanded) + li {
-  /*transform: scaleY(0);*/
-  max-height: 0;
-  opacity: 0;
-  margin: 0;
-}

@@ -60,9 +60,10 @@ class Top_Bar extends Base_Customizer {
 				array(
 					'label'    => esc_html__( 'Enable Top Bar', 'neve' ),
 					'section'  => 'neve_top_bar_section',
-					'type'     => 'checkbox',
+					'type'     => 'checkbox-toggle',
 					'priority' => 25,
-				)
+				),
+				'Neve\Customizer\Controls\Checkbox'
 			)
 		);
 	}

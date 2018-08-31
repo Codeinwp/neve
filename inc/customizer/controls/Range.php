@@ -133,6 +133,9 @@ class Range extends \WP_Customize_Control {
 		<#
 		var type = data.sum_type ? 'text' : 'number';
 		var value = data.value ? data.value[mediaQuery] : attr.default;
+		if( ! data.media_query ) {
+		value = data.value? data.value : attr.default
+		}
 		var active = mediaQuery === 'desktop' ? 'active' : '';
 
 		if( data.sum_type ) { value = '+' + value; }
