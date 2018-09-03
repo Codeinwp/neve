@@ -17,35 +17,53 @@ class Template_Parts extends Base_View {
 		add_action( 'neve_blog_post_template_part_content', array( $this, 'render_post' ) );
 	}
 
+	/**
+	 * Render the post.
+	 */
 	public function render_post() {
-		$layout = $this->get_layout();
-		switch ( $layout ) {
-			case 'grid':
-				$this->render_grid_post();
-				break;
-			case 'alternative':
-//				$this->render_alternative_post();
-				break;
-			case 'default':
-//				$this->render_default();
-				break;
-		}
-	}
-
-	private function render_grid_post() { ?>
+		?>
 		<article
 				id="post-<?php echo esc_attr( get_the_ID() ); ?>'"
-				class="<?php echo join( ' ', get_post_class( 'col-12 ' . $this->get_grid_columns_class() . ' layout-' . $this->get_layout() ) ); ?>">
+				class="<?php echo esc_attr( $this->post_class() ); ?>">
 			<div class="article-content-col">
 				<div class="content">
 					<?php $this->render_article_inner_content(); ?>
 				</div>
 			</div>
 		</article>
-	<?php }
+		<?php
+	}
 
+
+	/**
+	 * Echo the post class.
+	 */
+	private function post_class() {
+		$class = join( ' ', get_post_class() );
+		$class .= ' col-12 layout-' . $this->get_layout();
+		if ( $this->get_layout() === 'grid' ) {
+			$class .= ' ' . $this->get_grid_columns_class();
+		}
+
+		return $class;
+	}
+
+	/**
+	 * Render inner content for <article>
+	 */
 	private function render_article_inner_content() {
-		// This can be used for later reordering. Just pass in the array as a theme mod with the default.
+		if ( $this->get_layout() !== 'grid' ) {
+			$this->post_thumbnail();
+			echo '<div class="non-grid-content ' . esc_attr( $this->get_layout() ) . '-layout-content">';
+			$this->title();
+			$this->meta();
+			$this->excerpt();
+			$this->read_more_button();
+			echo '</div>';
+
+			return;
+		}
+
 		$default_order = json_encode( array(
 			'thumbnail',
 			'title',
@@ -56,7 +74,7 @@ class Template_Parts extends Base_View {
 		$order         = get_theme_mod( 'neve_post_content_ordering', $default_order );
 		$order         = json_decode( $order );
 
-		// get_theme_mod( 'neve_post_layout_ordering', $order )
+
 		foreach ( $order as $content_bit ) {
 			switch ( $content_bit ) {
 				case 'thumbnail':
@@ -80,6 +98,9 @@ class Template_Parts extends Base_View {
 		}
 	}
 
+	/**
+	 * Render the post thumbnail.
+	 */
 	private function post_thumbnail() {
 		if ( ! has_post_thumbnail() ) {
 			return;
@@ -93,11 +114,20 @@ class Template_Parts extends Base_View {
 		echo wp_kses_post( $markup );
 	}
 
+	/**
+	 * Get the posts layout.
+	 *
+	 * @return string
+	 */
 	private function get_layout() {
 		return get_theme_mod( 'neve_blog_archive_layout', 'default' );
 	}
 
-	private function title() { ?>
+	/**
+	 * Render title.
+	 */
+	private function title() {
+		?>
 		<h3 class="blog-entry-title entry-title">
 			<a href="<?php the_permalink(); ?>">
 				<?php the_title(); ?>
@@ -106,6 +136,9 @@ class Template_Parts extends Base_View {
 		<?php
 	}
 
+	/**
+	 * Render meta.
+	 */
 	private function meta() {
 		$default_meta_order = json_encode( array(
 			'author',
@@ -119,16 +152,27 @@ class Template_Parts extends Base_View {
 		do_action( 'neve_post_meta_archive', $meta_order );
 	}
 
+	/**
+	 * Render excerpt.
+	 */
 	private function excerpt() {
 		do_action( 'neve_excerpt_archive', 'index' );
 	}
 
+	/**
+	 * Render read more button.
+	 */
 	private function read_more_button() { ?>
 		<a href="<?php the_permalink() ?>"
 				class="button button-secondary"><?php esc_html_e( 'Read more', 'neve' ) ?></a>
 		<?php
 	}
 
+	/**
+	 * Get grid columns class.
+	 *
+	 * @return string
+	 */
 	private function get_grid_columns_class() {
 		$column_numbers = get_theme_mod( 'neve_grid_layout', 1 );
 

@@ -47,6 +47,7 @@ class Style_Manager extends Base_View {
 	private $style_classes = array(
 		'Typography',
 		'Container_Sidebar',
+		'Colors',
 	);
 
 	/**
@@ -88,7 +89,7 @@ class Style_Manager extends Base_View {
 		$wp_upload_dir = wp_upload_dir( null, false );
 
 		$this->style_path = $wp_upload_dir['basedir'] . '/neve-theme/';
-		$this->style_url  = $wp_upload_dir['basedir'] . '/neve-theme/';
+		$this->style_url  = $wp_upload_dir['baseurl'] . '/neve-theme/';
 	}
 
 	/**
@@ -107,6 +108,7 @@ class Style_Manager extends Base_View {
 		if ( ! is_admin() && ! is_customize_preview() ) {
 			add_action( 'shutdown', array( $this, 'generate_customizer_css_file' ), PHP_INT_MAX );
 		}
+
 	}
 
 	/**
@@ -121,7 +123,7 @@ class Style_Manager extends Base_View {
 			! is_customize_preview() &&
 			NEVE_DEBUG === false
 		) {
-			wp_enqueue_style( 'neve-generated-style', home_url( 'wp-content/uploads/neve-theme/' . $this->css_file_name ), array( 'neve-style' ), $this->get_style_version() );
+			wp_enqueue_style( 'neve-generated-style', $this->style_url . $this->css_file_name, array( 'neve-style' ), $this->get_style_version() );
 
 			return;
 		}
@@ -149,7 +151,6 @@ class Style_Manager extends Base_View {
 		if ( ! is_dir( $this->style_path ) ) {
 			wp_mkdir_p( $this->style_path );
 		}
-
 		file_put_contents( $this->style_path . $this->css_file_name, $style );
 	}
 
@@ -211,7 +212,7 @@ class Style_Manager extends Base_View {
 	 * @return string
 	 */
 	private function get_style() {
-		return esc_attr( $this->style . $this->tablet_style . $this->desktop_style );
+		return ( $this->style . $this->tablet_style . $this->desktop_style );
 	}
 
 	/**

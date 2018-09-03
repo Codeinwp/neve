@@ -21,7 +21,14 @@
   margin-bottom: $spacing;
   padding-bottom: $spacing;
   border-bottom: $muted-border;
+  display: flex;
+  flex-direction: column;
+  .button {
+    margin-top: auto;
+    align-self: flex-start;
+  }
 }
+
 
 .excerpt-wrap {
   padding: $spacing 0;
@@ -40,8 +47,4 @@
   @include horizontal-list($spacing-xs);
   justify-content: center;
   margin: $spacing-xs auto;
-}
-
-.layout-grid > .article-content-col, .layout-grid > .article-content-col .content {
-  height: 100%;
 }

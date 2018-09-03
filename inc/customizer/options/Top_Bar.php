@@ -9,7 +9,6 @@
 
 namespace Neve\Customizer\Options;
 
-
 use Neve\Customizer\Base_Customizer;
 use Neve\Customizer\Types\Control;
 use Neve\Customizer\Types\Partial;
@@ -27,6 +26,7 @@ class Top_Bar extends Base_Customizer {
 		$this->control_top_bar_enable();
 		$this->control_top_bar_layout();
 		$this->control_top_bar_content();
+		$this->control_top_bar_menu_shortcut();
 		$this->partial_refresh();
 	}
 
@@ -159,5 +159,23 @@ class Top_Bar extends Base_Customizer {
 	public function top_bar_content_callback() {
 		$top_bar_view = new Top_Bar_View();
 		$top_bar_view->render_top_bar();
+	}
+
+	private function control_top_bar_menu_shortcut() {
+		$this->add_control( new Control(
+			'neve_top_bar_menu_shortcut',
+			array(
+				'transport' => $this->selective_refresh,
+			),
+			array(
+				'button_class' => 'nv-top-bar-menu-shortcut',
+				'icon_class'   => 'menu',
+				'button_text'  => __( 'Select Top Bar Menu', 'neve' ),
+				'shortcut'     => true,
+				'priority'     => 40,
+				'section'      => 'neve_top_bar_section',
+			),
+			'Neve\Customizer\Controls\Button'
+		) );
 	}
 }

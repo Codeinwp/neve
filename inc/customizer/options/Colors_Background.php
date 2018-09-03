@@ -44,25 +44,28 @@ class Colors_Background extends Base_Customizer {
 		);
 	}
 
+	/**
+	 * Add colors controls.
+	 */
 	private function controls_colors() {
 		$color_controls = array(
 			'neve_theme_color'      => array(
-				'default'  => '#bada55',
+				'default'  => '#00a4f7',
 				'priority' => 10,
 				'label'    => __( 'Theme Color', 'neve' ),
 			),
 			'neve_link_color'       => array(
-				'default'  => '#0366d6',
+				'default'  => '#00a4f7',
 				'priority' => 15,
 				'label'    => __( 'Link Color', 'neve' ),
 			),
 			'neve_link_hover_color' => array(
-				'default'  => '#bada55',
+				'default'  => '#005bf7',
 				'priority' => 20,
 				'label'    => __( 'Link Hover Color', 'neve' ),
 			),
 			'neve_text_color'       => array(
-				'default'  => '#24292e',
+				'default'  => '#606060',
 				'priority' => 25,
 				'label'    => __( 'Text Color', 'neve' ),
 			),
@@ -73,7 +76,6 @@ class Colors_Background extends Base_Customizer {
 				new Control(
 					$control_id,
 					array(
-						'transport'         => $this->selective_refresh,
 						'sanitize_callback' => 'neve_sanitize_colors',
 						'default'           => $control_properties['default'],
 					),

@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<ruleset name="Themeisle">
+    <description>Themeisle rules for PHP_CodeSniffer</description>
+
+    <file>.</file>
+
+    <exclude-pattern>node_modules/*</exclude-pattern>
+    <exclude-pattern>*.min.js</exclude-pattern>
+    <exclude-pattern>*.min.css</exclude-pattern>
+    <exclude-pattern>*.js</exclude-pattern>
+    <exclude-pattern>*.css</exclude-pattern>
+
+    <rule ref="WordPress-Core">
+
+        <exclude name="Squiz.Commenting.FileComment.SpacingAfterComment" />
+        <exclude name="Squiz.Commenting.FunctionComment.MissingParamTag" />
+        <exclude name="Squiz.Commenting.InlineComment.InvalidEndChar" />
+        <exclude name="Squiz.Commenting.InlineComment.NotCapital" />
+        <exclude name="Squiz.PHP.Eval.Discouraged" />
+        <exclude name="Generic.PHP.DisallowShortOpenTag" />
+
+        <exclude name="WordPress.PHP.YodaConditions.NotYoda" />
+        <exclude name="Squiz.PHP.CommentedOutCode" />
+
+    </rule>
+    <rule ref="WordPress-Docs">
+
+    </rule>
+    nv-top-bar-content
+    <rule ref="Squiz.Commenting.FunctionComment.ScalarTypeHintMissing">
+        <severity>0</severity>
+    </rule>
+
+</ruleset>

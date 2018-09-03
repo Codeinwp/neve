@@ -1,1 +1,3 @@
-.blog-article.layout-grid {}
+.layout-grid > .article-content-col, .layout-grid > .article-content-col .content {
+  height: 100%;
+}

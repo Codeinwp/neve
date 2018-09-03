@@ -18,9 +18,11 @@
   @include nav-search--laptop();
   @include nav-cart--laptop();
   @include top-bar--laptop();
+  @include nav-menu-right--laptop();
+  @include blog-layout-default-alt--laptop();
 }
 
 @media (min-width: #{$desktop}) {
-@include grid-container--desktop();
+  @include grid-container--desktop();
   @include grid--desktop();
 }

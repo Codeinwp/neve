@@ -44,7 +44,7 @@
 				if ( page >= NeveProperties.infiniteScrollMaxPages ) {
 					return false;
 				}
-				$( '.nv-loader' ).fadeIn( 1500, 'swing' );
+
 				var counter = $( 'article.layout-grid' ).length;
 				lock = true;
 				$.ajax( {
@@ -55,6 +55,9 @@
 						page: page,
 						counter: counter,
 						nonce: NeveProperties.nonce
+					},
+					beforeSend: function () {
+						$( '.nv-loader' ).fadeIn( 1500, 'swing' );
 					},
 					success: function ( response ) {
 						if ( response ) {
@@ -70,7 +73,7 @@
 							page++;
 							lock = false;
 						}
-					}
+					},
 				} );
 			} );
 		},

@@ -6,6 +6,9 @@
 .nv-top-bar-content {
   display: flex;
   flex: 1;
+  p {
+    margin-bottom: 0;
+  }
 }
 
 .nv-top-bar {

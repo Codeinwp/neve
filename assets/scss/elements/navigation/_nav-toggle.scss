@@ -20,6 +20,11 @@
 .navbar-toggle {
   border: none;
   background: none;
+  cursor: pointer;
+  &:hover {
+    box-shadow: none;
+    transform: none;
+  }
 }
 
 .navbar-toggle.active {

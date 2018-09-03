@@ -10,3 +10,8 @@
     @include button-secondary();
   }
 }
+
+button, input[type=button].btn {
+  @include button();
+  @include button-primary();
+}

@@ -44,6 +44,14 @@ class Header extends Base_View {
 		<?php
 	}
 
+	/**
+	 * Add the last menu item.
+	 *
+	 * @param array  $items the nav items.
+	 * @param object $args  menu properties.
+	 *
+	 * @return string
+	 */
 	public function add_last_menu_item( $items, $args ) {
 		if ( $args->theme_location !== 'primary' ) {
 			return $items;
@@ -84,11 +92,21 @@ class Header extends Base_View {
 		return $items;
 	}
 
+	/**
+	 * Get the navbar class.
+	 *
+	 * @return string
+	 */
 	private function get_navbar_class() {
-		return 'nav-' . $this->navbar_layout();
+		return 'nav-' . $this->get_navbar_layout();
 	}
 
-	private function navbar_layout() {
+	/**
+	 * Get the navbar layout.
+	 *
+	 * @return string
+	 */
+	private function get_navbar_layout() {
 		return get_theme_mod( 'neve_navigation_layout', 'left' );
 	}
 

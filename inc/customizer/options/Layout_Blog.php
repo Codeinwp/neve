@@ -65,10 +65,10 @@ class Layout_Blog extends Base_Customizer {
 					'priority' => 25,
 					'choices'  => array(
 						'default'     => array(
-							'url' => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqAgMAAAAjP0ATAAAACVBMVEX///8+yP/V1dXG9YqxAAAAS0lEQVRYw2NgGAXDE4RCQMDAKONahQ5WUKBs1AujXqDEC6NgiANRSDyH0EwZRvJZ1UCBslEvjHqBZl4YBYMUjNb1o14Y9cIoGH4AALJWvPSk+QsLAAAAAElFTkSuQmCC',
+							'url' => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqAgMAAAAjP0ATAAAACVBMVEX///8+yP/V1dXG9YqxAAAAPklEQVR42mNgGAXDE4RCQMDAKONahQ5WUKBs1AujXqDEC6NgtOAazTKjXhgtuEbBaME1mutHvTBacI0C4gEAenW95O4Ccg4AAAAASUVORK5CYII=',
 						),
 						'alternative' => array(
-							'url' => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqAgMAAAAjP0ATAAAACVBMVEX///8+yP/V1dXG9YqxAAAAPklEQVR42mNgGAXDE4RCQMDAKONahQ5WUKBs1AujXqDEC6NgtOAazTKjXhgtuEbBaME1mutHvTBacI0C4gEAenW95O4Ccg4AAAAASUVORK5CYII=',
+							'url' => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqAgMAAAAjP0ATAAAACVBMVEX///8+yP/V1dXG9YqxAAAAS0lEQVRYw2NgGAXDE4RCQMDAKONahQ5WUKBs1AujXqDEC6NgiANRSDyH0EwZRvJZ1UCBslEvjHqBZl4YBYMUjNb1o14Y9cIoGH4AALJWvPSk+QsLAAAAAElFTkSuQmCC',
 						),
 						'grid'        => array(
 							'url' => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqCAMAAABpj1iyAAAACVBMVEUAyv/V1dX////o4eoDAAAAfUlEQVR42u3ZoQ0AMAgAQej+Q3cDCI6QQyNOvKGNt3KwsLCwsLB2sKKc4V6/iIWFhYWFhYWFhXWN5cQ4xcpyhos9K8tZytKW5CWvLclLXltYWFhYWFj+Ez0kYWFhYWFhYWFhYTkxrrGyHC/N2pK85LUleclrCwsLCwvrMOsDUDxdDThzw38AAAAASUVORK5CYII=',
@@ -224,11 +224,12 @@ class Layout_Blog extends Base_Customizer {
 					'default'           => json_encode( $order_default_components ),
 				),
 				array(
-					'label'      => esc_html__( 'Post Content Order', 'neve' ),
-					'section'    => 'neve_blog_archive_layout',
-					'type'       => 'ordering',
-					'components' => $order_default_components,
-					'priority'   => 55,
+					'label'           => esc_html__( 'Post Content Order', 'neve' ),
+					'section'         => 'neve_blog_archive_layout',
+					'type'            => 'ordering',
+					'components'      => $order_default_components,
+					'priority'        => 55,
+					'active_callback' => array( $this, 'should_show_content_ordering' ),
 				),
 				'Neve\Customizer\Controls\Ordering'
 			)
@@ -324,6 +325,11 @@ class Layout_Blog extends Base_Customizer {
 	 * @return bool
 	 */
 	public function should_show_meta_order() {
+		$layout = get_theme_mod( 'neve_blog_archive_layout', 'default' );
+		if ( $layout !== 'grid' ) {
+			return true;
+		}
+
 		$default       = array(
 			'thumbnail',
 			'title',
@@ -334,6 +340,20 @@ class Layout_Blog extends Base_Customizer {
 		$content_order = get_theme_mod( 'neve_post_content_ordering', json_encode( $default ) );
 		$content_order = json_decode( $content_order, true );
 		if ( ! in_array( 'meta', $content_order ) ) {
+			return false;
+		}
+
+		return true;
+	}
+
+	/**
+	 * Callback for post content ordering control.
+	 *
+	 * @return bool
+	 */
+	public function should_show_content_ordering() {
+		$layout = get_theme_mod( 'neve_blog_archive_layout', 'default' );
+		if ( $layout !== 'grid' ) {
 			return false;
 		}
 

@@ -61,7 +61,6 @@ class Top_Bar extends Base_View {
 	 *
 	 * @return string
 	 */
-
 	private function get_alignment() {
 		return get_theme_mod( 'neve_top_bar_layout', 'content-menu' );
 	}

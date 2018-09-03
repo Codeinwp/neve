@@ -21,10 +21,9 @@
 #customize-theme-controls .customize-pane-child.accordion-section-content#sub-accordion-section-neve_typography_headings,
 #customize-theme-controls .customize-pane-child.accordion-section-content#sub-accordion-section-neve_sidebar {
     overflow: initial;
-}.customize-control-checkbox-toggle {
+}.customize-control-checkbox-toggle .checkbox-toggle-wrap {
     border: 1px solid #ccc;
     border-radius: 5px;
-    display: flex !important;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
@@ -33,6 +32,8 @@
 .customize-control-checkbox-toggle span {
     margin-left: 20px;
     font-weight: 600;
+    width: 65%;
+    display: inline-block;
 }
 .customize-control-checkbox-toggle input[type=checkbox] {
     display: none;
@@ -43,10 +44,10 @@
     width: 50px;
     height: 25px;
     background: grey;
-    display: block;
     border-radius: 100px;
     position: relative;
     margin-right: 20px;
+    display: inline-block;
 }
 
 .customize-control-checkbox-toggle label:after {

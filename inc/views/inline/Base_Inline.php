@@ -42,13 +42,15 @@ abstract class Base_Inline {
 		if ( ! in_array( $media_query, array( 'mobile', 'tablet', 'desktop' ) ) ) {
 			return;
 		}
+
 		if ( empty( $styles ) || empty( $selectors ) ) {
 			return;
 		}
 
 		$use_style = false;
+
 		foreach ( $styles as $style ) {
-			if ( $style['value'] === null ) {
+			if ( ! isset ( $style['value'] ) || empty( $style['value'] ) ) {
 				continue;
 			}
 			$use_style = true;
@@ -66,7 +68,13 @@ abstract class Base_Inline {
 		$this->style[ $media_query ] .= $css;
 	}
 
-	protected final function add_responsive_style( $styles, $selectors ) {
+	/**
+	 * Add responsive style.
+	 *
+	 * @param $styles
+	 * @param $selectors
+	 */
+	final protected function add_responsive_style( $styles, $selectors ) {
 		$media_queries = array( 'mobile', 'tablet', 'desktop' );
 		foreach ( $media_queries as $media_query ) {
 			$settings = $styles;
@@ -75,6 +83,43 @@ abstract class Base_Inline {
 			}
 
 			$this->add_style( $settings, $selectors, $media_query );
+		}
+	}
+
+	/**
+	 * Add color.
+	 *
+	 * Example parameters:
+	 *    array(
+	 *      'border-top-color-desktop' => array(
+	 *          'css_prop'    => 'border-top-color',
+	 *          'selectors'   => '#nv-primary-navigation .sub-menu',
+	 *          'media-query' => 'desktop',
+	 *      )
+	 *  ), $color );
+	 *
+	 * @param array  $args  parameters.
+	 * @param string $value value.
+	 */
+	final protected function add_color( $args, $value ) {
+		$default = array(
+			'selectors'   => '',
+			'css_prop'    => '',
+			'media_query' => 'mobile',
+			'value'       => $value ? $value : null,
+			'suffix'      => '',
+			'prefix'      => '',
+		);
+		foreach ( $args as $style ) {
+			$style = wp_parse_args( $style, $default );
+			$setup = array(
+				array(
+					'css_prop' => $style['css_prop'],
+					'value'    => $style['prefix'] . $value,
+					'suffix'   => $style['suffix'],
+				),
+			);
+			$this->add_style( $setup, $style['selectors'], $style['media_query'] );
 		}
 	}
 

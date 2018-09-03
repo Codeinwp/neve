@@ -45,16 +45,18 @@
   border: 1px solid transparent;
   border-radius: .25rem;
   text-transform: uppercase;
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 7px 14px rgba(50,50,93,.1), 0 3px 6px rgba(0,0,0,.08);
+  }
 }
 
 @mixin button-secondary() {
   border: 1px solid $theme_color;
-  background-color: #fff;
+  background-color: transparent;
   font-weight: 600;
   color: $theme_color;
   &:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 7px 14px rgba(50,50,93,.1), 0 3px 6px rgba(0,0,0,.08);
     background-color: $theme_color;
     color: #fff;
   }

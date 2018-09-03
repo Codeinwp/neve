@@ -107,6 +107,9 @@
     }
     > li {
       width: inherit;
+      &.menu-item-has-children:last-child {
+        padding-right: $spacing-sm;
+      }
       > a {
         padding: $spacing-sm 0;
         display: block;
@@ -125,7 +128,7 @@
         color: $link_hover_color;
       }
       > .caret-wrap .caret {
-        border-color: $link_hover_color;
+        color: $link_hover_color;
       }
     }
 
