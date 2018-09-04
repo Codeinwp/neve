@@ -23,6 +23,7 @@ class Post_Meta extends Base_View {
 	 */
 	public function init() {
 		add_action( 'neve_post_meta_archive', array( $this, 'render_meta_list' ) );
+		add_action( 'neve_post_meta_single', array( $this, 'render_meta_list' ) );
 	}
 
 	/**

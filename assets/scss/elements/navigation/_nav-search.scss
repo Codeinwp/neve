@@ -1,3 +1,11 @@
+.nv-nav-search form {
+  display: flex;
+  label {
+    width: 100%;
+    margin-right: 20px;
+  }
+}
+
 @mixin nav-search--laptop() {
   .nv-nav-search {
     visibility: hidden;
@@ -18,6 +26,13 @@
     .menu-item-nav-search.active & {
       visibility: visible;
       opacity: 1;
+    }
+    form {
+      display: block;
+      label {
+        margin: 0;
+        input {width: 200px; margin:0;}
+      }
     }
   }
   .nav-clickaway-overlay {

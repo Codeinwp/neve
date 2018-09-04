@@ -48,6 +48,7 @@ class Core_Loader {
 				'Views\Footer',
 				'Views\Template_Parts',
 				'Views\Page_Header',
+				'Views\Post_Header',
 
 				'Views\Layouts\Layout_Container',
 				'Views\Layouts\Layout_Sidebar',
@@ -59,6 +60,8 @@ class Core_Loader {
 				'Views\Pluggable\Masonry',
 
 				'Views\Inline\Style_Manager',
+
+				'Compatibility\WooCommerce',
 			)
 		);
 	}

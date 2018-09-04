@@ -68,6 +68,7 @@ class Front_End {
 
 		add_image_size( 'neve-blog', 930, 620, true );
 
+		$this->add_woo_support();
 	}
 
 	/**
@@ -119,6 +120,34 @@ class Front_End {
 			);
 			register_sidebar( $sidebar_settings );
 		}
+	}
+
+	private function add_woo_support() {
+		if ( ! class_exists( 'WooCommerce' ) ) {
+			return;
+		}
+
+		$woocommerce_settings = apply_filters(
+			'neves_woocommerce_args',
+			array(
+				'single_image_width'            => 600,
+				'thumbnail_image_width'         => 230,
+				'gallery_thumbnail_image_width' => 160,
+				'product_grid'                  => array(
+					'default_columns' => 3,
+					'default_rows'    => 4,
+					'min_columns'     => 1,
+					'max_columns'     => 6,
+					'min_rows'        => 1,
+				),
+			)
+		);
+
+		add_theme_support( 'woocommerce', $woocommerce_settings );
+		add_theme_support( 'wc-product-gallery-zoom' );
+		add_theme_support( 'wc-product-gallery-lightbox' );
+		add_theme_support( 'wc-product-gallery-slider' );
+
 	}
 
 }

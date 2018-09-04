@@ -90,9 +90,9 @@ class Top_Bar extends Base_View {
 		}
 		$markup = '';
 
-		$markup .= '<div class="nv-top-bar-content">';
-		$markup .= do_shortcode( $content );
-		$markup .= '</div>';
+		$markup .= '<div class="nv-top-bar-content"><p>';
+		$markup .= do_shortcode( $content, true );
+		$markup .= '</p></div>';
 
 		echo wp_kses_post( $markup );
 	}

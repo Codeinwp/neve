@@ -1,6 +1,12 @@
 @mixin sidebar--tablet() {
   .nv-sidebar-wrap {
     max-width: 30%;
+    &.right {
+      border-left: $muted-border;
+    }
+    &.left {
+      border-right: $muted-border;
+    }
   }
 }
 

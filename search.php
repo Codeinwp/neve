@@ -1,5 +1,8 @@
 <?php
 /**
+ * Author:          Andrei Baicus <andrei@themeisle.com>
+ * Created on:      04/09/2018
+ *
  * @package Neve
  */
 
@@ -7,19 +10,19 @@ $container_class = apply_filters( 'neve_container_class_filter', 'container', 'b
 
 get_header();
 
-do_action( 'neve_page_header', 'index' );
+do_action( 'neve_page_header', 'search' );
 ?>
 	<div class="<?php echo esc_attr( $container_class ); ?> archive-container">
 		<div class="row">
 			<?php do_action( 'neve_do_sidebar', 'blog-archive', 'left' ); ?>
-			<div class="nv-index-posts col gapless">
+			<div class="nv-index-posts col">
 				<?php
 				if ( have_posts() ) {
 					/* Start the Loop. */
 					echo '<div class="posts-wrapper">';
 					while ( have_posts() ) {
 						the_post();
-						get_template_part( 'template-parts/content', get_post_type() );
+						get_template_part( 'template-parts/content' );
 					}
 					echo '</div>';
 					if ( ! is_singular() ) {

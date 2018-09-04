@@ -2,6 +2,7 @@
 /**
  * Author:          Andrei Baicus <andrei@themeisle.com>
  * Created on:      28/08/2018
+ *
  * @package Neve
  */
 
@@ -24,6 +25,7 @@ do_action( 'neve_page_header', 'single-post' );
 				} else {
 					get_template_part( 'template-parts/content', 'none' );
 				}
+				comments_template();
 				?>
 			</div>
 			<?php do_action( 'neve_do_sidebar', 'single-post', 'right' ); ?>

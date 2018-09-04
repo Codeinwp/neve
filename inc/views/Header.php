@@ -74,7 +74,7 @@ class Header extends Base_View {
 			if ( ! class_exists( 'WooCommerce' ) ) {
 				return $items;
 			}
-			$items .= '<li class="menu-item-nav-cart"><a><span class="dashicons dashicons-cart"></span>';
+			$items .= '<li class="menu-item-nav-cart"><a href="' . esc_url( wc_get_cart_url() ) . '"><span class="icon"></span>';
 			$items .= '<span class="cart-count">' . WC()->cart->get_cart_contents_count() . '</span>';
 			$items .= '</a>';
 			if ( ! is_cart() ) {
@@ -137,12 +137,12 @@ class Header extends Base_View {
 			<?php
 			neve_before_navbar_toggle_trigger();
 			?>
-			<button type="button" class="navbar-toggle">
+			<div class="navbar-toggle">
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				<span class="screen-reader-text"><?php esc_html_e( 'Toggle Navigation', 'hestia-pro' ); ?></span>
-			</button>
+			</div>
 			<?php
 			neve_after_navbar_toggle_trigger();
 			?>

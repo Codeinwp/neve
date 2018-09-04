@@ -39,10 +39,6 @@
   flex-wrap: wrap;
 }
 
-.nv-index-posts {
-  margin-bottom: $spacing-lg;
-}
-
 .nv-index-posts .page-numbers {
   @include horizontal-list($spacing-xs);
   justify-content: center;

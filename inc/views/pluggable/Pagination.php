@@ -62,7 +62,6 @@ class Pagination extends Base_View {
 		echo wp_kses_post( '<span class="nv-loader" style="display: none;"></span><span class="infinite-scroll-trigger"></span>' );
 	}
 
-
 	/**
 	 * Infinite scroll ajax callback function.
 	 */
@@ -112,6 +111,10 @@ class Pagination extends Base_View {
 	 * @return string
 	 */
 	private function has_infinite_scroll() {
+		if( is_search() ) {
+			return false;
+		}
+
 		$pagination_type = get_theme_mod( 'neve_pagination_type', 'number' );
 		if ( $pagination_type === 'infinite' ) {
 			return true;

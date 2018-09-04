@@ -11,7 +11,7 @@
   }
 }
 
-button, input[type=button].btn {
+button, input[type=button], .btn, input[type="submit"] {
   @include button();
   @include button-primary();
 }

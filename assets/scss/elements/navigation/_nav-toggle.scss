@@ -17,10 +17,16 @@
   }
 }
 
+.navbar-toggle-wrapper {
+  align-items: center;
+}
+
 .navbar-toggle {
-  border: none;
+  border: $muted-border;
+  border-radius: 3px;
   background: none;
   cursor: pointer;
+  padding: 10px 15px;
   &:hover {
     box-shadow: none;
     transform: none;

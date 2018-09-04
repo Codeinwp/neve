@@ -54,7 +54,7 @@ var fontSelectionPreview = function($) {
                 generateLinkNode(fontControls[data.controlId].linkNodeId, data.value);
             }
             if (data.value === "Default") {
-                $(fontControls[data.controlId].selectors).css("font-family", "");
+                $(fontControls[data.controlId].selectors).css("font-family", "inherit");
             }
             $(fontControls[data.controlId].selectors).css("font-family", data.value);
             return false;

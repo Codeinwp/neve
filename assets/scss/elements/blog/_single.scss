@@ -1,0 +1,13 @@
+.single-post-container {
+  padding-top: $spacing-sm;
+}
+
+.single-post-container .title {
+  margin-bottom: $spacing-sm;
+}
+
+@mixin single-post--laptop() {
+  .single-post-container {
+    padding-top: $spacing-lg;
+  }
+}

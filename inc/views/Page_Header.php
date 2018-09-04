@@ -2,16 +2,27 @@
 /**
  * Author:          Andrei Baicus <andrei@themeisle.com>
  * Created on:      28/08/2018
+ *
  * @package Neve\Views
  */
 
 namespace Neve\Views;
 
+/**
+ * Class Page_Header
+ *
+ * @package Neve\Views
+ */
 class Page_Header extends Base_View {
+	/**
+	 * Title arguments.
+	 *
+	 * @var array
+	 */
 	private $title_args = array(
 		'string'     => '',
 		'class'      => '',
-		'wrap-class' => ''
+		'wrap-class' => '',
 	);
 
 	/**
@@ -23,7 +34,15 @@ class Page_Header extends Base_View {
 		add_action( 'neve_page_header', array( $this, 'render_page_header' ) );
 	}
 
+	/**
+	 * Render the page header.
+	 *
+	 * @param string $context the context provided in do_action.
+	 */
 	public function render_page_header( $context ) {
+		if ( $context === 'single-post' ) {
+			return;
+		}
 		$title_args = $this->the_page_title( $context );
 		?>
 		<div class="nv-page-title-wrap <?php echo esc_attr( $title_args['wrap-class'] ); ?>">
@@ -47,6 +66,12 @@ class Page_Header extends Base_View {
 
 		if ( $context === 'single-post' ) {
 			$title_args['wrap-class'] = 'nv-single-post-title';
+		}
+
+		if( $context === 'search' ) {
+			/* translators: search result */
+			$title_args['string'] = sprintf( esc_html__( 'Search Results for: %s', 'neve' ), get_search_query() );
+			$title_args['wrap-class'] = 'nv-big-title';
 		}
 
 		// If no title is set until now simply get the title.

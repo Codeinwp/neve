@@ -10,7 +10,7 @@
 }
 
 .archive-container, .single-page-container {
-  padding-top: $spacing-lg;
+  padding-top: $spacing;
 }
 
 .nv-page-title-wrap.nv-big-title {
@@ -20,5 +20,11 @@
     padding-top: $spacing-sm;
     padding-bottom: $spacing-sm;
     text-align: center;
+  }
+}
+
+@mixin page--laptop() {
+  .archive-container, .single-page-container {
+    padding-top: $spacing-lg;
   }
 }

@@ -411,7 +411,7 @@ wp.customize.controlConstructor["interface-tabs"] = wp.customize.Control.extend(
                 $_GET[decodeURIComponent(temp[0])] = decodeURIComponent(temp[1]);
             }
             if (typeof $_GET["autofocus[control]"] !== "undefined" && $_GET["autofocus[control]"] !== "") {
-                jQuery('li[id^="customize-control-widget"] ,#customize-control-sidebars_widgets-sidebar-big-title, #customize-control-sidebars_widgets-sidebar-top-bar, #customize-control-sidebars_widgets-subscribe-widgets').live("DOMNodeInserted", function() {
+                jQuery('li[id^="customize-control-sidebars_widgets"]').on("DOMNodeInserted", function() {
                     jQuery(".hestia-customizer-tab > label." + $_GET["autofocus[control]"]).trigger("click");
                 });
             }
@@ -422,6 +422,13 @@ wp.customize.controlConstructor["interface-tabs"] = wp.customize.Control.extend(
     init: function() {
         var control = this;
         var section = control.section();
+        setTimeout(function() {
+            jQuery('li[id^="customize-control-sidebars_widgets"]').each(function() {
+                jQuery(this).on("DOMNodeInserted", function() {
+                    jQuery(".hestia-customizer-tab.active > label").trigger("click");
+                });
+            });
+        }, 100);
         wp.customize.bind("ready", function() {
             control.hideAllControls(section);
             var tab = Object.keys(control.params.controls)[0];
@@ -437,15 +444,6 @@ wp.customize.controlConstructor["interface-tabs"] = wp.customize.Control.extend(
                 }
             }
             control.showControls(allControls, section);
-            jQuery('li[id^="customize-control-widget"] ,#customize-control-sidebars_widgets-sidebar-big-title, #customize-control-sidebars_widgets-sidebar-top-bar, #customize-control-sidebars_widgets-subscribe-widgets').live("DOMNodeInserted", function(e) {
-                if (typeof e.currentTarget.previousSibling === "undefined") {
-                    return false;
-                }
-                if (jQuery(e.currentTarget.previousSibling).hasClass("widget-rendered")) {
-                    return false;
-                }
-                control.showControls(allControls, section);
-            });
         });
     },
     hideAllControls: function(section) {

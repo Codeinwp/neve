@@ -10,3 +10,12 @@ form input[type="text"], form input[type="password"], form input[type="email"], 
   border-radius: 3px;
   transition: all 0.3s ease;
 }
+
+input, textarea, select, button {
+  width: 100%;
+  margin-bottom: $spacing-sm;
+
+  -webkit-box-sizing: border-box; /* For legacy WebKit based browsers */
+  -moz-box-sizing: border-box; /* For legacy (Firefox <29) Gecko based browsers */
+  box-sizing: border-box;
+}

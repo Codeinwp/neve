@@ -140,7 +140,7 @@
                 if (page >= NeveProperties.infiniteScrollMaxPages) {
                     return false;
                 }
-                var counter = $("article.layout-grid").length;
+                var counter = $("article").length;
                 lock = true;
                 $.ajax({
                     type: "POST",
@@ -152,11 +152,11 @@
                         nonce: NeveProperties.nonce
                     },
                     beforeSend: function() {
-                        $(".nv-loader").fadeIn(1500, "swing");
+                        $(".nv-loader").css("display", "block");
                     },
                     success: function(response) {
                         if (response) {
-                            $(".nv-loader").fadeOut(500, "swing");
+                            $(".nv-loader").hide();
                             var postGrid = $(".nv-index-posts .posts-wrapper");
                             postGrid.append(response);
                             if (NeveProperties.masonry === "enabled") {
