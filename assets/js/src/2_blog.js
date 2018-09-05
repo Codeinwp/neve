@@ -38,7 +38,7 @@
 				if ( reachedTrigger === false || lock === true ) {
 					return false;
 				}
-				if ( page >= NeveProperties.infiniteScrollMaxPages ) {
+				if ( page > NeveProperties.infiniteScrollMaxPages ) {
 					return false;
 				}
 

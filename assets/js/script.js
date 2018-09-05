@@ -49,7 +49,7 @@
             return false;
         },
         handleResponsiveNav: function() {
-            $(".navbar-toggle").on("click touchstart", function() {
+            $(".navbar-toggle").on("click", function() {
                 $(".dropdown-open").removeClass("dropdown-open");
                 $("#nv-primary-navigation").toggleClass("responsive-opened");
                 $(this).toggleClass("active");
@@ -137,7 +137,7 @@
                 if (reachedTrigger === false || lock === true) {
                     return false;
                 }
-                if (page >= NeveProperties.infiniteScrollMaxPages) {
+                if (page > NeveProperties.infiniteScrollMaxPages) {
                     return false;
                 }
                 var counter = $("article").length;

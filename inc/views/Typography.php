@@ -949,7 +949,7 @@ class Typography extends Base_View {
 			'Yeseva One',
 			'Yesteryear',
 			'Yrsa',
-			'Zeyada'
+			'Zeyada',
 		);
 	}
 }

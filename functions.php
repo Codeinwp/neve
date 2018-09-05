@@ -4,6 +4,7 @@
  *
  * Author:          Andrei Baicus <andrei@themeisle.com>
  * Created on:      17/08/2018
+ *
  * @package Neve
  */
 
@@ -12,6 +13,14 @@ define( 'NEVE_INC_DIR', trailingslashit( get_template_directory() ) . 'inc/' );
 define( 'NEVE_ASSETS_URL', trailingslashit( get_template_directory_uri() ) . 'assets/' );
 if ( ! defined( 'NEVE_DEBUG' ) ) {
 	define( 'NEVE_DEBUG', true );
+}
+
+if ( ! defined( 'WPFORMS_SHAREASALE_ID' ) ) {
+	define( 'WPFORMS_SHAREASALE_ID', '848264' );
+}
+
+if ( ! defined( 'ELEMENTOR_PARTNER_ID' ) ) {
+	define( 'ELEMENTOR_PARTNER_ID', 2112 );
 }
 
 /**

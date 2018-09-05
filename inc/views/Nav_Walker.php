@@ -4,6 +4,7 @@
  *
  * Author:          Andrei Baicus <andrei@themeisle.com>
  * Created on:      24/08/2018
+ *
  * @package Neve\Views
  */
 
@@ -11,6 +12,7 @@ namespace Neve\Views;
 
 /**
  * Class Nav_Walker
+ *
  * @package Neve\Views
  */
 class Nav_Walker extends \Walker_Nav_Menu {

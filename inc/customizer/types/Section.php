@@ -35,7 +35,7 @@ class Section {
 	public $custom_section = null;
 
 	/**
-	 * Hestia_Customizer_Section constructor.
+	 * Section constructor.
 	 *
 	 * @param string $id             the control id.
 	 * @param array  $args           the add_section array.

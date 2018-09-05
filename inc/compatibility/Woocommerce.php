@@ -2,12 +2,21 @@
 /**
  * Author:          Andrei Baicus <andrei@themeisle.com>
  * Created on:      04/09/2018
- * @package woocommerce.php
+ *
+ * @package Neve\Compatibility
  */
 
 namespace Neve\Compatibility;
 
+/**
+ * Class Woocommerce
+ *
+ * @package Neve\Compatibility
+ */
 class Woocommerce {
+	/**
+	 * Initialize the module.
+	 */
 	public function init() {
 		if ( ! class_exists( 'WooCommerce' ) ) {
 			return;
@@ -21,12 +30,18 @@ class Woocommerce {
 
 	}
 
+	/**
+	 * Wrap start of woocommerce pages.
+	 */
 	public function wrap_pages_start() {
 		?>
 		<div class="nv-index-posts col">
 		<?php
 	}
 
+	/**
+	 * Close div.
+	 */
 	public function close_div() {
 		?>
 		</div>

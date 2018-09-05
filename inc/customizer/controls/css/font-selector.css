@@ -1,16 +1,16 @@
-#customize-theme-controls #sub-accordion-section-hestia_typography.customize-pane-child.open {
+#customize-theme-controls #sub-accordion-section-neve_typography.customize-pane-child.open {
 	height: 100%;
 }
-.hestia-ss-wrap {
+.neve-ss-wrap {
     position: relative;
     box-sizing: border-box;
     border: 1px solid #ddd;
 }
-.hestia-ss-wrap.active {
+.neve-ss-wrap.active {
     box-shadow: 0 0 2px rgba(30, 140, 190, .8);
     border: 1px solid #5897fb;
 }
-.customize-control input.hestia-fs-main-input {
+.customize-control input.neve-fs-main-input {
 	width: 90%;
 	background: #fff;
 	display: block;
@@ -21,11 +21,11 @@
     border-right: 0;
     height: 35px;
 }
-.customize-control input.hestia-fs-main-input:focus {
+.customize-control input.neve-fs-main-input:focus {
     border-color: #ddd;
 }
 
-.hestia-fs-input-addon {
+.neve-fs-input-addon {
 	width: 10%;
 	background: #fff;
 	box-sizing: border-box;
@@ -38,50 +38,50 @@
     height: 35px;
 }
 
-.hestia-fs-options-wrapper {
+.neve-fs-options-wrapper {
 	max-height: 300px;
 	overflow-y: scroll;
 }
 
-.hestia-fs-options-group {
+.neve-fs-options-group {
 	display: block;
 }
 
-.hestia-fs-search {
+.neve-fs-search {
 	padding: 7px;
 	display: block;
 	border-bottom: 1px solid #ddd;
 }
 
-.hestia-fs-option, .hestia-fs-options-heading {
+.neve-fs-option, .neve-fs-options-heading {
 	display: block;
 	padding: 3px 5px;
 	line-height: 18px;
 }
 
-.hestia-fs-option {
+.neve-fs-option {
 	cursor: pointer;
 }
 
-.hestia-fs-options-heading {
+.neve-fs-options-heading {
 	font-weight: 600;
 	color: #777;
 	background: #eee;
 }
 
-.hestia-fs-option:hover {
+.neve-fs-option:hover {
 	background: #5897fb;
 	color: #fff;
 }
 
 
-.hestia-ss-wrap.active .hestia-fs-dropdown {
+.neve-ss-wrap.active .neve-fs-dropdown {
 	display: block;
 	width: 100%;
     z-index: 1000;
 }
 
-.hestia-fs-dropdown {
+.neve-fs-dropdown {
 	background: #fff;
 	border: 1px solid #ddd;
 	border-top: 0;

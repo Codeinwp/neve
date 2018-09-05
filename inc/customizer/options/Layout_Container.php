@@ -4,6 +4,7 @@
  *
  * Author:          Andrei Baicus <andrei@themeisle.com>
  * Created on:      20/08/2018
+ *
  * @package Neve\Customizer\Options
  */
 
@@ -15,6 +16,7 @@ use Neve\Customizer\Types\Section;
 
 /**
  * Class Layout_Container
+ *
  * @package Neve\Customizer\Options
  */
 class Layout_Container extends Base_Customizer {
@@ -105,6 +107,8 @@ class Layout_Container extends Base_Customizer {
 			),
 		);
 
+		/*
+		Commented for now
 		if ( class_exists( 'WooCommerce' ) ) {
 			$container_style_controls = array_merge( $container_style_controls, array(
 				'neve_shop_archive_container_style'   => array(
@@ -117,6 +121,7 @@ class Layout_Container extends Base_Customizer {
 				),
 			) );
 		}
+		*/
 
 		foreach ( $container_style_controls as $control_id => $control ) {
 			$this->add_control(
@@ -125,7 +130,7 @@ class Layout_Container extends Base_Customizer {
 					array(
 						'sanitize_callback' => array( $this, 'sanitize_container_layout' ),
 						'transport'         => $this->selective_refresh,
-						'default'           => 'contained'
+						'default'           => 'contained',
 					),
 					array(
 						'label'    => $control['label'],
@@ -134,7 +139,7 @@ class Layout_Container extends Base_Customizer {
 						'priority' => $control['priority'],
 						'choices'  => array(
 							'contained'  => __( 'Contained', 'neve' ),
-							'full-width' => __( 'Full Width', 'neve' )
+							'full-width' => __( 'Full Width', 'neve' ),
 						),
 					)
 				)

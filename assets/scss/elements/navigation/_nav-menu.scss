@@ -37,17 +37,19 @@
   display: flex;
 }
 
-.sub-menu {
-  max-height: 0;
-  overflow: hidden;
-  padding-left: 20px;
-  transition: $transition_med;
-  border-left: $muted-border;
-}
+#nv-primary-navigation {
+  .sub-menu {
+    max-height: 0;
+    overflow: hidden;
+    padding-left: 20px;
+    transition: $transition_med;
+    border-left: $muted-border;
+  }
 
-.dropdown-open > .sub-menu {
-  max-height: 2000px;
-  transition: $transition_med;
+  .dropdown-open > .sub-menu {
+    max-height: 2000px;
+    transition: $transition_med;
+  }
 }
 
 .nv-nav-wrap {
@@ -189,7 +191,7 @@
     padding-right: 0;
     .dropdown-open > & > .caret {
       color: $link_color;
-      transform: rotate( 135deg );
+      transform: rotate(135deg);
     }
     .dropdown-open > & {
       background: transparent;

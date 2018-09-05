@@ -8,7 +8,7 @@
 namespace Neve\Customizer\Types;
 
 /**
- * Class Hestia_Customizer_Partial
+ * Class Partial
  *
  * @package Neve\Customizer\Types
  */

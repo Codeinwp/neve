@@ -4,6 +4,7 @@
  *
  * Author:          Andrei Baicus <andrei@themeisle.com>
  * Created on:      20/08/2018
+ *
  * @package Neve\Customizer\Options
  */
 
@@ -15,6 +16,11 @@ use Neve\Customizer\Types\Partial;
 use Neve\Customizer\Types\Section;
 use Neve\Views\Top_Bar as Top_Bar_View;
 
+/**
+ * Class Top_Bar
+ *
+ * @package Neve\Customizer\Options
+ */
 class Top_Bar extends Base_Customizer {
 	/**
 	 * Function that should be extended to add customizer controls.
@@ -116,7 +122,7 @@ class Top_Bar extends Base_Customizer {
 					'priority' => 35,
 					'section'  => 'neve_top_bar_section',
 					'label'    => esc_html__( 'Content', 'neve' ),
-					'type'     => 'textarea'
+					'type'     => 'textarea',
 				)
 			)
 		);
@@ -126,15 +132,17 @@ class Top_Bar extends Base_Customizer {
 	 * Partial refresh
 	 */
 	private function partial_refresh() {
-		$this->add_partial( new Partial(
-			'neve_top_bar_partial',
-			array(
-				'selector'            => '.nv-top-bar',
-				'settings'            => array( 'neve_top_bar_layout', 'neve_top_bar_content', 'neve_top_bar_enable' ),
-				'render_callback'     => array( $this, 'top_bar_content_callback' ),
-				'container_inclusive' => true,
+		$this->add_partial(
+			new Partial(
+				'neve_top_bar_partial',
+				array(
+					'selector'            => '.nv-top-bar',
+					'settings'            => array( 'neve_top_bar_layout', 'neve_top_bar_content', 'neve_top_bar_enable' ),
+					'render_callback'     => array( $this, 'top_bar_content_callback' ),
+					'container_inclusive' => true,
+				)
 			)
-		) );
+		);
 	}
 
 	/**
@@ -161,21 +169,26 @@ class Top_Bar extends Base_Customizer {
 		$top_bar_view->render_top_bar();
 	}
 
+	/**
+	 * Top bar menu shortcut.
+	 */
 	private function control_top_bar_menu_shortcut() {
-		$this->add_control( new Control(
-			'neve_top_bar_menu_shortcut',
-			array(
-				'transport' => $this->selective_refresh,
-			),
-			array(
-				'button_class' => 'nv-top-bar-menu-shortcut',
-				'icon_class'   => 'menu',
-				'button_text'  => __( 'Select Top Bar Menu', 'neve' ),
-				'shortcut'     => true,
-				'priority'     => 40,
-				'section'      => 'neve_top_bar_section',
-			),
-			'Neve\Customizer\Controls\Button'
-		) );
+		$this->add_control(
+			new Control(
+				'neve_top_bar_menu_shortcut',
+				array(
+					'transport' => $this->selective_refresh,
+				),
+				array(
+					'button_class' => 'nv-top-bar-menu-shortcut',
+					'icon_class'   => 'menu',
+					'button_text'  => __( 'Select Top Bar Menu', 'neve' ),
+					'shortcut'     => true,
+					'priority'     => 40,
+					'section'      => 'neve_top_bar_section',
+				),
+				'Neve\Customizer\Controls\Button'
+			)
+		);
 	}
 }

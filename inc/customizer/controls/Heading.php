@@ -21,14 +21,39 @@ class Heading extends \WP_Customize_Control {
 	 */
 	public $type = 'customizer-heading';
 
+	/**
+	 * Control class.
+	 *
+	 * @var string
+	 */
 	public $class = '';
 
+	/**
+	 * Should be accordion?
+	 *
+	 * @var bool
+	 */
 	public $accordion = false;
 
+	/**
+	 * Initial state.
+	 *
+	 * @var bool
+	 */
 	public $expanded = true;
 
+	/**
+	 * How many controls to wrap.
+	 *
+	 * @var int
+	 */
 	public $controls_to_wrap = 1;
 
+	/**
+	 * Send data to _s
+	 *
+	 * @return array
+	 */
 	public function json() {
 		$json              = parent::json();
 		$json['classes']   = $this->class;
@@ -43,6 +68,9 @@ class Heading extends \WP_Customize_Control {
 		return $json;
 	}
 
+	/**
+	 * Render the control.
+	 */
 	protected function render() {
 		$id    = 'customize-control-' . str_replace( array( '[', ']' ), array( '-', '' ), $this->id );
 		$class = 'customize-control customize-control-' . $this->type;
@@ -69,7 +97,8 @@ class Heading extends \WP_Customize_Control {
 	 *
 	 * @access protected
 	 */
-	protected function content_template() { ?>
+	protected function content_template() {
+	?>
 		<#
 		var expandButton = '';
 		if(data.accordion) {

@@ -2,11 +2,17 @@
 /**
  * Author:          Andrei Baicus <andrei@themeisle.com>
  * Created on:      29/08/2018
+ *
  * @package Neve\Views\Inline
  */
 
 namespace Neve\Views\Inline;
 
+/**
+ * Class Base_Inline
+ *
+ * @package Neve\Views\Inline
+ */
 abstract class Base_Inline {
 	/**
 	 * Mobile style (default).
@@ -34,9 +40,11 @@ abstract class Base_Inline {
 	abstract public function init();
 
 	/**
-	 * @param        $styles
-	 * @param        $selectors
-	 * @param string $media_query
+	 * Add single style.
+	 *
+	 * @param array  $styles      styles.
+	 * @param string $selectors   css selectors.
+	 * @param string $media_query media query.
 	 */
 	protected final function add_style( $styles, $selectors, $media_query = 'mobile' ) {
 		if ( ! in_array( $media_query, array( 'mobile', 'tablet', 'desktop' ) ) ) {
@@ -50,7 +58,7 @@ abstract class Base_Inline {
 		$use_style = false;
 
 		foreach ( $styles as $style ) {
-			if ( ! isset ( $style['value'] ) || empty( $style['value'] ) ) {
+			if ( ! isset( $style['value'] ) || empty( $style['value'] ) ) {
 				continue;
 			}
 			$use_style = true;
@@ -71,8 +79,8 @@ abstract class Base_Inline {
 	/**
 	 * Add responsive style.
 	 *
-	 * @param $styles
-	 * @param $selectors
+	 * @param array  $styles    styles.
+	 * @param string $selectors css selectors.
 	 */
 	final protected function add_responsive_style( $styles, $selectors ) {
 		$media_queries = array( 'mobile', 'tablet', 'desktop' );
@@ -126,7 +134,7 @@ abstract class Base_Inline {
 	/**
 	 * Add styles.
 	 *
-	 * @param array $style [css_prop, value]
+	 * @param array $style [css_prop, value].
 	 *
 	 * @return string
 	 */
@@ -140,6 +148,8 @@ abstract class Base_Inline {
 	}
 
 	/**
+	 * Get the style.
+	 *
 	 * @param string $context ['mobile','desktop','tablet'].
 	 *
 	 * @return string
@@ -152,5 +162,4 @@ abstract class Base_Inline {
 
 		return $this->style[ $context ];
 	}
-
 }

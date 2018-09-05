@@ -78,33 +78,33 @@
 .customize-control-checkbox-toggle > * {
     display: flex;
     flex-direction: row;
-}.customize-control-hestia-dimensions > ul { width: 100%; }
-.customize-control-hestia-dimensions .dimension-wrap { float: left; width: 17%; margin: 0; }
-.customize-control-hestia-dimensions .dimension-wrap input,
-.customize-control-hestia-dimensions .dimension-wrap button { display: block; font-size: 12px; padding: 4px 0; width: 100%; height: 28px; border: 1px solid; border-color: #a4afb7; border-left-width: 0; border-radius: 0; text-align: center; }
-.customize-control-hestia-dimensions .dimension-wrap:first-child input { border-left-width: 1px; border-radius: 3px 0 0 3px; }
-.customize-control-hestia-dimensions .dimension-wrap .dimension-label { display: block; color: #949698; font-size: 10px; padding-top: 5px; font-style: normal; text-transform: uppercase; text-align: center; }
-.customize-control-hestia-dimensions .dimension-wrap input:focus + .dimension-label { color: #42474a; }
-.customize-control-hestia-dimensions .dimension-wrap .link-dimensions { background-color: #fff; border: 1px solid #a4afb7; border-left-width: 0; padding: 0; outline: none; border-radius: 0 3px 3px 0; cursor: pointer; }
-.customize-control-hestia-dimensions .dimension-wrap .link-dimensions span { display: block; width: 100%; height: 26px; line-height: 26px; font-size: 16px; }
-.customize-control-hestia-dimensions .dimension-wrap .link-dimensions .hestia-linked { background-color: #a4afb7; color: #fff; }
-.customize-control-hestia-dimensions .dimension-wrap .link-dimensions.unlinked .hestia-unlinked { display: none; }
-.customize-control-hestia-dimensions .dimension-wrap .link-dimensions.unlinked .hestia-linked { display: block; }
-.customize-control-hestia-dimensions .dimension-wrap .link-dimensions .hestia-linked { display: none; }
+}.customize-control-neve-dimensions > ul { width: 100%; }
+.customize-control-neve-dimensions .dimension-wrap { float: left; width: 17%; margin: 0; }
+.customize-control-neve-dimensions .dimension-wrap input,
+.customize-control-neve-dimensions .dimension-wrap button { display: block; font-size: 12px; padding: 4px 0; width: 100%; height: 28px; border: 1px solid; border-color: #a4afb7; border-left-width: 0; border-radius: 0; text-align: center; }
+.customize-control-neve-dimensions .dimension-wrap:first-child input { border-left-width: 1px; border-radius: 3px 0 0 3px; }
+.customize-control-neve-dimensions .dimension-wrap .dimension-label { display: block; color: #949698; font-size: 10px; padding-top: 5px; font-style: normal; text-transform: uppercase; text-align: center; }
+.customize-control-neve-dimensions .dimension-wrap input:focus + .dimension-label { color: #42474a; }
+.customize-control-neve-dimensions .dimension-wrap .link-dimensions { background-color: #fff; border: 1px solid #a4afb7; border-left-width: 0; padding: 0; outline: none; border-radius: 0 3px 3px 0; cursor: pointer; }
+.customize-control-neve-dimensions .dimension-wrap .link-dimensions span { display: block; width: 100%; height: 26px; line-height: 26px; font-size: 16px; }
+.customize-control-neve-dimensions .dimension-wrap .link-dimensions .neve-linked { background-color: #a4afb7; color: #fff; }
+.customize-control-neve-dimensions .dimension-wrap .link-dimensions.unlinked .neve-unlinked { display: none; }
+.customize-control-neve-dimensions .dimension-wrap .link-dimensions.unlinked .neve-linked { display: block; }
+.customize-control-neve-dimensions .dimension-wrap .link-dimensions .neve-linked { display: none; }
 .customize-control span.reset-dimensions { display: inline-block; position: relative; margin-left: 10px; line-height: 1; color: rgba(0,0,0,.2); cursor: pointer; text-align: center; transition: all .3s ease; -webkit-transition: all .3s ease; -moz-transition: all .3s ease; -o-transition: all .3s ease; -ms-transition: all .3s ease; }
-.customize-control span.reset-dimensions:hover { color: #fe5252; }#customize-theme-controls #sub-accordion-section-hestia_typography.customize-pane-child.open {
+.customize-control span.reset-dimensions:hover { color: #fe5252; }#customize-theme-controls #sub-accordion-section-neve_typography.customize-pane-child.open {
 	height: 100%;
 }
-.hestia-ss-wrap {
+.neve-ss-wrap {
     position: relative;
     box-sizing: border-box;
     border: 1px solid #ddd;
 }
-.hestia-ss-wrap.active {
+.neve-ss-wrap.active {
     box-shadow: 0 0 2px rgba(30, 140, 190, .8);
     border: 1px solid #5897fb;
 }
-.customize-control input.hestia-fs-main-input {
+.customize-control input.neve-fs-main-input {
 	width: 90%;
 	background: #fff;
 	display: block;
@@ -115,11 +115,11 @@
     border-right: 0;
     height: 35px;
 }
-.customize-control input.hestia-fs-main-input:focus {
+.customize-control input.neve-fs-main-input:focus {
     border-color: #ddd;
 }
 
-.hestia-fs-input-addon {
+.neve-fs-input-addon {
 	width: 10%;
 	background: #fff;
 	box-sizing: border-box;
@@ -132,50 +132,50 @@
     height: 35px;
 }
 
-.hestia-fs-options-wrapper {
+.neve-fs-options-wrapper {
 	max-height: 300px;
 	overflow-y: scroll;
 }
 
-.hestia-fs-options-group {
+.neve-fs-options-group {
 	display: block;
 }
 
-.hestia-fs-search {
+.neve-fs-search {
 	padding: 7px;
 	display: block;
 	border-bottom: 1px solid #ddd;
 }
 
-.hestia-fs-option, .hestia-fs-options-heading {
+.neve-fs-option, .neve-fs-options-heading {
 	display: block;
 	padding: 3px 5px;
 	line-height: 18px;
 }
 
-.hestia-fs-option {
+.neve-fs-option {
 	cursor: pointer;
 }
 
-.hestia-fs-options-heading {
+.neve-fs-options-heading {
 	font-weight: 600;
 	color: #777;
 	background: #eee;
 }
 
-.hestia-fs-option:hover {
+.neve-fs-option:hover {
 	background: #5897fb;
 	color: #fff;
 }
 
 
-.hestia-ss-wrap.active .hestia-fs-dropdown {
+.neve-ss-wrap.active .neve-fs-dropdown {
 	display: block;
 	width: 100%;
     z-index: 1000;
 }
 
-.hestia-fs-dropdown {
+.neve-fs-dropdown {
 	background: #fff;
 	border: 1px solid #ddd;
 	border-top: 0;
@@ -525,7 +525,7 @@ input::-moz-focus-inner, input::-moz-focus-outer {
 	display: list-item !important;
 }
 
-.hestia-tabs-control {
+.neve-tabs-control {
 	border-bottom: 1px solid #ddd;
 	width: calc(100% + 28px);
 	margin: -15px 0 0 -12px;
@@ -533,18 +533,18 @@ input::-moz-focus-inner, input::-moz-focus-outer {
 	display: table;
 }
 
-.hestia-tabs-control .hestia-customizer-tab {
+.neve-tabs-control .neve-customizer-tab {
 	border-right: 1px solid #ddd;
 	display: table-cell;
 	text-align: center;
 	width: 100%;
 }
 
-.hestia-tabs-control .hestia-customizer-tab:last-child {
+.neve-tabs-control .neve-customizer-tab:last-child {
 	border-right: none;
 }
 
-.hestia-tabs-control .hestia-customizer-tab label{
+.neve-tabs-control .neve-customizer-tab label{
 	text-transform: capitalize;
 	background: #fff;
 	box-shadow: inset 0 0 0 0 #0085ba;
@@ -557,26 +557,26 @@ input::-moz-focus-inner, input::-moz-focus-outer {
 	color: #333;
 }
 
-.hestia-tabs-control .hestia-customizer-tab label i {
+.neve-tabs-control .neve-customizer-tab label i {
 	color: #333;
 	margin-right: 4px;
 }
 
-.hestia-tabs-control .hestia-customizer-tab label:hover {
+.neve-tabs-control .neve-customizer-tab label:hover {
 	color: #0085ba;
 	background: #f3f3f5;
 }
 
-.hestia-tabs-control .hestia-customizer-tab label:hover i {
+.neve-tabs-control .neve-customizer-tab label:hover i {
 	color: #333;
 }
 
-.hestia-tabs-control .hestia-customizer-tab.active label{
+.neve-tabs-control .neve-customizer-tab.active label{
 	box-shadow: inset 0 -3px 0 0 #0085ba;
 	color: #0085ba;
 	background-color: #fff;
 }
 
-.hestia-tabs-control input[type="radio"] {
+.neve-tabs-control input[type="radio"] {
 	display: none !important;
 }

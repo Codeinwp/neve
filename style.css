@@ -1,6 +1,6 @@
 /*
 Theme Name:     Neve
-Theme URI:      https://themeisle.com/themes/hestia-pro/
+Theme URI:      https://themeisle.com/themes/neve/
 Author:         ThemeIsle
 Author URI:     https://themeisle.com
 Description:    Neve is a modern WordPress theme for professionals.
@@ -541,15 +541,14 @@ a:hover {
   display: flex;
 }
 
-.sub-menu {
+#nv-primary-navigation .sub-menu {
   max-height: 0;
   overflow: hidden;
   padding-left: 20px;
   transition: all 0.3s ease;
   border-left: 1px solid #f0f0f0;
 }
-
-.dropdown-open > .sub-menu {
+#nv-primary-navigation .dropdown-open > .sub-menu {
   max-height: 2000px;
   transition: all 0.3s ease;
 }
@@ -854,7 +853,6 @@ button:hover, input[type=button]:hover, .btn:hover, input[type="submit"]:hover {
   flex-direction: column;
 }
 .article-content-col .content .button {
-  margin-top: auto;
   align-self: flex-start;
 }
 
@@ -925,6 +923,11 @@ button:hover, input[type=button]:hover, .btn:hover, input[type="submit"]:hover {
 
 .single-post-container .title {
   margin-bottom: 16px;
+}
+
+.attachment-neve-blog {
+  display: flex;
+  margin: 0 auto;
 }
 
 #comments {

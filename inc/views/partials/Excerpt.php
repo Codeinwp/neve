@@ -2,6 +2,7 @@
 /**
  * Author:          Andrei Baicus <andrei@themeisle.com>
  * Created on:      28/08/2018
+ *
  * @package Neve\Views\Partials
  */
 
@@ -10,6 +11,11 @@ namespace Neve\Views\Partials;
 
 use Neve\Views\Base_View;
 
+/**
+ * Class Excerpt
+ *
+ * @package Neve\Views\Partials
+ */
 class Excerpt extends Base_View {
 	/**
 	 * Function that is run after instantiation.
@@ -23,7 +29,7 @@ class Excerpt extends Base_View {
 	/**
 	 * Echo the post excerpt.
 	 *
-	 * @param $context
+	 * @param string $context the provided context in do_action.
 	 */
 	public function render_post_excerpt( $context ) {
 		echo $this->get_post_excerpt( $context );

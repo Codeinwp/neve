@@ -68,7 +68,7 @@ class Radio_Image extends \WP_Customize_Control {
 	public $subcontrols = array();
 
 	/**
-	 * Hestia_Customize_Control_Radio_Image constructor.
+	 * Radio_Image constructor.
 	 *
 	 * @param \WP_Customize_Manager $manager Customizer manager object.
 	 * @param string                $id      Control id.

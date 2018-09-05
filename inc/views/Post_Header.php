@@ -40,9 +40,12 @@ class Post_Header extends Base_View {
 			'meta',
 		);
 
+		/*
+		Commented for now
 		if( class_exists( 'WooCommerce' ) && is_product() ) {
 			$content_order = array( 'title' );
 		}
+		*/
 
 		// Todo: add single content order here.
 		foreach ( $content_order as $item ) {
@@ -60,13 +63,18 @@ class Post_Header extends Base_View {
 		}
 	}
 
+	/**
+	 * Render the post meta.
+	 */
 	private function render_post_meta() {
-		$default_meta_order = json_encode( array(
-			'author',
-			'category',
-			'date',
-			'comments',
-		) );
+		$default_meta_order = json_encode(
+			array(
+				'author',
+				'category',
+				'date',
+				'comments',
+			)
+		);
 
 		$meta_order = get_theme_mod( 'neve_post_meta_ordering', $default_meta_order );
 		$meta_order = json_decode( $meta_order );

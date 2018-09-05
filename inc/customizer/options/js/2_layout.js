@@ -142,7 +142,7 @@ var containersLivePreview = function ( $ ) {
 					return false;
 				}
 				$( cssSelector ).removeClass( 'container' ).addClass( 'container-fluid' );
-			} )
+			} );
 		} );
 	} );
 };

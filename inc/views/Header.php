@@ -9,6 +9,7 @@ namespace Neve\Views;
 
 /**
  * Class Header
+ *
  * @package Neve\Views
  */
 class Header extends Base_View {
@@ -23,11 +24,12 @@ class Header extends Base_View {
 	/**
 	 * Render navigation
 	 */
-	public function render_navigation() { ?>
+	public function render_navigation() {
+	?>
 		<nav class="nv-navbar">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-12 nv-nav-wrap <?php echo esc_attr( $this->get_navbar_class() ) ?>">
+					<div class="col-md-12 nv-nav-wrap <?php echo esc_attr( $this->get_navbar_class() ); ?>">
 						<div class="nv-nav-header">
 							<?php
 							$this->render_navbar_header();
@@ -141,7 +143,7 @@ class Header extends Base_View {
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
-				<span class="screen-reader-text"><?php esc_html_e( 'Toggle Navigation', 'hestia-pro' ); ?></span>
+				<span class="screen-reader-text"><?php esc_html_e( 'Toggle Navigation', 'neve' ); ?></span>
 			</div>
 			<?php
 			neve_after_navbar_toggle_trigger();
@@ -165,8 +167,6 @@ class Header extends Base_View {
 
 	/**
 	 * Display your custom logo if present.
-	 *
-	 * @since Hestia 1.0
 	 */
 	public function get_logo() {
 		if ( get_theme_mod( 'custom_logo' ) ) {

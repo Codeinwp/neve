@@ -75,7 +75,7 @@ class Top_Bar extends Base_View {
 				'menu_id'        => 'nv-top-bar-menu',
 				'container'      => 'ul',
 				'depth'          => 1,
-				'fallback_cb'    => '__return_false'
+				'fallback_cb'    => '__return_false',
 			)
 		);
 	}

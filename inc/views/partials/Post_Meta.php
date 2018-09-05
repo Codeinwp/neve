@@ -4,6 +4,7 @@
  *
  * Author:          Andrei Baicus <andrei@themeisle.com>
  * Created on:      28/08/2018
+ *
  * @package Neve\Views
  */
 
@@ -13,6 +14,7 @@ use Neve\Views\Base_View;
 
 /**
  * Class Post_Meta
+ *
  * @package Neve\Views
  */
 class Post_Meta extends Base_View {
@@ -106,11 +108,11 @@ class Post_Meta extends Base_View {
 			'author',
 			'date',
 			'category',
-			'comments'
+			'comments',
 		);
 		foreach ( $order as $index => $value ) {
 			if ( ! in_array( $value, $allowed_order_values ) ) {
-				unset ( $order[ $index ] );
+				unset( $order[ $index ] );
 			}
 		}
 

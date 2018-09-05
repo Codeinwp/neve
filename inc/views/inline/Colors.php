@@ -49,19 +49,23 @@ class Colors extends Base_Inline {
 			),
 		);
 		$this->add_color( $color_setup, $color );
-		$this->add_style( array(
+		$this->add_style(
 			array(
-				'css_prop' => 'border-color',
-				'value'    => 'transparent',
-			),
-		), '.caret-wrap', 'desktop' );
+				array(
+					'css_prop' => 'border-color',
+					'value'    => 'transparent',
+				),
+			), '.caret-wrap', 'desktop'
+		);
 
-		$this->add_style( array(
+		$this->add_style(
 			array(
-				'css_prop' => 'background-color',
-				'value'    => 'transparent',
-			),
-		), '.dropdown-open > .caret-wrap', 'desktop' );
+				array(
+					'css_prop' => 'background-color',
+					'value'    => 'transparent',
+				),
+			), '.dropdown-open > .caret-wrap', 'desktop'
+		);
 	}
 
 	/**
@@ -95,12 +99,14 @@ class Colors extends Base_Inline {
 		if ( empty( $color ) ) {
 			return;
 		}
-		$this->add_style( array(
+		$this->add_style(
 			array(
-				'css_prop' => 'color',
-				'value'    => $color,
-			),
-		), 'body' );
+				array(
+					'css_prop' => 'color',
+					'value'    => $color,
+				),
+			), 'body'
+		);
 	}
 
 	/**
@@ -111,7 +117,6 @@ class Colors extends Base_Inline {
 		if ( empty( $color ) ) {
 			return;
 		}
-
 
 		$color_setup = array(
 			'color'                    => array(
@@ -133,14 +138,16 @@ class Colors extends Base_Inline {
 			),
 		);
 
-		if ( class_exists( 'WooCommerce' ) ) {
+		/*
+		 Commented for now
+		 if ( class_exists( 'WooCommerce' ) ) {
 			$color_setup['background']['selectors']               .= ', .nv-nav-cart .woocommerce-mini-cart__buttons a.button:last-child';
 			$color_setup['background']['selectors']               .= ', .nv-nav-cart .woocommerce-mini-cart__buttons a.button:first-child:hover';
 			$color_setup['border-top-color-desktop']['selectors'] .= ', .nv-nav-cart';
 			$color_setup['border-color']['selectors']             .= ', .nv-nav-cart .woocommerce-mini-cart__buttons a.button:first-child';
 			$color_setup['color']['selectors']                    .= ', .nv-nav-cart .woocommerce-mini-cart__buttons a.button:first-child';
 		}
-
+		*/
 		$this->add_color( $color_setup, $color );
 	}
 }

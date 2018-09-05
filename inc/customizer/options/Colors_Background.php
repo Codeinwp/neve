@@ -4,6 +4,7 @@
  *
  * Author:          Andrei Baicus <andrei@themeisle.com>
  * Created on:      20/08/2018
+ *
  * @package Neve\Customizer\Options
  */
 
@@ -16,6 +17,7 @@ use Neve\Customizer\Types\Section;
 
 /**
  * Class Colors_Background
+ *
  * @package Neve\Customizer\Options
  */
 class Colors_Background extends Base_Customizer {

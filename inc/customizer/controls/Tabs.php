@@ -49,8 +49,8 @@ class Tabs extends \WP_Customize_Control {
 	 * Tabs constructor.
 	 *
 	 * @param \WP_Customize_Manager $manager wp_customize manager.
-	 * @param string               $id      control id.
-	 * @param array                $args    public parameters for control.
+	 * @param string                $id      control id.
+	 * @param array                 $args    public parameters for control.
 	 */
 	public function __construct( $manager, $id, $args = array() ) {
 		parent::__construct( $manager, $id, $args );
@@ -77,7 +77,7 @@ class Tabs extends \WP_Customize_Control {
 		?>
 		<# if ( ! data.tabs ) { return; } #>
 
-		<div class="hestia-tabs-control" id="">
+		<div class="neve-tabs-control" id="">
 		<# var i = 1;
 			for( tab in data.tabs) { #>
 				<#
@@ -94,7 +94,7 @@ class Tabs extends \WP_Customize_Control {
 					}
 				});
 				#>
-			<div class="hestia-customizer-tab <# if( i === 1 ){#> active <#}#>" data-tab="{{tab}}">
+			<div class="neve-customizer-tab <# if( i === 1 ){#> active <#}#>" data-tab="{{tab}}">
 				<label class="{{allControlsInTabs}}">
 					<i class="fa fa-{{data.tabs[tab]['icon']}}"></i>
 					{{data.tabs[tab]['label']}}

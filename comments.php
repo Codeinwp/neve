@@ -2,11 +2,7 @@
 /**
  * The template for displaying comments
  *
- * The area of the page that contains both current comments
- * and the comment form.
- *
- * @package Hestia
- * @since   Hestia 1.0
+ * @package Neve
  */
 
 /*
@@ -42,7 +38,7 @@ if ( post_password_required() ) {
 				_x( 'One comment', 'comments title', 'neve' );
 			} else {
 				printf(
-				/* translators: 1: number of comments, 2: post title */
+					/* translators: 1: number of comments, 2: post title */
 					_nx(
 						'%1$s Comment',
 						'%1$s Comments',

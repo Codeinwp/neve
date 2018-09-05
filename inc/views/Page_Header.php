@@ -48,7 +48,7 @@ class Page_Header extends Base_View {
 		<div class="nv-page-title-wrap <?php echo esc_attr( $title_args['wrap-class'] ); ?>">
 			<div class="container">
 				<div class="row">
-					<div class="col nv-page-title <?php echo $title_args['class'] ?>">
+					<div class="col nv-page-title <?php echo $title_args['class']; ?>">
 						<h1><?php echo wp_kses_post( $title_args['string'] ); ?></h1>
 					</div>
 				</div>
@@ -57,6 +57,13 @@ class Page_Header extends Base_View {
 		<?php
 	}
 
+	/**
+	 * The page title
+	 *
+	 * @param string $context context of current page passed in do_action.
+	 *
+	 * @return array
+	 */
 	private function the_page_title( $context ) {
 		$title_args = array();
 		if ( $context === 'index' || $context === 'single-page' ) {
@@ -68,7 +75,7 @@ class Page_Header extends Base_View {
 			$title_args['wrap-class'] = 'nv-single-post-title';
 		}
 
-		if( $context === 'search' ) {
+		if ( $context === 'search' ) {
 			/* translators: search result */
 			$title_args['string'] = sprintf( esc_html__( 'Search Results for: %s', 'neve' ), get_search_query() );
 			$title_args['wrap-class'] = 'nv-big-title';
@@ -84,6 +91,11 @@ class Page_Header extends Base_View {
 		return $title_args;
 	}
 
+	/**
+	 * Get the blog/archive title.
+	 *
+	 * @return array
+	 */
 	private function get_blog_archive_title() {
 		if ( is_home() && get_option( 'show_on_front' ) === 'posts' ) {
 			return array(

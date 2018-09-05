@@ -4,6 +4,7 @@
  *
  * Author:          Andrei Baicus <andrei@themeisle.com>
  * Created on:      17/08/2018
+ *
  * @package Neve\Core
  */
 
@@ -68,7 +69,7 @@ class Front_End {
 
 		add_image_size( 'neve-blog', 930, 620, true );
 
-		$this->add_woo_support();
+		/*$this->add_woo_support();*/
 	}
 
 	/**
@@ -78,10 +79,14 @@ class Front_End {
 		wp_enqueue_style( 'neve-style', get_template_directory_uri() . '/style' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
 
 		wp_register_script( 'neve-script', NEVE_ASSETS_URL . 'js/script' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.js', apply_filters( 'neve_filter_main_script_dependencies', array( 'jquery' ) ), NEVE_VERSION, false );
-		wp_localize_script( 'neve-script', 'NeveProperties', apply_filters( 'neve_filter_main_script_localization', array(
-			'ajaxurl' => admin_url( 'admin-ajax.php' ),
-			'nonce'   => wp_create_nonce( 'neve-theme-nonce' ),
-		) ) );
+		wp_localize_script(
+			'neve-script', 'NeveProperties', apply_filters(
+				'neve_filter_main_script_localization', array(
+					'ajaxurl' => admin_url( 'admin-ajax.php' ),
+					'nonce'   => wp_create_nonce( 'neve-theme-nonce' ),
+				)
+			)
+		);
 		wp_enqueue_script( 'neve-script' );
 	}
 
@@ -97,7 +102,7 @@ class Front_End {
 		);
 
 		$footer_sidebars = apply_filters(
-			'hestia_footer_widget_areas_array', array(
+			'neve_footer_widget_areas_array', array(
 				'footer-one-widgets'   => esc_html__( 'Footer One', 'neve' ),
 				'footer-two-widgets'   => esc_html__( 'Footer Two', 'neve' ),
 				'footer-three-widgets' => esc_html__( 'Footer Three', 'neve' ),
@@ -122,6 +127,9 @@ class Front_End {
 		}
 	}
 
+	/**
+	 * Add WooCommerce support
+	 */
 	private function add_woo_support() {
 		if ( ! class_exists( 'WooCommerce' ) ) {
 			return;
@@ -149,5 +157,4 @@ class Front_End {
 		add_theme_support( 'wc-product-gallery-slider' );
 
 	}
-
 }

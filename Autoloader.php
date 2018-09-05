@@ -4,6 +4,7 @@
  *
  * Author:          Andrei Baicus <andrei@themeisle.com>
  * Created on:      17/08/2018
+ *
  * @package Neve
  */
 
@@ -78,8 +79,8 @@ class Autoloader {
 
 		// work backwards through the namespace names of the fully-qualified
 		// class name to find a mapped file name
-		while ( false !== $pos = strrpos( $prefix, '\\' ) ) {
-
+		while ( false !== strrpos( $prefix, '\\' ) ) {
+			$pos = strrpos( $prefix, '\\' );
 			// retain the trailing namespace separator in the prefix
 			$prefix = substr( $class, 0, $pos + 1 );
 
@@ -123,8 +124,8 @@ class Autoloader {
 			// replace namespace separators with directory separators
 			// in the relative class name, append with .php
 			$file = $base_dir
-			        . str_replace( '\\', '/', $relative_class )
-			        . '.php';
+					. str_replace( '\\', '/', $relative_class )
+					. '.php';
 
 			// if the mapped file exists, require it
 			if ( $this->require_file( $file ) ) {

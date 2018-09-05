@@ -4,6 +4,7 @@
  *
  * Author:          Andrei Baicus <andrei@themeisle.com>
  * Created on:      17/08/2018
+ *
  * @package Neve\Customizer\Abstracts
  */
 
@@ -183,7 +184,7 @@ abstract class Base_Customizer {
 	private function register_partials() {
 		$partials = $this->partials_to_register;
 		foreach ( $partials as $index => $partial ) {
-			if( empty( $partial ) ) {
+			if ( empty( $partial ) ) {
 				continue;
 			}
 			$this->wpc->selective_refresh->add_partial( $partial->id, $partial->args );
@@ -238,7 +239,7 @@ abstract class Base_Customizer {
 	 * @param Partial $partial partial to add.
 	 */
 	public function add_partial( Partial $partial ) {
-		if( empty ( $partial->args ) ) {
+		if ( empty( $partial->args ) ) {
 			return;
 		}
 		array_push( $this->partials_to_register, $partial );

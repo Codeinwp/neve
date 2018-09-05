@@ -2,6 +2,7 @@
 /**
  * Author:          Andrei Baicus <andrei@themeisle.com>
  * Created on:      31/08/2018
+ *
  * @package Neve\Views\Pluggable
  */
 
@@ -55,7 +56,13 @@ class Pagination extends Base_View {
 	 */
 	public function render_pagination( $context ) {
 		if ( ! $this->has_infinite_scroll() ) {
-			echo wp_kses_post( paginate_links( array( 'type' => 'list' ) ) );
+			echo wp_kses_post(
+				paginate_links(
+					array(
+						'type' => 'list',
+					)
+				)
+			);
 
 			return;
 		}
@@ -95,6 +102,9 @@ class Pagination extends Base_View {
 		wp_die();
 	}
 
+	/**
+	 * Render the post.
+	 */
 	private function render_post_template_part() {
 		$post_layout    = get_theme_mod( 'neve_blog_archive_layout', 'default' );
 		$layout_mapping = array(
@@ -111,7 +121,7 @@ class Pagination extends Base_View {
 	 * @return string
 	 */
 	private function has_infinite_scroll() {
-		if( is_search() ) {
+		if ( is_search() ) {
 			return false;
 		}
 

@@ -4,6 +4,7 @@
  *
  * Author:          Andrei Baicus <andrei@themeisle.com>
  * Created on:      17/08/2018
+ *
  * @package Neve\Core
  */
 
@@ -16,10 +17,20 @@ namespace Neve\Core;
  * @author     Themeisle <friends@themeisle.com>
  */
 class Factory {
+	/**
+	 * Modules
+	 *
+	 * @var array
+	 */
 	private $modules;
 
+	/**
+	 * Factory constructor.
+	 *
+	 * @param array $modules the modules that will be loaded.
+	 */
 	public function __construct( $modules ) {
-		if ( ! is_array( $modules ) || empty( $modules )) {
+		if ( ! is_array( $modules ) || empty( $modules ) ) {
 			return;
 		}
 		$this->modules = $modules;
@@ -38,7 +49,7 @@ class Factory {
 	}
 
 	/**
-	 * The build method for creating a new Hestia class.
+	 * The build method for creating a new Neve module class.
 	 *
 	 * @since   1.0.0
 	 * @access  public

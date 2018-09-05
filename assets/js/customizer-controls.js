@@ -15,16 +15,16 @@
 
 (function($) {
     "use strict";
-    wp.hestiaSelect = {
+    wp.neveSelect = {
         init: function() {
             var self = this;
-            $(".hestia-fs-main-input, .hestia-fs-input-addon").on("click", function(e) {
+            $(".neve-fs-main-input, .neve-fs-input-addon").on("click", function(e) {
                 $(this).parent().toggleClass("active");
-                $(".hestia-ss-wrap.active .hestia-fs-search input").focus();
+                $(".neve-ss-wrap.active .neve-fs-search input").focus();
                 e.stopPropagation();
                 return false;
             });
-            $(".hestia-fs-option").on("click", function() {
+            $(".neve-fs-option").on("click", function() {
                 var value = $(this).data("option");
                 var source = $(this).data("source");
                 var controlId = $(this).data("control");
@@ -33,9 +33,9 @@
                     source: source,
                     controlId: controlId
                 });
-                var mainInput = $(".hestia-ss-wrap.active input.hestia-fs-main-input");
-                var collector = $(".hestia-ss-wrap.active .hestia-ss-collector");
-                $(".hestia-ss-wrap.active").removeClass("active");
+                var mainInput = $(".neve-ss-wrap.active input.neve-fs-main-input");
+                var collector = $(".neve-ss-wrap.active .neve-ss-collector");
+                $(".neve-ss-wrap.active").removeClass("active");
                 mainInput.val(value);
                 if (value === "Default") {
                     value = "";
@@ -44,22 +44,22 @@
                 collector.trigger("change");
                 return false;
             });
-            $(".hestia-fs-search input").on("keyup", function() {
+            $(".neve-fs-search input").on("keyup", function() {
                 self.search($(this));
                 return false;
             });
             $(document).mouseup(function(e) {
-                var container = $(".hestia-ss-wrap.active .hestia-fs-dropdown");
+                var container = $(".neve-ss-wrap.active .neve-fs-dropdown");
                 if (!container.is(e.target) && container.has(e.target).length === 0) {
-                    $(".hestia-ss-wrap.active").removeClass("active");
+                    $(".neve-ss-wrap.active").removeClass("active");
                 }
             });
         },
         search: function($searchInput) {
-            var itemsList = jQuery(".hestia-ss-wrap.active .hestia-fs-options-wrapper");
+            var itemsList = jQuery(".neve-ss-wrap.active .neve-fs-options-wrapper");
             var searchTerm = $searchInput.val().toLowerCase();
             if (searchTerm.length > 0) {
-                itemsList.children().children(".hestia-fs-option").each(function() {
+                itemsList.children().children(".neve-fs-option").each(function() {
                     if ($(this).filter("[data-filter*=".concat(searchTerm).concat("]")).length > 0 || searchTerm.length < 1) {
                         $(this).show();
                     } else {
@@ -72,7 +72,7 @@
         }
     };
     $(document).ready(function() {
-        wp.hestiaSelect.init();
+        wp.neveSelect.init();
     });
 })(jQuery);
 
@@ -412,7 +412,7 @@ wp.customize.controlConstructor["interface-tabs"] = wp.customize.Control.extend(
             }
             if (typeof $_GET["autofocus[control]"] !== "undefined" && $_GET["autofocus[control]"] !== "") {
                 jQuery('li[id^="customize-control-sidebars_widgets"]').on("DOMNodeInserted", function() {
-                    jQuery(".hestia-customizer-tab > label." + $_GET["autofocus[control]"]).trigger("click");
+                    jQuery(".neve-customizer-tab > label." + $_GET["autofocus[control]"]).trigger("click");
                 });
             }
         });
@@ -425,7 +425,7 @@ wp.customize.controlConstructor["interface-tabs"] = wp.customize.Control.extend(
         setTimeout(function() {
             jQuery('li[id^="customize-control-sidebars_widgets"]').each(function() {
                 jQuery(this).on("DOMNodeInserted", function() {
-                    jQuery(".hestia-customizer-tab.active > label").trigger("click");
+                    jQuery(".neve-customizer-tab.active > label").trigger("click");
                 });
             });
         }, 100);
@@ -466,8 +466,8 @@ wp.customize.controlConstructor["interface-tabs"] = wp.customize.Control.extend(
         var control = this;
         var section = control.section();
         var container = control.container;
-        jQuery(container).find(".hestia-customizer-tab").on("click", function() {
-            jQuery(this).parent().find(".hestia-customizer-tab").removeClass("active");
+        jQuery(container).find(".neve-customizer-tab").on("click", function() {
+            jQuery(this).parent().find(".neve-customizer-tab").removeClass("active");
             jQuery(this).addClass("active");
             control.hideAllControls(section);
             var tab = jQuery(this).data("tab");

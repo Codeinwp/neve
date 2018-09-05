@@ -2,11 +2,17 @@
 /**
  * Author:          Andrei Baicus <andrei@themeisle.com>
  * Created on:      27/08/2018
+ *
  * @package Neve\Views
  */
 
 namespace Neve\Views;
 
+/**
+ * Class Template_Parts
+ *
+ * @package Neve\Views
+ */
 class Template_Parts extends Base_View {
 	/**
 	 * Function that is run after instantiation.
@@ -33,7 +39,6 @@ class Template_Parts extends Base_View {
 		</article>
 		<?php
 	}
-
 
 	/**
 	 * Echo the post class.
@@ -64,16 +69,17 @@ class Template_Parts extends Base_View {
 			return;
 		}
 
-		$default_order = json_encode( array(
-			'thumbnail',
-			'title',
-			'meta',
-			'excerpt',
-			'read-more',
-		) );
+		$default_order = json_encode(
+			array(
+				'thumbnail',
+				'title',
+				'meta',
+				'excerpt',
+				'read-more',
+			)
+		);
 		$order         = get_theme_mod( 'neve_post_content_ordering', $default_order );
 		$order         = json_decode( $order );
-
 
 		foreach ( $order as $content_bit ) {
 			switch ( $content_bit ) {
@@ -106,7 +112,11 @@ class Template_Parts extends Base_View {
 			return;
 		}
 		$markup = '<div class="nv-post-thumbnail-wrap">';
-		$markup .= '<a href="' . get_the_permalink() . '" title="' . the_title_attribute( array( 'echo' => false ) ) . '">';
+		$markup .= '<a href="' . get_the_permalink() . '" title="' . the_title_attribute(
+			array(
+				'echo' => false,
+			)
+		) . '">';
 		$markup .= get_the_post_thumbnail( get_the_ID(), 'neve-blog' );
 		$markup .= '</a>';
 		$markup .= '</div>';
@@ -140,12 +150,14 @@ class Template_Parts extends Base_View {
 	 * Render meta.
 	 */
 	private function meta() {
-		$default_meta_order = json_encode( array(
-			'author',
-			'category',
-			'date',
-			'comments',
-		) );
+		$default_meta_order = json_encode(
+			array(
+				'author',
+				'category',
+				'date',
+				'comments',
+			)
+		);
 
 		$meta_order = get_theme_mod( 'neve_post_meta_ordering', $default_meta_order );
 		$meta_order = json_decode( $meta_order );
@@ -162,9 +174,10 @@ class Template_Parts extends Base_View {
 	/**
 	 * Render read more button.
 	 */
-	private function read_more_button() { ?>
-		<a href="<?php the_permalink() ?>"
-				class="button button-secondary"><?php esc_html_e( 'Read more', 'neve' ) ?></a>
+	private function read_more_button() {
+	?>
+		<a href="<?php the_permalink(); ?>"
+				class="button button-secondary"><?php esc_html_e( 'Read more', 'neve' ); ?></a>
 		<?php
 	}
 

@@ -20,6 +20,8 @@
         <exclude name="Generic.PHP.DisallowShortOpenTag" />
 
         <exclude name="WordPress.PHP.YodaConditions.NotYoda" />
+        <exclude name="WordPress.Files.FileName.InvalidClassFileName" />
+        <exclude name="WordPress.Files.FileName.NotHyphenatedLowercase" />
         <exclude name="Squiz.PHP.CommentedOutCode" />
 
     </rule>

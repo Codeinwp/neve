@@ -1,9 +1,6 @@
 /**
  * Script for the customizer tabs control interactions.
  *
- * @since    1.1.43
- * @package Hestia
- *
  * @author    ThemeIsle
  */
 
@@ -61,7 +58,7 @@ wp.customize.controlConstructor[ 'interface-tabs' ] = wp.customize.Control.exten
 			if ( typeof $_GET[ 'autofocus[control]' ] !== 'undefined' && $_GET[ 'autofocus[control]' ] !== '' ) {
 				jQuery( 'li[id^="customize-control-sidebars_widgets"]' ).on(
 					'DOMNodeInserted', function () {
-						jQuery( '.hestia-customizer-tab > label.' + $_GET[ 'autofocus[control]' ] ).trigger( 'click' );
+						jQuery( '.neve-customizer-tab > label.' + $_GET[ 'autofocus[control]' ] ).trigger( 'click' );
 					} );
 			}
 		} );
@@ -81,7 +78,7 @@ wp.customize.controlConstructor[ 'interface-tabs' ] = wp.customize.Control.exten
 			jQuery( 'li[id^="customize-control-sidebars_widgets"]' ).each( function () {
 				jQuery( this ).on(
 					'DOMNodeInserted', function () {
-						jQuery( '.hestia-customizer-tab.active > label' ).trigger( 'click' );
+						jQuery( '.neve-customizer-tab.active > label' ).trigger( 'click' );
 					} );
 			} );
 		}, 100 );
@@ -127,8 +124,8 @@ wp.customize.controlConstructor[ 'interface-tabs' ] = wp.customize.Control.exten
 		var control = this;
 		var section = control.section();
 		var container = control.container;
-		jQuery( container ).find( '.hestia-customizer-tab' ).on( 'click', function () {
-			jQuery( this ).parent().find( '.hestia-customizer-tab' ).removeClass( 'active' );
+		jQuery( container ).find( '.neve-customizer-tab' ).on( 'click', function () {
+			jQuery( this ).parent().find( '.neve-customizer-tab' ).removeClass( 'active' );
 			jQuery( this ).addClass( 'active' );
 			control.hideAllControls( section );
 			var tab = jQuery( this ).data( 'tab' );

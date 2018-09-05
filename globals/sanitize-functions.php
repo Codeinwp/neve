@@ -5,14 +5,13 @@
  *
  * Author:          Andrei Baicus <andrei@themeisle.com>
  * Created on:      20/08/2018
+ *
  * @package Neve\Globals
  */
 
 
 /**
  * Sanitize arrays.
- *
- * @since 1.1.40
  *
  * @param mixed $value Control output.
  *
@@ -74,88 +73,14 @@ function neve_sanitize_rgba( $value ) {
 }
 
 /**
- * Sanitize repeater control.
- *
- * @param object $value Control output.
- *
- * @return object
- */
-function neve_repeater_sanitize( $value ) {
-	$value_decoded = json_decode( $value, true );
-
-	if ( ! empty( $value_decoded ) ) {
-		foreach ( $value_decoded as $boxk => $box ) {
-			foreach ( $box as $key => $value ) {
-
-				$value_decoded[ $boxk ][ $key ] = wp_kses_post( force_balance_tags( $value ) );
-
-			}
-		}
-
-		return json_encode( $value_decoded );
-	}
-
-	return $value;
-}
-
-/**
- * Allowed HTML tags for text controls
- *
- * @param string $value the string to be sanitized.
- *
- * @return string
- */
-function neve_sanitize_string( $value ) {
-
-	$allowed_html = apply_filters(
-		'neve_sanitize_html_tags', array(
-			'a'      => array(
-				'href'  => array(),
-				'title' => array(),
-				'class' => array(),
-			),
-			'br'     => array(),
-			'em'     => array(),
-			'strong' => array(),
-			'i'      => array(
-				'class' => array(),
-			),
-			'b'      => array(),
-			'p'      => array(),
-		)
-	);
-
-	$value = force_balance_tags( $value );
-
-	return wp_kses( $value, $allowed_html );
-}
-
-/**
  * Sanitize checkbox output.
  *
  * @param bool $value value to be sanitized.
  *
  * @return string
- * @since Hestia 1.0
  */
 function neve_sanitize_checkbox( $value ) {
 	return isset( $value ) && true === (bool) $value;
-}
-
-/**
- * Sanitize multi select output.
- *
- * @param string $value value to be sanitized.
- *
- * @return array
- * @since Hestia 1.0
- */
-function neve_sanitize_multiselect( $value ) {
-	if ( ! is_array( $value ) ) {
-		$value = explode( ',', $value );
-	}
-
-	return ! empty( $value ) ? array_map( 'sanitize_text_field', $value ) : array();
 }
 
 /**
@@ -175,7 +100,6 @@ function neve_is_json( $string ) {
  *
  * @param string $input Control input.
  *
- * @since 1.1.38
  * @return float
  */
 function neve_sanitize_range_value( $input ) {
@@ -188,31 +112,4 @@ function neve_sanitize_range_value( $input ) {
 	$range_value['mobile']  = ! empty( $range_value['mobile'] ) || $range_value['mobile'] === '0' ? floatval( $range_value['mobile'] ) : '';
 
 	return json_encode( $range_value );
-}
-
-/**
- * Dimension sanitization callback
- *
- * @param string $val Input value.
- *
- * @return int
- */
-function neve_sanitize_dimension( $val ) {
-	$decoded_array = json_decode( $val );
-	if ( empty( $decoded_array ) ) {
-		return '';
-	}
-	foreach ( $decoded_array as $array_item ) {
-		$array_item_decoded = json_decode( $array_item );
-		if ( empty( $array_item_decoded ) ) {
-			return '';
-		}
-		foreach ( $array_item_decoded as $dimension ) {
-			if ( ! empty( $dimension ) && ! is_numeric( $dimension ) ) {
-				return '';
-			}
-		}
-	}
-
-	return $val;
 }

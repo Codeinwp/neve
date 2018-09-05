@@ -6,6 +6,11 @@
   margin-bottom: $spacing-sm;
 }
 
+.attachment-neve-blog {
+  display: flex;
+  margin:0 auto;
+}
+
 @mixin single-post--laptop() {
   .single-post-container {
     padding-top: $spacing-lg;

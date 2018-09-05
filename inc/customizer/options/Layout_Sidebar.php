@@ -16,6 +16,7 @@ use Neve\Customizer\Types\Section;
 
 /**
  * Class Layout_Sidebar
+ *
  * @package Neve\Customizer\Options
  */
 class Layout_Sidebar extends Base_Customizer {
@@ -75,6 +76,9 @@ class Layout_Sidebar extends Base_Customizer {
 		);
 	}
 
+	/**
+	 * Add accordion heading.
+	 */
 	private function accordion_heading() {
 		$this->add_control(
 			new Control(
@@ -88,7 +92,8 @@ class Layout_Sidebar extends Base_Customizer {
 					'priority'         => 33,
 					'class'            => 'advanced-sidebar-accordion',
 					'accordion'        => true,
-					'controls_to_wrap' => class_exists( 'WooCommerce' ) ? 4 : 2,
+					// 'controls_to_wrap' => class_exists( 'WooCommerce' ) ? 4 : 2,
+														'controls_to_wrap' => 2,
 					'expanded'         => false,
 				),
 				'Neve\Customizer\Controls\Heading'
@@ -116,6 +121,8 @@ class Layout_Sidebar extends Base_Customizer {
 			),
 		);
 
+		/*
+		Commented for now
 		if ( class_exists( 'WooCommerce' ) ) {
 			$sidebar_layout_controls = array_merge( $sidebar_layout_controls, array(
 				'neve_shop_archive_sidebar_layout'   => array(
@@ -128,6 +135,7 @@ class Layout_Sidebar extends Base_Customizer {
 				),
 			) );
 		}
+		*/
 		foreach ( $sidebar_layout_controls as $control_id => $control ) {
 			$this->add_control(
 				new Control(
@@ -173,15 +181,15 @@ class Layout_Sidebar extends Base_Customizer {
 		return array(
 			'full-width' => array(
 				'url'   => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqAQMAAABknzrDAAAABlBMVEX////V1dXUdjOkAAAAPUlEQVRIx2NgGAUkAcb////Y/+d/+P8AdcQoc8vhH/X/5P+j2kG+GA3CCgrwi43aMWrHqB2jdowEO4YpAACyKSE0IzIuBgAAAABJRU5ErkJggg==',
-				'label' => esc_html__( 'Full Width', 'hestia-pro' ),
+				'label' => esc_html__( 'Full Width', 'neve' ),
 			),
 			'left'       => array(
-				'url'   => apply_filters( 'hestia_layout_control_image_left', 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqAgMAAAAjP0ATAAAACVBMVEX///8+yP/V1dXG9YqxAAAAWElEQVR42mNgGAXDE4RCQMDAKONaBQINWqtWrWBatQDIaxg8ygYqQIAOYwC6bwHUmYNH2eBPSMhgBQXKRr0w6oVRL4x6YdQLo14Y9cKoF0a9QCO3jYLhBADvmFlNY69qsQAAAABJRU5ErkJggg==' ),
-				'label' => esc_html__( 'Left Sidebar', 'hestia-pro' ),
+				'url'   => apply_filters( 'neve_layout_control_image_left', 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqAgMAAAAjP0ATAAAACVBMVEX///8+yP/V1dXG9YqxAAAAWElEQVR42mNgGAXDE4RCQMDAKONaBQINWqtWrWBatQDIaxg8ygYqQIAOYwC6bwHUmYNH2eBPSMhgBQXKRr0w6oVRL4x6YdQLo14Y9cKoF0a9QCO3jYLhBADvmFlNY69qsQAAAABJRU5ErkJggg==' ),
+				'label' => esc_html__( 'Left Sidebar', 'neve' ),
 			),
 			'right'      => array(
-				'url'   => apply_filters( 'hestia_layout_control_image_right', 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqAgMAAAAjP0ATAAAACVBMVEX///8+yP/V1dXG9YqxAAAAWUlEQVR42mNgGAUjB4iGgkEIzZStAoEVTECiQWsVkLdiECkboAABOmwBF9BtUGcOImUDEiCkJCQU0ECBslEvjHph1AujXhj1wqgXRr0w6oVRLwyEF0bBUAUAz/FTNXm+R/MAAAAASUVORK5CYII=' ),
-				'label' => esc_html__( 'Right Sidebar', 'hestia-pro' ),
+				'url'   => apply_filters( 'neve_layout_control_image_right', 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqAgMAAAAjP0ATAAAACVBMVEX///8+yP/V1dXG9YqxAAAAWUlEQVR42mNgGAUjB4iGgkEIzZStAoEVTECiQWsVkLdiECkboAABOmwBF9BtUGcOImUDEiCkJCQU0ECBslEvjHph1AujXhj1wqgXRr0w6oVRLwyEF0bBUAUAz/FTNXm+R/MAAAAASUVORK5CYII=' ),
+				'label' => esc_html__( 'Right Sidebar', 'neve' ),
 			),
 		);
 	}

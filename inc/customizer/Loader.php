@@ -2,6 +2,7 @@
 /**
  * Author:          Andrei Baicus <andrei@themeisle.com>
  * Created on:      17/08/2018
+ *
  * @package Neve\Customizer
  */
 
@@ -49,17 +50,19 @@ class Loader {
 	 * Define the modules that will be loaded.
 	 */
 	private function define_modules() {
-		$this->customizer_modules = apply_filters( 'neve_filter_customizer_modules', array(
-			'Customizer\Options\Main',
-			'Customizer\Options\Layout_Container',
-			'Customizer\Options\Layout_Blog',
-			'Customizer\Options\Layout_Sidebar',
-			'Customizer\Options\Top_Bar',
-			'Customizer\Options\Typography',
-			'Customizer\Options\Colors_Background',
-			'Customizer\Options\Layout_Footer',
-			'Customizer\Options\Layout_Navigation',
-		) );
+		$this->customizer_modules = apply_filters(
+			'neve_filter_customizer_modules', array(
+				'Customizer\Options\Main',
+				'Customizer\Options\Layout_Container',
+				'Customizer\Options\Layout_Blog',
+				'Customizer\Options\Layout_Sidebar',
+				'Customizer\Options\Top_Bar',
+				'Customizer\Options\Typography',
+				'Customizer\Options\Colors_Background',
+				'Customizer\Options\Layout_Footer',
+				'Customizer\Options\Layout_Navigation',
+			)
+		);
 	}
 
 	/**
@@ -81,7 +84,8 @@ class Loader {
 	 */
 	public function enqueue_customizer_preview() {
 		wp_enqueue_script(
-			'neve-customizer-preview', NEVE_ASSETS_URL . '/js/customizer-preview' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.js', array(), NEVE_VERSION, true );
+			'neve-customizer-preview', NEVE_ASSETS_URL . '/js/customizer-preview' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.js', array(), NEVE_VERSION, true
+		);
 	}
 
 	/**

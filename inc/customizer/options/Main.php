@@ -89,26 +89,33 @@ class Main extends Base_Customizer {
 		$this->change_customizer_object( 'setting', 'custom_logo', 'transport', $this->selective_refresh );
 	}
 
+	/**
+	 * Add generic partials.
+	 */
 	private function generic_partials() {
 		// Blog description.
-		$this->add_partial( new Partial(
-			'neve_description_partial',
-			array(
-				'selector'        => '.nv-blog-description > h1',
-				'settings'        => array( 'blogdescription' ),
-				'render_callback' => array( $this, 'blog_description_callback' ),
+		$this->add_partial(
+			new Partial(
+				'neve_description_partial',
+				array(
+					'selector'        => '.nv-blog-description > h1',
+					'settings'        => array( 'blogdescription' ),
+					'render_callback' => array( $this, 'blog_description_callback' ),
+				)
 			)
-		) );
+		);
 
 		// Site logo.
-		$this->add_partial( new Partial(
-			'neve_site_logo_partial',
-			array(
-				'selector'        => '.site-logo > a',
-				'settings'        => array( 'custom_logo', 'blogname' ),
-				'render_callback' => array( $this, 'logo_callback' ),
+		$this->add_partial(
+			new Partial(
+				'neve_site_logo_partial',
+				array(
+					'selector'        => '.site-logo > a',
+					'settings'        => array( 'custom_logo', 'blogname' ),
+					'render_callback' => array( $this, 'logo_callback' ),
+				)
 			)
-		) );
+		);
 
 	}
 

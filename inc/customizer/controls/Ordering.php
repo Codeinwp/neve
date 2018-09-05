@@ -2,12 +2,17 @@
 /**
  * Author:          Andrei Baicus <andrei@themeisle.com>
  * Created on:      29/08/2018
+ *
  * @package Ordering.php
  */
 
 namespace Neve\Customizer\Controls;
 
-
+/**
+ * Class Ordering
+ *
+ * @package Neve\Customizer\Controls
+ */
 class Ordering extends \WP_Customize_Control {
 
 	/**
@@ -27,10 +32,9 @@ class Ordering extends \WP_Customize_Control {
 	/**
 	 * Ordering constructor.
 	 *
-	 * @param \WP_Customize_Manager $manager
-	 * @param                       $id
-	 * @param array                 $args
-	 *
+	 * @param \WP_Customize_Manager $manager Wp customize.
+	 * @param string                $id      control id.
+	 * @param array                 $args    control args.
 	 */
 	public function __construct( \WP_Customize_Manager $manager, $id, array $args = array() ) {
 		parent::__construct( $manager, $id, $args );
@@ -94,7 +98,9 @@ class Ordering extends \WP_Customize_Control {
 	}
 
 	/**
-	 * @param $component
+	 * Get the class for the component. (enabled/disabled)
+	 *
+	 * @param string $component the component to check.
 	 *
 	 * @return string
 	 */

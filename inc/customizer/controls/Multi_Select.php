@@ -33,7 +33,7 @@ class Multi_Select extends \WP_Customize_Control {
 	public $custom_class = '';
 
 	/**
-	 * Hestia_Select_Multiple constructor.
+	 * Multi_Select constructor.
 	 *
 	 * @param \WP_Customize_Manager $manager Customize manager object.
 	 * @param string                $id      Control id.

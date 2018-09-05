@@ -38,7 +38,7 @@
 		 * Handle the responsive navigation toggle.
 		 */
 		'handleResponsiveNav': function () {
-			$( '.navbar-toggle' ).on( 'click touchstart', function () {
+			$( '.navbar-toggle' ).on( 'click', function () {
 				$( '.dropdown-open' ).removeClass( 'dropdown-open' );
 				$( '#nv-primary-navigation' ).toggleClass( 'responsive-opened' );
 				$( this ).toggleClass( 'active' );

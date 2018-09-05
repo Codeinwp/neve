@@ -2,12 +2,17 @@
 /**
  * Author:          Andrei Baicus <andrei@themeisle.com>
  * Created on:      29/08/2018
+ *
  * @package Typography.php
  */
 
 namespace Neve\Views\Inline;
 
-
+/**
+ * Class Typography
+ *
+ * @package Neve\Views\Inline
+ */
 class Typography extends Base_Inline {
 	/**
 	 * Do all actions necessary.
@@ -26,13 +31,15 @@ class Typography extends Base_Inline {
 	private function fonts_family() {
 		$headings_font = get_theme_mod( 'neve_headings_font_family', false );
 		$body_font     = get_theme_mod( 'neve_body_font_family', false );
-		$this->add_style( array(
+		$this->add_style(
 			array(
-				'css_prop' => 'font-family',
-				'value'    => $headings_font,
-			)
-		),
-			'h1, h2, h3, h4, h5, h6' );
+				array(
+					'css_prop' => 'font-family',
+					'value'    => $headings_font,
+				),
+			),
+			'h1, h2, h3, h4, h5, h6'
+		);
 		$this->add_style(
 			array(
 				array(
@@ -41,7 +48,8 @@ class Typography extends Base_Inline {
 				),
 
 			),
-			'body' );
+			'body'
+		);
 	}
 
 	/**

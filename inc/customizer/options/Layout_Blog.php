@@ -4,6 +4,7 @@
  *
  * Author:          Andrei Baicus <andrei@themeisle.com>
  * Created on:      20/08/2018
+ *
  * @package Neve\Customizer\Options
  */
 
@@ -15,6 +16,7 @@ use Neve\Customizer\Types\Section;
 
 /**
  * Class Layout_Blog
+ *
  * @package Neve\Customizer\Options
  */
 class Layout_Blog extends Base_Customizer {
@@ -60,7 +62,7 @@ class Layout_Blog extends Base_Customizer {
 					'sanitize_callback' => array( $this, 'sanitize_blog_layout' ),
 				),
 				array(
-					'label'    => esc_html__( 'Blog', 'hestia-pro' ) . ' ' . esc_html__( 'Layout', 'hestia-pro' ),
+					'label'    => esc_html__( 'Blog', 'neve' ) . ' ' . esc_html__( 'Layout', 'neve' ),
 					'section'  => 'neve_blog_archive_layout',
 					'priority' => 25,
 					'choices'  => array(
@@ -125,7 +127,8 @@ class Layout_Blog extends Base_Customizer {
 	 * Add excerpt control
 	 */
 	private function control_excerpt() {
-		$this->add_control( new Control(
+		$this->add_control(
+			new Control(
 				'neve_post_excerpt_length',
 				array(
 					'sanitize_callback' => 'neve_sanitize_range_value',
@@ -217,7 +220,8 @@ class Layout_Blog extends Base_Customizer {
 			'read-more',
 		);
 
-		$this->add_control( new Control(
+		$this->add_control(
+			new Control(
 				'neve_post_content_ordering',
 				array(
 					'sanitize_callback' => array( $this, 'sanitize_post_content_ordering' ),
@@ -247,7 +251,8 @@ class Layout_Blog extends Base_Customizer {
 			'comments',
 		);
 
-		$this->add_control( new Control(
+		$this->add_control(
+			new Control(
 				'neve_post_meta_ordering',
 				array(
 					'sanitize_callback' => array( $this, 'sanitize_meta_ordering' ),
@@ -277,7 +282,7 @@ class Layout_Blog extends Base_Customizer {
 			'comments',
 		);
 
-		if ( empty ( $value ) ) {
+		if ( empty( $value ) ) {
 			return $allowed;
 		}
 
@@ -304,7 +309,7 @@ class Layout_Blog extends Base_Customizer {
 			'read-more',
 		);
 
-		if ( empty ( $value ) ) {
+		if ( empty( $value ) ) {
 			return $allowed;
 		}
 

@@ -9,6 +9,7 @@ namespace Neve\Customizer\Types;
 
 /**
  * Class Panel
+ *
  * @package Neve\Customizer\Types
  */
 class Panel {

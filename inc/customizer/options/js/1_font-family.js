@@ -41,7 +41,7 @@ function generateLinkNode( elementId, googleFontName ) {
 	var url = '//fonts.googleapis.com/css?family=' + fontValue + '%3A300%2C400%2C500%2C700&subset=latin&ver=4.9.8';
 
 	if ( linkNode.length !== 0 ) {
-		return false
+		return false;
 	}
 
 	var newNode = document.createElement( 'link' );

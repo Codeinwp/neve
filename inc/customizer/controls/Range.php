@@ -205,9 +205,9 @@ class Range extends \WP_Customize_Control {
 			$this->media_query = (bool) $args['media_query'];
 		}
 
-		if ( ! isset ( $this->input_attr['mobile'] ) ||
-		     ! isset ( $this->input_attr['tablet'] ) ||
-		     ! isset ( $this->input_attr['desktop'] ) ) {
+		if ( ! isset( $this->input_attr['mobile'] ) ||
+			 ! isset( $this->input_attr['tablet'] ) ||
+			 ! isset( $this->input_attr['desktop'] ) ) {
 			$this->media_query = false;
 		}
 

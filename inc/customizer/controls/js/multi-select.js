@@ -1,7 +1,5 @@
 /**
  * Multiple select control
- *
- * @package Hestia
  */
 
 /* global jQuery */

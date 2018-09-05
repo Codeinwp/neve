@@ -36,11 +36,11 @@ class Reactive_Control extends \WP_Customize_Control {
 	public $parent = '';
 
 	/**
-	 * Hestia_Select_Multiple constructor.
+	 * Reactive_Control constructor.
 	 *
 	 * @param \WP_Customize_Manager $manager Customize manager object.
-	 * @param string               $id Control id.
-	 * @param array                $args Control arguments.
+	 * @param string                $id Control id.
+	 * @param array                 $args Control arguments.
 	 */
 	public function __construct( \WP_Customize_Manager $manager, $id, array $args = array() ) {
 		parent::__construct( $manager, $id, $args );

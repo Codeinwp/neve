@@ -2,6 +2,7 @@
 /**
  * Author:          Andrei Baicus <andrei@themeisle.com>
  * Created on:      27/08/2018
+ *
  * @package Neve\Views\Layouts
  */
 
@@ -11,6 +12,7 @@ use Neve\Views\Base_View;
 
 /**
  * Class Layout_Container
+ *
  * @package Neve\Views\Layouts
  */
 class Layout_Container extends Base_View {
@@ -38,17 +40,23 @@ class Layout_Container extends Base_View {
 		}
 
 		if ( $context === 'single-post' ) {
+			/*
+			Commented for now
 			if ( class_exists( 'WooCommerce' ) && is_product() ) {
 				return ( $this->get_container_class( 'neve_single_product_container_style' ) );
 			}
+			*/
 
 			return ( $this->get_container_class( 'neve_single_post_container_style' ) );
 		}
 
 		if ( $context === 'single-page' ) {
+			/*
+			Commented for now
 			if ( class_exists( 'WooCommerce' ) && ( is_shop() || is_product_category() ) ) {
 				return ( $this->get_container_class( 'neve_shop_archive_container_style' ) );
 			}
+			*/
 		}
 
 		return $this->get_container_class( 'neve_default_container_style' );

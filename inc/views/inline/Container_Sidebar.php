@@ -2,12 +2,17 @@
 /**
  * Author:          Andrei Baicus <andrei@themeisle.com>
  * Created on:      29/08/2018
+ *
  * @package Typography.php
  */
 
 namespace Neve\Views\Inline;
 
-
+/**
+ * Class Container_Sidebar
+ *
+ * @package Neve\Views\Inline
+ */
 class Container_Sidebar extends Base_Inline {
 	/**
 	 * Do all actions necessary.

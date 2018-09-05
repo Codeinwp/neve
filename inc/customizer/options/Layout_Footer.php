@@ -4,6 +4,7 @@
  *
  * Author:          Andrei Baicus <andrei@themeisle.com>
  * Created on:      20/08/2018
+ *
  * @package Neve\Customizer\Options
  */
 
@@ -17,6 +18,7 @@ use Neve\Views\Footer;
 
 /**
  * Class Layout_Footer
+ *
  * @package Neve\Customizer\Options
  */
 class Layout_Footer extends Base_Customizer {
@@ -159,6 +161,9 @@ class Layout_Footer extends Base_Customizer {
 		$footer->render_footer_content();
 	}
 
+	/**
+	 * Add control for footer text.
+	 */
 	private function control_footer_text() {
 		$this->add_control(
 			new Control(
@@ -167,7 +172,7 @@ class Layout_Footer extends Base_Customizer {
 					'transport'         => $this->selective_refresh,
 					'sanitize_callback' => 'wp_kses_post',
 					'default'           => sprintf(
-					/* translators: %1$s is Theme Name (Neve), %2$s is WordPress */
+						/* translators: %1$s is Theme Name (Neve), %2$s is WordPress */
 						esc_html__( '%1$s | Powered by %2$s', 'neve' ),
 						wp_kses_post( '<a href="https://themeisle.com/themes/neve/" target="_blank" rel="nofollow">Neve</a>' ),
 						wp_kses_post( '<a href="http://wordpress.org" rel="nofollow">WordPress</a>' )
@@ -177,7 +182,7 @@ class Layout_Footer extends Base_Customizer {
 					'priority' => 35,
 					'section'  => 'neve_footer',
 					'label'    => esc_html__( 'Section Content', 'neve' ),
-					'type'     => 'textarea'
+					'type'     => 'textarea',
 				)
 			)
 		);
@@ -203,15 +208,17 @@ class Layout_Footer extends Base_Customizer {
 	 * Partial refresh
 	 */
 	private function partial_refresh() {
-		$this->add_partial( new Partial(
-			'neve_footer_content_partial',
-			array(
-				'selector'            => '.nv-footer-content',
-				'settings'            => array( 'neve_footer_content_type', 'neve_footer_text' ),
-				'render_callback'     => array( $this, 'footer_content_callback' ),
-				'container_inclusive' => true,
+		$this->add_partial(
+			new Partial(
+				'neve_footer_content_partial',
+				array(
+					'selector'            => '.nv-footer-content',
+					'settings'            => array( 'neve_footer_content_type', 'neve_footer_text' ),
+					'render_callback'     => array( $this, 'footer_content_callback' ),
+					'container_inclusive' => true,
+				)
 			)
-		) );
+		);
 	}
 
 }

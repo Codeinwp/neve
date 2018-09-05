@@ -4,6 +4,7 @@
  *
  * Author:          Andrei Baicus <andrei@themeisle.com>
  * Created on:      17/08/2018
+ *
  * @package Neve\Customizer\Options
  */
 
@@ -17,6 +18,7 @@ use Neve\Views\Header;
 
 /**
  * Header Options
+ *
  * @package Neve\Customizer\Options
  */
 class Layout_Navigation extends Base_Customizer {
@@ -79,9 +81,13 @@ class Layout_Navigation extends Base_Customizer {
 			'none'   => __( 'None', 'neve' ),
 			'search' => __( 'Search', 'neve' ),
 		);
+
+		/*
+		Commented for now
 		if ( class_exists( 'WooCommerce' ) ) {
 			$choices['cart'] = __( 'Cart', 'neve' );
 		}
+		*/
 
 		$this->add_control(
 			new Control(
@@ -89,14 +95,14 @@ class Layout_Navigation extends Base_Customizer {
 				array(
 					'sanitize_callback' => array( $this, 'sanitize_last_menu_item' ),
 					'transport'         => $this->selective_refresh,
-					'default'           => 'none'
+					'default'           => 'none',
 				),
 				array(
 					'label'    => __( 'Last Item in Menu', 'neve' ),
 					'section'  => 'neve_primary_navigation',
 					'type'     => 'select',
 					'priority' => 30,
-					'choices'  => $choices
+					'choices'  => $choices,
 				)
 			)
 		);
@@ -153,18 +159,26 @@ class Layout_Navigation extends Base_Customizer {
 		);
 	}
 
+	/**
+	 * Add partial refresh
+	 */
 	private function partial_refresh() {
-		$this->add_partial( new Partial(
-			'neve_header_layout_partial',
-			array(
-				'selector'            => '.nv-navbar',
-				'settings'            => array( 'neve_navigation_layout', 'neve_last_menu_item' ),
-				'render_callback'     => array( $this, 'nav_content_callback' ),
-				'container_inclusive' => true,
+		$this->add_partial(
+			new Partial(
+				'neve_header_layout_partial',
+				array(
+					'selector'            => '.nv-navbar',
+					'settings'            => array( 'neve_navigation_layout', 'neve_last_menu_item' ),
+					'render_callback'     => array( $this, 'nav_content_callback' ),
+					'container_inclusive' => true,
+				)
 			)
-		) );
+		);
 	}
 
+	/**
+	 * Nav content callback.
+	 */
 	public function nav_content_callback() {
 		$nav_view = new Header();
 		$nav_view->render_navigation();
