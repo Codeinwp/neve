@@ -28,7 +28,6 @@ check:php:
 - 'phpunit'
 
 deploy:
-- 'generate'
 - 'cachebuster'
 - 'mkdir:dist'
 - 'mkdir:artifact'
