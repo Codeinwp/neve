@@ -195,7 +195,7 @@ class Admin {
 					),
 					'elementor'           => array(
 						'title'       => 'Elementor',
-						'check'       => ( defined( 'ELEMENTOR_VERSION' ) || ! hestia_check_passed_time( 12 * MONTH_IN_SECONDS ) ),
+						'check'       => ( defined( 'ELEMENTOR_VERSION' ) ),
 						'plugin_slug' => 'elementor',
 						'id'          => 'elementor',
 					),

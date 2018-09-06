@@ -197,6 +197,7 @@ a.skip-onboarding {
 .is__onboarding .ti-sites-lib {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .is__onboarding .ti-sites-lib > div {
@@ -204,6 +205,6 @@ a.skip-onboarding {
     margin-right: 2%;
 }
 
-.is__onboarding .ti-sites-lib > div:nth-child(3n) {
+.is__onboarding .ti-sites-lib > div:nth-child(3n), .is__onboarding .ti-sites-lib > div:last-child {
     margin-right: 0;
 }
