@@ -113,6 +113,12 @@ class Page_Header extends Base_View {
 			);
 		}
 
+		if( is_archive() ) {
+			return array(
+					'string' => get_the_archive_title(),
+			);
+		}
+
 		return array();
 	}
 }

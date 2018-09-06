@@ -216,5 +216,20 @@ class Admin {
 		}
 	}
 
+	/**
+	 * Start onboarding.
+	 */
+	public function start_onboarding() {
+		$theme          = wp_get_theme();
+		$theme_slug     = $theme->get_template();
+		$query_args     = array(
+			'onboarding' => 'yes',
+		);
+		$base_url       = admin_url( 'themes.php?page=' . $theme_slug . '-welcome' );
+
+		$onboarding_url = add_query_arg( $query_args, $base_url ) . '#demo-import';
+		wp_safe_redirect( $onboarding_url );
+	}
+
 
 }
