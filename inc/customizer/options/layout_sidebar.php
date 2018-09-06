@@ -87,14 +87,14 @@ class Layout_Sidebar extends Base_Customizer {
 					'transport'         => $this->selective_refresh,
 				),
 				array(
-					'label'            => __( 'Advanced', 'neve' ),
-					'section'          => 'neve_sidebar',
-					'priority'         => 33,
-					'class'            => 'advanced-sidebar-accordion',
-					'accordion'        => true,
+					'label'     => __( 'Advanced', 'neve' ),
+					'section'   => 'neve_sidebar',
+					'priority'  => 33,
+					'class'     => 'advanced-sidebar-accordion',
+					'accordion' => true,
 					// 'controls_to_wrap' => class_exists( 'WooCommerce' ) ? 4 : 2,
 														'controls_to_wrap' => 2,
-					'expanded'         => false,
+					'expanded'  => false,
 				),
 				'Neve\Customizer\Controls\Heading'
 			)

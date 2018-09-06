@@ -72,8 +72,8 @@ class Heading extends \WP_Customize_Control {
 	 * Render the control.
 	 */
 	protected function render() {
-		$id    = 'customize-control-' . str_replace( array( '[', ']' ), array( '-', '' ), $this->id );
-		$class = 'customize-control customize-control-' . $this->type;
+		$id     = 'customize-control-' . str_replace( array( '[', ']' ), array( '-', '' ), $this->id );
+		$class  = 'customize-control customize-control-' . $this->type;
 		$class .= ' ' . $this->class;
 		if ( $this->accordion ) {
 			$class .= ' accordion';
@@ -98,7 +98,7 @@ class Heading extends \WP_Customize_Control {
 	 * @access protected
 	 */
 	protected function content_template() {
-	?>
+		?>
 		<#
 		var expandButton = '';
 		if(data.accordion) {
@@ -113,7 +113,7 @@ class Heading extends \WP_Customize_Control {
 	 * Print the style for the accordion.
 	 */
 	protected function print_style() {
-		$style = '';
+		$style  = '';
 		$style .= '<style>';
 		for ( $i = 1; $i <= $this->controls_to_wrap; $i ++ ) {
 			$style .= '.accordion.' . $this->class . ':not(.expanded)';

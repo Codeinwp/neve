@@ -38,7 +38,7 @@ class Checkbox extends \WP_Customize_Control {
 	 * Render control.
 	 */
 	protected function content_template() {
-	?>
+		?>
 		<div class="checkbox-toggle-wrap">
 			<span>{{{data.label}}}</span>
 			<input {{{data.link}}} type="checkbox" id="{{{data.id}}}"/><label for="{{{data.id}}}"></label>

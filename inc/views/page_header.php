@@ -77,7 +77,7 @@ class Page_Header extends Base_View {
 
 		if ( $context === 'search' ) {
 			/* translators: search result */
-			$title_args['string'] = sprintf( esc_html__( 'Search Results for: %s', 'neve' ), get_search_query() );
+			$title_args['string']     = sprintf( esc_html__( 'Search Results for: %s', 'neve' ), get_search_query() );
 			$title_args['wrap-class'] = 'nv-big-title';
 		}
 
@@ -113,9 +113,9 @@ class Page_Header extends Base_View {
 			);
 		}
 
-		if( is_archive() ) {
+		if ( is_archive() ) {
 			return array(
-					'string' => get_the_archive_title(),
+				'string' => get_the_archive_title(),
 			);
 		}
 

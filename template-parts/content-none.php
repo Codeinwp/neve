@@ -10,10 +10,10 @@ if ( is_home() && current_user_can( 'publish_posts' ) ) { ?>
 	<p>
 		<?php
 		printf(
-		/* translators: %s is Link to new post */
+			/* translators: %s is Link to new post */
 			esc_html__( 'Ready to publish your first post? %s.', 'neve' ),
 			sprintf(
-			/* translators: %1$s is Link to new post, %2$s is Get started here */
+				/* translators: %1$s is Link to new post, %2$s is Get started here */
 				'<a href="%1$s">%2$s</a>',
 				esc_url( admin_url( 'post-new.php' ) ),
 				esc_html__( 'Get started here', 'neve' )

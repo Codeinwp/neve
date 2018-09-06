@@ -106,7 +106,7 @@ class Main {
 		);
 		switch ( $state ) {
 			case 'install':
-				$button .= '<a data-redirect="' . esc_url( $redirect ) . '" data-slug="' . esc_attr( $slug ) . '" class="install-now hestia-install-plugin button  " href="' . esc_url( $nonce ) . '" data-name="' . esc_attr( $slug ) . '" aria-label="Install ' . esc_attr( $slug ) . '">' . __( 'Install and activate', 'neve' ) . '</a>';
+				$button .= '<a data-redirect="' . esc_url( $redirect ) . '" data-slug="' . esc_attr( $slug ) . '" class="install-now neve-install-plugin button  " href="' . esc_url( $nonce ) . '" data-name="' . esc_attr( $slug ) . '" aria-label="Install ' . esc_attr( $slug ) . '">' . __( 'Install and activate', 'neve' ) . '</a>';
 				break;
 
 			case 'activate':
@@ -129,7 +129,7 @@ class Main {
 				break;
 
 			case 'enable_cpt':
-				$url    = admin_url( 'admin.php?page=jetpack#/settings' );
+				$url     = admin_url( 'admin.php?page=jetpack#/settings' );
 				$button .= '<a  data-redirect="' . esc_url( $redirect ) . '" class="button" href="' . esc_url( $url ) . '">' . esc_html__( 'Activate', 'neve' ) . ' ' . esc_html__( 'Jetpack Portfolio', 'neve' ) . '</a>';
 				break;
 		}// End switch().
