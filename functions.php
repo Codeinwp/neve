@@ -14,13 +14,13 @@ define( 'NEVE_ASSETS_URL', trailingslashit( get_template_directory_uri() ) . 'as
 
 $vendor_file = trailingslashit( get_template_directory() ) . 'vendor/autoload.php';
 if ( is_readable( $vendor_file ) ) {
-    require_once $vendor_file;
+	require_once $vendor_file;
 }
 add_filter(
-    'themeisle_sdk_products', function ( $products ) {
-        $products[] = get_template_directory() . '/style.css';
-        return $products;
-    }
+	'themeisle_sdk_products', function ( $products ) {
+		$products[] = get_template_directory() . '/style.css';
+		return $products;
+	}
 );
 
 if ( ! defined( 'NEVE_DEBUG' ) ) {
@@ -63,15 +63,15 @@ require_once 'globals/sanitize-functions.php';
  * Run theme functionality
  */
 function neve_run() {
-	require_once 'Autoloader.php';
+	require_once 'autoloader.php';
 
-	$autoloader = new \Neve\Autoloader();
+	$autoloader = new Neve\Autoloader();
 
 	$autoloader->add_namespace( 'Neve', get_template_directory() . '/inc/' );
 
 	$autoloader->register();
 
-	new \Neve\Core\Core_Loader();
+	new Neve\Core\Core_Loader();
 }
 
 neve_run();

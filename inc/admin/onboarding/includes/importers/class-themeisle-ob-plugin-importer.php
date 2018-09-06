@@ -96,7 +96,11 @@ class Themeisle_OB_Plugin_Importer {
 		);
 
 		require_once 'helpers/class-themeisle-ob-quiet-skin.php';
-		$skin     = new Themeisle_OB_Quiet_Skin( array( 'api' => $api ) );
+		$skin     = new Themeisle_OB_Quiet_Skin(
+			array(
+				'api' => $api,
+			)
+		);
 		$upgrader = new Plugin_Upgrader( $skin );
 		$install  = $upgrader->install( $api->download_link );
 		if ( $install !== true ) {
