@@ -1514,8 +1514,8 @@ class Themeisle_OB_WXR_Importer extends WP_Importer {
 		foreach ( $todo as $post_id => $_ ) {
 			$this->logger->debug(
 				sprintf(
-				// Note: title intentionally not used to skip extra processing
-				// for when debug logging is off
+					// Note: title intentionally not used to skip extra processing
+					// for when debug logging is off
 					'Running post-processing for post %d',
 					$post_id
 				)

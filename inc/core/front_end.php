@@ -60,7 +60,6 @@ class Front_End {
 		add_theme_support( 'custom-background', $custom_background_settings );
 		add_theme_support( 'themeisle-demo-import', $this->get_ti_demo_content_support_data() );
 
-
 		register_nav_menus(
 			array(
 				'primary' => esc_html__( 'Primary Menu', 'neve' ),
@@ -194,7 +193,7 @@ class Front_End {
 					'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2018/08/hestia-gym-demo-screenshot.png',
 					'title'      => 'Gym Demo',
 				),
-			)
+			),
 		);
 
 		return apply_filters( 'neve_filter_onboarding_data', $onboarding_sites );
