@@ -58,6 +58,8 @@ class Front_End {
 		add_theme_support( 'custom-header', $header_settings );
 		add_theme_support( 'customize-selective-refresh-widgets' );
 		add_theme_support( 'custom-background', $custom_background_settings );
+		add_theme_support( 'themeisle-demo-import', $this->get_ti_demo_content_support_data() );
+
 
 		register_nav_menus(
 			array(
@@ -156,5 +158,45 @@ class Front_End {
 		add_theme_support( 'wc-product-gallery-lightbox' );
 		add_theme_support( 'wc-product-gallery-slider' );
 
+	}
+
+	/**
+	 * Get the themeisle demo content support data.
+	 *
+	 * @return array
+	 */
+	private function get_ti_demo_content_support_data() {
+		$onboarding_sites = array(
+			'local' => array(
+				'neve-main'   => array(
+					'url'   => 'https://demo.themeisle.com/neve',
+					'title' => 'One Page Template',
+				),
+			),
+			'remote' => array(
+				'hestia-lawyers'     => array(
+					'url'        => 'https://demo.themeisle.com/hestia-lawyers/',
+					'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2018/08/hestia-lawyers-demo-screenshot.png',
+					'title'      => 'Lawyers Demo',
+				),
+				'hestia-travel'      => array(
+					'url'        => 'https://demo.themeisle.com/hestia-travel/',
+					'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2018/08/hestia-travel-demo-screenshot.png',
+					'title'      => 'Travel Agency Demo',
+				),
+				'hestia-coffee-shop' => array(
+					'url'        => 'https://demo.themeisle.com/hestia-coffee-shop/',
+					'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2018/08/hestia-coffee-shop-demo-screenshot.png',
+					'title'      => 'Coffee Shop Demo',
+				),
+				'hestia-gym'         => array(
+					'url'        => 'https://demo.themeisle.com/hestia-gym/',
+					'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2018/08/hestia-gym-demo-screenshot.png',
+					'title'      => 'Gym Demo',
+				),
+			)
+		);
+
+		return apply_filters( 'neve_filter_onboarding_data', $onboarding_sites );
 	}
 }

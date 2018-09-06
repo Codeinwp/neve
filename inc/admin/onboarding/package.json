@@ -1,0 +1,52 @@
+{
+  "name": "themeisle-site-onboarding",
+  "version": "1.0.0",
+  "description": "ThemeIsle Site Onboarding",
+  "license": "GPL-3.0+",
+  "author": "Themeisle <friends@themeisle.com> | Andrei Baicus <andrei@themeisle.com>",
+  "scripts": {
+    "dev": "cross-env WEBPACK_ENV=dev webpack --progress --colors --watch",
+    "build": "cross-env WEBPACK_ENV=production webpack"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.1",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "babel-runtime": "^6.26.0",
+    "cross-env": "^5.1.3",
+    "css-loader": "^0.23.0",
+    "eslint": "^4.19.1",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-html": "^3.2.2",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.2.0",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "eslint-plugin-vue": "^4.4.0",
+    "file-loader": "^0.11.2",
+    "grunt-plugin-fleet": "codeinwp/grunt-plugin-fleet",
+    "html-loader": "^0.5.1",
+    "load-project-config": "~0.2.0",
+    "style-loader": "^0.13.0",
+    "stylelint": "^8.2.0",
+    "stylelint-config-recommended": "^1.0.0",
+    "vue-hot-reload-api": "^2.1.1",
+    "vue-html-loader": "^1.0.0",
+    "vue-loader": "^7.3.0",
+    "webpack": "^3.5.5"
+  },
+  "dependencies": {
+    "v-show-slide": "^1.6.0",
+    "vue": "^2.4.2",
+    "vue-clickaway": "^2.1.0",
+    "vue-js-toggle-button": "^1.2.3",
+    "vue-moment": "^3.2.0",
+    "vue-resource": "^1.3.4",
+    "vuex": "^2.4.0"
+  }
+}

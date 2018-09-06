@@ -10,7 +10,7 @@ if ( ! is_active_sidebar( 'shop-sidebar' ) ) {
 } ?>
 
 <div class="nv-shop-sidebar">
-	<aside id="secondary" class="blog-sidebar" role="complementary">
+	<aside id="secondary" class="shop-sidebar" role="complementary">
 		<?php dynamic_sidebar( 'shop-sidebar' ); ?>
 	</aside>
 </div>
