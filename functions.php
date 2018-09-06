@@ -63,15 +63,15 @@ require_once 'globals/sanitize-functions.php';
  * Run theme functionality
  */
 function neve_run() {
-	require_once 'Autoloader.php';
+	require_once 'autoloader.php';
 
-	$autoloader = new \Neve\Autoloader();
+	$autoloader = new Neve\Autoloader();
 
 	$autoloader->add_namespace( 'Neve', get_template_directory() . '/inc/' );
 
 	$autoloader->register();
 
-	new \Neve\Core\Core_Loader();
+	new Neve\Core\Core_Loader();
 }
 
 neve_run();
