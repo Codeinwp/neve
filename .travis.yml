@@ -17,11 +17,9 @@ env:
   matrix:
   - WP_VERSION=latest WP_MULTISITE=0
   global:
-  - MASTER_BRANCH=master UPSTREAM_REPO=Codeinwp/hestia-pro STORE_URL=https://themeisle.com
+  - MASTER_BRANCH=master UPSTREAM_REPO=Codeinwp/neve STORE_URL=https://themeisle.com
     DEPLOY_BUILD=7.0
 before_install:
-- openssl aes-256-cbc -K $encrypted_80ec215e425e_key -iv $encrypted_80ec215e425e_iv
-  -in themeisle.enc -out themeisle -d
 - mkdir -p bin && cd bin
 - wget "$PIRATE_FLEET"load.sh
 - cd .. && chmod +x bin/load.sh
@@ -32,8 +30,8 @@ install:
 script:
 - if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then  grunt travis; fi;
 before_deploy:
-- openssl aes-256-cbc -K $encrypted_a3b1dba8ade0_key -iv $encrypted_a3b1dba8ade0_iv
-  -in key.enc -out /tmp/key -d
+- openssl aes-256-cbc -K $encrypted_80ec215e425e_key -iv $encrypted_80ec215e425e_iv
+  -in themeisle.enc -out /tmp/key -d
 - chmod +x bin/prepare-deploy.sh
 - ". ./bin/prepare-deploy.sh"
 deploy:
