@@ -35,7 +35,7 @@ class Admin {
 			/* translators: s - theme name */
 			'welcome_title'       => sprintf( __( 'Welcome to %s! - Version ', 'neve' ), 'Neve' ),
 			// Main welcome content
-			'welcome_content'     => esc_html__( 'Neve is a Multi-Purpose modern WordPress theme perfect for any project. Fast, with a clean look and easily customizable, it can be used for blogs, creative business, small businesses (restaurants, wedding planners, sport/medical shops), startups, corporate businesses, online agencies and firms, portfolios, ecommerce (WooCommerce), and freelancers. It is compatible with Elementor Page Builder and all other big Page Builder plugins. The theme is Responsive, Translation Ready, Retina ready, SEO friendly.', 'neve' ),
+			'welcome_content'     => esc_html__( 'Neve is a Multi-Purpose modern WordPress theme perfect for any project. Fast, with a clean look and easily customizable, it can be used for blogs, creative business, small businesses (restaurants, wedding planners, sport/medical shops), startups, corporate businesses, online agencies and firms, portfolios, ecommerce (WooCommerce), and freelancers. It is compatible with Gutenberg, Elementor Page Builder and all other big Page Builder plugins. The theme is Responsive, Translation Ready, Retina ready, SEO friendly.', 'neve' ),
 			/**
 			 * Tabs array.
 			 *
