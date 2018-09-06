@@ -64,7 +64,7 @@ abstract class Control_Base {
 			return;
 		}
 
-		$control_label = '';
+		$control_label  = '';
 		$control_label .= '<p class="post-attributes-label-wrapper">';
 		$control_label .= '<span class="post-attributes-label">' . esc_html( $label ) . '</span>';
 		$control_label .= '</p>';

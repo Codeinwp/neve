@@ -1,7 +1,7 @@
 /**
- * Main scripts file for the About Hestia Page
+ * Main scripts file for the About Neve Page
  *
- * @package Hestia
+ * @package neve
  */
 
 /* global tiAboutPageObject */

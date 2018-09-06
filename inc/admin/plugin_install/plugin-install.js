@@ -15,7 +15,7 @@ jQuery( document ).ready(
 
 			'handleInstall': function () {
 				var self = this;
-				$( 'body' ).on( 'click', '.hestia-install-plugin', function ( e ) {
+				$( 'body' ).on( 'click', '.neve-install-plugin', function ( e ) {
 					e.preventDefault();
 					var button = $( this );
 					var slug = button.attr( 'data-slug' );

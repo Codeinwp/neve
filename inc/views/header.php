@@ -25,7 +25,7 @@ class Header extends Base_View {
 	 * Render navigation
 	 */
 	public function render_navigation() {
-	?>
+		?>
 		<nav class="nv-navbar">
 			<div class="container">
 				<div class="row">

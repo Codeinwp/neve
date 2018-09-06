@@ -24,14 +24,14 @@ class Footer extends Base_View {
 	 */
 	public function render_footer() {
 		neve_before_footer_trigger();
-	?>
+		?>
 		<footer>
 			<div class="container">
 				<?php echo $this->render_footer_sidebars(); ?>
 				<?php echo $this->render_footer_content(); ?>
 			</div>
 		</footer>
-	<?php
+		<?php
 		neve_after_footer_trigger();
 	}
 

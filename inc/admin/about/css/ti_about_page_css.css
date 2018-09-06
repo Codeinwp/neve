@@ -6,7 +6,7 @@
 	background-size: 70%;
 }
 
-.hestia-about-text {
+.neve-about-text {
 	text-overflow: ellipsis;
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
@@ -28,7 +28,7 @@
 .header h1 {
 	font-size: 30px;
 }
-.header .hestia-about-text {
+.header .neve-about-text {
 	font-size: 16px;
 }
 
