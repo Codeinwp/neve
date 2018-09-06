@@ -1,2 +1,13 @@
 @import "form-elements/inputs";
 @import "form-elements/buttons";
+
+
+.nv-seach-form-wrap .search-form {
+  border-top: $muted-border;
+  padding-top: $spacing-sm;
+  display: flex;
+  justify-content: center;
+  input[type="submit"] {
+    margin-left: 10px;
+  }
+}

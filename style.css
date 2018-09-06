@@ -9,7 +9,6 @@ License:        GNU General Public License v2 or later
 License URI:    http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain:    neve
 WordPress Available:  no
-Requires License:     no
 Tags: blog, custom-logo, e-commerce, rtl-language-support, post-formats, grid-layout, one-column, two-columns, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready
 
 This theme, like WordPress, is licensed under the GPL.
@@ -618,10 +617,6 @@ a:hover {
   margin-right: 20px;
 }
 
-.menu-item-nav-cart .icon:before {
-  font-family: Dashicons;
-  content: "\f174";
-}
 .menu-item-nav-cart .cart-count {
   border-radius: 2px;
   background: #fff;
@@ -700,7 +695,6 @@ form input[type="text"], form input[type="password"], form input[type="email"], 
 
 input, textarea, select, button {
   width: 100%;
-  margin-bottom: 16px;
   -webkit-box-sizing: border-box;
   /* For legacy WebKit based browsers */
   -moz-box-sizing: border-box;
@@ -764,6 +758,16 @@ button, input[type=button], .btn, input[type="submit"] {
   color: #fff;
 }
 
+.nv-seach-form-wrap .search-form {
+  border-top: 1px solid #f0f0f0;
+  padding-top: 16px;
+  display: flex;
+  justify-content: center;
+}
+.nv-seach-form-wrap .search-form input[type="submit"] {
+  margin-left: 10px;
+}
+
 .nv-meta-list {
   display: flex;
   flex-wrap: wrap;
@@ -794,23 +798,9 @@ button, input[type=button], .btn, input[type="submit"] {
   justify-content: center;
   align-items: center;
 }
-.nv-meta-list .meta .icon:before {
-  top: 1px;
+.nv-meta-list .meta .nv-icon:before {
   position: relative;
   margin-right: 5px;
-  font-family: Dashicons;
-}
-.nv-meta-list .author .icon:before {
-  content: "\f110";
-}
-.nv-meta-list .category .icon:before {
-  content: "\f318";
-}
-.nv-meta-list .date .icon:before {
-  content: "\f508";
-}
-.nv-meta-list .comments .icon:before {
-  content: "\f101";
 }
 
 .article-content-col {
@@ -968,6 +958,18 @@ button, input[type=button], .btn, input[type="submit"] {
 
 .nv-sidebar-wrap {
   margin-bottom: 48px;
+}
+.nv-sidebar-wrap .search-form {
+  display: flex;
+  flex-direction: column;
+}
+.nv-sidebar-wrap input[type="search"] {
+  margin-bottom: 8px;
+}
+.nv-sidebar-wrap .widget {
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
 }
 
 @media (min-width: 576px) {
@@ -1721,13 +1723,6 @@ button, input[type=button], .btn, input[type="submit"] {
     top: 0;
     z-index: 0;
     height: 100vh;
-  }
-
-  .menu-item-nav-search .icon {
-    font-family: Dashicons;
-  }
-  .menu-item-nav-search .icon:before {
-    content: "\f179";
   }
 
   .menu-item-nav-cart:hover .nv-nav-cart {
