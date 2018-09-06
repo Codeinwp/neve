@@ -55,7 +55,7 @@ function neve_run() {
 
 	$autoloader = new \Neve\Autoloader();
 
-	$autoloader->add_namespace( 'Neve', __DIR__ . '/inc/' );
+	$autoloader->add_namespace( 'Neve', get_template_directory() . '/inc/' );
 
 	$autoloader->register();
 
