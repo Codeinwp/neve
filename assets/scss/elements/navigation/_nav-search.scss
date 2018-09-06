@@ -44,7 +44,7 @@
     @if ($debug == 'true') {
       background-color: #333;
     }
-    z-index: 0;
+    z-index: 90;
     height: 100vh;
   }
 }
