@@ -20,6 +20,8 @@ env:
   - MASTER_BRANCH=master UPSTREAM_REPO=Codeinwp/hestia-pro STORE_URL=https://themeisle.com
     DEPLOY_BUILD=7.0
 before_install:
+- openssl aes-256-cbc -K $encrypted_80ec215e425e_key -iv $encrypted_80ec215e425e_iv
+  -in themeisle.enc -out themeisle -d
 - mkdir -p bin && cd bin
 - wget "$PIRATE_FLEET"load.sh
 - cd .. && chmod +x bin/load.sh
