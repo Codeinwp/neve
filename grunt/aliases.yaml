@@ -24,9 +24,6 @@ check:
 - 'check:css'
 - 'travis'
 
-check:php:
-- 'phpunit'
-
 deploy:
 - 'cachebuster'
 - 'mkdir:dist'

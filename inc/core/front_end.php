@@ -169,7 +169,7 @@ class Front_End {
 	private function get_ti_demo_content_support_data() {
 		$onboarding_sites = array(
 			'local' => array(
-				'neve-main'   => array(
+				'neve-main' => array(
 					'url'   => 'https://demo.themeisle.com/neve',
 					'title' => 'One Page Template',
 				),

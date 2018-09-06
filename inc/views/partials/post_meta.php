@@ -37,8 +37,8 @@ class Post_Meta extends Base_View {
 		if ( ! is_array( $order ) || empty( $order ) ) {
 			return;
 		}
-		$order  = $this->sanitize_order_array( $order );
-		$markup = '';
+		$order   = $this->sanitize_order_array( $order );
+		$markup  = '';
 		$markup .= '<ul class="nv-meta-list">';
 		foreach ( $order as $meta ) {
 			switch ( $meta ) {

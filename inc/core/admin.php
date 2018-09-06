@@ -35,7 +35,7 @@ class Admin {
 			/* translators: s - theme name */
 			'welcome_title'       => sprintf( __( 'Welcome to %s! - Version ', 'neve' ), 'Neve' ),
 			// Main welcome content
-			'welcome_content'     => esc_html__( 'Hestia is a modern WordPress theme for professionals. It fits creative business, small businesses (restaurants, wedding planners, sport/medical shops), startups, corporate businesses, online agencies and firms, portfolios, ecommerce (WooCommerce), and freelancers. It has a multipurpose one-page design, widgetized footer, blog/news page and a clean look, is compatible with: Flat Parallax Slider, Photo Gallery, Travel Map and Elementor Page Builder . The theme is responsive, WPML, Retina ready, SEO friendly, and uses Material Kit for design.', 'neve' ),
+			'welcome_content'     => esc_html__( 'Neve is a Multi-Purpose modern WordPress theme perfect for any project. Fast, with a clean look and easily customizable, it can be used for blogs, creative business, small businesses (restaurants, wedding planners, sport/medical shops), startups, corporate businesses, online agencies and firms, portfolios, ecommerce (WooCommerce), and freelancers. It is compatible with Gutenberg, Elementor Page Builder and all other big Page Builder plugins. The theme is Responsive, Translation Ready, Retina ready, SEO friendly.', 'neve' ),
 			/**
 			 * Tabs array.
 			 *
@@ -54,22 +54,13 @@ class Admin {
 				'first'  => array(
 					'title'        => esc_html__( 'Contact Support', 'neve' ),
 					'icon'         => 'dashicons dashicons-sos',
-					'text'         => esc_html__( 'We want to make sure you have the best experience using Hestia, and that is why we have gathered all the necessary information here for you. We hope you will enjoy using Hestia as much as we enjoy creating great products.', 'neve' ),
+					'text'         => esc_html__( 'We want to make sure you have the best experience using Neve, and that is why we have gathered all the necessary information here for you. We hope you will enjoy using Neve as much as we enjoy creating great products.', 'neve' ),
 					'button_label' => esc_html__( 'Contact Support', 'neve' ),
 					'button_link'  => esc_url( 'https://themeisle.com/contact/' ),
 					'is_button'    => true,
 					'is_new_tab'   => true,
 				),
 				'second' => array(
-					'title'        => esc_html__( 'Documentation', 'neve' ),
-					'icon'         => 'dashicons dashicons-book-alt',
-					'text'         => esc_html__( 'Need more details? Please check our full documentation for detailed information on how to use Hestia.', 'neve' ),
-					'button_label' => esc_html__( 'Read full documentation', 'neve' ),
-					'button_link'  => 'http://docs.themeisle.com/article/569-hestia-documentation',
-					'is_button'    => false,
-					'is_new_tab'   => true,
-				),
-				'third'  => array(
 					'title'        => esc_html__( 'Changelog', 'neve' ),
 					'icon'         => 'dashicons dashicons-portfolio',
 					'text'         => esc_html__( 'Want to get the gist on the latest theme changes? Just consult our changelog below to get a taste of the recent fixes and features implemented.', 'neve' ),
@@ -78,7 +69,7 @@ class Admin {
 					'is_button'    => false,
 					'is_new_tab'   => false,
 				),
-				'fourth' => array(
+				'third'  => array(
 					'title'        => esc_html__( 'Create a child theme', 'neve' ),
 					'icon'         => 'dashicons dashicons-admin-customizer',
 					'text'         => esc_html__( "If you want to make changes to the theme's files, those changes are likely to be overwritten when you next update the theme. In order to prevent that from happening, you need to create a child theme. For this, please follow the documentation below.", 'neve' ),
@@ -87,7 +78,7 @@ class Admin {
 					'is_button'    => false,
 					'is_new_tab'   => true,
 				),
-				'fifth'  => array(
+				'fourth' => array(
 					'title'        => esc_html__( 'Speed up your site', 'neve' ),
 					'icon'         => 'dashicons dashicons-controls-skipforward',
 					'text'         => esc_html__( 'If you find yourself in a situation where everything on your site is running very slowly, you might consider having a look at the documentation below where you will find the most common issues causing this and possible solutions for each of the issues.', 'neve' ),
@@ -96,7 +87,7 @@ class Admin {
 					'is_button'    => false,
 					'is_new_tab'   => true,
 				),
-				'sixth'  => array(
+				'fifth'  => array(
 					'title'        => esc_html__( 'Build a landing page with a drag-and-drop content builder', 'neve' ),
 					'icon'         => 'dashicons dashicons-images-alt2',
 					'text'         => esc_html__( 'In the documentation below you will find an easy way to build a great looking landing page using a drag-and-drop content builder plugin.', 'neve' ),
@@ -108,7 +99,7 @@ class Admin {
 			),
 			// Getting started tab
 			'getting_started'     => array(
-				'first'  => array(
+				'first' => array(
 					'title'               => esc_html__( 'Recommended actions', 'neve' ),
 					'text'                => esc_html__( 'We have compiled a list of steps for you to take so we can ensure that the experience you have using one of our products is very easy to follow.', 'neve' ),
 					'button_label'        => esc_html__( 'Recommended actions', 'neve' ),
@@ -117,16 +108,7 @@ class Admin {
 					'recommended_actions' => true,
 					'is_new_tab'          => false,
 				),
-				'second' => array(
-					'title'               => esc_html__( 'Read full documentation', 'neve' ),
-					'text'                => esc_html__( 'Need more details? Please check our full documentation for detailed information on how to use Hestia.', 'neve' ),
-					'button_label'        => esc_html__( 'Documentation', 'neve' ),
-					'button_link'         => 'http://docs.themeisle.com/article/569-hestia-documentation',
-					'is_button'           => false,
-					'recommended_actions' => false,
-					'is_new_tab'          => true,
-				),
-				'third'  => array(
+				'third' => array(
 					'title'               => esc_html__( 'Go to the Customizer', 'neve' ),
 					'text'                => esc_html__( 'Using the WordPress Customizer you can easily customize every aspect of the theme.', 'neve' ),
 					'button_label'        => esc_html__( 'Go to the Customizer', 'neve' ),
@@ -145,10 +127,10 @@ class Admin {
 				'deactivate_label'          => esc_html__( 'Deactivate', 'neve' ),
 				'content'                   => array(
 					array(
-						'slug' => 'wpforms-lite',
+						'slug' => 'elementor',
 					),
 					array(
-						'slug' => 'elementor',
+						'slug' => 'wpforms-lite',
 					),
 					array(
 						'slug' => 'translatepress-multilingual',
@@ -166,9 +148,6 @@ class Admin {
 						'slug' => 'visualizer',
 					),
 					array(
-						'slug' => 'adblock-notify-by-bweb',
-					),
-					array(
 						'slug' => 'nivo-slider-lite',
 					),
 				),
@@ -181,7 +160,7 @@ class Admin {
 				'content'          => array(
 					'themeisle-companion' => array(
 						'title'       => 'Orbit Fox Companion',
-						'description' => __( 'It is highly recommended that you install the companion plugin to have access to the Frontpage features, Team and Testimonials sections.', 'neve' ),
+						'description' => __( 'Extend your theme functionality with Orbit Fox with various modules like Social Media Share Buttons & Icons, Uptime Monitoring, Google Analytics, custom menu-icons, one click import page templates, page builder addons and free stock featured images.', 'neve' ),
 						'check'       => defined( 'THEMEISLE_COMPANION_VERSION' ),
 						'plugin_slug' => 'themeisle-companion',
 						'id'          => 'themeisle-companion',
@@ -220,12 +199,12 @@ class Admin {
 	 * Start onboarding.
 	 */
 	public function start_onboarding() {
-		$theme          = wp_get_theme();
-		$theme_slug     = $theme->get_template();
-		$query_args     = array(
+		$theme      = wp_get_theme();
+		$theme_slug = $theme->get_template();
+		$query_args = array(
 			'onboarding' => 'yes',
 		);
-		$base_url       = admin_url( 'themes.php?page=' . $theme_slug . '-welcome' );
+		$base_url   = admin_url( 'themes.php?page=' . $theme_slug . '-welcome' );
 
 		$onboarding_url = add_query_arg( $query_args, $base_url ) . '#demo-import';
 		wp_safe_redirect( $onboarding_url );

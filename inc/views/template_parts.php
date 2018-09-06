@@ -44,7 +44,7 @@ class Template_Parts extends Base_View {
 	 * Echo the post class.
 	 */
 	private function post_class() {
-		$class = join( ' ', get_post_class() );
+		$class  = join( ' ', get_post_class() );
 		$class .= ' col-12 layout-' . $this->get_layout();
 		if ( $this->get_layout() === 'grid' ) {
 			$class .= ' ' . $this->get_grid_columns_class();
@@ -111,7 +111,7 @@ class Template_Parts extends Base_View {
 		if ( ! has_post_thumbnail() ) {
 			return;
 		}
-		$markup = '<div class="nv-post-thumbnail-wrap">';
+		$markup  = '<div class="nv-post-thumbnail-wrap">';
 		$markup .= '<a href="' . get_the_permalink() . '" title="' . the_title_attribute(
 			array(
 				'echo' => false,
@@ -175,7 +175,7 @@ class Template_Parts extends Base_View {
 	 * Render read more button.
 	 */
 	private function read_more_button() {
-	?>
+		?>
 		<a href="<?php the_permalink(); ?>"
 				class="button button-secondary"><?php esc_html_e( 'Read more', 'neve' ); ?></a>
 		<?php
