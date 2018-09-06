@@ -708,7 +708,7 @@ input, textarea, select, button {
 }
 
 .button {
-  font-size: 1rem;
+  font-size: .8em;
   font-weight: 600;
   display: inline-block;
   padding: .625rem 1.25rem;
@@ -725,10 +725,6 @@ input, textarea, select, button {
   text-transform: uppercase;
   cursor: pointer;
   width: auto;
-}
-.button:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
 }
 .button.button-primary {
   background-color: #00a4f7;
@@ -746,7 +742,7 @@ input, textarea, select, button {
 }
 
 button, input[type=button], .btn, input[type="submit"] {
-  font-size: 1rem;
+  font-size: .8em;
   font-weight: 600;
   display: inline-block;
   padding: .625rem 1.25rem;
@@ -765,10 +761,6 @@ button, input[type=button], .btn, input[type="submit"] {
   width: auto;
   background-color: #00a4f7;
   color: #fff;
-}
-button:hover, input[type=button]:hover, .btn:hover, input[type="submit"]:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
 }
 
 .nv-meta-list {
@@ -1782,7 +1774,7 @@ button:hover, input[type=button]:hover, .btn:hover, input[type="submit"]:hover {
   }
   .nv-nav-cart .woocommerce-mini-cart__buttons a.button:last-child {
     margin-left: 5px;
-    font-size: 1rem;
+    font-size: .8em;
     font-weight: 600;
     display: inline-block;
     padding: .625rem 1.25rem;
@@ -1802,12 +1794,8 @@ button:hover, input[type=button]:hover, .btn:hover, input[type="submit"]:hover {
     background-color: #00a4f7;
     color: #fff;
   }
-  .nv-nav-cart .woocommerce-mini-cart__buttons a.button:last-child:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
-  }
   .nv-nav-cart .woocommerce-mini-cart__buttons a.button:first-child {
-    font-size: 1rem;
+    font-size: .8em;
     font-weight: 600;
     display: inline-block;
     padding: .625rem 1.25rem;
@@ -1828,10 +1816,6 @@ button:hover, input[type=button]:hover, .btn:hover, input[type="submit"]:hover {
     background-color: transparent;
     font-weight: 600;
     color: #00a4f7;
-  }
-  .nv-nav-cart .woocommerce-mini-cart__buttons a.button:first-child:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
   }
   .nv-nav-cart .woocommerce-mini-cart__buttons a.button:first-child:hover {
     background-color: #00a4f7;

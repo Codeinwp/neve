@@ -25,7 +25,7 @@ var fontSelectionPreview = function ( $ ) {
 				generateLinkNode( fontControls[ data.controlId ].linkNodeId, data.value );
 			}
 			if ( data.value === 'Default' ) {
-				$( fontControls[ data.controlId ].selectors ).css( 'font-family', 'inherit' );
+				$( fontControls[ data.controlId ].selectors ).css( 'font-family', '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif' );
 			}
 			$( fontControls[ data.controlId ].selectors ).css( 'font-family', data.value );
 			return false;

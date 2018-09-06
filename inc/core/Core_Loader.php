@@ -102,16 +102,12 @@ class Core_Loader {
 	 */
 	private function define_hooks() {
 		$admin = new Admin();
-		// add_action( 'admin_enqueue_scripts', array( $admin, 'enqueue_styles' ) );
-		// add_filter( 'admin_head', array( $admin, 'admin_head_editor_inline_style' ) );
-		// add_filter( 'tiny_mce_before_init', array( $admin, 'editor_inline_style' ) );
-		// add_filter( 'init', array( $admin, 'do_about_page' ) );
-		// add_action( 'init', array( $admin, 'load_site_import' ), 11 );
+		add_filter( 'init', array( $admin, 'do_about_page' ) );
+		add_action( 'init', array( $admin, 'load_site_import' ), 11 );
+
 		$front_end = new Front_End();
 		add_action( 'wp_enqueue_scripts', array( $front_end, 'enqueue_scripts' ) );
 		add_action( 'after_setup_theme', array( $front_end, 'setup_theme' ) );
 		add_action( 'widgets_init', array( $front_end, 'register_sidebars' ) );
-		// add_action( 'after_switch_theme', array( $front_end, 'theme_activated' ), 0 );
-		// add_action( 'elementor/frontend/before_register_styles', array( $front_end, 'enqueue_before_elementor' ) );
 	}
 }
