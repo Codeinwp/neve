@@ -129,7 +129,7 @@ class Colors extends Base_Inline {
 			),
 			'border-top-color-desktop' => array(
 				'css_prop'    => 'border-top-color',
-				'selectors'   => '#nv-primary-navigation .sub-menu',
+				'selectors'   => '#nv-primary-navigation .sub-menu, .nv-nav-search',
 				'media-query' => 'desktop',
 			),
 			'background'               => array(

@@ -172,28 +172,6 @@ class Front_End {
 					'title' => 'One Page Template',
 				),
 			),
-			'remote' => array(
-				'hestia-lawyers'     => array(
-					'url'        => 'https://demo.themeisle.com/hestia-lawyers/',
-					'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2018/08/hestia-lawyers-demo-screenshot.png',
-					'title'      => 'Lawyers Demo',
-				),
-				'hestia-travel'      => array(
-					'url'        => 'https://demo.themeisle.com/hestia-travel/',
-					'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2018/08/hestia-travel-demo-screenshot.png',
-					'title'      => 'Travel Agency Demo',
-				),
-				'hestia-coffee-shop' => array(
-					'url'        => 'https://demo.themeisle.com/hestia-coffee-shop/',
-					'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2018/08/hestia-coffee-shop-demo-screenshot.png',
-					'title'      => 'Coffee Shop Demo',
-				),
-				'hestia-gym'         => array(
-					'url'        => 'https://demo.themeisle.com/hestia-gym/',
-					'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2018/08/hestia-gym-demo-screenshot.png',
-					'title'      => 'Gym Demo',
-				),
-			),
 		);
 
 		return apply_filters( 'neve_filter_onboarding_data', $onboarding_sites );
