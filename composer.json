@@ -1,0 +1,34 @@
+{
+  "name": "codeinwp/neve",
+  "description": "Neve by ThemeIsle.",
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/Codeinwp/themeisle-sdk"
+    }
+  ],
+  "homepage": "https://themeisle.com/themes/neve/",
+  "license": "GPL-2.0+",
+  "authors": [
+    {
+      "name": "ThemeIsle Team",
+      "email": "friends@themeisle.com.com",
+      "homepage": "https://themeisle.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "support": {
+    "issues": "https://github.com/Codeinwp/neve/issues",
+    "source": "https://github.com/Codeinwp/neve"
+  },
+  "type": "wordpress-theme",
+  "require": {
+    "codeinwp/themeisle-sdk": "master"
+  },
+  "autoload": {
+    "files": [
+      "vendor/codeinwp/themeisle-sdk/load.php"
+    ]
+  }
+}
