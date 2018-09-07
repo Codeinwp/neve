@@ -171,7 +171,7 @@ class Front_End {
 			'local' => array(
 				'neve-main' => array(
 					'url'   => 'https://demo.themeisle.com/neve',
-					'title' => 'One Page Template',
+					'title' => 'Neve 2018',
 				),
 			),
 		);
