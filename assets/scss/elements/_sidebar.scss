@@ -12,4 +12,19 @@
 
 .nv-sidebar-wrap {
   margin-bottom: $spacing-lg;
+
+  .search-form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  input[type="search"] {
+    margin-bottom: $spacing-xs;
+  }
+
+  .widget {
+    border-bottom: $muted-border;
+    padding-bottom: $spacing-sm;
+    margin-bottom: $spacing-sm;
+  }
 }

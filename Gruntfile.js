@@ -7,6 +7,11 @@ module.exports = function ( grunt ) {
 		config = require( 'grunt-theme-fleet' );
 	config     = config();
 
+	config.files.js.push( '!inc/admin/onboarding/assets/js/bundle.js' );
+	config.files.js.push( '!inc/admin/onboarding/webpack.config.js' );
+	config.files.js.push( '!inc/admin/onboarding/node_modules/**/*' );
+	config.files.js.push( '!**/node_modules/**/*' );
+
 	//Task mapping.
 	config.taskMap.sass = 'grunt-contrib-sass';
 	config.taskMap.watch = 'grunt-contrib-watch';

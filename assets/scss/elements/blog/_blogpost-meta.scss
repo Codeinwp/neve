@@ -21,23 +21,9 @@
     align-items: center;
 
   }
-  .meta .icon:before {
-    top: 1px;
+  .meta .nv-icon:before {
     position: relative;
     margin-right: 5px;
-    font-family: Dashicons;
-  }
-  .author .icon:before {
-    content: "\f110";
-  }
-  .category .icon:before {
-    content: "\f318";
-  }
-  .date .icon:before {
-    content: "\f508";
-  }
-  .comments .icon:before {
-    content: "\f101";
   }
 }
 .article-content-col {

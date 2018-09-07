@@ -25,7 +25,7 @@ class Header extends Base_View {
 	 * Render navigation
 	 */
 	public function render_navigation() {
-	?>
+		?>
 		<nav class="nv-navbar">
 			<div class="container">
 				<div class="row">
@@ -65,7 +65,7 @@ class Header extends Base_View {
 		}
 
 		if ( 'search' === $additional_item ) {
-			$items .= '<li class="menu-item-nav-search"><a><span class="icon"></span></a>';
+			$items .= '<li class="menu-item-nav-search"><a><span class="nv-icon nv-search"></span></a>';
 			$items .= '<div class="nv-nav-search">';
 			$items .= get_search_form( false );
 			$items .= '</div>';
@@ -76,7 +76,7 @@ class Header extends Base_View {
 			if ( ! class_exists( 'WooCommerce' ) ) {
 				return $items;
 			}
-			$items .= '<li class="menu-item-nav-cart"><a href="' . esc_url( wc_get_cart_url() ) . '"><span class="icon"></span>';
+			$items .= '<li class="menu-item-nav-cart"><a href="' . esc_url( wc_get_cart_url() ) . '"><span class="nv-icon nv-cart"></span>';
 			$items .= '<span class="cart-count">' . WC()->cart->get_cart_contents_count() . '</span>';
 			$items .= '</a>';
 			if ( ! is_cart() ) {

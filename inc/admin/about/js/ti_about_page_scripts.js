@@ -1,7 +1,7 @@
 /**
- * Main scripts file for the About Hestia Page
+ * Main scripts file for the About Neve Page
  *
- * @package Hestia
+ * @package neve
  */
 
 /* global tiAboutPageObject */
@@ -11,6 +11,7 @@ jQuery( document ).ready(
 	function () {
 		jQuery( '#about_tabs' ).tabs();
 		handleLinkingInTabs();
+		startLoader();
 
 		/* Dismiss required actions */
 		jQuery( '.ti-about-page-required-action-button' ).click(
@@ -75,4 +76,19 @@ function handleLinkingInTabs() {
 		jQuery( '[data-tab-id="' + index + '"] > a' ).click();
 		return false;
 	} );
+}
+
+function startLoader() {
+	var loader = jQuery('.about-loader');
+
+	setTimeout(function() {
+		jQuery(loader).css('right', 0 );
+	}, 1000);
+
+	window.addEventListener("DOMContentLoaded", function(event) {
+		setTimeout(function() {
+			jQuery(loader).css( 'left', '100%');
+			jQuery('.about-loading').removeClass('loading');
+		}, 1500);
+	});
 }

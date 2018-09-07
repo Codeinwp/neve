@@ -8,7 +8,8 @@ module.exports = {
 	},
 	customizerStyle: {
 		files: {
-			'assets/css/customizer-style.min.css': [ 'assets/css/customizer-style.css' ]
+			'assets/css/customizer-style.min.css': [ 'assets/css/customizer-style.css' ],
+			'assets/neve-icons/neve-icons.min.css': [ 'assets/neve-icons/neve-icons.css' ]
 		}
 	}
 };

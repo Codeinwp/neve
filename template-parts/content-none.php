@@ -23,9 +23,13 @@ if ( is_home() && current_user_can( 'publish_posts' ) ) { ?>
 	</p>
 <?php } elseif ( is_search() ) { ?>
 	<p><?php esc_html_e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'neve' ); ?></p>
-	<?php get_search_form(); ?>
+	<div class="nv-seach-form-wrap">
+		<?php get_search_form(); ?>
+	</div>
 <?php } else { ?>
 	<p><?php esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'neve' ); ?></p>
-	<?php get_search_form(); ?>
-<?php
+	<div class="nv-seach-form-wrap">
+		<?php get_search_form(); ?>
+	</div>
+	<?php
 }

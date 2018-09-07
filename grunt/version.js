@@ -21,7 +21,7 @@ module.exports = {
 	},
 	functions: {
 		options: {
-			prefix: 'NEVE_VERSIION\', \''
+			prefix: 'NEVE_VERSION\', \''
 		},
 		src: 'functions.php'
 	},

@@ -155,6 +155,22 @@ a.skip-onboarding {
     margin-bottom: 20px;
 }
 
+
+.is__onboarding .ti-sites-lib {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.is__onboarding .ti-sites-lib > div {
+    width: 32%;
+    margin-right: 2%;
+}
+
+.is__onboarding .ti-sites-lib > div:nth-child(3n), .is__onboarding .ti-sites-lib > div:last-child {
+    margin-right: 0;
+}
+
 @media ( max-width: 1080px ) {
     .ti-sites-lib {
         grid-template-columns: repeat(auto-fill, minmax(49%, 1fr));
@@ -192,19 +208,26 @@ a.skip-onboarding {
     .import-modal__wrapper .modal__item {
         width: 95%;
     }
+
+
+    .is__onboarding .ti-sites-lib > div {
+        width: 48%;
+        margin-right: 4%;
+    }
+
+    .is__onboarding .ti-sites-lib > div:nth-child(3n) {
+        margin-right: 4%;
+    }
+    .is__onboarding .ti-sites-lib > div:nth-child(2n), .is__onboarding .ti-sites-lib > div:last-child {
+        margin-right: 0;
+    }
 }
 
-.is__onboarding .ti-sites-lib {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+@media (max-width: 580px) {
+
+    .is__onboarding .ti-sites-lib > div {
+        width: 100%;
+        margin-right: 0 !important;
+    }
 }
 
-.is__onboarding .ti-sites-lib > div {
-    width: 32%;
-    margin-right: 2%;
-}
-
-.is__onboarding .ti-sites-lib > div:nth-child(3n), .is__onboarding .ti-sites-lib > div:last-child {
-    margin-right: 0;
-}

@@ -90,18 +90,15 @@ class Themeisle_OB_Rest_Server {
 		$data        = array();
 
 		foreach ( $local_data as $slug => $args ) {
-			$request       = wp_remote_get( get_template_directory_uri() . Themeisle_Onboarding::OBOARDING_PATH . '/demos/' . $slug . '/data.json' );
-			$response_code = wp_remote_retrieve_response_code( $request );
+			$json_path = get_template_directory() . Themeisle_Onboarding::OBOARDING_PATH . '/demos/' . $slug . '/data.json';
 
-			if ( $response_code !== 200 ) {
+			if ( ! file_exists( $json_path ) || ! is_readable( $json_path ) ) {
 				continue;
 			}
 
-			if ( empty( $request['body'] ) || ! isset( $request['body'] ) ) {
-				continue;
-			}
+			$json = file_get_contents( $json_path );
 
-			$data['local'][ $slug ]                 = json_decode( $request['body'], true );
+			$data['local'][ $slug ]                 = json_decode( $json, true );
 			$data['local'][ $slug ]['title']        = esc_html( $args['title'] );
 			$data['local'][ $slug ]['demo_url']     = esc_url( $args['url'] );
 			$data['local'][ $slug ]['content_file'] = get_template_directory() . Themeisle_Onboarding::OBOARDING_PATH . '/demos/' . $slug . '/export.xml';

@@ -37,23 +37,23 @@ class Post_Meta extends Base_View {
 		if ( ! is_array( $order ) || empty( $order ) ) {
 			return;
 		}
-		$order  = $this->sanitize_order_array( $order );
-		$markup = '';
+		$order   = $this->sanitize_order_array( $order );
+		$markup  = '';
 		$markup .= '<ul class="nv-meta-list">';
 		foreach ( $order as $meta ) {
 			switch ( $meta ) {
 				case 'author':
-					$markup .= '<li class="meta author"><span class="icon"></span>';
+					$markup .= '<li class="meta author"><span class="nv-icon nv-author"></span>';
 					$markup .= get_the_author_posts_link();
 					$markup .= '</li>';
 					break;
 				case 'date':
-					$markup .= '<li class="meta date"><span class="icon"></span>';
+					$markup .= '<li class="meta date"><span class="nv-icon nv-calendar"></span>';
 					$markup .= '<span>' . get_the_date() . '</span>';
 					$markup .= '</li>';
 					break;
 				case 'category':
-					$markup .= '<li class="meta category"><span class="icon"></span>';
+					$markup .= '<li class="meta category"><span class="nv-icon nv-folder"></span>';
 					$markup .= get_the_category_list( ' / ', get_the_ID() );
 					$markup .= '</li>';
 					break;
@@ -62,7 +62,7 @@ class Post_Meta extends Base_View {
 					if ( empty( $comments ) ) {
 						break;
 					}
-					$markup .= '<li class="meta comments"><span class="icon"></span>';
+					$markup .= '<li class="meta comments"><span class="nv-icon nv-comment"></span>';
 					$markup .= $this->get_comments();
 					$markup .= '</li>';
 					break;

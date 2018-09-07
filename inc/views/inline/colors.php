@@ -129,7 +129,7 @@ class Colors extends Base_Inline {
 			),
 			'border-top-color-desktop' => array(
 				'css_prop'    => 'border-top-color',
-				'selectors'   => '#nv-primary-navigation .sub-menu',
+				'selectors'   => '#nv-primary-navigation .sub-menu, .nv-nav-search',
 				'media-query' => 'desktop',
 			),
 			'background'               => array(
@@ -139,8 +139,8 @@ class Colors extends Base_Inline {
 		);
 
 		/*
-		 Commented for now
-		 if ( class_exists( 'WooCommerce' ) ) {
+		Commented for now
+		if ( class_exists( 'WooCommerce' ) ) {
 			$color_setup['background']['selectors']               .= ', .nv-nav-cart .woocommerce-mini-cart__buttons a.button:last-child';
 			$color_setup['background']['selectors']               .= ', .nv-nav-cart .woocommerce-mini-cart__buttons a.button:first-child:hover';
 			$color_setup['border-top-color-desktop']['selectors'] .= ', .nv-nav-cart';

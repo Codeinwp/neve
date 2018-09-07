@@ -24,14 +24,14 @@ class Footer extends Base_View {
 	 */
 	public function render_footer() {
 		neve_before_footer_trigger();
-	?>
+		?>
 		<footer>
 			<div class="container">
 				<?php echo $this->render_footer_sidebars(); ?>
 				<?php echo $this->render_footer_content(); ?>
 			</div>
 		</footer>
-	<?php
+		<?php
 		neve_after_footer_trigger();
 	}
 
@@ -86,7 +86,7 @@ class Footer extends Base_View {
 		$content = get_theme_mod(
 			'neve_footer_text', sprintf(
 				/* translators: %1$s is link to ThemeIsle */
-				 esc_html__( 'Copyright - Neve by %1$s', 'neve' ),
+				esc_html__( 'Copyright - Neve by %1$s', 'neve' ),
 				wp_kses_post( '<a href="https://themeisle.com/themes/neve/" target="_blank" rel="nofollow">Themeisle</a>' )
 			)
 		);

@@ -124,7 +124,7 @@ class Page {
 			),
 			admin_url( 'themes.php?page=' . $this->theme_slug . '-welcome' )
 		) . '#demo-import';
-		$this->notification  = isset( $this->config['notification'] ) ? $this->config['notification'] : ( apply_filters( 'hestia_welcome_notice_filter', ( '<p>' . sprintf( 'Welcome! Thank you for choosing %1$s! To fully take advantage of the best our theme can offer please make sure you visit our %2$swelcome page%3$s.', $this->theme_name, '<a href="' . esc_url( admin_url( 'themes.php?page=' . $this->theme_slug . '-welcome' ) ) . '">', '</a>' ) . '</p><p><a href="' . esc_url( $url ) . '" class="button" style="text-decoration: none;">' . sprintf( 'Get started with %s', $this->theme_name ) . '</a></p>' ) ) );
+		$this->notification  = isset( $this->config['notification'] ) ? $this->config['notification'] : ( apply_filters( 'neve_welcome_notice_filter', ( '<p>' . sprintf( 'Welcome! Thank you for choosing %1$s! To fully take advantage of the best our theme can offer please make sure you visit our %2$swelcome page%3$s.', $this->theme_name, '<a href="' . esc_url( admin_url( 'themes.php?page=' . $this->theme_slug . '-welcome' ) ) . '">', '</a>' ) . '</p><p><a href="' . esc_url( $url ) . '" class="button" style="text-decoration: none;">' . sprintf( 'Get started with %s', $this->theme_name ) . '</a></p>' ) ) );
 		$this->tabs          = isset( $this->config['tabs'] ) ? $this->config['tabs'] : array();
 
 	}
@@ -241,6 +241,15 @@ class Page {
 	 * Render about page header
 	 */
 	private function render_header() {
+		?>
+		<div class="about-loading loading">
+			<div class="about-loader">
+				<div class="loader-content">
+				<p><i class="dashicons dashicons-update"></i><span><?php echo __( 'Loading...', 'neve' ); ?></span></p>
+				</div>
+			</div>
+		</div>
+		<?php
 		if ( ! empty( $this->config['welcome_title'] ) ) {
 			$title = $this->config['welcome_title'];
 		}
@@ -267,7 +276,7 @@ class Page {
 		}
 
 		if ( ! empty( $content ) ) {
-			echo '<div class="hestia-about-text about-text">' . wp_kses_post( $content ) . '</div></div>';
+			echo '<div class="neve-about-text about-text">' . wp_kses_post( $content ) . '</div></div>';
 		}
 
 		echo '<a href="https://themeisle.com/" target="_blank" class="wp-badge epsilon-welcome-logo"></a>';
@@ -550,7 +559,7 @@ class Page {
 		}
 
 		// this is needed on all admin pages, not just the about page, for the badge action count in the WordPress main sidebar
-		wp_enqueue_style( 'ti-about-page-css', get_template_directory_uri() . '/inc/admin/about/css/ti_about_page_css.css', array(), HESTIA_VERSION );
+		wp_enqueue_style( 'ti-about-page-css', get_template_directory_uri() . '/inc/admin/about/css/ti_about_page_css.css', array(), NEVE_VERSION );
 
 		wp_enqueue_script(
 			'ti-about-page-js',
@@ -559,7 +568,7 @@ class Page {
 				'jquery',
 				'jquery-ui-tabs',
 			),
-			HESTIA_VERSION
+			NEVE_VERSION
 		);
 		wp_enqueue_style( 'plugin-install' );
 		wp_enqueue_script( 'plugin-install' );
@@ -667,7 +676,7 @@ class Page {
 
 			if ( ! empty( $getting_started ) ) {
 
-				echo '<div class="feature-section three-col">';
+				echo '<div class="feature-section two-col">';
 
 				foreach ( $getting_started as $getting_started_item ) {
 
@@ -839,7 +848,7 @@ class Page {
 	 * Support tab content
 	 */
 	public function support_render() {
-		echo '<div class="feature-section three-col">';
+		echo '<div class="feature-section two-col">';
 
 		if ( ! empty( $this->config['support_content'] ) ) {
 
