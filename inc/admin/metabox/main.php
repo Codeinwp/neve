@@ -27,7 +27,7 @@ class Main extends Metabox_Base {
 						'contained'  => __( 'Contained', 'neve' ),
 						'full-width' => __( 'Full Width', 'neve' ),
 					),
-					'label'   => __( 'Sidebar', 'neve' ),
+					'label'   => __( 'Layout', 'neve' ),
 				)
 			)
 		);
@@ -42,7 +42,7 @@ class Main extends Metabox_Base {
 						'right'      => __( 'Right Sidebar', 'neve' ),
 						'full-width' => __( 'Full Width', 'neve' ),
 					),
-					'label'   => __( 'Layout', 'neve' ),
+					'label'   => __( 'Sidebar', 'neve' ),
 				)
 			)
 		);
