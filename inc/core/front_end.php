@@ -173,6 +173,14 @@ class Front_End {
 					'url'   => 'https://demo.themeisle.com/neve',
 					'title' => 'Neve 2018',
 				),
+				'neve-vet-center' => array(
+					'url'   => 'https://demo.themeisle.com/neve-vet-center/',
+					'title' => 'Neve Vet Center',
+				),
+				'neve-energy-panels' => array(
+					'url'   => 'https://demo.themeisle.com/neve-energy-panels/',
+					'title' => 'Neve Energy Panels',
+				)
 			),
 		);
 
