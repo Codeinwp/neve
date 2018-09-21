@@ -24,7 +24,7 @@ add_filter(
 );
 
 if ( ! defined( 'NEVE_DEBUG' ) ) {
-	define( 'NEVE_DEBUG', true );
+	define( 'NEVE_DEBUG', false );
 }
 
 if ( ! defined( 'WPFORMS_SHAREASALE_ID' ) ) {

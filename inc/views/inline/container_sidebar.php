@@ -46,13 +46,23 @@ class Container_Sidebar extends Base_Inline {
 	private function sidebar_style() {
 		$sidebar_width = get_theme_mod( 'neve_sidebar_width' );
 		$sidebar_width = json_decode( $sidebar_width, true );
+		$content_width = 100 - $sidebar_width;
 		$settings      = array(
-			array(
+			'content' => array(
 				'css_prop' => 'max-width',
-				'value'    => $sidebar_width,
+				'value'    => $content_width,
 				'suffix'   => '%',
 			),
+			'sidebar' => array(
+				array(
+					'css_prop' => 'max-width',
+					'value'    => $sidebar_width,
+					'suffix'   => '%',
+				),
+			)
 		);
-		$this->add_style( $settings, '.nv-sidebar-wrap', 'desktop' );
+
+		$this->add_style( $settings['content'], '.col:not(:only-child)', 'desktop' );
+		$this->add_style( $settings['sidebar'], '.nv-sidebar-wrap', 'desktop' );
 	}
 }
