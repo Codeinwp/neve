@@ -6,6 +6,8 @@
  * @package Neve
  */
 
-do_action( 'neve_before_content', 'single-post' );
-the_content();
-do_action( 'neve_after_content', 'single-post' );
+do_action( 'neve_before_content', 'single-post' ); ?>
+	<div class="nv-content-wrap">
+		<?php the_content(); ?>
+	</div>
+<?php do_action( 'neve_after_content', 'single-post' );

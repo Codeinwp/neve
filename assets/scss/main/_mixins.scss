@@ -1,6 +1,7 @@
 @mixin horizontal-list( $margin ) {
   display: flex;
   flex-wrap: wrap;
+  padding-left: 0;
   > li:not(:last-child) {
     padding-right: $margin;
   }

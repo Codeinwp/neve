@@ -134,7 +134,7 @@ class Colors extends Base_Inline {
 			),
 			'background'               => array(
 				'css_prop'  => 'background-color',
-				'selectors' => '.button.button-primary, .button.button-secondary:hover, .icon-bar',
+				'selectors' => '.button.button-primary, .button.button-secondary:hover, .icon-bar, blockquote:before',
 			),
 		);
 

@@ -5,5 +5,9 @@
  *
  * @package Neve
  */
+?>
 
-the_content();
+<div class="nv-content-wrap">
+	<?php the_content(); ?>
+</div>
+

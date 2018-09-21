@@ -3,13 +3,12 @@ Theme Name:     Neve
 Theme URI:      https://themeisle.com/themes/neve/
 Author:         ThemeIsle
 Author URI:     https://themeisle.com
-Description:    Neve is a Multi-Purpose modern WordPress theme perfect for any project. Fast, with a clean look and easily customizable, it can be used for blogs, creative business, small businesses (restaurants, wedding planners, sport/medical shops), startups, corporate businesses, online agencies and firms, portfolios, ecommerce (WooCommerce), and freelancers. It is compatible with Gutenberg, Elementor Page Builder and all other big Page Builder plugins. The theme is Responsive, Translation Ready, Retina ready, SEO friendly.
+Description:    Neve is a modern WordPress theme for professionals.
 Version:        1.0.2
 License:        GNU General Public License v2 or later
 License URI:    http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain:    neve
 WordPress Available:  no
-Requires License:     no
 Tags: blog, custom-logo, e-commerce, rtl-language-support, post-formats, grid-layout, one-column, two-columns, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready
 
 This theme, like WordPress, is licensed under the GPL.
@@ -394,6 +393,7 @@ a:hover {
 #nv-top-bar-menu {
   display: flex;
   flex-wrap: wrap;
+  padding-left: 0;
   flex: 1;
 }
 #nv-top-bar-menu > li:not(:last-child) {
@@ -648,6 +648,7 @@ footer {
 .nv-footer-content .footer-menu {
   display: flex;
   flex-wrap: wrap;
+  padding-left: 0;
 }
 .nv-footer-content .footer-menu > li:not(:last-child) {
   padding-right: 16px;
@@ -772,6 +773,7 @@ button, input[type=button], .btn, input[type="submit"] {
 .nv-meta-list {
   display: flex;
   flex-wrap: wrap;
+  padding-left: 0;
   border-bottom: 1px solid #f0f0f0;
   margin-bottom: 8px;
   padding: 8px 0;
@@ -852,6 +854,7 @@ button, input[type=button], .btn, input[type="submit"] {
 .nv-index-posts .page-numbers {
   display: flex;
   flex-wrap: wrap;
+  padding-left: 0;
   justify-content: center;
   margin: 8px auto;
 }
@@ -922,6 +925,7 @@ button, input[type=button], .btn, input[type="submit"] {
 #comments .pagination {
   display: flex;
   flex-wrap: wrap;
+  padding-left: 0;
   justify-content: center;
 }
 #comments .pagination > li:not(:last-child) {
@@ -955,6 +959,70 @@ button, input[type=button], .btn, input[type="submit"] {
 
 .nv-index-posts, .nv-single-post-wrap, .nv-single-page-wrap {
   margin-bottom: 48px;
+  grid-column: span 9;
+}
+
+blockquote {
+  text-align: center;
+  font-size: 1.1em;
+  margin: 32px 0;
+}
+blockquote:before {
+  height: 3px;
+  width: 48px;
+  background-color: #333;
+  content: " ";
+  display: block;
+  margin: 0 auto 32px;
+}
+blockquote > * {
+  margin-bottom: 0;
+}
+
+table {
+  margin: 32px 0;
+}
+table td, table th {
+  padding: 8px;
+  border-bottom: 1px solid #f0f0f0;
+}
+table tbody tr:hover {
+  background-color: #fbfbfb;
+}
+
+code {
+  background: #d0effb;
+  border-radius: 5px;
+  border: 1px solid #f0f0f0;
+}
+
+ul, ol {
+  padding-left: 32px;
+}
+ul li, ol li {
+  line-height: 2em;
+}
+
+dl {
+  width: 100%;
+  overflow: hidden;
+  margin-top: 32px;
+}
+
+dt {
+  font-weight: bold;
+  float: left;
+  width: 23%;
+  padding-right: 2%;
+  margin-bottom: 32px;
+}
+
+dd {
+  margin-bottom: 32px;
+  float: left;
+  width: 73%;
+  padding-left: 2%;
+  border-left: 1px solid #f0f0f0;
 }
 
 .nv-sidebar-wrap {
@@ -1344,7 +1412,7 @@ button, input[type=button], .btn, input[type="submit"] {
   }
 
   .nv-sidebar-wrap {
-    max-width: 30%;
+    /* max-width: 30%; */
   }
   .nv-sidebar-wrap.right {
     border-left: 1px solid #f0f0f0;
@@ -1555,6 +1623,7 @@ button, input[type=button], .btn, input[type="submit"] {
   #nv-primary-navigation {
     display: flex;
     flex-wrap: wrap;
+    padding-left: 0;
     overflow-y: inherit;
     max-height: inherit;
     margin-left: auto;
