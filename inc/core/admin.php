@@ -10,6 +10,7 @@
 
 namespace Neve\Core;
 
+use Neve\Admin\About\Page as About_Page;
 
 /**
  * Class Admin
@@ -180,12 +181,9 @@ class Admin {
 				),
 			),
 		);
-
-		if ( class_exists( '\Ti_About_Page' ) ) {
-			$about_page = new \Ti_About_Page();
-			$about_page->init( apply_filters( 'neve_about_page_content', $config ) );
-		}
+		About_Page::init( apply_filters( 'neve_about_page_content', $config ) );
 	}
+
 
 	/**
 	 * Load site import module.
