@@ -26,7 +26,7 @@ abstract class Page_Builder_Base {
 	 *
 	 * @return bool
 	 */
-	protected abstract function is_edited_with_builder( $pid );
+	abstract protected function is_edited_with_builder( $pid );
 
 	/**
 	 * Decide if we should set page template in builder or not.
@@ -64,7 +64,6 @@ abstract class Page_Builder_Base {
 
 		$this->set_page_template( $post_id );
 	}
-
 
 	/**
 	 * Set page layout.

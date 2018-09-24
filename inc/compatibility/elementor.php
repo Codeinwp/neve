@@ -8,6 +8,8 @@
 
 namespace Neve\Compatibility;
 
+use ElementorPro\Modules\ThemeBuilder\Module;
+
 /**
  * Class Elementor
  *
@@ -22,9 +24,23 @@ class Elementor extends Page_Builder_Base {
 		if ( ! defined( 'ELEMENTOR_VERSION' ) ) {
 			return;
 		}
+		$this->add_theme_builder_hooks();
+	}
 
-		add_action( 'elementor/theme/register_locations', array( $this, 'register_theme_locations' ), 100 );
-		add_action( 'elementor/editor/before_enqueue_scripts', array( $this, 'maybe_set_page_template' ), 1 );
+	/**
+	 * Add support for elementor theme locations.
+	 */
+	private function add_theme_builder_hooks() {
+		if ( ! class_exists( 'ElementorPro\Modules\ThemeBuilder\Module' ) ) {
+			return;
+		}
+
+		// Elementor locations compatibility.
+		add_action( 'elementor/theme/register_locations', array( $this, 'register_theme_locations' ) );
+
+		// Override theme templates.
+		add_action( 'neve_do_header', array( $this, 'do_header' ), 0 );
+		add_action( 'neve_do_footer', array( $this, 'do_footer' ), 0 );
 	}
 
 	/**
@@ -44,26 +60,34 @@ class Elementor extends Page_Builder_Base {
 	}
 
 	/**
-	 * Register theme locations for Elementor Pro
+	 * Register Theme Location for Elementor
+	 * see https://developers.elementor.com/theme-locations-api/
 	 *
-	 * @param \ElementorPro\Modules\ThemeBuilder\Classes\Locations_Manager $elementor_theme_manager location manager.
+	 * @param \ElementorPro\Modules\ThemeBuilder\Classes\Locations_Manager $manager Elementor object.
 	 */
-	public function register_theme_locations( $elementor_theme_manager ) {
-		$elementor_theme_manager->register_location(
-			'header',
-			array(
-				'hook'            => 'neve_do_header',
-				'remove_hooks'    => array( array( 'Neve\Views\Header', 'render_navigation' ) ),
-				'edit_in_content' => false,
-			)
-		);
-		$elementor_theme_manager->register_location(
-			'footer',
-			array(
-				'hook'            => 'neve_do_footer',
-				'remove_hooks'    => array( array( 'Neve\Views\Footer', 'render_footer' ) ),
-				'edit_in_content' => false,
-			)
-		);
+	public function register_theme_locations( $manager ) {
+		$manager->register_all_core_location();
 	}
+
+	/**
+	 * Remove actions for elementor header to act properly.
+	 */
+	public function do_header() {
+		$did_location = Module::instance()->get_locations_manager()->do_location( 'header' );
+		if ( $did_location ) {
+			remove_all_actions( 'neve_do_header' );
+		}
+	}
+
+	/**
+	 * Remove actions for elementor footer to act properly.
+	 */
+	public function do_footer() {
+		$did_location = Module::instance()->get_locations_manager()->do_location( 'footer' );
+		if ( $did_location ) {
+			remove_all_actions( 'neve_do_footer' );
+		}
+	}
+
+
 }
