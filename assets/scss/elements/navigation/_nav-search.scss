@@ -6,8 +6,20 @@
   }
 }
 
+#nv-primary-navigation .menu-item-nav-search > a {
+  display: none;
+}
+.nv-nav-search {
+  padding: $spacing-xs 0;
+}
+
 @mixin nav-search--laptop() {
+  #nv-primary-navigation .menu-item-nav-search > a {
+    display: block;
+  }
+
   .nv-nav-search {
+    padding: 0;
     visibility: hidden;
     opacity: 0;
     transition: $transition_med;
