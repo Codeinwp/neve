@@ -133,7 +133,6 @@ abstract class Control_Base {
 		}
 
 		if ( isset( $_POST[ $this->id ] ) ) {
-			var_dump( $_POST[ $this->id ] );
 			$value = wp_unslash( $_POST[ $this->id ] );
 			if ( $value === 'default' ) {
 				delete_post_meta( $post_id, $this->id );
