@@ -959,7 +959,6 @@ button, input[type=button], .btn, input[type="submit"] {
 
 .nv-index-posts, .nv-single-post-wrap, .nv-single-page-wrap {
   margin-bottom: 48px;
-  grid-column: span 9;
 }
 
 blockquote {
@@ -1039,6 +1038,10 @@ dd {
   border-bottom: 1px solid #f0f0f0;
   padding-bottom: 16px;
   margin-bottom: 16px;
+}
+
+.widget ul {
+  padding: 0;
 }
 
 @media (min-width: 576px) {
@@ -1412,7 +1415,7 @@ dd {
   }
 
   .nv-sidebar-wrap {
-    /* max-width: 30%; */
+    max-width: 30%;
   }
   .nv-sidebar-wrap.right {
     border-left: 1px solid #f0f0f0;

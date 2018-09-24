@@ -77,7 +77,10 @@ class Front_End {
 	 * Enqueue scripts.
 	 */
 	public function enqueue_scripts() {
-		wp_enqueue_style( 'neve-style', get_template_directory_uri() . '/style' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
+		wp_register_style( 'neve-style', get_template_directory_uri() . '/style' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
+		wp_style_add_data( 'neve-style', 'rtl', 'replace' );
+		wp_style_add_data( 'neve-style', 'suffix', '.min' );
+		wp_enqueue_style( 'neve-style' );
 
 		wp_enqueue_style( 'neve-icons', NEVE_ASSETS_URL . '/neve-icons/neve-icons' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
 
@@ -169,11 +172,11 @@ class Front_End {
 	private function get_ti_demo_content_support_data() {
 		$onboarding_sites = array(
 			'local' => array(
-				'neve-main' => array(
+				'neve-main'          => array(
 					'url'   => 'https://demo.themeisle.com/neve',
 					'title' => 'Neve 2018',
 				),
-				'neve-vet-center' => array(
+				'neve-vet-center'    => array(
 					'url'   => 'https://demo.themeisle.com/neve-vet-center/',
 					'title' => 'Neve Vet Center',
 				),
