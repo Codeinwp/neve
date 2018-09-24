@@ -49,11 +49,10 @@
 		 * Handle the mobile dropdowns.
 		 */
 		'handleMobileDropdowns': function () {
+			var self = this;
 			$( '.caret-wrap' ).on( 'click touchstart', function () {
-				if ( !utils.isMobile() ) {
-					return false;
-				}
 				$( this ).parent().toggleClass( 'dropdown-open' );
+				self.createNavOverlay();
 				return false;
 			} );
 		},
@@ -94,7 +93,7 @@
 
 			$( navClickaway ).on( 'touchstart click', function () {
 				this.remove();
-				$( '#nv-primary-navigation li' ).removeClass( 'active' );
+				$( '#nv-primary-navigation li' ).removeClass( 'active dropdown-open' );
 			} );
 			return false;
 		},
