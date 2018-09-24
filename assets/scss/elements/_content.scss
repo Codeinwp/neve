@@ -45,6 +45,12 @@ pre {
 }
 
 .nv-content-wrap {
+  margin: $spacing 0;
+  &:after {
+    content: "";
+    clear: both;
+    display: table;
+  }
   ul {
     list-style-type: circle;
   }
@@ -79,4 +85,32 @@ pre {
   dd:not(.gallery-caption) {
     padding: 0 $spacing-sm;
   }
+}
+
+.alignleft {
+  float: left;
+  margin: 16px 16px 16px 0;
+}
+
+.alignright {
+  float: right;
+  margin: 16px 0 16px 16px;
+}
+
+.aligncenter {
+  text-align: center;
+  margin: 0 auto;
+}
+.wp-caption {
+  max-width: 100%;
+}
+.wp-caption-text {
+  text-align: center;
+  font-size: 0.8em;
+  font-weight: 500;
+}
+
+.twitter-tweet.twitter-tweet-rendered {
+  padding: $spacing-sm 0;
+  margin: auto;
 }
