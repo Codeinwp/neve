@@ -11,6 +11,22 @@
   margin:0 auto;
 }
 
+.nv-content-wrap .page-numbers {
+  justify-content: center;
+  margin: $spacing-xs auto;
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  list-style-type: none;
+  > a:not(:last-child) span, > span {
+    padding-right: $spacing-sm;
+  }
+}
+
+.post-password-form input {
+  margin-bottom: $spacing-xs;
+}
+
 @mixin single-post--laptop() {
   .single-post-container {
     padding-top: $spacing-lg;

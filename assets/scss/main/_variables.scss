@@ -3,13 +3,20 @@ $debug: 'false';
 
 // Font size bases.
 $font-size-base: 1rem !default;
-$h1-font-size: $font-size-base * 2.625 !default;
+$h1-font-size: $font-size-base * 2.25 !default;
 $h2-font-size: $font-size-base * 2 !default;
 $h3-font-size: $font-size-base * 1.75 !default;
 $h4-font-size: $font-size-base * 1.5 !default;
 $h5-font-size: $font-size-base * 1.25 !default;
 $h6-font-size: $font-size-base !default;
 
+// Mobile font size bases.
+$h1-mobile-font-size: $font-size-base * 2 !default;
+$h2-mobile-font-size: $font-size-base * 1.75 !default;
+$h3-mobile-font-size: $font-size-base * 1.5 !default;
+$h4-mobile-font-size: $font-size-base * 1.25 !default;
+$h5-mobile-font-size: $font-size-base * 1 !default;
+$h6-mobile-font-size: $font-size-base * 0.75 !default;
 
 $paragraph-margin-bottom: 1rem !default;
 

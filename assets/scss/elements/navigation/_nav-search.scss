@@ -42,7 +42,7 @@
     right: 0;
     top: 0;
     @if ($debug == 'true') {
-      background-color: #333;
+      background-color: rebeccapurple;
     }
     z-index: 90;
     height: 100vh;

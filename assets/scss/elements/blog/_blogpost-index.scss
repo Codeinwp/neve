@@ -13,7 +13,7 @@
 }
 
 .blog-entry-title {
-  margin-bottom: $spacing-xs;
+  margin: $spacing-xs 0;
 }
 
 .article-content-col .content {
@@ -30,7 +30,7 @@
 
 
 .excerpt-wrap {
-  padding: $spacing 0;
+  margin: $spacing-sm 0;
 }
 
 .nv-index-posts .posts-wrapper {

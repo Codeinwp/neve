@@ -77,7 +77,6 @@ html {
 
 img,
 embed,
-iframe,
 object,
 audio,
 video {
@@ -87,6 +86,7 @@ video {
 
 iframe {
   border: 0;
+  max-width: 100%;
 }
 
 table {
@@ -226,7 +226,7 @@ th {
 }
 
 html {
-  font-size: 16px;
+  font-size: 14px;
   overflow-x: hidden;
   -webkit-tap-highlight-color: transparent;
 }
@@ -263,27 +263,27 @@ a:hover {
 }
 
 body {
-  font-size: 0.85rem;
+  font-size: 1rem;
 }
 
 h1 {
-  font-size: 1.96875rem;
+  font-size: 2rem;
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
 }
 
 h3 {
-  font-size: 1.3125rem;
+  font-size: 1.5rem;
 }
 
 h4 {
-  font-size: 1.125rem;
+  font-size: 1.25rem;
 }
 
 h5 {
-  font-size: 0.9375rem;
+  font-size: 1rem;
 }
 
 h6 {
@@ -621,7 +621,7 @@ input, textarea, select, button {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
   text-align: center;
   vertical-align: middle;
   white-space: nowrap;
@@ -655,7 +655,7 @@ button, input[type=button], .btn, input[type="submit"] {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
   text-align: center;
   vertical-align: middle;
   white-space: nowrap;
@@ -688,12 +688,6 @@ button, input[type=button], .btn, input[type="submit"] {
   margin: 8px 0;
   width: 100%;
 }
-.nv-meta-list > li:not(:last-child) {
-  padding-right: 8px;
-}
-.nv-meta-list > li:not(:first-child) {
-  padding-left: 8px;
-}
 .nv-meta-list li,
 .nv-meta-list li > a,
 .nv-meta-list i {
@@ -706,9 +700,11 @@ button, input[type=button], .btn, input[type="submit"] {
   line-height: inherit;
 }
 .nv-meta-list li {
+  padding-right: 16px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  flex-wrap: wrap;
 }
 .nv-meta-list .meta .nv-icon:before {
   position: relative;
@@ -719,6 +715,7 @@ button, input[type=button], .btn, input[type="submit"] {
   align-items: flex-start;
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .nv-post-thumbnail-wrap {
@@ -947,7 +944,7 @@ pre {
   line-height: 2em;
   margin-bottom: 8px;
 }
-.nv-content-wrap dl {
+.nv-content-wrap dl:not(.gallery-item) {
   width: 100%;
   overflow: hidden;
   display: grid;
@@ -955,15 +952,15 @@ pre {
   grid-row-gap: 32px;
   margin: 16px 0;
 }
-.nv-content-wrap dt {
+.nv-content-wrap dt:not(.gallery-icon) {
   border-right: 1px solid #f0f0f0;
   padding: 0 16px;
 }
-.nv-content-wrap dt dfn {
+.nv-content-wrap dt:not(.gallery-icon) dfn {
   font-style: normal;
   font-weight: 600;
 }
-.nv-content-wrap dd {
+.nv-content-wrap dd:not(.gallery-caption) {
   padding: 0 16px;
 }
 
@@ -1150,6 +1147,34 @@ pre {
   .nv-sidebar-wrap.left {
     border-right: 1px solid #f0f0f0;
   }
+
+  html {
+    font-size: 16px;
+  }
+
+  h1 {
+    font-size: 2.25rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  h3 {
+    font-size: 1.75rem;
+  }
+
+  h4 {
+    font-size: 1.5rem;
+  }
+
+  h5 {
+    font-size: 1.25rem;
+  }
+
+  h6 {
+    font-size: 1rem;
+  }
 }
 @media (min-width: 960px) {
   .container {
@@ -1226,34 +1251,6 @@ pre {
   .col-lg-12 {
     flex: 0 0 100%;
     max-width: 100%;
-  }
-
-  body {
-    font-size: 1rem;
-  }
-
-  h1 {
-    font-size: 2.625rem;
-  }
-
-  h2 {
-    font-size: 2rem;
-  }
-
-  h3 {
-    font-size: 1.75rem;
-  }
-
-  h4 {
-    font-size: 1.5rem;
-  }
-
-  h5 {
-    font-size: 1.25rem;
-  }
-
-  h6 {
-    font-size: 1rem;
   }
 
   .navbar-toggle-wrapper {
@@ -1499,7 +1496,7 @@ pre {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
     text-align: center;
     vertical-align: middle;
     white-space: nowrap;
@@ -1520,7 +1517,7 @@ pre {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
     text-align: center;
     vertical-align: middle;
     white-space: nowrap;

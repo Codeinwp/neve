@@ -69,9 +69,9 @@ class Typography extends Base_Customizer {
 		$this->add_control(
 			new Control(
 				'neve_font_subsets', array(
-					'sanitize_callback' => 'neve_sanitize_array',
-					'default'           => array( 'latin' ),
-				),
+				'sanitize_callback' => 'neve_sanitize_array',
+				'default'           => array( 'latin' ),
+			),
 				array(
 					'section'  => 'neve_typography_general',
 					'label'    => esc_html__( 'Font Subsets', 'neve' ),
@@ -121,9 +121,9 @@ class Typography extends Base_Customizer {
 		$this->add_control(
 			new Control(
 				'neve_body_font_size', array(
-					'sanitize_callback' => 'neve_sanitize_range_value',
-					'transport'         => $this->selective_refresh,
-				),
+				'sanitize_callback' => 'neve_sanitize_range_value',
+				'transport'         => $this->selective_refresh,
+			),
 				array(
 					'label'       => esc_html__( 'Font Size', 'neve' ),
 					'section'     => 'neve_typography_body',
@@ -131,12 +131,12 @@ class Typography extends Base_Customizer {
 						'mobile'  => array(
 							'min'     => 10,
 							'max'     => 30,
-							'default' => 16,
+							'default' => 14,
 						),
 						'tablet'  => array(
 							'min'     => 10,
 							'max'     => 30,
-							'default' => 16,
+							'default' => 14,
 						),
 						'desktop' => array(
 							'min'     => 10,
@@ -157,9 +157,9 @@ class Typography extends Base_Customizer {
 		$this->add_control(
 			new Control(
 				'neve_body_line_height', array(
-					'sanitize_callback' => 'neve_sanitize_range_value',
-					'transport'         => $this->selective_refresh,
-				),
+				'sanitize_callback' => 'neve_sanitize_range_value',
+				'transport'         => $this->selective_refresh,
+			),
 				array(
 					'label'       => esc_html__( 'Line Height', 'neve' ),
 					'section'     => 'neve_typography_body',
@@ -222,9 +222,9 @@ class Typography extends Base_Customizer {
 			$this->add_control(
 				new Control(
 					$control_id . '_ui_heading', array(
-						'sanitize_callback' => 'sanitize_text_field',
-						'transport'         => $this->selective_refresh,
-					),
+					'sanitize_callback' => 'sanitize_text_field',
+					'transport'         => $this->selective_refresh,
+				),
 					array(
 						'label'            => $control['heading'],
 						'section'          => 'neve_typography_headings',
@@ -244,9 +244,9 @@ class Typography extends Base_Customizer {
 			$this->add_control(
 				new Control(
 					$control_id . '_font_size', array(
-						'sanitize_callback' => 'neve_sanitize_range_value',
-						'transport'         => $this->selective_refresh,
-					),
+					'sanitize_callback' => 'neve_sanitize_range_value',
+					'transport'         => $this->selective_refresh,
+				),
 					array(
 						'label'       => esc_html__( 'Font Size', 'neve' ) . '(rem)',
 						'section'     => 'neve_typography_headings',
@@ -255,12 +255,12 @@ class Typography extends Base_Customizer {
 							'mobile'  => array(
 								'min'     => 1,
 								'max'     => 10,
-								'default' => $control['default_size'],
+								'default' => $control['default_tablet_size'],
 							),
 							'tablet'  => array(
 								'min'     => 1,
 								'max'     => 10,
-								'default' => $control['default_size'],
+								'default' => $control['default_tablet_size'],
 							),
 							'desktop' => array(
 								'min'     => 1,
@@ -281,9 +281,9 @@ class Typography extends Base_Customizer {
 			$this->add_control(
 				new Control(
 					$control_id . '_line_height', array(
-						'sanitize_callback' => 'neve_sanitize_range_value',
-						'transport'         => $this->selective_refresh,
-					),
+					'sanitize_callback' => 'neve_sanitize_range_value',
+					'transport'         => $this->selective_refresh,
+				),
 					array(
 						'label'       => esc_html__( 'Line Height', 'neve' ),
 						'section'     => 'neve_typography_headings',
@@ -323,37 +323,43 @@ class Typography extends Base_Customizer {
 		return array(
 			'neve_h1' => array(
 				'priority'            => 20,
-				'default_size'        => '2.5',
+				'default_size'        => '2.25',
+				'default_tablet_size' => '2',
 				'default_line_height' => 1.6,
 				'heading'             => 'H1',
 			),
 			'neve_h2' => array(
 				'priority'            => 30,
 				'default_size'        => '2',
+				'default_tablet_size' => '1.75',
 				'default_line_height' => 1.6,
 				'heading'             => 'H2',
 			),
 			'neve_h3' => array(
 				'priority'            => 40,
 				'default_size'        => '1.75',
+				'default_tablet_size' => '1.5',
 				'default_line_height' => 1.6,
 				'heading'             => 'H3',
 			),
 			'neve_h4' => array(
 				'priority'            => 50,
 				'default_size'        => '1.5',
+				'default_tablet_size' => '1.25',
 				'default_line_height' => 1.6,
 				'heading'             => 'H4',
 			),
 			'neve_h5' => array(
 				'priority'            => 60,
 				'default_size'        => '1.25',
+				'default_tablet_size' => '1',
 				'default_line_height' => 1.6,
 				'heading'             => 'H5',
 			),
 			'neve_h6' => array(
 				'priority'            => 70,
 				'default_size'        => '1',
+				'default_tablet_size' => '0.75',
 				'default_line_height' => 1.6,
 				'heading'             => 'H6',
 			),

@@ -1,7 +1,7 @@
 blockquote {
   text-align: center;
   font-size: 1.1em;
-  margin: $spacing 0;
+  margin: $spacing-lg 0;
   &:before {
     height: 3px;
     width: $spacing-lg;
@@ -16,7 +16,7 @@ blockquote {
 }
 
 table {
-  margin: $spacing 0;
+  margin: $spacing-sm 0;
   td, th {
     padding: $spacing-xs;
     border-bottom: $muted-border;
@@ -26,37 +26,57 @@ table {
   }
 }
 
-
-
 code {
   background: #d0effb;
   border-radius: 5px;
   border: $muted-border;
 }
 
-ul, ol  {
-  padding-left: $spacing;
-  li {
-    line-height: 2em;
-  }
+pre {
+  display: block;
+  padding: $spacing-sm;
+  background: #fbfbfb;
+  border-radius: 5px;
+  border: $muted-border;
+  margin: $spacing 0;
+  white-space: pre-wrap;
+  font-size: 0.9em;
+  line-height: 2em;
 }
 
-dl {
-  width: 100%;
-  overflow: hidden;
-  margin-top: $spacing;
-}
-dt {
-  font-weight: bold;
-  float: left;
-  width: 23%;
-  padding-right: 2%;
-  margin-bottom: $spacing;
-}
-dd {
-  margin-bottom: $spacing;
-  float: left;
-  width: 73%;
-  padding-left: 2%;
-  border-left: $muted-border;
+.nv-content-wrap {
+  ul {
+    list-style-type: circle;
+  }
+  > ul, > ol {
+    margin: $spacing-sm 0;
+  }
+  ul, ol {
+    padding-left: $spacing-sm;
+    li {
+      line-height: 2em;
+      margin-bottom: $spacing-xs;
+    }
+  }
+
+  dl:not(.gallery-item) {
+    width: 100%;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-row-gap: $spacing;
+    margin: $spacing-sm 0;
+  }
+
+  dt:not(.gallery-icon) {
+    border-right: $muted-border;
+    padding: 0 $spacing-sm;
+    dfn {
+      font-style: normal;
+      font-weight: 600;
+    }
+  }
+  dd:not(.gallery-caption) {
+    padding: 0 $spacing-sm;
+  }
 }

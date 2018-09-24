@@ -1,8 +1,8 @@
 .nv-meta-list {
-  @include horizontal-list($spacing-xs);
+  @include horizontal-list(0);
   border-bottom: $muted-border;
-  margin-bottom: $spacing-xs;
-  padding: $spacing-xs 0;
+  padding-bottom: $spacing-xs;
+  margin: $spacing-xs 0;
   width: 100%;
   li,
   li > a,
@@ -16,10 +16,11 @@
     line-height: inherit;
   }
   li {
+    padding-right: $spacing-sm;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-
+    flex-wrap: wrap;
   }
   .meta .nv-icon:before {
     position: relative;
@@ -30,4 +31,5 @@
   align-items: flex-start;
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
