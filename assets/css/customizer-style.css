@@ -24,9 +24,12 @@
 }.customize-control-checkbox-toggle .checkbox-toggle-wrap {
     border: 1px solid #ccc;
     border-radius: 5px;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+    -ms-flex-direction: row;
+        flex-direction: row;
+    -ms-flex-align: center;
+        align-items: center;
+    -ms-flex-pack: justify;
+        justify-content: space-between;
     padding: 7px 0;
 }
 .customize-control-checkbox-toggle span {
@@ -76,8 +79,10 @@
 }
 
 .customize-control-checkbox-toggle > * {
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: row;
+    -ms-flex-direction: row;
+        flex-direction: row;
 }.customize-control-neve-dimensions > ul { width: 100%; }
 .customize-control-neve-dimensions .dimension-wrap { float: left; width: 17%; margin: 0; }
 .customize-control-neve-dimensions .dimension-wrap input,
@@ -232,9 +237,12 @@
     text-align: center;
     background: #fff;
     border: 1px dashed #ccc;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    -ms-flex-pack: center;
+        justify-content: center;
+    -ms-flex-align: center;
+        align-items: center;
     position: relative;
     opacity: .7;
 }
@@ -298,15 +306,11 @@
     cursor: pointer;
     border-width: 0;
     -webkit-appearance: none;
-    -webkit-border-radius: 0;
     border-radius: 0;
     white-space: nowrap;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
     box-sizing: border-box;
     color: inherit;
     background: none;
-    -webkit-box-shadow: none;
     box-shadow: none;
     vertical-align: inherit;
 }
@@ -324,16 +328,12 @@
 .customize-control-radio-image label:active {
     background: none;
     border-color: inherit;
-    -webkit-box-shadow: none;
     box-shadow: none;
-    -webkit-transform: none;
-    -ms-transform: none;
     transform: none;
 }
 .customize-control-radio-image img { border: 1px solid transparent; }
 .customize-control-radio-image .ui-state-active img {
     border-color: #00b6ff;
-    -webkit-box-shadow: 0 0 1px #3ec8ff;
     box-shadow: 0 0 5px #3EC8FE;
 }
 
@@ -377,16 +377,18 @@
     border:none;
 }.range-slider {
 	width: 100%;
-	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
-	flex-wrap: wrap;
-	-webkit-align-items: center;
-	align-items: center;
+	-ms-flex-wrap: wrap;
+	    flex-wrap: wrap;
+	-ms-flex-align: center;
+	    align-items: center;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
-	flex-direction: row;
-	justify-content: flex-start;
+	-ms-flex-direction: row;
+	    flex-direction: row;
+	-ms-flex-pack: start;
+	    justify-content: flex-start;
 }
 
 .range-slider__range {
@@ -397,8 +399,6 @@
 	padding: 0;
 	cursor: pointer;
 	outline: none;
-	-webkit-transition: background .5s;
-	-moz-transition: background .5s;
 	transition: background .5s;
 	-webkit-appearance: none;
 }
@@ -427,7 +427,6 @@
 	border: 2px solid #2e86b9;
 	background-color: #fff;
 	cursor: pointer;
-	-webkit-transition: background .15s ease-in-out;
 	transition: background .15s ease-in-out;
 }
 
@@ -517,7 +516,7 @@ input::-moz-focus-inner, input::-moz-focus-outer {
 .customize-control .responsive-switchers { margin-left: 5px; width: auto; }
 .customize-control .responsive-switchers-open li button { display: block; }
 .customize-control .responsive-switchers li { float: left; margin: 0; }
-.customize-control .responsive-switchers li button { height: 20px; width: 20px; background-color: #a4afb7; cursor: pointer; position: relative; margin-left: 5px; color: #fff; font-size: 10px; text-align: center; border-radius: 50%; padding: 0; border: 0; outline: none; -webkit-transition: background-color .5s; transition: background-color .5s; cursor: pointer; }
+.customize-control .responsive-switchers li button { height: 20px; width: 20px; background-color: #a4afb7; cursor: pointer; position: relative; margin-left: 5px; color: #fff; font-size: 10px; text-align: center; border-radius: 50%; padding: 0; border: 0; outline: none; transition: background-color .5s; cursor: pointer; }
 .customize-control .responsive-switchers li button:hover { background-color: #c2cbd2; }
 .customize-control .responsive-switchers li button.active { background-color: #13aff0; }
 .customize-control .responsive-switchers li button i { width: auto; height: auto; font-size: inherit; line-height: 18px; }

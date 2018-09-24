@@ -1,9 +1,12 @@
 .customize-control-checkbox-toggle .checkbox-toggle-wrap {
     border: 1px solid #ccc;
     border-radius: 5px;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+    -ms-flex-direction: row;
+        flex-direction: row;
+    -ms-flex-align: center;
+        align-items: center;
+    -ms-flex-pack: justify;
+        justify-content: space-between;
     padding: 7px 0;
 }
 .customize-control-checkbox-toggle span {
@@ -53,6 +56,8 @@
 }
 
 .customize-control-checkbox-toggle > * {
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: row;
+    -ms-flex-direction: row;
+        flex-direction: row;
 }

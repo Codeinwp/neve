@@ -4,6 +4,7 @@ buildScripts:
 - 'sass:min'
 - 'uglify:scripts'
 - 'uglify:customizerControls'
+- 'postcss'
 - 'rtlcss'
 - 'cssmin'
 
