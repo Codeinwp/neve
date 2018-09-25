@@ -349,13 +349,13 @@
 }
 
 .about-loader {
+	top: 0;
 	transition: 0.3s cubic-bezier(1, 0.01, 0.29, 1.01);
 	background-color: #fdfdfd;
 	left: 0;
 	right: 100%;
 	position: fixed;
 	height: 100vh;
-	z-index: 101;
 	width: 100%;
 	z-index: 1000000;
 }

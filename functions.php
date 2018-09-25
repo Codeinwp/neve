@@ -12,13 +12,6 @@ define( 'NEVE_VERSION', '1.0.3' );
 define( 'NEVE_INC_DIR', trailingslashit( get_template_directory() ) . 'inc/' );
 define( 'NEVE_ASSETS_URL', trailingslashit( get_template_directory_uri() ) . 'assets/' );
 
-add_filter('themeisle_sdk_products', 'neve_filter_products_sdk');
-
-function neve_filter_products_sdk( $products ) {
-	$products[] = get_template_directory() . '/style.css';
-	return $products;
-}
-
 if ( ! defined( 'NEVE_DEBUG' ) ) {
 	define( 'NEVE_DEBUG', false );
 }
@@ -30,6 +23,21 @@ if ( ! defined( 'WPFORMS_SHAREASALE_ID' ) ) {
 if ( ! defined( 'ELEMENTOR_PARTNER_ID' ) ) {
 	define( 'ELEMENTOR_PARTNER_ID', 2112 );
 }
+
+/**
+ * Themeisle SDK filter.
+ *
+ * @param array $products products array.
+ *
+ * @return array
+ */
+function neve_filter_sdk( $products ) {
+	$products[] = get_template_directory() . '/style.css';
+
+	return $products;
+}
+
+add_filter( 'themeisle_sdk_products', 'neve_filter_sdk' );
 
 /**
  * Adds notice for PHP < 5.3.29 hosts.
@@ -65,16 +73,13 @@ function neve_run() {
 	}
 
 	require_once 'autoloader.php';
-
-	$autoloader_name = '\\Neve\\Autoloader';
-	$autoloader = new $autoloader_name;
-
+	$autoloader_class = '\\Neve\\Autoloader';
+	$autoloader       = new $autoloader_class;
 	$autoloader->add_namespace( 'Neve', get_template_directory() . '/inc/' );
-
 	$autoloader->register();
 
-	$core_loader_name = 'Neve\\Core\\Core_Loader';
-	new $core_loader_name;
+	$core_loader_class = 'Neve\\Core\\Core_Loader';
+	new $core_loader_class;
 }
 
 neve_run();

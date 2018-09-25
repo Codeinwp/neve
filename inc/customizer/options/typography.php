@@ -69,9 +69,9 @@ class Typography extends Base_Customizer {
 		$this->add_control(
 			new Control(
 				'neve_font_subsets', array(
-				'sanitize_callback' => 'neve_sanitize_array',
-				'default'           => array( 'latin' ),
-			),
+					'sanitize_callback' => 'neve_sanitize_array',
+					'default'           => array( 'latin' ),
+				),
 				array(
 					'section'  => 'neve_typography_general',
 					'label'    => esc_html__( 'Font Subsets', 'neve' ),
@@ -121,9 +121,9 @@ class Typography extends Base_Customizer {
 		$this->add_control(
 			new Control(
 				'neve_body_font_size', array(
-				'sanitize_callback' => 'neve_sanitize_range_value',
-				'transport'         => $this->selective_refresh,
-			),
+					'sanitize_callback' => 'neve_sanitize_range_value',
+					'transport'         => $this->selective_refresh,
+				),
 				array(
 					'label'       => esc_html__( 'Font Size', 'neve' ),
 					'section'     => 'neve_typography_body',
@@ -157,9 +157,9 @@ class Typography extends Base_Customizer {
 		$this->add_control(
 			new Control(
 				'neve_body_line_height', array(
-				'sanitize_callback' => 'neve_sanitize_range_value',
-				'transport'         => $this->selective_refresh,
-			),
+					'sanitize_callback' => 'neve_sanitize_range_value',
+					'transport'         => $this->selective_refresh,
+				),
 				array(
 					'label'       => esc_html__( 'Line Height', 'neve' ),
 					'section'     => 'neve_typography_body',
@@ -222,9 +222,9 @@ class Typography extends Base_Customizer {
 			$this->add_control(
 				new Control(
 					$control_id . '_ui_heading', array(
-					'sanitize_callback' => 'sanitize_text_field',
-					'transport'         => $this->selective_refresh,
-				),
+						'sanitize_callback' => 'sanitize_text_field',
+						'transport'         => $this->selective_refresh,
+					),
 					array(
 						'label'            => $control['heading'],
 						'section'          => 'neve_typography_headings',
@@ -244,9 +244,9 @@ class Typography extends Base_Customizer {
 			$this->add_control(
 				new Control(
 					$control_id . '_font_size', array(
-					'sanitize_callback' => 'neve_sanitize_range_value',
-					'transport'         => $this->selective_refresh,
-				),
+						'sanitize_callback' => 'neve_sanitize_range_value',
+						'transport'         => $this->selective_refresh,
+					),
 					array(
 						'label'       => esc_html__( 'Font Size', 'neve' ) . '(rem)',
 						'section'     => 'neve_typography_headings',
@@ -281,9 +281,9 @@ class Typography extends Base_Customizer {
 			$this->add_control(
 				new Control(
 					$control_id . '_line_height', array(
-					'sanitize_callback' => 'neve_sanitize_range_value',
-					'transport'         => $this->selective_refresh,
-				),
+						'sanitize_callback' => 'neve_sanitize_range_value',
+						'transport'         => $this->selective_refresh,
+					),
 					array(
 						'label'       => esc_html__( 'Line Height', 'neve' ),
 						'section'     => 'neve_typography_headings',

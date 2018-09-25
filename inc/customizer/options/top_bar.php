@@ -139,7 +139,7 @@ class Top_Bar extends Base_Customizer {
 					'settings'            => array(
 						'neve_top_bar_layout',
 						'neve_top_bar_content',
-						'neve_top_bar_enable'
+						'neve_top_bar_enable',
 					),
 					'render_callback'     => array( $this, 'top_bar_content_callback' ),
 					'container_inclusive' => true,

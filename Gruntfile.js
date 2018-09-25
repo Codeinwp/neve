@@ -5,12 +5,16 @@ module.exports = function ( grunt ) {
 
 	var loader = require( 'load-project-config' ),
 		config = require( 'grunt-theme-fleet' );
-	config     = config();
+	config = config();
 
 	config.files.js.push( '!inc/admin/onboarding/assets/js/bundle.js' );
 	config.files.js.push( '!inc/admin/onboarding/webpack.config.js' );
 	config.files.js.push( '!inc/admin/onboarding/node_modules/**/*' );
 	config.files.js.push( '!**/node_modules/**/*' );
+
+	config.files.js.push( '!**/vendor/**/*' );
+	config.files.php.push( '!**/vendor/**/*' );
+	config.files.css.push( '!**/vendor/**/*' );
 
 	//Task mapping.
 	config.taskMap.sass = 'grunt-contrib-sass';

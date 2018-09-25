@@ -183,7 +183,7 @@ class Front_End {
 				'neve-energy-panels' => array(
 					'url'   => 'https://demo.themeisle.com/neve-energy-panels/',
 					'title' => 'Neve Energy Panels',
-				)
+				),
 			),
 		);
 

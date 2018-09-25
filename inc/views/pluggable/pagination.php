@@ -55,7 +55,7 @@ class Pagination extends Base_View {
 	 * @param string $context not yet used might come in handy later.
 	 */
 	public function render_pagination( $context ) {
-		if( $context === 'single' ) {
+		if ( $context === 'single' ) {
 			$this->render_single_pagination();
 			return;
 		}

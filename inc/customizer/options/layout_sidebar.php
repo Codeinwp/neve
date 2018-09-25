@@ -83,9 +83,9 @@ class Layout_Sidebar extends Base_Customizer {
 		$this->add_control(
 			new Control(
 				'sidebars_ui_heading', array(
-				'sanitize_callback' => 'sanitize_text_field',
-				'transport'         => $this->selective_refresh,
-			),
+					'sanitize_callback' => 'sanitize_text_field',
+					'transport'         => $this->selective_refresh,
+				),
 				array(
 					'label'            => __( 'Advanced', 'neve' ),
 					'section'          => 'neve_sidebar',

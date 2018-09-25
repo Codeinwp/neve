@@ -59,7 +59,7 @@ class Container_Sidebar extends Base_Inline {
 					'value'    => $sidebar_width,
 					'suffix'   => '%',
 				),
-			)
+			),
 		);
 
 		$this->add_style( $settings['content'], '#primary .container .col:not(:only-child)', 'desktop' );
