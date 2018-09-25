@@ -4,11 +4,10 @@
   padding-bottom: $spacing-xs;
   margin: $spacing-xs 0;
   width: 100%;
-  li,
-  li > a,
-  i {
+  li > span,
+  li > a {
     color: #7e7e7e;
-    font-size: 0.9em;
+    font-size: 0.85em;
   }
   i {
     margin-right: 2px;
