@@ -9,7 +9,6 @@
 .neve-about-text {
 	text-overflow: ellipsis;
 	display: -webkit-box;
-	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 4;
 	overflow: hidden;
 }
@@ -210,9 +209,12 @@
 }
 
 .recommended-plugins {
+	display: -ms-flexbox;
 	display: flex;
-	justify-content: space-between;
-	flex-wrap: wrap;
+	-ms-flex-pack: justify;
+	    justify-content: space-between;
+	-ms-flex-wrap: wrap;
+	    flex-wrap: wrap;
 }
 
 .recommended-plugins .plugin-banner {
@@ -222,9 +224,12 @@
 .recommended-plugins .plugin_box {
 	border: 1px solid #ccc;
 	margin-bottom: 20px;
+	display: -ms-flexbox;
 	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
+	-ms-flex-direction: column;
+	    flex-direction: column;
+	-ms-flex-pack: start;
+	    justify-content: flex-start;
 	width: 49%;
 }
 
@@ -264,13 +269,17 @@
 }
 
 .plugin-box-footer {
+	display: -ms-flexbox;
 	display: flex;
-	justify-content: space-around;
+	-ms-flex-pack: distribute;
+	    justify-content: space-around;
 	vertical-align: middle;
-	align-items: center;
+	-ms-flex-align: center;
+	    align-items: center;
 	padding: 0px 20px 5px;
 	border-top: 1px solid #ccc;
-	flex: 1;
+	-ms-flex: 1;
+	    flex: 1;
 	margin-top:  auto;
 }
 
@@ -360,14 +369,9 @@
 
 
 .about-loader i {
-	-webkit-animation:spin 1s linear infinite;
-	-moz-animation:spin 1s linear infinite;
 	animation:spin 1s linear infinite;
 }
-
-@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
-@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
-@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+@keyframes spin { 100% { transform:rotate(360deg); } }
 
 
 .about-loading.loading:after {
@@ -383,7 +387,10 @@
 }
 
 .about-loader {
+	display: -ms-flexbox;
 	display: flex;
-	justify-content: center;
-	align-items: center;
+	-ms-flex-pack: center;
+	    justify-content: center;
+	-ms-flex-align: center;
+	    align-items: center;
 }
