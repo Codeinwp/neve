@@ -41,7 +41,7 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  transition: all .15s ease-in-out;
   text-align: center;
   vertical-align: middle;
   white-space: nowrap;
@@ -66,4 +66,7 @@
 @mixin button-primary() {
   background-color: $theme_color;
   color: #fff;
+  &:hover {
+    opacity: .9;
+  }
 }

@@ -40,23 +40,17 @@ class Layout_Container extends Base_View {
 		}
 
 		if ( $context === 'single-post' ) {
-			/*
-			Commented for now
 			if ( class_exists( 'WooCommerce' ) && is_product() ) {
 				return ( $this->get_container_class( 'neve_single_product_container_style' ) );
 			}
-			*/
 
 			return ( $this->get_container_class( 'neve_single_post_container_style' ) );
 		}
 
 		if ( $context === 'single-page' ) {
-			/*
-			Commented for now
 			if ( class_exists( 'WooCommerce' ) && ( is_shop() || is_product_category() ) ) {
 				return ( $this->get_container_class( 'neve_shop_archive_container_style' ) );
 			}
-			*/
 		}
 
 		return $this->get_container_class( 'neve_default_container_style' );

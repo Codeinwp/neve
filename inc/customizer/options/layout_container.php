@@ -107,8 +107,6 @@ class Layout_Container extends Base_Customizer {
 			),
 		);
 
-		/*
-		Commented for now
 		if ( class_exists( 'WooCommerce' ) ) {
 			$container_style_controls = array_merge( $container_style_controls, array(
 				'neve_shop_archive_container_style'   => array(
@@ -121,7 +119,6 @@ class Layout_Container extends Base_Customizer {
 				),
 			) );
 		}
-		*/
 
 		foreach ( $container_style_controls as $control_id => $control ) {
 			$this->add_control(

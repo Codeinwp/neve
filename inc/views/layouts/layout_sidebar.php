@@ -34,8 +34,8 @@ class Layout_Sidebar extends Base_View {
 	 */
 	public function sidebar( $context, $position ) {
 		$sidebar_setup = $this->get_sidebar_setup( $context );
-		$theme_mod     = $sidebar_setup['theme_mod'];
-		$theme_mod     = apply_filters( 'neve_sidebar_position', get_theme_mod( $theme_mod, 'right' ) );
+		$theme_mod = $sidebar_setup['theme_mod'];
+		$theme_mod = apply_filters( 'neve_sidebar_position', get_theme_mod( $theme_mod, 'right' ) );
 		if ( $theme_mod !== $position ) {
 			return;
 		} ?>
@@ -70,15 +70,12 @@ class Layout_Sidebar extends Base_View {
 		}
 
 		if ( $context === 'single-post' ) {
-			/*
-			Commented for now
 			if ( class_exists( 'WooCommerce' ) && is_product() ) {
 				$sidebar_setup['theme_mod']    = 'neve_single_product_sidebar_layout';
 				$sidebar_setup['sidebar_slug'] = 'shop-sidebar';
 
 				return $sidebar_setup;
 			}
-			*/
 
 			$sidebar_setup['theme_mod'] = 'neve_single_post_sidebar_layout';
 
@@ -87,15 +84,25 @@ class Layout_Sidebar extends Base_View {
 		}
 
 		if ( $context === 'single-page' ) {
-			/*
-			Commented for now
-			if ( class_exists( 'WooCommerce' ) && ( is_shop() || is_product_category() ) ) {
+			if ( class_exists( 'WooCommerce' ) && ( is_cart() || is_checkout() || is_account_page() ) ) {
 				$sidebar_setup['theme_mod']    = 'neve_shop_archive_sidebar_layout';
 				$sidebar_setup['sidebar_slug'] = 'shop-sidebar';
 
 				return $sidebar_setup;
 			}
-			*/
+		}
+
+		if ( $context === 'shop' ) {
+			if ( class_exists( 'WooCommerce' ) ) {
+				$sidebar_setup['sidebar_slug'] = 'shop-sidebar';
+				if ( is_woocommerce() ) {
+					$sidebar_setup['theme_mod'] = 'neve_shop_archive_sidebar_layout';
+				}
+				if( is_product() ) {
+					$sidebar_setup['theme_mod'] = 'neve_single_product_sidebar_layout';
+				}
+				return $sidebar_setup;
+			}
 		}
 
 		return $sidebar_setup;

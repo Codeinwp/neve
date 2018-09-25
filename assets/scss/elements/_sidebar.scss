@@ -31,4 +31,15 @@
 
 .widget ul {
   padding: 0;
+  ul {
+    padding-left: $spacing-xs;
+    border-left: $muted-border;
+  }
+  li {
+    margin-top: $spacing-xs;
+  }
+}
+
+.widget > ul {
+  font-size: .85em;
 }

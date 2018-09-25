@@ -70,7 +70,7 @@ class Front_End {
 
 		add_image_size( 'neve-blog', 930, 620, true );
 
-		/*$this->add_woo_support();*/
+		$this->add_woo_support();
 	}
 
 	/**
@@ -94,6 +94,11 @@ class Front_End {
 			)
 		);
 		wp_enqueue_script( 'neve-script' );
+
+		if ( class_exists( 'WooCommerce' ) ) {
+			wp_enqueue_style( 'neve-woocommerce', NEVE_ASSETS_URL . '/css/woocommerce' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
+		}
+
 	}
 
 	/**

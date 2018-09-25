@@ -23,7 +23,6 @@
         <exclude name="WordPress.PHP.YodaConditions.NotYoda" />
         <exclude name="WordPress.Files.FileName.InvalidClassFileName" />
         <exclude name="WordPress.Files.FileName.NotHyphenatedLowercase" />
-        <exclude name="Squiz.PHP.CommentedOutCode" />
 
     </rule>
     <rule ref="WordPress-Docs">

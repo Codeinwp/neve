@@ -13,7 +13,7 @@
 }
 
 .blog-entry-title {
-  margin: $spacing-xs 0;
+  margin: 0 0 $spacing-xs;
   word-wrap: break-word;
 }
 
@@ -26,6 +26,7 @@
   flex-direction: column;
   .button {
     align-self: flex-start;
+    margin-top: $spacing-sm;
   }
 }
 

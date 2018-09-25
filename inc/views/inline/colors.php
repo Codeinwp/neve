@@ -134,12 +134,10 @@ class Colors extends Base_Inline {
 			),
 			'background'               => array(
 				'css_prop'  => 'background-color',
-				'selectors' => '.button.button-primary, .button.button-secondary:hover, .icon-bar, blockquote:before',
+				'selectors' => '.button.button-primary, .button.button-secondary:hover, .icon-bar, blockquote:before, button, input[type=button], .btn, input[type="submit"]',
 			),
 		);
 
-		/*
-		Commented for now
 		if ( class_exists( 'WooCommerce' ) ) {
 			$color_setup['background']['selectors']               .= ', .nv-nav-cart .woocommerce-mini-cart__buttons a.button:last-child';
 			$color_setup['background']['selectors']               .= ', .nv-nav-cart .woocommerce-mini-cart__buttons a.button:first-child:hover';
@@ -147,7 +145,6 @@ class Colors extends Base_Inline {
 			$color_setup['border-color']['selectors']             .= ', .nv-nav-cart .woocommerce-mini-cart__buttons a.button:first-child';
 			$color_setup['color']['selectors']                    .= ', .nv-nav-cart .woocommerce-mini-cart__buttons a.button:first-child';
 		}
-		*/
 		$this->add_color( $color_setup, $color );
 	}
 }

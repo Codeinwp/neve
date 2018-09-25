@@ -32,8 +32,6 @@ class Rtl extends Base_Customizer {
 			'neve_single_post_sidebar_layout',
 		);
 
-		/*
-		Commented for now
 		if ( class_exists( 'WooCommerce' ) ) {
 			$sidebar_layout_controls = array_merge( $sidebar_layout_controls, array(
 				'neve_shop_archive_sidebar_layout'   => array(
@@ -46,7 +44,6 @@ class Rtl extends Base_Customizer {
 				),
 			) );
 		}
-		*/
 		foreach ( $sidebar_layout_controls as $control_id ) {
 			$this->change_customizer_object( 'control', $control_id, 'choices', $this->rtl_sidebar_layout_choices() );
 		}

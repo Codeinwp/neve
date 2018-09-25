@@ -25,6 +25,9 @@
     position: relative;
     margin-right: 5px;
   }
+  .meta.category a {
+    padding: 0 ($spacing-xs / 2);
+  }
 }
 .article-content-col {
   align-items: flex-start;

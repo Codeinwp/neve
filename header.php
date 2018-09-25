@@ -35,5 +35,10 @@
 		neve_after_header_trigger();
 		?>
 	</header>
+
+	<?php do_action( 'neve_before_primary' ); ?>
+
 	<main id="primary" class="neve-main">
+
+	<?php do_action( 'neve_after_primary_start' );
 

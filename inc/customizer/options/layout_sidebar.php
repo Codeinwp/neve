@@ -83,17 +83,16 @@ class Layout_Sidebar extends Base_Customizer {
 		$this->add_control(
 			new Control(
 				'sidebars_ui_heading', array(
-					'sanitize_callback' => 'sanitize_text_field',
-					'transport'         => $this->selective_refresh,
-				),
+				'sanitize_callback' => 'sanitize_text_field',
+				'transport'         => $this->selective_refresh,
+			),
 				array(
 					'label'            => __( 'Advanced', 'neve' ),
 					'section'          => 'neve_sidebar',
 					'priority'         => 33,
 					'class'            => 'advanced-sidebar-accordion',
 					'accordion'        => true,
-					// 'controls_to_wrap' => class_exists( 'WooCommerce' ) ? 4 : 2,
-					'controls_to_wrap' => 2,
+					'controls_to_wrap' => class_exists( 'WooCommerce' ) ? 4 : 2,
 					'expanded'         => false,
 				),
 				'Neve\Customizer\Controls\Heading'
@@ -121,8 +120,6 @@ class Layout_Sidebar extends Base_Customizer {
 			),
 		);
 
-		/*
-		Commented for now
 		if ( class_exists( 'WooCommerce' ) ) {
 			$sidebar_layout_controls = array_merge( $sidebar_layout_controls, array(
 				'neve_shop_archive_sidebar_layout'   => array(
@@ -135,7 +132,7 @@ class Layout_Sidebar extends Base_Customizer {
 				),
 			) );
 		}
-		*/
+
 		foreach ( $sidebar_layout_controls as $control_id => $control ) {
 			$this->add_control(
 				new Control(

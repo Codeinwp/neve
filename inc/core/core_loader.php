@@ -63,7 +63,7 @@ class Core_Loader {
 
 				'Views\Inline\Style_Manager',
 
-				/*'Compatibility\WooCommerce',*/
+				'Compatibility\WooCommerce',
 				'Compatibility\Elementor',
 
 				'Admin\Metabox\Main',
