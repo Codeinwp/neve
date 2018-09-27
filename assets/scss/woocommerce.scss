@@ -1,3 +1,7 @@
 @import "main/variables";
 @import "main/mixins";
+@import "woocommerce/generic";
 @import "woocommerce/shop-loop";
+@import "woocommerce/buttons";
+@import "woocommerce/sidebar";
+@import "woocommerce/media-queries";

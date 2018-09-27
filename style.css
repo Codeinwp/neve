@@ -263,6 +263,10 @@ a:hover {
   display: none;
 }
 
+ins {
+  text-decoration: none;
+}
+
 body {
   font-size: 1rem;
 }
@@ -501,6 +505,12 @@ h6 {
 }
 .dropdown-open > .caret-wrap {
   background-color: #00a4f7;
+}
+
+#nv-primary-navigation i {
+  font-size: inherit;
+  line-height: inherit;
+  width: 20px;
 }
 
 .nav-right .site-logo {

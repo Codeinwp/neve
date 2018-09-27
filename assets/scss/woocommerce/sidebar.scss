@@ -1,0 +1,33 @@
+.shop-sidebar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  left:0;
+  bottom: 0;
+  background-color: #fff;
+  padding: $spacing-sm;
+  z-index: 100;
+  overflow: scroll;
+  transition: all 0.3s ease-out;
+  opacity: 0;
+  pointer-events: none;
+  &.sidebar-open {
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+.sidebar-header {
+  width: 100%;
+  border-bottom: $muted-border;
+  margin-bottom: $spacing-sm;
+  &:after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+}
+.nv-sidebar-toggle.in-sidebar {
+  float: right;
+  margin-bottom: $spacing-sm;
+}

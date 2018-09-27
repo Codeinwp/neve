@@ -1,0 +1,29 @@
+.woocommerce span.onsale {
+  background-color: $theme_color;
+  border-radius: 5px;
+  line-height: inherit;
+  min-height: auto;
+}
+
+.woocommerce ul.products li.product .price {
+  color: $body_color;
+}
+
+.woocommerce nav.woocommerce-pagination ul {
+  @include horizontal-list($spacing-xs);
+  border: none;
+  margin: 0;
+  li {
+    border: none;
+  }
+}
+
+.woocommerce nav.woocommerce-pagination ul li a:focus, .woocommerce nav.woocommerce-pagination ul li a:hover, .woocommerce nav.woocommerce-pagination ul li span.current {
+  background: none;
+}
+
+.woocommerce {
+  div.product form.cart .variations td.label {
+    vertical-align: top;
+  }
+}

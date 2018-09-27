@@ -1,5 +1,199 @@
-.shop-container {
-  padding-top: 48px;
+.woocommerce span.onsale {
+  background-color: #00a4f7;
+  border-radius: 5px;
+  line-height: inherit;
+  min-height: auto;
+}
+
+.woocommerce ul.products li.product .price {
+  color: #606060;
+}
+
+.woocommerce nav.woocommerce-pagination ul {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  list-style-type: none;
+  border: none;
+  margin: 0;
+}
+.woocommerce nav.woocommerce-pagination ul > li:not(:last-child) {
+  padding-right: 8px;
+}
+.woocommerce nav.woocommerce-pagination ul > li:not(:first-child) {
+  padding-left: 8px;
+}
+.woocommerce nav.woocommerce-pagination ul li {
+  border: none;
+}
+
+.woocommerce nav.woocommerce-pagination ul li a:focus, .woocommerce nav.woocommerce-pagination ul li a:hover, .woocommerce nav.woocommerce-pagination ul li span.current {
+  background: none;
+}
+
+.woocommerce div.product form.cart .variations td.label {
+  vertical-align: top;
+}
+
+.nv-woo-filters {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 16px;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #f0f0f0;
+  padding-top: 16px;
+}
+.nv-woo-filters > .woocommerce-ordering {
+  margin: 0;
+}
+
+.woocommerce .nv-bc-count-wrap {
+  text-align: center;
+  display: block;
+}
+.woocommerce .nv-bc-count-wrap .woocommerce-result-count {
+  float: none;
+  width: 100%;
+  text-align: center;
+}
+.woocommerce .woocommerce-breadcrumb {
+  font-size: 1em;
+  margin-top: 16px;
+  text-align: center;
+}
+.woocommerce .woocommerce-breadcrumb a {
+  color: #00a4f7;
+}
+.woocommerce .woocommerce-breadcrumb a:hover {
+  color: #005bf7;
+}
+
+.nv-woo-title-breadcrumb {
+  display: flex;
+  flex-direction: column-reverse;
+  text-align: center;
+}
+.nv-woo-title-breadcrumb h1 {
+  margin: 0;
+}
+
+.woocommerce ul.products li.product {
+  text-align: center;
+}
+.woocommerce ul.products li.product .added_to_cart {
+  margin-top: 1em;
+}
+.woocommerce ul.products li.product .button.added {
+  display: none;
+}
+.woocommerce #respond input#submit,
+.woocommerce a.button,
+.woocommerce button.button,
+.woocommerce input.button,
+.woocommerce #respond input#submit.alt,
+.woocommerce a.button.alt,
+.woocommerce button.button.alt,
+.woocommerce input.button.alt {
+  font-size: .8em;
+  font-weight: 600;
+  display: inline-block;
+  padding: .625rem 1.25rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  transition: all .15s ease-in-out;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  width: auto;
+  background-color: #00a4f7;
+  color: #fff;
+  line-height: inherit;
+}
+.woocommerce #respond input#submit:hover,
+.woocommerce a.button:hover,
+.woocommerce button.button:hover,
+.woocommerce input.button:hover,
+.woocommerce #respond input#submit.alt:hover,
+.woocommerce a.button.alt:hover,
+.woocommerce button.button.alt:hover,
+.woocommerce input.button.alt:hover {
+  opacity: .9;
+}
+.woocommerce a.added_to_cart {
+  font-size: .8em;
+  font-weight: 600;
+  display: inline-block;
+  padding: .625rem 1.25rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  transition: all .15s ease-in-out;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  width: auto;
+  border: 1px solid #00a4f7;
+  background-color: transparent;
+  font-weight: 600;
+  color: #00a4f7;
+  line-height: inherit;
+}
+.woocommerce a.added_to_cart:hover {
+  background-color: #00a4f7;
+  color: #fff;
+}
+
+.woocommerce ul.products li.product .button {
+  white-space: normal;
+  line-height: inherit;
+}
+
+.shop-sidebar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  bottom: 0;
+  background-color: #fff;
+  padding: 16px;
+  z-index: 100;
+  overflow: scroll;
+  transition: all 0.3s ease-out;
+  opacity: 0;
+  pointer-events: none;
+}
+.shop-sidebar.sidebar-open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.sidebar-header {
+  width: 100%;
+  border-bottom: 1px solid #f0f0f0;
+  margin-bottom: 16px;
+}
+.sidebar-header:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.nv-sidebar-toggle.in-sidebar {
+  float: right;
+  margin-bottom: 16px;
 }
 
 /*# sourceMappingURL=woocommerce.css.map */
