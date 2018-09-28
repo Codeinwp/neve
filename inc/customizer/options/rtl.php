@@ -12,11 +12,22 @@ namespace Neve\Customizer\Options;
 
 use Neve\Customizer\Base_Customizer;
 
+/**
+ * Class Rtl
+ *
+ * @package Neve\Customizer\Options
+ */
 class Rtl extends Base_Customizer {
+	/**
+	 * Abstract method that must be implemented.
+	 */
 	public function add_controls() {
 		return;
 	}
 
+	/**
+	 * Change controls
+	 */
 	protected function change_controls() {
 		if ( ! is_rtl() ) {
 			return;
@@ -33,16 +44,18 @@ class Rtl extends Base_Customizer {
 		);
 
 		if ( class_exists( 'WooCommerce' ) ) {
-			$sidebar_layout_controls = array_merge( $sidebar_layout_controls, array(
-				'neve_shop_archive_sidebar_layout'   => array(
-					'priority' => 45,
-					'label'    => __( 'Shop / Archive Sidebar Layout', 'neve' ),
-				),
-				'neve_single_product_sidebar_layout' => array(
-					'priority' => 50,
-					'label'    => __( 'Single Product Sidebar Layout', 'neve' ),
-				),
-			) );
+			$sidebar_layout_controls = array_merge(
+				$sidebar_layout_controls, array(
+					'neve_shop_archive_sidebar_layout'   => array(
+						'priority' => 45,
+						'label'    => __( 'Shop / Archive Sidebar Layout', 'neve' ),
+					),
+					'neve_single_product_sidebar_layout' => array(
+						'priority' => 50,
+						'label'    => __( 'Single Product Sidebar Layout', 'neve' ),
+					),
+				)
+			);
 		}
 		foreach ( $sidebar_layout_controls as $control_id ) {
 			$this->change_customizer_object( 'control', $control_id, 'choices', $this->rtl_sidebar_layout_choices() );

@@ -2,6 +2,11 @@
 @import "main/mixins";
 @import "woocommerce/generic";
 @import "woocommerce/shop-loop";
+@import "woocommerce/product";
+@import "woocommerce/cart";
+@import "woocommerce/checkout";
 @import "woocommerce/buttons";
 @import "woocommerce/sidebar";
+@import "woocommerce/widgets";
+@import "woocommerce/nav-cart";
 @import "woocommerce/media-queries";

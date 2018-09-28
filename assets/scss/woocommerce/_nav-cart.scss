@@ -12,6 +12,7 @@
 
 .nv-nav-cart {
   display: none;
+  z-index: 1000;
 }
 
 @mixin nav-cart--laptop() {

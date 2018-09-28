@@ -45,7 +45,7 @@ class Layout_Sidebar extends Base_View {
 		?>
 
 		<div class="nv-sidebar-wrap col-sm-12 <?php echo esc_attr( $position ) . ' ' . esc_attr( $sidebar_setup['sidebar_slug'] ); ?>">
-			<?php $this->render_sidebar_close($sidebar_setup['sidebar_slug']) ?>
+			<?php $this->render_sidebar_close( $sidebar_setup['sidebar_slug'] ); ?>
 			<aside id="secondary" role="complementary">
 				<?php dynamic_sidebar( $sidebar_setup['sidebar_slug'] ); ?>
 			</aside>
@@ -53,8 +53,13 @@ class Layout_Sidebar extends Base_View {
 		<?php
 	}
 
+	/**
+	 * Render sidebar toggle.
+	 *
+	 * @param string $slug sidebar slug.
+	 */
 	private function render_sidebar_close( $slug ) {
-		if( $slug !== 'shop-sidebar' ) {
+		if ( $slug !== 'shop-sidebar' ) {
 			return;
 		}
 		echo '<div class="sidebar-header"><span class="nv-sidebar-toggle in-sidebar button button-secondary">' . apply_filters( 'neve_filter_woo_sidebar_close_button_text', __( 'Close', 'neve' ) ) . '</span></div>';

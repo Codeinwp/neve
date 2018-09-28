@@ -40,7 +40,7 @@ class Post_Header extends Base_View {
 			'meta',
 		);
 
-		if( class_exists( 'WooCommerce' ) && is_product() ) {
+		if ( class_exists( 'WooCommerce' ) && is_product() ) {
 			$content_order = array( 'title' );
 		}
 

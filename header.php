@@ -40,5 +40,6 @@
 
 	<main id="primary" class="neve-main">
 
-	<?php do_action( 'neve_after_primary_start' );
+	<?php
+	do_action( 'neve_after_primary_start' );
 

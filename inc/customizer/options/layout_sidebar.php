@@ -67,7 +67,7 @@ class Layout_Sidebar extends Base_Customizer {
 					'input_attr' => array(
 						'min'     => 10,
 						'max'     => 50,
-						'default' => 25,
+						'default' => 30,
 					),
 					'priority'   => 30,
 				),
@@ -83,9 +83,9 @@ class Layout_Sidebar extends Base_Customizer {
 		$this->add_control(
 			new Control(
 				'sidebars_ui_heading', array(
-				'sanitize_callback' => 'sanitize_text_field',
-				'transport'         => $this->selective_refresh,
-			),
+					'sanitize_callback' => 'sanitize_text_field',
+					'transport'         => $this->selective_refresh,
+				),
 				array(
 					'label'            => __( 'Advanced', 'neve' ),
 					'section'          => 'neve_sidebar',
@@ -121,16 +121,18 @@ class Layout_Sidebar extends Base_Customizer {
 		);
 
 		if ( class_exists( 'WooCommerce' ) ) {
-			$sidebar_layout_controls = array_merge( $sidebar_layout_controls, array(
-				'neve_shop_archive_sidebar_layout'   => array(
-					'priority' => 45,
-					'label'    => __( 'Shop / Archive Sidebar Layout', 'neve' ),
-				),
-				'neve_single_product_sidebar_layout' => array(
-					'priority' => 50,
-					'label'    => __( 'Single Product Sidebar Layout', 'neve' ),
-				),
-			) );
+			$sidebar_layout_controls = array_merge(
+				$sidebar_layout_controls, array(
+					'neve_shop_archive_sidebar_layout'   => array(
+						'priority' => 45,
+						'label'    => __( 'Shop / Archive Sidebar Layout', 'neve' ),
+					),
+					'neve_single_product_sidebar_layout' => array(
+						'priority' => 50,
+						'label'    => __( 'Single Product Sidebar Layout', 'neve' ),
+					),
+				)
+			);
 		}
 
 		foreach ( $sidebar_layout_controls as $control_id => $control ) {

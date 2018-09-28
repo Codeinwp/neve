@@ -39,16 +39,17 @@ class Colors extends Base_Inline {
 				'css_prop'  => 'color',
 				'selectors' => 'a, .caret',
 			),
-			'caret-borders'    => array(
+			'border-color'     => array(
 				'css_prop'  => 'border-color',
 				'selectors' => '.caret-wrap',
 			),
-			'caret-background' => array(
+			'background-color' => array(
 				'css_prop'  => 'background-color',
 				'selectors' => '.dropdown-open > .caret-wrap',
 			),
 		);
-		$this->add_color( $color_setup, $color );
+
+		$this->add_color( apply_filters( 'neve_link_color_filter', $color_setup ), $color );
 		$this->add_style(
 			array(
 				array(
@@ -78,17 +79,17 @@ class Colors extends Base_Inline {
 		}
 
 		$color_setup = array(
-			'link-hover-colors' => array(
+			'color'         => array(
 				'css_prop'  => 'color',
 				'selectors' => 'a:hover, #nv-primary-navigation li:hover > a ',
 			),
-			'nav-caret'         => array(
+			'color-desktop' => array(
 				'css_prop'    => 'color',
 				'selectors'   => '#nv-primary-navigation li:hover > .caret-wrap .caret',
 				'media_query' => 'desktop',
 			),
 		);
-		$this->add_color( $color_setup, $color );
+		$this->add_color( apply_filters( 'neve_link_hover_color_filter', $color_setup ), $color );
 	}
 
 	/**
@@ -138,13 +139,6 @@ class Colors extends Base_Inline {
 			),
 		);
 
-		if ( class_exists( 'WooCommerce' ) ) {
-			$color_setup['background']['selectors']               .= ', .nv-nav-cart .woocommerce-mini-cart__buttons a.button:last-child';
-			$color_setup['background']['selectors']               .= ', .nv-nav-cart .woocommerce-mini-cart__buttons a.button:first-child:hover';
-			$color_setup['border-top-color-desktop']['selectors'] .= ', .nv-nav-cart';
-			$color_setup['border-color']['selectors']             .= ', .nv-nav-cart .woocommerce-mini-cart__buttons a.button:first-child';
-			$color_setup['color']['selectors']                    .= ', .nv-nav-cart .woocommerce-mini-cart__buttons a.button:first-child';
-		}
-		$this->add_color( $color_setup, $color );
+		$this->add_color( apply_filters( 'neve_theme_color_filter', $color_setup ), $color );
 	}
 }

@@ -17,6 +17,11 @@ use Neve\Views\Layouts\Layout_Sidebar;
  */
 class Woocommerce {
 
+	/**
+	 * Sidebar manager.
+	 *
+	 * @var Neve\Views\Layouts\Layout_Sidebar
+	 */
 	private $sidebar_manager;
 
 	/**
@@ -35,8 +40,7 @@ class Woocommerce {
 		add_action( 'woocommerce_before_main_content', array( $this, 'wrap_main_content_start' ), 15 );
 		add_action( 'woocommerce_after_main_content', array( $this, 'close_div' ), 15 );
 
-
-		//Handle shop sidebar.
+		// Handle shop sidebar.
 		remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10 );
 		add_action( 'woocommerce_before_main_content', array( $this, 'shop_sidebar_left' ) );
 		add_action( 'woocommerce_sidebar', array( $this, 'shop_sidebar_right' ) );
@@ -45,13 +49,15 @@ class Woocommerce {
 		remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10 );
 		remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10 );
 
-
 		add_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0 );
 
 		$this->edit_woocommerce_header();
-
+		$this->add_inline_selectors();
 	}
 
+	/**
+	 * Change functions hooked into woocommerce header.
+	 */
 	private function edit_woocommerce_header() {
 		remove_action( 'woocommerce_archive_description', 'woocommerce_taxonomy_archive_description', 10 );
 		remove_action( 'woocommerce_archive_description', 'woocommerce_product_archive_description', 10 );
@@ -59,11 +65,20 @@ class Woocommerce {
 		remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
 		remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
 		add_filter( 'woocommerce_show_page_title', '__return_false' );
-		add_action( 'woocommerce_before_main_content', array( $this, 'add_header_bits' ), 20 );
+		add_action( 'neve_after_primary_start', array( $this, 'add_header_bits' ), 0 );
 	}
 
+	/**
+	 * Add header for woocommerce pages.
+	 */
 	public function add_header_bits() {
-		echo '<div class="nv-bc-count-wrap">';
+		if ( ! is_shop() && ! is_product() && ! is_product_category() && ! is_product_taxonomy() && ! is_product_tag() ) {
+			return;
+		}
+		echo '<div class="container">';
+		echo '<div class="row">';
+		echo '<div class="wrap-header col-12">';
+		echo '<div class="nv-bc-count-wrap col">';
 		woocommerce_breadcrumb();
 		woocommerce_result_count();
 		echo '</div>';
@@ -71,12 +86,21 @@ class Woocommerce {
 		$this->sidebar_toggle();
 		woocommerce_catalog_ordering();
 		echo '</div>';
+		echo '</div>';
+		echo '</div>';
+		echo '</div>';
 	}
 
+	/**
+	 * Handle left shop sidebar.
+	 */
 	public function shop_sidebar_left() {
 		$this->sidebar_manager->sidebar( 'shop', 'left' );
 	}
 
+	/**
+	 * Handle right shop sidebar.
+	 */
 	public function shop_sidebar_right() {
 		$this->sidebar_manager->sidebar( 'shop', 'right' );
 	}
@@ -95,7 +119,6 @@ class Woocommerce {
 		echo '<div class="nv-index-posts nv-shop col">';
 	}
 
-
 	/**
 	 * Wrap start of woocommerce pages.
 	 */
@@ -107,6 +130,9 @@ class Woocommerce {
 		echo '<div class="row">';
 	}
 
+	/**
+	 * Wrap end of page.
+	 */
 	public function wrap_pages_end() {
 		if ( ! is_woocommerce() ) {
 			return;
@@ -115,11 +141,113 @@ class Woocommerce {
 		$this->close_div();
 	}
 
+	/**
+	 * Render sidebar toggle for responsive view.
+	 */
 	public function sidebar_toggle() {
-		if( is_single() ) {
+		if ( is_single() ) {
 			return;
 		}
 		echo '<span class="nv-sidebar-toggle button button-secondary">' . apply_filters( 'neve_filter_woo_sidebar_open_button_text', __( 'Filter', 'neve' ) ) . '</span>';
 	}
 
+	/**
+	 * Add inline selectors for woocommerce.
+	 */
+	private function add_inline_selectors() {
+		add_filter( 'neve_link_color_filter', array( $this, 'add_link_color' ) );
+		add_filter( 'neve_link_hover_color_filter', array( $this, 'add_link_hover_color' ) );
+		add_filter( 'neve_theme_color_filter', array( $this, 'add_theme_color' ) );
+	}
+
+	/**
+	 * Add theme color colors.
+	 *
+	 * @param array $color_setup the color setup from Neve\Views\Inline\Colors.
+	 *
+	 * @return array
+	 */
+	public function add_theme_color( $color_setup ) {
+		$color_setup['background']['selectors'] .=
+			', .nv-nav-cart .woocommerce-mini-cart__buttons a.button:last-child, 
+			.woocommerce #respond input#submit,
+			.woocommerce #respond input#submit:focus,
+			.woocommerce #respond input#submit:hover, 
+			.woocommerce a.button,
+			.woocommerce a.button:focus,
+			.woocommerce a.button:hover, 
+			.woocommerce button.button,
+			.woocommerce button.button:focus,
+			.woocommerce button.button:hover, 
+			.woocommerce input.button,
+			.woocommerce input.button:focus,
+			.woocommerce input.button:hover, 
+			.woocommerce #respond input#submit.alt,
+			.woocommerce #respond input#submit.alt:focus,
+			.woocommerce #respond input#submit.alt:hover 
+			.woocommerce a.button.alt,
+			.woocommerce a.button.alt:focus,
+			.woocommerce a.button.alt:hover, 
+			.woocommerce button.button.alt,
+			.woocommerce button.button.alt:focus,
+			.woocommerce button.button.alt:hover, 
+			.woocommerce input.button.alt,
+			.woocommerce input.button.alt:focus,
+			.woocommerce input.button.alt:hover, 
+			.woocommerce button.button.alt.disabled,
+			.woocommerce button.button.alt.disabled:focus,
+			.woocommerce button.button.alt.disabled:hover,
+			.woocommerce a.button.checkout-button.alt, 
+			.woocommerce a.button.checkout-button.alt:focus, 
+			.woocommerce a.button.checkout-button.alt:active
+			 .nv-nav-cart .woocommerce-mini-cart__buttons a.button:first-child:hover,
+			 .woocommerce .widget_price_filter .ui-slider .ui-slider-range,
+			 .woocommerce .widget_price_filter .ui-slider .ui-slider-handle,
+			 .woocommerce-cart table.cart td.actions .coupon > .input-text + .button:hover';
+
+		$color_setup['border-top-color-desktop']['selectors'] .=
+			', .nv-nav-cart';
+
+		$color_setup['border-color']['selectors'] .=
+			', .nv-nav-cart .woocommerce-mini-cart__buttons a.button:first-child, 
+			.woocommerce-ordering .orderby, 
+			.woocommerce-cart table.cart td.actions .coupon > .input-text + .button';
+
+		$color_setup['color']['selectors'] .=
+			', .nv-nav-cart .woocommerce-mini-cart__buttons a.button:first-child, 
+			.woocommerce-ordering .orderby,
+			.woocommerce-cart table.cart td.actions .coupon > .input-text + .button';
+
+		return $color_setup;
+	}
+
+	/**
+	 * Add link colors.
+	 *
+	 * @param array $color_setup the color setup from Neve\Views\Inline\Colors.
+	 *
+	 * @return array
+	 */
+	public function add_link_color( $color_setup ) {
+		$color_setup['color']['selectors'] .=
+			', .woocommerce .woocommerce-breadcrumb a, 
+			.woocommerce div.product .woocommerce-tabs ul.tabs li a';
+
+		return $color_setup;
+	}
+
+	/**
+	 * Add link hover colors.
+	 *
+	 * @param array $color_setup the color setup from Neve\Views\Inline\Colors.
+	 *
+	 * @return array
+	 */
+	public function add_link_hover_color( $color_setup ) {
+		$color_setup['color']['selectors'] .=
+			', .woocommerce .woocommerce-breadcrumb a:hover, 
+			.woocommerce div.product .woocommerce-tabs ul.tabs li a:hover';
+
+		return $color_setup;
+	}
 }

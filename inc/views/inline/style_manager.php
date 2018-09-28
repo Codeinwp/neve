@@ -102,7 +102,7 @@ class Style_Manager extends Base_View {
 			return;
 		}
 
-		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue' ), 100 );
 		add_action( 'customize_save_after', array( $this, 'wipe_customizer_css_file' ), 0 );
 		add_action( 'after_switch_theme', array( $this, 'wipe_customizer_css_file' ), 0 );
 

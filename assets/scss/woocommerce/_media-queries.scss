@@ -7,7 +7,9 @@
 }
 
 @media (min-width: #{$laptop}) {
-
+  @include nav-cart--laptop();
+  @include shop-sidebar--laptop();
+  @include product--laptop();
 }
 
 @media (min-width: #{$desktop}) {

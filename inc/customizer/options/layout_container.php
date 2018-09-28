@@ -108,16 +108,18 @@ class Layout_Container extends Base_Customizer {
 		);
 
 		if ( class_exists( 'WooCommerce' ) ) {
-			$container_style_controls = array_merge( $container_style_controls, array(
-				'neve_shop_archive_container_style'   => array(
-					'priority' => 45,
-					'label'    => __( 'Shop / Archive Container Style', 'neve' ),
-				),
-				'neve_single_product_container_style' => array(
-					'priority' => 50,
-					'label'    => __( 'Single Product Container Style', 'neve' ),
-				),
-			) );
+			$container_style_controls = array_merge(
+				$container_style_controls, array(
+					'neve_shop_archive_container_style'   => array(
+						'priority' => 45,
+						'label'    => __( 'Shop / Archive Container Style', 'neve' ),
+					),
+					'neve_single_product_container_style' => array(
+						'priority' => 50,
+						'label'    => __( 'Single Product Container Style', 'neve' ),
+					),
+				)
+			);
 		}
 
 		foreach ( $container_style_controls as $control_id => $control ) {

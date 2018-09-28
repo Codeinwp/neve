@@ -1,0 +1,31 @@
+.woocommerce-checkout .shop-sidebar {
+  margin-top: $spacing;
+}
+
+.woocommerce-checkout .single-page-container {
+  padding-top: 0;
+}
+
+.woocommerce .col2-set .col-1, .woocommerce .col2-set .col-2, .woocommerce-page .col2-set .col-1, .woocommerce-page .col2-set .col-2 {
+  max-width: unset;
+  padding: 0;
+}
+
+#ship-to-different-address {
+  font-size: inherit;
+  width: 100%;
+  border: $muted-border;
+  padding: $spacing-xs;
+  border-radius: 5px;
+  label {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+#add_payment_method #payment, .woocommerce-cart #payment, .woocommerce-checkout #payment {
+  background: #fff;
+  border: $muted-border
+}

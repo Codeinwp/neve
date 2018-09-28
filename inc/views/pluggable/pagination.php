@@ -74,6 +74,9 @@ class Pagination extends Base_View {
 		echo wp_kses_post( '<span class="nv-loader" style="display: none;"></span><span class="infinite-scroll-trigger"></span>' );
 	}
 
+	/**
+	 * Render single post / page pagination.
+	 */
 	private function render_single_pagination() {
 		wp_link_pages(
 			array(
@@ -84,6 +87,7 @@ class Pagination extends Base_View {
 			)
 		);
 	}
+
 	/**
 	 * Infinite scroll ajax callback function.
 	 */

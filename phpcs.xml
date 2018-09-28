@@ -17,6 +17,7 @@
         <exclude name="Squiz.Commenting.FunctionComment.MissingParamTag" />
         <exclude name="Squiz.Commenting.InlineComment.InvalidEndChar" />
         <exclude name="Squiz.Commenting.InlineComment.NotCapital" />
+        <exclude name="Squiz.PHP.CommentedOutCode.Found" />
         <exclude name="Squiz.PHP.Eval.Discouraged" />
         <exclude name="Generic.PHP.DisallowShortOpenTag" />
 
