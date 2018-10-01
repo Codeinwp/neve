@@ -25,11 +25,18 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     -ms-flex-direction: row;
-        flex-direction: row;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: row;
+            flex-direction: row;
     -ms-flex-align: center;
-        align-items: center;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+            align-items: center;
     -ms-flex-pack: justify;
-        justify-content: space-between;
+        -webkit-box-pack: justify;
+        -webkit-justify-content: space-between;
+            justify-content: space-between;
     padding: 7px 0;
 }
 .customize-control-checkbox-toggle span {
@@ -62,6 +69,7 @@
     height: 15px;
     background: #fff;
     border-radius: 90px;
+    -webkit-transition: 0.3s;
     transition: 0.3s;
 }
 
@@ -70,8 +78,11 @@
 }
 
 .customize-control-checkbox-toggle input:checked + label:after {
+    right: -webkit-calc(100% - 5px);
     right: calc(100% - 5px);
-    transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+        -ms-transform: translateX(100%);
+            transform: translateX(100%);
 }
 
 .customize-control-checkbox-toggle label:active:after {
@@ -80,9 +91,14 @@
 
 .customize-control-checkbox-toggle > * {
     display: -ms-flexbox;
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
     -ms-flex-direction: row;
-        flex-direction: row;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: row;
+            flex-direction: row;
 }.customize-control-neve-dimensions > ul { width: 100%; }
 .customize-control-neve-dimensions .dimension-wrap { float: right; width: 17%; margin: 0; }
 .customize-control-neve-dimensions .dimension-wrap input,
@@ -220,6 +236,7 @@
   top: 1px;
   position: relative;
   display: block;
+  -webkit-transition: .1s ease-in-out;
   transition: .1s ease-in-out;
   right: 1px;
 }
@@ -230,7 +247,9 @@
 }
 
 .accordion.expanded .accordion-expand-button:before {
-  transform: rotate( -180deg );
+  -webkit-transform: rotate( -180deg );
+      -ms-transform: rotate( -180deg );
+          transform: rotate( -180deg );
   top:0;
 }
 .ti-order-sortable li {
@@ -238,11 +257,17 @@
     background: #fff;
     border: 1px dashed #ccc;
     display: -ms-flexbox;
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
     -ms-flex-pack: center;
-        justify-content: center;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+            justify-content: center;
     -ms-flex-align: center;
-        align-items: center;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+            align-items: center;
     position: relative;
     opacity: .7;
 }
@@ -268,6 +293,7 @@
     cursor: pointer;
     padding: 5px 10px;
     right: 0;
+    -webkit-transition: .3s ease-in-out;
     transition: .3s ease-in-out;
 }
 
@@ -329,7 +355,9 @@
     background: none;
     border-color: inherit;
     box-shadow: none;
-    transform: none;
+    -webkit-transform: none;
+        -ms-transform: none;
+            transform: none;
 }
 .customize-control-radio-image img { border: 1px solid transparent; }
 .customize-control-radio-image .ui-state-active img {
@@ -346,6 +374,7 @@
  */
 .customizer-tab:not(.customizer-subtab){
     display: table;
+    width: -webkit-calc(100% + 28px);
     width: calc(100% + 28px);
     margin: -15px -12px 0 0;
 }
@@ -360,6 +389,7 @@
     padding: 10px 0;
     text-decoration: none;
     font-weight: 600;
+    -webkit-transition: all .3s ease;
     transition: all .3s ease;
     color: #333;
 }
@@ -378,17 +408,27 @@
 }.range-slider {
 	width: 100%;
 	display: -ms-flexbox;
+	display: -webkit-box;
+	display: -webkit-flex;
 	display: flex;
 	-ms-flex-wrap: wrap;
-	    flex-wrap: wrap;
+	    -webkit-flex-wrap: wrap;
+	        flex-wrap: wrap;
 	-ms-flex-align: center;
-	    align-items: center;
+	    -webkit-box-align: center;
+	    -webkit-align-items: center;
+	        align-items: center;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-ms-flex-direction: row;
-	    flex-direction: row;
+	    -webkit-box-orient: horizontal;
+	    -webkit-box-direction: normal;
+	    -webkit-flex-direction: row;
+	        flex-direction: row;
 	-ms-flex-pack: start;
-	    justify-content: flex-start;
+	    -webkit-box-pack: start;
+	    -webkit-justify-content: flex-start;
+	        justify-content: flex-start;
 }
 
 .range-slider__range {
@@ -399,6 +439,7 @@
 	padding: 0;
 	cursor: pointer;
 	outline: none;
+	-webkit-transition: background .5s;
 	transition: background .5s;
 	-webkit-appearance: none;
 }
@@ -427,6 +468,7 @@
 	border: 2px solid #2e86b9;
 	background-color: #fff;
 	cursor: pointer;
+	-webkit-transition: background .15s ease-in-out;
 	transition: background .15s ease-in-out;
 }
 
@@ -516,7 +558,7 @@ input::-moz-focus-inner, input::-moz-focus-outer {
 .customize-control .responsive-switchers { margin-right: 5px; width: auto; }
 .customize-control .responsive-switchers-open li button { display: block; }
 .customize-control .responsive-switchers li { float: right; margin: 0; }
-.customize-control .responsive-switchers li button { height: 20px; width: 20px; background-color: #a4afb7; cursor: pointer; position: relative; margin-right: 5px; color: #fff; font-size: 10px; text-align: center; border-radius: 50%; padding: 0; border: 0; outline: none; transition: background-color .5s; cursor: pointer; }
+.customize-control .responsive-switchers li button { height: 20px; width: 20px; background-color: #a4afb7; cursor: pointer; position: relative; margin-right: 5px; color: #fff; font-size: 10px; text-align: center; border-radius: 50%; padding: 0; border: 0; outline: none; -webkit-transition: background-color .5s; transition: background-color .5s; cursor: pointer; }
 .customize-control .responsive-switchers li button:hover { background-color: #c2cbd2; }
 .customize-control .responsive-switchers li button.active { background-color: #13aff0; }
 .customize-control .responsive-switchers li button i { width: auto; height: auto; font-size: inherit; line-height: 18px; }
@@ -526,6 +568,7 @@ input::-moz-focus-inner, input::-moz-focus-outer {
 
 .neve-tabs-control {
 	border-bottom: 1px solid #ddd;
+	width: -webkit-calc(100% + 28px);
 	width: calc(100% + 28px);
 	margin: -15px -12px 0 0;
 	table-layout: fixed;
@@ -547,6 +590,7 @@ input::-moz-focus-inner, input::-moz-focus-outer {
 	text-transform: capitalize;
 	background: #fff;
 	box-shadow: inset 0 0 0 0 #0085ba;
+	-webkit-transition: all .3s ease;
 	transition: all .3s ease;
 	display: block;
 	width: 100%;

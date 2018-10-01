@@ -3,11 +3,17 @@
     background: #fff;
     border: 1px dashed #ccc;
     display: -ms-flexbox;
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
     -ms-flex-pack: center;
-        justify-content: center;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+            justify-content: center;
     -ms-flex-align: center;
-        align-items: center;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+            align-items: center;
     position: relative;
     opacity: .7;
 }
@@ -33,6 +39,7 @@
     cursor: pointer;
     padding: 5px 10px;
     left: 0;
+    -webkit-transition: .3s ease-in-out;
     transition: .3s ease-in-out;
 }
 

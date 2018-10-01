@@ -1,17 +1,27 @@
 .range-slider {
 	width: 100%;
 	display: -ms-flexbox;
+	display: -webkit-box;
+	display: -webkit-flex;
 	display: flex;
 	-ms-flex-wrap: wrap;
-	    flex-wrap: wrap;
+	    -webkit-flex-wrap: wrap;
+	        flex-wrap: wrap;
 	-ms-flex-align: center;
-	    align-items: center;
+	    -webkit-box-align: center;
+	    -webkit-align-items: center;
+	        align-items: center;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-ms-flex-direction: row;
-	    flex-direction: row;
+	    -webkit-box-orient: horizontal;
+	    -webkit-box-direction: normal;
+	    -webkit-flex-direction: row;
+	        flex-direction: row;
 	-ms-flex-pack: start;
-	    justify-content: flex-start;
+	    -webkit-box-pack: start;
+	    -webkit-justify-content: flex-start;
+	        justify-content: flex-start;
 }
 
 .range-slider__range {
@@ -22,6 +32,7 @@
 	padding: 0;
 	cursor: pointer;
 	outline: none;
+	-webkit-transition: background .5s;
 	transition: background .5s;
 	-webkit-appearance: none;
 }
@@ -50,6 +61,7 @@
 	border: 2px solid #2e86b9;
 	background-color: #fff;
 	cursor: pointer;
+	-webkit-transition: background .15s ease-in-out;
 	transition: background .15s ease-in-out;
 }
 
@@ -139,7 +151,7 @@ input::-moz-focus-inner, input::-moz-focus-outer {
 .customize-control .responsive-switchers { margin-left: 5px; width: auto; }
 .customize-control .responsive-switchers-open li button { display: block; }
 .customize-control .responsive-switchers li { float: left; margin: 0; }
-.customize-control .responsive-switchers li button { height: 20px; width: 20px; background-color: #a4afb7; cursor: pointer; position: relative; margin-left: 5px; color: #fff; font-size: 10px; text-align: center; border-radius: 50%; padding: 0; border: 0; outline: none; transition: background-color .5s; cursor: pointer; }
+.customize-control .responsive-switchers li button { height: 20px; width: 20px; background-color: #a4afb7; cursor: pointer; position: relative; margin-left: 5px; color: #fff; font-size: 10px; text-align: center; border-radius: 50%; padding: 0; border: 0; outline: none; -webkit-transition: background-color .5s; transition: background-color .5s; cursor: pointer; }
 .customize-control .responsive-switchers li button:hover { background-color: #c2cbd2; }
 .customize-control .responsive-switchers li button.active { background-color: #13aff0; }
 .customize-control .responsive-switchers li button i { width: auto; height: auto; font-size: inherit; line-height: 18px; }

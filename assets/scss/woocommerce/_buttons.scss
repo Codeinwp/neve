@@ -41,3 +41,7 @@
   white-space: normal;
   line-height: inherit;
 }
+
+.woocommerce ul.products li.product .button.loading {
+  padding-right: $spacing;
+}

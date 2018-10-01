@@ -53,6 +53,8 @@ class Woocommerce {
 
 		$this->edit_woocommerce_header();
 		$this->add_inline_selectors();
+
+		add_filter( 'neve_post_meta_filters_post_id', array( $this, 'adapt_meta_for_shop_page' ) );
 	}
 
 	/**
@@ -75,7 +77,7 @@ class Woocommerce {
 		if ( ! is_shop() && ! is_product() && ! is_product_category() && ! is_product_taxonomy() && ! is_product_tag() ) {
 			return;
 		}
-		echo '<div class="container">';
+		echo '<div class="' . apply_filters( 'neve_container_class_filter', 'container' ) . '">';
 		echo '<div class="row">';
 		echo '<div class="wrap-header col-12">';
 		echo '<div class="nv-bc-count-wrap col">';
@@ -126,7 +128,7 @@ class Woocommerce {
 		if ( ! is_woocommerce() ) {
 			return;
 		}
-		echo '<div class="container shop-container">';
+		echo '<div class="' . apply_filters( 'neve_container_class_filter', 'container' ) . ' shop-container">';
 		echo '<div class="row">';
 	}
 
@@ -145,9 +147,11 @@ class Woocommerce {
 	 * Render sidebar toggle for responsive view.
 	 */
 	public function sidebar_toggle() {
-		if ( is_single() ) {
+
+		if ( ! $this->should_render_sidebar_toggle() ) {
 			return;
 		}
+
 		echo '<span class="nv-sidebar-toggle button button-secondary">' . apply_filters( 'neve_filter_woo_sidebar_open_button_text', __( 'Filter', 'neve' ) ) . '</span>';
 	}
 
@@ -203,7 +207,9 @@ class Woocommerce {
 			 .nv-nav-cart .woocommerce-mini-cart__buttons a.button:first-child:hover,
 			 .woocommerce .widget_price_filter .ui-slider .ui-slider-range,
 			 .woocommerce .widget_price_filter .ui-slider .ui-slider-handle,
-			 .woocommerce-cart table.cart td.actions .coupon > .input-text + .button:hover';
+			 .woocommerce-cart table.cart td.actions .coupon > .input-text + .button:hover,
+			 .woocommerce a.added_to_cart:hover,
+			 .nv-nav-cart .woocommerce-mini-cart__buttons a.button:first-child:hover';
 
 		$color_setup['border-top-color-desktop']['selectors'] .=
 			', .nv-nav-cart';
@@ -211,12 +217,14 @@ class Woocommerce {
 		$color_setup['border-color']['selectors'] .=
 			', .nv-nav-cart .woocommerce-mini-cart__buttons a.button:first-child, 
 			.woocommerce-ordering .orderby, 
-			.woocommerce-cart table.cart td.actions .coupon > .input-text + .button';
+			.woocommerce-cart table.cart td.actions .coupon > .input-text + .button,
+			.woocommerce a.added_to_cart';
 
 		$color_setup['color']['selectors'] .=
 			', .nv-nav-cart .woocommerce-mini-cart__buttons a.button:first-child, 
 			.woocommerce-ordering .orderby,
-			.woocommerce-cart table.cart td.actions .coupon > .input-text + .button';
+			.woocommerce-cart table.cart td.actions .coupon > .input-text + .button,
+			.woocommerce a.added_to_cart';
 
 		return $color_setup;
 	}
@@ -249,5 +257,45 @@ class Woocommerce {
 			.woocommerce div.product .woocommerce-tabs ul.tabs li a:hover';
 
 		return $color_setup;
+	}
+
+	/**
+	 * Adapt the meta-box so it works on the shop page.
+	 *
+	 * @param string $post_id post id.
+	 *
+	 * @return string
+	 */
+	public function adapt_meta_for_shop_page( $post_id ) {
+		if ( ! is_shop() ) {
+			return $post_id;
+		}
+
+		return get_option( 'woocommerce_shop_page_id' );
+	}
+
+	/**
+	 * Check if we should render the mobile sidebar toggle.
+	 *
+	 * @return bool
+	 */
+	private function should_render_sidebar_toggle() {
+		if ( ! is_active_sidebar( 'shop-sidebar' ) ) {
+			return false;
+		}
+		if ( is_shop() ) {
+			$theme_mod = apply_filters( 'neve_sidebar_position', get_theme_mod( 'neve_shop_archive_sidebar_layout', 'right' ) );
+			if ( $theme_mod !== 'right' && $theme_mod !== 'left' ) {
+				return false;
+			}
+		}
+		if ( is_product() ) {
+			$theme_mod = apply_filters( 'neve_sidebar_position', get_theme_mod( 'neve_single_product_sidebar_layout', 'right' ) );
+			if ( $theme_mod !== 'right' && $theme_mod !== 'left' ) {
+				return false;
+			}
+			return false;
+		}
+		return true;
 	}
 }

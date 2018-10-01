@@ -35,7 +35,9 @@
     background: none;
     border-color: inherit;
     box-shadow: none;
-    transform: none;
+    -webkit-transform: none;
+        -ms-transform: none;
+            transform: none;
 }
 .customize-control-radio-image img { border: 1px solid transparent; }
 .customize-control-radio-image .ui-state-active img {
@@ -52,6 +54,7 @@
  */
 .customizer-tab:not(.customizer-subtab){
     display: table;
+    width: -webkit-calc(100% + 28px);
     width: calc(100% + 28px);
     margin: -15px 0 0 -12px;
 }
@@ -66,6 +69,7 @@
     padding: 10px 0;
     text-decoration: none;
     font-weight: 600;
+    -webkit-transition: all .3s ease;
     transition: all .3s ease;
     color: #333;
 }

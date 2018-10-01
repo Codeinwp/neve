@@ -32,6 +32,8 @@
   margin-top: 12px;
   line-height: 1;
   display: table-caption;
+  float: left;
+  position: relative;
 }
 
 @mixin product--laptop() {
@@ -45,5 +47,8 @@
       border: $muted-border;
       border-bottom: 1px solid transparent;
     }
+  }
+  .input-text.qty {
+    height: 41px;
   }
 }

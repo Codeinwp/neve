@@ -16,7 +16,6 @@ use Neve\Views\Base_View;
  * @package Neve\Views\Layouts
  */
 class Layout_Sidebar extends Base_View {
-
 	/**
 	 * Function that is run after instantiation.
 	 *
