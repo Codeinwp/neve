@@ -62,7 +62,6 @@ html {
 
 img,
 embed,
-iframe,
 object,
 audio,
 video {
@@ -72,6 +71,7 @@ video {
 
 iframe {
   border: 0;
+  max-width: 100%;
 }
 
 table {

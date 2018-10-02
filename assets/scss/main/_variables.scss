@@ -3,13 +3,20 @@ $debug: 'false';
 
 // Font size bases.
 $font-size-base: 1rem !default;
-$h1-font-size: $font-size-base * 2.625 !default;
+$h1-font-size: $font-size-base * 2.25 !default;
 $h2-font-size: $font-size-base * 2 !default;
 $h3-font-size: $font-size-base * 1.75 !default;
 $h4-font-size: $font-size-base * 1.5 !default;
 $h5-font-size: $font-size-base * 1.25 !default;
 $h6-font-size: $font-size-base !default;
 
+// Mobile font size bases.
+$h1-mobile-font-size: $font-size-base * 2 !default;
+$h2-mobile-font-size: $font-size-base * 1.75 !default;
+$h3-mobile-font-size: $font-size-base * 1.5 !default;
+$h4-mobile-font-size: $font-size-base * 1.25 !default;
+$h5-mobile-font-size: $font-size-base * 1 !default;
+$h6-mobile-font-size: $font-size-base * 0.75 !default;
 
 $paragraph-margin-bottom: 1rem !default;
 
@@ -25,12 +32,16 @@ $link_hover_color: #005bf7;
 $navbar_background_color: #fff;
 $muted-white: #f0f0f0;
 $body_color: #606060;
+$success: #2dce89;
+$info: #11cdef;
+$error: #f5365c;
 
 $transition_default: all .1s ease;
 $transition_med: all .3s ease;
 $transition_long: all .6s ease;
 
 $muted-border: 1px solid #f0f0f0;
+$muted-border-med: 1px solid #c9c9c9;
 
 $tablet-sm: "576px";
 $tablet: "768px";

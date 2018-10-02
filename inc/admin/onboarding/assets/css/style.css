@@ -1,6 +1,8 @@
 .ti-sites-lib {
+    display: -ms-grid;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(32%, 1fr));
+    -ms-grid-columns: (minmax(32%, 1fr))[auto-fill];
+        grid-template-columns: repeat(auto-fill, minmax(32%, 1fr));
     grid-column-gap: 2%;
     grid-row-gap: 20px;
 }
@@ -11,8 +13,15 @@
     top: 0;
     left: 0;
     width: 100%;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
-    flex-direction: column;
+    -ms-flex-direction: column;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+            flex-direction: column;
     z-index: 100000;
     height: 100vh;
 }
@@ -21,14 +30,23 @@
     width: 100%;
     height: auto;
     border: none;
-    flex: 1;
+    -ms-flex: 1;
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+            flex: 1;
     overflow: hidden;
 }
 
 .preview-sidebar__container {
     padding: 15px 50px;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
-    align-items: center;
+    -ms-flex-align: center;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+            align-items: center;
 }
 
 .ti-sites-lib .ellipsis {
@@ -46,9 +64,18 @@
     right: 0;
     bottom: 0;
     z-index: 100001;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    -ms-flex-align: center;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+            align-items: center;
+    -ms-flex-pack: center;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+            justify-content: center;
 }
 
 .import-modal__wrapper .modal__item {
@@ -60,10 +87,22 @@
 }
 
 .import-modal__wrapper .modal__content {
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
-    flex-direction: row;
-    align-content: center;
-    align-items: center;
+    -ms-flex-direction: row;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-line-pack: center;
+        -webkit-align-content: center;
+            align-content: center;
+    -ms-flex-align: center;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+            align-items: center;
 }
 
 .modal__content .left__content,
@@ -101,11 +140,17 @@
 
 .modal__content .after__actions {
     display: block;
-    align-self:  flex-end;
+    -ms-flex-item-align:  end;
+        -webkit-align-self:  flex-end;
+            align-self:  flex-end;
 }
 
 .modal__content.import__done {
-    flex-direction: column;
+    -ms-flex-direction: column;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+            flex-direction: column;
     padding-bottom: 20px;
 }
 
@@ -140,9 +185,16 @@ a.skip-onboarding {
     margin: 0 auto;
     box-shadow: 0 1px 14px rgba(34,31,31,.1);
     background: #fff;
-    justify-items: center;
-    align-items: center;
-    justify-content: center;
+    -ms-grid-column-align: center;
+        justify-items: center;
+    -ms-flex-align: center;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+            align-items: center;
+    -ms-flex-pack: center;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+            justify-content: center;
 
 }
 
@@ -157,9 +209,17 @@ a.skip-onboarding {
 
 
 .is__onboarding .ti-sites-lib {
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    -ms-flex-wrap: wrap;
+        -webkit-flex-wrap: wrap;
+            flex-wrap: wrap;
+    -ms-flex-pack: center;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+            justify-content: center;
 }
 
 .is__onboarding .ti-sites-lib > div {
@@ -173,7 +233,8 @@ a.skip-onboarding {
 
 @media ( max-width: 1080px ) {
     .ti-sites-lib {
-        grid-template-columns: repeat(auto-fill, minmax(49%, 1fr));
+        -ms-grid-columns: (minmax(49%, 1fr))[auto-fill];
+            grid-template-columns: repeat(auto-fill, minmax(49%, 1fr));
         grid-column-gap: 2%;
     }
 
@@ -184,7 +245,8 @@ a.skip-onboarding {
 
 @media ( max-width: 768px ) {
     .ti-sites-lib {
-        grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+        -ms-grid-columns: (minmax(100%, 1fr))[auto-fill];
+            grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
         grid-column-gap: 0;
     }
 
@@ -198,7 +260,11 @@ a.skip-onboarding {
     }
 
     .import-modal__wrapper .modal__content {
-        flex-direction: column-reverse;
+        -ms-flex-direction: column-reverse;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: reverse;
+            -webkit-flex-direction: column-reverse;
+                flex-direction: column-reverse;
     }
 
     .modal__content .right__content .screenshot {

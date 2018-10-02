@@ -3,6 +3,7 @@
  */
 jQuery( document ).ready( function () {
 	jQuery.neveNavigation.init();
+	jQuery.neveWoo.init();
 } );
 jQuery( window ).load( function () {
 	jQuery.neveBlog.init();

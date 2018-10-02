@@ -32,6 +32,7 @@
   top: 1px;
   position: relative;
   display: block;
+  -webkit-transition: .1s ease-in-out;
   transition: .1s ease-in-out;
   left: 1px;
 }
@@ -42,6 +43,8 @@
 }
 
 .accordion.expanded .accordion-expand-button:before {
-  transform: rotate( 180deg );
+  -webkit-transform: rotate( 180deg );
+      -ms-transform: rotate( 180deg );
+          transform: rotate( 180deg );
   top:0;
 }

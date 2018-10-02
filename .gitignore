@@ -8,3 +8,4 @@ bin
 composer.lock
 **/*.js.map
 **/*.css.map
+**/.DS_Store

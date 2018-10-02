@@ -1,0 +1,54 @@
+.woocommerce div.product .woocommerce-tabs ul.tabs {
+  padding: 0;
+}
+
+.woocommerce div.product .woocommerce-tabs ul.tabs li {
+  display: block;
+  background: transparent;
+  border: none;
+  border-bottom: $muted-border;
+  &.active {
+   border-bottom: $muted-border;
+  }
+  a {
+    color: $link_color;
+    width: 100%;
+  }
+}
+
+.woocommerce-Reviews #comments {
+  border: none;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.woocommerce div.product .woocommerce-tabs ul.tabs::before {
+  border: none;
+}
+
+.woocommerce div.product form.cart .reset_variations {
+  @include button();
+  @include button-secondary( 'true', $error );
+  margin-top: 12px;
+  line-height: 1;
+  display: table-caption;
+  float: left;
+  position: relative;
+}
+
+@mixin product--laptop() {
+  .woocommerce div.product .woocommerce-tabs ul.tabs li {
+    border-bottom: $muted-border;
+    display: inline-block;
+    &:before, &:after {
+      content: none;
+    }
+    &.active {
+      border: $muted-border;
+      border-bottom: 1px solid transparent;
+    }
+  }
+  .input-text.qty {
+    height: 41px;
+  }
+}

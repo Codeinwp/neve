@@ -1,14 +1,12 @@
 html {
-  font-size: 16px;
+  font-size: 14px;
   overflow-x: hidden;
   -webkit-tap-highlight-color: transparent;
 }
 
-//todo: Responsive font sizes before desktop.
 body {
-  font-family: Graphik,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;
+  font-family: Graphik, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
   color: $body_color;
-  font-size: $font-size-base;
   line-height: 1.68421;
   overflow-x: hidden;
   direction: ltr;
@@ -16,31 +14,13 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: Graphik,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;
+  font-family: Graphik, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
   line-height: 1.68421;
-}
-
-h1 {
-  font-size: $h1-font-size;
-}
-h2 {
-  font-size: $h2-font-size;
-}
-h3 {
-  font-size: $h3-font-size;
-}
-h4 {
-  font-size: $h4-font-size;
-}
-h5 {
-  font-size: $h5-font-size;
-}
-h6 {
-  font-size: $h6-font-size;
+  margin-bottom: .5rem;
 }
 
 p {
-  margin-bottom: 1.26316em;
+  margin-bottom: $spacing-sm;
 }
 
 a {
@@ -53,4 +33,60 @@ a {
 
 .screen-reader-text {
   display: none;
+}
+
+ins {
+  text-decoration: none;
+}
+
+body {
+  font-size: $font-size-base;
+}
+
+h1 {
+  font-size: $h1-mobile-font-size;
+}
+
+h2 {
+  font-size: $h2-mobile-font-size;
+}
+
+h3 {
+  font-size: $h3-mobile-font-size;
+}
+
+h4 {
+  font-size: $h4-mobile-font-size;
+}
+
+h5 {
+  font-size: $h5-mobile-font-size;
+}
+
+h6 {
+  font-size: $h6-mobile-font-size;
+}
+
+@mixin typography--tablet() {
+  html {
+    font-size: 16px;
+  }
+  h1 {
+    font-size: $h1-font-size;
+  }
+  h2 {
+    font-size: $h2-font-size;
+  }
+  h3 {
+    font-size: $h3-font-size;
+  }
+  h4 {
+    font-size: $h4-font-size;
+  }
+  h5 {
+    font-size: $h5-font-size;
+  }
+  h6 {
+    font-size: $h6-font-size;
+  }
 }

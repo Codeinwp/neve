@@ -105,7 +105,8 @@ class Font_Selector extends \WP_Customize_Control {
 	 */
 	private function get_standard_fonts() {
 		return apply_filters(
-			'neve_standard_fonts_array', array(
+			'neve_standard_fonts_array',
+			array(
 				'Arial, Helvetica, sans-serif',
 				'Arial Black, Gadget, sans-serif',
 				'Bookman Old Style, serif',
@@ -136,7 +137,8 @@ class Font_Selector extends \WP_Customize_Control {
 	 */
 	private function get_google_fonts() {
 		return apply_filters(
-			'neve_google_fonts_array', array(
+			'neve_google_fonts_array',
+			array(
 				'ABeeZee',
 				'Abel',
 				'Abril Fatface',

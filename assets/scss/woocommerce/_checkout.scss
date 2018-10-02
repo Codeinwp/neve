@@ -1,0 +1,121 @@
+.woocommerce-checkout {
+  .nv-content-wrap {
+    margin-top: $spacing-sm;
+  }
+  .shop-sidebar {
+    margin-top: $spacing;
+  }
+  .single-page-container {
+    padding-top: 0;
+  }
+  .col2-set .col-1, .woocommerce-checkout .col2-set .col-2 {
+    max-width: unset;
+    padding: 0;
+    width: 100%;
+  }
+  h3 {
+    font-size: 1.1em;
+    border-bottom: $muted-border;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding-bottom: $spacing-xs;
+  }
+
+  #ship-to-different-address {
+    font-size: inherit;
+    width: 100%;
+    padding: $spacing-xs $spacing-xs 0;
+    border: none;
+    text-transform: none;
+    font-weight: 400;
+    label {
+      cursor: pointer;
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  form .form-row input.input-text, .woocommerce form .form-row textarea {
+    margin-bottom: $spacing-xs;
+    border: $muted-border-med;
+  }
+
+  .woocommerce-checkout .select2-container--default .select2-selection--single {
+    border: $muted-border-med;
+    height: 35px;
+    padding: 3px 10px;
+    margin-bottom: $spacing-xs;
+  }
+
+  .shop_table.woocommerce-checkout-review-order-table {
+    border: none;
+    td, tr, th {
+      border-bottom: none;
+    }
+    thead {
+      background: $muted-white;
+      text-transform: uppercase;
+    }
+    tr {
+      border-top: $muted-border;
+    }
+    dt {
+      padding-left: 0;
+    }
+    .product-quantity {
+      display: block;
+    }
+  }
+}
+
+#add_payment_method #payment, .woocommerce-cart #payment, .woocommerce-checkout #payment {
+  background: #fff;
+  border: $muted-border-med
+}
+
+.woocommerce-shipping-fields {
+  border: $muted-border;
+  border-radius: 3px;
+  padding: 0 $spacing-xs;
+  margin: 0 3px;
+  margin-bottom: $spacing-xs;
+}
+
+.woocommerce-checkout {
+  .woocommerce-form-login {
+    .form-row {
+      width: 100%;
+      .woocommerce-form__label-for-checkbox {
+        float: right;
+        display: flex;
+        align-items: center;
+        input {
+          margin-right: $spacing-xs;
+        }
+      }
+    }
+  }
+}
+
+@mixin checkout--tablet() {
+  .woocommerce-checkout-review-order,
+  .woocommerce-checkout {
+    .col2-set,
+    #order_review_heading {
+      width: 48%;
+      //display: inline-block;
+    }
+    > .col2-set {
+      float: left;
+    }
+  }
+  #order_review_heading {
+    float: right;
+  }
+  .woocommerce-checkout-review-order {
+    width: 48%;
+    float: right;
+  }
+}

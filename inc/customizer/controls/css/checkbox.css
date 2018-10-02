@@ -1,9 +1,19 @@
 .customize-control-checkbox-toggle .checkbox-toggle-wrap {
     border: 1px solid #ccc;
     border-radius: 5px;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+    -ms-flex-direction: row;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-align: center;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+            align-items: center;
+    -ms-flex-pack: justify;
+        -webkit-box-pack: justify;
+        -webkit-justify-content: space-between;
+            justify-content: space-between;
     padding: 7px 0;
 }
 .customize-control-checkbox-toggle span {
@@ -36,6 +46,7 @@
     height: 15px;
     background: #fff;
     border-radius: 90px;
+    -webkit-transition: 0.3s;
     transition: 0.3s;
 }
 
@@ -44,8 +55,11 @@
 }
 
 .customize-control-checkbox-toggle input:checked + label:after {
+    left: -webkit-calc(100% - 5px);
     left: calc(100% - 5px);
-    transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+        -ms-transform: translateX(-100%);
+            transform: translateX(-100%);
 }
 
 .customize-control-checkbox-toggle label:active:after {
@@ -53,6 +67,13 @@
 }
 
 .customize-control-checkbox-toggle > * {
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
-    flex-direction: row;
+    -ms-flex-direction: row;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: row;
+            flex-direction: row;
 }
