@@ -122,11 +122,11 @@ class Colors extends Base_Inline {
 		$color_setup = array(
 			'color'                    => array(
 				'css_prop'  => 'color',
-				'selectors' => '.button.button-secondary',
+				'selectors' => '.button.button-secondary, .nv-tags-list a',
 			),
 			'border-color'             => array(
 				'css_prop'  => 'border-color',
-				'selectors' => '.button.button-secondary, .nv-loader',
+				'selectors' => '.button.button-secondary, .nv-loader, .nv-tags-list a',
 			),
 			'border-top-color-desktop' => array(
 				'css_prop'    => 'border-top-color',
@@ -135,7 +135,7 @@ class Colors extends Base_Inline {
 			),
 			'background'               => array(
 				'css_prop'  => 'background-color',
-				'selectors' => '.button.button-primary, .button.button-secondary:hover, .icon-bar, blockquote:before, button, input[type=button], .btn, input[type="submit"]',
+				'selectors' => '.button.button-primary, .button.button-secondary:hover, .icon-bar, blockquote:before, button, input[type=button], .btn, input[type="submit"], .nv-tags-list a:hover',
 			),
 		);
 

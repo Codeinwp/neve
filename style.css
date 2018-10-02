@@ -846,6 +846,29 @@ button:hover, input[type=button]:hover, .btn:hover, input[type="submit"]:hover {
   margin-bottom: 8px;
 }
 
+.nv-tags-list {
+  font-size: .85em;
+  margin: 16px 0;
+}
+.nv-tags-list span {
+  margin-right: 8px;
+}
+.nv-tags-list a {
+  display: inline-block;
+  padding: 2px 8px;
+  transition: all 0.3s ease;
+  border-radius: 3px;
+  margin-bottom: 8px;
+  margin-right: 8px;
+  border: 1px solid #00a4f7;
+  background: transparent;
+  color: #00a4f7;
+}
+.nv-tags-list a:hover {
+  background: #00a4f7;
+  color: #fff;
+}
+
 #comments {
   border-top: 1px solid #f0f0f0;
   padding-top: 16px;

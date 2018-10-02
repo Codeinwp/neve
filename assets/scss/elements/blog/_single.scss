@@ -31,6 +31,28 @@
   margin-bottom: $spacing-xs;
 }
 
+.nv-tags-list {
+  font-size: .85em;
+  margin: $spacing-sm 0;
+  span {
+    margin-right: $spacing-xs;
+  }
+  a {
+    display: inline-block;
+    padding: 2px $spacing-xs;
+    transition: $transition_med;
+    border-radius: 3px;
+    margin-bottom: $spacing-xs;
+    margin-right: $spacing-xs;
+    border: 1px solid $theme_color;
+    color: $theme_color;
+    &:hover {
+      background: $theme_color;
+      color: #fff;
+    }
+  }
+}
+
 @mixin single-post--laptop() {
   .single-post-container {
     padding-top: $spacing-lg;
