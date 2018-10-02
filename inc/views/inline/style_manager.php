@@ -149,10 +149,15 @@ class Style_Manager extends Base_View {
 			return;
 		}
 
+
 		if ( ! is_dir( $this->style_path ) ) {
 			wp_mkdir_p( $this->style_path );
 		}
-		file_put_contents( $this->style_path . $this->css_file_name, $style );
+
+		require_once( ABSPATH . '/wp-admin/includes/file.php' );
+		global $wp_filesystem;
+		WP_Filesystem();
+		$wp_filesystem->put_contents( $this->style_path . $this->css_file_name, $style, 0644 );
 	}
 
 	/**

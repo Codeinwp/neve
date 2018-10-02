@@ -89,7 +89,10 @@ class Themeisle_OB_Content_Importer {
 		ob_start();
 		echo $content;
 		$result = ob_get_clean();
-		file_put_contents( $file_path, $result );
+		require_once( ABSPATH . '/wp-admin/includes/file.php' );
+		global $wp_filesystem;
+		WP_Filesystem();
+		$wp_filesystem->put_contents( $file_path, $result );
 
 		return $file_path;
 	}
