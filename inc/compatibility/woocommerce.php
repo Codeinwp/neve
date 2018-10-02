@@ -54,6 +54,7 @@ class Woocommerce {
 		$this->edit_woocommerce_header();
 		$this->add_inline_selectors();
 
+		$this->move_checkout_coupon_under_order_summary();
 		add_filter( 'neve_post_meta_filters_post_id', array( $this, 'adapt_meta_for_shop_page' ) );
 	}
 
@@ -174,6 +175,7 @@ class Woocommerce {
 	public function add_theme_color( $color_setup ) {
 		$color_setup['background']['selectors'] .=
 			', .nv-nav-cart .woocommerce-mini-cart__buttons a.button:last-child, 
+			
 			.woocommerce #respond input#submit,
 			.woocommerce #respond input#submit:focus,
 			.woocommerce #respond input#submit:hover, 
@@ -188,7 +190,7 @@ class Woocommerce {
 			.woocommerce input.button:hover, 
 			.woocommerce #respond input#submit.alt,
 			.woocommerce #respond input#submit.alt:focus,
-			.woocommerce #respond input#submit.alt:hover 
+			.woocommerce #respond input#submit.alt:hover, 
 			.woocommerce a.button.alt,
 			.woocommerce a.button.alt:focus,
 			.woocommerce a.button.alt:hover, 
@@ -203,7 +205,7 @@ class Woocommerce {
 			.woocommerce button.button.alt.disabled:hover,
 			.woocommerce a.button.checkout-button.alt, 
 			.woocommerce a.button.checkout-button.alt:focus, 
-			.woocommerce a.button.checkout-button.alt:active
+			.woocommerce a.button.checkout-button.alt:active,
 			 .nv-nav-cart .woocommerce-mini-cart__buttons a.button:first-child:hover,
 			 .woocommerce .widget_price_filter .ui-slider .ui-slider-range,
 			 .woocommerce .widget_price_filter .ui-slider .ui-slider-handle,
@@ -294,8 +296,41 @@ class Woocommerce {
 			if ( $theme_mod !== 'right' && $theme_mod !== 'left' ) {
 				return false;
 			}
+
 			return false;
 		}
+
 		return true;
+	}
+
+	/**
+	 * Does what it says.
+	 */
+	private function move_checkout_coupon_under_order_summary() {
+		/**
+		 * Checkout page
+		 *
+		 * @see move_coupon()
+		 * @see clear_coupon()
+		 */
+		add_action( 'woocommerce_before_checkout_form', array( $this, 'move_coupon' ) );
+		add_action( 'woocommerce_checkout_order_review', array( $this, 'clear_coupon' ) );
+	}
+
+
+	/**
+	 * Checkout page
+	 * Move the coupon field and message info after the order table.
+	 */
+	public function move_coupon() {
+		wc_enqueue_js( '$( $( ".woocommerce-checkout div.woocommerce-info, .checkout_coupon, .woocommerce-form-login" ).detach() ).appendTo( "#neve-checkout-coupon" );' );
+	}
+
+	/**
+	 * Checkout page
+	 * Add the id neve-checkout-coupon to be able to Move the coupon field and message info after the order table.
+	 */
+	public function clear_coupon() {
+		echo '<div id="neve-checkout-coupon"></div><div style="clear:both"></div>';
 	}
 }

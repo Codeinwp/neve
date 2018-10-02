@@ -45,7 +45,8 @@ class Rtl extends Base_Customizer {
 
 		if ( class_exists( 'WooCommerce' ) ) {
 			$sidebar_layout_controls = array_merge(
-				$sidebar_layout_controls, array(
+				$sidebar_layout_controls,
+				array(
 					'neve_shop_archive_sidebar_layout'   => array(
 						'priority' => 45,
 						'label'    => __( 'Shop / Archive Sidebar Layout', 'neve' ),

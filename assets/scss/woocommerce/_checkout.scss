@@ -83,6 +83,22 @@
   margin-bottom: $spacing-xs;
 }
 
+.woocommerce-checkout {
+  .woocommerce-form-login {
+    .form-row {
+      width: 100%;
+      .woocommerce-form__label-for-checkbox {
+        float: right;
+        display: flex;
+        align-items: center;
+        input {
+          margin-right: $spacing-xs;
+        }
+      }
+    }
+  }
+}
+
 @mixin checkout--tablet() {
   .woocommerce-checkout-review-order,
   .woocommerce-checkout {

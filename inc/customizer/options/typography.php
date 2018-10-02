@@ -52,7 +52,8 @@ class Typography extends Base_Customizer {
 		foreach ( $typography_sections as $section_id => $section_data ) {
 			$this->add_section(
 				new Section(
-					$section_id, array(
+					$section_id,
+					array(
 						'title'    => $section_data['title'],
 						'panel'    => 'neve_typography',
 						'priority' => $section_data['priority'],
@@ -68,7 +69,8 @@ class Typography extends Base_Customizer {
 	private function controls_typography_general() {
 		$this->add_control(
 			new Control(
-				'neve_font_subsets', array(
+				'neve_font_subsets',
+				array(
 					'sanitize_callback' => 'neve_sanitize_array',
 					'default'           => array( 'latin' ),
 				),
@@ -120,7 +122,8 @@ class Typography extends Base_Customizer {
 		 */
 		$this->add_control(
 			new Control(
-				'neve_body_font_size', array(
+				'neve_body_font_size',
+				array(
 					'sanitize_callback' => 'neve_sanitize_range_value',
 					'transport'         => $this->selective_refresh,
 				),
@@ -156,7 +159,8 @@ class Typography extends Base_Customizer {
 		 */
 		$this->add_control(
 			new Control(
-				'neve_body_line_height', array(
+				'neve_body_line_height',
+				array(
 					'sanitize_callback' => 'neve_sanitize_range_value',
 					'transport'         => $this->selective_refresh,
 				),
@@ -221,7 +225,8 @@ class Typography extends Base_Customizer {
 			 */
 			$this->add_control(
 				new Control(
-					$control_id . '_ui_heading', array(
+					$control_id . '_ui_heading',
+					array(
 						'sanitize_callback' => 'sanitize_text_field',
 						'transport'         => $this->selective_refresh,
 					),
@@ -243,7 +248,8 @@ class Typography extends Base_Customizer {
 			 */
 			$this->add_control(
 				new Control(
-					$control_id . '_font_size', array(
+					$control_id . '_font_size',
+					array(
 						'sanitize_callback' => 'neve_sanitize_range_value',
 						'transport'         => $this->selective_refresh,
 					),
@@ -280,7 +286,8 @@ class Typography extends Base_Customizer {
 			 */
 			$this->add_control(
 				new Control(
-					$control_id . '_line_height', array(
+					$control_id . '_line_height',
+					array(
 						'sanitize_callback' => 'neve_sanitize_range_value',
 						'transport'         => $this->selective_refresh,
 					),

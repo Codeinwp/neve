@@ -12,6 +12,7 @@
   left: $spacing-sm;
   top: $spacing-sm;
 }
+
 .woocommerce ul.products li.product .onsale {
   right: auto;
   left: $spacing-sm;
@@ -76,6 +77,7 @@ $notices: (
     background: $color;
     border: none;
     color: #fff;
+    font-size: .85em;
     &:before {
       color: #fff;
     }
@@ -88,6 +90,13 @@ $notices: (
       color: $color;
       line-height: 1;
     }
+  }
+}
+
+.woocommerce ul.woocommerce-error {
+  padding-left: 3.5em;
+  li {
+    margin: 0;
   }
 }
 

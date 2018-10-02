@@ -109,7 +109,8 @@ class Layout_Container extends Base_Customizer {
 
 		if ( class_exists( 'WooCommerce' ) ) {
 			$container_style_controls = array_merge(
-				$container_style_controls, array(
+				$container_style_controls,
+				array(
 					'neve_shop_archive_container_style'   => array(
 						'priority' => 45,
 						'label'    => __( 'Shop / Archive Container Style', 'neve' ),

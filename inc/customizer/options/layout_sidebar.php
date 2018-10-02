@@ -82,7 +82,8 @@ class Layout_Sidebar extends Base_Customizer {
 	private function accordion_heading() {
 		$this->add_control(
 			new Control(
-				'sidebars_ui_heading', array(
+				'sidebars_ui_heading',
+				array(
 					'sanitize_callback' => 'sanitize_text_field',
 					'transport'         => $this->selective_refresh,
 				),
@@ -122,7 +123,8 @@ class Layout_Sidebar extends Base_Customizer {
 
 		if ( class_exists( 'WooCommerce' ) ) {
 			$sidebar_layout_controls = array_merge(
-				$sidebar_layout_controls, array(
+				$sidebar_layout_controls,
+				array(
 					'neve_shop_archive_sidebar_layout'   => array(
 						'priority' => 45,
 						'label'    => __( 'Shop / Archive Sidebar Layout', 'neve' ),

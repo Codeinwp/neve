@@ -41,7 +41,8 @@ class Core_Loader {
 	 */
 	private function define_modules() {
 		$this->features = apply_filters(
-			'neve_filter_main_modules', array(
+			'neve_filter_main_modules',
+			array(
 				'Customizer\Loader',
 				'Views\Typography',
 				'Views\Top_Bar',
