@@ -21,8 +21,7 @@ class Themeisle_OB_Admin {
 	 */
 	public function init() {
 		add_filter( 'query_vars', array( $this, 'add_onboarding_query_var' ) );
-		add_action( 'ti_about_page_after_tabs', array( $this, 'add_demo_import_tab' ) );
-		add_action( 'ti_about_page_after_tabs_content', array( $this, 'add_demo_import_tab_content' ) );
+		add_filter( 'ti_about_config_filter', array( $this, 'add_demo_import_tab' ), 15 );
 	}
 
 	/**
@@ -41,12 +40,14 @@ class Themeisle_OB_Admin {
 	/**
 	 * Add about page tab list item.
 	 */
-	public function add_demo_import_tab() {
-		?>
-		<li style="margin-bottom: 0;" data-tab-id="<?php echo esc_attr( 'demo-import' ); ?>"><a class="nav-tab"
-					href="#<?php echo esc_attr( 'demo-import' ); ?>"><?php echo __( 'Sites Library', 'neve' ); ?></a>
-		</li>
-		<?php
+	public function add_demo_import_tab( $config ) {
+	    $config['custom_tabs']['sites_library'] = array(
+			    'title' => __( 'Sites Library', 'neve' ),
+			    'render_callback' => array(
+				    $this, 'add_demo_import_tab_content'
+			    ),
+        );
+        return $config;
 	}
 
 	/**
