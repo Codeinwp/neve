@@ -728,6 +728,10 @@ button:hover, input[type=button]:hover, .btn:hover, input[type="submit"]:hover {
   height: auto;
 }
 
+.posts-wrapper > article {
+  margin-bottom: 32px;
+}
+
 .blog-entry-title {
   margin: 0 0 8px;
   word-wrap: break-word;
@@ -739,7 +743,6 @@ button:hover, input[type=button]:hover, .btn:hover, input[type="submit"]:hover {
 
 .article-content-col .content {
   width: 100%;
-  margin-bottom: 32px;
   padding-bottom: 32px;
   border-bottom: 1px solid #f0f0f0;
   display: flex;
@@ -748,6 +751,10 @@ button:hover, input[type=button]:hover, .btn:hover, input[type="submit"]:hover {
 .article-content-col .content .button {
   align-self: flex-start;
   margin-top: 16px;
+}
+
+.bypostauthor {
+  display: block;
 }
 
 .excerpt-wrap {
@@ -772,6 +779,21 @@ button:hover, input[type=button]:hover, .btn:hover, input[type="submit"]:hover {
 }
 .nv-index-posts .page-numbers > li:not(:first-child) {
   padding-left: 8px;
+}
+
+.sticky .article-content-col {
+  max-width: 100%;
+}
+.sticky .article-content-col .content {
+  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-right: 8px;
+  margin-left: 8px;
+  border: 1px solid #f0f0f0;
+  max-width: 100%;
+  width: auto;
+  padding: 16px;
 }
 
 .nv-loader {

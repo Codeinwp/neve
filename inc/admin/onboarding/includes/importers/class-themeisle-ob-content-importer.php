@@ -44,7 +44,10 @@ class Themeisle_OB_Content_Importer {
 		require_once( ABSPATH . 'wp-admin/includes/media.php' );
 
 		if ( $body['source'] === 'remote' ) {
-			$content_file      = file_get_contents( $content_file_url );
+			require_once( ABSPATH . '/wp-admin/includes/file.php' );
+			global $wp_filesystem;
+			WP_Filesystem();
+			$content_file      = $wp_filesystem->get_contents( $content_file_url );
 			$content_file_path = $this->save_xhr_return_path( $content_file );
 		} else {
 			$content_file_path = $content_file_url;

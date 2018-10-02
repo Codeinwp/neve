@@ -99,6 +99,10 @@ class Front_End {
 			)
 		);
 		wp_enqueue_script( 'neve-script' );
+
+		if ( is_singular() ) {
+			wp_enqueue_script( 'comment-reply' );
+		}
 	}
 
 	/**
