@@ -149,7 +149,6 @@ class Style_Manager extends Base_View {
 			return;
 		}
 
-
 		if ( ! is_dir( $this->style_path ) ) {
 			wp_mkdir_p( $this->style_path );
 		}

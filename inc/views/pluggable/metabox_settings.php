@@ -32,7 +32,7 @@ class Metabox_Settings {
 	 */
 	public function filter_sidebar_position( $position ) {
 		global $post;
-		if( empty( $post ) ) {
+		if ( empty( $post ) ) {
 			return $position;
 		}
 		$post_id = apply_filters( 'neve_post_meta_filters_post_id', $post->ID );
@@ -57,7 +57,7 @@ class Metabox_Settings {
 	 */
 	public function filter_container_class( $class ) {
 		global $post;
-		if( empty( $post ) ) {
+		if ( empty( $post ) ) {
 			return $class;
 		}
 
