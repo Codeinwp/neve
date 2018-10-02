@@ -59,7 +59,7 @@ class Core_Loader {
 
 				'Views\Pluggable\Pagination',
 				'Views\Pluggable\Masonry',
-				'Views\Pluggable\Post_Meta',
+				'Views\Pluggable\Metabox_Settings',
 
 				'Views\Inline\Style_Manager',
 

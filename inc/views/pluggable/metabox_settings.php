@@ -5,15 +5,14 @@
  * @package Neve\Views\Pluggable
  */
 
-// Todo: rename this class.
 namespace Neve\Views\Pluggable;
 
 /**
- * Class Post_Meta
+ * Class Metabox_Settings
  *
  * @package Neve\Views\Pluggable
  */
-class Post_Meta {
+class Metabox_Settings {
 	/**
 	 * Function that is run after instantiation.
 	 *
@@ -33,6 +32,9 @@ class Post_Meta {
 	 */
 	public function filter_sidebar_position( $position ) {
 		global $post;
+		if( empty( $post ) ) {
+			return $position;
+		}
 		$post_id = apply_filters( 'neve_post_meta_filters_post_id', $post->ID );
 		if ( ! isset( $post_id ) ) {
 			return $position;
@@ -55,6 +57,10 @@ class Post_Meta {
 	 */
 	public function filter_container_class( $class ) {
 		global $post;
+		if( empty( $post ) ) {
+			return $class;
+		}
+
 		$post_id = apply_filters( 'neve_post_meta_filters_post_id', $post->ID );
 
 		if ( ! isset( $post_id ) ) {
