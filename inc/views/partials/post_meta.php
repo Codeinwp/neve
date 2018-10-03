@@ -126,14 +126,15 @@ class Post_Meta extends Base_View {
 	 */
 	public function render_tags_list() {
 		$tags = get_the_tags();
-		$html = '<div class="nv-tags-list">';
-
+		if ( ! is_array( $tags ) ) {
+			return;
+		}
+		$html  = '<div class="nv-tags-list">';
 		$html .= '<span>' . __( 'Tags', 'neve' ) . ':</span>';
 		foreach ( $tags as $tag ) {
 			$tag_link = get_tag_link( $tag->term_id );
-
-			$html .= '<a href=' . esc_url( $tag_link ) . ' title="' . esc_html( $tag->name ) . '" class=' . esc_attr( $tag->slug ) . '>';
-			$html .= esc_html( $tag->name ) . '</a>';
+			$html    .= '<a href=' . esc_url( $tag_link ) . ' title="' . esc_html( $tag->name ) . '" class=' . esc_attr( $tag->slug ) . '>';
+			$html    .= esc_html( $tag->name ) . '</a>';
 		}
 		$html .= ' </div> ';
 		echo $html;
