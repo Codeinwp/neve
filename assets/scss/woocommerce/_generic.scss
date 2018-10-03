@@ -1,0 +1,102 @@
+.woocommerce .col2-set .col-1, .woocommerce-page .col2-set .col-1,
+.woocommerce .col2-set .col-2, .woocommerce-page .col2-set .col-2 {
+  max-width: inherit;
+}
+
+.woocommerce span.onsale {
+  background-color: $success;
+  border-radius: 0;
+  line-height: inherit;
+  min-height: auto;
+  border-radius: 3px;
+  left: $spacing-sm;
+  top: $spacing-sm;
+}
+
+.woocommerce ul.products li.product .onsale {
+  right: auto;
+  left: $spacing-sm;
+  top: 23px;
+}
+
+.woocommerce ul.products li.product .price, .woocommerce div.product p.price, .woocommerce div.product span.price {
+  color: $body_color;
+}
+
+.woocommerce-variation-price {
+  margin-bottom: $spacing-sm;
+}
+
+.woocommerce nav.woocommerce-pagination ul {
+  @include horizontal-list($spacing-xs);
+  border: none;
+  margin: 0;
+  li {
+    border: none;
+  }
+}
+
+.woocommerce nav.woocommerce-pagination ul li a:focus, .woocommerce nav.woocommerce-pagination ul li a:hover, .woocommerce nav.woocommerce-pagination ul li span.current {
+  background: none;
+}
+
+.woocommerce {
+  div.product form.cart .variations td.label {
+    vertical-align: top;
+  }
+}
+
+.woocommerce {
+  .star-rating {
+    color: #ffb100;
+  }
+}
+
+.woocommerce ul.products li.product .star-rating {
+  margin: $spacing-xs auto;
+}
+
+#review_form {
+  .comment-reply-title {
+
+  }
+  .comment-form-rating .stars {
+    font-size: 1.75em;
+  }
+}
+
+$notices: (
+        'error': $error,
+        'info': $info,
+        'message': $success,
+);
+
+@each $noticeName, $color in $notices {
+  .woocommerce .woocommerce-#{$noticeName},
+  .woocommerce-page .woocommerce-#{$noticeName} {
+    background: $color;
+    border: none;
+    color: #fff;
+    font-size: .85em;
+    &:before {
+      color: #fff;
+    }
+    a {
+      color: #fff;
+      font-weight: 800;
+    }
+    .button, .button:focus, .button:active, .button:hover {
+      background-color: #fff;
+      color: $color;
+      line-height: 1;
+    }
+  }
+}
+
+.woocommerce ul.woocommerce-error {
+  padding-left: 3.5em;
+  li {
+    margin: 0;
+  }
+}
+

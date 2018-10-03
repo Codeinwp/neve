@@ -82,12 +82,9 @@ class Layout_Navigation extends Base_Customizer {
 			'search' => __( 'Search', 'neve' ),
 		);
 
-		/*
-		Commented for now
 		if ( class_exists( 'WooCommerce' ) ) {
 			$choices['cart'] = __( 'Cart', 'neve' );
 		}
-		*/
 
 		$this->add_control(
 			new Control(

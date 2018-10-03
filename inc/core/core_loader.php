@@ -60,11 +60,11 @@ class Core_Loader {
 
 				'Views\Pluggable\Pagination',
 				'Views\Pluggable\Masonry',
-				'Views\Pluggable\Post_Meta',
+				'Views\Pluggable\Metabox_Settings',
 
 				'Views\Inline\Style_Manager',
 
-				/*'Compatibility\WooCommerce',*/
+				'Compatibility\WooCommerce',
 				'Compatibility\Elementor',
 
 				'Admin\Metabox\Main',

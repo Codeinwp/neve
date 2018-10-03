@@ -1,24 +1,22 @@
-
-
 .control-wrap {
-    width: 100%;
+	width: 100%;
 }
 
 .has-media-queries .control-wrap {
-    display: none;
-    width: 100%;
+	display: none;
+	width: 100%;
 }
 
 .has-media-queries .control-wrap.active {
-    display: block;
+	display: block;
 }
 
 #sub-accordion-section-neve_typography_body,
 #sub-accordion-section-neve_typography_headings {
-    min-height: 600px;
+	min-height: 600px;
 }
 
 #customize-theme-controls .customize-pane-child.accordion-section-content#sub-accordion-section-neve_typography_headings,
 #customize-theme-controls .customize-pane-child.accordion-section-content#sub-accordion-section-neve_sidebar {
-    overflow: initial;
+	overflow: initial;
 }

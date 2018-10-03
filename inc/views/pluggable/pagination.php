@@ -55,6 +55,11 @@ class Pagination extends Base_View {
 	 * @param string $context not yet used might come in handy later.
 	 */
 	public function render_pagination( $context ) {
+		if ( $context === 'single' ) {
+			$this->render_single_pagination();
+			return;
+		}
+
 		if ( ! $this->has_infinite_scroll() ) {
 			echo wp_kses_post(
 				paginate_links(
@@ -67,6 +72,20 @@ class Pagination extends Base_View {
 			return;
 		}
 		echo wp_kses_post( '<span class="nv-loader" style="display: none;"></span><span class="infinite-scroll-trigger"></span>' );
+	}
+
+	/**
+	 * Render single post / page pagination.
+	 */
+	private function render_single_pagination() {
+		wp_link_pages(
+			array(
+				'before'      => '<div class="page-numbers">',
+				'after'       => '</div>',
+				'link_before' => '<span>',
+				'link_after'  => '</span>',
+			)
+		);
 	}
 
 	/**

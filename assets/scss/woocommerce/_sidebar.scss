@@ -1,0 +1,82 @@
+.nv-sidebar-wrap.shop-sidebar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  bottom: 0;
+  background-color: #fff;
+  padding: $spacing-sm;
+  z-index: 100;
+  overflow: scroll;
+  transition: all 0.3s ease-out;
+  opacity: 0;
+  pointer-events: none;
+  max-width: 100%;
+  &.sidebar-open {
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+
+.sidebar-header {
+  width: 100%;
+  border-bottom: $muted-border;
+  margin-bottom: $spacing-sm;
+  &:after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+}
+
+.nv-sidebar-toggle.in-sidebar {
+  float: right;
+  margin-bottom: $spacing-sm;
+}
+
+.woocommerce .widget_shopping_cart .cart_list li, .woocommerce.widget_shopping_cart .cart_list li {
+  font-size: .85em;
+  border-bottom: $muted-border;
+  //Padding right is 61px to allow image on right (45px) which should be padded L/R (8px) { 45 + 8 + 8 = 61 }
+  padding: $spacing-xs 61px $spacing-xs 2em;
+  position: relative;
+  img {
+    position: absolute;
+    right: $spacing-xs;
+    top: 50%;
+    transform:translateY(-50%);
+    width: 45px;
+  }
+  &:last-child {
+    border: none;
+  }
+  dl.variation {
+    padding: 0;
+    border: 0;
+  }
+  dd.variation-Size {
+    margin-bottom: 0;
+  }
+  a.remove{
+    top: $spacing-xs;
+  }
+}
+
+@mixin shop-sidebar--laptop() {
+  .nv-sidebar-toggle {
+    display: none;
+  }
+  .nv-sidebar-wrap.shop-sidebar {
+    padding: 0 $spacing-sm;
+    z-index: inherit;
+    position: relative;
+    opacity: 1;
+    pointer-events: all;
+    max-width: 30%;
+    overflow: visible;
+    .sidebar-header {
+      display: none;
+    }
+  }
+}

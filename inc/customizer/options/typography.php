@@ -134,12 +134,12 @@ class Typography extends Base_Customizer {
 						'mobile'  => array(
 							'min'     => 10,
 							'max'     => 30,
-							'default' => 16,
+							'default' => 14,
 						),
 						'tablet'  => array(
 							'min'     => 10,
 							'max'     => 30,
-							'default' => 16,
+							'default' => 14,
 						),
 						'desktop' => array(
 							'min'     => 10,
@@ -261,12 +261,12 @@ class Typography extends Base_Customizer {
 							'mobile'  => array(
 								'min'     => 1,
 								'max'     => 10,
-								'default' => $control['default_size'],
+								'default' => $control['default_tablet_size'],
 							),
 							'tablet'  => array(
 								'min'     => 1,
 								'max'     => 10,
-								'default' => $control['default_size'],
+								'default' => $control['default_tablet_size'],
 							),
 							'desktop' => array(
 								'min'     => 1,
@@ -330,37 +330,43 @@ class Typography extends Base_Customizer {
 		return array(
 			'neve_h1' => array(
 				'priority'            => 20,
-				'default_size'        => '2.5',
+				'default_size'        => '2.25',
+				'default_tablet_size' => '2',
 				'default_line_height' => 1.6,
 				'heading'             => 'H1',
 			),
 			'neve_h2' => array(
 				'priority'            => 30,
 				'default_size'        => '2',
+				'default_tablet_size' => '1.75',
 				'default_line_height' => 1.6,
 				'heading'             => 'H2',
 			),
 			'neve_h3' => array(
 				'priority'            => 40,
 				'default_size'        => '1.75',
+				'default_tablet_size' => '1.5',
 				'default_line_height' => 1.6,
 				'heading'             => 'H3',
 			),
 			'neve_h4' => array(
 				'priority'            => 50,
 				'default_size'        => '1.5',
+				'default_tablet_size' => '1.25',
 				'default_line_height' => 1.6,
 				'heading'             => 'H4',
 			),
 			'neve_h5' => array(
 				'priority'            => 60,
 				'default_size'        => '1.25',
+				'default_tablet_size' => '1',
 				'default_line_height' => 1.6,
 				'heading'             => 'H5',
 			),
 			'neve_h6' => array(
 				'priority'            => 70,
 				'default_size'        => '1',
+				'default_tablet_size' => '0.75',
 				'default_line_height' => 1.6,
 				'heading'             => 'H6',
 			),

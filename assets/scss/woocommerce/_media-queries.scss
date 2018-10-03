@@ -1,0 +1,18 @@
+@media (min-width: #{$tablet-sm}) {
+
+}
+
+@media (min-width: #{$tablet}) {
+  @include checkout--tablet();
+  @include cart--tablet();
+}
+
+@media (min-width: #{$laptop}) {
+  @include nav-cart--laptop();
+  @include shop-sidebar--laptop();
+  @include product--laptop();
+}
+
+@media (min-width: #{$desktop}) {
+
+}

@@ -44,7 +44,10 @@ class Themeisle_OB_Content_Importer {
 		require_once( ABSPATH . 'wp-admin/includes/media.php' );
 
 		if ( $body['source'] === 'remote' ) {
-			$content_file      = file_get_contents( $content_file_url );
+			require_once( ABSPATH . '/wp-admin/includes/file.php' );
+			global $wp_filesystem;
+			WP_Filesystem();
+			$content_file      = $wp_filesystem->get_contents( $content_file_url );
 			$content_file_path = $this->save_xhr_return_path( $content_file );
 		} else {
 			$content_file_path = $content_file_url;
@@ -89,7 +92,10 @@ class Themeisle_OB_Content_Importer {
 		ob_start();
 		echo $content;
 		$result = ob_get_clean();
-		file_put_contents( $file_path, $result );
+		require_once( ABSPATH . '/wp-admin/includes/file.php' );
+		global $wp_filesystem;
+		WP_Filesystem();
+		$wp_filesystem->put_contents( $file_path, $result );
 
 		return $file_path;
 	}

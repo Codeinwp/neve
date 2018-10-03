@@ -1,11 +1,15 @@
 @mixin horizontal-list( $margin ) {
   display: flex;
   flex-wrap: wrap;
-  > li:not(:last-child) {
-    padding-right: $margin;
-  }
-  > li:not(:first-child) {
-    padding-left: $margin;
+  padding-left: 0;
+  list-style-type: none;
+  @if ($margin != 0) {
+    > li:not(:last-child) {
+      padding-right: $margin;
+    }
+    > li:not(:first-child) {
+      padding-left: $margin;
+    }
   }
 }
 
@@ -31,16 +35,10 @@
 @mixin button() {
   font-size: .8em;
   font-weight: 600;
-  display: inline-block;
-  padding: .625rem 1.25rem;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  padding: 9px 18px;
+  transition: all .15s ease-in-out;
   text-align: center;
   vertical-align: middle;
-  white-space: nowrap;
   border: 1px solid transparent;
   border-radius: .25rem;
   text-transform: uppercase;
@@ -48,17 +46,26 @@
   width: auto;
 }
 
-@mixin button-secondary() {
-  border: 1px solid $theme_color;
+@mixin button-secondary( $hover: 'true', $color: $theme_color ) {
+  border: 1px solid $color;
   background-color: transparent;
   font-weight: 600;
-  color: $theme_color;
-  &:hover {
-    background-color: $theme_color;
-    color: #fff;
+  color: $color;
+  @if ($hover == 'true') {
+    &:hover {
+      background-color: $color;
+      color: #fff;
+    }
   }
 }
-@mixin button-primary() {
-  background-color: $theme_color;
+
+@mixin button-primary( $hover: 'true', $color: $theme_color ) {
+  background-color: $color;
   color: #fff;
+  @if ($hover == 'true') {
+    &:hover {
+      opacity: .9;
+    }
+  }
+
 }
