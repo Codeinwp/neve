@@ -82,7 +82,8 @@ class Layout_Sidebar extends Base_Customizer {
 	private function accordion_heading() {
 		$this->add_control(
 			new Control(
-				'sidebars_ui_heading', array(
+				'sidebars_ui_heading',
+				array(
 					'sanitize_callback' => 'sanitize_text_field',
 					'transport'         => $this->selective_refresh,
 				),

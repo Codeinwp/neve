@@ -55,7 +55,9 @@ class Colors extends Base_Inline {
 					'css_prop' => 'border-color',
 					'value'    => 'transparent',
 				),
-			), '.caret-wrap', 'desktop'
+			),
+			'.caret-wrap',
+			'desktop'
 		);
 
 		$this->add_style(
@@ -64,7 +66,9 @@ class Colors extends Base_Inline {
 					'css_prop' => 'background-color',
 					'value'    => 'transparent',
 				),
-			), '.dropdown-open > .caret-wrap', 'desktop'
+			),
+			'.dropdown-open > .caret-wrap',
+			'desktop'
 		);
 	}
 
@@ -105,7 +109,8 @@ class Colors extends Base_Inline {
 					'css_prop' => 'color',
 					'value'    => $color,
 				),
-			), 'body'
+			),
+			'body'
 		);
 	}
 
