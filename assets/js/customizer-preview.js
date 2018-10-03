@@ -205,8 +205,8 @@ var containersLayoutMap = {
     neve_default_container_style: ".page:not(.woocommerce) .single-page-container",
     neve_blog_archive_container_style: ".archive-container",
     neve_single_post_container_style: ".single-post-container",
-    neve_shop_archive_container_style: ".woocommerce-page:not(.single-product) .single-page-container",
-    neve_single_product_container_style: ".single-product .single-post-container"
+    neve_shop_archive_container_style: ".woocommerce-page.post-type-archive .neve-main > div",
+    neve_single_product_container_style: ".single-product .neve-main > div"
 };
 
 var containersLivePreview = function($) {

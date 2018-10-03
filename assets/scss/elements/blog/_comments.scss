@@ -2,10 +2,15 @@
   border-top: $muted-border;
   padding-top: $spacing-sm;
   margin: $spacing-xs 0 $spacing;
+  input:not([type="submit"]), textarea {
+    width: 100%;
+  }
+
   .pagination {
     @include horizontal-list($spacing-xs);
     justify-content: center;
   }
+
   .comments-number {
     border-bottom: $muted-border;
     padding-bottom: $spacing-sm;

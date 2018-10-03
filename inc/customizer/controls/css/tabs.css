@@ -4,6 +4,7 @@
 
 .neve-tabs-control {
 	border-bottom: 1px solid #ddd;
+	width: -webkit-calc(100% + 28px);
 	width: calc(100% + 28px);
 	margin: -15px 0 0 -12px;
 	table-layout: fixed;
@@ -25,6 +26,7 @@
 	text-transform: capitalize;
 	background: #fff;
 	box-shadow: inset 0 0 0 0 #0085ba;
+	-webkit-transition: all .3s ease;
 	transition: all .3s ease;
 	display: block;
 	width: 100%;

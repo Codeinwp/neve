@@ -8,23 +8,12 @@
  * @package Neve
  */
 
-define( 'NEVE_VERSION', '1.0.3' );
+define( 'NEVE_VERSION', '1.0.4' );
 define( 'NEVE_INC_DIR', trailingslashit( get_template_directory() ) . 'inc/' );
 define( 'NEVE_ASSETS_URL', trailingslashit( get_template_directory_uri() ) . 'assets/' );
 
-$vendor_file = trailingslashit( get_template_directory() ) . 'vendor/autoload.php';
-if ( is_readable( $vendor_file ) ) {
-	require_once $vendor_file;
-}
-add_filter(
-	'themeisle_sdk_products', function ( $products ) {
-		$products[] = get_template_directory() . '/style.css';
-		return $products;
-	}
-);
-
 if ( ! defined( 'NEVE_DEBUG' ) ) {
-	define( 'NEVE_DEBUG', true );
+	define( 'NEVE_DEBUG', false );
 }
 
 if ( ! defined( 'WPFORMS_SHAREASALE_ID' ) ) {
@@ -34,6 +23,21 @@ if ( ! defined( 'WPFORMS_SHAREASALE_ID' ) ) {
 if ( ! defined( 'ELEMENTOR_PARTNER_ID' ) ) {
 	define( 'ELEMENTOR_PARTNER_ID', 2112 );
 }
+
+/**
+ * Themeisle SDK filter.
+ *
+ * @param array $products products array.
+ *
+ * @return array
+ */
+function neve_filter_sdk( $products ) {
+	$products[] = get_template_directory() . '/style.css';
+
+	return $products;
+}
+
+add_filter( 'themeisle_sdk_products', 'neve_filter_sdk' );
 
 /**
  * Adds notice for PHP < 5.3.29 hosts.
@@ -63,15 +67,21 @@ require_once 'globals/sanitize-functions.php';
  * Run theme functionality
  */
 function neve_run() {
+	$vendor_file = trailingslashit( get_template_directory() ) . 'vendor/autoload.php';
+	if ( is_readable( $vendor_file ) ) {
+		require_once $vendor_file;
+	}
+
 	require_once 'autoloader.php';
-
-	$autoloader = new Neve\Autoloader();
-
+	$autoloader_class = '\\Neve\\Autoloader';
+	$autoloader       = new $autoloader_class;
 	$autoloader->add_namespace( 'Neve', get_template_directory() . '/inc/' );
-
 	$autoloader->register();
 
-	new Neve\Core\Core_Loader();
+	$core_loader_class = '\\Neve\\Core\\Core_Loader';
+	if( class_exists( $core_loader_class ) ) {
+		new $core_loader_class;
+	}
 }
 
 neve_run();
