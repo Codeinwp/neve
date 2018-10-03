@@ -78,8 +78,10 @@ function neve_run() {
 	$autoloader->add_namespace( 'Neve', get_template_directory() . '/inc/' );
 	$autoloader->register();
 
-	$core_loader_class = 'Neve\\Core\\Core_Loader';
-	new $core_loader_class;
+	$core_loader_class = '\\Neve\\Core\\Core_Loader';
+	if( class_exists( $core_loader_class ) ) {
+		new $core_loader_class;
+	}
 }
 
 neve_run();
