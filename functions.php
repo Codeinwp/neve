@@ -79,7 +79,7 @@ function neve_run() {
 	$autoloader->register();
 
 	$core_loader_class = '\\Neve\\Core\\Core_Loader';
-	if( class_exists( $core_loader_class ) ) {
+	if ( class_exists( $core_loader_class ) ) {
 		new $core_loader_class;
 	}
 }
