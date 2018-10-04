@@ -57,11 +57,10 @@
             });
         },
         handleMobileDropdowns: function() {
+            var self = this;
             $(".caret-wrap").on("click touchstart", function() {
-                if (!utils.isMobile()) {
-                    return false;
-                }
                 $(this).parent().toggleClass("dropdown-open");
+                self.createNavOverlay();
                 return false;
             });
         },
@@ -93,7 +92,7 @@
             $("#nv-primary-navigation").after(navClickaway);
             $(navClickaway).on("touchstart click", function() {
                 this.remove();
-                $("#nv-primary-navigation li").removeClass("active");
+                $("#nv-primary-navigation li").removeClass("active dropdown-open");
             });
             return false;
         }
@@ -175,8 +174,24 @@
     };
 })(jQuery);
 
+(function($) {
+    $.neveWoo = {
+        init: function() {
+            this.handleShopSidebar();
+        },
+        handleShopSidebar: function() {
+            $(".nv-sidebar-toggle").on("click touchend", function() {
+                $(".shop-sidebar").toggleClass("sidebar-open");
+                $("html").toggleClass("menu-opened");
+                return false;
+            });
+        }
+    };
+})(jQuery);
+
 jQuery(document).ready(function() {
     jQuery.neveNavigation.init();
+    jQuery.neveWoo.init();
 });
 
 jQuery(window).load(function() {

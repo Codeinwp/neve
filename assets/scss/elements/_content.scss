@@ -1,0 +1,116 @@
+blockquote {
+  text-align: center;
+  font-size: 1.1em;
+  margin: $spacing-lg 0;
+  &:before {
+    height: 3px;
+    width: $spacing-lg;
+    background-color: #333;
+    content: " ";
+    display: block;
+    margin: 0 auto $spacing;
+  }
+  > * {
+    margin-bottom: 0;
+  }
+}
+
+table {
+  margin: $spacing-sm 0;
+  td, th {
+    padding: $spacing-xs;
+    border-bottom: $muted-border;
+  }
+  tbody tr:hover {
+    background-color: #fbfbfb;
+  }
+}
+
+code {
+  background: #d0effb;
+  border-radius: 5px;
+  border: $muted-border;
+}
+
+pre {
+  display: block;
+  padding: $spacing-sm;
+  background: #fbfbfb;
+  border-radius: 5px;
+  border: $muted-border;
+  margin: $spacing 0;
+  white-space: pre-wrap;
+  font-size: 0.9em;
+  line-height: 2em;
+}
+
+.nv-content-wrap {
+  margin: $spacing 0;
+  &:after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  ul {
+    list-style-type: circle;
+  }
+  > ul, > ol {
+    margin: $spacing-sm 0;
+  }
+  ul, ol {
+    padding-left: $spacing-sm;
+    li {
+      line-height: 2em;
+      margin-bottom: $spacing-xs;
+    }
+  }
+
+  dl:not(.gallery-item) {
+    width: 100%;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-row-gap: $spacing;
+    margin: $spacing-sm 0;
+  }
+
+  dt:not(.gallery-icon) {
+    border-right: $muted-border;
+    padding: 0 $spacing-sm;
+    dfn {
+      font-style: normal;
+      font-weight: 600;
+    }
+  }
+  dd:not(.gallery-caption) {
+    padding: 0 $spacing-sm;
+  }
+}
+
+.alignleft {
+  float: left;
+  margin: 16px 16px 16px 0;
+}
+
+.alignright {
+  float: right;
+  margin: 16px 0 16px 16px;
+}
+
+.aligncenter {
+  text-align: center;
+  margin: 0 auto;
+}
+.wp-caption {
+  max-width: 100%;
+}
+.wp-caption-text {
+  text-align: center;
+  font-size: 0.8em;
+  font-weight: 500;
+}
+
+.twitter-tweet.twitter-tweet-rendered {
+  padding: $spacing-sm 0;
+  margin: auto;
+}

@@ -6,7 +6,7 @@
 }
 
 .neve-main {
-  flex: 1;
+  flex: 1 auto;
 }
 
 .archive-container, .single-page-container {
@@ -20,6 +20,9 @@
     padding-top: $spacing-sm;
     padding-bottom: $spacing-sm;
     text-align: center;
+  }
+  h1 {
+    margin: 0;
   }
 }
 

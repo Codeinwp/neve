@@ -60,7 +60,6 @@ class Top_Bar extends Base_Customizer {
 				'neve_top_bar_enable',
 				array(
 					'sanitize_callback' => 'neve_sanitize_checkbox',
-					'transport'         => $this->selective_refresh,
 					'default'           => false,
 				),
 				array(
@@ -87,17 +86,16 @@ class Top_Bar extends Base_Customizer {
 					'transport'         => $this->selective_refresh,
 				),
 				array(
-					'label'    => esc_html__( 'Layout', 'neve' ),
-					'priority' => 30,
-					'section'  => 'neve_top_bar_section',
-					'choices'  => array(
+					'label'           => esc_html__( 'Layout', 'neve' ),
+					'priority'        => 30,
+					'section'         => 'neve_top_bar_section',
+					'active_callback' => array( $this, 'is_top_bar_on' ),
+					'choices'         => array(
 						'content-menu' => array(
-							'url'   => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqCAMAAABpj1iyAAAAXVBMVEUAbq4AebMAe7QAe7UAhboFfLQFh7sjjr49l8NToMhmqMx3sNGGuNWVwNqjyN6wz+K81ufB3+3B4e7C4u7I3evR6fPU5O/V6/Tf6/Pq8vf1+fv1+vz6/f7+//////+gH6NhAAABVklEQVR4Ae3VzU7DMBAE4AID/onjBCjBNmXe/zHZplEbqahShRRxmDl0Oz59slbOjv8yYoklllhiiSWWWGKJJZZYYoklllhiiSWWWGKJJZZYYokl1p8jFsBfEjFtxZrqPNo86lTnPwU4nZdGsk2F5TgDhsJV3t/Oef3i9z31Nit7oGssCYh7q7CeyAggk6OHszbBOfhqE4hc5fnhnN0HD4931JusCtfH0JgQE7yxrANlua3mXA7YHzm9w3B9Wy845+mThzvqbVbCaDY2OLIzQEZvMy+7NcJHj85YngPislsbsHoMrIXNzayJ2Uh5xXIxxt5YkdOWrAp0cJUJoYPnhRXQpaO2D6FdWBk+bMHiEOBHsiWHrqxYe+v2G+D6Fat6+LrBylsKVw/EKqd+fbrJA7FEHx+xxBJLLLHEEkssscQSSyyxxBJLLLHEEkssscQSSyyxxBLrBzxgEYQpIrleAAAAAElFTkSuQmCC',
-							'label' => esc_html__( 'Content / Menu', 'neve' ),
+							'url' => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqCAMAAABpj1iyAAAAXVBMVEUAbq4AebMAe7QAe7UAhboFfLQFh7sjjr49l8NToMhmqMx3sNGGuNWVwNqjyN6wz+K81ufB3+3B4e7C4u7I3evR6fPU5O/V6/Tf6/Pq8vf1+fv1+vz6/f7+//////+gH6NhAAABVklEQVR4Ae3VzU7DMBAE4AID/onjBCjBNmXe/zHZplEbqahShRRxmDl0Oz59slbOjv8yYoklllhiiSWWWGKJJZZYYoklllhiiSWWWGKJJZZYYokl1p8jFsBfEjFtxZrqPNo86lTnPwU4nZdGsk2F5TgDhsJV3t/Oef3i9z31Nit7oGssCYh7q7CeyAggk6OHszbBOfhqE4hc5fnhnN0HD4931JusCtfH0JgQE7yxrANlua3mXA7YHzm9w3B9Wy845+mThzvqbVbCaDY2OLIzQEZvMy+7NcJHj85YngPislsbsHoMrIXNzayJ2Uh5xXIxxt5YkdOWrAp0cJUJoYPnhRXQpaO2D6FdWBk+bMHiEOBHsiWHrqxYe+v2G+D6Fat6+LrBylsKVw/EKqd+fbrJA7FEHx+xxBJLLLHEEkssscQSSyyxxBJLLLHEEkssscQSSyyxxBLrBzxgEYQpIrleAAAAAElFTkSuQmCC',
 						),
 						'menu-content' => array(
-							'url'   => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqCAMAAABpj1iyAAAAXVBMVEUAbq4AebMAe7QAe7UAhboFfLQFh7sjjr49l8NToMhmqMx3sNGGuNWVwNqjyN6wz+K81ufB3+3B4e7C4u7I3evR6fPU5O/V6/Tf6/Pq8vf1+fv1+vz6/f7+//////+gH6NhAAABU0lEQVR42u3UzU7DMBAE4AID/k8CBGObsu//mN0kVRMEUukl6mFGSjbjXD5Zlg9ylyGLLLLIIossssgiiyyyyCKLLLLIIossssgiiyyyyCKLLLLIug8WIH/EI19jvb9d8vol37fUH8l1Hm0eNdf5owDLemnTv1ykTNOhL1dYzw+XHD7k+HhD3aSzQGhSIuBHrdAeRTyATmSwMNoyjIGtOgF/hfWCS54+5XhLXVNhkndNInyEVZZ2oJx3qxnTOYwTJxn0y27twYoY1CYNRiRgVFbS2Z3P1gDrLYKyrPTwy9nag5XQSy3SzMzKyur0WVnGe5+U5SXvyapAgKkS4QKsrCyHECdtcq6trA7W7XLkewc7iLRoEMqGNWrXt4NJG1a1sHWfC6LIekFss/Rfq7zlySKLLLLIIossssgiiyyyyCKLLLLIIossssgiiyyyyCKLrP/mBGV6EYQ9BHpwAAAAAElFTkSuQmCC',
-							'label' => esc_html__( 'Menu / Content', 'neve' ),
+							'url' => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqCAMAAABpj1iyAAAAXVBMVEUAbq4AebMAe7QAe7UAhboFfLQFh7sjjr49l8NToMhmqMx3sNGGuNWVwNqjyN6wz+K81ufB3+3B4e7C4u7I3evR6fPU5O/V6/Tf6/Pq8vf1+fv1+vz6/f7+//////+gH6NhAAABU0lEQVR42u3UzU7DMBAE4AID/k8CBGObsu//mN0kVRMEUukl6mFGSjbjXD5Zlg9ylyGLLLLIIossssgiiyyyyCKLLLLIIossssgiiyyyyCKLLLLIug8WIH/EI19jvb9d8vol37fUH8l1Hm0eNdf5owDLemnTv1ykTNOhL1dYzw+XHD7k+HhD3aSzQGhSIuBHrdAeRTyATmSwMNoyjIGtOgF/hfWCS54+5XhLXVNhkndNInyEVZZ2oJx3qxnTOYwTJxn0y27twYoY1CYNRiRgVFbS2Z3P1gDrLYKyrPTwy9nag5XQSy3SzMzKyur0WVnGe5+U5SXvyapAgKkS4QKsrCyHECdtcq6trA7W7XLkewc7iLRoEMqGNWrXt4NJG1a1sHWfC6LIekFss/Rfq7zlySKLLLLIIossssgiiyyyyCKLLLLIIossssgiiyyyyCKLrP/mBGV6EYQ9BHpwAAAAAElFTkSuQmCC',
 						),
 					),
 				),
@@ -119,10 +117,11 @@ class Top_Bar extends Base_Customizer {
 					'transport'         => $this->selective_refresh,
 				),
 				array(
-					'priority' => 35,
-					'section'  => 'neve_top_bar_section',
-					'label'    => esc_html__( 'Content', 'neve' ),
-					'type'     => 'textarea',
+					'priority'        => 35,
+					'section'         => 'neve_top_bar_section',
+					'label'           => esc_html__( 'Content', 'neve' ),
+					'type'            => 'textarea',
+					'active_callback' => array( $this, 'is_top_bar_on' ),
 				)
 			)
 		);
@@ -137,7 +136,11 @@ class Top_Bar extends Base_Customizer {
 				'neve_top_bar_partial',
 				array(
 					'selector'            => '.nv-top-bar',
-					'settings'            => array( 'neve_top_bar_layout', 'neve_top_bar_content', 'neve_top_bar_enable' ),
+					'settings'            => array(
+						'neve_top_bar_layout',
+						'neve_top_bar_content',
+						'neve_top_bar_enable',
+					),
 					'render_callback'     => array( $this, 'top_bar_content_callback' ),
 					'container_inclusive' => true,
 				)
@@ -180,15 +183,25 @@ class Top_Bar extends Base_Customizer {
 					'transport' => $this->selective_refresh,
 				),
 				array(
-					'button_class' => 'nv-top-bar-menu-shortcut',
-					'icon_class'   => 'menu',
-					'button_text'  => __( 'Select Top Bar Menu', 'neve' ),
-					'shortcut'     => true,
-					'priority'     => 40,
-					'section'      => 'neve_top_bar_section',
+					'button_class'    => 'nv-top-bar-menu-shortcut',
+					'icon_class'      => 'menu',
+					'button_text'     => __( 'Select Top Bar Menu', 'neve' ),
+					'shortcut'        => true,
+					'priority'        => 40,
+					'section'         => 'neve_top_bar_section',
+					'active_callback' => array( $this, 'is_top_bar_on' ),
 				),
 				'Neve\Customizer\Controls\Button'
 			)
 		);
+	}
+
+	/**
+	 * Check if top bar is enabled.
+	 *
+	 * @return string
+	 */
+	public function is_top_bar_on() {
+		return (bool) get_theme_mod( 'neve_top_bar_enable', false );
 	}
 }

@@ -67,7 +67,7 @@ class Layout_Sidebar extends Base_Customizer {
 					'input_attr' => array(
 						'min'     => 10,
 						'max'     => 50,
-						'default' => 25,
+						'default' => 30,
 					),
 					'priority'   => 30,
 				),
@@ -82,19 +82,19 @@ class Layout_Sidebar extends Base_Customizer {
 	private function accordion_heading() {
 		$this->add_control(
 			new Control(
-				'sidebars_ui_heading', array(
+				'sidebars_ui_heading',
+				array(
 					'sanitize_callback' => 'sanitize_text_field',
 					'transport'         => $this->selective_refresh,
 				),
 				array(
-					'label'     => __( 'Advanced', 'neve' ),
-					'section'   => 'neve_sidebar',
-					'priority'  => 33,
-					'class'     => 'advanced-sidebar-accordion',
-					'accordion' => true,
-					// 'controls_to_wrap' => class_exists( 'WooCommerce' ) ? 4 : 2,
-														'controls_to_wrap' => 2,
-					'expanded'  => false,
+					'label'            => __( 'Advanced', 'neve' ),
+					'section'          => 'neve_sidebar',
+					'priority'         => 33,
+					'class'            => 'advanced-sidebar-accordion',
+					'accordion'        => true,
+					'controls_to_wrap' => class_exists( 'WooCommerce' ) ? 4 : 2,
+					'expanded'         => false,
 				),
 				'Neve\Customizer\Controls\Heading'
 			)
@@ -121,21 +121,22 @@ class Layout_Sidebar extends Base_Customizer {
 			),
 		);
 
-		/*
-		Commented for now
 		if ( class_exists( 'WooCommerce' ) ) {
-			$sidebar_layout_controls = array_merge( $sidebar_layout_controls, array(
-				'neve_shop_archive_sidebar_layout'   => array(
-					'priority' => 45,
-					'label'    => __( 'Shop / Archive Sidebar Layout', 'neve' ),
-				),
-				'neve_single_product_sidebar_layout' => array(
-					'priority' => 50,
-					'label'    => __( 'Single Product Sidebar Layout', 'neve' ),
-				),
-			) );
+			$sidebar_layout_controls = array_merge(
+				$sidebar_layout_controls,
+				array(
+					'neve_shop_archive_sidebar_layout'   => array(
+						'priority' => 45,
+						'label'    => __( 'Shop / Archive Sidebar Layout', 'neve' ),
+					),
+					'neve_single_product_sidebar_layout' => array(
+						'priority' => 50,
+						'label'    => __( 'Single Product Sidebar Layout', 'neve' ),
+					),
+				)
+			);
 		}
-		*/
+
 		foreach ( $sidebar_layout_controls as $control_id => $control ) {
 			$this->add_control(
 				new Control(
@@ -180,16 +181,13 @@ class Layout_Sidebar extends Base_Customizer {
 	private function sidebar_layout_choices() {
 		return array(
 			'full-width' => array(
-				'url'   => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqAQMAAABknzrDAAAABlBMVEX////V1dXUdjOkAAAAPUlEQVRIx2NgGAUkAcb////Y/+d/+P8AdcQoc8vhH/X/5P+j2kG+GA3CCgrwi43aMWrHqB2jdowEO4YpAACyKSE0IzIuBgAAAABJRU5ErkJggg==',
-				'label' => esc_html__( 'Full Width', 'neve' ),
+				'url' => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqAQMAAABknzrDAAAABlBMVEX////V1dXUdjOkAAAAPUlEQVRIx2NgGAUkAcb////Y/+d/+P8AdcQoc8vhH/X/5P+j2kG+GA3CCgrwi43aMWrHqB2jdowEO4YpAACyKSE0IzIuBgAAAABJRU5ErkJggg==',
 			),
 			'left'       => array(
-				'url'   => apply_filters( 'neve_layout_control_image_left', 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqAgMAAAAjP0ATAAAACVBMVEX///8+yP/V1dXG9YqxAAAAWElEQVR42mNgGAXDE4RCQMDAKONaBQINWqtWrWBatQDIaxg8ygYqQIAOYwC6bwHUmYNH2eBPSMhgBQXKRr0w6oVRL4x6YdQLo14Y9cKoF0a9QCO3jYLhBADvmFlNY69qsQAAAABJRU5ErkJggg==' ),
-				'label' => esc_html__( 'Left Sidebar', 'neve' ),
+				'url' => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqAgMAAAAjP0ATAAAACVBMVEX///8+yP/V1dXG9YqxAAAAWElEQVR42mNgGAXDE4RCQMDAKONaBQINWqtWrWBatQDIaxg8ygYqQIAOYwC6bwHUmYNH2eBPSMhgBQXKRr0w6oVRL4x6YdQLo14Y9cKoF0a9QCO3jYLhBADvmFlNY69qsQAAAABJRU5ErkJggg==',
 			),
 			'right'      => array(
-				'url'   => apply_filters( 'neve_layout_control_image_right', 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqAgMAAAAjP0ATAAAACVBMVEX///8+yP/V1dXG9YqxAAAAWUlEQVR42mNgGAUjB4iGgkEIzZStAoEVTECiQWsVkLdiECkboAABOmwBF9BtUGcOImUDEiCkJCQU0ECBslEvjHph1AujXhj1wqgXRr0w6oVRLwyEF0bBUAUAz/FTNXm+R/MAAAAASUVORK5CYII=' ),
-				'label' => esc_html__( 'Right Sidebar', 'neve' ),
+				'url' => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqAgMAAAAjP0ATAAAACVBMVEX///8+yP/V1dXG9YqxAAAAWUlEQVR42mNgGAUjB4iGgkEIzZStAoEVTECiQWsVkLdiECkboAABOmwBF9BtUGcOImUDEiCkJCQU0ECBslEvjHph1AujXhj1wqgXRr0w6oVRLwyEF0bBUAUAz/FTNXm+R/MAAAAASUVORK5CYII=',
 			),
 		);
 	}

@@ -17,13 +17,13 @@
         <exclude name="Squiz.Commenting.FunctionComment.MissingParamTag" />
         <exclude name="Squiz.Commenting.InlineComment.InvalidEndChar" />
         <exclude name="Squiz.Commenting.InlineComment.NotCapital" />
+        <exclude name="Squiz.PHP.CommentedOutCode.Found" />
         <exclude name="Squiz.PHP.Eval.Discouraged" />
         <exclude name="Generic.PHP.DisallowShortOpenTag" />
 
         <exclude name="WordPress.PHP.YodaConditions.NotYoda" />
         <exclude name="WordPress.Files.FileName.InvalidClassFileName" />
         <exclude name="WordPress.Files.FileName.NotHyphenatedLowercase" />
-        <exclude name="Squiz.PHP.CommentedOutCode" />
 
     </rule>
     <rule ref="WordPress-Docs">
