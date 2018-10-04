@@ -1,58 +1,83 @@
 .customize-control-checkbox-toggle .checkbox-toggle-wrap {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: 7px 0;
+	flex-direction: row;
+	padding: 7px 0;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-box-align: center;
+	-webkit-box-direction: normal;
+	-webkit-box-orient: horizontal;
+	-webkit-box-pack: justify;
+	-ms-flex-align: center;
+	-webkit-flex-direction: row;
+	-ms-flex-direction: row;
+	-ms-flex-pack: justify;
+	-webkit-justify-content: space-between;
+	justify-content: space-between;
 }
+
 .customize-control-checkbox-toggle span {
-    margin-left: 20px;
-    font-weight: 600;
-    width: 65%;
-    display: inline-block;
+	display: inline-block;
+	width: 65%;
+	margin-left: 20px;
+	font-weight: 600;
 }
+
 .customize-control-checkbox-toggle input[type=checkbox] {
-    display: none;
+	display: none;
 }
 
 .customize-control-checkbox-toggle label {
-    cursor: pointer;
-    width: 50px;
-    height: 25px;
-    background: grey;
-    border-radius: 100px;
-    position: relative;
-    margin-right: 20px;
-    display: inline-block;
+	display: inline-block;
+	position: relative;
+	width: 50px;
+	height: 25px;
+	margin-right: 20px;
+	border-radius: 100px;
+	background: grey;
+	cursor: pointer;
 }
 
 .customize-control-checkbox-toggle label:after {
-    content: '';
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    width: 15px;
-    height: 15px;
-    background: #fff;
-    border-radius: 90px;
-    transition: 0.3s;
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	width: 15px;
+	height: 15px;
+	border-radius: 90px;
+	background: #fff;
+	content: "";
+	-webkit-transition: 0.3s;
+	transition: 0.3s;
 }
 
 .customize-control-checkbox-toggle input:checked + label {
-    background: #13aff0;
+	background: #13aff0;
 }
 
 .customize-control-checkbox-toggle input:checked + label:after {
-    left: calc(100% - 5px);
-    transform: translateX(-100%);
+	left: -webkit-calc(100% - 5px);
+	left: calc(100% - 5px);
+	-webkit-transform: translateX(-100%);
+	-ms-transform: translateX(-100%);
+	transform: translateX(-100%);
 }
 
 .customize-control-checkbox-toggle label:active:after {
-    width: 30px;
+	width: 30px;
 }
 
 .customize-control-checkbox-toggle > * {
-    display: flex;
-    flex-direction: row;
+	display: -ms-flexbox;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	flex-direction: row;
+
+	-webkit-box-direction: normal;
+	-webkit-box-orient: horizontal;
+	-webkit-flex-direction: row;
+	-ms-flex-direction: row;
 }

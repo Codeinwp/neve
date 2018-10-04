@@ -12,25 +12,37 @@
   }
 }
 
+.posts-wrapper > article {
+  margin-bottom: $spacing;
+}
+
 .blog-entry-title {
-  margin-bottom: $spacing-xs;
+  margin: 0 0 $spacing-xs;
+  word-wrap: break-word;
+}
+
+.article-content-col {
+  width: 100%;
 }
 
 .article-content-col .content {
   width: 100%;
-  margin-bottom: $spacing;
   padding-bottom: $spacing;
   border-bottom: $muted-border;
   display: flex;
   flex-direction: column;
   .button {
     align-self: flex-start;
+    margin-top: $spacing-sm;
   }
 }
 
+.bypostauthor {
+  display: block;
+}
 
 .excerpt-wrap {
-  padding: $spacing 0;
+  margin: $spacing-sm 0;
 }
 
 .nv-index-posts .posts-wrapper {
@@ -42,4 +54,17 @@
   @include horizontal-list($spacing-xs);
   justify-content: center;
   margin: $spacing-xs auto;
+}
+
+.sticky .article-content-col {
+  max-width: 100%;
+  .content {
+    @include soft-box-shadow();
+    margin-right: $spacing-xs;
+    margin-left: $spacing-xs;
+    border: $muted-border;
+    max-width: 100%;
+    width: auto;
+    padding: $spacing-sm;
+  }
 }

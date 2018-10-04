@@ -8,11 +8,11 @@
 namespace Neve\Views\Pluggable;
 
 /**
- * Class Post_Meta
+ * Class Metabox_Settings
  *
  * @package Neve\Views\Pluggable
  */
-class Post_Meta {
+class Metabox_Settings {
 	/**
 	 * Function that is run after instantiation.
 	 *
@@ -32,13 +32,15 @@ class Post_Meta {
 	 */
 	public function filter_sidebar_position( $position ) {
 		global $post;
-
-		if ( ! isset( $post->ID ) ) {
+		if ( empty( $post ) ) {
+			return $position;
+		}
+		$post_id = apply_filters( 'neve_post_meta_filters_post_id', $post->ID );
+		if ( ! isset( $post_id ) ) {
 			return $position;
 		}
 
-		$meta_value = get_post_meta( $post->ID, 'neve_meta_sidebar', true );
-
+		$meta_value = get_post_meta( $post_id, 'neve_meta_sidebar', true );
 		if ( empty( $meta_value ) ) {
 			return $position;
 		}
@@ -55,12 +57,17 @@ class Post_Meta {
 	 */
 	public function filter_container_class( $class ) {
 		global $post;
-
-		if ( ! isset( $post->ID ) ) {
+		if ( empty( $post ) ) {
 			return $class;
 		}
 
-		$meta_value = get_post_meta( $post->ID, 'neve_meta_container', true );
+		$post_id = apply_filters( 'neve_post_meta_filters_post_id', $post->ID );
+
+		if ( ! isset( $post_id ) ) {
+			return $class;
+		}
+
+		$meta_value = get_post_meta( $post_id, 'neve_meta_container', true );
 
 		if ( empty( $meta_value ) ) {
 			return $class;

@@ -65,7 +65,7 @@ abstract class Metabox_Base {
 			'neve-page-settings',
 			__( 'Neve Settings', 'neve' ),
 			array( $this, 'render_metabox' ),
-			array( 'post', 'page' ),
+			array( 'post', 'page', 'product' ),
 			'side'
 		);
 	}
@@ -117,7 +117,7 @@ abstract class Metabox_Base {
 	/**
 	 * Detect if is a page with sidebar template
 	 *
-	 * @param string $post_id   Post id.
+	 * @param string $post_id Post id.
 	 *
 	 * @return bool
 	 */

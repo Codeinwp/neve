@@ -1,0 +1,48 @@
+.orderby {
+  border-color: $theme_color;
+  color: $theme_color;
+  height: 38px;
+}
+
+.nv-woo-filters {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: $spacing-sm;
+  align-items: center;
+  justify-content: space-between;
+  border-top: $muted-border;
+  padding-top: $spacing-sm;
+  > .woocommerce-ordering {
+    margin: 0;
+  }
+}
+
+.woocommerce {
+  .nv-bc-count-wrap {
+    .woocommerce-result-count {
+      float: none;
+      width: 100%;
+      text-align: center;
+    }
+  }
+  .woocommerce-breadcrumb {
+    font-size: 1em;
+    margin-top: $spacing-sm;
+    text-align: center;
+    a {
+      color: $link_color;
+      &:hover {
+        color: $link_hover_color;
+      }
+    }
+  }
+}
+
+.nv-woo-title-breadcrumb {
+  display: flex;
+  flex-direction: column-reverse;
+  text-align: center;
+  h1 {
+    margin: 0;
+  }
+}

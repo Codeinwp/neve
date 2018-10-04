@@ -96,7 +96,10 @@ class Themeisle_OB_Rest_Server {
 				continue;
 			}
 
-			$json = file_get_contents( $json_path );
+			require_once( ABSPATH . '/wp-admin/includes/file.php' );
+			global $wp_filesystem;
+			WP_Filesystem();
+			$json = $wp_filesystem->get_contents( $json_path );
 
 			$data['local'][ $slug ]                 = json_decode( $json, true );
 			$data['local'][ $slug ]['title']        = esc_html( $args['title'] );

@@ -30,7 +30,8 @@ class Front_End {
 		load_theme_textdomain( 'neve', get_template_directory() . '/languages' );
 
 		$header_settings = apply_filters(
-			'neve_custom_header_settings', array(
+			'neve_custom_header_settings',
+			array(
 				'width'       => 2000,
 				'flex-height' => true,
 				'height'      => 1150,
@@ -70,27 +71,42 @@ class Front_End {
 
 		add_image_size( 'neve-blog', 930, 620, true );
 
-		/*$this->add_woo_support();*/
+		$this->add_woo_support();
 	}
 
 	/**
 	 * Enqueue scripts.
 	 */
 	public function enqueue_scripts() {
-		wp_enqueue_style( 'neve-style', get_template_directory_uri() . '/style' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
+
+		if ( class_exists( 'WooCommerce' ) ) {
+			wp_enqueue_style( 'neve-woocommerce', NEVE_ASSETS_URL . '/css/woocommerce' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
+		}
+
+		wp_register_style( 'neve-style', get_template_directory_uri() . '/style' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
+		wp_style_add_data( 'neve-style', 'rtl', 'replace' );
+		wp_style_add_data( 'neve-style', 'suffix', '.min' );
+		wp_enqueue_style( 'neve-style' );
 
 		wp_enqueue_style( 'neve-icons', NEVE_ASSETS_URL . '/neve-icons/neve-icons' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
 
 		wp_register_script( 'neve-script', NEVE_ASSETS_URL . 'js/script' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.js', apply_filters( 'neve_filter_main_script_dependencies', array( 'jquery' ) ), NEVE_VERSION, false );
 		wp_localize_script(
-			'neve-script', 'NeveProperties', apply_filters(
-				'neve_filter_main_script_localization', array(
+			'neve-script',
+			'NeveProperties',
+			apply_filters(
+				'neve_filter_main_script_localization',
+				array(
 					'ajaxurl' => admin_url( 'admin-ajax.php' ),
 					'nonce'   => wp_create_nonce( 'neve-theme-nonce' ),
 				)
 			)
 		);
 		wp_enqueue_script( 'neve-script' );
+
+		if ( is_singular() ) {
+			wp_enqueue_script( 'comment-reply' );
+		}
 	}
 
 	/**
@@ -105,7 +121,8 @@ class Front_End {
 		);
 
 		$footer_sidebars = apply_filters(
-			'neve_footer_widget_areas_array', array(
+			'neve_footer_widget_areas_array',
+			array(
 				'footer-one-widgets'   => esc_html__( 'Footer One', 'neve' ),
 				'footer-two-widgets'   => esc_html__( 'Footer Two', 'neve' ),
 				'footer-three-widgets' => esc_html__( 'Footer Three', 'neve' ),
@@ -169,9 +186,17 @@ class Front_End {
 	private function get_ti_demo_content_support_data() {
 		$onboarding_sites = array(
 			'local' => array(
-				'neve-main' => array(
+				'neve-main'          => array(
 					'url'   => 'https://demo.themeisle.com/neve',
 					'title' => 'Neve 2018',
+				),
+				'neve-vet-center'    => array(
+					'url'   => 'https://demo.themeisle.com/neve-vet-center/',
+					'title' => 'Neve Vet Center',
+				),
+				'neve-energy-panels' => array(
+					'url'   => 'https://demo.themeisle.com/neve-energy-panels/',
+					'title' => 'Neve Energy Panels',
 				),
 			),
 		);

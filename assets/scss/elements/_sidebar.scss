@@ -20,11 +20,32 @@
 
   input[type="search"] {
     margin-bottom: $spacing-xs;
+    width: 100%;
   }
 
   .widget {
     border-bottom: $muted-border;
     padding-bottom: $spacing-sm;
     margin-bottom: $spacing-sm;
+    &:last-child {
+      border: none;
+      margin: 0;
+      padding: 0;
+    }
   }
+}
+
+.widget ul {
+  padding: 0;
+  ul {
+    padding-left: $spacing-xs;
+    border-left: $muted-border;
+  }
+  li {
+    margin-top: $spacing-xs;
+  }
+}
+
+.widget > ul {
+  font-size: .85em;
 }

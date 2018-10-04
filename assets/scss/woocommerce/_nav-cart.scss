@@ -12,6 +12,7 @@
 
 .nv-nav-cart {
   display: none;
+  z-index: 1000;
 }
 
 @mixin nav-cart--laptop() {
@@ -30,10 +31,12 @@
     position: absolute;
     z-index: 100;
     right: 0;
-    min-width: 350px;
+    width: 350px;
     background: $navbar_background_color;
-    .widget_shopping_cart {
-      padding: $spacing-xs 0;
+    .widget_shopping_cart > .widget_shopping_cart_content > ul.woocommerce-mini-cart.cart_list.product_list_widget  {
+      max-height: 450px;
+      overflow-y: scroll;
+      overflow-x: hidden;
     }
     .woocommerce-mini-cart__empty-message {
       text-align: center;
@@ -43,7 +46,8 @@
     .woocommerce.widget_shopping_cart .total {
       border-top: $muted-border;
       border-bottom: $muted-border;
-      padding: $spacing-xs $spacing-sm;
+      padding-bottom: $spacing-xs;
+      margin: 0 auto $spacing-xs;
       text-align: center;
     }
     .woocommerce-mini-cart__buttons {
@@ -62,6 +66,49 @@
           @include button-secondary();
         }
       }
+    }
+  }
+  #nv-primary-navigation .widget_shopping_cart li.mini_cart_item {
+    //Padding right is 61px to allow image on right (45px) which should be padded L/R (8px) { 45 + 8 + 8 = 61 }
+    padding: $spacing-xs 61px $spacing-xs $spacing-xs;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    align-items: baseline;
+    font-size: .85em;
+    position: relative;
+    &:hover {
+      background: $muted-white;
+    }
+    > a {
+      padding: 0;
+      display: inline;
+      grid-column: span 10;
+      grid-row-start: 1;
+      grid-column-end: -1;
+    }
+    a.remove {
+      grid-column: 1;
+      width: 20px;
+      height: 20px;
+      padding: 0;
+      position: static;
+    }
+    span.quantity {
+      grid-row-start: 2;
+      grid-column-start: span 10;
+      grid-column-end: -1;
+    }
+    dl.variation {
+      border:none;
+      padding: 0;
+      grid-row-start: 3;
+      display: flex;
+      flex-direction: row;
+      grid-column-start: span 10;
+      grid-column-end: -1;
+    }
+    dd {
+      margin-bottom: 0;
     }
   }
 }
