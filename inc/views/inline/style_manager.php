@@ -181,7 +181,7 @@ class Style_Manager extends Base_View {
 			if ( ! class_exists( $class_name ) ) {
 				continue;
 			}
-			$class = new $class_name();
+			$class = new $class_name;
 
 			$this->add_style( $class );
 		}
