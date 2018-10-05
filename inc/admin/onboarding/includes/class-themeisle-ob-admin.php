@@ -48,7 +48,7 @@ class Themeisle_OB_Admin {
 			'title'           => __( 'Sites Library', 'neve' ),
 			'render_callback' => array(
 				$this,
-				'add_demo_import_tab_content'
+				'add_demo_import_tab_content',
 			),
 		);
 

@@ -42,7 +42,7 @@
   },
   "scripts": {
     "phpcbf": "phpcbf || true ",
-    "phpcs": "phpcs"
+    "phpcs": "grunt phpcs"
   },
   "pre-commit": {
     "run": [
