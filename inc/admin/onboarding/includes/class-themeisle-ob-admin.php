@@ -39,15 +39,20 @@ class Themeisle_OB_Admin {
 
 	/**
 	 * Add about page tab list item.
+	 *
+	 * @param array $config about page config.
+	 * @return array
 	 */
 	public function add_demo_import_tab( $config ) {
-	    $config['custom_tabs']['sites_library'] = array(
-			    'title' => __( 'Sites Library', 'neve' ),
-			    'render_callback' => array(
-				    $this, 'add_demo_import_tab_content'
-			    ),
-        );
-        return $config;
+		$config['custom_tabs']['sites_library'] = array(
+			'title'           => __( 'Sites Library', 'neve' ),
+			'render_callback' => array(
+				$this,
+				'add_demo_import_tab_content'
+			),
+		);
+
+		return $config;
 	}
 
 	/**

@@ -24,7 +24,8 @@
   },
   "type": "wordpress-theme",
   "require": {
-    "codeinwp/themeisle-sdk": "master"
+    "codeinwp/themeisle-sdk": "master",
+    "codeinwp/ti-about-page": "master"
   },
   "autoload": {
     "files": [
