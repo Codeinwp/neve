@@ -86,4 +86,4 @@ function neve_run() {
 
 neve_run();
 
-/* This comment is just for testing eyepatch. Delete this after! */
+/* This comment is just for testing eyepatch. */
