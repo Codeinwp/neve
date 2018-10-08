@@ -6,6 +6,7 @@
 		'init': function () {
 			this.handleMasonry();
 			this.handleInfiniteScroll();
+			this.handleGutenbergAlignment();
 		},
 		'handleMasonry': function () {
 			if ( NeveProperties.masonry !== 'enabled' ) {
@@ -27,7 +28,7 @@
 			}
 			var postsWrap = $( '.nv-index-posts' );
 
-			if( ! postsWrap.length ) {
+			if ( !postsWrap.length ) {
 				return false;
 			}
 			var lock = false;
@@ -74,5 +75,23 @@
 				} );
 			} );
 		},
+		'handleGutenbergAlignment': function () {
+			var alignments = $( '.alignfull' );
+
+			if ( !alignments.length ) {
+				return false;
+			}
+
+			var windowWidth = $( window ).innerWidth();
+			$( alignments ).each( function ( index, element ) {
+				var containerWidth = $( '#primary > .container' ).innerWidth();
+				var marginNeeded = (windowWidth - containerWidth) / 2 + 15;
+				$( element ).css( {
+					'margin-left': '-' + marginNeeded + 'px',
+					'margin-right': '-' + marginNeeded + 'px'
+				} );
+			} );
+
+		}
 	};
 }( jQuery ));

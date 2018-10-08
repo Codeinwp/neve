@@ -105,6 +105,7 @@
         init: function() {
             this.handleMasonry();
             this.handleInfiniteScroll();
+            this.handleGutenbergAlignment();
         },
         handleMasonry: function() {
             if (NeveProperties.masonry !== "enabled") {
@@ -170,6 +171,21 @@
                     }
                 });
             });
+        },
+        handleGutenbergAlignment: function() {
+            var alignments = $(".alignfull");
+            if (!alignments.length) {
+                return false;
+            }
+            var windowWidth = $(window).innerWidth();
+            $(alignments).each(function(index, element) {
+                var containerWidth = $("#primary > .container").innerWidth();
+                var marginNeeded = (windowWidth - containerWidth) / 2 + 15;
+                $(element).css({
+                    "margin-left": "-" + marginNeeded + "px",
+                    "margin-right": "-" + marginNeeded + "px"
+                });
+            });
         }
     };
 })(jQuery);
@@ -204,6 +220,7 @@ jQuery(window).on("resize", function() {
     clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(function() {
         jQuery.neveNavigation.repositionDropdowns();
+        jQuery.neveBlog.handleGutenbergAlignment();
     }, 500);
 });
 //# sourceMappingURL=script.js.map
