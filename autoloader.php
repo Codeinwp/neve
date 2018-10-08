@@ -28,6 +28,7 @@ class Autoloader {
 	 * Register loader with SPL autoloader stack.
 	 *
 	 * @return void
+	 * @throws \Exception The exception thrown.
 	 */
 	public function register() {
 		spl_autoload_register( array( $this, 'load_class' ) );
