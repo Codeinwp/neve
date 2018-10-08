@@ -1,67 +1,68 @@
 .ti-order-sortable li {
-    text-align: center;
-    background: #fff;
-    border: 1px dashed #ccc;
-    display: -ms-flexbox;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: flex;
-    -ms-flex-pack: center;
-        -webkit-box-pack: center;
-        -webkit-justify-content: center;
-            justify-content: center;
-    -ms-flex-align: center;
-        -webkit-box-align: center;
-        -webkit-align-items: center;
-            align-items: center;
-    position: relative;
-    opacity: .7;
+	display: -ms-flexbox;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	position: relative;
+	border: 1px dashed #ccc;
+	opacity: 0.7;
+	background: #fff;
+	text-align: center;
+
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-box-align: center;
+	-webkit-box-pack: center;
+	-ms-flex-align: center;
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
 }
 
 .ti-order-sortable li.enabled {
-    opacity: 1;
-    border: 1px solid #666;
+	border: 1px solid #666;
+	opacity: 1;
 }
 
 .ti-order-sortable li p {
-    width: 100%;
-    padding: 7px 10px;
-    margin: 0
+	width: 100%;
+	margin: 0;
+	padding: 7px 10px;
 }
 
 .ti-order-sortable li > * {
-    display: inline;
+	display: inline;
 }
 
 .ti-order-sortable span {
-    position: absolute;
-    z-index: 100;
-    cursor: pointer;
-    padding: 5px 10px;
-    left: 0;
-    -webkit-transition: .3s ease-in-out;
-    transition: .3s ease-in-out;
+	position: absolute;
+	z-index: 100;
+	left: 0;
+	padding: 5px 10px;
+	cursor: pointer;
+	-webkit-transition: 0.3s ease-in-out;
+	transition: 0.3s ease-in-out;
 }
 
 .ti-order-sortable span.drag {
-    right: 0;
-    left: auto;
-    cursor: move;
+	right: 0;
+	left: auto;
+	cursor: move;
 }
 
 .ti-order-sortable li .toggle-display:before {
-    font-family: Dashicons;
-    font-size: 20px;
-    top: 2px;
-    position: relative;
-    content: "\f530";
+	position: relative;
+	top: 2px;
+	font-family: Dashicons;
+	font-size: 20px;
+	content: "\f530";
 }
 
 .ti-order-sortable li .toggle-display:hover {
-    background: #3ec8ff;
-    color: #fff;
+	color: #fff;
+	background: #3ec8ff;
 }
 
 .ti-order-sortable li.enabled .toggle-display:before {
-    content: "\f177";
+	content: "\f177";
 }

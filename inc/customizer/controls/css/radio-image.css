@@ -1,88 +1,102 @@
 .customize-control-radio-image .ui-buttonset {
-    text-align: center;
-}
-.customize-control-radio-image label {
-    float: left;
-    display: inline-block;
-    max-width: 33.3%;
-    padding: 3px;
-    font-size: inherit;
-    line-height: inherit;
-    height: auto;
-    cursor: pointer;
-    border-width: 0;
-    -webkit-appearance: none;
-    border-radius: 0;
-    white-space: nowrap;
-    box-sizing: border-box;
-    color: inherit;
-    background: none;
-    box-shadow: none;
-    vertical-align: inherit;
-}
-.customize-control-radio-image label:first-of-type {
-    float: left;
-}
-.customize-control-radio-image label:nth-of-type(n + 3){
-    float: right;
-}
-.customize-control-radio-image label:hover {
-    background: none;
-    border-color: inherit;
-    color: inherit;
-}
-.customize-control-radio-image label:active {
-    background: none;
-    border-color: inherit;
-    box-shadow: none;
-    -webkit-transform: none;
-        -ms-transform: none;
-            transform: none;
-}
-.customize-control-radio-image img { border: 1px solid transparent; }
-.customize-control-radio-image .ui-state-active img {
-    border-color: #00b6ff;
-    box-shadow: 0 0 5px #3EC8FE;
+	text-align: center;
 }
 
-#customize-control-header_video, #customize-control-external_header_video{
-    display: none;
+.customize-control-radio-image label {
+	display: inline-block;
+	float: left;
+	box-sizing: border-box;
+	max-width: 33.3%;
+	height: auto;
+	padding: 3px;
+	border-width: 0;
+	border-radius: 0;
+	color: inherit;
+	background: none;
+	box-shadow: none;
+	font-size: inherit;
+	line-height: inherit;
+	vertical-align: inherit;
+	white-space: nowrap;
+	cursor: pointer;
+
+	-webkit-appearance: none;
+}
+
+.customize-control-radio-image label:first-of-type {
+	float: left;
+}
+
+.customize-control-radio-image label:nth-of-type(n + 3) {
+	float: right;
+}
+
+.customize-control-radio-image label:hover {
+	border-color: inherit;
+	color: inherit;
+	background: none;
+}
+
+.customize-control-radio-image label:active {
+	border-color: inherit;
+	background: none;
+	box-shadow: none;
+	-webkit-transform: none;
+	-ms-transform: none;
+	transform: none;
+}
+
+.customize-control-radio-image img {
+	border: 1px solid transparent;
+}
+
+.customize-control-radio-image .ui-state-active img {
+	border-color: #00b6ff;
+	box-shadow: 0 0 5px #3ec8fe;
+}
+
+#customize-control-header_video,
+#customize-control-external_header_video {
+	display: none;
 }
 
 /**
  * Tab styling
  */
-.customizer-tab:not(.customizer-subtab){
-    display: table;
-    width: -webkit-calc(100% + 28px);
-    width: calc(100% + 28px);
-    margin: -15px 0 0 -12px;
-}
-.customizer-tab:not(.customizer-subtab) label{
-    border-right: 1px solid #ddd;
-    display: inherit;
-    width: 50%;
-    vertical-align: top;
-    max-width: 100%;
-    text-transform: capitalize;
-    background: #fff;
-    padding: 10px 0;
-    text-decoration: none;
-    font-weight: 600;
-    -webkit-transition: all .3s ease;
-    transition: all .3s ease;
-    color: #333;
-}
-.customizer-tab:not(.customizer-subtab) label i{
-    color: #333;
-    margin-right: 4px;
-}
-.customizer-tab:not(.customizer-subtab) label.ui-state-active{
-    box-shadow: inset 0 -3px 0 0 #0085ba;
-    color: #0085ba;
-    background-color: #fff;
+.customizer-tab:not(.customizer-subtab) {
+	display: table;
+	width: -webkit-calc(100% + 28px);
+	width: calc(100% + 28px);
+	margin: -15px 0 0 -12px;
 }
 
-.customizer-tab:not(.customizer-subtab) label:last-child{
-    border:none;
+.customizer-tab:not(.customizer-subtab) label {
+	display: inherit;
+	width: 50%;
+	max-width: 100%;
+	padding: 10px 0;
+	border-right: 1px solid #ddd;
+	color: #333;
+	background: #fff;
+	font-weight: 600;
+	vertical-align: top;
+	text-decoration: none;
+	text-transform: capitalize;
+	-webkit-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
+
+.customizer-tab:not(.customizer-subtab) label i {
+	margin-right: 4px;
+	color: #333;
+}
+
+.customizer-tab:not(.customizer-subtab) label.ui-state-active {
+	color: #0085ba;
+	background-color: #fff;
+	box-shadow: inset 0 -3px 0 0 #0085ba;
+}
+
+.customizer-tab:not(.customizer-subtab) label:last-child {
+	border: none;
 }

@@ -1,46 +1,50 @@
 #customize-theme-controls #sub-accordion-section-neve_typography.customize-pane-child.open {
 	height: 100%;
 }
+
 .neve-ss-wrap {
-    position: relative;
-    box-sizing: border-box;
-    border: 1px solid #ddd;
+	position: relative;
+	box-sizing: border-box;
+	border: 1px solid #ddd;
 }
+
 .neve-ss-wrap.active {
-    box-shadow: 0 0 2px rgba(30, 140, 190, .8);
-    border: 1px solid #5897fb;
+	border: 1px solid #5897fb;
+	box-shadow: 0 0 2px rgba(30, 140, 190, 0.8);
 }
+
 .customize-control input.neve-fs-main-input {
-	width: 90%;
-	background: #fff;
 	display: block;
 	float: left;
+	box-sizing: border-box;
+	width: 90%;
+	height: 35px;
+	border-right: 0;
+	background: #fff;
 	box-shadow: none;
 	cursor: pointer;
-    box-sizing: border-box;
-    border-right: 0;
-    height: 35px;
 }
+
 .customize-control input.neve-fs-main-input:focus {
-    border-color: #ddd;
+	border-color: #ddd;
 }
 
 .neve-fs-input-addon {
-	width: 10%;
-	background: #fff;
-	box-sizing: border-box;
-	padding: 7px 0;
-	line-height: 18px;
 	display: inline-block;
+	box-sizing: border-box;
+	width: 10%;
+	height: 35px;
+	padding: 7px 0;
 	border: 1px solid #ddd;
-	text-align: center;
 	border-left: 0;
-    height: 35px;
+	background: #fff;
+	line-height: 18px;
+	text-align: center;
 }
 
 .neve-fs-options-wrapper {
-	max-height: 300px;
 	overflow-y: scroll;
+	max-height: 300px;
 }
 
 .neve-fs-options-group {
@@ -48,12 +52,13 @@
 }
 
 .neve-fs-search {
-	padding: 7px;
 	display: block;
+	padding: 7px;
 	border-bottom: 1px solid #ddd;
 }
 
-.neve-fs-option, .neve-fs-options-heading {
+.neve-fs-option,
+.neve-fs-options-heading {
 	display: block;
 	padding: 3px 5px;
 	line-height: 18px;
@@ -64,27 +69,26 @@
 }
 
 .neve-fs-options-heading {
-	font-weight: 600;
 	color: #777;
 	background: #eee;
+	font-weight: 600;
 }
 
 .neve-fs-option:hover {
-	background: #5897fb;
 	color: #fff;
+	background: #5897fb;
 }
-
 
 .neve-ss-wrap.active .neve-fs-dropdown {
 	display: block;
+	z-index: 1000;
 	width: 100%;
-    z-index: 1000;
 }
 
 .neve-fs-dropdown {
-	background: #fff;
-	border: 1px solid #ddd;
-	border-top: 0;
 	display: none;
 	position: absolute;
+	border: 1px solid #ddd;
+	border-top: 0;
+	background: #fff;
 }
