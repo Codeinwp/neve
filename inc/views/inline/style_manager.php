@@ -62,7 +62,7 @@ class Style_Manager extends Base_View {
 	 *
 	 * @var string
 	 */
-	private $style = '';
+	public $style = '';
 
 	/**
 	 * Tablet style -> min-width: 768px.
@@ -71,7 +71,7 @@ class Style_Manager extends Base_View {
 	 *
 	 * @var string
 	 */
-	private $tablet_style = '';
+	public $tablet_style = '';
 
 	/**
 	 * Desktop style -> min-width 960px.
@@ -80,7 +80,7 @@ class Style_Manager extends Base_View {
 	 *
 	 * @var string
 	 */
-	private $desktop_style = '';
+	public $desktop_style = '';
 
 	/**
 	 * Style_Manager constructor.
@@ -216,7 +216,7 @@ class Style_Manager extends Base_View {
 	 *
 	 * @return string
 	 */
-	private function get_style() {
+	public function get_style() {
 		return ( $this->style . $this->tablet_style . $this->desktop_style );
 	}
 

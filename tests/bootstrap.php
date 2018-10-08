@@ -40,5 +40,3 @@ wp_update_user(
 		'last_name'  => 'User',
 	)
 );
-
-require_once 'neve-test-base.php';

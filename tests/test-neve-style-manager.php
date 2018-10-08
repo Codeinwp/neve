@@ -9,7 +9,7 @@
 /**
  * Class TestNeveStyleManager
  */
-class TestNeveStyleManager extends NeveTestBase {
+class TestNeveStyleManager extends WP_UnitTestCase {
 
 	/**
 	 * Style manager
@@ -47,7 +47,7 @@ class TestNeveStyleManager extends NeveTestBase {
 		$this->setUpThemeMods();
 
 		$this->style_manager->maybe_enqueue();
-		$css = $this->invokeMethod( $this->style_manager, 'get_style' );
+		$css = $this->style_manager->get_style();
 
 		// Check CSS actually exists.
 		$this->assertNotEmpty( $css );
@@ -55,11 +55,9 @@ class TestNeveStyleManager extends NeveTestBase {
 		// Number of opening brackets match closing brackets.
 		$this->assertTrue( substr_count( $css, '{' ) === substr_count( $css, '}' ) );
 
-		$this->invokeMethod( $this->style_manager, 'get_style_version' );
-
-		$mobile  = ( $this->invokeProp( $this->style_manager, 'style' ) );
-		$tablet  = ( $this->invokeProp( $this->style_manager, 'tablet_style' ) );
-		$desktop = ( $this->invokeProp( $this->style_manager, 'desktop_style' ) );
+		$mobile  = $this->style_manager->style;
+		$tablet  = $this->style_manager->tablet_style;
+		$desktop = $this->style_manager->desktop_style;
 
 		// Start and end of strings should be valid
 		$this->assertStringEndsWith( ';}', $mobile );

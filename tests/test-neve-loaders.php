@@ -10,7 +10,7 @@
 /**
  * Class TestNeveLoaders
  */
-class TestNeveLoaders extends NeveTestBase {
+class TestNeveLoaders extends WP_UnitTestCase {
 
 	/**
 	 * Check if autoloader has prefix and abstract classes are being loaded.
@@ -26,14 +26,12 @@ class TestNeveLoaders extends NeveTestBase {
 	 * Test factory with single module.
 	 */
 	public function testFactory() {
-		$factory = new \Neve\Core\Factory(
+		$factory    = new \Neve\Core\Factory(
 			array(
 				'Views\Pluggable\Pagination',
 			)
 		);
-
-		$test_class = $this->invokeMethod( $factory, 'build', array( 'Views\Pluggable\Pagination' ) );
-
+		$test_class = $factory->build( 'Views\Pluggable\Pagination' );
 		$this->assertInstanceOf( 'Neve\Views\Pluggable\Pagination', $test_class );
 	}
 }
