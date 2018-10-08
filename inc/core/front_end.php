@@ -60,6 +60,7 @@ class Front_End {
 		add_theme_support( 'customize-selective-refresh-widgets' );
 		add_theme_support( 'custom-background', $custom_background_settings );
 		add_theme_support( 'themeisle-demo-import', $this->get_ti_demo_content_support_data() );
+		add_theme_support( 'align-wide' );
 
 		register_nav_menus(
 			array(
