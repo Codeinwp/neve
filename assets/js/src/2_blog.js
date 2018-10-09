@@ -76,22 +76,28 @@
 			} );
 		},
 		'handleGutenbergAlignment': function () {
-			var alignments = $( '.alignfull' );
-
-			if ( !alignments.length ) {
+			var fullAlignments = $( '.alignfull' );
+			var wideAlignments = $( '.alignwide' );
+			if ( !fullAlignments.length && !wideAlignments.length ) {
 				return false;
 			}
-
 			var windowWidth = $( window ).innerWidth();
-			$( alignments ).each( function ( index, element ) {
-				var containerWidth = $( '#primary > .container' ).innerWidth();
-				var marginNeeded = (windowWidth - containerWidth) / 2 + 15;
+			var containerWidth = $( '#primary > .container' ).innerWidth();
+			var marginFullNeeded = (windowWidth - containerWidth) / 2 + 15;
+			var marginWideNeeded = (windowWidth - containerWidth) / 5;
+
+			$( fullAlignments ).each( function ( index, element ) {
 				$( element ).css( {
-					'margin-left': '-' + marginNeeded + 'px',
-					'margin-right': '-' + marginNeeded + 'px'
+					'margin-left': '-' + marginFullNeeded + 'px',
+					'margin-right': '-' + marginFullNeeded + 'px'
 				} );
 			} );
-
-		}
+			$( wideAlignments ).each( function ( index, element ) {
+				$( element ).css( {
+					'margin-left': '-' + marginWideNeeded + 'px',
+					'margin-right': '-' + marginWideNeeded + 'px'
+				} );
+			} );
+		},
 	};
 }( jQuery ));
