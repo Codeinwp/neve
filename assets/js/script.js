@@ -2,7 +2,7 @@
     $.neveUtilities = {
         isMobile: function() {
             var windowWidth = window.innerWidth;
-            return windowWidth <= 960;
+            return windowWidth <= 767;
         },
         isElementInViewport: function(el) {
             if (typeof $ === "function" && el instanceof $) {
@@ -180,8 +180,12 @@
             }
             var windowWidth = $(window).innerWidth();
             var containerWidth = $("#primary > .container").innerWidth();
-            var marginFullNeeded = (windowWidth - containerWidth) / 2 + 15;
-            var marginWideNeeded = (windowWidth - containerWidth) / 5;
+            var marginFullNeeded = 0;
+            var marginWideNeeded = 0;
+            if (utils.isMobile() || !jQuery(".nv-sidebar-wrap").length) {
+                marginFullNeeded = (windowWidth - containerWidth) / 2 + 15;
+                marginWideNeeded = (windowWidth - containerWidth) / 5;
+            }
             $(fullAlignments).each(function(index, element) {
                 $(element).css({
                     "margin-left": "-" + marginFullNeeded + "px",
