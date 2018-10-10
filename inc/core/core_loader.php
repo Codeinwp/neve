@@ -68,6 +68,8 @@ class Core_Loader {
 				'Compatibility\Elementor',
 
 				'Admin\Metabox\Main',
+
+				'Content_Import\Zelle'
 			)
 		);
 	}
