@@ -179,25 +179,29 @@
                 return false;
             }
             var windowWidth = $(window).innerWidth();
-            var containerWidth = $("#primary > .container").innerWidth();
+            var containerWidth = $('#primary > [class^="container"]').innerWidth();
             var marginFullNeeded = 0;
             var marginWideNeeded = 0;
             if (utils.isMobile() || !jQuery(".nv-sidebar-wrap").length) {
                 marginFullNeeded = (windowWidth - containerWidth) / 2 + 15;
                 marginWideNeeded = (windowWidth - containerWidth) / 5;
             }
-            $(fullAlignments).each(function(index, element) {
-                $(element).css({
-                    "margin-left": "-" + marginFullNeeded + "px",
-                    "margin-right": "-" + marginFullNeeded + "px"
+            if (fullAlignments.length) {
+                $(fullAlignments).each(function(index, element) {
+                    $(element).css({
+                        "margin-left": "-" + marginFullNeeded + "px",
+                        "margin-right": "-" + marginFullNeeded + "px"
+                    });
                 });
-            });
-            $(wideAlignments).each(function(index, element) {
-                $(element).css({
-                    "margin-left": "-" + marginWideNeeded + "px",
-                    "margin-right": "-" + marginWideNeeded + "px"
+            }
+            if (wideAlignments.length) {
+                $(wideAlignments).each(function(index, element) {
+                    $(element).css({
+                        "margin-left": "-" + marginWideNeeded + "px",
+                        "margin-right": "-" + marginWideNeeded + "px"
+                    });
                 });
-            });
+            }
         }
     };
 })(jQuery);
