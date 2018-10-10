@@ -2,7 +2,7 @@
     $.neveUtilities = {
         isMobile: function() {
             var windowWidth = window.innerWidth;
-            return windowWidth <= 960;
+            return windowWidth <= 767;
         },
         isElementInViewport: function(el) {
             if (typeof $ === "function" && el instanceof $) {
@@ -105,6 +105,7 @@
         init: function() {
             this.handleMasonry();
             this.handleInfiniteScroll();
+            this.handleGutenbergAlignment();
         },
         handleMasonry: function() {
             if (NeveProperties.masonry !== "enabled") {
@@ -170,6 +171,37 @@
                     }
                 });
             });
+        },
+        handleGutenbergAlignment: function() {
+            var fullAlignments = $(".alignfull");
+            var wideAlignments = $(".alignwide");
+            if (!fullAlignments.length && !wideAlignments.length) {
+                return false;
+            }
+            var windowWidth = $(window).innerWidth();
+            var containerWidth = $('#primary > [class^="container"]').innerWidth();
+            var marginFullNeeded = 0;
+            var marginWideNeeded = 0;
+            if (utils.isMobile() || !jQuery(".nv-sidebar-wrap").length) {
+                marginFullNeeded = (windowWidth - containerWidth) / 2 + 15;
+                marginWideNeeded = (windowWidth - containerWidth) / 5;
+            }
+            if (fullAlignments.length) {
+                $(fullAlignments).each(function(index, element) {
+                    $(element).css({
+                        "margin-left": "-" + marginFullNeeded + "px",
+                        "margin-right": "-" + marginFullNeeded + "px"
+                    });
+                });
+            }
+            if (wideAlignments.length) {
+                $(wideAlignments).each(function(index, element) {
+                    $(element).css({
+                        "margin-left": "-" + marginWideNeeded + "px",
+                        "margin-right": "-" + marginWideNeeded + "px"
+                    });
+                });
+            }
         }
     };
 })(jQuery);
@@ -204,6 +236,7 @@ jQuery(window).on("resize", function() {
     clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(function() {
         jQuery.neveNavigation.repositionDropdowns();
+        jQuery.neveBlog.handleGutenbergAlignment();
     }, 500);
 });
 //# sourceMappingURL=script.js.map

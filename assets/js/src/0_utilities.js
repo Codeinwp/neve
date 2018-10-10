@@ -2,7 +2,7 @@
 	$.neveUtilities = {
 		'isMobile': function () {
 			var windowWidth = window.innerWidth;
-			return windowWidth <= 960;
+			return windowWidth <= 767;
 		},
 		/**
 		 * Detect if an element is in viewport or not

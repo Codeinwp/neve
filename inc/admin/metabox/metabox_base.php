@@ -107,31 +107,7 @@ abstract class Metabox_Base {
 			return false;
 		}
 
-		if ( ! $this->is_allowed_template( $post->ID ) ) {
-			return false;
-		}
-
 		return true;
 	}
 
-	/**
-	 * Detect if is a page with sidebar template
-	 *
-	 * @param string $post_id Post id.
-	 *
-	 * @return bool
-	 */
-	protected function is_allowed_template( $post_id ) {
-
-		$allowed = array(
-			'default',
-		);
-
-		$page_template = get_post_meta( $post_id, '_wp_page_template', true );
-		if ( empty( $page_template ) ) {
-			return true;
-		}
-
-		return in_array( $page_template, $allowed );
-	}
 }
