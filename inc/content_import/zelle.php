@@ -172,6 +172,7 @@ class Zelle {
 	 * The callback of an ajax request when the user requests an import action.
 	 */
 	public function wp_ajax_import_zelle_frontpage(){
+
 		$params = $_REQUEST;
 
 		if ( ! isset( $params['nonce'] ) || ! wp_verify_nonce( $params['nonce'], 'import_zelle_frontpage' ) ) {
@@ -190,12 +191,11 @@ class Zelle {
 		$template                   = download_url( esc_url( $this->json_template_url ) );
 		$_FILES['file']['tmp_name'] = $template;
 
-
 		global $wp_filesystem;
 
 		WP_Filesystem();
 
-		$data                  = json_decode( $wp_filesystem->get_contens( $template ), true );
+		$data                  = json_decode( $wp_filesystem->get_contents( $template ), true );
 		$this->default_content = $data['content'];
 		$this->content         = $this->default_content;
 
@@ -219,10 +219,6 @@ class Zelle {
 		$data['content'] = array_values( $this->content );
 
 		require_once( ABSPATH . 'wp-admin' . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . 'file.php' );
-
-		global $wp_filesystem;
-
-		WP_Filesystem();
 
 		$wp_filesystem->put_contents( $template, json_encode( $data ), 0644 );
 
