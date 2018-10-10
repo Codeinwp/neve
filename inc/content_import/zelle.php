@@ -66,9 +66,9 @@ class Zelle {
 			return;
 		}
 		add_action( 'admin_notices', array( $this, 'admin_notices' ) );
-		add_action( 'wp_ajax_dismiss_zelle_import', array( $this, 'wp_ajax_dismiss_zelle_import' ) );
+		add_action( 'wp_ajax_dismiss_zelle_import', array( $this, 'dismiss_zelle_import' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_notice_scripts' ) );
-		add_action( 'wp_ajax_import_zelle_frontpage', array( $this, 'wp_ajax_import_zelle_frontpage' ) );
+		add_action( 'wp_ajax_import_zelle_frontpage', array( $this, 'import_zelle_frontpage' ) );
 	}
 
 	/**
@@ -125,7 +125,7 @@ class Zelle {
 	/**
 	 * Dismiss import notice
 	 */
-	public function wp_ajax_dismiss_zelle_import() {
+	public function dismiss_zelle_import() {
 		$params = $_REQUEST;
 
 		if ( ! isset( $params['nonce'] ) || ! wp_verify_nonce( $params['nonce'], 'dismiss_zelle_import' ) ) {
@@ -171,7 +171,7 @@ class Zelle {
 	/**
 	 * The callback of an ajax request when the user requests an import action.
 	 */
-	public function wp_ajax_import_zelle_frontpage(){
+	public function import_zelle_frontpage(){
 
 		$params = $_REQUEST;
 
