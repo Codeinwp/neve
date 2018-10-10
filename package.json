@@ -42,12 +42,14 @@
   },
   "scripts": {
     "phpcbf": "phpcbf || true ",
-    "phpcs": "grunt phpcs"
+    "phpcs": "phpcs",
+    "buildCssJs": "grunt buildScripts"
   },
   "pre-commit": {
     "run": [
       "phpcbf",
-      "phpcs"
+      "phpcs",
+      "buildCssJs"
     ]
   },
   "husky": {
