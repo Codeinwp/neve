@@ -69,7 +69,7 @@ class Core_Loader {
 
 				'Admin\Metabox\Main',
 
-				'Content_Import\Zelle'
+				'Content_Import\Zelle',
 			)
 		);
 	}
