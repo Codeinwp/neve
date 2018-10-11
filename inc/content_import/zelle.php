@@ -60,7 +60,6 @@ class Zelle {
 	 */
 	public function init() {
 		add_action( 'after_switch_theme', array( $this, 'maybe_switched_from_zelle' ) );
-
 		$content_was_imported = get_theme_mod( 'zelle_frontpage_was_imported' );
 		if ( $content_was_imported !== 'no' ) {
 			return;
@@ -171,7 +170,7 @@ class Zelle {
 	/**
 	 * The callback of an ajax request when the user requests an import action.
 	 */
-	public function import_zelle_frontpage(){
+	public function import_zelle_frontpage() {
 
 		$params = $_REQUEST;
 
@@ -183,7 +182,6 @@ class Zelle {
 		if ( empty( $this->previous_theme_content ) ) {
 			$this->previous_theme_content = get_option( 'theme_mods_zerif-lite' );
 		}
-
 
 		require_once( ABSPATH . 'wp-admin' . '/includes/image.php' );
 		require_once( ABSPATH . '/wp-admin/includes/file.php' );
@@ -245,6 +243,168 @@ class Zelle {
 
 		wp_send_json_error( 'something went wrong' );
 
+	}
+
+	/**
+	 * Returns the content from Our focus, Testimonials, Team and About in json format
+	 *
+	 * @param string $sidebar Sidebar name.
+	 * @param string $prefix Prefix of widgets in that sidebar.
+	 *
+	 * @since 1.1.51
+	 * @access private
+	 * @return array|string
+	 */
+	private function get_sidebar_content( $widget_ids, $prefix ) {
+		if ( empty( $widget_ids ) ) {
+			return '';
+		}
+		$data_in_hestia_format = array();
+		$ids_to_grab           = array();
+		foreach ( $widget_ids as $widget_id ) {
+			if ( strpos( $widget_id, $prefix ) !== false ) {
+				$short_id_transient = explode( '-', $widget_id );
+				$short_id           = end( $short_id_transient );
+				array_push( $ids_to_grab, $short_id );
+			}
+		}
+		$all_widgets = get_option( 'widget_' . $prefix . '-widget' );
+		foreach ( $ids_to_grab as $key ) {
+			$widget_data = array();
+			if ( array_key_exists( $key, $all_widgets ) ) {
+				$current_widget = $all_widgets[ $key ];
+				if ( ! empty( $current_widget ) ) {
+					$social_repeater = array();
+					foreach ( $current_widget as $key => $value ) {
+						$repeater_key = $this->get_key( $key );
+						if ( ! empty( $value ) && ! empty( $repeater_key ) ) {
+							if ( $repeater_key === 'social_repeater' ) {
+								$social = $this->get_repeater_social( $key, $value );
+								array_push( $social_repeater, $social );
+							} else {
+								$widget_data[ $repeater_key ] = $value;
+							}
+						}
+					}
+					$widget_data['social_repeater'] = json_encode( $social_repeater );
+					$widget_data['choice']          = 'customizer_repeater_image';
+				}
+			}
+			if ( ! empty( $widget_data ) ) {
+				array_push( $data_in_hestia_format, $widget_data );
+			}
+		}
+
+		return json_encode( $data_in_hestia_format );
+	}
+
+	/**
+	 * Return content to add to social repeater. Used for team members.
+	 *
+	 * @param string $social_name Name of social link.
+	 * @param string $value Link of social.
+	 *
+	 * @since 1.1.51
+	 * @access private
+	 * @return array
+	 */
+	private function get_repeater_social( $social_name, $value ) {
+		$result = array(
+			'icon' => '',
+			'link' => $value,
+		);
+		switch ( $social_name ) {
+			case 'fb_link':
+				$result['icon'] = 'fa-facebook';
+				break;
+			case 'tw_link':
+				$result['icon'] = 'fa-twitter';
+				break;
+			case 'bh_link':
+				$result['icon'] = 'fa-behance';
+				break;
+			case 'db_link':
+				$result['icon'] = 'fa-dribbble';
+				break;
+			case 'ln_link':
+				$result['icon'] = 'fa-linkedin';
+				break;
+			case 'gp_link':
+				$result['icon'] = 'fa-google-plus';
+				break;
+			case 'pinterest_link':
+				$result['icon'] = 'fa-pinterest-p';
+				break;
+			case 'tumblr_link':
+				$result['icon'] = 'fa-tumblr';
+				break;
+			case 'reddit_link':
+				$result['icon'] = 'fa-reddit-alien';
+				break;
+			case 'youtube_link':
+				$result['icon'] = 'fa-youtube';
+				break;
+			case 'instagram_link':
+				$result['icon'] = 'fa-instagram';
+				break;
+			case 'website_link':
+				$result['icon'] = 'fa-globe';
+				break;
+			case 'email_link':
+				$result['icon'] = 'fa-envelope';
+				break;
+			case 'phone_link':
+				$result['icon'] = 'fa-phone';
+				break;
+			case 'profile_link':
+				$result['icon'] = 'fa-user';
+				break;
+		}
+
+		return $result;
+	}
+
+	/**
+	 * Map widgets inputs names to repeater inputs
+	 *
+	 * @param string $key Name of the inputs.
+	 *
+	 * @since 1.1.51
+	 * @access private
+	 * @return bool|string
+	 */
+	private function get_key( $key ) {
+		$repeater_map = array(
+			'image_url'       => array( 'image_url', 'image_uri' ),
+			'title'           => array( 'title', 'name' ),
+			'subtitle'        => array( 'subtitle', 'position', 'details' ),
+			'text'            => array( 'text', 'description' ),
+			'link'            => array( 'link' ),
+			'social_repeater' => array(
+				'fb_link',
+				'tw_link',
+				'bh_link',
+				'db_link',
+				'ln_link',
+				'gp_link',
+				'pinterest_link',
+				'tumblr_link',
+				'reddit_link',
+				'youtube_link',
+				'instagram_link',
+				'website_link',
+				'email_link',
+				'phone_link',
+				'profile_link',
+			),
+		);
+		foreach ( $repeater_map as $k => $v ) {
+			if ( in_array( $key, $v ) ) {
+				return $k;
+			}
+		}
+
+		return false;
 	}
 
 	/**
@@ -364,7 +524,13 @@ class Zelle {
 			$data[1]['settings']['title'] = wp_kses_post( $this->previous_theme_content['zerif_ourfocus_subtitle'] );
 		}
 
-		$old_values = json_decode( get_theme_mod( 'hestia_features_content' ), true );
+		$widget_ids = $this->previous_theme_content['sidebars_widgets']['data']['sidebar-ourfocus'];
+		if ( empty( $widget_ids ) ) {
+			return;
+		}
+		$content = $this->get_sidebar_content( $widget_ids, 'ctup-ads' );
+
+		$old_values = json_decode( $content, true );
 
 		if ( empty( $old_values ) ) {
 			return;
@@ -488,7 +654,13 @@ class Zelle {
 			return;
 		}
 
-		$old_widget = json_decode( get_theme_mod( 'hestia_team_content' ), true );
+		$widget_ids = $this->previous_theme_content['sidebars_widgets']['data']['sidebar-ourteam'];
+		if ( empty( $widget_ids ) ) {
+			return;
+		}
+		$content = $this->get_sidebar_content( $widget_ids, 'zerif_team' );
+
+		$old_widget = json_decode( $content, true );
 
 		if ( ! empty( $this->previous_theme_content['zerif_ourteam_background'] ) ) {
 			$this->content[4]['settings']['background_color'] = wp_kses_post( $this->previous_theme_content['zerif_ourteam_background'] );
@@ -610,8 +782,13 @@ class Zelle {
 			$data[1]['settings']['title'] = wp_kses_post( $this->previous_theme_content['zerif_testimonials_subtitle'] );
 		}
 
-		// widgets are hold in $data[2];
-		$old_data = json_decode( get_theme_mod( 'hestia_testimonials_content' ), true );
+		$widget_ids = $this->previous_theme_content['sidebars_widgets']['data']['sidebar-testimonials'];
+		if ( empty( $widget_ids ) ) {
+			return;
+		}
+		$content = $this->get_sidebar_content( $widget_ids, 'zerif_testim' );
+
+		$old_data = json_decode( $content, true );
 
 		if ( ! empty( $old_data ) ) {
 			$default_widget = $data[2]['elements'][0];
