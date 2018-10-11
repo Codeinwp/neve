@@ -248,7 +248,7 @@ class Zelle {
 	/**
 	 * Returns the content from Our focus, Testimonials, Team and About in json format
 	 *
-	 * @param string $sidebar Sidebar name.
+	 * @param string $widget_ids List with widget ids.
 	 * @param string $prefix Prefix of widgets in that sidebar.
 	 *
 	 * @since 1.1.51
