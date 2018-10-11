@@ -1,1 +1,58 @@
-{"content_file":"https:\/\/demo.themeisle.com\/neve\/wp-content\/uploads\/sites\/164\/ti-demo-data\/export.xml","theme_mods":{"custom_css_post_id":93,"neve_last_menu_item":"search","neve_body_font_family":"Poppins","neve_body_font_size":"{\"desktop\":14,\"tablet\":16,\"mobile\":16}","neve_navigation_layout":"left","neve_top_bar_enable":false,"neve_top_bar_layout":"menu-content","neve_default_sidebar_layout":"full-width","neve_blog_archive_sidebar_layout":"full-width","neve_single_post_sidebar_layout":"full-width","__ti_import_menus_location":{"primary":"main-menu"}},"widgets":[],"recommended_plugins":{"elementor":"Elementor Page Builder","themeisle-companion":"Orbit Fox by ThemeIsle"},"front_page":{"front_page":"neve-home","blog_page":"blog"},"shop_pages":null}
+{
+  "theme_mods": {
+    "custom_css_post_id": 93,
+    "neve_last_menu_item": "search",
+    "neve_body_font_family": "Poppins",
+    "neve_body_font_size": "{\"desktop\":14,\"tablet\":16,\"mobile\":16}",
+    "neve_navigation_layout": "left",
+    "neve_theme_color": "#00a4f7",
+    "neve_link_color": "#00a4f7",
+    "neve_link_hover_color": "#005bf7",
+    "neve_top_bar_enable": false,
+    "neve_top_bar_layout": "menu-content",
+    "neve_default_sidebar_layout": "full-width",
+    "neve_blog_archive_sidebar_layout": "full-width",
+    "neve_single_post_sidebar_layout": "full-width",
+    "neve_shop_archive_sidebar_layout": "right",
+    "neve_single_product_sidebar_layout": "full-width",
+    "neve_footer_content_type": "none",
+    "neve_generated_style_version": 1539003189,
+    "__ti_import_menus_location": {
+      "primary": "main-menu"
+    }
+  },
+  "widgets": {
+    "shop-sidebar": {
+      "woocommerce_product_categories-3": {
+        "title": "Product categories",
+        "orderby": "name",
+        "dropdown": 0,
+        "count": 1,
+        "hierarchical": 1,
+        "show_children_only": 0,
+        "hide_empty": 1,
+        "max_depth": ""
+      },
+      "woocommerce_price_filter-3": {
+        "title": "Filter by price"
+      },
+      "woocommerce_top_rated_products-3": {
+        "title": "Top rated products",
+        "number": 5
+      },
+      "woocommerce_recently_viewed_products-3": {
+        "title": "Recently Viewed Products",
+        "number": 10
+      }
+    }
+  },
+  "recommended_plugins": {
+    "elementor": "Elementor Page Builder",
+    "themeisle-companion": "Orbit Fox by ThemeIsle"
+  },
+  "front_page": {
+    "front_page": "neve-home",
+    "blog_page": "blog"
+  },
+  "shop_pages": null
+}
