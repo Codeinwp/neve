@@ -57,7 +57,7 @@ class Admin {
 				'title'   => __( 'Recommended Actions', 'neve' ),
 				'plugins' => array(
 					'themeisle-companion' => array(
-						'name' => 'Orbit Fox',
+						'name' => 'OrbitFox',
 						'slug' => 'themeisle-companion',
 					),
 					'wpforms-lite'        => array(
