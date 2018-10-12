@@ -180,7 +180,7 @@ class Admin {
 		);
 		$base_url   = admin_url( 'themes.php?page=' . $theme_slug . '-welcome' );
 
-		$onboarding_url = add_query_arg( $query_args, $base_url ) . '#demo-import';
+		$onboarding_url = add_query_arg( $query_args, $base_url ) . '#sites_library';
 		wp_safe_redirect( $onboarding_url );
 	}
 
