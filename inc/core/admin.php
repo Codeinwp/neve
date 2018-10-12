@@ -57,19 +57,16 @@ class Admin {
 				'title'   => __( 'Recommended Actions', 'neve' ),
 				'plugins' => array(
 					'themeisle-companion' => array(
-						'name'        => 'Orbit Fox Companion',
-						'slug'        => 'themeisle-companion',
-						'description' => 'Extend your theme functionality with Orbit Fox with various modules like Social Media Share Buttons & Icons, Uptime Monitoring, Google Analytics, custom menu-icons, one click import page templates, page builder addons and free stock featured images.',
+						'name' => 'Orbit Fox',
+						'slug' => 'themeisle-companion',
 					),
 					'wpforms-lite'        => array(
-						'name'        => 'WPForms',
-						'slug'        => 'wpforms-lite',
-						'description' => 'WPForms allow you to create beautiful contact forms, subscription forms, payment forms, and other type of forms for your site in minutes, not hours!',
+						'name' => 'WPForms',
+						'slug' => 'wpforms-lite',
 					),
 					'elementor'           => array(
-						'name'        => 'Elementor',
-						'slug'        => 'elementor',
-						'description' => 'Drag & drop page builder. Create high-end, pixel perfect websites at record speeds. Any theme, any page, any design.',
+						'name' => 'Elementor',
+						'slug' => 'elementor',
 					),
 				),
 			),
