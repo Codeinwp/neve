@@ -13,6 +13,7 @@
 }
 
 .posts-wrapper > article {
+  word-break: break-word;
   &:not(:last-child) {
     margin-bottom: $spacing;
   }
