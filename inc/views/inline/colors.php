@@ -140,7 +140,7 @@ class Colors extends Base_Inline {
 			),
 			'background'               => array(
 				'css_prop'  => 'background-color',
-				'selectors' => '.button.button-primary, .button.button-secondary:hover, .icon-bar, blockquote:before, button, input[type=button], .btn, input[type="submit"], .nv-tags-list a:hover',
+				'selectors' => '.button.button-primary, .button.button-secondary:hover, .icon-bar, button, input[type=button], .btn, input[type="submit"], .nv-tags-list a:hover',
 			),
 		);
 

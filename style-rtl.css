@@ -733,6 +733,9 @@ button:hover, input[type=button]:hover, .btn:hover, input[type="submit"]:hover {
   height: auto;
 }
 
+.posts-wrapper > article {
+  word-break: break-word;
+}
 .posts-wrapper > article:not(:last-child) {
   margin-bottom: 32px;
 }

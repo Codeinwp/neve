@@ -971,13 +971,18 @@ blockquote {
   font-size: 1.1em;
   margin: 48px 0;
 }
-blockquote:before {
+blockquote:after, blockquote:before {
   height: 3px;
   width: 48px;
-  background-color: #333;
+  background-color: #c9c9c9;
   content: " ";
   display: block;
+}
+blockquote:before {
   margin: 0 auto 32px;
+}
+blockquote:after {
+  margin: 32px auto 0;
 }
 blockquote > * {
   margin-bottom: 0;
@@ -1081,6 +1086,15 @@ pre {
 .twitter-tweet.twitter-tweet-rendered {
   padding: 16px 0;
   margin: auto;
+}
+
+hr {
+  border: 0;
+  height: 0;
+  border-top: 1px solid #f0f0f0;
+  margin: 32px 0;
+  display: inline-block;
+  width: 100%;
 }
 
 .nv-sidebar-wrap {
