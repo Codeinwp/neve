@@ -53,7 +53,7 @@ class Container_Sidebar extends Base_Inline {
 					'css_prop' => 'max-width',
 					'value'    => $content_width,
 					'suffix'   => '%',
-				)
+				),
 			),
 			'sidebar' => array(
 				array(

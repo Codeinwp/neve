@@ -24,6 +24,7 @@ p {
 }
 
 a {
+  cursor: pointer;
   color: $link_color;
   text-decoration: none;
   &:hover {

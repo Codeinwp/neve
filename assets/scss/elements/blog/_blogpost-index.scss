@@ -13,7 +13,12 @@
 }
 
 .posts-wrapper > article {
-  margin-bottom: $spacing;
+  &:not(:last-child) {
+    margin-bottom: $spacing;
+  }
+  &:last-child .content {
+    border-bottom: 0;
+  }
 }
 
 .blog-entry-title {

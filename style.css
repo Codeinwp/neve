@@ -252,6 +252,7 @@ p {
 }
 
 a {
+  cursor: pointer;
   color: #00a4f7;
   text-decoration: none;
 }
@@ -732,8 +733,11 @@ button:hover, input[type=button]:hover, .btn:hover, input[type="submit"]:hover {
   height: auto;
 }
 
-.posts-wrapper > article {
+.posts-wrapper > article:not(:last-child) {
   margin-bottom: 32px;
+}
+.posts-wrapper > article:last-child .content {
+  border-bottom: 0;
 }
 
 .blog-entry-title {
@@ -956,7 +960,7 @@ button:hover, input[type=button]:hover, .btn:hover, input[type="submit"]:hover {
 }
 
 .nv-index-posts, .nv-single-post-wrap, .nv-single-page-wrap {
-  margin-bottom: 48px;
+  margin-bottom: 32px;
 }
 
 blockquote {
