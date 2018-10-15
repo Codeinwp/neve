@@ -49,9 +49,11 @@ class Container_Sidebar extends Base_Inline {
 		$content_width = 100 - $sidebar_width;
 		$settings      = array(
 			'content' => array(
-				'css_prop' => 'max-width',
-				'value'    => $content_width,
-				'suffix'   => '%',
+				array(
+					'css_prop' => 'max-width',
+					'value'    => $content_width,
+					'suffix'   => '%',
+				)
 			),
 			'sidebar' => array(
 				array(
