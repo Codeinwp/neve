@@ -44,7 +44,7 @@ class Page_Header extends Base_View {
 			return;
 		}
 		$title_args = $this->the_page_title( $context );
-		if( empty( $title_args['string'] ) ) {
+		if ( empty( $title_args['string'] ) ) {
 			return;
 		}
 		?>
