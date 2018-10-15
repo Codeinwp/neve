@@ -138,11 +138,11 @@ class Template_Parts extends Base_View {
 	 */
 	private function title() {
 		?>
-		<h3 class="blog-entry-title entry-title">
+		<h4 class="blog-entry-title entry-title">
 			<a href="<?php the_permalink(); ?>">
 				<?php the_title(); ?>
 			</a>
-		</h3>
+		</h4>
 		<?php
 	}
 

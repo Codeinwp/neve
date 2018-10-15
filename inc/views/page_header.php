@@ -44,6 +44,9 @@ class Page_Header extends Base_View {
 			return;
 		}
 		$title_args = $this->the_page_title( $context );
+		if( empty( $title_args['string'] ) ) {
+			return;
+		}
 		?>
 		<div class="nv-page-title-wrap <?php echo esc_attr( $title_args['wrap-class'] ); ?>">
 			<div class="container">
@@ -82,7 +85,7 @@ class Page_Header extends Base_View {
 		}
 
 		// If no title is set until now simply get the title.
-		if ( empty( $title_args['string'] ) ) {
+		if ( empty( $title_args['string'] ) && ! is_home() ) {
 			$title_args['string'] = get_the_title();
 		}
 

@@ -592,7 +592,7 @@ footer {
 
 .nv-page-title-wrap.nv-big-title {
   border-bottom: 1px solid #f0f0f0;
-  background-color: #f7f7f7;
+  background-color: #fafafa;
 }
 .nv-page-title-wrap.nv-big-title .nv-page-title {
   padding-top: 16px;
@@ -691,7 +691,6 @@ button:hover, input[type=button]:hover, .btn:hover, input[type="submit"]:hover {
   list-style-type: none;
   border-bottom: 1px solid #f0f0f0;
   padding-bottom: 8px;
-  margin: 8px 0;
   width: 100%;
 }
 .nv-meta-list li > span,
@@ -738,7 +737,7 @@ button:hover, input[type=button]:hover, .btn:hover, input[type="submit"]:hover {
 }
 
 .blog-entry-title {
-  margin: 0 0 8px;
+  margin: 8px 0;
   word-wrap: break-word;
 }
 
@@ -754,16 +753,12 @@ button:hover, input[type=button]:hover, .btn:hover, input[type="submit"]:hover {
   flex-direction: column;
 }
 .article-content-col .content .button {
+  display: inline-block;
   align-self: flex-start;
-  margin-top: 16px;
 }
 
 .bypostauthor {
   display: block;
-}
-
-.excerpt-wrap {
-  margin: 16px 0;
 }
 
 .nv-index-posts .posts-wrapper {
@@ -799,6 +794,27 @@ button:hover, input[type=button]:hover, .btn:hover, input[type="submit"]:hover {
   max-width: 100%;
   width: auto;
   padding: 16px;
+}
+
+.layout-grid .content > * {
+  margin: 8px 0;
+}
+.layout-grid .content > *:first-child {
+  margin-top: 0;
+}
+.layout-grid .content > *:last-child {
+  margin-bottom: 0;
+}
+
+.layout-default .non-grid-content > *, .layout-alternative .non-grid-content > * {
+  margin: 8px 0;
+  display: inline-flex;
+}
+.layout-default .non-grid-content > *:first-child, .layout-alternative .non-grid-content > *:first-child {
+  margin-top: 16px;
+}
+.layout-default .non-grid-content > *:last-child, .layout-alternative .non-grid-content > *:last-child {
+  margin-bottom: 0;
 }
 
 .nv-loader {
@@ -1601,10 +1617,6 @@ pre {
   }
   .non-grid-content .button {
     align-self: flex-start;
-    margin-top: auto;
-  }
-  .non-grid-content .excerpt-wrap {
-    padding: 16px 0;
   }
 
   .nv-post-thumbnail-wrap ~ .default-layout-content {
@@ -1624,6 +1636,10 @@ pre {
   }
   article.layout-alternative:nth-child(even) .article-content-col .content .nv-post-thumbnail-wrap ~ .alternative-layout-content {
     padding: 0 0 0 32px;
+  }
+
+  .layout-default .non-grid-content > *:first-child, .layout-alternative .non-grid-content > *:first-child {
+    margin-top: 0;
   }
 
   #comments .children {

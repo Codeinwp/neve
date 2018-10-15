@@ -20,6 +20,7 @@
   @include top-bar--laptop();
   @include nav-menu-right--laptop();
   @include blog-layout-default-alt--laptop();
+  @include blogpost-index--laptop();
   @include comments--laptop();
   @include single-post--laptop();
   @include page--laptop();
