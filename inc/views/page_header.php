@@ -32,6 +32,8 @@ class Page_Header extends Base_View {
 	 */
 	public function init() {
 		add_action( 'neve_page_header', array( $this, 'render_page_header' ) );
+		add_filter( 'get_the_archive_title', array( $this, 'filter_archive_title' ) );
+		add_action( 'neve_after_page_title', array( $this, 'display_archive_description' ) );
 	}
 
 	/**
@@ -50,6 +52,7 @@ class Page_Header extends Base_View {
 				<div class="row">
 					<div class="col nv-page-title <?php echo $title_args['class']; ?>">
 						<h1><?php echo wp_kses_post( $title_args['string'] ); ?></h1>
+                        <?php do_action( 'neve_after_page_title' ); ?>
 					</div>
 				</div>
 			</div>
@@ -120,5 +123,45 @@ class Page_Header extends Base_View {
 		}
 
 		return array();
+	}
+
+	/**
+	 * Remove "Category:", "Tag:", "Author:" from the archive title.
+	 *
+	 * @param string $title Archive title.
+	 */
+	public function filter_archive_title( $title ) {
+		if ( is_category() ) {
+			$title = single_cat_title( '', false );
+		} elseif ( is_tag() ) {
+			$title = single_tag_title( '', false );
+		} elseif ( is_author() ) {
+			$title = '<span class="vcard">' . get_the_author() . '</span>';
+		} elseif ( is_year() ) {
+			$title = get_the_date( 'Y' );
+		} elseif ( is_month() ) {
+			$title = get_the_date( 'F Y' );
+		} elseif ( is_day() ) {
+			$title = get_the_date( 'F j, Y' );
+		} elseif ( is_post_type_archive() ) {
+			$title = post_type_archive_title( '', false );
+		} elseif ( is_tax() ) {
+			$title = single_term_title( '', false );
+		}
+
+		return $title;
+	}
+
+	/**
+	 * Add "Category:", "Tag:", "Author:" description after the archive title.
+	 */
+	public function display_archive_description() {
+		if ( is_author() ) {
+			echo '<p>' . wp_kses_post( get_the_author_meta( 'description' ) ) . '</p>';
+		} elseif ( is_category() ) {
+			the_archive_description();
+		} elseif ( is_tag() ) {
+			the_archive_description();
+		}
 	}
 }

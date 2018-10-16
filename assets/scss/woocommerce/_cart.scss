@@ -53,6 +53,12 @@
   }
 }
 
+.woocommerce .cart_totals {
+  padding: 20px;
+  border: 1px solid #d3ced2;
+  border-radius: 5px;
+}
+
 .woocommerce .cart_totals  table.shop_table {
   td, tr, th, & { border-bottom: 0; border-left: 0; border-right: 0; vertical-align: middle;}
   & { border: none; }
@@ -129,10 +135,16 @@
       border-bottom: 0;
       margin: 0;
       align-items: center;
+      > .input-text:first-of-type {
+        margin-left: 21px;
+      }
       > .input-text {
         margin: 0 $spacing-xs;
         height: 41px;
       }
+    }
+    .button {
+      margin-right: 21px;
     }
   }
 }
