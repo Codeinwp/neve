@@ -52,7 +52,7 @@ class Page_Header extends Base_View {
 				<div class="row">
 					<div class="col nv-page-title <?php echo $title_args['class']; ?>">
 						<h1><?php echo wp_kses_post( $title_args['string'] ); ?></h1>
-                        <?php do_action( 'neve_after_page_title' ); ?>
+						<?php do_action( 'neve_after_page_title' ); ?>
 					</div>
 				</div>
 			</div>
