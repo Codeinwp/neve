@@ -68,6 +68,23 @@
       display: block;
     }
   }
+
+  #neve-checkout-coupon .woocommerce-form-coupon {
+    .form-row-first {
+      float: none;
+      width: 100%;
+    }
+    .form-row-last {
+      float: none;
+      width: 100%;
+      display: flex;
+      flex-direction: row-reverse;
+
+      button {
+        width: 100%;
+      }
+    }
+  }
 }
 
 #add_payment_method #payment, .woocommerce-cart #payment, .woocommerce-checkout #payment {
@@ -109,6 +126,13 @@
     }
     > .col2-set {
       float: left;
+    }
+    #neve-checkout-coupon .woocommerce-form-coupon {
+      .form-row-last {
+        button {
+          width: auto;
+        }
+      }
     }
   }
   #order_review_heading {
