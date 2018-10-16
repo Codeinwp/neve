@@ -14,7 +14,7 @@ do_action( 'neve_page_header', 'index' );
 	<div class="<?php echo esc_attr( $container_class ); ?> archive-container">
 		<div class="row">
 			<?php do_action( 'neve_do_sidebar', 'blog-archive', 'left' ); ?>
-			<div class="nv-index-posts col gapless">
+			<div class="nv-index-posts col">
 				<?php
 				if ( have_posts() ) {
 					/* Start the Loop. */

@@ -24,6 +24,8 @@
   @include comments--laptop();
   @include single-post--laptop();
   @include page--laptop();
+  @include sidebar--laptop();
+  @include blog-layout--laptop();
 }
 
 @media (min-width: #{$desktop}) {

@@ -3,6 +3,7 @@
 .gitignore
 .travis.yml
 .jshintrc
+.commitlintrc.js
 Gruntfile.js
 grunt
 phpcs.xml

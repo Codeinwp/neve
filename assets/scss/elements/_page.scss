@@ -14,20 +14,12 @@
 }
 
 .nv-page-title-wrap.nv-big-title {
-  border-bottom: $muted-border;
-  background-color: #fafafa;
-  .nv-page-title {
-    padding-top: $spacing-sm;
-    padding-bottom: $spacing-sm;
-    text-align: center;
-  }
   h1 {
-    margin: 0;
+    font-size: 1.7em;
+    margin: $spacing 0 0;
   }
 }
 
 @mixin page--laptop() {
-  .archive-container, .single-page-container {
-    padding-top: $spacing-lg;
-  }
+
 }

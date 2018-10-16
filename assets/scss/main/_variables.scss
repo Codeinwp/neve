@@ -18,10 +18,10 @@ $h4-mobile-font-size: $font-size-base * 1.25 !default;
 $h5-mobile-font-size: $font-size-base * 1 !default;
 $h6-mobile-font-size: $font-size-base * 0.75 !default;
 
-$paragraph-margin-bottom: 1rem !default;
+$paragraph-margin-bottom: 1.6rem !default;
 
 // Spacing variables.
-$spacing-xs: 8px;
+$spacing-xs: 10px;
 $spacing-sm: $spacing-xs * 2;
 $spacing: $spacing-sm * 2;
 $spacing-lg: $spacing-sm * 3;
@@ -32,7 +32,7 @@ $link_hover_color: #005bf7;
 $navbar_background_color: #fff;
 $muted-white: #f0f0f0;
 $muted-white-med: #c9c9c9;
-$body_color: #606060;
+$body_color: #333333;
 $success: #2dce89;
 $info: #11cdef;
 $error: #f5365c;
@@ -45,7 +45,7 @@ $muted-border: 1px solid #f0f0f0;
 $muted-border-med: 1px solid #c9c9c9;
 
 $tablet-sm: "576px";
-$tablet: "768px";
+$tablet: "769px";
 $laptop: "960px";
 $desktop : "1200px"
 

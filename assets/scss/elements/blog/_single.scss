@@ -1,3 +1,7 @@
+.single .nv-meta-list {
+  margin-top: $spacing-xs;
+}
+
 .entry-title {
   word-wrap: break-word;
 }
@@ -7,7 +11,7 @@
 }
 
 .single-post-container .title {
-  margin-bottom: $spacing-sm;
+  margin-bottom: $spacing-xs;
 }
 
 .attachment-neve-blog {

@@ -1,3 +1,7 @@
+.nv-index-posts .entry-title a {
+  color: $body_color;
+}
+
 .nv-post-thumbnail-wrap {
   width: 100%;
   a {
@@ -14,16 +18,10 @@
 
 .posts-wrapper > article {
   word-break: break-word;
-  &:not(:last-child) {
-    margin-bottom: $spacing;
-  }
-  &:last-child .content {
-    border-bottom: 0;
-  }
+  margin-bottom: $spacing;
 }
 
 .blog-entry-title {
-  margin: $spacing-xs 0;
   word-wrap: break-word;
 }
 
@@ -73,10 +71,7 @@
 
 .layout-grid .content {
   > * {
-    margin: $spacing-xs 0;
-    &:first-child {
-      margin-top: 0;
-    }
+    margin-bottom: $spacing-xs;
     &:last-child {
       margin-bottom: 0;
     }
