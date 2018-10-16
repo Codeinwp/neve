@@ -31,7 +31,12 @@ class Metabox_Settings {
 	 * @return mixed
 	 */
 	public function filter_sidebar_position( $position ) {
+		if ( ! is_single() && ! is_page() ) {
+			return $position;
+		}
+
 		global $post;
+
 		if ( empty( $post ) ) {
 			return $position;
 		}

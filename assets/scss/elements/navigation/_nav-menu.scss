@@ -120,10 +120,10 @@
         display: block;
       }
       &.menu-item-has-children > a {
-        padding-right: 12px;
+        padding-right: 5px;
       }
       > .caret-wrap {
-        top: 14px;
+        top: 18px;
         position: absolute;
       }
     }
@@ -167,7 +167,7 @@
           display: block;
           width: 100%;
           margin-right: $spacing-xs;
-          padding: $spacing-xs $spacing-sm;
+          padding: 7px 14px;
         }
       }
     }

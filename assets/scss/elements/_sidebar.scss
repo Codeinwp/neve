@@ -1,4 +1,4 @@
-@mixin sidebar--tablet() {
+@mixin sidebar--laptop() {
   .nv-sidebar-wrap {
     max-width: 30%;
     &.right {
@@ -11,21 +11,19 @@
 
   .nv-index-posts {
     &:not(:only-child) {
-      padding-right: 0;
+      padding-right: 15px;
       .nv-sidebar-wrap.left + & {
-        padding-left: 0;
+        padding-left: 15px;
       }
     }
   }
-}
 
-@mixin sidebar--laptop() {
   .nv-single-post-wrap, .nv-single-page-wrap {
     margin-bottom: $spacing;
     &:not(:only-child) {
       padding-right: $spacing;
       .nv-sidebar-wrap.left + & {
-        padding-right: 0;
+        padding-right: 15px;
         padding-left: $spacing;
       }
     }
@@ -33,11 +31,18 @@
 
   .nv-index-posts {
     margin-bottom: $spacing;
-    &:not(:only-child) {
+    &:not(.nv-shop):not(:only-child) {
       padding-right: $spacing - 15px;
       .nv-sidebar-wrap.left + & {
-        padding-right: 0;
+        padding-right: 15px;
         padding-left: $spacing - 15px;
+      }
+    }
+    &.nv-shop:not(:only-child) {
+      padding-right: $spacing;
+      .nv-sidebar-wrap.left + & {
+        padding-right: 15px;
+        padding-left: $spacing;
       }
     }
   }

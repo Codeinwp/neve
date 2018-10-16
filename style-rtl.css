@@ -846,6 +846,10 @@ button:hover, input[type=button]:hover, .btn:hover, input[type="submit"]:hover {
   align-items: flex-end;
 }
 
+.single .nv-content-wrap {
+  padding-top: 20px;
+}
+
 .single .nv-meta-list {
   margin-top: 10px;
 }
@@ -1000,9 +1004,6 @@ pre {
   line-height: 2em;
 }
 
-.nv-content-wrap {
-  margin: 20px 0;
-}
 .nv-content-wrap:after {
   content: "";
   clear: both;
@@ -1274,23 +1275,6 @@ hr {
     max-width: 100%;
   }
 
-  .nv-sidebar-wrap {
-    max-width: 30%;
-  }
-  .nv-sidebar-wrap.right {
-    border-right: 1px solid #f0f0f0;
-  }
-  .nv-sidebar-wrap.left {
-    border-left: 1px solid #f0f0f0;
-  }
-
-  .nv-index-posts:not(:only-child) {
-    padding-left: 0;
-  }
-  .nv-sidebar-wrap.left + .nv-index-posts:not(:only-child) {
-    padding-right: 0;
-  }
-
   html {
     font-size: 16px;
   }
@@ -1440,10 +1424,10 @@ hr {
     display: block;
   }
   #nv-primary-navigation > li.menu-item-has-children > a {
-    padding-left: 12px;
+    padding-left: 5px;
   }
   #nv-primary-navigation > li > .caret-wrap {
-    top: 14px;
+    top: 18px;
     position: absolute;
   }
   #nv-primary-navigation li:hover > a {
@@ -1486,7 +1470,7 @@ hr {
     display: block;
     width: 100%;
     margin-left: 10px;
-    padding: 10px 20px;
+    padding: 7px 14px;
   }
   #nv-primary-navigation .menu-item-has-children:hover > .sub-menu {
     display: block;
@@ -1664,6 +1648,23 @@ hr {
     padding-top: 60px;
   }
 
+  .nv-sidebar-wrap {
+    max-width: 30%;
+  }
+  .nv-sidebar-wrap.right {
+    border-right: 1px solid #f0f0f0;
+  }
+  .nv-sidebar-wrap.left {
+    border-left: 1px solid #f0f0f0;
+  }
+
+  .nv-index-posts:not(:only-child) {
+    padding-left: 15px;
+  }
+  .nv-sidebar-wrap.left + .nv-index-posts:not(:only-child) {
+    padding-right: 15px;
+  }
+
   .nv-single-post-wrap, .nv-single-page-wrap {
     margin-bottom: 40px;
   }
@@ -1671,19 +1672,26 @@ hr {
     padding-left: 40px;
   }
   .nv-sidebar-wrap.left + .nv-single-post-wrap:not(:only-child), .nv-sidebar-wrap.left + .nv-single-page-wrap:not(:only-child) {
-    padding-left: 0;
+    padding-left: 15px;
     padding-right: 40px;
   }
 
   .nv-index-posts {
     margin-bottom: 40px;
   }
-  .nv-index-posts:not(:only-child) {
+  .nv-index-posts:not(.nv-shop):not(:only-child) {
     padding-left: 25px;
   }
-  .nv-sidebar-wrap.left + .nv-index-posts:not(:only-child) {
-    padding-left: 0;
+  .nv-sidebar-wrap.left + .nv-index-posts:not(.nv-shop):not(:only-child) {
+    padding-left: 15px;
     padding-right: 25px;
+  }
+  .nv-index-posts.nv-shop:not(:only-child) {
+    padding-left: 40px;
+  }
+  .nv-sidebar-wrap.left + .nv-index-posts.nv-shop:not(:only-child) {
+    padding-left: 15px;
+    padding-right: 40px;
   }
 
   .nv-sidebar-wrap.right {
