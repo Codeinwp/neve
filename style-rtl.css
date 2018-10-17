@@ -546,6 +546,12 @@ h6 {
   padding: 8px 0;
 }
 
+.shortcode-search {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+}
+
 footer {
   background-color: #fff;
 }

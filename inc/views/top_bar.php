@@ -88,13 +88,21 @@ class Top_Bar extends Base_View {
 		if ( empty( $content ) ) {
 			return;
 		}
+
 		$markup = '';
 
-		$markup .= '<div class="nv-top-bar-content"><p>';
-		$markup .= do_shortcode( $content, true );
-		$markup .= '</p></div>';
+		$content = wptexturize( $content );
+		$content = convert_smilies( $content );
+		$content = convert_chars( $content );
+		$content = wpautop( $content );
+		$content = shortcode_unautop( $content );
+		$content = prepend_attachment( $content );
 
-		echo wp_kses_post( $markup );
+		$markup .= '<div class="nv-top-bar-content">';
+		$markup .= do_shortcode( $content );
+		$markup .= '</div>';
+
+		echo $markup;
 	}
 
 	/**
