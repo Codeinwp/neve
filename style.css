@@ -430,7 +430,7 @@ h6 {
   transition: all 0.3s ease;
   margin-bottom: 0;
 }
-#nv-primary-navigation.responsive-opened {
+.responsive-opened #nv-primary-navigation {
   max-height: calc(100vh - 70px);
   padding-bottom: 16px;
 }
@@ -1396,7 +1396,7 @@ pre {
   #nv-primary-navigation > li:not(:first-child) {
     padding-left: 16px;
   }
-  #nv-primary-navigation.responsive-opened {
+  .responsive-opened #nv-primary-navigation {
     padding-bottom: 0;
   }
   #nv-primary-navigation > li {
@@ -1458,7 +1458,7 @@ pre {
     margin-right: 8px;
     padding: 8px 16px;
   }
-  #nv-primary-navigation .menu-item-has-children:hover > .sub-menu {
+  #nv-primary-navigation .menu-item-has-children:hover > .sub-menu, #nv-primary-navigation .menu-item-has-children:focus > .sub-menu, #nv-primary-navigation .menu-item-has-children:focus-within > .sub-menu {
     display: block;
     visibility: visible;
     opacity: 1;

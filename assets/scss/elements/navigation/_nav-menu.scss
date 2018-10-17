@@ -13,7 +13,7 @@
   overflow-y: auto;
   transition: $transition_med;
   margin-bottom: 0;
-  &.responsive-opened {
+  .responsive-opened & {
     max-height: calc(100vh - 70px);
     padding-bottom: $spacing-sm;
   }
@@ -107,7 +107,7 @@
     max-height: inherit;
     margin-left: auto;
     justify-content: flex-end;
-    &.responsive-opened {
+    .responsive-opened & {
       padding-bottom: 0;
     }
     > li {
@@ -173,7 +173,9 @@
     }
 
     .menu-item-has-children {
-      &:hover > .sub-menu {
+      &:hover > .sub-menu,
+      &:focus > .sub-menu,
+      &:focus-within > .sub-menu {
         display: block;
         visibility: visible;
         opacity: 1;

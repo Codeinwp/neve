@@ -26,7 +26,7 @@ class Header extends Base_View {
 	 */
 	public function render_navigation() {
 		?>
-		<nav class="nv-navbar">
+		<nav class="nv-navbar" <?php echo apply_filters( 'neve_nav_data_attrs', '' ); ?>>
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 nv-nav-wrap <?php echo esc_attr( $this->get_navbar_class() ); ?>">
@@ -133,13 +133,13 @@ class Header extends Base_View {
 		if ( ! has_nav_menu( 'primary' ) && current_user_can( 'edit_theme_options' ) ) {
 			return;
 		}
-
 		?>
+
 		<div class="navbar-toggle-wrapper">
 			<?php
 			neve_before_navbar_toggle_trigger();
 			?>
-			<div class="navbar-toggle">
+			<div class="navbar-toggle" <?php echo apply_filters( 'neve_nav_toggle_data_attrs', '' ); ?> >
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>

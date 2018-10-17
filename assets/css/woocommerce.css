@@ -735,7 +735,8 @@
   }
 }
 @media (min-width: 960px) {
-  .menu-item-nav-cart:hover .nv-nav-cart {
+  .menu-item-nav-cart:hover .nv-nav-cart,
+  .menu-item-nav-cart > a:focus + .nv-nav-cart {
     opacity: 1;
     visibility: visible;
   }

@@ -153,7 +153,7 @@ class Woocommerce {
 			return;
 		}
 
-		echo '<span class="nv-sidebar-toggle button button-secondary">' . apply_filters( 'neve_filter_woo_sidebar_open_button_text', __( 'Filter', 'neve' ) ) . '</span>';
+		echo '<span class="nv-sidebar-toggle button button-secondary" ' . apply_filters( 'neve_woocommerce_sidebar_filter_btn_data_attrs', '' ) . '>' . apply_filters( 'neve_filter_woo_sidebar_open_button_text', __( 'Filter', 'neve' ) ) . '</span>';
 	}
 
 	/**

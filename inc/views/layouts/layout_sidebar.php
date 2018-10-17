@@ -43,7 +43,8 @@ class Layout_Sidebar extends Base_View {
 		}
 		?>
 
-		<div class="nv-sidebar-wrap col-sm-12 <?php echo esc_attr( $position ) . ' ' . esc_attr( $sidebar_setup['sidebar_slug'] ); ?>">
+		<div class="nv-sidebar-wrap col-sm-12 <?php echo esc_attr( $position ) . ' ' . esc_attr( $sidebar_setup['sidebar_slug'] ); ?>"
+			<?php echo apply_filters( 'neve_' . $sidebar_setup['sidebar_slug'] . '_data_attrs', '' ); ?>>
 			<?php $this->render_sidebar_close( $sidebar_setup['sidebar_slug'] ); ?>
 			<aside id="secondary" role="complementary">
 				<?php dynamic_sidebar( $sidebar_setup['sidebar_slug'] ); ?>
