@@ -1651,17 +1651,17 @@ hr {
   .nv-sidebar-wrap {
     max-width: 30%;
   }
-  .nv-sidebar-wrap.right {
+  .nv-sidebar-wrap.nv-right {
     border-right: 1px solid #f0f0f0;
   }
-  .nv-sidebar-wrap.left {
+  .nv-sidebar-wrap.nv-left {
     border-left: 1px solid #f0f0f0;
   }
 
   .nv-index-posts:not(:only-child) {
     padding-left: 15px;
   }
-  .nv-sidebar-wrap.left + .nv-index-posts:not(:only-child) {
+  .nv-sidebar-wrap.nv-left + .nv-index-posts:not(:only-child) {
     padding-right: 15px;
   }
 
@@ -1671,7 +1671,7 @@ hr {
   .nv-single-post-wrap:not(:only-child), .nv-single-page-wrap:not(:only-child) {
     padding-left: 40px;
   }
-  .nv-sidebar-wrap.left + .nv-single-post-wrap:not(:only-child), .nv-sidebar-wrap.left + .nv-single-page-wrap:not(:only-child) {
+  .nv-sidebar-wrap.nv-left + .nv-single-post-wrap:not(:only-child), .nv-sidebar-wrap.nv-left + .nv-single-page-wrap:not(:only-child) {
     padding-left: 15px;
     padding-right: 40px;
   }
@@ -1682,22 +1682,22 @@ hr {
   .nv-index-posts:not(.nv-shop):not(:only-child) {
     padding-left: 25px;
   }
-  .nv-sidebar-wrap.left + .nv-index-posts:not(.nv-shop):not(:only-child) {
+  .nv-sidebar-wrap.nv-left + .nv-index-posts:not(.nv-shop):not(:only-child) {
     padding-left: 15px;
     padding-right: 25px;
   }
   .nv-index-posts.nv-shop:not(:only-child) {
     padding-left: 40px;
   }
-  .nv-sidebar-wrap.left + .nv-index-posts.nv-shop:not(:only-child) {
+  .nv-sidebar-wrap.nv-left + .nv-index-posts.nv-shop:not(:only-child) {
     padding-left: 15px;
     padding-right: 40px;
   }
 
-  .nv-sidebar-wrap.right {
+  .nv-sidebar-wrap.nv-right {
     padding-right: 40px;
   }
-  .nv-sidebar-wrap.left {
+  .nv-sidebar-wrap.nv-left {
     padding-left: 40px;
   }
 }

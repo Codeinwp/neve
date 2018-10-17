@@ -1,10 +1,10 @@
 @mixin sidebar--laptop() {
   .nv-sidebar-wrap {
     max-width: 30%;
-    &.right {
+    &.nv-right {
       border-left: $muted-border;
     }
-    &.left {
+    &.nv-left {
       border-right: $muted-border;
     }
   }
@@ -12,7 +12,7 @@
   .nv-index-posts {
     &:not(:only-child) {
       padding-right: 15px;
-      .nv-sidebar-wrap.left + & {
+      .nv-sidebar-wrap.nv-left + & {
         padding-left: 15px;
       }
     }
@@ -22,7 +22,7 @@
     margin-bottom: $spacing;
     &:not(:only-child) {
       padding-right: $spacing;
-      .nv-sidebar-wrap.left + & {
+      .nv-sidebar-wrap.nv-left + & {
         padding-right: 15px;
         padding-left: $spacing;
       }
@@ -33,14 +33,14 @@
     margin-bottom: $spacing;
     &:not(.nv-shop):not(:only-child) {
       padding-right: $spacing - 15px;
-      .nv-sidebar-wrap.left + & {
+      .nv-sidebar-wrap.nv-left + & {
         padding-right: 15px;
         padding-left: $spacing - 15px;
       }
     }
     &.nv-shop:not(:only-child) {
       padding-right: $spacing;
-      .nv-sidebar-wrap.left + & {
+      .nv-sidebar-wrap.nv-left + & {
         padding-right: 15px;
         padding-left: $spacing;
       }
@@ -48,10 +48,10 @@
   }
 
   .nv-sidebar-wrap {
-    &.right {
+    &.nv-right {
       padding-left: $spacing;
     }
-    &.left {
+    &.nv-left {
       padding-right: $spacing;
     }
   }
