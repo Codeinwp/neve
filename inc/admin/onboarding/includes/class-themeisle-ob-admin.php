@@ -73,8 +73,6 @@ class Themeisle_OB_Admin {
 		$this->enqueue();
 		?>
 		<div class="ti-sites-lib__wrap">
-			<h3 class="wp-heading-inline"><?php echo __( 'Sites Library', 'neve' ); ?></h3>
-			<hr class="wp-header-end">
 			<div id="ti-sites-library">
 				<app></app>
 			</div>
