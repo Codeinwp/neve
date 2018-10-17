@@ -9,6 +9,11 @@
 
 namespace Neve\Compatibility;
 
+/**
+ * Class Bever
+ *
+ * @package Neve\Compatibility
+ */
 class Bever extends  Page_Builder_Base {
 
 	/**
