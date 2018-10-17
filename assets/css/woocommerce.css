@@ -250,6 +250,25 @@
   color: #fff;
 }
 
+.woocommerce .comment-form-rating {
+  margin: 10px 0;
+}
+.woocommerce #review_form #respond .stars {
+  margin-top: 10px;
+  display: table;
+}
+.woocommerce #review_form #reply-title {
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+  display: block;
+  font-size: 1.25rem;
+}
+
+.woocommerce-Tabs-panel > h2 {
+  font-size: 1.25rem;
+}
+
 .woocommerce-checkout .col2-set .col-1, .woocommerce-checkout .woocommerce-checkout .col2-set .col-2 {
   max-width: unset;
   padding: 0;
