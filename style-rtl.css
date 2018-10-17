@@ -344,6 +344,82 @@ h6 {
   align-items: center;
 }
 
+.neve-shortcode {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  margin-right: 15px;
+}
+
+.shortcode-cart .woocommerce-mini-cart__buttons {
+  margin-bottom: 16px;
+}
+.shortcode-cart .widget_shopping_cart > .widget_shopping_cart_content > ul.woocommerce-mini-cart.cart_list.product_list_widget {
+  max-height: 450px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.shortcode-cart .woocommerce-mini-cart__empty-message {
+  text-align: center;
+  margin-bottom: 0;
+  padding: 10px 0;
+}
+.shortcode-cart .woocommerce.widget_shopping_cart .total {
+  border-top: 1px solid #f0f0f0;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 8px;
+  margin: 0 auto 8px;
+  text-align: center;
+}
+.shortcode-cart .woocommerce-mini-cart__buttons {
+  display: flex;
+  padding: 8px 16px 0;
+}
+.shortcode-cart .woocommerce-mini-cart__buttons a.button {
+  margin: 0;
+  text-align: center;
+}
+.shortcode-cart .woocommerce-mini-cart__buttons a.button:last-child {
+  margin-right: 5px;
+  font-size: .8em;
+  font-weight: 600;
+  padding: 9px 18px;
+  transition: all .15s ease-in-out;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  width: auto;
+  background-color: #00a4f7;
+  color: #fff;
+}
+.shortcode-cart .woocommerce-mini-cart__buttons a.button:last-child:hover {
+  opacity: .9;
+}
+.shortcode-cart .woocommerce-mini-cart__buttons a.button:first-child {
+  font-size: .8em;
+  font-weight: 600;
+  padding: 9px 18px;
+  transition: all .15s ease-in-out;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  width: auto;
+  border: 1px solid #00a4f7;
+  background-color: transparent;
+  font-weight: 600;
+  color: #00a4f7;
+}
+.shortcode-cart .woocommerce-mini-cart__buttons a.button:first-child:hover {
+  background-color: #00a4f7;
+  color: #fff;
+}
+
 .nv-nav-header {
   display: flex;
   min-height: 70px;
@@ -544,12 +620,6 @@ h6 {
 
 .nv-nav-search {
   padding: 8px 0;
-}
-
-.shortcode-search {
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
 }
 
 footer {

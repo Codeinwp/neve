@@ -28,7 +28,7 @@ class Shortcodes extends Base_View {
 	public function search_handler() {
 		$shortcode_markup = '';
 
-		$shortcode_markup .= '<div class="neve-sortcode shortcode-search menu-item-nav-search"><a><span class="nv-icon nv-search"></span></a>';
+		$shortcode_markup .= '<div class="neve-shortcode shortcode-search menu-item-nav-search"><a><span class="nv-icon nv-search"></span></a>';
 		$shortcode_markup .= '<div class="nv-nav-search">';
 		$shortcode_markup .= get_search_form( false );
 		$shortcode_markup .= '</div>';
@@ -43,7 +43,7 @@ class Shortcodes extends Base_View {
 	public function cart_handler() {
 		$shortcode_markup = '';
 
-		$shortcode_markup .= '<div class="neve-sortcode shortcode-cart menu-item-nav-cart"><a href="' . esc_url( wc_get_cart_url() ) . '"><span class="nv-icon nv-cart"></span>';
+		$shortcode_markup .= '<div class="neve-shortcode shortcode-cart menu-item-nav-cart"><a href="' . esc_url( wc_get_cart_url() ) . '"><span class="nv-icon nv-cart"></span>';
 		$shortcode_markup .= '<span class="cart-count">' . WC()->cart->get_cart_contents_count() . '</span>';
 		$shortcode_markup .= '</a>';
 		ob_start();

@@ -40,9 +40,16 @@
 
 }
 
-.neve-sortcode{
+.neve-shortcode{
   display: inline-block;
   position: relative;
   cursor: pointer;
   margin-left: 15px;
+}
+
+.shortcode-cart{
+  .woocommerce-mini-cart__buttons{
+    margin-bottom: 16px;
+  }
+  @include cart-widget();
 }
