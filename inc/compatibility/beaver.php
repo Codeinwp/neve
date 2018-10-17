@@ -14,7 +14,7 @@ namespace Neve\Compatibility;
  *
  * @package Neve\Compatibility
  */
-class Bever extends  Page_Builder_Base {
+class Beaver extends  Page_Builder_Base {
 
 	/**
 	 * Init function.
@@ -23,7 +23,8 @@ class Bever extends  Page_Builder_Base {
 		if ( ! defined( 'FL_THEME_BUILDER_VERSION' ) ) {
 			return;
 		}
-		$this->add_theme_builder_hooks();
+
+		add_action( 'wp', array( $this, 'add_theme_builder_hooks' ) );
 	}
 
 	/**
@@ -34,8 +35,8 @@ class Bever extends  Page_Builder_Base {
 	 * @return bool
 	 */
 	protected function is_edited_with_builder( $pid ) {
-		if ( class_exists( 'FLBuilderModel' ) ) {
-			return FLBuilderModel::is_builder_enabled( $pid );
+		if ( class_exists( '\FLBuilderModel' ) ) {
+			return \FLBuilderModel::is_builder_enabled( $pid );
 		}
 		return false;
 	}
@@ -43,22 +44,23 @@ class Bever extends  Page_Builder_Base {
 	/**
 	 * Add support for elementor theme locations.
 	 */
-	private function add_theme_builder_hooks() {
+	public function add_theme_builder_hooks() {
 
-		if ( ! class_exists( 'FLThemeBuilderLayoutData' ) ) {
+		if ( ! class_exists( '\FLThemeBuilderLayoutData' ) ) {
 			return;
 		}
 		// Get the header ID.
-		$header_ids = FLThemeBuilderLayoutData::get_current_page_header_ids();
+		$header_ids = \FLThemeBuilderLayoutData::get_current_page_header_ids();
 
 		// If we have a header, remove the theme header and hook in Theme Builder's.
 		if ( ! empty( $header_ids ) ) {
+			remove_all_actions( 'neve_do_top_bar' );
 			remove_all_actions( 'neve_do_header' );
 			add_action( 'neve_do_header', 'FLThemeBuilderLayoutRenderer::render_header' );
 		}
 
 		// Get the footer ID.
-		$footer_ids = FLThemeBuilderLayoutData::get_current_page_footer_ids();
+		$footer_ids = \FLThemeBuilderLayoutData::get_current_page_footer_ids();
 
 		// If we have a footer, remove the theme footer and hook in Theme Builder's.
 		if ( ! empty( $footer_ids ) ) {
