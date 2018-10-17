@@ -39,3 +39,10 @@
 @mixin top-bar--laptop() {
 
 }
+
+.neve-sortcode{
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  margin-left: 15px;
+}

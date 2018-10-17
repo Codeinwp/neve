@@ -344,6 +344,13 @@ h6 {
   align-items: center;
 }
 
+.neve-sortcode {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  margin-left: 15px;
+}
+
 .nv-nav-header {
   display: flex;
   min-height: 70px;
@@ -544,12 +551,6 @@ h6 {
 
 .nv-nav-search {
   padding: 8px 0;
-}
-
-.shortcode-search {
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
 }
 
 footer {
