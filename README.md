@@ -12,3 +12,6 @@ Neve is a Multi-Purpose modern WordPress theme perfect for any project. Fast, wi
 License: [GNU General Public License v2.0] or later (license.txt file) 
 Unless otherwise specified, all the theme files, scripts and images are licensed under GNU General Public License. See License URI in style.css for further details.
 
+# Libraries #
+
+Neve Icons based on Font Awesome Icons licensed under CC BY 4.0 License (https://creativecommons.org/licenses/by/4.0/).
