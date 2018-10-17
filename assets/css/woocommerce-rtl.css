@@ -219,6 +219,11 @@
   padding-top: 0;
 }
 
+.woocommerce-Reviews #review_form_wrapper .comment-respond .comment-form .comment-form-author input,
+.woocommerce-Reviews #review_form_wrapper .comment-respond .comment-form .comment-form-email input {
+  display: block;
+}
+
 .woocommerce div.product .woocommerce-tabs ul.tabs::before {
   border: none;
 }
@@ -314,6 +319,19 @@
 }
 .woocommerce-checkout .shop_table.woocommerce-checkout-review-order-table .product-quantity {
   display: block;
+}
+.woocommerce-checkout #neve-checkout-coupon .woocommerce-form-coupon .form-row-first {
+  float: none;
+  width: 100%;
+}
+.woocommerce-checkout #neve-checkout-coupon .woocommerce-form-coupon .form-row-last {
+  float: none;
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+}
+.woocommerce-checkout #neve-checkout-coupon .woocommerce-form-coupon .form-row-last button {
+  width: 100%;
 }
 
 #add_payment_method #payment, .woocommerce-cart #payment, .woocommerce-checkout #payment {
@@ -623,6 +641,12 @@
   display: block;
 }
 
+.woocommerce .cart_totals {
+  padding: 20px;
+  border: 1px solid #d3ced2;
+  border-radius: 5px;
+}
+
 .woocommerce .cart_totals table.shop_table td, .woocommerce .cart_totals table.shop_table tr, .woocommerce .cart_totals table.shop_table th, .woocommerce .cart_totals table.shop_table {
   border-bottom: 0;
   border-right: 0;
@@ -673,6 +697,10 @@
   .woocommerce-checkout-review-order > .col2-set,
   .woocommerce-checkout > .col2-set {
     float: right;
+  }
+  .woocommerce-checkout-review-order #neve-checkout-coupon .woocommerce-form-coupon .form-row-last button,
+  .woocommerce-checkout #neve-checkout-coupon .woocommerce-form-coupon .form-row-last button {
+    width: auto;
   }
 
   #order_review_heading {
@@ -729,9 +757,15 @@
     margin: 0;
     align-items: center;
   }
+  .woocommerce-cart table.cart td.actions .coupon > .input-text:first-of-type {
+    margin-right: 21px;
+  }
   .woocommerce-cart table.cart td.actions .coupon > .input-text {
     margin: 0 8px;
     height: 41px;
+  }
+  .woocommerce-cart table.cart td.actions .button {
+    margin-left: 21px;
   }
 }
 @media (min-width: 960px) {

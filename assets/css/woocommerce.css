@@ -219,6 +219,11 @@
   padding-top: 0;
 }
 
+.woocommerce-Reviews #review_form_wrapper .comment-respond .comment-form .comment-form-author input,
+.woocommerce-Reviews #review_form_wrapper .comment-respond .comment-form .comment-form-email input {
+  display: block;
+}
+
 .woocommerce div.product .woocommerce-tabs ul.tabs::before {
   border: none;
 }
