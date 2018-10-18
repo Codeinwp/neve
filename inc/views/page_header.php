@@ -153,7 +153,7 @@ class Page_Header extends Base_View {
 	}
 
 	/**
-	 * Add "Category:", "Tag:", "Author:" description after the archive title.
+	 * Add description after the title on archive page.
 	 */
 	public function display_archive_description() {
 		if ( is_author() ) {
