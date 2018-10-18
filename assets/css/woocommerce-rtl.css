@@ -308,7 +308,7 @@
   border-bottom: none;
 }
 .woocommerce-checkout .shop_table.woocommerce-checkout-review-order-table thead {
-  background: #f0f0f0;
+  background: #f7f7f7;
   text-transform: uppercase;
 }
 .woocommerce-checkout .shop_table.woocommerce-checkout-review-order-table tr {
@@ -319,6 +319,9 @@
 }
 .woocommerce-checkout .shop_table.woocommerce-checkout-review-order-table .product-quantity {
   display: block;
+}
+.woocommerce-checkout #neve-checkout-coupon .woocommerce-form-coupon {
+  border: 1px solid #ebebeb;
 }
 .woocommerce-checkout #neve-checkout-coupon .woocommerce-form-coupon .form-row-first {
   float: none;
@@ -639,11 +642,11 @@
 
 .woocommerce a.button.checkout-button.alt, .woocommerce a.button.checkout-button.alt:focus, .woocommerce a.button.checkout-button.alt:active {
   display: block;
+  margin: 0 20px;
 }
 
 .woocommerce .cart_totals {
-  padding: 20px;
-  border: 1px solid #d3ced2;
+  border: 1px solid #ebebeb;
   border-radius: 5px;
 }
 
@@ -655,6 +658,7 @@
 }
 .woocommerce .cart_totals table.shop_table {
   border: none;
+  padding: 0 20px;
 }
 .woocommerce .cart_totals table.shop_table p {
   margin: 0;
@@ -678,9 +682,9 @@
 .cart-collaterals > div > h2 {
   font-size: 1.1em;
   border-bottom: 1px solid #f0f0f0;
-  text-transform: uppercase;
   font-weight: 500;
-  padding-bottom: 8px;
+  padding: 9px 20px;
+  background-color: #f7f7f7;
 }
 
 .cart-collaterals ul.products li.product .button {
@@ -730,14 +734,14 @@
   }
 
   .woocommerce-cart table.cart {
-    border: none;
+    border: 1px solid #ebebeb;
   }
   .woocommerce-cart table.cart tr, .woocommerce-cart table.cart td, .woocommerce-cart table.cart th {
     border-bottom: none;
   }
   .woocommerce-cart table.cart thead {
     border: none;
-    background: #f0f0f0;
+    background: #f7f7f7;
     text-transform: uppercase;
   }
   .woocommerce-cart table.cart tr {
@@ -749,7 +753,6 @@
 
   .woocommerce-cart table.cart td.actions {
     padding: 16px 0;
-    border-bottom: 1px solid #f0f0f0;
   }
   .woocommerce-cart table.cart td.actions .coupon {
     flex-direction: row;

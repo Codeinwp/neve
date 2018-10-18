@@ -50,18 +50,18 @@
 .woocommerce a.button.checkout-button.alt {
   &, &:focus, &:active {
     display: block;
+    margin: 0 20px;
   }
 }
 
 .woocommerce .cart_totals {
-  padding: 20px;
-  border: 1px solid #d3ced2;
+  border: 1px solid #ebebeb;
   border-radius: 5px;
 }
 
 .woocommerce .cart_totals  table.shop_table {
   td, tr, th, & { border-bottom: 0; border-left: 0; border-right: 0; vertical-align: middle;}
-  & { border: none; }
+  & { border: none; padding: 0 20px;}
   p { margin: 0; }
   tr { border-top: $muted-border; }
 }
@@ -81,9 +81,9 @@
 .cart-collaterals > div > h2 {
   font-size: 1.1em;
   border-bottom: 1px solid #f0f0f0;
-  text-transform: uppercase;
   font-weight: 500;
-  padding-bottom: $spacing-xs;
+  padding: 9px 20px;
+  background-color: #f7f7f7;
 }
 
 .cart-collaterals {
@@ -111,13 +111,13 @@
     }
   }
   .woocommerce-cart table.cart {
-    border: none;
+    border: 1px solid #ebebeb;
     tr, td, th {
       border-bottom: none;
     }
     thead {
       border: none;
-      background: $muted-white;
+      background: #f7f7f7;
       text-transform: uppercase;
     }
     tr {
@@ -129,7 +129,6 @@
   }
   .woocommerce-cart table.cart td.actions {
     padding: $spacing-sm 0;
-    border-bottom: $muted-border;
     .coupon {
       flex-direction: row;
       border-bottom: 0;

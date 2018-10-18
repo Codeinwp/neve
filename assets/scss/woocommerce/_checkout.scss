@@ -55,7 +55,7 @@
       border-bottom: none;
     }
     thead {
-      background: $muted-white;
+      background: #f7f7f7;
       text-transform: uppercase;
     }
     tr {
@@ -70,6 +70,8 @@
   }
 
   #neve-checkout-coupon .woocommerce-form-coupon {
+
+    border: 1px solid #ebebeb;
     .form-row-first {
       float: none;
       width: 100%;
