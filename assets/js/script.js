@@ -173,6 +173,9 @@
             });
         },
         handleGutenbergAlignment: function() {
+            if ($("body").hasClass("page-template-template-pagebuilder-full-width")) {
+                return false;
+            }
             var fullAlignments = $(".alignfull");
             var wideAlignments = $(".alignwide");
             if (!fullAlignments.length && !wideAlignments.length) {

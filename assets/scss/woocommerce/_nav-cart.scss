@@ -51,20 +51,21 @@
       text-align: center;
     }
     .woocommerce-mini-cart__buttons {
-      display: flex;
+      display: grid;
+      grid-template-columns: 8fr 1fr 8fr;
       padding: $spacing-xs $spacing-sm 0;
-      a.button {
-        margin: 0;
+      a:first-child {
+        grid-column-start: 1;
+        @include button();
+        @include button-secondary();
+      }
+      a:nth-child(2) {
+        grid-column-start: 3;
+      }
+      a:nth-child(3) {
+        grid-column: span 3;
         text-align: center;
-        &:last-child {
-          margin-left: 5px;
-          @include button();
-          @include button-primary();
-        }
-        &:first-child {
-          @include button();
-          @include button-secondary();
-        }
+        height: 26px;
       }
     }
   }

@@ -81,7 +81,7 @@ class Woocommerce {
 		echo '<div class="' . apply_filters( 'neve_container_class_filter', 'container' ) . '">';
 		echo '<div class="row">';
 		echo '<div class="wrap-header col-12">';
-		echo '<div class="nv-bc-count-wrap col">';
+		echo '<div class="nv-bc-count-wrap">';
 		woocommerce_breadcrumb();
 		woocommerce_result_count();
 		echo '</div>';

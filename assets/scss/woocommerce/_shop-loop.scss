@@ -4,10 +4,13 @@
   height: 38px;
 }
 
+.nv-shop {
+  margin: $spacing-sm 0;
+}
+
 .nv-woo-filters {
   display: flex;
   flex-direction: row;
-  margin-bottom: $spacing-sm;
   align-items: center;
   justify-content: space-between;
   border-top: $muted-border;

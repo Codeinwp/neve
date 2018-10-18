@@ -102,28 +102,25 @@
   }
 
   #nv-primary-navigation {
-    @include horizontal-list($spacing-sm);
+    @include horizontal-list($spacing-xs, true);
     overflow-y: inherit;
     max-height: inherit;
     margin-left: auto;
-    justify-content: flex-end;
+    justify-content: flex-start;
     &.responsive-opened {
       padding-bottom: 0;
     }
     > li {
       width: inherit;
-      &.menu-item-has-children:last-child {
-        padding-right: $spacing-sm;
-      }
       > a {
-        padding: $spacing-sm 0;
+        padding: $spacing-xs 0;
         display: block;
       }
       &.menu-item-has-children > a {
-        padding-right: 12px;
+        padding-right: 18px;
       }
       > .caret-wrap {
-        top: 14px;
+        top: 8px;
         position: absolute;
       }
     }
@@ -167,7 +164,7 @@
           display: block;
           width: 100%;
           margin-right: $spacing-xs;
-          padding: $spacing-xs $spacing-sm;
+          padding: 7px 14px;
         }
       }
     }

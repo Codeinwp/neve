@@ -59,11 +59,11 @@ class Footer extends Base_View {
 	 * Render the footer content.
 	 */
 	public function render_footer_content() {
-		$content_type = get_theme_mod( 'neve_footer_content_type', 'text' );
+		$content_type = get_theme_mod( 'neve_footer_content_type', 'none' );
 		if ( $content_type === 'none' ) {
 			return;
 		}
-		echo '<div class="footer-content-wrap">';
+		echo '<div class="footer-content-wrap footer-second-section">';
 		echo '<div class="container">';
 		echo '<div class="row nv-footer-content">';
 		echo '<div class="col-12">';

@@ -1,4 +1,13 @@
+.single .nv-content-wrap {
+  padding-top: $spacing-sm;
+}
+
+.single .nv-meta-list {
+  margin-top: $spacing-xs;
+}
+
 .entry-title {
+  line-height: 1.3em;
   word-wrap: break-word;
 }
 
@@ -7,7 +16,7 @@
 }
 
 .single-post-container .title {
-  margin-bottom: $spacing-sm;
+  margin-bottom: $spacing-xs;
 }
 
 .attachment-neve-blog {
@@ -27,8 +36,21 @@
   }
 }
 
-.post-password-form input {
-  margin-bottom: $spacing-xs;
+.post-password-form {
+  margin-bottom: $spacing;
+  text-align: center;
+  input[type=submit] {
+    height: 39px;
+    margin-left: $spacing-xs;
+  }
+  p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  label > input {
+    margin-left: $spacing-xs;
+  }
 }
 
 .nv-tags-list {
