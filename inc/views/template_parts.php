@@ -48,6 +48,8 @@ class Template_Parts extends Base_View {
 		$class .= ' col-12 layout-' . $this->get_layout();
 		if ( $this->get_layout() === 'grid' ) {
 			$class .= ' ' . $this->get_grid_columns_class();
+		} else {
+			$class .= ' nv-non-grid-article';
 		}
 
 		return $class;

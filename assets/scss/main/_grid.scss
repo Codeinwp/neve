@@ -17,6 +17,10 @@
   width: 100%;
 }
 
+.gapless {
+  padding: 0 !important;
+}
+
 @mixin grid-container--tablet-sm() {
   .container {
     max-width: 540px;

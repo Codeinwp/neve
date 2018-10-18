@@ -98,7 +98,7 @@ class Main extends Base_Customizer {
 			new Partial(
 				'neve_description_partial',
 				array(
-					'selector'        => '.nv-blog-description > h1',
+					'selector'        => '.brand > small',
 					'settings'        => array( 'blogdescription' ),
 					'render_callback' => array( $this, 'blog_description_callback' ),
 				)

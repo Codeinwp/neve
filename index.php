@@ -18,7 +18,7 @@ do_action( 'neve_page_header', 'index' );
 				<?php
 				if ( have_posts() ) {
 					/* Start the Loop. */
-					echo '<div class="posts-wrapper">';
+					echo '<div class="posts-wrapper row">';
 					while ( have_posts() ) {
 						the_post();
 						get_template_part( 'template-parts/content', get_post_type() );

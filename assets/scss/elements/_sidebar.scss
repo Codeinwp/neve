@@ -18,27 +18,9 @@
     }
   }
 
-  .nv-single-post-wrap, .nv-single-page-wrap {
+  .nv-single-post-wrap, .nv-single-page-wrap, .nv-index-posts {
     margin-bottom: $spacing;
     &:not(:only-child) {
-      padding-right: $spacing;
-      .nv-sidebar-wrap.nv-left + & {
-        padding-right: 15px;
-        padding-left: $spacing;
-      }
-    }
-  }
-
-  .nv-index-posts {
-    margin-bottom: $spacing;
-    &:not(.nv-shop):not(:only-child) {
-      padding-right: $spacing - 15px;
-      .nv-sidebar-wrap.nv-left + & {
-        padding-right: 15px;
-        padding-left: $spacing - 15px;
-      }
-    }
-    &.nv-shop:not(:only-child) {
       padding-right: $spacing;
       .nv-sidebar-wrap.nv-left + & {
         padding-right: 15px;
@@ -60,16 +42,39 @@
 .nv-sidebar-wrap {
   margin-bottom: $spacing;
 
-  .search-form {
-    display: flex;
-    flex-direction: column;
+  .search-form, .woocommerce-product-search {
+    position: relative;
+    &:after {
+      font-family: "neve-icons";
+      content: "\f002";
+      position: absolute;
+      top: 0;
+      right: 0;
+      text-align: center;
+      line-height: 40px;
+      width: 45px;
+      z-index: 3;
+      cursor: pointer;
+      pointer-events: none;
+      color: $muted-white-med;
+    }
+    input[type="search"] {
+      margin-bottom: $spacing-xs;
+      width: 100%;
+      padding-right: 45px;
+    }
+    button[type="submit"], input[type="submit"] {
+      top: 0;
+      right: 0;
+      position: absolute;
+      color: transparent;
+      background: 0 0;
+      z-index: 2;
+      height: 40px;
+      width: 45px;
+      border: 0;
+    }
   }
-
-  input[type="search"] {
-    margin-bottom: $spacing-xs;
-    width: 100%;
-  }
-
   .widget {
     border-bottom: $muted-border;
     padding-bottom: $spacing-sm;
@@ -79,10 +84,6 @@
       margin: 0;
       padding: 0;
     }
-  }
-
-  .widget_media_image img {
-    width: 100%;
   }
 }
 
@@ -99,4 +100,8 @@
 
 .widget > ul {
   font-size: .85em;
+}
+
+.widget_media_image img {
+  width: 100%;
 }

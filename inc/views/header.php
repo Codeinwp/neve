@@ -178,6 +178,7 @@ class Header extends Base_View {
 			$logo = '<img src="' . esc_url( $logo[0] ) . '" alt="' . esc_attr( $alt_attribute ) . '">';
 		} else {
 			$logo = '<p>' . get_bloginfo( 'name' ) . '</p>';
+			$logo .= '<small>' . get_bloginfo( 'description' ) . '</small>';
 		}
 
 		return $logo;
