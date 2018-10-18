@@ -18,7 +18,8 @@ if ( post_password_required() ) {
 <div id="comments">
 	<?php
 	$comments_number = get_comments_number();
-	if ( $comments_number !== '0' ) { ?>
+	if ( $comments_number !== '0' ) {
+		?>
 		<h4 class="comments-number">
 			<?php
 			if ( $comments_number === '1' ) {
@@ -26,7 +27,7 @@ if ( post_password_required() ) {
 				printf( _x( 'One comment', 'comments title', 'neve' ) );
 			} else {
 				printf(
-				/* translators: 1: number of comments, 2: post title */
+					/* translators: 1: number of comments, 2: post title */
 					_nx(
 						'%1$s Comment',
 						'%1$s Comments',
