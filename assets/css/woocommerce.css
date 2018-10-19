@@ -293,12 +293,13 @@
 }
 .woocommerce-checkout form .form-row input.input-text, .woocommerce-checkout .woocommerce form .form-row textarea {
   margin-bottom: 8px;
-  border: 1px solid #c9c9c9;
+  border: 1px solid #ddd;
 }
 .woocommerce-checkout .woocommerce-checkout .select2-container--default .select2-selection--single {
-  border: 1px solid #c9c9c9;
+  border: 1px solid #ddd;
   height: 35px;
   padding: 3px 10px;
+  margin-bottom: 8px;
   margin-bottom: 8px;
 }
 .woocommerce-checkout .shop_table.woocommerce-checkout-review-order-table {
@@ -321,7 +322,7 @@
   display: block;
 }
 .woocommerce-checkout #neve-checkout-coupon .woocommerce-form-coupon {
-  border: 1px solid #ebebeb;
+  border: 1px solid #ddd;
 }
 .woocommerce-checkout #neve-checkout-coupon .woocommerce-form-coupon .form-row-first {
   float: none;
@@ -339,7 +340,7 @@
 
 #add_payment_method #payment, .woocommerce-cart #payment, .woocommerce-checkout #payment {
   background: #fff;
-  border: 1px solid #c9c9c9;
+  border: 1px solid #ddd;
 }
 
 .woocommerce-shipping-fields {
@@ -742,7 +743,6 @@
   .woocommerce-cart table.cart thead {
     border: none;
     background: #f7f7f7;
-    text-transform: uppercase;
   }
   .woocommerce-cart table.cart tr {
     border-top: 1px solid #f0f0f0;

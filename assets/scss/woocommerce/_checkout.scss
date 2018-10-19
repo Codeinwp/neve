@@ -39,13 +39,14 @@
 
   form .form-row input.input-text, .woocommerce form .form-row textarea {
     margin-bottom: $spacing-xs;
-    border: $muted-border-med;
+    border: 1px solid #ddd;
   }
 
   .woocommerce-checkout .select2-container--default .select2-selection--single {
-    border: $muted-border-med;
+    border: 1px solid #ddd;
     height: 35px;
     padding: 3px 10px;
+    margin-bottom: $spacing-xs;
     margin-bottom: $spacing-xs;
   }
 
@@ -71,7 +72,7 @@
 
   #neve-checkout-coupon .woocommerce-form-coupon {
 
-    border: 1px solid #ebebeb;
+    border: 1px solid #ddd;
     .form-row-first {
       float: none;
       width: 100%;
@@ -91,7 +92,7 @@
 
 #add_payment_method #payment, .woocommerce-cart #payment, .woocommerce-checkout #payment {
   background: #fff;
-  border: $muted-border-med
+  border: 1px solid #ddd;
 }
 
 .woocommerce-shipping-fields {
@@ -124,7 +125,6 @@
     .col2-set,
     #order_review_heading {
       width: 48%;
-      //display: inline-block;
     }
     > .col2-set {
       float: left;
