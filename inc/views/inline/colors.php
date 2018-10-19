@@ -37,11 +37,11 @@ class Colors extends Base_Inline {
 		$color_setup = array(
 			'color'            => array(
 				'css_prop'  => 'color',
-				'selectors' => 'a, .caret',
+				'selectors' => 'a',
 			),
 			'border-color'     => array(
 				'css_prop'  => 'border-color',
-				'selectors' => '.caret-wrap',
+				'selectors' => '.nv-loader',
 			),
 			'background-color' => array(
 				'css_prop'  => 'background-color',
@@ -87,11 +87,6 @@ class Colors extends Base_Inline {
 				'css_prop'  => 'color',
 				'selectors' => 'a:hover, #nv-primary-navigation li:hover > a ',
 			),
-			'color-desktop' => array(
-				'css_prop'    => 'color',
-				'selectors'   => '#nv-primary-navigation li:hover > .caret-wrap .caret',
-				'media_query' => 'desktop',
-			),
 		);
 		$this->add_color( apply_filters( 'neve_link_hover_color_filter', $color_setup ), $color );
 	}
@@ -127,16 +122,11 @@ class Colors extends Base_Inline {
 		$color_setup = array(
 			'color'                    => array(
 				'css_prop'  => 'color',
-				'selectors' => '.button.button-secondary, .nv-tags-list a',
+				'selectors' => '.button.button-secondary, .nv-tags-list a, #nv-primary-navigation a.button.wc-forward:not(.checkout)',
 			),
 			'border-color'             => array(
 				'css_prop'  => 'border-color',
-				'selectors' => '.button.button-secondary, .nv-loader, .nv-tags-list a',
-			),
-			'border-top-color-desktop' => array(
-				'css_prop'    => 'border-top-color',
-				'selectors'   => '#nv-primary-navigation .sub-menu, .nv-nav-search',
-				'media-query' => 'desktop',
+				'selectors' => '.button.button-secondary, .nv-tags-list a',
 			),
 			'background'               => array(
 				'css_prop'  => 'background-color',

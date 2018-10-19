@@ -59,7 +59,7 @@ class Footer extends Base_View {
 	 * Render the footer content.
 	 */
 	public function render_footer_content() {
-		$content_type = get_theme_mod( 'neve_footer_content_type', 'none' );
+		$content_type = get_theme_mod( 'neve_footer_content_type', 'text' );
 		if ( $content_type === 'none' ) {
 			return;
 		}
@@ -88,7 +88,16 @@ class Footer extends Base_View {
 	 * Render content for text.
 	 */
 	private function render_content_text() {
-		echo wp_kses_post( get_theme_mod( 'neve_footer_text' ) );
+		$content = get_theme_mod(
+			'neve_footer_text',
+			sprintf(
+			/* translators: %1$s is link to ThemeIsle */
+				esc_html__( 'Copyright - Neve by %1$s', 'neve' ),
+				wp_kses_post( '<a href="https://themeisle.com/themes/neve/" target="_blank" rel="nofollow">Themeisle</a>' )
+			)
+		);
+
+		echo wp_kses_post( $content );
 	}
 
 	/**

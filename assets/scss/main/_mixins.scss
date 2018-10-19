@@ -59,6 +59,7 @@
   color: $color;
   @if ($hover == 'true') {
     &:hover {
+      opacity: 1;
       text-decoration: none;
       background-color: $color;
       color: #fff;

@@ -32,7 +32,7 @@
 }
 
 .site-logo, .navbar-toggle-wrapper {
-  flex: 1;
+  flex: 1 auto;
 }
 
 .navbar-toggle-wrapper {
@@ -133,7 +133,7 @@
         text-decoration: none;
       }
       > .caret-wrap .caret {
-        color: $link_hover_color;
+        color: $body-color;
       }
     }
 
@@ -144,7 +144,7 @@
       top: 100%;
       background: $navbar_background_color;
       border-left: none;
-      border-top: 3px solid $theme_color;
+      border-top: $muted-border;
       position: absolute;
       overflow: visible;
       z-index: 100;
@@ -153,7 +153,7 @@
       .sub-menu {
         left: 100%;
         right: auto;
-        top: -3px;
+        top: -1px;
       }
       li {
         display: flex;
@@ -173,7 +173,8 @@
     }
 
     .menu-item-has-children {
-      &:hover > .sub-menu {
+      &:hover > .sub-menu,
+      &:focus-within > .sub-menu {
         display: block;
         visibility: visible;
         opacity: 1;

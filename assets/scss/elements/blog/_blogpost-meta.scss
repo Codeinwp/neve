@@ -3,25 +3,16 @@
   border-bottom: $muted-border;
   padding-bottom: $spacing-xs;
   width: 100%;
-  li > span,
-  li > a {
-    color: #606060;
-    font-size: 0.85em;
-  }
-  i {
-    margin-right: 2px;
-    font-size: inherit;
-    line-height: inherit;
-  }
   li {
-    padding-right: $spacing-xs;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-wrap: wrap;
+    color: $gray-color;
+    font-size: 0.85em;
+    &:not(:last-child):after {
+      content: '/';
+      padding: 0 5px;
+      color: $gray-color;
+    }
   }
-  .meta .nv-icon:before {
-    position: relative;
-    margin-right: 5px;
+  a {
+    color: $gray-color;
   }
 }

@@ -249,6 +249,7 @@
   position: relative;
 }
 .woocommerce div.product form.cart .reset_variations:hover {
+  opacity: 1;
   text-decoration: none;
   background-color: #f5365c;
   color: #fff;
@@ -451,6 +452,7 @@
   line-height: inherit;
 }
 .woocommerce a.added_to_cart:hover {
+  opacity: 1;
   text-decoration: none;
   background-color: #00a4f7;
   color: #fff;
@@ -579,6 +581,16 @@
   z-index: 1000;
 }
 
+#nv-primary-navigation a.button.wc-forward {
+  color: #00a4f7;
+}
+#nv-primary-navigation a.button.wc-forward:hover {
+  color: #fff;
+}
+#nv-primary-navigation a.button.checkout {
+  color: #fff;
+}
+
 .woocommerce a.remove {
   margin: 0 auto;
   color: #f5365c !important;
@@ -623,6 +635,7 @@
   color: #00a4f7;
 }
 .woocommerce-cart table.cart td.actions .coupon > .input-text + .button:hover {
+  opacity: 1;
   text-decoration: none;
   background-color: #00a4f7;
   color: #fff;
@@ -769,7 +782,7 @@
     opacity: 0;
     visibility: hidden;
     cursor: default;
-    border-top: 3px solid #00a4f7;
+    border-top: 1px solid #f0f0f0;
     transition: all 0.3s ease;
     position: absolute;
     z-index: 100;
@@ -818,6 +831,7 @@
     color: #00a4f7;
   }
   .nv-nav-cart .woocommerce-mini-cart__buttons a:first-child:hover {
+    opacity: 1;
     text-decoration: none;
     background-color: #00a4f7;
     color: #fff;

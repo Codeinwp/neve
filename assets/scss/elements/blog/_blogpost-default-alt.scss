@@ -1,10 +1,16 @@
 .layout-default, .layout-alternative {
   display: flex;
   align-items: flex-end;
+  .nv-post-thumbnail-wrap {
+    margin-bottom: $spacing-xs;
+  }
 }
 
 @mixin blog-layout-default-alt--laptop() {
   .layout-default, .layout-alternative {
+    .nv-post-thumbnail-wrap {
+      margin-bottom: 0;
+    }
     .article-content-col .content {
       display: flex;
       align-items: center;

@@ -213,9 +213,6 @@ class Woocommerce {
 			 .woocommerce a.added_to_cart:hover,
 			 .nv-nav-cart .woocommerce-mini-cart__buttons a.button:first-child:hover';
 
-		$color_setup['border-top-color-desktop']['selectors'] .=
-			', .nv-nav-cart';
-
 		$color_setup['border-color']['selectors'] .=
 			', .nv-nav-cart .woocommerce-mini-cart__buttons a.button:first-child, 
 			.woocommerce-ordering .orderby, 

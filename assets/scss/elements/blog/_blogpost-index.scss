@@ -13,7 +13,7 @@
 }
 
 .posts-wrapper .excerpt-wrap {
-  color: #606060;
+  color: $gray-color;
 }
 
 .nv-post-thumbnail-wrap {
@@ -45,7 +45,7 @@
 
 .article-content-col .content {
   width: 100%;
-  padding-bottom: $spacing;
+  padding-bottom: 30px;
   border-bottom: $muted-border;
   display: flex;
   flex-direction: column;
@@ -71,7 +71,7 @@
 }
 
 article.sticky {
-  padding: 0;
+  padding: 0 15px;
   .article-content-col {
     max-width: 100%;
     .content {
@@ -105,6 +105,9 @@ article.sticky {
       margin: $spacing-xs 0;
       &:last-child {
         margin-bottom: 0;
+      }
+      &.nv-meta-list {
+        margin: 0;
       }
     }
   }

@@ -58,7 +58,7 @@ class Layout_Blog extends Base_Customizer {
 			new Control(
 				'neve_blog_archive_layout',
 				array(
-					'default'           => 'default',
+					'default'           => 'grid',
 					'sanitize_callback' => array( $this, 'sanitize_blog_layout' ),
 				),
 				array(
@@ -330,7 +330,7 @@ class Layout_Blog extends Base_Customizer {
 	 * @return bool
 	 */
 	public function should_show_meta_order() {
-		$layout = get_theme_mod( 'neve_blog_archive_layout', 'default' );
+		$layout = get_theme_mod( 'neve_blog_archive_layout', 'grid' );
 		if ( $layout !== 'grid' ) {
 			return true;
 		}
@@ -357,7 +357,7 @@ class Layout_Blog extends Base_Customizer {
 	 * @return bool
 	 */
 	public function should_show_content_ordering() {
-		$layout = get_theme_mod( 'neve_blog_archive_layout', 'default' );
+		$layout = get_theme_mod( 'neve_blog_archive_layout', 'grid' );
 		if ( $layout !== 'grid' ) {
 			return false;
 		}
@@ -371,7 +371,7 @@ class Layout_Blog extends Base_Customizer {
 	 * @return bool
 	 */
 	public function should_show_grid_cols() {
-		$blog_layout = get_theme_mod( 'neve_blog_archive_layout', 'default' );
+		$blog_layout = get_theme_mod( 'neve_blog_archive_layout', 'grid' );
 		if ( $blog_layout !== 'grid' ) {
 			return false;
 		}
@@ -385,7 +385,7 @@ class Layout_Blog extends Base_Customizer {
 	 * @return bool
 	 */
 	public function should_show_masonry() {
-		$blog_layout = get_theme_mod( 'neve_blog_archive_layout', 'default' );
+		$blog_layout = get_theme_mod( 'neve_blog_archive_layout', 'grid' );
 		$columns     = get_theme_mod( 'neve_grid_layout', 1 );
 		if ( $blog_layout !== 'grid' ) {
 			return false;

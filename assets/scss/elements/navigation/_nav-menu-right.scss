@@ -8,6 +8,9 @@
 
 .nav-right .nv-nav-header {
   flex-direction: row-reverse;
+  small {
+    text-align: right;
+  }
 }
 
 @mixin nav-menu-right--laptop() {

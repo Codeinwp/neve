@@ -4,12 +4,11 @@
   }
 
   .nv-meta-list {
-    margin-top: $spacing-sm;
+    margin-top: $spacing-xs;
   }
 
   .entry-title {
     transition: $transition_med;
-    font-size: 2em;
   }
 }
 
@@ -23,7 +22,7 @@
 
 .attachment-neve-blog {
   display: flex;
-  margin: 0 auto;
+  width: 100%;
 }
 
 .nv-content-wrap .page-numbers {
@@ -80,5 +79,8 @@
 @mixin single-post--laptop() {
   .single-post-container {
     padding-top: $spacing-lg;
+  }
+  .single .entry-title {
+    font-size: 2em;
   }
 }
