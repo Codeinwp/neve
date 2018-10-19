@@ -366,7 +366,6 @@ h6 {
 }
 .site-logo p {
   font-size: 1.25rem;
-  text-align: center;
   margin-bottom: 0;
   font-weight: 600;
 }
@@ -544,7 +543,7 @@ h6 {
 .nav-right .nv-nav-header {
   flex-direction: row-reverse;
 }
-.nav-right .nv-nav-header small {
+.nav-right .nv-nav-header .brand > * {
   text-align: left;
 }
 
@@ -573,7 +572,7 @@ footer {
 }
 
 .footer-content-wrap.footer-second-section {
-  background: #404248;
+  background: #24292e;
   color: #fff;
   text-align: center;
 }
@@ -618,7 +617,9 @@ footer {
 
 .nv-page-title-wrap.nv-big-title h1 {
   line-height: 1.3em;
-  margin: 20px 0 0;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 20px;
 }
 
 .nv-content-none-wrap {
@@ -627,10 +628,8 @@ footer {
 
 form input[type="text"], form input[type="password"], form input[type="email"], form input[type="url"], form input[type="date"], form input[type="month"], form input[type="time"], form input[type="datetime"], form input[type="datetime-local"], form input[type="week"], form input[type="number"], form input[type="search"], form input[type="tel"], form input[type="color"], form select, form textarea {
   display: inline-block;
-  min-height: 35px;
   font-size: 14px;
-  line-height: 1.8;
-  padding: 6px 12px;
+  padding: 7px 12px;
   background-color: transparent;
   color: #333;
   border: 1px solid #dddddd;
@@ -649,7 +648,7 @@ input, textarea, select, button {
 .button {
   font-size: .8em;
   font-weight: 600;
-  padding: 9px 18px;
+  padding: 6px 12px;
   transition: all .15s ease-in-out;
   text-align: center;
   vertical-align: middle;
@@ -657,10 +656,10 @@ input, textarea, select, button {
   border-radius: .25rem;
   text-transform: uppercase;
   cursor: pointer;
-  width: auto;
+  line-height: 1.68421;
 }
 .button.button-primary {
-  background-color: #00a4f7;
+  background-color: #0366d6;
   color: #fff;
 }
 .button.button-primary:hover {
@@ -668,22 +667,22 @@ input, textarea, select, button {
   opacity: .9;
 }
 .button.button-secondary {
-  border: 1px solid #00a4f7;
+  border: 1px solid rgba(27, 31, 35, 0.2);
   background-color: transparent;
   font-weight: 600;
-  color: #00a4f7;
+  color: #0366d6;
 }
 .button.button-secondary:hover {
   opacity: 1;
   text-decoration: none;
-  background-color: #00a4f7;
+  background-color: #0366d6;
   color: #fff;
 }
 
 button, input[type=button], .btn, input[type="submit"] {
   font-size: .8em;
   font-weight: 600;
-  padding: 9px 18px;
+  padding: 6px 12px;
   transition: all .15s ease-in-out;
   text-align: center;
   vertical-align: middle;
@@ -691,8 +690,8 @@ button, input[type=button], .btn, input[type="submit"] {
   border-radius: .25rem;
   text-transform: uppercase;
   cursor: pointer;
-  width: auto;
-  background-color: #00a4f7;
+  line-height: 1.68421;
+  background-color: #0366d6;
   color: #fff;
 }
 button:hover, input[type=button]:hover, .btn:hover, input[type="submit"]:hover {
@@ -759,13 +758,12 @@ button:hover, input[type=button]:hover, .btn:hover, input[type="submit"]:hover {
   opacity: .95;
 }
 .nv-post-thumbnail-wrap img {
-  width: 100%;
   height: auto;
 }
 
 .posts-wrapper > article {
   word-break: break-word;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 .blog-entry-title {
@@ -819,11 +817,7 @@ article.sticky .article-content-col {
   max-width: 100%;
 }
 article.sticky .article-content-col .content {
-  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  border-top: 1px solid #f0f0f0;
-  border-bottom: 1px solid #f0f0f0;
+  border: 1px solid #dddddd;
   max-width: 100%;
   width: auto;
   padding: 15px;
@@ -857,7 +851,7 @@ article.sticky .article-content-col .content {
   height: 50px;
   width: 50px;
   border-radius: 50%;
-  border: 2px solid #00a4f7;
+  border: 2px solid #0366d6;
   border-right: 1px solid transparent !important;
   animation: spin;
   -webkit-animation: spin 1s ease infinite;
@@ -915,7 +909,6 @@ article.sticky .article-content-col .content {
 
 .attachment-neve-blog {
   display: flex;
-  width: 100%;
 }
 
 .nv-content-wrap .page-numbers {
@@ -961,11 +954,11 @@ article.sticky .article-content-col .content {
   border-radius: 3px;
   margin-bottom: 10px;
   margin-left: 10px;
-  border: 1px solid #00a4f7;
-  color: #00a4f7;
+  border: 1px solid #0366d6;
+  color: #0366d6;
 }
 .nv-tags-list a:hover {
-  background: #00a4f7;
+  background: #0366d6;
   color: #fff;
 }
 
@@ -1170,7 +1163,7 @@ hr {
   top: 0;
   left: 0;
   text-align: center;
-  line-height: 40px;
+  line-height: 35px;
   width: 45px;
   z-index: 3;
   cursor: pointer;
@@ -1178,9 +1171,8 @@ hr {
   color: #c9c9c9;
 }
 .nv-sidebar-wrap .search-form input[type="search"], .nv-sidebar-wrap .woocommerce-product-search input[type="search"] {
-  margin-bottom: 10px;
   width: 100%;
-  padding-left: 45px;
+  padding: 8px 12px 7px 45px;
 }
 .nv-sidebar-wrap .search-form button[type="submit"], .nv-sidebar-wrap .search-form input[type="submit"], .nv-sidebar-wrap .woocommerce-product-search button[type="submit"], .nv-sidebar-wrap .woocommerce-product-search input[type="submit"] {
   top: 0;
@@ -1189,9 +1181,9 @@ hr {
   color: transparent;
   background: 100% 0;
   z-index: 2;
-  height: 40px;
   width: 45px;
   border: 0;
+  padding: 8px 12px 7px;
 }
 .nv-sidebar-wrap .widget {
   border-bottom: 1px solid #f0f0f0;
@@ -1729,7 +1721,6 @@ hr {
   .sticky .article-content-col .content {
     margin-left: 15px;
     margin-right: 15px;
-    border: 1px solid #f0f0f0;
   }
 
   article.sticky {
@@ -1744,20 +1735,12 @@ hr {
     padding-right: 40px;
   }
 
-  .single-post-container {
-    padding-top: 60px;
-  }
-
   .single .entry-title {
     font-size: 2em;
   }
 
-  .archive-container, .single-page-container {
-    padding-top: 40px;
-  }
-
-  .nv-page-title-wrap.nv-big-title h1 {
-    margin: 40px 0 0;
+  .archive-container, .single-page-container, .single-post-container {
+    padding-top: 30px;
   }
 
   .nv-content-none-wrap {

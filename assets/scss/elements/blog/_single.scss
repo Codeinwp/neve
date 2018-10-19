@@ -22,7 +22,6 @@
 
 .attachment-neve-blog {
   display: flex;
-  width: 100%;
 }
 
 .nv-content-wrap .page-numbers {
@@ -77,9 +76,6 @@
 }
 
 @mixin single-post--laptop() {
-  .single-post-container {
-    padding-top: $spacing-lg;
-  }
   .single .entry-title {
     font-size: 2em;
   }

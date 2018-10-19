@@ -15,22 +15,21 @@
   input.button,
   #respond input#submit.alt,
   a.button.alt,
+  button.button:disabled,
+  button.button:disabled[disabled],
   button.button.alt,
   input.button.alt,
   button.button.alt.disabled {
     @include button();
     @include button_primary();
-    line-height: inherit;
     &:focus, &:hover {
       @include button();
       @include button_primary('false');
-      line-height: inherit;
     }
   }
   a.added_to_cart {
     @include button();
     @include button-secondary();
-    line-height: inherit;
   }
   button.button:disabled, button.button:disabled[disabled] {
     color: #fff;
@@ -39,7 +38,6 @@
 
 .woocommerce ul.products li.product .button {
   white-space: normal;
-  line-height: inherit;
 }
 
 .woocommerce ul.products li.product .button.loading {

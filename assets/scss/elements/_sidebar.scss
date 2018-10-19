@@ -54,7 +54,7 @@
       top: 0;
       right: 0;
       text-align: center;
-      line-height: 40px;
+      line-height: 35px;
       width: 45px;
       z-index: 3;
       cursor: pointer;
@@ -62,9 +62,8 @@
       color: $muted-white-med;
     }
     input[type="search"] {
-      margin-bottom: $spacing-xs;
       width: 100%;
-      padding-right: 45px;
+      padding: 8px 45px 7px 12px;
     }
     button[type="submit"], input[type="submit"] {
       top: 0;
@@ -73,9 +72,9 @@
       color: transparent;
       background: 0 0;
       z-index: 2;
-      height: 40px;
       width: 45px;
       border: 0;
+      padding: 8px 12px 7px;
     }
   }
   .widget {

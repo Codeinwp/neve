@@ -51,7 +51,7 @@ class Colors_Background extends Base_Customizer {
 	 */
 	private function controls_colors() {
 		$color_controls = array(
-			'neve_button_color'      => array(
+			'neve_button_color'     => array(
 				'default'  => '#00a4f7',
 				'priority' => 10,
 				'label'    => __( 'Button Color', 'neve' ),

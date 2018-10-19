@@ -25,14 +25,13 @@
     }
   }
   img {
-    width: 100%;
     height: auto;
   }
 }
 
 .posts-wrapper > article {
   word-break: break-word;
-  margin-bottom: $spacing;
+  margin-bottom: 30px;
 }
 
 .blog-entry-title {
@@ -75,9 +74,7 @@ article.sticky {
   .article-content-col {
     max-width: 100%;
     .content {
-      @include soft-box-shadow();
-      border-top: $muted-border;
-      border-bottom: $muted-border;
+      border: 1px solid #dddddd;
       max-width: 100%;
       width: auto;
       padding: 15px;
@@ -118,7 +115,6 @@ article.sticky {
     .content {
       margin-right: 15px;
       margin-left: 15px;
-      border: $muted-border;
     }
   }
   article.sticky {

@@ -41,7 +41,7 @@
 @mixin button() {
   font-size: .8em;
   font-weight: 600;
-  padding: 9px 18px;
+  padding: 6px 12px;
   transition: all .15s ease-in-out;
   text-align: center;
   vertical-align: middle;
@@ -49,11 +49,11 @@
   border-radius: .25rem;
   text-transform: uppercase;
   cursor: pointer;
-  width: auto;
+  line-height: 1.68421;
 }
 
 @mixin button-secondary( $hover: 'true', $color: $button_color ) {
-  border: 1px solid $color;
+  border: 1px solid rgba(27,31,35,0.2);
   background-color: transparent;
   font-weight: 600;
   color: $color;

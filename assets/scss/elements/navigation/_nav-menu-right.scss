@@ -8,7 +8,7 @@
 
 .nav-right .nv-nav-header {
   flex-direction: row-reverse;
-  small {
+  .brand > * {
     text-align: right;
   }
 }
