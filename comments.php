@@ -16,26 +16,15 @@ if ( post_password_required() ) {
 ?>
 
 <div id="comments">
-	<div class="comment-form">
-		<?php
-		comment_form();
-		if ( ! comments_open() && get_comments_number() ) {
-			if ( is_single() ) {
-				?>
-				<h4 class="no-comments text-center"><?php esc_html_e( 'Comments are closed.', 'neve' ); ?></h4>
-				<?php
-			}
-		}
+	<?php
+	$comments_number = get_comments_number();
+	if ( $comments_number !== '0' ) {
 		?>
-	</div>
-
-	<h4 class="comments-number">
-		<?php
-		$comments_number = get_comments_number();
-		if ( 0 !== $comments_number ) {
-			if ( 1 === $comments_number ) {
+		<h4 class="comments-number">
+			<?php
+			if ( $comments_number === '1' ) {
 				/* translators: %s: post title */
-				_x( 'One comment', 'comments title', 'neve' );
+				printf( _x( 'One comment', 'comments title', 'neve' ) );
 			} else {
 				printf(
 					/* translators: 1: number of comments, 2: post title */
@@ -49,10 +38,11 @@ if ( post_password_required() ) {
 					number_format_i18n( $comments_number )
 				);
 			}
-		}
-		?>
-	</h4>
-	<?php
+
+			?>
+		</h4>
+		<?php
+	}
 
 	echo '<ul class="comments-list">';
 	wp_list_comments( 'type=comment' );
@@ -74,4 +64,16 @@ if ( post_password_required() ) {
 	}
 
 	?>
+	<div class="comment-form">
+		<?php
+		comment_form();
+		if ( ! comments_open() && get_comments_number() ) {
+			if ( is_single() ) {
+				?>
+				<h4 class="no-comments text-center"><?php esc_html_e( 'Comments are closed.', 'neve' ); ?></h4>
+				<?php
+			}
+		}
+		?>
+	</div>
 </div>

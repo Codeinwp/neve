@@ -25,10 +25,6 @@
     width: 100%;
     .button {
       align-self: flex-start;
-      margin-top: auto;
-    }
-    .excerpt-wrap {
-      padding: $spacing-sm 0;
     }
   }
 
@@ -47,8 +43,8 @@
   }
   article.layout-alternative:nth-child(even) .article-content-col .content {
     flex-direction: row;
-     .nv-post-thumbnail-wrap ~ .alternative-layout-content {
-    padding: 0 0 0 $spacing;
-      }
+    .nv-post-thumbnail-wrap ~ .alternative-layout-content {
+      padding: 0 0 0 $spacing;
+    }
   }
 }

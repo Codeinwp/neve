@@ -15,5 +15,5 @@ footer {
 }
 
 .nv-footer-content .footer-menu {
-  @include horizontal-list($spacing-sm);
+  @include horizontal-list( $spacing-sm, true );
 }

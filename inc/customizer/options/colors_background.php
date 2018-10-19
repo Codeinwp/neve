@@ -67,7 +67,7 @@ class Colors_Background extends Base_Customizer {
 				'label'    => __( 'Link Hover Color', 'neve' ),
 			),
 			'neve_text_color'       => array(
-				'default'  => '#606060',
+				'default'  => '#333333',
 				'priority' => 25,
 				'label'    => __( 'Text Color', 'neve' ),
 			),

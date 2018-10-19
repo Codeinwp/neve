@@ -129,7 +129,7 @@ class Layout_Footer extends Base_Customizer {
 				array(
 					'transport'         => $this->selective_refresh,
 					'sanitize_callback' => array( $this, 'sanitize_footer_content_type' ),
-					'default'           => 'text',
+					'default'           => 'none',
 				),
 				array(
 					'priority'    => 30,
@@ -206,7 +206,7 @@ class Layout_Footer extends Base_Customizer {
 			new Partial(
 				'neve_footer_content_partial',
 				array(
-					'selector'            => '.nv-footer-content',
+					'selector'            => '.footer-second-section',
 					'settings'            => array( 'neve_footer_content_type', 'neve_footer_text' ),
 					'render_callback'     => array( $this, 'footer_content_callback' ),
 					'container_inclusive' => true,

@@ -6,7 +6,6 @@
 @media (min-width: #{$tablet}) {
   @include grid-container--tablet();
   @include grid--tablet();
-  @include sidebar--tablet();
   @include typography--tablet();
 }
 
@@ -20,9 +19,12 @@
   @include top-bar--laptop();
   @include nav-menu-right--laptop();
   @include blog-layout-default-alt--laptop();
+  @include blogpost-index--laptop();
   @include comments--laptop();
   @include single-post--laptop();
   @include page--laptop();
+  @include sidebar--laptop();
+  @include blog-layout--laptop();
 }
 
 @media (min-width: #{$desktop}) {
