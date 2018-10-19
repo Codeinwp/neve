@@ -18,6 +18,8 @@
     padding-bottom: $spacing-sm;
   }
   a {
+    color: $body-color;
+    font-weight: 500;
     width: 100%;
     display: block;
     padding: $spacing-xs 0;
@@ -30,7 +32,7 @@
 }
 
 .site-logo, .navbar-toggle-wrapper {
-  flex: 1;
+  flex: 1 auto;
 }
 
 .navbar-toggle-wrapper {
@@ -65,7 +67,7 @@
 .caret {
   @include caret();
   transform: rotate(135deg);
-  color: $link_color;
+  color: $gray-color;
   top: -6px;
   transition: $transition_med;
   .dropdown-open > .caret-wrap > & {
@@ -80,13 +82,13 @@
   right: 0;
   cursor: pointer;
   border-radius: 3px;
-  border: 1px solid $link_color;
+  border: $muted-border-med;
   width: 30px;
   height: 30px;
   padding: 5px 10px;
   transition: $transition_med;
   .dropdown-open > & {
-    background-color: $link_color;
+    background-color: $gray-color;
   }
 }
 
@@ -125,12 +127,13 @@
       }
     }
 
-    li:hover {
+    li:hover, li:focus {
       > a {
         color: $link_hover_color;
+        text-decoration: none;
       }
       > .caret-wrap .caret {
-        color: $link_hover_color;
+        color: $body-color;
       }
     }
 
@@ -141,7 +144,7 @@
       top: 100%;
       background: $navbar_background_color;
       border-left: none;
-      border-top: 3px solid $theme_color;
+      border-top: $muted-border;
       position: absolute;
       overflow: visible;
       z-index: 100;
@@ -150,7 +153,7 @@
       .sub-menu {
         left: 100%;
         right: auto;
-        top: -3px;
+        top: -1px;
       }
       li {
         display: flex;
@@ -170,7 +173,8 @@
     }
 
     .menu-item-has-children {
-      &:hover > .sub-menu {
+      &:hover > .sub-menu,
+      &:focus-within > .sub-menu {
         display: block;
         visibility: visible;
         opacity: 1;
@@ -190,7 +194,7 @@
     display: inline;
     padding-right: 0;
     .dropdown-open > & > .caret {
-      color: $link_color;
+      color: $body-color;
       transform: rotate(135deg);
     }
     .dropdown-open > & {

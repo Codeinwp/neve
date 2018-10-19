@@ -1,14 +1,15 @@
-.single .nv-content-wrap {
-  padding-top: $spacing-sm;
-}
+.single {
+  .nv-content-wrap {
+    padding-top: $spacing-sm;
+  }
 
-.single .nv-meta-list {
-  margin-top: $spacing-xs;
-}
+  .nv-meta-list {
+    margin-top: $spacing-xs;
+  }
 
-.entry-title {
-  line-height: 1.3em;
-  word-wrap: break-word;
+  .entry-title {
+    transition: $transition_med;
+  }
 }
 
 .single-post-container {
@@ -16,12 +17,11 @@
 }
 
 .single-post-container .title {
-  margin-bottom: $spacing-xs;
+  margin-bottom: $spacing-sm;
 }
 
 .attachment-neve-blog {
   display: flex;
-  margin: 0 auto;
 }
 
 .nv-content-wrap .page-numbers {
@@ -66,17 +66,17 @@
     border-radius: 3px;
     margin-bottom: $spacing-xs;
     margin-right: $spacing-xs;
-    border: 1px solid $theme_color;
-    color: $theme_color;
+    border: 1px solid $button_color;
+    color: $button_color;
     &:hover {
-      background: $theme_color;
+      background: $button_color;
       color: #fff;
     }
   }
 }
 
 @mixin single-post--laptop() {
-  .single-post-container {
-    padding-top: $spacing-lg;
+  .single .entry-title {
+    font-size: 2em;
   }
 }

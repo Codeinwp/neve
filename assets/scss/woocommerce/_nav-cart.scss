@@ -15,6 +15,17 @@
   z-index: 1000;
 }
 
+#nv-primary-navigation a.button{
+  &.wc-forward {
+    color: $button_color;
+    &:hover {
+      color: #fff;
+    }
+  }
+  &.checkout {
+    color: #fff;
+  }
+}
 @mixin nav-cart--laptop() {
   .menu-item-nav-cart:hover .nv-nav-cart {
     opacity: 1;
@@ -26,7 +37,7 @@
     opacity: 0;
     visibility: hidden;
     cursor: default;
-    border-top: 3px solid $theme_color;
+    border-top: $muted-border;
     transition: $transition_med;
     position: absolute;
     z-index: 100;
