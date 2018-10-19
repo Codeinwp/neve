@@ -10,24 +10,27 @@
 }
 
 .archive-container, .single-page-container {
-  padding-top: $spacing;
+  padding-top: $spacing-sm;
 }
 
-.nv-page-title-wrap.nv-big-title {
-  border-bottom: $muted-border;
-  background-color: #f7f7f7;
-  .nv-page-title {
-    padding-top: $spacing-sm;
-    padding-bottom: $spacing-sm;
-    text-align: center;
-  }
-  h1 {
-    margin: 0;
-  }
+.nv-page-title-wrap.nv-big-title h1 {
+  line-height: 1.3em;
+  margin: $spacing-sm 0 0;
+}
+
+.nv-content-none-wrap {
+  margin-bottom: $spacing-lg;
 }
 
 @mixin page--laptop() {
   .archive-container, .single-page-container {
-    padding-top: $spacing-lg;
+    padding-top: $spacing;
+  }
+  .nv-page-title-wrap.nv-big-title h1 {
+    margin: $spacing 0 0;
+  }
+
+  .nv-content-none-wrap {
+    margin-bottom: 0;
   }
 }

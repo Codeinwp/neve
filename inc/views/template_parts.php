@@ -48,6 +48,8 @@ class Template_Parts extends Base_View {
 		$class .= ' col-12 layout-' . $this->get_layout();
 		if ( $this->get_layout() === 'grid' ) {
 			$class .= ' ' . $this->get_grid_columns_class();
+		} else {
+			$class .= ' nv-non-grid-article';
 		}
 
 		return $class;
@@ -138,11 +140,11 @@ class Template_Parts extends Base_View {
 	 */
 	private function title() {
 		?>
-		<h3 class="blog-entry-title entry-title">
+		<h4 class="blog-entry-title entry-title">
 			<a href="<?php the_permalink(); ?>">
 				<?php the_title(); ?>
 			</a>
-		</h3>
+		</h4>
 		<?php
 	}
 

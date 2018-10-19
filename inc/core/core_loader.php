@@ -66,8 +66,11 @@ class Core_Loader {
 
 				'Compatibility\WooCommerce',
 				'Compatibility\Elementor',
+				'Compatibility\Beaver',
 
 				'Admin\Metabox\Main',
+
+				'Content_Import\Zelle',
 			)
 		);
 	}
