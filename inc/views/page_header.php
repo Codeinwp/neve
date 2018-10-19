@@ -42,22 +42,14 @@ class Page_Header extends Base_View {
 	 * @param string $context the context provided in do_action.
 	 */
 	public function render_page_header( $context ) {
-		if ( $context === 'single-post' ) {
-			return;
-		}
 		$title_args = $this->the_page_title( $context );
 		if ( empty( $title_args['string'] ) ) {
 			return;
 		}
 		?>
 		<div class="nv-page-title-wrap <?php echo esc_attr( $title_args['wrap-class'] ); ?>">
-			<div class="container">
-				<div class="row">
-					<div class="col nv-page-title <?php echo $title_args['class']; ?>">
-						<h1><?php echo wp_kses_post( $title_args['string'] ); ?></h1>
-						<?php do_action( 'neve_after_page_title' ); ?>
-					</div>
-				</div>
+			<div class="nv-page-title <?php echo $title_args['class']; ?>">
+				<h1><?php echo wp_kses_post( $title_args['string'] ); ?></h1>
 			</div>
 		</div>
 		<?php
@@ -75,10 +67,6 @@ class Page_Header extends Base_View {
 		if ( $context === 'index' || $context === 'single-page' ) {
 			$title_args               = $this->get_blog_archive_title();
 			$title_args['wrap-class'] = 'nv-big-title';
-		}
-
-		if ( $context === 'single-post' ) {
-			$title_args['wrap-class'] = 'nv-single-post-title';
 		}
 
 		if ( $context === 'search' ) {

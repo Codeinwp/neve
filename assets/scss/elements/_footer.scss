@@ -6,8 +6,19 @@ footer {
   border-top: $muted-border;
 }
 
+.footer-content-wrap.footer-second-section {
+  background: $git-black;
+  color: #fff;
+  text-align: center;
+  .nv-footer-content {
+  }
+  a {
+    color: #fff;
+  }
+}
+
 .nv-footer-content, .nv-footer-widgets {
-  padding: $spacing 0;
+  padding: $spacing-sm 0;
 }
 
 .nv-footer-widgets + .nv-footer-content {
@@ -15,5 +26,6 @@ footer {
 }
 
 .nv-footer-content .footer-menu {
-  @include horizontal-list( $spacing-sm, true );
+  justify-content: center;
+  @include horizontal-list( $spacing-xs, true );
 }

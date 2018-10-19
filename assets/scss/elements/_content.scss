@@ -1,7 +1,11 @@
 blockquote {
   text-align: center;
   font-size: 1.1em;
-  margin: $spacing-lg 0;
+  margin: $spacing 0;
+  cite {
+    padding-top: $spacing-sm;
+    display: block;
+  }
   &:after, &:before {
     height: 3px;
     width: $spacing-lg;
@@ -43,7 +47,7 @@ pre {
   background: #fbfbfb;
   border-radius: 5px;
   border: $muted-border;
-  margin: $spacing 0;
+  margin: $spacing-sm 0;
   white-space: pre-wrap;
   font-size: 0.9em;
   line-height: 2em;

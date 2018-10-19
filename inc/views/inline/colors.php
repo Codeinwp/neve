@@ -22,7 +22,7 @@ class Colors extends Base_Inline {
 	public function init() {
 		$this->links_colors();
 		$this->links_hover_colors();
-		$this->add_theme_color();
+		$this->add_button_color();
 		$this->add_text_color();
 	}
 
@@ -37,11 +37,11 @@ class Colors extends Base_Inline {
 		$color_setup = array(
 			'color'            => array(
 				'css_prop'  => 'color',
-				'selectors' => 'a, .caret',
+				'selectors' => 'a',
 			),
 			'border-color'     => array(
 				'css_prop'  => 'border-color',
-				'selectors' => '.caret-wrap',
+				'selectors' => '.nv-loader',
 			),
 			'background-color' => array(
 				'css_prop'  => 'background-color',
@@ -83,14 +83,9 @@ class Colors extends Base_Inline {
 		}
 
 		$color_setup = array(
-			'color'         => array(
+			'color' => array(
 				'css_prop'  => 'color',
 				'selectors' => 'a:hover, #nv-primary-navigation li:hover > a ',
-			),
-			'color-desktop' => array(
-				'css_prop'    => 'color',
-				'selectors'   => '#nv-primary-navigation li:hover > .caret-wrap .caret',
-				'media_query' => 'desktop',
 			),
 		);
 		$this->add_color( apply_filters( 'neve_link_hover_color_filter', $color_setup ), $color );
@@ -116,34 +111,29 @@ class Colors extends Base_Inline {
 	}
 
 	/**
-	 * Add theme color.
+	 * Add buttons color.
 	 */
-	private function add_theme_color() {
-		$color = get_theme_mod( 'neve_theme_color', false );
+	private function add_button_color() {
+		$color = get_theme_mod( 'neve_button_color', false );
 		if ( empty( $color ) ) {
 			return;
 		}
 
 		$color_setup = array(
-			'color'                    => array(
+			'color'        => array(
 				'css_prop'  => 'color',
+				'selectors' => '.button.button-secondary, .nv-tags-list a, #nv-primary-navigation a.button.wc-forward:not(.checkout)',
+			),
+			'border-color' => array(
+				'css_prop'  => 'border-color',
 				'selectors' => '.button.button-secondary, .nv-tags-list a',
 			),
-			'border-color'             => array(
-				'css_prop'  => 'border-color',
-				'selectors' => '.button.button-secondary, .nv-loader, .nv-tags-list a',
-			),
-			'border-top-color-desktop' => array(
-				'css_prop'    => 'border-top-color',
-				'selectors'   => '#nv-primary-navigation .sub-menu, .nv-nav-search',
-				'media-query' => 'desktop',
-			),
-			'background'               => array(
+			'background'   => array(
 				'css_prop'  => 'background-color',
 				'selectors' => '.button.button-primary, .button.button-secondary:hover, .icon-bar, button, input[type=button], .btn, input[type="submit"], .nv-tags-list a:hover',
 			),
 		);
 
-		$this->add_color( apply_filters( 'neve_theme_color_filter', $color_setup ), $color );
+		$this->add_color( apply_filters( 'neve_button_color_filter', $color_setup ), $color );
 	}
 }

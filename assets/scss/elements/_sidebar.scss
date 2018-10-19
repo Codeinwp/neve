@@ -41,7 +41,10 @@
 
 .nv-sidebar-wrap {
   margin-bottom: $spacing;
-
+  .widget h5 {
+    font-weight: 600;
+    font-size: 1.25em;
+  }
   .search-form, .woocommerce-product-search {
     position: relative;
     &:after {
@@ -51,7 +54,7 @@
       top: 0;
       right: 0;
       text-align: center;
-      line-height: 40px;
+      line-height: 35px;
       width: 45px;
       z-index: 3;
       cursor: pointer;
@@ -59,9 +62,8 @@
       color: $muted-white-med;
     }
     input[type="search"] {
-      margin-bottom: $spacing-xs;
       width: 100%;
-      padding-right: 45px;
+      padding: 8px 45px 7px 12px;
     }
     button[type="submit"], input[type="submit"] {
       top: 0;
@@ -70,9 +72,9 @@
       color: transparent;
       background: 0 0;
       z-index: 2;
-      height: 40px;
       width: 45px;
       border: 0;
+      padding: 8px 12px 7px;
     }
   }
   .widget {
@@ -96,10 +98,6 @@
   li {
     margin-top: $spacing-xs;
   }
-}
-
-.widget > ul {
-  font-size: .85em;
 }
 
 .widget_media_image img {

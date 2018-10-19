@@ -125,7 +125,7 @@ class Pagination extends Base_View {
 	 * Render the post.
 	 */
 	private function render_post_template_part() {
-		$post_layout    = get_theme_mod( 'neve_blog_archive_layout', 'default' );
+		$post_layout    = get_theme_mod( 'neve_blog_archive_layout', 'grid' );
 		$layout_mapping = array(
 			'default'     => '',
 			'grid'        => 'grid',

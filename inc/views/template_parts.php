@@ -21,6 +21,7 @@ class Template_Parts extends Base_View {
 	 */
 	public function init() {
 		add_action( 'neve_blog_post_template_part_content', array( $this, 'render_post' ) );
+		add_filter( 'excerpt_more', array( $this, 'link_excerpt_more' ) );
 	}
 
 	/**
@@ -132,7 +133,7 @@ class Template_Parts extends Base_View {
 	 * @return string
 	 */
 	private function get_layout() {
-		return get_theme_mod( 'neve_blog_archive_layout', 'default' );
+		return get_theme_mod( 'neve_blog_archive_layout', 'grid' );
 	}
 
 	/**
@@ -140,11 +141,11 @@ class Template_Parts extends Base_View {
 	 */
 	private function title() {
 		?>
-		<h4 class="blog-entry-title entry-title">
+		<h3 class="blog-entry-title entry-title">
 			<a href="<?php the_permalink(); ?>">
 				<?php the_title(); ?>
 			</a>
-		</h4>
+		</h3>
 		<?php
 	}
 
@@ -177,6 +178,10 @@ class Template_Parts extends Base_View {
 	 * Render read more button.
 	 */
 	private function read_more_button() {
+		$layout = $this->get_layout();
+		if ( $layout !== 'grid' ) {
+			return;
+		}
 		?>
 		<a href="<?php the_permalink(); ?>"
 				class="button button-secondary"><?php esc_html_e( 'Read more', 'neve' ); ?></a>
@@ -194,4 +199,22 @@ class Template_Parts extends Base_View {
 		return 'col-sm-' . ( 12 / $column_numbers );
 	}
 
+	/**
+	 * Change link excerpt more.
+	 *
+	 * @param string $moretag read more tag.
+	 *
+	 * @return string
+	 */
+	public function link_excerpt_more( $moretag ) {
+		$layout = $this->get_layout();
+
+		if ( $layout === 'grid' ) {
+			return '&nbsp;&hellip;';
+		}
+
+		$moretag = '<a href="' . get_the_permalink() . '">&nbsp;&hellip;</a>';
+
+		return $moretag;
+	}
 }

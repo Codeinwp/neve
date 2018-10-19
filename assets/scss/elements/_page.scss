@@ -15,7 +15,9 @@
 
 .nv-page-title-wrap.nv-big-title h1 {
   line-height: 1.3em;
-  margin: $spacing-sm 0 0;
+   margin-bottom: $spacing-sm;
+  border-bottom: $muted-border;
+  padding-bottom: 20px;
 }
 
 .nv-content-none-wrap {
@@ -23,11 +25,8 @@
 }
 
 @mixin page--laptop() {
-  .archive-container, .single-page-container {
-    padding-top: $spacing;
-  }
-  .nv-page-title-wrap.nv-big-title h1 {
-    margin: $spacing 0 0;
+  .archive-container, .single-page-container, .single-post-container {
+    padding-top: 30px;
   }
 
   .nv-content-none-wrap {

@@ -66,7 +66,7 @@ class Masonry extends Base_View {
 	 * @return string
 	 */
 	public function is_masonry_enabled() {
-		$blog_layout = get_theme_mod( 'neve_blog_archive_layout', 'default' );
+		$blog_layout = get_theme_mod( 'neve_blog_archive_layout', 'grid' );
 		$columns     = get_theme_mod( 'neve_grid_layout', '1' );
 
 		if ( $blog_layout !== 'grid' || $columns === 1 ) {
