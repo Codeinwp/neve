@@ -1732,8 +1732,12 @@ hr {
     border: 1px solid #f0f0f0;
   }
 
-  article.sticky.nv-non-grid-article {
+  article.sticky {
     padding: 0;
+  }
+
+  .non-grid-content > .entry-title {
+    margin-top: 0;
   }
 
   #comments .children {

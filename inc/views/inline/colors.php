@@ -83,7 +83,7 @@ class Colors extends Base_Inline {
 		}
 
 		$color_setup = array(
-			'color'         => array(
+			'color' => array(
 				'css_prop'  => 'color',
 				'selectors' => 'a:hover, #nv-primary-navigation li:hover > a ',
 			),
@@ -120,15 +120,15 @@ class Colors extends Base_Inline {
 		}
 
 		$color_setup = array(
-			'color'                    => array(
+			'color'        => array(
 				'css_prop'  => 'color',
 				'selectors' => '.button.button-secondary, .nv-tags-list a, #nv-primary-navigation a.button.wc-forward:not(.checkout)',
 			),
-			'border-color'             => array(
+			'border-color' => array(
 				'css_prop'  => 'border-color',
 				'selectors' => '.button.button-secondary, .nv-tags-list a',
 			),
-			'background'               => array(
+			'background'   => array(
 				'css_prop'  => 'background-color',
 				'selectors' => '.button.button-primary, .button.button-secondary:hover, .icon-bar, button, input[type=button], .btn, input[type="submit"], .nv-tags-list a:hover',
 			),

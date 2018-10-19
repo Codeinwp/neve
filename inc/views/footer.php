@@ -91,7 +91,7 @@ class Footer extends Base_View {
 		$content = get_theme_mod(
 			'neve_footer_text',
 			sprintf(
-			/* translators: %1$s is link to ThemeIsle */
+				/* translators: %1$s is link to ThemeIsle */
 				esc_html__( 'Copyright - Neve by %1$s', 'neve' ),
 				wp_kses_post( '<a href="https://themeisle.com/themes/neve/" target="_blank" rel="nofollow">Themeisle</a>' )
 			)

@@ -121,7 +121,10 @@ article.sticky {
       border: $muted-border;
     }
   }
-  article.sticky.nv-non-grid-article {
+  article.sticky {
     padding: 0;
+  }
+  .non-grid-content > .entry-title {
+    margin-top: 0;
   }
 }

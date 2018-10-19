@@ -172,7 +172,7 @@ class Layout_Footer extends Base_Customizer {
 					'transport'         => $this->selective_refresh,
 					'sanitize_callback' => 'wp_kses_post',
 					'default'           => sprintf(
-					/* translators: %1$s is Theme Name (Neve), %2$s is WordPress */
+						/* translators: %1$s is Theme Name (Neve), %2$s is WordPress */
 						esc_html__( '%1$s | Powered by %2$s', 'neve' ),
 						wp_kses_post( '<a href="https://themeisle.com/themes/neve/" target="_blank" rel="nofollow">Neve</a>' ),
 						wp_kses_post( '<a href="http://wordpress.org" rel="nofollow">WordPress</a>' )
