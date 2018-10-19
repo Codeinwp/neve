@@ -1,14 +1,16 @@
-.single .nv-content-wrap {
-  padding-top: $spacing-sm;
-}
+.single {
+  .nv-content-wrap {
+    padding-top: $spacing-sm;
+  }
 
-.single .nv-meta-list {
-  margin-top: $spacing-xs;
-}
+  .nv-meta-list {
+    margin-top: $spacing-sm;
+  }
 
-.entry-title {
-  line-height: 1.3em;
-  word-wrap: break-word;
+  .entry-title {
+    transition: $transition_med;
+    font-size: 2em;
+  }
 }
 
 .single-post-container {
@@ -16,7 +18,7 @@
 }
 
 .single-post-container .title {
-  margin-bottom: $spacing-xs;
+  margin-bottom: $spacing-sm;
 }
 
 .attachment-neve-blog {

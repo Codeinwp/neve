@@ -1,12 +1,12 @@
 html {
-  font-size: 14px;
+  font-size: 15px;
   overflow-x: hidden;
   -webkit-tap-highlight-color: transparent;
 }
 
 body {
   font-family: Graphik, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
-  color: $body_color;
+  color: $body-color;
   line-height: 1.68421;
   overflow-x: hidden;
   direction: ltr;
@@ -17,17 +17,20 @@ h1, h2, h3, h4, h5, h6 {
   font-family: Graphik, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
   line-height: 1.68421;
   margin-bottom: .5rem;
+  font-weight: 600;
 }
 
 p {
-  margin-bottom: 1.75em;
+  margin-bottom: $paragraph-margin-bottom;
 }
 
 a {
   cursor: pointer;
   color: $link_color;
   text-decoration: none;
-  &:hover {
+  &:hover,
+  &:focus {
+    text-decoration: underline;
     color: $link_hover_color;
   }
 }
@@ -69,9 +72,6 @@ h6 {
 }
 
 @mixin typography--tablet() {
-  html {
-    font-size: 16px;
-  }
   h1 {
     font-size: $h1-font-size;
   }

@@ -1,5 +1,19 @@
-.nv-index-posts .entry-title a {
-  color: $body_color;
+.entry-title {
+  word-wrap: break-word;
+  font-weight: 600;
+  line-height: 1.3em;
+  a {
+    color: $body-color;
+    &:hover,
+    &:focus {
+      text-decoration: none;
+      opacity: .9;
+    }
+  }
+}
+
+.posts-wrapper .excerpt-wrap {
+  color: #606060;
 }
 
 .nv-post-thumbnail-wrap {

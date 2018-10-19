@@ -5,7 +5,7 @@
   width: 100%;
   li > span,
   li > a {
-    color: #7e7e7e;
+    color: #606060;
     font-size: 0.85em;
   }
   i {
@@ -14,7 +14,7 @@
     line-height: inherit;
   }
   li {
-    padding-right: $spacing-sm;
+    padding-right: $spacing-xs;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -23,8 +23,5 @@
   .meta .nv-icon:before {
     position: relative;
     margin-right: 5px;
-  }
-  .meta.category a {
-    padding: 0 ($spacing-xs / 2);
   }
 }

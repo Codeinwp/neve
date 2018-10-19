@@ -20,7 +20,7 @@
 }
 
 .woocommerce ul.products li.product .price, .woocommerce div.product p.price, .woocommerce div.product span.price {
-  color: #333333;
+  color: #404248;
 }
 
 .woocommerce-variation-price {
@@ -183,10 +183,10 @@
   text-align: center;
 }
 .woocommerce .woocommerce-breadcrumb a {
-  color: #00a4f7;
+  color: #0366d6;
 }
 .woocommerce .woocommerce-breadcrumb a:hover {
-  color: #005bf7;
+  color: #0366d6;
 }
 
 .nv-woo-title-breadcrumb {
@@ -212,7 +212,7 @@
   border-bottom: 1px solid #f0f0f0;
 }
 .woocommerce div.product .woocommerce-tabs ul.tabs li a {
-  color: #00a4f7;
+  color: #0366d6;
   width: 100%;
 }
 
@@ -249,6 +249,7 @@
   position: relative;
 }
 .woocommerce div.product form.cart .reset_variations:hover {
+  text-decoration: none;
   background-color: #f5365c;
   color: #fff;
 }
@@ -265,11 +266,11 @@
   text-align: center;
   width: 100%;
   display: block;
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 .woocommerce-Tabs-panel > h2 {
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 .woocommerce-checkout .col2-set .col-1, .woocommerce-checkout .woocommerce-checkout .col2-set .col-2 {
@@ -396,6 +397,7 @@
 .woocommerce button.button.alt:hover,
 .woocommerce input.button.alt:hover,
 .woocommerce button.button.alt.disabled:hover {
+  text-decoration: none;
   opacity: .9;
 }
 .woocommerce #respond input#submit:focus, .woocommerce #respond input#submit:hover,
@@ -449,6 +451,7 @@
   line-height: inherit;
 }
 .woocommerce a.added_to_cart:hover {
+  text-decoration: none;
   background-color: #00a4f7;
   color: #fff;
 }
@@ -620,6 +623,7 @@
   color: #00a4f7;
 }
 .woocommerce-cart table.cart td.actions .coupon > .input-text + .button:hover {
+  text-decoration: none;
   background-color: #00a4f7;
   color: #fff;
 }
@@ -814,6 +818,7 @@
     color: #00a4f7;
   }
   .nv-nav-cart .woocommerce-mini-cart__buttons a:first-child:hover {
+    text-decoration: none;
     background-color: #00a4f7;
     color: #fff;
   }

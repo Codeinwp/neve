@@ -59,6 +59,7 @@
   color: $color;
   @if ($hover == 'true') {
     &:hover {
+      text-decoration: none;
       background-color: $color;
       color: #fff;
     }
@@ -70,6 +71,7 @@
   color: #fff;
   @if ($hover == 'true') {
     &:hover {
+      text-decoration: none;
       opacity: .9;
     }
   }

@@ -41,7 +41,10 @@
 
 .nv-sidebar-wrap {
   margin-bottom: $spacing;
-
+  .widget h5 {
+    font-weight: 600;
+    font-size: 1.25em;
+  }
   .search-form, .woocommerce-product-search {
     position: relative;
     &:after {
@@ -96,10 +99,6 @@
   li {
     margin-top: $spacing-xs;
   }
-}
-
-.widget > ul {
-  font-size: .85em;
 }
 
 .widget_media_image img {

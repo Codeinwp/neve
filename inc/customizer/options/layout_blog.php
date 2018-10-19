@@ -132,7 +132,7 @@ class Layout_Blog extends Base_Customizer {
 				'neve_post_excerpt_length',
 				array(
 					'sanitize_callback' => 'neve_sanitize_range_value',
-					'default'           => 40,
+					'default'           => 25,
 				),
 				array(
 					'label'      => esc_html__( 'Excerpt Length', 'neve' ),

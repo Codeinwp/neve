@@ -29,11 +29,11 @@
   }
 
   .nv-post-thumbnail-wrap ~ .default-layout-content {
-    padding-left: $spacing;
+    padding-left: $spacing-sm;
   }
 
   .nv-post-thumbnail-wrap ~ .alternative-layout-content {
-    padding-right: $spacing;
+    padding-right: $spacing-sm;
   }
 
   .layout-default, .layout-alternative {
