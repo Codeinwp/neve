@@ -22,7 +22,7 @@ class Colors extends Base_Inline {
 	public function init() {
 		$this->links_colors();
 		$this->links_hover_colors();
-		$this->add_theme_color();
+		$this->add_button_color();
 		$this->add_text_color();
 	}
 
@@ -111,10 +111,10 @@ class Colors extends Base_Inline {
 	}
 
 	/**
-	 * Add theme color.
+	 * Add buttons color.
 	 */
-	private function add_theme_color() {
-		$color = get_theme_mod( 'neve_theme_color', false );
+	private function add_button_color() {
+		$color = get_theme_mod( 'neve_button_color', false );
 		if ( empty( $color ) ) {
 			return;
 		}
@@ -134,6 +134,6 @@ class Colors extends Base_Inline {
 			),
 		);
 
-		$this->add_color( apply_filters( 'neve_theme_color_filter', $color_setup ), $color );
+		$this->add_color( apply_filters( 'neve_button_color_filter', $color_setup ), $color );
 	}
 }

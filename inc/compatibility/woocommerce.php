@@ -162,17 +162,17 @@ class Woocommerce {
 	private function add_inline_selectors() {
 		add_filter( 'neve_link_color_filter', array( $this, 'add_link_color' ) );
 		add_filter( 'neve_link_hover_color_filter', array( $this, 'add_link_hover_color' ) );
-		add_filter( 'neve_theme_color_filter', array( $this, 'add_theme_color' ) );
+		add_filter( 'neve_button_color_filter', array( $this, 'add_button_color' ) );
 	}
 
 	/**
-	 * Add theme color colors.
+	 * Add button color colors.
 	 *
 	 * @param array $color_setup the color setup from Neve\Views\Inline\Colors.
 	 *
 	 * @return array
 	 */
-	public function add_theme_color( $color_setup ) {
+	public function add_button_color( $color_setup ) {
 		$color_setup['background']['selectors'] .=
 			', .nv-nav-cart .woocommerce-mini-cart__buttons a.button:last-child, 
 			

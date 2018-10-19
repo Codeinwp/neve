@@ -52,7 +52,7 @@
   width: auto;
 }
 
-@mixin button-secondary( $hover: 'true', $color: $theme_color ) {
+@mixin button-secondary( $hover: 'true', $color: $button_color ) {
   border: 1px solid $color;
   background-color: transparent;
   font-weight: 600;
@@ -67,7 +67,7 @@
   }
 }
 
-@mixin button-primary( $hover: 'true', $color: $theme_color ) {
+@mixin button-primary( $hover: 'true', $color: $button_color ) {
   background-color: $color;
   color: #fff;
   @if ($hover == 'true') {
