@@ -65,15 +65,19 @@
 				e.stopPropagation();
 			} );
 
-			$( '.menu-item-nav-search' ).on( 'click', function () {
+			$( '.menu-item-nav-search' ).on( 'click focus', function () {
 				if ( utils.isMobile() ) {
 					return false;
 				}
-				$( this ).toggleClass( 'active' );
+				$( this ).addClass( 'active' );
 				self.createNavOverlay();
-				$( '.nv-nav-search .search-field' ).focus();
 				return false;
 			} );
+
+			$( '.menu-item-nav-search input[type=search]' ).on('blur', function() {
+				$( '.menu-item-nav-search' ).removeClass( 'active' );
+				$( '.nav-clickaway-overlay' ).remove();
+			});
 		},
 		/**
 		 * Create helper overlay used for touch dropdowns.

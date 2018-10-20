@@ -39,7 +39,7 @@
 
 	<?php do_action( 'neve_before_primary' ); ?>
 
-	<main id="primary" class="neve-main">
+	<main id="primary" class="neve-main" role="main">
 
 	<?php
 	do_action( 'neve_after_primary_start' );

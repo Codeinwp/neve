@@ -29,7 +29,7 @@ class Template_Parts extends Base_View {
 	 */
 	public function render_post() {
 		?>
-		<article
+		<article role="article"
 				id="post-<?php echo esc_attr( get_the_ID() ); ?>'"
 				class="<?php echo esc_attr( $this->post_class() ); ?>">
 			<div class="article-content-col">
@@ -120,7 +120,7 @@ class Template_Parts extends Base_View {
 				'echo' => false,
 			)
 		) . '">';
-		$markup .= get_the_post_thumbnail( get_the_ID(), 'neve-blog' );
+		$markup .= get_the_post_thumbnail( get_the_ID(), 'neve-blog', array( 'alt' => get_the_title() ) );
 		$markup .= '</a>';
 		$markup .= '</div>';
 

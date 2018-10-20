@@ -26,7 +26,7 @@ class Header extends Base_View {
 	 */
 	public function render_navigation() {
 		?>
-		<nav class="nv-navbar">
+		<nav class="nv-navbar" role="navigation">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 nv-nav-wrap <?php echo esc_attr( $this->get_navbar_class() ); ?>">
@@ -65,7 +65,7 @@ class Header extends Base_View {
 		}
 
 		if ( 'search' === $additional_item ) {
-			$items .= '<li class="menu-item-nav-search"><a><span class="nv-icon nv-search"></span></a>';
+			$items .= '<li class="menu-item-nav-search" tabindex="0"><a><span class="nv-icon nv-search"></span></a>';
 			$items .= '<div class="nv-nav-search">';
 			$items .= get_search_form( false );
 			$items .= '</div>';
