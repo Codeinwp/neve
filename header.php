@@ -25,6 +25,7 @@
 <body <?php body_class(); ?>>
 <div class="wrapper">
 	<header class="header">
+		<a class="neve-skip-link show-on-focus" href="#primary" tabindex="1"><?php echo __( 'Skip to content', 'neve' ); ?></a>
 		<?php
 		neve_before_header_trigger();
 

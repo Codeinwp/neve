@@ -300,6 +300,29 @@ h6 {
   font-size: 0.75rem;
 }
 
+.show-on-focus {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  top: 0;
+  right: 0;
+}
+.show-on-focus:focus {
+  z-index: 20;
+  width: auto;
+  height: auto;
+  clip: auto;
+}
+
+a.neve-skip-link {
+  background-color: #24292e;
+  color: #fff;
+  padding: 10px 20px;
+}
+
 .alignfull, .alignwide {
   width: unset;
   max-width: unset;
