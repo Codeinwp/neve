@@ -221,6 +221,11 @@
   padding-top: 0;
 }
 
+.woocommerce-Reviews #review_form_wrapper .comment-respond .comment-form .comment-form-author input,
+.woocommerce-Reviews #review_form_wrapper .comment-respond .comment-form .comment-form-email input {
+  display: block;
+}
+
 .woocommerce div.product .woocommerce-tabs ul.tabs::before {
   border: none;
 }
@@ -302,12 +307,13 @@
 }
 .woocommerce-checkout form .form-row input.input-text, .woocommerce-checkout .woocommerce form .form-row textarea {
   margin-bottom: 10px;
-  border: 1px solid #c9c9c9;
+  border: 1px solid #ddd;
 }
 .woocommerce-checkout .woocommerce-checkout .select2-container--default .select2-selection--single {
-  border: 1px solid #c9c9c9;
+  border: 1px solid #ddd;
   height: 35px;
   padding: 3px 10px;
+  margin-bottom: 10px;
   margin-bottom: 10px;
 }
 .woocommerce-checkout .shop_table.woocommerce-checkout-review-order-table {
@@ -317,7 +323,7 @@
   border-bottom: none;
 }
 .woocommerce-checkout .shop_table.woocommerce-checkout-review-order-table thead {
-  background: #f0f0f0;
+  background: #f7f7f7;
   text-transform: uppercase;
 }
 .woocommerce-checkout .shop_table.woocommerce-checkout-review-order-table tr {
@@ -329,10 +335,26 @@
 .woocommerce-checkout .shop_table.woocommerce-checkout-review-order-table .product-quantity {
   display: block;
 }
+.woocommerce-checkout #neve-checkout-coupon .woocommerce-form-coupon {
+  border: 1px solid #ddd;
+}
+.woocommerce-checkout #neve-checkout-coupon .woocommerce-form-coupon .form-row-first {
+  float: none;
+  width: 100%;
+}
+.woocommerce-checkout #neve-checkout-coupon .woocommerce-form-coupon .form-row-last {
+  float: none;
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+}
+.woocommerce-checkout #neve-checkout-coupon .woocommerce-form-coupon .form-row-last button {
+  width: 100%;
+}
 
 #add_payment_method #payment, .woocommerce-cart #payment, .woocommerce-checkout #payment {
   background: #fff;
-  border: 1px solid #c9c9c9;
+  border: 1px solid #ddd;
 }
 
 .woocommerce-shipping-fields {
@@ -646,6 +668,12 @@
 
 .woocommerce a.button.checkout-button.alt, .woocommerce a.button.checkout-button.alt:focus, .woocommerce a.button.checkout-button.alt:active {
   display: block;
+  margin: 0 20px;
+}
+
+.woocommerce .cart_totals {
+  border: 1px solid #ebebeb;
+  border-radius: 5px;
 }
 
 .woocommerce .cart_totals table.shop_table td, .woocommerce .cart_totals table.shop_table tr, .woocommerce .cart_totals table.shop_table th, .woocommerce .cart_totals table.shop_table {
@@ -656,6 +684,7 @@
 }
 .woocommerce .cart_totals table.shop_table {
   border: none;
+  padding: 0 20px;
 }
 .woocommerce .cart_totals table.shop_table p {
   margin: 0;
@@ -691,9 +720,9 @@
 .cart-collaterals > div > h2 {
   font-size: 1.1em;
   border-bottom: 1px solid #f0f0f0;
-  text-transform: uppercase;
   font-weight: 500;
-  padding-bottom: 10px;
+  padding: 9px 20px;
+  background-color: #f7f7f7;
 }
 
 .cart-collaterals ul.products li.product .button {
@@ -710,6 +739,10 @@
   .woocommerce-checkout-review-order > .col2-set,
   .woocommerce-checkout > .col2-set {
     float: left;
+  }
+  .woocommerce-checkout-review-order #neve-checkout-coupon .woocommerce-form-coupon .form-row-last button,
+  .woocommerce-checkout #neve-checkout-coupon .woocommerce-form-coupon .form-row-last button {
+    width: auto;
   }
 
   #order_review_heading {
@@ -739,15 +772,14 @@
   }
 
   .woocommerce-cart table.cart {
-    border: none;
+    border: 1px solid #ebebeb;
   }
   .woocommerce-cart table.cart tr, .woocommerce-cart table.cart td, .woocommerce-cart table.cart th {
     border-bottom: none;
   }
   .woocommerce-cart table.cart thead {
     border: none;
-    background: #f0f0f0;
-    text-transform: uppercase;
+    background: #f7f7f7;
   }
   .woocommerce-cart table.cart tr {
     border-top: 1px solid #f0f0f0;
@@ -758,7 +790,6 @@
 
   .woocommerce-cart table.cart td.actions {
     padding: 20px 0;
-    border-bottom: 1px solid #f0f0f0;
   }
   .woocommerce-cart table.cart td.actions .coupon {
     flex-direction: row;
@@ -766,8 +797,14 @@
     margin: 0;
     align-items: center;
   }
+  .woocommerce-cart table.cart td.actions .coupon > .input-text:first-of-type {
+    margin-left: 21px;
+  }
   .woocommerce-cart table.cart td.actions .coupon > .input-text {
     margin: 0 10px;
+  }
+  .woocommerce-cart table.cart td.actions .button {
+    margin-right: 21px;
   }
 }
 @media (min-width: 960px) {

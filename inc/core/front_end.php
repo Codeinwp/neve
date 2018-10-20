@@ -29,17 +29,6 @@ class Front_End {
 
 		load_theme_textdomain( 'neve', get_template_directory() . '/languages' );
 
-		$header_settings = apply_filters(
-			'neve_custom_header_settings',
-			array(
-				'width'       => 2000,
-				'flex-height' => true,
-				'height'      => 1150,
-				'flex-width'  => true,
-				'header-text' => false,
-			)
-		);
-
 		$logo_settings = array(
 			'flex-width'  => true,
 			'flex-height' => true,
@@ -56,7 +45,6 @@ class Front_End {
 		add_theme_support( 'automatic-feed-links' );
 		add_theme_support( 'custom-logo', $logo_settings );
 		add_theme_support( 'html5', array( 'search-form' ) );
-		add_theme_support( 'custom-header', $header_settings );
 		add_theme_support( 'customize-selective-refresh-widgets' );
 		add_theme_support( 'custom-background', $custom_background_settings );
 		add_theme_support( 'themeisle-demo-import', $this->get_ti_demo_content_support_data() );

@@ -24,11 +24,13 @@
   },
   "type": "wordpress-theme",
   "require": {
-    "codeinwp/themeisle-sdk": "master"
+    "codeinwp/themeisle-sdk": "master",
+    "codeinwp/ti-about-page": "master"
   },
   "autoload": {
     "files": [
-      "vendor/codeinwp/themeisle-sdk/load.php"
+      "vendor/codeinwp/themeisle-sdk/load.php",
+      "vendor/codeinwp/ti-about-page/load.php"
     ]
   }
 }
