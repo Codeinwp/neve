@@ -139,12 +139,12 @@ class Header extends Base_View {
 			<?php
 			neve_before_navbar_toggle_trigger();
 			?>
-			<div class="navbar-toggle">
+			<button class="navbar-toggle" tabindex="0" role="button" aria-label="<?php _e( 'Navigation Menu', 'neve' ); ?>" aria-expanded="false">
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				<span class="screen-reader-text"><?php esc_html_e( 'Toggle Navigation', 'neve' ); ?></span>
-			</div>
+			</button>
 			<?php
 			neve_after_navbar_toggle_trigger();
 			?>
@@ -177,7 +177,7 @@ class Header extends Base_View {
 			}
 			$logo = '<img src="' . esc_url( $logo[0] ) . '" alt="' . esc_attr( $alt_attribute ) . '">';
 		} else {
-			$logo  = '<p>' . get_bloginfo( 'name' ) . '</p>';
+			$logo = '<p>' . get_bloginfo( 'name' ) . '</p>';
 			$logo .= '<small>' . get_bloginfo( 'description' ) . '</small>';
 		}
 

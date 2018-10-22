@@ -38,10 +38,11 @@
 		 * Handle the responsive navigation toggle.
 		 */
 		'handleResponsiveNav': function () {
-			$( '.navbar-toggle' ).on( 'click', function () {
+			$( '.navbar-toggle' ).on( 'click touch', function () {
 				$( '.dropdown-open' ).removeClass( 'dropdown-open' );
 				$( '#nv-primary-navigation' ).toggleClass( 'responsive-opened' );
 				$( this ).toggleClass( 'active' );
+				$( this ).data('')
 				$( 'html' ).toggleClass( 'menu-opened' );
 			} );
 		},
