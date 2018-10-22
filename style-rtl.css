@@ -475,7 +475,8 @@ h6 {
   transition: all 0.3s ease;
   border-right: 1px solid #f0f0f0;
 }
-#nv-primary-navigation .dropdown-open > .sub-menu {
+#nv-primary-navigation .dropdown-open > .sub-menu,
+#nv-primary-navigation .caret-wrap.caret-dropdown-open + .sub-menu {
   max-height: 2000px;
   transition: all 0.3s ease;
   opacity: 1;
@@ -505,7 +506,7 @@ h6 {
   top: -6px;
   transition: all 0.3s ease;
 }
-.dropdown-open > .caret-wrap > .caret {
+.dropdown-open > .caret-wrap > .caret, .caret-dropdown-open.caret-wrap > .caret {
   color: #fff;
   transform: rotate(45deg);
 }
@@ -522,7 +523,7 @@ h6 {
   padding: 5px 10px;
   transition: all 0.3s ease;
 }
-.dropdown-open > .caret-wrap {
+.dropdown-open > .caret-wrap, .caret-wrap.caret-dropdown-open {
   background-color: rgba(0, 0, 0, 0.54);
 }
 

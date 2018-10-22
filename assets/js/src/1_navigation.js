@@ -40,7 +40,7 @@
 		'handleResponsiveNav': function () {
 			$( '.navbar-toggle' ).on( 'click', function () {
 				$( '.dropdown-open' ).removeClass( 'dropdown-open' );
-				$( '#nv-primary-navigation' ).toggleClass( 'responsive-opened' );
+				$( '.nv-navbar' ).toggleClass( 'responsive-opened' );
 				$( this ).toggleClass( 'active' );
 				$( 'html' ).toggleClass( 'menu-opened' );
 			} );

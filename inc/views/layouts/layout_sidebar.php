@@ -44,7 +44,7 @@ class Layout_Sidebar extends Base_View {
 		?>
 
 		<div class="nv-sidebar-wrap col-sm-12 <?php echo esc_attr( 'nv-' . $position ) . ' ' . esc_attr( $sidebar_setup['sidebar_slug'] ); ?>"
-			<?php echo apply_filters( 'neve_' . $sidebar_setup['sidebar_slug'] . '_data_attrs', '' ); ?>>
+			<?php echo apply_filters( 'neve_sidebar_data_attrs', '', $sidebar_setup['sidebar_slug'] ); ?>>
 			<?php $this->render_sidebar_close( $sidebar_setup['sidebar_slug'] ); ?>
 			<aside id="secondary" role="complementary">
 				<?php dynamic_sidebar( $sidebar_setup['sidebar_slug'] ); ?>
@@ -62,7 +62,9 @@ class Layout_Sidebar extends Base_View {
 		if ( $slug !== 'shop-sidebar' ) {
 			return;
 		}
-		echo '<div class="sidebar-header"><span class="nv-sidebar-toggle in-sidebar button button-secondary">' . apply_filters( 'neve_filter_woo_sidebar_close_button_text', __( 'Close', 'neve' ) ) . '</span></div>';
+		$label        = apply_filters( 'neve_filter_sidebar_close_button_text', __( 'Close', 'neve' ), $slug );
+		$button_attrs = apply_filters( 'neve_filter_sidebar_close_button_data_attrs', '', $slug );
+		echo '<div class="sidebar-header"><span class="nv-sidebar-toggle in-sidebar button button-secondary" ' . $button_attrs . '>' . esc_html( $label ) . '</span></div>';
 	}
 
 	/**

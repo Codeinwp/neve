@@ -16,14 +16,32 @@ namespace Neve\Compatibility;
  * @package Neve\Compatibility
  */
 class Amp {
+
 	/**
 	 * Run the hooks and filters.
 	 */
 	public function init() {
 		add_filter( 'neve_nav_data_attrs', array( $this, 'add_nav_attrs' ) );
 		add_filter( 'neve_nav_toggle_data_attrs', array( $this, 'add_nav_toggle_attrs' ) );
-		add_filter( 'neve_woocommerce_sidebar_filter_btn_data_attrs', array( $this, 'add_woo_sidebar_filter_btn_attrs' ) );
-		add_filter( 'neve_shop-sidebar_data_attrs', array( $this, 'add_woo_sidebar_attrs' ) );
+		add_filter( 'neve_caret_wrap_filter', array( $this, 'amp_dropdowns' ), 10, 2 );
+
+		add_filter(
+			'neve_woocommerce_sidebar_filter_btn_data_attrs',
+			array(
+				$this,
+				'add_woo_sidebar_filter_btn_attrs',
+			)
+		);
+		add_filter(
+			'neve_filter_sidebar_close_button_data_attrs',
+			array(
+				$this,
+				'sidebar_close_button_attrs',
+			),
+			10,
+			2
+		);
+		add_filter( 'neve_sidebar_data_attrs', array( $this, 'add_woo_sidebar_attrs' ), 10, 2 );
 		add_action( 'wp_head', array( $this, 'render_amp_states' ) );
 	}
 
@@ -55,7 +73,7 @@ class Amp {
 		if ( ! neve_is_amp() ) {
 			return $input;
 		}
-		$input .= ' [class]="( nvAmpMenuExpanded ? \'nv-navbar responsive-opened\' : \'\' )" ';
+		$input .= ' [class]="( nvAmpMenuExpanded ? \'nv-navbar responsive-opened\' : \'nv-navbar\' )" ';
 		$input .= ' aria-expanded="false" [aria-expanded]="nvAmpMenuExpanded ? \'true\' : \'false\'" ';
 
 		return $input;
@@ -92,7 +110,7 @@ class Amp {
 			return $input;
 		}
 
-		$input .= ' on="tap:AMP.setState( { nvAmpWooSidebarExpanded: ! nvAmpWooSidebarExpanded } )" ';
+		$input .= ' on="tap:AMP.setState( { nvAmpWooSidebarExpanded: true } )" ';
 
 		return $input;
 	}
@@ -101,13 +119,72 @@ class Amp {
 	 * Add woo sidebar amp attrs.
 	 *
 	 * @param string $input input.
+	 * @param string $slug  sidebar slug.
 	 *
 	 * @return string
 	 */
-	public function add_woo_sidebar_attrs( $input ) {
+	public function add_woo_sidebar_attrs( $input, $slug ) {
+		if ( ! neve_is_amp() ) {
+			return $input;
+		}
+		if ( $slug !== 'shop-sidebar' ) {
+			return $input;
+		}
+
 		$input .= ' [class]="\'nv-sidebar-wrap col-sm-12 left shop-sidebar \' + ( nvAmpWooSidebarExpanded ? \'sidebar-open\' : \'\' )" ';
 		$input .= ' aria-expanded="false" [aria-expanded]="nvAmpWooSidebarExpanded ? \'true\' : \'false\'" ';
 
 		return $input;
+	}
+
+	/**
+	 * Add amp attributes to sidebar close button.
+	 *
+	 * @param string $input empty string.
+	 * @param string $slug  sidebar slug.
+	 *
+	 * @return string
+	 */
+	public function sidebar_close_button_attrs( $input, $slug ) {
+		if ( ! neve_is_amp() ) {
+			return $input;
+		}
+		if ( $slug !== 'shop-sidebar' ) {
+			return $input;
+		}
+		$input .= ' on="tap:AMP.setState( { nvAmpWooSidebarExpanded: false } )" ';
+
+		return $input;
+	}
+
+	/**
+	 * Implement AMP integration on drop-downs.
+	 *
+	 * @param string $output the output.
+	 * @param string $id     menu item order.
+	 *
+	 * @return mixed
+	 */
+	public function amp_dropdowns( $output, $id ) {
+		// Bail if not AMP.
+		if ( ! neve_is_amp() ) {
+			return $output;
+		}
+
+		// Generate a unique id for drop-down items.
+		$state = 'neveMenuItemExpanded' . $id;
+
+		$attrs = '';
+
+		$attrs .= ' class="caret-wrap"';
+		$attrs .= ' [class]="\'caret-wrap\' + ( ' . $state . ' ? \' caret-dropdown-open\' : \'\')" ';
+		$attrs .= ' on="tap:AMP.setState( { ' . $state . ': ! ' . $state . ' } )"';
+		$attrs .= ' aria-expanded="false" ';
+		$attrs .= ' [aria-expanded]="' . $state . ' ? \'true\' : \'false\'" ';
+
+		$output = str_replace( 'class="caret-wrap ' . $id . '"', $attrs, $output );
+		$output = str_replace( '</li>', '<amp-state id="' . $state . '"><script type="application/json">false</script></amp-state></li>', $output );
+
+		return $output;
 	}
 }
