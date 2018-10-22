@@ -43,17 +43,19 @@ class Shortcodes extends Base_View {
 	public function cart_handler() {
 		$shortcode_markup = '';
 
-		$shortcode_markup .= '<div class="neve-shortcode shortcode-cart menu-item-nav-cart"><a href="' . esc_url( wc_get_cart_url() ) . '"><span class="nv-icon nv-cart"></span>';
+		$shortcode_markup .= '<div class="neve-shortcode shortcode-cart menu-item-nav-cart">';
+		$shortcode_markup .= '<a href="' . esc_url( wc_get_cart_url() ) . '"><span class="nv-icon nv-cart"></span>';
 		$shortcode_markup .= '<span class="cart-count">' . WC()->cart->get_cart_contents_count() . '</span>';
 		$shortcode_markup .= '</a>';
-		ob_start();
-		ob_clean();
-		echo '<div class="nv-nav-cart">';
-		the_widget( 'WC_Widget_Cart', 'title=' );
-		echo '</div>';
-		$cart = ob_get_contents();
-		ob_end_clean();
-		$shortcode_markup .= $cart;
+		$shortcode_markup .= apply_filters( 'neve_expanding_cart', '' );
+		// ob_start();
+		// ob_clean();
+		// echo '<div class="nv-nav-cart">';
+		// the_widget( 'WC_Widget_Cart', 'title=' );
+		// echo '</div>';
+		// $cart = ob_get_contents();
+		// ob_end_clean();
+		// $shortcode_markup .= $cart;
 		$shortcode_markup .= '</div>';
 
 		return $shortcode_markup;

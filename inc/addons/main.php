@@ -22,7 +22,9 @@ class Main extends Addon_Loader {
 	 * @return array
 	 */
 	protected function set_addons() {
-		return array();
+		return array(
+			'Addons\Views\Shortcodes',
+		);
 	}
 
 	/**
