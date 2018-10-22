@@ -51,23 +51,23 @@ class Colors_Background extends Base_Customizer {
 	 */
 	private function controls_colors() {
 		$color_controls = array(
-			'neve_theme_color'      => array(
+			'neve_button_color'     => array(
 				'default'  => '#00a4f7',
 				'priority' => 10,
-				'label'    => __( 'Theme Color', 'neve' ),
+				'label'    => __( 'Button Color', 'neve' ),
 			),
 			'neve_link_color'       => array(
-				'default'  => '#00a4f7',
+				'default'  => '#0366d6',
 				'priority' => 15,
 				'label'    => __( 'Link Color', 'neve' ),
 			),
 			'neve_link_hover_color' => array(
-				'default'  => '#005bf7',
+				'default'  => '#0366d6',
 				'priority' => 20,
 				'label'    => __( 'Link Hover Color', 'neve' ),
 			),
 			'neve_text_color'       => array(
-				'default'  => '#606060',
+				'default'  => '#333333',
 				'priority' => 25,
 				'label'    => __( 'Text Color', 'neve' ),
 			),

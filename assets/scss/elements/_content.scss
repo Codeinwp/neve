@@ -1,14 +1,23 @@
 blockquote {
   text-align: center;
   font-size: 1.1em;
-  margin: $spacing-lg 0;
-  &:before {
+  margin: $spacing 0;
+  cite {
+    padding-top: $spacing-sm;
+    display: block;
+  }
+  &:after, &:before {
     height: 3px;
     width: $spacing-lg;
-    background-color: #333;
+    background-color: $muted-white-med;
     content: " ";
     display: block;
+  }
+  &:before {
     margin: 0 auto $spacing;
+  }
+  &:after {
+    margin: $spacing auto 0;
   }
   > * {
     margin-bottom: 0;
@@ -38,14 +47,13 @@ pre {
   background: #fbfbfb;
   border-radius: 5px;
   border: $muted-border;
-  margin: $spacing 0;
+  margin: $spacing-sm 0;
   white-space: pre-wrap;
   font-size: 0.9em;
   line-height: 2em;
 }
 
-.nv-content-wrap {
-  margin: $spacing 0;
+.nv-content-wrap, .excerpt-wrap {
   &:after {
     content: "";
     clear: both;
@@ -101,9 +109,11 @@ pre {
   text-align: center;
   margin: 0 auto;
 }
+
 .wp-caption {
   max-width: 100%;
 }
+
 .wp-caption-text {
   text-align: center;
   font-size: 0.8em;
@@ -113,4 +123,13 @@ pre {
 .twitter-tweet.twitter-tweet-rendered {
   padding: $spacing-sm 0;
   margin: auto;
+}
+
+hr {
+  border: 0;
+  height: 0;
+  border-top: $muted-border;
+  margin: $spacing 0;
+  display: inline-block;
+  width: 100%;
 }

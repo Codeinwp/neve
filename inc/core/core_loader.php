@@ -67,8 +67,11 @@ class Core_Loader {
 				'Compatibility\WooCommerce',
 				'Compatibility\Elementor',
 				'Compatibility\Amp',
+				'Compatibility\Beaver',
 
 				'Admin\Metabox\Main',
+
+				'Content_Import\Zelle',
 			)
 		);
 	}
@@ -104,8 +107,8 @@ class Core_Loader {
 	 */
 	private function define_hooks() {
 		$admin = new Admin();
-		add_filter( 'init', array( $admin, 'do_about_page' ) );
-		add_action( 'init', array( $admin, 'load_site_import' ), 11 );
+		add_action( 'init', array( $admin, 'load_site_import' ) );
+		add_action( 'init', array( $admin, 'do_about_page' ) );
 		add_action( 'after_switch_theme', array( $admin, 'start_onboarding' ) );
 
 		$front_end = new Front_End();

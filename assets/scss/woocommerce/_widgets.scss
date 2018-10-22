@@ -4,7 +4,7 @@
       background-color: #ccc;
     }
     .ui-slider .ui-slider-handle {
-      background: $theme_color;
+      background: $button_color;
       border: 1px solid #fff;
       top: -5px;
       &:hover {
@@ -12,7 +12,7 @@
       }
     }
     .ui-slider .ui-slider-range {
-      background-color: $theme_color;
+      background-color: $button_color;
     }
     .price_slider_amount {
       display: flex;
