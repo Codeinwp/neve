@@ -77,6 +77,7 @@ class Header extends Base_View {
 				return $items;
 			}
 			$items .= '<li class="menu-item-nav-cart"><a href="' . esc_url( wc_get_cart_url() ) . '"><span class="nv-icon nv-cart"></span>';
+			$items .= '<span class="sr-only">' . __( 'Cart', 'neve' ) . '</span>';
 			$items .= '<span class="cart-count">' . WC()->cart->get_cart_contents_count() . '</span>';
 			$items .= '</a>';
 			if ( ! is_cart() ) {
@@ -139,7 +140,8 @@ class Header extends Base_View {
 			<?php
 			neve_before_navbar_toggle_trigger();
 			?>
-			<button class="navbar-toggle" tabindex="0" role="button" aria-label="<?php _e( 'Navigation Menu', 'neve' ); ?>" aria-expanded="false">
+			<button class="navbar-toggle" tabindex="0" role="button"
+					aria-label="<?php _e( 'Navigation Menu', 'neve' ); ?>" aria-expanded="false">
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
@@ -177,7 +179,7 @@ class Header extends Base_View {
 			}
 			$logo = '<img src="' . esc_url( $logo[0] ) . '" alt="' . esc_attr( $alt_attribute ) . '">';
 		} else {
-			$logo = '<p>' . get_bloginfo( 'name' ) . '</p>';
+			$logo  = '<p>' . get_bloginfo( 'name' ) . '</p>';
 			$logo .= '<small>' . get_bloginfo( 'description' ) . '</small>';
 		}
 
