@@ -35,17 +35,13 @@ class Colors extends Base_Inline {
 			return;
 		}
 		$color_setup = array(
-			'color'            => array(
+			'color'        => array(
 				'css_prop'  => 'color',
 				'selectors' => 'a',
 			),
-			'border-color'     => array(
+			'border-color' => array(
 				'css_prop'  => 'border-color',
 				'selectors' => '.nv-loader',
-			),
-			'background-color' => array(
-				'css_prop'  => 'background-color',
-				'selectors' => '.dropdown-open > .caret-wrap',
 			),
 		);
 
@@ -58,17 +54,6 @@ class Colors extends Base_Inline {
 				),
 			),
 			'.caret-wrap',
-			'desktop'
-		);
-
-		$this->add_style(
-			array(
-				array(
-					'css_prop' => 'background-color',
-					'value'    => 'transparent',
-				),
-			),
-			'.dropdown-open > .caret-wrap',
 			'desktop'
 		);
 	}
@@ -130,7 +115,7 @@ class Colors extends Base_Inline {
 			),
 			'background'   => array(
 				'css_prop'  => 'background-color',
-				'selectors' => '.button.button-primary, .button.button-secondary:hover, .icon-bar, button, input[type=button], .btn, input[type="submit"], .nv-tags-list a:hover',
+				'selectors' => '.button.button-primary, .button.button-secondary:hover, button, input[type=button], .btn, input[type="submit"], .nv-tags-list a:hover',
 			),
 		);
 

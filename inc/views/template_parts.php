@@ -30,7 +30,7 @@ class Template_Parts extends Base_View {
 	public function render_post() {
 		?>
 		<article
-				id="post-<?php echo esc_attr( get_the_ID() ); ?>'"
+				id="post-<?php echo esc_attr( get_the_ID() ); ?>"
 				class="<?php echo esc_attr( $this->post_class() ); ?>">
 			<div class="article-content-col">
 				<div class="content">
@@ -120,7 +120,7 @@ class Template_Parts extends Base_View {
 				'echo' => false,
 			)
 		) . '">';
-		$markup .= get_the_post_thumbnail( get_the_ID(), 'neve-blog' );
+		$markup .= get_the_post_thumbnail( get_the_ID(), 'neve-blog', array( 'alt' => get_the_title() ) );
 		$markup .= '</a>';
 		$markup .= '</div>';
 
@@ -184,7 +184,8 @@ class Template_Parts extends Base_View {
 		}
 		?>
 		<a href="<?php the_permalink(); ?>"
-				class="button button-secondary"><?php esc_html_e( 'Read more', 'neve' ); ?></a>
+				class="button button-secondary"><?php esc_html_e( 'Read more', 'neve' ); ?>
+			<span class="screen-reader-text"><?php echo __( 'About', 'neve' ) . ' ' . get_the_title(); ?></span></a>
 		<?php
 	}
 

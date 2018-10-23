@@ -10,7 +10,7 @@ License URI:    http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain:    neve
 WordPress Available:  no
 Requires License:     no
-Tags: blog, custom-logo, e-commerce, rtl-language-support, post-formats, grid-layout, one-column, two-columns, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready
+Tags: blog, custom-logo, e-commerce, rtl-language-support, accessibility-ready, post-formats, grid-layout, one-column, two-columns, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready
 
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
@@ -298,6 +298,29 @@ h5 {
 
 h6 {
   font-size: 0.75rem;
+}
+
+.show-on-focus {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  top: 0;
+  right: 0;
+}
+.show-on-focus:focus {
+  z-index: 20;
+  width: auto;
+  height: auto;
+  clip: auto;
+}
+
+a.neve-skip-link {
+  background-color: #24292e;
+  color: #fff;
+  padding: 10px 20px;
 }
 
 @font-face {
@@ -1907,4 +1930,7 @@ hr {
     flex: 0 0 100%;
     max-width: 100%;
   }
+}
+fieldset .submit-form {
+  padding-top: 27px;
 }
