@@ -45,7 +45,7 @@ class Layout_Sidebar extends Base_View {
 
 		<div class="nv-sidebar-wrap col-sm-12 <?php echo esc_attr( 'nv-' . $position ) . ' ' . esc_attr( $sidebar_setup['sidebar_slug'] ); ?>">
 			<?php $this->render_sidebar_close( $sidebar_setup['sidebar_slug'] ); ?>
-			<aside id="secondary">
+			<aside id="secondary" role="complementary">
 				<?php dynamic_sidebar( $sidebar_setup['sidebar_slug'] ); ?>
 			</aside>
 		</div>

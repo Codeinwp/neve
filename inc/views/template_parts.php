@@ -184,7 +184,8 @@ class Template_Parts extends Base_View {
 		}
 		?>
 		<a href="<?php the_permalink(); ?>"
-				class="button button-secondary"><?php esc_html_e( 'Read more', 'neve' ); ?></a>
+				class="button button-secondary"><?php esc_html_e( 'Read more', 'neve' ); ?>
+			<span class="screen-reader-text"><?php echo __( 'About', 'neve' ) . ' ' . get_the_title(); ?></span></a>
 		<?php
 	}
 

@@ -26,7 +26,7 @@ class Header extends Base_View {
 	 */
 	public function render_navigation() {
 		?>
-		<nav class="nv-navbar">
+		<nav class="nv-navbar" role="navigation">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 nv-nav-wrap <?php echo esc_attr( $this->get_navbar_class() ); ?>">
@@ -65,7 +65,7 @@ class Header extends Base_View {
 		}
 
 		if ( 'search' === $additional_item ) {
-			$items .= '<li class="menu-item-nav-search" tabindex="0"><a><span class="nv-icon nv-search"></span></a>';
+			$items .= '<li class="menu-item-nav-search" tabindex="0" aria-label="search"><a><span class="nv-icon nv-search"></span></a>';
 			$items .= '<div class="nv-nav-search">';
 			$items .= get_search_form( false );
 			$items .= '</div>';
@@ -77,7 +77,7 @@ class Header extends Base_View {
 				return $items;
 			}
 			$items .= '<li class="menu-item-nav-cart"><a href="' . esc_url( wc_get_cart_url() ) . '"><span class="nv-icon nv-cart"></span>';
-			$items .= '<span class="sr-only">' . __( 'Cart', 'neve' ) . '</span>';
+			$items .= '<span class="screen-reader-text">' . __( 'Cart', 'neve' ) . '</span>';
 			$items .= '<span class="cart-count">' . WC()->cart->get_cart_contents_count() . '</span>';
 			$items .= '</a>';
 			if ( ! is_cart() ) {
