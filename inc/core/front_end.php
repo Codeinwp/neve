@@ -51,7 +51,7 @@ class Front_End {
 		add_theme_support( 'align-wide' );
 		add_theme_support( 'fl-theme-builder-headers' );
 		add_theme_support( 'fl-theme-builder-footers' );
-		add_theme_support( 'amp' );
+		add_theme_support( 'amp', array( 'paired' => true ) );
 
 		register_nav_menus(
 			array(
