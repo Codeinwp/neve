@@ -8,24 +8,18 @@
 			<Sidebar :site_data="previewData">
 			</Sidebar>
 		</div>
-		<import-modal v-if="modalOpen">
-		</import-modal>
 	</div>
 </template>
 
 <script>
 	import Loader from './loader.vue'
 	import Sidebar from './preview-sidebar.vue'
-	import ImportModal from './import-modal.vue'
 
 	export default {
 		name: 'preview',
 		computed: {
 			previewData: function () {
 				return this.$store.state.previewData
-			},
-			modalOpen: function () {
-				return this.$store.state.importModalState
 			},
 			loadingString: function() {
 				return this.$store.state.strings.loading
@@ -34,7 +28,6 @@
 		components: {
 			Loader,
 			Sidebar,
-			ImportModal,
 		},
 		methods: {},
 	}

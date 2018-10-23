@@ -52,7 +52,7 @@ class Colors_Background extends Base_Customizer {
 	private function controls_colors() {
 		$color_controls = array(
 			'neve_button_color'     => array(
-				'default'  => '#00a4f7',
+				'default'  => '#0366d6',
 				'priority' => 10,
 				'label'    => __( 'Button Color', 'neve' ),
 			),
@@ -67,7 +67,7 @@ class Colors_Background extends Base_Customizer {
 				'label'    => __( 'Link Hover Color', 'neve' ),
 			),
 			'neve_text_color'       => array(
-				'default'  => '#333333',
+				'default'  => '#404248',
 				'priority' => 25,
 				'label'    => __( 'Text Color', 'neve' ),
 			),

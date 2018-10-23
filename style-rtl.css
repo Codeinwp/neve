@@ -321,6 +321,7 @@ a.neve-skip-link {
   background-color: #24292e;
   color: #fff;
   padding: 10px 20px;
+
 }
 
 .alignfull, .alignwide {
@@ -1164,7 +1165,7 @@ hr {
   border: 0;
   height: 0;
   border-top: 1px solid #f0f0f0;
-  margin: 40px 0;
+  margin: 10px 0;
   display: inline-block;
   width: 100%;
 }
