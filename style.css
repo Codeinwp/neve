@@ -1859,5 +1859,8 @@ hr {
     max-width: 100%;
   }
 }
+fieldset .submit-form {
+  padding-top: 27px;
+}
 
 /*# sourceMappingURL=style.css.map */
