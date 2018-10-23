@@ -48,14 +48,6 @@ class Shortcodes extends Base_View {
 		$shortcode_markup .= '<span class="cart-count">' . WC()->cart->get_cart_contents_count() . '</span>';
 		$shortcode_markup .= '</a>';
 		$shortcode_markup .= apply_filters( 'neve_expanding_cart', '' );
-		// ob_start();
-		// ob_clean();
-		// echo '<div class="nv-nav-cart">';
-		// the_widget( 'WC_Widget_Cart', 'title=' );
-		// echo '</div>';
-		// $cart = ob_get_contents();
-		// ob_end_clean();
-		// $shortcode_markup .= $cart;
 		$shortcode_markup .= '</div>';
 
 		return $shortcode_markup;
