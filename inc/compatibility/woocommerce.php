@@ -175,7 +175,6 @@ class Woocommerce {
 	public function add_button_color( $color_setup ) {
 		$color_setup['background']['selectors'] .=
 			', .nv-nav-cart .woocommerce-mini-cart__buttons a.button:last-child, 
-			
 			.woocommerce #respond input#submit,
 			.woocommerce #respond input#submit:focus,
 			.woocommerce #respond input#submit:hover, 
@@ -200,7 +199,13 @@ class Woocommerce {
 			.woocommerce input.button.alt,
 			.woocommerce input.button.alt:focus,
 			.woocommerce input.button.alt:hover, 
-			.woocommerce button.button.alt.disabled,
+			.woocommerce button.button:disabled, 
+			.woocommerce button.button:disabled[disabled],
+			.woocommerce button.button:disabled[disabled]:focus,
+			.woocommerce button.button:disabled[disabled]:hover,
+			.woocommerce button.button.alt.disabled,	
+			.woocommerce button.button.alt.disabled:focus,
+			.woocommerce button.button.alt.disabled:hover,
 			.woocommerce button.button.alt.disabled:focus,
 			.woocommerce button.button.alt.disabled:hover,
 			.woocommerce a.button.checkout-button.alt, 
@@ -223,7 +228,8 @@ class Woocommerce {
 			', .nv-nav-cart .woocommerce-mini-cart__buttons a.button:first-child, 
 			.woocommerce-ordering .orderby,
 			.woocommerce-cart table.cart td.actions .coupon > .input-text + .button,
-			.woocommerce a.added_to_cart';
+			.woocommerce a.added_to_cart,
+			#nv-primary-navigation .woocommerce-mini-cart__buttons a.button:not(.checkout)';
 
 		return $color_setup;
 	}
@@ -313,7 +319,6 @@ class Woocommerce {
 		add_action( 'woocommerce_before_checkout_form', array( $this, 'move_coupon' ) );
 		add_action( 'woocommerce_checkout_order_review', array( $this, 'clear_coupon' ) );
 	}
-
 
 	/**
 	 * Checkout page
