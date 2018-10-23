@@ -1139,7 +1139,7 @@ hr {
   border: 0;
   height: 0;
   border-top: 1px solid #f0f0f0;
-  margin: 40px 0;
+  margin: 10px 0;
   display: inline-block;
   width: 100%;
 }
@@ -1856,6 +1856,9 @@ hr {
     flex: 0 0 100%;
     max-width: 100%;
   }
+}
+fieldset .submit-form {
+  padding-top: 27px;
 }
 
 /*# sourceMappingURL=style.css.map */

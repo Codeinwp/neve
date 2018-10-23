@@ -8,6 +8,9 @@
     "neve_text_color": "#555555",
     "neve_footer_widget_columns": 3,
     "neve_footer_content_type": "none",
+    "neve_blog_archive_sidebar_layout": "full-width",
+    "neve_single_post_sidebar_layout": "full-width",
+    "neve_generated_style_version": 1539261918,
     "__ti_import_menus_location": {
       "primary": "primary-menu",
       "footer": "footer-menu"
