@@ -43,3 +43,7 @@
 .woocommerce ul.products li.product .button.loading {
   padding-right: $spacing;
 }
+
+#nv-primary-navigation .woocommerce-mini-cart__buttons a.button:not(.checkout):hover {
+  color: #fff;
+}

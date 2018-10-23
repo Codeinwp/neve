@@ -122,7 +122,7 @@ class Colors extends Base_Inline {
 		$color_setup = array(
 			'color'        => array(
 				'css_prop'  => 'color',
-				'selectors' => '.button.button-secondary, .nv-tags-list a, #nv-primary-navigation a.button.wc-forward:not(.checkout)',
+				'selectors' => '.button.button-secondary, .nv-tags-list a, #nv-primary-navigation a.button',
 			),
 			'border-color' => array(
 				'css_prop'  => 'border-color',
