@@ -420,6 +420,10 @@ h6 {
   color: #fff;
 }
 
+.nv-top-bar-content .shortcode-search {
+  display: none;
+}
+
 .nv-nav-header {
   display: flex;
   min-height: 70px;
@@ -1637,6 +1641,10 @@ pre {
     height: 100vh;
   }
 
+  .nv-top-bar-content .shortcode-search {
+    display: inline-block;
+  }
+
   .nv-nav-wrap.nav-right {
     flex-direction: row-reverse;
     justify-content: center;
@@ -1712,6 +1720,10 @@ pre {
 
   .archive-container, .single-page-container {
     padding-top: 48px;
+  }
+
+  .nv-top-bar-content .shortcode-search {
+    display: inline-block;
   }
 }
 @media (min-width: 1200px) {

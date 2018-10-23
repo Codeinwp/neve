@@ -23,6 +23,7 @@
   @include comments--laptop();
   @include single-post--laptop();
   @include page--laptop();
+  @include top-bar--laptop();
 }
 
 @media (min-width: #{$desktop}) {

@@ -53,3 +53,17 @@
   }
   @include cart-widget();
 }
+
+.nv-top-bar-content{
+  .shortcode-search{
+    display: none;
+  }
+}
+
+@mixin top-bar--laptop(){
+  .nv-top-bar-content{
+    .shortcode-search{
+      display: inline-block;
+    }
+  }
+}
