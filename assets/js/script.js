@@ -53,6 +53,11 @@
                 $(".dropdown-open").removeClass("dropdown-open");
                 $("#nv-primary-navigation").toggleClass("responsive-opened");
                 $(this).toggleClass("active");
+                if (this.attributes["aria-expanded"].value === "true") {
+                    $(this).attr("aria-expanded", "false");
+                } else {
+                    $(this).attr("aria-expanded", "true");
+                }
                 $("html").toggleClass("menu-opened");
             });
         },

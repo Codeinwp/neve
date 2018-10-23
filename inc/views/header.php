@@ -26,7 +26,7 @@ class Header extends Base_View {
 	 */
 	public function render_navigation() {
 		?>
-		<nav class="nv-navbar" role="navigation">
+		<nav class="nv-navbar">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 nv-nav-wrap <?php echo esc_attr( $this->get_navbar_class() ); ?>">
@@ -117,6 +117,7 @@ class Header extends Base_View {
 	 * Render primary menu markup.
 	 */
 	private function render_primary_menu() {
+		echo '<div role="navigation" aria-label="' . __( 'Primary Menu', 'neve' ) . '">';
 		wp_nav_menu(
 			array(
 				'theme_location' => 'primary',
@@ -125,6 +126,7 @@ class Header extends Base_View {
 				'walker'         => new Nav_Walker(),
 			)
 		);
+		echo '</div>';
 	}
 
 	/**
@@ -140,7 +142,7 @@ class Header extends Base_View {
 			<?php
 			neve_before_navbar_toggle_trigger();
 			?>
-			<button class="navbar-toggle" tabindex="0" role="button"
+			<button class="navbar-toggle"
 					aria-label="<?php _e( 'Navigation Menu', 'neve' ); ?>" aria-expanded="false">
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
@@ -179,7 +181,8 @@ class Header extends Base_View {
 			}
 			$logo = '<img src="' . esc_url( $logo[0] ) . '" alt="' . esc_attr( $alt_attribute ) . '">';
 		} else {
-			$logo  = '<p>' . get_bloginfo( 'name' ) . '</p>';
+			$logo = '<p>' . get_bloginfo( 'name' ) . '</p>';
+
 			$logo .= '<small>' . get_bloginfo( 'description' ) . '</small>';
 		}
 

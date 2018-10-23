@@ -29,8 +29,8 @@ class Template_Parts extends Base_View {
 	 */
 	public function render_post() {
 		?>
-		<article role="article"
-				id="post-<?php echo esc_attr( get_the_ID() ); ?>'"
+		<article
+				id="post-<?php echo esc_attr( get_the_ID() ); ?>"
 				class="<?php echo esc_attr( $this->post_class() ); ?>">
 			<div class="article-content-col">
 				<div class="content">

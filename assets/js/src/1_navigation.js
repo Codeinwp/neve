@@ -42,7 +42,11 @@
 				$( '.dropdown-open' ).removeClass( 'dropdown-open' );
 				$( '#nv-primary-navigation' ).toggleClass( 'responsive-opened' );
 				$( this ).toggleClass( 'active' );
-				$( this ).data('')
+				if ( this.attributes[ 'aria-expanded' ].value === 'true' ) {
+					$( this ).attr( 'aria-expanded', 'false' );
+				} else {
+					$( this ).attr( 'aria-expanded', 'true' );
+				}
 				$( 'html' ).toggleClass( 'menu-opened' );
 			} );
 		},
@@ -75,10 +79,10 @@
 				return false;
 			} );
 
-			$( '.menu-item-nav-search input[type=search]' ).on('blur', function() {
+			$( '.menu-item-nav-search input[type=search]' ).on( 'blur', function () {
 				$( '.menu-item-nav-search' ).removeClass( 'active' );
 				$( '.nav-clickaway-overlay' ).remove();
-			});
+			} );
 		},
 		/**
 		 * Create helper overlay used for touch dropdowns.
