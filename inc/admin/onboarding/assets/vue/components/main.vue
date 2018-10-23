@@ -19,6 +19,8 @@
 		<a @click="cancelOnboarding" v-if="this.$store.state.onboard === 'yes' && ! isLoading" class="skip-onboarding">
 			{{strings.later}}
 		</a>
+		<import-modal v-if="modalOpen">
+		</import-modal>
 	</div>
 </template>
 
@@ -26,6 +28,7 @@
 	import Loader from './loader.vue'
 	import SiteItem from './site-item.vue'
 	import Preview from './preview.vue'
+    import ImportModal from './import-modal.vue'
 
 	module.exports = {
 		name: 'app',
@@ -47,16 +50,20 @@
 			loadingString: function () {
 				return this.$store.state.strings.loading;
 			},
+            modalOpen: function () {
+                return this.$store.state.importModalState
+            },
 		},
 		methods: {
 			cancelOnboarding: function () {
 				this.$store.state.onboard = null;
-			}
+			},
 		},
 		components: {
 			Loader,
 			SiteItem,
 			Preview,
+            ImportModal,
 		},
 	}
 </script>

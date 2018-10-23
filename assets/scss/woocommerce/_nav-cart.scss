@@ -15,7 +15,8 @@
   z-index: 1000;
 }
 
-#nv-primary-navigation a.button {
+#nv-primary-navigation a.button{
+  padding: 6px 12px;
   &.wc-forward {
     color: $button_color;
     &:hover {
