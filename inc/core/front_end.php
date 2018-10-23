@@ -86,8 +86,6 @@ class Front_End {
 		wp_style_add_data( 'neve-style', 'rtl', 'replace' );
 		wp_style_add_data( 'neve-style', 'suffix', '.min' );
 		wp_enqueue_style( 'neve-style' );
-
-		wp_enqueue_style( 'neve-icons', NEVE_ASSETS_URL . 'neve-icons/neve-icons' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
 	}
 
 	/**
