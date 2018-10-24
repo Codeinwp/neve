@@ -133,7 +133,7 @@ class Header extends Base_View {
 	 * Render navbar toggle markup.
 	 */
 	private function render_navbar_toggle() {
-		if ( ! has_nav_menu( 'primary' ) && current_user_can( 'edit_theme_options' ) ) {
+		if ( ! has_nav_menu( 'primary' ) ) {
 			return;
 		}
 
