@@ -98,8 +98,8 @@ class Header extends Base_View {
 	/**
 	 * Get the navbar class.
 	 *
-
-	 */	 * @return string
+	 * @return string
+	 */
 	private function get_navbar_class() {
 		return 'nav-' . $this->get_navbar_layout();
 	}

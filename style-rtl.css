@@ -445,13 +445,13 @@ a.neve-skip-link {
 .shortcode-cart .woocommerce.widget_shopping_cart .total {
   border-top: 1px solid #f0f0f0;
   border-bottom: 1px solid #f0f0f0;
-  padding-bottom: 8px;
-  margin: 0 auto 8px;
+  padding-bottom: 10px;
+  margin: 0 auto 10px;
   text-align: center;
 }
 .shortcode-cart .woocommerce-mini-cart__buttons {
   display: flex;
-  padding: 8px 16px 0;
+  padding: 10px 20px 0;
 }
 .shortcode-cart .woocommerce-mini-cart__buttons a.button {
   margin: 0;
@@ -461,7 +461,7 @@ a.neve-skip-link {
   margin-right: 5px;
   font-size: .8em;
   font-weight: 600;
-  padding: 9px 18px;
+  padding: 6px 12px;
   transition: all .15s ease-in-out;
   text-align: center;
   vertical-align: middle;
@@ -469,17 +469,18 @@ a.neve-skip-link {
   border-radius: .25rem;
   text-transform: uppercase;
   cursor: pointer;
-  width: auto;
-  background-color: #00a4f7;
+  line-height: 1.68421;
+  background-color: #0366d6;
   color: #fff;
 }
 .shortcode-cart .woocommerce-mini-cart__buttons a.button:last-child:hover {
+  text-decoration: none;
   opacity: .9;
 }
 .shortcode-cart .woocommerce-mini-cart__buttons a.button:first-child {
   font-size: .8em;
   font-weight: 600;
-  padding: 9px 18px;
+  padding: 6px 12px;
   transition: all .15s ease-in-out;
   text-align: center;
   vertical-align: middle;
@@ -487,14 +488,16 @@ a.neve-skip-link {
   border-radius: .25rem;
   text-transform: uppercase;
   cursor: pointer;
-  width: auto;
-  border: 1px solid #00a4f7;
+  line-height: 1.68421;
+  border: 1px solid rgba(27, 31, 35, 0.2);
   background-color: transparent;
   font-weight: 600;
-  color: #00a4f7;
+  color: #0366d6;
 }
 .shortcode-cart .woocommerce-mini-cart__buttons a.button:first-child:hover {
-  background-color: #00a4f7;
+  opacity: 1;
+  text-decoration: none;
+  background-color: #0366d6;
   color: #fff;
 }
 
@@ -1904,6 +1907,10 @@ hr {
     margin-bottom: 0;
   }
 
+  .nv-top-bar-content .shortcode-search {
+    display: inline-block;
+  }
+
   .nv-sidebar-wrap {
     max-width: 30%;
   }
@@ -1937,10 +1944,6 @@ hr {
   }
   .nv-sidebar-wrap.nv-left {
     padding-left: 40px;
-  }
-
-  .nv-top-bar-content .shortcode-search {
-    display: inline-block;
   }
 }
 @media (min-width: 1200px) {

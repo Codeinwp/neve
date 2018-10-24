@@ -350,6 +350,7 @@ class Woocommerce {
 	 */
 	public function cart_link_fragment( $fragments ) {
 		$fragments['.cart-icon-wrapper']  = '<a href="' . esc_url( wc_get_cart_url() ) . '" class="cart-icon-wrapper"><span class="nv-icon nv-cart"></span>';
+		$fragments['.cart-icon-wrapper'] .= '<span class="screen-reader-text">' . __( 'Cart', 'neve' ) . '</span>';
 		$fragments['.cart-icon-wrapper'] .= '<span class="cart-count">' . WC()->cart->get_cart_contents_count() . '</span>';
 		$fragments['.cart-icon-wrapper'] .= '</a>';
 
