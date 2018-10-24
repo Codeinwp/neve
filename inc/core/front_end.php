@@ -29,17 +29,6 @@ class Front_End {
 
 		load_theme_textdomain( 'neve', get_template_directory() . '/languages' );
 
-		$header_settings = apply_filters(
-			'neve_custom_header_settings',
-			array(
-				'width'       => 2000,
-				'flex-height' => true,
-				'height'      => 1150,
-				'flex-width'  => true,
-				'header-text' => false,
-			)
-		);
-
 		$logo_settings = array(
 			'flex-width'  => true,
 			'flex-height' => true,
@@ -56,11 +45,12 @@ class Front_End {
 		add_theme_support( 'automatic-feed-links' );
 		add_theme_support( 'custom-logo', $logo_settings );
 		add_theme_support( 'html5', array( 'search-form' ) );
-		add_theme_support( 'custom-header', $header_settings );
 		add_theme_support( 'customize-selective-refresh-widgets' );
 		add_theme_support( 'custom-background', $custom_background_settings );
 		add_theme_support( 'themeisle-demo-import', $this->get_ti_demo_content_support_data() );
 		add_theme_support( 'align-wide' );
+		add_theme_support( 'fl-theme-builder-headers' );
+		add_theme_support( 'fl-theme-builder-footers' );
 
 		register_nav_menus(
 			array(
@@ -81,15 +71,13 @@ class Front_End {
 	public function enqueue_scripts() {
 
 		if ( class_exists( 'WooCommerce' ) ) {
-			wp_enqueue_style( 'neve-woocommerce', NEVE_ASSETS_URL . '/css/woocommerce' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
+			wp_enqueue_style( 'neve-woocommerce', NEVE_ASSETS_URL . 'css/woocommerce' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
 		}
 
 		wp_register_style( 'neve-style', get_template_directory_uri() . '/style' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
 		wp_style_add_data( 'neve-style', 'rtl', 'replace' );
 		wp_style_add_data( 'neve-style', 'suffix', '.min' );
 		wp_enqueue_style( 'neve-style' );
-
-		wp_enqueue_style( 'neve-icons', NEVE_ASSETS_URL . '/neve-icons/neve-icons' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
 
 		wp_register_script( 'neve-script', NEVE_ASSETS_URL . 'js/script' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.js', apply_filters( 'neve_filter_main_script_dependencies', array( 'jquery' ) ), NEVE_VERSION, false );
 		wp_localize_script(

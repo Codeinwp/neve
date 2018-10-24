@@ -1,7 +1,7 @@
 {
   "name": "neve",
   "nicename": "Neve",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Neve theme by ThemeIsle",
   "category": "themes",
   "repository": {
@@ -43,13 +43,17 @@
   "scripts": {
     "phpcbf": "phpcbf || true ",
     "phpcs": "phpcs",
-    "buildCssJs": "grunt buildScripts"
+    "jshint": "grunt jshint",
+    "buildCssJs": "grunt buildScripts",
+    "addNewStyles": "git add **/*.css && git add assets/**/*.css"
   },
   "pre-commit": {
     "run": [
       "phpcbf",
       "phpcs",
-      "buildCssJs"
+      "jshint",
+      "buildCssJs",
+      "addNewStyles"
     ]
   },
   "husky": {

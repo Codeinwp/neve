@@ -3,35 +3,39 @@ $debug: 'false';
 
 // Font size bases.
 $font-size-base: 1rem !default;
-$h1-font-size: $font-size-base * 2.25 !default;
-$h2-font-size: $font-size-base * 2 !default;
-$h3-font-size: $font-size-base * 1.75 !default;
-$h4-font-size: $font-size-base * 1.5 !default;
-$h5-font-size: $font-size-base * 1.25 !default;
+
+$h1-font-size: $font-size-base * 2 !default;
+$h2-font-size: $font-size-base * 1.75 !default;
+$h3-font-size: $font-size-base * 1.5 !default;
+$h4-font-size: $font-size-base * 1.25 !default;
+$h5-font-size: $font-size-base !default;
 $h6-font-size: $font-size-base !default;
 
 // Mobile font size bases.
-$h1-mobile-font-size: $font-size-base * 2 !default;
-$h2-mobile-font-size: $font-size-base * 1.75 !default;
-$h3-mobile-font-size: $font-size-base * 1.5 !default;
-$h4-mobile-font-size: $font-size-base * 1.25 !default;
-$h5-mobile-font-size: $font-size-base * 1 !default;
+$h1-mobile-font-size: $font-size-base * 1.5 !default;
+$h2-mobile-font-size: $font-size-base * 1.3  !default;
+$h3-mobile-font-size: $font-size-base * 1.1 !default;
+$h4-mobile-font-size: $font-size-base !default;
+$h5-mobile-font-size: $font-size-base * 0.75 !default;
 $h6-mobile-font-size: $font-size-base * 0.75 !default;
 
-$paragraph-margin-bottom: 1rem !default;
+$paragraph-margin-bottom: 20px !default;
 
 // Spacing variables.
-$spacing-xs: 8px;
+$spacing-xs: 10px;
 $spacing-sm: $spacing-xs * 2;
 $spacing: $spacing-sm * 2;
 $spacing-lg: $spacing-sm * 3;
 
-$theme_color: #00a4f7;
-$link_color: #00a4f7;
-$link_hover_color: #005bf7;
+$button_color: #0366d6;
+$link_color: #0366d6;
+$link_hover_color: #0366d6;
 $navbar_background_color: #fff;
 $muted-white: #f0f0f0;
-$body_color: #606060;
+$muted-white-med: #c9c9c9;
+$body-color: #404248;
+$gray-color: rgba(0,0,0,.54);
+$git-black: #24292e;
 $success: #2dce89;
 $info: #11cdef;
 $error: #f5365c;
@@ -44,7 +48,7 @@ $muted-border: 1px solid #f0f0f0;
 $muted-border-med: 1px solid #c9c9c9;
 
 $tablet-sm: "576px";
-$tablet: "768px";
+$tablet: "769px";
 $laptop: "960px";
-$desktop : "1200px"
+$desktop: "1200px"
 

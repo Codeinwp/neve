@@ -10,7 +10,6 @@ $container_class = apply_filters( 'neve_container_class_filter', 'container', 's
 
 get_header();
 
-do_action( 'neve_page_header', 'single-post' );
 ?>
 	<div class="<?php echo esc_attr( $container_class ); ?> single-post-container">
 		<div class="row">

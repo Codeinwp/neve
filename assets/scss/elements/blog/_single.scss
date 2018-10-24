@@ -1,5 +1,15 @@
-.entry-title {
-  word-wrap: break-word;
+.single {
+  .nv-content-wrap {
+    padding-top: $spacing-sm;
+  }
+
+  .nv-meta-list {
+    margin-top: $spacing-xs;
+  }
+
+  .entry-title {
+    transition: $transition_med;
+  }
 }
 
 .single-post-container {
@@ -12,7 +22,6 @@
 
 .attachment-neve-blog {
   display: flex;
-  margin: 0 auto;
 }
 
 .nv-content-wrap .page-numbers {
@@ -27,8 +36,21 @@
   }
 }
 
-.post-password-form input {
-  margin-bottom: $spacing-xs;
+.post-password-form {
+  margin-bottom: $spacing;
+  text-align: center;
+  input[type=submit] {
+    height: 39px;
+    margin-left: $spacing-xs;
+  }
+  p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  label > input {
+    margin-left: $spacing-xs;
+  }
 }
 
 .nv-tags-list {
@@ -44,17 +66,17 @@
     border-radius: 3px;
     margin-bottom: $spacing-xs;
     margin-right: $spacing-xs;
-    border: 1px solid $theme_color;
-    color: $theme_color;
+    border: 1px solid $button_color;
+    color: $button_color;
     &:hover {
-      background: $theme_color;
+      background: $button_color;
       color: #fff;
     }
   }
 }
 
 @mixin single-post--laptop() {
-  .single-post-container {
-    padding-top: $spacing-lg;
+  .single .entry-title {
+    font-size: 2em;
   }
 }

@@ -1,6 +1,5 @@
 .menu-item-nav-cart {
   .cart-count {
-    border-radius: 2px;
     background: #fff;
     border: $muted-border;
     font-size: 0.55em;
@@ -15,8 +14,23 @@
   z-index: 1000;
 }
 
+#nv-primary-navigation a.button{
+  padding: 6px 12px;
+  &.wc-forward {
+    color: $button_color;
+    &:hover {
+      color: #fff;
+    }
+  }
+  &.checkout {
+    color: #fff;
+  }
+}
+
 @mixin nav-cart--laptop() {
-  .menu-item-nav-cart:hover .nv-nav-cart {
+  .menu-item-nav-cart:hover .nv-nav-cart,
+  .menu-item-nav-cart a:focus + .nv-nav-cart,
+  .nv-nav-cart:focus-within {
     opacity: 1;
     visibility: visible;
   }
@@ -26,7 +40,7 @@
     opacity: 0;
     visibility: hidden;
     cursor: default;
-    border-top: 3px solid $theme_color;
+    border-top: $muted-border;
     transition: $transition_med;
     position: absolute;
     z-index: 100;
@@ -66,7 +80,7 @@
       grid-column-end: -1;
     }
     dl.variation {
-      border:none;
+      border: none;
       padding: 0;
       grid-row-start: 3;
       display: flex;

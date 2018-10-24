@@ -7,6 +7,7 @@ module.exports = function ( grunt ) {
 		config = require( 'grunt-theme-fleet' );
 	config = config();
 
+  config.files.php.push( '!**/node_modules/**/*' );
 	config.files.js.push( '!inc/admin/onboarding/assets/js/bundle.js' );
 	config.files.js.push( '!inc/admin/onboarding/webpack.config.js' );
 	config.files.js.push( '!inc/admin/onboarding/node_modules/**/*' );

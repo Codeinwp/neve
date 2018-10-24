@@ -81,11 +81,6 @@ function generateLinkNode(elementId, googleFontName) {
 }
 
 var layoutRanges = {
-    neve_sidebar_width: {
-        selector: ".nv-sidebar-wrap",
-        cssProp: "max-width",
-        unit: "%"
-    },
     neve_container_width: {
         selector: ".container",
         cssProp: "max-width",
@@ -195,6 +190,12 @@ var layoutLivePreview = function($) {
                 };
                 $.neveCustomizeUtilities.setLiveCss(settings, values);
             });
+        });
+    });
+    wp.customize("neve_sidebar_width", function(value) {
+        value.bind(function(newval) {
+            $(".nv-sidebar-wrap, .nv-sidebar-wrap.shop-sidebar").css("max-width", newval + "%");
+            $("#primary .container .col:not(:only-child)").css("max-width", 100 - newval + "%");
         });
     });
 };
