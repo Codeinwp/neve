@@ -76,7 +76,7 @@ class Header extends Base_View {
 			if ( ! class_exists( 'WooCommerce' ) ) {
 				return $items;
 			}
-			$items .= '<li class="menu-item-nav-cart"><a href="' . esc_url( wc_get_cart_url() ) . '"><span class="nv-icon nv-cart"></span>';
+			$items .= '<li class="menu-item-nav-cart"><a href="' . esc_url( wc_get_cart_url() ) . '" class="cart-icon-wrapper"><span class="nv-icon nv-cart"></span>';
 			$items .= '<span class="cart-count">' . WC()->cart->get_cart_contents_count() . '</span>';
 			$items .= '</a>';
 			if ( ! is_cart() ) {
