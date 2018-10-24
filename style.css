@@ -732,6 +732,7 @@ input, textarea, select, button {
   text-transform: uppercase;
   cursor: pointer;
   line-height: 1.68421;
+  font-family: inherit;
 }
 .button.button-primary {
   background-color: #0366d6;
@@ -766,6 +767,7 @@ button, input[type=button], .btn, input[type="submit"] {
   text-transform: uppercase;
   cursor: pointer;
   line-height: 1.68421;
+  font-family: inherit;
   background-color: #0366d6;
   color: #fff;
 }
