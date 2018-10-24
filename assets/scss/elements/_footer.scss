@@ -7,11 +7,10 @@ footer {
 }
 
 .footer-content-wrap.footer-second-section {
+  border-top: none;
   background: $git-black;
   color: #fff;
   text-align: center;
-  .nv-footer-content {
-  }
   a {
     color: #fff;
   }
@@ -27,5 +26,5 @@ footer {
 
 .nv-footer-content .footer-menu {
   justify-content: center;
-  @include horizontal-list( $spacing-xs, true );
+  @include horizontal-list($spacing-xs, true);
 }

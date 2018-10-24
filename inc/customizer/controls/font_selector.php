@@ -60,7 +60,7 @@ class Font_Selector extends \WP_Customize_Control {
 				</span>
 				<div class="neve-fs-options-wrapper">
 						<span class="neve-fs-option"
-								data-source="<?php echo 'system'; ?>"
+								data-source="<?php echo esc_attr( 'system' ); ?>"
 								data-control="<?php echo esc_attr( $this->id ); ?>"
 								data-option="<?php esc_attr_e( 'Default', 'neve' ); ?>"><?php esc_html_e( 'Default', 'neve' ); ?></span>
 					<?php
@@ -90,7 +90,7 @@ class Font_Selector extends \WP_Customize_Control {
 					<span class="neve-fs-option"
 							data-source="<?php echo esc_attr( $source ); ?>"
 							data-control="<?php echo esc_attr( $this->id ); ?>"
-							data-filter="<?php echo strtolower( esc_attr( $option ) ); ?>"
+							data-filter="<?php echo esc_attr( strtolower( $option ) ); ?>"
 							data-option="<?php echo esc_attr( $option ); ?>"><?php echo esc_html( $option ); ?></span>
 				<?php } ?>
 				</span>

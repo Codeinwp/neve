@@ -646,6 +646,7 @@ footer {
 }
 
 .footer-content-wrap.footer-second-section {
+  border-top: none;
   background: #24292e;
   color: #fff;
   text-align: center;
