@@ -25,13 +25,6 @@ class Zelle {
 	protected $name = 'Zelle Frontpage';
 
 	/**
-	 * The url from where we fetch the Elementor template.
-	 *
-	 * @var string
-	 */
-	protected $json_template_url = 'https://raw.githubusercontent.com/Codeinwp/obfx-templates/master/zerif-elementor/template.json';
-
-	/**
 	 * Previous theme content.
 	 *
 	 * @var array
@@ -56,7 +49,7 @@ class Zelle {
 	 * Zelle constructor.
 	 *
 	 * @access public
-	 * @since 1.1.86
+	 * @since  1.1.86
 	 */
 	public function init() {
 		add_action( 'after_switch_theme', array( $this, 'maybe_switched_from_zelle' ) );
@@ -186,7 +179,7 @@ class Zelle {
 		require_once( ABSPATH . 'wp-admin' . '/includes/image.php' );
 		require_once( ABSPATH . '/wp-admin/includes/file.php' );
 
-		$template                   = download_url( esc_url( $this->json_template_url ) );
+		$template                   = NEVE_INC_DIR . 'content_import/template.json';
 		$_FILES['file']['tmp_name'] = $template;
 
 		global $wp_filesystem;
@@ -249,9 +242,9 @@ class Zelle {
 	 * Returns the content from Our focus, Testimonials, Team and About in json format
 	 *
 	 * @param string $widget_ids List with widget ids.
-	 * @param string $prefix Prefix of widgets in that sidebar.
+	 * @param string $prefix     Prefix of widgets in that sidebar.
 	 *
-	 * @since 1.1.51
+	 * @since  1.1.51
 	 * @access private
 	 * @return array|string
 	 */
@@ -302,9 +295,9 @@ class Zelle {
 	 * Return content to add to social repeater. Used for team members.
 	 *
 	 * @param string $social_name Name of social link.
-	 * @param string $value Link of social.
+	 * @param string $value       Link of social.
 	 *
-	 * @since 1.1.51
+	 * @since  1.1.51
 	 * @access private
 	 * @return array
 	 */
@@ -369,7 +362,7 @@ class Zelle {
 	 *
 	 * @param string $key Name of the inputs.
 	 *
-	 * @since 1.1.51
+	 * @since  1.1.51
 	 * @access private
 	 * @return bool|string
 	 */
@@ -1003,7 +996,7 @@ class Zelle {
 	 * This function maps a image id and url to an Elementor widget array and it returns the mapped array.
 	 *
 	 * @param array  $widget The element array.
-	 * @param string $url The image url to import.
+	 * @param string $url    The image url to import.
 	 *
 	 * @return array
 	 */
