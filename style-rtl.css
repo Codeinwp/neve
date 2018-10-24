@@ -230,6 +230,7 @@ th {
 html {
   font-size: 15px;
   overflow-x: hidden;
+  word-break: break-word;
   -webkit-tap-highlight-color: transparent;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -835,7 +836,6 @@ button:hover, input[type=button]:hover, .btn:hover, input[type="submit"]:hover {
 }
 
 .posts-wrapper > article {
-  word-break: break-word;
   margin-bottom: 30px;
 }
 
