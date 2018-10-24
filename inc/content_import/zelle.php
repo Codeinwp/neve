@@ -153,7 +153,7 @@ class Zelle {
 			'neve-import-notice',
 			'neveImport',
 			array(
-				'ajaxurl'      => admin_url( 'admin-ajax.php' ),
+				'ajaxurl'      => esc_url( admin_url( 'admin-ajax.php' ) ),
 				'dismissNonce' => wp_create_nonce( 'dismiss_zelle_import' ),
 				'importNonce'  => wp_create_nonce( 'import_zelle_frontpage' ),
 			)

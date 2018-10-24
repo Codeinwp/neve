@@ -45,7 +45,7 @@ class Template_Parts extends Base_View {
 	 * Echo the post class.
 	 */
 	private function post_class() {
-		$class  = join( ' ', get_post_class() );
+		$class = join( ' ', get_post_class() );
 		$class .= ' col-12 layout-' . $this->get_layout();
 		if ( $this->get_layout() === 'grid' ) {
 			$class .= ' ' . $this->get_grid_columns_class();
@@ -114,12 +114,12 @@ class Template_Parts extends Base_View {
 		if ( ! has_post_thumbnail() ) {
 			return;
 		}
-		$markup  = '<div class="nv-post-thumbnail-wrap">';
-		$markup .= '<a href="' . get_the_permalink() . '" title="' . the_title_attribute(
-			array(
-				'echo' => false,
-			)
-		) . '">';
+		$markup = '<div class="nv-post-thumbnail-wrap">';
+		$markup .= '<a href="' . esc_url( get_the_permalink() ) . '" title="' . the_title_attribute(
+				array(
+					'echo' => false,
+				)
+			) . '">';
 		$markup .= get_the_post_thumbnail( get_the_ID(), 'neve-blog', array( 'alt' => get_the_title() ) );
 		$markup .= '</a>';
 		$markup .= '</div>';
@@ -142,7 +142,7 @@ class Template_Parts extends Base_View {
 	private function title() {
 		?>
 		<h3 class="blog-entry-title entry-title">
-			<a href="<?php the_permalink(); ?>">
+			<a href="<?php esc_url( the_permalink() ); ?>">
 				<?php the_title(); ?>
 			</a>
 		</h3>
@@ -183,7 +183,7 @@ class Template_Parts extends Base_View {
 			return;
 		}
 		?>
-		<a href="<?php the_permalink(); ?>"
+		<a href="<?php esc_url( the_permalink() ); ?>"
 				class="button button-secondary"><?php esc_html_e( 'Read more', 'neve' ); ?>
 			<span class="screen-reader-text"><?php echo __( 'About', 'neve' ) . ' ' . get_the_title(); ?></span></a>
 		<?php
@@ -214,7 +214,7 @@ class Template_Parts extends Base_View {
 			return '&nbsp;&hellip;';
 		}
 
-		$moretag = '<a href="' . get_the_permalink() . '">&nbsp;&hellip;</a>';
+		$moretag = '<a href="' . esc_url( get_the_permalink() ) . '">&nbsp;&hellip;</a>';
 
 		return $moretag;
 	}
