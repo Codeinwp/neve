@@ -196,8 +196,11 @@ class Template_Parts extends Base_View {
 	 */
 	private function get_grid_columns_class() {
 		$column_numbers = get_theme_mod( 'neve_grid_layout', 1 );
+		if ( $column_numbers === 0 ) {
+			$column_numbers = 1;
+		}
 
-		return 'col-sm-' . ( 12 / $column_numbers );
+		return 'col-sm-' . ( 12 / absint( $column_numbers ) );
 	}
 
 	/**

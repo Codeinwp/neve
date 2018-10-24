@@ -231,7 +231,7 @@ class Zelle {
 			update_option( 'show_on_front', 'page' );
 
 			// on success we return the page url because we'll redirect to it.
-			wp_send_json_success( get_permalink( $post_id ) );
+			wp_send_json_success( esc_url( get_permalink( $post_id ) ) );
 		}
 
 		wp_send_json_error( 'something went wrong' );
