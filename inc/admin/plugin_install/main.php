@@ -102,7 +102,7 @@ class Main {
 				'paged'         => '1',
 				'_wpnonce'      => wp_create_nonce( 'activate-plugin_' . $plugin_link_suffix ),
 			),
-			network_admin_url( 'plugins.php' )
+			esc_url( network_admin_url( 'plugins.php' ) )
 		);
 		switch ( $state ) {
 			case 'install':
@@ -122,14 +122,14 @@ class Main {
 						'paged'         => '1',
 						'_wpnonce'      => wp_create_nonce( 'deactivate-plugin_' . $plugin_link_suffix ),
 					),
-					network_admin_url( 'plugins.php' )
+					esc_url( network_admin_url( 'plugins.php' ) )
 				);
 
 				$button .= '<a  data-redirect="' . esc_url( $redirect ) . '" data-slug="' . esc_attr( $slug ) . '" class="deactivate-now button" href="' . esc_url( $nonce ) . '" data-name="' . esc_attr( $slug ) . '" aria-label="Deactivate ' . esc_attr( $slug ) . '">' . esc_html__( 'Deactivate', 'neve' ) . '</a>';
 				break;
 
 			case 'enable_cpt':
-				$url     = admin_url( 'admin.php?page=jetpack#/settings' );
+				$url     = esc_url( admin_url( 'admin.php?page=jetpack#/settings' ) );
 				$button .= '<a  data-redirect="' . esc_url( $redirect ) . '" class="button" href="' . esc_url( $url ) . '">' . esc_html__( 'Activate', 'neve' ) . ' ' . esc_html__( 'Jetpack Portfolio', 'neve' ) . '</a>';
 				break;
 		}// End switch().

@@ -61,7 +61,7 @@ class Layout_Sidebar extends Base_View {
 		if ( $slug !== 'shop-sidebar' ) {
 			return;
 		}
-		echo '<div class="sidebar-header"><span class="nv-sidebar-toggle in-sidebar button button-secondary">' . apply_filters( 'neve_filter_woo_sidebar_close_button_text', __( 'Close', 'neve' ) ) . '</span></div>';
+		echo '<div class="sidebar-header"><span class="nv-sidebar-toggle in-sidebar button button-secondary">' . esc_html( apply_filters( 'neve_filter_woo_sidebar_close_button_text', __( 'Close', 'neve' ) ) ) . '</span></div>';
 	}
 
 	/**

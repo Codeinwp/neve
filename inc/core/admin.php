@@ -178,7 +178,7 @@ class Admin {
 		$query_args = array(
 			'onboarding' => 'yes',
 		);
-		$base_url   = admin_url( 'themes.php?page=' . $theme_slug . '-welcome' );
+		$base_url   = esc_url( admin_url( 'themes.php?page=' . $theme_slug . '-welcome' ) );
 
 		$onboarding_url = add_query_arg( $query_args, $base_url ) . '#sites_library';
 		wp_safe_redirect( $onboarding_url );

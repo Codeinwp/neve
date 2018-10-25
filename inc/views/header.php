@@ -117,7 +117,7 @@ class Header extends Base_View {
 	 * Render primary menu markup.
 	 */
 	private function render_primary_menu() {
-		echo '<div role="navigation" aria-label="' . __( 'Primary Menu', 'neve' ) . '">';
+		echo '<div role="navigation" aria-label="' . esc_html( __( 'Primary Menu', 'neve' ) ) . '">';
 		wp_nav_menu(
 			array(
 				'theme_location' => 'primary',
@@ -133,7 +133,7 @@ class Header extends Base_View {
 	 * Render navbar toggle markup.
 	 */
 	private function render_navbar_toggle() {
-		if ( ! has_nav_menu( 'primary' ) && current_user_can( 'edit_theme_options' ) ) {
+		if ( ! has_nav_menu( 'primary' ) ) {
 			return;
 		}
 
@@ -181,9 +181,9 @@ class Header extends Base_View {
 			}
 			$logo = '<img src="' . esc_url( $logo[0] ) . '" alt="' . esc_attr( $alt_attribute ) . '">';
 		} else {
-			$logo = '<p>' . get_bloginfo( 'name' ) . '</p>';
+			$logo = '<p>' . esc_html( get_bloginfo( 'name' ) ) . '</p>';
 
-			$logo .= '<small>' . get_bloginfo( 'description' ) . '</small>';
+			$logo .= '<small>' . esc_html( get_bloginfo( 'description' ) ) . '</small>';
 		}
 
 		return $logo;

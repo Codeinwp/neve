@@ -58,7 +58,7 @@ class Ordering extends \WP_Customize_Control {
 		foreach ( $this->components as $component ) {
 			$markup .= '<li class="ui-state-default order-component' . esc_attr( $this->get_component_status_class( $component ) ) . '" data-id="' . esc_attr( $component ) . '">';
 			$markup .= '<span class="toggle-display"></span>';
-			$markup .= '<p>' . ucwords( $component ) . '</p>';
+			$markup .= '<p>' . esc_html( ucwords( $component ) ) . '</p>';
 			$markup .= '<span class="dashicons dashicons-menu drag"></span>';
 			$markup .= '</li>';
 		}
