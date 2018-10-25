@@ -7,8 +7,8 @@
 
 namespace Neve\Content_Import;
 
+use Elementor\TemplateLibrary\Source_Local;
 use Neve\Admin\Plugin_Install\Main as Plugin_Install;
-
 
 /**
  * Class to import Zelle to an Elementor template.
@@ -23,13 +23,6 @@ class Zelle {
 	 * @var string
 	 */
 	protected $name = 'Zelle Frontpage';
-
-	/**
-	 * The url from where we fetch the Elementor template.
-	 *
-	 * @var string
-	 */
-	protected $json_template_url = 'https://raw.githubusercontent.com/Codeinwp/obfx-templates/master/zerif-elementor/template.json';
 
 	/**
 	 * Previous theme content.
@@ -56,7 +49,7 @@ class Zelle {
 	 * Zelle constructor.
 	 *
 	 * @access public
-	 * @since 1.1.86
+	 * @since  1.1.86
 	 */
 	public function init() {
 		add_action( 'after_switch_theme', array( $this, 'maybe_switched_from_zelle' ) );
@@ -160,7 +153,7 @@ class Zelle {
 			'neve-import-notice',
 			'neveImport',
 			array(
-				'ajaxurl'      => admin_url( 'admin-ajax.php' ),
+				'ajaxurl'      => esc_url( admin_url( 'admin-ajax.php' ) ),
 				'dismissNonce' => wp_create_nonce( 'dismiss_zelle_import' ),
 				'importNonce'  => wp_create_nonce( 'import_zelle_frontpage' ),
 			)
@@ -171,8 +164,7 @@ class Zelle {
 	 * The callback of an ajax request when the user requests an import action.
 	 */
 	public function import_zelle_frontpage() {
-
-		$params = $_REQUEST;
+		$params = $_POST;
 
 		if ( ! isset( $params['nonce'] ) || ! wp_verify_nonce( $params['nonce'], 'import_zelle_frontpage' ) ) {
 			wp_send_json_error( 'wrong nonce' );
@@ -183,17 +175,16 @@ class Zelle {
 			$this->previous_theme_content = get_option( 'theme_mods_zerif-lite' );
 		}
 
-		require_once( ABSPATH . 'wp-admin' . '/includes/image.php' );
+		require_once( ABSPATH . '/wp-admin/includes/image.php' );
 		require_once( ABSPATH . '/wp-admin/includes/file.php' );
 
-		$template                   = download_url( esc_url( $this->json_template_url ) );
-		$_FILES['file']['tmp_name'] = $template;
+		$local_template = NEVE_INC_DIR . 'content_import/template.json';
 
 		global $wp_filesystem;
 
 		WP_Filesystem();
 
-		$data                  = json_decode( $wp_filesystem->get_contents( $template ), true );
+		$data                  = json_decode( $wp_filesystem->get_contents( $local_template ), true );
 		$this->default_content = $data['content'];
 		$this->content         = $this->default_content;
 
@@ -217,17 +208,21 @@ class Zelle {
 		$data['content'] = array_values( $this->content );
 
 		require_once( ABSPATH . 'wp-admin' . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . 'file.php' );
+		$uploads      = wp_upload_dir();
+		$path_to_file = $uploads['basedir'] . '/zelle.json';
 
-		$wp_filesystem->put_contents( $template, json_encode( $data ), 0644 );
+		$wp_filesystem->put_contents( $path_to_file, json_encode( $data ), 0644 );
+		$_FILES['file']['tmp_name'] = $path_to_file;
 
-		$elementor = new \Elementor\TemplateLibrary\Source_Local;
+		$elementor = new Source_Local();
 
-		$el_template_post = $elementor->import_template( $this->name, $template );
+		$el_template_post = $elementor->import_template( $this->name, $path_to_file );
 
 		if ( empty( $el_template_post ) ) {
 			wp_send_json_error( 'cannot create template' );
 		}
 
+		unlink( $path_to_file );
 		$post_id = $this->insert_page( $el_template_post[0]['template_id'] );
 
 		if ( $post_id ) {
@@ -238,7 +233,7 @@ class Zelle {
 			update_option( 'show_on_front', 'page' );
 
 			// on success we return the page url because we'll redirect to it.
-			wp_send_json_success( get_permalink( $post_id ) );
+			wp_send_json_success( esc_url( get_permalink( $post_id ) ) );
 		}
 
 		wp_send_json_error( 'something went wrong' );
@@ -249,9 +244,9 @@ class Zelle {
 	 * Returns the content from Our focus, Testimonials, Team and About in json format
 	 *
 	 * @param string $widget_ids List with widget ids.
-	 * @param string $prefix Prefix of widgets in that sidebar.
+	 * @param string $prefix     Prefix of widgets in that sidebar.
 	 *
-	 * @since 1.1.51
+	 * @since  1.1.51
 	 * @access private
 	 * @return array|string
 	 */
@@ -302,9 +297,9 @@ class Zelle {
 	 * Return content to add to social repeater. Used for team members.
 	 *
 	 * @param string $social_name Name of social link.
-	 * @param string $value Link of social.
+	 * @param string $value       Link of social.
 	 *
-	 * @since 1.1.51
+	 * @since  1.1.51
 	 * @access private
 	 * @return array
 	 */
@@ -369,7 +364,7 @@ class Zelle {
 	 *
 	 * @param string $key Name of the inputs.
 	 *
-	 * @since 1.1.51
+	 * @since  1.1.51
 	 * @access private
 	 * @return bool|string
 	 */
@@ -956,7 +951,6 @@ class Zelle {
 
 			return;
 		}
-
 		$data = $this->content[8]['elements'][0]['elements'];
 
 		if ( ! empty( $this->previous_theme_content['zerif_contactus_title'] ) ) {
@@ -1003,7 +997,7 @@ class Zelle {
 	 * This function maps a image id and url to an Elementor widget array and it returns the mapped array.
 	 *
 	 * @param array  $widget The element array.
-	 * @param string $url The image url to import.
+	 * @param string $url    The image url to import.
 	 *
 	 * @return array
 	 */

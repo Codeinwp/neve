@@ -102,7 +102,7 @@ class Themeisle_OB_Admin {
 		$api = array(
 			'root'       => esc_url_raw( rest_url( Themeisle_Onboarding::API_ROOT ) ),
 			'nonce'      => wp_create_nonce( 'wp_rest' ),
-			'homeUrl'    => home_url(),
+			'homeUrl'    => esc_url( home_url() ),
 			'i18ln'      => $this->get_strings(),
 			'onboarding' => 'no',
 		);

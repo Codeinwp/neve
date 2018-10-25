@@ -51,7 +51,7 @@ class Post_Meta extends Base_View {
 					break;
 				case 'date':
 					$markup .= '<li class="meta date">';
-					$markup .= '<span>' . get_the_date() . '</span>';
+					$markup .= '<span>' . esc_html( get_the_date() ) . '</span>';
 					$markup .= '</li>';
 					break;
 				case 'category':
@@ -95,7 +95,7 @@ class Post_Meta extends Base_View {
 			$comments = __( '1 Comment', 'neve' );
 		}
 
-		return '<a href="' . get_comments_link() . '">' . $comments . '</a>';
+		return '<a href="' . esc_url( get_comments_link() ) . '">' . $comments . '</a>';
 	}
 
 	/**
@@ -133,7 +133,7 @@ class Post_Meta extends Base_View {
 		$html .= '<span>' . __( 'Tags', 'neve' ) . ':</span>';
 		foreach ( $tags as $tag ) {
 			$tag_link = get_tag_link( $tag->term_id );
-			$html    .= '<a href=' . esc_url( $tag_link ) . ' title="' . esc_html( $tag->name ) . '" class=' . esc_attr( $tag->slug ) . '>';
+			$html    .= '<a href=' . esc_url( $tag_link ) . ' title="' . esc_attr( $tag->name ) . '" class=' . esc_attr( $tag->slug ) . '>';
 			$html    .= esc_html( $tag->name ) . '</a>';
 		}
 		$html .= ' </div> ';
