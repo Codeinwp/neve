@@ -65,7 +65,7 @@ class Header extends Base_View {
 		}
 
 		if ( 'search' === $additional_item ) {
-			$items .= '<li class="menu-item-nav-search" tabindex="0" aria-label="search">';
+			$items .= '<li>';
 			$items .= do_shortcode( '[neve_search]' );
 			$items .= '</li>';
 		}

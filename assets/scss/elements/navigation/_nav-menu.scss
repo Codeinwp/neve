@@ -104,7 +104,7 @@
   }
 
   #nv-primary-navigation {
-    @include horizontal-list($spacing-xs, true);
+    @include horizontal-list($spacing-xs, false);
     overflow-y: inherit;
     max-height: inherit;
     margin-left: auto;

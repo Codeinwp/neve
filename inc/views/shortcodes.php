@@ -28,7 +28,7 @@ class Shortcodes extends Base_View {
 	public function search_handler() {
 		$shortcode_markup = '';
 
-		$shortcode_markup .= '<div class="neve-shortcode shortcode-search menu-item-nav-search"><a><span class="nv-icon nv-search"></span></a>';
+		$shortcode_markup .= '<div class="neve-shortcode shortcode-search menu-item-nav-search" aria-label="search" tabindex="0"><a><span class="nv-icon nv-search"></span></a>';
 		$shortcode_markup .= '<div class="nv-nav-search">';
 		$shortcode_markup .= get_search_form( false );
 		$shortcode_markup .= '</div>';

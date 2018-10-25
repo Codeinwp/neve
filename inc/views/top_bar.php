@@ -17,6 +17,20 @@ class Top_Bar extends Base_View {
 	 */
 	public function init() {
 		add_action( 'neve_do_top_bar', array( $this, 'render_top_bar' ) );
+		$this->filter_content();
+	}
+
+	/**
+	 * Apply filters on the top bar content.
+	 */
+	private function filter_content() {
+		add_filter( 'neve_top_bar_content', 'wptexturize' );
+		add_filter( 'neve_top_bar_content', 'convert_smilies' );
+		add_filter( 'neve_top_bar_content', 'convert_chars' );
+		add_filter( 'neve_top_bar_content', 'wpautop' );
+		add_filter( 'neve_top_bar_content', 'shortcode_unautop' );
+		add_filter( 'neve_top_bar_content', 'do_shortcode' );
+
 	}
 
 	/**
@@ -74,7 +88,7 @@ class Top_Bar extends Base_View {
 				'theme_location' => 'top-bar',
 				'menu_id'        => 'nv-top-bar-menu',
 				'container'      => 'ul',
-				'depth'          => 1,
+				'depth'          => -1,
 				'fallback_cb'    => '__return_false',
 			)
 		);
@@ -91,15 +105,10 @@ class Top_Bar extends Base_View {
 
 		$markup = '';
 
-		$content = wptexturize( $content );
-		$content = convert_smilies( $content );
-		$content = convert_chars( $content );
-		$content = wpautop( $content );
-		$content = shortcode_unautop( $content );
-		$content = prepend_attachment( $content );
+		$content = apply_filters( 'neve_top_bar_content', $content );
 
 		$markup .= '<div class="nv-top-bar-content">';
-		$markup .= do_shortcode( $content );
+		$markup .= $content;
 		$markup .= '</div>';
 
 		echo $markup;

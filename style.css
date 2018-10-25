@@ -386,11 +386,11 @@ a.neve-skip-link {
   list-style-type: none;
   flex: 1;
 }
-#nv-top-bar-menu > li:not(:last-child) {
-  padding-right: 10px;
+.content-menu #nv-top-bar-menu > li {
+  margin-left: 10px;
 }
-#nv-top-bar-menu > li:not(:first-child) {
-  padding-left: 10px;
+.menu-content #nv-top-bar-menu > li {
+  margin-right: 10px;
 }
 
 .nv-top-bar-content {
@@ -422,12 +422,21 @@ a.neve-skip-link {
   justify-content: flex-start;
   align-items: center;
 }
+.nv-tb-wrap.content-menu .neve-shortcode {
+  margin-right: 20px;
+}
+.nv-tb-wrap.menu-content .neve-shortcode {
+  margin-left: 20px;
+}
 
 .neve-shortcode {
   display: inline-block;
   position: relative;
   cursor: pointer;
-  margin-left: 15px;
+}
+.neve-shortcode > a:hover {
+  text-decoration: none;
+  opacity: .8;
 }
 
 .shortcode-cart .woocommerce-mini-cart__buttons {
@@ -471,6 +480,7 @@ a.neve-skip-link {
   text-transform: uppercase;
   cursor: pointer;
   line-height: 1.68421;
+  font-family: inherit;
   background-color: #0366d6;
   color: #fff;
 }
@@ -490,6 +500,7 @@ a.neve-skip-link {
   text-transform: uppercase;
   cursor: pointer;
   line-height: 1.68421;
+  font-family: inherit;
   border: 1px solid rgba(27, 31, 35, 0.2);
   background-color: transparent;
   font-weight: 600;
@@ -1654,8 +1665,10 @@ hr {
     margin-left: auto;
     justify-content: flex-start;
   }
-  #nv-primary-navigation li {
+  #nv-primary-navigation > li:not(:last-child) {
     padding-right: 10px;
+  }
+  #nv-primary-navigation > li:not(:first-child) {
     padding-left: 10px;
   }
   #nv-primary-navigation.responsive-opened {
@@ -1824,7 +1837,6 @@ hr {
 
   .nv-nav-wrap.nav-right {
     flex-direction: row-reverse;
-    justify-content: center;
   }
 
   .nav-right #nv-primary-navigation {

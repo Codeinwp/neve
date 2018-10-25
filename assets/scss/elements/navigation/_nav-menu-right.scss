@@ -16,7 +16,6 @@
 @mixin nav-menu-right--laptop() {
   .nv-nav-wrap.nav-right {
     flex-direction: row-reverse;
-    justify-content: center;
   }
 
   .nav-right #nv-primary-navigation {
