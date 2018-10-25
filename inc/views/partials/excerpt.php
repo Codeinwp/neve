@@ -32,7 +32,7 @@ class Excerpt extends Base_View {
 	 * @param string $context the provided context in do_action.
 	 */
 	public function render_post_excerpt( $context ) {
-		echo $this->get_post_excerpt( $context );
+		echo wp_kses_post( $this->get_post_excerpt( $context ) );
 	}
 
 	/**

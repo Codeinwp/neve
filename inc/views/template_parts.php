@@ -115,7 +115,7 @@ class Template_Parts extends Base_View {
 			return;
 		}
 		$markup  = '<div class="nv-post-thumbnail-wrap">';
-		$markup .= '<a href="' . get_the_permalink() . '" title="' . the_title_attribute(
+		$markup .= '<a href="' . esc_url( get_the_permalink() ) . '" title="' . the_title_attribute(
 			array(
 				'echo' => false,
 			)
@@ -142,7 +142,7 @@ class Template_Parts extends Base_View {
 	private function title() {
 		?>
 		<h3 class="blog-entry-title entry-title">
-			<a href="<?php the_permalink(); ?>">
+			<a href="<?php esc_url( the_permalink() ); ?>">
 				<?php the_title(); ?>
 			</a>
 		</h3>
@@ -183,7 +183,7 @@ class Template_Parts extends Base_View {
 			return;
 		}
 		?>
-		<a href="<?php the_permalink(); ?>"
+		<a href="<?php esc_url( the_permalink() ); ?>"
 				class="button button-secondary"><?php esc_html_e( 'Read more', 'neve' ); ?>
 			<span class="screen-reader-text"><?php echo __( 'About', 'neve' ) . ' ' . get_the_title(); ?></span></a>
 		<?php
@@ -196,8 +196,11 @@ class Template_Parts extends Base_View {
 	 */
 	private function get_grid_columns_class() {
 		$column_numbers = get_theme_mod( 'neve_grid_layout', 1 );
+		if ( $column_numbers === 0 ) {
+			$column_numbers = 1;
+		}
 
-		return 'col-sm-' . ( 12 / $column_numbers );
+		return 'col-sm-' . ( 12 / absint( $column_numbers ) );
 	}
 
 	/**
@@ -214,7 +217,7 @@ class Template_Parts extends Base_View {
 			return '&nbsp;&hellip;';
 		}
 
-		$moretag = '<a href="' . get_the_permalink() . '">&nbsp;&hellip;</a>';
+		$moretag = '<a href="' . esc_url( get_the_permalink() ) . '">&nbsp;&hellip;</a>';
 
 		return $moretag;
 	}

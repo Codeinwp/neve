@@ -140,7 +140,7 @@ class Page_Header extends Base_View {
 			$title = single_term_title( '', false );
 		}
 
-		return $title;
+		return esc_html( $title );
 	}
 
 	/**

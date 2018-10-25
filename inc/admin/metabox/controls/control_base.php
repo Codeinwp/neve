@@ -140,7 +140,7 @@ abstract class Control_Base {
 				return;
 			}
 
-			update_post_meta( $post_id, $this->id, $value );
+			update_post_meta( $post_id, $this->id, sanitize_text_field( $value ) );
 
 			return;
 		}

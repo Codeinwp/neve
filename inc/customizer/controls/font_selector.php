@@ -51,7 +51,7 @@ class Font_Selector extends \WP_Customize_Control {
 		<div class="neve-ss-wrap">
 			<input class="neve-fs-main-input" type="text"
 					name="<?php echo esc_attr( $this->id ); ?>"
-					value="<?php echo ( ! empty( $value ) ) ? esc_html( $value ) : __( 'Default', 'neve' ); ?>"
+					value="<?php echo ( ! empty( $value ) ) ? esc_attr( $value ) : __( 'Default', 'neve' ); ?>"
 					readonly>
 			<span class="neve-fs-input-addon"><i class="dashicons dashicons-arrow-down"></i></span>
 			<div class="neve-fs-dropdown">
@@ -60,9 +60,9 @@ class Font_Selector extends \WP_Customize_Control {
 				</span>
 				<div class="neve-fs-options-wrapper">
 						<span class="neve-fs-option"
-								data-source="<?php echo 'system'; ?>"
+								data-source="<?php echo esc_attr( 'system' ); ?>"
 								data-control="<?php echo esc_attr( $this->id ); ?>"
-								data-option="<?php esc_html_e( 'Default', 'neve' ); ?>"><?php esc_html_e( 'Default', 'neve' ); ?></span>
+								data-option="<?php esc_attr_e( 'Default', 'neve' ); ?>"><?php esc_html_e( 'Default', 'neve' ); ?></span>
 					<?php
 					$this->render_dropdown_options_group( $std_fonts, esc_html__( 'Standard Fonts', 'neve' ), 'system' );
 					$this->render_dropdown_options_group( $google_fonts, esc_html__( 'Google Fonts', 'neve' ), 'google-fonts' );
@@ -90,8 +90,8 @@ class Font_Selector extends \WP_Customize_Control {
 					<span class="neve-fs-option"
 							data-source="<?php echo esc_attr( $source ); ?>"
 							data-control="<?php echo esc_attr( $this->id ); ?>"
-							data-filter="<?php echo strtolower( esc_html( $option ) ); ?>"
-							data-option="<?php echo esc_html( $option ); ?>"><?php echo esc_html( $option ); ?></span>
+							data-filter="<?php echo esc_attr( strtolower( $option ) ); ?>"
+							data-option="<?php echo esc_attr( $option ); ?>"><?php echo esc_html( $option ); ?></span>
 				<?php } ?>
 				</span>
 			<?php
