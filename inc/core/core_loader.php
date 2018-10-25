@@ -69,6 +69,7 @@ class Core_Loader {
 				'Compatibility\Beaver',
 
 				'Admin\Metabox\Main',
+				'Admin\Notice\Notice',
 
 				'Content_Import\Zelle',
 			)
