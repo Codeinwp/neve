@@ -26,6 +26,10 @@ class Admin {
 		 * About page instance
 		 */
 		$config = array(
+			'welcome_notice'      => array(
+				'type'            => 'custom',
+				'render_callback' => array( $this, 'render_notice_content' ),
+			),
 			'getting_started'     => array(
 				'type'    => 'columns-2',
 				'title'   => __( 'Getting Started', 'neve' ),
@@ -157,6 +161,13 @@ class Admin {
 			$about_page = new \Ti_About_Page();
 			$about_page->init( $config );
 		}
+	}
+
+	/**
+	 * Custom notice content render
+	 */
+	public function render_notice_content() {
+		echo '<h1>Test Custom Notice Content</h1>';
 	}
 
 	/**
