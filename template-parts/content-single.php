@@ -7,7 +7,7 @@
  */
 
 do_action( 'neve_before_content', 'single-post' ); ?>
-	<div class="nv-content-wrap" itemprop="articleBody">
+	<div class="nv-content-wrap" itemprop="text">
 		<?php the_content(); ?>
 		<?php do_action( 'neve_do_pagination', 'single' ); ?>
 	</div>

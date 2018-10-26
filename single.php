@@ -17,7 +17,7 @@ get_header();
 			<article
 					itemscope itemtype="https://schema.org/CreativeWork"
 					id="post-<?php echo esc_attr( get_the_ID() ); ?>"
-					class="<?php echo esc_attr(  join( ' ', get_post_class('nv-single-post-wrap col') ) ); ?>" class="">
+					class="<?php echo esc_attr( join( ' ', get_post_class( 'nv-single-post-wrap col' ) ) ); ?>" class="">
 				<?php
 				if ( have_posts() ) {
 					while ( have_posts() ) {
