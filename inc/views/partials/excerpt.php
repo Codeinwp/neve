@@ -32,7 +32,7 @@ class Excerpt extends Base_View {
 	 * @param string $context the provided context in do_action.
 	 */
 	public function render_post_excerpt( $context ) {
-		echo wp_kses_post( $this->get_post_excerpt( $context ) );
+		echo $this->get_post_excerpt( $context );
 	}
 
 	/**
@@ -45,9 +45,9 @@ class Excerpt extends Base_View {
 	private function get_post_excerpt( $context ) {
 		$length = $this->get_excerpt_lenght();
 
-		$output  = '';
-		$output .= '<div class="excerpt-wrap">';
-		$output .= $this->get_excerpt( $length );
+		$output = '';
+		$output .= '<div class="excerpt-wrap entry-summary" itemprop="text">';
+		$output .= wp_kses_post( $this->get_excerpt( $length ) );
 		$output .= '</div>';
 
 		return $output;

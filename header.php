@@ -22,10 +22,10 @@
 	<?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>>
+<body itemtype="https://schema.org/Blog" itemscope <?php body_class(); ?>>
 <div class="wrapper">
-	<header class="header" role="banner">
-		<a class="neve-skip-link show-on-focus" href="#primary" tabindex="0"><?php echo __( 'Skip to content', 'neve' ); ?></a>
+	<header class="header" role="banner" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+		<a class="neve-skip-link show-on-focus" href="#content" tabindex="0"><?php echo __( 'Skip to content', 'neve' ); ?></a>
 		<?php
 		neve_before_header_trigger();
 
@@ -39,7 +39,7 @@
 
 	<?php do_action( 'neve_before_primary' ); ?>
 
-	<main id="primary" class="neve-main" role="main">
+	<main id="content" class="neve-main" role="main">
 
 	<?php
 	do_action( 'neve_after_primary_start' );

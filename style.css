@@ -812,6 +812,9 @@ button:hover, input[type=button]:hover, .btn:hover, input[type="submit"]:hover {
 .nv-meta-list a {
   color: rgba(0, 0, 0, 0.54);
 }
+.nv-meta-list .posted-on .updated {
+  display: none;
+}
 
 .entry-title {
   word-wrap: break-word;

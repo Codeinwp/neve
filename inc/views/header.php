@@ -26,7 +26,7 @@ class Header extends Base_View {
 	 */
 	public function render_navigation() {
 		?>
-		<nav class="nv-navbar" role="navigation">
+		<nav class="nv-navbar" role="navigation" itemtype="https://schema.org/SiteNavigationElement" itemscope>
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 nv-nav-wrap <?php echo esc_attr( $this->get_navbar_class() ); ?>">
@@ -161,7 +161,7 @@ class Header extends Base_View {
 	 */
 	private function render_navbar_header() {
 		?>
-		<div class="site-logo">
+		<div class="site-logo" itemscope itemtype="http://schema.org/Organization">
 			<a class="brand" href="<?php echo esc_url( home_url( '/' ) ); ?>"
 					title="<?php bloginfo( 'name' ); ?>">
 				<?php echo $this->get_logo(); ?></a>

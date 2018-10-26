@@ -29,7 +29,7 @@ class Template_Parts extends Base_View {
 	 */
 	public function render_post() {
 		?>
-		<article
+		<article itemscope itemtype="https://schema.org/CreativeWork"
 				id="post-<?php echo esc_attr( get_the_ID() ); ?>"
 				class="<?php echo esc_attr( $this->post_class() ); ?>">
 			<div class="article-content-col">
@@ -45,7 +45,7 @@ class Template_Parts extends Base_View {
 	 * Echo the post class.
 	 */
 	private function post_class() {
-		$class  = join( ' ', get_post_class() );
+		$class = join( ' ', get_post_class() );
 		$class .= ' col-12 layout-' . $this->get_layout();
 		if ( $this->get_layout() === 'grid' ) {
 			$class .= ' ' . $this->get_grid_columns_class();
@@ -114,17 +114,17 @@ class Template_Parts extends Base_View {
 		if ( ! has_post_thumbnail() ) {
 			return;
 		}
-		$markup  = '<div class="nv-post-thumbnail-wrap">';
+		$markup = '<div class="nv-post-thumbnail-wrap">';
 		$markup .= '<a href="' . esc_url( get_the_permalink() ) . '" title="' . the_title_attribute(
-			array(
-				'echo' => false,
-			)
-		) . '">';
-		$markup .= get_the_post_thumbnail( get_the_ID(), 'neve-blog', array( 'alt' => get_the_title() ) );
+				array( 'echo' => false, )
+			) . '">';
+		$markup .= get_the_post_thumbnail( get_the_ID(), 'neve-blog', array(
+			'itemprop' => 'image',
+		) );
 		$markup .= '</a>';
 		$markup .= '</div>';
 
-		echo wp_kses_post( $markup );
+		echo $markup;
 	}
 
 	/**
@@ -141,8 +141,8 @@ class Template_Parts extends Base_View {
 	 */
 	private function title() {
 		?>
-		<h3 class="blog-entry-title entry-title">
-			<a href="<?php esc_url( the_permalink() ); ?>">
+		<h3 class="blog-entry-title entry-title" itemprop="headline">
+			<a href="<?php esc_url( the_permalink() ); ?>" rel="bookmark">
 				<?php the_title(); ?>
 			</a>
 		</h3>
