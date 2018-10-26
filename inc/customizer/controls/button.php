@@ -70,7 +70,8 @@ class Button extends \WP_Customize_Control {
 		if ( empty( $this->button_text ) ) {
 			return;
 		}
-		$control  = '';
+		$control = '';
+
 		$control .= '<button class="' . esc_attr( $this->get_button_classes() ) . '">';
 		$control .= $this->get_icon();
 		$control .= esc_html( $this->button_text );

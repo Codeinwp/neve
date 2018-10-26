@@ -50,6 +50,7 @@
   text-transform: uppercase;
   cursor: pointer;
   line-height: 1.68421;
+  font-family: inherit;
 }
 
 @mixin button-secondary( $hover: 'true', $color: $button_color ) {
