@@ -27,8 +27,7 @@ class Admin {
 		 */
 		$config = array(
 			'welcome_notice'      => array(
-				'type'            => 'custom',
-				'render_callback' => array( $this, 'render_notice_content' ),
+				'type' => 'default',
 			),
 			'getting_started'     => array(
 				'type'    => 'columns-2',
@@ -164,13 +163,6 @@ class Admin {
 	}
 
 	/**
-	 * Custom notice content render
-	 */
-	public function render_notice_content() {
-		echo '<h1>Test Custom Notice Content</h1>';
-	}
-
-	/**
 	 * Load site import module.
 	 */
 	public function load_site_import() {
@@ -194,6 +186,4 @@ class Admin {
 		$onboarding_url = add_query_arg( $query_args, $base_url ) . '#sites_library';
 		wp_safe_redirect( $onboarding_url );
 	}
-
-
 }
