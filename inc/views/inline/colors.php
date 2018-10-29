@@ -24,6 +24,7 @@ class Colors extends Base_Inline {
 		$this->links_hover_colors();
 		$this->add_button_color();
 		$this->add_text_color();
+		$this->add_gutenberg_colors();
 	}
 
 	/**
@@ -120,5 +121,38 @@ class Colors extends Base_Inline {
 		);
 
 		$this->add_color( apply_filters( 'neve_button_color_filter', $color_setup ), $color );
+	}
+
+	/**
+	 * Add colors from gutenberg palette.
+	 */
+	private function add_gutenberg_colors() {
+		$color_controls = array(
+			'white'                 => '#ffffff',
+			'black'                 => '#000000',
+			'neve-button-color'     => get_theme_mod( 'neve_button_color', '#0366d6' ),
+			'neve-link-color'       => get_theme_mod( 'neve_link_color', '#0366d6' ),
+			'neve-link-hover-color' => get_theme_mod( 'neve_link_hover_color', '#0366d6' ),
+			'neve-text-color'       => get_theme_mod( 'neve_text_color', '#404248' ),
+		);
+		foreach ( $color_controls as $class_name => $control_value ) {
+			$color_setup = array();
+
+			$selectors                = '.has-' . $class_name . '-background-color';
+			$css_prop                 = 'background-color';
+			$color_setup[ $css_prop ] = array(
+				'css_prop'  => $css_prop,
+				'selectors' => $selectors,
+			);
+
+			$selectors                = '.has-' . $class_name . '-color';
+			$css_prop                 = 'color';
+			$color_setup[ $css_prop ] = array(
+				'css_prop'  => $css_prop,
+				'selectors' => $selectors,
+			);
+
+			$this->add_color( $color_setup, $control_value );
+		}
 	}
 }
