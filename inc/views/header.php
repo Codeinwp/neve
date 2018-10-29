@@ -26,7 +26,7 @@ class Header extends Base_View {
 	 */
 	public function render_navigation() {
 		?>
-		<nav class="nv-navbar" role="navigation">
+		<nav class="nv-navbar" <?php echo apply_filters( 'neve_nav_data_attrs', '' ); ?> role="navigation">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 nv-nav-wrap <?php echo esc_attr( $this->get_navbar_class() ); ?>">
@@ -134,13 +134,13 @@ class Header extends Base_View {
 		if ( ! has_nav_menu( 'primary' ) ) {
 			return;
 		}
-
 		?>
+
 		<div class="navbar-toggle-wrapper">
 			<?php
 			neve_before_navbar_toggle_trigger();
 			?>
-			<button class="navbar-toggle"
+			<button class="navbar-toggle" <?php echo apply_filters( 'neve_nav_toggle_data_attrs', '' ); ?>
 					aria-label="<?php _e( 'Navigation Menu', 'neve' ); ?>" aria-expanded="false">
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>

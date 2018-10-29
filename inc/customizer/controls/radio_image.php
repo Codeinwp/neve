@@ -75,7 +75,7 @@ class Radio_Image extends \WP_Customize_Control {
 	 * @param array                 $args    Control arguments.
 	 */
 	public function __construct( \WP_Customize_Manager $manager, $id, array $args = array() ) {
-		parent::__construct( $manager, $id, apply_filters( $id . '_filter_args', apply_filters( $id . '_filter_args', $args ) ) );
+		parent::__construct( $manager, $id, apply_filters( $id . '_filter_args', $args ) );
 
 		if ( ! empty( $args['is_tab'] ) && $args['is_tab'] === true ) {
 			$this->is_tab = $args['is_tab'];

@@ -16,9 +16,6 @@ Tags: blog, custom-logo, e-commerce, rtl-language-support, accessibility-ready, 
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
 */
-@-ms-viewport {
-  width: device-width;
-}
 html,
 body,
 p,
@@ -610,7 +607,7 @@ a.neve-skip-link {
   transition: all 0.3s ease;
   margin-bottom: 0;
 }
-#nv-primary-navigation.responsive-opened {
+.responsive-opened #nv-primary-navigation {
   max-height: calc(100vh - 70px);
   padding-bottom: 20px;
 }
@@ -643,7 +640,8 @@ a.neve-skip-link {
   transition: all 0.3s ease;
   border-left: 1px solid #f0f0f0;
 }
-#nv-primary-navigation .dropdown-open > .sub-menu {
+#nv-primary-navigation .dropdown-open > .sub-menu,
+#nv-primary-navigation .caret-wrap.caret-dropdown-open + .sub-menu {
   max-height: 2000px;
   transition: all 0.3s ease;
   opacity: 1;
@@ -673,7 +671,7 @@ a.neve-skip-link {
   top: -6px;
   transition: all 0.3s ease;
 }
-.dropdown-open > .caret-wrap > .caret {
+.dropdown-open > .caret-wrap > .caret, .caret-dropdown-open.caret-wrap > .caret {
   color: #fff;
   transform: rotate(-45deg);
 }
@@ -690,7 +688,7 @@ a.neve-skip-link {
   padding: 5px 10px;
   transition: all 0.3s ease;
 }
-.dropdown-open > .caret-wrap {
+.dropdown-open > .caret-wrap, .caret-wrap.caret-dropdown-open {
   background-color: rgba(0, 0, 0, 0.54);
 }
 
@@ -1671,7 +1669,7 @@ hr {
   #nv-primary-navigation > li:not(:first-child) {
     padding-left: 10px;
   }
-  #nv-primary-navigation.responsive-opened {
+  .responsive-opened #nv-primary-navigation {
     padding-bottom: 0;
   }
   #nv-primary-navigation > li {
@@ -1731,7 +1729,7 @@ hr {
     margin-right: 10px;
     padding: 7px 14px;
   }
-  #nv-primary-navigation .menu-item-has-children:hover > .sub-menu, #nv-primary-navigation .menu-item-has-children:focus-within > .sub-menu {
+  #nv-primary-navigation .menu-item-has-children:hover > .sub-menu, #nv-primary-navigation .menu-item-has-children:focus > .sub-menu, #nv-primary-navigation .menu-item-has-children:focus-within > .sub-menu {
     display: block;
     visibility: visible;
     opacity: 1;
