@@ -78,7 +78,7 @@ class Woocommerce {
 		if ( ! is_shop() && ! is_product() && ! is_product_category() && ! is_product_taxonomy() && ! is_product_tag() ) {
 			return;
 		}
-		echo '<div class="' . apply_filters( 'neve_container_class_filter', 'container' ) . '">';
+		echo '<div class="' . esc_attr( apply_filters( 'neve_container_class_filter', 'container' ) ) . '">';
 		echo '<div class="row">';
 		echo '<div class="wrap-header col-12">';
 		echo '<div class="nv-bc-count-wrap">';
@@ -129,7 +129,7 @@ class Woocommerce {
 		if ( ! is_woocommerce() ) {
 			return;
 		}
-		echo '<div class="' . apply_filters( 'neve_container_class_filter', 'container' ) . ' shop-container">';
+		echo '<div class="' . esc_attr( apply_filters( 'neve_container_class_filter', 'container' ) ) . ' shop-container">';
 		echo '<div class="row">';
 	}
 
@@ -153,7 +153,9 @@ class Woocommerce {
 			return;
 		}
 
-		echo '<span class="nv-sidebar-toggle button button-secondary" ' . apply_filters( 'neve_woocommerce_sidebar_filter_btn_data_attrs', '' ) . '>' . apply_filters( 'neve_filter_woo_sidebar_open_button_text', __( 'Filter', 'neve' ) ) . '</span>';
+		$button_text  = apply_filters( 'neve_filter_woo_sidebar_open_button_text', __( 'Filter', 'neve' ) );
+		$button_attrs = apply_filters( 'neve_woocommerce_sidebar_filter_btn_data_attrs', '' );
+		echo '<span class="nv-sidebar-toggle button button-secondary" ' . esc_attr( $button_attrs ) . '>' . esc_html( $button_text ) . '</span>';
 	}
 
 	/**

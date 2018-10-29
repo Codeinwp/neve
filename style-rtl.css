@@ -1,16 +1,17 @@
+@charset "UTF-8";
 /*
 Theme Name:     Neve
 Theme URI:      https://themeisle.com/themes/neve/
 Author:         ThemeIsle
 Author URI:     https://themeisle.com
-Description:    Neve is a modern WordPress theme for professionals.
+Description:    Neve is a super fast, easily customizable, multi-purpose theme. It’s perfect for blogs, small business, startups, agencies, firms, e-commerce shops (WooCommerce storefront) as well as personal portfolio sites and most types of projects. A fully AMP optimized and responsive theme, Neve will load in mere seconds and adapt perfectly on any viewing device. While it is lightweight and has a minimalist design, the theme is highly extendable, it has a highly SEO optimized code, resulting in top rankings in Google search results. Neve works perfectly with Gutenberg and the most popular page builders (Elementor, Brizy, Beaver Builder, Visual Composer, SiteOrigin, Divi). Neve is also WooCommerce ready, responsive, RTL & translation ready. Look no further. Neve is the perfect theme for you!
 Version:        1.0.5
 License:        GNU General Public License v2 or later
 License URI:    http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain:    neve
 WordPress Available:  no
 Requires License:     no
-Tags: blog, custom-logo, e-commerce, rtl-language-support, post-formats, grid-layout, one-column, two-columns, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready
+Tags: blog, custom-logo, e-commerce, rtl-language-support, accessibility-ready, post-formats, grid-layout, one-column, two-columns, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready
 
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
@@ -226,6 +227,7 @@ th {
 html {
   font-size: 15px;
   overflow-x: hidden;
+  word-break: break-word;
   -webkit-tap-highlight-color: transparent;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -295,6 +297,29 @@ h5 {
 
 h6 {
   font-size: 0.75rem;
+}
+
+.show-on-focus {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  top: 0;
+  right: 0;
+}
+.show-on-focus:focus {
+  z-index: 20;
+  width: auto;
+  height: auto;
+  clip: auto;
+}
+
+a.neve-skip-link {
+  background-color: #24292e;
+  color: #fff;
+  padding: 10px 20px;
 }
 
 @font-face {
@@ -596,10 +621,14 @@ h6 {
 
 .nv-nav-search form {
   display: flex;
+  justify-content: space-between;
 }
 .nv-nav-search form label {
   width: 100%;
-  margin-left: 20px;
+  margin-left: 10px;
+}
+.nv-nav-search form label input {
+  width: 100%;
 }
 
 #nv-primary-navigation .menu-item-nav-search > a {
@@ -619,6 +648,7 @@ footer {
 }
 
 .footer-content-wrap.footer-second-section {
+  border-top: none;
   background: #24292e;
   color: #fff;
   text-align: center;
@@ -685,6 +715,7 @@ form input[type="text"], form input[type="password"], form input[type="email"], 
 }
 
 input, textarea, select, button {
+  line-height: inherit;
   -webkit-box-sizing: border-box;
   /* For legacy WebKit based browsers */
   -moz-box-sizing: border-box;
@@ -704,6 +735,7 @@ input, textarea, select, button {
   text-transform: uppercase;
   cursor: pointer;
   line-height: 1.68421;
+  font-family: inherit;
 }
 .button.button-primary {
   background-color: #0366d6;
@@ -738,6 +770,7 @@ button, input[type=button], .btn, input[type="submit"] {
   text-transform: uppercase;
   cursor: pointer;
   line-height: 1.68421;
+  font-family: inherit;
   background-color: #0366d6;
   color: #fff;
 }
@@ -809,7 +842,6 @@ button:hover, input[type=button]:hover, .btn:hover, input[type="submit"]:hover {
 }
 
 .posts-wrapper > article {
-  word-break: break-word;
   margin-bottom: 30px;
 }
 

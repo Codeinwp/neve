@@ -26,7 +26,7 @@ class Header extends Base_View {
 	 */
 	public function render_navigation() {
 		?>
-		<nav class="nv-navbar" <?php echo apply_filters( 'neve_nav_data_attrs', '' ); ?>>
+		<nav class="nv-navbar" <?php echo apply_filters( 'neve_nav_data_attrs', '' ); ?> role="navigation">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 nv-nav-wrap <?php echo esc_attr( $this->get_navbar_class() ); ?>">
@@ -65,7 +65,7 @@ class Header extends Base_View {
 		}
 
 		if ( 'search' === $additional_item ) {
-			$items .= '<li class="menu-item-nav-search"><a><span class="nv-icon nv-search"></span></a>';
+			$items .= '<li class="menu-item-nav-search" tabindex="0" aria-label="search"><a><span class="nv-icon nv-search"></span></a>';
 			$items .= '<div class="nv-nav-search">';
 			$items .= get_search_form( false );
 			$items .= '</div>';
@@ -77,6 +77,7 @@ class Header extends Base_View {
 				return $items;
 			}
 			$items .= '<li class="menu-item-nav-cart"><a href="' . esc_url( wc_get_cart_url() ) . '"><span class="nv-icon nv-cart"></span>';
+			$items .= '<span class="screen-reader-text">' . __( 'Cart', 'neve' ) . '</span>';
 			$items .= '<span class="cart-count">' . WC()->cart->get_cart_contents_count() . '</span>';
 			$items .= '</a>';
 			if ( ! is_cart() ) {
@@ -116,6 +117,7 @@ class Header extends Base_View {
 	 * Render primary menu markup.
 	 */
 	private function render_primary_menu() {
+		echo '<div role="navigation" aria-label="' . esc_html( __( 'Primary Menu', 'neve' ) ) . '">';
 		wp_nav_menu(
 			array(
 				'theme_location' => 'primary',
@@ -124,13 +126,14 @@ class Header extends Base_View {
 				'walker'         => new Nav_Walker(),
 			)
 		);
+		echo '</div>';
 	}
 
 	/**
 	 * Render navbar toggle markup.
 	 */
 	private function render_navbar_toggle() {
-		if ( ! has_nav_menu( 'primary' ) && current_user_can( 'edit_theme_options' ) ) {
+		if ( ! has_nav_menu( 'primary' ) ) {
 			return;
 		}
 		?>
@@ -139,12 +142,13 @@ class Header extends Base_View {
 			<?php
 			neve_before_navbar_toggle_trigger();
 			?>
-			<div class="navbar-toggle" <?php echo apply_filters( 'neve_nav_toggle_data_attrs', '' ); ?> >
+			<button class="navbar-toggle" <?php echo apply_filters( 'neve_nav_toggle_data_attrs', '' ); ?>
+					aria-label="<?php _e( 'Navigation Menu', 'neve' ); ?>" aria-expanded="false">
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				<span class="screen-reader-text"><?php esc_html_e( 'Toggle Navigation', 'neve' ); ?></span>
-			</div>
+			</button>
 			<?php
 			neve_after_navbar_toggle_trigger();
 			?>
@@ -177,8 +181,9 @@ class Header extends Base_View {
 			}
 			$logo = '<img src="' . esc_url( $logo[0] ) . '" alt="' . esc_attr( $alt_attribute ) . '">';
 		} else {
-			$logo  = '<p>' . get_bloginfo( 'name' ) . '</p>';
-			$logo .= '<small>' . get_bloginfo( 'description' ) . '</small>';
+			$logo = '<p>' . esc_html( get_bloginfo( 'name' ) ) . '</p>';
+
+			$logo .= '<small>' . esc_html( get_bloginfo( 'description' ) ) . '</small>';
 		}
 
 		return $logo;

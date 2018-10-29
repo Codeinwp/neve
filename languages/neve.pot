@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Neve 1.0.5\n"
 "Report-Msgid-Bugs-To: https://github.com/Codeinwp/neve/issues\n"
-"POT-Creation-Date: 2018-10-19 16:34:58+00:00\n"
+"POT-Creation-Date: 2018-10-23 15:24:33+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -35,6 +35,10 @@ msgid ""
 "PHP to the latest version."
 msgstr ""
 
+#: header.php:28
+msgid "Skip to content"
+msgstr ""
+
 #: inc/admin/metabox/main.php:26 inc/admin/metabox/main.php:40
 msgid "Customizer Setting"
 msgstr ""
@@ -62,7 +66,7 @@ msgstr ""
 msgid "Right Sidebar"
 msgstr ""
 
-#: inc/admin/metabox/main.php:45 inc/core/front_end.php:110
+#: inc/admin/metabox/main.php:45 inc/core/front_end.php:108
 #: inc/customizer/options/layout_sidebar.php:44
 msgid "Sidebar"
 msgstr ""
@@ -310,7 +314,7 @@ msgid ""
 "looking landing page using a drag-and-drop content builder plugin."
 msgstr ""
 
-#: inc/core/front_end.php:57
+#: inc/core/front_end.php:57 inc/views/header.php:120
 msgid "Primary Menu"
 msgstr ""
 
@@ -322,23 +326,23 @@ msgstr ""
 msgid "Top Bar Menu"
 msgstr ""
 
-#: inc/core/front_end.php:111
+#: inc/core/front_end.php:109
 msgid "Shop Sidebar"
 msgstr ""
 
-#: inc/core/front_end.php:117
+#: inc/core/front_end.php:115
 msgid "Footer One"
 msgstr ""
 
-#: inc/core/front_end.php:118
+#: inc/core/front_end.php:116
 msgid "Footer Two"
 msgstr ""
 
-#: inc/core/front_end.php:119
+#: inc/core/front_end.php:117
 msgid "Footer Three"
 msgstr ""
 
-#: inc/core/front_end.php:120
+#: inc/core/front_end.php:118
 msgid "Footer Four"
 msgstr ""
 
@@ -505,7 +509,7 @@ msgstr ""
 msgid "Search"
 msgstr ""
 
-#: inc/customizer/options/layout_navigation.php:86
+#: inc/customizer/options/layout_navigation.php:86 inc/views/header.php:80
 msgid "Cart"
 msgstr ""
 
@@ -596,6 +600,10 @@ msgid "Copyright - Neve by %1$s"
 msgstr ""
 
 #: inc/views/header.php:146
+msgid "Navigation Menu"
+msgstr ""
+
+#: inc/views/header.php:150
 msgid "Toggle Navigation"
 msgstr ""
 
@@ -628,6 +636,10 @@ msgstr ""
 msgid "Read more"
 msgstr ""
 
+#: inc/views/template_parts.php:188
+msgid "About"
+msgstr ""
+
 #: template-parts/content-none.php:17
 #. translators: %s is Link to new post
 msgid "Ready to publish your first post? %s."
@@ -654,7 +666,18 @@ msgid "https://themeisle.com/themes/neve/"
 msgstr ""
 
 #. Description of the plugin/theme
-msgid "Neve is a modern WordPress theme for professionals."
+msgid ""
+"Neve is a super fast, easily customizable, multi-purpose theme. It’s "
+"perfect for blogs, small business, startups, agencies, firms, e-commerce "
+"shops (WooCommerce storefront) as well as personal portfolio sites and most "
+"types of projects. A fully AMP optimized and responsive theme, Neve will "
+"load in mere seconds and adapt perfectly on any viewing device. While it is "
+"lightweight and has a minimalist design, the theme is highly extendable, it "
+"has a highly SEO optimized code, resulting in top rankings in Google search "
+"results. Neve works perfectly with Gutenberg and the most popular page "
+"builders (Elementor, Brizy, Beaver Builder, Visual Composer, SiteOrigin, "
+"Divi). Neve is also WooCommerce ready, responsive, RTL & translation ready. "
+"Look no further. Neve is the perfect theme for you!"
 msgstr ""
 
 #. Author of the plugin/theme
@@ -686,9 +709,4 @@ msgstr[1] ""
 #: inc/customizer/controls/font_selector.php:59
 msgctxt "label"
 msgid "Search for:"
-msgstr ""
-
-#: inc/views/typography.php:50
-msgctxt "Open Sans font: on or off"
-msgid "on"
 msgstr ""

@@ -25,7 +25,7 @@ class Footer extends Base_View {
 	public function render_footer() {
 		neve_before_footer_trigger();
 		?>
-		<footer>
+		<footer role="contentinfo">
 			<?php echo $this->render_footer_sidebars(); ?>
 			<?php echo $this->render_footer_content(); ?>
 		</footer>

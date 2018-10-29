@@ -43,13 +43,15 @@
   "scripts": {
     "phpcbf": "phpcbf || true ",
     "phpcs": "phpcs",
+    "jshint": "grunt jshint",
     "buildCssJs": "grunt buildScripts",
-    "addNewStyles": "git add **/*.css && git add *.css"
+    "addNewStyles": "git add **/*.css && git add assets/**/*.css"
   },
   "pre-commit": {
     "run": [
       "phpcbf",
       "phpcs",
+      "jshint",
       "buildCssJs",
       "addNewStyles"
     ]

@@ -9,8 +9,17 @@ Neve is a super fast, easily customizable, multi-purpose theme. It’s perfect f
 
 # Copyright, License & Other info #
 
-License: [GNU General Public License v2.0] or later (license.txt file) 
-Unless otherwise specified, all the theme files, scripts and images are licensed under GNU General Public License. See License URI in style.css for further details.
+Neve is a WordPress Theme,
+Copyright (C) 2018, ThemeIsle
+Neve is distributed under the terms of the GNU GPL
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
 
 # Libraries #
 
@@ -18,7 +27,7 @@ Neve Icons based on Font Awesome Icons licensed under CC BY 4.0 License (https:/
 
 ### Images
 
-License: All unsplash.com images are licensed under the terms of the Creative Commons Zero, (http://creativecommons.org/publicdomain/zero/1.0/)
+License: All pixabay.com & mystock.themeisle.com images are licensed under the terms of the Creative Commons Zero, (http://creativecommons.org/publicdomain/zero/1.0/)
 
 | Demo | Image | Source |
 | ------ | ------ | ------ |
@@ -35,7 +44,7 @@ License: All unsplash.com images are licensed under the terms of the Creative Co
 | 2018 | 6 | https://mystock.themeisle.com/photo/devices/ |
 | 2018 | 5 | https://mystock.themeisle.com/photo/high-seats/ |
 | 2018 | 4 | https://mystock.themeisle.com/photo/ipad/ |
-| 2018 | 1 | https://mystock.themeisle.com/photo/path/ |
+| 2018 | 1 (also used in screenshot) | https://mystock.themeisle.com/photo/path/ |
 | 2018 | work-4 | https://mystock.themeisle.com/photo/stockholm-street/ |
 | 2018 | video-bg | https://mystock.themeisle.com/photo/cloudy-sunset/ |
 | 2018 | winter-forest | https://mystock.themeisle.com/photo/winter-forest/ |
@@ -55,8 +64,8 @@ License: All unsplash.com images are licensed under the terms of the Creative Co
 | Vet Center | background-business-clean-811101 | https://pixabay.com/en/aisle-background-buy-clean-food-3105629/ |
 | Vet Center | adult-doctor-girl-355934 | https://pixabay.com/en/nurse-stethoscope-medicine-2141808/ |
 | Vet Center | adult-attractive-beautiful-415829 | https://pixabay.com/en/beauty-makeup-skin-care-2190682/ |
-| Vet Center | animals-cats-cute-45170 | https://pixabay.com/en/kittens-cat-cat-puppy-rush-555822/ |
-| Vet Center | adult-biology-chemical-356040 | https://pixabay.com/en/scientist-drugstore-microscope-2141259/ |
+| Vet Center | animals-cats-cute-45170 (also used ins screenshot) | https://pixabay.com/en/kittens-cat-cat-puppy-rush-555822/ |
+| Vet Center | adult-biology-chemical-356040 (also used in screenshot) | https://pixabay.com/en/scientist-drugstore-microscope-2141259/ |
 | Energy Panels | smile-1726471_1920 | https://pixabay.com/en/smile-profile-face-male-portrait-1726471/ |
 | Energy Panels | energy-2181904_1920 | https://pixabay.com/en/energy-wind-energy-wind-power-2181904/ |
 | Energy Panels | windrader-1048981_1920 | https://pixabay.com/en/windr%C3%A4der-wind-power-wind-park-fog-1048981/ |
@@ -82,4 +91,4 @@ License: All unsplash.com images are licensed under the terms of the Creative Co
 | Energy Panels | alternative-alternative-energy-clean-356049 | https://pixabay.com/en/photovoltaic-photovoltaic-system-2138994/ |
 | Energy Panels | alternative-alternative-energy-blades-691458 | http://snapwiresnaps.tumblr.com/post/167509411781/logan-edmark-free-under-cc0-10-download |
 | Energy Panels | alternative-alternative-energy-clean-159397 | https://pixabay.com/en/solar-panel-array-power-sun-1591350/ |
-| Energy Panels | alternative-alternative-energy-blue-411592 | https://pixabay.com/en/solar-energy-solar-system-2157212/ |
+| Energy Panels | alternative-alternative-energy-blue-411592 (also used in screenshot) | https://pixabay.com/en/solar-energy-solar-system-2157212/ |
