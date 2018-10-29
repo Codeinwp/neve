@@ -10,16 +10,16 @@ $container_class = apply_filters( 'neve_container_class_filter', 'container', 'b
 
 get_header();
 
-do_action( 'neve_page_header', 'search' );
 ?>
 	<div class="<?php echo esc_attr( $container_class ); ?> archive-container">
 		<div class="row">
 			<?php do_action( 'neve_do_sidebar', 'blog-archive', 'left' ); ?>
-			<div class="nv-index-posts col">
+			<div class="nv-index-posts search col">
 				<?php
+				do_action( 'neve_page_header', 'search' );
 				if ( have_posts() ) {
 					/* Start the Loop. */
-					echo '<div class="posts-wrapper">';
+					echo '<div class="posts-wrapper row">';
 					while ( have_posts() ) {
 						the_post();
 						get_template_part( 'template-parts/content' );

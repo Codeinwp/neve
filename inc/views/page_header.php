@@ -32,6 +32,8 @@ class Page_Header extends Base_View {
 	 */
 	public function init() {
 		add_action( 'neve_page_header', array( $this, 'render_page_header' ) );
+		add_filter( 'get_the_archive_title', array( $this, 'filter_archive_title' ) );
+		add_action( 'neve_after_page_title', array( $this, 'display_archive_description' ) );
 	}
 
 	/**
@@ -40,18 +42,14 @@ class Page_Header extends Base_View {
 	 * @param string $context the context provided in do_action.
 	 */
 	public function render_page_header( $context ) {
-		if ( $context === 'single-post' ) {
+		$title_args = $this->the_page_title( $context );
+		if ( empty( $title_args['string'] ) ) {
 			return;
 		}
-		$title_args = $this->the_page_title( $context );
 		?>
 		<div class="nv-page-title-wrap <?php echo esc_attr( $title_args['wrap-class'] ); ?>">
-			<div class="container">
-				<div class="row">
-					<div class="col nv-page-title <?php echo $title_args['class']; ?>">
-						<h1><?php echo wp_kses_post( $title_args['string'] ); ?></h1>
-					</div>
-				</div>
+			<div class="nv-page-title <?php echo $title_args['class']; ?>">
+				<h1><?php echo wp_kses_post( $title_args['string'] ); ?></h1>
 			</div>
 		</div>
 		<?php
@@ -71,10 +69,6 @@ class Page_Header extends Base_View {
 			$title_args['wrap-class'] = 'nv-big-title';
 		}
 
-		if ( $context === 'single-post' ) {
-			$title_args['wrap-class'] = 'nv-single-post-title';
-		}
-
 		if ( $context === 'search' ) {
 			/* translators: search result */
 			$title_args['string']     = sprintf( esc_html__( 'Search Results for: %s', 'neve' ), get_search_query() );
@@ -82,7 +76,7 @@ class Page_Header extends Base_View {
 		}
 
 		// If no title is set until now simply get the title.
-		if ( empty( $title_args['string'] ) ) {
+		if ( empty( $title_args['string'] ) && ! is_home() ) {
 			$title_args['string'] = get_the_title();
 		}
 
@@ -99,7 +93,7 @@ class Page_Header extends Base_View {
 	private function get_blog_archive_title() {
 		if ( is_home() && get_option( 'show_on_front' ) === 'posts' ) {
 			return array(
-				'string' => get_bloginfo( 'description' ),
+				'string' => '',
 				'class'  => 'nv-blog-description',
 			);
 		}
@@ -120,5 +114,45 @@ class Page_Header extends Base_View {
 		}
 
 		return array();
+	}
+
+	/**
+	 * Remove "Category:", "Tag:", "Author:" from the archive title.
+	 *
+	 * @param string $title Archive title.
+	 */
+	public function filter_archive_title( $title ) {
+		if ( is_category() ) {
+			$title = single_cat_title( '', false );
+		} elseif ( is_tag() ) {
+			$title = single_tag_title( '', false );
+		} elseif ( is_author() ) {
+			$title = '<span class="vcard">' . get_the_author() . '</span>';
+		} elseif ( is_year() ) {
+			$title = get_the_date( 'Y' );
+		} elseif ( is_month() ) {
+			$title = get_the_date( 'F Y' );
+		} elseif ( is_day() ) {
+			$title = get_the_date( 'F j, Y' );
+		} elseif ( is_post_type_archive() ) {
+			$title = post_type_archive_title( '', false );
+		} elseif ( is_tax() ) {
+			$title = single_term_title( '', false );
+		}
+
+		return esc_html( $title );
+	}
+
+	/**
+	 * Add description after the title on archive page.
+	 */
+	public function display_archive_description() {
+		if ( is_author() ) {
+			echo '<p>' . wp_kses_post( get_the_author_meta( 'description' ) ) . '</p>';
+		} elseif ( is_category() ) {
+			the_archive_description();
+		} elseif ( is_tag() ) {
+			the_archive_description();
+		}
 	}
 }

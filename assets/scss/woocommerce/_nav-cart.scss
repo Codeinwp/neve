@@ -1,6 +1,5 @@
 .menu-item-nav-cart {
   .cart-count {
-    border-radius: 2px;
     background: #fff;
     border: $muted-border;
     font-size: 0.55em;
@@ -15,8 +14,23 @@
   z-index: 1000;
 }
 
+#nv-primary-navigation a.button{
+  padding: 6px 12px;
+  &.wc-forward {
+    color: $button_color;
+    &:hover {
+      color: #fff;
+    }
+  }
+  &.checkout {
+    color: #fff;
+  }
+}
+
 @mixin nav-cart--laptop() {
-  .menu-item-nav-cart:hover .nv-nav-cart {
+  .menu-item-nav-cart:hover .nv-nav-cart,
+  .menu-item-nav-cart > a:focus + .nv-nav-cart,
+  .nv-nav-cart:focus-within {
     opacity: 1;
     visibility: visible;
   }
@@ -26,47 +40,14 @@
     opacity: 0;
     visibility: hidden;
     cursor: default;
-    border-top: 3px solid $theme_color;
+    border-top: $muted-border;
     transition: $transition_med;
     position: absolute;
     z-index: 100;
     right: 0;
     width: 350px;
     background: $navbar_background_color;
-    .widget_shopping_cart > .widget_shopping_cart_content > ul.woocommerce-mini-cart.cart_list.product_list_widget  {
-      max-height: 450px;
-      overflow-y: scroll;
-      overflow-x: hidden;
-    }
-    .woocommerce-mini-cart__empty-message {
-      text-align: center;
-      margin-bottom: 0;
-      padding: 10px 0;
-    }
-    .woocommerce.widget_shopping_cart .total {
-      border-top: $muted-border;
-      border-bottom: $muted-border;
-      padding-bottom: $spacing-xs;
-      margin: 0 auto $spacing-xs;
-      text-align: center;
-    }
-    .woocommerce-mini-cart__buttons {
-      display: flex;
-      padding: $spacing-xs $spacing-sm 0;
-      a.button {
-        margin: 0;
-        text-align: center;
-        &:last-child {
-          margin-left: 5px;
-          @include button();
-          @include button-primary();
-        }
-        &:first-child {
-          @include button();
-          @include button-secondary();
-        }
-      }
-    }
+    @include cart-widget();
   }
   #nv-primary-navigation .widget_shopping_cart li.mini_cart_item {
     //Padding right is 61px to allow image on right (45px) which should be padded L/R (8px) { 45 + 8 + 8 = 61 }
@@ -99,7 +80,7 @@
       grid-column-end: -1;
     }
     dl.variation {
-      border:none;
+      border: none;
       padding: 0;
       grid-row-start: 3;
       display: flex;

@@ -1,14 +1,19 @@
 .nv-nav-search form {
   display: flex;
+  justify-content: space-between;
   label {
     width: 100%;
-    margin-right: 20px;
+    margin-right: $spacing-xs;
+    input {
+      width: 100%;
+    }
   }
 }
 
 #nv-primary-navigation .menu-item-nav-search > a {
   display: none;
 }
+
 .nv-nav-search {
   padding: $spacing-xs 0;
 }
@@ -28,7 +33,7 @@
     width: auto;
     background: #fff;
     padding: $spacing-xs $spacing-sm;
-    border-top: 3px solid $theme_color;
+    border-top: $muted-border;
     cursor: default;
     z-index: 100;
     @include soft-box-shadow();
@@ -43,7 +48,10 @@
       display: block;
       label {
         margin: 0;
-        input {width: 200px; margin:0;}
+        input {
+          width: 200px;
+          margin: 0;
+        }
       }
     }
   }

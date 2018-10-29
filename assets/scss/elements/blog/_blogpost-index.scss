@@ -1,3 +1,21 @@
+.entry-title {
+  word-wrap: break-word;
+  font-weight: 600;
+  line-height: 1.3em;
+  a {
+    color: $body-color;
+    &:hover,
+    &:focus {
+      text-decoration: none;
+      opacity: .9;
+    }
+  }
+}
+
+.posts-wrapper .excerpt-wrap {
+  color: $gray-color;
+}
+
 .nv-post-thumbnail-wrap {
   width: 100%;
   a {
@@ -7,17 +25,15 @@
     }
   }
   img {
-    width: 100%;
     height: auto;
   }
 }
 
 .posts-wrapper > article {
-  margin-bottom: $spacing;
+  margin-bottom: 30px;
 }
 
 .blog-entry-title {
-  margin: 0 0 $spacing-xs;
   word-wrap: break-word;
 }
 
@@ -27,22 +43,18 @@
 
 .article-content-col .content {
   width: 100%;
-  padding-bottom: $spacing;
+  padding-bottom: 30px;
   border-bottom: $muted-border;
   display: flex;
   flex-direction: column;
   .button {
+    display: inline-block;
     align-self: flex-start;
-    margin-top: $spacing-sm;
   }
 }
 
 .bypostauthor {
   display: block;
-}
-
-.excerpt-wrap {
-  margin: $spacing-sm 0;
 }
 
 .nv-index-posts .posts-wrapper {
@@ -56,15 +68,58 @@
   margin: $spacing-xs auto;
 }
 
-.sticky .article-content-col {
-  max-width: 100%;
-  .content {
-    @include soft-box-shadow();
-    margin-right: $spacing-xs;
-    margin-left: $spacing-xs;
-    border: $muted-border;
+article.sticky {
+  padding: 0 15px;
+  .article-content-col {
     max-width: 100%;
-    width: auto;
-    padding: $spacing-sm;
+    .content {
+      border: 1px solid #dddddd;
+      max-width: 100%;
+      width: auto;
+      padding: 15px;
+    }
+  }
+}
+
+.layout-grid .content {
+  > * {
+    margin: $spacing-xs 0;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}
+
+.nv-non-grid-article {
+  .non-grid-content {
+    display: flex;
+    flex-direction: column;
+    > * {
+      margin: $spacing-xs 0;
+      &:last-child {
+        margin-bottom: 0;
+      }
+      &.nv-meta-list {
+        margin: 0;
+      }
+    }
+  }
+}
+
+@mixin blogpost-index--laptop() {
+  .sticky .article-content-col {
+    .content {
+      margin-right: 15px;
+      margin-left: 15px;
+    }
+  }
+  article.sticky {
+    padding: 0;
+  }
+  .non-grid-content > .entry-title {
+    margin-top: 0;
   }
 }

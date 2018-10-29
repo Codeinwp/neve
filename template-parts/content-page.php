@@ -9,6 +9,11 @@
 do_action( 'neve_before_content', 'single-page' ); ?>
 	<div class="nv-content-wrap">
 		<?php the_content(); ?>
+		<?php
+		if ( comments_open() || get_comments_number() ) {
+			comments_template();
+		}
+		?>
 		<?php do_action( 'neve_do_pagination', 'single' ); ?>
 	</div>
 <?php

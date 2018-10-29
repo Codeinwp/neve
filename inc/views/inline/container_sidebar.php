@@ -44,14 +44,16 @@ class Container_Sidebar extends Base_Inline {
 	 * Sidebar style.
 	 */
 	private function sidebar_style() {
-		$sidebar_width = get_theme_mod( 'neve_sidebar_width' );
+		$sidebar_width = get_theme_mod( 'neve_sidebar_width', 30 );
 		$sidebar_width = json_decode( $sidebar_width, true );
 		$content_width = 100 - $sidebar_width;
 		$settings      = array(
 			'content' => array(
-				'css_prop' => 'max-width',
-				'value'    => $content_width,
-				'suffix'   => '%',
+				array(
+					'css_prop' => 'max-width',
+					'value'    => $content_width,
+					'suffix'   => '%',
+				),
 			),
 			'sidebar' => array(
 				array(

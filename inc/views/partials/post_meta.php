@@ -45,17 +45,17 @@ class Post_Meta extends Base_View {
 		foreach ( $order as $meta ) {
 			switch ( $meta ) {
 				case 'author':
-					$markup .= '<li class="meta author"><span class="nv-icon nv-author"></span>';
-					$markup .= get_the_author_posts_link();
+					$markup .= '<li class="meta author">';
+					$markup .= __( 'By', 'neve' ) . '&nbsp;' . get_the_author_posts_link();
 					$markup .= '</li>';
 					break;
 				case 'date':
-					$markup .= '<li class="meta date"><span class="nv-icon nv-calendar"></span>';
-					$markup .= '<span>' . get_the_date() . '</span>';
+					$markup .= '<li class="meta date">';
+					$markup .= '<span>' . esc_html( get_the_date() ) . '</span>';
 					$markup .= '</li>';
 					break;
 				case 'category':
-					$markup .= '<li class="meta category"><span class="nv-icon nv-folder"></span>';
+					$markup .= '<li class="meta category">';
 					$markup .= get_the_category_list( ' / ', get_the_ID() );
 					$markup .= '</li>';
 					break;
@@ -64,7 +64,7 @@ class Post_Meta extends Base_View {
 					if ( empty( $comments ) ) {
 						break;
 					}
-					$markup .= '<li class="meta comments"><span class="nv-icon nv-comment"></span>';
+					$markup .= '<li class="meta comments">';
 					$markup .= $this->get_comments();
 					$markup .= '</li>';
 					break;
@@ -88,14 +88,14 @@ class Post_Meta extends Base_View {
 			return '';
 		}
 		if ( $comments_number == 0 ) {
-			$comments = __( 'No Comments', 'neve' );
+			return '';
 		} elseif ( $comments_number > 1 ) {
 			$comments = $comments_number . __( ' Comments', 'neve' );
 		} else {
 			$comments = __( '1 Comment', 'neve' );
 		}
 
-		return '<a href="' . get_comments_link() . '">' . $comments . '</a>';
+		return '<a href="' . esc_url( get_comments_link() ) . '">' . $comments . '</a>';
 	}
 
 	/**
@@ -133,7 +133,7 @@ class Post_Meta extends Base_View {
 		$html .= '<span>' . __( 'Tags', 'neve' ) . ':</span>';
 		foreach ( $tags as $tag ) {
 			$tag_link = get_tag_link( $tag->term_id );
-			$html    .= '<a href=' . esc_url( $tag_link ) . ' title="' . esc_html( $tag->name ) . '" class=' . esc_attr( $tag->slug ) . '>';
+			$html    .= '<a href=' . esc_url( $tag_link ) . ' title="' . esc_attr( $tag->name ) . '" class=' . esc_attr( $tag->slug ) . '>';
 			$html    .= esc_html( $tag->name ) . '</a>';
 		}
 		$html .= ' </div> ';

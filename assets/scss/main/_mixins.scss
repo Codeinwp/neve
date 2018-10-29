@@ -1,13 +1,19 @@
-@mixin horizontal-list( $margin ) {
+@mixin horizontal-list( $margin, $ignore-first-last : false ) {
   display: flex;
   flex-wrap: wrap;
   padding-left: 0;
   list-style-type: none;
-  @if ($margin != 0) {
+  @if $margin != 0 and $ignore-first-last == false {
     > li:not(:last-child) {
       padding-right: $margin;
     }
     > li:not(:first-child) {
+      padding-left: $margin;
+    }
+  }
+  @if $ignore-first-last == true {
+    li {
+      padding-right: $margin;
       padding-left: $margin;
     }
   }
@@ -35,7 +41,7 @@
 @mixin button() {
   font-size: .8em;
   font-weight: 600;
-  padding: 9px 18px;
+  padding: 6px 12px;
   transition: all .15s ease-in-out;
   text-align: center;
   vertical-align: middle;
@@ -43,29 +49,70 @@
   border-radius: .25rem;
   text-transform: uppercase;
   cursor: pointer;
-  width: auto;
+  line-height: 1.68421;
+  font-family: inherit;
 }
 
-@mixin button-secondary( $hover: 'true', $color: $theme_color ) {
-  border: 1px solid $color;
+@mixin button-secondary( $hover: 'true', $color: $button_color ) {
+  border: 1px solid rgba(27,31,35,0.2);
   background-color: transparent;
   font-weight: 600;
   color: $color;
   @if ($hover == 'true') {
     &:hover {
+      opacity: 1;
+      text-decoration: none;
       background-color: $color;
       color: #fff;
     }
   }
 }
 
-@mixin button-primary( $hover: 'true', $color: $theme_color ) {
+@mixin button-primary( $hover: 'true', $color: $button_color ) {
   background-color: $color;
   color: #fff;
   @if ($hover == 'true') {
     &:hover {
+      text-decoration: none;
       opacity: .9;
     }
   }
 
+}
+
+@mixin cart-widget(){
+  .widget_shopping_cart > .widget_shopping_cart_content > ul.woocommerce-mini-cart.cart_list.product_list_widget  {
+    max-height: 450px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  .woocommerce-mini-cart__empty-message {
+    text-align: center;
+    margin-bottom: 0;
+    padding: 10px 0;
+  }
+  .woocommerce.widget_shopping_cart .total {
+    border-top: $muted-border;
+    border-bottom: $muted-border;
+    padding-bottom: $spacing-xs;
+    margin: 0 auto $spacing-xs;
+    text-align: center;
+  }
+  .woocommerce-mini-cart__buttons {
+    display: flex;
+    padding: $spacing-xs $spacing-sm 0;
+    a.button {
+      margin: 0;
+      text-align: center;
+      &:last-child {
+        margin-left: 5px;
+        @include button();
+        @include button-primary();
+      }
+      &:first-child {
+        @include button();
+        @include button-secondary();
+      }
+    }
+  }
 }

@@ -2,7 +2,7 @@
     $.neveUtilities = {
         isMobile: function() {
             var windowWidth = window.innerWidth;
-            return windowWidth <= 960;
+            return windowWidth <= 767;
         },
         isElementInViewport: function(el) {
             if (typeof $ === "function" && el instanceof $) {
@@ -49,10 +49,15 @@
             return false;
         },
         handleResponsiveNav: function() {
-            $(".navbar-toggle").on("click", function() {
+            $(".navbar-toggle").on("click touch", function() {
                 $(".dropdown-open").removeClass("dropdown-open");
-                $("#nv-primary-navigation").toggleClass("responsive-opened");
+                $(".nv-navbar").toggleClass("responsive-opened");
                 $(this).toggleClass("active");
+                if (this.attributes["aria-expanded"].value === "true") {
+                    $(this).attr("aria-expanded", "false");
+                } else {
+                    $(this).attr("aria-expanded", "true");
+                }
                 $("html").toggleClass("menu-opened");
             });
         },
@@ -69,14 +74,17 @@
             $(".nv-nav-search").on("click", function(e) {
                 e.stopPropagation();
             });
-            $(".menu-item-nav-search").on("click", function() {
+            $(".menu-item-nav-search").on("click focus", function() {
                 if (utils.isMobile()) {
                     return false;
                 }
-                $(this).toggleClass("active");
+                $(this).addClass("active");
                 self.createNavOverlay();
-                $(".nv-nav-search .search-field").focus();
                 return false;
+            });
+            $(".menu-item-nav-search input[type=search]").on("blur", function() {
+                $(".menu-item-nav-search").removeClass("active");
+                $(".nav-clickaway-overlay").remove();
             });
         },
         createNavOverlay: function() {
@@ -93,6 +101,7 @@
             $(navClickaway).on("touchstart click", function() {
                 this.remove();
                 $("#nv-primary-navigation li").removeClass("active dropdown-open");
+                $(".shortcode-search").removeClass("active");
             });
             return false;
         }
@@ -105,6 +114,7 @@
         init: function() {
             this.handleMasonry();
             this.handleInfiniteScroll();
+            this.handleGutenbergAlignment();
         },
         handleMasonry: function() {
             if (NeveProperties.masonry !== "enabled") {
@@ -170,6 +180,40 @@
                     }
                 });
             });
+        },
+        handleGutenbergAlignment: function() {
+            if ($("body").hasClass("page-template-template-pagebuilder-full-width")) {
+                return false;
+            }
+            var fullAlignments = $(".alignfull");
+            var wideAlignments = $(".alignwide");
+            if (!fullAlignments.length && !wideAlignments.length) {
+                return false;
+            }
+            var windowWidth = $(window).innerWidth();
+            var containerWidth = $('#primary > [class^="container"]').innerWidth();
+            var marginFullNeeded = 0;
+            var marginWideNeeded = 0;
+            if (utils.isMobile() || !jQuery(".nv-sidebar-wrap").length) {
+                marginFullNeeded = (windowWidth - containerWidth) / 2 + 15;
+                marginWideNeeded = (windowWidth - containerWidth) / 5;
+            }
+            if (fullAlignments.length) {
+                $(fullAlignments).each(function(index, element) {
+                    $(element).css({
+                        "margin-left": "-" + marginFullNeeded + "px",
+                        "margin-right": "-" + marginFullNeeded + "px"
+                    });
+                });
+            }
+            if (wideAlignments.length) {
+                $(wideAlignments).each(function(index, element) {
+                    $(element).css({
+                        "margin-left": "-" + marginWideNeeded + "px",
+                        "margin-right": "-" + marginWideNeeded + "px"
+                    });
+                });
+            }
         }
     };
 })(jQuery);
@@ -204,6 +248,7 @@ jQuery(window).on("resize", function() {
     clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(function() {
         jQuery.neveNavigation.repositionDropdowns();
+        jQuery.neveBlog.handleGutenbergAlignment();
     }, 500);
 });
 //# sourceMappingURL=script.js.map

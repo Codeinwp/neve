@@ -8,8 +8,6 @@
 
 namespace Neve\Compatibility;
 
-use ElementorPro\Modules\ThemeBuilder\Module;
-
 /**
  * Class Elementor
  *
@@ -25,13 +23,15 @@ class Elementor extends Page_Builder_Base {
 			return;
 		}
 		$this->add_theme_builder_hooks();
+
+		add_action( 'elementor/editor/before_enqueue_scripts', array( $this, 'maybe_set_page_template' ), 1 );
 	}
 
 	/**
 	 * Add support for elementor theme locations.
 	 */
 	private function add_theme_builder_hooks() {
-		if ( ! class_exists( 'ElementorPro\Modules\ThemeBuilder\Module' ) ) {
+		if ( ! class_exists( '\ElementorPro\Modules\ThemeBuilder\Module' ) ) {
 			return;
 		}
 
@@ -41,6 +41,7 @@ class Elementor extends Page_Builder_Base {
 		// Override theme templates.
 		add_action( 'neve_do_header', array( $this, 'do_header' ), 0 );
 		add_action( 'neve_do_footer', array( $this, 'do_footer' ), 0 );
+
 	}
 
 	/**
@@ -73,7 +74,7 @@ class Elementor extends Page_Builder_Base {
 	 * Remove actions for elementor header to act properly.
 	 */
 	public function do_header() {
-		$did_location = Module::instance()->get_locations_manager()->do_location( 'header' );
+		$did_location = \ElementorPro\Modules\ThemeBuilder\Module::instance()->get_locations_manager()->do_location( 'header' );
 		if ( $did_location ) {
 			remove_all_actions( 'neve_do_header' );
 		}
@@ -83,11 +84,9 @@ class Elementor extends Page_Builder_Base {
 	 * Remove actions for elementor footer to act properly.
 	 */
 	public function do_footer() {
-		$did_location = Module::instance()->get_locations_manager()->do_location( 'footer' );
+		$did_location = \ElementorPro\Modules\ThemeBuilder\Module::instance()->get_locations_manager()->do_location( 'footer' );
 		if ( $did_location ) {
 			remove_all_actions( 'neve_do_footer' );
 		}
 	}
-
-
 }

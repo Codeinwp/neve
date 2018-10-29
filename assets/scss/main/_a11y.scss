@@ -1,0 +1,22 @@
+.show-on-focus {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  top:0;
+  left: 0;
+  &:focus {
+    z-index: 20;
+    width: auto;
+    height: auto;
+    clip: auto;
+  }
+}
+
+a.neve-skip-link {
+  background-color: $git-black;
+  color: #fff;
+  padding: $spacing-xs $spacing-sm;
+}
