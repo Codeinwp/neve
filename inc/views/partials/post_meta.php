@@ -46,7 +46,7 @@ class Post_Meta extends Base_View {
 			switch ( $meta ) {
 				case 'author':
 					$markup .= '<li class="meta author vcard" itemprop="author" itemscope itemtype="https://schema.org/Person">';
-					$markup .= __( 'By', 'neve' ) . '&nbsp;' . '<span class="author-name" itemprop="name">' . get_the_author_posts_link() . '</span>';
+					$markup .= __( 'By', 'neve' ) . '&nbsp;' . '<span class="author-name fn" itemprop="name">' . get_the_author_posts_link() . '</span>';
 					$markup .= '</li>';
 					break;
 				case 'date':
@@ -133,7 +133,7 @@ class Post_Meta extends Base_View {
 		$html .= '<span>' . __( 'Tags', 'neve' ) . ':</span>';
 		foreach ( $tags as $tag ) {
 			$tag_link = get_tag_link( $tag->term_id );
-			$html    .= '<a href=' . esc_url( $tag_link ) . ' title="' . esc_attr( $tag->name ) . '" class=' . esc_attr( $tag->slug ) . '>';
+			$html    .= '<a href=' . esc_url( $tag_link ) . ' title="' . esc_attr( $tag->name ) . '" class=' . esc_attr( $tag->slug ) . ' rel="tag">';
 			$html    .= esc_html( $tag->name ) . '</a>';
 		}
 		$html .= ' </div> ';

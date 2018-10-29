@@ -115,7 +115,7 @@ class Template_Parts extends Base_View {
 			return;
 		}
 		$markup  = '<div class="nv-post-thumbnail-wrap">';
-		$markup .= '<a href="' . esc_url( get_the_permalink() ) . '" title="' . the_title_attribute(
+		$markup .= '<a href="' . esc_url( get_the_permalink() ) . '" rel="bookmark" title="' . the_title_attribute(
 			array( 'echo' => false )
 		) . '">';
 		$markup .= get_the_post_thumbnail(
@@ -187,7 +187,7 @@ class Template_Parts extends Base_View {
 			return;
 		}
 		?>
-		<a href="<?php esc_url( the_permalink() ); ?>"
+		<a href="<?php esc_url( the_permalink() ); ?>" rel="bookmark"
 				class="button button-secondary"><?php esc_html_e( 'Read more', 'neve' ); ?>
 			<span class="screen-reader-text"><?php echo __( 'About', 'neve' ) . ' ' . get_the_title(); ?></span></a>
 		<?php
@@ -221,7 +221,7 @@ class Template_Parts extends Base_View {
 			return '&nbsp;&hellip;';
 		}
 
-		$moretag = '<a href="' . esc_url( get_the_permalink() ) . '">&nbsp;&hellip;</a>';
+		$moretag = '<a href="' . esc_url( get_the_permalink() ) . '" rel="bookmark">&nbsp;&hellip;</a>';
 
 		return $moretag;
 	}
