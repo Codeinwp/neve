@@ -66,6 +66,7 @@ class Core_Loader {
 
 				'Compatibility\WooCommerce',
 				'Compatibility\Elementor',
+				'Compatibility\Amp',
 				'Compatibility\Beaver',
 
 				'Admin\Metabox\Main',
