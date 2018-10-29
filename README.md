@@ -44,7 +44,7 @@ License: All pixabay.com & mystock.themeisle.com images are licensed under the t
 | 2018 | 6 | https://mystock.themeisle.com/photo/devices/ |
 | 2018 | 5 | https://mystock.themeisle.com/photo/high-seats/ |
 | 2018 | 4 | https://mystock.themeisle.com/photo/ipad/ |
-| 2018 | 1 | https://mystock.themeisle.com/photo/path/ |
+| 2018 | 1 (also used in screenshot) | https://mystock.themeisle.com/photo/path/ |
 | 2018 | work-4 | https://mystock.themeisle.com/photo/stockholm-street/ |
 | 2018 | video-bg | https://mystock.themeisle.com/photo/cloudy-sunset/ |
 | 2018 | winter-forest | https://mystock.themeisle.com/photo/winter-forest/ |
@@ -64,8 +64,8 @@ License: All pixabay.com & mystock.themeisle.com images are licensed under the t
 | Vet Center | background-business-clean-811101 | https://pixabay.com/en/aisle-background-buy-clean-food-3105629/ |
 | Vet Center | adult-doctor-girl-355934 | https://pixabay.com/en/nurse-stethoscope-medicine-2141808/ |
 | Vet Center | adult-attractive-beautiful-415829 | https://pixabay.com/en/beauty-makeup-skin-care-2190682/ |
-| Vet Center | animals-cats-cute-45170 | https://pixabay.com/en/kittens-cat-cat-puppy-rush-555822/ |
-| Vet Center | adult-biology-chemical-356040 | https://pixabay.com/en/scientist-drugstore-microscope-2141259/ |
+| Vet Center | animals-cats-cute-45170 (also used ins screenshot) | https://pixabay.com/en/kittens-cat-cat-puppy-rush-555822/ |
+| Vet Center | adult-biology-chemical-356040 (also used in screenshot) | https://pixabay.com/en/scientist-drugstore-microscope-2141259/ |
 | Energy Panels | smile-1726471_1920 | https://pixabay.com/en/smile-profile-face-male-portrait-1726471/ |
 | Energy Panels | energy-2181904_1920 | https://pixabay.com/en/energy-wind-energy-wind-power-2181904/ |
 | Energy Panels | windrader-1048981_1920 | https://pixabay.com/en/windr%C3%A4der-wind-power-wind-park-fog-1048981/ |
@@ -91,4 +91,4 @@ License: All pixabay.com & mystock.themeisle.com images are licensed under the t
 | Energy Panels | alternative-alternative-energy-clean-356049 | https://pixabay.com/en/photovoltaic-photovoltaic-system-2138994/ |
 | Energy Panels | alternative-alternative-energy-blades-691458 | http://snapwiresnaps.tumblr.com/post/167509411781/logan-edmark-free-under-cc0-10-download |
 | Energy Panels | alternative-alternative-energy-clean-159397 | https://pixabay.com/en/solar-panel-array-power-sun-1591350/ |
-| Energy Panels | alternative-alternative-energy-blue-411592 | https://pixabay.com/en/solar-energy-solar-system-2157212/ |
+| Energy Panels | alternative-alternative-energy-blue-411592 (also used in screenshot) | https://pixabay.com/en/solar-energy-solar-system-2157212/ |

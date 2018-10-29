@@ -53,6 +53,7 @@ class Front_End {
 		add_theme_support( 'editor-font-sizes', $this->get_gutenberg_font_sizes() );
 		add_theme_support( 'fl-theme-builder-headers' );
 		add_theme_support( 'fl-theme-builder-footers' );
+		add_theme_support( 'amp', array( 'paired' => true ) );
 
 		register_nav_menus(
 			array(
@@ -68,10 +69,17 @@ class Front_End {
 	}
 
 	/**
-	 * Enqueue scripts.
+	 * Enqueue scripts and styles.
 	 */
 	public function enqueue_scripts() {
+		$this->add_styles();
+		$this->add_scripts();
+	}
 
+	/**
+	 * Enqueue styles.
+	 */
+	private function add_styles() {
 		if ( class_exists( 'WooCommerce' ) ) {
 			wp_enqueue_style( 'neve-woocommerce', NEVE_ASSETS_URL . 'css/woocommerce' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
 		}
@@ -80,6 +88,15 @@ class Front_End {
 		wp_style_add_data( 'neve-style', 'rtl', 'replace' );
 		wp_style_add_data( 'neve-style', 'suffix', '.min' );
 		wp_enqueue_style( 'neve-style' );
+	}
+
+	/**
+	 * Enqueue scripts.
+	 */
+	private function add_scripts() {
+		if ( neve_is_amp() ) {
+			return;
+		}
 
 		wp_register_script( 'neve-script', NEVE_ASSETS_URL . 'js/script' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.js', apply_filters( 'neve_filter_main_script_dependencies', array( 'jquery' ) ), NEVE_VERSION, false );
 		wp_localize_script(
@@ -88,7 +105,7 @@ class Front_End {
 			apply_filters(
 				'neve_filter_main_script_localization',
 				array(
-					'ajaxurl' => admin_url( 'admin-ajax.php' ),
+					'ajaxurl' => esc_url( admin_url( 'admin-ajax.php' ) ),
 					'nonce'   => wp_create_nonce( 'neve-theme-nonce' ),
 				)
 			)

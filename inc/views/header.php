@@ -26,7 +26,7 @@ class Header extends Base_View {
 	 */
 	public function render_navigation() {
 		?>
-		<nav class="nv-navbar" role="navigation">
+		<nav class="nv-navbar" <?php echo apply_filters( 'neve_nav_data_attrs', '' ); ?> role="navigation">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 nv-nav-wrap <?php echo esc_attr( $this->get_navbar_class() ); ?>">
@@ -65,10 +65,8 @@ class Header extends Base_View {
 		}
 
 		if ( 'search' === $additional_item ) {
-			$items .= '<li class="menu-item-nav-search" tabindex="0" aria-label="search"><a><span class="nv-icon nv-search"></span></a>';
-			$items .= '<div class="nv-nav-search">';
-			$items .= get_search_form( false );
-			$items .= '</div>';
+			$items .= '<li>';
+			$items .= do_shortcode( '[neve_search]' );
 			$items .= '</li>';
 		}
 
@@ -76,7 +74,7 @@ class Header extends Base_View {
 			if ( ! class_exists( 'WooCommerce' ) ) {
 				return $items;
 			}
-			$items .= '<li class="menu-item-nav-cart"><a href="' . esc_url( wc_get_cart_url() ) . '"><span class="nv-icon nv-cart"></span>';
+			$items .= '<li class="menu-item-nav-cart"><a href="' . esc_url( wc_get_cart_url() ) . '" class="cart-icon-wrapper"><span class="nv-icon nv-cart"></span>';
 			$items .= '<span class="screen-reader-text">' . __( 'Cart', 'neve' ) . '</span>';
 			$items .= '<span class="cart-count">' . WC()->cart->get_cart_contents_count() . '</span>';
 			$items .= '</a>';
@@ -117,7 +115,7 @@ class Header extends Base_View {
 	 * Render primary menu markup.
 	 */
 	private function render_primary_menu() {
-		echo '<div role="navigation" aria-label="' . __( 'Primary Menu', 'neve' ) . '">';
+		echo '<div role="navigation" aria-label="' . esc_html( __( 'Primary Menu', 'neve' ) ) . '">';
 		wp_nav_menu(
 			array(
 				'theme_location' => 'primary',
@@ -133,16 +131,16 @@ class Header extends Base_View {
 	 * Render navbar toggle markup.
 	 */
 	private function render_navbar_toggle() {
-		if ( ! has_nav_menu( 'primary' ) && current_user_can( 'edit_theme_options' ) ) {
+		if ( ! has_nav_menu( 'primary' ) ) {
 			return;
 		}
-
 		?>
+
 		<div class="navbar-toggle-wrapper">
 			<?php
 			neve_before_navbar_toggle_trigger();
 			?>
-			<button class="navbar-toggle"
+			<button class="navbar-toggle" <?php echo apply_filters( 'neve_nav_toggle_data_attrs', '' ); ?>
 					aria-label="<?php _e( 'Navigation Menu', 'neve' ); ?>" aria-expanded="false">
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
@@ -181,9 +179,9 @@ class Header extends Base_View {
 			}
 			$logo = '<img src="' . esc_url( $logo[0] ) . '" alt="' . esc_attr( $alt_attribute ) . '">';
 		} else {
-			$logo = '<p>' . get_bloginfo( 'name' ) . '</p>';
+			$logo = '<p>' . esc_html( get_bloginfo( 'name' ) ) . '</p>';
 
-			$logo .= '<small>' . get_bloginfo( 'description' ) . '</small>';
+			$logo .= '<small>' . esc_html( get_bloginfo( 'description' ) ) . '</small>';
 		}
 
 		return $logo;

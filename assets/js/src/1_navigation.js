@@ -40,7 +40,7 @@
 		'handleResponsiveNav': function () {
 			$( '.navbar-toggle' ).on( 'click touch', function () {
 				$( '.dropdown-open' ).removeClass( 'dropdown-open' );
-				$( '#nv-primary-navigation' ).toggleClass( 'responsive-opened' );
+				$( '.nv-navbar' ).toggleClass( 'responsive-opened' );
 				$( this ).toggleClass( 'active' );
 				if ( this.attributes[ 'aria-expanded' ].value === 'true' ) {
 					$( this ).attr( 'aria-expanded', 'false' );
@@ -103,6 +103,7 @@
 			$( navClickaway ).on( 'touchstart click', function () {
 				this.remove();
 				$( '#nv-primary-navigation li' ).removeClass( 'active dropdown-open' );
+				$( '.shortcode-search' ).removeClass( 'active' );
 			} );
 			return false;
 		},
