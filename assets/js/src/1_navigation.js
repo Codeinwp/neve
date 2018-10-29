@@ -103,6 +103,7 @@
 			$( navClickaway ).on( 'touchstart click', function () {
 				this.remove();
 				$( '#nv-primary-navigation li' ).removeClass( 'active dropdown-open' );
+				$( '.shortcode-search' ).removeClass( 'active' );
 			} );
 			return false;
 		},

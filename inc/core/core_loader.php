@@ -51,6 +51,7 @@ class Core_Loader {
 				'Views\Template_Parts',
 				'Views\Page_Header',
 				'Views\Post_Header',
+				'Views\Shortcodes',
 
 				'Views\Layouts\Layout_Container',
 				'Views\Layouts\Layout_Sidebar',

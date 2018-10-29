@@ -65,10 +65,8 @@ class Header extends Base_View {
 		}
 
 		if ( 'search' === $additional_item ) {
-			$items .= '<li class="menu-item-nav-search" tabindex="0" aria-label="search"><a><span class="nv-icon nv-search"></span></a>';
-			$items .= '<div class="nv-nav-search">';
-			$items .= get_search_form( false );
-			$items .= '</div>';
+			$items .= '<li>';
+			$items .= do_shortcode( '[neve_search]' );
 			$items .= '</li>';
 		}
 
@@ -76,7 +74,7 @@ class Header extends Base_View {
 			if ( ! class_exists( 'WooCommerce' ) ) {
 				return $items;
 			}
-			$items .= '<li class="menu-item-nav-cart"><a href="' . esc_url( wc_get_cart_url() ) . '"><span class="nv-icon nv-cart"></span>';
+			$items .= '<li class="menu-item-nav-cart"><a href="' . esc_url( wc_get_cart_url() ) . '" class="cart-icon-wrapper"><span class="nv-icon nv-cart"></span>';
 			$items .= '<span class="screen-reader-text">' . __( 'Cart', 'neve' ) . '</span>';
 			$items .= '<span class="cart-count">' . WC()->cart->get_cart_contents_count() . '</span>';
 			$items .= '</a>';
