@@ -29,8 +29,7 @@ class Template_Parts extends Base_View {
 	 */
 	public function render_post() {
 		?>
-		<article itemscope itemtype="https://schema.org/CreativeWork"
-				id="post-<?php echo esc_attr( get_the_ID() ); ?>"
+		<article id="post-<?php echo esc_attr( get_the_ID() ); ?>"
 				class="<?php echo esc_attr( $this->post_class() ); ?>">
 			<div class="article-content-col">
 				<div class="content">
@@ -120,10 +119,7 @@ class Template_Parts extends Base_View {
 		) . '">';
 		$markup .= get_the_post_thumbnail(
 			get_the_ID(),
-			'neve-blog',
-			array(
-				'itemprop' => 'image',
-			)
+			'neve-blog'
 		);
 		$markup .= '</a>';
 		$markup .= '</div>';
@@ -145,7 +141,7 @@ class Template_Parts extends Base_View {
 	 */
 	private function title() {
 		?>
-		<h3 class="blog-entry-title entry-title" itemprop="headline">
+		<h3 class="blog-entry-title entry-title">
 			<a href="<?php esc_url( the_permalink() ); ?>" rel="bookmark">
 				<?php the_title(); ?>
 			</a>

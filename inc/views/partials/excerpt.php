@@ -46,7 +46,7 @@ class Excerpt extends Base_View {
 		$length = $this->get_excerpt_lenght();
 
 		$output  = '';
-		$output .= '<div class="excerpt-wrap entry-summary" itemprop="text">';
+		$output .= '<div class="excerpt-wrap entry-summary">';
 		$output .= wp_kses_post( $this->get_excerpt( $length ) );
 		$output .= '</div>';
 

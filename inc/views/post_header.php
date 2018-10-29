@@ -48,15 +48,12 @@ class Post_Header extends Base_View {
 		foreach ( $content_order as $item ) {
 			switch ( $item ) {
 				case 'title':
-					echo '<h1 class="title entry-title" itemprop="headline">' . wp_kses_post( get_the_title() ) . '</h1>';
+					echo '<h1 class="title entry-title">' . wp_kses_post( get_the_title() ) . '</h1>';
 					break;
 				case 'thumbnail':
 					echo get_the_post_thumbnail(
 						null,
-						'neve-blog',
-						array(
-							'itemprop' => 'image',
-						)
+						'neve-blog'
 					);
 					break;
 				case 'meta':
