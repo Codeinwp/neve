@@ -60,6 +60,7 @@ if ( version_compare( PHP_VERSION, '5.3.29' ) < 0 ) {
 	return;
 }
 
+require_once 'globals/utilities.php';
 require_once 'globals/hooks.php';
 require_once 'globals/sanitize-functions.php';
 
