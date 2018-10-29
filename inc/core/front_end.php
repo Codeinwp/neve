@@ -243,7 +243,7 @@ class Front_End {
 		foreach ( $color_controls as $control_name => $control_data ) {
 			$color      = get_theme_mod( $control_name, $control_data['default'] );
 			$color_name = $control_data['label'];
-			$slug       = preg_replace( '~[^\pL\d]+~u', '-', strtolower( $color_name ) );
+			$slug       = preg_replace( '~[^\pL\d]+~u', '-', strtolower( $control_name ) );
 			array_push(
 				$gutenberg_color_palette,
 				array(
@@ -280,7 +280,7 @@ class Front_End {
 				'name'      => __( 'Body font size', 'neve' ),
 				'shortName' => __( 'Body', 'neve' ),
 				'size'      => $body_font_size,
-				'slug'      => 'body',
+				'slug'      => 'neve-body',
 			),
 		);
 
@@ -307,7 +307,7 @@ class Front_End {
 						// translators: Heading size.
 						'shortName' => sprintf( __( 'H%d', 'neve' ), $i ),
 						'size'      => ( $font_size * 15 ),
-						'slug'      => 'h' . $i,
+						'slug'      => 'neve-h' . $i,
 					)
 				);
 			}
