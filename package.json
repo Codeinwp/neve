@@ -41,8 +41,8 @@
     "pre-commit": "^1.2.2"
   },
   "scripts": {
-    "phpcbf": "phpcbf || true ",
-    "phpcs": "phpcs",
+    "phpcbf": "grunt phpcbf || true ",
+    "phpcs": "grunt phpcs",
     "jshint": "grunt jshint",
     "buildCssJs": "grunt buildScripts",
     "addNewStyles": "git add **/*.css && git add assets/**/*.css"
