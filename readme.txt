@@ -39,7 +39,7 @@ Neve is a super fast, easily customizable, multi-purpose theme. It’s perfect f
 * team-3-1.jpg, CC0, https://mystock.themeisle.com/photo/thinking-time/
 * team-2-1.jpg, CC0, https://mystock.themeisle.com/photo/winter-hat/
 * team-1.jpg, CC0, https://mystock.themeisle.com/photo/sun-hat/
-* 3-1.jpg, CC0, https://mystock.themeisle.com/photo/flatiron-building/
+* 3-3.jpg (also used in screenshot), CC0, https://pixabay.com/en/metro-subway-train-station-1209556/
 * blog3.jpg, CC0, https://mystock.themeisle.com/photo/river-bridge/
 * 11.jpg, CC0, https://mystock.themeisle.com/photo/yoga-2/
 * 9.jpg, CC0, https://mystock.themeisle.com/photo/alley-3/
