@@ -173,22 +173,22 @@ class Admin {
 		$name       = $theme_args->__get( 'Name' );
 		$slug       = $theme_args->__get( 'stylesheet' );
 
-		$about_page_url          = '<a href="' . esc_url( admin_url( 'themes.php?page=' . $slug . '-welcome' ) ) . '">';
-		$about_page_url         .= esc_html__( 'welcome page.', 'neve' );
-		$about_page_url         .= '</a>';
-		$getting_started_button  = '<a href="' . esc_url( admin_url( 'themes.php?page=' . $slug . '-welcome&onboarding=yes#sites_library' ) ) . '" class="button" style="text-decoration: none;">';
-		$getting_started_button .= esc_html__( 'Get started with ', 'neve' ) . $name;
-		$getting_started_button .= '</a>';
-
-		$notice  = '';
-		$notice .= '<p>';
-		$notice .= esc_html__( 'Welcome! Thank you for choosing ', 'neve' );
-		$notice .= $name;
-		$notice .= esc_html__( '! To fully take advantage of the best our theme can offer please make sure you visit our ', 'neve' );
-		$notice .= $about_page_url;
+		$notice  = '<p>';
+		$notice .= sprintf(
+			/* Translators: 1 - theme name, 2 - link opening tag, 3 - link closing tag */
+			esc_html__( 'Welcome! Thank you for choosing %1$s! To fully take advantage of the best our theme can offer please make sure you visit our %2$swelcome page%3$s.', 'neve' ),
+			$name,
+			'<a href="' . esc_url( admin_url( 'themes.php?page=' . $slug . '-welcome' ) ) . '">',
+			'</a>'
+		);
 		$notice .= '</p>';
 		$notice .= '<p>';
-		$notice .= $getting_started_button;
+		$notice .= sprintf(
+			/* Translators: 1 - onboarding url, 2 - button text */
+			'<a href="%1$s" class="button" style="text-decoration: none;">%2$s</a>',
+			esc_url( admin_url( 'themes.php?page=' . $slug . '-welcome&onboarding=yes#sites_library' ) ),
+			esc_html__( 'Get started with ', 'neve' )
+		);
 		$notice .= '</p>';
 
 		echo wp_kses_post( $notice );
