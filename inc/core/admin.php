@@ -185,9 +185,10 @@ class Admin {
 		$notice .= '<p>';
 		$notice .= sprintf(
 			/* Translators: 1 - onboarding url, 2 - button text */
-			'<a href="%1$s" class="button" style="text-decoration: none;">%2$s</a>',
+			'<a href="%1$s" class="button" style="text-decoration: none;">%2$s %3$s</a>',
 			esc_url( admin_url( 'themes.php?page=' . $slug . '-welcome&onboarding=yes#sites_library' ) ),
-			esc_html__( 'Get started with ', 'neve' )
+			esc_html__( 'Get started with', 'neve' ),
+			$name
 		);
 		$notice .= '</p>';
 
