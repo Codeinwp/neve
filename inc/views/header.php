@@ -65,8 +65,10 @@ class Header extends Base_View {
 		}
 
 		if ( 'search' === $additional_item ) {
-			$items .= '<li>';
-			$items .= do_shortcode( '[neve_search]' );
+			$items .= '<li class="menu-item-nav-search"><a><span class="nv-icon nv-search"></span></a>';
+			$items .= '<div class="nv-nav-search">';
+			$items .= get_search_form( false );
+			$items .= '</div>';
 			$items .= '</li>';
 		}
 
