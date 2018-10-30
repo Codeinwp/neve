@@ -48,7 +48,7 @@ class Page_Header extends Base_View {
 		}
 		?>
 		<div class="nv-page-title-wrap <?php echo esc_attr( $title_args['wrap-class'] ); ?>">
-			<div class="nv-page-title <?php echo $title_args['class']; ?>">
+			<div class="nv-page-title <?php echo esc_attr( $title_args['class'] ); ?>">
 				<h1><?php echo wp_kses_post( $title_args['string'] ); ?></h1>
 			</div>
 		</div>

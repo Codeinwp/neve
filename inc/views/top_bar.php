@@ -88,7 +88,7 @@ class Top_Bar extends Base_View {
 				'theme_location' => 'top-bar',
 				'menu_id'        => 'nv-top-bar-menu',
 				'container'      => 'ul',
-				'depth'          => -1,
+				'depth'          => - 1,
 				'fallback_cb'    => '__return_false',
 			)
 		);

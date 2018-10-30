@@ -16,14 +16,12 @@
   @include nav-menu--laptop();
   @include nav-menu-centered--laptop();
   @include nav-search--laptop();
-  @include top-bar--laptop();
   @include nav-menu-right--laptop();
   @include blog-layout-default-alt--laptop();
   @include blogpost-index--laptop();
   @include comments--laptop();
   @include single-post--laptop();
   @include page--laptop();
-  @include top-bar--laptop();
   @include sidebar--laptop();
   @include blog-layout--laptop();
 }

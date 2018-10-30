@@ -88,7 +88,7 @@
 			}
 
 			var windowWidth = $( window ).innerWidth();
-			var containerWidth = $( '#primary > [class^="container"]' ).innerWidth();
+			var containerWidth = $( '#content > [class^="container"]' ).innerWidth();
 			var marginFullNeeded = 0;
 			var marginWideNeeded = 0;
 			if ( utils.isMobile() || !jQuery( '.nv-sidebar-wrap' ).length ) {

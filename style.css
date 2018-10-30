@@ -5,7 +5,7 @@ Theme URI:      https://themeisle.com/themes/neve/
 Author:         ThemeIsle
 Author URI:     https://themeisle.com
 Description:    Neve is a super fast, easily customizable, multi-purpose theme. It’s perfect for blogs, small business, startups, agencies, firms, e-commerce shops (WooCommerce storefront) as well as personal portfolio sites and most types of projects. A fully AMP optimized and responsive theme, Neve will load in mere seconds and adapt perfectly on any viewing device. While it is lightweight and has a minimalist design, the theme is highly extendable, it has a highly SEO optimized code, resulting in top rankings in Google search results. Neve works perfectly with Gutenberg and the most popular page builders (Elementor, Brizy, Beaver Builder, Visual Composer, SiteOrigin, Divi). Neve is also WooCommerce ready, responsive, RTL & translation ready. Look no further. Neve is the perfect theme for you!
-Version:        1.0.7
+Version:        1.0.8
 License:        GNU General Public License v2 or later
 License URI:    http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain:    neve
@@ -419,100 +419,6 @@ a.neve-skip-link {
   justify-content: flex-start;
   align-items: center;
 }
-.nv-tb-wrap.content-menu .neve-shortcode {
-  margin-right: 20px;
-}
-.nv-tb-wrap.menu-content .neve-shortcode {
-  margin-left: 20px;
-}
-
-.neve-shortcode {
-  display: inline-block;
-  position: relative;
-  cursor: pointer;
-}
-.neve-shortcode > a:hover {
-  text-decoration: none;
-  opacity: .8;
-}
-
-.shortcode-cart .woocommerce-mini-cart__buttons {
-  margin-bottom: 16px;
-}
-.shortcode-cart .widget_shopping_cart > .widget_shopping_cart_content > ul.woocommerce-mini-cart.cart_list.product_list_widget {
-  max-height: 450px;
-  overflow-y: scroll;
-  overflow-x: hidden;
-}
-.shortcode-cart .woocommerce-mini-cart__empty-message {
-  text-align: center;
-  margin-bottom: 0;
-  padding: 10px 0;
-}
-.shortcode-cart .woocommerce.widget_shopping_cart .total {
-  border-top: 1px solid #f0f0f0;
-  border-bottom: 1px solid #f0f0f0;
-  padding-bottom: 10px;
-  margin: 0 auto 10px;
-  text-align: center;
-}
-.shortcode-cart .woocommerce-mini-cart__buttons {
-  display: flex;
-  padding: 10px 20px 0;
-}
-.shortcode-cart .woocommerce-mini-cart__buttons a.button {
-  margin: 0;
-  text-align: center;
-}
-.shortcode-cart .woocommerce-mini-cart__buttons a.button:last-child {
-  margin-left: 5px;
-  font-size: .8em;
-  font-weight: 600;
-  padding: 6px 12px;
-  transition: all .15s ease-in-out;
-  text-align: center;
-  vertical-align: middle;
-  border: 1px solid transparent;
-  border-radius: .25rem;
-  text-transform: uppercase;
-  cursor: pointer;
-  line-height: 1.68421;
-  font-family: inherit;
-  background-color: #0366d6;
-  color: #fff;
-}
-.shortcode-cart .woocommerce-mini-cart__buttons a.button:last-child:hover {
-  text-decoration: none;
-  opacity: .9;
-}
-.shortcode-cart .woocommerce-mini-cart__buttons a.button:first-child {
-  font-size: .8em;
-  font-weight: 600;
-  padding: 6px 12px;
-  transition: all .15s ease-in-out;
-  text-align: center;
-  vertical-align: middle;
-  border: 1px solid transparent;
-  border-radius: .25rem;
-  text-transform: uppercase;
-  cursor: pointer;
-  line-height: 1.68421;
-  font-family: inherit;
-  border: 1px solid rgba(27, 31, 35, 0.2);
-  background-color: transparent;
-  font-weight: 600;
-  color: #0366d6;
-}
-.shortcode-cart .woocommerce-mini-cart__buttons a.button:first-child:hover {
-  opacity: 1;
-  text-decoration: none;
-  background-color: #0366d6;
-  color: #fff;
-}
-
-.nv-top-bar-content .shortcode-search {
-  display: none;
-}
 
 .nv-nav-header {
   display: flex;
@@ -808,6 +714,12 @@ form input[type="text"], form input[type="password"], form input[type="email"], 
   transition: all 0.3s ease;
 }
 
+input[type="search"] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
 input, textarea, select, button {
   line-height: inherit;
   -webkit-box-sizing: border-box;
@@ -903,6 +815,9 @@ button:hover, input[type=button]:hover, .btn:hover, input[type="submit"]:hover {
 }
 .nv-meta-list a {
   color: rgba(0, 0, 0, 0.54);
+}
+.nv-meta-list .posted-on .updated {
+  display: none;
 }
 
 .entry-title {
@@ -1829,10 +1744,6 @@ hr {
     height: 100vh;
   }
 
-  .nv-top-bar-content .shortcode-search {
-    display: inline-block;
-  }
-
   .nv-nav-wrap.nav-right {
     flex-direction: row-reverse;
   }
@@ -1923,10 +1834,6 @@ hr {
 
   .nv-content-none-wrap {
     margin-bottom: 0;
-  }
-
-  .nv-top-bar-content .shortcode-search {
-    display: inline-block;
   }
 
   .nv-sidebar-wrap {

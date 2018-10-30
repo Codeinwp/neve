@@ -51,7 +51,10 @@ class Post_Header extends Base_View {
 					echo '<h1 class="title entry-title">' . wp_kses_post( get_the_title() ) . '</h1>';
 					break;
 				case 'thumbnail':
-					echo get_the_post_thumbnail( null, 'neve-blog' );
+					echo get_the_post_thumbnail(
+						null,
+						'neve-blog'
+					);
 					break;
 				case 'meta':
 					$this->render_post_meta();

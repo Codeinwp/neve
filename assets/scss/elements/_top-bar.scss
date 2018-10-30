@@ -40,46 +40,4 @@
     justify-content: flex-start;
     align-items: center;
   }
-
-  &.content-menu {
-    .neve-shortcode {
-      margin-right: $spacing-sm;
-    }
-  }
-  &.menu-content {
-    .neve-shortcode {
-      margin-left: $spacing-sm;
-    }
-  }
-}
-
-.neve-shortcode {
-  display: inline-block;
-  position: relative;
-  cursor: pointer;
-  > a:hover {
-    text-decoration: none;
-    opacity: .8;
-  }
-}
-
-.shortcode-cart {
-  .woocommerce-mini-cart__buttons {
-    margin-bottom: 16px;
-  }
-  @include cart-widget();
-}
-
-.nv-top-bar-content {
-  .shortcode-search {
-    display: none;
-  }
-}
-
-@mixin top-bar--laptop() {
-  .nv-top-bar-content {
-    .shortcode-search {
-      display: inline-block;
-    }
-  }
 }

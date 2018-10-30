@@ -58,7 +58,7 @@ if ( post_password_required() ) {
 	if ( is_array( $pages ) ) {
 		echo '<ul class="pagination">';
 		foreach ( $pages as $page ) {
-			echo '<li>' . $page . '</li>';
+			echo '<li>' . esc_html( $page ) . '</li>';
 		}
 		echo '</ul>';
 	}
