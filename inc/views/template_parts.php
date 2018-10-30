@@ -124,7 +124,7 @@ class Template_Parts extends Base_View {
 		$markup .= '</a>';
 		$markup .= '</div>';
 
-		echo $markup;
+		echo wp_kses_post( $markup );
 	}
 
 	/**
@@ -185,7 +185,7 @@ class Template_Parts extends Base_View {
 		?>
 		<a href="<?php esc_url( the_permalink() ); ?>" rel="bookmark"
 				class="button button-secondary"><?php esc_html_e( 'Read more', 'neve' ); ?>
-			<span class="screen-reader-text"><?php echo __( 'About', 'neve' ) . ' ' . get_the_title(); ?></span></a>
+			<span class="screen-reader-text"><?php echo __( 'About', 'neve' ) . ' ' . esc_html( get_the_title() ); ?></span></a>
 		<?php
 	}
 

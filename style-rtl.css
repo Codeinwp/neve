@@ -714,6 +714,12 @@ form input[type="text"], form input[type="password"], form input[type="email"], 
   transition: all 0.3s ease;
 }
 
+input[type="search"] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
 input, textarea, select, button {
   line-height: inherit;
   -webkit-box-sizing: border-box;
