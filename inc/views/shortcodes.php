@@ -44,7 +44,7 @@ class Shortcodes extends Base_View {
 		if ( ! class_exists( 'WooCommerce' ) ) {
 			return;
 		}
-		
+
 		$shortcode_markup = '';
 
 		$shortcode_markup .= '<div class="neve-shortcode shortcode-cart menu-item-nav-cart">';
