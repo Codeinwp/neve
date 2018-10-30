@@ -1,4 +1,11 @@
- ### v1.0.7 - 2018-10-29 
+
+ ### v1.0.8 - 2018-10-30 
+ **Changes:** 
+ * Google Search Console compatibility
+* Fixed theme check issues
+* Changed the onboarding mechanism
+* Fixed escaping issues
+  ### v1.0.7 - 2018-10-29 
  **Changes:** 
  * Accessibility ready
 * Refactored the About Neve page
