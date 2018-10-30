@@ -2,9 +2,9 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Neve 1.0.5\n"
+"Project-Id-Version: Neve 1.0.8\n"
 "Report-Msgid-Bugs-To: https://github.com/Codeinwp/neve/issues\n"
-"POT-Creation-Date: 2018-10-29 17:20:02+00:00\n"
+"POT-Creation-Date: 2018-10-30 14:24:33+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -48,7 +48,7 @@ msgstr ""
 msgid "Contained"
 msgstr ""
 
-#: inc/admin/metabox/main.php:28 inc/admin/metabox/main.php:43
+#: inc/admin/metabox/main.php:28
 #: inc/customizer/options/layout_container.php:142
 msgid "Full Width"
 msgstr ""
@@ -64,6 +64,10 @@ msgstr ""
 
 #: inc/admin/metabox/main.php:42
 msgid "Right Sidebar"
+msgstr ""
+
+#: inc/admin/metabox/main.php:43
+msgid "No Sidebar"
 msgstr ""
 
 #: inc/admin/metabox/main.php:45 inc/core/front_end.php:127
@@ -202,7 +206,7 @@ msgid "Filter"
 msgstr ""
 
 #: inc/compatibility/woocommerce.php:355
-#: inc/customizer/options/layout_navigation.php:86 inc/views/header.php:78
+#: inc/customizer/options/layout_navigation.php:86 inc/views/header.php:79
 msgid "Cart"
 msgstr ""
 
@@ -224,68 +228,68 @@ msgstr ""
 msgid "Import Zelle Front page as template "
 msgstr ""
 
-#: inc/core/admin.php:36
+#: inc/core/admin.php:37
 msgid "Getting Started"
 msgstr ""
 
-#: inc/core/admin.php:39 inc/core/admin.php:42
+#: inc/core/admin.php:40 inc/core/admin.php:43
 msgid "Recommended actions"
 msgstr ""
 
-#: inc/core/admin.php:40
+#: inc/core/admin.php:41
 msgid ""
 "We have compiled a list of steps for you to take so we can ensure that the "
 "experience you have using one of our products is very easy to follow."
 msgstr ""
 
-#: inc/core/admin.php:49 inc/core/admin.php:52
+#: inc/core/admin.php:50 inc/core/admin.php:53
 msgid "Go to the Customizer"
 msgstr ""
 
-#: inc/core/admin.php:50
+#: inc/core/admin.php:51
 msgid ""
 "Using the WordPress Customizer you can easily customize every aspect of the "
 "theme."
 msgstr ""
 
-#: inc/core/admin.php:62
+#: inc/core/admin.php:63
 msgid "Recommended Actions"
 msgstr ""
 
-#: inc/core/admin.php:80
+#: inc/core/admin.php:81
 msgid "Useful Plugins"
 msgstr ""
 
-#: inc/core/admin.php:94
+#: inc/core/admin.php:95
 msgid "Support"
 msgstr ""
 
-#: inc/core/admin.php:98 inc/core/admin.php:101
+#: inc/core/admin.php:99 inc/core/admin.php:102
 msgid "Contact Support"
 msgstr ""
 
-#: inc/core/admin.php:99
+#: inc/core/admin.php:100
 msgid ""
 "We want to make sure you have the best experience using Neve, and that is "
 "why we have gathered all the necessary information here for you. We hope "
 "you will enjoy using Neve as much as we enjoy creating great products."
 msgstr ""
 
-#: inc/core/admin.php:109 inc/core/admin.php:112 inc/core/admin.php:156
+#: inc/core/admin.php:110 inc/core/admin.php:113 inc/core/admin.php:157
 msgid "Changelog"
 msgstr ""
 
-#: inc/core/admin.php:110
+#: inc/core/admin.php:111
 msgid ""
 "Want to get the gist on the latest theme changes? Just consult our "
 "changelog below to get a taste of the recent fixes and features implemented."
 msgstr ""
 
-#: inc/core/admin.php:120
+#: inc/core/admin.php:121
 msgid "Create a child theme"
 msgstr ""
 
-#: inc/core/admin.php:122
+#: inc/core/admin.php:123
 msgid ""
 "If you want to make changes to the theme's files, those changes are likely "
 "to be overwritten when you next update the theme. In order to prevent that "
@@ -293,15 +297,15 @@ msgid ""
 "the documentation below."
 msgstr ""
 
-#: inc/core/admin.php:124 inc/core/admin.php:135 inc/core/admin.php:146
+#: inc/core/admin.php:125 inc/core/admin.php:136 inc/core/admin.php:147
 msgid "View how to do this"
 msgstr ""
 
-#: inc/core/admin.php:131
+#: inc/core/admin.php:132
 msgid "Speed up your site"
 msgstr ""
 
-#: inc/core/admin.php:133
+#: inc/core/admin.php:134
 msgid ""
 "If you find yourself in a situation where everything on your site is "
 "running very slowly, you might consider having a look at the documentation "
@@ -309,17 +313,29 @@ msgid ""
 "solutions for each of the issues."
 msgstr ""
 
-#: inc/core/admin.php:142
+#: inc/core/admin.php:143
 msgid "Build a landing page with a drag-and-drop content builder"
 msgstr ""
 
-#: inc/core/admin.php:144
+#: inc/core/admin.php:145
 msgid ""
 "In the documentation below you will find an easy way to build a great "
 "looking landing page using a drag-and-drop content builder plugin."
 msgstr ""
 
-#: inc/core/front_end.php:60 inc/views/header.php:118
+#: inc/core/admin.php:181
+#. Translators: 1 - theme name, 2 - link opening tag, 3 - link closing tag
+msgid ""
+"Welcome! Thank you for choosing %1$s! To fully take advantage of the best "
+"our theme can offer please make sure you visit our %2$swelcome page%3$s."
+msgstr ""
+
+#: inc/core/admin.php:190
+#. Translators: 1 - onboarding url, 2 - button text
+msgid "Get started with"
+msgstr ""
+
+#: inc/core/front_end.php:60 inc/views/header.php:119
 msgid "Primary Menu"
 msgstr ""
 
@@ -617,11 +633,11 @@ msgstr ""
 msgid "Copyright - Neve by %1$s"
 msgstr ""
 
-#: inc/views/header.php:144
+#: inc/views/header.php:145
 msgid "Navigation Menu"
 msgstr ""
 
-#: inc/views/header.php:148
+#: inc/views/header.php:149
 msgid "Toggle Navigation"
 msgstr ""
 
