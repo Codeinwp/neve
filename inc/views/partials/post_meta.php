@@ -46,7 +46,7 @@ class Post_Meta extends Base_View {
 			switch ( $meta ) {
 				case 'author':
 					$markup .= '<li class="meta author vcard">';
-					$markup .= __( 'By', 'neve' ) . '&nbsp;' . '<span class="author-name fn">' . get_the_author_posts_link() . '</span>';
+					$markup .= __( 'By', 'neve' ) . '&nbsp;' . '<span class="author-name fn">' . wp_kses_post( get_the_author_posts_link() ) . '</span>';
 					$markup .= '</li>';
 					break;
 				case 'date':
@@ -65,7 +65,7 @@ class Post_Meta extends Base_View {
 						break;
 					}
 					$markup .= '<li class="meta comments">';
-					$markup .= $this->get_comments();
+					$markup .= $comments;
 					$markup .= '</li>';
 					break;
 				case 'default':
@@ -95,7 +95,7 @@ class Post_Meta extends Base_View {
 			$comments = __( '1 Comment', 'neve' );
 		}
 
-		return '<a href="' . esc_url( get_comments_link() ) . '">' . $comments . '</a>';
+		return '<a href="' . esc_url( get_comments_link() ) . '">' . esc_html( $comments ) . '</a>';
 	}
 
 	/**
@@ -146,11 +146,11 @@ class Post_Meta extends Base_View {
 	 * @return string
 	 */
 	private function get_time_tags() {
-		$time = '<time class="entry-date published" datetime="' . esc_attr( get_the_date( 'c' ) ) . '" content="' . get_the_date( 'Y-m-d' ) . '">' . get_the_date() . '</time>';
+		$time = '<time class="entry-date published" datetime="' . esc_attr( get_the_date( 'c' ) ) . '" content="' . esc_attr( get_the_date( 'Y-m-d' ) ) . '">' . esc_html( get_the_date() ) . '</time>';
 		if ( get_the_time( 'U' ) === get_the_modified_time( 'U' ) ) {
 			return $time;
 		}
-		$time .= '<time class="updated" datetime="' . get_the_modified_date( 'c' ) . '">' . get_the_modified_date() . '</time>';
+		$time .= '<time class="updated" datetime="' . esc_attr( get_the_modified_date( 'c' ) ) . '">' . esc_html( get_the_modified_date() ) . '</time>';
 
 		return $time;
 	}
