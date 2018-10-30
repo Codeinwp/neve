@@ -27,9 +27,10 @@ class Admin {
 		 */
 		$config = array(
 			'welcome_notice'      => array(
-				'type'           => 'default',
-				'notice_class'   => 'updated',
-				'dismiss_option' => 'neve_notice_dismissed',
+				'type'            => 'custom',
+				'notice_class'    => 'updated',
+				'dismiss_option'  => 'neve_notice_dismissed',
+				'render_callback' => array( $this, 'welcome_notice_content' ),
 			),
 			'getting_started'     => array(
 				'type'    => 'columns-2',
@@ -165,6 +166,19 @@ class Admin {
 	}
 
 	/**
+	 * Render welcome notice content
+	 */
+	public function welcome_notice_content() {
+		$theme_args = wp_get_theme();
+		$name       = $theme_args->__get( 'Name' );
+		$slug       = $theme_args->__get( 'stylesheet' );
+
+		$notice = apply_filters( 'ti_about_welcome_notice_filter', ( '<p>' . sprintf( 'Welcome! Thank you for choosing %1$s! To fully take advantage of the best our theme can offer please make sure you visit our %2$swelcome page%3$s.', $name, '<a href="' . esc_url( admin_url( 'themes.php?page=' . $slug . '-welcome' ) ) . '">', '</a>' ) . '</p><p><a href="' . esc_url( admin_url( 'themes.php?page=' . $slug . '-welcome&onboarding=yes#sites_library' ) ) . '" class="button" style="text-decoration: none;">' . sprintf( 'Get started with %s', $name ) . '</a></p>' ) );
+
+		echo wp_kses_post( $notice );
+	}
+
+	/**
 	 * Load site import module.
 	 */
 	public function load_site_import() {
@@ -173,21 +187,5 @@ class Admin {
 			\Themeisle_Onboarding::instance();
 		}
 	}
-
-	/**
-	 * Start onboarding.
-	 */
-	public function start_onboarding() {
-		$theme      = wp_get_theme();
-		$theme_slug = $theme->get_template();
-		$query_args = array(
-			'onboarding' => 'yes',
-		);
-		$base_url   = esc_url( admin_url( 'themes.php?page=' . $theme_slug . '-welcome' ) );
-
-		$onboarding_url = add_query_arg( $query_args, $base_url ) . '#sites_library';
-		wp_safe_redirect( $onboarding_url );
-	}
-
 
 }
