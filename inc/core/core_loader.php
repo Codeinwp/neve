@@ -51,6 +51,7 @@ class Core_Loader {
 				'Views\Template_Parts',
 				'Views\Page_Header',
 				'Views\Post_Header',
+				'Views\Shortcodes',
 
 				'Views\Layouts\Layout_Container',
 				'Views\Layouts\Layout_Sidebar',
@@ -66,6 +67,7 @@ class Core_Loader {
 
 				'Compatibility\WooCommerce',
 				'Compatibility\Elementor',
+				'Compatibility\Amp',
 				'Compatibility\Beaver',
 
 				'Admin\Metabox\Main',
@@ -108,7 +110,6 @@ class Core_Loader {
 		$admin = new Admin();
 		add_action( 'init', array( $admin, 'load_site_import' ) );
 		add_action( 'init', array( $admin, 'do_about_page' ) );
-		add_action( 'after_switch_theme', array( $admin, 'start_onboarding' ) );
 
 		$front_end = new Front_End();
 		add_action( 'wp_enqueue_scripts', array( $front_end, 'enqueue_scripts' ) );

@@ -35,11 +35,16 @@ class Nav_Walker extends \Walker_Nav_Menu {
 		}
 
 		parent::start_el( $output, $item, $depth, $args, $id );
+
 		if ( ! isset( $item->classes ) || ! is_array( $item->classes ) ) {
 			return;
 		}
-		if ( in_array( 'menu-item-has-children', $item->classes ) ) {
-			$output .= '<div class="caret-wrap"><span class="caret"></span></div>';
+		if ( ! in_array( 'menu-item-has-children', $item->classes ) ) {
+			return;
 		}
+		$output .= '<div class="caret-wrap ' . $item->menu_order . '">';
+		$output .= '<span class="caret"></span>';
+		$output .= '</div>';
+		$output  = apply_filters( 'neve_caret_wrap_filter', $output, $item->menu_order );
 	}
 }

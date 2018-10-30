@@ -26,6 +26,11 @@ class Admin {
 		 * About page instance
 		 */
 		$config = array(
+			'welcome_notice'      => array(
+				'type'           => 'default',
+				'notice_class'   => 'updated',
+				'dismiss_option' => 'neve_notice_dismissed',
+			),
 			'getting_started'     => array(
 				'type'    => 'columns-2',
 				'title'   => __( 'Getting Started', 'neve' ),

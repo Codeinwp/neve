@@ -1,6 +1,5 @@
 .menu-item-nav-cart {
   .cart-count {
-    border-radius: 2px;
     background: #fff;
     border: $muted-border;
     font-size: 0.55em;
@@ -30,7 +29,7 @@
 
 @mixin nav-cart--laptop() {
   .menu-item-nav-cart:hover .nv-nav-cart,
-  .menu-item-nav-cart a:focus + .nv-nav-cart,
+  .menu-item-nav-cart > a:focus + .nv-nav-cart,
   .nv-nav-cart:focus-within {
     opacity: 1;
     visibility: visible;
@@ -48,41 +47,7 @@
     right: 0;
     width: 350px;
     background: $navbar_background_color;
-    .widget_shopping_cart > .widget_shopping_cart_content > ul.woocommerce-mini-cart.cart_list.product_list_widget {
-      max-height: 450px;
-      overflow-y: scroll;
-      overflow-x: hidden;
-    }
-    .woocommerce-mini-cart__empty-message {
-      text-align: center;
-      margin-bottom: 0;
-      padding: 10px 0;
-    }
-    .woocommerce.widget_shopping_cart .total {
-      border-top: $muted-border;
-      border-bottom: $muted-border;
-      padding-bottom: $spacing-xs;
-      margin: 0 auto $spacing-xs;
-      text-align: center;
-    }
-    .woocommerce-mini-cart__buttons {
-      display: grid;
-      grid-template-columns: 8fr 1fr 8fr;
-      padding: $spacing-xs $spacing-sm 0;
-      a:first-child {
-        grid-column-start: 1;
-        @include button();
-        @include button-secondary();
-      }
-      a:nth-child(2) {
-        grid-column-start: 3;
-      }
-      a:nth-child(3) {
-        grid-column: span 3;
-        text-align: center;
-        height: 26px;
-      }
-    }
+    @include cart-widget();
   }
   #nv-primary-navigation .widget_shopping_cart li.mini_cart_item {
     //Padding right is 61px to allow image on right (45px) which should be padded L/R (8px) { 45 + 8 + 8 = 61 }
