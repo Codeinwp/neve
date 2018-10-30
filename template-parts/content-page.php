@@ -7,7 +7,7 @@
  */
 
 do_action( 'neve_before_content', 'single-page' ); ?>
-	<div class="nv-content-wrap">
+	<div class="nv-content-wrap entry-content">
 		<?php the_content(); ?>
 		<?php
 		if ( comments_open() || get_comments_number() ) {

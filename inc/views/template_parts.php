@@ -29,8 +29,7 @@ class Template_Parts extends Base_View {
 	 */
 	public function render_post() {
 		?>
-		<article
-				id="post-<?php echo esc_attr( get_the_ID() ); ?>"
+		<article id="post-<?php echo esc_attr( get_the_ID() ); ?>"
 				class="<?php echo esc_attr( $this->post_class() ); ?>">
 			<div class="article-content-col">
 				<div class="content">
@@ -115,16 +114,17 @@ class Template_Parts extends Base_View {
 			return;
 		}
 		$markup  = '<div class="nv-post-thumbnail-wrap">';
-		$markup .= '<a href="' . esc_url( get_the_permalink() ) . '" title="' . the_title_attribute(
-			array(
-				'echo' => false,
-			)
+		$markup .= '<a href="' . esc_url( get_the_permalink() ) . '" rel="bookmark" title="' . the_title_attribute(
+			array( 'echo' => false )
 		) . '">';
-		$markup .= get_the_post_thumbnail( get_the_ID(), 'neve-blog', array( 'alt' => get_the_title() ) );
+		$markup .= get_the_post_thumbnail(
+			get_the_ID(),
+			'neve-blog'
+		);
 		$markup .= '</a>';
 		$markup .= '</div>';
 
-		echo wp_kses_post( $markup );
+		echo $markup;
 	}
 
 	/**
@@ -142,7 +142,7 @@ class Template_Parts extends Base_View {
 	private function title() {
 		?>
 		<h3 class="blog-entry-title entry-title">
-			<a href="<?php esc_url( the_permalink() ); ?>">
+			<a href="<?php esc_url( the_permalink() ); ?>" rel="bookmark">
 				<?php the_title(); ?>
 			</a>
 		</h3>
@@ -183,7 +183,7 @@ class Template_Parts extends Base_View {
 			return;
 		}
 		?>
-		<a href="<?php esc_url( the_permalink() ); ?>"
+		<a href="<?php esc_url( the_permalink() ); ?>" rel="bookmark"
 				class="button button-secondary"><?php esc_html_e( 'Read more', 'neve' ); ?>
 			<span class="screen-reader-text"><?php echo __( 'About', 'neve' ) . ' ' . get_the_title(); ?></span></a>
 		<?php
@@ -217,7 +217,7 @@ class Template_Parts extends Base_View {
 			return '&nbsp;&hellip;';
 		}
 
-		$moretag = '<a href="' . esc_url( get_the_permalink() ) . '">&nbsp;&hellip;</a>';
+		$moretag = '<a href="' . esc_url( get_the_permalink() ) . '" rel="bookmark">&nbsp;&hellip;</a>';
 
 		return $moretag;
 	}

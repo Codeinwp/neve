@@ -41,6 +41,10 @@ class Shortcodes extends Base_View {
 	 * Cart shortcode callback function.
 	 */
 	public function cart_handler() {
+		if ( ! class_exists( 'WooCommerce' ) ) {
+			return;
+		}
+
 		$shortcode_markup = '';
 
 		$shortcode_markup .= '<div class="neve-shortcode shortcode-cart menu-item-nav-cart">';

@@ -14,7 +14,8 @@ get_header();
 	<div class="<?php echo esc_attr( $container_class ); ?> single-post-container">
 		<div class="row">
 			<?php do_action( 'neve_do_sidebar', 'single-post', 'left' ); ?>
-			<div class="nv-single-post-wrap col">
+			<article id="post-<?php echo esc_attr( get_the_ID() ); ?>"
+					class="<?php echo esc_attr( join( ' ', get_post_class( 'nv-single-post-wrap col' ) ) ); ?>" class="">
 				<?php
 				if ( have_posts() ) {
 					while ( have_posts() ) {
@@ -26,7 +27,7 @@ get_header();
 				}
 				comments_template();
 				?>
-			</div>
+			</article>
 			<?php do_action( 'neve_do_sidebar', 'single-post', 'right' ); ?>
 		</div>
 	</div>

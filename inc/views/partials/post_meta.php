@@ -45,13 +45,13 @@ class Post_Meta extends Base_View {
 		foreach ( $order as $meta ) {
 			switch ( $meta ) {
 				case 'author':
-					$markup .= '<li class="meta author">';
-					$markup .= __( 'By', 'neve' ) . '&nbsp;' . get_the_author_posts_link();
+					$markup .= '<li class="meta author vcard">';
+					$markup .= __( 'By', 'neve' ) . '&nbsp;' . '<span class="author-name fn">' . get_the_author_posts_link() . '</span>';
 					$markup .= '</li>';
 					break;
 				case 'date':
-					$markup .= '<li class="meta date">';
-					$markup .= '<span>' . esc_html( get_the_date() ) . '</span>';
+					$markup .= '<li class="meta date posted-on">';
+					$markup .= $this->get_time_tags();
 					$markup .= '</li>';
 					break;
 				case 'category':
@@ -74,7 +74,7 @@ class Post_Meta extends Base_View {
 		}
 		$markup .= '</ul>';
 
-		echo wp_kses_post( ( $markup ) );
+		echo $markup;
 	}
 
 	/**
@@ -133,10 +133,25 @@ class Post_Meta extends Base_View {
 		$html .= '<span>' . __( 'Tags', 'neve' ) . ':</span>';
 		foreach ( $tags as $tag ) {
 			$tag_link = get_tag_link( $tag->term_id );
-			$html    .= '<a href=' . esc_url( $tag_link ) . ' title="' . esc_attr( $tag->name ) . '" class=' . esc_attr( $tag->slug ) . '>';
+			$html    .= '<a href=' . esc_url( $tag_link ) . ' title="' . esc_attr( $tag->name ) . '" class=' . esc_attr( $tag->slug ) . ' rel="tag">';
 			$html    .= esc_html( $tag->name ) . '</a>';
 		}
 		$html .= ' </div> ';
 		echo $html;
+	}
+
+	/**
+	 * Get <time> tags.
+	 *
+	 * @return string
+	 */
+	private function get_time_tags() {
+		$time = '<time class="entry-date published" datetime="' . esc_attr( get_the_date( 'c' ) ) . '" content="' . get_the_date( 'Y-m-d' ) . '">' . get_the_date() . '</time>';
+		if ( get_the_time( 'U' ) === get_the_modified_time( 'U' ) ) {
+			return $time;
+		}
+		$time .= '<time class="updated" datetime="' . get_the_modified_date( 'c' ) . '">' . get_the_modified_date() . '</time>';
+
+		return $time;
 	}
 }

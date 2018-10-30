@@ -64,7 +64,7 @@ class Container_Sidebar extends Base_Inline {
 			),
 		);
 
-		$this->add_style( $settings['content'], '#primary .container .col:not(:only-child)', 'desktop' );
+		$this->add_style( $settings['content'], '#content .container .col:not(:only-child)', 'desktop' );
 		$this->add_style( $settings['sidebar'], '.nv-sidebar-wrap, .nv-sidebar-wrap.shop-sidebar', 'desktop' );
 	}
 }
