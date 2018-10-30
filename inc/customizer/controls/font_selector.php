@@ -60,9 +60,9 @@ class Font_Selector extends \WP_Customize_Control {
 				</span>
 				<div class="neve-fs-options-wrapper">
 						<span class="neve-fs-option"
-								data-source="<?php echo esc_attr( 'system' ); ?>"
+								data-source="system"
 								data-control="<?php echo esc_attr( $this->id ); ?>"
-								data-option="<?php esc_attr_e( 'Default', 'neve' ); ?>"><?php esc_html_e( 'Default', 'neve' ); ?></span>
+								data-option="default"><?php esc_html_e( 'Default', 'neve' ); ?></span>
 					<?php
 					$this->render_dropdown_options_group( $std_fonts, esc_html__( 'Standard Fonts', 'neve' ), 'system' );
 					$this->render_dropdown_options_group( $google_fonts, esc_html__( 'Google Fonts', 'neve' ), 'google-fonts' );

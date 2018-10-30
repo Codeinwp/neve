@@ -40,7 +40,7 @@ class Main extends Metabox_Base {
 						'default'    => __( 'Customizer Setting', 'neve' ),
 						'left'       => __( 'Left Sidebar', 'neve' ),
 						'right'      => __( 'Right Sidebar', 'neve' ),
-						'full-width' => __( 'Full Width', 'neve' ),
+						'full-width' => __( 'No Sidebar', 'neve' ),
 					),
 					'label'   => __( 'Sidebar', 'neve' ),
 				)

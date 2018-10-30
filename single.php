@@ -15,7 +15,7 @@ get_header();
 		<div class="row">
 			<?php do_action( 'neve_do_sidebar', 'single-post', 'left' ); ?>
 			<article id="post-<?php echo esc_attr( get_the_ID() ); ?>"
-					class="<?php echo esc_attr( join( ' ', get_post_class( 'nv-single-post-wrap col' ) ) ); ?>" class="">
+					class="<?php echo esc_attr( join( ' ', get_post_class( 'nv-single-post-wrap col' ) ) ); ?>">
 				<?php
 				if ( have_posts() ) {
 					while ( have_posts() ) {
