@@ -65,11 +65,10 @@ class Header extends Base_View {
 		}
 
 		if ( 'search' === $additional_item ) {
-			$items .= '<li class="menu-item-nav-search"><a><span class="nv-icon nv-search"></span></a>';
+			$items .= '<li class="menu-item-nav-search" tabindex="0" aria-label="search"><a><span class="nv-icon nv-search"></span></a>';
 			$items .= '<div class="nv-nav-search">';
 			$items .= get_search_form( false );
 			$items .= '</div>';
-			$items .= '</li>';
 		}
 
 		if ( 'cart' === $additional_item ) {
