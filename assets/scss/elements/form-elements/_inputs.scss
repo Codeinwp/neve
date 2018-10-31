@@ -1,18 +1,20 @@
-form input[type="text"], form input[type="password"], form input[type="email"], form input[type="url"], form input[type="date"], form input[type="month"], form input[type="time"], form input[type="datetime"], form input[type="datetime-local"], form input[type="week"], form input[type="number"], form input[type="search"], form input[type="tel"], form input[type="color"], form select, form textarea {
-  display: inline-block;
-  font-size: 14px;
-  padding: 7px 12px;
-  background-color: transparent;
-  color: #333;
-  border: 1px solid #dddddd;
-  border-radius: 3px;
-  transition: all 0.3s ease;
+form {
+  input[type="text"], input[type="password"], input[type="email"], input[type="url"], input[type="date"], input[type="month"], input[type="time"], input[type="datetime"], input[type="datetime-local"], input[type="week"], input[type="number"], input[type="search"], input[type="tel"], input[type="color"], select, textarea {
+    display: inline-block;
+    font-size: 14px;
+    padding: 7px 12px;
+    background-color: transparent;
+    color: #333;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+  }
 }
 
-input[type="search"] {
-  -webkit-appearance: textfield;
-  -moz-appearance: textfield;
-  appearance: textfield;
+input, textarea, select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 input, textarea, select, button {
