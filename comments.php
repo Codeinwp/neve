@@ -49,16 +49,16 @@ if ( post_password_required() ) {
 	wp_list_comments( 'type=pings' );
 	echo '</ul>';
 
-	$pages = paginate_comments_links(
+	$paginated_pages = paginate_comments_links(
 		array(
 			'echo' => false,
 			'type' => 'array',
 		)
 	);
-	if ( is_array( $pages ) ) {
+	if ( is_array( $paginated_pages ) ) {
 		echo '<ul class="pagination">';
-		foreach ( $pages as $page ) {
-			echo '<li>' . esc_html( $page ) . '</li>';
+		foreach ( $paginated_pages as $single_page ) {
+			echo '<li>' . esc_html( $single_page ) . '</li>';
 		}
 		echo '</ul>';
 	}

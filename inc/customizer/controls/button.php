@@ -72,12 +72,12 @@ class Button extends \WP_Customize_Control {
 		}
 		$control = '';
 
-		$control .= '<button class="' . esc_attr( $this->get_button_classes() ) . '">';
+		$control .= '<button class="' . esc_attr( $this->get_button_classes() ) . '" style="display: flex; align-items: center;">';
 		$control .= $this->get_icon();
 		$control .= esc_html( $this->button_text );
 		$control .= '</button>';
 
-		echo wp_kses_post( $control );
+		echo $control;
 	}
 
 	/**

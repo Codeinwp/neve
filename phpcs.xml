@@ -11,8 +11,14 @@
     <exclude-pattern>*.css</exclude-pattern>
     <exclude-pattern>/inc/admin/onboarding/includes/importers/helpers/wxr_importer/class-themeisle-ob-wxr-importer.php</exclude-pattern>
 
-    <rule ref="WordPress-Core">
 
+    <!--<rule ref="WPThemeReview">-->
+        <!--<exclude name="PHPCompatibility.Keywords.NewKeywords.t_namespaceFound"/>-->
+        <!--<exclude name="PHPCompatibility.Keywords.NewKeywords.t_useFound"/>-->
+        <!--<exclude name="PHPCompatibility.LanguageConstructs.NewLanguageConstructs.t_ns_separatorFound"/>-->
+    <!--</rule>-->
+
+    <rule ref="WordPress-Core">
         <exclude name="Squiz.Commenting.FileComment.SpacingAfterComment" />
         <exclude name="Squiz.Commenting.FunctionComment.MissingParamTag" />
         <exclude name="Squiz.Commenting.InlineComment.InvalidEndChar" />
@@ -20,16 +26,14 @@
         <exclude name="Squiz.PHP.CommentedOutCode.Found" />
         <exclude name="Squiz.PHP.Eval.Discouraged" />
         <exclude name="Generic.PHP.DisallowShortOpenTag" />
-
         <exclude name="WordPress.PHP.YodaConditions.NotYoda" />
         <exclude name="WordPress.Files.FileName.InvalidClassFileName" />
         <exclude name="WordPress.Files.FileName.NotHyphenatedLowercase" />
-
     </rule>
+
     <rule ref="WordPress-Docs">
-
     </rule>
-    nv-top-bar-content
+
     <rule ref="Squiz.Commenting.FunctionComment.ScalarTypeHintMissing">
         <severity>0</severity>
     </rule>

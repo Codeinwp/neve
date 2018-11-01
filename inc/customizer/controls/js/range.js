@@ -4,24 +4,26 @@
 
 /* global wp */
 /* global jQuery */
-wp.customize.controlConstructor['range-value'] = wp.customize.Control.extend(
+wp.customize.controlConstructor[ 'range-value' ] = wp.customize.Control.extend(
 	{
 
-		ready: function(){
+		ready: function () {
 			'use strict';
 
-			jQuery.fn.exists = function(){return this.length > 0;};
-			var control        = this,
+			jQuery.fn.exists = function () {
+				return this.length > 0;
+			};
+			var control = this,
 				changeAction;
 			var theme_controls = jQuery( '#customize-theme-controls' );
 
-			function syncRangeText( slider, input, from ){
-				switch (from) {
+			function syncRangeText( slider, input, from ) {
+				switch ( from ) {
 					case 'slider':
 						var value = slider.val();
-						var type  = jQuery( input ).attr( 'type' );
-						if (type === 'text') { // inputBox
-							if (value >= 0) {
+						var type = jQuery( input ).attr( 'type' );
+						if ( type === 'text' ) { // inputBox
+							if ( value >= 0 ) {
 								value = '+' + value;
 							}
 						}
@@ -33,9 +35,9 @@ wp.customize.controlConstructor['range-value'] = wp.customize.Control.extend(
 				}
 			}
 
-			function updateValues( control ){
-				var collector    = control.find( '.range-collector' );
-				var values       = getSliderValues( control );
+			function updateValues( control ) {
+				var collector = control.find( '.range-collector' );
+				var values = getSliderValues( control );
 				var have_queries = Object.keys( values ).length > 1;
 				if ( have_queries ) {
 					collector.val( JSON.stringify( values ) );
@@ -46,10 +48,10 @@ wp.customize.controlConstructor['range-value'] = wp.customize.Control.extend(
 			}
 
 			function getSliderValues( control ) {
-				var values          = {};
+				var values = {};
 				var desktopSelector = control.find( '.range-slider__range[data-query="desktop"]' ),
-					tabletSelector      = control.find( '.range-slider__range[data-query="tablet"]' ) ,
-					mobileSelector      = control.find( '.range-slider__range[data-query="mobile"]' ),
+					tabletSelector = control.find( '.range-slider__range[data-query="tablet"]' ),
+					mobileSelector = control.find( '.range-slider__range[data-query="mobile"]' ),
 					desktopValue, tabletValue, mobileValue;
 
 				if ( desktopSelector.exists() ) {
@@ -76,7 +78,7 @@ wp.customize.controlConstructor['range-value'] = wp.customize.Control.extend(
 				return values;
 			}
 
-			theme_controls.unbind().on(
+			theme_controls.on(
 				'click', '.preview-desktop.active', function () {
 					jQuery( '.responsive-switchers' ).toggleClass( 'responsive-switchers-open' );
 				}
@@ -84,8 +86,8 @@ wp.customize.controlConstructor['range-value'] = wp.customize.Control.extend(
 
 			theme_controls.on(
 				'input', '.range-slider__range', function () {
-					var slider  = jQuery( this );
-					var input   = jQuery( this ).next();
+					var slider = jQuery( this );
+					var input = jQuery( this ).next();
 					var control = jQuery( this ).parent().parent();
 					syncRangeText( slider, input, 'slider' );
 					updateValues( control );
@@ -93,28 +95,43 @@ wp.customize.controlConstructor['range-value'] = wp.customize.Control.extend(
 			);
 
 			theme_controls.on(
-				'keyup', '.range-slider-value', function(){
+				'keyup change', '.range-slider-value', function () {
 					var control = jQuery( this ).parent().parent();
+					var slider = jQuery( this ).prev();
+					var input = jQuery( this );
+					syncRangeText( slider, input, 'input' );
 					updateValues( control );
 				}
 			);
+
+			// Clamp control values between min and max.
 			theme_controls.on(
-				'keydown', '.range-slider-value', function(){
+				'blur', '.range-slider-value', function () {
 					var slider = jQuery( this ).prev();
-					var input  = jQuery( this );
-					syncRangeText( slider, input, 'input' );
+					var min = parseInt( slider.attr( 'min' ) );
+					var max = parseInt( slider.attr( 'max' ) );
+					var input = jQuery( this );
+					var value = parseInt( jQuery( this ).val() );
+
+					if ( value < min ) {
+						input.val( min );
+						return false;
+					} else if ( value > max ) {
+						input.val( max );
+						return false;
+					}
 				}
 			);
 
 			theme_controls.on(
-				'click', '.range-reset-slider', function (event) {
+				'click', '.range-reset-slider', function ( event ) {
 					event.preventDefault();
-					var input        = jQuery( this ).prev();
-					var slider       = input.prev();
-					var control      = jQuery( this ).parent().parent();
+					var input = jQuery( this ).prev();
+					var slider = input.prev();
+					var control = jQuery( this ).parent().parent();
 					var defaultValue = slider.data( 'default' );
-					var type  = jQuery( input ).attr( 'type' );
-					if (type === 'text') { // inputBox
+					var type = jQuery( input ).attr( 'type' );
+					if ( type === 'text' ) { // inputBox
 						defaultValue = '+0';
 					}
 					input.val( defaultValue );
@@ -131,7 +148,7 @@ wp.customize.controlConstructor['range-value'] = wp.customize.Control.extend(
 
 			// Change the value
 			this.container.on(
-				changeAction, '.range-collector', function() {
+				changeAction, '.range-collector', function () {
 					control.setting.set( jQuery( this ).val() );
 				}
 			);
