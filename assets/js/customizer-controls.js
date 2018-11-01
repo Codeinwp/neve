@@ -214,7 +214,7 @@ wp.customize.controlConstructor["range-value"] = wp.customize.Control.extend({
             }
             return values;
         }
-        theme_controls.unbind().on("click", ".preview-desktop.active", function() {
+        theme_controls.on("click", ".preview-desktop.active", function() {
             jQuery(".responsive-switchers").toggleClass("responsive-switchers-open");
         });
         theme_controls.on("input", ".range-slider__range", function() {
@@ -224,14 +224,26 @@ wp.customize.controlConstructor["range-value"] = wp.customize.Control.extend({
             syncRangeText(slider, input, "slider");
             updateValues(control);
         });
-        theme_controls.on("keyup", ".range-slider-value", function() {
+        theme_controls.on("keyup change", ".range-slider-value", function() {
             var control = jQuery(this).parent().parent();
-            updateValues(control);
-        });
-        theme_controls.on("keydown", ".range-slider-value", function() {
             var slider = jQuery(this).prev();
             var input = jQuery(this);
             syncRangeText(slider, input, "input");
+            updateValues(control);
+        });
+        theme_controls.on("blur", ".range-slider-value", function() {
+            var slider = jQuery(this).prev();
+            var min = parseInt(slider.attr("min"));
+            var max = parseInt(slider.attr("max"));
+            var input = jQuery(this);
+            var value = parseInt(jQuery(this).val());
+            if (value < min) {
+                input.val(min);
+                return false;
+            } else if (value > max) {
+                input.val(max);
+                return false;
+            }
         });
         theme_controls.on("click", ".range-reset-slider", function(event) {
             event.preventDefault();

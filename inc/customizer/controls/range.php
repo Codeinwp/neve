@@ -152,6 +152,9 @@ class Range extends \WP_Customize_Control {
 					value="{{ value }}"
 			>
 			<input
+			<# if( data.sum_type ) { #>
+					readonly
+			<# } #>
 					class="range-slider-value"
 					type="{{type}}"
 					title="{{{data.label}}}"
@@ -159,7 +162,6 @@ class Range extends \WP_Customize_Control {
 					max="{{attr.max}}"
 					step="{{data.step}}"
 					value="{{ value }}"
-					readonly
 			>
 			<span class="range-reset-slider"><span class="dashicons dashicons-image-rotate"></span></span>
 		</div>
