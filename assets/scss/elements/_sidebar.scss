@@ -78,6 +78,9 @@
     }
   }
   .widget {
+    h5 {
+      margin-bottom: $spacing-sm;
+    }
     border-bottom: $muted-border;
     padding-bottom: $spacing-sm;
     margin-bottom: $spacing-sm;

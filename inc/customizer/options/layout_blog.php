@@ -214,10 +214,16 @@ class Layout_Blog extends Base_Customizer {
 	private function control_content_order() {
 		$order_default_components = array(
 			'thumbnail',
-			'title',
-			'meta',
+			'title-meta',
 			'excerpt',
 			'read-more',
+		);
+
+		$components = array(
+			'thumbnail'  => __( 'Thumbnail', 'neve' ),
+			'title-meta' => __( 'Title & Meta', 'neve' ),
+			'excerpt'    => __( 'Excerpt', 'neve' ),
+			'read-more'  => __( 'Read More', 'neve' ),
 		);
 
 		$this->add_control(
@@ -231,7 +237,7 @@ class Layout_Blog extends Base_Customizer {
 					'label'           => esc_html__( 'Post Content Order', 'neve' ),
 					'section'         => 'neve_blog_archive_layout',
 					'type'            => 'ordering',
-					'components'      => $order_default_components,
+					'components'      => $components,
 					'priority'        => 55,
 					'active_callback' => array( $this, 'should_show_content_ordering' ),
 				),
@@ -251,6 +257,13 @@ class Layout_Blog extends Base_Customizer {
 			'comments',
 		);
 
+		$components = array(
+			'author'   => __( 'Author', 'neve' ),
+			'category' => __( 'Category', 'neve' ),
+			'date'     => __( 'Date', 'neve' ),
+			'comments' => __( 'Comments', 'neve' ),
+		);
+
 		$this->add_control(
 			new Control(
 				'neve_post_meta_ordering',
@@ -262,7 +275,7 @@ class Layout_Blog extends Base_Customizer {
 					'label'           => esc_html__( 'Meta Order', 'neve' ),
 					'section'         => 'neve_blog_archive_layout',
 					'type'            => 'ordering',
-					'components'      => $order_default_components,
+					'components'      => $components,
 					'priority'        => 60,
 					'active_callback' => array( $this, 'should_show_meta_order' ),
 				),
@@ -286,7 +299,7 @@ class Layout_Blog extends Base_Customizer {
 			return $allowed;
 		}
 
-		$decoded = json_decode( $value );
+		$decoded = json_decode( $value, true );
 
 		foreach ( $decoded as $val ) {
 			if ( ! in_array( $val, $allowed ) ) {
@@ -303,8 +316,7 @@ class Layout_Blog extends Base_Customizer {
 	public function sanitize_post_content_ordering( $value ) {
 		$allowed = array(
 			'thumbnail',
-			'title',
-			'meta',
+			'title-meta',
 			'excerpt',
 			'read-more',
 		);
@@ -313,7 +325,7 @@ class Layout_Blog extends Base_Customizer {
 			return $allowed;
 		}
 
-		$decoded = json_decode( $value );
+		$decoded = json_decode( $value, true );
 
 		foreach ( $decoded as $val ) {
 			if ( ! in_array( $val, $allowed ) ) {
@@ -337,14 +349,13 @@ class Layout_Blog extends Base_Customizer {
 
 		$default       = array(
 			'thumbnail',
-			'title',
-			'meta',
+			'title-meta',
 			'excerpt',
 			'read-more',
 		);
 		$content_order = get_theme_mod( 'neve_post_content_ordering', json_encode( $default ) );
 		$content_order = json_decode( $content_order, true );
-		if ( ! in_array( 'meta', $content_order ) ) {
+		if ( ! in_array( 'title-meta', $content_order ) ) {
 			return false;
 		}
 

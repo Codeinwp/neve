@@ -71,18 +71,14 @@ class Template_Parts extends Base_View {
 			return;
 		}
 
-		$default_order = json_encode(
-			array(
-				'thumbnail',
-				'title',
-				'meta',
-				'excerpt',
-				'read-more',
-			)
+		$default_order = array(
+			'thumbnail',
+			'title-meta',
+			'excerpt',
+			'read-more',
 		);
-		$order         = get_theme_mod( 'neve_post_content_ordering', $default_order );
-		$order         = json_decode( $order );
-
+		$order         = get_theme_mod( 'neve_post_content_ordering', json_encode( $default_order ) );
+		$order         = json_decode( $order, true );
 		foreach ( $order as $content_bit ) {
 			switch ( $content_bit ) {
 				case 'thumbnail':
@@ -92,6 +88,10 @@ class Template_Parts extends Base_View {
 					$this->title();
 					break;
 				case 'meta':
+					$this->meta();
+					break;
+				case 'title-meta':
+					$this->title();
 					$this->meta();
 					break;
 				case 'excerpt':

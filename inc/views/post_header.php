@@ -35,9 +35,8 @@ class Post_Header extends Base_View {
 		}
 
 		$content_order = array(
-			'title',
+			'title-meta',
 			'thumbnail',
-			'meta',
 		);
 
 		if ( class_exists( 'WooCommerce' ) && is_product() ) {
@@ -50,14 +49,18 @@ class Post_Header extends Base_View {
 				case 'title':
 					echo '<h1 class="title entry-title">' . wp_kses_post( get_the_title() ) . '</h1>';
 					break;
+				case 'meta':
+					$this->render_post_meta();
+					break;
+				case 'title-meta':
+					echo '<h1 class="title entry-title">' . wp_kses_post( get_the_title() ) . '</h1>';
+					$this->render_post_meta();
+					break;
 				case 'thumbnail':
 					echo get_the_post_thumbnail(
 						null,
 						'neve-blog'
 					);
-					break;
-				case 'meta':
-					$this->render_post_meta();
 					break;
 			}
 		}
