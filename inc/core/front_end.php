@@ -69,124 +69,6 @@ class Front_End {
 	}
 
 	/**
-	 * Enqueue scripts and styles.
-	 */
-	public function enqueue_scripts() {
-		$this->add_styles();
-		$this->add_scripts();
-	}
-
-	/**
-	 * Enqueue styles.
-	 */
-	private function add_styles() {
-		if ( class_exists( 'WooCommerce' ) ) {
-			wp_enqueue_style( 'neve-woocommerce', NEVE_ASSETS_URL . 'css/woocommerce' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
-		}
-
-		wp_register_style( 'neve-style', get_template_directory_uri() . '/style' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
-		wp_style_add_data( 'neve-style', 'rtl', 'replace' );
-		wp_style_add_data( 'neve-style', 'suffix', '.min' );
-		wp_enqueue_style( 'neve-style' );
-	}
-
-	/**
-	 * Enqueue scripts.
-	 */
-	private function add_scripts() {
-		if ( neve_is_amp() ) {
-			return;
-		}
-
-		wp_register_script( 'neve-script', NEVE_ASSETS_URL . 'js/script' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.js', apply_filters( 'neve_filter_main_script_dependencies', array( 'jquery' ) ), NEVE_VERSION, false );
-		wp_localize_script(
-			'neve-script',
-			'NeveProperties',
-			apply_filters(
-				'neve_filter_main_script_localization',
-				array(
-					'ajaxurl' => esc_url( admin_url( 'admin-ajax.php' ) ),
-					'nonce'   => wp_create_nonce( 'neve-theme-nonce' ),
-				)
-			)
-		);
-		wp_enqueue_script( 'neve-script' );
-
-		if ( is_singular() ) {
-			wp_enqueue_script( 'comment-reply' );
-		}
-	}
-
-	/**
-	 * Register widgets for the theme.
-	 *
-	 * @since    1.0.0
-	 */
-	public function register_sidebars() {
-		$sidebars = array(
-			'blog-sidebar' => esc_html__( 'Sidebar', 'neve' ),
-			'shop-sidebar' => esc_html__( 'Shop Sidebar', 'neve' ),
-		);
-
-		$footer_sidebars = apply_filters(
-			'neve_footer_widget_areas_array',
-			array(
-				'footer-one-widgets'   => esc_html__( 'Footer One', 'neve' ),
-				'footer-two-widgets'   => esc_html__( 'Footer Two', 'neve' ),
-				'footer-three-widgets' => esc_html__( 'Footer Three', 'neve' ),
-				'footer-four-widgets'  => esc_html__( 'Footer Four', 'neve' ),
-			)
-		);
-
-		$footer_columns  = is_customize_preview() ? '4' : get_theme_mod( 'neve_footer_widget_columns', '3' );
-		$footer_sidebars = array_slice( $footer_sidebars, 0, $footer_columns );
-		$sidebars        = array_merge( $sidebars, $footer_sidebars );
-
-		foreach ( $sidebars as $sidebar_id => $sidebar_name ) {
-			$sidebar_settings = array(
-				'name'          => $sidebar_name,
-				'id'            => $sidebar_id,
-				'before_widget' => '<div id="%1$s" class="widget %2$s">',
-				'after_widget'  => '</div>',
-				'before_title'  => '<h5>',
-				'after_title'   => '</h5>',
-			);
-			register_sidebar( $sidebar_settings );
-		}
-	}
-
-	/**
-	 * Add WooCommerce support
-	 */
-	private function add_woo_support() {
-		if ( ! class_exists( 'WooCommerce' ) ) {
-			return;
-		}
-
-		$woocommerce_settings = apply_filters(
-			'neves_woocommerce_args',
-			array(
-				'single_image_width'            => 600,
-				'thumbnail_image_width'         => 230,
-				'gallery_thumbnail_image_width' => 160,
-				'product_grid'                  => array(
-					'default_columns' => 3,
-					'default_rows'    => 4,
-					'min_columns'     => 1,
-					'max_columns'     => 6,
-					'min_rows'        => 1,
-				),
-			)
-		);
-
-		add_theme_support( 'woocommerce', $woocommerce_settings );
-		add_theme_support( 'wc-product-gallery-zoom' );
-		add_theme_support( 'wc-product-gallery-lightbox' );
-		add_theme_support( 'wc-product-gallery-slider' );
-
-	}
-
-	/**
 	 * Get the themeisle demo content support data.
 	 *
 	 * @return array
@@ -274,10 +156,11 @@ class Front_End {
 		/**
 		 * Remove duplicate colors.
 		 */
-		$temp_arr = array_unique( array_column( $gutenberg_color_palette, 'color' ) );
+		$temp_arr = array_unique( array_map( function ( $el ) {
+			return $el['color'];
+		}, $gutenberg_color_palette ) );
 
 		return array_intersect_key( $gutenberg_color_palette, $temp_arr );
-
 	}
 
 	/**
@@ -331,5 +214,123 @@ class Front_End {
 		}
 
 		return $font_size_array;
+	}
+
+	/**
+	 * Add WooCommerce support
+	 */
+	private function add_woo_support() {
+		if ( ! class_exists( 'WooCommerce' ) ) {
+			return;
+		}
+
+		$woocommerce_settings = apply_filters(
+			'neves_woocommerce_args',
+			array(
+				'single_image_width'            => 600,
+				'thumbnail_image_width'         => 230,
+				'gallery_thumbnail_image_width' => 160,
+				'product_grid'                  => array(
+					'default_columns' => 3,
+					'default_rows'    => 4,
+					'min_columns'     => 1,
+					'max_columns'     => 6,
+					'min_rows'        => 1,
+				),
+			)
+		);
+
+		add_theme_support( 'woocommerce', $woocommerce_settings );
+		add_theme_support( 'wc-product-gallery-zoom' );
+		add_theme_support( 'wc-product-gallery-lightbox' );
+		add_theme_support( 'wc-product-gallery-slider' );
+
+	}
+
+	/**
+	 * Enqueue scripts and styles.
+	 */
+	public function enqueue_scripts() {
+		$this->add_styles();
+		$this->add_scripts();
+	}
+
+	/**
+	 * Enqueue styles.
+	 */
+	private function add_styles() {
+		if ( class_exists( 'WooCommerce' ) ) {
+			wp_enqueue_style( 'neve-woocommerce', NEVE_ASSETS_URL . 'css/woocommerce' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
+		}
+
+		wp_register_style( 'neve-style', get_template_directory_uri() . '/style' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
+		wp_style_add_data( 'neve-style', 'rtl', 'replace' );
+		wp_style_add_data( 'neve-style', 'suffix', '.min' );
+		wp_enqueue_style( 'neve-style' );
+	}
+
+	/**
+	 * Enqueue scripts.
+	 */
+	private function add_scripts() {
+		if ( neve_is_amp() ) {
+			return;
+		}
+
+		wp_register_script( 'neve-script', NEVE_ASSETS_URL . 'js/script' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.js', apply_filters( 'neve_filter_main_script_dependencies', array( 'jquery' ) ), NEVE_VERSION, false );
+		wp_localize_script(
+			'neve-script',
+			'NeveProperties',
+			apply_filters(
+				'neve_filter_main_script_localization',
+				array(
+					'ajaxurl' => esc_url( admin_url( 'admin-ajax.php' ) ),
+					'nonce'   => wp_create_nonce( 'neve-theme-nonce' ),
+				)
+			)
+		);
+		wp_enqueue_script( 'neve-script' );
+
+		if ( is_singular() ) {
+			wp_enqueue_script( 'comment-reply' );
+		}
+	}
+
+	/**
+	 * Register widgets for the theme.
+	 *
+	 * @since    1.0.0
+	 */
+	public function register_sidebars() {
+		$sidebars = array(
+			'blog-sidebar' => esc_html__( 'Sidebar', 'neve' ),
+			'shop-sidebar' => esc_html__( 'Shop Sidebar', 'neve' ),
+		);
+
+		$footer_sidebars = apply_filters(
+			'neve_footer_widget_areas_array',
+			array(
+				'footer-one-widgets'   => esc_html__( 'Footer One', 'neve' ),
+				'footer-two-widgets'   => esc_html__( 'Footer Two', 'neve' ),
+				'footer-three-widgets' => esc_html__( 'Footer Three', 'neve' ),
+				'footer-four-widgets'  => esc_html__( 'Footer Four', 'neve' ),
+			)
+		);
+
+		$footer_columns  = is_customize_preview() ? '4' : get_theme_mod( 'neve_footer_widget_columns', '3' );
+		$footer_sidebars = array_slice( $footer_sidebars, 0, $footer_columns );
+		$sidebars        = array_merge( $sidebars, $footer_sidebars );
+
+		foreach ( $sidebars as $sidebar_id => $sidebar_name ) {
+			$sidebar_settings = array(
+				'name'          => $sidebar_name,
+				'id'            => $sidebar_id,
+				'before_widget' => '<div id="%1$s" class="widget %2$s">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h5>',
+				'after_title'   => '</h5>',
+			);
+			register_sidebar( $sidebar_settings );
+		}
 	}
 }
