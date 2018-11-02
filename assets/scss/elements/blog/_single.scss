@@ -2,11 +2,9 @@
   .nv-content-wrap {
     padding-top: $spacing-sm;
   }
-
   .nv-meta-list {
-    margin-top: $spacing-xs;
+    margin-bottom: $spacing-xs;
   }
-
   .entry-title {
     transition: $transition_med;
   }
@@ -17,7 +15,7 @@
 }
 
 .single-post-container .title {
-  margin-bottom: $spacing-sm;
+  margin-bottom: $spacing-xs;
 }
 
 .attachment-neve-blog {

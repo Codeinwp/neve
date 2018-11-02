@@ -631,6 +631,10 @@ a.neve-skip-link {
   width: 100%;
 }
 
+.menu-item-nav-search {
+  outline: 0;
+}
+
 #nv-primary-navigation .menu-item-nav-search > a {
   display: none;
 }
@@ -696,7 +700,7 @@ footer {
   line-height: 1.3em;
   margin-bottom: 20px;
   border-bottom: 1px solid #f0f0f0;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
 }
 
 .nv-content-none-wrap {
@@ -920,6 +924,9 @@ article.sticky .article-content-col .content {
 .layout-grid .content > *:first-child {
   margin-top: 0;
 }
+.layout-grid .content > *.nv-meta-list {
+  margin-top: 0;
+}
 
 .nv-non-grid-article .non-grid-content {
   display: flex;
@@ -981,7 +988,7 @@ article.sticky .article-content-col .content {
   padding-top: 20px;
 }
 .single .nv-meta-list {
-  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .single .entry-title {
   transition: all 0.3s ease;
@@ -992,7 +999,7 @@ article.sticky .article-content-col .content {
 }
 
 .single-post-container .title {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .attachment-neve-blog {
