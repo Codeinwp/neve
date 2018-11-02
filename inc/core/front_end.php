@@ -156,9 +156,14 @@ class Front_End {
 		/**
 		 * Remove duplicate colors.
 		 */
-		$temp_arr = array_unique( array_map( function ( $el ) {
-			return $el['color'];
-		}, $gutenberg_color_palette ) );
+		$temp_arr = array_unique(
+			array_map(
+				function ( $el ) {
+					return $el['color'];
+				},
+				$gutenberg_color_palette
+			)
+		);
 
 		return array_intersect_key( $gutenberg_color_palette, $temp_arr );
 	}
