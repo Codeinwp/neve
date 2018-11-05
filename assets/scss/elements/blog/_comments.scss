@@ -26,7 +26,10 @@
     }
   }
 }
-
+.nv-comments-list {
+  border-bottom: $muted-border;
+  padding-bottom: $spacing-sm;
+}
 .nv-comments-title-wrap {
   margin: $spacing 0 $spacing-lg;
 }
@@ -67,9 +70,7 @@
     min-width: 100%;
   }
   .comment-respond {
-    padding: $spacing-sm 0;
-    margin: $spacing-sm 0;
-    border-top: $muted-border;
+    margin: $spacing 0;
   }
   .comment-reply-title {
     small {

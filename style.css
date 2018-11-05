@@ -1085,6 +1085,11 @@ article.sticky .article-content-col .content {
   margin-left: auto;
 }
 
+.nv-comments-list {
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 20px;
+}
+
 .nv-comments-title-wrap {
   margin: 40px 0 60px;
 }
@@ -1124,9 +1129,7 @@ article.sticky .article-content-col .content {
   min-width: 100%;
 }
 #comments .comment-respond {
-  padding: 20px 0;
-  margin: 20px 0;
-  border-top: 1px solid #f0f0f0;
+  margin: 40px 0;
 }
 #comments .comment-reply-title small {
   float: right;
