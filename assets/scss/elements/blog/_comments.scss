@@ -4,8 +4,7 @@
   ol {
     list-style: none;
     > ol {
-      padding-left: $spacing-sm;
-      border-left: $muted-border;
+      padding-left: $spacing-xs;
     }
   }
   li {
@@ -26,12 +25,18 @@
     }
   }
 }
+
 .nv-comments-list {
-  border-bottom: $muted-border;
   padding-bottom: $spacing-sm;
 }
+
 .nv-comments-title-wrap {
   margin: $spacing 0 $spacing-lg;
+}
+
+.nv-comment-article {
+  padding-bottom: $spacing-sm;
+  border-bottom: $muted-border;
 }
 
 .nv-comment-header {
@@ -95,20 +100,29 @@
   }
 }
 
+.pingback {
+  border-bottom: $muted-border;
+  .edit-link {
+    display: block;
+    font-size: .85em;
+    margin-top: $spacing-sm;
+  }
+}
+
 @mixin comments--tablet() {
   #comments {
     li {
       margin-top: $spacing-sm;
     }
-    .edit-reply {
-      margin-top: $spacing;
+    ol > ol {
+      padding-left: $spacing-sm;
     }
-  }
 
-  .comment-form {
-    grid-template-columns: repeat(3, 1fr);
-    .comment-notes, .comment-form-comment {
-      grid-column: span 3;
+    .comment-form {
+      grid-template-columns: repeat(3, 1fr);
+      .comment-notes, .comment-form-comment {
+        grid-column: span 3;
+      }
     }
   }
 }

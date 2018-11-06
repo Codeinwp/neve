@@ -101,9 +101,9 @@ class Comments extends Base_View {
 				<li <?php comment_class(); ?> id="comment-<?php comment_ID(); ?>">
 					<p>
 						<?php
-						esc_html_e( 'Pingback:', 'neve' );
+						echo esc_html__( 'Pingback:', 'neve' ) . '&nbsp;';
 						comment_author_link();
-						edit_comment_link( __( 'Edit', 'neve' ), '<span class="edit-link">', '</span>' );
+						edit_comment_link( '(' . esc_html__( 'Edit', 'neve' ) . ')', '&nbsp;<span class="edit-link">', '</span>' );
 						?>
 					</p>
 				</li>
@@ -134,7 +134,7 @@ class Comments extends Base_View {
 						<div class="nv-comment-content comment">
 							<?php comment_text(); ?>
 							<div class="edit-reply">
-								<?php edit_comment_link( esc_html__( '(Edit)', 'neve' ) ); ?>
+								<?php edit_comment_link( '(' . esc_html__( 'Edit', 'neve' ) . ')' ); ?>
 								<?php
 								comment_reply_link(
 									array_merge(
