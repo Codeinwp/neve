@@ -1,0 +1,56 @@
+{
+  "theme_mods": {
+    "custom_css_post_id": -1,
+    "neve_default_sidebar_layout": "full-width",
+    "neve_link_color": "#555555",
+    "neve_theme_color": "#ef7745",
+    "neve_link_hover_color": "#ef7745",
+    "neve_text_color": "#555555",
+    "neve_footer_widget_columns": 3,
+    "neve_footer_content_type": "none",
+    "neve_blog_archive_sidebar_layout": "full-width",
+    "neve_single_post_sidebar_layout": "full-width",
+    "neve_generated_style_version": 1539261918,
+    "__ti_import_menus_location": {
+      "primary": "primary-menu",
+      "footer": "footer-menu"
+    }
+  },
+  "widgets": {
+    "blog-sidebar": {
+      "search-2": {
+        "title": ""
+      },
+      "recent-posts-2": {
+        "title": "",
+        "number": 5
+      },
+      "recent-comments-2": {
+        "title": "",
+        "number": 5
+      },
+      "archives-2": {
+        "title": "",
+        "count": 0,
+        "dropdown": 0
+      },
+      "categories-2": {
+        "title": "",
+        "count": 0,
+        "hierarchical": 0,
+        "dropdown": 0
+      },
+      "meta-2": {
+        "title": ""
+      }
+    }
+  },
+  "recommended_plugins": {
+    "elementor": "Elementor Page Builder"
+  },
+  "front_page": {
+    "front_page": "front",
+    "blog_page": "blog"
+  },
+  "shop_pages": null
+}
