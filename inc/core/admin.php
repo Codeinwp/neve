@@ -199,7 +199,6 @@ class Admin {
 	 * Load site import module.
 	 */
 	public function load_site_import() {
-		require_once( NEVE_INC_DIR . 'admin/onboarding/class-themeisle-onboarding.php' );
 		if ( class_exists( '\Themeisle_Onboarding' ) ) {
 			\Themeisle_Onboarding::instance();
 		}
