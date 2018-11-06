@@ -800,15 +800,12 @@ button:hover, input[type=button]:hover, .btn:hover, input[type="submit"]:hover {
 }
 
 .nv-meta-list {
-  display: flex;
-  flex-wrap: wrap;
-  padding-right: 0;
-  list-style-type: none;
   border-bottom: 1px solid #f0f0f0;
   padding-bottom: 10px;
   width: 100%;
 }
 .nv-meta-list li {
+  display: inline;
   color: rgba(0, 0, 0, 0.54);
   font-size: 0.85em;
 }
