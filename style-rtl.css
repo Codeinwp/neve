@@ -718,7 +718,7 @@ form input[type="text"], form input[type="password"], form input[type="email"], 
   transition: all 0.3s ease;
 }
 
-input, textarea, select {
+input[type="text"], input[type="search"], input[type="password"], input[type="submit"], textarea, select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
