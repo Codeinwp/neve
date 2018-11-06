@@ -398,8 +398,12 @@ a.neve-skip-link {
 }
 
 .nv-top-bar {
-  background-color: #fff;
-  border-bottom: 1px solid #f0f0f0;
+  background-color: #f0f0f0;
+  color: #404248;
+}
+.nv-top-bar a {
+  font-weight: 500;
+  color: #404248;
 }
 
 .nv-tb-wrap {
@@ -409,6 +413,7 @@ a.neve-skip-link {
   align-items: center;
   flex-direction: row;
   min-height: 40px;
+  font-size: .85em;
 }
 .nv-tb-wrap.menu-content .nv-top-bar-content, .nv-tb-wrap.content-menu #nv-top-bar-menu {
   justify-content: flex-end;
