@@ -1749,6 +1749,10 @@ hr {
     padding-left: 25px;
   }
 
+  .menu-item-has-children:last-child .caret-wrap {
+    left: -10px;
+  }
+
   .nv-nav-wrap.nav-center {
     flex-direction: column;
     justify-content: center;
