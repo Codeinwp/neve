@@ -227,7 +227,6 @@ th {
 html {
   font-size: 15px;
   overflow-x: hidden;
-  word-break: break-word;
   -webkit-tap-highlight-color: transparent;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -690,6 +689,7 @@ footer {
 
 .neve-main {
   flex: 1 auto;
+  word-break: break-word;
 }
 
 .archive-container, .single-page-container {
