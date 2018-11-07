@@ -33,6 +33,10 @@
   margin-bottom: 30px;
 }
 
+.layout-grid .content > .blog-entry-title {
+  margin-bottom: 0;
+}
+
 .blog-entry-title {
   word-wrap: break-word;
 }
@@ -103,10 +107,17 @@ article.sticky {
         margin-bottom: 0;
       }
       &.nv-meta-list {
-        margin: 0;
+        margin-top: 0;
       }
     }
+    .blog-entry-title {
+      margin-bottom: 0;
+    }
   }
+}
+
+article {
+  word-break: break-word;
 }
 
 @mixin blogpost-index--laptop() {
