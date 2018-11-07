@@ -94,7 +94,7 @@ class Layout_Sidebar extends Base_Customizer {
 					'class'            => 'advanced-sidebar-accordion',
 					'accordion'        => true,
 					'controls_to_wrap' => class_exists( 'WooCommerce' ) ? 4 : 2,
-					'expanded'         => true,
+					'expanded'         => false,
 				),
 				'Neve\Customizer\Controls\Heading'
 			)

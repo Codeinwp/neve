@@ -18,12 +18,8 @@
 }
 
 .nv-top-bar {
-  background-color: $muted-white;
-  color: $body-color;
-  a {
-    font-weight: 500;
-    color: $body-color;
-  }
+  background-color: $navbar_background_color;
+  border-bottom: $muted-border;
 }
 
 .nv-tb-wrap {
@@ -33,7 +29,6 @@
   align-items: center;
   flex-direction: row;
   min-height: 40px;
-  font-size: .85em;
   &.menu-content .nv-top-bar-content,
   &.content-menu #nv-top-bar-menu {
     justify-content: flex-end;

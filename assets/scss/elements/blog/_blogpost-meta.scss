@@ -1,9 +1,9 @@
 .nv-meta-list {
+  @include horizontal-list(0);
   border-bottom: $muted-border;
   padding-bottom: $spacing-xs;
   width: 100%;
   li {
-    display: inline;
     color: $gray-color;
     font-size: 0.85em;
     &:not(:last-child):after {

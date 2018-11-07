@@ -203,7 +203,7 @@ class Style_Manager extends Base_View {
 	 */
 	private function wrap_styles() {
 		if ( ! empty( $this->tablet_style ) ) {
-			$this->tablet_style = '@media(min-width: 576px){' . $this->tablet_style . '}';
+			$this->tablet_style = '@media(min-width: 769px){' . $this->tablet_style . '}';
 		}
 
 		if ( ! empty( $this->desktop_style ) ) {

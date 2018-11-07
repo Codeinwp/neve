@@ -42,14 +42,14 @@ class Page_Header extends Base_View {
 	 * @param string $context the context provided in do_action.
 	 */
 	public function render_page_header( $context ) {
-		$title_args = $this->get_the_page_title( $context );
+		$title_args = $this->the_page_title( $context );
 		if ( empty( $title_args['string'] ) ) {
 			return;
 		}
 		?>
 		<div class="nv-page-title-wrap <?php echo esc_attr( $title_args['wrap-class'] ); ?>">
 			<div class="nv-page-title <?php echo esc_attr( $title_args['class'] ); ?>">
-				<h1><?php echo wp_kses_post( html_entity_decode( $title_args['string'] ) ); ?></h1>
+				<h1><?php echo wp_kses_post( $title_args['string'] ); ?></h1>
 			</div>
 		</div>
 		<?php
@@ -62,7 +62,7 @@ class Page_Header extends Base_View {
 	 *
 	 * @return array
 	 */
-	private function get_the_page_title( $context ) {
+	private function the_page_title( $context ) {
 		$title_args = array();
 		if ( $context === 'index' || $context === 'single-page' ) {
 			$title_args               = $this->get_blog_archive_title();
