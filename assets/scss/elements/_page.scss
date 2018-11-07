@@ -7,6 +7,7 @@
 
 .neve-main {
   flex: 1 auto;
+  word-break: break-word;
 }
 
 .archive-container, .single-page-container {
@@ -15,9 +16,9 @@
 
 .nv-page-title-wrap.nv-big-title h1 {
   line-height: 1.3em;
-   margin-bottom: $spacing-sm;
+  margin-bottom: $spacing-sm;
   border-bottom: $muted-border;
-  padding-bottom: 20px;
+  padding-bottom: $spacing-xs;
 }
 
 .nv-content-none-wrap {

@@ -132,7 +132,7 @@ class Themeisle_OB_Admin {
 			'advanced_options'    => __( 'Advanced Options', 'neve' ),
 			'plugins'             => __( 'Plugins', 'neve' ),
 			'general'             => __( 'General', 'neve' ),
-			'later'               => __( 'Not right now.', 'neve' ),
+			'later'               => __( 'Skip this step', 'neve' ),
 			'onboard_header'      => __( 'Get started here', 'neve' ),
 			'onboard_description' => __( 'This process will set up your website, install required plugins, import demo content (pages, posts, media) and set up the customizer options.', 'neve' ),
 			'content'             => __( 'Content', 'neve' ),

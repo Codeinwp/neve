@@ -56,7 +56,7 @@ class Post_Meta extends Base_View {
 					break;
 				case 'category':
 					$markup .= '<li class="meta category">';
-					$markup .= get_the_category_list( ' / ', get_the_ID() );
+					$markup .= get_the_category_list( ', ', get_the_ID() );
 					$markup .= '</li>';
 					break;
 				case 'comments':
