@@ -769,7 +769,6 @@ footer {
 
 .neve-main {
   flex: 1 auto;
-  word-break: break-word;
 }
 
 .archive-container, .single-page-container {
@@ -880,8 +879,6 @@ button:hover, input[type=button]:hover, .btn:hover, input[type="submit"]:hover {
 }
 
 .nv-meta-list {
-  border-bottom: 1px solid #f0f0f0;
-  padding-bottom: 10px;
   width: 100%;
 }
 .nv-meta-list li {
@@ -933,6 +930,10 @@ button:hover, input[type=button]:hover, .btn:hover, input[type="submit"]:hover {
 
 .posts-wrapper > article {
   margin-bottom: 30px;
+}
+
+.layout-grid .content > .blog-entry-title {
+  margin-bottom: 0;
 }
 
 .blog-entry-title {
@@ -1016,7 +1017,14 @@ article.sticky .article-content-col .content {
   margin-bottom: 0;
 }
 .nv-non-grid-article .non-grid-content > *.nv-meta-list {
-  margin: 0;
+  margin-top: 0;
+}
+.nv-non-grid-article .non-grid-content .blog-entry-title {
+  margin-bottom: 0;
+}
+
+article {
+  word-break: break-word;
 }
 
 .nv-loader {
