@@ -24,6 +24,7 @@
   @include page--laptop();
   @include sidebar--laptop();
   @include blog-layout--laptop();
+  @include nav-buttons--laptop();
 }
 
 @media (min-width: #{$desktop}) {
