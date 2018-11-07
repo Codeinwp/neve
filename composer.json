@@ -25,12 +25,14 @@
   "type": "wordpress-theme",
   "require": {
     "codeinwp/themeisle-sdk": "master",
-    "codeinwp/ti-about-page": "master"
+    "codeinwp/ti-about-page": "master",
+    "codeinwp/ti-onboarding": "master"
   },
   "autoload": {
     "files": [
       "vendor/codeinwp/themeisle-sdk/load.php",
-      "vendor/codeinwp/ti-about-page/load.php"
+      "vendor/codeinwp/ti-about-page/load.php",
+      "vendor/codeinwp/ti-onboarding/load.php"
     ]
   }
 }
