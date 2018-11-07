@@ -53,10 +53,16 @@ class Post_Header extends Base_View {
 					$this->render_post_meta();
 					break;
 				case 'title-meta':
+					if ( apply_filters( 'neve_filter_toggle_content_parts', true, 'title' ) !== true ) {
+						break;
+					}
 					echo '<h1 class="title entry-title">' . wp_kses_post( get_the_title() ) . '</h1>';
 					$this->render_post_meta();
 					break;
 				case 'thumbnail':
+					if ( apply_filters( 'neve_filter_toggle_content_parts', true, 'featured-image' ) !== true ) {
+						break;
+					}
 					echo get_the_post_thumbnail(
 						null,
 						'neve-blog'
