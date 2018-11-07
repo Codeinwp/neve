@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Neve 1.0.8\n"
 "Report-Msgid-Bugs-To: https://github.com/Codeinwp/neve/issues\n"
-"POT-Creation-Date: 2018-10-30 14:24:33+00:00\n"
+"POT-Creation-Date: 2018-11-07 16:27:24+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -35,150 +35,68 @@ msgid ""
 "PHP to the latest version."
 msgstr ""
 
-#: header.php:28
+#: header.php:29
 msgid "Skip to content"
 msgstr ""
 
-#: inc/admin/metabox/main.php:26 inc/admin/metabox/main.php:40
+#: inc/admin/metabox/main.php:31
+msgid "Components"
+msgstr ""
+
+#: inc/admin/metabox/main.php:32
+msgid "Disable Header"
+msgstr ""
+
+#: inc/admin/metabox/main.php:36
+msgid "Disable Title"
+msgstr ""
+
+#: inc/admin/metabox/main.php:40
+msgid "Disable Featured Image"
+msgstr ""
+
+#: inc/admin/metabox/main.php:44
+msgid "Disable Footer"
+msgstr ""
+
+#: inc/admin/metabox/main.php:81 inc/admin/metabox/main.php:95
 msgid "Customizer Setting"
 msgstr ""
 
-#: inc/admin/metabox/main.php:27
+#: inc/admin/metabox/main.php:82
 #: inc/customizer/options/layout_container.php:141
 msgid "Contained"
 msgstr ""
 
-#: inc/admin/metabox/main.php:28
+#: inc/admin/metabox/main.php:83
 #: inc/customizer/options/layout_container.php:142
 msgid "Full Width"
 msgstr ""
 
-#: inc/admin/metabox/main.php:30 inc/customizer/options/layout_blog.php:65
+#: inc/admin/metabox/main.php:85 inc/customizer/options/layout_blog.php:65
 #: inc/customizer/options/main.php:52 inc/customizer/options/top_bar.php:89
 msgid "Layout"
 msgstr ""
 
-#: inc/admin/metabox/main.php:41
+#: inc/admin/metabox/main.php:96
 msgid "Left Sidebar"
 msgstr ""
 
-#: inc/admin/metabox/main.php:42
+#: inc/admin/metabox/main.php:97
 msgid "Right Sidebar"
 msgstr ""
 
-#: inc/admin/metabox/main.php:43
+#: inc/admin/metabox/main.php:98
 msgid "No Sidebar"
 msgstr ""
 
-#: inc/admin/metabox/main.php:45 inc/core/front_end.php:127
+#: inc/admin/metabox/main.php:100 inc/core/front_end.php:311
 #: inc/customizer/options/layout_sidebar.php:44
 msgid "Sidebar"
 msgstr ""
 
 #: inc/admin/metabox/metabox_base.php:66
 msgid "Neve Settings"
-msgstr ""
-
-#: inc/admin/onboarding/includes/class-themeisle-ob-admin.php:48
-msgid "Sites Library"
-msgstr ""
-
-#: inc/admin/onboarding/includes/class-themeisle-ob-admin.php:125
-msgid "Preview"
-msgstr ""
-
-#: inc/admin/onboarding/includes/class-themeisle-ob-admin.php:126
-msgid "Import"
-msgstr ""
-
-#: inc/admin/onboarding/includes/class-themeisle-ob-admin.php:127
-msgid "Cancel"
-msgstr ""
-
-#: inc/admin/onboarding/includes/class-themeisle-ob-admin.php:128
-msgid "Loading"
-msgstr ""
-
-#: inc/admin/onboarding/includes/class-themeisle-ob-admin.php:129
-msgid "View Website"
-msgstr ""
-
-#: inc/admin/onboarding/includes/class-themeisle-ob-admin.php:130
-msgid "Back to Sites Library"
-msgstr ""
-
-#: inc/admin/onboarding/includes/class-themeisle-ob-admin.php:131
-msgid "Note"
-msgstr ""
-
-#: inc/admin/onboarding/includes/class-themeisle-ob-admin.php:132
-msgid "Advanced Options"
-msgstr ""
-
-#: inc/admin/onboarding/includes/class-themeisle-ob-admin.php:133
-msgid "Plugins"
-msgstr ""
-
-#: inc/admin/onboarding/includes/class-themeisle-ob-admin.php:134
-#: inc/customizer/options/typography.php:39
-msgid "General"
-msgstr ""
-
-#: inc/admin/onboarding/includes/class-themeisle-ob-admin.php:135
-msgid "Not right now."
-msgstr ""
-
-#: inc/admin/onboarding/includes/class-themeisle-ob-admin.php:136
-#: template-parts/content-none.php:22
-#. translators: %1$s is Link to new post, %2$s is Get started here
-msgid "Get started here"
-msgstr ""
-
-#: inc/admin/onboarding/includes/class-themeisle-ob-admin.php:137
-msgid ""
-"This process will set up your website, install required plugins, import "
-"demo content (pages, posts, media) and set up the customizer options."
-msgstr ""
-
-#: inc/admin/onboarding/includes/class-themeisle-ob-admin.php:138
-#: inc/customizer/options/layout_footer.php:71
-#: inc/customizer/options/top_bar.php:122
-msgid "Content"
-msgstr ""
-
-#: inc/admin/onboarding/includes/class-themeisle-ob-admin.php:139
-msgid "Customizer"
-msgstr ""
-
-#: inc/admin/onboarding/includes/class-themeisle-ob-admin.php:140
-#: inc/customizer/options/layout_footer.php:74
-msgid "Widgets"
-msgstr ""
-
-#: inc/admin/onboarding/includes/class-themeisle-ob-admin.php:142
-msgid "Installing Plugins"
-msgstr ""
-
-#: inc/admin/onboarding/includes/class-themeisle-ob-admin.php:143
-msgid "Importing Content"
-msgstr ""
-
-#: inc/admin/onboarding/includes/class-themeisle-ob-admin.php:144
-msgid "Setting Up Customizer"
-msgstr ""
-
-#: inc/admin/onboarding/includes/class-themeisle-ob-admin.php:145
-msgid "Importing Widgets"
-msgstr ""
-
-#: inc/admin/onboarding/includes/class-themeisle-ob-admin.php:147
-msgid ""
-"We recommend you backup your website content before attempting a full site "
-"import."
-msgstr ""
-
-#: inc/admin/onboarding/includes/class-themeisle-ob-admin.php:148
-msgid "Content was successfully imported. Enjoy your new site!"
 msgstr ""
 
 #: inc/admin/plugin_install/main.php:109
@@ -347,61 +265,61 @@ msgstr ""
 msgid "Top Bar Menu"
 msgstr ""
 
-#: inc/core/front_end.php:128
-msgid "Shop Sidebar"
-msgstr ""
-
-#: inc/core/front_end.php:134
-msgid "Footer One"
-msgstr ""
-
-#: inc/core/front_end.php:135
-msgid "Footer Two"
-msgstr ""
-
-#: inc/core/front_end.php:136
-msgid "Footer Three"
-msgstr ""
-
-#: inc/core/front_end.php:137
-msgid "Footer Four"
-msgstr ""
-
-#: inc/core/front_end.php:226
+#: inc/core/front_end.php:108
 msgid "Black"
 msgstr ""
 
-#: inc/core/front_end.php:235
+#: inc/core/front_end.php:117
 msgid "White"
 msgstr ""
 
-#: inc/core/front_end.php:244 inc/customizer/options/colors_background.php:57
+#: inc/core/front_end.php:126 inc/customizer/options/colors_background.php:57
 msgid "Button Color"
 msgstr ""
 
-#: inc/core/front_end.php:248 inc/customizer/options/colors_background.php:62
+#: inc/core/front_end.php:130 inc/customizer/options/colors_background.php:62
 msgid "Link Color"
 msgstr ""
 
-#: inc/core/front_end.php:252 inc/customizer/options/colors_background.php:67
+#: inc/core/front_end.php:134 inc/customizer/options/colors_background.php:67
 msgid "Link Hover Color"
 msgstr ""
 
-#: inc/core/front_end.php:256 inc/customizer/options/colors_background.php:72
+#: inc/core/front_end.php:138 inc/customizer/options/colors_background.php:72
 msgid "Text Color"
 msgstr ""
 
-#: inc/core/front_end.php:297
+#: inc/core/front_end.php:185
 msgid "Body font size"
 msgstr ""
 
-#: inc/core/front_end.php:298 inc/customizer/options/typography.php:43
+#: inc/core/front_end.php:186 inc/customizer/options/typography.php:43
 msgid "Body"
 msgstr ""
 
-#: inc/core/front_end.php:323 inc/core/front_end.php:325
+#: inc/core/front_end.php:211 inc/core/front_end.php:213
 #. translators: Heading size.
 msgid "H%d"
+msgstr ""
+
+#: inc/core/front_end.php:312
+msgid "Shop Sidebar"
+msgstr ""
+
+#: inc/core/front_end.php:318
+msgid "Footer One"
+msgstr ""
+
+#: inc/core/front_end.php:319
+msgid "Footer Two"
+msgstr ""
+
+#: inc/core/front_end.php:320
+msgid "Footer Three"
+msgstr ""
+
+#: inc/core/front_end.php:321
+msgid "Footer Four"
 msgstr ""
 
 #: inc/customizer/controls/font_selector.php:54
@@ -469,11 +387,43 @@ msgstr ""
 msgid "Infinite Scroll"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:231
+#: inc/customizer/options/layout_blog.php:223
+msgid "Thumbnail"
+msgstr ""
+
+#: inc/customizer/options/layout_blog.php:224
+msgid "Title & Meta"
+msgstr ""
+
+#: inc/customizer/options/layout_blog.php:225
+msgid "Excerpt"
+msgstr ""
+
+#: inc/customizer/options/layout_blog.php:226
+msgid "Read More"
+msgstr ""
+
+#: inc/customizer/options/layout_blog.php:237
 msgid "Post Content Order"
 msgstr ""
 
+#: inc/customizer/options/layout_blog.php:261
+msgid "Author"
+msgstr ""
+
 #: inc/customizer/options/layout_blog.php:262
+msgid "Category"
+msgstr ""
+
+#: inc/customizer/options/layout_blog.php:263
+msgid "Date"
+msgstr ""
+
+#: inc/customizer/options/layout_blog.php:264
+msgid "Comments"
+msgstr ""
+
+#: inc/customizer/options/layout_blog.php:275
 msgid "Meta Order"
 msgstr ""
 
@@ -507,6 +457,15 @@ msgstr ""
 
 #: inc/customizer/options/layout_footer.php:48
 msgid "Footer"
+msgstr ""
+
+#: inc/customizer/options/layout_footer.php:71
+#: inc/customizer/options/top_bar.php:122
+msgid "Content"
+msgstr ""
+
+#: inc/customizer/options/layout_footer.php:74
+msgid "Widgets"
 msgstr ""
 
 #: inc/customizer/options/layout_footer.php:107
@@ -605,6 +564,10 @@ msgstr ""
 msgid "Select Top Bar Menu"
 msgstr ""
 
+#: inc/customizer/options/typography.php:39
+msgid "General"
+msgstr ""
+
 #: inc/customizer/options/typography.php:47
 msgid "Headings"
 msgstr ""
@@ -679,6 +642,11 @@ msgstr ""
 msgid "Ready to publish your first post? %s."
 msgstr ""
 
+#: template-parts/content-none.php:22
+#. translators: %1$s is Link to new post, %2$s is Get started here
+msgid "Get started here"
+msgstr ""
+
 #: template-parts/content-none.php:28
 msgid ""
 "Sorry, but nothing matched your search terms. Please try again with some "
@@ -720,10 +688,6 @@ msgstr ""
 
 #. Author URI of the plugin/theme
 msgid "https://themeisle.com"
-msgstr ""
-
-#. Template Name of the plugin/theme
-msgid "Page Builder Full Width (Neve)"
 msgstr ""
 
 #: comments.php:27
