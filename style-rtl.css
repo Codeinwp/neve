@@ -639,6 +639,83 @@ a.neve-skip-link {
   padding: 10px 0;
 }
 
+#nv-primary-navigation > li.button, .menu > li.button {
+  padding: 0;
+  vertical-align: middle;
+  align-items: center;
+  display: flex;
+  border: none;
+}
+#nv-primary-navigation li.button, .menu li.button {
+  text-align: right;
+  background: none;
+  /* Primary button */
+  /* Secondary button */
+}
+#nv-primary-navigation li.button > a, .menu li.button > a {
+  font-size: .8em;
+  font-weight: 600;
+  padding: 6px 12px;
+  transition: all .15s ease-in-out;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  line-height: 1.68421;
+  font-family: inherit;
+  font-size: inherit;
+}
+#nv-primary-navigation li.button.button-primary > a, .menu li.button.button-primary > a {
+  background-color: #0366d6;
+  color: #fff;
+}
+#nv-primary-navigation li.button.button-primary > a:hover, .menu li.button.button-primary > a:hover {
+  text-decoration: none;
+  opacity: .9;
+}
+#nv-primary-navigation li.button.button-primary:hover > a, .menu li.button.button-primary:hover > a {
+  color: #fff;
+}
+#nv-primary-navigation li.button.button-secondary > a, .menu li.button.button-secondary > a {
+  border: 1px solid rgba(27, 31, 35, 0.2);
+  background-color: transparent;
+  font-weight: 600;
+  color: #0366d6;
+}
+#nv-primary-navigation li.button.button-secondary > a:hover, .menu li.button.button-secondary > a:hover {
+  opacity: 1;
+  text-decoration: none;
+  background-color: #0366d6;
+  color: #fff;
+}
+
+/* Remove margin from buttons in sub-menus on primary nav. */
+#nv-primary-navigation .sub-menu li.button > a {
+  margin-left: 0;
+}
+
+#nv-primary-navigation .button {
+  margin: 10px 0;
+  padding: 0;
+}
+
+/* Negate default button properties */
+.menu li.button, .menu li.button:hover {
+  background: none;
+  border: none;
+}
+
+/* Footer menu buttons */
+.nv-footer-content .footer-menu li {
+  display: flex;
+  align-items: center;
+}
+.nv-footer-content .footer-menu li.button {
+  margin: 0 10px;
+}
+
 footer {
   background-color: #fff;
 }
@@ -1872,6 +1949,11 @@ hr {
   }
   .nv-sidebar-wrap.nv-left {
     padding-left: 40px;
+  }
+
+  #nv-primary-navigation .button {
+    margin: inherit;
+    padding: 6px 12px;
   }
 }
 @media (min-width: 1200px) {

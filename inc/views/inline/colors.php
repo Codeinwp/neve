@@ -108,7 +108,12 @@ class Colors extends Base_Inline {
 		$color_setup = array(
 			'color'        => array(
 				'css_prop'  => 'color',
-				'selectors' => '.button.button-secondary, .nv-tags-list a, #nv-primary-navigation a.button',
+				'selectors' => '
+				.button.button-secondary, 
+				.nv-tags-list a, 
+				#nv-primary-navigation a.button,
+				#nv-primary-navigation li.button.button-secondary > a, 
+				.menu li.button.button-secondary > a',
 			),
 			'border-color' => array(
 				'css_prop'  => 'border-color',
@@ -116,7 +121,17 @@ class Colors extends Base_Inline {
 			),
 			'background'   => array(
 				'css_prop'  => 'background-color',
-				'selectors' => '.button.button-primary, .button.button-secondary:hover, button, input[type=button], .btn, input[type="submit"], .nv-tags-list a:hover',
+				'selectors' => '
+				.button.button-primary, 
+				.button.button-secondary:hover, 
+				button, input[type=button], 
+				.btn, input[type="submit"], 
+				.nv-tags-list a:hover,
+				/* Buttons in navigation */
+				#nv-primary-navigation li.button.button-primary > a, 
+				.menu li.button.button-primary > a,
+				#nv-primary-navigation li.button.button-secondary > a:hover, 
+				.menu li.button.button-secondary > a:hover',
 			),
 		);
 
