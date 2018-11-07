@@ -17,6 +17,61 @@ class Main extends Metabox_Base {
 	 * Add controls.
 	 */
 	public function add_controls() {
+		$this->add_layout_controls();
+		$this->add_content_toggles();
+	}
+
+	/**
+	 * Add content toggles.
+	 */
+	private function add_content_toggles() {
+		$content_controls = array(
+			'neve_meta_disable_header'         => array(
+				'default'     => 'off',
+				'label'       => __( 'Components', 'neve' ),
+				'input_label' => __( 'Disable Header', 'neve' ),
+			),
+			'neve_meta_disable_title'          => array(
+				'default'     => 'off',
+				'input_label' => __( 'Disable Title', 'neve' ),
+			),
+			'neve_meta_disable_featured_image' => array(
+				'default'     => 'off',
+				'input_label' => __( 'Disable Featured Image', 'neve' ),
+			),
+			'neve_meta_disable_footer'         => array(
+				'default'     => 'off',
+				'input_label' => __( 'Disable Footer', 'neve' ),
+			),
+		);
+
+		$default_control_args = array(
+			'default'     => 'off',
+			'label'       => '',
+			'input_label' => '',
+		);
+
+		foreach ( $content_controls as $control_id => $args ) {
+
+			$args = wp_parse_args( $args, $default_control_args );
+
+			$this->add_control(
+				new Controls\Checkbox(
+					$control_id,
+					array(
+						'default'     => $args['default'],
+						'label'       => $args['label'],
+						'input_label' => $args['input_label'],
+					)
+				)
+			);
+		}
+	}
+
+	/**
+	 * Add layout controls.
+	 */
+	private function add_layout_controls() {
 		$this->add_control(
 			new Controls\Radio(
 				'neve_meta_container',
@@ -46,7 +101,5 @@ class Main extends Metabox_Base {
 				)
 			)
 		);
-
 	}
-
 }
