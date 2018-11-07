@@ -8,9 +8,6 @@
 			this.handleMobileDropdowns();
 			this.handleSearch();
 		},
-		/**
-		 * Reposition dropdowns if they go off-screen.
-		 */
 		'repositionDropdowns': function () {
 			if ( utils.isMobile() ) {
 				return false;
@@ -36,6 +33,7 @@
 			} );
 			return false;
 		},
+
 		/**
 		 * Handle the responsive navigation toggle.
 		 */
