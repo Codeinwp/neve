@@ -87,7 +87,7 @@ article.sticky {
 
 .layout-grid .content {
   > * {
-    margin: $spacing-xs 0;
+    margin: 0 0 $spacing-xs;
     &:last-child {
       margin-bottom: 0;
     }
@@ -102,7 +102,7 @@ article.sticky {
     display: flex;
     flex-direction: column;
     > * {
-      margin: $spacing-xs 0;
+      margin: 0 0 $spacing-xs;
       &:last-child {
         margin-bottom: 0;
       }

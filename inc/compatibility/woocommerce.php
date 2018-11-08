@@ -188,7 +188,14 @@ class Woocommerce {
 
 		$button_text  = apply_filters( 'neve_filter_woo_sidebar_open_button_text', __( 'Filter', 'neve' ) );
 		$button_attrs = apply_filters( 'neve_woocommerce_sidebar_filter_btn_data_attrs', '' );
-		echo '<span class="nv-sidebar-toggle button button-secondary" ' . esc_attr( $button_attrs ) . '>' . esc_html( $button_text ) . '</span>';
+		$class        = 'button button-secondary';
+
+		if ( is_product() ) {
+			$class = '';
+
+			$button_text .= '»';
+		}
+		echo '<a class="nv-sidebar-toggle ' . esc_attr( $class ) . '" ' . esc_attr( $button_attrs ) . '>' . esc_html( $button_text ) . '</a>';
 	}
 
 	/**

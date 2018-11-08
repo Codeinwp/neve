@@ -1,6 +1,7 @@
 .nv-meta-list {
   width: 100%;
   li {
+    display: inline;
     color: $gray-color;
     font-size: 0.85em;
     &:not(:last-child):after {
