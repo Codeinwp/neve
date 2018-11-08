@@ -225,7 +225,6 @@ th {
 html {
   font-size: 15px;
   overflow-x: hidden;
-  word-break: break-word;
   -webkit-tap-highlight-color: transparent;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -270,7 +269,7 @@ ins {
 }
 
 body {
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 h1 {
@@ -771,7 +770,7 @@ footer {
   line-height: 1.3em;
   margin-bottom: 20px;
   border-bottom: 1px solid #f0f0f0;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
 }
 
 .nv-content-none-wrap {
@@ -1061,9 +1060,6 @@ article {
 .single .nv-content-wrap {
   padding-top: 20px;
 }
-.single .nv-meta-list {
-  margin-top: 10px;
-}
 .single .entry-title {
   transition: all 0.3s ease;
 }
@@ -1072,8 +1068,16 @@ article {
   padding-top: 20px;
 }
 
+.nv-thumb-wrap + .nv-title-meta-wrap {
+  margin-top: 20px;
+}
+
+.nv-title-meta-wrap + .nv-thumb-wrap {
+  margin-top: 20px;
+}
+
 .single-post-container .title {
-  margin-bottom: 20px;
+  margin-bottom: 0;
 }
 
 .attachment-neve-blog {
@@ -1535,6 +1539,10 @@ hr {
   .col-md-12 {
     flex: 0 0 100%;
     max-width: 100%;
+  }
+
+  body {
+    font-size: 1rem;
   }
 
   h1 {
