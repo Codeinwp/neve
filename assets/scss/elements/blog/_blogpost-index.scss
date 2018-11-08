@@ -94,6 +94,9 @@ article.sticky {
     &:first-child {
       margin-top: 0;
     }
+    &.nv-meta-list {
+      margin-top: 0;
+    }
   }
 }
 

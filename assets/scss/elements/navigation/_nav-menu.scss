@@ -213,4 +213,8 @@
       padding-right: 25px;
     }
   }
+
+  .menu-item-has-children:last-child .caret-wrap {
+    right: -10px;
+  }
 }

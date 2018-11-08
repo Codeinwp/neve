@@ -41,9 +41,38 @@
 
 .nv-sidebar-wrap {
   margin-bottom: $spacing;
-  .widget h5 {
+}
+
+.widget ul {
+  padding: 0;
+  ul {
+    padding-left: $spacing-xs;
+    border-left: $muted-border;
+  }
+}
+
+.widget_media_image img {
+  width: 100%;
+}
+
+.widget {
+  word-break: break-word;
+  select {
+    max-width: 100%;
+    width: 100%;
+  }
+  h5 {
+    margin-bottom: $spacing-sm;
     font-weight: 600;
     font-size: 1.25em;
+  }
+  border-bottom: $muted-border;
+  padding-bottom: $spacing-sm;
+  margin-bottom: $spacing-sm;
+  &:last-child {
+    border: none;
+    margin: 0;
+    padding: 0;
   }
   .search-form, .woocommerce-product-search {
     position: relative;
