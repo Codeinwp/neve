@@ -1,63 +1,3 @@
-///* Make mm-col just a wrapper */
-//#nv-primary-navigation .neve-mega-menu:hover .neve-mm-col > a,
-//#nv-primary-navigation .neve-mega-menu:hover .neve-mm-col > .caret-wrap {
-//  //display: none;
-//}
-//
-//#nv-primary-navigation .neve-mega-menu:hover .neve-mm-col > .sub-menu,
-//#nv-primary-navigation .neve-mega-menu:hover .neve-mm-col:last-of-type > .sub-menu {
-//  //position: static;
-//  //left: 0 !important;
-//  //right: initial;
-//  //visibility: visible;
-//  //opacity: 1;
-//}
-//
-///* Remove regular style like border and box-shadow from mm-col */
-//#nv-primary-navigation .neve-mega-menu:hover .neve-mm-col,
-//#nv-primary-navigation .neve-mega-menu:hover .neve-mm-col > .sub-menu,
-//#nv-primary-navigation .neve-mega-menu:hover .neve-mm-col .sub-menu li {
-//  border: none;
-//}
-//#nv-primary-navigation .neve-mega-menu:hover .neve-mm-col > .sub-menu {
-//  box-shadow: none;
-//}
-//
-///* Add style for Neve mega menu items */
-//#nv-primary-navigation .neve-mega-menu .neve-mm-col {
-//  display: flex;
-//  align-items: flex-start;
-//}
-//
-//#nv-primary-navigation .neve-mega-menu .neve-mm-col .neve-mm-heading a {
-//  font-weight: 600;
-//}
-//
-///* Desktop */
-//@media (min-width: 769px) {
-//  #nv-primary-navigation .neve-mega-menu {
-//    position: initial;
-//  }
-//  #nv-primary-navigation .neve-mega-menu > .sub-menu {
-//    display: flex !important;
-//    padding: 20px;
-//    overflow: hidden;
-//    //display: grid !important;
-//    //min-width: 750px;
-//    //grid-template-columns: repeat( 6, 1fr );
-//    //right: 0;
-//    //transform: translateX(25%);
-//  }
-//
-//}
-
-/* Mobile */
-//@media (max-width: 768px) {
-//  #nv-primary-navigation .neve-mega-menu.dropdown-open > .sub-menu {
-//    display: block;
-//  }
-//}
-
 /* Set mega menu width based on container width */
 @media(min-width: 769px) {
   #nv-primary-navigation .neve-mega-menu > .sub-menu {
@@ -83,12 +23,13 @@
 #nv-primary-navigation .neve-mega-menu:hover > .sub-menu,
 #nv-primary-navigation .neve-mega-menu:focus > .sub-menu,
 #nv-primary-navigation .neve-mega-menu:focus-within > .sub-menu {
-  position: absolute;
-  //display: flex !important;
   display: grid !important;
   grid-template-columns: repeat(5, 1fr);
   left: 50%;
   transform: translateX(-50%);
+  padding: 20px;
+  top: 6vh;
+  overflow: hidden;
 }
 
 #nv-primary-navigation .neve-mega-menu > .sub-menu,
@@ -100,14 +41,11 @@
 
   .neve-mm-col {
 
-    position: relative;
-    
     & > a,
     & > .caret-wrap {
       display: none;
     }
     & > .sub-menu {
-      position: static;
       transition: unset !important;
       left: initial;
       right: initial;
@@ -115,11 +53,28 @@
   }
 }
 
+#nv-primary-navigation .neve-mega-menu:hover .neve-mm-col,
+#nv-primary-navigation .neve-mega-menu:focus .neve-mm-col,
+#nv-primary-navigation .neve-mega-menu:focus-within .neve-mm-col {
+  border: none;
+
+  .neve-mm-heading a {
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+}
 #nv-primary-navigation .neve-mega-menu:hover .neve-mm-col > .sub-menu,
 #nv-primary-navigation .neve-mega-menu:focus .neve-mm-col > .sub-menu,
 #nv-primary-navigation .neve-mega-menu:focus-within .neve-mm-col > .sub-menu {
+  position: static;
   visibility: visible;
   opacity: 1;
   left: initial;
   right: initial;
+  border: none;
+  box-shadow: none;
+
+  li {
+    border: none;
+  }
 }

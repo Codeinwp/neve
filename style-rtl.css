@@ -714,7 +714,6 @@ a.neve-skip-link {
   margin: 0 10px;
 }
 
-/* Mobile */
 /* Set mega menu width based on container width */
 @media (min-width: 769px) {
   #nv-primary-navigation .neve-mega-menu > .sub-menu {
@@ -742,11 +741,13 @@ a.neve-skip-link {
 #nv-primary-navigation .neve-mega-menu:hover > .sub-menu,
 #nv-primary-navigation .neve-mega-menu:focus > .sub-menu,
 #nv-primary-navigation .neve-mega-menu:focus-within > .sub-menu {
-  position: absolute;
   display: grid !important;
   grid-template-columns: repeat(5, 1fr);
   right: 50%;
   transform: translateX(50%);
+  padding: 20px;
+  top: 6vh;
+  overflow: hidden;
 }
 
 #nv-primary-navigation .neve-mega-menu > .sub-menu,
@@ -754,12 +755,6 @@ a.neve-skip-link {
 #nv-primary-navigation .neve-mega-menu:focus > .sub-menu,
 #nv-primary-navigation .neve-mega-menu:focus-within > .sub-menu {
   transition: unset !important;
-}
-#nv-primary-navigation .neve-mega-menu > .sub-menu .neve-mm-col,
-#nv-primary-navigation .neve-mega-menu:hover > .sub-menu .neve-mm-col,
-#nv-primary-navigation .neve-mega-menu:focus > .sub-menu .neve-mm-col,
-#nv-primary-navigation .neve-mega-menu:focus-within > .sub-menu .neve-mm-col {
-  position: relative;
 }
 #nv-primary-navigation .neve-mega-menu > .sub-menu .neve-mm-col > a, #nv-primary-navigation .neve-mega-menu > .sub-menu .neve-mm-col > .caret-wrap,
 #nv-primary-navigation .neve-mega-menu:hover > .sub-menu .neve-mm-col > a,
@@ -774,19 +769,38 @@ a.neve-skip-link {
 #nv-primary-navigation .neve-mega-menu:hover > .sub-menu .neve-mm-col > .sub-menu,
 #nv-primary-navigation .neve-mega-menu:focus > .sub-menu .neve-mm-col > .sub-menu,
 #nv-primary-navigation .neve-mega-menu:focus-within > .sub-menu .neve-mm-col > .sub-menu {
-  position: static;
   transition: unset !important;
   right: initial;
   left: initial;
 }
 
+#nv-primary-navigation .neve-mega-menu:hover .neve-mm-col,
+#nv-primary-navigation .neve-mega-menu:focus .neve-mm-col,
+#nv-primary-navigation .neve-mega-menu:focus-within .neve-mm-col {
+  border: none;
+}
+#nv-primary-navigation .neve-mega-menu:hover .neve-mm-col .neve-mm-heading a,
+#nv-primary-navigation .neve-mega-menu:focus .neve-mm-col .neve-mm-heading a,
+#nv-primary-navigation .neve-mega-menu:focus-within .neve-mm-col .neve-mm-heading a {
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
 #nv-primary-navigation .neve-mega-menu:hover .neve-mm-col > .sub-menu,
 #nv-primary-navigation .neve-mega-menu:focus .neve-mm-col > .sub-menu,
 #nv-primary-navigation .neve-mega-menu:focus-within .neve-mm-col > .sub-menu {
+  position: static;
   visibility: visible;
   opacity: 1;
   right: initial;
   left: initial;
+  border: none;
+  box-shadow: none;
+}
+#nv-primary-navigation .neve-mega-menu:hover .neve-mm-col > .sub-menu li,
+#nv-primary-navigation .neve-mega-menu:focus .neve-mm-col > .sub-menu li,
+#nv-primary-navigation .neve-mega-menu:focus-within .neve-mm-col > .sub-menu li {
+  border: none;
 }
 
 footer {
