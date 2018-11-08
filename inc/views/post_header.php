@@ -83,7 +83,6 @@ class Post_Header extends Base_View {
 		$default_meta_order = json_encode(
 			array(
 				'author',
-				'category',
 				'date',
 				'comments',
 			)
