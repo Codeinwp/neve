@@ -271,13 +271,21 @@
 }
 .woocommerce #review_form .comment-form {
   margin-top: 20px;
-  grid-template-columns: repeat(1, 1fr 5fr);
+  grid-template-columns: repeat(2, 1fr);
+  grid-row-gap: 10px;
 }
-.woocommerce #review_form .comment-form .form-submit {
+.woocommerce #review_form .comment-form input:not([type=submit]) {
+  width: 100%;
+}
+.woocommerce #review_form .comment-form .comment-form-comment, .woocommerce #review_form .comment-form .comment-form-rating, .woocommerce #review_form .comment-form .comment-notes {
+  grid-column: span 2;
+}
+.woocommerce #review_form .comment-form .comment-form-rating {
   display: flex;
-  grid-column-end: -1;
-  align-items: flex-end;
-  justify-content: flex-end;
+  flex-direction: row;
+}
+.woocommerce #review_form .comment-form .comment-form-rating label {
+  margin-left: 10px;
 }
 .woocommerce #reviews #comments ol.commentlist li img.avatar {
   border: 0;

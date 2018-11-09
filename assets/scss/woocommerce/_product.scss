@@ -128,8 +128,18 @@
 
   #review_form .comment-form {
     margin-top: 20px;
-    grid-template-columns: repeat( 1, 1fr 5fr );
-
+    grid-template-columns: repeat(3, 1fr);
+    grid-row-gap: $spacing-xs;
+    input:not([type=submit]) {
+      width: 100%;
+    }
+    .comment-form-comment, .comment-form-rating, .comment-notes {
+      grid-column: span 3;
+    }
+    .comment-form-rating {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+    }
     .form-submit {
       display: flex;
       grid-column-end: -1;
