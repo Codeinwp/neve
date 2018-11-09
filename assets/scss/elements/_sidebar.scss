@@ -57,18 +57,17 @@
 
 .widget {
   word-break: break-word;
+  padding-bottom: $spacing-sm;
+  margin-bottom: $spacing-sm;
   select {
     max-width: 100%;
     width: 100%;
   }
   h5 {
-    margin-bottom: $spacing-sm;
+    margin-bottom: $spacing-xs;
     font-weight: 600;
     font-size: 1.25em;
   }
-  border-bottom: $muted-border;
-  padding-bottom: $spacing-sm;
-  margin-bottom: $spacing-sm;
   &:last-child {
     border: none;
     margin: 0;
@@ -112,23 +111,6 @@
       }
     }
   }
-  .widget {
-    h5 {
-      margin-bottom: $spacing-sm;
-    }
-    border-bottom: $muted-border;
-    padding-bottom: $spacing-sm;
-    margin-bottom: $spacing-sm;
-    &:last-child {
-      border: none;
-      margin: 0;
-      padding: 0;
-    }
-  }
-}
-
-.widget {
-  word-break: break-word;
 }
 
 .widget ul {
@@ -138,7 +120,7 @@
     border-left: $muted-border;
   }
   li {
-    margin-top: $spacing-xs;
+    margin-top: $spacing-xs / 2;
   }
 }
 

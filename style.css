@@ -1511,7 +1511,6 @@ hr {
 
 .widget {
   word-break: break-word;
-  border-bottom: 1px solid #f0f0f0;
   padding-bottom: 20px;
   margin-bottom: 20px;
 }
@@ -1520,7 +1519,7 @@ hr {
   width: 100%;
 }
 .widget h5 {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   font-weight: 600;
   font-size: 1.25em;
 }
@@ -1567,23 +1566,6 @@ hr {
 .widget .search-form button[type="submit"]:hover, .widget .search-form input[type="submit"]:hover, .widget .woocommerce-product-search button[type="submit"]:hover, .widget .woocommerce-product-search input[type="submit"]:hover {
   background-color: #eee;
 }
-.widget .widget {
-  border-bottom: 1px solid #f0f0f0;
-  padding-bottom: 20px;
-  margin-bottom: 20px;
-}
-.widget .widget h5 {
-  margin-bottom: 20px;
-}
-.widget .widget:last-child {
-  border: none;
-  margin: 0;
-  padding: 0;
-}
-
-.widget {
-  word-break: break-word;
-}
 
 .widget ul {
   padding: 0;
@@ -1593,7 +1575,7 @@ hr {
   border-left: 1px solid #f0f0f0;
 }
 .widget ul li {
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
 .widget_media_image img {
