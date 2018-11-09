@@ -173,36 +173,6 @@
   padding: 4px 12px 5px;
 }
 
-.woocommerce .nv-bc-count-wrap {
-  display: flex;
-  justify-content: space-between;
-  padding: 0 0 10px 0;
-  font-size: .85em;
-}
-.woocommerce .nv-bc-count-wrap .woocommerce-result-count {
-  float: none;
-  margin: 0;
-  text-align: left;
-}
-.woocommerce .woocommerce-breadcrumb {
-  margin: 0;
-  font-size: 1em;
-}
-.woocommerce .woocommerce-breadcrumb a {
-  color: #0366d6;
-}
-.woocommerce .woocommerce-breadcrumb a:hover {
-  color: #0366d6;
-}
-
-.nv-woo-title-breadcrumb {
-  display: flex;
-  flex-direction: column-reverse;
-}
-.nv-woo-title-breadcrumb h1 {
-  margin: 0;
-}
-
 .woocommerce .quantity .qty {
   padding: 4px 12px 5px;
 }
@@ -211,86 +181,9 @@
   margin-bottom: 20px;
 }
 
-.woocommerce div.product .woocommerce-tabs ul.tabs {
-  padding: 0;
-}
-
-.woocommerce div.product .woocommerce-tabs ul.tabs li {
-  display: block;
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid #f0f0f0;
-}
-.woocommerce div.product .woocommerce-tabs ul.tabs li.active {
-  border-bottom: 1px solid #f0f0f0;
-}
-.woocommerce div.product .woocommerce-tabs ul.tabs li a {
-  color: #0366d6;
-  width: 100%;
-}
-
-.woocommerce-Reviews #comments {
-  border: none;
-  margin-top: 0;
-  padding-top: 0;
-}
-
-.woocommerce-Reviews #review_form_wrapper .comment-respond .comment-form .comment-form-author input,
-.woocommerce-Reviews #review_form_wrapper .comment-respond .comment-form .comment-form-email input {
-  display: block;
-}
-
-.woocommerce div.product .woocommerce-tabs ul.tabs::before {
-  border: none;
-}
-
-.woocommerce div.product form.cart .reset_variations {
-  font-size: .8em;
-  font-weight: 600;
-  padding: 6px 12px;
-  transition: all .15s ease-in-out;
-  text-align: center;
-  vertical-align: middle;
-  border: 1px solid transparent;
-  border-radius: .25rem;
-  text-transform: uppercase;
-  cursor: pointer;
-  line-height: 1.68421;
-  font-family: inherit;
-  border: 1px solid rgba(27, 31, 35, 0.2);
-  background-color: transparent;
-  font-weight: 600;
-  color: #f5365c;
-  margin-top: 12px;
-  line-height: 1;
-  display: table-caption;
-  float: right;
-  position: relative;
-}
-.woocommerce div.product form.cart .reset_variations:hover {
-  opacity: 1;
-  text-decoration: none;
-  background-color: #f5365c;
-  color: #fff;
-}
-
-.woocommerce .comment-form-rating {
-  margin: 10px 0;
-}
-.woocommerce #review_form #respond .stars {
-  margin-top: 10px;
-  display: table;
-}
-.woocommerce #review_form #reply-title {
-  margin: 0 auto;
-  text-align: center;
-  width: 100%;
-  display: block;
-  font-size: 1rem;
-}
-
-.woocommerce-Tabs-panel > h2 {
-  font-size: 1rem;
+.woocommerce.single .product_title {
+  font-size: 1.5em;
+  font-weight: 500;
 }
 
 .woocommerce-checkout .col2-set .col-1, .woocommerce-checkout .woocommerce-checkout .col2-set .col-2 {
@@ -1007,22 +900,44 @@
     display: none;
   }
 
-  .woocommerce div.product .woocommerce-tabs ul.tabs li {
-    border-bottom: 1px solid #f0f0f0;
-    display: inline-block;
-  }
-  .woocommerce div.product .woocommerce-tabs ul.tabs li:before, .woocommerce div.product .woocommerce-tabs ul.tabs li:after {
-    content: none;
-  }
-  .woocommerce div.product .woocommerce-tabs ul.tabs li.active {
-    border: 1px solid #f0f0f0;
-    border-bottom: 1px solid transparent;
-  }
-
   .woocommerce.single .nv-woo-filters {
     margin: 0;
   }
   .woocommerce.single .nv-woo-filters > .woocommerce-ordering {
     margin-right: 0;
   }
+}
+.woocommerce .woocommerce-breadcrumb {
+  margin-bottom: 20px;
+  font-size: 1em;
+}
+.woocommerce .woocommerce-breadcrumb a {
+  color: rgba(0, 0, 0, 0.54);
+}
+.woocommerce .woocommerce-breadcrumb .nv-breadcrumb-delimiter {
+  opacity: .5;
+  padding: 0 5px;
+}
+
+.woocommerce.single .nv-breadcrumb-delimiter:last-of-type {
+  display: none;
+}
+
+.woocommerce .nv-bc-count-wrap {
+  display: flex;
+  justify-content: space-between;
+  font-size: .85em;
+}
+.woocommerce .nv-bc-count-wrap .woocommerce-result-count {
+  float: none;
+  margin: 0;
+  text-align: left;
+}
+
+.nv-woo-title-breadcrumb {
+  display: flex;
+  flex-direction: column-reverse;
+}
+.nv-woo-title-breadcrumb h1 {
+  margin: 0;
 }

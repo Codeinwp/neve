@@ -20,7 +20,7 @@ class Woocommerce {
 	/**
 	 * Sidebar manager.
 	 *
-	 * @var Neve\Views\Layouts\Layout_Sidebar
+	 * @var \Neve\Views\Layouts\Layout_Sidebar
 	 */
 	private $sidebar_manager;
 
@@ -53,8 +53,8 @@ class Woocommerce {
 
 		$this->edit_woocommerce_header();
 		$this->add_inline_selectors();
-
 		$this->move_checkout_coupon_under_order_summary();
+
 		add_filter( 'neve_post_meta_filters_post_id', array( $this, 'adapt_meta_for_shop_page' ) );
 
 		/**
@@ -62,10 +62,32 @@ class Woocommerce {
 		 */
 		add_filter( 'woocommerce_add_to_cart_fragments', array( $this, 'cart_link_fragment' ) );
 
-		add_filter( 'woocommerce_get_breadcrumb', array( $this, 'remove_last_breadcrumb' ), 10, 2 );
+		add_filter( 'woocommerce_is_sold_individually', array( $this, 'remove_quantity' ), 10, 2 );
+	}
 
-		// Remove add to cart on archives.
-		remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 );
+	/**
+	 * Remove quantity input on single product.
+	 *
+	 * @return bool
+	 */
+	public function remove_quantity() {
+		if ( ! is_product() ) {
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * Change breadcrumb delimiter.
+	 *
+	 * @param array $default breadcrumbs defaults.
+	 *
+	 * @return mixed
+	 */
+	public function change_breadcrumbs_delimiter( $default ) {
+		$default['delimiter'] = '<span class="nv-breadcrumb-delimiter">&raquo;</span>';
+
+		return $default;
 	}
 
 	/**
@@ -98,16 +120,9 @@ class Woocommerce {
 		add_filter( 'woocommerce_show_page_title', '__return_false' );
 		add_action( 'neve_before_shop_loop_content', array( $this, 'add_header_bits' ), 0 );
 
-		// Move product title on single product page
-		add_action( 'woocommerce_before_single_product', array( $this, 'move_single_product_title' ) );
-	}
-
-	/**
-	 * Move single product title.
-	 */
-	public function move_single_product_title() {
-		remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_title', 5 );
-		add_action( 'woocommerce_before_single_product_summary', 'woocommerce_template_single_title', 10 );
+		// Change breadcrumbs.
+		add_filter( 'woocommerce_get_breadcrumb', array( $this, 'remove_last_breadcrumb' ), 10, 2 );
+		add_filter( 'woocommerce_breadcrumb_defaults', array( $this, 'change_breadcrumbs_delimiter' ) );
 	}
 
 	/**
