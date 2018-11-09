@@ -888,6 +888,19 @@ button:hover, input[type=button]:hover, .btn:hover, input[type="submit"]:hover {
 .nv-meta-list .posted-on .updated {
   display: none;
 }
+.nv-meta-list .meta.author {
+  display: flex;
+  align-items: center;
+}
+.nv-meta-list .meta.author .photo {
+  display: inline-flex;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+.nv-meta-list .meta.author .author-name {
+  margin-left: 3px;
+}
 
 .entry-title {
   word-wrap: break-word;

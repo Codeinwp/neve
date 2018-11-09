@@ -30,7 +30,7 @@ class Template_Parts extends Base_View {
 	public function render_post() {
 		?>
 		<article id="post-<?php echo esc_attr( get_the_ID() ); ?>"
-				class="<?php echo esc_attr( $this->post_class() ); ?>">
+			class="<?php echo esc_attr( $this->post_class() ); ?>">
 			<div class="article-content-col">
 				<div class="content">
 					<?php $this->render_article_inner_content(); ?>
@@ -184,7 +184,7 @@ class Template_Parts extends Base_View {
 		}
 		?>
 		<a href="<?php esc_url( the_permalink() ); ?>" rel="bookmark"
-				class="button button-secondary"><?php esc_html_e( 'Read more', 'neve' ); ?>
+			class="button button-secondary"><?php esc_html_e( 'Read more', 'neve' ); ?>
 			<span class="screen-reader-text"><?php echo __( 'About', 'neve' ) . ' ' . esc_html( get_the_title() ); ?></span></a>
 		<?php
 	}

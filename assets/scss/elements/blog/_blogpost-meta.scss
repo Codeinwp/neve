@@ -15,4 +15,17 @@
   .posted-on .updated {
     display: none;
   }
+  .meta.author {
+    display: flex;
+    align-items: center;
+    .photo {
+      display: inline-flex;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+    }
+    .author-name {
+      margin-left: 3px;
+    }
+  }
 }
