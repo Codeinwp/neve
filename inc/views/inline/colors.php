@@ -71,7 +71,7 @@ class Colors extends Base_Inline {
 		$color_setup = array(
 			'color' => array(
 				'css_prop'  => 'color',
-				'selectors' => 'a:hover, #nv-primary-navigation li:hover > a ',
+				'selectors' => 'a:hover, a:focus, #nv-primary-navigation li:hover > a',
 			),
 		);
 		$this->add_color( apply_filters( 'neve_link_hover_color_filter', $color_setup ), $color );

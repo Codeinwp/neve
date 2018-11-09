@@ -2,7 +2,7 @@
     $.neveUtilities = {
         isMobile: function() {
             var windowWidth = window.innerWidth;
-            return windowWidth <= 767;
+            return windowWidth <= 960;
         },
         isElementInViewport: function(el) {
             if (typeof $ === "function" && el instanceof $) {
@@ -76,6 +76,7 @@
             });
             $(".menu-item-nav-search").on("touchstart click focus", function() {
                 $(this).addClass("active");
+                $("html").addClass("menu-opened");
                 if (utils.isMobile()) {
                     return false;
                 }
@@ -85,6 +86,7 @@
             $(".close-responsive-search").on("touchstart click", function(e) {
                 e.preventDefault();
                 $(".responsive-nav-search").removeClass("active");
+                $("html").removeClass("menu-opened");
             });
             $(".menu-item-nav-search input[type=search]").on("blur", function() {
                 $(".menu-item-nav-search").removeClass("active");

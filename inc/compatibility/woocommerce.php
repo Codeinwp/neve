@@ -51,10 +51,6 @@ class Woocommerce {
 
 		add_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0 );
 
-		$this->edit_woocommerce_header();
-		$this->add_inline_selectors();
-		$this->move_checkout_coupon_under_order_summary();
-
 		add_filter( 'neve_post_meta_filters_post_id', array( $this, 'adapt_meta_for_shop_page' ) );
 
 		/**
@@ -63,6 +59,12 @@ class Woocommerce {
 		add_filter( 'woocommerce_add_to_cart_fragments', array( $this, 'cart_link_fragment' ) );
 
 		add_filter( 'woocommerce_is_sold_individually', array( $this, 'remove_quantity' ), 10, 2 );
+
+		remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 );
+
+		$this->edit_woocommerce_header();
+		$this->move_checkout_coupon_under_order_summary();
+		$this->add_inline_selectors();
 	}
 
 	/**
@@ -74,6 +76,7 @@ class Woocommerce {
 		if ( ! is_product() ) {
 			return false;
 		}
+
 		return true;
 	}
 
@@ -137,6 +140,10 @@ class Woocommerce {
 		woocommerce_breadcrumb();
 		woocommerce_result_count();
 		echo '</div>';
+
+		if ( is_product() ) {
+			return;
+		}
 
 		echo '<div class="nv-woo-filters">';
 		$this->sidebar_toggle();
@@ -204,16 +211,9 @@ class Woocommerce {
 			return;
 		}
 
-		$button_text  = apply_filters( 'neve_filter_woo_sidebar_open_button_text', __( 'Filter', 'neve' ) );
+		$button_text  = apply_filters( 'neve_filter_woo_sidebar_open_button_text', __( 'Filter', 'neve' ) . '»' );
 		$button_attrs = apply_filters( 'neve_woocommerce_sidebar_filter_btn_data_attrs', '' );
-		$class        = 'button button-secondary';
-
-		if ( is_product() ) {
-			$class = '';
-
-			$button_text .= '»';
-		}
-		echo '<a class="nv-sidebar-toggle ' . esc_attr( $class ) . '" ' . esc_attr( $button_attrs ) . '>' . esc_html( $button_text ) . '</a>';
+		echo '<a class="nv-sidebar-toggle" ' . esc_attr( $button_attrs ) . '>' . esc_html( $button_text ) . '</a>';
 	}
 
 	/**
@@ -280,13 +280,11 @@ class Woocommerce {
 
 		$color_setup['border-color']['selectors'] .=
 			', .nv-nav-cart .woocommerce-mini-cart__buttons a.button:first-child, 
-			.woocommerce-ordering .orderby, 
 			.woocommerce-cart table.cart td.actions .coupon > .input-text + .button,
 			.woocommerce a.added_to_cart';
 
 		$color_setup['color']['selectors'] .=
 			', .nv-nav-cart .woocommerce-mini-cart__buttons a.button:first-child, 
-			.woocommerce-ordering .orderby,
 			.woocommerce-cart table.cart td.actions .coupon > .input-text + .button,
 			.woocommerce a.added_to_cart,
 			#nv-primary-navigation .woocommerce-mini-cart__buttons a.button:not(.checkout)';
@@ -302,9 +300,7 @@ class Woocommerce {
 	 * @return array
 	 */
 	public function add_link_color( $color_setup ) {
-		$color_setup['color']['selectors'] .=
-			', .woocommerce .woocommerce-breadcrumb a, 
-			.woocommerce div.product .woocommerce-tabs ul.tabs li a';
+		$color_setup['color']['selectors'] .= '';
 
 		return $color_setup;
 	}
@@ -317,10 +313,8 @@ class Woocommerce {
 	 * @return array
 	 */
 	public function add_link_hover_color( $color_setup ) {
-		$color_setup['color']['selectors'] .=
-			', .woocommerce .woocommerce-breadcrumb a:hover, 
-			.woocommerce div.product .woocommerce-tabs ul.tabs li a:hover';
-
+		// $color_setup['color']['selectors'] .=
+		// ', .woocommerce .woocommerce-breadcrumb a:hover';
 		return $color_setup;
 	}
 

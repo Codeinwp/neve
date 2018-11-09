@@ -1,5 +1,5 @@
 .woocommerce .woocommerce-breadcrumb {
-  margin-bottom: $spacing-sm;
+  margin-bottom: 0;
   font-size: 1em;
   a {
     color: $gray-color;
@@ -20,8 +20,9 @@
 .woocommerce {
   .nv-bc-count-wrap {
     display: flex;
-    justify-content: space-between;
     font-size: .85em;
+    margin-bottom: $spacing-sm;
+    justify-content: space-between;
     .woocommerce-result-count {
       float: none;
       margin: 0;

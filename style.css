@@ -904,7 +904,7 @@ form input[type="text"], form input[type="password"], form input[type="email"], 
   transition: all 0.3s ease;
 }
 
-input[type="text"], input[type="search"], input[type="password"], input[type="submit"], textarea, select {
+input[type="text"], input[type="search"], input[type="password"], input[type="submit"], textarea {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -1555,6 +1555,7 @@ hr {
 .widget .search-form button[type="submit"], .widget .search-form input[type="submit"], .widget .woocommerce-product-search button[type="submit"], .widget .woocommerce-product-search input[type="submit"] {
   top: 0;
   right: 0;
+  bottom: 0;
   position: absolute;
   color: transparent;
   background: 0 0;
