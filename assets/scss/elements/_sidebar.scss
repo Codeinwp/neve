@@ -89,6 +89,9 @@
       cursor: pointer;
       pointer-events: none;
       color: $muted-white-med;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     input[type="search"] {
       width: 100%;
@@ -104,6 +107,9 @@
       width: 45px;
       border: 0;
       padding: 8px 12px 7px;
+      &:hover {
+        background-color: #eee;
+      }
     }
   }
   .widget {
