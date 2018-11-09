@@ -26,7 +26,8 @@ class Header extends Base_View {
 	 */
 	public function render_navigation() {
 		?>
-		<nav class="nv-navbar" <?php echo wp_kses_post( apply_filters( 'neve_nav_data_attrs', '' ) ); ?> role="navigation">
+		<nav class="nv-navbar" <?php echo wp_kses_post( apply_filters( 'neve_nav_data_attrs', '' ) ); ?>
+			role="navigation">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 nv-nav-wrap <?php echo esc_attr( $this->get_navbar_class() ); ?>">
@@ -50,7 +51,7 @@ class Header extends Base_View {
 	 * Add the last menu item.
 	 *
 	 * @param array  $items the nav items.
-	 * @param object $args  menu properties.
+	 * @param object $args menu properties.
 	 *
 	 * @return string
 	 */
@@ -123,6 +124,14 @@ class Header extends Base_View {
 				'menu_id'        => 'nv-primary-navigation',
 				'container'      => 'ul',
 				'walker'         => new Nav_Walker(),
+				'fallback_cb'    => wp_page_menu(
+					array(
+						'menu_id'   => 'nv-primary-navigation',
+						'container' => 'ul',
+						'before'    => '',
+						'after'     => '',
+					)
+				),
 			)
 		);
 		echo '</div>';
@@ -162,7 +171,7 @@ class Header extends Base_View {
 		?>
 		<div class="site-logo">
 			<a class="brand" href="<?php echo esc_url( home_url( '/' ) ); ?>"
-					title="<?php bloginfo( 'name' ); ?>">
+				title="<?php bloginfo( 'name' ); ?>">
 				<?php echo wp_kses_post( $this->get_logo() ); ?></a>
 		</div>
 		<?php
