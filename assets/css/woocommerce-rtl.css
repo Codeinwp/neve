@@ -486,7 +486,7 @@
   cursor: pointer;
   line-height: 1.68421;
   font-family: inherit;
-  border: 1px solid rgba(27, 31, 35, 0.2);
+  border: 1px solid #f0f0f0;
   background-color: transparent;
   font-weight: 600;
   color: #0366d6;
@@ -685,7 +685,7 @@
 .woocommerce-cart table.cart td.actions .coupon > .input-text + .button {
   float: none;
   width: 100%;
-  border: 1px solid rgba(27, 31, 35, 0.2);
+  border: 1px solid #f0f0f0;
   background-color: transparent;
   font-weight: 600;
   color: #0366d6;
@@ -947,7 +947,7 @@
     cursor: pointer;
     line-height: 1.68421;
     font-family: inherit;
-    border: 1px solid rgba(27, 31, 35, 0.2);
+    border: 1px solid #f0f0f0;
     background-color: transparent;
     font-weight: 600;
     color: #0366d6;

@@ -40,7 +40,7 @@
 
 @mixin button() {
   font-size: .8em;
-  font-weight: 600;
+  font-weight: 600; 
   padding: 6px 12px;
   transition: all .15s ease-in-out;
   text-align: center;
@@ -54,7 +54,7 @@
 }
 
 @mixin button-secondary( $hover: 'true', $color: $button_color ) {
-  border: 1px solid rgba(27,31,35,0.2);
+  border: $muted-border;
   background-color: transparent;
   font-weight: 600;
   color: $color;

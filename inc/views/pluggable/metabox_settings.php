@@ -104,6 +104,11 @@ class Metabox_Settings {
 	 */
 	public function filter_container_class( $class ) {
 
+		// Don't filter on blog.
+		if( is_home() ) {
+			return $class;
+		}
+
 		$post_id = $this->get_post_id();
 
 		if ( $post_id === false ) {

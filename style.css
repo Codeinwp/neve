@@ -792,7 +792,7 @@ a.neve-skip-link {
   color: #fff;
 }
 #nv-primary-navigation li.button.button-secondary > a, .menu li.button.button-secondary > a {
-  border: 1px solid rgba(27, 31, 35, 0.2);
+  border: 1px solid #f0f0f0;
   background-color: transparent;
   font-weight: 600;
   color: #0366d6;
@@ -942,7 +942,7 @@ input, textarea, select, button {
   opacity: .9;
 }
 .button.button-secondary {
-  border: 1px solid rgba(27, 31, 35, 0.2);
+  border: 1px solid #f0f0f0;
   background-color: transparent;
   font-weight: 600;
   color: #0366d6;
