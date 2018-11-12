@@ -90,6 +90,10 @@ abstract class Control_Base {
 			return true;
 		}
 
+		if ( empty( $this->settings['active_callback'] ) ) {
+			return true;
+		}
+
 		$object = $this->settings['active_callback'][0];
 		$method = $this->settings['active_callback'][1];
 		if ( method_exists( $object, $method ) ) {

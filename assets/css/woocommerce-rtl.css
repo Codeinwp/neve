@@ -486,16 +486,14 @@
   cursor: pointer;
   line-height: 1.68421;
   font-family: inherit;
-  border: 1px solid #f0f0f0;
+  border: 1px solid #404248;
   background-color: transparent;
   font-weight: 600;
-  color: #0366d6;
+  color: #404248;
 }
 .woocommerce a.added_to_cart:hover {
-  opacity: 1;
+  opacity: .75;
   text-decoration: none;
-  background-color: #0366d6;
-  color: #fff;
 }
 .woocommerce button.button:disabled, .woocommerce button.button:disabled[disabled] {
   color: #fff;
@@ -685,16 +683,14 @@
 .woocommerce-cart table.cart td.actions .coupon > .input-text + .button {
   float: none;
   width: 100%;
-  border: 1px solid #f0f0f0;
+  border: 1px solid #404248;
   background-color: transparent;
   font-weight: 600;
-  color: #0366d6;
+  color: #404248;
 }
 .woocommerce-cart table.cart td.actions .coupon > .input-text + .button:hover {
-  opacity: 1;
+  opacity: .75;
   text-decoration: none;
-  background-color: #0366d6;
-  color: #fff;
 }
 
 .woocommerce a.button.checkout-button.alt, .woocommerce a.button.checkout-button.alt:focus, .woocommerce a.button.checkout-button.alt:active {
@@ -947,16 +943,14 @@
     cursor: pointer;
     line-height: 1.68421;
     font-family: inherit;
-    border: 1px solid #f0f0f0;
+    border: 1px solid #404248;
     background-color: transparent;
     font-weight: 600;
-    color: #0366d6;
+    color: #404248;
   }
   .nv-nav-cart .woocommerce-mini-cart__buttons a.button:first-child:hover {
-    opacity: 1;
+    opacity: .75;
     text-decoration: none;
-    background-color: #0366d6;
-    color: #fff;
   }
 
   #nv-primary-navigation .widget_shopping_cart li.mini_cart_item {
