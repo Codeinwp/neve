@@ -56,17 +56,21 @@ class Post_Header extends Base_View {
 					if ( apply_filters( 'neve_filter_toggle_content_parts', true, 'title' ) !== true ) {
 						break;
 					}
+					echo '<div class="nv-title-meta-wrap">';
 					echo '<h1 class="title entry-title">' . wp_kses_post( get_the_title() ) . '</h1>';
 					$this->render_post_meta();
+					echo '</div>';
 					break;
 				case 'thumbnail':
 					if ( apply_filters( 'neve_filter_toggle_content_parts', true, 'featured-image' ) !== true ) {
 						break;
 					}
+					echo '<div class="nv-thumb-wrap">';
 					echo get_the_post_thumbnail(
 						null,
 						'neve-blog'
 					);
+					echo '</div>';
 					break;
 			}
 		}
@@ -79,7 +83,6 @@ class Post_Header extends Base_View {
 		$default_meta_order = json_encode(
 			array(
 				'author',
-				'category',
 				'date',
 				'comments',
 			)

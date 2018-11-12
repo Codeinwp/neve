@@ -1,30 +1,39 @@
+//<editor-fold desc="Repair WooCommerce Columns">
 .woocommerce .col2-set .col-1, .woocommerce-page .col2-set .col-1,
 .woocommerce .col2-set .col-2, .woocommerce-page .col2-set .col-2 {
   max-width: inherit;
 }
 
-.woocommerce span.onsale {
-  background-color: $success;
-  border-radius: 0;
-  line-height: inherit;
-  min-height: auto;
-  border-radius: 3px;
-  left: $spacing-sm;
-  top: $spacing-sm;
+//</editor-fold>
+
+//<editor-fold desc="On Sale Badge">
+.woocommerce {
+  span.onsale {
+    background-color: $success;
+    border-radius: 0;
+    line-height: inherit;
+    min-height: auto;
+    left: 0;
+    top: 0;
+    font-weight: 500;
+  }
+  ul.products li.product .onsale {
+    top: 0;
+    left: 0;
+    right: auto;
+    margin: 0;
+  }
 }
 
-.woocommerce ul.products li.product .onsale {
-  right: auto;
-  left: $spacing-sm;
-  top: 23px;
-}
+//</editor-fold>
 
-.woocommerce ul.products li.product .price, .woocommerce div.product p.price, .woocommerce div.product span.price {
-  color: $body-color;
-}
-
-.woocommerce-variation-price {
-  margin-bottom: $spacing-sm;
+//<editor-fold desc="Pagination">
+.woocommerce nav.woocommerce-pagination ul li {
+  a:focus,
+  a:hover,
+  span.current {
+    background: none;
+  }
 }
 
 .woocommerce nav.woocommerce-pagination ul {
@@ -36,35 +45,17 @@
   }
 }
 
-.woocommerce nav.woocommerce-pagination ul li a:focus, .woocommerce nav.woocommerce-pagination ul li a:hover, .woocommerce nav.woocommerce-pagination ul li span.current {
-  background: none;
-}
+//</editor-fold>
 
-.woocommerce {
-  div.product form.cart .variations td.label {
-    vertical-align: top;
-  }
-}
-
+//<editor-fold desc="Rating">
 .woocommerce {
   .star-rating {
     color: #ffb100;
   }
 }
+//</editor-fold>
 
-.woocommerce ul.products li.product .star-rating {
-  margin: $spacing-xs auto;
-}
-
-#review_form {
-  .comment-reply-title {
-
-  }
-  .comment-form-rating .stars {
-    font-size: 1.75em;
-  }
-}
-
+//<editor-fold desc="WooCommerce Notices">
 $notices: (
         'error': $error,
         'info': $info,
@@ -99,4 +90,6 @@ $notices: (
     margin: 0;
   }
 }
+
+//</editor-fold>
 

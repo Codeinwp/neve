@@ -156,7 +156,6 @@ class Template_Parts extends Base_View {
 		$default_meta_order = json_encode(
 			array(
 				'author',
-				'category',
 				'date',
 				'comments',
 			)

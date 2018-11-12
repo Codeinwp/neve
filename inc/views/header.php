@@ -26,7 +26,8 @@ class Header extends Base_View {
 	 */
 	public function render_navigation() {
 		?>
-		<nav class="nv-navbar" <?php echo wp_kses_post( apply_filters( 'neve_nav_data_attrs', '' ) ); ?> role="navigation">
+		<nav class="nv-navbar" <?php echo wp_kses_post( apply_filters( 'neve_nav_data_attrs', '' ) ); ?>
+				role="navigation">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 nv-nav-wrap <?php echo esc_attr( $this->get_navbar_class() ); ?>">
@@ -46,49 +47,125 @@ class Header extends Base_View {
 		<?php
 	}
 
+
+	/**
+	 * Get the markup for last menu item on mobile.
+	 *
+	 * @return string
+	 */
+	private function get_responsive_last_menu_item() {
+
+		$additional_item = $this->get_last_menu_item_setting();
+
+		if ( $additional_item === 'none' ) {
+			return;
+		}
+
+		if ( 'search' === $additional_item || 'search-cart' === $additional_item ) {
+			echo $this->get_nav_menu_search( true );
+		}
+
+		if ( 'cart' === $additional_item || 'search-cart' === $additional_item ) {
+			echo $this->get_nav_menu_cart( true );
+		}
+	}
+
+	/**
+	 * Get the markup for the nav menu search.
+	 *
+	 * @param bool $responsive should get the responsive version.
+	 *
+	 * @return string
+	 */
+	private function get_nav_menu_search( $responsive = false ) {
+		$tag   = 'li';
+		$class = 'menu-item-nav-search';
+		if ( $responsive === true ) {
+			$tag = 'span';
+
+			$class .= ' responsive-nav-search ';
+		}
+		$search = '';
+
+		$search .= '<' . esc_attr( $tag ) . ' class="' . esc_attr( $class ) . '" tabindex="0" aria-label="search">';
+		$search .= '<a><span class="nv-icon nv-search"></span></a>';
+		$search .= '<div class="nv-nav-search">';
+		if ( $responsive === true ) {
+			$search .= '<div class="container close-container">';
+			$search .= '<a class="button button-secondary close-responsive-search">' . __( 'Close', 'neve' ) . '</a>';
+			$search .= '</div>';
+		}
+		$search .= get_search_form( false );
+		$search .= '</div>';
+		$search .= '</' . esc_attr( $tag ) . '>';
+
+		return $search;
+	}
+
+
+	/**
+	 * Get the markup for the nav menu cart.
+	 *
+	 * @param bool $responsive should get the responsive version.
+	 *
+	 * @return string
+	 */
+	private function get_nav_menu_cart( $responsive = false ) {
+		if ( ! class_exists( 'WooCommerce' ) ) {
+			return '';
+		}
+		$tag   = 'li';
+		$class = 'menu-item-nav-cart';
+		if ( $responsive === true ) {
+			$tag    = 'span';
+			$class .= ' responsive-nav-cart ';
+		}
+		$cart = '';
+
+		$cart .= '<' . esc_attr( $tag ) . ' class="' . esc_attr( $class ) . '"><a href="' . esc_url( wc_get_cart_url() ) . '" class="cart-icon-wrapper">';
+		$cart .= '<span class="nv-icon nv-cart"></span>';
+		$cart .= '<span class="screen-reader-text">' . __( 'Cart', 'neve' ) . '</span>';
+		$cart .= '<span class="cart-count">' . WC()->cart->get_cart_contents_count() . '</span>';
+		$cart .= '</a>';
+		if ( ! is_cart() && $responsive === false ) {
+			ob_start();
+			echo '<div class="nv-nav-cart">';
+			the_widget( 'WC_Widget_Cart', 'title=' );
+			echo '</div>';
+			$cart_widget = ob_get_contents();
+			ob_end_clean();
+			$cart .= $cart_widget;
+		}
+		$cart .= '</' . esc_attr( $tag ) . '>';
+
+		return $cart;
+	}
+
 	/**
 	 * Add the last menu item.
 	 *
 	 * @param array  $items the nav items.
 	 * @param object $args  menu properties.
 	 *
-	 * @return string
+	 * @return array
 	 */
 	public function add_last_menu_item( $items, $args ) {
 		if ( $args->theme_location !== 'primary' ) {
 			return $items;
 		}
 
-		$additional_item = get_theme_mod( 'neve_last_menu_item', 'none' );
+		$additional_item = $this->get_last_menu_item_setting();
+
 		if ( $additional_item === 'none' ) {
 			return $items;
 		}
 
-		if ( 'search' === $additional_item ) {
-			$items .= '<li class="menu-item-nav-search" tabindex="0" aria-label="search"><a><span class="nv-icon nv-search"></span></a>';
-			$items .= '<div class="nv-nav-search">';
-			$items .= get_search_form( false );
-			$items .= '</div>';
+		if ( 'search' === $additional_item || 'search-cart' === $additional_item ) {
+			$items .= $this->get_nav_menu_search();
 		}
 
-		if ( 'cart' === $additional_item ) {
-			if ( ! class_exists( 'WooCommerce' ) ) {
-				return $items;
-			}
-			$items .= '<li class="menu-item-nav-cart"><a href="' . esc_url( wc_get_cart_url() ) . '" class="cart-icon-wrapper"><span class="nv-icon nv-cart"></span>';
-			$items .= '<span class="screen-reader-text">' . __( 'Cart', 'neve' ) . '</span>';
-			$items .= '<span class="cart-count">' . WC()->cart->get_cart_contents_count() . '</span>';
-			$items .= '</a>';
-			if ( ! is_cart() ) {
-				ob_start();
-				echo '<div class="nv-nav-cart">';
-				the_widget( 'WC_Widget_Cart', 'title=' );
-				echo '</div>';
-				$cart = ob_get_contents();
-				ob_end_clean();
-				$items .= $cart;
-			}
-			$items .= '</li>';
+		if ( 'cart' === $additional_item || 'search-cart' === $additional_item ) {
+			$items .= $this->get_nav_menu_cart();
 		}
 
 		return $items;
@@ -149,6 +226,7 @@ class Header extends Base_View {
 				<span class="screen-reader-text"><?php esc_html_e( 'Toggle Navigation', 'neve' ); ?></span>
 			</button>
 			<?php
+			$this->get_responsive_last_menu_item();
 			neve_after_navbar_toggle_trigger();
 			?>
 		</div>
@@ -186,5 +264,19 @@ class Header extends Base_View {
 		}
 
 		return $logo;
+	}
+
+	/**
+	 * Get the last menu item theme mod value.
+	 *
+	 * @return string
+	 */
+	private function get_last_menu_item_setting() {
+		$default = 'search';
+		if ( class_exists( 'WooCommerce' ) ) {
+			$default = 'search-cart';
+		}
+
+		return get_theme_mod( 'neve_last_menu_item', $default );
 	}
 }

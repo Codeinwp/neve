@@ -252,7 +252,6 @@ class Layout_Blog extends Base_Customizer {
 	private function control_meta_order() {
 		$order_default_components = array(
 			'author',
-			'category',
 			'date',
 			'comments',
 		);
