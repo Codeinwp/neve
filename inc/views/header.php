@@ -194,22 +194,35 @@ class Header extends Base_View {
 	 */
 	private function render_primary_menu() {
 		echo '<div role="navigation" aria-label="' . esc_html( __( 'Primary Menu', 'neve' ) ) . '">';
-		wp_nav_menu(
-			array(
-				'theme_location' => 'primary',
-				'menu_id'        => 'nv-primary-navigation',
-				'container'      => 'ul',
-				'walker'         => new Nav_Walker(),
-				'fallback_cb'    => wp_page_menu(
-					array(
-						'menu_id'   => 'nv-primary-navigation',
-						'container' => 'ul',
-						'before'    => '',
-						'after'     => '',
-					)
-				),
-			)
-		);
+
+		if ( has_nav_menu( 'primary' ) ) {
+			wp_nav_menu(
+				array(
+					'theme_location' => 'primary',
+					'menu_id'        => 'nv-primary-navigation',
+					'container'      => 'ul',
+					'walker'         => new Nav_Walker(),
+				)
+			);
+		} else {
+			wp_nav_menu(
+				array(
+					'theme_location' => 'primary',
+					'menu_id'        => 'nv-primary-navigation',
+					'container'      => 'ul',
+					'walker'         => new Nav_Walker(),
+					'fallback_cb'    => wp_page_menu(
+						array(
+							'menu_id'   => 'nv-primary-navigation',
+							'container' => 'ul',
+							'before'    => '',
+							'after'     => '',
+						)
+					),
+				)
+			);
+		}
+
 		echo '</div>';
 	}
 
@@ -217,9 +230,6 @@ class Header extends Base_View {
 	 * Render navbar toggle markup.
 	 */
 	private function render_navbar_toggle() {
-		if ( ! has_nav_menu( 'primary' ) ) {
-			return;
-		}
 		?>
 
 		<div class="navbar-toggle-wrapper">
