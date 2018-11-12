@@ -182,7 +182,9 @@
         display: block;
         visibility: visible;
         opacity: 1;
-
+      }
+      &:last-child {
+        padding-right: $spacing-xs;
       }
     }
 
@@ -210,5 +212,9 @@
     .caret-wrap {
       padding-right: 25px;
     }
+  }
+
+  .menu-item-has-children:last-child .caret-wrap {
+    right: -10px;
   }
 }

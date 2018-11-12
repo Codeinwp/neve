@@ -2,11 +2,6 @@
   .nv-content-wrap {
     padding-top: $spacing-sm;
   }
-
-  .nv-meta-list {
-    margin-top: $spacing-xs;
-  }
-
   .entry-title {
     transition: $transition_med;
   }
@@ -16,8 +11,15 @@
   padding-top: $spacing-sm;
 }
 
+.nv-thumb-wrap + .nv-title-meta-wrap   {
+  margin-top: $spacing-sm;
+}
+.nv-title-meta-wrap + .nv-thumb-wrap {
+  margin-top: $spacing-sm;
+}
+
 .single-post-container .title {
-  margin-bottom: $spacing-sm;
+  margin-bottom: 0;
 }
 
 .attachment-neve-blog {

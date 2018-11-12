@@ -27,7 +27,22 @@
   }
 }
 
+.menu-item-nav-cart.responsive-nav-cart {
+  padding-left: $spacing-sm ;
+  > a {
+    color: $git-black;
+    font-size: 1.2em;
+  }
+}
+
+.menu-item-nav-cart:not(.responsive-nav-cart) {
+  display: none;
+}
+
 @mixin nav-cart--laptop() {
+  .menu-item-nav-cart:not(.responsive-nav-cart) {
+    display: block;
+  }
   .menu-item-nav-cart:hover .nv-nav-cart,
   .menu-item-nav-cart > a:focus + .nv-nav-cart,
   .nv-nav-cart:focus-within {
