@@ -45,6 +45,12 @@ class Woocommerce {
 		add_action( 'woocommerce_before_main_content', array( $this, 'shop_sidebar_left' ) );
 		add_action( 'woocommerce_sidebar', array( $this, 'shop_sidebar_right' ) );
 
+		/**
+		 * Change product page sidebar default position
+		 * Priority 9 to allow meta control to override this value
+		 */
+		add_filter( 'neve_sidebar_position', array( $this, 'product_page_sidebar_default_position' ), 9 );
+
 		// Remove WooCommerce wrap.
 		remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10 );
 		remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10 );
@@ -66,10 +72,26 @@ class Woocommerce {
 	}
 
 	/**
+	 * Change the default sidebar position for the product page.
+	 *
+	 * @param string $input - the value of the customizer control.
+	 *
+	 * @return string
+	 */
+	public function product_page_sidebar_default_position( $input ) {
+
+		if ( is_product() ) {
+			return get_theme_mod( 'neve_single_product_sidebar_layout', 'full-width' );
+		}
+
+		return $input;
+	}
+
+	/**
 	 * Remove last breadcrumb on single product.
 	 *
 	 * @param array $crumbs breadcrumbs.
-	 * @param array $args   breadcrumbs args.
+	 * @param array $args breadcrumbs args.
 	 *
 	 * @return array
 	 */
