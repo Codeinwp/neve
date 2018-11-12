@@ -1346,7 +1346,7 @@ article {
 }
 .comment-form label {
   margin-bottom: 10px;
-  display: block;
+  display: inline-block;
 }
 .comment-form .form-submit {
   margin-top: 10px;

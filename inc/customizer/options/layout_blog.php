@@ -216,14 +216,12 @@ class Layout_Blog extends Base_Customizer {
 			'thumbnail',
 			'title-meta',
 			'excerpt',
-			'read-more',
 		);
 
 		$components = array(
 			'thumbnail'  => __( 'Thumbnail', 'neve' ),
 			'title-meta' => __( 'Title & Meta', 'neve' ),
 			'excerpt'    => __( 'Excerpt', 'neve' ),
-			'read-more'  => __( 'Read More', 'neve' ),
 		);
 
 		$this->add_control(
@@ -317,7 +315,6 @@ class Layout_Blog extends Base_Customizer {
 			'thumbnail',
 			'title-meta',
 			'excerpt',
-			'read-more',
 		);
 
 		if ( empty( $value ) ) {
@@ -350,7 +347,6 @@ class Layout_Blog extends Base_Customizer {
 			'thumbnail',
 			'title-meta',
 			'excerpt',
-			'read-more',
 		);
 		$content_order = get_theme_mod( 'neve_post_content_ordering', json_encode( $default ) );
 		$content_order = json_decode( $content_order, true );
