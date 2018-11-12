@@ -28,4 +28,9 @@
   .woocommerce-ordering {
     margin-left: 0;
   }
+  .nv-woo-filters {
+    .nv-sidebar-toggle + .woocommerce-ordering {
+      margin: 0;
+    }
+  }
 }

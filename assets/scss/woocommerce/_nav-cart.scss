@@ -16,15 +16,6 @@
 
 #nv-primary-navigation a.button{
   padding: 6px 12px;
-  &.wc-forward {
-    color: $button_color;
-    &:hover {
-      color: #fff;
-    }
-  }
-  &.checkout {
-    color: #fff;
-  }
 }
 
 .menu-item-nav-cart.responsive-nav-cart {

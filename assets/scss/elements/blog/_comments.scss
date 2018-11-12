@@ -82,6 +82,9 @@
       float: right;
     }
   }
+  input[type=submit] {
+    @include button-secondary();
+  }
 }
 
 .comment-form {
