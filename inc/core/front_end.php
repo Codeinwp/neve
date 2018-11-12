@@ -75,7 +75,7 @@ class Front_End {
 	 */
 	private function get_ti_demo_content_support_data() {
 		$onboarding_sites = array(
-			'local' => array(
+			'local'       => array(
 				'neve-main'          => array(
 					'url'   => 'https://demo.themeisle.com/neve',
 					'title' => 'Neve 2018',
@@ -87,6 +87,14 @@ class Front_End {
 				'neve-energy-panels' => array(
 					'url'   => 'https://demo.themeisle.com/neve-energy-panels/',
 					'title' => 'Neve Energy Panels',
+				),
+			),
+			'can_migrate' => array(
+				'zerif-pro' => array(
+					'theme_name'      => 'Zelle Pro',
+					'theme_mod_check' => 'zelle_frontpage_was_imported',
+					'template'        => 'zelle',
+					'description'     => __( 'We’ve detected you had Zelle theme previously installed. You can keep using your current frontpage by converting it into an Elementor template.', 'neve' ),
 				),
 			),
 		);
