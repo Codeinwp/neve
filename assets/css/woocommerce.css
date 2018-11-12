@@ -269,16 +269,16 @@
   font-size: 1.5em;
   color: #ffb100;
 }
-.woocommerce #review_form .comment-form {
+.woocommerce #review_form #respond {
   margin-top: 20px;
-  grid-template-columns: repeat(2, 1fr);
+}
+.woocommerce #review_form .comment-form {
+  margin-top: 10px;
+  grid-template-columns: 1fr;
   grid-row-gap: 10px;
 }
 .woocommerce #review_form .comment-form input:not([type=submit]) {
   width: 100%;
-}
-.woocommerce #review_form .comment-form .comment-form-comment, .woocommerce #review_form .comment-form .comment-form-rating, .woocommerce #review_form .comment-form .comment-notes {
-  grid-column: span 2;
 }
 .woocommerce #review_form .comment-form .comment-form-rating {
   display: flex;
@@ -852,6 +852,12 @@
 
   .woocommerce #review_form .comment-reply-title, .woocommerce .woocommerce-Tabs-panel h2 {
     font-size: 1.25rem;
+  }
+  .woocommerce #review_form .comment-form {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .woocommerce #review_form .comment-form .comment-form-comment, .woocommerce #review_form .comment-form .comment-form-rating, .woocommerce #review_form .comment-form .comment-notes, .woocommerce #review_form .comment-form .form-submit {
+    grid-column: span 2;
   }
 }
 @media (min-width: 960px) {
