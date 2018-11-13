@@ -125,8 +125,9 @@
         padding-right: 18px;
       }
       > .caret-wrap {
-        top: 8px;
         position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
       }
     }
 

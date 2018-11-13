@@ -1,7 +1,117 @@
 /* Set mega menu width based on container width */
-@media(min-width: 769px) {
+@media(max-width: $laptop) {
+  #nv-primary-navigation .neve-mega-menu > .sub-menu {
+    width: 100%;
+    max-height: 100%;
+  }
+}
+@media(min-width: $laptop) {
   #nv-primary-navigation .neve-mega-menu > .sub-menu {
     width: 750px;
+  }
+
+  #nv-primary-navigation .neve-mega-menu {
+    position: static;
+
+    > a {
+      position: relative;
+    }
+     > a::after {
+      content: " ";
+      height: 6px;
+      width: 6px;
+      position: relative;
+      display: inline-block;
+      border: 2px solid;
+      border-radius: 1px;
+      border-left: 0;
+      border-bottom: 0;
+      left: 8px;
+      transform: rotate(135deg);
+      color: rgba(0, 0, 0, 0.54);
+      top: -3px;
+       z-index: 9;
+    }
+  }
+  #nv-primary-navigation .neve-mega-menu > .caret-wrap {
+    display: none;
+  }
+  #nv-primary-navigation .neve-mega-menu:hover > .sub-menu,
+  #nv-primary-navigation .neve-mega-menu:focus > .sub-menu,
+  #nv-primary-navigation .neve-mega-menu:focus-within > .sub-menu {
+    display: grid !important;
+    grid-template-columns: repeat(5, 1fr);
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 20px;
+    top: 6vh;
+    overflow: hidden;
+  }
+
+  #nv-primary-navigation .neve-mega-menu > .sub-menu,
+  #nv-primary-navigation .neve-mega-menu:hover > .sub-menu,
+  #nv-primary-navigation .neve-mega-menu:focus > .sub-menu,
+  #nv-primary-navigation .neve-mega-menu:focus-within > .sub-menu {
+
+    transition: unset !important;
+
+    .neve-mm-col {
+
+      & > a,
+      & > .caret-wrap {
+        display: none;
+      }
+      & > .sub-menu {
+        transition: unset !important;
+        left: initial;
+        right: initial;
+      }
+    }
+  }
+
+  #nv-primary-navigation .neve-mega-menu:hover .neve-mm-col,
+  #nv-primary-navigation .neve-mega-menu:focus .neve-mm-col,
+  #nv-primary-navigation .neve-mega-menu:focus-within .neve-mm-col {
+    border: none;
+
+    .neve-mm-heading a {
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+  }
+  #nv-primary-navigation .neve-mega-menu:hover .neve-mm-col > .sub-menu,
+  #nv-primary-navigation .neve-mega-menu:focus .neve-mm-col > .sub-menu,
+  #nv-primary-navigation .neve-mega-menu:focus-within .neve-mm-col > .sub-menu {
+    position: static;
+    visibility: visible;
+    opacity: 1;
+    left: initial;
+    right: initial;
+    border: none;
+    box-shadow: none;
+
+    li {
+      border: none;
+    }
+  }
+
+  #nv-primary-navigation .neve-mega-menu {
+    //a {
+    //  display: inline-block;
+    //  width: 99%;
+    //}
+    //.mm-caret-wrapper {
+    //  position: relative;
+    //  display: inline-block;
+    //  width: 1px;
+    //
+    //  .caret-wrap {
+    //    position: absolute;
+    //    left: -50px;
+    //    top: -20px;
+    //    z-index: 200;
+    //  }
+    //}
   }
 }
 @media(min-width: 992px) {
@@ -14,67 +124,4 @@
     width: 1170px;
   }
 }
-#nv-primary-navigation .neve-mega-menu {
-  position: static;
-}
-#nv-primary-navigation .neve-mega-menu > .caret-wrap {
-  display: none;
-}
-#nv-primary-navigation .neve-mega-menu:hover > .sub-menu,
-#nv-primary-navigation .neve-mega-menu:focus > .sub-menu,
-#nv-primary-navigation .neve-mega-menu:focus-within > .sub-menu {
-  display: grid !important;
-  grid-template-columns: repeat(5, 1fr);
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 20px;
-  top: 6vh;
-  overflow: hidden;
-}
 
-#nv-primary-navigation .neve-mega-menu > .sub-menu,
-#nv-primary-navigation .neve-mega-menu:hover > .sub-menu,
-#nv-primary-navigation .neve-mega-menu:focus > .sub-menu,
-#nv-primary-navigation .neve-mega-menu:focus-within > .sub-menu {
-
-  transition: unset !important;
-
-  .neve-mm-col {
-
-    & > a,
-    & > .caret-wrap {
-      display: none;
-    }
-    & > .sub-menu {
-      transition: unset !important;
-      left: initial;
-      right: initial;
-    }
-  }
-}
-
-#nv-primary-navigation .neve-mega-menu:hover .neve-mm-col,
-#nv-primary-navigation .neve-mega-menu:focus .neve-mm-col,
-#nv-primary-navigation .neve-mega-menu:focus-within .neve-mm-col {
-  border: none;
-
-  .neve-mm-heading a {
-    font-weight: 600;
-    text-transform: uppercase;
-  }
-}
-#nv-primary-navigation .neve-mega-menu:hover .neve-mm-col > .sub-menu,
-#nv-primary-navigation .neve-mega-menu:focus .neve-mm-col > .sub-menu,
-#nv-primary-navigation .neve-mega-menu:focus-within .neve-mm-col > .sub-menu {
-  position: static;
-  visibility: visible;
-  opacity: 1;
-  left: initial;
-  right: initial;
-  border: none;
-  box-shadow: none;
-
-  li {
-    border: none;
-  }
-}
