@@ -24,10 +24,10 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	 * @since 3.0.0
 	 *
 	 * @param string   $output Output.
-	 * @param \WP_Post $item   Item.
-	 * @param int      $depth  Depth.
-	 * @param array    $args   Args.
-	 * @param int      $id     id.
+	 * @param \WP_Post $item Item.
+	 * @param int      $depth Depth.
+	 * @param array    $args Args.
+	 * @param int      $id id.
 	 */
 	public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
 		if ( ! is_object( $args ) ) {
