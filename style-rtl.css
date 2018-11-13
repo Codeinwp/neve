@@ -485,6 +485,7 @@ a.neve-skip-link {
 .navbar-toggle:hover {
   box-shadow: none;
   transform: none;
+  background: transparent;
 }
 
 .navbar-toggle.active .icon-bar:nth-child(1) {
@@ -575,7 +576,7 @@ a.neve-skip-link {
   border-bottom: 0;
   right: 1px;
   transform: rotate(-135deg);
-  color: rgba(0, 0, 0, 0.54);
+  color: #777777;
   top: -6px;
   transition: all 0.3s ease;
 }
@@ -597,7 +598,7 @@ a.neve-skip-link {
   transition: all 0.3s ease;
 }
 .dropdown-open > .caret-wrap, .caret-wrap.caret-dropdown-open {
-  background-color: rgba(0, 0, 0, 0.54);
+  background-color: #777777;
 }
 
 #nv-primary-navigation i {
@@ -780,28 +781,31 @@ a.neve-skip-link {
   font-family: inherit;
   font-size: inherit;
 }
+#nv-primary-navigation li.button > a:hover, .menu li.button > a:hover {
+  text-decoration: none;
+  opacity: .9;
+}
 #nv-primary-navigation li.button.button-primary > a, .menu li.button.button-primary > a {
   background-color: #0366d6;
   color: #fff;
 }
 #nv-primary-navigation li.button.button-primary > a:hover, .menu li.button.button-primary > a:hover {
   text-decoration: none;
+  background-color: #0366d6;
+  color: #fff;
   opacity: .9;
 }
 #nv-primary-navigation li.button.button-primary:hover > a, .menu li.button.button-primary:hover > a {
   color: #fff;
 }
 #nv-primary-navigation li.button.button-secondary > a, .menu li.button.button-secondary > a {
-  border: 1px solid rgba(27, 31, 35, 0.2);
+  border: 1px solid #777777;
   background-color: transparent;
   font-weight: 600;
-  color: #0366d6;
+  color: #777777;
 }
 #nv-primary-navigation li.button.button-secondary > a:hover, .menu li.button.button-secondary > a:hover {
-  opacity: 1;
-  text-decoration: none;
-  background-color: #0366d6;
-  color: #fff;
+  background: transparent;
 }
 
 /* Remove margin from buttons in sub-menus on primary nav. */
@@ -933,25 +937,28 @@ input, textarea, select, button {
   line-height: 1.68421;
   font-family: inherit;
 }
+.button:hover {
+  text-decoration: none;
+  opacity: .9;
+}
 .button.button-primary {
   background-color: #0366d6;
   color: #fff;
 }
 .button.button-primary:hover {
   text-decoration: none;
+  background-color: #0366d6;
+  color: #fff;
   opacity: .9;
 }
 .button.button-secondary {
-  border: 1px solid rgba(27, 31, 35, 0.2);
+  border: 1px solid #777777;
   background-color: transparent;
   font-weight: 600;
-  color: #0366d6;
+  color: #777777;
 }
 .button.button-secondary:hover {
-  opacity: 1;
-  text-decoration: none;
-  background-color: #0366d6;
-  color: #fff;
+  background: transparent;
 }
 
 button, input[type=button], .btn, input[type="submit"] {
@@ -974,6 +981,12 @@ button:hover, input[type=button]:hover, .btn:hover, input[type="submit"]:hover {
   text-decoration: none;
   opacity: .9;
 }
+button:hover, input[type=button]:hover, .btn:hover, input[type="submit"]:hover {
+  text-decoration: none;
+  background-color: #0366d6;
+  color: #fff;
+  opacity: .9;
+}
 
 .nv-seach-form-wrap .search-form {
   border-top: 1px solid #f0f0f0;
@@ -991,16 +1004,16 @@ button:hover, input[type=button]:hover, .btn:hover, input[type="submit"]:hover {
 }
 .nv-meta-list li {
   display: inline;
-  color: rgba(0, 0, 0, 0.54);
+  color: #777777;
   font-size: 0.85em;
 }
 .nv-meta-list li:not(:last-child):after {
   content: '/';
   padding: 0 5px;
-  color: rgba(0, 0, 0, 0.54);
+  color: #777777;
 }
 .nv-meta-list a {
-  color: rgba(0, 0, 0, 0.54);
+  color: #777777;
 }
 .nv-meta-list .posted-on .updated {
   display: none;
@@ -1024,12 +1037,12 @@ button:hover, input[type=button]:hover, .btn:hover, input[type="submit"]:hover {
   color: #404248;
 }
 .entry-title a:hover, .entry-title a:focus {
-  text-decoration: none;
   opacity: .9;
+  color: #404248;
 }
 
 .posts-wrapper .excerpt-wrap {
-  color: rgba(0, 0, 0, 0.54);
+  color: #777777;
 }
 
 .nv-post-thumbnail-wrap {
@@ -1344,6 +1357,15 @@ article {
 #comments .comment-reply-title small {
   float: left;
 }
+#comments input[type=submit] {
+  border: 1px solid #777777;
+  background-color: transparent;
+  font-weight: 600;
+  color: #777777;
+}
+#comments input[type=submit]:hover {
+  background: transparent;
+}
 
 .comment-form {
   display: grid;
@@ -1355,7 +1377,7 @@ article {
 }
 .comment-form label {
   margin-bottom: 10px;
-  display: block;
+  display: inline-block;
 }
 .comment-form .form-submit {
   margin-top: 10px;
