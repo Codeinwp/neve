@@ -1028,8 +1028,8 @@ button:hover, input[type=button]:hover, .btn:hover, input[type="submit"]:hover {
   color: #404248;
 }
 .entry-title a:hover, .entry-title a:focus {
-  text-decoration: none;
   opacity: .9;
+  color: #404248;
 }
 
 .posts-wrapper .excerpt-wrap {

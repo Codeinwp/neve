@@ -6,8 +6,8 @@
     color: $body-color;
     &:hover,
     &:focus {
-      text-decoration: none;
       opacity: .9;
+      color: $body-color;
     }
   }
 }
