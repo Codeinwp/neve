@@ -124,7 +124,6 @@
                 $(this).sortable({
                     revert: true,
                     axis: "y",
-                    handle: "> .drag",
                     containment: "parent",
                     update: function() {
                         self.updateOrder(this);
