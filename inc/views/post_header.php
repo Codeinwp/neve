@@ -34,10 +34,14 @@ class Post_Header extends Base_View {
 			return;
 		}
 
-		$content_order = array(
+		$default_order = array(
 			'title-meta',
 			'thumbnail',
 		);
+
+		$content_order = get_theme_mod( 'neve_single_post_elements_order', json_encode( $default_order ) );
+		$content_order = json_decode( $content_order );
+
 		if ( apply_filters( 'neve_filter_toggle_content_parts', true, 'title' ) !== true ) {
 			unset( $content_order[ array_search( 'title-meta', $content_order ) ] );
 		}
