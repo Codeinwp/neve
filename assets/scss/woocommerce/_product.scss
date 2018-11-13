@@ -125,26 +125,22 @@
       }
     }
   }
-
+  #review_form #respond {
+    margin-top: $spacing-sm;
+  }
   #review_form .comment-form {
-    margin-top: 20px;
-    grid-template-columns: repeat(3, 1fr);
+    margin-top: $spacing-xs;
+    grid-template-columns: 1fr;
     grid-row-gap: $spacing-xs;
     input:not([type=submit]) {
       width: 100%;
     }
-    .comment-form-comment, .comment-form-rating, .comment-notes {
-      grid-column: span 3;
-    }
     .comment-form-rating {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-    }
-    .form-submit {
       display: flex;
-      grid-column-end: -1;
-      align-items: flex-end;
-      justify-content: flex-end;
+      flex-direction: row;
+      label {
+        margin-right: $spacing-xs;
+      }
     }
   }
   #reviews #comments ol.commentlist li img.avatar {
@@ -165,6 +161,12 @@
   .woocommerce {
     #review_form .comment-reply-title, .woocommerce-Tabs-panel h2 {
       font-size: $h4-font-size;
+    }
+    #review_form .comment-form {
+      grid-template-columns: repeat(2, 1fr);
+      .comment-form-comment, .comment-form-rating, .comment-notes, .form-submit {
+        grid-column: span 2;
+      }
     }
   }
 }
