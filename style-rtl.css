@@ -882,7 +882,7 @@ footer {
   flex: 1 auto;
 }
 
-.archive-container, .single-page-container {
+.archive-container {
   padding-top: 20px;
 }
 
@@ -1101,19 +1101,6 @@ button:hover, input[type=button]:hover, .btn:hover, input[type="submit"]:hover {
   padding-right: 10px;
 }
 
-article.sticky {
-  padding: 0 15px;
-}
-article.sticky .article-content-col {
-  max-width: 100%;
-}
-article.sticky .article-content-col .content {
-  border: 1px solid #dddddd;
-  max-width: 100%;
-  width: auto;
-  padding: 15px;
-}
-
 .layout-grid .content > * {
   margin: 0 0 10px;
 }
@@ -1190,15 +1177,8 @@ article {
   margin-bottom: 10px;
 }
 
-.single .nv-content-wrap {
-  padding-top: 20px;
-}
-.single .entry-title {
-  transition: all 0.3s ease;
-}
-
-.single-post-container {
-  padding-top: 20px;
+.entry-header, .nv-page-title-wrap {
+  margin-top: 30px;
 }
 
 .nv-thumb-wrap + .nv-title-meta-wrap {
@@ -2096,15 +2076,6 @@ hr {
     padding: 0 40px 0 0;
   }
 
-  .sticky .article-content-col .content {
-    margin-left: 15px;
-    margin-right: 15px;
-  }
-
-  article.sticky {
-    padding: 0;
-  }
-
   .non-grid-content > .entry-title {
     margin-top: 0;
   }
@@ -2113,7 +2084,7 @@ hr {
     font-size: 2em;
   }
 
-  .archive-container, .single-page-container, .single-post-container {
+  .archive-container {
     padding-top: 30px;
   }
 

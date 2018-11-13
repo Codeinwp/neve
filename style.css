@@ -882,7 +882,7 @@ footer {
   flex: 1 auto;
 }
 
-.archive-container, .single-page-container {
+.archive-container {
   padding-top: 20px;
 }
 
@@ -1177,15 +1177,8 @@ article {
   margin-bottom: 10px;
 }
 
-.single .nv-content-wrap {
-  padding-top: 20px;
-}
-.single .entry-title {
-  transition: all 0.3s ease;
-}
-
-.single-post-container {
-  padding-top: 20px;
+.entry-header, .nv-page-title-wrap {
+  margin-top: 30px;
 }
 
 .nv-thumb-wrap + .nv-title-meta-wrap {
@@ -2091,7 +2084,7 @@ hr {
     font-size: 2em;
   }
 
-  .archive-container, .single-page-container, .single-post-container {
+  .archive-container {
     padding-top: 30px;
   }
 
