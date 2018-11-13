@@ -82,6 +82,9 @@
       float: right;
     }
   }
+  input[type=submit] {
+    @include button-secondary();
+  }
 }
 
 .comment-form {
@@ -93,7 +96,7 @@
   }
   label {
     margin-bottom: $spacing-xs;
-    display: block;
+    display: inline-block;
   }
   .form-submit {
     margin-top: $spacing-xs;

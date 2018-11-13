@@ -65,6 +65,9 @@ class Post_Header extends Base_View {
 					if ( apply_filters( 'neve_filter_toggle_content_parts', true, 'featured-image' ) !== true ) {
 						break;
 					}
+					if ( ! has_post_thumbnail() ) {
+						break;
+					}
 					echo '<div class="nv-thumb-wrap">';
 					echo get_the_post_thumbnail(
 						null,
