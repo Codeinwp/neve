@@ -716,9 +716,55 @@ a.neve-skip-link {
 
 /* Set mega menu width based on container width */
 @media (max-width: 960px) {
-  #nv-primary-navigation .neve-mega-menu > .sub-menu {
+  /* Style mega-menu and its children on mobile */
+  #nv-primary-navigation .neve-mega-menu.dropdown-open > .sub-menu {
     width: 100%;
     max-height: 100%;
+    border-right: none;
+  }
+
+  #nv-primary-navigation .neve-mega-menu.dropdown-open .neve-mm-col {
+    transition: unset;
+  }
+  #nv-primary-navigation .neve-mega-menu.dropdown-open .neve-mm-col > a {
+    visibility: hidden;
+  }
+  #nv-primary-navigation .neve-mega-menu.dropdown-open .neve-mm-col > .caret-wrap {
+    display: none;
+  }
+  #nv-primary-navigation .neve-mega-menu.dropdown-open .neve-mm-col > .sub-menu {
+    padding-right: 0;
+    border-right: none;
+    margin-top: -5%;
+    max-height: 100%;
+  }
+  #nv-primary-navigation .neve-mega-menu.dropdown-open .neve-mm-col .neve-mm-heading > a {
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  /* Use some of the above code to avoid weird effect when opening/closing it on mobile */
+  #nv-primary-navigation .neve-mega-menu > .sub-menu {
+    border-right: none;
+  }
+
+  #nv-primary-navigation .neve-mega-menu .neve-mm-col {
+    transition: unset;
+  }
+  #nv-primary-navigation .neve-mega-menu .neve-mm-col > a {
+    visibility: hidden;
+  }
+  #nv-primary-navigation .neve-mega-menu .neve-mm-col > .caret-wrap {
+    display: none;
+  }
+  #nv-primary-navigation .neve-mega-menu .neve-mm-col > .sub-menu {
+    padding-right: 0;
+    border-right: none;
+    margin-top: -5%;
+  }
+  #nv-primary-navigation .neve-mega-menu .neve-mm-col .neve-mm-heading > a {
+    font-weight: 700;
+    text-transform: uppercase;
   }
 }
 @media (min-width: 960px) {
@@ -797,7 +843,7 @@ a.neve-skip-link {
   #nv-primary-navigation .neve-mega-menu:hover .neve-mm-col .neve-mm-heading a,
   #nv-primary-navigation .neve-mega-menu:focus .neve-mm-col .neve-mm-heading a,
   #nv-primary-navigation .neve-mega-menu:focus-within .neve-mm-col .neve-mm-heading a {
-    font-weight: 600;
+    font-weight: 700;
     text-transform: uppercase;
   }
 

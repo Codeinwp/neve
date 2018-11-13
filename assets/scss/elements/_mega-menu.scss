@@ -1,9 +1,58 @@
 /* Set mega menu width based on container width */
 @media(max-width: $laptop) {
-  #nv-primary-navigation .neve-mega-menu > .sub-menu {
+  /* Style mega-menu and its children on mobile */
+  #nv-primary-navigation .neve-mega-menu.dropdown-open > .sub-menu {
     width: 100%;
     max-height: 100%;
+    border-left: none;
   }
+  #nv-primary-navigation .neve-mega-menu.dropdown-open .neve-mm-col {
+
+    transition: unset;
+
+    > a {
+      visibility: hidden;
+    }
+    > .caret-wrap {
+      display: none;
+    }
+    > .sub-menu {
+      padding-left: 0;
+      border-left: none;
+      margin-top: -5%;
+      max-height: 100%;
+    }
+
+    .neve-mm-heading > a {
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+  }
+  /* Use some of the above code to avoid weird effect when opening/closing it on mobile */
+  #nv-primary-navigation .neve-mega-menu > .sub-menu {
+    border-left: none;
+  }
+  #nv-primary-navigation .neve-mega-menu .neve-mm-col {
+    transition: unset;
+
+    > a {
+      visibility: hidden;
+    }
+    > .caret-wrap {
+      display: none;
+    }
+    > .sub-menu {
+      padding-left: 0;
+      border-left: none;
+      margin-top: -5%;
+    }
+
+    .neve-mm-heading > a {
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+  }
+
 }
 @media(min-width: $laptop) {
   #nv-primary-navigation .neve-mega-menu > .sub-menu {
@@ -75,7 +124,7 @@
     border: none;
 
     .neve-mm-heading a {
-      font-weight: 600;
+      font-weight: 700;
       text-transform: uppercase;
     }
   }
@@ -93,25 +142,6 @@
     li {
       border: none;
     }
-  }
-
-  #nv-primary-navigation .neve-mega-menu {
-    //a {
-    //  display: inline-block;
-    //  width: 99%;
-    //}
-    //.mm-caret-wrapper {
-    //  position: relative;
-    //  display: inline-block;
-    //  width: 1px;
-    //
-    //  .caret-wrap {
-    //    position: absolute;
-    //    left: -50px;
-    //    top: -20px;
-    //    z-index: 200;
-    //  }
-    //}
   }
 }
 @media(min-width: 992px) {
