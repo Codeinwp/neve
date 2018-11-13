@@ -1005,15 +1005,11 @@ button:hover, input[type=button]:hover, .btn:hover, input[type="submit"]:hover {
 .nv-meta-list .posted-on .updated {
   display: none;
 }
-.nv-meta-list .meta.author {
-  display: flex;
-  align-items: center;
-}
 .nv-meta-list .meta.author .photo {
-  display: inline-flex;
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
+  transform: translateY(30%);
 }
 .nv-meta-list .meta.author .author-name {
   margin-right: 3px;

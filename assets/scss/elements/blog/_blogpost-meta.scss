@@ -18,13 +18,11 @@
     display: none;
   }
   .meta.author {
-    display: flex;
-    align-items: center;
     .photo {
-      display: inline-flex;
-      width: 35px;
-      height: 35px;
+      width: 30px;
+      height: 30px;
       border-radius: 50%;
+      transform: translateY(30%);
     }
     .author-name {
       margin-left: 3px;
