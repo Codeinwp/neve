@@ -1101,19 +1101,6 @@ button:hover, input[type=button]:hover, .btn:hover, input[type="submit"]:hover {
   padding-left: 10px;
 }
 
-article.sticky {
-  padding: 0 15px;
-}
-article.sticky .article-content-col {
-  max-width: 100%;
-}
-article.sticky .article-content-col .content {
-  border: 1px solid #dddddd;
-  max-width: 100%;
-  width: auto;
-  padding: 15px;
-}
-
 .layout-grid .content > * {
   margin: 0 0 10px;
 }
@@ -2094,15 +2081,6 @@ hr {
   }
   article.layout-alternative:nth-child(even) .article-content-col .content .nv-post-thumbnail-wrap ~ .alternative-layout-content {
     padding: 0 0 0 40px;
-  }
-
-  .sticky .article-content-col .content {
-    margin-right: 15px;
-    margin-left: 15px;
-  }
-
-  article.sticky {
-    padding: 0;
   }
 
   .non-grid-content > .entry-title {
