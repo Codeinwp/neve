@@ -47,4 +47,19 @@ class Nav_Walker extends \Walker_Nav_Menu {
 		$output .= '</div>';
 		$output  = apply_filters( 'neve_caret_wrap_filter', $output, $item->menu_order );
 	}
+
+	/**
+	 * Display all pages when there is no menu assigned to the primary location
+	 */
+	public static function fallback() {
+		$fallback_args = array(
+			'menu_id'   => 'nv-primary-navigation',
+			'container' => 'ul',
+			'before'    => '',
+			'after'     => '',
+			'walker'    => new Nav_Walker_Page(),
+		);
+
+		wp_page_menu( $fallback_args );
+	}
 }

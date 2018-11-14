@@ -195,27 +195,15 @@ class Header extends Base_View {
 	private function render_primary_menu() {
 		echo '<div role="navigation" aria-label="' . esc_html( __( 'Primary Menu', 'neve' ) ) . '">';
 
-		$fallback_args = array(
-			'menu_id'   => 'nv-primary-navigation',
-			'container' => 'ul',
-			'before'    => '',
-			'after'     => '',
-			'walker'    => new Nav_Walker_Page(),
+		wp_nav_menu(
+			array(
+				'theme_location' => 'primary',
+				'menu_id'        => 'nv-primary-navigation',
+				'container'      => 'ul',
+				'walker'         => new Nav_Walker(),
+				'fallback_cb'    => '\Neve\Views\Nav_Walker::fallback',
+			)
 		);
-
-		if ( has_nav_menu( 'primary' ) ) {
-			wp_nav_menu(
-				array(
-					'theme_location' => 'primary',
-					'menu_id'        => 'nv-primary-navigation',
-					'container'      => 'ul',
-					'walker'         => new Nav_Walker(),
-					'fallback'       => '\Neve\Views\Nav_Walker::fallback',
-				)
-			);
-		} else {
-			wp_page_menu( $fallback_args );
-		}
 
 		echo '</div>';
 	}
