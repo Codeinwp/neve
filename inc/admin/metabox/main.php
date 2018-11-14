@@ -39,7 +39,7 @@ class Main extends Metabox_Base {
 			'neve_meta_disable_featured_image' => array(
 				'default'         => 'off',
 				'input_label'     => __( 'Disable Featured Image', 'neve' ),
-				'active_callback' => array( $this, 'hide_on_single_product' ),
+				'active_callback' => array( $this, 'hide_on_single_page_and_product' ),
 			),
 			'neve_meta_disable_footer'         => array(
 				'default'     => 'off',
@@ -119,6 +119,25 @@ class Main extends Metabox_Base {
 		$post_type = get_post_type( $_GET['post'] );
 
 		if ( $post_type !== 'product' ) {
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Callback to hide on single product/page edit page
+	 *
+	 * @return bool
+	 */
+	public function hide_on_single_page_and_product() {
+		if ( ! isset( $_GET['post'] ) ) {
+			return true;
+		}
+
+		$post_type = get_post_type( $_GET['post'] );
+
+		if ( $post_type !== 'page' && $post_type !== 'product' ) {
 			return true;
 		}
 

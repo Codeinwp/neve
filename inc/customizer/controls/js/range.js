@@ -54,10 +54,10 @@ wp.customize.controlConstructor[ 'range-value' ] = wp.customize.Control.extend(
 					mobileSelector = control.find( '.range-slider__range[data-query="mobile"]' ),
 					desktopValue, tabletValue, mobileValue;
 
-				if ( desktopSelector.exists() ) {
-					desktopValue = desktopSelector.val();
-					if ( desktopValue !== 'undefined' && desktopValue !== '' ) {
-						values.desktop = desktopValue;
+				if ( mobileSelector.exists() ) {
+					mobileValue = mobileSelector.val();
+					if ( mobileValue !== 'undefined' && mobileValue !== '' ) {
+						values.mobile = mobileValue;
 					}
 				}
 
@@ -68,21 +68,16 @@ wp.customize.controlConstructor[ 'range-value' ] = wp.customize.Control.extend(
 					}
 				}
 
-				if ( mobileSelector.exists() ) {
-					mobileValue = mobileSelector.val();
-					if ( mobileValue !== 'undefined' && mobileValue !== '' ) {
-						values.mobile = mobileValue;
+				if ( desktopSelector.exists() ) {
+					desktopValue = desktopSelector.val();
+					if ( desktopValue !== 'undefined' && desktopValue !== '' ) {
+						values.desktop = desktopValue;
 					}
 				}
 
 				return values;
 			}
 
-			theme_controls.on(
-				'click', '.preview-desktop.active', function () {
-					jQuery( '.responsive-switchers' ).toggleClass( 'responsive-switchers-open' );
-				}
-			);
 
 			theme_controls.on(
 				'input', '.range-slider__range', function () {

@@ -128,29 +128,35 @@ class Typography extends Base_Customizer {
 					'transport'         => $this->selective_refresh,
 				),
 				array(
-					'label'       => esc_html__( 'Font Size', 'neve' ),
-					'section'     => 'neve_typography_body',
-					'input_attr'  => array(
+					'label'      => esc_html__( 'Font Size', 'neve' ),
+					'section'    => 'neve_typography_body',
+					'units'      => array(
+						'px',
+					),
+					'input_attr' => array(
 						'mobile'  => array(
-							'min'     => 10,
-							'max'     => 30,
-							'default' => 14,
+							'min'          => 10,
+							'max'          => 30,
+							'default'      => 14,
+							'default_unit' => 'px',
 						),
 						'tablet'  => array(
-							'min'     => 10,
-							'max'     => 30,
-							'default' => 14,
+							'min'          => 10,
+							'max'          => 30,
+							'default'      => 14,
+							'default_unit' => 'px',
 						),
 						'desktop' => array(
-							'min'     => 10,
-							'max'     => 30,
-							'default' => 15,
+							'min'          => 10,
+							'max'          => 30,
+							'default'      => 15,
+							'default_unit' => 'px',
 						),
 					),
-					'priority'    => 15,
-					'media_query' => true,
+					'priority'   => 15,
+					'responsive' => true,
 				),
-				'Neve\Customizer\Controls\Range'
+				'Neve\Customizer\Controls\Responsive_Number'
 			)
 		);
 
@@ -248,36 +254,39 @@ class Typography extends Base_Customizer {
 			 */
 			$this->add_control(
 				new Control(
-					$control_id . '_font_size',
+					$control_id . '_size',
 					array(
 						'sanitize_callback' => 'neve_sanitize_range_value',
 						'transport'         => $this->selective_refresh,
 					),
 					array(
-						'label'       => esc_html__( 'Font Size', 'neve' ) . '(rem)',
+						'label'       => esc_html__( 'Font Size', 'neve' ) . '(px)',
 						'section'     => 'neve_typography_headings',
-						'step'        => 0.1,
+						'step'        => 1,
 						'input_attr'  => array(
 							'mobile'  => array(
-								'min'     => 1,
-								'max'     => 10,
-								'default' => $control['default_tablet_size'],
+								'min'          => 1,
+								'max'          => 10,
+								'default'      => $control['default_tablet_size'],
+								'default_unit' => 'em',
 							),
 							'tablet'  => array(
-								'min'     => 1,
-								'max'     => 10,
-								'default' => $control['default_tablet_size'],
+								'min'          => 1,
+								'max'          => 10,
+								'default'      => $control['default_tablet_size'],
+								'default_unit' => 'em',
 							),
 							'desktop' => array(
-								'min'     => 1,
-								'max'     => 10,
-								'default' => $control['default_size'],
+								'min'          => 1,
+								'max'          => 10,
+								'default'      => $control['default_size'],
+								'default_unit' => 'em',
 							),
 						),
-						'priority'    => $control['priority'] + 1,
-						'media_query' => true,
+						'priority'   => $control['priority'] + 1,
+						'responsive' => true,
 					),
-					'Neve\Customizer\Controls\Range'
+					'Neve\Customizer\Controls\Responsive_Number'
 				)
 			);
 
