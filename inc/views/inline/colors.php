@@ -131,7 +131,8 @@ class Colors extends Base_Inline {
 					'value'    => $color,
 				),
 			),
-			'body'
+			'body, 
+			.entry-title a, .entry-title a:hover, .entry-title a:focus'
 		);
 	}
 
