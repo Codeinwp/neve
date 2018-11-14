@@ -44,9 +44,27 @@ class Container_Sidebar extends Base_Inline {
 	 * Sidebar style.
 	 */
 	private function sidebar_style() {
-		$sidebar_width = get_theme_mod( 'neve_sidebar_width', 30 );
-		$sidebar_width = json_decode( $sidebar_width, true );
-		$content_width = 100 - $sidebar_width;
+		$advanced_options = get_theme_mod( 'neve_advanced_layout_options', false );
+
+		if( $advanced_options === false ){
+			$content_width = get_theme_mod( 'neve_sitewide_content_width', 70 );
+		} else {
+			$content_width = get_theme_mod( 'neve_other_pages_content_width', 70 );
+
+			if( is_home() || is_archive() ){
+				$content_width = get_theme_mod( 'neve_blog_archive_content_width', 70 );
+			}
+
+			if( is_single() ){
+				$content_width = get_theme_mod( 'neve_single_post_content_width', 70 );
+			}
+		}
+
+		if( empty( $content_width ) ){
+			return;
+		}
+
+		$sidebar_width = 100 - $content_width;
 		$settings      = array(
 			'content' => array(
 				array(

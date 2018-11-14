@@ -192,12 +192,6 @@ var layoutLivePreview = function($) {
             });
         });
     });
-    wp.customize("neve_sidebar_width", function(value) {
-        value.bind(function(newval) {
-            $(".nv-sidebar-wrap, .nv-sidebar-wrap.shop-sidebar").css("max-width", newval + "%");
-            $("#content .container .col:not(:only-child)").css("max-width", 100 - newval + "%");
-        });
-    });
 };
 
 layoutLivePreview(jQuery);
