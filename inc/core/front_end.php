@@ -100,6 +100,12 @@ class Front_End {
 					'template'        => 'zelle',
 					'description'     => __( 'We’ve detected you had Zelle theme installed. You can keep using your previous frontpage by converting it into an Elementor template.', 'neve' ),
 				),
+				'zerif-lite' => array(
+					'theme_name'      => 'Zelle Lite',
+					'theme_mod_check' => 'zelle_frontpage_was_imported',
+					'template'        => 'zelle',
+					'description'     => __( 'We’ve detected you had Zelle theme installed. You can keep using your previous frontpage by converting it into an Elementor template.', 'neve' ),
+				),
 			),
 		);
 
