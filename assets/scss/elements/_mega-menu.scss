@@ -1,71 +1,65 @@
-/* Set mega menu width based on container width */
-@media(max-width: $laptop) {
-  /* Style mega-menu and its children on mobile */
-  #nv-primary-navigation .neve-mega-menu.dropdown-open > .sub-menu {
-    width: 100%;
-    max-height: 100%;
-    border-left: none;
-  }
-  #nv-primary-navigation .neve-mega-menu.dropdown-open .neve-mm-col {
-
-    transition: unset;
-
-    > a {
-      visibility: hidden;
-    }
-    > .caret-wrap {
-      display: none;
-    }
-    > .sub-menu {
-      padding-left: 0;
-      border-left: none;
-      margin-top: -5%;
-      max-height: 100%;
-    }
-
-    .neve-mm-heading > a {
-      font-weight: 700;
-      text-transform: uppercase;
-    }
-  }
-  /* Use some of the above code to avoid weird effect when opening/closing it on mobile */
-  #nv-primary-navigation .neve-mega-menu > .sub-menu {
-    border-left: none;
-  }
-  #nv-primary-navigation .neve-mega-menu .neve-mm-col {
-    transition: unset;
-
-    > a {
-      visibility: hidden;
-    }
-    > .caret-wrap {
-      display: none;
-    }
-    > .sub-menu {
-      padding-left: 0;
-      border-left: none;
-      margin-top: -5%;
-    }
-
-    .neve-mm-heading > a {
-      font-weight: 700;
-      text-transform: uppercase;
-    }
-  }
-
+/* Style mega-menu and its children on mobile */
+#nv-primary-navigation .neve-mega-menu.dropdown-open > .sub-menu {
+  width: 100%;
+  max-height: 100%;
+  border-left: none;
 }
-@media(min-width: $laptop) {
-  #nv-primary-navigation .neve-mega-menu > .sub-menu {
-    width: 750px;
+#nv-primary-navigation .neve-mega-menu.dropdown-open .neve-mm-col {
+  transition: unset;
+  > a {
+    display: none
   }
+  > .caret-wrap {
+    display: none;
+  }
+  > .sub-menu {
+    padding-left: 0;
+    border-left: none;
+    max-height: 100%;
+  }
+  .neve-mm-heading {
+    padding-top: 15px;
+    > a {
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+  }
+}
+/* Use some of the above code to avoid weird effect when opening/closing it on mobile */
+#nv-primary-navigation .neve-mega-menu > .sub-menu {
+  border-left: none;
+}
+#nv-primary-navigation .neve-mega-menu .neve-mm-col {
+  transition: unset;
+  > a {
+    display: none
+  }
+  > .caret-wrap {
+    display: none;
+  }
+  > .sub-menu {
+    padding-left: 0;
+    border-left: none;
+  }
+  .neve-mm-heading {
+    padding-top: 15px;
+    > a {
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+  }
+}
 
+@mixin mega-menu--laptop() {
+  #nv-primary-navigation .neve-mega-menu > .sub-menu {
+    width: 950px;
+  }
   #nv-primary-navigation .neve-mega-menu {
     position: static;
-
     > a {
       position: relative;
     }
-     > a::after {
+    > a::after {
       content: " ";
       height: 6px;
       width: 6px;
@@ -79,7 +73,7 @@
       transform: rotate(135deg);
       color: rgba(0, 0, 0, 0.54);
       top: -3px;
-       z-index: 9;
+      z-index: 9;
     }
   }
   #nv-primary-navigation .neve-mega-menu > .caret-wrap {
@@ -88,7 +82,7 @@
   #nv-primary-navigation .neve-mega-menu:hover > .sub-menu,
   #nv-primary-navigation .neve-mega-menu:focus > .sub-menu,
   #nv-primary-navigation .neve-mega-menu:focus-within > .sub-menu {
-    display: grid !important;
+    display: grid;
     grid-template-columns: repeat(5, 1fr);
     left: 50%;
     transform: translateX(-50%);
@@ -96,33 +90,23 @@
     top: 6vh;
     overflow: hidden;
   }
-
   #nv-primary-navigation .neve-mega-menu > .sub-menu,
   #nv-primary-navigation .neve-mega-menu:hover > .sub-menu,
   #nv-primary-navigation .neve-mega-menu:focus > .sub-menu,
   #nv-primary-navigation .neve-mega-menu:focus-within > .sub-menu {
-
-    transition: unset !important;
-
+    transition: unset;
     .neve-mm-col {
-
-      & > a,
-      & > .caret-wrap {
-        display: none;
-      }
       & > .sub-menu {
-        transition: unset !important;
+        transition: unset;
         left: initial;
         right: initial;
       }
     }
   }
-
   #nv-primary-navigation .neve-mega-menu:hover .neve-mm-col,
   #nv-primary-navigation .neve-mega-menu:focus .neve-mm-col,
   #nv-primary-navigation .neve-mega-menu:focus-within .neve-mm-col {
     border: none;
-
     .neve-mm-heading a {
       font-weight: 700;
       text-transform: uppercase;
@@ -138,20 +122,13 @@
     right: initial;
     border: none;
     box-shadow: none;
-
     li {
       border: none;
     }
   }
 }
-@media(min-width: 992px) {
-  #nv-primary-navigation .neve-mega-menu > .sub-menu {
-    width: 970px;
-  }
-}
-@media(min-width: 1200px) {
+@mixin mega-menu--desktop() {
   #nv-primary-navigation .neve-mega-menu > .sub-menu {
     width: 1170px;
   }
 }
-
