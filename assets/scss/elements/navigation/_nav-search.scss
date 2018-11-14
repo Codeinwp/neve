@@ -6,7 +6,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(255, 255, 255, .95);
+  background-color: #fff;
   .search-submit {
     display: block;
   }
@@ -107,6 +107,11 @@
   }
 }
 
+a.button.close-responsive-search {
+  @include button();
+  @include button-secondary();
+}
+
 .nav-clickaway-overlay {
   position: fixed;
   width: 100%;
@@ -124,15 +129,13 @@
   display: none;
 }
 
-
 .menu-item-nav-search.responsive-nav-search {
-  padding-left: $spacing-sm;
+  padding-left: 12px;
   > a {
     color: $git-black;
     font-size: 1.2em;
   }
 }
-
 
 @mixin nav-search--laptop() {
   .menu-item-nav-search.responsive-nav-search {
