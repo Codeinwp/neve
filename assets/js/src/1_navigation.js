@@ -59,7 +59,9 @@
 			var self = this;
 			$( '.caret-wrap' ).on( 'click', function () {
 				$( this ).parent().toggleClass( 'dropdown-open' );
-				self.createNavOverlay();
+				if ( !utils.isMobile() ) {
+					self.createNavOverlay();
+				}
 				return false;
 			} );
 		},
@@ -82,9 +84,9 @@
 				return false;
 			} );
 
-			$( '.close-responsive-search' ).on( 'touchstart click', function (e) {
+			$( '.close-responsive-search' ).on( 'touchstart click', function ( e ) {
 				e.preventDefault();
-				$('.responsive-nav-search').removeClass( 'active' );
+				$( '.responsive-nav-search' ).removeClass( 'active' );
 				$( 'html' ).removeClass( 'menu-opened' );
 			} );
 

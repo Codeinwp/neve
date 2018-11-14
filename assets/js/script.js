@@ -65,7 +65,9 @@
             var self = this;
             $(".caret-wrap").on("click", function() {
                 $(this).parent().toggleClass("dropdown-open");
-                self.createNavOverlay();
+                if (!utils.isMobile()) {
+                    self.createNavOverlay();
+                }
                 return false;
             });
         },

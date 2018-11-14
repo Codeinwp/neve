@@ -11,16 +11,25 @@
 
 			$.each( to, function ( key, value ) {
 				var style_to_add;
-				style_to_add = settings.selectors + '{ ' + settings.cssProperty + ':' + value + settings.propertyUnit + '}';
+				if ( key === 'suffix' ) {
+					return true;
+				}
+				var unit = settings.propertyUnit;
+				if ( typeof settings.propertyUnit === 'object' ) {
+					unit = settings.propertyUnit[ key ];
+				}
+
+				style_to_add = settings.selectors + '{ ' + settings.cssProperty + ':' + value + unit + '}';
 				switch ( key ) {
-					case 'desktop':
+					default:
+					case 'mobile':
 						result += style_to_add;
 						break;
-					case 'tablet':
-						result += '@media (max-width: 767px){' + style_to_add + '}';
+					case 'desktop':
+						result += '@media(min-width: 960px) {' + style_to_add + '}';
 						break;
-					case 'mobile':
-						result += '@media (max-width: 480px){' + style_to_add + '}';
+					case 'tablet':
+						result += '@media (min-width: 576px){' + style_to_add + '}';
 						break;
 				}
 			} );
