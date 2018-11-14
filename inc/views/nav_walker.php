@@ -53,7 +53,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	 */
 	public static function fallback() {
 		$fallback_args = array(
-			'depth'     => - 1,
+			'depth'     => -1,
 			'menu_id'   => 'nv-primary-navigation',
 			'container' => 'ul',
 			'before'    => '',
