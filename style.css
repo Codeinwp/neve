@@ -866,6 +866,13 @@ a.neve-skip-link {
 #nv-primary-navigation .neve-mega-menu > .sub-menu {
   border-left: none;
 }
+#nv-primary-navigation .neve-mega-menu > .sub-menu .neve-mm-divider {
+  height: 1px;
+  margin: 9px auto 9px 0;
+  min-width: 75%;
+  max-width: 75%;
+  background-color: #c9c9c9;
+}
 
 #nv-primary-navigation .neve-mega-menu .neve-mm-col {
   transition: unset;
@@ -2268,6 +2275,13 @@ hr {
   #nv-primary-navigation .neve-mega-menu:focus > .sub-menu,
   #nv-primary-navigation .neve-mega-menu:focus-within > .sub-menu {
     transition: unset;
+  }
+  #nv-primary-navigation .neve-mega-menu > .sub-menu .neve-mm-col,
+  #nv-primary-navigation .neve-mega-menu:hover > .sub-menu .neve-mm-col,
+  #nv-primary-navigation .neve-mega-menu:focus > .sub-menu .neve-mm-col,
+  #nv-primary-navigation .neve-mega-menu:focus-within > .sub-menu .neve-mm-col {
+    display: flex;
+    align-items: flex-start;
   }
   #nv-primary-navigation .neve-mega-menu > .sub-menu .neve-mm-col > .sub-menu,
   #nv-primary-navigation .neve-mega-menu:hover > .sub-menu .neve-mm-col > .sub-menu,

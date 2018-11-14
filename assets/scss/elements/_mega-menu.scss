@@ -28,6 +28,13 @@
 /* Use some of the above code to avoid weird effect when opening/closing it on mobile */
 #nv-primary-navigation .neve-mega-menu > .sub-menu {
   border-left: none;
+  .neve-mm-divider {
+    height: 1px;
+    margin: 9px auto 9px 0;
+    min-width: 75%;
+    max-width: 75%;
+    background-color: $muted-white-med;
+  }
 }
 #nv-primary-navigation .neve-mega-menu .neve-mm-col {
   transition: unset;
@@ -99,6 +106,8 @@
   #nv-primary-navigation .neve-mega-menu:focus-within > .sub-menu {
     transition: unset;
     .neve-mm-col {
+      display: flex;
+      align-items: flex-start;
       & > .sub-menu {
         transition: unset;
         left: initial;
