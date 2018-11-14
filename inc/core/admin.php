@@ -28,7 +28,7 @@ class Admin {
 		$config = array(
 			'welcome_notice'      => array(
 				'type'            => 'custom',
-				'notice_class'    => 'updated',
+				'notice_class'    => 'nv-welcome-notice',
 				'dismiss_option'  => 'neve_notice_dismissed',
 				'render_callback' => array( $this, 'welcome_notice_content' ),
 			),
@@ -170,29 +170,91 @@ class Admin {
 	 */
 	public function welcome_notice_content() {
 		$theme_args = wp_get_theme();
-		$name       = $theme_args->__get( 'Name' );
 		$slug       = $theme_args->__get( 'stylesheet' );
 
-		$notice = sprintf(
-			/* Translators: 1 - welcome text, 2 - get started button */
-			'<p>%1$s</p><p>%2$s</p>',
+		$notice_template = '
+			<div class="nv-col nv-notice-image">%1$s</div>
+			<div class="nv-col">%2$s</div>
+			<div class="nv-col">%3$s</div>
+			<style>%4$s</style>';
+
+		$nv_col1 = '
+			<img src="' . get_template_directory_uri() . '/vendor/codeinwp/ti-about-page/images/notice_image.png" alt="" />
+		';
+		$nv_col2 = sprintf(
+			'<h2>%1$s</h2><p class="grow">%2$s</p><div><a href="%3$s" class="button button-primary button-hero" style="text-decoration: none;">%4$s</a></div>',
+			esc_html__( 'Welcome! Thank you for choosing Neve!', 'neve' ),
 			sprintf(
-				/* Translators: 1 - theme name, 2 - link opening tag, 3 - link closing tag */
-				esc_html__( 'Welcome! Thank you for choosing %1$s! To fully take advantage of the best our theme can offer please make sure you visit our %2$swelcome page%3$s.', 'neve' ),
-				$name,
-				'<a href="' . esc_url( admin_url( 'themes.php?page=' . $slug . '-welcome' ) ) . '">',
-				'</a>'
+				/* translators: %1$s is link to welcome page */
+				esc_html__( 'To fully take advantage of the best our theme can offer please make sure you visit our %1$s.', 'neve' ),
+				sprintf(
+					'<a href="%1$s">%2$s</a>',
+					esc_url( admin_url( 'themes.php?page=' . $slug . '-welcome' ) ),
+					esc_html__( 'welcome page', 'neve' )
+				)
 			),
-			sprintf(
-				/* Translators: 1 - onboarding url, 2 - button text */
-				'<a href="%1$s" class="button" style="text-decoration: none;">%2$s %3$s</a>',
-				esc_url( admin_url( 'themes.php?page=' . $slug . '-welcome&onboarding=yes#sites_library' ) ),
-				esc_html__( 'Get started with', 'neve' ),
-				$name
-			)
+			esc_url( admin_url( 'themes.php?page=' . $slug . '-welcome&onboarding=yes#sites_library' ) ),
+			esc_html__( 'Get started with Neve', 'neve' )
 		);
 
-		echo wp_kses_post( $notice );
+		$nv_col3 = sprintf(
+			'<h2>%1$s</h2><p>%2$s</p>',
+			esc_html__( 'Backwards compatibility.', 'neve' ),
+			esc_html__( 'Depending on your previous theme, you may keep your frontpage as it is without having to add data again.', 'neve' )
+		);
+		$style   = '
+			.nv-welcome-notice{
+			padding:20px;
+			display: flex;
+			}
+			.nv-col{
+			padding: 0 10px;
+			width: 32%;
+			margin-right: 1%;
+			display: flex;
+			flex-direction: column;
+			}
+			.nv-col:last-child{
+			margin-right: 0;
+			}
+			.nv-col img{
+			max-width: 100%;
+			}
+			.nv-col .grow{
+			flex-grow:1;
+			}
+			.nv-col h2{
+				margin-top: 0;
+			}
+			
+			@media (max-width:1024px){
+				.nv-notice-image{
+				display:none;
+				}
+				.nv-col{
+				width: 48%;
+				}
+			}
+			@media (max-width:870px){
+				.nv-welcome-notice{
+				display: block;
+				}
+				.nv-col{
+				width: 100%;
+				margin: 17px 0 0;
+				}
+			}
+			
+		';
+		$notice  = sprintf(
+			$notice_template,
+			$nv_col1,
+			$nv_col2,
+			$nv_col3,
+			$style
+		);
+
+		echo $notice;
 	}
 
 	/**
