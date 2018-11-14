@@ -39,7 +39,7 @@ jQuery( document ).ready(
 
                         // Open switchers
                         if ( $this.hasClass( 'preview-desktop' ) ) {
-                            $control.toggleClass( 'responsive-switchers-open' );
+	                        $devices.toggleClass( 'responsive-switchers-open' );
                         }
 
                     }

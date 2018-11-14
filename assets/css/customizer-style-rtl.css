@@ -735,7 +735,41 @@ input::-moz-focus-outer {
 	font-size: inherit;
 	line-height: 18px;
 }
-.customize-control-interface-tabs {
+.responsive-number .controls--wrap {
+    display: flex;
+    align-items: center;
+}
+
+.customize-control .responsive-number input[type=number] {
+    width: 73%;
+}
+
+.responsive-number select {
+    width: 23%;
+    margin-right: 2%;
+    float: left;
+}
+
+.responsive-number .control-wrap.active {
+    display: flex;
+    /*justify-content: space-between;*/
+}
+.reset-number-input {
+    margin-right: auto;
+    display: inline-block;
+    position: relative;
+    width: 6%;
+    color: rgba(0,0,0,0.2);
+    line-height: 1;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.reset-number-input .dashicons {
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+}.customize-control-interface-tabs {
 	display: list-item !important;
 }
 
