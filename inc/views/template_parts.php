@@ -65,7 +65,6 @@ class Template_Parts extends Base_View {
 			$this->title();
 			$this->meta();
 			$this->excerpt();
-			$this->read_more_button();
 			echo '</div>';
 
 			return;
@@ -75,7 +74,6 @@ class Template_Parts extends Base_View {
 			'thumbnail',
 			'title-meta',
 			'excerpt',
-			'read-more',
 		);
 		$order         = get_theme_mod( 'neve_post_content_ordering', json_encode( $default_order ) );
 		$order         = json_decode( $order, true );
@@ -96,9 +94,6 @@ class Template_Parts extends Base_View {
 					break;
 				case 'excerpt':
 					$this->excerpt();
-					break;
-				case 'read-more':
-					$this->read_more_button();
 					break;
 				case 'default':
 					break;
@@ -156,7 +151,6 @@ class Template_Parts extends Base_View {
 		$default_meta_order = json_encode(
 			array(
 				'author',
-				'category',
 				'date',
 				'comments',
 			)
@@ -172,21 +166,6 @@ class Template_Parts extends Base_View {
 	 */
 	private function excerpt() {
 		do_action( 'neve_excerpt_archive', 'index' );
-	}
-
-	/**
-	 * Render read more button.
-	 */
-	private function read_more_button() {
-		$layout = $this->get_layout();
-		if ( $layout !== 'grid' ) {
-			return;
-		}
-		?>
-		<a href="<?php esc_url( the_permalink() ); ?>" rel="bookmark"
-				class="button button-secondary"><?php esc_html_e( 'Read more', 'neve' ); ?>
-			<span class="screen-reader-text"><?php echo __( 'About', 'neve' ) . ' ' . esc_html( get_the_title() ); ?></span></a>
-		<?php
 	}
 
 	/**
@@ -211,13 +190,7 @@ class Template_Parts extends Base_View {
 	 * @return string
 	 */
 	public function link_excerpt_more( $moretag ) {
-		$layout = $this->get_layout();
-
-		if ( $layout === 'grid' ) {
-			return '&nbsp;&hellip;';
-		}
-
-		$moretag = '<a href="' . esc_url( get_the_permalink() ) . '" rel="bookmark">&nbsp;&hellip;</a>';
+		$moretag = '&hellip;&nbsp;<a href="' . esc_url( get_the_permalink() ) . '" rel="bookmark">Read More  &raquo;</a>';
 
 		return $moretag;
 	}

@@ -24,7 +24,7 @@
   },
   "type": "wordpress-theme",
   "require": {
-    "codeinwp/themeisle-sdk": "master",
+    "codeinwp/themeisle-sdk": "dev-no-widget",
     "codeinwp/ti-about-page": "master",
     "codeinwp/ti-onboarding": "master"
   },

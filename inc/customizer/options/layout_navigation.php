@@ -81,9 +81,11 @@ class Layout_Navigation extends Base_Customizer {
 			'none'   => __( 'None', 'neve' ),
 			'search' => __( 'Search', 'neve' ),
 		);
-
+		$default = 'search';
 		if ( class_exists( 'WooCommerce' ) ) {
-			$choices['cart'] = __( 'Cart', 'neve' );
+			$choices['cart']        = __( 'Cart', 'neve' );
+			$choices['search-cart'] = __( 'Search & Cart', 'neve' );
+			$default                = 'search-cart';
 		}
 
 		$this->add_control(
@@ -92,7 +94,7 @@ class Layout_Navigation extends Base_Customizer {
 				array(
 					'sanitize_callback' => array( $this, 'sanitize_last_menu_item' ),
 					'transport'         => $this->selective_refresh,
-					'default'           => 'none',
+					'default'           => $default,
 				),
 				array(
 					'label'    => __( 'Last Item in Menu', 'neve' ),
@@ -129,9 +131,9 @@ class Layout_Navigation extends Base_Customizer {
 	 * @return bool
 	 */
 	public function sanitize_last_menu_item( $value ) {
-		$allowed_values = array( 'none', 'search', 'cart' );
+		$allowed_values = array( 'none', 'search', 'cart', 'search-cart' );
 		if ( ! in_array( $value, $allowed_values ) ) {
-			return 'none';
+			return 'search';
 		}
 
 		return esc_html( $value );

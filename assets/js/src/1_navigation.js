@@ -8,6 +8,9 @@
 			this.handleMobileDropdowns();
 			this.handleSearch();
 		},
+		/**
+		 * Reposition dropdowns if they go off-screen.
+		 */
 		'repositionDropdowns': function () {
 			if ( utils.isMobile() ) {
 				return false;
@@ -33,12 +36,11 @@
 			} );
 			return false;
 		},
-
 		/**
 		 * Handle the responsive navigation toggle.
 		 */
 		'handleResponsiveNav': function () {
-			$( '.navbar-toggle' ).on( 'click touch', function () {
+			$( '.navbar-toggle' ).on( 'click', function () {
 				$( '.dropdown-open' ).removeClass( 'dropdown-open' );
 				$( '.nv-navbar' ).toggleClass( 'responsive-opened' );
 				$( this ).toggleClass( 'active' );
@@ -55,7 +57,7 @@
 		 */
 		'handleMobileDropdowns': function () {
 			var self = this;
-			$( '.caret-wrap' ).on( 'click touchstart', function () {
+			$( '.caret-wrap' ).on( 'click', function () {
 				$( this ).parent().toggleClass( 'dropdown-open' );
 				self.createNavOverlay();
 				return false;
@@ -66,17 +68,24 @@
 		 */
 		'handleSearch': function () {
 			var self = this;
-			$( '.nv-nav-search' ).on( 'click', function ( e ) {
+			$( '.nv-nav-search' ).on( 'touchstart click', function ( e ) {
 				e.stopPropagation();
 			} );
 
-			$( '.menu-item-nav-search' ).on( 'click focus', function () {
+			$( '.menu-item-nav-search' ).on( 'touchstart click focus', function () {
+				$( this ).addClass( 'active' );
+				$( 'html' ).addClass( 'menu-opened' );
 				if ( utils.isMobile() ) {
 					return false;
 				}
-				$( this ).addClass( 'active' );
 				self.createNavOverlay();
 				return false;
+			} );
+
+			$( '.close-responsive-search' ).on( 'touchstart click', function (e) {
+				e.preventDefault();
+				$('.responsive-nav-search').removeClass( 'active' );
+				$( 'html' ).removeClass( 'menu-opened' );
 			} );
 
 			$( '.menu-item-nav-search input[type=search]' ).on( 'blur', function () {
@@ -89,9 +98,6 @@
 		 * @returns {boolean}
 		 */
 		'createNavOverlay': function () {
-			if ( utils.isMobile() ) {
-				return false;
-			}
 			var navClickaway = $( '.nav-clickaway-overlay' );
 			if ( navClickaway.length > 0 ) {
 				return false;
@@ -102,7 +108,7 @@
 
 			$( navClickaway ).on( 'touchstart click', function () {
 				this.remove();
-				$( '#nv-primary-navigation li' ).removeClass( 'active dropdown-open' );
+				$( '#nv-primary-navigation li, .menu-item-nav-search' ).removeClass( 'active dropdown-open' );
 			} );
 			return false;
 		},

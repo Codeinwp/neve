@@ -134,12 +134,12 @@ class Typography extends Base_Customizer {
 						'mobile'  => array(
 							'min'     => 10,
 							'max'     => 30,
-							'default' => 15,
+							'default' => 14,
 						),
 						'tablet'  => array(
 							'min'     => 10,
 							'max'     => 30,
-							'default' => 15,
+							'default' => 14,
 						),
 						'desktop' => array(
 							'min'     => 10,

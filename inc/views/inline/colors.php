@@ -71,7 +71,7 @@ class Colors extends Base_Inline {
 		$color_setup = array(
 			'color' => array(
 				'css_prop'  => 'color',
-				'selectors' => 'a:hover, #nv-primary-navigation li:hover > a ',
+				'selectors' => 'a:hover, a:focus, #nv-primary-navigation li:hover > a',
 			),
 		);
 		$this->add_color( apply_filters( 'neve_link_hover_color_filter', $color_setup ), $color );
@@ -109,29 +109,25 @@ class Colors extends Base_Inline {
 			'color'        => array(
 				'css_prop'  => 'color',
 				'selectors' => '
-				.button.button-secondary, 
-				.nv-tags-list a, 
-				#nv-primary-navigation a.button,
-				#nv-primary-navigation li.button.button-secondary > a, 
-				.menu li.button.button-secondary > a',
+				.nv-tags-list a',
 			),
 			'border-color' => array(
 				'css_prop'  => 'border-color',
-				'selectors' => '.button.button-secondary, .nv-tags-list a',
+				'selectors' => '.nv-tags-list a',
 			),
 			'background'   => array(
 				'css_prop'  => 'background-color',
 				'selectors' => '
 				.button.button-primary, 
-				.button.button-secondary:hover, 
+				.button.button-primary:hover, 
 				button, input[type=button], 
 				.btn, input[type="submit"], 
 				.nv-tags-list a:hover,
 				/* Buttons in navigation */
 				#nv-primary-navigation li.button.button-primary > a, 
 				.menu li.button.button-primary > a,
-				#nv-primary-navigation li.button.button-secondary > a:hover, 
-				.menu li.button.button-secondary > a:hover',
+				#nv-primary-navigation li.button.button-primary > a:hover, 
+				.menu li.button.button-primary > a:hover',
 			),
 		);
 

@@ -32,12 +32,14 @@ class Main extends Metabox_Base {
 				'input_label' => __( 'Disable Header', 'neve' ),
 			),
 			'neve_meta_disable_title'          => array(
-				'default'     => 'off',
-				'input_label' => __( 'Disable Title', 'neve' ),
+				'default'         => 'off',
+				'input_label'     => __( 'Disable Title', 'neve' ),
+				'active_callback' => array( $this, 'hide_on_single_product' ),
 			),
 			'neve_meta_disable_featured_image' => array(
-				'default'     => 'off',
-				'input_label' => __( 'Disable Featured Image', 'neve' ),
+				'default'         => 'off',
+				'input_label'     => __( 'Disable Featured Image', 'neve' ),
+				'active_callback' => array( $this, 'hide_on_single_product' ),
 			),
 			'neve_meta_disable_footer'         => array(
 				'default'     => 'off',
@@ -46,22 +48,23 @@ class Main extends Metabox_Base {
 		);
 
 		$default_control_args = array(
-			'default'     => 'off',
-			'label'       => '',
-			'input_label' => '',
+			'default'         => 'off',
+			'label'           => '',
+			'input_label'     => '',
+			'active_callback' => '__return_true',
 		);
 
 		foreach ( $content_controls as $control_id => $args ) {
-
 			$args = wp_parse_args( $args, $default_control_args );
 
 			$this->add_control(
 				new Controls\Checkbox(
 					$control_id,
 					array(
-						'default'     => $args['default'],
-						'label'       => $args['label'],
-						'input_label' => $args['input_label'],
+						'default'         => $args['default'],
+						'label'           => $args['label'],
+						'input_label'     => $args['input_label'],
+						'active_callback' => $args['active_callback'],
 					)
 				)
 			);
@@ -101,5 +104,24 @@ class Main extends Metabox_Base {
 				)
 			)
 		);
+	}
+
+	/**
+	 * Callback to hide on single product edit page.
+	 *
+	 * @return bool
+	 */
+	public function hide_on_single_product() {
+		if ( ! isset( $_GET['post'] ) ) {
+			return true;
+		}
+
+		$post_type = get_post_type( $_GET['post'] );
+
+		if ( $post_type !== 'product' ) {
+			return true;
+		}
+
+		return false;
 	}
 }
