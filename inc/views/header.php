@@ -27,7 +27,7 @@ class Header extends Base_View {
 	public function render_navigation() {
 		?>
 		<nav class="nv-navbar" <?php echo wp_kses_post( apply_filters( 'neve_nav_data_attrs', '' ) ); ?>
-				role="navigation">
+			role="navigation">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 nv-nav-wrap <?php echo esc_attr( $this->get_navbar_class() ); ?>">
@@ -145,7 +145,7 @@ class Header extends Base_View {
 	 * Add the last menu item.
 	 *
 	 * @param array  $items the nav items.
-	 * @param object $args  menu properties.
+	 * @param object $args menu properties.
 	 *
 	 * @return array
 	 */
@@ -194,14 +194,17 @@ class Header extends Base_View {
 	 */
 	private function render_primary_menu() {
 		echo '<div role="navigation" aria-label="' . esc_html( __( 'Primary Menu', 'neve' ) ) . '">';
+
 		wp_nav_menu(
 			array(
 				'theme_location' => 'primary',
 				'menu_id'        => 'nv-primary-navigation',
 				'container'      => 'ul',
 				'walker'         => new Nav_Walker(),
+				'fallback_cb'    => '\Neve\Views\Nav_Walker::fallback',
 			)
 		);
+
 		echo '</div>';
 	}
 
@@ -209,9 +212,6 @@ class Header extends Base_View {
 	 * Render navbar toggle markup.
 	 */
 	private function render_navbar_toggle() {
-		if ( ! has_nav_menu( 'primary' ) ) {
-			return;
-		}
 		?>
 
 		<div class="navbar-toggle-wrapper">
@@ -240,7 +240,7 @@ class Header extends Base_View {
 		?>
 		<div class="site-logo">
 			<a class="brand" href="<?php echo esc_url( home_url( '/' ) ); ?>"
-					title="<?php bloginfo( 'name' ); ?>">
+				title="<?php bloginfo( 'name' ); ?>">
 				<?php echo wp_kses_post( $this->get_logo() ); ?></a>
 		</div>
 		<?php

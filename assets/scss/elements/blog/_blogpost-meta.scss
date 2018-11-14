@@ -17,4 +17,15 @@
   .posted-on .updated {
     display: none;
   }
+  .meta.author {
+    .photo {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      transform: translateY(30%);
+    }
+    .author-name {
+      margin-left: 3px;
+    }
+  }
 }
