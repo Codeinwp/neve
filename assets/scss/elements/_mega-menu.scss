@@ -75,6 +75,9 @@
       top: -3px;
       z-index: 9;
     }
+    .sub-menu li a {
+      white-space: normal;
+    }
   }
   #nv-primary-navigation .neve-mega-menu > .caret-wrap {
     display: none;
@@ -83,7 +86,7 @@
   #nv-primary-navigation .neve-mega-menu:focus > .sub-menu,
   #nv-primary-navigation .neve-mega-menu:focus-within > .sub-menu {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     left: 50%;
     transform: translateX(-50%);
     padding: 20px;
