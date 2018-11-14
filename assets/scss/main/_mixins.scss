@@ -51,33 +51,33 @@
   cursor: pointer;
   line-height: 1.68421;
   font-family: inherit;
+  &:hover {
+    text-decoration: none;
+    opacity: .9;
+  }
 }
 
-@mixin button-secondary( $hover: 'true', $color: $button_color ) {
-  border: 1px solid rgba(27,31,35,0.2);
+@mixin button-secondary( $hover: 'true', $color: $gray-color ) {
+  border: 1px solid $color;
   background-color: transparent;
   font-weight: 600;
   color: $color;
-  @if ($hover == 'true') {
-    &:hover {
-      opacity: 1;
-      text-decoration: none;
-      background-color: $color;
-      color: #fff;
-    }
+  &:hover {
+    background: transparent;
   }
 }
 
 @mixin button-primary( $hover: 'true', $color: $button_color ) {
   background-color: $color;
   color: #fff;
-  @if ($hover == 'true') {
+  @if( $hover == 'true' ) {
     &:hover {
       text-decoration: none;
+      background-color: $color;
+      color: #fff;
       opacity: .9;
     }
   }
-
 }
 
 @mixin cart-widget(){
@@ -99,20 +99,7 @@
     text-align: center;
   }
   .woocommerce-mini-cart__buttons {
-    display: flex;
+    margin-bottom: $spacing-xs;
     padding: $spacing-xs $spacing-sm 0;
-    a.button {
-      margin: 0;
-      text-align: center;
-      &:last-child {
-        margin-left: 5px;
-        @include button();
-        @include button-primary();
-      }
-      &:first-child {
-        @include button();
-        @include button-secondary();
-      }
-    }
   }
 }
