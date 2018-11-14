@@ -94,7 +94,7 @@ class Front_End {
 				'name'       => 'Neve Default Blog',
 			),
 			'can_migrate'      => array(
-				'zerif-pro' => array(
+				'zerif-pro'  => array(
 					'theme_name'      => 'Zelle Pro',
 					'theme_mod_check' => 'zelle_frontpage_was_imported',
 					'template'        => 'zelle',
