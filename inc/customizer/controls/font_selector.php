@@ -39,6 +39,11 @@ class Font_Selector extends \WP_Customize_Control {
 		$std_fonts    = $this->get_standard_fonts();
 		$google_fonts = $this->get_google_fonts();
 		$value        = $this->value();
+
+		if ( empty( $value ) || $value === 'default' ) {
+			$value = ucwords( 'Default' );
+		}
+
 		?>
 		<label>
 			<?php if ( ! empty( $this->label ) ) : ?>
@@ -51,18 +56,18 @@ class Font_Selector extends \WP_Customize_Control {
 		<div class="neve-ss-wrap">
 			<input class="neve-fs-main-input" type="text"
 					name="<?php echo esc_attr( $this->id ); ?>"
-					value="<?php echo ( ! empty( $value ) ) ? esc_attr( $value ) : __( 'Default', 'neve' ); ?>"
+					value="<?php echo esc_attr( $value ) ?>"
 					readonly>
 			<span class="neve-fs-input-addon"><i class="dashicons dashicons-arrow-down"></i></span>
 			<div class="neve-fs-dropdown">
 				<span class="neve-fs-search">
-						<input type="search" placeholder="<?php echo _x( 'Search for:', 'label', 'neve' ) . '...'; ?>">
+						<input type="search" placeholder="<?php echo _x( 'Search', 'label', 'neve' ) . '...'; ?>">
 				</span>
 				<div class="neve-fs-options-wrapper">
 						<span class="neve-fs-option"
 								data-source="system"
 								data-control="<?php echo esc_attr( $this->id ); ?>"
-								data-option="default"><?php esc_html_e( 'Default', 'neve' ); ?></span>
+								data-option="Default"><?php esc_html_e( 'Default', 'neve' ); ?></span>
 					<?php
 					$this->render_dropdown_options_group( $std_fonts, esc_html__( 'Standard Fonts', 'neve' ), 'system' );
 					$this->render_dropdown_options_group( $google_fonts, esc_html__( 'Google Fonts', 'neve' ), 'google-fonts' );
