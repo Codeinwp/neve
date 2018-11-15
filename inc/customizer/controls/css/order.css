@@ -44,6 +44,24 @@
 	transition: 0.3s ease-in-out;
 }
 
+.ti-order-sortable > li {
+	left: inherit !important;
+	cursor: move;
+}
+
+.ti-order-sortable > li:hover {
+	border-color: #0087bf;
+	cursor: move;
+}
+
+.ti-order-sortable > li:hover > p {
+	color: #0087bf;
+}
+
+.ti-order-sortable .ui-sortable-helper {
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
 .ti-order-sortable span.drag {
 	right: 0;
 	left: auto;

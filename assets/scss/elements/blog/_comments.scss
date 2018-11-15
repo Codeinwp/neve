@@ -123,7 +123,7 @@
 
     .comment-form {
       grid-template-columns: repeat(3, 1fr);
-      .comment-notes, .comment-form-comment {
+      .comment-notes, .comment-form-comment, .logged-in-as {
         grid-column: span 3;
       }
     }

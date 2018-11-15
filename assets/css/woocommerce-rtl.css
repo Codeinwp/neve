@@ -158,6 +158,10 @@
   margin: 0 10px 0 0;
 }
 
+.woocommerce.single .nv-woo-filters {
+  display: none;
+}
+
 .woocommerce.single .product_title {
   font-size: 1.3em;
   font-weight: 300;
