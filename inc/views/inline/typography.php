@@ -80,15 +80,15 @@ class Typography extends Base_Inline {
 	 */
 	private function add_headings_styles() {
 		$controls = array(
-			'h1',
-			'h2',
-			'h3',
-			'h4',
-			'h5',
-			'h6',
+			'h1' => 'h1, .single .entry-title',
+			'h2' => 'h2',
+			'h3' => 'h3',
+			'h4' => 'h4',
+			'h5' => 'h5',
+			'h6' => 'h6',
 		);
 
-		foreach ( $controls as $control ) {
+		foreach ( $controls as $control => $selector ) {
 			$font_size   = get_theme_mod( 'neve_' . $control . '_font_size' );
 			$line_height = get_theme_mod( 'neve_' . $control . '_line_height' );
 			$font_size   = json_decode( $font_size, true );
@@ -97,14 +97,14 @@ class Typography extends Base_Inline {
 				array(
 					'css_prop' => 'font-size',
 					'value'    => $font_size,
-					'suffix'   => 'rem',
+					'suffix'   => isset( $font_size['suffix'] ) ? $font_size['suffix'] : 'em',
 				),
 				array(
 					'css_prop' => 'line-height',
 					'value'    => $line_height,
 				),
 			);
-			$this->add_responsive_style( $settings, $control );
+			$this->add_responsive_style( $settings, $selector );
 		}
 	}
 

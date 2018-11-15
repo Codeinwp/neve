@@ -24,10 +24,10 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	 * @since 3.0.0
 	 *
 	 * @param string   $output Output.
-	 * @param \WP_Post $item   Item.
-	 * @param int      $depth  Depth.
-	 * @param array    $args   Args.
-	 * @param int      $id     id.
+	 * @param \WP_Post $item Item.
+	 * @param int      $depth Depth.
+	 * @param array    $args Args.
+	 * @param int      $id id.
 	 */
 	public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
 		if ( ! is_object( $args ) ) {
@@ -52,5 +52,20 @@ class Nav_Walker extends \Walker_Nav_Menu {
 		$output .= '<span class="caret"></span>';
 		$output .= '</div>';
 		$output  = apply_filters( 'neve_caret_wrap_filter', $output, $item->menu_order );
+	}
+
+	/**
+	 * Display all pages when there is no menu assigned to the primary location
+	 */
+	public static function fallback() {
+		$fallback_args = array(
+			'depth'     => -1,
+			'menu_id'   => 'nv-primary-navigation',
+			'container' => 'ul',
+			'before'    => '',
+			'after'     => '',
+		);
+
+		wp_page_menu( $fallback_args );
 	}
 }
