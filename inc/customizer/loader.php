@@ -72,14 +72,14 @@ class Loader {
 	 * Enqueue customizer controls script.
 	 */
 	public function enqueue_customizer_controls() {
-		wp_register_style( 'neve-customizer-style', NEVE_ASSETS_URL . '/css/customizer-style' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), NEVE_VERSION );
+		wp_register_style( 'neve-customizer-style', NEVE_ASSETS_URL . 'css/customizer-style' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), NEVE_VERSION );
 		wp_style_add_data( 'neve-customizer-style', 'rtl', 'replace' );
 		wp_style_add_data( 'neve-customizer-style', 'suffix', '.min' );
 		wp_enqueue_style( 'neve-customizer-style' );
 
 		wp_enqueue_script(
 			'neve-customizer-controls',
-			NEVE_ASSETS_URL . '/js/customizer-controls' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.js',
+			NEVE_ASSETS_URL . 'js/customizer-controls' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.js',
 			array(
 				'jquery',
 				'wp-color-picker',
@@ -95,7 +95,7 @@ class Loader {
 	public function enqueue_customizer_preview() {
 		wp_enqueue_script(
 			'neve-customizer-preview',
-			NEVE_ASSETS_URL . '/js/customizer-preview' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.js',
+			NEVE_ASSETS_URL . 'js/customizer-preview' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.js',
 			array(),
 			NEVE_VERSION,
 			true
