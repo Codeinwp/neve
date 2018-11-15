@@ -1,8 +1,12 @@
+//<editor-fold desc="Alignments">
 .alignfull, .alignwide {
   width: unset;
   max-width: unset;
 }
 
+//</editor-fold>
+
+//<editor-fold desc="Front End Font Sizes">
 .has-neve-body-font-size {
   font-size: $h1-mobile-font-size;
 }
@@ -27,9 +31,31 @@
   font-size: $h6-mobile-font-size;
 }
 
+//</editor-fold>
+
+//<editor-fold desc="Blockquote">
+blockquote.wp-block-quote.is-style-large {
+  p {
+    font-size: $h2-font-size;
+  }
+  cite {
+    text-align: center;
+    font-size: .95em;
+  }
+}
+
+//</editor-fold>
+
+//<editor-fold desc="Tables">
+.wp-block-table {
+  width: 100%;
+}
+//</editor-fold>
+
 @mixin gutenberg--tablet() {
+  //<editor-fold desc="Tablet Font Sizes">
   .has-neve-body-font-size {
-    font-size: 16px;
+    font-size: $html-font-size;
   }
   .has-neve-h-1-font-size {
     font-size: $h1-font-size;
@@ -49,4 +75,6 @@
   .has-neve-h-6-font-size {
     font-size: $h6-font-size;
   }
+  //</editor-fold>
 }
+

@@ -1,0 +1,40 @@
+$wp-block-selector: '.gutenberg-editor-page #wpwrap .editor-styles-wrapper .wp-block:not( [data-align=full] ):not( [data-align=wide] )';
+
+.gutenberg-editor-page #wpwrap .editor-styles-wrapper {
+  .wp-block {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    .editor-block-list__layout {
+      padding: 0 !important;
+    }
+    &[data-align=full], &[data-align=wide] {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+}
+
+@mixin content-width--tablet-sm() {
+  #{$wp-block-selector}  {
+    max-width: 540px;
+  }
+}
+
+@mixin content-width--tablet() {
+  #{$wp-block-selector}  {
+    max-width: 720px;
+  }
+}
+
+@mixin content-width--laptop() {
+  #{$wp-block-selector}  {
+    max-width: 960px;
+  }
+}
+
+@mixin content-width--desktop() {
+  #{$wp-block-selector}  {
+    max-width: 1140px;
+  }
+}

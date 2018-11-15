@@ -1,0 +1,16 @@
+@media (min-width: #{$tablet-sm}) {
+  @include content-width--tablet-sm();
+}
+
+@media (min-width: #{$tablet}) {
+  @include content-width--tablet();
+  @include gutenberg-typograpgy--tablet();
+}
+
+@media (min-width: #{$laptop}) {
+  @include content-width--laptop();
+}
+
+@media (min-width: #{$desktop}) {
+  @include content-width--desktop();
+}

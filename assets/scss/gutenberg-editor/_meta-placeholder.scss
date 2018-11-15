@@ -1,0 +1,22 @@
+.gutenberg-editor-page #wpwrap .editor-styles-wrapper {
+  .wp-block.editor-post-title__block:after {
+    content: ' ';
+    width: 245px;
+    height: 12px;
+    display: block;
+    left: 14px;
+    position: relative;
+    top: -12px;
+  background: linear-gradient(90deg,
+            #e7e7e7e7 0%, #e7e7e7e7 6%,
+            #fff 6.01%, #fff 7.5%,
+            #e7e7e7e7 7.51%, #e7e7e7e7 24%,
+            #fff 24.01%, #fff 26%,
+            #e7e7e7e7 26.01%, #e7e7e7e7 43%,
+            #fff 43.01%, #fff 45%,
+            #e7e7e7e7 45.01%, #e7e7e7e7 75%,
+            #fff 75.01%, #fff 77%,
+            #e7e7e7e7 77.01%
+    );
+  }
+}

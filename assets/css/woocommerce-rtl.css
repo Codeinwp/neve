@@ -256,7 +256,7 @@
   border-radius: 3px;
 }
 .woocommerce #review_form .comment-reply-title, .woocommerce .woocommerce-Tabs-panel h2 {
-  font-size: 1rem;
+  font-size: 1em;
   font-weight: 600;
 }
 .woocommerce .woocommerce-Reviews-title {
@@ -971,7 +971,7 @@
   }
 
   .woocommerce #review_form .comment-reply-title, .woocommerce .woocommerce-Tabs-panel h2 {
-    font-size: 1.25rem;
+    font-size: 1.25em;
   }
   .woocommerce #review_form .comment-form {
     grid-template-columns: repeat(2, 1fr);

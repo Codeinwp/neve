@@ -242,7 +242,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: Graphik, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
   line-height: 1.68421;
-  margin-bottom: .8rem;
+  margin-bottom: 0.8rem;
   font-weight: 600;
 }
 
@@ -395,6 +395,18 @@ a.neve-skip-link {
 
 .has-neve-h-5-font-size {
   font-size: 0.75em;
+}
+
+blockquote.wp-block-quote.is-style-large p {
+  font-size: 1.75em;
+}
+blockquote.wp-block-quote.is-style-large cite {
+  text-align: center;
+  font-size: .95em;
+}
+
+.wp-block-table {
+  width: 100%;
 }
 
 #nv-top-bar-menu {
@@ -1419,12 +1431,18 @@ article {
 
 blockquote {
   text-align: center;
-  font-size: 1.1em;
   margin: 40px 0;
+}
+blockquote p {
+  font-size: 1.1em;
 }
 blockquote cite {
   padding-top: 20px;
   display: block;
+  color: #777777;
+  font-style: normal;
+  font-size: .95em;
+  text-align: center;
 }
 blockquote:after, blockquote:before {
   height: 3px;
@@ -1444,6 +1462,7 @@ blockquote > * {
 }
 
 table {
+  width: 100%;
   margin: 20px 0;
 }
 table td, table th {

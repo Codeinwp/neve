@@ -23,7 +23,7 @@ class Typography extends Base_Inline {
 		$this->fonts_family();
 		$this->add_body_style();
 		$this->add_headings_styles();
-		$this->add_gutenberg_font_size();
+		$this->add_gutenberg_front_end_font_size();
 	}
 
 	/**
@@ -111,7 +111,7 @@ class Typography extends Base_Inline {
 	/**
 	 * Add font sizes from gutenberg.
 	 */
-	private function add_gutenberg_font_size() {
+	private function add_gutenberg_front_end_font_size() {
 		$font_size_controls = array(
 			'.has-neve-body-font-size' => 'neve_body_font_size',
 			'.has-neve-h-1-font-size'  => 'neve_h1_font_size',
