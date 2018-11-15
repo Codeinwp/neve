@@ -120,12 +120,17 @@ class Responsive_Number extends \WP_Customize_Control {
 		?>
 		<#
 		var value = data.value ? data.value[mediaQuery] : attr.default;
-		var suffix = data.value ? data.value.suffix[mediaQuery] : attr.default_unit;
+		var suffix = '';
+		if( data.value ) {
+			suffix = data.value.suffix ? data.value.suffix[mediaQuery] : attr.default_unit;
+		}
+
 		if( ! data.responsive ) {
 		value = data.value? data.value : attr.default
 		}
 		var active = mediaQuery === 'desktop' ? 'active' : '';
 		#>
+
 		<div class="{{mediaQuery}} control-wrap {{active}}">
 			<input
 					class="responsive-number--input"

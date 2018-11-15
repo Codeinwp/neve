@@ -254,16 +254,20 @@ class Typography extends Base_Customizer {
 			 */
 			$this->add_control(
 				new Control(
-					$control_id . '_size',
+					$control_id . '_font_size',
 					array(
 						'sanitize_callback' => 'neve_sanitize_range_value',
 						'transport'         => $this->selective_refresh,
 					),
 					array(
-						'label'       => esc_html__( 'Font Size', 'neve' ) . '(px)',
-						'section'     => 'neve_typography_headings',
-						'step'        => 1,
-						'input_attr'  => array(
+						'label'      => esc_html__( 'Font Size', 'neve' ),
+						'section'    => 'neve_typography_headings',
+						'step'       => 1,
+						'units'      => array(
+							'em',
+							'px',
+						),
+						'input_attr' => array(
 							'mobile'  => array(
 								'min'          => 1,
 								'max'          => 10,
