@@ -56,7 +56,7 @@ class Font_Selector extends \WP_Customize_Control {
 		<div class="neve-ss-wrap">
 			<input class="neve-fs-main-input" type="text"
 					name="<?php echo esc_attr( $this->id ); ?>"
-					value="<?php echo esc_attr( $value ) ?>"
+					value="<?php echo esc_attr( $value ); ?>"
 					readonly>
 			<span class="neve-fs-input-addon"><i class="dashicons dashicons-arrow-down"></i></span>
 			<div class="neve-fs-dropdown">

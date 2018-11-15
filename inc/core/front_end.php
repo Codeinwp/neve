@@ -54,7 +54,8 @@ class Front_End {
 		add_theme_support( 'fl-theme-builder-headers' );
 		add_theme_support( 'fl-theme-builder-footers' );
 		add_theme_support(
-			'amp', array(
+			'amp',
+			array(
 				'paired' => true,
 			)
 		);
