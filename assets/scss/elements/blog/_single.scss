@@ -1,14 +1,11 @@
-.single {
-  .nv-content-wrap {
-    padding-top: $spacing-sm;
-  }
-  .entry-title {
-    transition: $transition_med;
-  }
+.entry-header, .nv-page-title-wrap {
+  margin-top: 30px;
 }
 
-.single-post-container {
-  padding-top: $spacing-sm;
+.single, .page {
+  .nv-sidebar-wrap {
+    margin-top: 30px;
+  }
 }
 
 .nv-thumb-wrap + .nv-title-meta-wrap   {

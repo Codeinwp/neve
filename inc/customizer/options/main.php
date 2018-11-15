@@ -35,6 +35,7 @@ class Main extends Base_Customizer {
 	private function register_types() {
 		$this->register_type( 'Neve\Customizer\Controls\Radio_Image', 'control' );
 		$this->register_type( 'Neve\Customizer\Controls\Range', 'control' );
+		$this->register_type( 'Neve\Customizer\Controls\Responsive_Number', 'control' );
 		$this->register_type( 'Neve\Customizer\Controls\Tabs', 'control' );
 		$this->register_type( 'Neve\Customizer\Controls\Heading', 'control' );
 		$this->register_type( 'Neve\Customizer\Controls\Multi_Select', 'control' );
