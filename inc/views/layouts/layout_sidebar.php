@@ -76,14 +76,14 @@ class Layout_Sidebar extends Base_View {
 	 */
 	private function get_sidebar_setup( $context ) {
 		$advanced_options = get_theme_mod( 'neve_advanced_layout_options', false );
-		$sidebar_setup = array(
+		$sidebar_setup    = array(
 			'theme_mod'    => '',
 			'sidebar_slug' => 'blog-sidebar',
 		);
-		if( $advanced_options === false ){
+		if ( $advanced_options === false ) {
 			$sidebar_setup['theme_mod'] = 'neve_default_sidebar_layout';
 		} else {
-			switch ( $context ){
+			switch ( $context ) {
 				case 'blog-archive':
 					$sidebar_setup['theme_mod'] = 'neve_blog_archive_sidebar_layout';
 					break;

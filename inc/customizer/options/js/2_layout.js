@@ -130,10 +130,10 @@ var layoutLivePreview = function ( $ ) {
 	wp.customize( 'neve_blog_archive_content_width', function ( value ) {
 		value.bind( function ( newval ) {
 			var body = $( 'body' );
-			if ( ( body.hasClass( 'blog' ) || body.hasClass( 'archive' ) ) && !body.hasClass( 'woocommerce' ) ) {
+			if ( (body.hasClass( 'blog' ) || body.hasClass( 'archive' )) && !body.hasClass( 'woocommerce' ) ) {
 				changeContentWidth( newval );
 			}
-		} )
+		} );
 	} );
 
 	wp.customize( 'neve_single_post_content_width', function ( value ) {
@@ -142,7 +142,7 @@ var layoutLivePreview = function ( $ ) {
 			if ( body.hasClass( 'single' ) && !body.hasClass( 'woocommerce' ) ) {
 				changeContentWidth( newval );
 			}
-		} )
+		} );
 	} );
 
 	wp.customize( 'neve_other_pages_content_width', function ( value ) {
@@ -152,16 +152,20 @@ var layoutLivePreview = function ( $ ) {
 				return;
 			}
 			changeContentWidth( newval );
-		} )
+		} );
 	} );
 
 	wp.customize( 'neve_shop_archive_content_width', function ( value ) {
 		value.bind( function ( newval ) {
 			var body = $( 'body' );
-			if ( body.hasClass( 'archive' ) && body.hasClass( 'woocommerce' ) ) {
+			if (
+				(body.hasClass( 'archive' ) && body.hasClass( 'woocommerce' )) ||
+				body.hasClass( 'woocommerce-cart' ) ||
+				body.hasClass( 'woocommerce-checkout' ) ||
+				body.hasClass( 'woocommerce-account' ) ) {
 				changeContentWidth( newval );
 			}
-		} )
+		} );
 	} );
 
 	wp.customize( 'neve_single_product_content_width', function ( value ) {
@@ -170,10 +174,8 @@ var layoutLivePreview = function ( $ ) {
 			if ( body.hasClass( 'single' ) && body.hasClass( 'woocommerce' ) ) {
 				changeContentWidth( newval );
 			}
-		} )
-	})
-
-
+		} );
+	} );
 };
 
 layoutLivePreview( jQuery );
