@@ -10,18 +10,26 @@
             }
             $.each(to, function(key, value) {
                 var style_to_add;
-                style_to_add = settings.selectors + "{ " + settings.cssProperty + ":" + value + settings.propertyUnit + "}";
+                if (key === "suffix") {
+                    return true;
+                }
+                var unit = settings.propertyUnit;
+                if (typeof settings.propertyUnit === "object") {
+                    unit = settings.propertyUnit[key];
+                }
+                style_to_add = settings.selectors + "{ " + settings.cssProperty + ":" + value + unit + "}";
                 switch (key) {
-                  case "desktop":
+                  default:
+                  case "mobile":
                     result += style_to_add;
                     break;
 
-                  case "tablet":
-                    result += "@media (max-width: 767px){" + style_to_add + "}";
+                  case "desktop":
+                    result += "@media(min-width: 960px) {" + style_to_add + "}";
                     break;
 
-                  case "mobile":
-                    result += "@media (max-width: 480px){" + style_to_add + "}";
+                  case "tablet":
+                    result += "@media (min-width: 576px){" + style_to_add + "}";
                     break;
                 }
             });
@@ -90,7 +98,6 @@ var layoutRanges = {
     neve_body_font_size: {
         selector: "body",
         cssProp: "font-size",
-        unit: "px",
         styleClass: "body-font-size-css"
     },
     neve_body_line_height: {
@@ -100,13 +107,12 @@ var layoutRanges = {
         styleClass: "body-line-height-css"
     },
     neve_h1_font_size: {
-        selector: "h1",
+        selector: "h1, .single .entry-title",
         cssProp: "font-size",
-        unit: "rem",
         styleClass: "h1-font-size-css"
     },
     neve_h1_line_height: {
-        selector: "h1",
+        selector: "h1, .single .entry-title",
         cssProp: "line-height",
         unit: " ",
         styleClass: "h1-line-height-css"
@@ -114,7 +120,6 @@ var layoutRanges = {
     neve_h2_font_size: {
         selector: "h2",
         cssProp: "font-size",
-        unit: "rem",
         styleClass: "h2-font-size-css"
     },
     neve_h2_line_height: {
@@ -126,7 +131,6 @@ var layoutRanges = {
     neve_h3_font_size: {
         selector: "h3",
         cssProp: "font-size",
-        unit: "rem",
         styleClass: "h3-font-size-css"
     },
     neve_h3_line_height: {
@@ -138,7 +142,6 @@ var layoutRanges = {
     neve_h4_font_size: {
         selector: "h4",
         cssProp: "font-size",
-        unit: "rem",
         styleClass: "h4-font-size-css"
     },
     neve_h4_line_height: {
@@ -150,7 +153,6 @@ var layoutRanges = {
     neve_h5_font_size: {
         selector: "h5",
         cssProp: "font-size",
-        unit: "rem",
         styleClass: "h5-font-size-css"
     },
     neve_h5_line_height: {
@@ -162,7 +164,6 @@ var layoutRanges = {
     neve_h6_font_size: {
         selector: "h6",
         cssProp: "font-size",
-        unit: "rem",
         styleClass: "h6-font-size-css"
     },
     neve_h6_line_height: {
@@ -182,10 +183,13 @@ var layoutLivePreview = function($) {
                 if (!values) {
                     return true;
                 }
+                if (typeof values.suffix === "object") {
+                    args.unit = values.suffix;
+                }
                 var settings = {
                     selectors: args.selector,
                     cssProperty: args.cssProp,
-                    propertyUnit: args.unit,
+                    propertyUnit: args.unit ? args.unit : "",
                     styleClass: args.styleClass
                 };
                 $.neveCustomizeUtilities.setLiveCss(settings, values);

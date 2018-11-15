@@ -34,15 +34,31 @@ class Post_Header extends Base_View {
 			return;
 		}
 
-		$content_order = array(
+		$default_order = array(
 			'title-meta',
 			'thumbnail',
 		);
 
-		if ( class_exists( 'WooCommerce' ) && is_product() ) {
-			$content_order = array( 'title' );
+		$content_order = get_theme_mod( 'neve_single_post_elements_order', json_encode( $default_order ) );
+		$content_order = json_decode( $content_order );
+
+		if ( apply_filters( 'neve_filter_toggle_content_parts', true, 'title' ) !== true ) {
+			unset( $content_order[ array_search( 'title-meta', $content_order ) ] );
 		}
 
+		if ( apply_filters( 'neve_filter_toggle_content_parts', true, 'featured-image' ) !== true ) {
+			unset( $content_order[ array_search( 'thumbnail', $content_order ) ] );
+		}
+
+		if ( ! has_post_thumbnail() ) {
+			unset( $content_order[ array_search( 'thumbnail', $content_order ) ] );
+		}
+
+		if ( empty( $content_order ) ) {
+			return;
+		}
+
+		echo '<div class="entry-header">';
 		// Todo: add single content order here.
 		foreach ( $content_order as $item ) {
 			switch ( $item ) {
@@ -53,21 +69,12 @@ class Post_Header extends Base_View {
 					$this->render_post_meta();
 					break;
 				case 'title-meta':
-					if ( apply_filters( 'neve_filter_toggle_content_parts', true, 'title' ) !== true ) {
-						break;
-					}
 					echo '<div class="nv-title-meta-wrap">';
 					echo '<h1 class="title entry-title">' . wp_kses_post( get_the_title() ) . '</h1>';
 					$this->render_post_meta();
 					echo '</div>';
 					break;
 				case 'thumbnail':
-					if ( apply_filters( 'neve_filter_toggle_content_parts', true, 'featured-image' ) !== true ) {
-						break;
-					}
-					if ( ! has_post_thumbnail() ) {
-						break;
-					}
 					echo '<div class="nv-thumb-wrap">';
 					echo get_the_post_thumbnail(
 						null,
@@ -77,6 +84,7 @@ class Post_Header extends Base_View {
 					break;
 			}
 		}
+		echo '</div>';
 	}
 
 	/**

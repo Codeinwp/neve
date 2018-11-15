@@ -72,19 +72,6 @@
   margin: $spacing-xs auto;
 }
 
-article.sticky {
-  padding: 0 15px;
-  .article-content-col {
-    max-width: 100%;
-    .content {
-      border: 1px solid #dddddd;
-      max-width: 100%;
-      width: auto;
-      padding: 15px;
-    }
-  }
-}
-
 .layout-grid .content {
   > * {
     margin: 0 0 $spacing-xs;
@@ -124,15 +111,6 @@ article {
 }
 
 @mixin blogpost-index--laptop() {
-  .sticky .article-content-col {
-    .content {
-      margin-right: 15px;
-      margin-left: 15px;
-    }
-  }
-  article.sticky {
-    padding: 0;
-  }
   .non-grid-content > .entry-title {
     margin-top: 0;
   }

@@ -1,0 +1,38 @@
+.responsive-number .controls--wrap {
+	display: flex;
+
+	align-items: center;
+}
+
+.customize-control .responsive-number input[type=number] {
+	width: 73%;
+}
+
+.responsive-number select {
+	float: right;
+	width: 23%;
+	margin-left: 2%;
+}
+
+.responsive-number .control-wrap.active {
+	display: flex;
+	/*justify-content: space-between;*/
+}
+
+.reset-number-input {
+	display: inline-block;
+	position: relative;
+	width: 6%;
+	margin-left: auto;
+	color: rgba(0,0,0,0.2);
+	line-height: 1;
+	text-align: center;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.reset-number-input .dashicons {
+	width: 16px;
+	height: 16px;
+	font-size: 16px;
+}
