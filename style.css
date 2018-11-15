@@ -223,7 +223,7 @@ th {
 }
 
 html {
-  font-size: 15px;
+  font-size: 16px;
   overflow-x: hidden;
   -webkit-tap-highlight-color: transparent;
   -webkit-font-smoothing: antialiased;
@@ -269,31 +269,31 @@ ins {
 }
 
 body {
-  font-size: 0.9rem;
+  font-size: 15px;
 }
 
 h1 {
-  font-size: 1.5rem;
+  font-size: 1.5em;
 }
 
 h2 {
-  font-size: 1.3rem;
+  font-size: 1.3em;
 }
 
 h3 {
-  font-size: 1.1rem;
+  font-size: 1.1em;
 }
 
 h4 {
-  font-size: 1rem;
+  font-size: 1em;
 }
 
 h5 {
-  font-size: 0.75rem;
+  font-size: 0.75em;
 }
 
 h6 {
-  font-size: 0.75rem;
+  font-size: 0.75em;
 }
 
 .show-on-focus {
@@ -373,6 +373,30 @@ a.neve-skip-link {
   max-width: unset;
 }
 
+.has-neve-body-font-size {
+  font-size: 1.5em;
+}
+
+.has-neve-h-1-font-size {
+  font-size: 1.3em;
+}
+
+.has-neve-h-2-font-size {
+  font-size: 1.1em;
+}
+
+.has-neve-h-3-font-size {
+  font-size: 1em;
+}
+
+.has-neve-h-4-font-size {
+  font-size: 0.75em;
+}
+
+.has-neve-h-5-font-size {
+  font-size: 0.75em;
+}
+
 #nv-top-bar-menu {
   display: flex;
   flex-wrap: wrap;
@@ -438,7 +462,7 @@ a.neve-skip-link {
   float: left;
 }
 .site-logo p {
-  font-size: 1.25rem;
+  font-size: 1.25em;
   margin-bottom: 0;
   font-weight: 600;
 }
@@ -1770,31 +1794,59 @@ hr {
   }
 
   body {
-    font-size: 1rem;
+    font-size: 16px;
   }
 
   h1 {
-    font-size: 2rem;
+    font-size: 2em;
   }
 
   h2 {
-    font-size: 1.75rem;
+    font-size: 1.75em;
   }
 
   h3 {
-    font-size: 1.5rem;
+    font-size: 1.5em;
   }
 
   h4 {
-    font-size: 1.25rem;
+    font-size: 1.25em;
   }
 
   h5 {
-    font-size: 1rem;
+    font-size: 1em;
   }
 
   h6 {
-    font-size: 1rem;
+    font-size: 1em;
+  }
+
+  .has-neve-body-font-size {
+    font-size: 16px;
+  }
+
+  .has-neve-h-1-font-size {
+    font-size: 2em;
+  }
+
+  .has-neve-h-2-font-size {
+    font-size: 1.75em;
+  }
+
+  .has-neve-h-3-font-size {
+    font-size: 1.5em;
+  }
+
+  .has-neve-h-4-font-size {
+    font-size: 1.25em;
+  }
+
+  .has-neve-h-5-font-size {
+    font-size: 1em;
+  }
+
+  .has-neve-h-6-font-size {
+    font-size: 1em;
   }
 
   #comments li {
@@ -2108,10 +2160,6 @@ hr {
 
   .non-grid-content > .entry-title {
     margin-top: 0;
-  }
-
-  .single .entry-title {
-    font-size: 2em;
   }
 
   .archive-container {

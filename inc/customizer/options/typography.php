@@ -106,7 +106,7 @@ class Typography extends Base_Customizer {
 				array(
 					'transport'         => $this->selective_refresh,
 					'sanitize_callback' => 'sanitize_text_field',
-					'default'           => 'Graphik,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif',
+					'default'           => 'default',
 				),
 				array(
 					'label'    => esc_html__( 'Font Family', 'neve' ),
@@ -137,19 +137,19 @@ class Typography extends Base_Customizer {
 						'mobile'  => array(
 							'min'          => 10,
 							'max'          => 30,
-							'default'      => 14,
+							'default'      => 15,
 							'default_unit' => 'px',
 						),
 						'tablet'  => array(
 							'min'          => 10,
 							'max'          => 30,
-							'default'      => 14,
+							'default'      => 16,
 							'default_unit' => 'px',
 						),
 						'desktop' => array(
 							'min'          => 10,
 							'max'          => 30,
-							'default'      => 15,
+							'default'      => 16,
 							'default_unit' => 'px',
 						),
 					),
@@ -212,7 +212,7 @@ class Typography extends Base_Customizer {
 				array(
 					'transport'         => $this->selective_refresh,
 					'sanitize_callback' => 'sanitize_text_field',
-					'default'           => 'Graphik,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif',
+					'default'           => 'default',
 				),
 				array(
 					'label'    => esc_html__( 'Font Family', 'neve' ),
