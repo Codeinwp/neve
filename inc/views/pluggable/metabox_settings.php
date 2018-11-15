@@ -77,7 +77,7 @@ class Metabox_Settings {
 	 * @return mixed
 	 */
 	public function filter_sidebar_position( $position ) {
-		if ( ! is_single() && ! is_page() && ( class_exists( 'WooCommerce') && ! is_shop() ) ) {
+		if ( ! is_single() && ! is_page() && ( class_exists( 'WooCommerce' ) && ! is_shop() ) ) {
 			return $position;
 		}
 
