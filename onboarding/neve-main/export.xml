@@ -16,7 +16,7 @@
 <!-- 7. WordPress will then import each of the posts, pages, comments, categories, etc. -->
 <!--    contained in this file into your site. -->
 
-<!-- generator="WordPress/4.9.8" created="2018-11-14 09:48" -->
+<!-- generator="WordPress/4.9.8" created="2018-11-15 11:37" -->
 <rss version="2.0"
 	xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
 	xmlns:content="http://purl.org/rss/1.0/modules/content/"
@@ -29,7 +29,7 @@
 	<title>Neve Onboarding</title>
 	<link>https://demo.themeisle.com/neve-onboarding</link>
 	<description>Just another Demos Sites site</description>
-	<pubDate>Wed, 14 Nov 2018 09:48:03 +0000</pubDate>
+	<pubDate>Thu, 15 Nov 2018 11:37:50 +0000</pubDate>
 	<language>en-US</language>
 	<wp:wxr_version>1.2</wp:wxr_version>
 	<wp:base_site_url>https://demo.themeisle.com/</wp:base_site_url>
@@ -2524,6 +2524,32 @@ Neminem videbis ita laudatum, ut artifex callidus comparandarum voluptatum dicer
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
 			<wp:meta_value><![CDATA[119919]]></wp:meta_value>
+		</wp:postmeta>
+	</item>
+	<item>
+		<title>neve</title>
+		<link>https://demo.themeisle.com/neve-onboarding/neve-2/</link>
+		<pubDate>Wed, 17 Oct 2018 08:58:40 +0000</pubDate>
+		<dc:creator><![CDATA[rodica.andronache@vertistudio.com]]></dc:creator>
+		<guid isPermaLink="false">https://demo.themeisle.com/neve-onboarding/2018/10/17/4ce7b3de381bbd41c4b8543a7ecb20d1/</guid>
+		<description></description>
+		<content:encoded><![CDATA[]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>93</wp:post_id>
+		<wp:post_date><![CDATA[2018-10-17 08:58:40]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2018-10-17 08:58:40]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[neve-2]]></wp:post_name>
+		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[custom_css]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_wp_old_slug]]></wp:meta_key>
+			<wp:meta_value><![CDATA[4ce7b3de381bbd41c4b8543a7ecb20d1]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
