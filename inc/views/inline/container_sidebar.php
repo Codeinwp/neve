@@ -58,6 +58,15 @@ class Container_Sidebar extends Base_Inline {
 			if( is_single() ){
 				$content_width = get_theme_mod( 'neve_single_post_content_width', 70 );
 			}
+
+			if( class_exists('WooCommerce') ){
+				if( is_cart() || is_checkout() || is_account_page() || is_woocommerce() ){
+					$content_width = get_theme_mod( 'neve_shop_archive_content_width' , 70 );
+				}
+				if( is_product() ){
+					$content_width = get_theme_mod( 'neve_single_product_content_width' , 70 );
+				}
+			}
 		}
 
 		if( empty( $content_width ) ){
@@ -82,7 +91,7 @@ class Container_Sidebar extends Base_Inline {
 			),
 		);
 
-		$this->add_style( $settings['content'], '#content .container .col:not(:only-child)', 'desktop' );
+		$this->add_style( $settings['content'], '#content .container .col', 'desktop' );
 		$this->add_style( $settings['sidebar'], '.nv-sidebar-wrap, .nv-sidebar-wrap.shop-sidebar', 'desktop' );
 	}
 }

@@ -96,6 +96,12 @@ var layoutRanges = {
 	},
 };
 
+
+var changeContentWidth = function ( newval ) {
+	jQuery( '#content .container .col' ).css( 'max-width', newval + '%' );
+	jQuery( '.nv-sidebar-wrap, .nv-sidebar-wrap.shop-sidebar' ).css( 'max-width', 100 - newval + '%' );
+};
+
 var layoutLivePreview = function ( $ ) {
 	'use strict';
 	$.each( layoutRanges, function ( id, args ) {
@@ -115,6 +121,59 @@ var layoutLivePreview = function ( $ ) {
 			} );
 		} );
 	} );
+	wp.customize( 'neve_sitewide_content_width', function ( value ) {
+		value.bind( function ( newval ) {
+			changeContentWidth( newval );
+		} );
+	} );
+
+	wp.customize( 'neve_blog_archive_content_width', function ( value ) {
+		value.bind( function ( newval ) {
+			var body = $( 'body' );
+			if ( ( body.hasClass( 'blog' ) || body.hasClass( 'archive' ) ) && !body.hasClass( 'woocommerce' ) ) {
+				changeContentWidth( newval );
+			}
+		} )
+	} );
+
+	wp.customize( 'neve_single_post_content_width', function ( value ) {
+		value.bind( function ( newval ) {
+			var body = $( 'body' );
+			if ( body.hasClass( 'single' ) && !body.hasClass( 'woocommerce' ) ) {
+				changeContentWidth( newval );
+			}
+		} )
+	} );
+
+	wp.customize( 'neve_other_pages_content_width', function ( value ) {
+		value.bind( function ( newval ) {
+			var body = $( 'body' );
+			if ( body.hasClass( 'single' ) || body.hasClass( 'blog' ) || body.hasClass( 'archive' ) ) {
+				return;
+			}
+			changeContentWidth( newval );
+		} )
+	} );
+
+	wp.customize( 'neve_shop_archive_content_width', function ( value ) {
+		value.bind( function ( newval ) {
+			var body = $( 'body' );
+			if ( body.hasClass( 'archive' ) && body.hasClass( 'woocommerce' ) ) {
+				changeContentWidth( newval );
+			}
+		} )
+	} );
+
+	wp.customize( 'neve_single_product_content_width', function ( value ) {
+		value.bind( function ( newval ) {
+			var body = $( 'body' );
+			if ( body.hasClass( 'single' ) && body.hasClass( 'woocommerce' ) ) {
+				changeContentWidth( newval );
+			}
+		} )
+	})
+
+
 };
 
 layoutLivePreview( jQuery );

@@ -13,7 +13,7 @@ define( 'NEVE_INC_DIR', trailingslashit( get_template_directory() ) . 'inc/' );
 define( 'NEVE_ASSETS_URL', trailingslashit( get_template_directory_uri() ) . 'assets/' );
 
 if ( ! defined( 'NEVE_DEBUG' ) ) {
-	define( 'NEVE_DEBUG', false );
+	define( 'NEVE_DEBUG', true );
 }
 
 if ( ! defined( 'WPFORMS_SHAREASALE_ID' ) ) {
