@@ -103,14 +103,20 @@ class Front_End {
 					'theme_name'      => 'Zelle Pro',
 					'theme_mod_check' => 'zelle_frontpage_was_imported',
 					'template'        => 'zelle',
-					'description'     => __( 'We’ve detected you had Zelle theme installed. You can keep using your previous frontpage by converting it into an Elementor template.', 'neve' ),
+					'heading'         => __( 'Want to keep using Zelle\'s homepage?', 'neve' ),
+					'description'     => __( 'Hi! We\'ve noticed you were using Zelle before. To make your transition easier, we can help you keep the same beautiful homepage you had before, by converting it into an Elementor template. This option will also import your homepage content.', 'neve' ),
 				),
 				'zerif-lite' => array(
 					'theme_name'      => 'Zelle Lite',
 					'theme_mod_check' => 'zelle_frontpage_was_imported',
 					'template'        => 'zelle',
-					'description'     => __( 'We’ve detected you had Zelle theme installed. You can keep using your previous frontpage by converting it into an Elementor template.', 'neve' ),
+					'heading'         => __( 'Want to keep using Zelle\'s homepage?', 'neve' ),
+					'description'     => __( 'Hi! We\'ve noticed you were using Zelle before. To make your transition easier, we can help you keep the same beautiful homepage you had before, by converting it into an Elementor template. This option will also import your homepage content.', 'neve' ),
 				),
+			),
+			'i18n'             => array(
+				'templates_title'       => __( 'Ready to use pre-built websites with 1-click installation?', 'neve' ),
+				'templates_description' => __( 'With Neve, you can choose from multiple unique demos, specially designed for you, that can be installed with a single click. You just need to choose your favorite, and we will take care of everything else.', 'neve' ),
 			),
 		);
 

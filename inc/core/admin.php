@@ -209,9 +209,9 @@ class Admin {
 
 		$style = '
 		.wrap .notice.nv-welcome-notice{
-			margin:0;
 			border:0;
 			padding:10px;
+			margin: 20px 0;
 		}
 		.nv-notice-wrapper {
 			display: flex;
