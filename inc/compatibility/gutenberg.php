@@ -2,6 +2,7 @@
 /**
  * Author:          Andrei Baicus <andrei@themeisle.com>
  * Created on:      15/11/2018
+ *
  * @package gutenberg.php
  */
 
@@ -47,7 +48,9 @@ class Gutenberg {
 		$localization  = array();
 		$this->post_id = $_GET['post'];
 
-		$localization['postMetas'] = $this->get_post_metas();
+		$localization               = array_merge( $localization, $this->get_post_metas() );
+		$localization['strings']    = $this->get_strings();
+		$localization['metaStatus'] = $this->get_meta_status();
 
 		return $localization;
 	}
@@ -59,9 +62,33 @@ class Gutenberg {
 			if ( empty( $meta_value ) ) {
 				continue;
 			}
-			$metas[ $meta ] = $meta_value;
+			$metas[ $meta ] = $meta_value[0];
 		}
 
 		return $metas;
 	}
+
+	private function get_meta_status() {
+		$default_meta_order = json_encode(
+			array(
+				'author',
+				'date',
+				'comments',
+			)
+		);
+		$meta               = get_theme_mod( 'neve_post_meta_ordering', $default_meta_order );
+
+		if ( empty( $meta ) ) {
+			return 'disabled';
+		}
+
+		return 'enabled';
+	}
+
+	private function get_strings() {
+		return array(
+			'sidebar' => __( 'Sidebar', 'neve' ),
+		);
+	}
+
 }
