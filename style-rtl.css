@@ -1269,7 +1269,7 @@ article {
   margin-bottom: 10px;
 }
 
-.entry-header, .nv-page-title-wrap {
+.single .entry-header, .page .nv-page-title-wrap {
   margin-top: 30px;
 }
 
