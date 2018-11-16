@@ -115,7 +115,7 @@ class Front_End {
 				),
 			),
 			'i18n'             => array(
-				'templates_title'       => __( 'Ready to use pre-built websites with 1-click installation?', 'neve' ),
+				'templates_title'       => __( 'Ready to use pre-built websites with 1-click installation', 'neve' ),
 				'templates_description' => __( 'With Neve, you can choose from multiple unique demos, specially designed for you, that can be installed with a single click. You just need to choose your favorite, and we will take care of everything else.', 'neve' ),
 			),
 		);
