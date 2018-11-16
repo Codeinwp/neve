@@ -234,7 +234,7 @@ var layoutLivePreview = function($) {
     wp.customize("neve_shop_archive_content_width", function(value) {
         value.bind(function(newval) {
             var body = $("body");
-            if (body.hasClass("archive") && body.hasClass("woocommerce") || body.hasClass("woocommerce-cart") || body.hasClass("woocommerce-checkout") || body.hasClass("woocommerce-account")) {
+            if (body.hasClass("archive") && body.hasClass("woocommerce") ) {
                 changeContentWidth(newval);
             }
         });

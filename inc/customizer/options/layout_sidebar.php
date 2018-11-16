@@ -53,6 +53,24 @@ class Layout_Sidebar extends Base_Customizer {
 	private function add_main_controls() {
 		$this->add_control(
 			new Control(
+				'neve_default_sidebar_layout',
+				array(
+					'sanitize_callback' => array( $this, 'sanitize_sidebar_layout' ),
+					'default'           => 'right',
+				),
+				array(
+					'label'           => __( 'Sitewide Sidebar Layout', 'neve' ),
+					'section'         => 'neve_sidebar',
+					'priority'        => 10,
+					'choices'         => $this->sidebar_layout_choices(),
+					'active_callback' => array( $this, 'sidewide_options_active_callback' ),
+				),
+				'Neve\Customizer\Controls\Radio_Image'
+			)
+		);
+
+		$this->add_control(
+			new Control(
 				'neve_sitewide_content_width',
 				array(
 					'sanitize_callback' => 'absint',
@@ -69,28 +87,10 @@ class Layout_Sidebar extends Base_Customizer {
 						'max'     => 100,
 						'default' => 70,
 					),
-					'priority'        => 10,
+					'priority'        => 20,
 					'active_callback' => array( $this, 'sidewide_options_active_callback' ),
 				),
 				'Neve\Customizer\Controls\Range'
-			)
-		);
-
-		$this->add_control(
-			new Control(
-				'neve_default_sidebar_layout',
-				array(
-					'sanitize_callback' => array( $this, 'sanitize_sidebar_layout' ),
-					'default'           => 'right',
-				),
-				array(
-					'label'           => __( 'Sitewide Sidebar Layout', 'neve' ),
-					'section'         => 'neve_sidebar',
-					'priority'        => 20,
-					'choices'         => $this->sidebar_layout_choices(),
-					'active_callback' => array( $this, 'sidewide_options_active_callback' ),
-				),
-				'Neve\Customizer\Controls\Radio_Image'
 			)
 		);
 
@@ -147,7 +147,6 @@ class Layout_Sidebar extends Base_Customizer {
 		$headings = array(
 			'neve_blog_archive_heading' => __( 'Blog / Archive', 'neve' ),
 			'neve_single_post_heading'  => __( 'Single Post', 'neve' ),
-			'neve_generic_heading'      => __( 'Others', 'neve' ),
 		);
 
 		if ( class_exists( 'WooCommerce' ) ) {
@@ -159,6 +158,7 @@ class Layout_Sidebar extends Base_Customizer {
 				)
 			);
 		}
+		$headings['neve_generic_heading'] = __( 'Others', 'neve' );
 
 		$priority = 40;
 		foreach ( $headings as $control_id => $label ) {
@@ -195,7 +195,6 @@ class Layout_Sidebar extends Base_Customizer {
 		$sidebar_layout_controls = array(
 			'neve_blog_archive_sidebar_layout',
 			'neve_single_post_sidebar_layout',
-			'neve_other_pages_sidebar_layout',
 		);
 
 		if ( class_exists( 'WooCommerce' ) ) {
@@ -207,6 +206,7 @@ class Layout_Sidebar extends Base_Customizer {
 				)
 			);
 		}
+		array_push( $sidebar_layout_controls, 'neve_other_pages_sidebar_layout' );
 
 		foreach ( $sidebar_layout_controls as $control_id ) {
 			$this->add_control(
@@ -238,7 +238,6 @@ class Layout_Sidebar extends Base_Customizer {
 		$sidebar_layout_controls = array(
 			'neve_blog_archive_content_width',
 			'neve_single_post_content_width',
-			'neve_other_pages_content_width',
 		);
 
 		if ( class_exists( 'WooCommerce' ) ) {
@@ -250,6 +249,7 @@ class Layout_Sidebar extends Base_Customizer {
 				)
 			);
 		}
+		array_push( $sidebar_layout_controls, 'neve_other_pages_content_width' );
 
 		foreach ( $sidebar_layout_controls as $control_id ) {
 			$this->add_control(

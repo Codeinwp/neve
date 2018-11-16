@@ -60,7 +60,7 @@ class Container_Sidebar extends Base_Inline {
 			}
 
 			if ( class_exists( 'WooCommerce' ) ) {
-				if ( is_cart() || is_checkout() || is_account_page() || is_woocommerce() ) {
+				if ( is_woocommerce() ) {
 					$content_width = get_theme_mod( 'neve_shop_archive_content_width', 70 );
 				}
 				if ( is_product() ) {
