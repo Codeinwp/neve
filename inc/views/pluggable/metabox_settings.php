@@ -105,7 +105,7 @@ class Metabox_Settings {
 	public function filter_container_class( $class ) {
 
 		// Don't filter on blog.
-		if ( ! is_single() || ! is_page() ) {
+		if ( ! is_single() && ! is_page() ) {
 			return $class;
 		}
 
