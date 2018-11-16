@@ -1,4 +1,4 @@
-$wp-block-selector: '.neve-gtb-flow-wrap';
+$wp-block-selector: '.neve-gtb-flow-wrap.container';
 
 .gutenberg-editor-page #wpwrap .editor-styles-wrapper {
   .wp-block {
@@ -28,11 +28,13 @@ $wp-block-selector: '.neve-gtb-flow-wrap';
     display: none;
   }
 }
-.editor-styles-wrapper .neve-gtb-sidebar > p{
+
+.editor-styles-wrapper .neve-gtb-sidebar > p {
   font-size: 32px;
   font-weight: 600;
   color: #777;
 }
+
 //<editor-fold desc="Sidebar / Layout">
 .gutenberg-editor-page #wpwrap .editor-styles-wrapper {
   .neve-gtb-flow-wrap {
@@ -81,4 +83,8 @@ $wp-block-selector: '.neve-gtb-flow-wrap';
   #{$wp-block-selector} {
     max-width: 1140px;
   }
+}
+
+.gutenberg-editor-page #wpwrap .editor-styles-wrapper .neve-gtb-flow-wrap.container-fluid.has-sidebar-full-width .editor-writing-flow {
+  max-width: 100%;
 }

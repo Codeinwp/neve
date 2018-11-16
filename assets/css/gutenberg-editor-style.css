@@ -197,13 +197,17 @@
   padding: 0 25px 0 0;
 }
 
+.gutenberg-editor-page #wpwrap .editor-styles-wrapper .neve-gtb-flow-wrap.container-fluid.has-sidebar-full-width .editor-writing-flow {
+  max-width: 100%;
+}
+
 @media (min-width: 576px) {
-  .neve-gtb-flow-wrap {
+  .neve-gtb-flow-wrap.container {
     max-width: 540px;
   }
 }
 @media (min-width: 769px) {
-  .neve-gtb-flow-wrap {
+  .neve-gtb-flow-wrap.container {
     max-width: 720px;
   }
 
@@ -230,12 +234,12 @@
   }
 }
 @media (min-width: 960px) {
-  .neve-gtb-flow-wrap {
+  .neve-gtb-flow-wrap.container {
     max-width: 960px;
   }
 }
 @media (min-width: 1200px) {
-  .neve-gtb-flow-wrap {
+  .neve-gtb-flow-wrap.container {
     max-width: 1140px;
   }
 }
