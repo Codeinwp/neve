@@ -1,8 +1,9 @@
-$wp-block-selector: '.gutenberg-editor-page #wpwrap .editor-styles-wrapper .wp-block:not( [data-align=full] ):not( [data-align=wide] )';
+$wp-block-selector: '.neve-gtb-flow-wrap';
 
 .gutenberg-editor-page #wpwrap .editor-styles-wrapper {
   .wp-block {
     width: 100%;
+    max-width: 100%;
     margin-right: auto;
     margin-left: auto;
     .editor-block-list__layout {
@@ -15,26 +16,49 @@ $wp-block-selector: '.gutenberg-editor-page #wpwrap .editor-styles-wrapper .wp-b
   }
 }
 
+.neve-gtb-sidebar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e7e7e7;
+  padding: 10px;
+  max-width: 30%;
+  flex-grow: 1;
+  &.sidebar-hidden {
+    display: none;
+  }
+}
+
+.neve-gtb-flow-wrap {
+  display: flex;
+  margin: 0 auto;
+  .editor-writing-flow {
+    max-width: 70%;
+    flex-grow: 1;
+    margin: 0 auto;
+  }
+}
+
 @mixin content-width--tablet-sm() {
-  #{$wp-block-selector}  {
+  #{$wp-block-selector} {
     max-width: 540px;
   }
 }
 
 @mixin content-width--tablet() {
-  #{$wp-block-selector}  {
+  #{$wp-block-selector} {
     max-width: 720px;
   }
 }
 
 @mixin content-width--laptop() {
-  #{$wp-block-selector}  {
+  #{$wp-block-selector} {
     max-width: 960px;
   }
 }
 
 @mixin content-width--desktop() {
-  #{$wp-block-selector}  {
+  #{$wp-block-selector} {
     max-width: 1140px;
   }
 }

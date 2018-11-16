@@ -23,6 +23,11 @@ class Gutenberg {
 	private $post_id = null;
 
 	public function init() {
+		if ( ! isset( $_GET['post'] ) ) {
+			return;
+		}
+		$this->post_id = $_GET['post'];
+
 		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_gutenberg_scripts' ) );
 	}
 
@@ -40,21 +45,30 @@ class Gutenberg {
 		wp_enqueue_script( 'neve-gutenberg' );
 	}
 
+	/**
+	 * Localize the gutenberg helper script.
+	 *
+	 * @return array
+	 */
 	public function localize_gutenberg_helper_script() {
-
-		if ( ! isset( $_GET['post'] ) ) {
-			return array();
-		}
-		$localization  = array();
-		$this->post_id = $_GET['post'];
-
-		$localization               = array_merge( $localization, $this->get_post_metas() );
-		$localization['strings']    = $this->get_strings();
-		$localization['metaStatus'] = $this->get_meta_status();
+		$localization                 = array();
+		$localization                 = array_merge( $localization, $this->get_post_metas() );
+		$localization['strings']      = $this->get_strings();
+		$localization['metaStatus']   = $this->get_meta_status();
+		$localization['sidebarSetup'] = $this->get_sidebar_setup();
 
 		return $localization;
 	}
 
+	private function get_sidebar_setup() {
+		return 'right';
+	}
+
+	/**
+	 * Get the post metas we're interested in.
+	 *
+	 * @return array
+	 */
 	private function get_post_metas() {
 		$metas = array();
 		foreach ( $this->available_post_meta as $meta ) {
@@ -68,6 +82,11 @@ class Gutenberg {
 		return $metas;
 	}
 
+	/**
+	 * Check if post meta is shown on the front end.
+	 *
+	 * @return string
+	 */
 	private function get_meta_status() {
 		$default_meta_order = json_encode(
 			array(

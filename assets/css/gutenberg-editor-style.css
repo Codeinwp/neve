@@ -135,7 +135,7 @@
   padding: 0;
 }
 
-.gutenberg-editor-page #wpwrap .editor-styles-wrapper .wp-block.editor-post-title__block:after {
+.gutenberg-editor-page #wpwrap .editor-styles-wrapper.neve-has-meta .wp-block.editor-post-title__block:after {
   content: ' ';
   width: 245px;
   height: 12px;
@@ -143,11 +143,12 @@
   left: 14px;
   position: relative;
   top: -12px;
-  background: linear-gradient(90deg, #e7e7e7e7 0%, #e7e7e7e7 6%, #fff 6.01%, #fff 7.5%, #e7e7e7e7 7.51%, #e7e7e7e7 24%, #fff 24.01%, #fff 26%, #e7e7e7e7 26.01%, #e7e7e7e7 43%, #fff 43.01%, #fff 45%, #e7e7e7e7 45.01%, #e7e7e7e7 75%, #fff 75.01%, #fff 77%, #e7e7e7e7 77.01%);
+  background: linear-gradient(90deg, #e7e7e7 0%, #e7e7e7 6%, #fff 6.01%, #fff 7.5%, #e7e7e7 7.51%, #e7e7e7 24%, #fff 24.01%, #fff 26%, #e7e7e7 26.01%, #e7e7e7 43%, #fff 43.01%, #fff 45%, #e7e7e7 45.01%, #e7e7e7 75%, #fff 75.01%, #fff 77%, #e7e7e7 77.01%);
 }
 
 .gutenberg-editor-page #wpwrap .editor-styles-wrapper .wp-block {
   width: 100%;
+  max-width: 100%;
   margin-right: auto;
   margin-left: auto;
 }
@@ -159,13 +160,36 @@
   padding-right: 0;
 }
 
+.neve-gtb-sidebar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e7e7e7;
+  padding: 10px;
+  max-width: 30%;
+  flex-grow: 1;
+}
+.neve-gtb-sidebar.sidebar-hidden {
+  display: none;
+}
+
+.neve-gtb-flow-wrap {
+  display: flex;
+  margin: 0 auto;
+}
+.neve-gtb-flow-wrap .editor-writing-flow {
+  max-width: 70%;
+  flex-grow: 1;
+  margin: 0 auto;
+}
+
 @media (min-width: 576px) {
-  .gutenberg-editor-page #wpwrap .editor-styles-wrapper .wp-block:not([data-align=full]):not([data-align=wide]) {
+  .neve-gtb-flow-wrap {
     max-width: 540px;
   }
 }
 @media (min-width: 769px) {
-  .gutenberg-editor-page #wpwrap .editor-styles-wrapper .wp-block:not([data-align=full]):not([data-align=wide]) {
+  .neve-gtb-flow-wrap {
     max-width: 720px;
   }
 
@@ -192,12 +216,12 @@
   }
 }
 @media (min-width: 960px) {
-  .gutenberg-editor-page #wpwrap .editor-styles-wrapper .wp-block:not([data-align=full]):not([data-align=wide]) {
+  .neve-gtb-flow-wrap {
     max-width: 960px;
   }
 }
 @media (min-width: 1200px) {
-  .gutenberg-editor-page #wpwrap .editor-styles-wrapper .wp-block:not([data-align=full]):not([data-align=wide]) {
+  .neve-gtb-flow-wrap {
     max-width: 1140px;
   }
 }

@@ -7,7 +7,7 @@
 		init: function () {
 			this.addClasses();
 			this.handleSidebar();
-			this.handleTitleToggle();
+			this.handleMetaboxChanges();
 			console.log( this.data );
 		},
 
@@ -16,6 +16,12 @@
 			var wrapMarkup = '<div class="neve-gtb-flow-wrap"></div>';
 			$( editor ).addClass( 'neve-gtb' );
 			$( editor ).find( '.editor-writing-flow' ).wrap( wrapMarkup );
+			if ( this.data.metaStatus === 'enabled' ) {
+				$( editor ).addClass( 'neve-has-meta' );
+			}
+			if ( this.data.neve_meta_disable_title === 'on' ) {
+				$( '.neve-gtb' ).find( '.editor-post-title' ).hide();
+			}
 		},
 
 		handleSidebar: function () {
@@ -29,16 +35,36 @@
 			if ( this.data.neve_meta_sidebar !== position ) {
 				sidebarClass = ' sidebar-hidden ';
 			}
-			return '<div class="neve-gtb-sidebar ' + sidebarClass + position + '"><h2>'+ this.data.strings.sidebar +'</h2></div>';
+			return '<div class="neve-gtb-sidebar ' + sidebarClass + position + '"><p>' + this.data.strings.sidebar + '</p></div>';
 		},
 
-		handleTitleToggle: function () {
-			if ( this.data.neve_meta_disable_title === 'on' ) {
-				$( '.neve-gtb' ).find( '.editor-post-title' ).hide();
-			}
+		handleMetaboxChanges: function () {
+			var self = this;
 
+
+			// Title toggle.
 			$( '#neve-page-settings #neve_meta_disable_title' ).on( 'change', function () {
 				$( '.neve-gtb' ).find( '.editor-post-title' ).toggle();
+			} );
+
+			// Sidebar setting.
+			$( '#neve-page-settings input[name=neve_meta_sidebar]' ).on( 'change', function ( event ) {
+				var value = event.target.value;
+				if ( event.target.value === 'default' ) {
+					value = self.data.sidebarSetup;
+				}
+				$( '.neve-gtb-sidebar' ).addClass( 'sidebar-hidden' );
+				switch ( value ) {
+					case 'right':
+						$('.neve-gtb-sidebar.right').removeClass( 'sidebar-hidden' );
+						break;
+					case 'left':
+						$('.neve-gtb-sidebar.left').removeClass( 'sidebar-hidden' );
+						break;
+					case 'full-width':
+					default:
+						break;
+				}
 			} );
 		},
 
