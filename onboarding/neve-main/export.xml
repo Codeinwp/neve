@@ -2559,10 +2559,7 @@ Neminem videbis ita laudatum, ut artifex callidus comparandarum voluptatum dicer
 		<dc:creator><![CDATA[rodica.andronache@vertistudio.com]]></dc:creator>
 		<guid isPermaLink="false">https://demo.themeisle.com/neve/2018/09/07/neve/</guid>
 		<description></description>
-		<content:encoded><![CDATA[.single img {
-	display:none;
-}
-.elementor-element-117881b8 .content-forms-required, .elementor-element-117881b8 .required-mark {
+		<content:encoded><![CDATA[.elementor-element-117881b8 .content-forms-required, .elementor-element-117881b8 .required-mark {
 	display: none;
 }]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
