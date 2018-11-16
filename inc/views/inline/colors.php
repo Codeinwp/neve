@@ -53,7 +53,8 @@ class Colors extends Base_Inline {
 			$color_setup = array(
 				'color'            => array(
 					'css_prop'  => 'color',
-					'selectors' => '#nv-primary-navigation a:hover, #nv-primary-navigation a:focus, 
+					'selectors' => '#nv-primary-navigation a:hover, #nv-primary-navigation a:focus,
+					#nv-primary-navigation li:hover > a, #nv-primary-navigation li:focus > a, 
 					.menu-item-nav-search.responsive-nav-search > a:hover, .menu-item-nav-search.responsive-nav-search > a:focus,
 					.menu-item-nav-cart.responsive-nav-cart > a:hover, .menu-item-nav-cart.responsive-nav-cart > a:focus',
 				),
