@@ -54,7 +54,7 @@ class Colors_Background extends Base_Customizer {
 			'neve_button_color'          => array(
 				'default'  => '#0366d6',
 				'priority' => 10,
-				'label'    => __( 'Button Color', 'neve' ),
+				'label'    => __( 'Primary Button Color', 'neve' ),
 			),
 			'neve_link_color'            => array(
 				'default'  => '#0366d6',
