@@ -110,6 +110,10 @@ article {
   word-break: break-word;
 }
 
+.sticky {
+  display: inherit;
+}
+
 @mixin blogpost-index--laptop() {
   .non-grid-content > .entry-title {
     margin-top: 0;

@@ -1227,6 +1227,10 @@ article {
   word-break: break-word;
 }
 
+.sticky {
+  display: inherit;
+}
+
 .nv-loader {
   height: 50px;
   width: 50px;
