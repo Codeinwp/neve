@@ -170,91 +170,92 @@ class Admin {
 	 */
 	public function welcome_notice_content() {
 		$theme_args = wp_get_theme();
+		$name       = $theme_args->__get( 'Name' );
 		$slug       = $theme_args->__get( 'stylesheet' );
 
 		$notice_template = '
-			<div class="nv-col nv-notice-image">%1$s</div>
-			<div class="nv-col">%2$s</div>
-			<div class="nv-col">%3$s</div>
+			<div class="nv-notice-wrapper">
+				<div class="nv-notice-image">%1$s</div>
+				<div class="nv-notice-text">%2$s</div>
+				<div class="nv-notice-button">%3$s</div>
+			</div>
 			<style>%4$s</style>';
 
-		$nv_col1 = '
-			<img src="' . get_template_directory_uri() . '/vendor/codeinwp/ti-about-page/images/notice_image.png" alt="" />
-		';
-		$nv_col2 = sprintf(
-			'<h2>%1$s</h2><p class="grow">%2$s</p><div><a href="%3$s" class="button button-primary button-hero" style="text-decoration: none;">%4$s</a></div>',
-			esc_html__( 'Welcome! Thank you for choosing Neve!', 'neve' ),
-			sprintf(
-				/* translators: %1$s is link to welcome page */
-				esc_html__( 'To fully take advantage of the best our theme can offer please make sure you visit our %1$s.', 'neve' ),
-				sprintf(
-					'<a href="%1$s">%2$s</a>',
-					esc_url( admin_url( 'themes.php?page=' . $slug . '-welcome' ) ),
-					esc_html__( 'welcome page', 'neve' )
-				)
-			),
-			esc_url( admin_url( 'themes.php?page=' . $slug . '-welcome&onboarding=yes#sites_library' ) ),
-			esc_html__( 'Get started with Neve', 'neve' )
+		$image = sprintf(
+			/* translators: 1 - logo url, 2 - theme name */
+			'<img src="%1$s" alt="%2$s"/>',
+			esc_url( NEVE_ASSETS_URL . '/img/logo.png' ),
+			$name
 		);
 
-		$nv_col3 = sprintf(
-			'<h2>%1$s</h2><p>%2$s</p>',
-			esc_html__( 'Backwards compatibility.', 'neve' ),
-			esc_html__( 'Depending on your previous theme, you may keep your frontpage as it is without having to add data again.', 'neve' )
+		$content = sprintf(
+			/* translators: 1 - notice title, 2 - notice message */
+			'<h3>%1$s</h3><p>%2$s</p>',
+			sprintf(
+				/* translators: 1 - theme name */
+				esc_html__( 'Thanks for installing %1$s!', 'neve' ),
+				$name
+			),
+			esc_html__( 'Now, let\'s get you ready. It will take only a few minutes.', 'neve' )
 		);
-		$style   = '
-			.nv-welcome-notice{
-			padding:20px;
+
+		$button = sprintf(
+			/* Translators: 1 - onboarding url, 2 - button text */
+			'<a href="%1$s" class="button button-primary" style="text-decoration: none;">%2$s %3$s</a>',
+			esc_url( admin_url( 'themes.php?page=' . $slug . '-welcome&onboarding=yes#sites_library' ) ),
+			esc_html__( 'Get started with', 'neve' ),
+			$name
+		);
+
+		$style = '
+		.wrap .notice.nv-welcome-notice{
+			margin:0;
+			border:0;
+			padding:10px;
+		}
+		.nv-notice-wrapper {
 			display: flex;
-			}
-			.nv-col{
-			padding: 0 10px;
-			width: 32%;
-			margin-right: 1%;
-			display: flex;
-			flex-direction: column;
-			}
-			.nv-col:last-child{
-			margin-right: 0;
-			}
-			.nv-col img{
-			max-width: 100%;
-			}
-			.nv-col .grow{
-			flex-grow:1;
-			}
-			.nv-col h2{
-				margin-top: 0;
-			}
-			
-			@media (max-width:1024px){
-				.nv-notice-image{
-				display:none;
-				}
-				.nv-col{
-				width: 48%;
-				}
-			}
-			@media (max-width:870px){
-				.nv-welcome-notice{
-				display: block;
-				}
-				.nv-col{
-				width: 100%;
-				margin: 17px 0 0;
-				}
-			}
-			
+		    justify-content: center;
+		    align-items: center;
+		    flex-direction: column;
+		    background: #e6edf1;
+		    padding: 60px 0;
+		}
+		.nv-notice-image, .nv-notice-text, .nv-notice-button {text-align:center;}
+		.nv-notice-image{
+		    display: flex;
+		    justify-content: center;
+		    align-items: center;
+		    flex-direction: column;
+			width: 90px;
+			height: 90px;
+			border-radius: 50%;
+			background: #fff;
+			margin-bottom:20px;
+		}
+		.nv-notice-image img{
+			max-width:65px;
+		}
+		.nv-notice-text h3{
+		    margin: 0 12px 8px;
+		    padding: 0;
+		    font-size: 16px;
+		    font-weight: 400;
+		    color: #23282d;
+		}
+		.nv-notice-text p{
+			color: #59798f;
+			margin-bottom: 20px;
+		}
 		';
-		$notice  = sprintf(
+
+		echo sprintf(
 			$notice_template,
-			$nv_col1,
-			$nv_col2,
-			$nv_col3,
+			$image,
+			$content,
+			$button,
 			$style
 		);
-
-		echo $notice;
 	}
 
 	/**
