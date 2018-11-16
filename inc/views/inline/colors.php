@@ -37,7 +37,9 @@ class Colors extends Base_Inline {
 			$color_setup = array(
 				'color'            => array(
 					'css_prop'  => 'color',
-					'selectors' => '#nv-primary-navigation a, 
+					'selectors' => '#nv-primary-navigation a,
+					#nv-primary-navigation li > .caret-wrap .caret,
+					#nv-primary-navigation .neve-mega-menu > a:after,
 					.menu-item-nav-search.responsive-nav-search > a,
 					.menu-item-nav-cart.responsive-nav-cart > a',
 				),
@@ -55,6 +57,8 @@ class Colors extends Base_Inline {
 					'css_prop'  => 'color',
 					'selectors' => '#nv-primary-navigation a:hover, #nv-primary-navigation a:focus,
 					#nv-primary-navigation li:hover > a, #nv-primary-navigation li:focus > a, 
+					#nv-primary-navigation li:hover > .caret-wrap .caret, #nv-primary-navigation li:focus > .caret-wrap .caret, 
+					#nv-primary-navigation .neve-mega-menu:hover > a:after,
 					.menu-item-nav-search.responsive-nav-search > a:hover, .menu-item-nav-search.responsive-nav-search > a:focus,
 					.menu-item-nav-cart.responsive-nav-cart > a:hover, .menu-item-nav-cart.responsive-nav-cart > a:focus',
 				),

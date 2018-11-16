@@ -64,7 +64,7 @@
     > a {
       position: relative;
     }
-    > a::after {
+    > a:after {
       content: " ";
       height: 6px;
       width: 6px;
@@ -76,9 +76,12 @@
       border-bottom: 0;
       left: 8px;
       transform: rotate(135deg);
-      color: rgba(0, 0, 0, 0.54);
+      color: $body-color;
       top: -3px;
       z-index: 9;
+    }
+    &:hover > a:after {
+      color: $link_hover_color;
     }
     .sub-menu li a {
       white-space: normal;
