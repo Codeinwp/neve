@@ -1,5 +1,6 @@
 <?php
 /**
+ * Template Name: Page Builder Full Width (Neve)
  *
  * The template for the page builder full-width.
  *

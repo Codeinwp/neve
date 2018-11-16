@@ -5,7 +5,7 @@ Theme URI:      https://themeisle.com/themes/neve/
 Author:         ThemeIsle
 Author URI:     https://themeisle.com
 Description:    Neve is a super fast, easily customizable, multi-purpose theme. It’s perfect for blogs, small business, startups, agencies, firms, e-commerce shops (WooCommerce storefront) as well as personal portfolio sites and most types of projects. A fully AMP optimized and responsive theme, Neve will load in mere seconds and adapt perfectly on any viewing device. While it is lightweight and has a minimalist design, the theme is highly extendable, it has a highly SEO optimized code, resulting in top rankings in Google search results. Neve works perfectly with Gutenberg and the most popular page builders (Elementor, Brizy, Beaver Builder, Visual Composer, SiteOrigin, Divi). Neve is also WooCommerce ready, responsive, RTL & translation ready. Look no further. Neve is the perfect theme for you!
-Version:        1.0.8
+Version:        1.0.9
 License:        GNU General Public License v2 or later
 License URI:    http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain:    neve
@@ -453,6 +453,7 @@ a.neve-skip-link {
   display: inline;
 }
 .site-logo a:hover {
+  color: #404248;
   text-decoration: none;
   opacity: .9;
 }
@@ -861,6 +862,62 @@ a.button.close-responsive-search:hover {
   margin: 0 10px;
 }
 
+/* Style mega-menu and its children on mobile */
+#nv-primary-navigation .neve-mega-menu.dropdown-open > .sub-menu {
+  width: 100%;
+  max-height: 100%;
+  border-left: none;
+}
+
+#nv-primary-navigation .neve-mega-menu.dropdown-open .neve-mm-col {
+  transition: unset;
+}
+#nv-primary-navigation .neve-mega-menu.dropdown-open .neve-mm-col > a {
+  display: none;
+}
+#nv-primary-navigation .neve-mega-menu.dropdown-open .neve-mm-col > .caret-wrap {
+  display: none;
+}
+#nv-primary-navigation .neve-mega-menu.dropdown-open .neve-mm-col > .sub-menu {
+  padding-left: 0;
+  border-left: none;
+  max-height: 100%;
+}
+#nv-primary-navigation .neve-mega-menu.dropdown-open .neve-mm-col .neve-mm-heading > a {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/* Use some of the above code to avoid weird effect when opening/closing it on mobile */
+#nv-primary-navigation .neve-mega-menu > .sub-menu {
+  border-left: none;
+}
+#nv-primary-navigation .neve-mega-menu > .sub-menu .neve-mm-divider {
+  height: 1px;
+  margin: 9px auto 9px 0;
+  min-width: 75%;
+  max-width: 75%;
+  background-color: #c9c9c9;
+}
+
+#nv-primary-navigation .neve-mega-menu .neve-mm-col {
+  transition: unset;
+}
+#nv-primary-navigation .neve-mega-menu .neve-mm-col > a {
+  display: none;
+}
+#nv-primary-navigation .neve-mega-menu .neve-mm-col > .caret-wrap {
+  display: none;
+}
+#nv-primary-navigation .neve-mega-menu .neve-mm-col > .sub-menu {
+  padding-left: 0;
+  border-left: none;
+}
+#nv-primary-navigation .neve-mega-menu .neve-mm-col .neve-mm-heading > a {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
 footer {
   background-color: #fff;
 }
@@ -1047,8 +1104,8 @@ button:hover, input[type=button]:hover, .btn:hover, input[type="submit"]:hover {
   display: none;
 }
 .nv-meta-list .meta.author .photo {
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   transform: translateY(30%);
 }
@@ -1172,6 +1229,10 @@ article {
   word-break: break-word;
 }
 
+.sticky {
+  display: inherit;
+}
+
 .nv-loader {
   height: 50px;
   width: 50px;
@@ -1214,7 +1275,7 @@ article {
   margin-bottom: 10px;
 }
 
-.entry-header, .nv-page-title-wrap {
+.single .entry-header, .page .nv-page-title-wrap {
   margin-top: 30px;
 }
 
@@ -1942,15 +2003,16 @@ hr {
     padding-right: 18px;
   }
   #nv-primary-navigation > li > .caret-wrap {
-    top: 8px;
     position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
   }
   #nv-primary-navigation li:hover > a, #nv-primary-navigation li:focus > a {
     color: #0366d6;
     text-decoration: none;
   }
   #nv-primary-navigation li:hover > .caret-wrap .caret, #nv-primary-navigation li:focus > .caret-wrap .caret {
-    color: #404248;
+    color: #0366d6;
   }
   #nv-primary-navigation .sub-menu {
     -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -2172,6 +2234,106 @@ hr {
     margin: inherit;
     padding: 6px 12px;
   }
+
+  #nv-primary-navigation .neve-mega-menu > .sub-menu {
+    width: 950px;
+  }
+
+  #nv-primary-navigation .neve-mega-menu {
+    position: static;
+  }
+  #nv-primary-navigation .neve-mega-menu > a {
+    position: relative;
+  }
+  #nv-primary-navigation .neve-mega-menu > a:after {
+    content: " ";
+    height: 6px;
+    width: 6px;
+    position: relative;
+    display: inline-block;
+    border: 2px solid;
+    border-radius: 1px;
+    border-left: 0;
+    border-bottom: 0;
+    left: 8px;
+    transform: rotate(135deg);
+    color: #404248;
+    top: -3px;
+    z-index: 9;
+  }
+  #nv-primary-navigation .neve-mega-menu:hover > a:after {
+    color: #0366d6;
+  }
+  #nv-primary-navigation .neve-mega-menu .sub-menu li a {
+    white-space: normal;
+  }
+
+  #nv-primary-navigation .neve-mega-menu > .caret-wrap {
+    display: none;
+  }
+
+  #nv-primary-navigation .neve-mega-menu:hover > .sub-menu,
+  #nv-primary-navigation .neve-mega-menu:focus > .sub-menu,
+  #nv-primary-navigation .neve-mega-menu:focus-within > .sub-menu {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 20px;
+    top: 80%;
+    overflow: hidden;
+  }
+
+  #nv-primary-navigation .neve-mega-menu > .sub-menu,
+  #nv-primary-navigation .neve-mega-menu:hover > .sub-menu,
+  #nv-primary-navigation .neve-mega-menu:focus > .sub-menu,
+  #nv-primary-navigation .neve-mega-menu:focus-within > .sub-menu {
+    transition: unset;
+  }
+  #nv-primary-navigation .neve-mega-menu > .sub-menu .neve-mm-col,
+  #nv-primary-navigation .neve-mega-menu:hover > .sub-menu .neve-mm-col,
+  #nv-primary-navigation .neve-mega-menu:focus > .sub-menu .neve-mm-col,
+  #nv-primary-navigation .neve-mega-menu:focus-within > .sub-menu .neve-mm-col {
+    display: flex;
+    align-items: flex-start;
+  }
+  #nv-primary-navigation .neve-mega-menu > .sub-menu .neve-mm-col > .sub-menu,
+  #nv-primary-navigation .neve-mega-menu:hover > .sub-menu .neve-mm-col > .sub-menu,
+  #nv-primary-navigation .neve-mega-menu:focus > .sub-menu .neve-mm-col > .sub-menu,
+  #nv-primary-navigation .neve-mega-menu:focus-within > .sub-menu .neve-mm-col > .sub-menu {
+    transition: unset;
+    left: initial;
+    right: initial;
+  }
+
+  #nv-primary-navigation .neve-mega-menu:hover .neve-mm-col,
+  #nv-primary-navigation .neve-mega-menu:focus .neve-mm-col,
+  #nv-primary-navigation .neve-mega-menu:focus-within .neve-mm-col {
+    border: none;
+  }
+  #nv-primary-navigation .neve-mega-menu:hover .neve-mm-col .neve-mm-heading a,
+  #nv-primary-navigation .neve-mega-menu:focus .neve-mm-col .neve-mm-heading a,
+  #nv-primary-navigation .neve-mega-menu:focus-within .neve-mm-col .neve-mm-heading a {
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  #nv-primary-navigation .neve-mega-menu:hover .neve-mm-col > .sub-menu,
+  #nv-primary-navigation .neve-mega-menu:focus .neve-mm-col > .sub-menu,
+  #nv-primary-navigation .neve-mega-menu:focus-within .neve-mm-col > .sub-menu {
+    position: static;
+    visibility: visible;
+    opacity: 1;
+    left: initial;
+    right: initial;
+    border: none;
+    box-shadow: none;
+  }
+  #nv-primary-navigation .neve-mega-menu:hover .neve-mm-col > .sub-menu li,
+  #nv-primary-navigation .neve-mega-menu:focus .neve-mm-col > .sub-menu li,
+  #nv-primary-navigation .neve-mega-menu:focus-within .neve-mm-col > .sub-menu li {
+    border: none;
+  }
 }
 @media (min-width: 1200px) {
   .container {
@@ -2248,6 +2410,10 @@ hr {
   .col-xl-12 {
     flex: 0 0 100%;
     max-width: 100%;
+  }
+
+  #nv-primary-navigation .neve-mega-menu > .sub-menu {
+    width: 1170px;
   }
 }
 fieldset .submit-form {

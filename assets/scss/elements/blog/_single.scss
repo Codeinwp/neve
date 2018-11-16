@@ -1,4 +1,4 @@
-.entry-header, .nv-page-title-wrap {
+.single .entry-header, .page .nv-page-title-wrap {
   margin-top: 30px;
 }
 
@@ -8,9 +8,10 @@
   }
 }
 
-.nv-thumb-wrap + .nv-title-meta-wrap   {
+.nv-thumb-wrap + .nv-title-meta-wrap {
   margin-top: $spacing-sm;
 }
+
 .nv-title-meta-wrap + .nv-thumb-wrap {
   margin-top: $spacing-sm;
 }
