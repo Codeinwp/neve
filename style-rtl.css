@@ -451,6 +451,7 @@ a.neve-skip-link {
   display: inline;
 }
 .site-logo a:hover {
+  color: #404248;
   text-decoration: none;
   opacity: .9;
 }
@@ -2005,7 +2006,7 @@ hr {
     text-decoration: none;
   }
   #nv-primary-navigation li:hover > .caret-wrap .caret, #nv-primary-navigation li:focus > .caret-wrap .caret {
-    color: #404248;
+    color: #0366d6;
   }
   #nv-primary-navigation .sub-menu {
     -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -2238,7 +2239,7 @@ hr {
   #nv-primary-navigation .neve-mega-menu > a {
     position: relative;
   }
-  #nv-primary-navigation .neve-mega-menu > a::after {
+  #nv-primary-navigation .neve-mega-menu > a:after {
     content: " ";
     height: 6px;
     width: 6px;
@@ -2250,9 +2251,12 @@ hr {
     border-bottom: 0;
     right: 8px;
     transform: rotate(-135deg);
-    color: rgba(0, 0, 0, 0.54);
+    color: #404248;
     top: -3px;
     z-index: 9;
+  }
+  #nv-primary-navigation .neve-mega-menu:hover > a:after {
+    color: #0366d6;
   }
   #nv-primary-navigation .neve-mega-menu .sub-menu li a {
     white-space: normal;
