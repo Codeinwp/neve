@@ -51,17 +51,34 @@ class Gutenberg {
 	 * @return array
 	 */
 	public function localize_gutenberg_helper_script() {
-		$localization                 = array();
-		$localization                 = array_merge( $localization, $this->get_post_metas() );
-		$localization['strings']      = $this->get_strings();
-		$localization['metaStatus']   = $this->get_meta_status();
-		$localization['sidebarSetup'] = $this->get_sidebar_setup();
+		$localization                   = array();
+		$localization                   = array_merge( $localization, $this->get_post_metas() );
+		$localization['strings']        = $this->get_strings();
+		$localization['metaStatus']     = $this->get_meta_status();
+		$localization['sidebarSetup']   = $this->get_sidebar_setup();
+		$localization['containerSetup'] = $this->get_container_setup();
 
 		return $localization;
 	}
 
+	/**
+	 * Get the sidebar setup.
+	 *
+	 * @return string
+	 * TODO: Really pull the sidebar setup from customizer.
+	 */
 	private function get_sidebar_setup() {
 		return 'right';
+	}
+
+	/**
+	 * Get the container setup.
+	 *
+	 * @return string
+	 * TODO: Really pull the container setup from customizer.
+	 */
+	private function get_container_setup() {
+		return 'contained';
 	}
 
 	/**
@@ -104,6 +121,11 @@ class Gutenberg {
 		return 'enabled';
 	}
 
+	/**
+	 * Get translatable strings.
+	 *
+	 * @return array
+	 */
 	private function get_strings() {
 		return array(
 			'sidebar' => __( 'Sidebar', 'neve' ),

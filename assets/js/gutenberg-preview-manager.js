@@ -13,7 +13,7 @@
 
 		addClasses: function () {
 			var editor = $( '.editor-styles-wrapper' );
-			var wrapMarkup = '<div class="neve-gtb-flow-wrap"></div>';
+			var wrapMarkup = '<div class="neve-gtb-flow-wrap has-sidebar-' + this.data.neve_meta_sidebar + '"></div>';
 			$( editor ).addClass( 'neve-gtb' );
 			$( editor ).find( '.editor-writing-flow' ).wrap( wrapMarkup );
 			if ( this.data.metaStatus === 'enabled' ) {
@@ -28,6 +28,10 @@
 			var wrap = $( '.neve-gtb-flow-wrap' );
 			$( wrap ).prepend( this.getSidebarMarkup( 'left' ) );
 			$( wrap ).append( this.getSidebarMarkup( 'right' ) );
+		},
+
+		handleContainer: function () {
+
 		},
 
 		getSidebarMarkup: function ( position ) {
@@ -56,16 +60,30 @@
 				$( '.neve-gtb-sidebar' ).addClass( 'sidebar-hidden' );
 				switch ( value ) {
 					case 'right':
-						$('.neve-gtb-sidebar.right').removeClass( 'sidebar-hidden' );
+						$( '.neve-gtb-flow-wrap' ).removeClass( 'has-sidebar-left' );
+						$( '.neve-gtb-flow-wrap' ).addClass( 'has-sidebar-right' );
+						$( '.neve-gtb-sidebar.right' ).removeClass( 'sidebar-hidden' );
 						break;
 					case 'left':
-						$('.neve-gtb-sidebar.left').removeClass( 'sidebar-hidden' );
+						$( '.neve-gtb-flow-wrap' ).removeClass( 'has-sidebar-right' );
+						$( '.neve-gtb-flow-wrap' ).addClass( 'has-sidebar-left' );
+						$( '.neve-gtb-sidebar.left' ).removeClass( 'sidebar-hidden' );
 						break;
 					case 'full-width':
+						$( '.neve-gtb-flow-wrap' ).removeClass( 'has-sidebar-right has-sidebar-left' );
 					default:
 						break;
 				}
 			} );
+			
+			// Container setting.
+			$( '#neve-page-settings input[name=neve_meta_container]' ).on( 'change', function ( event ) {
+				var value = event.target.value;
+				if ( event.target.value === 'default' ) {
+					value = self.data.containerSetup;
+				}
+				console.log(value);
+			})
 		},
 
 	};

@@ -28,17 +28,37 @@ $wp-block-selector: '.neve-gtb-flow-wrap';
     display: none;
   }
 }
-
-.neve-gtb-flow-wrap {
-  display: flex;
-  margin: 0 auto;
-  .editor-writing-flow {
-    max-width: 70%;
-    flex-grow: 1;
+.editor-styles-wrapper .neve-gtb-sidebar > p{
+  font-size: 32px;
+  font-weight: 600;
+  color: #777;
+}
+//<editor-fold desc="Sidebar / Layout">
+.gutenberg-editor-page #wpwrap .editor-styles-wrapper {
+  .neve-gtb-flow-wrap {
+    display: flex;
     margin: 0 auto;
+    .editor-writing-flow {
+      max-width: 70%;
+      flex-grow: 1;
+      margin: 0 auto;
+    }
+    &.has-sidebar-left {
+      .editor-post-title,
+      .editor-block-list__layout {
+        padding: 0 0 0 25px;
+      }
+    }
+    &.has-sidebar-right {
+      .editor-post-title,
+      .editor-block-list__layout {
+        padding: 0 25px 0 0;
+      }
+    }
   }
 }
 
+//</editor-fold>
 @mixin content-width--tablet-sm() {
   #{$wp-block-selector} {
     max-width: 540px;
