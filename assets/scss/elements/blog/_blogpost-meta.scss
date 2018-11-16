@@ -19,8 +19,8 @@
   }
   .meta.author {
     .photo {
-      width: 30px;
-      height: 30px;
+      width: $spacing-sm;
+      height: $spacing-sm;
       border-radius: 50%;
       transform: translateY(30%);
     }
