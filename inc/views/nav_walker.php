@@ -34,6 +34,12 @@ class Nav_Walker extends \Walker_Nav_Menu {
 			return;
 		}
 
+		if ( isset( $item->title ) && ( strcasecmp( $item->title, 'divider' ) == 0 ) && $depth >= 1 ) {
+			$indent  = ( $depth ) ? str_repeat( "\t", $depth ) : '';
+			$output .= $indent . '<li role="presentation" class="neve-mm-divider">';
+			return;
+		}
+
 		parent::start_el( $output, $item, $depth, $args, $id );
 
 		if ( ! isset( $item->classes ) || ! is_array( $item->classes ) ) {

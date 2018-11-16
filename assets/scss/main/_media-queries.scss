@@ -25,9 +25,11 @@
   @include sidebar--laptop();
   @include blog-layout--laptop();
   @include nav-buttons--laptop();
+  @include mega-menu--laptop();
 }
 
 @media (min-width: #{$desktop}) {
   @include grid-container--desktop();
   @include grid--desktop();
+  @include mega-menu--desktop();
 }
