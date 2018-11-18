@@ -58,7 +58,8 @@ abstract class Base_Inline {
 		$use_style = false;
 
 		foreach ( $styles as $style ) {
-			if ( ! isset( $style['value'] ) || empty( $style['value'] ) ) {
+			/* Allow 0 values through, but don't allow empty style or undefined. */
+			if ( ! isset( $style['value'] ) || ( empty( $style['value'] ) && ( $style['value'] !== 0 ) ) ) {
 				continue;
 			}
 			$use_style = true;
@@ -70,6 +71,9 @@ abstract class Base_Inline {
 
 		$css = $selectors . '{';
 		foreach ( $styles as $id => $style ) {
+			if ( isset( $style['suffix'] ) && is_array( $style['suffix'] ) ) {
+				$style['suffix'] = $style['suffix'][ $media_query ];
+			}
 			$css .= $this->add_styles( $style );
 		}
 		$css                         .= '}';

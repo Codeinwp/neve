@@ -5,12 +5,13 @@
 @media (min-width: #{$tablet}) {
   @include checkout--tablet();
   @include cart--tablet();
+  @include product--tablet();
 }
 
 @media (min-width: #{$laptop}) {
   @include nav-cart--laptop();
   @include shop-sidebar--laptop();
-  @include product--laptop();
+  @include shop-loop--laptop();
 }
 
 @media (min-width: #{$desktop}) {

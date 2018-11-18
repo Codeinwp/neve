@@ -125,8 +125,9 @@
         padding-right: 18px;
       }
       > .caret-wrap {
-        top: 8px;
         position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
       }
     }
 
@@ -136,7 +137,7 @@
         text-decoration: none;
       }
       > .caret-wrap .caret {
-        color: $body-color;
+        color: $link_hover_color;
       }
     }
 
@@ -182,7 +183,9 @@
         display: block;
         visibility: visible;
         opacity: 1;
-
+      }
+      &:last-child {
+        padding-right: $spacing-xs;
       }
     }
 
@@ -210,5 +213,9 @@
     .caret-wrap {
       padding-right: 25px;
     }
+  }
+
+  .menu-item-has-children:last-child .caret-wrap {
+    right: -10px;
   }
 }

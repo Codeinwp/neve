@@ -28,7 +28,7 @@ class Admin {
 		$config = array(
 			'welcome_notice'      => array(
 				'type'            => 'custom',
-				'notice_class'    => 'updated',
+				'notice_class'    => 'nv-welcome-notice',
 				'dismiss_option'  => 'neve_notice_dismissed',
 				'render_callback' => array( $this, 'welcome_notice_content' ),
 			),
@@ -173,33 +173,95 @@ class Admin {
 		$name       = $theme_args->__get( 'Name' );
 		$slug       = $theme_args->__get( 'stylesheet' );
 
-		$notice = sprintf(
-			/* Translators: 1 - welcome text, 2 - get started button */
-			'<p>%1$s</p><p>%2$s</p>',
-			sprintf(
-				/* Translators: 1 - theme name, 2 - link opening tag, 3 - link closing tag */
-				esc_html__( 'Welcome! Thank you for choosing %1$s! To fully take advantage of the best our theme can offer please make sure you visit our %2$swelcome page%3$s.', 'neve' ),
-				$name,
-				'<a href="' . esc_url( admin_url( 'themes.php?page=' . $slug . '-welcome' ) ) . '">',
-				'</a>'
-			),
-			sprintf(
-				/* Translators: 1 - onboarding url, 2 - button text */
-				'<a href="%1$s" class="button" style="text-decoration: none;">%2$s %3$s</a>',
-				esc_url( admin_url( 'themes.php?page=' . $slug . '-welcome&onboarding=yes#sites_library' ) ),
-				esc_html__( 'Get started with', 'neve' ),
-				$name
-			)
+		$notice_template = '
+			<div class="nv-notice-wrapper">
+				<div class="nv-notice-image">%1$s</div>
+				<div class="nv-notice-text">%2$s</div>
+				<div class="nv-notice-button">%3$s</div>
+			</div>
+			<style>%4$s</style>';
+
+		$image = sprintf(
+			/* translators: 1 - logo url, 2 - theme name */
+			'<img src="%1$s" alt="%2$s"/>',
+			esc_url( NEVE_ASSETS_URL . '/img/logo.png' ),
+			$name
 		);
 
-		echo wp_kses_post( $notice );
+		$content = sprintf(
+			/* translators: 1 - notice title, 2 - notice message */
+			'<h3>%1$s</h3><p>%2$s</p>',
+			sprintf(
+				/* translators: 1 - theme name */
+				esc_html__( 'Thanks for installing %1$s!', 'neve' ),
+				$name
+			),
+			esc_html__( 'Now, let\'s get you ready. It will take only a few minutes.', 'neve' )
+		);
+
+		$button = sprintf(
+			/* Translators: 1 - onboarding url, 2 - button text */
+			'<a href="%1$s" class="button button-primary" style="text-decoration: none;">%2$s %3$s</a>',
+			esc_url( admin_url( 'themes.php?page=' . $slug . '-welcome&onboarding=yes#sites_library' ) ),
+			esc_html__( 'Get started with', 'neve' ),
+			$name
+		);
+
+		$style = '
+		.wrap .notice.nv-welcome-notice{
+			border:0;
+			padding:10px;
+			margin: 20px 0;
+		}
+		.nv-notice-wrapper {
+			display: flex;
+		    justify-content: center;
+		    align-items: center;
+		    flex-direction: column;
+		    background: #e6edf1;
+		    padding: 60px 0;
+		}
+		.nv-notice-image, .nv-notice-text, .nv-notice-button {text-align:center;}
+		.nv-notice-image{
+		    display: flex;
+		    justify-content: center;
+		    align-items: center;
+		    flex-direction: column;
+			width: 90px;
+			height: 90px;
+			border-radius: 50%;
+			background: #fff;
+			margin-bottom:20px;
+		}
+		.nv-notice-image img{
+			max-width:65px;
+		}
+		.nv-notice-text h3{
+		    margin: 0 12px 8px;
+		    padding: 0;
+		    font-size: 16px;
+		    font-weight: 400;
+		    color: #23282d;
+		}
+		.nv-notice-text p{
+			color: #59798f;
+			margin-bottom: 20px;
+		}
+		';
+
+		echo sprintf(
+			$notice_template,
+			$image,
+			$content,
+			$button,
+			$style
+		);
 	}
 
 	/**
 	 * Load site import module.
 	 */
 	public function load_site_import() {
-		require_once( NEVE_INC_DIR . 'admin/onboarding/class-themeisle-onboarding.php' );
 		if ( class_exists( '\Themeisle_Onboarding' ) ) {
 			\Themeisle_Onboarding::instance();
 		}

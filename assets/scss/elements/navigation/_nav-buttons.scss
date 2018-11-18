@@ -1,0 +1,64 @@
+#nv-primary-navigation, .menu {
+  > li.button {
+    padding: 0;
+    vertical-align: middle;
+    align-items: center;
+    display: flex;
+    border: none;
+  }
+  li.button {
+    text-align: left;
+    background: none;
+    > a {
+      @include button();
+      font-size: inherit;
+    }
+    /* Primary button */
+    &.button-primary {
+      > a {
+        @include button-primary();
+      }
+      &:hover > a {
+        color: #fff;
+      }
+    }
+    /* Secondary button */
+    &.button-secondary > a {
+      @include button-secondary();
+    }
+  }
+}
+
+/* Remove margin from buttons in sub-menus on primary nav. */
+#nv-primary-navigation .sub-menu li.button > a {
+  margin-right: 0;
+}
+
+#nv-primary-navigation .button {
+  margin: $spacing-xs 0;
+  padding: 0;
+}
+
+/* Negate default button properties */
+.menu li.button {
+  &, &:hover {
+    background: none;
+    border: none;
+  }
+}
+
+/* Footer menu buttons */
+.nv-footer-content .footer-menu li {
+  display: flex;
+  align-items: center;
+  &.button {
+    margin: 0 10px;
+  }
+}
+
+@mixin nav-buttons--laptop() {
+  #nv-primary-navigation .button {
+    margin: inherit;
+    padding: 6px 12px;
+  }
+}

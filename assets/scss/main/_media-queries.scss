@@ -7,6 +7,7 @@
   @include grid-container--tablet();
   @include grid--tablet();
   @include typography--tablet();
+  @include comments--tablet();
 }
 
 @media (min-width: #{$laptop}) {
@@ -19,14 +20,16 @@
   @include nav-menu-right--laptop();
   @include blog-layout-default-alt--laptop();
   @include blogpost-index--laptop();
-  @include comments--laptop();
   @include single-post--laptop();
   @include page--laptop();
   @include sidebar--laptop();
   @include blog-layout--laptop();
+  @include nav-buttons--laptop();
+  @include mega-menu--laptop();
 }
 
 @media (min-width: #{$desktop}) {
   @include grid-container--desktop();
   @include grid--desktop();
+  @include mega-menu--desktop();
 }

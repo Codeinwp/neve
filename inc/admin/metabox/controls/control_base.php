@@ -64,7 +64,8 @@ abstract class Control_Base {
 			return;
 		}
 
-		$control_label  = '';
+		$control_label = '';
+
 		$control_label .= '<p class="post-attributes-label-wrapper">';
 		$control_label .= '<span class="post-attributes-label">' . esc_html( $label ) . '</span>';
 		$control_label .= '</p>';
@@ -86,6 +87,10 @@ abstract class Control_Base {
 	 */
 	private function should_render() {
 		if ( ! array_key_exists( 'active_callback', $this->settings ) ) {
+			return true;
+		}
+
+		if ( empty( $this->settings['active_callback'] ) ) {
 			return true;
 		}
 
@@ -131,10 +136,9 @@ abstract class Control_Base {
 		if ( ! current_user_can( 'edit_posts' ) ) {
 			return;
 		}
-
 		if ( isset( $_POST[ $this->id ] ) ) {
 			$value = wp_unslash( $_POST[ $this->id ] );
-			if ( $value === 'default' ) {
+			if ( $value === $this->settings['default'] ) {
 				delete_post_meta( $post_id, $this->id );
 
 				return;

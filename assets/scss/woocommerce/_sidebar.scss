@@ -6,7 +6,7 @@
   left: 0;
   bottom: 0;
   background-color: #fff;
-  padding: $spacing-sm;
+  padding: $spacing-lg $spacing-sm $spacing-sm;
   z-index: 100;
   overflow: scroll;
   transition: all 0.3s ease-out;
@@ -21,7 +21,6 @@
 
 .sidebar-header {
   width: 100%;
-  border-bottom: $muted-border;
   margin-bottom: $spacing-sm;
   &:after {
     content: "";
@@ -68,6 +67,7 @@
     display: none;
   }
   .nv-sidebar-wrap.shop-sidebar {
+    margin-top: $spacing-sm;
     padding: 0 $spacing-sm;
     z-index: inherit;
     position: relative;

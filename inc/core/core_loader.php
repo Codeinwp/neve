@@ -57,6 +57,7 @@ class Core_Loader {
 
 				'Views\Partials\Post_Meta',
 				'Views\Partials\Excerpt',
+				'Views\Partials\Comments',
 
 				'Views\Pluggable\Pagination',
 				'Views\Pluggable\Masonry',

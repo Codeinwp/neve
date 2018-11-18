@@ -25,6 +25,7 @@
     color: $body-color;
     display: inline;
     &:hover {
+      color: $body-color;
       text-decoration: none;
       opacity: .9;
     }

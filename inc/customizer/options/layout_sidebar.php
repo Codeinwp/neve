@@ -94,7 +94,7 @@ class Layout_Sidebar extends Base_Customizer {
 					'class'            => 'advanced-sidebar-accordion',
 					'accordion'        => true,
 					'controls_to_wrap' => class_exists( 'WooCommerce' ) ? 4 : 2,
-					'expanded'         => false,
+					'expanded'         => true,
 				),
 				'Neve\Customizer\Controls\Heading'
 			)
@@ -110,14 +110,17 @@ class Layout_Sidebar extends Base_Customizer {
 			'neve_default_sidebar_layout'      => array(
 				'priority' => 30,
 				'label'    => __( 'Default Sidebar Layout', 'neve' ),
+				'default'  => 'right',
 			),
 			'neve_blog_archive_sidebar_layout' => array(
 				'priority' => 35,
 				'label'    => __( 'Blog / Archive Sidebar Layout', 'neve' ),
+				'default'  => 'right',
 			),
 			'neve_single_post_sidebar_layout'  => array(
 				'priority' => 40,
 				'label'    => __( 'Single Post Sidebar Layout', 'neve' ),
+				'default'  => 'right',
 			),
 		);
 
@@ -128,10 +131,12 @@ class Layout_Sidebar extends Base_Customizer {
 					'neve_shop_archive_sidebar_layout'   => array(
 						'priority' => 45,
 						'label'    => __( 'Shop / Archive Sidebar Layout', 'neve' ),
+						'default'  => 'right',
 					),
 					'neve_single_product_sidebar_layout' => array(
 						'priority' => 50,
 						'label'    => __( 'Single Product Sidebar Layout', 'neve' ),
+						'default'  => 'full-width',
 					),
 				)
 			);
@@ -143,7 +148,7 @@ class Layout_Sidebar extends Base_Customizer {
 					$control_id,
 					array(
 						'sanitize_callback' => array( $this, 'sanitize_sidebar_layout' ),
-						'default'           => 'right',
+						'default'           => $control['default'],
 					),
 					array(
 						'label'    => $control['label'],

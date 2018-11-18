@@ -1,0 +1,147 @@
+/* Style mega-menu and its children on mobile */
+#nv-primary-navigation .neve-mega-menu.dropdown-open > .sub-menu {
+  width: 100%;
+  max-height: 100%;
+  border-left: none;
+}
+#nv-primary-navigation .neve-mega-menu.dropdown-open .neve-mm-col {
+  transition: unset;
+  > a {
+    display: none
+  }
+  > .caret-wrap {
+    display: none;
+  }
+  > .sub-menu {
+    padding-left: 0;
+    border-left: none;
+    max-height: 100%;
+  }
+  .neve-mm-heading {
+    > a {
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+  }
+}
+/* Use some of the above code to avoid weird effect when opening/closing it on mobile */
+#nv-primary-navigation .neve-mega-menu > .sub-menu {
+  border-left: none;
+  .neve-mm-divider {
+    height: 1px;
+    margin: 9px auto 9px 0;
+    min-width: 75%;
+    max-width: 75%;
+    background-color: $muted-white-med;
+  }
+}
+#nv-primary-navigation .neve-mega-menu .neve-mm-col {
+  transition: unset;
+  > a {
+    display: none
+  }
+  > .caret-wrap {
+    display: none;
+  }
+  > .sub-menu {
+    padding-left: 0;
+    border-left: none;
+  }
+  .neve-mm-heading {
+    > a {
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+  }
+}
+
+@mixin mega-menu--laptop() {
+  #nv-primary-navigation .neve-mega-menu > .sub-menu {
+    width: 950px;
+  }
+  #nv-primary-navigation .neve-mega-menu {
+    position: static;
+    > a {
+      position: relative;
+    }
+    > a:after {
+      content: " ";
+      height: 6px;
+      width: 6px;
+      position: relative;
+      display: inline-block;
+      border: 2px solid;
+      border-radius: 1px;
+      border-left: 0;
+      border-bottom: 0;
+      left: 8px;
+      transform: rotate(135deg);
+      color: $body-color;
+      top: -3px;
+      z-index: 9;
+    }
+    &:hover > a:after {
+      color: $link_hover_color;
+    }
+    .sub-menu li a {
+      white-space: normal;
+    }
+  }
+  #nv-primary-navigation .neve-mega-menu > .caret-wrap {
+    display: none;
+  }
+  #nv-primary-navigation .neve-mega-menu:hover > .sub-menu,
+  #nv-primary-navigation .neve-mega-menu:focus > .sub-menu,
+  #nv-primary-navigation .neve-mega-menu:focus-within > .sub-menu {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 20px;
+    top: 80%;
+    overflow: hidden;
+  }
+  #nv-primary-navigation .neve-mega-menu > .sub-menu,
+  #nv-primary-navigation .neve-mega-menu:hover > .sub-menu,
+  #nv-primary-navigation .neve-mega-menu:focus > .sub-menu,
+  #nv-primary-navigation .neve-mega-menu:focus-within > .sub-menu {
+    transition: unset;
+    .neve-mm-col {
+      display: flex;
+      align-items: flex-start;
+      & > .sub-menu {
+        transition: unset;
+        left: initial;
+        right: initial;
+      }
+    }
+  }
+  #nv-primary-navigation .neve-mega-menu:hover .neve-mm-col,
+  #nv-primary-navigation .neve-mega-menu:focus .neve-mm-col,
+  #nv-primary-navigation .neve-mega-menu:focus-within .neve-mm-col {
+    border: none;
+    .neve-mm-heading a {
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+  }
+  #nv-primary-navigation .neve-mega-menu:hover .neve-mm-col > .sub-menu,
+  #nv-primary-navigation .neve-mega-menu:focus .neve-mm-col > .sub-menu,
+  #nv-primary-navigation .neve-mega-menu:focus-within .neve-mm-col > .sub-menu {
+    position: static;
+    visibility: visible;
+    opacity: 1;
+    left: initial;
+    right: initial;
+    border: none;
+    box-shadow: none;
+    li {
+      border: none;
+    }
+  }
+}
+@mixin mega-menu--desktop() {
+  #nv-primary-navigation .neve-mega-menu > .sub-menu {
+    width: 1170px;
+  }
+}

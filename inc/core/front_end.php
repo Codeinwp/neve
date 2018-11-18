@@ -53,7 +53,12 @@ class Front_End {
 		add_theme_support( 'editor-font-sizes', $this->get_gutenberg_font_sizes() );
 		add_theme_support( 'fl-theme-builder-headers' );
 		add_theme_support( 'fl-theme-builder-footers' );
-		add_theme_support( 'amp', array( 'paired' => true ) );
+		add_theme_support(
+			'amp',
+			array(
+				'paired' => true,
+			)
+		);
 
 		register_nav_menus(
 			array(
@@ -66,6 +71,214 @@ class Front_End {
 		add_image_size( 'neve-blog', 930, 620, true );
 
 		$this->add_woo_support();
+	}
+
+	/**
+	 * Get the themeisle demo content support data.
+	 *
+	 * @return array
+	 */
+	private function get_ti_demo_content_support_data() {
+		$onboarding_sites = array(
+			'local'            => array(
+				'neve-main'          => array(
+					'url'   => 'https://demo.themeisle.com/neve',
+					'title' => 'Neve 2018',
+				),
+				'neve-vet-center'    => array(
+					'url'   => 'https://demo.themeisle.com/neve-vet-center/',
+					'title' => 'Neve Vet Center',
+				),
+				'neve-energy-panels' => array(
+					'url'   => 'https://demo.themeisle.com/neve-energy-panels/',
+					'title' => 'Neve Energy Panels',
+				),
+			),
+			'default_template' => array(
+				'screenshot' => get_template_directory_uri() . '/onboarding/screenshot.png',
+				'name'       => 'Neve Default Blog',
+			),
+			'can_migrate'      => array(
+				'zerif-pro'  => array(
+					'theme_name'      => 'Zelle Pro',
+					'theme_mod_check' => 'zelle_frontpage_was_imported',
+					'template'        => 'zelle',
+					'heading'         => __( 'Want to keep using Zelle\'s homepage?', 'neve' ),
+					'description'     => __( 'Hi! We\'ve noticed you were using Zelle before. To make your transition easier, we can help you keep the same beautiful homepage you had before, by converting it into an Elementor template. This option will also import your homepage content.', 'neve' ),
+				),
+				'zerif-lite' => array(
+					'theme_name'      => 'Zelle Lite',
+					'theme_mod_check' => 'zelle_frontpage_was_imported',
+					'template'        => 'zelle',
+					'heading'         => __( 'Want to keep using Zelle\'s homepage?', 'neve' ),
+					'description'     => __( 'Hi! We\'ve noticed you were using Zelle before. To make your transition easier, we can help you keep the same beautiful homepage you had before, by converting it into an Elementor template. This option will also import your homepage content.', 'neve' ),
+				),
+			),
+			'i18n'             => array(
+				'templates_title'       => __( 'Ready to use pre-built websites with 1-click installation', 'neve' ),
+				'templates_description' => __( 'With Neve, you can choose from multiple unique demos, specially designed for you, that can be installed with a single click. You just need to choose your favorite, and we will take care of everything else.', 'neve' ),
+			),
+		);
+
+		return apply_filters( 'neve_filter_onboarding_data', $onboarding_sites );
+	}
+
+	/**
+	 * Gutenberg Block Color Palettes.
+	 *
+	 * Get the color palette in Gutenberg from Customizer colors.
+	 */
+	private function get_gutenberg_color_palette() {
+		$gutenberg_color_palette = array();
+
+		array_push(
+			$gutenberg_color_palette,
+			array(
+				'name'  => __( 'Black', 'neve' ),
+				'slug'  => 'black',
+				'color' => '#000000',
+			)
+		);
+
+		array_push(
+			$gutenberg_color_palette,
+			array(
+				'name'  => __( 'White', 'neve' ),
+				'slug'  => 'white',
+				'color' => '#ffffff',
+			)
+		);
+
+		$color_controls = array(
+			'neve_button_color'     => array(
+				'default' => '#0366d6',
+				'label'   => __( 'Button Color', 'neve' ),
+			),
+			'neve_link_color'       => array(
+				'default' => '#0366d6',
+				'label'   => __( 'Link Color', 'neve' ),
+			),
+			'neve_link_hover_color' => array(
+				'default' => '#0366d6',
+				'label'   => __( 'Link Hover Color', 'neve' ),
+			),
+			'neve_text_color'       => array(
+				'default' => '#404248',
+				'label'   => __( 'Text Color', 'neve' ),
+			),
+		);
+
+		foreach ( $color_controls as $control_name => $control_data ) {
+			$color      = get_theme_mod( $control_name, $control_data['default'] );
+			$color_name = $control_data['label'];
+			$slug       = preg_replace( '~[^\pL\d]+~u', '-', strtolower( $control_name ) );
+			array_push(
+				$gutenberg_color_palette,
+				array(
+					'name'  => $color_name,
+					'slug'  => $slug,
+					'color' => $color,
+				)
+			);
+		}
+
+		/**
+		 * Remove duplicate colors.
+		 */
+		$temp_arr = array_unique(
+			array_map(
+				function ( $el ) {
+					return $el['color'];
+				},
+				$gutenberg_color_palette
+			)
+		);
+
+		return array_intersect_key( $gutenberg_color_palette, $temp_arr );
+	}
+
+	/**
+	 * Gutenberg Block Font Size.
+	 * This function get the font size dynamically from customizer.
+	 */
+	private function get_gutenberg_font_sizes() {
+
+		$body_font_size         = get_theme_mod( 'neve_body_font_size', 15 );
+		$body_font_size_decoded = json_decode( $body_font_size, true );
+		if ( is_array( $body_font_size_decoded ) ) {
+			$body_font_size = $body_font_size_decoded['desktop'];
+		}
+
+		$font_size_array = array(
+			array(
+				'name'      => __( 'Body font size', 'neve' ),
+				'shortName' => __( 'Body', 'neve' ),
+				'size'      => $body_font_size,
+				'slug'      => 'neve-body',
+			),
+		);
+
+		$defaults = array(
+			2,
+			1.75,
+			1.5,
+			1.25,
+			1,
+			1,
+		);
+		for ( $i = 1; $i <= 6; $i ++ ) {
+			$font_size         = get_theme_mod( 'neve_h' . $i . '_font_size', $defaults[ $i - 1 ] );
+			$font_size_decoded = json_decode( $font_size, true );
+			if ( is_array( $font_size_decoded ) ) {
+				$font_size = $font_size_decoded['desktop'];
+			}
+			if ( ! empty( $font_size ) ) {
+				array_push(
+					$font_size_array,
+					array(
+						// translators: Heading size.
+						'name'      => sprintf( __( 'H%d', 'neve' ), $i ),
+						// translators: Heading size.
+						'shortName' => sprintf( __( 'H%d', 'neve' ), $i ),
+						'size'      => ( $font_size * 15 ),
+						'slug'      => 'neve-h' . $i,
+					)
+				);
+			}
+		}
+
+		return $font_size_array;
+	}
+
+	/**
+	 * Add WooCommerce support
+	 */
+	private function add_woo_support() {
+		if ( ! class_exists( 'WooCommerce' ) ) {
+			return;
+		}
+
+		$woocommerce_settings = apply_filters(
+			'neves_woocommerce_args',
+			array(
+				'single_image_width'            => 600,
+				'thumbnail_image_width'         => 230,
+				'gallery_thumbnail_image_width' => 160,
+				'product_grid'                  => array(
+					'default_columns' => 3,
+					'default_rows'    => 4,
+					'min_columns'     => 1,
+					'max_columns'     => 6,
+					'min_rows'        => 1,
+				),
+			)
+		);
+
+		add_theme_support( 'woocommerce', $woocommerce_settings );
+		add_theme_support( 'wc-product-gallery-zoom' );
+		add_theme_support( 'wc-product-gallery-lightbox' );
+		add_theme_support( 'wc-product-gallery-slider' );
+
 	}
 
 	/**
@@ -153,183 +366,5 @@ class Front_End {
 			);
 			register_sidebar( $sidebar_settings );
 		}
-	}
-
-	/**
-	 * Add WooCommerce support
-	 */
-	private function add_woo_support() {
-		if ( ! class_exists( 'WooCommerce' ) ) {
-			return;
-		}
-
-		$woocommerce_settings = apply_filters(
-			'neves_woocommerce_args',
-			array(
-				'single_image_width'            => 600,
-				'thumbnail_image_width'         => 230,
-				'gallery_thumbnail_image_width' => 160,
-				'product_grid'                  => array(
-					'default_columns' => 3,
-					'default_rows'    => 4,
-					'min_columns'     => 1,
-					'max_columns'     => 6,
-					'min_rows'        => 1,
-				),
-			)
-		);
-
-		add_theme_support( 'woocommerce', $woocommerce_settings );
-		add_theme_support( 'wc-product-gallery-zoom' );
-		add_theme_support( 'wc-product-gallery-lightbox' );
-		add_theme_support( 'wc-product-gallery-slider' );
-
-	}
-
-	/**
-	 * Get the themeisle demo content support data.
-	 *
-	 * @return array
-	 */
-	private function get_ti_demo_content_support_data() {
-		$onboarding_sites = array(
-			'local' => array(
-				'neve-main'          => array(
-					'url'   => 'https://demo.themeisle.com/neve',
-					'title' => 'Neve 2018',
-				),
-				'neve-vet-center'    => array(
-					'url'   => 'https://demo.themeisle.com/neve-vet-center/',
-					'title' => 'Neve Vet Center',
-				),
-				'neve-energy-panels' => array(
-					'url'   => 'https://demo.themeisle.com/neve-energy-panels/',
-					'title' => 'Neve Energy Panels',
-				),
-			),
-		);
-
-		return apply_filters( 'neve_filter_onboarding_data', $onboarding_sites );
-	}
-
-	/**
-	 * Gutenberg Block Color Palettes.
-	 *
-	 * Get the color palette in Gutenberg from Customizer colors.
-	 */
-	private function get_gutenberg_color_palette() {
-		$gutenberg_color_palette = array();
-
-		array_push(
-			$gutenberg_color_palette,
-			array(
-				'name'  => __( 'Black', 'neve' ),
-				'slug'  => 'black',
-				'color' => '#000000',
-			)
-		);
-
-		array_push(
-			$gutenberg_color_palette,
-			array(
-				'name'  => __( 'White', 'neve' ),
-				'slug'  => 'white',
-				'color' => '#ffffff',
-			)
-		);
-
-		$color_controls = array(
-			'neve_button_color'     => array(
-				'default' => '#0366d6',
-				'label'   => __( 'Button Color', 'neve' ),
-			),
-			'neve_link_color'       => array(
-				'default' => '#0366d6',
-				'label'   => __( 'Link Color', 'neve' ),
-			),
-			'neve_link_hover_color' => array(
-				'default' => '#0366d6',
-				'label'   => __( 'Link Hover Color', 'neve' ),
-			),
-			'neve_text_color'       => array(
-				'default' => '#404248',
-				'label'   => __( 'Text Color', 'neve' ),
-			),
-		);
-
-		foreach ( $color_controls as $control_name => $control_data ) {
-			$color      = get_theme_mod( $control_name, $control_data['default'] );
-			$color_name = $control_data['label'];
-			$slug       = preg_replace( '~[^\pL\d]+~u', '-', strtolower( $control_name ) );
-			array_push(
-				$gutenberg_color_palette,
-				array(
-					'name'  => $color_name,
-					'slug'  => $slug,
-					'color' => $color,
-				)
-			);
-		}
-
-		/**
-		 * Remove duplicate colors.
-		 */
-		$temp_arr = array_unique( array_column( $gutenberg_color_palette, 'color' ) );
-
-		return array_intersect_key( $gutenberg_color_palette, $temp_arr );
-
-	}
-
-	/**
-	 * Gutenberg Block Font Size.
-	 * This function get the font size dynamically from customizer.
-	 */
-	private function get_gutenberg_font_sizes() {
-
-		$body_font_size         = get_theme_mod( 'neve_body_font_size', 15 );
-		$body_font_size_decoded = json_decode( $body_font_size, true );
-		if ( is_array( $body_font_size_decoded ) ) {
-			$body_font_size = $body_font_size_decoded['desktop'];
-		}
-
-		$font_size_array = array(
-			array(
-				'name'      => __( 'Body font size', 'neve' ),
-				'shortName' => __( 'Body', 'neve' ),
-				'size'      => $body_font_size,
-				'slug'      => 'neve-body',
-			),
-		);
-
-		$defaults = array(
-			2,
-			1.75,
-			1.5,
-			1.25,
-			1,
-			1,
-		);
-		for ( $i = 1; $i <= 6; $i ++ ) {
-			$font_size         = get_theme_mod( 'neve_h' . $i . '_font_size', $defaults[ $i - 1 ] );
-			$font_size_decoded = json_decode( $font_size, true );
-			if ( is_array( $font_size_decoded ) ) {
-				$font_size = $font_size_decoded['desktop'];
-			}
-			if ( ! empty( $font_size ) ) {
-				array_push(
-					$font_size_array,
-					array(
-						// translators: Heading size.
-						'name'      => sprintf( __( 'H%d', 'neve' ), $i ),
-						// translators: Heading size.
-						'shortName' => sprintf( __( 'H%d', 'neve' ), $i ),
-						'size'      => ( $font_size * 15 ),
-						'slug'      => 'neve-h' . $i,
-					)
-				);
-			}
-		}
-
-		return $font_size_array;
 	}
 }

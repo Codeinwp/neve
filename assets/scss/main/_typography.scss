@@ -1,7 +1,6 @@
 html {
   font-size: 15px;
   overflow-x: hidden;
-  word-break: break-word;
   -webkit-tap-highlight-color: transparent;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -19,7 +18,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: Graphik, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
   line-height: 1.68421;
-  margin-bottom: .5rem;
+  margin-bottom: .8rem;
   font-weight: 600;
 }
 
@@ -47,7 +46,7 @@ ins {
 }
 
 body {
-  font-size: $font-size-base;
+  font-size: $font-size-base * 0.9;
 }
 
 h1 {
@@ -75,6 +74,9 @@ h6 {
 }
 
 @mixin typography--tablet() {
+  body {
+    font-size: $font-size-base;
+  }
   h1 {
     font-size: $h1-font-size;
   }

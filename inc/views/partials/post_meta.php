@@ -45,9 +45,11 @@ class Post_Meta extends Base_View {
 		foreach ( $order as $meta ) {
 			switch ( $meta ) {
 				case 'author':
-					$markup .= '<li class="meta author vcard">';
-					$markup .= __( 'By', 'neve' ) . '&nbsp;' . '<span class="author-name fn">' . wp_kses_post( get_the_author_posts_link() ) . '</span>';
-					$markup .= '</li>';
+					$author_email = get_the_author_meta( 'user_email' );
+					$avatar_url   = get_avatar_url( $author_email );
+					$markup      .= '<li class="meta author vcard">';
+					$markup      .= '<img class="photo" src="' . esc_url( $avatar_url ) . '" />&nbsp;<span class="author-name fn">' . wp_kses_post( get_the_author_posts_link() ) . '</span>';
+					$markup      .= '</li>';
 					break;
 				case 'date':
 					$markup .= '<li class="meta date posted-on">';
@@ -56,7 +58,7 @@ class Post_Meta extends Base_View {
 					break;
 				case 'category':
 					$markup .= '<li class="meta category">';
-					$markup .= get_the_category_list( ' / ', get_the_ID() );
+					$markup .= get_the_category_list( ', ', get_the_ID() );
 					$markup .= '</li>';
 					break;
 				case 'comments':

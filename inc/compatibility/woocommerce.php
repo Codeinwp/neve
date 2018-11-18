@@ -20,7 +20,7 @@ class Woocommerce {
 	/**
 	 * Sidebar manager.
 	 *
-	 * @var Neve\Views\Layouts\Layout_Sidebar
+	 * @var \Neve\Views\Layouts\Layout_Sidebar
 	 */
 	private $sidebar_manager;
 
@@ -45,22 +45,92 @@ class Woocommerce {
 		add_action( 'woocommerce_before_main_content', array( $this, 'shop_sidebar_left' ) );
 		add_action( 'woocommerce_sidebar', array( $this, 'shop_sidebar_right' ) );
 
+		/**
+		 * Change product page sidebar default position
+		 * Priority 9 to allow meta control to override this value
+		 */
+		add_filter( 'neve_sidebar_position', array( $this, 'product_page_sidebar_default_position' ), 9 );
+
 		// Remove WooCommerce wrap.
 		remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10 );
 		remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10 );
 
 		add_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0 );
 
-		$this->edit_woocommerce_header();
-		$this->add_inline_selectors();
-
-		$this->move_checkout_coupon_under_order_summary();
 		add_filter( 'neve_post_meta_filters_post_id', array( $this, 'adapt_meta_for_shop_page' ) );
 
 		/**
 		 * Ensure cart contents update when products are added to the cart via AJAX
 		 */
 		add_filter( 'woocommerce_add_to_cart_fragments', array( $this, 'cart_link_fragment' ) );
+
+		add_filter( 'woocommerce_is_sold_individually', array( $this, 'remove_quantity' ), 10, 2 );
+
+		remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 );
+
+		$this->edit_woocommerce_header();
+		$this->move_checkout_coupon_under_order_summary();
+		$this->add_inline_selectors();
+	}
+
+	/**
+	 * Remove quantity input on single product.
+	 *
+	 * @return bool
+	 */
+	public function remove_quantity() {
+		if ( ! is_product() ) {
+			return false;
+		}
+
+		return true;
+	}
+
+	/**
+	 * Change breadcrumb delimiter.
+	 *
+	 * @param array $default breadcrumbs defaults.
+	 *
+	 * @return mixed
+	 */
+	public function change_breadcrumbs_delimiter( $default ) {
+		$default['delimiter'] = '<span class="nv-breadcrumb-delimiter">&raquo;</span>';
+
+		return $default;
+	}
+
+	/**
+	 * Change the default sidebar position for the product page.
+	 *
+	 * @param string $input - the value of the customizer control.
+	 *
+	 * @return string
+	 */
+	public function product_page_sidebar_default_position( $input ) {
+
+		if ( is_product() ) {
+			return get_theme_mod( 'neve_single_product_sidebar_layout', 'full-width' );
+		}
+
+		return $input;
+	}
+
+	/**
+	 * Remove last breadcrumb on single product.
+	 *
+	 * @param array $crumbs breadcrumbs.
+	 * @param array $args breadcrumbs args.
+	 *
+	 * @return array
+	 */
+	public function remove_last_breadcrumb( $crumbs, $args ) {
+		if ( ! is_product() ) {
+			return $crumbs;
+		}
+		$length               = sizeof( $crumbs ) - 1;
+		$crumbs[ $length ][0] = '';
+
+		return $crumbs;
 	}
 
 	/**
@@ -73,7 +143,11 @@ class Woocommerce {
 		remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
 		remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
 		add_filter( 'woocommerce_show_page_title', '__return_false' );
-		add_action( 'neve_after_primary_start', array( $this, 'add_header_bits' ), 0 );
+		add_action( 'neve_before_shop_loop_content', array( $this, 'add_header_bits' ), 0 );
+
+		// Change breadcrumbs.
+		add_filter( 'woocommerce_get_breadcrumb', array( $this, 'remove_last_breadcrumb' ), 10, 2 );
+		add_filter( 'woocommerce_breadcrumb_defaults', array( $this, 'change_breadcrumbs_delimiter' ) );
 	}
 
 	/**
@@ -83,19 +157,19 @@ class Woocommerce {
 		if ( ! is_shop() && ! is_product() && ! is_product_category() && ! is_product_taxonomy() && ! is_product_tag() ) {
 			return;
 		}
-		echo '<div class="' . esc_attr( apply_filters( 'neve_container_class_filter', 'container' ) ) . '">';
-		echo '<div class="row">';
-		echo '<div class="wrap-header col-12">';
+
 		echo '<div class="nv-bc-count-wrap">';
 		woocommerce_breadcrumb();
 		woocommerce_result_count();
 		echo '</div>';
+
+		if ( is_product() ) {
+			return;
+		}
+
 		echo '<div class="nv-woo-filters">';
 		$this->sidebar_toggle();
 		woocommerce_catalog_ordering();
-		echo '</div>';
-		echo '</div>';
-		echo '</div>';
 		echo '</div>';
 	}
 
@@ -125,6 +199,7 @@ class Woocommerce {
 	 */
 	public function wrap_main_content_start() {
 		echo '<div class="nv-index-posts nv-shop col">';
+		do_action( 'neve_before_shop_loop_content' );
 	}
 
 	/**
@@ -158,9 +233,9 @@ class Woocommerce {
 			return;
 		}
 
-		$button_text  = apply_filters( 'neve_filter_woo_sidebar_open_button_text', __( 'Filter', 'neve' ) );
+		$button_text  = apply_filters( 'neve_filter_woo_sidebar_open_button_text', __( 'Filter', 'neve' ) . '»' );
 		$button_attrs = apply_filters( 'neve_woocommerce_sidebar_filter_btn_data_attrs', '' );
-		echo '<span class="nv-sidebar-toggle button button-secondary" ' . esc_attr( $button_attrs ) . '>' . esc_html( $button_text ) . '</span>';
+		echo '<a class="nv-sidebar-toggle" ' . esc_attr( $button_attrs ) . '>' . esc_html( $button_text ) . '</a>';
 	}
 
 	/**
@@ -181,62 +256,28 @@ class Woocommerce {
 	 */
 	public function add_button_color( $color_setup ) {
 		$color_setup['background']['selectors'] .=
-			', .nv-nav-cart .woocommerce-mini-cart__buttons a.button:last-child, 
-			.woocommerce #respond input#submit,
-			.woocommerce #respond input#submit:focus,
-			.woocommerce #respond input#submit:hover, 
-			.woocommerce a.button,
-			.woocommerce a.button:focus,
-			.woocommerce a.button:hover, 
-			.woocommerce button.button,
-			.woocommerce button.button:focus,
-			.woocommerce button.button:hover, 
-			.woocommerce input.button,
-			.woocommerce input.button:focus,
-			.woocommerce input.button:hover, 
-			.woocommerce #respond input#submit.alt,
-			.woocommerce #respond input#submit.alt:focus,
-			.woocommerce #respond input#submit.alt:hover, 
-			.woocommerce a.button.alt,
-			.woocommerce a.button.alt:focus,
-			.woocommerce a.button.alt:hover, 
-			.woocommerce button.button.alt,
-			.woocommerce button.button.alt:focus,
-			.woocommerce button.button.alt:hover, 
-			.woocommerce input.button.alt,
-			.woocommerce input.button.alt:focus,
-			.woocommerce input.button.alt:hover, 
-			.woocommerce button.button:disabled, 
-			.woocommerce button.button:disabled[disabled],
-			.woocommerce button.button:disabled[disabled]:focus,
-			.woocommerce button.button:disabled[disabled]:hover,
-			.woocommerce button.button.alt.disabled,	
-			.woocommerce button.button.alt.disabled:focus,
-			.woocommerce button.button.alt.disabled:hover,
-			.woocommerce button.button.alt.disabled:focus,
-			.woocommerce button.button.alt.disabled:hover,
-			.woocommerce a.button.checkout-button.alt, 
-			.woocommerce a.button.checkout-button.alt:focus, 
-			.woocommerce a.button.checkout-button.alt:active,
-			 .nv-nav-cart .woocommerce-mini-cart__buttons a.button:first-child:hover,
-			 .woocommerce .widget_price_filter .ui-slider .ui-slider-range,
-			 .woocommerce .widget_price_filter .ui-slider .ui-slider-handle,
-			 .woocommerce-cart table.cart td.actions .coupon > .input-text + .button:hover,
-			 .woocommerce a.added_to_cart:hover,
-			 .nv-nav-cart .woocommerce-mini-cart__buttons a.button:first-child:hover';
-
-		$color_setup['border-color']['selectors'] .=
-			', .nv-nav-cart .woocommerce-mini-cart__buttons a.button:first-child, 
-			.woocommerce-ordering .orderby, 
-			.woocommerce-cart table.cart td.actions .coupon > .input-text + .button,
-			.woocommerce a.added_to_cart';
-
-		$color_setup['color']['selectors'] .=
-			', .nv-nav-cart .woocommerce-mini-cart__buttons a.button:first-child, 
-			.woocommerce-ordering .orderby,
-			.woocommerce-cart table.cart td.actions .coupon > .input-text + .button,
-			.woocommerce a.added_to_cart,
-			#nv-primary-navigation .woocommerce-mini-cart__buttons a.button:not(.checkout)';
+			',.woocommerce a.button.alt,
+.woocommerce a.button.alt:hover,
+.woocommerce a.button.checkout-button,
+.woocommerce a.button.checkout-button:hover,
+.woocommerce button.button:disabled,
+.woocommerce button.button:disabled:hover,
+.woocommerce button.button:disabled[disabled],
+.woocommerce button.button:disabled[disabled]:hover,
+.woocommerce button.button.alt.single_add_to_cart_button.disabled,
+.woocommerce button.button.alt.single_add_to_cart_button.disabled:hover,
+.woocommerce button.button.alt.single_add_to_cart_button,
+.woocommerce button.button.alt.single_add_to_cart_button:hover,
+.woocommerce .actions > button[type=submit],
+.woocommerce .actions > button[type=submit]:hover,
+.woocommerce .checkout.wc-forward,
+.woocommerce .checkout.wc-forward:hover,
+.woocommerce button#place_order,
+.woocommerce button#place_order:hover,
+.woocommerce .return-to-shop > .button,
+.woocommerce .return-to-shop > .button:hover,
+#nv-primary-navigation .nv-nav-cart a.button.checkout.wc-forward,
+#nv-primary-navigation .nv-nav-cart a.button.checkout.wc-forward:hover';
 
 		return $color_setup;
 	}
@@ -249,9 +290,7 @@ class Woocommerce {
 	 * @return array
 	 */
 	public function add_link_color( $color_setup ) {
-		$color_setup['color']['selectors'] .=
-			', .woocommerce .woocommerce-breadcrumb a, 
-			.woocommerce div.product .woocommerce-tabs ul.tabs li a';
+		$color_setup['color']['selectors'] .= '';
 
 		return $color_setup;
 	}
@@ -264,10 +303,8 @@ class Woocommerce {
 	 * @return array
 	 */
 	public function add_link_hover_color( $color_setup ) {
-		$color_setup['color']['selectors'] .=
-			', .woocommerce .woocommerce-breadcrumb a:hover, 
-			.woocommerce div.product .woocommerce-tabs ul.tabs li a:hover';
-
+		// $color_setup['color']['selectors'] .=
+		// ', .woocommerce .woocommerce-breadcrumb a:hover';
 		return $color_setup;
 	}
 
@@ -307,7 +344,7 @@ class Woocommerce {
 				return false;
 			}
 
-			return false;
+			return true;
 		}
 
 		return true;
@@ -351,7 +388,8 @@ class Woocommerce {
 	 * @return mixed
 	 */
 	public function cart_link_fragment( $fragments ) {
-		$fragments['.cart-icon-wrapper']  = '<a href="' . esc_url( wc_get_cart_url() ) . '" class="cart-icon-wrapper"><span class="nv-icon nv-cart"></span>';
+		$fragments['.cart-icon-wrapper'] = '<a href="' . esc_url( wc_get_cart_url() ) . '" class="cart-icon-wrapper"><span class="nv-icon nv-cart"></span>';
+
 		$fragments['.cart-icon-wrapper'] .= '<span class="screen-reader-text">' . __( 'Cart', 'neve' ) . '</span>';
 		$fragments['.cart-icon-wrapper'] .= '<span class="cart-count">' . WC()->cart->get_cart_contents_count() . '</span>';
 		$fragments['.cart-icon-wrapper'] .= '</a>';

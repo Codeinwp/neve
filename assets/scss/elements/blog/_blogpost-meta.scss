@@ -1,9 +1,8 @@
 .nv-meta-list {
-  @include horizontal-list(0);
-  border-bottom: $muted-border;
   padding-bottom: $spacing-xs;
   width: 100%;
   li {
+    display: inline;
     color: $gray-color;
     font-size: 0.85em;
     &:not(:last-child):after {
@@ -12,10 +11,21 @@
       color: $gray-color;
     }
   }
-  a {
+  a, a:hover {
     color: $gray-color;
   }
   .posted-on .updated {
     display: none;
+  }
+  .meta.author {
+    .photo {
+      width: $spacing-sm;
+      height: $spacing-sm;
+      border-radius: 50%;
+      transform: translateY(30%);
+    }
+    .author-name {
+      margin-left: 3px;
+    }
   }
 }
