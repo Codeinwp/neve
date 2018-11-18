@@ -13,6 +13,22 @@ Neve is a super fast, easily customizable, multi-purpose theme. Perfect for blog
 Neve is a super fast, easily customizable, multi-purpose theme. It’s perfect for blogs, small business, startups, agencies, firms, e-commerce shops (WooCommerce storefront) as well as personal portfolio sites and most types of projects. A fully AMP optimized and responsive theme, Neve will load in mere seconds and adapt perfectly on any viewing device. While it is lightweight and has a minimalist design, the theme is highly extendable, it has a highly SEO optimized code, resulting in top rankings in Google search results. Neve works perfectly with Gutenberg and the most popular page builders (Elementor, Brizy, Beaver Builder, Visual Composer, SiteOrigin, Divi). Neve is also WooCommerce ready, responsive, RTL & translation ready. Look no further. Neve is the perfect theme for you!
 
 == Changelog ==
+= 1.0.9 - 2018-11-18  = 
+
+* AMP integration
+* Accessibility ready
+* New color options to better fit themes options
+* New options to allow reordering the elements on the single post pages
+* New individual options to allow disabling specific elements on single posts/pages
+* Basic Mega Menu integration
+* Improved the onboarding process alongside the import from Zelle
+* Improved navigation layout
+* Improved comments area style
+* Improved WooCommerce layout
+* Other small design improvements
+* Added fallback menu for the primary menu
+
+
 = 1.0.8 - 2018-10-30  = 
 
 * Google Search Console compatibility

@@ -1,4 +1,19 @@
 
+ ### v1.0.9 - 2018-11-18 
+ **Changes:** 
+ * AMP integration
+* Accessibility ready
+* New color options to better fit themes options
+* New options to allow reordering the elements on the single post pages
+* New individual options to allow disabling specific elements on single posts/pages
+* Basic Mega Menu integration
+* Improved the onboarding process alongside the import from Zelle
+* Improved navigation layout
+* Improved comments area style
+* Improved WooCommerce layout
+* Other small design improvements
+* Added fallback menu for the primary menu
+ 
  ### v1.0.8 - 2018-10-30 
  **Changes:** 
  * Google Search Console compatibility
