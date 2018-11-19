@@ -48,6 +48,11 @@ class Gutenberg {
 		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_gutenberg_scripts' ) );
 	}
 
+	/**
+	 * Set the post ID.
+	 *
+	 * @return int|null
+	 */
 	private function set_post_id() {
 		if ( ! isset( $_GET['post'] ) ) {
 			return null;
@@ -90,6 +95,10 @@ class Gutenberg {
 	 * @return bool
 	 */
 	private function is_page() {
+		if ( isset( $_GET['post'] ) && get_post_type( $_GET['post'] ) === 'page' ) {
+			return true;
+		}
+
 		if ( isset( $_GET['post_type'] ) && $_GET['post_type'] === 'page' ) {
 			return true;
 		}
@@ -123,7 +132,6 @@ class Gutenberg {
 	 * Get the container setup.
 	 *
 	 * @return string
-	 * TODO: Really pull the container setup from customizer.
 	 */
 	private function get_container_setup() {
 		$context = 'single-post';

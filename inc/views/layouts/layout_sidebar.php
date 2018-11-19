@@ -62,7 +62,7 @@ class Layout_Sidebar extends Base_View {
 	 *
 	 * @return array
 	 */
-	private function get_sidebar_setup( $context ) {
+	public function get_sidebar_setup( $context ) {
 		$advanced_options = get_theme_mod( 'neve_advanced_layout_options', false );
 		$sidebar_setup    = array(
 			'theme_mod'    => '',

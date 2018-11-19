@@ -166,11 +166,9 @@
 .neve-gtb .editor-block-list__layout {
   padding: 0;
 }
-.neve-gtb.has-sidebar-left .neve-blocks-wrap, .neve-gtb.has-sidebar-right .neve-blocks-wrap {
-  width: 70%;
+.neve-gtb .neve-blocks-wrap {
+  max-width: 70%;
   margin: 0 auto;
-}
-.neve-gtb.has-sidebar-left .neve-blocks-wrap, .neve-gtb.has-sidebar-right .neve-blocks-wrap {
   padding: 0 15px;
 }
 .neve-gtb.has-sidebar-right .neve-blocks-wrap {
@@ -196,7 +194,7 @@
   justify-content: center;
   background: #e7e7e7;
   padding: 10px;
-  max-width: 30%;
+  max-width: 100%;
   flex-grow: 1;
 }
 .neve-gtb-sidebar > p {

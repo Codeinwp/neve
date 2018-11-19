@@ -22,6 +22,7 @@ class Gutenberg_Editor extends Base_Inline {
 	public function init() {
 		$this->add_font_families();
 		$this->add_container_style();
+		$this->add_content_width();
 	}
 
 	/**
@@ -76,5 +77,53 @@ class Gutenberg_Editor extends Base_Inline {
 .neve-gtb.container.has-sidebar-left .neve-content-wrap,
 .neve-gtb.container.has-sidebar-right .neve-content-wrap'
 		);
+	}
+
+	/**
+	 * Add content width.
+	 */
+	private function add_content_width() {
+		$advanced_options = get_theme_mod( 'neve_advanced_layout_options', false );
+		if ( $advanced_options === false ) {
+			$content_width = get_theme_mod( 'neve_sitewide_content_width' );
+
+			$this->add_style( array(
+				array(
+					'css_prop' => 'max-width',
+					'value'    => $content_width,
+					'suffix'   => '%',
+				),
+			),
+				'.neve-gtb.container.has-sidebar-full-width .wp-block:not([data-align=full]):not([data-align=wide]),.neve-gtb.container.has-sidebar-left .neve-blocks-wrap, .neve-gtb.container.has-sidebar-right .neve-blocks-wrap' );
+
+			return;
+		}
+
+		$post_content_width = get_theme_mod( 'neve_single_post_content_width' );
+		$page_content_width = get_theme_mod( 'neve_other_pages_content_width' );
+
+		$this->add_style( array(
+			array(
+				'css_prop' => 'max-width',
+				'value'    => $post_content_width,
+				'suffix'   => '%',
+			),
+		),
+			'
+			.gutenberg-editor-page.post-type-post .neve-gtb.container.has-sidebar-full-width .wp-block:not([data-align=full]):not([data-align=wide]),
+			.gutenberg-editor-page.post-type-post .neve-gtb.container.has-sidebar-left .neve-blocks-wrap, 
+			.gutenberg-editor-page.post-type-post .neve-gtb.container.has-sidebar-right .neve-blocks-wrap' );
+
+		$this->add_style( array(
+			array(
+				'css_prop' => 'max-width',
+				'value'    => $page_content_width,
+				'suffix'   => '%',
+			),
+		),
+			'
+			.gutenberg-editor-page.post-type-page .neve-gtb.container.has-sidebar-full-width .wp-block:not([data-align=full]):not([data-align=wide]),
+			.gutenberg-editor-page.post-type-page .neve-gtb.container.has-sidebar-left .neve-blocks-wrap,
+			.gutenberg-editor-page.post-type-page .neve-gtb.container.has-sidebar-right .neve-blocks-wrap' );
 	}
 }
