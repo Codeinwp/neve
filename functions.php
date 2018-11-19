@@ -8,20 +8,12 @@
  * @package Neve
  */
 
-define( 'NEVE_VERSION', '1.0.8' );
+define( 'NEVE_VERSION', '1.0.9' );
 define( 'NEVE_INC_DIR', trailingslashit( get_template_directory() ) . 'inc/' );
 define( 'NEVE_ASSETS_URL', trailingslashit( get_template_directory_uri() ) . 'assets/' );
 
 if ( ! defined( 'NEVE_DEBUG' ) ) {
 	define( 'NEVE_DEBUG', false );
-}
-
-if ( ! defined( 'WPFORMS_SHAREASALE_ID' ) ) {
-	define( 'WPFORMS_SHAREASALE_ID', '848264' );
-}
-
-if ( ! defined( 'ELEMENTOR_PARTNER_ID' ) ) {
-	define( 'ELEMENTOR_PARTNER_ID', 2112 );
 }
 
 /**
