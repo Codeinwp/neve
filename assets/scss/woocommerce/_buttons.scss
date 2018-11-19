@@ -12,7 +12,7 @@
   a.button.alt,
   button.button.alt,
   input.button.alt,
-  button,
+  button:not(.customize-partial-edit-shortcut-button),
   button.button,
   input.button,
   .button,

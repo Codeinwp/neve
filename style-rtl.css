@@ -154,6 +154,8 @@ th {
   flex-basis: 0;
   flex-grow: 1;
   max-width: 100%;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .col-auto {
@@ -2261,9 +2263,6 @@ hr {
     margin-bottom: 0;
   }
 
-  .nv-sidebar-wrap {
-    max-width: 30%;
-  }
   .nv-sidebar-wrap.nv-right {
     border-right: 1px solid #f0f0f0;
   }
