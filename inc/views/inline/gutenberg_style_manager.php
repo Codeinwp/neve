@@ -16,18 +16,25 @@ namespace Neve\Views\Inline;
 class Gutenberg_Style_Manager extends Base_Style_Manager {
 
 	/**
+	 * Flag that signals the styles should be loaded admin-side.
+	 *
+	 * @var bool
+	 */
+	protected $admin = true;
+
+	/**
 	 * Style to hook into for inline enqueue.
 	 *
 	 * @var string
 	 */
-	protected $style_hook_handle = 'neve-gutenberg';
+	protected $style_hook_handle = 'neve-gutenberg-style';
 
 	/**
 	 * Handle of the style that will be enqueued.
 	 *
 	 * @var string
 	 */
-	protected $style_handle = 'neve-generated-style';
+	protected $style_handle = 'neve-gutenberg-generated-style';
 
 	/**
 	 * Inline style handlers

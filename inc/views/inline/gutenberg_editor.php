@@ -24,7 +24,9 @@ class Gutenberg_Editor extends Base_Inline {
 		$this->add_container_style();
 	}
 
-
+	/**
+	 * Add font families.
+	 */
 	private function add_font_families() {
 		$headings_font = get_theme_mod( 'neve_headings_font_family', false );
 		$body_font     = get_theme_mod( 'neve_body_font_family', false );
@@ -54,7 +56,6 @@ class Gutenberg_Editor extends Base_Inline {
 		);
 	}
 
-
 	/**
 	 * Container styles applied to the .wp-block class.
 	 */
@@ -68,6 +69,12 @@ class Gutenberg_Editor extends Base_Inline {
 				'suffix'   => 'px',
 			),
 		);
-		$this->add_responsive_style( $settings, '.gutenberg-editor-page #wpwrap .editor-styles-wrapper .wp-block' );
+		$this->add_responsive_style(
+			$settings,
+			'
+.neve-gtb.container.has-sidebar-full-width .wp-block:not([data-align=full]):not([data-align=wide]),
+.neve-gtb.container.has-sidebar-left .neve-content-wrap,
+.neve-gtb.container.has-sidebar-right .neve-content-wrap'
+		);
 	}
 }

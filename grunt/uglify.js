@@ -4,6 +4,7 @@ module.exports = {
 	scripts: {
 		files: {
 			'./assets/js/script.min.js': [ './assets/js/src/*.js' ],
+			'./assets/js/gutenberg-preview-manager.min.js': [ './assets/js/gutenberg-preview-manager.js' ],
 		},
 		options: {
 			compress: true,

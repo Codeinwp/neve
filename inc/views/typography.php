@@ -24,6 +24,9 @@ class Typography extends Base_View {
 		add_action( 'enqueue_block_editor_assets', array( $this, 'register_google_fonts_gutenberg' ) );
 	}
 
+	/**
+	 * Register the google fonts for gutenberg.
+	 */
 	public function register_google_fonts_gutenberg() {
 		$this->register_google_fonts();
 	}

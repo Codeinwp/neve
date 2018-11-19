@@ -8,9 +8,21 @@
 
 namespace Neve\Compatibility;
 
+use Neve\Views\Layouts\Layout_Container;
+use Neve\Views\Layouts\Layout_Sidebar;
 
+/**
+ * Class Gutenberg
+ *
+ * @package Neve\Compatibility
+ */
 class Gutenberg {
 
+	/**
+	 * Available post meta to be taken into consideration.
+	 *
+	 * @var array
+	 */
 	private $available_post_meta = array(
 		'neve_meta_disable_header',
 		'neve_meta_disable_title',
@@ -20,29 +32,40 @@ class Gutenberg {
 		'neve_meta_container',
 	);
 
+	/**
+	 * The post ID.
+	 *
+	 * @var null
+	 */
 	private $post_id = null;
 
+	/**
+	 * Initialize the compatibility module.
+	 */
 	public function init() {
-		if ( ! isset( $_GET['post'] ) ) {
-			return;
-		}
-		$this->post_id = $_GET['post'];
+		$this->set_post_id();
 
 		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_gutenberg_scripts' ) );
 	}
 
+	private function set_post_id() {
+		if ( ! isset( $_GET['post'] ) ) {
+			return null;
+		}
+		$this->post_id = $_GET['post'];
+	}
 
 	/**
 	 * Enqueue gutenberg scripts.
 	 */
 	public function enqueue_gutenberg_scripts() {
-		wp_enqueue_style( 'neve-gutenberg', NEVE_ASSETS_URL . 'css/gutenberg-editor-style' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), NEVE_VERSION );
+		wp_enqueue_style( 'neve-gutenberg-style', NEVE_ASSETS_URL . 'css/gutenberg-editor-style' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), NEVE_VERSION );
 
-		wp_register_script( 'neve-gutenberg', NEVE_ASSETS_URL . 'js/gutenberg-preview-manager' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.js', array( 'jquery' ), NEVE_VERSION, true );
+		wp_register_script( 'neve-gutenberg-script', NEVE_ASSETS_URL . 'js/gutenberg-preview-manager' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.js', array( 'jquery' ), NEVE_VERSION, true );
 
-		wp_localize_script( 'neve-gutenberg', 'neveGutenbergHelper', apply_filters( 'neve_gutenberg_helper_filter_localization', $this->localize_gutenberg_helper_script() ) );
+		wp_localize_script( 'neve-gutenberg-script', 'neveGutenbergHelper', apply_filters( 'neve_gutenberg_helper_filter_localization', $this->localize_gutenberg_helper_script() ) );
 
-		wp_enqueue_script( 'neve-gutenberg' );
+		wp_enqueue_script( 'neve-gutenberg-script' );
 	}
 
 	/**
@@ -62,13 +85,38 @@ class Gutenberg {
 	}
 
 	/**
+	 * Check if we're editing a page.
+	 *
+	 * @return bool
+	 */
+	private function is_page() {
+		if ( isset( $_GET['post_type'] ) && $_GET['post_type'] === 'page' ) {
+			return true;
+		}
+
+		return false;
+	}
+
+
+	/**
 	 * Get the sidebar setup.
 	 *
 	 * @return string
 	 * TODO: Really pull the sidebar setup from customizer.
 	 */
 	private function get_sidebar_setup() {
-		return 'right';
+		$context = 'single-post';
+		if ( $this->is_page() ) {
+			$context = 'single-page';
+		}
+
+		$sidebar_manager = new Layout_Sidebar();
+
+		$layout = $sidebar_manager->get_sidebar_setup( $context );
+
+		$setup = get_theme_mod( $layout['theme_mod'], 'right' );
+
+		return $setup;
 	}
 
 	/**
@@ -78,7 +126,21 @@ class Gutenberg {
 	 * TODO: Really pull the container setup from customizer.
 	 */
 	private function get_container_setup() {
-		return 'contained';
+		$context = 'single-post';
+
+		if ( $this->is_page() ) {
+			$context = 'single-page';
+		}
+
+		$container_manager = new Layout_Container();
+
+		$layout = $container_manager->container_layout( 'contained', $context );
+
+		if ( $layout === 'container' ) {
+			return 'contained';
+		}
+
+		return 'full-width';
 	}
 
 	/**
@@ -87,6 +149,10 @@ class Gutenberg {
 	 * @return array
 	 */
 	private function get_post_metas() {
+		if ( $this->post_id === null ) {
+			return array();
+		}
+
 		$metas = array();
 		foreach ( $this->available_post_meta as $meta ) {
 			$meta_value = get_post_meta( $this->post_id, $meta );
@@ -105,6 +171,9 @@ class Gutenberg {
 	 * @return string
 	 */
 	private function get_meta_status() {
+		if ( $this->is_page() ) {
+			return 'disabled';
+		}
 		$default_meta_order = json_encode(
 			array(
 				'author',
@@ -114,7 +183,7 @@ class Gutenberg {
 		);
 		$meta               = get_theme_mod( 'neve_post_meta_ordering', $default_meta_order );
 
-		if ( empty( $meta ) ) {
+		if ( empty( json_decode( $meta ) ) ) {
 			return 'disabled';
 		}
 

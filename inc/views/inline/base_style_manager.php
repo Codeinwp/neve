@@ -118,7 +118,7 @@ abstract class Base_Style_Manager extends Base_View {
 			return;
 		}
 
-		if ( $this->admin ) {
+		if ( $this->admin === true ) {
 			add_action( 'enqueue_block_editor_assets', array( $this, 'maybe_enqueue' ), 100 );
 		} else {
 			add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue' ), 100 );
@@ -145,7 +145,7 @@ abstract class Base_Style_Manager extends Base_View {
 			! is_customize_preview() &&
 			NEVE_DEBUG === false
 		) {
-			wp_enqueue_style( $this->style_handle, $this->style_url . $this->css_file_name, array( 'neve-style' ), $this->get_style_version() );
+			wp_enqueue_style( $this->style_handle, $this->style_url . $this->css_file_name, array( $this->style_hook_handle ), $this->get_style_version() );
 
 			return;
 		}

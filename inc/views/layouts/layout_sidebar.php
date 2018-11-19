@@ -74,7 +74,7 @@ class Layout_Sidebar extends Base_View {
 	 *
 	 * @return array
 	 */
-	private function get_sidebar_setup( $context ) {
+	public function get_sidebar_setup( $context ) {
 		$sidebar_setup = array(
 			'theme_mod'    => 'neve_default_sidebar_layout',
 			'sidebar_slug' => 'blog-sidebar',
