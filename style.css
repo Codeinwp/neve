@@ -1640,6 +1640,10 @@ hr {
   width: 100%;
 }
 
+.neve-main > .container .col {
+  max-width: 70%;
+}
+
 .nv-sidebar-wrap {
   margin-bottom: 40px;
 }
@@ -2263,6 +2267,9 @@ hr {
     margin-bottom: 0;
   }
 
+  .nv-sidebar-wrap {
+    max-width: 30%;
+  }
   .nv-sidebar-wrap.nv-right {
     border-left: 1px solid #f0f0f0;
   }

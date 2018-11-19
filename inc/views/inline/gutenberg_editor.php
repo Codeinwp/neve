@@ -87,14 +87,16 @@ class Gutenberg_Editor extends Base_Inline {
 		if ( $advanced_options === false ) {
 			$content_width = get_theme_mod( 'neve_sitewide_content_width' );
 
-			$this->add_style( array(
+			$this->add_style(
 				array(
-					'css_prop' => 'max-width',
-					'value'    => $content_width,
-					'suffix'   => '%',
+					array(
+						'css_prop' => 'max-width',
+						'value'    => $content_width,
+						'suffix'   => '%',
+					),
 				),
-			),
-				'.neve-gtb.container.has-sidebar-full-width .wp-block:not([data-align=full]):not([data-align=wide]),.neve-gtb.container.has-sidebar-left .neve-blocks-wrap, .neve-gtb.container.has-sidebar-right .neve-blocks-wrap' );
+				'.neve-gtb.container.has-sidebar-full-width .wp-block:not([data-align=full]):not([data-align=wide]),.neve-gtb.container.has-sidebar-left .neve-blocks-wrap, .neve-gtb.container.has-sidebar-right .neve-blocks-wrap'
+			);
 
 			return;
 		}
@@ -102,28 +104,32 @@ class Gutenberg_Editor extends Base_Inline {
 		$post_content_width = get_theme_mod( 'neve_single_post_content_width' );
 		$page_content_width = get_theme_mod( 'neve_other_pages_content_width' );
 
-		$this->add_style( array(
+		$this->add_style(
 			array(
-				'css_prop' => 'max-width',
-				'value'    => $post_content_width,
-				'suffix'   => '%',
+				array(
+					'css_prop' => 'max-width',
+					'value'    => $post_content_width,
+					'suffix'   => '%',
+				),
 			),
-		),
 			'
 			.gutenberg-editor-page.post-type-post .neve-gtb.container.has-sidebar-full-width .wp-block:not([data-align=full]):not([data-align=wide]),
 			.gutenberg-editor-page.post-type-post .neve-gtb.container.has-sidebar-left .neve-blocks-wrap, 
-			.gutenberg-editor-page.post-type-post .neve-gtb.container.has-sidebar-right .neve-blocks-wrap' );
+			.gutenberg-editor-page.post-type-post .neve-gtb.container.has-sidebar-right .neve-blocks-wrap'
+		);
 
-		$this->add_style( array(
+		$this->add_style(
 			array(
-				'css_prop' => 'max-width',
-				'value'    => $page_content_width,
-				'suffix'   => '%',
+				array(
+					'css_prop' => 'max-width',
+					'value'    => $page_content_width,
+					'suffix'   => '%',
+				),
 			),
-		),
 			'
 			.gutenberg-editor-page.post-type-page .neve-gtb.container.has-sidebar-full-width .wp-block:not([data-align=full]):not([data-align=wide]),
 			.gutenberg-editor-page.post-type-page .neve-gtb.container.has-sidebar-left .neve-blocks-wrap,
-			.gutenberg-editor-page.post-type-page .neve-gtb.container.has-sidebar-right .neve-blocks-wrap' );
+			.gutenberg-editor-page.post-type-page .neve-gtb.container.has-sidebar-right .neve-blocks-wrap'
+		);
 	}
 }

@@ -21,7 +21,7 @@ class Container_Sidebar extends Base_Inline {
 	 */
 	public function init() {
 		$this->container_style();
-		$this->sidebar_style();
+		$this->content_style();
 	}
 
 	/**
@@ -40,31 +40,35 @@ class Container_Sidebar extends Base_Inline {
 		$this->add_responsive_style( $settings, '.container' );
 	}
 
+	private function get_content_width_value() {
+
+	}
+
 	/**
-	 * Sidebar style.
+	 * Content style.
 	 */
-	private function sidebar_style() {
+	private function content_style() {
 		$advanced_options = get_theme_mod( 'neve_advanced_layout_options', false );
 
 		if ( $advanced_options === false ) {
-			$content_width = get_theme_mod( 'neve_sitewide_content_width', 70 );
+			$content_width = get_theme_mod( 'neve_sitewide_content_width', false );
 		} else {
-			$content_width = get_theme_mod( 'neve_other_pages_content_width', 70 );
+			$content_width = get_theme_mod( 'neve_other_pages_content_width', false );
 
 			if ( is_home() || is_archive() ) {
-				$content_width = get_theme_mod( 'neve_blog_archive_content_width', 70 );
+				$content_width = get_theme_mod( 'neve_blog_archive_content_width', false );
 			}
 
 			if ( is_single() ) {
-				$content_width = get_theme_mod( 'neve_single_post_content_width', 70 );
+				$content_width = get_theme_mod( 'neve_single_post_content_width', false );
 			}
 
 			if ( class_exists( 'WooCommerce' ) ) {
 				if ( is_woocommerce() ) {
-					$content_width = get_theme_mod( 'neve_shop_archive_content_width', 70 );
+					$content_width = get_theme_mod( 'neve_shop_archive_content_width', false );
 				}
 				if ( is_product() ) {
-					$content_width = get_theme_mod( 'neve_single_product_content_width', 70 );
+					$content_width = get_theme_mod( 'neve_single_product_content_width', false );
 				}
 			}
 		}

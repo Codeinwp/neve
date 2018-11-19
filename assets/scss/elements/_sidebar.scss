@@ -1,5 +1,6 @@
 @mixin sidebar--laptop() {
   .nv-sidebar-wrap {
+    max-width: 30%;
     &.nv-right {
       border-left: $muted-border;
     }
