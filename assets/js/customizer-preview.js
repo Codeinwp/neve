@@ -174,11 +174,6 @@ var layoutRanges = {
     }
 };
 
-var changeContentWidth = function(newval) {
-    jQuery("#content .container .col").css("max-width", newval + "%");
-    jQuery(".nv-sidebar-wrap, .nv-sidebar-wrap.shop-sidebar").css("max-width", 100 - newval + "%");
-};
-
 var layoutLivePreview = function($) {
     "use strict";
     $.each(layoutRanges, function(id, args) {
@@ -201,55 +196,50 @@ var layoutLivePreview = function($) {
             });
         });
     });
-    wp.customize("neve_sitewide_content_width", function(value) {
-        value.bind(function(newval) {
-            changeContentWidth(newval);
-        });
-    });
-    wp.customize("neve_blog_archive_content_width", function(value) {
-        value.bind(function(newval) {
-            var body = $("body");
-            if ((body.hasClass("blog") || body.hasClass("archive")) && !body.hasClass("woocommerce")) {
-                changeContentWidth(newval);
-            }
-        });
-    });
-    wp.customize("neve_single_post_content_width", function(value) {
-        value.bind(function(newval) {
-            var body = $("body");
-            if (body.hasClass("single") && !body.hasClass("woocommerce")) {
-                changeContentWidth(newval);
-            }
-        });
-    });
-    wp.customize("neve_other_pages_content_width", function(value) {
-        value.bind(function(newval) {
-            var body = $("body");
-            if (body.hasClass("single") || body.hasClass("blog") || body.hasClass("archive")) {
-                return;
-            }
-            changeContentWidth(newval);
-        });
-    });
-    wp.customize("neve_shop_archive_content_width", function(value) {
-        value.bind(function(newval) {
-            var body = $("body");
-            if (body.hasClass("archive") && body.hasClass("woocommerce") ) {
-                changeContentWidth(newval);
-            }
-        });
-    });
-    wp.customize("neve_single_product_content_width", function(value) {
-        value.bind(function(newval) {
-            var body = $("body");
-            if (body.hasClass("single") && body.hasClass("woocommerce")) {
-                changeContentWidth(newval);
-            }
+};
+
+layoutLivePreview(jQuery);
+
+var contentWidths = {
+    neve_sitewide_content_width: {
+        content: ".neve-main > .container .col",
+        sidebar: ".nv-sidebar-wrap"
+    },
+    neve_blog_archive_content_width: {
+        content: ".archive-container .nv-index-posts",
+        sidebar: ".archive-container .nv-sidebar-wrap"
+    },
+    neve_single_post_content_width: {
+        content: ".single-post-container .nv-single-post-wrap",
+        sidebar: ".single-post-container .nv-sidebar-wrap"
+    },
+    neve_shop_archive_content_width: {
+        content: ".archive.woocommerce .shop-container .nv-shop.col",
+        sidebar: ".archive.woocommerce .shop-container .nv-sidebar-wrap"
+    },
+    neve_single_product_content_width: {
+        content: ".single-product .shop-container .nv-shop.col",
+        sidebar: ".single-product .shop-container .nv-sidebar-wrap"
+    },
+    neve_other_pages_content_width: {
+        content: "body:not(.single):not(.archive):not(.blog) .neve-main > .container .col",
+        sidebar: "body:not(.single):not(.archive):not(.blog) .nv-sidebar-wrap"
+    }
+};
+
+var contentWidthsPreview = function($) {
+    $.each(contentWidths, function(id, args) {
+        wp.customize(id, function(value) {
+            value.bind(function(newval) {
+                console.log(id);
+                jQuery(args.content).css("max-width", newval + "%");
+                jQuery(args.sidebar).css("max-width", 100 - newval + "%");
+            });
         });
     });
 };
 
-layoutLivePreview(jQuery);
+contentWidthsPreview(jQuery);
 
 var containersLayoutMap = {
     neve_default_container_style: ".page:not(.woocommerce) .single-page-container",
