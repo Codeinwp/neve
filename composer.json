@@ -1,12 +1,6 @@
 {
   "name": "codeinwp/neve",
   "description": "Neve by ThemeIsle.",
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/Codeinwp/themeisle-sdk"
-    }
-  ],
   "homepage": "https://themeisle.com/themes/neve/",
   "license": "GPL-2.0+",
   "authors": [

@@ -3,7 +3,7 @@
  *
  * Handles the responsive
  *
- * @package Astra
+ * @package Neve
  */
 
 wp.customize.controlConstructor[ 'responsive-number' ] = wp.customize.Control.extend( {
