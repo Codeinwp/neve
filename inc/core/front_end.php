@@ -9,6 +9,7 @@
  */
 
 namespace Neve\Core;
+use function Couchbase\defaultDecoder;
 
 /**
  * Front end handler class.
@@ -53,12 +54,8 @@ class Front_End {
 		add_theme_support( 'editor-font-sizes', $this->get_gutenberg_font_sizes() );
 		add_theme_support( 'fl-theme-builder-headers' );
 		add_theme_support( 'fl-theme-builder-footers' );
-		add_theme_support(
-			'amp',
-			array(
-				'paired' => true,
-			)
-		);
+
+		$this->add_amp_support();
 
 		register_nav_menus(
 			array(
@@ -279,6 +276,24 @@ class Front_End {
 		add_theme_support( 'wc-product-gallery-lightbox' );
 		add_theme_support( 'wc-product-gallery-slider' );
 
+	}
+
+	/**
+	 * Add AMP support
+	 */
+	private function add_amp_support() {
+		if ( ! defined( 'AMP__VERSION' ) ) {
+			return;
+		}
+		if ( version_compare( AMP__VERSION, '1.0.0', '<' ) ) {
+			return;
+		}
+		add_theme_support(
+			'amp',
+			array(
+				'paired' => true,
+			)
+		);
 	}
 
 	/**
