@@ -172,8 +172,15 @@
   padding: 0 15px;
   width: 100%;
 }
+.neve-gtb.has-sidebar-full-width .wp-block:not([data-align=full]):not([data-align=wide]) {
+  padding: 0 30px;
+}
 .neve-gtb.has-sidebar-full-width .wp-block:not([data-align=full]):not([data-align=wide]) > * {
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+.neve-gtb.container.has-sidebar-full-width .wp-block:not([data-align=full]):not([data-align=wide]) > * {
+  max-width: 70%;
 }
 .neve-gtb.has-sidebar-right .neve-blocks-wrap {
   max-width: 70%;
