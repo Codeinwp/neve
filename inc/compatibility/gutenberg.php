@@ -190,8 +190,8 @@ class Gutenberg {
 			)
 		);
 		$meta               = get_theme_mod( 'neve_post_meta_ordering', $default_meta_order );
-
-		if ( empty( json_decode( $meta ) ) ) {
+		$meta               = json_decode( $meta, true );
+		if ( empty( $meta ) ) {
 			return 'disabled';
 		}
 
