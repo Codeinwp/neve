@@ -28,7 +28,8 @@
   }
   .neve-blocks-wrap {
     margin: 0 auto;
-    padding: 0 15px
+    padding: 0 15px;
+    width: 100%;
   }
   &.has-sidebar-full-width .wp-block:not([data-align=full]):not([data-align=wide])  > * {
     margin: 0 auto;

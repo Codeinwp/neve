@@ -170,6 +170,7 @@
 .neve-gtb .neve-blocks-wrap {
   margin: 0 auto;
   padding: 0 15px;
+  width: 100%;
 }
 .neve-gtb.has-sidebar-full-width .wp-block:not([data-align=full]):not([data-align=wide]) > * {
   margin: 0 auto;
