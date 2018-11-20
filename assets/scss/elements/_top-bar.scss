@@ -23,6 +23,9 @@
   a {
     font-weight: 500;
     color: $body-color;
+    &:hover {
+      color: $body-color;
+    }
   }
 }
 

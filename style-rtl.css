@@ -441,6 +441,9 @@ blockquote.wp-block-quote.is-style-large cite {
   font-weight: 500;
   color: #404248;
 }
+.nv-top-bar a:hover {
+  color: #404248;
+}
 
 .nv-tb-wrap {
   padding-top: 10px;

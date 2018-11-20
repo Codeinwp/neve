@@ -158,6 +158,14 @@
   margin: 0 0 0 10px;
 }
 
+.woocommerce ul.products li.product a.woocommerce-loop-product__link {
+  color: #404248;
+}
+.woocommerce ul.products li.product a.woocommerce-loop-product__link:hover h2 {
+  color: #404248;
+  text-decoration: underline;
+}
+
 .woocommerce.single .nv-woo-filters {
   display: none;
 }
