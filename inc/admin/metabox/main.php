@@ -112,6 +112,10 @@ class Main extends Metabox_Base {
 	 * @return bool
 	 */
 	public function hide_on_single_product() {
+		if ( isset( $_GET['post_type'] ) && $_GET['post_type'] === 'product' ) {
+			return false;
+		}
+
 		if ( ! isset( $_GET['post'] ) ) {
 			return true;
 		}
@@ -131,6 +135,10 @@ class Main extends Metabox_Base {
 	 * @return bool
 	 */
 	public function hide_on_single_page_and_product() {
+		if ( isset( $_GET['post_type'] ) && ( $_GET['post_type'] === 'page' || $_GET['post_type'] === 'product' ) ) {
+			return false;
+		}
+
 		if ( ! isset( $_GET['post'] ) ) {
 			return true;
 		}
