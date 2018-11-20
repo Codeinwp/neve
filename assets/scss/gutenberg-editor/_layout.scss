@@ -70,6 +70,10 @@
   }
 }
 
+.gutenberg-editor-page.post-type-page .editor-post-title__input {
+  border-bottom: $muted-border;
+}
+
 $wp-block-selector: '.neve-gtb.container.has-sidebar-full-width .wp-block:not([data-align=full]):not([data-align=wide]),.neve-gtb.container.has-sidebar-left .neve-content-wrap, .neve-gtb.container.has-sidebar-right .neve-content-wrap';
 
 #{$wp-block-selector} {
