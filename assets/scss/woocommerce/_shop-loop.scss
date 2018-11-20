@@ -24,6 +24,16 @@
   }
 }
 
+//<editor-fold desc="Product title link">
+.woocommerce ul.products li.product a.woocommerce-loop-product__link {
+  color: $body-color;
+  &:hover h2 {
+    color: $body-color;
+    text-decoration: underline;
+  }
+}
+//</editor-fold>
+
 @mixin shop-loop--laptop() {
   .woocommerce-ordering {
     margin-left: 0;
