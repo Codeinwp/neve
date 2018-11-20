@@ -119,7 +119,7 @@ class Woocommerce {
 	 * Remove last breadcrumb on single product.
 	 *
 	 * @param array $crumbs breadcrumbs.
-	 * @param array $args breadcrumbs args.
+	 * @param array $args   breadcrumbs args.
 	 *
 	 * @return array
 	 */
@@ -245,6 +245,34 @@ class Woocommerce {
 		add_filter( 'neve_link_color_filter', array( $this, 'add_link_color' ) );
 		add_filter( 'neve_link_hover_color_filter', array( $this, 'add_link_hover_color' ) );
 		add_filter( 'neve_button_color_filter', array( $this, 'add_button_color' ) );
+		add_filter( 'neve_menu_items_color_filter', array( $this, 'add_menu_items_color' ) );
+		add_filter( 'neve_menu_items_hover_color_filter', array( $this, 'add_menu_items_hover_color' ) );
+	}
+
+	/**
+	 * Add selectors for menu item color.
+	 *
+	 * @param array $color_setup the color setup from Neve\Views\Inline\Colors.
+	 *
+	 * @return mixed
+	 */
+	public function add_menu_items_color( $color_setup ) {
+		$color_setup['color']['selectors'] .= ', .menu-item-nav-cart .cart-count';
+
+		return $color_setup;
+	}
+
+	/**
+	 * Add selectors for menu item hover color.
+	 *
+	 * @param array $color_setup the color setup from Neve\Views\Inline\Colors.
+	 *
+	 * @return mixed
+	 */
+	public function add_menu_items_hover_color( $color_setup ) {
+		$color_setup['color']['selectors'] .= ', .menu-item-nav-cart:hover .cart-count';
+
+		return $color_setup;
 	}
 
 	/**
@@ -290,7 +318,7 @@ class Woocommerce {
 	 * @return array
 	 */
 	public function add_link_color( $color_setup ) {
-		$color_setup['color']['selectors'] .= '';
+		$color_setup['color']['selectors'] .= ',#nv-primary-navigation .mini_cart_item > a';
 
 		return $color_setup;
 	}
@@ -303,8 +331,8 @@ class Woocommerce {
 	 * @return array
 	 */
 	public function add_link_hover_color( $color_setup ) {
-		// $color_setup['color']['selectors'] .=
-		// ', .woocommerce .woocommerce-breadcrumb a:hover';
+		$color_setup['color']['selectors'] .= ',#nv-primary-navigation .mini_cart_item:hover > a';
+
 		return $color_setup;
 	}
 
