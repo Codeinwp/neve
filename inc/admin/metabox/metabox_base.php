@@ -111,6 +111,9 @@ abstract class Metabox_Base {
 		return true;
 	}
 
+	/**
+	 * Enqueue scripts and styles.
+	 */
 	public function enqueue() {
 
 		$screen = get_current_screen();
@@ -129,6 +132,11 @@ abstract class Metabox_Base {
 		wp_enqueue_script( 'neve-metabox' );
 	}
 
+	/**
+	 * Localize the Metabox script.
+	 *
+	 * @return array
+	 */
 	private function get_localization() {
 		return array();
 	}

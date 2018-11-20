@@ -23,6 +23,9 @@ class Main extends Metabox_Base {
 		$this->add_content_toggles();
 	}
 
+	/**
+	 * Add content width control.
+	 */
 	private function add_content_width() {
 		$this->add_control(
 			new Controls\Range(
