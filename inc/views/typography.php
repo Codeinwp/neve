@@ -21,6 +21,14 @@ class Typography extends Base_View {
 	 */
 	public function init() {
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_google_fonts' ) );
+		add_action( 'enqueue_block_editor_assets', array( $this, 'register_google_fonts_gutenberg' ) );
+	}
+
+	/**
+	 * Register the google fonts for gutenberg.
+	 */
+	public function register_google_fonts_gutenberg() {
+		$this->register_google_fonts();
 	}
 
 	/**

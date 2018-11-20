@@ -1,0 +1,21 @@
+.editor-styles-wrapper.neve-has-meta .editor-post-title__block > div:first-child:after {
+  content: ' ';
+  width: 245px;
+  height: 12px;
+  display: block;
+  left: 0;
+  position: relative;
+  top: -12px;
+  margin-bottom: 12px;
+  background: linear-gradient(90deg,
+          $neve-gtb-grey 0%, $neve-gtb-grey 6%,
+          transparent 6.01%, transparent 7.5%,
+          $neve-gtb-grey 7.51%, $neve-gtb-grey 24%,
+          transparent 24.01%, transparent 26%,
+          $neve-gtb-grey 26.01%, $neve-gtb-grey 43%,
+          transparent 43.01%, transparent 45%,
+          $neve-gtb-grey 45.01%, $neve-gtb-grey 75%,
+          transparent 75.01%, transparent 77%,
+          $neve-gtb-grey 77.01%
+  );
+}

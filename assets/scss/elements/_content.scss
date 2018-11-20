@@ -1,10 +1,16 @@
 blockquote {
   text-align: center;
-  font-size: 1.1em;
   margin: $spacing 0;
+  p {
+  font-size: 1.1em;
+  }
   cite {
     padding-top: $spacing-sm;
     display: block;
+    color: $gray-color;
+    font-style: normal;
+    font-size: .95em;
+    text-align: center;
   }
   &:after, &:before {
     height: 3px;
@@ -25,6 +31,7 @@ blockquote {
 }
 
 table {
+  width: 100%;
   margin: $spacing-sm 0;
   td, th {
     padding: $spacing-xs;
@@ -132,4 +139,10 @@ hr {
   margin: $spacing-xs 0;
   display: inline-block;
   width: 100%;
+}
+
+@mixin content--laptop() {
+  .neve-main > .container .col {
+    max-width: 70%;
+  }
 }

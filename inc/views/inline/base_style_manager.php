@@ -16,7 +16,48 @@ use Neve\Views\Inline\Base_Inline as Base_Inline;
  *
  * @package Neve\Views\Inline
  */
-class Style_Manager extends Base_View {
+abstract class Base_Style_Manager extends Base_View {
+	/**
+	 * Theme mod key for generated style version.
+	 *
+	 * @var string
+	 */
+	protected $style_version_theme_mod_key = 'neve_generated_style_version';
+
+	/**
+	 * Style which the inline style will be hooked to.
+	 *
+	 * @var string
+	 */
+	protected $style_hook_handle = '';
+
+	/**
+	 * Will the style be enqueued in admin?
+	 *
+	 * @var bool
+	 */
+	protected $admin = false;
+
+	/**
+	 * Inline style handlers
+	 *
+	 * @var array
+	 */
+	protected $style_classes = array();
+
+	/**
+	 * Generated style file name.
+	 *
+	 * @var string
+	 */
+	protected $css_file_name = '';
+
+	/**
+	 * The enqueued style handle.
+	 *
+	 * @var string
+	 */
+	protected $style_handle = '';
 
 	/**
 	 * Generated inline style path.
@@ -31,31 +72,6 @@ class Style_Manager extends Base_View {
 	 * @var string
 	 */
 	private $style_url = '';
-
-	/**
-	 * Theme mod key for generated style version.
-	 *
-	 * @var string
-	 */
-	private $style_version_theme_mod_key = 'neve_generated_style_version';
-
-	/**
-	 * Inline style handlers
-	 *
-	 * @var array
-	 */
-	private $style_classes = array(
-		'Typography',
-		'Container_Sidebar',
-		'Colors',
-	);
-
-	/**
-	 * Generated style file name.
-	 *
-	 * @var string
-	 */
-	private $css_file_name = 'neve-customizer.css';
 
 	/**
 	 * Mobile style -> global.
@@ -102,7 +118,12 @@ class Style_Manager extends Base_View {
 			return;
 		}
 
-		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue' ), 100 );
+		if ( $this->admin === true ) {
+			add_action( 'enqueue_block_editor_assets', array( $this, 'maybe_enqueue' ), 100 );
+		} else {
+			add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue' ), 100 );
+		}
+
 		add_action( 'customize_save_after', array( $this, 'wipe_customizer_css_file' ), 0 );
 		add_action( 'after_switch_theme', array( $this, 'wipe_customizer_css_file' ), 0 );
 
@@ -124,14 +145,14 @@ class Style_Manager extends Base_View {
 			! is_customize_preview() &&
 			NEVE_DEBUG === false
 		) {
-			wp_enqueue_style( 'neve-generated-style', $this->style_url . $this->css_file_name, array( 'neve-style' ), $this->get_style_version() );
+			wp_enqueue_style( $this->style_handle, $this->style_url . $this->css_file_name, array( $this->style_hook_handle ), $this->get_style_version() );
 
 			return;
 		}
 
 		$this->run_inline_styles();
 		$this->wrap_styles();
-		wp_add_inline_style( 'neve-style', $this->get_style() );
+		wp_add_inline_style( $this->style_hook_handle, $this->get_style() );
 	}
 
 	/**
