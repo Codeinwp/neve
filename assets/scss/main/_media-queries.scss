@@ -14,6 +14,7 @@
 @media (min-width: #{$laptop}) {
   @include grid-container--laptop();
   @include grid--laptop();
+  @include content--laptop();
   @include nav-toggle--laptop();
   @include nav-menu--laptop();
   @include nav-menu-centered--laptop();

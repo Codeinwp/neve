@@ -1,5 +1,5 @@
 .gutenberg-editor-page .editor-styles-wrapper {
-  font-size: 100%;
+  font-size: 16px;
   font-weight: normal;
   font-family: Graphik, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
   color: #404248;
@@ -135,7 +135,7 @@
   padding: 0;
 }
 
-.editor-styles-wrapper.neve-has-meta .editor-post-title__block:after {
+.editor-styles-wrapper.neve-has-meta .editor-post-title__block > div:first-child:after {
   content: ' ';
   width: 245px;
   height: 12px;
@@ -143,7 +143,8 @@
   left: 0;
   position: relative;
   top: -12px;
-  background: linear-gradient(90deg, #e7e7e7 0%, #e7e7e7 6%, #fff 6.01%, #fff 7.5%, #e7e7e7 7.51%, #e7e7e7 24%, #fff 24.01%, #fff 26%, #e7e7e7 26.01%, #e7e7e7 43%, #fff 43.01%, #fff 45%, #e7e7e7 45.01%, #e7e7e7 75%, #fff 75.01%, #fff 77%, #e7e7e7 77.01%);
+  margin-bottom: 12px;
+  background: linear-gradient(90deg, #e7e7e7 0%, #e7e7e7 6%, transparent 6.01%, transparent 7.5%, #e7e7e7 7.51%, #e7e7e7 24%, transparent 24.01%, transparent 26%, #e7e7e7 26.01%, #e7e7e7 43%, transparent 43.01%, transparent 45%, #e7e7e7 45.01%, #e7e7e7 75%, transparent 75.01%, transparent 77%, #e7e7e7 77.01%);
 }
 
 .neve-gtb.has-sidebar-right .neve-content-wrap, .neve-gtb.has-sidebar-left .neve-content-wrap {
@@ -167,14 +168,18 @@
   padding: 0;
 }
 .neve-gtb .neve-blocks-wrap {
-  max-width: 70%;
   margin: 0 auto;
   padding: 0 15px;
 }
+.neve-gtb.has-sidebar-full-width .wp-block:not([data-align=full]):not([data-align=wide]) > * {
+  margin: 0 auto;
+}
 .neve-gtb.has-sidebar-right .neve-blocks-wrap {
+  max-width: 70%;
   padding: 0 40px 0 15px;
 }
 .neve-gtb.has-sidebar-left .neve-blocks-wrap {
+  max-width: 70%;
   padding: 0 15px 0 40px;
 }
 .neve-gtb .wp-block:not([data-align=full]):not([data-align=wide]) {
@@ -219,25 +224,25 @@
     max-width: 720px;
   }
 
-  .gutenberg-editor-page #wpwrap .editor-styles-wrapper {
+  .gutenberg-editor-page .editor-styles-wrapper {
     font-size: 16px;
   }
-  .gutenberg-editor-page #wpwrap .editor-styles-wrapper h1, .gutenberg-editor-page #wpwrap .editor-styles-wrapper .editor-post-title__block .editor-post-title__input {
+  .gutenberg-editor-page .editor-styles-wrapper h1, .gutenberg-editor-page .editor-styles-wrapper .editor-post-title__block .editor-post-title__input {
     font-size: 2em;
   }
-  .gutenberg-editor-page #wpwrap .editor-styles-wrapper h2 {
+  .gutenberg-editor-page .editor-styles-wrapper h2 {
     font-size: 1.75em;
   }
-  .gutenberg-editor-page #wpwrap .editor-styles-wrapper h3 {
+  .gutenberg-editor-page .editor-styles-wrapper h3 {
     font-size: 1.5em;
   }
-  .gutenberg-editor-page #wpwrap .editor-styles-wrapper h4 {
+  .gutenberg-editor-page .editor-styles-wrapper h4 {
     font-size: 1.25em;
   }
-  .gutenberg-editor-page #wpwrap .editor-styles-wrapper h5 {
+  .gutenberg-editor-page .editor-styles-wrapper h5 {
     font-size: 1em;
   }
-  .gutenberg-editor-page #wpwrap .editor-styles-wrapper h6 {
+  .gutenberg-editor-page .editor-styles-wrapper h6 {
     font-size: 1em;
   }
 }

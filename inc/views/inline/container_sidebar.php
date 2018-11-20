@@ -40,10 +40,6 @@ class Container_Sidebar extends Base_Inline {
 		$this->add_responsive_style( $settings, '.container' );
 	}
 
-	private function get_content_width_value() {
-
-	}
-
 	/**
 	 * Content style.
 	 */

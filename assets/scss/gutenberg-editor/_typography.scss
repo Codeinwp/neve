@@ -1,6 +1,6 @@
 .gutenberg-editor-page .editor-styles-wrapper {
   //<editor-fold desc="Fonts">
-  font-size: 100%;
+  font-size: 16px;
   font-weight: normal;
   font-family: $default-font-family;
   color: $body-color;
@@ -161,7 +161,7 @@
 }
 
 @mixin gutenberg-typograpgy--tablet() {
-  .gutenberg-editor-page #wpwrap {
+  .gutenberg-editor-page {
     .editor-styles-wrapper {
       font-size: $html-font-size;
       h1, .editor-post-title__block .editor-post-title__input {

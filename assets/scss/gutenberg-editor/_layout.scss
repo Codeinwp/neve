@@ -1,60 +1,3 @@
-//
-//.gutenberg-editor-page #wpwrap .editor-styles-wrapper {
-//  .wp-block {
-//    width: 100%;
-//    max-width: 100%;
-//    margin-right: auto;
-//    margin-left: auto;
-//    .editor-block-list__layout {
-//      padding: 0 !important;
-//    }
-//    .has-sidebar-full-width &[data-align=full], .has-sidebar-full-width &[data-align=wide] {
-//      margin: 0 -100px;
-//      padding-left: 0;
-//      padding-right: 0;
-//    }
-//  }
-//}
-//
-//.neve-gtb-sidebar {
-//  display: none;
-//}
-//
-//.editor-styles-wrapper .neve-gtb-sidebar > p {
-//  font-size: 32px;
-//  font-weight: 600;
-//  color: #777;
-//}
-//
-//<editor-fold desc="Sidebar / Layout">
-//.gutenberg-editor-page #wpwrap .editor-styles-wrapper {
-//  .neve-gtb-flow-wrap {
-//    display: flex;
-//    margin: 0 auto;
-//    .editor-writing-flow {
-//      flex-grow: 1;
-//      margin: 0 auto;
-//      max-width: 70%;
-//    }
-//    &.has-sidebar-left {
-//      .editor-post-title,
-//      .editor-block-list__layout {
-//        padding: 0 0 0 25px;
-//      }
-//    }
-//    &.has-sidebar-right {
-//      .editor-post-title,
-//      .editor-block-list__layout {
-//        padding: 0 25px 0 0;
-//      }
-//    }
-//    &.container-fluid.has-sidebar-right {
-//      margin-left: 35px;
-//    }
-//  }
-//}
-//</editor-fold>
-
 .neve-gtb {
   //<editor-fold desc="Sidebar Content">
   &.has-sidebar-right,
@@ -83,17 +26,19 @@
   .editor-block-list__layout {
     padding: 0;
   }
-  //&.has-sidebar-left, &.has-sidebar-right {
-  //}
-    .neve-blocks-wrap {
-      max-width: 70%;
-      margin: 0 auto;
-      padding: 0 15px
-    }
+  .neve-blocks-wrap {
+    margin: 0 auto;
+    padding: 0 15px
+  }
+  &.has-sidebar-full-width .wp-block:not([data-align=full]):not([data-align=wide])  > * {
+    margin: 0 auto;
+  }
   &.has-sidebar-right .neve-blocks-wrap {
+    max-width: 70%;
     padding: 0 40px 0 15px;
   }
   &.has-sidebar-left .neve-blocks-wrap {
+    max-width: 70%;
     padding: 0 15px 0 40px;
   }
   .wp-block:not([data-align=full]):not([data-align=wide]) {
@@ -113,7 +58,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #e7e7e7;
+  background: $neve-gtb-grey;
   padding: 10px;
   max-width: 100%;
   flex-grow: 1;

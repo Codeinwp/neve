@@ -225,7 +225,7 @@ th {
 }
 
 html {
-  font-size: 16px;
+  font-size: 100%;
   overflow-x: hidden;
   -webkit-tap-highlight-color: transparent;
   -webkit-font-smoothing: antialiased;
@@ -271,7 +271,7 @@ ins {
 }
 
 body {
-  font-size: 15px;
+  font-size: 16px;
 }
 
 h1 {
@@ -1640,10 +1640,6 @@ hr {
   width: 100%;
 }
 
-.neve-main > .container .col {
-  max-width: 70%;
-}
-
 .nv-sidebar-wrap {
   margin-bottom: 40px;
 }
@@ -1889,10 +1885,6 @@ hr {
     max-width: 100%;
   }
 
-  body {
-    font-size: 16px;
-  }
-
   h1 {
     font-size: 2em;
   }
@@ -2033,6 +2025,10 @@ hr {
   .col-lg-12 {
     flex: 0 0 100%;
     max-width: 100%;
+  }
+
+  .neve-main > .container .col {
+    max-width: 70%;
   }
 
   .navbar-toggle-wrapper {

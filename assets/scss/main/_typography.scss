@@ -1,5 +1,5 @@
 html {
-  font-size: $html-font-size;
+  font-size: 100%;
   overflow-x: hidden;
   -webkit-tap-highlight-color: transparent;
   -webkit-font-smoothing: antialiased;
@@ -46,7 +46,7 @@ ins {
 }
 
 body {
-  font-size: 15px;
+  font-size: $html-font-size;
 }
 
 h1 {
@@ -74,9 +74,6 @@ h6 {
 }
 
 @mixin typography--tablet() {
-  body {
-    font-size: $html-font-size;
-  }
   h1 {
     font-size: $h1-font-size;
   }
