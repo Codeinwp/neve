@@ -18,7 +18,23 @@ class Main extends Metabox_Base {
 	 */
 	public function add_controls() {
 		$this->add_layout_controls();
+		$this->add_control( new Controls\Separator( 'neve_meta_separator', array() ) );
+		$this->add_content_width();
 		$this->add_content_toggles();
+	}
+
+	private function add_content_width() {
+		$this->add_control(
+			new Controls\Range(
+				'neve_meta_content_width',
+				array(
+					'default' => 70,
+					'label'   => __( 'Content Width', 'neve' ),
+					'min'     => 50,
+					'max'     => 100,
+				)
+			)
+		);
 	}
 
 	/**
