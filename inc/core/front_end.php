@@ -9,7 +9,6 @@
  */
 
 namespace Neve\Core;
-use function Couchbase\defaultDecoder;
 
 /**
  * Front end handler class.
