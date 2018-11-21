@@ -6,6 +6,7 @@
 
 		init: function () {
 			this.syncRangeToNumber();
+			this.handleDependentUi();
 		},
 
 		syncRangeToNumber: function () {
@@ -17,6 +18,14 @@
 				} );
 				$( number ).on( 'input change', function ( e ) {
 					$( range ).val( e.target.value );
+				} );
+			} );
+		},
+		handleDependentUi: function () {
+			$( '#neve-page-settings .neve-dependent' ).each( function ( index, element ) {
+				var influencer = $( 'input#' + $( element ).data( 'depends' ) );
+				$( influencer ).on( 'change', function () {
+					$( element ).toggleClass( 'neve-hidden' );
 				} );
 			} );
 		}

@@ -19,8 +19,9 @@ class Main extends Metabox_Base {
 	public function add_controls() {
 		$this->add_layout_controls();
 		$this->add_control( new Controls\Separator( 'neve_meta_separator', array() ) );
-		$this->add_content_width();
 		$this->add_content_toggles();
+		$this->add_control( new Controls\Separator( 'neve_meta_separator', array() ) );
+		$this->add_content_width();
 	}
 
 	/**
@@ -28,13 +29,24 @@ class Main extends Metabox_Base {
 	 */
 	private function add_content_width() {
 		$this->add_control(
+			new Controls\Checkbox(
+				'neve_meta_enable_content_width',
+				array(
+					'default'     => 'off',
+					'label'       => __( 'Content Width', 'neve' ) . ' (%)',
+					'input_label' => __( 'Enable Individual Content Width', 'neve' ),
+				)
+			)
+		);
+		$this->add_control(
 			new Controls\Range(
 				'neve_meta_content_width',
 				array(
-					'default' => 70,
-					'label'   => __( 'Content Width', 'neve' ),
-					'min'     => 50,
-					'max'     => 100,
+					'default'    => 70,
+					'min'        => 50,
+					'max'        => 100,
+					'hidden'     => $this->hide_content_width(),
+					'depends_on' => 'neve_meta_enable_content_width',
 				)
 			)
 		);
@@ -104,7 +116,7 @@ class Main extends Metabox_Base {
 						'contained'  => __( 'Contained', 'neve' ),
 						'full-width' => __( 'Full Width', 'neve' ),
 					),
-					'label'   => __( 'Layout', 'neve' ),
+					'label'   => __( 'Container', 'neve' ),
 				)
 			)
 		);
@@ -123,6 +135,25 @@ class Main extends Metabox_Base {
 				)
 			)
 		);
+	}
+
+	/**
+	 * Hide content width.
+	 *
+	 * @return bool
+	 */
+	public function hide_content_width() {
+		if ( ! isset( $_GET['post'] ) ) {
+			return true;
+		}
+
+		$meta = get_post_meta( $_GET['post'], 'neve_meta_enable_content_width', true );
+
+		if ( $meta !== 'on' ) {
+			return true;
+		}
+
+		return false;
 	}
 
 	/**

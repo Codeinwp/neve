@@ -6,12 +6,25 @@
 
 		init: function () {
 			this.addClasses();
+			this.addCssTag();
 			this.handleSidebar();
 			this.handleContainer();
 			this.handleMetaboxChanges();
-			console.log( this.data );
+			this.handleContentWidth();
 		},
 
+		/**
+		 * Append Live CSS Tag.
+		 */
+		addCssTag: function () {
+			var tag = '<style class="neve-live-css"></style>';
+
+			$( '.neve-gtb' ).append( tag );
+		},
+
+		/**
+		 * Add classes to elements.
+		 */
 		addClasses: function () {
 			var editor = $( '.editor-styles-wrapper' );
 			$( editor ).addClass( 'neve-gtb' );
@@ -30,11 +43,17 @@
 			$( '.editor-writing-flow > div > div' ).addClass( 'neve-blocks-wrap' );
 		},
 
+		/**
+		 * Handle sidebar setup.
+		 */
 		handleSidebar: function () {
 			var position = this.data.neve_meta_sidebar ? this.data.neve_meta_sidebar : this.data.sidebarSetup;
 			this.handleSidebarChange( position );
 		},
 
+		/**
+		 * Handle sidebar change.
+		 */
 		handleSidebarChange: function ( position ) {
 			var blocksWrap = $( '.editor-writing-flow > div:not(.wp-block)' );
 			var editor = $( '.editor-styles-wrapper' );
@@ -59,15 +78,24 @@
 			return false;
 		},
 
+		/**
+		 * Get the sidebar markup.
+		 */
 		getSidebarMarkup: function ( position ) {
 			return '<div class="neve-gtb-sidebar ' + position + '"><p>' + this.data.strings.sidebar + '</p></div>';
 		},
 
+		/**
+		 * Handle container setup.
+		 */
 		handleContainer: function () {
 			var value = this.data.neve_meta_container ? this.data.neve_meta_container : this.data.containerSetup;
 			this.handleContainerChange( value );
 		},
 
+		/**
+		 * Handle container change.
+		 */
 		handleContainerChange: function ( value ) {
 			var editor = $( '.editor-styles-wrapper' );
 
@@ -83,12 +111,16 @@
 			return false;
 		},
 
+		/**
+		 * Handle metabox changes.
+		 */
 		handleMetaboxChanges: function () {
 			var editor = $( '.editor-styles-wrapper' );
 			var self = this;
 			// Title toggle.
 			$( '#neve-page-settings #neve_meta_disable_title' ).on( 'change', function () {
 				$( editor ).find( '.editor-post-title' ).toggle();
+				return false;
 			} );
 
 			// Sidebar setting.
@@ -99,17 +131,62 @@
 				}
 				$( '.neve-gtb-sidebar' ).remove();
 				self.handleSidebarChange( value );
+				return false;
 			} );
 
 			// Container setting.
 			$( '#neve-page-settings input[name=neve_meta_container]' ).on( 'change', function ( event ) {
 				var value = event.target.value;
-
-				if ( event.target.value === 'default' ) {
-					value = self.data.containerSetup;
-				}
 				self.handleContainerChange( value );
+				return false;
 			} );
+
+			// Content width toggle.
+			$( '#neve-page-settings input[name=neve_meta_enable_content_width]' ).on( 'change', function ( event ) {
+				var value = event.target.checked;
+				if ( value === true ) {
+					self.handleContentWidthChange();
+					return false;
+				}
+				$( '.neve-live-css' ).empty();
+			} );
+
+			// Content width.
+			$( '#neve-page-settings input[name=neve_meta_content_width]' ).on( 'input change', function ( event ) {
+				var value = event.target.value;
+				self.handleContentWidthChange( value );
+				return false;
+			} );
+		},
+
+		/**
+		 * Handle content width setup.
+		 */
+		handleContentWidth: function () {
+			if ( this.data.neve_meta_enable_content_width !== 'on' ) {
+				return false;
+			}
+			this.handleContentWidthChange();
+			return false;
+		},
+
+		/**
+		 * Handle content width changes.
+		 */
+		handleContentWidthChange: function ( setValue ) {
+			if ( !setValue ) {
+				console.log( 'empty' );
+				setValue = $( '#neve-page-settings input[name=neve_meta_content_width]' ).val();
+			}
+
+			console.log( setValue );
+
+			var css = '@media(min-width: 960px) { ' +
+				'.neve-gtb.container.has-sidebar-full-width .wp-block:not([data-align=full]):not([data-align=wide])  > *,' +
+				'.neve-gtb.container.has-sidebar-left .neve-blocks-wrap,' +
+				'.neve-gtb.container.has-sidebar-right .neve-blocks-wrap { max-width: ' + setValue + '%; } ' +
+				'}';
+			$( '.neve-live-css' ).html( css );
 		},
 	};
 })( jQuery );
