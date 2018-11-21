@@ -1059,6 +1059,10 @@
     grid-column: span 10;
     grid-row-start: 1;
     grid-column-end: -1;
+    color: #404248;
+  }
+  #nv-primary-navigation .widget_shopping_cart li.mini_cart_item > a:hover {
+    text-decoration: underline;
   }
   #nv-primary-navigation .widget_shopping_cart li.mini_cart_item a.remove {
     grid-column: 1;
@@ -1066,6 +1070,9 @@
     height: 20px;
     padding: 0;
     position: static;
+  }
+  #nv-primary-navigation .widget_shopping_cart li.mini_cart_item a.remove:hover {
+    text-decoration: none;
   }
   #nv-primary-navigation .widget_shopping_cart li.mini_cart_item span.quantity {
     grid-row-start: 2;
