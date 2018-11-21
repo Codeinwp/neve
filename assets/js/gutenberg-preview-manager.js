@@ -175,17 +175,14 @@
 		 */
 		handleContentWidthChange: function ( setValue ) {
 			if ( !setValue ) {
-				console.log( 'empty' );
 				setValue = $( '#neve-page-settings input[name=neve_meta_content_width]' ).val();
 			}
 
-			console.log( setValue );
-
 			var css = '@media(min-width: 960px) { ' +
-				'.neve-gtb.container.has-sidebar-full-width .wp-block:not([data-align=full]):not([data-align=wide])  > *,' +
-				'.neve-gtb.container.has-sidebar-left .neve-blocks-wrap,' +
-				'.neve-gtb.container.has-sidebar-right .neve-blocks-wrap { max-width: ' + setValue + '%; } ' +
-				'}';
+				'.neve-gtb.has-sidebar-full-width .wp-block:not([data-align=full]):not([data-align=wide]) > *,' +
+				'.neve-gtb.has-sidebar-left .neve-blocks-wrap,' +
+				'.neve-gtb.has-sidebar-right .neve-blocks-wrap' +
+				' { max-width: ' + setValue + '% !important; } }';
 			$( '.neve-live-css' ).html( css );
 		},
 	};
