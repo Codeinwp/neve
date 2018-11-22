@@ -116,7 +116,7 @@ var layoutLivePreview = function ( $ ) {
 layoutLivePreview( jQuery );
 
 var contentWidths = {
-	'neve_sitewide_content_width':{
+	'neve_sitewide_content_width': {
 		content: '.neve-main > .container .col',
 		sidebar: '.nv-sidebar-wrap'
 	},
