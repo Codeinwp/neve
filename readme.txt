@@ -14,6 +14,21 @@ Neve is a super fast, easily customizable, multi-purpose theme. It’s perfect f
 
 == Changelog ==
 
+= 1.0.9 = 
+
+* AMP integration
+* Accessibility ready
+* New color options to better fit themes options
+* New options to allow reordering the elements on the single post pages
+* New individual options to allow disabling specific elements on single posts/pages
+* Basic Mega Menu integration
+* Improved the onboarding process alongside the import from Zelle
+* Improved navigation layout
+* Improved comments area style
+* Improved WooCommerce layout
+* Other small design improvements
+* Added fallback menu for the primary menu
+
 = 1.0.8 =
 * Google Search Console compatibility
 * Fixed theme check issues
