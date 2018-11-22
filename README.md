@@ -11,15 +11,9 @@ Neve is a super fast, easily customizable, multi-purpose theme. It’s perfect f
 
 Neve is a WordPress Theme,
 Copyright (C) 2018, ThemeIsle
-Neve is distributed under the terms of the GNU GPL
+Neve is distributed under the terms of the GPLv2 or later
 
-This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
-
-This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
-
-https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
+http://www.gnu.org/licenses/gpl-2.0.html
 
 # Libraries #
 
@@ -27,7 +21,7 @@ Neve Icons based on Font Awesome Icons licensed under CC BY 4.0 License (https:/
 
 ### Images
 
-License: All pixabay.com & mystock.themeisle.com images are licensed under the terms of the Creative Commons Zero, (http://creativecommons.org/publicdomain/zero/1.0/)
+License: All  images are licensed under CC0.
 
 | Demo | Image | Source |
 | ------ | ------ | ------ |

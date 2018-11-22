@@ -3,7 +3,7 @@ Contributors: themeisle
 Tags: blog, custom-logo, e-commerce, rtl-language-support, post-formats, grid-layout, one-column, two-columns, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready
 Requires at least: 4.0
 Tested up to: 4.9.8
-Stable tag: 1.0.5
+Stable tag: 1.0.10
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,35 +13,47 @@ Neve is a super fast, easily customizable, multi-purpose theme. Perfect for blog
 Neve is a super fast, easily customizable, multi-purpose theme. It’s perfect for blogs, small business, startups, agencies, firms, e-commerce shops (WooCommerce storefront) as well as personal portfolio sites and most types of projects. A fully AMP optimized and responsive theme, Neve will load in mere seconds and adapt perfectly on any viewing device. While it is lightweight and has a minimalist design, the theme is highly extendable, it has a highly SEO optimized code, resulting in top rankings in Google search results. Neve works perfectly with Gutenberg and the most popular page builders (Elementor, Brizy, Beaver Builder, Visual Composer, SiteOrigin, Divi). Neve is also WooCommerce ready, responsive, RTL & translation ready. Look no further. Neve is the perfect theme for you!
 
 == Changelog ==
-= 1.0.8 - 2018-10-30  = 
 
+= 1.0.8 =
 * Google Search Console compatibility
 * Fixed theme check issues
 * Changed the onboarding mechanism
 * Fixed escaping issues
 
+= 1.0.7 =
+* Accessibility ready
+* Refactored the About Neve page
+* Design improvements
+* Import Zelle ( Zerif ) options if the theme was previously activated
+* Remove tags on the archives page header
+* Compatibility with Beaver Themer plugin
+* Compatibility with Gutenberg
+* Updated the readme file
 
-
-= v1.0.3 =
-*Release Date - 2018-09-24*
+= 1.0.3 =
+* Release Date - 2018-09-24*
 * Add proper Elementor Header and Footer support
 * Fixed warning caused by forgotten "var_dump" in page / post metabox handler
  
 = v1.0.2 =
-*Release Date - 2018-09-07*
+* Release Date - 2018-09-07*
 * Demo data for Neve 2018 template
  
-= v1.0.1 =
-*Release Date - 2018-09-07*
+= 1.0.1 =
+* Release Date - 2018-09-07*
 * Updated description and screenshot
  
-= v1.0.0 =
-*Release Date - 2018-09-06*
+= 1.0.0 =
+* Release Date - 2018-09-06*
 * Lowercase file names.
 
 
 == Resources ==
 * Neve Icons based on Font Awesome Icons licensed under CC BY 4.0 License (https://creativecommons.org/licenses/by/4.0/).
+
+Images used in the screenshot and in the demos:
+All  images are licensed under CC0.
+
 * Neve Main: testimonial-1.jpg, CC0, https://mystock.themeisle.com/photo/girl-in-the-forest/
 * Neve Main: team-4-1.jpg, CC0, https://mystock.themeisle.com/photo/girl/
 * Neve Main: team-3-1.jpg, CC0, https://mystock.themeisle.com/photo/thinking-time/
