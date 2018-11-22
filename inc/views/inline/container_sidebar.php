@@ -67,12 +67,12 @@ class Container_Sidebar extends Base_Inline {
 				'sidebar' => 'body:not(.single):not(.archive):not(.blog) .nv-sidebar-wrap',
 			),
 			'neve_blog_archive_content_width' => array(
-				'content' => '.archive-container .nv-index-posts',
-				'sidebar' => '.archive-container .nv-sidebar-wrap',
+				'content' => '.neve-main > .archive-container .nv-index-posts.col',
+				'sidebar' => '.neve-main > .archive-container .nv-sidebar-wrap',
 			),
 			'neve_single_post_content_width'  => array(
-				'content' => '.single-post-container .nv-single-post-wrap',
-				'sidebar' => '.single-post-container .nv-sidebar-wrap',
+				'content' => '.neve-main > .single-post-container .nv-single-post-wrap.col',
+				'sidebar' => '.neve-main > .single-post-container .nv-sidebar-wrap',
 			),
 		);
 
@@ -81,12 +81,12 @@ class Container_Sidebar extends Base_Inline {
 				$content_widths,
 				array(
 					'neve_shop_archive_content_width'   => array(
-						'content' => '.archive.woocommerce .shop-container .nv-shop.col',
-						'sidebar' => '.archive.woocommerce .shop-container .nv-sidebar-wrap',
+						'content' => '.neve-main > .archive.woocommerce .shop-container .nv-shop.col',
+						'sidebar' => '.neve-main > .archive.woocommerce .shop-container .nv-sidebar-wrap',
 					),
 					'neve_single_product_content_width' => array(
-						'content' => '.single-product .shop-container .nv-shop.col',
-						'sidebar' => '.single-product .shop-container .nv-sidebar-wrap',
+						'content' => '.neve-main > .single-product .shop-container .nv-shop.col',
+						'sidebar' => '.neve-main > .single-product .shop-container .nv-sidebar-wrap',
 					),
 				)
 			);
