@@ -93,6 +93,10 @@ class Front_End {
 					'url'   => 'https://demo.themeisle.com/neve-lawyers/',
 					'title' => 'Neve Lawyers',
 				),
+				'neve-doctors'       => array(
+					'url'   => 'https://demo.themeisle.com/neve-doctors/',
+					'title' => 'Neve Doctors',
+				),
 			),
 			'default_template' => array(
 				'screenshot' => get_template_directory_uri() . '/onboarding/screenshot.png',
