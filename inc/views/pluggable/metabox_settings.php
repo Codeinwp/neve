@@ -51,7 +51,7 @@ class Metabox_Settings {
 
 		$style = '@media(min-width: 960px) {
 			#content.neve-main > .container > .row > .col { max-width: ' . absint( $meta_value ) . '%; } 
-			.neve-main .nv-sidebar-wrap, .neve-main .nv-sidebar-wrap.shop-sidebar { max-width: ' . absint( $sidebar_width) . '%; }
+			.neve-main .nv-sidebar-wrap, .neve-main .nv-sidebar-wrap.shop-sidebar { max-width: ' . absint( $sidebar_width ) . '%; }
 		}';
 
 		wp_add_inline_style( 'neve-style', $style );

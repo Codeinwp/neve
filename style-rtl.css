@@ -2058,10 +2058,8 @@ hr {
     margin-right: auto;
     justify-content: flex-start;
   }
-  #nv-primary-navigation > li:not(:last-child) {
+  #nv-primary-navigation li {
     padding-left: 10px;
-  }
-  #nv-primary-navigation > li:not(:first-child) {
     padding-right: 10px;
   }
   .responsive-opened #nv-primary-navigation {

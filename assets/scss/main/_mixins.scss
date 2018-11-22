@@ -1,9 +1,9 @@
-@mixin horizontal-list( $margin, $ignore-first-last : false ) {
+@mixin horizontal-list( $margin, $ignore-first-last : 'false' ) {
   display: flex;
   flex-wrap: wrap;
   padding-left: 0;
   list-style-type: none;
-  @if $margin != 0 and $ignore-first-last == false {
+  @if $margin != 0 and $ignore-first-last == 'false' {
     > li:not(:last-child) {
       padding-right: $margin;
     }
@@ -11,7 +11,7 @@
       padding-left: $margin;
     }
   }
-  @if $ignore-first-last == true {
+  @if $ignore-first-last == 'true' {
     li {
       padding-right: $margin;
       padding-left: $margin;
