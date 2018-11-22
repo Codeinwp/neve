@@ -76,7 +76,7 @@ class Front_End {
 	 */
 	private function get_ti_demo_content_support_data() {
 		$onboarding_sites = array(
-			'local'            => array(
+			'local'       => array(
 				'neve-main'          => array(
 					'url'   => 'https://demo.themeisle.com/neve',
 					'title' => 'Neve 2018',
@@ -94,11 +94,7 @@ class Front_End {
 					'title' => 'Neve Lawyers',
 				),
 			),
-			'default_template' => array(
-				'screenshot' => get_template_directory_uri() . '/onboarding/screenshot.png',
-				'name'       => 'Neve Default Blog',
-			),
-			'can_migrate'      => array(
+			'can_migrate' => array(
 				'zerif-pro'  => array(
 					'theme_name'      => 'Zelle Pro',
 					'theme_mod_check' => 'zelle_frontpage_was_imported',
@@ -114,7 +110,7 @@ class Front_End {
 					'description'     => __( 'Hi! We\'ve noticed you were using Zelle before. To make your transition easier, we can help you keep the same beautiful homepage you had before, by converting it into an Elementor template. This option will also import your homepage content.', 'neve' ),
 				),
 			),
-			'i18n'             => array(
+			'i18n'        => array(
 				'templates_title'       => __( 'Ready to use pre-built websites with 1-click installation', 'neve' ),
 				'templates_description' => __( 'With Neve, you can choose from multiple unique demos, specially designed for you, that can be installed with a single click. You just need to choose your favorite, and we will take care of everything else.', 'neve' ),
 			),

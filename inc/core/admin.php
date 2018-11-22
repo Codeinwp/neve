@@ -26,57 +26,50 @@ class Admin {
 		 * About page instance
 		 */
 		$config = array(
-			'welcome_notice'      => array(
+			'welcome_notice'  => array(
 				'type'            => 'custom',
 				'notice_class'    => 'nv-welcome-notice',
 				'dismiss_option'  => 'neve_notice_dismissed',
 				'render_callback' => array( $this, 'welcome_notice_content' ),
 			),
-			'getting_started'     => array(
+			'footer_messages' => array(
+				'type'     => 'custom',
+				'messages' => array(
+					array(
+						'heading'   => __( 'Neve Community', 'neve' ),
+						'text'      => __( 'Join the community of Neve users. Get connected, share opinions, ask questions and help each other!', 'neve' ),
+						'link_text' => __( 'Join our Facebook Group', 'neve' ),
+						'link'      => 'https://www.facebook.com/groups/648646435537266/',
+					),
+					array(
+						'heading'   => __( 'Leave us a review', 'neve' ),
+						'text'      => __( 'Are you are enjoying Neve? We would love to hear your feedback.', 'neve' ),
+						'link_text' => __( 'Submit a review', 'neve' ),
+						'link'      => 'https://wordpress.org/support/theme/neve/reviews/#new-post',
+					),
+				),
+			),
+			'getting_started' => array(
 				'type'    => 'columns-2',
 				'title'   => __( 'Getting Started', 'neve' ),
 				'content' => array(
 					array(
 						'title'  => esc_html__( 'Recommended actions', 'neve' ),
-						'text'   => esc_html__( 'We have compiled a list of steps for you to take so we can ensure that the experience you have using one of our products is very easy to follow.', 'neve' ),
+						'text'   => esc_html__( 'Neve now comes with a sites library with various designs to pick from. Visit our collection of demos that are constantly being added.', 'neve' ),
 						'button' => array(
-							'label'     => esc_html__( 'Recommended actions', 'neve' ),
-							'link'      => esc_url( '#recommended_actions' ),
+							'label'     => esc_html__( 'See demos', 'neve' ),
+							'link'      => esc_url( '#sites_library' ),
 							'is_button' => false,
 							'blank'     => false,
 						),
 					),
 					array(
-						'title'  => esc_html__( 'Go to the Customizer', 'neve' ),
-						'text'   => esc_html__( 'Using the WordPress Customizer you can easily customize every aspect of the theme.', 'neve' ),
-						'button' => array(
-							'label'     => esc_html__( 'Go to the Customizer', 'neve' ),
-							'link'      => esc_url( admin_url( 'customize.php' ) ),
-							'is_button' => true,
-							'blank'     => true,
-						),
+						'title'        => esc_html__( 'Links to Customizer Settings', 'neve' ),
+						'html_content' => $this->get_customizer_settings(),
 					),
 				),
 			),
-			'recommended_actions' => array(
-				'type'    => 'recommended_actions',
-				'title'   => __( 'Recommended Actions', 'neve' ),
-				'plugins' => array(
-					'themeisle-companion' => array(
-						'name' => 'OrbitFox',
-						'slug' => 'themeisle-companion',
-					),
-					'wpforms-lite'        => array(
-						'name' => 'WPForms',
-						'slug' => 'wpforms-lite',
-					),
-					'elementor'           => array(
-						'name' => 'Elementor',
-						'slug' => 'elementor',
-					),
-				),
-			),
-			'useful_plugins'      => array(
+			'useful_plugins'  => array(
 				'type'    => 'plugins',
 				'title'   => __( 'Useful Plugins', 'neve' ),
 				'plugins' => array(
@@ -90,9 +83,9 @@ class Admin {
 					'translatepress-multilingual',
 				),
 			),
-			'support'             => array(
+			'support'         => array(
 				'type'    => 'columns-2',
-				'title'   => __( 'Support', 'neve' ),
+				'title'   => __( 'Documentation', 'neve' ),
 				'content' => array(
 					array(
 						'icon'   => 'dashicons dashicons-sos',
@@ -152,17 +145,115 @@ class Admin {
 					),
 				),
 			),
-			'changelog'           => array(
+			'changelog'       => array(
 				'type'  => 'changelog',
 				'title' => __( 'Changelog', 'neve' ),
 			),
-			'custom_tabs'         => array(),
+			'custom_tabs'     => array(),
 		);
 
 		if ( class_exists( '\Ti_About_Page' ) ) {
 			$about_page = new \Ti_About_Page();
 			$about_page->init( $config );
 		}
+	}
+
+	/**
+	 * Get list of customizer settings and links.
+	 *
+	 * @return string
+	 */
+	private function get_customizer_settings() {
+		$markup  = '<div class="customizer-links-container">';
+		$data    = array(
+			array(
+				'icon' => 'dashicons-format-image',
+				'text' => __( 'Upload Logo', 'neve' ),
+				'link' => add_query_arg( array( 'autofocus[control]' => 'custom_logo' ), admin_url( 'customize.php' ) ),
+			),
+			array(
+				'icon' => 'dashicons-editor-textcolor',
+				'text' => __( 'Customize Fonts', 'neve' ),
+				'link' => add_query_arg( array( 'autofocus[control]' => 'neve_headings_font_family' ), admin_url( 'customize.php' ) ),
+			),
+			array(
+				'icon' => 'dashicons-align-center',
+				'text' => __( 'Header Options', 'neve' ),
+				'link' => add_query_arg( array( 'autofocus[panel]' => 'neve_header' ), admin_url( 'customize.php' ) ),
+			),
+			array(
+				'icon' => 'dashicons-admin-generic',
+				'text' => __( 'Footer Settings', 'neve' ),
+				'link' => add_query_arg( array( 'autofocus[panel]' => 'neve_footer' ), admin_url( 'customize.php' ) ),
+			),
+			array(
+				'icon' => 'dashicons-admin-customizer',
+				'text' => __( 'Set Colors', 'neve' ),
+				'link' => add_query_arg( array( 'autofocus[section]' => 'neve_colors_background_section' ), admin_url( 'customize.php' ) ),
+			),
+			array(
+				'icon' => 'dashicons-layout',
+				'text' => __( 'Layout Options', 'neve' ),
+				'link' => add_query_arg( array( 'autofocus[panel]' => 'neve_layout' ), admin_url( 'customize.php' ) ),
+			),
+			array(
+				'icon' => 'dashicons-welcome-write-blog',
+				'text' => __( 'Blog Layouts', 'neve' ),
+				'link' => add_query_arg( array( 'autofocus[section]' => 'neve_blog_archive_layout' ), admin_url( 'customize.php' ) ),
+			),
+			array(
+				'icon' => 'dashicons-align-left',
+				'text' => __( 'Content / Sidebar', 'neve' ),
+				'link' => add_query_arg( array( 'autofocus[section]' => 'neve_sidebar' ), admin_url( 'customize.php' ) ),
+			),
+		);
+		$counter = 1;
+		foreach ( $data as $customizer_item ) {
+			$class = 'left';
+			if ( $counter % 2 === 0 ) {
+				$class = 'right';
+			}
+			$markup .= '
+				<div class="ti-customizer-item ' . esc_attr( $class ) . '">
+				<i class="dashicons ' . esc_attr( $customizer_item['icon'] ) . '"></i><a target="_blank" href="' . esc_url( $customizer_item['link'] ) . '">' . wp_kses_post( $customizer_item['text'] ) . '</a>
+				</div>
+			';
+			$counter ++;
+		}
+		$markup .= '</div>';
+
+		$style = '
+		<style>
+		.customizer-links-container{
+			width: 100%;
+			margin-bottom: 20px;
+		}
+		.ti-customizer-item{
+		padding: 10px 0;
+		width: 50%;
+		border-bottom: 1px solid #cccccc;
+		}
+		.ti-customizer-item a{
+		text-decoration: none;
+		line-height: 20px;
+		}
+		.ti-customizer-item i{
+		vertical-align: initial;
+		}
+		.ti-customizer-item.left{
+		float: left;
+		}
+		.ti-customizer-item.right{
+		float: right;
+		}
+		@media (max-width: 600px) {
+			.ti-customizer-item{
+				width: 100%;
+			}
+		}
+		</style>';
+
+		return $markup . $style;
 	}
 
 	/**
