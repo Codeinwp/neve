@@ -53,6 +53,61 @@ class Layout_Sidebar extends Base_View {
 		<?php
 	}
 
+
+
+	/**
+	 * Get the sidebar setup. Returns array (`theme_mod`, `sidebar_slug`) based on context.
+	 *
+	 * @param string $context the provided context.
+	 *
+	 * @return array
+	 */
+	public function get_sidebar_setup( $context ) {
+		$advanced_options = get_theme_mod( 'neve_advanced_layout_options', false );
+		$sidebar_setup    = array(
+			'theme_mod'    => '',
+			'sidebar_slug' => 'blog-sidebar',
+		);
+
+		if ( class_exists( 'WooCommerce' ) && ( is_woocommerce() || is_product() || is_cart() || is_checkout() || is_account_page() ) ) {
+			$sidebar_setup['sidebar_slug'] = 'shop-sidebar';
+		}
+
+		if ( $advanced_options === false ) {
+			$sidebar_setup['theme_mod'] = 'neve_default_sidebar_layout';
+			return $sidebar_setup;
+		}
+
+		switch ( $context ) {
+			case 'blog-archive':
+				$sidebar_setup['theme_mod'] = 'neve_blog_archive_sidebar_layout';
+				break;
+			case 'single-post':
+				$sidebar_setup['theme_mod'] = 'neve_single_post_sidebar_layout';
+				if ( class_exists( 'WooCommerce' ) && is_product() ) {
+					$sidebar_setup['theme_mod'] = 'neve_single_product_sidebar_layout';
+				}
+				break;
+			case 'single-page':
+				$sidebar_setup['theme_mod'] = 'neve_other_pages_sidebar_layout';
+				break;
+			case 'shop':
+				if ( class_exists( 'WooCommerce' ) ) {
+					$sidebar_setup['sidebar_slug'] = 'shop-sidebar';
+					if ( is_woocommerce() ) {
+						$sidebar_setup['theme_mod'] = 'neve_shop_archive_sidebar_layout';
+					}
+					if ( is_product() ) {
+						$sidebar_setup['theme_mod'] = 'neve_single_product_sidebar_layout';
+					}
+				}
+				break;
+			default:
+				$sidebar_setup['theme_mod'] = 'neve_other_pages_sidebar_layout';
+		}
+		return $sidebar_setup;
+	}
+
 	/**
 	 * Render sidebar toggle.
 	 *
@@ -65,64 +120,5 @@ class Layout_Sidebar extends Base_View {
 		$label        = apply_filters( 'neve_filter_sidebar_close_button_text', __( 'Close', 'neve' ), $slug );
 		$button_attrs = apply_filters( 'neve_filter_sidebar_close_button_data_attrs', '', $slug );
 		echo '<div class="sidebar-header"><span class="nv-sidebar-toggle in-sidebar button button-secondary" ' . esc_attr( $button_attrs ) . '>' . esc_html( $label ) . '</span></div>';
-	}
-
-	/**
-	 * Get the sidebar setup. Returns array (`theme_mod`, `sidebar_slug`) based on context.
-	 *
-	 * @param string $context the provided context.
-	 *
-	 * @return array
-	 */
-	private function get_sidebar_setup( $context ) {
-		$sidebar_setup = array(
-			'theme_mod'    => 'neve_default_sidebar_layout',
-			'sidebar_slug' => 'blog-sidebar',
-		);
-
-		if ( $context === 'blog-archive' ) {
-			$sidebar_setup['theme_mod'] = 'neve_blog_archive_sidebar_layout';
-
-			return $sidebar_setup;
-		}
-
-		if ( $context === 'single-post' ) {
-			if ( class_exists( 'WooCommerce' ) && is_product() ) {
-				$sidebar_setup['theme_mod']    = 'neve_single_product_sidebar_layout';
-				$sidebar_setup['sidebar_slug'] = 'shop-sidebar';
-
-				return $sidebar_setup;
-			}
-
-			$sidebar_setup['theme_mod'] = 'neve_single_post_sidebar_layout';
-
-			return $sidebar_setup;
-
-		}
-
-		if ( $context === 'single-page' ) {
-			if ( class_exists( 'WooCommerce' ) && ( is_cart() || is_checkout() || is_account_page() ) ) {
-				$sidebar_setup['theme_mod']    = 'neve_shop_archive_sidebar_layout';
-				$sidebar_setup['sidebar_slug'] = 'shop-sidebar';
-
-				return $sidebar_setup;
-			}
-		}
-
-		if ( $context === 'shop' ) {
-			if ( class_exists( 'WooCommerce' ) ) {
-				$sidebar_setup['sidebar_slug'] = 'shop-sidebar';
-				if ( is_woocommerce() ) {
-					$sidebar_setup['theme_mod'] = 'neve_shop_archive_sidebar_layout';
-				}
-				if ( is_product() ) {
-					$sidebar_setup['theme_mod'] = 'neve_single_product_sidebar_layout';
-				}
-
-				return $sidebar_setup;
-			}
-		}
-
-		return $sidebar_setup;
 	}
 }

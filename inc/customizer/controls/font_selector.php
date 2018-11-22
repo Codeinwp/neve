@@ -41,7 +41,7 @@ class Font_Selector extends \WP_Customize_Control {
 		$value        = $this->value();
 
 		if ( empty( $value ) || $value === 'default' ) {
-			$value = ucwords( 'Default' );
+			$value = ucwords( 'default' );
 		}
 
 		?>
@@ -67,7 +67,7 @@ class Font_Selector extends \WP_Customize_Control {
 						<span class="neve-fs-option"
 								data-source="system"
 								data-control="<?php echo esc_attr( $this->id ); ?>"
-								data-option="Default"><?php esc_html_e( 'Default', 'neve' ); ?></span>
+								data-option="<?php echo ucwords( 'default' ); ?>"><?php esc_html_e( 'Default', 'neve' ); ?></span>
 					<?php
 					$this->render_dropdown_options_group( $std_fonts, esc_html__( 'Standard Fonts', 'neve' ), 'system' );
 					$this->render_dropdown_options_group( $google_fonts, esc_html__( 'Google Fonts', 'neve' ), 'google-fonts' );

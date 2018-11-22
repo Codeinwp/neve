@@ -23,7 +23,7 @@ class Typography extends Base_Inline {
 		$this->fonts_family();
 		$this->add_body_style();
 		$this->add_headings_styles();
-		$this->add_gutenberg_font_size();
+		$this->add_gutenberg_front_end_font_size();
 	}
 
 	/**
@@ -109,35 +109,29 @@ class Typography extends Base_Inline {
 	}
 
 	/**
-	 * Add font sizes from gutenberg/
+	 * Add font sizes from gutenberg.
 	 */
-	private function add_gutenberg_font_size() {
+	private function add_gutenberg_front_end_font_size() {
 		$font_size_controls = array(
-			'neve-body-font-size' => get_theme_mod( 'neve_body_font_size', 15 ),
-			'neve-h-1-font-size'  => get_theme_mod( 'neve_h1_font_size', 2 ),
-			'neve-h-2-font-size'  => get_theme_mod( 'neve_h2_font_size', 1.75 ),
-			'neve-h-3-font-size'  => get_theme_mod( 'neve_h3_font_size', 1.5 ),
-			'neve-h-4-font-size'  => get_theme_mod( 'neve_h4_font_size', 1.25 ),
-			'neve-h-5-font-size'  => get_theme_mod( 'neve_h5_font_size', 1 ),
-			'neve-h-6-font-size'  => get_theme_mod( 'neve_h6_font_size', 1 ),
+			'.has-neve-body-font-size' => 'neve_body_font_size',
+			'.has-neve-h-1-font-size'  => 'neve_h1_font_size',
+			'.has-neve-h-2-font-size'  => 'neve_h2_font_size',
+			'.has-neve-h-3-font-size'  => 'neve_h3_font_size',
+			'.has-neve-h-4-font-size'  => 'neve_h4_font_size',
+			'.has-neve-h-5-font-size'  => 'neve_h5_font_size',
+			'.has-neve-h-6-font-size'  => 'neve_h6_font_size',
 		);
-		foreach ( $font_size_controls as $class_name => $control_value ) {
-
-			$suffix = 'rem';
-			if ( $class_name === 'neve-body-font-size' ) {
-				$suffix = 'px';
-			}
-			$this->add_style(
+		foreach ( $font_size_controls as $selector => $theme_mod ) {
+			$value    = get_theme_mod( $theme_mod );
+			$value    = json_decode( $value, true );
+			$settings = array(
 				array(
-					array(
-						'css_prop' => 'font-size',
-						'value'    => $control_value,
-						'suffix'   => $suffix,
-					),
+					'css_prop' => 'font-size',
+					'value'    => $value,
+					'suffix'   => isset( $value['suffix'] ) ? $value['suffix'] : 'em',
 				),
-				'.has-' . $class_name
 			);
-
+			$this->add_responsive_style( $settings, $selector );
 		}
 	}
 }

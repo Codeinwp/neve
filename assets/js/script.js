@@ -195,7 +195,7 @@
                 return false;
             }
             var windowWidth = $(window).innerWidth();
-            var containerWidth = $('#content > [class^="container"]').innerWidth();
+            var containerWidth = $(".neve-main > .container .col").innerWidth();
             var marginFullNeeded = 0;
             var marginWideNeeded = 0;
             if (utils.isMobile() || !jQuery(".nv-sidebar-wrap").length) {

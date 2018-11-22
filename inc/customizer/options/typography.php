@@ -26,7 +26,6 @@ class Typography extends Base_Customizer {
 	public function add_controls() {
 		$this->sections_typography();
 		$this->controls_typography_general();
-		$this->controls_typography_body();
 		$this->controls_typography_headings();
 	}
 
@@ -38,10 +37,6 @@ class Typography extends Base_Customizer {
 			'neve_typography_general'  => array(
 				'title'    => __( 'General', 'neve' ),
 				'priority' => 25,
-			),
-			'neve_typography_body'     => array(
-				'title'    => __( 'Body', 'neve' ),
-				'priority' => 30,
 			),
 			'neve_typography_headings' => array(
 				'title'    => __( 'Headings', 'neve' ),
@@ -64,9 +59,13 @@ class Typography extends Base_Customizer {
 	}
 
 	/**
-	 * Add general typography controls [font subsets]
+	 * Add general typography controls
 	 */
 	private function controls_typography_general() {
+
+		/**
+		 * Font subsets
+		 */
 		$this->add_control(
 			new Control(
 				'neve_font_subsets',
@@ -86,17 +85,12 @@ class Typography extends Base_Customizer {
 						'greek-ext'    => 'greek-ext',
 						'vietnamese'   => 'vietnamese',
 					),
-					'priority' => 25,
+					'priority' => 5,
 				),
 				'Neve\Customizer\Controls\Multi_Select'
 			)
 		);
-	}
 
-	/**
-	 * Add body typography controls.
-	 */
-	private function controls_typography_body() {
 		/**
 		 * Body font family
 		 */
@@ -106,11 +100,11 @@ class Typography extends Base_Customizer {
 				array(
 					'transport'         => $this->selective_refresh,
 					'sanitize_callback' => 'sanitize_text_field',
-					'default'           => 'Graphik,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif',
+					'default'           => 'default',
 				),
 				array(
 					'label'    => esc_html__( 'Font Family', 'neve' ),
-					'section'  => 'neve_typography_body',
+					'section'  => 'neve_typography_general',
 					'priority' => 10,
 				),
 				'Neve\Customizer\Controls\Font_Selector'
@@ -129,7 +123,7 @@ class Typography extends Base_Customizer {
 				),
 				array(
 					'label'      => esc_html__( 'Font Size', 'neve' ),
-					'section'    => 'neve_typography_body',
+					'section'    => 'neve_typography_general',
 					'units'      => array(
 						'px',
 					),
@@ -137,19 +131,19 @@ class Typography extends Base_Customizer {
 						'mobile'  => array(
 							'min'          => 10,
 							'max'          => 30,
-							'default'      => 14,
+							'default'      => 15,
 							'default_unit' => 'px',
 						),
 						'tablet'  => array(
 							'min'          => 10,
 							'max'          => 30,
-							'default'      => 14,
+							'default'      => 16,
 							'default_unit' => 'px',
 						),
 						'desktop' => array(
 							'min'          => 10,
 							'max'          => 30,
-							'default'      => 15,
+							'default'      => 16,
 							'default_unit' => 'px',
 						),
 					),
@@ -172,7 +166,7 @@ class Typography extends Base_Customizer {
 				),
 				array(
 					'label'       => esc_html__( 'Line Height', 'neve' ),
-					'section'     => 'neve_typography_body',
+					'section'     => 'neve_typography_general',
 					'step'        => 0.1,
 					'input_attr'  => array(
 						'mobile'  => array(
@@ -212,7 +206,7 @@ class Typography extends Base_Customizer {
 				array(
 					'transport'         => $this->selective_refresh,
 					'sanitize_callback' => 'sanitize_text_field',
-					'default'           => 'Graphik,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif',
+					'default'           => 'default',
 				),
 				array(
 					'label'    => esc_html__( 'Font Family', 'neve' ),

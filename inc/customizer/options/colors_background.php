@@ -74,12 +74,12 @@ class Colors_Background extends Base_Customizer {
 			'neve_menu_item_color'       => array(
 				'default'  => '#404248',
 				'priority' => 25,
-				'label'    => __( 'Menu Items Color', 'neve' ),
+				'label'    => __( 'Primary Menu Items Color', 'neve' ),
 			),
 			'neve_menu_item_hover_color' => array(
 				'default'  => '#0366d6',
 				'priority' => 25,
-				'label'    => __( 'Menu Items Hover Color', 'neve' ),
+				'label'    => __( 'Primary Menu Items Hover Color', 'neve' ),
 			),
 		);
 

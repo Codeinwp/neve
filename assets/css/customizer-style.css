@@ -310,6 +310,10 @@
 	text-transform: uppercase;
 }
 
+.customize-control-customizer-heading.accordion .neve-customizer-heading:hover {
+	cursor: pointer;
+}
+
 .accordion-expand-button {
 	position: absolute;
 	z-index: 10;
@@ -319,7 +323,6 @@
 	border: 1px solid transparent;
 	border-left-color: #ddd;
 	font-family: Dashicons;
-	cursor: pointer;
 }
 
 .accordion-expand-button:before {
@@ -333,16 +336,16 @@
 	transition: 0.1s ease-in-out;
 }
 
-.accordion-expand-button:hover {
+.customize-control-customizer-heading.accordion .neve-customizer-heading:hover .accordion-expand-button {
 	color: #fff;
 	background: #3ec8ff;
 }
 
 .accordion.expanded .accordion-expand-button:before {
 	top: 0;
-	-webkit-transform: rotate( 180deg );
-	-ms-transform: rotate( 180deg );
-	transform: rotate( 180deg );
+	-webkit-transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+	transform: rotate(180deg);
 }
 .ti-order-sortable li {
 	display: -ms-flexbox;

@@ -1,9 +1,9 @@
-@mixin horizontal-list( $margin, $ignore-first-last : false ) {
+@mixin horizontal-list( $margin, $ignore-first-last : 'false' ) {
   display: flex;
   flex-wrap: wrap;
   padding-left: 0;
   list-style-type: none;
-  @if $margin != 0 and $ignore-first-last == false {
+  @if $margin != 0 and $ignore-first-last == 'false' {
     > li:not(:last-child) {
       padding-right: $margin;
     }
@@ -11,7 +11,7 @@
       padding-left: $margin;
     }
   }
-  @if $ignore-first-last == true {
+  @if $ignore-first-last == 'true' {
     li {
       padding-right: $margin;
       padding-left: $margin;
@@ -32,10 +32,17 @@
   left: 1px;
 }
 
-@mixin soft-box-shadow() {
-  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+@mixin soft-box-shadow( $inverted : 'false' ) {
+  @if $inverted == 'false' {
+    -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  @if $inverted == 'true' {
+    -webkit-box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.07);
+    -moz-box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.07);
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.07);
+  }
 }
 
 @mixin button() {
@@ -49,7 +56,7 @@
   border-radius: .25rem;
   text-transform: uppercase;
   cursor: pointer;
-  line-height: 1.68421;
+  line-height: $line-height-base;
   font-family: inherit;
   &:hover {
     text-decoration: none;
@@ -70,7 +77,7 @@
 @mixin button-primary( $hover: 'true', $color: $button_color ) {
   background-color: $color;
   color: #fff;
-  @if( $hover == 'true' ) {
+  @if ($hover == 'true') {
     &:hover {
       text-decoration: none;
       background-color: $color;
@@ -80,9 +87,9 @@
   }
 }
 
-@mixin cart-widget(){
-  .widget_shopping_cart > .widget_shopping_cart_content > ul.woocommerce-mini-cart.cart_list.product_list_widget  {
-    max-height: 450px;
+@mixin cart-widget() {
+  .widget_shopping_cart > .widget_shopping_cart_content > ul.woocommerce-mini-cart.cart_list.product_list_widget {
+    max-height: 290px;
     overflow-y: scroll;
     overflow-x: hidden;
   }

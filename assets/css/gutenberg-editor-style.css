@@ -1,0 +1,278 @@
+.gutenberg-editor-page .editor-styles-wrapper {
+  font-size: 16px;
+  font-weight: normal;
+  font-family: Graphik, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+  color: #404248;
+}
+.gutenberg-editor-page .editor-styles-wrapper, .gutenberg-editor-page .editor-styles-wrapper p {
+  line-height: 1.68421;
+}
+.gutenberg-editor-page .editor-styles-wrapper strong {
+  font-weight: bold;
+}
+.gutenberg-editor-page .editor-styles-wrapper h1, .gutenberg-editor-page .editor-styles-wrapper h2, .gutenberg-editor-page .editor-styles-wrapper h3, .gutenberg-editor-page .editor-styles-wrapper h4, .gutenberg-editor-page .editor-styles-wrapper h5, .gutenberg-editor-page .editor-styles-wrapper h6 {
+  font-family: Graphik, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+  line-height: 1.68421;
+  margin: 0 0 0.8rem 0;
+  font-weight: 600;
+  color: #404248;
+}
+.gutenberg-editor-page .editor-styles-wrapper h1 {
+  font-size: 1.5em;
+}
+.gutenberg-editor-page .editor-styles-wrapper h2 {
+  font-size: 1.3em;
+}
+.gutenberg-editor-page .editor-styles-wrapper h3 {
+  font-size: 1.1em;
+}
+.gutenberg-editor-page .editor-styles-wrapper h4 {
+  font-size: 1em;
+}
+.gutenberg-editor-page .editor-styles-wrapper h5 {
+  font-size: 0.75em;
+}
+.gutenberg-editor-page .editor-styles-wrapper h6 {
+  font-size: 0.75em;
+}
+.gutenberg-editor-page .editor-styles-wrapper .editor-post-title__block .editor-post-title__input {
+  font-family: Graphik, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+  font-size: 1.5em;
+  color: #404248;
+  line-height: 1.3em;
+}
+.gutenberg-editor-page .editor-styles-wrapper ul, .gutenberg-editor-page .editor-styles-wrapper ol {
+  padding-left: 20px;
+  margin: 20px 0;
+}
+.gutenberg-editor-page .editor-styles-wrapper ul li, .gutenberg-editor-page .editor-styles-wrapper ol li {
+  line-height: 2em;
+  margin-bottom: 10px;
+}
+.gutenberg-editor-page .editor-styles-wrapper ul {
+  list-style-type: circle;
+}
+.gutenberg-editor-page .editor-styles-wrapper blockquote.wp-block-quote {
+  border: none;
+  text-align: center;
+  margin: 40px 0;
+  padding: 0;
+}
+.gutenberg-editor-page .editor-styles-wrapper blockquote.wp-block-quote p:not(.wp-block-quote__citation) {
+  font-size: 1.1em;
+  margin-bottom: 0;
+}
+.gutenberg-editor-page .editor-styles-wrapper blockquote.wp-block-quote .wp-block-quote__citation {
+  padding-top: 20px;
+  display: block;
+  color: #777777;
+  margin-top: 0;
+  font-size: .95em;
+}
+.gutenberg-editor-page .editor-styles-wrapper blockquote.wp-block-quote:after, .gutenberg-editor-page .editor-styles-wrapper blockquote.wp-block-quote:before {
+  height: 3px;
+  width: 60px;
+  background-color: #c9c9c9;
+  content: " ";
+  display: block;
+}
+.gutenberg-editor-page .editor-styles-wrapper blockquote.wp-block-quote:before {
+  margin: 0 auto 40px;
+}
+.gutenberg-editor-page .editor-styles-wrapper blockquote.wp-block-quote:after {
+  margin: 40px auto 0;
+}
+.gutenberg-editor-page .editor-styles-wrapper blockquote.wp-block-quote > * {
+  margin-bottom: 0;
+}
+.gutenberg-editor-page .editor-styles-wrapper blockquote.wp-block-quote.is-style-large p:not(.wp-block-quote__citation) {
+  font-size: 1.75em;
+}
+.gutenberg-editor-page .editor-styles-wrapper table {
+  width: 100%;
+  margin: 20px 0;
+}
+.gutenberg-editor-page .editor-styles-wrapper table td, .gutenberg-editor-page .editor-styles-wrapper table th {
+  line-height: 1.68421;
+  border: none;
+  padding: 10px;
+  border-bottom: 1px solid #f0f0f0;
+}
+.gutenberg-editor-page .editor-styles-wrapper table tbody tr:hover {
+  background-color: #fbfbfb;
+}
+.gutenberg-editor-page .editor-styles-wrapper table .wp-block-table__cell-content {
+  padding: 0;
+}
+.gutenberg-editor-page .editor-styles-wrapper .wp-block-preformatted pre {
+  display: block;
+  padding: 20px;
+  background: #fbfbfb;
+  border-radius: 5px;
+  border: 1px solid #f0f0f0;
+  margin: 20px 0;
+  white-space: pre-wrap;
+  font-size: 0.9em;
+  line-height: 2em;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  font-family: monospace;
+  color: #404248;
+}
+.gutenberg-editor-page .editor-styles-wrapper a {
+  color: #0366d6;
+  text-decoration: none;
+}
+.gutenberg-editor-page .editor-styles-wrapper a:hover {
+  color: #0366d6;
+  text-decoration: underline;
+}
+.gutenberg-editor-page .editor-styles-wrapper .editor-rich-text__tinymce code {
+  background: #d0effb;
+  border-radius: 5px;
+  border: 1px solid #f0f0f0;
+  font-family: monospace;
+  padding: 0;
+}
+
+.editor-styles-wrapper.neve-has-meta .editor-post-title__block > div:first-child:after {
+  content: ' ';
+  width: 245px;
+  height: 12px;
+  display: block;
+  left: 0;
+  position: relative;
+  top: -12px;
+  margin-bottom: 12px;
+  background: linear-gradient(90deg, #e7e7e7 0%, #e7e7e7 6%, transparent 6.01%, transparent 7.5%, #e7e7e7 7.51%, #e7e7e7 24%, transparent 24.01%, transparent 26%, #e7e7e7 26.01%, #e7e7e7 43%, transparent 43.01%, transparent 45%, #e7e7e7 45.01%, #e7e7e7 75%, transparent 75.01%, transparent 77%, #e7e7e7 77.01%);
+}
+
+.neve-gtb.has-sidebar-right .neve-content-wrap, .neve-gtb.has-sidebar-left .neve-content-wrap {
+  display: flex;
+  flex-direction: row;
+}
+.neve-gtb.has-sidebar-right .wp-block[data-align=full], .neve-gtb.has-sidebar-right .wp-block[data-align=wide], .neve-gtb.has-sidebar-left .wp-block[data-align=full], .neve-gtb.has-sidebar-left .wp-block[data-align=wide] {
+  margin: 0;
+}
+.neve-gtb.has-sidebar-right .wp-block[data-align=full] > .editor-block-list__block-edit, .neve-gtb.has-sidebar-right .wp-block[data-align=wide] > .editor-block-list__block-edit, .neve-gtb.has-sidebar-left .wp-block[data-align=full] > .editor-block-list__block-edit, .neve-gtb.has-sidebar-left .wp-block[data-align=wide] > .editor-block-list__block-edit {
+  margin-left: -28px;
+  margin-right: -28px;
+}
+.neve-gtb .editor-post-title {
+  padding: 0;
+}
+.neve-gtb .editor-post-title__input {
+  padding-left: 0;
+}
+.neve-gtb .editor-block-list__layout {
+  padding: 0;
+}
+.neve-gtb .neve-blocks-wrap {
+  margin: 0 auto;
+  padding: 0 15px;
+  width: 100%;
+}
+.neve-gtb.has-sidebar-full-width .wp-block:not([data-align=full]):not([data-align=wide]) {
+  padding: 0 30px;
+}
+.neve-gtb.has-sidebar-full-width .wp-block:not([data-align=full]):not([data-align=wide]) > * {
+  margin-left: auto;
+  margin-right: auto;
+}
+.neve-gtb.container.has-sidebar-full-width .wp-block:not([data-align=full]):not([data-align=wide]) > * {
+  max-width: 70%;
+}
+.neve-gtb .wp-block:not([data-align=full]):not([data-align=wide]) {
+  max-width: 100%;
+}
+.neve-gtb .editor-writing-flow {
+  display: block;
+}
+.neve-gtb .editor-block-list__layout .editor-block-list__block {
+  padding-right: 28px;
+  padding-left: 28px;
+}
+
+.neve-gtb-sidebar {
+  display: none;
+}
+
+.gutenberg-editor-page.post-type-page .editor-post-title__input {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.neve-gtb.container.has-sidebar-full-width .wp-block:not([data-align=full]):not([data-align=wide]), .neve-gtb.container.has-sidebar-left .neve-content-wrap, .neve-gtb.container.has-sidebar-right .neve-content-wrap {
+  max-width: 100%;
+  width: 100%;
+  margin: 0 auto;
+}
+
+@media (min-width: 576px) {
+  .neve-gtb.container.has-sidebar-full-width .wp-block:not([data-align=full]):not([data-align=wide]), .neve-gtb.container.has-sidebar-left .neve-content-wrap, .neve-gtb.container.has-sidebar-right .neve-content-wrap {
+    max-width: 540px;
+  }
+}
+@media (min-width: 769px) {
+  .neve-gtb.container.has-sidebar-full-width .wp-block:not([data-align=full]):not([data-align=wide]), .neve-gtb.container.has-sidebar-left .neve-content-wrap, .neve-gtb.container.has-sidebar-right .neve-content-wrap {
+    max-width: 720px;
+  }
+
+  .gutenberg-editor-page .editor-styles-wrapper {
+    font-size: 16px;
+  }
+  .gutenberg-editor-page .editor-styles-wrapper h1, .gutenberg-editor-page .editor-styles-wrapper .editor-post-title__block .editor-post-title__input {
+    font-size: 2em;
+  }
+  .gutenberg-editor-page .editor-styles-wrapper h2 {
+    font-size: 1.75em;
+  }
+  .gutenberg-editor-page .editor-styles-wrapper h3 {
+    font-size: 1.5em;
+  }
+  .gutenberg-editor-page .editor-styles-wrapper h4 {
+    font-size: 1.25em;
+  }
+  .gutenberg-editor-page .editor-styles-wrapper h5 {
+    font-size: 1em;
+  }
+  .gutenberg-editor-page .editor-styles-wrapper h6 {
+    font-size: 1em;
+  }
+}
+@media (min-width: 960px) {
+  .neve-gtb.container.has-sidebar-full-width .wp-block:not([data-align=full]):not([data-align=wide]), .neve-gtb.container.has-sidebar-left .neve-content-wrap, .neve-gtb.container.has-sidebar-right .neve-content-wrap {
+    max-width: 960px;
+  }
+
+  .neve-gtb.has-sidebar-right .neve-blocks-wrap {
+    max-width: 70%;
+    padding: 0 40px 0 15px;
+  }
+  .neve-gtb.has-sidebar-left .neve-blocks-wrap {
+    max-width: 70%;
+    padding: 0 15px 0 40px;
+  }
+
+  .neve-gtb-sidebar {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    background: #e7e7e7;
+    padding: 10px;
+    max-width: 100%;
+    flex-grow: 1;
+  }
+  .neve-gtb-sidebar > p {
+    position: fixed;
+    font-size: 32px;
+    font-weight: 600;
+    color: #777;
+  }
+}
+@media (min-width: 1200px) {
+  .neve-gtb.container.has-sidebar-full-width .wp-block:not([data-align=full]):not([data-align=wide]), .neve-gtb.container.has-sidebar-left .neve-content-wrap, .neve-gtb.container.has-sidebar-right .neve-content-wrap {
+    max-width: 1170px;
+  }
+}
+
+/*# sourceMappingURL=gutenberg-editor-style.css.map */
