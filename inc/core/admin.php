@@ -99,6 +99,18 @@ class Admin {
 						),
 					),
 					array(
+						'icon'   => 'dashicons dashicons-book-alt',
+						'title'  => esc_html__( 'Documentation', 'neve' ),
+						'text'   => esc_html__( 'Need more details? Please check our full documentation for detailed information on how to use Neve.', 'neve' ),
+						'button' => array(
+							'label'     => esc_html__( 'Read full documentation', 'neve' ),
+							'link'      => 'https://docs.themeisle.com/article/946-neve-doc',
+							'is_button' => false,
+							'blank'     => true,
+						),
+					),
+
+					array(
 						'icon'   => 'dashicons dashicons-portfolio',
 						'title'  => esc_html__( 'Changelog', 'neve' ),
 						'text'   => esc_html__( 'Want to get the gist on the latest theme changes? Just consult our changelog below to get a taste of the recent fixes and features implemented.', 'neve' ),
