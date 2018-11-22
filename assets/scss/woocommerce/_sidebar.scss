@@ -15,6 +15,7 @@
   &.sidebar-open {
     opacity: 1;
     pointer-events: all;
+    background-color: #fff;
   }
 }
 
@@ -43,7 +44,7 @@
     position: absolute;
     right: $spacing-xs;
     top: 50%;
-    transform:translateY(-50%);
+    transform: translateY(-50%);
     width: 45px;
   }
   &:last-child {
@@ -56,7 +57,7 @@
   dd.variation-Size {
     margin-bottom: 0;
   }
-  a.remove{
+  a.remove {
     top: $spacing-xs;
   }
 }
@@ -74,6 +75,9 @@
     pointer-events: all;
     max-width: 30%;
     overflow: visible;
+    &.sidebar-open {
+      background: transparent;
+    }
     .sidebar-header {
       display: none;
     }
