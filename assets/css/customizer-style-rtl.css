@@ -294,58 +294,58 @@
 	background: #fff;
 }
 .neve-customizer-heading {
-    display: block;
-    position: relative;
-    margin: 0 -12px;
-    padding: 13px 12px;
-    border: 1px solid #ddd;
-    border-left: 0;
-    border-right: 0;
-    color: #555;
-    background-color: #fff;
-    font-size: 11px;
-    font-weight: 600;
-    line-height: 1;
-    letter-spacing: 2px;
-    text-transform: uppercase;
+	display: block;
+	position: relative;
+	margin: 0 -12px;
+	padding: 13px 12px;
+	border: 1px solid #ddd;
+	border-left: 0;
+	border-right: 0;
+	color: #555;
+	background-color: #fff;
+	font-size: 11px;
+	font-weight: 600;
+	line-height: 1;
+	letter-spacing: 2px;
+	text-transform: uppercase;
 }
 
 .customize-control-customizer-heading.accordion .neve-customizer-heading:hover {
-    cursor: pointer;
+	cursor: pointer;
 }
 
 .accordion-expand-button {
-    position: absolute;
-    z-index: 10;
-    top: 0;
-    left: 0;
-    padding: 10px;
-    border: 1px solid transparent;
-    border-right-color: #ddd;
-    font-family: Dashicons;
+	position: absolute;
+	z-index: 10;
+	top: 0;
+	left: 0;
+	padding: 10px;
+	border: 1px solid transparent;
+	border-right-color: #ddd;
+	font-family: Dashicons;
 }
 
 .accordion-expand-button:before {
-    display: block;
-    position: relative;
-    top: 1px;
-    right: 1px;
-    font-size: 16px;
-    content: "\f347";
-    -webkit-transition: 0.1s ease-in-out;
-    transition: 0.1s ease-in-out;
+	display: block;
+	position: relative;
+	top: 1px;
+	right: 1px;
+	font-size: 16px;
+	content: "\f347";
+	-webkit-transition: 0.1s ease-in-out;
+	transition: 0.1s ease-in-out;
 }
 
 .customize-control-customizer-heading.accordion .neve-customizer-heading:hover .accordion-expand-button {
-    color: #fff;
-    background: #3ec8ff;
+	color: #fff;
+	background: #3ec8ff;
 }
 
 .accordion.expanded .accordion-expand-button:before {
-    top: 0;
-    -webkit-transform: rotate(-180deg);
-    -ms-transform: rotate(-180deg);
-    transform: rotate(-180deg);
+	top: 0;
+	-webkit-transform: rotate(-180deg);
+	-ms-transform: rotate(-180deg);
+	transform: rotate(-180deg);
 }
 .ti-order-sortable li {
 	display: -ms-flexbox;

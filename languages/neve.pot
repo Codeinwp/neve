@@ -2,9 +2,9 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Neve 1.0.9\n"
+"Project-Id-Version: Neve 1.0.10\n"
 "Report-Msgid-Bugs-To: https://github.com/Codeinwp/neve/issues\n"
-"POT-Creation-Date: 2018-11-16 16:00:41+00:00\n"
+"POT-Creation-Date: 2018-11-22 13:57:24+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -35,63 +35,71 @@ msgstr ""
 msgid "Skip to content"
 msgstr ""
 
-#: inc/admin/metabox/main.php:31
+#: inc/admin/metabox/main.php:36
+msgid "Content Width"
+msgstr ""
+
+#: inc/admin/metabox/main.php:37
+msgid "Enable Individual Content Width"
+msgstr ""
+
+#: inc/admin/metabox/main.php:62
 msgid "Components"
 msgstr ""
 
-#: inc/admin/metabox/main.php:32
+#: inc/admin/metabox/main.php:63
 msgid "Disable Header"
 msgstr ""
 
-#: inc/admin/metabox/main.php:36
+#: inc/admin/metabox/main.php:67
 msgid "Disable Title"
 msgstr ""
 
-#: inc/admin/metabox/main.php:41
+#: inc/admin/metabox/main.php:72
 msgid "Disable Featured Image"
 msgstr ""
 
-#: inc/admin/metabox/main.php:46
+#: inc/admin/metabox/main.php:77
 msgid "Disable Footer"
 msgstr ""
 
-#: inc/admin/metabox/main.php:84 inc/admin/metabox/main.php:98
+#: inc/admin/metabox/main.php:115 inc/admin/metabox/main.php:129
 msgid "Customizer Setting"
 msgstr ""
 
-#: inc/admin/metabox/main.php:85
+#: inc/admin/metabox/main.php:116
 #: inc/customizer/options/layout_container.php:141
 msgid "Contained"
 msgstr ""
 
-#: inc/admin/metabox/main.php:86
+#: inc/admin/metabox/main.php:117
 #: inc/customizer/options/layout_container.php:142
 msgid "Full Width"
 msgstr ""
 
-#: inc/admin/metabox/main.php:88 inc/customizer/options/layout_blog.php:65
-#: inc/customizer/options/main.php:53 inc/customizer/options/top_bar.php:90
-msgid "Layout"
+#: inc/admin/metabox/main.php:119
+#: inc/customizer/options/layout_container.php:43
+msgid "Container"
 msgstr ""
 
-#: inc/admin/metabox/main.php:99
+#: inc/admin/metabox/main.php:130
 msgid "Left Sidebar"
 msgstr ""
 
-#: inc/admin/metabox/main.php:100
+#: inc/admin/metabox/main.php:131
 msgid "Right Sidebar"
 msgstr ""
 
-#: inc/admin/metabox/main.php:101
+#: inc/admin/metabox/main.php:132
 msgid "No Sidebar"
 msgstr ""
 
-#: inc/admin/metabox/main.php:103 inc/core/front_end.php:316
-#: inc/customizer/options/layout_sidebar.php:44
+#: inc/admin/metabox/main.php:134 inc/compatibility/gutenberg.php:210
+#: inc/core/front_end.php:358
 msgid "Sidebar"
 msgstr ""
 
-#: inc/admin/metabox/metabox_base.php:66
+#: inc/admin/metabox/metabox_base.php:67
 msgid "Neve Settings"
 msgstr ""
 
@@ -119,91 +127,103 @@ msgstr ""
 msgid "Filter"
 msgstr ""
 
-#: inc/compatibility/woocommerce.php:393
+#: inc/compatibility/woocommerce.php:421
 #: inc/customizer/options/layout_navigation.php:86 inc/views/header.php:127
 msgid "Cart"
 msgstr ""
 
-#: inc/content_import/zelle.php:104
-msgid "We detected that you previously had Zelle ( former Zerif ) installed."
+#: inc/core/admin.php:39
+msgid "Neve Community"
 msgstr ""
 
-#: inc/content_import/zelle.php:105
+#: inc/core/admin.php:40
 msgid ""
-"We can help you convert your Zelle front page into an Elementor template, "
-"so you can use it again."
-msgstr ""
-
-#: inc/content_import/zelle.php:107
-msgid "But first, we need to install and activate Elementor."
-msgstr ""
-
-#: inc/content_import/zelle.php:111
-msgid "Import Zelle Front page as template "
-msgstr ""
-
-#: inc/core/admin.php:37
-msgid "Getting Started"
-msgstr ""
-
-#: inc/core/admin.php:40 inc/core/admin.php:43
-msgid "Recommended actions"
+"Join the community of Neve users. Get connected, share opinions, ask "
+"questions and help each other!"
 msgstr ""
 
 #: inc/core/admin.php:41
+msgid "Join our Facebook Group"
+msgstr ""
+
+#: inc/core/admin.php:45
+msgid "Leave us a review"
+msgstr ""
+
+#: inc/core/admin.php:46
+msgid "Are you are enjoying Neve? We would love to hear your feedback."
+msgstr ""
+
+#: inc/core/admin.php:47
+msgid "Submit a review"
+msgstr ""
+
+#: inc/core/admin.php:54
+msgid "Getting Started"
+msgstr ""
+
+#: inc/core/admin.php:57
+msgid "Recommended actions"
+msgstr ""
+
+#: inc/core/admin.php:58
 msgid ""
-"We have compiled a list of steps for you to take so we can ensure that the "
-"experience you have using one of our products is very easy to follow."
+"Neve now comes with a sites library with various designs to pick from. "
+"Visit our collection of demos that are constantly being added."
 msgstr ""
 
-#: inc/core/admin.php:50 inc/core/admin.php:53
-msgid "Go to the Customizer"
+#: inc/core/admin.php:60
+msgid "See demos"
 msgstr ""
 
-#: inc/core/admin.php:51
-msgid ""
-"Using the WordPress Customizer you can easily customize every aspect of the "
-"theme."
+#: inc/core/admin.php:67
+msgid "Links to Customizer Settings"
 msgstr ""
 
-#: inc/core/admin.php:63
-msgid "Recommended Actions"
-msgstr ""
-
-#: inc/core/admin.php:81
+#: inc/core/admin.php:74
 msgid "Useful Plugins"
 msgstr ""
 
-#: inc/core/admin.php:95
-msgid "Support"
+#: inc/core/admin.php:88 inc/core/admin.php:103
+msgid "Documentation"
 msgstr ""
 
-#: inc/core/admin.php:99 inc/core/admin.php:102
+#: inc/core/admin.php:92 inc/core/admin.php:95
 msgid "Contact Support"
 msgstr ""
 
-#: inc/core/admin.php:100
+#: inc/core/admin.php:93
 msgid ""
 "We want to make sure you have the best experience using Neve, and that is "
 "why we have gathered all the necessary information here for you. We hope "
 "you will enjoy using Neve as much as we enjoy creating great products."
 msgstr ""
 
-#: inc/core/admin.php:110 inc/core/admin.php:113 inc/core/admin.php:157
+#: inc/core/admin.php:104
+msgid ""
+"Need more details? Please check our full documentation for detailed "
+"information on how to use Neve."
+msgstr ""
+
+#: inc/core/admin.php:106
+msgid "Read full documentation"
+msgstr ""
+
+#: inc/core/admin.php:115 inc/core/admin.php:118 inc/core/admin.php:162
 msgid "Changelog"
 msgstr ""
 
-#: inc/core/admin.php:111
+#: inc/core/admin.php:116
 msgid ""
 "Want to get the gist on the latest theme changes? Just consult our "
 "changelog below to get a taste of the recent fixes and features implemented."
 msgstr ""
 
-#: inc/core/admin.php:121
+#: inc/core/admin.php:126
 msgid "Create a child theme"
 msgstr ""
 
-#: inc/core/admin.php:123
+#: inc/core/admin.php:128
 msgid ""
 "If you want to make changes to the theme's files, those changes are likely "
 "to be overwritten when you next update the theme. In order to prevent that "
@@ -211,15 +231,15 @@ msgid ""
 "the documentation below."
 msgstr ""
 
-#: inc/core/admin.php:125 inc/core/admin.php:136 inc/core/admin.php:147
+#: inc/core/admin.php:130 inc/core/admin.php:141 inc/core/admin.php:152
 msgid "View how to do this"
 msgstr ""
 
-#: inc/core/admin.php:132
+#: inc/core/admin.php:137
 msgid "Speed up your site"
 msgstr ""
 
-#: inc/core/admin.php:134
+#: inc/core/admin.php:139
 msgid ""
 "If you find yourself in a situation where everything on your site is "
 "running very slowly, you might consider having a look at the documentation "
@@ -227,94 +247,151 @@ msgid ""
 "solutions for each of the issues."
 msgstr ""
 
-#: inc/core/admin.php:143
+#: inc/core/admin.php:148
 msgid "Build a landing page with a drag-and-drop content builder"
 msgstr ""
 
-#: inc/core/admin.php:145
+#: inc/core/admin.php:150
 msgid ""
 "In the documentation below you will find an easy way to build a great "
 "looking landing page using a drag-and-drop content builder plugin."
 msgstr ""
 
-#: inc/core/admin.php:181
-#. Translators: 1 - theme name, 2 - link opening tag, 3 - link closing tag
-msgid ""
-"Welcome! Thank you for choosing %1$s! To fully take advantage of the best "
-"our theme can offer please make sure you visit our %2$swelcome page%3$s."
+#: inc/core/admin.php:183
+msgid "Upload Logo"
 msgstr ""
 
-#: inc/core/admin.php:190
+#: inc/core/admin.php:188
+msgid "Set Colors"
+msgstr ""
+
+#: inc/core/admin.php:193
+msgid "Customize Fonts"
+msgstr ""
+
+#: inc/core/admin.php:198
+msgid "Layout Options"
+msgstr ""
+
+#: inc/core/admin.php:203
+msgid "Header Options"
+msgstr ""
+
+#: inc/core/admin.php:208
+msgid "Blog Layouts"
+msgstr ""
+
+#: inc/core/admin.php:213
+msgid "Footer Options"
+msgstr ""
+
+#: inc/core/admin.php:218 inc/customizer/options/layout_sidebar.php:43
+msgid "Content / Sidebar"
+msgstr ""
+
+#: inc/core/admin.php:298
+#. translators: 1 - theme name
+msgid "Thanks for installing %1$s!"
+msgstr ""
+
+#: inc/core/admin.php:301
+msgid "Now, let's get you ready. It will take only a few minutes."
+msgstr ""
+
+#: inc/core/admin.php:308
 #. Translators: 1 - onboarding url, 2 - button text
 msgid "Get started with"
 msgstr ""
 
-#: inc/core/front_end.php:65 inc/views/header.php:196
+#: inc/core/front_end.php:61 inc/views/header.php:196
 msgid "Primary Menu"
 msgstr ""
 
-#: inc/core/front_end.php:66
+#: inc/core/front_end.php:62
 msgid "Footer Menu"
 msgstr ""
 
-#: inc/core/front_end.php:67
+#: inc/core/front_end.php:63
 msgid "Top Bar Menu"
 msgstr ""
 
-#: inc/core/front_end.php:113
+#: inc/core/front_end.php:106 inc/core/front_end.php:113
+msgid "Want to keep using Zelle's homepage?"
+msgstr ""
+
+#: inc/core/front_end.php:107 inc/core/front_end.php:114
+msgid ""
+"Hi! We've noticed you were using Zelle before. To make your transition "
+"easier, we can help you keep the same beautiful homepage you had before, by "
+"converting it into an Elementor template. This option will also import your "
+"homepage content."
+msgstr ""
+
+#: inc/core/front_end.php:118
+msgid "Ready to use pre-built websites with 1-click installation"
+msgstr ""
+
+#: inc/core/front_end.php:119
+msgid ""
+"With Neve, you can choose from multiple unique demos, specially designed "
+"for you, that can be installed with a single click. You just need to choose "
+"your favorite, and we will take care of everything else."
+msgstr ""
+
+#: inc/core/front_end.php:137
 msgid "Black"
 msgstr ""
 
-#: inc/core/front_end.php:122
+#: inc/core/front_end.php:146
 msgid "White"
 msgstr ""
 
-#: inc/core/front_end.php:131
+#: inc/core/front_end.php:155
 msgid "Button Color"
 msgstr ""
 
-#: inc/core/front_end.php:135 inc/customizer/options/colors_background.php:62
+#: inc/core/front_end.php:159 inc/customizer/options/colors_background.php:62
 msgid "Link Color"
 msgstr ""
 
-#: inc/core/front_end.php:139 inc/customizer/options/colors_background.php:67
+#: inc/core/front_end.php:163 inc/customizer/options/colors_background.php:67
 msgid "Link Hover Color"
 msgstr ""
 
-#: inc/core/front_end.php:143 inc/customizer/options/colors_background.php:72
+#: inc/core/front_end.php:167 inc/customizer/options/colors_background.php:72
 msgid "Text Color"
 msgstr ""
 
-#: inc/core/front_end.php:190
+#: inc/core/front_end.php:214
 msgid "Body font size"
 msgstr ""
 
-#: inc/core/front_end.php:191 inc/customizer/options/typography.php:43
+#: inc/core/front_end.php:215
 msgid "Body"
 msgstr ""
 
-#: inc/core/front_end.php:216 inc/core/front_end.php:218
+#: inc/core/front_end.php:240 inc/core/front_end.php:242
 #. translators: Heading size.
 msgid "H%d"
 msgstr ""
 
-#: inc/core/front_end.php:317
+#: inc/core/front_end.php:359
 msgid "Shop Sidebar"
 msgstr ""
 
-#: inc/core/front_end.php:323
+#: inc/core/front_end.php:365
 msgid "Footer One"
 msgstr ""
 
-#: inc/core/front_end.php:324
+#: inc/core/front_end.php:366
 msgid "Footer Two"
 msgstr ""
 
-#: inc/core/front_end.php:325
+#: inc/core/front_end.php:367
 msgid "Footer Three"
 msgstr ""
 
-#: inc/core/front_end.php:326
+#: inc/core/front_end.php:368
 msgid "Footer Four"
 msgstr ""
 
@@ -339,19 +416,25 @@ msgid "Primary Button Color"
 msgstr ""
 
 #: inc/customizer/options/colors_background.php:77
-msgid "Menu Items Color"
+msgid "Primary Menu Items Color"
 msgstr ""
 
 #: inc/customizer/options/colors_background.php:82
-msgid "Menu Items Hover Color"
+msgid "Primary Menu Items Hover Color"
 msgstr ""
 
 #: inc/customizer/options/layout_blog.php:46
+#: inc/customizer/options/layout_sidebar.php:148
 msgid "Blog / Archive"
 msgstr ""
 
 #: inc/customizer/options/layout_blog.php:65
 msgid "Blog"
+msgstr ""
+
+#: inc/customizer/options/layout_blog.php:65 inc/customizer/options/main.php:53
+#: inc/customizer/options/top_bar.php:90
+msgid "Layout"
 msgstr ""
 
 #: inc/customizer/options/layout_blog.php:94
@@ -430,10 +513,6 @@ msgstr ""
 
 #: inc/customizer/options/layout_blog.php:272
 msgid "Meta Order"
-msgstr ""
-
-#: inc/customizer/options/layout_container.php:43
-msgid "Container"
 msgstr ""
 
 #: inc/customizer/options/layout_container.php:62
@@ -523,38 +602,41 @@ msgstr ""
 msgid "Last Item in Menu"
 msgstr ""
 
-#: inc/customizer/options/layout_sidebar.php:63
-msgid "Sidebar width (%)"
+#: inc/customizer/options/layout_sidebar.php:62
+msgid "Sitewide Sidebar Layout"
 msgstr ""
 
-#: inc/customizer/options/layout_sidebar.php:91
-msgid "Advanced"
+#: inc/customizer/options/layout_sidebar.php:81
+msgid "Sitewide Content Width (%)"
 msgstr ""
 
-#: inc/customizer/options/layout_sidebar.php:112
-msgid "Default Sidebar Layout"
+#: inc/customizer/options/layout_sidebar.php:105
+msgid "Enable Advanced Options"
 msgstr ""
 
-#: inc/customizer/options/layout_sidebar.php:117
-msgid "Blog / Archive Sidebar Layout"
-msgstr ""
-
-#: inc/customizer/options/layout_sidebar.php:122
-msgid "Single Post Sidebar Layout"
-msgstr ""
-
-#: inc/customizer/options/layout_sidebar.php:133
-#: inc/customizer/options/rtl.php:52
-msgid "Shop / Archive Sidebar Layout"
-msgstr ""
-
-#: inc/customizer/options/layout_sidebar.php:138
-#: inc/customizer/options/rtl.php:56
-msgid "Single Product Sidebar Layout"
-msgstr ""
-
+#: inc/customizer/options/layout_sidebar.php:149
 #: inc/customizer/options/layout_single_post.php:42
 msgid "Single Post"
+msgstr ""
+
+#: inc/customizer/options/layout_sidebar.php:156
+msgid "Shop / Archive"
+msgstr ""
+
+#: inc/customizer/options/layout_sidebar.php:157
+msgid "Single Product"
+msgstr ""
+
+#: inc/customizer/options/layout_sidebar.php:161
+msgid "Others"
+msgstr ""
+
+#: inc/customizer/options/layout_sidebar.php:220
+msgid "Sidebar Layout"
+msgstr ""
+
+#: inc/customizer/options/layout_sidebar.php:264
+msgid "Content Width (%)"
 msgstr ""
 
 #: inc/customizer/options/layout_single_post.php:71
@@ -569,6 +651,14 @@ msgstr ""
 msgid "Typography"
 msgstr ""
 
+#: inc/customizer/options/rtl.php:52
+msgid "Shop / Archive Sidebar Layout"
+msgstr ""
+
+#: inc/customizer/options/rtl.php:56
+msgid "Single Product Sidebar Layout"
+msgstr ""
+
 #: inc/customizer/options/top_bar.php:48
 msgid "Top Bar"
 msgstr ""
@@ -581,30 +671,30 @@ msgstr ""
 msgid "Select Top Bar Menu"
 msgstr ""
 
-#: inc/customizer/options/typography.php:39
+#: inc/customizer/options/typography.php:38
 msgid "General"
 msgstr ""
 
-#: inc/customizer/options/typography.php:47
+#: inc/customizer/options/typography.php:42
 msgid "Headings"
 msgstr ""
 
-#: inc/customizer/options/typography.php:79
+#: inc/customizer/options/typography.php:78
 msgid "Font Subsets"
 msgstr ""
 
-#: inc/customizer/options/typography.php:112
-#: inc/customizer/options/typography.php:218
+#: inc/customizer/options/typography.php:106
+#: inc/customizer/options/typography.php:212
 msgid "Font Family"
 msgstr ""
 
-#: inc/customizer/options/typography.php:131
-#: inc/customizer/options/typography.php:263
+#: inc/customizer/options/typography.php:125
+#: inc/customizer/options/typography.php:257
 msgid "Font Size"
 msgstr ""
 
-#: inc/customizer/options/typography.php:174
-#: inc/customizer/options/typography.php:308
+#: inc/customizer/options/typography.php:168
+#: inc/customizer/options/typography.php:302
 msgid "Line Height"
 msgstr ""
 
@@ -613,7 +703,7 @@ msgstr ""
 msgid "Copyright - Neve by %1$s"
 msgstr ""
 
-#: inc/views/header.php:95 inc/views/layouts/layout_sidebar.php:65
+#: inc/views/header.php:95 inc/views/layouts/layout_sidebar.php:120
 msgid "Close"
 msgstr ""
 
