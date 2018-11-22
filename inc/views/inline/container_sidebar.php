@@ -81,12 +81,12 @@ class Container_Sidebar extends Base_Inline {
 				$content_widths,
 				array(
 					'neve_shop_archive_content_width'   => array(
-						'content' => '.neve-main > .archive.woocommerce .shop-container .nv-shop.col',
-						'sidebar' => '.neve-main > .archive.woocommerce .shop-container .nv-sidebar-wrap',
+						'content' => '.archive.woocommerce .neve-main > .shop-container .nv-shop.col',
+						'sidebar' => '.archive.woocommerce .neve-main > .shop-container .nv-sidebar-wrap',
 					),
 					'neve_single_product_content_width' => array(
-						'content' => '.neve-main > .single-product .shop-container .nv-shop.col',
-						'sidebar' => '.neve-main > .single-product .shop-container .nv-sidebar-wrap',
+						'content' => '.single-product .neve-main > .shop-container .nv-shop.col',
+						'sidebar' => '.single-product .neve-main > .shop-container .nv-sidebar-wrap',
 					),
 				)
 			);
