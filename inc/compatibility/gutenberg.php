@@ -30,6 +30,8 @@ class Gutenberg {
 		'neve_meta_disable_footer',
 		'neve_meta_sidebar',
 		'neve_meta_container',
+		'neve_meta_enable_content_width',
+		'neve_meta_content_width',
 	);
 
 	/**
@@ -163,11 +165,11 @@ class Gutenberg {
 
 		$metas = array();
 		foreach ( $this->available_post_meta as $meta ) {
-			$meta_value = get_post_meta( $this->post_id, $meta );
+			$meta_value = get_post_meta( $this->post_id, $meta, true );
 			if ( empty( $meta_value ) ) {
 				continue;
 			}
-			$metas[ $meta ] = $meta_value[0];
+			$metas[ $meta ] = $meta_value;
 		}
 
 		return $metas;
@@ -190,8 +192,8 @@ class Gutenberg {
 			)
 		);
 		$meta               = get_theme_mod( 'neve_post_meta_ordering', $default_meta_order );
-
-		if ( empty( json_decode( $meta ) ) ) {
+		$meta               = json_decode( $meta, true );
+		if ( empty( $meta ) ) {
 			return 'disabled';
 		}
 

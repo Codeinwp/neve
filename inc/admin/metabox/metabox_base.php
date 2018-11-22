@@ -35,6 +35,7 @@ abstract class Metabox_Base {
 	public function init() {
 		add_action( 'add_meta_boxes', array( $this, 'add' ) );
 		add_action( 'save_post', array( $this, 'save' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) );
 		$this->add_controls();
 	}
 
@@ -110,4 +111,33 @@ abstract class Metabox_Base {
 		return true;
 	}
 
+	/**
+	 * Enqueue scripts and styles.
+	 */
+	public function enqueue() {
+
+		$screen = get_current_screen();
+
+		if ( ! is_object( $screen ) ) {
+			return;
+		}
+		if ( $screen->base !== 'post' ) {
+			return;
+		}
+
+		wp_register_script( 'neve-metabox', NEVE_ASSETS_URL . 'js/metabox' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.js', array( 'jquery' ), NEVE_VERSION, true );
+
+		wp_localize_script( 'neve-metabox', 'neveMetabox', $this->get_localization() );
+
+		wp_enqueue_script( 'neve-metabox' );
+	}
+
+	/**
+	 * Localize the Metabox script.
+	 *
+	 * @return array
+	 */
+	private function get_localization() {
+		return array();
+	}
 }

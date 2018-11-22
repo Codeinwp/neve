@@ -28,18 +28,18 @@
   }
   .neve-blocks-wrap {
     margin: 0 auto;
-    padding: 0 15px
+    padding: 0 15px;
+    width: 100%;
   }
-  &.has-sidebar-full-width .wp-block:not([data-align=full]):not([data-align=wide])  > * {
-    margin: 0 auto;
+  &.has-sidebar-full-width .wp-block:not([data-align=full]):not([data-align=wide]) {
+    padding: 0 30px;
   }
-  &.has-sidebar-right .neve-blocks-wrap {
+  &.has-sidebar-full-width .wp-block:not([data-align=full]):not([data-align=wide]) > * {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  &.container.has-sidebar-full-width .wp-block:not([data-align=full]):not([data-align=wide]) > * {
     max-width: 70%;
-    padding: 0 40px 0 15px;
-  }
-  &.has-sidebar-left .neve-blocks-wrap {
-    max-width: 70%;
-    padding: 0 15px 0 40px;
   }
   .wp-block:not([data-align=full]):not([data-align=wide]) {
     max-width: 100%;
@@ -55,18 +55,11 @@
 }
 
 .neve-gtb-sidebar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: $neve-gtb-grey;
-  padding: 10px;
-  max-width: 100%;
-  flex-grow: 1;
-  > p {
-    font-size: 32px;
-    font-weight: 600;
-    color: #777;
-  }
+  display: none;
+}
+
+.gutenberg-editor-page.post-type-page .editor-post-title__input {
+  border-bottom: $muted-border;
 }
 
 $wp-block-selector: '.neve-gtb.container.has-sidebar-full-width .wp-block:not([data-align=full]):not([data-align=wide]),.neve-gtb.container.has-sidebar-left .neve-content-wrap, .neve-gtb.container.has-sidebar-right .neve-content-wrap';
@@ -92,6 +85,30 @@ $wp-block-selector: '.neve-gtb.container.has-sidebar-full-width .wp-block:not([d
 @mixin content-width--laptop() {
   #{$wp-block-selector} {
     max-width: 960px;
+  }
+  .neve-gtb {
+    &.has-sidebar-right .neve-blocks-wrap {
+      max-width: 70%;
+      padding: 0 40px 0 15px;
+    }
+    &.has-sidebar-left .neve-blocks-wrap {
+      max-width: 70%;
+      padding: 0 15px 0 40px;
+    }
+  }
+  .neve-gtb-sidebar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $neve-gtb-grey;
+    padding: 10px;
+    max-width: 100%;
+    flex-grow: 1;
+    > p {
+      font-size: 32px;
+      font-weight: 600;
+      color: #777;
+    }
   }
 }
 
