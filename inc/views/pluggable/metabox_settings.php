@@ -168,6 +168,10 @@ class Metabox_Settings {
 	 * @return bool|string
 	 */
 	private function get_post_id() {
+		if ( is_home() ) {
+			return false;
+		}
+
 		global $post;
 		if ( empty( $post ) ) {
 			return false;
