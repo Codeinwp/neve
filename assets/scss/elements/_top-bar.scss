@@ -1,5 +1,5 @@
 #nv-top-bar-menu {
-  @include horizontal-list(0, false);
+  @include horizontal-list(0, 'false');
   flex: 1;
   .content-menu & > li {
     margin-left: $spacing-xs;

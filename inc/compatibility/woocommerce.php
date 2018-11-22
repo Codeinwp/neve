@@ -318,7 +318,7 @@ class Woocommerce {
 	 * @return array
 	 */
 	public function add_link_color( $color_setup ) {
-		$color_setup['color']['selectors'] .= ',#nv-primary-navigation .mini_cart_item > a';
+		$color_setup['color']['selectors'] .= '';
 
 		return $color_setup;
 	}
@@ -331,7 +331,7 @@ class Woocommerce {
 	 * @return array
 	 */
 	public function add_link_hover_color( $color_setup ) {
-		$color_setup['color']['selectors'] .= ',#nv-primary-navigation .mini_cart_item:hover > a';
+		$color_setup['color']['selectors'] .= '';
 
 		return $color_setup;
 	}

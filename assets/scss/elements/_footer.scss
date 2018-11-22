@@ -26,5 +26,5 @@ footer {
 
 .nv-footer-content .footer-menu {
   justify-content: center;
-  @include horizontal-list($spacing-xs, true);
+  @include horizontal-list($spacing-xs, 'true');
 }

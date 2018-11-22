@@ -5,6 +5,7 @@ module.exports = {
 		files: {
 			'./assets/js/script.min.js': [ './assets/js/src/*.js' ],
 			'./assets/js/gutenberg-preview-manager.min.js': [ './assets/js/gutenberg-preview-manager.js' ],
+			'./assets/js/metabox.min.js': [ './assets/js/metabox.js' ],
 		},
 		options: {
 			compress: true,
