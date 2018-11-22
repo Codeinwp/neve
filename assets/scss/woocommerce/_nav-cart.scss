@@ -72,6 +72,10 @@
       grid-column: span 10;
       grid-row-start: 1;
       grid-column-end: -1;
+      color: $body-color;
+      &:hover {
+        text-decoration: underline;
+      }
     }
     a.remove {
       grid-column: 1;
@@ -79,6 +83,9 @@
       height: 20px;
       padding: 0;
       position: static;
+      &:hover {
+        text-decoration: none;
+      }
     }
     span.quantity {
       grid-row-start: 2;

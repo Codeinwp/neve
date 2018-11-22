@@ -23,6 +23,38 @@ class Metabox_Settings {
 		add_filter( 'neve_container_class_filter', array( $this, 'filter_container_class' ), 100 );
 
 		add_filter( 'neve_filter_toggle_content_parts', array( $this, 'filter_components_toggle' ), 100, 2 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'content_width' ), 999 );
+	}
+
+	/**
+	 * Add content width.
+	 */
+	public function content_width() {
+		$post_id = $this->get_post_id();
+		if ( $post_id === false ) {
+			return;
+		}
+
+		$content_width_status = get_post_meta( $post_id, 'neve_meta_enable_content_width', true );
+
+		if ( $content_width_status !== 'on' ) {
+			return;
+		}
+
+		$meta_value = get_post_meta( $post_id, 'neve_meta_content_width', true );
+
+		if ( empty( $meta_value ) ) {
+			return;
+		}
+
+		$sidebar_width = 100 - absint( $meta_value );
+
+		$style = '@media(min-width: 960px) {
+			#content.neve-main > .container > .row > .col { max-width: ' . $meta_value . '%; } 
+			.neve-main .nv-sidebar-wrap, .neve-main .nv-sidebar-wrap.shop-sidebar { max-width: ' . $sidebar_width . '%; }
+		}';
+
+		wp_add_inline_style( 'neve-style', $style );
 	}
 
 	/**
