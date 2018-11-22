@@ -1,4 +1,13 @@
 
+ ### v1.0.10 - 2018-11-22 
+ **Changes:** 
+ * Gutenberg integration
+* New options for controling the content width and sidebar layout of pages from customizer and individual metabox
+* Disable compatibility with AMP version lower than 1.0.0 where paired mode is added
+* Improved Neve Options page layout
+* New Neve Lawyers demo
+* New Neve Doctors demo
+ 
  ### v1.0.9 - 2018-11-18 
  **Changes:** 
  * AMP integration
