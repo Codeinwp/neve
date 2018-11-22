@@ -123,14 +123,14 @@ class Container_Sidebar extends Base_Inline {
 		$content_setup = array(
 			array(
 				'css_prop' => 'max-width',
-				'value'    => $content_width,
+				'value'    => absint( $content_width ),
 				'suffix'   => '%',
 			),
 		);
 		$sidebar_setup = array(
 			array(
 				'css_prop' => 'max-width',
-				'value'    => $sidebar_width,
+				'value'    => absint( $sidebar_width ),
 				'suffix'   => '%',
 			),
 		);
