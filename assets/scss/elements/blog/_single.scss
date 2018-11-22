@@ -8,12 +8,19 @@
   }
 }
 
+.nv-title-meta-wrap,
+.nv-thumb-wrap {
+  &:only-child {
+    margin-bottom: $spacing-sm;
+  }
+}
+
 .nv-thumb-wrap + .nv-title-meta-wrap {
-  margin-top: $spacing-sm;
+  margin: $spacing-sm 0;
 }
 
 .nv-title-meta-wrap + .nv-thumb-wrap {
-  margin-top: $spacing-sm;
+  margin: $spacing-sm 0;
 }
 
 .single-post-container .title {

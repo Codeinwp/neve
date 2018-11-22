@@ -98,13 +98,14 @@ $wp-block-selector: '.neve-gtb.container.has-sidebar-full-width .wp-block:not([d
   }
   .neve-gtb-sidebar {
     display: flex;
-    align-items: center;
     justify-content: center;
+    text-align: center;
     background: $neve-gtb-grey;
     padding: 10px;
     max-width: 100%;
     flex-grow: 1;
     > p {
+      position: fixed;
       font-size: 32px;
       font-weight: 600;
       color: #777;
