@@ -1322,12 +1322,17 @@ article {
   margin-top: 30px;
 }
 
+.nv-title-meta-wrap:only-child,
+.nv-thumb-wrap:only-child {
+  margin-bottom: 20px;
+}
+
 .nv-thumb-wrap + .nv-title-meta-wrap {
-  margin-top: 20px;
+  margin: 20px 0;
 }
 
 .nv-title-meta-wrap + .nv-thumb-wrap {
-  margin-top: 20px;
+  margin: 20px 0;
 }
 
 .single-post-container .title {

@@ -255,14 +255,15 @@
 
   .neve-gtb-sidebar {
     display: flex;
-    align-items: center;
     justify-content: center;
+    text-align: center;
     background: #e7e7e7;
     padding: 10px;
     max-width: 100%;
     flex-grow: 1;
   }
   .neve-gtb-sidebar > p {
+    position: fixed;
     font-size: 32px;
     font-weight: 600;
     color: #777;
