@@ -1,4 +1,8 @@
 
+ ### v1.0.11 - 2018-11-22 
+ **Changes:** 
+ * Fixed issue with the content width option not updating correctly
+ 
  ### v1.0.10 - 2018-11-22 
  **Changes:** 
  * Gutenberg integration
