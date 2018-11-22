@@ -181,74 +181,42 @@ class Admin {
 			array(
 				'icon' => 'dashicons-format-image',
 				'text' => __( 'Upload Logo', 'neve' ),
-				'link' => add_query_arg(
-					array(
-						'autofocus[control]' => 'custom_logo',
-					), admin_url( 'customize.php' )
-				),
+				'link' => add_query_arg( array( 'autofocus[control]' => 'custom_logo' ), admin_url( 'customize.php' ) ),
 			),
 			array(
 				'icon' => 'dashicons-admin-customizer',
 				'text' => __( 'Set Colors', 'neve' ),
-				'link' => add_query_arg(
-					array(
-						'autofocus[section]' => 'neve_colors_background_section',
-					), admin_url( 'customize.php' )
-				),
+				'link' => add_query_arg( array( 'autofocus[section]' => 'neve_colors_background_section' ), admin_url( 'customize.php' ) ),
 			),
 			array(
 				'icon' => 'dashicons-editor-textcolor',
 				'text' => __( 'Customize Fonts', 'neve' ),
-				'link' => add_query_arg(
-					array(
-						'autofocus[control]' => 'neve_headings_font_family',
-					), admin_url( 'customize.php' )
-				),
+				'link' => add_query_arg( array( 'autofocus[control]' => 'neve_headings_font_family' ), admin_url( 'customize.php' ) ),
 			),
 			array(
 				'icon' => 'dashicons-layout',
 				'text' => __( 'Layout Options', 'neve' ),
-				'link' => add_query_arg(
-					array(
-						'autofocus[panel]' => 'neve_layout',
-					), admin_url( 'customize.php' )
-				),
+				'link' => add_query_arg( array( 'autofocus[panel]' => 'neve_layout' ), admin_url( 'customize.php' ) ),
 			),
 			array(
 				'icon' => 'dashicons-align-center',
 				'text' => __( 'Header Options', 'neve' ),
-				'link' => add_query_arg(
-					array(
-						'autofocus[panel]' => 'neve_header',
-					), admin_url( 'customize.php' )
-				),
+				'link' => add_query_arg( array( 'autofocus[panel]' => 'neve_header' ), admin_url( 'customize.php' ) ),
 			),
 			array(
 				'icon' => 'dashicons-welcome-write-blog',
 				'text' => __( 'Blog Layouts', 'neve' ),
-				'link' => add_query_arg(
-					array(
-						'autofocus[section]' => 'neve_blog_archive_layout',
-					), admin_url( 'customize.php' )
-				),
+				'link' => add_query_arg( array( 'autofocus[section]' => 'neve_blog_archive_layout' ), admin_url( 'customize.php' ) ),
 			),
 			array(
 				'icon' => 'dashicons-admin-generic',
 				'text' => __( 'Footer Options', 'neve' ),
-				'link' => add_query_arg(
-					array(
-						'autofocus[panel]' => 'neve_footer',
-					), admin_url( 'customize.php' )
-				),
+				'link' => add_query_arg( array( 'autofocus[panel]' => 'neve_footer' ), admin_url( 'customize.php' ) ),
 			),
 			array(
 				'icon' => 'dashicons-align-left',
 				'text' => __( 'Content / Sidebar', 'neve' ),
-				'link' => add_query_arg(
-					array(
-						'autofocus[section]' => 'neve_sidebar',
-					), admin_url( 'customize.php' )
-				),
+				'link' => add_query_arg( array( 'autofocus[section]' => 'neve_sidebar' ), admin_url( 'customize.php' ) ),
 			),
 		);
 		$counter = 1;
