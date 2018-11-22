@@ -73,8 +73,6 @@ class Core_Loader {
 				'Compatibility\Beaver',
 
 				'Admin\Metabox\Main',
-
-				'Content_Import\Zelle',
 			)
 		);
 	}

@@ -12,9 +12,6 @@ Text Domain:    neve
 WordPress Available:  no
 Requires License:     no
 Tags: blog, custom-logo, e-commerce, rtl-language-support, post-formats, grid-layout, one-column, two-columns, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready
-
-This theme, like WordPress, is licensed under the GPL.
-Use it to make something cool, have fun, and share what you've learned with others.
 */
 html,
 body,
@@ -1322,12 +1319,17 @@ article {
   margin-top: 30px;
 }
 
+.nv-title-meta-wrap:only-child,
+.nv-thumb-wrap:only-child {
+  margin-bottom: 20px;
+}
+
 .nv-thumb-wrap + .nv-title-meta-wrap {
-  margin-top: 20px;
+  margin: 20px 0;
 }
 
 .nv-title-meta-wrap + .nv-thumb-wrap {
-  margin-top: 20px;
+  margin: 20px 0;
 }
 
 .single-post-container .title {
@@ -2058,10 +2060,8 @@ hr {
     margin-right: auto;
     justify-content: flex-start;
   }
-  #nv-primary-navigation > li:not(:last-child) {
+  #nv-primary-navigation li {
     padding-left: 10px;
-  }
-  #nv-primary-navigation > li:not(:first-child) {
     padding-right: 10px;
   }
   .responsive-opened #nv-primary-navigation {

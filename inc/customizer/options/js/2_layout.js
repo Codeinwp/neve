@@ -146,7 +146,6 @@ var contentWidthsPreview = function ( $ ) {
 	$.each( contentWidths, function ( id, args ) {
 		wp.customize( id, function ( value ) {
 			value.bind( function ( newval ) {
-				console.log(id);
 				jQuery( args.content ).css( 'max-width', newval + '%' );
 				jQuery( args.sidebar ).css( 'max-width', 100 - newval + '%' );
 			} );
