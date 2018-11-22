@@ -636,6 +636,7 @@
 .nv-sidebar-wrap.shop-sidebar.sidebar-open {
   opacity: 1;
   pointer-events: all;
+  background-color: #fff;
 }
 
 .sidebar-header {
@@ -1117,6 +1118,9 @@
     pointer-events: all;
     max-width: 30%;
     overflow: visible;
+  }
+  .nv-sidebar-wrap.shop-sidebar.sidebar-open {
+    background: transparent;
   }
   .nv-sidebar-wrap.shop-sidebar .sidebar-header {
     display: none;
