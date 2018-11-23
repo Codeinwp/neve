@@ -135,6 +135,23 @@
   padding: 0;
 }
 
+.wp-block-pullquote {
+  border: unset;
+}
+.wp-block-pullquote:before, .wp-block-pullquote:after {
+  height: 3px;
+  width: 60px;
+  background-color: #c9c9c9;
+  content: " ";
+  display: block;
+}
+.wp-block-pullquote:before {
+  margin: 0 auto 40px;
+}
+.wp-block-pullquote:after {
+  margin: 40px auto 0;
+}
+
 .editor-styles-wrapper.neve-has-meta .editor-post-title__block > div:first-child:after {
   content: ' ';
   width: 245px;

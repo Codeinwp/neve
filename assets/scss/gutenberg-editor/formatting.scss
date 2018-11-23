@@ -1,0 +1,19 @@
+//<editor-fold desc="Pullquote">
+.wp-block-pullquote {
+  border: unset;
+  &:before,
+  &:after {
+    height: 3px;
+    width: 60px;
+    background-color: #c9c9c9;
+    content: " ";
+    display: block;
+  }
+  &:before {
+    margin: 0 auto 40px;
+  }
+  &:after {
+    margin: 40px auto 0;
+  }
+}
+//</editor-fold>
