@@ -98,7 +98,6 @@
 		 */
 		handleContainerChange: function ( value ) {
 			var editor = $( '.editor-styles-wrapper' );
-
 			switch ( value ) {
 				default:
 				case 'contained':
@@ -137,6 +136,9 @@
 			// Container setting.
 			$( '#neve-page-settings input[name=neve_meta_container]' ).on( 'change', function ( event ) {
 				var value = event.target.value;
+				if ( value === 'default' ) {
+					value = self.data.containerSetup;
+				}
 				self.handleContainerChange( value );
 				return false;
 			} );
