@@ -51,7 +51,10 @@ class Post_Header extends Base_View {
 		}
 
 		if ( ! has_post_thumbnail() ) {
-			unset( $content_order[ array_search( 'thumbnail', $content_order ) ] );
+			$thumb_index = array_search( 'thumbnail', $content_order );
+			if ( $thumb_index !== false ) {
+				unset( $content_order[ $thumb_index ] );
+			}
 		}
 
 		if ( empty( $content_order ) ) {
