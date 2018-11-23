@@ -48,7 +48,7 @@ class Colors extends Base_Inline {
 					'selectors' => '.navbar-toggle .icon-bar',
 				),
 			);
-			$this->add_color( apply_filters( 'neve_menu_items_color_filter', $color_setup ), $color );
+			$this->add_color( apply_filters( 'neve_menu_items_color_filter', $color_setup ), sanitize_hex_color( $color ) );
 		}
 		$hover_color = get_theme_mod( 'neve_menu_item_hover_color', '' );
 		if ( ! empty( $hover_color ) ) {
@@ -67,7 +67,7 @@ class Colors extends Base_Inline {
 					'selectors' => '.navbar-toggle:hover .icon-bar',
 				),
 			);
-			$this->add_color( apply_filters( 'neve_menu_items_hover_color_filter', $color_setup ), $hover_color );
+			$this->add_color( apply_filters( 'neve_menu_items_hover_color_filter', $color_setup ), sanitize_hex_color( $hover_color ) );
 		}
 	}
 
@@ -90,7 +90,7 @@ class Colors extends Base_Inline {
 			),
 		);
 
-		$this->add_color( apply_filters( 'neve_link_color_filter', $color_setup ), $color );
+		$this->add_color( apply_filters( 'neve_link_color_filter', $color_setup ), sanitize_hex_color( $color ) );
 		$this->add_style(
 			array(
 				array(
@@ -118,7 +118,7 @@ class Colors extends Base_Inline {
 				'selectors' => 'a:hover, a:focus',
 			),
 		);
-		$this->add_color( apply_filters( 'neve_link_hover_color_filter', $color_setup ), $color );
+		$this->add_color( apply_filters( 'neve_link_hover_color_filter', $color_setup ), sanitize_hex_color( $color ) );
 	}
 
 	/**
@@ -133,7 +133,7 @@ class Colors extends Base_Inline {
 			array(
 				array(
 					'css_prop' => 'color',
-					'value'    => $color,
+					'value'    => sanitize_hex_color( $color ),
 				),
 			),
 			'body, 
@@ -176,7 +176,7 @@ class Colors extends Base_Inline {
 			),
 		);
 
-		$this->add_color( apply_filters( 'neve_button_color_filter', $color_setup ), $color );
+		$this->add_color( apply_filters( 'neve_button_color_filter', $color_setup ), sanitize_hex_color( $color ) );
 	}
 
 	/**
@@ -208,7 +208,7 @@ class Colors extends Base_Inline {
 				'selectors' => $selectors,
 			);
 
-			$this->add_color( $color_setup, $control_value );
+			$this->add_color( $color_setup, sanitize_hex_color( $control_value ) );
 		}
 	}
 }

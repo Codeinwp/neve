@@ -126,9 +126,9 @@ abstract class Base_Inline {
 			$style = wp_parse_args( $style, $default );
 			$setup = array(
 				array(
-					'css_prop' => $style['css_prop'],
-					'value'    => $style['prefix'] . $value,
-					'suffix'   => $style['suffix'],
+					'css_prop' => esc_attr( $style['css_prop'] ),
+					'value'    => esc_attr( $style['prefix'] . $value ),
+					'suffix'   => esc_attr( $style['suffix'] ),
 				),
 			);
 			$this->add_style( $setup, $style['selectors'], $style['media_query'] );

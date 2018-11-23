@@ -14,6 +14,13 @@ namespace Neve\Admin\Metabox\Controls;
  */
 class Checkbox extends Control_Base {
 	/**
+	 * Control type.
+	 *
+	 * @var string
+	 */
+	public $type = 'checkbox';
+
+	/**
 	 * Render control.
 	 *
 	 * @return void

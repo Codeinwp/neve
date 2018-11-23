@@ -35,7 +35,7 @@ class Typography extends Base_Inline {
 			array(
 				array(
 					'css_prop' => 'font-family',
-					'value'    => $headings_font,
+					'value'    => esc_html( $headings_font ),
 				),
 			),
 			'h1, h2, h3, h4, h5, h6'
@@ -44,7 +44,7 @@ class Typography extends Base_Inline {
 			array(
 				array(
 					'css_prop' => 'font-family',
-					'value'    => $body_font,
+					'value'    => esc_html( $body_font ),
 				),
 
 			),

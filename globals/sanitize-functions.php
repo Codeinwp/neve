@@ -9,28 +9,6 @@
  * @package Neve\Globals
  */
 
-
-/**
- * Sanitize arrays.
- *
- * @param mixed $value Control output.
- *
- * @return array
- */
-function neve_sanitize_array( $value ) {
-	$output = $value;
-
-	if ( ! is_array( $value ) ) {
-		$output = explode( ',', $value );
-	}
-
-	if ( ! empty( $output ) ) {
-		return array_map( 'sanitize_text_field', $output );
-	}
-
-	return array();
-}
-
 /**
  * Function to sanitize alpha color.
  *

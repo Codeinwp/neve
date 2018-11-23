@@ -14,6 +14,13 @@ namespace Neve\Admin\Metabox\Controls;
  */
 class Radio extends Control_Base {
 	/**
+	 * Control type.
+	 *
+	 * @var string
+	 */
+	public $type = 'radio';
+
+	/**
 	 * Render control.
 	 *
 	 * @return void

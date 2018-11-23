@@ -37,7 +37,7 @@ class Gutenberg_Editor extends Base_Inline {
 			array(
 				array(
 					'css_prop' => 'font-family',
-					'value'    => $headings_font,
+					'value'    => esc_html( $headings_font ),
 				),
 			),
 			'.gutenberg-editor-page #wpwrap .editor-post-title__block .editor-post-title__input, 
@@ -52,7 +52,7 @@ class Gutenberg_Editor extends Base_Inline {
 			array(
 				array(
 					'css_prop' => 'font-family',
-					'value'    => $body_font,
+					'value'    => esc_html( $body_font ),
 				),
 			),
 			'.gutenberg-editor-page #wpwrap .editor-styles-wrapper'
@@ -93,7 +93,7 @@ class Gutenberg_Editor extends Base_Inline {
 				array(
 					array(
 						'css_prop' => 'max-width',
-						'value'    => $content_width,
+						'value'    => absint( $content_width ),
 						'suffix'   => '%',
 					),
 				),
@@ -114,7 +114,7 @@ class Gutenberg_Editor extends Base_Inline {
 			array(
 				array(
 					'css_prop' => 'max-width',
-					'value'    => $post_content_width,
+					'value'    => absint( $post_content_width ),
 					'suffix'   => '%',
 				),
 			),
@@ -129,7 +129,7 @@ class Gutenberg_Editor extends Base_Inline {
 			array(
 				array(
 					'css_prop' => 'max-width',
-					'value'    => $page_content_width,
+					'value'    => absint( $page_content_width ),
 					'suffix'   => '%',
 				),
 			),
@@ -159,7 +159,7 @@ class Gutenberg_Editor extends Base_Inline {
 		$color_setup = array(
 			$setup,
 		);
-		$this->add_color( $color_setup, $color );
+		$this->add_color( $color_setup, sanitize_hex_color( $color ) );
 	}
 
 	/**
