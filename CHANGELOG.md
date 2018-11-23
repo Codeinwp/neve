@@ -1,4 +1,9 @@
 
+ ### v1.0.13 - 2018-11-23 
+ **Changes:** 
+ * Fixed escaping issues
+* Changed Gutenberg font size controls
+ 
  ### v1.0.12 - 2018-11-22 
  **Changes:** 
  * Fixed content width and sidebar background on mobile
