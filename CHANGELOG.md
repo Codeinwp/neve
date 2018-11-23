@@ -1,4 +1,8 @@
 
+ ### v1.0.14 - 2018-11-23 
+ **Changes:** 
+ * Fixed container width in Gutenberg
+ 
  ### v1.0.13 - 2018-11-23 
  **Changes:** 
  * Fixed escaping issues
