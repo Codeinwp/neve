@@ -1,4 +1,8 @@
 
+ ### v1.0.15 - 2018-11-23 
+ **Changes:** 
+ * Fixed issue with thumbnail hiding on single post page
+ 
  ### v1.0.14 - 2018-11-23 
  **Changes:** 
  * Fixed container width in Gutenberg
