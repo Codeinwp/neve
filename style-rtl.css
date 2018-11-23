@@ -420,6 +420,11 @@ blockquote.wp-block-quote.is-style-large cite {
   border-color: #8e98a2;
 }
 
+.wp-block-verse {
+  font-family: 'Dancing Script', cursive;
+  border: unset;
+}
+
 #nv-top-bar-menu {
   display: flex;
   flex-wrap: wrap;

@@ -152,6 +152,11 @@
   margin: 40px auto 0;
 }
 
+.wp-block-verse {
+  font-family: 'Dancing Script', cursive;
+  border: unset;
+}
+
 .editor-styles-wrapper.neve-has-meta .editor-post-title__block > div:first-child:after {
   content: ' ';
   width: 245px;

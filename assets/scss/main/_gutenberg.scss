@@ -50,6 +50,7 @@ blockquote.wp-block-quote.is-style-large {
 .wp-block-table {
   width: 100%;
 }
+
 //</editor-fold>
 
 //<editor-fold desc="Separator">
@@ -60,9 +61,19 @@ blockquote.wp-block-quote.is-style-large {
   left: 50%;
   transform: translateX(-50%);
 }
+
 .wp-block-separator.is-style-wide {
   border-color: #8e98a2;
 }
+
+//</editor-fold>
+
+//<editor-fold desc="Verse">
+.wp-block-verse {
+  font-family: 'Dancing Script', cursive;
+  border: unset;
+}
+
 //</editor-fold>
 
 @mixin gutenberg--tablet() {
