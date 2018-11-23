@@ -114,7 +114,7 @@ class Container_Sidebar extends Base_Inline {
 
 		$content_width = get_theme_mod( $theme_mod, false );
 
-		if ( empty( $content_width ) ) {
+		if ( $content_width === false ) {
 			return;
 		}
 
