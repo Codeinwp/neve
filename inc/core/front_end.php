@@ -50,7 +50,6 @@ class Front_End {
 		add_theme_support( 'themeisle-demo-import', $this->get_ti_demo_content_support_data() );
 		add_theme_support( 'align-wide' );
 		add_theme_support( 'editor-color-palette', $this->get_gutenberg_color_palette() );
-		add_theme_support( 'editor-font-sizes', $this->get_gutenberg_font_sizes() );
 		add_theme_support( 'fl-theme-builder-headers' );
 		add_theme_support( 'fl-theme-builder-footers' );
 
@@ -175,9 +174,9 @@ class Front_End {
 			array_push(
 				$gutenberg_color_palette,
 				array(
-					'name'  => $color_name,
-					'slug'  => $slug,
-					'color' => $color,
+					'name'  => esc_html( $color_name ),
+					'slug'  => esc_html( $slug ),
+					'color' => sanitize_hex_color( $color ),
 				)
 			);
 		}
@@ -195,59 +194,6 @@ class Front_End {
 		);
 
 		return array_intersect_key( $gutenberg_color_palette, $temp_arr );
-	}
-
-	/**
-	 * Gutenberg Block Font Size.
-	 * This function get the font size dynamically from customizer.
-	 */
-	private function get_gutenberg_font_sizes() {
-
-		$body_font_size         = get_theme_mod( 'neve_body_font_size', 15 );
-		$body_font_size_decoded = json_decode( $body_font_size, true );
-		if ( is_array( $body_font_size_decoded ) ) {
-			$body_font_size = $body_font_size_decoded['desktop'];
-		}
-
-		$font_size_array = array(
-			array(
-				'name'      => __( 'Body font size', 'neve' ),
-				'shortName' => __( 'Body', 'neve' ),
-				'size'      => $body_font_size,
-				'slug'      => 'neve-body',
-			),
-		);
-
-		$defaults = array(
-			2,
-			1.75,
-			1.5,
-			1.25,
-			1,
-			1,
-		);
-		for ( $i = 1; $i <= 6; $i ++ ) {
-			$font_size         = get_theme_mod( 'neve_h' . $i . '_font_size', $defaults[ $i - 1 ] );
-			$font_size_decoded = json_decode( $font_size, true );
-			if ( is_array( $font_size_decoded ) ) {
-				$font_size = $font_size_decoded['desktop'];
-			}
-			if ( ! empty( $font_size ) ) {
-				array_push(
-					$font_size_array,
-					array(
-						// translators: Heading size.
-						'name'      => sprintf( __( 'H%d', 'neve' ), $i ),
-						// translators: Heading size.
-						'shortName' => sprintf( __( 'H%d', 'neve' ), $i ),
-						'size'      => ( $font_size * 15 ),
-						'slug'      => 'neve-h' . $i,
-					)
-				);
-			}
-		}
-
-		return $font_size_array;
 	}
 
 	/**

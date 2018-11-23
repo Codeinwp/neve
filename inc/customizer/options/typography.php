@@ -70,7 +70,7 @@ class Typography extends Base_Customizer {
 			new Control(
 				'neve_font_subsets',
 				array(
-					'sanitize_callback' => 'neve_sanitize_array',
+					'sanitize_callback' => array( $this, 'sanitize_font_subsets' ),
 					'default'           => array( 'latin' ),
 				),
 				array(
@@ -378,6 +378,32 @@ class Typography extends Base_Customizer {
 				'heading'             => 'H6',
 			),
 		);
+	}
+
+	/**
+	 * Sanitize the font subsets
+	 */
+	public function sanitize_font_subsets( $value ) {
+		if ( ! is_array( $value ) ) {
+			return array( 'latin' );
+		}
+
+		$allowed_values = array(
+			'latin',
+			'latin-ext',
+			'cyrillic',
+			'cyrillic-ext',
+			'greek',
+			'greek-ext',
+			'vietnamese',
+		);
+		foreach ( $value as $index => $font_subset ) {
+			if ( ! in_array( $font_subset, $allowed_values ) ) {
+				unset( $value[ $index ] );
+			}
+		}
+
+		return $value;
 	}
 }
 

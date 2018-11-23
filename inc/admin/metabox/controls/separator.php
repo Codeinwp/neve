@@ -14,6 +14,13 @@ namespace Neve\Admin\Metabox\Controls;
  */
 class Separator extends Control_Base {
 	/**
+	 * Control type.
+	 *
+	 * @var string
+	 */
+	public $type = 'separator';
+
+	/**
 	 * Render control.
 	 *
 	 * @return void
