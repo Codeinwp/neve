@@ -148,7 +148,7 @@ abstract class Base_Inline {
 		}
 		$suffix = isset( $style['suffix'] ) ? $style['suffix'] : '';
 
-		return $style['css_prop'] . ':' . $style['value'] . $suffix . ';';
+		return esc_attr( $style['css_prop'] ) . ':' . esc_attr( $style['value'] ) . esc_attr( $suffix ) . ';';
 	}
 
 	/**
@@ -161,6 +161,9 @@ abstract class Base_Inline {
 	public final function get_style( $context ) {
 		$allowed_contexts = array( 'mobile', 'desktop', 'tablet' );
 		if ( ! in_array( $context, $allowed_contexts ) ) {
+			return '';
+		}
+		if ( ! array_key_exists( $context, $this->style ) ) {
 			return '';
 		}
 
