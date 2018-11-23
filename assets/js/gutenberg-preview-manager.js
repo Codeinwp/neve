@@ -125,7 +125,7 @@
 			// Sidebar setting.
 			$( '#neve-page-settings input[name=neve_meta_sidebar]' ).on( 'change', function ( event ) {
 				var value = event.target.value;
-				if ( event.target.value === 'default' ) {
+				if ( value === 'default' ) {
 					value = self.data.sidebarSetup;
 				}
 				$( '.neve-gtb-sidebar' ).remove();
