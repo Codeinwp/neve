@@ -74,11 +74,7 @@ class Gutenberg_Editor extends Base_Inline {
 		);
 		$this->add_responsive_style(
 			$settings,
-			'
-.neve-gtb.container.has-sidebar-full-width .wp-block:not([data-align=full]):not([data-align=wide]),
-.neve-blocks-wrap .wp-block.editor-post-title__block,
-.neve-gtb.container.has-sidebar-left .neve-content-wrap,
-.neve-gtb.container.has-sidebar-right .neve-content-wrap'
+			'.neve-gtb.container.has-sidebar-full-width .neve-blocks-wrap > .editor-block-list__layout > .wp-block:not([data-align=full]):not([data-align=wide]), .neve-gtb.container.has-sidebar-full-width .neve-blocks-wrap .wp-block.editor-post-title__block, .neve-gtb.container.has-sidebar-left .neve-content-wrap, .neve-gtb.container.has-sidebar-right .neve-content-wrap'
 		);
 	}
 
