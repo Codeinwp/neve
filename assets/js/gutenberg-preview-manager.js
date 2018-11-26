@@ -181,7 +181,8 @@
 			}
 
 			var css = '@media(min-width: 960px) { ' +
-				'.neve-gtb.has-sidebar-full-width .wp-block:not([data-align=full]):not([data-align=wide]) > *,' +
+				'.neve-gtb.has-sidebar-full-width .neve-blocks-wrap > .editor-block-list__layout > .wp-block:not([data-align=full]):not([data-align=wide]) > *,' +
+				'.neve-gtb.has-sidebar-full-width .neve-blocks-wrap .wp-block.editor-post-title__block > div,' +
 				'.neve-gtb.has-sidebar-left .neve-blocks-wrap,' +
 				'.neve-gtb.has-sidebar-right .neve-blocks-wrap' +
 				' { max-width: ' + setValue + '% !important; } }';
