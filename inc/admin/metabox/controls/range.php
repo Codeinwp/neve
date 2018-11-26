@@ -14,6 +14,13 @@ namespace Neve\Admin\Metabox\Controls;
  */
 class Range extends Control_Base {
 	/**
+	 * Control type.
+	 *
+	 * @var string
+	 */
+	public $type = 'range';
+
+	/**
 	 * Render control.
 	 *
 	 * @return void

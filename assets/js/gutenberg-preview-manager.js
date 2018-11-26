@@ -98,7 +98,6 @@
 		 */
 		handleContainerChange: function ( value ) {
 			var editor = $( '.editor-styles-wrapper' );
-
 			switch ( value ) {
 				default:
 				case 'contained':
@@ -126,7 +125,7 @@
 			// Sidebar setting.
 			$( '#neve-page-settings input[name=neve_meta_sidebar]' ).on( 'change', function ( event ) {
 				var value = event.target.value;
-				if ( event.target.value === 'default' ) {
+				if ( value === 'default' ) {
 					value = self.data.sidebarSetup;
 				}
 				$( '.neve-gtb-sidebar' ).remove();
@@ -137,6 +136,9 @@
 			// Container setting.
 			$( '#neve-page-settings input[name=neve_meta_container]' ).on( 'change', function ( event ) {
 				var value = event.target.value;
+				if ( value === 'default' ) {
+					value = self.data.containerSetup;
+				}
 				self.handleContainerChange( value );
 				return false;
 			} );

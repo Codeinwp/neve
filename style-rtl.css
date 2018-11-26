@@ -5,11 +5,11 @@ Theme URI:      https://themeisle.com/themes/neve/
 Author:         ThemeIsle
 Author URI:     https://themeisle.com
 Description:    Neve is a super fast, easily customizable, multi-purpose theme. It’s perfect for blogs, small business, startups, agencies, firms, e-commerce shops (WooCommerce storefront) as well as personal portfolio sites and most types of projects. A fully AMP optimized and responsive theme, Neve will load in mere seconds and adapt perfectly on any viewing device. While it is lightweight and has a minimalist design, the theme is highly extendable, it has a highly SEO optimized code, resulting in top rankings in Google search results. Neve works perfectly with Gutenberg and the most popular page builders (Elementor, Brizy, Beaver Builder, Visual Composer, SiteOrigin, Divi). Neve is also WooCommerce ready, responsive, RTL & translation ready. Look no further. Neve is the perfect theme for you!
-Version:        1.0.12
+Version:        1.0.15
 License:        GNU General Public License v2 or later
 License URI:    http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain:    neve
-WordPress Available:  no
+WordPress Available:  yes
 Requires License:     no
 Tags: blog, custom-logo, e-commerce, rtl-language-support, post-formats, grid-layout, one-column, two-columns, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready
 */
@@ -406,23 +406,6 @@ blockquote.wp-block-quote.is-style-large cite {
 
 .wp-block-table {
   width: 100%;
-}
-
-.wp-block-separator:not(.is-style-wide):not(.is-style-dots) {
-  border-bottom: 2px solid #8f98a1;
-  position: relative;
-  max-width: 95px;
-  right: 50%;
-  transform: translateX(50%);
-}
-
-.wp-block-separator.is-style-wide {
-  border-color: #8e98a2;
-}
-
-.wp-block-verse {
-  font-family: 'Dancing Script', cursive;
-  border: unset;
 }
 
 #nv-top-bar-menu {

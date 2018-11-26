@@ -23,7 +23,6 @@ class Typography extends Base_Inline {
 		$this->fonts_family();
 		$this->add_body_style();
 		$this->add_headings_styles();
-		$this->add_gutenberg_front_end_font_size();
 	}
 
 	/**
@@ -36,7 +35,7 @@ class Typography extends Base_Inline {
 			array(
 				array(
 					'css_prop' => 'font-family',
-					'value'    => $headings_font,
+					'value'    => esc_html( $headings_font ),
 				),
 			),
 			'h1, h2, h3, h4, h5, h6'
@@ -45,7 +44,7 @@ class Typography extends Base_Inline {
 			array(
 				array(
 					'css_prop' => 'font-family',
-					'value'    => $body_font,
+					'value'    => esc_html( $body_font ),
 				),
 
 			),
@@ -102,33 +101,6 @@ class Typography extends Base_Inline {
 				array(
 					'css_prop' => 'line-height',
 					'value'    => $line_height,
-				),
-			);
-			$this->add_responsive_style( $settings, $selector );
-		}
-	}
-
-	/**
-	 * Add font sizes from gutenberg.
-	 */
-	private function add_gutenberg_front_end_font_size() {
-		$font_size_controls = array(
-			'.has-neve-body-font-size' => 'neve_body_font_size',
-			'.has-neve-h-1-font-size'  => 'neve_h1_font_size',
-			'.has-neve-h-2-font-size'  => 'neve_h2_font_size',
-			'.has-neve-h-3-font-size'  => 'neve_h3_font_size',
-			'.has-neve-h-4-font-size'  => 'neve_h4_font_size',
-			'.has-neve-h-5-font-size'  => 'neve_h5_font_size',
-			'.has-neve-h-6-font-size'  => 'neve_h6_font_size',
-		);
-		foreach ( $font_size_controls as $selector => $theme_mod ) {
-			$value    = get_theme_mod( $theme_mod );
-			$value    = json_decode( $value, true );
-			$settings = array(
-				array(
-					'css_prop' => 'font-size',
-					'value'    => $value,
-					'suffix'   => isset( $value['suffix'] ) ? $value['suffix'] : 'em',
 				),
 			);
 			$this->add_responsive_style( $settings, $selector );
