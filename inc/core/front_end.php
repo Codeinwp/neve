@@ -96,7 +96,7 @@ class Front_End {
 					'url'   => 'https://demo.themeisle.com/neve-doctors/',
 					'title' => 'Neve Doctors',
 				),
-				'neve-restaurant'       => array(
+				'neve-restaurant'    => array(
 					'url'   => 'https://demo.themeisle.com/neve-restaurant/',
 					'title' => 'Neve Restaurant',
 				),
