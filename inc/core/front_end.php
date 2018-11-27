@@ -96,6 +96,10 @@ class Front_End {
 					'url'   => 'https://demo.themeisle.com/neve-doctors/',
 					'title' => 'Neve Doctors',
 				),
+				'neve-restaurant'    => array(
+					'url'   => 'https://demo.themeisle.com/neve-restaurant/',
+					'title' => 'Neve Restaurant',
+				),
 			),
 			'can_migrate' => array(
 				'zerif-pro'  => array(
