@@ -16,7 +16,7 @@
 <!-- 7. WordPress will then import each of the posts, pages, comments, categories, etc. -->
 <!--    contained in this file into your site. -->
 
-<!-- generator="WordPress/4.9.8" created="2018-11-26 16:31" -->
+<!-- generator="WordPress/4.9.8" created="2018-11-27 10:59" -->
 <rss version="2.0"
 	xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
 	xmlns:content="http://purl.org/rss/1.0/modules/content/"
@@ -29,7 +29,7 @@
 	<title>Neve Restaurant</title>
 	<link>https://demo.themeisle.com/neve-restaurant</link>
 	<description></description>
-	<pubDate>Mon, 26 Nov 2018 16:31:45 +0000</pubDate>
+	<pubDate>Tue, 27 Nov 2018 10:59:03 +0000</pubDate>
 	<language>en-US</language>
 	<wp:wxr_version>1.2</wp:wxr_version>
 	<wp:base_site_url>https://demo.themeisle.com/</wp:base_site_url>
@@ -853,17 +853,21 @@
 }
 
 @media only screen and (min-width: 1200px) {
-.home .nv-navbar {
+.home.page-template-template-pagebuilder-full-width .nv-navbar {
 	background-color: transparent;
 	border-bottom: none;
 }
 
-.home .site-logo a {
+.home.page-template-template-pagebuilder-full-width .site-logo a {
 	color: transparent;
 }
 
-.home #nv-primary-navigation a {
+.home.page-template-template-pagebuilder-full-width #nv-primary-navigation a {
 	color: #fff;
+}
+
+	.home.page-template-template-pagebuilder-full-width #nv-primary-navigation a:hover {
+	color: #c59d5f;
 }
 
 	#nv-primary-navigation li a:hover {
