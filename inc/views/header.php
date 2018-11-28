@@ -49,7 +49,6 @@ class Header extends Base_View {
 		<?php
 	}
 
-
 	/**
 	 * Get the markup for last menu item on mobile.
 	 *
@@ -103,7 +102,6 @@ class Header extends Base_View {
 
 		return $search;
 	}
-
 
 	/**
 	 * Get the markup for the nav menu cart.

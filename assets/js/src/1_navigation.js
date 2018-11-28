@@ -17,7 +17,7 @@
 			}
 
 			var windowWidth = window.innerWidth;
-			//Do nothing without dropdowns.
+			//Do nothing without drop-downs.
 			var dropDowns = $( '.sub-menu .sub-menu' );
 			if ( dropDowns.length === 0 ) {
 				return false;
@@ -58,7 +58,7 @@
 		'handleMobileDropdowns': function () {
 			var self = this;
 			$( '.caret-wrap' ).on( 'click', function () {
-				$( this ).parent().toggleClass( 'dropdown-open' );
+				$( this ).closest('li').toggleClass( 'dropdown-open' );
 				if ( !utils.isMobile() ) {
 					self.createNavOverlay();
 				}
