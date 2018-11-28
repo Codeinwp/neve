@@ -16,6 +16,10 @@ namespace Neve\Views;
  * @package Neve\Views
  */
 class Nav_Walker extends \Walker_Nav_Menu {
+
+	/**
+	 * Nav_Walker constructor.
+	 */
 	public function __construct() {
 		add_filter( 'nav_menu_item_title', array( $this, 'add_caret' ), 10, 4 );
 	}
@@ -71,6 +75,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 
 		if ( isset( $item->title ) && ( strcasecmp( $item->title, 'divider' ) == 0 ) && $depth >= 1 ) {
 			$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
+
 			$output .= $indent . '<li role="presentation" class="neve-mm-divider">';
 
 			return;

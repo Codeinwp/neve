@@ -1005,6 +1005,10 @@
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.07);
   }
 
+  #nv-primary-navigation > li.menu-item-nav-cart > a {
+    display: block;
+  }
+
   .menu-item-nav-cart:not(.responsive-nav-cart) {
     display: block;
   }
