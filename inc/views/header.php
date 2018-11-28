@@ -19,6 +19,8 @@ class Header extends Base_View {
 	public function init() {
 		add_action( 'neve_do_header', array( $this, 'render_navigation' ) );
 		add_filter( 'wp_nav_menu_items', array( $this, 'add_last_menu_item' ), 10, 2 );
+		add_filter( 'wp_page_menu', array( $this, 'add_fallback_last_menu_items' ), 10, 2 );
+
 	}
 
 	/**
@@ -27,7 +29,7 @@ class Header extends Base_View {
 	public function render_navigation() {
 		?>
 		<nav class="nv-navbar" <?php echo wp_kses_post( apply_filters( 'neve_nav_data_attrs', '' ) ); ?>
-			role="navigation">
+				role="navigation">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 nv-nav-wrap <?php echo esc_attr( $this->get_navbar_class() ); ?>">
@@ -117,7 +119,8 @@ class Header extends Base_View {
 		$tag   = 'li';
 		$class = 'menu-item-nav-cart';
 		if ( $responsive === true ) {
-			$tag    = 'span';
+			$tag = 'span';
+
 			$class .= ' responsive-nav-cart ';
 		}
 		$cart = '';
@@ -144,31 +147,39 @@ class Header extends Base_View {
 	/**
 	 * Add the last menu item.
 	 *
-	 * @param array  $items the nav items.
-	 * @param object $args menu properties.
+	 * @param string $items the nav menu markup.
+	 * @param object $args  menu properties.
 	 *
-	 * @return array
+	 * @return string
 	 */
 	public function add_last_menu_item( $items, $args ) {
 		if ( $args->theme_location !== 'primary' ) {
 			return $items;
 		}
 
-		$additional_item = $this->get_last_menu_item_setting();
-
-		if ( $additional_item === 'none' ) {
-			return $items;
-		}
-
-		if ( 'search' === $additional_item || 'search-cart' === $additional_item ) {
-			$items .= $this->get_nav_menu_search();
-		}
-
-		if ( 'cart' === $additional_item || 'search-cart' === $additional_item ) {
-			$items .= $this->get_nav_menu_cart();
-		}
+		$items .= $this->get_last_menu_items_markup( $items );
 
 		return $items;
+	}
+
+	/**
+	 * Add last menu items to fallback menu.
+	 *
+	 * @param string $menu the menu markup.
+	 * @param array  $args the menu args.
+	 *
+	 * @return string;
+	 */
+	public function add_fallback_last_menu_items( $menu, $args ) {
+		if ( $args['menu_id'] !== 'nv-primary-navigation' ) {
+			return $menu;
+		}
+
+		$items = $this->get_last_menu_items_markup( '' );
+
+		$menu = str_replace( '</ul>', $items . '</ul>', $menu );
+
+		return $menu;
 	}
 
 	/**
@@ -240,7 +251,7 @@ class Header extends Base_View {
 		?>
 		<div class="site-logo">
 			<a class="brand" href="<?php echo esc_url( home_url( '/' ) ); ?>"
-				title="<?php bloginfo( 'name' ); ?>">
+					title="<?php bloginfo( 'name' ); ?>">
 				<?php echo wp_kses_post( $this->get_logo() ); ?></a>
 		</div>
 		<?php
@@ -278,5 +289,30 @@ class Header extends Base_View {
 		}
 
 		return get_theme_mod( 'neve_last_menu_item', $default );
+	}
+
+	/**
+	 * Get the last menu items.
+	 *
+	 * @param string $items the menu markup.
+	 *
+	 * @return string
+	 */
+	private function get_last_menu_items_markup( $items = '' ) {
+		$additional_item = $this->get_last_menu_item_setting();
+
+		if ( $additional_item === 'none' ) {
+			return $items;
+		}
+
+		if ( 'search' === $additional_item || 'search-cart' === $additional_item ) {
+			$items .= $this->get_nav_menu_search();
+		}
+
+		if ( 'cart' === $additional_item || 'search-cart' === $additional_item ) {
+			$items .= $this->get_nav_menu_cart();
+		}
+
+		return $items;
 	}
 }
