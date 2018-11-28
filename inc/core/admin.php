@@ -81,6 +81,7 @@ class Admin {
 					'visualizer',
 					'wpforms-lite',
 					'translatepress-multilingual',
+					'otter-blocks',
 				),
 			),
 			'support'         => array(
