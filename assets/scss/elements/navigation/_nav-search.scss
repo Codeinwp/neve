@@ -68,8 +68,6 @@
   padding: $spacing-xs 0;
 }
 
-//.responsive-nav-search
-
 .menu-item-nav-search > a {
   display: block;
 }
@@ -143,6 +141,10 @@ a.button.close-responsive-search {
   }
 
   .menu-item-nav-search:not(.responsive-nav-search) {
+    display: block;
+  }
+
+  #nv-primary-navigation > li.menu-item-nav-search > a {
     display: block;
   }
 }

@@ -42,6 +42,9 @@
       @include soft-box-shadow('true');
     }
   }
+  #nv-primary-navigation > li.menu-item-nav-cart> a {
+    display: block;
+  }
   .menu-item-nav-cart:not(.responsive-nav-cart) {
     display: block;
   }
