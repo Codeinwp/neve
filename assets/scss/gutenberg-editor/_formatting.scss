@@ -4,7 +4,7 @@
   &:before,
   &:after {
     height: 3px;
-    width: 60px;
+    width: $spacing-lg;
     background-color: #c9c9c9;
     content: " ";
     display: block;
@@ -20,7 +20,7 @@
 
 //<editor-fold desc="Verse">
 .wp-block-verse {
-  font-family: 'Dancing Script', cursive;
+  font-style: italic;
   border: unset;
 }
 //</editor-fold>

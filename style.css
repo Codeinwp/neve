@@ -408,6 +408,23 @@ blockquote.wp-block-quote.is-style-large cite {
   width: 100%;
 }
 
+.wp-block-separator:not(.is-style-wide):not(.is-style-dots) {
+  border-bottom: 2px solid #8f98a1;
+  position: relative;
+  max-width: 95px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.wp-block-separator.is-style-wide {
+  border-color: #8e98a2;
+}
+
+.wp-block-verse {
+  font-style: italic;
+  border: unset;
+}
+
 #nv-top-bar-menu {
   display: flex;
   flex-wrap: wrap;
