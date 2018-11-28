@@ -157,7 +157,7 @@ class Header extends Base_View {
 			return $items;
 		}
 
-		$items .= $this->get_last_menu_items_markup( $items );
+		$items = $this->get_last_menu_items_markup( $items );
 
 		return $items;
 	}
