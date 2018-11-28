@@ -50,7 +50,7 @@ class Metabox_Settings {
 		$sidebar_width = 100 - absint( $meta_value );
 
 		$style = '@media(min-width: 960px) {
-			#content.neve-main > .container > .row > .col { max-width: ' . absint( $meta_value ) . '%; } 
+			#content.neve-main > .container > .row > .col, #content.neve-main > .container-fluid > .row > .col { max-width: ' . absint( $meta_value ) . '%; } 
 			.neve-main .nv-sidebar-wrap, .neve-main .nv-sidebar-wrap.shop-sidebar { max-width: ' . absint( $sidebar_width ) . '%; }
 		}';
 
