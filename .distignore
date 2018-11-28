@@ -17,7 +17,7 @@ dist
 artifact
 composer.json
 composer.lock
-key.enc
+themeisle.enc
 inc/admin/onboarding/assets/vue
 inc/admin/onboarding/node_modules
 inc/admin/onboarding/.eslintrc

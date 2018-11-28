@@ -13,6 +13,42 @@ Neve is a super fast, easily customizable, multi-purpose theme. Perfect for blog
 Neve is a super fast, easily customizable, multi-purpose theme. It’s perfect for blogs, small business, startups, agencies, firms, e-commerce shops (WooCommerce storefront) as well as personal portfolio sites and most types of projects. A fully AMP optimized and responsive theme, Neve will load in mere seconds and adapt perfectly on any viewing device. While it is lightweight and has a minimalist design, the theme is highly extendable, it has a highly SEO optimized code, resulting in top rankings in Google search results. Neve works perfectly with Gutenberg and the most popular page builders (Elementor, Brizy, Beaver Builder, Visual Composer, SiteOrigin, Divi). Neve is also WooCommerce ready, responsive, RTL & translation ready. Look no further. Neve is the perfect theme for you!
 
 == Changelog ==
+= 1.0.15 - 2018-11-23  = 
+
+* Fixed issue with thumbnail hiding on single post page
+
+
+= 1.0.14 - 2018-11-23  = 
+
+* Fixed container width in Gutenberg
+
+
+= 1.0.13 - 2018-11-23  = 
+
+* Fixed escaping issues
+* Changed Gutenberg font size controls
+
+
+= 1.0.12 - 2018-11-22  = 
+
+* Fixed content width and sidebar background on mobile
+
+
+= 1.0.11 - 2018-11-22  = 
+
+* Fixed issue with the content width option not updating correctly
+
+
+= 1.0.10 - 2018-11-22  = 
+
+* Gutenberg integration
+* New options for controling the content width and sidebar layout of pages from customizer and individual metabox
+* Disable compatibility with AMP version lower than 1.0.0 where paired mode is added
+* Improved Neve Options page layout
+* New Neve Lawyers demo
+* New Neve Doctors demo
+
+
 
 = 1.0.9 = 
 
@@ -152,3 +188,31 @@ All  images are licensed under CC0.
 * Neve Doctors: sunburn-2117350, CC0, https://pixabay.com/en/sunburn-skin-red-flushed-2117350/
 * Neve Doctors: teeth-1652976, CC0, https://pixabay.com/en/teeth-dentist-dental-mouth-tooth-1652976/
 * Neve Doctors: adult-1868750, CC0, https://pixabay.com/en/adult-bald-beard-corporate-1868750/
+* Neve Restaurant: restaurant-237060 (also used in screenshot), CC0, https://pixabay.com/en/restaurant-dinner-tables-yowani-237060/
+* Neve Restaurant: restaurant-691397, CC0, https://pixabay.com/en/restaurant-food-lunch-dinner-691397/
+* Neve Restaurant: breakfast-801827, CC0, https://pixabay.com/en/breakfast-buffet-food-restaurant-801827/
+* Neve Restaurant: cuisine-2248567, CC0, https://pixabay.com/en/cuisine-food-italian-antipasti-2248567/
+* Neve Restaurant: buffet-315691, CC0, https://pixabay.com/en/buffet-indian-food-spices-lunch-315691/
+* Neve Restaurant: restaurant-2602736, CC0, https://pixabay.com/en/restaurant-people-men-women-eating-2602736/
+* Neve Restaurant: restaurant-358238, CC0, https://pixabay.com/en/restaurant-glasses-drink-lichtspiel-358238/
+* Neve Restaurant: adult-2242162, CC0, https://pixabay.com/en/adult-beautiful-bride-card-2242162/
+* Neve Restaurant: restaurant-449952, CC0, https://pixabay.com/en/restaurant-wine-glasses-served-449952/
+* Neve Restaurant: food-263882, CC0, https://pixabay.com/en/food-soup-spinach-soup-bread-263881/
+* Neve Restaurant: tomatoes-1822185, CC0, https://pixabay.com/en/tomatoes-soup-vegetables-healthy-1822185/
+* Neve Restaurant: eat-2122072, CC0, https://pixabay.com/en/eat-onion-food-healthy-vegetables-2122072/
+* Neve Restaurant: cobb-salad-2736125, CC0, https://pixabay.com/en/cobb-salad-chicken-cobb-meal-2736125/
+* Neve Restaurant: waldorf-salad-3212344, CC0, https://pixabay.com/en/waldorf-salad-celery-apple-3212344/
+* Neve Restaurant: tomatoes-1603611, CC0, https://pixabay.com/en/tomatoes-tomato-quiche-red-yellow-1603611/
+* Neve Restaurant: chicken-3763827, CC0, https://pixabay.com/en/chicken-barbecue-grill-stuff-eat-3763827/
+* Neve Restaurant: spare-ribs-2225208, CC0, https://pixabay.com/en/spare-ribs-grill-bbq-sauce-2225208/
+* Neve Restaurant: fried-chicken-250863, CC0, https://pixabay.com/en/fried-chicken-chicken-fried-crunchy-250863/
+* Neve Restaurant: tuna-2418460, CC0, https://pixabay.com/en/tuna-grilled-bbq-food-healthy-2418460/
+* Neve Restaurant: grilled-3334579, CC0, https://pixabay.com/en/grilled-meat-grill-grilling-peace-3334579/
+* Neve Restaurant: thick-pig-roast-filet-izod-black-pepper-2336138, CC0, https://pixabay.com/en/thick-pig-roast-filet-izod-black-pepper%2C-2336138/
+* Neve Restaurant: cake-1850011, CC0, https://pixabay.com/en/cake-chocolate-chocolate-cake-1850011/
+* Neve Restaurant: cake-2459954, CC0, https://pixabay.com/en/cake-strawberries-2459954/
+* Neve Restaurant: sweet-1392724, CC0, https://pixabay.com/en/sweet-treat-hand-made-sweets-1392724/
+* Neve Restaurant: dessert-1373821, CC0, https://pixabay.com/en/dessert-cooking-sweet-dishes-sweets-1373821/
+* Neve Restaurant: tiramisu-2897900, CC0, https://pixabay.com/en/tiramisu-dessert-tiramisu-2897900/
+* Neve Restaurant: cream-puff-1694337, CC0, https://pixabay.com/en/cream-puff-pastries-bake-1694337/
+* Neve Restaurant: dinner-table-444434, CC0, https://pixabay.com/en/dinner-table-restaurant-dining-444434/
