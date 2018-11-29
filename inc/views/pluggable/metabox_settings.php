@@ -49,9 +49,19 @@ class Metabox_Settings {
 
 		$sidebar_width = 100 - absint( $meta_value );
 
+		// Add the `!important` if in customizer, so that the live refresh doesn't affect this.
+		$important = '';
+		if ( is_customize_preview() ) {
+			$important = '!important';
+		}
+
 		$style = '@media(min-width: 960px) {
-			#content.neve-main > .container > .row > .col, #content.neve-main > .container-fluid > .row > .col { max-width: ' . absint( $meta_value ) . '%; } 
-			.neve-main .nv-sidebar-wrap, .neve-main .nv-sidebar-wrap.shop-sidebar { max-width: ' . absint( $sidebar_width ) . '%; }
+			#content.neve-main > .container > .row > .col, 
+			#content.neve-main > .container-fluid > .row > .col { max-width: ' . absint( $meta_value ) . '%' . esc_attr( $important ) . '; } 
+			#content.neve-main > .container > .row > .nv-sidebar-wrap, 
+			#content.neve-main > .container > .row > .nv-sidebar-wrap.shop-sidebar,
+			#content.neve-main > .container-fluid > .row > .nv-sidebar-wrap, 
+			#content.neve-main > .container-fluid > .row > .nv-sidebar-wrap.shop-sidebar { max-width: ' . absint( $sidebar_width ) . '%' . esc_attr( $important ) . '; }
 		}';
 
 		wp_add_inline_style( 'neve-style', $style );
@@ -153,13 +163,19 @@ class Metabox_Settings {
 			return $class;
 		}
 
-		if ( $meta_value === 'contained' ) {
-			return 'container';
-		} elseif ( $meta_value === 'full-width' ) {
-			return 'container-fluid';
-		} else {
-			return $class;
+		// Add `set-in-metabox` so that we don't affect this in customizer with live refresh.
+		$customizer_context = '';
+		if ( is_customize_preview() ) {
+			$customizer_context = ' set-in-metabox ';
 		}
+
+		if ( $meta_value === 'contained' ) {
+			return $customizer_context . ' container';
+		} elseif ( $meta_value === 'full-width' ) {
+			return $customizer_context . ' container-fluid';
+		}
+
+		return $class;
 	}
 
 	/**
