@@ -1,55 +1,51 @@
-=== Neve ===
-Contributors: themeisle
-Tags: blog, custom-logo, e-commerce, rtl-language-support, post-formats, grid-layout, one-column, two-columns, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready
-Requires at least: 4.0
-Tested up to: 4.9.8
-Stable tag: 1.0.10
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+# Neve #
+**Contributors:** [themeisle](https://profiles.wordpress.org/themeisle)  
+**Tags:** blog, custom-logo, e-commerce, rtl-language-support, post-formats, grid-layout, one-column, two-columns, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready  
+**Requires at least:** 4.0  
+**Tested up to:** 4.9.8  
+**Stable tag:** 1.0.10  
+**License:** GPLv2 or later  
+**License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
 Neve is a super fast, easily customizable, multi-purpose theme. Perfect for blogs, small business, startups, agencies, firms & e-commerce shops.
 
-== Description ==
+## Description ##
 Neve is a super fast, easily customizable, multi-purpose theme. It’s perfect for blogs, small business, startups, agencies, firms, e-commerce shops (WooCommerce storefront) as well as personal portfolio sites and most types of projects. A fully AMP optimized and responsive theme, Neve will load in mere seconds and adapt perfectly on any viewing device. While it is lightweight and has a minimalist design, the theme is highly extendable, it has a highly SEO optimized code, resulting in top rankings in Google search results. Neve works perfectly with Gutenberg and the most popular page builders (Elementor, Brizy, Beaver Builder, Visual Composer, SiteOrigin, Divi). Neve is also WooCommerce ready, responsive, RTL & translation ready. Look no further. Neve is the perfect theme for you!
 
-== Copyright ==
-Neve WordPress theme, Copyright 2018 Themeisle
-Neve is distributed under the terms of the GNU GPLv2 or later
-
-== Changelog ==
-= 1.0.16 - 2018-11-27  = 
+## Changelog ##
+### 1.0.16 - 2018-11-27  ###
 
 * New Neve Restaurant demo
 * Fixed default value for the footer copyright
 
 
-= 1.0.15 - 2018-11-23  = 
+### 1.0.15 - 2018-11-23  ###
 
 * Fixed issue with thumbnail hiding on single post page
 
 
-= 1.0.14 - 2018-11-23  = 
+### 1.0.14 - 2018-11-23  ###
 
 * Fixed container width in Gutenberg
 
 
-= 1.0.13 - 2018-11-23  = 
+### 1.0.13 - 2018-11-23  ###
 
 * Fixed escaping issues
 * Changed Gutenberg font size controls
 
 
-= 1.0.12 - 2018-11-22  = 
+### 1.0.12 - 2018-11-22  ###
 
 * Fixed content width and sidebar background on mobile
 
 
-= 1.0.11 - 2018-11-22  = 
+### 1.0.11 - 2018-11-22  ###
 
 * Fixed issue with the content width option not updating correctly
 
 
-= 1.0.10 - 2018-11-22  = 
+### 1.0.10 - 2018-11-22  ###
 
 * Gutenberg integration
 * New options for controling the content width and sidebar layout of pages from customizer and individual metabox
@@ -60,7 +56,7 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 
 
-= 1.0.9 = 
+### 1.0.9 ###
 
 * AMP integration
 * Accessibility ready
@@ -75,13 +71,13 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 * Other small design improvements
 * Added fallback menu for the primary menu
 
-= 1.0.8 =
+### 1.0.8 ###
 * Google Search Console compatibility
 * Fixed theme check issues
 * Changed the onboarding mechanism
 * Fixed escaping issues
 
-= 1.0.7 =
+### 1.0.7 ###
 * Accessibility ready
 * Refactored the About Neve page
 * Design improvements
@@ -91,25 +87,25 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 * Compatibility with Gutenberg
 * Updated the readme file
 
-= 1.0.3 =
+### 1.0.3 ###
 * Release Date - 2018-09-24*
 * Add proper Elementor Header and Footer support
 * Fixed warning caused by forgotten "var_dump" in page / post metabox handler
  
-= v1.0.2 =
+### v1.0.2 ###
 * Release Date - 2018-09-07*
 * Demo data for Neve 2018 template
  
-= 1.0.1 =
+### 1.0.1 ###
 * Release Date - 2018-09-07*
 * Updated description and screenshot
  
-= 1.0.0 =
+### 1.0.0 ###
 * Release Date - 2018-09-06*
 * Lowercase file names.
 
 
-== Resources ==
+## Resources ##
 * Neve Icons based on Font Awesome Icons licensed under CC BY 4.0 License (https://creativecommons.org/licenses/by/4.0/).
 
 Images used in the screenshot and in the demos:
