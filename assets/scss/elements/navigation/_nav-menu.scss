@@ -91,10 +91,6 @@
   height: 30px;
   padding: 5px 10px;
   transition: $transition_med;
-  .dropdown-open > a > &,
-  &.caret-dropdown-open {
-    background-color: $gray-color;
-  }
 }
 
 @mixin nav-menu--laptop() {

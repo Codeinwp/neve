@@ -638,9 +638,6 @@ blockquote.wp-block-quote.is-style-large cite {
   padding: 5px 10px;
   transition: all 0.3s ease;
 }
-.dropdown-open > a > .caret-wrap, .caret-wrap.caret-dropdown-open {
-  background-color: #777777;
-}
 
 #nv-primary-navigation i {
   font-size: inherit;
