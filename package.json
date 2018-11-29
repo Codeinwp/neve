@@ -41,12 +41,23 @@
     "pre-commit": "^1.2.2"
   },
   "scripts": {
-    "addNewStyles": "git add *.css assets/**/*.css",
-    "preCommit": "phpcbf && phpcs && grunt jshint && grunt buildScripts && npm run addNewStyles"
+    "phpcbf": "phpcbf || true ",
+    "phpcs": "phpcs",
+    "jshint": "grunt jshint",
+    "buildCssJs": "grunt buildScripts",
+    "addNewStyles": "git add *.css assets/**/*.css"
+  },
+  "pre-commit": {
+    "run": [
+      "phpcbf",
+      "phpcs",
+      "jshint",
+      "buildCssJs",
+      "addNewStyles"
+    ]
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run preCommit",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   }
