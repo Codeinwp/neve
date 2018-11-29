@@ -166,8 +166,9 @@
         border-top: none;
         min-width: 150px;
         a {
+          display: flex;
+          align-items: center;
           white-space: nowrap;
-          display: block;
           width: 100%;
           margin-right: $spacing-xs;
           padding: 7px 14px;
@@ -207,11 +208,6 @@
     }
   }
 
-  .sub-menu {
-    .caret-wrap {
-      padding-right: 25px;
-    }
-  }
 
   .menu-item-has-children:last-child .caret-wrap {
     right: -10px;
