@@ -56,8 +56,12 @@ class Metabox_Settings {
 		}
 
 		$style = '@media(min-width: 960px) {
-			#content.neve-main > .container > .row > .col, #content.neve-main > .container-fluid > .row > .col { max-width: ' . absint( $meta_value ) . '%' . esc_attr( $important ) . '; } 
-			.neve-main .nv-sidebar-wrap, .neve-main .nv-sidebar-wrap.shop-sidebar { max-width: ' . absint( $sidebar_width ) . '%' . esc_attr( $important ) . '; }
+			#content.neve-main > .container > .row > .col, 
+			#content.neve-main > .container-fluid > .row > .col { max-width: ' . absint( $meta_value ) . '%' . esc_attr( $important ) . '; } 
+			#content.neve-main > .container > .row > .nv-sidebar-wrap, 
+			#content.neve-main > .container > .row > .nv-sidebar-wrap.shop-sidebar,
+			#content.neve-main > .container-fluid > .row > .nv-sidebar-wrap, 
+			#content.neve-main > .container-fluid > .row > .nv-sidebar-wrap.shop-sidebar { max-width: ' . absint( $sidebar_width ) . '%' . esc_attr( $important ) . '; }
 		}';
 
 		wp_add_inline_style( 'neve-style', $style );
