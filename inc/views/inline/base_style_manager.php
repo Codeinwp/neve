@@ -195,9 +195,6 @@ abstract class Base_Style_Manager extends Base_View {
 		$inline_style = $this->get_style();
 		$css_contents = $wp_filesystem->get_contents( $this->style_path . $this->css_file_name );
 
-		echo '<pre>' . ( $inline_style ) . '</pre>';
-		echo '<pre>' . ( $css_contents ) . '</pre>';
-
 		if ( $css_contents !== $inline_style ) {
 			$this->wipe_customizer_css_file();
 
