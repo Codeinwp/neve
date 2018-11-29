@@ -137,22 +137,74 @@ abstract class Base_Style_Manager extends Base_View {
 	 * Maybe enqueue the generated style if it exists.
 	 */
 	public function maybe_enqueue() {
-		$full_css_path = $this->style_path . $this->css_file_name;
+		$this->run_inline_styles();
+		$this->wrap_styles();
 
-		if (
-			file_exists( $full_css_path ) &&
-			is_readable( $full_css_path ) &&
-			! is_customize_preview() &&
-			NEVE_DEBUG === false
-		) {
+		if ( $this->should_add_style() ) {
 			wp_enqueue_style( $this->style_handle, $this->style_url . $this->css_file_name, array( $this->style_hook_handle ), $this->get_style_version() );
 
 			return;
 		}
-
-		$this->run_inline_styles();
-		$this->wrap_styles();
 		wp_add_inline_style( $this->style_hook_handle, $this->get_style() );
+	}
+
+	/**
+	 * Check if file should be enqueued or inline style added.
+	 *
+	 * @return bool
+	 */
+	private function should_add_style() {
+		$path = $this->style_path . $this->css_file_name;
+
+		// If file doesn't exist bail.
+		if ( ! file_exists( $path ) ) {
+			return false;
+		}
+		// If file is not readable bail.
+		if ( ! is_readable( $path ) ) {
+			return false;
+		}
+		// If is customizer bail.
+		if ( is_customize_preview() ) {
+			return false;
+		}
+		// If debug mode bail.
+		if ( NEVE_DEBUG === true ) {
+			return false;
+		}
+		// If the file content is different from the generated style bail.
+		if ( $this->is_css_inline_diff() ) {
+			return false;
+		}
+
+		return true;
+	}
+
+	/**
+	 * Check if there's a difference between the inline and generated style.
+	 *
+	 * @return bool
+	 */
+	private function is_css_inline_diff() {
+		require_once( ABSPATH . '/wp-admin/includes/file.php' );
+
+		global $wp_filesystem;
+
+		WP_Filesystem();
+
+		$inline_style = $this->get_style();
+		$css_contents = $wp_filesystem->get_contents( $this->style_path . $this->css_file_name );
+
+		echo '<pre>' . ( $inline_style ) . '</pre>';
+		echo '<pre>' . ( $css_contents ) . '</pre>';
+
+		if ( $css_contents !== $inline_style ) {
+			$this->wipe_customizer_css_file();
+
+			return true;
+		}
+
+		return false;
 	}
 
 	/**
@@ -238,7 +290,10 @@ abstract class Base_Style_Manager extends Base_View {
 	 * @return string
 	 */
 	private function get_style() {
-		return ( $this->style . $this->tablet_style . $this->desktop_style );
+		$style = $this->style . $this->tablet_style . $this->desktop_style;
+		$style = preg_replace( '/\s+/', '', $style );
+
+		return $style;
 	}
 
 	/**
