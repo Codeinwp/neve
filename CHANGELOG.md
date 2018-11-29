@@ -1,4 +1,9 @@
 
+ ### v1.0.16 - 2018-11-27 
+ **Changes:** 
+ * New Neve Restaurant demo
+* Fixed default value for the footer copyright
+ 
  ### v1.0.15 - 2018-11-23 
  **Changes:** 
  * Fixed issue with thumbnail hiding on single post page
