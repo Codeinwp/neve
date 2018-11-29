@@ -18,6 +18,9 @@
   //<editor-fold desc="Title">
   .editor-post-title {
     padding: 0;
+    .wp-block {
+      max-width: 100%;
+    }
   }
   .editor-post-title__input {
     padding-left: 0;
@@ -31,24 +34,27 @@
     padding: 0 15px;
     width: 100%;
   }
-  &.has-sidebar-full-width .wp-block:not([data-align=full]):not([data-align=wide]) {
+  &.has-sidebar-full-width .neve-blocks-wrap > .editor-block-list__layout > .wp-block:not([data-align=full]):not([data-align=wide]),
+  &.has-sidebar-full-width .neve-blocks-wrap .wp-block.editor-post-title__block > div {
     padding: 0 30px;
   }
-  &.has-sidebar-full-width .wp-block:not([data-align=full]):not([data-align=wide]) > * {
+  &.has-sidebar-full-width .neve-blocks-wrap > .editor-block-list__layout > .wp-block:not([data-align=full]):not([data-align=wide]) > *,
+  &.has-sidebar-full-width .neve-blocks-wrap .wp-block.editor-post-title__block > div {
     margin-left: auto;
     margin-right: auto;
   }
-  &.container.has-sidebar-full-width .wp-block:not([data-align=full]):not([data-align=wide]) > * {
+  &.container.has-sidebar-full-width .neve-blocks-wrap > .editor-block-list__layout > .wp-block:not([data-align=full]):not([data-align=wide]) > *,
+  &.container.has-sidebar-full-width .neve-blocks-wrap .wp-block.editor-post-title__block > div {
     max-width: 70%;
   }
-  .wp-block:not([data-align=full]):not([data-align=wide]) {
+  .neve-blocks-wrap > .editor-block-list__layout > .wp-block:not([data-align=full]):not([data-align=wide]) {
     max-width: 100%;
   }
 
   .editor-writing-flow {
     display: block;
   }
-  .editor-block-list__layout .editor-block-list__block {
+  .neve-blocks-wrap > .editor-block-list__layout .editor-block-list__block {
     padding-right: 28px;
     padding-left: 28px;
   }
@@ -62,7 +68,7 @@
   border-bottom: $muted-border;
 }
 
-$wp-block-selector: '.neve-gtb.container.has-sidebar-full-width .wp-block:not([data-align=full]):not([data-align=wide]),.neve-gtb.container.has-sidebar-left .neve-content-wrap, .neve-gtb.container.has-sidebar-right .neve-content-wrap';
+$wp-block-selector: '.neve-gtb.container.has-sidebar-full-width .neve-blocks-wrap > .editor-block-list__layout > .wp-block:not([data-align=full]):not([data-align=wide]), .neve-gtb.container.has-sidebar-full-width .neve-blocks-wrap .wp-block.editor-post-title__block, .neve-gtb.container.has-sidebar-left .neve-content-wrap, .neve-gtb.container.has-sidebar-right .neve-content-wrap';
 
 #{$wp-block-selector} {
   max-width: 100%;

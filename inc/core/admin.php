@@ -81,6 +81,7 @@ class Admin {
 					'visualizer',
 					'wpforms-lite',
 					'translatepress-multilingual',
+					'otter-blocks',
 				),
 			),
 			'support'         => array(
@@ -302,11 +303,11 @@ class Admin {
 		);
 
 		$button = sprintf(
-			/* Translators: 1 - onboarding url, 2 - button text */
-			'<a href="%1$s" class="button button-primary" style="text-decoration: none;">%2$s %3$s</a>',
+			/* translators: 1 - onboarding url, 2 - button text */
+			'<a href="%1$s" class="button button-primary" style="text-decoration: none;">%2$s</a>',
 			esc_url( admin_url( 'themes.php?page=' . $slug . '-welcome&onboarding=yes#sites_library' ) ),
-			esc_html__( 'Get started with', 'neve' ),
-			$name
+			/* translators: 1 - theme name (Neve) */
+			sprintf( esc_html__( 'Get started with %s', 'neve' ), $name )
 		);
 
 		$style = '

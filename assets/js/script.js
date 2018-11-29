@@ -64,7 +64,7 @@
         handleMobileDropdowns: function() {
             var self = this;
             $(".caret-wrap").on("click", function() {
-                $(this).parent().toggleClass("dropdown-open");
+                $(this).closest("li").toggleClass("dropdown-open");
                 if (!utils.isMobile()) {
                     self.createNavOverlay();
                 }
@@ -191,14 +191,16 @@
             }
             var fullAlignments = $(".alignfull");
             var wideAlignments = $(".alignwide");
-            if (!fullAlignments.length && !wideAlignments.length) {
-                return false;
-            }
-            var windowWidth = $(window).innerWidth();
-            var containerWidth = $(".neve-main > .container .col").innerWidth();
+            if (!fullAlignments.length && !wideAlignments.length) return false;
+            var contentWidth = $(".neve-main > .container > .row > .col");
+            if (!contentWidth.length) contentWidth = $(".neve-main > .container-fluid > .row > .col");
+            if (!contentWidth.length) return;
+            var containerWidth = $(contentWidth).innerWidth() - 30;
+            var windowWidth = $("body").innerWidth();
+            if (containerWidth === windowWidth) return false;
             var marginFullNeeded = 0;
             var marginWideNeeded = 0;
-            if (utils.isMobile() || !jQuery(".nv-sidebar-wrap").length) {
+            if (utils.isMobile() || !$(".nv-sidebar-wrap").length) {
                 marginFullNeeded = (windowWidth - containerWidth) / 2 + 15;
                 marginWideNeeded = (windowWidth - containerWidth) / 5;
             }
@@ -246,11 +248,11 @@ jQuery(window).load(function() {
     jQuery.neveBlog.init();
 });
 
-var resizeTimeout;
+var neveResizeTimeout;
 
 jQuery(window).on("resize", function() {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(function() {
+    clearTimeout(neveResizeTimeout);
+    neveResizeTimeout = setTimeout(function() {
         jQuery.neveNavigation.repositionDropdowns();
         jQuery.neveBlog.handleGutenbergAlignment();
     }, 500);
