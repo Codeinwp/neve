@@ -100,7 +100,7 @@ class Front_End {
 					'url'   => 'https://demo.themeisle.com/neve-restaurant/',
 					'title' => 'Neve Restaurant',
 				),
-				'neve-charity'    => array(
+				'neve-charity'       => array(
 					'url'   => 'https://demo.themeisle.com/neve-charity/',
 					'title' => 'Neve Charity',
 				),
