@@ -100,6 +100,10 @@ class Front_End {
 					'url'   => 'https://demo.themeisle.com/neve-restaurant/',
 					'title' => 'Neve Restaurant',
 				),
+				'neve-charity'    => array(
+					'url'   => 'https://demo.themeisle.com/neve-charity/',
+					'title' => 'Neve Charity',
+				),
 			),
 			'can_migrate' => array(
 				'zerif-pro'  => array(
