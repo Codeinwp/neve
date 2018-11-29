@@ -154,6 +154,11 @@ abstract class Base_Style_Manager extends Base_View {
 	 * @return bool
 	 */
 	private function should_add_style() {
+		// If debug mode bail.
+		if ( NEVE_DEBUG === true ) {
+			return false;
+		}
+
 		$path = $this->style_path . $this->css_file_name;
 
 		// If file doesn't exist bail.
@@ -166,10 +171,6 @@ abstract class Base_Style_Manager extends Base_View {
 		}
 		// If is customizer bail.
 		if ( is_customize_preview() ) {
-			return false;
-		}
-		// If debug mode bail.
-		if ( NEVE_DEBUG === true ) {
 			return false;
 		}
 		// If the file content is different from the generated style bail.
