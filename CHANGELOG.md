@@ -1,4 +1,13 @@
 
+ ### v1.0.18 - 2018-11-29 
+ **Changes:** 
+ * Fixed issue with Gutenberg columns width
+* Fixed issues with the content width option
+* Refactor the menu class
+* Updated theme copyright
+* Recommend Otter Blocks plugin
+* Added Last menu items options to the fallback primary menu
+ 
  ### v1.0.16 - 2018-11-27 
  **Changes:** 
  * New Neve Restaurant demo
