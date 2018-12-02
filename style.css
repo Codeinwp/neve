@@ -805,7 +805,7 @@ a.button.close-responsive-search:hover {
   height: 100vh;
 }
 
-.menu-item-nav-search:not(.responsive-nav-search) {
+#nv-primary-navigation .menu-item-nav-search:not(.responsive-nav-search) {
   display: none;
 }
 
@@ -2163,7 +2163,7 @@ hr {
     display: none;
   }
 
-  .menu-item-nav-search:not(.responsive-nav-search) {
+  #nv-primary-navigation .menu-item-nav-search:not(.responsive-nav-search) {
     display: block;
   }
 
