@@ -41,7 +41,6 @@ class Loader {
 		if ( ! isset( $wp_customize ) ) {
 			return;
 		}
-		$this->maybe_load_addons();
 		$this->define_modules();
 		$this->load_modules();
 	}
@@ -100,19 +99,6 @@ class Loader {
 			NEVE_VERSION,
 			true
 		);
-	}
-
-	/**
-	 * Load addons if needed.
-	 *
-	 * @return void
-	 */
-	private function maybe_load_addons() {
-		if ( ! class_exists( '\Neve\Addons\Customizer\Main' ) ) {
-			return;
-		}
-		$addon_manager = new \Neve\Addons\Customizer\Main();
-		add_filter( 'neve_filter_customizer_modules', array( $addon_manager, 'filter_modules' ) );
 	}
 
 	/**
