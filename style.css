@@ -5,7 +5,7 @@ Theme URI:      https://themeisle.com/themes/neve/
 Author:         ThemeIsle
 Author URI:     https://themeisle.com
 Description:    Neve is a super fast, easily customizable, multi-purpose theme. It’s perfect for blogs, small business, startups, agencies, firms, e-commerce shops (WooCommerce storefront) as well as personal portfolio sites and most types of projects. A fully AMP optimized and responsive theme, Neve will load in mere seconds and adapt perfectly on any viewing device. While it is lightweight and has a minimalist design, the theme is highly extendable, it has a highly SEO optimized code, resulting in top rankings in Google search results. Neve works perfectly with Gutenberg and the most popular page builders (Elementor, Brizy, Beaver Builder, Visual Composer, SiteOrigin, Divi). Neve is also WooCommerce ready, responsive, RTL & translation ready. Look no further. Neve is the perfect theme for you!
-Version:        1.0.18
+Version:        1.0.19
 License:        GNU General Public License v2 or later
 License URI:    http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain:    neve
@@ -622,7 +622,6 @@ blockquote.wp-block-quote.is-style-large cite {
   transition: all 0.3s ease;
 }
 .dropdown-open > a > .caret-wrap > .caret, .caret-dropdown-open.caret-wrap > .caret {
-  color: #fff;
   transform: rotate(-45deg);
 }
 
@@ -805,7 +804,7 @@ a.button.close-responsive-search:hover {
   height: 100vh;
 }
 
-.menu-item-nav-search:not(.responsive-nav-search) {
+#nv-primary-navigation .menu-item-nav-search:not(.responsive-nav-search) {
   display: none;
 }
 
@@ -2163,7 +2162,7 @@ hr {
     display: none;
   }
 
-  .menu-item-nav-search:not(.responsive-nav-search) {
+  #nv-primary-navigation .menu-item-nav-search:not(.responsive-nav-search) {
     display: block;
   }
 

@@ -31,6 +31,7 @@ class Metabox_Settings {
 	 */
 	public function content_width() {
 		$post_id = $this->get_post_id();
+
 		if ( $post_id === false ) {
 			return;
 		}
@@ -76,7 +77,8 @@ class Metabox_Settings {
 	 * @return bool
 	 */
 	public function filter_components_toggle( $status, $context ) {
-		if ( ! is_single() && ! is_page() ) {
+
+		if ( ! is_single() && ! is_page() && ! $this->is_blog_static() ) {
 			return $status;
 		}
 
@@ -119,7 +121,11 @@ class Metabox_Settings {
 	 * @return mixed
 	 */
 	public function filter_sidebar_position( $position ) {
-		if ( ! is_single() && ! is_page() && ( class_exists( 'WooCommerce' ) && ! is_shop() ) ) {
+		if (
+			! is_single()
+			&& ! is_page()
+			&& ( class_exists( 'WooCommerce' ) && ! is_shop() )
+			&& ! $this->is_blog_static() ) {
 			return $position;
 		}
 
@@ -147,7 +153,7 @@ class Metabox_Settings {
 	public function filter_container_class( $class ) {
 
 		// Don't filter on blog.
-		if ( ! is_single() && ! is_page() ) {
+		if ( ! is_single() && ! is_page() && ! $this->is_blog_static() ) {
 			return $class;
 		}
 
@@ -184,6 +190,10 @@ class Metabox_Settings {
 	 * @return bool|string
 	 */
 	private function get_post_id() {
+		if ( $this->is_blog_static() ) {
+			return get_option( 'page_for_posts' );
+		}
+
 		if ( is_home() ) {
 			return false;
 		}
@@ -200,5 +210,14 @@ class Metabox_Settings {
 		}
 
 		return $post_id;
+	}
+
+	/**
+	 * Check if the blog is set to a static page.
+	 *
+	 * @return bool
+	 */
+	private function is_blog_static() {
+		return ( get_option( 'show_on_front' ) === 'page' && is_home() );
 	}
 }
