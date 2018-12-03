@@ -104,8 +104,8 @@ abstract class Base_Style_Manager extends Base_View {
 	public function __construct() {
 		$wp_upload_dir = wp_upload_dir( null, false );
 
-		$this->style_path = $wp_upload_dir['basedir'] . '/neve-theme/';
-		$this->style_url  = $wp_upload_dir['baseurl'] . '/neve-theme/';
+		$this->style_path    = $wp_upload_dir['basedir'] . '/neve-theme/';
+		$this->style_url     = $wp_upload_dir['baseurl'] . '/neve-theme/';
 	}
 
 	/**
@@ -247,12 +247,13 @@ abstract class Base_Style_Manager extends Base_View {
 	 * Instantiate classes and get the style.
 	 */
 	private function run_inline_styles() {
+		$this->style_classes = apply_filters( 'neve_filter_inline_style_classes', $this->style_classes, $this->style_handle );
+
 		foreach ( $this->style_classes as $style_class ) {
-			$class_name = '\\Neve\\Views\\Inline\\' . $style_class;
-			if ( ! class_exists( $class_name ) ) {
+			if ( ! class_exists( $style_class ) ) {
 				continue;
 			}
-			$class = new $class_name();
+			$class = new $style_class();
 
 			$this->add_style( $class );
 		}
