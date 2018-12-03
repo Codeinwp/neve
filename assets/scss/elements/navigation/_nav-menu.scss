@@ -75,7 +75,6 @@
   transition: $transition_med;
   .dropdown-open > a > .caret-wrap > &,
   .caret-dropdown-open.caret-wrap > & {
-    color: #fff;
     transform: rotate(-45deg);
   }
 }

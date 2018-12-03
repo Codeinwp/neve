@@ -30,7 +30,6 @@ class Core_Loader {
 	 * @access public
 	 */
 	public function __construct() {
-		$this->maybe_load_addons();
 		$this->define_hooks();
 		$this->define_modules();
 		$this->load_modules();
@@ -85,19 +84,6 @@ class Core_Loader {
 	private function load_modules() {
 		$factory = new Factory( $this->features );
 		$factory->load_modules();
-	}
-
-	/**
-	 * Check if add-ons are available and load them if necessary.
-	 *
-	 * @access private
-	 */
-	private function maybe_load_addons() {
-		if ( ! class_exists( 'Neve\Addons\Main' ) ) {
-			return;
-		}
-		$addon_manager = new \Neve\Addons\Main();
-		add_filter( 'neve_filter_main_modules', array( $addon_manager, 'filter_modules' ) );
 	}
 
 	/**

@@ -114,6 +114,9 @@ class Header extends Base_View {
 		if ( ! class_exists( 'WooCommerce' ) ) {
 			return '';
 		}
+		if ( is_cart() ) {
+			return '';
+		}
 		$tag   = 'li';
 		$class = 'menu-item-nav-cart';
 		if ( $responsive === true ) {
@@ -128,7 +131,7 @@ class Header extends Base_View {
 		$cart .= '<span class="screen-reader-text">' . __( 'Cart', 'neve' ) . '</span>';
 		$cart .= '<span class="cart-count">' . WC()->cart->get_cart_contents_count() . '</span>';
 		$cart .= '</a>';
-		if ( ! is_cart() && $responsive === false ) {
+		if ( $responsive === false ) {
 			ob_start();
 			echo '<div class="nv-nav-cart">';
 			the_widget( 'WC_Widget_Cart', 'title=' );

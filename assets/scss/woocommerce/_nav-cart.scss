@@ -26,7 +26,7 @@
   }
 }
 
-.menu-item-nav-cart:not(.responsive-nav-cart) {
+#nv-primary-navigation .menu-item-nav-cart:not(.responsive-nav-cart) {
   display: none;
 }
 
@@ -45,7 +45,7 @@
   #nv-primary-navigation > li.menu-item-nav-cart> a {
     display: block;
   }
-  .menu-item-nav-cart:not(.responsive-nav-cart) {
+  #nv-primary-navigation .menu-item-nav-cart:not(.responsive-nav-cart) {
     display: block;
   }
   .menu-item-nav-cart:hover .nv-nav-cart,
