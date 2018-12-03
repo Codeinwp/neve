@@ -31,6 +31,10 @@ class Metabox_Settings {
 	 */
 	public function content_width() {
 		$post_id = $this->get_post_id();
+		if ( $this->is_blog_static() ) {
+			$post_id = get_option( 'page_for_posts' );
+		}
+
 		if ( $post_id === false ) {
 			return;
 		}
