@@ -17,6 +17,13 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
+### 1.0.19 - 2018-12-03  ###
+
+* Hide menu cart icon on the Cart page
+* Improved code usability
+* Fixed issues with the metabox on the Blog page not working
+
+
 ### 1.0.18 - 2018-11-29  ###
 
 * Fixed issue with Gutenberg columns width

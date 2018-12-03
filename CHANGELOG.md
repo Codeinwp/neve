@@ -1,4 +1,10 @@
 
+ ### v1.0.19 - 2018-12-03 
+ **Changes:** 
+ * Hide menu cart icon on the Cart page
+* Improved code usability
+* Fixed issues with the metabox on the Blog page not working
+ 
  ### v1.0.18 - 2018-11-29 
  **Changes:** 
  * Fixed issue with Gutenberg columns width
