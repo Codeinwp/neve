@@ -70,6 +70,9 @@ blockquote.wp-block-quote.is-style-large {
 
 //<editor-fold desc="Verse">
 .wp-block-verse {
+  background-color: inherit;
+  font-family: inherit;
+  font-size: inherit;
   font-style: italic;
   border: unset;
 }

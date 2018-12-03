@@ -1,26 +1,33 @@
-//<editor-fold desc="Pullquote">
-.wp-block-pullquote {
-  border: unset;
-  &:before,
-  &:after {
-    height: 3px;
-    width: $spacing-lg;
-    background-color: #c9c9c9;
-    content: " ";
-    display: block;
-  }
-  &:before {
-    margin: 0 auto 40px;
-  }
-  &:after {
-    margin: 40px auto 0;
-  }
-}
-//</editor-fold>
+.editor-styles-wrapper {
+  //<editor-fold desc="Pullquote">
+  .wp-block-pullquote {
+    border: unset;
 
-//<editor-fold desc="Verse">
-.wp-block-verse {
-  font-style: italic;
-  border: unset;
+    &:before,
+    &:after {
+      height: 3px;
+      width: $spacing-lg;
+      background-color: #c9c9c9;
+      content: " ";
+      display: block;
+    }
+
+    &:before {
+      margin: 0 auto 40px;
+    }
+
+    &:after {
+      margin: 40px auto 0;
+    }
+  }
+
+  //</editor-fold>
+
+  //<editor-fold desc="Verse">
+  .wp-block-verse {
+    font-style: italic;
+    border: unset;
+  }
+
+  //</editor-fold>
 }
-//</editor-fold>
