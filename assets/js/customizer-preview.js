@@ -255,6 +255,7 @@ jQuery.neveTypographyPreview.init();
         containersLivePreview: function() {
             "use strict";
             $.each(this.containersLayoutMap, function(controlId, cssSelector) {
+                cssSelector += ":not(.set-in-metabox)";
                 wp.customize(controlId, function(value) {
                     value.bind(function(newval) {
                         if (newval === "contained") {
