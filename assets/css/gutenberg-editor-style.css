@@ -155,6 +155,9 @@
   font-style: italic;
   border: unset;
 }
+.editor-styles-wrapper .wp-block-separator {
+  padding: 5px;
+}
 
 .editor-styles-wrapper.neve-has-meta .editor-post-title__block > div:first-child:after {
   content: ' ';
