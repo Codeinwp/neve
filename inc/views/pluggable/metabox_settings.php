@@ -76,11 +76,16 @@ class Metabox_Settings {
 	 * @return bool
 	 */
 	public function filter_components_toggle( $status, $context ) {
-		if ( ! is_single() && ! is_page() ) {
+
+		if ( ! is_single() && ! is_page() && ! $this->is_blog_static() ) {
 			return $status;
 		}
 
 		$post_id = $this->get_post_id();
+
+		if ( $this->is_blog_static() ) {
+			$post_id = get_option( 'page_for_posts' );
+		}
 
 		if ( $post_id === false ) {
 			return $status;
@@ -200,5 +205,14 @@ class Metabox_Settings {
 		}
 
 		return $post_id;
+	}
+
+	/**
+	 * Check if the blog is set to a static page.
+	 *
+	 * @return bool
+	 */
+	private function is_blog_static() {
+		return ( get_option( 'show_on_front' ) === 'page' && is_home() );
 	}
 }
