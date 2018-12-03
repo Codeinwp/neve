@@ -622,7 +622,6 @@ blockquote.wp-block-quote.is-style-large cite {
   transition: all 0.3s ease;
 }
 .dropdown-open > a > .caret-wrap > .caret, .caret-dropdown-open.caret-wrap > .caret {
-  color: #fff;
   transform: rotate(45deg);
 }
 
