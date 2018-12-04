@@ -25,15 +25,24 @@ class Factory {
 	private $modules;
 
 	/**
+	 * The modules namespace.
+	 *
+	 * @var string
+	 */
+	private $namespace;
+
+	/**
 	 * Factory constructor.
 	 *
-	 * @param array $modules the modules that will be loaded.
+	 * @param array  $modules   the modules that will be loaded.
+	 * @param string $namespace the modules namespace.
 	 */
-	public function __construct( $modules ) {
+	public function __construct( $modules, $namespace = '\\Neve\\' ) {
 		if ( ! is_array( $modules ) || empty( $modules ) ) {
 			return;
 		}
-		$this->modules = $modules;
+		$this->namespace = $namespace;
+		$this->modules   = $modules;
 	}
 
 	/**
@@ -59,7 +68,7 @@ class Factory {
 	 * @return  object|null
 	 */
 	private function build( $class ) {
-		$full_class_name = '\\Neve\\' . $class;
+		$full_class_name = $this->namespace . $class;
 		if ( class_exists( $full_class_name ) ) {
 			return new $full_class_name;
 		}

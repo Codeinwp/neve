@@ -303,10 +303,10 @@ class Admin {
 		);
 
 		$button = sprintf(
-			/* Translators: 1 - onboarding url*/
+			/* translators: 1 - onboarding url, 2 - button text */
 			'<a href="%1$s" class="button button-primary" style="text-decoration: none;">%2$s</a>',
 			esc_url( admin_url( 'themes.php?page=' . $slug . '-welcome&onboarding=yes#sites_library' ) ),
-			/* Translators: 1 - button text */
+			/* translators: 1 - theme name (Neve) */
 			sprintf( esc_html__( 'Get started with %s', 'neve' ), $name )
 		);
 

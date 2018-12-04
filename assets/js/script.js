@@ -64,7 +64,7 @@
         handleMobileDropdowns: function() {
             var self = this;
             $(".caret-wrap").on("click", function() {
-                $(this).parent().toggleClass("dropdown-open");
+                $(this).closest("li").toggleClass("dropdown-open");
                 if (!utils.isMobile()) {
                     self.createNavOverlay();
                 }

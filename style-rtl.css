@@ -5,7 +5,7 @@ Theme URI:      https://themeisle.com/themes/neve/
 Author:         ThemeIsle
 Author URI:     https://themeisle.com
 Description:    Neve is a super fast, easily customizable, multi-purpose theme. It’s perfect for blogs, small business, startups, agencies, firms, e-commerce shops (WooCommerce storefront) as well as personal portfolio sites and most types of projects. A fully AMP optimized and responsive theme, Neve will load in mere seconds and adapt perfectly on any viewing device. While it is lightweight and has a minimalist design, the theme is highly extendable, it has a highly SEO optimized code, resulting in top rankings in Google search results. Neve works perfectly with Gutenberg and the most popular page builders (Elementor, Brizy, Beaver Builder, Visual Composer, SiteOrigin, Divi). Neve is also WooCommerce ready, responsive, RTL & translation ready. Look no further. Neve is the perfect theme for you!
-Version:        1.0.16
+Version:        1.0.19
 License:        GNU General Public License v2 or later
 License URI:    http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain:    neve
@@ -565,10 +565,12 @@ blockquote.wp-block-quote.is-style-large cite {
   width: 100%;
   display: block;
   padding: 10px 0;
+  position: relative;
 }
 #nv-primary-navigation li {
   cursor: pointer;
   width: 100%;
+  display: block;
   position: relative;
 }
 
@@ -619,8 +621,7 @@ blockquote.wp-block-quote.is-style-large cite {
   top: -6px;
   transition: all 0.3s ease;
 }
-.dropdown-open > .caret-wrap > .caret, .caret-dropdown-open.caret-wrap > .caret {
-  color: #fff;
+.dropdown-open > a > .caret-wrap > .caret, .caret-dropdown-open.caret-wrap > .caret {
   transform: rotate(45deg);
 }
 
@@ -635,9 +636,6 @@ blockquote.wp-block-quote.is-style-large cite {
   height: 30px;
   padding: 5px 10px;
   transition: all 0.3s ease;
-}
-.dropdown-open > .caret-wrap, .caret-wrap.caret-dropdown-open {
-  background-color: #777777;
 }
 
 #nv-primary-navigation i {
@@ -806,7 +804,7 @@ a.button.close-responsive-search:hover {
   height: 100vh;
 }
 
-.menu-item-nav-search:not(.responsive-nav-search) {
+#nv-primary-navigation .menu-item-nav-search:not(.responsive-nav-search) {
   display: none;
 }
 
@@ -899,59 +897,43 @@ a.button.close-responsive-search:hover {
 }
 
 /* Style mega-menu and its children on mobile */
-#nv-primary-navigation .neve-mega-menu.dropdown-open > .sub-menu {
-  width: 100%;
-  max-height: 100%;
-  border-right: none;
+#nv-primary-navigation .neve-mega-menu {
+  position: static;
 }
-
-#nv-primary-navigation .neve-mega-menu.dropdown-open .neve-mm-col {
-  transition: unset;
+#nv-primary-navigation .neve-mega-menu.dropdown-open .sub-menu {
+  max-height: inherit;
 }
-#nv-primary-navigation .neve-mega-menu.dropdown-open .neve-mm-col > a {
-  display: none;
-}
-#nv-primary-navigation .neve-mega-menu.dropdown-open .neve-mm-col > .caret-wrap {
-  display: none;
-}
-#nv-primary-navigation .neve-mega-menu.dropdown-open .neve-mm-col > .sub-menu {
-  padding-right: 0;
-  border-right: none;
-  max-height: 100%;
-}
-#nv-primary-navigation .neve-mega-menu.dropdown-open .neve-mm-col .neve-mm-heading > a {
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
-/* Use some of the above code to avoid weird effect when opening/closing it on mobile */
 #nv-primary-navigation .neve-mega-menu > .sub-menu {
   border-right: none;
 }
-#nv-primary-navigation .neve-mega-menu > .sub-menu .neve-mm-divider {
-  height: 1px;
-  margin: 9px 0 9px auto;
-  min-width: 75%;
-  max-width: 75%;
-  background-color: #c9c9c9;
+#nv-primary-navigation .neve-mega-menu.dropdown-open > .sub-menu {
+  width: 100%;
+  border-right: none;
 }
-
+#nv-primary-navigation .neve-mega-menu.dropdown-open .neve-mm-col,
 #nv-primary-navigation .neve-mega-menu .neve-mm-col {
-  transition: unset;
+  border: none;
 }
+#nv-primary-navigation .neve-mega-menu.dropdown-open .neve-mm-col > a,
 #nv-primary-navigation .neve-mega-menu .neve-mm-col > a {
   display: none;
 }
-#nv-primary-navigation .neve-mega-menu .neve-mm-col > .caret-wrap {
-  display: none;
-}
+#nv-primary-navigation .neve-mega-menu.dropdown-open .neve-mm-col > .sub-menu,
 #nv-primary-navigation .neve-mega-menu .neve-mm-col > .sub-menu {
   padding-right: 0;
   border-right: none;
 }
+#nv-primary-navigation .neve-mega-menu.dropdown-open .neve-mm-col .neve-mm-heading > a,
 #nv-primary-navigation .neve-mega-menu .neve-mm-col .neve-mm-heading > a {
   font-weight: 700;
   text-transform: uppercase;
+}
+#nv-primary-navigation .neve-mega-menu .neve-mm-divider {
+  height: 1px;
+  margin: 10px auto;
+  width: 75%;
+  background-color: #c9c9c9;
+  cursor: default;
 }
 
 footer {
@@ -2072,21 +2054,18 @@ hr {
   }
   #nv-primary-navigation > li > a {
     padding: 10px 0;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-  #nv-primary-navigation > li.menu-item-has-children > a {
-    padding-left: 18px;
-  }
-  #nv-primary-navigation > li > .caret-wrap {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+  #nv-primary-navigation > li li a {
+    position: relative;
   }
   #nv-primary-navigation li:hover > a, #nv-primary-navigation li:focus > a {
     color: #0366d6;
     text-decoration: none;
   }
-  #nv-primary-navigation li:hover > .caret-wrap .caret, #nv-primary-navigation li:focus > .caret-wrap .caret {
+  #nv-primary-navigation li:hover > a > .caret-wrap .caret, #nv-primary-navigation li:focus > a > .caret-wrap .caret {
     color: #0366d6;
   }
   #nv-primary-navigation .sub-menu {
@@ -2119,8 +2098,9 @@ hr {
     min-width: 150px;
   }
   #nv-primary-navigation .sub-menu li a {
+    display: flex;
+    align-items: center;
     white-space: nowrap;
-    display: block;
     width: 100%;
     margin-left: 10px;
     padding: 7px 14px;
@@ -2138,22 +2118,17 @@ hr {
   }
 
   .caret-wrap {
+    position: static;
     border: none;
-    position: relative;
-    top: 0;
-    display: inline;
-    padding-left: 0;
+    top: inherit;
+    width: 10px;
   }
-  .dropdown-open > .caret-wrap > .caret {
+  .dropdown-open > a > .caret-wrap > .caret {
     color: #404248;
     transform: rotate(-135deg);
   }
   .dropdown-open > .caret-wrap {
     background: transparent;
-  }
-
-  .sub-menu .caret-wrap {
-    padding-left: 25px;
   }
 
   .menu-item-has-children:last-child .caret-wrap {
@@ -2187,7 +2162,11 @@ hr {
     display: none;
   }
 
-  .menu-item-nav-search:not(.responsive-nav-search) {
+  #nv-primary-navigation .menu-item-nav-search:not(.responsive-nav-search) {
+    display: block;
+  }
+
+  #nv-primary-navigation > li.menu-item-nav-search > a {
     display: block;
   }
 
@@ -2308,90 +2287,36 @@ hr {
 
   #nv-primary-navigation .neve-mega-menu > .sub-menu {
     width: 950px;
-  }
-
-  #nv-primary-navigation .neve-mega-menu {
-    position: static;
-  }
-  #nv-primary-navigation .neve-mega-menu > a {
-    position: relative;
-  }
-  #nv-primary-navigation .neve-mega-menu > a:after {
-    content: " ";
-    height: 6px;
-    width: 6px;
-    position: relative;
-    display: inline-block;
-    border: 2px solid;
-    border-radius: 1px;
-    border-right: 0;
-    border-bottom: 0;
-    right: 8px;
-    transform: rotate(-135deg);
-    color: #404248;
-    top: -3px;
-    z-index: 9;
-  }
-  #nv-primary-navigation .neve-mega-menu:hover > a:after {
-    color: #0366d6;
-  }
-  #nv-primary-navigation .neve-mega-menu .sub-menu li a {
-    white-space: normal;
-  }
-
-  #nv-primary-navigation .neve-mega-menu > .caret-wrap {
-    display: none;
-  }
-
-  #nv-primary-navigation .neve-mega-menu:hover > .sub-menu,
-  #nv-primary-navigation .neve-mega-menu:focus > .sub-menu,
-  #nv-primary-navigation .neve-mega-menu:focus-within > .sub-menu {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    position: absolute;
+    top: auto;
     right: 50%;
     transform: translateX(50%);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     padding: 20px;
-    top: 80%;
-    overflow: hidden;
+    pointer-events: none;
   }
 
-  #nv-primary-navigation .neve-mega-menu > .sub-menu,
   #nv-primary-navigation .neve-mega-menu:hover > .sub-menu,
   #nv-primary-navigation .neve-mega-menu:focus > .sub-menu,
   #nv-primary-navigation .neve-mega-menu:focus-within > .sub-menu {
-    transition: unset;
+    opacity: 1;
+    display: grid;
+    visibility: visible;
+    pointer-events: all;
   }
-  #nv-primary-navigation .neve-mega-menu > .sub-menu .neve-mm-col,
-  #nv-primary-navigation .neve-mega-menu:hover > .sub-menu .neve-mm-col,
-  #nv-primary-navigation .neve-mega-menu:focus > .sub-menu .neve-mm-col,
-  #nv-primary-navigation .neve-mega-menu:focus-within > .sub-menu .neve-mm-col {
-    display: flex;
-    align-items: flex-start;
-  }
-  #nv-primary-navigation .neve-mega-menu > .sub-menu .neve-mm-col > .sub-menu,
-  #nv-primary-navigation .neve-mega-menu:hover > .sub-menu .neve-mm-col > .sub-menu,
-  #nv-primary-navigation .neve-mega-menu:focus > .sub-menu .neve-mm-col > .sub-menu,
-  #nv-primary-navigation .neve-mega-menu:focus-within > .sub-menu .neve-mm-col > .sub-menu {
-    transition: unset;
+
+  #nv-primary-navigation .neve-mega-menu > .sub-menu .neve-mm-col > .sub-menu {
     right: initial;
     left: initial;
   }
 
-  #nv-primary-navigation .neve-mega-menu:hover .neve-mm-col,
-  #nv-primary-navigation .neve-mega-menu:focus .neve-mm-col,
-  #nv-primary-navigation .neve-mega-menu:focus-within .neve-mm-col {
-    border: none;
-  }
-  #nv-primary-navigation .neve-mega-menu:hover .neve-mm-col .neve-mm-heading a,
-  #nv-primary-navigation .neve-mega-menu:focus .neve-mm-col .neve-mm-heading a,
-  #nv-primary-navigation .neve-mega-menu:focus-within .neve-mm-col .neve-mm-heading a {
+  #nv-primary-navigation .neve-mega-menu .neve-mm-col .neve-mm-heading a {
     font-weight: 700;
     text-transform: uppercase;
   }
 
-  #nv-primary-navigation .neve-mega-menu:hover .neve-mm-col > .sub-menu,
-  #nv-primary-navigation .neve-mega-menu:focus .neve-mm-col > .sub-menu,
-  #nv-primary-navigation .neve-mega-menu:focus-within .neve-mm-col > .sub-menu {
+  #nv-primary-navigation .neve-mega-menu .neve-mm-col > .sub-menu {
     position: static;
     visibility: visible;
     opacity: 1;
@@ -2400,9 +2325,7 @@ hr {
     border: none;
     box-shadow: none;
   }
-  #nv-primary-navigation .neve-mega-menu:hover .neve-mm-col > .sub-menu li,
-  #nv-primary-navigation .neve-mega-menu:focus .neve-mm-col > .sub-menu li,
-  #nv-primary-navigation .neve-mega-menu:focus-within .neve-mm-col > .sub-menu li {
+  #nv-primary-navigation .neve-mega-menu .neve-mm-col > .sub-menu li {
     border: none;
   }
 }
