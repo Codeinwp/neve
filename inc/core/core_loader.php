@@ -71,6 +71,7 @@ class Core_Loader {
 				'Compatibility\Amp',
 				'Compatibility\Beaver',
 
+				'Admin\Metabox\Manager',
 				'Admin\Metabox\Main',
 			)
 		);
