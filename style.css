@@ -428,6 +428,10 @@ blockquote.wp-block-quote.is-style-large cite {
   border: unset;
 }
 
+.wp-block-code code {
+  background-color: inherit;
+}
+
 #nv-top-bar-menu {
   display: flex;
   flex-wrap: wrap;

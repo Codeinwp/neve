@@ -79,6 +79,15 @@ blockquote.wp-block-quote.is-style-large {
 
 //</editor-fold>
 
+//<editor-fold desc="Code">
+.wp-block-code {
+  code {
+    background-color: inherit;
+  }
+}
+
+//</editor-fold>
+
 @mixin gutenberg--tablet() {
   //<editor-fold desc="Tablet Font Sizes">
   .has-neve-body-font-size {
