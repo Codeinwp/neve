@@ -1030,6 +1030,10 @@ input, textarea, select, button {
   box-sizing: border-box;
 }
 
+label {
+  margin-bottom: 10px;
+}
+
 .button {
   font-size: .8em;
   font-weight: 600;

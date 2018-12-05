@@ -51,8 +51,8 @@
 .woocommerce-page .woocommerce-error {
   background: #f5365c;
   border: none;
-  color: #fff;
   font-size: .85em;
+  color: #fff;
 }
 .woocommerce .woocommerce-error:before,
 .woocommerce-page .woocommerce-error:before {
@@ -75,19 +75,17 @@
 
 .woocommerce .woocommerce-info,
 .woocommerce-page .woocommerce-info {
-  background: #11cdef;
+  background: #f0f0f0;
   border: none;
-  color: #fff;
   font-size: .85em;
-}
-.woocommerce .woocommerce-info:before,
-.woocommerce-page .woocommerce-info:before {
-  color: #fff;
 }
 .woocommerce .woocommerce-info a,
 .woocommerce-page .woocommerce-info a {
-  color: #fff;
-  font-weight: 800;
+  color: #404248;
+}
+.woocommerce .woocommerce-info:before,
+.woocommerce-page .woocommerce-info:before {
+  color: #404248;
 }
 .woocommerce .woocommerce-info .button, .woocommerce .woocommerce-info .button:focus, .woocommerce .woocommerce-info .button:active, .woocommerce .woocommerce-info .button:hover,
 .woocommerce-page .woocommerce-info .button,
@@ -95,7 +93,7 @@
 .woocommerce-page .woocommerce-info .button:active,
 .woocommerce-page .woocommerce-info .button:hover {
   background-color: #fff;
-  color: #11cdef;
+  color: #f0f0f0;
   line-height: 1;
 }
 
@@ -103,8 +101,8 @@
 .woocommerce-page .woocommerce-message {
   background: #2dce89;
   border: none;
-  color: #fff;
   font-size: .85em;
+  color: #fff;
 }
 .woocommerce .woocommerce-message:before,
 .woocommerce-page .woocommerce-message:before {
