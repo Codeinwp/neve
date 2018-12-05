@@ -35,13 +35,14 @@
 
 .woocommerce-cart table.cart td.actions .coupon {
   display: flex;
+  flex-direction: row;
+  align-items: center;
   border-bottom: $muted-border;
-  flex-direction: column;
   margin-bottom: $spacing-xs;
+  justify-content: space-between;
   > .input-text {
     float: none;
     width: 100%;
-    margin-bottom: $spacing-xs;
   }
   > .input-text + .button {
     float: none;
@@ -59,15 +60,12 @@
 
 .woocommerce .cart_totals table.shop_table {
   padding: 0;
+  border: none;
   td, tr, th, & {
     border-bottom: 0;
     border-left: 0;
     border-right: 0;
     vertical-align: middle;
-  }
-  & {
-    border: none;
-    padding: 0 20px;
   }
   tr {
     border-top: $muted-border;
@@ -161,10 +159,7 @@
   .woocommerce-cart table.cart td.actions {
     padding: $spacing-sm 0;
     .coupon {
-      flex-direction: row;
       border-bottom: 0;
-      margin: 0;
-      align-items: center;
       > .input-text:first-of-type {
         margin-left: 21px;
       }
@@ -187,8 +182,14 @@
     .cart_totals {
       width: 100%;
       a.button.alt.checkout-button {
-        display: initial;
+        display: inline-block;
       }
     }
+  }
+}
+
+@mixin cart--laptop() {
+  .woocommerce .cart_totals table.shop_table {
+    padding: 0 8px;
   }
 }
