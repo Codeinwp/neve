@@ -60,7 +60,8 @@ class Colors extends Base_Inline {
 					#nv-primary-navigation li:hover > a > .caret-wrap .caret, #nv-primary-navigation li:focus > a > .caret-wrap .caret, 
 					#nv-primary-navigation .neve-mega-menu:hover > a:after,
 					.menu-item-nav-search.responsive-nav-search > a:hover, .menu-item-nav-search.responsive-nav-search > a:focus,
-					.menu-item-nav-cart.responsive-nav-cart > a:hover, .menu-item-nav-cart.responsive-nav-cart > a:focus',
+					.menu-item-nav-cart.responsive-nav-cart > a:hover, .menu-item-nav-cart.responsive-nav-cart > a:focus,
+					#nv-primary-navigation .current-menu-item > a',
 				),
 				'background-color' => array(
 					'css_prop'  => 'background-color',

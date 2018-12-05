@@ -23,3 +23,20 @@ input, textarea, select, button {
   -moz-box-sizing: border-box; /* For legacy (Firefox <29) Gecko based browsers */
   box-sizing: border-box;
 }
+
+label {
+  display: inline-block;
+  margin-bottom: $spacing-xs;
+}
+
+fieldset {
+  border: 0;
+  margin: $spacing-sm 0;
+  legend {
+    font-size: .9em;
+    margin-bottom: $spacing-xs;
+  }
+  input[type="text"], input[type="search"], input[type="password"], textarea {
+    width: 100%;
+  }
+}
