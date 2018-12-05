@@ -92,6 +92,10 @@
   transition: $transition_med;
 }
 
+#nv-primary-navigation .current-menu-item > a {
+  color: $link_hover_color;
+}
+
 @mixin nav-menu--laptop() {
   .menu-opened {
     overflow: inherit;

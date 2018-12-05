@@ -638,6 +638,10 @@ blockquote.wp-block-quote.is-style-large cite {
   transition: all 0.3s ease;
 }
 
+#nv-primary-navigation .current-menu-item > a {
+  color: #0366d6;
+}
+
 #nv-primary-navigation i {
   font-size: inherit;
   line-height: inherit;
