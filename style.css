@@ -1031,7 +1031,20 @@ input, textarea, select, button {
 }
 
 label {
+  display: inline-block;
   margin-bottom: 10px;
+}
+
+fieldset {
+  border: 0;
+  margin: 20px 0;
+}
+fieldset legend {
+  font-size: .9em;
+  margin-bottom: 10px;
+}
+fieldset input[type="text"], fieldset input[type="search"], fieldset input[type="password"], fieldset textarea {
+  width: 100%;
 }
 
 .button {
