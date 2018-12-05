@@ -142,6 +142,33 @@
 .editor-styles-wrapper .wp-block-separator {
   padding: 5px;
 }
+.editor-styles-wrapper .wp-block-button .wp-block-button__link {
+  font-size: .8em;
+  font-weight: 600;
+  padding: 6px 12px;
+  transition: all .15s ease-in-out;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  line-height: 1.68421;
+  font-family: inherit;
+}
+.editor-styles-wrapper .wp-block-button .wp-block-button__link:hover {
+  text-decoration: none;
+  opacity: .9;
+}
+.editor-styles-wrapper .wp-block-button.is-style-outline .wp-block-button__link {
+  border: 1px solid #777777;
+  background-color: transparent;
+  font-weight: 600;
+  color: #777777;
+}
+.editor-styles-wrapper .wp-block-button.is-style-outline .wp-block-button__link:hover {
+  background: transparent;
+}
 
 .editor-styles-wrapper.neve-has-meta .editor-post-title__block > div:first-child:after {
   content: ' ';

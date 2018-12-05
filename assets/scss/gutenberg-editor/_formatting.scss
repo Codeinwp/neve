@@ -13,4 +13,18 @@
   }
 
   //</editor-fold>
+
+  //<editor-fold desc="Button">
+  .wp-block-button {
+    .wp-block-button__link {
+      @include button();
+
+    }
+    &.is-style-outline {
+      .wp-block-button__link {
+        @include button-secondary();
+      }
+    }
+  }
+  //</editor-fold>
 }

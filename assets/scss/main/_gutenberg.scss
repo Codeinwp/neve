@@ -38,6 +38,7 @@ blockquote.wp-block-quote.is-style-large {
   p {
     font-size: $h2-font-size;
   }
+
   cite {
     text-align: center;
     font-size: .95em;
@@ -51,10 +52,12 @@ blockquote.wp-block-quote.is-style-large {
 
   blockquote {
     margin: 1em auto;
+
     &::before,
     &::after {
       display: none;
     }
+
     cite {
       text-align: left;
     }
@@ -64,6 +67,7 @@ blockquote.wp-block-quote.is-style-large {
     border-top: 4px solid;
     border-bottom: 4px solid;
     margin: 1em 0;
+
     blockquote cite {
       text-transform: uppercase;
       text-align: center;
@@ -71,6 +75,7 @@ blockquote.wp-block-quote.is-style-large {
   }
 
 }
+
 //</editor-fold>
 
 //<editor-fold desc="Tables">
@@ -110,6 +115,24 @@ blockquote.wp-block-quote.is-style-large {
 .wp-block-code {
   code {
     background-color: inherit;
+  }
+}
+
+//</editor-fold>
+
+//<editor-fold desc="Button">
+.wp-block-button {
+  a {
+    @include button();
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  &.is-style-outline {
+    a.wp-block-button__link {
+      @include button-secondary();
+      border: 1px solid;
+    }
   }
 }
 

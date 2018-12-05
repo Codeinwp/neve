@@ -451,6 +451,38 @@ blockquote.wp-block-quote.is-style-large cite {
   background-color: inherit;
 }
 
+.wp-block-button a {
+  font-size: .8em;
+  font-weight: 600;
+  padding: 6px 12px;
+  transition: all .15s ease-in-out;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  line-height: 1.68421;
+  font-family: inherit;
+}
+.wp-block-button a:hover {
+  text-decoration: none;
+  opacity: .9;
+}
+.wp-block-button a:hover {
+  text-decoration: none;
+}
+.wp-block-button.is-style-outline a.wp-block-button__link {
+  border: 1px solid #777777;
+  background-color: transparent;
+  font-weight: 600;
+  color: #777777;
+  border: 1px solid;
+}
+.wp-block-button.is-style-outline a.wp-block-button__link:hover {
+  background: transparent;
+}
+
 #nv-top-bar-menu {
   display: flex;
   flex-wrap: wrap;
