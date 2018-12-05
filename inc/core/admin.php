@@ -76,7 +76,7 @@ class Admin {
 					'optimole-wp',
 					'themeisle-companion',
 					'feedzy-rss-feeds',
-                    'otter-blocks',
+					'otter-blocks',
 					'elementor',
 					'wp-product-review',
 					'visualizer',
