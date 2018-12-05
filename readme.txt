@@ -17,6 +17,15 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
+= 1.0.20 - 2018-12-05  = 
+
+* New Neve Charity demo
+* Updated the text for the upgrade PHP notice
+* Style spacing on the checkout page
+* Added color for the current menu item in the primary menu
+* Fixed menu anchors in the Neve demos
+
+
 = 1.0.19 - 2018-12-03  = 
 
 * Hide menu cart icon on the Cart page
