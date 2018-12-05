@@ -46,6 +46,33 @@ blockquote.wp-block-quote.is-style-large {
 
 //</editor-fold>
 
+//<editor-fold desc="Pullquote">
+.wp-block-pullquote {
+
+  blockquote {
+    margin: 1em auto;
+    &::before,
+    &::after {
+      display: none;
+    }
+    cite {
+      text-align: left;
+    }
+  }
+
+  &:not(.is-style-solid-color) {
+    border-top: 4px solid;
+    border-bottom: 4px solid;
+    margin: 1em 0;
+    blockquote cite {
+      text-transform: uppercase;
+      text-align: center;
+    }
+  }
+
+}
+//</editor-fold>
+
 //<editor-fold desc="Tables">
 .wp-block-table {
   width: 100%;

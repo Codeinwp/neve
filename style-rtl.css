@@ -404,6 +404,25 @@ blockquote.wp-block-quote.is-style-large cite {
   font-size: .95em;
 }
 
+.wp-block-pullquote blockquote {
+  margin: 1em auto;
+}
+.wp-block-pullquote blockquote::before, .wp-block-pullquote blockquote::after {
+  display: none;
+}
+.wp-block-pullquote blockquote cite {
+  text-align: right;
+}
+.wp-block-pullquote:not(.is-style-solid-color) {
+  border-top: 4px solid;
+  border-bottom: 4px solid;
+  margin: 1em 0;
+}
+.wp-block-pullquote:not(.is-style-solid-color) blockquote cite {
+  text-transform: uppercase;
+  text-align: center;
+}
+
 .wp-block-table {
   width: 100%;
 }
@@ -426,6 +445,10 @@ blockquote.wp-block-quote.is-style-large cite {
   font-size: inherit;
   font-style: italic;
   border: unset;
+}
+
+.wp-block-code code {
+  background-color: inherit;
 }
 
 #nv-top-bar-menu {
