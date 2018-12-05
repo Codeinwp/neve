@@ -1,4 +1,10 @@
 .woocommerce-checkout {
+  .nv-content-wrap {
+    padding-top: $spacing;
+  }
+  .nv-page-title-wrap.nv-big-title h1 {
+    margin-bottom: 0;
+  }
   .col2-set .col-1, .woocommerce-checkout .col2-set .col-2 {
     max-width: unset;
     padding: 0;
