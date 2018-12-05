@@ -35,9 +35,17 @@ add_filter( 'themeisle_sdk_products', 'neve_filter_sdk' );
  * Adds notice for PHP < 5.3.29 hosts.
  */
 function neve_php_support() {
-	$message = __( 'Hey, we\'ve noticed that you\'re running an outdated version of PHP which is no longer supported. Make sure your site is fast and secure, by upgrading PHP to the latest version.', 'neve' );
+	$message = sprintf(
+		/* translators: %s message to upgrade PHP to the latest version */
+		__( "Hey, we've noticed that you're running an outdated version of PHP which is no longer supported. Make sure your site is fast and secure, by %s. Neve's minimal requirement is PHP 5.4.0.", 'neve' ),
+		sprintf(
+			/* translators: %s message to upgrade PHP to the latest version */
+			'<a target="_blank" href="https://wordpress.org/support/upgrade-php/">%s</a>',
+			__( 'upgrading PHP to the latest version', 'neve' )
+		)
+	);
 
-	printf( '<div class="error"><p>%1$s</p></div>', esc_html( $message ) );
+	printf( '<div class="error"><p>%1$s</p></div>', wp_kses_post( $message ) );
 }
 
 if ( version_compare( PHP_VERSION, '5.3.29' ) < 0 ) {
