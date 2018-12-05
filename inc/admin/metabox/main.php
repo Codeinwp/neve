@@ -12,7 +12,7 @@ namespace Neve\Admin\Metabox;
  *
  * @package Neve\Admin\Metabox
  */
-class Main extends Metabox_Base {
+class Main extends Controls_Base {
 	/**
 	 * Add controls.
 	 */

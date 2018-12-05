@@ -37,29 +37,23 @@
 .woocommerce .widget_shopping_cart .cart_list li, .woocommerce.widget_shopping_cart .cart_list li {
   font-size: .85em;
   border-bottom: $muted-border;
-  //Padding right is 61px to allow image on right (45px) which should be padded L/R (8px) { 45 + 8 + 8 = 61 }
-  padding: $spacing-xs 61px $spacing-xs 2em;
   position: relative;
   img {
     position: absolute;
-    right: $spacing-xs;
-    top: 50%;
-    transform: translateY(-50%);
+    right: 0;
     width: 45px;
   }
   &:last-child {
     border: none;
   }
-  dl.variation {
-    padding: 0;
-    border: 0;
+  a:not(.remove) {
+    padding-right: 61px;
   }
-  dd.variation-Size {
-    margin-bottom: 0;
-  }
-  a.remove {
-    top: $spacing-xs;
-  }
+}
+
+.woocommerce .nv-sidebar-wrap ul.cart_list li, .woocommerce ul.product_list_widget li {
+  margin-top: $spacing-xs;
+  padding-bottom: $spacing-xs;
 }
 
 @mixin shop-sidebar--laptop() {

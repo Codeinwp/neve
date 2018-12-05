@@ -26,7 +26,7 @@
   }
 }
 
-.menu-item-nav-cart:not(.responsive-nav-cart) {
+#nv-primary-navigation .menu-item-nav-cart:not(.responsive-nav-cart) {
   display: none;
 }
 
@@ -42,7 +42,10 @@
       @include soft-box-shadow('true');
     }
   }
-  .menu-item-nav-cart:not(.responsive-nav-cart) {
+  #nv-primary-navigation > li.menu-item-nav-cart> a {
+    display: block;
+  }
+  #nv-primary-navigation .menu-item-nav-cart:not(.responsive-nav-cart) {
     display: block;
   }
   .menu-item-nav-cart:hover .nv-nav-cart,
@@ -67,19 +70,19 @@
     @include cart-widget();
   }
   #nv-primary-navigation .widget_shopping_cart li.mini_cart_item {
-    //Padding right is 61px to allow image on right (45px) which should be padded L/R (8px) { 45 + 8 + 8 = 61 }
-    padding: $spacing-xs 61px $spacing-xs $spacing-xs;
+    padding: $spacing-xs;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     align-items: baseline;
     font-size: .85em;
     position: relative;
     width: 350px;
+    margin:0;
     &:hover {
-      background: $muted-white;
+      background: #f9f9f9;
     }
     > a {
-      padding: 0;
+      padding: 0 $spacing-lg 0 0;
       display: inline;
       grid-column: span 10;
       grid-row-start: 1;

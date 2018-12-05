@@ -17,6 +17,12 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
+= 1.0.16 - 2018-11-27  = 
+
+* New Neve Restaurant demo
+* Fixed default value for the footer copyright
+
+
 = 1.0.15 - 2018-11-23  = 
 
 * Fixed issue with thumbnail hiding on single post page
@@ -220,3 +226,8 @@ All  images are licensed under CC0.
 * Neve Restaurant: tiramisu-2897900, CC0, https://pixabay.com/en/tiramisu-dessert-tiramisu-2897900/
 * Neve Restaurant: cream-puff-1694337, CC0, https://pixabay.com/en/cream-puff-pastries-bake-1694337/
 * Neve Restaurant: dinner-table-444434, CC0, https://pixabay.com/en/dinner-table-restaurant-dining-444434/
+* Neve Charity: children-63175, CC0, https://pixabay.com/en/children-afghanistan-afghani-girl-63175/
+* Neve Charity: africa-2179608, CC0, https://pixabay.com/en/africa-child-children-people-young-2179608/
+* Neve Charity: potion-1860939, CC0, https://pixabay.com/en/potion-poverty-misery-sadness-sdf-1860939/
+* Neve Charity: children-734891, CC0, https://pixabay.com/en/children-burundi-bottle-water-734891/
+* Neve Charity: trouser-pockets-1439412, CC0, https://pixabay.com/en/trouser-pockets-empty-jeans-1439412/

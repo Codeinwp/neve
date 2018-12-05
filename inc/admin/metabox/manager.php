@@ -8,49 +8,18 @@
 namespace Neve\Admin\Metabox;
 
 /**
- * Class Metabox
+ * Class Manager
  *
  * @package Neve\Admin\Metabox
  */
-
-namespace Neve\Admin\Metabox;
-
-/**
- * Class Metabox_Base
- *
- * @package Neve\Admin\Metabox
- */
-abstract class Metabox_Base {
-
-	/**
-	 * Controls.
-	 *
-	 * @var array
-	 */
-	public $controls = array();
+class Manager {
 
 	/**
 	 * Init function
 	 */
 	public function init() {
 		add_action( 'add_meta_boxes', array( $this, 'add' ) );
-		add_action( 'save_post', array( $this, 'save' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) );
-		$this->add_controls();
-	}
-
-	/**
-	 * Add controls.
-	 */
-	abstract protected function add_controls();
-
-	/**
-	 * Add the control.
-	 *
-	 * @param Controls\Control_Base $control the control object.
-	 */
-	public function add_control( $control ) {
-		array_push( $this->controls, $control );
 	}
 
 	/**
@@ -75,20 +44,7 @@ abstract class Metabox_Base {
 	 * The metabox content.
 	 */
 	public function render_metabox() {
-		global $post;
-
-		foreach ( $this->controls as $control ) {
-			$control->render( $post->ID );
-		}
-	}
-
-	/**
-	 * Save metabox content.
-	 */
-	public function save( $post_id ) {
-		foreach ( $this->controls as $control ) {
-			$control->save( $post_id );
-		}
+		do_action( 'neve_settings_render_metabox_controls' );
 	}
 
 	/**
