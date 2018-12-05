@@ -8,7 +8,7 @@
  * @package Neve
  */
 
-define( 'NEVE_VERSION', '1.0.19' );
+define( 'NEVE_VERSION', '1.0.20' );
 define( 'NEVE_INC_DIR', trailingslashit( get_template_directory() ) . 'inc/' );
 define( 'NEVE_ASSETS_URL', trailingslashit( get_template_directory_uri() ) . 'assets/' );
 
@@ -48,7 +48,7 @@ function neve_php_support() {
 	printf( '<div class="error"><p>%1$s</p></div>', wp_kses_post( $message ) );
 }
 
-if ( version_compare( PHP_VERSION, '5.3.29' ) < 0 ) {
+if ( version_compare( PHP_VERSION, '5.3.29' ) > 0 ) {
 	/**
 	 * Add notice for PHP upgrade.
 	 */
