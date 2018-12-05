@@ -31,6 +31,7 @@ class Metabox_Settings {
 	 */
 	public function content_width() {
 		$post_id = $this->get_post_id();
+
 		if ( $post_id === false ) {
 			return;
 		}
@@ -49,9 +50,19 @@ class Metabox_Settings {
 
 		$sidebar_width = 100 - absint( $meta_value );
 
+		// Add the `!important` if in customizer, so that the live refresh doesn't affect this.
+		$important = '';
+		if ( is_customize_preview() ) {
+			$important = '!important';
+		}
+
 		$style = '@media(min-width: 960px) {
-			#content.neve-main > .container > .row > .col, #content.neve-main > .container-fluid > .row > .col { max-width: ' . absint( $meta_value ) . '%; } 
-			.neve-main .nv-sidebar-wrap, .neve-main .nv-sidebar-wrap.shop-sidebar { max-width: ' . absint( $sidebar_width ) . '%; }
+			#content.neve-main > .container > .row > .col, 
+			#content.neve-main > .container-fluid > .row > .col { max-width: ' . absint( $meta_value ) . '%' . esc_attr( $important ) . '; } 
+			#content.neve-main > .container > .row > .nv-sidebar-wrap, 
+			#content.neve-main > .container > .row > .nv-sidebar-wrap.shop-sidebar,
+			#content.neve-main > .container-fluid > .row > .nv-sidebar-wrap, 
+			#content.neve-main > .container-fluid > .row > .nv-sidebar-wrap.shop-sidebar { max-width: ' . absint( $sidebar_width ) . '%' . esc_attr( $important ) . '; }
 		}';
 
 		wp_add_inline_style( 'neve-style', $style );
@@ -66,7 +77,8 @@ class Metabox_Settings {
 	 * @return bool
 	 */
 	public function filter_components_toggle( $status, $context ) {
-		if ( ! is_single() && ! is_page() ) {
+
+		if ( ! is_single() && ! is_page() && ! $this->is_blog_static() ) {
 			return $status;
 		}
 
@@ -109,7 +121,11 @@ class Metabox_Settings {
 	 * @return mixed
 	 */
 	public function filter_sidebar_position( $position ) {
-		if ( ! is_single() && ! is_page() && ( class_exists( 'WooCommerce' ) && ! is_shop() ) ) {
+		if (
+			! is_single()
+			&& ! is_page()
+			&& ( class_exists( 'WooCommerce' ) && ! is_shop() )
+			&& ! $this->is_blog_static() ) {
 			return $position;
 		}
 
@@ -137,7 +153,7 @@ class Metabox_Settings {
 	public function filter_container_class( $class ) {
 
 		// Don't filter on blog.
-		if ( ! is_single() && ! is_page() ) {
+		if ( ! is_single() && ! is_page() && ! $this->is_blog_static() ) {
 			return $class;
 		}
 
@@ -153,13 +169,19 @@ class Metabox_Settings {
 			return $class;
 		}
 
-		if ( $meta_value === 'contained' ) {
-			return 'container';
-		} elseif ( $meta_value === 'full-width' ) {
-			return 'container-fluid';
-		} else {
-			return $class;
+		// Add `set-in-metabox` so that we don't affect this in customizer with live refresh.
+		$customizer_context = '';
+		if ( is_customize_preview() ) {
+			$customizer_context = ' set-in-metabox ';
 		}
+
+		if ( $meta_value === 'contained' ) {
+			return $customizer_context . ' container';
+		} elseif ( $meta_value === 'full-width' ) {
+			return $customizer_context . ' container-fluid';
+		}
+
+		return $class;
 	}
 
 	/**
@@ -168,6 +190,10 @@ class Metabox_Settings {
 	 * @return bool|string
 	 */
 	private function get_post_id() {
+		if ( $this->is_blog_static() ) {
+			return get_option( 'page_for_posts' );
+		}
+
 		if ( is_home() ) {
 			return false;
 		}
@@ -184,5 +210,14 @@ class Metabox_Settings {
 		}
 
 		return $post_id;
+	}
+
+	/**
+	 * Check if the blog is set to a static page.
+	 *
+	 * @return bool
+	 */
+	private function is_blog_static() {
+		return ( get_option( 'show_on_front' ) === 'page' && is_home() );
 	}
 }

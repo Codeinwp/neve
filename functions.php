@@ -8,7 +8,7 @@
  * @package Neve
  */
 
-define( 'NEVE_VERSION', '1.0.17' );
+define( 'NEVE_VERSION', '1.0.19' );
 define( 'NEVE_INC_DIR', trailingslashit( get_template_directory() ) . 'inc/' );
 define( 'NEVE_ASSETS_URL', trailingslashit( get_template_directory_uri() ) . 'assets/' );
 
@@ -69,11 +69,19 @@ function neve_run() {
 	$autoloader_class = '\\Neve\\Autoloader';
 	$autoloader       = new $autoloader_class;
 	$autoloader->add_namespace( 'Neve', get_template_directory() . '/inc/' );
+	if ( defined( 'NEVE_PRO_SPL_ROOT' ) ) {
+		$autoloader->add_namespace( 'Neve_Pro', NEVE_PRO_SPL_ROOT );
+	}
 	$autoloader->register();
 
 	$core_loader_class = '\\Neve\\Core\\Core_Loader';
 	if ( class_exists( $core_loader_class ) ) {
 		new $core_loader_class;
+	}
+
+	$addon_loader_class = '\\Neve_Pro\\Core\\Loader';
+	if ( class_exists( $addon_loader_class ) ) {
+		$addon_loader_class::instance();
 	}
 }
 

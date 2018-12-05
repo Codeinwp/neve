@@ -23,10 +23,12 @@
     width: 100%;
     display: block;
     padding: $spacing-xs 0;
+    position: relative;
   }
   li {
     cursor: pointer;
     width: 100%;
+    display: block;
     position: relative;
   }
 }
@@ -71,9 +73,8 @@
   color: $gray-color;
   top: -6px;
   transition: $transition_med;
-  .dropdown-open > .caret-wrap > &,
+  .dropdown-open > a > .caret-wrap > &,
   .caret-dropdown-open.caret-wrap > & {
-    color: #fff;
     transform: rotate(-45deg);
   }
 }
@@ -89,10 +90,6 @@
   height: 30px;
   padding: 5px 10px;
   transition: $transition_med;
-  .dropdown-open > &,
-  &.caret-dropdown-open {
-    background-color: $gray-color;
-  }
 }
 
 @mixin nav-menu--laptop() {
@@ -119,15 +116,12 @@
       width: inherit;
       > a {
         padding: $spacing-xs 0;
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
-      &.menu-item-has-children > a {
-        padding-right: 18px;
-      }
-      > .caret-wrap {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
+      li a {
+        position: relative;
       }
     }
 
@@ -136,7 +130,7 @@
         color: $link_hover_color;
         text-decoration: none;
       }
-      > .caret-wrap .caret {
+      > a > .caret-wrap .caret {
         color: $link_hover_color;
       }
     }
@@ -167,8 +161,9 @@
         border-top: none;
         min-width: 150px;
         a {
+          display: flex;
+          align-items: center;
           white-space: nowrap;
-          display: block;
           width: 100%;
           margin-right: $spacing-xs;
           padding: 7px 14px;
@@ -195,12 +190,11 @@
 
   }
   .caret-wrap {
+    position: static;
     border: none;
-    position: relative;
-    top: 0;
-    display: inline;
-    padding-right: 0;
-    .dropdown-open > & > .caret {
+    top: inherit;
+    width: 10px;
+    .dropdown-open > a > & > .caret {
       color: $body-color;
       transform: rotate(135deg);
     }
@@ -209,11 +203,6 @@
     }
   }
 
-  .sub-menu {
-    .caret-wrap {
-      padding-right: 25px;
-    }
-  }
 
   .menu-item-has-children:last-child .caret-wrap {
     right: -10px;

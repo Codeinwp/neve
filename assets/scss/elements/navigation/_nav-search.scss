@@ -68,8 +68,6 @@
   padding: $spacing-xs 0;
 }
 
-//.responsive-nav-search
-
 .menu-item-nav-search > a {
   display: block;
 }
@@ -125,7 +123,7 @@ a.button.close-responsive-search {
   height: 100vh;
 }
 
-.menu-item-nav-search:not(.responsive-nav-search) {
+#nv-primary-navigation .menu-item-nav-search:not(.responsive-nav-search) {
   display: none;
 }
 
@@ -142,7 +140,11 @@ a.button.close-responsive-search {
     display: none;
   }
 
-  .menu-item-nav-search:not(.responsive-nav-search) {
+  #nv-primary-navigation .menu-item-nav-search:not(.responsive-nav-search) {
+    display: block;
+  }
+
+  #nv-primary-navigation > li.menu-item-nav-search > a {
     display: block;
   }
 }

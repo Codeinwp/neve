@@ -42,7 +42,7 @@ class Gutenberg_Style_Manager extends Base_Style_Manager {
 	 * @var array
 	 */
 	protected $style_classes = array(
-		'Gutenberg_Editor',
+		'\\Neve\\Views\\Inline\\Gutenberg_Editor',
 	);
 
 	/**
