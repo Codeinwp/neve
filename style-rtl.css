@@ -769,6 +769,7 @@ blockquote.wp-block-quote.is-style-large cite {
   display: block;
 }
 .nv-nav-search form label {
+  display: inline;
   margin: 0;
 }
 .nv-nav-search form label input {
@@ -1689,6 +1690,9 @@ hr {
 }
 .widget .search-form, .widget .woocommerce-product-search {
   position: relative;
+}
+.widget .search-form label, .widget .woocommerce-product-search label {
+  display: inline;
 }
 .widget .search-form:after, .widget .woocommerce-product-search:after {
   font-family: "neve-icons";
