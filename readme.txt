@@ -17,6 +17,12 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
+= 1.0.21 - 2018-12-07  = 
+
+* Styled basic Gutenberg blocks
+* Fixed issue with the search input icon
+
+
 = 1.0.20 - 2018-12-05  = 
 
 * New Neve Charity demo

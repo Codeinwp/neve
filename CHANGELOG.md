@@ -1,4 +1,9 @@
 
+ ### v1.0.21 - 2018-12-07 
+ **Changes:** 
+ * Styled basic Gutenberg blocks
+* Fixed issue with the search input icon
+ 
  ### v1.0.20 - 2018-12-05 
  **Changes:** 
  * New Neve Charity demo
