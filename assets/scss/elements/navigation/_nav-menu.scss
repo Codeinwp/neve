@@ -71,11 +71,12 @@
   @include caret();
   transform: rotate(135deg);
   color: $gray-color;
-  top: -6px;
+  top: -4px;
   transition: $transition_med;
   .dropdown-open > a > .caret-wrap > &,
   .caret-dropdown-open.caret-wrap > & {
     transform: rotate(-45deg);
+    top: -2px;
   }
 }
 
@@ -86,9 +87,7 @@
   cursor: pointer;
   border-radius: 3px;
   border: $muted-border-med;
-  width: 30px;
-  height: 30px;
-  padding: 5px 10px;
+  padding: 0 10px;
   transition: $transition_med;
 }
 
