@@ -75,6 +75,9 @@
   }
   .search-form, .woocommerce-product-search {
     position: relative;
+    label {
+      display: inline;
+    }
     &:after {
       font-family: "neve-icons";
       content: "\f002";
