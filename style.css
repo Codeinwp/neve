@@ -619,14 +619,14 @@ blockquote.wp-block-quote.is-style-large cite {
   border-radius: 1px;
   border-left: 0;
   border-bottom: 0;
-  left: 1px;
   transform: rotate(135deg);
   color: #777777;
-  top: -6px;
+  top: -4px;
   transition: all 0.3s ease;
 }
 .dropdown-open > a > .caret-wrap > .caret, .caret-dropdown-open.caret-wrap > .caret {
   transform: rotate(-45deg);
+  top: -2px;
 }
 
 .caret-wrap {
@@ -636,9 +636,7 @@ blockquote.wp-block-quote.is-style-large cite {
   cursor: pointer;
   border-radius: 3px;
   border: 1px solid #c9c9c9;
-  width: 30px;
-  height: 30px;
-  padding: 5px 10px;
+  padding: 0 10px;
   transition: all 0.3s ease;
 }
 
@@ -769,6 +767,7 @@ blockquote.wp-block-quote.is-style-large cite {
   display: block;
 }
 .nv-nav-search form label {
+  display: inline;
   margin: 0;
 }
 .nv-nav-search form label input {
@@ -1689,6 +1688,9 @@ hr {
 }
 .widget .search-form, .widget .woocommerce-product-search {
   position: relative;
+}
+.widget .search-form label, .widget .woocommerce-product-search label {
+  display: inline;
 }
 .widget .search-form:after, .widget .woocommerce-product-search:after {
   font-family: "neve-icons";
