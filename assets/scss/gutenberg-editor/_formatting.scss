@@ -1,0 +1,30 @@
+.editor-styles-wrapper {
+  //<editor-fold desc="Verse">
+  .wp-block-verse {
+    font-style: italic;
+    border: unset;
+  }
+
+  //</editor-fold>
+
+  //<editor-fold desc="Separator">
+  .wp-block-separator {
+    padding: 5px;
+  }
+
+  //</editor-fold>
+
+  //<editor-fold desc="Button">
+  .wp-block-button {
+    .wp-block-button__link {
+      @include button();
+
+    }
+    &.is-style-outline {
+      .wp-block-button__link {
+        @include button-secondary();
+      }
+    }
+  }
+  //</editor-fold>
+}

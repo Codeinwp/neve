@@ -1,4 +1,4 @@
-.gutenberg-editor-page .editor-styles-wrapper {
+.editor-styles-wrapper .editor-writing-flow {
   //<editor-fold desc="Fonts">
   font-size: 16px;
   font-weight: normal;
@@ -161,7 +161,7 @@
 }
 
 @mixin gutenberg-typograpgy--tablet() {
-  .gutenberg-editor-page {
+  .block-editor-page {
     .editor-styles-wrapper {
       font-size: $html-font-size;
       h1, .editor-post-title__block .editor-post-title__input {

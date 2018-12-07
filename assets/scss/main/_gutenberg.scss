@@ -38,6 +38,7 @@ blockquote.wp-block-quote.is-style-large {
   p {
     font-size: $h2-font-size;
   }
+
   cite {
     text-align: center;
     font-size: .95em;
@@ -46,10 +47,95 @@ blockquote.wp-block-quote.is-style-large {
 
 //</editor-fold>
 
+//<editor-fold desc="Pullquote">
+.wp-block-pullquote {
+
+  blockquote {
+    margin: 1em auto;
+
+    &::before,
+    &::after {
+      display: none;
+    }
+
+    cite {
+      text-align: left;
+    }
+  }
+
+  &:not(.is-style-solid-color) {
+    border-top: 4px solid;
+    border-bottom: 4px solid;
+    margin: 1em 0;
+
+    blockquote cite {
+      text-transform: uppercase;
+      text-align: center;
+    }
+  }
+
+}
+
+//</editor-fold>
+
 //<editor-fold desc="Tables">
 .wp-block-table {
   width: 100%;
 }
+
+//</editor-fold>
+
+//<editor-fold desc="Separator">
+.wp-block-separator:not(.is-style-wide):not(.is-style-dots) {
+  border-bottom: 2px solid #8f98a1;
+  position: relative;
+  max-width: 95px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.wp-block-separator.is-style-wide {
+  border-color: #8e98a2;
+}
+
+//</editor-fold>
+
+//<editor-fold desc="Verse">
+.wp-block-verse {
+  background-color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-style: italic;
+  border: unset;
+}
+
+//</editor-fold>
+
+//<editor-fold desc="Code">
+.wp-block-code {
+  code {
+    background-color: inherit;
+  }
+}
+
+//</editor-fold>
+
+//<editor-fold desc="Button">
+.wp-block-button {
+  a {
+    @include button();
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  &.is-style-outline {
+    a.wp-block-button__link {
+      @include button-secondary();
+      border: 1px solid;
+    }
+  }
+}
+
 //</editor-fold>
 
 @mixin gutenberg--tablet() {

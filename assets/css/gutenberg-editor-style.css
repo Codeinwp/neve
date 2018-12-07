@@ -1,110 +1,110 @@
-.gutenberg-editor-page .editor-styles-wrapper {
+.editor-styles-wrapper .editor-writing-flow {
   font-size: 16px;
   font-weight: normal;
   font-family: Graphik, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
   color: #404248;
 }
-.gutenberg-editor-page .editor-styles-wrapper, .gutenberg-editor-page .editor-styles-wrapper p {
+.editor-styles-wrapper .editor-writing-flow, .editor-styles-wrapper .editor-writing-flow p {
   line-height: 1.68421;
 }
-.gutenberg-editor-page .editor-styles-wrapper strong {
+.editor-styles-wrapper .editor-writing-flow strong {
   font-weight: bold;
 }
-.gutenberg-editor-page .editor-styles-wrapper h1, .gutenberg-editor-page .editor-styles-wrapper h2, .gutenberg-editor-page .editor-styles-wrapper h3, .gutenberg-editor-page .editor-styles-wrapper h4, .gutenberg-editor-page .editor-styles-wrapper h5, .gutenberg-editor-page .editor-styles-wrapper h6 {
+.editor-styles-wrapper .editor-writing-flow h1, .editor-styles-wrapper .editor-writing-flow h2, .editor-styles-wrapper .editor-writing-flow h3, .editor-styles-wrapper .editor-writing-flow h4, .editor-styles-wrapper .editor-writing-flow h5, .editor-styles-wrapper .editor-writing-flow h6 {
   font-family: Graphik, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
   line-height: 1.68421;
   margin: 0 0 0.8rem 0;
   font-weight: 600;
   color: #404248;
 }
-.gutenberg-editor-page .editor-styles-wrapper h1 {
+.editor-styles-wrapper .editor-writing-flow h1 {
   font-size: 1.5em;
 }
-.gutenberg-editor-page .editor-styles-wrapper h2 {
+.editor-styles-wrapper .editor-writing-flow h2 {
   font-size: 1.3em;
 }
-.gutenberg-editor-page .editor-styles-wrapper h3 {
+.editor-styles-wrapper .editor-writing-flow h3 {
   font-size: 1.1em;
 }
-.gutenberg-editor-page .editor-styles-wrapper h4 {
+.editor-styles-wrapper .editor-writing-flow h4 {
   font-size: 1em;
 }
-.gutenberg-editor-page .editor-styles-wrapper h5 {
+.editor-styles-wrapper .editor-writing-flow h5 {
   font-size: 0.75em;
 }
-.gutenberg-editor-page .editor-styles-wrapper h6 {
+.editor-styles-wrapper .editor-writing-flow h6 {
   font-size: 0.75em;
 }
-.gutenberg-editor-page .editor-styles-wrapper .editor-post-title__block .editor-post-title__input {
+.editor-styles-wrapper .editor-writing-flow .editor-post-title__block .editor-post-title__input {
   font-family: Graphik, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
   font-size: 1.5em;
   color: #404248;
   line-height: 1.3em;
 }
-.gutenberg-editor-page .editor-styles-wrapper ul, .gutenberg-editor-page .editor-styles-wrapper ol {
+.editor-styles-wrapper .editor-writing-flow ul, .editor-styles-wrapper .editor-writing-flow ol {
   padding-left: 20px;
   margin: 20px 0;
 }
-.gutenberg-editor-page .editor-styles-wrapper ul li, .gutenberg-editor-page .editor-styles-wrapper ol li {
+.editor-styles-wrapper .editor-writing-flow ul li, .editor-styles-wrapper .editor-writing-flow ol li {
   line-height: 2em;
   margin-bottom: 10px;
 }
-.gutenberg-editor-page .editor-styles-wrapper ul {
+.editor-styles-wrapper .editor-writing-flow ul {
   list-style-type: circle;
 }
-.gutenberg-editor-page .editor-styles-wrapper blockquote.wp-block-quote {
+.editor-styles-wrapper .editor-writing-flow blockquote.wp-block-quote {
   border: none;
   text-align: center;
   margin: 40px 0;
   padding: 0;
 }
-.gutenberg-editor-page .editor-styles-wrapper blockquote.wp-block-quote p:not(.wp-block-quote__citation) {
+.editor-styles-wrapper .editor-writing-flow blockquote.wp-block-quote p:not(.wp-block-quote__citation) {
   font-size: 1.1em;
   margin-bottom: 0;
 }
-.gutenberg-editor-page .editor-styles-wrapper blockquote.wp-block-quote .wp-block-quote__citation {
+.editor-styles-wrapper .editor-writing-flow blockquote.wp-block-quote .wp-block-quote__citation {
   padding-top: 20px;
   display: block;
   color: #777777;
   margin-top: 0;
   font-size: .95em;
 }
-.gutenberg-editor-page .editor-styles-wrapper blockquote.wp-block-quote:after, .gutenberg-editor-page .editor-styles-wrapper blockquote.wp-block-quote:before {
+.editor-styles-wrapper .editor-writing-flow blockquote.wp-block-quote:after, .editor-styles-wrapper .editor-writing-flow blockquote.wp-block-quote:before {
   height: 3px;
   width: 60px;
   background-color: #c9c9c9;
   content: " ";
   display: block;
 }
-.gutenberg-editor-page .editor-styles-wrapper blockquote.wp-block-quote:before {
+.editor-styles-wrapper .editor-writing-flow blockquote.wp-block-quote:before {
   margin: 0 auto 40px;
 }
-.gutenberg-editor-page .editor-styles-wrapper blockquote.wp-block-quote:after {
+.editor-styles-wrapper .editor-writing-flow blockquote.wp-block-quote:after {
   margin: 40px auto 0;
 }
-.gutenberg-editor-page .editor-styles-wrapper blockquote.wp-block-quote > * {
+.editor-styles-wrapper .editor-writing-flow blockquote.wp-block-quote > * {
   margin-bottom: 0;
 }
-.gutenberg-editor-page .editor-styles-wrapper blockquote.wp-block-quote.is-style-large p:not(.wp-block-quote__citation) {
+.editor-styles-wrapper .editor-writing-flow blockquote.wp-block-quote.is-style-large p:not(.wp-block-quote__citation) {
   font-size: 1.75em;
 }
-.gutenberg-editor-page .editor-styles-wrapper table {
+.editor-styles-wrapper .editor-writing-flow table {
   width: 100%;
   margin: 20px 0;
 }
-.gutenberg-editor-page .editor-styles-wrapper table td, .gutenberg-editor-page .editor-styles-wrapper table th {
+.editor-styles-wrapper .editor-writing-flow table td, .editor-styles-wrapper .editor-writing-flow table th {
   line-height: 1.68421;
   border: none;
   padding: 10px;
   border-bottom: 1px solid #f0f0f0;
 }
-.gutenberg-editor-page .editor-styles-wrapper table tbody tr:hover {
+.editor-styles-wrapper .editor-writing-flow table tbody tr:hover {
   background-color: #fbfbfb;
 }
-.gutenberg-editor-page .editor-styles-wrapper table .wp-block-table__cell-content {
+.editor-styles-wrapper .editor-writing-flow table .wp-block-table__cell-content {
   padding: 0;
 }
-.gutenberg-editor-page .editor-styles-wrapper .wp-block-preformatted pre {
+.editor-styles-wrapper .editor-writing-flow .wp-block-preformatted pre {
   display: block;
   padding: 20px;
   background: #fbfbfb;
@@ -119,20 +119,55 @@
   font-family: monospace;
   color: #404248;
 }
-.gutenberg-editor-page .editor-styles-wrapper a {
+.editor-styles-wrapper .editor-writing-flow a {
   color: #0366d6;
   text-decoration: none;
 }
-.gutenberg-editor-page .editor-styles-wrapper a:hover {
+.editor-styles-wrapper .editor-writing-flow a:hover {
   color: #0366d6;
   text-decoration: underline;
 }
-.gutenberg-editor-page .editor-styles-wrapper .editor-rich-text__tinymce code {
+.editor-styles-wrapper .editor-writing-flow .editor-rich-text__tinymce code {
   background: #d0effb;
   border-radius: 5px;
   border: 1px solid #f0f0f0;
   font-family: monospace;
   padding: 0;
+}
+
+.editor-styles-wrapper .wp-block-verse {
+  font-style: italic;
+  border: unset;
+}
+.editor-styles-wrapper .wp-block-separator {
+  padding: 5px;
+}
+.editor-styles-wrapper .wp-block-button .wp-block-button__link {
+  font-size: .8em;
+  font-weight: 600;
+  padding: 6px 12px;
+  transition: all .15s ease-in-out;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  line-height: 1.68421;
+  font-family: inherit;
+}
+.editor-styles-wrapper .wp-block-button .wp-block-button__link:hover {
+  text-decoration: none;
+  opacity: .9;
+}
+.editor-styles-wrapper .wp-block-button.is-style-outline .wp-block-button__link {
+  border: 1px solid #777777;
+  background-color: transparent;
+  font-weight: 600;
+  color: #777777;
+}
+.editor-styles-wrapper .wp-block-button.is-style-outline .wp-block-button__link:hover {
+  background: transparent;
 }
 
 .editor-styles-wrapper.neve-has-meta .editor-post-title__block > div:first-child:after {
@@ -200,7 +235,7 @@
   display: none;
 }
 
-.gutenberg-editor-page.post-type-page .editor-post-title__input {
+.block-editor-page.post-type-page .editor-post-title__input {
   border-bottom: 1px solid #f0f0f0;
 }
 
@@ -220,25 +255,25 @@
     max-width: 720px;
   }
 
-  .gutenberg-editor-page .editor-styles-wrapper {
+  .block-editor-page .editor-styles-wrapper {
     font-size: 16px;
   }
-  .gutenberg-editor-page .editor-styles-wrapper h1, .gutenberg-editor-page .editor-styles-wrapper .editor-post-title__block .editor-post-title__input {
+  .block-editor-page .editor-styles-wrapper h1, .block-editor-page .editor-styles-wrapper .editor-post-title__block .editor-post-title__input {
     font-size: 2em;
   }
-  .gutenberg-editor-page .editor-styles-wrapper h2 {
+  .block-editor-page .editor-styles-wrapper h2 {
     font-size: 1.75em;
   }
-  .gutenberg-editor-page .editor-styles-wrapper h3 {
+  .block-editor-page .editor-styles-wrapper h3 {
     font-size: 1.5em;
   }
-  .gutenberg-editor-page .editor-styles-wrapper h4 {
+  .block-editor-page .editor-styles-wrapper h4 {
     font-size: 1.25em;
   }
-  .gutenberg-editor-page .editor-styles-wrapper h5 {
+  .block-editor-page .editor-styles-wrapper h5 {
     font-size: 1em;
   }
-  .gutenberg-editor-page .editor-styles-wrapper h6 {
+  .block-editor-page .editor-styles-wrapper h6 {
     font-size: 1em;
   }
 }
