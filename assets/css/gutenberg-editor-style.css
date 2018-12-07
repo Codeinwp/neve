@@ -260,16 +260,17 @@
     display: flex;
     justify-content: center;
     text-align: center;
-    background: #e7e7e7;
+    background: rgba(231, 231, 231, 0.25);
     padding: 10px;
     max-width: 100%;
     flex-grow: 1;
   }
   .neve-gtb-sidebar > p {
     position: fixed;
-    font-size: 32px;
-    font-weight: 600;
-    color: #777;
+    color: #b4b4b4;
+    font-weight: 300;
+    font-size: 16px !important;
+    font-family: Graphik, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif !important;
   }
 }
 @media (min-width: 1200px) {
