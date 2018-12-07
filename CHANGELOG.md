@@ -1,4 +1,19 @@
 
+ ### v1.0.19 - 2018-12-03 
+ **Changes:** 
+ * Hide menu cart icon on the Cart page
+* Improved code usability
+* Fixed issues with the metabox on the Blog page not working
+ 
+ ### v1.0.18 - 2018-11-29 
+ **Changes:** 
+ * Fixed issue with Gutenberg columns width
+* Fixed issues with the content width option
+* Refactor the menu class
+* Updated theme copyright
+* Recommend Otter Blocks plugin
+* Added Last menu items options to the fallback primary menu
+ 
  ### v1.0.16 - 2018-11-27 
  **Changes:** 
  * New Neve Restaurant demo

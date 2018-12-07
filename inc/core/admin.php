@@ -76,12 +76,12 @@ class Admin {
 					'optimole-wp',
 					'themeisle-companion',
 					'feedzy-rss-feeds',
+					'otter-blocks',
 					'elementor',
 					'wp-product-review',
 					'visualizer',
 					'wpforms-lite',
 					'translatepress-multilingual',
-					'otter-blocks',
 				),
 			),
 			'support'         => array(
