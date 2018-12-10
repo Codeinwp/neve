@@ -106,15 +106,16 @@ $wp-block-selector: '.neve-gtb.container.has-sidebar-full-width .neve-blocks-wra
     display: flex;
     justify-content: center;
     text-align: center;
-    background: $neve-gtb-grey;
+    background: rgba(231,231,231,.25);
     padding: 10px;
     max-width: 100%;
     flex-grow: 1;
     > p {
       position: fixed;
-      font-size: 32px;
-      font-weight: 600;
-      color: #777;
+      color: #b4b4b4;
+      font-weight: 300;
+      font-size: 16px !important;
+      font-family: $default-font-family !important;
     }
   }
 }
