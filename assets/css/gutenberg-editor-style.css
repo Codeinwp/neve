@@ -140,7 +140,8 @@
   border: unset;
 }
 .editor-styles-wrapper .wp-block-separator {
-  padding: 5px;
+  margin: 20px auto 40px;
+  padding-top: 20px;
 }
 .editor-styles-wrapper .wp-block-button .wp-block-button__link {
   font-size: .8em;
@@ -168,6 +169,13 @@
 }
 .editor-styles-wrapper .wp-block-button.is-style-outline .wp-block-button__link:hover {
   background: transparent;
+}
+.editor-styles-wrapper .wp-block-pullquote p {
+  margin: 0 0 20px 0;
+}
+.editor-styles-wrapper .wp-block-pullquote .wp-block-pullquote__citation {
+  padding-top: 10px;
+  font-size: .85em;
 }
 
 .editor-styles-wrapper.neve-has-meta .editor-post-title__block > div:first-child:after {

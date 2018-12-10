@@ -80,6 +80,11 @@ $notices: (
         color: #fff;
         font-weight: 800;
       }
+      .button, .button:focus, .button:active, .button:hover {
+        background-color: #fff;
+        color: $color;
+        line-height: 1;
+      }
     } @else {
       a {
         color: $body-color;
@@ -87,12 +92,13 @@ $notices: (
       &:before {
         color: $body-color;
       }
+      .button, .button:focus, .button:active, .button:hover {
+        background-color: $body-color;
+        color: $color;
+        line-height: 1;
+      }
     }
-    .button, .button:focus, .button:active, .button:hover {
-      background-color: #fff;
-      color: $color;
-      line-height: 1;
-    }
+
   }
 }
 

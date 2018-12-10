@@ -411,11 +411,16 @@ blockquote.wp-block-quote.is-style-large cite {
 .wp-block-pullquote blockquote {
   margin: 1em auto;
 }
+.wp-block-pullquote blockquote p {
+  font-size: inherit;
+  margin-bottom: 20px;
+}
 .wp-block-pullquote blockquote::before, .wp-block-pullquote blockquote::after {
   display: none;
 }
 .wp-block-pullquote blockquote cite {
   text-align: left;
+  font-size: .85em;
 }
 .wp-block-pullquote:not(.is-style-solid-color) {
   border-top: 4px solid;
@@ -433,14 +438,14 @@ blockquote.wp-block-quote.is-style-large cite {
 
 .wp-block-separator:not(.is-style-wide):not(.is-style-dots) {
   border-bottom: 2px solid #8f98a1;
-  position: relative;
-  max-width: 95px;
-  left: 50%;
-  transform: translateX(-50%);
+  display: block;
+  max-width: 100px;
+  margin: 40px auto;
 }
 
-.wp-block-separator.is-style-wide {
+.wp-block-separator.is-style-wide, .wp-block-separator.is-style-dots {
   border-color: #8e98a2;
+  margin: 10px auto 20px;
 }
 
 .wp-block-verse {
