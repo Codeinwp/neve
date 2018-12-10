@@ -52,7 +52,10 @@ blockquote.wp-block-quote.is-style-large {
 
   blockquote {
     margin: 1em auto;
-
+    p {
+      font-size: inherit;
+      margin-bottom: $spacing-sm;
+    }
     &::before,
     &::after {
       display: none;
@@ -60,6 +63,7 @@ blockquote.wp-block-quote.is-style-large {
 
     cite {
       text-align: left;
+      font-size: .85em;
     }
   }
 
@@ -88,14 +92,14 @@ blockquote.wp-block-quote.is-style-large {
 //<editor-fold desc="Separator">
 .wp-block-separator:not(.is-style-wide):not(.is-style-dots) {
   border-bottom: 2px solid #8f98a1;
-  position: relative;
-  max-width: 95px;
-  left: 50%;
-  transform: translateX(-50%);
+  display: block;
+  max-width: 100px;
+  margin: $spacing auto;
 }
 
-.wp-block-separator.is-style-wide {
+.wp-block-separator.is-style-wide, .wp-block-separator.is-style-dots {
   border-color: #8e98a2;
+  margin: $spacing-xs auto $spacing-sm;
 }
 
 //</editor-fold>
@@ -124,10 +128,12 @@ blockquote.wp-block-quote.is-style-large {
 .wp-block-button {
   a {
     @include button();
+
     &:hover {
       text-decoration: none;
     }
   }
+
   &.is-style-outline {
     a.wp-block-button__link {
       @include button-secondary();

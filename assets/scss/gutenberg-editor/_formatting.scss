@@ -9,7 +9,8 @@
 
   //<editor-fold desc="Separator">
   .wp-block-separator {
-    padding: 5px;
+    margin: $spacing - 20px auto $spacing;
+    padding-top: $spacing - 20px;
   }
 
   //</editor-fold>
@@ -20,11 +21,23 @@
       @include button();
 
     }
+
     &.is-style-outline {
       .wp-block-button__link {
         @include button-secondary();
       }
     }
   }
+
   //</editor-fold>
+
+  .wp-block-pullquote {
+    p {
+      margin: 0 0 $spacing-sm 0;
+    }
+    .wp-block-pullquote__citation {
+      padding-top: $spacing-xs;
+      font-size: .85em;
+    }
+  }
 }
