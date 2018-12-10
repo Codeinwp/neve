@@ -1,4 +1,10 @@
 
+ ### v1.0.22 - 2018-12-10 
+ **Changes:** 
+ * Fixed alt attribute for the author gravatar image
+* Improved My Account page layout
+* Small fixes for the Gutenberg default blocks
+ 
  ### v1.0.21 - 2018-12-07 
  **Changes:** 
  * Styled basic Gutenberg blocks
