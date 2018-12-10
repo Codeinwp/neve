@@ -140,7 +140,8 @@
   border: unset;
 }
 .editor-styles-wrapper .wp-block-separator {
-  padding: 5px;
+  margin: 20px auto 40px;
+  padding-top: 20px;
 }
 .editor-styles-wrapper .wp-block-button .wp-block-button__link {
   font-size: .8em;
@@ -168,6 +169,13 @@
 }
 .editor-styles-wrapper .wp-block-button.is-style-outline .wp-block-button__link:hover {
   background: transparent;
+}
+.editor-styles-wrapper .wp-block-pullquote p {
+  margin: 0 0 20px 0;
+}
+.editor-styles-wrapper .wp-block-pullquote .wp-block-pullquote__citation {
+  padding-top: 10px;
+  font-size: .85em;
 }
 
 .editor-styles-wrapper.neve-has-meta .editor-post-title__block > div:first-child:after {
@@ -295,16 +303,17 @@
     display: flex;
     justify-content: center;
     text-align: center;
-    background: #e7e7e7;
+    background: rgba(231, 231, 231, 0.25);
     padding: 10px;
     max-width: 100%;
     flex-grow: 1;
   }
   .neve-gtb-sidebar > p {
     position: fixed;
-    font-size: 32px;
-    font-weight: 600;
-    color: #777;
+    color: #b4b4b4;
+    font-weight: 300;
+    font-size: 16px !important;
+    font-family: Graphik, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif !important;
   }
 }
 @media (min-width: 1200px) {

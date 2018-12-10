@@ -92,7 +92,7 @@
 .woocommerce-page .woocommerce-info .button:focus,
 .woocommerce-page .woocommerce-info .button:active,
 .woocommerce-page .woocommerce-info .button:hover {
-  background-color: #fff;
+  background-color: #404248;
   color: #f0f0f0;
   line-height: 1;
 }
@@ -863,6 +863,61 @@
 
 .cart-collaterals ul.products li.product .button {
   line-height: 1.6;
+}
+
+body.woocommerce-account .nv-content-wrap > .woocommerce {
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+}
+
+.nv-content-wrap .woocommerce-MyAccount-navigation {
+  width: 100%;
+  float: none;
+  border-bottom: 1px solid #f0f0f0;
+  margin-bottom: 20px;
+}
+.nv-content-wrap .woocommerce-MyAccount-navigation > ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+}
+.nv-content-wrap .woocommerce-MyAccount-navigation li {
+  margin: 0;
+  padding: 5px 10px;
+}
+.nv-content-wrap .woocommerce-MyAccount-navigation li:not(.is-active) a {
+  color: #24292e;
+}
+.nv-content-wrap .woocommerce-MyAccount-navigation li a {
+  font-weight: 500;
+}
+
+.woocommerce-account .woocommerce-MyAccount-content {
+  width: 100%;
+  float: none;
+}
+.woocommerce-account .woocommerce-MyAccount-content .woocommerce-Addresses .woocommerce-Address {
+  padding: 0;
+}
+.woocommerce-account .woocommerce-MyAccount-content .woocommerce-Address-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.woocommerce-account .woocommerce-MyAccount-content .woocommerce-Address-title h3 {
+  flex-grow: 1;
+  float: none;
+  margin-bottom: 0;
+}
+.woocommerce-account .woocommerce-MyAccount-content .woocommerce-Address-title .edit {
+  float: none;
+}
+.woocommerce-account .woocommerce-MyAccount-content address {
+  font-style: normal;
+  font-size: .9em;
 }
 
 @media (min-width: 769px) {
