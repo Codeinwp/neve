@@ -36,8 +36,11 @@
       margin: 0 0 $spacing-sm 0;
     }
     .wp-block-pullquote__citation {
-      padding-top: $spacing-xs;
+      padding-top: $spacing-sm;
       font-size: .85em;
+    }
+    &.is-style-solid-color blockquote>.editor-rich-text p {
+      font-size: 2em;
     }
   }
 }

@@ -174,8 +174,11 @@
   margin: 0 0 20px 0;
 }
 .editor-styles-wrapper .wp-block-pullquote .wp-block-pullquote__citation {
-  padding-top: 10px;
+  padding-top: 20px;
   font-size: .85em;
+}
+.editor-styles-wrapper .wp-block-pullquote.is-style-solid-color blockquote > .editor-rich-text p {
+  font-size: 2em;
 }
 
 .editor-styles-wrapper.neve-has-meta .editor-post-title__block > div:first-child:after {

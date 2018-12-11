@@ -66,7 +66,9 @@ blockquote.wp-block-quote.is-style-large {
       font-size: .85em;
     }
   }
-
+  &.is-style-solid-color blockquote p {
+    font-size: 2em;
+  }
   &:not(.is-style-solid-color) {
     border-top: 4px solid;
     border-bottom: 4px solid;
@@ -99,7 +101,7 @@ blockquote.wp-block-quote.is-style-large {
 
 .wp-block-separator.is-style-wide, .wp-block-separator.is-style-dots {
   border-color: #8e98a2;
-  margin: $spacing-xs auto $spacing-sm;
+  margin: $spacing-sm auto $spacing;
 }
 
 //</editor-fold>
