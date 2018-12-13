@@ -3,7 +3,7 @@
 **Tags:** blog, custom-logo, e-commerce, rtl-language-support, post-formats, grid-layout, one-column, two-columns, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready  
 **Requires at least:** 4.0  
 **Tested up to:** 5.0  
-**Stable tag:** 1.0.23 
+**Stable tag:** 1.0.23  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -17,6 +17,12 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
+### 1.0.23 - 2018-12-13  ###
+
+* Fixed style layout for the pullquote Gutenberg block
+* Fixed AMP errors
+
+
 ### 1.0.22 - 2018-12-10  ###
 
 * Fixed alt attribute for the author gravatar image

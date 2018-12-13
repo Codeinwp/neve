@@ -1,4 +1,9 @@
 
+ ### v1.0.23 - 2018-12-13 
+ **Changes:** 
+ * Fixed style layout for the pullquote Gutenberg block
+* Fixed AMP errors
+ 
  ### v1.0.22 - 2018-12-10 
  **Changes:** 
  * Fixed alt attribute for the author gravatar image

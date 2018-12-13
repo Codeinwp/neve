@@ -17,6 +17,12 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
+= 1.0.23 - 2018-12-13  = 
+
+* Fixed style layout for the pullquote Gutenberg block
+* Fixed AMP errors
+
+
 = 1.0.22 - 2018-12-10  = 
 
 * Fixed alt attribute for the author gravatar image
