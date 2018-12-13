@@ -2,8 +2,8 @@
 Contributors: themeisle
 Tags: blog, custom-logo, e-commerce, rtl-language-support, post-formats, grid-layout, one-column, two-columns, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready
 Requires at least: 4.0
-Tested up to: 4.9.8
-Stable tag: 1.0.10
+Tested up to: 5.0
+Stable tag: 1.0.23
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 

@@ -170,11 +170,16 @@
 .editor-styles-wrapper .wp-block-button.is-style-outline .wp-block-button__link:hover {
   background: transparent;
 }
-.editor-styles-wrapper .wp-block-pullquote p {
-  margin: 0 0 20px 0;
+
+.block-editor-page .editor-styles-wrapper .editor-writing-flow .wp-block-pullquote blockquote {
+  margin: 1em auto;
 }
-.editor-styles-wrapper .wp-block-pullquote .wp-block-pullquote__citation {
-  padding-top: 10px;
+.block-editor-page .editor-styles-wrapper .editor-writing-flow .wp-block-pullquote blockquote > .editor-rich-text p {
+  margin: 0 0 20px 0;
+  font-size: 2em;
+}
+.block-editor-page .editor-styles-wrapper .editor-writing-flow .wp-block-pullquote blockquote .wp-block-pullquote__citation {
+  padding-top: 20px;
   font-size: .85em;
 }
 
