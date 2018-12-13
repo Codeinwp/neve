@@ -2,8 +2,6 @@
 <ruleset name="Themeisle">
     <description>Themeisle rules for PHP_CodeSniffer</description>
 
-    <arg name="parallel" value="8" />
-
     <file>.</file>
 
     <exclude-pattern>node_modules/*</exclude-pattern>
