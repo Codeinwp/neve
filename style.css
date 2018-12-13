@@ -1258,11 +1258,9 @@ button:hover, input[type=button]:hover, .btn:hover, input[type="submit"]:hover {
   color: #777777;
 }
 
-.nv-post-thumbnail-wrap {
-  width: 100%;
-}
 .nv-post-thumbnail-wrap a {
   transition: all 0.3s ease;
+  display: inline-block;
 }
 .nv-post-thumbnail-wrap a:hover {
   opacity: .95;
