@@ -19,9 +19,13 @@
 }
 
 .nv-post-thumbnail-wrap {
+  amp-img {
+    display: inline-block;
+  }
+
   a {
     transition: $transition_med;
-    display: inline-block;
+
     &:hover {
       opacity: .95;
     }
