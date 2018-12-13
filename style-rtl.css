@@ -412,7 +412,7 @@ blockquote.wp-block-quote.is-style-large cite {
   margin: 1em auto;
 }
 .wp-block-pullquote blockquote p {
-  font-size: inherit;
+  font-size: 2em;
   margin-bottom: 20px;
 }
 .wp-block-pullquote blockquote::before, .wp-block-pullquote blockquote::after {
