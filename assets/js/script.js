@@ -104,7 +104,7 @@
             navClickaway.setAttribute("class", "nav-clickaway-overlay");
             $("#nv-primary-navigation").after(navClickaway);
             $(navClickaway).on("touchstart click", function() {
-                this.remove();
+                $(this).remove();
                 $("#nv-primary-navigation li, .menu-item-nav-search").removeClass("active dropdown-open");
             });
             return false;
