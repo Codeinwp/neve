@@ -1,4 +1,23 @@
 
+ ### v1.0.22 - 2018-12-10 
+ **Changes:** 
+ * Fixed alt attribute for the author gravatar image
+* Improved My Account page layout
+* Small fixes for the Gutenberg default blocks
+ 
+ ### v1.0.21 - 2018-12-07 
+ **Changes:** 
+ * Styled basic Gutenberg blocks
+* Fixed issue with the search input icon
+ 
+ ### v1.0.20 - 2018-12-05 
+ **Changes:** 
+ * New Neve Charity demo
+* Updated the text for the upgrade PHP notice
+* Style spacing on the checkout page
+* Added color for the current menu item in the primary menu
+* Fixed menu anchors in the Neve demos
+ 
  ### v1.0.19 - 2018-12-03 
  **Changes:** 
  * Hide menu cart icon on the Cart page
