@@ -8,28 +8,38 @@
   align-items: center;
   display: flex;
   padding: $spacing-xs 0;
+
+  amp-img i-amphtml-sizer img {
+    max-height: 60px;
+  }
+
   img {
     max-height: 60px;
     float: left;
   }
+
   p {
     font-size: $h4-font-size;
     margin-bottom: 0;
     font-weight: 600;
   }
+
   small {
     width: 100%;
     display: block;
   }
+
   a {
     color: $body-color;
     display: inline;
+
     &:hover {
       color: $body-color;
       text-decoration: none;
       opacity: .9;
     }
   }
+
   .nav-center & > * {
     text-align: center;
   }

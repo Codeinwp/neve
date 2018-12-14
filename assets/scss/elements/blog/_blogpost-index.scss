@@ -2,8 +2,10 @@
   word-wrap: break-word;
   font-weight: 600;
   line-height: 1.3em;
+
   a {
     color: $body-color;
+
     &:hover,
     &:focus {
       opacity: .9;
@@ -17,13 +19,18 @@
 }
 
 .nv-post-thumbnail-wrap {
-  width: 100%;
+  amp-img {
+    display: inline-block;
+  }
+
   a {
     transition: $transition_med;
+
     &:hover {
       opacity: .95;
     }
   }
+
   img {
     height: auto;
   }
@@ -51,6 +58,7 @@
   border-bottom: $muted-border;
   display: flex;
   flex-direction: column;
+
   .button {
     display: inline-block;
     align-self: flex-start;
@@ -75,12 +83,15 @@
 .layout-grid .content {
   > * {
     margin: 0 0 $spacing-xs;
+
     &:last-child {
       margin-bottom: 0;
     }
+
     &:first-child {
       margin-top: 0;
     }
+
     &.nv-meta-list {
       margin-top: 0;
     }
@@ -91,15 +102,19 @@
   .non-grid-content {
     display: flex;
     flex-direction: column;
+
     > * {
       margin: 0 0 $spacing-xs;
+
       &:last-child {
         margin-bottom: 0;
       }
+
       &.nv-meta-list {
         margin-top: 0;
       }
     }
+
     .blog-entry-title {
       margin-bottom: 0;
     }
