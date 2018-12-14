@@ -1,4 +1,9 @@
 
+ ### v1.0.24 - 2018-12-14 
+ **Changes:** 
+ * Fixed problems with logo and blog images on AMP
+* Fixed problem with the autoloader on specific servers
+ 
  ### v1.0.23 - 2018-12-13 
  **Changes:** 
  * Fixed style layout for the pullquote Gutenberg block
