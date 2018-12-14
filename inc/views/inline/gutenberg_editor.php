@@ -241,7 +241,7 @@ class Gutenberg_Editor extends Base_Inline {
 		$line_height = get_theme_mod( 'neve_' . $control . '_line_height' );
 		$line_height = json_decode( $line_height, true );
 
-		$suffix = $control === 'body' ? 'px' : isset( $font_size['suffix'] ) ? $font_size['suffix'] : 'em';
+		$suffix = $control === 'body' ? 'px' : ( isset( $font_size['suffix'] ) ? $font_size['suffix'] : 'em' );
 
 		$settings = array(
 			array(
