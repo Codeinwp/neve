@@ -54,7 +54,6 @@ class Nav_Walker extends \Walker_Nav_Menu {
 		return $title;
 	}
 
-
 	/**
 	 * Start_el
 	 *
