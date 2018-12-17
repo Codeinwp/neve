@@ -13,10 +13,12 @@
   overflow-y: auto;
   transition: $transition_med;
   margin-bottom: 0;
+
   .responsive-opened & {
     max-height: calc(100vh - 70px);
     padding-bottom: $spacing-sm;
   }
+
   a {
     color: $body-color;
     font-weight: 500;
@@ -25,11 +27,16 @@
     padding: $spacing-xs 0;
     position: relative;
   }
+
   li {
     cursor: pointer;
     width: 100%;
     display: block;
     position: relative;
+  }
+
+  .amp-desktop-caret-wrap {
+    display: none;
   }
 }
 
@@ -51,8 +58,8 @@
     border-left: $muted-border;
   }
 
-  .dropdown-open > .sub-menu,
-  .caret-wrap.caret-dropdown-open + .sub-menu {
+  .caret-wrap.dropdown-open + .sub-menu,
+  .dropdown-open.sub-menu {
     max-height: 2000px;
     transition: $transition_med;
     opacity: 1;
@@ -73,8 +80,8 @@
   color: $gray-color;
   top: -4px;
   transition: $transition_med;
-  .dropdown-open > a > .caret-wrap > &,
-  .caret-dropdown-open.caret-wrap > & {
+
+  .dropdown-open.caret-wrap > & {
     transform: rotate(-45deg);
     top: -2px;
   }
@@ -106,23 +113,45 @@
     padding-bottom: 0;
   }
 
+  li > .caret-wrap {
+    float: right;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+  }
+
+  #nv-primary-navigation {
+    .amp-caret-wrap {
+      display: none;
+    }
+
+    .amp-desktop-caret-wrap {
+      display: block;
+    }
+  }
+
   #nv-primary-navigation {
     @include horizontal-list($spacing-xs, 'true');
     overflow-y: inherit;
     max-height: inherit;
     margin-left: auto;
     justify-content: flex-start;
+
     .responsive-opened & {
       padding-bottom: 0;
     }
+
     > li {
       width: inherit;
+
       > a {
         padding: $spacing-xs 0;
         display: flex;
         align-items: center;
         justify-content: center;
       }
+
       li a {
         position: relative;
       }
@@ -133,6 +162,7 @@
         color: $link_hover_color;
         text-decoration: none;
       }
+
       > a > .caret-wrap .caret {
         color: $link_hover_color;
       }
@@ -151,11 +181,13 @@
       z-index: 100;
       opacity: 0;
       visibility: hidden;
+
       .sub-menu {
         left: 100%;
         right: auto;
         top: -1px;
       }
+
       li {
         display: flex;
         align-items: center;
@@ -163,6 +195,7 @@
         border: $muted-border;
         border-top: none;
         min-width: 150px;
+
         a {
           display: flex;
           align-items: center;
@@ -182,6 +215,7 @@
         visibility: visible;
         opacity: 1;
       }
+
       &:last-child {
         padding-right: $spacing-xs;
       }
@@ -197,12 +231,10 @@
     border: none;
     top: inherit;
     width: 10px;
-    .dropdown-open > a > & > .caret {
+
+    &.dropdown-open .caret {
       color: $body-color;
       transform: rotate(135deg);
-    }
-    .dropdown-open > & {
-      background: transparent;
     }
   }
 

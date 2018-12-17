@@ -1,18 +1,17 @@
 /* Style mega-menu and its children on mobile */
 #nv-primary-navigation .neve-mega-menu {
-  position: static;
-  &.dropdown-open .sub-menu {
-    max-height: inherit;
+  .sub-menu > li > a {
+    white-space: normal;
   }
   > .sub-menu {
     border-left: none;
   }
-  &.dropdown-open > .sub-menu {
+  .dropdown-open.sub-menu {
+    max-height: inherit;
     width: 100%;
     border-left: none;
   }
 
-  &.dropdown-open .neve-mm-col,
   .neve-mm-col {
     border: none;
     > a {
@@ -37,9 +36,18 @@
     background-color: $muted-white-med;
     cursor: default;
   }
+  .caret-wrap.dropdown-open + .sub-menu .sub-menu {
+    max-height: 2000px;
+  }
+  .sub-menu .caret-wrap {
+    display: none;
+  }
 }
 
 @mixin mega-menu--laptop() {
+  #nv-primary-navigation .neve-mega-menu {
+    position: static;
+  }
   #nv-primary-navigation .neve-mega-menu > .sub-menu {
     width: 950px;
     position: absolute;
@@ -88,7 +96,10 @@
 }
 
 @mixin mega-menu--desktop() {
-  #nv-primary-navigation .neve-mega-menu > .sub-menu {
-    width: 1170px;
+  #nv-primary-navigation .neve-mega-menu {
+    > .sub-menu {
+      width: 1170px;
+    }
+    position: static;
   }
 }
