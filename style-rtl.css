@@ -558,7 +558,7 @@ blockquote.wp-block-quote.is-style-large cite {
   display: flex;
   padding: 10px 0;
 }
-.site-logo amp-img i-amphtml-sizer img {
+.site-logo amp-img img {
   max-height: 60px;
 }
 .site-logo img {
