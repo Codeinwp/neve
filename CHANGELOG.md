@@ -1,4 +1,9 @@
 
+ ### v1.0.26 - 2018-12-17 
+ **Changes:** 
+ * Fixed issues in IE with the Neve 2018 Site
+* Fixed issues in AMP with the navigation menu
+ 
  ### v1.0.25 - 2018-12-14 
  **Changes:** 
  * Optimized images for Neve demo and fixed issue with IE
