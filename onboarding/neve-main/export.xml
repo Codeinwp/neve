@@ -16,7 +16,7 @@
 <!-- 7. WordPress will then import each of the posts, pages, comments, categories, etc. -->
 <!--    contained in this file into your site. -->
 
-<!-- generator="WordPress/4.9.8" created="2018-12-17 11:43" -->
+<!-- generator="WordPress/4.9.8" created="2018-12-17 11:52" -->
 <rss version="2.0"
 	xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
 	xmlns:content="http://purl.org/rss/1.0/modules/content/"
@@ -29,7 +29,7 @@
 	<title>Neve Onboarding</title>
 	<link>https://demo.themeisle.com/neve-onboarding</link>
 	<description>Just another Demos Sites site</description>
-	<pubDate>Mon, 17 Dec 2018 11:43:31 +0000</pubDate>
+	<pubDate>Mon, 17 Dec 2018 11:52:21 +0000</pubDate>
 	<language>en-US</language>
 	<wp:wxr_version>1.2</wp:wxr_version>
 	<wp:base_site_url>https://demo.themeisle.com/</wp:base_site_url>
