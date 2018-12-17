@@ -247,9 +247,12 @@ class Front_End {
 		}
 		add_theme_support(
 			'amp',
-			apply_filters( 'neve_filter_amp_support', array(
-				'paired' => true,
-			) )
+			apply_filters(
+				'neve_filter_amp_support',
+				array(
+					'paired' => true,
+				)
+			)
 		);
 	}
 

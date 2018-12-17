@@ -191,7 +191,6 @@ class Amp {
 		$attrs .= ' aria-expanded="false" ';
 		$attrs .= ' [aria-expanded]="' . $state . ' ? \'true\' : \'false\'"><span class="caret"></span></div>';
 
-
 		$output = str_replace( '<div class="caret-wrap ' . $id . '"><span class="caret"></span></div></a>', $attrs, $output );
 
 		return $output;
