@@ -91,10 +91,9 @@ class Post_Meta extends Base_View {
 		}
 		if ( $comments_number == 0 ) {
 			return '';
-		} elseif ( $comments_number > 1 ) {
-			$comments = $comments_number . __( ' Comments', 'neve' );
 		} else {
-			$comments = __( '1 Comment', 'neve' );
+			/* translators: %s: number of comments */
+			$comments = sprintf( _n( '%s Comment', '%s Comments', $comments_number, 'neve' ), $comments_number );
 		}
 
 		return '<a href="' . esc_url( get_comments_link() ) . '">' . esc_html( $comments ) . '</a>';
