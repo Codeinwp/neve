@@ -2170,6 +2170,7 @@ hr {
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 100%;
   }
   #nv-primary-navigation > li li a {
     position: relative;
