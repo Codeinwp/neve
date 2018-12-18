@@ -182,16 +182,16 @@ class Amp {
 
 		$attrs = '';
 
-		$attrs .= ' class="caret-wrap"';
-		$attrs .= ' [class]="\'caret-wrap\' + ( ' . $state . ' ? \' caret-dropdown-open\' : \'\')" ';
+		$attrs .= '<div class="caret-wrap amp-desktop-caret-wrap"><span class="caret"></span></div></a><amp-state id="' . $state . '"><script type="application/json">false</script></amp-state>';
+		$attrs .= '<div class="caret-wrap amp-caret-wrap"';
+		$attrs .= ' [class]="\'caret-wrap amp-caret-wrap\' + ( ' . $state . ' ? \' dropdown-open\' : \'\')" ';
 		$attrs .= ' on="tap:AMP.setState( { ' . $state . ': ! ' . $state . ' } )"';
 		$attrs .= ' role="button" ';
 		$attrs .= ' tabindex="1" ';
 		$attrs .= ' aria-expanded="false" ';
-		$attrs .= ' [aria-expanded]="' . $state . ' ? \'true\' : \'false\'" ';
+		$attrs .= ' [aria-expanded]="' . $state . ' ? \'true\' : \'false\'"><span class="caret"></span></div>';
 
-		$output = str_replace( 'class="caret-wrap ' . $id . '"', $attrs, $output );
-		$output = str_replace( '</li>', '<amp-state id="' . $state . '"><script type="application/json">false</script></amp-state></li>', $output );
+		$output = str_replace( '<div class="caret-wrap ' . $id . '"><span class="caret"></span></div></a>', $attrs, $output );
 
 		return $output;
 	}
