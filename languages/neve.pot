@@ -2,9 +2,9 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Neve 1.0.26\n"
+"Project-Id-Version: Neve 1.0.27\n"
 "Report-Msgid-Bugs-To: https://github.com/Codeinwp/neve/issues\n"
-"POT-Creation-Date: 2018-12-17 20:49:36+00:00\n"
+"POT-Creation-Date: 2018-12-27 14:53:20+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -101,7 +101,7 @@ msgid "No Sidebar"
 msgstr ""
 
 #: inc/admin/metabox/main.php:134 inc/compatibility/gutenberg.php:210
-#: inc/core/front_end.php:315
+#: inc/core/front_end.php:321
 msgid "Sidebar"
 msgstr ""
 
@@ -321,11 +321,11 @@ msgstr ""
 msgid "Top Bar Menu"
 msgstr ""
 
-#: inc/core/front_end.php:113 inc/core/front_end.php:120
+#: inc/core/front_end.php:118 inc/core/front_end.php:125
 msgid "Want to keep using Zelle's homepage?"
 msgstr ""
 
-#: inc/core/front_end.php:114 inc/core/front_end.php:121
+#: inc/core/front_end.php:119 inc/core/front_end.php:126
 msgid ""
 "Hi! We've noticed you were using Zelle before. To make your transition "
 "easier, we can help you keep the same beautiful homepage you had before, by "
@@ -333,58 +333,58 @@ msgid ""
 "homepage content."
 msgstr ""
 
-#: inc/core/front_end.php:125
+#: inc/core/front_end.php:130
 msgid "Ready to use pre-built websites with 1-click installation"
 msgstr ""
 
-#: inc/core/front_end.php:126
+#: inc/core/front_end.php:131
 msgid ""
 "With Neve, you can choose from multiple unique demos, specially designed "
 "for you, that can be installed with a single click. You just need to choose "
 "your favorite, and we will take care of everything else."
 msgstr ""
 
-#: inc/core/front_end.php:144
+#: inc/core/front_end.php:150
 msgid "Black"
 msgstr ""
 
-#: inc/core/front_end.php:153
+#: inc/core/front_end.php:159
 msgid "White"
 msgstr ""
 
-#: inc/core/front_end.php:162
+#: inc/core/front_end.php:168
 msgid "Button Color"
 msgstr ""
 
-#: inc/core/front_end.php:166 inc/customizer/options/colors_background.php:62
+#: inc/core/front_end.php:172 inc/customizer/options/colors_background.php:62
 msgid "Link Color"
 msgstr ""
 
-#: inc/core/front_end.php:170 inc/customizer/options/colors_background.php:67
+#: inc/core/front_end.php:176 inc/customizer/options/colors_background.php:67
 msgid "Link Hover Color"
 msgstr ""
 
-#: inc/core/front_end.php:174 inc/customizer/options/colors_background.php:72
+#: inc/core/front_end.php:180 inc/customizer/options/colors_background.php:72
 msgid "Text Color"
 msgstr ""
 
-#: inc/core/front_end.php:316
+#: inc/core/front_end.php:322
 msgid "Shop Sidebar"
 msgstr ""
 
-#: inc/core/front_end.php:322
+#: inc/core/front_end.php:328
 msgid "Footer One"
 msgstr ""
 
-#: inc/core/front_end.php:323
+#: inc/core/front_end.php:329
 msgid "Footer Two"
 msgstr ""
 
-#: inc/core/front_end.php:324
+#: inc/core/front_end.php:330
 msgid "Footer Three"
 msgstr ""
 
-#: inc/core/front_end.php:325
+#: inc/core/front_end.php:331
 msgid "Footer Four"
 msgstr ""
 
