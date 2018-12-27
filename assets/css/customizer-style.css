@@ -20,7 +20,6 @@
 #customize-theme-controls .customize-pane-child.accordion-section-content#sub-accordion-section-neve_sidebar {
 	overflow: initial;
 }
-
 .customize-control-checkbox-toggle .checkbox-toggle-wrap {
 	flex-direction: row;
 	padding: 7px 0;
@@ -104,7 +103,6 @@
 	-webkit-flex-direction: row;
 	-ms-flex-direction: row;
 }
-
 .customize-control-neve-dimensions > ul {
 	width: 100%;
 }
@@ -201,7 +199,6 @@
 .customize-control span.reset-dimensions:hover {
 	color: #fe5252;
 }
-
 #customize-theme-controls #sub-accordion-section-neve_typography.customize-pane-child.open {
 	height: 100%;
 }
@@ -296,7 +293,6 @@
 	border-top: 0;
 	background: #fff;
 }
-
 .neve-customizer-heading {
 	display: block;
 	position: relative;
@@ -351,7 +347,6 @@
 	-ms-transform: rotate(180deg);
 	transform: rotate(180deg);
 }
-
 .ti-order-sortable li {
 	display: -ms-flexbox;
 	display: -webkit-box;
@@ -438,7 +433,6 @@
 .ti-order-sortable li.enabled .toggle-display:before {
 	content: "\f177";
 }
-
 .customize-control-radio-image .ui-buttonset {
 	text-align: center;
 }
@@ -541,7 +535,6 @@
 .customizer-tab:not(.customizer-subtab) label:last-child {
 	border: none;
 }
-
 .range-slider {
 	display: -ms-flexbox;
 	display: -webkit-box;
@@ -746,7 +739,6 @@ input::-moz-focus-outer {
 	font-size: inherit;
 	line-height: 18px;
 }
-
 .responsive-number .controls--wrap {
 	display: flex;
 
@@ -785,7 +777,6 @@ input::-moz-focus-outer {
 	height: 16px;
 	font-size: 16px;
 }
-
 .customize-control-interface-tabs {
 	display: list-item !important;
 }
