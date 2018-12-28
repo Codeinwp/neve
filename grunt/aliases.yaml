@@ -25,10 +25,13 @@ check:
 
 deploy:
 - 'addtextdomain:composerDeps'
+- 'clean:wporg'
 - 'cachebuster'
 - 'mkdir:dist'
 - 'mkdir:artifact'
 - 'copy:pro'
+- 'copy:full'
+- 'compress:full'
 #  - 'deploy_lite'
 
 #deploy_lite:

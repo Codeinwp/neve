@@ -3,10 +3,8 @@ version: '3.3'
 services:
   mysql:
     image: mysql:5.7
-    ports: 
-    - "3306:3306"
     volumes:
-    - ~/WordPressDock/wp-db/neve:/var/lib/mysql
+    - ~/${WP_MYSQL_STASH:-WordPressDock}/wp-db/neve:/var/lib/mysql
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: wordpress
@@ -22,7 +20,7 @@ services:
     - 8001:80
     privileged: true
     volumes:
-    - ~/WordPressDock/wp-core:/var/www/html/
+    - ~/${WP_CORE_STASH:-WordPressDock/wp-core}:/var/www/html/
     - .:/var/www/html/wp-content/themes/neve/
     restart: always
     environment:

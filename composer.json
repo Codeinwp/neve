@@ -10,21 +10,25 @@
       "homepage": "https://themeisle.com"
     }
   ],
-  "minimum-stability": "dev",
-  "prefer-stable": true,
   "support": {
     "issues": "https://github.com/Codeinwp/neve/issues",
     "source": "https://github.com/Codeinwp/neve"
   },
-  "type": "wordpress-theme",
   "require": {
     "codeinwp/ti-about-page": "master",
-    "codeinwp/ti-onboarding": "master"
+    "codeinwp/ti-onboarding": "master",
+    "codeinwp/themeisle-sdk": "^3.0"
   },
   "autoload": {
     "files": [
+      "vendor/codeinwp/themeisle-sdk/load.php",
       "vendor/codeinwp/ti-about-page/load.php",
       "vendor/codeinwp/ti-onboarding/load.php"
     ]
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "extra": {
+    "installer-disable": "true"
   }
 }
