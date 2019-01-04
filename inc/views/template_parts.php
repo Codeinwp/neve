@@ -123,7 +123,7 @@ class Template_Parts extends Base_View {
 		$markup .= '</a>';
 		$markup .= '</div>';
 
-		echo wp_kses_post( $markup );
+		echo $markup;
 	}
 
 	/**
