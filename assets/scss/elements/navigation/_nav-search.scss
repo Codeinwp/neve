@@ -87,7 +87,6 @@
   z-index: 100;
   @include soft-box-shadow();
   .search-submit {
-    display: none;
   }
   .menu-item-nav-search.active & {
     visibility: visible;

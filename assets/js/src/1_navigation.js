@@ -91,10 +91,11 @@
 				$( 'html' ).removeClass( 'menu-opened' );
 			} );
 
-			$( '.menu-item-nav-search input[type=search]' ).on( 'blur', function () {
-				$( '.menu-item-nav-search' ).removeClass( 'active' );
-				$( '.nav-clickaway-overlay' ).remove();
-			} );
+			var link = $( '.menu-item-nav-search input' );
+
+			$(link).bind('blur', function() {
+				$('.menu-item-nav-search').classList.remove('active');
+			});
 		},
 		/**
 		 * Create helper overlay used for touch dropdowns.

@@ -141,10 +141,9 @@
   //<editor-fold desc="Link">
   a {
     color: $link_color;
-    text-decoration: none;
     &:hover {
       color: $link_hover_color;
-      text-decoration: underline;
+      text-decoration: none;
     }
   }
   //</editor-fold>

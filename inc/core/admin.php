@@ -228,7 +228,7 @@ class Admin {
 			}
 			$markup .= '
 				<div class="ti-customizer-item ' . esc_attr( $class ) . '">
-				<i class="dashicons ' . esc_attr( $customizer_item['icon'] ) . '"></i><a target="_blank" href="' . esc_url( $customizer_item['link'] ) . '">' . wp_kses_post( $customizer_item['text'] ) . '</a>
+				<i class="dashicons ' . esc_attr( $customizer_item['icon'] ) . '"></i><a href="' . esc_url( $customizer_item['link'] ) . '">' . wp_kses_post( $customizer_item['text'] ) . '</a>
 				</div>
 			';
 			$counter ++;
