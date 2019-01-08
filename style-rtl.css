@@ -371,9 +371,10 @@ a.neve-skip-link {
   content: "\f2b2";
 }
 
-.alignfull, .alignwide {
-  width: unset;
-  max-width: unset;
+.nv-sidebar-full-width .alignfull, .nv-sidebar-full-width .alignwide {
+  width: 100vw;
+  max-width: 100vw;
+  margin-right: calc(50% - 50vw);
 }
 
 .has-neve-body-font-size {
@@ -2038,6 +2039,12 @@ hr {
 
   .has-neve-h-6-font-size {
     font-size: 1em;
+  }
+
+  .nv-sidebar-full-width .alignwide {
+    width: 60vw;
+    max-width: 60vw;
+    margin-right: calc(50% - 30vw);
   }
 
   #comments li {
