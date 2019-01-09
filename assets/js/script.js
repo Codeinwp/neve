@@ -91,9 +91,9 @@
                 $(".responsive-nav-search").removeClass("active");
                 $("html").removeClass("menu-opened");
             });
-            $(".menu-item-nav-search input[type=search]").on("blur", function() {
-                $(".menu-item-nav-search").removeClass("active");
-                $(".nav-clickaway-overlay").remove();
+            var link = $(".menu-item-nav-search input");
+            $(link).bind("blur", function() {
+                $(".menu-item-nav-search").classList.remove("active");
             });
         },
         createNavOverlay: function() {
@@ -119,7 +119,6 @@
         init: function() {
             this.handleMasonry();
             this.handleInfiniteScroll();
-            this.handleGutenbergAlignment();
         },
         handleMasonry: function() {
             if (NeveProperties.masonry !== "enabled") {
@@ -185,42 +184,6 @@
                     }
                 });
             });
-        },
-        handleGutenbergAlignment: function() {
-            if ($("body").hasClass("page-template-template-pagebuilder-full-width")) {
-                return false;
-            }
-            var fullAlignments = $(".alignfull");
-            var wideAlignments = $(".alignwide");
-            if (!fullAlignments.length && !wideAlignments.length) return false;
-            var contentWidth = $(".neve-main > .container > .row > .col");
-            if (!contentWidth.length) contentWidth = $(".neve-main > .container-fluid > .row > .col");
-            if (!contentWidth.length) return;
-            var containerWidth = $(contentWidth).innerWidth() - 30;
-            var windowWidth = $("body").innerWidth();
-            if (containerWidth === windowWidth) return false;
-            var marginFullNeeded = 0;
-            var marginWideNeeded = 0;
-            if (utils.isMobile() || !$(".nv-sidebar-wrap").length) {
-                marginFullNeeded = (windowWidth - containerWidth) / 2 + 15;
-                marginWideNeeded = (windowWidth - containerWidth) / 5;
-            }
-            if (fullAlignments.length) {
-                $(fullAlignments).each(function(index, element) {
-                    $(element).css({
-                        "margin-left": "-" + marginFullNeeded + "px",
-                        "margin-right": "-" + marginFullNeeded + "px"
-                    });
-                });
-            }
-            if (wideAlignments.length) {
-                $(wideAlignments).each(function(index, element) {
-                    $(element).css({
-                        "margin-left": "-" + marginWideNeeded + "px",
-                        "margin-right": "-" + marginWideNeeded + "px"
-                    });
-                });
-            }
         }
     };
 })(jQuery);
@@ -255,7 +218,6 @@ jQuery(window).on("resize", function() {
     clearTimeout(neveResizeTimeout);
     neveResizeTimeout = setTimeout(function() {
         jQuery.neveNavigation.repositionDropdowns();
-        jQuery.neveBlog.handleGutenbergAlignment();
     }, 500);
 });
 //# sourceMappingURL=script.js.map

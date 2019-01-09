@@ -92,7 +92,7 @@ class Amp {
 		}
 		$input .= ' on="tap:AMP.setState( { nvAmpMenuExpanded: ! nvAmpMenuExpanded } )" ';
 		$input .= ' role="button" ';
-		$input .= ' tabindex="1" ';
+		$input .= ' tabindex="0" ';
 		$input .= ' [class]="\'navbar-toggle\' + ( nvAmpMenuExpanded ? \' active\' : \'\' )" ';
 		$input .= ' aria-expanded="false" ';
 		$input .= ' [aria-expanded]="nvAmpMenuExpanded ? \'true\' : \'false\'" ';
@@ -114,7 +114,7 @@ class Amp {
 
 		$input .= ' on="tap:AMP.setState( { nvAmpWooSidebarExpanded: true } )" ';
 		$input .= ' role="button" ';
-		$input .= ' tabindex="1" ';
+		$input .= ' tabindex="0" ';
 
 		return $input;
 	}
@@ -158,7 +158,7 @@ class Amp {
 		}
 		$input .= ' on="tap:AMP.setState( { nvAmpWooSidebarExpanded: false } )" ';
 		$input .= ' role="button" ';
-		$input .= ' tabindex="1" ';
+		$input .= ' tabindex="0" ';
 
 		return $input;
 	}
@@ -187,7 +187,7 @@ class Amp {
 		$attrs .= ' [class]="\'caret-wrap amp-caret-wrap\' + ( ' . $state . ' ? \' dropdown-open\' : \'\')" ';
 		$attrs .= ' on="tap:AMP.setState( { ' . $state . ': ! ' . $state . ' } )"';
 		$attrs .= ' role="button" ';
-		$attrs .= ' tabindex="1" ';
+		$attrs .= ' tabindex="0" ';
 		$attrs .= ' aria-expanded="false" ';
 		$attrs .= ' [aria-expanded]="' . $state . ' ? \'true\' : \'false\'"><span class="caret"></span></div>';
 

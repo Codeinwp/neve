@@ -17,6 +17,5 @@ jQuery( window ).on( 'resize', function () {
 	clearTimeout( neveResizeTimeout );
 	neveResizeTimeout = setTimeout( function () {
 		jQuery.neveNavigation.repositionDropdowns();
-		jQuery.neveBlog.handleGutenbergAlignment();
 	}, 500 );
 } );
