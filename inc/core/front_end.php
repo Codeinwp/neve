@@ -75,34 +75,39 @@ class Front_End {
 	 */
 	private function get_ti_demo_content_support_data() {
 		$onboarding_sites = array(
+			'editors'     => array(
+				'elementor',
+			),
 			'local'       => array(
-				'neve-main'          => array(
-					'url'   => 'https://demo.themeisle.com/neve',
-					'title' => 'Neve 2018',
-				),
-				'neve-vet-center'    => array(
-					'url'   => 'https://demo.themeisle.com/neve-vet-center/',
-					'title' => 'Neve Vet Center',
-				),
-				'neve-energy-panels' => array(
-					'url'   => 'https://demo.themeisle.com/neve-energy-panels/',
-					'title' => 'Neve Energy Panels',
-				),
-				'neve-lawyers'       => array(
-					'url'   => 'https://demo.themeisle.com/neve-lawyers/',
-					'title' => 'Neve Lawyers',
-				),
-				'neve-doctors'       => array(
-					'url'   => 'https://demo.themeisle.com/neve-doctors/',
-					'title' => 'Neve Doctors',
-				),
-				'neve-restaurant'    => array(
-					'url'   => 'https://demo.themeisle.com/neve-restaurant/',
-					'title' => 'Neve Restaurant',
-				),
-				'neve-charity'       => array(
-					'url'   => 'https://demo.themeisle.com/neve-charity/',
-					'title' => 'Neve Charity',
+				'elementor' => array(
+					'neve-main'          => array(
+						'url'   => 'https://demo.themeisle.com/neve',
+						'title' => 'Neve 2018',
+					),
+					'neve-vet-center'    => array(
+						'url'   => 'https://demo.themeisle.com/neve-vet-center/',
+						'title' => 'Neve Vet Center',
+					),
+					'neve-energy-panels' => array(
+						'url'   => 'https://demo.themeisle.com/neve-energy-panels/',
+						'title' => 'Neve Energy Panels',
+					),
+					'neve-lawyers'       => array(
+						'url'   => 'https://demo.themeisle.com/neve-lawyers/',
+						'title' => 'Neve Lawyers',
+					),
+					'neve-doctors'       => array(
+						'url'   => 'https://demo.themeisle.com/neve-doctors/',
+						'title' => 'Neve Doctors',
+					),
+					'neve-restaurant'    => array(
+						'url'   => 'https://demo.themeisle.com/neve-restaurant/',
+						'title' => 'Neve Restaurant',
+					),
+					'neve-charity'       => array(
+						'url'   => 'https://demo.themeisle.com/neve-charity/',
+						'title' => 'Neve Charity',
+					),
 				),
 			),
 			'can_migrate' => array(
@@ -125,6 +130,7 @@ class Front_End {
 				'templates_title'       => __( 'Ready to use pre-built websites with 1-click installation', 'neve' ),
 				'templates_description' => __( 'With Neve, you can choose from multiple unique demos, specially designed for you, that can be installed with a single click. You just need to choose your favorite, and we will take care of everything else.', 'neve' ),
 			),
+
 		);
 
 		return apply_filters( 'neve_filter_onboarding_data', $onboarding_sites );
@@ -205,6 +211,27 @@ class Front_End {
 	}
 
 	/**
+	 * Add AMP support
+	 */
+	private function add_amp_support() {
+		if ( ! defined( 'AMP__VERSION' ) ) {
+			return;
+		}
+		if ( version_compare( AMP__VERSION, '1.0.0', '<' ) ) {
+			return;
+		}
+		add_theme_support(
+			'amp',
+			apply_filters(
+				'neve_filter_amp_support',
+				array(
+					'paired' => true,
+				)
+			)
+		);
+	}
+
+	/**
 	 * Add WooCommerce support
 	 */
 	private function add_woo_support() {
@@ -233,27 +260,6 @@ class Front_End {
 		add_theme_support( 'wc-product-gallery-lightbox' );
 		add_theme_support( 'wc-product-gallery-slider' );
 
-	}
-
-	/**
-	 * Add AMP support
-	 */
-	private function add_amp_support() {
-		if ( ! defined( 'AMP__VERSION' ) ) {
-			return;
-		}
-		if ( version_compare( AMP__VERSION, '1.0.0', '<' ) ) {
-			return;
-		}
-		add_theme_support(
-			'amp',
-			apply_filters(
-				'neve_filter_amp_support',
-				array(
-					'paired' => true,
-				)
-			)
-		);
 	}
 
 	/**
@@ -336,8 +342,8 @@ class Front_End {
 				'id'            => $sidebar_id,
 				'before_widget' => '<div id="%1$s" class="widget %2$s">',
 				'after_widget'  => '</div>',
-				'before_title'  => '<h5>',
-				'after_title'   => '</h5>',
+				'before_title'  => '<p class="widget-title">',
+				'after_title'   => '</p>',
 			);
 			register_sidebar( $sidebar_settings );
 		}

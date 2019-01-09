@@ -23,6 +23,7 @@ class Layout_Sidebar extends Base_View {
 	 */
 	public function init() {
 		add_action( 'neve_do_sidebar', array( $this, 'sidebar' ), 10, 2 );
+		add_filter( 'body_class', array( $this, 'add_body_class' ) );
 	}
 
 	/**
@@ -53,7 +54,24 @@ class Layout_Sidebar extends Base_View {
 		<?php
 	}
 
+	/**
+	 * Add classes to the main tag.
+	 *
+	 * @param array $classes the body classes.
+	 *
+	 * @return array
+	 */
+	public function add_body_class( $classes ) {
+		$context = $this->get_context();
 
+		$sidebar_setup = $this->get_sidebar_setup( $context );
+		$theme_mod     = $sidebar_setup['theme_mod'];
+		$theme_mod     = apply_filters( 'neve_sidebar_position', get_theme_mod( $theme_mod, 'right' ) );
+
+		$classes[] = 'nv-sidebar-' . $theme_mod;
+
+		return $classes;
+	}
 
 	/**
 	 * Get the sidebar setup. Returns array (`theme_mod`, `sidebar_slug`) based on context.
@@ -75,6 +93,7 @@ class Layout_Sidebar extends Base_View {
 
 		if ( $advanced_options === false ) {
 			$sidebar_setup['theme_mod'] = 'neve_default_sidebar_layout';
+
 			return $sidebar_setup;
 		}
 
@@ -105,6 +124,7 @@ class Layout_Sidebar extends Base_View {
 			default:
 				$sidebar_setup['theme_mod'] = 'neve_other_pages_sidebar_layout';
 		}
+
 		return $sidebar_setup;
 	}
 
@@ -120,5 +140,28 @@ class Layout_Sidebar extends Base_View {
 		$label        = apply_filters( 'neve_filter_sidebar_close_button_text', __( 'Close', 'neve' ), $slug );
 		$button_attrs = apply_filters( 'neve_filter_sidebar_close_button_data_attrs', '', $slug );
 		echo '<div class="sidebar-header"><span class="nv-sidebar-toggle in-sidebar button button-secondary" ' . esc_attr( $button_attrs ) . '>' . esc_html( $label ) . '</span></div>';
+	}
+
+	/**
+	 * Get current context.
+	 *
+	 * @return string
+	 */
+	private function get_context() {
+		if ( class_exists( 'WooCommerce' ) && ( is_woocommerce() || is_product() || is_cart() || is_checkout() || is_account_page() ) ) {
+			return 'shop';
+		}
+
+		if ( is_page() ) {
+			return 'single-page';
+		}
+
+		if ( is_single() ) {
+			return 'single-post';
+		}
+
+		if ( is_archive() || is_home() ) {
+			return 'blog-archive';
+		}
 	}
 }

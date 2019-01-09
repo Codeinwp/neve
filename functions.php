@@ -8,7 +8,7 @@
  * @package Neve
  */
 
-define( 'NEVE_VERSION', '1.0.26' );
+define( 'NEVE_VERSION', '1.0.27' );
 define( 'NEVE_INC_DIR', trailingslashit( get_template_directory() ) . 'inc/' );
 define( 'NEVE_ASSETS_URL', trailingslashit( get_template_directory_uri() ) . 'assets/' );
 
@@ -40,7 +40,7 @@ function neve_php_support() {
 		__( "Hey, we've noticed that you're running an outdated version of PHP which is no longer supported. Make sure your site is fast and secure, by %s. Neve's minimal requirement is PHP 5.4.0.", 'neve' ),
 		sprintf(
 			/* translators: %s message to upgrade PHP to the latest version */
-			'<a target="_blank" href="https://wordpress.org/support/upgrade-php/">%s</a>',
+			'<a href="https://wordpress.org/support/upgrade-php/">%s</a>',
 			__( 'upgrading PHP to the latest version', 'neve' )
 		)
 	);

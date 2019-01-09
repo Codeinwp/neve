@@ -21,6 +21,7 @@ class Comments extends Base_View {
 	 */
 	public function init() {
 		add_action( 'neve_do_comment_area', array( $this, 'render_comment_form' ) );
+		add_filter( 'comment_form_defaults', array( $this, 'leave_reply_title_tag' ) );
 	}
 
 	/**
@@ -29,9 +30,9 @@ class Comments extends Base_View {
 	public function render_comment_form() {
 		if ( have_comments() ) { ?>
 			<div class="nv-comments-title-wrap">
-				<h3 class="comments-title">
+				<h2 class="comments-title">
 					<?php echo esc_html( $this->get_comments_title() ); ?>
-				</h3>
+				</h2>
 			</div>
 
 			<ol class="nv-comments-list">
@@ -187,5 +188,19 @@ class Comments extends Base_View {
 			);
 
 		return apply_filters( 'neve_filter_comments_title', $comments_title );
+	}
+
+	/**
+	 * Change reply title tag to h2.
+	 *
+	 * @param array $args comment form args.
+	 *
+	 * @return array
+	 */
+	public function leave_reply_title_tag( $args ) {
+		$args['title_reply_before'] = '<h2 id="reply-title" class="comment-reply-title">';
+		$args['title_reply_after']  = '</h2>';
+
+		return $args;
 	}
 }

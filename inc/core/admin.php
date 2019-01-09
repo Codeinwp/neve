@@ -60,7 +60,6 @@ class Admin {
 							'label'     => esc_html__( 'See demos', 'neve' ),
 							'link'      => esc_url( '#sites_library' ),
 							'is_button' => true,
-							'blank'     => false,
 						),
 					),
 					array(
@@ -96,7 +95,6 @@ class Admin {
 							'label'     => esc_html__( 'Contact Support', 'neve' ),
 							'link'      => esc_url( 'https://themeisle.com/contact/' ),
 							'is_button' => true,
-							'blank'     => true,
 						),
 					),
 					array(
@@ -107,7 +105,6 @@ class Admin {
 							'label'     => esc_html__( 'Read full documentation', 'neve' ),
 							'link'      => 'https://docs.themeisle.com/article/946-neve-doc',
 							'is_button' => false,
-							'blank'     => true,
 						),
 					),
 
@@ -119,7 +116,6 @@ class Admin {
 							'label'     => esc_html__( 'Changelog', 'neve' ),
 							'link'      => esc_url( '#changelog' ),
 							'is_button' => false,
-							'blank'     => false,
 						),
 
 					),
@@ -131,7 +127,6 @@ class Admin {
 							'label'     => esc_html__( 'View how to do this', 'neve' ),
 							'link'      => 'http://docs.themeisle.com/article/14-how-to-create-a-child-theme',
 							'is_button' => false,
-							'blank'     => true,
 						),
 					),
 					array(
@@ -142,7 +137,6 @@ class Admin {
 							'label'     => esc_html__( 'View how to do this', 'neve' ),
 							'link'      => 'http://docs.themeisle.com/article/63-speed-up-your-wordpress-site',
 							'is_button' => false,
-							'blank'     => true,
 						),
 					),
 					array(
@@ -153,7 +147,6 @@ class Admin {
 							'label'     => esc_html__( 'View how to do this', 'neve' ),
 							'link'      => 'http://docs.themeisle.com/article/219-how-to-build-a-landing-page-with-a-drag-and-drop-content-builder',
 							'is_button' => false,
-							'blank'     => true,
 						),
 					),
 				),
@@ -228,7 +221,7 @@ class Admin {
 			}
 			$markup .= '
 				<div class="ti-customizer-item ' . esc_attr( $class ) . '">
-				<i class="dashicons ' . esc_attr( $customizer_item['icon'] ) . '"></i><a target="_blank" href="' . esc_url( $customizer_item['link'] ) . '">' . wp_kses_post( $customizer_item['text'] ) . '</a>
+				<i class="dashicons ' . esc_attr( $customizer_item['icon'] ) . '"></i><a href="' . esc_url( $customizer_item['link'] ) . '">' . wp_kses_post( $customizer_item['text'] ) . '</a>
 				</div>
 			';
 			$counter ++;

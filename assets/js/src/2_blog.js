@@ -6,7 +6,6 @@
 		'init': function () {
 			this.handleMasonry();
 			this.handleInfiniteScroll();
-			this.handleGutenbergAlignment();
 		},
 		'handleMasonry': function () {
 			if ( NeveProperties.masonry !== 'enabled' ) {
@@ -74,60 +73,6 @@
 					},
 				} );
 			} );
-		},
-		'handleGutenbergAlignment': function () {
-			if ( $( 'body' ).hasClass( 'page-template-template-pagebuilder-full-width' ) ) {
-				return false;
-			}
-
-			var fullAlignments = $( '.alignfull' );
-			var wideAlignments = $( '.alignwide' );
-
-			// Break if nothing to adjust.
-			if ( !fullAlignments.length && !wideAlignments.length )
-				return false;
-
-			// Get the content width for contained layout.
-			var contentWidth = $( '.neve-main > .container > .row > .col' );
-			// If the layout isn't contained, reassign the selector.
-			if ( !contentWidth.length )
-				contentWidth = $( '.neve-main > .container-fluid > .row > .col' );
-			// Break if there isn't any container on the page.
-			if ( !contentWidth.length )
-				return;
-
-			// Get the container width, excluding padding.
-			var containerWidth = $( contentWidth ).innerWidth() - 30;
-			// Get the window width - based on body to exclude scrollbars.
-			var windowWidth = $( 'body' ).innerWidth();
-
-			// Break if nothing needs adjustment.
-			if ( containerWidth === windowWidth )
-				return false;
-
-			var marginFullNeeded = 0;
-			var marginWideNeeded = 0;
-			if ( utils.isMobile() || !$( '.nv-sidebar-wrap' ).length ) {
-				marginFullNeeded = (windowWidth - containerWidth) / 2 + 15;
-				marginWideNeeded = (windowWidth - containerWidth) / 5;
-			}
-
-			if ( fullAlignments.length ) {
-				$( fullAlignments ).each( function ( index, element ) {
-					$( element ).css( {
-						'margin-left': '-' + marginFullNeeded + 'px',
-						'margin-right': '-' + marginFullNeeded + 'px'
-					} );
-				} );
-			}
-			if ( wideAlignments.length ) {
-				$( wideAlignments ).each( function ( index, element ) {
-					$( element ).css( {
-						'margin-left': '-' + marginWideNeeded + 'px',
-						'margin-right': '-' + marginWideNeeded + 'px'
-					} );
-				} );
-			}
 		},
 	};
 }( jQuery ));

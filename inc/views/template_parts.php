@@ -123,7 +123,7 @@ class Template_Parts extends Base_View {
 		$markup .= '</a>';
 		$markup .= '</div>';
 
-		echo wp_kses_post( $markup );
+		echo $markup;
 	}
 
 	/**
@@ -140,11 +140,11 @@ class Template_Parts extends Base_View {
 	 */
 	private function title() {
 		?>
-		<h3 class="blog-entry-title entry-title">
+		<h2 class="blog-entry-title entry-title">
 			<a href="<?php esc_url( the_permalink() ); ?>" rel="bookmark">
 				<?php the_title(); ?>
 			</a>
-		</h3>
+		</h2>
 		<?php
 	}
 
@@ -194,7 +194,13 @@ class Template_Parts extends Base_View {
 	 * @return string
 	 */
 	public function link_excerpt_more( $moretag ) {
-		$moretag = '&hellip;&nbsp;<a href="' . esc_url( get_the_permalink() ) . '" rel="bookmark">' . esc_html__( 'Read More', 'neve' ) . ' &raquo;</a>';
+		$moretag = '';
+
+		$moretag .= '&hellip;&nbsp;<a href="' . esc_url( get_the_permalink() ) . '" rel="bookmark">';
+
+		$moretag .= esc_html__( 'Read More', 'neve' );
+		$moretag .= '<span class="screen-reader-text">' . get_the_title() . '</span>';
+		$moretag .= ' &raquo;</a>';
 
 		return $moretag;
 	}
