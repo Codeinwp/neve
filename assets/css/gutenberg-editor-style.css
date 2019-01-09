@@ -65,7 +65,7 @@
 .editor-styles-wrapper .editor-writing-flow blockquote.wp-block-quote .wp-block-quote__citation {
   padding-top: 20px;
   display: block;
-  color: #777777;
+  color: #676767;
   margin-top: 0;
   font-size: .95em;
 }
@@ -121,11 +121,10 @@
 }
 .editor-styles-wrapper .editor-writing-flow a {
   color: #0366d6;
-  text-decoration: none;
 }
 .editor-styles-wrapper .editor-writing-flow a:hover {
   color: #0366d6;
-  text-decoration: underline;
+  text-decoration: none;
 }
 .editor-styles-wrapper .editor-writing-flow .editor-rich-text__tinymce code {
   background: #d0effb;
@@ -162,10 +161,10 @@
   opacity: .9;
 }
 .editor-styles-wrapper .wp-block-button.is-style-outline .wp-block-button__link {
-  border: 1px solid #777777;
+  border: 1px solid #676767;
   background-color: transparent;
   font-weight: 600;
-  color: #777777;
+  color: #676767;
 }
 .editor-styles-wrapper .wp-block-button.is-style-outline .wp-block-button__link:hover {
   background: transparent;

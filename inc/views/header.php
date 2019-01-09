@@ -269,11 +269,16 @@ class Header extends Base_View {
 				$alt_attribute = get_bloginfo( 'name' );
 			}
 			$logo = '<img src="' . esc_url( $logo[0] ) . '" alt="' . esc_attr( $alt_attribute ) . '">';
-		} else {
-			$logo = '<p>' . esc_html( get_bloginfo( 'name' ) ) . '</p>';
 
-			$logo .= '<small>' . esc_html( get_bloginfo( 'description' ) ) . '</small>';
+			return $logo;
 		}
+		$tag = 'p';
+		if ( get_option( 'show_on_front' ) === 'posts' && is_home() ) {
+			$tag = 'h1';
+		}
+
+		$logo  = '<' . $tag . '>' . esc_html( get_bloginfo( 'name' ) ) . '</' . $tag . '>';
+		$logo .= '<small>' . esc_html( get_bloginfo( 'description' ) ) . '</small>';
 
 		return $logo;
 	}
