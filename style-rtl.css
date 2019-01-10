@@ -1126,6 +1126,17 @@ form input[type="text"], form input[type="password"], form input[type="email"], 
   transition: all 0.3s ease;
 }
 
+.widget select {
+  display: inline-block;
+  font-size: 14px;
+  padding: 7px 12px;
+  background-color: transparent;
+  color: #333;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
 input[type="text"], input[type="search"], input[type="password"], input[type="submit"], textarea {
   -webkit-appearance: none;
   -moz-appearance: none;
