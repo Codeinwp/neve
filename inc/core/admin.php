@@ -271,18 +271,10 @@ class Admin {
 
 		$notice_template = '
 			<div class="nv-notice-wrapper">
-				<div class="nv-notice-image">%1$s</div>
-				<div class="nv-notice-text">%2$s</div>
-				<div class="nv-notice-button">%3$s</div>
+				<div class="nv-notice-text">%1$s</div>
+				<div class="nv-notice-button">%2$s</div>
 			</div>
-			<style>%4$s</style>';
-
-		$image = sprintf(
-			/* translators: 1 - logo url, 2 - theme name */
-			'<img src="%1$s" alt="%2$s"/>',
-			esc_url( NEVE_ASSETS_URL . '/img/logo.png' ),
-			$name
-		);
+			<style>%3$s</style>';
 
 		$content = sprintf(
 			/* translators: 1 - notice title, 2 - notice message */
@@ -347,7 +339,6 @@ class Admin {
 
 		echo sprintf(
 			$notice_template,
-			$image,
 			$content,
 			$button,
 			$style
