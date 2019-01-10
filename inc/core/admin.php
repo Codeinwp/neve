@@ -272,27 +272,46 @@ class Admin {
 		$notice_template = '
 			<div class="nv-notice-wrapper">
 				<div class="nv-notice-text">%1$s</div>
-				<div class="nv-notice-button">%2$s</div>
 			</div>
-			<style>%3$s</style>';
+			<style>%2$s</style>';
 
-		$content = sprintf(
-			/* translators: 1 - notice title, 2 - notice message */
-			'<h3>%1$s</h3><p>%2$s</p>',
-			sprintf(
-				/* translators: 1 - theme name */
-				esc_html__( 'Thanks for installing %1$s!', 'neve' ),
-				$name
-			),
-			esc_html__( 'Now, let\'s get you ready. It will take only a few minutes.', 'neve' )
-		);
-
-		$button = sprintf(
+		$ob_btn = sprintf(
 			/* translators: 1 - onboarding url, 2 - button text */
 			'<a href="%1$s" class="button button-primary" style="text-decoration: none;">%2$s</a>',
 			esc_url( admin_url( 'themes.php?page=' . $slug . '-welcome&onboarding=yes#sites_library' ) ),
-			/* translators: 1 - theme name (Neve) */
-			sprintf( esc_html__( 'Get started with %s', 'neve' ), $name )
+			sprintf( esc_html__( 'Try one of our ready to use Starter Sites', 'neve' ) )
+		);
+		$options_page_btn = sprintf(
+			/* translators: 1 - options page url, 2 - button text */
+			'<a href="%1$s" class="options-page-btn">%2$s</a>',
+			esc_url( admin_url( 'themes.php?page=' . $slug . '-welcome' ) ),
+			esc_html__( 'go to the theme settings', 'neve' )
+		);
+
+		$content = sprintf(
+			/* translators: 1 - notice title, 2 - notice message */
+			'<h3>%1$s</h3><p>%2$s</p><p>%3$s</p><p class="nv-return-dashboard">%4$s</p>',
+			sprintf(
+				esc_html__( 'Congratulations!', 'neve' ),
+				$name
+			),
+			sprintf(
+				/* translators: %s - theme name */
+				esc_html__( '%s is now installed and ready to use. We\'ve assembled some links to get you started.', 'neve' ),
+				$name
+			),
+			sprintf(
+				/* translators: %s - Onboarding button */
+				esc_html__( '%1$s or, %2$s', 'neve' ),
+				$ob_btn,
+				$options_page_btn
+			),
+			sprintf(
+				/* translators: 1 - link to dashboard, 2 - button text */
+				'<a href="%1$s">%2$s</a>',
+				esc_url( admin_url() ),
+				esc_html__( 'Return to your dashboard', 'neve' )
+			)
 		);
 
 		$style = '
@@ -306,8 +325,7 @@ class Admin {
 		    justify-content: center;
 		    align-items: center;
 		    flex-direction: column;
-		    background: #e6edf1;
-		    padding: 60px 0;
+		    padding: 40px 0 10px;
 		}
 		.nv-notice-image, .nv-notice-text, .nv-notice-button {text-align:center;}
 		.nv-notice-image{
@@ -324,23 +342,40 @@ class Admin {
 		.nv-notice-image img{
 			max-width:65px;
 		}
+		.nv-notice-text{
+			display: flex;
+			flex-direction: column;
+		}
 		.nv-notice-text h3{
 		    margin: 0 12px 8px;
 		    padding: 0;
 		    font-size: 16px;
-		    font-weight: 400;
+		    font-weight: 500;
 		    color: #23282d;
 		}
-		.nv-notice-text p{
-			color: #59798f;
-			margin-bottom: 20px;
+		.nv-notice-text p:first-of-type {
+			font-size: 15px;
+		}
+		.options-page-btn,
+		 .options-page-btn:hover {
+		    color: inherit;
+		    text-decoration: none;
+		}
+		.nv-notice-text p.nv-return-dashboard {
+			margin-top: 30px;
+		}
+		.nv-return-dashboard a,
+		.nv-return-dashboard a:hover {
+			align-self: end;
+			color: #b5b5b5;
+			text-decoration: none;
+			font-weight: 300;			
 		}
 		';
 
 		echo sprintf(
 			$notice_template,
 			$content,
-			$button,
 			$style
 		);
 	}
