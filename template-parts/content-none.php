@@ -35,7 +35,7 @@
 			<?php get_search_form(); ?>
 		</div>
 		<?php
-	}
-	?>
+}
+?>
 </div>
 
