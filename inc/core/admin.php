@@ -28,7 +28,7 @@ class Admin {
 		$config = array(
 			'welcome_notice'  => array(
 				'type'            => 'custom',
-				'notice_class'    => 'nv-welcome-notice',
+				'notice_class'    => 'nv-welcome-notice updated',
 				'dismiss_option'  => 'neve_notice_dismissed',
 				'render_callback' => array( $this, 'welcome_notice_content' ),
 			),
@@ -285,15 +285,15 @@ class Admin {
 			/* translators: 1 - options page url, 2 - button text */
 			'<a href="%1$s" class="options-page-btn">%2$s</a>',
 			esc_url( admin_url( 'themes.php?page=' . $slug . '-welcome' ) ),
-			esc_html__( 'go to the theme settings', 'neve' )
+			esc_html__( 'or go to the theme settings', 'neve' )
 		);
 
 		$content = sprintf(
-			/* translators: 1 - notice title, 2 - notice message, 3 - notice actions, 4 - close notice message */
+			/* translators: 1 - notice title, 2 - notice message, 3 - starter sites button, 4 - options page button, 5 - close notice message */
 			'<h3>%1$s</h3>
 					<p>%2$s</p>
-					<p>%3$s</p>
-					<p class="ti-return-dashboard"><span>%4$s</span></p>',
+					<p>%3$s %4$s</p>
+					<p class="ti-return-dashboard"><span>%5$s</span></p>',
 			sprintf(
 				esc_html__( 'Congratulations!', 'neve' ),
 				$name
@@ -303,18 +303,13 @@ class Admin {
 				esc_html__( '%s is now installed and ready to use. We\'ve assembled some links to get you started.', 'neve' ),
 				$name
 			),
-			sprintf(
-				/* translators: 1 - onboarding button, 2 - options page button */
-				esc_html__( '%1$s or, %2$s', 'neve' ),
-				$ob_btn,
-				$options_page_btn
-			),
+			$ob_btn,
+			$options_page_btn,
 			esc_html__( 'Return to your dashboard', 'neve' )
 		);
 
 		$style = '
 		.wrap .notice.nv-welcome-notice{
-			border:0;
 			padding:10px;
 			margin: 20px 0;
 		}
