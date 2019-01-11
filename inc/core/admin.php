@@ -289,8 +289,11 @@ class Admin {
 		);
 
 		$content = sprintf(
-			/* translators: 1 - notice title, 2 - notice message */
-			'<h3>%1$s</h3><p>%2$s</p><p>%3$s</p><p class="nv-return-dashboard">%4$s</p>',
+			/* translators: 1 - notice title, 2 - notice message, 3 - notice actions, 4 - close notice message */
+			'<h3>%1$s</h3>
+					<p>%2$s</p>
+					<p>%3$s</p>
+					<p class="ti-return-dashboard"><span>%4$s</span></p>',
 			sprintf(
 				esc_html__( 'Congratulations!', 'neve' ),
 				$name
@@ -301,17 +304,12 @@ class Admin {
 				$name
 			),
 			sprintf(
-				/* translators: %s - Onboarding button */
+				/* translators: 1 - onboarding button, 2 - options page button */
 				esc_html__( '%1$s or, %2$s', 'neve' ),
 				$ob_btn,
 				$options_page_btn
 			),
-			sprintf(
-				/* translators: 1 - link to dashboard, 2 - button text */
-				'<a href="%1$s">%2$s</a>',
-				esc_url( admin_url() ),
-				esc_html__( 'Return to your dashboard', 'neve' )
-			)
+			esc_html__( 'Return to your dashboard', 'neve' )
 		);
 
 		$style = '
@@ -357,19 +355,20 @@ class Admin {
 			font-size: 15px;
 		}
 		.options-page-btn,
-		 .options-page-btn:hover {
+		.options-page-btn:hover {
 		    color: inherit;
 		    text-decoration: none;
 		}
-		.nv-notice-text p.nv-return-dashboard {
+		.nv-notice-text p.ti-return-dashboard {
 			margin-top: 30px;
 		}
-		.nv-return-dashboard a,
-		.nv-return-dashboard a:hover {
-			align-self: end;
+		.ti-return-dashboard span {
 			color: #b5b5b5;
 			text-decoration: none;
 			font-weight: 300;			
+		}
+		.ti-return-dashboard span:hover {
+			cursor: pointer;
 		}
 		';
 
