@@ -117,6 +117,9 @@ class Front_End {
 					'template'        => 'zelle',
 					'heading'         => __( 'Want to keep using Zelle\'s homepage?', 'neve' ),
 					'description'     => __( 'Hi! We\'ve noticed you were using Zelle before. To make your transition easier, we can help you keep the same beautiful homepage you had before, by converting it into an Elementor template. This option will also import your homepage content.', 'neve' ),
+					'plugins'         => array(
+						"elementor" => "Elementor Page Builder",
+					)
 				),
 				'zerif-lite' => array(
 					'theme_name'      => 'Zelle Lite',
@@ -124,6 +127,9 @@ class Front_End {
 					'template'        => 'zelle',
 					'heading'         => __( 'Want to keep using Zelle\'s homepage?', 'neve' ),
 					'description'     => __( 'Hi! We\'ve noticed you were using Zelle before. To make your transition easier, we can help you keep the same beautiful homepage you had before, by converting it into an Elementor template. This option will also import your homepage content.', 'neve' ),
+					'plugins'         => array(
+						"elementor" => "Elementor Page Builder",
+					)
 				),
 			),
 			'i18n'        => array(
