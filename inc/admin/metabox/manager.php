@@ -31,9 +31,16 @@ class Manager {
 			return;
 		}
 
+		$post_type = get_post_type();
+		$post_type = ucfirst( $post_type );
+
 		add_meta_box(
 			'neve-page-settings',
-			__( 'Neve Settings', 'neve' ),
+			sprintf(
+				/* translators: %s - post type */
+				__( '%s Settings', 'neve' ),
+				$post_type
+			),
 			array( $this, 'render_metabox' ),
 			array( 'post', 'page', 'product' ),
 			'side'
