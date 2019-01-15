@@ -2,9 +2,9 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Neve 1.0.27\n"
+"Project-Id-Version: Neve 1.0.28\n"
 "Report-Msgid-Bugs-To: https://github.com/Codeinwp/neve/issues\n"
-"POT-Creation-Date: 2019-01-09 13:07:38+00:00\n"
+"POT-Creation-Date: 2019-01-15 12:23:24+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -101,12 +101,13 @@ msgid "No Sidebar"
 msgstr ""
 
 #: inc/admin/metabox/main.php:134 inc/compatibility/gutenberg.php:210
-#: inc/core/front_end.php:321
+#: inc/core/front_end.php:324
 msgid "Sidebar"
 msgstr ""
 
-#: inc/admin/metabox/manager.php:36
-msgid "Neve Settings"
+#: inc/admin/metabox/manager.php:44
+#. translators: %s - post type
+msgid "%s Settings"
 msgstr ""
 
 #: inc/admin/plugin_install/main.php:109
@@ -295,18 +296,31 @@ msgstr ""
 msgid "Content / Sidebar"
 msgstr ""
 
-#: inc/core/admin.php:292
-#. translators: 1 - theme name
-msgid "Thanks for installing %1$s!"
+#: inc/core/admin.php:282
+#. translators: 1 - onboarding url, 2 - button text
+msgid "Try one of our ready to use Starter Sites"
 msgstr ""
 
-#: inc/core/admin.php:295
-msgid "Now, let's get you ready. It will take only a few minutes."
+#: inc/core/admin.php:288
+#. translators: 1 - options page url, 2 - button text
+msgid "or go to the theme settings"
+msgstr ""
+
+#: inc/core/admin.php:298
+#. translators: 1 - notice title, 2 - notice message, 3 - starter sites button,
+#. 4 - options page button, 5 - close notice message
+msgid "Congratulations!"
 msgstr ""
 
 #: inc/core/admin.php:303
-#. translators: 1 - theme name (Neve)
-msgid "Get started with %s"
+#. translators: %s - theme name
+msgid ""
+"%s is now installed and ready to use. We've assembled some links to get you "
+"started."
+msgstr ""
+
+#: inc/core/admin.php:308
+msgid "Return to your dashboard"
 msgstr ""
 
 #: inc/core/front_end.php:60 inc/views/header.php:208
@@ -321,11 +335,11 @@ msgstr ""
 msgid "Top Bar Menu"
 msgstr ""
 
-#: inc/core/front_end.php:118 inc/core/front_end.php:125
+#: inc/core/front_end.php:120 inc/core/front_end.php:127
 msgid "Want to keep using Zelle's homepage?"
 msgstr ""
 
-#: inc/core/front_end.php:119 inc/core/front_end.php:126
+#: inc/core/front_end.php:121 inc/core/front_end.php:128
 msgid ""
 "Hi! We've noticed you were using Zelle before. To make your transition "
 "easier, we can help you keep the same beautiful homepage you had before, by "
@@ -333,58 +347,59 @@ msgid ""
 "homepage content."
 msgstr ""
 
-#: inc/core/front_end.php:130
+#: inc/core/front_end.php:132
 msgid "Ready to use pre-built websites with 1-click installation"
 msgstr ""
 
-#: inc/core/front_end.php:131
+#: inc/core/front_end.php:134
+#. translators: %s - theme name
 msgid ""
-"With Neve, you can choose from multiple unique demos, specially designed "
-"for you, that can be installed with a single click. You just need to choose "
+"With %s, you can choose from multiple unique demos, specially designed for "
+"you, that can be installed with a single click. You just need to choose "
 "your favorite, and we will take care of everything else."
 msgstr ""
 
-#: inc/core/front_end.php:150
+#: inc/core/front_end.php:153
 msgid "Black"
 msgstr ""
 
-#: inc/core/front_end.php:159
+#: inc/core/front_end.php:162
 msgid "White"
 msgstr ""
 
-#: inc/core/front_end.php:168
+#: inc/core/front_end.php:171
 msgid "Button Color"
 msgstr ""
 
-#: inc/core/front_end.php:172 inc/customizer/options/colors_background.php:62
+#: inc/core/front_end.php:175 inc/customizer/options/colors_background.php:62
 msgid "Link Color"
 msgstr ""
 
-#: inc/core/front_end.php:176 inc/customizer/options/colors_background.php:67
+#: inc/core/front_end.php:179 inc/customizer/options/colors_background.php:67
 msgid "Link Hover Color"
 msgstr ""
 
-#: inc/core/front_end.php:180 inc/customizer/options/colors_background.php:72
+#: inc/core/front_end.php:183 inc/customizer/options/colors_background.php:72
 msgid "Text Color"
 msgstr ""
 
-#: inc/core/front_end.php:322
+#: inc/core/front_end.php:325
 msgid "Shop Sidebar"
 msgstr ""
 
-#: inc/core/front_end.php:328
+#: inc/core/front_end.php:331
 msgid "Footer One"
 msgstr ""
 
-#: inc/core/front_end.php:329
+#: inc/core/front_end.php:332
 msgid "Footer Two"
 msgstr ""
 
-#: inc/core/front_end.php:330
+#: inc/core/front_end.php:333
 msgid "Footer Three"
 msgstr ""
 
-#: inc/core/front_end.php:331
+#: inc/core/front_end.php:334
 msgid "Footer Four"
 msgstr ""
 

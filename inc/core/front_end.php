@@ -74,6 +74,8 @@ class Front_End {
 	 * @return array
 	 */
 	private function get_ti_demo_content_support_data() {
+		$theme_name = wp_get_theme()->Name;
+
 		$onboarding_sites = array(
 			'editors'     => array(
 				'elementor',
@@ -128,7 +130,8 @@ class Front_End {
 			),
 			'i18n'        => array(
 				'templates_title'       => __( 'Ready to use pre-built websites with 1-click installation', 'neve' ),
-				'templates_description' => __( 'With Neve, you can choose from multiple unique demos, specially designed for you, that can be installed with a single click. You just need to choose your favorite, and we will take care of everything else.', 'neve' ),
+				/* translators: %s - theme name */
+				'templates_description' => sprintf( __( 'With %s, you can choose from multiple unique demos, specially designed for you, that can be installed with a single click. You just need to choose your favorite, and we will take care of everything else.', 'neve' ), $theme_name ),
 			),
 
 		);
