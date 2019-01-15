@@ -17,6 +17,13 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
+= 1.0.28 - 2019-01-15  = 
+
+* Layout updates for the starter sites
+* Improved layout of the onboarding notice
+* Fixed style issues for the select elements
+
+
 = 1.0.27 - 2019-01-09  = 
 
 * Review the theme to make it Accessibility-ready

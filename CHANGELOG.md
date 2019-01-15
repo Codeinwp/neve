@@ -1,4 +1,10 @@
 
+ ### v1.0.28 - 2019-01-15 
+ **Changes:** 
+ * Layout updates for the starter sites
+* Improved layout of the onboarding notice
+* Fixed style issues for the select elements
+ 
  ### v1.0.27 - 2019-01-09 
  **Changes:** 
  * Review the theme to make it Accessibility-ready
