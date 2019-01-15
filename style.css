@@ -1126,7 +1126,7 @@ form input[type="text"], form input[type="password"], form input[type="email"], 
   transition: all 0.3s ease;
 }
 
-.widget select {
+select {
   display: inline-block;
   font-size: 14px;
   padding: 7px 12px;
