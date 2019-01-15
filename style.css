@@ -1097,6 +1097,7 @@ footer {
 
 .neve-main {
   flex: 1 auto;
+  min-height: 1px;
 }
 
 .archive-container {
@@ -1114,7 +1115,7 @@ footer {
   margin-bottom: 60px;
 }
 
-form input[type="text"], form input[type="password"], form input[type="email"], form input[type="url"], form input[type="date"], form input[type="month"], form input[type="time"], form input[type="datetime"], form input[type="datetime-local"], form input[type="week"], form input[type="number"], form input[type="search"], form input[type="tel"], form input[type="color"], form select, form textarea {
+input[type="text"], input[type="password"], input[type="email"], input[type="url"], input[type="date"], input[type="month"], input[type="time"], input[type="datetime"], input[type="datetime-local"], input[type="week"], input[type="number"], input[type="search"], input[type="tel"], input[type="color"], select, textarea {
   display: inline-block;
   font-size: 14px;
   padding: 7px 12px;
