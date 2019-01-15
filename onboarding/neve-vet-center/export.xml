@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!-- generator="WordPress/4.9.8" created="2019-01-15 09:58" -->
+<!-- generator="WordPress/4.9.8" created="2019-01-15 13:32" -->
 		<rss version="2.0"
 				xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
 				xmlns:content="http://purl.org/rss/1.0/modules/content/"
@@ -12,7 +12,7 @@
 				<title>Neve Vet Center</title>
 				<link>https://demo.themeisle.com/neve-vet-center</link>
 				<description></description>
-				<pubDate>Tue, 15 Jan 2019 09:58:42 +0000</pubDate>
+				<pubDate>Tue, 15 Jan 2019 13:32:39 +0000</pubDate>
 				<language>en-US</language>
 				<wp:wxr_version>1.2</wp:wxr_version>
 				<wp:base_site_url>https://demo.themeisle.com/</wp:base_site_url>
@@ -36,7 +36,8 @@
 						<wp:category_parent><![CDATA[]]></wp:category_parent>
 						<wp:cat_name><![CDATA[Uncategorized]]></wp:cat_name>
 					</wp:category>
-																	<wp:term>
+												
+					<wp:term>
 						<wp:term_id><![CDATA[2]]></wp:term_id>
 						<wp:term_taxonomy><![CDATA[elementor_library_type]]></wp:term_taxonomy>
 						<wp:term_slug><![CDATA[page]]></wp:term_slug>
@@ -981,14 +982,18 @@
 	display: none;
 }
 
-/*Center align Top Bar & display br for top bar contact phone on mobile*/
-@media only screen and (max-width: 700px) {
+/*Center align Top Bar on tablet-mobile*/
+@media only screen and (max-width: 960px) {
 	.nv-top-bar {
 		text-align: center;
 	}
 	.nv-top-bar a {
 		text-decoration: underline;
 	}
+}
+
+/*Display br for top bar contact phone on mobile*/
+	@media only screen and (max-width: 375px) {
 	.neve-br-on-mobile {
 		display: inherit;
 	}
@@ -1010,7 +1015,7 @@
 				neve-vet-center-big-title1			</title>
 			<link>https://demo.themeisle.com/neve-vet-center/vet-medical-demo-front/neve-vet-center-big-title1/</link>
 			<pubDate>Fri, 11 Jan 2019 08:39:14 +0000</pubDate>
-			<guid isPermaLink="false"><![CDATA[https://demo.themeisle.com/neve-vet-center/wp-content/uploads/sites/168/2019/01/neve-vet-center-big-title1.jpg]]></guid>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-vet-center/wp-content/uploads/sites/168/2019/01/neve-vet-center-big-title1.jpg</guid>
 			<description></description>
 			<content:encoded><![CDATA[https://mystock.themeisle.com/photo/squirrel-2/]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>161</wp:post_id>
 			<wp:post_date><![CDATA[2019-01-11 08:39:14]]></wp:post_date>
@@ -1039,7 +1044,7 @@
 				neve-vet-center-testify			</title>
 			<link>https://demo.themeisle.com/neve-vet-center/vet-medical-demo-front/neve-vet-center-testify/</link>
 			<pubDate>Fri, 11 Jan 2019 14:06:06 +0000</pubDate>
-			<guid isPermaLink="false"><![CDATA[https://demo.themeisle.com/neve-vet-center/wp-content/uploads/sites/168/2019/01/neve-vet-center-testify.jpg]]></guid>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-vet-center/wp-content/uploads/sites/168/2019/01/neve-vet-center-testify.jpg</guid>
 			<description></description>
 			<content:encoded><![CDATA[https://mystock.themeisle.com/photo/beagle-puppy/]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>163</wp:post_id>
 			<wp:post_date><![CDATA[2019-01-11 14:06:06]]></wp:post_date>
@@ -1068,7 +1073,7 @@
 				neve-vet-center-testify-cat			</title>
 			<link>https://demo.themeisle.com/neve-vet-center/vet-medical-demo-front/neve-vet-center-testify-cat/</link>
 			<pubDate>Mon, 14 Jan 2019 13:11:02 +0000</pubDate>
-			<guid isPermaLink="false"><![CDATA[https://demo.themeisle.com/neve-vet-center/wp-content/uploads/sites/168/2019/01/neve-vet-center-testify-cat.jpg]]></guid>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-vet-center/wp-content/uploads/sites/168/2019/01/neve-vet-center-testify-cat.jpg</guid>
 			<description></description>
 			<content:encoded><![CDATA[https://mystock.themeisle.com/photo/cat-2/]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>169</wp:post_id>
 			<wp:post_date><![CDATA[2019-01-14 13:11:02]]></wp:post_date>
