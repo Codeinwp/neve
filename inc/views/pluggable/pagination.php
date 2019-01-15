@@ -24,6 +24,7 @@ class Pagination extends Base_View {
 	public function init() {
 		add_filter( 'neve_filter_main_script_localization', array( $this, 'filter_localization' ) );
 		add_action( 'neve_do_pagination', array( $this, 'render_pagination' ) );
+		add_action( 'neve_post_navigation', array( $this, 'render_post_navigation' ) );
 
 		add_action( 'wp_ajax_infinite_scroll', array( $this, 'infinite_scroll' ) );
 		add_action( 'wp_ajax_nopriv_infinite_scroll', array( $this, 'infinite_scroll' ) );
@@ -57,6 +58,7 @@ class Pagination extends Base_View {
 	public function render_pagination( $context ) {
 		if ( $context === 'single' ) {
 			$this->render_single_pagination();
+
 			return;
 		}
 
@@ -87,6 +89,21 @@ class Pagination extends Base_View {
 			)
 		);
 	}
+
+	/**
+	 * Render single post navigation links
+	 */
+	function render_post_navigation() {
+		$prev_format = '<div class="post-navigation"><div class="previous">%link</div>';
+		$next_format = '<div class="next">%link</div></div>';
+
+		$prev_link = esc_html__( 'PREVIOUS', 'neve' );
+		$next_link = esc_html__( 'NEXT', 'neve' );
+
+		previous_post_link( $prev_format, $prev_link );
+		next_post_link( $next_format, $next_link );
+	}
+
 
 	/**
 	 * Infinite scroll ajax callback function.

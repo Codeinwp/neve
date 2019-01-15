@@ -1505,6 +1505,18 @@ article {
   display: flex;
 }
 
+.nv-content-wrap .post-navigation {
+  display: flex;
+  justify-content: space-between;
+}
+.nv-content-wrap .post-navigation .previous a,
+.nv-content-wrap .post-navigation .next a {
+  text-decoration: none;
+}
+.nv-content-wrap .post-navigation .next {
+  align-self: end;
+}
+
 .nv-content-wrap .page-numbers {
   justify-content: center;
   margin: 10px auto;

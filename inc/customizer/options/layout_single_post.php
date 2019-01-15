@@ -53,11 +53,13 @@ class Layout_Single_Post extends Base_Customizer {
 		$order_default_components = array(
 			'title-meta',
 			'thumbnail',
+			'post-navigation',
 		);
 
 		$components = array(
-			'title-meta' => __( 'Title & Meta', 'neve' ),
-			'thumbnail'  => __( 'Thumbnail', 'neve' ),
+			'title-meta'      => __( 'Title & Meta', 'neve' ),
+			'thumbnail'       => __( 'Thumbnail', 'neve' ),
+			'post-navigation' => __( 'Post navigation', 'neve' ),
 		);
 
 		$this->add_control(
@@ -86,6 +88,7 @@ class Layout_Single_Post extends Base_Customizer {
 		$allowed = array(
 			'thumbnail',
 			'title-meta',
+			'post-navigation',
 		);
 
 		if ( empty( $value ) ) {

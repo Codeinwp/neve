@@ -31,6 +31,22 @@
   display: flex;
 }
 
+.nv-content-wrap .post-navigation {
+  display: flex;
+  justify-content: space-between;
+
+  .previous,
+  .next {
+    a {
+      text-decoration: none;
+    }
+  }
+
+  .next {
+    align-self: end;
+  }
+}
+
 .nv-content-wrap .page-numbers {
   justify-content: center;
   margin: $spacing-xs auto;
