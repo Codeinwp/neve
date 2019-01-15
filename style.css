@@ -1517,7 +1517,7 @@ article {
   text-decoration: none;
 }
 .nv-content-wrap .post-navigation .next {
-  align-self: end;
+  margin-left: auto;
 }
 
 .nv-content-wrap .page-numbers {

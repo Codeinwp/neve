@@ -93,17 +93,18 @@ class Pagination extends Base_View {
 	/**
 	 * Render single post navigation links
 	 */
-	function render_post_navigation() {
-		$prev_format = '<div class="post-navigation"><div class="previous">%link</div>';
-		$next_format = '<div class="next">%link</div></div>';
+	public function render_post_navigation() {
+		$prev_format = '<div class="previous">%link</div>';
+		$next_format = '<div class="next">%link</div>';
 
 		$prev_link = esc_html__( 'PREVIOUS', 'neve' );
 		$next_link = esc_html__( 'NEXT', 'neve' );
 
+		echo '<div class="post-navigation">';
 		previous_post_link( $prev_format, $prev_link );
 		next_post_link( $next_format, $next_link );
+		echo '</div>';
 	}
-
 
 	/**
 	 * Infinite scroll ajax callback function.
