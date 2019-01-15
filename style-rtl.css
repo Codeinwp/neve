@@ -1104,11 +1104,13 @@ footer {
   padding-top: 20px;
 }
 
-.nv-page-title-wrap.nv-big-title h1 {
-  line-height: 1.3em;
+.nv-page-title-wrap.nv-big-title .nv-page-title {
   margin-bottom: 20px;
   border-bottom: 1px solid #f0f0f0;
-  padding-bottom: 10px;
+}
+.nv-page-title-wrap.nv-big-title .nv-page-title h1 {
+  line-height: 1.3em;
+  margin-bottom: 10px;
 }
 
 .nv-content-none-wrap {

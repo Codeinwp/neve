@@ -14,11 +14,14 @@
   padding-top: $spacing-sm;
 }
 
-.nv-page-title-wrap.nv-big-title h1 {
-  line-height: 1.3em;
+.nv-page-title-wrap.nv-big-title .nv-page-title {
   margin-bottom: $spacing-sm;
   border-bottom: $muted-border;
-  padding-bottom: $spacing-xs;
+
+  h1 {
+    line-height: 1.3em;
+    margin-bottom: $spacing-xs;
+  }
 }
 
 .nv-content-none-wrap {
