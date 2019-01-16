@@ -61,8 +61,8 @@ class Layout_Single_Post extends Base_Customizer {
 			'title-meta'      => __( 'Title & Meta', 'neve' ),
 			'thumbnail'       => __( 'Thumbnail', 'neve' ),
 			'content'         => __( 'Content', 'neve' ),
-			'post-navigation' => __( 'Post navigation', 'neve' ),
 			'tags'            => __( 'Tags', 'neve' ),
+			'post-navigation' => __( 'Post navigation', 'neve' ),
 		);
 
 		$this->add_control(
@@ -92,8 +92,8 @@ class Layout_Single_Post extends Base_Customizer {
 			'thumbnail',
 			'title-meta',
 			'content',
-			'post-navigation',
 			'tags',
+			'post-navigation',
 		);
 
 		if ( empty( $value ) ) {
