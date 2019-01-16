@@ -97,10 +97,18 @@ class Pagination extends Base_View {
 		$prev_format = '<div class="previous">%link</div>';
 		$next_format = '<div class="next">%link</div>';
 
-		$prev_link = esc_html__( 'PREVIOUS', 'neve' );
-		$next_link = esc_html__( 'NEXT', 'neve' );
+		$prev_link = sprintf(
+			'<span>%1$s</span><span>%2$s</span>',
+			esc_html__( 'previous', 'neve' ),
+			'%title'
+		);
+		$next_link = sprintf(
+			'<span>%1$s</span><span>%2$s</span>',
+			esc_html__( 'next', 'neve' ),
+			'%title'
+		);
 
-		echo '<div class="post-navigation">';
+		echo '<div class="nv-post-navigation">';
 		previous_post_link( $prev_format, $prev_link );
 		next_post_link( $next_format, $next_link );
 		echo '</div>';

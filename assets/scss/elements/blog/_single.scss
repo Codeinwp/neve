@@ -1,4 +1,4 @@
-.single .entry-header, .page .nv-page-title-wrap {
+.page .nv-page-title-wrap {
   margin-top: 30px;
 }
 
@@ -8,19 +8,18 @@
   }
 }
 
-.nv-title-meta-wrap,
-.nv-thumb-wrap {
-  &:only-child {
+.nv-single-post-wrap {
+  .entry-header,
+  .nv-thumb-wrap,
+  .nv-content-wrap,
+  .nv-post-navigation,
+  .nv-tags-list {
     margin-bottom: $spacing-sm;
+
+    &:first-child {
+      margin-top: 30px;
+    }
   }
-}
-
-.nv-thumb-wrap + .nv-title-meta-wrap {
-  margin: $spacing-sm 0;
-}
-
-.nv-title-meta-wrap + .nv-thumb-wrap {
-  margin: $spacing-sm 0;
 }
 
 .single-post-container .title {
@@ -31,21 +30,22 @@
   display: flex;
 }
 
-.nv-content-wrap .post-navigation {
+.nv-post-navigation {
   display: flex;
   justify-content: space-between;
-  margin-top: $spacing-xs;
-  border-top: $muted-border;
-  padding-top: $spacing-xs;
-
 
   .previous,
   .next {
     a {
+      color: inherit;
+      display: flex;
+      flex-direction: column;
       text-decoration: none;
+      span:first-of-type {
+        text-transform: uppercase;
+      }
     }
   }
-
   .next {
     margin-left: auto;
   }
@@ -82,7 +82,6 @@
 
 .nv-tags-list {
   font-size: .85em;
-  margin: $spacing-sm 0;
   span {
     margin-right: $spacing-xs;
   }

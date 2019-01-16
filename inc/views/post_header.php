@@ -50,13 +50,6 @@ class Post_Header extends Base_View {
 			unset( $content_order[ array_search( 'thumbnail', $content_order ) ] );
 		}
 
-		if ( ! has_post_thumbnail() ) {
-			$thumb_index = array_search( 'thumbnail', $content_order );
-			if ( $thumb_index !== false ) {
-				unset( $content_order[ $thumb_index ] );
-			}
-		}
-
 		if ( empty( $content_order ) ) {
 			return;
 		}
@@ -75,14 +68,6 @@ class Post_Header extends Base_View {
 					echo '<div class="nv-title-meta-wrap">';
 					echo '<h1 class="title entry-title">' . wp_kses_post( get_the_title() ) . '</h1>';
 					$this->render_post_meta();
-					echo '</div>';
-					break;
-				case 'thumbnail':
-					echo '<div class="nv-thumb-wrap">';
-					echo get_the_post_thumbnail(
-						null,
-						'neve-blog'
-					);
 					echo '</div>';
 					break;
 			}
