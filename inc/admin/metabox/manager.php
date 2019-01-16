@@ -31,8 +31,11 @@ class Manager {
 			return;
 		}
 
-		$post_type = get_post_type();
-		$post_type = ucfirst( $post_type );
+		$post_type         = 'Neve';
+		$post_type_from_db = get_post_type();
+		if ( $post_type_from_db ) {
+			$post_type = ucfirst( $post_type_from_db );
+		}
 
 		add_meta_box(
 			'neve-page-settings',
