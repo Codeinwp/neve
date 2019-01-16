@@ -15,12 +15,17 @@
 }
 
 .nv-page-title-wrap.nv-big-title .nv-page-title {
-  margin-bottom: $spacing-sm;
+  padding-bottom: $spacing-xs;
   border-bottom: $muted-border;
+  margin-bottom: $spacing-sm;
 
   h1 {
     line-height: 1.3em;
-    margin-bottom: $spacing-xs;
+    margin-bottom: 0;
+
+    & + p {
+      margin-bottom: 0;
+    }
   }
 }
 
