@@ -78,6 +78,7 @@ class Admin {
 					'otter-blocks',
 					'elementor',
 					'wp-product-review',
+					'weglot',
 					'visualizer',
 					'wpforms-lite',
 					'translatepress-multilingual',
