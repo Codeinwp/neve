@@ -1,32 +1,38 @@
 html {
-  font-size: 14px;
+  font-size: 100%;
   overflow-x: hidden;
   -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  font-family: Graphik, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
-  color: $body_color;
-  line-height: 1.68421;
+  font-family: $default-font-family;
+  color: $body-color;
+  line-height: $line-height-base;
   overflow-x: hidden;
   direction: ltr;
   background-color: #fff;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: Graphik, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
-  line-height: 1.68421;
-  margin-bottom: .5rem;
+  font-family: $default-font-family;
+  line-height: $line-height-base;
+  margin-bottom: $headings-margin-bottom;
+  font-weight: $headings-font-weight;
 }
 
 p {
-  margin-bottom: $spacing-sm;
+  margin-bottom: $paragraph-margin-bottom;
 }
 
 a {
+  cursor: pointer;
   color: $link_color;
   text-decoration: none;
-  &:hover {
+  &:hover,
+  &:focus {
+    text-decoration: underline;
     color: $link_hover_color;
   }
 }
@@ -40,7 +46,7 @@ ins {
 }
 
 body {
-  font-size: $font-size-base;
+  font-size: $html-font-size;
 }
 
 h1 {
@@ -68,9 +74,6 @@ h6 {
 }
 
 @mixin typography--tablet() {
-  html {
-    font-size: 16px;
-  }
   h1 {
     font-size: $h1-font-size;
   }

@@ -83,9 +83,10 @@
             this.handleToggle();
         },
         handleToggle: function() {
-            $(".accordion-expand-button").on("click", function() {
+            $(".customize-control-customizer-heading.accordion .neve-customizer-heading").on("click", function() {
                 var accordion = $(this).closest(".accordion");
                 $(accordion).toggleClass("expanded");
+                return false;
             });
         }
     };
@@ -124,7 +125,6 @@
                 $(this).sortable({
                     revert: true,
                     axis: "y",
-                    handle: "> .drag",
                     containment: "parent",
                     update: function() {
                         self.updateOrder(this);
@@ -194,10 +194,10 @@ wp.customize.controlConstructor["range-value"] = wp.customize.Control.extend({
         function getSliderValues(control) {
             var values = {};
             var desktopSelector = control.find('.range-slider__range[data-query="desktop"]'), tabletSelector = control.find('.range-slider__range[data-query="tablet"]'), mobileSelector = control.find('.range-slider__range[data-query="mobile"]'), desktopValue, tabletValue, mobileValue;
-            if (desktopSelector.exists()) {
-                desktopValue = desktopSelector.val();
-                if (desktopValue !== "undefined" && desktopValue !== "") {
-                    values.desktop = desktopValue;
+            if (mobileSelector.exists()) {
+                mobileValue = mobileSelector.val();
+                if (mobileValue !== "undefined" && mobileValue !== "") {
+                    values.mobile = mobileValue;
                 }
             }
             if (tabletSelector.exists()) {
@@ -206,17 +206,14 @@ wp.customize.controlConstructor["range-value"] = wp.customize.Control.extend({
                     values.tablet = tabletValue;
                 }
             }
-            if (mobileSelector.exists()) {
-                mobileValue = mobileSelector.val();
-                if (mobileValue !== "undefined" && mobileValue !== "") {
-                    values.mobile = mobileValue;
+            if (desktopSelector.exists()) {
+                desktopValue = desktopSelector.val();
+                if (desktopValue !== "undefined" && desktopValue !== "") {
+                    values.desktop = desktopValue;
                 }
             }
             return values;
         }
-        theme_controls.unbind().on("click", ".preview-desktop.active", function() {
-            jQuery(".responsive-switchers").toggleClass("responsive-switchers-open");
-        });
         theme_controls.on("input", ".range-slider__range", function() {
             var slider = jQuery(this);
             var input = jQuery(this).next();
@@ -224,14 +221,26 @@ wp.customize.controlConstructor["range-value"] = wp.customize.Control.extend({
             syncRangeText(slider, input, "slider");
             updateValues(control);
         });
-        theme_controls.on("keyup", ".range-slider-value", function() {
+        theme_controls.on("keyup change", ".range-slider-value", function() {
             var control = jQuery(this).parent().parent();
-            updateValues(control);
-        });
-        theme_controls.on("keydown", ".range-slider-value", function() {
             var slider = jQuery(this).prev();
             var input = jQuery(this);
             syncRangeText(slider, input, "input");
+            updateValues(control);
+        });
+        theme_controls.on("blur", ".range-slider-value", function() {
+            var slider = jQuery(this).prev();
+            var min = parseInt(slider.attr("min"));
+            var max = parseInt(slider.attr("max"));
+            var input = jQuery(this);
+            var value = parseInt(jQuery(this).val());
+            if (value < min) {
+                input.val(min);
+                return false;
+            } else if (value > max) {
+                input.val(max);
+                return false;
+            }
         });
         theme_controls.on("click", ".range-reset-slider", function(event) {
             event.preventDefault();
@@ -258,6 +267,48 @@ wp.customize.controlConstructor["range-value"] = wp.customize.Control.extend({
     }
 });
 
+wp.customize.controlConstructor["responsive-number"] = wp.customize.Control.extend({
+    ready: function() {
+        "use strict";
+        var control = this;
+        this.container.on("change keyup paste", "input.responsive-number--input, select.responsive-number--select", function() {
+            control.updateValue();
+        });
+        this.container.on("click touchstart", ".reset-number-input", function() {
+            control.resetValues();
+        });
+    },
+    resetValues: function() {
+        "use strict";
+        this.container.find(".responsive-number--input").each(function() {
+            jQuery(this).val(jQuery(this).data("default"));
+        });
+        this.container.find(".responsive-number--select").each(function() {
+            jQuery(this).find("option").removeAttr("selected");
+            jQuery(this).find("option[value=" + jQuery(this).data("default") + "]").attr("selected", "selected");
+        });
+        this.updateValue();
+    },
+    updateValue: function() {
+        "use strict";
+        var control = this, newValue = {
+            suffix: {}
+        };
+        control.container.find(".control-wrap").each(function() {
+            var controlValue = jQuery(this).find("input").val();
+            var controlUnit = jQuery(this).find("select").val();
+            var query = jQuery(this).find("input").data("query");
+            newValue[query] = controlValue;
+            if (typeof controlUnit !== "undefined") {
+                newValue.suffix[query] = controlUnit;
+            }
+        });
+        var collector = jQuery(control).find(".responsive-number-collector");
+        collector.val(JSON.stringify(newValue));
+        control.setting.set(JSON.stringify(newValue));
+    }
+});
+
 jQuery(document).ready(function($) {
     "use strict";
     $.responsiveSwitchers = {
@@ -276,7 +327,7 @@ jQuery(document).ready(function($) {
                 $footer_devices.find("button").removeClass("active").attr("aria-pressed", false);
                 $footer_devices.find("button.preview-" + $device).addClass("active").attr("aria-pressed", true);
                 if ($this.hasClass("preview-desktop")) {
-                    $control.toggleClass("responsive-switchers-open");
+                    $devices.toggleClass("responsive-switchers-open");
                 }
             });
         },

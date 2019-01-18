@@ -8,20 +8,12 @@
  * @package Neve
  */
 
-define( 'NEVE_VERSION', '1.0.4' );
+define( 'NEVE_VERSION', '1.0.28' );
 define( 'NEVE_INC_DIR', trailingslashit( get_template_directory() ) . 'inc/' );
 define( 'NEVE_ASSETS_URL', trailingslashit( get_template_directory_uri() ) . 'assets/' );
 
 if ( ! defined( 'NEVE_DEBUG' ) ) {
 	define( 'NEVE_DEBUG', false );
-}
-
-if ( ! defined( 'WPFORMS_SHAREASALE_ID' ) ) {
-	define( 'WPFORMS_SHAREASALE_ID', '848264' );
-}
-
-if ( ! defined( 'ELEMENTOR_PARTNER_ID' ) ) {
-	define( 'ELEMENTOR_PARTNER_ID', 2112 );
 }
 
 /**
@@ -43,9 +35,17 @@ add_filter( 'themeisle_sdk_products', 'neve_filter_sdk' );
  * Adds notice for PHP < 5.3.29 hosts.
  */
 function neve_php_support() {
-	$message = __( 'Hey, we\'ve noticed that you\'re running an outdated version of PHP which is no longer supported. Make sure your site is fast and secure, by upgrading PHP to the latest version.', 'neve' );
+	$message = sprintf(
+		/* translators: %s message to upgrade PHP to the latest version */
+		__( "Hey, we've noticed that you're running an outdated version of PHP which is no longer supported. Make sure your site is fast and secure, by %s. Neve's minimal requirement is PHP 5.4.0.", 'neve' ),
+		sprintf(
+			/* translators: %s message to upgrade PHP to the latest version */
+			'<a href="https://wordpress.org/support/upgrade-php/">%s</a>',
+			__( 'upgrading PHP to the latest version', 'neve' )
+		)
+	);
 
-	printf( '<div class="error"><p>%1$s</p></div>', esc_html( $message ) );
+	printf( '<div class="error"><p>%1$s</p></div>', wp_kses_post( $message ) );
 }
 
 if ( version_compare( PHP_VERSION, '5.3.29' ) < 0 ) {
@@ -60,6 +60,7 @@ if ( version_compare( PHP_VERSION, '5.3.29' ) < 0 ) {
 	return;
 }
 
+require_once 'globals/utilities.php';
 require_once 'globals/hooks.php';
 require_once 'globals/sanitize-functions.php';
 
@@ -76,11 +77,19 @@ function neve_run() {
 	$autoloader_class = '\\Neve\\Autoloader';
 	$autoloader       = new $autoloader_class;
 	$autoloader->add_namespace( 'Neve', get_template_directory() . '/inc/' );
+	if ( defined( 'NEVE_PRO_SPL_ROOT' ) ) {
+		$autoloader->add_namespace( 'Neve_Pro', NEVE_PRO_SPL_ROOT );
+	}
 	$autoloader->register();
 
 	$core_loader_class = '\\Neve\\Core\\Core_Loader';
 	if ( class_exists( $core_loader_class ) ) {
 		new $core_loader_class;
+	}
+
+	$addon_loader_class = '\\Neve_Pro\\Core\\Loader';
+	if ( class_exists( $addon_loader_class ) ) {
+		$addon_loader_class::instance();
 	}
 }
 

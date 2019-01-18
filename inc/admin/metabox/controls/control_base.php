@@ -29,12 +29,22 @@ abstract class Control_Base {
 	public $settings = array();
 
 	/**
+	 * Control type [MUST BE DEFINED]
+	 *
+	 * @var string
+	 */
+	public $type = '';
+
+	/**
 	 * Control_Base constructor.
 	 *
 	 * @param string $id       control id.
 	 * @param array  $settings control settings.
 	 */
 	public function __construct( $id, $settings ) {
+		if ( empty( $this->type ) ) {
+			return;
+		}
 		$this->id       = $id;
 		$this->settings = $settings;
 	}
@@ -43,6 +53,9 @@ abstract class Control_Base {
 	 * Render function for the control.
 	 */
 	public function render( $post_id ) {
+		if ( empty( $this->type ) ) {
+			return;
+		}
 		if ( ! $this->should_render() ) {
 			return;
 		}
@@ -64,7 +77,8 @@ abstract class Control_Base {
 			return;
 		}
 
-		$control_label  = '';
+		$control_label = '';
+
 		$control_label .= '<p class="post-attributes-label-wrapper">';
 		$control_label .= '<span class="post-attributes-label">' . esc_html( $label ) . '</span>';
 		$control_label .= '</p>';
@@ -86,6 +100,10 @@ abstract class Control_Base {
 	 */
 	private function should_render() {
 		if ( ! array_key_exists( 'active_callback', $this->settings ) ) {
+			return true;
+		}
+
+		if ( empty( $this->settings['active_callback'] ) ) {
 			return true;
 		}
 
@@ -131,16 +149,15 @@ abstract class Control_Base {
 		if ( ! current_user_can( 'edit_posts' ) ) {
 			return;
 		}
-
 		if ( isset( $_POST[ $this->id ] ) ) {
 			$value = wp_unslash( $_POST[ $this->id ] );
-			if ( $value === 'default' ) {
+			if ( $value === $this->settings['default'] ) {
 				delete_post_meta( $post_id, $this->id );
 
 				return;
 			}
 
-			update_post_meta( $post_id, $this->id, $value );
+			update_post_meta( $post_id, $this->id, $this->sanitize_value( $value ) );
 
 			return;
 		}
@@ -148,4 +165,37 @@ abstract class Control_Base {
 
 	}
 
+	/**
+	 * Sanitize the value.
+	 *
+	 * @param int|string $value the value to sanitize.
+	 *
+	 * @return int|string
+	 */
+	protected function sanitize_value( $value ) {
+		switch ( $this->type ) {
+			case 'radio':
+				$allowed_values = $this->settings['choices'];
+				if ( ! array_key_exists( $value, $allowed_values ) ) {
+					return esc_html( $this->settings['default'] );
+				}
+
+				return sanitize_text_field( $value );
+				break;
+			case 'checkbox':
+				$allowed_values = array( 'on', 'off' );
+				if ( ! in_array( $value, $allowed_values ) ) {
+					return esc_html( $this->settings['default'] );
+				}
+
+				return sanitize_text_field( $value );
+				break;
+			case 'range':
+				return absint( $value );
+				break;
+			case 'separator':
+			default:
+				break;
+		}
+	}
 }

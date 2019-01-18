@@ -44,8 +44,9 @@ class Top_Bar extends Base_Customizer {
 			new Section(
 				'neve_top_bar_section',
 				array(
-					'priority' => 26,
+					'priority' => 24,
 					'title'    => esc_html__( 'Top Bar', 'neve' ),
+					'panel'    => 'neve_header',
 				)
 			)
 		);

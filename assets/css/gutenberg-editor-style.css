@@ -1,0 +1,329 @@
+.editor-styles-wrapper .editor-writing-flow {
+  font-size: 16px;
+  font-weight: normal;
+  font-family: Graphik, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+  color: #404248;
+}
+.editor-styles-wrapper .editor-writing-flow, .editor-styles-wrapper .editor-writing-flow p {
+  line-height: 1.68421;
+}
+.editor-styles-wrapper .editor-writing-flow strong {
+  font-weight: bold;
+}
+.editor-styles-wrapper .editor-writing-flow h1, .editor-styles-wrapper .editor-writing-flow h2, .editor-styles-wrapper .editor-writing-flow h3, .editor-styles-wrapper .editor-writing-flow h4, .editor-styles-wrapper .editor-writing-flow h5, .editor-styles-wrapper .editor-writing-flow h6 {
+  font-family: Graphik, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+  line-height: 1.68421;
+  margin: 0 0 0.8rem 0;
+  font-weight: 600;
+  color: #404248;
+}
+.editor-styles-wrapper .editor-writing-flow h1 {
+  font-size: 1.5em;
+}
+.editor-styles-wrapper .editor-writing-flow h2 {
+  font-size: 1.3em;
+}
+.editor-styles-wrapper .editor-writing-flow h3 {
+  font-size: 1.1em;
+}
+.editor-styles-wrapper .editor-writing-flow h4 {
+  font-size: 1em;
+}
+.editor-styles-wrapper .editor-writing-flow h5 {
+  font-size: 0.75em;
+}
+.editor-styles-wrapper .editor-writing-flow h6 {
+  font-size: 0.75em;
+}
+.editor-styles-wrapper .editor-writing-flow .editor-post-title__block .editor-post-title__input {
+  font-family: Graphik, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+  font-size: 1.5em;
+  color: #404248;
+  line-height: 1.3em;
+}
+.editor-styles-wrapper .editor-writing-flow ul, .editor-styles-wrapper .editor-writing-flow ol {
+  padding-left: 20px;
+  margin: 20px 0;
+}
+.editor-styles-wrapper .editor-writing-flow ul li, .editor-styles-wrapper .editor-writing-flow ol li {
+  line-height: 2em;
+  margin-bottom: 10px;
+}
+.editor-styles-wrapper .editor-writing-flow ul {
+  list-style-type: circle;
+}
+.editor-styles-wrapper .editor-writing-flow blockquote.wp-block-quote {
+  border: none;
+  text-align: center;
+  margin: 40px 0;
+  padding: 0;
+}
+.editor-styles-wrapper .editor-writing-flow blockquote.wp-block-quote p:not(.wp-block-quote__citation) {
+  font-size: 1.1em;
+  margin-bottom: 0;
+}
+.editor-styles-wrapper .editor-writing-flow blockquote.wp-block-quote .wp-block-quote__citation {
+  padding-top: 20px;
+  display: block;
+  color: #676767;
+  margin-top: 0;
+  font-size: .95em;
+}
+.editor-styles-wrapper .editor-writing-flow blockquote.wp-block-quote:after, .editor-styles-wrapper .editor-writing-flow blockquote.wp-block-quote:before {
+  height: 3px;
+  width: 60px;
+  background-color: #c9c9c9;
+  content: " ";
+  display: block;
+}
+.editor-styles-wrapper .editor-writing-flow blockquote.wp-block-quote:before {
+  margin: 0 auto 40px;
+}
+.editor-styles-wrapper .editor-writing-flow blockquote.wp-block-quote:after {
+  margin: 40px auto 0;
+}
+.editor-styles-wrapper .editor-writing-flow blockquote.wp-block-quote > * {
+  margin-bottom: 0;
+}
+.editor-styles-wrapper .editor-writing-flow blockquote.wp-block-quote.is-style-large p:not(.wp-block-quote__citation) {
+  font-size: 1.75em;
+}
+.editor-styles-wrapper .editor-writing-flow table {
+  width: 100%;
+  margin: 20px 0;
+}
+.editor-styles-wrapper .editor-writing-flow table td, .editor-styles-wrapper .editor-writing-flow table th {
+  line-height: 1.68421;
+  border: none;
+  padding: 10px;
+  border-bottom: 1px solid #f0f0f0;
+}
+.editor-styles-wrapper .editor-writing-flow table tbody tr:hover {
+  background-color: #fbfbfb;
+}
+.editor-styles-wrapper .editor-writing-flow table .wp-block-table__cell-content {
+  padding: 0;
+}
+.editor-styles-wrapper .editor-writing-flow .wp-block-preformatted pre {
+  display: block;
+  padding: 20px;
+  background: #fbfbfb;
+  border-radius: 5px;
+  border: 1px solid #f0f0f0;
+  margin: 20px 0;
+  white-space: pre-wrap;
+  font-size: 0.9em;
+  line-height: 2em;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  font-family: monospace;
+  color: #404248;
+}
+.editor-styles-wrapper .editor-writing-flow a {
+  color: #0366d6;
+}
+.editor-styles-wrapper .editor-writing-flow a:hover {
+  color: #0366d6;
+  text-decoration: none;
+}
+.editor-styles-wrapper .editor-writing-flow .editor-rich-text__tinymce code {
+  background: #d0effb;
+  border-radius: 5px;
+  border: 1px solid #f0f0f0;
+  font-family: monospace;
+  padding: 0;
+}
+
+.editor-styles-wrapper .wp-block-verse {
+  font-style: italic;
+  border: unset;
+}
+.editor-styles-wrapper .wp-block-separator {
+  margin: 20px auto 40px;
+  padding-top: 20px;
+}
+.editor-styles-wrapper .wp-block-button .wp-block-button__link {
+  font-size: .8em;
+  font-weight: 600;
+  padding: 6px 12px;
+  transition: all .15s ease-in-out;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  line-height: 1.68421;
+  font-family: inherit;
+}
+.editor-styles-wrapper .wp-block-button .wp-block-button__link:hover {
+  text-decoration: none;
+  opacity: .9;
+}
+.editor-styles-wrapper .wp-block-button.is-style-outline .wp-block-button__link {
+  border: 1px solid #676767;
+  background-color: transparent;
+  font-weight: 600;
+  color: #676767;
+}
+.editor-styles-wrapper .wp-block-button.is-style-outline .wp-block-button__link:hover {
+  background: transparent;
+}
+
+.block-editor-page .editor-styles-wrapper .editor-writing-flow .wp-block-pullquote blockquote {
+  margin: 1em auto;
+}
+.block-editor-page .editor-styles-wrapper .editor-writing-flow .wp-block-pullquote blockquote > .editor-rich-text p {
+  margin: 0 0 20px 0;
+  font-size: 2em;
+}
+.block-editor-page .editor-styles-wrapper .editor-writing-flow .wp-block-pullquote blockquote .wp-block-pullquote__citation {
+  padding-top: 20px;
+  font-size: .85em;
+}
+
+.editor-styles-wrapper.neve-has-meta .editor-post-title__block > div:first-child:after {
+  content: ' ';
+  width: 245px;
+  height: 12px;
+  display: block;
+  left: 0;
+  position: relative;
+  top: -12px;
+  margin-bottom: 12px;
+  background: linear-gradient(90deg, #e7e7e7 0%, #e7e7e7 6%, transparent 6.01%, transparent 7.5%, #e7e7e7 7.51%, #e7e7e7 24%, transparent 24.01%, transparent 26%, #e7e7e7 26.01%, #e7e7e7 43%, transparent 43.01%, transparent 45%, #e7e7e7 45.01%, #e7e7e7 75%, transparent 75.01%, transparent 77%, #e7e7e7 77.01%);
+}
+
+.neve-gtb.has-sidebar-right .neve-content-wrap, .neve-gtb.has-sidebar-left .neve-content-wrap {
+  display: flex;
+  flex-direction: row;
+}
+.neve-gtb.has-sidebar-right .wp-block[data-align=full], .neve-gtb.has-sidebar-right .wp-block[data-align=wide], .neve-gtb.has-sidebar-left .wp-block[data-align=full], .neve-gtb.has-sidebar-left .wp-block[data-align=wide] {
+  margin: 0;
+}
+.neve-gtb.has-sidebar-right .wp-block[data-align=full] > .editor-block-list__block-edit, .neve-gtb.has-sidebar-right .wp-block[data-align=wide] > .editor-block-list__block-edit, .neve-gtb.has-sidebar-left .wp-block[data-align=full] > .editor-block-list__block-edit, .neve-gtb.has-sidebar-left .wp-block[data-align=wide] > .editor-block-list__block-edit {
+  margin-left: -28px;
+  margin-right: -28px;
+}
+.neve-gtb .editor-post-title {
+  padding: 0;
+}
+.neve-gtb .editor-post-title .wp-block {
+  max-width: 100%;
+}
+.neve-gtb .editor-post-title__input {
+  padding-left: 0;
+}
+.neve-gtb .editor-block-list__layout {
+  padding: 0;
+}
+.neve-gtb .neve-blocks-wrap {
+  margin: 0 auto;
+  padding: 0 15px;
+  width: 100%;
+}
+.neve-gtb.has-sidebar-full-width .neve-blocks-wrap > .editor-block-list__layout > .wp-block:not([data-align=full]):not([data-align=wide]), .neve-gtb.has-sidebar-full-width .neve-blocks-wrap .wp-block.editor-post-title__block > div {
+  padding: 0 30px;
+}
+.neve-gtb.has-sidebar-full-width .neve-blocks-wrap > .editor-block-list__layout > .wp-block:not([data-align=full]):not([data-align=wide]) > *, .neve-gtb.has-sidebar-full-width .neve-blocks-wrap .wp-block.editor-post-title__block > div {
+  margin-left: auto;
+  margin-right: auto;
+}
+.neve-gtb.container.has-sidebar-full-width .neve-blocks-wrap > .editor-block-list__layout > .wp-block:not([data-align=full]):not([data-align=wide]) > *, .neve-gtb.container.has-sidebar-full-width .neve-blocks-wrap .wp-block.editor-post-title__block > div {
+  max-width: 70%;
+}
+.neve-gtb .neve-blocks-wrap > .editor-block-list__layout > .wp-block:not([data-align=full]):not([data-align=wide]) {
+  max-width: 100%;
+}
+.neve-gtb .editor-writing-flow {
+  display: block;
+}
+.neve-gtb .neve-blocks-wrap > .editor-block-list__layout .editor-block-list__block {
+  padding-right: 28px;
+  padding-left: 28px;
+}
+
+.neve-gtb-sidebar {
+  display: none;
+}
+
+.block-editor-page.post-type-page .editor-post-title__input {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.neve-gtb.container.has-sidebar-full-width .neve-blocks-wrap > .editor-block-list__layout > .wp-block:not([data-align=full]):not([data-align=wide]), .neve-gtb.container.has-sidebar-full-width .neve-blocks-wrap .wp-block.editor-post-title__block, .neve-gtb.container.has-sidebar-left .neve-content-wrap, .neve-gtb.container.has-sidebar-right .neve-content-wrap {
+  max-width: 100%;
+  width: 100%;
+  margin: 0 auto;
+}
+
+@media (min-width: 576px) {
+  .neve-gtb.container.has-sidebar-full-width .neve-blocks-wrap > .editor-block-list__layout > .wp-block:not([data-align=full]):not([data-align=wide]), .neve-gtb.container.has-sidebar-full-width .neve-blocks-wrap .wp-block.editor-post-title__block, .neve-gtb.container.has-sidebar-left .neve-content-wrap, .neve-gtb.container.has-sidebar-right .neve-content-wrap {
+    max-width: 540px;
+  }
+}
+@media (min-width: 769px) {
+  .neve-gtb.container.has-sidebar-full-width .neve-blocks-wrap > .editor-block-list__layout > .wp-block:not([data-align=full]):not([data-align=wide]), .neve-gtb.container.has-sidebar-full-width .neve-blocks-wrap .wp-block.editor-post-title__block, .neve-gtb.container.has-sidebar-left .neve-content-wrap, .neve-gtb.container.has-sidebar-right .neve-content-wrap {
+    max-width: 720px;
+  }
+
+  .block-editor-page .editor-styles-wrapper {
+    font-size: 16px;
+  }
+  .block-editor-page .editor-styles-wrapper h1, .block-editor-page .editor-styles-wrapper .editor-post-title__block .editor-post-title__input {
+    font-size: 2em;
+  }
+  .block-editor-page .editor-styles-wrapper h2 {
+    font-size: 1.75em;
+  }
+  .block-editor-page .editor-styles-wrapper h3 {
+    font-size: 1.5em;
+  }
+  .block-editor-page .editor-styles-wrapper h4 {
+    font-size: 1.25em;
+  }
+  .block-editor-page .editor-styles-wrapper h5 {
+    font-size: 1em;
+  }
+  .block-editor-page .editor-styles-wrapper h6 {
+    font-size: 1em;
+  }
+}
+@media (min-width: 960px) {
+  .neve-gtb.container.has-sidebar-full-width .neve-blocks-wrap > .editor-block-list__layout > .wp-block:not([data-align=full]):not([data-align=wide]), .neve-gtb.container.has-sidebar-full-width .neve-blocks-wrap .wp-block.editor-post-title__block, .neve-gtb.container.has-sidebar-left .neve-content-wrap, .neve-gtb.container.has-sidebar-right .neve-content-wrap {
+    max-width: 960px;
+  }
+
+  .neve-gtb.has-sidebar-right .neve-blocks-wrap {
+    max-width: 70%;
+    padding: 0 40px 0 15px;
+  }
+  .neve-gtb.has-sidebar-left .neve-blocks-wrap {
+    max-width: 70%;
+    padding: 0 15px 0 40px;
+  }
+
+  .neve-gtb-sidebar {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    background: rgba(231, 231, 231, 0.25);
+    padding: 10px;
+    max-width: 100%;
+    flex-grow: 1;
+  }
+  .neve-gtb-sidebar > p {
+    position: fixed;
+    color: #b4b4b4;
+    font-weight: 300;
+    font-size: 16px !important;
+    font-family: Graphik, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif !important;
+  }
+}
+@media (min-width: 1200px) {
+  .neve-gtb.container.has-sidebar-full-width .neve-blocks-wrap > .editor-block-list__layout > .wp-block:not([data-align=full]):not([data-align=wide]), .neve-gtb.container.has-sidebar-full-width .neve-blocks-wrap .wp-block.editor-post-title__block, .neve-gtb.container.has-sidebar-left .neve-content-wrap, .neve-gtb.container.has-sidebar-right .neve-content-wrap {
+    max-width: 1170px;
+  }
+}
+
+/*# sourceMappingURL=gutenberg-editor-style.css.map */

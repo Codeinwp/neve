@@ -27,7 +27,7 @@
 			}
 			var postsWrap = $( '.nv-index-posts' );
 
-			if( ! postsWrap.length ) {
+			if ( !postsWrap.length ) {
 				return false;
 			}
 			var lock = false;

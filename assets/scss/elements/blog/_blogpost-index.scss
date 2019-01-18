@@ -1,23 +1,50 @@
+.entry-title {
+  word-wrap: break-word;
+  font-weight: 600;
+  line-height: 1.3em;
+
+  a {
+    color: $body-color;
+
+    &:hover,
+    &:focus {
+      opacity: .9;
+      color: $body-color;
+    }
+  }
+}
+
+.posts-wrapper .excerpt-wrap {
+  color: $gray-color;
+}
+
 .nv-post-thumbnail-wrap {
-  width: 100%;
+  amp-img {
+    display: inline-block;
+  }
+
   a {
     transition: $transition_med;
+
     &:hover {
       opacity: .95;
     }
   }
+
   img {
-    width: 100%;
     height: auto;
   }
 }
 
 .posts-wrapper > article {
-  margin-bottom: $spacing;
+  margin-bottom: 30px;
+}
+
+.layout-grid .content > .blog-entry-title {
+  margin-bottom: 0;
 }
 
 .blog-entry-title {
-  margin: 0 0 $spacing-xs;
   word-wrap: break-word;
 }
 
@@ -27,22 +54,19 @@
 
 .article-content-col .content {
   width: 100%;
-  padding-bottom: $spacing;
+  padding-bottom: 30px;
   border-bottom: $muted-border;
   display: flex;
   flex-direction: column;
+
   .button {
+    display: inline-block;
     align-self: flex-start;
-    margin-top: $spacing-sm;
   }
 }
 
 .bypostauthor {
   display: block;
-}
-
-.excerpt-wrap {
-  margin: $spacing-sm 0;
 }
 
 .nv-index-posts .posts-wrapper {
@@ -56,15 +80,57 @@
   margin: $spacing-xs auto;
 }
 
-.sticky .article-content-col {
-  max-width: 100%;
-  .content {
-    @include soft-box-shadow();
-    margin-right: $spacing-xs;
-    margin-left: $spacing-xs;
-    border: $muted-border;
-    max-width: 100%;
-    width: auto;
-    padding: $spacing-sm;
+.layout-grid .content {
+  > * {
+    margin: 0 0 $spacing-xs;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &.nv-meta-list {
+      margin-top: 0;
+    }
+  }
+}
+
+.nv-non-grid-article {
+  .non-grid-content {
+    display: flex;
+    flex-direction: column;
+
+    > * {
+      margin: 0 0 $spacing-xs;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      &.nv-meta-list {
+        margin-top: 0;
+      }
+    }
+
+    .blog-entry-title {
+      margin-bottom: 0;
+    }
+  }
+}
+
+article {
+  word-break: break-word;
+}
+
+.sticky {
+  display: inherit;
+}
+
+@mixin blogpost-index--laptop() {
+  .non-grid-content > .entry-title {
+    margin-top: 0;
   }
 }

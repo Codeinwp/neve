@@ -10,9 +10,10 @@
 			this.handleToggle();
 		},
 		handleToggle: function () {
-			$( '.accordion-expand-button' ).on( 'click', function () {
+			$( '.customize-control-customizer-heading.accordion .neve-customizer-heading' ).on( 'click', function () {
 				var accordion = $( this ).closest( '.accordion' );
 				$(accordion).toggleClass( 'expanded' );
+				return false;
 			} );
 		},
 	};

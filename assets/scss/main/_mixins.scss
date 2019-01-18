@@ -1,13 +1,19 @@
-@mixin horizontal-list( $margin ) {
+@mixin horizontal-list( $margin, $ignore-first-last : 'false' ) {
   display: flex;
   flex-wrap: wrap;
   padding-left: 0;
   list-style-type: none;
-  @if ($margin != 0) {
+  @if $margin != 0 and $ignore-first-last == 'false' {
     > li:not(:last-child) {
       padding-right: $margin;
     }
     > li:not(:first-child) {
+      padding-left: $margin;
+    }
+  }
+  @if $ignore-first-last == 'true' {
+    li {
+      padding-right: $margin;
       padding-left: $margin;
     }
   }
@@ -23,19 +29,25 @@
   border-radius: 1px;
   border-left: 0;
   border-bottom: 0;
-  left: 1px;
 }
 
-@mixin soft-box-shadow() {
-  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+@mixin soft-box-shadow( $inverted : 'false' ) {
+  @if $inverted == 'false' {
+    -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  @if $inverted == 'true' {
+    -webkit-box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.07);
+    -moz-box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.07);
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.07);
+  }
 }
 
 @mixin button() {
   font-size: .8em;
   font-weight: 600;
-  padding: 9px 18px;
+  padding: 6px 12px;
   transition: all .15s ease-in-out;
   text-align: center;
   vertical-align: middle;
@@ -43,29 +55,57 @@
   border-radius: .25rem;
   text-transform: uppercase;
   cursor: pointer;
-  width: auto;
+  line-height: $line-height-base;
+  font-family: inherit;
+  &:hover {
+    text-decoration: none;
+    opacity: .9;
+  }
 }
 
-@mixin button-secondary( $hover: 'true', $color: $theme_color ) {
+@mixin button-secondary( $hover: 'true', $color: $gray-color ) {
   border: 1px solid $color;
   background-color: transparent;
   font-weight: 600;
   color: $color;
-  @if ($hover == 'true') {
-    &:hover {
-      background-color: $color;
-      color: #fff;
-    }
+  &:hover {
+    background: transparent;
   }
 }
 
-@mixin button-primary( $hover: 'true', $color: $theme_color ) {
+@mixin button-primary( $hover: 'true', $color: $button_color ) {
   background-color: $color;
   color: #fff;
   @if ($hover == 'true') {
     &:hover {
+      text-decoration: none;
+      background-color: $color;
+      color: #fff;
       opacity: .9;
     }
   }
+}
 
+@mixin cart-widget() {
+  .widget_shopping_cart > .widget_shopping_cart_content > ul.woocommerce-mini-cart.cart_list.product_list_widget {
+    max-height: 290px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  .woocommerce-mini-cart__empty-message {
+    text-align: center;
+    margin-bottom: 0;
+    padding: 10px 0;
+  }
+  .woocommerce.widget_shopping_cart .total {
+    border-top: $muted-border;
+    border-bottom: $muted-border;
+    padding-bottom: $spacing-xs;
+    margin: 0 auto $spacing-xs;
+    text-align: center;
+  }
+  .woocommerce-mini-cart__buttons {
+    margin-bottom: $spacing-xs;
+    padding: $spacing-xs $spacing-sm 0;
+  }
 }

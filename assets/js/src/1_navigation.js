@@ -8,13 +8,16 @@
 			this.handleMobileDropdowns();
 			this.handleSearch();
 		},
+		/**
+		 * Reposition dropdowns if they go off-screen.
+		 */
 		'repositionDropdowns': function () {
 			if ( utils.isMobile() ) {
 				return false;
 			}
 
 			var windowWidth = window.innerWidth;
-			//Do nothing without dropdowns.
+			//Do nothing without drop-downs.
 			var dropDowns = $( '.sub-menu .sub-menu' );
 			if ( dropDowns.length === 0 ) {
 				return false;
@@ -33,15 +36,19 @@
 			} );
 			return false;
 		},
-
 		/**
 		 * Handle the responsive navigation toggle.
 		 */
 		'handleResponsiveNav': function () {
 			$( '.navbar-toggle' ).on( 'click', function () {
 				$( '.dropdown-open' ).removeClass( 'dropdown-open' );
-				$( '#nv-primary-navigation' ).toggleClass( 'responsive-opened' );
+				$( '.nv-navbar' ).toggleClass( 'responsive-opened' );
 				$( this ).toggleClass( 'active' );
+				if ( this.attributes[ 'aria-expanded' ].value === 'true' ) {
+					$( this ).attr( 'aria-expanded', 'false' );
+				} else {
+					$( this ).attr( 'aria-expanded', 'true' );
+				}
 				$( 'html' ).toggleClass( 'menu-opened' );
 			} );
 		},
@@ -50,9 +57,12 @@
 		 */
 		'handleMobileDropdowns': function () {
 			var self = this;
-			$( '.caret-wrap' ).on( 'click touchstart', function () {
-				$( this ).parent().toggleClass( 'dropdown-open' );
-				self.createNavOverlay();
+			$( '.caret-wrap' ).on( 'click', function () {
+				$( this ).toggleClass( 'dropdown-open' );
+				$( this ).closest('li').find( 'ul.sub-menu' ).toggleClass( 'dropdown-open' );
+				if ( !utils.isMobile() ) {
+					self.createNavOverlay();
+				}
 				return false;
 			} );
 		},
@@ -61,28 +71,37 @@
 		 */
 		'handleSearch': function () {
 			var self = this;
-			$( '.nv-nav-search' ).on( 'click', function ( e ) {
+			$( '.nv-nav-search' ).on( 'touchstart click', function ( e ) {
 				e.stopPropagation();
 			} );
 
-			$( '.menu-item-nav-search' ).on( 'click', function () {
+			$( '.menu-item-nav-search' ).on( 'touchstart click focus', function () {
+				$( this ).addClass( 'active' );
+				$( 'html' ).addClass( 'menu-opened' );
 				if ( utils.isMobile() ) {
 					return false;
 				}
-				$( this ).toggleClass( 'active' );
 				self.createNavOverlay();
-				$( '.nv-nav-search .search-field' ).focus();
 				return false;
 			} );
+
+			$( '.close-responsive-search' ).on( 'touchstart click', function ( e ) {
+				e.preventDefault();
+				$( '.responsive-nav-search' ).removeClass( 'active' );
+				$( 'html' ).removeClass( 'menu-opened' );
+			} );
+
+			var link = $( '.menu-item-nav-search input' );
+
+			$(link).bind('blur', function() {
+				$('.menu-item-nav-search').classList.remove('active');
+			});
 		},
 		/**
 		 * Create helper overlay used for touch dropdowns.
 		 * @returns {boolean}
 		 */
 		'createNavOverlay': function () {
-			if ( utils.isMobile() ) {
-				return false;
-			}
 			var navClickaway = $( '.nav-clickaway-overlay' );
 			if ( navClickaway.length > 0 ) {
 				return false;
@@ -92,8 +111,8 @@
 			$( '#nv-primary-navigation' ).after( navClickaway );
 
 			$( navClickaway ).on( 'touchstart click', function () {
-				this.remove();
-				$( '#nv-primary-navigation li' ).removeClass( 'active dropdown-open' );
+				$( this ).remove();
+				$( '#nv-primary-navigation li, .menu-item-nav-search' ).removeClass( 'active dropdown-open' );
 			} );
 			return false;
 		},

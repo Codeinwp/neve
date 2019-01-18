@@ -12,10 +12,10 @@ jQuery( window ).load( function () {
 /**
  * Do resize events timer based so they don't run continuously.
  */
-var resizeTimeout;
+var neveResizeTimeout;
 jQuery( window ).on( 'resize', function () {
-	clearTimeout( resizeTimeout );
-	resizeTimeout = setTimeout( function () {
+	clearTimeout( neveResizeTimeout );
+	neveResizeTimeout = setTimeout( function () {
 		jQuery.neveNavigation.repositionDropdowns();
 	}, 500 );
 } );

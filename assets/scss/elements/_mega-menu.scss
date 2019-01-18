@@ -1,0 +1,105 @@
+/* Style mega-menu and its children on mobile */
+#nv-primary-navigation .neve-mega-menu {
+  .sub-menu > li > a {
+    white-space: normal;
+  }
+  > .sub-menu {
+    border-left: none;
+  }
+  .dropdown-open.sub-menu {
+    max-height: inherit;
+    width: 100%;
+    border-left: none;
+  }
+
+  .neve-mm-col {
+    border: none;
+    > a {
+      display: none
+    }
+    > .sub-menu {
+      padding-left: 0;
+      border-left: none;
+    }
+    .neve-mm-heading {
+      > a {
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  .neve-mm-divider {
+    height: 1px;
+    margin: $spacing-xs auto;
+    width: 75%;
+    background-color: $muted-white-med;
+    cursor: default;
+  }
+  .caret-wrap.dropdown-open + .sub-menu .sub-menu {
+    max-height: 2000px;
+  }
+  .sub-menu .caret-wrap {
+    display: none;
+  }
+}
+
+@mixin mega-menu--laptop() {
+  #nv-primary-navigation .neve-mega-menu {
+    position: static;
+  }
+  #nv-primary-navigation .neve-mega-menu > .sub-menu {
+    width: 950px;
+    position: absolute;
+    top: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    padding: 20px;
+    pointer-events: none;
+  }
+  #nv-primary-navigation .neve-mega-menu:hover > .sub-menu,
+  #nv-primary-navigation .neve-mega-menu:focus > .sub-menu,
+  #nv-primary-navigation .neve-mega-menu:focus-within > .sub-menu {
+    opacity: 1;
+    display: grid;
+    visibility: visible;
+    pointer-events: all;
+  }
+  #nv-primary-navigation .neve-mega-menu > .sub-menu {
+    .neve-mm-col {
+      & > .sub-menu {
+        left: initial;
+        right: initial;
+      }
+    }
+  }
+  #nv-primary-navigation .neve-mega-menu .neve-mm-col {
+    .neve-mm-heading a {
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+  }
+  #nv-primary-navigation .neve-mega-menu .neve-mm-col > .sub-menu {
+    position: static;
+    visibility: visible;
+    opacity: 1;
+    left: initial;
+    right: initial;
+    border: none;
+    box-shadow: none;
+    li {
+      border: none;
+    }
+  }
+}
+
+@mixin mega-menu--desktop() {
+  #nv-primary-navigation .neve-mega-menu {
+    > .sub-menu {
+      width: 1170px;
+    }
+    position: static;
+  }
+}

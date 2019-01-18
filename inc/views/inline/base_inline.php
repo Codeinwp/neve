@@ -58,7 +58,8 @@ abstract class Base_Inline {
 		$use_style = false;
 
 		foreach ( $styles as $style ) {
-			if ( ! isset( $style['value'] ) || empty( $style['value'] ) ) {
+			/* Allow 0 values through, but don't allow empty style or undefined. */
+			if ( ! isset( $style['value'] ) || ( empty( $style['value'] ) && ( $style['value'] !== 0 ) ) ) {
 				continue;
 			}
 			$use_style = true;
@@ -70,6 +71,9 @@ abstract class Base_Inline {
 
 		$css = $selectors . '{';
 		foreach ( $styles as $id => $style ) {
+			if ( isset( $style['suffix'] ) && is_array( $style['suffix'] ) ) {
+				$style['suffix'] = $style['suffix'][ $media_query ];
+			}
 			$css .= $this->add_styles( $style );
 		}
 		$css                         .= '}';
@@ -122,9 +126,9 @@ abstract class Base_Inline {
 			$style = wp_parse_args( $style, $default );
 			$setup = array(
 				array(
-					'css_prop' => $style['css_prop'],
-					'value'    => $style['prefix'] . $value,
-					'suffix'   => $style['suffix'],
+					'css_prop' => esc_attr( $style['css_prop'] ),
+					'value'    => esc_attr( $style['prefix'] . $value ),
+					'suffix'   => esc_attr( $style['suffix'] ),
 				),
 			);
 			$this->add_style( $setup, $style['selectors'], $style['media_query'] );
@@ -144,7 +148,7 @@ abstract class Base_Inline {
 		}
 		$suffix = isset( $style['suffix'] ) ? $style['suffix'] : '';
 
-		return $style['css_prop'] . ':' . $style['value'] . $suffix . ';';
+		return esc_attr( $style['css_prop'] ) . ':' . esc_attr( $style['value'] ) . esc_attr( $suffix ) . ';';
 	}
 
 	/**
@@ -157,6 +161,9 @@ abstract class Base_Inline {
 	public final function get_style( $context ) {
 		$allowed_contexts = array( 'mobile', 'desktop', 'tablet' );
 		if ( ! in_array( $context, $allowed_contexts ) ) {
+			return '';
+		}
+		if ( ! array_key_exists( $context, $this->style ) ) {
 			return '';
 		}
 

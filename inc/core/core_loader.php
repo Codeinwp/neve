@@ -30,7 +30,6 @@ class Core_Loader {
 	 * @access public
 	 */
 	public function __construct() {
-		$this->maybe_load_addons();
 		$this->define_hooks();
 		$this->define_modules();
 		$this->load_modules();
@@ -57,16 +56,22 @@ class Core_Loader {
 
 				'Views\Partials\Post_Meta',
 				'Views\Partials\Excerpt',
+				'Views\Partials\Comments',
 
 				'Views\Pluggable\Pagination',
 				'Views\Pluggable\Masonry',
 				'Views\Pluggable\Metabox_Settings',
 
-				'Views\Inline\Style_Manager',
+				'Views\Inline\Front_End_Style_Manager',
+				'Views\Inline\Gutenberg_Style_Manager',
 
+				'Compatibility\Gutenberg',
 				'Compatibility\WooCommerce',
 				'Compatibility\Elementor',
+				'Compatibility\Amp',
+				'Compatibility\Beaver',
 
+				'Admin\Metabox\Manager',
 				'Admin\Metabox\Main',
 			)
 		);
@@ -83,19 +88,6 @@ class Core_Loader {
 	}
 
 	/**
-	 * Check if add-ons are available and load them if necessary.
-	 *
-	 * @access private
-	 */
-	private function maybe_load_addons() {
-		if ( ! class_exists( 'Neve\Addons\Main' ) ) {
-			return;
-		}
-		$addon_manager = new \Neve\Addons\Main();
-		add_filter( 'neve_filter_main_modules', array( $addon_manager, 'filter_modules' ) );
-	}
-
-	/**
 	 * Register all of the hooks related to the functionality
 	 * of the theme setup.
 	 *
@@ -103,9 +95,8 @@ class Core_Loader {
 	 */
 	private function define_hooks() {
 		$admin = new Admin();
-		add_filter( 'init', array( $admin, 'do_about_page' ) );
-		add_action( 'init', array( $admin, 'load_site_import' ), 11 );
-		add_action( 'after_switch_theme', array( $admin, 'start_onboarding' ) );
+		add_action( 'init', array( $admin, 'load_site_import' ) );
+		add_action( 'init', array( $admin, 'do_about_page' ) );
 
 		$front_end = new Front_End();
 		add_action( 'wp_enqueue_scripts', array( $front_end, 'enqueue_scripts' ) );

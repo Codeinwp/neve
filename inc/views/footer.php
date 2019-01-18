@@ -25,9 +25,9 @@ class Footer extends Base_View {
 	public function render_footer() {
 		neve_before_footer_trigger();
 		?>
-		<footer>
-			<?php echo $this->render_footer_sidebars(); ?>
-			<?php echo $this->render_footer_content(); ?>
+		<footer role="contentinfo">
+			<?php $this->render_footer_sidebars(); ?>
+			<?php $this->render_footer_content(); ?>
 		</footer>
 		<?php
 		neve_after_footer_trigger();
@@ -63,7 +63,7 @@ class Footer extends Base_View {
 		if ( $content_type === 'none' ) {
 			return;
 		}
-		echo '<div class="footer-content-wrap">';
+		echo '<div class="footer-content-wrap footer-second-section">';
 		echo '<div class="container">';
 		echo '<div class="row nv-footer-content">';
 		echo '<div class="col-12">';
@@ -88,7 +88,17 @@ class Footer extends Base_View {
 	 * Render content for text.
 	 */
 	private function render_content_text() {
-		echo wp_kses_post( get_theme_mod( 'neve_footer_text' ) );
+		$content = get_theme_mod(
+			'neve_footer_text',
+			sprintf(
+				/* translators: %1$s is Theme Name (Neve), %2$s is WordPress */
+				esc_html__( '%1$s | Powered by %2$s', 'neve' ),
+				wp_kses_post( '<a href="https://themeisle.com/themes/neve/" rel="nofollow">Neve</a>' ),
+				wp_kses_post( '<a href="http://wordpress.org" rel="nofollow">WordPress</a>' )
+			)
+		);
+
+		echo wp_kses_post( $content );
 	}
 
 	/**

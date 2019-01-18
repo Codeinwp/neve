@@ -21,6 +21,7 @@ class Template_Parts extends Base_View {
 	 */
 	public function init() {
 		add_action( 'neve_blog_post_template_part_content', array( $this, 'render_post' ) );
+		add_filter( 'excerpt_more', array( $this, 'link_excerpt_more' ) );
 	}
 
 	/**
@@ -28,8 +29,7 @@ class Template_Parts extends Base_View {
 	 */
 	public function render_post() {
 		?>
-		<article
-				id="post-<?php echo esc_attr( get_the_ID() ); ?>'"
+		<article id="post-<?php echo esc_attr( get_the_ID() ); ?>"
 				class="<?php echo esc_attr( $this->post_class() ); ?>">
 			<div class="article-content-col">
 				<div class="content">
@@ -44,10 +44,13 @@ class Template_Parts extends Base_View {
 	 * Echo the post class.
 	 */
 	private function post_class() {
-		$class  = join( ' ', get_post_class() );
+		$class = join( ' ', get_post_class() );
+
 		$class .= ' col-12 layout-' . $this->get_layout();
 		if ( $this->get_layout() === 'grid' ) {
 			$class .= ' ' . $this->get_grid_columns_class();
+		} else {
+			$class .= ' nv-non-grid-article';
 		}
 
 		return $class;
@@ -63,24 +66,18 @@ class Template_Parts extends Base_View {
 			$this->title();
 			$this->meta();
 			$this->excerpt();
-			$this->read_more_button();
 			echo '</div>';
 
 			return;
 		}
 
-		$default_order = json_encode(
-			array(
-				'thumbnail',
-				'title',
-				'meta',
-				'excerpt',
-				'read-more',
-			)
+		$default_order = array(
+			'thumbnail',
+			'title-meta',
+			'excerpt',
 		);
-		$order         = get_theme_mod( 'neve_post_content_ordering', $default_order );
-		$order         = json_decode( $order );
-
+		$order         = get_theme_mod( 'neve_post_content_ordering', json_encode( $default_order ) );
+		$order         = json_decode( $order, true );
 		foreach ( $order as $content_bit ) {
 			switch ( $content_bit ) {
 				case 'thumbnail':
@@ -92,11 +89,12 @@ class Template_Parts extends Base_View {
 				case 'meta':
 					$this->meta();
 					break;
+				case 'title-meta':
+					$this->title();
+					$this->meta();
+					break;
 				case 'excerpt':
 					$this->excerpt();
-					break;
-				case 'read-more':
-					$this->read_more_button();
 					break;
 				case 'default':
 					break;
@@ -111,17 +109,21 @@ class Template_Parts extends Base_View {
 		if ( ! has_post_thumbnail() ) {
 			return;
 		}
-		$markup  = '<div class="nv-post-thumbnail-wrap">';
-		$markup .= '<a href="' . get_the_permalink() . '" title="' . the_title_attribute(
+		$markup = '<div class="nv-post-thumbnail-wrap">';
+
+		$markup .= '<a href="' . esc_url( get_the_permalink() ) . '" rel="bookmark" title="' . the_title_attribute(
 			array(
 				'echo' => false,
 			)
 		) . '">';
-		$markup .= get_the_post_thumbnail( get_the_ID(), 'neve-blog' );
+		$markup .= get_the_post_thumbnail(
+			get_the_ID(),
+			'neve-blog'
+		);
 		$markup .= '</a>';
 		$markup .= '</div>';
 
-		echo wp_kses_post( $markup );
+		echo $markup;
 	}
 
 	/**
@@ -130,7 +132,7 @@ class Template_Parts extends Base_View {
 	 * @return string
 	 */
 	private function get_layout() {
-		return get_theme_mod( 'neve_blog_archive_layout', 'default' );
+		return get_theme_mod( 'neve_blog_archive_layout', 'grid' );
 	}
 
 	/**
@@ -138,11 +140,11 @@ class Template_Parts extends Base_View {
 	 */
 	private function title() {
 		?>
-		<h3 class="blog-entry-title entry-title">
-			<a href="<?php the_permalink(); ?>">
+		<h2 class="blog-entry-title entry-title">
+			<a href="<?php esc_url( the_permalink() ); ?>" rel="bookmark">
 				<?php the_title(); ?>
 			</a>
-		</h3>
+		</h2>
 		<?php
 	}
 
@@ -153,7 +155,6 @@ class Template_Parts extends Base_View {
 		$default_meta_order = json_encode(
 			array(
 				'author',
-				'category',
 				'date',
 				'comments',
 			)
@@ -172,24 +173,35 @@ class Template_Parts extends Base_View {
 	}
 
 	/**
-	 * Render read more button.
-	 */
-	private function read_more_button() {
-		?>
-		<a href="<?php the_permalink(); ?>"
-				class="button button-secondary"><?php esc_html_e( 'Read more', 'neve' ); ?></a>
-		<?php
-	}
-
-	/**
 	 * Get grid columns class.
 	 *
 	 * @return string
 	 */
 	private function get_grid_columns_class() {
 		$column_numbers = get_theme_mod( 'neve_grid_layout', 1 );
+		if ( $column_numbers === 0 ) {
+			$column_numbers = 1;
+		}
 
-		return 'col-sm-' . ( 12 / $column_numbers );
+		return 'col-sm-' . ( 12 / absint( $column_numbers ) );
 	}
 
+	/**
+	 * Change link excerpt more.
+	 *
+	 * @param string $moretag read more tag.
+	 *
+	 * @return string
+	 */
+	public function link_excerpt_more( $moretag ) {
+		$moretag = '';
+
+		$moretag .= '&hellip;&nbsp;<a href="' . esc_url( get_the_permalink() ) . '" rel="bookmark">';
+
+		$moretag .= esc_html__( 'Read More', 'neve' );
+		$moretag .= '<span class="screen-reader-text">' . get_the_title() . '</span>';
+		$moretag .= ' &raquo;</a>';
+
+		return $moretag;
+	}
 }

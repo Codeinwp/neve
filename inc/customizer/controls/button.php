@@ -70,13 +70,14 @@ class Button extends \WP_Customize_Control {
 		if ( empty( $this->button_text ) ) {
 			return;
 		}
-		$control  = '';
-		$control .= '<button class="' . esc_attr( $this->get_button_classes() ) . '">';
+		$control = '';
+
+		$control .= '<button class="' . esc_attr( $this->get_button_classes() ) . '" style="display: flex; align-items: center;">';
 		$control .= $this->get_icon();
 		$control .= esc_html( $this->button_text );
 		$control .= '</button>';
 
-		echo( $control );
+		echo $control;
 	}
 
 	/**

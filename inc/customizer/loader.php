@@ -41,7 +41,6 @@ class Loader {
 		if ( ! isset( $wp_customize ) ) {
 			return;
 		}
-		$this->maybe_load_addons();
 		$this->define_modules();
 		$this->load_modules();
 	}
@@ -56,6 +55,7 @@ class Loader {
 				'Customizer\Options\Main',
 				'Customizer\Options\Layout_Container',
 				'Customizer\Options\Layout_Blog',
+				'Customizer\Options\Layout_Single_Post',
 				'Customizer\Options\Layout_Sidebar',
 				'Customizer\Options\Top_Bar',
 				'Customizer\Options\Typography',
@@ -71,14 +71,14 @@ class Loader {
 	 * Enqueue customizer controls script.
 	 */
 	public function enqueue_customizer_controls() {
-		wp_register_style( 'neve-customizer-style', NEVE_ASSETS_URL . '/css/customizer-style' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), NEVE_VERSION );
+		wp_register_style( 'neve-customizer-style', NEVE_ASSETS_URL . 'css/customizer-style' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), NEVE_VERSION );
 		wp_style_add_data( 'neve-customizer-style', 'rtl', 'replace' );
 		wp_style_add_data( 'neve-customizer-style', 'suffix', '.min' );
 		wp_enqueue_style( 'neve-customizer-style' );
 
 		wp_enqueue_script(
 			'neve-customizer-controls',
-			NEVE_ASSETS_URL . '/js/customizer-controls' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.js',
+			NEVE_ASSETS_URL . 'js/customizer-controls' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.js',
 			array(
 				'jquery',
 				'wp-color-picker',
@@ -94,24 +94,11 @@ class Loader {
 	public function enqueue_customizer_preview() {
 		wp_enqueue_script(
 			'neve-customizer-preview',
-			NEVE_ASSETS_URL . '/js/customizer-preview' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.js',
+			NEVE_ASSETS_URL . 'js/customizer-preview' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.js',
 			array(),
 			NEVE_VERSION,
 			true
 		);
-	}
-
-	/**
-	 * Load addons if needed.
-	 *
-	 * @return void
-	 */
-	private function maybe_load_addons() {
-		if ( ! class_exists( '\Neve\Addons\Customizer\Main' ) ) {
-			return;
-		}
-		$addon_manager = new \Neve\Addons\Customizer\Main();
-		add_filter( 'neve_filter_customizer_modules', array( $addon_manager, 'filter_modules' ) );
 	}
 
 	/**

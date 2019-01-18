@@ -21,49 +21,14 @@ class Typography extends Base_View {
 	 */
 	public function init() {
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_google_fonts' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_custom_fonts' ) );
+		add_action( 'enqueue_block_editor_assets', array( $this, 'register_google_fonts_gutenberg' ) );
 	}
 
 	/**
-	 * Enqueue Custom fonts.
+	 * Register the google fonts for gutenberg.
 	 */
-	public function enqueue_custom_fonts() {
-		$body_font     = get_theme_mod( 'neve_body_font_family' );
-		$headings_font = get_theme_mod( 'neve_headings_font_family' );
-		if ( empty( $body_font ) || empty( $headings_font ) ) {
-			wp_enqueue_style( 'neve-fonts', $this->get_fonts_url(), array(), NEVE_VERSION );
-		}
-	}
-
-	/**
-	 * Get fonts url.
-	 *
-	 * @return string fonts that need to be enqueued.
-	 */
-	private function get_fonts_url() {
-		$fonts_url = '';
-		/**
-		 * Translators: If there are characters in your language that are not
-		 * supported by Roboto or Roboto Slab, translate this to 'off'. Do not translate
-		 * into your own language.
-		 */
-		$open_sans = _x( 'on', 'Open Sans font: on or off', 'neve' );
-
-		if ( 'off' !== $open_sans ) {
-			$font_families = array();
-
-			if ( 'off' !== $open_sans ) {
-				$font_families[] = 'Open Sans:400,700';
-			}
-
-			$query_args = array(
-				'family' => urlencode( implode( '|', $font_families ) ),
-				'subset' => urlencode( 'latin,latin-ext' ),
-			);
-			$fonts_url  = add_query_arg( $query_args, 'https://fonts.googleapis.com/css' );
-		}
-
-		return $fonts_url;
+	public function register_google_fonts_gutenberg() {
+		$this->register_google_fonts();
 	}
 
 	/**

@@ -51,25 +51,35 @@ class Colors_Background extends Base_Customizer {
 	 */
 	private function controls_colors() {
 		$color_controls = array(
-			'neve_theme_color'      => array(
-				'default'  => '#00a4f7',
+			'neve_button_color'          => array(
+				'default'  => '#0366d6',
 				'priority' => 10,
-				'label'    => __( 'Theme Color', 'neve' ),
+				'label'    => __( 'Primary Button Color', 'neve' ),
 			),
-			'neve_link_color'       => array(
-				'default'  => '#00a4f7',
+			'neve_link_color'            => array(
+				'default'  => '#0366d6',
 				'priority' => 15,
 				'label'    => __( 'Link Color', 'neve' ),
 			),
-			'neve_link_hover_color' => array(
-				'default'  => '#005bf7',
+			'neve_link_hover_color'      => array(
+				'default'  => '#0366d6',
 				'priority' => 20,
 				'label'    => __( 'Link Hover Color', 'neve' ),
 			),
-			'neve_text_color'       => array(
-				'default'  => '#606060',
+			'neve_text_color'            => array(
+				'default'  => '#404248',
 				'priority' => 25,
 				'label'    => __( 'Text Color', 'neve' ),
+			),
+			'neve_menu_item_color'       => array(
+				'default'  => '#404248',
+				'priority' => 25,
+				'label'    => __( 'Primary Menu Items Color', 'neve' ),
+			),
+			'neve_menu_item_hover_color' => array(
+				'default'  => '#0366d6',
+				'priority' => 25,
+				'label'    => __( 'Primary Menu Items Hover Color', 'neve' ),
 			),
 		);
 

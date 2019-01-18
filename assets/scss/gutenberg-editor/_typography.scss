@@ -1,0 +1,186 @@
+.editor-styles-wrapper .editor-writing-flow {
+  //<editor-fold desc="Fonts">
+  font-size: 16px;
+  font-weight: normal;
+  font-family: $default-font-family;
+  color: $body-color;
+  &, & p {
+    line-height: $line-height-base;
+  }
+  strong {
+    font-weight: bold;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: $default-font-family;
+    line-height: $line-height-base;
+    margin: 0 0 $headings-margin-bottom 0;
+    font-weight: $headings-font-weight;
+    color: $body-color;
+  }
+  h1 {
+    font-size: $h1-mobile-font-size
+  }
+  h2 {
+    font-size: $h2-mobile-font-size;
+  }
+  h3 {
+    font-size: $h3-mobile-font-size;
+  }
+  h4 {
+    font-size: $h4-mobile-font-size;
+  }
+  h5 {
+    font-size: $h5-mobile-font-size;
+  }
+  h6 {
+    font-size: $h6-mobile-font-size;
+  }
+  //</editor-fold>
+
+  //<editor-fold desc="Post Title">
+  .editor-post-title__block .editor-post-title__input {
+    font-family: $default-font-family;
+    font-size: $h1-mobile-font-size;
+    color: $body-color;
+    line-height: 1.3em;
+  }
+  //</editor-fold>
+
+  //<editor-fold desc="Lists">
+  ul, ol {
+    padding-left: $spacing-sm;
+    margin: $spacing-sm 0;
+    li {
+      line-height: 2em;
+      margin-bottom: $spacing-xs;
+    }
+  }
+  ul {
+    list-style-type: circle;
+  }
+  //</editor-fold>
+
+  //<editor-fold desc="Blockquote">
+  blockquote.wp-block-quote {
+    border: none;
+    text-align: center;
+    margin: $spacing 0;
+    padding: 0;
+    p:not(.wp-block-quote__citation) {
+      font-size: 1.1em;
+      margin-bottom: 0;
+    }
+    .wp-block-quote__citation {
+      padding-top: $spacing-sm;
+      display: block;
+      color: $gray-color;
+      margin-top: 0;
+      font-size: .95em;
+    }
+    &:after, &:before {
+      height: 3px;
+      width: $spacing-lg;
+      background-color: $muted-white-med;
+      content: " ";
+      display: block;
+    }
+    &:before {
+      margin: 0 auto $spacing;
+    }
+    &:after {
+      margin: $spacing auto 0;
+    }
+    > * {
+      margin-bottom: 0;
+    }
+    &.is-style-large p:not(.wp-block-quote__citation) {
+      font-size: $h2-font-size;
+    }
+  }
+  //</editor-fold>
+
+  //<editor-fold desc="Tables">
+  table {
+    width: 100%;
+    margin: $spacing-sm 0;
+    td, th {
+      line-height: $line-height-base;
+      border: none;
+      padding: $spacing-xs;
+      border-bottom: $muted-border;
+    }
+    tbody tr:hover {
+      background-color: #fbfbfb;
+    }
+    .wp-block-table__cell-content {
+      padding: 0;
+    }
+  }
+  //</editor-fold>
+
+  //<editor-fold desc="Pre">
+  .wp-block-preformatted {
+    pre {
+      display: block;
+      padding: 20px;
+      background: #fbfbfb;
+      border-radius: 5px;
+      border: 1px solid #f0f0f0;
+      margin: 20px 0;
+      white-space: pre-wrap;
+      font-size: 0.9em;
+      line-height: 2em;
+      box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      font-family: monospace;
+      color: $body-color;
+    }
+  }
+  //</editor-fold>
+
+  //<editor-fold desc="Link">
+  a {
+    color: $link_color;
+    &:hover {
+      color: $link_hover_color;
+      text-decoration: none;
+    }
+  }
+  //</editor-fold>
+
+  //<editor-fold desc="Code">
+  .editor-rich-text__tinymce code {
+    background: #d0effb;
+    border-radius: 5px;
+    border: 1px solid #f0f0f0;
+    font-family: monospace;
+    padding: 0;
+  }
+  //</editor-fold>
+}
+
+@mixin gutenberg-typograpgy--tablet() {
+  .block-editor-page {
+    .editor-styles-wrapper {
+      font-size: $html-font-size;
+      h1, .editor-post-title__block .editor-post-title__input {
+        font-size: $h1-font-size;
+      }
+      h2 {
+        font-size: $h2-font-size;
+      }
+      h3 {
+        font-size: $h3-font-size;
+      }
+      h4 {
+        font-size: $h4-font-size;
+      }
+      h5 {
+        font-size: $h5-font-size;
+      }
+      h6 {
+        font-size: $h6-font-size;
+      }
+    }
+  }
+}

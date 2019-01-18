@@ -1,0 +1,50 @@
+.editor-styles-wrapper {
+  //<editor-fold desc="Verse">
+  .wp-block-verse {
+    font-style: italic;
+    border: unset;
+  }
+
+  //</editor-fold>
+
+  //<editor-fold desc="Separator">
+  .wp-block-separator {
+    margin: $spacing - 20px auto $spacing;
+    padding-top: $spacing - 20px;
+  }
+
+  //</editor-fold>
+
+  //<editor-fold desc="Button">
+  .wp-block-button {
+    .wp-block-button__link {
+      @include button();
+
+    }
+
+    &.is-style-outline {
+      .wp-block-button__link {
+        @include button-secondary();
+      }
+    }
+  }
+
+  //</editor-fold>
+}
+
+
+.block-editor-page .editor-styles-wrapper .editor-writing-flow {
+  .wp-block-pullquote {
+    blockquote {
+      margin: 1em auto;
+      > .editor-rich-text p {
+      margin: 0 0 $spacing-sm 0;
+      font-size: 2em;
+    }
+
+    .wp-block-pullquote__citation {
+      padding-top: $spacing-sm;
+      font-size: .85em;
+    }
+  }}
+}

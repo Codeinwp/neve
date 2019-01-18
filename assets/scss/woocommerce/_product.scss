@@ -1,54 +1,176 @@
-.woocommerce div.product .woocommerce-tabs ul.tabs {
-  padding: 0;
+.woocommerce.single .nv-woo-filters {
+  display: none;
 }
 
+.woocommerce.single {
+  .product_title {
+    font-size: 1.3em;
+    font-weight: 300;
+  }
+}
+
+.single_add_to_cart_button {
+  width: 100%;
+}
+
+.product_meta {
+  font-size: .85em;
+  a {
+    color: $gray-color;
+  }
+  > span {
+    display: block;
+  }
+}
+
+.woocommerce-review-link {
+  color: $gray-color;
+  font-size: .85em;
+}
+
+//<editor-fold desc="Prices">
+.woocommerce {
+  ul.products li.product .price,
+  div.product span.price,
+  div.product p.price {
+    color: $body-color;
+    font-weight: 700;
+    del {
+      font-weight: 500;
+    }
+  }
+}
+
+.woocommerce-variation-price {
+  margin-bottom: $spacing-sm;
+}
+
+//</editor-fold>
+
+//<editor-fold desc="Variations">
+.woocommerce {
+  tr:hover {
+    background: inherit;
+  }
+  div.product form.cart .variations {
+    td {
+      padding: 0;
+      display: block;
+      width: 100%;
+      &.label {
+        padding: 0;
+      }
+    }
+    tr:not(:last-child) {
+      margin-bottom: $spacing-xs;
+      display: block;
+    }
+  }
+  .reset_variations {
+    display: block;
+    color: $gray-color;
+  }
+}
+
+.variations select {
+  width: 100%;
+}
+
+//</editor-fold>
+
+//<editor-fold desc="Content Tabs">
 .woocommerce div.product .woocommerce-tabs ul.tabs li {
-  display: block;
   background: transparent;
-  border: none;
-  border-bottom: $muted-border;
+  border: 0;
+  margin: 0 $spacing-sm 0 0;
+  padding: 0;
+  &:before, &:after {
+    content: none;
+  }
   &.active {
-   border-bottom: $muted-border;
+    border-bottom: 2px solid;
   }
   a {
-    color: $link_color;
-    width: 100%;
+    color: $gray-color;
   }
 }
 
-.woocommerce-Reviews #comments {
-  border: none;
-  margin-top: 0;
-  padding-top: 0;
+.woocommerce #content div.product .woocommerce-tabs ul.tabs {
+  padding: 0;
+  border: 0;
+  &:before {
+    content: none;
+  }
 }
 
-.woocommerce div.product .woocommerce-tabs ul.tabs::before {
-  border: none;
-}
-
-.woocommerce div.product form.cart .reset_variations {
-  @include button();
-  @include button-secondary( 'true', $error );
-  margin-top: 12px;
-  line-height: 1;
-  display: table-caption;
-  float: left;
-  position: relative;
-}
-
-@mixin product--laptop() {
-  .woocommerce div.product .woocommerce-tabs ul.tabs li {
-    border-bottom: $muted-border;
-    display: inline-block;
-    &:before, &:after {
-      content: none;
-    }
-    &.active {
-      border: $muted-border;
-      border-bottom: 1px solid transparent;
+.woocommerce {
+  #comments {
+    border: none;
+  }
+  .woocommerce-noreviews {
+    background: $muted-white;
+    padding: $spacing-xs;
+    border: $muted-border-med;
+    border-radius: 3px;
+  }
+  #review_form .comment-reply-title, .woocommerce-Tabs-panel h2 {
+    font-size: $h4-mobile-font-size;
+    font-weight: 600;
+  }
+  .woocommerce-Reviews-title {
+    margin-bottom: $spacing-sm;
+  }
+  .comment-form-rating {
+    .stars {
+      margin-bottom: 0;
+      a {
+        font-size: 1.5em;
+        color: #ffb100;
+      }
     }
   }
-  .input-text.qty {
-    height: 41px;
+  #review_form #respond {
+    margin-top: $spacing-sm;
+  }
+  #review_form .comment-form {
+    margin-top: $spacing-xs;
+    grid-template-columns: 1fr;
+    grid-row-gap: $spacing-xs;
+    input:not([type=submit]) {
+      width: 100%;
+    }
+    .comment-form-rating {
+      display: flex;
+      flex-direction: row;
+      label {
+        margin-right: $spacing-xs;
+      }
+    }
+  }
+  #reviews #comments ol.commentlist li img.avatar {
+    border: 0;
+    background: 0;
+  }
+}
+
+//</editor-fold>
+
+@mixin product--tablet() {
+  .single_add_to_cart_button {
+    width: 220px;
+  }
+  .variations select {
+    width: 75%;
+  }
+  .woocommerce {
+    #review_form .comment-reply-title, .woocommerce-Tabs-panel h2 {
+      font-size: $h4-font-size;
+    }
+    #review_form .comment-form {
+      grid-template-columns: repeat(2, 1fr);
+      .comment-form-comment, .comment-form-rating, .comment-notes, .form-submit {
+        grid-column: span 2;
+      }
+    }
   }
 }

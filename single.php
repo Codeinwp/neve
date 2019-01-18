@@ -10,12 +10,12 @@ $container_class = apply_filters( 'neve_container_class_filter', 'container', 's
 
 get_header();
 
-do_action( 'neve_page_header', 'single-post' );
 ?>
 	<div class="<?php echo esc_attr( $container_class ); ?> single-post-container">
 		<div class="row">
 			<?php do_action( 'neve_do_sidebar', 'single-post', 'left' ); ?>
-			<div class="nv-single-post-wrap col">
+			<article id="post-<?php echo esc_attr( get_the_ID() ); ?>"
+					class="<?php echo esc_attr( join( ' ', get_post_class( 'nv-single-post-wrap col' ) ) ); ?>">
 				<?php
 				if ( have_posts() ) {
 					while ( have_posts() ) {
@@ -27,7 +27,7 @@ do_action( 'neve_page_header', 'single-post' );
 				}
 				comments_template();
 				?>
-			</div>
+			</article>
 			<?php do_action( 'neve_do_sidebar', 'single-post', 'right' ); ?>
 		</div>
 	</div>

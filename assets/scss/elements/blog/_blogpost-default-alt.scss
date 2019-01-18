@@ -1,10 +1,16 @@
 .layout-default, .layout-alternative {
   display: flex;
   align-items: flex-end;
+  .nv-post-thumbnail-wrap {
+    margin-bottom: $spacing-xs;
+  }
 }
 
 @mixin blog-layout-default-alt--laptop() {
   .layout-default, .layout-alternative {
+    .nv-post-thumbnail-wrap {
+      margin-bottom: 0;
+    }
     .article-content-col .content {
       display: flex;
       align-items: center;
@@ -25,19 +31,15 @@
     width: 100%;
     .button {
       align-self: flex-start;
-      margin-top: auto;
-    }
-    .excerpt-wrap {
-      padding: $spacing-sm 0;
     }
   }
 
   .nv-post-thumbnail-wrap ~ .default-layout-content {
-    padding-left: $spacing;
+    padding-left: $spacing-sm;
   }
 
   .nv-post-thumbnail-wrap ~ .alternative-layout-content {
-    padding-right: $spacing;
+    padding-right: $spacing-sm;
   }
 
   .layout-default, .layout-alternative {
@@ -47,8 +49,8 @@
   }
   article.layout-alternative:nth-child(even) .article-content-col .content {
     flex-direction: row;
-     .nv-post-thumbnail-wrap ~ .alternative-layout-content {
-    padding: 0 0 0 $spacing;
-      }
+    .nv-post-thumbnail-wrap ~ .alternative-layout-content {
+      padding: 0 0 0 $spacing;
+    }
   }
 }

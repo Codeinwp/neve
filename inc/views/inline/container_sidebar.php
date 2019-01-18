@@ -21,7 +21,7 @@ class Container_Sidebar extends Base_Inline {
 	 */
 	public function init() {
 		$this->container_style();
-		$this->sidebar_style();
+		$this->content_style();
 	}
 
 	/**
@@ -41,28 +41,101 @@ class Container_Sidebar extends Base_Inline {
 	}
 
 	/**
-	 * Sidebar style.
+	 * Content style.
 	 */
-	private function sidebar_style() {
-		$sidebar_width = get_theme_mod( 'neve_sidebar_width' );
-		$sidebar_width = json_decode( $sidebar_width, true );
-		$content_width = 100 - $sidebar_width;
-		$settings      = array(
-			'content' => array(
-				'css_prop' => 'max-width',
-				'value'    => $content_width,
-				'suffix'   => '%',
+	private function content_style() {
+		$advanced_options = get_theme_mod( 'neve_advanced_layout_options', false );
+		if ( $advanced_options === false ) {
+			$selectors = array(
+				'content' => '#content .container .col',
+				'sidebar' => '.nv-sidebar-wrap, .nv-sidebar-wrap.shop-sidebar',
+			);
+			$this->add_one_content_width( $selectors, 'neve_sitewide_content_width' );
+
+			return false;
+		}
+		$this->handle_individual_content_width();
+	}
+
+	/**
+	 * Handle individual content width.
+	 */
+	private function handle_individual_content_width() {
+		$content_widths = array(
+			'neve_other_pages_content_width'  => array(
+				'content' => 'body:not(.single):not(.archive):not(.blog) .neve-main > .container .col',
+				'sidebar' => 'body:not(.single):not(.archive):not(.blog) .nv-sidebar-wrap',
 			),
-			'sidebar' => array(
-				array(
-					'css_prop' => 'max-width',
-					'value'    => $sidebar_width,
-					'suffix'   => '%',
-				),
+			'neve_blog_archive_content_width' => array(
+				'content' => '.neve-main > .archive-container .nv-index-posts.col',
+				'sidebar' => '.neve-main > .archive-container .nv-sidebar-wrap',
+			),
+			'neve_single_post_content_width'  => array(
+				'content' => '.neve-main > .single-post-container .nv-single-post-wrap.col',
+				'sidebar' => '.neve-main > .single-post-container .nv-sidebar-wrap',
 			),
 		);
 
-		$this->add_style( $settings['content'], '#primary .container .col:not(:only-child)', 'desktop' );
-		$this->add_style( $settings['sidebar'], '.nv-sidebar-wrap, .nv-sidebar-wrap.shop-sidebar', 'desktop' );
+		if ( class_exists( 'WooCommerce' ) ) {
+			$content_widths = array_merge(
+				$content_widths,
+				array(
+					'neve_shop_archive_content_width'   => array(
+						'content' => '.archive.woocommerce .neve-main > .shop-container .nv-shop.col',
+						'sidebar' => '.archive.woocommerce .neve-main > .shop-container .nv-sidebar-wrap',
+					),
+					'neve_single_product_content_width' => array(
+						'content' => '.single-product .neve-main > .shop-container .nv-shop.col',
+						'sidebar' => '.single-product .neve-main > .shop-container .nv-sidebar-wrap',
+					),
+				)
+			);
+		}
+
+		array_walk( $content_widths, array( $this, 'add_one_content_width' ) );
+	}
+
+	/**
+	 * Add style for the individual content width.
+	 *
+	 * @param array  $selectors css selectors.
+	 * @param string $theme_mod theme mod key.
+	 */
+	private function add_one_content_width( $selectors, $theme_mod ) {
+		if ( empty( $theme_mod ) ) {
+			return;
+		}
+		if ( ! is_array( $selectors ) ) {
+			return;
+		}
+		if ( ! array_key_exists( 'sidebar', $selectors ) || ! array_key_exists( 'content', $selectors ) ) {
+			return;
+		}
+
+		$content_width = get_theme_mod( $theme_mod, false );
+
+		if ( $content_width === false ) {
+			return;
+		}
+
+		$sidebar_width = 100 - $content_width;
+
+		$content_setup = array(
+			array(
+				'css_prop' => 'max-width',
+				'value'    => absint( $content_width ),
+				'suffix'   => '%',
+			),
+		);
+		$sidebar_setup = array(
+			array(
+				'css_prop' => 'max-width',
+				'value'    => absint( $sidebar_width ),
+				'suffix'   => '%',
+			),
+		);
+
+		$this->add_style( $content_setup, $selectors['content'], 'desktop' );
+		$this->add_style( $sidebar_setup, $selectors['sidebar'], 'desktop' );
 	}
 }

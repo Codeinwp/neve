@@ -1,0 +1,31 @@
+version: '3.3'
+
+services:
+  mysql:
+    image: mysql:5.7
+    volumes:
+    - ~/${WP_MYSQL_STASH:-WordPressDock}/wp-db/neve:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: wordpress
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+
+  wordpress:
+    depends_on:
+    - mysql
+    image: hardeepasrani/pirate-brewery
+    ports:
+    - 8001:80
+    privileged: true
+    volumes:
+    - ~/${WP_CORE_STASH:-WordPressDock/wp-core}:/var/www/html/
+    - .:/var/www/html/wp-content/themes/neve/
+    restart: always
+    environment:
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_ROOT_PASSWORD: wordpress
+      WORDPRESS_DEBUG: 1

@@ -26,7 +26,6 @@ class Typography extends Base_Customizer {
 	public function add_controls() {
 		$this->sections_typography();
 		$this->controls_typography_general();
-		$this->controls_typography_body();
 		$this->controls_typography_headings();
 	}
 
@@ -38,10 +37,6 @@ class Typography extends Base_Customizer {
 			'neve_typography_general'  => array(
 				'title'    => __( 'General', 'neve' ),
 				'priority' => 25,
-			),
-			'neve_typography_body'     => array(
-				'title'    => __( 'Body', 'neve' ),
-				'priority' => 30,
 			),
 			'neve_typography_headings' => array(
 				'title'    => __( 'Headings', 'neve' ),
@@ -64,14 +59,18 @@ class Typography extends Base_Customizer {
 	}
 
 	/**
-	 * Add general typography controls [font subsets]
+	 * Add general typography controls
 	 */
 	private function controls_typography_general() {
+
+		/**
+		 * Font subsets
+		 */
 		$this->add_control(
 			new Control(
 				'neve_font_subsets',
 				array(
-					'sanitize_callback' => 'neve_sanitize_array',
+					'sanitize_callback' => array( $this, 'sanitize_font_subsets' ),
 					'default'           => array( 'latin' ),
 				),
 				array(
@@ -86,17 +85,12 @@ class Typography extends Base_Customizer {
 						'greek-ext'    => 'greek-ext',
 						'vietnamese'   => 'vietnamese',
 					),
-					'priority' => 25,
+					'priority' => 5,
 				),
 				'Neve\Customizer\Controls\Multi_Select'
 			)
 		);
-	}
 
-	/**
-	 * Add body typography controls.
-	 */
-	private function controls_typography_body() {
 		/**
 		 * Body font family
 		 */
@@ -106,11 +100,11 @@ class Typography extends Base_Customizer {
 				array(
 					'transport'         => $this->selective_refresh,
 					'sanitize_callback' => 'sanitize_text_field',
-					'default'           => 'Graphik,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif',
+					'default'           => 'default',
 				),
 				array(
 					'label'    => esc_html__( 'Font Family', 'neve' ),
-					'section'  => 'neve_typography_body',
+					'section'  => 'neve_typography_general',
 					'priority' => 10,
 				),
 				'Neve\Customizer\Controls\Font_Selector'
@@ -128,29 +122,35 @@ class Typography extends Base_Customizer {
 					'transport'         => $this->selective_refresh,
 				),
 				array(
-					'label'       => esc_html__( 'Font Size', 'neve' ),
-					'section'     => 'neve_typography_body',
-					'input_attr'  => array(
+					'label'      => esc_html__( 'Font Size', 'neve' ),
+					'section'    => 'neve_typography_general',
+					'units'      => array(
+						'px',
+					),
+					'input_attr' => array(
 						'mobile'  => array(
-							'min'     => 10,
-							'max'     => 30,
-							'default' => 14,
+							'min'          => 10,
+							'max'          => 30,
+							'default'      => 15,
+							'default_unit' => 'px',
 						),
 						'tablet'  => array(
-							'min'     => 10,
-							'max'     => 30,
-							'default' => 14,
+							'min'          => 10,
+							'max'          => 30,
+							'default'      => 16,
+							'default_unit' => 'px',
 						),
 						'desktop' => array(
-							'min'     => 10,
-							'max'     => 30,
-							'default' => 16,
+							'min'          => 10,
+							'max'          => 30,
+							'default'      => 16,
+							'default_unit' => 'px',
 						),
 					),
-					'priority'    => 15,
-					'media_query' => true,
+					'priority'   => 15,
+					'responsive' => true,
 				),
-				'Neve\Customizer\Controls\Range'
+				'Neve\Customizer\Controls\Responsive_Number'
 			)
 		);
 
@@ -166,7 +166,7 @@ class Typography extends Base_Customizer {
 				),
 				array(
 					'label'       => esc_html__( 'Line Height', 'neve' ),
-					'section'     => 'neve_typography_body',
+					'section'     => 'neve_typography_general',
 					'step'        => 0.1,
 					'input_attr'  => array(
 						'mobile'  => array(
@@ -206,7 +206,7 @@ class Typography extends Base_Customizer {
 				array(
 					'transport'         => $this->selective_refresh,
 					'sanitize_callback' => 'sanitize_text_field',
-					'default'           => 'Graphik,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif',
+					'default'           => 'default',
 				),
 				array(
 					'label'    => esc_html__( 'Font Family', 'neve' ),
@@ -254,30 +254,37 @@ class Typography extends Base_Customizer {
 						'transport'         => $this->selective_refresh,
 					),
 					array(
-						'label'       => esc_html__( 'Font Size', 'neve' ) . '(rem)',
-						'section'     => 'neve_typography_headings',
-						'step'        => 0.1,
-						'input_attr'  => array(
+						'label'      => esc_html__( 'Font Size', 'neve' ),
+						'section'    => 'neve_typography_headings',
+						'step'       => 1,
+						'units'      => array(
+							'em',
+							'px',
+						),
+						'input_attr' => array(
 							'mobile'  => array(
-								'min'     => 1,
-								'max'     => 10,
-								'default' => $control['default_tablet_size'],
+								'min'          => 1,
+								'max'          => 10,
+								'default'      => $control['default_tablet_size'],
+								'default_unit' => 'em',
 							),
 							'tablet'  => array(
-								'min'     => 1,
-								'max'     => 10,
-								'default' => $control['default_tablet_size'],
+								'min'          => 1,
+								'max'          => 10,
+								'default'      => $control['default_tablet_size'],
+								'default_unit' => 'em',
 							),
 							'desktop' => array(
-								'min'     => 1,
-								'max'     => 10,
-								'default' => $control['default_size'],
+								'min'          => 1,
+								'max'          => 10,
+								'default'      => $control['default_size'],
+								'default_unit' => 'em',
 							),
 						),
-						'priority'    => $control['priority'] + 1,
-						'media_query' => true,
+						'priority'   => $control['priority'] + 1,
+						'responsive' => true,
 					),
-					'Neve\Customizer\Controls\Range'
+					'Neve\Customizer\Controls\Responsive_Number'
 				)
 			);
 
@@ -330,36 +337,36 @@ class Typography extends Base_Customizer {
 		return array(
 			'neve_h1' => array(
 				'priority'            => 20,
-				'default_size'        => '2.25',
-				'default_tablet_size' => '2',
+				'default_size'        => '2',
+				'default_tablet_size' => '1.5',
 				'default_line_height' => 1.6,
 				'heading'             => 'H1',
 			),
 			'neve_h2' => array(
 				'priority'            => 30,
-				'default_size'        => '2',
-				'default_tablet_size' => '1.75',
+				'default_size'        => '1.75',
+				'default_tablet_size' => '1.3',
 				'default_line_height' => 1.6,
 				'heading'             => 'H2',
 			),
 			'neve_h3' => array(
 				'priority'            => 40,
-				'default_size'        => '1.75',
-				'default_tablet_size' => '1.5',
+				'default_size'        => '1.5',
+				'default_tablet_size' => '1.1',
 				'default_line_height' => 1.6,
 				'heading'             => 'H3',
 			),
 			'neve_h4' => array(
 				'priority'            => 50,
-				'default_size'        => '1.5',
-				'default_tablet_size' => '1.25',
+				'default_size'        => '1.25',
+				'default_tablet_size' => '1',
 				'default_line_height' => 1.6,
 				'heading'             => 'H4',
 			),
 			'neve_h5' => array(
 				'priority'            => 60,
-				'default_size'        => '1.25',
-				'default_tablet_size' => '1',
+				'default_size'        => '1',
+				'default_tablet_size' => '0.75',
 				'default_line_height' => 1.6,
 				'heading'             => 'H5',
 			),
@@ -371,6 +378,32 @@ class Typography extends Base_Customizer {
 				'heading'             => 'H6',
 			),
 		);
+	}
+
+	/**
+	 * Sanitize the font subsets
+	 */
+	public function sanitize_font_subsets( $value ) {
+		if ( ! is_array( $value ) ) {
+			return array( 'latin' );
+		}
+
+		$allowed_values = array(
+			'latin',
+			'latin-ext',
+			'cyrillic',
+			'cyrillic-ext',
+			'greek',
+			'greek-ext',
+			'vietnamese',
+		);
+		foreach ( $value as $index => $font_subset ) {
+			if ( ! in_array( $font_subset, $allowed_values ) ) {
+				unset( $value[ $index ] );
+			}
+		}
+
+		return $value;
 	}
 }
 

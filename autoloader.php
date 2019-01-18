@@ -123,11 +123,8 @@ class Autoloader {
 			// replace the namespace prefix with the base directory,
 			// replace namespace separators with directory separators
 			// in the relative class name, append with .php
-			$file = $base_dir
-					. str_replace( '\\', '/', $relative_class )
-					. '.php';
-
-			$file = strtolower( $file );
+			$relative_class = strtolower( str_replace( '\\', '/', $relative_class ) );
+			$file           = $base_dir . $relative_class . '.php';
 
 			// if the mapped file exists, require it
 			if ( $this->require_file( $file ) ) {

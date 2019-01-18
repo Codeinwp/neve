@@ -1,7 +1,7 @@
 {
   "name": "neve",
   "nicename": "Neve",
-  "version": "1.0.4",
+  "version": "1.0.28",
   "description": "Neve theme by ThemeIsle",
   "category": "themes",
   "repository": {
@@ -25,8 +25,9 @@
     "lasttranslator": "Themeisle Translate Team <friends@themeisle.com>"
   },
   "devDependencies": {
-    "@commitlint/cli": "^7.1.2",
+    "@commitlint/cli": "^7.2.1",
     "@commitlint/config-conventional": "^7.1.2",
+    "grunt-contrib-clean": "^2.0.0",
     "grunt-contrib-concat": "^1.0.1",
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-cssmin": "^2.2.1",
@@ -36,18 +37,24 @@
     "grunt-rtlcss": "^2.0.1",
     "grunt-theme-fleet": "github:codeinwp/grunt-theme-fleet",
     "grunt-version": "^1.1.1",
-    "husky": "^1.1.0",
+    "husky": "^1.2.0",
     "load-project-config": "~0.2.0",
     "pre-commit": "^1.2.2"
   },
   "scripts": {
     "phpcbf": "phpcbf || true ",
-    "phpcs": "phpcs"
+    "phpcs": "phpcs",
+    "jshint": "grunt jshint",
+    "buildCssJs": "grunt buildScripts",
+    "addNewStyles": "git add *.css assets/**/*.css"
   },
   "pre-commit": {
     "run": [
       "phpcbf",
-      "phpcs"
+      "phpcs",
+      "jshint",
+      "buildCssJs",
+      "addNewStyles"
     ]
   },
   "husky": {

@@ -7,27 +7,30 @@
 
 .neve-main {
   flex: 1 auto;
+  min-height: 1px;
 }
 
-.archive-container, .single-page-container {
-  padding-top: $spacing;
+.archive-container {
+  padding-top: $spacing-sm;
 }
 
-.nv-page-title-wrap.nv-big-title {
+.nv-page-title-wrap.nv-big-title h1 {
+  line-height: 1.3em;
+  margin-bottom: $spacing-sm;
   border-bottom: $muted-border;
-  background-color: #f7f7f7;
-  .nv-page-title {
-    padding-top: $spacing-sm;
-    padding-bottom: $spacing-sm;
-    text-align: center;
-  }
-  h1 {
-    margin: 0;
-  }
+  padding-bottom: $spacing-xs;
+}
+
+.nv-content-none-wrap {
+  margin-bottom: $spacing-lg;
 }
 
 @mixin page--laptop() {
-  .archive-container, .single-page-container {
-    padding-top: $spacing-lg;
+  .archive-container {
+    padding-top: 30px;
+  }
+
+  .nv-content-none-wrap {
+    margin-bottom: 0;
   }
 }

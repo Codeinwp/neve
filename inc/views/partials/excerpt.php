@@ -32,7 +32,7 @@ class Excerpt extends Base_View {
 	 * @param string $context the provided context in do_action.
 	 */
 	public function render_post_excerpt( $context ) {
-		echo $this->get_post_excerpt( $context );
+		echo wp_kses_post( $this->get_post_excerpt( $context ) );
 	}
 
 	/**
@@ -46,8 +46,8 @@ class Excerpt extends Base_View {
 		$length = $this->get_excerpt_lenght();
 
 		$output  = '';
-		$output .= '<div class="excerpt-wrap">';
-		$output .= $this->get_excerpt( $length );
+		$output .= '<div class="excerpt-wrap entry-summary">';
+		$output .= wp_kses_post( $this->get_excerpt( $length ) );
 		$output .= '</div>';
 
 		return $output;
@@ -60,7 +60,7 @@ class Excerpt extends Base_View {
 	 *
 	 * @return string
 	 */
-	private function get_excerpt( $length = 40 ) {
+	private function get_excerpt( $length = 25 ) {
 		if ( $length === 300 ) {
 			$content = get_the_content( '', '&hellip;' );
 
@@ -79,7 +79,9 @@ class Excerpt extends Base_View {
 			return $content;
 		}
 
-		$content = wp_trim_words( strip_shortcodes( get_the_content() ), $length );
+		add_filter( 'excerpt_length', array( $this, 'change_excerpt_length' ), 10 );
+		$content = get_the_excerpt();
+		remove_filter( 'excerpt_length', array( $this, 'change_excerpt_length' ), 10 );
 
 		return $content;
 	}
@@ -90,6 +92,15 @@ class Excerpt extends Base_View {
 	 * @return int
 	 */
 	private function get_excerpt_lenght() {
-		return absint( round( get_theme_mod( 'neve_post_excerpt_length', 40 ) ) );
+		return absint( round( get_theme_mod( 'neve_post_excerpt_length', 25 ) ) );
+	}
+
+	/**
+	 * Change excerpt length.
+	 *
+	 * @return int
+	 */
+	public function change_excerpt_length() {
+		return $this->get_excerpt_lenght();
 	}
 }

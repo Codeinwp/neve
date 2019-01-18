@@ -7,7 +7,65 @@
   padding-top: $spacing-sm;
   display: flex;
   justify-content: center;
+
   input[type="submit"] {
     margin-left: 10px;
   }
+}
+
+.search-form label {
+  margin-bottom: 0;
+}
+
+.widget .search-form, .widget .woocommerce-product-search, .nv-nav-search .search-form {
+  position: relative;
+
+  label {
+    display: inline;
+  }
+
+  &:after {
+    font-family: "neve-icons";
+    content: "\f002";
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: center;
+    line-height: 35px;
+    height: 100%;
+    width: 45px;
+    z-index: 3;
+    cursor: pointer;
+    pointer-events: none;
+    color: $muted-white-med;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  input[type="search"] {
+    width: 100%;
+    padding: 8px 45px 7px 12px;
+  }
+
+  button[type="submit"], input[type="submit"] {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    color: transparent;
+    background: 0 0;
+    z-index: 2;
+    width: 45px;
+    border: 0;
+    padding: 8px 12px 7px;
+
+    &:hover {
+      background-color: #eee;
+    }
+  }
+}
+
+.nv-nav-search .search-form input[type="search"] {
+  width: 200px;
 }

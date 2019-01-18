@@ -24,22 +24,24 @@
 
 <body <?php body_class(); ?>>
 <div class="wrapper">
-	<header class="header">
+	<header class="header" role="banner">
+		<a class="neve-skip-link show-on-focus" href="#content"
+				tabindex="0"><?php echo __( 'Skip to content', 'neve' ); ?></a>
 		<?php
 		neve_before_header_trigger();
 
-		do_action( 'neve_do_top_bar' );
-
-		do_action( 'neve_do_header' );
-
+		if ( apply_filters( 'neve_filter_toggle_content_parts', true, 'header' ) === true ) {
+			do_action( 'neve_do_top_bar' );
+			do_action( 'neve_do_header' );
+		}
 		neve_after_header_trigger();
 		?>
 	</header>
 
 	<?php do_action( 'neve_before_primary' ); ?>
 
-	<main id="primary" class="neve-main">
+	<main id="content" class="neve-main" role="main">
 
-	<?php
-	do_action( 'neve_after_primary_start' );
+<?php
+do_action( 'neve_after_primary_start' );
 

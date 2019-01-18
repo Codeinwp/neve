@@ -1,3 +1,4 @@
+@import 'blog/layout';
 @import 'blog/blogpost-meta';
 @import 'blog/blogpost-index';
 @import 'blog/infinite-scroll';
@@ -5,8 +6,3 @@
 @import 'blog/blogpost-default-alt';
 @import 'blog/single';
 @import 'blog/comments';
-
-
-.nv-index-posts, .nv-single-post-wrap, .nv-single-page-wrap {
-  margin-bottom: $spacing-lg;
-}

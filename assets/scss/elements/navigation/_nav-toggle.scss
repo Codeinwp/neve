@@ -8,7 +8,7 @@
   transition: $transition_default;
   position: relative;
   display: block;
-  background: $theme_color;
+  background: $body-color;
   border-radius: 2px;
   width: 15px;
   height: 2px;
@@ -30,6 +30,7 @@
   &:hover {
     box-shadow: none;
     transform: none;
+    background: transparent;
   }
 }
 

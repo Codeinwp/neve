@@ -1,18 +1,40 @@
-form input[type="text"], form input[type="password"], form input[type="email"], form input[type="url"], form input[type="date"], form input[type="month"], form input[type="time"], form input[type="datetime"], form input[type="datetime-local"], form input[type="week"], form input[type="number"], form input[type="search"], form input[type="tel"], form input[type="color"], form select, form textarea {
-  display: inline-block;
-  min-height: 35px;
-  font-size: 14px;
-  line-height: 1.8;
-  padding: 6px 12px;
-  background-color: transparent;
-  color: #333;
-  border: 1px solid #dddddd;
-  border-radius: 3px;
-  transition: all 0.3s ease;
+input[type="text"], input[type="password"], input[type="email"], input[type="url"], input[type="date"], input[type="month"], input[type="time"], input[type="datetime"], input[type="datetime-local"], input[type="week"], input[type="number"], input[type="search"], input[type="tel"], input[type="color"], select, textarea {
+    display: inline-block;
+    font-size: 14px;
+    padding: 7px 12px;
+    background-color: transparent;
+    color: #333;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+  }
+
+input[type="text"], input[type="search"], input[type="password"], input[type="submit"], textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 input, textarea, select, button {
+  line-height: inherit;
   -webkit-box-sizing: border-box; /* For legacy WebKit based browsers */
   -moz-box-sizing: border-box; /* For legacy (Firefox <29) Gecko based browsers */
   box-sizing: border-box;
+}
+
+label {
+  display: inline-block;
+  margin-bottom: $spacing-xs;
+}
+
+fieldset {
+  border: 0;
+  margin: $spacing-sm 0;
+  legend {
+    font-size: .9em;
+    margin-bottom: $spacing-xs;
+  }
+  input[type="text"], input[type="search"], input[type="password"], textarea {
+    width: 100%;
+  }
 }

@@ -45,18 +45,20 @@ class Post_Meta extends Base_View {
 		foreach ( $order as $meta ) {
 			switch ( $meta ) {
 				case 'author':
-					$markup .= '<li class="meta author"><span class="nv-icon nv-author"></span>';
-					$markup .= get_the_author_posts_link();
-					$markup .= '</li>';
+					$author_email = get_the_author_meta( 'user_email' );
+					$avatar_url   = get_avatar_url( $author_email );
+					$markup      .= '<li class="meta author vcard">';
+					$markup      .= '<img class="photo" alt="' . get_the_author() . '" src="' . esc_url( $avatar_url ) . '" />&nbsp;<span class="author-name fn">' . wp_kses_post( get_the_author_posts_link() ) . '</span>';
+					$markup      .= '</li>';
 					break;
 				case 'date':
-					$markup .= '<li class="meta date"><span class="nv-icon nv-calendar"></span>';
-					$markup .= '<span>' . get_the_date() . '</span>';
+					$markup .= '<li class="meta date posted-on">';
+					$markup .= $this->get_time_tags();
 					$markup .= '</li>';
 					break;
 				case 'category':
-					$markup .= '<li class="meta category"><span class="nv-icon nv-folder"></span>';
-					$markup .= get_the_category_list( ' / ', get_the_ID() );
+					$markup .= '<li class="meta category">';
+					$markup .= get_the_category_list( ', ', get_the_ID() );
 					$markup .= '</li>';
 					break;
 				case 'comments':
@@ -64,8 +66,8 @@ class Post_Meta extends Base_View {
 					if ( empty( $comments ) ) {
 						break;
 					}
-					$markup .= '<li class="meta comments"><span class="nv-icon nv-comment"></span>';
-					$markup .= $this->get_comments();
+					$markup .= '<li class="meta comments">';
+					$markup .= $comments;
 					$markup .= '</li>';
 					break;
 				case 'default':
@@ -74,7 +76,7 @@ class Post_Meta extends Base_View {
 		}
 		$markup .= '</ul>';
 
-		echo wp_kses_post( ( $markup ) );
+		echo $markup;
 	}
 
 	/**
@@ -88,14 +90,13 @@ class Post_Meta extends Base_View {
 			return '';
 		}
 		if ( $comments_number == 0 ) {
-			$comments = __( 'No Comments', 'neve' );
-		} elseif ( $comments_number > 1 ) {
-			$comments = $comments_number . __( ' Comments', 'neve' );
+			return '';
 		} else {
-			$comments = __( '1 Comment', 'neve' );
+			/* translators: %s: number of comments */
+			$comments = sprintf( _n( '%s Comment', '%s Comments', $comments_number, 'neve' ), $comments_number );
 		}
 
-		return '<a href="' . get_comments_link() . '">' . $comments . '</a>';
+		return '<a href="' . esc_url( get_comments_link() ) . '">' . esc_html( $comments ) . '</a>';
 	}
 
 	/**
@@ -133,10 +134,25 @@ class Post_Meta extends Base_View {
 		$html .= '<span>' . __( 'Tags', 'neve' ) . ':</span>';
 		foreach ( $tags as $tag ) {
 			$tag_link = get_tag_link( $tag->term_id );
-			$html    .= '<a href=' . esc_url( $tag_link ) . ' title="' . esc_html( $tag->name ) . '" class=' . esc_attr( $tag->slug ) . '>';
+			$html    .= '<a href=' . esc_url( $tag_link ) . ' title="' . esc_attr( $tag->name ) . '" class=' . esc_attr( $tag->slug ) . ' rel="tag">';
 			$html    .= esc_html( $tag->name ) . '</a>';
 		}
 		$html .= ' </div> ';
 		echo $html;
+	}
+
+	/**
+	 * Get <time> tags.
+	 *
+	 * @return string
+	 */
+	private function get_time_tags() {
+		$time = '<time class="entry-date published" datetime="' . esc_attr( get_the_date( 'c' ) ) . '" content="' . esc_attr( get_the_date( 'Y-m-d' ) ) . '">' . esc_html( get_the_date() ) . '</time>';
+		if ( get_the_time( 'U' ) === get_the_modified_time( 'U' ) ) {
+			return $time;
+		}
+		$time .= '<time class="updated" datetime="' . esc_attr( get_the_modified_date( 'c' ) ) . '">' . esc_html( get_the_modified_date() ) . '</time>';
+
+		return $time;
 	}
 }

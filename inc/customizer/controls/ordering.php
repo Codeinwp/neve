@@ -55,10 +55,10 @@ class Ordering extends \WP_Customize_Control {
 	 */
 	private function render_sortable_list() {
 		$markup = '<ul class="ti-order-sortable">';
-		foreach ( $this->components as $component ) {
+		foreach ( $this->components as $component => $name ) {
 			$markup .= '<li class="ui-state-default order-component' . esc_attr( $this->get_component_status_class( $component ) ) . '" data-id="' . esc_attr( $component ) . '">';
 			$markup .= '<span class="toggle-display"></span>';
-			$markup .= '<p>' . ucwords( $component ) . '</p>';
+			$markup .= '<p>' . esc_html( $name ) . '</p>';
 			$markup .= '<span class="dashicons dashicons-menu drag"></span>';
 			$markup .= '</li>';
 		}
