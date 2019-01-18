@@ -355,6 +355,9 @@ class Admin {
 		    color: inherit;
 		    text-decoration: none;
 		}
+		.nv-notice-text .button.button-primary:active {
+			vertical-align: inherit;
+		}
 		.nv-notice-text p.ti-return-dashboard {
 			margin-top: 30px;
 		}
