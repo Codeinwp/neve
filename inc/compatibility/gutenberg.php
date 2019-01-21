@@ -224,8 +224,8 @@ class Gutenberg {
 				'type'			=> 'template',
 				'keywords'		=> array( 'big title', 'header', 'about' ),
 				'categories'		=> array( 'header' ),
-				'template_url'		=> get_template_directory_uri() . '/gutenberg-templates/neve-big-title/template.json',
-				'screenshot_url'	=> get_template_directory_uri() . '/gutenberg-templates/neve-big-title/screenshot.png',
+				'template_url'		=> get_template_directory_uri() . '/gutenberg-templates/templates/big-title/template.json',
+				'screenshot_url'	=> get_template_directory_uri() . '/gutenberg-templates/templates/big-title/screenshot.png',
 			),
 		);
 
