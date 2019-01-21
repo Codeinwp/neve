@@ -48,6 +48,7 @@ class Gutenberg {
 		$this->set_post_id();
 
 		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_gutenberg_scripts' ) );
+		add_filter( 'themeisle_gutenberg_templates', array( $this, 'add_gutenberg_templates' ) );
 	}
 
 	/**
@@ -209,6 +210,28 @@ class Gutenberg {
 		return array(
 			'sidebar' => __( 'Sidebar', 'neve' ),
 		);
+	}
+
+	/**
+	 * Add new Gutenberg templates on Otter plugin.
+	 *
+	 * @return array
+	 */
+	public function add_gutenberg_templates($templates_list) {
+		$templates = array(
+			array(
+				'title'			=> __( 'Neve Big Title', 'neve' ),
+				'type'			=> 'template',
+				'keywords'		=> array( 'big title', 'header', 'about' ),
+				'categories'		=> array( 'header' ),
+				'template_url'		=> get_template_directory_uri() . '/gutenberg-templates/neve-big-title/template.json',
+				'screenshot_url'	=> get_template_directory_uri() . '/gutenberg-templates/neve-big-title/screenshot.png',
+			),
+		);
+
+		$list = array_merge( $templates_list, $templates );
+
+		return $list;
 	}
 
 }
