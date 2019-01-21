@@ -110,10 +110,6 @@ class Front_End {
 						'url'   => 'https://demo.themeisle.com/neve-charity/',
 						'title' => 'Neve Charity',
 					),
-					'neve-zelle'         => array(
-						'url'   => 'https://demo.themeisle.com/neve-zelle/',
-						'title' => 'Neve Zelle',
-					),
 				),
 			),
 			'can_migrate' => array(
