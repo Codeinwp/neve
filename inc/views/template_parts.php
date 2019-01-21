@@ -198,7 +198,7 @@ class Template_Parts extends Base_View {
 
 		$new_moretag = '&hellip;&nbsp;';
 
-		if( isset( $moretag ) && ( $moretag !== ' [&hellip;]' ) ) {
+		if ( isset( $moretag ) && ( $moretag !== ' [&hellip;]' ) ) {
 			$new_moretag = '';
 		}
 
