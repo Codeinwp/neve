@@ -62,10 +62,10 @@ class Excerpt extends Base_View {
 	 */
 	private function get_excerpt( $length = 25 ) {
 
-        global $post;
+		global $post;
 
 		if ( $length === 300 ) {
-            $content = get_the_content();
+			$content = get_the_content();
 
 			return $content;
 		}

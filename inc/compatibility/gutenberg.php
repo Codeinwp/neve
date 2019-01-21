@@ -217,15 +217,15 @@ class Gutenberg {
 	 *
 	 * @return array
 	 */
-	public function add_gutenberg_templates($templates_list) {
+	public function add_gutenberg_templates( $templates_list ) {
 		$templates = array(
 			array(
-				'title'			=> __( 'Neve Big Title', 'neve' ),
-				'type'			=> 'template',
-				'keywords'		=> array( 'big title', 'header', 'about' ),
-				'categories'		=> array( 'header' ),
-				'template_url'		=> get_template_directory_uri() . '/gutenberg/templates/big-title/template.json',
-				'screenshot_url'	=> get_template_directory_uri() . '/gutenberg/templates/big-title/screenshot.png',
+				'title'          => __( 'Neve Big Title', 'neve' ),
+				'type'           => 'template',
+				'keywords'       => array( 'big title', 'header', 'about' ),
+				'categories'     => array( 'header' ),
+				'template_url'   => get_template_directory_uri() . '/gutenberg/templates/big-title/template.json',
+				'screenshot_url' => get_template_directory_uri() . '/gutenberg/templates/big-title/screenshot.png',
 			),
 		);
 

@@ -22,7 +22,7 @@ class Template_Parts extends Base_View {
 	public function init() {
 		add_action( 'neve_blog_post_template_part_content', array( $this, 'render_post' ) );
 		add_filter( 'excerpt_more', array( $this, 'link_excerpt_more' ) );
-        add_filter( 'the_content_more_link', array( $this, 'link_excerpt_more' ) );
+		add_filter( 'the_content_more_link', array( $this, 'link_excerpt_more' ) );
 	}
 
 	/**
@@ -196,17 +196,17 @@ class Template_Parts extends Base_View {
 	 */
 	public function link_excerpt_more( $moretag ) {
 
-        $new_moretag = '&hellip;&nbsp;';
+		$new_moretag = '&hellip;&nbsp;';
 
-	    if( isset( $moretag ) && ( $moretag !== ' [&hellip;]' ) ) {
-            $new_moretag = '';
-        }
+		if ( isset( $moretag ) && ( $moretag !== ' [&hellip;]' ) ) {
+			$new_moretag = '';
+		}
 
-        $new_moretag .= '<a href="' . esc_url( get_the_permalink() ) . '" rel="bookmark">';
+		$new_moretag .= '<a href="' . esc_url( get_the_permalink() ) . '" rel="bookmark">';
 
-        $new_moretag .= esc_html__( 'Read More', 'neve' );
-        $new_moretag .= '<span class="screen-reader-text">' . get_the_title() . '</span>';
-        $new_moretag .= ' &raquo;</a>';
+		$new_moretag .= esc_html__( 'Read More', 'neve' );
+		$new_moretag .= '<span class="screen-reader-text">' . get_the_title() . '</span>';
+		$new_moretag .= ' &raquo;</a>';
 
 		return $new_moretag;
 	}
