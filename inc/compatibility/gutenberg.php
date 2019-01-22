@@ -231,9 +231,17 @@ class Gutenberg {
 				'title'          => __( 'Neve About Us', 'neve' ),
 				'type'           => 'template',
 				'keywords'       => array( 'about us', 'about', 'description', 'showcase' ),
-				'categories'     => array( 'header' ),
+				'categories'     => array( 'content' ),
 				'template_url'   => get_template_directory_uri() . '/gutenberg/templates/about-us/template.json',
 				'screenshot_url' => get_template_directory_uri() . '/gutenberg/templates/about-us/screenshot.png',
+			),
+			array(
+				'title'          => __( 'Neve Our Focus', 'neve' ),
+				'type'           => 'template',
+				'keywords'       => array( 'focus', 'our focus', 'services', 'features', 'showcase' ),
+				'categories'     => array( 'content' ),
+				'template_url'   => get_template_directory_uri() . '/gutenberg/templates/our-focus/template.json',
+				'screenshot_url' => get_template_directory_uri() . '/gutenberg/templates/our-focus/screenshot.png',
 			),
 		);
 
