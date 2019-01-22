@@ -17,6 +17,22 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
+### 1.0.28 - 2019-01-15  ###
+
+* Layout updates for the starter sites
+* Improved layout of the onboarding notice
+* Fixed style issues for the select elements
+
+
+### 1.0.27 - 2019-01-09  ###
+
+* Review the theme to make it Accessibility-ready
+* Improved performance for the .alignfull and .alignwide classes in the new WordPress editor
+* Fixed alignment of the Polylang language switcher in the navigation menu
+* Optimized images used in the Neve starter site
+* Fixed compatibility with the Lazy Load plugin duplicating images
+
+
 ### 1.0.26 - 2018-12-17  ###
 
 * Fixed issues in IE with the Neve 2018 Site
@@ -196,23 +212,9 @@ All  images are licensed under CC0.
 * Neve Main: work-4.jpg, CC0 https://mystock.themeisle.com/photo/stockholm-street/
 * Neve Main: video-bg.jpg, CC0, https://mystock.themeisle.com/photo/cloudy-sunset/
 * Neve Main: winter-forest.jpg, CC0, https://mystock.themeisle.com/photo/winter-forest/
-* Neve Vet Center: collie-163997_1280.jpg, CC0, https://pixabay.com/en/collie-rough-collie-dog-pet-canine-163997/
-* Neve Vet Center: man-1209494_1920.jpg, CC0, https://pixabay.com/en/man-male-adult-person-caucasian-1209494/
-* Neve Vet Center: chihuahua-820087_1920.jpg, CC0, https://pixabay.com/en/chihuahua-puppy-pet-dog-animal-820087/
-* Neve Vet Center: beard-1834429_1920.jpg, CC0, https://pixabay.com/en/beard-colorful-colourful-expression-1834429/
-* Neve Vet Center: animal-beautiful-blonde-460305.jpg, CC0, https://pixabay.com/en/doberman-blonde-woman-friendship-2390596/
-* Neve Vet Center: animal-close-up-ocean-68744.jpg, CC0, https://pixabay.com/en/loggerhead-turtle-sea-ocean-water-123402/
-* Neve Vet Center: animal-chihuahua-cute-39317.jpg, CC0, https://pixabay.com/en/chihuahua-dog-puppy-cute-pet-624924/
-* Neve Vet Center: adorable-animal-cat-236603.jpg, CC0, https://pixabay.com/en/cat-kitten-mieze-breed-cat-1803904/
-* Neve Vet Center: adorable-animal-canine-134392.jpg, CC0, https://freestocks.org/photo/dog-riding-car/
-* Neve Vet Center: art-capsules-close-up-47073.jpg, CC0, https://pixabay.com/en/nutrient-additives-medicine-pills-505124/
-* Neve Vet Center: adult-ambulance-care-263210.jpg, CC0, https://pixabay.com/en/veterinarian-animal-doctor-vet-pet-809930/
-* Neve Vet Center: biology-clinic-doctor-4154.jpg, CC0, https://pixabay.com/en/medic-hospital-laboratory-medical-563423/
-* Neve Vet Center: background-business-clean-811101.jpg, CC0, https://pixabay.com/en/aisle-background-buy-clean-food-3105629/
-* Neve Vet Center: adult-doctor-girl-355934.jpg, CC0, https://pixabay.com/en/nurse-stethoscope-medicine-2141808/
-* Neve Vet Center: adult-attractive-beautiful-415829.jpg, CC0,  | https://pixabay.com/en/beauty-makeup-skin-care-2190682/
-* Neve Vet Center: animals-cats-cute-45170.jpg (also used ins screenshot), CC0, https://pixabay.com/en/kittens-cat-cat-puppy-rush-555822/
-* Neve Vet Center: adult-biology-chemical-356040.jph (also used in screenshot), CC0, https://pixabay.com/en/scientist-drugstore-microscope-2141259/
+* Neve Vet Center: neve-vet-center-big-title1.jpg, CC0, https://mystock.themeisle.com/photo/squirrel-2/
+* Neve Vet Center: neve-vet-center-testify.jpg, CC0, https://mystock.themeisle.com/photo/beagle-puppy/
+* Neve Vet Center: neve-vet-center-testify-cat.jpg, CC0, https://mystock.themeisle.com/photo/cat-2/
 * Neve Energy Panels: smile-1726471_1920.jpg, CC0, https://pixabay.com/en/smile-profile-face-male-portrait-1726471/
 * Neve Energy Panels: energy-2181904_1920.jpg, CC0, https://pixabay.com/en/energy-wind-energy-wind-power-2181904/
 * Neve Energy Panels: windrader-1048981_1920.jpg, CC0, https://pixabay.com/en/windr%C3%A4der-wind-power-wind-park-fog-1048981/

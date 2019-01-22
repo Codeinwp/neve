@@ -1,4 +1,18 @@
 
+ ### v1.0.28 - 2019-01-15 
+ **Changes:** 
+ * Layout updates for the starter sites
+* Improved layout of the onboarding notice
+* Fixed style issues for the select elements
+ 
+ ### v1.0.27 - 2019-01-09 
+ **Changes:** 
+ * Review the theme to make it Accessibility-ready
+* Improved performance for the .alignfull and .alignwide classes in the new WordPress editor
+* Fixed alignment of the Polylang language switcher in the navigation menu
+* Optimized images used in the Neve starter site
+* Fixed compatibility with the Lazy Load plugin duplicating images
+ 
  ### v1.0.26 - 2018-12-17 
  **Changes:** 
  * Fixed issues in IE with the Neve 2018 Site
