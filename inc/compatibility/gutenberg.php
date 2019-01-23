@@ -243,6 +243,14 @@ class Gutenberg {
 				'template_url'   => get_template_directory_uri() . '/gutenberg/templates/our-focus/template.json',
 				'screenshot_url' => get_template_directory_uri() . '/gutenberg/templates/our-focus/screenshot.png',
 			),
+			array(
+				'title'          => __( 'Neve Our Team', 'neve' ),
+				'type'           => 'template',
+				'keywords'       => array( 'team', 'our team', 'employees', 'clients', 'members', 'people', 'image', 'card' ),
+				'categories'     => array( 'content' ),
+				'template_url'   => get_template_directory_uri() . '/gutenberg/templates/our-team/template.json',
+				'screenshot_url' => get_template_directory_uri() . '/gutenberg/templates/our-team/screenshot.png',
+			),
 		);
 
 		$list = array_merge( $templates_list, $templates );
