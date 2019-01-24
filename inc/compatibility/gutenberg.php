@@ -267,6 +267,14 @@ class Gutenberg {
 				'template_url'   => get_template_directory_uri() . '/gutenberg/templates/features/template.json',
 				'screenshot_url' => get_template_directory_uri() . '/gutenberg/templates/features/screenshot.png',
 			),
+			array(
+				'title'          => __( 'Neve Pricing', 'neve' ),
+				'type'           => 'template',
+				'keywords'       => array( 'pricing', 'plan', 'packages', 'membership', 'product' ),
+				'categories'     => array( 'content' ),
+				'template_url'   => get_template_directory_uri() . '/gutenberg/templates/pricing/template.json',
+				'screenshot_url' => get_template_directory_uri() . '/gutenberg/templates/pricing/screenshot.png',
+			),
 		);
 
 		$list = array_merge( $templates_list, $templates );
