@@ -214,9 +214,6 @@
 .neve-gtb .editor-post-title__input {
   padding-left: 0;
 }
-.neve-gtb .editor-block-list__layout {
-  padding: 0;
-}
 .neve-gtb .neve-blocks-wrap {
   margin: 0 auto;
   padding: 0 15px;
@@ -237,10 +234,6 @@
 }
 .neve-gtb .editor-writing-flow {
   display: block;
-}
-.neve-gtb .neve-blocks-wrap > .editor-block-list__layout .editor-block-list__block {
-  padding-right: 28px;
-  padding-left: 28px;
 }
 
 .neve-gtb-sidebar {
