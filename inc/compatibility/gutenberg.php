@@ -225,7 +225,7 @@ class Gutenberg {
 				'keywords'       => array( 'big title', 'header', 'about' ),
 				'categories'     => array( 'header' ),
 				'template_url'   => get_template_directory_uri() . '/gutenberg/templates/big-title/template.json',
-				'screenshot_url' => get_template_directory_uri() . '/gutenberg/templates/big-title/screenshot.png',
+				'screenshot_url' => get_template_directory_uri() . '/gutenberg/templates/big-title/screenshot.jpg',
 			),
 			array(
 				'title'          => __( 'Neve About Us', 'neve' ),
