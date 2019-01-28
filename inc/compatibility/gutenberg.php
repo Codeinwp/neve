@@ -249,7 +249,7 @@ class Gutenberg {
 				'keywords'       => array( 'team', 'our team', 'employees', 'clients', 'members', 'people', 'image', 'card' ),
 				'categories'     => array( 'content' ),
 				'template_url'   => get_template_directory_uri() . '/gutenberg/templates/our-team/template.json',
-				'screenshot_url' => get_template_directory_uri() . '/gutenberg/templates/our-team/screenshot.png',
+				'screenshot_url' => get_template_directory_uri() . '/gutenberg/templates/our-team/screenshot.jpg',
 			),
 			array(
 				'title'          => __( 'Neve Ribbon', 'neve' ),
