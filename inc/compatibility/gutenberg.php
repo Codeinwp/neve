@@ -257,7 +257,7 @@ class Gutenberg {
 				'keywords'       => array( 'ribbon', 'statistics', 'numbers', 'clients', 'banner', 'logo', 'carousel' ),
 				'categories'     => array( 'content' ),
 				'template_url'   => get_template_directory_uri() . '/gutenberg/templates/ribbon/template.json',
-				'screenshot_url' => get_template_directory_uri() . '/gutenberg/templates/ribbon/screenshot.png',
+				'screenshot_url' => get_template_directory_uri() . '/gutenberg/templates/ribbon/screenshot.jpg',
 			),
 			array(
 				'title'          => __( 'Neve Features', 'neve' ),
