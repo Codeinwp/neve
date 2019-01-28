@@ -1,9 +1,8 @@
 {
-    "clientId": "15dbd867-9f6f-4d89-91bb-1cd2f1f50979",
+    "clientId": "b70f8ea2-a17e-4c10-8a75-36de02c73ce4",
     "name": "themeisle-blocks/advanced-columns",
     "isValid": true,
     "attributes": {
-        "id": "wp-block-themeisle-blocks-advanced-columns-8ea70b37",
         "columns": 1,
         "layout": "equal",
         "layoutTablet": "equal",
@@ -122,7 +121,7 @@
     },
     "innerBlocks": [
         {
-            "clientId": "400f170b-5bd3-4693-9a79-048b58fbd2b8",
+            "clientId": "0dee851a-2d44-48e2-a330-c21f14bf39d1",
             "name": "themeisle-blocks/advanced-column",
             "isValid": true,
             "attributes": {
@@ -198,7 +197,7 @@
             },
             "innerBlocks": [
                 {
-                    "clientId": "af5cb36f-081b-4291-bd9e-684d07bcd59a",
+                    "clientId": "e067f7b8-6865-47b8-8747-3fe001be20a5",
                     "name": "themeisle-blocks/advanced-heading",
                     "isValid": true,
                     "attributes": {
@@ -253,7 +252,7 @@
                     "originalContent": "<div id=\"wp-block-themeisle-blocks-advanced-heading-24c3640d\" class=\"wp-block-themeisle-blocks-advanced-heading wp-block-themeisle-blocks-advanced-heading-24c3640d\" style=\"color:#ebebeb;font-family:Poppins;font-weight:700;font-style:normal;text-transform:none;line-height:200px\">03</div>"
                 },
                 {
-                    "clientId": "e2c0df2a-d37f-4750-a553-fba5beae4c94",
+                    "clientId": "6428c666-de73-438c-bca9-3da5442fd688",
                     "name": "themeisle-blocks/advanced-heading",
                     "isValid": true,
                     "attributes": {
@@ -309,7 +308,7 @@
                     "originalContent": "<h2 id=\"wp-block-themeisle-blocks-advanced-heading-7894044d\" class=\"wp-block-themeisle-blocks-advanced-heading wp-block-themeisle-blocks-advanced-heading-7894044d\" style=\"color:#313131;font-family:Libre Baskerville;font-weight:700;font-style:normal;text-transform:none;line-height:75px\">Our Team</h2>"
                 },
                 {
-                    "clientId": "4edc42ba-48af-4ccc-b9a8-46f24d1e05c0",
+                    "clientId": "0be2f812-9883-481d-bd33-ef61a24f7044",
                     "name": "themeisle-blocks/advanced-heading",
                     "isValid": true,
                     "attributes": {
@@ -363,7 +362,7 @@
                     "originalContent": "<div id=\"wp-block-themeisle-blocks-advanced-heading-a652dd82\" class=\"wp-block-themeisle-blocks-advanced-heading wp-block-themeisle-blocks-advanced-heading-a652dd82\" style=\"color:#616161;font-family:Poppins;font-weight:normal;font-style:normal;text-transform:none\">We understand your requirement and provide quality works.</div>"
                 },
                 {
-                    "clientId": "595e3779-8c75-46da-8dfe-6d30c21c61e8",
+                    "clientId": "6cab616b-8bcd-4160-aa36-0df67b8f2a7c",
                     "name": "themeisle-blocks/advanced-columns",
                     "isValid": true,
                     "attributes": {
@@ -482,7 +481,7 @@
                     },
                     "innerBlocks": [
                         {
-                            "clientId": "e3204a37-9155-4d3c-a257-3cfa6bf9c81e",
+                            "clientId": "f09ce833-e7a6-4565-97c3-d4e624fb75df",
                             "name": "themeisle-blocks/advanced-column",
                             "isValid": true,
                             "attributes": {
@@ -504,21 +503,21 @@
                                 "paddingLeft": 5,
                                 "paddingLeftTablet": 5,
                                 "paddingLeftMobile": 5,
-                                "marginType": "linked",
-                                "marginTypeTablet": "linked",
-                                "marginTypeMobile": "linked",
+                                "marginType": "unlinked",
+                                "marginTypeTablet": "unlinked",
+                                "marginTypeMobile": "unlinked",
                                 "margin": 20,
                                 "marginTablet": 15,
                                 "marginMobile": 15,
-                                "marginTop": 20,
-                                "marginTopTablet": 20,
+                                "marginTop": 0,
+                                "marginTopTablet": 15,
                                 "marginTopMobile": 15,
                                 "marginRight": 0,
                                 "marginRightTablet": 0,
                                 "marginRightMobile": 0,
-                                "marginBottom": 20,
-                                "marginBottomTablet": 20,
-                                "marginBottomMobile": 0,
+                                "marginBottom": 0,
+                                "marginBottomTablet": 15,
+                                "marginBottomMobile": 15,
                                 "marginLeft": 0,
                                 "marginLeftTablet": 0,
                                 "marginLeftMobile": 0,
@@ -559,13 +558,13 @@
                             },
                             "innerBlocks": [
                                 {
-                                    "clientId": "636fb09c-b818-4b0e-a0f0-c2017fed3d92",
+                                    "clientId": "2916232e-cccc-4e76-a0dc-4bb63d4b9ada",
                                     "name": "themeisle-blocks/service",
                                     "isValid": true,
                                     "attributes": {},
                                     "innerBlocks": [
                                         {
-                                            "clientId": "5363cd1e-7c39-4c45-b4cd-df205f3e6b9b",
+                                            "clientId": "9f86cf73-6217-4d03-98de-48adbc46d321",
                                             "name": "core/image",
                                             "isValid": true,
                                             "attributes": {
@@ -580,7 +579,7 @@
                                             "originalContent": "<div class=\"wp-block-image\"><figure class=\"aligncenter\"><img src=\"https://github.com/Codeinwp/gutenberg-templates/blob/master/assets/images/team-5.jpg?raw=true\" alt=\"\" class=\"wp-image-205\"/></figure></div>"
                                         },
                                         {
-                                            "clientId": "ef1f7232-8283-45e7-87c6-2bb72a38764d",
+                                            "clientId": "c8576345-fff1-4018-9ee6-083a6e4c6f8e",
                                             "name": "themeisle-blocks/advanced-heading",
                                             "isValid": true,
                                             "attributes": {
@@ -634,7 +633,7 @@
                                             "originalContent": "<h6 id=\"wp-block-themeisle-blocks-advanced-heading-22a54f86\" class=\"wp-block-themeisle-blocks-advanced-heading wp-block-themeisle-blocks-advanced-heading-22a54f86\" style=\"color:#fc5f45;font-family:Poppins;font-weight:500;font-style:normal;text-transform:none\">Daniele Johnson</h6>"
                                         },
                                         {
-                                            "clientId": "c20e0004-6f90-43b8-b9ec-19e5cb048270",
+                                            "clientId": "a40f426b-d051-471e-923d-da16562b8365",
                                             "name": "themeisle-blocks/advanced-heading",
                                             "isValid": true,
                                             "attributes": {
@@ -695,7 +694,7 @@
                             "originalContent": "<div class=\"wp-block-themeisle-blocks-advanced-column\" id=\"wp-block-themeisle-blocks-advanced-column-9c689dcf\" style=\"background:#ffffff;border-top-width:0px;border-right-width:0px;border-bottom-width:3px;border-left-width:0px;border-style:solid;border-color:#fc5f45;border-radius:0px\"></div>"
                         },
                         {
-                            "clientId": "55cba690-70c9-4352-ae99-93429d8c57b9",
+                            "clientId": "3f922e58-c675-4f84-ab35-4998b247c8fe",
                             "name": "themeisle-blocks/advanced-column",
                             "isValid": true,
                             "attributes": {
@@ -717,21 +716,21 @@
                                 "paddingLeft": 5,
                                 "paddingLeftTablet": 5,
                                 "paddingLeftMobile": 5,
-                                "marginType": "linked",
-                                "marginTypeTablet": "linked",
-                                "marginTypeMobile": "linked",
+                                "marginType": "unlinked",
+                                "marginTypeTablet": "unlinked",
+                                "marginTypeMobile": "unlinked",
                                 "margin": 20,
                                 "marginTablet": 15,
                                 "marginMobile": 15,
-                                "marginTop": 20,
-                                "marginTopTablet": 20,
+                                "marginTop": 0,
+                                "marginTopTablet": 15,
                                 "marginTopMobile": 15,
                                 "marginRight": 0,
                                 "marginRightTablet": 0,
                                 "marginRightMobile": 0,
-                                "marginBottom": 20,
-                                "marginBottomTablet": 20,
-                                "marginBottomMobile": 0,
+                                "marginBottom": 0,
+                                "marginBottomTablet": 15,
+                                "marginBottomMobile": 15,
                                 "marginLeft": 0,
                                 "marginLeftTablet": 0,
                                 "marginLeftMobile": 0,
@@ -772,13 +771,13 @@
                             },
                             "innerBlocks": [
                                 {
-                                    "clientId": "0034d4de-75d9-4114-9f3c-e59ebb545e06",
+                                    "clientId": "cbc0a416-5c51-42db-9f14-2a58f12ee919",
                                     "name": "themeisle-blocks/service",
                                     "isValid": true,
                                     "attributes": {},
                                     "innerBlocks": [
                                         {
-                                            "clientId": "153be2bd-37fd-42fb-9428-80d34fd5d59c",
+                                            "clientId": "aa814f01-bc97-487a-829c-d471fa42adf5",
                                             "name": "core/image",
                                             "isValid": true,
                                             "attributes": {
@@ -793,7 +792,7 @@
                                             "originalContent": "<div class=\"wp-block-image\"><figure class=\"aligncenter\"><img src=\"https://github.com/Codeinwp/gutenberg-templates/blob/master/assets/images/team-2.jpg?raw=true\" alt=\"\" class=\"wp-image-206\"/></figure></div>"
                                         },
                                         {
-                                            "clientId": "f0702f8f-6e51-46cc-b3ec-3b3187d00d30",
+                                            "clientId": "04f5b251-a1cc-4bdd-b94d-14e13c96df82",
                                             "name": "themeisle-blocks/advanced-heading",
                                             "isValid": true,
                                             "attributes": {
@@ -847,7 +846,7 @@
                                             "originalContent": "<h6 id=\"wp-block-themeisle-blocks-advanced-heading-38d00e64\" class=\"wp-block-themeisle-blocks-advanced-heading wp-block-themeisle-blocks-advanced-heading-38d00e64\" style=\"color:#38c695;font-family:Poppins;font-weight:500;font-style:normal;text-transform:none\">Summer Geller</h6>"
                                         },
                                         {
-                                            "clientId": "e0225f0a-dbd3-4142-b679-505f0070c0ec",
+                                            "clientId": "d1719d5d-fc75-46d9-9ed7-153707632cdb",
                                             "name": "themeisle-blocks/advanced-heading",
                                             "isValid": true,
                                             "attributes": {
@@ -908,7 +907,7 @@
                             "originalContent": "<div class=\"wp-block-themeisle-blocks-advanced-column\" id=\"wp-block-themeisle-blocks-advanced-column-70f80fc3\" style=\"background:#ffffff;border-top-width:0px;border-right-width:0px;border-bottom-width:3px;border-left-width:0px;border-style:solid;border-color:#38c695;border-radius:0px\"></div>"
                         },
                         {
-                            "clientId": "14a10458-1fb3-4145-95c2-53f8c3d5df6e",
+                            "clientId": "216f3a06-57ae-4d19-9042-569810832043",
                             "name": "themeisle-blocks/advanced-column",
                             "isValid": true,
                             "attributes": {
@@ -930,21 +929,21 @@
                                 "paddingLeft": 5,
                                 "paddingLeftTablet": 5,
                                 "paddingLeftMobile": 5,
-                                "marginType": "linked",
+                                "marginType": "unlinked",
                                 "marginTypeTablet": "unlinked",
-                                "marginTypeMobile": "linked",
+                                "marginTypeMobile": "unlinked",
                                 "margin": 20,
                                 "marginTablet": 15,
                                 "marginMobile": 15,
-                                "marginTop": 20,
-                                "marginTopTablet": 20,
+                                "marginTop": 0,
+                                "marginTopTablet": 15,
                                 "marginTopMobile": 15,
                                 "marginRight": 0,
                                 "marginRightTablet": 0,
                                 "marginRightMobile": 0,
-                                "marginBottom": 20,
-                                "marginBottomTablet": 20,
-                                "marginBottomMobile": 0,
+                                "marginBottom": 0,
+                                "marginBottomTablet": 15,
+                                "marginBottomMobile": 15,
                                 "marginLeft": 0,
                                 "marginLeftTablet": 0,
                                 "marginLeftMobile": 0,
@@ -985,13 +984,13 @@
                             },
                             "innerBlocks": [
                                 {
-                                    "clientId": "598b3ae4-d15d-405d-9d48-7b58869c1980",
+                                    "clientId": "df7fd46c-3498-488a-8d3d-aebd6e218d5e",
                                     "name": "themeisle-blocks/service",
                                     "isValid": true,
                                     "attributes": {},
                                     "innerBlocks": [
                                         {
-                                            "clientId": "acba5837-5d18-45b8-adb3-d4708b3250e0",
+                                            "clientId": "b7c95113-9e93-49dd-a5be-ce7c6f3bcc8e",
                                             "name": "core/image",
                                             "isValid": true,
                                             "attributes": {
@@ -1006,7 +1005,7 @@
                                             "originalContent": "<div class=\"wp-block-image\"><figure class=\"aligncenter\"><img src=\"https://github.com/Codeinwp/gutenberg-templates/blob/master/assets/images/team-4.jpg?raw=true\" alt=\"\" class=\"wp-image-207\"/></figure></div>"
                                         },
                                         {
-                                            "clientId": "459efe61-9afa-4567-a419-b8cf18d564fb",
+                                            "clientId": "99cc2f73-14b8-4c58-836d-8de658f6645e",
                                             "name": "themeisle-blocks/advanced-heading",
                                             "isValid": true,
                                             "attributes": {
@@ -1060,7 +1059,7 @@
                                             "originalContent": "<h6 id=\"wp-block-themeisle-blocks-advanced-heading-c29498b8\" class=\"wp-block-themeisle-blocks-advanced-heading wp-block-themeisle-blocks-advanced-heading-c29498b8\" style=\"color:#b27cf5;font-family:Poppins;font-weight:500;font-style:normal;text-transform:none\">Marissa Adams</h6>"
                                         },
                                         {
-                                            "clientId": "a884a19e-b701-4d6b-acaa-bd40fc2277a0",
+                                            "clientId": "01668597-b4ad-417f-820b-f5b2922fa0ab",
                                             "name": "themeisle-blocks/advanced-heading",
                                             "isValid": true,
                                             "attributes": {
@@ -1121,7 +1120,7 @@
                             "originalContent": "<div class=\"wp-block-themeisle-blocks-advanced-column\" id=\"wp-block-themeisle-blocks-advanced-column-598ccd69\" style=\"background:#ffffff;border-top-width:0px;border-right-width:0px;border-bottom-width:3px;border-left-width:0px;border-style:solid;border-color:#b27cf5;border-radius:0px\"></div>"
                         },
                         {
-                            "clientId": "6303974e-a1e4-4661-9789-c2f4fb7c8d3b",
+                            "clientId": "e7975143-8ce8-4c62-abce-6266077e9dea",
                             "name": "themeisle-blocks/advanced-column",
                             "isValid": true,
                             "attributes": {
@@ -1143,21 +1142,21 @@
                                 "paddingLeft": 5,
                                 "paddingLeftTablet": 5,
                                 "paddingLeftMobile": 5,
-                                "marginType": "linked",
-                                "marginTypeTablet": "linked",
-                                "marginTypeMobile": "linked",
+                                "marginType": "unlinked",
+                                "marginTypeTablet": "unlinked",
+                                "marginTypeMobile": "unlinked",
                                 "margin": 20,
                                 "marginTablet": 15,
                                 "marginMobile": 15,
-                                "marginTop": 20,
-                                "marginTopTablet": 20,
+                                "marginTop": 0,
+                                "marginTopTablet": 15,
                                 "marginTopMobile": 15,
                                 "marginRight": 0,
                                 "marginRightTablet": 0,
                                 "marginRightMobile": 0,
-                                "marginBottom": 20,
-                                "marginBottomTablet": 20,
-                                "marginBottomMobile": 0,
+                                "marginBottom": 0,
+                                "marginBottomTablet": 15,
+                                "marginBottomMobile": 15,
                                 "marginLeft": 0,
                                 "marginLeftTablet": 0,
                                 "marginLeftMobile": 0,
@@ -1198,17 +1197,17 @@
                             },
                             "innerBlocks": [
                                 {
-                                    "clientId": "1192ff5a-7a92-479f-8055-a6c432db0bfa",
+                                    "clientId": "ece8e29d-a17e-4808-a4b0-8705f7bda4ab",
                                     "name": "themeisle-blocks/service",
                                     "isValid": true,
                                     "attributes": {},
                                     "innerBlocks": [
                                         {
-                                            "clientId": "6124d6eb-e2c5-4257-bce0-a8194c2f5063",
+                                            "clientId": "9ef4d6c9-1a93-41f0-89a1-9b3b51a71500",
                                             "name": "core/image",
                                             "isValid": true,
                                             "attributes": {
-                                                "url": "https://github.com/Codeinwp/gutenberg-templates/blob/master/assets/images/team-1.jpg",
+                                                "url": "https://github.com/Codeinwp/gutenberg-templates/blob/master/assets/images/team-1.jpg?raw=true",
                                                 "alt": "",
                                                 "caption": "",
                                                 "id": 208,
@@ -1216,10 +1215,10 @@
                                                 "linkDestination": "none"
                                             },
                                             "innerBlocks": [],
-                                            "originalContent": "<div class=\"wp-block-image\"><figure class=\"aligncenter\"><img src=\"https://github.com/Codeinwp/gutenberg-templates/blob/master/assets/images/team-1.jpg\" alt=\"\" class=\"wp-image-208\"/></figure></div>"
+                                            "originalContent": "<div class=\"wp-block-image\"><figure class=\"aligncenter\"><img src=\"https://github.com/Codeinwp/gutenberg-templates/blob/master/assets/images/team-1.jpg?raw=true\" alt=\"\" class=\"wp-image-208\"/></figure></div>"
                                         },
                                         {
-                                            "clientId": "5ebea4c8-5ef2-4047-914e-f907a3c48cdd",
+                                            "clientId": "bfde25d1-8404-4dde-ab21-41daf3af83bd",
                                             "name": "themeisle-blocks/advanced-heading",
                                             "isValid": true,
                                             "attributes": {
@@ -1273,7 +1272,7 @@
                                             "originalContent": "<h6 id=\"wp-block-themeisle-blocks-advanced-heading-5d1a04e8\" class=\"wp-block-themeisle-blocks-advanced-heading wp-block-themeisle-blocks-advanced-heading-5d1a04e8\" style=\"color:#feb960;font-family:Poppins;font-weight:500;font-style:normal;text-transform:none\">Jennifer Gilmore</h6>"
                                         },
                                         {
-                                            "clientId": "6bc94d0d-46c1-41e4-ade8-2581de2f4ca5",
+                                            "clientId": "7c5ac252-1f68-47db-aafc-d27078d8a4b0",
                                             "name": "themeisle-blocks/advanced-heading",
                                             "isValid": true,
                                             "attributes": {
