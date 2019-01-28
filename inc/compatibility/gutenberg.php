@@ -233,7 +233,7 @@ class Gutenberg {
 				'keywords'       => array( 'about us', 'about', 'description', 'showcase' ),
 				'categories'     => array( 'content' ),
 				'template_url'   => get_template_directory_uri() . '/gutenberg/templates/about-us/template.json',
-				'screenshot_url' => get_template_directory_uri() . '/gutenberg/templates/about-us/screenshot.png',
+				'screenshot_url' => get_template_directory_uri() . '/gutenberg/templates/about-us/screenshot.jpg',
 			),
 			array(
 				'title'          => __( 'Neve Our Focus', 'neve' ),
