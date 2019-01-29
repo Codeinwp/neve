@@ -1,5 +1,5 @@
 {
-    "clientId": "40b50d22-ad32-49ec-be3e-c700cc7e0797",
+    "clientId": "a2d16bec-22dd-4087-8298-a13b4092b9d0",
     "name": "themeisle-blocks/advanced-columns",
     "isValid": true,
     "attributes": {
@@ -42,7 +42,6 @@
         "horizontalAlign": "unset",
         "verticalAlign": "unset",
         "backgroundType": "color",
-        "backgroundColor": "#262732",
         "backgroundAttachment": "scroll",
         "backgroundPosition": "top left",
         "backgroundRepeat": "repeat",
@@ -56,6 +55,7 @@
         "backgroundGradientPosition": "center center",
         "backgroundOverlayOpacity": 85,
         "backgroundOverlayType": "color",
+        "backgroundOverlayColor": "#262732",
         "backgroundOverlayAttachment": "scroll",
         "backgroundOverlayPosition": "top left",
         "backgroundOverlayRepeat": "repeat",
@@ -74,13 +74,13 @@
         "backgroundOverlayFilterHue": 0,
         "backgroundOverlayFilterSaturate": 10,
         "backgroundOverlayBlend": "normal",
-        "borderType": "linked",
+        "borderType": "unlinked",
         "border": 0,
         "borderTop": 0,
         "borderRight": 0,
-        "borderBottom": 0,
+        "borderBottom": 3,
         "borderLeft": 0,
-        "borderColor": "#000000",
+        "borderColor": "#fc5f45",
         "borderRadiusType": "linked",
         "borderRadius": 0,
         "borderRadiusTop": 0,
@@ -120,9 +120,9 @@
     },
     "innerBlocks": [
         {
-            "clientId": "91f934e9-1b10-499d-b310-22ccf8295461",
+            "clientId": "1f8149c9-1423-4f87-9abe-0f221b2cd769",
             "name": "themeisle-blocks/advanced-column",
-            "isValid": true,
+            "isValid": false,
             "attributes": {
                 "paddingType": "unlinked",
                 "paddingTypeTablet": "unlinked",
@@ -151,9 +151,15 @@
                 "marginTop": 20,
                 "marginTopTablet": 20,
                 "marginTopMobile": 20,
+                "marginRight": 0,
+                "marginRightTablet": 0,
+                "marginRightMobile": 0,
                 "marginBottom": 20,
                 "marginBottomTablet": 20,
                 "marginBottomMobile": 20,
+                "marginLeft": 0,
+                "marginLeftTablet": 0,
+                "marginLeftMobile": 0,
                 "backgroundType": "color",
                 "backgroundAttachment": "scroll",
                 "backgroundPosition": "top left",
@@ -170,9 +176,9 @@
                 "border": 0,
                 "borderTop": 0,
                 "borderRight": 0,
-                "borderBottom": 3,
+                "borderBottom": 0,
                 "borderLeft": 0,
-                "borderColor": "#fc5f45",
+                "borderColor": "#000000",
                 "borderRadiusType": "linked",
                 "borderRadius": 0,
                 "borderRadiusTop": 0,
@@ -190,13 +196,13 @@
             },
             "innerBlocks": [
                 {
-                    "clientId": "c0ac5610-6a99-48ee-a939-93c9f3c48d49",
+                    "clientId": "ff09532c-b5d9-4f7a-9341-bb6cddd98d83",
                     "name": "themeisle-blocks/service",
                     "isValid": true,
                     "attributes": {},
                     "innerBlocks": [
                         {
-                            "clientId": "b75b2836-422b-45b3-8f4e-e69d36237c2a",
+                            "clientId": "516a9bd8-7845-42ac-aa24-5c54d5acbb5d",
                             "name": "themeisle-blocks/advanced-heading",
                             "isValid": true,
                             "attributes": {
@@ -248,10 +254,10 @@
                                 "marginBottomMobile": 26
                             },
                             "innerBlocks": [],
-                            "originalContent": "<h6 id=\"wp-block-themeisle-blocks-advanced-heading-aa3f1f4b\" class=\"wp-block-themeisle-blocks-advanced-heading wp-block-themeisle-blocks-advanced-heading-aa3f1f4b\" style=\"text-align:center;color:#fc5f45;font-family:Poppins;font-weight:500;font-style:normal;text-transform:none;line-height:26px\">Here for you</h6>"
+                            "originalContent": "<h6 id=\"wp-block-themeisle-blocks-advanced-heading-47afa549\" class=\"wp-block-themeisle-blocks-advanced-heading wp-block-themeisle-blocks-advanced-heading-47afa549\" style=\"color:#fc5f45;font-family:Poppins;font-weight:500;font-style:normal;text-transform:none;line-height:26px\">Here for you</h6>"
                         },
                         {
-                            "clientId": "52a1aaf7-1914-4933-9a49-96f324ccfc9e",
+                            "clientId": "623a4ba4-4839-45a1-ac0a-38e75a01157d",
                             "name": "themeisle-blocks/advanced-heading",
                             "isValid": true,
                             "attributes": {
@@ -303,18 +309,18 @@
                                 "marginBottomMobile": 0
                             },
                             "innerBlocks": [],
-                            "originalContent": "<p id=\"wp-block-themeisle-blocks-advanced-heading-837f0611\" class=\"wp-block-themeisle-blocks-advanced-heading wp-block-themeisle-blocks-advanced-heading-837f0611\" style=\"text-align:center;color:#ffffff;font-family:Poppins;font-weight:300;font-style:normal;text-transform:none;line-height:27px\">Call us 24/7. We are there for your support.</p>"
+                            "originalContent": "<p id=\"wp-block-themeisle-blocks-advanced-heading-1a763712\" class=\"wp-block-themeisle-blocks-advanced-heading wp-block-themeisle-blocks-advanced-heading-1a763712\" style=\"color:#ffffff;font-family:Poppins;font-weight:300;font-style:normal;text-transform:none;line-height:27px\">Call us 24/7. We are there for your support.</p>"
                         }
                     ],
                     "originalContent": "<div class=\"wp-block-themeisle-blocks-service\">\n\n</div>"
                 }
             ],
-            "originalContent": "<div class=\"wp-block-themeisle-blocks-advanced-column\" id=\"wp-block-themeisle-blocks-advanced-column-ff686b1c\" style=\"border-top-width:0px;border-right-width:0px;border-bottom-width:3px;border-left-width:0px;border-style:solid;border-color:#fc5f45;border-radius:0px\"></div>"
+            "originalContent": "<div class=\"wp-block-themeisle-blocks-advanced-column\" id=\"wp-block-themeisle-blocks-advanced-column-8754e329\" style=\"border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-style:solid;border-radius:0px\"></div>"
         },
         {
-            "clientId": "c4f04645-3a21-4dde-b70b-25619fd1e391",
+            "clientId": "d0454ce7-39d3-4a17-acc8-7c090313d9fc",
             "name": "themeisle-blocks/advanced-column",
-            "isValid": true,
+            "isValid": false,
             "attributes": {
                 "paddingType": "unlinked",
                 "paddingTypeTablet": "unlinked",
@@ -343,9 +349,15 @@
                 "marginTop": 20,
                 "marginTopTablet": 20,
                 "marginTopMobile": 20,
+                "marginRight": 0,
+                "marginRightTablet": 0,
+                "marginRightMobile": 0,
                 "marginBottom": 20,
                 "marginBottomTablet": 20,
                 "marginBottomMobile": 20,
+                "marginLeft": 0,
+                "marginLeftTablet": 0,
+                "marginLeftMobile": 0,
                 "backgroundType": "color",
                 "backgroundAttachment": "scroll",
                 "backgroundPosition": "top left",
@@ -362,9 +374,9 @@
                 "border": 0,
                 "borderTop": 0,
                 "borderRight": 0,
-                "borderBottom": 3,
+                "borderBottom": 0,
                 "borderLeft": 0,
-                "borderColor": "#38c695",
+                "borderColor": "#000000",
                 "borderRadiusType": "linked",
                 "borderRadius": 0,
                 "borderRadiusTop": 0,
@@ -382,13 +394,13 @@
             },
             "innerBlocks": [
                 {
-                    "clientId": "5ff2716e-6958-4c0a-ae0d-14acfeb9420c",
+                    "clientId": "be164344-fb09-4f35-9845-3882feb9d067",
                     "name": "themeisle-blocks/service",
                     "isValid": true,
                     "attributes": {},
                     "innerBlocks": [
                         {
-                            "clientId": "facf0630-eb38-456f-bf70-90f418a3cdf8",
+                            "clientId": "2bf15b29-a7a5-49a6-a97d-6c6e18005125",
                             "name": "themeisle-blocks/advanced-heading",
                             "isValid": true,
                             "attributes": {
@@ -440,10 +452,10 @@
                                 "marginBottomMobile": 26
                             },
                             "innerBlocks": [],
-                            "originalContent": "<h6 id=\"wp-block-themeisle-blocks-advanced-heading-aa3f1f4b\" class=\"wp-block-themeisle-blocks-advanced-heading wp-block-themeisle-blocks-advanced-heading-aa3f1f4b\" style=\"text-align:center;color:#38c695;font-family:Poppins;font-weight:500;font-style:normal;text-transform:none;line-height:26px\">About Neve</h6>"
+                            "originalContent": "<h6 id=\"wp-block-themeisle-blocks-advanced-heading-855e2d9b\" class=\"wp-block-themeisle-blocks-advanced-heading wp-block-themeisle-blocks-advanced-heading-855e2d9b\" style=\"color:#38c695;font-family:Poppins;font-weight:500;font-style:normal;text-transform:none;line-height:26px\">About Neve</h6>"
                         },
                         {
-                            "clientId": "c39dca75-a36a-495b-a453-772d602029f7",
+                            "clientId": "cc2580d1-085e-4466-a181-3f648e203646",
                             "name": "themeisle-blocks/advanced-heading",
                             "isValid": true,
                             "attributes": {
@@ -495,18 +507,29 @@
                                 "marginBottomMobile": 0
                             },
                             "innerBlocks": [],
-                            "originalContent": "<p id=\"wp-block-themeisle-blocks-advanced-heading-837f0611\" class=\"wp-block-themeisle-blocks-advanced-heading wp-block-themeisle-blocks-advanced-heading-837f0611\" style=\"text-align:center;color:#ffffff;font-family:Poppins;font-weight:300;font-style:normal;text-transform:none;line-height:27px\">Res enim fortasse verae, certe graves.</p>"
+                            "originalContent": "<p id=\"wp-block-themeisle-blocks-advanced-heading-64b52a56\" class=\"wp-block-themeisle-blocks-advanced-heading wp-block-themeisle-blocks-advanced-heading-64b52a56\" style=\"color:#ffffff;font-family:Poppins;font-weight:300;font-style:normal;text-transform:none;line-height:27px\">Res enim fortasse verae, certe graves.</p>"
                         }
                     ],
                     "originalContent": "<div class=\"wp-block-themeisle-blocks-service\">\n\n</div>"
+                },
+                {
+                    "clientId": "3533363b-2cb9-452f-9edb-aaf807c1c423",
+                    "name": "core/paragraph",
+                    "isValid": true,
+                    "attributes": {
+                        "content": "",
+                        "dropCap": false
+                    },
+                    "innerBlocks": [],
+                    "originalContent": "<p></p>"
                 }
             ],
-            "originalContent": "<div class=\"wp-block-themeisle-blocks-advanced-column\" id=\"wp-block-themeisle-blocks-advanced-column-8ccdc814\" style=\"border-top-width:0px;border-right-width:0px;border-bottom-width:3px;border-left-width:0px;border-style:solid;border-color:#38c695;border-radius:0px\"></div>"
+            "originalContent": "<div class=\"wp-block-themeisle-blocks-advanced-column\" id=\"wp-block-themeisle-blocks-advanced-column-24946ab0\" style=\"border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-style:solid;border-radius:0px\">\n\n</div>"
         },
         {
-            "clientId": "12dc6b52-0840-443e-a65b-dd97eb2b2975",
+            "clientId": "09754198-2b47-4620-b118-4d08a181218a",
             "name": "themeisle-blocks/advanced-column",
-            "isValid": true,
+            "isValid": false,
             "attributes": {
                 "paddingType": "unlinked",
                 "paddingTypeTablet": "unlinked",
@@ -535,9 +558,15 @@
                 "marginTop": 20,
                 "marginTopTablet": 20,
                 "marginTopMobile": 20,
+                "marginRight": 0,
+                "marginRightTablet": 0,
+                "marginRightMobile": 0,
                 "marginBottom": 20,
                 "marginBottomTablet": 20,
                 "marginBottomMobile": 20,
+                "marginLeft": 0,
+                "marginLeftTablet": 0,
+                "marginLeftMobile": 0,
                 "backgroundType": "color",
                 "backgroundAttachment": "scroll",
                 "backgroundPosition": "top left",
@@ -554,9 +583,9 @@
                 "border": 0,
                 "borderTop": 0,
                 "borderRight": 0,
-                "borderBottom": 3,
+                "borderBottom": 0,
                 "borderLeft": 0,
-                "borderColor": "#b27cf5",
+                "borderColor": "#000000",
                 "borderRadiusType": "linked",
                 "borderRadius": 0,
                 "borderRadiusTop": 0,
@@ -574,13 +603,13 @@
             },
             "innerBlocks": [
                 {
-                    "clientId": "67c61558-8b39-41a6-845d-3989cb6634ba",
+                    "clientId": "429dabad-afb1-40c9-9696-34e8e259cf3c",
                     "name": "themeisle-blocks/service",
                     "isValid": true,
                     "attributes": {},
                     "innerBlocks": [
                         {
-                            "clientId": "2a4874fe-ffdc-4c75-9c4c-ed45db6b2cb7",
+                            "clientId": "eb86f949-a0dd-4037-8db2-1c06ed8f8024",
                             "name": "themeisle-blocks/advanced-heading",
                             "isValid": true,
                             "attributes": {
@@ -632,10 +661,10 @@
                                 "marginBottomMobile": 26
                             },
                             "innerBlocks": [],
-                            "originalContent": "<h6 id=\"wp-block-themeisle-blocks-advanced-heading-aa3f1f4b\" class=\"wp-block-themeisle-blocks-advanced-heading wp-block-themeisle-blocks-advanced-heading-aa3f1f4b\" style=\"text-align:center;color:#b27cf5;font-family:Poppins;font-weight:500;font-style:normal;text-transform:none;line-height:26px\">Where to find us</h6>"
+                            "originalContent": "<h6 id=\"wp-block-themeisle-blocks-advanced-heading-b257343a\" class=\"wp-block-themeisle-blocks-advanced-heading wp-block-themeisle-blocks-advanced-heading-b257343a\" style=\"color:#b27cf5;font-family:Poppins;font-weight:500;font-style:normal;text-transform:none;line-height:26px\">Where to find us</h6>"
                         },
                         {
-                            "clientId": "3c380694-4451-4411-b297-90114906da32",
+                            "clientId": "edb32115-6f38-41a4-8961-f14ba2ff117a",
                             "name": "themeisle-blocks/advanced-heading",
                             "isValid": true,
                             "attributes": {
@@ -687,18 +716,18 @@
                                 "marginBottomMobile": 0
                             },
                             "innerBlocks": [],
-                            "originalContent": "<p id=\"wp-block-themeisle-blocks-advanced-heading-837f0611\" class=\"wp-block-themeisle-blocks-advanced-heading wp-block-themeisle-blocks-advanced-heading-837f0611\" style=\"text-align:center;color:#ffffff;font-family:Poppins;font-weight:300;font-style:normal;text-transform:none;line-height:27px\">42 Boulevard, California, number 23</p>"
+                            "originalContent": "<p id=\"wp-block-themeisle-blocks-advanced-heading-2b065c4a\" class=\"wp-block-themeisle-blocks-advanced-heading wp-block-themeisle-blocks-advanced-heading-2b065c4a\" style=\"color:#ffffff;font-family:Poppins;font-weight:300;font-style:normal;text-transform:none;line-height:27px\">42 Boulevard, California, number 23</p>"
                         }
                     ],
                     "originalContent": "<div class=\"wp-block-themeisle-blocks-service\">\n\n</div>"
                 }
             ],
-            "originalContent": "<div class=\"wp-block-themeisle-blocks-advanced-column\" id=\"wp-block-themeisle-blocks-advanced-column-4c8146e4\" style=\"border-top-width:0px;border-right-width:0px;border-bottom-width:3px;border-left-width:0px;border-style:solid;border-color:#b27cf5;border-radius:0px\"></div>"
+            "originalContent": "<div class=\"wp-block-themeisle-blocks-advanced-column\" id=\"wp-block-themeisle-blocks-advanced-column-e40db860\" style=\"border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-style:solid;border-radius:0px\"></div>"
         },
         {
-            "clientId": "7e72edd5-0e54-40ab-9917-f0c822a3d6a0",
+            "clientId": "921c1461-49d2-43a6-af54-a5fa48e0a6d8",
             "name": "themeisle-blocks/advanced-column",
-            "isValid": true,
+            "isValid": false,
             "attributes": {
                 "paddingType": "unlinked",
                 "paddingTypeTablet": "unlinked",
@@ -727,9 +756,15 @@
                 "marginTop": 20,
                 "marginTopTablet": 20,
                 "marginTopMobile": 20,
+                "marginRight": 0,
+                "marginRightTablet": 0,
+                "marginRightMobile": 0,
                 "marginBottom": 20,
                 "marginBottomTablet": 20,
                 "marginBottomMobile": 20,
+                "marginLeft": 0,
+                "marginLeftTablet": 0,
+                "marginLeftMobile": 0,
                 "backgroundType": "color",
                 "backgroundAttachment": "scroll",
                 "backgroundPosition": "top left",
@@ -746,9 +781,9 @@
                 "border": 0,
                 "borderTop": 0,
                 "borderRight": 0,
-                "borderBottom": 3,
+                "borderBottom": 0,
                 "borderLeft": 0,
-                "borderColor": "#feb960",
+                "borderColor": "#000000",
                 "borderRadiusType": "linked",
                 "borderRadius": 0,
                 "borderRadiusTop": 0,
@@ -766,13 +801,13 @@
             },
             "innerBlocks": [
                 {
-                    "clientId": "418b33db-93d7-4d4d-a79b-ae56f7d68986",
+                    "clientId": "2ca208fd-d785-45a8-ac78-67555c003af4",
                     "name": "themeisle-blocks/service",
                     "isValid": true,
                     "attributes": {},
                     "innerBlocks": [
                         {
-                            "clientId": "e116dcfc-0d31-4e0e-a85a-b169d2355713",
+                            "clientId": "bb0dbe91-4575-49ec-add7-c3555a36af25",
                             "name": "themeisle-blocks/advanced-heading",
                             "isValid": true,
                             "attributes": {
@@ -824,10 +859,10 @@
                                 "marginBottomMobile": 26
                             },
                             "innerBlocks": [],
-                            "originalContent": "<h6 id=\"wp-block-themeisle-blocks-advanced-heading-aa3f1f4b\" class=\"wp-block-themeisle-blocks-advanced-heading wp-block-themeisle-blocks-advanced-heading-aa3f1f4b\" style=\"text-align:center;color:#feb960;font-family:Poppins;font-weight:500;font-style:normal;text-transform:none;line-height:26px\">Keep in touch</h6>"
+                            "originalContent": "<h6 id=\"wp-block-themeisle-blocks-advanced-heading-23d55c83\" class=\"wp-block-themeisle-blocks-advanced-heading wp-block-themeisle-blocks-advanced-heading-23d55c83\" style=\"color:#feb960;font-family:Poppins;font-weight:500;font-style:normal;text-transform:none;line-height:26px\">Keep in touch</h6>"
                         },
                         {
-                            "clientId": "998d830b-3f56-46e0-9287-99bee9cc7f62",
+                            "clientId": "8ddb4eac-9e0b-46ea-9126-1c9b8ef3c30f",
                             "name": "themeisle-blocks/sharing-icons",
                             "isValid": true,
                             "attributes": {
@@ -848,8 +883,8 @@
                     "originalContent": "<div class=\"wp-block-themeisle-blocks-service\">\n\n</div>"
                 }
             ],
-            "originalContent": "<div class=\"wp-block-themeisle-blocks-advanced-column\" id=\"wp-block-themeisle-blocks-advanced-column-52014b40\" style=\"border-top-width:0px;border-right-width:0px;border-bottom-width:3px;border-left-width:0px;border-style:solid;border-color:#feb960;border-radius:0px\"></div>"
+            "originalContent": "<div class=\"wp-block-themeisle-blocks-advanced-column\" id=\"wp-block-themeisle-blocks-advanced-column-9640c700\" style=\"border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-style:solid;border-radius:0px\"></div>"
         }
     ],
-    "originalContent": "<div class=\"wp-block-themeisle-blocks-advanced-columns alignwide has-4-columns has-desktop-equal-layout has-tablet-collapsedRows-layout has-mobile-collapsedRows-layout has-nogap-gap has-vertical-unset\" id=\"wp-block-themeisle-blocks-advanced-columns-1496329b\" style=\"background:#262732;border-width:0px;border-style:solid;border-color:#000000;border-radius:0px;justify-content:unset\"><div class=\"wp-themeisle-block-overlay\" style=\"opacity:0.85;mix-blend-mode:normal;filter:blur( 0px ) brightness( 1 ) contrast( 1 ) grayscale( 0 ) hue-rotate( 0deg ) saturate( 1 )\"></div><div class=\"innerblocks-wrap\">\n\n\n\n\n\n</div></div>"
+    "originalContent": "<div class=\"wp-block-themeisle-blocks-advanced-columns alignwide has-4-columns has-desktop-equal-layout has-tablet-collapsedRows-layout has-mobile-collapsedRows-layout has-nogap-gap has-vertical-unset\" id=\"wp-block-themeisle-blocks-advanced-columns-f5f1b321\" style=\"border-top-width:0px;border-right-width:0px;border-bottom-width:3px;border-left-width:0px;border-style:solid;border-color:#fc5f45;border-radius:0px;justify-content:unset\"><div class=\"wp-themeisle-block-overlay\" style=\"background:#262732;opacity:0.85;mix-blend-mode:normal;filter:blur( 0px ) brightness( 1 ) contrast( 1 ) grayscale( 0 ) hue-rotate( 0deg ) saturate( 1 )\"></div><div class=\"innerblocks-wrap\">\n\n\n\n\n\n</div></div>"
 }
