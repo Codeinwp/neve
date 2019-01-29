@@ -255,6 +255,14 @@ class Front_End {
 			array(
 				'title'          => '',
 				'type'           => 'block',
+				'keywords'       => array( 'video', 'embed', 'youtube', 'movie' ),
+				'categories'     => array( 'content' ),
+				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/video/template.json',
+				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/video/screenshot.jpg',
+			),
+			array(
+				'title'          => '',
+				'type'           => 'block',
 				'keywords'       => array( 'team', 'our team', 'employees', 'clients', 'members', 'people', 'image', 'card' ),
 				'categories'     => array( 'content' ),
 				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/our-team/template.json',
