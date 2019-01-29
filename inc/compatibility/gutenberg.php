@@ -48,7 +48,6 @@ class Gutenberg {
 		$this->set_post_id();
 
 		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_gutenberg_scripts' ) );
-		add_filter( 'themeisle_gutenberg_templates', array( $this, 'add_gutenberg_templates' ) );
 	}
 
 	/**
@@ -210,92 +209,6 @@ class Gutenberg {
 		return array(
 			'sidebar' => __( 'Sidebar', 'neve' ),
 		);
-	}
-
-	/**
-	 * Add new Gutenberg templates on Otter plugin.
-	 *
-	 * @return array
-	 */
-	public function add_gutenberg_templates( $templates_list ) {
-		$templates = array(
-			array(
-				'title'          => __( 'Neve Big Title', 'neve' ),
-				'type'           => 'block',
-				'keywords'       => array( 'big title', 'header', 'about' ),
-				'categories'     => array( 'header' ),
-				'template_url'   => get_template_directory_uri() . '/gutenberg/templates/big-title/template.json',
-				'screenshot_url' => get_template_directory_uri() . '/gutenberg/templates/big-title/screenshot.jpg',
-			),
-			array(
-				'title'          => __( 'Neve About Us', 'neve' ),
-				'type'           => 'block',
-				'keywords'       => array( 'about us', 'about', 'description', 'showcase' ),
-				'categories'     => array( 'content' ),
-				'template_url'   => get_template_directory_uri() . '/gutenberg/templates/about-us/template.json',
-				'screenshot_url' => get_template_directory_uri() . '/gutenberg/templates/about-us/screenshot.jpg',
-			),
-			array(
-				'title'          => __( 'Neve Our Focus', 'neve' ),
-				'type'           => 'block',
-				'keywords'       => array( 'focus', 'our focus', 'services', 'features', 'showcase' ),
-				'categories'     => array( 'content' ),
-				'template_url'   => get_template_directory_uri() . '/gutenberg/templates/our-focus/template.json',
-				'screenshot_url' => get_template_directory_uri() . '/gutenberg/templates/our-focus/screenshot.png',
-			),
-			array(
-				'title'          => __( 'Neve Our Team', 'neve' ),
-				'type'           => 'block',
-				'keywords'       => array( 'team', 'our team', 'employees', 'clients', 'members', 'people', 'image', 'card' ),
-				'categories'     => array( 'content' ),
-				'template_url'   => get_template_directory_uri() . '/gutenberg/templates/our-team/template.json',
-				'screenshot_url' => get_template_directory_uri() . '/gutenberg/templates/our-team/screenshot.jpg',
-			),
-			array(
-				'title'          => __( 'Neve Ribbon', 'neve' ),
-				'type'           => 'block',
-				'keywords'       => array( 'ribbon', 'statistics', 'numbers', 'clients', 'banner', 'logo', 'carousel' ),
-				'categories'     => array( 'content' ),
-				'template_url'   => get_template_directory_uri() . '/gutenberg/templates/ribbon/template.json',
-				'screenshot_url' => get_template_directory_uri() . '/gutenberg/templates/ribbon/screenshot.jpg',
-			),
-			array(
-				'title'          => __( 'Neve Features', 'neve' ),
-				'type'           => 'block',
-				'keywords'       => array( 'features', 'card', 'about', 'services', 'advantages', 'items', 'boxes', 'why' ),
-				'categories'     => array( 'content' ),
-				'template_url'   => get_template_directory_uri() . '/gutenberg/templates/features/template.json',
-				'screenshot_url' => get_template_directory_uri() . '/gutenberg/templates/features/screenshot.png',
-			),
-			array(
-				'title'          => __( 'Neve Pricing', 'neve' ),
-				'type'           => 'block',
-				'keywords'       => array( 'pricing', 'plan', 'packages', 'membership', 'product' ),
-				'categories'     => array( 'content' ),
-				'template_url'   => get_template_directory_uri() . '/gutenberg/templates/pricing/template.json',
-				'screenshot_url' => get_template_directory_uri() . '/gutenberg/templates/pricing/screenshot.jpg',
-			),
-			array(
-				'title'          => __( 'Neve Testimonials', 'neve' ),
-				'type'           => 'block',
-				'keywords'       => array( 'testimonials', 'review', 'feedback', 'testimonial', 'happy', 'clients' ),
-				'categories'     => array( 'content' ),
-				'template_url'   => get_template_directory_uri() . '/gutenberg/templates/testimonials/template.json',
-				'screenshot_url' => get_template_directory_uri() . '/gutenberg/templates/testimonials/screenshot.png',
-			),
-			array(
-				'title'          => __( 'Neve Footer', 'neve' ),
-				'type'           => 'block',
-				'keywords'       => array( 'footer', 'resources', 'links', 'credits', 'contact', 'social', 'sharing' ),
-				'categories'     => array( 'footer' ),
-				'template_url'   => get_template_directory_uri() . '/gutenberg/templates/footer/template.json',
-				'screenshot_url' => get_template_directory_uri() . '/gutenberg/templates/footer/screenshot.png',
-			),
-		);
-
-		$list = array_merge( $templates, $templates_list );
-
-		return $list;
 	}
 
 }
