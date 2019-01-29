@@ -290,7 +290,7 @@ class Front_End {
 				'keywords'       => array( 'features', 'card', 'about', 'services', 'advantages', 'items', 'boxes', 'why' ),
 				'categories'     => array( 'content' ),
 				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/features/template.json',
-				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/features/screenshot.png',
+				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/features/screenshot.jpg',
 			),
 			array(
 				'title'          => '',
