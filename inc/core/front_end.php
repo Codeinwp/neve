@@ -229,7 +229,7 @@ class Front_End {
 	public function add_gutenberg_templates( $templates_list ) {
 		$templates = array(
 			array(
-				'title'          => __( 'Big Title', 'neve' ),
+				'title'          => '',
 				'type'           => 'block',
 				'keywords'       => array( 'big title', 'header', 'about' ),
 				'categories'     => array( 'header' ),
@@ -237,7 +237,7 @@ class Front_End {
 				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/big-title/screenshot.jpg',
 			),
 			array(
-				'title'          => __( 'About Us', 'neve' ),
+				'title'          => '',
 				'type'           => 'block',
 				'keywords'       => array( 'about us', 'about', 'description', 'showcase' ),
 				'categories'     => array( 'content' ),
@@ -245,7 +245,7 @@ class Front_End {
 				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/about-us/screenshot.jpg',
 			),
 			array(
-				'title'          => __( 'Our Focus', 'neve' ),
+				'title'          => '',
 				'type'           => 'block',
 				'keywords'       => array( 'focus', 'our focus', 'services', 'features', 'showcase' ),
 				'categories'     => array( 'content' ),
@@ -253,7 +253,7 @@ class Front_End {
 				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/our-focus/screenshot.png',
 			),
 			array(
-				'title'          => __( 'Our Team', 'neve' ),
+				'title'          => '',
 				'type'           => 'block',
 				'keywords'       => array( 'team', 'our team', 'employees', 'clients', 'members', 'people', 'image', 'card' ),
 				'categories'     => array( 'content' ),
@@ -261,7 +261,7 @@ class Front_End {
 				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/our-team/screenshot.jpg',
 			),
 			array(
-				'title'          => __( 'Ribbon', 'neve' ),
+				'title'          => '',
 				'type'           => 'block',
 				'keywords'       => array( 'ribbon', 'statistics', 'numbers', 'clients', 'banner', 'logo', 'carousel' ),
 				'categories'     => array( 'content' ),
@@ -277,7 +277,7 @@ class Front_End {
 				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/pricing/screenshot.jpg',
 			),
 			array(
-				'title'          => __( 'Testimonials', 'neve' ),
+				'title'          => '',
 				'type'           => 'block',
 				'keywords'       => array( 'testimonials', 'review', 'feedback', 'testimonial', 'happy', 'clients' ),
 				'categories'     => array( 'content' ),
@@ -285,7 +285,7 @@ class Front_End {
 				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/testimonials/screenshot.jpg',
 			),
 			array(
-				'title'          => __( 'Neve Features', 'neve' ),
+				'title'          => '',
 				'type'           => 'block',
 				'keywords'       => array( 'features', 'card', 'about', 'services', 'advantages', 'items', 'boxes', 'why' ),
 				'categories'     => array( 'content' ),
@@ -293,7 +293,7 @@ class Front_End {
 				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/features/screenshot.png',
 			),
 			array(
-				'title'          => __( 'Footer', 'neve' ),
+				'title'          => '',
 				'type'           => 'block',
 				'keywords'       => array( 'footer', 'resources', 'links', 'credits', 'contact', 'social', 'sharing' ),
 				'categories'     => array( 'footer' ),
