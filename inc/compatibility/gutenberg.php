@@ -221,7 +221,7 @@ class Gutenberg {
 		$templates = array(
 			array(
 				'title'          => __( 'Neve Big Title', 'neve' ),
-				'type'           => 'template',
+				'type'           => 'block',
 				'keywords'       => array( 'big title', 'header', 'about' ),
 				'categories'     => array( 'header' ),
 				'template_url'   => get_template_directory_uri() . '/gutenberg/templates/big-title/template.json',
@@ -229,7 +229,7 @@ class Gutenberg {
 			),
 			array(
 				'title'          => __( 'Neve About Us', 'neve' ),
-				'type'           => 'template',
+				'type'           => 'block',
 				'keywords'       => array( 'about us', 'about', 'description', 'showcase' ),
 				'categories'     => array( 'content' ),
 				'template_url'   => get_template_directory_uri() . '/gutenberg/templates/about-us/template.json',
@@ -237,7 +237,7 @@ class Gutenberg {
 			),
 			array(
 				'title'          => __( 'Neve Our Focus', 'neve' ),
-				'type'           => 'template',
+				'type'           => 'block',
 				'keywords'       => array( 'focus', 'our focus', 'services', 'features', 'showcase' ),
 				'categories'     => array( 'content' ),
 				'template_url'   => get_template_directory_uri() . '/gutenberg/templates/our-focus/template.json',
@@ -245,7 +245,7 @@ class Gutenberg {
 			),
 			array(
 				'title'          => __( 'Neve Our Team', 'neve' ),
-				'type'           => 'template',
+				'type'           => 'block',
 				'keywords'       => array( 'team', 'our team', 'employees', 'clients', 'members', 'people', 'image', 'card' ),
 				'categories'     => array( 'content' ),
 				'template_url'   => get_template_directory_uri() . '/gutenberg/templates/our-team/template.json',
@@ -253,7 +253,7 @@ class Gutenberg {
 			),
 			array(
 				'title'          => __( 'Neve Ribbon', 'neve' ),
-				'type'           => 'template',
+				'type'           => 'block',
 				'keywords'       => array( 'ribbon', 'statistics', 'numbers', 'clients', 'banner', 'logo', 'carousel' ),
 				'categories'     => array( 'content' ),
 				'template_url'   => get_template_directory_uri() . '/gutenberg/templates/ribbon/template.json',
@@ -261,7 +261,7 @@ class Gutenberg {
 			),
 			array(
 				'title'          => __( 'Neve Features', 'neve' ),
-				'type'           => 'template',
+				'type'           => 'block',
 				'keywords'       => array( 'features', 'card', 'about', 'services', 'advantages', 'items', 'boxes', 'why' ),
 				'categories'     => array( 'content' ),
 				'template_url'   => get_template_directory_uri() . '/gutenberg/templates/features/template.json',
@@ -269,15 +269,15 @@ class Gutenberg {
 			),
 			array(
 				'title'          => __( 'Neve Pricing', 'neve' ),
-				'type'           => 'template',
+				'type'           => 'block',
 				'keywords'       => array( 'pricing', 'plan', 'packages', 'membership', 'product' ),
 				'categories'     => array( 'content' ),
 				'template_url'   => get_template_directory_uri() . '/gutenberg/templates/pricing/template.json',
-				'screenshot_url' => get_template_directory_uri() . '/gutenberg/templates/pricing/screenshot.png',
+				'screenshot_url' => get_template_directory_uri() . '/gutenberg/templates/pricing/screenshot.jpg',
 			),
 			array(
 				'title'          => __( 'Neve Testimonials', 'neve' ),
-				'type'           => 'template',
+				'type'           => 'block',
 				'keywords'       => array( 'testimonials', 'review', 'feedback', 'testimonial', 'happy', 'clients' ),
 				'categories'     => array( 'content' ),
 				'template_url'   => get_template_directory_uri() . '/gutenberg/templates/testimonials/template.json',
@@ -285,7 +285,7 @@ class Gutenberg {
 			),
 			array(
 				'title'          => __( 'Neve Footer', 'neve' ),
-				'type'           => 'template',
+				'type'           => 'block',
 				'keywords'       => array( 'footer', 'resources', 'links', 'credits', 'contact', 'social', 'sharing' ),
 				'categories'     => array( 'footer' ),
 				'template_url'   => get_template_directory_uri() . '/gutenberg/templates/footer/template.json',
@@ -293,7 +293,7 @@ class Gutenberg {
 			),
 		);
 
-		$list = array_merge( $templates_list, $templates );
+		$list = array_merge( $templates, $templates_list );
 
 		return $list;
 	}
