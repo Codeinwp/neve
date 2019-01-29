@@ -282,7 +282,7 @@ class Front_End {
 				'keywords'       => array( 'testimonials', 'review', 'feedback', 'testimonial', 'happy', 'clients' ),
 				'categories'     => array( 'content' ),
 				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/testimonials/template.json',
-				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/testimonials/screenshot.png',
+				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/testimonials/screenshot.jpg',
 			),
 			array(
 				'title'          => __( 'Neve Features', 'neve' ),
