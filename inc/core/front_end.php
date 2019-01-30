@@ -277,6 +277,14 @@ class Front_End {
 				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/ribbon/screenshot.jpg',
 			),
 			array(
+				'title'          => '',
+				'type'           => 'block',
+				'keywords'       => array( 'detail', 'about', 'images', 'card', 'cards', 'alternative' ),
+				'categories'     => array( 'content' ),
+				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/details/template.json',
+				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/details/screenshot.jpg',
+			),
+			array(
 				'title'          => __( 'Pricing', 'neve' ),
 				'type'           => 'block',
 				'keywords'       => array( 'pricing', 'plan', 'packages', 'membership', 'product' ),
