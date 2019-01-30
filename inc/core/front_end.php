@@ -86,7 +86,7 @@ class Front_End {
 				'elementor' => array(
 					'neve-main'          => array(
 						'url'   => 'https://demo.themeisle.com/neve',
-						'title' => 'Neve 2018',
+						'title' => 'Neve Original',
 					),
 					'neve-vet-center'    => array(
 						'url'   => 'https://demo.themeisle.com/neve-vet-center/',
