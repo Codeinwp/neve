@@ -98,12 +98,12 @@ class Pagination extends Base_View {
 		$next_format = '<div class="next">%link</div>';
 
 		$prev_link = sprintf(
-			'<span>%1$s</span><span>%2$s</span>',
+			'<span class="nav-direction">%1$s</span><span>%2$s</span>',
 			esc_html__( 'previous', 'neve' ),
 			'%title'
 		);
 		$next_link = sprintf(
-			'<span>%1$s</span><span>%2$s</span>',
+			'<span class="nav-direction">%1$s</span><span>%2$s</span>',
 			esc_html__( 'next', 'neve' ),
 			'%title'
 		);

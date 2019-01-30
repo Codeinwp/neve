@@ -36,18 +36,24 @@
 
   .previous,
   .next {
-    a {
-      color: inherit;
-      display: flex;
-      flex-direction: column;
+    a:hover {
       text-decoration: none;
-      span:first-of-type {
-        text-transform: uppercase;
+      span:not(.nav-direction) {
+        text-decoration: underline;
       }
     }
+    .nav-direction {
+      color: $gray-color;
+      display: flex;
+      flex-direction: column;
+      font-size: 0.8em;
+      text-transform: uppercase;
+    }
+
   }
   .next {
     margin-left: auto;
+    text-align: right;
   }
 }
 

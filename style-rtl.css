@@ -1518,19 +1518,25 @@ article {
   display: flex;
   justify-content: space-between;
 }
-.nv-post-navigation .previous a,
-.nv-post-navigation .next a {
-  color: inherit;
-  display: flex;
-  flex-direction: column;
+.nv-post-navigation .previous a:hover,
+.nv-post-navigation .next a:hover {
   text-decoration: none;
 }
-.nv-post-navigation .previous a span:first-of-type,
-.nv-post-navigation .next a span:first-of-type {
+.nv-post-navigation .previous a:hover span:not(.nav-direction),
+.nv-post-navigation .next a:hover span:not(.nav-direction) {
+  text-decoration: underline;
+}
+.nv-post-navigation .previous .nav-direction,
+.nv-post-navigation .next .nav-direction {
+  color: #676767;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.8em;
   text-transform: uppercase;
 }
 .nv-post-navigation .next {
   margin-right: auto;
+  text-align: left;
 }
 
 .nv-content-wrap .page-numbers {
