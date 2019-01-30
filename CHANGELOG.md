@@ -1,4 +1,10 @@
 
+ ### v1.0.29 - 2019-01-21 
+ **Changes:** 
+ * Improved the onboarding process
+* Fixed issue with the read more button not appearing for the articles using the read more tag
+* Recommend the WeGlot plugin
+ 
  ### v1.0.28 - 2019-01-15 
  **Changes:** 
  * Layout updates for the starter sites
