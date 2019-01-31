@@ -287,7 +287,7 @@ abstract class Base_Style_Manager extends Base_View {
 	 *
 	 * @return string
 	 */
-	private function get_style() {
+	public function get_style() {
 		$style = $this->style . $this->tablet_style . $this->desktop_style;
 		$style = preg_replace( '!\s+!', ' ', $style );
 
@@ -308,5 +308,32 @@ abstract class Base_Style_Manager extends Base_View {
 		}
 
 		return get_theme_mod( $this->style_version_theme_mod_key );
+	}
+
+	/**
+	 * Get style from certain media query.
+	 *
+	 * @param string $query media query.
+	 *
+	 * @return string
+	 */
+	public function get_single_style( $query = '' ) {
+		if ( empty( $query ) ) {
+			return $this->style;
+		}
+
+		$accepted = array( 'tablet', 'desktop' );
+
+		if ( ! in_array( $query, $accepted ) ) {
+			return '';
+		}
+
+		if ( $query === 'tablet' ) {
+			return $this->tablet_style;
+		}
+
+		if ( $query === 'desktop' ) {
+			return $this->desktop_style;
+		}
 	}
 }
