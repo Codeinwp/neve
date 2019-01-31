@@ -135,54 +135,54 @@ class Admin {
 							),
 						),
 
-					array(
-						'icon'   => 'dashicons dashicons-portfolio',
-						'title'  => esc_html__( 'Changelog', 'neve' ),
-						'text'   => esc_html__( 'Want to get the gist on the latest theme changes? Just consult our changelog below to get a taste of the recent fixes and features implemented.', 'neve' ),
-						'button' => array(
-							'label'     => esc_html__( 'Changelog', 'neve' ),
-							'link'      => esc_url( '#changelog' ),
-							'is_button' => false,
-						),
+						array(
+							'icon'   => 'dashicons dashicons-portfolio',
+							'title'  => esc_html__( 'Changelog', 'neve' ),
+							'text'   => esc_html__( 'Want to get the gist on the latest theme changes? Just consult our changelog below to get a taste of the recent fixes and features implemented.', 'neve' ),
+							'button' => array(
+								'label'     => esc_html__( 'Changelog', 'neve' ),
+								'link'      => esc_url( '#changelog' ),
+								'is_button' => false,
+							),
 
-					),
-					array(
-						'title'  => esc_html__( 'Create a child theme', 'neve' ),
-						'icon'   => 'dashicons dashicons-admin-customizer',
-						'text'   => esc_html__( "If you want to make changes to the theme's files, those changes are likely to be overwritten when you next update the theme. In order to prevent that from happening, you need to create a child theme. For this, please follow the documentation below.", 'neve' ),
-						'button' => array(
-							'label'     => esc_html__( 'View how to do this', 'neve' ),
-							'link'      => 'http://docs.themeisle.com/article/14-how-to-create-a-child-theme',
-							'is_button' => false,
 						),
-					),
-					array(
-						'title'  => esc_html__( 'Speed up your site', 'neve' ),
-						'icon'   => 'dashicons dashicons-controls-skipforward',
-						'text'   => esc_html__( 'If you find yourself in a situation where everything on your site is running very slowly, you might consider having a look at the documentation below where you will find the most common issues causing this and possible solutions for each of the issues.', 'neve' ),
-						'button' => array(
-							'label'     => esc_html__( 'View how to do this', 'neve' ),
-							'link'      => 'http://docs.themeisle.com/article/63-speed-up-your-wordpress-site',
-							'is_button' => false,
+						array(
+							'title'  => esc_html__( 'Create a child theme', 'neve' ),
+							'icon'   => 'dashicons dashicons-admin-customizer',
+							'text'   => esc_html__( "If you want to make changes to the theme's files, those changes are likely to be overwritten when you next update the theme. In order to prevent that from happening, you need to create a child theme. For this, please follow the documentation below.", 'neve' ),
+							'button' => array(
+								'label'     => esc_html__( 'View how to do this', 'neve' ),
+								'link'      => 'http://docs.themeisle.com/article/14-how-to-create-a-child-theme',
+								'is_button' => false,
+							),
 						),
-					),
-					array(
-						'title'  => esc_html__( 'Build a landing page with a drag-and-drop content builder', 'neve' ),
-						'icon'   => 'dashicons dashicons-images-alt2',
-						'text'   => esc_html__( 'In the documentation below you will find an easy way to build a great looking landing page using a drag-and-drop content builder plugin.', 'neve' ),
-						'button' => array(
-							'label'     => esc_html__( 'View how to do this', 'neve' ),
-							'link'      => 'http://docs.themeisle.com/article/219-how-to-build-a-landing-page-with-a-drag-and-drop-content-builder',
-							'is_button' => false,
+						array(
+							'title'  => esc_html__( 'Speed up your site', 'neve' ),
+							'icon'   => 'dashicons dashicons-controls-skipforward',
+							'text'   => esc_html__( 'If you find yourself in a situation where everything on your site is running very slowly, you might consider having a look at the documentation below where you will find the most common issues causing this and possible solutions for each of the issues.', 'neve' ),
+							'button' => array(
+								'label'     => esc_html__( 'View how to do this', 'neve' ),
+								'link'      => 'http://docs.themeisle.com/article/63-speed-up-your-wordpress-site',
+								'is_button' => false,
+							),
+						),
+						array(
+							'title'  => esc_html__( 'Build a landing page with a drag-and-drop content builder', 'neve' ),
+							'icon'   => 'dashicons dashicons-images-alt2',
+							'text'   => esc_html__( 'In the documentation below you will find an easy way to build a great looking landing page using a drag-and-drop content builder plugin.', 'neve' ),
+							'button' => array(
+								'label'     => esc_html__( 'View how to do this', 'neve' ),
+								'link'      => 'http://docs.themeisle.com/article/219-how-to-build-a-landing-page-with-a-drag-and-drop-content-builder',
+								'is_button' => false,
+							),
 						),
 					),
 				),
-			),
-			'changelog'       => array(
-				'type'  => 'changelog',
-				'title' => __( 'Changelog', 'neve' ),
-			),
-			'custom_tabs'     => array(),
+				'changelog'       => array(
+					'type'  => 'changelog',
+					'title' => __( 'Changelog', 'neve' ),
+				),
+				'custom_tabs'     => array(),
 			)
 		);
 
