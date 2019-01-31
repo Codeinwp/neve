@@ -5,7 +5,7 @@ Theme URI:      https://themeisle.com/themes/neve/
 Author:         ThemeIsle
 Author URI:     https://themeisle.com
 Description:    Neve is a super fast, easily customizable, multi-purpose theme. It’s perfect for blogs, small business, startups, agencies, firms, e-commerce shops (WooCommerce storefront) as well as personal portfolio sites and most types of projects. A fully AMP optimized and responsive theme, Neve will load in mere seconds and adapt perfectly on any viewing device. While it is lightweight and has a minimalist design, the theme is highly extendable, it has a highly SEO optimized code, resulting in top rankings in Google search results. Neve works perfectly with Gutenberg and the most popular page builders (Elementor, Brizy, Beaver Builder, Visual Composer, SiteOrigin, Divi). Neve is also WooCommerce ready, responsive, RTL & translation ready. Look no further. Neve is the perfect theme for you!
-Version:        1.0.28
+Version:        1.0.29
 License:        GNU General Public License v2 or later
 License URI:    http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain:    neve
@@ -514,6 +514,18 @@ blockquote.wp-block-quote.is-style-large cite {
 }
 .wp-block-button.is-style-outline a.wp-block-button__link:hover {
   background: transparent;
+}
+
+.hidden-on-mobile {
+  display: none;
+}
+
+.hidden-on-tablet {
+  display: initial;
+}
+
+.show-on-desktop {
+  display: none;
 }
 
 #nv-top-bar-menu {
@@ -2086,6 +2098,14 @@ hr {
   #comments .comment-form .comment-notes, #comments .comment-form .comment-form-comment, #comments .comment-form .logged-in-as {
     grid-column: span 3;
   }
+
+  .hidden-on-mobile {
+    display: initial;
+  }
+
+  .hidden-on-tablet {
+    display: none;
+  }
 }
 @media (min-width: 960px) {
   .container {
@@ -2494,6 +2514,14 @@ hr {
   }
   #nv-primary-navigation .neve-mega-menu .neve-mm-col > .sub-menu li {
     border: none;
+  }
+
+  .hidden-on-tablet {
+    display: initial;
+  }
+
+  .show-on-desktop {
+    display: initial;
   }
 }
 @media (min-width: 1200px) {

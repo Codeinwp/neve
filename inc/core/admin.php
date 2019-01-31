@@ -102,6 +102,7 @@ class Admin {
 						'otter-blocks',
 						'elementor',
 						'wp-product-review',
+						'weglot',
 						'visualizer',
 						'wpforms-lite',
 						'translatepress-multilingual',
@@ -134,54 +135,54 @@ class Admin {
 							),
 						),
 
-						array(
-							'icon'   => 'dashicons dashicons-portfolio',
-							'title'  => esc_html__( 'Changelog', 'neve' ),
-							'text'   => esc_html__( 'Want to get the gist on the latest theme changes? Just consult our changelog below to get a taste of the recent fixes and features implemented.', 'neve' ),
-							'button' => array(
-								'label'     => esc_html__( 'Changelog', 'neve' ),
-								'link'      => esc_url( '#changelog' ),
-								'is_button' => false,
-							),
+					array(
+						'icon'   => 'dashicons dashicons-portfolio',
+						'title'  => esc_html__( 'Changelog', 'neve' ),
+						'text'   => esc_html__( 'Want to get the gist on the latest theme changes? Just consult our changelog below to get a taste of the recent fixes and features implemented.', 'neve' ),
+						'button' => array(
+							'label'     => esc_html__( 'Changelog', 'neve' ),
+							'link'      => esc_url( '#changelog' ),
+							'is_button' => false,
+						),
 
+					),
+					array(
+						'title'  => esc_html__( 'Create a child theme', 'neve' ),
+						'icon'   => 'dashicons dashicons-admin-customizer',
+						'text'   => esc_html__( "If you want to make changes to the theme's files, those changes are likely to be overwritten when you next update the theme. In order to prevent that from happening, you need to create a child theme. For this, please follow the documentation below.", 'neve' ),
+						'button' => array(
+							'label'     => esc_html__( 'View how to do this', 'neve' ),
+							'link'      => 'http://docs.themeisle.com/article/14-how-to-create-a-child-theme',
+							'is_button' => false,
 						),
-						array(
-							'title'  => esc_html__( 'Create a child theme', 'neve' ),
-							'icon'   => 'dashicons dashicons-admin-customizer',
-							'text'   => esc_html__( "If you want to make changes to the theme's files, those changes are likely to be overwritten when you next update the theme. In order to prevent that from happening, you need to create a child theme. For this, please follow the documentation below.", 'neve' ),
-							'button' => array(
-								'label'     => esc_html__( 'View how to do this', 'neve' ),
-								'link'      => 'http://docs.themeisle.com/article/14-how-to-create-a-child-theme',
-								'is_button' => false,
-							),
+					),
+					array(
+						'title'  => esc_html__( 'Speed up your site', 'neve' ),
+						'icon'   => 'dashicons dashicons-controls-skipforward',
+						'text'   => esc_html__( 'If you find yourself in a situation where everything on your site is running very slowly, you might consider having a look at the documentation below where you will find the most common issues causing this and possible solutions for each of the issues.', 'neve' ),
+						'button' => array(
+							'label'     => esc_html__( 'View how to do this', 'neve' ),
+							'link'      => 'http://docs.themeisle.com/article/63-speed-up-your-wordpress-site',
+							'is_button' => false,
 						),
-						array(
-							'title'  => esc_html__( 'Speed up your site', 'neve' ),
-							'icon'   => 'dashicons dashicons-controls-skipforward',
-							'text'   => esc_html__( 'If you find yourself in a situation where everything on your site is running very slowly, you might consider having a look at the documentation below where you will find the most common issues causing this and possible solutions for each of the issues.', 'neve' ),
-							'button' => array(
-								'label'     => esc_html__( 'View how to do this', 'neve' ),
-								'link'      => 'http://docs.themeisle.com/article/63-speed-up-your-wordpress-site',
-								'is_button' => false,
-							),
-						),
-						array(
-							'title'  => esc_html__( 'Build a landing page with a drag-and-drop content builder', 'neve' ),
-							'icon'   => 'dashicons dashicons-images-alt2',
-							'text'   => esc_html__( 'In the documentation below you will find an easy way to build a great looking landing page using a drag-and-drop content builder plugin.', 'neve' ),
-							'button' => array(
-								'label'     => esc_html__( 'View how to do this', 'neve' ),
-								'link'      => 'http://docs.themeisle.com/article/219-how-to-build-a-landing-page-with-a-drag-and-drop-content-builder',
-								'is_button' => false,
-							),
+					),
+					array(
+						'title'  => esc_html__( 'Build a landing page with a drag-and-drop content builder', 'neve' ),
+						'icon'   => 'dashicons dashicons-images-alt2',
+						'text'   => esc_html__( 'In the documentation below you will find an easy way to build a great looking landing page using a drag-and-drop content builder plugin.', 'neve' ),
+						'button' => array(
+							'label'     => esc_html__( 'View how to do this', 'neve' ),
+							'link'      => 'http://docs.themeisle.com/article/219-how-to-build-a-landing-page-with-a-drag-and-drop-content-builder',
+							'is_button' => false,
 						),
 					),
 				),
-				'changelog'       => array(
-					'type'  => 'changelog',
-					'title' => __( 'Changelog', 'neve' ),
-				),
-				'custom_tabs'     => array(),
+			),
+			'changelog'       => array(
+				'type'  => 'changelog',
+				'title' => __( 'Changelog', 'neve' ),
+			),
+			'custom_tabs'     => array(),
 			)
 		);
 
@@ -292,6 +293,9 @@ class Admin {
 	 * Render welcome notice content
 	 */
 	public function welcome_notice_content() {
+		$theme_args = wp_get_theme();
+		$name       = $theme_args->__get( 'Name' );
+		$slug       = $theme_args->__get( 'stylesheet' );
 
 		$notice_template = '
 			<div class="nv-notice-wrapper">
@@ -302,13 +306,13 @@ class Admin {
 		$ob_btn = sprintf(
 			/* translators: 1 - onboarding url, 2 - button text */
 			'<a href="%1$s" class="button button-primary" style="text-decoration: none;">%2$s</a>',
-			esc_url( admin_url( 'themes.php?page=' . $this->theme_slug . '-welcome&onboarding=yes#sites_library' ) ),
+			esc_url( admin_url( 'themes.php?page=' . $slug . '-welcome&onboarding=yes#sites_library' ) ),
 			sprintf( esc_html__( 'Try one of our ready to use Starter Sites', 'neve' ) )
 		);
 		$options_page_btn = sprintf(
 			/* translators: 1 - options page url, 2 - button text */
 			'<a href="%1$s" class="options-page-btn">%2$s</a>',
-			esc_url( admin_url( 'themes.php?page=' . $this->theme_slug . '-welcome' ) ),
+			esc_url( admin_url( 'themes.php?page=' . $slug . '-welcome' ) ),
 			esc_html__( 'or go to the theme settings', 'neve' )
 		);
 
@@ -320,12 +324,12 @@ class Admin {
 					<p class="ti-return-dashboard"><span>%5$s</span></p>',
 			sprintf(
 				esc_html__( 'Congratulations!', 'neve' ),
-				$this->theme_name
+				$name
 			),
 			sprintf(
 				/* translators: %s - theme name */
 				esc_html__( '%s is now installed and ready to use. We\'ve assembled some links to get you started.', 'neve' ),
-				$this->theme_name
+				$name
 			),
 			$ob_btn,
 			$options_page_btn,

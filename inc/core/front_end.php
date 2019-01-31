@@ -53,6 +53,8 @@ class Front_End {
 		add_theme_support( 'fl-theme-builder-headers' );
 		add_theme_support( 'fl-theme-builder-footers' );
 
+		add_filter( 'themeisle_gutenberg_templates', array( $this, 'add_gutenberg_templates' ) );
+
 		$this->add_amp_support();
 
 		register_nav_menus(
@@ -84,7 +86,7 @@ class Front_End {
 				'elementor' => array(
 					'neve-main'          => array(
 						'url'   => 'https://demo.themeisle.com/neve',
-						'title' => 'Neve 2018',
+						'title' => 'Neve Original',
 					),
 					'neve-vet-center'    => array(
 						'url'   => 'https://demo.themeisle.com/neve-vet-center/',
@@ -109,10 +111,6 @@ class Front_End {
 					'neve-charity'       => array(
 						'url'   => 'https://demo.themeisle.com/neve-charity/',
 						'title' => 'Neve Charity',
-					),
-					'neve-zelle'         => array(
-						'url'   => 'https://demo.themeisle.com/neve-zelle/',
-						'title' => 'Neve Zelle',
 					),
 				),
 			),
@@ -221,6 +219,100 @@ class Front_End {
 		);
 
 		return array_intersect_key( $gutenberg_color_palette, $temp_arr );
+	}
+
+	/**
+	 * Add new Gutenberg templates on Otter plugin.
+	 *
+	 * @return array
+	 */
+	public function add_gutenberg_templates( $templates_list ) {
+		$templates = array(
+			array(
+				'title'          => '',
+				'type'           => 'block',
+				'keywords'       => array( 'big title', 'header', 'about' ),
+				'categories'     => array( 'header' ),
+				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/big-title/template.json',
+				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/big-title/screenshot.jpg',
+			),
+			array(
+				'title'          => '',
+				'type'           => 'block',
+				'keywords'       => array( 'about us', 'about', 'description', 'showcase' ),
+				'categories'     => array( 'content' ),
+				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/about-us/template.json',
+				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/about-us/screenshot.jpg',
+			),
+			array(
+				'title'          => '',
+				'type'           => 'block',
+				'keywords'       => array( 'focus', 'our focus', 'services', 'features', 'showcase' ),
+				'categories'     => array( 'content' ),
+				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/our-focus/template.json',
+				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/our-focus/screenshot.png',
+			),
+			array(
+				'title'          => '',
+				'type'           => 'block',
+				'keywords'       => array( 'video', 'embed', 'youtube', 'movie' ),
+				'categories'     => array( 'content' ),
+				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/video/template.json',
+				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/video/screenshot.jpg',
+			),
+			array(
+				'title'          => '',
+				'type'           => 'block',
+				'keywords'       => array( 'team', 'our team', 'employees', 'clients', 'members', 'people', 'image', 'card' ),
+				'categories'     => array( 'content' ),
+				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/our-team/template.json',
+				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/our-team/screenshot.jpg',
+			),
+			array(
+				'title'          => '',
+				'type'           => 'block',
+				'keywords'       => array( 'ribbon', 'statistics', 'numbers', 'clients', 'banner', 'logo', 'carousel' ),
+				'categories'     => array( 'content' ),
+				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/ribbon/template.json',
+				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/ribbon/screenshot.jpg',
+			),
+			array(
+				'title'          => __( 'Pricing', 'neve' ),
+				'type'           => 'block',
+				'keywords'       => array( 'pricing', 'plan', 'packages', 'membership', 'product' ),
+				'categories'     => array( 'content' ),
+				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/pricing/template.json',
+				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/pricing/screenshot.jpg',
+			),
+			array(
+				'title'          => '',
+				'type'           => 'block',
+				'keywords'       => array( 'testimonials', 'review', 'feedback', 'testimonial', 'happy', 'clients' ),
+				'categories'     => array( 'content' ),
+				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/testimonials/template.json',
+				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/testimonials/screenshot.jpg',
+			),
+			array(
+				'title'          => '',
+				'type'           => 'block',
+				'keywords'       => array( 'features', 'card', 'about', 'services', 'advantages', 'items', 'boxes', 'why' ),
+				'categories'     => array( 'content' ),
+				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/features/template.json',
+				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/features/screenshot.jpg',
+			),
+			array(
+				'title'          => '',
+				'type'           => 'block',
+				'keywords'       => array( 'footer', 'resources', 'links', 'credits', 'contact', 'social', 'sharing' ),
+				'categories'     => array( 'footer' ),
+				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/footer/template.json',
+				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/footer/screenshot.png',
+			),
+		);
+
+		$list = array_merge( $templates, $templates_list );
+
+		return $list;
 	}
 
 	/**
