@@ -61,13 +61,16 @@ class Excerpt extends Base_View {
 	 * @return string
 	 */
 	private function get_excerpt( $length = 25 ) {
+
+		global $post;
+
 		if ( $length === 300 ) {
-			$content = get_the_content( '', '&hellip;' );
+			$content = get_the_content();
 
 			return $content;
 		}
 
-		if ( strpos( get_the_content(), '<!--more-->' ) ) {
+		if ( strpos( $post->post_content, '<!--more-->' ) ) {
 			$content = apply_filters( 'the_content', get_the_content() );
 
 			return $content;

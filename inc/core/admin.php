@@ -78,6 +78,7 @@ class Admin {
 					'otter-blocks',
 					'elementor',
 					'wp-product-review',
+					'weglot',
 					'visualizer',
 					'wpforms-lite',
 					'translatepress-multilingual',
@@ -353,6 +354,9 @@ class Admin {
 		.options-page-btn:hover {
 		    color: inherit;
 		    text-decoration: none;
+		}
+		.nv-notice-text .button.button-primary:active {
+			vertical-align: inherit;
 		}
 		.nv-notice-text p.ti-return-dashboard {
 			margin-top: 30px;
