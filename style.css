@@ -512,6 +512,18 @@ blockquote.wp-block-quote.is-style-large cite {
   background: transparent;
 }
 
+.hidden-on-mobile {
+  display: none;
+}
+
+.hidden-on-tablet {
+  display: initial;
+}
+
+.show-on-desktop {
+  display: none;
+}
+
 #nv-top-bar-menu {
   display: flex;
   flex-wrap: wrap;
@@ -2082,6 +2094,14 @@ hr {
   #comments .comment-form .comment-notes, #comments .comment-form .comment-form-comment, #comments .comment-form .logged-in-as {
     grid-column: span 3;
   }
+
+  .hidden-on-mobile {
+    display: initial;
+  }
+
+  .hidden-on-tablet {
+    display: none;
+  }
 }
 @media (min-width: 960px) {
   .container {
@@ -2490,6 +2510,14 @@ hr {
   }
   #nv-primary-navigation .neve-mega-menu .neve-mm-col > .sub-menu li {
     border: none;
+  }
+
+  .hidden-on-tablet {
+    display: initial;
+  }
+
+  .show-on-desktop {
+    display: initial;
   }
 }
 @media (min-width: 1200px) {
