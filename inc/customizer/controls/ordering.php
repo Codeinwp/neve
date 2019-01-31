@@ -39,6 +39,30 @@ class Ordering extends \WP_Customize_Control {
 	public function __construct( \WP_Customize_Manager $manager, $id, array $args = array() ) {
 		parent::__construct( $manager, $id, $args );
 		$this->components = $args['components'] ? $args['components'] : array();
+
+		$this->setup_components();
+	}
+
+	/**
+	 * Get disabled components
+	 * Add them at the and of all components in the customizer
+	 */
+	private function setup_components() {
+		$val     = json_decode( $this->value(), true );
+		$enabled = array_combine( $val, $val );
+
+		array_walk(
+			$enabled,
+			function ( &$value, $key ) {
+				$value = $this->components[ $key ];
+			},
+			$enabled
+		);
+
+		$disabled = array_diff_assoc( $this->components, $enabled );
+
+		$this->components = array_merge( $enabled, $disabled );
+
 	}
 
 	/**

@@ -1,4 +1,4 @@
-.single .entry-header, .page .nv-page-title-wrap {
+.page .nv-page-title-wrap {
   margin-top: 30px;
 }
 
@@ -8,19 +8,18 @@
   }
 }
 
-.nv-title-meta-wrap,
-.nv-thumb-wrap {
-  &:only-child {
+.nv-single-post-wrap {
+  .entry-header,
+  .nv-thumb-wrap,
+  .nv-content-wrap,
+  .nv-post-navigation,
+  .nv-tags-list {
     margin-bottom: $spacing-sm;
+
+    &:first-child {
+      margin-top: 30px;
+    }
   }
-}
-
-.nv-thumb-wrap + .nv-title-meta-wrap {
-  margin: $spacing-sm 0;
-}
-
-.nv-title-meta-wrap + .nv-thumb-wrap {
-  margin: $spacing-sm 0;
 }
 
 .single-post-container .title {
@@ -29,6 +28,33 @@
 
 .attachment-neve-blog {
   display: flex;
+}
+
+.nv-post-navigation {
+  display: flex;
+  justify-content: space-between;
+
+  .previous,
+  .next {
+    a:hover {
+      text-decoration: none;
+      span:not(.nav-direction) {
+        text-decoration: underline;
+      }
+    }
+    .nav-direction {
+      color: $gray-color;
+      display: flex;
+      flex-direction: column;
+      font-size: 0.8em;
+      text-transform: uppercase;
+    }
+
+  }
+  .next {
+    margin-left: auto;
+    text-align: right;
+  }
 }
 
 .nv-content-wrap .page-numbers {
@@ -62,7 +88,6 @@
 
 .nv-tags-list {
   font-size: .85em;
-  margin: $spacing-sm 0;
   span {
     margin-right: $spacing-xs;
   }
