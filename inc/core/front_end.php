@@ -77,7 +77,7 @@ class Front_End {
 	 */
 	private function get_ti_demo_content_support_data() {
 		$theme_options = wp_get_theme();
-		$theme_name = apply_filters('ti_wl_theme_name', $theme_options->__get('Name') );
+		$theme_name    = apply_filters( 'ti_wl_theme_name', $theme_options->__get( 'Name' ) );
 
 		$onboarding_sites = array(
 			'editors'     => array(
