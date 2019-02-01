@@ -16,8 +16,8 @@
   },
   "require": {
     "codeinwp/ti-about-page": "master",
-    "codeinwp/ti-onboarding": "master",
-    "codeinwp/themeisle-sdk": "^3.0"
+    "codeinwp/themeisle-sdk": "^3.0",
+    "codeinwp/ti-onboarding": "^1.1"
   },
   "autoload": {
     "files": [
