@@ -277,7 +277,7 @@ class Front_End {
 				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/ribbon/screenshot.jpg',
 			),
 			array(
-				'title'          => __( 'Pricing', 'neve' ),
+				'title'          => __( '', 'neve' ),
 				'type'           => 'block',
 				'keywords'       => array( 'pricing', 'plan', 'packages', 'membership', 'product' ),
 				'categories'     => array( 'content' ),
