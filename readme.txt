@@ -17,6 +17,13 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
+= 1.1.1 - 2019-02-04  = 
+
+* Fixed issue with content missing on the single post page
+* Fixed issue with the Footer Gutenberg block for Otter
+* Improved the Neve Energy Panel starter site
+
+
 = 1.1.0 - 2019-01-31  = 
 
 * NEW Neve Specific Gutenberg blocks for Otter Blocks
