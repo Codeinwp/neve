@@ -31,10 +31,14 @@ function neve_filter_sdk( $products ) {
 
 add_filter( 'themeisle_sdk_products', 'neve_filter_sdk' );
 
+add_filter( 'themeisle_onboarding_phprequired_text', 'neve_get_php_notice_text' );
+
 /**
- * Adds notice for PHP < 5.3.29 hosts.
+ * Get php version notice text.
+ *
+ * @return string
  */
-function neve_php_support() {
+function neve_get_php_notice_text() {
 	$message = sprintf(
 		/* translators: %s message to upgrade PHP to the latest version */
 		__( "Hey, we've noticed that you're running an outdated version of PHP which is no longer supported. Make sure your site is fast and secure, by %s. Neve's minimal requirement is PHP 5.4.0.", 'neve' ),
@@ -45,7 +49,14 @@ function neve_php_support() {
 		)
 	);
 
-	printf( '<div class="error"><p>%1$s</p></div>', wp_kses_post( $message ) );
+	return wp_kses_post( $message );
+}
+
+/**
+ * Adds notice for PHP < 5.3.29 hosts.
+ */
+function neve_php_support() {
+	printf( '<div class="error"><p>%1$s</p></div>', neve_get_php_notice_text() );
 }
 
 if ( version_compare( PHP_VERSION, '5.3.29' ) < 0 ) {
