@@ -1785,9 +1785,6 @@ pre {
 .nv-content-wrap > ul, .nv-content-wrap > ol, .excerpt-wrap > ul, .excerpt-wrap > ol {
   margin: 20px 0;
 }
-.nv-content-wrap ul, .nv-content-wrap ol, .excerpt-wrap ul, .excerpt-wrap ol {
-  padding-right: 20px;
-}
 .nv-content-wrap ul li, .nv-content-wrap ol li, .excerpt-wrap ul li, .excerpt-wrap ol li {
   line-height: 2em;
   margin-bottom: 10px;
@@ -2636,6 +2633,6 @@ hr {
     width: 1170px;
   }
 }
-fieldset .submit-form {
-  padding-top: 27px;
+.neve-main .elementor ul, .neve-main .elementor ol {
+  padding-right: 20px;
 }
