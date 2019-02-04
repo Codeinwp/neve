@@ -20,6 +20,7 @@
         init: function() {
             this.repositionDropdowns();
             this.handleResponsiveNav();
+            this.handleScrollLinks();
             this.handleMobileDropdowns();
             this.handleSearch();
         },
@@ -53,12 +54,23 @@
                 $(".dropdown-open").removeClass("dropdown-open");
                 $(".nv-navbar").toggleClass("responsive-opened");
                 $(this).toggleClass("active");
-                if (this.attributes["aria-expanded"].value === "true") {
-                    $(this).attr("aria-expanded", "false");
-                } else {
-                    $(this).attr("aria-expanded", "true");
-                }
+                $(this).attr("aria-expanded", this.attributes["aria-expanded"].value === "true" ? "false" : "true");
                 $("html").toggleClass("menu-opened");
+            });
+        },
+        handleScrollLinks: function() {
+            $(".nv-nav-wrap a").on("click", function() {
+                var href = $(this).attr("href");
+                if (typeof href === "undefined") {
+                    return false;
+                }
+                if (href.indexOf(window.location.href) > -1 || href.charAt(0) === "#") {
+                    $("html").removeClass("menu-opened");
+                    $(".dropdown-open").removeClass("dropdown-open");
+                    $(".nv-navbar").removeClass("responsive-opened");
+                    $(".navbar-toggle").removeClass("active");
+                    $(".navbar-toggle").attr("aria-expanded", "false");
+                }
             });
         },
         handleMobileDropdowns: function() {
@@ -77,7 +89,7 @@
             $(".nv-nav-search").on("touchstart click", function(e) {
                 e.stopPropagation();
             });
-            $(".menu-item-nav-search").on("touchstart click focus", function() {
+            $(".menu-item-nav-search").on("touchstart focus", function() {
                 $(this).addClass("active");
                 $("html").addClass("menu-opened");
                 if (utils.isMobile()) {
@@ -91,9 +103,9 @@
                 $(".responsive-nav-search").removeClass("active");
                 $("html").removeClass("menu-opened");
             });
-            var link = $(".menu-item-nav-search input");
-            $(link).bind("blur", function() {
-                $(".menu-item-nav-search").classList.remove("active");
+            $(".menu-item-nav-search .search-submit").bind("focusout", function() {
+                $(".menu-item-nav-search").removeClass("active");
+                $(".nav-clickaway-overlay").remove();
             });
         },
         createNavOverlay: function() {

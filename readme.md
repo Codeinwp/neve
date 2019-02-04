@@ -17,6 +17,13 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
+### 1.0.29 - 2019-01-21  ###
+
+* Improved the onboarding process
+* Fixed issue with the read more button not appearing for the articles using the read more tag
+* Recommend the WeGlot plugin
+
+
 ### 1.0.28 - 2019-01-15  ###
 
 * Layout updates for the starter sites

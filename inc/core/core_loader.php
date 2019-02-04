@@ -49,7 +49,7 @@ class Core_Loader {
 				'Views\Footer',
 				'Views\Template_Parts',
 				'Views\Page_Header',
-				'Views\Post_Header',
+				'Views\Post_Layout',
 
 				'Views\Layouts\Layout_Container',
 				'Views\Layouts\Layout_Sidebar',
