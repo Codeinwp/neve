@@ -24,6 +24,7 @@ class Pagination extends Base_View {
 	public function init() {
 		add_filter( 'neve_filter_main_script_localization', array( $this, 'filter_localization' ) );
 		add_action( 'neve_do_pagination', array( $this, 'render_pagination' ) );
+		add_action( 'neve_post_navigation', array( $this, 'render_post_navigation' ) );
 
 		add_action( 'wp_ajax_infinite_scroll', array( $this, 'infinite_scroll' ) );
 		add_action( 'wp_ajax_nopriv_infinite_scroll', array( $this, 'infinite_scroll' ) );
@@ -57,6 +58,7 @@ class Pagination extends Base_View {
 	public function render_pagination( $context ) {
 		if ( $context === 'single' ) {
 			$this->render_single_pagination();
+
 			return;
 		}
 
@@ -86,6 +88,30 @@ class Pagination extends Base_View {
 				'link_after'  => '</span>',
 			)
 		);
+	}
+
+	/**
+	 * Render single post navigation links
+	 */
+	public function render_post_navigation() {
+		$prev_format = '<div class="previous">%link</div>';
+		$next_format = '<div class="next">%link</div>';
+
+		$prev_link = sprintf(
+			'<span class="nav-direction">%1$s</span><span>%2$s</span>',
+			esc_html__( 'previous', 'neve' ),
+			'%title'
+		);
+		$next_link = sprintf(
+			'<span class="nav-direction">%1$s</span><span>%2$s</span>',
+			esc_html__( 'next', 'neve' ),
+			'%title'
+		);
+
+		echo '<div class="nv-post-navigation">';
+		previous_post_link( $prev_format, $prev_link );
+		next_post_link( $next_format, $next_link );
+		echo '</div>';
 	}
 
 	/**
