@@ -41,7 +41,7 @@ class Post_Layout extends Base_View {
 			'tags',
 		);
 
-		$content_order = get_theme_mod( 'neve_single_post_elements_order', json_encode( $default_order ) );
+		$content_order = get_theme_mod( 'neve_layout_single_post_elements_order', json_encode( $default_order ) );
 		$content_order = json_decode( $content_order );
 
 		if ( apply_filters( 'neve_filter_toggle_content_parts', true, 'title' ) !== true ) {
