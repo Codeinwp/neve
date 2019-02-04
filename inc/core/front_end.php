@@ -227,10 +227,13 @@ class Front_End {
 	 * @return array
 	 */
 	public function add_gutenberg_templates( $templates_list ) {
+		$current_theme = wp_get_theme()->Name;
+
 		$templates = array(
 			array(
 				'title'          => '',
 				'type'           => 'block',
+				'author'         => $current_theme,
 				'keywords'       => array( 'big title', 'header', 'about' ),
 				'categories'     => array( 'header' ),
 				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/big-title/template.json',
@@ -239,6 +242,7 @@ class Front_End {
 			array(
 				'title'          => '',
 				'type'           => 'block',
+				'author'         => $current_theme,
 				'keywords'       => array( 'about us', 'about', 'description', 'showcase' ),
 				'categories'     => array( 'content' ),
 				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/about-us/template.json',
@@ -247,6 +251,7 @@ class Front_End {
 			array(
 				'title'          => '',
 				'type'           => 'block',
+				'author'         => $current_theme,
 				'keywords'       => array( 'focus', 'our focus', 'services', 'features', 'showcase' ),
 				'categories'     => array( 'content' ),
 				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/our-focus/template.json',
@@ -255,6 +260,7 @@ class Front_End {
 			array(
 				'title'          => '',
 				'type'           => 'block',
+				'author'         => $current_theme,
 				'keywords'       => array( 'video', 'embed', 'youtube', 'movie' ),
 				'categories'     => array( 'content' ),
 				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/video/template.json',
@@ -263,6 +269,7 @@ class Front_End {
 			array(
 				'title'          => '',
 				'type'           => 'block',
+				'author'         => $current_theme,
 				'keywords'       => array( 'team', 'our team', 'employees', 'clients', 'members', 'people', 'image', 'card' ),
 				'categories'     => array( 'content' ),
 				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/our-team/template.json',
@@ -271,14 +278,16 @@ class Front_End {
 			array(
 				'title'          => '',
 				'type'           => 'block',
+				'author'         => $current_theme,
 				'keywords'       => array( 'ribbon', 'statistics', 'numbers', 'clients', 'banner', 'logo', 'carousel' ),
 				'categories'     => array( 'content' ),
 				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/ribbon/template.json',
 				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/ribbon/screenshot.jpg',
 			),
 			array(
-				'title'          => __( 'Pricing', 'neve' ),
+				'title'          => '',
 				'type'           => 'block',
+				'author'         => $current_theme,
 				'keywords'       => array( 'pricing', 'plan', 'packages', 'membership', 'product' ),
 				'categories'     => array( 'content' ),
 				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/pricing/template.json',
@@ -287,6 +296,7 @@ class Front_End {
 			array(
 				'title'          => '',
 				'type'           => 'block',
+				'author'         => $current_theme,
 				'keywords'       => array( 'testimonials', 'review', 'feedback', 'testimonial', 'happy', 'clients' ),
 				'categories'     => array( 'content' ),
 				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/testimonials/template.json',
@@ -295,6 +305,7 @@ class Front_End {
 			array(
 				'title'          => '',
 				'type'           => 'block',
+				'author'         => $current_theme,
 				'keywords'       => array( 'features', 'card', 'about', 'services', 'advantages', 'items', 'boxes', 'why' ),
 				'categories'     => array( 'content' ),
 				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/features/template.json',
@@ -303,6 +314,7 @@ class Front_End {
 			array(
 				'title'          => '',
 				'type'           => 'block',
+				'author'         => $current_theme,
 				'keywords'       => array( 'footer', 'resources', 'links', 'credits', 'contact', 'social', 'sharing' ),
 				'categories'     => array( 'footer' ),
 				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/footer/template.json',
