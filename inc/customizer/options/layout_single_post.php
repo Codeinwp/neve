@@ -67,7 +67,7 @@ class Layout_Single_Post extends Base_Customizer {
 
 		$this->add_control(
 			new Control(
-				'neve_single_post_elements_order',
+				'neve_layout_single_post_elements_order',
 				array(
 					'sanitize_callback' => array( $this, 'sanitize_post_elements_ordering' ),
 					'default'           => json_encode( $order_default_components ),
