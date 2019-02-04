@@ -17,6 +17,29 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
+= 1.0.29 - 2019-01-21  = 
+
+* Improved the onboarding process
+* Fixed issue with the read more button not appearing for the articles using the read more tag
+* Recommend the WeGlot plugin
+
+
+= 1.0.28 - 2019-01-15  = 
+
+* Layout updates for the starter sites
+* Improved layout of the onboarding notice
+* Fixed style issues for the select elements
+
+
+= 1.0.27 - 2019-01-09  = 
+
+* Review the theme to make it Accessibility-ready
+* Improved performance for the .alignfull and .alignwide classes in the new WordPress editor
+* Fixed alignment of the Polylang language switcher in the navigation menu
+* Optimized images used in the Neve starter site
+* Fixed compatibility with the Lazy Load plugin duplicating images
+
+
 = 1.0.26 - 2018-12-17  = 
 
 * Fixed issues in IE with the Neve 2018 Site

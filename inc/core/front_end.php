@@ -53,6 +53,8 @@ class Front_End {
 		add_theme_support( 'fl-theme-builder-headers' );
 		add_theme_support( 'fl-theme-builder-footers' );
 
+		add_filter( 'themeisle_gutenberg_templates', array( $this, 'add_gutenberg_templates' ) );
+
 		$this->add_amp_support();
 
 		register_nav_menus(
@@ -84,7 +86,7 @@ class Front_End {
 				'elementor' => array(
 					'neve-main'          => array(
 						'url'   => 'https://demo.themeisle.com/neve',
-						'title' => 'Neve 2018',
+						'title' => 'Neve Original',
 					),
 					'neve-vet-center'    => array(
 						'url'   => 'https://demo.themeisle.com/neve-vet-center/',
@@ -114,18 +116,24 @@ class Front_End {
 			),
 			'can_migrate' => array(
 				'zerif-pro'  => array(
-					'theme_name'      => 'Zelle Pro',
-					'theme_mod_check' => 'zelle_frontpage_was_imported',
-					'template'        => 'zelle',
-					'heading'         => __( 'Want to keep using Zelle\'s homepage?', 'neve' ),
-					'description'     => __( 'Hi! We\'ve noticed you were using Zelle before. To make your transition easier, we can help you keep the same beautiful homepage you had before, by converting it into an Elementor template. This option will also import your homepage content.', 'neve' ),
+					'theme_name'        => 'Zelle Pro',
+					'theme_mod_check'   => 'zelle_frontpage_was_imported',
+					'template'          => 'zelle',
+					'heading'           => __( 'Want to keep using Zelle\'s homepage?', 'neve' ),
+					'description'       => __( 'Hi! We\'ve noticed you were using Zelle before. To make your transition easier, we can help you keep the same beautiful homepage you had before, by converting it into an Elementor template. This option will also import your homepage content.', 'neve' ),
+					'mandatory_plugins' => array(
+						'elementor' => 'Elementor Page Builder',
+					),
 				),
 				'zerif-lite' => array(
-					'theme_name'      => 'Zelle Lite',
-					'theme_mod_check' => 'zelle_frontpage_was_imported',
-					'template'        => 'zelle',
-					'heading'         => __( 'Want to keep using Zelle\'s homepage?', 'neve' ),
-					'description'     => __( 'Hi! We\'ve noticed you were using Zelle before. To make your transition easier, we can help you keep the same beautiful homepage you had before, by converting it into an Elementor template. This option will also import your homepage content.', 'neve' ),
+					'theme_name'        => 'Zelle Lite',
+					'theme_mod_check'   => 'zelle_frontpage_was_imported',
+					'template'          => 'zelle',
+					'heading'           => __( 'Want to keep using Zelle\'s homepage?', 'neve' ),
+					'description'       => __( 'Hi! We\'ve noticed you were using Zelle before. To make your transition easier, we can help you keep the same beautiful homepage you had before, by converting it into an Elementor template. This option will also import your homepage content.', 'neve' ),
+					'mandatory_plugins' => array(
+						'elementor' => 'Elementor Page Builder',
+					),
 				),
 			),
 			'i18n'        => array(
@@ -211,6 +219,100 @@ class Front_End {
 		);
 
 		return array_intersect_key( $gutenberg_color_palette, $temp_arr );
+	}
+
+	/**
+	 * Add new Gutenberg templates on Otter plugin.
+	 *
+	 * @return array
+	 */
+	public function add_gutenberg_templates( $templates_list ) {
+		$templates = array(
+			array(
+				'title'          => '',
+				'type'           => 'block',
+				'keywords'       => array( 'big title', 'header', 'about' ),
+				'categories'     => array( 'header' ),
+				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/big-title/template.json',
+				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/big-title/screenshot.jpg',
+			),
+			array(
+				'title'          => '',
+				'type'           => 'block',
+				'keywords'       => array( 'about us', 'about', 'description', 'showcase' ),
+				'categories'     => array( 'content' ),
+				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/about-us/template.json',
+				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/about-us/screenshot.jpg',
+			),
+			array(
+				'title'          => '',
+				'type'           => 'block',
+				'keywords'       => array( 'focus', 'our focus', 'services', 'features', 'showcase' ),
+				'categories'     => array( 'content' ),
+				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/our-focus/template.json',
+				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/our-focus/screenshot.png',
+			),
+			array(
+				'title'          => '',
+				'type'           => 'block',
+				'keywords'       => array( 'video', 'embed', 'youtube', 'movie' ),
+				'categories'     => array( 'content' ),
+				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/video/template.json',
+				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/video/screenshot.jpg',
+			),
+			array(
+				'title'          => '',
+				'type'           => 'block',
+				'keywords'       => array( 'team', 'our team', 'employees', 'clients', 'members', 'people', 'image', 'card' ),
+				'categories'     => array( 'content' ),
+				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/our-team/template.json',
+				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/our-team/screenshot.jpg',
+			),
+			array(
+				'title'          => '',
+				'type'           => 'block',
+				'keywords'       => array( 'ribbon', 'statistics', 'numbers', 'clients', 'banner', 'logo', 'carousel' ),
+				'categories'     => array( 'content' ),
+				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/ribbon/template.json',
+				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/ribbon/screenshot.jpg',
+			),
+			array(
+				'title'          => __( 'Pricing', 'neve' ),
+				'type'           => 'block',
+				'keywords'       => array( 'pricing', 'plan', 'packages', 'membership', 'product' ),
+				'categories'     => array( 'content' ),
+				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/pricing/template.json',
+				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/pricing/screenshot.jpg',
+			),
+			array(
+				'title'          => '',
+				'type'           => 'block',
+				'keywords'       => array( 'testimonials', 'review', 'feedback', 'testimonial', 'happy', 'clients' ),
+				'categories'     => array( 'content' ),
+				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/testimonials/template.json',
+				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/testimonials/screenshot.jpg',
+			),
+			array(
+				'title'          => '',
+				'type'           => 'block',
+				'keywords'       => array( 'features', 'card', 'about', 'services', 'advantages', 'items', 'boxes', 'why' ),
+				'categories'     => array( 'content' ),
+				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/features/template.json',
+				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/features/screenshot.jpg',
+			),
+			array(
+				'title'          => '',
+				'type'           => 'block',
+				'keywords'       => array( 'footer', 'resources', 'links', 'credits', 'contact', 'social', 'sharing' ),
+				'categories'     => array( 'footer' ),
+				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/footer/template.json',
+				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/footer/screenshot.png',
+			),
+		);
+
+		$list = array_merge( $templates, $templates_list );
+
+		return $list;
 	}
 
 	/**
