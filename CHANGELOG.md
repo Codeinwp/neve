@@ -1,4 +1,15 @@
 
+ ### v1.1.0 - 2019-01-31 
+ **Changes:** 
+ * NEW Neve Specific Gutenberg blocks for Otter Blocks
+* NEW Posts navigation control
+* Display category description of categories archive pages
+* Fixed issue with the Neve Restaurant starter site not importing in some cases
+* Fixed issue with the starter sites not importing when Jetpack is installed
+* Fixed issue with scrolling not working on mobile devices for anchored links
+* Fixed issue with lists not displaying properly in Elementor
+* Fixed fatal error for lower PHP versions
+ 
  ### v1.0.29 - 2019-01-21 
  **Changes:** 
  * Improved the onboarding process
