@@ -294,7 +294,7 @@ class Front_End {
 				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/details/screenshot.jpg',
 			),
 			array(
-				'title'          => __( 'Pricing', 'neve' ),
+				'title'          => __( '', 'neve' ),
 				'type'           => 'block',
 				'author'         => $current_theme,
 				'keywords'       => array( 'pricing', 'plan', 'packages', 'membership', 'product' ),
