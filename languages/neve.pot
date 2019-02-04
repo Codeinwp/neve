@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Neve 1.1.1\n"
 "Report-Msgid-Bugs-To: https://github.com/Codeinwp/neve/issues\n"
-"POT-Creation-Date: 2019-02-04 12:11:37+00:00\n"
+"POT-Creation-Date: 2019-02-04 12:50:21+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -101,7 +101,7 @@ msgid "No Sidebar"
 msgstr ""
 
 #: inc/admin/metabox/main.php:134 inc/compatibility/gutenberg.php:210
-#: inc/core/front_end.php:426
+#: inc/core/front_end.php:438
 msgid "Sidebar"
 msgstr ""
 
@@ -383,23 +383,23 @@ msgstr ""
 msgid "Text Color"
 msgstr ""
 
-#: inc/core/front_end.php:427
+#: inc/core/front_end.php:439
 msgid "Shop Sidebar"
 msgstr ""
 
-#: inc/core/front_end.php:433
+#: inc/core/front_end.php:445
 msgid "Footer One"
 msgstr ""
 
-#: inc/core/front_end.php:434
+#: inc/core/front_end.php:446
 msgid "Footer Two"
 msgstr ""
 
-#: inc/core/front_end.php:435
+#: inc/core/front_end.php:447
 msgid "Footer Three"
 msgstr ""
 
-#: inc/core/front_end.php:436
+#: inc/core/front_end.php:448
 msgid "Footer Four"
 msgstr ""
 
