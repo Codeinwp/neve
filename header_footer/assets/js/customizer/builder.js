@@ -1,6 +1,6 @@
 (function($, wpcustomize) {
 	var $document = $(document);
-	var hfPanels = {};
+	var customifyPanels = {};
 
 	wpcustomize.bind("ready", function(e, b) {
 		var addVersionChange = function(opts, builder, id, version) {
@@ -27,31 +27,35 @@
 							select_options +
 							"</select>"
 					);
-					$(".hf--cb-actions", builder.container).prepend(
+					$(".customify--cb-actions", builder.container).prepend(
 						$select_options
 					);
 				}
 
 				$select_options.on("change", function() {
 					var newVer = $(this).val();
-					if ( hfPanels[id + version] ) {
-						hfPanels[id + version].container.hide();
+					if ( customifyPanels[id + version] ) {
+						customifyPanels[id + version].container.hide();
 					}
 					
-					if (typeof hfPanels[id + newVer] === "undefined") {
+					if (typeof customifyPanels[id + newVer] === "undefined") {
 						var _builder;
-						_builder = new CustomizeBuilder_V2(opts, id);
+						if ("v2" === newVer) {
+							_builder = new CustomizeBuilder_V2(opts, id);
+						} else {
+							_builder = new CustomizeBuilder_V1(opts, id);
+						}
 						addVersionChange(opts, _builder, id, newVer);
-						hfPanels[id + newVer] = _builder;
+						customifyPanels[id + newVer] = _builder;
 					}
 					
 					var control = wpcustomize.control(opts.version_id);
 					control.setting.set( newVer );
 					// Dispacth to conditional
-					$document.trigger("hf/customizer/value_changed" );
+					$document.trigger("customify/customizer/value_changed" );
 					
-					if ( hfPanels[id + newVer] ) {
-						hfPanels[id + newVer].container.show();
+					if ( customifyPanels[id + newVer] ) {
+						customifyPanels[id + newVer].container.show();
 					}
 					
 					// Reset select.
@@ -63,7 +67,7 @@
 			}
 		};
 
-		_.each(hf_Layout_Builder.builders, function(opts, id) {
+		_.each(Customify_Layout_Builder.builders, function(opts, id) {
 			var builder;
 			var version = "v1";
 			if (typeof opts.version_id !== "undefined") {
@@ -71,9 +75,13 @@
 			} else {
 				opts.version_id = false;
 			}
-			builder = new CustomizeBuilder_V2(opts, id);
+			if ("v2" === version) {
+				builder = new CustomizeBuilder_V2(opts, id);
+			} else {
+				builder = new CustomizeBuilder_V1(opts, id);
+			}
 
-			hfPanels[id + version] = builder;
+			customifyPanels[id + version] = builder;
 			addVersionChange(opts, builder, id, version);
 		});
 
@@ -89,7 +97,7 @@
 						"#sub-accordion-panel-widgets .no-widget-areas-rendered-notice"
 					).append(
 						'<p class="footer_moved_widgets_text">' +
-							hf_Layout_Builder.footer_moved_widgets_text +
+							Customify_Layout_Builder.footer_moved_widgets_text +
 							"</p>"
 					);
 				}
@@ -98,16 +106,16 @@
 
 		// When focus section
 		wpcustomize.state("expandedSection").bind(function(section) {
-			$(".hf--device-panel .grid-stack-item").removeClass(
+			$(".customify--device-panel .grid-stack-item").removeClass(
 				"item-active"
 			);
-			$(".hf--cb-row").removeClass("row-active");
+			$(".customify--cb-row").removeClass("row-active");
 			if (section) {
-				$('.hf--cb-row[data-id="' + section.id + '"]').addClass(
+				$('.customify--cb-row[data-id="' + section.id + '"]').addClass(
 					"row-active"
 				);
 				$(
-					".hf--device-panel .grid-stack-item.for-s-" +
+					".customify--device-panel .grid-stack-item.for-s-" +
 						section.id
 				).addClass("item-active");
 			}
@@ -187,7 +195,7 @@
 				$.post(
 					ajaxurl,
 					{
-						action: "hf_builder_save_template",
+						action: "customify_builder_save_template",
 						name: input.val(),
 						id: input.attr("data-builder-id") || "",
 						control: input.attr("data-control-id") || "",
@@ -226,7 +234,7 @@
 			$.post(
 				ajaxurl,
 				{
-					action: "hf_builder_save_template",
+					action: "customify_builder_save_template",
 					id: input.attr("data-builder-id") || "",
 					remove: key
 				},
@@ -320,20 +328,20 @@
 		}
 	);
 
-	$document.on("mouseover", ".hf--cb-row .grid-stack-item", function(
+	$document.on("mouseover", ".customify--cb-row .grid-stack-item", function(
 		e
 	) {
 		var item = $(this);
 		var nameW =
-			$(".hf--cb-item-remove", item).outerWidth() +
-			$(".hf--cb-item-setting", item).outerWidth();
+			$(".customify--cb-item-remove", item).outerWidth() +
+			$(".customify--cb-item-setting", item).outerWidth();
 		var itemW = $(".grid-stack-item-content", item).innerWidth();
 		if (nameW > itemW - 50) {
 			item.addClass("show-tooltip");
 		}
 	});
 
-	$document.on("mouseleave", ".hf--cb-row .grid-stack-item", function(
+	$document.on("mouseleave", ".customify--cb-row .grid-stack-item", function(
 		e
 	) {
 		$(this).removeClass("show-tooltip");

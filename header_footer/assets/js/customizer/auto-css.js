@@ -1,15 +1,15 @@
-var hfAutoCSS = window.hfAutoCSS || null;
+var CustomifyAutoCSS = window.CustomifyAutoCSS || null;
 
 ( function( $, api ) {
 
-    hfAutoCSS = function(){
+    CustomifyAutoCSS = function(){
         this.values = {};
         this.lastValues = {};
         this.devices = [ 'desktop', 'tablet', 'mobile' ];
     };
-    hfAutoCSS._change = false;
-    hfAutoCSS.prototype.fonts = {};
-    hfAutoCSS.prototype.styling_fields = {
+    CustomifyAutoCSS._change = false;
+    CustomifyAutoCSS.prototype.fonts = {};
+    CustomifyAutoCSS.prototype.styling_fields = {
         color: null,
         image: null,
         position: null,
@@ -21,23 +21,23 @@ var hfAutoCSS = window.hfAutoCSS || null;
         border_color: null,
         border_style: null
     };
-    hfAutoCSS.prototype.subsets = {};
-    hfAutoCSS.prototype.variants = {};
-    hfAutoCSS.prototype.media_queries = {
+    CustomifyAutoCSS.prototype.subsets = {};
+    CustomifyAutoCSS.prototype.variants = {};
+    CustomifyAutoCSS.prototype.media_queries = {
         all: '%s',
         desktop: '%s',
         tablet : '@media screen and (max-width: 1024px) { %s }',
         mobile: '@media screen and (max-width: 568px) { %s }',
     };
 
-    hfAutoCSS.prototype.css = {
+    CustomifyAutoCSS.prototype.css = {
         all: '',
         desktop: '',
         tablet : '',
         mobile: ''
     };
 
-    hfAutoCSS.prototype.box_shadow_fields = {
+    CustomifyAutoCSS.prototype.box_shadow_fields = {
         color:  null,
         x:  0,
         y:  0,
@@ -46,7 +46,7 @@ var hfAutoCSS = window.hfAutoCSS || null;
         inset: null
     };
 
-    hfAutoCSS.prototype.reset = function(){
+    CustomifyAutoCSS.prototype.reset = function(){
         this.fonts = {};
         this.subsets = {};
         this.variants = {};
@@ -58,14 +58,14 @@ var hfAutoCSS = window.hfAutoCSS || null;
         };
     };
 
-    hfAutoCSS.prototype.encodeValue =function( value ){
+    CustomifyAutoCSS.prototype.encodeValue =function( value ){
         return encodeURI( JSON.stringify( value ) )
     };
-    hfAutoCSS.prototype.decodeValue = function( value ){
+    CustomifyAutoCSS.prototype.decodeValue = function( value ){
         return JSON.parse( decodeURI( value ) );
     };
 
-    hfAutoCSS.prototype.loop_fields = function( fields, values, skip_if_val_null, no_selector ){
+    CustomifyAutoCSS.prototype.loop_fields = function( fields, values, skip_if_val_null, no_selector ){
         if ( _.isUndefined( skip_if_val_null ) ) {
             skip_if_val_null = false;
         }
@@ -147,7 +147,7 @@ var hfAutoCSS = window.hfAutoCSS || null;
 
         return fields_code;
     };
-    hfAutoCSS.prototype.run = function( setting_name ){
+    CustomifyAutoCSS.prototype.run = function( setting_name ){
         if ( _.isUndefined( setting_name ) ) {
             setting_name  = false;
         }
@@ -155,15 +155,15 @@ var hfAutoCSS = window.hfAutoCSS || null;
         this.lastValues = this.values;
         this.values = api.get();
 
-        if ( window.hf_JS ) {
-            if ( window.hf_JS.css_media_queries ) {
-                this.media_queries = window.hf_JS.css_media_queries;
+        if ( window.Customify_JS ) {
+            if ( window.Customify_JS.css_media_queries ) {
+                this.media_queries = window.Customify_JS.css_media_queries;
             }
         }
         this.reset();
 
         var that = this;
-        that.loop_fields( Hf_Preview_Config.fields );
+        that.loop_fields( HFPreviewConfig.fields );
 
         var css_code = '';
         var i = 0;
@@ -177,29 +177,29 @@ var hfAutoCSS = window.hfAutoCSS || null;
         } );
 
         var url = that.get_google_fonts_url();
-        if ( $( '#hf-google-font-css' ).length <= 0 ) {
-            $( 'head' ).prepend( "<link rel='stylesheet' id='hf-google-font-css'  href='' type='text/css' media='all' />" );
+        if ( $( '#customify-google-font-css' ).length <= 0 ) {
+            $( 'head' ).prepend( "<link rel='stylesheet' id='customify-google-font-css'  href='' type='text/css' media='all' />" );
         }
 
         if ( url ) {
             //css_code = "\r\n@import url('"+url+"');\r\n\r\n"+css_code;
-            $( '#hf-google-font-css' ).attr( 'href', url );
+            $( '#customify-google-font-css' ).attr( 'href', url );
         } else {
-            $( '#hf-google-font-css' ).remove();
+            $( '#customify-google-font-css' ).remove();
         }
 
         css_code = css_code.trim();
-        if ( $( '#hf-style-inline-css' ).length <= 0 ) {
-            $( 'head' ).append( "<style id='hf-style-inline-css' type='text/css'></style>" )
+        if ( $( '#customify-style-inline-css' ).length <= 0 ) {
+            $( 'head' ).append( "<style id='customify-style-inline-css' type='text/css'></style>" )
         }
-        $( '#hf-style-inline-css' ).html( css_code );
+        $( '#customify-style-inline-css' ).html( css_code );
         $( document ).trigger( 'header_builder_panel_changed', [ 'auto_render_css', setting_name ] );
         $( document ).trigger( 'after_auto_render_css', [ 'after_auto_render_css', setting_name ] );
 
     };
 
 
-    hfAutoCSS.prototype.get_setting = function(name, device, key  ){
+    CustomifyAutoCSS.prototype.get_setting = function(name, device, key  ){
         if ( _.isUndefined( device ) ) {
             device = 'desktop';
         }
@@ -210,8 +210,8 @@ var hfAutoCSS = window.hfAutoCSS || null;
         var get_value = null;
         var value;
         var df = false;
-        if ( !_.isUndefined( Hf_Preview_Config.fields['setting|'+name ] ) ) {
-            var field = Hf_Preview_Config.fields['setting|'+name ];
+        if ( !_.isUndefined( HFPreviewConfig.fields['setting|'+name ] ) ) {
+            var field = HFPreviewConfig.fields['setting|'+name ];
             df = !_.isUndefined( field.default ) ? field.default : false;
         }
 
@@ -253,7 +253,7 @@ var hfAutoCSS = window.hfAutoCSS || null;
         return get_value;
     };
 
-    hfAutoCSS.prototype.get_google_fonts_url = function(){
+    CustomifyAutoCSS.prototype.get_google_fonts_url = function(){
         var url = '//fonts.googleapis.com/css?family=';
         var s = '';
         var that = this;
@@ -300,7 +300,7 @@ var hfAutoCSS = window.hfAutoCSS || null;
         return url;
     };
 
-    hfAutoCSS.prototype.join = function( object, glue ){
+    CustomifyAutoCSS.prototype.join = function( object, glue ){
 
         if( _.isUndefined( glue ) ) {
             glue = '';
@@ -318,7 +318,7 @@ var hfAutoCSS = window.hfAutoCSS || null;
 
     };
 
-    hfAutoCSS.prototype.str_value = function( value, format, value_no_unit ){
+    CustomifyAutoCSS.prototype.str_value = function( value, format, value_no_unit ){
         if ( _.isEmpty( value ) ) {
             return '';
         }
@@ -339,7 +339,7 @@ var hfAutoCSS = window.hfAutoCSS || null;
         return s;
     };
 
-    hfAutoCSS.prototype.setup_color = function( value, format ){
+    CustomifyAutoCSS.prototype.setup_color = function( value, format ){
         if ( format ) {
             if ( value ) {
                 return this.str_value( value, format );
@@ -348,7 +348,7 @@ var hfAutoCSS = window.hfAutoCSS || null;
         return false;
     };
 
-    hfAutoCSS.prototype.setup_checkbox = function( value, format ){
+    CustomifyAutoCSS.prototype.setup_checkbox = function( value, format ){
         if ( format ) {
             if ( value ) {
                 return format;
@@ -357,7 +357,7 @@ var hfAutoCSS = window.hfAutoCSS || null;
         return false;
     };
 
-    hfAutoCSS.prototype.setup_image = function( value, format ){
+    CustomifyAutoCSS.prototype.setup_image = function( value, format ){
         var image = this.sanitize_media( value );
         if ( image.url ) {
             if ( format ) {
@@ -367,7 +367,7 @@ var hfAutoCSS = window.hfAutoCSS || null;
         return false;
     };
 
-    hfAutoCSS.prototype.setup_slider = function ( value, format ){
+    CustomifyAutoCSS.prototype.setup_slider = function ( value, format ){
         if ( ! _.isObject( value ) ) {
             value = {};
         }
@@ -392,7 +392,7 @@ var hfAutoCSS = window.hfAutoCSS || null;
         return c;
     };
 
-    hfAutoCSS.prototype.setup_shadow = function ( value, format ){
+    CustomifyAutoCSS.prototype.setup_shadow = function ( value, format ){
         var that = this;
         if ( ! _.isObject( value ) ) {
             return '';
@@ -430,7 +430,7 @@ var hfAutoCSS = window.hfAutoCSS || null;
         return this.str_value( style, format );
     };
 
-    hfAutoCSS.prototype.setup_default = function( value, format ){
+    CustomifyAutoCSS.prototype.setup_default = function( value, format ){
         if ( format ) {
             if ( value ) {
                 return this.str_value( value, format );
@@ -439,7 +439,7 @@ var hfAutoCSS = window.hfAutoCSS || null;
         return false;
     };
 
-    hfAutoCSS.prototype.setup_css_ruler = function ( value, format ){
+    CustomifyAutoCSS.prototype.setup_css_ruler = function ( value, format ){
         if ( ! _.isObject( value ) ) {
             value = {};
         }
@@ -478,7 +478,7 @@ var hfAutoCSS = window.hfAutoCSS || null;
     };
 
 
-    hfAutoCSS.prototype.setup_text_align = function( value, format ) {
+    CustomifyAutoCSS.prototype.setup_text_align = function( value, format ) {
         if ( format  ) {
             if ( value ) {
                 return this.str_value( value, format );
@@ -487,11 +487,11 @@ var hfAutoCSS = window.hfAutoCSS || null;
         return false;
     };
 
-    hfAutoCSS.prototype.sanitize_color = function ( color ){
+    CustomifyAutoCSS.prototype.sanitize_color = function ( color ){
        return color;
     };
 
-    hfAutoCSS.prototype.sanitize_slider = function ( value ){
+    CustomifyAutoCSS.prototype.sanitize_slider = function ( value ){
         value = _.defaults( value, {
             unit: 'px',
             value: null
@@ -499,7 +499,7 @@ var hfAutoCSS = window.hfAutoCSS || null;
         return value;
     };
 
-    hfAutoCSS.prototype.sanitize_media = function ( value ) {
+    CustomifyAutoCSS.prototype.sanitize_media = function ( value ) {
         if ( ! _.isObject( value ) ) {
             value = {};
         }
@@ -510,7 +510,7 @@ var hfAutoCSS = window.hfAutoCSS || null;
         } );
     };
 
-    hfAutoCSS.prototype.maybe_devices_setup = function( field, call_back, values, no_selector ) {
+    CustomifyAutoCSS.prototype.maybe_devices_setup = function( field, call_back, values, no_selector ) {
         var code = '';
         var code_array = {};
         var has_device = false;
@@ -596,7 +596,7 @@ var hfAutoCSS = window.hfAutoCSS || null;
         return code;
     };
 
-    hfAutoCSS.prototype.setup_font = function ( value ){
+    CustomifyAutoCSS.prototype.setup_font = function ( value ){
         if( ! _.isObject( value ) ) {
             value = {};
         }
@@ -636,7 +636,7 @@ var hfAutoCSS = window.hfAutoCSS || null;
         return "font-family: \""+value.font+"\";";
     };
 
-    hfAutoCSS.prototype.font = function( field, values ){
+    CustomifyAutoCSS.prototype.font = function( field, values ){
         var code = '';
         var that = this;
         if ( field.device_settings ) {
@@ -674,35 +674,35 @@ var hfAutoCSS = window.hfAutoCSS || null;
     };
 
 
-    hfAutoCSS.prototype.css_ruler = function( field, value, no_selector ){
+    CustomifyAutoCSS.prototype.css_ruler = function( field, value, no_selector ){
         return this.maybe_devices_setup( field, 'setup_css_ruler', value, no_selector );
     };
 
-    hfAutoCSS.prototype.shadow = function( field, value, no_selector ){
+    CustomifyAutoCSS.prototype.shadow = function( field, value, no_selector ){
         return this.maybe_devices_setup( field, 'setup_shadow', value, no_selector );
     };
 
-    hfAutoCSS.prototype.slider = function( field, value, no_selector ){
+    CustomifyAutoCSS.prototype.slider = function( field, value, no_selector ){
         return this.maybe_devices_setup( field, 'setup_slider', value, no_selector );
     };
 
-    hfAutoCSS.prototype.color = function( field, value, no_selector ){
+    CustomifyAutoCSS.prototype.color = function( field, value, no_selector ){
         return this.maybe_devices_setup( field, 'setup_color', value, no_selector );
     };
 
-    hfAutoCSS.prototype.checkbox = function( field, value, no_selector ){
+    CustomifyAutoCSS.prototype.checkbox = function( field, value, no_selector ){
         return this.maybe_devices_setup( field, 'setup_checkbox', value, no_selector );
     };
 
-    hfAutoCSS.prototype.image = function( field, value, no_selector ){
+    CustomifyAutoCSS.prototype.image = function( field, value, no_selector ){
         return this.maybe_devices_setup( field, 'setup_image', value, no_selector );
     };
 
-    hfAutoCSS.prototype.text_align = function( field, value, no_selector ){
+    CustomifyAutoCSS.prototype.text_align = function( field, value, no_selector ){
         return this.maybe_devices_setup( field, 'setup_text_align', value, no_selector );
     };
 
-    hfAutoCSS.prototype.setup_styling_fields = function( fields, list, selectors, type ){
+    CustomifyAutoCSS.prototype.setup_styling_fields = function( fields, list, selectors, type ){
         var that  = this;
         var newfs;
         var i;
@@ -748,7 +748,7 @@ var hfAutoCSS = window.hfAutoCSS || null;
         return newList;
     };
 
-    hfAutoCSS.prototype.styling = function( field ){
+    CustomifyAutoCSS.prototype.styling = function( field ){
         var that = this;
         // Setup file by default no need `css_format` key if filed have name in the list above
         var values = this.get_setting( field.name, 'all' );
@@ -785,10 +785,10 @@ var hfAutoCSS = window.hfAutoCSS || null;
             }
         }
 
-        var listNormalFields = that.setup_styling_fields( normal_fields,  Hf_Preview_Config.styling_config.normal_fields, selectors, 'normal' );
-        var listHoverFields = that.setup_styling_fields( hover_fields,  Hf_Preview_Config.styling_config.hover_fields, selectors, 'hover' );
+        var listNormalFields = that.setup_styling_fields( normal_fields,  HFPreviewConfig.styling_config.normal_fields, selectors, 'normal' );
+        var listHoverFields = that.setup_styling_fields( hover_fields,  HFPreviewConfig.styling_config.hover_fields, selectors, 'hover' );
 
-        var listTabs = _.clone( Hf_Preview_Config.styling_config.tabs );
+        var listTabs = _.clone( HFPreviewConfig.styling_config.tabs );
         if ( tabs === false ) {
             listTabs['hover'] = false;
         } else if ( _.isObject( tabs ) ) {
@@ -871,7 +871,7 @@ var hfAutoCSS = window.hfAutoCSS || null;
         } );
     };
 
-    hfAutoCSS.prototype.modal = function ( field ){
+    CustomifyAutoCSS.prototype.modal = function ( field ){
         var that = this;
         var values = this.get_setting( field.name, 'all' );
         if ( ! _.isObject( values ) ) {
@@ -887,7 +887,7 @@ var hfAutoCSS = window.hfAutoCSS || null;
         }
 
     };
-    hfAutoCSS.prototype.setup_font_style = function ( value ){
+    CustomifyAutoCSS.prototype.setup_font_style = function ( value ){
         if ( ! _.isObject( value ) ) {
             value = {};
         }
@@ -928,7 +928,7 @@ var hfAutoCSS = window.hfAutoCSS || null;
         return this.join( css, "\r\n\t" );
     };
 
-    hfAutoCSS.prototype.html_replace = function( field, value ){
+    CustomifyAutoCSS.prototype.html_replace = function( field, value ){
         var selector = field.selector;
         var v = _.clone( value );
         if ( _.isUndefined( v )  || _.isEmpty( v ) ) {
@@ -936,7 +936,7 @@ var hfAutoCSS = window.hfAutoCSS || null;
         }
         $( selector ).html( v );
     };
-    hfAutoCSS.prototype.html_class = function( field, v ){
+    CustomifyAutoCSS.prototype.html_class = function( field, v ){
         var value;
         if ( _.isUndefined( v ) ) {
             value = _.clone( v );
@@ -1015,7 +1015,7 @@ var hfAutoCSS = window.hfAutoCSS || null;
         }
     };
 
-    hfAutoCSS.prototype.typography = function( field, values ){
+    CustomifyAutoCSS.prototype.typography = function( field, values ){
         if ( _.isUndefined( values ) || ! _.isObject( values ) ) {
             values = this.get_setting( field.name, 'all' );
         }
@@ -1040,7 +1040,7 @@ var hfAutoCSS = window.hfAutoCSS || null;
         var code = {};
         var fields = {};
         var devices_css = {};
-        _.each( Hf_Preview_Config.typo_fields, function( f ){
+        _.each( HFPreviewConfig.typo_fields, function( f ){
             fields[ f.name ] = f;
         } );
 
@@ -1155,23 +1155,23 @@ var hfAutoCSS = window.hfAutoCSS || null;
         that.css['all'] += " "+field['selector']+" {\r\n\t"+that.join( code, "\r\n\t" )+"\r\n}";
     };
 
-    var hfAutoCSSInit = new hfAutoCSS();
+    var CustomifyAutoCSSInit = new CustomifyAutoCSS();
 
     api.bind( 'preview-ready', function() {
-        //hfAutoCSSInit.run();
-        hfAutoCSSInit.lastValues = api.get();
-        hfAutoCSSInit.values = api.get();
+        //CustomifyAutoCSSInit.run();
+        CustomifyAutoCSSInit.lastValues = api.get();
+        CustomifyAutoCSSInit.values = api.get();
     });
 
     api.bind( 'change', function(){
-       // hfAutoCSSInit.run();
+       // CustomifyAutoCSSInit.run();
     } );
 
-    _.each( Hf_Preview_Config.fields, function( field ){
+    _.each( HFPreviewConfig.fields, function( field ){
         if ( ( field.selector && field.css_format ) || field.type === 'modal' ) {
             wp.customize( field.name, function( setting ) {
                 setting.bind( function( to ) {
-                    hfAutoCSSInit.run( field.name );
+                    CustomifyAutoCSSInit.run( field.name );
                 } );
             } );
 

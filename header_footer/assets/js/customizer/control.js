@@ -1,6 +1,6 @@
 (function(api) {
 	// Extends our custom "example-1" section.
-	api.sectionConstructor["hf-pro"] = api.Section.extend({
+	api.sectionConstructor["customify-pro"] = api.Section.extend({
 		// No events for this type of section.
 		attachEvents: function() {},
 
@@ -19,7 +19,7 @@
 		var sections = [];
 		api.section.each(function(section) {
 			if (
-				"hf_section" !== section.params.type ||
+				"customify_section" !== section.params.type ||
 				"undefined" === typeof section.params.section
 			) {
 				return;
@@ -42,7 +42,7 @@
 		var panels = [];
 		api.panel.each(function(panel) {
 			if (
-				"hf_panel" !== panel.params.type ||
+				"customify_panel" !== panel.params.type ||
 				"undefined" === typeof panel.params.panel
 			) {
 				return;
@@ -68,7 +68,7 @@
 	wp.customize.Panel = wp.customize.Panel.extend({
 		attachEvents: function() {
 			if (
-				"hf_panel" !== this.params.type ||
+				"customify_panel" !== this.params.type ||
 				"undefined" === typeof this.params.panel
 			) {
 				_panelAttachEvents.call(this);
@@ -101,7 +101,7 @@
 		},
 		embed: function() {
 			if (
-				"hf_panel" !== this.params.type ||
+				"customify_panel" !== this.params.type ||
 				"undefined" === typeof this.params.panel
 			) {
 				_panelEmbed.call(this);
@@ -115,7 +115,7 @@
 			parentContainer.append(panel.headContainer);
 		},
 		isContextuallyActive: function() {
-			if ("hf_panel" !== this.params.type) {
+			if ("customify_panel" !== this.params.type) {
 				return _panelIsContextuallyActive.call(this);
 			}
 
@@ -151,7 +151,7 @@
 	wp.customize.Section = wp.customize.Section.extend({
 		attachEvents: function() {
 			if (
-				"hf_section" !== this.params.type ||
+				"customify_section" !== this.params.type ||
 				"undefined" === typeof this.params.section
 			) {
 				_sectionAttachEvents.call(this);
@@ -185,7 +185,7 @@
 		},
 		embed: function() {
 			if (
-				"hf_section" !== this.params.type ||
+				"customify_section" !== this.params.type ||
 				"undefined" === typeof this.params.section
 			) {
 				_sectionEmbed.call(this);
@@ -200,7 +200,7 @@
 			parentContainer.append(section.headContainer);
 		},
 		isContextuallyActive: function() {
-			if ("hf_section" !== this.params.type) {
+			if ("customify_section" !== this.params.type) {
 				return _sectionIsContextuallyActive.call(this);
 			}
 
@@ -239,9 +239,9 @@
 	"use strict";
 
 	var $document = $(document);
-	var is_rtl = Hf_Control_Args.is_rtl;
+	var is_rtl = Customify_Control_Args.is_rtl;
 
-	var hfMedia = {
+	var CustomifyMedia = {
 		setAttachment: function(attachment) {
 			this.attachment = attachment;
 		},
@@ -294,8 +294,8 @@
 			var url = this.getURL();
 			var id = this.getID();
 			var mime = this.attachment.mime;
-			$(".hf-image-preview", this.preview)
-				.addClass("hf--has-file")
+			$(".customify-image-preview", this.preview)
+				.addClass("customify--has-file")
 				.html('<img src="' + url + '" alt="">');
 			$(".attachment-url", this.preview).val(this.toRelativeUrl(url));
 			$(".attachment-mime", this.preview).val(mime);
@@ -307,15 +307,15 @@
 		},
 		toRelativeUrl: function(url) {
 			return url;
-			//return url.replace( Hf_Control_Args.home_url, '' );
+			//return url.replace( Customify_Control_Args.home_url, '' );
 		},
 		showChangeBtn: function() {
-			$(".hf--add", this.preview).addClass("hf--hide");
-			$(".hf--change", this.preview).removeClass(
-				"hf--hide"
+			$(".customify--add", this.preview).addClass("customify--hide");
+			$(".customify--change", this.preview).removeClass(
+				"customify--hide"
 			);
-			$(".hf--remove", this.preview).removeClass(
-				"hf--hide"
+			$(".customify--remove", this.preview).removeClass(
+				"customify--hide"
 			);
 		},
 		insertVideo: function(attachment) {
@@ -332,8 +332,8 @@
 				'" type="' +
 				mime +
 				'">Your browser does not support the video tag.</video>';
-			$(".hf-image-preview", this.preview)
-				.addClass("hf--has-file")
+			$(".customify-image-preview", this.preview)
+				.addClass("customify--has-file")
 				.html(html);
 			$(".attachment-url", this.preview).val(this.toRelativeUrl(url));
 			$(".attachment-mime", this.preview).val(mime);
@@ -351,8 +351,8 @@
 			var mime = this.attachment.mime;
 			var basename = url.replace(/^.*[\\\/]/, "");
 
-			$(".hf-image-preview", this.preview)
-				.addClass("hf--has-file")
+			$(".customify-image-preview", this.preview)
+				.addClass("customify--has-file")
 				.html(
 					'<a href="' +
 						url +
@@ -372,10 +372,10 @@
 			if (typeof $el !== "undefined") {
 				this.preview = $el;
 			}
-			$(".hf-image-preview", this.preview)
+			$(".customify-image-preview", this.preview)
 				.removeAttr("style")
 				.html("")
-				.removeClass("hf--has-file");
+				.removeClass("customify--has-file");
 			$(".attachment-url", this.preview).val("");
 			$(".attachment-mime", this.preview).val("");
 			$(".attachment-id", this.preview)
@@ -383,63 +383,63 @@
 				.trigger("change");
 			this.preview.removeClass("attachment-added");
 
-			$(".hf--add", this.preview).removeClass("hf--hide");
-			$(".hf--change", this.preview).addClass("hf--hide");
-			$(".hf--remove", this.preview).addClass("hf--hide");
+			$(".customify--add", this.preview).removeClass("customify--hide");
+			$(".customify--change", this.preview).addClass("customify--hide");
+			$(".customify--remove", this.preview).addClass("customify--hide");
 		}
 	};
 
-	hfMedia.controlMediaImage = wp.media({
+	CustomifyMedia.controlMediaImage = wp.media({
 		title: wp.media.view.l10n.addMedia,
 		multiple: false,
 		library: { type: "image" }
 	});
 
-	hfMedia.controlMediaImage.on("select", function() {
-		var attachment = hfMedia.controlMediaImage
+	CustomifyMedia.controlMediaImage.on("select", function() {
+		var attachment = CustomifyMedia.controlMediaImage
 			.state()
 			.get("selection")
 			.first()
 			.toJSON();
-		hfMedia.insertImage(attachment);
+		CustomifyMedia.insertImage(attachment);
 	});
 
-	hfMedia.controlMediaVideo = wp.media({
+	CustomifyMedia.controlMediaVideo = wp.media({
 		title: wp.media.view.l10n.addMedia,
 		multiple: false,
 		library: { type: "video" }
 	});
 
-	hfMedia.controlMediaVideo.on("select", function() {
-		var attachment = hfMedia.controlMediaVideo
+	CustomifyMedia.controlMediaVideo.on("select", function() {
+		var attachment = CustomifyMedia.controlMediaVideo
 			.state()
 			.get("selection")
 			.first()
 			.toJSON();
-		hfMedia.insertVideo(attachment);
+		CustomifyMedia.insertVideo(attachment);
 	});
 
-	hfMedia.controlMediaFile = wp.media({
+	CustomifyMedia.controlMediaFile = wp.media({
 		title: wp.media.view.l10n.addMedia,
 		multiple: false
 	});
 
-	hfMedia.controlMediaFile.on("select", function() {
-		var attachment = hfMedia.controlMediaFile
+	CustomifyMedia.controlMediaFile.on("select", function() {
+		var attachment = CustomifyMedia.controlMediaFile
 			.state()
 			.get("selection")
 			.first()
 			.toJSON();
-		hfMedia.insertFile(attachment);
+		CustomifyMedia.insertFile(attachment);
 	});
 
-	var hf_controls_list = {};
+	var customify_controls_list = {};
 	//---------------------------------------------------------------------------
 
-	var hfField = {
+	var customifyField = {
 		devices: ["desktop", "tablet", "mobile"],
 		allDevices: ["desktop", "tablet", "mobile"],
-		type: "hf",
+		type: "customify",
 		getTemplate: _.memoize(function() {
 			var field = this;
 			var compiled,
@@ -459,7 +459,7 @@
 			return function(data, id, data_variable_name) {
 				if (_.isUndefined(id)) {
 					//id = 'tmpl-customize-control-' + field.type;
-					id = "tmpl-field-hf-" + field.type;
+					id = "tmpl-field-customify-" + field.type;
 				}
 				if (
 					!_.isUndefined(data_variable_name) &&
@@ -988,7 +988,7 @@
 					if (field.device_settings) {
 						_.each(control.allDevices, function(device) {
 							var $area = $(
-								".hf-group-device-fields.hf--for-" +
+								".customify-group-device-fields.customify--for-" +
 									device,
 								container
 							);
@@ -996,7 +996,7 @@
 							var _value = {};
 							_.each(field.fields, function(f) {
 								var $_field = $(
-									'.hf--group-field[data-field-name="' +
+									'.customify--group-field[data-field-name="' +
 										f.name +
 										'"]',
 									$area
@@ -1013,7 +1013,7 @@
 					} else {
 						_.each(field.fields, function(f) {
 							var $_field = $(
-								'.hf--group-field[data-field-name="' +
+								'.customify--group-field[data-field-name="' +
 									f.name +
 									'"]',
 								container
@@ -1030,7 +1030,7 @@
 					break;
 				case "repeater":
 					value = [];
-					$(".hf--repeater-item", container).each(function(
+					$(".customify--repeater-item", container).each(function(
 						index
 					) {
 						var $item = $(this);
@@ -1040,8 +1040,8 @@
 								'[data-field-name="' + f.name + '"]',
 								$item
 							);
-							//var $_field = inputField.closest('.hf--field');
-							//var $_field = inputField.closest('.hf--repeater-field');
+							//var $_field = inputField.closest('.customify--field');
+							//var $_field = inputField.closest('.customify--repeater-field');
 							var _fv = control.getFieldValue(f.name, f, $item);
 							_v[f.name] = _fv;
 							// Update Live title
@@ -1052,7 +1052,7 @@
 										.text();
 								} else if (_.isUndefined(_fv) || _fv == "") {
 									//_fv = control.params.l10n.untitled;
-									_fv = Hf_Control_Args.untitled;
+									_fv = Customify_Control_Args.untitled;
 								}
 								control.updateRepeaterLiveTitle(_fv, $item, f);
 							}
@@ -1088,7 +1088,7 @@
 			return JSON.parse(decodeURI(value));
 		},
 		updateRepeaterLiveTitle: function(value, $item, field) {
-			$(".hf--repeater-live-title", $item).text(value);
+			$(".customify--repeater-live-title", $item).text(value);
 		},
 		compare: function(value1, cond, value2) {
 			var equal = false;
@@ -1227,7 +1227,7 @@
 		},
 		initConditional: function($el, values) {
 			var control = this;
-			var $fields = $(".hf--field", $el);
+			var $fields = $(".customify--field", $el);
 			$fields.each(function() {
 				var $field = $(this);
 				var check = true;
@@ -1236,9 +1236,9 @@
 					req = JSON.parse(req);
 					check = control.multiple_compare(req, values);
 					if (!check) {
-						$field.addClass("hf--hide");
+						$field.addClass("customify--hide");
 					} else {
-						$field.removeClass("hf--hide");
+						$field.removeClass("customify--hide");
 					}
 				}
 			});
@@ -1250,16 +1250,16 @@
 				$el = field.container;
 			}
 			var clone = $("#customize-footer-actions .devices").clone();
-			clone.addClass("hf-devices");
+			clone.addClass("customify-devices");
 			$("button", clone).each(function() {
 				var d = $(this).attr("data-device");
 				if (_.indexOf(field.devices, d) < 0) {
 					$(this).remove();
 				}
 			});
-			$(".hf-field-heading", $el)
+			$(".customify-field-heading", $el)
 				.append(clone)
-				.addClass("hf-devices-added");
+				.addClass("customify-devices-added");
 		},
 
 		addRepeaterItem: function(field, value, $container, cb) {
@@ -1279,7 +1279,7 @@
 			var $itemWrapper = $(
 				template(field, "tmpl-customize-control-repeater-layout")
 			);
-			$container.find(".hf--settings-fields").append($itemWrapper);
+			$container.find(".customify--settings-fields").append($itemWrapper);
 			_.each(fields, function(f, index) {
 				f.value = "";
 				f.addable = addable;
@@ -1287,8 +1287,8 @@
 					f.value = value[f.name];
 				}
 				var $fieldArea;
-				$fieldArea = $('<div class="hf--repeater-field"></div>');
-				$(".hf--repeater-item-inner", $itemWrapper).append(
+				$fieldArea = $('<div class="customify--repeater-field"></div>');
+				$(".customify--repeater-item-inner", $itemWrapper).append(
 					$fieldArea
 				);
 				control.add(f, $fieldArea, function() {
@@ -1303,7 +1303,7 @@
 					if (f.type === "select") {
 						live_title = f.choices[f.value];
 					} else if (_.isUndefined(live_title) || live_title == "") {
-						live_title = Hf_Control_Args.untitled;
+						live_title = Customify_Control_Args.untitled;
 					}
 					control.updateRepeaterLiveTitle(
 						live_title,
@@ -1329,12 +1329,12 @@
 
 			if (title_only) {
 				$(
-					".hf--repeater-item-settings, .hf--repeater-item-toggle",
+					".customify--repeater-item-settings, .customify--repeater-item-toggle",
 					$itemWrapper
 				).hide();
 			}
 
-			$document.trigger("hf/customizer/repeater/add", [
+			$document.trigger("customify/customizer/repeater/add", [
 				$itemWrapper,
 				control
 			]);
@@ -1343,48 +1343,48 @@
 		limitRepeaterItems: function(field, $container) {
 			return;
 			var control = this;
-			var addButton = $(".hf--repeater-add-new", $container);
+			var addButton = $(".customify--repeater-add-new", $container);
 			var c = $(
-				".hf--settings-fields .hf--repeater-item",
+				".customify--settings-fields .customify--repeater-item",
 				$container
 			).length;
 
 			if (control.params.limit > 0) {
 				if (c >= control.params.limit) {
-					addButton.addClass("hf--hide");
+					addButton.addClass("customify--hide");
 					if (control.params.limit_msg) {
 						if (
-							$(".hf--limit-item-msg", control.container)
+							$(".customify--limit-item-msg", control.container)
 								.length === 0
 						) {
 							$(
-								'<p class="hf--limit-item-msg">' +
+								'<p class="customify--limit-item-msg">' +
 									control.params.limit_msg +
 									"</p>"
 							).insertBefore(addButton);
 						} else {
 							$(
-								".hf--limit-item-msg",
+								".customify--limit-item-msg",
 								control.container
-							).removeClass("hf--hide");
+							).removeClass("customify--hide");
 						}
 					}
 				} else {
-					$(".hf--limit-item-msg", control.container).addClass(
-						"hf--hide"
+					$(".customify--limit-item-msg", control.container).addClass(
+						"customify--hide"
 					);
-					addButton.removeClass("hf--hide");
+					addButton.removeClass("customify--hide");
 				}
 			}
 
 			if (c > 0) {
 				$(
-					".hf--repeater-reorder",
+					".customify--repeater-reorder",
 					control.container
-				).removeClass("hf--hide");
+				).removeClass("customify--hide");
 			} else {
-				$(".hf--repeater-reorder", control.container).addClass(
-					"hf--hide"
+				$(".customify--repeater-reorder", control.container).addClass(
+					"customify--hide"
 				);
 			}
 		},
@@ -1403,8 +1403,8 @@
 			}
 
 			// Sortable
-			$container.find(".hf--settings-fields").sortable({
-				handle: ".hf--repeater-item-heading",
+			$container.find(".customify--settings-fields").sortable({
+				handle: ".customify--repeater-item-heading",
 				containment: "parent",
 				update: function(event, ui) {
 					// control.getValue();
@@ -1415,16 +1415,16 @@
 			});
 
 			// Toggle Move
-			$container.on("click", ".hf--repeater-reorder", function(e) {
+			$container.on("click", ".customify--repeater-reorder", function(e) {
 				e.preventDefault();
-				$(".hf--repeater-items", $container).toggleClass(
+				$(".customify--repeater-items", $container).toggleClass(
 					"reorder-active"
 				);
-				$(".hf--repeater-add-new", $container).toggleClass(
+				$(".customify--repeater-add-new", $container).toggleClass(
 					"disabled"
 				);
 				if (
-					$(".hf--repeater-items", $container).hasClass(
+					$(".customify--repeater-items", $container).hasClass(
 						"reorder-active"
 					)
 				) {
@@ -1437,10 +1437,10 @@
 			// Move Up
 			$container.on(
 				"click",
-				".hf--repeater-item .hf--up",
+				".customify--repeater-item .customify--up",
 				function(e) {
 					e.preventDefault();
-					var i = $(this).closest(".hf--repeater-item");
+					var i = $(this).closest(".customify--repeater-item");
 					var index = i.index();
 					if (index > 0) {
 						var up = i.prev();
@@ -1455,14 +1455,14 @@
 			// Move Down
 			$container.on(
 				"click",
-				".hf--repeater-item .hf--down",
+				".customify--repeater-item .customify--down",
 				function(e) {
 					e.preventDefault();
 					var n = $(
-						".hf--repeater-items .hf--repeater-item",
+						".customify--repeater-items .customify--repeater-item",
 						$container
 					).length;
-					var i = $(this).closest(".hf--repeater-item");
+					var i = $(this).closest(".customify--repeater-item");
 					var index = i.index();
 					if (index < n - 1) {
 						var down = i.next();
@@ -1486,10 +1486,10 @@
 			// Toggle visibility
 			$container.on(
 				"change",
-				".hf--repeater-item .r-visible-input",
+				".customify--repeater-item .r-visible-input",
 				function(e) {
 					e.preventDefault();
-					var p = $(this).closest(".hf--repeater-item");
+					var p = $(this).closest(".customify--repeater-item");
 					if ($(this).is(":checked")) {
 						p.removeClass("item---visible-hidden");
 					} else {
@@ -1502,21 +1502,21 @@
 			if (!field.title_only) {
 				$container.on(
 					"click",
-					".hf--repeater-item-toggle, .hf--repeater-live-title",
+					".customify--repeater-item-toggle, .customify--repeater-live-title",
 					function(e) {
 						e.preventDefault();
-						var p = $(this).closest(".hf--repeater-item");
-						p.toggleClass("hf--open");
+						var p = $(this).closest(".customify--repeater-item");
+						p.toggleClass("customify--open");
 					}
 				);
 			}
 
 			// Remove
-			$container.on("click", ".hf--remove", function(e) {
+			$container.on("click", ".customify--remove", function(e) {
 				e.preventDefault();
-				var p = $(this).closest(".hf--repeater-item");
+				var p = $(this).closest(".customify--repeater-item");
 				p.remove();
-				$document.trigger("hf/customizer/repeater/remove", [
+				$document.trigger("customify/customizer/repeater/remove", [
 					control
 				]);
 				if (_.isFunction(cb)) {
@@ -1534,7 +1534,7 @@
 			});
 
 			// Add Item
-			$container.on("click", ".hf--repeater-add-new", function(e) {
+			$container.on("click", ".customify--repeater-add-new", function(e) {
 				e.preventDefault();
 				if (!$(this).hasClass("disabled")) {
 					control.addRepeaterItem(
@@ -1583,16 +1583,16 @@
 						template(_field, template_id, "field")
 					);
 					var deviceFieldItem = $deviceFields
-						.find(".hf-field-settings-inner")
+						.find(".customify-field-settings-inner")
 						.first();
 
 					if (!fieldItem) {
 						$fieldsArea
 							.append($deviceFields)
-							.addClass("hf--multiple-devices");
+							.addClass("customify--multiple-devices");
 					}
 
-					deviceFieldItem.addClass("hf--for-" + device);
+					deviceFieldItem.addClass("customify--for-" + device);
 					deviceFieldItem.attr("data-for-device", device);
 
 					if (fieldItem) {
@@ -1613,7 +1613,7 @@
 					template(field, "tmpl-customize-control-repeater-inner")
 				);
 				$fieldsArea
-					.find(".hf-field-settings-inner")
+					.find(".customify-field-settings-inner")
 					.replaceWith($rf_area);
 				control.initRepeater(field, $rf_area, cb);
 			}
@@ -1621,10 +1621,10 @@
 			if (field.css_format && _.isString(field.css_format)) {
 				if (field.css_format.indexOf("value_no_unit") > 0) {
 					$fieldsArea
-						.find(".hf--slider-input")
+						.find(".customify--slider-input")
 						.addClass("no-unit");
 					$(
-						".hf--css-unit .hf--label-active",
+						".customify--css-unit .customify--label-active",
 						$fieldsArea
 					).hide();
 				}
@@ -1670,7 +1670,7 @@
 					f.class = "";
 				}
 				var $fieldArea = $(
-					'<div class="hf--group-field ft--' +
+					'<div class="customify--group-field ft--' +
 						f.type +
 						" " +
 						f.class +
@@ -1692,11 +1692,11 @@
 		},
 
 		initSlider: function($el) {
-			if ($(".hf-input-slider", $el).length > 0) {
-				$(".hf-input-slider", $el).each(function() {
+			if ($(".customify-input-slider", $el).length > 0) {
+				$(".customify-input-slider", $el).each(function() {
 					var slider = $(this);
 					var p = slider.parent();
-					var input = $(".hf--slider-input", p);
+					var input = $(".customify--slider-input", p);
 					var min = slider.data("min") || 0;
 					var max = slider.data("max") || 300;
 					var step = slider.data("step") || 1;
@@ -1730,7 +1730,7 @@
 
 					// Reset
 					var wrapper = slider.closest(
-						".hf-input-slider-wrapper"
+						".customify-input-slider-wrapper"
 					);
 					wrapper.on("click", ".reset", function(e) {
 						e.preventDefault();
@@ -1742,15 +1742,15 @@
 							};
 						}
 
-						$(".hf--slider-input", wrapper).val(d.value);
+						$(".customify--slider-input", wrapper).val(d.value);
 						slider.slider("option", "value", d.value);
 						$(
-							'.hf--css-unit input.hf-input[value="' +
+							'.customify--css-unit input.customify-input[value="' +
 								d.unit +
 								'"]',
 							wrapper
 						).trigger("click");
-						$(".hf--slider-input", wrapper).trigger(
+						$(".customify--slider-input", wrapper).trigger(
 							"change"
 						);
 					});
@@ -1762,43 +1762,43 @@
 			// When add/Change
 			$el.on(
 				"click",
-				".hf--media .hf--add, .hf--media .hf--change, .hf--media .hf-image-preview",
+				".customify--media .customify--add, .customify--media .customify--change, .customify--media .customify-image-preview",
 				function(e) {
 					e.preventDefault();
-					var p = $(this).closest(".hf--media");
-					hfMedia.setPreview(p);
-					hfMedia.controlMediaImage.open();
+					var p = $(this).closest(".customify--media");
+					CustomifyMedia.setPreview(p);
+					CustomifyMedia.controlMediaImage.open();
 				}
 			);
 
 			// When add/Change
-			$el.on("click", ".hf--media .hf--remove", function(
+			$el.on("click", ".customify--media .customify--remove", function(
 				e
 			) {
 				e.preventDefault();
-				var p = $(this).closest(".hf--media");
-				hfMedia.remove(p);
+				var p = $(this).closest(".customify--media");
+				CustomifyMedia.remove(p);
 			});
 		},
 
 		initCSSRuler: function($el, change_cb) {
 			// When toggle value change
-			$el.on("change", ".hf--label-parent", function() {
+			$el.on("change", ".customify--label-parent", function() {
 				if ($(this).attr("type") == "radio") {
 					var name = $(this).attr("name");
 					$('input[name="' + name + '"]', $el)
 						.parent()
-						.removeClass("hf--label-active");
+						.removeClass("customify--label-active");
 				}
 				var checked = $(this).is(":checked");
 				if (checked) {
 					$(this)
 						.parent()
-						.addClass("hf--label-active");
+						.addClass("customify--label-active");
 				} else {
 					$(this)
 						.parent()
-						.removeClass("hf--label-active");
+						.removeClass("customify--label-active");
 				}
 				if (_.isFunction(change_cb)) {
 					change_cb();
@@ -1807,16 +1807,16 @@
 
 			$el.on(
 				"change keyup",
-				".hf--css-ruler .hf-input-css",
+				".customify--css-ruler .customify-input-css",
 				function() {
-					var p = $(this).closest(".hf--css-ruler");
+					var p = $(this).closest(".customify--css-ruler");
 					var link_checked = $(
-						".hf--css-ruler-link input",
+						".customify--css-ruler-link input",
 						p
 					).is(":checked");
 					if (link_checked) {
 						var v = $(this).val();
-						$(".hf-input-css", p)
+						$(".customify-input-css", p)
 							.not($(this))
 							.each(function() {
 								if (!$(this).is(":disabled")) {
@@ -1832,33 +1832,33 @@
 		},
 
 		initColor: function($el) {
-			$(".hf-input-color", $el).each(function() {
+			$(".customify-input-color", $el).each(function() {
 				var colorInput = $(this);
 				var df = colorInput.data("default") || "";
 				var current_val = $(
-					".hf-input--color",
+					".customify-input--color",
 					colorInput
 				).val();
 				// data-alpha="true"
-				$(".hf--color-panel", colorInput).attr(
+				$(".customify--color-panel", colorInput).attr(
 					"data-alpha",
 					"true"
 				);
-				$(".hf--color-panel", colorInput).wpColorPicker({
+				$(".customify--color-panel", colorInput).wpColorPicker({
 					defaultColor: df,
 					change: function(event, ui) {
 						var new_color = ui.color.toString();
-						$(".hf-input--color", colorInput).val(new_color);
+						$(".customify-input--color", colorInput).val(new_color);
 						if (ui.color.toString() !== current_val) {
 							current_val = new_color;
-							$(".hf-input--color", colorInput).trigger(
+							$(".customify-input--color", colorInput).trigger(
 								"change"
 							);
 						}
 					},
 					clear: function(event, ui) {
-						$(".hf-input--color", colorInput).val("");
-						$(".hf-input--color", colorInput).trigger(
+						$(".customify-input--color", colorInput).val("");
+						$(".customify-input--color", colorInput).trigger(
 							"data-change"
 						);
 					}
@@ -1869,10 +1869,10 @@
 
 	//-------------------------------------------------------------------------
 
-	var hf_controlConstructor = {
+	var customify_controlConstructor = {
 		devices: ["desktop", "tablet", "mobile"],
 		// When we're finished loading continue processing
-		type: "hf",
+		type: "customify",
 		settingField: null,
 
 		getTemplate: _.memoize(function() {
@@ -1893,7 +1893,7 @@
 
 			return function(data, id, data_variable_name) {
 				if (_.isUndefined(id)) {
-					id = "tmpl-field-hf-" + control.type;
+					id = "tmpl-field-customify-" + control.type;
 				}
 				if (
 					!_.isUndefined(data_variable_name) &&
@@ -1908,7 +1908,7 @@
 				return compiled(data);
 			};
 		}),
-		addDeviceSwitchers: hfField.addDeviceSwitchers,
+		addDeviceSwitchers: customifyField.addDeviceSwitchers,
 		init: function() {
 			var control = this;
 
@@ -1951,9 +1951,9 @@
 			return url;
 		},
 
-		compare: hfField.compare,
-		multiple_compare: hfField.multiple_compare,
-		initConditional: hfField.initConditional,
+		compare: customifyField.compare,
+		multiple_compare: customifyField.multiple_compare,
+		initConditional: customifyField.initConditional,
 
 		getValue: function(save) {
 			var control = this;
@@ -1995,9 +1995,9 @@
 
 			field.device_settings = control.params.device_settings;
 
-			value = hfField.getValue(
+			value = customifyField.getValue(
 				field,
-				$(".hf--settings-fields", control.container)
+				$(".customify--settings-fields", control.container)
 			);
 
 			if (_.isUndefined(save) || save) {
@@ -2015,7 +2015,7 @@
 					});
 				}
 
-				$document.trigger("hf/customizer/value_changed", [
+				$document.trigger("customify/customizer/value_changed", [
 					control,
 					value
 				]);
@@ -2032,26 +2032,26 @@
 			return JSON.parse(decodeURI(value));
 		},
 		updateRepeaterLiveTitle: function(value, $item, field) {
-			$(".hf--repeater-live-title", $item).text(value);
+			$(".customify--repeater-live-title", $item).text(value);
 		},
 		initGroup: function() {
 			var control = this;
 			if (control.params.device_settings) {
 				control.container
-					.find(".hf--settings-fields")
-					.addClass("hf--multiple-devices");
+					.find(".customify--settings-fields")
+					.addClass("customify--multiple-devices");
 				if (!_.isObject(control.params.value)) {
 					control.params.value = {};
 				}
 
 				_.each(control.devices, function(device, device_index) {
 					var $group_device = $(
-						'<div class="hf-group-device-fields hf-field-settings-inner hf--for-' +
+						'<div class="customify-group-device-fields customify-field-settings-inner customify--for-' +
 							device +
 							'"></div>'
 					);
 					control.container
-						.find(".hf--settings-fields")
+						.find(".customify--settings-fields")
 						.append($group_device);
 					var device_value = {};
 					if (!_.isUndefined(control.params.value[device])) {
@@ -2061,7 +2061,7 @@
 						device_value = {};
 					}
 
-					hfField.addFields(
+					customifyField.addFields(
 						control.params.fields,
 						device_value,
 						$group_device,
@@ -2071,10 +2071,10 @@
 					);
 				});
 			} else {
-				hfField.addFields(
+				customifyField.addFields(
 					control.params.fields,
 					control.params.value,
-					control.container.find(".hf--settings-fields"),
+					control.container.find(".customify--settings-fields"),
 					function() {
 						control.getValue();
 					}
@@ -2084,8 +2084,8 @@
 			control.getValue(false);
 		},
 		addField: function(field, $fieldsArea, cb) {
-			hfField.devices = _.clone(this.devices);
-			hfField.add(field, $fieldsArea, cb);
+			customifyField.devices = _.clone(this.devices);
+			customifyField.add(field, $fieldsArea, cb);
 		},
 		initField: function() {
 			var control = this;
@@ -2125,7 +2125,7 @@
 
 			field.device_settings = control.params.device_settings;
 			var $fieldsArea = control.container.find(
-				".hf--settings-fields"
+				".customify--settings-fields"
 			);
 
 			control.addField(field, $fieldsArea, function() {
@@ -2158,7 +2158,7 @@
 				template(control.params, "tmpl-customize-control-repeater-item")
 			);
 			control.container
-				.find(".hf--settings-fields")
+				.find(".customify--settings-fields")
 				.append($itemWrapper);
 			_.each(fields, function(f, index) {
 				f.value = "";
@@ -2167,8 +2167,8 @@
 					f.value = value[f.name];
 				}
 				var $fieldArea;
-				$fieldArea = $('<div class="hf--repeater-field"></div>');
-				$(".hf--repeater-item-inner", $itemWrapper).append(
+				$fieldArea = $('<div class="customify--repeater-field"></div>');
+				$(".customify--repeater-item-inner", $itemWrapper).append(
 					$fieldArea
 				);
 				control.addField(f, $fieldArea, function() {
@@ -2192,12 +2192,12 @@
 
 			if (title_only) {
 				$(
-					".hf--repeater-item-settings, .hf--repeater-item-toggle",
+					".customify--repeater-item-settings, .customify--repeater-item-toggle",
 					$itemWrapper
 				).hide();
 			}
 
-			$document.trigger("hf/customizer/repeater/add", [
+			$document.trigger("customify/customizer/repeater/add", [
 				$itemWrapper,
 				control
 			]);
@@ -2207,50 +2207,50 @@
 			var control = this;
 
 			var addButton = $(
-				".hf--repeater-add-new",
+				".customify--repeater-add-new",
 				control.container
 			);
 			var c = $(
-				".hf--settings-fields .hf--repeater-item",
+				".customify--settings-fields .customify--repeater-item",
 				control.container
 			).length;
 
 			if (control.params.limit > 0) {
 				if (c >= control.params.limit) {
-					addButton.addClass("hf--hide");
+					addButton.addClass("customify--hide");
 					if (control.params.limit_msg) {
 						if (
-							$(".hf--limit-item-msg", control.container)
+							$(".customify--limit-item-msg", control.container)
 								.length === 0
 						) {
 							$(
-								'<p class="hf--limit-item-msg">' +
+								'<p class="customify--limit-item-msg">' +
 									control.params.limit_msg +
 									"</p>"
 							).insertBefore(addButton);
 						} else {
 							$(
-								".hf--limit-item-msg",
+								".customify--limit-item-msg",
 								control.container
-							).removeClass("hf--hide");
+							).removeClass("customify--hide");
 						}
 					}
 				} else {
-					$(".hf--limit-item-msg", control.container).addClass(
-						"hf--hide"
+					$(".customify--limit-item-msg", control.container).addClass(
+						"customify--hide"
 					);
-					addButton.removeClass("hf--hide");
+					addButton.removeClass("customify--hide");
 				}
 			}
 
 			if (c > 0) {
 				$(
-					".hf--repeater-reorder",
+					".customify--repeater-reorder",
 					control.container
-				).removeClass("hf--hide");
+				).removeClass("customify--hide");
 			} else {
-				$(".hf--repeater-reorder", control.container).addClass(
-					"hf--hide"
+				$(".customify--repeater-reorder", control.container).addClass(
+					"customify--hide"
 				);
 			}
 		},
@@ -2262,8 +2262,8 @@
 			}
 
 			// Sortable
-			control.container.find(".hf--settings-fields").sortable({
-				handle: ".hf--repeater-item-heading",
+			control.container.find(".customify--settings-fields").sortable({
+				handle: ".customify--repeater-item-heading",
 				containment: "parent",
 				update: function(event, ui) {
 					control.getValue();
@@ -2273,20 +2273,20 @@
 			// Toggle Move
 			control.container.on(
 				"click",
-				".hf--repeater-reorder",
+				".customify--repeater-reorder",
 				function(e) {
 					e.preventDefault();
 					$(
-						".hf--repeater-items",
+						".customify--repeater-items",
 						control.container
 					).toggleClass("reorder-active");
 					$(
-						".hf--repeater-add-new",
+						".customify--repeater-add-new",
 						control.container
 					).toggleClass("disabled");
 					if (
 						$(
-							".hf--repeater-items",
+							".customify--repeater-items",
 							control.container
 						).hasClass("reorder-active")
 					) {
@@ -2300,10 +2300,10 @@
 			// Move Up
 			control.container.on(
 				"click",
-				".hf--repeater-item .hf--up",
+				".customify--repeater-item .customify--up",
 				function(e) {
 					e.preventDefault();
-					var i = $(this).closest(".hf--repeater-item");
+					var i = $(this).closest(".customify--repeater-item");
 					var index = i.index();
 					if (index > 0) {
 						var up = i.prev();
@@ -2316,14 +2316,14 @@
 			// Move Down
 			control.container.on(
 				"click",
-				".hf--repeater-item .hf--down",
+				".customify--repeater-item .customify--down",
 				function(e) {
 					e.preventDefault();
 					var n = $(
-						".hf--repeater-items .hf--repeater-item",
+						".customify--repeater-items .customify--repeater-item",
 						control.container
 					).length;
-					var i = $(this).closest(".hf--repeater-item");
+					var i = $(this).closest(".customify--repeater-item");
 					var index = i.index();
 					if (index < n - 1) {
 						var down = i.next();
@@ -2373,10 +2373,10 @@
 			// Toggle visibility
 			control.container.on(
 				"change",
-				".hf--repeater-item .r-visible-input",
+				".customify--repeater-item .r-visible-input",
 				function(e) {
 					e.preventDefault();
-					var p = $(this).closest(".hf--repeater-item");
+					var p = $(this).closest(".customify--repeater-item");
 					if ($(this).is(":checked")) {
 						p.removeClass("item---visible-hidden");
 					} else {
@@ -2389,21 +2389,21 @@
 			if (!control.params.title_only) {
 				control.container.on(
 					"click",
-					".hf--repeater-item-toggle, .hf--repeater-live-title",
+					".customify--repeater-item-toggle, .customify--repeater-live-title",
 					function(e) {
 						e.preventDefault();
-						var p = $(this).closest(".hf--repeater-item");
-						p.toggleClass("hf--open");
+						var p = $(this).closest(".customify--repeater-item");
+						p.toggleClass("customify--open");
 					}
 				);
 			}
 
 			// Remove
-			control.container.on("click", ".hf--remove", function(e) {
+			control.container.on("click", ".customify--remove", function(e) {
 				e.preventDefault();
-				var p = $(this).closest(".hf--repeater-item");
+				var p = $(this).closest(".customify--repeater-item");
 				p.remove();
-				$document.trigger("hf/customizer/repeater/remove", [
+				$document.trigger("customify/customizer/repeater/remove", [
 					control
 				]);
 				control.getValue();
@@ -2421,7 +2421,7 @@
 			// Add Item
 			control.container.on(
 				"click",
-				".hf--repeater-add-new",
+				".customify--repeater-add-new",
 				function(e) {
 					e.preventDefault();
 					if (!$(this).hasClass("disabled")) {
@@ -2434,15 +2434,15 @@
 		}
 	};
 
-	var hf_control = function(control) {
-		control = _.extend(control, hf_controlConstructor);
+	var customify_control = function(control) {
+		control = _.extend(control, customify_controlConstructor);
 		control.init();
 	};
 	//---------------------------------------------------------------------------
 
-	wp.customize.controlConstructor.hf = wp.customize.Control.extend({
+	wp.customize.controlConstructor.customify = wp.customize.Control.extend({
 		ready: function() {
-			hf_controls_list[this.id] = this;
+			customify_controls_list[this.id] = this;
 		}
 	});
 
@@ -2453,7 +2453,7 @@
 			var that = this;
 			if (!_.isUndefined(list_icons) && !_.isEmpty(list_icons)) {
 				_.each(list_icons, function(icon_config, font_type) {
-					$("#hf--sidebar-icon-type").append(
+					$("#customify--sidebar-icon-type").append(
 						' <option value="' +
 							font_type +
 							'">' +
@@ -2478,7 +2478,7 @@
 
 		addIcons: function(icon_config, font_type) {
 			var icon_html =
-				'<ul class="hf--list-icons icon-' +
+				'<ul class="customify--list-icons icon-' +
 				font_type +
 				'" data-type="' +
 				font_type +
@@ -2507,17 +2507,17 @@
 			});
 			icon_html += "</ul>";
 
-			$("#hf--icon-browser").append(icon_html);
+			$("#customify--icon-browser").append(icon_html);
 		},
 		changeType: function() {
-			$document.on("change", "#hf--sidebar-icon-type", function() {
+			$document.on("change", "#customify--sidebar-icon-type", function() {
 				var type = $(this).val();
 				if (!type || type == "all") {
-					$("#hf--icon-browser .hf--list-icons").show();
+					$("#customify--icon-browser .customify--list-icons").show();
 				} else {
-					$("#hf--icon-browser .hf--list-icons").hide();
+					$("#customify--icon-browser .customify--list-icons").hide();
 					$(
-						"#hf--icon-browser .hf--list-icons.icon-" +
+						"#customify--icon-browser .customify--list-icons.icon-" +
 							type
 					).show();
 				}
@@ -2526,36 +2526,36 @@
 		show: function() {
 			var controlWidth = $("#customize-controls").width();
 			if (!is_rtl) {
-				$("#hf--sidebar-icons")
+				$("#customify--sidebar-icons")
 					.css("left", controlWidth)
-					.addClass("hf--active");
+					.addClass("customify--active");
 			} else {
-				$("#hf--sidebar-icons")
+				$("#customify--sidebar-icons")
 					.css("right", controlWidth)
-					.addClass("hf--active");
+					.addClass("customify--active");
 			}
 		},
 		close: function() {
 			if (!is_rtl) {
-				$("#hf--sidebar-icons")
+				$("#customify--sidebar-icons")
 					.css("left", -300)
-					.removeClass("hf--active");
+					.removeClass("customify--active");
 			} else {
-				$("#hf--sidebar-icons")
+				$("#customify--sidebar-icons")
 					.css("right", -300)
-					.removeClass("hf--active");
+					.removeClass("customify--active");
 			}
-			$(".hf--icon-picker").removeClass("hf--icon-picking");
+			$(".customify--icon-picker").removeClass("customify--icon-picking");
 			this.pickingEl = null;
 		},
 		autoClose: function() {
 			var that = this;
 			$document.on("click", function(event) {
 				if (
-					!$(event.target).closest(".hf--icon-picker").length
+					!$(event.target).closest(".customify--icon-picker").length
 				) {
 					if (
-						!$(event.target).closest("#hf--sidebar-icons")
+						!$(event.target).closest("#customify--sidebar-icons")
 							.length
 					) {
 						that.close();
@@ -2563,7 +2563,7 @@
 				}
 			});
 
-			$("#hf--sidebar-icons .customize-controls-icon-close").on(
+			$("#customify--sidebar-icons .customize-controls-icon-close").on(
 				"click",
 				function() {
 					that.close();
@@ -2581,16 +2581,16 @@
 
 			var open = function($el) {
 				if (that.pickingEl) {
-					that.pickingEl.removeClass("hf--icon-picking");
+					that.pickingEl.removeClass("customify--icon-picking");
 				}
-				that.pickingEl = $el.closest(".hf--icon-picker");
-				that.pickingEl.addClass("hf--picking-icon");
+				that.pickingEl = $el.closest(".customify--icon-picker");
+				that.pickingEl.addClass("customify--picking-icon");
 				that.show();
 			};
 
 			$document.on(
 				"click",
-				".hf--icon-picker .hf--pick-icon",
+				".customify--icon-picker .customify--pick-icon",
 				function(e) {
 					e.preventDefault();
 					var button = $(this);
@@ -2604,18 +2604,18 @@
 				}
 			);
 
-			$document.on("click", "#hf--icon-browser li", function(e) {
+			$document.on("click", "#customify--icon-browser li", function(e) {
 				e.preventDefault();
 				var li = $(this);
 				var icon_preview = li.find("i").clone();
 				var icon = li.attr("data-icon") || "";
 				var type = li.attr("data-type") || "";
 				console.log("icon", icon);
-				$(".hf--input-icon-type", that.pickingEl).val(type);
-				$(".hf--input-icon-name", that.pickingEl)
+				$(".customify--input-icon-type", that.pickingEl).val(type);
+				$(".customify--input-icon-name", that.pickingEl)
 					.val(icon)
 					.trigger("change");
-				$(".hf--icon-preview-icon", that.pickingEl).html(
+				$(".customify--icon-preview-icon", that.pickingEl).html(
 					icon_preview
 				);
 
@@ -2625,20 +2625,20 @@
 			// remove
 			$document.on(
 				"click",
-				".hf--icon-picker .hf--icon-remove",
+				".customify--icon-picker .customify--icon-remove",
 				function(e) {
 					e.preventDefault();
 					if (that.pickingEl) {
-						that.pickingEl.removeClass("hf--icon-picking");
+						that.pickingEl.removeClass("customify--icon-picking");
 					}
-					that.pickingEl = $(this).closest(".hf--icon-picker");
-					that.pickingEl.addClass("hf--picking-icon");
+					that.pickingEl = $(this).closest(".customify--icon-picker");
+					that.pickingEl.addClass("customify--picking-icon");
 
-					$(".hf--input-icon-type", that.pickingEl).val("");
-					$(".hf--input-icon-name", that.pickingEl)
+					$(".customify--input-icon-type", that.pickingEl).val("");
+					$(".customify--input-icon-name", that.pickingEl)
 						.val("")
 						.trigger("change");
-					$(".hf--icon-preview-icon", that.pickingEl).html("");
+					$(".customify--icon-preview-icon", that.pickingEl).html("");
 				}
 			);
 		},
@@ -2646,9 +2646,9 @@
 		ajaxLoad: function(cb) {
 			var that = this;
 			$.get(
-				Hf_Control_Args.ajax,
+				Customify_Control_Args.ajax,
 				{
-					action: "hf/customizer/ajax/get_icons",
+					action: "customify/customizer/ajax/get_icons",
 					wp_customize: "on",
 					_nonce: _wpCustomizeSettings.nonce.preview,
 					customize_theme: _wpCustomizeSettings.theme.stylesheet
@@ -2671,16 +2671,16 @@
 			that.ajaxLoad();
 			that.picker();
 			// Search icon
-			$document.on("keyup", "#hf--icon-search", function(e) {
+			$document.on("keyup", "#customify--icon-search", function(e) {
 				var v = $(this).val();
 				v = v.trim();
 				if (v) {
-					$("#hf--icon-browser li").hide();
+					$("#customify--icon-browser li").hide();
 					$(
-						"#hf--icon-browser li[data-icon*='" + v + "']"
+						"#customify--icon-browser li[data-icon*='" + v + "']"
 					).show();
 				} else {
-					$("#hf--icon-browser li").show();
+					$("#customify--icon-browser li").show();
 				}
 			});
 		}
@@ -2697,9 +2697,9 @@
 		load: function() {
 			var that = this;
 			$.get(
-				Hf_Control_Args.ajax,
+				Customify_Control_Args.ajax,
 				{
-					action: "hf/customizer/ajax/fonts",
+					action: "customify/customizer/ajax/fonts",
 					wp_customize: "on",
 					_nonce: _wpCustomizeSettings.nonce.preview,
 					customize_theme: _wpCustomizeSettings.theme.stylesheet
@@ -2733,7 +2733,7 @@
 						"</option>";
 				});
 			} else {
-				_.each(Hf_Control_Args.list_font_weight, function(
+				_.each(Customify_Control_Args.list_font_weight, function(
 					value,
 					key
 				) {
@@ -2785,7 +2785,7 @@
 				html +=
 					"<p><label><input " +
 					checked +
-					'type="checkbox" class="hf-typo-input change-by-js" data-name="languages" name="_n-' +
+					'type="checkbox" class="customify-typo-input change-by-js" data-name="languages" name="_n-' +
 					new Date().getTime() +
 					'" value="' +
 					value +
@@ -2798,16 +2798,16 @@
 		},
 		ready: function() {
 			var that = this;
-			hfField.devices = _.clone(hfField.allDevices);
+			customifyField.devices = _.clone(customifyField.allDevices);
 			if (!_.isObject(that.values)) {
 				that.values = {};
 			}
 
 			that.fields = {};
 
-			//Hf_Control_Args.typo_fields
+			//Customify_Control_Args.typo_fields
 			if (!_.isEmpty(that.config)) {
-				_.each(Hf_Control_Args.typo_fields, function(_f, _key) {
+				_.each(Customify_Control_Args.typo_fields, function(_f, _key) {
 					var show = true;
 					if (!_.isUndefined(that.config[_f.name])) {
 						if (that.config[_f.name] === false) {
@@ -2820,27 +2820,27 @@
 					}
 				});
 			} else {
-				that.fields = Hf_Control_Args.typo_fields;
+				that.fields = Customify_Control_Args.typo_fields;
 			}
 
-			$(".hf-modal-settings--fields", that.container).append(
-				'<input type="hidden" class="hf--font-type">'
+			$(".customify-modal-settings--fields", that.container).append(
+				'<input type="hidden" class="customify--font-type">'
 			);
-			hfField.addFields(
+			customifyField.addFields(
 				that.fields,
 				that.values,
-				$(".hf-modal-settings--fields", that.container),
+				$(".customify-modal-settings--fields", that.container),
 				function() {
 					that.get();
 				}
 			);
 
-			$("input, select, textarea", $(".hf-modal-settings--fields"))
-				.removeClass("hf-input")
-				.addClass("hf-typo-input change-by-js");
+			$("input, select, textarea", $(".customify-modal-settings--fields"))
+				.removeClass("customify-input")
+				.addClass("customify-typo-input change-by-js");
 			that.optionHtml +=
 				'<option value="">' +
-				Hf_Control_Args.theme_default +
+				Customify_Control_Args.theme_default +
 				"</option>";
 			_.each(that.fonts, function(group, type) {
 				that.optionHtml += '<optgroup label="' + group.title + '">';
@@ -2856,7 +2856,7 @@
 				that.optionHtml += "</optgroup>";
 			});
 
-			$('.hf-typo-input[data-name="font"]', that.container).html(
+			$('.customify-typo-input[data-name="font"]', that.container).html(
 				that.optionHtml
 			);
 
@@ -2865,7 +2865,7 @@
 				_.isString(that.values["font"])
 			) {
 				$(
-					'.hf-typo-input[data-name="font"] option[value="' +
+					'.customify-typo-input[data-name="font"] option[value="' +
 						that.values["font"] +
 						'"]',
 					that.container
@@ -2874,7 +2874,7 @@
 
 			that.container.on(
 				"change init-change",
-				'.hf-typo-input[data-name="font"]',
+				'.customify-typo-input[data-name="font"]',
 				function() {
 					var font = $(this).val();
 					that.setUpFont(font);
@@ -2882,12 +2882,12 @@
 			);
 
 			$(
-				'.hf-typo-input[data-name="font"]',
+				'.customify-typo-input[data-name="font"]',
 				that.container
 			).trigger("init-change");
 
 			$(
-				'.hf-typo-input[data-name="font"]',
+				'.customify-typo-input[data-name="font"]',
 				that.container
 			).select2();
 
@@ -2951,7 +2951,7 @@
 			}
 
 			$(
-				'.hf-typo-input[data-name="font_weight"]',
+				'.customify-typo-input[data-name="font_weight"]',
 				that.container
 			).html(
 				that.toSelectOptions(
@@ -2960,27 +2960,27 @@
 					type
 				)
 			);
-			$(".hf--font-type", that.container).val(type);
+			$(".customify--font-type", that.container).val(type);
 
 			if (type !== "google") {
 				$(
-					'.hf--group-field[data-field-name="languages"]',
+					'.customify--group-field[data-field-name="languages"]',
 					that.container
 				)
-					.addClass("hf--hide")
-					.find(".hf-field-settings-inner")
+					.addClass("customify--hide")
+					.find(".customify-field-settings-inner")
 					.html("");
 			} else {
 				$(
-					'.hf--group-field[data-field-name="languages"]',
+					'.customify--group-field[data-field-name="languages"]',
 					that.container
-				).removeClass("hf--hide");
+				).removeClass("customify--hide");
 				$(
-					'.hf--group-field[data-field-name="languages"]',
+					'.customify--group-field[data-field-name="languages"]',
 					that.container
 				)
-					.removeClass("hf--hide")
-					.find(".hf-field-settings-inner")
+					.removeClass("customify--hide")
+					.find(".customify-field-settings-inner")
 					.html(
 						that.toCheckboxes(
 							subsets,
@@ -2998,17 +2998,17 @@
 			var status = $el.attr("data-opening") || false;
 			if (status !== "opening") {
 				$el.attr("data-opening", "opening");
-				that.values = $(".hf-typography-input", that.$el).val();
+				that.values = $(".customify-typography-input", that.$el).val();
 				that.values = JSON.parse(that.values);
-				$el.addClass("hf-modal--inside");
-				if (!$(".hf-modal-settings", $el).length) {
-					var $wrap = $($("#tmpl-hf-modal-settings").html());
+				$el.addClass("customify-modal--inside");
+				if (!$(".customify-modal-settings", $el).length) {
+					var $wrap = $($("#tmpl-customify-modal-settings").html());
 					that.container = $wrap;
 					that.container.hide();
 					this.$el.append($wrap);
 					that.ready();
 				} else {
-					that.container = $(".hf-modal-settings", $el);
+					that.container = $(".customify-modal-settings", $el);
 					that.container.hide();
 				}
 				that.container.slideDown(300, function() {
@@ -3016,7 +3016,7 @@
 					$(".action--reset", that.$el).show();
 				});
 			} else {
-				$(".hf-modal-settings", $el).slideUp(300, function() {
+				$(".customify-modal-settings", $el).slideUp(300, function() {
 					$el.attr("data-opening", "");
 					$el.removeClass("modal--opening");
 					$(".action--reset", $el).hide();
@@ -3029,23 +3029,23 @@
 			var that = this;
 			var $el = that.$el;
 
-			$(".hf-modal-settings", $el).remove();
+			$(".customify-modal-settings", $el).remove();
 			that.values =
-				$(".hf-typography-input", that.$el).attr(
+				$(".customify-typography-input", that.$el).attr(
 					"data-default"
 				) || "{}";
 			try {
 				that.values = JSON.parse(that.values);
 			} catch (e) {}
 
-			$el.addClass("hf-modal--inside");
-			if (!$(".hf-modal-settings", $el).length) {
-				var $wrap = $($("#tmpl-hf-modal-settings").html());
+			$el.addClass("customify-modal--inside");
+			if (!$(".customify-modal-settings", $el).length) {
+				var $wrap = $($("#tmpl-customify-modal-settings").html());
 				that.container = $wrap;
 				this.$el.append($wrap);
 				that.ready();
 			} else {
-				that.container = $(".hf-modal-settings", $el);
+				that.container = $(".customify-modal-settings", $el);
 			}
 			that.get();
 		},
@@ -3057,10 +3057,10 @@
 				if (f.name === "languages") {
 					f.type = "checkboxes";
 				}
-				data[f.name] = hfField.getValue(
+				data[f.name] = customifyField.getValue(
 					f,
 					$(
-						'.hf--group-field[data-field-name="' +
+						'.customify--group-field[data-field-name="' +
 							f.name +
 							'"]',
 						that.container
@@ -3075,8 +3075,8 @@
 				}
 			}
 
-			data.font_type = $(".hf--font-type", that.container).val();
-			$(".hf-typography-input", this.$el)
+			data.font_type = $(".customify--font-type", that.container).val();
+			$(".customify-typography-input", this.$el)
 				.val(JSON.stringify(data))
 				.trigger("change");
 			return data;
@@ -3091,7 +3091,7 @@
 	var intTypos = function() {
 		$document.on(
 			"click",
-			".customize-control-hf-typography .action--edit, .customize-control-hf-typography .action--reset",
+			".customize-control-customify-typography .action--edit, .customize-control-customify-typography .action--reset",
 			function() {
 				var controlID = $(this).attr("data-control") || "";
 				if (_.isUndefined(intTypoControls[controlID])) {
@@ -3100,7 +3100,7 @@
 						var m = _.clone(FontSelector);
 						m.config = c.params.fields;
 						m.$el = $(this)
-							.closest(".customize-control-hf-typography")
+							.closest(".customize-control-customify-typography")
 							.eq(0);
 						intTypoControls[controlID] = m;
 					}
@@ -3118,7 +3118,7 @@
 	};
 
 	//---------------------------------------------------------------------------
-	var hfModal = {
+	var customifyModal = {
 		tabs: {
 			normal: "Normal",
 			hover: "Hover"
@@ -3134,7 +3134,7 @@
 			}
 			that.values = _.defaults(that.values, {});
 			var fieldsArea = $(
-				".hf-modal-settings--fields",
+				".customify-modal-settings--fields",
 				that.container
 			);
 			fieldsArea.html("");
@@ -3162,9 +3162,9 @@
 
 			fieldsArea.append(tabsHTML);
 			if (c <= 1) {
-				tabsHTML.addClass("hf--hide");
+				tabsHTML.addClass("customify--hide");
 			}
-			hfField.devices = Hf_Control_Args.devices;
+			customifyField.devices = Customify_Control_Args.devices;
 			_.each(that.config.tabs, function(label, key) {
 				if (
 					_.isObject(that.config[key + "_fields"]) &&
@@ -3176,7 +3176,7 @@
 							'"></div>'
 					);
 					fieldsArea.append(content);
-					hfField.addFields(
+					customifyField.addFields(
 						that.config[key + "_fields"],
 						that.values[key],
 						content,
@@ -3198,13 +3198,13 @@
 					} else {
 						fv = that.values[key];
 					}
-					hfField.initConditional(content, fv);
+					customifyField.initConditional(content, fv);
 				}
 			});
 
 			$("input, select, textarea", that.container)
-				.removeClass("hf-input")
-				.addClass("hf-modal-input change-by-js");
+				.removeClass("customify-input")
+				.addClass("customify-modal-input change-by-js");
 			fieldsArea.on(
 				"change data-change",
 				"input, select, textarea",
@@ -3245,7 +3245,7 @@
 
 		reset: function() {
 			var that = this;
-			$(".hf-modal-settings", that.$el).remove();
+			$(".customify-modal-settings", that.$el).remove();
 			try {
 				var _default = wpcustomize.control(that.controlID).params
 					.default;
@@ -3253,19 +3253,19 @@
 			} catch (e) {
 				that.values = {};
 			}
-			if (!$(".hf-modal-settings", that.$el).length) {
-				var $wrap = $($("#tmpl-hf-modal-settings").html());
+			if (!$(".customify-modal-settings", that.$el).length) {
+				var $wrap = $($("#tmpl-customify-modal-settings").html());
 				that.container = $wrap;
 				this.$el.append($wrap);
 				that.addFields();
 			} else {
-				that.container = $(".hf-modal-settings", that.$el);
+				that.container = $(".customify-modal-settings", that.$el);
 			}
 
-			that.$el.addClass("hf-modal--inside");
+			that.$el.addClass("customify-modal--inside");
 			that.$el.addClass("modal--opening");
 			that.container.show(0);
-			$(".hf-hidden-modal-input", that.$el)
+			$(".customify-hidden-modal-input", that.$el)
 				.val(JSON.stringify(that.values))
 				.trigger("change");
 		},
@@ -3282,10 +3282,10 @@
 				);
 				if (_.isObject(that.config[key + "_fields"])) {
 					_.each(that.config[key + "_fields"], function(f) {
-						subdata[f.name] = hfField.getValue(
+						subdata[f.name] = customifyField.getValue(
 							f,
 							$(
-								'.hf--group-field[data-field-name="' +
+								'.customify--group-field[data-field-name="' +
 									f.name +
 									'"]',
 								content
@@ -3294,9 +3294,9 @@
 					});
 				}
 				data[key] = subdata;
-				hfField.initConditional(content, subdata);
+				customifyField.initConditional(content, subdata);
 			});
-			$(".hf-hidden-modal-input", this.$el)
+			$(".customify-hidden-modal-input", this.$el)
 				.val(JSON.stringify(data))
 				.trigger("change");
 			return data;
@@ -3308,21 +3308,21 @@
 			if (status !== "opening") {
 				that.$el.attr("data-opening", "opening");
 				that.values = $(
-					".hf-hidden-modal-input",
+					".customify-hidden-modal-input",
 					that.$el
 				).val();
 				try {
 					that.values = JSON.parse(that.values);
 				} catch (e) {}
-				that.$el.addClass("hf-modal--inside");
-				if (!$(".hf-modal-settings", that.$el).length) {
-					var $wrap = $($("#tmpl-hf-modal-settings").html());
+				that.$el.addClass("customify-modal--inside");
+				if (!$(".customify-modal-settings", that.$el).length) {
+					var $wrap = $($("#tmpl-customify-modal-settings").html());
 					$wrap.hide();
 					that.container = $wrap;
 					that.$el.append($wrap);
 					that.addFields();
 				} else {
-					that.container = $(".hf-modal-settings", that.$el);
+					that.container = $(".customify-modal-settings", that.$el);
 				}
 
 				this.container.slideDown(300);
@@ -3331,7 +3331,7 @@
 			} else {
 				this.container.slideUp(300, function() {
 					that.$el.attr("data-opening", "");
-					$(".hf-modal-settings", that.$el).hide();
+					$(".customify-modal-settings", that.$el).hide();
 					that.$el.removeClass("modal--opening");
 					$(".action--reset", that.$el).hide();
 				});
@@ -3343,17 +3343,17 @@
 	var initModal = function() {
 		$document.on(
 			"click",
-			".customize-control-hf-modal .action--edit, .customize-control-hf-modal .action--reset, .customize-control-hf-modal .hf-control-field-header",
+			".customize-control-customify-modal .action--edit, .customize-control-customify-modal .action--reset, .customize-control-customify-modal .customify-control-field-header",
 			function(e) {
 				e.preventDefault();
 				var controlID = $(this).attr("data-control") || "";
 				if (_.isUndefined(initModalControls[controlID])) {
 					var c = wpcustomize.control(controlID);
 					if (controlID && !_.isUndefined(c)) {
-						var m = _.clone(hfModal);
+						var m = _.clone(customifyModal);
 						m.config = c.params.fields;
 						m.$el = $(this)
-							.closest(".customize-control-hf-modal")
+							.closest(".customize-control-customify-modal")
 							.eq(0);
 						m.controlID = controlID;
 						initModalControls[controlID] = m;
@@ -3372,7 +3372,7 @@
 	};
 
 	//---------------------------------------------------------------------------
-	var hfStyling = {
+	var customifyStyling = {
 		tabs: {
 			normal: "Normal",
 			hover: "Hover"
@@ -3413,7 +3413,7 @@
 			that.normal_fields = {};
 			that.hover_fields = {};
 
-			that.tabs = _.clone(Hf_Control_Args.styling_config.tabs);
+			that.tabs = _.clone(Customify_Control_Args.styling_config.tabs);
 			if (tabs === false) {
 				that.tabs["hover"] = false;
 			} else if (_.isObject(tabs)) {
@@ -3422,11 +3422,11 @@
 
 			that.normal_fields = that.setupFields(
 				normal_fields,
-				Hf_Control_Args.styling_config.normal_fields
+				Customify_Control_Args.styling_config.normal_fields
 			);
 			that.hover_fields = that.setupFields(
 				hover_fields,
-				Hf_Control_Args.styling_config.hover_fields
+				Customify_Control_Args.styling_config.hover_fields
 			);
 		},
 		addFields: function(values) {
@@ -3439,7 +3439,7 @@
 				normal: {}
 			});
 			var fieldsArea = $(
-				".hf-modal-settings--fields",
+				".customify-modal-settings--fields",
 				that.container
 			);
 			fieldsArea.html("");
@@ -3463,9 +3463,9 @@
 
 			fieldsArea.append(tabsHTML);
 			if (c <= 1) {
-				tabsHTML.addClass("hf--hide");
+				tabsHTML.addClass("customify--hide");
 			}
-			hfField.devices = Hf_Control_Args.devices;
+			customifyField.devices = Customify_Control_Args.devices;
 			_.each(that.tabs, function(label, key) {
 				if (
 					_.isObject(that[key + "_fields"]) &&
@@ -3477,7 +3477,7 @@
 							'"></div>'
 					);
 					fieldsArea.append(content);
-					hfField.addFields(
+					customifyField.addFields(
 						that[key + "_fields"],
 						that.values[key],
 						content,
@@ -3485,13 +3485,13 @@
 							that.get();
 						}
 					);
-					hfField.initConditional(content, that.values[key]);
+					customifyField.initConditional(content, that.values[key]);
 				}
 			});
 
 			$("input, select, textarea", that.container)
-				.removeClass("hf-input")
-				.addClass("hf-modal-input change-by-js");
+				.removeClass("customify-input")
+				.addClass("customify-modal-input change-by-js");
 
 			fieldsArea.on(
 				"change data-change",
@@ -3534,7 +3534,7 @@
 		reset: function() {
 			var that = this;
 
-			$(".hf-modal-settings", that.$el).remove();
+			$(".customify-modal-settings", that.$el).remove();
 			try {
 				var _default = wpcustomize.control(that.controlID).params
 					.default;
@@ -3542,19 +3542,19 @@
 			} catch (e) {
 				that.values = {};
 			}
-			if (!$(".hf-modal-settings", that.$el).length) {
-				var $wrap = $($("#tmpl-hf-modal-settings").html());
+			if (!$(".customify-modal-settings", that.$el).length) {
+				var $wrap = $($("#tmpl-customify-modal-settings").html());
 				that.container = $wrap;
 				that.$el.append($wrap);
 				that.addFields();
 			} else {
-				that.container = $(".hf-modal-settings", that.$el);
+				that.container = $(".customify-modal-settings", that.$el);
 			}
 
-			that.$el.addClass("hf-modal--inside");
+			that.$el.addClass("customify-modal--inside");
 			that.$el.addClass("modal--opening");
 			that.container.show(0);
-			$(".hf-hidden-modal-input", that.$el)
+			$(".customify-hidden-modal-input", that.$el)
 				.val(JSON.stringify(that.values))
 				.trigger("change");
 		},
@@ -3570,10 +3570,10 @@
 				);
 				if (_.isObject(that[key + "_fields"])) {
 					_.each(that[key + "_fields"], function(f) {
-						subdata[f.name] = hfField.getValue(
+						subdata[f.name] = customifyField.getValue(
 							f,
 							$(
-								'.hf--group-field[data-field-name="' +
+								'.customify--group-field[data-field-name="' +
 									f.name +
 									'"]',
 								content
@@ -3582,10 +3582,10 @@
 					});
 				}
 				data[key] = subdata;
-				hfField.initConditional(content, subdata);
+				customifyField.initConditional(content, subdata);
 			});
 
-			$(".hf-hidden-modal-input", this.$el)
+			$(".customify-hidden-modal-input", this.$el)
 				.val(JSON.stringify(data))
 				.trigger("change");
 			return data;
@@ -3598,21 +3598,21 @@
 				that.$el.attr("data-opening", "opening");
 
 				that.values = $(
-					".hf-hidden-modal-input",
+					".customify-hidden-modal-input",
 					that.$el
 				).val();
 				try {
 					that.values = JSON.parse(that.values);
 				} catch (e) {}
-				that.$el.addClass("hf-modal--inside");
-				if (!$(".hf-modal-settings", that.$el).length) {
-					var $wrap = $($("#tmpl-hf-modal-settings").html());
+				that.$el.addClass("customify-modal--inside");
+				if (!$(".customify-modal-settings", that.$el).length) {
+					var $wrap = $($("#tmpl-customify-modal-settings").html());
 					$wrap.hide();
 					that.container = $wrap;
 					that.$el.append($wrap);
 					that.addFields();
 				} else {
-					that.container = $(".hf-modal-settings", that.$el);
+					that.container = $(".customify-modal-settings", that.$el);
 				}
 
 				this.container.slideDown(300);
@@ -3621,7 +3621,7 @@
 			} else {
 				that.container.slideUp(300, function() {
 					that.$el.attr("data-opening", "");
-					$(".hf-modal-settings", that.$el).hide();
+					$(".customify-modal-settings", that.$el).hide();
 					that.$el.removeClass("modal--opening");
 					$(".action--reset", that.$el).hide();
 				});
@@ -3633,13 +3633,13 @@
 	var initStyling = function() {
 		$document.on(
 			"click",
-			".customize-control-hf-styling .action--edit, .customize-control-hf-styling .action--reset",
+			".customize-control-customify-styling .action--edit, .customize-control-customify-styling .action--reset",
 			function(e) {
 				e.preventDefault();
 				var controlID = $(this).attr("data-control") || "";
 				if (_.isUndefined(initStylingControls[controlID])) {
 					var c = wpcustomize.control(controlID);
-					var s = _.clone(hfStyling);
+					var s = _.clone(customifyStyling);
 					var tabs = null,
 						normal_fields = -1,
 						hover_fields = -1;
@@ -3660,7 +3660,7 @@
 						}
 					}
 					s.$el = $(this)
-						.closest(".customize-control-hf-styling")
+						.closest(".customize-control-customify-styling")
 						.eq(0);
 					s.setupConfig(tabs, normal_fields, hover_fields);
 					s.controlID = controlID;
@@ -3681,43 +3681,43 @@
 	//---------------------------------------------------------------------------
 
 	wpcustomize.bind("ready", function(e, b) {
-		$document.on("hf/customizer/device/change", function(e, device) {
-			$(".hf--device-select a").removeClass("hf--active");
+		$document.on("customify/customizer/device/change", function(e, device) {
+			$(".customify--device-select a").removeClass("customify--active");
 			if (device != "mobile") {
-				$(".hf--device-mobile").addClass("hf--hide");
-				$(".hf--device-general").removeClass("hf--hide");
-				$(".hf--tab-device-general").addClass(
-					"hf--active"
+				$(".customify--device-mobile").addClass("customify--hide");
+				$(".customify--device-general").removeClass("customify--hide");
+				$(".customify--tab-device-general").addClass(
+					"customify--active"
 				);
 			} else {
-				$(".hf--device-general").addClass("hf--hide");
-				$(".hf--device-mobile").removeClass("hf--hide");
-				$(".hf--tab-device-mobile").addClass(
-					"hf--active"
+				$(".customify--device-general").addClass("customify--hide");
+				$(".customify--device-mobile").removeClass("customify--hide");
+				$(".customify--tab-device-mobile").addClass(
+					"customify--active"
 				);
 			}
 		});
 
-		$document.on("click", ".hf--tab-device-mobile", function(e) {
+		$document.on("click", ".customify--tab-device-mobile", function(e) {
 			e.preventDefault();
-			$document.trigger("hf/customizer/device/change", ["mobile"]);
+			$document.trigger("customify/customizer/device/change", ["mobile"]);
 		});
 
-		$document.on("click", ".hf--tab-device-general", function(e) {
+		$document.on("click", ".customify--tab-device-general", function(e) {
 			e.preventDefault();
-			$document.trigger("hf/customizer/device/change", [
+			$document.trigger("customify/customizer/device/change", [
 				"general"
 			]);
 		});
 
 		$(".accordion-section").each(function() {
 			var s = $(this);
-			var t = $(".hf--device-select", s).first();
+			var t = $(".customify--device-select", s).first();
 			$(".customize-section-title", s).append(t);
 		});
 
 		// Devices Switcher
-		$document.on("click", ".hf-devices button", function(e) {
+		$document.on("click", ".customify-devices button", function(e) {
 			e.preventDefault();
 			var device = $(this).attr("data-device") || "";
 			//console.log('Device', device);
@@ -3729,15 +3729,15 @@
 		});
 
 		// Devices Switcher
-		$document.on("change", ".hf--field input:checkbox", function(e) {
+		$document.on("change", ".customify--field input:checkbox", function(e) {
 			if ($(this).is(":checked")) {
 				$(this)
 					.parent()
-					.addClass("hf--checked");
+					.addClass("customify--checked");
 			} else {
 				$(this)
 					.parent()
-					.removeClass("hf--checked");
+					.removeClass("customify--checked");
 			}
 		});
 
@@ -3751,7 +3751,7 @@
 			_.each(allValues, function(value, id) {
 				var control = wpcustomize.control(id);
 				if (!_.isUndefined(control)) {
-					if (control.params.type == "hf") {
+					if (control.params.type == "customify") {
 						if (!_.isEmpty(control.params.required)) {
 							var check = false;
 							check = control.multiple_compare(
@@ -3760,10 +3760,10 @@
 								decodeValue
 							);
 							if (!check) {
-								control.container.addClass("hf--hide");
+								control.container.addClass("customify--hide");
 							} else {
 								control.container.removeClass(
-									"hf--hide"
+									"customify--hide"
 								);
 							}
 						}
@@ -3773,12 +3773,12 @@
 		};
 
 		$document.ready(function() {
-			_.each(hf_controls_list, function(c, k) {
-				new hf_control(c);
+			_.each(customify_controls_list, function(c, k) {
+				new customify_control(c);
 			});
 
 			ControlConditional(false);
-			$document.on("hf/customizer/value_changed", function() {
+			$document.on("customify/customizer/value_changed", function() {
 				ControlConditional(true);
 			});
 
@@ -3793,7 +3793,7 @@
 		wpcustomize.section.each(function(section) {
 			if (
 				section.params.type == "section" ||
-				section.params.type == "hf_section"
+				section.params.type == "customify_section"
 			) {
 				section.container
 					.find(
@@ -3803,16 +3803,16 @@
 						'<button data-section="' +
 							section.id +
 							'" type="button" title="' +
-							Hf_Control_Args.reset +
+							Customify_Control_Args.reset +
 							'" class="customize--reset-section" aria-expanded="false"><span class="screen-reader-text">' +
-							Hf_Control_Args.reset +
+							Customify_Control_Args.reset +
 							"</span></button>"
 					);
 			}
 		});
 
 		// Remove checked align
-		$document.on("dblclick", ".hf-text-align label", function(e) {
+		$document.on("dblclick", ".customify-text-align label", function(e) {
 			var input = $(this).find('input[type="radio"]');
 			if (input.length) {
 				if (input.is(":checked")) {
@@ -3828,7 +3828,7 @@
 				return;
 			}
 
-			if (!confirm(Hf_Control_Args.confirm_reset)) {
+			if (!confirm(Customify_Control_Args.confirm_reset)) {
 				return;
 			}
 
@@ -3847,7 +3847,7 @@
 				$.post(
 					ajaxurl,
 					{
-						action: "hf__reset_section",
+						action: "customify__reset_section",
 						section: section,
 						settings: setting_keys
 					},
@@ -3870,7 +3870,7 @@
 		/**
 		 * Image Select disable click
 		 */
-		$document.on("click", ".hf-radio-list p", function(e) {
+		$document.on("click", ".customify-radio-list p", function(e) {
 			var id =
 				$(this)
 					.find("input")
@@ -3906,7 +3906,7 @@
 		/**
 		 * When panel open
 		 */
-		_.each(Hf_Control_Args.panel_urls, function(url, id) {
+		_.each(Customify_Control_Args.panel_urls, function(url, id) {
 			if (url) {
 				wp.customize.panel(id, function(panel) {
 					panel.expanded.bind(function(isExpanded) {
@@ -3918,7 +3918,7 @@
 			}
 		});
 
-		_.each(Hf_Control_Args.section_urls, function(url, id) {
+		_.each(Customify_Control_Args.section_urls, function(url, id) {
 			if (url) {
 				wp.customize.section(id, function(section) {
 					section.expanded.bind(function(isExpanded) {
