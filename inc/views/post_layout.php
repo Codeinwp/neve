@@ -9,11 +9,11 @@
 namespace Neve\Views;
 
 /**
- * Class Page_Header
+ * Class Post_Layout
  *
  * @package Neve\Views
  */
-class Post_Header extends Base_View {
+class Post_Layout extends Base_View {
 
 	/**
 	 * Function that is run after instantiation.
@@ -21,7 +21,7 @@ class Post_Header extends Base_View {
 	 * @return void
 	 */
 	public function init() {
-		add_action( 'neve_before_content', array( $this, 'render_post_header' ) );
+		add_action( 'neve_do_single_post', array( $this, 'render_post_header' ) );
 	}
 
 	/**
@@ -37,9 +37,11 @@ class Post_Header extends Base_View {
 		$default_order = array(
 			'title-meta',
 			'thumbnail',
+			'content',
+			'tags',
 		);
 
-		$content_order = get_theme_mod( 'neve_single_post_elements_order', json_encode( $default_order ) );
+		$content_order = get_theme_mod( 'neve_layout_single_post_elements_order', json_encode( $default_order ) );
 		$content_order = json_decode( $content_order );
 
 		if ( apply_filters( 'neve_filter_toggle_content_parts', true, 'title' ) !== true ) {
@@ -61,21 +63,10 @@ class Post_Header extends Base_View {
 			return;
 		}
 
-		echo '<div class="entry-header">';
-		// Todo: add single content order here.
 		foreach ( $content_order as $item ) {
 			switch ( $item ) {
-				case 'title':
-					echo '<h1 class="title entry-title">' . wp_kses_post( get_the_title() ) . '</h1>';
-					break;
-				case 'meta':
-					$this->render_post_meta();
-					break;
 				case 'title-meta':
-					echo '<div class="nv-title-meta-wrap">';
-					echo '<h1 class="title entry-title">' . wp_kses_post( get_the_title() ) . '</h1>';
-					$this->render_post_meta();
-					echo '</div>';
+					$this->render_entry_header();
 					break;
 				case 'thumbnail':
 					echo '<div class="nv-thumb-wrap">';
@@ -85,9 +76,28 @@ class Post_Header extends Base_View {
 					);
 					echo '</div>';
 					break;
+				case 'content':
+					do_action( 'neve_before_content', 'single-post' );
+					echo '<div class="nv-content-wrap entry-content">';
+					the_content();
+					echo '</div>';
+					do_action( 'neve_do_pagination', 'single' );
+					do_action( 'neve_after_content', 'single-post' );
+					break;
+				case 'post-navigation':
+					do_action( 'neve_post_navigation' );
+					break;
+				case 'tags':
+					do_action( 'neve_do_tags' );
+					break;
+				case 'title':
+					echo '<h1 class="title entry-title">' . wp_kses_post( get_the_title() ) . '</h1>';
+					break;
+				case 'meta':
+					$this->render_post_meta();
+					break;
 			}
 		}
-		echo '</div>';
 	}
 
 	/**
@@ -105,5 +115,20 @@ class Post_Header extends Base_View {
 		$meta_order = get_theme_mod( 'neve_post_meta_ordering', $default_meta_order );
 		$meta_order = json_decode( $meta_order );
 		do_action( 'neve_post_meta_single', $meta_order );
+	}
+
+	/**
+	 * Render post header
+	 *
+	 * @return void
+	 */
+	private function render_entry_header() {
+		echo '<div class="entry-header">';
+		echo '<div class="nv-title-meta-wrap">';
+		echo '<h1 class="title entry-title">' . wp_kses_post( get_the_title() ) . '</h1>';
+		$this->render_post_meta();
+		echo '</div>';
+		echo '</div>';
+
 	}
 }

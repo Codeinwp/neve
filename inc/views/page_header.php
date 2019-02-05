@@ -53,6 +53,7 @@ class Page_Header extends Base_View {
 		<div class="nv-page-title-wrap <?php echo esc_attr( $title_args['wrap-class'] ); ?>">
 			<div class="nv-page-title <?php echo esc_attr( $title_args['class'] ); ?>">
 				<h1><?php echo wp_kses_post( html_entity_decode( $title_args['string'] ) ); ?></h1>
+				<?php do_action( 'neve_after_page_title' ); ?>
 			</div>
 		</div>
 		<?php
@@ -151,7 +152,10 @@ class Page_Header extends Base_View {
 	 */
 	public function display_archive_description() {
 		if ( is_author() ) {
-			echo '<p>' . wp_kses_post( get_the_author_meta( 'description' ) ) . '</p>';
+			$author_meta = get_the_author_meta( 'description' );
+			if ( ! empty( $author_meta ) ) {
+				echo '<p>' . wp_kses_post( $author_meta ) . '</p>';
+			}
 		} elseif ( is_category() ) {
 			the_archive_description();
 		} elseif ( is_tag() ) {
