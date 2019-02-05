@@ -3,7 +3,7 @@ var CustomizeBuilder_V1;
 (function($) {
 	var $document = $(document);
 	var wpcustomize = wp.customize || null;
-	var is_rtl = hf_Layout_Builder.is_rtl;
+	var is_rtl = Hf_Layout_Builder.is_rtl;
 
 	CustomizeBuilder_V1 = function(options, id) {
 		var Builder = {

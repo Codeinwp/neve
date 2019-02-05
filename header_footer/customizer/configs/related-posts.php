@@ -104,7 +104,7 @@ if ( ! function_exists( 'Hf_customizer_single_related_posts_config' ) ) {
 				'render_callback' => $args['cb'],
 				'default'         => 'medium',
 				'label'           => __( 'Thumbnail Size', 'Hf' ),
-				'choices'         => Hf_get_all_image_sizes(),
+				'choices'         => []//Hf_get_all_image_sizes(),
 			),
 
 			array(

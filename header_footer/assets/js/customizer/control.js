@@ -239,7 +239,7 @@
 	"use strict";
 
 	var $document = $(document);
-	var is_rtl = hf_Control_Args.is_rtl;
+	var is_rtl = Hf_Control_Args.is_rtl;
 
 	var hfMedia = {
 		setAttachment: function(attachment) {
@@ -307,7 +307,7 @@
 		},
 		toRelativeUrl: function(url) {
 			return url;
-			//return url.replace( hf_Control_Args.home_url, '' );
+			//return url.replace( Hf_Control_Args.home_url, '' );
 		},
 		showChangeBtn: function() {
 			$(".hf--add", this.preview).addClass("hf--hide");
@@ -1052,7 +1052,7 @@
 										.text();
 								} else if (_.isUndefined(_fv) || _fv == "") {
 									//_fv = control.params.l10n.untitled;
-									_fv = hf_Control_Args.untitled;
+									_fv = Hf_Control_Args.untitled;
 								}
 								control.updateRepeaterLiveTitle(_fv, $item, f);
 							}
@@ -1303,7 +1303,7 @@
 					if (f.type === "select") {
 						live_title = f.choices[f.value];
 					} else if (_.isUndefined(live_title) || live_title == "") {
-						live_title = hf_Control_Args.untitled;
+						live_title = Hf_Control_Args.untitled;
 					}
 					control.updateRepeaterLiveTitle(
 						live_title,
@@ -2646,7 +2646,7 @@
 		ajaxLoad: function(cb) {
 			var that = this;
 			$.get(
-				hf_Control_Args.ajax,
+				Hf_Control_Args.ajax,
 				{
 					action: "hf/customizer/ajax/get_icons",
 					wp_customize: "on",
@@ -2697,7 +2697,7 @@
 		load: function() {
 			var that = this;
 			$.get(
-				hf_Control_Args.ajax,
+				Hf_Control_Args.ajax,
 				{
 					action: "hf/customizer/ajax/fonts",
 					wp_customize: "on",
@@ -2733,7 +2733,7 @@
 						"</option>";
 				});
 			} else {
-				_.each(hf_Control_Args.list_font_weight, function(
+				_.each(Hf_Control_Args.list_font_weight, function(
 					value,
 					key
 				) {
@@ -2805,9 +2805,9 @@
 
 			that.fields = {};
 
-			//hf_Control_Args.typo_fields
+			//Hf_Control_Args.typo_fields
 			if (!_.isEmpty(that.config)) {
-				_.each(hf_Control_Args.typo_fields, function(_f, _key) {
+				_.each(Hf_Control_Args.typo_fields, function(_f, _key) {
 					var show = true;
 					if (!_.isUndefined(that.config[_f.name])) {
 						if (that.config[_f.name] === false) {
@@ -2820,7 +2820,7 @@
 					}
 				});
 			} else {
-				that.fields = hf_Control_Args.typo_fields;
+				that.fields = Hf_Control_Args.typo_fields;
 			}
 
 			$(".hf-modal-settings--fields", that.container).append(
@@ -2840,7 +2840,7 @@
 				.addClass("hf-typo-input change-by-js");
 			that.optionHtml +=
 				'<option value="">' +
-				hf_Control_Args.theme_default +
+				Hf_Control_Args.theme_default +
 				"</option>";
 			_.each(that.fonts, function(group, type) {
 				that.optionHtml += '<optgroup label="' + group.title + '">';
@@ -3164,7 +3164,7 @@
 			if (c <= 1) {
 				tabsHTML.addClass("hf--hide");
 			}
-			hfField.devices = hf_Control_Args.devices;
+			hfField.devices = Hf_Control_Args.devices;
 			_.each(that.config.tabs, function(label, key) {
 				if (
 					_.isObject(that.config[key + "_fields"]) &&
@@ -3413,7 +3413,7 @@
 			that.normal_fields = {};
 			that.hover_fields = {};
 
-			that.tabs = _.clone(hf_Control_Args.styling_config.tabs);
+			that.tabs = _.clone(Hf_Control_Args.styling_config.tabs);
 			if (tabs === false) {
 				that.tabs["hover"] = false;
 			} else if (_.isObject(tabs)) {
@@ -3422,11 +3422,11 @@
 
 			that.normal_fields = that.setupFields(
 				normal_fields,
-				hf_Control_Args.styling_config.normal_fields
+				Hf_Control_Args.styling_config.normal_fields
 			);
 			that.hover_fields = that.setupFields(
 				hover_fields,
-				hf_Control_Args.styling_config.hover_fields
+				Hf_Control_Args.styling_config.hover_fields
 			);
 		},
 		addFields: function(values) {
@@ -3465,7 +3465,7 @@
 			if (c <= 1) {
 				tabsHTML.addClass("hf--hide");
 			}
-			hfField.devices = hf_Control_Args.devices;
+			hfField.devices = Hf_Control_Args.devices;
 			_.each(that.tabs, function(label, key) {
 				if (
 					_.isObject(that[key + "_fields"]) &&
@@ -3803,9 +3803,9 @@
 						'<button data-section="' +
 							section.id +
 							'" type="button" title="' +
-							hf_Control_Args.reset +
+							Hf_Control_Args.reset +
 							'" class="customize--reset-section" aria-expanded="false"><span class="screen-reader-text">' +
-							hf_Control_Args.reset +
+							Hf_Control_Args.reset +
 							"</span></button>"
 					);
 			}
@@ -3828,7 +3828,7 @@
 				return;
 			}
 
-			if (!confirm(hf_Control_Args.confirm_reset)) {
+			if (!confirm(Hf_Control_Args.confirm_reset)) {
 				return;
 			}
 
@@ -3906,7 +3906,7 @@
 		/**
 		 * When panel open
 		 */
-		_.each(hf_Control_Args.panel_urls, function(url, id) {
+		_.each(Hf_Control_Args.panel_urls, function(url, id) {
 			if (url) {
 				wp.customize.panel(id, function(panel) {
 					panel.expanded.bind(function(isExpanded) {
@@ -3918,7 +3918,7 @@
 			}
 		});
 
-		_.each(hf_Control_Args.section_urls, function(url, id) {
+		_.each(Hf_Control_Args.section_urls, function(url, id) {
 			if (url) {
 				wp.customize.section(id, function(section) {
 					section.expanded.bind(function(isExpanded) {

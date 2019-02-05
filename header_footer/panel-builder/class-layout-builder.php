@@ -316,7 +316,7 @@ class Hf_Customize_Layout_Builder {
 		$suffix = Hf()->get_asset_suffix();
 		wp_enqueue_script(
 			'Hf-builder-v1',
-			esc_url( get_template_directory_uri() ) . '/assets/js/customizer/builder-v1' . $suffix . '.js',
+			esc_url( get_template_directory_uri() ) . '/header_footer/assets/js/customizer/builder-v1' . $suffix . '.js',
 			array(
 				'customize-controls',
 				'jquery-ui-resizable',
@@ -328,7 +328,7 @@ class Hf_Customize_Layout_Builder {
 		);
 		wp_enqueue_script(
 			'Hf-builder-v2',
-			esc_url( get_template_directory_uri() ) . '/assets/js/customizer/builder-v2' . $suffix . '.js',
+			esc_url( get_template_directory_uri() ) . '/header_footer/assets/js/customizer/builder-v2' . $suffix . '.js',
 			array(
 				'customize-controls',
 				'jquery-ui-resizable',
@@ -340,7 +340,7 @@ class Hf_Customize_Layout_Builder {
 		);
 		wp_enqueue_script(
 			'Hf-layout-builder',
-			esc_url( get_template_directory_uri() ) . '/assets/js/customizer/builder' . $suffix . '.js',
+			esc_url( get_template_directory_uri() ) . '/header_footer/assets/js/customizer/builder' . $suffix . '.js',
 			array(
 				'Hf-builder-v1',
 				'Hf-builder-v2',

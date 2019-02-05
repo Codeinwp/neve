@@ -62,6 +62,16 @@ if ( version_compare( PHP_VERSION, '5.3.29' ) < 0 ) {
 
 require_once 'start.php';
 
+require_once 'header_footer/main.php';
+function Hf() {
+	$hf_main = new Hf();
+	$hf_main->init();
+	return $hf_main;
+}
+
+Hf();
+
+
 require_once 'globals/utilities.php';
 require_once 'globals/hooks.php';
 require_once 'globals/sanitize-functions.php';

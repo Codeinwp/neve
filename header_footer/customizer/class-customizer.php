@@ -85,12 +85,13 @@ class  Hf_Customizer {
 	 */
 	function preview_js() {
 		if ( is_customize_preview() ) {
-			$suffix = Hf()->get_asset_suffix();
+			$suffix = '';
+			//$suffix = Hf()->get_asset_suffix();
 
-			wp_enqueue_script( 'Hf-customizer-auto-css', esc_url( get_template_directory_uri() ) . '/assets/js/customizer/auto-css' . $suffix . '.js', array( 'customize-preview' ), '20151215', true );
+			wp_enqueue_script( 'Hf-customizer-auto-css', esc_url( get_template_directory_uri() ) . '/header_footer/assets/js/customizer/auto-css' . $suffix . '.js', array( 'customize-preview' ), '20151215', true );
 			wp_enqueue_script(
 				'Hf-customizer',
-				esc_url( get_template_directory_uri() ) . '/assets/js/customizer/customizer' . $suffix . '.js',
+				esc_url( get_template_directory_uri() ) . '/header_footer/assets/js/customizer/customizer' . $suffix . '.js',
 				array(
 					'customize-preview',
 					'customize-selective-refresh',

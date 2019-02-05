@@ -161,7 +161,7 @@ if ( ! function_exists( 'Hf_customizer_blog_config' ) ) {
 				'render_callback' => $args['cb'],
 				'default'         => 'medium',
 				'label'           => __( 'Thumbnail Size', 'Hf' ),
-				'choices'         => Hf_get_all_image_sizes(),
+				'choices'         => [],//Hf_get_all_image_sizes(),
 				'required'        => array( $args['id'] . '_media_hide', '!=', '1' ),
 			),
 			array(

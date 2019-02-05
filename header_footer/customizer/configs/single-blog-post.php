@@ -116,7 +116,7 @@ if ( ! function_exists( 'Hf_customizer_single_blog_config' ) ) {
 				'render_callback' => $args['cb'],
 				'default'         => 'large',
 				'label'           => __( 'Thumbnail Size', 'Hf' ),
-				'choices'         => Hf_get_all_image_sizes(),
+				'choices'         => []//Hf_get_all_image_sizes(),
 			),
 
 			array(

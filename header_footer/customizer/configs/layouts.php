@@ -145,7 +145,7 @@ if ( ! function_exists( 'Hf_customizer_layouts_config' ) ) {
 				'default' => 'content-sidebar',
 				'section' => 'sidebar_layout_section',
 				'title'   => __( 'Default Sidebar Layout', 'Hf' ),
-				'choices' => Hf_get_config_sidebar_layouts(),
+				'choices' => []//Hf_get_config_sidebar_layouts(),
 			),
 			// Sidebar vertical border.
 			array(
@@ -169,7 +169,7 @@ if ( ! function_exists( 'Hf_customizer_layouts_config' ) ) {
 				'default' => 'content-sidebar',
 				'section' => 'sidebar_layout_section',
 				'title'   => __( 'Pages', 'Hf' ),
-				'choices' => Hf_get_config_sidebar_layouts(),
+				'choices' => []//Hf_get_config_sidebar_layouts(),
 			),
 			// Blog Posts sidebar layout.
 			array(
@@ -178,7 +178,7 @@ if ( ! function_exists( 'Hf_customizer_layouts_config' ) ) {
 				'default' => 'content-sidebar',
 				'section' => 'sidebar_layout_section',
 				'title'   => __( 'Blog posts', 'Hf' ),
-				'choices' => Hf_get_config_sidebar_layouts(),
+				'choices' => []//Hf_get_config_sidebar_layouts(),
 			),
 			// Blog Posts sidebar layout.
 			array(
@@ -187,7 +187,7 @@ if ( ! function_exists( 'Hf_customizer_layouts_config' ) ) {
 				'default' => 'content-sidebar',
 				'section' => 'sidebar_layout_section',
 				'title'   => __( 'Blog Archive Page', 'Hf' ),
-				'choices' => Hf_get_config_sidebar_layouts(),
+				'choices' => []//Hf_get_config_sidebar_layouts(),
 			),
 			// Search.
 			array(
@@ -196,7 +196,7 @@ if ( ! function_exists( 'Hf_customizer_layouts_config' ) ) {
 				'default' => 'content-sidebar',
 				'section' => 'sidebar_layout_section',
 				'title'   => __( 'Search Page', 'Hf' ),
-				'choices' => Hf_get_config_sidebar_layouts(),
+				'choices' => []//Hf_get_config_sidebar_layouts(),
 			),
 			// 404.
 			array(
@@ -205,7 +205,7 @@ if ( ! function_exists( 'Hf_customizer_layouts_config' ) ) {
 				'default' => 'content',
 				'section' => 'sidebar_layout_section',
 				'title'   => __( '404 Page', 'Hf' ),
-				'choices' => Hf_get_config_sidebar_layouts(),
+				'choices' => []//Hf_get_config_sidebar_layouts(),
 			),
 		);
 

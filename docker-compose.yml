@@ -17,7 +17,7 @@ services:
     - mysql
     image: hardeepasrani/pirate-brewery
     ports:
-    - 8001:80
+    - 8080:80
     privileged: true
     volumes:
     - ~/${WP_CORE_STASH:-WordPressDock/wp-core}:/var/www/html/

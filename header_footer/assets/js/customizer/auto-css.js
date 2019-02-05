@@ -163,7 +163,7 @@ var hfAutoCSS = window.hfAutoCSS || null;
         this.reset();
 
         var that = this;
-        that.loop_fields( hf_Preview_Config.fields );
+        that.loop_fields( Hf_Preview_Config.fields );
 
         var css_code = '';
         var i = 0;
@@ -210,8 +210,8 @@ var hfAutoCSS = window.hfAutoCSS || null;
         var get_value = null;
         var value;
         var df = false;
-        if ( !_.isUndefined( hf_Preview_Config.fields['setting|'+name ] ) ) {
-            var field = hf_Preview_Config.fields['setting|'+name ];
+        if ( !_.isUndefined( Hf_Preview_Config.fields['setting|'+name ] ) ) {
+            var field = Hf_Preview_Config.fields['setting|'+name ];
             df = !_.isUndefined( field.default ) ? field.default : false;
         }
 
@@ -785,10 +785,10 @@ var hfAutoCSS = window.hfAutoCSS || null;
             }
         }
 
-        var listNormalFields = that.setup_styling_fields( normal_fields,  hf_Preview_Config.styling_config.normal_fields, selectors, 'normal' );
-        var listHoverFields = that.setup_styling_fields( hover_fields,  hf_Preview_Config.styling_config.hover_fields, selectors, 'hover' );
+        var listNormalFields = that.setup_styling_fields( normal_fields,  Hf_Preview_Config.styling_config.normal_fields, selectors, 'normal' );
+        var listHoverFields = that.setup_styling_fields( hover_fields,  Hf_Preview_Config.styling_config.hover_fields, selectors, 'hover' );
 
-        var listTabs = _.clone( hf_Preview_Config.styling_config.tabs );
+        var listTabs = _.clone( Hf_Preview_Config.styling_config.tabs );
         if ( tabs === false ) {
             listTabs['hover'] = false;
         } else if ( _.isObject( tabs ) ) {
@@ -1040,7 +1040,7 @@ var hfAutoCSS = window.hfAutoCSS || null;
         var code = {};
         var fields = {};
         var devices_css = {};
-        _.each( hf_Preview_Config.typo_fields, function( f ){
+        _.each( Hf_Preview_Config.typo_fields, function( f ){
             fields[ f.name ] = f;
         } );
 
@@ -1167,7 +1167,7 @@ var hfAutoCSS = window.hfAutoCSS || null;
        // hfAutoCSSInit.run();
     } );
 
-    _.each( hf_Preview_Config.fields, function( field ){
+    _.each( Hf_Preview_Config.fields, function( field ){
         if ( ( field.selector && field.css_format ) || field.type === 'modal' ) {
             wp.customize( field.name, function( setting ) {
                 setting.bind( function( to ) {

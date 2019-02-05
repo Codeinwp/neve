@@ -40,11 +40,7 @@
 					
 					if (typeof hfPanels[id + newVer] === "undefined") {
 						var _builder;
-						if ("v2" === newVer) {
-							_builder = new CustomizeBuilder_V2(opts, id);
-						} else {
-							_builder = new CustomizeBuilder_V1(opts, id);
-						}
+						_builder = new CustomizeBuilder_V2(opts, id);
 						addVersionChange(opts, _builder, id, newVer);
 						hfPanels[id + newVer] = _builder;
 					}
@@ -75,11 +71,7 @@
 			} else {
 				opts.version_id = false;
 			}
-			if ("v2" === version) {
-				builder = new CustomizeBuilder_V2(opts, id);
-			} else {
-				builder = new CustomizeBuilder_V1(opts, id);
-			}
+			builder = new CustomizeBuilder_V2(opts, id);
 
 			hfPanels[id + version] = builder;
 			addVersionChange(opts, builder, id, version);
