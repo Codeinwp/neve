@@ -294,7 +294,7 @@ class Admin {
 	 */
 	public function welcome_notice_content() {
 		$theme_args = wp_get_theme();
-		$name       = $theme_args->__get( 'Name' );
+		$name       = apply_filters( 'ti_wl_theme_name', $theme_args->__get( 'Name' ) );
 		$slug       = $theme_args->__get( 'stylesheet' );
 
 		$notice_template = '
