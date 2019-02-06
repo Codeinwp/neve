@@ -131,6 +131,7 @@ abstract class Base_Customizer {
 	 */
 	private function register_panels() {
 		$panels = $this->panels_to_register;
+		//var_dump( $panels );
 		foreach ( $panels as $index => $panel ) {
 			$this->wpc->add_panel( $panel->id, $panel->args );
 		}

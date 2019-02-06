@@ -12,6 +12,19 @@ class HeaderFooterLayoutBuilder {
 
 	public function scripts() {
 		$suffix = '';
+		wp_enqueue_style( 'customify-customizer-control', esc_url( get_template_directory_uri() ) . '/header_footer/assets/css/admin/customizer/customizer' . $suffix . '.css' );
+		wp_enqueue_script(
+			'hf-builder-v1',
+			esc_url( get_template_directory_uri() ) . '/header_footer/assets/js/customizer/builder-v1' . $suffix . '.js',
+			array(
+				'customize-controls',
+				'jquery-ui-resizable',
+				'jquery-ui-droppable',
+				'jquery-ui-draggable',
+			),
+			false,
+			true
+		);
 		wp_enqueue_script(
 			'hf-builder-v2',
 			esc_url( get_template_directory_uri() ) . '/header_footer/assets/js/customizer/builder-v2' . $suffix . '.js',
@@ -28,8 +41,8 @@ class HeaderFooterLayoutBuilder {
 			'hf-layout-builder',
 			esc_url( get_template_directory_uri() ) . '/header_footer/assets/js/customizer/builder' . $suffix . '.js',
 			array(
-				'customify-builder-v1',
-				'customify-builder-v2',
+				'hf-builder-v1',
+				'hf-builder-v2',
 			),
 			false,
 			true
@@ -39,15 +52,44 @@ class HeaderFooterLayoutBuilder {
 			'Customify_Layout_Builder',
 			array(
 				'footer_moved_widgets_text' => '',
-				'builders'                  => [],//$this->get_builders(),
-				'is_rtl'                    => false,//is_rtl(),
+				'builders'                  => $this->get_builders(),
+				'is_rtl'                    => is_rtl(),
 				'change_version_nonce'      => wp_create_nonce( 'change_version_nonce' ),
 			)
 		);
 	}
 
+	public function get_builders() {
+		return [
+			'header' => [
+					'id' => 'header',
+					'control_id' => 'neve_navigation_layout',
+					'version_id' => 'neve_navigation_layout',
+					'panel' => 'neve_header',
+					'section' => 'neve_primary_navigation',
+					'versions' => [
+						'v1' => [
+							'control_id' => 'neve_navigation_layout_v1',
+							'label' => 'V1'
+						],
+						'v2' => [
+							'control_id' => 'neve_navigation_layout',
+							'label' => 'V2'
+						]
+					],
+					'devices' => [
+						'desktop' => 'Desktop',
+						'mobile' => 'Mobile'
+				    ],
+                    'items' => [],
+                    'rows' => [],
+			]
+		];
+	}
+
 	public function template() {
-		require_once get_template_directory() . '/header_footer/templates/rows.php';
+		require_once get_template_directory() . '/header_footer/templates/rows_v1.php';
+		require_once get_template_directory() . '/header_footer/templates/rows_v2.php';
 		?>
 		<script type="text/html" id="tmpl-customify--builder-panel">
 			<div class="customify--customize-builder">
@@ -72,15 +114,15 @@ class HeaderFooterLayoutBuilder {
 
 		<script type="text/html" id="tmpl-customify--cb-item">
 			<div class="grid-stack-item item-from-list for-s-{{ data.section }}"
-			     title="{{ data.name }}"
-			     data-id="{{ data.id }}"
-			     data-section="{{ data.section }}"
-			     data-control="{{ data.control }}"
-			     data-gs-x="{{ data.x }}"
-			     data-gs-y="{{ data.y }}"
-			     data-gs-width="{{ data.width }}"
-			     data-df-width="{{ data.width }}"
-			     data-gs-height="1"
+				 title="{{ data.name }}"
+				 data-id="{{ data.id }}"
+				 data-section="{{ data.section }}"
+				 data-control="{{ data.control }}"
+				 data-gs-x="{{ data.x }}"
+				 data-gs-y="{{ data.y }}"
+				 data-gs-width="{{ data.width }}"
+				 data-df-width="{{ data.width }}"
+				 data-gs-height="1"
 			>
 				<div class="item-tooltip" data-section="{{ data.section }}">{{ data.name }}</div>
 				<div class="grid-stack-item-content">

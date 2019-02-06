@@ -39,8 +39,12 @@
 					}
 					
 					if (typeof customifyPanels[id + newVer] === "undefined") {
-						var _builder = new CustomizeBuilder_V2(opts, id);
-
+						var _builder;
+						if ("v2" === newVer) {
+							_builder = new CustomizeBuilder_V2(opts, id);
+						} else {
+							_builder = new CustomizeBuilder_V1(opts, id);
+						}
 						addVersionChange(opts, _builder, id, newVer);
 						customifyPanels[id + newVer] = _builder;
 					}
@@ -71,10 +75,16 @@
 			} else {
 				opts.version_id = false;
 			}
-			builder = new CustomizeBuilder_V2(opts, id);
+			if ("v2" === version) {
+				builder = new CustomizeBuilder_V2(opts, id);
+			} else {
+				builder = new CustomizeBuilder_V1(opts, id);
+			}
 
 			customifyPanels[id + version] = builder;
 			addVersionChange(opts, builder, id, version);
+			console.log( 'HEY!!!' );
+			console.log( Customify_Layout_Builder );
 		});
 
 		wpcustomize.bind("pane-contents-reflowed", function() {

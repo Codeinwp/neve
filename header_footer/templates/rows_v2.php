@@ -19,11 +19,11 @@
 			<a class="customify--cb-row-settings" title="{{ data.rows.main }}" data-id="main" href="#"></a>
 
 			<div class="customify--row-inner">
-				
+
 				<div class="col-items-wrapper"><div data-id="left" class="col-items col-left"></div></div>
 				<div class="col-items-wrapper"><div data-id="center" class="col-items col-center"></div></div>
 				<div class="col-items-wrapper"><div data-id="right" class="col-items col-right"></div></div>
-				
+
 			</div>
 		</div>
 		<# } #>
@@ -44,18 +44,18 @@
 
 
 	<# if ( data.device != 'desktop' ) { #>
-		<# if ( ! _.isUndefined( data.rows.sidebar ) ) { #>
-		<div class="customify--cp-sidebar">
-			<div class="customify--row-sidebar customify--cb-row" data-row-id="sidebar" data-id="{{ data.id }}_sidebar">
-				<a class="customify--cb-row-settings" title="{{ data.rows.sidebar }}" data-id="sidebar" href="#"></a>
-				<div class="customify--row-inner">
+	<# if ( ! _.isUndefined( data.rows.sidebar ) ) { #>
+	<div class="customify--cp-sidebar">
+		<div class="customify--row-sidebar customify--cb-row" data-row-id="sidebar" data-id="{{ data.id }}_sidebar">
+			<a class="customify--cb-row-settings" title="{{ data.rows.sidebar }}" data-id="sidebar" href="#"></a>
+			<div class="customify--row-inner">
 
-					<div class="col-items-wrapper"><div data-id="sidebar" class="col-items col-sidebar"></div></div>
+				<div class="col-items-wrapper"><div data-id="sidebar" class="col-items col-sidebar"></div></div>
 
-				</div>
 			</div>
-			<div>
-		<# } #>
-	<# } #>
+		</div>
+		<div>
+			<# } #>
+			<# } #>
 
 </script>
