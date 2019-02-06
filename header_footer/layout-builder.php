@@ -10,6 +10,30 @@ class HeaderFooterLayoutBuilder {
 		}
 	}
 
+	public function register_item( $builder_id, $class ) {
+		if ( ! $builder_id ) {
+			return false;
+		}
+
+		if ( is_object( $class ) ) {
+
+		} else {
+			if ( ! class_exists( $class ) ) {
+				return false;
+			}
+			$class = new $class();
+		}
+
+		if ( ! isset( $this->registered_items[ $builder_id ] ) ) {
+			$this->registered_items[ $builder_id ] = array();
+		}
+
+		$this->registered_items[ $builder_id ][ $class->id ] = $class;
+
+		return true;
+
+	}
+
 	public function scripts() {
 		$suffix = '';
 		wp_enqueue_style( 'customify-customizer-control', esc_url( get_template_directory_uri() ) . '/header_footer/assets/css/admin/customizer/customizer' . $suffix . '.css' );
