@@ -81,8 +81,20 @@ class HeaderFooterLayoutBuilder {
 						'desktop' => 'Desktop',
 						'mobile' => 'Mobile'
 				    ],
-                    'items' => [],
-                    'rows' => [],
+                    'items' => [
+	                    'primary-menu' => [
+                            'name' => 'Primary Menu',
+                            'id' => 'primary-menu',
+                            'width' => '6',
+                            'section' => 'header_menu_primary',
+                        ]
+                    ],
+                    'rows' => [
+	                    'top' => 'Header Top',
+	                    'main' => 'Header Main',
+                        'bottom' => 'Header Bottom',
+                        'sidebar' => 'Menu Sidebar',
+                    ],
 			]
 		];
 	}
