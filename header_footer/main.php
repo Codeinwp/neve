@@ -48,6 +48,7 @@ class HeaderFooterMain {
 	public function init() {
 
 		require_once self::$path . '/header_footer/' . 'customizer.php';
+		require_once self::$path . '/header_footer/' . 'panel-builder.php';
 
 		$customizer = new HeaderFooterCustomizer();
 		if ( is_admin() || is_customize_preview() ) {

@@ -36,7 +36,7 @@
 		if (_.isUndefined(remove_items)) {
 			remove_items = false;
 		}
-		//console.log( 'partial_id', partial_id );
+		console.log( 'partial_id', partial_id );
 		if (
 			partial_id === "header_builder_panel" ||
 			partial_id === "customify_customize_render_header"
