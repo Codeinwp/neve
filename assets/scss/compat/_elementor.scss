@@ -3,4 +3,8 @@
   ul, ol {
     padding-left: $spacing-sm;
   }
+
+  ul {
+    list-style: inherit;
+  }
 }
