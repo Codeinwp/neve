@@ -17,6 +17,18 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
+= 1.1.0 - 2019-01-31  = 
+
+* NEW Neve Specific Gutenberg blocks for Otter Blocks
+* NEW Posts navigation control
+* Display category description of categories archive pages
+* Fixed issue with the Neve Restaurant starter site not importing in some cases
+* Fixed issue with the starter sites not importing when Jetpack is installed
+* Fixed issue with scrolling not working on mobile devices for anchored links
+* Fixed issue with lists not displaying properly in Elementor
+* Fixed fatal error for lower PHP versions
+
+
 = 1.0.29 - 2019-01-21  = 
 
 * Improved the onboarding process
@@ -222,32 +234,9 @@ All  images are licensed under CC0.
 * Neve Vet Center: neve-vet-center-big-title1.jpg, CC0, https://mystock.themeisle.com/photo/squirrel-2/
 * Neve Vet Center: neve-vet-center-testify.jpg, CC0, https://mystock.themeisle.com/photo/beagle-puppy/
 * Neve Vet Center: neve-vet-center-testify-cat.jpg, CC0, https://mystock.themeisle.com/photo/cat-2/
-* Neve Energy Panels: smile-1726471_1920.jpg, CC0, https://pixabay.com/en/smile-profile-face-male-portrait-1726471/
-* Neve Energy Panels: energy-2181904_1920.jpg, CC0, https://pixabay.com/en/energy-wind-energy-wind-power-2181904/
-* Neve Energy Panels: windrader-1048981_1920.jpg, CC0, https://pixabay.com/en/windr%C3%A4der-wind-power-wind-park-fog-1048981/
-* Neve Energy Panels: window-cleaner-104890.jpg, CC0, https://pixabay.com/en/window-cleaner-window-cleaning-104890/
-* Neve Energy Panels: computer-3365366_1920.jpg, CC0, https://pixabay.com/en/computer-adult-laptop-office-woman-3365366/
-* Neve Energy Panels: office-1574717_1920.jpg, CC0, https://pixabay.com/en/office-pen-calculator-computation-1574717/
-* Neve Energy Panels: office-space-1744803.jpg, CC0, https://pixabay.com/en/office-space-office-sunny-coworking-1744803/
-* Neve Energy Panels: computer-2157100.jpg, CC0, https://pixabay.com/en/computer-programmer-it-business-2157100/
-* Neve Energy Panels: model-2911332_1920.jpg, CC0, https://pixabay.com/en/model-businessman-corporate-2911332/
-* Neve Energy Panels: adult-1868750.jpg, CC0, https://pixabay.com/en/adult-bald-beard-corporate-1868750/
-* Neve Energy Panels: business-437020_1920.jpg, CC0, https://pixabay.com/en/business-notebook-business-people-437020/
-* Neve Energy Panels: cold-1284411_1920.jpg, CC0, https://pixabay.com/en/cold-snow-nature-fashion-hands-1284411/
-* Neve Energy Panels: abstract-aluminum-210158.jpg, CC0, https://pixabay.com/en/basel-switzerland-tram-architecture-1722831/
-* Neve Energy Panels: alternative-alternative-energy-clouds-433308.jpg, CC0, https://pixabay.com/en/energy-renewable-energy-solar-energy-2302001/
-* Neve Energy Panels: alternative-alternative-energy-collector-159243.jpg, CC0, https://pixabay.com/en/solar-solar-cells-photovoltaic-1476224/
-* Neve Energy Panels: close-up-energy-low-angle-shot-68674.jpg, CC0, https://pixabay.com/en/windmill-wind-wind-turbine-electric-62257/
-* Neve Energy Panels: alternative-energy-environment-power-356060.jpg, CC0, https://pixabay.com/en/environmental-technology-current-1837636/
-* Neve Energy Panels: afterglow-alternative-energy-clouds-532192.jpg, CC0, https://pixabay.com/en/sunset-sunrise-sun-water-afterglow-2469106/
-* Neve Energy Panels: alternative-alternative-energy-collector-159243.jpg, CC0, https://pixabay.com/en/solar-solar-cells-photovoltaic-1476224/
-* Neve Energy Panels: adult-beautiful-casual-372042.jpg, CC0, https://pixabay.com/en/emotions-girl-hair-model-beauty-2166221/
-* Neve Energy Panels: adult-agreement-beard-573565.jpg, CC0, https://pixabay.com/en/business-deal-smile-cheerful-2703167/
-* Neve Energy Panels: adult-chill-computer-450271.jpg, CC0, https://pixabay.com/en/adult-break-business-caucasian-2449725/
-* Neve Energy Panels: alternative-alternative-energy-clean-356049.jpg, CC0, https://pixabay.com/en/photovoltaic-photovoltaic-system-2138994/
-* Neve Energy Panels: alternative-alternative-energy-blades-691458.jpg, CC0, http://snapwiresnaps.tumblr.com/post/167509411781/logan-edmark-free-under-cc0-10-download
-* Neve Energy Panels: alternative-alternative-energy-clean-159397.jpg, CC0, https://pixabay.com/en/solar-panel-array-power-sun-1591350/
-* Neve Energy Panels: alternative-alternative-energy-blue-411592.jpg (also used in screenshot), CC0, https://pixabay.com/en/solar-energy-solar-system-2157212/
+* Neve Energy: neve-energy-bg-title.jpg (also used in screenshot), CC0, https://mystock.themeisle.com/photo/citylights/
+* Neve Energy: neve-energy-testimony.jpg, CC0, https://mystock.themeisle.com/photo/train-station/
+* Neve Energy: neve-energy-sustainability.jpg, CC0, https://mystock.themeisle.com/photo/windmill/
 * Neve Lawyers: men-employees-suit-work-greeting-1979261.jpg (also used in screenshot), CC0, https://pixabay.com/en/men-employees-suit-work-greeting-1979261/
 * Neve Lawyers: lady-justice-2388500.jpg, CC0, https://pixabay.com/en/lady-justice-legal-law-justice-2388500/
 * Neve Lawyers: business-woman-2697954.jpg, CC0, https://pixabay.com/en/business-woman-professional-suit-2697954/
@@ -304,3 +293,4 @@ All  images are licensed under CC0.
 * Neve Charity: potion-1860939, CC0, https://pixabay.com/en/potion-poverty-misery-sadness-sdf-1860939/
 * Neve Charity: children-734891, CC0, https://pixabay.com/en/children-burundi-bottle-water-734891/
 * Neve Charity: trouser-pockets-1439412, CC0, https://pixabay.com/en/trouser-pockets-empty-jeans-1439412/
+* Neve Gutenberg: street-at-night, CC0, https://mystock.themeisle.com/photo/street-at-night/

@@ -53,16 +53,21 @@ class Layout_Single_Post extends Base_Customizer {
 		$order_default_components = array(
 			'title-meta',
 			'thumbnail',
+			'content',
+			'tags',
 		);
 
 		$components = array(
-			'title-meta' => __( 'Title & Meta', 'neve' ),
-			'thumbnail'  => __( 'Thumbnail', 'neve' ),
+			'title-meta'      => __( 'Title & Meta', 'neve' ),
+			'thumbnail'       => __( 'Thumbnail', 'neve' ),
+			'content'         => __( 'Content', 'neve' ),
+			'tags'            => __( 'Tags', 'neve' ),
+			'post-navigation' => __( 'Post navigation', 'neve' ),
 		);
 
 		$this->add_control(
 			new Control(
-				'neve_single_post_elements_order',
+				'neve_layout_single_post_elements_order',
 				array(
 					'sanitize_callback' => array( $this, 'sanitize_post_elements_ordering' ),
 					'default'           => json_encode( $order_default_components ),
@@ -86,6 +91,9 @@ class Layout_Single_Post extends Base_Customizer {
 		$allowed = array(
 			'thumbnail',
 			'title-meta',
+			'content',
+			'tags',
+			'post-navigation',
 		);
 
 		if ( empty( $value ) ) {
