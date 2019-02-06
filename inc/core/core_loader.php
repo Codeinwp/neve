@@ -43,6 +43,7 @@ class Core_Loader {
 			'neve_filter_main_modules',
 			array(
 				'Customizer\Loader',
+				'Views\Tweaks',
 				'Views\Typography',
 				'Views\Top_Bar',
 				'Views\Header',

@@ -50,6 +50,10 @@ h6 {
   font-weight: normal;
 }
 
+ul {
+  list-style: none;
+}
+
 button,
 input,
 select,
@@ -2636,6 +2640,9 @@ hr {
     width: 1170px;
   }
 }
-fieldset .submit-form {
-  padding-top: 27px;
+.neve-main .elementor ul, .neve-main .elementor ol {
+  padding-right: 20px;
+}
+.neve-main .elementor ul {
+  list-style: inherit;
 }
