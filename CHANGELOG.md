@@ -1,4 +1,8 @@
 
+ ### v1.1.3 - 2019-02-07 
+ **Changes:** 
+ * Fixed list styling in Elementor
+ 
  ### v1.1.2 - 2019-02-07 
  **Changes:** 
  * New Gutenberg Blocks added for Otter
