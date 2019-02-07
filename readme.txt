@@ -17,6 +17,13 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
+= 1.1.2 - 2019-02-07  = 
+
+* New Gutenberg Blocks added for Otter
+* Fixed lists styling
+* Fixed issue with Gutenberg Blocks images not visible in an online environment
+
+
 = 1.1.1 - 2019-02-04  = 
 
 * Fixed issue with content missing on the single post page
