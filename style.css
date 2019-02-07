@@ -2640,10 +2640,10 @@ hr {
     width: 1170px;
   }
 }
-.neve-main .elementor ul, .neve-main .elementor ol {
+.neve-main .elementor-text-editor ul, .neve-main .elementor-text-editor ol {
   padding-left: 20px;
 }
-.neve-main .elementor ul {
+.neve-main .elementor-text-editor ul {
   list-style: inherit;
 }
 
