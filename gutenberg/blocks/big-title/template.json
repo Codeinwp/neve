@@ -44,7 +44,7 @@
         "verticalAlign": "unset",
         "backgroundType": "image",
         "backgroundImageID": 162,
-        "backgroundImageURL": "https://github.com/Codeinwp/gutenberg-templates/blob/master/assets/images/path.jpg?raw=true",
+        "backgroundImageURL": "https://raw.githubusercontent.com/Codeinwp/gutenberg-templates/master/assets/images/path.jpg",
         "backgroundAttachment": "scroll",
         "backgroundPosition": "top center",
         "backgroundRepeat": "no-repeat",
@@ -943,5 +943,5 @@
             "originalContent": "<div class=\"wp-block-themeisle-blocks-advanced-column\" id=\"wp-block-themeisle-blocks-advanced-column-522e3a8f\" style=\"border-width:0px;border-style:solid;border-color:#000000;border-radius:0px\">\n\n\n\n</div>"
         }
     ],
-    "originalContent": "<div class=\"wp-block-themeisle-blocks-advanced-columns alignfull has-1-columns has-desktop-equal-layout has-tablet-equal-layout has-mobile-equal-layout has-nogap-gap has-vertical-unset\" id=\"wp-block-themeisle-blocks-advanced-columns-ade5fba5\" style=\"background-image:url( 'https://github.com/Codeinwp/gutenberg-templates/blob/master/assets/images/path.jpg?raw=true' );background-attachment:scroll;background-position:top center;background-repeat:no-repeat;background-size:cover;border-width:0px;border-style:solid;border-color:#000000;border-radius:0px;justify-content:center\"><div class=\"wp-themeisle-block-overlay\" style=\"background:#262732;opacity:0.85;mix-blend-mode:normal;filter:blur( 0px ) brightness( 1 ) contrast( 1 ) grayscale( 0 ) hue-rotate( 0deg ) saturate( 1 )\"></div><div class=\"innerblocks-wrap\" style=\"max-width:1140px\"></div></div>"
+    "originalContent": "<div class=\"wp-block-themeisle-blocks-advanced-columns alignfull has-1-columns has-desktop-equal-layout has-tablet-equal-layout has-mobile-equal-layout has-nogap-gap has-vertical-unset\" id=\"wp-block-themeisle-blocks-advanced-columns-ade5fba5\" style=\"background-image:url( 'https://raw.githubusercontent.com/Codeinwp/gutenberg-templates/master/assets/images/path.jpg' );background-attachment:scroll;background-position:top center;background-repeat:no-repeat;background-size:cover;border-width:0px;border-style:solid;border-color:#000000;border-radius:0px;justify-content:center\"><div class=\"wp-themeisle-block-overlay\" style=\"background:#262732;opacity:0.85;mix-blend-mode:normal;filter:blur( 0px ) brightness( 1 ) contrast( 1 ) grayscale( 0 ) hue-rotate( 0deg ) saturate( 1 )\"></div><div class=\"innerblocks-wrap\" style=\"max-width:1140px\"></div></div>"
 }
