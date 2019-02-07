@@ -1,9 +1,8 @@
 {
-    "clientId": "2c0136fe-0d25-4271-b1ae-1eae8ac62ec1",
+    "clientId": "45606922-58c8-40a9-bb63-db54421f0874",
     "name": "themeisle-blocks/advanced-columns",
     "isValid": true,
     "attributes": {
-        "id": "wp-block-themeisle-blocks-advanced-columns-b9e9c179",
         "columns": 1,
         "layout": "equal",
         "layoutTablet": "equal",
@@ -124,11 +123,10 @@
     },
     "innerBlocks": [
         {
-            "clientId": "b90e63d8-b3e2-4293-ac9b-700ee46d9fc3",
+            "clientId": "8a527960-5f54-44da-8b41-8e94efe86928",
             "name": "themeisle-blocks/advanced-column",
             "isValid": true,
             "attributes": {
-                "id": "wp-block-themeisle-blocks-advanced-column-4a5d57cf",
                 "paddingType": "linked",
                 "paddingTypeTablet": "linked",
                 "paddingTypeMobile": "linked",
@@ -201,11 +199,10 @@
             },
             "innerBlocks": [
                 {
-                    "clientId": "cf5a1e17-b0d4-46f1-8d8d-71d4b965f8e0",
+                    "clientId": "cae666f5-c5ad-4302-b288-f4d2ca0e3918",
                     "name": "themeisle-blocks/advanced-heading",
                     "isValid": true,
                     "attributes": {
-                        "id": "wp-block-themeisle-blocks-advanced-heading-f89bd4e3",
                         "content": "09",
                         "tag": "div",
                         "align": "center",
@@ -257,11 +254,10 @@
                     "originalContent": "<div id=\"wp-block-themeisle-blocks-advanced-heading-f89bd4e3\" class=\"wp-block-themeisle-blocks-advanced-heading wp-block-themeisle-blocks-advanced-heading-f89bd4e3\" style=\"color:#636060;font-family:Poppins;font-weight:700;font-style:normal;text-transform:none;line-height:200px\">09</div>"
                 },
                 {
-                    "clientId": "e9496ca6-4f0a-486a-85dd-9ddbb3d2d5d6",
+                    "clientId": "3ac42315-e490-426e-8dcb-af2a8b1f229c",
                     "name": "themeisle-blocks/advanced-heading",
                     "isValid": true,
                     "attributes": {
-                        "id": "wp-block-themeisle-blocks-advanced-heading-f4c39c67",
                         "content": "Get in Touch",
                         "tag": "h2",
                         "align": "center",
@@ -314,12 +310,11 @@
                     "originalContent": "<h2 id=\"wp-block-themeisle-blocks-advanced-heading-f4c39c67\" class=\"wp-block-themeisle-blocks-advanced-heading wp-block-themeisle-blocks-advanced-heading-f4c39c67\" style=\"color:#ffffff;font-family:Libre Baskerville;font-weight:700;font-style:normal;text-transform:capitalize;line-height:75px\">Get in Touch</h2>"
                 },
                 {
-                    "clientId": "89b7cd30-104d-435c-935f-3574b4983e70",
+                    "clientId": "f9ceea41-f0e5-455a-8f48-539ffb48940d",
                     "name": "themeisle-blocks/advanced-heading",
                     "isValid": true,
                     "attributes": {
-                        "id": "wp-block-themeisle-blocks-advanced-heading-471528b4",
-                        "content": "Add your own contact form here . We recommend WPForms.",
+                        "content": "Add your own contact form <a href=\"https://docs.themeisle.com/article/984-how-to-create-neve-contact-form-in-wpforms\">here</a> . We recommend WPForms.",
                         "tag": "div",
                         "align": "center",
                         "headingColor": "#ffffff",
@@ -368,14 +363,13 @@
                         "marginBottomMobile": 35
                     },
                     "innerBlocks": [],
-                    "originalContent": "<div id=\"wp-block-themeisle-blocks-advanced-heading-471528b4\" class=\"wp-block-themeisle-blocks-advanced-heading wp-block-themeisle-blocks-advanced-heading-471528b4\" style=\"color:#ffffff;font-family:Poppins;font-weight:normal;font-style:normal;text-transform:none\">Add your own contact form here . We recommend WPForms.</div>"
+                    "originalContent": "<div id=\"wp-block-themeisle-blocks-advanced-heading-471528b4\" class=\"wp-block-themeisle-blocks-advanced-heading wp-block-themeisle-blocks-advanced-heading-471528b4\" style=\"color:#ffffff;font-family:Poppins;font-weight:normal;font-style:normal;text-transform:none\">Add your own contact form <a href=\"https://docs.themeisle.com/article/984-how-to-create-neve-contact-form-in-wpforms\">here</a> . We recommend WPForms.</div>"
                 },
                 {
-                    "clientId": "a56408e3-14b7-4087-a503-1d527d1b2808",
+                    "clientId": "817eb146-d71c-44f7-80dd-3c064aaf149e",
                     "name": "themeisle-blocks/advanced-columns",
                     "isValid": true,
                     "attributes": {
-                        "id": "wp-block-themeisle-blocks-advanced-columns-0055fb71",
                         "columns": 1,
                         "layout": "equal",
                         "layoutTablet": "equal",
@@ -492,11 +486,10 @@
                     },
                     "innerBlocks": [
                         {
-                            "clientId": "f6038a98-d9e1-46af-a0a3-6408622eb618",
+                            "clientId": "4940c15c-7b01-402b-9e88-24fbf50f0ca6",
                             "name": "themeisle-blocks/advanced-column",
                             "isValid": true,
                             "attributes": {
-                                "id": "wp-block-themeisle-blocks-advanced-column-0d7d87ee",
                                 "paddingType": "linked",
                                 "paddingTypeTablet": "linked",
                                 "paddingTypeMobile": "linked",
@@ -569,14 +562,14 @@
                             },
                             "innerBlocks": [
                                 {
-                                    "clientId": "ef2490c4-ee52-4d13-8977-aa79f886cd58",
+                                    "clientId": "13f6d252-27d2-4f45-b4a1-d6cf0945f01c",
                                     "name": "core/shortcode",
                                     "isValid": true,
                                     "attributes": {
-                                        "text": "[wpforms id=\"2822\"]"
+                                        "text": ""
                                     },
                                     "innerBlocks": [],
-                                    "originalContent": "[wpforms id=\"2822\"]"
+                                    "originalContent": ""
                                 }
                             ],
                             "originalContent": "<div class=\"wp-block-themeisle-blocks-advanced-column\" id=\"wp-block-themeisle-blocks-advanced-column-0d7d87ee\" style=\"border-width:0px;border-style:solid;border-color:#000000;border-radius:0px\"></div>"
