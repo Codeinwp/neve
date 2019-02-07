@@ -568,7 +568,7 @@
                                             "name": "core/image",
                                             "isValid": true,
                                             "attributes": {
-                                                "url": "https://github.com/Codeinwp/gutenberg-templates/blob/master/assets/images/team-5.jpg?raw=true",
+                                                "url": "https://raw.githubusercontent.com/Codeinwp/gutenberg-templates/master/assets/images/team-5.jpg",
                                                 "alt": "",
                                                 "caption": "",
                                                 "id": 205,
@@ -576,7 +576,7 @@
                                                 "linkDestination": "none"
                                             },
                                             "innerBlocks": [],
-                                            "originalContent": "<div class=\"wp-block-image\"><figure class=\"aligncenter\"><img src=\"https://github.com/Codeinwp/gutenberg-templates/blob/master/assets/images/team-5.jpg?raw=true\" alt=\"\" class=\"wp-image-205\"/></figure></div>"
+                                            "originalContent": "<div class=\"wp-block-image\"><figure class=\"aligncenter\"><img src=\"https://raw.githubusercontent.com/Codeinwp/gutenberg-templates/master/assets/images/team-5.jpg\" alt=\"\" class=\"wp-image-205\"/></figure></div>"
                                         },
                                         {
                                             "clientId": "c8576345-fff1-4018-9ee6-083a6e4c6f8e",
@@ -781,7 +781,7 @@
                                             "name": "core/image",
                                             "isValid": true,
                                             "attributes": {
-                                                "url": "https://github.com/Codeinwp/gutenberg-templates/blob/master/assets/images/team-2.jpg?raw=true",
+                                                "url": "https://raw.githubusercontent.com/Codeinwp/gutenberg-templates/master/assets/images/team-2.jpg",
                                                 "alt": "",
                                                 "caption": "",
                                                 "id": 206,
@@ -789,7 +789,7 @@
                                                 "linkDestination": "none"
                                             },
                                             "innerBlocks": [],
-                                            "originalContent": "<div class=\"wp-block-image\"><figure class=\"aligncenter\"><img src=\"https://github.com/Codeinwp/gutenberg-templates/blob/master/assets/images/team-2.jpg?raw=true\" alt=\"\" class=\"wp-image-206\"/></figure></div>"
+                                            "originalContent": "<div class=\"wp-block-image\"><figure class=\"aligncenter\"><img src=\"https://raw.githubusercontent.com/Codeinwp/gutenberg-templates/master/assets/images/team-2.jpg\" alt=\"\" class=\"wp-image-206\"/></figure></div>"
                                         },
                                         {
                                             "clientId": "04f5b251-a1cc-4bdd-b94d-14e13c96df82",
@@ -994,7 +994,7 @@
                                             "name": "core/image",
                                             "isValid": true,
                                             "attributes": {
-                                                "url": "https://github.com/Codeinwp/gutenberg-templates/blob/master/assets/images/team-4.jpg?raw=true",
+                                                "url": "https://raw.githubusercontent.com/Codeinwp/gutenberg-templates/master/assets/images/team-4.jpg",
                                                 "alt": "",
                                                 "caption": "",
                                                 "id": 207,
@@ -1002,7 +1002,7 @@
                                                 "linkDestination": "none"
                                             },
                                             "innerBlocks": [],
-                                            "originalContent": "<div class=\"wp-block-image\"><figure class=\"aligncenter\"><img src=\"https://github.com/Codeinwp/gutenberg-templates/blob/master/assets/images/team-4.jpg?raw=true\" alt=\"\" class=\"wp-image-207\"/></figure></div>"
+                                            "originalContent": "<div class=\"wp-block-image\"><figure class=\"aligncenter\"><img src=\"https://raw.githubusercontent.com/Codeinwp/gutenberg-templates/master/assets/images/team-4.jpg\" alt=\"\" class=\"wp-image-207\"/></figure></div>"
                                         },
                                         {
                                             "clientId": "99cc2f73-14b8-4c58-836d-8de658f6645e",
@@ -1207,7 +1207,7 @@
                                             "name": "core/image",
                                             "isValid": true,
                                             "attributes": {
-                                                "url": "https://github.com/Codeinwp/gutenberg-templates/blob/master/assets/images/team-1.jpg?raw=true",
+                                                "url": "https://raw.githubusercontent.com/Codeinwp/gutenberg-templates/master/assets/images/team-1.jpg",
                                                 "alt": "",
                                                 "caption": "",
                                                 "id": 208,
@@ -1215,7 +1215,7 @@
                                                 "linkDestination": "none"
                                             },
                                             "innerBlocks": [],
-                                            "originalContent": "<div class=\"wp-block-image\"><figure class=\"aligncenter\"><img src=\"https://github.com/Codeinwp/gutenberg-templates/blob/master/assets/images/team-1.jpg?raw=true\" alt=\"\" class=\"wp-image-208\"/></figure></div>"
+                                            "originalContent": "<div class=\"wp-block-image\"><figure class=\"aligncenter\"><img src=\"https://raw.githubusercontent.com/Codeinwp/gutenberg-templates/master/assets/images/team-1.jpg\" alt=\"\" class=\"wp-image-208\"/></figure></div>"
                                         },
                                         {
                                             "clientId": "bfde25d1-8404-4dde-ab21-41daf3af83bd",
