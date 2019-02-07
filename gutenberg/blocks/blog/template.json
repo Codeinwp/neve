@@ -3,7 +3,6 @@
     "name": "themeisle-blocks/advanced-columns",
     "isValid": true,
     "attributes": {
-        "id": "wp-block-themeisle-blocks-advanced-columns-848a2262",
         "columns": 1,
         "layout": "equal",
         "layoutTablet": "equal",
@@ -126,7 +125,6 @@
             "name": "themeisle-blocks/advanced-column",
             "isValid": true,
             "attributes": {
-                "id": "wp-block-themeisle-blocks-advanced-column-fc8c2631",
                 "paddingType": "linked",
                 "paddingTypeTablet": "unlinked",
                 "paddingTypeMobile": "unlinked",
@@ -203,7 +201,6 @@
                     "name": "themeisle-blocks/advanced-heading",
                     "isValid": true,
                     "attributes": {
-                        "id": "wp-block-themeisle-blocks-advanced-heading-e9a64461",
                         "content": "08",
                         "tag": "div",
                         "align": "center",
@@ -259,7 +256,6 @@
                     "name": "themeisle-blocks/advanced-heading",
                     "isValid": true,
                     "attributes": {
-                        "id": "wp-block-themeisle-blocks-advanced-heading-d19c5a93",
                         "content": "Our Blog",
                         "tag": "h2",
                         "align": "center",
@@ -316,7 +312,6 @@
                     "name": "themeisle-blocks/advanced-heading",
                     "isValid": true,
                     "attributes": {
-                        "id": "wp-block-themeisle-blocks-advanced-heading-e0e559ca",
                         "content": "We understand your requirement and provide quality works.",
                         "tag": "div",
                         "align": "center",
@@ -373,7 +368,6 @@
                     "name": "themeisle-blocks/advanced-columns",
                     "isValid": true,
                     "attributes": {
-                        "id": "wp-block-themeisle-blocks-advanced-columns-fef0ae05",
                         "columns": 1,
                         "layout": "equal",
                         "layoutTablet": "equal",
@@ -495,7 +489,6 @@
                             "name": "themeisle-blocks/advanced-column",
                             "isValid": true,
                             "attributes": {
-                                "id": "wp-block-themeisle-blocks-advanced-column-f4fe0f0e",
                                 "paddingType": "linked",
                                 "paddingTypeTablet": "unlinked",
                                 "paddingTypeMobile": "unlinked",
