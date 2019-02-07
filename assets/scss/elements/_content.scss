@@ -1,9 +1,11 @@
 blockquote {
   text-align: center;
   margin: $spacing 0;
+
   p {
-  font-size: 1.1em;
+    font-size: 1.1em;
   }
+
   cite {
     padding-top: $spacing-sm;
     display: block;
@@ -12,6 +14,7 @@ blockquote {
     font-size: .95em;
     text-align: center;
   }
+
   &:after, &:before {
     height: 3px;
     width: $spacing-lg;
@@ -19,12 +22,15 @@ blockquote {
     content: " ";
     display: block;
   }
+
   &:before {
     margin: 0 auto $spacing;
   }
+
   &:after {
     margin: $spacing auto 0;
   }
+
   > * {
     margin-bottom: 0;
   }
@@ -33,10 +39,12 @@ blockquote {
 table {
   width: 100%;
   margin: $spacing-sm 0;
+
   td, th {
     padding: $spacing-xs;
     border-bottom: $muted-border;
   }
+
   tbody tr:hover {
     background-color: #fbfbfb;
   }
@@ -66,12 +74,15 @@ pre {
     clear: both;
     display: table;
   }
+
   ul {
     list-style-type: circle;
   }
+
   > ul, > ol {
     margin: $spacing-sm 0;
   }
+
   ul, ol {
     padding-left: $spacing-sm;
     li {
@@ -92,11 +103,13 @@ pre {
   dt:not(.gallery-icon) {
     border-right: $muted-border;
     padding: 0 $spacing-sm;
+
     dfn {
       font-style: normal;
       font-weight: 600;
     }
   }
+
   dd:not(.gallery-caption) {
     padding: 0 $spacing-sm;
   }
