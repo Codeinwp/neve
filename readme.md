@@ -17,6 +17,11 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
+### 1.1.4 - 2019-02-08  ###
+
+* Fixed alignment issues with the Gallery widget
+
+
 ### 1.1.3 - 2019-02-07  ###
 
 * Fixed list styling in Elementor

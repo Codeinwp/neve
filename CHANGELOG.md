@@ -1,4 +1,8 @@
 
+ ### v1.1.4 - 2019-02-08 
+ **Changes:** 
+ * Fixed alignment issues with the Gallery widget
+ 
  ### v1.1.3 - 2019-02-07 
  **Changes:** 
  * Fixed list styling in Elementor
