@@ -4,7 +4,7 @@ namespace HFG;
 use HFG\Core\Customizer;
 use HFG\Core\Builder\Panel;
 
-class main {
+class Main {
 
 	private static $_instance = null;
 	private static $version;

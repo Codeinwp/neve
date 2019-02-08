@@ -3,16 +3,16 @@ namespace HFG\Core;
 
 use HFG\Config\Customizer\Style;
 use HFG\Config\Customizer\Typography;
+use HFG\Traits\Core;
 
 class Customizer {
-
+	use Core;
 	/**
 	 * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
 	 */
 	function preview_js() {
 		if ( is_customize_preview() ) {
-			//$suffix = Customify()->get_asset_suffix();
-			$suffix = '';
+			$suffix = $this->get_assets_suffix();
 
 			wp_enqueue_script( 'hfg-customizer-auto-css', esc_url( get_template_directory_uri() ) . '/header-footer-grid/assets/js/customizer/auto-css' . $suffix . '.js', array( 'customize-preview' ), '20151215', true );
 			wp_enqueue_script(
