@@ -1856,6 +1856,7 @@ hr {
 }
 
 .widget_media_gallery .gallery-columns-1 .gallery-item {
+  width: 100%;
   max-width: 100%;
 }
 .widget_media_gallery .gallery-columns-2 .gallery-item {
