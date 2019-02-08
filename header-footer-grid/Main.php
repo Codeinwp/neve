@@ -1,6 +1,10 @@
 <?php
+namespace HFG;
 
-class HeaderFooterMain {
+use HFG\Core\Customizer;
+use HFG\Core\Builder\Panel;
+
+class main {
 
 	private static $_instance = null;
 	private static $version;
@@ -47,15 +51,11 @@ class HeaderFooterMain {
 
 	public function init() {
 
-		require_once self::$path . '/header_footer/' . 'customizer.php';
-		require_once self::$path . '/header_footer/' . 'panel-builder.php';
-
-		$customizer = new HeaderFooterCustomizer();
+		$builder = new Panel();
+		$customizer = new Customizer();
 		if ( is_admin() || is_customize_preview() ) {
 			add_action( 'customize_preview_init', array( $customizer, 'preview_js' ), PHP_INT_MAX );
 		}
 	}
 
 }
-
-$hfm = HeaderFooterMain::get_instance();

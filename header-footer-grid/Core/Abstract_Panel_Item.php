@@ -1,5 +1,9 @@
 <?php
-abstract class AbstractPanelItem {
+namespace HFG\Core;
+
+use WP_Customize_Manager;
+
+abstract class Abstract_Panel_Item {
 
 	protected $id;
 	protected $section;
@@ -27,4 +31,22 @@ abstract class AbstractPanelItem {
 		$this->$key = $value;
 		return true;
 	}
+
+	public function get_property( $key = '' ) {
+		if ( ! property_exists( $this, $key ) ) {
+			return false;
+		}
+
+		return $this->$key;
+	}
+
+	public function customize( WP_Customize_Manager $wp_customize ) {
+		return $wp_customize;
+	}
+
+	protected function get_setting() {}
+
+	protected function set_setting() {}
+
+	abstract public function render();
 }

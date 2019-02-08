@@ -8,6 +8,8 @@
  * @package Neve
  */
 
+use HFG\Main;
+
 define( 'NEVE_VERSION', '1.1.0' );
 define( 'NEVE_INC_DIR', trailingslashit( get_template_directory() ) . 'inc/' );
 define( 'NEVE_ASSETS_URL', trailingslashit( get_template_directory_uri() ) . 'assets/' );
@@ -60,10 +62,10 @@ if ( version_compare( PHP_VERSION, '5.3.29' ) < 0 ) {
 	return;
 }
 
-require_once 'start.php';
+require_once  get_template_directory() . '/start.php';
 
 require_once 'globals/utilities.php';
 require_once 'globals/hooks.php';
 require_once 'globals/sanitize-functions.php';
 
-require_once 'header_footer/main.php';
+Main::get_instance();

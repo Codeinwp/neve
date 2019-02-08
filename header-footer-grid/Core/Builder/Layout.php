@@ -1,6 +1,12 @@
 <?php
+namespace HFG\Core\Builder;
 
-class HeaderFooterLayoutBuilder {
+use HFG\Core\Abstract_Panel_Item;
+
+class Layout {
+
+    protected $registered_items = [];
+
 	public function init() {
 		if ( is_admin() ) {
 			add_action( 'customize_controls_enqueue_scripts', array( $this, 'scripts' ) );
@@ -15,31 +21,64 @@ class HeaderFooterLayoutBuilder {
 			return false;
 		}
 
-		if ( is_object( $class ) ) {
-
-		} else {
-			if ( ! class_exists( $class ) ) {
-				return false;
-			}
-			$class = new $class();
+		if ( ! is_object( $class ) ||  ! $class instanceof Abstract_Panel_Item ) {
+			return false;
 		}
 
 		if ( ! isset( $this->registered_items[ $builder_id ] ) ) {
 			$this->registered_items[ $builder_id ] = array();
 		}
 
-		$this->registered_items[ $builder_id ][ $class->id ] = $class;
+		/**
+		 * @type Abstract_Panel_Item $item
+		 */
+		$item = new $class();
+		$this->registered_items[ $builder_id ][ $item->get_property( 'id' ) ] = $item;
 
 		return true;
-
 	}
+
+	public function get_components_by_id( $builder_id ) {
+		if ( ! $builder_id || ! isset( $this->registered_items[ $builder_id ] ) ) {
+		    return array();
+		}
+
+		$items = array();
+		foreach ( $this->registered_items[ $builder_id ] as $id => $component ) {
+			if ( method_exists( $component, 'item' ) ) {
+				$item         = $component->item();
+				$items[ $id ] = $item;
+			}
+		}
+		return $items;
+	}
+
+	public function get_component_customizer_options( $builder_id, $wp_customize = null ) {
+		if ( ! $builder_id || ! isset( $this->registered_items[ $builder_id ] ) ) {
+			return false;
+		}
+
+		$customizer_options = array();
+		foreach ( $this->registered_items[ $builder_id ] as $component ) {
+			if ( method_exists( $component, 'customize' ) ) {
+				$options = $component->customize( $wp_customize );
+				if ( is_array( $options ) ) {
+					foreach ( $options as $option ) {
+						$customizer_options[] = $option;
+					}
+				}
+			}
+		}
+
+		return $customizer_options;
+    }
 
 	public function scripts() {
 		$suffix = '';
-		wp_enqueue_style( 'customify-customizer-control', esc_url( get_template_directory_uri() ) . '/header_footer/assets/css/admin/customizer/customizer' . $suffix . '.css' );
+		wp_enqueue_style( 'hfg-customizer-control', esc_url( get_template_directory_uri() ) . '/header-footer-grid/assets/css/admin/customizer/customizer' . $suffix . '.css' );
 		wp_enqueue_script(
-			'hf-builder-v1',
-			esc_url( get_template_directory_uri() ) . '/header_footer/assets/js/customizer/builder-v1' . $suffix . '.js',
+			'hfg-builder-v1',
+			esc_url( get_template_directory_uri() ) . '/header-footer-grid/assets/js/customizer/builder-v1' . $suffix . '.js',
 			array(
 				'customize-controls',
 				'jquery-ui-resizable',
@@ -50,8 +89,8 @@ class HeaderFooterLayoutBuilder {
 			true
 		);
 		wp_enqueue_script(
-			'hf-builder-v2',
-			esc_url( get_template_directory_uri() ) . '/header_footer/assets/js/customizer/builder-v2' . $suffix . '.js',
+			'hfg-builder-v2',
+			esc_url( get_template_directory_uri() ) . '/header-footer-grid/assets/js/customizer/builder-v2' . $suffix . '.js',
 			array(
 				'customize-controls',
 				'jquery-ui-resizable',
@@ -62,18 +101,18 @@ class HeaderFooterLayoutBuilder {
 			true
 		);
 		wp_enqueue_script(
-			'hf-layout-builder',
-			esc_url( get_template_directory_uri() ) . '/header_footer/assets/js/customizer/builder' . $suffix . '.js',
+			'hfg-layout-builder',
+			esc_url( get_template_directory_uri() ) . '/header-footer-grid/assets/js/customizer/builder' . $suffix . '.js',
 			array(
-				'hf-builder-v1',
-				'hf-builder-v2',
+				'hfg-builder-v1',
+				'hfg-builder-v2',
 			),
 			false,
 			true
 		);
 		wp_localize_script(
 			'jquery',
-			'Customify_Layout_Builder',
+			'HFG_Layout_Builder',
 			array(
 				'footer_moved_widgets_text' => '',
 				'builders'                  => $this->get_builders(),
@@ -105,14 +144,15 @@ class HeaderFooterLayoutBuilder {
 						'desktop' => 'Desktop',
 						'mobile' => 'Mobile'
 				    ],
-                    'items' => [
-	                    'primary-menu' => [
-                            'name' => 'Primary Menu',
-                            'id' => 'primary-menu',
-                            'width' => '6',
-                            'section' => 'header_menu_primary',
-                        ]
-                    ],
+                    'items' => $this->get_components_by_id( 'header' ),
+//                    'items' => [
+//	                    'primary-menu' => [
+//                            'name' => 'Primary Menu',
+//                            'id' => 'primary-menu',
+//                            'width' => '6',
+//                            'section' => 'header_menu_primary',
+//                        ]
+//                    ],
                     'rows' => [
 	                    'top' => 'Header Top',
 	                    'main' => 'Header Main',
@@ -124,8 +164,8 @@ class HeaderFooterLayoutBuilder {
 	}
 
 	public function template() {
-		require_once get_template_directory() . '/header_footer/templates/rows_v1.php';
-		require_once get_template_directory() . '/header_footer/templates/rows_v2.php';
+		require_once get_template_directory() . '/header-footer-grid/templates/rows_v1.php';
+		require_once get_template_directory() . '/header-footer-grid/templates/rows_v2.php';
 		?>
 		<script type="text/html" id="tmpl-customify--builder-panel">
 			<div class="customify--customize-builder">

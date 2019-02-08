@@ -67,7 +67,7 @@
 			}
 		};
 
-		_.each(Customify_Layout_Builder.builders, function(opts, id) {
+		_.each(HFG_Layout_Builder.builders, function(opts, id) {
 			var builder;
 			var version = "v1";
 			if (typeof opts.version_id !== "undefined") {
@@ -84,7 +84,7 @@
 			customifyPanels[id + version] = builder;
 			addVersionChange(opts, builder, id, version);
 			console.log( 'HEY!!!' );
-			console.log( Customify_Layout_Builder );
+			console.log( HFG_Layout_Builder );
 		});
 
 		wpcustomize.bind("pane-contents-reflowed", function() {
@@ -99,7 +99,7 @@
 						"#sub-accordion-panel-widgets .no-widget-areas-rendered-notice"
 					).append(
 						'<p class="footer_moved_widgets_text">' +
-							Customify_Layout_Builder.footer_moved_widgets_text +
+							HFG_Layout_Builder.footer_moved_widgets_text +
 							"</p>"
 					);
 				}
