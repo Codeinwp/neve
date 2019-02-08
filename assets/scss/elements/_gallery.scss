@@ -1,0 +1,28 @@
+.widget_media_gallery {
+  @for $items from 1 through 9 {
+    .gallery-columns-#{$items} .gallery-item {
+      @if ($items == 1) {
+        width: 100%; 
+        max-width: 100%;
+      } @else {
+        max-width: (100%/$items - 2);
+      }
+    }
+  }
+
+  .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  br {
+    display: none;
+  }
+
+  .gallery-item {
+    display: inline-block;
+    text-align: center;
+    vertical-align: top;
+  }
+}
