@@ -2,6 +2,7 @@
   @for $items from 1 through 9 {
     .gallery-columns-#{$items} .gallery-item {
       @if ($items == 1) {
+        width: 100%; 
         max-width: 100%;
       } @else {
         max-width: (100%/$items - 2);
