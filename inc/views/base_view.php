@@ -25,28 +25,29 @@ abstract class Base_View {
 	 * Get view path to include.
 	 *
 	 * @param string $view_slug the view to be loaded from `views` folder, without extension.
+	 * @param array  $vars      variables used in template.
 	 *
-	 * @return string
+	 * @return void
 	 */
-	public function get_view_path( $view_slug ) {
+	public function get_view_path( $view_slug, $vars ) {
 		if ( empty( $view_slug ) ) {
-			return '';
+			return;
 		}
+
+		$args = $vars;
 
 		$rest_of_path = 'views/' . $view_slug . '.php';
 
 		$path = trailingslashit( get_stylesheet_directory() ) . $rest_of_path;
 
-		if ( file_exists( $path ) ) {
-			return $path;
+		if ( file_exists( $path ) && is_readable( $path ) ) {
+			include $path;
 		}
 
 		$path = trailingslashit( get_template_directory() ) . $rest_of_path;
 
-		if ( file_exists( $path ) ) {
-			return $path;
+		if ( file_exists( $path ) && is_readable( $path ) ) {
+			include $path;
 		}
-
-		return trailingslashit( get_template_directory() ) . 'views/fallback-view.php';
 	}
 }

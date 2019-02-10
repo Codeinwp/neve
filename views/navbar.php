@@ -25,11 +25,11 @@
 							<span class="icon-bar"></span>
 							<span class="screen-reader-text"><?php esc_html_e( 'Toggle Navigation', 'neve' ); ?></span>
 						</button>
-						<?php echo wp_kses_post( $args['responsive_last_menu_item'] ); ?>
+						<?php echo $args['responsive_last_menu_item']; ?>
 						<?php neve_after_navbar_toggle_trigger(); ?>
 					</div> <!--.navbar-toggle-wrapper-->
 				</div><!--.nv-nav-header-->
-				<?php echo wp_kses_post( $args['primary_menu'] ); ?>
+				<?php echo $args['primary_menu']; ?>
 			</div> <!--.nv-nav-wrap-->
 		</div> <!--.row-->
 	</div> <!--.container-->

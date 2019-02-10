@@ -50,7 +50,7 @@ class Layout_Sidebar extends Base_View {
 			'slug'         => $sidebar_setup['sidebar_slug'],
 		);
 
-		include $this->get_view_path( 'sidebar' );
+		$this->get_view_path( 'sidebar', $args );
 	}
 
 	/**

@@ -35,7 +35,7 @@ class Header extends Base_View {
 			'primary_menu'              => $this->get_primary_menu(),
 			'responsive_last_menu_item' => $this->get_responsive_last_menu_item(),
 		);
-		include $this->get_view_path( 'navbar' );
+		$this->get_view_path( 'navbar', $args );
 	}
 
 	/**
@@ -201,8 +201,7 @@ class Header extends Base_View {
 	private function get_primary_menu() {
 		$menu = '<div role="navigation" aria-label="' . esc_html( __( 'Primary Menu', 'neve' ) ) . '">';
 
-		ob_start();
-		wp_nav_menu(
+		$menu .= wp_nav_menu(
 			array(
 				'theme_location' => 'primary',
 				'menu_id'        => 'nv-primary-navigation',
@@ -212,8 +211,7 @@ class Header extends Base_View {
 				'echo'           => false,
 			)
 		);
-		$menu .= ob_get_clean();
-		ob_flush();
+
 		$menu .= '</div>';
 
 		return $menu;
@@ -238,7 +236,7 @@ class Header extends Base_View {
 			$tag = 'h1';
 		}
 
-		$logo  = '<' . $tag . '>' . esc_html( get_bloginfo( 'name' ) ) . '</' . $tag . '>';
+		$logo = '<' . $tag . '>' . esc_html( get_bloginfo( 'name' ) ) . '</' . $tag . '>';
 		$logo .= '<small>' . esc_html( get_bloginfo( 'description' ) ) . '</small>';
 
 		return $logo;
