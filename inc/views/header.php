@@ -27,26 +27,15 @@ class Header extends Base_View {
 	 * Render navigation
 	 */
 	public function render_navigation() {
-		?>
-		<nav class="nv-navbar" <?php echo wp_kses_post( apply_filters( 'neve_nav_data_attrs', '' ) ); ?>
-				role="navigation">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12 nv-nav-wrap <?php echo esc_attr( $this->get_navbar_class() ); ?>">
-						<div class="nv-nav-header">
-							<?php
-							$this->render_navbar_header();
-							$this->render_navbar_toggle();
-							?>
-						</div>
-						<?php
-						$this->render_primary_menu();
-						?>
-					</div>
-				</div>
-			</div>
-		</nav>
-		<?php
+
+		$args = array(
+			'home_url'                  => home_url( '/' ),
+			'logo'                      => $this->get_logo(),
+			'navbar_class'              => $this->get_navbar_class(),
+			'primary_menu'              => $this->get_primary_menu(),
+			'responsive_last_menu_item' => $this->get_responsive_last_menu_item(),
+		);
+		include $this->get_view_path( 'navbar' );
 	}
 
 	/**
@@ -59,15 +48,15 @@ class Header extends Base_View {
 		$additional_item = $this->get_last_menu_item_setting();
 
 		if ( $additional_item === 'none' ) {
-			return;
+			return '';
 		}
 
 		if ( 'search' === $additional_item || 'search-cart' === $additional_item ) {
-			echo $this->get_nav_menu_search( true );
+			return $this->get_nav_menu_search( true );
 		}
 
 		if ( 'cart' === $additional_item || 'search-cart' === $additional_item ) {
-			echo $this->get_nav_menu_cart( true );
+			return $this->get_nav_menu_cart( true );
 		}
 	}
 
@@ -132,6 +121,7 @@ class Header extends Base_View {
 
 		if ( is_cart() || is_checkout() ) {
 			$cart .= '</' . esc_attr( $tag ) . '>';
+
 			return $cart;
 		}
 
@@ -208,9 +198,10 @@ class Header extends Base_View {
 	/**
 	 * Render primary menu markup.
 	 */
-	private function render_primary_menu() {
-		echo '<div role="navigation" aria-label="' . esc_html( __( 'Primary Menu', 'neve' ) ) . '">';
+	private function get_primary_menu() {
+		$menu = '<div role="navigation" aria-label="' . esc_html( __( 'Primary Menu', 'neve' ) ) . '">';
 
+		ob_start();
 		wp_nav_menu(
 			array(
 				'theme_location' => 'primary',
@@ -218,48 +209,14 @@ class Header extends Base_View {
 				'container'      => 'ul',
 				'walker'         => new Nav_Walker(),
 				'fallback_cb'    => '\Neve\Views\Nav_Walker::fallback',
+				'echo'           => false,
 			)
 		);
+		$menu .= ob_get_clean();
+		ob_flush();
+		$menu .= '</div>';
 
-		echo '</div>';
-	}
-
-	/**
-	 * Render navbar toggle markup.
-	 */
-	private function render_navbar_toggle() {
-		?>
-
-		<div class="navbar-toggle-wrapper">
-			<?php
-			neve_before_navbar_toggle_trigger();
-			?>
-			<button class="navbar-toggle" <?php echo wp_kses_post( apply_filters( 'neve_nav_toggle_data_attrs', '' ) ); ?>
-					aria-label="<?php _e( 'Navigation Menu', 'neve' ); ?>" aria-expanded="false">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="screen-reader-text"><?php esc_html_e( 'Toggle Navigation', 'neve' ); ?></span>
-			</button>
-			<?php
-			$this->get_responsive_last_menu_item();
-			neve_after_navbar_toggle_trigger();
-			?>
-		</div>
-		<?php
-	}
-
-	/**
-	 * Do the navbar header.
-	 */
-	private function render_navbar_header() {
-		?>
-		<div class="site-logo">
-			<a class="brand" href="<?php echo esc_url( home_url( '/' ) ); ?>"
-					title="<?php bloginfo( 'name' ); ?>">
-				<?php echo wp_kses_post( $this->get_logo() ); ?></a>
-		</div>
-		<?php
+		return $menu;
 	}
 
 	/**
