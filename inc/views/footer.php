@@ -31,9 +31,14 @@ class Footer extends Base_View {
 			'content'            => $this->get_footer_content(),
 		);
 
-		$this->get_view_path( 'footer', $args );
+		$this->get_view( 'footer', $args );
 	}
 
+	/**
+	 * Get the footer content
+	 *
+	 * @return string
+	 */
 	private function get_footer_content() {
 		$content_type = get_theme_mod( 'neve_footer_content_type', 'text' );
 		if ( $content_type === 'none' ) {
@@ -50,6 +55,7 @@ class Footer extends Base_View {
 				break;
 		}
 
+		return '';
 	}
 
 	/**
@@ -59,7 +65,7 @@ class Footer extends Base_View {
 		$content = get_theme_mod(
 			'neve_footer_text',
 			sprintf(
-				/* translators: %1$s is Theme Name (Neve), %2$s is WordPress */
+			/* translators: %1$s is Theme Name (Neve), %2$s is WordPress */
 				esc_html__( '%1$s | Powered by %2$s', 'neve' ),
 				wp_kses_post( '<a href="https://themeisle.com/themes/neve/" rel="nofollow">Neve</a>' ),
 				wp_kses_post( '<a href="http://wordpress.org" rel="nofollow">WordPress</a>' )

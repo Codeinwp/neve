@@ -35,7 +35,7 @@ class Header extends Base_View {
 			'primary_menu'              => $this->get_primary_menu(),
 			'responsive_last_menu_item' => $this->get_responsive_last_menu_item(),
 		);
-		$this->get_view_path( 'navbar', $args );
+		$this->get_view( 'navbar', $args );
 	}
 
 	/**

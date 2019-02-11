@@ -51,7 +51,7 @@ class Page_Header extends Base_View {
 
 		$title_args['category_description'] = $this->get_archive_description();
 
-		$this->get_view_path( 'page-header', $title_args );
+		$this->get_view( 'page-header', $title_args );
 	}
 
 	/**

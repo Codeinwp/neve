@@ -12,7 +12,7 @@ neve_before_footer_trigger(); ?>
 				<div class="container">
 					<div class="row nv-footer-widgets">
 						<?php foreach ( $args['sidebars'] as $sidebar ) { ?>
-							<div class="<?php esc_attr_e( $args['sidebar_class'] ); ?>">
+							<div class="<?php echo esc_attr( $args['sidebar_class'] ); ?>">
 								<?php dynamic_sidebar( $sidebar ); ?>
 							</div>
 						<?php } ?>

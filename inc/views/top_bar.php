@@ -48,7 +48,7 @@ class Top_Bar extends Base_View {
 			'content'         => $this->get_inner_top_bar(),
 		);
 
-		$this->get_view_path( 'top-bar', $args );
+		$this->get_view( 'top-bar', $args );
 	}
 
 	/**

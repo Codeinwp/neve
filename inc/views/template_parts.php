@@ -35,7 +35,7 @@ class Template_Parts extends Base_View {
 			'content'    => $this->get_article_inner_content(),
 		);
 
-		$this->get_view_path( 'archive-post', $args );
+		$this->get_view( 'archive-post', $args );
 	}
 
 	/**

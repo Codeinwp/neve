@@ -29,7 +29,7 @@ abstract class Base_View {
 	 *
 	 * @return void
 	 */
-	public function get_view_path( $view_slug, $vars ) {
+	public function get_view( $view_slug, $vars ) {
 		if ( empty( $view_slug ) ) {
 			return;
 		}
