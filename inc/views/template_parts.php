@@ -56,6 +56,8 @@ class Template_Parts extends Base_View {
 
 	/**
 	 * Render inner content for <article>
+	 *
+	 * @return string
 	 */
 	private function get_article_inner_content() {
 		$markup = '';
@@ -106,6 +108,8 @@ class Template_Parts extends Base_View {
 
 	/**
 	 * Render the post thumbnail.
+	 *
+	 * @return string
 	 */
 	private function get_post_thumbnail() {
 		if ( ! has_post_thumbnail() ) {
@@ -139,6 +143,8 @@ class Template_Parts extends Base_View {
 
 	/**
 	 * Render title.
+	 *
+	 * @return string
 	 */
 	private function get_title() {
 		$markup = '';
@@ -154,6 +160,8 @@ class Template_Parts extends Base_View {
 
 	/**
 	 * Render meta.
+	 *
+	 * @return string
 	 */
 	private function get_meta() {
 		$default_meta_order = json_encode(
@@ -176,6 +184,8 @@ class Template_Parts extends Base_View {
 
 	/**
 	 * Render excerpt.
+	 *
+	 * @return string
 	 */
 	private function get_excerpt() {
 		ob_start();

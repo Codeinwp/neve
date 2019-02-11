@@ -119,6 +119,8 @@ class Page_Header extends Base_View {
 	 * Remove "Category:", "Tag:", "Author:" from the archive title.
 	 *
 	 * @param string $title Archive title.
+	 *
+	 * @return string
 	 */
 	public function filter_archive_title( $title ) {
 		if ( is_category() ) {
