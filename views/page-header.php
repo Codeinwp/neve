@@ -10,7 +10,7 @@
 		<?php do_action( 'neve_before_page_title' ); ?>
 		<h1><?php echo wp_kses_post( html_entity_decode( $args['string'] ) ); ?></h1>
 		<?php if ( ! empty( $args['category_description'] ) ) { ?>
-			<?php echo wp_kses_post( $args['category_description'] ) ?>
+			<?php echo wp_kses_post( $args['category_description'] ); ?>
 		<?php } ?>
 		<?php do_action( 'neve_after_page_title' ); ?>
 	</div><!--.nv-page-title-->

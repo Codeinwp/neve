@@ -26,11 +26,12 @@ neve_before_footer_trigger(); ?>
 				<div class="container">
 					<div class="row nv-footer-content">
 						<div class="col-12">
-							<?php echo $args['content'] ?>
+							<?php echo $args['content']; ?>
 						</div> <!--.col-12-->
 					</div> <!--.row-->
 				</div> <!--.container-->
 			</div><!--.footer-content-wrap-->
 		<?php } ?>
 	</footer>
-<?php neve_after_footer_trigger();
+<?php
+neve_after_footer_trigger();

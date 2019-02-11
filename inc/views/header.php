@@ -236,7 +236,7 @@ class Header extends Base_View {
 			$tag = 'h1';
 		}
 
-		$logo = '<' . $tag . '>' . esc_html( get_bloginfo( 'name' ) ) . '</' . $tag . '>';
+		$logo  = '<' . $tag . '>' . esc_html( get_bloginfo( 'name' ) ) . '</' . $tag . '>';
 		$logo .= '<small>' . esc_html( get_bloginfo( 'description' ) ) . '</small>';
 
 		return $logo;
