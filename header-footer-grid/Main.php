@@ -1,8 +1,10 @@
 <?php
 namespace HFG;
 
+use HFG\Core\Builder\Frontend;
 use HFG\Core\Customizer;
 use HFG\Core\Builder\Panel;
+use HFG\Core\Settings;
 
 class Main {
 
@@ -49,8 +51,16 @@ class Main {
 		return false;
 	}
 
-	public function init() {
+	public function  is_active() {
+		return true;
+	}
 
+	public function init() {
+		$settings = Settings::get_instance();
+
+		add_filter( 'hfg-active', array( $this, 'is_active' ) );
+
+		$frontend = new Frontend();
 		$builder = new Panel();
 		$customizer = new Customizer();
 		if ( is_admin() || is_customize_preview() ) {

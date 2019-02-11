@@ -129,16 +129,17 @@ class Layout {
 					'control_id' => 'neve_navigation_layout',
 					'version_id' => 'neve_navigation_layout',
 					'panel' => 'neve_header',
-					'section' => 'neve_primary_navigation',
+					//'section' => 'neve_primary_navigation',
+					'section' => '',
 					'versions' => [
 						'v1' => [
-							'control_id' => 'neve_navigation_layout_v1',
+							'control_id' => 'neve_navigation_layout',
 							'label' => 'V1'
 						],
-						'v2' => [
-							'control_id' => 'neve_navigation_layout',
-							'label' => 'V2'
-						]
+//						'v2' => [
+//							'control_id' => 'neve_navigation_layout',
+//							'label' => 'V2'
+//						]
 					],
 					'devices' => [
 						'desktop' => 'Desktop',
@@ -164,31 +165,30 @@ class Layout {
 	}
 
 	public function template() {
-		require_once get_template_directory() . '/header-footer-grid/templates/rows_v1.php';
-		require_once get_template_directory() . '/header-footer-grid/templates/rows_v2.php';
+		require_once get_template_directory() . '/header-footer-grid/templates/rows.php';
 		?>
-		<script type="text/html" id="tmpl-customify--builder-panel">
-			<div class="customify--customize-builder">
-				<div class="customify--cb-inner">
-					<div class="customify--cb-header">
-						<div class="customify--cb-devices-switcher">
+		<script type="text/html" id="tmpl-hfg--builder-panel">
+			<div class="hfg--customize-builder">
+				<div class="hfg--cb-inner">
+					<div class="hfg--cb-header">
+						<div class="hfg--cb-devices-switcher">
 						</div>
-						<div class="customify--cb-actions">
-							<?php do_action( 'customify/builder-panel/actions-buttons' ); ?>
-							<a data-id="{{ data.id }}_templates" class="focus-section button button-secondary" href="#"><?php _e( 'Templates', 'customify' ); ?></a>
-							<a class="button button-secondary customify--panel-close" href="#">
-								<span class="close-text"><?php _e( 'Close', 'customify' ); ?></span>
+						<div class="hfg--cb-actions">
+							<?php do_action( 'hfg/builder-panel/actions-buttons' ); ?>
+							<a data-id="{{ data.id }}_templates" class="focus-section button button-secondary" href="#"><?php _e( 'Templates', 'hfg' ); ?></a>
+							<a class="button button-secondary hfg--panel-close" href="#">
+								<span class="close-text"><?php _e( 'Close', 'hfg' ); ?></span>
 								<span class="panel-name-text">{{ data.title }}</span>
 							</a>
 						</div>
 					</div>
-					<div class="customify--cb-body"></div>
+					<div class="hfg--cb-body"></div>
 				</div>
 			</div>
 		</script>
 
 
-		<script type="text/html" id="tmpl-customify--cb-item">
+		<script type="text/html" id="tmpl-hfg--cb-item">
 			<div class="grid-stack-item item-from-list for-s-{{ data.section }}"
 				 title="{{ data.name }}"
 				 data-id="{{ data.id }}"
@@ -202,20 +202,13 @@ class Layout {
 			>
 				<div class="item-tooltip" data-section="{{ data.section }}">{{ data.name }}</div>
 				<div class="grid-stack-item-content">
-					<span class="customify--cb-item-name" data-section="{{ data.section }}">{{ data.name }}</span>
-					<span class="customify--cb-item-remove customify-cb-icon"></span>
-					<span class="customify--cb-item-setting customify-cb-icon" data-section="{{ data.section }}"></span>
+					<span class="hfg--cb-item-name" data-section="{{ data.section }}">{{ data.name }}</span>
+					<span class="hfg--cb-item-remove hfg-cb-icon"></span>
+					<span class="hfg--cb-item-setting hfg-cb-icon" data-section="{{ data.section }}"></span>
 				</div>
 			</div>
 		</script>
 
 		<?php
-		if ( ! apply_filters( 'customify/is_pro_activated', false ) ) {
-			?>
-			<script type="text/html" id="customify-upsell-tmpl">
-				<p class="customify-upsell-panel"><?php _e( 'Enjoy building? Upgrade to <a target="_blank" href="https://wpcustomify.com/pricing/?utm_source=theme_dashboard&utm_medium=links&utm_campaign=panel_text">Customify Pro</a> to get more builder items and other premium features</a>.', 'customify' ); ?></p>
-			</script>
-			<?php
-		}
 	}
 }
