@@ -132,12 +132,12 @@ class Frontend {
 			$number_item = count( $item['items'] );
 
 			if ( 'footer' != $this->id ) {
-				$classes[] = "customify-col-{$width}_md-{$width}_sm-{$width}";
+				$classes[] = "hfg-col-{$width}_md-{$width}_sm-{$width}";
 			} else {
 				if ( $number_group_item > 1 ) {
-					$classes[] = "customify-col-{$width}_md-{$width}_sm-6_xs-12";
+					$classes[] = "hfg-col-{$width}_md-{$width}_sm-6_xs-12";
 				} else {
-					$classes[] = "customify-col-{$width}_md-{$width}_sm-12_xs-12";
+					$classes[] = "hfg-col-{$width}_md-{$width}_sm-12_xs-12";
 				}
 			}
 
@@ -161,7 +161,7 @@ class Frontend {
 				$classes[] = 'builder-item--group';
 			}
 
-			$classes = apply_filters( 'customify/builder/item-wrapper-classes', $classes, $item );
+			$classes = apply_filters( 'hfg/builder/item-wrapper-classes', $classes, $item );
 			$classes = join( ' ', $classes );
 
 			$row_items_html = '';

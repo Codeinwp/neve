@@ -4,6 +4,9 @@ namespace HFG\Core;
 class Settings {
 
 	private static $_instance = null;
+	private static $config;
+	private static $has_icon;
+	private static $has_font;
 	private $theme_support = array();
 
 	public static function get_instance() {
@@ -167,7 +170,145 @@ class Settings {
 	}
 
 	public function get_settings( $name, $device = 'desktop', $key = false ) {
+		$config    = $this->get_config();
+		$get_value = null;
+		if ( isset( $config[ 'setting|' . $name ] ) ) {
+			$default = isset( $config[ 'setting|' . $name ]['default'] ) ? $config[ 'setting|' . $name ]['default'] : false;
+			$default = apply_filters( 'customify/customize/settings-default', $default, $name );
 
+			if ( 'option' == $config[ 'setting|' . $name ]['mod'] ) {
+				$value = get_option( $name, $default );
+			} else {
+				$value = get_theme_mod( $name, $default );
+			}
+
+			// Maybe need merge defined items with saved item for defined list.
+			if (
+				'repeater' == $config[ 'setting|' . $name ]['type']
+				&& isset( $config[ 'setting|' . $name ]['addable'] )
+				&& false == $config[ 'setting|' . $name ]['addable']
+			) {
+				$value = self::merge_items( $value, $default );
+			}
+
+			if ( ! $config[ 'setting|' . $name ]['device_settings'] ) {
+				return $value;
+			}
+		} else {
+			$value = get_theme_mod( $name, null );
+		}
+
+		if ( ! $key ) {
+			if ( 'all' != $device ) {
+				if ( is_array( $value ) && isset( $value[ $device ] ) ) {
+					$get_value = $value[ $device ];
+				} else {
+					$get_value = $value;
+				}
+			} else {
+				$get_value = $value;
+			}
+		} else {
+			$value_by_key = isset( $value[ $key ] ) ? $value[ $key ] : false;
+			if ( 'all' != $device && is_array( $value_by_key ) ) {
+				if ( is_array( $value_by_key ) && isset( $value_by_key[ $device ] ) ) {
+					$get_value = $value_by_key[ $device ];
+				} else {
+					$get_value = $value_by_key;
+				}
+			} else {
+				$get_value = $value_by_key;
+			}
+		}
+
+		return $get_value;
+	}
+
+	private function sanitize_conf( $conf ) {
+		return wp_parse_args(
+			$conf,
+			array(
+
+				'priority'    => null,
+				'title'       => null,
+				'label'       => null,
+				'name'        => null,
+				'type'        => null,
+				'description' => null,
+				'capability'  => null,
+				'mod'         => null, // Can be theme_mod or option, default theme_mod.
+				'settings'    => null,
+
+				'active_callback'      => null, // For control.
+
+				/**
+				 * For settings
+				 */
+				'sanitize_callback'    => array( 'HFG_Sanitize_Input', 'sanitize_customizer_input' ),
+				'sanitize_js_callback' => null,
+				'theme_supports'       => null,
+				'default'              => null,
+
+				/**
+				 * For selective refresh
+				 */
+				'selector'             => null,
+				'render'               => null, // same render_callback.
+				'render_callback'      => null,
+				'css_format'           => null,
+
+				'device'          => null,
+				'device_settings' => null,
+
+				'field_class' => null, // Custom class for control.
+			)
+		);
+	}
+
+	public function get_config( $wp_customize = null ) {
+		if ( is_null( self::$config ) ) {
+			$filter_config = apply_filters( 'hfg/customizer/config', array(), $wp_customize );
+			foreach ( $filter_config as $conf ) {
+				$conf = $this->sanitize_conf( $conf );
+
+				if ( ! isset( $conf['type'] ) ) {
+					$conf['type'] = null;
+				}
+
+				switch ( $conf['type'] ) {
+					case 'panel':
+						$filter_config[ 'panel|' . $conf['name'] ] = $conf;
+						break;
+					case 'section':
+						$filter_config[ 'section|' . $conf['name'] ] = $conf;
+						break;
+					default:
+						if ( 'icon' == $conf['type'] ) {
+							self::$has_icon = true;
+						}
+
+						if ( 'font' == $conf['type'] ) {
+							self::$has_font = true;
+						}
+
+						if ( isset( $conf['fields'] ) && ! in_array( $conf['type'], array( 'typography', 'styling', 'modal' ) ) ) {
+							$types = wp_list_pluck( $conf['fields'], 'type' );
+							if ( in_array( 'icon', $types ) ) {
+								self::$has_icon = true;
+							}
+
+							if ( in_array( 'font', $types ) ) {
+								self::$has_font = true;
+							}
+						}
+
+						$filter_config[ 'setting|' . $conf['name'] ] = $conf;
+
+				}
+			}
+			self::$config = $filter_config;
+		}
+		return self::$config;
 	}
 
 }
