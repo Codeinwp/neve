@@ -42,12 +42,14 @@ abstract class Base_View {
 
 		if ( file_exists( $path ) && is_readable( $path ) ) {
 			include $path;
+			return;
 		}
 
 		$path = trailingslashit( get_template_directory() ) . $rest_of_path;
 
 		if ( file_exists( $path ) && is_readable( $path ) ) {
 			include $path;
+			return;
 		}
 	}
 }
