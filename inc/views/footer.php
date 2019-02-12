@@ -23,71 +23,45 @@ class Footer extends Base_View {
 	 * Render the footer.
 	 */
 	public function render_footer() {
-		neve_before_footer_trigger();
-		?>
-		<footer role="contentinfo">
-			<?php $this->render_footer_sidebars(); ?>
-			<?php $this->render_footer_content(); ?>
-		</footer>
-		<?php
-		neve_after_footer_trigger();
+
+		$args = array(
+			'sidebar_class'      => $this->the_sidebar_class(),
+			'sidebars'           => $this->get_footer_sidebars(),
+			'footer_has_widgets' => $this->footer_has_widgets(),
+			'content'            => $this->get_footer_content(),
+		);
+
+		$this->get_view( 'footer', $args );
 	}
 
 	/**
-	 * Render the footer sidebars.
+	 * Get the footer content
+	 *
+	 * @return string
 	 */
-	private function render_footer_sidebars() {
-		if ( ! $this->footer_has_widgets() ) {
-			return;
-		}
-
-		$sidebars = $this->get_footer_sidebars();
-		echo '<div class="footer-content-wrap">';
-		echo '<div class="container">';
-		echo '<div class="row nv-footer-widgets">';
-		foreach ( $sidebars as $sidebar ) {
-			echo '<div class="' . esc_attr( $this->the_sidebar_class() ) . '">';
-			dynamic_sidebar( $sidebar );
-			echo '</div>';
-		}
-		echo '</div>'; // .row
-		echo '</div>'; // .container
-		echo '</div>'; // .footer-content-wrap
-	}
-
-	/**
-	 * Render the footer content.
-	 */
-	public function render_footer_content() {
+	private function get_footer_content() {
 		$content_type = get_theme_mod( 'neve_footer_content_type', 'text' );
 		if ( $content_type === 'none' ) {
-			return;
+			return '';
 		}
-		echo '<div class="footer-content-wrap footer-second-section">';
-		echo '<div class="container">';
-		echo '<div class="row nv-footer-content">';
-		echo '<div class="col-12">';
-
 		switch ( $content_type ) {
 			case 'text':
-				$this->render_content_text();
+				return $this->get_footer_text();
 				break;
 			case 'footer_menu':
-				$this->render_content_menu();
+				return $this->get_footer_menu();
 				break;
 			default:
+				break;
 		}
 
-		echo '</div>'; // .col-12
-		echo '</div>'; // .row
-		echo '</div>'; // .container
-		echo '</div>'; // .footer-content-wrap
+		return '';
 	}
 
 	/**
 	 * Render content for text.
 	 */
-	private function render_content_text() {
+	private function get_footer_text() {
 		$content = get_theme_mod(
 			'neve_footer_text',
 			sprintf(
@@ -98,21 +72,24 @@ class Footer extends Base_View {
 			)
 		);
 
-		echo wp_kses_post( $content );
+		return wp_kses_post( $content );
 	}
 
 	/**
 	 * Render content for menu.
 	 */
-	private function render_content_menu() {
-		wp_nav_menu(
+	private function get_footer_menu() {
+		$menu = wp_nav_menu(
 			array(
 				'theme_location' => 'footer',
 				'depth'          => 1,
 				'container'      => 'ul',
 				'menu_class'     => 'footer-menu',
+				'echo'           => false,
 			)
 		);
+
+		return $menu;
 	}
 
 	/**
