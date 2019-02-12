@@ -36,17 +36,26 @@ abstract class Control_Base {
 	public $type = '';
 
 	/**
+	 * Control Priority
+	 *
+	 * @var int
+	 */
+	public $priority = 10;
+
+	/**
 	 * Control_Base constructor.
 	 *
 	 * @param string $id       control id.
 	 * @param array  $settings control settings.
+	 * @param int    $priority control priority.
 	 */
-	public function __construct( $id, $settings ) {
+	public function __construct( $id, $settings, $priority = 10 ) {
 		if ( empty( $this->type ) ) {
 			return;
 		}
 		$this->id       = $id;
 		$this->settings = $settings;
+		$this->priority = $priority;
 	}
 
 	/**
@@ -192,6 +201,9 @@ abstract class Control_Base {
 				break;
 			case 'range':
 				return absint( $value );
+				break;
+			case 'input':
+				return esc_url( $value );
 				break;
 			case 'separator':
 			default:

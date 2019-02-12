@@ -73,7 +73,6 @@ class Core_Loader {
 				'Compatibility\Beaver',
 
 				'Admin\Metabox\Manager',
-				'Admin\Metabox\Main',
 			)
 		);
 	}

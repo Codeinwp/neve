@@ -12,21 +12,101 @@ namespace Neve\Admin\Metabox;
  *
  * @package Neve\Admin\Metabox
  */
-class Manager {
+final class Manager {
+
+	/**
+	 * Control instances.
+	 *
+	 * @var array
+	 */
+	private $controls = array();
+
+	/**
+	 * Control classes to get controls from.
+	 *
+	 * @var array
+	 */
+	private $control_classes;
+
+	/**
+	 * Manager constructor.
+	 */
+	public function __construct() {
+//		$this->define_controls();
+//		$this->load_controls();
+	}
 
 	/**
 	 * Init function
 	 */
 	public function init() {
 		add_action( 'add_meta_boxes', array( $this, 'add' ) );
+		add_action( 'add_meta_boxes', array( $this, 'define_controls' ) );
+		add_action( 'add_meta_boxes', array( $this, 'load_controls' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) );
+		add_action( 'save_post', array( $this, 'save' ) );
+	}
+
+	/**
+	 * Define the controls.
+	 */
+	public function define_controls() {
+		$this->control_classes = array(
+			'Neve\\Admin\\Metabox\\Main'
+		);
+
+		$this->control_classes = apply_filters( 'neve_filter_metabox_controls', $this->control_classes );
+	}
+
+	/**
+	 * Instantiate the controls and actually load them into the control manager.
+	 */
+	public function load_controls() {
+		if ( empty( $this->control_classes ) ) {
+			return;
+		}
+		foreach ( $this->control_classes as $control_manager ) {
+			if ( ! class_exists( $control_manager ) ) {
+				continue;
+			}
+			$control_instance = new $control_manager;
+			if ( ! $control_instance instanceof Controls_Base ) {
+				continue;
+			}
+
+			$control_instance->init();
+
+			$this->controls = array_merge( $this->controls, $control_instance->get_controls() );
+		}
+		$this->order_by_priority();
+	}
+
+	/**
+	 * The metabox content.
+	 */
+	public function render_controls() {
+		global $post;
+
+		foreach ( $this->controls as $control ) {
+			$control->render( $post->ID );
+		}
+	}
+
+	/**
+	 * Save metabox content.
+	 *
+	 * @param int $post_id the post id.
+	 */
+	public function save( $post_id ) {
+		foreach ( $this->controls as $control ) {
+			$control->save( $post_id );
+		}
 	}
 
 	/**
 	 * Register meta box to control layout on pages and posts.
 	 */
 	public function add() {
-
 		if ( $this->should_add_meta() === false ) {
 			return;
 		}
@@ -40,7 +120,7 @@ class Manager {
 		add_meta_box(
 			'neve-page-settings',
 			sprintf(
-				/* translators: %s - post type */
+			/* translators: %s - post type */
 				__( '%s Settings', 'neve' ),
 				$post_type
 			),
@@ -54,7 +134,7 @@ class Manager {
 	 * The metabox content.
 	 */
 	public function render_metabox() {
-		do_action( 'neve_settings_render_metabox_controls' );
+		$this->render_controls();
 	}
 
 	/**
@@ -106,4 +186,17 @@ class Manager {
 	private function get_localization() {
 		return array();
 	}
+
+	/**
+	 * Order the controls by given priority.
+	 */
+	private function order_by_priority() {
+		$order = array();
+
+		foreach ( $this->controls as $key => $control_object ) {
+			$order[ $key ] = $control_object->priority;
+		}
+		array_multisort( $order, SORT_ASC, $this->controls );
+	}
+
 }
