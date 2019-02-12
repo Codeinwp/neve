@@ -29,20 +29,12 @@ final class Manager {
 	private $control_classes;
 
 	/**
-	 * Manager constructor.
-	 */
-	public function __construct() {
-//		$this->define_controls();
-//		$this->load_controls();
-	}
-
-	/**
 	 * Init function
 	 */
 	public function init() {
 		add_action( 'add_meta_boxes', array( $this, 'add' ) );
-		add_action( 'add_meta_boxes', array( $this, 'define_controls' ) );
-		add_action( 'add_meta_boxes', array( $this, 'load_controls' ) );
+		add_action( 'admin_init', array( $this, 'define_controls' ) );
+		add_action( 'admin_init', array( $this, 'load_controls' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) );
 		add_action( 'save_post', array( $this, 'save' ) );
 	}
@@ -52,7 +44,7 @@ final class Manager {
 	 */
 	public function define_controls() {
 		$this->control_classes = array(
-			'Neve\\Admin\\Metabox\\Main'
+			'Neve\\Admin\\Metabox\\Main',
 		);
 
 		$this->control_classes = apply_filters( 'neve_filter_metabox_controls', $this->control_classes );
@@ -120,7 +112,7 @@ final class Manager {
 		add_meta_box(
 			'neve-page-settings',
 			sprintf(
-			/* translators: %s - post type */
+				/* translators: %s - post type */
 				__( '%s Settings', 'neve' ),
 				$post_type
 			),

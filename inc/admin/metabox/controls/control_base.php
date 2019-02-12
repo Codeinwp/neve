@@ -151,7 +151,6 @@ abstract class Control_Base {
 		if ( ! wp_verify_nonce( $_POST['neve_meta_box_process'], 'neve_meta_box_nonce' ) ) {
 			return;
 		}
-
 		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 			return;
 		}
@@ -160,6 +159,7 @@ abstract class Control_Base {
 		}
 		if ( isset( $_POST[ $this->id ] ) ) {
 			$value = wp_unslash( $_POST[ $this->id ] );
+
 			if ( $value === $this->settings['default'] ) {
 				delete_post_meta( $post_id, $this->id );
 
