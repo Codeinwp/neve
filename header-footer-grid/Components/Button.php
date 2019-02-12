@@ -1,9 +1,9 @@
 <?php
 namespace HFG\Components;
 
-use HFG\Core\Abstract_Panel_Item;
+use HFG\Core\Abstract_Component;
 
-class Button extends Abstract_Panel_Item {
+class Button extends Abstract_Component {
 
 	public function __construct() {
 		$this->set_property( 'label', __( 'Button', 'header-footer-i18n' ) );

@@ -4,6 +4,8 @@ namespace HFG\Core;
 use HFG\Config\Customizer\Style;
 use HFG\Config\Customizer\Typography;
 use HFG\Traits\Core;
+use WP_Customize_Color_Control;
+use WP_Customize_Manager;
 
 class Customizer {
 	use Core;
@@ -37,6 +39,25 @@ class Customizer {
 				)
 			);
 		}
+	}
+
+	public function register( WP_Customize_Manager $wp_customize ) {
+		$wp_customize->add_section( 'header_button' , array(
+			'title'    => __( 'Visible Section Name', 'starter' ),
+			'priority' => 30,
+			'panel' => 'neve_header',
+		) );
+
+		$wp_customize->add_setting( 'header_button_setting' , array(
+			'default'   => '#000000',
+			'transport' => 'refresh',
+		) );
+
+		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'link_color', array(
+			'label'    => __( 'Header Color', 'starter' ),
+			'section'  => 'header_button',
+			'settings' => 'header_button_setting',
+		) ) );
 	}
 
 	public function get_typo_fields() {

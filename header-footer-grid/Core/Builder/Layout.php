@@ -1,7 +1,7 @@
 <?php
 namespace HFG\Core\Builder;
 
-use HFG\Core\Abstract_Panel_Item;
+use HFG\Core\Abstract_Component;
 
 class Layout {
 
@@ -21,7 +21,7 @@ class Layout {
 			return false;
 		}
 
-		if ( ! is_object( $class ) ||  ! $class instanceof Abstract_Panel_Item ) {
+		if ( ! is_object( $class ) ||  ! $class instanceof Abstract_Component ) {
 			return false;
 		}
 
@@ -30,7 +30,7 @@ class Layout {
 		}
 
 		/**
-		 * @type Abstract_Panel_Item $item
+		 * @type Abstract_Component $item
 		 */
 		$item = new $class();
 		$this->registered_items[ $builder_id ][ $item->get_property( 'id' ) ] = $item;
@@ -124,7 +124,7 @@ class Layout {
 
 	public function get_builders() {
 		return [
-			'header' => [
+			'ss' => [
 					'id' => 'header',
 					'control_id' => 'neve_navigation_layout',
 					'version_id' => 'neve_navigation_layout',

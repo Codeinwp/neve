@@ -8,8 +8,6 @@
  * @package Neve
  */
 
-use HFG\Main;
-
 define( 'NEVE_VERSION', '1.1.0' );
 define( 'NEVE_INC_DIR', trailingslashit( get_template_directory() ) . 'inc/' );
 define( 'NEVE_ASSETS_URL', trailingslashit( get_template_directory_uri() ) . 'assets/' );
@@ -68,4 +66,5 @@ require_once 'globals/utilities.php';
 require_once 'globals/hooks.php';
 require_once 'globals/sanitize-functions.php';
 
-Main::get_instance();
+require_once get_template_directory() . '/header-footer-grid/test.php';
+add_action( 'init', 'HFG\Main::get_instance' );

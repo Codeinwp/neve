@@ -3,7 +3,7 @@ namespace HFG\Core;
 
 use WP_Customize_Manager;
 
-abstract class Abstract_Panel_Item {
+abstract class Abstract_Component {
 
 	protected $id;
 	protected $section;
