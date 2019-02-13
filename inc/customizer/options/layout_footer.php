@@ -158,7 +158,7 @@ class Layout_Footer extends Base_Customizer {
 	 */
 	public function footer_content_callback() {
 		$footer = new Footer();
-		$footer->render_footer_content();
+		$footer->render_footer();
 	}
 
 	/**
@@ -212,7 +212,7 @@ class Layout_Footer extends Base_Customizer {
 			new Partial(
 				'neve_footer_content_partial',
 				array(
-					'selector'            => '.footer-second-section',
+					'selector'            => 'footer',
 					'settings'            => array( 'neve_footer_content_type', 'neve_footer_text' ),
 					'render_callback'     => array( $this, 'footer_content_callback' ),
 					'container_inclusive' => true,
