@@ -1,7 +1,7 @@
 <?php
 namespace HFG\Core\Interfaces;
 
-use HFG\Core\Abstract_Component;
+use WP_Customize_Manager;
 
 interface Builder {
 
@@ -9,5 +9,9 @@ interface Builder {
 
 	public function get_builder();
 
-	public function register_component( Abstract_Component $component );
+	public function customize_register( WP_Customize_Manager $wp_customize );
+
+	public function register_component( Component $component );
+
+	public function get_components();
 }

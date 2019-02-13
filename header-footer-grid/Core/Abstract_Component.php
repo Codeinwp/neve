@@ -14,7 +14,7 @@ abstract class Abstract_Component {
 	protected $priority;
 	protected $panel;
 
-	public function item() {
+	public function get_settings() {
 		return array(
 			'name'    => $this->label,
 			'id'      => $this->id,
@@ -22,6 +22,10 @@ abstract class Abstract_Component {
 			'width'   => $this->width,
 			'section' => $this->section, // Customizer section to focus when click settings.
 		);
+	}
+
+	public function get_id() {
+		return $this->id;
 	}
 
 	protected function set_property( $key = '', $value = '' ) {
@@ -40,7 +44,7 @@ abstract class Abstract_Component {
 		return $this->$key;
 	}
 
-	public function customize( WP_Customize_Manager $wp_customize ) {
+	public function customize_register( WP_Customize_Manager $wp_customize ) {
 		return $wp_customize;
 	}
 

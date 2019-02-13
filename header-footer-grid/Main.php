@@ -32,13 +32,13 @@ class Main {
 
 	public function init() {
 		$theme_support = get_theme_support( 'hfg_support' )[0];
-		var_dump( $theme_support );
+		//var_dump( $theme_support );
 
-		foreach ( $theme_support['builders'] as $builder ) {
-			var_dump( $builder );
+		foreach ( $theme_support['builders'] as $builder => $components ) {
+			//var_dump( $builder );
 			if( class_exists( $builder ) ) {
-				var_dump( class_implements( $builder ) );
-				var_dump( in_array( 'HFG\Core\Interfaces\Builder', class_implements( $builder ) ) );
+				//var_dump( class_implements( $builder ) );
+				//var_dump( in_array( 'HFG\Core\Interfaces\Builder', class_implements( $builder ) ) );
 			}
 		}
 
