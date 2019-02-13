@@ -48,16 +48,16 @@ abstract class Abstract_Builder implements Builder {
 		}
 	}
 
-	public function register_component( Component $component_to_add ) {
+	public function register_component( $component_to_add ) {
 
-		if ( ! is_object( $component_to_add ) ||  ! in_array( 'HFG\Core\Interfaces\Component', class_implements( $component_to_add ) ) ) {
+		if ( ! class_exists( $component_to_add ) ||  ! in_array( 'HFG\Core\Interfaces\Component', class_implements( $component_to_add ) ) ) {
 			return false;
 		}
 
 		/**
 		 * @var Component $component
 		 */
-		$component = new $component_to_add();
+		$component = new $component_to_add( $this->panel );
 		$this->builder_components[$component->get_id()] = $component;
 		return true;
 	}

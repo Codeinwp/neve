@@ -11,7 +11,7 @@ interface Builder {
 
 	public function customize_register( WP_Customize_Manager $wp_customize );
 
-	public function register_component( Component $component );
+	public function register_component( $component_to_add );
 
 	public function get_components();
 }

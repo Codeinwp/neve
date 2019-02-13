@@ -1,9 +1,10 @@
 <?php
 namespace HFG\Core;
 
+use HFG\Core\Interfaces\Component;
 use WP_Customize_Manager;
 
-abstract class Abstract_Component {
+abstract class Abstract_Component implements Component {
 
 	protected $id;
 	protected $section;

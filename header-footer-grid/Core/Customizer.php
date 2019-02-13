@@ -25,9 +25,7 @@ class Customizer {
 				 */
 				$new_builder = new $builder();
 				foreach ( $components as $component ) {
-					if ( class_exists( $component ) && in_array( 'HFG\Core\Interfaces\Component', class_implements( $component ) ) ) {
-						$new_builder->register_component( new $component() );
-					}
+					$new_builder->register_component( $component );
 				}
 				$this->builders[] = $new_builder;
 			}
@@ -45,14 +43,14 @@ class Customizer {
 	}
 
 	public function get_builders() {
-		$builders = array();
+		$builders_list = array();
 		/**
 		 * @var Builder $builder
 		 */
 		foreach ( $this->builders as $builder ) {
-			$builders[] = $builder->get_builder();
+			$builders_list[] = $builder->get_builder();
 		}
-		return $builders;
+		return $builders_list;
 	}
 
 	public function scripts() {
