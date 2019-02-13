@@ -4,6 +4,8 @@ namespace HFG\Core;
 class Settings {
 
 	private static $_instance = null;
+	public $path;
+	public $url;
 	private static $config;
 	private static $has_icon;
 	private static $has_font;
@@ -12,6 +14,8 @@ class Settings {
 	public static function get_instance() {
 		if ( is_null( self::$_instance ) ) {
 			self::$_instance    = new self();
+			self::$_instance->path = get_template_directory() . '/header-footer-grid';
+			self::$_instance->url = get_template_directory_uri() . '/header-footer-grid';
 			self::$_instance->set();
 		}
 		return self::$_instance;
