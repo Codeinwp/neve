@@ -44,13 +44,9 @@ class Main {
 
 		//add_filter( 'hfg-active', array( $this, 'is_active' ) );
 
-		$frontend = new Frontend();
-		$builder = new Panel();
-		$customizer = new Customizer();
-		if ( is_admin() || is_customize_preview() ) {
-			add_action( 'customize_register', array( $customizer, 'register' ), PHP_INT_MAX );
-			add_action( 'customize_preview_init', array( $customizer, 'preview_js' ), PHP_INT_MAX );
-		}
+		//$frontend = new Frontend();
+		//$builder = new Panel();
+		$customizer = new Customizer( $this->settings );
 	}
 
 	/**
