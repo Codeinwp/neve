@@ -5,6 +5,8 @@ use WP_Customize_Manager;
 
 interface Builder {
 
+	public function register_builder_hooks();
+
 	public function get_property( $key );
 
 	public function get_builder();

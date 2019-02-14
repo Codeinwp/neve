@@ -29,6 +29,92 @@ abstract class Abstract_Builder implements Builder {
 		return $this->$key;
 	}
 
+	public function register_builder_hooks() {
+		if ( is_admin() ) {
+
+			add_action( 'wp_ajax_customify_builder_save_template', array( $this, 'ajax_save_template' ) );
+			add_action( 'wp_ajax_customify_builder_export_template', array( $this, 'ajax_export_template' ) );
+		}
+	}
+
+	public function ajax_save_template() {
+		if ( ! current_user_can( 'edit_theme_options' ) ) {
+			wp_send_json_error( __( 'Access denied', 'hfg-module' ) );
+		}
+
+		$id        = isset( $_POST['id'] ) ? sanitize_text_field( $_POST['id'] ) : false;
+		$control   = isset( $_POST['control'] ) ? sanitize_text_field( $_POST['control'] ) : '';
+		$save_name = isset( $_POST['name'] ) ? sanitize_text_field( $_POST['name'] ) : '';
+		if ( ! $save_name ) {
+			$save_name = sprintf( __( 'Saved %s', 'hfg-module' ), date_i18n( 'Y-m-d H:i:s' ) );
+		}
+		$fn = false;
+//		if ( ! isset( $this->builder_components[ $id ] ) ) {
+//			wp_send_json_error( __( 'No Support', 'hfg-module' ) );
+//		} else {
+//			$fn = array( $this->builder_components[ $id ], 'customize_register' );
+//		}
+
+		$template_section = $this->panel . '_template_section';
+		$theme_name  = wp_get_theme()->get( 'Name' );
+		$option_name = "{$theme_name}_{$template_section}_setting";
+
+		$saved_templates = get_option( $option_name );
+		if ( ! is_array( $saved_templates ) ) {
+			$saved_templates = array();
+		}
+
+		if ( isset( $_POST['remove'] ) ) {
+			$remove = sanitize_text_field( $_POST['remove'] );
+			if ( isset( $saved_templates[ $remove ] ) ) {
+				unset( $saved_templates[ $remove ] );
+			}
+
+			update_option( $option_name, $saved_templates );
+			wp_send_json_success();
+		}
+
+		$config            = call_user_func_array( $fn, array() );
+		$new_template_data = array();
+
+		foreach ( $config as $k => $field ) {
+			if ( 'panel' != $field['type'] && 'section' != $field['type'] ) {
+				$name  = $field['name'];
+				$value = get_theme_mod( $name );
+				if ( is_array( $value ) ) {
+					$value = array_filter( $value );
+				}
+				if ( $value && ! empty( $value ) ) {
+					$new_template_data[ $name ] = $value;
+				}
+			}
+		}
+
+		if ( ! $save_name ) {
+			$key_id    = date_i18n( 'Y-m-d H:i:s', current_time( 'timestamp' ) );
+			$save_name = sprintf( __( 'Saved %s', 'hfg-module' ), $key_id );
+		} else {
+			$key_id = $save_name;
+		}
+
+		$saved_templates[ $key_id ] = array(
+			'name'  => $save_name,
+			'image' => '',
+			'data'  => $new_template_data,
+		);
+
+		update_option( $option_name, $saved_templates );
+		$html = '<li class="saved_template li-boxed" data-control-id="' . esc_attr( $control ) . '" data-id="' . esc_attr( $key_id ) . '" data-data="' . esc_attr( wp_json_encode( $new_template_data ) ) . '">' . esc_html( $save_name ) . ' <a href="#" class="load-tpl">' . __( 'Load', 'hfg-module' ) . '</a><a href="#" class="remove-tpl">' . __( 'Remove', 'hfg-module' ) . '</a></li>';
+		wp_send_json_success(
+			array(
+				'key_id' => $key_id,
+				'name'   => $save_name,
+				'li'     => $html,
+			)
+		);
+		die();
+	}
+
 	private function generate_template_html( $template_section = '' ) {
 		$theme_name  = wp_get_theme()->get( 'Name' );
 		$option_name = "{$theme_name}_{$template_section}_setting";

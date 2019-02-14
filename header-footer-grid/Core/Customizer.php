@@ -23,6 +23,7 @@ class Customizer {
 				 * @var Builder $new_builder
 				 */
 				$new_builder = new $builder();
+				$new_builder->register_builder_hooks();
 				foreach ( $components as $component ) {
 					$new_builder->register_component( $component );
 				}
