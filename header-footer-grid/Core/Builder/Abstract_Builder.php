@@ -37,6 +37,25 @@ abstract class Abstract_Builder implements Builder {
 		}
 	}
 
+	public function ajax_export_template() {
+		if ( ! current_user_can( 'edit_theme_options' ) ) {
+			wp_send_json_error( __( 'Access denied', 'customify' ) );
+		}
+		$id   = isset( $_GET['id'] ) ? sanitize_text_field( wp_unslash( $_GET['id'] ) ) : false;
+		$name = isset( $_GET['name'] ) ? sanitize_text_field( wp_unslash( $_GET['name'] ) ) : false;
+
+		$template_section = $this->panel . '_template_section';
+		$theme_name  = wp_get_theme()->get( 'Name' );
+		$option_name = "{$theme_name}_{$template_section}_setting";
+		$data        = get_option( $option_name );
+		$var = $data;
+		if ( $name && isset( $data[ $name ] ) ) {
+			$var = array_filter( $data[ $name ]['data'] );
+		}
+		var_dump( $var ); // TODO: why is this here?
+		die();
+	}
+
 	public function ajax_save_template() {
 		if ( ! current_user_can( 'edit_theme_options' ) ) {
 			wp_send_json_error( __( 'Access denied', 'hfg-module' ) );
@@ -77,7 +96,7 @@ abstract class Abstract_Builder implements Builder {
 		$config            = call_user_func_array( $fn, array() );
 		$new_template_data = array();
 
-		foreach ( $config as $k => $field ) {
+		foreach ( $config as $field ) {
 			if ( 'panel' != $field['type'] && 'section' != $field['type'] ) {
 				$name  = $field['name'];
 				$value = get_theme_mod( $name );
