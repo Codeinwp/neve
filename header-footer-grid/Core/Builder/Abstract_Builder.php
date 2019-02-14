@@ -41,15 +41,14 @@ abstract class Abstract_Builder implements Builder {
 		if ( ! current_user_can( 'edit_theme_options' ) ) {
 			wp_send_json_error( __( 'Access denied', 'customify' ) );
 		}
-		$id   = isset( $_GET['id'] ) ? sanitize_text_field( wp_unslash( $_GET['id'] ) ) : false;
-		$name = isset( $_GET['name'] ) ? sanitize_text_field( wp_unslash( $_GET['name'] ) ) : false;
+		$name = isset( $_GET['name'] ) ? sanitize_text_field( wp_unslash( $_GET['name'] ) ) : '';
 
 		$template_section = $this->panel . '_template_section';
 		$theme_name  = wp_get_theme()->get( 'Name' );
 		$option_name = "{$theme_name}_{$template_section}_setting";
 		$data        = get_option( $option_name );
 		$var = $data;
-		if ( $name && isset( $data[ $name ] ) ) {
+		if ( ! empty( $name ) && isset( $data[ $name ] ) ) {
 			$var = array_filter( $data[ $name ]['data'] );
 		}
 		var_dump( $var ); // TODO: why is this here?
@@ -61,7 +60,7 @@ abstract class Abstract_Builder implements Builder {
 			wp_send_json_error( __( 'Access denied', 'hfg-module' ) );
 		}
 
-		$id        = isset( $_POST['id'] ) ? sanitize_text_field( $_POST['id'] ) : false;
+		$id        = isset( $_POST['id'] ) ? sanitize_text_field( $_POST['id'] ) : '';
 		$control   = isset( $_POST['control'] ) ? sanitize_text_field( $_POST['control'] ) : '';
 		$save_name = isset( $_POST['name'] ) ? sanitize_text_field( $_POST['name'] ) : '';
 		if ( ! $save_name ) {
