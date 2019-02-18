@@ -1,6 +1,6 @@
 (function(api) {
 	// Extends our custom "example-1" section.
-	api.sectionConstructor["customify-pro"] = api.Section.extend({
+	api.sectionConstructor["hfg-pro"] = api.Section.extend({
 		// No events for this type of section.
 		attachEvents: function() {},
 
@@ -19,7 +19,7 @@
 		var sections = [];
 		api.section.each(function(section) {
 			if (
-				"customify_section" !== section.params.type ||
+				"hfg_section" !== section.params.type ||
 				"undefined" === typeof section.params.section
 			) {
 				return;
@@ -42,7 +42,7 @@
 		var panels = [];
 		api.panel.each(function(panel) {
 			if (
-				"customify_panel" !== panel.params.type ||
+				"hfg_panel" !== panel.params.type ||
 				"undefined" === typeof panel.params.panel
 			) {
 				return;
@@ -68,7 +68,7 @@
 	wp.customize.Panel = wp.customize.Panel.extend({
 		attachEvents: function() {
 			if (
-				"customify_panel" !== this.params.type ||
+				"hfg_panel" !== this.params.type ||
 				"undefined" === typeof this.params.panel
 			) {
 				_panelAttachEvents.call(this);
@@ -101,7 +101,7 @@
 		},
 		embed: function() {
 			if (
-				"customify_panel" !== this.params.type ||
+				"hfg_panel" !== this.params.type ||
 				"undefined" === typeof this.params.panel
 			) {
 				_panelEmbed.call(this);
@@ -115,7 +115,7 @@
 			parentContainer.append(panel.headContainer);
 		},
 		isContextuallyActive: function() {
-			if ("customify_panel" !== this.params.type) {
+			if ("hfg_panel" !== this.params.type) {
 				return _panelIsContextuallyActive.call(this);
 			}
 
@@ -151,7 +151,7 @@
 	wp.customize.Section = wp.customize.Section.extend({
 		attachEvents: function() {
 			if (
-				"customify_section" !== this.params.type ||
+				"hfg_section" !== this.params.type ||
 				"undefined" === typeof this.params.section
 			) {
 				_sectionAttachEvents.call(this);
@@ -185,7 +185,7 @@
 		},
 		embed: function() {
 			if (
-				"customify_section" !== this.params.type ||
+				"hfg_section" !== this.params.type ||
 				"undefined" === typeof this.params.section
 			) {
 				_sectionEmbed.call(this);
@@ -200,7 +200,7 @@
 			parentContainer.append(section.headContainer);
 		},
 		isContextuallyActive: function() {
-			if ("customify_section" !== this.params.type) {
+			if ("hfg_section" !== this.params.type) {
 				return _sectionIsContextuallyActive.call(this);
 			}
 
@@ -239,7 +239,7 @@
 	"use strict";
 
 	var $document = $(document);
-	var is_rtl = Customify_Control_Args.is_rtl;
+	var is_rtl = HFG_Control_Args.is_rtl;
 
 	var CustomifyMedia = {
 		setAttachment: function(attachment) {
@@ -294,8 +294,8 @@
 			var url = this.getURL();
 			var id = this.getID();
 			var mime = this.attachment.mime;
-			$(".customify-image-preview", this.preview)
-				.addClass("customify--has-file")
+			$(".hfg-image-preview", this.preview)
+				.addClass("hfg--has-file")
 				.html('<img src="' + url + '" alt="">');
 			$(".attachment-url", this.preview).val(this.toRelativeUrl(url));
 			$(".attachment-mime", this.preview).val(mime);
@@ -307,15 +307,15 @@
 		},
 		toRelativeUrl: function(url) {
 			return url;
-			//return url.replace( Customify_Control_Args.home_url, '' );
+			//return url.replace( HFG_Control_Args.home_url, '' );
 		},
 		showChangeBtn: function() {
-			$(".customify--add", this.preview).addClass("customify--hide");
-			$(".customify--change", this.preview).removeClass(
-				"customify--hide"
+			$(".hfg--add", this.preview).addClass("hfg--hide");
+			$(".hfg--change", this.preview).removeClass(
+				"hfg--hide"
 			);
-			$(".customify--remove", this.preview).removeClass(
-				"customify--hide"
+			$(".hfg--remove", this.preview).removeClass(
+				"hfg--hide"
 			);
 		},
 		insertVideo: function(attachment) {
@@ -332,8 +332,8 @@
 				'" type="' +
 				mime +
 				'">Your browser does not support the video tag.</video>';
-			$(".customify-image-preview", this.preview)
-				.addClass("customify--has-file")
+			$(".hfg-image-preview", this.preview)
+				.addClass("hfg--has-file")
 				.html(html);
 			$(".attachment-url", this.preview).val(this.toRelativeUrl(url));
 			$(".attachment-mime", this.preview).val(mime);
@@ -351,8 +351,8 @@
 			var mime = this.attachment.mime;
 			var basename = url.replace(/^.*[\\\/]/, "");
 
-			$(".customify-image-preview", this.preview)
-				.addClass("customify--has-file")
+			$(".hfg-image-preview", this.preview)
+				.addClass("hfg--has-file")
 				.html(
 					'<a href="' +
 						url +
@@ -372,10 +372,10 @@
 			if (typeof $el !== "undefined") {
 				this.preview = $el;
 			}
-			$(".customify-image-preview", this.preview)
+			$(".hfg-image-preview", this.preview)
 				.removeAttr("style")
 				.html("")
-				.removeClass("customify--has-file");
+				.removeClass("hfg--has-file");
 			$(".attachment-url", this.preview).val("");
 			$(".attachment-mime", this.preview).val("");
 			$(".attachment-id", this.preview)
@@ -383,9 +383,9 @@
 				.trigger("change");
 			this.preview.removeClass("attachment-added");
 
-			$(".customify--add", this.preview).removeClass("customify--hide");
-			$(".customify--change", this.preview).addClass("customify--hide");
-			$(".customify--remove", this.preview).addClass("customify--hide");
+			$(".hfg--add", this.preview).removeClass("hfg--hide");
+			$(".hfg--change", this.preview).addClass("hfg--hide");
+			$(".hfg--remove", this.preview).addClass("hfg--hide");
 		}
 	};
 
@@ -433,13 +433,13 @@
 		CustomifyMedia.insertFile(attachment);
 	});
 
-	var customify_controls_list = {};
+	var hfg_controls_list = {};
 	//---------------------------------------------------------------------------
 
-	var customifyField = {
+	var hfgField = {
 		devices: ["desktop", "tablet", "mobile"],
 		allDevices: ["desktop", "tablet", "mobile"],
-		type: "customify",
+		type: "hfg",
 		getTemplate: _.memoize(function() {
 			var field = this;
 			var compiled,
@@ -459,7 +459,7 @@
 			return function(data, id, data_variable_name) {
 				if (_.isUndefined(id)) {
 					//id = 'tmpl-customize-control-' + field.type;
-					id = "tmpl-field-customify-" + field.type;
+					id = "tmpl-field-hfg-" + field.type;
 				}
 				if (
 					!_.isUndefined(data_variable_name) &&
@@ -988,7 +988,7 @@
 					if (field.device_settings) {
 						_.each(control.allDevices, function(device) {
 							var $area = $(
-								".customify-group-device-fields.customify--for-" +
+								".hfg-group-device-fields.hfg--for-" +
 									device,
 								container
 							);
@@ -996,7 +996,7 @@
 							var _value = {};
 							_.each(field.fields, function(f) {
 								var $_field = $(
-									'.customify--group-field[data-field-name="' +
+									'.hfg--group-field[data-field-name="' +
 										f.name +
 										'"]',
 									$area
@@ -1013,7 +1013,7 @@
 					} else {
 						_.each(field.fields, function(f) {
 							var $_field = $(
-								'.customify--group-field[data-field-name="' +
+								'.hfg--group-field[data-field-name="' +
 									f.name +
 									'"]',
 								container
@@ -1030,7 +1030,7 @@
 					break;
 				case "repeater":
 					value = [];
-					$(".customify--repeater-item", container).each(function(
+					$(".hfg--repeater-item", container).each(function(
 						index
 					) {
 						var $item = $(this);
@@ -1040,8 +1040,8 @@
 								'[data-field-name="' + f.name + '"]',
 								$item
 							);
-							//var $_field = inputField.closest('.customify--field');
-							//var $_field = inputField.closest('.customify--repeater-field');
+							//var $_field = inputField.closest('.hfg--field');
+							//var $_field = inputField.closest('.hfg--repeater-field');
 							var _fv = control.getFieldValue(f.name, f, $item);
 							_v[f.name] = _fv;
 							// Update Live title
@@ -1052,7 +1052,7 @@
 										.text();
 								} else if (_.isUndefined(_fv) || _fv == "") {
 									//_fv = control.params.l10n.untitled;
-									_fv = Customify_Control_Args.untitled;
+									_fv = HFG_Control_Args.untitled;
 								}
 								control.updateRepeaterLiveTitle(_fv, $item, f);
 							}
@@ -1088,7 +1088,7 @@
 			return JSON.parse(decodeURI(value));
 		},
 		updateRepeaterLiveTitle: function(value, $item, field) {
-			$(".customify--repeater-live-title", $item).text(value);
+			$(".hfg--repeater-live-title", $item).text(value);
 		},
 		compare: function(value1, cond, value2) {
 			var equal = false;
@@ -1227,7 +1227,7 @@
 		},
 		initConditional: function($el, values) {
 			var control = this;
-			var $fields = $(".customify--field", $el);
+			var $fields = $(".hfg--field", $el);
 			$fields.each(function() {
 				var $field = $(this);
 				var check = true;
@@ -1236,9 +1236,9 @@
 					req = JSON.parse(req);
 					check = control.multiple_compare(req, values);
 					if (!check) {
-						$field.addClass("customify--hide");
+						$field.addClass("hfg--hide");
 					} else {
-						$field.removeClass("customify--hide");
+						$field.removeClass("hfg--hide");
 					}
 				}
 			});
@@ -1250,16 +1250,16 @@
 				$el = field.container;
 			}
 			var clone = $("#customize-footer-actions .devices").clone();
-			clone.addClass("customify-devices");
+			clone.addClass("hfg-devices");
 			$("button", clone).each(function() {
 				var d = $(this).attr("data-device");
 				if (_.indexOf(field.devices, d) < 0) {
 					$(this).remove();
 				}
 			});
-			$(".customify-field-heading", $el)
+			$(".hfg-field-heading", $el)
 				.append(clone)
-				.addClass("customify-devices-added");
+				.addClass("hfg-devices-added");
 		},
 
 		addRepeaterItem: function(field, value, $container, cb) {
@@ -1279,7 +1279,7 @@
 			var $itemWrapper = $(
 				template(field, "tmpl-customize-control-repeater-layout")
 			);
-			$container.find(".customify--settings-fields").append($itemWrapper);
+			$container.find(".hfg--settings-fields").append($itemWrapper);
 			_.each(fields, function(f, index) {
 				f.value = "";
 				f.addable = addable;
@@ -1287,8 +1287,8 @@
 					f.value = value[f.name];
 				}
 				var $fieldArea;
-				$fieldArea = $('<div class="customify--repeater-field"></div>');
-				$(".customify--repeater-item-inner", $itemWrapper).append(
+				$fieldArea = $('<div class="hfg--repeater-field"></div>');
+				$(".hfg--repeater-item-inner", $itemWrapper).append(
 					$fieldArea
 				);
 				control.add(f, $fieldArea, function() {
@@ -1303,7 +1303,7 @@
 					if (f.type === "select") {
 						live_title = f.choices[f.value];
 					} else if (_.isUndefined(live_title) || live_title == "") {
-						live_title = Customify_Control_Args.untitled;
+						live_title = HFG_Control_Args.untitled;
 					}
 					control.updateRepeaterLiveTitle(
 						live_title,
@@ -1329,12 +1329,12 @@
 
 			if (title_only) {
 				$(
-					".customify--repeater-item-settings, .customify--repeater-item-toggle",
+					".hfg--repeater-item-settings, .hfg--repeater-item-toggle",
 					$itemWrapper
 				).hide();
 			}
 
-			$document.trigger("customify/customizer/repeater/add", [
+			$document.trigger("hfg/customizer/repeater/add", [
 				$itemWrapper,
 				control
 			]);
@@ -1343,48 +1343,48 @@
 		limitRepeaterItems: function(field, $container) {
 			return;
 			var control = this;
-			var addButton = $(".customify--repeater-add-new", $container);
+			var addButton = $(".hfg--repeater-add-new", $container);
 			var c = $(
-				".customify--settings-fields .customify--repeater-item",
+				".hfg--settings-fields .hfg--repeater-item",
 				$container
 			).length;
 
 			if (control.params.limit > 0) {
 				if (c >= control.params.limit) {
-					addButton.addClass("customify--hide");
+					addButton.addClass("hfg--hide");
 					if (control.params.limit_msg) {
 						if (
-							$(".customify--limit-item-msg", control.container)
+							$(".hfg--limit-item-msg", control.container)
 								.length === 0
 						) {
 							$(
-								'<p class="customify--limit-item-msg">' +
+								'<p class="hfg--limit-item-msg">' +
 									control.params.limit_msg +
 									"</p>"
 							).insertBefore(addButton);
 						} else {
 							$(
-								".customify--limit-item-msg",
+								".hfg--limit-item-msg",
 								control.container
-							).removeClass("customify--hide");
+							).removeClass("hfg--hide");
 						}
 					}
 				} else {
-					$(".customify--limit-item-msg", control.container).addClass(
-						"customify--hide"
+					$(".hfg--limit-item-msg", control.container).addClass(
+						"hfg--hide"
 					);
-					addButton.removeClass("customify--hide");
+					addButton.removeClass("hfg--hide");
 				}
 			}
 
 			if (c > 0) {
 				$(
-					".customify--repeater-reorder",
+					".hfg--repeater-reorder",
 					control.container
-				).removeClass("customify--hide");
+				).removeClass("hfg--hide");
 			} else {
-				$(".customify--repeater-reorder", control.container).addClass(
-					"customify--hide"
+				$(".hfg--repeater-reorder", control.container).addClass(
+					"hfg--hide"
 				);
 			}
 		},
@@ -1403,8 +1403,8 @@
 			}
 
 			// Sortable
-			$container.find(".customify--settings-fields").sortable({
-				handle: ".customify--repeater-item-heading",
+			$container.find(".hfg--settings-fields").sortable({
+				handle: ".hfg--repeater-item-heading",
 				containment: "parent",
 				update: function(event, ui) {
 					// control.getValue();
@@ -1415,16 +1415,16 @@
 			});
 
 			// Toggle Move
-			$container.on("click", ".customify--repeater-reorder", function(e) {
+			$container.on("click", ".hfg--repeater-reorder", function(e) {
 				e.preventDefault();
-				$(".customify--repeater-items", $container).toggleClass(
+				$(".hfg--repeater-items", $container).toggleClass(
 					"reorder-active"
 				);
-				$(".customify--repeater-add-new", $container).toggleClass(
+				$(".hfg--repeater-add-new", $container).toggleClass(
 					"disabled"
 				);
 				if (
-					$(".customify--repeater-items", $container).hasClass(
+					$(".hfg--repeater-items", $container).hasClass(
 						"reorder-active"
 					)
 				) {
@@ -1437,10 +1437,10 @@
 			// Move Up
 			$container.on(
 				"click",
-				".customify--repeater-item .customify--up",
+				".hfg--repeater-item .hfg--up",
 				function(e) {
 					e.preventDefault();
-					var i = $(this).closest(".customify--repeater-item");
+					var i = $(this).closest(".hfg--repeater-item");
 					var index = i.index();
 					if (index > 0) {
 						var up = i.prev();
@@ -1455,14 +1455,14 @@
 			// Move Down
 			$container.on(
 				"click",
-				".customify--repeater-item .customify--down",
+				".hfg--repeater-item .hfg--down",
 				function(e) {
 					e.preventDefault();
 					var n = $(
-						".customify--repeater-items .customify--repeater-item",
+						".hfg--repeater-items .hfg--repeater-item",
 						$container
 					).length;
-					var i = $(this).closest(".customify--repeater-item");
+					var i = $(this).closest(".hfg--repeater-item");
 					var index = i.index();
 					if (index < n - 1) {
 						var down = i.next();
@@ -1486,10 +1486,10 @@
 			// Toggle visibility
 			$container.on(
 				"change",
-				".customify--repeater-item .r-visible-input",
+				".hfg--repeater-item .r-visible-input",
 				function(e) {
 					e.preventDefault();
-					var p = $(this).closest(".customify--repeater-item");
+					var p = $(this).closest(".hfg--repeater-item");
 					if ($(this).is(":checked")) {
 						p.removeClass("item---visible-hidden");
 					} else {
@@ -1502,21 +1502,21 @@
 			if (!field.title_only) {
 				$container.on(
 					"click",
-					".customify--repeater-item-toggle, .customify--repeater-live-title",
+					".hfg--repeater-item-toggle, .hfg--repeater-live-title",
 					function(e) {
 						e.preventDefault();
-						var p = $(this).closest(".customify--repeater-item");
-						p.toggleClass("customify--open");
+						var p = $(this).closest(".hfg--repeater-item");
+						p.toggleClass("hfg--open");
 					}
 				);
 			}
 
 			// Remove
-			$container.on("click", ".customify--remove", function(e) {
+			$container.on("click", ".hfg--remove", function(e) {
 				e.preventDefault();
-				var p = $(this).closest(".customify--repeater-item");
+				var p = $(this).closest(".hfg--repeater-item");
 				p.remove();
-				$document.trigger("customify/customizer/repeater/remove", [
+				$document.trigger("hfg/customizer/repeater/remove", [
 					control
 				]);
 				if (_.isFunction(cb)) {
@@ -1534,7 +1534,7 @@
 			});
 
 			// Add Item
-			$container.on("click", ".customify--repeater-add-new", function(e) {
+			$container.on("click", ".hfg--repeater-add-new", function(e) {
 				e.preventDefault();
 				if (!$(this).hasClass("disabled")) {
 					control.addRepeaterItem(
@@ -1558,6 +1558,8 @@
 			if ($("#" + template_id).length == 0) {
 				template_id = "tmpl-field-" + control.type + "-text";
 			}
+
+			console.log( field );
 
 			if (field.device_settings) {
 				var fieldItem = null;
@@ -1583,16 +1585,16 @@
 						template(_field, template_id, "field")
 					);
 					var deviceFieldItem = $deviceFields
-						.find(".customify-field-settings-inner")
+						.find(".hfg-field-settings-inner")
 						.first();
 
 					if (!fieldItem) {
 						$fieldsArea
 							.append($deviceFields)
-							.addClass("customify--multiple-devices");
+							.addClass("hfg--multiple-devices");
 					}
 
-					deviceFieldItem.addClass("customify--for-" + device);
+					deviceFieldItem.addClass("hfg--for-" + device);
 					deviceFieldItem.attr("data-for-device", device);
 
 					if (fieldItem) {
@@ -1613,7 +1615,7 @@
 					template(field, "tmpl-customize-control-repeater-inner")
 				);
 				$fieldsArea
-					.find(".customify-field-settings-inner")
+					.find(".hfg-field-settings-inner")
 					.replaceWith($rf_area);
 				control.initRepeater(field, $rf_area, cb);
 			}
@@ -1621,10 +1623,10 @@
 			if (field.css_format && _.isString(field.css_format)) {
 				if (field.css_format.indexOf("value_no_unit") > 0) {
 					$fieldsArea
-						.find(".customify--slider-input")
+						.find(".hfg--slider-input")
 						.addClass("no-unit");
 					$(
-						".customify--css-unit .customify--label-active",
+						".hfg--css-unit .hfg--label-active",
 						$fieldsArea
 					).hide();
 				}
@@ -1670,7 +1672,7 @@
 					f.class = "";
 				}
 				var $fieldArea = $(
-					'<div class="customify--group-field ft--' +
+					'<div class="hfg--group-field ft--' +
 						f.type +
 						" " +
 						f.class +
@@ -1692,11 +1694,11 @@
 		},
 
 		initSlider: function($el) {
-			if ($(".customify-input-slider", $el).length > 0) {
-				$(".customify-input-slider", $el).each(function() {
+			if ($(".hfg-input-slider", $el).length > 0) {
+				$(".hfg-input-slider", $el).each(function() {
 					var slider = $(this);
 					var p = slider.parent();
-					var input = $(".customify--slider-input", p);
+					var input = $(".hfg--slider-input", p);
 					var min = slider.data("min") || 0;
 					var max = slider.data("max") || 300;
 					var step = slider.data("step") || 1;
@@ -1730,7 +1732,7 @@
 
 					// Reset
 					var wrapper = slider.closest(
-						".customify-input-slider-wrapper"
+						".hfg-input-slider-wrapper"
 					);
 					wrapper.on("click", ".reset", function(e) {
 						e.preventDefault();
@@ -1742,15 +1744,15 @@
 							};
 						}
 
-						$(".customify--slider-input", wrapper).val(d.value);
+						$(".hfg--slider-input", wrapper).val(d.value);
 						slider.slider("option", "value", d.value);
 						$(
-							'.customify--css-unit input.customify-input[value="' +
+							'.hfg--css-unit input.hfg-input[value="' +
 								d.unit +
 								'"]',
 							wrapper
 						).trigger("click");
-						$(".customify--slider-input", wrapper).trigger(
+						$(".hfg--slider-input", wrapper).trigger(
 							"change"
 						);
 					});
@@ -1762,43 +1764,43 @@
 			// When add/Change
 			$el.on(
 				"click",
-				".customify--media .customify--add, .customify--media .customify--change, .customify--media .customify-image-preview",
+				".hfg--media .hfg--add, .hfg--media .hfg--change, .hfg--media .hfg-image-preview",
 				function(e) {
 					e.preventDefault();
-					var p = $(this).closest(".customify--media");
+					var p = $(this).closest(".hfg--media");
 					CustomifyMedia.setPreview(p);
 					CustomifyMedia.controlMediaImage.open();
 				}
 			);
 
 			// When add/Change
-			$el.on("click", ".customify--media .customify--remove", function(
+			$el.on("click", ".hfg--media .hfg--remove", function(
 				e
 			) {
 				e.preventDefault();
-				var p = $(this).closest(".customify--media");
+				var p = $(this).closest(".hfg--media");
 				CustomifyMedia.remove(p);
 			});
 		},
 
 		initCSSRuler: function($el, change_cb) {
 			// When toggle value change
-			$el.on("change", ".customify--label-parent", function() {
+			$el.on("change", ".hfg--label-parent", function() {
 				if ($(this).attr("type") == "radio") {
 					var name = $(this).attr("name");
 					$('input[name="' + name + '"]', $el)
 						.parent()
-						.removeClass("customify--label-active");
+						.removeClass("hfg--label-active");
 				}
 				var checked = $(this).is(":checked");
 				if (checked) {
 					$(this)
 						.parent()
-						.addClass("customify--label-active");
+						.addClass("hfg--label-active");
 				} else {
 					$(this)
 						.parent()
-						.removeClass("customify--label-active");
+						.removeClass("hfg--label-active");
 				}
 				if (_.isFunction(change_cb)) {
 					change_cb();
@@ -1807,16 +1809,16 @@
 
 			$el.on(
 				"change keyup",
-				".customify--css-ruler .customify-input-css",
+				".hfg--css-ruler .hfg-input-css",
 				function() {
-					var p = $(this).closest(".customify--css-ruler");
+					var p = $(this).closest(".hfg--css-ruler");
 					var link_checked = $(
-						".customify--css-ruler-link input",
+						".hfg--css-ruler-link input",
 						p
 					).is(":checked");
 					if (link_checked) {
 						var v = $(this).val();
-						$(".customify-input-css", p)
+						$(".hfg-input-css", p)
 							.not($(this))
 							.each(function() {
 								if (!$(this).is(":disabled")) {
@@ -1832,33 +1834,33 @@
 		},
 
 		initColor: function($el) {
-			$(".customify-input-color", $el).each(function() {
+			$(".hfg-input-color", $el).each(function() {
 				var colorInput = $(this);
 				var df = colorInput.data("default") || "";
 				var current_val = $(
-					".customify-input--color",
+					".hfg-input--color",
 					colorInput
 				).val();
 				// data-alpha="true"
-				$(".customify--color-panel", colorInput).attr(
+				$(".hfg--color-panel", colorInput).attr(
 					"data-alpha",
 					"true"
 				);
-				$(".customify--color-panel", colorInput).wpColorPicker({
+				$(".hfg--color-panel", colorInput).wpColorPicker({
 					defaultColor: df,
 					change: function(event, ui) {
 						var new_color = ui.color.toString();
-						$(".customify-input--color", colorInput).val(new_color);
+						$(".hfg-input--color", colorInput).val(new_color);
 						if (ui.color.toString() !== current_val) {
 							current_val = new_color;
-							$(".customify-input--color", colorInput).trigger(
+							$(".hfg-input--color", colorInput).trigger(
 								"change"
 							);
 						}
 					},
 					clear: function(event, ui) {
-						$(".customify-input--color", colorInput).val("");
-						$(".customify-input--color", colorInput).trigger(
+						$(".hfg-input--color", colorInput).val("");
+						$(".hfg-input--color", colorInput).trigger(
 							"data-change"
 						);
 					}
@@ -1869,10 +1871,10 @@
 
 	//-------------------------------------------------------------------------
 
-	var customify_controlConstructor = {
+	var hfg_controlConstructor = {
 		devices: ["desktop", "tablet", "mobile"],
 		// When we're finished loading continue processing
-		type: "customify",
+		type: "hfg",
 		settingField: null,
 
 		getTemplate: _.memoize(function() {
@@ -1893,7 +1895,7 @@
 
 			return function(data, id, data_variable_name) {
 				if (_.isUndefined(id)) {
-					id = "tmpl-field-customify-" + control.type;
+					id = "tmpl-field-hfg-" + control.type;
 				}
 				if (
 					!_.isUndefined(data_variable_name) &&
@@ -1908,7 +1910,7 @@
 				return compiled(data);
 			};
 		}),
-		addDeviceSwitchers: customifyField.addDeviceSwitchers,
+		addDeviceSwitchers: hfgField.addDeviceSwitchers,
 		init: function() {
 			var control = this;
 
@@ -1951,9 +1953,9 @@
 			return url;
 		},
 
-		compare: customifyField.compare,
-		multiple_compare: customifyField.multiple_compare,
-		initConditional: customifyField.initConditional,
+		compare: hfgField.compare,
+		multiple_compare: hfgField.multiple_compare,
+		initConditional: hfgField.initConditional,
 
 		getValue: function(save) {
 			var control = this;
@@ -1995,9 +1997,9 @@
 
 			field.device_settings = control.params.device_settings;
 
-			value = customifyField.getValue(
+			value = hfgField.getValue(
 				field,
-				$(".customify--settings-fields", control.container)
+				$(".hfg--settings-fields", control.container)
 			);
 
 			if (_.isUndefined(save) || save) {
@@ -2015,7 +2017,7 @@
 					});
 				}
 
-				$document.trigger("customify/customizer/value_changed", [
+				$document.trigger("hfg/customizer/value_changed", [
 					control,
 					value
 				]);
@@ -2032,26 +2034,26 @@
 			return JSON.parse(decodeURI(value));
 		},
 		updateRepeaterLiveTitle: function(value, $item, field) {
-			$(".customify--repeater-live-title", $item).text(value);
+			$(".hfg--repeater-live-title", $item).text(value);
 		},
 		initGroup: function() {
 			var control = this;
 			if (control.params.device_settings) {
 				control.container
-					.find(".customify--settings-fields")
-					.addClass("customify--multiple-devices");
+					.find(".hfg--settings-fields")
+					.addClass("hfg--multiple-devices");
 				if (!_.isObject(control.params.value)) {
 					control.params.value = {};
 				}
 
 				_.each(control.devices, function(device, device_index) {
 					var $group_device = $(
-						'<div class="customify-group-device-fields customify-field-settings-inner customify--for-' +
+						'<div class="hfg-group-device-fields hfg-field-settings-inner hfg--for-' +
 							device +
 							'"></div>'
 					);
 					control.container
-						.find(".customify--settings-fields")
+						.find(".hfg--settings-fields")
 						.append($group_device);
 					var device_value = {};
 					if (!_.isUndefined(control.params.value[device])) {
@@ -2061,7 +2063,7 @@
 						device_value = {};
 					}
 
-					customifyField.addFields(
+					hfgField.addFields(
 						control.params.fields,
 						device_value,
 						$group_device,
@@ -2071,10 +2073,10 @@
 					);
 				});
 			} else {
-				customifyField.addFields(
+				hfgField.addFields(
 					control.params.fields,
 					control.params.value,
-					control.container.find(".customify--settings-fields"),
+					control.container.find(".hfg--settings-fields"),
 					function() {
 						control.getValue();
 					}
@@ -2084,8 +2086,8 @@
 			control.getValue(false);
 		},
 		addField: function(field, $fieldsArea, cb) {
-			customifyField.devices = _.clone(this.devices);
-			customifyField.add(field, $fieldsArea, cb);
+			hfgField.devices = _.clone(this.devices);
+			hfgField.add(field, $fieldsArea, cb);
 		},
 		initField: function() {
 			var control = this;
@@ -2125,7 +2127,7 @@
 
 			field.device_settings = control.params.device_settings;
 			var $fieldsArea = control.container.find(
-				".customify--settings-fields"
+				".hfg--settings-fields"
 			);
 
 			control.addField(field, $fieldsArea, function() {
@@ -2158,7 +2160,7 @@
 				template(control.params, "tmpl-customize-control-repeater-item")
 			);
 			control.container
-				.find(".customify--settings-fields")
+				.find(".hfg--settings-fields")
 				.append($itemWrapper);
 			_.each(fields, function(f, index) {
 				f.value = "";
@@ -2167,8 +2169,8 @@
 					f.value = value[f.name];
 				}
 				var $fieldArea;
-				$fieldArea = $('<div class="customify--repeater-field"></div>');
-				$(".customify--repeater-item-inner", $itemWrapper).append(
+				$fieldArea = $('<div class="hfg--repeater-field"></div>');
+				$(".hfg--repeater-item-inner", $itemWrapper).append(
 					$fieldArea
 				);
 				control.addField(f, $fieldArea, function() {
@@ -2192,12 +2194,12 @@
 
 			if (title_only) {
 				$(
-					".customify--repeater-item-settings, .customify--repeater-item-toggle",
+					".hfg--repeater-item-settings, .hfg--repeater-item-toggle",
 					$itemWrapper
 				).hide();
 			}
 
-			$document.trigger("customify/customizer/repeater/add", [
+			$document.trigger("hfg/customizer/repeater/add", [
 				$itemWrapper,
 				control
 			]);
@@ -2207,50 +2209,50 @@
 			var control = this;
 
 			var addButton = $(
-				".customify--repeater-add-new",
+				".hfg--repeater-add-new",
 				control.container
 			);
 			var c = $(
-				".customify--settings-fields .customify--repeater-item",
+				".hfg--settings-fields .hfg--repeater-item",
 				control.container
 			).length;
 
 			if (control.params.limit > 0) {
 				if (c >= control.params.limit) {
-					addButton.addClass("customify--hide");
+					addButton.addClass("hfg--hide");
 					if (control.params.limit_msg) {
 						if (
-							$(".customify--limit-item-msg", control.container)
+							$(".hfg--limit-item-msg", control.container)
 								.length === 0
 						) {
 							$(
-								'<p class="customify--limit-item-msg">' +
+								'<p class="hfg--limit-item-msg">' +
 									control.params.limit_msg +
 									"</p>"
 							).insertBefore(addButton);
 						} else {
 							$(
-								".customify--limit-item-msg",
+								".hfg--limit-item-msg",
 								control.container
-							).removeClass("customify--hide");
+							).removeClass("hfg--hide");
 						}
 					}
 				} else {
-					$(".customify--limit-item-msg", control.container).addClass(
-						"customify--hide"
+					$(".hfg--limit-item-msg", control.container).addClass(
+						"hfg--hide"
 					);
-					addButton.removeClass("customify--hide");
+					addButton.removeClass("hfg--hide");
 				}
 			}
 
 			if (c > 0) {
 				$(
-					".customify--repeater-reorder",
+					".hfg--repeater-reorder",
 					control.container
-				).removeClass("customify--hide");
+				).removeClass("hfg--hide");
 			} else {
-				$(".customify--repeater-reorder", control.container).addClass(
-					"customify--hide"
+				$(".hfg--repeater-reorder", control.container).addClass(
+					"hfg--hide"
 				);
 			}
 		},
@@ -2262,8 +2264,8 @@
 			}
 
 			// Sortable
-			control.container.find(".customify--settings-fields").sortable({
-				handle: ".customify--repeater-item-heading",
+			control.container.find(".hfg--settings-fields").sortable({
+				handle: ".hfg--repeater-item-heading",
 				containment: "parent",
 				update: function(event, ui) {
 					control.getValue();
@@ -2273,20 +2275,20 @@
 			// Toggle Move
 			control.container.on(
 				"click",
-				".customify--repeater-reorder",
+				".hfg--repeater-reorder",
 				function(e) {
 					e.preventDefault();
 					$(
-						".customify--repeater-items",
+						".hfg--repeater-items",
 						control.container
 					).toggleClass("reorder-active");
 					$(
-						".customify--repeater-add-new",
+						".hfg--repeater-add-new",
 						control.container
 					).toggleClass("disabled");
 					if (
 						$(
-							".customify--repeater-items",
+							".hfg--repeater-items",
 							control.container
 						).hasClass("reorder-active")
 					) {
@@ -2300,10 +2302,10 @@
 			// Move Up
 			control.container.on(
 				"click",
-				".customify--repeater-item .customify--up",
+				".hfg--repeater-item .hfg--up",
 				function(e) {
 					e.preventDefault();
-					var i = $(this).closest(".customify--repeater-item");
+					var i = $(this).closest(".hfg--repeater-item");
 					var index = i.index();
 					if (index > 0) {
 						var up = i.prev();
@@ -2316,14 +2318,14 @@
 			// Move Down
 			control.container.on(
 				"click",
-				".customify--repeater-item .customify--down",
+				".hfg--repeater-item .hfg--down",
 				function(e) {
 					e.preventDefault();
 					var n = $(
-						".customify--repeater-items .customify--repeater-item",
+						".hfg--repeater-items .hfg--repeater-item",
 						control.container
 					).length;
-					var i = $(this).closest(".customify--repeater-item");
+					var i = $(this).closest(".hfg--repeater-item");
 					var index = i.index();
 					if (index < n - 1) {
 						var down = i.next();
@@ -2373,10 +2375,10 @@
 			// Toggle visibility
 			control.container.on(
 				"change",
-				".customify--repeater-item .r-visible-input",
+				".hfg--repeater-item .r-visible-input",
 				function(e) {
 					e.preventDefault();
-					var p = $(this).closest(".customify--repeater-item");
+					var p = $(this).closest(".hfg--repeater-item");
 					if ($(this).is(":checked")) {
 						p.removeClass("item---visible-hidden");
 					} else {
@@ -2389,21 +2391,21 @@
 			if (!control.params.title_only) {
 				control.container.on(
 					"click",
-					".customify--repeater-item-toggle, .customify--repeater-live-title",
+					".hfg--repeater-item-toggle, .hfg--repeater-live-title",
 					function(e) {
 						e.preventDefault();
-						var p = $(this).closest(".customify--repeater-item");
-						p.toggleClass("customify--open");
+						var p = $(this).closest(".hfg--repeater-item");
+						p.toggleClass("hfg--open");
 					}
 				);
 			}
 
 			// Remove
-			control.container.on("click", ".customify--remove", function(e) {
+			control.container.on("click", ".hfg--remove", function(e) {
 				e.preventDefault();
-				var p = $(this).closest(".customify--repeater-item");
+				var p = $(this).closest(".hfg--repeater-item");
 				p.remove();
-				$document.trigger("customify/customizer/repeater/remove", [
+				$document.trigger("hfg/customizer/repeater/remove", [
 					control
 				]);
 				control.getValue();
@@ -2421,7 +2423,7 @@
 			// Add Item
 			control.container.on(
 				"click",
-				".customify--repeater-add-new",
+				".hfg--repeater-add-new",
 				function(e) {
 					e.preventDefault();
 					if (!$(this).hasClass("disabled")) {
@@ -2434,15 +2436,15 @@
 		}
 	};
 
-	var customify_control = function(control) {
-		control = _.extend(control, customify_controlConstructor);
+	var hfg_control = function(control) {
+		control = _.extend(control, hfg_controlConstructor);
 		control.init();
 	};
 	//---------------------------------------------------------------------------
 
-	wp.customize.controlConstructor.customify = wp.customize.Control.extend({
+	wp.customize.controlConstructor.hfg = wp.customize.Control.extend({
 		ready: function() {
-			customify_controls_list[this.id] = this;
+			hfg_controls_list[this.id] = this;
 		}
 	});
 
@@ -2453,7 +2455,7 @@
 			var that = this;
 			if (!_.isUndefined(list_icons) && !_.isEmpty(list_icons)) {
 				_.each(list_icons, function(icon_config, font_type) {
-					$("#customify--sidebar-icon-type").append(
+					$("#hfg--sidebar-icon-type").append(
 						' <option value="' +
 							font_type +
 							'">' +
@@ -2478,7 +2480,7 @@
 
 		addIcons: function(icon_config, font_type) {
 			var icon_html =
-				'<ul class="customify--list-icons icon-' +
+				'<ul class="hfg--list-icons icon-' +
 				font_type +
 				'" data-type="' +
 				font_type +
@@ -2507,17 +2509,17 @@
 			});
 			icon_html += "</ul>";
 
-			$("#customify--icon-browser").append(icon_html);
+			$("#hfg--icon-browser").append(icon_html);
 		},
 		changeType: function() {
-			$document.on("change", "#customify--sidebar-icon-type", function() {
+			$document.on("change", "#hfg--sidebar-icon-type", function() {
 				var type = $(this).val();
 				if (!type || type == "all") {
-					$("#customify--icon-browser .customify--list-icons").show();
+					$("#hfg--icon-browser .hfg--list-icons").show();
 				} else {
-					$("#customify--icon-browser .customify--list-icons").hide();
+					$("#hfg--icon-browser .hfg--list-icons").hide();
 					$(
-						"#customify--icon-browser .customify--list-icons.icon-" +
+						"#hfg--icon-browser .hfg--list-icons.icon-" +
 							type
 					).show();
 				}
@@ -2526,36 +2528,36 @@
 		show: function() {
 			var controlWidth = $("#customize-controls").width();
 			if (!is_rtl) {
-				$("#customify--sidebar-icons")
+				$("#hfg--sidebar-icons")
 					.css("left", controlWidth)
-					.addClass("customify--active");
+					.addClass("hfg--active");
 			} else {
-				$("#customify--sidebar-icons")
+				$("#hfg--sidebar-icons")
 					.css("right", controlWidth)
-					.addClass("customify--active");
+					.addClass("hfg--active");
 			}
 		},
 		close: function() {
 			if (!is_rtl) {
-				$("#customify--sidebar-icons")
+				$("#hfg--sidebar-icons")
 					.css("left", -300)
-					.removeClass("customify--active");
+					.removeClass("hfg--active");
 			} else {
-				$("#customify--sidebar-icons")
+				$("#hfg--sidebar-icons")
 					.css("right", -300)
-					.removeClass("customify--active");
+					.removeClass("hfg--active");
 			}
-			$(".customify--icon-picker").removeClass("customify--icon-picking");
+			$(".hfg--icon-picker").removeClass("hfg--icon-picking");
 			this.pickingEl = null;
 		},
 		autoClose: function() {
 			var that = this;
 			$document.on("click", function(event) {
 				if (
-					!$(event.target).closest(".customify--icon-picker").length
+					!$(event.target).closest(".hfg--icon-picker").length
 				) {
 					if (
-						!$(event.target).closest("#customify--sidebar-icons")
+						!$(event.target).closest("#hfg--sidebar-icons")
 							.length
 					) {
 						that.close();
@@ -2563,7 +2565,7 @@
 				}
 			});
 
-			$("#customify--sidebar-icons .customize-controls-icon-close").on(
+			$("#hfg--sidebar-icons .customize-controls-icon-close").on(
 				"click",
 				function() {
 					that.close();
@@ -2581,16 +2583,16 @@
 
 			var open = function($el) {
 				if (that.pickingEl) {
-					that.pickingEl.removeClass("customify--icon-picking");
+					that.pickingEl.removeClass("hfg--icon-picking");
 				}
-				that.pickingEl = $el.closest(".customify--icon-picker");
-				that.pickingEl.addClass("customify--picking-icon");
+				that.pickingEl = $el.closest(".hfg--icon-picker");
+				that.pickingEl.addClass("hfg--picking-icon");
 				that.show();
 			};
 
 			$document.on(
 				"click",
-				".customify--icon-picker .customify--pick-icon",
+				".hfg--icon-picker .hfg--pick-icon",
 				function(e) {
 					e.preventDefault();
 					var button = $(this);
@@ -2604,18 +2606,18 @@
 				}
 			);
 
-			$document.on("click", "#customify--icon-browser li", function(e) {
+			$document.on("click", "#hfg--icon-browser li", function(e) {
 				e.preventDefault();
 				var li = $(this);
 				var icon_preview = li.find("i").clone();
 				var icon = li.attr("data-icon") || "";
 				var type = li.attr("data-type") || "";
 				console.log("icon", icon);
-				$(".customify--input-icon-type", that.pickingEl).val(type);
-				$(".customify--input-icon-name", that.pickingEl)
+				$(".hfg--input-icon-type", that.pickingEl).val(type);
+				$(".hfg--input-icon-name", that.pickingEl)
 					.val(icon)
 					.trigger("change");
-				$(".customify--icon-preview-icon", that.pickingEl).html(
+				$(".hfg--icon-preview-icon", that.pickingEl).html(
 					icon_preview
 				);
 
@@ -2625,20 +2627,20 @@
 			// remove
 			$document.on(
 				"click",
-				".customify--icon-picker .customify--icon-remove",
+				".hfg--icon-picker .hfg--icon-remove",
 				function(e) {
 					e.preventDefault();
 					if (that.pickingEl) {
-						that.pickingEl.removeClass("customify--icon-picking");
+						that.pickingEl.removeClass("hfg--icon-picking");
 					}
-					that.pickingEl = $(this).closest(".customify--icon-picker");
-					that.pickingEl.addClass("customify--picking-icon");
+					that.pickingEl = $(this).closest(".hfg--icon-picker");
+					that.pickingEl.addClass("hfg--picking-icon");
 
-					$(".customify--input-icon-type", that.pickingEl).val("");
-					$(".customify--input-icon-name", that.pickingEl)
+					$(".hfg--input-icon-type", that.pickingEl).val("");
+					$(".hfg--input-icon-name", that.pickingEl)
 						.val("")
 						.trigger("change");
-					$(".customify--icon-preview-icon", that.pickingEl).html("");
+					$(".hfg--icon-preview-icon", that.pickingEl).html("");
 				}
 			);
 		},
@@ -2646,9 +2648,9 @@
 		ajaxLoad: function(cb) {
 			var that = this;
 			$.get(
-				Customify_Control_Args.ajax,
+				HFG_Control_Args.ajax,
 				{
-					action: "customify/customizer/ajax/get_icons",
+					action: "hfg/customizer/ajax/get_icons",
 					wp_customize: "on",
 					_nonce: _wpCustomizeSettings.nonce.preview,
 					customize_theme: _wpCustomizeSettings.theme.stylesheet
@@ -2671,16 +2673,16 @@
 			that.ajaxLoad();
 			that.picker();
 			// Search icon
-			$document.on("keyup", "#customify--icon-search", function(e) {
+			$document.on("keyup", "#hfg--icon-search", function(e) {
 				var v = $(this).val();
 				v = v.trim();
 				if (v) {
-					$("#customify--icon-browser li").hide();
+					$("#hfg--icon-browser li").hide();
 					$(
-						"#customify--icon-browser li[data-icon*='" + v + "']"
+						"#hfg--icon-browser li[data-icon*='" + v + "']"
 					).show();
 				} else {
-					$("#customify--icon-browser li").show();
+					$("#hfg--icon-browser li").show();
 				}
 			});
 		}
@@ -2697,9 +2699,9 @@
 		load: function() {
 			var that = this;
 			$.get(
-				Customify_Control_Args.ajax,
+				HFG_Control_Args.ajax,
 				{
-					action: "customify/customizer/ajax/fonts",
+					action: "hfg/customizer/ajax/fonts",
 					wp_customize: "on",
 					_nonce: _wpCustomizeSettings.nonce.preview,
 					customize_theme: _wpCustomizeSettings.theme.stylesheet
@@ -2733,7 +2735,7 @@
 						"</option>";
 				});
 			} else {
-				_.each(Customify_Control_Args.list_font_weight, function(
+				_.each(HFG_Control_Args.list_font_weight, function(
 					value,
 					key
 				) {
@@ -2785,7 +2787,7 @@
 				html +=
 					"<p><label><input " +
 					checked +
-					'type="checkbox" class="customify-typo-input change-by-js" data-name="languages" name="_n-' +
+					'type="checkbox" class="hfg-typo-input change-by-js" data-name="languages" name="_n-' +
 					new Date().getTime() +
 					'" value="' +
 					value +
@@ -2798,16 +2800,16 @@
 		},
 		ready: function() {
 			var that = this;
-			customifyField.devices = _.clone(customifyField.allDevices);
+			hfgField.devices = _.clone(hfgField.allDevices);
 			if (!_.isObject(that.values)) {
 				that.values = {};
 			}
 
 			that.fields = {};
 
-			//Customify_Control_Args.typo_fields
+			//HFG_Control_Args.typo_fields
 			if (!_.isEmpty(that.config)) {
-				_.each(Customify_Control_Args.typo_fields, function(_f, _key) {
+				_.each(HFG_Control_Args.typo_fields, function(_f, _key) {
 					var show = true;
 					if (!_.isUndefined(that.config[_f.name])) {
 						if (that.config[_f.name] === false) {
@@ -2820,27 +2822,27 @@
 					}
 				});
 			} else {
-				that.fields = Customify_Control_Args.typo_fields;
+				that.fields = HFG_Control_Args.typo_fields;
 			}
 
-			$(".customify-modal-settings--fields", that.container).append(
-				'<input type="hidden" class="customify--font-type">'
+			$(".hfg-modal-settings--fields", that.container).append(
+				'<input type="hidden" class="hfg--font-type">'
 			);
-			customifyField.addFields(
+			hfgField.addFields(
 				that.fields,
 				that.values,
-				$(".customify-modal-settings--fields", that.container),
+				$(".hfg-modal-settings--fields", that.container),
 				function() {
 					that.get();
 				}
 			);
 
-			$("input, select, textarea", $(".customify-modal-settings--fields"))
-				.removeClass("customify-input")
-				.addClass("customify-typo-input change-by-js");
+			$("input, select, textarea", $(".hfg-modal-settings--fields"))
+				.removeClass("hfg-input")
+				.addClass("hfg-typo-input change-by-js");
 			that.optionHtml +=
 				'<option value="">' +
-				Customify_Control_Args.theme_default +
+				HFG_Control_Args.theme_default +
 				"</option>";
 			_.each(that.fonts, function(group, type) {
 				that.optionHtml += '<optgroup label="' + group.title + '">';
@@ -2856,7 +2858,7 @@
 				that.optionHtml += "</optgroup>";
 			});
 
-			$('.customify-typo-input[data-name="font"]', that.container).html(
+			$('.hfg-typo-input[data-name="font"]', that.container).html(
 				that.optionHtml
 			);
 
@@ -2865,7 +2867,7 @@
 				_.isString(that.values["font"])
 			) {
 				$(
-					'.customify-typo-input[data-name="font"] option[value="' +
+					'.hfg-typo-input[data-name="font"] option[value="' +
 						that.values["font"] +
 						'"]',
 					that.container
@@ -2874,7 +2876,7 @@
 
 			that.container.on(
 				"change init-change",
-				'.customify-typo-input[data-name="font"]',
+				'.hfg-typo-input[data-name="font"]',
 				function() {
 					var font = $(this).val();
 					that.setUpFont(font);
@@ -2882,12 +2884,12 @@
 			);
 
 			$(
-				'.customify-typo-input[data-name="font"]',
+				'.hfg-typo-input[data-name="font"]',
 				that.container
 			).trigger("init-change");
 
 			$(
-				'.customify-typo-input[data-name="font"]',
+				'.hfg-typo-input[data-name="font"]',
 				that.container
 			).select2();
 
@@ -2951,7 +2953,7 @@
 			}
 
 			$(
-				'.customify-typo-input[data-name="font_weight"]',
+				'.hfg-typo-input[data-name="font_weight"]',
 				that.container
 			).html(
 				that.toSelectOptions(
@@ -2960,27 +2962,27 @@
 					type
 				)
 			);
-			$(".customify--font-type", that.container).val(type);
+			$(".hfg--font-type", that.container).val(type);
 
 			if (type !== "google") {
 				$(
-					'.customify--group-field[data-field-name="languages"]',
+					'.hfg--group-field[data-field-name="languages"]',
 					that.container
 				)
-					.addClass("customify--hide")
-					.find(".customify-field-settings-inner")
+					.addClass("hfg--hide")
+					.find(".hfg-field-settings-inner")
 					.html("");
 			} else {
 				$(
-					'.customify--group-field[data-field-name="languages"]',
+					'.hfg--group-field[data-field-name="languages"]',
 					that.container
-				).removeClass("customify--hide");
+				).removeClass("hfg--hide");
 				$(
-					'.customify--group-field[data-field-name="languages"]',
+					'.hfg--group-field[data-field-name="languages"]',
 					that.container
 				)
-					.removeClass("customify--hide")
-					.find(".customify-field-settings-inner")
+					.removeClass("hfg--hide")
+					.find(".hfg-field-settings-inner")
 					.html(
 						that.toCheckboxes(
 							subsets,
@@ -2998,17 +3000,17 @@
 			var status = $el.attr("data-opening") || false;
 			if (status !== "opening") {
 				$el.attr("data-opening", "opening");
-				that.values = $(".customify-typography-input", that.$el).val();
+				that.values = $(".hfg-typography-input", that.$el).val();
 				that.values = JSON.parse(that.values);
-				$el.addClass("customify-modal--inside");
-				if (!$(".customify-modal-settings", $el).length) {
-					var $wrap = $($("#tmpl-customify-modal-settings").html());
+				$el.addClass("hfg-modal--inside");
+				if (!$(".hfg-modal-settings", $el).length) {
+					var $wrap = $($("#tmpl-hfg-modal-settings").html());
 					that.container = $wrap;
 					that.container.hide();
 					this.$el.append($wrap);
 					that.ready();
 				} else {
-					that.container = $(".customify-modal-settings", $el);
+					that.container = $(".hfg-modal-settings", $el);
 					that.container.hide();
 				}
 				that.container.slideDown(300, function() {
@@ -3016,7 +3018,7 @@
 					$(".action--reset", that.$el).show();
 				});
 			} else {
-				$(".customify-modal-settings", $el).slideUp(300, function() {
+				$(".hfg-modal-settings", $el).slideUp(300, function() {
 					$el.attr("data-opening", "");
 					$el.removeClass("modal--opening");
 					$(".action--reset", $el).hide();
@@ -3029,23 +3031,23 @@
 			var that = this;
 			var $el = that.$el;
 
-			$(".customify-modal-settings", $el).remove();
+			$(".hfg-modal-settings", $el).remove();
 			that.values =
-				$(".customify-typography-input", that.$el).attr(
+				$(".hfg-typography-input", that.$el).attr(
 					"data-default"
 				) || "{}";
 			try {
 				that.values = JSON.parse(that.values);
 			} catch (e) {}
 
-			$el.addClass("customify-modal--inside");
-			if (!$(".customify-modal-settings", $el).length) {
-				var $wrap = $($("#tmpl-customify-modal-settings").html());
+			$el.addClass("hfg-modal--inside");
+			if (!$(".hfg-modal-settings", $el).length) {
+				var $wrap = $($("#tmpl-hfg-modal-settings").html());
 				that.container = $wrap;
 				this.$el.append($wrap);
 				that.ready();
 			} else {
-				that.container = $(".customify-modal-settings", $el);
+				that.container = $(".hfg-modal-settings", $el);
 			}
 			that.get();
 		},
@@ -3057,10 +3059,10 @@
 				if (f.name === "languages") {
 					f.type = "checkboxes";
 				}
-				data[f.name] = customifyField.getValue(
+				data[f.name] = hfgField.getValue(
 					f,
 					$(
-						'.customify--group-field[data-field-name="' +
+						'.hfg--group-field[data-field-name="' +
 							f.name +
 							'"]',
 						that.container
@@ -3075,8 +3077,8 @@
 				}
 			}
 
-			data.font_type = $(".customify--font-type", that.container).val();
-			$(".customify-typography-input", this.$el)
+			data.font_type = $(".hfg--font-type", that.container).val();
+			$(".hfg-typography-input", this.$el)
 				.val(JSON.stringify(data))
 				.trigger("change");
 			return data;
@@ -3091,7 +3093,7 @@
 	var intTypos = function() {
 		$document.on(
 			"click",
-			".customize-control-customify-typography .action--edit, .customize-control-customify-typography .action--reset",
+			".customize-control-hfg-typography .action--edit, .customize-control-hfg-typography .action--reset",
 			function() {
 				var controlID = $(this).attr("data-control") || "";
 				if (_.isUndefined(intTypoControls[controlID])) {
@@ -3100,7 +3102,7 @@
 						var m = _.clone(FontSelector);
 						m.config = c.params.fields;
 						m.$el = $(this)
-							.closest(".customize-control-customify-typography")
+							.closest(".customize-control-hfg-typography")
 							.eq(0);
 						intTypoControls[controlID] = m;
 					}
@@ -3118,7 +3120,7 @@
 	};
 
 	//---------------------------------------------------------------------------
-	var customifyModal = {
+	var hfgModal = {
 		tabs: {
 			normal: "Normal",
 			hover: "Hover"
@@ -3134,7 +3136,7 @@
 			}
 			that.values = _.defaults(that.values, {});
 			var fieldsArea = $(
-				".customify-modal-settings--fields",
+				".hfg-modal-settings--fields",
 				that.container
 			);
 			fieldsArea.html("");
@@ -3162,9 +3164,9 @@
 
 			fieldsArea.append(tabsHTML);
 			if (c <= 1) {
-				tabsHTML.addClass("customify--hide");
+				tabsHTML.addClass("hfg--hide");
 			}
-			customifyField.devices = Customify_Control_Args.devices;
+			hfgField.devices = HFG_Control_Args.devices;
 			_.each(that.config.tabs, function(label, key) {
 				if (
 					_.isObject(that.config[key + "_fields"]) &&
@@ -3176,7 +3178,7 @@
 							'"></div>'
 					);
 					fieldsArea.append(content);
-					customifyField.addFields(
+					hfgField.addFields(
 						that.config[key + "_fields"],
 						that.values[key],
 						content,
@@ -3198,13 +3200,13 @@
 					} else {
 						fv = that.values[key];
 					}
-					customifyField.initConditional(content, fv);
+					hfgField.initConditional(content, fv);
 				}
 			});
 
 			$("input, select, textarea", that.container)
-				.removeClass("customify-input")
-				.addClass("customify-modal-input change-by-js");
+				.removeClass("hfg-input")
+				.addClass("hfg-modal-input change-by-js");
 			fieldsArea.on(
 				"change data-change",
 				"input, select, textarea",
@@ -3245,7 +3247,7 @@
 
 		reset: function() {
 			var that = this;
-			$(".customify-modal-settings", that.$el).remove();
+			$(".hfg-modal-settings", that.$el).remove();
 			try {
 				var _default = wpcustomize.control(that.controlID).params
 					.default;
@@ -3253,19 +3255,19 @@
 			} catch (e) {
 				that.values = {};
 			}
-			if (!$(".customify-modal-settings", that.$el).length) {
-				var $wrap = $($("#tmpl-customify-modal-settings").html());
+			if (!$(".hfg-modal-settings", that.$el).length) {
+				var $wrap = $($("#tmpl-hfg-modal-settings").html());
 				that.container = $wrap;
 				this.$el.append($wrap);
 				that.addFields();
 			} else {
-				that.container = $(".customify-modal-settings", that.$el);
+				that.container = $(".hfg-modal-settings", that.$el);
 			}
 
-			that.$el.addClass("customify-modal--inside");
+			that.$el.addClass("hfg-modal--inside");
 			that.$el.addClass("modal--opening");
 			that.container.show(0);
-			$(".customify-hidden-modal-input", that.$el)
+			$(".hfg-hidden-modal-input", that.$el)
 				.val(JSON.stringify(that.values))
 				.trigger("change");
 		},
@@ -3282,10 +3284,10 @@
 				);
 				if (_.isObject(that.config[key + "_fields"])) {
 					_.each(that.config[key + "_fields"], function(f) {
-						subdata[f.name] = customifyField.getValue(
+						subdata[f.name] = hfgField.getValue(
 							f,
 							$(
-								'.customify--group-field[data-field-name="' +
+								'.hfg--group-field[data-field-name="' +
 									f.name +
 									'"]',
 								content
@@ -3294,9 +3296,9 @@
 					});
 				}
 				data[key] = subdata;
-				customifyField.initConditional(content, subdata);
+				hfgField.initConditional(content, subdata);
 			});
-			$(".customify-hidden-modal-input", this.$el)
+			$(".hfg-hidden-modal-input", this.$el)
 				.val(JSON.stringify(data))
 				.trigger("change");
 			return data;
@@ -3308,21 +3310,21 @@
 			if (status !== "opening") {
 				that.$el.attr("data-opening", "opening");
 				that.values = $(
-					".customify-hidden-modal-input",
+					".hfg-hidden-modal-input",
 					that.$el
 				).val();
 				try {
 					that.values = JSON.parse(that.values);
 				} catch (e) {}
-				that.$el.addClass("customify-modal--inside");
-				if (!$(".customify-modal-settings", that.$el).length) {
-					var $wrap = $($("#tmpl-customify-modal-settings").html());
+				that.$el.addClass("hfg-modal--inside");
+				if (!$(".hfg-modal-settings", that.$el).length) {
+					var $wrap = $($("#tmpl-hfg-modal-settings").html());
 					$wrap.hide();
 					that.container = $wrap;
 					that.$el.append($wrap);
 					that.addFields();
 				} else {
-					that.container = $(".customify-modal-settings", that.$el);
+					that.container = $(".hfg-modal-settings", that.$el);
 				}
 
 				this.container.slideDown(300);
@@ -3331,7 +3333,7 @@
 			} else {
 				this.container.slideUp(300, function() {
 					that.$el.attr("data-opening", "");
-					$(".customify-modal-settings", that.$el).hide();
+					$(".hfg-modal-settings", that.$el).hide();
 					that.$el.removeClass("modal--opening");
 					$(".action--reset", that.$el).hide();
 				});
@@ -3343,17 +3345,17 @@
 	var initModal = function() {
 		$document.on(
 			"click",
-			".customize-control-customify-modal .action--edit, .customize-control-customify-modal .action--reset, .customize-control-customify-modal .customify-control-field-header",
+			".customize-control-hfg-modal .action--edit, .customize-control-hfg-modal .action--reset, .customize-control-hfg-modal .hfg-control-field-header",
 			function(e) {
 				e.preventDefault();
 				var controlID = $(this).attr("data-control") || "";
 				if (_.isUndefined(initModalControls[controlID])) {
 					var c = wpcustomize.control(controlID);
 					if (controlID && !_.isUndefined(c)) {
-						var m = _.clone(customifyModal);
+						var m = _.clone(hfgModal);
 						m.config = c.params.fields;
 						m.$el = $(this)
-							.closest(".customize-control-customify-modal")
+							.closest(".customize-control-hfg-modal")
 							.eq(0);
 						m.controlID = controlID;
 						initModalControls[controlID] = m;
@@ -3372,7 +3374,7 @@
 	};
 
 	//---------------------------------------------------------------------------
-	var customifyStyling = {
+	var hfgStyling = {
 		tabs: {
 			normal: "Normal",
 			hover: "Hover"
@@ -3413,7 +3415,7 @@
 			that.normal_fields = {};
 			that.hover_fields = {};
 
-			that.tabs = _.clone(Customify_Control_Args.styling_config.tabs);
+			that.tabs = _.clone(HFG_Control_Args.styling_config.tabs);
 			if (tabs === false) {
 				that.tabs["hover"] = false;
 			} else if (_.isObject(tabs)) {
@@ -3422,11 +3424,11 @@
 
 			that.normal_fields = that.setupFields(
 				normal_fields,
-				Customify_Control_Args.styling_config.normal_fields
+				HFG_Control_Args.styling_config.normal_fields
 			);
 			that.hover_fields = that.setupFields(
 				hover_fields,
-				Customify_Control_Args.styling_config.hover_fields
+				HFG_Control_Args.styling_config.hover_fields
 			);
 		},
 		addFields: function(values) {
@@ -3439,7 +3441,7 @@
 				normal: {}
 			});
 			var fieldsArea = $(
-				".customify-modal-settings--fields",
+				".hfg-modal-settings--fields",
 				that.container
 			);
 			fieldsArea.html("");
@@ -3463,9 +3465,9 @@
 
 			fieldsArea.append(tabsHTML);
 			if (c <= 1) {
-				tabsHTML.addClass("customify--hide");
+				tabsHTML.addClass("hfg--hide");
 			}
-			customifyField.devices = Customify_Control_Args.devices;
+			hfgField.devices = HFG_Control_Args.devices;
 			_.each(that.tabs, function(label, key) {
 				if (
 					_.isObject(that[key + "_fields"]) &&
@@ -3477,7 +3479,7 @@
 							'"></div>'
 					);
 					fieldsArea.append(content);
-					customifyField.addFields(
+					hfgField.addFields(
 						that[key + "_fields"],
 						that.values[key],
 						content,
@@ -3485,13 +3487,13 @@
 							that.get();
 						}
 					);
-					customifyField.initConditional(content, that.values[key]);
+					hfgField.initConditional(content, that.values[key]);
 				}
 			});
 
 			$("input, select, textarea", that.container)
-				.removeClass("customify-input")
-				.addClass("customify-modal-input change-by-js");
+				.removeClass("hfg-input")
+				.addClass("hfg-modal-input change-by-js");
 
 			fieldsArea.on(
 				"change data-change",
@@ -3534,7 +3536,7 @@
 		reset: function() {
 			var that = this;
 
-			$(".customify-modal-settings", that.$el).remove();
+			$(".hfg-modal-settings", that.$el).remove();
 			try {
 				var _default = wpcustomize.control(that.controlID).params
 					.default;
@@ -3542,19 +3544,19 @@
 			} catch (e) {
 				that.values = {};
 			}
-			if (!$(".customify-modal-settings", that.$el).length) {
-				var $wrap = $($("#tmpl-customify-modal-settings").html());
+			if (!$(".hfg-modal-settings", that.$el).length) {
+				var $wrap = $($("#tmpl-hfg-modal-settings").html());
 				that.container = $wrap;
 				that.$el.append($wrap);
 				that.addFields();
 			} else {
-				that.container = $(".customify-modal-settings", that.$el);
+				that.container = $(".hfg-modal-settings", that.$el);
 			}
 
-			that.$el.addClass("customify-modal--inside");
+			that.$el.addClass("hfg-modal--inside");
 			that.$el.addClass("modal--opening");
 			that.container.show(0);
-			$(".customify-hidden-modal-input", that.$el)
+			$(".hfg-hidden-modal-input", that.$el)
 				.val(JSON.stringify(that.values))
 				.trigger("change");
 		},
@@ -3570,10 +3572,10 @@
 				);
 				if (_.isObject(that[key + "_fields"])) {
 					_.each(that[key + "_fields"], function(f) {
-						subdata[f.name] = customifyField.getValue(
+						subdata[f.name] = hfgField.getValue(
 							f,
 							$(
-								'.customify--group-field[data-field-name="' +
+								'.hfg--group-field[data-field-name="' +
 									f.name +
 									'"]',
 								content
@@ -3582,10 +3584,10 @@
 					});
 				}
 				data[key] = subdata;
-				customifyField.initConditional(content, subdata);
+				hfgField.initConditional(content, subdata);
 			});
 
-			$(".customify-hidden-modal-input", this.$el)
+			$(".hfg-hidden-modal-input", this.$el)
 				.val(JSON.stringify(data))
 				.trigger("change");
 			return data;
@@ -3598,21 +3600,21 @@
 				that.$el.attr("data-opening", "opening");
 
 				that.values = $(
-					".customify-hidden-modal-input",
+					".hfg-hidden-modal-input",
 					that.$el
 				).val();
 				try {
 					that.values = JSON.parse(that.values);
 				} catch (e) {}
-				that.$el.addClass("customify-modal--inside");
-				if (!$(".customify-modal-settings", that.$el).length) {
-					var $wrap = $($("#tmpl-customify-modal-settings").html());
+				that.$el.addClass("hfg-modal--inside");
+				if (!$(".hfg-modal-settings", that.$el).length) {
+					var $wrap = $($("#tmpl-hfg-modal-settings").html());
 					$wrap.hide();
 					that.container = $wrap;
 					that.$el.append($wrap);
 					that.addFields();
 				} else {
-					that.container = $(".customify-modal-settings", that.$el);
+					that.container = $(".hfg-modal-settings", that.$el);
 				}
 
 				this.container.slideDown(300);
@@ -3621,7 +3623,7 @@
 			} else {
 				that.container.slideUp(300, function() {
 					that.$el.attr("data-opening", "");
-					$(".customify-modal-settings", that.$el).hide();
+					$(".hfg-modal-settings", that.$el).hide();
 					that.$el.removeClass("modal--opening");
 					$(".action--reset", that.$el).hide();
 				});
@@ -3633,13 +3635,13 @@
 	var initStyling = function() {
 		$document.on(
 			"click",
-			".customize-control-customify-styling .action--edit, .customize-control-customify-styling .action--reset",
+			".customize-control-hfg-styling .action--edit, .customize-control-hfg-styling .action--reset",
 			function(e) {
 				e.preventDefault();
 				var controlID = $(this).attr("data-control") || "";
 				if (_.isUndefined(initStylingControls[controlID])) {
 					var c = wpcustomize.control(controlID);
-					var s = _.clone(customifyStyling);
+					var s = _.clone(hfgStyling);
 					var tabs = null,
 						normal_fields = -1,
 						hover_fields = -1;
@@ -3660,7 +3662,7 @@
 						}
 					}
 					s.$el = $(this)
-						.closest(".customize-control-customify-styling")
+						.closest(".customize-control-hfg-styling")
 						.eq(0);
 					s.setupConfig(tabs, normal_fields, hover_fields);
 					s.controlID = controlID;
@@ -3681,43 +3683,43 @@
 	//---------------------------------------------------------------------------
 
 	wpcustomize.bind("ready", function(e, b) {
-		$document.on("customify/customizer/device/change", function(e, device) {
-			$(".customify--device-select a").removeClass("customify--active");
+		$document.on("hfg/customizer/device/change", function(e, device) {
+			$(".hfg--device-select a").removeClass("hfg--active");
 			if (device != "mobile") {
-				$(".customify--device-mobile").addClass("customify--hide");
-				$(".customify--device-general").removeClass("customify--hide");
-				$(".customify--tab-device-general").addClass(
-					"customify--active"
+				$(".hfg--device-mobile").addClass("hfg--hide");
+				$(".hfg--device-general").removeClass("hfg--hide");
+				$(".hfg--tab-device-general").addClass(
+					"hfg--active"
 				);
 			} else {
-				$(".customify--device-general").addClass("customify--hide");
-				$(".customify--device-mobile").removeClass("customify--hide");
-				$(".customify--tab-device-mobile").addClass(
-					"customify--active"
+				$(".hfg--device-general").addClass("hfg--hide");
+				$(".hfg--device-mobile").removeClass("hfg--hide");
+				$(".hfg--tab-device-mobile").addClass(
+					"hfg--active"
 				);
 			}
 		});
 
-		$document.on("click", ".customify--tab-device-mobile", function(e) {
+		$document.on("click", ".hfg--tab-device-mobile", function(e) {
 			e.preventDefault();
-			$document.trigger("customify/customizer/device/change", ["mobile"]);
+			$document.trigger("hfg/customizer/device/change", ["mobile"]);
 		});
 
-		$document.on("click", ".customify--tab-device-general", function(e) {
+		$document.on("click", ".hfg--tab-device-general", function(e) {
 			e.preventDefault();
-			$document.trigger("customify/customizer/device/change", [
+			$document.trigger("hfg/customizer/device/change", [
 				"general"
 			]);
 		});
 
 		$(".accordion-section").each(function() {
 			var s = $(this);
-			var t = $(".customify--device-select", s).first();
+			var t = $(".hfg--device-select", s).first();
 			$(".customize-section-title", s).append(t);
 		});
 
 		// Devices Switcher
-		$document.on("click", ".customify-devices button", function(e) {
+		$document.on("click", ".hfg-devices button", function(e) {
 			e.preventDefault();
 			var device = $(this).attr("data-device") || "";
 			//console.log('Device', device);
@@ -3729,15 +3731,15 @@
 		});
 
 		// Devices Switcher
-		$document.on("change", ".customify--field input:checkbox", function(e) {
+		$document.on("change", ".hfg--field input:checkbox", function(e) {
 			if ($(this).is(":checked")) {
 				$(this)
 					.parent()
-					.addClass("customify--checked");
+					.addClass("hfg--checked");
 			} else {
 				$(this)
 					.parent()
-					.removeClass("customify--checked");
+					.removeClass("hfg--checked");
 			}
 		});
 
@@ -3751,7 +3753,7 @@
 			_.each(allValues, function(value, id) {
 				var control = wpcustomize.control(id);
 				if (!_.isUndefined(control)) {
-					if (control.params.type == "customify") {
+					if (control.params.type == "hfg") {
 						if (!_.isEmpty(control.params.required)) {
 							var check = false;
 							check = control.multiple_compare(
@@ -3760,10 +3762,10 @@
 								decodeValue
 							);
 							if (!check) {
-								control.container.addClass("customify--hide");
+								control.container.addClass("hfg--hide");
 							} else {
 								control.container.removeClass(
-									"customify--hide"
+									"hfg--hide"
 								);
 							}
 						}
@@ -3773,12 +3775,12 @@
 		};
 
 		$document.ready(function() {
-			_.each(customify_controls_list, function(c, k) {
-				new customify_control(c);
+			_.each(hfg_controls_list, function(c, k) {
+				new hfg_control(c);
 			});
 
 			ControlConditional(false);
-			$document.on("customify/customizer/value_changed", function() {
+			$document.on("hfg/customizer/value_changed", function() {
 				ControlConditional(true);
 			});
 
@@ -3793,7 +3795,7 @@
 		wpcustomize.section.each(function(section) {
 			if (
 				section.params.type == "section" ||
-				section.params.type == "customify_section"
+				section.params.type == "hfg_section"
 			) {
 				section.container
 					.find(
@@ -3803,16 +3805,16 @@
 						'<button data-section="' +
 							section.id +
 							'" type="button" title="' +
-							Customify_Control_Args.reset +
+							HFG_Control_Args.reset +
 							'" class="customize--reset-section" aria-expanded="false"><span class="screen-reader-text">' +
-							Customify_Control_Args.reset +
+							HFG_Control_Args.reset +
 							"</span></button>"
 					);
 			}
 		});
 
 		// Remove checked align
-		$document.on("dblclick", ".customify-text-align label", function(e) {
+		$document.on("dblclick", ".hfg-text-align label", function(e) {
 			var input = $(this).find('input[type="radio"]');
 			if (input.length) {
 				if (input.is(":checked")) {
@@ -3828,7 +3830,7 @@
 				return;
 			}
 
-			if (!confirm(Customify_Control_Args.confirm_reset)) {
+			if (!confirm(HFG_Control_Args.confirm_reset)) {
 				return;
 			}
 
@@ -3847,7 +3849,7 @@
 				$.post(
 					ajaxurl,
 					{
-						action: "customify__reset_section",
+						action: "hfg__reset_section",
 						section: section,
 						settings: setting_keys
 					},
@@ -3870,7 +3872,7 @@
 		/**
 		 * Image Select disable click
 		 */
-		$document.on("click", ".customify-radio-list p", function(e) {
+		$document.on("click", ".hfg-radio-list p", function(e) {
 			var id =
 				$(this)
 					.find("input")
@@ -3906,7 +3908,7 @@
 		/**
 		 * When panel open
 		 */
-		_.each(Customify_Control_Args.panel_urls, function(url, id) {
+		_.each(HFG_Control_Args.panel_urls, function(url, id) {
 			if (url) {
 				wp.customize.panel(id, function(panel) {
 					panel.expanded.bind(function(isExpanded) {
@@ -3918,7 +3920,7 @@
 			}
 		});
 
-		_.each(Customify_Control_Args.section_urls, function(url, id) {
+		_.each(HFG_Control_Args.section_urls, function(url, id) {
 			if (url) {
 				wp.customize.section(id, function(section) {
 					section.expanded.bind(function(isExpanded) {

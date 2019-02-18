@@ -53,7 +53,7 @@ var CustomizeBuilder_V2;
 			drag_drop: function() {
 				var that = this;
 
-				$(".customify--device-panel", that.container).each(function() {
+				$(".hfg--device-panel", that.container).each(function() {
 					var panel = $(this);
 					var device = panel.data("device");
 					var sortable_ids = [];
@@ -69,7 +69,7 @@ var CustomizeBuilder_V2;
 						sortable_ids[index] = "#" + id;
 					});
 
-					$(".col-items, .customify-available-items", panel).each(function() {
+					$(".col-items, .hfg-available-items", panel).each(function() {
 						$(this).droppable().sortable({
 							placeholder: "sortable-placeholder grid-stack-item",
 							connectWith: ".col-items",
@@ -99,7 +99,7 @@ var CustomizeBuilder_V2;
 			addPanel: function(device) {
 				var that = this;
 				var template = that.getTemplate();
-				var template_id = "tmpl-customify--cb-panel-v2";
+				var template_id = "tmpl-hfg--cb-panel-v2";
 				if ($("#" + template_id).length == 0) {
 					return;
 				}
@@ -115,7 +115,7 @@ var CustomizeBuilder_V2;
 					template_id
 				);
 				return (
-					'<div class="customify--device-panel customify-vertical-panel customify--panel-' +
+					'<div class="hfg--device-panel hfg-vertical-panel hfg--panel-' +
 					device +
 					'" data-device="' +
 					device +
@@ -128,7 +128,7 @@ var CustomizeBuilder_V2;
 				var that = this;
 				_.each(that.devices, function(device_name, device) {
 					var panelHTML = that.addPanel(device);
-					$(".customify--cb-devices-switcher", that.container).append(
+					$(".hfg--cb-devices-switcher", that.container).append(
 						'<a href="#" class="switch-to switch-to-' +
 							device +
 							'" data-device="' +
@@ -137,19 +137,19 @@ var CustomizeBuilder_V2;
 							device_name +
 							"</a>"
 					);
-					$(".customify--cb-body", that.container).append(panelHTML);
+					$(".hfg--cb-body", that.container).append(panelHTML);
 				});
 
-				if ($("#customify-upsell-tmpl").length) {
-					$($("#customify-upsell-tmpl").html()).insertAfter(
-						$(".customify--cb-devices-switcher", that.container)
+				if ($("#hfg-upsell-tmpl").length) {
+					$($("#hfg-upsell-tmpl").html()).insertAfter(
+						$(".hfg--cb-devices-switcher", that.container)
 					);
 				}
 			},
 			addItem: function(node) {
 				var that = this;
 				var template = that.getTemplate();
-				var template_id = "tmpl-customify--cb-item";
+				var template_id = "tmpl-hfg--cb-item";
 				if ($("#" + template_id).length == 0) {
 					return;
 				}
@@ -162,10 +162,10 @@ var CustomizeBuilder_V2;
 
 				_.each(that.devices, function(device_name, device) {
 					var $itemWrapper = $(
-						'<div class="customify-available-items" data-device="' + device + '"></div>'
+						'<div class="hfg-available-items" data-device="' + device + '"></div>'
 					);
 
-					$(".customify--panel-" + device, that.container).append(
+					$(".hfg--panel-" + device, that.container).append(
 						$itemWrapper
 					);
 
@@ -205,26 +205,26 @@ var CustomizeBuilder_V2;
 				var numberDevices = _.size(that.devices);
 				if (numberDevices > 1) {
 					$(
-						".customify--cb-devices-switcher a",
+						".hfg--cb-devices-switcher a",
 						that.container
-					).removeClass("customify--tab-active");
+					).removeClass("hfg--tab-active");
 					$(
-						".customify--cb-devices-switcher .switch-to-" + device,
+						".hfg--cb-devices-switcher .switch-to-" + device,
 						that.container
-					).addClass("customify--tab-active");
-					$(".customify--device-panel", that.container).addClass(
-						"customify--panel-hide"
+					).addClass("hfg--tab-active");
+					$(".hfg--device-panel", that.container).addClass(
+						"hfg--panel-hide"
 					);
 					$(
-						".customify--device-panel.customify--panel-" + device,
+						".hfg--device-panel.hfg--panel-" + device,
 						that.container
-					).removeClass("customify--panel-hide");
+					).removeClass("hfg--panel-hide");
 					that.activePanel = device;
 				} else {
 					$(
-						".customify--cb-devices-switcher a",
+						".hfg--cb-devices-switcher a",
 						that.container
-					).addClass("customify--tab-active");
+					).addClass("hfg--tab-active");
 				}
 
 				if (_.isUndefined(toggle_button) || toggle_button) {
@@ -244,13 +244,13 @@ var CustomizeBuilder_V2;
 				var that = this;
 				var panel, row, col;
 				panel = that.container.find(
-					".customify--device-panel.customify--panel-" +device
+					".hfg--device-panel.hfg--panel-" +device
 				);
 				
-				row = $( '.customify--cb-row.customify--row-'+row_id, panel );
+				row = $( '.hfg--cb-row.hfg--row-'+row_id, panel );
 				col = $( '.col-items.col-'+col_id, row );
 
-				var $item = $( '.customify-available-items .grid-stack-item[data-id="'+node.id+'"]', panel );
+				var $item = $( '.hfg-available-items .grid-stack-item[data-id="'+node.id+'"]', panel );
 
 				col.append($item);
 			},
@@ -286,7 +286,7 @@ var CustomizeBuilder_V2;
 			focus: function() {
 				this.container.on(
 					"click",
-					".customify--cb-item-setting, .customify--cb-item-name, .item-tooltip",
+					".hfg--cb-item-setting, .hfg--cb-item-name, .item-tooltip",
 					function(e) {
 						e.preventDefault();
 						var section = $(this).data("section") || "";
@@ -313,7 +313,7 @@ var CustomizeBuilder_V2;
 				// Focus rows
 				this.container.on(
 					"click",
-					".customify--cb-row-settings",
+					".hfg--cb-row-settings",
 					function(e) {
 						e.preventDefault();
 						var id = $(this).attr("data-id") || "";
@@ -328,13 +328,13 @@ var CustomizeBuilder_V2;
 				var that = this;
 				$document.on(
 					"click",
-					".customify--device-panel .customify--cb-item-remove",
+					".hfg--device-panel .hfg--cb-item-remove",
 					function(e) {
 						e.preventDefault();
 						var item = $(this).closest(".grid-stack-item");
-						var panel = item.closest(".customify--device-panel");
+						var panel = item.closest(".hfg--device-panel");
 						item.removeAttr("style");
-						$(".customify-available-items", panel).append(item);
+						$(".hfg-available-items", panel).append(item);
 						that.save();
 					}
 				);
@@ -355,8 +355,8 @@ var CustomizeBuilder_V2;
 
 				_.each( that.devices, function( device_label, device ){
 					data[ device ] = {};
-					var devicePanel = $( '.customify--panel-'+device, that.container );
-					$( '.customify--cb-row', devicePanel ).each( function(){
+					var devicePanel = $( '.hfg--panel-'+device, that.container );
+					$( '.hfg--cb-row', devicePanel ).each( function(){
 						var row = $( this );
 						var row_id = row.attr( 'data-row-id' ) || false;
 						var rowData = { };
@@ -392,15 +392,15 @@ var CustomizeBuilder_V2;
 			showPanel: function() {
 				var that = this;
 				this.container
-					.removeClass("customify--builder--hide")
-					.addClass("customify--builder-show");
+					.removeClass("hfg--builder--hide")
+					.addClass("hfg--builder-show");
 				setTimeout(function() {
 					var h = that.container.height();
 					$("#customize-preview").addClass("cb--preview-panel-show");
 				}, 100);
 			},
 			hidePanel: function() {
-				this.container.removeClass("customify--builder-show");
+				this.container.removeClass("hfg--builder-show");
 				$("#customize-preview")
 					.removeClass("cb--preview-panel-show")
 					.removeAttr("style");
@@ -409,7 +409,7 @@ var CustomizeBuilder_V2;
 				var that = this;
 				wpcustomize.state("expandedPanel").bind(function(paneVisible) {
 					if (wpcustomize.panel(options.panel).expanded()) {
-						$document.trigger("customify_panel_builder_open", [
+						$document.trigger("hfg_panel_builder_open", [
 							options.panel
 						]);
 						top._current_builder_panel = id;
@@ -419,12 +419,12 @@ var CustomizeBuilder_V2;
 					}
 				});
 
-				that.container.on("click", ".customify--panel-close", function(
+				that.container.on("click", ".hfg--panel-close", function(
 					e
 				) {
 					e.preventDefault();
-					that.container.toggleClass("customify--builder--hide");
-					if (that.container.hasClass("customify--builder--hide")) {
+					that.container.toggleClass("hfg--builder--hide");
+					if (that.container.hasClass("hfg--builder--hide")) {
 						$("#customize-preview").removeClass(
 							"cb--preview-panel-show"
 						);
@@ -442,11 +442,11 @@ var CustomizeBuilder_V2;
 				}
 				if (is_rtl) {
 					this.container
-						.find(".customify--cb-inner")
+						.find(".hfg--cb-inner")
 						.css({ "margin-right": sidebarWidth });
 				} else {
 					this.container
-						.find(".customify--cb-inner")
+						.find(".hfg--cb-inner")
 						.css({ "margin-left": sidebarWidth });
 				}
 			},
@@ -454,10 +454,10 @@ var CustomizeBuilder_V2;
 				var that = this;
 
 				var template = that.getTemplate();
-				var template_id = "tmpl-customify--builder-panel";
+				var template_id = "tmpl-hfg--builder-panel";
 				var html = template(options, template_id);
 				that.container = $(html);
-				that.container.addClass( 'customify--panel-v2' );
+				that.container.addClass( 'hfg--panel-v2' );
 				$("body .wp-full-overlay").append(that.container);
 				that.controlId = controlId;
 				that.items = items;
@@ -466,7 +466,7 @@ var CustomizeBuilder_V2;
 				if (options.section) {
 					wpcustomize
 						.section(options.section)
-						.container.addClass("customify--hide");
+						.container.addClass("hfg--hide");
 				}
 
 				that.addDevicePanels();
@@ -509,7 +509,7 @@ var CustomizeBuilder_V2;
 				// Switch panel
 				that.container.on(
 					"click",
-					".customify--cb-devices-switcher a.switch-to",
+					".hfg--cb-devices-switcher a.switch-to",
 					function(e) {
 						e.preventDefault();
 						var device = $(this).data("device");
@@ -517,7 +517,7 @@ var CustomizeBuilder_V2;
 					}
 				);
 
-				$document.trigger("customify_builder_panel_loaded", [id, that]);
+				$document.trigger("hfg_builder_panel_loaded", [id, that]);
 			}
 		};
 

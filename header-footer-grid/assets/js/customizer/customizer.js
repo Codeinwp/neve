@@ -39,7 +39,7 @@
 		console.log( 'partial_id', partial_id );
 		if (
 			partial_id === "header_builder_panel" ||
-			partial_id === "customify_customize_render_header"
+			partial_id === "hfg_customize_render_header"
 		) {
 			var is_drop_down = $("body").hasClass("menu_sidebar_dropdown");
 
@@ -211,9 +211,9 @@
 		});
 
 		function setupPreviewNamePosition() {
-			$(".customify-grid .has_menu.builder-item-focus").each(function() {
+			$(".hfg-grid .has_menu.builder-item-focus").each(function() {
 				var parentPos = $(this)
-					.closest(".customify-grid")
+					.closest(".hfg-grid")
 					.offset();
 				var childPos = $(this).offset();
 				var h = $(this).innerHeight();
@@ -235,8 +235,8 @@
 	});
 
 	var skips_to_add_shortcut = {
-		customify_customize_render_header: 1,
-		customify_customize_render_footer: 1
+		hfg_customize_render_header: 1,
+		hfg_customize_render_footer: 1
 	};
 
 	/**

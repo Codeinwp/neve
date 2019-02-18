@@ -771,7 +771,7 @@ if (!Element.prototype.closest) {
 		document.addEventListener(
 			"selective-refresh-content-rendered",
 			function(e) {
-				if (e.detail === "customify_customize_render_header") {
+				if (e.detail === "hfg_customize_render_header") {
 					this.initSearchForm();
 				}
 			}.bind(this)
@@ -784,11 +784,11 @@ if (!Element.prototype.closest) {
 	 *
 	 * @deprecated 0.2.6
 	 */
-	function customify_is_mobile() {
+	function hfg_is_mobile() {
 		return Customify.isMobile();
 	}
 
-	window.customify_is_mobile = customify_is_mobile;
+	window.hfg_is_mobile = hfg_is_mobile;
 	window.Customify = new Customify();
 
 	/**

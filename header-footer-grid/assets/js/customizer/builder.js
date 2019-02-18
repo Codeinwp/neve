@@ -1,6 +1,6 @@
 (function($, wpcustomize) {
 	var $document = $(document);
-	var customifyPanels = {};
+	var hfgPanels = {};
 
 	wpcustomize.bind("ready", function(e, b) {
 		var addVersionChange = function(opts, builder, id, version) {
@@ -27,18 +27,18 @@
 							select_options +
 							"</select>"
 					);
-					$(".customify--cb-actions", builder.container).prepend(
+					$(".hfg--cb-actions", builder.container).prepend(
 						$select_options
 					);
 				}
 
 				$select_options.on("change", function() {
 					var newVer = $(this).val();
-					if ( customifyPanels[id + version] ) {
-						customifyPanels[id + version].container.hide();
+					if ( hfgPanels[id + version] ) {
+						hfgPanels[id + version].container.hide();
 					}
 					
-					if (typeof customifyPanels[id + newVer] === "undefined") {
+					if (typeof hfgPanels[id + newVer] === "undefined") {
 						var _builder;
 						if ("v2" === newVer) {
 							_builder = new CustomizeBuilder_V2(opts, id);
@@ -46,16 +46,16 @@
 							_builder = new CustomizeBuilder_V1(opts, id);
 						}
 						addVersionChange(opts, _builder, id, newVer);
-						customifyPanels[id + newVer] = _builder;
+						hfgPanels[id + newVer] = _builder;
 					}
 					
 					var control = wpcustomize.control(opts.version_id);
 					control.setting.set( newVer );
 					// Dispacth to conditional
-					$document.trigger("customify/customizer/value_changed" );
+					$document.trigger("hfg/customizer/value_changed" );
 					
-					if ( customifyPanels[id + newVer] ) {
-						customifyPanels[id + newVer].container.show();
+					if ( hfgPanels[id + newVer] ) {
+						hfgPanels[id + newVer].container.show();
 					}
 					
 					// Reset select.
@@ -81,7 +81,7 @@
 				builder = new CustomizeBuilder_V1(opts, id);
 			}
 
-			customifyPanels[id + version] = builder;
+			hfgPanels[id + version] = builder;
 			addVersionChange(opts, builder, id, version);
 			console.log( 'HEY!!!' );
 			console.log( HFG_Layout_Builder );
@@ -108,16 +108,16 @@
 
 		// When focus section
 		wpcustomize.state("expandedSection").bind(function(section) {
-			$(".customify--device-panel .grid-stack-item").removeClass(
+			$(".hfg--device-panel .grid-stack-item").removeClass(
 				"item-active"
 			);
-			$(".customify--cb-row").removeClass("row-active");
+			$(".hfg--cb-row").removeClass("row-active");
 			if (section) {
-				$('.customify--cb-row[data-id="' + section.id + '"]').addClass(
+				$('.hfg--cb-row[data-id="' + section.id + '"]').addClass(
 					"row-active"
 				);
 				$(
-					".customify--device-panel .grid-stack-item.for-s-" +
+					".hfg--device-panel .grid-stack-item.for-s-" +
 						section.id
 				).addClass("item-active");
 			}
@@ -197,7 +197,7 @@
 				$.post(
 					ajaxurl,
 					{
-						action: "customify_builder_save_template",
+						action: "hfg_builder_save_template",
 						name: input.val(),
 						id: input.attr("data-builder-id") || "",
 						control: input.attr("data-control-id") || "",
@@ -236,7 +236,7 @@
 			$.post(
 				ajaxurl,
 				{
-					action: "customify_builder_save_template",
+					action: "hfg_builder_save_template",
 					id: input.attr("data-builder-id") || "",
 					remove: key
 				},
@@ -330,20 +330,20 @@
 		}
 	);
 
-	$document.on("mouseover", ".customify--cb-row .grid-stack-item", function(
+	$document.on("mouseover", ".hfg--cb-row .grid-stack-item", function(
 		e
 	) {
 		var item = $(this);
 		var nameW =
-			$(".customify--cb-item-remove", item).outerWidth() +
-			$(".customify--cb-item-setting", item).outerWidth();
+			$(".hfg--cb-item-remove", item).outerWidth() +
+			$(".hfg--cb-item-setting", item).outerWidth();
 		var itemW = $(".grid-stack-item-content", item).innerWidth();
 		if (nameW > itemW - 50) {
 			item.addClass("show-tooltip");
 		}
 	});
 
-	$document.on("mouseleave", ".customify--cb-row .grid-stack-item", function(
+	$document.on("mouseleave", ".hfg--cb-row .grid-stack-item", function(
 		e
 	) {
 		$(this).removeClass("show-tooltip");

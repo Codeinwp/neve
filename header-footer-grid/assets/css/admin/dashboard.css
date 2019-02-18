@@ -1,11 +1,11 @@
-.appearance_page_customify #wpcontent {
+.appearance_page_hfg #wpcontent {
   padding-left: 0;
 }
-.appearance_page_customify #wpcontent .wrap {
+.appearance_page_hfg #wpcontent .wrap {
   margin: 10px 20px 0 20px;
 }
 @media screen and (max-width: 782px) {
-  .appearance_page_customify #wpcontent .wrap {
+  .appearance_page_hfg #wpcontent .wrap {
     margin-right: 12px;
     margin-left: 12px;
   }
@@ -465,16 +465,16 @@
 }
 
 /*Admin notice*/
-.customify-notice-wrapper.notice {
+.hfg-notice-wrapper.notice {
   padding: 10px !important;
   border-left: 0px;
 }
-.customify-notice-wrapper.notice .notice-dismiss {
+.hfg-notice-wrapper.notice .notice-dismiss {
   top: 5px;
   right: 5px;
 }
 
-.customify-notice {
+.hfg-notice {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -484,22 +484,22 @@
   background: #fff8E5;
   padding: 20px;
 }
-.customify-notice a {
+.hfg-notice a {
   color: #f56e28;
   font-weight: 600;
 }
-.customify-notice .customify-notice-img {
+.hfg-notice .hfg-notice-img {
   padding-right: 30px;
   padding-left: 15px;
 }
-.customify-notice .customify-notice-img img {
+.hfg-notice .hfg-notice-img img {
   max-width: 140px;
 }
-.customify-notice .customify-notice-content {
+.hfg-notice .hfg-notice-content {
   -webkit-flex-basis: 100%;
           flex-basis: 100%;
 }
-.customify-notice .customify-notice-heading {
+.hfg-notice .hfg-notice-heading {
   font-size: 18px;
 }
 
@@ -512,9 +512,9 @@
   max-width: 100%;
 }
 
-.customify-msg .error {
+.hfg-msg .error {
   color: #dc3232;
 }
-.customify-msg .success {
+.hfg-msg .success {
   color: #46b450;
 }

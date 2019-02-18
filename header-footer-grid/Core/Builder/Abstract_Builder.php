@@ -31,15 +31,14 @@ abstract class Abstract_Builder implements Builder {
 
 	public function register_builder_hooks() {
 		if ( is_admin() ) {
-
-			add_action( 'wp_ajax_customify_builder_save_template', array( $this, 'ajax_save_template' ) );
-			add_action( 'wp_ajax_customify_builder_export_template', array( $this, 'ajax_export_template' ) );
+			add_action( 'wp_ajax_hfg_builder_save_template', array( $this, 'ajax_save_template' ) );
+			add_action( 'wp_ajax_hfg_builder_export_template', array( $this, 'ajax_export_template' ) );
 		}
 	}
 
 	public function ajax_export_template() {
 		if ( ! current_user_can( 'edit_theme_options' ) ) {
-			wp_send_json_error( __( 'Access denied', 'customify' ) );
+			wp_send_json_error( __( 'Access denied', 'hfg-module' ) );
 		}
 		$name = isset( $_GET['name'] ) ? sanitize_text_field( wp_unslash( $_GET['name'] ) ) : '';
 
@@ -159,7 +158,7 @@ abstract class Abstract_Builder implements Builder {
 					)
 				);
 				if ( ! $tpl['name'] ) {
-					$name = __( 'Untitled', 'customify' );
+					$name = __( 'Untitled', 'hfg-module' );
 				} else {
 					$name = $tpl['name'];
 				}
@@ -167,7 +166,7 @@ abstract class Abstract_Builder implements Builder {
 			}
 		}
 
-		$html .= '<li class="no_template">' . __( 'No saved templates.', 'customify' ) . '</li>';
+		$html .= '<li class="no_template">' . __( 'No saved templates.', 'hfg-module' ) . '</li>';
 
 		$html .= '</ul>';
 		$html .= '</div>';

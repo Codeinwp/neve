@@ -178,7 +178,7 @@ class Settings {
 		$get_value = null;
 		if ( isset( $config[ 'setting|' . $name ] ) ) {
 			$default = isset( $config[ 'setting|' . $name ]['default'] ) ? $config[ 'setting|' . $name ]['default'] : false;
-			$default = apply_filters( 'customify/customize/settings-default', $default, $name );
+			$default = apply_filters( 'hfg/customize/settings-default', $default, $name );
 
 			if ( 'option' == $config[ 'setting|' . $name ]['mod'] ) {
 				$value = get_option( $name, $default );

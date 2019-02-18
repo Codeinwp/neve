@@ -85,7 +85,7 @@ class HeaderFooter_Builder_Item_HTML {
 		);
 
 		// Item Layout.
-		return array_merge( $config, customify_header_layout_settings( $this->id, $this->section ) );
+		return array_merge( $config, hfg_header_layout_settings( $this->id, $this->section ) );
 	}
 
 	/**
@@ -94,7 +94,7 @@ class HeaderFooter_Builder_Item_HTML {
 	function render() {
 		$content = Customify()->get_setting( $this->name );
 		echo '<div class="builder-header-' . esc_attr( $this->id ) . '-item item--html">';
-		echo apply_filters( 'customify_the_content', wp_kses_post( balanceTags( $content, true ) ) );
+		echo apply_filters( 'hfg_the_content', wp_kses_post( balanceTags( $content, true ) ) );
 		echo '</div>';
 	}
 }

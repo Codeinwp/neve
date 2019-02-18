@@ -177,22 +177,22 @@ var CustomifyAutoCSS = window.CustomifyAutoCSS || null;
         } );
 
         var url = that.get_google_fonts_url();
-        if ( $( '#customify-google-font-css' ).length <= 0 ) {
-            $( 'head' ).prepend( "<link rel='stylesheet' id='customify-google-font-css'  href='' type='text/css' media='all' />" );
+        if ( $( '#hfg-google-font-css' ).length <= 0 ) {
+            $( 'head' ).prepend( "<link rel='stylesheet' id='hfg-google-font-css'  href='' type='text/css' media='all' />" );
         }
 
         if ( url ) {
             //css_code = "\r\n@import url('"+url+"');\r\n\r\n"+css_code;
-            $( '#customify-google-font-css' ).attr( 'href', url );
+            $( '#hfg-google-font-css' ).attr( 'href', url );
         } else {
-            $( '#customify-google-font-css' ).remove();
+            $( '#hfg-google-font-css' ).remove();
         }
 
         css_code = css_code.trim();
-        if ( $( '#customify-style-inline-css' ).length <= 0 ) {
-            $( 'head' ).append( "<style id='customify-style-inline-css' type='text/css'></style>" )
+        if ( $( '#hfg-style-inline-css' ).length <= 0 ) {
+            $( 'head' ).append( "<style id='hfg-style-inline-css' type='text/css'></style>" )
         }
-        $( '#customify-style-inline-css' ).html( css_code );
+        $( '#hfg-style-inline-css' ).html( css_code );
         $( document ).trigger( 'header_builder_panel_changed', [ 'auto_render_css', setting_name ] );
         $( document ).trigger( 'after_auto_render_css', [ 'after_auto_render_css', setting_name ] );
 

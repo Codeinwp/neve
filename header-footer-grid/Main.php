@@ -29,6 +29,12 @@ class Main {
 
 	public function init() {
 		$customizer = new Customizer( $this->settings );
+
+		add_filter( 'hfg-active', array( $this, 'is_active' ) );
+	}
+
+	public function is_active() {
+		return true;
 	}
 
 	/**
