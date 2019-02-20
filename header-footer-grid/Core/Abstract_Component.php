@@ -10,6 +10,7 @@ abstract class Abstract_Component implements Component {
 	protected $id;
 	protected $section;
 	protected $column;
+	protected $row;
 	protected $width;
 	protected $name;
 	protected $label;
@@ -21,6 +22,7 @@ abstract class Abstract_Component implements Component {
 			'name'    => $this->label,
 			'id'      => $this->id,
 			'col'     => $this->column,
+			'row'     => $this->row,
 			'width'   => $this->width,
 			'section' => $this->section, // Customizer section to focus when click settings.
 		);

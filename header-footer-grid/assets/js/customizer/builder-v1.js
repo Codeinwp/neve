@@ -1557,9 +1557,14 @@ var CustomizeBuilder_V1;
 				var that = this;
 
 				var data = wpcustomize.control(that.controlId).params.value;
+				console.log( 'addExistingRowsItems :::' );
+				console.log( data );
+				console.log( this );
 				if (!_.isObject(data)) {
 					data = {};
 				}
+				console.log( '### PANELS ###' );
+				console.log( that.panels );
 				_.each(that.panels, function($rows, device) {
 					var device_data = {};
 					if (_.isObject(data[device])) {
@@ -1681,7 +1686,8 @@ var CustomizeBuilder_V1;
 					});
 				});
 
-
+				console.log( that.controlId )
+				console.log( data )
 				wpcustomize
 					.control(that.controlId)
 					.setting.set(that.encodeValue(data));
@@ -1755,6 +1761,11 @@ var CustomizeBuilder_V1;
 			},
 			init: function(controlId, items, devices) {
 				var that = this;
+
+				console.log( 'INIT ::: Bv1' );
+				console.log( controlId );
+				console.log( items );
+				console.log( devices );
 
 				var template = that.getTemplate();
 				var template_id = "tmpl-hfg--builder-panel";

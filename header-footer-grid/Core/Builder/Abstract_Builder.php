@@ -4,6 +4,7 @@ namespace HFG\Core\Builder;
 use HFG\Core\Interfaces\Builder;
 use HFG\Core\Interfaces\Component;
 use WP_Customize_Manager;
+use WP_Customize_Selective_Refresh;
 
 abstract class Abstract_Builder implements Builder {
 
@@ -11,7 +12,14 @@ abstract class Abstract_Builder implements Builder {
 	protected $panel;
 	protected $section;
 
+	protected $devices = [
+		'desktop' => 'Desktop',
+		'mobile' => 'Mobile'
+	];
+
 	protected $builder_components = array();
+
+	protected $layout_settings = array( 'default' );
 
 	protected function set_property( $key = '', $value = '' ) {
 		if ( ! property_exists( $this, $key ) ) {
@@ -30,9 +38,44 @@ abstract class Abstract_Builder implements Builder {
 	}
 
 	public function register_builder_hooks() {
+		add_action( 'customize_render_partials_before', array( $this, 'partial_update' ), 10, 2 );
 		if ( is_admin() ) {
 			add_action( 'wp_ajax_hfg_builder_save_template', array( $this, 'ajax_save_template' ) );
 			add_action( 'wp_ajax_hfg_builder_export_template', array( $this, 'ajax_export_template' ) );
+		}
+	}
+
+	public function partial_update( WP_Customize_Selective_Refresh $selective_refresh, $partials = array() ) {
+		error_log( json_encode( $_POST['customized'] ) );
+		error_log( json_encode( get_theme_mods() ) );
+		error_log( json_encode( $this->builder_components ) );
+
+		error_log( 'Before IF' );
+		error_log( isset(  $_POST['customized'] ) );
+		error_log( $this->control_id );
+		$customized = ( isset( $_POST['customized'] ) ) ? json_decode( stripslashes_from_strings_only( $_POST['customized'] ), true ) : array();
+		error_log( isset(  $customized[$this->control_id] ) );
+		error_log( $customized[$this->control_id] );
+		if (isset( $customized[$this->control_id] ) ) {
+			$changes = json_decode( rawurldecode ( $customized[$this->control_id] ), true );
+			$this->layout_settings = $changes;
+			set_theme_mod( $this->control_id . '_layout_settings', $this->layout_settings );
+			error_log( json_encode( $changes ) );
+
+			foreach ( $changes as $rows ) {
+				foreach ( $rows as $row ) {
+					error_log( json_encode( $row ) );
+					if ( ! empty( $row ) ) {
+						foreach ( $row as $item ) {
+							if ( isset( $item['id'] ) ) {
+								$component_id = $item['id'];
+								error_log( $component_id );
+								error_log( $this->builder_components[$component_id]->render() );
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 
@@ -258,10 +301,7 @@ abstract class Abstract_Builder implements Builder {
 					'label' => 'V1'
 				],
 			],
-			'devices' => [
-				'desktop' => 'Desktop',
-				'mobile' => 'Mobile'
-			],
+			'devices' => $this->devices,
 			'items' => $this->get_components_settings(),
 			'rows' => [
 				'top' => 'Header Top',

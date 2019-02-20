@@ -330,9 +330,7 @@
 		}
 	);
 
-	$document.on("mouseover", ".hfg--cb-row .grid-stack-item", function(
-		e
-	) {
+	$document.on("mouseover", ".hfg--cb-row .grid-stack-item", function( e ) {
 		var item = $(this);
 		var nameW =
 			$(".hfg--cb-item-remove", item).outerWidth() +
@@ -343,9 +341,7 @@
 		}
 	});
 
-	$document.on("mouseleave", ".hfg--cb-row .grid-stack-item", function(
-		e
-	) {
+	$document.on("mouseleave", ".hfg--cb-row .grid-stack-item", function( e ) {
 		$(this).removeClass("show-tooltip");
 	});
 })(jQuery, wp.customize || null);
