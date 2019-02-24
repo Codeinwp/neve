@@ -88,7 +88,7 @@ class Responsive_Number extends \WP_Customize_Control {
 		?>
 
 		<# var wrapClass = data.responsive ? 'has-media-queries' : ''; #>
-
+		<# wrapClass += data.units.length ? '' : 'no-units'; #>
 		<div class="responsive-number {{wrapClass}}">
 			<div class="controls--wrap">
 				<# if( data.responsive === true ) { #>
@@ -145,7 +145,7 @@ class Responsive_Number extends \WP_Customize_Control {
 			data-default="{{attr.default}}"
 			value="{{ value }}"
 			/>
-			<# if( data.units ) {
+			<# if( data.units.length ) {
 			var disabled = data.units.length === 1 ? 'disabled' : '';
 			#>
 			<select class="responsive-number--select" {{disabled}} data-default="{{attr.default_unit}}">

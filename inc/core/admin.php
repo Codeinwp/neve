@@ -330,8 +330,8 @@ class Admin {
 			'<div><h3><span class="dashicons dashicons-format-aside"></span> %1$s</h3><p>%2$s</p><a href="%3$s">%4$s</a></div><div> <p>%5$s</p></div>',
 			__( 'Documentation', 'neve' ),
 			__( 'Need more details? Please check our full documentation for detailed information on how to use Neve.', 'neve' ),
-            'https://docs.themeisle.com/article/946-neve-doc',
-            __( 'Read full documentation', 'neve' ),
+			'https://docs.themeisle.com/article/946-neve-doc',
+			__( 'Read full documentation', 'neve' ),
 			$ob_return_dashboard
 		);
 		$style                = '
