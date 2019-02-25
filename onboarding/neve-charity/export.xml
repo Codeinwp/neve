@@ -1,42 +1,46 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!-- generator="WordPress/4.9.8" created="2019-01-17 11:54" -->
-		<rss version="2.0"
-				xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
-				xmlns:content="http://purl.org/rss/1.0/modules/content/"
-				xmlns:wfw="http://wellformedweb.org/CommentAPI/"
-				xmlns:dc="http://purl.org/dc/elements/1.1/"
-				xmlns:wp="http://wordpress.org/export/1.2/"
-		>
 
-			<channel>
-				<title>Neve Charity</title>
-				<link>https://demo.themeisle.com/neve-charity</link>
-				<description>Donating is the best!</description>
-				<pubDate>Thu, 17 Jan 2019 11:54:50 +0000</pubDate>
-				<language>en-US</language>
-				<wp:wxr_version>1.2</wp:wxr_version>
-				<wp:base_site_url>https://demo.themeisle.com/</wp:base_site_url>
-				<wp:base_blog_url>https://demo.themeisle.com/neve-charity</wp:base_blog_url>
+<!-- generator="WordPress/4.9.8" created="2019-02-25 13:43" -->
+<rss version="2.0"
+	xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:wp="http://wordpress.org/export/1.2/"
+>
 
-									<wp:category>
-						<wp:term_id>1</wp:term_id>
-						<wp:category_nicename><![CDATA[uncategorized]]></wp:category_nicename>
-						<wp:category_parent><![CDATA[]]></wp:category_parent>
-						<wp:cat_name><![CDATA[Uncategorized]]></wp:cat_name>
-					</wp:category>
-																	<wp:term><wp:term_id>2</wp:term_id><wp:term_taxonomy>nav_menu</wp:term_taxonomy><wp:term_slug><![CDATA[main]]></wp:term_slug><wp:term_name><![CDATA[Main]]></wp:term_name>
+<channel>
+	<title>Neve Charity</title>
+	<link>https://demo.themeisle.com/neve-charity</link>
+	<description>Donating is the best!</description>
+	<pubDate>Mon, 25 Feb 2019 13:43:31 +0000</pubDate>
+	<language>en-US</language>
+	<wp:wxr_version>1.2</wp:wxr_version>
+	<wp:base_site_url>http://demo.themeisle.com/</wp:base_site_url>
+	<wp:base_blog_url>https://demo.themeisle.com/neve-charity</wp:base_blog_url>
+
+	<wp:author><wp:author_id>440</wp:author_id><wp:author_login><![CDATA[rodica.andronache@vertistudio.com]]></wp:author_login><wp:author_email><![CDATA[rodica.andronache@vertistudio.com]]></wp:author_email><wp:author_display_name><![CDATA[Rodica]]></wp:author_display_name><wp:author_first_name><![CDATA[Rodica]]></wp:author_first_name><wp:author_last_name><![CDATA[Andronache]]></wp:author_last_name></wp:author>
+	<wp:author><wp:author_id>119919</wp:author_id><wp:author_login><![CDATA[radu]]></wp:author_login><wp:author_email><![CDATA[radu@themeisle.com]]></wp:author_email><wp:author_display_name><![CDATA[radu]]></wp:author_display_name><wp:author_first_name><![CDATA[]]></wp:author_first_name><wp:author_last_name><![CDATA[]]></wp:author_last_name></wp:author>
+
+	<wp:category>
+		<wp:term_id>1</wp:term_id>
+		<wp:category_nicename><![CDATA[uncategorized]]></wp:category_nicename>
+		<wp:category_parent><![CDATA[]]></wp:category_parent>
+		<wp:cat_name><![CDATA[Uncategorized]]></wp:cat_name>
+	</wp:category>
+	<wp:term><wp:term_id>2</wp:term_id><wp:term_taxonomy>nav_menu</wp:term_taxonomy><wp:term_slug><![CDATA[main]]></wp:term_slug><wp:term_name><![CDATA[Main]]></wp:term_name>
 </wp:term>
 
-				<generator>https://wordpress.org/?v=4.9.8</generator>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
 
-						<item>
-			<title>
-				Home			</title>
-			<link>https://demo.themeisle.com/neve-charity/</link>
-			<pubDate>Thu, 22 Nov 2018 11:55:58 +0000</pubDate>
-			<guid isPermaLink="false">https://demo.themeisle.com/neve-charity/?page_id=2</guid>
-			<description></description>
-			<content:encoded><![CDATA[<h2>Help others by giving</h2>		
+	<item>
+		<title>Home</title>
+		<link>https://demo.themeisle.com/neve-charity/</link>
+		<pubDate>Thu, 22 Nov 2018 11:55:58 +0000</pubDate>
+		<dc:creator><![CDATA[rodica.andronache@vertistudio.com]]></dc:creator>
+		<guid isPermaLink="false">https://demo.themeisle.com/neve-charity/?page_id=2</guid>
+		<description></description>
+		<content:encoded><![CDATA[<h2>Help others by giving</h2>		
 		<p>Every person whose life is improved or saved, stems from an act of generosity that's purely voluntary. That's why donating is so extraordinary when you do it.</p>		
 			<a role="button">
 						Get Involved
@@ -69,107 +73,111 @@
 				€
 				1200
 							Raised
-			<h2>Neve Charity's Stories</h2>		
+			<h2><a href="https://demo.themeisle.com/neve-charity/neve-charity-demo-blog/">Neve Charity's Stories</a></h2>		
 			<article>					
+						<a href="https://demo.themeisle.com/neve-charity/2018/11/28/you-can-live-without-money/" title="You can live without money">
+							<img width="426" height="426" src="https://demo.themeisle.com/neve-charity/wp-content/uploads/sites/178/2018/11/trouser-pockets-1439412.jpg" alt="trouser-pockets-1439412" srcset="https://demo.themeisle.com/neve-charity/wp-content/uploads/sites/178/2018/11/trouser-pockets-1439412.jpg 426w, https://demo.themeisle.com/neve-charity/wp-content/uploads/sites/178/2018/11/trouser-pockets-1439412-150x150.jpg 150w, https://demo.themeisle.com/neve-charity/wp-content/uploads/sites/178/2018/11/trouser-pockets-1439412-300x300.jpg 300w" sizes="(max-width: 426px) 100vw, 426px" />						</a>
+							<h5>
+							<a href="https://demo.themeisle.com/neve-charity/2018/11/28/you-can-live-without-money/" title="You can live without money">
+					You can live without money				</a>
+							</h5>
+			<!-- .obfx-grid-col-content --></article><article>					
 						<a href="https://demo.themeisle.com/neve-charity/2018/11/28/life-living-in-a-poverty-camp/" title="Life living in a poverty camp">
-							<img width="426" height="426" src="https://demo.themeisle.com/neve-charity/wp-content/uploads/sites/178/2018/11/potion-1860939.jpg" alt="potion-1860939" />						</a>
+							<img width="426" height="426" src="https://demo.themeisle.com/neve-charity/wp-content/uploads/sites/178/2018/11/potion-1860939.jpg" alt="potion-1860939" srcset="https://demo.themeisle.com/neve-charity/wp-content/uploads/sites/178/2018/11/potion-1860939.jpg 426w, https://demo.themeisle.com/neve-charity/wp-content/uploads/sites/178/2018/11/potion-1860939-150x150.jpg 150w, https://demo.themeisle.com/neve-charity/wp-content/uploads/sites/178/2018/11/potion-1860939-300x300.jpg 300w" sizes="(max-width: 426px) 100vw, 426px" />						</a>
 							<h5>
 							<a href="https://demo.themeisle.com/neve-charity/2018/11/28/life-living-in-a-poverty-camp/" title="Life living in a poverty camp">
 					Life living in a poverty camp				</a>
 							</h5>
 			<!-- .obfx-grid-col-content --></article><article>					
 						<a href="https://demo.themeisle.com/neve-charity/2018/11/28/providing-water-in-dry-areas/" title="Providing water in dry areas">
-							<img width="426" height="426" src="https://demo.themeisle.com/neve-charity/wp-content/uploads/sites/178/2018/11/children-734891.jpg" alt="children-734891" />						</a>
+							<img width="426" height="426" src="https://demo.themeisle.com/neve-charity/wp-content/uploads/sites/178/2018/11/children-734891.jpg" alt="children-734891" srcset="https://demo.themeisle.com/neve-charity/wp-content/uploads/sites/178/2018/11/children-734891.jpg 426w, https://demo.themeisle.com/neve-charity/wp-content/uploads/sites/178/2018/11/children-734891-150x150.jpg 150w, https://demo.themeisle.com/neve-charity/wp-content/uploads/sites/178/2018/11/children-734891-300x300.jpg 300w" sizes="(max-width: 426px) 100vw, 426px" />						</a>
 							<h5>
 							<a href="https://demo.themeisle.com/neve-charity/2018/11/28/providing-water-in-dry-areas/" title="Providing water in dry areas">
 					Providing water in dry areas				</a>
-							</h5>
-			<!-- .obfx-grid-col-content --></article><article>					
-						<a href="https://demo.themeisle.com/neve-charity/2018/11/28/you-can-live-without-money/" title="You can live without money">
-							<img width="426" height="426" src="https://demo.themeisle.com/neve-charity/wp-content/uploads/sites/178/2018/11/trouser-pockets-1439412.jpg" alt="trouser-pockets-1439412" />						</a>
-							<h5>
-							<a href="https://demo.themeisle.com/neve-charity/2018/11/28/you-can-live-without-money/" title="You can live without money">
-					You can live without money				</a>
 							</h5>
 			<!-- .obfx-grid-col-content --></article><!-- .obfx-grid-container --><!-- .obfx-grid -->		
 			<h2>Join our email list</h2>		
 			<p>Stay up to date on global charitable giving news &amp; trends, read stories of philanthropy, and learn how the philanthropic landscape is changing.</p>		
 			<a href="#" role="button">
 						Sign up
-					</a>]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>2</wp:post_id>
-			<wp:post_date><![CDATA[2018-11-22 11:55:58]]></wp:post_date>
-			<wp:post_date_gmt><![CDATA[2018-11-22 11:55:58]]></wp:post_date_gmt>
-			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
-			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-			<wp:post_name><![CDATA[neve-charity-demo-home]]></wp:post_name>
-			<wp:status><![CDATA[publish]]></wp:status>
-			<wp:post_parent>0</wp:post_parent>
-			<wp:menu_order>0</wp:menu_order>
-			<wp:post_type><![CDATA[page]]></wp:post_type>
-			<wp:post_password><![CDATA[]]></wp:post_password>
-			<wp:is_sticky>0</wp:is_sticky>
-													<wp:postmeta>
-					<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-					<wp:meta_value><![CDATA[page-templates/template-pagebuilder-full-width.php]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
-					<wp:meta_value><![CDATA[119919]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-					<wp:meta_value><![CDATA[builder]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_elementor_template_type]]></wp:meta_key>
-					<wp:meta_value><![CDATA[post]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_elementor_data]]></wp:meta_key>
-					<wp:meta_value><![CDATA[[{"id":"1cd1a93d","elType":"section","settings":{"content_position":"middle","structure":"20","padding":{"unit":"px","top":"50","right":"0","bottom":"50","left":"0","isLinked":false},"padding_tablet":{"unit":"px","top":"50","right":"20","bottom":"50","left":"20","isLinked":false},"padding_mobile":{"unit":"px","top":"30","right":"20","bottom":"30","left":"20","isLinked":false},"height":"min-height","custom_height":{"unit":"vh","size":82},"background_background":"classic","background_image":{"url":"https:\/\/demo.themeisle.com\/neve-charity\/wp-content\/uploads\/sites\/178\/2018\/11\/children-63175.jpg","id":14},"background_overlay_background":"gradient","background_overlay_color":"#076442","background_overlay_color_stop":{"unit":"%","size":50},"background_overlay_color_b":"rgba(0,0,0,0)","css_filters_blur":{"unit":"px","size":4.8},"css_filters_brightness":{"unit":"px","size":136},"css_filters_saturate":{"unit":"px","size":134},"custom_height_tablet":{"unit":"vh","size":83},"background_position":"top center","background_size":"cover"},"elements":[{"id":"1703818","elType":"column","settings":{"_column_size":50,"_inline_size":null,"space_between_widgets":30,"_inline_size_tablet":70},"elements":[{"id":"2b1daee","elType":"widget","settings":{"title":"Help others by giving","typography_typography":"custom","typography_font_size":{"unit":"px","size":40},"typography_font_weight":"500","typography_line_height":{"unit":"em","size":1.3},"title_color":"#ffffff","typography_font_family":"Montserrat"},"elements":[],"widgetType":"heading"},{"id":"57641fda","elType":"widget","settings":{"editor":"<p>Every person whose life is improved or saved, stems from an act of generosity that's purely voluntary. That's why donating is so extraordinary when you do it.<\/p>","typography_typography":"custom","typography_font_family":"Montserrat","text_color":"#ffffff"},"elements":[],"widgetType":"text-editor"},{"id":"6940761a","elType":"widget","settings":{"text":"Get Involved","align":"left","size":"md","icon":"fa fa-long-arrow-right","icon_align":"right","icon_indent":{"unit":"px","size":15},"typography_typography":"custom","typography_font_family":"Montserrat","button_text_color":"#ffffff","background_color":"#076442","hover_color":"#076442","button_background_hover_color":"#ffffff","button_hover_border_color":"#076442","border_border":"solid","border_width":{"unit":"px","top":"1","right":"1","bottom":"1","left":"1","isLinked":true},"border_color":"#076442","border_radius":{"unit":"px","top":"50","right":"50","bottom":"50","left":"50","isLinked":true},"button_box_shadow_box_shadow_type":"yes","button_box_shadow_box_shadow":{"horizontal":0,"vertical":10,"blur":30,"spread":-8,"color":"rgba(0,0,0,0.16)"},"_margin":{"unit":"px","top":"70","right":"0","bottom":"0","left":"0","isLinked":false},"link":{"url":"","is_external":"","nofollow":""},"_margin_mobile":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":false}},"elements":[],"widgetType":"button"}],"isInner":false},{"id":"3ada49ea","elType":"column","settings":{"_column_size":50,"_inline_size":null,"_inline_size_tablet":30},"elements":[],"isInner":false}],"isInner":false},{"id":"2a94417f","elType":"section","settings":{"structure":"30","content_position":"bottom","padding":{"unit":"px","top":"90","right":"0","bottom":"90","left":"0","isLinked":false},"padding_tablet":{"unit":"px","top":"45","right":"20","bottom":"45","left":"20","isLinked":false}},"elements":[{"id":"3911f805","elType":"column","settings":{"_column_size":33,"_inline_size":null,"_inline_size_mobile":100},"elements":[{"id":"2744a78","elType":"widget","settings":{"icon":"fa fa-life-ring","title_text":"Our Programs","description_text":"Neve Charity programs provide support in some of the poorest and most underprivileged regions, creating opportunity for those in need to learn and thrive.","primary_color":"#076442","text_align":"center","title_color":"#076442","description_typography_font_family":"Montserrat","_padding":{"unit":"px","top":"15","right":"15","bottom":"15","left":"15","isLinked":true},"_background_hover_background":"classic","_background_hover_color":"#f7fdfb","_border_border":"solid","_border_width":{"unit":"px","top":"1","right":"1","bottom":"1","left":"1","isLinked":true},"_border_color":"#076442","_border_hover_border":"solid","_border_hover_width":{"unit":"px","top":"1","right":"1","bottom":"1","left":"1","isLinked":true},"_border_hover_color":"rgba(255,112,82,0.25)","_box_shadow_hover_box_shadow_type":"yes","_border_radius":{"unit":"px","top":"3","right":"3","bottom":"3","left":"3","isLinked":true},"description_color":"#076442"},"elements":[],"widgetType":"icon-box"}],"isInner":false},{"id":"99941b3","elType":"column","settings":{"_column_size":33,"_inline_size":null,"_inline_size_mobile":100},"elements":[{"id":"a0f8091","elType":"widget","settings":{"icon":"fa fa-leaf","title_text":"About Us","description_text":"For over years, Neve Charity has been working to abolish how poverty and illiteracy so that all people have access to a quality life and strive for better life conditions.","primary_color":"#076442","text_align":"center","title_color":"#076442","description_typography_font_family":"Montserrat","_padding":{"unit":"px","top":"15","right":"15","bottom":"15","left":"15","isLinked":true},"_background_hover_background":"classic","_background_hover_color":"#f7fdfb","_border_border":"solid","_border_width":{"unit":"px","top":"1","right":"1","bottom":"1","left":"1","isLinked":true},"_border_color":"#076442","_border_hover_border":"solid","_border_hover_width":{"unit":"px","top":"1","right":"1","bottom":"1","left":"1","isLinked":true},"_border_hover_color":"rgba(255,112,82,0.25)","_box_shadow_hover_box_shadow_type":"yes","_border_radius":{"unit":"px","top":"3","right":"3","bottom":"3","left":"3","isLinked":true},"description_color":"#076442"},"elements":[],"widgetType":"icon-box"}],"isInner":false},{"id":"a5e32d0","elType":"column","settings":{"_column_size":33,"_inline_size":null,"_inline_size_mobile":100,"content_position":"top"},"elements":[{"id":"80db58d","elType":"widget","settings":{"icon":"fa fa-life-ring","title_text":"Get Involved","description_text":"Your generosity makes our work possible. Whether you contribute financially or as advocate for good, you make a real and lasting difference in people\u2019s lives.","primary_color":"#076442","text_align":"center","title_color":"#076442","description_typography_font_family":"Montserrat","_padding":{"unit":"px","top":"15","right":"15","bottom":"15","left":"15","isLinked":true},"_background_hover_background":"classic","_background_hover_color":"#f7fdfb","_border_border":"solid","_border_width":{"unit":"px","top":"1","right":"1","bottom":"1","left":"1","isLinked":true},"_border_color":"#076442","_border_hover_border":"solid","_border_hover_width":{"unit":"px","top":"1","right":"1","bottom":"1","left":"1","isLinked":true},"_border_hover_color":"rgba(255,112,82,0.25)","_box_shadow_hover_box_shadow_type":"yes","_border_radius":{"unit":"px","top":"3","right":"3","bottom":"3","left":"3","isLinked":true},"description_color":"#076442"},"elements":[],"widgetType":"icon-box"}],"isInner":false}],"isInner":false},{"id":"6990c001","elType":"section","settings":{"content_width":{"unit":"px","size":800},"background_background":"gradient","background_color":"#ffffff","background_color_b":"#076442","background_gradient_angle":{"unit":"deg","size":150},"background_overlay_background":"classic","background_overlay_color_b":"#2642d3","background_overlay_gradient_angle":{"unit":"deg","size":260},"background_overlay_image":{"id":23,"url":"https:\/\/demo.themeisle.com\/neve-charity\/wp-content\/uploads\/sites\/178\/2018\/11\/africa-2179608.jpg"},"background_overlay_position":"top center","background_overlay_attachment":"fixed","css_filters_blur":{"unit":"px","size":3.3},"border_width":{"unit":"px","top":"0","right":"30","bottom":"0","left":"30","isLinked":false},"border_color":"#ffffff","shape_divider_bottom_color":"#f4f4f4","margin":{"unit":"px","top":"","right":0,"bottom":"","left":0,"isLinked":true},"padding":{"unit":"px","top":"70","right":"0","bottom":"70","left":"0","isLinked":false},"background_overlay_repeat":"no-repeat","background_overlay_size":"cover","border_radius":{"unit":"px","top":"10","right":"10","bottom":"10","left":"10","isLinked":true},"padding_tablet":{"unit":"px","top":"50","right":"40","bottom":"50","left":"40","isLinked":false},"padding_mobile":{"unit":"px","top":"40","right":"20","bottom":"40","left":"20","isLinked":false},"_element_id":"efforts","background_color_b_stop":{"unit":"%","size":70}},"elements":[{"id":"789e34f0","elType":"column","settings":{"_column_size":100,"space_between_widgets":30},"elements":[{"id":"506c765f","elType":"widget","settings":{"title":"Discover all the ways<br><b>you can help give<\/b>","typography_typography":"custom","typography_font_size":{"unit":"px","size":50},"typography_font_weight":"300","typography_line_height":{"unit":"em","size":1.1},"align":"center","title_color":"#ffffff","typography_text_transform":"capitalize","text_shadow_text_shadow_type":"yes","text_shadow_text_shadow":{"horizontal":10,"vertical":10,"blur":20,"color":"rgba(0,0,0,0.11)"},"typography_font_family":"Montserrat","_margin":{"unit":"px","top":"0","right":"0","bottom":"50","left":"0","isLinked":false},"typography_font_size_mobile":{"unit":"px","size":24}},"elements":[],"widgetType":"heading"},{"id":"7b5b6023","elType":"widget","settings":{"text":"Make a donation","align":"center","size":"md","icon":"fa fa-dollar","icon_align":"right","icon_indent":{"unit":"px","size":20},"typography_typography":"custom","typography_font_family":"Montserrat","button_text_color":"#ffffff","background_color":"#076442","hover_color":"#076442","button_background_hover_color":"#ffffff","button_hover_border_color":"#076442","border_border":"solid","border_width":{"unit":"px","top":"1","right":"1","bottom":"1","left":"1","isLinked":true},"border_color":"#076442","border_radius":{"unit":"px","top":"50","right":"50","bottom":"50","left":"50","isLinked":true},"button_box_shadow_box_shadow_type":"yes","button_box_shadow_box_shadow":{"horizontal":0,"vertical":10,"blur":30,"spread":-8,"color":"rgba(0,0,0,0.16)"},"_margin":{"unit":"px","top":"15","right":"0","bottom":"15","left":"0","isLinked":false},"typography_text_transform":"uppercase","_margin_mobile":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":false}},"elements":[],"widgetType":"button"},{"id":"f63c832","elType":"widget","settings":{"text":"Start a fund","align":"center","size":"md","icon":"fa fa-bank","icon_align":"right","icon_indent":{"unit":"px","size":20},"typography_typography":"custom","typography_font_family":"Montserrat","button_text_color":"#ffffff","background_color":"#076442","hover_color":"#076442","button_background_hover_color":"#ffffff","button_hover_border_color":"#076442","border_border":"solid","border_width":{"unit":"px","top":"1","right":"1","bottom":"1","left":"1","isLinked":true},"border_color":"#076442","border_radius":{"unit":"px","top":"50","right":"50","bottom":"50","left":"50","isLinked":true},"button_box_shadow_box_shadow_type":"yes","button_box_shadow_box_shadow":{"horizontal":0,"vertical":10,"blur":30,"spread":-8,"color":"rgba(0,0,0,0.16)"},"_margin":{"unit":"px","top":"15","right":"0","bottom":"15","left":"0","isLinked":false},"typography_text_transform":"uppercase","text_padding":{"unit":"px","top":"15","right":"45","bottom":"15","left":"45","isLinked":false},"_margin_mobile":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":false}},"elements":[],"widgetType":"button"},{"id":"7bc7481","elType":"widget","settings":{"text":"Join the efforts","align":"center","size":"md","icon":"fa fa-user","icon_align":"right","icon_indent":{"unit":"px","size":20},"typography_typography":"custom","typography_font_family":"Montserrat","button_text_color":"#ffffff","background_color":"#076442","hover_color":"#076442","button_background_hover_color":"#ffffff","button_hover_border_color":"#076442","border_border":"solid","border_width":{"unit":"px","top":"1","right":"1","bottom":"1","left":"1","isLinked":true},"border_color":"#076442","border_radius":{"unit":"px","top":"50","right":"50","bottom":"50","left":"50","isLinked":true},"button_box_shadow_box_shadow_type":"yes","button_box_shadow_box_shadow":{"horizontal":0,"vertical":10,"blur":30,"spread":-8,"color":"rgba(0,0,0,0.16)"},"_margin":{"unit":"px","top":"15","right":"0","bottom":"15","left":"0","isLinked":false},"typography_text_transform":"uppercase","_margin_mobile":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":false}},"elements":[],"widgetType":"button"},{"id":"4377328","elType":"widget","settings":{"title":"So far we've helped...","title_color":"#ffffff","typography_typography":"custom","typography_font_family":"Montserrat","typography_font_size":{"unit":"px","size":40},"typography_font_weight":"500","typography_line_height":{"unit":"em","size":1.3},"align":"center","_margin":{"unit":"px","top":"50","right":"0","bottom":"0","left":"0","isLinked":false},"typography_font_size_mobile":{"unit":"px","size":24}},"elements":[],"widgetType":"heading"},{"id":"71b4830f","elType":"section","settings":{"structure":"30","border_width":{"unit":"px","top":"0","right":"0","bottom":"4","left":"0","isLinked":false},"border_color":"#ebb0e7","padding":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":false},"background_background":"classic"},"elements":[{"id":"28c6779a","elType":"column","settings":{"_column_size":33,"_inline_size":null},"elements":[{"id":"762dfa43","elType":"widget","settings":{"ending_number":12,"duration":1000,"title":"Countries","typography_number_typography":"custom","typography_number_font_weight":"100","typography_title_typography":"custom","typography_title_font_size":{"unit":"px","size":17},"starting_number":"","typography_number_font_family":"Montserrat","typography_title_font_family":"Montserrat","number_color":"#ffffff","title_color":"#ffffff"},"elements":[],"widgetType":"counter"}],"isInner":true},{"id":"181d1725","elType":"column","settings":{"_column_size":33,"_inline_size":null},"elements":[{"id":"441a045d","elType":"widget","settings":{"ending_number":5287,"title":"People","typography_number_typography":"custom","typography_number_font_weight":"100","typography_title_typography":"custom","typography_title_font_size":{"unit":"px","size":17},"starting_number":"","typography_number_font_family":"Montserrat","typography_title_font_family":"Montserrat","duration":1500,"number_color":"#ffffff","title_color":"#ffffff"},"elements":[],"widgetType":"counter"}],"isInner":true},{"id":"a1cf5f","elType":"column","settings":{"_column_size":33,"_inline_size":null},"elements":[{"id":"76de43d0","elType":"widget","settings":{"ending_number":3839,"duration":1500,"title":"Raised","typography_number_typography":"custom","typography_number_font_weight":"100","typography_title_typography":"custom","typography_title_font_size":{"unit":"px","size":17},"starting_number":1200,"typography_number_font_family":"Montserrat","typography_title_font_family":"Montserrat","prefix":"\u20ac","number_color":"#ffffff","title_color":"#ffffff"},"elements":[],"widgetType":"counter"}],"isInner":true}],"isInner":true}],"isInner":false}],"isInner":false},{"id":"44481e5c","elType":"section","settings":{"structure":"20","padding":{"unit":"px","top":"90","right":"0","bottom":"90","left":"0","isLinked":false},"padding_tablet":{"unit":"px","top":"40","right":"20","bottom":"40","left":"20","isLinked":false},"_element_id":"stories"},"elements":[{"id":"26063d07","elType":"column","settings":{"_column_size":50,"_inline_size":null,"_inline_size_tablet":100},"elements":[{"id":"9088e49","elType":"section","settings":{"structure":"21"},"elements":[{"id":"c354954","elType":"column","settings":{"_column_size":33,"_inline_size":13,"content_position":"center"},"elements":[{"id":"a892369","elType":"widget","settings":{"icon":"fa fa-book","primary_color":"#076442"},"elements":[],"widgetType":"icon"}],"isInner":true},{"id":"42b929d","elType":"column","settings":{"_column_size":66,"_inline_size":86.905,"content_position":"center","margin_mobile":{"unit":"px","top":"0","right":"0","bottom":"10","left":"0","isLinked":false},"padding_mobile":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":false}},"elements":[{"id":"b97eecd","elType":"widget","settings":{"title":"Neve Charity's Stories","title_color":"#076442","typography_typography":"custom","typography_font_family":"Montserrat","typography_font_size":{"unit":"px","size":40},"typography_font_weight":"500","typography_line_height":{"unit":"em","size":1.3},"typography_font_size_mobile":{"unit":"px","size":22}},"elements":[],"widgetType":"heading"}],"isInner":true}],"isInner":true},{"id":"d39c790","elType":"widget","settings":{"grid_items":3,"grid_title_tag":"h5","grid_meta_hide":"yes","grid_meta_remove_icons":"yes","grid_content_default_btn":"","grid_content_default_btn_text":"Read more","grid_order_by":"rand","grid_image_height":{"unit":"px","size":100},"grid_content_hide":"yes","grid_title_style_typography_typography":"custom","grid_title_style_typography_font_family":"Montserrat","grid_title_style_typography_font_size":{"unit":"px","size":17},"grid_title_style_typography_font_weight":"normal","grid_title_style_color":"#076442","_margin":{"unit":"px","top":"0","right":"35","bottom":"0","left":"15","isLinked":false},"grid_columns_tablet":"3"},"elements":[],"widgetType":"obfx-posts-grid"}],"isInner":false},{"id":"9d5cea3","elType":"column","settings":{"_column_size":50,"_inline_size":null,"_inline_size_tablet":100,"background_background":"classic","background_color":"rgba(127,127,127,0)","background_hover_background":"classic","background_hover_color":"#f7fdfb","border_border":"solid","border_width":{"unit":"px","top":"1","right":"1","bottom":"1","left":"1","isLinked":true},"border_color":"#00a529","border_radius":{"unit":"px","top":"3","right":"3","bottom":"3","left":"3","isLinked":true},"border_hover_border":"solid","border_hover_width":{"unit":"px","top":"1","right":"1","bottom":"1","left":"1","isLinked":true},"border_hover_color":"rgba(255,255,255,0)","box_shadow_hover_box_shadow_type":"yes"},"elements":[{"id":"2c9a693","elType":"section","settings":{"structure":"21"},"elements":[{"id":"dae7bc9","elType":"column","settings":{"_column_size":33,"_inline_size":13,"content_position":"center"},"elements":[{"id":"8e8d72b","elType":"widget","settings":{"icon":"fa fa-envelope","primary_color":"#076442"},"elements":[],"widgetType":"icon"}],"isInner":true},{"id":"183d2d2","elType":"column","settings":{"_column_size":66,"_inline_size":86.905,"content_position":"center"},"elements":[{"id":"4a9e727","elType":"widget","settings":{"title":"Join our email list","title_color":"#076442","typography_typography":"custom","typography_font_family":"Montserrat","typography_font_size":{"unit":"px","size":40},"typography_font_weight":"500","typography_line_height":{"unit":"em","size":1.3},"align_mobile":"center","typography_font_size_mobile":{"unit":"px","size":24}},"elements":[],"widgetType":"heading"}],"isInner":true}],"isInner":true},{"id":"2dcd852","elType":"widget","settings":{"title":"Stay up to date on global charitable giving news &amp; trends, read stories of philanthropy, and learn how the philanthropic landscape is changing.","header_size":"p","title_color":"#076442","typography_typography":"custom","typography_font_family":"Montserrat","typography_font_size":{"unit":"px","size":17},"typography_font_weight":"normal","typography_line_height":{"unit":"em","size":1.6},"_margin":{"unit":"px","top":"0","right":"10","bottom":"0","left":"10","isLinked":false},"align_mobile":"center"},"elements":[],"widgetType":"heading"},{"id":"319d370","elType":"widget","settings":{"text":"Sign up","align":"left","size":"md","icon_align":"right","icon_indent":{"unit":"px","size":15},"typography_typography":"custom","typography_font_family":"Montserrat","button_text_color":"#ffffff","background_color":"#076442","hover_color":"#076442","button_background_hover_color":"#ffffff","button_hover_border_color":"#076442","border_border":"solid","border_width":{"unit":"px","top":"1","right":"1","bottom":"1","left":"1","isLinked":true},"border_color":"#076442","border_radius":{"unit":"px","top":"50","right":"50","bottom":"50","left":"50","isLinked":true},"button_box_shadow_box_shadow_type":"yes","button_box_shadow_box_shadow":{"horizontal":0,"vertical":10,"blur":30,"spread":-8,"color":"rgba(0,0,0,0.16)"},"_margin":{"unit":"px","top":"30","right":"0","bottom":"0","left":"10","isLinked":false},"_margin_mobile":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":false},"text_padding":{"unit":"%","top":"3","right":"40","bottom":"3","left":"40","isLinked":false},"align_tablet":"center","text_padding_mobile":{"unit":"%","top":"5","right":"35","bottom":"5","left":"35","isLinked":false}},"elements":[],"widgetType":"button"}],"isInner":false}],"isInner":false}]]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_elementor_version]]></wp:meta_key>
-					<wp:meta_value><![CDATA[0.4]]></wp:meta_value>
-				</wp:postmeta>
-					</item>
-				<item>
-			<title>
-				children-63175			</title>
-			<link>https://demo.themeisle.com/neve-charity/neve-charity-demo-home/children-63175/</link>
-			<pubDate>Wed, 28 Nov 2018 07:30:08 +0000</pubDate>
-			<guid isPermaLink="false">https://demo.themeisle.com/neve-charity/wp-content/uploads/sites/178/2018/11/children-63175.jpg</guid>
-			<description></description>
-			<content:encoded><![CDATA[https://pixabay.com/en/children-afghanistan-afghani-girl-63175/]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>14</wp:post_id>
-			<wp:post_date><![CDATA[2018-11-28 07:30:08]]></wp:post_date>
-			<wp:post_date_gmt><![CDATA[2018-11-28 07:30:08]]></wp:post_date_gmt>
-			<wp:comment_status><![CDATA[open]]></wp:comment_status>
-			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-			<wp:post_name><![CDATA[children-63175]]></wp:post_name>
-			<wp:status><![CDATA[inherit]]></wp:status>
-			<wp:post_parent>2</wp:post_parent>
-			<wp:menu_order>0</wp:menu_order>
-			<wp:post_type><![CDATA[attachment]]></wp:post_type>
-			<wp:post_password><![CDATA[]]></wp:post_password>
-			<wp:is_sticky>0</wp:is_sticky>
-							<wp:attachment_url><![CDATA[https://demo.themeisle.com/neve-charity/wp-content/uploads/sites/178/2018/11/children-63175.jpg]]></wp:attachment_url>
-													<wp:postmeta>
-					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
-					<wp:meta_value><![CDATA[2018/11/children-63175.jpg]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
-					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:1920;s:6:"height";i:1385;s:4:"file";s:26:"2018/11/children-63175.jpg";s:5:"sizes";a:5:{s:9:"thumbnail";a:4:{s:4:"file";s:26:"children-63175-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:26:"children-63175-300x216.jpg";s:5:"width";i:300;s:6:"height";i:216;s:9:"mime-type";s:10:"image/jpeg";}s:12:"medium_large";a:4:{s:4:"file";s:26:"children-63175-768x554.jpg";s:5:"width";i:768;s:6:"height";i:554;s:9:"mime-type";s:10:"image/jpeg";}s:5:"large";a:4:{s:4:"file";s:27:"children-63175-1024x739.jpg";s:5:"width";i:1024;s:6:"height";i:739;s:9:"mime-type";s:10:"image/jpeg";}s:9:"neve-blog";a:4:{s:4:"file";s:26:"children-63175-930x620.jpg";s:5:"width";i:930;s:6:"height";i:620;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
-				</wp:postmeta>
-					</item>
-				<item>
-			<title>
-				neve			</title>
-			<link>https://demo.themeisle.com/neve-charity/2018/11/28/neve/</link>
-			<pubDate>Wed, 28 Nov 2018 08:04:32 +0000</pubDate>
-			<guid isPermaLink="false">https://demo.themeisle.com/neve-charity/2018/11/28/neve/</guid>
-			<description></description>
-			<content:encoded><![CDATA[.nv-navbar, .footer-content-wrap.footer-second-section {
+					</a>]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>2</wp:post_id>
+		<wp:post_date><![CDATA[2018-11-22 11:55:58]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2018-11-22 11:55:58]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[neve-charity-demo-home]]></wp:post_name>
+		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[page]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
+			<wp:meta_value><![CDATA[page-templates/template-pagebuilder-full-width.php]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+			<wp:meta_value><![CDATA[119919]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
+			<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_elementor_template_type]]></wp:meta_key>
+			<wp:meta_value><![CDATA[post]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_elementor_data]]></wp:meta_key>
+			<wp:meta_value><![CDATA[[{"id":"1cd1a93d","elType":"section","settings":{"content_position":"middle","structure":"20","padding":{"unit":"px","top":"50","right":"0","bottom":"50","left":"0","isLinked":false},"padding_tablet":{"unit":"px","top":"50","right":"20","bottom":"50","left":"20","isLinked":false},"padding_mobile":{"unit":"px","top":"30","right":"20","bottom":"30","left":"20","isLinked":false},"height":"min-height","custom_height":{"unit":"vh","size":82},"background_background":"classic","background_image":{"url":"https:\/\/demo.themeisle.com\/neve-charity\/wp-content\/uploads\/sites\/178\/2018\/11\/children-63175.jpg","id":14},"background_overlay_background":"gradient","background_overlay_color":"#076442","background_overlay_color_stop":{"unit":"%","size":50},"background_overlay_color_b":"rgba(0,0,0,0)","css_filters_blur":{"unit":"px","size":4.8},"css_filters_brightness":{"unit":"px","size":136},"css_filters_saturate":{"unit":"px","size":134},"custom_height_tablet":{"unit":"vh","size":83},"background_position":"top center","background_size":"cover"},"elements":[{"id":"1703818","elType":"column","settings":{"_column_size":50,"_inline_size":null,"space_between_widgets":30,"_inline_size_tablet":70},"elements":[{"id":"2b1daee","elType":"widget","settings":{"title":"Help others by giving","typography_typography":"custom","typography_font_size":{"unit":"px","size":40},"typography_font_weight":"500","typography_line_height":{"unit":"em","size":1.3},"title_color":"#ffffff","typography_font_family":"Montserrat"},"elements":[],"widgetType":"heading"},{"id":"57641fda","elType":"widget","settings":{"editor":"<p>Every person whose life is improved or saved, stems from an act of generosity that's purely voluntary. That's why donating is so extraordinary when you do it.<\/p>","typography_typography":"custom","typography_font_family":"Montserrat","text_color":"#ffffff"},"elements":[],"widgetType":"text-editor"},{"id":"6940761a","elType":"widget","settings":{"text":"Get Involved","align":"left","size":"md","icon_align":"right","icon_indent":{"unit":"px","size":15},"typography_typography":"custom","typography_font_family":"Montserrat","button_text_color":"#ffffff","background_color":"#076442","hover_color":"#076442","button_background_hover_color":"#ffffff","button_hover_border_color":"#076442","border_border":"solid","border_width":{"unit":"px","top":"1","right":"1","bottom":"1","left":"1","isLinked":true},"border_color":"#076442","border_radius":{"unit":"px","top":"50","right":"50","bottom":"50","left":"50","isLinked":true},"button_box_shadow_box_shadow_type":"yes","button_box_shadow_box_shadow":{"horizontal":0,"vertical":10,"blur":30,"spread":-8,"color":"rgba(0,0,0,0.16)"},"_margin":{"unit":"px","top":"70","right":"0","bottom":"0","left":"0","isLinked":false},"link":{"url":"","is_external":"","nofollow":""},"_margin_mobile":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":false}},"elements":[],"widgetType":"button"}],"isInner":false},{"id":"3ada49ea","elType":"column","settings":{"_column_size":50,"_inline_size":null,"_inline_size_tablet":30},"elements":[],"isInner":false}],"isInner":false},{"id":"2a94417f","elType":"section","settings":{"structure":"30","content_position":"bottom","padding":{"unit":"px","top":"90","right":"0","bottom":"90","left":"0","isLinked":false},"padding_tablet":{"unit":"px","top":"45","right":"20","bottom":"45","left":"20","isLinked":false}},"elements":[{"id":"3911f805","elType":"column","settings":{"_column_size":33,"_inline_size":null,"_inline_size_mobile":100},"elements":[{"id":"2744a78","elType":"widget","settings":{"icon":"fa fa-life-ring","title_text":"Our Programs","description_text":"Neve Charity programs provide support in some of the poorest and most underprivileged regions, creating opportunity for those in need to learn and thrive.","primary_color":"#076442","text_align":"center","title_color":"#076442","description_typography_font_family":"Montserrat","_padding":{"unit":"px","top":"15","right":"15","bottom":"15","left":"15","isLinked":true},"_background_hover_background":"classic","_background_hover_color":"#f7fdfb","_border_border":"solid","_border_width":{"unit":"px","top":"1","right":"1","bottom":"1","left":"1","isLinked":true},"_border_color":"#076442","_border_hover_border":"solid","_border_hover_width":{"unit":"px","top":"1","right":"1","bottom":"1","left":"1","isLinked":true},"_border_hover_color":"rgba(255,112,82,0.25)","_box_shadow_hover_box_shadow_type":"yes","_border_radius":{"unit":"px","top":"3","right":"3","bottom":"3","left":"3","isLinked":true},"description_color":"#076442"},"elements":[],"widgetType":"icon-box"}],"isInner":false},{"id":"99941b3","elType":"column","settings":{"_column_size":33,"_inline_size":null,"_inline_size_mobile":100},"elements":[{"id":"a0f8091","elType":"widget","settings":{"icon":"fa fa-leaf","title_text":"About Us","description_text":"For over years, Neve Charity has been working to abolish how poverty and illiteracy so that all people have access to a quality life and strive for better life conditions.","primary_color":"#076442","text_align":"center","title_color":"#076442","description_typography_font_family":"Montserrat","_padding":{"unit":"px","top":"15","right":"15","bottom":"15","left":"15","isLinked":true},"_background_hover_background":"classic","_background_hover_color":"#f7fdfb","_border_border":"solid","_border_width":{"unit":"px","top":"1","right":"1","bottom":"1","left":"1","isLinked":true},"_border_color":"#076442","_border_hover_border":"solid","_border_hover_width":{"unit":"px","top":"1","right":"1","bottom":"1","left":"1","isLinked":true},"_border_hover_color":"rgba(255,112,82,0.25)","_box_shadow_hover_box_shadow_type":"yes","_border_radius":{"unit":"px","top":"3","right":"3","bottom":"3","left":"3","isLinked":true},"description_color":"#076442"},"elements":[],"widgetType":"icon-box"}],"isInner":false},{"id":"a5e32d0","elType":"column","settings":{"_column_size":33,"_inline_size":null,"_inline_size_mobile":100,"content_position":"top"},"elements":[{"id":"f200f85","elType":"widget","settings":{"anchor":"about"},"elements":[],"widgetType":"menu-anchor"},{"id":"80db58d","elType":"widget","settings":{"icon":"fa fa-life-ring","title_text":"Get Involved","description_text":"Your generosity makes our work possible. Whether you contribute financially or as advocate for good, you make a real and lasting difference in people\u2019s lives.","primary_color":"#076442","text_align":"center","title_color":"#076442","description_typography_font_family":"Montserrat","_padding":{"unit":"px","top":"15","right":"15","bottom":"15","left":"15","isLinked":true},"_background_hover_background":"classic","_background_hover_color":"#f7fdfb","_border_border":"solid","_border_width":{"unit":"px","top":"1","right":"1","bottom":"1","left":"1","isLinked":true},"_border_color":"#076442","_border_hover_border":"solid","_border_hover_width":{"unit":"px","top":"1","right":"1","bottom":"1","left":"1","isLinked":true},"_border_hover_color":"rgba(255,112,82,0.25)","_box_shadow_hover_box_shadow_type":"yes","_border_radius":{"unit":"px","top":"3","right":"3","bottom":"3","left":"3","isLinked":true},"description_color":"#076442"},"elements":[],"widgetType":"icon-box"}],"isInner":false}],"isInner":false},{"id":"6990c001","elType":"section","settings":{"content_width":{"unit":"px","size":800},"background_background":"gradient","background_color":"#ffffff","background_color_b":"#076442","background_gradient_angle":{"unit":"deg","size":150},"background_overlay_background":"classic","background_overlay_color_b":"#2642d3","background_overlay_gradient_angle":{"unit":"deg","size":260},"background_overlay_image":{"id":23,"url":"https:\/\/demo.themeisle.com\/neve-charity\/wp-content\/uploads\/sites\/178\/2018\/11\/africa-2179608.jpg"},"background_overlay_position":"top center","background_overlay_attachment":"fixed","css_filters_blur":{"unit":"px","size":3.3},"border_width":{"unit":"px","top":"0","right":"30","bottom":"0","left":"30","isLinked":false},"border_color":"#ffffff","shape_divider_bottom_color":"#f4f4f4","margin":{"unit":"px","top":"","right":0,"bottom":"","left":0,"isLinked":true},"padding":{"unit":"px","top":"70","right":"0","bottom":"70","left":"0","isLinked":false},"background_overlay_repeat":"no-repeat","background_overlay_size":"cover","padding_tablet":{"unit":"px","top":"50","right":"40","bottom":"50","left":"40","isLinked":false},"padding_mobile":{"unit":"px","top":"40","right":"20","bottom":"40","left":"20","isLinked":false},"background_color_b_stop":{"unit":"%","size":70}},"elements":[{"id":"789e34f0","elType":"column","settings":{"_column_size":100,"space_between_widgets":30},"elements":[{"id":"e525a76","elType":"widget","settings":{"anchor":"efforts"},"elements":[],"widgetType":"menu-anchor"},{"id":"506c765f","elType":"widget","settings":{"title":"Discover all the ways<br><b>you can help give<\/b>","typography_typography":"custom","typography_font_size":{"unit":"px","size":50},"typography_font_weight":"300","typography_line_height":{"unit":"em","size":1.1},"align":"center","title_color":"#ffffff","typography_text_transform":"capitalize","text_shadow_text_shadow_type":"yes","text_shadow_text_shadow":{"horizontal":10,"vertical":10,"blur":20,"color":"rgba(0,0,0,0.11)"},"typography_font_family":"Montserrat","_margin":{"unit":"px","top":"0","right":"0","bottom":"50","left":"0","isLinked":false},"typography_font_size_mobile":{"unit":"px","size":24}},"elements":[],"widgetType":"heading"},{"id":"7b5b6023","elType":"widget","settings":{"text":"Make a donation","align":"center","size":"md","icon":"fa fa-dollar","icon_align":"right","icon_indent":{"unit":"px","size":20},"typography_typography":"custom","typography_font_family":"Montserrat","button_text_color":"#ffffff","background_color":"#076442","hover_color":"#076442","button_background_hover_color":"#ffffff","button_hover_border_color":"#076442","border_border":"solid","border_width":{"unit":"px","top":"1","right":"1","bottom":"1","left":"1","isLinked":true},"border_color":"#076442","border_radius":{"unit":"px","top":"50","right":"50","bottom":"50","left":"50","isLinked":true},"button_box_shadow_box_shadow_type":"yes","button_box_shadow_box_shadow":{"horizontal":0,"vertical":10,"blur":30,"spread":-8,"color":"rgba(0,0,0,0.16)"},"_margin":{"unit":"px","top":"15","right":"0","bottom":"15","left":"0","isLinked":false},"typography_text_transform":"uppercase","_margin_mobile":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":false}},"elements":[],"widgetType":"button"},{"id":"f63c832","elType":"widget","settings":{"text":"Start a fund","align":"center","size":"md","icon":"fa fa-bank","icon_align":"right","icon_indent":{"unit":"px","size":20},"typography_typography":"custom","typography_font_family":"Montserrat","button_text_color":"#ffffff","background_color":"#076442","hover_color":"#076442","button_background_hover_color":"#ffffff","button_hover_border_color":"#076442","border_border":"solid","border_width":{"unit":"px","top":"1","right":"1","bottom":"1","left":"1","isLinked":true},"border_color":"#076442","border_radius":{"unit":"px","top":"50","right":"50","bottom":"50","left":"50","isLinked":true},"button_box_shadow_box_shadow_type":"yes","button_box_shadow_box_shadow":{"horizontal":0,"vertical":10,"blur":30,"spread":-8,"color":"rgba(0,0,0,0.16)"},"_margin":{"unit":"px","top":"15","right":"0","bottom":"15","left":"0","isLinked":false},"typography_text_transform":"uppercase","text_padding":{"unit":"px","top":"15","right":"45","bottom":"15","left":"45","isLinked":false},"_margin_mobile":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":false}},"elements":[],"widgetType":"button"},{"id":"7bc7481","elType":"widget","settings":{"text":"Join the efforts","align":"center","size":"md","icon":"fa fa-user","icon_align":"right","icon_indent":{"unit":"px","size":20},"typography_typography":"custom","typography_font_family":"Montserrat","button_text_color":"#ffffff","background_color":"#076442","hover_color":"#076442","button_background_hover_color":"#ffffff","button_hover_border_color":"#076442","border_border":"solid","border_width":{"unit":"px","top":"1","right":"1","bottom":"1","left":"1","isLinked":true},"border_color":"#076442","border_radius":{"unit":"px","top":"50","right":"50","bottom":"50","left":"50","isLinked":true},"button_box_shadow_box_shadow_type":"yes","button_box_shadow_box_shadow":{"horizontal":0,"vertical":10,"blur":30,"spread":-8,"color":"rgba(0,0,0,0.16)"},"_margin":{"unit":"px","top":"15","right":"0","bottom":"15","left":"0","isLinked":false},"typography_text_transform":"uppercase","_margin_mobile":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":false}},"elements":[],"widgetType":"button"},{"id":"4377328","elType":"widget","settings":{"title":"So far we've helped...","title_color":"#ffffff","typography_typography":"custom","typography_font_family":"Montserrat","typography_font_size":{"unit":"px","size":40},"typography_font_weight":"500","typography_line_height":{"unit":"em","size":1.3},"align":"center","_margin":{"unit":"px","top":"50","right":"0","bottom":"0","left":"0","isLinked":false},"typography_font_size_mobile":{"unit":"px","size":24}},"elements":[],"widgetType":"heading"},{"id":"71b4830f","elType":"section","settings":{"structure":"30","border_width":{"unit":"px","top":"0","right":"0","bottom":"4","left":"0","isLinked":false},"border_color":"#ebb0e7","padding":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":false},"background_background":"classic"},"elements":[{"id":"28c6779a","elType":"column","settings":{"_column_size":33,"_inline_size":null},"elements":[{"id":"762dfa43","elType":"widget","settings":{"ending_number":12,"duration":1000,"title":"Countries","typography_number_typography":"custom","typography_number_font_weight":"100","typography_title_typography":"custom","typography_title_font_size":{"unit":"px","size":17},"starting_number":"","typography_number_font_family":"Montserrat","typography_title_font_family":"Montserrat","number_color":"#ffffff","title_color":"#ffffff"},"elements":[],"widgetType":"counter"}],"isInner":true},{"id":"181d1725","elType":"column","settings":{"_column_size":33,"_inline_size":null},"elements":[{"id":"441a045d","elType":"widget","settings":{"ending_number":5287,"title":"People","typography_number_typography":"custom","typography_number_font_weight":"100","typography_title_typography":"custom","typography_title_font_size":{"unit":"px","size":17},"starting_number":"","typography_number_font_family":"Montserrat","typography_title_font_family":"Montserrat","duration":1500,"number_color":"#ffffff","title_color":"#ffffff"},"elements":[],"widgetType":"counter"}],"isInner":true},{"id":"a1cf5f","elType":"column","settings":{"_column_size":33,"_inline_size":null},"elements":[{"id":"76de43d0","elType":"widget","settings":{"ending_number":3839,"duration":1500,"title":"Raised","typography_number_typography":"custom","typography_number_font_weight":"100","typography_title_typography":"custom","typography_title_font_size":{"unit":"px","size":17},"starting_number":1200,"typography_number_font_family":"Montserrat","typography_title_font_family":"Montserrat","prefix":"\u20ac","number_color":"#ffffff","title_color":"#ffffff"},"elements":[],"widgetType":"counter"}],"isInner":true}],"isInner":true}],"isInner":false}],"isInner":false},{"id":"44481e5c","elType":"section","settings":{"structure":"20","padding":{"unit":"px","top":"90","right":"0","bottom":"90","left":"0","isLinked":false},"padding_tablet":{"unit":"px","top":"40","right":"20","bottom":"40","left":"20","isLinked":false}},"elements":[{"id":"26063d07","elType":"column","settings":{"_column_size":50,"_inline_size":null,"_inline_size_tablet":100},"elements":[{"id":"7a24578","elType":"widget","settings":{"anchor":"stories"},"elements":[],"widgetType":"menu-anchor"},{"id":"9088e49","elType":"section","settings":{"structure":"21"},"elements":[{"id":"c354954","elType":"column","settings":{"_column_size":33,"_inline_size":13,"content_position":"center"},"elements":[{"id":"a892369","elType":"widget","settings":{"icon":"fa fa-book","primary_color":"#076442"},"elements":[],"widgetType":"icon"}],"isInner":true},{"id":"42b929d","elType":"column","settings":{"_column_size":66,"_inline_size":86.905,"content_position":"center","margin_mobile":{"unit":"px","top":"0","right":"0","bottom":"10","left":"0","isLinked":false},"padding_mobile":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":false}},"elements":[{"id":"b97eecd","elType":"widget","settings":{"title":"Neve Charity's Stories","title_color":"#076442","typography_typography":"custom","typography_font_family":"Montserrat","typography_font_size":{"unit":"px","size":40},"typography_font_weight":"500","typography_line_height":{"unit":"em","size":1.3},"typography_font_size_mobile":{"unit":"px","size":22},"link":{"url":"https:\/\/demo.themeisle.com\/neve-charity\/neve-charity-demo-blog\/","is_external":"","nofollow":""}},"elements":[],"widgetType":"heading"}],"isInner":true}],"isInner":true},{"id":"d39c790","elType":"widget","settings":{"grid_items":3,"grid_title_tag":"h5","grid_meta_hide":"yes","grid_meta_remove_icons":"yes","grid_content_default_btn":"","grid_content_default_btn_text":"Read more","grid_order_by":"rand","grid_image_height":{"unit":"px","size":100},"grid_content_hide":"yes","grid_title_style_typography_typography":"custom","grid_title_style_typography_font_family":"Montserrat","grid_title_style_typography_font_size":{"unit":"px","size":17},"grid_title_style_typography_font_weight":"normal","grid_title_style_color":"#076442","_margin":{"unit":"px","top":"0","right":"35","bottom":"0","left":"15","isLinked":false},"grid_columns_tablet":"3"},"elements":[],"widgetType":"obfx-posts-grid"}],"isInner":false},{"id":"9d5cea3","elType":"column","settings":{"_column_size":50,"_inline_size":null,"_inline_size_tablet":100,"background_background":"classic","background_color":"rgba(127,127,127,0)","background_hover_background":"classic","background_hover_color":"#f7fdfb","border_border":"solid","border_width":{"unit":"px","top":"1","right":"1","bottom":"1","left":"1","isLinked":true},"border_color":"#00a529","border_radius":{"unit":"px","top":"3","right":"3","bottom":"3","left":"3","isLinked":true},"border_hover_border":"solid","border_hover_width":{"unit":"px","top":"1","right":"1","bottom":"1","left":"1","isLinked":true},"border_hover_color":"rgba(255,255,255,0)","box_shadow_hover_box_shadow_type":"yes"},"elements":[{"id":"2c9a693","elType":"section","settings":{"structure":"21"},"elements":[{"id":"dae7bc9","elType":"column","settings":{"_column_size":33,"_inline_size":13,"content_position":"center"},"elements":[{"id":"8e8d72b","elType":"widget","settings":{"icon":"fa fa-envelope","primary_color":"#076442"},"elements":[],"widgetType":"icon"}],"isInner":true},{"id":"183d2d2","elType":"column","settings":{"_column_size":66,"_inline_size":86.905,"content_position":"center"},"elements":[{"id":"4a9e727","elType":"widget","settings":{"title":"Join our email list","title_color":"#076442","typography_typography":"custom","typography_font_family":"Montserrat","typography_font_size":{"unit":"px","size":40},"typography_font_weight":"500","typography_line_height":{"unit":"em","size":1.3},"align_mobile":"center","typography_font_size_mobile":{"unit":"px","size":24}},"elements":[],"widgetType":"heading"}],"isInner":true}],"isInner":true},{"id":"2dcd852","elType":"widget","settings":{"title":"Stay up to date on global charitable giving news &amp; trends, read stories of philanthropy, and learn how the philanthropic landscape is changing.","header_size":"p","title_color":"#076442","typography_typography":"custom","typography_font_family":"Montserrat","typography_font_size":{"unit":"px","size":17},"typography_font_weight":"normal","typography_line_height":{"unit":"em","size":1.6},"_margin":{"unit":"px","top":"0","right":"10","bottom":"0","left":"10","isLinked":false},"align_mobile":"center"},"elements":[],"widgetType":"heading"},{"id":"319d370","elType":"widget","settings":{"text":"Sign up","align":"left","size":"md","icon_align":"right","icon_indent":{"unit":"px","size":15},"typography_typography":"custom","typography_font_family":"Montserrat","button_text_color":"#ffffff","background_color":"#076442","hover_color":"#076442","button_background_hover_color":"#ffffff","button_hover_border_color":"#076442","border_border":"solid","border_width":{"unit":"px","top":"1","right":"1","bottom":"1","left":"1","isLinked":true},"border_color":"#076442","border_radius":{"unit":"px","top":"50","right":"50","bottom":"50","left":"50","isLinked":true},"button_box_shadow_box_shadow_type":"yes","button_box_shadow_box_shadow":{"horizontal":0,"vertical":10,"blur":30,"spread":-8,"color":"rgba(0,0,0,0.16)"},"_margin":{"unit":"px","top":"30","right":"0","bottom":"0","left":"10","isLinked":false},"_margin_mobile":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":false},"text_padding":{"unit":"%","top":"3","right":"40","bottom":"3","left":"40","isLinked":false},"align_tablet":"center","text_padding_mobile":{"unit":"%","top":"5","right":"35","bottom":"5","left":"35","isLinked":false}},"elements":[],"widgetType":"button"}],"isInner":false}],"isInner":false}]]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_elementor_version]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0.4]]></wp:meta_value>
+		</wp:postmeta>
+	</item>
+	<item>
+		<title>children-63175</title>
+		<link>https://demo.themeisle.com/neve-charity/neve-charity-demo-home/children-63175/</link>
+		<pubDate>Wed, 28 Nov 2018 07:30:08 +0000</pubDate>
+		<dc:creator><![CDATA[radu]]></dc:creator>
+		<guid isPermaLink="false">https://demo.themeisle.com/neve-charity/wp-content/uploads/sites/178/2018/11/children-63175.jpg</guid>
+		<description></description>
+		<content:encoded><![CDATA[https://pixabay.com/en/children-afghanistan-afghani-girl-63175/]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>14</wp:post_id>
+		<wp:post_date><![CDATA[2018-11-28 07:30:08]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2018-11-28 07:30:08]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[open]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[children-63175]]></wp:post_name>
+		<wp:status><![CDATA[inherit]]></wp:status>
+		<wp:post_parent>2</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[attachment]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+		<wp:attachment_url><![CDATA[https://demo.themeisle.com/neve-charity/wp-content/uploads/sites/178/2018/11/children-63175.jpg]]></wp:attachment_url>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+			<wp:meta_value><![CDATA[2018/11/children-63175.jpg]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+			<wp:meta_value><![CDATA[a:5:{s:5:"width";i:1920;s:6:"height";i:1385;s:4:"file";s:26:"2018/11/children-63175.jpg";s:5:"sizes";a:5:{s:9:"thumbnail";a:4:{s:4:"file";s:26:"children-63175-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:26:"children-63175-300x216.jpg";s:5:"width";i:300;s:6:"height";i:216;s:9:"mime-type";s:10:"image/jpeg";}s:12:"medium_large";a:4:{s:4:"file";s:26:"children-63175-768x554.jpg";s:5:"width";i:768;s:6:"height";i:554;s:9:"mime-type";s:10:"image/jpeg";}s:5:"large";a:4:{s:4:"file";s:27:"children-63175-1024x739.jpg";s:5:"width";i:1024;s:6:"height";i:739;s:9:"mime-type";s:10:"image/jpeg";}s:9:"neve-blog";a:4:{s:4:"file";s:26:"children-63175-930x620.jpg";s:5:"width";i:930;s:6:"height";i:620;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+		</wp:postmeta>
+	</item>
+	<item>
+		<title>neve</title>
+		<link>https://demo.themeisle.com/neve-charity/2018/11/28/neve/</link>
+		<pubDate>Wed, 28 Nov 2018 08:04:32 +0000</pubDate>
+		<dc:creator><![CDATA[radu]]></dc:creator>
+		<guid isPermaLink="false">https://demo.themeisle.com/neve-charity/2018/11/28/neve/</guid>
+		<description></description>
+		<content:encoded><![CDATA[.nv-navbar, .footer-content-wrap.footer-second-section {
 	background-color: #076442;
 	border-bottom: none;
 }
@@ -218,548 +226,628 @@ footer .ci-socials-ignited {
 	text-align: center;
 		padding: 30px 0 0 0;
 }
-}]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>16</wp:post_id>
-			<wp:post_date><![CDATA[2018-11-28 08:04:32]]></wp:post_date>
-			<wp:post_date_gmt><![CDATA[2018-11-28 08:04:32]]></wp:post_date_gmt>
-			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
-			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-			<wp:post_name><![CDATA[neve]]></wp:post_name>
-			<wp:status><![CDATA[publish]]></wp:status>
-			<wp:post_parent>0</wp:post_parent>
-			<wp:menu_order>0</wp:menu_order>
-			<wp:post_type><![CDATA[custom_css]]></wp:post_type>
-			<wp:post_password><![CDATA[]]></wp:post_password>
-			<wp:is_sticky>0</wp:is_sticky>
-											</item>
-				<item>
-			<title>
-				africa-2179608			</title>
-			<link>https://demo.themeisle.com/neve-charity/neve-charity-demo-home/africa-2179608/</link>
-			<pubDate>Wed, 28 Nov 2018 08:47:50 +0000</pubDate>
-			<guid isPermaLink="false">https://demo.themeisle.com/neve-charity/wp-content/uploads/sites/178/2018/11/africa-2179608.jpg</guid>
-			<description></description>
-			<content:encoded><![CDATA[https://pixabay.com/en/africa-child-children-people-young-2179608/]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>23</wp:post_id>
-			<wp:post_date><![CDATA[2018-11-28 08:47:50]]></wp:post_date>
-			<wp:post_date_gmt><![CDATA[2018-11-28 08:47:50]]></wp:post_date_gmt>
-			<wp:comment_status><![CDATA[open]]></wp:comment_status>
-			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-			<wp:post_name><![CDATA[africa-2179608]]></wp:post_name>
-			<wp:status><![CDATA[inherit]]></wp:status>
-			<wp:post_parent>2</wp:post_parent>
-			<wp:menu_order>0</wp:menu_order>
-			<wp:post_type><![CDATA[attachment]]></wp:post_type>
-			<wp:post_password><![CDATA[]]></wp:post_password>
-			<wp:is_sticky>0</wp:is_sticky>
-							<wp:attachment_url><![CDATA[https://demo.themeisle.com/neve-charity/wp-content/uploads/sites/178/2018/11/africa-2179608.jpg]]></wp:attachment_url>
-													<wp:postmeta>
-					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
-					<wp:meta_value><![CDATA[2018/11/africa-2179608.jpg]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
-					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:1920;s:6:"height";i:1280;s:4:"file";s:26:"2018/11/africa-2179608.jpg";s:5:"sizes";a:5:{s:9:"thumbnail";a:4:{s:4:"file";s:26:"africa-2179608-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:26:"africa-2179608-300x200.jpg";s:5:"width";i:300;s:6:"height";i:200;s:9:"mime-type";s:10:"image/jpeg";}s:12:"medium_large";a:4:{s:4:"file";s:26:"africa-2179608-768x512.jpg";s:5:"width";i:768;s:6:"height";i:512;s:9:"mime-type";s:10:"image/jpeg";}s:5:"large";a:4:{s:4:"file";s:27:"africa-2179608-1024x683.jpg";s:5:"width";i:1024;s:6:"height";i:683;s:9:"mime-type";s:10:"image/jpeg";}s:9:"neve-blog";a:4:{s:4:"file";s:26:"africa-2179608-930x620.jpg";s:5:"width";i:930;s:6:"height";i:620;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
-				</wp:postmeta>
-					</item>
-				<item>
-			<title>
-				Life living in a poverty camp			</title>
-			<link>https://demo.themeisle.com/neve-charity/2018/11/28/life-living-in-a-poverty-camp/</link>
-			<pubDate>Wed, 28 Nov 2018 13:32:34 +0000</pubDate>
-			<guid isPermaLink="false">https://demo.themeisle.com/neve-charity/?p=25</guid>
-			<description></description>
-			<content:encoded><![CDATA[Alterum atomorum nam no, duis latine necessitatibus ne per. No maiorum eligendi per. Veri iuvaret sit te, te nihil molestiae philosophia vel. At illum graeco euismod mei. Repudiandae liberavisse cum an.
+}]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>16</wp:post_id>
+		<wp:post_date><![CDATA[2018-11-28 08:04:32]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2018-11-28 08:04:32]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[neve]]></wp:post_name>
+		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[custom_css]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+	</item>
+	<item>
+		<title>africa-2179608</title>
+		<link>https://demo.themeisle.com/neve-charity/neve-charity-demo-home/africa-2179608/</link>
+		<pubDate>Wed, 28 Nov 2018 08:47:50 +0000</pubDate>
+		<dc:creator><![CDATA[radu]]></dc:creator>
+		<guid isPermaLink="false">https://demo.themeisle.com/neve-charity/wp-content/uploads/sites/178/2018/11/africa-2179608.jpg</guid>
+		<description></description>
+		<content:encoded><![CDATA[https://pixabay.com/en/africa-child-children-people-young-2179608/]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>23</wp:post_id>
+		<wp:post_date><![CDATA[2018-11-28 08:47:50]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2018-11-28 08:47:50]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[open]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[africa-2179608]]></wp:post_name>
+		<wp:status><![CDATA[inherit]]></wp:status>
+		<wp:post_parent>2</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[attachment]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+		<wp:attachment_url><![CDATA[https://demo.themeisle.com/neve-charity/wp-content/uploads/sites/178/2018/11/africa-2179608.jpg]]></wp:attachment_url>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+			<wp:meta_value><![CDATA[2018/11/africa-2179608.jpg]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+			<wp:meta_value><![CDATA[a:5:{s:5:"width";i:1920;s:6:"height";i:1280;s:4:"file";s:26:"2018/11/africa-2179608.jpg";s:5:"sizes";a:5:{s:9:"thumbnail";a:4:{s:4:"file";s:26:"africa-2179608-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:26:"africa-2179608-300x200.jpg";s:5:"width";i:300;s:6:"height";i:200;s:9:"mime-type";s:10:"image/jpeg";}s:12:"medium_large";a:4:{s:4:"file";s:26:"africa-2179608-768x512.jpg";s:5:"width";i:768;s:6:"height";i:512;s:9:"mime-type";s:10:"image/jpeg";}s:5:"large";a:4:{s:4:"file";s:27:"africa-2179608-1024x683.jpg";s:5:"width";i:1024;s:6:"height";i:683;s:9:"mime-type";s:10:"image/jpeg";}s:9:"neve-blog";a:4:{s:4:"file";s:26:"africa-2179608-930x620.jpg";s:5:"width";i:930;s:6:"height";i:620;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+		</wp:postmeta>
+	</item>
+	<item>
+		<title>Life living in a poverty camp</title>
+		<link>https://demo.themeisle.com/neve-charity/2018/11/28/life-living-in-a-poverty-camp/</link>
+		<pubDate>Wed, 28 Nov 2018 13:32:34 +0000</pubDate>
+		<dc:creator><![CDATA[radu]]></dc:creator>
+		<guid isPermaLink="false">https://demo.themeisle.com/neve-charity/?p=25</guid>
+		<description></description>
+		<content:encoded><![CDATA[Alterum atomorum nam no, duis latine necessitatibus ne per. No maiorum eligendi per. Veri iuvaret sit te, te nihil molestiae philosophia vel. At illum graeco euismod mei. Repudiandae liberavisse cum an.
 
-Mea delenit repudiare incorrupte in, ea inimicus forensibus vel, te rebum doctus his. An mazim integre concludaturque nec, te duo illum mucius intellegebat. Fugit regione cu ius, eum ut cibo brute mandamus. Vel alienum volutpat ea, nonumy deleniti mediocritatem ut quo.]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>25</wp:post_id>
-			<wp:post_date><![CDATA[2018-11-28 13:32:34]]></wp:post_date>
-			<wp:post_date_gmt><![CDATA[2018-11-28 13:32:34]]></wp:post_date_gmt>
-			<wp:comment_status><![CDATA[open]]></wp:comment_status>
-			<wp:ping_status><![CDATA[open]]></wp:ping_status>
-			<wp:post_name><![CDATA[life-living-in-a-poverty-camp]]></wp:post_name>
-			<wp:status><![CDATA[publish]]></wp:status>
-			<wp:post_parent>0</wp:post_parent>
-			<wp:menu_order>0</wp:menu_order>
-			<wp:post_type><![CDATA[post]]></wp:post_type>
-			<wp:post_password><![CDATA[]]></wp:post_password>
-			<wp:is_sticky>0</wp:is_sticky>
-								<category domain="category" nicename="uncategorized"><![CDATA[Uncategorized]]></category>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
-					<wp:meta_value><![CDATA[119919]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_thumbnail_id]]></wp:meta_key>
-					<wp:meta_value><![CDATA[26]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-					<wp:meta_value><![CDATA[default]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_yoast_wpseo_primary_category]]></wp:meta_key>
-					<wp:meta_value><![CDATA[]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
-					<wp:meta_value><![CDATA[70]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_yoast_wpseo_content_score]]></wp:meta_key>
-					<wp:meta_value><![CDATA[60]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[neve_meta_disable_featured_image]]></wp:meta_key>
-					<wp:meta_value><![CDATA[on]]></wp:meta_value>
-				</wp:postmeta>
-					</item>
-				<item>
-			<title>
-				potion-1860939			</title>
-			<link>https://demo.themeisle.com/neve-charity/2018/11/28/life-living-in-a-poverty-camp/potion-1860939/</link>
-			<pubDate>Wed, 28 Nov 2018 13:31:35 +0000</pubDate>
-			<guid isPermaLink="false">https://demo.themeisle.com/neve-charity/wp-content/uploads/sites/178/2018/11/potion-1860939.jpg</guid>
-			<description></description>
-			<content:encoded><![CDATA[https://pixabay.com/en/potion-poverty-misery-sadness-sdf-1860939/]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>26</wp:post_id>
-			<wp:post_date><![CDATA[2018-11-28 13:31:35]]></wp:post_date>
-			<wp:post_date_gmt><![CDATA[2018-11-28 13:31:35]]></wp:post_date_gmt>
-			<wp:comment_status><![CDATA[open]]></wp:comment_status>
-			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-			<wp:post_name><![CDATA[potion-1860939]]></wp:post_name>
-			<wp:status><![CDATA[inherit]]></wp:status>
-			<wp:post_parent>25</wp:post_parent>
-			<wp:menu_order>0</wp:menu_order>
-			<wp:post_type><![CDATA[attachment]]></wp:post_type>
-			<wp:post_password><![CDATA[]]></wp:post_password>
-			<wp:is_sticky>0</wp:is_sticky>
-							<wp:attachment_url><![CDATA[https://demo.themeisle.com/neve-charity/wp-content/uploads/sites/178/2018/11/potion-1860939.jpg]]></wp:attachment_url>
-													<wp:postmeta>
-					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
-					<wp:meta_value><![CDATA[2018/11/potion-1860939.jpg]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
-					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:426;s:6:"height";i:426;s:4:"file";s:26:"2018/11/potion-1860939.jpg";s:5:"sizes";a:2:{s:9:"thumbnail";a:4:{s:4:"file";s:26:"potion-1860939-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:26:"potion-1860939-300x300.jpg";s:5:"width";i:300;s:6:"height";i:300;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
-				</wp:postmeta>
-					</item>
-				<item>
-			<title>
-				Providing water in dry areas			</title>
-			<link>https://demo.themeisle.com/neve-charity/2018/11/28/providing-water-in-dry-areas/</link>
-			<pubDate>Wed, 28 Nov 2018 13:33:47 +0000</pubDate>
-			<guid isPermaLink="false">https://demo.themeisle.com/neve-charity/?p=27</guid>
-			<description></description>
-			<content:encoded><![CDATA[Ex case epicuri pro, eu mel veri fastidii, audiam consectetuer an sed. Vel id soluta iuvaret deseruisse, error saepe dissentias vix ei. Virtute indoctum ei duo. Cum hinc dolores officiis cu, duo ut simul aliquando reprehendunt.]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>27</wp:post_id>
-			<wp:post_date><![CDATA[2018-11-28 13:33:47]]></wp:post_date>
-			<wp:post_date_gmt><![CDATA[2018-11-28 13:33:47]]></wp:post_date_gmt>
-			<wp:comment_status><![CDATA[open]]></wp:comment_status>
-			<wp:ping_status><![CDATA[open]]></wp:ping_status>
-			<wp:post_name><![CDATA[providing-water-in-dry-areas]]></wp:post_name>
-			<wp:status><![CDATA[publish]]></wp:status>
-			<wp:post_parent>0</wp:post_parent>
-			<wp:menu_order>0</wp:menu_order>
-			<wp:post_type><![CDATA[post]]></wp:post_type>
-			<wp:post_password><![CDATA[]]></wp:post_password>
-			<wp:is_sticky>0</wp:is_sticky>
-								<category domain="category" nicename="uncategorized"><![CDATA[Uncategorized]]></category>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
-					<wp:meta_value><![CDATA[119919]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_thumbnail_id]]></wp:meta_key>
-					<wp:meta_value><![CDATA[28]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-					<wp:meta_value><![CDATA[default]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_yoast_wpseo_primary_category]]></wp:meta_key>
-					<wp:meta_value><![CDATA[]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
-					<wp:meta_value><![CDATA[70]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_yoast_wpseo_content_score]]></wp:meta_key>
-					<wp:meta_value><![CDATA[60]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[neve_meta_disable_featured_image]]></wp:meta_key>
-					<wp:meta_value><![CDATA[on]]></wp:meta_value>
-				</wp:postmeta>
-					</item>
-				<item>
-			<title>
-				children-734891			</title>
-			<link>https://demo.themeisle.com/neve-charity/2018/11/28/providing-water-in-dry-areas/children-734891/</link>
-			<pubDate>Wed, 28 Nov 2018 13:33:29 +0000</pubDate>
-			<guid isPermaLink="false">https://demo.themeisle.com/neve-charity/wp-content/uploads/sites/178/2018/11/children-734891.jpg</guid>
-			<description></description>
-			<content:encoded><![CDATA[https://pixabay.com/en/children-burundi-bottle-water-734891/]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>28</wp:post_id>
-			<wp:post_date><![CDATA[2018-11-28 13:33:29]]></wp:post_date>
-			<wp:post_date_gmt><![CDATA[2018-11-28 13:33:29]]></wp:post_date_gmt>
-			<wp:comment_status><![CDATA[open]]></wp:comment_status>
-			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-			<wp:post_name><![CDATA[children-734891]]></wp:post_name>
-			<wp:status><![CDATA[inherit]]></wp:status>
-			<wp:post_parent>27</wp:post_parent>
-			<wp:menu_order>0</wp:menu_order>
-			<wp:post_type><![CDATA[attachment]]></wp:post_type>
-			<wp:post_password><![CDATA[]]></wp:post_password>
-			<wp:is_sticky>0</wp:is_sticky>
-							<wp:attachment_url><![CDATA[https://demo.themeisle.com/neve-charity/wp-content/uploads/sites/178/2018/11/children-734891.jpg]]></wp:attachment_url>
-													<wp:postmeta>
-					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
-					<wp:meta_value><![CDATA[2018/11/children-734891.jpg]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
-					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:426;s:6:"height";i:426;s:4:"file";s:27:"2018/11/children-734891.jpg";s:5:"sizes";a:2:{s:9:"thumbnail";a:4:{s:4:"file";s:27:"children-734891-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:27:"children-734891-300x300.jpg";s:5:"width";i:300;s:6:"height";i:300;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
-				</wp:postmeta>
-					</item>
-				<item>
-			<title>
-				You can live without money			</title>
-			<link>https://demo.themeisle.com/neve-charity/2018/11/28/you-can-live-without-money/</link>
-			<pubDate>Wed, 28 Nov 2018 13:59:59 +0000</pubDate>
-			<guid isPermaLink="false">https://demo.themeisle.com/neve-charity/?p=29</guid>
-			<description></description>
-			<content:encoded><![CDATA[Mea delenit repudiare incorrupte in, ea inimicus forensibus vel, te rebum doctus his. An mazim integre concludaturque nec, te duo illum mucius intellegebat. Fugit regione cu ius, eum ut cibo brute mandamus. Vel alienum volutpat ea, nonumy deleniti mediocritatem ut quo.]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>29</wp:post_id>
-			<wp:post_date><![CDATA[2018-11-28 13:59:59]]></wp:post_date>
-			<wp:post_date_gmt><![CDATA[2018-11-28 13:59:59]]></wp:post_date_gmt>
-			<wp:comment_status><![CDATA[open]]></wp:comment_status>
-			<wp:ping_status><![CDATA[open]]></wp:ping_status>
-			<wp:post_name><![CDATA[you-can-live-without-money]]></wp:post_name>
-			<wp:status><![CDATA[publish]]></wp:status>
-			<wp:post_parent>0</wp:post_parent>
-			<wp:menu_order>0</wp:menu_order>
-			<wp:post_type><![CDATA[post]]></wp:post_type>
-			<wp:post_password><![CDATA[]]></wp:post_password>
-			<wp:is_sticky>0</wp:is_sticky>
-								<category domain="category" nicename="uncategorized"><![CDATA[Uncategorized]]></category>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
-					<wp:meta_value><![CDATA[119919]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_thumbnail_id]]></wp:meta_key>
-					<wp:meta_value><![CDATA[30]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-					<wp:meta_value><![CDATA[default]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_yoast_wpseo_primary_category]]></wp:meta_key>
-					<wp:meta_value><![CDATA[]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
-					<wp:meta_value><![CDATA[70]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_yoast_wpseo_content_score]]></wp:meta_key>
-					<wp:meta_value><![CDATA[60]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[neve_meta_disable_featured_image]]></wp:meta_key>
-					<wp:meta_value><![CDATA[on]]></wp:meta_value>
-				</wp:postmeta>
-					</item>
-				<item>
-			<title>
-				trouser-pockets-1439412			</title>
-			<link>https://demo.themeisle.com/neve-charity/2018/11/28/you-can-live-without-money/trouser-pockets-1439412/</link>
-			<pubDate>Wed, 28 Nov 2018 13:59:49 +0000</pubDate>
-			<guid isPermaLink="false">https://demo.themeisle.com/neve-charity/wp-content/uploads/sites/178/2018/11/trouser-pockets-1439412.jpg</guid>
-			<description></description>
-			<content:encoded><![CDATA[https://pixabay.com/en/trouser-pockets-empty-jeans-1439412/]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>30</wp:post_id>
-			<wp:post_date><![CDATA[2018-11-28 13:59:49]]></wp:post_date>
-			<wp:post_date_gmt><![CDATA[2018-11-28 13:59:49]]></wp:post_date_gmt>
-			<wp:comment_status><![CDATA[open]]></wp:comment_status>
-			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-			<wp:post_name><![CDATA[trouser-pockets-1439412]]></wp:post_name>
-			<wp:status><![CDATA[inherit]]></wp:status>
-			<wp:post_parent>29</wp:post_parent>
-			<wp:menu_order>0</wp:menu_order>
-			<wp:post_type><![CDATA[attachment]]></wp:post_type>
-			<wp:post_password><![CDATA[]]></wp:post_password>
-			<wp:is_sticky>0</wp:is_sticky>
-							<wp:attachment_url><![CDATA[https://demo.themeisle.com/neve-charity/wp-content/uploads/sites/178/2018/11/trouser-pockets-1439412.jpg]]></wp:attachment_url>
-													<wp:postmeta>
-					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
-					<wp:meta_value><![CDATA[2018/11/trouser-pockets-1439412.jpg]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
-					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:426;s:6:"height";i:426;s:4:"file";s:35:"2018/11/trouser-pockets-1439412.jpg";s:5:"sizes";a:2:{s:9:"thumbnail";a:4:{s:4:"file";s:35:"trouser-pockets-1439412-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:35:"trouser-pockets-1439412-300x300.jpg";s:5:"width";i:300;s:6:"height";i:300;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
-				</wp:postmeta>
-					</item>
-				<item>
-			<title>
-				Blog			</title>
-			<link>https://demo.themeisle.com/neve-charity/neve-charity-demo-blog/</link>
-			<pubDate>Wed, 28 Nov 2018 14:10:12 +0000</pubDate>
-			<guid isPermaLink="false">https://demo.themeisle.com/neve-charity/?page_id=32</guid>
-			<description></description>
-			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>32</wp:post_id>
-			<wp:post_date><![CDATA[2018-11-28 14:10:12]]></wp:post_date>
-			<wp:post_date_gmt><![CDATA[2018-11-28 14:10:12]]></wp:post_date_gmt>
-			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
-			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-			<wp:post_name><![CDATA[neve-charity-demo-blog]]></wp:post_name>
-			<wp:status><![CDATA[publish]]></wp:status>
-			<wp:post_parent>0</wp:post_parent>
-			<wp:menu_order>0</wp:menu_order>
-			<wp:post_type><![CDATA[page]]></wp:post_type>
-			<wp:post_password><![CDATA[]]></wp:post_password>
-			<wp:is_sticky>0</wp:is_sticky>
-													<wp:postmeta>
-					<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
-					<wp:meta_value><![CDATA[119919]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-					<wp:meta_value><![CDATA[default]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
-					<wp:meta_value><![CDATA[70]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_yoast_wpseo_content_score]]></wp:meta_key>
-					<wp:meta_value><![CDATA[30]]></wp:meta_value>
-				</wp:postmeta>
-					</item>
-				<item>
-			<title>
-							</title>
-			<link>https://demo.themeisle.com/neve-charity/2018/11/28/35/</link>
-			<pubDate>Wed, 28 Nov 2018 14:28:05 +0000</pubDate>
-			<guid isPermaLink="false">https://demo.themeisle.com/neve-charity/?p=35</guid>
-			<description></description>
-			<content:encoded><![CDATA[ ]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>35</wp:post_id>
-			<wp:post_date><![CDATA[2018-11-28 14:28:05]]></wp:post_date>
-			<wp:post_date_gmt><![CDATA[2018-11-28 14:28:05]]></wp:post_date_gmt>
-			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
-			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-			<wp:post_name><![CDATA[35]]></wp:post_name>
-			<wp:status><![CDATA[publish]]></wp:status>
-			<wp:post_parent>0</wp:post_parent>
-			<wp:menu_order>1</wp:menu_order>
-			<wp:post_type><![CDATA[nav_menu_item]]></wp:post_type>
-			<wp:post_password><![CDATA[]]></wp:post_password>
-			<wp:is_sticky>0</wp:is_sticky>
-								<category domain="nav_menu" nicename="main"><![CDATA[Main]]></category>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_type]]></wp:meta_key>
-					<wp:meta_value><![CDATA[post_type]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_menu_item_parent]]></wp:meta_key>
-					<wp:meta_value><![CDATA[0]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_object_id]]></wp:meta_key>
-					<wp:meta_value><![CDATA[2]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_object]]></wp:meta_key>
-					<wp:meta_value><![CDATA[page]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_target]]></wp:meta_key>
-					<wp:meta_value><![CDATA[]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_classes]]></wp:meta_key>
-					<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_xfn]]></wp:meta_key>
-					<wp:meta_value><![CDATA[]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_url]]></wp:meta_key>
-					<wp:meta_value><![CDATA[]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[obfx_menu_icon]]></wp:meta_key>
-					<wp:meta_value><![CDATA[]]></wp:meta_value>
-				</wp:postmeta>
-					</item>
-				<item>
-			<title>
-							</title>
-			<link>https://demo.themeisle.com/neve-charity/2018/11/28/36/</link>
-			<pubDate>Wed, 28 Nov 2018 14:28:05 +0000</pubDate>
-			<guid isPermaLink="false">https://demo.themeisle.com/neve-charity/?p=36</guid>
-			<description></description>
-			<content:encoded><![CDATA[ ]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>36</wp:post_id>
-			<wp:post_date><![CDATA[2018-11-28 14:28:05]]></wp:post_date>
-			<wp:post_date_gmt><![CDATA[2018-11-28 14:28:05]]></wp:post_date_gmt>
-			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
-			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-			<wp:post_name><![CDATA[36]]></wp:post_name>
-			<wp:status><![CDATA[publish]]></wp:status>
-			<wp:post_parent>0</wp:post_parent>
-			<wp:menu_order>2</wp:menu_order>
-			<wp:post_type><![CDATA[nav_menu_item]]></wp:post_type>
-			<wp:post_password><![CDATA[]]></wp:post_password>
-			<wp:is_sticky>0</wp:is_sticky>
-								<category domain="nav_menu" nicename="main"><![CDATA[Main]]></category>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_type]]></wp:meta_key>
-					<wp:meta_value><![CDATA[post_type]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_menu_item_parent]]></wp:meta_key>
-					<wp:meta_value><![CDATA[0]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_object_id]]></wp:meta_key>
-					<wp:meta_value><![CDATA[32]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_object]]></wp:meta_key>
-					<wp:meta_value><![CDATA[page]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_target]]></wp:meta_key>
-					<wp:meta_value><![CDATA[]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_classes]]></wp:meta_key>
-					<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_xfn]]></wp:meta_key>
-					<wp:meta_value><![CDATA[]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_url]]></wp:meta_key>
-					<wp:meta_value><![CDATA[]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[obfx_menu_icon]]></wp:meta_key>
-					<wp:meta_value><![CDATA[]]></wp:meta_value>
-				</wp:postmeta>
-					</item>
-				<item>
-			<title>
-				Join the Cause			</title>
-			<link>https://demo.themeisle.com/neve-charity/2018/11/28/join-the-cause/</link>
-			<pubDate>Wed, 28 Nov 2018 14:38:05 +0000</pubDate>
-			<guid isPermaLink="false">https://demo.themeisle.com/neve-charity/?p=42</guid>
-			<description></description>
-			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>42</wp:post_id>
-			<wp:post_date><![CDATA[2018-11-28 14:38:05]]></wp:post_date>
-			<wp:post_date_gmt><![CDATA[2018-11-28 14:38:05]]></wp:post_date_gmt>
-			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
-			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-			<wp:post_name><![CDATA[join-the-cause]]></wp:post_name>
-			<wp:status><![CDATA[publish]]></wp:status>
-			<wp:post_parent>0</wp:post_parent>
-			<wp:menu_order>3</wp:menu_order>
-			<wp:post_type><![CDATA[nav_menu_item]]></wp:post_type>
-			<wp:post_password><![CDATA[]]></wp:post_password>
-			<wp:is_sticky>0</wp:is_sticky>
-								<category domain="nav_menu" nicename="main"><![CDATA[Main]]></category>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_type]]></wp:meta_key>
-					<wp:meta_value><![CDATA[custom]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_menu_item_parent]]></wp:meta_key>
-					<wp:meta_value><![CDATA[0]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_object_id]]></wp:meta_key>
-					<wp:meta_value><![CDATA[42]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_object]]></wp:meta_key>
-					<wp:meta_value><![CDATA[custom]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_target]]></wp:meta_key>
-					<wp:meta_value><![CDATA[]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_classes]]></wp:meta_key>
-					<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_xfn]]></wp:meta_key>
-					<wp:meta_value><![CDATA[]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_url]]></wp:meta_key>
-					<wp:meta_value><![CDATA[https://demo.themeisle.com/neve-charity/#efforts]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[obfx_menu_icon]]></wp:meta_key>
-					<wp:meta_value><![CDATA[]]></wp:meta_value>
-				</wp:postmeta>
-					</item>
-				<item>
-			<title>
-				Our stories			</title>
-			<link>https://demo.themeisle.com/neve-charity/2018/11/28/our-stories/</link>
-			<pubDate>Wed, 28 Nov 2018 14:38:05 +0000</pubDate>
-			<guid isPermaLink="false">https://demo.themeisle.com/neve-charity/?p=43</guid>
-			<description></description>
-			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>43</wp:post_id>
-			<wp:post_date><![CDATA[2018-11-28 14:38:05]]></wp:post_date>
-			<wp:post_date_gmt><![CDATA[2018-11-28 14:38:05]]></wp:post_date_gmt>
-			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
-			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-			<wp:post_name><![CDATA[our-stories]]></wp:post_name>
-			<wp:status><![CDATA[publish]]></wp:status>
-			<wp:post_parent>0</wp:post_parent>
-			<wp:menu_order>4</wp:menu_order>
-			<wp:post_type><![CDATA[nav_menu_item]]></wp:post_type>
-			<wp:post_password><![CDATA[]]></wp:post_password>
-			<wp:is_sticky>0</wp:is_sticky>
-								<category domain="nav_menu" nicename="main"><![CDATA[Main]]></category>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_type]]></wp:meta_key>
-					<wp:meta_value><![CDATA[custom]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_menu_item_parent]]></wp:meta_key>
-					<wp:meta_value><![CDATA[0]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_object_id]]></wp:meta_key>
-					<wp:meta_value><![CDATA[43]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_object]]></wp:meta_key>
-					<wp:meta_value><![CDATA[custom]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_target]]></wp:meta_key>
-					<wp:meta_value><![CDATA[]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_classes]]></wp:meta_key>
-					<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_xfn]]></wp:meta_key>
-					<wp:meta_value><![CDATA[]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_url]]></wp:meta_key>
-					<wp:meta_value><![CDATA[https://demo.themeisle.com/neve-charity/#stories]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[obfx_menu_icon]]></wp:meta_key>
-					<wp:meta_value><![CDATA[]]></wp:meta_value>
-				</wp:postmeta>
-					</item>
-					</channel>
-		</rss>
-		
+Mea delenit repudiare incorrupte in, ea inimicus forensibus vel, te rebum doctus his. An mazim integre concludaturque nec, te duo illum mucius intellegebat. Fugit regione cu ius, eum ut cibo brute mandamus. Vel alienum volutpat ea, nonumy deleniti mediocritatem ut quo.]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>25</wp:post_id>
+		<wp:post_date><![CDATA[2018-11-28 13:32:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2018-11-28 13:32:34]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[open]]></wp:comment_status>
+		<wp:ping_status><![CDATA[open]]></wp:ping_status>
+		<wp:post_name><![CDATA[life-living-in-a-poverty-camp]]></wp:post_name>
+		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[post]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+		<category domain="category" nicename="uncategorized"><![CDATA[Uncategorized]]></category>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+			<wp:meta_value><![CDATA[119919]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_thumbnail_id]]></wp:meta_key>
+			<wp:meta_value><![CDATA[26]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
+			<wp:meta_value><![CDATA[default]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_yoast_wpseo_primary_category]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
+			<wp:meta_value><![CDATA[70]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_yoast_wpseo_content_score]]></wp:meta_key>
+			<wp:meta_value><![CDATA[60]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[neve_meta_disable_featured_image]]></wp:meta_key>
+			<wp:meta_value><![CDATA[on]]></wp:meta_value>
+		</wp:postmeta>
+	</item>
+	<item>
+		<title>potion-1860939</title>
+		<link>https://demo.themeisle.com/neve-charity/2018/11/28/life-living-in-a-poverty-camp/potion-1860939/</link>
+		<pubDate>Wed, 28 Nov 2018 13:31:35 +0000</pubDate>
+		<dc:creator><![CDATA[radu]]></dc:creator>
+		<guid isPermaLink="false">https://demo.themeisle.com/neve-charity/wp-content/uploads/sites/178/2018/11/potion-1860939.jpg</guid>
+		<description></description>
+		<content:encoded><![CDATA[https://pixabay.com/en/potion-poverty-misery-sadness-sdf-1860939/]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>26</wp:post_id>
+		<wp:post_date><![CDATA[2018-11-28 13:31:35]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2018-11-28 13:31:35]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[open]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[potion-1860939]]></wp:post_name>
+		<wp:status><![CDATA[inherit]]></wp:status>
+		<wp:post_parent>25</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[attachment]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+		<wp:attachment_url><![CDATA[https://demo.themeisle.com/neve-charity/wp-content/uploads/sites/178/2018/11/potion-1860939.jpg]]></wp:attachment_url>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+			<wp:meta_value><![CDATA[2018/11/potion-1860939.jpg]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+			<wp:meta_value><![CDATA[a:5:{s:5:"width";i:426;s:6:"height";i:426;s:4:"file";s:26:"2018/11/potion-1860939.jpg";s:5:"sizes";a:2:{s:9:"thumbnail";a:4:{s:4:"file";s:26:"potion-1860939-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:26:"potion-1860939-300x300.jpg";s:5:"width";i:300;s:6:"height";i:300;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+		</wp:postmeta>
+	</item>
+	<item>
+		<title>Providing water in dry areas</title>
+		<link>https://demo.themeisle.com/neve-charity/2018/11/28/providing-water-in-dry-areas/</link>
+		<pubDate>Wed, 28 Nov 2018 13:33:47 +0000</pubDate>
+		<dc:creator><![CDATA[radu]]></dc:creator>
+		<guid isPermaLink="false">https://demo.themeisle.com/neve-charity/?p=27</guid>
+		<description></description>
+		<content:encoded><![CDATA[Ex case epicuri pro, eu mel veri fastidii, audiam consectetuer an sed. Vel id soluta iuvaret deseruisse, error saepe dissentias vix ei. Virtute indoctum ei duo. Cum hinc dolores officiis cu, duo ut simul aliquando reprehendunt.]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>27</wp:post_id>
+		<wp:post_date><![CDATA[2018-11-28 13:33:47]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2018-11-28 13:33:47]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[open]]></wp:comment_status>
+		<wp:ping_status><![CDATA[open]]></wp:ping_status>
+		<wp:post_name><![CDATA[providing-water-in-dry-areas]]></wp:post_name>
+		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[post]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+		<category domain="category" nicename="uncategorized"><![CDATA[Uncategorized]]></category>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+			<wp:meta_value><![CDATA[119919]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_thumbnail_id]]></wp:meta_key>
+			<wp:meta_value><![CDATA[28]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
+			<wp:meta_value><![CDATA[default]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_yoast_wpseo_primary_category]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
+			<wp:meta_value><![CDATA[70]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_yoast_wpseo_content_score]]></wp:meta_key>
+			<wp:meta_value><![CDATA[60]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[neve_meta_disable_featured_image]]></wp:meta_key>
+			<wp:meta_value><![CDATA[on]]></wp:meta_value>
+		</wp:postmeta>
+	</item>
+	<item>
+		<title>children-734891</title>
+		<link>https://demo.themeisle.com/neve-charity/2018/11/28/providing-water-in-dry-areas/children-734891/</link>
+		<pubDate>Wed, 28 Nov 2018 13:33:29 +0000</pubDate>
+		<dc:creator><![CDATA[radu]]></dc:creator>
+		<guid isPermaLink="false">https://demo.themeisle.com/neve-charity/wp-content/uploads/sites/178/2018/11/children-734891.jpg</guid>
+		<description></description>
+		<content:encoded><![CDATA[https://pixabay.com/en/children-burundi-bottle-water-734891/]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>28</wp:post_id>
+		<wp:post_date><![CDATA[2018-11-28 13:33:29]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2018-11-28 13:33:29]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[open]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[children-734891]]></wp:post_name>
+		<wp:status><![CDATA[inherit]]></wp:status>
+		<wp:post_parent>27</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[attachment]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+		<wp:attachment_url><![CDATA[https://demo.themeisle.com/neve-charity/wp-content/uploads/sites/178/2018/11/children-734891.jpg]]></wp:attachment_url>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+			<wp:meta_value><![CDATA[2018/11/children-734891.jpg]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+			<wp:meta_value><![CDATA[a:5:{s:5:"width";i:426;s:6:"height";i:426;s:4:"file";s:27:"2018/11/children-734891.jpg";s:5:"sizes";a:2:{s:9:"thumbnail";a:4:{s:4:"file";s:27:"children-734891-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:27:"children-734891-300x300.jpg";s:5:"width";i:300;s:6:"height";i:300;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+		</wp:postmeta>
+	</item>
+	<item>
+		<title>You can live without money</title>
+		<link>https://demo.themeisle.com/neve-charity/2018/11/28/you-can-live-without-money/</link>
+		<pubDate>Wed, 28 Nov 2018 13:59:59 +0000</pubDate>
+		<dc:creator><![CDATA[radu]]></dc:creator>
+		<guid isPermaLink="false">https://demo.themeisle.com/neve-charity/?p=29</guid>
+		<description></description>
+		<content:encoded><![CDATA[Mea delenit repudiare incorrupte in, ea inimicus forensibus vel, te rebum doctus his. An mazim integre concludaturque nec, te duo illum mucius intellegebat. Fugit regione cu ius, eum ut cibo brute mandamus. Vel alienum volutpat ea, nonumy deleniti mediocritatem ut quo.]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>29</wp:post_id>
+		<wp:post_date><![CDATA[2018-11-28 13:59:59]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2018-11-28 13:59:59]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[open]]></wp:comment_status>
+		<wp:ping_status><![CDATA[open]]></wp:ping_status>
+		<wp:post_name><![CDATA[you-can-live-without-money]]></wp:post_name>
+		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[post]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+		<category domain="category" nicename="uncategorized"><![CDATA[Uncategorized]]></category>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+			<wp:meta_value><![CDATA[119919]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_thumbnail_id]]></wp:meta_key>
+			<wp:meta_value><![CDATA[30]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
+			<wp:meta_value><![CDATA[default]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_yoast_wpseo_primary_category]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
+			<wp:meta_value><![CDATA[70]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_yoast_wpseo_content_score]]></wp:meta_key>
+			<wp:meta_value><![CDATA[60]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[neve_meta_disable_featured_image]]></wp:meta_key>
+			<wp:meta_value><![CDATA[on]]></wp:meta_value>
+		</wp:postmeta>
+	</item>
+	<item>
+		<title>trouser-pockets-1439412</title>
+		<link>https://demo.themeisle.com/neve-charity/2018/11/28/you-can-live-without-money/trouser-pockets-1439412/</link>
+		<pubDate>Wed, 28 Nov 2018 13:59:49 +0000</pubDate>
+		<dc:creator><![CDATA[radu]]></dc:creator>
+		<guid isPermaLink="false">https://demo.themeisle.com/neve-charity/wp-content/uploads/sites/178/2018/11/trouser-pockets-1439412.jpg</guid>
+		<description></description>
+		<content:encoded><![CDATA[https://pixabay.com/en/trouser-pockets-empty-jeans-1439412/]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>30</wp:post_id>
+		<wp:post_date><![CDATA[2018-11-28 13:59:49]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2018-11-28 13:59:49]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[open]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[trouser-pockets-1439412]]></wp:post_name>
+		<wp:status><![CDATA[inherit]]></wp:status>
+		<wp:post_parent>29</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[attachment]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+		<wp:attachment_url><![CDATA[https://demo.themeisle.com/neve-charity/wp-content/uploads/sites/178/2018/11/trouser-pockets-1439412.jpg]]></wp:attachment_url>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+			<wp:meta_value><![CDATA[2018/11/trouser-pockets-1439412.jpg]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+			<wp:meta_value><![CDATA[a:5:{s:5:"width";i:426;s:6:"height";i:426;s:4:"file";s:35:"2018/11/trouser-pockets-1439412.jpg";s:5:"sizes";a:2:{s:9:"thumbnail";a:4:{s:4:"file";s:35:"trouser-pockets-1439412-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:35:"trouser-pockets-1439412-300x300.jpg";s:5:"width";i:300;s:6:"height";i:300;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+		</wp:postmeta>
+	</item>
+	<item>
+		<title>Blog</title>
+		<link>https://demo.themeisle.com/neve-charity/neve-charity-demo-blog/</link>
+		<pubDate>Wed, 28 Nov 2018 14:10:12 +0000</pubDate>
+		<dc:creator><![CDATA[radu]]></dc:creator>
+		<guid isPermaLink="false">https://demo.themeisle.com/neve-charity/?page_id=32</guid>
+		<description></description>
+		<content:encoded><![CDATA[]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>32</wp:post_id>
+		<wp:post_date><![CDATA[2018-11-28 14:10:12]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2018-11-28 14:10:12]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[neve-charity-demo-blog]]></wp:post_name>
+		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[page]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+			<wp:meta_value><![CDATA[119919]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
+			<wp:meta_value><![CDATA[default]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
+			<wp:meta_value><![CDATA[70]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_yoast_wpseo_content_score]]></wp:meta_key>
+			<wp:meta_value><![CDATA[30]]></wp:meta_value>
+		</wp:postmeta>
+	</item>
+	<item>
+		<title></title>
+		<link>https://demo.themeisle.com/neve-charity/2018/11/28/35/</link>
+		<pubDate>Wed, 28 Nov 2018 14:28:05 +0000</pubDate>
+		<dc:creator><![CDATA[radu]]></dc:creator>
+		<guid isPermaLink="false">https://demo.themeisle.com/neve-charity/?p=35</guid>
+		<description></description>
+		<content:encoded><![CDATA[ ]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>35</wp:post_id>
+		<wp:post_date><![CDATA[2018-11-28 14:28:05]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2018-11-28 14:28:05]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[35]]></wp:post_name>
+		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>1</wp:menu_order>
+		<wp:post_type><![CDATA[nav_menu_item]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+		<category domain="nav_menu" nicename="main"><![CDATA[Main]]></category>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_menu_item_type]]></wp:meta_key>
+			<wp:meta_value><![CDATA[post_type]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_menu_item_menu_item_parent]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_menu_item_object_id]]></wp:meta_key>
+			<wp:meta_value><![CDATA[2]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_menu_item_object]]></wp:meta_key>
+			<wp:meta_value><![CDATA[page]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_menu_item_target]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_menu_item_classes]]></wp:meta_key>
+			<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_menu_item_xfn]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_menu_item_url]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[obfx_menu_icon]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+	</item>
+	<item>
+		<title></title>
+		<link>https://demo.themeisle.com/neve-charity/2018/11/28/36/</link>
+		<pubDate>Wed, 28 Nov 2018 14:28:05 +0000</pubDate>
+		<dc:creator><![CDATA[radu]]></dc:creator>
+		<guid isPermaLink="false">https://demo.themeisle.com/neve-charity/?p=36</guid>
+		<description></description>
+		<content:encoded><![CDATA[ ]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>36</wp:post_id>
+		<wp:post_date><![CDATA[2018-11-28 14:28:05]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2018-11-28 14:28:05]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[36]]></wp:post_name>
+		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>5</wp:menu_order>
+		<wp:post_type><![CDATA[nav_menu_item]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+		<category domain="nav_menu" nicename="main"><![CDATA[Main]]></category>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_menu_item_type]]></wp:meta_key>
+			<wp:meta_value><![CDATA[post_type]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_menu_item_menu_item_parent]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_menu_item_object_id]]></wp:meta_key>
+			<wp:meta_value><![CDATA[32]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_menu_item_object]]></wp:meta_key>
+			<wp:meta_value><![CDATA[page]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_menu_item_target]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_menu_item_classes]]></wp:meta_key>
+			<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_menu_item_xfn]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_menu_item_url]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[obfx_menu_icon]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+	</item>
+	<item>
+		<title>Join the Cause</title>
+		<link>https://demo.themeisle.com/neve-charity/2018/11/28/join-the-cause/</link>
+		<pubDate>Wed, 28 Nov 2018 14:38:05 +0000</pubDate>
+		<dc:creator><![CDATA[radu]]></dc:creator>
+		<guid isPermaLink="false">https://demo.themeisle.com/neve-charity/?p=42</guid>
+		<description></description>
+		<content:encoded><![CDATA[]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>42</wp:post_id>
+		<wp:post_date><![CDATA[2018-11-28 14:38:05]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2018-11-28 14:38:05]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[join-the-cause]]></wp:post_name>
+		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>3</wp:menu_order>
+		<wp:post_type><![CDATA[nav_menu_item]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+		<category domain="nav_menu" nicename="main"><![CDATA[Main]]></category>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_menu_item_type]]></wp:meta_key>
+			<wp:meta_value><![CDATA[custom]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_menu_item_menu_item_parent]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_menu_item_object_id]]></wp:meta_key>
+			<wp:meta_value><![CDATA[42]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_menu_item_object]]></wp:meta_key>
+			<wp:meta_value><![CDATA[custom]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_menu_item_target]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_menu_item_classes]]></wp:meta_key>
+			<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_menu_item_xfn]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_menu_item_url]]></wp:meta_key>
+			<wp:meta_value><![CDATA[https://demo.themeisle.com/neve-charity/#efforts]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[obfx_menu_icon]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+	</item>
+	<item>
+		<title>Latest Stories</title>
+		<link>https://demo.themeisle.com/neve-charity/2018/11/28/our-stories/</link>
+		<pubDate>Wed, 28 Nov 2018 14:38:05 +0000</pubDate>
+		<dc:creator><![CDATA[radu]]></dc:creator>
+		<guid isPermaLink="false">https://demo.themeisle.com/neve-charity/?p=43</guid>
+		<description></description>
+		<content:encoded><![CDATA[]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>43</wp:post_id>
+		<wp:post_date><![CDATA[2018-11-28 14:38:05]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2018-11-28 14:38:05]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[our-stories]]></wp:post_name>
+		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>4</wp:menu_order>
+		<wp:post_type><![CDATA[nav_menu_item]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+		<category domain="nav_menu" nicename="main"><![CDATA[Main]]></category>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_menu_item_type]]></wp:meta_key>
+			<wp:meta_value><![CDATA[custom]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_menu_item_menu_item_parent]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_menu_item_object_id]]></wp:meta_key>
+			<wp:meta_value><![CDATA[43]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_menu_item_object]]></wp:meta_key>
+			<wp:meta_value><![CDATA[custom]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_menu_item_target]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_menu_item_classes]]></wp:meta_key>
+			<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_menu_item_xfn]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_menu_item_url]]></wp:meta_key>
+			<wp:meta_value><![CDATA[https://demo.themeisle.com/neve-charity/#stories]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[obfx_menu_icon]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+	</item>
+	<item>
+		<title>Who We Are</title>
+		<link>https://demo.themeisle.com/neve-charity/2019/02/13/who-we-are/</link>
+		<pubDate>Wed, 13 Feb 2019 15:01:04 +0000</pubDate>
+		<dc:creator><![CDATA[radu]]></dc:creator>
+		<guid isPermaLink="false">https://demo.themeisle.com/neve-charity/2019/02/13/who-we-are/</guid>
+		<description></description>
+		<content:encoded><![CDATA[]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>93</wp:post_id>
+		<wp:post_date><![CDATA[2019-02-13 15:01:04]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2019-02-13 15:01:04]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[who-we-are]]></wp:post_name>
+		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>2</wp:menu_order>
+		<wp:post_type><![CDATA[nav_menu_item]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+		<category domain="nav_menu" nicename="main"><![CDATA[Main]]></category>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_menu_item_type]]></wp:meta_key>
+			<wp:meta_value><![CDATA[custom]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_menu_item_menu_item_parent]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_menu_item_object_id]]></wp:meta_key>
+			<wp:meta_value><![CDATA[93]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_menu_item_object]]></wp:meta_key>
+			<wp:meta_value><![CDATA[custom]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_menu_item_target]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_menu_item_classes]]></wp:meta_key>
+			<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_menu_item_xfn]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_menu_item_url]]></wp:meta_key>
+			<wp:meta_value><![CDATA[https://demo.themeisle.com/neve-charity/#about]]></wp:meta_value>
+		</wp:postmeta>
+	</item>
+</channel>
+</rss>
