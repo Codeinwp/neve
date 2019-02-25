@@ -299,15 +299,36 @@ class Admin {
 
 		$notice_template = '
 			<div class="nv-notice-wrapper">
-				<div class="nv-notice-text">%1$s</div>
+			%1$s
+			<hr/>
+				<div class="nv-notice-column-container">
+					<div class="nv-notice-column nv-notice-image">%2$s</div>
+					<div class="nv-notice-column nv-notice-starter-sites">%3$s</div>
+					<div class="nv-notice-column nv-notice-documentation">%4$s</div>
+				</div> 
 			</div>
-			<style>%2$s</style>';
+			<style>%5$s</style>';
 
+		/* translators: 1 - notice title, 2 - notice message */
+		$notice_header = sprintf(
+			'<h2>%1$s</h2><p class="about-description">%2$s</p></hr>',
+			esc_html__( 'Congratulations!', 'neve' ),
+			sprintf(
+				/* translators: %s - theme name */
+				esc_html__( '%s is now installed and ready to use. We\'ve assembled some links to get you started.', 'neve' ),
+				$name
+			)
+		);
 		$ob_btn = sprintf(
 			/* translators: 1 - onboarding url, 2 - button text */
-			'<a href="%1$s" class="button button-primary" style="text-decoration: none;">%2$s</a>',
+			'<a href="%1$s" class="button button-primary button-hero install-now" >%2$s</a>',
 			esc_url( admin_url( 'themes.php?page=' . $slug . '-welcome&onboarding=yes#sites_library' ) ),
-			sprintf( esc_html__( 'Try one of our ready to use Starter Sites', 'neve' ) )
+			sprintf( apply_filters( 'ti_onboarding_neve_start_site_cta', esc_html__( 'Try one of our ready to use Starter Sites', 'neve' ) ) )
+		);
+		$ob_return_dashboard = sprintf(
+			/* translators: 1 - button text */
+			'<a href="#" class=" ti-return-dashboard  button button-secondary button-hero install-now" ><span>%1$s</span></a>',
+			__( 'Return to your dashboard', 'neve' )
 		);
 		$options_page_btn = sprintf(
 			/* translators: 1 - options page url, 2 - button text */
@@ -316,88 +337,106 @@ class Admin {
 			esc_html__( 'or go to the theme settings', 'neve' )
 		);
 
-		$content = sprintf(
-			/* translators: 1 - notice title, 2 - notice message, 3 - starter sites button, 4 - options page button, 5 - close notice message */
-			'<h3>%1$s</h3>
-					<p>%2$s</p>
-					<p>%3$s %4$s</p>
-					<p class="ti-return-dashboard"><span>%5$s</span></p>',
-			sprintf(
-				esc_html__( 'Congratulations!', 'neve' ),
-				$name
-			),
-			sprintf(
-				/* translators: %s - theme name */
-				esc_html__( '%s is now installed and ready to use. We\'ve assembled some links to get you started.', 'neve' ),
-				$name
-			),
-			$ob_btn,
-			$options_page_btn,
-			esc_html__( 'Return to your dashboard', 'neve' )
+		$notice_picture = sprintf(
+			'<picture>
+					<source srcset="about:blank" media="(max-width: 1024px)">
+					<img src="%1$s">
+				</picture>',
+			esc_url( get_template_directory_uri() . '/assets/img/sites-list.jpg' )
 		);
 
-		$style = '
-		.wrap .notice.nv-welcome-notice{
-			padding:10px;
-			margin: 20px 0;
+		$notice_sites_list = sprintf(
+			'<div><h3><span class="dashicons dashicons-images-alt2"></span>%1$s</h3><p>%2$s</p></div><div> <p>%3$s</p><p>%4$s</p> </div>',
+			__( 'Sites Library', 'neve' ),
+			__( 'Neve now comes with a sites library with various designs to pick from. Visit our collection of demos that are constantly being added.', 'neve' ),
+			$ob_btn,
+			$options_page_btn
+		);
+
+		$notice_documentation = sprintf(
+			'<div><h3><span class="dashicons dashicons-format-aside"></span> %1$s</h3><p>%2$s</p><a href="%3$s">%4$s</a></div><div> <p>%5$s</p></div>',
+			__( 'Documentation', 'neve' ),
+			__( 'Need more details? Please check our full documentation for detailed information on how to use Neve.', 'neve' ),
+			'https://docs.themeisle.com/article/946-neve-doc',
+			__( 'Read full documentation', 'neve' ),
+			$ob_return_dashboard
+		);
+		$style                = '
+		.nv-notice-wrapper{
+			margin: 0 13px;
+             max-width: 1500px;
 		}
-		.nv-notice-wrapper {
-			display: flex;
-		    justify-content: center;
-		    align-items: center;
-		    flex-direction: column;
-		    padding: 40px 0 10px;
-		}
-		.nv-notice-image, .nv-notice-text, .nv-notice-button {text-align:center;}
-		.nv-notice-image{
-		    display: flex;
-		    justify-content: center;
-		    align-items: center;
-		    flex-direction: column;
-			width: 90px;
-			height: 90px;
-			border-radius: 50%;
-			background: #fff;
-			margin-bottom:20px;
-		}
-		.nv-notice-image img{
-			max-width:65px;
-		}
-		.nv-notice-text{
-			display: flex;
-			flex-direction: column;
-		}
-		.nv-notice-text h3{
-		    margin: 0 12px 8px;
-		    padding: 0;
+		.nv-notice-wrapper hr {
+			margin: 20px -23px 0;
+	        border-top: 1px solid #f3f4f5;
+	        border-bottom: none;
+        }
+		.nv-notice-column-container h3{	
+		    margin: 17px 0 0;
 		    font-size: 16px;
-		    font-weight: 500;
-		    color: #23282d;
+		    line-height: 1.4;
 		}
-		.nv-notice-text p:first-of-type {
-			font-size: 15px;
-		}
-		.options-page-btn,
-		.options-page-btn:hover {
-		    color: inherit;
-		    text-decoration: none;
+		.nv-notice-column-container p {
+			color: #72777c;
 		}
 		.nv-notice-text p.ti-return-dashboard {
 			margin-top: 30px;
+    }
+		.nv-notice-column-container .nv-notice-column{
+             padding-right: 40px;
+		} 
+		.nv-notice-column-container img{ 
+		    margin-top: 23px;
+		    width: calc(100% - 40px);
+		    border: 1px solid #f3f4f5; 
+		} 
+		.nv-notice-column-container { 
+		    display: -ms-grid;
+		    display: grid;
+		    -ms-grid-columns: 24% 32% 32%;
+		    grid-template-columns: 24% 32% 32%;
+		    margin-bottom: 13px;
 		}
-		.ti-return-dashboard span {
-			color: #b5b5b5;
-			text-decoration: none;
-			font-weight: 300;			
+		.nv-notice-column-container a.button.button-hero.button-secondary,
+		.nv-notice-column-container a.button.button-hero.button-primary{
+			margin:0px;
 		}
-		.ti-return-dashboard span:hover {
-			cursor: pointer;
+		.nv-notice-column-container .nv-notice-column:not(.nv-notice-image) {
+		    display: -ms-grid;
+		    display: grid;
+		    -ms-grid-rows: auto 100px;
+		    grid-template-rows: auto 100px;
+		} 
+		@media screen and (max-width: 1280px) {
+			.nv-notice-wrapper .nv-notice-column-container {
+				-ms-grid-columns: 50% 50%;
+				grid-template-columns: 50% 50%;
+			}
+			.nv-notice-column-container a.button.button-hero.button-secondary,
+			.nv-notice-column-container a.button.button-hero.button-primary{
+				padding:6px 18px;
+			}
+			.nv-notice-wrapper .nv-notice-image {
+				display: none;
+			}
+		} 
+		@media screen and (max-width: 870px) {
+			 
+			.nv-notice-wrapper .nv-notice-column-container {
+				-ms-grid-columns: 100%;
+				grid-template-columns: 100%;
+			}
+			.nv-notice-column-container a.button.button-hero.button-primary{
+				padding:12px 36px;
+			}
 		}
 		';
-
 		echo sprintf(
 			$notice_template,
-			$content,
+			$notice_header,
+			$notice_picture,
+			$notice_sites_list,
+			$notice_documentation,
 			$style
 		);
 	}

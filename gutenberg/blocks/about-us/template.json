@@ -395,7 +395,7 @@
                                     "name": "core/image",
                                     "isValid": true,
                                     "attributes": {
-                                        "url": "https://github.com/Codeinwp/gutenberg-templates/blob/master/assets/images/street-at-nigh.jpg?raw=true",
+                                        "url": "https://raw.githubusercontent.com/Codeinwp/gutenberg-templates/master/assets/images/street-at-nigh.jpg",
                                         "alt": "",
                                         "caption": "",
                                         "id": 167,
@@ -405,7 +405,7 @@
                                         "linkDestination": "none"
                                     },
                                     "innerBlocks": [],
-                                    "originalContent": "<div class=\"wp-block-image\"><figure class=\"aligncenter is-resized\"><img src=\"https://github.com/Codeinwp/gutenberg-templates/blob/master/assets/images/street-at-nigh.jpg?raw=true\" alt=\"\" class=\"wp-image-167\" width=\"630\" height=\"945\"/></figure></div>"
+                                    "originalContent": "<div class=\"wp-block-image\"><figure class=\"aligncenter is-resized\"><img src=\"https://raw.githubusercontent.com/Codeinwp/gutenberg-templates/master/assets/images/street-at-nigh.jpg\" alt=\"\" class=\"wp-image-167\" width=\"630\" height=\"945\"/></figure></div>"
                                 }
                             ],
                             "originalContent": "<div class=\"wp-block-themeisle-blocks-advanced-column\" id=\"wp-block-themeisle-blocks-advanced-column-22b8b819\" style=\"border-width:0px;border-style:solid;border-color:#000000;border-radius:0px\"></div>"

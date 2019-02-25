@@ -130,19 +130,16 @@ class Typography extends Base_Customizer {
 					'input_attr' => array(
 						'mobile'  => array(
 							'min'          => 10,
-							'max'          => 30,
 							'default'      => 15,
 							'default_unit' => 'px',
 						),
 						'tablet'  => array(
 							'min'          => 10,
-							'max'          => 30,
 							'default'      => 16,
 							'default_unit' => 'px',
 						),
 						'desktop' => array(
 							'min'          => 10,
-							'max'          => 30,
 							'default'      => 16,
 							'default_unit' => 'px',
 						),
@@ -264,19 +261,16 @@ class Typography extends Base_Customizer {
 						'input_attr' => array(
 							'mobile'  => array(
 								'min'          => 1,
-								'max'          => 10,
 								'default'      => $control['default_tablet_size'],
 								'default_unit' => 'em',
 							),
 							'tablet'  => array(
 								'min'          => 1,
-								'max'          => 10,
 								'default'      => $control['default_tablet_size'],
 								'default_unit' => 'em',
 							),
 							'desktop' => array(
 								'min'          => 1,
-								'max'          => 10,
 								'default'      => $control['default_size'],
 								'default_unit' => 'em',
 							),

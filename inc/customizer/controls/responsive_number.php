@@ -122,7 +122,7 @@ class Responsive_Number extends \WP_Customize_Control {
 		var value = data.value ? data.value[mediaQuery] : attr.default;
 		var suffix = '';
 		if( data.value ) {
-			suffix = data.value.suffix ? data.value.suffix[mediaQuery] : attr.default_unit;
+		suffix = data.value.suffix ? data.value.suffix[mediaQuery] : attr.default_unit;
 		}
 
 		if( ! data.responsive ) {
@@ -135,10 +135,15 @@ class Responsive_Number extends \WP_Customize_Control {
 			<input
 					class="responsive-number--input"
 					type="number"
-					min="0"
-					data-query="{{mediaQuery}}"
-					data-default="{{attr.default}}"
-					value="{{ value }}"
+			<# if( attr.min ) {	#>
+			min="{{attr.min}}"
+			<# }
+			if ( attr.max ) { #>
+			max="{{attr.max}}"
+			<# } #>
+			data-query="{{mediaQuery}}"
+			data-default="{{attr.default}}"
+			value="{{ value }}"
 			/>
 			<# if( data.units ) {
 			var disabled = data.units.length === 1 ? 'disabled' : '';
