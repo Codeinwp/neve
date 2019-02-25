@@ -1506,7 +1506,8 @@ var CustomizeBuilder_V1;
 								}
 							}
 						}
-
+						console.log( 'THE D' );
+						console.log( _d );
 						if (_d) {
 							var item = that.addItem(node);
 							$itemWrapper.append(item);
@@ -1556,10 +1557,10 @@ var CustomizeBuilder_V1;
 			addExistingRowsItems: function() {
 				var that = this;
 
-				var data = wpcustomize.control(that.controlId).params.value;
+				var data = JSON.parse( wpcustomize.control(that.controlId).setting.get() );
 				console.log( 'addExistingRowsItems :::' );
+				console.log( that.controlId );
 				console.log( data );
-				console.log( this );
 				if (!_.isObject(data)) {
 					data = {};
 				}
@@ -1629,6 +1630,8 @@ var CustomizeBuilder_V1;
 
 						var section = options.id + "_" + id;
 
+						console.log( section );
+
 						if (!_.isUndefined(wpcustomize.section(section))) {
 							wpcustomize.section(section).focus();
 						}
@@ -1654,10 +1657,10 @@ var CustomizeBuilder_V1;
 				);
 			},
 			encodeValue: function(value) {
-				return encodeURI(JSON.stringify(value));
+				return JSON.stringify(value);
 			},
 			decodeValue: function(value) {
-				return JSON.parse(decodeURI(value));
+				return JSON.parse(value);
 			},
 			save: function() {
 				var that = this;
@@ -1688,6 +1691,7 @@ var CustomizeBuilder_V1;
 
 				console.log( that.controlId )
 				console.log( data )
+				console.log( that.encodeValue(data) )
 				wpcustomize
 					.control(that.controlId)
 					.setting.set(that.encodeValue(data));

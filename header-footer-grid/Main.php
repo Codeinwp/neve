@@ -47,7 +47,7 @@ class Main {
 
 		//var_dump( $wp_customize->settings() );
 
-		echo '<h1>Header here</h1>';
+		//echo '<h1 class="test-class-here">Header here</h1>';
 	}
 
 	public function test2( \WP_Customize_Selective_Refresh $selective_refresh, $partials = array() ) {

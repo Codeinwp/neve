@@ -51,7 +51,7 @@ class Settings {
 									'y'      => '1',
 									'width'  => '3',
 									'height' => '1',
-									'id'     => 'logo',
+									'id'     => 'button_base',
 								),
 
 								array(

@@ -120,6 +120,7 @@ class Customizer {
 				'20151215',
 				true
 			);
+
 			wp_localize_script(
 				'hfg-customizer-auto-css',
 				'HFGPreviewConfig',
@@ -162,7 +163,6 @@ class Customizer {
 						</div>
 						<div class="hfg--cb-actions">
 							<?php do_action( 'hfg/builder-panel/actions-buttons' ); ?>
-							<a data-id="{{ data.id }}_templates" class="focus-section button button-secondary" href="#"><?php _e( 'Templates', 'hfg' ); ?></a>
 							<a class="button button-secondary hfg--panel-close" href="#">
 								<span class="close-text"><?php _e( 'Close', 'hfg' ); ?></span>
 								<span class="panel-name-text">{{ data.title }}</span>
