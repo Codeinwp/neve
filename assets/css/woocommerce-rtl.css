@@ -853,7 +853,7 @@
   margin-top: 10px;
 }
 
-.cart-collaterals > div > h2 {
+.woocommerce-cart .cross-sells > h2, .woocommerce-cart .cart_totals > h2 {
   font-size: 1.1em;
   border-bottom: 1px solid #f0f0f0;
   font-weight: 500;
@@ -1182,6 +1182,10 @@ body.woocommerce-account .nv-content-wrap > .woocommerce {
 
   .woocommerce .cart_totals table.shop_table {
     padding: 0 8px;
+  }
+
+  .woocommerce-cart table.cart td.actions .coupon {
+    margin-bottom: 0;
   }
 
   .woocommerce-ordering {

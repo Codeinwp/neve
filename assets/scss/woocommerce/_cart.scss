@@ -97,15 +97,15 @@
     }
   }
 }
-
-.cart-collaterals > div > h2 {
-  font-size: 1.1em;
-  border-bottom: 1px solid #f0f0f0;
-  font-weight: 500;
-  padding: 9px 20px;
-  background-color: #f7f7f7;
+.woocommerce-cart {
+  .cross-sells > h2, .cart_totals > h2 {
+    font-size: 1.1em;
+    border-bottom: 1px solid #f0f0f0;
+    font-weight: 500;
+    padding: 9px 20px;
+    background-color: #f7f7f7;
+  }
 }
-
 .cart-collaterals {
   ul.products li.product .button {
     line-height: 1.6;
@@ -191,5 +191,8 @@
 @mixin cart--laptop() {
   .woocommerce .cart_totals table.shop_table {
     padding: 0 8px;
+  }
+  .woocommerce-cart table.cart td.actions .coupon {
+    margin-bottom: 0;
   }
 }
