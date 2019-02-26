@@ -5,7 +5,8 @@ add_theme_support(
 	array(
 		'builders' => array(
 			'HFG\Core\Builder\Header' => array(
-				'HFG\Components\Button',
+				'HFG\Core\Components\Button',
+				'HFG\Core\Components\ButtonTwo',
 			)
 		)
 	)

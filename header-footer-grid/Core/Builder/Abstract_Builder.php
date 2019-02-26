@@ -13,6 +13,9 @@ abstract class Abstract_Builder implements Builder {
 	protected $section;
 	protected $title;
 
+	protected $remove_panels = [];
+	protected $remove_sections = [];
+
 	protected $devices = [
 		'desktop' => 'Desktop',
 		'mobile' => 'Mobile'
@@ -39,13 +42,24 @@ abstract class Abstract_Builder implements Builder {
 	public function register_builder_hooks() {}
 
 	public function customize_register( WP_Customize_Manager $wp_customize ) {
-		if ( empty( $wp_customize->get_panel( $this->panel ) ) ) {
+		if ( ! empty( $this->remove_panels ) ) {
+			foreach ( $this->remove_panels as $panel_to_remove ) {
+				$wp_customize->remove_panel( $panel_to_remove );
+			}
+		}
 
+		if ( ! empty( $this->remove_sections ) ) {
+			foreach ( $this->remove_sections as $section_to_remove ) {
+				$wp_customize->remove_section( $section_to_remove );
+			}
+		}
+
+		if ( empty( $wp_customize->get_panel( $this->panel ) ) ) {
 			$this->set_property( 'section', $this->control_id . '_section' );
 			$builder_title = ( isset( $this->title ) && ! empty( $this->title ) ) ? $this->title : __( 'HFG Panel', 'hfg-module' );
 
 			$wp_customize->add_panel( $this->panel, array(
-				'priority' => 160,
+				'priority' => 25,
 				'capability' => 'edit_theme_options',
 				'theme_supports' => 'hfg_support',
 				'title' => $builder_title,
@@ -76,6 +90,7 @@ abstract class Abstract_Builder implements Builder {
 				'type'           => 'text',
 			) );
 
+			$this->add_rows_controls( $wp_customize );
 		}
 
 		/**
@@ -83,6 +98,31 @@ abstract class Abstract_Builder implements Builder {
 		 */
 		foreach ( $this->builder_components as $component ) {
 			$component->customize_register( $wp_customize );
+		}
+	}
+
+	protected function add_rows_controls( WP_Customize_Manager $wp_customize ) {
+		$rows = $this->get_rows();
+		if ( empty( $rows ) ) {
+			return;
+		}
+		foreach ( $rows as $row_id => $row_label ) {
+			$wp_customize->add_section( $this->control_id . '_' . $row_id, array(
+				'title'    => $row_label,
+				'priority' => 100,
+				'panel' => $this->panel,
+			) );
+
+			$wp_customize->add_setting( $this->control_id . '_' . $row_id, array(
+				'default'   => '',
+				'transport' => 'postMessage',
+			) );
+
+			$wp_customize->selective_refresh->add_partial( $this->control_id . '_' . $row_id . '_partial', array(
+				'selector' => '.' . $this->panel,
+				'settings' => array( $this->control_id . '_' . $row_id ),
+				'render_callback' => array( $this, 'render' )
+			) );
 		}
 	}
 
@@ -115,21 +155,24 @@ abstract class Abstract_Builder implements Builder {
 		return $components_settings;
 	}
 
-	public function get_builder() {
+	protected function get_rows() {
+		return [
+			'top' => 'Header Top',
+			'main' => 'Header Main',
+			'bottom' => 'Header Bottom',
+			'sidebar' => 'Menu Sidebar',
+		];
+	}
+
+	public final function get_builder() {
 		return array(
-			'id' => 'header',
+			'id' => $this->control_id,
 			'control_id' => $this->control_id,
-			'version_id' => $this->control_id,
 			'panel' => $this->panel,
 			'section' => $this->section,
 			'devices' => $this->devices,
 			'items' => $this->get_components_settings(),
-			'rows' => [
-				'top' => 'Header Top',
-				'main' => 'Header Main',
-				'bottom' => 'Header Bottom',
-				'sidebar' => 'Menu Sidebar',
-			],
+			'rows' => $this->get_rows(),
 		);
 	}
 }

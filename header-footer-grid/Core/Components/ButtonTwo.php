@@ -1,19 +1,19 @@
 <?php
-namespace HFG\Components;
+namespace HFG\Core\Components;
 
 use HFG\Core\Abstract_Component;
 use WP_Customize_Color_Control;
 use WP_Customize_Manager;
 
-class Button extends Abstract_Component {
+class ButtonTwo extends Abstract_Component {
 
 	public function __construct( $panel ) {
-		$this->set_property( 'label', __( 'Button', 'hfg-module' ) );
-		$this->set_property( 'id', 'button_base' );
+		$this->set_property( 'label', __( 'Button Two', 'hfg-module' ) );
+		$this->set_property( 'id', 'button_base_2' );
 		$this->set_property( 'col', 0 );
 		$this->set_property( 'row', 'top' );
 		$this->set_property( 'width', 1 );
-		$this->set_property( 'section', 'header_button' );
+		$this->set_property( 'section', 'header_button_2' );
 		$this->set_property( 'panel', $panel );
 	}
 
@@ -53,6 +53,8 @@ class Button extends Abstract_Component {
 			'render_callback' => $fn,
 			'settings'        => $prefix . '_text' . '_setting',
 		) );
+
+		parent::customize_register( $wp_customize );
 	}
 
 	public function render() {
@@ -68,6 +70,14 @@ class Button extends Abstract_Component {
 
 		$item_classes   = join( ' ', $item_classes );
 
-		return '<div class="' . esc_attr( $item_classes ) . '" data-section="' . $this->section . '" data-item-id="' . esc_attr( $this->id ) . '" > <button>' . get_theme_mod( $this->section . '_text' . '_setting' ) . '</button> <span class="item--preview-name">' . esc_html( $this->label ) . '</span></div>';
+		$html = '';
+		$html .= '<div class="' . esc_attr( $item_classes ) . '" data-section="' . $this->section . '" data-item-id="' . esc_attr( $this->id ) . '" >';
+		$html .= '<button style="width: 100%;">' . get_theme_mod( $this->section . '_text' . '_setting' ) . '</button>';
+		if ( is_customize_preview() ) {
+			$html .= '<span class="item--preview-name">' . esc_html( $this->label ) . '</span>';
+		}
+		$html .= '</div>';
+
+		return $html;
 	}
 }

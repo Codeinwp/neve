@@ -7,6 +7,9 @@ use HFG\Core\Settings;
 class Main {
 	private static $_instance = null;
 
+	/**
+	 * @var Settings $settings
+	 */
 	private $settings;
 
 	/**
@@ -31,40 +34,11 @@ class Main {
 		$customizer = new Customizer( $this->settings );
 
 		add_filter( 'hfg-active', array( $this, 'is_active' ) );
-		add_filter( 'hfg-header-render', array( $this, 'render_header' ) );
-
-//		add_action( 'customize_save', array( $this, 'test' ), 10, 1 );
-//		add_action( 'customize_preview_section', array( $this, 'test' ), 10, 1 );
-//		add_action( 'customize_preview_panel', array( $this, 'test' ), 10, 1 );
-//		add_action( 'customize_render_partials_before', array( $this, 'test2' ), 10, 2 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 	}
 
-	public function render_header() {
-		/**
-		 * @var \WP_Customize_Manager $wp_customize
-		 */
-		//global $wp_customize;
-
-		//var_dump( $wp_customize->settings() );
-
-		//echo '<h1 class="test-class-here">Header here</h1>';
-	}
-
-	public function test2( \WP_Customize_Selective_Refresh $selective_refresh, $partials = array() ) {
-		error_log( 'ACTION customize_render_partials_before' );
-		error_log( json_encode( $selective_refresh ) );
-		error_log( json_encode( $partials ) );
-		error_log( json_encode( $_POST['customized'] ) );
-		error_log( json_encode( get_theme_mods() ) );
-	}
-
-	public function test( \WP_Customize_Manager $wp_customize ) {
-		error_log( 'Customize Register Button' );
-		error_log( json_encode( $wp_customize ) );
-		error_log( json_encode( $wp_customize->get_section( 'header_button' ) ) );
-		error_log( json_encode( $wp_customize->get_setting( 'neve_navigation_layout' ) ) );
-		error_log( json_encode( $wp_customize->get_control( 'button_base' ) ) );
-		error_log( json_encode( $wp_customize->get_setting( 'button_base' ) ) );
+	public function enqueue_scripts() {
+		wp_enqueue_style( 'hfg-style', esc_url( $this->settings->url ) . '/assets/css/style.css' );
 	}
 
 	public function is_active() {

@@ -40,6 +40,16 @@ class Customizer {
 			add_action( 'customize_register', array( $this, 'register' ), PHP_INT_MAX );
 			add_action( 'customize_preview_init', array( $this, 'preview_js' ), PHP_INT_MAX );
 		}
+
+		add_filter( 'body_class', array( $this, 'hfg_body_classes' ) );
+	}
+
+	public function hfg_body_classes( $classes ) {
+		if ( is_customize_preview() ) {
+			$classes[] = 'customize-previewing';
+		}
+
+		return $classes;
 	}
 
 	public function get_builders() {
@@ -69,23 +79,10 @@ class Customizer {
 			true
 		);
 		wp_enqueue_script(
-			'hfg-builder-v2',
-			esc_url( $this->settings->url ) . '/assets/js/customizer/builder-v2' . $suffix . '.js',
-			array(
-				'customize-controls',
-				'jquery-ui-resizable',
-				'jquery-ui-droppable',
-				'jquery-ui-draggable',
-			),
-			false,
-			true
-		);
-		wp_enqueue_script(
 			'hfg-layout-builder',
 			esc_url( $this->settings->url ) . '/assets/js/customizer/builder' . $suffix . '.js',
 			array(
 				'hfg-builder-v1',
-				'hfg-builder-v2',
 			),
 			false,
 			true
@@ -125,7 +122,7 @@ class Customizer {
 				'hfg-customizer-auto-css',
 				'HFGPreviewConfig',
 				array(
-					'fields'         => $this->settings->get_config(),
+					'fields'         => [],
 					'devices'        => array( 'desktop', 'tablet', 'mobile' ),//$this->devices,
 					'typo_fields'    => $this->get_typo_fields(),
 					'styling_config' => $this->get_styling_config(),
