@@ -1,4 +1,11 @@
 
+ ### v2.0.0 - 2019-02-26 
+ **Changes:** 
+ * Refactor the code to allow child themes to override the views folder - https://docs.themeisle.com/article/985-how-to-create-a-child-theme-for-neve
+* Updated the onboarding notice to provide more information
+* Fixed issue with the image source for the Video block for Otter
+* Updated starter sites to use Anchor widgets
+ 
  ### v1.1.4 - 2019-02-08 
  **Changes:** 
  * Fixed alignment issues with the Gallery widget

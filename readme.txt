@@ -17,6 +17,14 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
+= 2.0.0 - 2019-02-26  = 
+
+* Refactor the code to allow child themes to override the views folder - https://docs.themeisle.com/article/985-how-to-create-a-child-theme-for-neve
+* Updated the onboarding notice to provide more information
+* Fixed issue with the image source for the Video block for Otter
+* Updated starter sites to use Anchor widgets
+
+
 = 1.1.4 - 2019-02-08  = 
 
 * Fixed alignment issues with the Gallery widget
