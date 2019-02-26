@@ -95,9 +95,10 @@ class Nav_Walker extends \Walker_Nav_Menu {
 			'menu_id'   => 'nv-primary-navigation',
 			'container' => 'ul',
 			'before'    => '',
+			'echo'      => false,
 			'after'     => '',
 		);
 
-		wp_page_menu( $fallback_args );
+		return wp_page_menu( $fallback_args );
 	}
 }

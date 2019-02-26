@@ -18,9 +18,9 @@ class Main extends Controls_Base {
 	 */
 	public function add_controls() {
 		$this->add_layout_controls();
-		$this->add_control( new Controls\Separator( 'neve_meta_separator', array() ) );
+		$this->add_control( new Controls\Separator( 'neve_meta_separator', array(), 20 ) );
 		$this->add_content_toggles();
-		$this->add_control( new Controls\Separator( 'neve_meta_separator', array() ) );
+		$this->add_control( new Controls\Separator( 'neve_meta_separator', array(), 45 ) );
 		$this->add_content_width();
 	}
 
@@ -35,7 +35,8 @@ class Main extends Controls_Base {
 					'default'     => 'off',
 					'label'       => __( 'Content Width', 'neve' ) . ' (%)',
 					'input_label' => __( 'Enable Individual Content Width', 'neve' ),
-				)
+				),
+				50
 			)
 		);
 		$this->add_control(
@@ -47,7 +48,8 @@ class Main extends Controls_Base {
 					'max'        => 100,
 					'hidden'     => $this->hide_content_width(),
 					'depends_on' => 'neve_meta_enable_content_width',
-				)
+				),
+				55
 			)
 		);
 	}
@@ -61,20 +63,24 @@ class Main extends Controls_Base {
 				'default'     => 'off',
 				'label'       => __( 'Components', 'neve' ),
 				'input_label' => __( 'Disable Header', 'neve' ),
+				'priority'    => 25,
 			),
 			'neve_meta_disable_title'          => array(
 				'default'         => 'off',
 				'input_label'     => __( 'Disable Title', 'neve' ),
 				'active_callback' => array( $this, 'hide_on_single_product' ),
+				'priority'        => 30,
 			),
 			'neve_meta_disable_featured_image' => array(
 				'default'         => 'off',
 				'input_label'     => __( 'Disable Featured Image', 'neve' ),
 				'active_callback' => array( $this, 'hide_on_single_page_and_product' ),
+				'priority'        => 35,
 			),
 			'neve_meta_disable_footer'         => array(
 				'default'     => 'off',
 				'input_label' => __( 'Disable Footer', 'neve' ),
+				'priority'    => 40,
 			),
 		);
 
@@ -83,6 +89,7 @@ class Main extends Controls_Base {
 			'label'           => '',
 			'input_label'     => '',
 			'active_callback' => '__return_true',
+			'priority'        => 10,
 		);
 
 		foreach ( $content_controls as $control_id => $args ) {
@@ -96,7 +103,8 @@ class Main extends Controls_Base {
 						'label'           => $args['label'],
 						'input_label'     => $args['input_label'],
 						'active_callback' => $args['active_callback'],
-					)
+					),
+					$args['priority']
 				)
 			);
 		}
@@ -117,7 +125,8 @@ class Main extends Controls_Base {
 						'full-width' => __( 'Full Width', 'neve' ),
 					),
 					'label'   => __( 'Container', 'neve' ),
-				)
+				),
+				10
 			)
 		);
 		$this->add_control(
@@ -132,7 +141,8 @@ class Main extends Controls_Base {
 						'full-width' => __( 'No Sidebar', 'neve' ),
 					),
 					'label'   => __( 'Sidebar', 'neve' ),
-				)
+				),
+				15
 			)
 		);
 	}

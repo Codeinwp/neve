@@ -21,7 +21,7 @@ class Post_Layout extends Base_View {
 	 * @return void
 	 */
 	public function init() {
-		add_action( 'neve_do_single_post', array( $this, 'render_post_header' ) );
+		add_action( 'neve_do_single_post', array( $this, 'render_post' ) );
 	}
 
 	/**
@@ -29,7 +29,7 @@ class Post_Layout extends Base_View {
 	 *
 	 * @param string $context the context provided in do_action.
 	 */
-	public function render_post_header( $context ) {
+	public function render_post( $context ) {
 		if ( $context !== 'single-post' ) {
 			return;
 		}

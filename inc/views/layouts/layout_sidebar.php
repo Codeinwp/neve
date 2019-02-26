@@ -42,16 +42,15 @@ class Layout_Sidebar extends Base_View {
 		if ( ! is_active_sidebar( $sidebar_setup['sidebar_slug'] ) ) {
 			return;
 		}
-		?>
 
-		<div class="nv-sidebar-wrap col-sm-12 <?php echo esc_attr( 'nv-' . $position ) . ' ' . esc_attr( $sidebar_setup['sidebar_slug'] ); ?>"
-			<?php echo wp_kses_post( apply_filters( 'neve_sidebar_data_attrs', '', $sidebar_setup['sidebar_slug'] ) ); ?>>
-			<?php $this->render_sidebar_close( $sidebar_setup['sidebar_slug'] ); ?>
-			<aside id="secondary" role="complementary">
-				<?php dynamic_sidebar( $sidebar_setup['sidebar_slug'] ); ?>
-			</aside>
-		</div>
-		<?php
+		$args = array(
+			'wrap_classes' => 'nv-' . $position . ' ' . $sidebar_setup['sidebar_slug'],
+			'data_attrs'   => apply_filters( 'neve_sidebar_data_attrs', '', $sidebar_setup['sidebar_slug'] ),
+			'close_button' => $this->get_sidebar_close( $sidebar_setup['sidebar_slug'] ),
+			'slug'         => $sidebar_setup['sidebar_slug'],
+		);
+
+		$this->get_view( 'sidebar', $args );
 	}
 
 	/**
@@ -132,14 +131,17 @@ class Layout_Sidebar extends Base_View {
 	 * Render sidebar toggle.
 	 *
 	 * @param string $slug sidebar slug.
+	 *
+	 * @return string
 	 */
-	private function render_sidebar_close( $slug ) {
+	private function get_sidebar_close( $slug ) {
 		if ( $slug !== 'shop-sidebar' ) {
-			return;
+			return '';
 		}
 		$label        = apply_filters( 'neve_filter_sidebar_close_button_text', __( 'Close', 'neve' ), $slug );
 		$button_attrs = apply_filters( 'neve_filter_sidebar_close_button_data_attrs', '', $slug );
-		echo '<div class="sidebar-header"><span class="nv-sidebar-toggle in-sidebar button button-secondary" ' . esc_attr( $button_attrs ) . '>' . esc_html( $label ) . '</span></div>';
+
+		return '<div class="sidebar-header"><span class="nv-sidebar-toggle in-sidebar button button-secondary" ' . esc_attr( $button_attrs ) . '>' . esc_html( $label ) . '</span></div>';
 	}
 
 	/**

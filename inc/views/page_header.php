@@ -33,7 +33,6 @@ class Page_Header extends Base_View {
 	public function init() {
 		add_action( 'neve_page_header', array( $this, 'render_page_header' ) );
 		add_filter( 'get_the_archive_title', array( $this, 'filter_archive_title' ) );
-		add_action( 'neve_after_page_title', array( $this, 'display_archive_description' ) );
 	}
 
 	/**
@@ -49,14 +48,10 @@ class Page_Header extends Base_View {
 		if ( empty( $title_args['string'] ) ) {
 			return;
 		}
-		?>
-		<div class="nv-page-title-wrap <?php echo esc_attr( $title_args['wrap-class'] ); ?>">
-			<div class="nv-page-title <?php echo esc_attr( $title_args['class'] ); ?>">
-				<h1><?php echo wp_kses_post( html_entity_decode( $title_args['string'] ) ); ?></h1>
-				<?php do_action( 'neve_after_page_title' ); ?>
-			</div>
-		</div>
-		<?php
+
+		$title_args['category_description'] = $this->get_archive_description();
+
+		$this->get_view( 'page-header', $title_args );
 	}
 
 	/**
@@ -124,6 +119,8 @@ class Page_Header extends Base_View {
 	 * Remove "Category:", "Tag:", "Author:" from the archive title.
 	 *
 	 * @param string $title Archive title.
+	 *
+	 * @return string
 	 */
 	public function filter_archive_title( $title ) {
 		if ( is_category() ) {
@@ -150,16 +147,19 @@ class Page_Header extends Base_View {
 	/**
 	 * Add description after the title on archive page.
 	 */
-	public function display_archive_description() {
+	public function get_archive_description() {
 		if ( is_author() ) {
 			$author_meta = get_the_author_meta( 'description' );
-			if ( ! empty( $author_meta ) ) {
-				echo '<p>' . wp_kses_post( $author_meta ) . '</p>';
+			if ( empty( $author_meta ) ) {
+				return '';
 			}
-		} elseif ( is_category() ) {
-			the_archive_description();
-		} elseif ( is_tag() ) {
-			the_archive_description();
+
+			return '<p>' . wp_kses_post( $author_meta ) . '</p>';
 		}
+		if ( is_category() || is_tag() ) {
+			return get_the_archive_description();
+		}
+
+		return '';
 	}
 }
