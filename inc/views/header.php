@@ -50,13 +50,17 @@ class Header extends Base_View {
 		if ( $additional_item === 'none' ) {
 			return '';
 		}
-
-		if ( 'search' === $additional_item || 'search-cart' === $additional_item ) {
+		if ( 'search' === $additional_item ) {
 			return $this->get_nav_menu_search( true );
 		}
-
-		if ( 'cart' === $additional_item || 'search-cart' === $additional_item ) {
+		if ( 'cart' === $additional_item ) {
 			return $this->get_nav_menu_cart( true );
+		}
+		if ( 'search-cart' === $additional_item ) {
+			return $this->get_nav_menu_search( true ) . $this->get_nav_menu_cart( true );
+		}
+		if ( 'cart-search' === $additional_item ) {
+			return $this->get_nav_menu_cart( true ) . $this->get_nav_menu_search( true );
 		}
 	}
 
