@@ -1,10 +1,13 @@
 <?php
 namespace HFG\Core\Builder;
 
+use HFG\Core\Customizer\Image_Radio_Control;
+use HFG\Core\Customizer\Select_Control;
+use HFG\Core\Customizer\Slider_Control;
 use HFG\Core\Interfaces\Builder;
 use HFG\Core\Interfaces\Component;
+use HFG\Core\Settings;
 use WP_Customize_Manager;
-use WP_Customize_Selective_Refresh;
 
 abstract class Abstract_Builder implements Builder {
 
@@ -106,6 +109,8 @@ abstract class Abstract_Builder implements Builder {
 		if ( empty( $rows ) ) {
 			return;
 		}
+
+		$settings = Settings::get_instance();
 		foreach ( $rows as $row_id => $row_label ) {
 			$wp_customize->add_section( $this->control_id . '_' . $row_id, array(
 				'title'    => $row_label,
@@ -118,9 +123,86 @@ abstract class Abstract_Builder implements Builder {
 				'transport' => 'postMessage',
 			) );
 
+			$wp_customize->add_setting( $this->control_id . '_' . $row_id . '_layout',
+				array(
+					'default' => 'layout-full-contained',
+					'theme_supports'  => 'hfg_support',
+					'transport' => 'postMessage',
+				)
+			);
+			$wp_customize->add_control( new Select_Control(
+				$wp_customize,
+				$this->control_id . '_' . $row_id . '_layout',
+				[
+					'label' => __( 'Layout', 'hfg-module' ),
+					'section'  => $this->control_id . '_' . $row_id,
+					'input_attrs' => array(
+						'placeholder' => __( 'Select layout type ...', 'hfg-module' ),
+						'multiselect' => false,
+					),
+					'choices' => array(
+						'layout-full-contained' => __( 'Full Width - Contained', 'hfg-module' ),
+						'layout-fullwidth' => __( 'Full Width', 'hfg-module' ),
+						'layout-contained' => __( 'Contained', 'hfg-module' ),
+					)
+				]
+			) );
+
+			$wp_customize->add_setting( $this->control_id . '_' . $row_id . '_height',
+				array(
+					'default' => 51,
+					'theme_supports'  => 'hfg_support',
+					'transport' => 'postMessage',
+				)
+			);
+			$wp_customize->add_control( new Slider_Control(
+				$wp_customize,
+				$this->control_id . '_' . $row_id . '_height',
+				[
+					'label' => esc_html__( 'Row Height' ),
+					'section'  => $this->control_id . '_' . $row_id,
+					'input_attrs' => array(
+						'min' => 10,
+						'max' => 90,
+						'step' => 1,
+					),
+				]
+			) );
+
+			$wp_customize->add_setting( $this->control_id . '_' . $row_id . '_skin',
+				array(
+					'default' => 'light-mode',
+					'theme_supports'  => 'hfg_support',
+					'transport' => 'postMessage',
+				)
+			);
+			$wp_customize->add_control( new Image_Radio_Control(
+				$wp_customize,
+				$this->control_id . '_' . $row_id . '_skin',
+				[
+					'label' => __( 'Skin Mode' ),
+					'section' => $this->control_id . '_' . $row_id,
+					'choices' => array(
+						'light-mode' => array(
+							'image' => $settings->url . '/assets/images/customizer/text_mode_dark.svg',
+							'name' => __( 'Light Mode' )
+						),
+						'dark-mode' => array(
+							'image' => $settings->url . '/assets/images/customizer/text_mode_light.svg',
+							'name' => __( 'Dark Mode' )
+						),
+					)
+				]
+			) );
+
 			$wp_customize->selective_refresh->add_partial( $this->control_id . '_' . $row_id . '_partial', array(
 				'selector' => '.' . $this->panel,
-				'settings' => array( $this->control_id . '_' . $row_id ),
+				'settings' => array(
+					$this->control_id . '_' . $row_id,
+					$this->control_id . '_' . $row_id . '_layout' ,
+					$this->control_id . '_' . $row_id . '_height' ,
+					$this->control_id . '_' . $row_id . '_skin' ,
+				),
 				'render_callback' => array( $this, 'render' )
 			) );
 		}

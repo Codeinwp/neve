@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100px" height="100px" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>wc-layout-top-medium</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="wc-layout-top-medium" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Wrapper" stroke="#0085BA" fill="#FFFFFF" fill-rule="nonzero" x="0.5" y="0.5" width="99" height="99"></rect>
+        <g id="Large-Slider" transform="translate(1.000000, 1.000000)" fill-rule="nonzero">
+            <rect id="Rectangle" fill="#D8D8D8" x="0" y="0" width="98" height="53"></rect>
+            <g id="Group" transform="translate(19.000000, 6.000000)">
+                <rect id="Rectangle-2" fill="#0085BA" x="0" y="0" width="60" height="35"></rect>
+                <g id="image_icon" transform="translate(25.000000, 13.000000)" fill="#FFFFFF" fill-opacity="0.6">
+                    <path d="M8.86954397,0 L1.13102511,0 C0.507249045,0 0,0.486846099 0,1.08643686 L0,7.91478443 C0,8.51366813 0.507249045,9 1.13102511,9 L8.86951049,9 C9.49328656,9 10,8.51366813 10,7.91478443 L10,1.08643686 C10.0000335,0.486846099 9.49332003,0 8.86954397,0 Z M6.46652986,1.61573897 C7.06975218,1.61573897 7.55895812,2.08545482 7.55895812,2.66457285 C7.55895812,3.24369088 7.06971871,3.71340673 6.46652986,3.71340673 C5.86314017,3.71340673 5.37410161,3.24369088 5.37410161,2.66457285 C5.37410161,2.08545482 5.86314017,1.61573897 6.46652986,1.61573897 Z M8.51484121,7.99622542 L4.99991631,7.99622542 L1.6415882,7.99622542 C1.33987661,7.99622542 1.20550733,7.78664505 1.34151689,7.52808439 L3.2163265,3.96287197 C3.35216869,3.70434345 3.61106555,3.68126743 3.79440898,3.91128839 L5.67959589,6.27661223 C5.86293932,6.50666533 6.18339699,6.52623817 6.39549558,6.32012884 L6.85668281,5.87175348 C7.06861403,5.66564416 7.38087029,5.69116276 7.55383642,5.92838293 L8.74806263,7.56616946 C8.92069401,7.80374316 8.8165528,7.99622542 8.51484121,7.99622542 Z" id="Shape"></path>
+                </g>
+            </g>
+            <circle id="Oval" fill-opacity="0.5" fill="#FFFFFF" cx="75" cy="23" r="2"></circle>
+            <circle id="Oval-Copy" fill-opacity="0.5" fill="#FFFFFF" cx="23" cy="23" r="2"></circle>
+        </g>
+        <rect id="Rectangle-5" fill-opacity="0.8" fill="#FFFFFF" fill-rule="nonzero" x="38" y="45" width="6" height="6" rx="0.5"></rect>
+        <rect id="Rectangle-5-Copy" fill-opacity="0.8" fill="#FFFFFF" fill-rule="nonzero" x="47" y="45" width="6" height="6" rx="0.5"></rect>
+        <rect id="Rectangle-5-Copy-2" fill-opacity="0.8" fill="#FFFFFF" fill-rule="nonzero" x="56" y="45" width="6" height="6" rx="0.5"></rect>
+        <rect id="Rectangle-6" fill="#D8D8D8" fill-rule="nonzero" x="7" y="60" width="48" height="33"></rect>
+        <rect id="Rectangle-6-Copy" fill="#D8D8D8" fill-rule="nonzero" x="59" y="60" width="34" height="33"></rect>
+    </g>
+</svg>

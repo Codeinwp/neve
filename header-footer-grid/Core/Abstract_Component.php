@@ -2,6 +2,7 @@
 namespace HFG\Core;
 
 use HFG\Core\Customizer\Heading_Control;
+use HFG\Core\Customizer\Select_Control;
 use HFG\Core\Interfaces\Component;
 use WP_Customize_Manager;
 
@@ -16,6 +17,9 @@ abstract class Abstract_Component implements Component {
 	protected $label;
 	protected $priority;
 	protected $panel;
+
+	public $current_x = null;
+	public $current_width = null;
 
 	public function get_settings() {
 		return array(
@@ -66,6 +70,35 @@ abstract class Abstract_Component implements Component {
 				'label'    => __( 'Item Layout', 'hfg-module' ),
 			]
 		) );
+
+
+		$wp_customize->add_setting( $this->id . '_merge',
+			array(
+				'default' => 'no',
+				'theme_supports'  => 'hfg_support',
+				'transport' => 'postMessage',
+			)
+		);
+		$wp_customize->add_control( new Select_Control(
+			$wp_customize,
+			$this->id . '_merge',
+			[
+				'label' => __( 'Merge Component', 'hfg-module' ),
+				'description' => esc_html__( 'If you choose to merge this item, the alignment setting will inherit from the item you are merging.', 'hfg-module' ),
+				'priority' => 801,
+				'section'  => $this->section,
+				'input_attrs' => array(
+					'placeholder' => __( 'Select merge type ...', 'hfg-module' ),
+					'multiselect' => false,
+				),
+				'choices' => array(
+					'no' => __( 'No', 'hfg-module' ),
+					'right' => __( 'Merge Right', 'hfg-module' ),
+					'left' => __( 'Merge Left', 'hfg-module' ),
+				)
+			]
+		) );
+
 		return $wp_customize;
 	}
 

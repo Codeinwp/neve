@@ -30,7 +30,6 @@ class Header extends Abstract_Builder {
 	}
 
 	public function header_render() {
-		//echo '<div id=" ' . $this->panel . ' ">' . $this->render() . '</div>';
 		$html = '<header id="masthead" class=" ' . $this->panel . ' site-header">';
 		$html .=     '<div id="masthead-inner" class="site-header-inner">';
 		$html .=        $this->render();
@@ -39,64 +38,106 @@ class Header extends Abstract_Builder {
 		echo $html;
 	}
 
+	protected function render_mobile_sidebar( $row, $classes ) {
+		if ( empty ( $row ) ) {
+			return '';
+		}
+
+		$classes[] = 'header-menu-sidebar menu-sidebar-panel';
+
+		$html = '<div id="header-menu-sidebar" class="' . esc_attr( join( ' ', $classes ) ) . '">';
+		$html .= '<div id="header-menu-sidebar-bg" class="header-menu-sidebar-bg">';
+		$html .= '<div id="header-menu-sidebar-inner" class="header-menu-sidebar-inner">';
+		$html .= $this->render_row( $row, $html );
+		$html .= '</div>';
+		$html .= '</div>';
+		$html .= '</div>';
+
+		return $html;
+	}
+
+	protected function render_row( $row, &$html ) {
+		$max_columns = 12;
+		$last_item = null;
+
+		$collection = new CachingIterator( new ArrayIterator(
+			$row
+		) , CachingIterator::TOSTRING_USE_CURRENT );
+		foreach ( $collection as $component_location ) {
+			/**
+			 * @var Abstract_Component $component
+			 */
+			$component = $this->builder_components[ $component_location['id'] ];
+			$x        = intval( $component_location['x'] );
+			$width    = intval( $component_location['width'] );
+			if ( ! $collection->hasNext() && ( $x + $width < $max_columns ) ) {
+				$width += $max_columns - ( $x + $width );
+			}
+
+			$push_left = '';
+			if ( $x > 0 && $last_item !== null ) {
+				$o = intval( $last_item['width'] ) + intval( $last_item['x'] );
+				if( $x - $o > 0 ) {
+					$x = $x - $o;
+					$push_left = 'off-' . $x;
+				}
+			} elseif ( $x > 0 ) {
+				$push_left = 'off-' . $x;
+			}
+
+			$component->current_x = $x;
+			$component->current_width = $width;
+
+			$html .= '<div class="hfg-col-' . $width . '_md-' . $width . '_sm-' . $width . ' builder-item" data-push-left="' . $push_left . '">';
+			$html .= $component->render();
+			$html .= '</div>';
+
+			$last_item = $component_location;
+		}
+	}
+
 	public function render() {
 		$html = '';
-		$max_columns = 12;
 		$layout = json_decode( get_theme_mod( $this->control_id ), true );
-		$device = $layout['desktop'];
-		//foreach ( $layout as $device ) {
+		$desktop_items = $layout['desktop'];
+		$mobile_items = $layout['mobile'];
+		foreach ( $layout as $device_name => $device ) {
+			$classes = array();
+
+			if ( $device_name === 'desktop' && ! empty( $mobile_items ) ) {
+				$classes[] = 'hide-on-mobile hide-on-tablet';
+			}
+
+			if ( $device_name === 'mobile' && ! empty( $desktop_items ) ) {
+				$classes[] = 'hide-on-desktop';
+			}
+
 			foreach ( $device as $index => $row ) {
-				$last_item = null;
-				//echo $index;
-				//echo json_encode( $row );
+
+				if ( $index === 'sidebar' && $device_name === 'mobile' ) {
+					$html .= $this->render_mobile_sidebar( $row, $classes );
+					continue;
+				}
 
 				if ( empty( $row ) ) {
 					continue;
 				}
-				$html .= '<div class="header-' . $index . ' header--row" id="cb-row--header-' . $index . '" data-row-id="' . $index . '" data-show-on="' . 'desktop' . '">';
-				$html .= '<div class="header--row-inner header-' . $index . '-inner">';
+
+				$classes[] = get_theme_mod( $this->control_id . '_' . $index . '_layout' );
+				$skin_mode = get_theme_mod( $this->control_id . '_' . $index . '_skin' );
+
+				$html .= '<div class="header-' . $index . ' ' . join( ' ', $classes ) . ' header--row" id="cb-row--header-' . $index . '" data-row-id="' . $index . '" data-show-on="' . $device_name . '">';
+				$html .= '<div class="header--row-inner header-' . $index . '-inner ' . $skin_mode . '">';
 				$html .= '<div class="hfg-container">';
 				$html .= '<div class="hfg-grid hfg-grid-middle">';
-
-				$collection = new CachingIterator( new ArrayIterator(
-					$row
-				) , CachingIterator::TOSTRING_USE_CURRENT );
-				foreach ( $collection as $component_location ) {
-					/**
-					 * @var Abstract_Component $component
-					 */
-					$component = $this->builder_components[ $component_location['id'] ];
-					$x        = intval( $component_location['x'] );
-					$width    = intval( $component_location['width'] );
-					if ( ! $collection->hasNext() && ( $x + $width < $max_columns ) ) {
-						$width += $max_columns - ( $x + $width );
-					}
-
-					$push_left = '';
-					if ( $x > 0 && $last_item !== null ) {
-						$o = intval( $last_item['width'] ) + intval( $last_item['x'] );
-						if( $x - $o > 0 ) {
-							$x = $x - $o;
-							$push_left = 'off-' . $x;
-						}
-					} elseif ( $x > 0 ) {
-						$push_left = 'off-' . $x;
-					}
-
-					$html .= '<div class="hfg-col-' . $width . '_md-' . $width . '_sm-' . $width . ' builder-item" data-push-left="' . $push_left . '">';
-					$html .= $component->render();
-					$html .= '</div>';
-
-					$last_item = $component_location;
-				}
+				$html .= $this->render_row( $row, $html );
 				$html .= '</div>';
 				$html .= '</div>';
 				$html .= '</div>';
 				$html .= '</div>';
 			}
-		//}
+		}
 
-		//echo $layout;
 		return $html;
 	}
 }
