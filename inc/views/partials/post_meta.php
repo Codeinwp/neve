@@ -45,11 +45,17 @@ class Post_Meta extends Base_View {
 		foreach ( $order as $meta ) {
 			switch ( $meta ) {
 				case 'author':
-					$author_email = get_the_author_meta( 'user_email' );
-					$avatar_url   = get_avatar_url( $author_email );
-					$markup      .= '<li class="meta author vcard">';
-					$markup      .= '<img class="photo" alt="' . get_the_author() . '" src="' . esc_url( $avatar_url ) . '" />&nbsp;<span class="author-name fn">' . wp_kses_post( get_the_author_posts_link() ) . '</span>';
-					$markup      .= '</li>';
+					$author_email  = get_the_author_meta( 'user_email' );
+					$avatar_url    = get_avatar_url( $author_email );
+					$avatar_markup = '<img class="photo" alt="' . get_the_author() . '" src="' . esc_url( $avatar_url ) . '" />&nbsp;';
+					$display_avatar        = apply_filters( 'neve_display_author_avatar', true );
+
+					$markup        .= '<li class="meta author vcard">';
+					if ( $display_avatar ) {
+						$markup .= $avatar_markup;
+					}
+					$markup        .= '<span class="author-name fn">' . wp_kses_post( get_the_author_posts_link() ) . '</span>';
+					$markup        .= '</li>';
 					break;
 				case 'date':
 					$markup .= '<li class="meta date posted-on">';
@@ -130,12 +136,12 @@ class Post_Meta extends Base_View {
 		if ( ! is_array( $tags ) ) {
 			return;
 		}
-		$html  = '<div class="nv-tags-list">';
+		$html = '<div class="nv-tags-list">';
 		$html .= '<span>' . __( 'Tags', 'neve' ) . ':</span>';
 		foreach ( $tags as $tag ) {
 			$tag_link = get_tag_link( $tag->term_id );
-			$html    .= '<a href=' . esc_url( $tag_link ) . ' title="' . esc_attr( $tag->name ) . '" class=' . esc_attr( $tag->slug ) . ' rel="tag">';
-			$html    .= esc_html( $tag->name ) . '</a>';
+			$html     .= '<a href=' . esc_url( $tag_link ) . ' title="' . esc_attr( $tag->name ) . '" class=' . esc_attr( $tag->slug ) . ' rel="tag">';
+			$html     .= esc_html( $tag->name ) . '</a>';
 		}
 		$html .= ' </div> ';
 		echo $html;
