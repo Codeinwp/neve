@@ -126,8 +126,23 @@ class Header extends Abstract_Builder {
 				$classes[] = get_theme_mod( $this->control_id . '_' . $index . '_layout' );
 				$skin_mode = get_theme_mod( $this->control_id . '_' . $index . '_skin' );
 
+				$row_styles = '';
+				$row_styles_array = [];
+				$row_height = get_theme_mod( $this->control_id . '_' . $index . '_height' );
+				if ( $row_height ) {
+					$row_styles_array['height'] =  $row_height . 'px;';
+				}
+
+				if ( ! empty( $row_styles_array ) ) {
+					$row_styles = ' style="';
+					foreach ( $row_styles_array as $key => $value ) {
+						$row_styles .= sprintf( '%1$s: %2$s', $key, $value );
+					}
+					$row_styles .= '" ';
+				}
+
 				$html .= '<div class="header-' . $index . ' ' . join( ' ', $classes ) . ' header--row" id="cb-row--header-' . $index . '" data-row-id="' . $index . '" data-show-on="' . $device_name . '">';
-				$html .= '<div class="header--row-inner header-' . $index . '-inner ' . $skin_mode . '">';
+				$html .= '<div class="header--row-inner header-' . $index . '-inner ' . $skin_mode . '"' . $row_styles . '>';
 				$html .= '<div class="hfg-container">';
 				$html .= '<div class="hfg-grid hfg-grid-middle">';
 				$html .= $this->render_row( $row, $html );

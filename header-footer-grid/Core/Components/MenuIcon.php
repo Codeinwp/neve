@@ -2,18 +2,17 @@
 namespace HFG\Core\Components;
 
 use HFG\Core\Abstract_Component;
-use WP_Customize_Color_Control;
 use WP_Customize_Manager;
 
-class Button extends Abstract_Component {
+class MenuIcon extends Abstract_Component {
 
 	public function __construct( $panel ) {
-		$this->set_property( 'label', __( 'Button', 'hfg-module' ) );
-		$this->set_property( 'id', 'button_base' );
+		$this->set_property( 'label', __( 'Menu Icon', 'hfg-module' ) );
+		$this->set_property( 'id', 'nav-icon' );
 		$this->set_property( 'col', 0 );
 		$this->set_property( 'row', 'top' );
-		$this->set_property( 'width', 1 );
-		$this->set_property( 'section', 'header_button' );
+		$this->set_property( 'width', 3 );
+		$this->set_property( 'section', 'header_menu_icon' );
 		$this->set_property( 'panel', $panel );
 	}
 
@@ -40,7 +39,7 @@ class Button extends Abstract_Component {
 
 		$wp_customize->add_setting( $prefix . '_text' . '_setting' , array(
 			'theme_supports'  => 'hfg_support',
-			'default'   => __( 'Button', 'hfg-module' ),
+			'default'   => __( 'Menu', 'hfg-module' ),
 			'transport' => 'refresh',
 		) );
 
@@ -58,25 +57,22 @@ class Button extends Abstract_Component {
 	}
 
 	public function render() {
-		$item_classes   = array();
-		$item_classes[] = 'item--inner';
-		$item_classes[] = 'builder-item--' . $this->id;
-		if ( strpos( $this->id, '-menu' ) ) {
-			$item_classes[] = 'has_menu';
-		}
-		if ( is_customize_preview() ) {
-			$item_classes[] = ' builder-item-focus';
-		}
+		$label      = get_theme_mod( $this->section . '_text' . '_setting' );
+		$show_label = true;
 
-		$item_classes   = join( ' ', $item_classes );
+		$classes       = array( 'menu-mobile-toggle item-button' );
+		$label_classes = array( 'nav-icon--label' );
 
-		$html = '';
-		$html .= '<div class="' . esc_attr( $item_classes ) . '" data-section="' . $this->section . '" data-item-id="' . esc_attr( $this->id ) . '" >';
-		$html .= '<button>' . get_theme_mod( $this->section . '_text' . '_setting' ) . '</button>';
-		if ( is_customize_preview() ) {
-			$html .= '<span class="item--preview-name">' . esc_html( $this->label ) . '</span>';
+		$html = '<a class="' . esc_attr( join( ' ', $classes ) ) . '">';
+		$html .= '<span class="hamburger hamburger--squeeze">';
+		$html .= '<span class="hamburger-box">';
+		$html .= '<span class="hamburger-inner"></span>';
+		$html .= '</span>';
+		$html .= '</span>';
+		if ( $show_label ) {
+			$html .= '</span>';
 		}
-		$html .= '</div>';
+		$html .= '<span class="' . esc_attr( join( ' ', $label_classes ) ) . '">' . $label . '</span>';
 
 		return $html;
 	}

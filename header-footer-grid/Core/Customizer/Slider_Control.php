@@ -36,8 +36,8 @@ class Slider_Control extends WP_Customize_Control {
 	 * Enqueue our scripts and styles
 	 */
 	public function enqueue() {
-		wp_enqueue_script( 'skyrocket-custom-controls-js', $this->hfg_settings->url . '/assets/js/customizer/hfg_controls.js', array( 'jquery', 'jquery-ui-core' ), '1.0', true );
-		wp_enqueue_style( 'skyrocket-custom-controls-css', $this->hfg_settings->url . '/assets/css/admin/hfg_controls.css', array(), '1.0', 'all' );
+		wp_enqueue_script( 'hfg-custom-controls-js', $this->hfg_settings->url . '/assets/js/customizer/hfg_controls.js', array( 'jquery', 'jquery-ui-core' ), '1.0', true );
+		wp_enqueue_style( 'hfg-custom-controls-css', $this->hfg_settings->url . '/assets/css/admin/hfg_controls.css', array(), '1.0', 'all' );
 	}
 
 	/**
