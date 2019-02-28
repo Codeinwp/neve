@@ -90,15 +90,13 @@
     border: none;
 
     tbody {
+      font-size: .85em;
       th, td {
+        font-weight: 400;
         vertical-align: top;
         border-bottom: 0;
         border-top: 1px solid #f0f0f0;
       }
-    }
-
-    td {
-      background: none !important;
     }
 
     tr.shipping {

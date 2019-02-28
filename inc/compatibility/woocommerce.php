@@ -276,8 +276,15 @@ class Woocommerce {
 		return $color_setup;
 	}
 
+	/**
+	 * Add font family selectors.
+	 *
+	 * @param string $selectors css selectors to apply body font family to.
+	 *
+	 * @return string
+	 */
 	public function add_font_families( $selectors ) {
-		$selectors .= ',.cart_totals > h2, .cross-sells > h2, .woocommerce-billing-fields > h3, #order_review_heading';
+		$selectors .= ',.cart_totals > h2, .cross-sells > h2, .woocommerce-billing-fields > h3, #order_review_heading, .woocommerce-shipping-fields > h3';
 
 		return $selectors;
 	}
