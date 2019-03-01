@@ -145,12 +145,12 @@ class Logo extends Abstract_Component {
 
 	protected function render_name( &$html ) {
 		$tag = is_customize_preview() ? 'h2' : '__site_device_tag__';
-		if ( is_front_page() && is_home() ) {
-			$html .= '<' . $tag . ' class="site-title">';
-			$html .= '<a href="' . esc_url( home_url( '/' ) ) . '" rel="home">' . get_bloginfo( 'name', 'display' ) . '</a>';
-			$html .= '</' . $tag . '>';
-			return;
-		}
+//		if ( is_front_page() && is_home() ) {
+//			$html .= '<' . $tag . ' class="site-title">';
+//			$html .= '<a href="' . esc_url( home_url( '/' ) ) . '" rel="home">' . get_bloginfo( 'name', 'display' ) . '</a>';
+//			$html .= '</' . $tag . '>';
+//			return;
+//		}
 		$html .= '<p class="site-title">';
 		$html .= '<a href="' . esc_url( home_url( '/' ) ) . '" rel="home">' . get_bloginfo( 'name', 'display' ) . '</a>';
 		$html .= '</p>';

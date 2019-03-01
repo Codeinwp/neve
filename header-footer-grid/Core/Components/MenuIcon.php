@@ -60,10 +60,23 @@ class MenuIcon extends Abstract_Component {
 		$label      = get_theme_mod( $this->section . '_text' . '_setting' );
 		$show_label = true;
 
-		$classes       = array( 'menu-mobile-toggle item-button' );
+		$item_classes   = array();
+		$item_classes[] = 'item--inner';
+		$item_classes[] = 'builder-item--' . $this->id;
+		if ( strpos( $this->id, '-menu' ) ) {
+			$item_classes[] = 'has_menu';
+		}
+		if ( is_customize_preview() ) {
+			$item_classes[] = ' builder-item-focus';
+		}
+
+		$item_classes[] = 'menu-mobile-toggle item-button';
+		$item_classes[] = 'is-size-desktop-medium';
+		$item_classes[] = 'is-size-tablet-medium';
+		$item_classes[] = 'is-size-mobile-medium';
 		$label_classes = array( 'nav-icon--label' );
 
-		$html = '<a class="' . esc_attr( join( ' ', $classes ) ) . '">';
+		$html = '<a class="' . esc_attr( join( ' ', $item_classes ) ) .  '">';
 		$html .= '<span class="hamburger hamburger--squeeze">';
 		$html .= '<span class="hamburger-box">';
 		$html .= '<span class="hamburger-inner"></span>';
@@ -73,6 +86,11 @@ class MenuIcon extends Abstract_Component {
 			$html .= '</span>';
 		}
 		$html .= '<span class="' . esc_attr( join( ' ', $label_classes ) ) . '">' . $label . '</span>';
+
+		if ( is_customize_preview() ) {
+			$html .= '<span class="item--preview-name">' . esc_html( $this->label ) . '</span>';
+		}
+		$html .= '</a>';
 
 		return $html;
 	}

@@ -150,7 +150,7 @@ abstract class Abstract_Builder implements Builder {
 
 			$wp_customize->add_setting( $this->control_id . '_' . $row_id . '_height',
 				array(
-					'default' => 51,
+					'default' => 0,
 					'theme_supports'  => 'hfg_support',
 					'transport' => 'postMessage',
 				)
@@ -162,8 +162,8 @@ abstract class Abstract_Builder implements Builder {
 					'label' => esc_html__( 'Row Height' ),
 					'section'  => $this->control_id . '_' . $row_id,
 					'input_attrs' => array(
-						'min' => 10,
-						'max' => 90,
+						'min' => 0,
+						'max' => 300,
 						'step' => 1,
 					),
 				]

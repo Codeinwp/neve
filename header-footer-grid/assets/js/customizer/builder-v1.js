@@ -1557,10 +1557,11 @@ var CustomizeBuilder_V1;
 			addExistingRowsItems: function() {
 				var that = this;
 
-				var data = JSON.parse( wpcustomize.control(that.controlId).setting.get() );
-				console.log( 'addExistingRowsItems :::' );
-				console.log( that.controlId );
-				console.log( data );
+				var data = false;
+				if ( wpcustomize.control(that.controlId).setting.get() ) {
+					data = JSON.parse( wpcustomize.control(that.controlId).setting.get() );
+				}
+
 				if (!_.isObject(data)) {
 					data = {};
 				}

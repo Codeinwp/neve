@@ -31,6 +31,7 @@ class Main {
 	}
 
 	public function init() {
+		$this->register_sidebars();
 		$customizer = new Customizer( $this->settings );
 
 		add_filter( 'hfg-active', array( $this, 'is_active' ) );
@@ -43,6 +44,27 @@ class Main {
 
 	public function is_active() {
 		return true;
+	}
+
+	public function register_sidebars() {
+		for ( $i = 1; $i <= 6; $i ++ ) {
+			register_sidebar(
+				array(
+					/* translators: 1: Widget number. */
+					'name'          => sprintf( __( 'Footer Sidebar %d', 'hfg-module' ), $i ),
+					'id'            => 'footer-' . $i,
+					'description'   => __( 'Add widgets here.', 'hfg-module' ),
+					'before_widget' => '<section id="%1$s" class="widget %2$s">',
+					'after_widget'  => '</section>',
+					'before_title'  => '<h4 class="widget-title">',
+					'after_title'   => '</h4>',
+				)
+			);
+		}
+
+//		global $wp_registered_sidebars;
+//
+//		var_dump( $wp_registered_sidebars );
 	}
 
 	/**

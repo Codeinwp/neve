@@ -9,6 +9,15 @@ add_theme_support(
 				'HFG\Core\Components\MenuIcon',
 				'HFG\Core\Components\Button',
 				'HFG\Core\Components\ButtonTwo',
+			),
+			'HFG\Core\Builder\Footer' => array(
+				'HFG\Core\Components\FooterWidgetOne',
+				'HFG\Core\Components\FooterWidgetTwo',
+				'HFG\Core\Components\FooterWidgetThree',
+				'HFG\Core\Components\FooterWidgetFour',
+				'HFG\Core\Components\FooterWidgetFive',
+				'HFG\Core\Components\FooterWidgetSix',
+				'HFG\Core\Components\Copyright',
 			)
 		)
 	)

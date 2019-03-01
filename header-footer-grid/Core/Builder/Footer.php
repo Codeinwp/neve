@@ -6,54 +6,26 @@ use ArrayIterator;
 use CachingIterator;
 use HFG\Core\Abstract_Component;
 
-class Header extends Abstract_Builder {
+class Footer extends Abstract_Builder {
 
 	public function __construct() {
-		$this->set_property( 'title', __( 'HFG Header', 'hfg-module' ) );
-		$this->set_property( 'control_id', 'hfg_header_layout' );
-		$this->set_property( 'panel', 'hfg_header' );
-		$this->set_property( 'remove_panels', [ 'neve_header' ] );
+		$this->set_property( 'title', __( 'HFG Footer', 'hfg-module' ) );
+		$this->set_property( 'control_id', 'hfg_footer_layout' );
+		$this->set_property( 'panel', 'hfg_footer' );
+		$this->set_property( 'remove_sections', [ 'neve_footer' ] );
 
-		add_action( 'hfg-header-render', array( $this, 'header_render' ) );
+		$this->devices = [
+			'desktop' => 'Footer Layout',
+		];
+
+		add_action( 'hfg-footer-render', array( $this, 'footer_render' ) );
 	}
 
-	private function _sort_items_by_position( $items = array() ) {
-		$ordered_items = array();
-
-		foreach ( $items as $key => $item ) {
-			$ordered_items[ $key ] = $item['x'];
-		}
-
-		array_multisort( $ordered_items, SORT_ASC, $items );
-
-		return $items;
-	}
-
-	public function header_render() {
-		$html = '<header id="masthead" class=" ' . $this->panel . ' site-header">';
-		$html .=     '<div id="masthead-inner" class="site-header-inner">';
-		$html .=        $this->render();
-		$html .=    '</div>';
-		$html .='</header>';
+	public function footer_render() {
+		$html = '<footer class="site-footer" id="site-footer">';
+		$html .= $this->render();
+		$html .='</footer>';
 		echo $html;
-	}
-
-	protected function render_mobile_sidebar( $row, $classes ) {
-		if ( empty ( $row ) ) {
-			return '';
-		}
-
-		$classes[] = 'header-menu-sidebar menu-sidebar-panel';
-
-		$html = '<div id="header-menu-sidebar" class="' . esc_attr( join( ' ', $classes ) ) . '">';
-		$html .= '<div id="header-menu-sidebar-bg" class="header-menu-sidebar-bg">';
-		$html .= '<div id="header-menu-sidebar-inner" class="header-menu-sidebar-inner">';
-		$html .= $this->render_row( $row, $html );
-		$html .= '</div>';
-		$html .= '</div>';
-		$html .= '</div>';
-
-		return $html;
 	}
 
 	protected function render_row( $row, &$html ) {
@@ -99,25 +71,11 @@ class Header extends Abstract_Builder {
 	public function render() {
 		$html = '';
 		$layout = json_decode( get_theme_mod( $this->control_id ), true );
-		$desktop_items = $layout['desktop'];
-		$mobile_items = $layout['mobile'];
+
 		foreach ( $layout as $device_name => $device ) {
 			$classes = array();
 
-			if ( $device_name === 'desktop' && ! empty( $mobile_items ) ) {
-				$classes[] = 'hide-on-mobile hide-on-tablet';
-			}
-
-			if ( $device_name === 'mobile' && ! empty( $desktop_items ) ) {
-				$classes[] = 'hide-on-desktop';
-			}
-
 			foreach ( $device as $index => $row ) {
-
-				if ( $index === 'sidebar' && $device_name === 'mobile' ) {
-					$html .= $this->render_mobile_sidebar( $row, $classes );
-					continue;
-				}
 
 				if ( empty( $row ) ) {
 					continue;
@@ -144,8 +102,8 @@ class Header extends Abstract_Builder {
 					$row_styles .= '" ';
 				}
 
-				$html .= '<div class="header-' . $index . ' ' . join( ' ', $classes ) . ' header--row" id="cb-row--header-' . $index . '" data-row-id="' . $index . '" data-show-on="' . $device_name . '">';
-				$html .= '<div class="header--row-inner header-' . $index . '-inner ' . $skin_mode . '"' . $row_styles . '>';
+				$html .= '<div class="footer-' . $index . ' ' . join( ' ', $classes ) . ' header--row" id="cb-row--footer-' . $index . '" data-row-id="' . $index . '" data-show-on="' . $device_name . '">';
+				$html .= '<div class="footer--row-inner footer-' . $index . '-inner ' . $skin_mode . '"' . $row_styles . '>';
 				$html .= '<div class="hfg-container">';
 				$html .= '<div class="hfg-grid hfg-grid-' . $index . '">';
 				$html .= $this->render_row( $row, $html );
@@ -157,5 +115,12 @@ class Header extends Abstract_Builder {
 		}
 
 		return $html;
+	}
+
+	protected function get_rows() {
+		return [
+			'top' => 'Footer Top',
+			'bottom' => 'Footer Bottom',
+		];
 	}
 }
