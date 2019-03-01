@@ -476,10 +476,10 @@
 }
 .woocommerce-checkout #payment .place-order {
   margin-bottom: 0;
-  font-size: 1.5em;
 }
 .woocommerce-checkout #payment .place-order button {
   width: 100%;
+  font-size: 1.2em;
   float: none;
 }
 .woocommerce-checkout .about_paypal {
