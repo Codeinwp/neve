@@ -118,10 +118,10 @@ class Template_Parts extends Base_View {
 		$markup = '<div class="nv-post-thumbnail-wrap">';
 
 		$markup .= '<a href="' . esc_url( get_the_permalink() ) . '" rel="bookmark" title="' . the_title_attribute(
-				array(
-					'echo' => false,
-				)
-			) . '">';
+			array(
+				'echo' => false,
+			)
+		) . '">';
 		$markup .= get_the_post_thumbnail(
 			get_the_ID(),
 			'neve-blog'
@@ -224,10 +224,11 @@ class Template_Parts extends Base_View {
 			$new_moretag = '';
 		}
 
-		$read_more_args = apply_filters( 'neve_read_more_args',
+		$read_more_args = apply_filters(
+			'neve_read_more_args',
 			array(
 				'text'    => esc_html__( 'Read More &raquo;', 'neve' ),
-				'classes' => ''
+				'classes' => '',
 			)
 		);
 
@@ -248,7 +249,7 @@ class Template_Parts extends Base_View {
 		if ( ! empty( $read_more_args['text'] ) ) {
 
 			$new_read_more = sprintf(
-			/* translators: %s - read more text */
+				/* translators: %s - read more text */
 				$read_more_format,
 				$read_more_text
 			);

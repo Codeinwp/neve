@@ -57,7 +57,7 @@ class Layout_Single_Post extends Base_Customizer {
 				'thumbnail',
 				'content',
 				'tags',
-				'comments'
+				'comments',
 			)
 		);
 
