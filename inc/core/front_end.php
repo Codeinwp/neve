@@ -113,6 +113,14 @@ class Front_End {
 						'url'   => 'https://demo.themeisle.com/neve-charity/',
 						'title' => 'Neve Charity',
 					),
+					'neve-freelancer'       => array(
+						'url'   => 'https://demo.themeisle.com/neve-freelancer/',
+						'title' => 'Neve Freelancer',
+					),
+					'neve-scholar'       => array(
+						'url'   => 'https://demo.themeisle.com/neve-scholar/',
+						'title' => 'Neve Scholar',
+					),
 				),
 			),
 			'can_migrate' => array(
