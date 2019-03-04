@@ -103,8 +103,8 @@ class Layout_Single_Post extends Base_Customizer {
 			'tags',
 			'post-navigation',
 			'comments',
-			'author_biography',
-			'related_posts',
+			'author-biography',
+			'related-posts',
 		);
 
 		if ( empty( $value ) ) {
