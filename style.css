@@ -1827,6 +1827,7 @@ pre {
 }
 
 .aligncenter {
+  display: block;
   text-align: center;
   margin: 0 auto;
 }
@@ -2262,6 +2263,10 @@ hr {
     max-width: 70%;
   }
 
+  .neve-main > .container > .row {
+    flex-wrap: nowrap;
+  }
+
   .navbar-toggle-wrapper {
     display: none;
   }
@@ -2510,6 +2515,9 @@ hr {
   }
   .nv-sidebar-wrap.nv-left {
     border-right: 1px solid #f0f0f0;
+  }
+  .nv-sidebar-wrap .row {
+    flex-wrap: nowrap;
   }
 
   .nv-index-posts:not(:only-child) {
