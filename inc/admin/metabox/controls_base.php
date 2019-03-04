@@ -28,8 +28,6 @@ abstract class Controls_Base {
 	 */
 	public function init() {
 		$this->add_controls();
-		add_action( 'save_post', array( $this, 'save' ) );
-		add_action( 'neve_settings_render_metabox_controls', array( $this, 'render_controls' ) );
 	}
 
 	/**
@@ -47,22 +45,11 @@ abstract class Controls_Base {
 	}
 
 	/**
-	 * The metabox content.
+	 * Get the controls.
+	 *
+	 * @return array
 	 */
-	public function render_controls() {
-		global $post;
-
-		foreach ( $this->controls as $control ) {
-			$control->render( $post->ID );
-		}
-	}
-
-	/**
-	 * Save metabox content.
-	 */
-	public function save( $post_id ) {
-		foreach ( $this->controls as $control ) {
-			$control->save( $post_id );
-		}
+	public function get_controls() {
+		return $this->controls;
 	}
 }

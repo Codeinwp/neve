@@ -29,16 +29,13 @@ class Template_Parts extends Base_View {
 	 * Render the post.
 	 */
 	public function render_post() {
-		?>
-		<article id="post-<?php echo esc_attr( get_the_ID() ); ?>"
-				class="<?php echo esc_attr( $this->post_class() ); ?>">
-			<div class="article-content-col">
-				<div class="content">
-					<?php $this->render_article_inner_content(); ?>
-				</div>
-			</div>
-		</article>
-		<?php
+		$args = array(
+			'post_id'    => 'post-' . get_the_ID(),
+			'post_class' => $this->post_class(),
+			'content'    => $this->get_article_inner_content(),
+		);
+
+		$this->get_view( 'archive-post', $args );
 	}
 
 	/**
@@ -59,17 +56,21 @@ class Template_Parts extends Base_View {
 
 	/**
 	 * Render inner content for <article>
+	 *
+	 * @return string
 	 */
-	private function render_article_inner_content() {
-		if ( $this->get_layout() !== 'grid' ) {
-			$this->post_thumbnail();
-			echo '<div class="non-grid-content ' . esc_attr( $this->get_layout() ) . '-layout-content">';
-			$this->title();
-			$this->meta();
-			$this->excerpt();
-			echo '</div>';
+	private function get_article_inner_content() {
+		$markup = '';
 
-			return;
+		if ( $this->get_layout() !== 'grid' ) {
+			$markup .= $this->get_post_thumbnail();
+			$markup .= '<div class="non-grid-content ' . esc_attr( $this->get_layout() ) . '-layout-content">';
+			$markup .= $this->get_title();
+			$markup .= $this->get_meta();
+			$markup .= $this->get_excerpt();
+			$markup .= '</div>';
+
+			return $markup;
 		}
 
 		$default_order = array(
@@ -82,33 +83,37 @@ class Template_Parts extends Base_View {
 		foreach ( $order as $content_bit ) {
 			switch ( $content_bit ) {
 				case 'thumbnail':
-					$this->post_thumbnail();
+					$markup .= $this->get_post_thumbnail();
 					break;
 				case 'title':
-					$this->title();
+					$markup .= $this->get_title();
 					break;
 				case 'meta':
-					$this->meta();
+					$markup .= $this->get_meta();
 					break;
 				case 'title-meta':
-					$this->title();
-					$this->meta();
+					$markup .= $this->get_title();
+					$markup .= $this->get_meta();
 					break;
 				case 'excerpt':
-					$this->excerpt();
+					$markup .= $this->get_excerpt();
 					break;
 				case 'default':
 					break;
 			}
 		}
+
+		return $markup;
 	}
 
 	/**
 	 * Render the post thumbnail.
+	 *
+	 * @return string
 	 */
-	private function post_thumbnail() {
+	private function get_post_thumbnail() {
 		if ( ! has_post_thumbnail() ) {
-			return;
+			return '';
 		}
 		$markup = '<div class="nv-post-thumbnail-wrap">';
 
@@ -124,7 +129,7 @@ class Template_Parts extends Base_View {
 		$markup .= '</a>';
 		$markup .= '</div>';
 
-		echo $markup;
+		return $markup;
 	}
 
 	/**
@@ -138,21 +143,27 @@ class Template_Parts extends Base_View {
 
 	/**
 	 * Render title.
+	 *
+	 * @return string
 	 */
-	private function title() {
-		?>
-		<h2 class="blog-entry-title entry-title">
-			<a href="<?php esc_url( the_permalink() ); ?>" rel="bookmark">
-				<?php the_title(); ?>
-			</a>
-		</h2>
-		<?php
+	private function get_title() {
+		$markup = '';
+
+		$markup .= '<h2 class="blog-entry-title entry-title">';
+		$markup .= '<a href="' . esc_url( get_the_permalink() ) . '" rel="bookmark">';
+		$markup .= get_the_title();
+		$markup .= '</a>';
+		$markup .= '</h2>';
+
+		return $markup;
 	}
 
 	/**
 	 * Render meta.
+	 *
+	 * @return string
 	 */
-	private function meta() {
+	private function get_meta() {
 		$default_meta_order = json_encode(
 			array(
 				'author',
@@ -163,14 +174,25 @@ class Template_Parts extends Base_View {
 
 		$meta_order = get_theme_mod( 'neve_post_meta_ordering', $default_meta_order );
 		$meta_order = json_decode( $meta_order );
+
+		ob_start();
 		do_action( 'neve_post_meta_archive', $meta_order );
+		$meta = ob_get_clean();
+
+		return $meta;
 	}
 
 	/**
 	 * Render excerpt.
+	 *
+	 * @return string
 	 */
-	private function excerpt() {
+	private function get_excerpt() {
+		ob_start();
 		do_action( 'neve_excerpt_archive', 'index' );
+		$excerpt = ob_get_clean();
+
+		return $excerpt;
 	}
 
 	/**
