@@ -2512,6 +2512,9 @@ hr {
   .nv-sidebar-wrap.nv-left {
     border-left: 1px solid #f0f0f0;
   }
+  .nv-sidebar-wrap .row {
+    flex-wrap: nowrap;
+  }
 
   .nv-index-posts:not(:only-child) {
     padding-left: 15px;
