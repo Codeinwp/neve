@@ -87,39 +87,39 @@ class Front_End {
 				'elementor' => array(
 					'neve-main'          => array(
 						'url'   => 'https://demo.themeisle.com/neve',
-						'title' => 'Neve Original',
+						'title' => 'Original',
 					),
 					'neve-vet-center'    => array(
 						'url'   => 'https://demo.themeisle.com/neve-vet-center/',
-						'title' => 'Neve Vet Center',
+						'title' => 'Vet Center',
 					),
 					'neve-energy-panels' => array(
 						'url'   => 'https://demo.themeisle.com/neve-energy-panels/',
-						'title' => 'Neve Energy Panels',
+						'title' => 'Energy Panels',
 					),
 					'neve-lawyers'       => array(
 						'url'   => 'https://demo.themeisle.com/neve-lawyers/',
-						'title' => 'Neve Lawyers',
+						'title' => 'Lawyers',
 					),
 					'neve-doctors'       => array(
 						'url'   => 'https://demo.themeisle.com/neve-doctors/',
-						'title' => 'Neve Doctors',
+						'title' => 'Doctors',
 					),
 					'neve-restaurant'    => array(
 						'url'   => 'https://demo.themeisle.com/neve-restaurant/',
-						'title' => 'Neve Restaurant',
+						'title' => 'Restaurant',
 					),
 					'neve-charity'       => array(
 						'url'   => 'https://demo.themeisle.com/neve-charity/',
-						'title' => 'Neve Charity',
+						'title' => 'Charity',
 					),
 					'neve-freelancer'    => array(
 						'url'   => 'https://demo.themeisle.com/neve-freelancer/',
-						'title' => 'Neve Freelancer',
+						'title' => 'Freelancer',
 					),
 					'neve-scholar'       => array(
 						'url'   => 'https://demo.themeisle.com/neve-scholar/',
-						'title' => 'Neve Scholar',
+						'title' => 'Scholar',
 					),
 				),
 			),
