@@ -302,6 +302,9 @@
   background: 100%;
 }
 
+.woocommerce-checkout.nv-without-title main {
+  padding-top: 40px;
+}
 .woocommerce-checkout .nv-page-title-wrap.nv-big-title h1 {
   margin-bottom: 0;
 }

@@ -1,4 +1,7 @@
 .woocommerce-checkout {
+  &.nv-without-title main {
+    padding-top: $spacing;
+  }
   .nv-page-title-wrap.nv-big-title h1 {
     margin-bottom: 0;
   }
