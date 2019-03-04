@@ -867,6 +867,10 @@
   display: none;
 }
 
+.woocommerce-cart.nv-without-title main {
+  padding-top: 40px;
+}
+
 .woocommerce a.remove {
   color: #f5365c !important;
   font-size: 20px;
