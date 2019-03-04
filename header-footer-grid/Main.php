@@ -40,6 +40,16 @@ class Main {
 
 	public function enqueue_scripts() {
 		wp_enqueue_style( 'hfg-style', esc_url( $this->settings->url ) . '/assets/css/style.css' );
+
+		wp_enqueue_script(
+			'hfg-theme-functions',
+			esc_url( $this->settings->url ) . '/assets/js/theme.js',
+			array(
+				'jquery',
+			),
+			false,
+			true
+		);
 	}
 
 	public function is_active() {

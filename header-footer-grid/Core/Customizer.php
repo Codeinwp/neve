@@ -49,6 +49,8 @@ class Customizer {
 			$classes[] = 'customize-previewing';
 		}
 
+		$classes[] = 'menu_sidebar_slide_left';
+
 		return $classes;
 	}
 
@@ -105,8 +107,6 @@ class Customizer {
 	public function preview_js() {
 		if ( is_customize_preview() ) {
 			$suffix = $this->get_assets_suffix();
-
-			wp_enqueue_script( 'hfg-customizer-auto-css', esc_url( $this->settings->url ) . '/assets/js/customizer/auto-css' . $suffix . '.js', array( 'customize-preview' ), '20151215', true );
 			wp_enqueue_script(
 				'hfg-customizer',
 				esc_url( $this->settings->url ) . '/assets/js/customizer/customizer' . $suffix . '.js',
@@ -116,17 +116,6 @@ class Customizer {
 				),
 				'20151215',
 				true
-			);
-
-			wp_localize_script(
-				'hfg-customizer-auto-css',
-				'HFGPreviewConfig',
-				array(
-					'fields'         => [],
-					'devices'        => array( 'desktop', 'tablet', 'mobile' ),//$this->devices,
-					'typo_fields'    => $this->get_typo_fields(),
-					'styling_config' => $this->get_styling_config(),
-				)
 			);
 		}
 	}

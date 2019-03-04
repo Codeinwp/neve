@@ -3,10 +3,6 @@ jQuery( document ).ready(function($) {
 
 	/**
 	 * Sortable Repeater Custom Control
-	 *
-	 * @author Anthony Hortin <http://maddisondesigns.com>
-	 * @license http://www.gnu.org/licenses/gpl-2.0.html
-	 * @link https://github.com/maddisondesigns
 	 */
 
 	// Update the values for all our input fields and initialise the sortable repeater
@@ -22,7 +18,7 @@ jQuery( document ).ready(function($) {
 			if(numRepeaterItems > 1) {
 				var i;
 				for (i = 1; i < numRepeaterItems; ++i) {
-					skyrocketAppendRow($(this), defaultValuesArray[i]);
+					hfgAppendRow($(this), defaultValuesArray[i]);
 				}
 			}
 		}
@@ -31,7 +27,7 @@ jQuery( document ).ready(function($) {
 	// Make our Repeater fields sortable
 	$(this).find('.sortable').sortable({
 		update: function(event, ui) {
-			skyrocketGetAllInputs($(this).parent());
+			hfgGetAllInputs($(this).parent());
 		}
 	});
 
@@ -44,25 +40,25 @@ jQuery( document ).ready(function($) {
 			$(this).parent().slideUp('fast', function() {
 				var parentContainer = $(this).parent().parent();
 				$(this).remove();
-				skyrocketGetAllInputs(parentContainer);
+				hfgGetAllInputs(parentContainer);
 			})
 		}
 		else {
 			$(this).parent().find('.repeater-input').val('');
-			skyrocketGetAllInputs($(this).parent().parent().parent());
+			hfgGetAllInputs($(this).parent().parent().parent());
 		}
 	});
 
 	// Add new item
 	$('.customize-control-sortable-repeater-add').click(function(event) {
 		event.preventDefault();
-		skyrocketAppendRow($(this).parent());
-		skyrocketGetAllInputs($(this).parent());
+		hfgAppendRow($(this).parent());
+		hfgGetAllInputs($(this).parent());
 	});
 
 	// Refresh our hidden field if any fields change
 	$('.sortable').change(function() {
-		skyrocketGetAllInputs($(this).parent());
+		hfgGetAllInputs($(this).parent());
 	})
 
 	// Add https:// to the start of the URL if it doesn't have it
@@ -76,7 +72,7 @@ jQuery( document ).ready(function($) {
 	});
 
 	// Append a new row to our list of elements
-	function skyrocketAppendRow($element, defaultValue = '') {
+	function hfgAppendRow($element, defaultValue = '') {
 		var newRow = '<div class="repeater" style="display:none"><input type="text" value="' + defaultValue + '" class="repeater-input" placeholder="https://" /><span class="dashicons dashicons-sort"></span><a class="customize-control-sortable-repeater-delete" href="#"><span class="dashicons dashicons-no-alt"></span></a></div>';
 
 		$element.find('.sortable').append(newRow);
@@ -86,7 +82,7 @@ jQuery( document ).ready(function($) {
 	}
 
 	// Get the values from the repeater input fields and add to our hidden field
-	function skyrocketGetAllInputs($element) {
+	function hfgGetAllInputs($element) {
 		var inputValues = $element.find('.repeater-input').map(function() {
 			return $(this).val();
 		}).toArray();
@@ -98,10 +94,6 @@ jQuery( document ).ready(function($) {
 
 	/**
 	 * Slider Custom Control
-	 *
-	 * @author Anthony Hortin <http://maddisondesigns.com>
-	 * @license http://www.gnu.org/licenses/gpl-2.0.html
-	 * @link https://github.com/maddisondesigns
 	 */
 
 	// Set our slider defaults and initialise the slider
@@ -157,10 +149,6 @@ jQuery( document ).ready(function($) {
 
 	/**
 	 * Single Accordion Custom Control
-	 *
-	 * @author Anthony Hortin <http://maddisondesigns.com>
-	 * @license http://www.gnu.org/licenses/gpl-2.0.html
-	 * @link https://github.com/maddisondesigns
 	 */
 
 	$('.single-accordion-toggle').click(function() {
@@ -172,10 +160,6 @@ jQuery( document ).ready(function($) {
 
 	/**
 	 * Image Check Box Custom Control
-	 *
-	 * @author Anthony Hortin <http://maddisondesigns.com>
-	 * @license http://www.gnu.org/licenses/gpl-2.0.html
-	 * @link https://github.com/maddisondesigns
 	 */
 
 	$('.multi-image-checkbox').on('change', function () {
@@ -197,10 +181,6 @@ jQuery( document ).ready(function($) {
 
 	/**
 	 * Dropdown Select2 Custom Control
-	 *
-	 * @author Anthony Hortin <http://maddisondesigns.com>
-	 * @license http://www.gnu.org/licenses/gpl-2.0.html
-	 * @link https://github.com/maddisondesigns
 	 */
 
 	$('.customize-control-dropdown-select2').each(function(){
@@ -216,10 +196,6 @@ jQuery( document ).ready(function($) {
 
 	/**
 	 * Googe Font Select Custom Control
-	 *
-	 * @author Anthony Hortin <http://maddisondesigns.com>
-	 * @license http://www.gnu.org/licenses/gpl-2.0.html
-	 * @link https://github.com/maddisondesigns
 	 */
 
 	$('.google-fonts-list').each(function (i, obj) {
@@ -249,7 +225,7 @@ jQuery( document ).ready(function($) {
 		var bodyfontcontrol = _wpCustomizeSettings.controls[customizerControlName];
 
 		// Find the index of the selected font
-		var indexes = $.map(bodyfontcontrol.skyrocketfontslist, function(obj, index) {
+		var indexes = $.map(bodyfontcontrol.hfgfontslist, function(obj, index) {
 			if(obj.family === selectedFont) {
 				return index;
 			}
@@ -257,7 +233,7 @@ jQuery( document ).ready(function($) {
 		var index = indexes[0];
 
 		// For the selected Google font show the available weight/style variants
-		$.each(bodyfontcontrol.skyrocketfontslist[index].variants, function(val, text) {
+		$.each(bodyfontcontrol.hfgfontslist[index].variants, function(val, text) {
 			elementRegularWeight.append(
 				$('<option></option>').val(text).html(text)
 			);
@@ -288,16 +264,16 @@ jQuery( document ).ready(function($) {
 		}
 
 		// Update the font category based on the selected font
-		$(this).parent().parent().find('.google-fonts-category').val(bodyfontcontrol.skyrocketfontslist[index].category);
+		$(this).parent().parent().find('.google-fonts-category').val(bodyfontcontrol.hfgfontslist[index].category);
 
-		skyrocketGetAllSelects($(this).parent().parent());
+		hfgGetAllSelects($(this).parent().parent());
 	});
 
 	$('.google_fonts_select_control select').on('change', function() {
-		skyrocketGetAllSelects($(this).parent().parent());
+		hfgGetAllSelects($(this).parent().parent());
 	});
 
-	function skyrocketGetAllSelects($element) {
+	function hfgGetAllSelects($element) {
 		var selectedFont = {
 			font: $element.find('.google-fonts-list').val(),
 			regularweight: $element.find('.google-fonts-regularweight-style').val(),
@@ -312,16 +288,12 @@ jQuery( document ).ready(function($) {
 
 	/**
 	 * TinyMCE Custom Control
-	 *
-	 * @author Anthony Hortin <http://maddisondesigns.com>
-	 * @license http://www.gnu.org/licenses/gpl-2.0.html
-	 * @link https://github.com/maddisondesigns
 	 */
 
 	$('.customize-control-tinymce-editor').each(function(){
 		// Get the toolbar strings that were passed from the PHP Class
-		var tinyMCEToolbar1String = _wpCustomizeSettings.controls[$(this).attr('id')].skyrockettinymcetoolbar1;
-		var tinyMCEToolbar2String = _wpCustomizeSettings.controls[$(this).attr('id')].skyrockettinymcetoolbar2;
+		var tinyMCEToolbar1String = _wpCustomizeSettings.controls[$(this).attr('id')].hfgtinymcetoolbar1;
+		var tinyMCEToolbar2String = _wpCustomizeSettings.controls[$(this).attr('id')].hfgtinymcetoolbar2;
 
 		wp.editor.initialize( $(this).attr('id'), {
 			tinymce: {
@@ -341,10 +313,6 @@ jQuery( document ).ready(function($) {
 
 	/**
 	 * Alpha Color Picker Custom Control
-	 *
-	 * @author Braad Martin <http://braadmartin.com>
-	 * @license http://www.gnu.org/licenses/gpl-3.0.html
-	 * @link https://github.com/BraadMartin/components/tree/master/customizer/alpha-color-picker
 	 */
 
 	// Loop over each control and transform it into our color picker.

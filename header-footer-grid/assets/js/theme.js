@@ -1,9 +1,9 @@
 /**
- * Customify theme javaScript.
+ * HFG theme javaScript.
  *
- * @since 0.2.6
+ * @since 1.0.0
  *
- * Copyright 2017, PressMaximum
+ * Copyright 2019, ThemeIsle
  */
 
 "use strict"; // prevent global namespace pollution
@@ -40,11 +40,11 @@ if (!Element.prototype.closest) {
 
 
 /**
- * Main Customify Scripts
+ * Main HFG Scripts
  */
 (function() {
 
-	var Customify = function() {
+	var HFG = function() {
 		this.options = {
 			menuToggleDuration: 300
 		};
@@ -60,7 +60,7 @@ if (!Element.prototype.closest) {
 	/**
 	 * Add body class to check touch screen.
 	 */
-	Customify.prototype.checkTouchScreen = function() {
+	HFG.prototype.checkTouchScreen = function() {
 		if ("ontouchstart" in document.documentElement) {
 			document.body.classList.add("ontouch-screen");
 		} else {
@@ -73,7 +73,7 @@ if (!Element.prototype.closest) {
 	 *
 	 * @return bool
 	 */
-	Customify.prototype.isMobile = function() {
+	HFG.prototype.isMobile = function() {
 		if (
 			navigator.userAgent.match(/Android/i) ||
 			navigator.userAgent.match(/webOS/i) ||
@@ -95,7 +95,7 @@ if (!Element.prototype.closest) {
 	 * @todo Move menu sidebar to body.
 	 * @todo Add events to menu buttons.
 	 */
-	Customify.prototype.initMenuSidebar = function() {
+	HFG.prototype.initMenuSidebar = function() {
 		var themeMenuSidebar;
 		if (document.body.classList.contains("menu_sidebar_dropdown")) {
 			// $( '#header-menu-sidebar' ).insertAfter( "#masthead" );
@@ -207,7 +207,7 @@ if (!Element.prototype.closest) {
 	 *
 	 * @todo Need check
 	 */
-	Customify.prototype.initMobieSearchForm = function() {
+	HFG.prototype.initMobieSearchForm = function() {
 		var mobileSearchForm = document.querySelector(".search-form--mobile");
 		if (mobileSearchForm) {
 			mobileSearchForm.classList.add(
@@ -218,7 +218,7 @@ if (!Element.prototype.closest) {
 		}
 	};
 
-	Customify.prototype.toggleMobileSubmenu = function(e) {
+	HFG.prototype.toggleMobileSubmenu = function(e) {
 		e.preventDefault();
 		var that = this;
 		var li = e.target.closest("li");
@@ -261,7 +261,7 @@ if (!Element.prototype.closest) {
 	 *
 	 * @param Element toggleIcon
 	 */
-	Customify.prototype.toggleMobileSubmenuEvents = function(toggleIcon) {
+	HFG.prototype.toggleMobileSubmenuEvents = function(toggleIcon) {
 		toggleIcon.addEventListener(
 			"click",
 			this.toggleMobileSubmenu.bind(this)
@@ -271,7 +271,7 @@ if (!Element.prototype.closest) {
 	/**
 	 * Inital mobile submenu.
 	 */
-	Customify.prototype.initMobileSubMenu = function() {
+	HFG.prototype.initMobileSubMenu = function() {
 		var menuChildren = document.querySelectorAll(
 			"#header-menu-sidebar .nav-menu-mobile .menu-item-has-children"
 		);
@@ -296,7 +296,7 @@ if (!Element.prototype.closest) {
 
 					fistLink.parentNode.insertBefore(toggleButton, fistLink);
 					var submenu = child.querySelector(":scope > .sub-menu");
-					if( '1' !== Customify_JS.sidebar_menu_no_duplicator ){
+					if( '1' !== HFG_JS.sidebar_menu_no_duplicator ){
 						submenu.prepend(d);
 					}
 					var firstSubmenu = child.querySelectorAll(
@@ -307,7 +307,7 @@ if (!Element.prototype.closest) {
 							this.slideUp(firstSubmenu[j], 0);
 						}
 					}
-					if( '1' !== Customify_JS.sidebar_menu_no_duplicator ){
+					if( '1' !== HFG_JS.sidebar_menu_no_duplicator ){
 						var dWrapper = document.createElement("li");
 						d.parentNode.prepend(dWrapper);
 						dWrapper.appendChild(d);
@@ -325,7 +325,7 @@ if (!Element.prototype.closest) {
 	 * @param number duration
 	 * @param function callBack
 	 */
-	Customify.prototype.slideUp = function(element, duration, callBack) {
+	HFG.prototype.slideUp = function(element, duration, callBack) {
 		if (typeof duration !== "number") {
 			duration = 0;
 		}
@@ -364,7 +364,7 @@ if (!Element.prototype.closest) {
 	 * @param number duration
 	 * @param function callBack
 	 */
-	Customify.prototype.slideDown = function(element, duration, callBack) {
+	HFG.prototype.slideDown = function(element, duration, callBack) {
 		if (typeof duration !== "number") {
 			duration = 0;
 		}
@@ -403,7 +403,7 @@ if (!Element.prototype.closest) {
 		}, duration);
 	};
 
-	Customify.prototype.insertMenuOverlayClass = function() {
+	HFG.prototype.insertMenuOverlayClass = function() {
 		var navMobile = document.querySelector(".nav-menu-mobile");
 		if (navMobile) {
 			if (
@@ -416,10 +416,10 @@ if (!Element.prototype.closest) {
 		}
 	};
 
-	Customify.prototype.setupMobileItemAnimations = function(element) {
+	HFG.prototype.setupMobileItemAnimations = function(element) {
 		var h = window.height;
-		if (typeof element === "undefined") {
-			element = document.getElementById("header-menu-sidebar");
+		if ( typeof element === "undefined" ) {
+			element = document.getElementById( "header-menu-sidebar" );
 		}
 
 		var t = 0.2;
@@ -439,7 +439,7 @@ if (!Element.prototype.closest) {
 	 * @param Element element
 	 * @param string className
 	 */
-	Customify.prototype.toggleClass = function(element, className) {
+	HFG.prototype.toggleClass = function(element, className) {
 		if (element instanceof NodeList) {
 			for (var i = 0; i < element.length; i++) {
 				if (element[i].classList.contains(className)) {
@@ -463,7 +463,7 @@ if (!Element.prototype.closest) {
 	 * @param Element element
 	 * @param string className
 	 */
-	Customify.prototype.addClass = function(element, className) {
+	HFG.prototype.addClass = function(element, className) {
 		if (element instanceof NodeList) {
 			for (var i = 0; i < element.length; i++) {
 				element[i].classList.add(className);
@@ -479,7 +479,7 @@ if (!Element.prototype.closest) {
 	 * @param Element element
 	 * @param string className
 	 */
-	Customify.prototype.removeClass = function(element, className) {
+	HFG.prototype.removeClass = function(element, className) {
 		// Split each class by space.
 		var classes = className.split(" ");
 		if (element instanceof NodeList) {
@@ -502,7 +502,7 @@ if (!Element.prototype.closest) {
 	 * @param string event
 	 * @param function callBack
 	 */
-	Customify.prototype.addEvent = function(element, event, callBack) {
+	HFG.prototype.addEvent = function(element, event, callBack) {
 		if (element instanceof NodeList) {
 			for (var i = 0; i < element.length; i++) {
 				element[i].addEventListener(event, callBack);
@@ -515,7 +515,7 @@ if (!Element.prototype.closest) {
 	/**
 	 * Close menu sidebar.
 	 */
-	Customify.prototype.closeMenuSidebar = function() {
+	HFG.prototype.closeMenuSidebar = function() {
 		document.body.classList.add("hiding-header-menu-sidebar");
 		document.body.classList.remove("is-menu-sidebar");
 		var toggleButtons = document.querySelectorAll(
@@ -562,7 +562,7 @@ if (!Element.prototype.closest) {
 	 *
 	 * @param bool open use animation or not.
 	 */
-	Customify.prototype.toggleMenuSidebar = function(toggle) {
+	HFG.prototype.toggleMenuSidebar = function(toggle) {
 		if (typeof toggle === "undefined") {
 			toggle = true;
 		}
@@ -609,7 +609,7 @@ if (!Element.prototype.closest) {
 	/**
 	 * Auto align search form.
 	 */
-	Customify.prototype.searchFormAutoAlign = function() {
+	HFG.prototype.searchFormAutoAlign = function() {
 		var searchItems = document.querySelectorAll(".header-search_icon-item");
 		var w = window.innerWidth;
 
@@ -631,7 +631,7 @@ if (!Element.prototype.closest) {
 	/**
 	 * Search form.
 	 */
-	Customify.prototype.initSearchForm = function() {
+	HFG.prototype.initSearchForm = function() {
 		var searchItems = document.querySelectorAll(".header-search_icon-item");
 		var that = this;
 
@@ -691,7 +691,7 @@ if (!Element.prototype.closest) {
 	 *
 	 * @return Element
 	 */
-	Customify.prototype.wrapper = function(element, tag) {
+	HFG.prototype.wrapper = function(element, tag) {
 		if (typeof tag === "undefined") {
 			tag = "div";
 		}
@@ -704,7 +704,7 @@ if (!Element.prototype.closest) {
 	/**
 	 * Responsive table.
 	 */
-	Customify.prototype.responsiveTable = function() {
+	HFG.prototype.responsiveTable = function() {
 		var tables = document.querySelectorAll(".entry-content table");
 		for (var i = 0; i < tables.length; i++) {
 			if (!tables[i].parentNode.classList.contains("table-wrapper")) {
@@ -720,14 +720,14 @@ if (!Element.prototype.closest) {
 	/**
 	 * Reponsive video style.
 	 */
-	Customify.prototype.responsiveVideos = function() {
+	HFG.prototype.responsiveVideos = function() {
 		
 	};
 
 	/**
 	 * Inittial
 	 */
-	Customify.prototype.init = function() {
+	HFG.prototype.init = function() {
 		this.checkTouchScreen();
 		this.initMobieSearchForm();
 		this.initMobileSubMenu();
@@ -785,17 +785,17 @@ if (!Element.prototype.closest) {
 	 * @deprecated 0.2.6
 	 */
 	function hfg_is_mobile() {
-		return Customify.isMobile();
+		return HFG.isMobile();
 	}
 
 	window.hfg_is_mobile = hfg_is_mobile;
-	window.Customify = new Customify();
+	window.HFG = new HFG();
 
 	/**
 	 * Fix viewport units on Mobile.
 	 */
 	(function() {
-		if ( window.Customify.isMobile() ) {
+		if ( window.HFG.isMobile() ) {
 			/**
 			 * https://css-tricks.com/the-trick-to-viewport-units-on-mobile/
 			 */

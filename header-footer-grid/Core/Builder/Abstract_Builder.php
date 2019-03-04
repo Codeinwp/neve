@@ -1,6 +1,7 @@
 <?php
 namespace HFG\Core\Builder;
 
+use HFG\Core\Customizer\Google_Font_Control;
 use HFG\Core\Customizer\Image_Radio_Control;
 use HFG\Core\Customizer\Select_Control;
 use HFG\Core\Customizer\Slider_Control;
@@ -195,6 +196,35 @@ abstract class Abstract_Builder implements Builder {
 				]
 			) );
 
+			$wp_customize->add_setting( $this->control_id . '_' . $row_id . '_font_select',
+				array(
+					'default' => json_encode(
+						array(
+							'font' => 'Open Sans',
+							'regularweight' => 'regular',
+							'italicweight' => 'italic',
+							'boldweight' => '700',
+							'category' => 'sans-serif'
+						)
+					),
+					'sanitize_callback' => ''
+				)
+			);
+
+			$wp_customize->add_control( new Google_Font_Control(
+				$wp_customize,
+				$this->control_id . '_' . $row_id . '_font_select',
+				[
+					'label' => __( 'Row Font Control', 'hfg-module' ),
+					'description' => esc_html__( 'Select a Google Font to use for this row.', 'hfg-module' ),
+					'section' => $this->control_id . '_' . $row_id,
+					'input_attrs' => array(
+						'font_count' => 'all',
+						'orderby' => 'alpha',
+					),
+				]
+			) );
+
 			$wp_customize->selective_refresh->add_partial( $this->control_id . '_' . $row_id . '_partial', array(
 				'selector' => '.' . $this->panel,
 				'settings' => array(
@@ -202,6 +232,7 @@ abstract class Abstract_Builder implements Builder {
 					$this->control_id . '_' . $row_id . '_layout' ,
 					$this->control_id . '_' . $row_id . '_height' ,
 					$this->control_id . '_' . $row_id . '_skin' ,
+					$this->control_id . '_' . $row_id . '_font_select' ,
 				),
 				'render_callback' => array( $this, 'render' )
 			) );

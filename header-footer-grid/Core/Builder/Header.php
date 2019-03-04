@@ -43,7 +43,7 @@ class Header extends Abstract_Builder {
 			return '';
 		}
 
-		$classes[] = 'header-menu-sidebar menu-sidebar-panel';
+		$classes[] = 'header-menu-sidebar menu-sidebar-panel dark-mode';
 
 		$html = '<div id="header-menu-sidebar" class="' . esc_attr( join( ' ', $classes ) ) . '">';
 		$html .= '<div id="header-menu-sidebar-bg" class="header-menu-sidebar-bg">';
