@@ -100,10 +100,10 @@ class Post_Layout extends Base_View {
 				case 'meta':
 					$this->render_post_meta();
 					break;
-				case 'author_biography':
+				case 'author-biography':
 					do_action( 'neve_layout_single_post_author_biography' );
 					break;
-				case 'related_posts':
+				case 'related-posts':
 					do_action( 'neve_do_related_posts' );
 					break;
 				case 'comments':
