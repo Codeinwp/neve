@@ -20,7 +20,7 @@
 
   form.woocommerce-checkout {
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
   }
 
   #order_review_heading {
@@ -40,8 +40,22 @@
       border-radius: 0;
       background: #fff;
       margin-bottom: $spacing-sm;
+      padding: 9px 12px;
+      text-align: center;
+
+      &:before {
+        display: none;
+      }
 
       a {
+        font-size: .95em;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        opacity: 0;
         float: right;
       }
     }
@@ -86,23 +100,18 @@
 
     .woocommerce-form-coupon {
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
 
-      p:not(.form-row) {
+      p {
         width: 100%;
       }
 
-      .form-row {
-        margin-bottom: 0;
-      }
-
-      .form-row-first {
-        flex-grow: 1;
-        margin-right: $spacing-xs;
-      }
-
       .form-row-last {
-        width: auto;
+        margin-bottom: 0;
+
+        button {
+          width: 100%;
+        }
       }
     }
   }
@@ -126,7 +135,8 @@
 
   .woocommerce-billing-fields__field-wrapper,
   .woocommerce-shipping-fields__field-wrapper,
-  .woocommerce-additional-fields {
+  .woocommerce-additional-fields,
+  .woocommerce-account-fields {
     padding: 0 12px 9px;
 
     label {
@@ -198,9 +208,10 @@
 
   #payment {
     border-radius: 0;
-    border-top: $muted-border;
+    border: $muted-border;
     background: #ffffff;
     font-size: .85em;
+    margin-bottom: $spacing;
 
     ul.payment_methods {
       border-bottom: $muted-border;
@@ -209,10 +220,11 @@
     .place-order {
       margin-bottom: 0;
 
-      button {
+      button#place_order {
         width: 100%;
         font-size: 1.2em;
         float: none;
+        margin-bottom: 0;
       }
     }
   }
@@ -269,6 +281,16 @@
       display: block;
     }
 
+    #neve-checkout-coupon {
+      .woocommerce-info {
+        padding-left: 50px;
+
+        &:before {
+          top: 10px;
+        }
+      }
+    }
+
     .woocommerce-checkout-review-order, #order_review_heading {
       width: 40%;
     }
@@ -279,15 +301,27 @@
     }
 
     #neve-checkout-coupon .woocommerce-form-coupon {
+      flex-wrap: wrap;
+      flex-direction: row;
+      p.form-row {
+        margin-bottom: 0;
+        width: auto;
+      }
+
+      .form-row-first {
+        flex-grow: 1;
+        margin-right: $spacing-xs;
+      }
+
+      .form-row-last {
+        width: auto;
+      }
+
       .form-row-last {
         button {
           width: auto;
         }
       }
-    }
-
-    #payment {
-      border: $muted-border;
     }
   }
   .woocommerce-checkout-review-order {

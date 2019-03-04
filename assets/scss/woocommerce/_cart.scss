@@ -1,11 +1,10 @@
 //<editor-fold desc="Remove button">
 .woocommerce a.remove {
-  margin: 0 auto;
   color: $error !important;
   font-size: 20px;
   height: 20px;
   width: 20px;
-  line-height: 20px;
+  line-height: 18px;
   &:hover {
     background-color: $error !important;
   }
@@ -99,16 +98,6 @@
       }
     }
 
-    tr.shipping {
-      text-align: left;
-
-      td::before {
-        float: none;
-        display: block;
-        text-align: left;
-      }
-    }
-
     .shipping-calculator-form {
       text-align: left;
     }
@@ -123,13 +112,12 @@
   }
 
   ul#shipping_method {
-    margin-top: $spacing-sm;
     text-align: left;
-    padding-left: $spacing-xs;
 
     li {
       display: flex;
       align-items: center;
+      justify-content: flex-end;
 
       input {
         margin: 0 5px 0 0 !important;
@@ -249,6 +237,10 @@
       vertical-align: top;
       border-bottom: 0;
       border-top: 1px solid #f0f0f0;
+    }
+
+    td {
+      text-align: right;
     }
 
     #shipping_method {
