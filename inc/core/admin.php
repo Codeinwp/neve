@@ -346,7 +346,7 @@ class Admin {
 		);
 
 		$notice_sites_list = sprintf(
-			'<div><h3><span class="dashicons dashicons-images-alt2"></span>%1$s</h3><p>%2$s</p></div><div> <p>%3$s</p><p>%4$s</p> </div>',
+			'<div><h3><span class="dashicons dashicons-images-alt2"></span> %1$s</h3><p>%2$s</p></div><div> <p>%3$s</p><p>%4$s</p> </div>',
 			__( 'Sites Library', 'neve' ),
 			// translators: %s - theme name
 			sprintf( esc_html__( '%s now comes with a sites library with various designs to pick from. Visit our collection of demos that are constantly being added.', 'neve' ), $name ),
@@ -364,9 +364,20 @@ class Admin {
 			$ob_return_dashboard
 		);
 		$style = '
+		.nv-notice-wrapper h2{
+		    margin: 0;
+		    font-size: 21px;
+		    font-weight: 400;
+		    line-height: 1.2;
+		}
+		.nv-notice-wrapper p.about-description{
+            color: #72777c;
+		    font-size: 16px;
+		    margin: 0;
+		}
 		.nv-notice-wrapper{
-			margin: 0 13px;
-             max-width: 1500px;
+            padding: 23px 10px 0;
+            max-width: 1500px;
 		}
 		.nv-notice-wrapper hr {
 			margin: 20px -23px 0;
