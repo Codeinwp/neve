@@ -374,6 +374,7 @@ class Admin {
             color: #72777c;
 		    font-size: 16px;
 		    margin: 0;
+		    padding:0px;
 		}
 		.nv-notice-wrapper{
             padding: 23px 10px 0;
