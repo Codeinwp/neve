@@ -16,6 +16,14 @@ namespace Neve\Core;
  * @package Neve\Core
  */
 class Front_End {
+
+	/**
+	 * The onboarding config.
+	 *
+	 * @var array
+	 */
+	private $onboarding_config = array();
+
 	/**
 	 * Theme setup.
 	 */
@@ -78,7 +86,7 @@ class Front_End {
 	private function get_ti_demo_content_support_data() {
 		$theme_name = wp_get_theme()->Name;
 
-		$onboarding_sites = array(
+		$this->onboarding_config = array(
 			'editors'     => array(
 				'elementor',
 			),
@@ -144,7 +152,26 @@ class Front_End {
 
 		);
 
-		return apply_filters( 'neve_filter_onboarding_data', $onboarding_sites );
+		$this->add_gutenberg_starter_sites();
+
+		return apply_filters( 'neve_filter_onboarding_data', $this->onboarding_config );
+	}
+
+	private function add_gutenberg_starter_sites() {
+		global $wp_version;
+
+		if ( version_compare( $wp_version, '5.0', '>' ) === false ) {
+			return;
+		}
+
+		$this->onboarding_config['editors'][] = 'gutenberg';
+		$this->onboarding_config['local']['gutenberg'] = array(
+			'neve-main-gutenberg'          => array(
+				'url'   => 'https://demo.themeisle.com/neve-onboarding-gutenberg',
+				'title' => 'Neve Original',
+			),
+		);
+
 	}
 
 	/**
@@ -270,7 +297,16 @@ class Front_End {
 				'title'          => '',
 				'type'           => 'block',
 				'author'         => $current_theme,
-				'keywords'       => array( 'team', 'our team', 'employees', 'clients', 'members', 'people', 'image', 'card' ),
+				'keywords'       => array(
+					'team',
+					'our team',
+					'employees',
+					'clients',
+					'members',
+					'people',
+					'image',
+					'card'
+				),
 				'categories'     => array( 'content' ),
 				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/our-team/template.json',
 				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/our-team/screenshot.jpg',
@@ -306,7 +342,16 @@ class Front_End {
 				'title'          => '',
 				'type'           => 'block',
 				'author'         => $current_theme,
-				'keywords'       => array( 'features', 'card', 'about', 'services', 'advantages', 'items', 'boxes', 'why' ),
+				'keywords'       => array(
+					'features',
+					'card',
+					'about',
+					'services',
+					'advantages',
+					'items',
+					'boxes',
+					'why'
+				),
 				'categories'     => array( 'content' ),
 				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/features/template.json',
 				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/features/screenshot.jpg',
@@ -324,7 +369,17 @@ class Front_End {
 				'title'          => '',
 				'type'           => 'block',
 				'author'         => $current_theme,
-				'keywords'       => array( 'contact', 'us', 'form', 'message', 'email', 'support', 'get', 'in', 'touch' ),
+				'keywords'       => array(
+					'contact',
+					'us',
+					'form',
+					'message',
+					'email',
+					'support',
+					'get',
+					'in',
+					'touch'
+				),
 				'categories'     => array( 'content' ),
 				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/contact/template.json',
 				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/contact/screenshot.jpg',
