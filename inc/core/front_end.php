@@ -166,6 +166,9 @@ class Front_End {
 		return apply_filters( 'neve_filter_onboarding_data', $this->onboarding_config );
 	}
 
+	/**
+	 * Add gutenberg starter sites if wp_version > 5.0.0
+	 */
 	private function add_gutenberg_starter_sites() {
 		global $wp_version;
 
@@ -173,9 +176,9 @@ class Front_End {
 			return;
 		}
 
-		$this->onboarding_config['editors'][] = 'gutenberg';
+		$this->onboarding_config['editors'][]          = 'gutenberg';
 		$this->onboarding_config['local']['gutenberg'] = array(
-			'neve-main-gutenberg'          => array(
+			'neve-main-gutenberg' => array(
 				'url'   => 'https://demo.themeisle.com/neve-onboarding-gutenberg',
 				'title' => 'Neve Original',
 			),
@@ -314,7 +317,7 @@ class Front_End {
 					'members',
 					'people',
 					'image',
-					'card'
+					'card',
 				),
 				'categories'     => array( 'content' ),
 				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/our-team/template.json',
@@ -359,7 +362,7 @@ class Front_End {
 					'advantages',
 					'items',
 					'boxes',
-					'why'
+					'why',
 				),
 				'categories'     => array( 'content' ),
 				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/features/template.json',
@@ -387,7 +390,7 @@ class Front_End {
 					'support',
 					'get',
 					'in',
-					'touch'
+					'touch',
 				),
 				'categories'     => array( 'content' ),
 				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/contact/template.json',
