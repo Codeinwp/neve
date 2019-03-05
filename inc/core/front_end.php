@@ -84,7 +84,8 @@ class Front_End {
 	 * @return array
 	 */
 	private function get_ti_demo_content_support_data() {
-		$theme_name = wp_get_theme()->Name;
+		$theme_options = wp_get_theme();
+		$theme_name    = apply_filters( 'ti_wl_theme_name', $theme_options->__get( 'Name' ) );
 
 		$this->onboarding_config = array(
 			'editors'     => array(
@@ -94,31 +95,39 @@ class Front_End {
 				'elementor' => array(
 					'neve-main'          => array(
 						'url'   => 'https://demo.themeisle.com/neve',
-						'title' => 'Neve Original',
+						'title' => 'Original',
 					),
 					'neve-vet-center'    => array(
 						'url'   => 'https://demo.themeisle.com/neve-vet-center/',
-						'title' => 'Neve Vet Center',
+						'title' => 'Vet Center',
 					),
 					'neve-energy-panels' => array(
 						'url'   => 'https://demo.themeisle.com/neve-energy-panels/',
-						'title' => 'Neve Energy Panels',
+						'title' => 'Energy Panels',
 					),
 					'neve-lawyers'       => array(
 						'url'   => 'https://demo.themeisle.com/neve-lawyers/',
-						'title' => 'Neve Lawyers',
+						'title' => 'Lawyers',
 					),
 					'neve-doctors'       => array(
 						'url'   => 'https://demo.themeisle.com/neve-doctors/',
-						'title' => 'Neve Doctors',
+						'title' => 'Doctors',
 					),
 					'neve-restaurant'    => array(
 						'url'   => 'https://demo.themeisle.com/neve-restaurant/',
-						'title' => 'Neve Restaurant',
+						'title' => 'Restaurant',
 					),
 					'neve-charity'       => array(
 						'url'   => 'https://demo.themeisle.com/neve-charity/',
-						'title' => 'Neve Charity',
+						'title' => 'Charity',
+					),
+					'neve-freelancer'    => array(
+						'url'   => 'https://demo.themeisle.com/neve-freelancer/',
+						'title' => 'Freelancer',
+					),
+					'neve-scholar'       => array(
+						'url'   => 'https://demo.themeisle.com/neve-scholar/',
+						'title' => 'Scholar',
 					),
 				),
 			),

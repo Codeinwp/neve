@@ -17,6 +17,30 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
+= 1.1.4 - 2019-02-08  = 
+
+* Fixed alignment issues with the Gallery widget
+
+
+= 1.1.3 - 2019-02-07  = 
+
+* Fixed list styling in Elementor
+
+
+= 1.1.2 - 2019-02-07  = 
+
+* New Gutenberg Blocks added for Otter
+* Fixed lists styling
+* Fixed issue with Gutenberg Blocks images not visible in an online environment
+
+
+= 1.1.1 - 2019-02-04  = 
+
+* Fixed issue with content missing on the single post page
+* Fixed issue with the Footer Gutenberg block for Otter
+* Improved the Neve Energy Panel starter site
+
+
 = 1.1.0 - 2019-01-31  = 
 
 * NEW Neve Specific Gutenberg blocks for Otter Blocks
@@ -294,3 +318,10 @@ All  images are licensed under CC0.
 * Neve Charity: children-734891, CC0, https://pixabay.com/en/children-burundi-bottle-water-734891/
 * Neve Charity: trouser-pockets-1439412, CC0, https://pixabay.com/en/trouser-pockets-empty-jeans-1439412/
 * Neve Gutenberg: street-at-night, CC0, https://mystock.themeisle.com/photo/street-at-night/
+* Neve Scholar: neve-scholar-big-title (used only in screenshot), https://www.pexels.com/photo/men-s-wearing-black-suit-jacket-and-pants-937481/
+* Neve Scholar: neve-scholar-placeholder (used as placeholder), CC0, https://mystock.themeisle.com/photo/arid-earth/
+* Neve Freelancer: neve-freelancere-hero-image (also used in screenshot), CC0, https://mystock.themeisle.com/photo/photographer-3/
+* Neve Freelancer: neve-freelancer-testimonial, CC0, https://mystock.themeisle.com/photo/girl/
+* Neve Freelancer: neve-freelancer-testimonial-bg, CC0, https://mystock.themeisle.com/photo/code-in-wp/
+* Neve Freelancer: neve-freelancer-faq, CC0, https://mystock.themeisle.com/photo/programming-laptop-2/
+* Neve Freelancer: neve-freelancer-about1, CC0, https://mystock.themeisle.com/photo/path-to-the-village/
