@@ -121,6 +121,34 @@ class Front_End {
 						'url'   => 'https://demo.themeisle.com/neve-scholar/',
 						'title' => 'Scholar',
 					),
+					'neve-zelle'       => array(
+						'url'   => 'https://demo.themeisle.com/neve-zelle/',
+						'title' => 'Travel Agency',
+					),
+				),
+			),
+			'upsell'      => array(
+				'elementor' => array(
+					'neve-showcase'     => array(
+						'url'        => 'https://demo.themeisle.com/neve-showcase/',
+						'screenshot' => 'https://demo.themeisle.com/neve-showcase/wp-content/uploads/sites/184/2019/03/screenshot.png',
+						'title'      => 'Showcase',
+					),
+					'neve-consultants'  => array(
+						'url'        => 'https://demo.themeisle.com/neve-consultants/',
+						'screenshot' => 'https://demo.themeisle.com/neve-consultants/wp-content/uploads/sites/185/2019/03/screenshot.png',
+						'title'      => 'Consultants',
+					),
+					'neve-cafe' => array(
+						'url'        => 'https://demo.themeisle.com/neve-cafe/',
+						'screenshot' => 'https://demo.themeisle.com/neve-cafe/wp-content/uploads/sites/186/2019/03/screenshot.png',
+						'title'      => 'Cafe',
+					),
+					'neve-agency'         => array(
+						'url'        => 'https://demo.themeisle.com/neve-agency/',
+						'screenshot' => 'https://demo.themeisle.com/neve-agency/wp-content/uploads/sites/187/2019/03/screenshot.png',
+						'title'      => 'Agency',
+					),
 				),
 			),
 			'can_migrate' => array(
@@ -150,6 +178,7 @@ class Front_End {
 				/* translators: %s - theme name */
 				'templates_description' => sprintf( __( 'With %s, you can choose from multiple unique demos, specially designed for you, that can be installed with a single click. You just need to choose your favorite, and we will take care of everything else.', 'neve' ), $theme_name ),
 			),
+			'pro_link'    => 'https://themeisle.com/themes/neve/upgrade/',
 
 		);
 
