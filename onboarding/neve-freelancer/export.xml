@@ -1,0 +1,793 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- generator="WordPress/4.9.8" created="2019-03-04 10:33" -->
+		<rss version="2.0"
+				xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
+				xmlns:content="http://purl.org/rss/1.0/modules/content/"
+				xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+				xmlns:dc="http://purl.org/dc/elements/1.1/"
+				xmlns:wp="http://wordpress.org/export/1.2/"
+		>
+
+			<channel>
+				<title>Neve Freelancer</title>
+				<link>https://demo.themeisle.com/neve-freelancer</link>
+				<description>Delivering fast &#38; top quality services</description>
+				<pubDate>Mon, 04 Mar 2019 10:33:34 +0000</pubDate>
+				<language>en-US</language>
+				<wp:wxr_version>1.2</wp:wxr_version>
+				<wp:base_site_url>https://demo.themeisle.com/</wp:base_site_url>
+				<wp:base_blog_url>https://demo.themeisle.com/neve-freelancer</wp:base_blog_url>
+
+									<wp:category>
+						<wp:term_id>1</wp:term_id>
+						<wp:category_nicename><![CDATA[uncategorized]]></wp:category_nicename>
+						<wp:category_parent><![CDATA[]]></wp:category_parent>
+						<wp:cat_name><![CDATA[Uncategorized]]></wp:cat_name>
+					</wp:category>
+																	<wp:term>
+						<wp:term_id><![CDATA[2]]></wp:term_id>
+						<wp:term_taxonomy><![CDATA[elementor_library_type]]></wp:term_taxonomy>
+						<wp:term_slug><![CDATA[page]]></wp:term_slug>
+						<wp:term_parent><![CDATA[]]></wp:term_parent>
+						<wp:term_name><![CDATA[page]]></wp:term_name>
+					</wp:term>
+									<wp:term><wp:term_id>3</wp:term_id><wp:term_taxonomy>nav_menu</wp:term_taxonomy><wp:term_slug><![CDATA[main]]></wp:term_slug><wp:term_name><![CDATA[Main]]></wp:term_name>
+</wp:term>
+
+				<generator>https://wordpress.org/?v=4.9.8</generator>
+
+						<item>
+			<title>
+				Jason &#8211; Landing Page			</title>
+			<link>https://demo.themeisle.com/neve-freelancer/?elementor_library=jason-landing-page</link>
+			<pubDate>Fri, 01 Mar 2019 10:37:19 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-freelancer/?elementor_library=jason-landing-page</guid>
+			<description></description>
+			<content:encoded><![CDATA[<p>Hello, I am</p>		
+			<h1>Jason Osbourne</h1>		
+		<p>Jason is a free Elementor layout template that you can use as a personal landing page for your freelance services. </p>		
+			<a href="#contact" role="button">
+						HAVE PROJECT? LET'S TALK
+					</a>
+			<p>I focus on one thing</p>		
+			<h2>Writing services</h2>		
+											<img src="https://mllj2j8xvfl0.i.optimole.com/w:auto/h:auto/q:90/https://s20206.pcdn.co/wp-content/uploads/sites/183/2019/03/tekt-icon-2.png" />
+															<h4>Award-Winning​</h4>
+																<p>Add some text here to describe your services to the page visitors.​</p>
+													<!-- /.obfx-service-box-content -->
+									<!-- /.obfx-service-box -->
+				</a>			<!-- /.obfx-grid-wrapper -->
+											<img src="https://mllj2j8xvfl0.i.optimole.com/w:auto/h:auto/q:90/https://s20206.pcdn.co/wp-content/uploads/sites/183/2019/03/tekt-icon-3.png" />
+															<h4>Professional​</h4>
+																<p>Add some text here to describe your services to the page visitors.​</p>
+													<!-- /.obfx-service-box-content -->
+									<!-- /.obfx-service-box -->
+				</a>			<!-- /.obfx-grid-wrapper -->
+											<img src="https://mllj2j8xvfl0.i.optimole.com/w:auto/h:auto/q:90/https://s20206.pcdn.co/wp-content/uploads/sites/183/2019/03/tekt-icon-1.png" />
+															<h4>Consulting​</h4>
+																<p>Add some text here to describe your services to the page visitors.​</p>
+													<!-- /.obfx-service-box-content -->
+									<!-- /.obfx-service-box -->
+				</a>			<!-- /.obfx-grid-wrapper -->
+										<img width="525" height="385" src="https://demo.themeisle.com/neve-freelancer/wp-content/uploads/sites/183/2019/03/img1.jpg" alt="" />											
+			<p>I love life</p>		
+			<h2>About Me</h2>		
+		<p>In online marketing, a landing page, sometimes known as a "lead capture page" or a "lander", or a "destination page", is a single web page that appears in response to clicking on a search engine optimized search result or an online advertisement.</p>		
+							<a href="" target="_blank">
+					Facebook
+				</a>
+							<a href="" target="_blank">
+					Twitter
+				</a>
+							<a href="" target="_blank">
+					Google-plus
+				</a>
+			<p>Have a project in the works?</p>		
+			<a href="#contact" role="button">
+						LET'S TALK
+					</a>
+			<p>my story</p>		
+			<h2>Skills you can trust</h2>		
+										<img width="148" height="24" src="https://demo.themeisle.com/neve-freelancer/wp-content/uploads/sites/183/2019/03/ether-stars.png" alt="" />											
+							I’ve been trying for months to find a way to build landing pages and sites quickly but customized, without having to sign on to some packaged software solution that makes things easy but predictable, and limited.
+Save yourself the time and aggravation – just install Elementor and start loving your new page creating freedom.
+							<img width="58" height="58" src="https://demo.themeisle.com/neve-freelancer/wp-content/uploads/sites/183/2019/03/ether-avatar.png" alt="" />						
+													Jane Austin
+																			Entrepreneur
+				400
+							completed projects
+			<p>Questions? I have answers</p>		
+			<h2>Frequently Asked Questions</h2>		
+												<a href="">Can I use this layout for my site?</a>
+					<p>Definitely, feel free to use it and modify it as you see fit, in personal or commercial projects. No attribution is required, but appreciated.</p>
+												<a href="">What do I need in order to set it up</a>
+					<p>You will need <a href="http://bit.ly/ElmntorBld">Elementor</a> page builder, a WordPress installation and any WordPress theme. I use <a href="http://bit.ly/awpGPress">GeneratePress</a> in this demo.</p>
+												<a href="">I want to turn this layout into a full website</a>
+					<p>Please <a href="mailto:hello@analogwp.com">get in touch</a> with me to discuss your project needs and define a theme, plugin, and hosting configuration.</p><p>I will be happy to help you achieve more with your online presence.</p>
+			<p>Contact form widget (pro)</p>		
+			<h3>Let's talk about your project</h3>		
+		<p>If you have the Pro Version of Elementor, you can make use of this Pro Contact frm widget. Otherwise, you may easily use your favourite plugin and embed a form via a shortcode.</p>]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>14</wp:post_id>
+			<wp:post_date><![CDATA[2019-03-01 10:37:19]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-03-01 10:37:19]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[jason-landing-page]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[elementor_library]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+								<category domain="elementor_library_type" nicename="page"><![CDATA[page]]></category>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
+					<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
+					<wp:meta_value><![CDATA[default]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_elementor_data]]></wp:meta_key>
+					<wp:meta_value><![CDATA[[{"id":"29a10344","elType":"section","settings":{"height":"min-height","custom_height":{"unit":"vh","size":"70"},"column_position":"bottom","background_background":"classic","background_color":"#424242","background_position":"top center","background_repeat":"no-repeat","background_size":"cover","content_position":"middle","background_overlay_background":"gradient","background_overlay_color":"rgba(0,0,0,0)","background_overlay_color_b":"#000000","background_overlay_gradient_angle":{"unit":"deg","size":160},"background_overlay_opacity":{"unit":"px","size":0.87},"margin":{"unit":"px","top":"0","right":0,"bottom":"0","left":0,"isLinked":true},"padding":{"unit":"px","top":"120","right":"60","bottom":"120","left":"60","isLinked":false},"padding_tablet":{"unit":"px","top":"80","right":"20","bottom":"80","left":"20","isLinked":false},"padding_mobile":{"unit":"px","top":"60","right":"20","bottom":"60","left":"20","isLinked":false},"text_align":"center","background_image":{"id":5,"url":"https:\/\/demo.themeisle.com\/neve-freelancer\/wp-content\/uploads\/sites\/183\/2019\/03\/hero.jpg"},"custom_height_tablet":{"unit":"vh","size":50},"custom_height_mobile":{"unit":"vh","size":20},"background_video_fallback":{"url":"","id":""},"background_hover_image":{"url":"","id":""},"background_hover_video_fallback":{"url":"","id":""},"background_overlay_image":{"url":"","id":""},"background_overlay_video_fallback":{"url":"","id":""},"background_overlay_hover_image":{"url":"","id":""},"background_overlay_hover_video_fallback":{"url":"","id":""}},"elements":[{"id":"4720a9e","elType":"column","settings":{"_column_size":100,"_inline_size":null,"background_background":"classic","background_overlay_background":"classic","content_position":"center","heading_color":"#ffffff","background_image":{"url":"","id":""},"background_video_fallback":{"url":"","id":""},"background_hover_image":{"url":"","id":""},"background_hover_video_fallback":{"url":"","id":""},"background_overlay_image":{"url":"","id":""},"background_overlay_video_fallback":{"url":"","id":""},"background_overlay_hover_image":{"url":"","id":""},"background_overlay_hover_video_fallback":{"url":"","id":""}},"elements":[{"id":"e0d2a90","elType":"section","settings":{"css_classes":"awp-hero-center","background_image":{"url":"","id":""},"background_video_fallback":{"url":"","id":""},"background_hover_image":{"url":"","id":""},"background_hover_video_fallback":{"url":"","id":""},"background_overlay_image":{"url":"","id":""},"background_overlay_video_fallback":{"url":"","id":""},"background_overlay_hover_image":{"url":"","id":""},"background_overlay_hover_video_fallback":{"url":"","id":""}},"elements":[{"id":"32e5d4ca","elType":"column","settings":{"_column_size":100,"_inline_size":null,"background_image":{"url":"","id":""},"background_video_fallback":{"url":"","id":""},"background_hover_image":{"url":"","id":""},"background_hover_video_fallback":{"url":"","id":""},"background_overlay_image":{"url":"","id":""},"background_overlay_video_fallback":{"url":"","id":""},"background_overlay_hover_image":{"url":"","id":""},"background_overlay_hover_video_fallback":{"url":"","id":""}},"elements":[{"id":"45248c3c","elType":"widget","settings":{"title":"Hello, I am","header_size":"p","typography_typography":"custom","typography_font_size":{"unit":"px","size":"13"},"typography_text_transform":"uppercase","typography_letter_spacing":{"unit":"px","size":"2"},"typography_font_family":"Montserrat","_background_image":{"url":"","id":""},"_background_video_fallback":{"url":"","id":""},"_background_hover_image":{"url":"","id":""},"_background_hover_video_fallback":{"url":"","id":""}},"elements":[],"widgetType":"heading"},{"id":"1c4f7ace","elType":"widget","settings":{"title":"Jason Osbourne","typography_typography":"custom","typography_font_size":{"unit":"px","size":90},"typography_font_weight":"600","typography_letter_spacing":{"unit":"px","size":"-1"},"align":"center","align_tablet":"center","typography_font_size_tablet":{"unit":"px","size":"75"},"typography_font_size_mobile":{"unit":"px","size":"45"},"header_size":"h1","typography_font_family":"Montserrat","_background_image":{"url":"","id":""},"_background_video_fallback":{"url":"","id":""},"_background_hover_image":{"url":"","id":""},"_background_hover_video_fallback":{"url":"","id":""}},"elements":[],"widgetType":"heading"},{"id":"6a654bc4","elType":"widget","settings":{"editor":"<p>Jason is a free Elementor layout template that you can use as a personal landing page for your freelance services.\u00a0<\/p>","text_color":"#ffffff","typography_typography":"custom","typography_font_size":{"unit":"px","size":"22"},"typography_font_family":"Montserrat","typography_font_weight":"300","typography_font_size_tablet":{"unit":"px","size":"22"},"typography_font_size_mobile":{"unit":"px","size":"18"},"typography_line_height":{"unit":"px","size":"32"},"typography_line_height_tablet":{"unit":"px","size":"32"},"typography_line_height_mobile":{"unit":"px","size":"28"},"_background_image":{"url":"","id":""},"_background_video_fallback":{"url":"","id":""},"_background_hover_image":{"url":"","id":""},"_background_hover_video_fallback":{"url":"","id":""}},"elements":[],"widgetType":"text-editor"},{"id":"1c82fde0","elType":"widget","settings":{"weight":{"unit":"px","size":"5"},"color":"#ffffff","width":{"unit":"%","size":"10"},"gap":{"unit":"px","size":"20"},"_background_image":{"url":"","id":""},"_background_video_fallback":{"url":"","id":""},"_background_hover_image":{"url":"","id":""},"_background_hover_video_fallback":{"url":"","id":""}},"elements":[],"widgetType":"divider"},{"id":"6e4b014","elType":"widget","settings":{"text":"HAVE PROJECT? LET'S TALK","align":"center","size":"lg","typography_typography":"custom","typography_font_size":{"unit":"px","size":"13"},"typography_font_family":"Montserrat","typography_text_transform":"uppercase","typography_letter_spacing":{"unit":"px","size":2},"background_color":"#67b3a3","border_radius":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":true},"link":{"is_external":"","url":"#contact"},"button_text_color":"#ffffff","_background_image":{"url":"","id":""},"_background_video_fallback":{"url":"","id":""},"_background_hover_image":{"url":"","id":""},"_background_hover_video_fallback":{"url":"","id":""}},"elements":[],"widgetType":"button"}],"isInner":true}],"isInner":true}],"isInner":false}],"isInner":false},{"id":"24b31999","elType":"section","settings":{"text_align":"center","margin":{"unit":"px","top":"0","right":0,"bottom":"0","left":0,"isLinked":false},"padding":{"unit":"px","top":"120","right":"60","bottom":"120","left":"60","isLinked":false},"background_background":"classic","background_color":"#ffffff","heading_color":"#000000","color_text":"#000000","padding_tablet":{"unit":"px","top":"80","right":"20","bottom":"80","left":"20","isLinked":false},"padding_mobile":{"unit":"px","top":"60","right":"20","bottom":"60","left":"20","isLinked":false},"background_image":{"url":"","id":""},"background_video_fallback":{"url":"","id":""},"background_hover_image":{"url":"","id":""},"background_hover_video_fallback":{"url":"","id":""},"background_overlay_image":{"url":"","id":""},"background_overlay_video_fallback":{"url":"","id":""},"background_overlay_hover_image":{"url":"","id":""},"background_overlay_hover_video_fallback":{"url":"","id":""}},"elements":[{"id":"64b9218f","elType":"column","settings":{"_column_size":100,"_inline_size":null,"padding":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":true},"background_image":{"url":"","id":""},"background_video_fallback":{"url":"","id":""},"background_hover_image":{"url":"","id":""},"background_hover_video_fallback":{"url":"","id":""},"background_overlay_image":{"url":"","id":""},"background_overlay_video_fallback":{"url":"","id":""},"background_overlay_hover_image":{"url":"","id":""},"background_overlay_hover_video_fallback":{"url":"","id":""}},"elements":[{"id":"59c16f37","elType":"widget","settings":{"title":"I focus on one thing","header_size":"p","typography_typography":"custom","typography_font_size":{"unit":"px","size":"13"},"typography_text_transform":"uppercase","typography_letter_spacing":{"unit":"px","size":"2"},"typography_font_family":"Montserrat","_background_image":{"url":"","id":""},"_background_video_fallback":{"url":"","id":""},"_background_hover_image":{"url":"","id":""},"_background_hover_video_fallback":{"url":"","id":""}},"elements":[],"widgetType":"heading"},{"id":"9f1a6c5","elType":"widget","settings":{"title":"Writing services","typography_typography":"custom","typography_font_size":{"unit":"px","size":"45"},"typography_font_weight":"600","typography_letter_spacing":{"unit":"px","size":"-1"},"typography_font_size_tablet":{"unit":"px","size":"45"},"typography_font_size_mobile":{"unit":"px","size":"30"},"typography_font_family":"Montserrat","_background_image":{"url":"","id":""},"_background_video_fallback":{"url":"","id":""},"_background_hover_image":{"url":"","id":""},"_background_hover_video_fallback":{"url":"","id":""}},"elements":[],"widgetType":"heading"},{"id":"65fe41d9","elType":"widget","settings":{"space":{"unit":"px","size":"30"},"space_tablet":{"unit":"px","size":"30"},"space_mobile":{"unit":"px","size":"20"},"_background_image":{"url":"","id":""},"_background_video_fallback":{"url":"","id":""},"_background_hover_image":{"url":"","id":""},"_background_hover_video_fallback":{"url":"","id":""}},"elements":[],"widgetType":"spacer"},{"id":"689b47d1","elType":"widget","settings":{"services_list":[{"title":"Award-Winning\u200b","text":"Add some text here to describe your services to the page visitors.\u200b","icon":"fa fa-trophy","color":"#333333","type":"image","_id":"76f9424","image":{"id":6,"url":"https:\/\/demo.themeisle.com\/neve-freelancer\/wp-content\/uploads\/sites\/183\/2019\/03\/tekt-icon-2.png"},"link":{"url":"","is_external":"","nofollow":""}},{"title":"Professional\u200b","text":"Add some text here to describe your services to the page visitors.\u200b","icon":"fa fa-suitcase","color":"#333333","type":"image","_id":"fa80fac","image":{"id":7,"url":"https:\/\/demo.themeisle.com\/neve-freelancer\/wp-content\/uploads\/sites\/183\/2019\/03\/tekt-icon-3.png"},"link":{"url":"","is_external":"","nofollow":""}},{"title":"Consulting\u200b","text":"Add some text here to describe your services to the page visitors.\u200b","icon":"fa fa-handshake-o","color":"#333333","type":"image","_id":"ab3b0b4","image":{"id":8,"url":"https:\/\/demo.themeisle.com\/neve-freelancer\/wp-content\/uploads\/sites\/183\/2019\/03\/tekt-icon-1.png"},"link":{"url":"","is_external":"","nofollow":""}}],"grid_columns_tablet":"3","icon_space":{"unit":"px","size":35},"icon_size":{"unit":"px","size":100},"text_align_tablet":"center","text_align_mobile":"center","title_bottom_space":{"unit":"px","size":14},"title_typography_typography":"custom","title_typography_font_size":{"unit":"px","size":22},"title_typography_font_family":"Montserrat","title_typography_font_weight":"600","description_typography_typography":"custom","description_typography_font_size":{"unit":"px","size":17},"description_typography_font_family":"Muli","grid_style_background_image":{"url":"","id":""},"grid_style_background_video_fallback":{"url":"","id":""},"grid_items_background_image":{"url":"","id":""},"grid_items_background_video_fallback":{"url":"","id":""},"grid_items_background_hover_image":{"url":"","id":""},"grid_items_background_hover_video_fallback":{"url":"","id":""},"_background_image":{"url":"","id":""},"_background_video_fallback":{"url":"","id":""},"_background_hover_image":{"url":"","id":""},"_background_hover_video_fallback":{"url":"","id":""}},"elements":[],"widgetType":"obfx-services"}],"isInner":false}],"isInner":false},{"id":"417ddcd4","elType":"section","settings":{"content_position":"middle","structure":"20","background_background":"classic","background_color":"#000000","background_overlay_background":"classic","background_overlay_image":{"url":"","id":""},"background_overlay_opacity":{"unit":"px","size":0.05},"padding":{"unit":"px","top":"120","right":"60","bottom":"120","left":"60","isLinked":false},"custom_height":{"unit":"px","size":"600"},"shape_divider_bottom":"tilt","shape_divider_bottom_height":{"unit":"px","size":0},"padding_mobile":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":false},"heading_color":"#ffffff","color_text":"#ffffff","color_link":"#ffffff","color_link_hover":"#ffffff","padding_tablet":{"unit":"px","top":"80","right":"20","bottom":"80","left":"20","isLinked":false},"background_image":{"url":"","id":""},"background_video_fallback":{"url":"","id":""},"background_hover_image":{"url":"","id":""},"background_hover_video_fallback":{"url":"","id":""},"background_overlay_video_fallback":{"url":"","id":""},"background_overlay_hover_image":{"url":"","id":""},"background_overlay_hover_video_fallback":{"url":"","id":""}},"elements":[{"id":"49c99c53","elType":"column","settings":{"_column_size":50,"_inline_size":null,"content_position":"top","padding":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":true},"background_image":{"url":"","id":""},"background_video_fallback":{"url":"","id":""},"background_hover_image":{"url":"","id":""},"background_hover_video_fallback":{"url":"","id":""},"background_overlay_image":{"url":"","id":""},"background_overlay_video_fallback":{"url":"","id":""},"background_overlay_hover_image":{"url":"","id":""},"background_overlay_hover_video_fallback":{"url":"","id":""}},"elements":[{"id":"61aa286a","elType":"widget","settings":{"image":{"id":9,"url":"https:\/\/demo.themeisle.com\/neve-freelancer\/wp-content\/uploads\/sites\/183\/2019\/03\/img1.jpg"},"_background_image":{"url":"","id":""},"_background_video_fallback":{"url":"","id":""},"_background_hover_image":{"url":"","id":""},"_background_hover_video_fallback":{"url":"","id":""}},"elements":[],"widgetType":"image"}],"isInner":false},{"id":"531949e3","elType":"column","settings":{"_column_size":50,"_inline_size":null,"margin_tablet":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":false},"margin_mobile":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":false},"padding":{"unit":"px","top":"40","right":"0","bottom":"40","left":"040","isLinked":false},"padding_tablet":{"unit":"px","top":"20","right":"20","bottom":"20","left":"20","isLinked":true},"padding_mobile":{"unit":"px","top":"40","right":"20","bottom":"040","left":"20","isLinked":false},"css_classes":"awp-content-center","background_image":{"url":"","id":""},"background_video_fallback":{"url":"","id":""},"background_hover_image":{"url":"","id":""},"background_hover_video_fallback":{"url":"","id":""},"background_overlay_image":{"url":"","id":""},"background_overlay_video_fallback":{"url":"","id":""},"background_overlay_hover_image":{"url":"","id":""},"background_overlay_hover_video_fallback":{"url":"","id":""}},"elements":[{"id":"3fd25f43","elType":"widget","settings":{"title":"I love life","header_size":"p","typography_typography":"custom","typography_font_size":{"unit":"px","size":"13"},"typography_text_transform":"uppercase","typography_letter_spacing":{"unit":"px","size":"2"},"align_mobile":"center","typography_font_family":"Montserrat","_background_image":{"url":"","id":""},"_background_video_fallback":{"url":"","id":""},"_background_hover_image":{"url":"","id":""},"_background_hover_video_fallback":{"url":"","id":""}},"elements":[],"widgetType":"heading"},{"id":"24ddece8","elType":"widget","settings":{"title":"About Me","typography_typography":"custom","typography_font_size":{"unit":"px","size":"45"},"typography_font_weight":"600","typography_letter_spacing":{"unit":"px","size":"-1"},"typography_font_size_tablet":{"unit":"px","size":"45"},"typography_font_size_mobile":{"unit":"px","size":"30"},"align_mobile":"center","typography_font_family":"Montserrat","_background_image":{"url":"","id":""},"_background_video_fallback":{"url":"","id":""},"_background_hover_image":{"url":"","id":""},"_background_hover_video_fallback":{"url":"","id":""}},"elements":[],"widgetType":"heading"},{"id":"56c58594","elType":"widget","settings":{"weight":{"unit":"px","size":"5"},"color":"#ffffff","width":{"unit":"%","size":"10"},"align_tablet":"left","gap":{"unit":"px","size":"20"},"align_mobile":"center","_background_image":{"url":"","id":""},"_background_video_fallback":{"url":"","id":""},"_background_hover_image":{"url":"","id":""},"_background_hover_video_fallback":{"url":"","id":""}},"elements":[],"widgetType":"divider"},{"id":"2b1ebd19","elType":"widget","settings":{"editor":"<p>In online marketing, a landing page, sometimes known as a \"lead capture page\" or a \"lander\", or a \"destination page\", is a single web page that appears in response to clicking on a search engine optimized search result or an online advertisement.<\/p>","typography_typography":"custom","typography_font_size":{"unit":"px","size":"17"},"typography_line_height":{"unit":"em","size":1.5},"typography_font_weight":"300","align_mobile":"center","typography_font_family":"Muli","text_color":"#ffffff","_background_image":{"url":"","id":""},"_background_video_fallback":{"url":"","id":""},"_background_hover_image":{"url":"","id":""},"_background_hover_video_fallback":{"url":"","id":""}},"elements":[],"widgetType":"text-editor"},{"id":"5d01b052","elType":"widget","settings":{"social_icon_list":[{"social":"fa fa-facebook","_id":"fxed6qd","link":{"url":"","is_external":"true","nofollow":""}},{"social":"fa fa-twitter","_id":"32q8bqx","link":{"url":"","is_external":"true","nofollow":""}},{"social":"fa fa-google-plus","_id":"d6pdnr9","link":{"url":"","is_external":"true","nofollow":""}}],"shape":"circle","align":"","icon_spacing":{"unit":"px","size":"20"},"image_border_width":{"unit":"px","top":"5","right":"5","bottom":"5","left":"5","isLinked":false},"image_border_color":"#ffffff","align_tablet":"left","align_mobile":"center","_background_image":{"url":"","id":""},"_background_video_fallback":{"url":"","id":""},"_background_hover_image":{"url":"","id":""},"_background_hover_video_fallback":{"url":"","id":""}},"elements":[],"widgetType":"social-icons"}],"isInner":false}],"isInner":false},{"id":"68d86520","elType":"section","settings":{"background_background":"classic","background_color":"#ffffff","margin":{"unit":"px","top":"","right":0,"bottom":"","left":0,"isLinked":true},"padding":{"unit":"px","top":"0120","right":"60","bottom":"120","left":"60","isLinked":false},"text_align":"center","heading_color":"#000000","color_text":"#000000","padding_tablet":{"unit":"px","top":"80","right":"20","bottom":"80","left":"20","isLinked":false},"padding_mobile":{"unit":"px","top":"60","right":"20","bottom":"060","left":"20","isLinked":false},"background_image":{"url":"","id":""},"background_video_fallback":{"url":"","id":""},"background_hover_image":{"url":"","id":""},"background_hover_video_fallback":{"url":"","id":""},"background_overlay_image":{"url":"","id":""},"background_overlay_video_fallback":{"url":"","id":""},"background_overlay_hover_image":{"url":"","id":""},"background_overlay_hover_video_fallback":{"url":"","id":""}},"elements":[{"id":"2b08d929","elType":"column","settings":{"_column_size":100,"_inline_size":null,"padding":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":true},"background_image":{"url":"","id":""},"background_video_fallback":{"url":"","id":""},"background_hover_image":{"url":"","id":""},"background_hover_video_fallback":{"url":"","id":""},"background_overlay_image":{"url":"","id":""},"background_overlay_video_fallback":{"url":"","id":""},"background_overlay_hover_image":{"url":"","id":""},"background_overlay_hover_video_fallback":{"url":"","id":""}},"elements":[{"id":"3a1fdeb5","elType":"widget","settings":{"title":"Have a project in the works?","header_size":"p","typography_typography":"custom","typography_font_size":{"unit":"px","size":"13"},"typography_text_transform":"uppercase","typography_letter_spacing":{"unit":"px","size":"2"},"title_color":"#000000","typography_font_family":"Montserrat","typography_font_weight":"600","_background_image":{"url":"","id":""},"_background_video_fallback":{"url":"","id":""},"_background_hover_image":{"url":"","id":""},"_background_hover_video_fallback":{"url":"","id":""}},"elements":[],"widgetType":"heading"},{"id":"630a7c81","elType":"widget","settings":{"space":{"unit":"px","size":"30"},"space_tablet":{"unit":"px","size":"30"},"space_mobile":{"unit":"px","size":"20"},"_background_image":{"url":"","id":""},"_background_video_fallback":{"url":"","id":""},"_background_hover_image":{"url":"","id":""},"_background_hover_video_fallback":{"url":"","id":""}},"elements":[],"widgetType":"spacer"},{"id":"28c152f2","elType":"widget","settings":{"text":"LET'S TALK","align":"center","size":"lg","typography_typography":"custom","typography_font_size":{"unit":"px","size":"13"},"typography_font_family":"Montserrat","typography_text_transform":"uppercase","typography_letter_spacing":{"unit":"px","size":2},"background_color":"#67b3a3","border_radius":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":true},"link":{"is_external":"","url":"#contact"},"button_text_color":"#ffffff","_background_image":{"url":"","id":""},"_background_video_fallback":{"url":"","id":""},"_background_hover_image":{"url":"","id":""},"_background_hover_video_fallback":{"url":"","id":""}},"elements":[],"widgetType":"button"}],"isInner":false}],"isInner":false},{"id":"5caa89ff","elType":"section","settings":{"layout":"full_width","custom_height":{"unit":"px","size":"700"},"structure":"20","background_background":"classic","background_color":"#000000","column_position":"stretch","padding":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":false},"heading_color":"#ffffff","color_text":"#ffffff","color_link":"#ffffff","color_link_hover":"rgba(255,255,255,0.7)","background_image":{"url":"","id":""},"background_video_fallback":{"url":"","id":""},"background_hover_image":{"url":"","id":""},"background_hover_video_fallback":{"url":"","id":""},"background_overlay_image":{"url":"","id":""},"background_overlay_video_fallback":{"url":"","id":""},"background_overlay_hover_image":{"url":"","id":""},"background_overlay_hover_video_fallback":{"url":"","id":""}},"elements":[{"id":"66fd50e0","elType":"column","settings":{"_column_size":50,"_inline_size":null,"content_position":"center","padding":{"unit":"px","top":"120","right":"60","bottom":"120","left":"60","isLinked":false},"padding_tablet":{"unit":"px","top":"80","right":"20","bottom":"80","left":"20","isLinked":false},"padding_mobile":{"unit":"px","top":"60","right":"20","bottom":"060","left":"20","isLinked":false},"background_image":{"url":"","id":""},"background_video_fallback":{"url":"","id":""},"background_hover_image":{"url":"","id":""},"background_hover_video_fallback":{"url":"","id":""},"background_overlay_image":{"url":"","id":""},"background_overlay_video_fallback":{"url":"","id":""},"background_overlay_hover_image":{"url":"","id":""},"background_overlay_hover_video_fallback":{"url":"","id":""}},"elements":[{"id":"67dc4696","elType":"section","settings":{"css_classes":"awp-content-center","background_image":{"url":"","id":""},"background_video_fallback":{"url":"","id":""},"background_hover_image":{"url":"","id":""},"background_hover_video_fallback":{"url":"","id":""},"background_overlay_image":{"url":"","id":""},"background_overlay_video_fallback":{"url":"","id":""},"background_overlay_hover_image":{"url":"","id":""},"background_overlay_hover_video_fallback":{"url":"","id":""}},"elements":[{"id":"748923d3","elType":"column","settings":{"_column_size":100,"_inline_size":null,"heading_color":"#ffffff","color_text":"#ffffff","css_classes":"awp-hero","margin":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":false},"margin_tablet":{"unit":"px","top":"40","right":"0","bottom":"40","left":"0","isLinked":false},"padding":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":false},"background_image":{"url":"","id":""},"background_video_fallback":{"url":"","id":""},"background_hover_image":{"url":"","id":""},"background_hover_video_fallback":{"url":"","id":""},"background_overlay_image":{"url":"","id":""},"background_overlay_video_fallback":{"url":"","id":""},"background_overlay_hover_image":{"url":"","id":""},"background_overlay_hover_video_fallback":{"url":"","id":""}},"elements":[{"id":"2a538ef4","elType":"widget","settings":{"title":"my story","header_size":"p","typography_typography":"custom","typography_font_size":{"unit":"px","size":"13"},"typography_text_transform":"uppercase","typography_letter_spacing":{"unit":"px","size":"2"},"align_tablet":"left","typography_font_family":"Montserrat","align_mobile":"center","_background_image":{"url":"","id":""},"_background_video_fallback":{"url":"","id":""},"_background_hover_image":{"url":"","id":""},"_background_hover_video_fallback":{"url":"","id":""}},"elements":[],"widgetType":"heading"},{"id":"697fda1a","elType":"widget","settings":{"title":"Skills you can trust","typography_typography":"custom","typography_font_size":{"unit":"px","size":"45"},"typography_font_weight":"600","typography_letter_spacing":{"unit":"px","size":"-1"},"typography_font_size_tablet":{"unit":"px","size":"45"},"typography_font_size_mobile":{"unit":"px","size":"30"},"align_mobile":"center","typography_font_family":"Montserrat","_background_image":{"url":"","id":""},"_background_video_fallback":{"url":"","id":""},"_background_hover_image":{"url":"","id":""},"_background_hover_video_fallback":{"url":"","id":""}},"elements":[],"widgetType":"heading"},{"id":"7610b09f","elType":"widget","settings":{"align":"","image":{"id":10,"url":"https:\/\/demo.themeisle.com\/neve-freelancer\/wp-content\/uploads\/sites\/183\/2019\/03\/ether-stars.png"},"align_mobile":"center","_background_image":{"url":"","id":""},"_background_video_fallback":{"url":"","id":""},"_background_hover_image":{"url":"","id":""},"_background_hover_video_fallback":{"url":"","id":""}},"elements":[],"widgetType":"image"},{"id":"4e02f453","elType":"widget","settings":{"weight":{"unit":"px","size":"5"},"color":"#ffffff","width":{"unit":"%","size":"10"},"align_tablet":"left","gap":{"unit":"px","size":"20"},"align_mobile":"center","_background_image":{"url":"","id":""},"_background_video_fallback":{"url":"","id":""},"_background_hover_image":{"url":"","id":""},"_background_hover_video_fallback":{"url":"","id":""}},"elements":[],"widgetType":"divider"},{"id":"7ef1f0be","elType":"widget","settings":{"testimonial_content":"I\u2019ve been trying for months to find a way to build landing pages and sites quickly but customized, without having to sign on to some packaged software solution that makes things easy but predictable, and limited.\n\nSave yourself the time and aggravation \u2013 just install Elementor and start loving your new page creating freedom.","testimonial_name":"Jane Austin","testimonial_job":"Entrepreneur","testimonial_alignment":"left","content_typography_typography":"custom","content_typography_font_size":{"unit":"px","size":"17"},"content_typography_font_weight":"300","name_typography_typography":"custom","name_typography_font_family":"Montserrat","job_typography_typography":"custom","job_typography_font_size":{"unit":"px","size":"13"},"job_typography_letter_spacing":{"unit":"px","size":2.1},"content_typography_font_size_tablet":{"unit":"px","size":"17"},"testimonial_image":{"id":11,"url":"https:\/\/demo.themeisle.com\/neve-freelancer\/wp-content\/uploads\/sites\/183\/2019\/03\/ether-avatar.png"},"content_typography_font_family":"Muli","job_typography_font_family":"Muli","content_content_color":"#ffffff","name_text_color":"#ffffff","job_text_color":"#ffffff","_background_image":{"url":"","id":""},"_background_video_fallback":{"url":"","id":""},"_background_hover_image":{"url":"","id":""},"_background_hover_video_fallback":{"url":"","id":""}},"elements":[],"widgetType":"testimonial"}],"isInner":true}],"isInner":true}],"isInner":false},{"id":"e46ed19","elType":"column","settings":{"_column_size":50,"_inline_size":null,"background_background":"classic","background_image":{"id":12,"url":"https:\/\/demo.themeisle.com\/neve-freelancer\/wp-content\/uploads\/sites\/183\/2019\/03\/img2.jpg"},"background_repeat":"no-repeat","background_size":"cover","content_position":"center","padding":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":true},"background_overlay_background":"classic","background_overlay_color":"#000000","background_overlay_color_b":"#12003d","padding_mobile":{"unit":"px","top":"80","right":"0","bottom":"80","left":"0","isLinked":false},"background_video_fallback":{"url":"","id":""},"background_hover_image":{"url":"","id":""},"background_hover_video_fallback":{"url":"","id":""},"background_overlay_image":{"url":"","id":""},"background_overlay_video_fallback":{"url":"","id":""},"background_overlay_hover_image":{"url":"","id":""},"background_overlay_hover_video_fallback":{"url":"","id":""}},"elements":[{"id":"7f48d1ec","elType":"widget","settings":{"starting_number":"400","title":"completed projects","ending_number":"423","number_color":"#ffffff","title_color":"rgba(255,255,255,0.5)","typography_title_typography":"custom","typography_title_font_size":{"unit":"px","size":"13"},"typography_title_font_family":"Montserrat","typography_title_font_weight":"500","typography_title_text_transform":"uppercase","typography_title_letter_spacing":{"unit":"px","size":"2"},"typography_number_typography":"custom","typography_number_font_family":"Montserrat","typography_number_font_size":{"unit":"px","size":"100"},"typography_number_font_weight":"600","_background_image":{"url":"","id":""},"_background_video_fallback":{"url":"","id":""},"_background_hover_image":{"url":"","id":""},"_background_hover_video_fallback":{"url":"","id":""}},"elements":[],"widgetType":"counter"}],"isInner":false}],"isInner":false},{"id":"5a85d7e6","elType":"section","settings":{"layout":"full_width","custom_height":{"unit":"px","size":"700"},"structure":"20","background_background":"classic","column_position":"stretch","reverse_order_mobile":"reverse-mobile","background_color":"#ffffff","heading_color":"#262329","background_image":{"url":"","id":""},"background_video_fallback":{"url":"","id":""},"background_hover_image":{"url":"","id":""},"background_hover_video_fallback":{"url":"","id":""},"background_overlay_image":{"url":"","id":""},"background_overlay_video_fallback":{"url":"","id":""},"background_overlay_hover_image":{"url":"","id":""},"background_overlay_hover_video_fallback":{"url":"","id":""}},"elements":[{"id":"d3c819c","elType":"column","settings":{"_column_size":50,"_inline_size":null,"background_background":"classic","background_image":{"id":13,"url":"https:\/\/demo.themeisle.com\/neve-freelancer\/wp-content\/uploads\/sites\/183\/2019\/03\/img3.jpg"},"background_repeat":"no-repeat","background_size":"cover","content_position":"center","padding":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":true},"background_overlay_background":"classic","background_overlay_color_b":"#12003d","padding_mobile":{"unit":"px","top":"0100","right":"0","bottom":"100","left":"0","isLinked":false},"background_video_fallback":{"url":"","id":""},"background_hover_image":{"url":"","id":""},"background_hover_video_fallback":{"url":"","id":""},"background_overlay_image":{"url":"","id":""},"background_overlay_video_fallback":{"url":"","id":""},"background_overlay_hover_image":{"url":"","id":""},"background_overlay_hover_video_fallback":{"url":"","id":""}},"elements":[{"id":"245121f","elType":"widget","settings":{"_background_image":{"url":"","id":""},"_background_video_fallback":{"url":"","id":""},"_background_hover_image":{"url":"","id":""},"_background_hover_video_fallback":{"url":"","id":""}},"elements":[],"widgetType":"spacer"}],"isInner":false},{"id":"5069c060","elType":"column","settings":{"_column_size":50,"_inline_size":null,"content_position":"center","heading_color":"#000000","color_text":"#000000","color_link":"#000000","color_link_hover":"rgba(0,0,0,0.7)","padding":{"unit":"px","top":"120","right":"60","bottom":"120","left":"60","isLinked":false},"padding_tablet":{"unit":"px","top":"80","right":"20","bottom":"80","left":"20","isLinked":false},"padding_mobile":{"unit":"px","top":"60","right":"20","bottom":"60","left":"20","isLinked":false},"background_image":{"url":"","id":""},"background_video_fallback":{"url":"","id":""},"background_hover_image":{"url":"","id":""},"background_hover_video_fallback":{"url":"","id":""},"background_overlay_image":{"url":"","id":""},"background_overlay_video_fallback":{"url":"","id":""},"background_overlay_hover_image":{"url":"","id":""},"background_overlay_hover_video_fallback":{"url":"","id":""}},"elements":[{"id":"4103226e","elType":"section","settings":{"css_classes":"awp-content-center","background_image":{"url":"","id":""},"background_video_fallback":{"url":"","id":""},"background_hover_image":{"url":"","id":""},"background_hover_video_fallback":{"url":"","id":""},"background_overlay_image":{"url":"","id":""},"background_overlay_video_fallback":{"url":"","id":""},"background_overlay_hover_image":{"url":"","id":""},"background_overlay_hover_video_fallback":{"url":"","id":""}},"elements":[{"id":"7d05999d","elType":"column","settings":{"_column_size":100,"_inline_size":null,"css_classes":"awp-hero","margin":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":false},"margin_tablet":{"unit":"px","top":"40","right":"0","bottom":"40","left":"0","isLinked":false},"padding":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":false},"padding_mobile":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":true},"background_image":{"url":"","id":""},"background_video_fallback":{"url":"","id":""},"background_hover_image":{"url":"","id":""},"background_hover_video_fallback":{"url":"","id":""},"background_overlay_image":{"url":"","id":""},"background_overlay_video_fallback":{"url":"","id":""},"background_overlay_hover_image":{"url":"","id":""},"background_overlay_hover_video_fallback":{"url":"","id":""}},"elements":[{"id":"58aef06e","elType":"widget","settings":{"title":"Questions? I have answers","header_size":"p","typography_typography":"custom","typography_font_size":{"unit":"px","size":"13"},"typography_text_transform":"uppercase","typography_letter_spacing":{"unit":"px","size":"2"},"align_tablet":"left","typography_font_family":"Montserrat","align_mobile":"center","_background_image":{"url":"","id":""},"_background_video_fallback":{"url":"","id":""},"_background_hover_image":{"url":"","id":""},"_background_hover_video_fallback":{"url":"","id":""}},"elements":[],"widgetType":"heading"},{"id":"582f647a","elType":"widget","settings":{"title":"Frequently Asked Questions","typography_typography":"custom","typography_font_size":{"unit":"px","size":"45"},"typography_font_weight":"600","typography_letter_spacing":{"unit":"px","size":"-1"},"typography_font_size_tablet":{"unit":"px","size":"45"},"typography_font_size_mobile":{"unit":"px","size":"30"},"align_mobile":"center","typography_font_family":"Montserrat","_background_image":{"url":"","id":""},"_background_video_fallback":{"url":"","id":""},"_background_hover_image":{"url":"","id":""},"_background_hover_video_fallback":{"url":"","id":""}},"elements":[],"widgetType":"heading"},{"id":"61454551","elType":"widget","settings":{"weight":{"unit":"px","size":"5"},"width":{"unit":"%","size":"10"},"align_tablet":"left","gap":{"unit":"px","size":"20"},"align_mobile":"center","color":"#000000","_background_image":{"url":"","id":""},"_background_video_fallback":{"url":"","id":""},"_background_hover_image":{"url":"","id":""},"_background_hover_video_fallback":{"url":"","id":""}},"elements":[],"widgetType":"divider"},{"id":"19de8c9f","elType":"widget","settings":{"tabs":[{"tab_title":"Can I use this layout for my site?","tab_content":"<p>Definitely, feel free to use it and modify it as you see fit, in personal or commercial projects. No attribution is required, but appreciated.<\/p>","_id":"9cx60o5"},{"tab_title":"What do I need in order to set it up","tab_content":"<p>You will need <a href=\"http:\/\/bit.ly\/ElmntorBld\">Elementor<\/a> page builder, a WordPress installation and any WordPress theme. I use <a href=\"http:\/\/bit.ly\/awpGPress\">GeneratePress<\/a> in this demo.<\/p>","_id":"8iu2nrj"},{"tab_title":"I want to turn this layout into a full website","tab_content":"<p>Please <a href=\"mailto:hello@analogwp.com\">get in touch<\/a> with me to discuss your project needs and define a theme, plugin, and hosting configuration.<\/p><p>I will be happy to help you achieve more with your online presence.<\/p>","_id":"p2a9lgu"}],"border_width":{"unit":"px","size":0},"_padding":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":true},"title_typography_typography":"custom","title_typography_font_family":"Montserrat","content_typography_typography":"custom","content_typography_font_size":{"unit":"px","size":"17"},"content_typography_font_family":"Muli","title_color":"#000000","tab_active_color":"#67b3a3","content_color":"#000000","_background_image":{"url":"","id":""},"_background_video_fallback":{"url":"","id":""},"_background_hover_image":{"url":"","id":""},"_background_hover_video_fallback":{"url":"","id":""}},"elements":[],"widgetType":"accordion"}],"isInner":true}],"isInner":true}],"isInner":false}],"isInner":false},{"id":"62b1d4e6","elType":"section","settings":{"content_width":{"unit":"px","size":"700"},"background_background":"classic","background_color":"#000000","background_overlay_opacity":{"unit":"px","size":0.1},"heading_color":"#ffffff","padding":{"unit":"px","top":"120","right":"60","bottom":"120","left":"60","isLinked":false},"color_text":"#ffffff","text_align":"center","padding_mobile":{"unit":"px","top":"60","right":"20","bottom":"60","left":"20","isLinked":false},"padding_tablet":{"unit":"px","top":"80","right":"20","bottom":"80","left":"20","isLinked":false},"background_image":{"url":"","id":""},"background_video_fallback":{"url":"","id":""},"background_hover_image":{"url":"","id":""},"background_hover_video_fallback":{"url":"","id":""},"background_overlay_image":{"url":"","id":""},"background_overlay_video_fallback":{"url":"","id":""},"background_overlay_hover_image":{"url":"","id":""},"background_overlay_hover_video_fallback":{"url":"","id":""}},"elements":[{"id":"5393a066","elType":"column","settings":{"_column_size":100,"_inline_size":null,"background_image":{"url":"","id":""},"background_video_fallback":{"url":"","id":""},"background_hover_image":{"url":"","id":""},"background_hover_video_fallback":{"url":"","id":""},"background_overlay_image":{"url":"","id":""},"background_overlay_video_fallback":{"url":"","id":""},"background_overlay_hover_image":{"url":"","id":""},"background_overlay_hover_video_fallback":{"url":"","id":""}},"elements":[{"id":"439503e7","elType":"widget","settings":{"anchor":"contact","_background_image":{"url":"","id":""},"_background_video_fallback":{"url":"","id":""},"_background_hover_image":{"url":"","id":""},"_background_hover_video_fallback":{"url":"","id":""}},"elements":[],"widgetType":"menu-anchor"},{"id":"67aaec57","elType":"widget","settings":{"title":"Contact form widget (pro)","header_size":"p","typography_typography":"custom","typography_font_size":{"unit":"px","size":"13"},"typography_text_transform":"uppercase","typography_letter_spacing":{"unit":"px","size":"2"},"align_tablet":"center","typography_font_family":"Montserrat","align_mobile":"center","_background_image":{"url":"","id":""},"_background_video_fallback":{"url":"","id":""},"_background_hover_image":{"url":"","id":""},"_background_hover_video_fallback":{"url":"","id":""}},"elements":[],"widgetType":"heading"},{"id":"31fef4c","elType":"widget","settings":{"title":"Let's talk about your project","typography_typography":"custom","typography_font_size":{"unit":"px","size":"45"},"typography_font_weight":"600","typography_letter_spacing":{"unit":"px","size":"-1"},"header_size":"h3","align_tablet":"center","typography_font_size_tablet":{"unit":"px","size":"35"},"typography_font_size_mobile":{"unit":"px","size":"35"},"align_mobile":"center","typography_font_family":"Montserrat","_background_image":{"url":"","id":""},"_background_video_fallback":{"url":"","id":""},"_background_hover_image":{"url":"","id":""},"_background_hover_video_fallback":{"url":"","id":""}},"elements":[],"widgetType":"heading"},{"id":"4fa46041","elType":"widget","settings":{"editor":"<p>If you have the Pro Version of Elementor, you can make use of this Pro Contact frm widget. Otherwise, you may easily use your favourite plugin and embed a form via a shortcode.<\/p>","typography_typography":"custom","typography_font_size":{"unit":"px","size":"17"},"typography_line_height":{"unit":"em","size":1.5},"typography_font_weight":"300","align_mobile":"center","typography_font_family":"Muli","text_color":"#ffffff","align_tablet":"center","_background_image":{"url":"","id":""},"_background_video_fallback":{"url":"","id":""},"_background_hover_image":{"url":"","id":""},"_background_hover_video_fallback":{"url":"","id":""}},"elements":[],"widgetType":"text-editor"},{"id":"e429c9a","elType":"widget","settings":{"weight":{"unit":"px","size":"5"},"color":"#ffffff","width":{"unit":"%","size":"10"},"align_tablet":"center","gap":{"unit":"px","size":"20"},"align":"center","align_mobile":"center","_background_image":{"url":"","id":""},"_background_video_fallback":{"url":"","id":""},"_background_hover_image":{"url":"","id":""},"_background_hover_video_fallback":{"url":"","id":""}},"elements":[],"widgetType":"divider"}],"isInner":false}],"isInner":false}]]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_elementor_version]]></wp:meta_key>
+					<wp:meta_value><![CDATA[0.4]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_elementor_template_type]]></wp:meta_key>
+					<wp:meta_value><![CDATA[page]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_elementor_page_settings]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:13:{s:10:"hide_title";s:3:"yes";s:21:"background_color_stop";a:2:{s:4:"unit";s:1:"%";s:4:"size";s:1:"0";}s:23:"background_color_b_stop";a:2:{s:4:"unit";s:1:"%";s:4:"size";s:3:"100";}s:25:"background_gradient_angle";a:2:{s:4:"unit";s:3:"deg";s:4:"size";s:3:"180";}s:7:"padding";a:6:{s:4:"unit";s:2:"px";s:3:"top";s:0:"";s:5:"right";s:0:"";s:6:"bottom";s:0:"";s:4:"left";s:0:"";s:8:"isLinked";s:4:"true";}s:14:"padding_tablet";a:6:{s:4:"unit";s:2:"px";s:3:"top";s:0:"";s:5:"right";s:0:"";s:6:"bottom";s:0:"";s:4:"left";s:0:"";s:8:"isLinked";s:4:"true";}s:14:"padding_mobile";a:6:{s:4:"unit";s:2:"px";s:3:"top";s:0:"";s:5:"right";s:0:"";s:6:"bottom";s:0:"";s:4:"left";s:0:"";s:8:"isLinked";s:4:"true";}s:21:"section_page_settings";s:0:"";s:18:"section_page_style";s:0:"";s:18:"section_custom_css";s:0:"";s:22:"custom_css_description";s:0:"";s:6:"action";s:28:"elementor_save_page_settings";s:6:"_nonce";s:10:"5587d8611e";}]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				Home			</title>
+			<link>https://demo.themeisle.com/neve-freelancer/</link>
+			<pubDate>Fri, 01 Mar 2019 10:37:20 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-freelancer/jason-landing-page/</guid>
+			<description></description>
+			<content:encoded><![CDATA[<p>Hello, I am</p>		
+			<h1>Jason Osbourne</h1>		
+		<p>I am a freelancer who specializes in services that help you and your business grow or get past difficult projects where an extra hand is needed.</p>		
+			<a href="#contact" role="button">
+						HAVE A PROJECT? LET'S TALK
+					</a>
+			<p>I focus on one thing</p>		
+			<h2>Writing services</h2>		
+															<h4>Award-Winning​</h4>
+																<p>Since primary school I&#039;ve won every writing contest that I&#039;ve entered.</p>
+													<!-- /.obfx-service-box-content -->
+									<!-- /.obfx-service-box -->
+				</a>			<!-- /.obfx-grid-wrapper -->
+															<h4>Professional​</h4>
+																<p>I always stick to my deadlines and treat my clients with the utmost respect.</p>
+													<!-- /.obfx-service-box-content -->
+									<!-- /.obfx-service-box -->
+				</a>			<!-- /.obfx-grid-wrapper -->
+															<h4>Consulting​</h4>
+																<p>Sometimes all you need is just the right advice. I can give you that.</p>
+													<!-- /.obfx-service-box-content -->
+									<!-- /.obfx-service-box -->
+				</a>			<!-- /.obfx-grid-wrapper -->
+										<img width="700" height="766" src="https://demo.themeisle.com/neve-freelancer/wp-content/uploads/sites/183/2019/03/neve-freelancer-about1.jpg" alt="" />											
+			<p>I love life</p>		
+			<h2>About Me</h2>		
+		<p>Passion is a feeling of intense enthusiasm towards or compelling desire for someone or something. Passion can range from eager interest in or admiration for an idea, proposal, or cause; to enthusiastic enjoyment of an interest or activity; to strong attraction, excitement, or emotion towards a person.</p>		
+							<a href="https://www.facebook.com" target="_blank">
+					Facebook
+				</a>
+							<a href="https://www.twitter.com" target="_blank">
+					Twitter
+				</a>
+							<a href="https://www.linkedin.com" target="_blank">
+					Linkedin
+				</a>
+			<p>Have a project that you need help with?</p>		
+			<a href="#contact" role="button">
+						LET'S TALK
+					</a>
+			<p>my story</p>		
+			<h2>Skills you can trust</h2>		
+					<ul>
+							<li>
+									</li>
+								<li>
+									</li>
+								<li>
+									</li>
+								<li>
+									</li>
+								<li>
+									</li>
+						</ul>
+							I’ve been trying for months to find a way to write content quickly but unique.
+Save yourself the time and aggravation – just take up on Jason's services and power up your work with great quality content.
+							<img width="300" height="300" src="https://demo.themeisle.com/neve-freelancer/wp-content/uploads/sites/183/2019/03/neve-freelancer-testimonial.jpg" alt="" />						
+													Jane Austin
+																			Entrepreneur
+				400
+							completed projects
+			<p>Questions? I have answers</p>		
+			<h2>Frequently Asked Questions</h2>		
+												<a href="">Can I use this content for my site?</a>
+					<p>Definitely, feel free to use it and modify it as you see fit, in personal or commercial projects. No attribution is required, but appreciated.</p>
+												<a href="">What do I need in order to get help?</a>
+					<p>Just head down to the contact form and drop me a message.</p>
+												<a href="">I want to make a long term partnership</a>
+					<p>I usually prefer short term contracts as they provide different challenges but from time to time I take on long term ones. Just write me a message and I&#8217;ll let you know.</p>
+			<p>Contact ME</p>		
+			<h3>Let's talk about your project</h3>		
+			<form action="https://demo.themeisle.com/neve-freelancer/wp-admin/admin-post.php" method="post" name="content-form-fc26ece" id="content-form-fc26ece">
+        <fieldset>
+            <label for="data[fc26ece][name]">
+				            </label>
+			                    
+					        </fieldset>
+        <fieldset>
+            <label for="data[fc26ece][email]">
+				            </label>
+			                    
+					        </fieldset>
+        <fieldset>
+            <label for="data[fc26ece][phone]">
+				            </label>
+			                    
+					        </fieldset>
+        <fieldset>
+            <label for="data[fc26ece][message]">
+				            </label>
+			                    <textarea name="data[fc26ece][message]" id="data[fc26ece][message]" cols="30" rows="5"></textarea>
+					        </fieldset>
+		        <fieldset>
+            <button type="submit" name="submit" value="submit-contact-fc26ece">
+	            Submit                            </button>
+        </fieldset>
+		</form>]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>15</wp:post_id>
+			<wp:post_date><![CDATA[2019-03-01 10:37:20]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-03-01 10:37:20]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[demo-neve-freelancer]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[page]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_elementor_data]]></wp:meta_key>
+					<wp:meta_value><![CDATA[[{"id":"29a10344","elType":"section","settings":{"height":"min-height","custom_height":{"unit":"vh","size":"70"},"column_position":"bottom","background_background":"classic","background_color":"#424242","background_position":"center center","background_repeat":"no-repeat","background_size":"cover","content_position":"middle","background_overlay_background":"gradient","background_overlay_color":"rgba(0,0,0,0)","background_overlay_color_b":"#000000","background_overlay_gradient_angle":{"unit":"deg","size":160},"background_overlay_opacity":{"unit":"px","size":0.87},"margin":{"unit":"px","top":"0","right":0,"bottom":"0","left":0,"isLinked":true},"padding":{"unit":"px","top":"120","right":"60","bottom":"120","left":"60","isLinked":false},"padding_tablet":{"unit":"px","top":"80","right":"20","bottom":"80","left":"20","isLinked":false},"padding_mobile":{"unit":"px","top":"60","right":"20","bottom":"60","left":"20","isLinked":false},"text_align":"center","background_image":{"id":16,"url":"https:\/\/demo.themeisle.com\/neve-freelancer\/wp-content\/uploads\/sites\/183\/2019\/03\/neve-freelancere-hero-image.jpg"},"custom_height_tablet":{"unit":"vh","size":50},"custom_height_mobile":{"unit":"vh","size":20}},"elements":[{"id":"4720a9e","elType":"column","settings":{"_column_size":100,"_inline_size":null,"background_background":"classic","background_overlay_background":"classic","content_position":"center","heading_color":"#ffffff"},"elements":[{"id":"e0d2a90","elType":"section","settings":{"css_classes":"awp-hero-center"},"elements":[{"id":"32e5d4ca","elType":"column","settings":{"_column_size":100,"_inline_size":null},"elements":[{"id":"45248c3c","elType":"widget","settings":{"title":"Hello, I am","header_size":"p","typography_typography":"custom","typography_font_size":{"unit":"px","size":"13"},"typography_text_transform":"uppercase","typography_letter_spacing":{"unit":"px","size":"2"},"typography_font_family":"Montserrat"},"elements":[],"widgetType":"heading"},{"id":"1c4f7ace","elType":"widget","settings":{"title":"Jason Osbourne","typography_typography":"custom","typography_font_size":{"unit":"px","size":90},"typography_font_weight":"600","typography_letter_spacing":{"unit":"px","size":"-1"},"align":"center","align_tablet":"center","typography_font_size_tablet":{"unit":"px","size":"75"},"typography_font_size_mobile":{"unit":"px","size":"45"},"header_size":"h1","typography_font_family":"Montserrat"},"elements":[],"widgetType":"heading"},{"id":"6a654bc4","elType":"widget","settings":{"editor":"<p>I am a freelancer who specializes in services that help you and your business grow or get past difficult projects where an extra hand is needed.<\/p>","text_color":"#ffffff","typography_typography":"custom","typography_font_size":{"unit":"px","size":"22"},"typography_font_family":"Montserrat","typography_font_weight":"300","typography_font_size_tablet":{"unit":"px","size":"22"},"typography_font_size_mobile":{"unit":"px","size":"18"},"typography_line_height":{"unit":"px","size":"32"},"typography_line_height_tablet":{"unit":"px","size":"32"},"typography_line_height_mobile":{"unit":"px","size":"28"}},"elements":[],"widgetType":"text-editor"},{"id":"1c82fde0","elType":"widget","settings":{"weight":{"unit":"px","size":"5"},"color":"#ffffff","width":{"unit":"%","size":"10"},"gap":{"unit":"px","size":"20"}},"elements":[],"widgetType":"divider"},{"id":"6e4b014","elType":"widget","settings":{"text":"HAVE A PROJECT? LET'S TALK","align":"center","size":"lg","typography_typography":"custom","typography_font_size":{"unit":"px","size":"13"},"typography_font_family":"Montserrat","typography_text_transform":"uppercase","typography_letter_spacing":{"unit":"px","size":2},"background_color":"#67b3a3","border_radius":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":true},"link":{"is_external":"","url":"#contact"},"button_text_color":"#ffffff"},"elements":[],"widgetType":"button"}],"isInner":true}],"isInner":true}],"isInner":false}],"isInner":false},{"id":"24b31999","elType":"section","settings":{"text_align":"center","margin":{"unit":"px","top":"0","right":0,"bottom":"0","left":0,"isLinked":false},"padding":{"unit":"px","top":"120","right":"60","bottom":"120","left":"60","isLinked":false},"background_background":"classic","background_color":"#ffffff","heading_color":"#000000","color_text":"#000000","padding_tablet":{"unit":"px","top":"80","right":"20","bottom":"80","left":"20","isLinked":false},"padding_mobile":{"unit":"px","top":"60","right":"20","bottom":"60","left":"20","isLinked":false}},"elements":[{"id":"64b9218f","elType":"column","settings":{"_column_size":100,"_inline_size":null,"padding":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":true}},"elements":[{"id":"1bc7301","elType":"widget","settings":{"anchor":"services"},"elements":[],"widgetType":"menu-anchor"},{"id":"59c16f37","elType":"widget","settings":{"title":"I focus on one thing","header_size":"p","typography_typography":"custom","typography_font_size":{"unit":"px","size":"13"},"typography_text_transform":"uppercase","typography_letter_spacing":{"unit":"px","size":"2"},"typography_font_family":"Montserrat"},"elements":[],"widgetType":"heading"},{"id":"9f1a6c5","elType":"widget","settings":{"title":"Writing services","typography_typography":"custom","typography_font_size":{"unit":"px","size":"45"},"typography_font_weight":"600","typography_letter_spacing":{"unit":"px","size":"-1"},"typography_font_size_tablet":{"unit":"px","size":"45"},"typography_font_size_mobile":{"unit":"px","size":"30"},"typography_font_family":"Montserrat"},"elements":[],"widgetType":"heading"},{"id":"65fe41d9","elType":"widget","settings":{"space":{"unit":"px","size":"30"},"space_tablet":{"unit":"px","size":"30"},"space_mobile":{"unit":"px","size":"20"}},"elements":[],"widgetType":"spacer"},{"id":"689b47d1","elType":"widget","settings":{"services_list":[{"title":"Award-Winning\u200b","text":"Since primary school I've won every writing contest that I've entered.","icon":"fa fa-trophy","color":"#67b3a3","type":"icon","_id":"76f9424","image":{"id":"","url":""},"link":{"url":"","is_external":"","nofollow":""}},{"title":"Professional\u200b","text":"I always stick to my deadlines and treat my clients with the utmost respect.","icon":"fa fa-suitcase","color":"#67b3a3","type":"icon","_id":"fa80fac","image":{"id":"","url":""},"link":{"url":"","is_external":"","nofollow":""}},{"title":"Consulting\u200b","text":"Sometimes all you need is just the right advice. I can give you that.","icon":"fa fa-handshake-o","color":"#67b3a3","type":"icon","_id":"ab3b0b4","image":{"id":"","url":""},"link":{"url":"","is_external":"","nofollow":""}}],"grid_columns_tablet":"3","icon_space":{"unit":"px","size":35},"icon_size":{"unit":"px","size":100},"text_align_tablet":"center","text_align_mobile":"center","title_bottom_space":{"unit":"px","size":14},"title_typography_typography":"custom","title_typography_font_size":{"unit":"px","size":22},"title_typography_font_family":"Montserrat","title_typography_font_weight":"600","description_typography_typography":"custom","description_typography_font_size":{"unit":"px","size":17},"description_typography_font_family":"Muli"},"elements":[],"widgetType":"obfx-services"}],"isInner":false}],"isInner":false},{"id":"417ddcd4","elType":"section","settings":{"content_position":"middle","structure":"20","background_background":"classic","background_color":"#000000","background_overlay_background":"classic","background_overlay_opacity":{"unit":"px","size":0.05},"padding":{"unit":"px","top":"120","right":"60","bottom":"120","left":"60","isLinked":false},"custom_height":{"unit":"px","size":"600"},"shape_divider_bottom":"tilt","shape_divider_bottom_height":{"unit":"px","size":0},"padding_mobile":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":false},"heading_color":"#ffffff","color_text":"#ffffff","color_link":"#ffffff","color_link_hover":"#ffffff","padding_tablet":{"unit":"px","top":"80","right":"20","bottom":"80","left":"20","isLinked":false}},"elements":[{"id":"49c99c53","elType":"column","settings":{"_column_size":50,"_inline_size":null,"content_position":"top","padding":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":true}},"elements":[{"id":"61aa286a","elType":"widget","settings":{"image":{"id":32,"url":"https:\/\/demo.themeisle.com\/neve-freelancer\/wp-content\/uploads\/sites\/183\/2019\/03\/neve-freelancer-about1.jpg"},"image_size":"full"},"elements":[],"widgetType":"image"}],"isInner":false},{"id":"531949e3","elType":"column","settings":{"_column_size":50,"_inline_size":null,"margin_tablet":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":false},"margin_mobile":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":false},"padding":{"unit":"px","top":"40","right":"0","bottom":"40","left":"040","isLinked":false},"padding_tablet":{"unit":"px","top":"20","right":"20","bottom":"20","left":"20","isLinked":true},"padding_mobile":{"unit":"px","top":"40","right":"20","bottom":"040","left":"20","isLinked":false},"css_classes":"awp-content-center"},"elements":[{"id":"bbd5b08","elType":"widget","settings":{"anchor":"about"},"elements":[],"widgetType":"menu-anchor"},{"id":"3fd25f43","elType":"widget","settings":{"title":"I love life","header_size":"p","typography_typography":"custom","typography_font_size":{"unit":"px","size":"13"},"typography_text_transform":"uppercase","typography_letter_spacing":{"unit":"px","size":"2"},"align_mobile":"center","typography_font_family":"Montserrat"},"elements":[],"widgetType":"heading"},{"id":"24ddece8","elType":"widget","settings":{"title":"About Me","typography_typography":"custom","typography_font_size":{"unit":"px","size":"45"},"typography_font_weight":"600","typography_letter_spacing":{"unit":"px","size":"-1"},"typography_font_size_tablet":{"unit":"px","size":"45"},"typography_font_size_mobile":{"unit":"px","size":"30"},"align_mobile":"center","typography_font_family":"Montserrat"},"elements":[],"widgetType":"heading"},{"id":"56c58594","elType":"widget","settings":{"weight":{"unit":"px","size":"5"},"color":"#ffffff","width":{"unit":"%","size":"10"},"align_tablet":"left","gap":{"unit":"px","size":"20"},"align_mobile":"center"},"elements":[],"widgetType":"divider"},{"id":"2b1ebd19","elType":"widget","settings":{"editor":"<p>Passion is a feeling of intense enthusiasm towards or compelling desire for someone or something. Passion can range from eager interest in or admiration for an idea, proposal, or cause; to enthusiastic enjoyment of an interest or activity; to strong attraction, excitement, or emotion towards a person.<\/p>","typography_typography":"custom","typography_font_size":{"unit":"px","size":"17"},"typography_line_height":{"unit":"em","size":1.5},"typography_font_weight":"300","align_mobile":"center","typography_font_family":"Muli","text_color":"#ffffff"},"elements":[],"widgetType":"text-editor"},{"id":"5d01b052","elType":"widget","settings":{"social_icon_list":[{"social":"fa fa-facebook","_id":"fxed6qd","link":{"url":"https:\/\/www.facebook.com","is_external":"true","nofollow":""}},{"social":"fa fa-twitter","_id":"32q8bqx","link":{"url":"https:\/\/www.twitter.com","is_external":"true","nofollow":""}},{"social":"fa fa-linkedin","_id":"d6pdnr9","link":{"url":"https:\/\/www.linkedin.com","is_external":"true","nofollow":""}}],"shape":"circle","align":"","icon_spacing":{"unit":"px","size":"20"},"image_border_width":{"unit":"px","top":"5","right":"5","bottom":"5","left":"5","isLinked":false},"image_border_color":"#ffffff","align_tablet":"left","align_mobile":"center","icon_color":"custom","icon_primary_color":"#67b3a3"},"elements":[],"widgetType":"social-icons"}],"isInner":false}],"isInner":false},{"id":"68d86520","elType":"section","settings":{"background_background":"classic","background_color":"#ffffff","margin":{"unit":"px","top":"","right":0,"bottom":"","left":0,"isLinked":true},"padding":{"unit":"px","top":"0120","right":"60","bottom":"120","left":"60","isLinked":false},"text_align":"center","heading_color":"#000000","color_text":"#000000","padding_tablet":{"unit":"px","top":"80","right":"20","bottom":"80","left":"20","isLinked":false},"padding_mobile":{"unit":"px","top":"60","right":"20","bottom":"060","left":"20","isLinked":false}},"elements":[{"id":"2b08d929","elType":"column","settings":{"_column_size":100,"_inline_size":null,"padding":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":true}},"elements":[{"id":"3a1fdeb5","elType":"widget","settings":{"title":"Have a project that you need help with?","header_size":"p","typography_typography":"custom","typography_font_size":{"unit":"px","size":"13"},"typography_text_transform":"uppercase","typography_letter_spacing":{"unit":"px","size":"2"},"title_color":"#000000","typography_font_family":"Montserrat","typography_font_weight":"600"},"elements":[],"widgetType":"heading"},{"id":"630a7c81","elType":"widget","settings":{"space":{"unit":"px","size":"30"},"space_tablet":{"unit":"px","size":"30"},"space_mobile":{"unit":"px","size":"20"}},"elements":[],"widgetType":"spacer"},{"id":"28c152f2","elType":"widget","settings":{"text":"LET'S TALK","align":"center","size":"lg","typography_typography":"custom","typography_font_size":{"unit":"px","size":"13"},"typography_font_family":"Montserrat","typography_text_transform":"uppercase","typography_letter_spacing":{"unit":"px","size":2},"background_color":"#67b3a3","border_radius":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":true},"link":{"is_external":"","url":"#contact"},"button_text_color":"#ffffff"},"elements":[],"widgetType":"button"}],"isInner":false}],"isInner":false},{"id":"5caa89ff","elType":"section","settings":{"layout":"full_width","custom_height":{"unit":"px","size":"700"},"structure":"20","background_background":"classic","background_color":"#000000","column_position":"stretch","padding":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":false},"heading_color":"#ffffff","color_text":"#ffffff","color_link":"#ffffff","color_link_hover":"rgba(255,255,255,0.7)"},"elements":[{"id":"66fd50e0","elType":"column","settings":{"_column_size":50,"_inline_size":null,"content_position":"center","padding":{"unit":"px","top":"120","right":"60","bottom":"120","left":"60","isLinked":false},"padding_tablet":{"unit":"px","top":"80","right":"20","bottom":"80","left":"20","isLinked":false},"padding_mobile":{"unit":"px","top":"60","right":"20","bottom":"060","left":"20","isLinked":false}},"elements":[{"id":"67dc4696","elType":"section","settings":{"css_classes":"awp-content-center"},"elements":[{"id":"748923d3","elType":"column","settings":{"_column_size":100,"_inline_size":null,"heading_color":"#ffffff","color_text":"#ffffff","css_classes":"awp-hero","margin":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":false},"margin_tablet":{"unit":"px","top":"40","right":"0","bottom":"40","left":"0","isLinked":false},"padding":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":false}},"elements":[{"id":"3662987","elType":"widget","settings":{"anchor":"testimonial"},"elements":[],"widgetType":"menu-anchor"},{"id":"2a538ef4","elType":"widget","settings":{"title":"my story","header_size":"p","typography_typography":"custom","typography_font_size":{"unit":"px","size":"13"},"typography_text_transform":"uppercase","typography_letter_spacing":{"unit":"px","size":"2"},"align_tablet":"left","typography_font_family":"Montserrat","align_mobile":"center"},"elements":[],"widgetType":"heading"},{"id":"697fda1a","elType":"widget","settings":{"title":"Skills you can trust","typography_typography":"custom","typography_font_size":{"unit":"px","size":"45"},"typography_font_weight":"600","typography_letter_spacing":{"unit":"px","size":"-1"},"typography_font_size_tablet":{"unit":"px","size":"45"},"typography_font_size_mobile":{"unit":"px","size":"30"},"align_mobile":"center","typography_font_family":"Montserrat"},"elements":[],"widgetType":"heading"},{"id":"539bb70","elType":"widget","settings":{"view":"inline","icon_list":[{"text":"","icon":"fa fa-star","_id":"ae3618d","link":{"url":"","is_external":"","nofollow":""}},{"text":"","icon":"fa fa-star","_id":"d1810f7","link":{"url":"","is_external":"","nofollow":""}},{"text":"","icon":"fa fa-star","_id":"e0bb1a4","link":{"url":"","is_external":"","nofollow":""}},{"text":"","icon":"fa fa-star","_id":"38f1758","link":{"url":"","is_external":"","nofollow":""}},{"text":"","icon":"fa fa-star","_id":"7f6e623","link":{"url":"","is_external":"","nofollow":""}}],"space_between":{"unit":"px","size":10},"icon_align":"center","icon_color":"#ffc544","icon_size":{"unit":"px","size":20}},"elements":[],"widgetType":"icon-list"},{"id":"4e02f453","elType":"widget","settings":{"weight":{"unit":"px","size":"5"},"color":"#ffffff","width":{"unit":"%","size":"10"},"align_tablet":"left","gap":{"unit":"px","size":"20"},"align_mobile":"center"},"elements":[],"widgetType":"divider"},{"id":"7ef1f0be","elType":"widget","settings":{"testimonial_content":"I\u2019ve been trying for months to find a way to write content quickly but unique.\n\nSave yourself the time and aggravation \u2013 just take up on Jason's services and power up your work with great quality content.","testimonial_name":"Jane Austin","testimonial_job":"Entrepreneur","testimonial_alignment":"left","content_typography_typography":"custom","content_typography_font_size":{"unit":"px","size":"17"},"content_typography_font_weight":"300","name_typography_typography":"custom","name_typography_font_family":"Montserrat","job_typography_typography":"custom","job_typography_font_size":{"unit":"px","size":"13"},"job_typography_letter_spacing":{"unit":"px","size":2.1},"content_typography_font_size_tablet":{"unit":"px","size":"17"},"testimonial_image":{"id":18,"url":"https:\/\/demo.themeisle.com\/neve-freelancer\/wp-content\/uploads\/sites\/183\/2019\/03\/neve-freelancer-testimonial.jpg"},"content_typography_font_family":"Muli","job_typography_font_family":"Muli","content_content_color":"#ffffff","name_text_color":"#ffffff","job_text_color":"#ffffff"},"elements":[],"widgetType":"testimonial"}],"isInner":true}],"isInner":true}],"isInner":false},{"id":"e46ed19","elType":"column","settings":{"_column_size":50,"_inline_size":null,"background_background":"classic","background_image":{"id":19,"url":"https:\/\/demo.themeisle.com\/neve-freelancer\/wp-content\/uploads\/sites\/183\/2019\/03\/neve-freelancer-testimonial-bg.jpg"},"background_repeat":"no-repeat","background_size":"cover","content_position":"center","padding":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":true},"background_overlay_background":"classic","background_overlay_color":"#000000","background_overlay_color_b":"#12003d","padding_mobile":{"unit":"px","top":"80","right":"0","bottom":"80","left":"0","isLinked":false}},"elements":[{"id":"7f48d1ec","elType":"widget","settings":{"starting_number":"400","title":"completed projects","ending_number":"423","number_color":"#ffffff","title_color":"rgba(255,255,255,0.5)","typography_title_typography":"custom","typography_title_font_size":{"unit":"px","size":"13"},"typography_title_font_family":"Montserrat","typography_title_font_weight":"500","typography_title_text_transform":"uppercase","typography_title_letter_spacing":{"unit":"px","size":"2"},"typography_number_typography":"custom","typography_number_font_family":"Montserrat","typography_number_font_size":{"unit":"px","size":"100"},"typography_number_font_weight":"600"},"elements":[],"widgetType":"counter"}],"isInner":false}],"isInner":false},{"id":"5a85d7e6","elType":"section","settings":{"layout":"full_width","custom_height":{"unit":"px","size":"700"},"structure":"20","background_background":"classic","column_position":"stretch","reverse_order_mobile":"reverse-mobile","background_color":"#ffffff","heading_color":"#262329"},"elements":[{"id":"d3c819c","elType":"column","settings":{"_column_size":50,"_inline_size":null,"background_background":"classic","background_image":{"id":20,"url":"https:\/\/demo.themeisle.com\/neve-freelancer\/wp-content\/uploads\/sites\/183\/2019\/03\/neve-freelancer-faq.jpg"},"background_repeat":"no-repeat","background_size":"cover","content_position":"center","padding":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":true},"background_overlay_background":"classic","background_overlay_color_b":"#12003d","padding_mobile":{"unit":"px","top":"0100","right":"0","bottom":"100","left":"0","isLinked":false}},"elements":[{"id":"245121f","elType":"widget","settings":[],"elements":[],"widgetType":"spacer"}],"isInner":false},{"id":"5069c060","elType":"column","settings":{"_column_size":50,"_inline_size":null,"content_position":"center","heading_color":"#000000","color_text":"#000000","color_link":"#000000","color_link_hover":"rgba(0,0,0,0.7)","padding":{"unit":"px","top":"120","right":"60","bottom":"120","left":"60","isLinked":false},"padding_tablet":{"unit":"px","top":"80","right":"20","bottom":"80","left":"20","isLinked":false},"padding_mobile":{"unit":"px","top":"60","right":"20","bottom":"60","left":"20","isLinked":false}},"elements":[{"id":"4103226e","elType":"section","settings":{"css_classes":"awp-content-center"},"elements":[{"id":"7d05999d","elType":"column","settings":{"_column_size":100,"_inline_size":null,"css_classes":"awp-hero","margin":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":false},"margin_tablet":{"unit":"px","top":"40","right":"0","bottom":"40","left":"0","isLinked":false},"padding":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":false},"padding_mobile":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":true}},"elements":[{"id":"45adbd8","elType":"widget","settings":{"anchor":"faq"},"elements":[],"widgetType":"menu-anchor"},{"id":"58aef06e","elType":"widget","settings":{"title":"Questions? I have answers","header_size":"p","typography_typography":"custom","typography_font_size":{"unit":"px","size":"13"},"typography_text_transform":"uppercase","typography_letter_spacing":{"unit":"px","size":"2"},"align_tablet":"left","typography_font_family":"Montserrat","align_mobile":"center"},"elements":[],"widgetType":"heading"},{"id":"582f647a","elType":"widget","settings":{"title":"Frequently Asked Questions","typography_typography":"custom","typography_font_size":{"unit":"px","size":"45"},"typography_font_weight":"600","typography_letter_spacing":{"unit":"px","size":"-1"},"typography_font_size_tablet":{"unit":"px","size":"45"},"typography_font_size_mobile":{"unit":"px","size":"30"},"align_mobile":"center","typography_font_family":"Montserrat"},"elements":[],"widgetType":"heading"},{"id":"61454551","elType":"widget","settings":{"weight":{"unit":"px","size":"5"},"width":{"unit":"%","size":"10"},"align_tablet":"left","gap":{"unit":"px","size":"20"},"align_mobile":"center","color":"#000000"},"elements":[],"widgetType":"divider"},{"id":"19de8c9f","elType":"widget","settings":{"tabs":[{"tab_title":"Can I use this content for my site?","tab_content":"<p>Definitely, feel free to use it and modify it as you see fit, in personal or commercial projects. No attribution is required, but appreciated.<\/p>","_id":"9cx60o5"},{"tab_title":"What do I need in order to get help?","tab_content":"<p>Just head down to the contact form and drop me a message.<\/p>","_id":"8iu2nrj"},{"tab_title":"I want to make a long term partnership","tab_content":"<p>I usually prefer short term contracts as they provide different challenges but from time to time I take on long term ones. Just write me a message and I'll let you know.<\/p>","_id":"p2a9lgu"}],"border_width":{"unit":"px","size":0},"_padding":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":true},"title_typography_typography":"custom","title_typography_font_family":"Montserrat","content_typography_typography":"custom","content_typography_font_size":{"unit":"px","size":"17"},"content_typography_font_family":"Muli","title_color":"#000000","tab_active_color":"#67b3a3","content_color":"#000000"},"elements":[],"widgetType":"accordion"}],"isInner":true}],"isInner":true}],"isInner":false}],"isInner":false},{"id":"62b1d4e6","elType":"section","settings":{"content_width":{"unit":"px","size":"700"},"background_background":"classic","background_color":"#000000","background_overlay_opacity":{"unit":"px","size":0.1},"heading_color":"#ffffff","padding":{"unit":"px","top":"120","right":"60","bottom":"120","left":"60","isLinked":false},"color_text":"#ffffff","text_align":"center","padding_mobile":{"unit":"px","top":"60","right":"20","bottom":"60","left":"20","isLinked":false},"padding_tablet":{"unit":"px","top":"80","right":"20","bottom":"80","left":"20","isLinked":false}},"elements":[{"id":"5393a066","elType":"column","settings":{"_column_size":100,"_inline_size":null},"elements":[{"id":"439503e7","elType":"widget","settings":{"anchor":"contact"},"elements":[],"widgetType":"menu-anchor"},{"id":"67aaec57","elType":"widget","settings":{"title":"Contact ME","header_size":"p","typography_typography":"custom","typography_font_size":{"unit":"px","size":"13"},"typography_text_transform":"uppercase","typography_letter_spacing":{"unit":"px","size":"2"},"align_tablet":"center","typography_font_family":"Montserrat","align_mobile":"center"},"elements":[],"widgetType":"heading"},{"id":"31fef4c","elType":"widget","settings":{"title":"Let's talk about your project","typography_typography":"custom","typography_font_size":{"unit":"px","size":"45"},"typography_font_weight":"600","typography_letter_spacing":{"unit":"px","size":"-1"},"header_size":"h3","align_tablet":"center","typography_font_size_tablet":{"unit":"px","size":"35"},"typography_font_size_mobile":{"unit":"px","size":"35"},"align_mobile":"center","typography_font_family":"Montserrat"},"elements":[],"widgetType":"heading"},{"id":"fc26ece","elType":"widget","settings":{"form_fields":[{"key":"name","type":"text","label":"","requirement":"","placeholder":"Your Name","field_width":"100","_id":"79f134e","field_width_tablet":"","field_width_mobile":""},{"key":"email","type":"email","label":"","requirement":"","placeholder":"Email address","field_width":"100","_id":"63c4f5c","field_width_tablet":"","field_width_mobile":""},{"key":"phone","type":"number","label":"","requirement":"optional","placeholder":"Phone Nr","field_width":"100","_id":"cd1af5a","field_width_tablet":"","field_width_mobile":""},{"key":"message","type":"textarea","label":"","requirement":"","placeholder":"Your message","field_width":"100","_id":"f096d0b","field_width_tablet":"","field_width_mobile":""}],"to_send_email":"rodica.andronache@vertistudio.com","submit_label":"Submit","align_submit":"center","column_gap":{"unit":"px","size":60},"align_field_text":"center","button_background_color":"#67b3a3","button_text_color":"#ffffff","button_typography_typography":"custom","button_typography_font_family":"Montserrat","button_typography_font_size":{"unit":"px","size":13},"button_typography_font_weight":"500","button_typography_letter_spacing":{"unit":"px","size":2},"button_border_radius":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":true},"button_text_padding":{"unit":"px","top":"15","right":"40","bottom":"15","left":"40","isLinked":false},"_css_classes":"neve-freelancer-contact-form"},"elements":[],"widgetType":"content_form_contact"},{"id":"e429c9a","elType":"widget","settings":{"weight":{"unit":"px","size":"5"},"color":"#ffffff","width":{"unit":"%","size":"10"},"align_tablet":"center","gap":{"unit":"px","size":"20"},"align":"center","align_mobile":"center"},"elements":[],"widgetType":"divider"}],"isInner":false}],"isInner":false}]]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_elementor_version]]></wp:meta_key>
+					<wp:meta_value><![CDATA[0.4]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
+					<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
+					<wp:meta_value><![CDATA[page-templates/template-pagebuilder-full-width.php]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+					<wp:meta_value><![CDATA[119919]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				neve-freelancere-hero-image			</title>
+			<link>https://demo.themeisle.com/neve-freelancer/demo-neve-freelancer/neve-freelancere-hero-image/</link>
+			<pubDate>Fri, 01 Mar 2019 10:50:05 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-freelancer/wp-content/uploads/sites/183/2019/03/neve-freelancere-hero-image.jpg</guid>
+			<description></description>
+			<content:encoded><![CDATA[https://mystock.themeisle.com/photo/photographer-3/]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>16</wp:post_id>
+			<wp:post_date><![CDATA[2019-03-01 10:50:05]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-03-01 10:50:05]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve-freelancere-hero-image]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>15</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://demo.themeisle.com/neve-freelancer/wp-content/uploads/sites/183/2019/03/neve-freelancere-hero-image.jpg]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/03/neve-freelancere-hero-image.jpg]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:1920;s:6:"height";i:1285;s:4:"file";s:39:"2019/03/neve-freelancere-hero-image.jpg";s:5:"sizes";a:5:{s:9:"thumbnail";a:4:{s:4:"file";s:39:"neve-freelancere-hero-image-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:39:"neve-freelancere-hero-image-300x201.jpg";s:5:"width";i:300;s:6:"height";i:201;s:9:"mime-type";s:10:"image/jpeg";}s:12:"medium_large";a:4:{s:4:"file";s:39:"neve-freelancere-hero-image-768x514.jpg";s:5:"width";i:768;s:6:"height";i:514;s:9:"mime-type";s:10:"image/jpeg";}s:5:"large";a:4:{s:4:"file";s:40:"neve-freelancere-hero-image-1024x685.jpg";s:5:"width";i:1024;s:6:"height";i:685;s:9:"mime-type";s:10:"image/jpeg";}s:9:"neve-blog";a:4:{s:4:"file";s:39:"neve-freelancere-hero-image-930x620.jpg";s:5:"width";i:930;s:6:"height";i:620;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				neve-freelancer-testimonial			</title>
+			<link>https://demo.themeisle.com/neve-freelancer/demo-neve-freelancer/neve-freelancer-testimonial/</link>
+			<pubDate>Fri, 01 Mar 2019 11:10:17 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-freelancer/wp-content/uploads/sites/183/2019/03/neve-freelancer-testimonial.jpg</guid>
+			<description></description>
+			<content:encoded><![CDATA[https://mystock.themeisle.com/photo/girl/]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>18</wp:post_id>
+			<wp:post_date><![CDATA[2019-03-01 11:10:17]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-03-01 11:10:17]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve-freelancer-testimonial]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>15</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://demo.themeisle.com/neve-freelancer/wp-content/uploads/sites/183/2019/03/neve-freelancer-testimonial.jpg]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/03/neve-freelancer-testimonial.jpg]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:300;s:6:"height";i:300;s:4:"file";s:39:"2019/03/neve-freelancer-testimonial.jpg";s:5:"sizes";a:1:{s:9:"thumbnail";a:4:{s:4:"file";s:39:"neve-freelancer-testimonial-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				neve-freelancer-testimonial-bg			</title>
+			<link>https://demo.themeisle.com/neve-freelancer/demo-neve-freelancer/neve-freelancer-testimonial-bg/</link>
+			<pubDate>Fri, 01 Mar 2019 11:13:41 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-freelancer/wp-content/uploads/sites/183/2019/03/neve-freelancer-testimonial-bg.jpg</guid>
+			<description></description>
+			<content:encoded><![CDATA[https://mystock.themeisle.com/photo/code-in-wp/]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>19</wp:post_id>
+			<wp:post_date><![CDATA[2019-03-01 11:13:41]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-03-01 11:13:41]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve-freelancer-testimonial-bg]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>15</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://demo.themeisle.com/neve-freelancer/wp-content/uploads/sites/183/2019/03/neve-freelancer-testimonial-bg.jpg]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/03/neve-freelancer-testimonial-bg.jpg]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:700;s:6:"height";i:766;s:4:"file";s:42:"2019/03/neve-freelancer-testimonial-bg.jpg";s:5:"sizes";a:3:{s:9:"thumbnail";a:4:{s:4:"file";s:42:"neve-freelancer-testimonial-bg-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:42:"neve-freelancer-testimonial-bg-274x300.jpg";s:5:"width";i:274;s:6:"height";i:300;s:9:"mime-type";s:10:"image/jpeg";}s:9:"neve-blog";a:4:{s:4:"file";s:42:"neve-freelancer-testimonial-bg-700x620.jpg";s:5:"width";i:700;s:6:"height";i:620;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				neve-freelancer-faq			</title>
+			<link>https://demo.themeisle.com/neve-freelancer/demo-neve-freelancer/neve-freelancer-faq/</link>
+			<pubDate>Fri, 01 Mar 2019 11:15:38 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-freelancer/wp-content/uploads/sites/183/2019/03/neve-freelancer-faq.jpg</guid>
+			<description></description>
+			<content:encoded><![CDATA[https://mystock.themeisle.com/photo/programming-laptop-2/]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>20</wp:post_id>
+			<wp:post_date><![CDATA[2019-03-01 11:15:38]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-03-01 11:15:38]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve-freelancer-faq]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>15</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://demo.themeisle.com/neve-freelancer/wp-content/uploads/sites/183/2019/03/neve-freelancer-faq.jpg]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/03/neve-freelancer-faq.jpg]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:700;s:6:"height";i:766;s:4:"file";s:31:"2019/03/neve-freelancer-faq.jpg";s:5:"sizes";a:3:{s:9:"thumbnail";a:4:{s:4:"file";s:31:"neve-freelancer-faq-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:31:"neve-freelancer-faq-274x300.jpg";s:5:"width";i:274;s:6:"height";i:300;s:9:"mime-type";s:10:"image/jpeg";}s:9:"neve-blog";a:4:{s:4:"file";s:31:"neve-freelancer-faq-700x620.jpg";s:5:"width";i:700;s:6:"height";i:620;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				services			</title>
+			<link>https://demo.themeisle.com/neve-freelancer/?p=21</link>
+			<pubDate>Mon, 30 Nov -0001 00:00:00 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-freelancer/?p=21</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>21</wp:post_id>
+			<wp:post_date><![CDATA[2019-03-01 11:24:22]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[0000-00-00 00:00:00]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[]]></wp:post_name>
+			<wp:status><![CDATA[draft]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>1</wp:menu_order>
+			<wp:post_type><![CDATA[nav_menu_item]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_type]]></wp:meta_key>
+					<wp:meta_value><![CDATA[custom]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_menu_item_parent]]></wp:meta_key>
+					<wp:meta_value><![CDATA[0]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_object_id]]></wp:meta_key>
+					<wp:meta_value><![CDATA[21]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_object]]></wp:meta_key>
+					<wp:meta_value><![CDATA[custom]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_target]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_classes]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_xfn]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_url]]></wp:meta_key>
+					<wp:meta_value><![CDATA[#]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_orphaned]]></wp:meta_key>
+					<wp:meta_value><![CDATA[1551439462]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				About			</title>
+			<link>https://demo.themeisle.com/neve-freelancer/about/</link>
+			<pubDate>Fri, 01 Mar 2019 11:26:26 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-freelancer/?p=22</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>22</wp:post_id>
+			<wp:post_date><![CDATA[2019-03-01 11:26:26]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-03-01 11:26:26]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[about]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>2</wp:menu_order>
+			<wp:post_type><![CDATA[nav_menu_item]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+								<category domain="nav_menu" nicename="main"><![CDATA[Main]]></category>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_type]]></wp:meta_key>
+					<wp:meta_value><![CDATA[custom]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_menu_item_parent]]></wp:meta_key>
+					<wp:meta_value><![CDATA[0]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_object_id]]></wp:meta_key>
+					<wp:meta_value><![CDATA[22]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_object]]></wp:meta_key>
+					<wp:meta_value><![CDATA[custom]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_target]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_classes]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_xfn]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_url]]></wp:meta_key>
+					<wp:meta_value><![CDATA[#about]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[obfx_menu_icon]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				Services			</title>
+			<link>https://demo.themeisle.com/neve-freelancer/services/</link>
+			<pubDate>Fri, 01 Mar 2019 11:26:26 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-freelancer/?p=23</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>23</wp:post_id>
+			<wp:post_date><![CDATA[2019-03-01 11:26:26]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-03-01 11:26:26]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[services]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>1</wp:menu_order>
+			<wp:post_type><![CDATA[nav_menu_item]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+								<category domain="nav_menu" nicename="main"><![CDATA[Main]]></category>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_type]]></wp:meta_key>
+					<wp:meta_value><![CDATA[custom]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_menu_item_parent]]></wp:meta_key>
+					<wp:meta_value><![CDATA[0]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_object_id]]></wp:meta_key>
+					<wp:meta_value><![CDATA[23]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_object]]></wp:meta_key>
+					<wp:meta_value><![CDATA[custom]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_target]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_classes]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_xfn]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_url]]></wp:meta_key>
+					<wp:meta_value><![CDATA[#services]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[obfx_menu_icon]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				My Story			</title>
+			<link>https://demo.themeisle.com/neve-freelancer/my-story/</link>
+			<pubDate>Fri, 01 Mar 2019 11:26:26 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-freelancer/?p=24</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>24</wp:post_id>
+			<wp:post_date><![CDATA[2019-03-01 11:26:26]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-03-01 11:26:26]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[my-story]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>3</wp:menu_order>
+			<wp:post_type><![CDATA[nav_menu_item]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+								<category domain="nav_menu" nicename="main"><![CDATA[Main]]></category>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_type]]></wp:meta_key>
+					<wp:meta_value><![CDATA[custom]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_menu_item_parent]]></wp:meta_key>
+					<wp:meta_value><![CDATA[0]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_object_id]]></wp:meta_key>
+					<wp:meta_value><![CDATA[24]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_object]]></wp:meta_key>
+					<wp:meta_value><![CDATA[custom]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_target]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_classes]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_xfn]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_url]]></wp:meta_key>
+					<wp:meta_value><![CDATA[#testimonial]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[obfx_menu_icon]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				FAQ			</title>
+			<link>https://demo.themeisle.com/neve-freelancer/faq/</link>
+			<pubDate>Fri, 01 Mar 2019 11:26:26 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-freelancer/?p=25</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>25</wp:post_id>
+			<wp:post_date><![CDATA[2019-03-01 11:26:26]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-03-01 11:26:26]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[faq]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>4</wp:menu_order>
+			<wp:post_type><![CDATA[nav_menu_item]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+								<category domain="nav_menu" nicename="main"><![CDATA[Main]]></category>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_type]]></wp:meta_key>
+					<wp:meta_value><![CDATA[custom]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_menu_item_parent]]></wp:meta_key>
+					<wp:meta_value><![CDATA[0]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_object_id]]></wp:meta_key>
+					<wp:meta_value><![CDATA[25]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_object]]></wp:meta_key>
+					<wp:meta_value><![CDATA[custom]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_target]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_classes]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_xfn]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_url]]></wp:meta_key>
+					<wp:meta_value><![CDATA[#faq]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[obfx_menu_icon]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				Contact			</title>
+			<link>https://demo.themeisle.com/neve-freelancer/contact/</link>
+			<pubDate>Fri, 01 Mar 2019 11:26:26 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-freelancer/?p=26</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>26</wp:post_id>
+			<wp:post_date><![CDATA[2019-03-01 11:26:26]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-03-01 11:26:26]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[contact]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>5</wp:menu_order>
+			<wp:post_type><![CDATA[nav_menu_item]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+								<category domain="nav_menu" nicename="main"><![CDATA[Main]]></category>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_type]]></wp:meta_key>
+					<wp:meta_value><![CDATA[custom]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_menu_item_parent]]></wp:meta_key>
+					<wp:meta_value><![CDATA[0]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_object_id]]></wp:meta_key>
+					<wp:meta_value><![CDATA[26]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_object]]></wp:meta_key>
+					<wp:meta_value><![CDATA[custom]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_target]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_classes]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_xfn]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_url]]></wp:meta_key>
+					<wp:meta_value><![CDATA[#contact]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[obfx_menu_icon]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				neve-freelancer-about1			</title>
+			<link>https://demo.themeisle.com/neve-freelancer/demo-neve-freelancer/neve-freelancer-about1/</link>
+			<pubDate>Fri, 01 Mar 2019 16:21:12 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-freelancer/wp-content/uploads/sites/183/2019/03/neve-freelancer-about1.jpg</guid>
+			<description></description>
+			<content:encoded><![CDATA[https://mystock.themeisle.com/photo/path-to-the-village/]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>32</wp:post_id>
+			<wp:post_date><![CDATA[2019-03-01 16:21:12]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-03-01 16:21:12]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve-freelancer-about1]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>15</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://demo.themeisle.com/neve-freelancer/wp-content/uploads/sites/183/2019/03/neve-freelancer-about1.jpg]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/03/neve-freelancer-about1.jpg]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:700;s:6:"height";i:766;s:4:"file";s:34:"2019/03/neve-freelancer-about1.jpg";s:5:"sizes";a:3:{s:9:"thumbnail";a:4:{s:4:"file";s:34:"neve-freelancer-about1-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:34:"neve-freelancer-about1-274x300.jpg";s:5:"width";i:274;s:6:"height";i:300;s:9:"mime-type";s:10:"image/jpeg";}s:9:"neve-blog";a:4:{s:4:"file";s:34:"neve-freelancer-about1-700x620.jpg";s:5:"width";i:700;s:6:"height";i:620;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				neve			</title>
+			<link>https://demo.themeisle.com/neve-freelancer/neve/</link>
+			<pubDate>Mon, 04 Mar 2019 10:32:49 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-freelancer/neve/</guid>
+			<description></description>
+			<content:encoded><![CDATA[.neve-freelancer-contact-form fieldset > button {
+    width: 100%;
+}]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>34</wp:post_id>
+			<wp:post_date><![CDATA[2019-03-04 10:32:49]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-03-04 10:32:49]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[custom_css]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+											</item>
+					</channel>
+		</rss>
+		
