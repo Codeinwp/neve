@@ -121,7 +121,7 @@ class Front_End {
 						'url'   => 'https://demo.themeisle.com/neve-scholar/',
 						'title' => 'Scholar',
 					),
-					'neve-zelle'       => array(
+					'neve-zelle'         => array(
 						'url'   => 'https://demo.themeisle.com/neve-zelle/',
 						'title' => 'Travel Agency',
 					),
@@ -129,22 +129,22 @@ class Front_End {
 			),
 			'upsell'      => array(
 				'elementor' => array(
-					'neve-showcase'     => array(
+					'neve-showcase'    => array(
 						'url'        => 'https://demo.themeisle.com/neve-showcase/',
 						'screenshot' => 'https://demo.themeisle.com/neve-showcase/wp-content/uploads/sites/184/2019/03/screenshot.png',
 						'title'      => 'Showcase',
 					),
-					'neve-consultants'  => array(
+					'neve-consultants' => array(
 						'url'        => 'https://demo.themeisle.com/neve-consultants/',
 						'screenshot' => 'https://demo.themeisle.com/neve-consultants/wp-content/uploads/sites/185/2019/03/screenshot.png',
 						'title'      => 'Consultants',
 					),
-					'neve-cafe' => array(
+					'neve-cafe'        => array(
 						'url'        => 'https://demo.themeisle.com/neve-cafe/',
 						'screenshot' => 'https://demo.themeisle.com/neve-cafe/wp-content/uploads/sites/186/2019/03/screenshot.png',
 						'title'      => 'Cafe',
 					),
-					'neve-agency'         => array(
+					'neve-agency'      => array(
 						'url'        => 'https://demo.themeisle.com/neve-agency/',
 						'screenshot' => 'https://demo.themeisle.com/neve-agency/wp-content/uploads/sites/187/2019/03/screenshot.png',
 						'title'      => 'Agency',
