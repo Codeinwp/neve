@@ -3,7 +3,6 @@
 }
 
 @media (min-width: #{$tablet}) {
-  @include checkout--tablet();
   @include cart--tablet();
   @include product--tablet();
 }
@@ -13,6 +12,7 @@
   @include shop-sidebar--laptop();
   @include cart--laptop();
   @include shop-loop--laptop();
+  @include checkout--laptop();
 }
 
 @media (min-width: #{$desktop}) {
