@@ -1304,12 +1304,6 @@ body.woocommerce-account .nv-content-wrap > .woocommerce {
   .woocommerce-checkout form.woocommerce-checkout {
     display: block;
   }
-  .woocommerce-checkout #neve-checkout-coupon .woocommerce-info {
-    padding-left: 50px;
-  }
-  .woocommerce-checkout #neve-checkout-coupon .woocommerce-info:before {
-    top: 10px;
-  }
   .woocommerce-checkout .woocommerce-checkout-review-order, .woocommerce-checkout #order_review_heading {
     width: 40%;
   }
