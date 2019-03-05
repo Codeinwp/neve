@@ -118,10 +118,10 @@ class Template_Parts extends Base_View {
 		$markup = '<div class="nv-post-thumbnail-wrap">';
 
 		$markup .= '<a href="' . esc_url( get_the_permalink() ) . '" rel="bookmark" title="' . the_title_attribute(
-				array(
-					'echo' => false,
-				)
-			) . '">';
+			array(
+				'echo' => false,
+			)
+		) . '">';
 		$markup .= get_the_post_thumbnail(
 			get_the_ID(),
 			'neve-blog'
@@ -232,7 +232,7 @@ class Template_Parts extends Base_View {
 			)
 		);
 
-		$markup = '<a href="' . esc_url( get_the_permalink() ) . '"';
+		$markup  = '<a href="' . esc_url( get_the_permalink() ) . '"';
 		$markup .= ' class="' . esc_attr( $read_more_args['classes'] ) . '"';
 		$markup .= ' rel="bookmark">';
 		$markup .= esc_html( $read_more_args['text'] );
