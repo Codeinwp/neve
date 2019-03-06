@@ -302,6 +302,16 @@
   background: 0;
 }
 
+.woocommerce div.product div.images .flex-control-thumbs {
+  margin: 5px -5px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.woocommerce div.product div.images .flex-control-thumbs li {
+  padding: 5px;
+}
+
 .woocommerce-checkout.nv-without-title main {
   padding-top: 40px;
 }
