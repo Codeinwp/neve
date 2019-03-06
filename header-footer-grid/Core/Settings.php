@@ -35,8 +35,8 @@ class Settings {
 					'HFG\Core\Components\FooterWidgetFive',
 					'HFG\Core\Components\FooterWidgetSix',
 					'HFG\Core\Components\Copyright',
-				)
-			)
+				),
+			),
 		);
 		$theme_support = get_theme_support( 'hfg_support' );
 
@@ -46,6 +46,38 @@ class Settings {
 
 	public function get_theme_support() {
 		return $this->theme_support;
+	}
+
+	public function get_header_defaults_neve() {
+		return [
+			'desktop' => [
+				'top' => [],
+				'main' => [
+					[ 'id' => 'logo', 'width' => 3, 'x' => 1 ],
+				],
+				'bottom' => [],
+			],
+			'mobile' => [
+				'top' => [],
+				'main' => [],
+				'bottom' => [],
+			],
+		];
+	}
+
+	public function get_footer_defaults_neve() {
+		return [
+			'desktop' => [
+				'top' => [],
+				'bottom' => [
+					[ 'id' => 'footer_copyright', 'width' => 12, 'x' => 1 ],
+				],
+			],
+			'mobile' => [
+				'top' => [],
+				'bottom' => [],
+			],
+		];
 	}
 
 	public function get_media( $value, $size = null ) {

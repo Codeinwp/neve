@@ -17,8 +17,8 @@ class Slider_Control extends WP_Customize_Control {
 	 * Constructor
 	 *
 	 * @param WP_Customize_Manager $manager
-	 * @param string $id
-	 * @param array $args
+	 * @param string               $id
+	 * @param array                $args
 	 */
 	public function __construct( WP_Customize_Manager $manager, string $id, array $args = array() ) {
 		parent::__construct( $manager, $id, $args );

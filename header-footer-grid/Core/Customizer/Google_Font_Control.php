@@ -43,8 +43,8 @@ class Google_Font_Control extends WP_Customize_Control {
 	 *
 	 * @param WP_Customize_Manager $manager
 	 * @param $id
-	 * @param array $args
-	 * @param array $options
+	 * @param array                $args
+	 * @param array                $options
 	 */
 	public function __construct( WP_Customize_Manager $manager, $id, $args = array(), $options = array() ) {
 		parent::__construct( $manager, $id, $args );
@@ -97,19 +97,19 @@ class Google_Font_Control extends WP_Customize_Control {
 		$isFontInList = false;
 		$fontListStr = '';
 		$html = '';
-		if( !empty($this->fontList) ) {
+		if ( ! empty( $this->fontList ) ) {
 
 			$html .= '<div class="google_fonts_select_control">';
-			if( !empty( $this->label ) ) {
+			if ( ! empty( $this->label ) ) {
 				$html .= '<span class="customize-control-title">' . esc_html( $this->label ) . '</span>';
 			}
-			if( !empty( $this->description ) ) {
+			if ( ! empty( $this->description ) ) {
 				$html .= '<span class="customize-control-description">' . esc_html( $this->description ) . '</span>';
 			}
 			$html .= '<input type="hidden" id="' . esc_attr( $this->id ) . '" name="' . esc_attr( $this->id ) . '" value="' . esc_attr( $this->value() ) . '" class="customize-control-google-font-selection" ' . $this->safe_echo( array( $this, 'link' ) ) . ' />';
 			$html .= '<div class="google-fonts">';
 			$html .= '<select class="google-fonts-list" control-name="' . esc_attr( $this->id ) . '">';
-			foreach( $this->fontList as $value ) {
+			foreach ( $this->fontList as $value ) {
 				$fontCounter++;
 				$fontListStr .= '<option value="' . $value->family . '" ' . selected( $this->fontValues->font, $value->family, false ) . '>' . $value->family . '</option>';
 				if ( $this->fontValues->font === $value->family ) {
@@ -119,9 +119,9 @@ class Google_Font_Control extends WP_Customize_Control {
 					break;
 				}
 			}
-			if ( !$isFontInList && $this->fontListIndex ) {
+			if ( ! $isFontInList && $this->fontListIndex ) {
 				// If the default or saved font value isn't in the list of displayed fonts, add it to the top of the list as the default font
-				$fontListStr = '<option value="' . $this->fontList[$this->fontListIndex]->family . '" ' . selected( $this->fontValues->font, $this->fontList[$this->fontListIndex]->family, false ) . '>' . $this->fontList[$this->fontListIndex]->family . ' (default)</option>' . $fontListStr;
+				$fontListStr = '<option value="' . $this->fontList[ $this->fontListIndex ]->family . '" ' . selected( $this->fontValues->font, $this->fontList[ $this->fontListIndex ]->family, false ) . '>' . $this->fontList[ $this->fontListIndex ]->family . ' (default)</option>' . $fontListStr;
 			}
 			$html .= $fontListStr;
 			$html .= '</select>';
@@ -129,22 +129,22 @@ class Google_Font_Control extends WP_Customize_Control {
 			$html .= '<div class="customize-control-description">Select weight &amp; style for regular text</div>';
 			$html .= '<div class="weight-style">';
 			$html .= '<select class="google-fonts-regularweight-style">';
-			foreach( $this->fontList[$this->fontListIndex]->variants as $value ) {
+			foreach ( $this->fontList[ $this->fontListIndex ]->variants as $value ) {
 				$html .= '<option value="' . $value . '" ' . selected( $this->fontValues->regularweight, $value, false ) . '>' . $value . '</option>';
 			}
 			$html .= '</select>';
 			$html .= '</div>';
 			$html .= '<div class="customize-control-description">Select weight for <italic>italic text</italic></div>';
 			$html .= '<div class="weight-style">';
-			$html .= '<select class="google-fonts-italicweight-style" ' . disabled( in_array( 'italic', $this->fontList[$this->fontListIndex]->variants ), false, false ) . '>';
+			$html .= '<select class="google-fonts-italicweight-style" ' . disabled( in_array( 'italic', $this->fontList[ $this->fontListIndex ]->variants ), false, false ) . '>';
 			$optionCount = 0;
-			foreach( $this->fontList[$this->fontListIndex]->variants as $value ) {
-				if( strpos( $value, 'italic' ) !== false ) {
+			foreach ( $this->fontList[ $this->fontListIndex ]->variants as $value ) {
+				if ( strpos( $value, 'italic' ) !== false ) {
 					$html .= '<option value="' . $value . '" ' . selected( $this->fontValues->italicweight, $value, false ) . '>' . $value . '</option>';
 					$optionCount++;
 				}
 			}
-			if( $optionCount == 0 ) {
+			if ( $optionCount == 0 ) {
 				$html .= '<option value="">Not Available for this font</option>';
 			}
 			$html .= '</select>';
@@ -153,13 +153,13 @@ class Google_Font_Control extends WP_Customize_Control {
 			$html .= '<div class="weight-style">';
 			$html .= '<select class="google-fonts-boldweight-style">';
 			$optionCount = 0;
-			foreach( $this->fontList[$this->fontListIndex]->variants as $value ) {
-				if( strpos( $value, 'italic' ) === false ) {
+			foreach ( $this->fontList[ $this->fontListIndex ]->variants as $value ) {
+				if ( strpos( $value, 'italic' ) === false ) {
 					$html .= '<option value="' . $value . '" ' . selected( $this->fontValues->boldweight, $value, false ) . '>' . $value . '</option>';
 					$optionCount++;
 				}
 			}
-			if( $optionCount == 0 ) {
+			if ( $optionCount == 0 ) {
 				$html .= '<option value="">Not Available for this font</option>';
 			}
 			$html .= '</select>';
@@ -179,8 +179,8 @@ class Google_Font_Control extends WP_Customize_Control {
 	 * @return bool|int|string
 	 */
 	public function getFontIndex( $haystack, $needle ) {
-		foreach( $haystack as $key => $value ) {
-			if( $value->family == $needle ) {
+		foreach ( $haystack as $key => $value ) {
+			if ( $value->family == $needle ) {
 				return $key;
 			}
 		}
@@ -207,7 +207,7 @@ class Google_Font_Control extends WP_Customize_Control {
 		}
 
 		$content = json_decode( $body );
-		if( $count == 'all' ) {
+		if ( $count == 'all' ) {
 			return $content->items;
 		}
 		return array_slice( $content->items, 0, $count );

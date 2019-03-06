@@ -5,6 +5,7 @@ namespace HFG\Core\Builder;
 use ArrayIterator;
 use CachingIterator;
 use HFG\Core\Abstract_Component;
+use HFG\Core\Settings;
 
 class Footer extends Abstract_Builder {
 
@@ -24,7 +25,7 @@ class Footer extends Abstract_Builder {
 	public function footer_render() {
 		$html = '<footer class="site-footer" id="site-footer">';
 		$html .= $this->render();
-		$html .='</footer>';
+		$html .= '</footer>';
 		echo $html;
 	}
 
@@ -49,7 +50,7 @@ class Footer extends Abstract_Builder {
 			$push_left = '';
 			if ( $x > 0 && $last_item !== null ) {
 				$o = intval( $last_item['width'] ) + intval( $last_item['x'] );
-				if( $x - $o > 0 ) {
+				if ( $x - $o > 0 ) {
 					$x = $x - $o;
 					$push_left = 'off-' . $x;
 				}
@@ -70,7 +71,8 @@ class Footer extends Abstract_Builder {
 
 	public function render() {
 		$html = '';
-		$layout = json_decode( get_theme_mod( $this->control_id ), true );
+		$defaults = Settings::get_instance()->get_footer_defaults_neve();
+		$layout = wp_parse_args( json_decode( get_theme_mod( $this->control_id ), true ), $defaults );
 
 		foreach ( $layout as $device_name => $device ) {
 			$classes = array();
@@ -88,9 +90,9 @@ class Footer extends Abstract_Builder {
 				$row_styles_array = [];
 				$row_height = get_theme_mod( $this->control_id . '_' . $index . '_height' );
 				if ( $row_height ) {
-					$row_styles_array['height'] =  'auto;';
+					$row_styles_array['height'] = 'auto;';
 					if ( intval( $row_height ) > 0 ) {
-						$row_styles_array['height'] =  $row_height . 'px;';
+						$row_styles_array['height'] = $row_height . 'px;';
 					}
 				}
 

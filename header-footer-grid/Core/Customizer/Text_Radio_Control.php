@@ -17,8 +17,8 @@ class Text_Radio_Control extends WP_Customize_Control {
 	 * Constructor
 	 *
 	 * @param WP_Customize_Manager $manager
-	 * @param string $id
-	 * @param array $args
+	 * @param string               $id
+	 * @param array                $args
 	 */
 	public function __construct( WP_Customize_Manager $manager, string $id, array $args = array() ) {
 		parent::__construct( $manager, $id, $args );
@@ -45,10 +45,10 @@ class Text_Radio_Control extends WP_Customize_Control {
 	public function render_content() {
 
 		$html = '<div class="text_radio_button_control">';
-		if( !empty( $this->label ) ) {
+		if ( ! empty( $this->label ) ) {
 			$html .= '<span class="customize-control-title">' . esc_html( $this->label ) . '</span>';
 		}
-		if( !empty( $this->description ) ) {
+		if ( ! empty( $this->description ) ) {
 			$html .= '<span class="customize-control-description">' . esc_html( $this->description ) . '</span>';
 		}
 		$html .= '<div class="radio-buttons">';

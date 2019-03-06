@@ -1923,7 +1923,6 @@ body.menu_sidebar_dropdown:before {
   vertical-align: middle; }
   .site-branding a {
     display: inline-block;
-    text-transform: uppercase;
     letter-spacing: 0.4px;
     font-weight: 600; }
   .site-branding img {

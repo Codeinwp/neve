@@ -15,10 +15,10 @@ class Abstract_FooterWidget extends Abstract_Component {
 	}
 
 	public function get_settings() {
-		$default =  parent::get_settings();
+		$default = parent::get_settings();
 		return wp_parse_args(
 			array(
-				'col' => 2
+				'col' => 2,
 			),
 			$default
 		);
@@ -38,7 +38,7 @@ class Abstract_FooterWidget extends Abstract_Component {
 		$wp_customize->selective_refresh->add_partial( $this->id . '_partial', array(
 			'selector' => '.builder-item--' . $this->id,
 			'settings' => array(),
-			'render_callback' => array( $this, 'render' )
+			'render_callback' => array( $this, 'render' ),
 		) );
 
 		parent::customize_register( $wp_customize );
@@ -58,7 +58,6 @@ class Abstract_FooterWidget extends Abstract_Component {
 			return $html;
 		}
 
-
 		if ( current_user_can( 'edit_theme_options' ) ) {
 			$html .= '<div class="widget-area">';
 
@@ -66,10 +65,10 @@ class Abstract_FooterWidget extends Abstract_Component {
 			$html .= '<h4 class="widget-title">' . $this->label . '</h4>';
 			$html .= '<div class="textwidget">';
 			$html .= sprintf(
-						__( '<p>Replace this widget content by going to <a href="%1$s"><strong>Appearance &rarr; Customize &rarr; HFG Footer &rarr; Footer %2$s</strong></a> and adding widgets into this widget area.</p>', 'hfg-module' ),
-						esc_url( admin_url( 'customize.php?autofocus[section]=sidebar-widgets-footer-' . $this->id ) ),
-						$this->id
-					);
+				__( '<p>Replace this widget content by going to <a href="%1$s"><strong>Appearance &rarr; Customize &rarr; HFG Footer &rarr; Footer %2$s</strong></a> and adding widgets into this widget area.</p>', 'hfg-module' ),
+				esc_url( admin_url( 'customize.php?autofocus[section]=sidebar-widgets-footer-' . $this->id ) ),
+				$this->id
+			);
 			$html .= '</div>';
 			$html .= '</section>';
 

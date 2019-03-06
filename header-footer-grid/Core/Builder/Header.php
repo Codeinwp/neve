@@ -5,6 +5,7 @@ namespace HFG\Core\Builder;
 use ArrayIterator;
 use CachingIterator;
 use HFG\Core\Abstract_Component;
+use HFG\Core\Settings;
 
 class Header extends Abstract_Builder {
 
@@ -31,15 +32,15 @@ class Header extends Abstract_Builder {
 
 	public function header_render() {
 		$html = '<header id="masthead" class=" ' . $this->panel . ' site-header">';
-		$html .=     '<div id="masthead-inner" class="site-header-inner">';
-		$html .=        $this->render();
-		$html .=    '</div>';
-		$html .='</header>';
+		$html .= '<div id="masthead-inner" class="site-header-inner">';
+		$html .= $this->render();
+		$html .= '</div>';
+		$html .= '</header>';
 		echo $html;
 	}
 
 	protected function render_mobile_sidebar( $row, $classes ) {
-		if ( empty ( $row ) ) {
+		if ( empty( $row ) ) {
 			return '';
 		}
 
@@ -77,7 +78,7 @@ class Header extends Abstract_Builder {
 			$push_left = '';
 			if ( $x > 0 && $last_item !== null ) {
 				$o = intval( $last_item['width'] ) + intval( $last_item['x'] );
-				if( $x - $o > 0 ) {
+				if ( $x - $o > 0 ) {
 					$x = $x - $o;
 					$push_left = 'off-' . $x;
 				}
@@ -98,7 +99,8 @@ class Header extends Abstract_Builder {
 
 	public function render() {
 		$html = '';
-		$layout = json_decode( get_theme_mod( $this->control_id ), true );
+		$defaults = Settings::get_instance()->get_header_defaults_neve();
+		$layout = wp_parse_args( json_decode( get_theme_mod( $this->control_id ), true ), $defaults );
 		$desktop_items = $layout['desktop'];
 		$mobile_items = $layout['mobile'];
 		foreach ( $layout as $device_name => $device ) {
@@ -130,9 +132,9 @@ class Header extends Abstract_Builder {
 				$row_styles_array = [];
 				$row_height = get_theme_mod( $this->control_id . '_' . $index . '_height' );
 				if ( $row_height ) {
-					$row_styles_array['height'] =  'auto;';
+					$row_styles_array['height'] = 'auto;';
 					if ( intval( $row_height ) > 0 ) {
-						$row_styles_array['height'] =  $row_height . 'px;';
+						$row_styles_array['height'] = $row_height . 'px;';
 					}
 				}
 

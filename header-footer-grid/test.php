@@ -7,6 +7,7 @@ add_theme_support(
 			'HFG\Core\Builder\Header' => array(
 				'HFG\Core\Components\Logo',
 				'HFG\Core\Components\MenuIcon',
+				'HFG\Core\Components\Nav',
 				'HFG\Core\Components\Button',
 				'HFG\Core\Components\ButtonTwo',
 			),
@@ -18,7 +19,7 @@ add_theme_support(
 				'HFG\Core\Components\FooterWidgetFive',
 				'HFG\Core\Components\FooterWidgetSix',
 				'HFG\Core\Components\Copyright',
-			)
-		)
+			),
+		),
 	)
 );

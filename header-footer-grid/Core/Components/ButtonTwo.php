@@ -18,10 +18,10 @@ class ButtonTwo extends Abstract_Component {
 	}
 
 	public function get_settings() {
-		$default =  parent::get_settings();
+		$default = parent::get_settings();
 		return wp_parse_args(
 			array(
-				'col' => 2
+				'col' => 2,
 			),
 			$default
 		);

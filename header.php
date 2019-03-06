@@ -25,9 +25,9 @@
 <body <?php body_class(); ?>>
 <div class="wrapper">
 	<?php
-	if ( apply_filters( 'hfg-active', false ) ) {
-        do_action( 'hfg-header-render' );
-	} else {
+	// if ( apply_filters( 'hfg-active', false ) ) {
+		do_action( 'hfg-header-render' );
+	// } else {
 	?>
 		<header class="header" role="banner">
 			<a class="neve-skip-link show-on-focus" href="#content"
@@ -44,8 +44,8 @@
 		</header>
 
 		<?php
-	}
-	do_action( 'neve_before_primary' );
+		// }
+		do_action( 'neve_before_primary' );
 	?>
 
 	<main id="content" class="neve-main" role="main">

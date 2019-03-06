@@ -27,8 +27,8 @@ class Select_Control extends WP_Customize_Control {
 	 * Constructor
 	 *
 	 * @param WP_Customize_Manager $manager
-	 * @param string $id
-	 * @param array $args
+	 * @param string               $id
+	 * @param array                $args
 	 */
 	public function __construct( $manager, $id, $args = array() ) {
 		parent::__construct( $manager, $id, $args );
@@ -72,12 +72,12 @@ class Select_Control extends WP_Customize_Control {
 		}
 
 		$html = '<div class="dropdown_select2_control">';
-		if( !empty( $this->label ) ) {
+		if ( ! empty( $this->label ) ) {
 			$html .= '<label for="' . esc_attr( $this->id ) . '" class="customize-control-title">';
 			$html .= esc_html( $this->label );
 			$html .= '</label>';
 		}
-		if( !empty( $this->description ) ) {
+		if ( ! empty( $this->description ) ) {
 			$html .= '<span class="customize-control-description">' . esc_html( $this->description ) . '</span>';
 		}
 		$html .= '<input type="hidden" id="' . esc_attr( $this->id ) . '" class="customize-control-dropdown-select2" value="' . esc_attr( $this->value() ) . '" name="' . esc_attr( $this->id ) . '" ' . $this->safe_echo( array( $this, 'link' ) ) . ' />';
@@ -91,7 +91,7 @@ class Select_Control extends WP_Customize_Control {
 				$html .= '</optgroup>';
 				continue;
 			}
-			$html .= '<option value="' . esc_attr( $key ) . '" ' . selected( esc_attr( $key ), $defaultValue, false )  . '>' . esc_attr( $value ) . '</option>';
+			$html .= '<option value="' . esc_attr( $key ) . '" ' . selected( esc_attr( $key ), $defaultValue, false ) . '>' . esc_attr( $value ) . '</option>';
 		}
 		$html .= '</select>';
 		$html .= '</div>';

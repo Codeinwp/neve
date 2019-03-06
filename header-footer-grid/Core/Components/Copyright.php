@@ -19,10 +19,10 @@ class Copyright extends Abstract_Component {
 	}
 
 	public function get_settings() {
-		$default =  parent::get_settings();
+		$default = parent::get_settings();
 		return wp_parse_args(
 			array(
-				'col' => 2
+				'col' => 2,
 			),
 			$default
 		);
@@ -50,7 +50,7 @@ class Copyright extends Abstract_Component {
 			[
 				'label' => esc_html__( 'Copyright Content', 'hfg-module' ),
 				'type'  => 'textarea',
-				'section'  => $this->section
+				'section'  => $this->section,
 			]
 		);
 
@@ -59,7 +59,7 @@ class Copyright extends Abstract_Component {
 			'settings' => array(
 				$this->id . '_content',
 			),
-			'render_callback' => $fn
+			'render_callback' => $fn,
 		) );
 
 		parent::customize_register( $wp_customize );

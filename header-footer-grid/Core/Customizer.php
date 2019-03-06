@@ -18,7 +18,7 @@ class Customizer {
 
 		$theme_support = get_theme_support( 'hfg_support' )[0];
 		foreach ( $theme_support['builders'] as $builder => $components ) {
-			if( class_exists( $builder ) && in_array( 'HFG\Core\Interfaces\Builder', class_implements( $builder ) ) ) {
+			if ( class_exists( $builder ) && in_array( 'HFG\Core\Interfaces\Builder', class_implements( $builder ) ) ) {
 				/**
 				 * @var Builder $new_builder
 				 */

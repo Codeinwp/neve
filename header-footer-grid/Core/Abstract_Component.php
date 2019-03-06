@@ -69,7 +69,6 @@ abstract class Abstract_Component implements Component {
 			]
 		) );
 
-
 		$wp_customize->add_setting( $this->id . '_merge',
 			array(
 				'default' => 'no',
@@ -93,7 +92,7 @@ abstract class Abstract_Component implements Component {
 					'no' => __( 'No', 'hfg-module' ),
 					'right' => __( 'Merge Right', 'hfg-module' ),
 					'left' => __( 'Merge Left', 'hfg-module' ),
-				)
+				),
 			]
 		) );
 

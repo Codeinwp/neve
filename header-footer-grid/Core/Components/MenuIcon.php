@@ -17,10 +17,10 @@ class MenuIcon extends Abstract_Component {
 	}
 
 	public function get_settings() {
-		$default =  parent::get_settings();
+		$default = parent::get_settings();
 		return wp_parse_args(
 			array(
-				'col' => 2
+				'col' => 2,
 			),
 			$default
 		);
@@ -76,7 +76,7 @@ class MenuIcon extends Abstract_Component {
 		$item_classes[] = 'is-size-mobile-medium';
 		$label_classes = array( 'nav-icon--label' );
 
-		$html = '<a class="' . esc_attr( join( ' ', $item_classes ) ) .  '">';
+		$html = '<a class="' . esc_attr( join( ' ', $item_classes ) ) . '">';
 		$html .= '<span class="hamburger hamburger--squeeze">';
 		$html .= '<span class="hamburger-box">';
 		$html .= '<span class="hamburger-inner"></span>';

@@ -17,8 +17,8 @@ class Toggle_Control extends WP_Customize_Control {
 	 * Constructor
 	 *
 	 * @param WP_Customize_Manager $manager
-	 * @param string $id
-	 * @param array $args
+	 * @param string               $id
+	 * @param array                $args
 	 */
 	public function __construct( WP_Customize_Manager $manager, string $id, array $args = array() ) {
 		parent::__construct( $manager, $id, $args );
@@ -35,13 +35,13 @@ class Toggle_Control extends WP_Customize_Control {
 	/**
 	 * Enqueue our scripts and styles
 	 */
-	public function enqueue(){
+	public function enqueue() {
 		wp_enqueue_style( 'hfg-custom-controls-css', $this->hfg_settings->url . '/assets/css/admin/hfg_controls.css', array(), '1.0', 'all' );
 	}
 	/**
 	 * Render the control in the customizer
 	 */
-	public function render_content(){
+	public function render_content() {
 
 		$html = '<div class="toggle-switch-control">';
 		$html .= '<div class="toggle-switch">';
@@ -52,7 +52,7 @@ class Toggle_Control extends WP_Customize_Control {
 		$html .= '</label>';
 		$html .= '</div>';
 		$html .= '<span class="customize-control-title">' . esc_html( $this->label ) . '</span>';
-		if( !empty( $this->description ) ) {
+		if ( ! empty( $this->description ) ) {
 			$html .= '<span class="customize-control-description">' . esc_html( $this->description ) . '</span>';
 		}
 		$html .= '</div>';

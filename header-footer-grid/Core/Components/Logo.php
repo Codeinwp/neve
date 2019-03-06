@@ -21,10 +21,10 @@ class Logo extends Abstract_Component {
 	}
 
 	public function get_settings() {
-		$default =  parent::get_settings();
+		$default = parent::get_settings();
 		return wp_parse_args(
 			array(
-				'col' => 2
+				'col' => 2,
 			),
 			$default
 		);
@@ -111,7 +111,7 @@ class Logo extends Abstract_Component {
 					'left'   => __( 'Left', 'hfg-module' ),
 					'right'  => __( 'Right', 'hfg-module' ),
 					'bottom' => __( 'Bottom', 'hfg-module' ),
-				)
+				),
 			]
 		) );
 
@@ -123,7 +123,7 @@ class Logo extends Abstract_Component {
 				$this->id . '_show_tagline',
 				$this->id . '_logo_pos',
 			),
-			'render_callback' => $fn
+			'render_callback' => $fn,
 		) );
 
 		parent::customize_register( $wp_customize );
@@ -138,7 +138,7 @@ class Logo extends Abstract_Component {
 
 		if ( $logo_image ) {
 			$html .= '<a href="' . esc_url( home_url( '/' ) ) . '" class="logo-link" rel="home" itemprop="url">';
-			$html .= '<img class="site-img-logo" src="' . esc_url( $logo_image ) . '" alt="' . __( 'Logo', 'hfg-module' ) . '" ' . ( ( $logo_retina_image ) ? 'srcset="' . esc_url( $logo_retina_image ) .' 2x"' : '' ) . '>';
+			$html .= '<img class="site-img-logo" src="' . esc_url( $logo_image ) . '" alt="' . __( 'Logo', 'hfg-module' ) . '" ' . ( ( $logo_retina_image ) ? 'srcset="' . esc_url( $logo_retina_image ) . ' 2x"' : '' ) . '>';
 			$html .= '</a>';
 		}
 	}

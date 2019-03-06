@@ -22,7 +22,7 @@ abstract class Abstract_Builder implements Builder {
 
 	protected $devices = [
 		'desktop' => 'Desktop',
-		'mobile' => 'Mobile'
+		'mobile' => 'Mobile',
 	];
 
 	protected $builder_components = array();
@@ -84,7 +84,7 @@ abstract class Abstract_Builder implements Builder {
 			$wp_customize->selective_refresh->add_partial( $this->control_id . '_partial', array(
 				'selector' => '.' . $this->panel,
 				'settings' => array( $this->control_id ),
-				'render_callback' => array( $this, 'render' )
+				'render_callback' => array( $this, 'render' ),
 			) );
 
 			$wp_customize->add_control( $this->control_id, array(
@@ -145,7 +145,7 @@ abstract class Abstract_Builder implements Builder {
 						'layout-full-contained' => __( 'Full Width - Contained', 'hfg-module' ),
 						'layout-fullwidth' => __( 'Full Width', 'hfg-module' ),
 						'layout-contained' => __( 'Contained', 'hfg-module' ),
-					)
+					),
 				]
 			) );
 
@@ -186,13 +186,13 @@ abstract class Abstract_Builder implements Builder {
 					'choices' => array(
 						'light-mode' => array(
 							'image' => $settings->url . '/assets/images/customizer/text_mode_dark.svg',
-							'name' => __( 'Light Mode' )
+							'name' => __( 'Light Mode' ),
 						),
 						'dark-mode' => array(
 							'image' => $settings->url . '/assets/images/customizer/text_mode_light.svg',
-							'name' => __( 'Dark Mode' )
+							'name' => __( 'Dark Mode' ),
 						),
-					)
+					),
 				]
 			) );
 
@@ -204,10 +204,10 @@ abstract class Abstract_Builder implements Builder {
 							'regularweight' => 'regular',
 							'italicweight' => 'italic',
 							'boldweight' => '700',
-							'category' => 'sans-serif'
+							'category' => 'sans-serif',
 						)
 					),
-					'sanitize_callback' => ''
+					'sanitize_callback' => '',
 				)
 			);
 
@@ -229,19 +229,19 @@ abstract class Abstract_Builder implements Builder {
 				'selector' => '.' . $this->panel,
 				'settings' => array(
 					$this->control_id . '_' . $row_id,
-					$this->control_id . '_' . $row_id . '_layout' ,
-					$this->control_id . '_' . $row_id . '_height' ,
-					$this->control_id . '_' . $row_id . '_skin' ,
-					$this->control_id . '_' . $row_id . '_font_select' ,
+					$this->control_id . '_' . $row_id . '_layout',
+					$this->control_id . '_' . $row_id . '_height',
+					$this->control_id . '_' . $row_id . '_skin',
+					$this->control_id . '_' . $row_id . '_font_select',
 				),
-				'render_callback' => array( $this, 'render' )
+				'render_callback' => array( $this, 'render' ),
 			) );
 		}
 	}
 
 	public function register_component( $component_to_add ) {
 
-		if ( ! class_exists( $component_to_add ) ||  ! in_array( 'HFG\Core\Interfaces\Component', class_implements( $component_to_add ) ) ) {
+		if ( ! class_exists( $component_to_add ) || ! in_array( 'HFG\Core\Interfaces\Component', class_implements( $component_to_add ) ) ) {
 			return false;
 		}
 
@@ -249,7 +249,7 @@ abstract class Abstract_Builder implements Builder {
 		 * @var Component $component
 		 */
 		$component = new $component_to_add( $this->panel );
-		$this->builder_components[$component->get_id()] = $component;
+		$this->builder_components[ $component->get_id() ] = $component;
 		return true;
 	}
 
@@ -263,7 +263,7 @@ abstract class Abstract_Builder implements Builder {
 		 * @var Component $component
 		 */
 		foreach ( $this->builder_components as $component ) {
-			$components_settings[$component->get_id()] = $component->get_settings();
+			$components_settings[ $component->get_id() ] = $component->get_settings();
 		}
 		return $components_settings;
 	}
