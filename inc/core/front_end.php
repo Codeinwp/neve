@@ -109,17 +109,9 @@ class Front_End {
 						'url'   => 'https://demo.themeisle.com/neve-lawyers/',
 						'title' => 'Lawyers',
 					),
-					'neve-doctors'       => array(
-						'url'   => 'https://demo.themeisle.com/neve-doctors/',
-						'title' => 'Doctors',
-					),
 					'neve-restaurant'    => array(
 						'url'   => 'https://demo.themeisle.com/neve-restaurant/',
 						'title' => 'Restaurant',
-					),
-					'neve-charity'       => array(
-						'url'   => 'https://demo.themeisle.com/neve-charity/',
-						'title' => 'Charity',
 					),
 					'neve-freelancer'    => array(
 						'url'   => 'https://demo.themeisle.com/neve-freelancer/',
@@ -129,38 +121,51 @@ class Front_End {
 						'url'   => 'https://demo.themeisle.com/neve-zelle/',
 						'title' => 'Travel Agency',
 					),
+					'neve-charity'       => array(
+						'url'   => 'https://demo.themeisle.com/neve-charity/',
+						'title' => 'Charity',
+					),
+					'neve-doctors'       => array(
+						'url'   => 'https://demo.themeisle.com/neve-doctors/',
+						'title' => 'Doctors',
+					),
 				),
 			),
+
 			/*
-			 * Upsells for PRO version
-			 * 'upsell'      => array(
+			Upsells for PRO version
+
+			'upsell'  => array(
 				'elementor' => array(
 					'neve-showcase'    => array(
 						'url'        => 'https://demo.themeisle.com/neve-showcase/',
-						'screenshot' => 'https://demo.themeisle.com/neve-showcase/wp-content/uploads/sites/184/2019/03/screenshot.png',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/03/neve_showcase.jpg',
 						'title'      => 'Showcase',
 					),
 					'neve-consultants' => array(
 						'url'        => 'https://demo.themeisle.com/neve-consultants/',
-						'screenshot' => 'https://demo.themeisle.com/neve-consultants/wp-content/uploads/sites/185/2019/03/screenshot.png',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/03/neve_consultants.jpg',
 						'title'      => 'Consultants',
 					),
 					'neve-cafe'        => array(
 						'url'        => 'https://demo.themeisle.com/neve-cafe/',
-						'screenshot' => 'https://demo.themeisle.com/neve-cafe/wp-content/uploads/sites/186/2019/03/screenshot.png',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/03/neve_cafe.jpg',
 						'title'      => 'Cafe',
 					),
 					'neve-agency'      => array(
 						'url'        => 'https://demo.themeisle.com/neve-agency/',
-						'screenshot' => 'https://demo.themeisle.com/neve-agency/wp-content/uploads/sites/187/2019/03/screenshot.png',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/03/neve_agency.jpg',
 						'title'      => 'Agency',
 					),
-			        'neve-scholar'       => array(
-						'url'   => 'https://demo.themeisle.com/neve-scholar/',
-						'title' => 'Scholar',
+					'neve-scholar'     => array(
+						'url'        => 'https://demo.themeisle.com/neve-scholar/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/03/neve_scholar.jpg',
+						'title'      => 'Scholar',
 					),
 				),
-			),*/
+			),
+			*/
+
 			'can_migrate' => array(
 				'zerif-pro'  => array(
 					'theme_name'        => 'Zelle Pro',
