@@ -94,7 +94,7 @@ class Front_End {
 			'local'       => array(
 				'elementor' => array(
 					'neve-main'          => array(
-						'url'   => 'https://demo.themeisle.com/neve',
+						'url'   => 'https://demo.themeisle.com/neve-onboarding/',
 						'title' => 'Original',
 					),
 					'neve-vet-center'    => array(
