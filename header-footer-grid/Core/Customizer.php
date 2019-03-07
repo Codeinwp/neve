@@ -1,4 +1,15 @@
 <?php
+/**
+ * Customizer class for Header Footer Grid.
+ * Takes care of all the Customizer logic.
+ *
+ * Name:    Header Footer Grid
+ * Author:  Bogdan Preda <bogdan.preda@themeisle.com>
+ *
+ * @version 1.0.0
+ * @package HFG
+ */
+
 namespace HFG\Core;
 
 use HFG\Config\Customizer\Style;
@@ -7,12 +18,39 @@ use HFG\Core\Interfaces\Builder;
 use HFG\Traits\Core;
 use WP_Customize_Manager;
 
+/**
+ * Class Customizer
+ *
+ * @package HFG\Core
+ */
 class Customizer {
 	use Core;
 
+	/**
+	 * Holds an instance of Settings
+	 *
+	 * @since   1.0.0
+	 * @access  private
+	 * @var Settings $settings
+	 */
 	private $settings;
+
+	/**
+	 * Holds the builders to register.
+	 *
+	 * @since   1.0.0
+	 * @access  private
+	 * @var array $builders
+	 */
 	private $builders = array();
 
+	/**
+	 * Customizer constructor.
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 * @param Settings $settings The Settings class.
+	 */
 	public function __construct( Settings $settings ) {
 		$this->settings = $settings;
 
@@ -20,6 +58,8 @@ class Customizer {
 		foreach ( $theme_support['builders'] as $builder => $components ) {
 			if ( class_exists( $builder ) && in_array( 'HFG\Core\Interfaces\Builder', class_implements( $builder ) ) ) {
 				/**
+				 * A new builder instance.
+				 *
 				 * @var Builder $new_builder
 				 */
 				$new_builder = new $builder();
@@ -44,6 +84,15 @@ class Customizer {
 		add_filter( 'body_class', array( $this, 'hfg_body_classes' ) );
 	}
 
+	/**
+	 * Classes for the body tag.
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 * @param array $classes List of body classes.
+	 *
+	 * @return array
+	 */
 	public function hfg_body_classes( $classes ) {
 		if ( is_customize_preview() ) {
 			$classes[] = 'customize-previewing';
@@ -54,9 +103,18 @@ class Customizer {
 		return $classes;
 	}
 
+	/**
+	 * Returns list of builders.
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 * @return array
+	 */
 	public function get_builders() {
 		$builders_list = array();
 		/**
+		 * A Builder Class instance.
+		 *
 		 * @var Builder $builder
 		 */
 		foreach ( $this->builders as $builder ) {
@@ -65,6 +123,12 @@ class Customizer {
 		return $builders_list;
 	}
 
+	/**
+	 * Customizer script register.
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 */
 	public function scripts() {
 		$suffix = $this->get_assets_suffix();
 		wp_enqueue_style( 'hfg-customizer-control', esc_url( $this->settings->url ) . '/assets/css/admin/customizer/customizer' . $suffix . '.css' );
@@ -103,6 +167,9 @@ class Customizer {
 
 	/**
 	 * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
+	 *
+	 * @since   1.0.0
+	 * @access  public
 	 */
 	public function preview_js() {
 		if ( is_customize_preview() ) {
@@ -120,8 +187,17 @@ class Customizer {
 		}
 	}
 
+	/**
+	 * Register builder controls and settings.
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
+	 */
 	public function register( WP_Customize_Manager $wp_customize ) {
 		/**
+		 * A Builder Class instance.
+		 *
 		 * @var Builder $builder
 		 */
 		foreach ( $this->builders as $builder ) {
@@ -129,15 +205,12 @@ class Customizer {
 		}
 	}
 
-	public function get_typo_fields() {
-		return new Typography();
-	}
-
-	public function get_styling_config() {
-		$fields = new Style();
-		return apply_filters( 'hfg/get_styling_config', $fields );
-	}
-
+	/**
+	 * The Customizer templates.
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 */
 	public function template() {
 		require_once  $this->settings->path . '/templates/rows.php';
 		?>
@@ -148,7 +221,7 @@ class Customizer {
 						<div class="hfg--cb-devices-switcher">
 						</div>
 						<div class="hfg--cb-actions">
-							<?php do_action( 'hfg/builder-panel/actions-buttons' ); ?>
+							<?php do_action( 'hfg_builder_panel_actions_buttons' ); ?>
 							<a class="button button-secondary hfg--panel-close" href="#">
 								<span class="close-text"><?php _e( 'Close', 'hfg' ); ?></span>
 								<span class="panel-name-text">{{ data.title }}</span>
@@ -163,15 +236,15 @@ class Customizer {
 
 		<script type="text/html" id="tmpl-hfg--cb-item">
 			<div class="grid-stack-item item-from-list for-s-{{ data.section }}"
-			     title="{{ data.name }}"
-			     data-id="{{ data.id }}"
-			     data-section="{{ data.section }}"
-			     data-control="{{ data.control }}"
-			     data-gs-x="{{ data.x }}"
-			     data-gs-y="{{ data.y }}"
-			     data-gs-width="{{ data.width }}"
-			     data-df-width="{{ data.width }}"
-			     data-gs-height="1"
+				title="{{ data.name }}"
+				data-id="{{ data.id }}"
+				data-section="{{ data.section }}"
+				data-control="{{ data.control }}"
+				data-gs-x="{{ data.x }}"
+				data-gs-y="{{ data.y }}"
+				data-gs-width="{{ data.width }}"
+				data-df-width="{{ data.width }}"
+				data-gs-height="1"
 			>
 				<div class="item-tooltip" data-section="{{ data.section }}">{{ data.name }}</div>
 				<div class="grid-stack-item-content">

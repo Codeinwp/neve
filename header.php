@@ -25,13 +25,14 @@
 <body <?php body_class(); ?>>
 <div class="wrapper">
 	<?php
-	// if ( apply_filters( 'hfg-active', false ) ) {
-		do_action( 'hfg-header-render' );
-	// } else {
+	if ( apply_filters( 'hfg_active', false ) ) {
+		do_action( 'hfg_header_render' );
+	} else {
 	?>
 		<header class="header" role="banner">
-			<a class="neve-skip-link show-on-focus" href="#content"
-			   tabindex="0"><?php echo __( 'Skip to content', 'neve' ); ?></a>
+			<a class="neve-skip-link show-on-focus" href="#content" tabindex="0">
+				<?php echo __( 'Skip to content', 'neve' ); ?>
+			</a>
 			<?php
 			neve_before_header_trigger();
 
@@ -44,7 +45,7 @@
 		</header>
 
 		<?php
-		// }
+	}
 		do_action( 'neve_before_primary' );
 	?>
 

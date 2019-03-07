@@ -1,40 +1,64 @@
 <?php
+/**
+ * Custom Control class for Header Footer Grid.
+ *
+ * Name:    Header Footer Grid
+ * Author:  Bogdan Preda <bogdan.preda@themeisle.com>
+ *
+ * @version 1.0.0
+ * @package HFG
+ */
+
 namespace HFG\Core\Customizer;
 
-use HFG\Core\Settings;
-use WP_Customize_Control;
 use WP_Customize_Manager;
 
-class Select_Control extends WP_Customize_Control {
+/**
+ * Class Select_Control
+ *
+ * @package HFG\Core\Customizer
+ */
+class Select_Control extends Abstract_Control {
 	/**
 	 * The type of control being rendered
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 * @var string $type
 	 */
 	public $type = 'dropdown_select2';
 
 	/**
 	 * The type of Select2 Dropwdown to display. Can be either a single select dropdown or a multi-select dropdown. Either false for true. Default = false
+	 *
+	 * @since   1.0.0
+	 * @access  private
+	 * @var bool $multiselect
 	 */
 	private $multiselect = false;
 
 	/**
 	 * The Placeholder value to display. Select2 requires a Placeholder value to be set when using the clear all option. Default = 'Please select...'
+	 *
+	 * @since   1.0.0
+	 * @access  private
+	 * @var string $placeholder
 	 */
 	private $placeholder = '';
 
-	public $hfg_settings;
-
 	/**
-	 * Constructor
+	 * Select_Control constructor.
 	 *
-	 * @param WP_Customize_Manager $manager
-	 * @param string               $id
-	 * @param array                $args
+	 * @since   1.0.0
+	 * @access  public
+	 * @param WP_Customize_Manager $manager The Customize Manager.
+	 * @param string               $id The control ID.
+	 * @param array                $args The control args.
 	 */
 	public function __construct( $manager, $id, $args = array() ) {
 		parent::__construct( $manager, $id, $args );
 
 		$this->placeholder = __( 'Please select...', 'hfg-module' );
-		$this->hfg_settings = Settings::get_instance();
 
 		// Check if this is a multi-select field
 		if ( isset( $this->input_attrs['multiselect'] ) && $this->input_attrs['multiselect'] ) {
@@ -48,6 +72,9 @@ class Select_Control extends WP_Customize_Control {
 
 	/**
 	 * Enqueue our scripts and styles
+	 *
+	 * @since   1.0.0
+	 * @access  public
 	 */
 	public function enqueue() {
 		wp_enqueue_script( 'hfg-select2-js', $this->hfg_settings->url . '/assets/js/select2.min.js', array( 'jquery' ), '4.0.6', true );
@@ -56,21 +83,18 @@ class Select_Control extends WP_Customize_Control {
 		wp_enqueue_style( 'hfg-select2-css', $this->hfg_settings->url . '/assets/css/admin/select2.min.css', array(), '4.0.6', 'all' );
 	}
 
-	private function safe_echo( $function ) {
-		ob_start();
-		call_user_func( $function );
-		return  ob_get_clean();
-	}
-
 	/**
 	 * Render the control in the customizer
+	 *
+	 * @since   1.0.0
+	 * @access  public
 	 */
 	public function render_content() {
-		$defaultValue = $this->value();
+		$default_value = $this->value();
 		if ( $this->multiselect ) {
-			$defaultValue = explode( ',', $this->value() );
+			$default_value = explode( ',', $this->value() );
 		}
-		$html = '
+		$html  = '
 		<ul class="responsive-switchers">
 			<li class="desktop">
 				<button type="button" class="preview-desktop active" data-device="desktop">
@@ -104,12 +128,12 @@ class Select_Control extends WP_Customize_Control {
 			if ( is_array( $value ) ) {
 				$html .= '<optgroup label="' . esc_attr( $key ) . '">';
 				foreach ( $value as $opt_group_key => $opt_group_value ) {
-					$html .= '<option value="' . esc_attr( $opt_group_key ) . '" ' . ( in_array( esc_attr( $opt_group_key ), $defaultValue ) ? 'selected="selected"' : '' ) . '>' . esc_attr( $opt_group_value ) . '</option>';
+					$html .= '<option value="' . esc_attr( $opt_group_key ) . '" ' . ( in_array( esc_attr( $opt_group_key ), $default_value ) ? 'selected="selected"' : '' ) . '>' . esc_attr( $opt_group_value ) . '</option>';
 				}
 				$html .= '</optgroup>';
 				continue;
 			}
-			$html .= '<option value="' . esc_attr( $key ) . '" ' . selected( esc_attr( $key ), $defaultValue, false ) . '>' . esc_attr( $value ) . '</option>';
+			$html .= '<option value="' . esc_attr( $key ) . '" ' . selected( esc_attr( $key ), $default_value, false ) . '>' . esc_attr( $value ) . '</option>';
 		}
 		$html .= '</select>';
 		$html .= '</div>';

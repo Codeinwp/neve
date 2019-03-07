@@ -1,15 +1,32 @@
 <?php
+/**
+ * Custom Component class for Header Footer Grid.
+ *
+ * Name:    Header Footer Grid
+ * Author:  Bogdan Preda <bogdan.preda@themeisle.com>
+ *
+ * @version 1.0.0
+ * @package HFG
+ */
+
 namespace HFG\Core\Components;
 
-use HFG\Core\Abstract_Component;
-use HFG\Core\Customizer\Slider_Control;
-use HFG\Core\Customizer\Text_Radio_Control;
-use HFG\Core\Customizer\Toggle_Control;
-use HFG\Core\Settings;
 use WP_Customize_Manager;
 
+/**
+ * Class Copyright
+ *
+ * @package HFG\Core\Components
+ */
 class Copyright extends Abstract_Component {
 
+	/**
+	 * Copyright constructor.
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 * @param string $panel The panel ID.
+	 */
 	public function __construct( $panel ) {
 		$this->set_property( 'label', __( 'Copyright', 'hfg-module' ) );
 		$this->set_property( 'id', 'footer_copyright' );
@@ -18,55 +35,66 @@ class Copyright extends Abstract_Component {
 		$this->set_property( 'panel', $panel );
 	}
 
-	public function get_settings() {
-		$default = parent::get_settings();
-		return wp_parse_args(
-			array(
-				'col' => 2,
-			),
-			$default
-		);
-	}
-
+	/**
+	 * Called to register component controls.
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
+	 *
+	 * @return WP_Customize_Manager
+	 */
 	public function customize_register( WP_Customize_Manager $wp_customize ) {
 		$fn       = array( $this, 'render' );
-		$selector     = '.builder-item--' . $this->id;
+		$selector = '.builder-item--' . $this->id;
 
-		$wp_customize->add_section( $this->section , array(
-			'title'    => $this->label,
-			'priority' => 30,
-			'panel' => $this->panel,
-		) );
+		$wp_customize->add_section(
+			$this->section, array(
+				'title'    => $this->label,
+				'priority' => 30,
+				'panel'    => $this->panel,
+			)
+		);
 
-		$wp_customize->add_setting( $this->id . '_content',
+		$wp_customize->add_setting(
+			$this->id . '_content',
 			array(
-				'default' => __( 'Copyright &copy; {current_year} {site_title} - Powered by {theme_author}.', 'hfg-module' ),
-				'theme_supports'  => 'hfg_support',
-				'transport' => 'postMessage',
+				'default'        => __( 'Copyright &copy; {current_year} {site_title} - Powered by {theme_author}.', 'hfg-module' ),
+				'theme_supports' => 'hfg_support',
+				'transport'      => 'postMessage',
 			)
 		);
 		$wp_customize->add_control(
 			$this->id . '_content',
 			[
-				'label' => esc_html__( 'Copyright Content', 'hfg-module' ),
-				'type'  => 'textarea',
-				'section'  => $this->section,
+				'label'   => esc_html__( 'Copyright Content', 'hfg-module' ),
+				'type'    => 'textarea',
+				'section' => $this->section,
 			]
 		);
 
-		$wp_customize->selective_refresh->add_partial( $this->id . '_partial', array(
-			'selector' => $selector,
-			'settings' => array(
-				$this->id . '_content',
-			),
-			'render_callback' => $fn,
-		) );
+		$wp_customize->selective_refresh->add_partial(
+			$this->id . '_partial', array(
+				'selector'        => $selector,
+				'settings'        => array(
+					$this->id . '_content',
+				),
+				'render_callback' => $fn,
+			)
+		);
 
-		parent::customize_register( $wp_customize );
+		return parent::customize_register( $wp_customize );
 	}
 
+	/**
+	 * Render method for component.
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 * @return mixed|string
+	 */
 	public function render() {
-		$html = '';
+		$html           = '';
 		$item_classes   = array();
 		$item_classes[] = 'item--inner';
 		$item_classes[] = 'builder-item--' . $this->id;
@@ -77,7 +105,7 @@ class Copyright extends Abstract_Component {
 			$item_classes[] = ' builder-item-focus';
 		}
 
-		$item_classes   = join( ' ', $item_classes );
+		$item_classes = join( ' ', $item_classes );
 
 		$tags = array(
 			'current_year' => date_i18n( 'Y' ),

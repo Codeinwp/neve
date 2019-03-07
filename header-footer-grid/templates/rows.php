@@ -1,3 +1,14 @@
+<?php
+/**
+ * Template for JS component for Header Footer Grid.
+ *
+ * Name:    Header Footer Grid
+ * Author:  Bogdan Preda <bogdan.preda@themeisle.com>
+ *
+ * @version 1.0.0
+ * @package HFG
+ */
+?>
 <script type="text/html" id="tmpl-hfg--cb-panel">
 	<div class="hfg--cp-rows">
 

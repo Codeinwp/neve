@@ -1,13 +1,40 @@
 <?php
+/**
+ * Custom Control class for Header Footer Grid.
+ *
+ * Name:    Header Footer Grid
+ * Author:  Bogdan Preda <bogdan.preda@themeisle.com>
+ *
+ * @version 1.0.0
+ * @package HFG
+ */
+
 namespace HFG\Core\Customizer;
 
-use WP_Customize_Control;
+/**
+ * Class Heading_Control
+ *
+ * @package HFG\Core\Customizer
+ */
+class Heading_Control extends Abstract_Control {
 
-class Heading_Control extends WP_Customize_Control {
+	/**
+	 * The control type
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 * @var string $type
+	 */
 	public $type = 'heading';
 
+	/**
+	 * The render content.
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 */
 	public function render_content() {
-		$html = '';
+		$html  = '';
 		$html .= '<div class="hfg-control--heading">';
 		$html .= '<label>';
 		if ( ! empty( $this->label ) ) {

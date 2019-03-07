@@ -1,72 +1,110 @@
 <?php
+/**
+ * Custom Control class for Header Footer Grid.
+ *
+ * Name:    Header Footer Grid
+ * Author:  Bogdan Preda <bogdan.preda@themeisle.com>
+ *
+ * @version 1.0.0
+ * @package HFG
+ */
+
 namespace HFG\Core\Customizer;
 
-use HFG\Core\Settings;
-use WP_Customize_Control;
 use WP_Customize_Manager;
 
-class Google_Font_Control extends WP_Customize_Control {
+/**
+ * Class Google_Font_Control
+ *
+ * @package HFG\Core\Customizer
+ */
+class Google_Font_Control extends Abstract_Control {
 	/**
 	 * The type of control being rendered
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 * @var string $type
 	 */
 	public $type = 'google_fonts';
 
 	/**
 	 * The list of Google Fonts
+	 *
+	 * @since   1.0.0
+	 * @access  private
+	 * @var bool $font_list
 	 */
-	private $fontList = false;
+	private $font_list = false;
 
 	/**
 	 * The saved font values decoded from json
+	 *
+	 * @since   1.0.0
+	 * @access  private
+	 * @var array $font_values
 	 */
-	private $fontValues = [];
+	private $font_values = [];
 
 	/**
 	 * The index of the saved font within the list of Google fonts
+	 *
+	 * @since   1.0.0
+	 * @access  private
+	 * @var int $font_list_index
 	 */
-	private $fontListIndex = 0;
+	private $font_list_index = 0;
 
 	/**
 	 * The number of fonts to display from the json file. Either positive integer or 'all'. Default = 'all'
+	 *
+	 * @since   1.0.0
+	 * @access  private
+	 * @var string|int $font_count
 	 */
-	private $fontCount = 'all';
+	private $font_count = 'all';
 
 	/**
 	 * The font list sort order. Either 'alpha' or 'popular'. Default = 'alpha'
+	 *
+	 * @since   1.0.0
+	 * @access  private
+	 * @var string $font_order_by
 	 */
-	private $fontOrderBy = 'alpha';
-
-	public $hfg_settings;
+	private $font_order_by = 'alpha';
 
 	/**
-	 * Get our list of fonts from the json file
+	 * Google_Font_Control constructor.
 	 *
-	 * @param WP_Customize_Manager $manager
-	 * @param $id
-	 * @param array                $args
-	 * @param array                $options
+	 * @since   1.0.0
+	 * @access  public
+	 * @param WP_Customize_Manager $manager The Customize Manager.
+	 * @param string               $id The control ID.
+	 * @param array                $args The control args.
+	 * @param array                $options Additional options.
 	 */
 	public function __construct( WP_Customize_Manager $manager, $id, $args = array(), $options = array() ) {
 		parent::__construct( $manager, $id, $args );
 
-		$this->hfg_settings = Settings::get_instance();
-
 		// Get the font sort order
 		if ( isset( $this->input_attrs['orderby'] ) && strtolower( $this->input_attrs['orderby'] ) === 'popular' ) {
-			$this->fontOrderBy = 'popular';
+			$this->font_order_by = 'popular';
 		}
 		// Get the list of Google fonts
 		if ( isset( $this->input_attrs['font_count'] ) && 'all' != strtolower( $this->input_attrs['font_count'] ) ) {
-			$this->fontCount = ( abs( (int) $this->input_attrs['font_count'] ) > 0 ? abs( (int) $this->input_attrs['font_count'] ) : 'all' );
+			$this->font_count = ( abs( (int) $this->input_attrs['font_count'] ) > 0 ? abs( (int) $this->input_attrs['font_count'] ) : 'all' );
 		}
-		$this->fontList = $this->getGoogleFonts( 'all' );
+		$this->font_list = $this->getGoogleFonts( 'all' );
 		// Decode the default json font value
-		$this->fontValues = json_decode( $this->value() );
+		$this->font_values = json_decode( $this->value() );
 		// Find the index of our default font within our list of Google fonts
-		$this->fontListIndex = $this->getFontIndex( $this->fontList, $this->fontValues->font );
+		$this->font_list_index = $this->getFontIndex( $this->font_list, $this->font_values->font );
 	}
 	/**
 	 * Enqueue our scripts and styles
+	 *
+	 * @since   1.0.0
+	 * @access  public
 	 */
 	public function enqueue() {
 		wp_enqueue_script( 'hfg-select2-js', $this->hfg_settings->url . '/assets/js/select2.min.js', array( 'jquery' ), '4.0.6', true );
@@ -77,27 +115,26 @@ class Google_Font_Control extends WP_Customize_Control {
 
 	/**
 	 * Export our List of Google Fonts to JavaScript
+	 *
+	 * @since   1.0.0
+	 * @access
 	 */
-	public function to_json() {
-		parent::to_json();
-		$this->json['hfg-fonts-list'] = $this->fontList;
-	}
+	public function json() {
+		$json                   = parent::json();
+		$json['hfg-fonts-list'] = $this->font_list;
 
-	private function safe_echo( $function ) {
-		ob_start();
-		call_user_func( $function );
-		return  ob_get_clean();
+		return $json;
 	}
 
 	/**
 	 * Render the control in the customizer
 	 */
 	public function render_content() {
-		$fontCounter = 0;
-		$isFontInList = false;
-		$fontListStr = '';
-		$html = '';
-		if ( ! empty( $this->fontList ) ) {
+		$font_counter    = 0;
+		$is_font_in_list = false;
+		$font_list_str   = '';
+		$html            = '';
+		if ( ! empty( $this->font_list ) ) {
 
 			$html .= '<div class="google_fonts_select_control">';
 			if ( ! empty( $this->label ) ) {
@@ -109,62 +146,62 @@ class Google_Font_Control extends WP_Customize_Control {
 			$html .= '<input type="hidden" id="' . esc_attr( $this->id ) . '" name="' . esc_attr( $this->id ) . '" value="' . esc_attr( $this->value() ) . '" class="customize-control-google-font-selection" ' . $this->safe_echo( array( $this, 'link' ) ) . ' />';
 			$html .= '<div class="google-fonts">';
 			$html .= '<select class="google-fonts-list" control-name="' . esc_attr( $this->id ) . '">';
-			foreach ( $this->fontList as $value ) {
-				$fontCounter++;
-				$fontListStr .= '<option value="' . $value->family . '" ' . selected( $this->fontValues->font, $value->family, false ) . '>' . $value->family . '</option>';
-				if ( $this->fontValues->font === $value->family ) {
-					$isFontInList = true;
+			foreach ( $this->font_list as $value ) {
+				$font_counter++;
+				$font_list_str .= '<option value="' . $value->family . '" ' . selected( $this->font_values->font, $value->family, false ) . '>' . $value->family . '</option>';
+				if ( $this->font_values->font === $value->family ) {
+					$is_font_in_list = true;
 				}
-				if ( is_int( $this->fontCount ) && $fontCounter === $this->fontCount ) {
+				if ( is_int( $this->font_count ) && $font_counter === $this->font_count ) {
 					break;
 				}
 			}
-			if ( ! $isFontInList && $this->fontListIndex ) {
+			if ( ! $is_font_in_list && $this->font_list_index ) {
 				// If the default or saved font value isn't in the list of displayed fonts, add it to the top of the list as the default font
-				$fontListStr = '<option value="' . $this->fontList[ $this->fontListIndex ]->family . '" ' . selected( $this->fontValues->font, $this->fontList[ $this->fontListIndex ]->family, false ) . '>' . $this->fontList[ $this->fontListIndex ]->family . ' (default)</option>' . $fontListStr;
+				$font_list_str = '<option value="' . $this->font_list[ $this->font_list_index ]->family . '" ' . selected( $this->font_values->font, $this->font_list[ $this->font_list_index ]->family, false ) . '>' . $this->font_list[ $this->font_list_index ]->family . ' (default)</option>' . $font_list_str;
 			}
-			$html .= $fontListStr;
+			$html .= $font_list_str;
 			$html .= '</select>';
 			$html .= '</div>';
 			$html .= '<div class="customize-control-description">Select weight &amp; style for regular text</div>';
 			$html .= '<div class="weight-style">';
 			$html .= '<select class="google-fonts-regularweight-style">';
-			foreach ( $this->fontList[ $this->fontListIndex ]->variants as $value ) {
-				$html .= '<option value="' . $value . '" ' . selected( $this->fontValues->regularweight, $value, false ) . '>' . $value . '</option>';
+			foreach ( $this->font_list[ $this->font_list_index ]->variants as $value ) {
+				$html .= '<option value="' . $value . '" ' . selected( $this->font_values->regularweight, $value, false ) . '>' . $value . '</option>';
 			}
-			$html .= '</select>';
-			$html .= '</div>';
-			$html .= '<div class="customize-control-description">Select weight for <italic>italic text</italic></div>';
-			$html .= '<div class="weight-style">';
-			$html .= '<select class="google-fonts-italicweight-style" ' . disabled( in_array( 'italic', $this->fontList[ $this->fontListIndex ]->variants ), false, false ) . '>';
-			$optionCount = 0;
-			foreach ( $this->fontList[ $this->fontListIndex ]->variants as $value ) {
+			$html        .= '</select>';
+			$html        .= '</div>';
+			$html        .= '<div class="customize-control-description">Select weight for <italic>italic text</italic></div>';
+			$html        .= '<div class="weight-style">';
+			$html        .= '<select class="google-fonts-italicweight-style" ' . disabled( in_array( 'italic', $this->font_list[ $this->font_list_index ]->variants ), false, false ) . '>';
+			$option_count = 0;
+			foreach ( $this->font_list[ $this->font_list_index ]->variants as $value ) {
 				if ( strpos( $value, 'italic' ) !== false ) {
-					$html .= '<option value="' . $value . '" ' . selected( $this->fontValues->italicweight, $value, false ) . '>' . $value . '</option>';
-					$optionCount++;
+					$html .= '<option value="' . $value . '" ' . selected( $this->font_values->italicweight, $value, false ) . '>' . $value . '</option>';
+					$option_count++;
 				}
 			}
-			if ( $optionCount == 0 ) {
+			if ( $option_count == 0 ) {
 				$html .= '<option value="">Not Available for this font</option>';
 			}
-			$html .= '</select>';
-			$html .= '</div>';
-			$html .= '<div class="customize-control-description">Select weight for <strong>bold text</strong></div>';
-			$html .= '<div class="weight-style">';
-			$html .= '<select class="google-fonts-boldweight-style">';
-			$optionCount = 0;
-			foreach ( $this->fontList[ $this->fontListIndex ]->variants as $value ) {
+			$html        .= '</select>';
+			$html        .= '</div>';
+			$html        .= '<div class="customize-control-description">Select weight for <strong>bold text</strong></div>';
+			$html        .= '<div class="weight-style">';
+			$html        .= '<select class="google-fonts-boldweight-style">';
+			$option_count = 0;
+			foreach ( $this->font_list[ $this->font_list_index ]->variants as $value ) {
 				if ( strpos( $value, 'italic' ) === false ) {
-					$html .= '<option value="' . $value . '" ' . selected( $this->fontValues->boldweight, $value, false ) . '>' . $value . '</option>';
-					$optionCount++;
+					$html .= '<option value="' . $value . '" ' . selected( $this->font_values->boldweight, $value, false ) . '>' . $value . '</option>';
+					$option_count++;
 				}
 			}
-			if ( $optionCount == 0 ) {
+			if ( $option_count == 0 ) {
 				$html .= '<option value="">Not Available for this font</option>';
 			}
 			$html .= '</select>';
 			$html .= '</div>';
-			$html .= '<input type="hidden" class="google-fonts-category" value="' . $this->fontValues->category . '">';
+			$html .= '<input type="hidden" class="google-fonts-category" value="' . $this->font_values->category . '">';
 			$html .= '</div>';
 		}
 		echo  $html;
@@ -173,8 +210,10 @@ class Google_Font_Control extends WP_Customize_Control {
 	/**
 	 * Find the index of the saved font in our multidimensional array of Google Fonts
 	 *
-	 * @param $haystack
-	 * @param $needle
+	 * @since   1.0.0
+	 * @access  public
+	 * @param array $haystack The haystack.
+	 * @param mixed $needle The needle.
 	 *
 	 * @return bool|int|string
 	 */
@@ -190,17 +229,19 @@ class Google_Font_Control extends WP_Customize_Control {
 	/**
 	 * Return the list of Google Fonts from our json file. Unless otherwise specified, list will be limited to 30 fonts.
 	 *
-	 * @param int $count
+	 * @since   1.0.0
+	 * @access  public
+	 * @param int $count Limit for fonts to retrieve.
 	 *
 	 * @return array|string
 	 */
 	public function getGoogleFonts( $count = 30 ) {
-		$fontFile = $this->hfg_settings->path . '/assets/json/google-fonts-alphabetical.json';
-		if ( $this->fontOrderBy === 'popular' ) {
-			$fontFile = $this->hfg_settings->path . '/assets/json/google-fonts-popularity.json';
+		$font_file = $this->hfg_settings->path . '/assets/json/google-fonts-alphabetical.json';
+		if ( $this->font_order_by === 'popular' ) {
+			$font_file = $this->hfg_settings->path . '/assets/json/google-fonts-popularity.json';
 		}
 
-		$body = file_get_contents( $fontFile );
+		$body = file_get_contents( $font_file );
 
 		if ( empty( $body ) ) {
 			return [];

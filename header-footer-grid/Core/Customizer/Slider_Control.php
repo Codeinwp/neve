@@ -1,36 +1,30 @@
 <?php
+/**
+ * Custom Control class for Header Footer Grid.
+ *
+ * Name:    Header Footer Grid
+ * Author:  Bogdan Preda <bogdan.preda@themeisle.com>
+ *
+ * @version 1.0.0
+ * @package HFG
+ */
+
 namespace HFG\Core\Customizer;
 
-use HFG\Core\Settings;
-use WP_Customize_Control;
-use WP_Customize_Manager;
-
-class Slider_Control extends WP_Customize_Control {
+/**
+ * Class Slider_Control
+ *
+ * @package HFG\Core\Customizer
+ */
+class Slider_Control extends Abstract_Control {
 	/**
 	 * The type of control being rendered
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 * @var string $type
 	 */
 	public $type = 'slider_control';
-
-	public $hfg_settings;
-
-	/**
-	 * Constructor
-	 *
-	 * @param WP_Customize_Manager $manager
-	 * @param string               $id
-	 * @param array                $args
-	 */
-	public function __construct( WP_Customize_Manager $manager, string $id, array $args = array() ) {
-		parent::__construct( $manager, $id, $args );
-
-		$this->hfg_settings = Settings::get_instance();
-	}
-
-	private function safe_echo( $function ) {
-		ob_start();
-		call_user_func( $function );
-		return  ob_get_clean();
-	}
 
 	/**
 	 * Enqueue our scripts and styles
@@ -45,7 +39,7 @@ class Slider_Control extends WP_Customize_Control {
 	 */
 	public function render_content() {
 
-		$html = '<div class="slider-custom-control">';
+		$html  = '<div class="slider-custom-control">';
 		$html .= '<span class="customize-control-title">' . esc_html( $this->label ) . '</span>';
 		$html .= '<input type="number" id="<' . esc_attr( $this->id ) . '" name="' . esc_attr( $this->id ) . '" value="' . esc_attr( $this->value() ) . '" class="customize-control-slider-value" ' . $this->safe_echo( array( $this, 'link' ) ) . ' />';
 		$html .= '<div class="slider" slider-min-value="' . esc_attr( $this->input_attrs['min'] ) . '" slider-max-value="' . esc_attr( $this->input_attrs['max'] ) . '" slider-step-value="' . esc_attr( $this->input_attrs['step'] ) . '"></div>';

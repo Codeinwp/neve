@@ -1,48 +1,48 @@
 <?php
+/**
+ * Custom Control class for Header Footer Grid.
+ *
+ * Name:    Header Footer Grid
+ * Author:  Bogdan Preda <bogdan.preda@themeisle.com>
+ *
+ * @version 1.0.0
+ * @package HFG
+ */
+
 namespace HFG\Core\Customizer;
 
-use HFG\Core\Settings;
-use WP_Customize_Control;
-use WP_Customize_Manager;
-
-class Image_Radio_Control extends WP_Customize_Control {
+/**
+ * Class Image_Radio_Control
+ *
+ * @package HFG\Core\Customizer
+ */
+class Image_Radio_Control extends Abstract_Control {
 	/**
 	 * The type of control being rendered
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 * @var string $type
 	 */
 	public $type = 'image_radio_button';
 
-	public $hfg_settings;
-
-	/**
-	 * Constructor
-	 *
-	 * @param WP_Customize_Manager $manager
-	 * @param string               $id
-	 * @param array                $args
-	 */
-	public function __construct( WP_Customize_Manager $manager, string $id, array $args = array() ) {
-		parent::__construct( $manager, $id, $args );
-
-		$this->hfg_settings = Settings::get_instance();
-	}
-
-	private function safe_echo( $function ) {
-		ob_start();
-		call_user_func( $function );
-		return  ob_get_clean();
-	}
-
 	/**
 	 * Enqueue our scripts and styles
+	 *
+	 * @since   1.0.0
+	 * @access  public
 	 */
 	public function enqueue() {
 		wp_enqueue_style( 'hfg-custom-controls-css', $this->hfg_settings->url . '/assets/css/admin/hfg_controls.css', array(), '1.0', 'all' );
 	}
+
 	/**
 	 * Render the control in the customizer
+	 *
+	 * @since   1.0.0
+	 * @access  public
 	 */
 	public function render_content() {
-
 		$html = '<div class="image_radio_button_control">';
 		if ( ! empty( $this->label ) ) {
 			$html .= '<span class="customize-control-title">' . esc_html( $this->label ) . '</span>';

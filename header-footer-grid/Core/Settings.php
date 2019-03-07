@@ -1,23 +1,83 @@
 <?php
+/**
+ * Settings class for Header Footer Grid.
+ * Holds all settings for this moduel.
+ *
+ * Name:    Header Footer Grid
+ * Author:  Bogdan Preda <bogdan.preda@themeisle.com>
+ *
+ * @version 1.0.0
+ * @package HFG
+ */
+
 namespace HFG\Core;
 
+/**
+ * Class Settings
+ *
+ * @package HFG\Core
+ */
 class Settings {
 
+	/**
+	 * Holds an instance of this class.
+	 *
+	 * @since   1.0.0
+	 * @access  private
+	 * @var Settings $_instance
+	 */
 	private static $_instance = null;
+
+	/**
+	 * Holds the file path to the module directory.
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 * @var string $path
+	 */
 	public $path;
+
+	/**
+	 * Holds the url to the module directory.
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 * @var string $url
+	 */
 	public $url;
+
+	/**
+	 * Holds the theme support settings.
+	 *
+	 * @since   1.0.0
+	 * @access  private
+	 * @var array $theme_support
+	 */
 	private $theme_support = array();
 
+	/**
+	 * Returns the instance of the class.
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 * @return Settings
+	 */
 	public static function get_instance() {
 		if ( is_null( self::$_instance ) ) {
-			self::$_instance    = new self();
+			self::$_instance       = new self();
 			self::$_instance->path = get_template_directory() . '/header-footer-grid';
-			self::$_instance->url = get_template_directory_uri() . '/header-footer-grid';
+			self::$_instance->url  = get_template_directory_uri() . '/header-footer-grid';
 			self::$_instance->set();
 		}
 		return self::$_instance;
 	}
 
+	/**
+	 * Set defaults
+	 *
+	 * @since   1.0.0
+	 * @access  private
+	 */
 	private function set() {
 		$theme_support_defaults = array(
 			'builders' => array(
@@ -25,7 +85,6 @@ class Settings {
 					'HFG\Core\Components\Logo',
 					'HFG\Core\Components\MenuIcon',
 					'HFG\Core\Components\Button',
-					'HFG\Core\Components\ButtonTwo',
 				),
 				'HFG\Core\Builder\Footer' => array(
 					'HFG\Core\Components\FooterWidgetOne',
@@ -38,50 +97,93 @@ class Settings {
 				),
 			),
 		);
-		$theme_support = get_theme_support( 'hfg_support' );
+		$theme_support          = get_theme_support( 'hfg_support' );
 
-		$settings = wp_parse_args( $theme_support, $theme_support_defaults );
+		$settings            = wp_parse_args( $theme_support, $theme_support_defaults );
 		$this->theme_support = $settings;
 	}
 
+	/**
+	 * Getter for theme support.
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 * @return array
+	 */
 	public function get_theme_support() {
 		return $this->theme_support;
 	}
 
+	/**
+	 * Header defaults for Neve
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 * @return array
+	 */
 	public function get_header_defaults_neve() {
 		return [
 			'desktop' => [
-				'top' => [],
-				'main' => [
-					[ 'id' => 'logo', 'width' => 4, 'x' => 0 ],
+				'top'    => [],
+				'main'   => [
+					[
+						'id'    => 'logo',
+						'width' => 4,
+						'x'     => 0,
+					],
 				],
 				'bottom' => [],
 			],
-			'mobile' => [
-				'top' => [],
-				'main' => [
-					[ 'id' => 'logo', 'width' => 4, 'x' => 0 ],
+			'mobile'  => [
+				'top'    => [],
+				'main'   => [
+					[
+						'id'    => 'logo',
+						'width' => 4,
+						'x'     => 0,
+					],
 				],
 				'bottom' => [],
 			],
 		];
 	}
 
+	/**
+	 * Footer defaults for Neve
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 * @return array
+	 */
 	public function get_footer_defaults_neve() {
 		return [
 			'desktop' => [
-				'top' => [],
+				'top'    => [],
 				'bottom' => [
-					[ 'id' => 'footer_copyright', 'width' => 12, 'x' => 1 ],
+					[
+						'id'    => 'footer_copyright',
+						'width' => 12,
+						'x'     => 1,
+					],
 				],
 			],
-			'mobile' => [
-				'top' => [],
+			'mobile'  => [
+				'top'    => [],
 				'bottom' => [],
 			],
 		];
 	}
 
+	/**
+	 * Utility method to return media url.
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 * @param  mixed      $value The media reference.
+	 * @param mixed|null $size Optional. The size desired.
+	 *
+	 * @return array|bool|false|string
+	 */
 	public function get_media( $value, $size = null ) {
 
 		if ( empty( $value ) ) {

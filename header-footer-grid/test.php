@@ -1,4 +1,7 @@
 <?php
+/**
+ * Test file not part of the project
+ */
 
 add_theme_support(
 	'hfg_support',
@@ -9,7 +12,6 @@ add_theme_support(
 				'HFG\Core\Components\MenuIcon',
 				'HFG\Core\Components\Nav',
 				'HFG\Core\Components\Button',
-				'HFG\Core\Components\ButtonTwo',
 			),
 			'HFG\Core\Builder\Footer' => array(
 				'HFG\Core\Components\FooterWidgetOne',
