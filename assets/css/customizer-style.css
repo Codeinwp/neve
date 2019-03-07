@@ -745,7 +745,11 @@ input::-moz-focus-outer {
 	align-items: center;
 }
 
-.customize-control .responsive-number input[type=number] {
+.customize-control .responsive-number.no-units input[type=number] {
+	width: 95%;
+}
+
+.customize-control .responsive-number:not(.no-units) input[type=number] {
 	width: 73%;
 }
 
@@ -765,7 +769,7 @@ input::-moz-focus-outer {
 	position: relative;
 	width: 6%;
 	margin-left: auto;
-	color: rgba(0,0,0,0.2);
+	color: rgba(0, 0, 0, 0.2);
 	line-height: 1;
 	text-align: center;
 	cursor: pointer;

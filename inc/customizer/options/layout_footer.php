@@ -158,7 +158,7 @@ class Layout_Footer extends Base_Customizer {
 	 */
 	public function footer_content_callback() {
 		$footer = new Footer();
-		$footer->render_footer_content();
+		$footer->render_footer();
 	}
 
 	/**
@@ -171,11 +171,14 @@ class Layout_Footer extends Base_Customizer {
 				array(
 					'transport'         => $this->selective_refresh,
 					'sanitize_callback' => 'wp_kses_post',
-					'default'           => sprintf(
-						/* translators: %1$s is Theme Name (Neve), %2$s is WordPress */
-						esc_html__( '%1$s | Powered by %2$s', 'neve' ),
-						wp_kses_post( '<a href="https://themeisle.com/themes/neve/" rel="nofollow">Neve</a>' ),
-						wp_kses_post( '<a href="http://wordpress.org" rel="nofollow">WordPress</a>' )
+					'default'           => apply_filters(
+						'ti_wl_copyright',
+						sprintf(
+							/* translators: %1$s is Theme Name (Neve), %2$s is WordPress */
+							esc_html__( '%1$s | Powered by %2$s', 'neve' ),
+							wp_kses_post( '<a href="https://themeisle.com/themes/neve/" rel="nofollow">Neve</a>' ),
+							wp_kses_post( '<a href="http://wordpress.org" rel="nofollow">WordPress</a>' )
+						)
 					),
 				),
 				array(
@@ -212,7 +215,7 @@ class Layout_Footer extends Base_Customizer {
 			new Partial(
 				'neve_footer_content_partial',
 				array(
-					'selector'            => '.footer-second-section',
+					'selector'            => 'footer',
 					'settings'            => array( 'neve_footer_content_type', 'neve_footer_text' ),
 					'render_callback'     => array( $this, 'footer_content_callback' ),
 					'container_inclusive' => true,

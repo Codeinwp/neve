@@ -5,13 +5,13 @@ Theme URI:      https://themeisle.com/themes/neve/
 Author:         ThemeIsle
 Author URI:     https://themeisle.com
 Description:    Neve is a super fast, easily customizable, multi-purpose theme. It’s perfect for blogs, small business, startups, agencies, firms, e-commerce shops (WooCommerce storefront) as well as personal portfolio sites and most types of projects. A fully AMP optimized and responsive theme, Neve will load in mere seconds and adapt perfectly on any viewing device. While it is lightweight and has a minimalist design, the theme is highly extendable, it has a highly SEO optimized code, resulting in top rankings in Google search results. Neve works perfectly with Gutenberg and the most popular page builders (Elementor, Brizy, Beaver Builder, Visual Composer, SiteOrigin, Divi). Neve is also WooCommerce ready, responsive, RTL & translation ready. Look no further. Neve is the perfect theme for you!
-Version:        1.1.0
+Version:        2.1.0
 License:        GNU General Public License v2 or later
 License URI:    http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain:    neve
 WordPress Available:  yes
 Requires License:     no
-Tags: blog, custom-logo, e-commerce, rtl-language-support, post-formats, grid-layout, one-column, two-columns, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, accessibility-ready
+Tags: blog, custom-logo, e-commerce, rtl-language-support, post-formats, grid-layout, one-column, two-columns, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, accessibility-ready, wide-blocks, block-styles
 */
 html,
 body,
@@ -48,6 +48,10 @@ h5,
 h6 {
   font-size: 100%;
   font-weight: normal;
+}
+
+ul {
+  list-style: none;
 }
 
 button,
@@ -1823,6 +1827,7 @@ pre {
 }
 
 .aligncenter {
+  display: block;
   text-align: center;
   margin: 0 auto;
 }
@@ -1849,6 +1854,48 @@ hr {
   margin: 10px 0;
   display: inline-block;
   width: 100%;
+}
+
+.widget_media_gallery .gallery-columns-1 .gallery-item {
+  width: 100%;
+  max-width: 100%;
+}
+.widget_media_gallery .gallery-columns-2 .gallery-item {
+  max-width: 48%;
+}
+.widget_media_gallery .gallery-columns-3 .gallery-item {
+  max-width: 31.3333333333%;
+}
+.widget_media_gallery .gallery-columns-4 .gallery-item {
+  max-width: 23%;
+}
+.widget_media_gallery .gallery-columns-5 .gallery-item {
+  max-width: 18%;
+}
+.widget_media_gallery .gallery-columns-6 .gallery-item {
+  max-width: 14.6666666667%;
+}
+.widget_media_gallery .gallery-columns-7 .gallery-item {
+  max-width: 12.2857142857%;
+}
+.widget_media_gallery .gallery-columns-8 .gallery-item {
+  max-width: 10.5%;
+}
+.widget_media_gallery .gallery-columns-9 .gallery-item {
+  max-width: 9.1111111111%;
+}
+.widget_media_gallery .gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.widget_media_gallery br {
+  display: none;
+}
+.widget_media_gallery .gallery-item {
+  display: inline-block;
+  text-align: center;
+  vertical-align: top;
 }
 
 .nv-sidebar-wrap {
@@ -2216,6 +2263,10 @@ hr {
     max-width: 70%;
   }
 
+  .neve-main > .container > .row {
+    flex-wrap: nowrap;
+  }
+
   .navbar-toggle-wrapper {
     display: none;
   }
@@ -2465,6 +2516,9 @@ hr {
   .nv-sidebar-wrap.nv-left {
     border-right: 1px solid #f0f0f0;
   }
+  .nv-sidebar-wrap .row {
+    flex-wrap: nowrap;
+  }
 
   .nv-index-posts:not(:only-child) {
     padding-right: 15px;
@@ -2636,8 +2690,11 @@ hr {
     width: 1170px;
   }
 }
-fieldset .submit-form {
-  padding-top: 27px;
+.neve-main .elementor-text-editor ul, .neve-main .elementor-text-editor ol {
+  padding-left: 20px;
+}
+.neve-main .elementor-text-editor ul {
+  list-style: inherit;
 }
 
 /*# sourceMappingURL=style.css.map */

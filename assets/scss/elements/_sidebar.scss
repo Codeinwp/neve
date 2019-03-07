@@ -7,6 +7,9 @@
     &.nv-left {
       border-right: $muted-border;
     }
+    .row {
+      flex-wrap: nowrap;
+    }
   }
 
   .nv-index-posts {

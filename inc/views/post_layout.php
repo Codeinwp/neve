@@ -21,7 +21,7 @@ class Post_Layout extends Base_View {
 	 * @return void
 	 */
 	public function init() {
-		add_action( 'neve_do_single_post', array( $this, 'render_post_header' ) );
+		add_action( 'neve_do_single_post', array( $this, 'render_post' ) );
 	}
 
 	/**
@@ -29,19 +29,23 @@ class Post_Layout extends Base_View {
 	 *
 	 * @param string $context the context provided in do_action.
 	 */
-	public function render_post_header( $context ) {
+	public function render_post( $context ) {
 		if ( $context !== 'single-post' ) {
 			return;
 		}
 
-		$default_order = array(
-			'title-meta',
-			'thumbnail',
-			'content',
-			'tags',
+		$default_order = apply_filters(
+			'neve_single_post_elements_default_order',
+			array(
+				'title-meta',
+				'thumbnail',
+				'content',
+				'tags',
+				'comments',
+			)
 		);
 
-		$content_order = get_theme_mod( 'neve_single_post_elements_order', json_encode( $default_order ) );
+		$content_order = get_theme_mod( 'neve_layout_single_post_elements_order', json_encode( $default_order ) );
 		$content_order = json_decode( $content_order );
 
 		if ( apply_filters( 'neve_filter_toggle_content_parts', true, 'title' ) !== true ) {
@@ -95,6 +99,15 @@ class Post_Layout extends Base_View {
 					break;
 				case 'meta':
 					$this->render_post_meta();
+					break;
+				case 'author-biography':
+					do_action( 'neve_layout_single_post_author_biography' );
+					break;
+				case 'related-posts':
+					do_action( 'neve_do_related_posts' );
+					break;
+				case 'comments':
+					comments_template();
 					break;
 			}
 		}

@@ -1,4 +1,41 @@
 
+ ### v2.1.0 - 2019-03-07 
+ **Changes:** 
+ * Two newly added Elementor Starter Sites
+* Small updates to the Starter Sites library
+* Improved WooCommerce page layouts
+* Improved onboarding page layout
+* Fixed issue with .aligncenter class not working properly
+* Fixed issue with sidebar not aligned properly on Safari 10
+* Fixed SSL issue for generated stylesheets
+ 
+ ### v2.0.0 - 2019-02-26 
+ **Changes:** 
+ * Refactor the code to allow child themes to override the views folder - https://docs.themeisle.com/article/985-how-to-create-a-child-theme-for-neve
+* Updated the onboarding notice to provide more information
+* Fixed issue with the image source for the Video block for Otter
+* Updated starter sites to use Anchor widgets
+ 
+ ### v1.1.4 - 2019-02-08 
+ **Changes:** 
+ * Fixed alignment issues with the Gallery widget
+ 
+ ### v1.1.3 - 2019-02-07 
+ **Changes:** 
+ * Fixed list styling in Elementor
+ 
+ ### v1.1.2 - 2019-02-07 
+ **Changes:** 
+ * New Gutenberg Blocks added for Otter
+* Fixed lists styling
+* Fixed issue with Gutenberg Blocks images not visible in an online environment
+ 
+ ### v1.1.1 - 2019-02-04 
+ **Changes:** 
+ * Fixed issue with content missing on the single post page
+* Fixed issue with the Footer Gutenberg block for Otter
+* Improved the Neve Energy Panel starter site
+ 
  ### v1.1.0 - 2019-01-31 
  **Changes:** 
  * NEW Neve Specific Gutenberg blocks for Otter Blocks

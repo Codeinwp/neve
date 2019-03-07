@@ -16,6 +16,14 @@ namespace Neve\Core;
  * @package Neve\Core
  */
 class Front_End {
+
+	/**
+	 * The onboarding config.
+	 *
+	 * @var array
+	 */
+	private $onboarding_config = array();
+
 	/**
 	 * Theme setup.
 	 */
@@ -76,44 +84,88 @@ class Front_End {
 	 * @return array
 	 */
 	private function get_ti_demo_content_support_data() {
-		$theme_name = wp_get_theme()->Name;
+		$theme_options = wp_get_theme();
+		$theme_name    = apply_filters( 'ti_wl_theme_name', $theme_options->__get( 'Name' ) );
 
-		$onboarding_sites = array(
+		$this->onboarding_config = array(
 			'editors'     => array(
 				'elementor',
 			),
 			'local'       => array(
 				'elementor' => array(
 					'neve-main'          => array(
-						'url'   => 'https://demo.themeisle.com/neve',
-						'title' => 'Neve Original',
+						'url'   => 'https://demo.themeisle.com/neve-onboarding/',
+						'title' => 'Original',
 					),
 					'neve-vet-center'    => array(
 						'url'   => 'https://demo.themeisle.com/neve-vet-center/',
-						'title' => 'Neve Vet Center',
+						'title' => 'Vet Center',
 					),
 					'neve-energy-panels' => array(
 						'url'   => 'https://demo.themeisle.com/neve-energy-panels/',
-						'title' => 'Neve Energy Panels',
+						'title' => 'Energy Panels',
 					),
 					'neve-lawyers'       => array(
 						'url'   => 'https://demo.themeisle.com/neve-lawyers/',
-						'title' => 'Neve Lawyers',
-					),
-					'neve-doctors'       => array(
-						'url'   => 'https://demo.themeisle.com/neve-doctors/',
-						'title' => 'Neve Doctors',
+						'title' => 'Lawyers',
 					),
 					'neve-restaurant'    => array(
 						'url'   => 'https://demo.themeisle.com/neve-restaurant/',
-						'title' => 'Neve Restaurant',
+						'title' => 'Restaurant',
+					),
+					'neve-freelancer'    => array(
+						'url'   => 'https://demo.themeisle.com/neve-freelancer/',
+						'title' => 'Freelancer',
+					),
+					'neve-zelle'         => array(
+						'url'   => 'https://demo.themeisle.com/neve-zelle/',
+						'title' => 'Travel Agency',
 					),
 					'neve-charity'       => array(
 						'url'   => 'https://demo.themeisle.com/neve-charity/',
-						'title' => 'Neve Charity',
+						'title' => 'Charity',
+					),
+					'neve-doctors'       => array(
+						'url'   => 'https://demo.themeisle.com/neve-doctors/',
+						'title' => 'Doctors',
 					),
 				),
 			),
+
+			/*
+			Upsells for PRO version
+
+			'upsell'  => array(
+				'elementor' => array(
+					'neve-showcase'    => array(
+						'url'        => 'https://demo.themeisle.com/neve-showcase/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/03/neve_showcase.jpg',
+						'title'      => 'Showcase',
+					),
+					'neve-consultants' => array(
+						'url'        => 'https://demo.themeisle.com/neve-consultants/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/03/neve_consultants.jpg',
+						'title'      => 'Consultants',
+					),
+					'neve-cafe'        => array(
+						'url'        => 'https://demo.themeisle.com/neve-cafe/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/03/neve_cafe.jpg',
+						'title'      => 'Cafe',
+					),
+					'neve-agency'      => array(
+						'url'        => 'https://demo.themeisle.com/neve-agency/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/03/neve_agency.jpg',
+						'title'      => 'Agency',
+					),
+					'neve-scholar'     => array(
+						'url'        => 'https://demo.themeisle.com/neve-scholar/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/03/neve_scholar.jpg',
+						'title'      => 'Scholar',
+					),
+				),
+			),
+			*/
+
 			'can_migrate' => array(
 				'zerif-pro'  => array(
 					'theme_name'        => 'Zelle Pro',
@@ -141,10 +193,33 @@ class Front_End {
 				/* translators: %s - theme name */
 				'templates_description' => sprintf( __( 'With %s, you can choose from multiple unique demos, specially designed for you, that can be installed with a single click. You just need to choose your favorite, and we will take care of everything else.', 'neve' ), $theme_name ),
 			),
+			'pro_link'    => 'https://themeisle.com/themes/neve/upgrade/',
 
 		);
 
-		return apply_filters( 'neve_filter_onboarding_data', $onboarding_sites );
+		/* $this->add_gutenberg_starter_sites(); */
+
+		return apply_filters( 'neve_filter_onboarding_data', $this->onboarding_config );
+	}
+
+	/**
+	 * Add gutenberg starter sites if wp_version > 5.0.0
+	 */
+	private function add_gutenberg_starter_sites() {
+		global $wp_version;
+
+		if ( version_compare( $wp_version, '5.0', '>' ) === false ) {
+			return;
+		}
+
+		$this->onboarding_config['editors'][]          = 'gutenberg';
+		$this->onboarding_config['local']['gutenberg'] = array(
+			'neve-main-gutenberg' => array(
+				'url'   => 'https://demo.themeisle.com/neve-onboarding-gutenberg',
+				'title' => 'Original',
+			),
+		);
+
 	}
 
 	/**
@@ -227,10 +302,13 @@ class Front_End {
 	 * @return array
 	 */
 	public function add_gutenberg_templates( $templates_list ) {
+		$current_theme = wp_get_theme()->Name;
+
 		$templates = array(
 			array(
 				'title'          => '',
 				'type'           => 'block',
+				'author'         => $current_theme,
 				'keywords'       => array( 'big title', 'header', 'about' ),
 				'categories'     => array( 'header' ),
 				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/big-title/template.json',
@@ -239,6 +317,7 @@ class Front_End {
 			array(
 				'title'          => '',
 				'type'           => 'block',
+				'author'         => $current_theme,
 				'keywords'       => array( 'about us', 'about', 'description', 'showcase' ),
 				'categories'     => array( 'content' ),
 				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/about-us/template.json',
@@ -247,6 +326,7 @@ class Front_End {
 			array(
 				'title'          => '',
 				'type'           => 'block',
+				'author'         => $current_theme,
 				'keywords'       => array( 'focus', 'our focus', 'services', 'features', 'showcase' ),
 				'categories'     => array( 'content' ),
 				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/our-focus/template.json',
@@ -255,6 +335,7 @@ class Front_End {
 			array(
 				'title'          => '',
 				'type'           => 'block',
+				'author'         => $current_theme,
 				'keywords'       => array( 'video', 'embed', 'youtube', 'movie' ),
 				'categories'     => array( 'content' ),
 				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/video/template.json',
@@ -263,7 +344,17 @@ class Front_End {
 			array(
 				'title'          => '',
 				'type'           => 'block',
-				'keywords'       => array( 'team', 'our team', 'employees', 'clients', 'members', 'people', 'image', 'card' ),
+				'author'         => $current_theme,
+				'keywords'       => array(
+					'team',
+					'our team',
+					'employees',
+					'clients',
+					'members',
+					'people',
+					'image',
+					'card',
+				),
 				'categories'     => array( 'content' ),
 				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/our-team/template.json',
 				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/our-team/screenshot.jpg',
@@ -271,14 +362,16 @@ class Front_End {
 			array(
 				'title'          => '',
 				'type'           => 'block',
+				'author'         => $current_theme,
 				'keywords'       => array( 'ribbon', 'statistics', 'numbers', 'clients', 'banner', 'logo', 'carousel' ),
 				'categories'     => array( 'content' ),
 				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/ribbon/template.json',
 				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/ribbon/screenshot.jpg',
 			),
 			array(
-				'title'          => __( 'Pricing', 'neve' ),
+				'title'          => '',
 				'type'           => 'block',
+				'author'         => $current_theme,
 				'keywords'       => array( 'pricing', 'plan', 'packages', 'membership', 'product' ),
 				'categories'     => array( 'content' ),
 				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/pricing/template.json',
@@ -287,6 +380,7 @@ class Front_End {
 			array(
 				'title'          => '',
 				'type'           => 'block',
+				'author'         => $current_theme,
 				'keywords'       => array( 'testimonials', 'review', 'feedback', 'testimonial', 'happy', 'clients' ),
 				'categories'     => array( 'content' ),
 				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/testimonials/template.json',
@@ -295,7 +389,17 @@ class Front_End {
 			array(
 				'title'          => '',
 				'type'           => 'block',
-				'keywords'       => array( 'features', 'card', 'about', 'services', 'advantages', 'items', 'boxes', 'why' ),
+				'author'         => $current_theme,
+				'keywords'       => array(
+					'features',
+					'card',
+					'about',
+					'services',
+					'advantages',
+					'items',
+					'boxes',
+					'why',
+				),
 				'categories'     => array( 'content' ),
 				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/features/template.json',
 				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/features/screenshot.jpg',
@@ -303,6 +407,35 @@ class Front_End {
 			array(
 				'title'          => '',
 				'type'           => 'block',
+				'author'         => $current_theme,
+				'keywords'       => array( 'blog', 'stories', 'posts', 'grid' ),
+				'categories'     => array( 'content' ),
+				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/blog/template.json',
+				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/blog/screenshot.jpg',
+			),
+			array(
+				'title'          => '',
+				'type'           => 'block',
+				'author'         => $current_theme,
+				'keywords'       => array(
+					'contact',
+					'us',
+					'form',
+					'message',
+					'email',
+					'support',
+					'get',
+					'in',
+					'touch',
+				),
+				'categories'     => array( 'content' ),
+				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/contact/template.json',
+				'screenshot_url' => get_template_directory_uri() . '/gutenberg/blocks/contact/screenshot.jpg',
+			),
+			array(
+				'title'          => '',
+				'type'           => 'block',
+				'author'         => $current_theme,
 				'keywords'       => array( 'footer', 'resources', 'links', 'credits', 'contact', 'social', 'sharing' ),
 				'categories'     => array( 'footer' ),
 				'template_url'   => get_template_directory_uri() . '/gutenberg/blocks/footer/template.json',

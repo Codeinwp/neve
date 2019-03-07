@@ -35,39 +35,40 @@ class Top_Bar extends Base_View {
 
 	/**
 	 * The top bar markup.
+	 *
+	 * @return void
 	 */
 	public function render_top_bar() {
 		if ( ! $this->should_render_top_bar() ) {
 			return;
-		} ?>
+		}
 
-		<div class="nv-top-bar">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12 nv-tb-wrap <?php echo esc_attr( $this->get_alignment() ); ?>">
-						<?php $this->inner_top_bar(); ?>
-					</div>
-				</div>
-			</div>
-		</div>
-		<?php
+		$args = array(
+			'alignment_class' => $this->get_alignment(),
+			'content'         => $this->get_inner_top_bar(),
+		);
+
+		$this->get_view( 'top-bar', $args );
 	}
 
 	/**
 	 * Get the inner top bar content.
 	 *
-	 * @return void
+	 * @return string
 	 */
-	private function inner_top_bar() {
+	private function get_inner_top_bar() {
 		$layout = $this->get_alignment();
+		$markup = '';
 		if ( $layout === 'content-menu' ) {
-			$this->content();
-			$this->menu();
+			$markup .= $this->get_content();
+			$markup .= $this->get_menu();
 		}
 		if ( $layout === 'menu-content' ) {
-			$this->menu();
-			$this->content();
+			$markup .= $this->get_menu();
+			$markup .= $this->get_content();
 		}
+
+		return $markup;
 	}
 
 	/**
@@ -81,26 +82,31 @@ class Top_Bar extends Base_View {
 
 	/**
 	 * Render menu part of top bar.
+	 *
+	 * @return string
 	 */
-	private function menu() {
-		wp_nav_menu(
+	private function get_menu() {
+		return wp_nav_menu(
 			array(
 				'theme_location' => 'top-bar',
 				'menu_id'        => 'nv-top-bar-menu',
 				'container'      => 'ul',
 				'depth'          => - 1,
 				'fallback_cb'    => '__return_false',
+				'echo'           => false,
 			)
 		);
 	}
 
 	/**
 	 * Render content part of top bar.
+	 *
+	 * @return string
 	 */
-	private function content() {
+	private function get_content() {
 		$content = get_theme_mod( 'neve_top_bar_content', '' );
 		if ( empty( $content ) ) {
-			return;
+			return '';
 		}
 
 		$markup = '';
@@ -111,7 +117,7 @@ class Top_Bar extends Base_View {
 		$markup .= $content;
 		$markup .= '</div>';
 
-		echo $markup;
+		return $markup;
 	}
 
 	/**
