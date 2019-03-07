@@ -54,7 +54,9 @@ class Ordering extends \WP_Customize_Control {
 		array_walk(
 			$enabled,
 			function ( &$value, $key ) {
-				$value = $this->components[ $key ];
+				if ( isset( $this->components[ $key ] ) ) {
+					$value = $this->components[ $key ];
+				}
 			},
 			$enabled
 		);

@@ -69,7 +69,7 @@ class Woocommerce {
 		remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 );
 
 		$this->edit_woocommerce_header();
-		$this->move_checkout_coupon_under_order_summary();
+		$this->move_checkout_coupon();
 		$this->add_inline_selectors();
 	}
 
@@ -247,6 +247,7 @@ class Woocommerce {
 		add_filter( 'neve_button_color_filter', array( $this, 'add_button_color' ) );
 		add_filter( 'neve_menu_items_color_filter', array( $this, 'add_menu_items_color' ) );
 		add_filter( 'neve_menu_items_hover_color_filter', array( $this, 'add_menu_items_hover_color' ) );
+		add_filter( 'neve_body_font_family_selectors', array( $this, 'add_font_families' ) );
 	}
 
 	/**
@@ -273,6 +274,19 @@ class Woocommerce {
 		$color_setup['color']['selectors'] .= ', .menu-item-nav-cart:hover .cart-count';
 
 		return $color_setup;
+	}
+
+	/**
+	 * Add font family selectors.
+	 *
+	 * @param string $selectors css selectors to apply body font family to.
+	 *
+	 * @return string
+	 */
+	public function add_font_families( $selectors ) {
+		$selectors .= ',.cart_totals > h2, .cross-sells > h2, .woocommerce-billing-fields > h3, #order_review_heading, .woocommerce-shipping-fields > h3';
+
+		return $selectors;
 	}
 
 	/**
@@ -381,7 +395,7 @@ class Woocommerce {
 	/**
 	 * Does what it says.
 	 */
-	private function move_checkout_coupon_under_order_summary() {
+	private function move_checkout_coupon() {
 		/**
 		 * Checkout page
 		 *
@@ -389,7 +403,7 @@ class Woocommerce {
 		 * @see clear_coupon()
 		 */
 		add_action( 'woocommerce_before_checkout_form', array( $this, 'move_coupon' ) );
-		add_action( 'woocommerce_checkout_order_review', array( $this, 'clear_coupon' ) );
+		add_action( 'woocommerce_before_checkout_billing_form', array( $this, 'clear_coupon' ) );
 	}
 
 	/**

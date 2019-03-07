@@ -38,7 +38,7 @@ class Typography extends Base_Inline {
 					'value'    => esc_html( $headings_font ),
 				),
 			),
-			'h1, h2, h3, h4, h5, h6'
+			apply_filters( 'neve_headings_font_family_selectors', 'h1, h2, h3, h4, h5, h6' )
 		);
 		$this->add_style(
 			array(
@@ -48,7 +48,7 @@ class Typography extends Base_Inline {
 				),
 
 			),
-			'body'
+			apply_filters( 'neve_body_font_family_selectors', 'body' )
 		);
 	}
 

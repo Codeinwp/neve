@@ -263,6 +263,7 @@ All  images are licensed under CC0.
 * Neve Main: work-4.jpg, CC0 https://mystock.themeisle.com/photo/stockholm-street/
 * Neve Main: video-bg.jpg, CC0, https://mystock.themeisle.com/photo/cloudy-sunset/
 * Neve Main: winter-forest.jpg, CC0, https://mystock.themeisle.com/photo/winter-forest/
+* Neve Main: neve-onboarding-placeholder (used as placeholder), CC0, https://mystock.themeisle.com/photo/wood/
 * Neve Vet Center: neve-vet-center-big-title1.jpg, CC0, https://mystock.themeisle.com/photo/squirrel-2/
 * Neve Vet Center: neve-vet-center-testify.jpg, CC0, https://mystock.themeisle.com/photo/beagle-puppy/
 * Neve Vet Center: neve-vet-center-testify-cat.jpg, CC0, https://mystock.themeisle.com/photo/cat-2/

@@ -25,7 +25,6 @@ get_header();
 				} else {
 					get_template_part( 'template-parts/content', 'none' );
 				}
-				comments_template();
 				?>
 			</article>
 			<?php do_action( 'neve_do_sidebar', 'single-post', 'right' ); ?>
