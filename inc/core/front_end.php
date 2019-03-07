@@ -216,7 +216,7 @@ class Front_End {
 		$this->onboarding_config['local']['gutenberg'] = array(
 			'neve-main-gutenberg' => array(
 				'url'   => 'https://demo.themeisle.com/neve-onboarding-gutenberg',
-				'title' => 'Neve Original',
+				'title' => 'Original',
 			),
 		);
 
