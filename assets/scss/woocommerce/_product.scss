@@ -15,9 +15,11 @@
 
 .product_meta {
   font-size: .85em;
+
   a {
     color: $gray-color;
   }
+
   > span {
     display: block;
   }
@@ -35,6 +37,7 @@
   div.product p.price {
     color: $body-color;
     font-weight: 700;
+
     del {
       font-weight: 500;
     }
@@ -52,20 +55,24 @@
   tr:hover {
     background: inherit;
   }
+
   div.product form.cart .variations {
     td {
       padding: 0;
       display: block;
       width: 100%;
+
       &.label {
         padding: 0;
       }
     }
+
     tr:not(:last-child) {
       margin-bottom: $spacing-xs;
       display: block;
     }
   }
+
   .reset_variations {
     display: block;
     color: $gray-color;
@@ -84,12 +91,15 @@
   border: 0;
   margin: 0 $spacing-sm 0 0;
   padding: 0;
+
   &:before, &:after {
     content: none;
   }
+
   &.active {
     border-bottom: 2px solid;
   }
+
   a {
     color: $gray-color;
   }
@@ -98,6 +108,7 @@
 .woocommerce #content div.product .woocommerce-tabs ul.tabs {
   padding: 0;
   border: 0;
+
   &:before {
     content: none;
   }
@@ -107,51 +118,76 @@
   #comments {
     border: none;
   }
+
   .woocommerce-noreviews {
     background: $muted-white;
     padding: $spacing-xs;
     border: $muted-border-med;
     border-radius: 3px;
   }
+
   #review_form .comment-reply-title, .woocommerce-Tabs-panel h2 {
     font-size: $h4-mobile-font-size;
     font-weight: 600;
   }
+
   .woocommerce-Reviews-title {
     margin-bottom: $spacing-sm;
   }
+
   .comment-form-rating {
     .stars {
       margin-bottom: 0;
+
       a {
         font-size: 1.5em;
         color: #ffb100;
       }
     }
   }
+
   #review_form #respond {
     margin-top: $spacing-sm;
   }
+
   #review_form .comment-form {
     margin-top: $spacing-xs;
     grid-template-columns: 1fr;
     grid-row-gap: $spacing-xs;
+
     input:not([type=submit]) {
       width: 100%;
     }
+
     .comment-form-rating {
       display: flex;
       flex-direction: row;
+
       label {
         margin-right: $spacing-xs;
       }
     }
   }
+
   #reviews #comments ol.commentlist li img.avatar {
     border: 0;
     background: 0;
   }
 }
+
+//<editor-fold desc="Gallery">
+.woocommerce div.product div.images .flex-control-thumbs {
+  margin: 5px -5px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  li {
+    padding: 5px;
+  }
+}
+
+//</editor-fold>
 
 //</editor-fold>
 
@@ -166,8 +202,10 @@
     #review_form .comment-reply-title, .woocommerce-Tabs-panel h2 {
       font-size: $h4-font-size;
     }
+
     #review_form .comment-form {
       grid-template-columns: repeat(2, 1fr);
+
       .comment-form-comment, .comment-form-rating, .comment-notes, .form-submit {
         grid-column: span 2;
       }
