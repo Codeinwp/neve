@@ -422,6 +422,10 @@ if (!Element.prototype.closest) {
 			element = document.getElementById( "header-menu-sidebar" );
 		}
 
+		if ( element === null ) {
+			return;
+		}
+
 		var t = 0.2;
 		var index = 0;
 		var itemsInner = element.querySelectorAll(".item--inner");

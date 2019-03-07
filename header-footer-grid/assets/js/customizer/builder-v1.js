@@ -566,13 +566,9 @@ var CustomizeBuilder_V1;
 							if (_x < 0) {
 								_x = 0;
 							}
-							console.log("_re", _re);
-							console.log("_le", _le);
-							console.log("__x", _x);
 
 							while (_w >= 1) {
 								if (checkEnoughSpaceFromX(_x, _w)) {
-									console.log({ x: _x, w: _w });
 									node.x = _x;
 									node.w = _w;
 									addItemToFlag(node);
@@ -594,8 +590,6 @@ var CustomizeBuilder_V1;
 								) {
 									_x = prev.x + prev.w;
 									_re = getRightEmptySlotFromX(_x, true);
-									console.log("__re", _re);
-									console.log("__re_X", _x);
 									if (_re >= w) {
 										addItemToFlag({
 											el: node.el,
@@ -1506,8 +1500,6 @@ var CustomizeBuilder_V1;
 								}
 							}
 						}
-						console.log( 'THE D' );
-						console.log( _d );
 						if (_d) {
 							var item = that.addItem(node);
 							$itemWrapper.append(item);
@@ -1565,8 +1557,7 @@ var CustomizeBuilder_V1;
 				if (!_.isObject(data)) {
 					data = {};
 				}
-				console.log( '### PANELS ###' );
-				console.log( that.panels );
+
 				_.each(that.panels, function($rows, device) {
 					var device_data = {};
 					if (_.isObject(data[device])) {
@@ -1631,8 +1622,6 @@ var CustomizeBuilder_V1;
 
 						var section = options.id + "_" + id;
 
-						console.log( section );
-
 						if (!_.isUndefined(wpcustomize.section(section))) {
 							wpcustomize.section(section).focus();
 						}
@@ -1690,9 +1679,6 @@ var CustomizeBuilder_V1;
 					});
 				});
 
-				console.log( that.controlId )
-				console.log( data )
-				console.log( that.encodeValue(data) )
 				wpcustomize
 					.control(that.controlId)
 					.setting.set(that.encodeValue(data));
@@ -1723,8 +1709,6 @@ var CustomizeBuilder_V1;
 						$document.trigger("hfg_panel_builder_open", [
 							options.panel
 						]);
-						console.log( options );
-						console.log("open-builder:", options.panel);
 						top._current_builder_panel = id;
 						that.showPanel();
 					} else {
@@ -1767,11 +1751,6 @@ var CustomizeBuilder_V1;
 			init: function(controlId, items, devices) {
 				var that = this;
 
-				console.log( 'INIT ::: Bv1' );
-				console.log( controlId );
-				console.log( items );
-				console.log( devices );
-
 				var template = that.getTemplate();
 				var template_id = "tmpl-hfg--builder-panel";
 				var html = template(options, template_id);
@@ -1780,9 +1759,6 @@ var CustomizeBuilder_V1;
 				that.controlId = controlId;
 				that.items = items;
 				that.devices = devices;
-
-				console.log( options.section )
-				console.log( wpcustomize.section )
 				if (options.section) {
 					wpcustomize
 						.section(options.section)
@@ -1799,7 +1775,6 @@ var CustomizeBuilder_V1;
 				that.addExistingRowsItems();
 
 				if (wpcustomize.panel(options.panel).expanded()) {
-					console.log("open-builder:", options.panel);
 					that.showPanel();
 				} else {
 					that.hidePanel();

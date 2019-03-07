@@ -16,6 +16,14 @@ class Header extends Abstract_Builder {
 		$this->set_property( 'remove_panels', [ 'neve_header' ] );
 
 		add_action( 'hfg-header-render', array( $this, 'header_render' ) );
+		add_filter( 'theme_mod_' . $this->control_id , array( $this, 'filter_defaults' ) );
+	}
+
+	public function filter_defaults( $theme_mod ) {
+		if ( empty( $theme_mod ) || ! $theme_mod ) {
+			return json_encode( Settings::get_instance()->get_header_defaults_neve() );
+		}
+		return $theme_mod;
 	}
 
 	private function _sort_items_by_position( $items = array() ) {
@@ -99,8 +107,7 @@ class Header extends Abstract_Builder {
 
 	public function render() {
 		$html = '';
-		$defaults = Settings::get_instance()->get_header_defaults_neve();
-		$layout = wp_parse_args( json_decode( get_theme_mod( $this->control_id ), true ), $defaults );
+		$layout = json_decode( get_theme_mod( $this->control_id ), true );
 		$desktop_items = $layout['desktop'];
 		$mobile_items = $layout['mobile'];
 		foreach ( $layout as $device_name => $device ) {

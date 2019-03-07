@@ -53,13 +53,15 @@ class Settings {
 			'desktop' => [
 				'top' => [],
 				'main' => [
-					[ 'id' => 'logo', 'width' => 3, 'x' => 1 ],
+					[ 'id' => 'logo', 'width' => 4, 'x' => 0 ],
 				],
 				'bottom' => [],
 			],
 			'mobile' => [
 				'top' => [],
-				'main' => [],
+				'main' => [
+					[ 'id' => 'logo', 'width' => 4, 'x' => 0 ],
+				],
 				'bottom' => [],
 			],
 		];

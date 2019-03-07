@@ -20,6 +20,14 @@ class Footer extends Abstract_Builder {
 		];
 
 		add_action( 'hfg-footer-render', array( $this, 'footer_render' ) );
+		add_filter( 'theme_mod_' . $this->control_id , array( $this, 'filter_defaults' ) );
+	}
+
+	public function filter_defaults( $theme_mod ) {
+		if ( empty( $theme_mod ) || ! $theme_mod ) {
+			return json_encode( Settings::get_instance()->get_footer_defaults_neve() );
+		}
+		return $theme_mod;
 	}
 
 	public function footer_render() {
@@ -71,8 +79,7 @@ class Footer extends Abstract_Builder {
 
 	public function render() {
 		$html = '';
-		$defaults = Settings::get_instance()->get_footer_defaults_neve();
-		$layout = wp_parse_args( json_decode( get_theme_mod( $this->control_id ), true ), $defaults );
+		$layout = json_decode( get_theme_mod( $this->control_id ), true );
 
 		foreach ( $layout as $device_name => $device ) {
 			$classes = array();
