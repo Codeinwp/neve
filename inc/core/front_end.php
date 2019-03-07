@@ -117,17 +117,15 @@ class Front_End {
 						'url'   => 'https://demo.themeisle.com/neve-freelancer/',
 						'title' => 'Freelancer',
 					),
-					'neve-scholar'       => array(
-						'url'   => 'https://demo.themeisle.com/neve-scholar/',
-						'title' => 'Scholar',
-					),
 					'neve-zelle'         => array(
 						'url'   => 'https://demo.themeisle.com/neve-zelle/',
 						'title' => 'Travel Agency',
 					),
 				),
 			),
-			'upsell'      => array(
+			/*
+			 * Upsells for PRO version
+			 * 'upsell'      => array(
 				'elementor' => array(
 					'neve-showcase'    => array(
 						'url'        => 'https://demo.themeisle.com/neve-showcase/',
@@ -149,8 +147,12 @@ class Front_End {
 						'screenshot' => 'https://demo.themeisle.com/neve-agency/wp-content/uploads/sites/187/2019/03/screenshot.png',
 						'title'      => 'Agency',
 					),
+			        'neve-scholar'       => array(
+						'url'   => 'https://demo.themeisle.com/neve-scholar/',
+						'title' => 'Scholar',
+					),
 				),
-			),
+			),*/
 			'can_migrate' => array(
 				'zerif-pro'  => array(
 					'theme_name'        => 'Zelle Pro',
