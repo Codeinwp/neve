@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!-- generator="WordPress/4.9.8" created="2019-03-05 10:38" -->
+<!-- generator="WordPress/4.9.8" created="2019-03-07 15:58" -->
 		<rss version="2.0"
 				xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
 				xmlns:content="http://purl.org/rss/1.0/modules/content/"
@@ -12,7 +12,7 @@
 				<title>Neve in Gutenberg</title>
 				<link>https://demo.themeisle.com/neve-onboarding-gutenberg</link>
 				<description>Neve in Gutenberg</description>
-				<pubDate>Tue, 05 Mar 2019 10:38:42 +0000</pubDate>
+				<pubDate>Thu, 07 Mar 2019 15:58:54 +0000</pubDate>
 				<language>en-US</language>
 				<wp:wxr_version>1.2</wp:wxr_version>
 				<wp:base_site_url>https://demo.themeisle.com/</wp:base_site_url>
@@ -4007,7 +4007,7 @@ https://www.youtube.com/watch?v=YHhK_twfYB8
 				</wp:postmeta>
 							<wp:postmeta>
 					<wp:meta_key><![CDATA[_oembed_time_19155eb74d8d1d2a76fc88956017d70a]]></wp:meta_key>
-					<wp:meta_value><![CDATA[1549901654]]></wp:meta_value>
+					<wp:meta_value><![CDATA[1551966250]]></wp:meta_value>
 				</wp:postmeta>
 							<wp:postmeta>
 					<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
@@ -4122,7 +4122,19 @@ https://www.youtube.com/watch?v=YHhK_twfYB8
 			<wp:post_type><![CDATA[page]]></wp:post_type>
 			<wp:post_password><![CDATA[]]></wp:post_password>
 			<wp:is_sticky>0</wp:is_sticky>
-											</item>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+					<wp:meta_value><![CDATA[440]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
+					<wp:meta_value><![CDATA[70]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_disable_title]]></wp:meta_key>
+					<wp:meta_value><![CDATA[on]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
 				<item>
 			<title>
 				Checkout			</title>
@@ -4142,7 +4154,19 @@ https://www.youtube.com/watch?v=YHhK_twfYB8
 			<wp:post_type><![CDATA[page]]></wp:post_type>
 			<wp:post_password><![CDATA[]]></wp:post_password>
 			<wp:is_sticky>0</wp:is_sticky>
-											</item>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+					<wp:meta_value><![CDATA[440]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_disable_title]]></wp:meta_key>
+					<wp:meta_value><![CDATA[on]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
+					<wp:meta_value><![CDATA[70]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
 				<item>
 			<title>
 				My account			</title>
