@@ -740,46 +740,46 @@ input::-moz-focus-outer {
 	line-height: 18px;
 }
 .responsive-number .controls--wrap {
-    display: flex;
+	display: flex;
 
-    align-items: center;
+	align-items: center;
 }
 
 .customize-control .responsive-number.no-units input[type=number] {
-    width: 95%;
+	width: 95%;
 }
 
 .customize-control .responsive-number:not(.no-units) input[type=number] {
-    width: 73%;
+	width: 73%;
 }
 
 .responsive-number select {
-    float: left;
-    width: 23%;
-    margin-right: 2%;
+	float: left;
+	width: 23%;
+	margin-right: 2%;
 }
 
 .responsive-number .control-wrap.active {
-    display: flex;
-    /*justify-content: space-between;*/
+	display: flex;
+	/*justify-content: space-between;*/
 }
 
 .reset-number-input {
-    display: inline-block;
-    position: relative;
-    width: 6%;
-    margin-right: auto;
-    color: rgba(0, 0, 0, 0.2);
-    line-height: 1;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
+	display: inline-block;
+	position: relative;
+	width: 6%;
+	margin-right: auto;
+	color: rgba(0, 0, 0, 0.2);
+	line-height: 1;
+	text-align: center;
+	cursor: pointer;
+	transition: all 0.3s ease;
 }
 
 .reset-number-input .dashicons {
-    width: 16px;
-    height: 16px;
-    font-size: 16px;
+	width: 16px;
+	height: 16px;
+	font-size: 16px;
 }
 .customize-control-interface-tabs {
 	display: list-item !important;

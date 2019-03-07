@@ -197,7 +197,7 @@ class Front_End {
 
 		);
 
-		/* s$this->add_gutenberg_starter_sites(); */
+		/* $this->add_gutenberg_starter_sites(); */
 
 		return apply_filters( 'neve_filter_onboarding_data', $this->onboarding_config );
 	}
