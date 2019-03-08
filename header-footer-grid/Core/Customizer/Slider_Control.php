@@ -38,7 +38,6 @@ class Slider_Control extends Abstract_Control {
 	 * Render the control in the customizer
 	 */
 	public function render_content() {
-
 		$html  = '<div class="slider-custom-control">';
 		$html .= '<span class="customize-control-title">' . esc_html( $this->label ) . '</span>';
 		$html .= '<input type="number" id="<' . esc_attr( $this->id ) . '" name="' . esc_attr( $this->id ) . '" value="' . esc_attr( $this->value() ) . '" class="customize-control-slider-value" ' . $this->safe_echo( array( $this, 'link' ) ) . ' />';

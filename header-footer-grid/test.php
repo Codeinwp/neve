@@ -1,6 +1,8 @@
 <?php
 /**
  * Test file not part of the project
+ *
+ * @package HFG
  */
 
 add_theme_support(

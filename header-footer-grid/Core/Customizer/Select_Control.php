@@ -94,26 +94,7 @@ class Select_Control extends Abstract_Control {
 		if ( $this->multiselect ) {
 			$default_value = explode( ',', $this->value() );
 		}
-		$html  = '
-		<ul class="responsive-switchers">
-			<li class="desktop">
-				<button type="button" class="preview-desktop active" data-device="desktop">
-					<i class="dashicons dashicons-desktop"></i>
-				</button>
-			</li>
-			<li class="tablet">
-				<button type="button" class="preview-tablet" data-device="tablet">
-					<i class="dashicons dashicons-tablet"></i>
-				</button>
-			</li>
-			<li class="mobile">
-				<button type="button" class="preview-mobile" data-device="mobile">
-					<i class="dashicons dashicons-smartphone"></i>
-				</button>
-			</li>
-		</ul>
-		';
-		$html .= '<div class="dropdown_select2_control">';
+		$html = '<div class="dropdown_select2_control">';
 		if ( ! empty( $this->label ) ) {
 			$html .= '<label for="' . esc_attr( $this->id ) . '" class="customize-control-title">';
 			$html .= esc_html( $this->label );
