@@ -94,7 +94,7 @@ class Front_End {
 			'local'       => array(
 				'elementor' => array(
 					'neve-main'          => array(
-						'url'   => 'https://demo.themeisle.com/neve-onboarding/',
+						'url'   => 'https://demo.themeisle.com/neve/',
 						'title' => 'Original',
 					),
 					'neve-vet-center'    => array(
@@ -197,7 +197,7 @@ class Front_End {
 
 		);
 
-		/* $this->add_gutenberg_starter_sites(); */
+		$this->add_gutenberg_starter_sites();
 
 		return apply_filters( 'neve_filter_onboarding_data', $this->onboarding_config );
 	}
