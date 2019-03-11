@@ -23,13 +23,13 @@ function neve_is_amp() {
 function neve_hooks() {
 
 	$hooks = array(
-		'header'  => array(
+		'header' => array(
 			'neve_before_header_hook',
 			'neve_before_navbar_toggle_hook',
 			'neve_after_navbar_toggle_hook',
-			'neve_after_header_hook'
+			'neve_after_header_hook',
 		),
-		'footer'  => array(
+		'footer' => array(
 			'neve_before_footer_hook',
 			'neve_after_footer_hook',
 		),
