@@ -20,6 +20,9 @@
     "codeinwp/ti-onboarding": "^1.1"
   },
   "autoload": {
+    "psr-4" : {
+      "HFG\\" : "header-footer-grid/"
+    },
     "files": [
       "vendor/codeinwp/themeisle-sdk/load.php",
       "vendor/codeinwp/ti-about-page/load.php",

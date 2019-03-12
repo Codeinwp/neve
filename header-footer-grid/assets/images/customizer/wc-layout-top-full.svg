@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100px" height="100px" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>wc-layout-top-full</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="wc-layout-top-full" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Wrapper" stroke="#0085BA" fill="#FFFFFF" fill-rule="nonzero" x="0.5" y="0.5" width="99" height="99"></rect>
+        <g id="Large-Slider" fill-rule="nonzero">
+            <rect id="Rectangle" fill="#0085BA" x="0" y="0" width="100" height="50"></rect>
+            <g id="image_icon" transform="translate(3.000000, 18.000000)" fill="#FFFFFF">
+                <path d="M54.0782247,0 L40.9227427,0 C39.8623234,0 39,0.811410165 39,1.8107281 L39,13.1913074 C39,14.1894469 39.8623234,15 40.9227427,15 L54.0781678,15 C55.1385871,15 56,14.1894469 56,13.1913074 L56,1.8107281 C56.0000569,0.811410165 55.1386441,0 54.0782247,0 Z M49.9931008,2.69289829 C51.0185787,2.69289829 51.8502288,3.47575804 51.8502288,4.44095475 C51.8502288,5.40615146 51.0185218,6.18901122 49.9931008,6.18901122 C48.9673383,6.18901122 48.1359727,5.40615146 48.1359727,4.44095475 C48.1359727,3.47575804 48.9673383,2.69289829 49.9931008,2.69289829 Z M53.4752301,13.3270424 L47.4998577,13.3270424 L41.7906999,13.3270424 C41.2777902,13.3270424 41.0493625,12.9777418 41.2805787,12.5468073 L44.4677551,6.60478661 C44.6986868,6.17390575 45.1388114,6.13544572 45.4504953,6.51881399 L48.655313,10.4610204 C48.9669968,10.8444422 49.5117749,10.8770636 49.8723425,10.5335481 L50.6563608,9.78625581 C51.0166438,9.44274027 51.5474795,9.48527127 51.8415219,9.88063822 L53.8717065,12.6102824 C54.1651798,13.0062386 53.9881398,13.3270424 53.4752301,13.3270424 Z" id="Shape" fill-opacity="0.6"></path>
+                <circle id="Oval" fill-opacity="0.5" cx="92" cy="6" r="2"></circle>
+                <circle id="Oval-Copy" fill-opacity="0.5" cx="2" cy="6" r="2"></circle>
+            </g>
+        </g>
+        <rect id="Rectangle-5" fill-opacity="0.8" fill="#FFFFFF" fill-rule="nonzero" x="73" y="42" width="6" height="6" rx="0.5"></rect>
+        <rect id="Rectangle-5-Copy" fill-opacity="0.8" fill="#FFFFFF" fill-rule="nonzero" x="82" y="42" width="6" height="6" rx="0.5"></rect>
+        <rect id="Rectangle-5-Copy-2" fill-opacity="0.8" fill="#FFFFFF" fill-rule="nonzero" x="91" y="42" width="6" height="6" rx="0.5"></rect>
+        <rect id="Rectangle-6" fill="#D8D8D8" fill-rule="nonzero" x="7" y="56" width="48" height="37"></rect>
+        <rect id="Rectangle-6-Copy" fill="#D8D8D8" fill-rule="nonzero" x="59" y="56" width="34" height="37"></rect>
+    </g>
+</svg>

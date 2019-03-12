@@ -1,0 +1,14 @@
+{
+  "name": "header-footer-grid",
+  "version": "1.0.0",
+  "description": "Header Footer Grid for Customizer by ThemeIsle",
+  "main": "index.js",
+  "scripts": {
+    "scss": "./node_modules/.bin/node-sass --watch assets/scss -o assets/css"
+  },
+  "author": "ThemeIsle <friends@themeisle.com>",
+  "license": "GPL-2.0+",
+  "devDependencies": {
+    "node-sass": "^4.11.0"
+  }
+}
