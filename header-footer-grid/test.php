@@ -27,7 +27,14 @@ add_theme_support(
 		),
 	)
 );
-// Check if we already have some heading setup in order to load the new HFG logic.
+/**
+ * Define timestamp which will be used as refference when we enable the HFG functionality.
+ * If the theme is installed after this, they would see the HFG by default.
+ */
+define( 'NEVE_TOGGLE_HFG_TIMESTAMP', 1552487483 );
+
 add_filter( 'hfg_active', function () {
-	return true;
+	$install_time = get_option( 'neve_install', time() );
+
+	return NEVE_TOGGLE_HFG_TIMESTAMP < $install_time;
 } );
