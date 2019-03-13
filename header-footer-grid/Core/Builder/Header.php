@@ -210,7 +210,7 @@ class Header extends Abstract_Builder {
 
 				$row_styles       = '';
 				$row_styles_array = [];
-				$row_height       = get_theme_mod( $this->control_id . '_' . $index . '_height' );
+				$row_height       = get_theme_mod( $this->control_id . '_' . $index . '_height' . '_' . $device_name );
 				if ( $row_height ) {
 					$row_styles_array['height'] = 'auto;';
 					if ( intval( $row_height ) > 0 ) {

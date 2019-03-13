@@ -54,7 +54,7 @@ class Image_Radio_Control extends Abstract_Control {
 
 		foreach ( $this->choices as $key => $value ) {
 			$html .= '<label class="radio-button-label">';
-			$html .= '<input type="radio" name="' . esc_attr( $this->id ) . '" value="' . esc_attr( $key ) . '" ' . $this->safe_echo( array( $this, 'link' ) ) . ' ' . checked( esc_attr( $key ), $this->value(), false ) . '/>';
+			$html .= '<input type="radio" name="' . esc_attr( $this->id ) . '" value="' . esc_attr( $key ) . '" ' . $this->safe_echo( array( $this, 'link' ), $this->id ) . ' ' . checked( esc_attr( $key ), $this->value( $this->id ), false ) . '/>';
 			$html .= '<img style="max-width: 64px; width: 100%;" src="' . esc_attr( $value['image'] ) . '" alt="' . esc_attr( $value['name'] ) . '" title="' . esc_attr( $value['name'] ) . '" />';
 			$html .= '</label>';
 		}

@@ -56,17 +56,17 @@ trait Core {
 	 * @since   1.0.0
 	 * @access  protected
 	 * @param array $rules The associative rules array.
-	 * @param int $indent The indent to be used per rule.
+	 * @param int   $indent The indent to be used per rule.
 	 *
 	 * @return string
 	 */
 	protected function css_array_to_css( $rules = [], $indent = 0 ) {
-		$css = '';
+		$css    = '';
 		$prefix = str_repeat( '  ', $indent );
 
 		foreach ( $rules as $key => $value ) {
 			if ( is_array( $value ) ) {
-				$selector = $key;
+				$selector   = $key;
 				$properties = $value;
 
 				$css .= $prefix . "$selector {\n";
@@ -75,7 +75,7 @@ trait Core {
 				continue;
 			}
 			$property = $key;
-			$css .= $prefix . "$property: $value;\n";
+			$css     .= $prefix . "$property: $value;\n";
 		}
 
 		return $css;

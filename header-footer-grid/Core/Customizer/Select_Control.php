@@ -90,7 +90,7 @@ class Select_Control extends Abstract_Control {
 	 * @access  public
 	 */
 	public function render_content() {
-		$default_value = $this->value();
+		$default_value = $this->value( $this->id );
 		if ( $this->multiselect ) {
 			$default_value = explode( ',', $this->value() );
 		}
@@ -103,7 +103,7 @@ class Select_Control extends Abstract_Control {
 		if ( ! empty( $this->description ) ) {
 			$html .= '<span class="customize-control-description">' . esc_html( $this->description ) . '</span>';
 		}
-		$html .= '<input type="hidden" id="' . esc_attr( $this->id ) . '" class="customize-control-dropdown-select2" value="' . esc_attr( $this->value() ) . '" name="' . esc_attr( $this->id ) . '" ' . $this->safe_echo( array( $this, 'link' ) ) . ' />';
+		$html .= '<input type="hidden" id="' . esc_attr( $this->id ) . '" class="customize-control-dropdown-select2" value="' . esc_attr( $this->value( $this->id ) ) . '" name="' . esc_attr( $this->id ) . '" ' . $this->safe_echo( array( $this, 'link' ), $this->id ) . ' />';
 		$html .= '<select name="select2-list-' . ( $this->multiselect ? 'multi[]' : 'single' ) . '" class="customize-control-select2" data-placeholder="' . $this->placeholder . '" ' . ( $this->multiselect ? 'multiple="multiple" ' : '' ) . '>';
 		foreach ( $this->choices as $key => $value ) {
 			if ( is_array( $value ) ) {

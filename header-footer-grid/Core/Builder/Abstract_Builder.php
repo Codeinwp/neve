@@ -13,6 +13,8 @@ namespace HFG\Core\Builder;
 
 use HFG\Core\Customizer\Google_Font_Control;
 use HFG\Core\Customizer\Image_Radio_Control;
+use HFG\Core\Customizer\Responsive_Setting;
+use HFG\Core\Customizer\Responsive_Slider_Control;
 use HFG\Core\Customizer\Select_Control;
 use HFG\Core\Customizer\Slider_Control;
 use HFG\Core\Interfaces\Builder;
@@ -244,6 +246,7 @@ abstract class Abstract_Builder implements Builder {
 
 		$settings = Settings::get_instance();
 		foreach ( $rows as $row_id => $row_label ) {
+			$partial_settings = array();
 			$wp_customize->add_section(
 				$this->control_id . '_' . $row_id, array(
 					'title'    => $row_label,
@@ -259,19 +262,14 @@ abstract class Abstract_Builder implements Builder {
 				)
 			);
 
-			$wp_customize->add_setting(
-				$this->control_id . '_' . $row_id . '_layout',
-				array(
-					'default'        => 'layout-full-contained',
-					'theme_supports' => 'hfg_support',
-					'transport'      => 'postMessage',
-				)
-			);
+			$responsive_setting = new Responsive_Setting( $this->control_id . '_' . $row_id . '_layout', 'layout-full-contained', false );
+			$partial_settings   = array_merge( $partial_settings, $responsive_setting->get_settings_id_array() );
 			$wp_customize->add_control(
 				new Select_Control(
 					$wp_customize,
 					$this->control_id . '_' . $row_id . '_layout',
 					[
+						'responsive'  => $responsive_setting,
 						'label'       => __( 'Layout', 'hfg-module' ),
 						'section'     => $this->control_id . '_' . $row_id,
 						'input_attrs' => array(
@@ -287,19 +285,14 @@ abstract class Abstract_Builder implements Builder {
 				)
 			);
 
-			$wp_customize->add_setting(
-				$this->control_id . '_' . $row_id . '_height',
-				array(
-					'default'        => 0,
-					'theme_supports' => 'hfg_support',
-					'transport'      => 'postMessage',
-				)
-			);
+			$responsive_setting = new Responsive_Setting( $this->control_id . '_' . $row_id . '_height', 0 );
+			$partial_settings   = array_merge( $partial_settings, $responsive_setting->get_settings_id_array() );
 			$wp_customize->add_control(
-				new Slider_Control(
+				new Responsive_Slider_Control(
 					$wp_customize,
 					$this->control_id . '_' . $row_id . '_height',
 					[
+						'responsive'  => $responsive_setting,
 						'label'       => esc_html__( 'Row Height' ),
 						'section'     => $this->control_id . '_' . $row_id,
 						'input_attrs' => array(
@@ -311,22 +304,17 @@ abstract class Abstract_Builder implements Builder {
 				)
 			);
 
-			$wp_customize->add_setting(
-				$this->control_id . '_' . $row_id . '_skin',
-				array(
-					'default'        => 'light-mode',
-					'theme_supports' => 'hfg_support',
-					'transport'      => 'postMessage',
-				)
-			);
+			$responsive_setting = new Responsive_Setting( $this->control_id . '_' . $row_id . '_skin', 'light-mode', false );
+			$partial_settings   = array_merge( $partial_settings, $responsive_setting->get_settings_id_array() );
 			$wp_customize->add_control(
 				new Image_Radio_Control(
 					$wp_customize,
 					$this->control_id . '_' . $row_id . '_skin',
 					[
-						'label'   => __( 'Skin Mode' ),
-						'section' => $this->control_id . '_' . $row_id,
-						'choices' => array(
+						'responsive' => $responsive_setting,
+						'label'      => __( 'Skin Mode' ),
+						'section'    => $this->control_id . '_' . $row_id,
+						'choices'    => array(
 							'light-mode' => array(
 								'image' => $settings->url . '/assets/images/customizer/text_mode_dark.svg',
 								'name'  => __( 'Light Mode' ),
@@ -340,52 +328,52 @@ abstract class Abstract_Builder implements Builder {
 				)
 			);
 
-			$wp_customize->add_setting(
-				$this->control_id . '_' . $row_id . '_font_select',
-				array(
-					'default'           => json_encode(
-						array(
-							'font'          => 'Open Sans',
-							'regularweight' => 'regular',
-							'italicweight'  => 'italic',
-							'boldweight'    => '700',
-							'category'      => 'sans-serif',
-						)
-					),
-					'sanitize_callback' => '',
-				)
-			);
-
-			$wp_customize->add_control(
-				new Google_Font_Control(
-					$wp_customize,
-					$this->control_id . '_' . $row_id . '_font_select',
-					[
-						'label'       => __( 'Row Font Control', 'hfg-module' ),
-						'description' => esc_html__( 'Select a Google Font to use for this row.', 'hfg-module' ),
-						'section'     => $this->control_id . '_' . $row_id,
-						'input_attrs' => array(
-							'font_count' => 'all',
-							'orderby'    => 'alpha',
-						),
-					]
-				)
-			);
-
+			// $default = json_encode(
+			// array(
+			// 'font'          => 'Open Sans',
+			// 'regularweight' => 'regular',
+			// 'italicweight'  => 'italic',
+			// 'boldweight'    => '700',
+			// 'category'      => 'sans-serif',
+			// )
+			// );
+			// $responsive_setting = new Responsive_Setting( $this->control_id . '_' . $row_id . '_font_select', $default, false );
+			// $partial_settings = array_merge( $partial_settings, $responsive_setting->get_settings_id_array() );
+			// $wp_customize->add_control(
+			// new Google_Font_Control(
+			// $wp_customize,
+			// $this->control_id . '_' . $row_id . '_font_select',
+			// [
+			// 'responsive' => $responsive_setting,
+			// 'label'       => __( 'Row Font Control', 'hfg-module' ),
+			// 'description' => esc_html__( 'Select a Google Font to use for this row.', 'hfg-module' ),
+			// 'section'     => $this->control_id . '_' . $row_id,
+			// 'input_attrs' => array(
+			// 'font_count' => 'all',
+			// 'orderby'    => 'alpha',
+			// ),
+			// ]
+			// )
+			// );
+			// var_dump( $partial_settings );
 			$wp_customize->selective_refresh->add_partial(
-				$this->control_id . '_' . $row_id . '_partial', array(
+				$this->control_id . '_' . $row_id . '_partial',
+				array(
 					'selector'        => '.' . $this->panel,
-					'settings'        => array(
-						$this->control_id . '_' . $row_id,
-						$this->control_id . '_' . $row_id . '_layout',
-						$this->control_id . '_' . $row_id . '_height',
-						$this->control_id . '_' . $row_id . '_skin',
-						$this->control_id . '_' . $row_id . '_font_select',
-					),
+					'settings'        => $partial_settings,
 					'render_callback' => array( $this, 'render' ),
 				)
 			);
 		}
+		$this->wp_customize = $wp_customize;
+	}
+
+	protected function get_setting( $id ) {
+		/**
+		 * @var WP_Customize_Manager $wp_customize
+		 */
+		$wp_customize = $this->wp_customize;
+		return $wp_customize->get_setting( $id )->value();
 	}
 
 	/**
@@ -473,6 +461,7 @@ abstract class Abstract_Builder implements Builder {
 			'control_id' => $this->control_id,
 			'panel'      => $this->panel,
 			'section'    => $this->section,
+			'title'      => $this->title,
 			'devices'    => $this->devices,
 			'items'      => $this->get_components_settings(),
 			'rows'       => $this->get_rows(),

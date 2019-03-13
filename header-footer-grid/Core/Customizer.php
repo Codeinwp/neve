@@ -54,6 +54,10 @@ class Customizer {
 	public function __construct( Settings $settings ) {
 		$this->settings = $settings;
 
+		if ( empty( get_theme_support( 'hfg_support' ) ) ) {
+			return;
+		}
+
 		$theme_support = get_theme_support( 'hfg_support' )[0];
 		foreach ( $theme_support['builders'] as $builder => $components ) {
 			if ( class_exists( $builder ) && in_array( 'HFG\Core\Interfaces\Builder', class_implements( $builder ) ) ) {
@@ -132,9 +136,9 @@ class Customizer {
 	public function scripts() {
 		$suffix = $this->get_assets_suffix();
 		wp_enqueue_style( 'hfg-customizer-control', esc_url( $this->settings->url ) . '/assets/css/admin/customizer/customizer' . $suffix . '.css' );
-		wp_enqueue_script(
-			'hfg-builder-v1',
-			esc_url( $this->settings->url ) . '/assets/js/customizer/builder-v1' . $suffix . '.js',
+		wp_register_script(
+			'hfg-layout-builder',
+			esc_url( $this->settings->url ) . '/assets/js/customizer/builder' . $suffix . '.js',
 			array(
 				'customize-controls',
 				'jquery-ui-resizable',
@@ -144,17 +148,8 @@ class Customizer {
 			false,
 			true
 		);
-		wp_enqueue_script(
-			'hfg-layout-builder',
-			esc_url( $this->settings->url ) . '/assets/js/customizer/builder' . $suffix . '.js',
-			array(
-				'hfg-builder-v1',
-			),
-			false,
-			true
-		);
 		wp_localize_script(
-			'jquery',
+			'hfg-layout-builder',
 			'HFG_Layout_Builder',
 			array(
 				'footer_moved_widgets_text' => '',
@@ -163,6 +158,7 @@ class Customizer {
 				'change_version_nonce'      => wp_create_nonce( 'change_version_nonce' ),
 			)
 		);
+		wp_enqueue_script( 'hfg-layout-builder' );
 	}
 
 	/**
@@ -174,16 +170,16 @@ class Customizer {
 	public function preview_js() {
 		if ( is_customize_preview() ) {
 			$suffix = $this->get_assets_suffix();
-			wp_enqueue_script(
-				'hfg-customizer',
-				esc_url( $this->settings->url ) . '/assets/js/customizer/customizer' . $suffix . '.js',
-				array(
-					'customize-preview',
-					'customize-selective-refresh',
-				),
-				'20151215',
-				true
-			);
+			// wp_enqueue_script(
+			// 'hfg-customizer',
+			// esc_url( $this->settings->url ) . '/assets/js/customizer/customizer' . $suffix . '.js',
+			// array(
+			// 'customize-preview',
+			// 'customize-selective-refresh',
+			// ),
+			// '20151215',
+			// true
+			// );
 		}
 	}
 
@@ -223,8 +219,8 @@ class Customizer {
 						<div class="hfg--cb-actions">
 							<?php do_action( 'hfg_builder_panel_actions_buttons' ); ?>
 							<a class="button button-secondary hfg--panel-close" href="#">
-								<span class="close-text"><?php _e( 'Close', 'hfg' ); ?></span>
-								<span class="panel-name-text">{{ data.title }}</span>
+								<span class="close-text"><i class="dashicons dashicons-arrow-down-alt2" style="margin-top: 4px;"></i> <?php _e( 'Collapse', 'hfg' ); ?></span>
+								<span class="panel-name-text"><i class="dashicons dashicons-arrow-up-alt2" style="margin-top: 4px;"></i> {{ data.title }}</span>
 							</a>
 						</div>
 					</div>
