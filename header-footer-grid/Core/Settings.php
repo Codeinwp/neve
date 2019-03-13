@@ -122,30 +122,37 @@ class Settings {
 	 * @return array
 	 */
 	public function get_header_defaults_neve() {
-		return [
-			'desktop' => [
-				'top'    => [],
-				'main'   => [
-					[
-						'id'    => 'logo',
-						'width' => 4,
-						'x'     => 0,
+		return json_encode(
+			[
+				'desktop' => [
+					'top'    => [],
+					'main'   => [
+						[
+							'id'    => 'logo',
+							'width' => 4,
+							'x'     => 0,
+						],
+						[
+							'id'    => 'primary-menu',
+							'width' => 4,
+							'x'     => 8,
+						],
 					],
+					'bottom' => [],
 				],
-				'bottom' => [],
-			],
-			'mobile'  => [
-				'top'    => [],
-				'main'   => [
-					[
-						'id'    => 'logo',
-						'width' => 4,
-						'x'     => 0,
+				'mobile'  => [
+					'top'    => [],
+					'main'   => [
+						[
+							'id'    => 'logo',
+							'width' => 4,
+							'x'     => 0,
+						],
 					],
+					'bottom' => [],
 				],
-				'bottom' => [],
-			],
-		];
+			]
+		);
 	}
 
 	/**
@@ -156,7 +163,7 @@ class Settings {
 	 * @return array
 	 */
 	public function get_footer_defaults_neve() {
-		return [
+		return json_encode( [
 			'desktop' => [
 				'top'    => [],
 				'bottom' => [
@@ -171,7 +178,7 @@ class Settings {
 				'top'    => [],
 				'bottom' => [],
 			],
-		];
+		] );
 	}
 
 	/**

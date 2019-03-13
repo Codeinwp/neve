@@ -365,15 +365,6 @@ abstract class Abstract_Builder implements Builder {
 				)
 			);
 		}
-		$this->wp_customize = $wp_customize;
-	}
-
-	protected function get_setting( $id ) {
-		/**
-		 * @var WP_Customize_Manager $wp_customize
-		 */
-		$wp_customize = $this->wp_customize;
-		return $wp_customize->get_setting( $id )->value();
 	}
 
 	/**

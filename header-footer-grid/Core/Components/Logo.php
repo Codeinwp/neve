@@ -106,7 +106,7 @@ class Logo extends Abstract_Component {
 		$wp_customize->add_setting(
 			$this->id . '_show_tagline',
 			array(
-				'default'        => 0,
+				'default'        => 1,
 				'theme_supports' => 'hfg_support',
 				'transport'      => 'postMessage',
 			)

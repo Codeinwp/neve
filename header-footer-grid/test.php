@@ -33,6 +33,11 @@ add_theme_support(
  */
 define( 'NEVE_TOGGLE_HFG_TIMESTAMP', 1552487483 );
 
-add_filter( 'hfg_active', function () {
-	return NEVE_TOGGLE_HFG_TIMESTAMP < get_option( 'neve_install', time() );
-} );
+add_filter(
+	'hfg_active', function () {
+		if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+			return true;
+		}
+		return NEVE_TOGGLE_HFG_TIMESTAMP < get_option( 'neve_install', time() );
+	}
+);

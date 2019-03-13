@@ -53,7 +53,7 @@ class Footer extends Abstract_Builder {
 	 * @return false|mixed|string
 	 */
 	public function filter_defaults( $theme_mod ) {
-		if ( empty( $theme_mod ) || ! $theme_mod ) {
+		if ( empty( $theme_mod ) || ! $theme_mod || is_object( $theme_mod ) && empty( json_decode( json_encode( $theme_mod ), true ) ) ) {
 			return json_encode( Settings::get_instance()->get_footer_defaults_neve() );
 		}
 		return $theme_mod;
@@ -69,6 +69,9 @@ class Footer extends Abstract_Builder {
 		$html  = '<footer class="site-footer" id="site-footer">';
 		$html .= $this->render();
 		$html .= '</footer>';
+
+		var_dump( $html );
+
 		echo $html;
 	}
 
@@ -133,7 +136,7 @@ class Footer extends Abstract_Builder {
 	 */
 	public function render() {
 		$html   = '';
-		$layout = json_decode( get_theme_mod( $this->control_id ), true );
+		$layout = json_decode( get_theme_mod( $this->control_id, Settings::get_instance()->get_footer_defaults_neve() ), true );
 
 		foreach ( $layout as $device_name => $device ) {
 			$classes = array();
