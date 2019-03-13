@@ -64,10 +64,13 @@ class Main {
 	 * @access  public
 	 */
 	public function init() {
+
+		if ( ! apply_filters( 'hfg_active', true ) ) {
+			return;
+		}
 		$this->register_sidebars();
 		$customizer = new Customizer( $this->settings );
 
-		add_filter( 'hfg_active', array( $this, 'is_active' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 	}
 

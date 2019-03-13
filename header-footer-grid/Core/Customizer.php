@@ -54,11 +54,13 @@ class Customizer {
 	public function __construct( Settings $settings ) {
 		$this->settings = $settings;
 
-		if ( empty( get_theme_support( 'hfg_support' ) ) ) {
+		$theme_support = get_theme_support( 'hfg_support' );
+
+		if ( empty( $theme_support ) ) {
 			return;
 		}
 
-		$theme_support = get_theme_support( 'hfg_support' )[0];
+		$theme_support = reset( $theme_support );
 		foreach ( $theme_support['builders'] as $builder => $components ) {
 			if ( class_exists( $builder ) && in_array( 'HFG\Core\Interfaces\Builder', class_implements( $builder ) ) ) {
 				/**

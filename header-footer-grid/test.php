@@ -27,3 +27,7 @@ add_theme_support(
 		),
 	)
 );
+// Check if we already have some heading setup in order to load the new HFG logic.
+add_filter( 'hfg_active', function () {
+	return true;
+} );
