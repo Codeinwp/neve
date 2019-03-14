@@ -449,21 +449,11 @@ abstract class Abstract_Builder implements Builder {
 	}
 
 	/**
-	 * Return  the builder rows.
+	 * Used to define the rows in the builder sections.
 	 *
-	 * @since   1.0.0
-	 * @access  protected
-	 * @return array
+	 * @return array Rows array.
 	 */
-	protected function get_rows() {
-		return [
-			'top'     => 'Header Top',
-			'main'    => 'Header Main',
-			'bottom'  => 'Header Bottom',
-			'sidebar' => 'Menu Sidebar',
-		];
-	}
-
+	abstract protected function get_rows();
 	/**
 	 * A representation of the builder as array.
 	 *

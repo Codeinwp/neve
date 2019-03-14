@@ -241,4 +241,21 @@ class Header extends Abstract_Builder {
 
 		return $html;
 	}
+
+
+	/**
+	 * Return  the builder rows.
+	 *
+	 * @since   1.0.0
+	 * @access  protected
+	 * @return array
+	 */
+	protected function get_rows() {
+		return [
+			'top'     => 'Header Top',
+			'main'    => 'Header Main',
+			'bottom'  => 'Header Bottom',
+			'sidebar' => 'Menu Sidebar',
+		];
+	}
 }
