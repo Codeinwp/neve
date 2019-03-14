@@ -310,7 +310,7 @@ abstract class Abstract_Builder implements Builder {
 				)
 			);
 
-			$responsive_setting = new Responsive_Setting( $this->control_id . '_' . $row_id . '_height', 0 );
+			$responsive_setting = new Responsive_Setting( $this->control_id . '_' . $row_id . '_height', 0, array( 'desktop', 'mobile' ) );
 			$partial_settings   = array_merge( $partial_settings, $responsive_setting->get_settings_id_array() );
 			$wp_customize->add_control(
 				new Responsive_Slider_Control(

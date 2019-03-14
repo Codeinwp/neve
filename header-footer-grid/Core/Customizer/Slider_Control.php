@@ -36,9 +36,8 @@ class Slider_Control extends Abstract_Control {
 
 	protected function render_control( $suffix = '' ) {
 		$html  = '<div class="slider-custom-control">';
-		$html .= '<span class="customize-control-title">' . esc_html( $this->label ) . '</span>';
-		$html .= '<div class="slider" slider-min-value="' . esc_attr( $this->input_attrs['min'] ) . '" slider-max-value="' . esc_attr( $this->input_attrs['max'] ) . '" slider-step-value="' . esc_attr( $this->input_attrs['step'] ) . '"></div>';
 		$html .= '<input type="number" id="' . esc_attr( $this->id . $suffix ) . '" name="' . esc_attr( $this->id . $suffix ) . '" value="' . esc_attr( $this->value( $this->id . $suffix ) ) . '" class="customize-control-slider-value" ' . $this->safe_echo( array( $this, 'link' ), $this->id . $suffix ) . ' />';
+		$html .= '<div class="slider" slider-min-value="' . esc_attr( $this->input_attrs['min'] ) . '" slider-max-value="' . esc_attr( $this->input_attrs['max'] ) . '" slider-step-value="' . esc_attr( $this->input_attrs['step'] ) . '"></div>';
 		$html .= '<span class="slider-reset dashicons dashicons-image-rotate" slider-reset-value="' . esc_attr( $this->value( $this->id . $suffix ) ) . '"></span>';
 		$html .= '</div>';
 

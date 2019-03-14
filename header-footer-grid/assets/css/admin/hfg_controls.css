@@ -169,7 +169,7 @@ input[type="number"]:focus {
    Slider
    ========================================================================== */
 .slider-custom-control {
-    margin-bottom: 30px;
+    margin-bottom: -30px;
 }
 .slider-custom-control input[type=number]::-webkit-inner-spin-button,
 .slider-custom-control input[type=number]::-webkit-outer-spin-button {
