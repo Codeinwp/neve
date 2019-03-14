@@ -32,6 +32,10 @@ add_theme_support(
  * If the theme is installed after this, they would see the HFG by default.
  */
 define( 'NEVE_TOGGLE_HFG_TIMESTAMP', 1552487483 );
+/**
+ * Disable search icon in menu as HFG has a search icon item already.
+ */
+add_filter('neve_should_search_in_menu','__return_false');
 
 add_filter(
 	'hfg_active', function () {

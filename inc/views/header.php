@@ -72,6 +72,10 @@ class Header extends Base_View {
 	 * @return string
 	 */
 	private function get_nav_menu_search( $responsive = false ) {
+		// TODO when HFG is live we should drop this at all as we have a section for icon, or offer a way of disabling it.
+		if ( ! apply_filters( 'neve_should_search_in_menu', true ) ) {
+			return '';
+		}
 		$tag   = 'li';
 		$class = 'menu-item-nav-search';
 		if ( $responsive === true ) {
