@@ -113,8 +113,7 @@ class Copyright extends Abstract_Component {
 			'theme_author' => sprintf( '<a href="https://themeisle.com">%1$s</a>', 'Themeisle' ), // Brand name.
 		);
 
-		$content = get_theme_mod( $this->id . '_content' );
-
+		$content = get_theme_mod( $this->id . '_content', __( 'Copyright &copy; {current_year} {site_title} - Powered by {theme_author}.', 'hfg-module' ) );
 		foreach ( $tags as $k => $v ) {
 			$content = str_replace( '{' . $k . '}', $v, $content );
 		}

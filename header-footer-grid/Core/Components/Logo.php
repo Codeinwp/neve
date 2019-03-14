@@ -230,10 +230,10 @@ class Logo extends Abstract_Component {
 			$item_classes[] = ' builder-item-focus';
 		}
 
-		$show_name      = get_theme_mod( $this->id . '_show_title' );
-		$show_desc      = get_theme_mod( $this->id . '_show_tagline' );
+		$show_name      = get_theme_mod( $this->id . '_show_title', 1 );
+		$show_desc      = get_theme_mod( $this->id . '_show_tagline', 1 );
 		$image_position = get_theme_mod( $this->id . '_logo_pos' );
-		$logo_classes   = array( 'site-branding' );
+		$logo_classes   = array( 'nv-nav-header', 'site-branding' );
 		$logo_classes[] = 'logo-' . $image_position;
 		$item_classes   = join( ' ', $item_classes );
 

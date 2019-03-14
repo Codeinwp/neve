@@ -11,12 +11,10 @@
 
 namespace HFG\Core\Builder;
 
-use HFG\Core\Customizer\Google_Font_Control;
 use HFG\Core\Customizer\Image_Radio_Control;
 use HFG\Core\Customizer\Responsive_Setting;
 use HFG\Core\Customizer\Responsive_Slider_Control;
 use HFG\Core\Customizer\Select_Control;
-use HFG\Core\Customizer\Slider_Control;
 use HFG\Core\Interfaces\Builder;
 use HFG\Core\Interfaces\Component;
 use HFG\Core\Settings;
@@ -138,6 +136,33 @@ abstract class Abstract_Builder implements Builder {
 		}
 
 		return $this->$key;
+	}
+
+	/**
+	 * Register builder scripts
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 */
+	public function scripts() {
+		wp_add_inline_style( 'hfg-customizer-control', $this->inline_builder_styles() );
+	}
+
+	protected function inline_builder_styles() {
+		$style = '';
+
+		$style_array = [];
+		$rows = $this->get_rows();
+		if ( ! empty( $rows ) ) {
+			foreach ( $rows as $row_id => $row_label ) {
+				$style_array[ '#accordion-section-' . $this->control_id . '_' . $row_id ] = array(
+					'display' => 'none !important'
+				);
+			}
+		}
+		$style .= $this->css_array_to_css( $style_array );
+
+		return $style;
 	}
 
 	/**

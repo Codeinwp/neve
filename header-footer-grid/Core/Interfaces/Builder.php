@@ -32,6 +32,14 @@ interface Builder {
 	public function get_property( $key );
 
 	/**
+	 * Register builder scripts
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 */
+	public function scripts();
+
+	/**
 	 * Register hooks for builder.
 	 *
 	 * @since   1.0.0

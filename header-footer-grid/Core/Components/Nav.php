@@ -128,12 +128,12 @@ class Nav extends Abstract_Component {
 			$item_classes[] = ' builder-item-focus';
 		}
 
-		$style = sanitize_text_field( get_theme_mod( $this->id . '_style' ) );
+		$style = sanitize_text_field( get_theme_mod( $this->id . '_style', 'style-plain' ) );
 		if ( $style ) {
 			$style = sanitize_text_field( $style );
 		}
 
-		$hide_arrow = sanitize_text_field( get_theme_mod( $this->id . '_hide-arrow' ) );
+		$hide_arrow = sanitize_text_field( get_theme_mod( $this->id . '_hide-arrow', false ) );
 		if ( $hide_arrow ) {
 			$style .= ' hide-arrow-active';
 		}

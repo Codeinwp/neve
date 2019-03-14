@@ -161,6 +161,15 @@ class Customizer {
 			)
 		);
 		wp_enqueue_script( 'hfg-layout-builder' );
+
+		/**
+		 * A Builder Class instance.
+		 *
+		 * @var Builder $builder
+		 */
+		foreach ( $this->builders as $builder ) {
+		    $builder->scripts();
+		}
 	}
 
 	/**

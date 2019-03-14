@@ -70,8 +70,6 @@ class Footer extends Abstract_Builder {
 		$html .= $this->render();
 		$html .= '</footer>';
 
-		var_dump( $html );
-
 		echo $html;
 	}
 
@@ -137,7 +135,6 @@ class Footer extends Abstract_Builder {
 	public function render() {
 		$html   = '';
 		$layout = json_decode( get_theme_mod( $this->control_id, Settings::get_instance()->get_footer_defaults_neve() ), true );
-
 		foreach ( $layout as $device_name => $device ) {
 			$classes = array();
 
@@ -147,8 +144,8 @@ class Footer extends Abstract_Builder {
 					continue;
 				}
 
-				$classes[] = get_theme_mod( $this->control_id . '_' . $index . '_layout' );
-				$skin_mode = get_theme_mod( $this->control_id . '_' . $index . '_skin' );
+				$classes[] = get_theme_mod( $this->control_id . '_' . $index . '_layout', 'layout-full-contained' );
+				$skin_mode = get_theme_mod( $this->control_id . '_' . $index . '_skin', 'light-mode' );
 
 				$row_styles       = '';
 				$row_styles_array = [];

@@ -206,12 +206,12 @@ class Header extends Abstract_Builder {
 					continue;
 				}
 
-				$classes[] = get_theme_mod( $this->control_id . '_' . $index . '_layout' );
-				$skin_mode = get_theme_mod( $this->control_id . '_' . $index . '_skin' );
+				$classes[] = get_theme_mod( $this->control_id . '_' . $index . '_layout', 'layout-full-contained' );
+				$skin_mode = get_theme_mod( $this->control_id . '_' . $index . '_skin', 'light-mode' );
 
 				$row_styles       = '';
 				$row_styles_array = [];
-				$row_height       = get_theme_mod( $this->control_id . '_' . $index . '_height' . '_' . $device_name );
+				$row_height       = get_theme_mod( $this->control_id . '_' . $index . '_height' . '_' . $device_name, 'auto' );
 				if ( $row_height ) {
 					$row_styles_array['height'] = 'auto;';
 					if ( intval( $row_height ) > 0 ) {
