@@ -15,6 +15,7 @@ use HFG\Core\Customizer\Slider_Control;
 use HFG\Core\Customizer\Text_Radio_Control;
 use HFG\Core\Customizer\Toggle_Control;
 use HFG\Core\Settings;
+use HFG\Main;
 use WP_Customize_Manager;
 
 /**
@@ -169,86 +170,10 @@ class Logo extends Abstract_Component {
 
 
 	/**
-	 * Returns section output html
+	 * Render logo section.
 	 *
-	 * @return string Section output html.
 	 */
 	public function render_component() {
-
-		$show_name      = get_theme_mod( $this->id . '_show_title', 1 );
-		$show_desc      = get_theme_mod( $this->id . '_show_tagline', 1 );
-		$image_position = get_theme_mod( $this->id . '_logo_pos' );
-
-		$html = '';
-
-		$logo_classes   = array( 'nv-nav-header', 'site-branding' );
-		$logo_classes[] = 'logo-' . $image_position;
-
-		$html .= '<div class="' . esc_attr( join( ' ', $logo_classes ) ) . '">';
-		$html .= $this->render_logo( $html );
-		if ( $show_name || $show_desc ) {
-			$html .= '<div class="site-name-desc">';
-			if ( $show_name ) {
-				$html .= $this->render_name( $html );
-			}
-			if ( $show_desc ) {
-				$html .= $this->render_description( $html );
-			}
-			$html .= '</div>';
-		}
-		$html .= '</div>';
-
-		echo  $html;
-	}
-
-	/**
-	 * Render logo.
-	 *
-	 * @since   1.0.0
-	 * @access  protected
-	 *
-	 * @param string $html The HTML.
-	 */
-	protected function render_logo( &$html ) {
-		$settings          = Settings::get_instance();
-		$custom_logo_id    = get_theme_mod( 'custom_logo' );
-		$logo_image        = $settings->get_media( $custom_logo_id, 'full' );
-		$logo_retina       = '';
-		$logo_retina_image = $settings->get_media( $logo_retina );
-
-		if ( $logo_image ) {
-			$html .= '<a href="' . esc_url( home_url( '/' ) ) . '" class="logo-link" rel="home" itemprop="url">';
-			$html .= '<img class="site-img-logo" src="' . esc_url( $logo_image ) . '" alt="' . __( 'Logo', 'hfg-module' ) . '" ' . ( ( $logo_retina_image ) ? 'srcset="' . esc_url( $logo_retina_image ) . ' 2x"' : '' ) . '>';
-			$html .= '</a>';
-		}
-	}
-
-	/**
-	 * Render the title.
-	 *
-	 * @since   1.0.0
-	 * @access  protected
-	 *
-	 * @param string $html The HTML.
-	 */
-	protected function render_name( &$html ) {
-		$html .= '<h1 class="site-title">';
-		$html .= '<a href="' . esc_url( home_url( '/' ) ) . '" rel="home">' . get_bloginfo( 'name', 'display' ) . '</a>';
-		$html .= '</h1>';
-	}
-
-	/**
-	 * Render the tag line.
-	 *
-	 * @since   1.0.0
-	 * @access  protected
-	 *
-	 * @param string $html The HTML.
-	 */
-	protected function render_description( &$html ) {
-		$description = get_bloginfo( 'description', 'display' );
-		if ( $description || is_customize_preview() ) {
-			$html .= '<p class="site-description text-uppercase text-xsmall">' . $description . '</p>';
-		}
+		Main::get_instance()->load('component-logo');
 	}
 }

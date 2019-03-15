@@ -24,15 +24,20 @@ function render_components( $builder_name = '', $device = null, $row_index = nul
 /**
  * @param string $builder_name
  *
- */
-function current_device( $builder_name = '' ) {
-	return Main::get_instance()->get_builders( $builder_name )::$current_device;
-}
-/**
- * @param string $builder_name
- *
  * @return Core\Components\Abstract_Component
  */
 function current_component( $builder_name = '' ) {
 	return Main::get_instance()->get_builders( $builder_name )->get_component();
+}
+
+function settings() {
+	return \HFG\Core\Settings::get_instance();
+}
+
+function current_device( $builder_name = '' ) {
+	return Main::get_instance()->get_builders( $builder_name )->get_current_device();
+}
+
+function current_row( $builder_name = '' ) {
+	return Main::get_instance()->get_builders( $builder_name )->get_current_row_index();
 }

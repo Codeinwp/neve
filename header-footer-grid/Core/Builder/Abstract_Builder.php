@@ -417,9 +417,16 @@ abstract class Abstract_Builder implements Builder {
 		}
 	}
 
+	public function get_current_device() {
+		return self::$current_device;
+	}
+
+	public function get_current_row_index() {
+		return self::$current_row;
+	}
+
 	public function render() {
 		$layout = $this->get_layout_data();
-
 		foreach ( $layout as $device_name => $device ) {
 			if ( empty( $device ) ) {
 				continue;

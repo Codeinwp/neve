@@ -108,6 +108,10 @@ class Nav extends Abstract_Component {
 
 		return parent::customize_register( $wp_customize );
 	}
+	public function render_component() {
+		echo '23';
+		// TODO: Implement render_component() method.
+	}
 
 	/**
 	 * Render method.
@@ -116,7 +120,7 @@ class Nav extends Abstract_Component {
 	 * @access  public
 	 * @return mixed|string
 	 */
-	public function render_component() {
+	public function render_component2() {
 		$html           = '';
 		$item_classes   = array();
 		$item_classes[] = 'item--inner';

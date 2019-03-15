@@ -140,7 +140,6 @@ class Header extends Abstract_Builder {
 		if ( $row_id === 'sidebar' && $device_id === 'mobile' ) {
 			$name = 'mobile';
 		}
-
 		Main::get_instance()->load( 'row-wrapper', $name );
 
 	}
