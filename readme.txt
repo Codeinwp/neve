@@ -255,6 +255,7 @@ All  images are licensed under CC0.
 * Neve Main: work-4.jpg, CC0 https://mystock.themeisle.com/photo/stockholm-street/
 * Neve Main: video-bg.jpg, CC0, https://mystock.themeisle.com/photo/cloudy-sunset/
 * Neve Main: winter-forest.jpg, CC0, https://mystock.themeisle.com/photo/winter-forest/
+* Neve Main: neve-onboarding-placeholder (used as placeholder), CC0, https://mystock.themeisle.com/photo/wood/
 * Neve Vet Center: neve-vet-center-big-title1.jpg, CC0, https://mystock.themeisle.com/photo/squirrel-2/
 * Neve Vet Center: neve-vet-center-testify.jpg, CC0, https://mystock.themeisle.com/photo/beagle-puppy/
 * Neve Vet Center: neve-vet-center-testify-cat.jpg, CC0, https://mystock.themeisle.com/photo/cat-2/
@@ -318,3 +319,10 @@ All  images are licensed under CC0.
 * Neve Charity: children-734891, CC0, https://pixabay.com/en/children-burundi-bottle-water-734891/
 * Neve Charity: trouser-pockets-1439412, CC0, https://pixabay.com/en/trouser-pockets-empty-jeans-1439412/
 * Neve Gutenberg: street-at-night, CC0, https://mystock.themeisle.com/photo/street-at-night/
+* Neve Scholar: neve-scholar-big-title (used only in screenshot), https://www.pexels.com/photo/men-s-wearing-black-suit-jacket-and-pants-937481/
+* Neve Scholar: neve-scholar-placeholder (used as placeholder), CC0, https://mystock.themeisle.com/photo/arid-earth/
+* Neve Freelancer: neve-freelancere-hero-image (also used in screenshot), CC0, https://mystock.themeisle.com/photo/photographer-3/
+* Neve Freelancer: neve-freelancer-testimonial, CC0, https://mystock.themeisle.com/photo/girl/
+* Neve Freelancer: neve-freelancer-testimonial-bg, CC0, https://mystock.themeisle.com/photo/code-in-wp/
+* Neve Freelancer: neve-freelancer-faq, CC0, https://mystock.themeisle.com/photo/programming-laptop-2/
+* Neve Freelancer: neve-freelancer-about1, CC0, https://mystock.themeisle.com/photo/path-to-the-village/

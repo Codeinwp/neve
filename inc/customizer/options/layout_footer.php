@@ -44,7 +44,7 @@ class Layout_Footer extends Base_Customizer {
 			new Section(
 				'neve_footer',
 				array(
-					'priority' => 40,
+					'priority' => 90,
 					'title'    => esc_html__( 'Footer', 'neve' ),
 					'panel'    => 'neve_layout',
 				)

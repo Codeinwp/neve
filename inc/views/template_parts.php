@@ -224,11 +224,26 @@ class Template_Parts extends Base_View {
 			$new_moretag = '';
 		}
 
-		$new_moretag .= '<a href="' . esc_url( get_the_permalink() ) . '" rel="bookmark">';
+		$read_more_args = apply_filters(
+			'neve_read_more_args',
+			array(
+				'text'    => esc_html__( 'Read More', 'neve' ) . ' &raquo;',
+				'classes' => '',
+			)
+		);
 
-		$new_moretag .= esc_html__( 'Read More', 'neve' );
-		$new_moretag .= '<span class="screen-reader-text">' . get_the_title() . '</span>';
-		$new_moretag .= ' &raquo;</a>';
+		$markup  = '<a href="' . esc_url( get_the_permalink() ) . '"';
+		$markup .= ' class="' . esc_attr( $read_more_args['classes'] ) . '"';
+		$markup .= ' rel="bookmark">';
+		$markup .= esc_html( $read_more_args['text'] );
+		$markup .= '<span class="screen-reader-text">' . get_the_title() . '</span>';
+		$markup .= '</a>';
+
+		if ( ! empty( $read_more_args['classes'] ) ) {
+			$markup = '<div class="read-more-wrapper" style="padding: 10px 0 0;">' . $markup . '</div>';
+		}
+
+		$new_moretag .= $markup;
 
 		return $new_moretag;
 	}
