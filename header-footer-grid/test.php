@@ -39,6 +39,8 @@ add_filter('neve_should_search_in_menu','__return_false');
 
 add_filter(
 	'hfg_active', function () {
+		//return false;
+		return ! ( isset( $_GET['builder_off'] ) && $_GET['builder_off'] === 'true' );
 		if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
 			return true;
 		}

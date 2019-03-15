@@ -114,7 +114,7 @@ abstract class Abstract_FooterWidget extends Abstract_Component {
 	 *
 	 * @return mixed|string
 	 */
-	public function render() {
+	public function render_component() {
 		$html           = '';
 		$item_classes   = array();
 		$item_classes[] = 'item--inner';

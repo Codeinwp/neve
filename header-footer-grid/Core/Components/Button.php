@@ -87,7 +87,7 @@ class Button extends Abstract_Component {
 	 * @access  public
 	 * @return mixed
 	 */
-	public function render() {
+	public function render_component() {
 		$item_classes   = array();
 		$item_classes[] = 'item--inner';
 		$item_classes[] = 'builder-item--' . $this->id;

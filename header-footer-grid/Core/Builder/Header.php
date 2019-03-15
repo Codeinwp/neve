@@ -44,6 +44,7 @@ class Header extends Abstract_Builder {
 	 *
 	 * @since   1.0.0
 	 * @access  public
+	 *
 	 * @param string $theme_mod The name of the mod.
 	 *
 	 * @return false|mixed|string
@@ -57,39 +58,13 @@ class Header extends Abstract_Builder {
 	}
 
 	/**
-	 * Utility function to sort items by x.
-	 *
-	 * @since   1.0.0
-	 * @access  private
-	 * @param array $items List of items.
-	 *
-	 * @return array
-	 */
-	private function _sort_items_by_position( $items = array() ) {
-		$ordered_items = array();
-
-		foreach ( $items as $key => $item ) {
-			$ordered_items[ $key ] = $item['x'];
-		}
-
-		array_multisort( $ordered_items, SORT_ASC, $items );
-
-		return $items;
-	}
-
-	/**
 	 * Method called via hook.
 	 *
 	 * @since   1.0.0
 	 * @access  public
 	 */
 	public function header_render() {
-		$html  = '<header id="masthead" class=" ' . $this->panel . ' site-header">';
-		$html .= '<div id="masthead-inner" class="site-header-inner">';
-		$html .= $this->render();
-		$html .= '</div>';
-		$html .= '</header>';
-		echo $html;
+		Main::get_instance()->load( 'header-wrapper' );
 	}
 
 	/**
@@ -242,7 +217,6 @@ class Header extends Abstract_Builder {
 		return $html;
 	}
 
-
 	/**
 	 * Return  the builder rows.
 	 *
@@ -257,5 +231,27 @@ class Header extends Abstract_Builder {
 			'bottom'  => 'Header Bottom',
 			'sidebar' => 'Menu Sidebar',
 		];
+	}
+
+	/**
+	 * Utility function to sort items by x.
+	 *
+	 * @since   1.0.0
+	 * @access  private
+	 *
+	 * @param array $items List of items.
+	 *
+	 * @return array
+	 */
+	private function _sort_items_by_position( $items = array() ) {
+		$ordered_items = array();
+
+		foreach ( $items as $key => $item ) {
+			$ordered_items[ $key ] = $item['x'];
+		}
+
+		array_multisort( $ordered_items, SORT_ASC, $items );
+
+		return $items;
 	}
 }

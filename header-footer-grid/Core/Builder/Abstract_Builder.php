@@ -103,22 +103,12 @@ abstract class Abstract_Builder implements Builder {
 	 */
 	protected $builder_components = array();
 
-	/**
-	 * Method to set protected properties for class.
-	 *
-	 * @since   1.0.0
-	 * @access  protected
-	 * @param string $key The property key name.
-	 * @param string $value The property value.
-	 *
-	 * @return bool
-	 */
-	protected function set_property( $key = '', $value = '' ) {
-		if ( ! property_exists( $this, $key ) ) {
-			return false;
-		}
-		$this->$key = $value;
-		return true;
+	public static function get_device() {
+		return self::$current_device;
+	}
+
+	public static function get_row() {
+		return self::$current_row;
 	}
 
 	/**
@@ -126,9 +116,10 @@ abstract class Abstract_Builder implements Builder {
 	 *
 	 * @since   1.0.0
 	 * @access  protected
+	 *
 	 * @param string $key The property key name.
 	 *
-	 * @return bool
+	 * @return mixed
 	 */
 	public function get_property( $key = '' ) {
 		if ( ! property_exists( $this, $key ) ) {
@@ -152,7 +143,7 @@ abstract class Abstract_Builder implements Builder {
 		$style = '';
 
 		$style_array = [];
-		$rows = $this->get_rows();
+		$rows        = $this->get_rows();
 		if ( ! empty( $rows ) ) {
 			foreach ( $rows as $row_id => $row_label ) {
 				$style_array[ '#accordion-section-' . $this->control_id . '_' . $row_id ] = array(
@@ -166,18 +157,27 @@ abstract class Abstract_Builder implements Builder {
 	}
 
 	/**
+	 * Used to define the rows in the builder sections.
+	 *
+	 * @return array Rows array.
+	 */
+	abstract protected function get_rows();
+
+	/**
 	 * Register hooks for builder.
 	 *
 	 * @since   1.0.0
 	 * @access  public
 	 */
-	public function register_builder_hooks() {}
+	public function register_builder_hooks() {
+	}
 
 	/**
 	 * Called to register component controls.
 	 *
 	 * @since   1.0.0
 	 * @access  public
+	 *
 	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
 	 *
 	 * @return WP_Customize_Manager
@@ -257,10 +257,31 @@ abstract class Abstract_Builder implements Builder {
 	}
 
 	/**
+	 * Method to set protected properties for class.
+	 *
+	 * @since   1.0.0
+	 * @access  protected
+	 *
+	 * @param string $key The property key name.
+	 * @param string $value The property value.
+	 *
+	 * @return bool
+	 */
+	protected function set_property( $key = '', $value = '' ) {
+		if ( ! property_exists( $this, $key ) ) {
+			return false;
+		}
+		$this->$key = $value;
+
+		return true;
+	}
+
+	/**
 	 * Adds row controls.
 	 *
 	 * @since   1.0.0
 	 * @access  protected
+	 *
 	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
 	 */
 	protected function add_rows_controls( WP_Customize_Manager $wp_customize ) {
@@ -310,7 +331,10 @@ abstract class Abstract_Builder implements Builder {
 				)
 			);
 
-			$responsive_setting = new Responsive_Setting( $this->control_id . '_' . $row_id . '_height', 0, array( 'desktop', 'mobile' ) );
+			$responsive_setting = new Responsive_Setting( $this->control_id . '_' . $row_id . '_height', 0, array(
+				'desktop',
+				'mobile'
+			) );
 			$partial_settings   = array_merge( $partial_settings, $responsive_setting->get_settings_id_array() );
 			$wp_customize->add_control(
 				new Responsive_Slider_Control(
@@ -397,6 +421,7 @@ abstract class Abstract_Builder implements Builder {
 	 *
 	 * @since   1.0.0
 	 * @access  public
+	 *
 	 * @param mixed $component_to_add A component.
 	 *
 	 * @return bool
@@ -414,6 +439,7 @@ abstract class Abstract_Builder implements Builder {
 		 */
 		$component                                        = new $component_to_add( $this->panel );
 		$this->builder_components[ $component->get_id() ] = $component;
+
 		return true;
 	}
 
@@ -426,6 +452,26 @@ abstract class Abstract_Builder implements Builder {
 	 */
 	public function get_components() {
 		return $this->builder_components;
+	}
+
+	/**
+	 * A representation of the builder as array.
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 * @return array
+	 */
+	public final function get_builder() {
+		return array(
+			'id'         => $this->control_id,
+			'control_id' => $this->control_id,
+			'panel'      => $this->panel,
+			'section'    => $this->section,
+			'title'      => $this->title,
+			'devices'    => $this->devices,
+			'items'      => $this->get_components_settings(),
+			'rows'       => $this->get_rows(),
+		);
 	}
 
 	/**
@@ -445,32 +491,7 @@ abstract class Abstract_Builder implements Builder {
 		foreach ( $this->builder_components as $component ) {
 			$components_settings[ $component->get_id() ] = $component->get_settings();
 		}
-		return $components_settings;
-	}
 
-	/**
-	 * Used to define the rows in the builder sections.
-	 *
-	 * @return array Rows array.
-	 */
-	abstract protected function get_rows();
-	/**
-	 * A representation of the builder as array.
-	 *
-	 * @since   1.0.0
-	 * @access  public
-	 * @return array
-	 */
-	public final function get_builder() {
-		return array(
-			'id'         => $this->control_id,
-			'control_id' => $this->control_id,
-			'panel'      => $this->panel,
-			'section'    => $this->section,
-			'title'      => $this->title,
-			'devices'    => $this->devices,
-			'items'      => $this->get_components_settings(),
-			'rows'       => $this->get_rows(),
-		);
+		return $components_settings;
 	}
 }
