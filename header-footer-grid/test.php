@@ -14,19 +14,21 @@ add_theme_support(
 				'HFG\Core\Components\MenuIcon',
 				'HFG\Core\Components\Nav',
 				'HFG\Core\Components\Button',
-			),
-			'HFG\Core\Builder\Footer' => array(
-				'HFG\Core\Components\FooterWidgetOne',
-				'HFG\Core\Components\FooterWidgetTwo',
-				'HFG\Core\Components\FooterWidgetThree',
-				'HFG\Core\Components\FooterWidgetFour',
-				'HFG\Core\Components\FooterWidgetFive',
-				'HFG\Core\Components\FooterWidgetSix',
-				'HFG\Core\Components\Copyright',
-			),
+			)
+//			),
+//			'HFG\Core\Builder\Footer' => array(
+//				'HFG\Core\Components\FooterWidgetOne',
+//				'HFG\Core\Components\FooterWidgetTwo',
+//				'HFG\Core\Components\FooterWidgetThree',
+//				'HFG\Core\Components\FooterWidgetFour',
+//				'HFG\Core\Components\FooterWidgetFive',
+//				'HFG\Core\Components\FooterWidgetSix',
+//				'HFG\Core\Components\Copyright',
+//			),
 		),
 	)
 );
+require_once "functions-template.php";
 /**
  * Define timestamp which will be used as refference when we enable the HFG functionality.
  * If the theme is installed after this, they would see the HFG by default.

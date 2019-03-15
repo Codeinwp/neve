@@ -11,6 +11,7 @@
 
 namespace HFG;
 
+use HFG\Core\Builder\Abstract_Builder;
 use HFG\Core\Customizer;
 use HFG\Core\Settings;
 

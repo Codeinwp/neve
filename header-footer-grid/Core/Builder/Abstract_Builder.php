@@ -11,6 +11,7 @@
 
 namespace HFG\Core\Builder;
 
+use HFG\Core\Components\Abstract_Component;
 use HFG\Core\Customizer\Image_Radio_Control;
 use HFG\Core\Customizer\Responsive_Setting;
 use HFG\Core\Customizer\Responsive_Slider_Control;
@@ -28,6 +29,9 @@ use WP_Customize_Manager;
  */
 abstract class Abstract_Builder implements Builder {
 	use Core;
+	public static $current_device = null;
+	public static $current_row = null;
+	public static $current_component = null;
 	/**
 	 * Holds the control id.
 	 *
@@ -36,7 +40,6 @@ abstract class Abstract_Builder implements Builder {
 	 * @var string $control_id
 	 */
 	protected $control_id;
-
 	/**
 	 * Holds the panel id.
 	 *
@@ -45,7 +48,6 @@ abstract class Abstract_Builder implements Builder {
 	 * @var string $panel
 	 */
 	protected $panel;
-
 	/**
 	 * Holds the section id.
 	 *
@@ -54,7 +56,6 @@ abstract class Abstract_Builder implements Builder {
 	 * @var string $section
 	 */
 	protected $section;
-
 	/**
 	 * Holds the title.
 	 *
@@ -416,6 +417,96 @@ abstract class Abstract_Builder implements Builder {
 		}
 	}
 
+	public function render() {
+		$layout = $this->get_layout_data();
+
+		foreach ( $layout as $device_name => $device ) {
+			if ( empty( $device ) ) {
+				continue;
+			}
+			self::$current_device = $device_name;
+
+			$this->render_device( $device_name, $device );
+		}
+	}
+
+	/**
+	 * Return builder data.
+	 *
+	 * @return array Builder data.
+	 */
+	public function get_layout_data() {
+		//TODO move default as filterable data and move default neve definition in theme integration.
+		$data = json_decode( get_theme_mod( $this->control_id, Settings::get_instance()->get_header_defaults_neve() ), true );
+
+		return wp_parse_args( $data, array_fill_keys( array_keys( $this->devices ), array_fill_keys( array_keys( $this->get_rows() ), [] ) ) );
+	}
+
+	public function render_device( $device_name, $device_details ) {
+		foreach ( $device_details as $index => $row ) {
+			if ( empty( $row ) ) {
+				continue;
+			}
+			self::$current_row = $index;
+
+			$this->render_row( $device_name, $index, $row );
+		}
+	}
+
+	public abstract function render_row( $device_id, $row_id, $row_details );
+
+	public function render_components( $device = null, $row = null ) {
+
+		if ( $device === null && $row === null ) {
+			$device    = self::$current_device;
+			$row_index = self::$current_row;
+		}
+
+		$data        = $this->get_layout_data()[ $device ][ $row_index ];
+		$max_columns = 12;
+		$last_item   = null;
+
+		$collection = new \CachingIterator(
+			new \ArrayIterator(
+				$data
+			), \CachingIterator::TOSTRING_USE_CURRENT
+		);
+
+		foreach ( $collection as $component_location ) {
+			/**
+			 * An instance of Abstract_Component
+			 *
+			 * @var Abstract_Component $component
+			 */
+			$component = $this->builder_components[ $component_location['id'] ];
+			$x         = intval( $component_location['x'] );
+			$width     = intval( $component_location['width'] );
+			if ( ! $collection->hasNext() && ( $x + $width < $max_columns ) ) {
+				$width += $max_columns - ( $x + $width );
+			}
+
+			$push_left = '';
+			if ( $x > 0 && $last_item !== null ) {
+				$o = intval( $last_item['width'] ) + intval( $last_item['x'] );
+				if ( $x - $o > 0 ) {
+					$x         = $x - $o;
+					$push_left = 'off-' . $x;
+				}
+			} elseif ( $x > 0 ) {
+				$push_left = 'off-' . $x;
+			}
+
+			$component->current_x     = $x;
+			$component->current_width = $width;
+			$classes                  = [ 'hfg-col-' . $width, '_md-' . $width . '_sm-' . $width, 'builder-item' ];
+			self::$current_component  = $component_location['id'];
+			echo sprintf( '<div class="%s" data-push-left="%s">', esc_attr( join( ' ', $classes ) ), esc_attr( $push_left ) );
+			$component->render();
+			echo '</div>';
+			$last_item = $component_location;
+		}
+	}
+
 	/**
 	 * Register a new component for builder.
 	 *
@@ -442,6 +533,21 @@ abstract class Abstract_Builder implements Builder {
 
 		return true;
 	}
+
+	/**
+	 * @param null $id
+	 *
+	 * @return Abstract_Component
+	 */
+	public function get_component( $id = null ) {
+		if ( $id === null ) {
+			$id = self::$current_component;
+		}
+
+		return $this->builder_components[ $id ];
+	}
+
+	public abstract function get_id();
 
 	/**
 	 * Returns the builder components.

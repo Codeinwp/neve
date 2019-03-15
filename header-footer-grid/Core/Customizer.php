@@ -14,6 +14,7 @@ namespace HFG\Core;
 
 use HFG\Config\Customizer\Style;
 use HFG\Config\Customizer\Typography;
+use HFG\Core\Builder\Abstract_Builder;
 use HFG\Core\Interfaces\Builder;
 use HFG\Traits\Core;
 use WP_Customize_Manager;
@@ -137,7 +138,7 @@ class Customizer {
 			'HFG_Layout_Builder',
 			array(
 				'footer_moved_widgets_text' => '',
-				'builders'                  => $this->get_builders(),
+				'builders'                  => $this->get_builders_data(),
 				'is_rtl'                    => is_rtl(),
 				'change_version_nonce'      => wp_create_nonce( 'change_version_nonce' ),
 			)

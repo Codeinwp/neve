@@ -14,6 +14,7 @@ namespace HFG\Core\Components;
 use HFG\Core\Customizer\Heading_Control;
 use HFG\Core\Customizer\Select_Control;
 use HFG\Core\Interfaces\Component;
+use HFG\Main;
 use HFG\Traits\Core;
 use WP_Customize_Manager;
 
@@ -103,6 +104,10 @@ abstract class Abstract_Component implements Component {
 			'width'   => $this->width,
 			'section' => $this->section, // Customizer section to focus when click settings.
 		);
+	}
+
+	public function get_section_id() {
+		return $this->section;
 	}
 
 	/**
