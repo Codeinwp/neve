@@ -175,6 +175,8 @@ class Header extends Abstract_Builder {
 	/**
 	 * Render method.
 	 *
+	 * TODO: need to rethink row flow due to control usage now
+	 *
 	 * @since   1.0.0
 	 * @access  public
 	 * @return string
@@ -184,6 +186,14 @@ class Header extends Abstract_Builder {
 		$layout        = json_decode( get_theme_mod( $this->control_id, Settings::get_instance()->get_header_defaults_neve() ), true );
 		$desktop_items = $layout['desktop'];
 		$mobile_items  = $layout['mobile'];
+
+		$row_height_devices = array();
+		foreach ( $this->get_rows() as $index => $row_name ) {
+			$row_height_devices[$index] = json_decode( get_theme_mod( $this->control_id . '_' . $index . '_height', '{}' ), true );
+			var_dump( $row_height_devices[$index] );
+		}
+
+		var_dump( $row_height_devices );
 		foreach ( $layout as $device_name => $device ) {
 			$classes = array();
 
@@ -211,7 +221,13 @@ class Header extends Abstract_Builder {
 
 				$row_styles       = '';
 				$row_styles_array = [];
-				$row_height       = get_theme_mod( $this->control_id . '_' . $index . '_height' . '_' . $device_name, 'auto' );
+				$row_height = 0;
+				if ( isset( $row_height_devices[ $index ] ) && isset( $row_height_devices[ $index ][ $device_name ] ) ) {
+					$row_height = $row_height_devices[ $index ][ $device_name ];
+				}
+
+				var_dump( $this->control_id . '_' . $index . '_height' );
+				var_dump( $row_height );
 				if ( $row_height ) {
 					$row_styles_array['height'] = 'auto;';
 					if ( intval( $row_height ) > 0 ) {

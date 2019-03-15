@@ -83,7 +83,7 @@ abstract class Abstract_FooterWidget extends Abstract_Component {
 			$html .= '<div class="widget-area">';
 			$html .= $this->safe_echo( 'dynamic_sidebar', $this->id );
 			$html .= '</div>';
-			return $html ;
+			return $html;
 		}
 
 		if ( current_user_can( 'edit_theme_options' ) ) {

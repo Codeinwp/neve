@@ -85,6 +85,7 @@ class Settings {
 					'HFG\Core\Components\Logo',
 					'HFG\Core\Components\MenuIcon',
 					'HFG\Core\Components\Button',
+					'HFG\Core\Components\CustomHtml',
 				),
 				'HFG\Core\Builder\Footer' => array(
 					'HFG\Core\Components\FooterWidgetOne',
