@@ -50,3 +50,11 @@ add_filter(
 	return NEVE_TOGGLE_HFG_TIMESTAMP < get_option( 'neve_install', time() );
 }
 );
+if ( apply_filters( 'hfg_active',true ) === true ) {
+	add_action( 'neve_do_footer', function () {
+		do_action( 'hfg_footer_render' );
+	} );
+	add_action( 'neve_do_header', function () {
+		do_action( 'hfg_header_render' );
+	} );
+}

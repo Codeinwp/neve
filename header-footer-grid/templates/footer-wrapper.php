@@ -14,5 +14,7 @@ use HFG\Core\Builder\Footer as FooterBuilder;
 
 ?>
 <footer class="site-footer" id="site-footer">
-	<?php render_builder( FooterBuilder::BUILDER_NAME ) ?>
+	<?php
+	render_builder( FooterBuilder::BUILDER_NAME );
+	?>
 </footer>

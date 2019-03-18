@@ -17,9 +17,9 @@ class Header extends Base_View {
 	 * Add hooks for the front end.
 	 */
 	public function init() {
-		add_action( 'neve_do_header', array( $this, 'render_navigation' ) );
-		add_filter( 'wp_nav_menu_items', array( $this, 'add_last_menu_item' ), 10, 2 );
-		add_filter( 'wp_page_menu', array( $this, 'add_fallback_last_menu_items' ), 10, 2 );
+	//	add_action( 'neve_do_header', array( $this, 'render_navigation' ) );
+	//	add_filter( 'wp_nav_menu_items', array( $this, 'add_last_menu_item' ), 10, 2 );
+	//	add_filter( 'wp_page_menu', array( $this, 'add_fallback_last_menu_items' ), 10, 2 );
 
 	}
 

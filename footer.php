@@ -15,12 +15,8 @@ do_action( 'neve_before_primary_end' );
 <?php do_action( 'neve_after_primary' ); ?>
 
 <?php
-if ( apply_filters( 'hfg_active', false ) ) {
-	do_action( 'hfg_footer_render' );
-} else {
-	if ( apply_filters( 'neve_filter_toggle_content_parts', true, 'footer' ) === true ) {
-		do_action( 'neve_do_footer' );
-	}
+if ( apply_filters( 'neve_filter_toggle_content_parts', true, 'footer' ) === true ) {
+	do_action( 'neve_do_footer' );
 }
 ?>
 
