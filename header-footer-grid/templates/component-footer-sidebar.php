@@ -25,12 +25,10 @@ if ( is_active_sidebar( $id ) ) {
 			<div class="textwidget">';
 				<?php echo sprintf(
 				/* translators: %s1 - url, %s2 - widget id */
-					__( '<p>Replace this widget content by going to <a href="%1$s"><strong>Appearance &rarr; Customize
-							&rarr;
-							HFG Footer &rarr; Footer %2$s</strong></a> and adding widgets into this widget area.</p>',
+					__( '<p>Replace this widget content by going to <a href="%1$s"><strong>Appearance &rarr; Customize &rarr; Footer &rarr; %2$s</strong></a> and add widgets into this widget area.</p>',
 						'hfg-module' ),
 					esc_url( admin_url( 'customize.php?autofocus[section]=sidebar-widgets-footer-' . $id ) ),
-					$id
+					current_component()->get_property( 'label' )
 				);
 				?>
 			</div>

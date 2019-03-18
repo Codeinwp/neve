@@ -12,7 +12,6 @@ namespace HFG;
 use HFG\Core\Builder\Header as HeaderBuilder;
 
 $text           = get_theme_mod( current_component( HeaderBuilder::BUILDER_NAME )->get_section_id() . '_text' . '_setting' );
-$id             = current_component( HeaderBuilder::BUILDER_NAME )->get_id();
 $item_classes   = [];
 $item_classes[] = 'menu-mobile-toggle item-button';
 $item_classes[] = 'is-size-desktop-medium';
