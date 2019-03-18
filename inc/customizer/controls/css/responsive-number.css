@@ -12,6 +12,10 @@
 	width: 73%;
 }
 
+.customize-control .responsive-number input[type=number].no-units {
+	width: 98%;
+}
+
 .responsive-number select {
 	float: right;
 	width: 23%;
