@@ -45,7 +45,6 @@
 		</div>
 		<# } #>
 
-
 		<# if ( ! _.isUndefined( data.rows.bottom ) ) { #>
 		<div class="hfg--row-bottom hfg--cb-row" data-id="{{ data.id }}_bottom">
 			<a class="hfg--cb-row-settings" title="{{ data.rows.bottom }}" data-id="bottom" href="#"></a>
@@ -62,7 +61,6 @@
 		</div>
 		<# } #>
 	</div>
-
 
 	<# if ( data.device != 'desktop' ) { #>
 	<# if ( ! _.isUndefined( data.rows.sidebar ) ) { #>

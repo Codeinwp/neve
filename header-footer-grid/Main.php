@@ -80,32 +80,8 @@ class Main {
 		if ( ! apply_filters( 'hfg_active', true ) ) {
 			return;
 		}
-		$this->register_sidebars();
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
-	}
-
-	/**
-	 * Register sidebar
-	 *
-	 * @since   1.0.0
-	 * @access  public
-	 */
-	public function register_sidebars() {
-		for ( $i = 1; $i <= 6; $i ++ ) {
-			register_sidebar(
-				array(
-					/* translators: 1: Widget number. */
-					'name'          => sprintf( __( 'Footer Sidebar %d', 'hfg-module' ), $i ),
-					'id'            => 'footer-' . $i,
-					'description'   => __( 'Add widgets here.', 'hfg-module' ),
-					'before_widget' => '<section id="%1$s" class="widget %2$s">',
-					'after_widget'  => '</section>',
-					'before_title'  => '<h4 class="widget-title">',
-					'after_title'   => '</h4>',
-				)
-			);
-		}
 	}
 
 	/**
@@ -116,6 +92,9 @@ class Main {
 	 * @return Abstract_Builder[]|Abstract_Builder Builder array(s).
 	 */
 	public function get_builders( $builder = '' ) {
+		if ( empty( $builder ) ) {
+			$builder = Abstract_Builder::get_current_builder();
+		}
 
 		return $this->customizer->get_builders( $builder );
 	}
@@ -128,7 +107,9 @@ class Main {
 	 *
 	 */
 	public function load( $slug, $name = '' ) {
-		get_template_part( $this->get_templates_location() . $slug, $name );
+		$location = apply_filters( 'hfg_load_template_' . $slug, $this->get_templates_location() . $slug, $name );
+
+		get_template_part( $location, $name );
 	}
 
 	/**

@@ -11,6 +11,7 @@
 
 namespace HFG\Core\Components;
 
+use HFG\Main;
 use WP_Customize_Manager;
 
 /**
@@ -25,6 +26,7 @@ class MenuIcon extends Abstract_Component {
 	 *
 	 * @since   1.0.0
 	 * @access  public
+	 *
 	 * @param string $panel The panel name.
 	 */
 	public function __construct( $panel ) {
@@ -40,6 +42,7 @@ class MenuIcon extends Abstract_Component {
 	 *
 	 * @since   1.0.0
 	 * @access  public
+	 *
 	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
 	 *
 	 * @return WP_Customize_Manager
@@ -85,44 +88,8 @@ class MenuIcon extends Abstract_Component {
 	 *
 	 * @since   1.0.0
 	 * @access  public
-	 * @return mixed|string
 	 */
 	public function render_component() {
-		$label      = get_theme_mod( $this->section . '_text' . '_setting' );
-		$show_label = true;
-
-		$item_classes   = array();
-		$item_classes[] = 'item--inner';
-		$item_classes[] = 'builder-item--' . $this->id;
-		if ( strpos( $this->id, '-menu' ) ) {
-			$item_classes[] = 'has_menu';
-		}
-		if ( is_customize_preview() ) {
-			$item_classes[] = ' builder-item-focus';
-		}
-
-		$item_classes[] = 'menu-mobile-toggle item-button';
-		$item_classes[] = 'is-size-desktop-medium';
-		$item_classes[] = 'is-size-tablet-medium';
-		$item_classes[] = 'is-size-mobile-medium';
-		$label_classes  = array( 'nav-icon--label' );
-
-		$html  = '<a class="' . esc_attr( join( ' ', $item_classes ) ) . '">';
-		$html .= '<span class="hamburger hamburger--squeeze">';
-		$html .= '<span class="hamburger-box">';
-		$html .= '<span class="hamburger-inner"></span>';
-		$html .= '</span>';
-		$html .= '</span>';
-		if ( $show_label ) {
-			$html .= '</span>';
-		}
-		$html .= '<span class="' . esc_attr( join( ' ', $label_classes ) ) . '">' . $label . '</span>';
-
-		if ( is_customize_preview() ) {
-			$html .= '<span class="item--preview-name">' . esc_html( $this->label ) . '</span>';
-		}
-		$html .= '</a>';
-
-		return $html;
+		Main::get_instance()->load( 'component-menu-icon' );
 	}
 }

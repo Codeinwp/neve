@@ -12,12 +12,7 @@
 namespace HFG\Core\Builder;
 
 use HFG\Core\Components\Abstract_Component;
-use HFG\Core\Customizer\Customize_Control;
 use HFG\Core\Customizer\Customize_Setting;
-use HFG\Core\Customizer\Image_Radio_Control;
-use HFG\Core\Customizer\Responsive_Setting;
-use HFG\Core\Customizer\Responsive_Slider_Control;
-use HFG\Core\Customizer\Select_Control;
 use HFG\Core\Customizer\Settings_Manager;
 use HFG\Core\Interfaces\Builder;
 use HFG\Core\Interfaces\Component;
@@ -25,7 +20,6 @@ use HFG\Core\Settings;
 use HFG\Traits\Core;
 use Neve\Customizer\Controls\Radio_Image;
 use Neve\Customizer\Controls\Range;
-use Neve\Customizer\Types\Control;
 use WP_Customize_Manager;
 
 /**
@@ -35,9 +29,34 @@ use WP_Customize_Manager;
  */
 abstract class Abstract_Builder implements Builder {
 	use Core;
+
+	/**
+	 * Internal pointer for current device id.
+	 *
+	 * @var null|string Device id.
+	 */
 	public static $current_device = null;
+
+	/**
+	 * Internal pointer for current row id.
+	 *
+	 * @var null|string Row id.
+	 */
 	public static $current_row = null;
+
+	/**
+	 * Internal pointer for current component id.
+	 *
+	 * @var null|string Component id.
+	 */
 	public static $current_component = null;
+
+	/**
+	 * Internal pointer for current builder id.
+	 *
+	 * @var null|string Builder id.
+	 */
+	public static $current_builder = null;
 	/**
 	 * Holds the control id.
 	 *
@@ -115,6 +134,14 @@ abstract class Abstract_Builder implements Builder {
 	public function __construct() {
 		$this->init();
 		self::$settings_manager = new Settings_Manager();
+	}
+	/**
+	 * Returns current builder id.
+	 *
+	 * @return string|null Builder id.
+	 */
+	public static function get_current_builder() {
+		return self::$current_builder;
 	}
 
 	protected abstract function init();
@@ -336,7 +363,6 @@ abstract class Abstract_Builder implements Builder {
 				]
 			);
 
-
 			$setting = new Customize_Setting( array(
 				'id' => $this->control_id . '_' . $row_id . '_height',
 				'default' => '{ mobile: 0, tablet: 0, desktop: 0 }',
@@ -416,16 +442,30 @@ abstract class Abstract_Builder implements Builder {
 		}
 	}
 
+	/**
+	 * Return current device in the loop.
+	 *
+	 * @return null|string Current device.
+	 */
 	public function get_current_device() {
 		return self::$current_device;
 	}
 
+	/**
+	 * Return current row in the loop.
+	 *
+	 * @return null|string Current row.
+	 */
 	public function get_current_row_index() {
 		return self::$current_row;
 	}
 
+	/**
+	 * Render markup for builder.
+	 */
 	public function render() {
-		$layout = $this->get_layout_data();
+		$layout                = $this->get_layout_data();
+		self::$current_builder = $this->get_id();
 		foreach ( $layout as $device_name => $device ) {
 			if ( empty( $device ) ) {
 				continue;
@@ -448,6 +488,19 @@ abstract class Abstract_Builder implements Builder {
 		return wp_parse_args( $data, array_fill_keys( array_keys( $this->devices ), array_fill_keys( array_keys( $this->get_rows() ), [] ) ) );
 	}
 
+	/**
+	 * Get builder id.
+	 *
+	 * @return string Builder id.
+	 */
+	public abstract function get_id();
+
+	/**
+	 * Render device markup.
+	 *
+	 * @param string $device_name Device id.
+	 * @param array  $device_details Device meta.
+	 */
 	public function render_device( $device_name, $device_details ) {
 		foreach ( $device_details as $index => $row ) {
 			if ( empty( $row ) ) {
@@ -459,8 +512,21 @@ abstract class Abstract_Builder implements Builder {
 		}
 	}
 
+	/**
+	 * Render row markup
+	 *
+	 * @param string $device_id Device id.
+	 * @param string $row_id Row id.
+	 * @param array  $row_details Row metadata.
+	 */
 	public abstract function render_row( $device_id, $row_id, $row_details );
 
+	/**
+	 * Render components in the row.
+	 *
+	 * @param null|string $device Device id.
+	 * @param null|array  $row Row details.
+	 */
 	public function render_components( $device = null, $row = null ) {
 
 		if ( $device === null && $row === null ) {
@@ -470,6 +536,7 @@ abstract class Abstract_Builder implements Builder {
 
 		$data        = $this->get_layout_data()[ $device ][ $row_index ];
 		$max_columns = 12;
+		$o           = 0;
 		$last_item   = null;
 
 		$collection = new \CachingIterator(
@@ -502,9 +569,17 @@ abstract class Abstract_Builder implements Builder {
 				$push_left = 'off-' . $x;
 			}
 
+			$edge_class = ( $x > 0 && ( ( $x + $width + $o ) === $max_columns ) ) ? 'hfg-edge-right' : ( ( $x === 0 ) ? 'hfg-edge-left' : '' );
+
 			$component->current_x     = $x;
 			$component->current_width = $width;
-			$classes                  = [ 'hfg-col-' . $width, '_md-' . $width . '_sm-' . $width, 'builder-item' ];
+			$classes                  = [
+				'hfg-col-' . $width . '_md-' . $width . '_sm-' . $width,
+				'builder-item',
+				$last_item === null ? 'hfg-item-first' : '',
+				$x + $width + $o === $max_columns ? 'hfg-item-last' : '',
+				$edge_class
+			];
 			self::$current_component  = $component_location['id'];
 			echo sprintf( '<div class="%s" data-push-left="%s">', esc_attr( join( ' ', $classes ) ), esc_attr( $push_left ) );
 			$component->render();
@@ -552,8 +627,6 @@ abstract class Abstract_Builder implements Builder {
 
 		return $this->builder_components[ $id ];
 	}
-
-	public abstract function get_id();
 
 	/**
 	 * Returns the builder components.

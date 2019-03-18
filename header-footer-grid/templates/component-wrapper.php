@@ -8,14 +8,9 @@
  * @package HFG
  */
 
-/**
- * @var \HFG\Core\Components\Abstract_Component $this Component object.
- */
 namespace HFG;
 
-use HFG\Core\Builder\Header as HeaderBuilder;
-
-$id = current_component( HeaderBuilder::BUILDER_NAME )->get_id();
+$id = current_component()->get_id();
 
 $item_classes   = array();
 $item_classes[] = 'item--inner';
@@ -32,13 +27,13 @@ $item_classes = join( ' ', $item_classes );
 
 ?>
 <div class="<?php echo esc_attr( $item_classes ); ?>"
-     data-section="<?php echo esc_attr( current_component( HeaderBuilder::BUILDER_NAME )->get_section_id() ); ?>"
-     data-item-id="<?php echo esc_attr( current_component( HeaderBuilder::BUILDER_NAME )->get_id() ); ?>">
+     data-section="<?php echo esc_attr( current_component()->get_section_id() ); ?>"
+     data-item-id="<?php echo esc_attr( current_component()->get_id() ); ?>">
 	<?php
-	current_component( HeaderBuilder::BUILDER_NAME )->render_component();
+	current_component()->render_component();
 	?>
 	<?php if ( is_customize_preview() ) { ?>
-		<span class="item--preview-name"> <?php echo esc_html( current_component( HeaderBuilder::BUILDER_NAME )->get_property( 'label' ) ) ?></span>
+		<span class="item--preview-name"> <?php echo esc_html( current_component()->get_property( 'label' ) ) ?></span>
 	<?php } ?>
 </div>
 

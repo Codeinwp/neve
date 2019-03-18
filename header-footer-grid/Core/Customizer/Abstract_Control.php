@@ -34,8 +34,6 @@ abstract class Abstract_Control extends WP_Customize_Control {
 	public $hfg_settings;
 
 	/**
-<<<<<<< HEAD
-=======
 	 * An instance of Responsive_Setting or null
 	 *
 	 * @since   1.0.0
@@ -45,7 +43,6 @@ abstract class Abstract_Control extends WP_Customize_Control {
 	protected $responsive = null;
 
 	/**
->>>>>>> header_footer
 	 * Slider_Control constructor.
 	 *
 	 * @since   1.0.0

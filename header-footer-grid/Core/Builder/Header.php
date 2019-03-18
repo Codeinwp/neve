@@ -21,7 +21,9 @@ use HFG\Main;
  */
 class Header extends Abstract_Builder {
 
-
+	/**
+	 * Builder name.
+	 */
 	const BUILDER_NAME = 'header';
 
 	/**
@@ -74,11 +76,12 @@ class Header extends Abstract_Builder {
 
 	public function render_row( $device_id, $row_id, $row_details ) {
 
-		$name = '';
+		$name = $row_id;
 
 		if ( $row_id === 'sidebar' && $device_id === 'mobile' ) {
 			$name = 'mobile';
 		}
+
 		Main::get_instance()->load( 'row-wrapper', $name );
 	}
 

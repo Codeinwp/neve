@@ -13,9 +13,6 @@ namespace HFG;
 use HFG\Core\Builder\Header as HeaderBuilder;
 
 ?>
-<header id="masthead"
-        class="<?php echo get_builders( HeaderBuilder::BUILDER_NAME )->get_property( 'panel' ); ?> site-header">
-	<div id="masthead-inner" class="site-header-inner">
-		<?php render_builder( HeaderBuilder::BUILDER_NAME ) ?>
-	</div>
-</header>
+<div id="header-grid">
+	<?php render_builder( HeaderBuilder::BUILDER_NAME ); ?>
+</div>

@@ -450,3 +450,9 @@
 .footer-copyright {
   font-size: 0.875em;
 }
+.hfg-grid .builder-item.hfg-edge-left .item--inner > div{
+  flex-direction: row;
+}
+.hfg-grid .builder-item.hfg-edge-right .item--inner > div{
+  flex-direction: row-reverse;
+}
