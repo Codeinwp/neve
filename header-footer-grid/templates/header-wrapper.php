@@ -14,7 +14,7 @@ use HFG\Core\Builder\Header as HeaderBuilder;
 
 ?>
 <header id="masthead"
-        class="<?php get_builders( HeaderBuilder::BUILDER_NAME )->get_property( 'panel_id' ) ?>  site-header">
+        class="<?php echo get_builders( HeaderBuilder::BUILDER_NAME )->get_property( 'panel' ); ?> site-header">
 	<div id="masthead-inner" class="site-header-inner">
 		<?php render_builder( HeaderBuilder::BUILDER_NAME ) ?>
 	</div>

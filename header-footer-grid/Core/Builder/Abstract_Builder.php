@@ -12,15 +12,19 @@
 namespace HFG\Core\Builder;
 
 use HFG\Core\Components\Abstract_Component;
+use HFG\Core\Customizer\Customize_Control;
+use HFG\Core\Customizer\Customize_Setting;
 use HFG\Core\Customizer\Image_Radio_Control;
 use HFG\Core\Customizer\Responsive_Setting;
 use HFG\Core\Customizer\Responsive_Slider_Control;
 use HFG\Core\Customizer\Select_Control;
+use HFG\Core\Customizer\Settings_Manager;
 use HFG\Core\Interfaces\Builder;
 use HFG\Core\Interfaces\Component;
 use HFG\Core\Settings;
 use HFG\Traits\Core;
-use Neve\Customizer\Base_Customizer;
+use Neve\Customizer\Controls\Radio_Image;
+use Neve\Customizer\Controls\Range;
 use Neve\Customizer\Types\Control;
 use WP_Customize_Manager;
 
@@ -29,7 +33,7 @@ use WP_Customize_Manager;
  *
  * @package HFG\Core\Builder
  */
-abstract class Abstract_Builder extends Base_Customizer implements Builder {
+abstract class Abstract_Builder implements Builder {
 	use Core;
 	public static $current_device = null;
 	public static $current_row = null;
@@ -106,13 +110,14 @@ abstract class Abstract_Builder extends Base_Customizer implements Builder {
 	 */
 	protected $builder_components = array();
 
-	public static function get_device() {
-		return self::$current_device;
+	public static $settings_manager = null;
+
+	public function __construct() {
+		$this->init();
+		self::$settings_manager = new Settings_Manager();
 	}
 
-	public static function get_row() {
-		return self::$current_row;
-	}
+	protected abstract function init();
 
 	/**
 	 * Method to get protected properties for class.
@@ -154,9 +159,7 @@ abstract class Abstract_Builder extends Base_Customizer implements Builder {
 				);
 			}
 		}
-		$style .= $this->css_array_to_css( $style_array );
-
-		return $style;
+		return $style . $this->css_array_to_css( $style_array );
 	}
 
 	/**
@@ -186,28 +189,23 @@ abstract class Abstract_Builder extends Base_Customizer implements Builder {
 	 * @return WP_Customize_Manager
 	 */
 	public function customize_register( WP_Customize_Manager $wp_customize ) {
-		$this->register_controls_callback( $wp_customize );
-		return $wp_customize;
-	}
-
-	public function add_controls() {
 		if ( ! empty( $this->remove_panels ) ) {
 			foreach ( $this->remove_panels as $panel_to_remove ) {
-				$this->wpc->remove_panel( $panel_to_remove );
+				$wp_customize->remove_panel( $panel_to_remove );
 			}
 		}
 
 		if ( ! empty( $this->remove_sections ) ) {
 			foreach ( $this->remove_sections as $section_to_remove ) {
-				$this->wpc->remove_section( $section_to_remove );
+				$wp_customize->remove_section( $section_to_remove );
 			}
 		}
 
-		if ( empty( $this->wpc->get_panel( $this->panel ) ) ) {
+		if ( empty( $wp_customize->get_panel( $this->panel ) ) ) {
 			$this->set_property( 'section', $this->control_id . '_section' );
 			$builder_title = ( isset( $this->title ) && ! empty( $this->title ) ) ? $this->title : __( 'HFG Panel', 'hfg-module' );
 
-			$this->wpc->add_panel(
+			$wp_customize->add_panel(
 				$this->panel, array(
 					'priority'       => 25,
 					'capability'     => 'edit_theme_options',
@@ -217,7 +215,7 @@ abstract class Abstract_Builder extends Base_Customizer implements Builder {
 				)
 			);
 
-			$this->wpc->add_section(
+			$wp_customize->add_section(
 				$this->section, array(
 					'title'    => __( 'Header', 'hfg-module' ),
 					'priority' => 299,
@@ -225,14 +223,14 @@ abstract class Abstract_Builder extends Base_Customizer implements Builder {
 				)
 			);
 
-			$this->wpc->add_setting(
+			$wp_customize->add_setting(
 				$this->control_id, array(
 					'default'   => '',
 					'transport' => 'postMessage',
 				)
 			);
 
-			$this->wpc->selective_refresh->add_partial(
+			$wp_customize->selective_refresh->add_partial(
 				$this->control_id . '_partial', array(
 					'selector'        => '.' . $this->panel,
 					'settings'        => array( $this->control_id ),
@@ -240,7 +238,7 @@ abstract class Abstract_Builder extends Base_Customizer implements Builder {
 				)
 			);
 
-			$this->wpc->add_control(
+			$wp_customize->add_control(
 				$this->control_id, array(
 					'section'        => $this->control_id . '_section',
 					'settings'       => $this->control_id,
@@ -249,7 +247,7 @@ abstract class Abstract_Builder extends Base_Customizer implements Builder {
 				)
 			);
 
-			$this->add_rows_controls();
+			$this->add_rows_controls( $wp_customize );
 		}
 
 		/**
@@ -258,12 +256,10 @@ abstract class Abstract_Builder extends Base_Customizer implements Builder {
 		 * @var Component $component
 		 */
 		foreach ( $this->builder_components as $component ) {
-			$component->customize_register( $this->wpc );
+			$component->customize_register( $wp_customize );
 		}
-	}
 
-	private function add_builder_controls() {
-
+		return $wp_customize;
 	}
 
 	/**
@@ -291,22 +287,18 @@ abstract class Abstract_Builder extends Base_Customizer implements Builder {
 	 *
 	 * @since   1.0.0
 	 * @access  protected
-<<<<<<< HEAD
-=======
 	 *
 	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
->>>>>>> origin/hfg_templating
 	 */
-	protected function add_rows_controls() {
+	protected function add_rows_controls( $wp_customize ) {
 		$rows = $this->get_rows();
 		if ( empty( $rows ) ) {
 			return;
 		}
 
-		$settings = Settings::get_instance();
 		foreach ( $rows as $row_id => $row_label ) {
 			$partial_settings = array();
-			$this->wpc->add_section(
+			$wp_customize->add_section(
 				$this->control_id . '_' . $row_id, array(
 					'title'    => $row_label,
 					'priority' => 100,
@@ -314,43 +306,48 @@ abstract class Abstract_Builder extends Base_Customizer implements Builder {
 				)
 			);
 
-			$this->wpc->add_setting(
-				$this->control_id . '_' . $row_id, array(
-					'default'   => '',
-					'transport' => 'postMessage',
-				)
-			);
+			$setting = new Customize_Setting( array(
+				'id' => $this->control_id . '_' . $row_id,
+				'transport' => 'postMessage',
+				'default' => '',
+			) );
+			self::$settings_manager->register( $setting );
 
-			$responsive_setting = new Responsive_Setting( $this->control_id . '_' . $row_id . '_layout', 'layout-full-contained', false );
-			$partial_settings   = array_merge( $partial_settings, $responsive_setting->get_settings_id_array() );
-			$this->wpc->add_control(
-				new Select_Control(
-					$this->wpc,
-					$this->control_id . '_' . $row_id . '_layout',
-					[
-						'responsive'  => $responsive_setting,
-						'label'       => __( 'Layout', 'hfg-module' ),
-						'section'     => $this->control_id . '_' . $row_id,
-						'input_attrs' => array(
-							'placeholder' => __( 'Select layout type ...', 'hfg-module' ),
-							'multiselect' => false,
-						),
-						'choices'     => array(
-							'layout-full-contained' => __( 'Full Width - Contained', 'hfg-module' ),
-							'layout-fullwidth'      => __( 'Full Width', 'hfg-module' ),
-							'layout-contained'      => __( 'Contained', 'hfg-module' ),
-						),
-					]
-				)
-			);
+			$wp_customize->add_setting( $setting->id, $setting->setting_args() );
 
-			$this->add_control(
-				new Control(
-					$this->control_id . '_' . $row_id . '_height',
-					array(
-						'sanitize_callback' => 'neve_sanitize_range_value',
-						'transport'         => 'postMessage',
+			$setting = new Customize_Setting( array(
+				'id' => $this->control_id . '_' . $row_id . '_layout',
+				'transport' => 'postMessage',
+				'default' => 'layout-full-contained',
+			) );
+			$wp_customize->add_setting( $setting->id, $setting->setting_args() );
+			array_push( $partial_settings, $setting->id );
+			$wp_customize->add_control(
+				$this->control_id . '_' . $row_id . '_layout',
+				[
+					'label'       => __( 'Layout', 'hfg-module' ),
+					'type'        => 'select',
+					'section'     => $this->control_id . '_' . $row_id,
+					'choices'     => array(
+						'layout-full-contained' => __( 'Full Width - Contained', 'hfg-module' ),
+						'layout-fullwidth'      => __( 'Full Width', 'hfg-module' ),
+						'layout-contained'      => __( 'Contained', 'hfg-module' ),
 					),
+				]
+			);
+
+
+			$setting = new Customize_Setting( array(
+				'id' => $this->control_id . '_' . $row_id . '_height',
+				'default' => '{ mobile: 0, tablet: 0, desktop: 0 }',
+				'transport' => 'postMessage',
+			) );
+			$wp_customize->add_setting( $setting->id, $setting->setting_args() );
+			array_push( $partial_settings, $setting->id );
+			$wp_customize->add_control(
+				new Range(
+					$wp_customize,
+					$this->control_id . '_' . $row_id . '_height',
 					array(
 						'label'       => esc_html__( 'Container width (px)', 'neve' ),
 						'section'     => $this->control_id . '_' . $row_id,
@@ -375,88 +372,40 @@ abstract class Abstract_Builder extends Base_Customizer implements Builder {
 							),
 						),
 						'priority'    => 25,
-					),
-					'Neve\Customizer\Controls\Range',
-					$this->control_id . '_' . $row_id . '_partial'
+					)
 				)
 			);
 
-//			$responsive_setting = new Responsive_Setting( $this->control_id . '_' . $row_id . '_height', 0, array( 'desktop', 'mobile' ) );
-//			$partial_settings   = array_merge( $partial_settings, $responsive_setting->get_settings_id_array() );
-//			$wp_customize->add_control(
-//				new Responsive_Slider_Control(
-//					$wp_customize,
-//					$this->control_id . '_' . $row_id . '_height',
-//					[
-//						'responsive'  => $responsive_setting,
-//						'label'       => esc_html__( 'Row Height' ),
-//						'section'     => $this->control_id . '_' . $row_id,
-//						'input_attrs' => array(
-//							'min'  => 0,
-//							'max'  => 300,
-//							'step' => 1,
-//						),
-//					]
-//				)
-//			);
-
-			$this->add_control(
-				new Control(
+			$setting = new Customize_Setting( array(
+				'id' => $this->control_id . '_' . $row_id . '_skin',
+				'default' => 'light-mode',
+				'transport' => 'postMessage',
+			) );
+			$wp_customize->add_setting( $setting->id, $setting->setting_args() );
+			array_push( $partial_settings, $setting->id );
+			$wp_customize->add_control(
+				new Radio_Image(
+					$wp_customize,
 					$this->control_id . '_' . $row_id . '_skin',
-					array(
-						'sanitize_callback' => array( $this, 'sanitize_sidebar_layout' ),
-						'transport'         => 'postMessage',
-						'default'           => 'light-mode',
-					),
-					array(
+					[
 						'label'           => __( 'Skin Mode', 'neve' ),
 						'section'         => $this->control_id . '_' . $row_id,
 						'priority'        => 10,
 						'choices'         => array(
 							'light-mode' => array(
-								'url' => $settings->url . '/assets/images/customizer/text_mode_dark.svg',
+								'url' => Settings::get_instance()->url . '/assets/images/customizer/text_mode_dark.svg',
 								'name'  => __( 'Light Mode' ),
 							),
 							'dark-mode'  => array(
-								'url' => $settings->url . '/assets/images/customizer/text_mode_light.svg',
+								'url' => Settings::get_instance()->url . '/assets/images/customizer/text_mode_light.svg',
 								'name'  => __( 'Dark Mode' ),
 							),
 						),
-					),
-					'Neve\Customizer\Controls\Radio_Image',
-					array(
-						'selector'        => '.' . $this->panel,
-						'setting'        => $this->control_id . '_' . $row_id . '_skin',
-						'render_callback' => array( $this, 'render' ),
-					)
+					]
 				)
 			);
 
-//			$responsive_setting = new Responsive_Setting( $this->control_id . '_' . $row_id . '_skin', 'light-mode', false );
-//			$partial_settings   = array_merge( $partial_settings, $responsive_setting->get_settings_id_array() );
-//			$this->wpc->add_control(
-//				new Image_Radio_Control(
-//					$this->wpc,
-//					$this->control_id . '_' . $row_id . '_skin',
-//					[
-//						'responsive' => $responsive_setting,
-//						'label'      => __( 'Skin Mode' ),
-//						'section'    => $this->control_id . '_' . $row_id,
-//						'choices'    => array(
-//							'light-mode' => array(
-//								'image' => $settings->url . '/assets/images/customizer/text_mode_dark.svg',
-//								'name'  => __( 'Light Mode' ),
-//							),
-//							'dark-mode'  => array(
-//								'image' => $settings->url . '/assets/images/customizer/text_mode_light.svg',
-//								'name'  => __( 'Dark Mode' ),
-//							),
-//						),
-//					]
-//				)
-//			);
-
-			$this->wpc->selective_refresh->add_partial(
+			$wp_customize->selective_refresh->add_partial(
 				$this->control_id . '_' . $row_id . '_partial',
 				array(
 					'selector'        => '.' . $this->panel,

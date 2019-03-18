@@ -182,6 +182,64 @@ class Settings {
 		] );
 	}
 
+	private function media_from_id( $id, $size = 'full' ) {
+		$image_attributes = wp_get_attachment_image_src( $id, $size );
+		if ( ! $image_attributes ) {
+			return false;
+		}
+		return $image_attributes[0];
+	}
+
+	private function media_from_url( $url, $size = 'full' ) {
+		$img_id = attachment_url_to_postid( $url );
+		if ( $img_id ) {
+			$image_attributes = wp_get_attachment_image_src( $img_id, $size );
+			if ( ! $image_attributes ) {
+				return false;
+			}
+			return $image_attributes[0];
+		}
+		return $url;
+	}
+
+	private function media_from_array( $array = array(), $size = 'full' ) {
+		$value = wp_parse_args(
+			$array,
+			array(
+				'id'   => '',
+				'url'  => '',
+				'mime' => '',
+			)
+		);
+
+		if ( empty( $array['id'] ) && empty( $array['url'] ) ) {
+			return false;
+		}
+
+		$media_url = '';
+
+		if ( strpos( $array['mime'], 'image/' ) !== false ) {
+			$image_attributes = wp_get_attachment_image_src( $array['id'], $size );
+			if ( $image_attributes ) {
+				$media_url = $image_attributes[0];
+			}
+		} else {
+			$media_url = wp_get_attachment_url( $array['id'] );
+		}
+
+		if ( ! $media_url ) {
+			$media_url = $value['url'];
+			if ( $media_url ) {
+				$img_id = attachment_url_to_postid( $media_url );
+				if ( $img_id ) {
+					return wp_get_attachment_url( $img_id );
+				}
+			}
+		}
+
+		return $media_url;
+	}
+
 	/**
 	 * Utility method to return media url.
 	 *
@@ -192,68 +250,18 @@ class Settings {
 	 *
 	 * @return array|bool|false|string
 	 */
-	public function get_media( $value, $size = null ) {
+	public function get_media( $value, $size = 'full' ) {
 
 		if ( empty( $value ) ) {
 			return false;
 		}
 
-		if ( ! $size ) {
-			$size = 'full';
-		}
-
 		if ( is_numeric( $value ) ) {
-			$image_attributes = wp_get_attachment_image_src( $value, $size );
-			if ( ! $image_attributes ) {
-				return false;
-			}
-			return $image_attributes[0];
+			return $this->media_from_id( $value, $size );
 		} elseif ( is_string( $value ) ) {
-			$img_id = attachment_url_to_postid( $value );
-			if ( $img_id ) {
-				$image_attributes = wp_get_attachment_image_src( $img_id, $size );
-				if ( ! $image_attributes ) {
-					return false;
-				}
-				return $image_attributes[0];
-			}
-			return $value;
+			return $this->media_from_url( $value, $size );
 		} elseif ( is_array( $value ) ) {
-			$value = wp_parse_args(
-				$value,
-				array(
-					'id'   => '',
-					'url'  => '',
-					'mime' => '',
-				)
-			);
-
-			if ( empty( $value['id'] ) && empty( $value['url'] ) ) {
-				return false;
-			}
-
-			$media_url = '';
-
-			if ( strpos( $value['mime'], 'image/' ) !== false ) {
-				$image_attributes = wp_get_attachment_image_src( $value['id'], $size );
-				if ( $image_attributes ) {
-					$media_url = $image_attributes[0];
-				}
-			} else {
-				$media_url = wp_get_attachment_url( $value['id'] );
-			}
-
-			if ( ! $media_url ) {
-				$media_url = $value['url'];
-				if ( $media_url ) {
-					$img_id = attachment_url_to_postid( $media_url );
-					if ( $img_id ) {
-						return wp_get_attachment_url( $img_id );
-					}
-				}
-			}
-
-			return $media_url;
+			return $this->media_from_array( $value, $size );
 		}
 
 		return false;
