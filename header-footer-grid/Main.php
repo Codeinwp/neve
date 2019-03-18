@@ -116,6 +116,9 @@ class Main {
 	 * @return Abstract_Builder[]|Abstract_Builder Builder array(s).
 	 */
 	public function get_builders( $builder = '' ) {
+		if ( empty( $builder ) ) {
+			$builder = Abstract_Builder::get_current_builder();
+		}
 
 		return $this->customizer->get_builders( $builder );
 	}

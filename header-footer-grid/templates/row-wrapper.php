@@ -10,12 +10,9 @@
 
 namespace HFG;
 
-use HFG\Core\Builder\Header as HeaderBuilder;
-
-$row_index  = current_row( HeaderBuilder::BUILDER_NAME );
-$device     = current_device( HeaderBuilder::BUILDER_NAME );
-$control_id = get_builders( HeaderBuilder::BUILDER_NAME )->get_property( 'control_id' );
-
+$row_index  = current_row();
+$device     = current_device();
+$control_id = get_builders()->get_property( 'control_id' );
 
 $skin_mode   = get_theme_mod( $control_id . '_' . $row_index . '_skin', 'light-mode' );
 $row_classes = [
@@ -54,7 +51,7 @@ if ( ! empty( $row_styles_array ) ) {
 		<?php echo( wp_kses_post( $row_styles ) ); ?> >
 		<div class="hfg-container">
 			<div class="hfg-grid hfg-grid-<?php echo esc_attr( $row_index ); ?>">
-				<?php render_components( HeaderBuilder::BUILDER_NAME ) ?>
+				<?php render_components() ?>
 			</div>
 		</div>
 	</div>

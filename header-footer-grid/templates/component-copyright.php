@@ -10,9 +10,9 @@
 
 namespace HFG;
 
-use HFG\Core\Builder\Header as HeaderBuilder;
+use HFG\Core\Builder\Footer as FooterBuilder;
 
-$id = current_component( HeaderBuilder::BUILDER_NAME )->get_id();
+$id = current_component( FooterBuilder::BUILDER_NAME )->get_id();
 
 $tags = array(
 	'current_year' => date_i18n( 'Y' ),

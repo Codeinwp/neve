@@ -29,9 +29,33 @@ use WP_Customize_Manager;
  */
 abstract class Abstract_Builder implements Builder {
 	use Core;
+	/**
+	 * Internal pointer for current device id.
+	 *
+	 * @var null|string Device id.
+	 */
 	public static $current_device = null;
+
+	/**
+	 * Internal pointer for current row id.
+	 *
+	 * @var null|string Row id.
+	 */
 	public static $current_row = null;
+
+	/**
+	 * Internal pointer for current component id.
+	 *
+	 * @var null|string Component id.
+	 */
 	public static $current_component = null;
+
+	/**
+	 * Internal pointer for current builder id.
+	 *
+	 * @var null|string Builder id.
+	 */
+	public static $current_builder = null;
 	/**
 	 * Holds the control id.
 	 *
@@ -104,12 +128,13 @@ abstract class Abstract_Builder implements Builder {
 	 */
 	protected $builder_components = array();
 
-	public static function get_device() {
-		return self::$current_device;
-	}
-
-	public static function get_row() {
-		return self::$current_row;
+	/**
+	 * Returns current builder id.
+	 *
+	 * @return string|null Builder id.
+	 */
+	public static function get_current_builder() {
+		return self::$current_builder;
 	}
 
 	/**
@@ -389,16 +414,30 @@ abstract class Abstract_Builder implements Builder {
 		}
 	}
 
+	/**
+	 * Return current device in the loop.
+	 *
+	 * @return null|string Current device.
+	 */
 	public function get_current_device() {
 		return self::$current_device;
 	}
 
+	/**
+	 * Return current row in the loop.
+	 *
+	 * @return null|string Current row.
+	 */
 	public function get_current_row_index() {
 		return self::$current_row;
 	}
 
+	/**
+	 * Render markup for builder.
+	 */
 	public function render() {
-		$layout = $this->get_layout_data();
+		$layout                = $this->get_layout_data();
+		self::$current_builder = $this->get_id();
 		foreach ( $layout as $device_name => $device ) {
 			if ( empty( $device ) ) {
 				continue;
@@ -421,6 +460,19 @@ abstract class Abstract_Builder implements Builder {
 		return wp_parse_args( $data, array_fill_keys( array_keys( $this->devices ), array_fill_keys( array_keys( $this->get_rows() ), [] ) ) );
 	}
 
+	/**
+	 * Get builder id.
+	 *
+	 * @return string Builder id.
+	 */
+	public abstract function get_id();
+
+	/**
+	 * Render device markup.
+	 *
+	 * @param string $device_name Device id.
+	 * @param array  $device_details Device meta.
+	 */
 	public function render_device( $device_name, $device_details ) {
 		foreach ( $device_details as $index => $row ) {
 			if ( empty( $row ) ) {
@@ -432,8 +484,21 @@ abstract class Abstract_Builder implements Builder {
 		}
 	}
 
+	/**
+	 * Render row markup
+	 *
+	 * @param string $device_id Device id.
+	 * @param string $row_id Row id.
+	 * @param array  $row_details Row metadata.
+	 */
 	public abstract function render_row( $device_id, $row_id, $row_details );
 
+	/**
+	 * Render components in the row.
+	 *
+	 * @param null|string $device Device id.
+	 * @param null|array  $row Row details.
+	 */
 	public function render_components( $device = null, $row = null ) {
 
 		if ( $device === null && $row === null ) {
@@ -525,8 +590,6 @@ abstract class Abstract_Builder implements Builder {
 
 		return $this->builder_components[ $id ];
 	}
-
-	public abstract function get_id();
 
 	/**
 	 * Returns the builder components.
