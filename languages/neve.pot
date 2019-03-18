@@ -2,9 +2,9 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Neve 2.1.0\n"
+"Project-Id-Version: Neve 2.2.0\n"
 "Report-Msgid-Bugs-To: https://github.com/Codeinwp/neve/issues\n"
-"POT-Creation-Date: 2019-03-07 14:23:44+00:00\n"
+"POT-Creation-Date: 2019-03-18 15:31:23+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -130,11 +130,11 @@ msgstr ""
 msgid "Activating "
 msgstr ""
 
-#: inc/compatibility/woocommerce.php:236
+#: inc/compatibility/woocommerce.php:238
 msgid "Filter"
 msgstr ""
 
-#: inc/compatibility/woocommerce.php:435
+#: inc/compatibility/woocommerce.php:437
 #: inc/customizer/options/layout_navigation.php:86 inc/views/header.php:122
 msgid "Cart"
 msgstr ""
