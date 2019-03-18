@@ -14,7 +14,6 @@ add_theme_support(
 				'HFG\Core\Components\MenuIcon',
 				'HFG\Core\Components\Nav',
 				'HFG\Core\Components\Button',
-
 			),
 			'HFG\Core\Builder\Footer' => array(
 				'HFG\Core\Components\FooterWidgetOne',
