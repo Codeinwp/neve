@@ -108,7 +108,7 @@ class Footer extends Abstract_Builder {
 	 * @param string $html The HTML.
 	 */
 	public function render_row( $device_id, $row_id, $row_details ) {
-		Main::get_instance()->load( 'row-wrapper' );
+		Main::get_instance()->load( 'footer-row-wrapper' );
 	}
 
 	public function get_id() {

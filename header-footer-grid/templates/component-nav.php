@@ -19,11 +19,13 @@ if ( $hide_arrow ) {
 	$style .= ' hide-arrow-active';
 }
 
-$container_classes = $id . ' ' . $id . '-__id__ nav-menu-__device__ ' . $id . '-__device__' . ( $style ? ' ' . $style : '' );
+$container_classes = '';
 
 ?>
-<nav id="site-navigation-__id__-__device__"
-     class="site-navigation <?php echo esc_attr( $container_classes ) ?>">
+<div class="nv-nav-wrap nav-left">
+<div role="navigation" class=" <?php echo esc_attr( $container_classes ) ?>"
+     aria-label="<?php echo esc_html( __( 'Primary Menu', 'neve' ) ); ?>">
+
 	<?php wp_nav_menu( [
 		'theme_location' => 'primary',
 		'menu_id'        => 'nv-primary-navigation',
@@ -32,5 +34,6 @@ $container_classes = $id . ' ' . $id . '-__id__ nav-menu-__device__ ' . $id . '-
 		'fallback_cb'    => '\Neve\Views\Nav_Walker::fallback',
 	] );
 	?>
-</nav>
+</div>
+</div>
 

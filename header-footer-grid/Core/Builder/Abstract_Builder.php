@@ -508,6 +508,7 @@ abstract class Abstract_Builder implements Builder {
 
 		$data        = $this->get_layout_data()[ $device ][ $row_index ];
 		$max_columns = 12;
+		$o = 0;
 		$last_item   = null;
 
 		$collection = new \CachingIterator(
@@ -540,9 +541,15 @@ abstract class Abstract_Builder implements Builder {
 				$push_left = 'off-' . $x;
 			}
 
+			$edge_class = ( $x > 0 && ( ( $x + $width + $o ) === $max_columns ) ) ? 'hfg-edge-right' : ( ( $x === 0 ) ? 'hfg-edge-left' : '' );
+
 			$component->current_x     = $x;
 			$component->current_width = $width;
-			$classes                  = [ 'hfg-col-' . $width, '_md-' . $width . '_sm-' . $width, 'builder-item' ];
+			$classes                  = [
+				'hfg-col-' . $width . '_md-' . $width . '_sm-' . $width,
+				'builder-item',
+				$edge_class
+			];
 			self::$current_component  = $component_location['id'];
 			echo sprintf( '<div class="%s" data-push-left="%s">', esc_attr( join( ' ', $classes ) ), esc_attr( $push_left ) );
 			$component->render();

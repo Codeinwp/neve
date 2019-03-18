@@ -7,10 +7,6 @@
  * @version 1.0.0
  * @package HFG
  */
-
-/**
- * @var \HFG\Core\Components\Abstract_Component $this Component object.
- */
 namespace HFG;
 
 $id = current_component()->get_id();
