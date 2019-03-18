@@ -1,4 +1,12 @@
 
+ ### v2.2.0 - 2019-03-18 
+ **Changes:** 
+ * New Original starter site created in the new Gutenberg editor for WordPress 5 users
+* Improved onboarding page layout
+* Compatibility with the Neve Hooks plugin
+* WPML compatibility
+* Update Contact us with the correct link
+ 
  ### v2.1.0 - 2019-03-07 
  **Changes:** 
  * Two newly added Elementor Starter Sites
