@@ -378,34 +378,6 @@ abstract class Abstract_Builder implements Builder {
 				)
 			);
 
-			// $default = json_encode(
-			// array(
-			// 'font'          => 'Open Sans',
-			// 'regularweight' => 'regular',
-			// 'italicweight'  => 'italic',
-			// 'boldweight'    => '700',
-			// 'category'      => 'sans-serif',
-			// )
-			// );
-			// $responsive_setting = new Responsive_Setting( $this->control_id . '_' . $row_id . '_font_select', $default, false );
-			// $partial_settings = array_merge( $partial_settings, $responsive_setting->get_settings_id_array() );
-			// $wp_customize->add_control(
-			// new Google_Font_Control(
-			// $wp_customize,
-			// $this->control_id . '_' . $row_id . '_font_select',
-			// [
-			// 'responsive' => $responsive_setting,
-			// 'label'       => __( 'Row Font Control', 'hfg-module' ),
-			// 'description' => esc_html__( 'Select a Google Font to use for this row.', 'hfg-module' ),
-			// 'section'     => $this->control_id . '_' . $row_id,
-			// 'input_attrs' => array(
-			// 'font_count' => 'all',
-			// 'orderby'    => 'alpha',
-			// ),
-			// ]
-			// )
-			// );
-			// var_dump( $partial_settings );
 			$wp_customize->selective_refresh->add_partial(
 				$this->control_id . '_' . $row_id . '_partial',
 				array(

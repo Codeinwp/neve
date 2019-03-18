@@ -13,7 +13,7 @@ namespace HFG\Core\Components;
 
 use HFG\Core\Customizer\Image_Radio_Control;
 use HFG\Core\Settings;
-use Neve\Views\Nav_Walker;
+use HFG\Main;
 use WP_Customize_Manager;
 
 /**
@@ -28,6 +28,7 @@ class Nav extends Abstract_Component {
 	 *
 	 * @since   1.0.0
 	 * @access  public
+	 *
 	 * @param string $panel The panel name.
 	 */
 	public function __construct( $panel ) {
@@ -43,6 +44,7 @@ class Nav extends Abstract_Component {
 	 *
 	 * @since   1.0.0
 	 * @access  public
+	 *
 	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
 	 *
 	 * @return WP_Customize_Manager
@@ -108,61 +110,9 @@ class Nav extends Abstract_Component {
 
 		return parent::customize_register( $wp_customize );
 	}
+
 	public function render_component() {
-		echo '23';
-		// TODO: Implement render_component() method.
+		Main::get_instance()->load( 'component-nav' );
 	}
 
-	/**
-	 * Render method.
-	 *
-	 * @since   1.0.0
-	 * @access  public
-	 * @return mixed|string
-	 */
-	public function render_component2() {
-		$html           = '';
-		$item_classes   = array();
-		$item_classes[] = 'item--inner';
-		$item_classes[] = 'builder-item--' . $this->id;
-		if ( strpos( $this->id, '-menu' ) ) {
-			$item_classes[] = 'has_menu';
-		}
-		if ( is_customize_preview() ) {
-			$item_classes[] = ' builder-item-focus';
-		}
-
-		$style = sanitize_text_field( get_theme_mod( $this->id . '_style', 'style-plain' ) );
-		if ( $style ) {
-			$style = sanitize_text_field( $style );
-		}
-
-		$hide_arrow = sanitize_text_field( get_theme_mod( $this->id . '_hide-arrow', false ) );
-		if ( $hide_arrow ) {
-			$style .= ' hide-arrow-active';
-		}
-
-		$item_classes      = join( ' ', $item_classes );
-		$container_classes = $this->id . ' ' . $this->id . '-__id__ nav-menu-__device__ ' . $this->id . '-__device__' . ( $style ? ' ' . $style : '' );
-
-		$html .= '<div class="' . esc_attr( $item_classes ) . '" data-section="' . $this->section . '" data-item-id="' . esc_attr( $this->id ) . '" >';
-		$html .= '<nav  id="site-navigation-__id__-__device__" class="site-navigation ' . $container_classes . '">';
-		$html .= $this->safe_echo(
-			'wp_nav_menu',
-			array(
-				'theme_location' => 'primary',
-				'menu_id'        => 'nv-primary-navigation',
-				'container'      => 'ul',
-				'walker'         => new Nav_Walker(),
-				'fallback_cb'    => '\Neve\Views\Nav_Walker::fallback',
-			)
-		);
-		$html .= '</nav>';
-		if ( is_customize_preview() ) {
-			$html .= '<span class="item--preview-name">' . esc_html( $this->label ) . '</span>';
-		}
-		$html .= '</div>';
-
-		return $html;
-	}
 }
