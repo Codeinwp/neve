@@ -549,7 +549,7 @@ abstract class Abstract_Builder implements Builder {
 				'hfg-col-' . $width . '_md-' . $width . '_sm-' . $width,
 				'builder-item',
 				$last_item === null ? 'hfg-item-first' : '',
-				$x + $width + $o === $max_columns ? 'hfg-item-last' : '',
+				( ! $collection->hasNext() ) ? 'hfg-item-last' : '',
 				$edge_class
 			];
 			self::$current_component  = $component_location['id'];

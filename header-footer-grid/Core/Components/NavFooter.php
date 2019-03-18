@@ -11,29 +11,31 @@
 
 namespace HFG\Core\Components;
 
+use HFG\Core\Customizer\Image_Radio_Control;
+use HFG\Core\Settings;
 use HFG\Main;
 use WP_Customize_Manager;
 
 /**
- * Class Copyright
+ * Class NavFooter
  *
  * @package HFG\Core\Components
  */
-class Copyright extends Abstract_Component {
+class NavFooter extends Abstract_Component {
 
 	/**
-	 * Copyright constructor.
+	 * Nav constructor.
 	 *
 	 * @since   1.0.0
 	 * @access  public
 	 *
-	 * @param string $panel The panel ID.
+	 * @param string $panel The panel name.
 	 */
 	public function __construct( $panel ) {
-		$this->set_property( 'label', __( 'Copyright', 'hfg-module' ) );
-		$this->set_property( 'id', 'footer_copyright' );
+		$this->set_property( 'label', __( 'Footer Menu', 'hfg-module' ) );
+		$this->set_property( 'id', 'footer-menu' );
 		$this->set_property( 'width', 2 );
-		$this->set_property( 'section', 'footer_copyright' );
+		$this->set_property( 'section', 'footer_menu_primary' );
 		$this->set_property( 'panel', $panel );
 	}
 
@@ -60,35 +62,47 @@ class Copyright extends Abstract_Component {
 		);
 
 		$wp_customize->add_setting(
-			$this->id . '_content',
+			$this->id . '_style',
 			array(
-				'default'        => apply_filters(
-					'ti_wl_copyright',
-					sprintf(
-					/* translators: %1$s is Theme Name ( Neve ), %2$s is WordPress */
-						esc_html__( '%1$s | Powered by %2$s', 'neve' ),
-						wp_kses_post( '<a href="https://themeisle.com/themes/neve/" rel="nofollow">Neve</a>' ),
-						wp_kses_post( '<a href="http://wordpress.org" rel="nofollow">WordPress</a>' )
-					)
-				),
+				'default'        => 'style-plain',
 				'theme_supports' => 'hfg_support',
 				'transport'      => 'postMessage',
 			)
 		);
 		$wp_customize->add_control(
-			$this->id . '_content',
-			[
-				'label'   => esc_html__( 'Copyright Content', 'hfg-module' ),
-				'type'    => 'textarea',
-				'section' => $this->section,
-			]
+			new Image_Radio_Control(
+				$wp_customize,
+				$this->id . '_style',
+				[
+					'label'   => __( 'Skin Mode' ),
+					'section' => $this->section,
+					'choices' => array(
+						'style-plain'         => array(
+							'image' => Settings::get_instance()->url . '/assets/images/customizer/menu_style_1.svg',
+							'name'  => __( 'Plain' ),
+						),
+						'style-full-height'   => array(
+							'image' => Settings::get_instance()->url . '/assets/images/customizer/menu_style_2.svg',
+							'name'  => __( 'Full Height' ),
+						),
+						'style-border-bottom' => array(
+							'image' => Settings::get_instance()->url . '/assets/images/customizer/menu_style_3.svg',
+							'name'  => __( 'Bottom Border' ),
+						),
+						'style-border-top'    => array(
+							'image' => Settings::get_instance()->url . '/assets/images/customizer/menu_style_4.svg',
+							'name'  => __( 'Top Border' ),
+						),
+					),
+				]
+			)
 		);
 
 		$wp_customize->selective_refresh->add_partial(
 			$this->id . '_partial', array(
 				'selector'        => $selector,
 				'settings'        => array(
-					$this->id . '_content',
+					$this->id . '_style',
 				),
 				'render_callback' => $fn,
 			)
@@ -97,13 +111,8 @@ class Copyright extends Abstract_Component {
 		return parent::customize_register( $wp_customize );
 	}
 
-	/**
-	 * Render method for component.
-	 *
-	 * @since   1.0.0
-	 * @access  public
-	 */
 	public function render_component() {
-		Main::get_instance()->load( 'component-copyright' );
+		Main::get_instance()->load( 'component-nav-footer' );
 	}
+
 }

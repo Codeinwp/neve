@@ -14,16 +14,19 @@ use HFG\Core\Builder\Footer as FooterBuilder;
 
 $id = current_component( FooterBuilder::BUILDER_NAME )->get_id();
 
-$tags = array(
-	'current_year' => date_i18n( 'Y' ),
-	'site_title'   => get_bloginfo( 'name' ),
-	'theme_author' => sprintf( '<a href="https://themeisle.com">%1$s</a>', 'Themeisle' ), // Brand name.
+$content = get_theme_mod(
+	$id . '_content',
+	get_theme_mod( 'neve_footer_text',
+		apply_filters(
+			'ti_wl_copyright',
+			sprintf(
+			/* translators: %1$s is Theme Name ( Neve ), %2$s is WordPress */
+				esc_html__( '%1$s | Powered by %2$s', 'neve' ),
+				wp_kses_post( '<a href="https://themeisle.com/themes/neve/" rel="nofollow">Neve</a>' ),
+				wp_kses_post( '<a href="http://wordpress.org" rel="nofollow">WordPress</a>' )
+			)
+		) )
 );
-
-$content = get_theme_mod( $id . '_content', __( 'Copyright &copy; {current_year} {site_title} - Powered by {theme_author}.', 'hfg-module' ) );
-foreach ( $tags as $k => $v ) {
-	$content = str_replace( '{' . $k . '}', $v, $content );
-}
 
 echo wp_kses_post( balanceTags( $content, true ) );
 

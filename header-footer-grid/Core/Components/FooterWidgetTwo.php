@@ -27,7 +27,7 @@ class FooterWidgetTwo extends Abstract_FooterWidget {
 	 */
 	public function __construct( $panel ) {
 		$this->set_property( 'label', __( 'Footer Sidebar 2', 'hfg-module' ) );
-		$this->set_property( 'id', 'footer-2' );
+		$this->set_property( 'id', 'footer-two-widgets' );
 		$this->set_property( 'width', 3 );
 		$this->set_property( 'section', 'sidebar-widgets-footer-2' );
 		$this->set_property( 'panel', $panel );
