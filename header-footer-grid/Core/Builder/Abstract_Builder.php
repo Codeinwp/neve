@@ -508,7 +508,7 @@ abstract class Abstract_Builder implements Builder {
 
 		$data        = $this->get_layout_data()[ $device ][ $row_index ];
 		$max_columns = 12;
-		$o = 0;
+		$o           = 0;
 		$last_item   = null;
 
 		$collection = new \CachingIterator(
@@ -548,6 +548,8 @@ abstract class Abstract_Builder implements Builder {
 			$classes                  = [
 				'hfg-col-' . $width . '_md-' . $width . '_sm-' . $width,
 				'builder-item',
+				$last_item === null ? 'hfg-item-first' : '',
+				$x + $width + $o === $max_columns ? 'hfg-item-last' : '',
 				$edge_class
 			];
 			self::$current_component  = $component_location['id'];
