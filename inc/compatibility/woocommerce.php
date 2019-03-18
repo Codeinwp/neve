@@ -142,6 +142,7 @@ class Woocommerce {
 		remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20 );
 		remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
 		remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
+		add_action( 'nv_woo_header_bits', 'woocommerce_catalog_ordering', 30 );
 		add_filter( 'woocommerce_show_page_title', '__return_false' );
 		add_action( 'neve_before_shop_loop_content', array( $this, 'add_header_bits' ), 0 );
 
@@ -169,7 +170,7 @@ class Woocommerce {
 
 		echo '<div class="nv-woo-filters">';
 		$this->sidebar_toggle();
-		woocommerce_catalog_ordering();
+		do_action( 'nv_woo_header_bits' );
 		echo '</div>';
 	}
 
