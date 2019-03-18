@@ -11,10 +11,8 @@
 
 namespace HFG\Core\Builder;
 
-use ArrayIterator;
-use CachingIterator;
-use HFG\Core\Components\Abstract_Component;
 use HFG\Core\Settings;
+use HFG\Main;
 
 /**
  * Class Footer
@@ -22,6 +20,14 @@ use HFG\Core\Settings;
  * @package HFG\Core\Builder
  */
 class Footer extends Abstract_Builder {
+	/**
+	 * Builder name.
+	 */
+	const BUILDER_NAME = 'footer';
+	/**
+	 * Number of sidebars to register.
+	 */
+	const FOOTER_SIDEBARS_LIMIT = 4;
 
 	/**
 	 * Footer constructor.
@@ -38,9 +44,29 @@ class Footer extends Abstract_Builder {
 		$this->devices = [
 			'desktop' => 'Footer Layout',
 		];
-
+		$this->register_sidebars();
 		add_action( 'hfg_footer_render', array( $this, 'footer_render' ) );
 		add_filter( 'theme_mod_' . $this->control_id, array( $this, 'filter_defaults' ) );
+	}
+
+	/**
+	 * Register footer sidebars.
+	 */
+	public function register_sidebars() {
+		for ( $i = 1; $i <= self::FOOTER_SIDEBARS_LIMIT; $i ++ ) {
+			register_sidebar(
+				array(
+					/* translators: 1: Widget number. */
+					'name'          => sprintf( __( 'Footer Sidebar %d', 'hfg-module' ), $i ),
+					'id'            => 'footer-' . $i,
+					'description'   => __( 'Add widgets here.', 'hfg-module' ),
+					'before_widget' => '<section id="%1$s" class="widget %2$s">',
+					'after_widget'  => '</section>',
+					'before_title'  => '<h4 class="widget-title">',
+					'after_title'   => '</h4>',
+				)
+			);
+		}
 	}
 
 	/**
@@ -48,6 +74,7 @@ class Footer extends Abstract_Builder {
 	 *
 	 * @since   1.0.0
 	 * @access  public
+	 *
 	 * @param string $theme_mod The name of the mod.
 	 *
 	 * @return false|mixed|string
@@ -56,6 +83,7 @@ class Footer extends Abstract_Builder {
 		if ( empty( $theme_mod ) || ! $theme_mod || is_object( $theme_mod ) && empty( json_decode( json_encode( $theme_mod ), true ) ) ) {
 			return json_encode( Settings::get_instance()->get_footer_defaults_neve() );
 		}
+
 		return $theme_mod;
 	}
 
@@ -66,11 +94,8 @@ class Footer extends Abstract_Builder {
 	 * @access  public
 	 */
 	public function footer_render() {
-		$html  = '<footer class="site-footer" id="site-footer">';
-		$html .= $this->render();
-		$html .= '</footer>';
 
-		echo $html;
+		Main::get_instance()->load( 'footer-wrapper' );
 	}
 
 	/**
@@ -78,106 +103,16 @@ class Footer extends Abstract_Builder {
 	 *
 	 * @since   1.0.0
 	 * @access  protected
+	 *
 	 * @param array  $row Row list.
 	 * @param string $html The HTML.
 	 */
-	protected function render_row( $row, &$html ) {
-		$max_columns = 12;
-		$last_item   = null;
-
-		$collection = new CachingIterator(
-			new ArrayIterator(
-				$row
-			), CachingIterator::TOSTRING_USE_CURRENT
-		);
-		foreach ( $collection as $component_location ) {
-			/**
-			 * An instance of Abstract_Component.
-			 *
-			 * @var Abstract_Component $component
-			 */
-			$component = $this->builder_components[ $component_location['id'] ];
-			$x         = intval( $component_location['x'] );
-			$width     = intval( $component_location['width'] );
-			if ( ! $collection->hasNext() && ( $x + $width < $max_columns ) ) {
-				$width += $max_columns - ( $x + $width );
-			}
-
-			$push_left = '';
-			if ( $x > 0 && $last_item !== null ) {
-				$o = intval( $last_item['width'] ) + intval( $last_item['x'] );
-				if ( $x - $o > 0 ) {
-					$x         = $x - $o;
-					$push_left = 'off-' . $x;
-				}
-			} elseif ( $x > 0 ) {
-				$push_left = 'off-' . $x;
-			}
-
-			$component->current_x     = $x;
-			$component->current_width = $width;
-
-			$html .= '<div class="hfg-col-' . $width . '_md-' . $width . '_sm-' . $width . ' builder-item" data-push-left="' . $push_left . '">';
-			$html .= $component->render();
-			$html .= '</div>';
-
-			$last_item = $component_location;
-		}
+	public function render_row( $device_id, $row_id, $row_details ) {
+		Main::get_instance()->load( 'row-wrapper' );
 	}
 
-	/**
-	 * Render method.
-	 *
-	 * @since   1.0.0
-	 * @access  public
-	 * @return string
-	 */
-	public function render() {
-		$html   = '';
-		$layout = json_decode( get_theme_mod( $this->control_id, Settings::get_instance()->get_footer_defaults_neve() ), true );
-		foreach ( $layout as $device_name => $device ) {
-			$classes = array();
-
-			foreach ( $device as $index => $row ) {
-
-				if ( empty( $row ) ) {
-					continue;
-				}
-
-				$classes[] = get_theme_mod( $this->control_id . '_' . $index . '_layout', 'layout-full-contained' );
-				$skin_mode = get_theme_mod( $this->control_id . '_' . $index . '_skin', 'light-mode' );
-
-				$row_styles       = '';
-				$row_styles_array = [];
-				$row_height       = get_theme_mod( $this->control_id . '_' . $index . '_height' );
-				if ( $row_height ) {
-					$row_styles_array['height'] = 'auto;';
-					if ( intval( $row_height ) > 0 ) {
-						$row_styles_array['height'] = $row_height . 'px;';
-					}
-				}
-
-				if ( ! empty( $row_styles_array ) ) {
-					$row_styles = ' style="';
-					foreach ( $row_styles_array as $key => $value ) {
-						$row_styles .= sprintf( '%1$s: %2$s', $key, $value );
-					}
-					$row_styles .= '" ';
-				}
-
-				$html .= '<div class="footer-' . $index . ' ' . join( ' ', $classes ) . ' header--row" id="cb-row--footer-' . $index . '" data-row-id="' . $index . '" data-show-on="' . $device_name . '">';
-				$html .= '<div class="footer--row-inner footer-' . $index . '-inner ' . $skin_mode . '"' . $row_styles . '>';
-				$html .= '<div class="hfg-container">';
-				$html .= '<div class="hfg-grid hfg-grid-' . $index . '">';
-				$html .= $this->render_row( $row, $html );
-				$html .= '</div>';
-				$html .= '</div>';
-				$html .= '</div>';
-				$html .= '</div>';
-			}
-		}
-
-		return $html;
+	public function get_id() {
+		return self::BUILDER_NAME;
 	}
 
 	/**

@@ -15,6 +15,7 @@ use HFG\Core\Customizer\Slider_Control;
 use HFG\Core\Customizer\Text_Radio_Control;
 use HFG\Core\Customizer\Toggle_Control;
 use HFG\Core\Settings;
+use HFG\Main;
 use WP_Customize_Manager;
 
 /**
@@ -29,6 +30,7 @@ class Logo extends Abstract_Component {
 	 *
 	 * @since   1.0.0
 	 * @access  public
+	 *
 	 * @param string $panel The panel name.
 	 */
 	public function __construct( $panel ) {
@@ -44,12 +46,15 @@ class Logo extends Abstract_Component {
 	 *
 	 * @since   1.0.0
 	 * @access  public
+	 *
 	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
 	 *
 	 * @return WP_Customize_Manager
 	 */
 	public function customize_register( WP_Customize_Manager $wp_customize ) {
-		$fn       = array( $this, 'render' );
+
+		$fn = array( $this, 'render' );
+
 		$selector = '.builder-item--' . $this->id;
 
 		$wp_customize->add_section(
@@ -163,99 +168,12 @@ class Logo extends Abstract_Component {
 		return parent::customize_register( $wp_customize );
 	}
 
-	/**
-	 * Render logo.
-	 *
-	 * @since   1.0.0
-	 * @access  protected
-	 * @param string $html The HTML.
-	 */
-	protected function render_logo( &$html ) {
-		$settings          = Settings::get_instance();
-		$custom_logo_id    = get_theme_mod( 'custom_logo' );
-		$logo_image        = $settings->get_media( $custom_logo_id, 'full' );
-		$logo_retina       = '';
-		$logo_retina_image = $settings->get_media( $logo_retina );
-
-		if ( $logo_image ) {
-			$html .= '<a href="' . esc_url( home_url( '/' ) ) . '" class="logo-link" rel="home" itemprop="url">';
-			$html .= '<img class="site-img-logo" src="' . esc_url( $logo_image ) . '" alt="' . __( 'Logo', 'hfg-module' ) . '" ' . ( ( $logo_retina_image ) ? 'srcset="' . esc_url( $logo_retina_image ) . ' 2x"' : '' ) . '>';
-			$html .= '</a>';
-		}
-	}
 
 	/**
-	 * Render the title.
+	 * Render logo section.
 	 *
-	 * @since   1.0.0
-	 * @access  protected
-	 * @param string $html The HTML.
 	 */
-	protected function render_name( &$html ) {
-		$html .= '<h1 class="site-title">';
-		$html .= '<a href="' . esc_url( home_url( '/' ) ) . '" rel="home">' . get_bloginfo( 'name', 'display' ) . '</a>';
-		$html .= '</h1>';
-	}
-
-	/**
-	 * Render the tag line.
-	 *
-	 * @since   1.0.0
-	 * @access  protected
-	 * @param string $html The HTML.
-	 */
-	protected function render_description( &$html ) {
-		$description = get_bloginfo( 'description', 'display' );
-		if ( $description || is_customize_preview() ) {
-			$html .= '<p class="site-description text-uppercase text-xsmall">' . $description . '</p>';
-		}
-	}
-
-	/**
-	 * The render method.
-	 *
-	 * @since   1.0.0
-	 * @access  public
-	 * @return mixed|string
-	 */
-	public function render() {
-		$html           = '';
-		$item_classes   = array();
-		$item_classes[] = 'item--inner';
-		$item_classes[] = 'builder-item--' . $this->id;
-		if ( strpos( $this->id, '-menu' ) ) {
-			$item_classes[] = 'has_menu';
-		}
-		if ( is_customize_preview() ) {
-			$item_classes[] = ' builder-item-focus';
-		}
-
-		$show_name      = get_theme_mod( $this->id . '_show_title', 1 );
-		$show_desc      = get_theme_mod( $this->id . '_show_tagline', 1 );
-		$image_position = get_theme_mod( $this->id . '_logo_pos' );
-		$logo_classes   = array( 'nv-nav-header', 'site-branding' );
-		$logo_classes[] = 'logo-' . $image_position;
-		$item_classes   = join( ' ', $item_classes );
-
-		$html .= '<div class="' . esc_attr( $item_classes ) . '" data-section="' . $this->section . '" data-item-id="' . esc_attr( $this->id ) . '" >';
-		$html .= '<div class="' . esc_attr( join( ' ', $logo_classes ) ) . '">';
-		$html .= $this->render_logo( $html );
-		if ( $show_name || $show_desc ) {
-			$html .= '<div class="site-name-desc">';
-			if ( $show_name ) {
-				$html .= $this->render_name( $html );
-			}
-			if ( $show_desc ) {
-				$html .= $this->render_description( $html );
-			}
-			$html .= '</div>';
-		}
-		$html .= '</div>';
-		if ( is_customize_preview() ) {
-			$html .= '<span class="item--preview-name">' . esc_html( $this->label ) . '</span>';
-		}
-		$html .= '</div>';
-
-		return $html;
+	public function render_component() {
+		Main::get_instance()->load('component-logo');
 	}
 }

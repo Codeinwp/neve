@@ -14,6 +14,7 @@ namespace HFG\Core;
 
 use HFG\Config\Customizer\Style;
 use HFG\Config\Customizer\Typography;
+use HFG\Core\Builder\Abstract_Builder;
 use HFG\Core\Interfaces\Builder;
 use HFG\Traits\Core;
 use WP_Customize_Manager;
@@ -49,6 +50,7 @@ class Customizer {
 	 *
 	 * @since   1.0.0
 	 * @access  public
+	 *
 	 * @param Settings $settings The Settings class.
 	 */
 	public function __construct( Settings $settings ) {
@@ -73,7 +75,7 @@ class Customizer {
 				foreach ( $components as $component ) {
 					$new_builder->register_component( $component );
 				}
-				$this->builders[] = $new_builder;
+				$this->builders[ $new_builder->get_id() ] = $new_builder;
 			}
 		}
 
@@ -95,6 +97,7 @@ class Customizer {
 	 *
 	 * @since   1.0.0
 	 * @access  public
+	 *
 	 * @param array $classes List of body classes.
 	 *
 	 * @return array
@@ -107,26 +110,6 @@ class Customizer {
 		$classes[] = 'menu_sidebar_slide_left';
 
 		return $classes;
-	}
-
-	/**
-	 * Returns list of builders.
-	 *
-	 * @since   1.0.0
-	 * @access  public
-	 * @return array
-	 */
-	public function get_builders() {
-		$builders_list = array();
-		/**
-		 * A Builder Class instance.
-		 *
-		 * @var Builder $builder
-		 */
-		foreach ( $this->builders as $builder ) {
-			$builders_list[] = $builder->get_builder();
-		}
-		return $builders_list;
 	}
 
 	/**
@@ -155,7 +138,7 @@ class Customizer {
 			'HFG_Layout_Builder',
 			array(
 				'footer_moved_widgets_text' => '',
-				'builders'                  => $this->get_builders(),
+				'builders'                  => $this->get_builders_data(),
 				'is_rtl'                    => is_rtl(),
 				'change_version_nonce'      => wp_create_nonce( 'change_version_nonce' ),
 			)
@@ -168,8 +151,46 @@ class Customizer {
 		 * @var Builder $builder
 		 */
 		foreach ( $this->builders as $builder ) {
-		    $builder->scripts();
+			$builder->scripts();
 		}
+	}
+
+	/**
+	 * Returns list of builders.
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 * @return array
+	 */
+	public function get_builders_data() {
+
+		$builders_list = array();
+
+		/**
+		 * A Builder Class instance.
+		 *
+		 * @var Builder $builder
+		 */
+		foreach ( $this->builders as $key => $builder ) {
+			$builders_list[ $key ] = $builder->get_builder();
+		}
+
+		return $builders_list;
+	}
+
+	/**
+	 * Return builder object or whole list.
+	 *
+	 * @param string $name Builder id.
+	 *
+	 * @return Abstract_Builder[]|Abstract_Builder Builder object or list.
+	 */
+	public function get_builders( $name = '' ) {
+		if ( isset( $this->builders[ $name ] ) ) {
+			return $this->builders[ $name ];
+		}
+
+		return $this->builders;
 	}
 
 	/**
@@ -199,6 +220,7 @@ class Customizer {
 	 *
 	 * @since   1.0.0
 	 * @access  public
+	 *
 	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
 	 */
 	public function register( WP_Customize_Manager $wp_customize ) {
@@ -219,7 +241,7 @@ class Customizer {
 	 * @access  public
 	 */
 	public function template() {
-		require_once  $this->settings->path . '/templates/rows.php';
+		require_once $this->settings->path . '/templates/rows.php';
 		?>
 		<script type="text/html" id="tmpl-hfg--builder-panel">
 			<div class="hfg--customize-builder">
@@ -230,8 +252,10 @@ class Customizer {
 						<div class="hfg--cb-actions">
 							<?php do_action( 'hfg_builder_panel_actions_buttons' ); ?>
 							<a class="button button-secondary hfg--panel-close" href="#">
-								<span class="close-text"><i class="dashicons dashicons-arrow-down-alt2" style="margin-top: 4px;"></i> <?php _e( 'Close', 'neve' ); ?></span>
-								<span class="panel-name-text"><i class="dashicons dashicons-arrow-up-alt2" style="margin-top: 4px;"></i> {{ data.title }}</span>
+								<span class="close-text"><i class="dashicons dashicons-arrow-down-alt2"
+								                            style="margin-top: 4px;"></i> <?php _e( 'Close', 'neve' ); ?></span>
+								<span class="panel-name-text"><i class="dashicons dashicons-arrow-up-alt2"
+								                                 style="margin-top: 4px;"></i> {{ data.title }}</span>
 							</a>
 						</div>
 					</div>
@@ -240,18 +264,17 @@ class Customizer {
 			</div>
 		</script>
 
-
 		<script type="text/html" id="tmpl-hfg--cb-item">
 			<div class="grid-stack-item item-from-list for-s-{{ data.section }}"
-				title="{{ data.name }}"
-				data-id="{{ data.id }}"
-				data-section="{{ data.section }}"
-				data-control="{{ data.control }}"
-				data-gs-x="{{ data.x }}"
-				data-gs-y="{{ data.y }}"
-				data-gs-width="{{ data.width }}"
-				data-df-width="{{ data.width }}"
-				data-gs-height="1"
+			     title="{{ data.name }}"
+			     data-id="{{ data.id }}"
+			     data-section="{{ data.section }}"
+			     data-control="{{ data.control }}"
+			     data-gs-x="{{ data.x }}"
+			     data-gs-y="{{ data.y }}"
+			     data-gs-width="{{ data.width }}"
+			     data-df-width="{{ data.width }}"
+			     data-gs-height="1"
 			>
 				<div class="item-tooltip" data-section="{{ data.section }}">{{ data.name }}</div>
 				<div class="grid-stack-item-content">

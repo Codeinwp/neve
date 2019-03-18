@@ -11,6 +11,7 @@
 
 namespace HFG;
 
+use HFG\Core\Builder\Abstract_Builder;
 use HFG\Core\Customizer;
 use HFG\Core\Settings;
 
@@ -40,6 +41,15 @@ class Main {
 	private $settings;
 
 	/**
+	 * Holds a reference to Customizer class
+	 *
+	 * @since   1.0.0
+	 * @access  private
+	 * @var Customizer $settings
+	 */
+	private $customizer;
+
+	/**
 	 * Main Instance
 	 * Ensures only one instance of class is loaded or can be loaded.
 	 *
@@ -51,9 +61,11 @@ class Main {
 		if ( is_null( self::$_instance ) ) {
 			self::$_instance = new self();
 
-			self::$_instance->settings = Settings::get_instance();
+			self::$_instance->settings   = Settings::get_instance();
+			self::$_instance->customizer = new Customizer( Settings::get_instance() );
 			self::$_instance->init();
 		}
+
 		return self::$_instance;
 	}
 
@@ -68,10 +80,42 @@ class Main {
 		if ( ! apply_filters( 'hfg_active', true ) ) {
 			return;
 		}
-		$this->register_sidebars();
-		$customizer = new Customizer( $this->settings );
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+	}
+	/**
+	 * Return builders list, or builder details.
+	 *
+	 * @param string $builder Builder name, if required.
+	 *
+	 * @return Abstract_Builder[]|Abstract_Builder Builder array(s).
+	 */
+	public function get_builders( $builder = '' ) {
+		if ( empty( $builder ) ) {
+			$builder = Abstract_Builder::get_current_builder();
+		}
+
+		return $this->customizer->get_builders( $builder );
+	}
+
+	/**
+	 * Load template.
+	 *
+	 * @param string $slug Template slug.
+	 * @param string $slug Template variation.
+	 *
+	 */
+	public function load( $slug, $name = '' ) {
+		get_template_part( $this->get_templates_location() . $slug, $name );
+	}
+
+	/**
+	 * Get templates path location.
+	 *
+	 * @return string Templates path.
+	 */
+	public function get_templates_location() {
+		return 'header-footer-grid/templates/';
 	}
 
 	/**
@@ -107,29 +151,6 @@ class Main {
 	}
 
 	/**
-	 * Register sidebar
-	 *
-	 * @since   1.0.0
-	 * @access  public
-	 */
-	public function register_sidebars() {
-		for ( $i = 1; $i <= 6; $i ++ ) {
-			register_sidebar(
-				array(
-					/* translators: 1: Widget number. */
-					'name'          => sprintf( __( 'Footer Sidebar %d', 'hfg-module' ), $i ),
-					'id'            => 'footer-' . $i,
-					'description'   => __( 'Add widgets here.', 'hfg-module' ),
-					'before_widget' => '<section id="%1$s" class="widget %2$s">',
-					'after_widget'  => '</section>',
-					'before_title'  => '<h4 class="widget-title">',
-					'after_title'   => '</h4>',
-				)
-			);
-		}
-	}
-
-	/**
 	 * Cloning is forbidden.
 	 *
 	 * @access public
@@ -148,4 +169,8 @@ class Main {
 	public function __wakeup() {
 		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'hfg-module' ), '1.0.0' );
 	}
+}
+
+function hfg() {
+	return Main::get_instance();
 }

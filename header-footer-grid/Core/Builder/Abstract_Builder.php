@@ -11,6 +11,7 @@
 
 namespace HFG\Core\Builder;
 
+use HFG\Core\Components\Abstract_Component;
 use HFG\Core\Customizer\Image_Radio_Control;
 use HFG\Core\Customizer\Responsive_Setting;
 use HFG\Core\Customizer\Responsive_Slider_Control;
@@ -29,6 +30,33 @@ use WP_Customize_Manager;
 abstract class Abstract_Builder implements Builder {
 	use Core;
 	/**
+	 * Internal pointer for current device id.
+	 *
+	 * @var null|string Device id.
+	 */
+	public static $current_device = null;
+
+	/**
+	 * Internal pointer for current row id.
+	 *
+	 * @var null|string Row id.
+	 */
+	public static $current_row = null;
+
+	/**
+	 * Internal pointer for current component id.
+	 *
+	 * @var null|string Component id.
+	 */
+	public static $current_component = null;
+
+	/**
+	 * Internal pointer for current builder id.
+	 *
+	 * @var null|string Builder id.
+	 */
+	public static $current_builder = null;
+	/**
 	 * Holds the control id.
 	 *
 	 * @since   1.0.0
@@ -36,7 +64,6 @@ abstract class Abstract_Builder implements Builder {
 	 * @var string $control_id
 	 */
 	protected $control_id;
-
 	/**
 	 * Holds the panel id.
 	 *
@@ -45,7 +72,6 @@ abstract class Abstract_Builder implements Builder {
 	 * @var string $panel
 	 */
 	protected $panel;
-
 	/**
 	 * Holds the section id.
 	 *
@@ -54,7 +80,6 @@ abstract class Abstract_Builder implements Builder {
 	 * @var string $section
 	 */
 	protected $section;
-
 	/**
 	 * Holds the title.
 	 *
@@ -104,21 +129,12 @@ abstract class Abstract_Builder implements Builder {
 	protected $builder_components = array();
 
 	/**
-	 * Method to set protected properties for class.
+	 * Returns current builder id.
 	 *
-	 * @since   1.0.0
-	 * @access  protected
-	 * @param string $key The property key name.
-	 * @param string $value The property value.
-	 *
-	 * @return bool
+	 * @return string|null Builder id.
 	 */
-	protected function set_property( $key = '', $value = '' ) {
-		if ( ! property_exists( $this, $key ) ) {
-			return false;
-		}
-		$this->$key = $value;
-		return true;
+	public static function get_current_builder() {
+		return self::$current_builder;
 	}
 
 	/**
@@ -126,9 +142,10 @@ abstract class Abstract_Builder implements Builder {
 	 *
 	 * @since   1.0.0
 	 * @access  protected
+	 *
 	 * @param string $key The property key name.
 	 *
-	 * @return bool
+	 * @return mixed
 	 */
 	public function get_property( $key = '' ) {
 		if ( ! property_exists( $this, $key ) ) {
@@ -152,7 +169,7 @@ abstract class Abstract_Builder implements Builder {
 		$style = '';
 
 		$style_array = [];
-		$rows = $this->get_rows();
+		$rows        = $this->get_rows();
 		if ( ! empty( $rows ) ) {
 			foreach ( $rows as $row_id => $row_label ) {
 				$style_array[ '#accordion-section-' . $this->control_id . '_' . $row_id ] = array(
@@ -166,18 +183,27 @@ abstract class Abstract_Builder implements Builder {
 	}
 
 	/**
+	 * Used to define the rows in the builder sections.
+	 *
+	 * @return array Rows array.
+	 */
+	abstract protected function get_rows();
+
+	/**
 	 * Register hooks for builder.
 	 *
 	 * @since   1.0.0
 	 * @access  public
 	 */
-	public function register_builder_hooks() {}
+	public function register_builder_hooks() {
+	}
 
 	/**
 	 * Called to register component controls.
 	 *
 	 * @since   1.0.0
 	 * @access  public
+	 *
 	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
 	 *
 	 * @return WP_Customize_Manager
@@ -257,10 +283,31 @@ abstract class Abstract_Builder implements Builder {
 	}
 
 	/**
+	 * Method to set protected properties for class.
+	 *
+	 * @since   1.0.0
+	 * @access  protected
+	 *
+	 * @param string $key The property key name.
+	 * @param string $value The property value.
+	 *
+	 * @return bool
+	 */
+	protected function set_property( $key = '', $value = '' ) {
+		if ( ! property_exists( $this, $key ) ) {
+			return false;
+		}
+		$this->$key = $value;
+
+		return true;
+	}
+
+	/**
 	 * Adds row controls.
 	 *
 	 * @since   1.0.0
 	 * @access  protected
+	 *
 	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
 	 */
 	protected function add_rows_controls( WP_Customize_Manager $wp_customize ) {
@@ -310,7 +357,10 @@ abstract class Abstract_Builder implements Builder {
 				)
 			);
 
-			$responsive_setting = new Responsive_Setting( $this->control_id . '_' . $row_id . '_height', 0, array( 'desktop', 'mobile' ) );
+			$responsive_setting = new Responsive_Setting( $this->control_id . '_' . $row_id . '_height', 0, array(
+				'desktop',
+				'mobile'
+			) );
 			$partial_settings   = array_merge( $partial_settings, $responsive_setting->get_settings_id_array() );
 			$wp_customize->add_control(
 				new Responsive_Slider_Control(
@@ -353,34 +403,6 @@ abstract class Abstract_Builder implements Builder {
 				)
 			);
 
-			// $default = json_encode(
-			// array(
-			// 'font'          => 'Open Sans',
-			// 'regularweight' => 'regular',
-			// 'italicweight'  => 'italic',
-			// 'boldweight'    => '700',
-			// 'category'      => 'sans-serif',
-			// )
-			// );
-			// $responsive_setting = new Responsive_Setting( $this->control_id . '_' . $row_id . '_font_select', $default, false );
-			// $partial_settings = array_merge( $partial_settings, $responsive_setting->get_settings_id_array() );
-			// $wp_customize->add_control(
-			// new Google_Font_Control(
-			// $wp_customize,
-			// $this->control_id . '_' . $row_id . '_font_select',
-			// [
-			// 'responsive' => $responsive_setting,
-			// 'label'       => __( 'Row Font Control', 'hfg-module' ),
-			// 'description' => esc_html__( 'Select a Google Font to use for this row.', 'hfg-module' ),
-			// 'section'     => $this->control_id . '_' . $row_id,
-			// 'input_attrs' => array(
-			// 'font_count' => 'all',
-			// 'orderby'    => 'alpha',
-			// ),
-			// ]
-			// )
-			// );
-			// var_dump( $partial_settings );
 			$wp_customize->selective_refresh->add_partial(
 				$this->control_id . '_' . $row_id . '_partial',
 				array(
@@ -393,10 +415,148 @@ abstract class Abstract_Builder implements Builder {
 	}
 
 	/**
+	 * Return current device in the loop.
+	 *
+	 * @return null|string Current device.
+	 */
+	public function get_current_device() {
+		return self::$current_device;
+	}
+
+	/**
+	 * Return current row in the loop.
+	 *
+	 * @return null|string Current row.
+	 */
+	public function get_current_row_index() {
+		return self::$current_row;
+	}
+
+	/**
+	 * Render markup for builder.
+	 */
+	public function render() {
+		$layout                = $this->get_layout_data();
+		self::$current_builder = $this->get_id();
+		foreach ( $layout as $device_name => $device ) {
+			if ( empty( $device ) ) {
+				continue;
+			}
+			self::$current_device = $device_name;
+
+			$this->render_device( $device_name, $device );
+		}
+	}
+
+	/**
+	 * Return builder data.
+	 *
+	 * @return array Builder data.
+	 */
+	public function get_layout_data() {
+		//TODO move default as filterable data and move default neve definition in theme integration.
+		$data = json_decode( get_theme_mod( $this->control_id, Settings::get_instance()->get_header_defaults_neve() ), true );
+
+		return wp_parse_args( $data, array_fill_keys( array_keys( $this->devices ), array_fill_keys( array_keys( $this->get_rows() ), [] ) ) );
+	}
+
+	/**
+	 * Get builder id.
+	 *
+	 * @return string Builder id.
+	 */
+	public abstract function get_id();
+
+	/**
+	 * Render device markup.
+	 *
+	 * @param string $device_name Device id.
+	 * @param array  $device_details Device meta.
+	 */
+	public function render_device( $device_name, $device_details ) {
+		foreach ( $device_details as $index => $row ) {
+			if ( empty( $row ) ) {
+				continue;
+			}
+			self::$current_row = $index;
+
+			$this->render_row( $device_name, $index, $row );
+		}
+	}
+
+	/**
+	 * Render row markup
+	 *
+	 * @param string $device_id Device id.
+	 * @param string $row_id Row id.
+	 * @param array  $row_details Row metadata.
+	 */
+	public abstract function render_row( $device_id, $row_id, $row_details );
+
+	/**
+	 * Render components in the row.
+	 *
+	 * @param null|string $device Device id.
+	 * @param null|array  $row Row details.
+	 */
+	public function render_components( $device = null, $row = null ) {
+
+		if ( $device === null && $row === null ) {
+			$device    = self::$current_device;
+			$row_index = self::$current_row;
+		}
+
+		$data        = $this->get_layout_data()[ $device ][ $row_index ];
+		$max_columns = 12;
+		$last_item   = null;
+
+		$collection = new \CachingIterator(
+			new \ArrayIterator(
+				$data
+			), \CachingIterator::TOSTRING_USE_CURRENT
+		);
+
+		foreach ( $collection as $component_location ) {
+			/**
+			 * An instance of Abstract_Component
+			 *
+			 * @var Abstract_Component $component
+			 */
+			$component = $this->builder_components[ $component_location['id'] ];
+			$x         = intval( $component_location['x'] );
+			$width     = intval( $component_location['width'] );
+			if ( ! $collection->hasNext() && ( $x + $width < $max_columns ) ) {
+				$width += $max_columns - ( $x + $width );
+			}
+
+			$push_left = '';
+			if ( $x > 0 && $last_item !== null ) {
+				$o = intval( $last_item['width'] ) + intval( $last_item['x'] );
+				if ( $x - $o > 0 ) {
+					$x         = $x - $o;
+					$push_left = 'off-' . $x;
+				}
+			} elseif ( $x > 0 ) {
+				$push_left = 'off-' . $x;
+			}
+
+			$component->current_x     = $x;
+			$component->current_width = $width;
+			$classes                  = [ 'hfg-col-' . $width, '_md-' . $width . '_sm-' . $width, 'builder-item' ];
+			self::$current_component  = $component_location['id'];
+			echo sprintf( '<div class="%s" data-push-left="%s">', esc_attr( join( ' ', $classes ) ), esc_attr( $push_left ) );
+			$component->render();
+			echo '</div>';
+			$last_item = $component_location;
+		}
+	}
+
+	/**
 	 * Register a new component for builder.
 	 *
 	 * @since   1.0.0
 	 * @access  public
+	 *
 	 * @param mixed $component_to_add A component.
 	 *
 	 * @return bool
@@ -414,7 +574,21 @@ abstract class Abstract_Builder implements Builder {
 		 */
 		$component                                        = new $component_to_add( $this->panel );
 		$this->builder_components[ $component->get_id() ] = $component;
+
 		return true;
+	}
+
+	/**
+	 * @param null $id
+	 *
+	 * @return Abstract_Component
+	 */
+	public function get_component( $id = null ) {
+		if ( $id === null ) {
+			$id = self::$current_component;
+		}
+
+		return $this->builder_components[ $id ];
 	}
 
 	/**
@@ -426,6 +600,26 @@ abstract class Abstract_Builder implements Builder {
 	 */
 	public function get_components() {
 		return $this->builder_components;
+	}
+
+	/**
+	 * A representation of the builder as array.
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 * @return array
+	 */
+	public final function get_builder() {
+		return array(
+			'id'         => $this->control_id,
+			'control_id' => $this->control_id,
+			'panel'      => $this->panel,
+			'section'    => $this->section,
+			'title'      => $this->title,
+			'devices'    => $this->devices,
+			'items'      => $this->get_components_settings(),
+			'rows'       => $this->get_rows(),
+		);
 	}
 
 	/**
@@ -445,32 +639,7 @@ abstract class Abstract_Builder implements Builder {
 		foreach ( $this->builder_components as $component ) {
 			$components_settings[ $component->get_id() ] = $component->get_settings();
 		}
-		return $components_settings;
-	}
 
-	/**
-	 * Used to define the rows in the builder sections.
-	 *
-	 * @return array Rows array.
-	 */
-	abstract protected function get_rows();
-	/**
-	 * A representation of the builder as array.
-	 *
-	 * @since   1.0.0
-	 * @access  public
-	 * @return array
-	 */
-	public final function get_builder() {
-		return array(
-			'id'         => $this->control_id,
-			'control_id' => $this->control_id,
-			'panel'      => $this->panel,
-			'section'    => $this->section,
-			'title'      => $this->title,
-			'devices'    => $this->devices,
-			'items'      => $this->get_components_settings(),
-			'rows'       => $this->get_rows(),
-		);
+		return $components_settings;
 	}
 }
