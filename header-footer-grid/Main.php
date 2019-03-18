@@ -80,34 +80,9 @@ class Main {
 		if ( ! apply_filters( 'hfg_active', true ) ) {
 			return;
 		}
-		$this->register_sidebars();
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 	}
-
-	/**
-	 * Register sidebar
-	 *
-	 * @since   1.0.0
-	 * @access  public
-	 */
-	public function register_sidebars() {
-		for ( $i = 1; $i <= 6; $i ++ ) {
-			register_sidebar(
-				array(
-					/* translators: 1: Widget number. */
-					'name'          => sprintf( __( 'Footer Sidebar %d', 'hfg-module' ), $i ),
-					'id'            => 'footer-' . $i,
-					'description'   => __( 'Add widgets here.', 'hfg-module' ),
-					'before_widget' => '<section id="%1$s" class="widget %2$s">',
-					'after_widget'  => '</section>',
-					'before_title'  => '<h4 class="widget-title">',
-					'after_title'   => '</h4>',
-				)
-			);
-		}
-	}
-
 	/**
 	 * Return builders list, or builder details.
 	 *

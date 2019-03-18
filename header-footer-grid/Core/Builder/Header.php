@@ -21,7 +21,9 @@ use HFG\Main;
  */
 class Header extends Abstract_Builder {
 
-
+	/**
+	 * Builder name.
+	 */
 	const BUILDER_NAME = 'header';
 
 	/**
