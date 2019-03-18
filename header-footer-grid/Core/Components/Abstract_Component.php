@@ -14,6 +14,7 @@ namespace HFG\Core\Components;
 use HFG\Core\Customizer\Heading_Control;
 use HFG\Core\Customizer\Select_Control;
 use HFG\Core\Interfaces\Component;
+use HFG\Main;
 use HFG\Traits\Core;
 use WP_Customize_Manager;
 
@@ -25,60 +26,6 @@ use WP_Customize_Manager;
 abstract class Abstract_Component implements Component {
 	use Core;
 	/**
-	 * The ID of component.
-	 *
-	 * @since   1.0.0
-	 * @access  protected
-	 * @var string $id
-	 */
-	protected $id;
-
-	/**
-	 * The section name for the component
-	 *
-	 * @since   1.0.0
-	 * @access  protected
-	 * @var string $section
-	 */
-	protected $section;
-
-	/**
-	 * The component default width.
-	 *
-	 * @since   1.0.0
-	 * @access  protected
-	 * @var int $width
-	 */
-	protected $width;
-
-	/**
-	 * The component label
-	 *
-	 * @since   1.0.0
-	 * @access  protected
-	 * @var string $label
-	 */
-	protected $label;
-
-	/**
-	 * The component priority in customizer
-	 *
-	 * @since   1.0.0
-	 * @access  protected
-	 * @var int $priority
-	 */
-	protected $priority;
-
-	/**
-	 * The name of the component panel
-	 *
-	 * @since   1.0.0
-	 * @access  protected
-	 * @var string $panel
-	 */
-	protected $panel;
-
-	/**
 	 * Current X pos of the component if set.
 	 *
 	 * @since   1.0.0
@@ -86,7 +33,6 @@ abstract class Abstract_Component implements Component {
 	 * @var mixed|null $current_x
 	 */
 	public $current_x = null;
-
 	/**
 	 * Current Width of the component if set.
 	 *
@@ -95,6 +41,54 @@ abstract class Abstract_Component implements Component {
 	 * @var mixed|null $current_width
 	 */
 	public $current_width = null;
+	/**
+	 * The ID of component.
+	 *
+	 * @since   1.0.0
+	 * @access  protected
+	 * @var string $id
+	 */
+	protected $id;
+	/**
+	 * The section name for the component
+	 *
+	 * @since   1.0.0
+	 * @access  protected
+	 * @var string $section
+	 */
+	protected $section;
+	/**
+	 * The component default width.
+	 *
+	 * @since   1.0.0
+	 * @access  protected
+	 * @var int $width
+	 */
+	protected $width;
+	/**
+	 * The component label
+	 *
+	 * @since   1.0.0
+	 * @access  protected
+	 * @var string $label
+	 */
+	protected $label;
+	/**
+	 * The component priority in customizer
+	 *
+	 * @since   1.0.0
+	 * @access  protected
+	 * @var int $priority
+	 */
+	protected $priority;
+	/**
+	 * The name of the component panel
+	 *
+	 * @since   1.0.0
+	 * @access  protected
+	 * @var string $panel
+	 */
+	protected $panel;
 
 	/**
 	 * Return the settings for the component.
@@ -112,6 +106,10 @@ abstract class Abstract_Component implements Component {
 		);
 	}
 
+	public function get_section_id() {
+		return $this->section;
+	}
+
 	/**
 	 * Utility method to return the component ID.
 	 *
@@ -124,28 +122,11 @@ abstract class Abstract_Component implements Component {
 	}
 
 	/**
-	 * Method to set protected properties for class.
-	 *
-	 * @since   1.0.0
-	 * @access  protected
-	 * @param string $key The property key name.
-	 * @param string $value The property value.
-	 *
-	 * @return bool
-	 */
-	protected function set_property( $key = '', $value = '' ) {
-		if ( ! property_exists( $this, $key ) ) {
-			return false;
-		}
-		$this->$key = $value;
-		return true;
-	}
-
-	/**
 	 * Method to get protected properties for class.
 	 *
 	 * @since   1.0.0
 	 * @access  protected
+	 *
 	 * @param string $key The property key name.
 	 *
 	 * @return bool
@@ -163,6 +144,7 @@ abstract class Abstract_Component implements Component {
 	 *
 	 * @since   1.0.0
 	 * @access  public
+	 *
 	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
 	 *
 	 * @return WP_Customize_Manager
@@ -224,11 +206,38 @@ abstract class Abstract_Component implements Component {
 	}
 
 	/**
+	 * Render component markup.
+	 */
+	public function render() {
+		Main::get_instance()->load( 'component-wrapper' );
+	}
+
+	/**
 	 * The render method for the component.
 	 *
 	 * @since   1.0.0
 	 * @access  public
 	 * @return mixed
 	 */
-	abstract public function render();
+	abstract public function render_component();
+
+	/**
+	 * Method to set protected properties for class.
+	 *
+	 * @since   1.0.0
+	 * @access  protected
+	 *
+	 * @param string $key The property key name.
+	 * @param string $value The property value.
+	 *
+	 * @return bool
+	 */
+	protected function set_property( $key = '', $value = '' ) {
+		if ( ! property_exists( $this, $key ) ) {
+			return false;
+		}
+		$this->$key = $value;
+
+		return true;
+	}
 }

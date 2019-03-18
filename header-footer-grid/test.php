@@ -16,18 +16,19 @@ add_theme_support(
 				'HFG\Core\Components\Button',
 				'HFG\Core\Components\CustomHtml',
 			),
-			'HFG\Core\Builder\Footer' => array(
-				'HFG\Core\Components\FooterWidgetOne',
-				'HFG\Core\Components\FooterWidgetTwo',
-				'HFG\Core\Components\FooterWidgetThree',
-				'HFG\Core\Components\FooterWidgetFour',
-				'HFG\Core\Components\FooterWidgetFive',
-				'HFG\Core\Components\FooterWidgetSix',
-				'HFG\Core\Components\Copyright',
-			),
+//			'HFG\Core\Builder\Footer' => array(
+//				'HFG\Core\Components\FooterWidgetOne',
+//				'HFG\Core\Components\FooterWidgetTwo',
+//				'HFG\Core\Components\FooterWidgetThree',
+//				'HFG\Core\Components\FooterWidgetFour',
+//				'HFG\Core\Components\FooterWidgetFive',
+//				'HFG\Core\Components\FooterWidgetSix',
+//				'HFG\Core\Components\Copyright',
+//			),
 		),
 	)
 );
+require_once "functions-template.php";
 /**
  * Define timestamp which will be used as refference when we enable the HFG functionality.
  * If the theme is installed after this, they would see the HFG by default.
@@ -40,6 +41,8 @@ add_filter('neve_should_search_in_menu','__return_false');
 
 add_filter(
 	'hfg_active', function () {
+		//return false;
+		return ! ( isset( $_GET['builder_off'] ) && $_GET['builder_off'] === 'true' );
 		if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
 			return true;
 		}

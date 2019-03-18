@@ -93,7 +93,7 @@ class Copyright extends Abstract_Component {
 	 * @access  public
 	 * @return mixed|string
 	 */
-	public function render() {
+	public function render_component() {
 		$html           = '';
 		$item_classes   = array();
 		$item_classes[] = 'item--inner';

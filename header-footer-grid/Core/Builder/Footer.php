@@ -81,7 +81,7 @@ class Footer extends Abstract_Builder {
 	 * @param array  $row Row list.
 	 * @param string $html The HTML.
 	 */
-	protected function render_row( $row, &$html ) {
+	public function render_row( $row, &$html ) {
 		$max_columns = 12;
 		$last_item   = null;
 

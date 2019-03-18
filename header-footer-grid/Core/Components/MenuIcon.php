@@ -87,7 +87,7 @@ class MenuIcon extends Abstract_Component {
 	 * @access  public
 	 * @return mixed|string
 	 */
-	public function render() {
+	public function render_component() {
 		$label      = get_theme_mod( $this->section . '_text' . '_setting' );
 		$show_label = true;
 
