@@ -83,6 +83,7 @@ class Main {
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 	}
+
 	/**
 	 * Return builders list, or builder details.
 	 *
@@ -106,7 +107,10 @@ class Main {
 	 *
 	 */
 	public function load( $slug, $name = '' ) {
-		get_template_part( $this->get_templates_location() . $slug, $name );
+
+		$location = apply_filters( 'hfg_load_template_' . $slug, $this->get_templates_location() . $slug, $name );
+
+		get_template_part( $location, $name );
 	}
 
 	/**
