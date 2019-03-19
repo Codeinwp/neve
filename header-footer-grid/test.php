@@ -41,18 +41,20 @@ add_filter( 'neve_should_search_in_menu', '__return_false' );
 add_filter(
 	'hfg_active', function () {
 	return false;
-	return ! ( isset( $_GET['builder_off'] ) && $_GET['builder_off'] === 'true' );
-	if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
-		return true;
-	}
-
-	return NEVE_TOGGLE_HFG_TIMESTAMP < get_option( 'neve_install', time() );
+//	return ! ( isset( $_GET['builder_off'] ) && $_GET['builder_off'] === 'true' );
+//	if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+//		return true;
+//	}
+//
+//	return NEVE_TOGGLE_HFG_TIMESTAMP < get_option( 'neve_install', time() );
 }
 );
-if ( apply_filters( 'hfg_active',true ) === true ) {
+if ( apply_filters( 'hfg_active',false ) === true ) {
+	remove_all_actions( 'neve_do_footer' );
 	add_action( 'neve_do_footer', function () {
 		do_action( 'hfg_footer_render' );
 	} );
+	remove_all_actions( 'neve_do_header' );
 	add_action( 'neve_do_header', function () {
 		do_action( 'hfg_header_render' );
 	} );

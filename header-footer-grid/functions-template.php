@@ -7,6 +7,8 @@ use HFG\Core\Builder\Abstract_Builder;
 /**
  * Return registered builders.
  *
+ * @param string $builder_name
+ *
  * @return Abstract_Builder[]|Abstract_Builder Array of builders registered.
  */
 function get_builders( $builder_name = '' ) {
@@ -31,7 +33,7 @@ function current_component( $builder_name = '' ) {
 }
 
 function settings() {
-	return \HFG\Core\Settings::get_instance();
+	return Core\Settings::get_instance();
 }
 
 function current_device( $builder_name = '' ) {

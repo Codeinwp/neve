@@ -58,12 +58,15 @@ class Main {
 	 * @return \HFG\Main Instance.
 	 */
 	public static function get_instance() {
+		if ( ! apply_filters( 'hfg_active', true ) ) {
+			return;
+		}
 		if ( is_null( self::$_instance ) ) {
 			self::$_instance = new self();
 
-			self::$_instance->init();
-			self::$_instance->settings   = Settings::get_instance();
-			self::$_instance->customizer = new Customizer( Settings::get_instance() );
+				self::$_instance->init();
+				self::$_instance->settings   = Settings::get_instance();
+				self::$_instance->customizer = new Customizer( Settings::get_instance() );
 		}
 
 		return self::$_instance;
@@ -76,11 +79,6 @@ class Main {
 	 * @access  public
 	 */
 	public function init() {
-
-		if ( ! apply_filters( 'hfg_active', true ) ) {
-			return;
-		}
-
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 	}
 
