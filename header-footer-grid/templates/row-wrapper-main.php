@@ -26,7 +26,7 @@ $row_classes[] = get_theme_mod( $control_id . '_' . $row_index . '_layout', 'lay
 $row_styles       = '';
 $row_styles_array = [];
 
-$layout_height = json_decode( get_theme_mod( $control_id . '_' . $row_index . '_height', '{ desktop: 0, tablet: 0, mobile: 0 }' ), true );
+$layout_height = json_decode( get_theme_mod( $control_id . '_' . $row_index . '_height', '{"mobile":"0","tablet":"0","desktop":"0"}' ), true );
 
 if( isset( $layout_height[ $device ] ) ) {
 	$row_styles_array['height'] = 'auto;';

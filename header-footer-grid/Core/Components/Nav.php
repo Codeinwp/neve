@@ -14,6 +14,7 @@ namespace HFG\Core\Components;
 use HFG\Core\Customizer\Image_Radio_Control;
 use HFG\Core\Settings;
 use HFG\Main;
+use Neve\Customizer\Controls\Radio_Image;
 use WP_Customize_Manager;
 
 /**
@@ -70,27 +71,27 @@ class Nav extends Abstract_Component {
 			)
 		);
 		$wp_customize->add_control(
-			new Image_Radio_Control(
+			new Radio_Image(
 				$wp_customize,
 				$this->id . '_style',
 				[
 					'label'   => __( 'Skin Mode' ),
 					'section' => $this->section,
 					'choices' => array(
-						'style-plain'         => array(
-							'image' => Settings::get_instance()->url . '/assets/images/customizer/menu_style_1.svg',
+						'style-plain' => array(
+							'url' => Settings::get_instance()->url . '/assets/images/customizer/menu_style_1.svg',
 							'name'  => __( 'Plain' ),
 						),
-						'style-full-height'   => array(
-							'image' => Settings::get_instance()->url . '/assets/images/customizer/menu_style_2.svg',
+						'style-full-height' => array(
+							'url' => Settings::get_instance()->url . '/assets/images/customizer/menu_style_2.svg',
 							'name'  => __( 'Full Height' ),
 						),
 						'style-border-bottom' => array(
-							'image' => Settings::get_instance()->url . '/assets/images/customizer/menu_style_3.svg',
+							'url' => Settings::get_instance()->url . '/assets/images/customizer/menu_style_3.svg',
 							'name'  => __( 'Bottom Border' ),
 						),
 						'style-border-top'    => array(
-							'image' => Settings::get_instance()->url . '/assets/images/customizer/menu_style_4.svg',
+							'url' => Settings::get_instance()->url . '/assets/images/customizer/menu_style_4.svg',
 							'name'  => __( 'Top Border' ),
 						),
 					),

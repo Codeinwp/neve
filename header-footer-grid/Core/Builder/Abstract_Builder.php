@@ -365,7 +365,7 @@ abstract class Abstract_Builder implements Builder {
 
 			$setting = new Customize_Setting( array(
 				'id' => $this->control_id . '_' . $row_id . '_height',
-				'default' => '{ mobile: 0, tablet: 0, desktop: 0 }',
+				'default' => '{ "mobile": "0", "tablet": "0", "desktop": "0" }',
 				'transport' => 'postMessage',
 			) );
 			$wp_customize->add_setting( $setting->id, $setting->setting_args() );

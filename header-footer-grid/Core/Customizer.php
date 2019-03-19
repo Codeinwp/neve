@@ -202,16 +202,16 @@ class Customizer {
 	public function preview_js() {
 		if ( is_customize_preview() ) {
 			$suffix = $this->get_assets_suffix();
-			// wp_enqueue_script(
-			// 'hfg-customizer',
-			// esc_url( $this->settings->url ) . '/assets/js/customizer/customizer' . $suffix . '.js',
-			// array(
-			// 'customize-preview',
-			// 'customize-selective-refresh',
-			// ),
-			// '20151215',
-			// true
-			// );
+			 wp_enqueue_script(
+			 'hfg-customizer',
+			 esc_url( $this->settings->url ) . '/assets/js/customizer/customizer' . $suffix . '.js',
+			 array(
+			 'customize-preview',
+			 'customize-selective-refresh',
+			 ),
+			 '20151215',
+			 true
+			 );
 		}
 	}
 

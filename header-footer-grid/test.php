@@ -14,15 +14,16 @@ add_theme_support(
 				'HFG\Core\Components\MenuIcon',
 				'HFG\Core\Components\Nav',
 				'HFG\Core\Components\Button',
+				'HFG\Core\Components\CustomHtml',
 			),
-			'HFG\Core\Builder\Footer' => array(
-				'HFG\Core\Components\FooterWidgetOne',
-				'HFG\Core\Components\FooterWidgetTwo',
-				'HFG\Core\Components\FooterWidgetThree',
-				'HFG\Core\Components\FooterWidgetFour',
-				'HFG\Core\Components\NavFooter',
-				'HFG\Core\Components\Copyright',
-			),
+//			'HFG\Core\Builder\Footer' => array(
+//				'HFG\Core\Components\FooterWidgetOne',
+//				'HFG\Core\Components\FooterWidgetTwo',
+//				'HFG\Core\Components\FooterWidgetThree',
+//				'HFG\Core\Components\FooterWidgetFour',
+//				'HFG\Core\Components\NavFooter',
+//				'HFG\Core\Components\Copyright',
+//			),
 		),
 	)
 );
@@ -39,7 +40,7 @@ add_filter( 'neve_should_search_in_menu', '__return_false' );
 
 add_filter(
 	'hfg_active', function () {
-	return true;
+	return false;
 	return ! ( isset( $_GET['builder_off'] ) && $_GET['builder_off'] === 'true' );
 	if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
 		return true;

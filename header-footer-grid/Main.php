@@ -61,9 +61,9 @@ class Main {
 		if ( is_null( self::$_instance ) ) {
 			self::$_instance = new self();
 
+			self::$_instance->init();
 			self::$_instance->settings   = Settings::get_instance();
 			self::$_instance->customizer = new Customizer( Settings::get_instance() );
-			self::$_instance->init();
 		}
 
 		return self::$_instance;
