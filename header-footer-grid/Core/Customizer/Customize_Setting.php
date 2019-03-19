@@ -8,6 +8,7 @@ class Customize_Setting {
 	private $theme_supports = 'hfg_support';
 	private $capability = 'edit_theme_options';
 	private $default = '';
+	private $customizer_default = '';
 	private $transport = 'refresh';
 	private $sanitize_callback = null;
 	private $sanitize_js_callback = null;
@@ -30,6 +31,15 @@ class Customize_Setting {
 		if ( ! property_exists( $this, $key ) ) {
 			return null;
 		}
+
+		if ( $key === 'default' && empty( $this->default ) && ! empty( $this->customizer_default ) ) {
+			return $this->customizer_default;
+		}
+
+		if ( $key === 'customizer_default' && empty( $this->customizer_default ) && ! empty( $this->default ) ) {
+			return $this->default;
+		}
+
 		return $this->$key;
 	}
 

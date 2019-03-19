@@ -15,31 +15,31 @@ jQuery( document ).ready(
 				jQuery( '.customize-control .responsive-switchers button' ).on(
 					'click', function( event ) {
 						// Set up variables
-						var $this 		= $( this ),
-							$devices 	= $( '.responsive-switchers' ),
-							$device 	= $( event.currentTarget ).data( 'device' ),
-							$control 	= $( '.customize-control .has-media-queries' ),
-							$body 		= $( '.wp-full-overlay' ),
-							$footer_devices = $( '.wp-full-overlay-footer .devices' );
+						var $self 		= $( this ),
+							devices 	= $( '.responsive-switchers' ),
+							device 	= $( event.currentTarget ).data( 'device' ),
+							control 	= $( '.customize-control .has-media-queries' ),
+							body 		= $( '.wp-full-overlay' ),
+							footerDevices = $( '.wp-full-overlay-footer .devices' );
 
 						// Button class
-						$devices.find( 'button' ).removeClass( 'active' );
-						$devices.find( 'button.preview-' + $device ).addClass( 'active' );
+						devices.find( 'button' ).removeClass( 'active' );
+						devices.find( 'button.preview-' + device ).addClass( 'active' );
 
 						// Control class
-						$control.find( '.control-wrap' ).removeClass( 'active' );
-						$control.find( '.control-wrap.' + $device ).addClass( 'active' );
+						control.find( '.control-wrap' ).removeClass( 'active' );
+						control.find( '.control-wrap.' + device ).addClass( 'active' );
 
 						// Wrapper class
-						$body.removeClass( 'preview-desktop preview-tablet preview-mobile' ).addClass( 'preview-' + $device );
+						body.removeClass( 'preview-desktop preview-tablet preview-mobile' ).addClass( 'preview-' + device );
 
 						// Panel footer buttons
-						$footer_devices.find( 'button' ).removeClass( 'active' ).attr( 'aria-pressed', false );
-						$footer_devices.find( 'button.preview-' + $device ).addClass( 'active' ).attr( 'aria-pressed', true );
+						footerDevices.find( 'button' ).removeClass( 'active' ).attr( 'aria-pressed', 'false' );
+						footerDevices.find( 'button.preview-' + device ).addClass( 'active' ).attr( 'aria-pressed', 'true' );
 
 						// Open switchers
-						if ( $this.hasClass( 'preview-desktop' ) ) {
-	                        $devices.toggleClass( 'responsive-switchers-open' );
+						if ( $self.hasClass( 'preview-desktop' ) ) {
+							devices.toggleClass( 'responsive-switchers-open' );
 						}
 
 					}
@@ -67,6 +67,10 @@ jQuery( document ).ready(
 						control.find( '.tablet-range' ).removeClass( 'active' );
 						control.find( '.mobile-range' ).removeClass( 'active' );
 						control.find( '.' + device + '-range' ).addClass( 'active' );
+
+						// Control class
+						control.find( '.control-wrap' ).removeClass( 'active' );
+						control.find( '.control-wrap.' + device ).addClass( 'active' );
 					}
 				);
 			}

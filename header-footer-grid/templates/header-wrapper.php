@@ -13,6 +13,6 @@ namespace HFG;
 use HFG\Core\Builder\Header as HeaderBuilder;
 
 ?>
-<div id="header-grid">
+<div id="header-grid" class="hfg_header">
 	<?php render_builder( HeaderBuilder::BUILDER_NAME ); ?>
 </div>
