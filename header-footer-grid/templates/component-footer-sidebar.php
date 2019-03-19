@@ -17,8 +17,7 @@ if ( is_active_sidebar( $id ) ) {
 	<div class="widget-area">
 		<?php dynamic_sidebar( $id ); ?>
 	</div>
-<?php } ?>
-<?php if ( current_user_can( 'edit_theme_options' ) ) { ?>
+<?php } elseif ( current_user_can( 'edit_theme_options' ) ) { ?>
 	<div class="widget-area">
 		<section id="placeholder-widget-text" class="widget widget_text">
 			<h4 class="widget-title"><?php echo esc_attr( current_component()->get_property( 'label' ) ); ?></h4>

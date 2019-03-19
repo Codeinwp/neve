@@ -12,7 +12,6 @@
     &.item--inner {
       position: relative;
       &.has_menu {
-        position: initial;
         .item--preview-name {
           left: auto;
         }
@@ -58,6 +57,7 @@
     .builder-item-focus {
       &:hover {
         &.item--inner {
+          position: relative;
           outline: 1px dashed #ff472e;
           outline-offset: -1px;
         }
@@ -304,12 +304,9 @@
 
 // Footer Top
 .footer-top {
-  .footer--row-inner {
-    padding-top: 2em;
-    padding-bottom: 2em;
-  }
+
   .light-mode {
-    background: #f0f0f0;
+    background: #fff;
   }
   .dark-mode {
     background: #292929;
@@ -333,10 +330,7 @@
 
 // Footer Bottom
 .footer-bottom {
-  .footer--row-inner {
-    padding-top: 1.5em;
-    padding-bottom: 1.5em;
-  }
+
   .builder-item {
     @include for_device( mobile ) {
       margin-bottom: 1em;
@@ -349,7 +343,7 @@
     background: #ededed;
   }
   .dark-mode {
-    background: #1a1a1a;
+    background: #24292e;
   }
 }
 

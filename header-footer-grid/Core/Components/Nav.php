@@ -51,7 +51,7 @@ class Nav extends Abstract_Component {
 	 */
 	public function customize_register( WP_Customize_Manager $wp_customize ) {
 		$fn       = array( $this, 'render' );
-		$selector = '.builder-item--' . $this->id . ' .nav-menu-desktop .primary-menu-ul';
+		$selector = '.builder-item--' . $this->id;
 
 		$wp_customize->add_section(
 			$this->section, array(

@@ -68,7 +68,7 @@ class Customizer {
 				/**
 				 * A new builder instance.
 				 *
-				 * @var Builder $new_builder
+				 * @var Abstract_Builder $new_builder
 				 */
 				$new_builder = new $builder();
 				$new_builder->register_builder_hooks();

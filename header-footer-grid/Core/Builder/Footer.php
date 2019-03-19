@@ -24,10 +24,6 @@ class Footer extends Abstract_Builder {
 	 * Builder name.
 	 */
 	const BUILDER_NAME = 'footer';
-	/**
-	 * Number of sidebars to register.
-	 */
-	const FOOTER_SIDEBARS_LIMIT = 4;
 
 	/**
 	 * Footer constructor.
@@ -44,30 +40,10 @@ class Footer extends Abstract_Builder {
 		$this->devices = [
 			'desktop' => 'Footer Layout',
 		];
-		$this->register_sidebars();
 		add_action( 'hfg_footer_render', array( $this, 'footer_render' ) );
 		add_filter( 'theme_mod_' . $this->control_id, array( $this, 'filter_defaults' ) );
 	}
 
-	/**
-	 * Register footer sidebars.
-	 */
-	public function register_sidebars() {
-		for ( $i = 1; $i <= self::FOOTER_SIDEBARS_LIMIT; $i ++ ) {
-			register_sidebar(
-				array(
-					/* translators: 1: Widget number. */
-					'name'          => sprintf( __( 'Footer Sidebar %d', 'hfg-module' ), $i ),
-					'id'            => 'footer-' . $i,
-					'description'   => __( 'Add widgets here.', 'hfg-module' ),
-					'before_widget' => '<section id="%1$s" class="widget %2$s">',
-					'after_widget'  => '</section>',
-					'before_title'  => '<h4 class="widget-title">',
-					'after_title'   => '</h4>',
-				)
-			);
-		}
-	}
 
 	/**
 	 * Utility method to generate defaults for JS and regular PHP calls.
