@@ -50,7 +50,7 @@ if ( ! empty( $row_styles_array ) ) {
 	<div class="footer--row-inner footer-<?php echo esc_attr( $row_index ); ?>-inner <?php echo esc_attr( $skin_mode ); ?> footer-content-wrap"
 		<?php echo( wp_kses_post( $row_styles ) ); ?> >
 		<div class="container">
-			<div class="hfg-grid hfg-grid-<?php echo esc_attr( $row_index ); ?> nv-footer-widgets nv-footer-content">
+			<div class="hfg-grid hfg-grid-<?php echo esc_attr( $row_index ); ?>   nv-footer-content">
 				<?php render_components() ?>
 			</div>
 		</div>
