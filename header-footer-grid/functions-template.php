@@ -25,11 +25,12 @@ function render_components( $builder_name = '', $device = null, $row_index = nul
 
 /**
  * @param string $builder_name
+ * @param null $component_id
  *
  * @return Core\Components\Abstract_Component
  */
-function current_component( $builder_name = '' ) {
-	return Main::get_instance()->get_builders( $builder_name )->get_component();
+function current_component( $builder_name = '', $component_id = null ) {
+	return Main::get_instance()->get_builders( $builder_name )->get_component( $component_id );
 }
 
 function settings() {

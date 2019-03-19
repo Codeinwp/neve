@@ -51,11 +51,9 @@ add_filter(
 }
 );
 if ( apply_filters( 'hfg_active',false ) === true ) {
-	//remove_all_actions( 'neve_do_footer' );
 	add_action( 'neve_do_footer', function () {
 		do_action( 'hfg_footer_render' );
 	} );
-	//remove_all_actions( 'neve_do_header' );
 	add_action( 'neve_do_header', function () {
 		do_action( 'hfg_header_render' );
 	} );
