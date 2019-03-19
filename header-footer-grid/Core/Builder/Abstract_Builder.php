@@ -182,7 +182,7 @@ abstract class Abstract_Builder implements Builder {
 		if ( ! empty( $rows ) ) {
 			foreach ( $rows as $row_id => $row_label ) {
 				$style_array[ '#accordion-section-' . $this->control_id . '_' . $row_id ] = array(
-					'display' => 'none !important'
+					'display' => 'none !important',
 				);
 			}
 		}
@@ -333,29 +333,33 @@ abstract class Abstract_Builder implements Builder {
 				)
 			);
 
-			$setting = new Customize_Setting( array(
-				'id' => $this->control_id . '_' . $row_id,
-				'transport' => 'postMessage',
-				'default' => '',
-			) );
+			$setting = new Customize_Setting(
+				array(
+					'id'        => $this->control_id . '_' . $row_id,
+					'transport' => 'postMessage',
+					'default'   => '',
+				)
+			);
 			self::$settings_manager->register( $setting );
 
 			$wp_customize->add_setting( $setting->id, $setting->setting_args() );
 
-			$setting = new Customize_Setting( array(
-				'id' => $this->control_id . '_' . $row_id . '_layout',
-				'transport' => 'postMessage',
-				'default' => 'layout-full-contained',
-			) );
+			$setting = new Customize_Setting(
+				array(
+					'id'        => $this->control_id . '_' . $row_id . '_layout',
+					'transport' => 'postMessage',
+					'default'   => 'layout-full-contained',
+				)
+			);
 			$wp_customize->add_setting( $setting->id, $setting->setting_args() );
 			array_push( $partial_settings, $setting->id );
 			$wp_customize->add_control(
 				$this->control_id . '_' . $row_id . '_layout',
 				[
-					'label'       => __( 'Layout', 'hfg-module' ),
-					'type'        => 'select',
-					'section'     => $this->control_id . '_' . $row_id,
-					'choices'     => array(
+					'label'   => __( 'Layout', 'hfg-module' ),
+					'type'    => 'select',
+					'section' => $this->control_id . '_' . $row_id,
+					'choices' => array(
 						'layout-full-contained' => __( 'Full Width - Contained', 'hfg-module' ),
 						'layout-fullwidth'      => __( 'Full Width', 'hfg-module' ),
 						'layout-contained'      => __( 'Contained', 'hfg-module' ),
@@ -363,11 +367,13 @@ abstract class Abstract_Builder implements Builder {
 				]
 			);
 
-			$setting = new Customize_Setting( array(
-				'id' => $this->control_id . '_' . $row_id . '_height',
-				'default' => '{ "mobile": "0", "tablet": "0", "desktop": "0" }',
-				'transport' => 'postMessage',
-			) );
+			$setting = new Customize_Setting(
+				array(
+					'id'        => $this->control_id . '_' . $row_id . '_height',
+					'default'   => '{ "mobile": "0", "tablet": "0", "desktop": "0" }',
+					'transport' => 'postMessage',
+				)
+			);
 			$wp_customize->add_setting( $setting->id, $setting->setting_args() );
 			array_push( $partial_settings, $setting->id );
 			$wp_customize->add_control(
@@ -402,11 +408,13 @@ abstract class Abstract_Builder implements Builder {
 				)
 			);
 
-			$setting = new Customize_Setting( array(
-				'id' => $this->control_id . '_' . $row_id . '_skin',
-				'default' => 'light-mode',
-				'transport' => 'postMessage',
-			) );
+			$setting = new Customize_Setting(
+				array(
+					'id'        => $this->control_id . '_' . $row_id . '_skin',
+					'default'   => 'light-mode',
+					'transport' => 'postMessage',
+				)
+			);
 			$wp_customize->add_setting( $setting->id, $setting->setting_args() );
 			array_push( $partial_settings, $setting->id );
 			$wp_customize->add_control(
@@ -414,17 +422,17 @@ abstract class Abstract_Builder implements Builder {
 					$wp_customize,
 					$this->control_id . '_' . $row_id . '_skin',
 					[
-						'label'           => __( 'Skin Mode', 'neve' ),
-						'section'         => $this->control_id . '_' . $row_id,
-						'priority'        => 10,
-						'choices'         => array(
+						'label'    => __( 'Skin Mode', 'neve' ),
+						'section'  => $this->control_id . '_' . $row_id,
+						'priority' => 10,
+						'choices'  => array(
 							'light-mode' => array(
-								'url' => Settings::get_instance()->url . '/assets/images/customizer/text_mode_dark.svg',
-								'name'  => __( 'Light Mode' ),
+								'url'  => Settings::get_instance()->url . '/assets/images/customizer/text_mode_dark.svg',
+								'name' => __( 'Light Mode' ),
 							),
 							'dark-mode'  => array(
-								'url' => Settings::get_instance()->url . '/assets/images/customizer/text_mode_light.svg',
-								'name'  => __( 'Dark Mode' ),
+								'url'  => Settings::get_instance()->url . '/assets/images/customizer/text_mode_light.svg',
+								'name' => __( 'Dark Mode' ),
 							),
 						),
 					]
@@ -482,7 +490,7 @@ abstract class Abstract_Builder implements Builder {
 	 * @return array Builder data.
 	 */
 	public function get_layout_data() {
-		//TODO move default as filterable data and move default neve definition in theme integration.
+		// TODO move default as filterable data and move default neve definition in theme integration.
 		$data = json_decode( get_theme_mod( $this->control_id, Settings::get_instance()->get_header_defaults_neve() ), true );
 
 		return wp_parse_args( $data, array_fill_keys( array_keys( $this->devices ), array_fill_keys( array_keys( $this->get_rows() ), [] ) ) );
@@ -553,7 +561,7 @@ abstract class Abstract_Builder implements Builder {
 			 */
 			$component = $this->builder_components[ $component_location['id'] ];
 			$x         = intval( $component_location['x'] );
-			$width     = $original_width =  intval( $component_location['width'] );
+			$width     = $original_width = intval( $component_location['width'] );
 
 			if ( ! $collection->hasNext() && ( $x + $width < $max_columns ) ) {
 				$width += $max_columns - ( $x + $width );
@@ -569,7 +577,16 @@ abstract class Abstract_Builder implements Builder {
 				$push_left = 'off-' . $x;
 			}
 
-			$edge_class = ( $x > 0 && ( ( $x + $original_width + $o ) === $max_columns ) ) ? 'hfg-edge-right' : ( ( $x === 0 ) ? 'hfg-edge-left' : '' );
+			$edge_class = '';
+			if ( $x > 0 && ( ( $x + $original_width + $o ) === $max_columns ) ) {
+				$edge_class = 'hfg-edge-right';
+			}
+			if ( $x === 0 ) {
+				$edge_class = ( 'hfg-edge-left' );
+				if ( $x > 0 && ( ( $x + $original_width + $o ) === $max_columns ) ) {
+					$edge_class = 'hfg-edge-right';
+				}
+			}
 
 			$component->current_x     = $x;
 			$component->current_width = $width;
@@ -578,7 +595,7 @@ abstract class Abstract_Builder implements Builder {
 				'builder-item',
 				$last_item === null ? 'hfg-item-first' : '',
 				( ! $collection->hasNext() ) ? 'hfg-item-last' : '',
-				$edge_class
+				$edge_class,
 			];
 			self::$current_component  = $component_location['id'];
 			echo sprintf( '<div class="%s" data-push-left="%s">', esc_attr( join( ' ', $classes ) ), esc_attr( $push_left ) );

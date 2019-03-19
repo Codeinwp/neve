@@ -25,7 +25,7 @@ function render_components( $builder_name = '', $device = null, $row_index = nul
 
 /**
  * @param string $builder_name
- * @param null $component_id
+ * @param null   $component_id
  *
  * @return Core\Components\Abstract_Component
  */

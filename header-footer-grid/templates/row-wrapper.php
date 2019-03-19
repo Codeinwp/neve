@@ -18,7 +18,7 @@ $skin_mode   = get_theme_mod( $control_id . '_' . $row_index . '_skin', 'light-m
 $row_classes = [
 	'header--row',
 	'header-' . $row_index,
-	$device === 'desktop' ? 'hide-on-mobile hide-on-tablet' : 'hide-on-desktop'
+	$device === 'desktop' ? 'hide-on-mobile hide-on-tablet' : 'hide-on-desktop',
 ];
 
 $row_classes[] = get_theme_mod( $control_id . '_' . $row_index . '_layout', 'layout-full-contained' );
@@ -28,7 +28,7 @@ $row_styles_array = [];
 
 $layout_height = json_decode( get_theme_mod( $control_id . '_' . $row_index . '_height', '{ desktop: 0, tablet: 0, mobile: 0 }' ), true );
 
-if( isset( $layout_height[ $device ] ) ) {
+if ( isset( $layout_height[ $device ] ) ) {
 	$row_styles_array['height'] = 'auto;';
 	if ( intval( $layout_height[ $device ] ) > 0 ) {
 		$row_styles_array['height'] = $layout_height[ $device ] . 'px;';
@@ -44,14 +44,14 @@ if ( ! empty( $row_styles_array ) ) {
 }
 ?>
 <div class="<?php echo esc_attr( join( ' ', $row_classes ) ); ?> header--row"
-     id="cb-row--header-<?php echo $row_index; ?>"
-     data-row-id="<?php echo $row_index; ?>" data-show-on="<?php echo $device; ?>">
+	id="cb-row--header-<?php echo $row_index; ?>"
+	data-row-id="<?php echo $row_index; ?>" data-show-on="<?php echo $device; ?>">
 
 	<div class="header--row-inner header-<?php echo esc_attr( $row_index ); ?>-inner <?php echo esc_attr( $skin_mode ); ?>"
 		<?php echo( wp_kses_post( $row_styles ) ); ?> >
 		<div class="container">
 			<div class="hfg-grid row hfg-grid-<?php echo esc_attr( $row_index ); ?>">
-				<?php render_components() ?>
+				<?php render_components(); ?>
 			</div>
 		</div>
 	</div>

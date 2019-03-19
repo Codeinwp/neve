@@ -22,9 +22,10 @@ $container_classes = 'nav-menu-secondary';
 
 ?>
 <div class="nv-top-bar ">
-	<div role="navigation" class="  menu-content <?php echo esc_attr( $container_classes ) ?>"
-	     aria-label="<?php echo esc_html( __( 'Secondary Menu', 'neve' ) ); ?>">
-		<?php wp_nav_menu(
+	<div role="navigation" class="  menu-content <?php echo esc_attr( $container_classes ); ?>"
+		aria-label="<?php echo esc_html( __( 'Secondary Menu', 'neve' ) ); ?>">
+		<?php
+		wp_nav_menu(
 			array(
 				'theme_location' => 'top-bar',
 				'menu_id'        => 'secondary-menu',

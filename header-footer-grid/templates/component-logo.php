@@ -23,7 +23,7 @@ $logo_classes[] = 'logo-' . $image_position;
 $custom_logo_id = get_theme_mod( 'custom_logo' );
 
 $logo_image = settings()->get_media( $custom_logo_id, 'full' );
-//TODO get retina mod.
+// TODO get retina mod.
 $logo_retina       = '';
 $logo_retina_image = settings()->get_media( $logo_retina );
 $tag               = 'p';
@@ -36,8 +36,8 @@ if ( get_option( 'show_on_front' ) === 'posts' && is_home() ) {
 	<a class="brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php bloginfo( 'name' ); ?>">
 		<?php if ( $logo_image ) { ?>
 			<img src="<?php echo esc_url( $logo_image ); ?>"
-			     alt="' . esc_attr( $alt_attribute ) . '" <?php echo ( $logo_retina_image ) ? ( 'srcset="' . esc_url( $logo_retina_image ) . ' 2x"' ) : ''; ?> >
-		<?php }else{ ?>
+				alt="' . esc_attr( $alt_attribute ) . '" <?php echo ( $logo_retina_image ) ? ( 'srcset="' . esc_url( $logo_retina_image ) . ' 2x"' ) : ''; ?> >
+		<?php } else { ?>
 				<?php if ( $show_name ) { ?>
 				<<?php echo esc_attr( $tag ); ?> class="site-title"> <?php echo get_bloginfo( 'name', 'display' ); ?> </<?php echo esc_attr( $tag ); ?>>
 				<?php } ?>

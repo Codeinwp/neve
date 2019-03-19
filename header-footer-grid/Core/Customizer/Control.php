@@ -63,7 +63,7 @@ class Customize_Control {
 	public $choices;
 	public $input_attrs;
 
-	public function __construct( array  $args ) {
+	public function __construct( array $args ) {
 		foreach ( $args as $key => $value ) {
 			if ( ! property_exists( $this, $key ) ) {
 				$this->$key = $value;

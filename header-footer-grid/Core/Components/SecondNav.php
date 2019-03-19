@@ -78,20 +78,20 @@ class SecondNav extends Abstract_Component {
 					'section' => $this->section,
 					'choices' => array(
 						'style-plain'         => array(
-							'url' => Settings::get_instance()->url . '/assets/images/customizer/menu_style_1.svg',
-							'name'  => __( 'Plain' ),
+							'url'  => Settings::get_instance()->url . '/assets/images/customizer/menu_style_1.svg',
+							'name' => __( 'Plain' ),
 						),
 						'style-full-height'   => array(
-							'url' => Settings::get_instance()->url . '/assets/images/customizer/menu_style_2.svg',
-							'name'  => __( 'Full Height' ),
+							'url'  => Settings::get_instance()->url . '/assets/images/customizer/menu_style_2.svg',
+							'name' => __( 'Full Height' ),
 						),
 						'style-border-bottom' => array(
-							'url' => Settings::get_instance()->url . '/assets/images/customizer/menu_style_3.svg',
-							'name'  => __( 'Bottom Border' ),
+							'url'  => Settings::get_instance()->url . '/assets/images/customizer/menu_style_3.svg',
+							'name' => __( 'Bottom Border' ),
 						),
 						'style-border-top'    => array(
-							'url' => Settings::get_instance()->url . '/assets/images/customizer/menu_style_4.svg',
-							'name'  => __( 'Top Border' ),
+							'url'  => Settings::get_instance()->url . '/assets/images/customizer/menu_style_4.svg',
+							'name' => __( 'Top Border' ),
 						),
 					),
 				]

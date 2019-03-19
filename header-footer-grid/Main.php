@@ -102,7 +102,6 @@ class Main {
 	 *
 	 * @param string $slug Template slug.
 	 * @param string $slug Template variation.
-	 *
 	 */
 	public function load( $slug, $name = '' ) {
 		$location = apply_filters( 'hfg_load_template_' . $slug, $this->get_templates_location() . $slug, $name );

@@ -22,15 +22,18 @@ $container_classes = 'nav-menu-footer';
 
 ?>
 <div class="nv-nav-wrap nav-left">
-	<div role="navigation" class=" <?php echo esc_attr( $container_classes ) ?>"
-	     aria-label="<?php echo esc_html( __( 'Footer Menu', 'neve' ) ); ?>">
+	<div role="navigation" class=" <?php echo esc_attr( $container_classes ); ?>"
+		aria-label="<?php echo esc_html( __( 'Footer Menu', 'neve' ) ); ?>">
 
-		<?php wp_nav_menu( array(
-			'theme_location' => 'footer',
-			'depth'          => 1,
-			'container'      => 'ul',
-			'menu_class'     => 'footer-menu',
-		) );
+		<?php
+		wp_nav_menu(
+			array(
+				'theme_location' => 'footer',
+				'depth'          => 1,
+				'container'      => 'ul',
+				'menu_class'     => 'footer-menu',
+			)
+		);
 		?>
 	</div>
 </div>

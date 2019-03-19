@@ -77,7 +77,6 @@ abstract class Abstract_FooterWidget extends Abstract_Component {
 	 *
 	 * @since   1.0.0
 	 * @access  public
-	 *
 	 */
 	public function render_component() {
 		Main::get_instance()->load( 'component-footer-sidebar' );

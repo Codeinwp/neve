@@ -20,13 +20,12 @@ $item_classes[] = 'is-size-mobile-medium';
 $label_classes  = array( 'nav-icon--label' );
 ?>
 <a class="<?php echo esc_attr( join( ' ', $item_classes ) ); ?> ">
-	 <span class="hamburger hamburger--squeeze">
-	 <span class="hamburger-box">
-		 <span class="hamburger-inner"></span>
-		 </span>
-    </span>
+	<span class="hamburger hamburger--squeeze">
+		<span class="hamburger-box">
+			<span class="hamburger-inner"></span>
+		</span>
+	</span>
 	<span class="<?php echo esc_attr( join( ' ', $label_classes ) ); ?>"><?php echo esc_attr( $text ); ?></span>
-
 </a>
 
 

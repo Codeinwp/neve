@@ -11,13 +11,13 @@ namespace HFG;
 
 use HFG\Core\Builder\Header as HeaderBuilder;
 
-$id         = current_component( HeaderBuilder::BUILDER_NAME, 'header_search' )->get_id();
-$placeholder      = get_theme_mod( $id . '_placeholder', __( 'Search for ...', 'hfg-module' ) );
+$id          = current_component( HeaderBuilder::BUILDER_NAME, 'header_search' )->get_id();
+$placeholder = get_theme_mod( $id . '_placeholder', __( 'Search for ...', 'hfg-module' ) );
 
 $component_styles_array = [];
 
 $component_styles_array['padding'] = '0;';
-$component_styles_array['margin'] = '8px 2px;';
+$component_styles_array['margin']  = '8px 2px;';
 
 if ( ! empty( $component_styles_array ) ) {
 	$component_styles = ' style="';

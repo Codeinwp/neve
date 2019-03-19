@@ -65,11 +65,13 @@ class Logo extends Abstract_Component {
 		);
 		$partial_settings = array();
 
-		$setting = new Customize_Setting( array(
-			'id' => $this->id . '_max_width',
-			'transport' => 'postMessage',
-			'default' => '{ "mobile": "120", "tablet": "120", "desktop": "120" }',
-		) );
+		$setting = new Customize_Setting(
+			array(
+				'id'        => $this->id . '_max_width',
+				'transport' => 'postMessage',
+				'default'   => '{ "mobile": "120", "tablet": "120", "desktop": "120" }',
+			)
+		);
 		$wp_customize->add_setting( $setting->id, $setting->setting_args() );
 		array_push( $partial_settings, $setting->id );
 		$wp_customize->add_control(
@@ -98,16 +100,18 @@ class Logo extends Abstract_Component {
 							'max'     => 350,
 							'default' => 120,
 						),
-					)
+					),
 				)
 			)
 		);
 
-		$setting = new Customize_Setting( array(
-			'id' => $this->id . '_show_title',
-			'transport' => 'postMessage',
-			'default' => 1,
-		) );
+		$setting = new Customize_Setting(
+			array(
+				'id'        => $this->id . '_show_title',
+				'transport' => 'postMessage',
+				'default'   => 1,
+			)
+		);
 		$wp_customize->add_setting( $setting->id, $setting->setting_args() );
 		array_push( $partial_settings, $setting->id );
 		$wp_customize->add_control(
@@ -122,11 +126,13 @@ class Logo extends Abstract_Component {
 			)
 		);
 
-		$setting = new Customize_Setting( array(
-			'id' => $this->id . '_show_tagline',
-			'transport' => 'postMessage',
-			'default' => 1,
-		) );
+		$setting = new Customize_Setting(
+			array(
+				'id'        => $this->id . '_show_tagline',
+				'transport' => 'postMessage',
+				'default'   => 1,
+			)
+		);
 		$wp_customize->add_setting( $setting->id, $setting->setting_args() );
 		array_push( $partial_settings, $setting->id );
 		$wp_customize->add_control(
@@ -141,20 +147,22 @@ class Logo extends Abstract_Component {
 			)
 		);
 
-		$setting = new Customize_Setting( array(
-			'id' => $this->id . '_logo_pos',
-			'transport' => 'postMessage',
-			'default' => 'top',
-		) );
+		$setting = new Customize_Setting(
+			array(
+				'id'        => $this->id . '_logo_pos',
+				'transport' => 'postMessage',
+				'default'   => 'top',
+			)
+		);
 		$wp_customize->add_setting( $setting->id, $setting->setting_args() );
 		array_push( $partial_settings, $setting->id );
 		$wp_customize->add_control(
 			$this->id . '_logo_pos',
 			[
-				'label'       => __( 'Logo Position', 'hfg-module' ),
-				'type'        => 'select',
-				'section'     => $this->section,
-				'choices'     => array(
+				'label'   => __( 'Logo Position', 'hfg-module' ),
+				'type'    => 'select',
+				'section' => $this->section,
+				'choices' => array(
 					'top'    => __( 'Top', 'hfg-module' ),
 					'left'   => __( 'Left', 'hfg-module' ),
 					'right'  => __( 'Right', 'hfg-module' ),
@@ -177,9 +185,8 @@ class Logo extends Abstract_Component {
 
 	/**
 	 * Render logo section.
-	 *
 	 */
 	public function render_component() {
-		Main::get_instance()->load('component-logo');
+		Main::get_instance()->load( 'component-logo' );
 	}
 }

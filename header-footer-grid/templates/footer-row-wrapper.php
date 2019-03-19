@@ -23,7 +23,7 @@ $skin_mode   = get_theme_mod( $control_id . '_' . $row_index . '_skin', $default
 $row_classes = [
 	'footer--row',
 	'footer-' . $row_index,
-	$device === 'desktop' ? 'hide-on-mobile hide-on-tablet' : 'hide-on-desktop'
+	$device === 'desktop' ? 'hide-on-mobile hide-on-tablet' : 'hide-on-desktop',
 ];
 
 $row_classes[] = get_theme_mod( $control_id . '_' . $row_index . '_layout', 'layout-full-contained' );
@@ -33,7 +33,7 @@ $row_styles_array = [];
 
 $layout_height = json_decode( get_theme_mod( $control_id . '_' . $row_index . '_height', '{"mobile":"0","tablet":"0","desktop":"0"}' ), true );
 
-if( isset( $layout_height[ $device ] ) ) {
+if ( isset( $layout_height[ $device ] ) ) {
 	$row_styles_array['height'] = 'auto;';
 	if ( intval( $layout_height[ $device ] ) > 0 ) {
 		$row_styles_array['height'] = $layout_height[ $device ] . 'px;';
@@ -52,13 +52,13 @@ if ( ! empty( $row_styles_array ) ) {
 
 ?>
 <div class="<?php echo esc_attr( join( ' ', $row_classes ) ); ?>"
-     id="cb-row--footer-<?php echo $row_index; ?>"
-     data-row-id="<?php echo $row_index; ?>" data-show-on="<?php echo $device; ?>">
+	id="cb-row--footer-<?php echo $row_index; ?>"
+	data-row-id="<?php echo $row_index; ?>" data-show-on="<?php echo $device; ?>">
 	<div class="footer--row-inner footer-<?php echo esc_attr( $row_index ); ?>-inner <?php echo esc_attr( $skin_mode ); ?> footer-content-wrap"
 		<?php echo( wp_kses_post( $row_styles ) ); ?> >
 		<div class="container">
 			<div class="hfg-grid hfg-grid-<?php echo esc_attr( $row_index ); ?>   nv-footer-content">
-				<?php render_components() ?>
+				<?php render_components(); ?>
 			</div>
 		</div>
 	</div>

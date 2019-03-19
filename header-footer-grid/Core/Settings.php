@@ -1,7 +1,7 @@
 <?php
 /**
  * Settings class for Header Footer Grid.
- * Holds all settings for this moduel.
+ * Holds all settings for this module.
  *
  * Name:    Header Footer Grid
  * Author:  Bogdan Preda <bogdan.preda@themeisle.com>
@@ -164,20 +164,32 @@ class Settings {
 	 * @return array
 	 */
 	public function get_footer_defaults_neve() {
-		return json_encode( [
-			'desktop' => [
-				'top'    => [],
-				'bottom' => [
-					[
-						'id'    => 'footer_copyright',
-						'width' => 1,
-						'x'     => 6,
+		return json_encode(
+			[
+				'desktop' => [
+					'top'    => [],
+					'bottom' => [
+						[
+							'id'    => 'footer_copyright',
+							'width' => 1,
+							'x'     => 6,
+						],
 					],
 				],
 			]
-		] );
+		);
 	}
 
+	/**
+	 * Retrieve media from post id.
+	 *
+	 * @since   1.0.0
+	 * @access  private
+	 * @param int $id Post ID.
+	 * @param string $size Media size.
+	 *
+	 * @return bool
+	 */
 	private function media_from_id( $id, $size = 'full' ) {
 		$image_attributes = wp_get_attachment_image_src( $id, $size );
 		if ( ! $image_attributes ) {
@@ -186,6 +198,16 @@ class Settings {
 		return $image_attributes[0];
 	}
 
+	/**
+	 * Retrieve media from attachment url.
+	 *
+	 * @since   1.0.0
+	 * @access  private
+	 * @param $url
+	 * @param string $size
+	 *
+	 * @return bool
+	 */
 	private function media_from_url( $url, $size = 'full' ) {
 		$img_id = attachment_url_to_postid( $url );
 		if ( $img_id ) {

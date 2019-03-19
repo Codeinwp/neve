@@ -74,18 +74,18 @@ class Front_End {
 		);
 
 		add_image_size( 'neve-blog', 930, 620, true );
-		add_filter( 'wp_nav_menu_args', [$this,'nav_walker'], 1001 );
+		add_filter( 'wp_nav_menu_args', [ $this, 'nav_walker' ], 1001 );
 		$this->add_woo_support();
 	}
 
 	/**
 	 * Tweak menu walker to support selective refresh.
 	 *
-	 * @param $args
+	 * @param array $args List of arguments for navigation.
 	 *
 	 * @return mixed
 	 */
-	public function nav_walker($args){
+	public function nav_walker( $args ) {
 		if ( isset( $args['walker'] ) && is_string( $args['walker'] ) && class_exists( $args['walker'] ) ) {
 			$args['walker'] = new $args['walker'];
 		}
@@ -583,7 +583,7 @@ class Front_End {
 			)
 		);
 
-		$sidebars        = array_merge( $sidebars, $footer_sidebars );
+		$sidebars = array_merge( $sidebars, $footer_sidebars );
 
 		foreach ( $sidebars as $sidebar_id => $sidebar_name ) {
 			$sidebar_settings = array(

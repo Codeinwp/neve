@@ -202,16 +202,16 @@ class Customizer {
 	public function preview_js() {
 		if ( is_customize_preview() ) {
 			$suffix = $this->get_assets_suffix();
-			 wp_enqueue_script(
-			 'hfg-customizer',
-			 esc_url( $this->settings->url ) . '/assets/js/customizer/customizer' . $suffix . '.js',
-			 array(
-			 'customize-preview',
-			 'customize-selective-refresh',
-			 ),
-			 '20151215',
-			 true
-			 );
+			wp_enqueue_script(
+				'hfg-customizer',
+				esc_url( $this->settings->url ) . '/assets/js/customizer/customizer' . $suffix . '.js',
+				array(
+					'customize-preview',
+					'customize-selective-refresh',
+				),
+				'20151215',
+				true
+			);
 		}
 	}
 
@@ -253,9 +253,9 @@ class Customizer {
 							<?php do_action( 'hfg_builder_panel_actions_buttons' ); ?>
 							<a class="button button-secondary hfg--panel-close" href="#">
 								<span class="close-text"><i class="dashicons dashicons-arrow-down-alt2"
-								                            style="margin-top: 4px;"></i> <?php _e( 'Close', 'neve' ); ?></span>
+															style="margin-top: 4px;"></i> <?php _e( 'Close', 'neve' ); ?></span>
 								<span class="panel-name-text"><i class="dashicons dashicons-arrow-up-alt2"
-								                                 style="margin-top: 4px;"></i> {{ data.title }}</span>
+																style="margin-top: 4px;"></i> {{ data.title }}</span>
 							</a>
 						</div>
 					</div>
@@ -266,15 +266,15 @@ class Customizer {
 
 		<script type="text/html" id="tmpl-hfg--cb-item">
 			<div class="grid-stack-item item-from-list for-s-{{ data.section }}"
-			     title="{{ data.name }}"
-			     data-id="{{ data.id }}"
-			     data-section="{{ data.section }}"
-			     data-control="{{ data.control }}"
-			     data-gs-x="{{ data.x }}"
-			     data-gs-y="{{ data.y }}"
-			     data-gs-width="{{ data.width }}"
-			     data-df-width="{{ data.width }}"
-			     data-gs-height="1"
+				title="{{ data.name }}"
+				data-id="{{ data.id }}"
+				data-section="{{ data.section }}"
+				data-control="{{ data.control }}"
+				data-gs-x="{{ data.x }}"
+				data-gs-y="{{ data.y }}"
+				data-gs-width="{{ data.width }}"
+				data-df-width="{{ data.width }}"
+				data-gs-height="1"
 			>
 				<div class="item-tooltip" data-section="{{ data.section }}">{{ data.name }}</div>
 				<div class="grid-stack-item-content">

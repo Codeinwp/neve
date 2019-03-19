@@ -29,7 +29,7 @@ add_theme_support(
 		),
 	)
 );
-require_once "functions-template.php";
+require_once 'functions-template.php';
 /**
  * Disable search icon in menu as HFG has a search icon item already.
  */
@@ -37,15 +37,19 @@ add_filter( 'neve_should_search_in_menu', '__return_false' );
 
 add_filter(
 	'hfg_active', function () {
-	return true;
-}
+		return true;
+	}
 );
 
 if ( apply_filters( 'hfg_active', false ) === true ) {
-	add_action( 'neve_do_footer', function () {
-		do_action( 'hfg_footer_render' );
-	} );
-	add_action( 'neve_do_header', function () {
-		do_action( 'hfg_header_render' );
-	} );
+	add_action(
+		'neve_do_footer', function () {
+			do_action( 'hfg_footer_render' );
+		}
+	);
+	add_action(
+		'neve_do_header', function () {
+			do_action( 'hfg_header_render' );
+		}
+	);
 }
