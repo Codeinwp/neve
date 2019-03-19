@@ -11,7 +11,6 @@
 
 namespace HFG\Core\Components;
 
-use HFG\Core\Customizer\Image_Radio_Control;
 use HFG\Core\Settings;
 use HFG\Main;
 use Neve\Customizer\Controls\Radio_Image;

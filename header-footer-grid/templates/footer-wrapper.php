@@ -1,6 +1,6 @@
 <?php
 /**
- * Template used for header rendering.
+ * Template used for footer rendering.
  *
  * Name:    Header Footer Grid
  *
