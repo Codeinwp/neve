@@ -119,8 +119,8 @@ $animation_speed: .3s !default;
             @include vendor(transform, rotate(-45deg));
         }
 
-        > .ui-resizable-e  { cursor: ew-resize;  width: 10px; right: $horizontal_padding / 2; left: auto; top: 0px; bottom: 0px; }
-        > .ui-resizable-w  { cursor: ew-resize;  width: 10px; left: $horizontal_padding / 2; right: auto; top: 0px; bottom: 0px; }
+        > .ui-resizable-e  { cursor: ew-resize;  width: 5px; right: $horizontal_padding / 4; left: auto; top: 0px; bottom: 0px; }
+        > .ui-resizable-w  { cursor: ew-resize;  width: 5px; left: $horizontal_padding / 4; right: auto; top: 0px; bottom: 0px; }
 
         &.ui-draggable-dragging {
             &> .ui-resizable-handle {

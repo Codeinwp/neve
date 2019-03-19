@@ -26,10 +26,10 @@ class FooterWidgetThree extends Abstract_FooterWidget {
 	 * @param string $panel The panel ID.
 	 */
 	public function __construct( $panel ) {
-		$this->set_property( 'label', __( 'Footer Sidebar 3', 'hfg-module' ) );
+		$this->set_property( 'label', __( 'Footer Three', 'hfg-module' ) );
 		$this->set_property( 'id', 'footer-three-widgets' );
 		$this->set_property( 'width', 3 );
-		$this->set_property( 'section', 'sidebar-widgets-footer-3' );
+		$this->set_property( 'section', 'sidebar-widgets-footer-three-widgets' );
 		$this->set_property( 'panel', $panel );
 
 		add_filter( 'customize_section_active', array( $this, 'footer_widgets_show' ), 15, 2 );
