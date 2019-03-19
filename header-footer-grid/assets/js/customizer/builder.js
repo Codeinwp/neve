@@ -1379,9 +1379,9 @@ let CustomizeBuilderV1;
 						device +
 						'" data-device="' +
 						device +
-						'">' +
+						'"><span class="icon '+ device +'-icon"></span><span>' +
 						deviceName +
-						"</a>"
+						'</span></a>'
 					);
 					$( ".hfg--cb-body", that.container ).append( panelHTML );
 				} );

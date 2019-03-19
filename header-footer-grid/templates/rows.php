@@ -16,6 +16,7 @@
 		<div class="hfg--row-top hfg--cb-row" data-id="{{ data.id }}_top">
 			<a class="hfg--cb-row-settings" title="{{ data.rows.top }}" data-id="top" href="#"></a>
 			<div class="hfg--row-inner">
+				<div class="row--title">{{ data.rows.top }}</div>
 				<div class="row--grid">
 					<?php
 					for ( $i = 1; $i <= 12; $i ++ ) {
@@ -33,6 +34,7 @@
 			<a class="hfg--cb-row-settings" title="{{ data.rows.main }}" data-id="main" href="#"></a>
 
 			<div class="hfg--row-inner">
+				<div class="row--title">{{ data.rows.main }}</div>
 				<div class="row--grid">
 					<?php
 					for ( $i = 1; $i <= 12; $i ++ ) {
@@ -49,6 +51,7 @@
 		<div class="hfg--row-bottom hfg--cb-row" data-id="{{ data.id }}_bottom">
 			<a class="hfg--cb-row-settings" title="{{ data.rows.bottom }}" data-id="bottom" href="#"></a>
 			<div class="hfg--row-inner">
+				<div class="row--title">{{ data.rows.bottom }}</div>
 				<div class="row--grid">
 					<?php
 					for ( $i = 1; $i <= 12; $i ++ ) {
@@ -68,11 +71,16 @@
 		<div class="hfg--row-bottom hfg--cb-row" data-id="{{ data.id }}_sidebar">
 			<a class="hfg--cb-row-settings" title="{{ data.rows.sidebar }}" data-id="sidebar" href="#"></a>
 			<div class="hfg--row-inner">
+				<div class="row--title">{{ data.rows.sidebar }}</div>
 				<div class="hfg--cb-items hfg--sidebar-items" data-id="sidebar"></div>
 			</div>
 		</div>
-		<div>
+	</div>
 			<# } #>
 			<# } #>
 
+	<h4 class="hfg--widgets-info"><?php _e( 'Available Widgets', 'neve' ); ?>
+		<i class="dashicons dashicons-info"></i>
+		<span class="tooltip"><?php _e( 'To activate a widget drag it to a row above.', 'neve' ); ?></span>
+	</h4>
 </script>
