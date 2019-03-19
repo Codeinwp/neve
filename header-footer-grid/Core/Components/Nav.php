@@ -50,7 +50,7 @@ class Nav extends Abstract_Component {
 	 * @return WP_Customize_Manager
 	 */
 	public function customize_register( WP_Customize_Manager $wp_customize ) {
-		$fn       = array( $this, 'render_component' );
+		$fn       = array( $this, 'render' );
 		$selector = '.builder-item--' . $this->id;
 
 		$wp_customize->add_section(

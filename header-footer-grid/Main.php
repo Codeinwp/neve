@@ -93,7 +93,6 @@ class Main {
 		if ( empty( $builder ) ) {
 			$builder = Abstract_Builder::get_current_builder();
 		}
-
 		return $this->customizer->get_builders( $builder );
 	}
 

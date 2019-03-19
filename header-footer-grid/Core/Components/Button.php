@@ -48,9 +48,9 @@ class Button extends Abstract_Component {
 	 * @return WP_Customize_Manager
 	 */
 	public function customize_register( WP_Customize_Manager $wp_customize ) {
-		$prefix   = $this->section;
+		$prefix   = $this->id;
 		$fn       = array( $this, 'render' );
-		$selector = 'a.item--' . $this->id;
+		$selector = '.builder-item--' . $this->id ;
 
 		$wp_customize->add_section(
 			$this->section, array(
@@ -64,22 +64,43 @@ class Button extends Abstract_Component {
 			$prefix . '_text' . '_setting', array(
 				'theme_supports' => 'hfg_support',
 				'default'        => __( 'Button', 'hfg-module' ),
-				'transport'      => 'refresh',
+				'transport'      => 'postMessage',
+			)
+	);
+		$wp_customize->add_setting(
+			$prefix . '_link' . '_setting', array(
+				'theme_supports' => 'hfg_support',
+				'default'        => __( '#', 'hfg-module' ),
+				'transport'      => 'postMessage',
 			)
 		);
 
 		$wp_customize->add_control(
-			$prefix . '_text', array(
-				'name'            => $prefix . '_text',
+			$prefix . '_text' . '_setting', array(
 				'label'           => __( 'Text', 'hfg-module' ),
 				'type'            => 'text',
+				'settings'       => $prefix . '_text' . '_setting',
 				'section'         => $this->section,
-				'selector'        => $selector,
-				'render_callback' => $fn,
-				'settings'        => $prefix . '_text' . '_setting',
 			)
 		);
-
+		$wp_customize->add_control(
+			$prefix . '_link' . '_setting', array(
+				'label'           => __( 'Link', 'hfg-module' ),
+				'type'            => 'text',
+				'settings'       => $prefix . '_link' . '_setting',
+				'section'         => $this->section,
+			)
+		);
+		$wp_customize->selective_refresh->add_partial(
+			$this->panel  , array(
+				'selector'        => $selector,
+				'settings'        => array(
+					$prefix . '_link' . '_setting',
+					$prefix . '_text' . '_setting',
+				),
+				'render_callback' => $fn,
+			)
+		);
 		return parent::customize_register( $wp_customize );
 	}
 

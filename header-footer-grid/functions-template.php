@@ -30,7 +30,10 @@ function render_components( $builder_name = '', $device = null, $row_index = nul
  * @return Core\Components\Abstract_Component
  */
 function current_component( $builder_name = '', $component_id = null ) {
-	return Main::get_instance()->get_builders( $builder_name )->get_component( $component_id );
+	$builder = Main::get_instance()->get_builders( $builder_name );
+	$builder = is_array( $builder ) ? reset( $builder ) : $builder;
+
+	return $builder->get_component( $component_id );
 }
 
 function settings() {
