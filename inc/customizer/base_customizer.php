@@ -14,6 +14,7 @@ use Neve\Customizer\Types\Control;
 use Neve\Customizer\Types\Panel;
 use Neve\Customizer\Types\Partial;
 use Neve\Customizer\Types\Section;
+use WP_Customize_Manager;
 
 /**
  * Customizer module base.
@@ -24,9 +25,9 @@ abstract class Base_Customizer {
 	/**
 	 * WP_Customize object
 	 *
-	 * @var $wp_customize object
+	 * @var WP_Customize_Manager $wp_customize object
 	 */
-	private $wpc;
+	protected $wpc;
 
 	/**
 	 * Selective refresh.

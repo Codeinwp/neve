@@ -31,7 +31,7 @@ class Footer extends Abstract_Builder {
 	 * @since   1.0.0
 	 * @access  public
 	 */
-	public function __construct() {
+	public function init() {
 		$this->set_property( 'title', __( 'HFG Footer', 'hfg-module' ) );
 		$this->set_property( 'control_id', 'hfg_footer_layout' );
 		$this->set_property( 'panel', 'hfg_footer' );

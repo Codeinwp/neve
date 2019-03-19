@@ -16,7 +16,7 @@ class Footer extends Base_View {
 	 * Initialization of the feature.
 	 */
 	public function init() {
-		//add_action( 'neve_do_footer', array( $this, 'render_footer' ) );
+		add_action( 'neve_do_footer', array( $this, 'render_footer' ) );
 	}
 
 	/**

@@ -11,11 +11,11 @@
 
 namespace HFG\Core\Components;
 
-use HFG\Core\Customizer\Slider_Control;
+use HFG\Core\Customizer\Customize_Setting;
 use HFG\Core\Customizer\Text_Radio_Control;
-use HFG\Core\Customizer\Toggle_Control;
-use HFG\Core\Settings;
 use HFG\Main;
+use Neve\Customizer\Controls\Checkbox;
+use Neve\Customizer\Controls\Range;
 use WP_Customize_Manager;
 
 /**
@@ -53,7 +53,7 @@ class Logo extends Abstract_Component {
 	 */
 	public function customize_register( WP_Customize_Manager $wp_customize ) {
 
-		$fn = array( $this, 'render' );
+		$fn = array( $this, 'render_component' );
 
 		$selector = '.builder-item--' . $this->id;
 
@@ -64,103 +64,110 @@ class Logo extends Abstract_Component {
 				'panel'    => $this->panel,
 			)
 		);
+		$partial_settings = array();
 
-		$wp_customize->add_setting(
-			$this->id . '_max_width',
-			array(
-				'default'        => 120,
-				'theme_supports' => 'hfg_support',
-				'transport'      => 'postMessage',
-			)
-		);
+		$setting = new Customize_Setting( array(
+			'id' => $this->id . '_max_width',
+			'transport' => 'postMessage',
+			'default' => '{ "mobile": "120", "tablet": "120", "desktop": "120" }',
+		) );
+		$wp_customize->add_setting( $setting->id, $setting->setting_args() );
+		array_push( $partial_settings, $setting->id );
 		$wp_customize->add_control(
-			new Slider_Control(
+			new Range(
 				$wp_customize,
 				$this->id . '_max_width',
-				[
-					'label'       => esc_html__( 'Logo Max Width', 'hfg-module' ),
+				array(
+					'label'       => esc_html__( 'Logo max width (px)', 'neve' ),
 					'section'     => $this->section,
-					'input_attrs' => array(
-						'min'  => 50,
-						'max'  => 400,
-						'step' => 1,
-					),
-				]
+					'type'        => 'range-value',
+					'media_query' => true,
+					'step'        => 1,
+					'input_attr'  => array(
+						'mobile'  => array(
+							'min'     => 0,
+							'max'     => 350,
+							'default' => 120,
+						),
+						'tablet'  => array(
+							'min'     => 0,
+							'max'     => 350,
+							'default' => 120,
+						),
+						'desktop' => array(
+							'min'     => 0,
+							'max'     => 350,
+							'default' => 120,
+						),
+					)
+				)
 			)
 		);
 
-		$wp_customize->add_setting(
-			$this->id . '_show_title',
-			array(
-				'default'        => 1,
-				'theme_supports' => 'hfg_support',
-				'transport'      => 'postMessage',
-			)
-		);
+		$setting = new Customize_Setting( array(
+			'id' => $this->id . '_show_title',
+			'transport' => 'postMessage',
+			'default' => 1,
+		) );
+		$wp_customize->add_setting( $setting->id, $setting->setting_args() );
+		array_push( $partial_settings, $setting->id );
 		$wp_customize->add_control(
-			new Toggle_Control(
+			new Checkbox(
 				$wp_customize,
 				$this->id . '_show_title',
 				[
 					'label'   => esc_html__( 'Show Site Title', 'hfg-module' ),
+					'type'    => 'checkbox-toggle',
 					'section' => $this->section,
 				]
 			)
 		);
 
-		$wp_customize->add_setting(
-			$this->id . '_show_tagline',
-			array(
-				'default'        => 1,
-				'theme_supports' => 'hfg_support',
-				'transport'      => 'postMessage',
-			)
-		);
+		$setting = new Customize_Setting( array(
+			'id' => $this->id . '_show_tagline',
+			'transport' => 'postMessage',
+			'default' => 1,
+		) );
+		$wp_customize->add_setting( $setting->id, $setting->setting_args() );
+		array_push( $partial_settings, $setting->id );
 		$wp_customize->add_control(
-			new Toggle_Control(
+			new Checkbox(
 				$wp_customize,
 				$this->id . '_show_tagline',
 				[
 					'label'   => esc_html__( 'Show Site Tagline', 'hfg-module' ),
+					'type'    => 'checkbox-toggle',
 					'section' => $this->section,
 				]
 			)
 		);
 
-		$wp_customize->add_setting(
-			$this->id . '_logo_pos',
-			array(
-				'default'        => 'top',
-				'theme_supports' => 'hfg_support',
-				'transport'      => 'postMessage',
-			)
-		);
+		$setting = new Customize_Setting( array(
+			'id' => $this->id . '_logo_pos',
+			'transport' => 'postMessage',
+			'default' => 'top',
+		) );
+		$wp_customize->add_setting( $setting->id, $setting->setting_args() );
+		array_push( $partial_settings, $setting->id );
 		$wp_customize->add_control(
-			new Text_Radio_Control(
-				$wp_customize,
-				$this->id . '_logo_pos',
-				[
-					'label'   => __( 'Logo Position' ),
-					'section' => $this->section,
-					'choices' => array(
-						'top'    => __( 'Top', 'hfg-module' ),
-						'left'   => __( 'Left', 'hfg-module' ),
-						'right'  => __( 'Right', 'hfg-module' ),
-						'bottom' => __( 'Bottom', 'hfg-module' ),
-					),
-				]
-			)
+			$this->id . '_logo_pos',
+			[
+				'label'       => __( 'Logo Position', 'hfg-module' ),
+				'type'        => 'select',
+				'section'     => $this->section,
+				'choices'     => array(
+					'top'    => __( 'Top', 'hfg-module' ),
+					'left'   => __( 'Left', 'hfg-module' ),
+					'right'  => __( 'Right', 'hfg-module' ),
+					'bottom' => __( 'Bottom', 'hfg-module' ),
+				),
+			]
 		);
 
 		$wp_customize->selective_refresh->add_partial(
 			$this->id . '_partial', array(
 				'selector'        => $selector,
-				'settings'        => array(
-					$this->id . '_max_width',
-					$this->id . '_show_title',
-					$this->id . '_show_tagline',
-					$this->id . '_logo_pos',
-				),
+				'settings'        => $partial_settings,
 				'render_callback' => $fn,
 			)
 		);

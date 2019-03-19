@@ -7,6 +7,7 @@
  * @version 1.0.0
  * @package HFG
  */
+
 namespace HFG;
 
 $id = current_component()->get_id();
@@ -19,7 +20,7 @@ if ( strpos( $id, '-menu' ) ) {
 	$item_classes[] = 'has_menu';
 }
 if ( is_customize_preview() ) {
-	$item_classes[] = ' builder-item-focus';
+	$item_classes[] = 'builder-item-focus';
 }
 
 $item_classes = join( ' ', $item_classes );

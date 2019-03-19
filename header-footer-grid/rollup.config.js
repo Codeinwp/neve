@@ -36,4 +36,20 @@ export default [
 			uglify(),
 		],
 	},
+	{
+		input: 'assets/js/customizer/hfg_responsive.js',
+		output: {
+			file: 'assets/js/customizer/hfg_responsive.min.js',
+			format: 'iife',
+			sourceMap: 'inline',
+		},
+		plugins: [
+			resolve(),
+			commonjs(),
+			babel( {
+				exclude: 'node_modules/**' // only transpile our source code
+			} ),
+			uglify(),
+		],
+	},
 ];

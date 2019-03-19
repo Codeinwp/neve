@@ -27,12 +27,12 @@ class Header extends Abstract_Builder {
 	const BUILDER_NAME = 'header';
 
 	/**
-	 * Header constructor.
+	 * Header init.
 	 *
 	 * @since   1.0.0
 	 * @access  public
 	 */
-	public function __construct() {
+	public function init() {
 		$this->set_property( 'title', __( 'HFG Header', 'hfg-module' ) );
 		$this->set_property( 'control_id', 'hfg_header_layout' );
 		$this->set_property( 'panel', 'hfg_header' );
@@ -83,7 +83,6 @@ class Header extends Abstract_Builder {
 		}
 
 		Main::get_instance()->load( 'row-wrapper', $name );
-
 	}
 
 	/**
@@ -100,27 +99,5 @@ class Header extends Abstract_Builder {
 			'bottom'  => 'Header Bottom',
 			'sidebar' => 'Menu Sidebar',
 		];
-	}
-
-	/**
-	 * Utility function to sort items by x.
-	 *
-	 * @since   1.0.0
-	 * @access  private
-	 *
-	 * @param array $items List of items.
-	 *
-	 * @return array
-	 */
-	private function _sort_items_by_position( $items = array() ) {
-		$ordered_items = array();
-
-		foreach ( $items as $key => $item ) {
-			$ordered_items[ $key ] = $item['x'];
-		}
-
-		array_multisort( $ordered_items, SORT_ASC, $items );
-
-		return $items;
 	}
 }

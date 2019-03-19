@@ -26,12 +26,12 @@ $row_classes[] = get_theme_mod( $control_id . '_' . $row_index . '_layout', 'lay
 $row_styles       = '';
 $row_styles_array = [];
 
-$row_height = get_theme_mod( $control_id . '_' . $row_index . '_height' . '_' . $device, 'auto' );
+$layout_height = json_decode( get_theme_mod( $control_id . '_' . $row_index . '_height', '{"mobile":"0","tablet":"0","desktop":"0"}' ), true );
 
-if ( $row_height ) {
+if( isset( $layout_height[ $device ] ) ) {
 	$row_styles_array['height'] = 'auto;';
-	if ( intval( $row_height ) > 0 ) {
-		$row_styles_array['height'] = $row_height . 'px;';
+	if ( intval( $layout_height[ $device ] ) > 0 ) {
+		$row_styles_array['height'] = $layout_height[ $device ] . 'px;';
 	}
 }
 

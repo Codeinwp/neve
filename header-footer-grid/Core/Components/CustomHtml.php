@@ -11,32 +11,28 @@
 
 namespace HFG\Core\Components;
 
-use HFG\Core\Customizer\Image_Radio_Control;
-use HFG\Core\Settings;
 use HFG\Main;
-use Neve\Customizer\Controls\Radio_Image;
 use WP_Customize_Manager;
 
 /**
- * Class Nav
+ * Class Copyright
  *
  * @package HFG\Core\Components
  */
-class Nav extends Abstract_Component {
+class CustomHtml extends Abstract_Component {
 
 	/**
-	 * Nav constructor.
+	 * CustomHtml constructor.
 	 *
 	 * @since   1.0.0
 	 * @access  public
-	 *
-	 * @param string $panel The panel name.
+	 * @param string $panel The panel ID.
 	 */
 	public function __construct( $panel ) {
-		$this->set_property( 'label', __( 'Primary Menu', 'hfg-module' ) );
-		$this->set_property( 'id', 'primary-menu' );
+		$this->set_property( 'label', __( 'HTML', 'hfg-module' ) );
+		$this->set_property( 'id', 'custom_html' );
 		$this->set_property( 'width', 2 );
-		$this->set_property( 'section', 'header_menu_primary' );
+		$this->set_property( 'section', 'custom_html' );
 		$this->set_property( 'panel', $panel );
 	}
 
@@ -45,7 +41,6 @@ class Nav extends Abstract_Component {
 	 *
 	 * @since   1.0.0
 	 * @access  public
-	 *
 	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
 	 *
 	 * @return WP_Customize_Manager
@@ -63,47 +58,27 @@ class Nav extends Abstract_Component {
 		);
 
 		$wp_customize->add_setting(
-			$this->id . '_style',
+			$this->id . '_content',
 			array(
-				'default'        => 'style-plain',
+				'default'        => '',
 				'theme_supports' => 'hfg_support',
 				'transport'      => 'postMessage',
 			)
 		);
 		$wp_customize->add_control(
-			new Radio_Image(
-				$wp_customize,
-				$this->id . '_style',
-				[
-					'label'   => __( 'Skin Mode' ),
-					'section' => $this->section,
-					'choices' => array(
-						'style-plain' => array(
-							'url' => Settings::get_instance()->url . '/assets/images/customizer/menu_style_1.svg',
-							'name'  => __( 'Plain' ),
-						),
-						'style-full-height' => array(
-							'url' => Settings::get_instance()->url . '/assets/images/customizer/menu_style_2.svg',
-							'name'  => __( 'Full Height' ),
-						),
-						'style-border-bottom' => array(
-							'url' => Settings::get_instance()->url . '/assets/images/customizer/menu_style_3.svg',
-							'name'  => __( 'Bottom Border' ),
-						),
-						'style-border-top'    => array(
-							'url' => Settings::get_instance()->url . '/assets/images/customizer/menu_style_4.svg',
-							'name'  => __( 'Top Border' ),
-						),
-					),
-				]
-			)
+			$this->id . '_content',
+			[
+				'label'   => esc_html__( 'Custom HTML', 'hfg-module' ),
+				'type'    => 'textarea',
+				'section' => $this->section,
+			]
 		);
 
 		$wp_customize->selective_refresh->add_partial(
 			$this->id . '_partial', array(
 				'selector'        => $selector,
 				'settings'        => array(
-					$this->id . '_style',
+					$this->id . '_content',
 				),
 				'render_callback' => $fn,
 			)
@@ -112,8 +87,13 @@ class Nav extends Abstract_Component {
 		return parent::customize_register( $wp_customize );
 	}
 
+	/**
+	 * The render method for the component.
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 */
 	public function render_component() {
-		Main::get_instance()->load( 'component-nav' );
+		Main::get_instance()->load( 'component-html' );
 	}
-
 }

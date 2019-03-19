@@ -72,7 +72,6 @@ abstract class Abstract_FooterWidget extends Abstract_Component {
 		return parent::customize_register( $wp_customize );
 	}
 
-
 	/**
 	 * The render method.
 	 *
