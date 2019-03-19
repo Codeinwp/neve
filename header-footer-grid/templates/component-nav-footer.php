@@ -11,7 +11,7 @@ namespace HFG;
 
 use HFG\Core\Builder\Footer;
 
-$id         = current_component( Footer::BUILDER_NAME, 'footer-menu' )->get_id();
+$id         = current_component( Footer::BUILDER_NAME )->get_id();
 $style      = get_theme_mod( $id . '_style', 'style-plain' );
 $hide_arrow = get_theme_mod( $id . '_hide-arrow', false );
 if ( $hide_arrow ) {
