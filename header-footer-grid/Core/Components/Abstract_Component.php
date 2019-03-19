@@ -23,6 +23,7 @@ use WP_Customize_Manager;
  */
 abstract class Abstract_Component implements Component {
 	use Core;
+	public static $current_component = null;
 	/**
 	 * Current X pos of the component if set.
 	 *
@@ -109,17 +110,6 @@ abstract class Abstract_Component implements Component {
 	}
 
 	/**
-	 * Utility method to return the component ID.
-	 *
-	 * @since   1.0.0
-	 * @access  public
-	 * @return string
-	 */
-	public function get_id() {
-		return $this->id;
-	}
-
-	/**
 	 * Method to get protected properties for class.
 	 *
 	 * @since   1.0.0
@@ -155,7 +145,20 @@ abstract class Abstract_Component implements Component {
 	 * Render component markup.
 	 */
 	public function render() {
+		self::$current_component = $this->get_id();
+
 		Main::get_instance()->load( 'component-wrapper' );
+	}
+
+	/**
+	 * Utility method to return the component ID.
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 * @return string
+	 */
+	public function get_id() {
+		return $this->id;
 	}
 
 	/**
