@@ -52,7 +52,7 @@ class Logo extends Abstract_Component {
 	 */
 	public function customize_register( WP_Customize_Manager $wp_customize ) {
 
-		$fn = array( $this, 'render_component' );
+		$fn = array( $this, 'render' );
 
 		$selector = '.builder-item--' . $this->id;
 
