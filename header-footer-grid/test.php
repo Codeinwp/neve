@@ -15,15 +15,16 @@ add_theme_support(
 				'HFG\Core\Components\Nav',
 				'HFG\Core\Components\Button',
 				'HFG\Core\Components\CustomHtml',
+				'HFG\Core\Components\SecondNav',
 			),
-//			'HFG\Core\Builder\Footer' => array(
-//				'HFG\Core\Components\FooterWidgetOne',
-//				'HFG\Core\Components\FooterWidgetTwo',
-//				'HFG\Core\Components\FooterWidgetThree',
-//				'HFG\Core\Components\FooterWidgetFour',
-//				'HFG\Core\Components\NavFooter',
-//				'HFG\Core\Components\Copyright',
-//			),
+			'HFG\Core\Builder\Footer' => array(
+				'HFG\Core\Components\FooterWidgetOne',
+				'HFG\Core\Components\FooterWidgetTwo',
+				'HFG\Core\Components\FooterWidgetThree',
+				'HFG\Core\Components\FooterWidgetFour',
+				'HFG\Core\Components\NavFooter',
+				'HFG\Core\Components\Copyright',
+			),
 		),
 	)
 );
@@ -40,7 +41,7 @@ add_filter( 'neve_should_search_in_menu', '__return_false' );
 
 add_filter(
 	'hfg_active', function () {
-	return false;
+	return true;
 //	return ! ( isset( $_GET['builder_off'] ) && $_GET['builder_off'] === 'true' );
 //	if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
 //		return true;
@@ -50,11 +51,11 @@ add_filter(
 }
 );
 if ( apply_filters( 'hfg_active',false ) === true ) {
-	remove_all_actions( 'neve_do_footer' );
+	//remove_all_actions( 'neve_do_footer' );
 	add_action( 'neve_do_footer', function () {
 		do_action( 'hfg_footer_render' );
 	} );
-	remove_all_actions( 'neve_do_header' );
+	//remove_all_actions( 'neve_do_header' );
 	add_action( 'neve_do_header', function () {
 		do_action( 'hfg_header_render' );
 	} );

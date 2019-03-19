@@ -450,6 +450,31 @@
 .hfg-grid .builder-item.hfg-edge-right .item--inner > div{
   flex-direction: row-reverse;
 }
-.hfg-grid .nv-footer-content, .hfg-grid  .nv-footer-widgets {
+.footer--row .nv-footer-content, .footer--row  .nv-footer-widgets {
   padding:0;
+}
+#secondary-menu li{
+
+  width: inherit;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+.nav-menu-secondary{
+
+  padding-top: 10px;
+  padding-bottom: 10px;
+  align-items: center;
+  min-height: 40px;
+  font-size: .85em;
+}
+#secondary-menu{
+
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  list-style-type: none;
+  overflow-y: inherit;
+  max-height: inherit;
+  margin-left: auto;
+  justify-content: flex-start;
 }
