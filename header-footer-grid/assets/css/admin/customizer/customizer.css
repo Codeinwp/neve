@@ -2778,15 +2778,15 @@
       transform: rotate(-45deg); }
     .grid-stack > .grid-stack-item > .ui-resizable-e {
       cursor: ew-resize;
-      width: 10px;
-      right: 10px;
+      width: 5px;
+      right: 5px;
       left: auto;
       top: 0px;
       bottom: 0px; }
     .grid-stack > .grid-stack-item > .ui-resizable-w {
       cursor: ew-resize;
-      width: 10px;
-      left: 10px;
+      width: 5px;
+      left: 5px;
       right: auto;
       top: 0px;
       bottom: 0px; }
