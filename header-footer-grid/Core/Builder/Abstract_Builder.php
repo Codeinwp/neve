@@ -375,7 +375,7 @@ abstract class Abstract_Builder implements Builder {
 					$wp_customize,
 					$this->control_id . '_' . $row_id . '_height',
 					array(
-						'label'       => esc_html__( 'Container width (px)', 'neve' ),
+						'label'       => esc_html__( 'Row height (px)', 'hfg-module' ),
 						'section'     => $this->control_id . '_' . $row_id,
 						'type'        => 'range-value',
 						'media_query' => true,
