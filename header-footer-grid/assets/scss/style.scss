@@ -450,3 +450,6 @@
 .hfg-grid .builder-item.hfg-edge-right .item--inner > div{
   flex-direction: row-reverse;
 }
+.hfg-grid .nv-footer-content, .hfg-grid  .nv-footer-widgets {
+  padding:0;
+}

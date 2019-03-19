@@ -525,11 +525,11 @@ abstract class Abstract_Builder implements Builder {
 			 */
 			$component = $this->builder_components[ $component_location['id'] ];
 			$x         = intval( $component_location['x'] );
-			$width     = intval( $component_location['width'] );
+			$width     = $original_width =  intval( $component_location['width'] );
+
 			if ( ! $collection->hasNext() && ( $x + $width < $max_columns ) ) {
 				$width += $max_columns - ( $x + $width );
 			}
-
 			$push_left = '';
 			if ( $x > 0 && $last_item !== null ) {
 				$o = intval( $last_item['width'] ) + intval( $last_item['x'] );
@@ -541,7 +541,7 @@ abstract class Abstract_Builder implements Builder {
 				$push_left = 'off-' . $x;
 			}
 
-			$edge_class = ( $x > 0 && ( ( $x + $width + $o ) === $max_columns ) ) ? 'hfg-edge-right' : ( ( $x === 0 ) ? 'hfg-edge-left' : '' );
+			$edge_class = ( $x > 0 && ( ( $x + $original_width + $o ) === $max_columns ) ) ? 'hfg-edge-right' : ( ( $x === 0 ) ? 'hfg-edge-left' : '' );
 
 			$component->current_x     = $x;
 			$component->current_width = $width;
