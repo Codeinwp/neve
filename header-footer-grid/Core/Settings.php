@@ -170,15 +170,11 @@ class Settings {
 				'bottom' => [
 					[
 						'id'    => 'footer_copyright',
-						'width' => 12,
-						'x'     => 1,
+						'width' => 1,
+						'x'     => 6,
 					],
 				],
-			],
-			'mobile'  => [
-				'top'    => [],
-				'bottom' => [],
-			],
+			]
 		] );
 	}
 

@@ -11,9 +11,6 @@
 
 namespace HFG\Core\Components;
 
-use HFG\Core\Customizer\Customize_Setting;
-use HFG\Core\Customizer\Heading_Control;
-use HFG\Core\Customizer\Select_Control;
 use HFG\Core\Interfaces\Component;
 use HFG\Main;
 use HFG\Traits\Core;
@@ -151,59 +148,6 @@ abstract class Abstract_Component implements Component {
 	 * @return WP_Customize_Manager
 	 */
 	public function customize_register( WP_Customize_Manager $wp_customize ) {
-
-		$wp_customize->add_setting(
-			$this->id . '_layout_heading', array(
-				'theme_supports' => 'hfg_support',
-				'transport'      => 'postMessage',
-			)
-		);
-
-		$wp_customize->add_control(
-			new Heading_Control(
-				$wp_customize,
-				$this->id . '_layout_heading',
-				[
-					'name'     => $this->id . '_layout_heading',
-					'type'     => 'heading',
-					'priority' => 800,
-					'section'  => $this->section,
-					'label'    => __( 'Item Layout', 'hfg-module' ),
-				]
-			)
-		);
-
-		$wp_customize->add_setting(
-			$this->id . '_merge',
-			array(
-				'default'        => 'no',
-				'theme_supports' => 'hfg_support',
-				'transport'      => 'postMessage',
-			)
-		);
-
-		$setting = new Customize_Setting( array(
-			'id' => $this->id . '_merge',
-			'transport' => 'postMessage',
-			'default' => 'no',
-		) );
-		$wp_customize->add_setting( $setting->id, $setting->setting_args() );
-		//array_push( $partial_settings, $setting->id );
-		$wp_customize->add_control(
-			$this->id . '_merge',
-			[
-				'label'       => __( 'Layout', 'hfg-module' ),
-				'type'        => 'select',
-				'priority'    => 801,
-				'section'     => $this->section,
-				'choices'     => array(
-					'no'    => __( 'No', 'hfg-module' ),
-					'right' => __( 'Merge Right', 'hfg-module' ),
-					'left'  => __( 'Merge Left', 'hfg-module' ),
-				),
-			]
-		);
-
 		return $wp_customize;
 	}
 

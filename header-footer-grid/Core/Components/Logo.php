@@ -12,7 +12,6 @@
 namespace HFG\Core\Components;
 
 use HFG\Core\Customizer\Customize_Setting;
-use HFG\Core\Customizer\Text_Radio_Control;
 use HFG\Main;
 use Neve\Customizer\Controls\Checkbox;
 use Neve\Customizer\Controls\Range;
