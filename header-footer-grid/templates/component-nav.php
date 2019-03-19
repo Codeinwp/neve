@@ -10,7 +10,6 @@
 namespace HFG;
 
 use HFG\Core\Builder\Header as HeaderBuilder;
-use Neve\Views\Nav_Walker;
 
 $id         = current_component( HeaderBuilder::BUILDER_NAME )->get_id();
 $style      = get_theme_mod( $id . '_style', 'style-plain' );
@@ -19,21 +18,22 @@ if ( $hide_arrow ) {
 	$style .= ' hide-arrow-active';
 }
 
-$container_classes = '';
+$container_classes = 'nav-menu-primary';
 
 ?>
 <div class="nv-nav-wrap nav-left">
-<div role="navigation" class=" <?php echo esc_attr( $container_classes ) ?>"
-     aria-label="<?php echo esc_html( __( 'Primary Menu', 'neve' ) ); ?>">
+	<div role="navigation" class=" <?php echo esc_attr( $container_classes ) ?>"
+	     aria-label="<?php echo esc_html( __( 'Primary Menu', 'neve' ) ); ?>">
 
-	<?php wp_nav_menu( [
-		'theme_location' => 'primary',
-		'menu_id'        => 'nv-primary-navigation',
-		'container'      => 'ul',
-		'walker'         => new Nav_Walker(),
-		'fallback_cb'    => '\Neve\Views\Nav_Walker::fallback',
-	] );
-	?>
-</div>
+		<?php wp_nav_menu( [
+			'theme_location' => 'primary',
+			'menu_id'        => 'nv-primary-navigation',
+			'menu_class'     => 'primary-menu-ul',
+			'container'      => 'ul',
+			'walker'         => '\Neve\Views\Nav_Walker',
+			'fallback_cb'    => '\Neve\Views\Nav_Walker::fallback',
+		] );
+		?>
+	</div>
 </div>
 

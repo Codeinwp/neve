@@ -27,7 +27,7 @@ class FooterWidgetOne extends Abstract_FooterWidget {
 	 */
 	public function __construct( $panel ) {
 		$this->set_property( 'label', __( 'Footer Sidebar 1', 'hfg-module' ) );
-		$this->set_property( 'id', 'footer-1' );
+		$this->set_property( 'id', 'footer-one-widgets' );
 		$this->set_property( 'width', 3 );
 		$this->set_property( 'section', 'sidebar-widgets-footer-1' );
 		$this->set_property( 'panel', $panel );

@@ -21,8 +21,7 @@ add_theme_support(
 				'HFG\Core\Components\FooterWidgetTwo',
 				'HFG\Core\Components\FooterWidgetThree',
 				'HFG\Core\Components\FooterWidgetFour',
-				'HFG\Core\Components\FooterWidgetFive',
-				'HFG\Core\Components\FooterWidgetSix',
+				'HFG\Core\Components\NavFooter',
 				'HFG\Core\Components\Copyright',
 			),
 		),
@@ -41,7 +40,7 @@ add_filter( 'neve_should_search_in_menu', '__return_false' );
 
 add_filter(
 	'hfg_active', function () {
-	//return false;
+	return true;
 	return ! ( isset( $_GET['builder_off'] ) && $_GET['builder_off'] === 'true' );
 	if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
 		return true;
@@ -50,3 +49,11 @@ add_filter(
 	return NEVE_TOGGLE_HFG_TIMESTAMP < get_option( 'neve_install', time() );
 }
 );
+if ( apply_filters( 'hfg_active',true ) === true ) {
+	add_action( 'neve_do_footer', function () {
+		do_action( 'hfg_footer_render' );
+	} );
+	add_action( 'neve_do_header', function () {
+		do_action( 'hfg_header_render' );
+	} );
+}
