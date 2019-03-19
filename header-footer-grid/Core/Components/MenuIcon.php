@@ -49,7 +49,7 @@ class MenuIcon extends Abstract_Component {
 	 */
 	public function customize_register( WP_Customize_Manager $wp_customize ) {
 		$prefix   = $this->section;
-		$fn       = array( $this, 'render' );
+		$fn       = array( $this, 'render_component' );
 		$selector = 'a.item--' . $this->id;
 
 		$wp_customize->add_section(

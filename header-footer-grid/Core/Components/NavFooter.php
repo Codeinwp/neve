@@ -51,7 +51,7 @@ class NavFooter extends Abstract_Component {
 	 * @return WP_Customize_Manager
 	 */
 	public function customize_register( WP_Customize_Manager $wp_customize ) {
-		$fn       = array( $this, 'render' );
+		$fn       = array( $this, 'render_component' );
 		$selector = '.builder-item--' . $this->id;
 
 		$wp_customize->add_section(

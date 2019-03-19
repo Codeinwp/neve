@@ -39,6 +39,7 @@ add_filter(
 	return true;
 }
 );
+
 if ( apply_filters( 'hfg_active', false ) === true ) {
 	add_action( 'neve_do_footer', function () {
 		do_action( 'hfg_footer_render' );
