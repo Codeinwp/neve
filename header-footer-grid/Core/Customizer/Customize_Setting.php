@@ -9,7 +9,7 @@ class Customize_Setting {
 	private $capability           = 'edit_theme_options';
 	private $default              = '';
 	private $customizer_default   = '';
-	private $transport            = 'refresh';
+	private $transport            = 'postMessage';
 	private $sanitize_callback    = null;
 	private $sanitize_js_callback = null;
 

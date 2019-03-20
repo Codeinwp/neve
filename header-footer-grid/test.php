@@ -16,6 +16,7 @@ add_theme_support(
 				'HFG\Core\Components\Button',
 				'HFG\Core\Components\CustomHtml',
 				'HFG\Core\Components\Search',
+				'HFG\Core\Components\SearchResponsive',
 				'HFG\Core\Components\SecondNav',
 			),
 			'HFG\Core\Builder\Footer' => array(

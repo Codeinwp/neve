@@ -515,7 +515,6 @@ abstract class Abstract_Builder implements Builder {
 				continue;
 			}
 			self::$current_row = $index;
-
 			$this->render_row( $device_name, $index, $row );
 		}
 	}
@@ -537,6 +536,7 @@ abstract class Abstract_Builder implements Builder {
 	 */
 	public function render_components( $device = null, $row = null ) {
 
+		$row_index = 0;
 		if ( $device === null && $row === null ) {
 			$device    = self::$current_device;
 			$row_index = self::$current_row;

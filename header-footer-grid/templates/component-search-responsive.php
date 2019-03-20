@@ -24,7 +24,12 @@ if ( ! empty( $component_styles_array ) ) {
 }
 
 ?>
-
-<div class="widget widget-search" <?php echo  wp_kses_post( $component_styles ); ?> >
-	<?php get_search_form(); ?>
-</div>
+<span class="menu-item-nav-search responsive-nav-search" <?php echo  wp_kses_post( $component_styles ); ?> tabindex="0" aria-label="search">
+<a><span class="nv-icon nv-search"></span></a>
+<div class="nv-nav-search">
+    <div class="container close-container">
+        <a class="button button-secondary close-responsive-search"><?php echo __( 'Close', 'neve' ); ?></a>
+    </div>
+    <?php get_search_form(); ?>
+    </div>
+</span>
