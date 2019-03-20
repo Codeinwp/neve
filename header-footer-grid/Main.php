@@ -14,6 +14,7 @@ namespace HFG;
 use HFG\Core\Builder\Abstract_Builder;
 use HFG\Core\Customizer;
 use HFG\Core\Settings;
+use HFG\Traits\Core;
 
 /**
  * Class Main
@@ -21,6 +22,7 @@ use HFG\Core\Settings;
  * @package HFG
  */
 class Main {
+	use Core;
 
 	/**
 	 * Holds the instance of this class.
@@ -100,7 +102,7 @@ class Main {
 	 * Load template.
 	 *
 	 * @param string $slug Template slug.
-	 * @param string $slug Template variation.
+	 * @param string $name Template variation.
 	 */
 	public function load( $slug, $name = '' ) {
 		$location = apply_filters( 'hfg_load_template_' . $slug, $this->get_templates_location() . $slug, $name );
@@ -125,10 +127,10 @@ class Main {
 	 */
 	public function enqueue_scripts() {
 		wp_enqueue_style( 'hfg-style', esc_url( $this->settings->url ) . '/assets/css/style.css' );
-
+		$suffix = $this->get_assets_suffix();
 		wp_enqueue_script(
 			'hfg-theme-functions',
-			esc_url( $this->settings->url ) . '/assets/js/theme.js',
+			esc_url( $this->settings->url ) . '/assets/js/theme' . $suffix . '.js',
 			array(
 				'jquery',
 			),
