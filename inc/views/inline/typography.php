@@ -29,27 +29,7 @@ class Typography extends Base_Inline {
 	 * Add inline style for font families.
 	 */
 	private function fonts_family() {
-		$headings_font = get_theme_mod( 'neve_headings_font_family', false );
-		$body_font     = get_theme_mod( 'neve_body_font_family', false );
-		$this->add_style(
-			array(
-				array(
-					'css_prop' => 'font-family',
-					'value'    => esc_html( $headings_font ),
-				),
-			),
-			apply_filters( 'neve_headings_font_family_selectors', 'h1, h2, h3, h4, h5, h6' )
-		);
-		$this->add_style(
-			array(
-				array(
-					'css_prop' => 'font-family',
-					'value'    => esc_html( $body_font ),
-				),
 
-			),
-			apply_filters( 'neve_body_font_family_selectors', 'body' )
-		);
 	}
 
 	/**
@@ -72,6 +52,17 @@ class Typography extends Base_Inline {
 			),
 		);
 		$this->add_responsive_style( $settings, 'body' );
+
+		$body_font = get_theme_mod( 'neve_body_font_family', false );
+		$this->add_style(
+			array(
+				array(
+					'css_prop' => 'font-family',
+					'value'    => esc_html( $body_font ),
+				),
+			),
+			apply_filters( 'neve_body_font_family_selectors', 'body' )
+		);
 	}
 
 	/**
@@ -87,12 +78,14 @@ class Typography extends Base_Inline {
 			'h6' => 'h6',
 		);
 
+		$line_height = get_theme_mod( 'neve_headings_line_height' );
+		$line_height = json_decode( $line_height, true );
+
 		foreach ( $controls as $control => $selector ) {
-			$font_size   = get_theme_mod( 'neve_' . $control . '_font_size' );
-			$line_height = get_theme_mod( 'neve_' . $control . '_line_height' );
-			$font_size   = json_decode( $font_size, true );
-			$line_height = json_decode( $line_height, true );
-			$settings    = array(
+			$font_size = get_theme_mod( 'neve_' . $control . '_font_size' );
+			$font_size = json_decode( $font_size, true );
+
+			$settings = array(
 				array(
 					'css_prop' => 'font-size',
 					'value'    => $font_size,
@@ -105,5 +98,37 @@ class Typography extends Base_Inline {
 			);
 			$this->add_responsive_style( $settings, $selector );
 		}
+
+		$setup = array();
+		$headings_font = get_theme_mod( 'neve_headings_font_family', false );
+		if ( ! empty( $headings_font ) ) {
+			$setup[] = array(
+				'css_prop' => 'font-family',
+				'value'    => esc_html( $headings_font ),
+			);
+		}
+
+		$font_weight = get_theme_mod( 'neve_headings_font_weight' );
+		if ( ! empty( $font_weight ) ) {
+			$setup[] = array(
+				'css_prop' => 'font-weight',
+				'value'    => $font_weight,
+			);
+		}
+
+		$text_transform = get_theme_mod( 'neve_headings_text_transform' );
+		if ( ! empty( $text_transform ) ) {
+			$setup[] = array(
+				'css_prop' => 'text-transform',
+				'value'    => $text_transform,
+			);
+		}
+
+		$this->add_style(
+			$setup,
+			apply_filters( 'neve_headings_font_family_selectors', 'h1, h2, h3, h4, h5, h6' )
+		);
 	}
+
+
 }

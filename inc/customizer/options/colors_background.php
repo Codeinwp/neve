@@ -126,7 +126,7 @@ class Colors_Background extends Base_Customizer {
 			$control           = $this->get_customizer_object( 'control', $control_slug );
 			$control->priority = $priority;
 			$control->section  = 'neve_colors_background_section';
-			$priority          += 5;
+			$priority         += 5;
 		}
 	}
 }

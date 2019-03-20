@@ -91,3 +91,36 @@ function neve_sanitize_range_value( $input ) {
 
 	return json_encode( $range_value );
 }
+
+/**
+ * Sanitize font weight values.
+ *
+ * @param string $value font-weight value.
+ *
+ * @return string
+ */
+function neve_sanitize_font_weight( $value ) {
+	$allowed = array( '100', '200', '300', '400', '500', '600', '700', '800', '900' );
+
+	if ( ! in_array( $value, $allowed ) ) {
+		return '300';
+	}
+
+	return $value;
+}
+/**
+ * Sanitize font weight values.
+ *
+ * @param string $value font-weight value.
+ *
+ * @return string
+ */
+function neve_sanitize_text_transform( $value ) {
+	$allowed = array('none', 'capitalize', 'uppercase', 'lowercase');
+
+	if ( ! in_array( $value, $allowed ) ) {
+		return 'none';
+	}
+
+	return $value;
+}

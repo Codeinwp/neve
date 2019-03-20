@@ -73,12 +73,15 @@ class Colors extends Base_Inline {
 
 		$current_item_color = get_theme_mod( 'neve_current_menu_item_color', '' );
 		if ( ! empty( $current_item_color ) ) {
-			$this->add_color( array(
-				'color' => array(
-					'css_prop'  => 'color',
-					'selectors' => '#nv-primary-navigation .current-menu-item > a',
-				)
-			), $current_item_color );
+			$this->add_color(
+				array(
+					'color' => array(
+						'css_prop'  => 'color',
+						'selectors' => '#nv-primary-navigation .current-menu-item > a',
+					),
+				),
+				$current_item_color
+			);
 		}
 	}
 

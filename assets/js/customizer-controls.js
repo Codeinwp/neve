@@ -221,7 +221,7 @@ wp.customize.controlConstructor["range-value"] = wp.customize.Control.extend({
             syncRangeText(slider, input, "slider");
             updateValues(control);
         });
-        theme_controls.on("keyup change", ".range-slider-value", function() {
+        theme_controls.on("keyup change input", ".range-slider-value", function() {
             var control = jQuery(this).parent().parent();
             var slider = jQuery(this).prev();
             var input = jQuery(this);
@@ -271,7 +271,7 @@ wp.customize.controlConstructor["responsive-number"] = wp.customize.Control.exte
     ready: function() {
         "use strict";
         var control = this;
-        this.container.on("change keyup paste", "input.responsive-number--input, select.responsive-number--select", function() {
+        this.container.on("change keyup paste input", "input.responsive-number--input, select.responsive-number--select", function() {
             control.updateValue();
         });
         this.container.on("click touchstart", ".reset-number-input", function() {

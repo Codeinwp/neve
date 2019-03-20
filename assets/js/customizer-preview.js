@@ -46,6 +46,7 @@
     $.neveTypographyPreview = {
         init: function() {
             this.fontSelectionPreview();
+            this.fontPropertiesRangesPreview();
             this.fontPropertiesPreview();
         },
         fontControls: {
@@ -78,7 +79,7 @@
         generateLinkNode: function(elementId, googleFontName) {
             var linkNode = $("#" + elementId);
             var fontValue = googleFontName.replace(" ", "+");
-            var url = "//fonts.googleapis.com/css?family=" + fontValue + "%3A300%2C400%2C500%2C700&subset=latin&ver=4.9.8";
+            var url = "//fonts.googleapis.com/css?family=" + fontValue + "%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800&subset=latin&ver=4.9.8";
             if (linkNode.length !== 0) {
                 return false;
             }
@@ -113,71 +114,41 @@
                 cssProp: "font-size",
                 styleClass: "h1-font-size-css"
             },
-            neve_h1_line_height: {
-                selector: "h1, .single .entry-title",
+            neve_headings_line_height: {
+                selector: "h1, .single .entry-title,h2,h3,h4,h5,h6",
                 cssProp: "line-height",
                 unit: " ",
-                styleClass: "h1-line-height-css"
+                styleClass: "headings-line-height-css"
             },
             neve_h2_font_size: {
                 selector: "h2",
                 cssProp: "font-size",
                 styleClass: "h2-font-size-css"
             },
-            neve_h2_line_height: {
-                selector: "h2",
-                cssProp: "line-height",
-                unit: " ",
-                styleClass: "h2-line-height-css"
-            },
             neve_h3_font_size: {
                 selector: "h3",
                 cssProp: "font-size",
                 styleClass: "h3-font-size-css"
-            },
-            neve_h3_line_height: {
-                selector: "h3",
-                cssProp: "line-height",
-                unit: " ",
-                styleClass: "h3-line-height-css"
             },
             neve_h4_font_size: {
                 selector: "h4",
                 cssProp: "font-size",
                 styleClass: "h4-font-size-css"
             },
-            neve_h4_line_height: {
-                selector: "h4",
-                cssProp: "line-height",
-                unit: " ",
-                styleClass: "h4-line-height-css"
-            },
             neve_h5_font_size: {
                 selector: "h5",
                 cssProp: "font-size",
                 styleClass: "h5-font-size-css"
             },
-            neve_h5_line_height: {
-                selector: "h5",
-                cssProp: "line-height",
-                unit: " ",
-                styleClass: "h5-line-height-css"
-            },
             neve_h6_font_size: {
                 selector: "h6",
                 cssProp: "font-size",
                 styleClass: "h6-font-size-css"
-            },
-            neve_h6_line_height: {
-                selector: "h6",
-                cssProp: "line-height",
-                unit: " ",
-                styleClass: "h6-line-height-css"
             }
         },
-        fontPropertiesPreview: function() {
+        fontPropertiesRangesPreview: function() {
             "use strict";
-            $.each(this.fontPropertiesRanges, function(id, args) {
+            _.each(this.fontPropertiesRanges, function(args, id) {
                 wp.customize(id, function(value) {
                     value.bind(function(newval) {
                         var values = JSON.parse(newval);
@@ -194,6 +165,36 @@
                             styleClass: args.styleClass
                         };
                         $.neveCustomizeUtilities.setLiveCss(settings, values);
+                    });
+                });
+            });
+        },
+        fontProperties: {
+            neve_headings_font_weight: {
+                selector: "h1, .single .entry-title,h2,h3,h4,h5,h6",
+                cssProp: "font-weight",
+                unit: " ",
+                styleClass: "headings-font-weight-css"
+            },
+            neve_headings_text_transform: {
+                selector: "h1, .single .entry-title,h2,h3,h4,h5,h6",
+                cssProp: "text-transform",
+                unit: " ",
+                styleClass: "headings-text-transform-css"
+            }
+        },
+        fontPropertiesPreview: function() {
+            "use strict";
+            _.each(this.fontProperties, function(args, id) {
+                wp.customize(id, function(value) {
+                    value.bind(function(newval) {
+                        var settings = {
+                            selectors: args.selector,
+                            cssProperty: args.cssProp,
+                            propertyUnit: args.unit ? args.unit : "",
+                            styleClass: args.styleClass
+                        };
+                        $.neveCustomizeUtilities.setLiveCss(settings, newval);
                     });
                 });
             });
