@@ -50,9 +50,9 @@ $row_classes[] = 'nv-navbar';
 	data-row-id="<?php echo $row_index; ?>" data-show-on="<?php echo $device; ?>">
 
 	<div class="header--row-inner header-<?php echo esc_attr( $row_index ); ?>-inner <?php echo esc_attr( $skin_mode ); ?>"
-		<?php echo( wp_kses_post( $row_styles ) ); ?> >
+		<?php echo wp_kses_post( $row_styles ); ?> >
 		<div class="container">
-			<div class="hfg-grid hfg-grid-<?php echo esc_attr( $row_index ); ?>">
+			<div class="row">
 				<?php render_components(); ?>
 			</div>
 		</div>

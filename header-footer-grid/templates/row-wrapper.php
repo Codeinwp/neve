@@ -50,7 +50,7 @@ if ( ! empty( $row_styles_array ) ) {
 	<div class="header--row-inner header-<?php echo esc_attr( $row_index ); ?>-inner <?php echo esc_attr( $skin_mode ); ?>"
 		<?php echo( wp_kses_post( $row_styles ) ); ?> >
 		<div class="container">
-			<div class="hfg-grid row hfg-grid-<?php echo esc_attr( $row_index ); ?>">
+			<div class="row">
 				<?php render_components(); ?>
 			</div>
 		</div>

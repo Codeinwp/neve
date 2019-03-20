@@ -571,34 +571,23 @@ abstract class Abstract_Builder implements Builder {
 				$o = intval( $last_item['width'] ) + intval( $last_item['x'] );
 				if ( $x - $o > 0 ) {
 					$x         = $x - $o;
-					$push_left = 'off-' . $x;
+					$push_left = 'offset-' . $x;
 				}
 			} elseif ( $x > 0 ) {
-				$push_left = 'off-' . $x;
-			}
-
-			$edge_class = '';
-			if ( $x > 0 && ( ( $x + $original_width + $o ) === $max_columns ) ) {
-				$edge_class = 'hfg-edge-right';
-			}
-			if ( $x === 0 ) {
-				$edge_class = ( 'hfg-edge-left' );
-				if ( $x > 0 && ( ( $x + $original_width + $o ) === $max_columns ) ) {
-					$edge_class = 'hfg-edge-right';
-				}
+				$push_left = 'offset-' . $x;
 			}
 
 			$component->current_x     = $x;
 			$component->current_width = $width;
 			$classes                  = [
-				'hfg-col-' . $width . '_md-' . $width . '_sm-' . $width,
+				'col-' . $width . ' col-md-' . $width . ' col-sm-' . $width,
 				'builder-item',
 				$last_item === null ? 'hfg-item-first' : '',
 				( ! $collection->hasNext() ) ? 'hfg-item-last' : '',
-				$edge_class,
+				$push_left,
 			];
 			self::$current_component  = $component_location['id'];
-			echo sprintf( '<div class="%s" data-push-left="%s">', esc_attr( join( ' ', $classes ) ), esc_attr( $push_left ) );
+			echo sprintf( '<div class="%s">', esc_attr( join( ' ', $classes ) ) );
 			$component->render();
 			echo '</div>';
 			$last_item = $component_location;
