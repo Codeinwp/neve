@@ -1,6 +1,7 @@
 #nv-top-bar-menu {
   @include horizontal-list(0, 'false');
   flex: 1;
+  justify-content: center;
   .content-menu & > li {
     margin-left: $spacing-xs;
   }
@@ -11,7 +12,7 @@
 
 .nv-top-bar-content {
   display: flex;
-  flex: 1;
+  justify-content: center;
   p {
     margin-bottom: 0;
   }
@@ -34,18 +35,37 @@
   padding-bottom: $spacing-xs;
   display: flex;
   align-items: center;
-  flex-direction: row;
+  flex-direction: column;
   min-height: 40px;
   font-size: .85em;
   &.menu-content .nv-top-bar-content,
   &.content-menu #nv-top-bar-menu {
-    justify-content: flex-end;
+    margin-top: $spacing-xs;
     align-items: center;
   }
 
   &.content-menu .nv-top-bar-content,
   &.menu-content #nv-top-bar-menu {
-    justify-content: flex-start;
     align-items: center;
+  }
+}
+
+@mixin top-bar--laptop() {
+  .nv-tb-wrap {
+    flex-direction: row;
+    &.menu-content .nv-top-bar-content,
+    &.content-menu #nv-top-bar-menu {
+      margin-top: 0;
+      justify-content: flex-end;
+    }
+
+    &.content-menu .nv-top-bar-content,
+    &.menu-content #nv-top-bar-menu {
+      justify-content: flex-start;
+    }
+  }
+
+  .nv-top-bar-content {
+    flex: 1;
   }
 }

@@ -534,6 +534,7 @@ blockquote.wp-block-quote.is-style-large cite {
   padding-left: 0;
   list-style-type: none;
   flex: 1;
+  justify-content: center;
 }
 .content-menu #nv-top-bar-menu > li {
   margin-left: 10px;
@@ -544,7 +545,7 @@ blockquote.wp-block-quote.is-style-large cite {
 
 .nv-top-bar-content {
   display: flex;
-  flex: 1;
+  justify-content: center;
 }
 .nv-top-bar-content p {
   margin-bottom: 0;
@@ -567,16 +568,15 @@ blockquote.wp-block-quote.is-style-large cite {
   padding-bottom: 10px;
   display: flex;
   align-items: center;
-  flex-direction: row;
+  flex-direction: column;
   min-height: 40px;
   font-size: .85em;
 }
 .nv-tb-wrap.menu-content .nv-top-bar-content, .nv-tb-wrap.content-menu #nv-top-bar-menu {
-  justify-content: flex-end;
+  margin-top: 10px;
   align-items: center;
 }
 .nv-tb-wrap.content-menu .nv-top-bar-content, .nv-tb-wrap.menu-content #nv-top-bar-menu {
-  justify-content: flex-start;
   align-items: center;
 }
 
@@ -2449,6 +2449,21 @@ hr {
   .nav-right #nv-primary-navigation > .menu-item-has-children > .sub-menu {
     left: 0;
     right: inherit;
+  }
+
+  .nv-tb-wrap {
+    flex-direction: row;
+  }
+  .nv-tb-wrap.menu-content .nv-top-bar-content, .nv-tb-wrap.content-menu #nv-top-bar-menu {
+    margin-top: 0;
+    justify-content: flex-end;
+  }
+  .nv-tb-wrap.content-menu .nv-top-bar-content, .nv-tb-wrap.menu-content #nv-top-bar-menu {
+    justify-content: flex-start;
+  }
+
+  .nv-top-bar-content {
+    flex: 1;
   }
 
   .layout-default .nv-post-thumbnail-wrap, .layout-alternative .nv-post-thumbnail-wrap {

@@ -22,6 +22,7 @@
   @include nav-menu-centered--laptop();
   @include nav-search--laptop();
   @include nav-menu-right--laptop();
+  @include top-bar--laptop();
   @include blog-layout-default-alt--laptop();
   @include blogpost-index--laptop();
   @include single-post--laptop();
