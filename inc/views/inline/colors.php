@@ -61,7 +61,7 @@ class Colors extends Base_Inline {
 					#nv-primary-navigation .neve-mega-menu:hover > a:after,
 					.menu-item-nav-search.responsive-nav-search > a:hover, .menu-item-nav-search.responsive-nav-search > a:focus,
 					.menu-item-nav-cart.responsive-nav-cart > a:hover, .menu-item-nav-cart.responsive-nav-cart > a:focus,
-					#nv-primary-navigation .current-menu-item > a',
+					#nv-primary-navigation .current-menu-item:hover > a, #nv-primary-navigation .current-menu-item:focus > a',
 				),
 				'background-color' => array(
 					'css_prop'  => 'background-color',
@@ -69,6 +69,16 @@ class Colors extends Base_Inline {
 				),
 			);
 			$this->add_color( apply_filters( 'neve_menu_items_hover_color_filter', $color_setup ), sanitize_hex_color( $hover_color ) );
+		}
+
+		$current_item_color = get_theme_mod( 'neve_current_menu_item_color', '' );
+		if ( ! empty( $current_item_color ) ) {
+			$this->add_color( array(
+				'color' => array(
+					'css_prop'  => 'color',
+					'selectors' => '#nv-primary-navigation .current-menu-item > a',
+				)
+			), $current_item_color );
 		}
 	}
 
