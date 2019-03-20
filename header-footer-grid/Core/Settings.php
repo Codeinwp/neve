@@ -185,7 +185,7 @@ class Settings {
 	 *
 	 * @since   1.0.0
 	 * @access  private
-	 * @param int $id Post ID.
+	 * @param int    $id Post ID.
 	 * @param string $size Media size.
 	 *
 	 * @return bool

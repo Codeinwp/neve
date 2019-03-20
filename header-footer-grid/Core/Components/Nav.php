@@ -14,6 +14,7 @@ namespace HFG\Core\Components;
 use HFG\Core\Settings;
 use HFG\Main;
 use Neve\Customizer\Controls\Radio_Image;
+use Neve\Customizer\Controls\Button;
 use WP_Customize_Manager;
 
 /**
@@ -98,11 +99,33 @@ class Nav extends Abstract_Component {
 			)
 		);
 
+		$wp_customize->add_setting(
+			$this->id . '_shortcut',
+			array(
+				'theme_supports' => 'hfg_support',
+				'transport'      => 'postMessage',
+			)
+		);
+		$wp_customize->add_control(
+			new Button(
+				$wp_customize,
+				$this->id . '_shortcut',
+				array(
+					'button_class' => 'nv-top-bar-menu-shortcut',
+					'icon_class'   => 'menu',
+					'button_text'  => __( 'Select Primary Menu', 'neve' ),
+					'shortcut'     => true,
+					'section'      => $this->section,
+				)
+			)
+		);
+
 		$wp_customize->selective_refresh->add_partial(
 			$this->id . '_partial', array(
 				'selector'        => $selector,
 				'settings'        => array(
 					$this->id . '_style',
+					$this->id . '_shortcut',
 				),
 				'render_callback' => $fn,
 			)

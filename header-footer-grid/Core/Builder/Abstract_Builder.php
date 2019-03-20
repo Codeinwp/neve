@@ -628,7 +628,7 @@ abstract class Abstract_Builder implements Builder {
 	 */
 	public function get_component( $id = null ) {
 		if ( $id === null ) {
-			$id = ( self::$current_component === null )  ? Abstract_Component::$current_component : self::$current_component;
+			$id = ( self::$current_component === null ) ? Abstract_Component::$current_component : self::$current_component;
 		}
 		return $this->builder_components[ $id ];
 	}

@@ -123,7 +123,11 @@ class Radio_Image extends \WP_Customize_Control {
 			$json['controls'] = $this->controls;
 		}
 		// We need to make sure we have the correct image URL.
-		$json['choices']     = $this->choices;
+		$json['choices'] = $this->choices;
+		$json['width']   = 100;
+		if ( ! empty( $this->choices ) ) {
+			$json['width'] = number_format( 100 / sizeof( $this->choices ), 2 );
+		}
 		$json['id']          = $this->id;
 		$json['link']        = $this->get_link();
 		$json['value']       = $this->value();
@@ -158,13 +162,12 @@ class Radio_Image extends \WP_Customize_Control {
 
 
 		<div class="buttonset <# if( data.is_tab) {#>customizer-tab <#}#> <# if( data.is_subtab) {#>customizer-subtab <#}#>">
-
 			<# for ( key in data.choices ) { #>
 
 			<input <# if( data.is_tab) {#>data-controls="{{data.controls[key]}}"<#}#> type="radio" value="{{ key }}"
 			name="_customize-{{ data.type }}-{{ data.id }}" id="{{ data.id }}-{{ key }}" {{{ data.link }}} <# if ( key
 			=== data.value && ( !data.is_tab || data.is_subtab) ) { #> checked="checked" <# } #> />
-			<label for="{{ data.id }}-{{ key }}">
+			<label for="{{ data.id }}-{{ key }}" style="width:{{{data.width}}}%">
 				<# if( !data.is_tab) {#>
 				<span class="screen-reader-text">{{ data.choices[ key ]['label'] }}</span>
 				<img src="{{ data.choices[ key ]['url'] }}" alt="{{ data.choices[ key ]['label'] }}"/>
