@@ -1,4 +1,4 @@
-jQuery( document ).ready(function($) {
+jQuery( document ).ready( function( $ ) {
 	"use strict";
 
 	/**
@@ -6,90 +6,90 @@ jQuery( document ).ready(function($) {
 	 */
 
 	// Update the values for all our input fields and initialise the sortable repeater
-	$('.sortable_repeater_control').each(function() {
+	$( '.sortable_repeater_control' ).each( function() {
 		// If there is an existing customizer value, populate our rows
-		var defaultValuesArray = $(this).find('.customize-control-sortable-repeater').val().split(',');
+		var defaultValuesArray = $( this ).find( '.customize-control-sortable-repeater' ).val().split( ',' );
 		var numRepeaterItems = defaultValuesArray.length;
 
-		if(numRepeaterItems > 0) {
+		if( numRepeaterItems > 0 ) {
 			// Add the first item to our existing input field
-			$(this).find('.repeater-input').val(defaultValuesArray[0]);
+			$( this ).find( '.repeater-input' ).val( defaultValuesArray[0] );
 			// Create a new row for each new value
-			if(numRepeaterItems > 1) {
+			if( numRepeaterItems > 1 ) {
 				var i;
-				for (i = 1; i < numRepeaterItems; ++i) {
-					hfgAppendRow($(this), defaultValuesArray[i]);
+				for ( i = 1; i < numRepeaterItems; ++i ) {
+					hfgAppendRow( $( this ), defaultValuesArray[i] );
 				}
 			}
 		}
-	});
+	} );
 
 	// Make our Repeater fields sortable
-	$(this).find('.sortable').sortable({
-		update: function(event, ui) {
-			hfgGetAllInputs($(this).parent());
+	$( this ).find( '.sortable' ).sortable( {
+		update: function( event, ui ) {
+			hfgGetAllInputs( $( this ).parent() );
 		}
-	});
+	} );
 
 	// Remove item starting from it's parent element
-	$('.sortable').on('click', '.customize-control-sortable-repeater-delete', function(event) {
+	$( '.sortable' ).on( 'click', '.customize-control-sortable-repeater-delete', function( event ) {
 		event.preventDefault();
-		var numItems = $(this).parent().parent().find('.repeater').length;
+		var numItems = $( this ).parent().parent().find( '.repeater' ).length;
 
-		if(numItems > 1) {
-			$(this).parent().slideUp('fast', function() {
-				var parentContainer = $(this).parent().parent();
-				$(this).remove();
-				hfgGetAllInputs(parentContainer);
-			})
+		if( numItems > 1 ) {
+			$( this ).parent().slideUp( 'fast', function() {
+				var parentContainer = $( this ).parent().parent();
+				$( this ).remove();
+				hfgGetAllInputs( parentContainer );
+			} )
 		}
 		else {
-			$(this).parent().find('.repeater-input').val('');
-			hfgGetAllInputs($(this).parent().parent().parent());
+			$( this ).parent().find( '.repeater-input' ).val( '' );
+			hfgGetAllInputs( $( this ).parent().parent().parent() );
 		}
-	});
+	} );
 
 	// Add new item
-	$('.customize-control-sortable-repeater-add').click(function(event) {
+	$( '.customize-control-sortable-repeater-add' ).click( function( event ) {
 		event.preventDefault();
-		hfgAppendRow($(this).parent());
-		hfgGetAllInputs($(this).parent());
-	});
+		hfgAppendRow( $( this ).parent() );
+		hfgGetAllInputs( $( this ).parent() );
+	} );
 
 	// Refresh our hidden field if any fields change
-	$('.sortable').change(function() {
-		hfgGetAllInputs($(this).parent());
-	})
+	$( '.sortable' ).change( function() {
+		hfgGetAllInputs( $( this ).parent() );
+	} )
 
 	// Add https:// to the start of the URL if it doesn't have it
-	$('.sortable').on('blur', '.repeater-input', function() {
-		var url = $(this);
+	$( '.sortable' ).on( 'blur', '.repeater-input', function() {
+		var url = $( this );
 		var val = url.val();
-		if(val && !val.match(/^.+:\/\/.*/)) {
+		if( val && !val.match( /^.+:\/\/.*/ ) ) {
 			// Important! Make sure to trigger change event so Customizer knows it has to save the field
-			url.val('https://' + val).trigger('change');
+			url.val( 'https://' + val ).trigger( 'change' );
 		}
-	});
+	} );
 
 	// Append a new row to our list of elements
-	function hfgAppendRow($element, defaultValue = '') {
+	function hfgAppendRow( $element, defaultValue = '' ) {
 		var newRow = '<div class="repeater" style="display:none"><input type="text" value="' + defaultValue + '" class="repeater-input" placeholder="https://" /><span class="dashicons dashicons-sort"></span><a class="customize-control-sortable-repeater-delete" href="#"><span class="dashicons dashicons-no-alt"></span></a></div>';
 
-		$element.find('.sortable').append(newRow);
-		$element.find('.sortable').find('.repeater:last').slideDown('slow', function(){
-			$(this).find('input').focus();
-		});
+		$element.find( '.sortable' ).append( newRow );
+		$element.find( '.sortable' ).find( '.repeater:last' ).slideDown( 'slow', function(){
+			$( this ).find( 'input' ).focus();
+		} );
 	}
 
 	// Get the values from the repeater input fields and add to our hidden field
-	function hfgGetAllInputs($element) {
-		var inputValues = $element.find('.repeater-input').map(function() {
-			return $(this).val();
-		}).toArray();
+	function hfgGetAllInputs( $element ) {
+		var inputValues = $element.find( '.repeater-input' ).map( function() {
+			return $( this ).val();
+		} ).toArray();
 		// Add all the values from our repeater fields to the hidden field (which is the one that actually gets saved)
-		$element.find('.customize-control-sortable-repeater').val(inputValues);
+		$element.find( '.customize-control-sortable-repeater' ).val( inputValues );
 		// Important! Make sure to trigger change event so Customizer knows it has to save the field
-		$element.find('.customize-control-sortable-repeater').trigger('change');
+		$element.find( '.customize-control-sortable-repeater' ).trigger( 'change' );
 	}
 
 	/**
@@ -97,119 +97,119 @@ jQuery( document ).ready(function($) {
 	 */
 
 	// Set our slider defaults and initialise the slider
-	$('.slider-custom-control').each(function(){
-		var sliderValue = $(this).find('.customize-control-slider-value').val();
-		var newSlider = $(this).find('.slider');
-		var sliderMinValue = parseFloat(newSlider.attr('slider-min-value'));
-		var sliderMaxValue = parseFloat(newSlider.attr('slider-max-value'));
-		var sliderStepValue = parseFloat(newSlider.attr('slider-step-value'));
+	$( '.slider-custom-control' ).each( function(){
+		var sliderValue = $( this ).find( '.customize-control-slider-value' ).val();
+		var newSlider = $( this ).find( '.slider' );
+		var sliderMinValue = parseFloat( newSlider.attr( 'slider-min-value' ) );
+		var sliderMaxValue = parseFloat( newSlider.attr( 'slider-max-value' ) );
+		var sliderStepValue = parseFloat( newSlider.attr( 'slider-step-value' ) );
 
-		newSlider.slider({
+		newSlider.slider( {
 			value: sliderValue,
 			min: sliderMinValue,
 			max: sliderMaxValue,
 			step: sliderStepValue,
-			change: function(e,ui){
+			change: function( e,ui ){
 				// Important! When slider stops moving make sure to trigger change event so Customizer knows it has to save the field
-				$(this).parent().find('.customize-control-slider-value').trigger('change');
+				$( this ).parent().find( '.customize-control-slider-value' ).trigger( 'change' );
 			}
-		});
-	});
+		} );
+	} );
 
 	// Change the value of the input field as the slider is moved
-	$('.slider').on('slide', function(event, ui) {
-		$(this).parent().find('.customize-control-slider-value').val(ui.value);
-	});
+	$( '.slider' ).on( 'slide', function( event, ui ) {
+		$( this ).parent().find( '.customize-control-slider-value' ).val( ui.value );
+	} );
 
 	// Reset slider and input field back to the default value
-	$('.slider-reset').on('click', function() {
-		var resetValue = $(this).attr('slider-reset-value');
-		$(this).parent().find('.customize-control-slider-value').val(resetValue);
-		$(this).parent().find('.slider').slider('value', resetValue);
-	});
+	$( '.slider-reset' ).on( 'click', function() {
+		var resetValue = $( this ).attr( 'slider-reset-value' );
+		$( this ).parent().find( '.customize-control-slider-value' ).val( resetValue );
+		$( this ).parent().find( '.slider' ).slider( 'value', resetValue );
+	} );
 
 	// Update slider if the input field loses focus as it's most likely changed
-	$('.customize-control-slider-value').blur(function() {
-		var resetValue = $(this).val();
-		var slider = $(this).parent().find('.slider');
-		var sliderMinValue = parseInt(slider.attr('slider-min-value'));
-		var sliderMaxValue = parseInt(slider.attr('slider-max-value'));
+	$( '.customize-control-slider-value' ).blur( function() {
+		var resetValue = $( this ).val();
+		var slider = $( this ).parent().find( '.slider' );
+		var sliderMinValue = parseInt( slider.attr( 'slider-min-value' ) );
+		var sliderMaxValue = parseInt( slider.attr( 'slider-max-value' ) );
 
 		// Make sure our manual input value doesn't exceed the minimum & maxmium values
-		if(resetValue < sliderMinValue) {
+		if( resetValue < sliderMinValue ) {
 			resetValue = sliderMinValue;
-			$(this).val(resetValue);
+			$( this ).val( resetValue );
 		}
-		if(resetValue > sliderMaxValue) {
+		if( resetValue > sliderMaxValue ) {
 			resetValue = sliderMaxValue;
-			$(this).val(resetValue);
+			$( this ).val( resetValue );
 		}
-		$(this).parent().find('.slider').slider('value', resetValue);
-	});
+		$( this ).parent().find( '.slider' ).slider( 'value', resetValue );
+	} );
 
 	/**
 	 * Single Accordion Custom Control
 	 */
 
-	$('.single-accordion-toggle').click(function() {
-		var $accordionToggle = $(this);
-		$(this).parent().find('.single-accordion').slideToggle('slow', function() {
-			$accordionToggle.toggleClass('single-accordion-toggle-rotate', $(this).is(':visible'));
-		});
-	});
+	$( '.single-accordion-toggle' ).click( function() {
+		var $accordionToggle = $( this );
+		$( this ).parent().find( '.single-accordion' ).slideToggle( 'slow', function() {
+			$accordionToggle.toggleClass( 'single-accordion-toggle-rotate', $( this ).is( ':visible' ) );
+		} );
+	} );
 
 	/**
 	 * Image Check Box Custom Control
 	 */
 
-	$('.multi-image-checkbox').on('change', function () {
-		getAllCheckboxes($(this).parent().parent());
-	});
+	$( '.multi-image-checkbox' ).on( 'change', function () {
+		getAllCheckboxes( $( this ).parent().parent() );
+	} );
 
 	// Get the values from the checkboxes and add to our hidden field
-	function getAllCheckboxes($element) {
-		var inputValues = $element.find('.multi-image-checkbox').map(function() {
-			if( $(this).is(':checked') ) {
-				return $(this).val();
+	function getAllCheckboxes( $element ) {
+		var inputValues = $element.find( '.multi-image-checkbox' ).map( function() {
+			if( $( this ).is( ':checked' ) ) {
+				return $( this ).val();
 				//   } else {
 				//     return '';
 			}
-		}).toArray();
+		} ).toArray();
 		// Important! Make sure to trigger change event so Customizer knows it has to save the field
-		$element.find('.customize-control-multi-image-checkbox').val(inputValues).trigger('change');
+		$element.find( '.customize-control-multi-image-checkbox' ).val( inputValues ).trigger( 'change' );
 	}
 
 	/**
 	 * Dropdown Select2 Custom Control
 	 */
 
-	$('.customize-control-dropdown-select2').each(function(){
-		$('.customize-control-select2').select2({
+	$( '.customize-control-dropdown-select2' ).each( function(){
+		$( '.customize-control-select2' ).select2( {
 			allowClear: true
-		});
-	});
+		} );
+	} );
 
-	$(".customize-control-select2").on("change", function() {
-		var select2Val = $(this).val();
-		$(this).parent().find('.customize-control-dropdown-select2').val(select2Val).trigger('change');
-	});
+	$( ".customize-control-select2" ).on( "change", function() {
+		var select2Val = $( this ).val();
+		$( this ).parent().find( '.customize-control-dropdown-select2' ).val( select2Val ).trigger( 'change' );
+	} );
 
 	/**
 	 * Googe Font Select Custom Control
 	 */
 
-	$('.google-fonts-list').each(function (i, obj) {
-		if (!$(obj).hasClass('select2-hidden-accessible')) {
-			$(obj).select2();
+	$( '.google-fonts-list' ).each( function ( i, obj ) {
+		if ( !$( obj ).hasClass( 'select2-hidden-accessible' ) ) {
+			$( obj ).select2();
 		}
-	});
+	} );
 
-	$('.google-fonts-list').on('change', function() {
-		var elementRegularWeight = $(this).parent().parent().find('.google-fonts-regularweight-style');
-		var elementItalicWeight = $(this).parent().parent().find('.google-fonts-italicweight-style');
-		var elementBoldWeight = $(this).parent().parent().find('.google-fonts-boldweight-style');
-		var selectedFont = $(this).val();
-		var customizerControlName = $(this).attr('control-name');
+	$( '.google-fonts-list' ).on( 'change', function() {
+		var elementRegularWeight = $( this ).parent().parent().find( '.google-fonts-regularweight-style' );
+		var elementItalicWeight = $( this ).parent().parent().find( '.google-fonts-italicweight-style' );
+		var elementBoldWeight = $( this ).parent().parent().find( '.google-fonts-boldweight-style' );
+		var selectedFont = $( this ).val();
+		var customizerControlName = $( this ).attr( 'control-name' );
 		var elementItalicWeightCount = 0;
 		var elementBoldWeightCount = 0;
 
@@ -218,98 +218,98 @@ jQuery( document ).ready(function($) {
 		elementItalicWeight.empty();
 		elementBoldWeight.empty();
 		// Make sure Italic & Bold dropdowns are enabled
-		elementItalicWeight.prop('disabled', false);
-		elementBoldWeight.prop('disabled', false);
+		elementItalicWeight.prop( 'disabled', false );
+		elementBoldWeight.prop( 'disabled', false );
 
 		// Get the Google Fonts control object
 		var bodyfontcontrol = _wpCustomizeSettings.controls[customizerControlName];
 
 		// Find the index of the selected font
-		var indexes = $.map(bodyfontcontrol.hfgfontslist, function(obj, index) {
-			if(obj.family === selectedFont) {
+		var indexes = $.map( bodyfontcontrol.hfgfontslist, function( obj, index ) {
+			if( obj.family === selectedFont ) {
 				return index;
 			}
-		});
+		} );
 		var index = indexes[0];
 
 		// For the selected Google font show the available weight/style variants
-		$.each(bodyfontcontrol.hfgfontslist[index].variants, function(val, text) {
+		$.each( bodyfontcontrol.hfgfontslist[index].variants, function( val, text ) {
 			elementRegularWeight.append(
-				$('<option></option>').val(text).html(text)
+				$( '<option></option>' ).val( text ).html( text )
 			);
-			if (text.indexOf("italic") >= 0) {
+			if ( text.indexOf( "italic" ) >= 0 ) {
 				elementItalicWeight.append(
-					$('<option></option>').val(text).html(text)
+					$( '<option></option>' ).val( text ).html( text )
 				);
 				elementItalicWeightCount++;
 			} else {
 				elementBoldWeight.append(
-					$('<option></option>').val(text).html(text)
+					$( '<option></option>' ).val( text ).html( text )
 				);
 				elementBoldWeightCount++;
 			}
-		});
+		} );
 
-		if(elementItalicWeightCount == 0) {
+		if( elementItalicWeightCount == 0 ) {
 			elementItalicWeight.append(
-				$('<option></option>').val('').html('Not Available for this font')
+				$( '<option></option>' ).val( '' ).html( 'Not Available for this font' )
 			);
-			elementItalicWeight.prop('disabled', 'disabled');
+			elementItalicWeight.prop( 'disabled', 'disabled' );
 		}
-		if(elementBoldWeightCount == 0) {
+		if( elementBoldWeightCount == 0 ) {
 			elementBoldWeight.append(
-				$('<option></option>').val('').html('Not Available for this font')
+				$( '<option></option>' ).val( '' ).html( 'Not Available for this font' )
 			);
-			elementBoldWeight.prop('disabled', 'disabled');
+			elementBoldWeight.prop( 'disabled', 'disabled' );
 		}
 
 		// Update the font category based on the selected font
-		$(this).parent().parent().find('.google-fonts-category').val(bodyfontcontrol.hfgfontslist[index].category);
+		$( this ).parent().parent().find( '.google-fonts-category' ).val( bodyfontcontrol.hfgfontslist[index].category );
 
-		hfgGetAllSelects($(this).parent().parent());
-	});
+		hfgGetAllSelects( $( this ).parent().parent() );
+	} );
 
-	$('.google_fonts_select_control select').on('change', function() {
-		hfgGetAllSelects($(this).parent().parent());
-	});
+	$( '.google_fonts_select_control select' ).on( 'change', function() {
+		hfgGetAllSelects( $( this ).parent().parent() );
+	} );
 
-	function hfgGetAllSelects($element) {
+	function hfgGetAllSelects( $element ) {
 		var selectedFont = {
-			font: $element.find('.google-fonts-list').val(),
-			regularweight: $element.find('.google-fonts-regularweight-style').val(),
-			italicweight: $element.find('.google-fonts-italicweight-style').val(),
-			boldweight: $element.find('.google-fonts-boldweight-style').val(),
-			category: $element.find('.google-fonts-category').val()
+			font: $element.find( '.google-fonts-list' ).val(),
+			regularweight: $element.find( '.google-fonts-regularweight-style' ).val(),
+			italicweight: $element.find( '.google-fonts-italicweight-style' ).val(),
+			boldweight: $element.find( '.google-fonts-boldweight-style' ).val(),
+			category: $element.find( '.google-fonts-category' ).val()
 		};
 
 		// Important! Make sure to trigger change event so Customizer knows it has to save the field
-		$element.find('.customize-control-google-font-selection').val(JSON.stringify(selectedFont)).trigger('change');
+		$element.find( '.customize-control-google-font-selection' ).val( JSON.stringify( selectedFont ) ).trigger( 'change' );
 	}
 
 	/**
 	 * TinyMCE Custom Control
 	 */
 
-	$('.customize-control-tinymce-editor').each(function(){
+	$( '.customize-control-tinymce-editor' ).each( function(){
 		// Get the toolbar strings that were passed from the PHP Class
-		var tinyMCEToolbar1String = _wpCustomizeSettings.controls[$(this).attr('id')].hfgtinymcetoolbar1;
-		var tinyMCEToolbar2String = _wpCustomizeSettings.controls[$(this).attr('id')].hfgtinymcetoolbar2;
+		var tinyMCEToolbar1String = _wpCustomizeSettings.controls[$( this ).attr( 'id' )].hfgtinymcetoolbar1;
+		var tinyMCEToolbar2String = _wpCustomizeSettings.controls[$( this ).attr( 'id' )].hfgtinymcetoolbar2;
 
-		wp.editor.initialize( $(this).attr('id'), {
+		wp.editor.initialize( $( this ).attr( 'id' ), {
 			tinymce: {
 				wpautop: true,
 				toolbar1: tinyMCEToolbar1String,
 				toolbar2: tinyMCEToolbar2String
 			},
 			quicktags: true
-		});
-	});
-	$(document).on( 'tinymce-editor-init', function( event, editor ) {
-		editor.on('change', function(e) {
+		} );
+	} );
+	$( document ).on( 'tinymce-editor-init', function( event, editor ) {
+		editor.on( 'change', function( e ) {
 			tinyMCE.triggerSave();
-			$('#'+editor.id).trigger('change');
-		});
-	});
+			$( '#'+editor.id ).trigger( 'change' );
+		} );
+	} );
 
 	/**
 	 * Alpha Color Picker Custom Control
@@ -359,7 +359,7 @@ jQuery( document ).ready(function($) {
 				// Send ajax request to wp.customize to trigger the Save action.
 				wp.customize( key, function( obj ) {
 					obj.set( value );
-				});
+				} );
 
 				$transparency = $container.find( '.transparency' );
 
@@ -394,7 +394,7 @@ jQuery( document ).ready(function($) {
 
 				// Set up initial values.
 				$( this ).find( '.ui-slider-handle' ).text( value );
-				$( this ).siblings( '.transparency ').css( 'background-color', startingColor );
+				$( this ).siblings( '.transparency ' ).css( 'background-color', startingColor );
 			},
 			value: alphaVal,
 			range: 'max',
@@ -415,10 +415,10 @@ jQuery( document ).ready(function($) {
 		// Bind event handlers for the click zones.
 		$container.find( '.min-click-zone' ).on( 'click', function() {
 			acp_update_alpha_value_on_color_control( 0, $control, $alphaSlider, true );
-		});
+		} );
 		$container.find( '.max-click-zone' ).on( 'click', function() {
 			acp_update_alpha_value_on_color_control( 100, $control, $alphaSlider, true );
-		});
+		} );
 
 		// Bind event handler for clicking on a palette color.
 		$container.find( '.iris-palette' ).on( 'click', function() {
@@ -438,7 +438,7 @@ jQuery( document ).ready(function($) {
 			}
 
 			$control.wpColorPicker( 'color', color );
-		});
+		} );
 
 		// Bind event handler for clicking on the 'Clear' button.
 		$container.find( '.button.wp-picker-clear' ).on( 'click', function() {
@@ -451,17 +451,17 @@ jQuery( document ).ready(function($) {
 			// Set the actual option value to empty string.
 			wp.customize( key, function( obj ) {
 				obj.set( '' );
-			});
+			} );
 
 			acp_update_alpha_value_on_alpha_slider( 100, $alphaSlider );
-		});
+		} );
 
 		// Bind event handler for clicking on the 'Default' button.
 		$container.find( '.button.wp-picker-default' ).on( 'click', function() {
 			var alpha = acp_get_alpha_value_from_color( defaultColor );
 
 			acp_update_alpha_value_on_alpha_slider( alpha, $alphaSlider );
-		});
+		} );
 
 		// Bind event handler for typing or pasting into the input.
 		$control.on( 'input', function() {
@@ -469,7 +469,7 @@ jQuery( document ).ready(function($) {
 			var alpha = acp_get_alpha_value_from_color( value );
 
 			acp_update_alpha_value_on_alpha_slider( alpha, $alphaSlider );
-		});
+		} );
 
 		// Update all the things when the slider is interacted with.
 		$alphaSlider.slider().on( 'slide', function( event, ui ) {
@@ -479,9 +479,9 @@ jQuery( document ).ready(function($) {
 
 			// Change value shown on slider handle.
 			$( this ).find( '.ui-slider-handle' ).text( ui.value );
-		});
+		} );
 
-	});
+	} );
 
 	/**
 	 * Override the stock color.js toString() method to add support for outputting RGBa or Hex.
@@ -521,7 +521,7 @@ jQuery( document ).ready(function($) {
 		value = value.replace( / /g, '' );
 
 		if ( value.match( /rgba\(\d+\,\d+\,\d+\,([^\)]+)\)/ ) ) {
-			alphaVal = parseFloat( value.match( /rgba\(\d+\,\d+\,\d+\,([^\)]+)\)/ )[1] ).toFixed(2) * 100;
+			alphaVal = parseFloat( value.match( /rgba\(\d+\,\d+\,\d+\,([^\)]+)\)/ )[1] ).toFixed( 2 ) * 100;
 			alphaVal = parseInt( alphaVal );
 		} else {
 			alphaVal = 100;
@@ -549,9 +549,9 @@ jQuery( document ).ready(function($) {
 		$control.val( color );
 
 		// Update the background color of the color picker.
-		colorPicker.toggler.css({
+		colorPicker.toggler.css( {
 			'background-color': color
-		});
+		} );
 
 		// Maybe update the alpha slider itself.
 		if ( update_slider ) {
@@ -570,4 +570,4 @@ jQuery( document ).ready(function($) {
 		$alphaSlider.find( '.ui-slider-handle' ).text( alpha.toString() );
 	}
 
-});
+} );

@@ -855,8 +855,6 @@ let CustomizeBuilderV1;
 					let w = node.w;
 
 					removeNode( node );
-					console.log( "Swap newX", newX );
-					console.log( "Before Swap FLAG", flag );
 
 					let block2 = getPrevBlock( newX );
 
@@ -950,11 +948,7 @@ let CustomizeBuilderV1;
 				}
 
 				if ( !isRTL ) {
-					// nếu ko phải RTL
-					// Lấy vị trí thả xuống từ con trỏ chuột tính theo bên trái của trình duyệt và mép trái của row
 					xc = Math.round( ( event.clientX - wOffset.left ) / colWidth );
-
-					// Lấy vị trí thả xuống từ mép trái của item
 					xi = Math.round(
 						( iOffset.left - wOffset.left - 10 ) / colWidth
 					);
@@ -962,14 +956,10 @@ let CustomizeBuilderV1;
 						xi = 0;
 					}
 				} else {
-					// Nếu là RTL
-
-					// Lấy vị trí thả xuống từ con trỏ chuột tính theo bên trái của trình duyệt và mép phải của row
 					xc = Math.round(
 						( wOffset.left + width + 10 - event.clientX ) / colWidth
 					);
 
-					// Lấy vị trí thả xuống từ mép phải của item theo bên phải của row
 					xi = Math.round(
 						( wOffset.left +
 							width -
@@ -1038,17 +1028,10 @@ let CustomizeBuilderV1;
 						} else {
 							_i--;
 						}
-						console.log( "loop_i", _i );
 					}
-
-					console.log( "Find new _i, w: " + w, _i );
 
 					x = _i;
 				}
-
-				console.log( "DROP Cursor", xc );
-				console.log( "DROP row x cacl", x );
-				console.log( "DROP item w", w );
 
 				let node = {
 					el: ui.draggable,
@@ -1066,12 +1049,11 @@ let CustomizeBuilderV1;
 				if ( inThisRow ) {
 					node.x = parseInt( ui.draggable.attr( "data-gs-x" ) || 0 );
 					node.w = parseInt( ui.draggable.attr( "data-gs-width" ) || 1 );
-					console.log( "swap node", node );
 					swap( node, x );
 					did = true;
 				} else {
 					did = insertToFlag( node );
-					console.log( "Insert node" );
+					$( '#accordion-section-' + node.el[0].dataset.section ).css( "opacity", "1" );
 				}
 
 				// console.log( 'Drop on X: ' + x + ', width: '+ w );
@@ -1341,6 +1323,7 @@ let CustomizeBuilderV1;
 
 				el.append( elItem );
 				that.updateGridFlag( el );
+				$( '#accordion-section-' + elItem[0].dataset.section ).css( "opacity", "1" );
 			},
 			addPanel: function( device ) {
 				let that = this;
@@ -1413,8 +1396,8 @@ let CustomizeBuilderV1;
 					$( ".hfg--panel-" + device, that.container ).append(
 						$itemWrapper
 					);
-
 					_.each( that.items, function( node ) {
+
 						let _d = true;
 						if (
 							!_.isUndefined( node.devices ) &&
@@ -1439,6 +1422,7 @@ let CustomizeBuilderV1;
 						if ( _d ) {
 							let item = that.addItem( node );
 							$itemWrapper.append( item );
+							$( '#accordion-section-' + node.section ).css( "opacity", "0.5" );
 						}
 					} );
 				} );
@@ -1463,7 +1447,20 @@ let CustomizeBuilderV1;
 						that.container
 					).removeClass( "hfg--panel-hide" );
 					that.activePanel = device;
+
+					$( '.hfg--device-panel .hfg-available-items .item-from-list' ).each( function ( index, item ) {
+						$( '#accordion-section-' + $( item )[0].dataset.section ).css( "opacity", "1" );
+					} );
+
+					$( '.hfg--device-panel.hfg--panel-' + device + ' .hfg-available-items .item-from-list' ).each( function ( index, item ) {
+						$( '#accordion-section-' + $( item )[0].dataset.section ).css( "opacity", "0.5" );
+					} );
 				} else {
+
+					$( '.hfg--device-panel.hfg--panel-' + device + ' .hfg-available-items .item-from-list' ).each( function ( index, item ) {
+						$( '#accordion-section-' + $( item )[0].dataset.section ).css( "opacity", "0.5" );
+					} );
+
 					$(
 						".hfg--cb-devices-switcher a",
 						that.container
@@ -1512,6 +1509,7 @@ let CustomizeBuilderV1;
 								item.attr( "data-gs-x", node.x );
 								item.removeClass( "item-from-list" );
 								that.addNewWidget( item, $rows[rowId] );
+								$( '#accordion-section-' + node.id ).css( "opacity", "1" );
 							} );
 						}
 					} );
@@ -1575,6 +1573,7 @@ let CustomizeBuilderV1;
 						item.attr( "data-gs-x", 0 );
 						item.removeAttr( "style" );
 						$( ".hfg-available-items", panel ).append( item );
+						$( '#accordion-section-' + item[0].dataset.section ).css( "opacity", "0.5" );
 						that.updateAllGrids();
 						that.save();
 					}

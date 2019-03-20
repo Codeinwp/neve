@@ -34,7 +34,6 @@ $container_classes[] = 'nav-menu-primary';
 				'menu_id'         => 'nv-primary-navigation',
 				'menu_class'      => 'primary-menu-ul',
 				'container'       => 'ul',
-				'container_class' => $style,
 				'walker'          => '\Neve\Views\Nav_Walker',
 				'fallback_cb'     => '\Neve\Views\Nav_Walker::fallback',
 			]
