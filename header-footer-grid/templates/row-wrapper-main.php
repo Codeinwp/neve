@@ -24,33 +24,60 @@ $row_classes = [
 $row_classes[] = get_theme_mod( $control_id . '_' . $row_index . '_layout', 'layout-full-contained' );
 
 $row_styles       = '';
-$row_styles_array = [];
 
 $layout_height = json_decode( get_theme_mod( $control_id . '_' . $row_index . '_height', '{"mobile":"0","tablet":"0","desktop":"0"}' ), true );
 
-if ( isset( $layout_height[ $device ] ) ) {
-	$row_styles_array['height'] = 'auto;';
-	if ( intval( $layout_height[ $device ] ) > 0 ) {
-		$row_styles_array['height'] = $layout_height[ $device ] . 'px;';
-	}
-}
+$media_styles = '';
+if ( ! empty( $layout_height ) ) {
+    if ( isset( $layout_height['mobile'] ) ) {
+	    $layout_height['mobile'] = ( $layout_height['mobile'] > 0 ) ? $layout_height['mobile'] . 'px' : 'auto';
+	    $media_styles .= '
+	    @media (min-width: 50px) {
+	        .header-' . esc_attr( $row_index ) .'-inner {
+	            height: ' . $layout_height['mobile'] . ';
+	        }
+	    }
+	    ';
+    }
 
-if ( ! empty( $row_styles_array ) ) {
-	$row_styles = ' style="';
-	foreach ( $row_styles_array as $key => $value ) {
-		$row_styles .= sprintf( '%1$s: %2$s', $key, $value );
+	if ( isset( $layout_height['tablet'] ) ) {
+		$layout_height['tablet'] = ( $layout_height['tablet'] > 0 ) ? $layout_height['tablet'] . 'px' : 'auto';
+		$media_styles .= '
+	    @media (min-width: 576px) {
+	        .header-' . esc_attr( $row_index ) .'-inner {
+	            height: ' . $layout_height['tablet'] . ';
+	        }
+	    }
+	    ';
 	}
-	$row_styles .= '" ';
+
+	if ( isset( $layout_height['desktop'] ) ) {
+		$layout_height['desktop'] = ( $layout_height['desktop'] > 0 ) ? $layout_height['desktop'] . 'px' : 'auto';
+		$media_styles .= '
+	    @media (min-width: 796px) {
+	        .header-' . esc_attr( $row_index ) .'-inner {
+	            height: ' . $layout_height['desktop'] . ';
+	        }
+	    }
+	    ';
+	}
+
+	$row_styles = ' style="' . $media_styles . '"';
 }
 
 $row_classes[] = 'nv-navbar';
 ?>
+<?php if ( !empty( $row_styles ) ) { ?>
+<style type="text/css">
+    <?php echo wp_kses_post( $row_styles ); ?>
+</style>
+<?php } ?>
+
 <nav class="<?php echo esc_attr( apply_filters( 'neve_nav_data_attrs', join( ' ', $row_classes ) ) ); ?> header--row"
 	id="cb-row--header-<?php echo $row_index; ?>"
 	data-row-id="<?php echo $row_index; ?>" data-show-on="<?php echo $device; ?>">
 
-	<div class="header--row-inner header-<?php echo esc_attr( $row_index ); ?>-inner <?php echo esc_attr( $skin_mode ); ?>"
-		<?php echo wp_kses_post( $row_styles ); ?> >
+	<div class="header--row-inner header-<?php echo esc_attr( $row_index ); ?>-inner <?php echo esc_attr( $skin_mode ); ?>">
 		<div class="container">
 			<div class="row">
 				<?php render_components(); ?>
