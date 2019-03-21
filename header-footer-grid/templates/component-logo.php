@@ -15,7 +15,7 @@ $id = current_component( HeaderBuilder::BUILDER_NAME )->get_id();
 
 $show_name      = get_theme_mod( $id . '_show_title', 1 );
 $show_desc      = get_theme_mod( $id . '_show_tagline', 1 );
-$image_position = get_theme_mod( $id . '_logo_pos' );
+$image_position = get_theme_mod( $id . '_logo_pos', 'top' );
 
 $logo_classes   = array( 'nv-nav-header', 'site-branding' );
 $logo_classes[] = 'logo-' . $image_position;

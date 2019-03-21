@@ -16,6 +16,4 @@ $id = current_component( HeaderBuilder::BUILDER_NAME )->get_id();
 
 $content = get_theme_mod( $id . '_content', '' );
 
-?>
-<?php
 echo wp_kses_post( balanceTags( $content, true ) );
