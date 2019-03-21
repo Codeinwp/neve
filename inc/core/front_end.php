@@ -60,6 +60,7 @@ class Front_End {
 		add_theme_support( 'editor-color-palette', $this->get_gutenberg_color_palette() );
 		add_theme_support( 'fl-theme-builder-headers' );
 		add_theme_support( 'fl-theme-builder-footers' );
+		add_theme_support( 'header-footer-elementor' );
 
 		add_filter( 'themeisle_gutenberg_templates', array( $this, 'add_gutenberg_templates' ) );
 
