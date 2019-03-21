@@ -75,18 +75,21 @@ class Footer extends Abstract_Builder {
 	}
 
 	/**
-	 * Method to render a row.
+	 * Render builder row.
 	 *
-	 * @since   1.0.0
-	 * @access  protected
-	 *
-	 * @param array  $row Row list.
-	 * @param string $html The HTML.
+	 * @param string $device_id The device id.
+	 * @param string $row_id The row id.
+	 * @param array  $row_details Row data.
 	 */
 	public function render_row( $device_id, $row_id, $row_details ) {
 		Main::get_instance()->load( 'footer-row-wrapper' );
 	}
 
+	/**
+	 * Get builder id.
+	 *
+	 * @return string Builder id.
+	 */
 	public function get_id() {
 		return self::BUILDER_NAME;
 	}

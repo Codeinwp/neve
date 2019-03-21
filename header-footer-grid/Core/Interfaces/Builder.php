@@ -21,6 +21,22 @@ use WP_Customize_Manager;
 interface Builder {
 
 	/**
+	 * Init method for the builder.
+	 *
+	 * @since   1.0.0
+	 * @access  protected
+	 * @return mixed
+	 */
+	public function init();
+
+	/**
+	 * Get builder id.
+	 *
+	 * @return string Builder id.
+	 */
+	public function get_id();
+
+	/**
 	 * Method to get protected properties for class.
 	 *
 	 * @since   1.0.0
@@ -38,14 +54,6 @@ interface Builder {
 	 * @access  public
 	 */
 	public function scripts();
-
-	/**
-	 * Register hooks for builder.
-	 *
-	 * @since   1.0.0
-	 * @access  public
-	 */
-	public function register_builder_hooks();
 
 	/**
 	 * Called to register component controls.
@@ -95,4 +103,13 @@ interface Builder {
 	 * @return array
 	 */
 	public function get_builder();
+
+	/**
+	 * Render row markup
+	 *
+	 * @param string $device_id Device id.
+	 * @param string $row_id Row id.
+	 * @param array  $row_details Row metadata.
+	 */
+	public function render_row( $device_id, $row_id, $row_details );
 }

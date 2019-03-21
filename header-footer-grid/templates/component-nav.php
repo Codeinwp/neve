@@ -30,12 +30,12 @@ $container_classes[] = 'nav-menu-primary';
 		<?php
 		wp_nav_menu(
 			[
-				'theme_location'  => 'primary',
-				'menu_id'         => 'nv-primary-navigation',
-				'menu_class'      => 'primary-menu-ul',
-				'container'       => 'ul',
-				'walker'          => '\Neve\Views\Nav_Walker',
-				'fallback_cb'     => '\Neve\Views\Nav_Walker::fallback',
+				'theme_location' => 'primary',
+				'menu_id'        => 'nv-primary-navigation',
+				'menu_class'     => 'primary-menu-ul',
+				'container'      => 'ul',
+				'walker'         => '\Neve\Views\Nav_Walker',
+				'fallback_cb'    => '\Neve\Views\Nav_Walker::fallback',
 			]
 		);
 		?>

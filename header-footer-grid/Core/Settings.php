@@ -203,8 +203,8 @@ class Settings {
 	 *
 	 * @since   1.0.0
 	 * @access  private
-	 * @param $url
-	 * @param string $size
+	 * @param string $url The attachment url.
+	 * @param string $size The media size.
 	 *
 	 * @return bool
 	 */
@@ -220,6 +220,14 @@ class Settings {
 		return $url;
 	}
 
+	/**
+	 * Retrieve media from an array.
+	 *
+	 * @param array  $array Array for media.
+	 * @param string $size The media size.
+	 *
+	 * @return bool|false|string
+	 */
 	private function media_from_array( $array = array(), $size = 'full' ) {
 		$value = wp_parse_args(
 			$array,

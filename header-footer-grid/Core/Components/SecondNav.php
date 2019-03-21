@@ -134,6 +134,13 @@ class SecondNav extends Abstract_Component {
 		return parent::customize_register( $wp_customize );
 	}
 
+	/**
+	 * The render method for the component.
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 * @return mixed
+	 */
 	public function render_component() {
 		Main::get_instance()->load( 'component-nav-secondary' );
 	}

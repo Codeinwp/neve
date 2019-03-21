@@ -12,8 +12,6 @@
 namespace HFG\Core\Builder;
 
 use HFG\Core\Components\Abstract_Component;
-use HFG\Core\Customizer\Customize_Setting;
-use HFG\Core\Customizer\Settings_Manager;
 use HFG\Core\Interfaces\Builder;
 use HFG\Core\Interfaces\Component;
 use HFG\Core\Settings;
@@ -129,11 +127,14 @@ abstract class Abstract_Builder implements Builder {
 	 */
 	protected $builder_components = array();
 
-	public static $settings_manager = null;
-
+	/**
+	 * Abstract_Builder constructor.
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 */
 	public function __construct() {
 		$this->init();
-		self::$settings_manager = new Settings_Manager();
 	}
 	/**
 	 * Returns current builder id.
@@ -143,8 +144,6 @@ abstract class Abstract_Builder implements Builder {
 	public static function get_current_builder() {
 		return self::$current_builder;
 	}
-
-	protected abstract function init();
 
 	/**
 	 * Method to get protected properties for class.
@@ -174,6 +173,15 @@ abstract class Abstract_Builder implements Builder {
 		wp_add_inline_style( 'hfg-customizer-control', $this->inline_builder_styles() );
 	}
 
+	/**
+	 * Method to add Builder css styles.
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 * @param array $css_array An array containing css rules.
+	 *
+	 * @return array
+	 */
 	public function add_style( array $css_array = array() ) {
 		/**
 		 * An instance of Component.
@@ -182,11 +190,19 @@ abstract class Abstract_Builder implements Builder {
 		 */
 		foreach ( $this->builder_components as $component ) {
 			$component_css_array = $component->add_style( $css_array );
-			$css_array = $this->array_merge_recursive_distinct( $css_array , $component_css_array );
+			$css_array           = $this->array_merge_recursive_distinct( $css_array, $component_css_array );
 		}
 		return $css_array;
 	}
 
+	/**
+	 * Returns a string of css rules.
+	 *
+	 * @since   1.0.0
+	 * @access  protected
+	 *
+	 * @return string
+	 */
 	protected function inline_builder_styles() {
 		$style = '';
 
@@ -200,22 +216,6 @@ abstract class Abstract_Builder implements Builder {
 			}
 		}
 		return $style . $this->css_array_to_css( $style_array );
-	}
-
-	/**
-	 * Used to define the rows in the builder sections.
-	 *
-	 * @return array Rows array.
-	 */
-	abstract protected function get_rows();
-
-	/**
-	 * Register hooks for builder.
-	 *
-	 * @since   1.0.0
-	 * @access  public
-	 */
-	public function register_builder_hooks() {
 	}
 
 	/**
@@ -346,26 +346,24 @@ abstract class Abstract_Builder implements Builder {
 				)
 			);
 
-			$setting = new Customize_Setting(
+			$wp_customize->add_setting(
+				$this->control_id . '_' . $row_id,
 				array(
-					'id'        => $this->control_id . '_' . $row_id,
-					'transport' => 'postMessage',
-					'default'   => '',
+					'transport'      => 'postMessage',
+					'theme_supports' => 'hfg_support',
+					'default'        => '',
 				)
 			);
-			self::$settings_manager->register( $setting );
 
-			$wp_customize->add_setting( $setting->id, $setting->setting_args() );
-
-			$setting = new Customize_Setting(
+			$wp_customize->add_setting(
+				$this->control_id . '_' . $row_id . '_layout',
 				array(
-					'id'        => $this->control_id . '_' . $row_id . '_layout',
-					'transport' => 'postMessage',
-					'default'   => 'layout-full-contained',
+					'theme_supports' => 'hfg_support',
+					'transport'      => 'postMessage',
+					'default'        => 'layout-full-contained',
 				)
 			);
-			$wp_customize->add_setting( $setting->id, $setting->setting_args() );
-			array_push( $partial_settings, $setting->id );
+			array_push( $partial_settings, $this->control_id . '_' . $row_id . '_layout' );
 			$wp_customize->add_control(
 				$this->control_id . '_' . $row_id . '_layout',
 				[
@@ -380,15 +378,15 @@ abstract class Abstract_Builder implements Builder {
 				]
 			);
 
-			$setting = new Customize_Setting(
+			$wp_customize->add_setting(
+				$this->control_id . '_' . $row_id . '_height',
 				array(
-					'id'        => $this->control_id . '_' . $row_id . '_height',
-					'default'   => '{ "mobile": "0", "tablet": "0", "desktop": "0" }',
-					'transport' => 'postMessage',
+					'theme_supports' => 'hfg_support',
+					'transport'      => 'postMessage',
+					'default'        => '{ "mobile": "0", "tablet": "0", "desktop": "0" }',
 				)
 			);
-			$wp_customize->add_setting( $setting->id, $setting->setting_args() );
-			array_push( $partial_settings, $setting->id );
+			array_push( $partial_settings, $this->control_id . '_' . $row_id . '_height' );
 			$wp_customize->add_control(
 				new Range(
 					$wp_customize,
@@ -421,15 +419,15 @@ abstract class Abstract_Builder implements Builder {
 				)
 			);
 
-			$setting = new Customize_Setting(
+			$wp_customize->add_setting(
+				$this->control_id . '_' . $row_id . '_skin',
 				array(
-					'id'        => $this->control_id . '_' . $row_id . '_skin',
-					'default'   => 'light-mode',
-					'transport' => 'postMessage',
+					'theme_supports' => 'hfg_support',
+					'transport'      => 'postMessage',
+					'default'        => 'light-mode',
 				)
 			);
-			$wp_customize->add_setting( $setting->id, $setting->setting_args() );
-			array_push( $partial_settings, $setting->id );
+			array_push( $partial_settings, $this->control_id . '_' . $row_id . '_skin' );
 			$wp_customize->add_control(
 				new Radio_Image(
 					$wp_customize,
@@ -514,13 +512,6 @@ abstract class Abstract_Builder implements Builder {
 	}
 
 	/**
-	 * Get builder id.
-	 *
-	 * @return string Builder id.
-	 */
-	public abstract function get_id();
-
-	/**
 	 * Render device markup.
 	 *
 	 * @param string $device_name Device id.
@@ -535,15 +526,6 @@ abstract class Abstract_Builder implements Builder {
 			$this->render_row( $device_name, $index, $row );
 		}
 	}
-
-	/**
-	 * Render row markup
-	 *
-	 * @param string $device_id Device id.
-	 * @param string $row_id Row id.
-	 * @param array  $row_details Row metadata.
-	 */
-	public abstract function render_row( $device_id, $row_id, $row_details );
 
 	/**
 	 * Render components in the row.
@@ -638,7 +620,11 @@ abstract class Abstract_Builder implements Builder {
 	}
 
 	/**
-	 * @param null $id
+	 * Get a component from builder.
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 * @param   string|null $id The id of the component.
 	 *
 	 * @return Abstract_Component
 	 */
@@ -679,6 +665,13 @@ abstract class Abstract_Builder implements Builder {
 			'rows'       => $this->get_rows(),
 		);
 	}
+
+	/**
+	 * Used to define the rows in the builder sections.
+	 *
+	 * @return array Rows array.
+	 */
+	protected abstract function get_rows();
 
 	/**
 	 * Returns the components settings.

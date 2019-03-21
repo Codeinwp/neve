@@ -11,7 +11,6 @@
 
 namespace HFG\Core\Components;
 
-use HFG\Core\Customizer\Customize_Setting;
 use HFG\Main;
 use Neve\Customizer\Controls\Checkbox;
 use Neve\Customizer\Controls\Range;
@@ -65,15 +64,15 @@ class Logo extends Abstract_Component {
 		);
 		$partial_settings = array();
 
-		$setting = new Customize_Setting(
+		$wp_customize->add_setting(
+			$this->id . '_max_width',
 			array(
-				'id'        => $this->id . '_max_width',
-				'transport' => 'postMessage',
-				'default'   => '{ "mobile": "120", "tablet": "120", "desktop": "120" }',
+				'transport'      => 'postMessage',
+				'theme_supports' => 'hfg_support',
+				'default'        => '{ "mobile": "120", "tablet": "120", "desktop": "120" }',
 			)
 		);
-		$wp_customize->add_setting( $setting->id, $setting->setting_args() );
-		array_push( $partial_settings, $setting->id );
+		array_push( $partial_settings, $this->id . '_max_width' );
 		$wp_customize->add_control(
 			new Range(
 				$wp_customize,
@@ -105,15 +104,15 @@ class Logo extends Abstract_Component {
 			)
 		);
 
-		$setting = new Customize_Setting(
+		$wp_customize->add_setting(
+			$this->id . '_show_title',
 			array(
-				'id'        => $this->id . '_show_title',
-				'transport' => 'postMessage',
-				'default'   => 1,
+				'transport'      => 'postMessage',
+				'theme_supports' => 'hfg_support',
+				'default'        => 1,
 			)
 		);
-		$wp_customize->add_setting( $setting->id, $setting->setting_args() );
-		array_push( $partial_settings, $setting->id );
+		array_push( $partial_settings, $this->id . '_show_title' );
 		$wp_customize->add_control(
 			new Checkbox(
 				$wp_customize,
@@ -126,15 +125,15 @@ class Logo extends Abstract_Component {
 			)
 		);
 
-		$setting = new Customize_Setting(
+		$wp_customize->add_setting(
+			$this->id . '_show_tagline',
 			array(
-				'id'        => $this->id . '_show_tagline',
-				'transport' => 'postMessage',
-				'default'   => 1,
+				'transport'      => 'postMessage',
+				'theme_supports' => 'hfg_support',
+				'default'        => 1,
 			)
 		);
-		$wp_customize->add_setting( $setting->id, $setting->setting_args() );
-		array_push( $partial_settings, $setting->id );
+		array_push( $partial_settings, $this->id . '_show_tagline' );
 		$wp_customize->add_control(
 			new Checkbox(
 				$wp_customize,
@@ -147,15 +146,15 @@ class Logo extends Abstract_Component {
 			)
 		);
 
-		$setting = new Customize_Setting(
+		$wp_customize->add_setting(
+			$this->id . '_logo_pos',
 			array(
-				'id'        => $this->id . '_logo_pos',
-				'transport' => 'postMessage',
-				'default'   => 'top',
+				'transport'      => 'postMessage',
+				'theme_supports' => 'hfg_support',
+				'default'        => 'top',
 			)
 		);
-		$wp_customize->add_setting( $setting->id, $setting->setting_args() );
-		array_push( $partial_settings, $setting->id );
+		array_push( $partial_settings, $this->id . '_logo_pos' );
 		$wp_customize->add_control(
 			$this->id . '_logo_pos',
 			[

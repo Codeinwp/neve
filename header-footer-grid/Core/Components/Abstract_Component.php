@@ -23,6 +23,14 @@ use WP_Customize_Manager;
  */
 abstract class Abstract_Component implements Component {
 	use Core;
+
+	/**
+	 * Current id of thecomponent.
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 * @var null|string
+	 */
 	public static $current_component = null;
 	/**
 	 * Current X pos of the component if set.
@@ -105,6 +113,14 @@ abstract class Abstract_Component implements Component {
 		);
 	}
 
+	/**
+	 * Get the section id.
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 *
+	 * @return string
+	 */
 	public function get_section_id() {
 		return $this->section;
 	}
@@ -141,6 +157,15 @@ abstract class Abstract_Component implements Component {
 		return $wp_customize;
 	}
 
+	/**
+	 * Method to add Component css styles.
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 * @param array $css_array An array containing css rules.
+	 *
+	 * @return array
+	 */
 	public function add_style( array $css_array = array() ) {
 		return $css_array;
 	}
