@@ -23,7 +23,7 @@ $skin_mode   = get_theme_mod( $control_id . '_' . $row_index . '_skin', $default
 $row_classes = [
 	'footer--row',
 	'footer-' . $row_index,
-	$device === 'desktop' ? 'hide-on-mobile hide-on-tablet' : 'hide-on-desktop',
+	//$device === 'desktop' ? 'hide-on-mobile hide-on-tablet' : 'hide-on-desktop',
 ];
 
 $row_classes[] = get_theme_mod( $control_id . '_' . $row_index . '_layout', 'layout-full-contained' );
