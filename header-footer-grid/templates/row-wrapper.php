@@ -22,54 +22,7 @@ $row_classes = [
 ];
 
 $row_classes[] = get_theme_mod( $control_id . '_' . $row_index . '_layout', 'layout-full-contained' );
-
-$row_styles       = '';
-
-$layout_height = json_decode( get_theme_mod( $control_id . '_' . $row_index . '_height', '{ desktop: 0, tablet: 0, mobile: 0 }' ), true );
-
-$media_styles = '';
-if ( ! empty( $layout_height ) ) {
-	if ( isset( $layout_height['mobile'] ) ) {
-		$layout_height['mobile'] = ( $layout_height['mobile'] > 0 ) ? $layout_height['mobile'] . 'px' : 'auto';
-		$media_styles .= '
-	    @media (min-width: 50px) {
-	        .header-' . esc_attr( $row_index ) .'-inner {
-	            height: ' . $layout_height['mobile'] . ';
-	        }
-	    }
-	    ';
-	}
-
-	if ( isset( $layout_height['tablet'] ) ) {
-		$layout_height['tablet'] = ( $layout_height['tablet'] > 0 ) ? $layout_height['tablet'] . 'px' : 'auto';
-		$media_styles .= '
-	    @media (min-width: 576px) {
-	        .header-' . esc_attr( $row_index ) .'-inner {
-	            height: ' . $layout_height['tablet'] . ';
-	        }
-	    }
-	    ';
-	}
-
-	if ( isset( $layout_height['desktop'] ) ) {
-		$layout_height['desktop'] = ( $layout_height['desktop'] > 0 ) ? $layout_height['desktop'] . 'px' : 'auto';
-		$media_styles .= '
-	    @media (min-width: 796px) {
-	        .header-' . esc_attr( $row_index ) .'-inner {
-	            height: ' . $layout_height['desktop'] . ';
-	        }
-	    }
-	    ';
-	}
-
-	$row_styles = ' style="' . $media_styles . '"';
-}
 ?>
-<?php if ( !empty( $row_styles ) ) { ?>
-    <style type="text/css">
-        <?php echo wp_kses_post( $row_styles ); ?>
-    </style>
-<?php } ?>
 <div class="<?php echo esc_attr( join( ' ', $row_classes ) ); ?> header--row"
 	id="cb-row--header-<?php echo $row_index; ?>"
 	data-row-id="<?php echo $row_index; ?>" data-show-on="<?php echo $device; ?>">

@@ -174,6 +174,19 @@ abstract class Abstract_Builder implements Builder {
 		wp_add_inline_style( 'hfg-customizer-control', $this->inline_builder_styles() );
 	}
 
+	public function add_style( array $css_array = array() ) {
+		/**
+		 * An instance of Component.
+		 *
+		 * @var Abstract_Component $component
+		 */
+		foreach ( $this->builder_components as $component ) {
+			$component_css_array = $component->add_style( $css_array );
+			$css_array = $this->array_merge_recursive_distinct( $css_array , $component_css_array );
+		}
+		return $css_array;
+	}
+
 	protected function inline_builder_styles() {
 		$style = '';
 
@@ -474,6 +487,10 @@ abstract class Abstract_Builder implements Builder {
 	public function render() {
 		$layout                = $this->get_layout_data();
 		self::$current_builder = $this->get_id();
+		if ( is_customize_preview() ) {
+			$style = $this->css_array_to_css( $this->add_style() );
+			echo '<style type="text/css">' . $style . '</style>';
+		}
 		foreach ( $layout as $device_name => $device ) {
 			if ( empty( $device ) ) {
 				continue;
@@ -544,7 +561,6 @@ abstract class Abstract_Builder implements Builder {
 
 		$data        = $this->get_layout_data()[ $device ][ $row_index ];
 		$max_columns = 12;
-		$o           = 0;
 		$last_item   = null;
 
 		$collection = new \CachingIterator(
@@ -561,16 +577,16 @@ abstract class Abstract_Builder implements Builder {
 			 */
 			$component = $this->builder_components[ $component_location['id'] ];
 			$x         = intval( $component_location['x'] );
-			$width     = $original_width = intval( $component_location['width'] );
+			$width     = intval( $component_location['width'] );
 
 			if ( ! $collection->hasNext() && ( $x + $width < $max_columns ) ) {
 				$width += $max_columns - ( $x + $width );
 			}
 			$push_left = '';
 			if ( $x > 0 && $last_item !== null ) {
-				$o = intval( $last_item['width'] ) + intval( $last_item['x'] );
-				if ( $x - $o > 0 ) {
-					$x         = $x - $o;
+				$origin = intval( $last_item['width'] ) + intval( $last_item['x'] );
+				if ( $x - $origin > 0 ) {
+					$x         = $x - $origin;
 					$push_left = 'offset-' . $x;
 				}
 			} elseif ( $x > 0 ) {

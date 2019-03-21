@@ -82,6 +82,7 @@ class Main {
 	 */
 	public function init() {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+		add_filter( 'neve_style_output', array( $this, 'append_css_style' ) );
 	}
 
 	/**
@@ -137,6 +138,23 @@ class Main {
 			false,
 			true
 		);
+	}
+
+	public function append_css_style( $style ) {
+		return $style . $this->inline_styles();
+	}
+
+	public function inline_styles() {
+		$css_array = [];
+		/**
+		 * @var Abstract_Builder $builder
+		 */
+		foreach ( $this->get_builders() as $builder ) {
+			$builder_css_array = $builder->add_style( $css_array );
+			$css_array = $this->array_merge_recursive_distinct( $css_array , $builder_css_array );
+		}
+
+		return $this->css_array_to_css( $css_array );
 	}
 
 	/**

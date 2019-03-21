@@ -141,6 +141,10 @@ abstract class Abstract_Component implements Component {
 		return $wp_customize;
 	}
 
+	public function add_style( array $css_array = array() ) {
+		return $css_array;
+	}
+
 	/**
 	 * Render component markup.
 	 */
