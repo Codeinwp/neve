@@ -282,15 +282,16 @@ class Settings {
 			return false;
 		}
 
+		$media = false;
 		if ( is_numeric( $value ) ) {
-			return $this->media_from_id( $value, $size );
+			$media = $this->media_from_id( $value, $size );
 		} elseif ( is_string( $value ) ) {
-			return $this->media_from_url( $value, $size );
+			$media = $this->media_from_url( $value, $size );
 		} elseif ( is_array( $value ) ) {
-			return $this->media_from_array( $value, $size );
+			$media = $this->media_from_array( $value, $size );
 		}
 
-		return false;
+		return $media;
 	}
 
 }
