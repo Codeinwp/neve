@@ -78,9 +78,6 @@ class Typography extends Base_Inline {
 			'h6' => 'h6',
 		);
 
-		$line_height = get_theme_mod( 'neve_headings_line_height' );
-		$line_height = json_decode( $line_height, true );
-
 		foreach ( $controls as $control => $selector ) {
 			$font_size = get_theme_mod( 'neve_' . $control . '_font_size' );
 			$font_size = json_decode( $font_size, true );
@@ -91,42 +88,47 @@ class Typography extends Base_Inline {
 					'value'    => $font_size,
 					'suffix'   => isset( $font_size['suffix'] ) ? $font_size['suffix'] : 'em',
 				),
-				array(
-					'css_prop' => 'line-height',
-					'value'    => $line_height,
-				),
 			);
 			$this->add_responsive_style( $settings, $selector );
 		}
 
-		$setup = array();
-		$headings_font = get_theme_mod( 'neve_headings_font_family', false );
-		if ( ! empty( $headings_font ) ) {
-			$setup[] = array(
+
+		$line_height = get_theme_mod( 'neve_headings_line_height' );
+		$line_height = json_decode( $line_height, true );
+		$this->add_responsive_style( array(
+			array(
+				'css_prop' => 'line-height',
+				'value'    => $line_height,
+			),
+		), 'h1, .single .entry-title, h2, h3, h4, h5, h6' );
+
+		$headings_font  = get_theme_mod( 'neve_headings_font_family', false );
+		$font_weight    = get_theme_mod( 'neve_headings_font_weight' );
+		$text_transform = get_theme_mod( 'neve_headings_text_transform' );
+		$spacing        = get_theme_mod( 'neve_headings_letter_spacing' );
+		$setup          = array(
+			array(
 				'css_prop' => 'font-family',
 				'value'    => esc_html( $headings_font ),
-			);
-		}
-
-		$font_weight = get_theme_mod( 'neve_headings_font_weight' );
-		if ( ! empty( $font_weight ) ) {
-			$setup[] = array(
+			),
+			array(
 				'css_prop' => 'font-weight',
 				'value'    => $font_weight,
-			);
-		}
-
-		$text_transform = get_theme_mod( 'neve_headings_text_transform' );
-		if ( ! empty( $text_transform ) ) {
-			$setup[] = array(
+			),
+			array(
 				'css_prop' => 'text-transform',
 				'value'    => $text_transform,
-			);
-		}
+			),
+			array(
+				'css_prop' => 'letter-spacing',
+				'value'    => $spacing,
+				'suffix'   => 'px'
+			),
+		);
 
 		$this->add_style(
 			$setup,
-			apply_filters( 'neve_headings_font_family_selectors', 'h1, h2, h3, h4, h5, h6' )
+			apply_filters( 'neve_headings_font_family_selectors', 'h1, .single .entry-title, h2, h3, h4, h5, h6' )
 		);
 	}
 

@@ -86,16 +86,16 @@
         'unit': ' ',
         'styleClass': 'body-line-height-css'
       },
-      'neve_h1_font_size': {
-        'selector': 'h1, .single .entry-title',
-        'cssProp': 'font-size',
-        'styleClass': 'h1-font-size-css'
-      },
       'neve_headings_line_height': {
         'selector': 'h1, .single .entry-title,h2,h3,h4,h5,h6',
         'cssProp': 'line-height',
         'unit': ' ',
         'styleClass': 'headings-line-height-css'
+      },
+      'neve_h1_font_size': {
+        'selector': 'h1, .single .entry-title',
+        'cssProp': 'font-size',
+        'styleClass': 'h1-font-size-css'
       },
       'neve_h2_font_size': {
         'selector': 'h2',
@@ -163,6 +163,30 @@
         'cssProp': 'text-transform',
         'unit': ' ',
         'styleClass': 'headings-text-transform-css'
+      },
+      'neve_headings_letter_spacing': {
+        'selector': 'h1, .single .entry-title,h2,h3,h4,h5,h6',
+        'cssProp': 'letter-spacing',
+        'unit': 'px',
+        'styleClass': 'headings-letter-spacing-css'
+      },
+      'neve_body_font_weight': {
+        'selector': 'body',
+        'cssProp': 'font-weight',
+        'unit': ' ',
+        'styleClass': 'body-font-weight-css'
+      },
+      'neve_body_text_transform': {
+        'selector': 'body',
+        'cssProp': 'text-transform',
+        'unit': ' ',
+        'styleClass': 'body-text-transform-css'
+      },
+      'neve_body_letter_spacing': {
+        'selector': 'body',
+        'cssProp': 'letter-spacing',
+        'unit': 'px',
+        'styleClass': 'body-letter-spacing-css'
       },
     },
 
