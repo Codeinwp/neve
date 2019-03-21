@@ -1,6 +1,7 @@
 <?php
 /**
  * Compatibility with Elementor Header Footer plugin.
+ *
  * @package Neve\Compatibility
  */
 
@@ -8,6 +9,7 @@ namespace Neve\Compatibility;
 
 /**
  * Class Header_Footer_Elementor
+ *
  * @package Neve\Compatibility
  */
 class Header_Footer_Elementor {
