@@ -61,58 +61,6 @@ class Header extends Abstract_Builder {
 	}
 
 	/**
-	 * Method to add Header css styles.
-	 *
-	 * @since   1.0.0
-	 * @access  public
-	 * @param array $css_array An array containing css rules.
-	 *
-	 * @return array
-	 */
-	public function add_style( array $css_array = array() ) {
-		$rows = $this->get_rows();
-		if ( ! empty( $rows ) ) {
-			foreach ( $rows as $row_index => $row_label ) {
-				$css_array = $this->add_row_style( $row_index, $css_array );
-			}
-		}
-		return parent::add_style( $css_array );
-	}
-
-	/**
-	 * Method to generate css array for each row.
-	 *
-	 * @since   1.0.0
-	 * @access  private
-	 * @param string $row_index The row index.
-	 * @param array  $css_array The css array.
-	 *
-	 * @return array
-	 */
-	private function add_row_style( $row_index, $css_array = array() ) {
-		$layout_height = json_decode( get_theme_mod( $this->control_id . '_' . $row_index . '_height', '{ desktop: 0, tablet: 0, mobile: 0 }' ), true );
-		if ( isset( $layout_height['mobile'] ) ) {
-			$layout_height['mobile'] = ( $layout_height['mobile'] > 0 ) ? $layout_height['mobile'] . 'px' : 'auto';
-			$css_array[' @media (max-width: 576px)'][ '.header-' . $row_index . '-inner' ] = array(
-				'height' => $layout_height['mobile'],
-			);
-		}
-		if ( isset( $layout_height['tablet'] ) ) {
-			$layout_height['tablet'] = ( $layout_height['tablet'] > 0 ) ? $layout_height['tablet'] . 'px' : 'auto';
-			$css_array[' @media (min-width: 576px)'][ '.header-' . $row_index . '-inner' ] = array(
-				'height' => $layout_height['tablet'],
-			);
-		}
-		if ( isset( $layout_height['desktop'] ) ) {
-			$layout_height['desktop'] = ( $layout_height['desktop'] > 0 ) ? $layout_height['desktop'] . 'px' : 'auto';
-			$css_array[' @media (min-width: 796px)'][ '.header-' . $row_index . '-inner' ] = array(
-				'height' => $layout_height['desktop'],
-			);
-		}
-		return $css_array;
-	}
-
-	/**
 	 * Method called via hook.
 	 *
 	 * @since   1.0.0

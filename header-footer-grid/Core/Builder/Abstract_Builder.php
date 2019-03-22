@@ -183,6 +183,13 @@ abstract class Abstract_Builder implements Builder {
 	 * @return array
 	 */
 	public function add_style( array $css_array = array() ) {
+		$rows = $this->get_rows();
+		if ( ! empty( $rows ) ) {
+			foreach ( $rows as $row_index => $row_label ) {
+				$css_array = $this->add_row_style( $row_index, $css_array );
+			}
+		}
+
 		/**
 		 * An instance of Component.
 		 *
@@ -191,6 +198,40 @@ abstract class Abstract_Builder implements Builder {
 		foreach ( $this->builder_components as $component ) {
 			$component_css_array = $component->add_style( $css_array );
 			$css_array           = $this->array_merge_recursive_distinct( $css_array, $component_css_array );
+		}
+		return $css_array;
+	}
+
+	/**
+	 * Method to generate css array for each row.
+	 *
+	 * @since   1.0.0
+	 * @access  private
+	 * @param string $row_index The row index.
+	 * @param array  $css_array The css array.
+	 *
+	 * @return array
+	 */
+	private function add_row_style( $row_index, $css_array = array() ) {
+		$layout_height = json_decode( get_theme_mod( $this->control_id . '_' . $row_index . '_height', '{ desktop: 0, tablet: 0, mobile: 0 }' ), true );
+		$selector      = '.' . $this->get_id() . '-' . $row_index . '-inner';
+		if ( isset( $layout_height['mobile'] ) ) {
+			$layout_height['mobile']                              = ( $layout_height['mobile'] > 0 ) ? $layout_height['mobile'] . 'px' : 'auto';
+			$css_array[' @media (max-width: 576px)'][ $selector ] = array(
+				'height' => $layout_height['mobile'],
+			);
+		}
+		if ( isset( $layout_height['tablet'] ) ) {
+			$layout_height['tablet']                              = ( $layout_height['tablet'] > 0 ) ? $layout_height['tablet'] . 'px' : 'auto';
+			$css_array[' @media (min-width: 576px)'][ $selector ] = array(
+				'height' => $layout_height['tablet'],
+			);
+		}
+		if ( isset( $layout_height['desktop'] ) ) {
+			$layout_height['desktop']                             = ( $layout_height['desktop'] > 0 ) ? $layout_height['desktop'] . 'px' : 'auto';
+			$css_array[' @media (min-width: 796px)'][ $selector ] = array(
+				'height' => $layout_height['desktop'],
+			);
 		}
 		return $css_array;
 	}
