@@ -91,7 +91,7 @@ class Typography extends Base_Customizer {
 				array(
 					'sanitize_callback' => 'neve_sanitize_font_weight',
 					'transport'         => $this->selective_refresh,
-					'default'           => '600'
+					'default'           => '600',
 				),
 				array(
 					'label'    => esc_html__( 'Font Weight', 'neve' ),
@@ -122,7 +122,7 @@ class Typography extends Base_Customizer {
 				array(
 					'sanitize_callback' => 'neve_sanitize_text_transform',
 					'transport'         => $this->selective_refresh,
-					'default'           => 'none'
+					'default'           => 'none',
 				),
 				array(
 					'label'    => esc_html__( 'Text Transform', 'neve' ),
@@ -132,7 +132,7 @@ class Typography extends Base_Customizer {
 						'none'       => __( 'None', 'neve' ),
 						'capitalize' => __( 'Capitalize', 'neve' ),
 						'uppercase'  => __( 'Uppercase', 'neve' ),
-						'lowercase'  => __( 'Lowercase', 'neve' )
+						'lowercase'  => __( 'Lowercase', 'neve' ),
 					),
 					'priority' => 20,
 				)
@@ -415,7 +415,7 @@ class Typography extends Base_Customizer {
 				array(
 					'sanitize_callback' => 'neve_sanitize_font_weight',
 					'transport'         => $this->selective_refresh,
-					'default'           => '600'
+					'default'           => '600',
 				),
 				array(
 					'label'    => esc_html__( 'Font Weight', 'neve' ),
@@ -446,7 +446,7 @@ class Typography extends Base_Customizer {
 				array(
 					'sanitize_callback' => 'neve_sanitize_text_transform',
 					'transport'         => $this->selective_refresh,
-					'default'           => 'none'
+					'default'           => 'none',
 				),
 				array(
 					'label'    => esc_html__( 'Text Transform', 'neve' ),
@@ -456,7 +456,7 @@ class Typography extends Base_Customizer {
 						'none'       => __( 'None', 'neve' ),
 						'capitalize' => __( 'Capitalize', 'neve' ),
 						'uppercase'  => __( 'Uppercase', 'neve' ),
-						'lowercase'  => __( 'Lowercase', 'neve' )
+						'lowercase'  => __( 'Lowercase', 'neve' ),
 					),
 					'priority' => 20,
 				)

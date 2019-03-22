@@ -92,15 +92,17 @@ class Typography extends Base_Inline {
 			$this->add_responsive_style( $settings, $selector );
 		}
 
-
 		$line_height = get_theme_mod( 'neve_headings_line_height' );
 		$line_height = json_decode( $line_height, true );
-		$this->add_responsive_style( array(
+		$this->add_responsive_style(
 			array(
-				'css_prop' => 'line-height',
-				'value'    => $line_height,
+				array(
+					'css_prop' => 'line-height',
+					'value'    => $line_height,
+				),
 			),
-		), 'h1, .single .entry-title, h2, h3, h4, h5, h6' );
+			'h1, .single .entry-title, h2, h3, h4, h5, h6'
+		);
 
 		$headings_font  = get_theme_mod( 'neve_headings_font_family', false );
 		$font_weight    = get_theme_mod( 'neve_headings_font_weight' );
@@ -122,7 +124,7 @@ class Typography extends Base_Inline {
 			array(
 				'css_prop' => 'letter-spacing',
 				'value'    => $spacing,
-				'suffix'   => 'px'
+				'suffix'   => 'px',
 			),
 		);
 

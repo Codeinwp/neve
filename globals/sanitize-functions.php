@@ -116,7 +116,7 @@ function neve_sanitize_font_weight( $value ) {
  * @return string
  */
 function neve_sanitize_text_transform( $value ) {
-	$allowed = array('none', 'capitalize', 'uppercase', 'lowercase');
+	$allowed = array( 'none', 'capitalize', 'uppercase', 'lowercase' );
 
 	if ( ! in_array( $value, $allowed ) ) {
 		return 'none';
