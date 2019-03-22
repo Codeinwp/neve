@@ -70,7 +70,7 @@ abstract class Base_Inline {
 		}
 
 		$css = $selectors . '{';
-		foreach ( $styles as $id => $style ) {
+		foreach ( $styles as $style ) {
 			if ( isset( $style['suffix'] ) && is_array( $style['suffix'] ) ) {
 				$style['suffix'] = $style['suffix'][ $media_query ];
 			}

@@ -53,7 +53,7 @@
 										}
 									}
 								}
-								if ( typeof currentControl !== 'undefined' ) {
+								if ( typeof currentControl === 'object' && currentControl.hasOwnProperty( selector ) ) {
 									selector = currentControl.selector;
 									jQuery( selector ).hide();
 								}

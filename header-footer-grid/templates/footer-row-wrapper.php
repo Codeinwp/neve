@@ -23,7 +23,7 @@ $skin_mode   = get_theme_mod( $control_id . '_' . $row_index . '_skin', $default
 $row_classes = [
 	'footer--row',
 	'footer-' . $row_index,
-	//$device === 'desktop' ? 'hide-on-mobile hide-on-tablet' : 'hide-on-desktop',
+	// $device === 'desktop' ? 'hide-on-mobile hide-on-tablet' : 'hide-on-desktop',
 ];
 
 $row_classes[] = get_theme_mod( $control_id . '_' . $row_index . '_layout', 'layout-full-contained' );
@@ -55,7 +55,7 @@ if ( ! empty( $row_styles_array ) ) {
 	id="cb-row--footer-<?php echo $row_index; ?>"
 	data-row-id="<?php echo $row_index; ?>" data-show-on="<?php echo $device; ?>">
 	<div class="footer--row-inner footer-<?php echo esc_attr( $row_index ); ?>-inner <?php echo esc_attr( $skin_mode ); ?> footer-content-wrap"
-		<?php echo( wp_kses_post( $row_styles ) ); ?> >
+		<?php echo wp_kses_post( $row_styles ); ?> >
 		<div class="container">
 			<div class="hfg-grid hfg-grid-<?php echo esc_attr( $row_index ); ?>   nv-footer-content">
 				<?php render_components(); ?>

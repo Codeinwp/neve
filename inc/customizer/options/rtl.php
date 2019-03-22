@@ -21,9 +21,7 @@ class Rtl extends Base_Customizer {
 	/**
 	 * Abstract method that must be implemented.
 	 */
-	public function add_controls() {
-		return;
-	}
+	public function add_controls() {}
 
 	/**
 	 * Change controls
