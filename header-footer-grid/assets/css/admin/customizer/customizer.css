@@ -2951,18 +2951,15 @@
       .grid-stack.grid-stack-one-column-mode > .grid-stack-item > .ui-resizable-handle {
         display: none; }
 
-#sub-accordion-panel-hfg_header li {
+ul[id^="sub-accordion-panel-hfg"] > li.hfg-section-active {
   order: 0; }
 
-#sub-accordion-panel-hfg_header li.hfg-section-inactive {
+ul[id^="sub-accordion-panel-hfg"] > li.hfg-section-inactive {
   order: 1;
   opacity: 0.5; }
 
-#customize-theme-controls ul#sub-accordion-panel-hfg_header {
+#customize-theme-controls ul.customize-pane-child.accordion-sub-container[id^="sub-accordion-panel-hfg"] {
   flex-direction: column;
   display: flex; }
-
-#sub-accordion-panel-hfg_header li.hfg-section-inactive:nth-child(2) {
-  margin-top: 10px; }
 
 /*# sourceMappingURL=customizer.css.map */
