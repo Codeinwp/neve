@@ -285,6 +285,6 @@ class Header extends Base_View {
 			$items .= $this->get_nav_menu_cart();
 		}
 
-		return $items;
+		return apply_filters( 'neve_last_menu_item', $items );
 	}
 }

@@ -112,7 +112,7 @@ class Layout_Blog extends Base_Customizer {
 					'default'           => false,
 				),
 				array(
-					'type'            => 'checkbox-toggle',
+					'type'            => 'checkbox',
 					'priority'        => 35,
 					'section'         => 'neve_blog_archive_layout',
 					'label'           => esc_html__( 'Enable Masonry', 'neve' ),
@@ -144,7 +144,7 @@ class Layout_Blog extends Base_Customizer {
 						'max'     => 300,
 						'default' => 40,
 					),
-					'priority'   => 40,
+					'priority'   => 35,
 				),
 				'Neve\Customizer\Controls\Range'
 			)
@@ -165,7 +165,7 @@ class Layout_Blog extends Base_Customizer {
 				array(
 					'label'    => esc_html__( 'Post Pagination', 'neve' ),
 					'section'  => 'neve_blog_archive_layout',
-					'priority' => 45,
+					'priority' => 40,
 					'type'     => 'select',
 					'choices'  => array(
 						'number'   => esc_html__( 'Number', 'neve' ),
@@ -236,7 +236,7 @@ class Layout_Blog extends Base_Customizer {
 					'section'         => 'neve_blog_archive_layout',
 					'type'            => 'ordering',
 					'components'      => $components,
-					'priority'        => 55,
+					'priority'        => 45,
 					'active_callback' => array( $this, 'should_show_content_ordering' ),
 				),
 				'Neve\Customizer\Controls\Ordering'
