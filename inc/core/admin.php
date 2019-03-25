@@ -119,7 +119,7 @@ class Admin {
 							'text'   => sprintf( esc_html__( 'We want to make sure you have the best experience using %1$s, and that is why we have gathered all the necessary information here for you. We hope you will enjoy using %1$s as much as we enjoy creating great products.', 'neve' ), $this->theme_name ),
 							'button' => array(
 								'label'     => esc_html__( 'Contact Support', 'neve' ),
-								'link'      => esc_url( 'https://themeisle.com/contact/' ),
+								'link'      => apply_filters( 'ti_wl_agency_url', esc_url( 'https://wordpress.org/support/theme/neve/' ) ),
 								'is_button' => true,
 							),
 						),
@@ -130,7 +130,7 @@ class Admin {
 							'text'   => sprintf( esc_html__( 'Need more details? Please check our full documentation for detailed information on how to use %s.', 'neve' ), $this->theme_name ),
 							'button' => array(
 								'label'     => esc_html__( 'Read full documentation', 'neve' ),
-								'link'      => 'https://docs.themeisle.com/article/946-neve-doc',
+								'link'      => apply_filters( 'ti_wl_agency_url', 'https://docs.themeisle.com/article/946-neve-doc' ),
 								'is_button' => false,
 							),
 						),
@@ -152,7 +152,7 @@ class Admin {
 							'text'   => esc_html__( "If you want to make changes to the theme's files, those changes are likely to be overwritten when you next update the theme. In order to prevent that from happening, you need to create a child theme. For this, please follow the documentation below.", 'neve' ),
 							'button' => array(
 								'label'     => esc_html__( 'View how to do this', 'neve' ),
-								'link'      => 'http://docs.themeisle.com/article/14-how-to-create-a-child-theme',
+								'link'      => apply_filters( 'ti_wl_agency_url', 'http://docs.themeisle.com/article/14-how-to-create-a-child-theme' ),
 								'is_button' => false,
 							),
 						),
@@ -162,7 +162,7 @@ class Admin {
 							'text'   => esc_html__( 'If you find yourself in a situation where everything on your site is running very slowly, you might consider having a look at the documentation below where you will find the most common issues causing this and possible solutions for each of the issues.', 'neve' ),
 							'button' => array(
 								'label'     => esc_html__( 'View how to do this', 'neve' ),
-								'link'      => 'http://docs.themeisle.com/article/63-speed-up-your-wordpress-site',
+								'link'      => apply_filters( 'ti_wl_agency_url', 'http://docs.themeisle.com/article/63-speed-up-your-wordpress-site' ),
 								'is_button' => false,
 							),
 						),
@@ -172,7 +172,7 @@ class Admin {
 							'text'   => esc_html__( 'In the documentation below you will find an easy way to build a great looking landing page using a drag-and-drop content builder plugin.', 'neve' ),
 							'button' => array(
 								'label'     => esc_html__( 'View how to do this', 'neve' ),
-								'link'      => 'http://docs.themeisle.com/article/219-how-to-build-a-landing-page-with-a-drag-and-drop-content-builder',
+								'link'      => apply_filters( 'ti_wl_agency_url', 'http://docs.themeisle.com/article/219-how-to-build-a-landing-page-with-a-drag-and-drop-content-builder' ),
 								'is_button' => false,
 							),
 						),
