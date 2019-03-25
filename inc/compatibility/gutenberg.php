@@ -51,6 +51,9 @@ class Gutenberg {
 		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_gutenberg_scripts' ) );
 	}
 
+	/**
+	 * Add the integration status rest field.
+	 */
 	public function add_rest_field() {
 		register_rest_field(
 			'user',
@@ -60,6 +63,21 @@ class Gutenberg {
 				'update_callback' => array( $this, 'rest_update_gutenberg_integration' ),
 			)
 		);
+	}
+
+	/**
+	 * Get the current status of the gutenberg integration for this user.
+	 *
+	 * @return mixed|string
+	 */
+	public function get_current_user_integration_status() {
+		$status = get_user_meta( get_current_user_id(), 'neve_gutenberg_integration', true );
+
+		if ( ! $status ) {
+			return 'enabled';
+		}
+
+		return $status;
 	}
 
 	/**
@@ -123,16 +141,6 @@ class Gutenberg {
 		$localization['integrationEndpoint'] = rest_url( '/wp/v2/users/' . get_current_user_id() );
 
 		return $localization;
-	}
-
-	public function get_current_user_integration_status() {
-		$status = get_user_meta( get_current_user_id(), 'neve_gutenberg_integration', true );
-
-		if ( ! $status ) {
-			return 'enabled';
-		}
-
-		return $status;
 	}
 
 	/**

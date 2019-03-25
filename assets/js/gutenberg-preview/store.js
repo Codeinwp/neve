@@ -1,4 +1,5 @@
-/* global neveGutenbergHelper */
+/* jshint esversion: 6 */
+/* global neveGutenbergHelper*/
 
 export let store = {
   state: {
@@ -9,12 +10,12 @@ export let store = {
     containerSetup: neveGutenbergHelper.neve_meta_container || neveGutenbergHelper.containerSetup
   },
   setState: function (stateItem, value) {
-    this.state[stateItem] = value
+    this.state[stateItem] = value;
   },
   getState: function (key) {
-    return this.state[key] || null
+    return this.state[key] || null;
   },
   toggleState: function (key) {
-    this.state[key] = this.state[key] === 'enabled' ? 'disabled' : 'enabled'
+    this.state[key] = this.state[key] === 'enabled' ? 'disabled' : 'enabled';
   }
 };

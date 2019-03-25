@@ -7,8 +7,9 @@ module.exports = function ( grunt ) {
 		config = require( 'grunt-theme-fleet' );
 	config = config();
 
-  	config.files.php.push( '!**/node_modules/**/*' );
+	config.files.php.push( '!**/node_modules/**/*' );
 	config.files.js.push( '!**/node_modules/**/*' );
+	config.files.js.push( '!assets/js/gutenberg-preview-manager.js' );
 
 	config.files.js.push( '!**/vendor/**/*' );
 	config.files.php.push( '!**/vendor/**/*' );
