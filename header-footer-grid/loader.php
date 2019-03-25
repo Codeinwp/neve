@@ -4,21 +4,25 @@
  *
  * @package HFG
  */
+$header_components = array(
+	'HFG\Core\Components\Logo',
+	'HFG\Core\Components\MenuIcon',
+	'HFG\Core\Components\Nav',
+	'HFG\Core\Components\Button',
+	'HFG\Core\Components\CustomHtml',
+	'HFG\Core\Components\Search',
+	'HFG\Core\Components\SearchResponsive',
+	'HFG\Core\Components\SecondNav',
+);
+if ( class_exists( 'WooCommerce' ) ) {
+	$header_components[] = 'HFG\Core\Components\CartIcon';
+}
 
 add_theme_support(
 	'hfg_support',
 	array(
 		'builders' => array(
-			'HFG\Core\Builder\Header' => array(
-				'HFG\Core\Components\Logo',
-				'HFG\Core\Components\MenuIcon',
-				'HFG\Core\Components\Nav',
-				'HFG\Core\Components\Button',
-				'HFG\Core\Components\CustomHtml',
-				'HFG\Core\Components\Search',
-				'HFG\Core\Components\SearchResponsive',
-				'HFG\Core\Components\SecondNav',
-			),
+			'HFG\Core\Builder\Header' => $header_components,
 			'HFG\Core\Builder\Footer' => array(
 				'HFG\Core\Components\FooterWidgetOne',
 				'HFG\Core\Components\FooterWidgetTwo',
