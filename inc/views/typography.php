@@ -82,7 +82,6 @@ class Typography extends Base_View {
 		}
 
 		$weights_array[] = $font_weight;
-		var_dump( $weights_array );
 		return $weights_array;
 	}
 
