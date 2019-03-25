@@ -1053,7 +1053,7 @@ let CustomizeBuilderV1;
 					did = true;
 				} else {
 					did = insertToFlag( node );
-					$( '#accordion-section-' + node.el[0].dataset.section ).css( "opacity", "1" );
+					$( '#accordion-section-' + node.el[0].dataset.section ).removeClass('hfg-section-inactive');
 				}
 
 				// console.log( 'Drop on X: ' + x + ', width: '+ w );
@@ -1323,7 +1323,7 @@ let CustomizeBuilderV1;
 
 				el.append( elItem );
 				that.updateGridFlag( el );
-				$( '#accordion-section-' + elItem[0].dataset.section ).css( "opacity", "1" );
+				$( '#accordion-section-' + elItem[0].dataset.section ).removeClass('hfg-section-inactive');
 			},
 			addPanel: function( device ) {
 				let that = this;
@@ -1422,7 +1422,7 @@ let CustomizeBuilderV1;
 						if ( _d ) {
 							let item = that.addItem( node );
 							$itemWrapper.append( item );
-							$( '#accordion-section-' + node.section ).css( "opacity", "0.5" );
+							$( '#accordion-section-' + node.section ).addClass( "hfg-section-inactive" );
 						}
 					} );
 				} );
@@ -1449,16 +1449,16 @@ let CustomizeBuilderV1;
 					that.activePanel = device;
 
 					$( '.hfg--device-panel .hfg-available-items .item-from-list' ).each( function ( index, item ) {
-						$( '#accordion-section-' + $( item )[0].dataset.section ).css( "opacity", "1" );
+						$( '#accordion-section-' + $( item )[0].dataset.section ).removeClass( "hfg-section-inactive");
 					} );
 
 					$( '.hfg--device-panel.hfg--panel-' + device + ' .hfg-available-items .item-from-list' ).each( function ( index, item ) {
-						$( '#accordion-section-' + $( item )[0].dataset.section ).css( "opacity", "0.5" );
+						$( '#accordion-section-' + $( item )[0].dataset.section ).addClass( "hfg-section-inactive" );
 					} );
 				} else {
 
 					$( '.hfg--device-panel.hfg--panel-' + device + ' .hfg-available-items .item-from-list' ).each( function ( index, item ) {
-						$( '#accordion-section-' + $( item )[0].dataset.section ).css( "opacity", "0.5" );
+						$( '#accordion-section-' + $( item )[0].dataset.section ).addClass( "hfg-section-inactive" );
 					} );
 
 					$(
@@ -1509,7 +1509,7 @@ let CustomizeBuilderV1;
 								item.attr( "data-gs-x", node.x );
 								item.removeClass( "item-from-list" );
 								that.addNewWidget( item, $rows[rowId] );
-								$( '#accordion-section-' + node.id ).css( "opacity", "1" );
+								$( '#accordion-section-' + node.id ).removeClass("hfg-section-inactive" );
 							} );
 						}
 					} );
@@ -1573,7 +1573,7 @@ let CustomizeBuilderV1;
 						item.attr( "data-gs-x", 0 );
 						item.removeAttr( "style" );
 						$( ".hfg-available-items", panel ).append( item );
-						$( '#accordion-section-' + item[0].dataset.section ).css( "opacity", "0.5" );
+						$( '#accordion-section-' + item[0].dataset.section ).addClass( "hfg-section-inactive" );
 						that.updateAllGrids();
 						that.save();
 					}

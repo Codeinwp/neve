@@ -2950,3 +2950,19 @@
       max-width: none !important; }
       .grid-stack.grid-stack-one-column-mode > .grid-stack-item > .ui-resizable-handle {
         display: none; }
+
+#sub-accordion-panel-hfg_header li {
+  order: 0; }
+
+#sub-accordion-panel-hfg_header li.hfg-section-inactive {
+  order: 1;
+  opacity: 0.5; }
+
+#customize-theme-controls ul#sub-accordion-panel-hfg_header {
+  flex-direction: column;
+  display: flex; }
+
+#sub-accordion-panel-hfg_header li.hfg-section-inactive:nth-child(2) {
+  margin-top: 10px; }
+
+/*# sourceMappingURL=customizer.css.map */

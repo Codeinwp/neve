@@ -90,6 +90,24 @@ $builder_active_color: #0073aa;
     }
 }
 
+
+
+
 @import "control";
 @import "header_footer_builder";
 @import "builder_v1";
+
+#sub-accordion-panel-hfg_header li{
+    order:0;
+}
+#sub-accordion-panel-hfg_header li.hfg-section-inactive{
+    order:1;
+    opacity: 0.5;
+}
+#customize-theme-controls ul#sub-accordion-panel-hfg_header{
+    flex-direction: column;
+    display: flex;
+}
+#sub-accordion-panel-hfg_header li.hfg-section-inactive:nth-child(2){
+    margin-top:10px;
+}
