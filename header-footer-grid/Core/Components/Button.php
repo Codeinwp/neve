@@ -30,7 +30,7 @@ class Button extends Abstract_Component {
 	 * @param string $panel The panel name.
 	 */
 	public function __construct( $panel ) {
-		$this->set_property( 'label', __( 'Button', 'hfg-module' ) );
+		$this->set_property( 'label', __( 'Button', 'neve' ) );
 		$this->set_property( 'id', 'button_base' );
 		$this->set_property( 'width', 1 );
 		$this->set_property( 'section', 'header_button' );
@@ -63,21 +63,21 @@ class Button extends Abstract_Component {
 		$wp_customize->add_setting(
 			$prefix . '_text' . '_setting', array(
 				'theme_supports' => 'hfg_support',
-				'default'        => __( 'Button', 'hfg-module' ),
+				'default'        => __( 'Button', 'neve' ),
 				'transport'      => 'postMessage',
 			)
 		);
 		$wp_customize->add_setting(
 			$prefix . '_link' . '_setting', array(
 				'theme_supports' => 'hfg_support',
-				'default'        => __( '#', 'hfg-module' ),
+				'default'        => __( '#', 'neve' ),
 				'transport'      => 'postMessage',
 			)
 		);
 
 		$wp_customize->add_control(
 			$prefix . '_text' . '_setting', array(
-				'label'    => __( 'Text', 'hfg-module' ),
+				'label'    => __( 'Text', 'neve' ),
 				'type'     => 'text',
 				'settings' => $prefix . '_text' . '_setting',
 				'section'  => $this->section,
@@ -85,7 +85,7 @@ class Button extends Abstract_Component {
 		);
 		$wp_customize->add_control(
 			$prefix . '_link' . '_setting', array(
-				'label'    => __( 'Link', 'hfg-module' ),
+				'label'    => __( 'Link', 'neve' ),
 				'type'     => 'text',
 				'settings' => $prefix . '_link' . '_setting',
 				'section'  => $this->section,

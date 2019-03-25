@@ -30,7 +30,7 @@ class Copyright extends Abstract_Component {
 	 * @param string $panel The panel ID.
 	 */
 	public function __construct( $panel ) {
-		$this->set_property( 'label', __( 'Copyright', 'hfg-module' ) );
+		$this->set_property( 'label', __( 'Copyright', 'neve' ) );
 		$this->set_property( 'id', 'footer_copyright' );
 		$this->set_property( 'width', 2 );
 		$this->set_property( 'section', 'footer_copyright' );
@@ -78,7 +78,7 @@ class Copyright extends Abstract_Component {
 		$wp_customize->add_control(
 			$this->id . '_content',
 			[
-				'label'   => esc_html__( 'Copyright Content', 'hfg-module' ),
+				'label'   => esc_html__( 'Copyright Content', 'neve' ),
 				'type'    => 'textarea',
 				'section' => $this->section,
 			]

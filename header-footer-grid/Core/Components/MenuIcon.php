@@ -30,7 +30,7 @@ class MenuIcon extends Abstract_Component {
 	 * @param string $panel The panel name.
 	 */
 	public function __construct( $panel ) {
-		$this->set_property( 'label', __( 'Menu Icon', 'hfg-module' ) );
+		$this->set_property( 'label', __( 'Menu Icon', 'neve' ) );
 		$this->set_property( 'id', 'nav-icon' );
 		$this->set_property( 'width', 3 );
 		$this->set_property( 'section', 'header_menu_icon' );
@@ -63,7 +63,7 @@ class MenuIcon extends Abstract_Component {
 		$wp_customize->add_setting(
 			$prefix . '_text' . '_setting', array(
 				'theme_supports' => 'hfg_support',
-				'default'        => __( 'Menu', 'hfg-module' ),
+				'default'        => __( 'Menu', 'neve' ),
 				'transport'      => 'refresh',
 			)
 		);
@@ -71,7 +71,7 @@ class MenuIcon extends Abstract_Component {
 		$wp_customize->add_control(
 			$prefix . '_text', array(
 				'name'            => $prefix . '_text',
-				'label'           => __( 'Text', 'hfg-module' ),
+				'label'           => __( 'Text', 'neve' ),
 				'type'            => 'text',
 				'section'         => $this->section,
 				'selector'        => $selector,

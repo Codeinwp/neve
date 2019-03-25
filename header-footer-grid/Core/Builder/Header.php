@@ -33,7 +33,7 @@ class Header extends Abstract_Builder {
 	 * @access  public
 	 */
 	public function init() {
-		$this->set_property( 'title', __( 'HFG Header', 'hfg-module' ) );
+		$this->set_property( 'title', __( 'Header', 'neve' ) );
 		$this->set_property( 'control_id', 'hfg_header_layout' );
 		$this->set_property( 'panel', 'hfg_header' );
 		$this->set_property( 'remove_panels', [ 'neve_header' ] );

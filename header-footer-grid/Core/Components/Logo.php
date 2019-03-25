@@ -32,7 +32,7 @@ class Logo extends Abstract_Component {
 	 * @param string $panel The panel name.
 	 */
 	public function __construct( $panel ) {
-		$this->set_property( 'label', __( 'Logo & Site Identity', 'hfg-module' ) );
+		$this->set_property( 'label', __( 'Logo & Site Identity', 'neve' ) );
 		$this->set_property( 'id', 'logo' );
 		$this->set_property( 'width', 2 );
 		$this->set_property( 'section', 'title_tagline' );
@@ -118,7 +118,7 @@ class Logo extends Abstract_Component {
 				$wp_customize,
 				$this->id . '_show_title',
 				[
-					'label'   => esc_html__( 'Show Site Title', 'hfg-module' ),
+					'label'   => esc_html__( 'Show Site Title', 'neve' ),
 					'type'    => 'checkbox-toggle',
 					'section' => $this->section,
 				]
@@ -139,7 +139,7 @@ class Logo extends Abstract_Component {
 				$wp_customize,
 				$this->id . '_show_tagline',
 				[
-					'label'   => esc_html__( 'Show Site Tagline', 'hfg-module' ),
+					'label'   => esc_html__( 'Show Site Tagline', 'neve' ),
 					'type'    => 'checkbox-toggle',
 					'section' => $this->section,
 				]
@@ -158,14 +158,14 @@ class Logo extends Abstract_Component {
 		$wp_customize->add_control(
 			$this->id . '_logo_pos',
 			[
-				'label'   => __( 'Logo Position', 'hfg-module' ),
+				'label'   => __( 'Logo Position', 'neve' ),
 				'type'    => 'select',
 				'section' => $this->section,
 				'choices' => array(
-					'top'    => __( 'Top', 'hfg-module' ),
-					'left'   => __( 'Left', 'hfg-module' ),
-					'right'  => __( 'Right', 'hfg-module' ),
-					'bottom' => __( 'Bottom', 'hfg-module' ),
+					'top'    => __( 'Top', 'neve' ),
+					'left'   => __( 'Left', 'neve' ),
+					'right'  => __( 'Right', 'neve' ),
+					'bottom' => __( 'Bottom', 'neve' ),
 				),
 			]
 		);

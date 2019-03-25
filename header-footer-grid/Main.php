@@ -195,7 +195,7 @@ class Main {
 	 * @since  1.0.0
 	 */
 	public function __clone() {
-		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'hfg-module' ), '1.0.0' );
+		_doing_it_wrong( __FUNCTION__, '', '1.0.0' );
 	}
 
 	/**
@@ -205,7 +205,7 @@ class Main {
 	 * @since  1.0.0
 	 */
 	public function __wakeup() {
-		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'hfg-module' ), '1.0.0' );
+		_doing_it_wrong( __FUNCTION__, '', '1.0.0' );
 	}
 }
 

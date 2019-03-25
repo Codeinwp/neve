@@ -33,7 +33,7 @@ class Nav extends Abstract_Component {
 	 * @param string $panel The panel name.
 	 */
 	public function __construct( $panel ) {
-		$this->set_property( 'label', __( 'Primary Menu', 'hfg-module' ) );
+		$this->set_property( 'label', __( 'Primary Menu', 'neve' ) );
 		$this->set_property( 'id', 'primary-menu' );
 		$this->set_property( 'width', 2 );
 		$this->set_property( 'section', 'header_menu_primary' );
@@ -75,24 +75,24 @@ class Nav extends Abstract_Component {
 				$wp_customize,
 				$this->id . '_style',
 				[
-					'label'   => __( 'Skin Mode' ),
+					'label'   => __( 'Skin Mode','neve' ),
 					'section' => $this->section,
 					'choices' => array(
 						'style-plain'         => array(
 							'url'  => Settings::get_instance()->url . '/assets/images/customizer/menu_style_1.svg',
-							'name' => __( 'Plain' ),
+							'name' => __( 'Plain','neve' ),
 						),
 						'style-full-height'   => array(
 							'url'  => Settings::get_instance()->url . '/assets/images/customizer/menu_style_2.svg',
-							'name' => __( 'Full Height' ),
+							'name' => __( 'Full Height','neve' ),
 						),
 						'style-border-bottom' => array(
 							'url'  => Settings::get_instance()->url . '/assets/images/customizer/menu_style_3.svg',
-							'name' => __( 'Bottom Border' ),
+							'name' => __( 'Bottom Border','neve' ),
 						),
 						'style-border-top'    => array(
 							'url'  => Settings::get_instance()->url . '/assets/images/customizer/menu_style_4.svg',
-							'name' => __( 'Top Border' ),
+							'name' => __( 'Top Border','neve' ),
 						),
 					),
 				]

@@ -12,7 +12,7 @@ namespace HFG;
 
 use HFG\Core\Builder\Header as HeaderBuilder;
 
-$text = get_theme_mod( current_component( HeaderBuilder::BUILDER_NAME )->get_id() . '_text' . '_setting', __( 'Button', 'hfg-module' ) );
+$text = get_theme_mod( current_component( HeaderBuilder::BUILDER_NAME )->get_id() . '_text' . '_setting', __( 'Button', 'neve' ) );
 $link = get_theme_mod( current_component( HeaderBuilder::BUILDER_NAME )->get_id() . '_link' . '_setting', '#' );
 
 ?>

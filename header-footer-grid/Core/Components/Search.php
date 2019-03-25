@@ -30,7 +30,7 @@ class Search extends Abstract_Component {
 	 * @param string $panel The panel name.
 	 */
 	public function __construct( $panel ) {
-		$this->set_property( 'label', __( 'Search Field', 'hfg-module' ) );
+		$this->set_property( 'label', __( 'Search Field', 'neve' ) );
 		$this->set_property( 'id', 'header_search' );
 		$this->set_property( 'width', 1 );
 		$this->set_property( 'section', 'header_search' );
@@ -62,7 +62,7 @@ class Search extends Abstract_Component {
 		$wp_customize->add_setting(
 			$this->id . '_placeholder', array(
 				'theme_supports' => 'hfg_support',
-				'default'        => __( 'Search for ...', 'hfg-module' ),
+				'default'        => __( 'Search for ...', 'neve' ),
 				'transport'      => 'refresh',
 			)
 		);
@@ -70,7 +70,7 @@ class Search extends Abstract_Component {
 		$wp_customize->add_control(
 			$this->id . '_placeholder', array(
 				'name'            => $this->section . '_placeholder',
-				'label'           => __( 'Placeholder', 'hfg-module' ),
+				'label'           => __( 'Placeholder', 'neve' ),
 				'type'            => 'text',
 				'section'         => $this->section,
 				'selector'        => $selector,

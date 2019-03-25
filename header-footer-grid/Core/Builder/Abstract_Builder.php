@@ -136,6 +136,7 @@ abstract class Abstract_Builder implements Builder {
 	public function __construct() {
 		$this->init();
 	}
+
 	/**
 	 * Returns current builder id.
 	 *
@@ -174,69 +175,6 @@ abstract class Abstract_Builder implements Builder {
 	}
 
 	/**
-	 * Method to add Builder css styles.
-	 *
-	 * @since   1.0.0
-	 * @access  public
-	 * @param array $css_array An array containing css rules.
-	 *
-	 * @return array
-	 */
-	public function add_style( array $css_array = array() ) {
-		$rows = $this->get_rows();
-		if ( ! empty( $rows ) ) {
-			foreach ( $rows as $row_index => $row_label ) {
-				$css_array = $this->add_row_style( $row_index, $css_array );
-			}
-		}
-
-		/**
-		 * An instance of Component.
-		 *
-		 * @var Abstract_Component $component
-		 */
-		foreach ( $this->builder_components as $component ) {
-			$component_css_array = $component->add_style( $css_array );
-			$css_array           = $this->array_merge_recursive_distinct( $css_array, $component_css_array );
-		}
-		return $css_array;
-	}
-
-	/**
-	 * Method to generate css array for each row.
-	 *
-	 * @since   1.0.0
-	 * @access  private
-	 * @param string $row_index The row index.
-	 * @param array  $css_array The css array.
-	 *
-	 * @return array
-	 */
-	private function add_row_style( $row_index, $css_array = array() ) {
-		$layout_height = json_decode( get_theme_mod( $this->control_id . '_' . $row_index . '_height', '{ desktop: 0, tablet: 0, mobile: 0 }' ), true );
-		$selector      = '.' . $this->get_id() . '-' . $row_index . '-inner';
-		if ( isset( $layout_height['mobile'] ) ) {
-			$layout_height['mobile']                              = ( $layout_height['mobile'] > 0 ) ? $layout_height['mobile'] . 'px' : 'auto';
-			$css_array[' @media (max-width: 576px)'][ $selector ] = array(
-				'height' => $layout_height['mobile'],
-			);
-		}
-		if ( isset( $layout_height['tablet'] ) ) {
-			$layout_height['tablet']                              = ( $layout_height['tablet'] > 0 ) ? $layout_height['tablet'] . 'px' : 'auto';
-			$css_array[' @media (min-width: 576px)'][ $selector ] = array(
-				'height' => $layout_height['tablet'],
-			);
-		}
-		if ( isset( $layout_height['desktop'] ) ) {
-			$layout_height['desktop']                             = ( $layout_height['desktop'] > 0 ) ? $layout_height['desktop'] . 'px' : 'auto';
-			$css_array[' @media (min-width: 796px)'][ $selector ] = array(
-				'height' => $layout_height['desktop'],
-			);
-		}
-		return $css_array;
-	}
-
-	/**
 	 * Returns a string of css rules.
 	 *
 	 * @since   1.0.0
@@ -256,8 +194,16 @@ abstract class Abstract_Builder implements Builder {
 				);
 			}
 		}
+
 		return $style . $this->css_array_to_css( $style_array );
 	}
+
+	/**
+	 * Used to define the rows in the builder sections.
+	 *
+	 * @return array Rows array.
+	 */
+	protected abstract function get_rows();
 
 	/**
 	 * Called to register component controls.
@@ -284,7 +230,7 @@ abstract class Abstract_Builder implements Builder {
 
 		if ( empty( $wp_customize->get_panel( $this->panel ) ) ) {
 			$this->set_property( 'section', $this->control_id . '_section' );
-			$builder_title = ( isset( $this->title ) && ! empty( $this->title ) ) ? $this->title : __( 'HFG Panel', 'hfg-module' );
+			$builder_title = ( isset( $this->title ) && ! empty( $this->title ) ) ? $this->title : __( 'HFG Panel', 'neve' );
 
 			$wp_customize->add_panel(
 				$this->panel, array(
@@ -298,7 +244,7 @@ abstract class Abstract_Builder implements Builder {
 
 			$wp_customize->add_section(
 				$this->section, array(
-					'title'    => __( 'Header', 'hfg-module' ),
+					'title'    => __( 'Header', 'neve' ),
 					'priority' => 299,
 					'panel'    => $this->panel,
 				)
@@ -408,13 +354,13 @@ abstract class Abstract_Builder implements Builder {
 			$wp_customize->add_control(
 				$this->control_id . '_' . $row_id . '_layout',
 				[
-					'label'   => __( 'Layout', 'hfg-module' ),
+					'label'   => __( 'Layout', 'neve' ),
 					'type'    => 'select',
 					'section' => $this->control_id . '_' . $row_id,
 					'choices' => array(
-						'layout-full-contained' => __( 'Full Width - Contained', 'hfg-module' ),
-						'layout-fullwidth'      => __( 'Full Width', 'hfg-module' ),
-						'layout-contained'      => __( 'Contained', 'hfg-module' ),
+						'layout-full-contained' => __( 'Full Width - Contained', 'neve' ),
+						'layout-fullwidth'      => __( 'Full Width', 'neve' ),
+						'layout-contained'      => __( 'Contained', 'neve' ),
 					),
 				]
 			);
@@ -433,7 +379,7 @@ abstract class Abstract_Builder implements Builder {
 					$wp_customize,
 					$this->control_id . '_' . $row_id . '_height',
 					array(
-						'label'       => esc_html__( 'Row height (px)', 'hfg-module' ),
+						'label'       => esc_html__( 'Row height (px)', 'neve' ),
 						'section'     => $this->control_id . '_' . $row_id,
 						'type'        => 'range-value',
 						'media_query' => true,
@@ -480,11 +426,11 @@ abstract class Abstract_Builder implements Builder {
 						'choices'  => array(
 							'light-mode' => array(
 								'url'  => Settings::get_instance()->url . '/assets/images/customizer/text_mode_dark.svg',
-								'name' => __( 'Light Mode' ),
+								'name' => __( 'Light Mode', 'neve' ),
 							),
 							'dark-mode'  => array(
 								'url'  => Settings::get_instance()->url . '/assets/images/customizer/text_mode_light.svg',
-								'name' => __( 'Dark Mode' ),
+								'name' => __( 'Dark Mode', 'neve' ),
 							),
 						),
 					]
@@ -550,6 +496,73 @@ abstract class Abstract_Builder implements Builder {
 		$data = json_decode( get_theme_mod( $this->control_id, Settings::get_instance()->get_header_defaults_neve() ), true );
 
 		return wp_parse_args( $data, array_fill_keys( array_keys( $this->devices ), array_fill_keys( array_keys( $this->get_rows() ), [] ) ) );
+	}
+
+	/**
+	 * Method to add Builder css styles.
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 *
+	 * @param array $css_array An array containing css rules.
+	 *
+	 * @return array
+	 */
+	public function add_style( array $css_array = array() ) {
+		$rows = $this->get_rows();
+		if ( ! empty( $rows ) ) {
+			foreach ( $rows as $row_index => $row_label ) {
+				$css_array = $this->add_row_style( $row_index, $css_array );
+			}
+		}
+
+		/**
+		 * An instance of Component.
+		 *
+		 * @var Abstract_Component $component
+		 */
+		foreach ( $this->builder_components as $component ) {
+			$component_css_array = $component->add_style( $css_array );
+			$css_array           = $this->array_merge_recursive_distinct( $css_array, $component_css_array );
+		}
+
+		return $css_array;
+	}
+
+	/**
+	 * Method to generate css array for each row.
+	 *
+	 * @since   1.0.0
+	 * @access  private
+	 *
+	 * @param string $row_index The row index.
+	 * @param array  $css_array The css array.
+	 *
+	 * @return array
+	 */
+	private function add_row_style( $row_index, $css_array = array() ) {
+		$layout_height = json_decode( get_theme_mod( $this->control_id . '_' . $row_index . '_height', '{ desktop: 0, tablet: 0, mobile: 0 }' ), true );
+		$selector      = '.' . $this->get_id() . '-' . $row_index . '-inner';
+		if ( isset( $layout_height['mobile'] ) ) {
+			$layout_height['mobile']                              = ( $layout_height['mobile'] > 0 ) ? $layout_height['mobile'] . 'px' : 'auto';
+			$css_array[' @media (max-width: 576px)'][ $selector ] = array(
+				'height' => $layout_height['mobile'],
+			);
+		}
+		if ( isset( $layout_height['tablet'] ) ) {
+			$layout_height['tablet']                              = ( $layout_height['tablet'] > 0 ) ? $layout_height['tablet'] . 'px' : 'auto';
+			$css_array[' @media (min-width: 576px)'][ $selector ] = array(
+				'height' => $layout_height['tablet'],
+			);
+		}
+		if ( isset( $layout_height['desktop'] ) ) {
+			$layout_height['desktop']                             = ( $layout_height['desktop'] > 0 ) ? $layout_height['desktop'] . 'px' : 'auto';
+			$css_array[' @media (min-width: 796px)'][ $selector ] = array(
+				'height' => $layout_height['desktop'],
+			);
+		}
+
+		return $css_array;
 	}
 
 	/**
@@ -665,6 +678,7 @@ abstract class Abstract_Builder implements Builder {
 	 *
 	 * @since   1.0.0
 	 * @access  public
+	 *
 	 * @param   string|null $id The id of the component.
 	 *
 	 * @return Abstract_Component
@@ -673,6 +687,7 @@ abstract class Abstract_Builder implements Builder {
 		if ( $id === null ) {
 			$id = ( self::$current_component === null ) ? Abstract_Component::$current_component : self::$current_component;
 		}
+
 		return $this->builder_components[ $id ];
 	}
 
@@ -706,13 +721,6 @@ abstract class Abstract_Builder implements Builder {
 			'rows'       => $this->get_rows(),
 		);
 	}
-
-	/**
-	 * Used to define the rows in the builder sections.
-	 *
-	 * @return array Rows array.
-	 */
-	protected abstract function get_rows();
 
 	/**
 	 * Returns the components settings.
