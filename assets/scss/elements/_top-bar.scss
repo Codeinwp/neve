@@ -1,9 +1,11 @@
 #nv-top-bar-menu {
   @include horizontal-list(0, 'false');
   flex: 1;
+
   .content-menu & > li {
     margin-left: $spacing-xs;
   }
+
   .menu-content & > li {
     margin-right: $spacing-xs;
   }
@@ -12,21 +14,14 @@
 .nv-top-bar-content {
   display: flex;
   flex: 1;
+
   p {
     margin-bottom: 0;
   }
 }
 
-.nv-top-bar {
-  background-color: $muted-white;
-  color: $body-color;
-  a {
-    font-weight: 500;
-    color: $body-color;
-    &:hover {
-      color: $body-color;
-    }
-  }
+.nv-top-bar a {
+  font-weight: 500;
 }
 
 .nv-tb-wrap {
@@ -37,6 +32,7 @@
   flex-direction: row;
   min-height: 40px;
   font-size: .85em;
+
   &.menu-content .nv-top-bar-content,
   &.content-menu #nv-top-bar-menu {
     justify-content: flex-end;

@@ -53,7 +53,8 @@ class Button extends Abstract_Component {
 		$selector = '.builder-item--' . $this->id;
 
 		$wp_customize->add_section(
-			$this->section, array(
+			$this->section,
+			array(
 				'title'    => $this->label,
 				'priority' => 30,
 				'panel'    => $this->panel,
@@ -61,14 +62,16 @@ class Button extends Abstract_Component {
 		);
 
 		$wp_customize->add_setting(
-			$prefix . '_text' . '_setting', array(
+			$prefix . '_text' . '_setting',
+			array(
 				'theme_supports' => 'hfg_support',
 				'default'        => __( 'Button', 'neve' ),
 				'transport'      => 'postMessage',
 			)
 		);
 		$wp_customize->add_setting(
-			$prefix . '_link' . '_setting', array(
+			$prefix . '_link' . '_setting',
+			array(
 				'theme_supports' => 'hfg_support',
 				'default'        => __( '#', 'neve' ),
 				'transport'      => 'postMessage',
@@ -76,7 +79,8 @@ class Button extends Abstract_Component {
 		);
 
 		$wp_customize->add_control(
-			$prefix . '_text' . '_setting', array(
+			$prefix . '_text' . '_setting',
+			array(
 				'label'    => __( 'Text', 'neve' ),
 				'type'     => 'text',
 				'settings' => $prefix . '_text' . '_setting',
@@ -84,7 +88,8 @@ class Button extends Abstract_Component {
 			)
 		);
 		$wp_customize->add_control(
-			$prefix . '_link' . '_setting', array(
+			$prefix . '_link' . '_setting',
+			array(
 				'label'    => __( 'Link', 'neve' ),
 				'type'     => 'text',
 				'settings' => $prefix . '_link' . '_setting',
@@ -92,7 +97,8 @@ class Button extends Abstract_Component {
 			)
 		);
 		$wp_customize->selective_refresh->add_partial(
-			$this->panel, array(
+			$this->panel,
+			array(
 				'selector'        => $selector,
 				'settings'        => array(
 					$prefix . '_link' . '_setting',

@@ -55,7 +55,8 @@ class NavFooter extends Abstract_Component {
 		$selector = '.builder-item--' . $this->id;
 
 		$wp_customize->add_section(
-			$this->section, array(
+			$this->section,
+			array(
 				'title'    => $this->label,
 				'priority' => 30,
 				'panel'    => $this->panel,
@@ -75,24 +76,24 @@ class NavFooter extends Abstract_Component {
 				$wp_customize,
 				$this->id . '_style',
 				[
-					'label'   => __( 'Skin Mode','neve' ),
+					'label'   => __( 'Skin Mode', 'neve' ),
 					'section' => $this->section,
 					'choices' => array(
 						'style-plain'         => array(
 							'url'  => Settings::get_instance()->url . '/assets/images/customizer/menu_style_1.svg',
-							'name' => __( 'Plain','neve' ),
+							'name' => __( 'Plain', 'neve' ),
 						),
 						'style-full-height'   => array(
 							'url'  => Settings::get_instance()->url . '/assets/images/customizer/menu_style_2.svg',
-							'name' => __( 'Full Height','neve' ),
+							'name' => __( 'Full Height', 'neve' ),
 						),
 						'style-border-bottom' => array(
 							'url'  => Settings::get_instance()->url . '/assets/images/customizer/menu_style_3.svg',
-							'name' => __( 'Bottom Border','neve' ),
+							'name' => __( 'Bottom Border', 'neve' ),
 						),
 						'style-border-top'    => array(
 							'url'  => Settings::get_instance()->url . '/assets/images/customizer/menu_style_4.svg',
-							'name' => __( 'Top Border','neve' ),
+							'name' => __( 'Top Border', 'neve' ),
 						),
 					),
 				]
@@ -121,7 +122,8 @@ class NavFooter extends Abstract_Component {
 		);
 
 		$wp_customize->selective_refresh->add_partial(
-			$this->id . '_partial', array(
+			$this->id . '_partial',
+			array(
 				'selector'        => $selector,
 				'settings'        => array(
 					$this->id . '_style',

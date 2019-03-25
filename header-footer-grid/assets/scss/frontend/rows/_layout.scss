@@ -1,0 +1,20 @@
+.hfg-grid {
+  display: flex;
+}
+.header--row .builder-item {
+  line-height: 1;
+}
+.header--row {
+  .header--row-inner, .header--row-inner .container .row {
+    display: flex;
+    align-items: center;
+  }
+
+  &.layout-fullwidth .header--row-inner .container {
+    max-width: 100% !important;
+  }
+  &.layout-contained {
+    max-width: $container_width;
+    margin:0 auto;s
+  }
+}

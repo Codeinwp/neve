@@ -52,7 +52,8 @@ class SearchResponsive extends Abstract_Component {
 		$selector = 'a.item--' . $this->id;
 
 		$wp_customize->add_section(
-			$this->section, array(
+			$this->section,
+			array(
 				'title'    => $this->label,
 				'priority' => 30,
 				'panel'    => $this->panel,
@@ -60,7 +61,8 @@ class SearchResponsive extends Abstract_Component {
 		);
 
 		$wp_customize->add_setting(
-			$this->id . '_placeholder', array(
+			$this->id . '_placeholder',
+			array(
 				'theme_supports' => 'hfg_support',
 				'default'        => __( 'Search for ...', 'neve' ),
 				'transport'      => 'refresh',
@@ -68,7 +70,8 @@ class SearchResponsive extends Abstract_Component {
 		);
 
 		$wp_customize->add_control(
-			$this->id . '_placeholder', array(
+			$this->id . '_placeholder',
+			array(
 				'name'            => $this->section . '_placeholder',
 				'label'           => __( 'Placeholder', 'neve' ),
 				'type'            => 'text',

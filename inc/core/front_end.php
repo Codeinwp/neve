@@ -60,6 +60,7 @@ class Front_End {
 		add_theme_support( 'editor-color-palette', $this->get_gutenberg_color_palette() );
 		add_theme_support( 'fl-theme-builder-headers' );
 		add_theme_support( 'fl-theme-builder-footers' );
+		add_theme_support( 'header-footer-elementor' );
 
 		add_filter( 'themeisle_gutenberg_templates', array( $this, 'add_gutenberg_templates' ) );
 
@@ -107,7 +108,7 @@ class Front_End {
 			'local'       => array(
 				'elementor' => array(
 					'neve-main'          => array(
-						'url'   => 'https://demo.themeisle.com/neve-onboarding/',
+						'url'   => 'https://demo.themeisle.com/neve/',
 						'title' => 'Original',
 					),
 					'neve-vet-center'    => array(
@@ -210,7 +211,7 @@ class Front_End {
 
 		);
 
-		/* $this->add_gutenberg_starter_sites(); */
+		$this->add_gutenberg_starter_sites();
 
 		return apply_filters( 'neve_filter_onboarding_data', $this->onboarding_config );
 	}

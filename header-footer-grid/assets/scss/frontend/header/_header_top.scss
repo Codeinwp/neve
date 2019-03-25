@@ -1,0 +1,16 @@
+.header--row-inner.header-top-inner {
+  &.light-mode {
+    background-color: #f0f0f0;
+    color: #404248;
+    a:not(.button) {
+      color: #404248;
+    }
+  }
+  &.dark-mode {
+    background-color: #24292e;
+    color: #fff;
+    a {
+      color: #fff;
+    }
+  }
+}

@@ -62,7 +62,8 @@ abstract class Abstract_FooterWidget extends Abstract_Component {
 		$wp_customize->get_section( $this->section )->panel = $this->panel;
 
 		$wp_customize->selective_refresh->add_partial(
-			$this->id . '_partial', array(
+			$this->id . '_partial',
+			array(
 				'selector'        => '.builder-item--' . $this->id,
 				'settings'        => array(),
 				'render_callback' => array( $this, 'render' ),

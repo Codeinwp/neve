@@ -37,19 +37,22 @@ require_once 'functions-template.php';
 add_filter( 'neve_should_search_in_menu', '__return_false' );
 
 add_filter(
-	'hfg_active', function () {
+	'hfg_active',
+	function () {
 		return true;
 	}
 );
 
 if ( apply_filters( 'hfg_active', false ) === true ) {
 	add_action(
-		'neve_do_footer', function () {
+		'neve_do_footer',
+		function () {
 			do_action( 'hfg_footer_render' );
 		}
 	);
 	add_action(
-		'neve_do_header', function () {
+		'neve_do_header',
+		function () {
 			do_action( 'hfg_header_render' );
 		}
 	);

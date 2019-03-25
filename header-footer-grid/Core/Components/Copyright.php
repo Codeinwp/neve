@@ -52,7 +52,8 @@ class Copyright extends Abstract_Component {
 		$selector = '.builder-item--' . $this->id;
 
 		$wp_customize->add_section(
-			$this->section, array(
+			$this->section,
+			array(
 				'title'    => $this->label,
 				'priority' => 30,
 				'panel'    => $this->panel,
@@ -85,7 +86,8 @@ class Copyright extends Abstract_Component {
 		);
 
 		$wp_customize->selective_refresh->add_partial(
-			$this->id . '_partial', array(
+			$this->id . '_partial',
+			array(
 				'selector'        => $selector,
 				'settings'        => array(
 					$this->id . '_content',

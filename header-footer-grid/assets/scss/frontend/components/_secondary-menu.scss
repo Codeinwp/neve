@@ -1,0 +1,25 @@
+.nav-menu-secondary {
+  padding: 10px 0;
+  font-size: .9em;
+}
+
+#secondary-menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  li {
+    width: inherit;
+    &:not(:last-child) {
+      padding-right: 10px;
+    }
+
+    &:not(:first-of-type) {
+      padding-left: 10px;
+    }
+
+    a {
+      font-weight: 500;
+    }
+  }
+}

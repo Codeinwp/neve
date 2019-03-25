@@ -23,7 +23,7 @@ if ( $hide_arrow ) {
 $container_classes[] = 'nav-menu-secondary';
 
 ?>
-<div class="nv-top-bar ">
+<div class="nv-top-bar">
 	<div role="navigation" class="menu-content <?php echo esc_attr( join( ' ', $container_classes ) ); ?>"
 		aria-label="<?php echo esc_html( __( 'Secondary Menu', 'neve' ) ); ?>">
 		<?php

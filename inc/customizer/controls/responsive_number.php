@@ -133,7 +133,7 @@ class Responsive_Number extends \WP_Customize_Control {
 
 		<div class="{{mediaQuery}} control-wrap {{active}}">
 			<input
-					class="responsive-number--input"
+					class="responsive-number--input <# if( ! data.units ){ #>no-units<# } #>"
 					type="number"
 			<# if( attr.min ) {	#>
 			min="{{attr.min}}"

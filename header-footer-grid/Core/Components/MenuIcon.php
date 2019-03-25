@@ -53,7 +53,8 @@ class MenuIcon extends Abstract_Component {
 		$selector = 'a.item--' . $this->id;
 
 		$wp_customize->add_section(
-			$this->section, array(
+			$this->section,
+			array(
 				'title'    => $this->label,
 				'priority' => 30,
 				'panel'    => $this->panel,
@@ -61,7 +62,8 @@ class MenuIcon extends Abstract_Component {
 		);
 
 		$wp_customize->add_setting(
-			$prefix . '_text' . '_setting', array(
+			$prefix . '_text' . '_setting',
+			array(
 				'theme_supports' => 'hfg_support',
 				'default'        => __( 'Menu', 'neve' ),
 				'transport'      => 'refresh',
@@ -69,7 +71,8 @@ class MenuIcon extends Abstract_Component {
 		);
 
 		$wp_customize->add_control(
-			$prefix . '_text', array(
+			$prefix . '_text',
+			array(
 				'name'            => $prefix . '_text',
 				'label'           => __( 'Text', 'neve' ),
 				'type'            => 'text',

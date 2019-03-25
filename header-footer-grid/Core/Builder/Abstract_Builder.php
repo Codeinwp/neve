@@ -233,7 +233,8 @@ abstract class Abstract_Builder implements Builder {
 			$builder_title = ( isset( $this->title ) && ! empty( $this->title ) ) ? $this->title : __( 'HFG Panel', 'neve' );
 
 			$wp_customize->add_panel(
-				$this->panel, array(
+				$this->panel,
+				array(
 					'priority'       => 25,
 					'capability'     => 'edit_theme_options',
 					'theme_supports' => 'hfg_support',
@@ -243,7 +244,8 @@ abstract class Abstract_Builder implements Builder {
 			);
 
 			$wp_customize->add_section(
-				$this->section, array(
+				$this->section,
+				array(
 					'title'    => __( 'Header', 'neve' ),
 					'priority' => 299,
 					'panel'    => $this->panel,
@@ -251,14 +253,16 @@ abstract class Abstract_Builder implements Builder {
 			);
 
 			$wp_customize->add_setting(
-				$this->control_id, array(
+				$this->control_id,
+				array(
 					'default'   => '',
 					'transport' => 'postMessage',
 				)
 			);
 
 			$wp_customize->selective_refresh->add_partial(
-				$this->control_id . '_partial', array(
+				$this->control_id . '_partial',
+				array(
 					'selector'        => '.' . $this->panel,
 					'settings'        => array( $this->control_id ),
 					'render_callback' => array( $this, 'render' ),
@@ -266,7 +270,8 @@ abstract class Abstract_Builder implements Builder {
 			);
 
 			$wp_customize->add_control(
-				$this->control_id, array(
+				$this->control_id,
+				array(
 					'section'        => $this->control_id . '_section',
 					'settings'       => $this->control_id,
 					'theme_supports' => 'hfg_support',
@@ -326,7 +331,8 @@ abstract class Abstract_Builder implements Builder {
 		foreach ( $rows as $row_id => $row_label ) {
 			$partial_settings = array();
 			$wp_customize->add_section(
-				$this->control_id . '_' . $row_id, array(
+				$this->control_id . '_' . $row_id,
+				array(
 					'title'    => $row_label,
 					'priority' => 100,
 					'panel'    => $this->panel,
@@ -602,7 +608,8 @@ abstract class Abstract_Builder implements Builder {
 		$collection = new \CachingIterator(
 			new \ArrayIterator(
 				$data
-			), \CachingIterator::TOSTRING_USE_CURRENT
+			),
+			\CachingIterator::TOSTRING_USE_CURRENT
 		);
 
 		foreach ( $collection as $component_location ) {

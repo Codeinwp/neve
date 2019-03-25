@@ -171,10 +171,10 @@ body {
       position: absolute;
       bottom: 0;
       left: 46%;
-      @include mq(max-md) {
-        width: 16%;
-        left: 42%;
-      }
+      //@include mq(max-md) {
+      //  width: 16%;
+      //  left: 42%;
+      //}
     }
     &:last-child {
       &:before {
@@ -261,10 +261,10 @@ body {
     left: 0;
     transform: translate3d( - 100% ,0,0);
     transition: transform .5s cubic-bezier(.79,.14,.15,.86);
-    @include mq( max-xs ) {
-      width: auto;
-      right: 45px;
-    }
+    //@include mq( max-xs ) {
+    //  width: auto;
+    //  right: 45px;
+    //}
   }
 }
 
@@ -276,10 +276,10 @@ body {
     transform: translate3d( 200%,0,0);
     width: $menu_sidebar_width;
     right: 0;
-    @include mq( max-xs ) {
-      width: auto;
-      left: 45px;
-    }
+    //@include mq( max-xs ) {
+    //  width: auto;
+    //  left: 45px;
+    //}
   }
 }
 
