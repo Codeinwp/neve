@@ -30,7 +30,7 @@ class SearchResponsive extends Abstract_Component {
 	 * @param string $panel The panel name.
 	 */
 	public function __construct( $panel ) {
-		$this->set_property( 'label', __( 'Search Responsive', 'neve' ) );
+		$this->set_property( 'label', __( 'Search Icon', 'neve' ) );
 		$this->set_property( 'id', 'header_search_responsive' );
 		$this->set_property( 'width', 1 );
 		$this->set_property( 'section', 'header_search_responsive' );

@@ -79,8 +79,8 @@
 			<# } #>
 			<# } #>
 
-	<h4 class="hfg--widgets-info"><?php _e( 'Available Widgets', 'neve' ); ?>
+	<h4 class="hfg--widgets-info"><?php _e( 'Available components', 'neve' ); ?>
 		<i class="dashicons dashicons-info"></i>
-		<span class="tooltip"><?php _e( 'To activate a widget drag it to a row above.', 'neve' ); ?></span>
+		<span class="tooltip"><?php _e( 'To activate a component, drag it to one of the upper rows.', 'neve' ); ?></span>
 	</h4>
 </script>

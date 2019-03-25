@@ -2336,3 +2336,17 @@ body.menu_sidebar_dropdown:before {
   display: flex;
   height: 100%;
   margin: 4px 0; }
+
+.nv-search-icon-component a {
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%; }
+
+.nv-search-icon-component {
+  flex-direction: row;
+  align-items: center;
+  padding-bottom: 0; }
+
+/*# sourceMappingURL=style.css.map */
