@@ -53,7 +53,7 @@ class Typography extends Base_Inline {
 		);
 		$this->add_responsive_style( $settings, 'body' );
 
-		$body_font = get_theme_mod( 'neve_body_font_family', false );
+		$body_font      = get_theme_mod( 'neve_body_font_family', false );
 		$font_weight    = get_theme_mod( 'neve_body_font_weight' );
 		$text_transform = get_theme_mod( 'neve_body_text_transform' );
 		$spacing        = get_theme_mod( 'neve_body_letter_spacing' );

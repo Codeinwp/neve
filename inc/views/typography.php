@@ -57,7 +57,7 @@ class Typography extends Base_View {
 	 * Add headings font weights.
 	 *
 	 * @param array  $weights_array font weight array.
-	 * @param string $context       the context ['headings', 'body']
+	 * @param string $context       the context ['headings', 'body'].
 	 *
 	 * @return array
 	 */
@@ -82,7 +82,7 @@ class Typography extends Base_View {
 		}
 
 		$weights_array[] = $font_weight;
-		var_dump($weights_array);
+		var_dump( $weights_array );
 		return $weights_array;
 	}
 

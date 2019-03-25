@@ -148,6 +148,10 @@ abstract class Base_Inline {
 		}
 		$suffix = isset( $style['suffix'] ) ? $style['suffix'] : '';
 
+		if ( in_array( $style['css_prop'], array( 'font-family', 'content' ) ) ) {
+			return esc_attr( $style['css_prop'] ) . ':' . '"' . esc_attr( $style['value'] ) . '"' . esc_attr( $suffix ) . ';';
+		}
+
 		return esc_attr( $style['css_prop'] ) . ':' . esc_attr( $style['value'] ) . esc_attr( $suffix ) . ';';
 	}
 
