@@ -54,11 +54,28 @@ class Typography extends Base_Inline {
 		$this->add_responsive_style( $settings, 'body' );
 
 		$body_font = get_theme_mod( 'neve_body_font_family', false );
+		$font_weight    = get_theme_mod( 'neve_body_font_weight' );
+		$text_transform = get_theme_mod( 'neve_body_text_transform' );
+		$spacing        = get_theme_mod( 'neve_body_letter_spacing' );
+
 		$this->add_style(
 			array(
 				array(
 					'css_prop' => 'font-family',
 					'value'    => esc_html( $body_font ),
+				),
+				array(
+					'css_prop' => 'font-weight',
+					'value'    => $font_weight,
+				),
+				array(
+					'css_prop' => 'text-transform',
+					'value'    => $text_transform,
+				),
+				array(
+					'css_prop' => 'letter-spacing',
+					'value'    => $spacing,
+					'suffix'   => 'px',
 				),
 			),
 			apply_filters( 'neve_body_font_family_selectors', 'body' )

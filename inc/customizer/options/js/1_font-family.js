@@ -40,7 +40,7 @@
           if (data.value === 'Default') {
             $(self.fontControls[data.controlId].selectors).css('font-family', '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif');
           }
-          $(self.fontControls[data.controlId].selectors).css('font-family', data.value);
+          $(self.fontControls[data.controlId].selectors).css('font-family', '\"' + data.value + '\"');
           return false;
         });
       });
