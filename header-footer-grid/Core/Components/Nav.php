@@ -104,6 +104,7 @@ class Nav extends Abstract_Component {
 			$this->id . '_color',
 			array(
 				'theme_supports' => 'hfg_support',
+				'transport'      => 'postMessage',
 				'default'        => '#404248'
 			)
 		);
@@ -122,6 +123,7 @@ class Nav extends Abstract_Component {
 			$this->id . '_hover_color',
 			array(
 				'theme_supports' => 'hfg_support',
+				'transport'      => 'postMessage',
 				'default'        => '#0366d6'
 			)
 		);
@@ -164,6 +166,8 @@ class Nav extends Abstract_Component {
 				'settings'        => array(
 					$this->id . '_style',
 					$this->id . '_shortcut',
+					$this->id . '_color',
+					$this->id . '_hover_color',
 				),
 				'render_callback' => $fn,
 			)
@@ -191,19 +195,22 @@ class Nav extends Abstract_Component {
 	 * @return array
 	 */
 	public function add_style( array $css_array = array() ) {
-		$styles = array();
-
-		$color  = get_theme_mod( $this->id . '_color' );
+		$color = get_theme_mod( $this->id . '_color' );
 		if ( ! empty( $color ) ) {
-			$styles['#nv-primary-navigation a, #nv-primary-navigation li a .caret'] = array( 'color' => sanitize_hex_color( $color ) );
+			$css_array['#nv-primary-navigation li a, #nv-primary-navigation li a .caret'] = array( 'color' => sanitize_hex_color( $color ) );
 		}
 
 		$hover_color = get_theme_mod( $this->id . '_hover_color' );
 		if ( ! empty( $hover_color ) ) {
-			$styles['#nv-primary-navigation li:hover > a, #nv-primary-navigation li:hover > a .caret'] = array( 'color' => sanitize_hex_color( $hover_color ) );
+			$css_array[
+			'.nav-menu-primary:not(.style-full-height) #nv-primary-navigation li:hover > a,
+			.nav-menu-primary:not(.style-full-height) #nv-primary-navigation li:hover > a .caret'
+			] = array( 'color' => sanitize_hex_color( $hover_color ) );
+
+			$css_array['#nv-primary-navigation a:after'] = array( 'background-color' => sanitize_hex_color( $hover_color ) );
 		}
 
-		return $styles;
+		return $css_array;
 	}
 
 

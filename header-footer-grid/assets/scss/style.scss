@@ -2,13 +2,13 @@
 @import "frontend/vars";
 @import "frontend/rows/layout";
 @import "frontend/header/header_top";
-//@import "frontend/header/mobile_sidebar";
+@import "frontend/header/mobile_sidebar";
 
 
 // COMPONENTS
 @import "frontend/components/logo";
 @import "frontend/components/nav-icon";
-@import "frontend/components/secondary-menu";
+@import "frontend/components/nav-menus";
 @import "frontend/components/search-field";
 
 

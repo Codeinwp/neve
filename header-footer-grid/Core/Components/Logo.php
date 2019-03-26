@@ -183,11 +183,37 @@ class Logo extends Abstract_Component {
 		return parent::customize_register( $wp_customize );
 	}
 
-
 	/**
 	 * Render logo section.
 	 */
 	public function render_component() {
 		Main::get_instance()->load( 'component-logo' );
 	}
+
+	public function add_style( array $css_array = array() ) {
+		$logo_max_width = json_decode(get_theme_mod( $this->id . '_max_width', '{ "mobile": "120", "tablet": "120", "desktop": "120" }' ), true);
+		$selector      = '.site-logo img';
+		if ( isset( $logo_max_width['mobile'] ) ) {
+			$logo_max_width['mobile']                              = ( $logo_max_width['mobile'] > 0 ) ? $logo_max_width['mobile'] . 'px' : 'auto';
+			$css_array[' @media (max-width: 576px)'][ $selector ] = array(
+				'max-width' => $logo_max_width['mobile'],
+			);
+		}
+		if ( isset( $logo_max_width['tablet'] ) ) {
+			$logo_max_width['tablet']                              = ( $logo_max_width['tablet'] > 0 ) ? $logo_max_width['tablet'] . 'px' : 'auto';
+			$css_array[' @media (min-width: 576px)'][ $selector ] = array(
+				'max-width' => $logo_max_width['tablet'],
+			);
+		}
+		if ( isset( $logo_max_width['desktop'] ) ) {
+			$logo_max_width['desktop']                             = ( $logo_max_width['desktop'] > 0 ) ? $logo_max_width['desktop'] . 'px' : 'auto';
+			$css_array[' @media (min-width: 796px)'][ $selector ] = array(
+				'max-width' => $logo_max_width['desktop'],
+			);
+		}
+
+		return $css_array;
+	}
+
+
 }

@@ -23,7 +23,6 @@
     font-weight: 500;
     width: 100%;
     display: block;
-    padding: $spacing-xs 0;
     position: relative;
   }
 
@@ -131,7 +130,7 @@
   }
 
   .primary-menu-ul {
-    @include horizontal-list($spacing-xs, 'true');
+    @include horizontal-list($spacing-xs);
     overflow-y: inherit;
     max-height: inherit;
     margin-left: auto;
@@ -145,7 +144,6 @@
       width: inherit;
 
       > a {
-        padding: $spacing-xs 0;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -198,10 +196,10 @@
 
         a {
           display: flex;
+          justify-content: center;
           align-items: center;
           white-space: nowrap;
           width: 100%;
-          margin-right: $spacing-xs;
           padding: 7px 14px;
         }
       }
@@ -227,9 +225,9 @@
 
   }
   .caret-wrap {
-    position: static;
+    position: relative;
     border: none;
-    top: inherit;
+    top: 2px;
     width: 10px;
 
     &.dropdown-open .caret {
