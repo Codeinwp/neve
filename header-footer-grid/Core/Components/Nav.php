@@ -100,6 +100,46 @@ class Nav extends Abstract_Component {
 			)
 		);
 
+
+		$wp_customize->add_setting(
+			$this->id . '_color',
+			array(
+				'theme_supports' => 'hfg_support',
+				'transport'      => 'postMessage',
+				'default'        => '#404248'
+			)
+		);
+		$wp_customize->add_control(
+			new \WP_Customize_Color_Control(
+				$wp_customize,
+				$this->id . '_color',
+				array(
+					'label' => __( 'Primary Menu Items Color', 'neve' ),
+					'section'     => $this->section,
+				)
+			)
+		);
+
+
+		$wp_customize->add_setting(
+			$this->id . '_hover_color',
+			array(
+				'theme_supports' => 'hfg_support',
+				'transport'      => 'postMessage',
+				'default'        => '#0366d6'
+			)
+		);
+		$wp_customize->add_control(
+			new \WP_Customize_Color_Control(
+				$wp_customize,
+				$this->id . '_hover_color',
+				array(
+					'label' => __( 'Primary Menu Items Hover Color', 'neve' ),
+					'section'     => $this->section,
+				)
+			)
+		);
+
 		$wp_customize->add_setting(
 			$this->id . '_shortcut',
 			array(

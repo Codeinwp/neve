@@ -30,7 +30,7 @@ class Search extends Abstract_Component {
 	 * @param string $panel The panel name.
 	 */
 	public function __construct( $panel ) {
-		$this->set_property( 'label', __( 'Search Field', 'neve' ) );
+		$this->set_property( 'label', __( 'Search Form', 'neve' ) );
 		$this->set_property( 'id', 'header_search' );
 		$this->set_property( 'width', 1 );
 		$this->set_property( 'section', 'header_search' );

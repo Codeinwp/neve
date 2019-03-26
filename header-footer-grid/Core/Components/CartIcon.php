@@ -19,7 +19,7 @@ use WP_Customize_Manager;
  *
  * @package HFG\Core\Components
  */
-class SearchResponsive extends Abstract_Component {
+class CartIcon extends Abstract_Component {
 
 	/**
 	 * Button constructor.
@@ -30,10 +30,10 @@ class SearchResponsive extends Abstract_Component {
 	 * @param string $panel The panel name.
 	 */
 	public function __construct( $panel ) {
-		$this->set_property( 'label', __( 'Search Icon', 'neve' ) );
-		$this->set_property( 'id', 'header_search_responsive' );
+		$this->set_property( 'label', __( 'Cart Icon', 'neve' ) );
+		$this->set_property( 'id', 'header_cart_icon' );
 		$this->set_property( 'width', 1 );
-		$this->set_property( 'section', 'header_search_responsive' );
+		$this->set_property( 'section', 'header_cart_icon' );
 		$this->set_property( 'panel', $panel );
 	}
 
@@ -52,8 +52,7 @@ class SearchResponsive extends Abstract_Component {
 		$selector = 'a.item--' . $this->id;
 
 		$wp_customize->add_section(
-			$this->section,
-			array(
+			$this->section, array(
 				'title'    => $this->label,
 				'priority' => 30,
 				'panel'    => $this->panel,
@@ -61,8 +60,7 @@ class SearchResponsive extends Abstract_Component {
 		);
 
 		$wp_customize->add_setting(
-			$this->id . '_placeholder',
-			array(
+			$this->id . '_placeholder', array(
 				'theme_supports' => 'hfg_support',
 				'default'        => __( 'Search for ...', 'neve' ),
 				'transport'      => 'refresh',
@@ -70,8 +68,7 @@ class SearchResponsive extends Abstract_Component {
 		);
 
 		$wp_customize->add_control(
-			$this->id . '_placeholder',
-			array(
+			$this->id . '_placeholder', array(
 				'name'            => $this->section . '_placeholder',
 				'label'           => __( 'Placeholder', 'neve' ),
 				'type'            => 'text',
@@ -92,6 +89,6 @@ class SearchResponsive extends Abstract_Component {
 	 * @access  public
 	 */
 	public function render_component() {
-		Main::get_instance()->load( 'component-search-responsive' );
+		Main::get_instance()->load( 'component-cart-icon' );
 	}
 }

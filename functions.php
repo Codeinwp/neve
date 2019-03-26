@@ -77,5 +77,4 @@ require_once 'globals/utilities.php';
 require_once 'globals/hooks.php';
 require_once 'globals/sanitize-functions.php';
 
-require_once get_template_directory() . '/header-footer-grid/test.php';
-add_action( 'init', 'HFG\Main::get_instance' );
+require_once get_template_directory() . '/header-footer-grid/loader.php';

@@ -90,6 +90,21 @@ $builder_active_color: #0073aa;
     }
 }
 
+
+
+
 @import "control";
 @import "header_footer_builder";
 @import "builder_v1";
+
+ul[id^="sub-accordion-panel-hfg"] > li.hfg-section-active{
+    order:0;
+}
+ul[id^="sub-accordion-panel-hfg"] > li.hfg-section-inactive{
+    order:1;
+    opacity: 0.5;
+}
+#customize-theme-controls ul.customize-pane-child.accordion-sub-container[id^="sub-accordion-panel-hfg"]{
+    flex-direction: column;
+    display: flex;
+}
