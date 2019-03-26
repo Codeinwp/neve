@@ -98,6 +98,13 @@ abstract class Abstract_Component implements Component {
 	 */
 	protected $panel;
 
+	/**
+	 * A list of partials passed from parent.
+	 *
+	 * @since   1.0.0
+	 * @access  protected
+	 * @var array[WP_Customize_Partial]
+	 */
 	protected $row_partials;
 
 	/**
@@ -121,12 +128,12 @@ abstract class Abstract_Component implements Component {
 	 *
 	 * @since   1.0.0
 	 * @access  public
-	 * @param array[WP_Customize_Partial] $partials_list
+	 * @param array[WP_Customize_Partial] $partials_list A list of partials.
 	 *
 	 * @return mixed
 	 */
-	public function set_row_partials( array $partials = array() ) {
-		$this->row_partials = $partials;
+	public function set_row_partials( array $partials_list = array() ) {
+		$this->row_partials = $partials_list;
 	}
 
 	/**

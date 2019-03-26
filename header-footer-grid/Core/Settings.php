@@ -141,27 +141,27 @@ class Settings {
 		if ( (bool) get_theme_mod( 'neve_top_bar_enable', false ) ) {
 			$alignament = get_theme_mod( 'neve_top_bar_layout', 'content-menu' );
 			if ( $alignament === 'content-menu' ) {
-				$defaults['desktop']['top']['custom_html'] = [
+				$defaults['desktop']['top']['custom_html']    = [
 					'id'    => 'custom_html',
 					'width' => 6,
-					'x'     => 0
+					'x'     => 0,
 				];
 				$defaults['desktop']['top']['secondary-menu'] = [
 					'id'    => 'secondary-menu',
 					'width' => 6,
-					'x'     => 6
+					'x'     => 6,
 				];
 			}
 			if ( $alignament === 'menu-content' ) {
 				$defaults['desktop']['top']['secondary-menu'] = [
 					'id'    => 'secondary-menu',
 					'width' => 6,
-					'x'     => 0
+					'x'     => 0,
 				];
-				$defaults['desktop']['top']['custom_html'] = [
+				$defaults['desktop']['top']['custom_html']    = [
 					'id'    => 'custom_html',
 					'width' => 6,
-					'x'     => 6
+					'x'     => 6,
 				];
 			}
 		}
@@ -225,40 +225,40 @@ class Settings {
 		}
 
 		if ( $layout === 'left' ) {
-			$defaults['desktop']['main']['logo'] = [
-				'id'    => 'logo',
-				'width' => 4,
-				'x'     => 0,
+			$defaults['desktop']['main']['logo']         = [
+				'id'       => 'logo',
+				'width'    => 4,
+				'x'        => 0,
 				'settings' => [
-					'align' => 'center'
-				]
+					'align' => 'center',
+				],
 			];
 			$defaults['desktop']['main']['primary-menu'] = [
 				'id'    => 'primary-menu',
 				'width' => $menu_width,
-				'x'     => 4
+				'x'     => 4,
 			];
 			foreach ( $extra as $extra_item ) {
-				$extra_item['x']                 = 4 + $menu_width + 1;
-				$defaults['desktop']['bottom'][$extra_item['id']] = $extra_item;
+				$extra_item['x']                                    = 4 + $menu_width + 1;
+				$defaults['desktop']['bottom'][ $extra_item['id'] ] = $extra_item;
 			}
 		}
 
 		if ( $layout === 'center' ) {
-			$defaults['desktop']['main']['logo']   = [
+			$defaults['desktop']['main']['logo']           = [
 				'id'    => 'logo',
 				'width' => 6,
-				'x'     => 3
+				'x'     => 3,
 			];
 			$defaults['desktop']['bottom']['primary-menu'] = [
 				'id'    => 'primary-menu',
 				'width' => $menu_width,
-				'x'     => 3
+				'x'     => 3,
 			];
 
 			foreach ( $extra as $extra_item ) {
-				$extra_item['x']                 = 3 + $menu_width + 1;
-				$defaults['desktop']['bottom'][$extra_item['id']] = $extra_item;
+				$extra_item['x']                                    = 3 + $menu_width + 1;
+				$defaults['desktop']['bottom'][ $extra_item['id'] ] = $extra_item;
 			}
 		}
 
@@ -266,16 +266,16 @@ class Settings {
 			$defaults['desktop']['main']['primary-menu'] = [
 				'id'    => 'primary-menu',
 				'width' => $menu_width,
-				'x'     => 0
+				'x'     => 0,
 			];
 			foreach ( $extra as $extra_item ) {
-				$extra_item['x']               = $menu_width + 1;
-				$defaults['desktop']['main'][$extra_item['id']] = $extra_item;
+				$extra_item['x']                                  = $menu_width + 1;
+				$defaults['desktop']['main'][ $extra_item['id'] ] = $extra_item;
 			}
 			$defaults['desktop']['main']['logo'] = [
 				'id'    => 'logo',
 				'width' => 4,
-				'x'     => 8
+				'x'     => 8,
 			];
 		}
 
@@ -312,7 +312,7 @@ class Settings {
 	 * @since   1.0.0
 	 * @access  public
 	 *
-	 * @param  mixed     $value The media reference.
+	 * @param  mixed      $value The media reference.
 	 * @param mixed|null $size Optional. The size desired.
 	 *
 	 * @return array|bool|false|string

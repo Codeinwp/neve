@@ -285,7 +285,7 @@ abstract class Abstract_Builder implements Builder {
 		 */
 		foreach ( $this->builder_components as $component ) {
 			$component->set_row_partials( $row_partials );
-			$component->customize_register( $wp_customize);
+			$component->customize_register( $wp_customize );
 		}
 
 		return $wp_customize;
@@ -322,7 +322,7 @@ abstract class Abstract_Builder implements Builder {
 	 * @return array[WP_Customize_Partial] A list of row partials.
 	 */
 	protected function add_rows_controls( $wp_customize ) {
-		$rows = $this->get_rows();
+		$rows         = $this->get_rows();
 		$row_partials = [];
 		if ( empty( $rows ) ) {
 			return $row_partials;
@@ -631,12 +631,14 @@ abstract class Abstract_Builder implements Builder {
 		$max_columns = 12;
 		$last_item   = null;
 
-		usort($data, function ( $item1, $item2 ) {
-			if ( $item1['x'] == $item2['x'])  {
-				return 0;
+		usort(
+			$data, function ( $item1, $item2 ) {
+				if ( $item1['x'] == $item2['x'] ) {
+					return 0;
+				}
+				return $item1['x'] < $item2['x'] ? -1 : 1;
 			}
-			return $item1['x'] < $item2['x'] ? -1 : 1;
-		});
+		);
 
 		$collection = new \CachingIterator(
 			new \ArrayIterator(
@@ -650,9 +652,9 @@ abstract class Abstract_Builder implements Builder {
 			 *
 			 * @var Abstract_Component $component
 			 */
-			$component = $this->builder_components[ $component_location['id'] ];
-			$x         = intval( $component_location['x'] );
-			$width     = intval( $component_location['width'] );
+			$component         = $this->builder_components[ $component_location['id'] ];
+			$x                 = intval( $component_location['x'] );
+			$width             = intval( $component_location['width'] );
 			$alignment_default = 'left';
 			if ( isset( $component_location['settings']['align'] ) && in_array( $component_location['settings']['align'], array( 'left', 'center', 'right' ) ) ) {
 				$alignment_default = $component_location['settings']['align'];
@@ -663,7 +665,7 @@ abstract class Abstract_Builder implements Builder {
 				$width += $max_columns - ( $x + $width );
 			}
 
-			$classes = [ 'builder-item' ];
+			$classes   = [ 'builder-item' ];
 			$classes[] = 'col-' . $width . ' col-md-' . $width . ' col-sm-' . $width;
 			$classes[] = 'hfg-item-' . $align;
 			if ( $last_item === null ) {

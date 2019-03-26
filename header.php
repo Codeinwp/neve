@@ -31,7 +31,7 @@
 		<?php
 		neve_before_header_trigger();
 		if ( apply_filters( 'neve_filter_toggle_content_parts', true, 'header' ) === true ) {
-			//do_action( 'neve_do_top_bar' );
+			// do_action( 'neve_do_top_bar' );
 			do_action( 'neve_do_header' );
 		}
 		neve_after_header_trigger();

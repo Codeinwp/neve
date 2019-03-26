@@ -44,7 +44,7 @@ interface Component {
 	 *
 	 * @since   1.0.0
 	 * @access  public
-	 * @param array[WP_Customize_Partial] $partials_list
+	 * @param array[WP_Customize_Partial] $partials_list A list of partials.
 	 *
 	 * @return mixed
 	 */
