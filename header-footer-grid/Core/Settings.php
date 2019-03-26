@@ -228,7 +228,10 @@ class Settings {
 			$defaults['desktop']['main']['logo'] = [
 				'id'    => 'logo',
 				'width' => 4,
-				'x'     => 0
+				'x'     => 0,
+				'settings' => [
+					'align' => 'center'
+				]
 			];
 			$defaults['desktop']['main']['primary-menu'] = [
 				'id'    => 'primary-menu',

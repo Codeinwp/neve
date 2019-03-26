@@ -228,6 +228,7 @@ abstract class Abstract_Builder implements Builder {
 			}
 		}
 
+		$row_partials = array();
 		if ( empty( $wp_customize->get_panel( $this->panel ) ) ) {
 			$this->set_property( 'section', $this->control_id . '_section' );
 			$builder_title = ( isset( $this->title ) && ! empty( $this->title ) ) ? $this->title : __( 'HFG Panel', 'neve' );
@@ -274,7 +275,7 @@ abstract class Abstract_Builder implements Builder {
 				)
 			);
 
-			$this->add_rows_controls( $wp_customize );
+			$row_partials = $this->add_rows_controls( $wp_customize );
 		}
 
 		/**
@@ -283,7 +284,8 @@ abstract class Abstract_Builder implements Builder {
 		 * @var Component $component
 		 */
 		foreach ( $this->builder_components as $component ) {
-			$component->customize_register( $wp_customize );
+			$component->set_row_partials( $row_partials );
+			$component->customize_register( $wp_customize);
 		}
 
 		return $wp_customize;
@@ -316,13 +318,15 @@ abstract class Abstract_Builder implements Builder {
 	 * @access  protected
 	 *
 	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
+	 *
+	 * @return array[WP_Customize_Partial] A list of row partials.
 	 */
 	protected function add_rows_controls( $wp_customize ) {
 		$rows = $this->get_rows();
+		$row_partials = [];
 		if ( empty( $rows ) ) {
-			return;
+			return $row_partials;
 		}
-
 		foreach ( $rows as $row_id => $row_label ) {
 			$partial_settings = array();
 			$wp_customize->add_section(
@@ -437,7 +441,7 @@ abstract class Abstract_Builder implements Builder {
 				)
 			);
 
-			$wp_customize->selective_refresh->add_partial(
+			$partial = $wp_customize->selective_refresh->add_partial(
 				$this->control_id . '_' . $row_id . '_partial',
 				array(
 					'selector'        => '.' . $this->panel,
@@ -445,7 +449,10 @@ abstract class Abstract_Builder implements Builder {
 					'render_callback' => array( $this, 'render' ),
 				)
 			);
+			array_push( $row_partials, $partial );
 		}
+
+		return $row_partials;
 	}
 
 	/**
@@ -646,6 +653,11 @@ abstract class Abstract_Builder implements Builder {
 			$component = $this->builder_components[ $component_location['id'] ];
 			$x         = intval( $component_location['x'] );
 			$width     = intval( $component_location['width'] );
+			$alignment_default = 'left';
+			if ( isset( $component_location['settings']['align'] ) && in_array( $component_location['settings']['align'], array( 'left', 'center', 'right' ) ) ) {
+				$alignment_default = $component_location['settings']['align'];
+			}
+			$align = get_theme_mod( $component_location['id'] . '_align', $alignment_default );
 
 			if ( ! $collection->hasNext() && ( $x + $width < $max_columns ) ) {
 				$width += $max_columns - ( $x + $width );
@@ -653,6 +665,7 @@ abstract class Abstract_Builder implements Builder {
 
 			$classes = [ 'builder-item' ];
 			$classes[] = 'col-' . $width . ' col-md-' . $width . ' col-sm-' . $width;
+			$classes[] = 'hfg-item-' . $align;
 			if ( $last_item === null ) {
 				$classes[] = 'hfg-item-first';
 			}
