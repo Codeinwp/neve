@@ -26,6 +26,7 @@ class CustomHtml extends Abstract_Component {
 	 *
 	 * @since   1.0.0
 	 * @access  public
+	 *
 	 * @param string $panel The panel ID.
 	 */
 	public function __construct( $panel ) {
@@ -41,6 +42,7 @@ class CustomHtml extends Abstract_Component {
 	 *
 	 * @since   1.0.0
 	 * @access  public
+	 *
 	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
 	 *
 	 * @return WP_Customize_Manager
@@ -61,7 +63,7 @@ class CustomHtml extends Abstract_Component {
 		$wp_customize->add_setting(
 			$this->id . '_content',
 			array(
-				'default'        => '',
+				'default'        => get_theme_mod( 'neve_top_bar_content', '' ),
 				'theme_supports' => 'hfg_support',
 				'transport'      => 'postMessage',
 			)

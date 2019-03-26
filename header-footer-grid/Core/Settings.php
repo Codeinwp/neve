@@ -69,6 +69,7 @@ class Settings {
 			self::$_instance->url  = get_template_directory_uri() . '/header-footer-grid';
 			self::$_instance->set();
 		}
+
 		return self::$_instance;
 	}
 
@@ -123,37 +124,162 @@ class Settings {
 	 * @return array
 	 */
 	public function get_header_defaults_neve() {
-		return json_encode(
-			[
-				'desktop' => [
-					'top'    => [],
-					'main'   => [
-						[
-							'id'    => 'logo',
-							'width' => 4,
-							'x'     => 0,
-						],
-						[
-							'id'    => 'primary-menu',
-							'width' => 4,
-							'x'     => 8,
-						],
-					],
-					'bottom' => [],
+		$defaults = [
+			'desktop' => [
+				'top'    => [],
+				'main'   => [],
+				'bottom' => [],
+			],
+			'mobile'  => [
+				'top'     => [],
+				'main'    => [],
+				'bottom'  => [],
+				'sidebar' => [],
+			],
+		];
+
+		if ( (bool) get_theme_mod( 'neve_top_bar_enable', false ) ) {
+			$alignament = get_theme_mod( 'neve_top_bar_layout', 'content-menu' );
+			if ( $alignament === 'content-menu' ) {
+				$defaults['desktop']['top']['custom_html']    = [
+					'id'    => 'custom_html',
+					'width' => 6,
+					'x'     => 0,
+				];
+				$defaults['desktop']['top']['secondary-menu'] = [
+					'id'    => 'secondary-menu',
+					'width' => 6,
+					'x'     => 6,
+				];
+			}
+			if ( $alignament === 'menu-content' ) {
+				$defaults['desktop']['top']['secondary-menu'] = [
+					'id'    => 'secondary-menu',
+					'width' => 6,
+					'x'     => 0,
+				];
+				$defaults['desktop']['top']['custom_html']    = [
+					'id'    => 'custom_html',
+					'width' => 6,
+					'x'     => 6,
+				];
+			}
+		}
+
+		$layout            = get_theme_mod( 'neve_navigation_layout', 'left' );
+		$last_item_default = 'search';
+		if ( class_exists( 'WooCommerce' ) ) {
+			$last_item_default = 'search-cart';
+		}
+
+		$last_item = get_theme_mod( 'neve_last_menu_item', $last_item_default );
+		$extra     = [];
+		if ( $last_item === 'none' ) {
+			$menu_width = 8;
+		}
+
+		if ( $last_item === 'search' ) {
+			$menu_width = 7;
+			$extra[]    = [
+				'id'    => 'header_search_responsive',
+				'width' => 1,
+				'x'     => 0,
+			];
+		}
+
+		if ( $last_item === 'cart' ) {
+			$menu_width = 7;
+			$extra[]    = [
+				'id'    => 'header_cart_icon',
+				'width' => 1,
+				'x'     => 0,
+			];
+		}
+
+		if ( $last_item === 'search-cart' ) {
+			$menu_width = 6;
+			$extra[]    = [
+				'id'    => 'header_search_responsive',
+				'width' => 1,
+				'x'     => 0,
+			];
+			$extra[]    = [
+				'id'    => 'header_cart_icon',
+				'width' => 1,
+				'x'     => 0,
+			];
+		}
+
+		if ( $last_item === 'cart-search' ) {
+			$menu_width = 6;
+			$extra[]    = [
+				'id'    => 'header_cart_icon',
+				'width' => 1,
+				'x'     => 0,
+			];
+			$extra[]    = [
+				'id'    => 'header_search_responsive',
+				'width' => 1,
+				'x'     => 0,
+			];
+		}
+
+		if ( $layout === 'left' ) {
+			$defaults['desktop']['main']['logo']         = [
+				'id'       => 'logo',
+				'width'    => 4,
+				'x'        => 0,
+				'settings' => [
+					'align' => 'center',
 				],
-				'mobile'  => [
-					'top'    => [],
-					'main'   => [
-						[
-							'id'    => 'logo',
-							'width' => 4,
-							'x'     => 0,
-						],
-					],
-					'bottom' => [],
-				],
-			]
-		);
+			];
+			$defaults['desktop']['main']['primary-menu'] = [
+				'id'    => 'primary-menu',
+				'width' => $menu_width,
+				'x'     => 4,
+			];
+			foreach ( $extra as $extra_item ) {
+				$extra_item['x']                                    = 4 + $menu_width + 1;
+				$defaults['desktop']['bottom'][ $extra_item['id'] ] = $extra_item;
+			}
+		}
+
+		if ( $layout === 'center' ) {
+			$defaults['desktop']['main']['logo']           = [
+				'id'    => 'logo',
+				'width' => 6,
+				'x'     => 3,
+			];
+			$defaults['desktop']['bottom']['primary-menu'] = [
+				'id'    => 'primary-menu',
+				'width' => $menu_width,
+				'x'     => 3,
+			];
+
+			foreach ( $extra as $extra_item ) {
+				$extra_item['x']                                    = 3 + $menu_width + 1;
+				$defaults['desktop']['bottom'][ $extra_item['id'] ] = $extra_item;
+			}
+		}
+
+		if ( $layout === 'right' ) {
+			$defaults['desktop']['main']['primary-menu'] = [
+				'id'    => 'primary-menu',
+				'width' => $menu_width,
+				'x'     => 0,
+			];
+			foreach ( $extra as $extra_item ) {
+				$extra_item['x']                                  = $menu_width + 1;
+				$defaults['desktop']['main'][ $extra_item['id'] ] = $extra_item;
+			}
+			$defaults['desktop']['main']['logo'] = [
+				'id'    => 'logo',
+				'width' => 4,
+				'x'     => 8,
+			];
+		}
+
+		return json_encode( $defaults );
 	}
 
 	/**
@@ -181,10 +307,40 @@ class Settings {
 	}
 
 	/**
+	 * Utility method to return media url.
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 *
+	 * @param  mixed      $value The media reference.
+	 * @param mixed|null $size Optional. The size desired.
+	 *
+	 * @return array|bool|false|string
+	 */
+	public function get_media( $value, $size = 'full' ) {
+
+		if ( empty( $value ) ) {
+			return false;
+		}
+
+		$media = false;
+		if ( is_numeric( $value ) ) {
+			$media = $this->media_from_id( $value, $size );
+		} elseif ( is_string( $value ) ) {
+			$media = $this->media_from_url( $value, $size );
+		} elseif ( is_array( $value ) ) {
+			$media = $this->media_from_array( $value, $size );
+		}
+
+		return $media;
+	}
+
+	/**
 	 * Retrieve media from post id.
 	 *
 	 * @since   1.0.0
 	 * @access  private
+	 *
 	 * @param int    $id Post ID.
 	 * @param string $size Media size.
 	 *
@@ -195,6 +351,7 @@ class Settings {
 		if ( ! $image_attributes ) {
 			return false;
 		}
+
 		return $image_attributes[0];
 	}
 
@@ -203,6 +360,7 @@ class Settings {
 	 *
 	 * @since   1.0.0
 	 * @access  private
+	 *
 	 * @param string $url The attachment url.
 	 * @param string $size The media size.
 	 *
@@ -215,8 +373,10 @@ class Settings {
 			if ( ! $image_attributes ) {
 				return false;
 			}
+
 			return $image_attributes[0];
 		}
+
 		return $url;
 	}
 
@@ -264,34 +424,6 @@ class Settings {
 		}
 
 		return $media_url;
-	}
-
-	/**
-	 * Utility method to return media url.
-	 *
-	 * @since   1.0.0
-	 * @access  public
-	 * @param  mixed      $value The media reference.
-	 * @param mixed|null $size Optional. The size desired.
-	 *
-	 * @return array|bool|false|string
-	 */
-	public function get_media( $value, $size = 'full' ) {
-
-		if ( empty( $value ) ) {
-			return false;
-		}
-
-		$media = false;
-		if ( is_numeric( $value ) ) {
-			$media = $this->media_from_id( $value, $size );
-		} elseif ( is_string( $value ) ) {
-			$media = $this->media_from_url( $value, $size );
-		} elseif ( is_array( $value ) ) {
-			$media = $this->media_from_array( $value, $size );
-		}
-
-		return $media;
 	}
 
 }

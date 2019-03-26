@@ -864,11 +864,13 @@ body.menu_sidebar_dropdown:before {
 .footer-copyright {
   font-size: 0.875em; }
 
-.hfg-grid .builder-item.hfg-edge-left .item--inner > div {
-  flex-direction: row; }
+.builder-item.hfg-edge-left .item--inner > div {
+  flex-direction: row;
+  display: flex; }
 
-.hfg-grid .builder-item.hfg-edge-right .item--inner > div {
-  flex-direction: row-reverse; }
+.builder-item.hfg-edge-right .item--inner > div {
+  flex-direction: row-reverse;
+  display: flex; }
 
 .footer--row .nv-footer-content, .footer--row .nv-footer-widgets {
   padding: 0; }

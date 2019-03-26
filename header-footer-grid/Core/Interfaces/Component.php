@@ -40,6 +40,17 @@ interface Component {
 	public function get_settings();
 
 	/**
+	 * Shares the row partials list.
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 * @param array[WP_Customize_Partial] $partials_list A list of partials.
+	 *
+	 * @return mixed
+	 */
+	public function set_row_partials( array $partials_list = array() );
+
+	/**
 	 * Called to register component controls.
 	 *
 	 * @since   1.0.0

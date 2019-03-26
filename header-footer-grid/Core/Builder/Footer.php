@@ -44,6 +44,14 @@ class Footer extends Abstract_Builder {
 		add_filter( 'theme_mod_' . $this->control_id, array( $this, 'filter_defaults' ) );
 	}
 
+	/**
+	 * Default data.
+	 *
+	 * @return array Default data.
+	 */
+	public function define_defaults() {
+		return Settings::get_instance()->get_footer_defaults_neve();
+	}
 
 	/**
 	 * Utility method to generate defaults for JS and regular PHP calls.

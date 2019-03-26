@@ -3,7 +3,6 @@
  *
  * @since 1.0.0
  *
- * Copyright 2019, ThemeIsle
  */
 
 "use strict"; // prevent global namespace pollution

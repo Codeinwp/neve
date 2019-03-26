@@ -42,12 +42,12 @@ add_filter( 'neve_should_search_in_menu', '__return_false' );
 
 add_action(
 	'neve_do_footer', function () {
-	do_action( 'hfg_footer_render' );
-}
+		do_action( 'hfg_footer_render' );
+	}
 );
 add_action(
 	'neve_do_header', function () {
-	do_action( 'hfg_header_render' );
-}
+		do_action( 'hfg_header_render' );
+	}
 );
 add_action( 'init', 'HFG\Main::get_instance' );

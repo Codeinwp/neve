@@ -228,6 +228,7 @@ abstract class Abstract_Builder implements Builder {
 			}
 		}
 
+		$row_partials = array();
 		if ( empty( $wp_customize->get_panel( $this->panel ) ) ) {
 			$this->set_property( 'section', $this->control_id . '_section' );
 			$builder_title = ( isset( $this->title ) && ! empty( $this->title ) ) ? $this->title : __( 'HFG Panel', 'neve' );
@@ -279,7 +280,7 @@ abstract class Abstract_Builder implements Builder {
 				)
 			);
 
-			$this->add_rows_controls( $wp_customize );
+			$row_partials = $this->add_rows_controls( $wp_customize );
 		}
 
 		/**
@@ -288,6 +289,7 @@ abstract class Abstract_Builder implements Builder {
 		 * @var Component $component
 		 */
 		foreach ( $this->builder_components as $component ) {
+			$component->set_row_partials( $row_partials );
 			$component->customize_register( $wp_customize );
 		}
 
@@ -321,13 +323,15 @@ abstract class Abstract_Builder implements Builder {
 	 * @access  protected
 	 *
 	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
+	 *
+	 * @return array[WP_Customize_Partial] A list of row partials.
 	 */
 	protected function add_rows_controls( $wp_customize ) {
-		$rows = $this->get_rows();
+		$rows         = $this->get_rows();
+		$row_partials = [];
 		if ( empty( $rows ) ) {
-			return;
+			return $row_partials;
 		}
-
 		foreach ( $rows as $row_id => $row_label ) {
 			$partial_settings = array();
 			$wp_customize->add_section(
@@ -443,7 +447,7 @@ abstract class Abstract_Builder implements Builder {
 				)
 			);
 
-			$wp_customize->selective_refresh->add_partial(
+			$partial = $wp_customize->selective_refresh->add_partial(
 				$this->control_id . '_' . $row_id . '_partial',
 				array(
 					'selector'        => '.' . $this->panel,
@@ -451,7 +455,10 @@ abstract class Abstract_Builder implements Builder {
 					'render_callback' => array( $this, 'render' ),
 				)
 			);
+			array_push( $row_partials, $partial );
 		}
+
+		return $row_partials;
 	}
 
 	/**
@@ -499,10 +506,17 @@ abstract class Abstract_Builder implements Builder {
 	 */
 	public function get_layout_data() {
 		// TODO move default as filterable data and move default neve definition in theme integration.
-		$data = json_decode( get_theme_mod( $this->control_id, Settings::get_instance()->get_header_defaults_neve() ), true );
+		$data = json_decode( get_theme_mod( $this->control_id, $this->define_defaults() ), true );
 
 		return wp_parse_args( $data, array_fill_keys( array_keys( $this->devices ), array_fill_keys( array_keys( $this->get_rows() ), [] ) ) );
 	}
+
+	/**
+	 * Define defaults for the builder, if any.
+	 *
+	 * @return mixed Default data.
+	 */
+	public abstract function define_defaults();
 
 	/**
 	 * Method to add Builder css styles.
@@ -588,6 +602,24 @@ abstract class Abstract_Builder implements Builder {
 	}
 
 	/**
+	 * Utility method to generate defaults for JS and regular PHP calls.
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 *
+	 * @param string $theme_mod The name of the mod.
+	 *
+	 * @return false|mixed|string
+	 */
+	public function filter_defaults( $theme_mod ) {
+		if ( empty( $theme_mod ) || ! $theme_mod || is_object( $theme_mod ) && empty( json_decode( json_encode( $theme_mod ), true ) ) ) {
+			return $this->define_defaults();
+		}
+
+		return $theme_mod;
+	}
+
+	/**
 	 * Render components in the row.
 	 *
 	 * @param null|string $device Device id.
@@ -605,12 +637,14 @@ abstract class Abstract_Builder implements Builder {
 		$max_columns = 12;
 		$last_item   = null;
 
-		usort($data, function ( $item1, $item2 ) {
-			if ( $item1['x'] == $item2['x'])  {
-				return 0;
+		usort(
+			$data, function ( $item1, $item2 ) {
+				if ( $item1['x'] == $item2['x'] ) {
+					return 0;
+				}
+				return $item1['x'] < $item2['x'] ? -1 : 1;
 			}
-			return $item1['x'] < $item2['x'] ? -1 : 1;
-		});
+		);
 
 		$collection = new \CachingIterator(
 			new \ArrayIterator(
@@ -625,16 +659,22 @@ abstract class Abstract_Builder implements Builder {
 			 *
 			 * @var Abstract_Component $component
 			 */
-			$component = $this->builder_components[ $component_location['id'] ];
-			$x         = intval( $component_location['x'] );
-			$width     = intval( $component_location['width'] );
+			$component         = $this->builder_components[ $component_location['id'] ];
+			$x                 = intval( $component_location['x'] );
+			$width             = intval( $component_location['width'] );
+			$alignment_default = 'left';
+			if ( isset( $component_location['settings']['align'] ) && in_array( $component_location['settings']['align'], array( 'left', 'center', 'right' ) ) ) {
+				$alignment_default = $component_location['settings']['align'];
+			}
+			$align = get_theme_mod( $component_location['id'] . '_align', $alignment_default );
 
 			if ( ! $collection->hasNext() && ( $x + $width < $max_columns ) ) {
 				$width += $max_columns - ( $x + $width );
 			}
 
-			$classes = [ 'builder-item' ];
+			$classes   = [ 'builder-item' ];
 			$classes[] = 'col-' . $width . ' col-md-' . $width . ' col-sm-' . $width;
+			$classes[] = 'hfg-item-' . $align;
 			if ( $last_item === null ) {
 				$classes[] = 'hfg-item-first';
 			}

@@ -14,6 +14,7 @@ namespace HFG\Core\Components;
 use HFG\Core\Interfaces\Component;
 use HFG\Main;
 use HFG\Traits\Core;
+use Neve\Customizer\Controls\Radio_Image;
 use WP_Customize_Manager;
 
 /**
@@ -25,7 +26,7 @@ abstract class Abstract_Component implements Component {
 	use Core;
 
 	/**
-	 * Current id of thecomponent.
+	 * Current id of the component.
 	 *
 	 * @since   1.0.0
 	 * @access  public
@@ -98,6 +99,15 @@ abstract class Abstract_Component implements Component {
 	protected $panel;
 
 	/**
+	 * A list of partials passed from parent.
+	 *
+	 * @since   1.0.0
+	 * @access  protected
+	 * @var array[WP_Customize_Partial]
+	 */
+	protected $row_partials;
+
+	/**
 	 * Return the settings for the component.
 	 *
 	 * @since   1.0.0
@@ -111,6 +121,19 @@ abstract class Abstract_Component implements Component {
 			'width'   => $this->width,
 			'section' => $this->section, // Customizer section to focus when click settings.
 		);
+	}
+
+	/**
+	 * Shares the row partials list.
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 * @param array[WP_Customize_Partial] $partials_list A list of partials.
+	 *
+	 * @return mixed
+	 */
+	public function set_row_partials( array $partials_list = array() ) {
+		$this->row_partials = $partials_list;
 	}
 
 	/**
@@ -154,6 +177,39 @@ abstract class Abstract_Component implements Component {
 	 * @return WP_Customize_Manager
 	 */
 	public function customize_register( WP_Customize_Manager $wp_customize ) {
+		$partial_settings = array();
+
+		$wp_customize->add_setting(
+			$this->id . '_component_align',
+			array(
+				'default'        => 'left',
+				'theme_supports' => 'hfg_support',
+				'transport'      => 'postMessage',
+			)
+		);
+		array_push( $partial_settings, $this->id . '_align' );
+		$wp_customize->add_control(
+			$this->id . '_component_align',
+			[
+				'label'       => __( 'Component Alignment', 'neve' ),
+				'description' => __( 'Set the alignment for this component inside the active row.', 'neve' ),
+				'type'        => 'select',
+				'settings'    => $this->id . '_component_align',
+				'priority'    => 800,
+				'section'     => $this->section,
+				'choices'     => array(
+					'left'   => __( 'Left', 'neve' ),
+					'center' => __( 'Center', 'neve' ),
+					'right'  => __( 'Right', 'neve' ),
+				),
+			]
+		);
+
+		foreach ( $this->row_partials as $row_partial ) {
+			$row_partial->settings = array_merge( $row_partial->settings, $partial_settings );
+			$wp_customize->selective_refresh->remove_partial( $row_partial->id );
+			$wp_customize->selective_refresh->add_partial( $row_partial );
+		}
 		return $wp_customize;
 	}
 
