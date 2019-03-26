@@ -42,23 +42,6 @@ class Header extends Abstract_Builder {
 		add_filter( 'theme_mod_' . $this->control_id, array( $this, 'filter_defaults' ) );
 	}
 
-	/**
-	 * Utility method to generate defaults for JS and regular PHP calls.
-	 *
-	 * @since   1.0.0
-	 * @access  public
-	 *
-	 * @param string $theme_mod The name of the mod.
-	 *
-	 * @return false|mixed|string
-	 */
-	public function filter_defaults( $theme_mod ) {
-		if ( empty( $theme_mod ) || ! $theme_mod || is_object( $theme_mod ) && empty( json_decode( json_encode( $theme_mod ), true ) ) ) {
-			return Settings::get_instance()->get_header_defaults_neve();
-		}
-
-		return $theme_mod;
-	}
 
 	/**
 	 * Method called via hook.
@@ -95,6 +78,15 @@ class Header extends Abstract_Builder {
 		}
 
 		Main::get_instance()->load( 'row-wrapper', $name );
+	}
+
+	/**
+	 * Default data.
+	 *
+	 * @return array Default data.
+	 */
+	public function define_defaults() {
+		return Settings::get_instance()->get_header_defaults_neve();
 	}
 
 	/**

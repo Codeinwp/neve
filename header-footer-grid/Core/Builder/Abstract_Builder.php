@@ -493,10 +493,17 @@ abstract class Abstract_Builder implements Builder {
 	 */
 	public function get_layout_data() {
 		// TODO move default as filterable data and move default neve definition in theme integration.
-		$data = json_decode( get_theme_mod( $this->control_id, Settings::get_instance()->get_header_defaults_neve() ), true );
+		$data = json_decode( get_theme_mod( $this->control_id, $this->define_defaults() ), true );
 
 		return wp_parse_args( $data, array_fill_keys( array_keys( $this->devices ), array_fill_keys( array_keys( $this->get_rows() ), [] ) ) );
 	}
+
+	/**
+	 * Define defaults for the builder, if any.
+	 *
+	 * @return mixed Default data.
+	 */
+	public abstract function define_defaults();
 
 	/**
 	 * Method to add Builder css styles.
@@ -582,6 +589,24 @@ abstract class Abstract_Builder implements Builder {
 	}
 
 	/**
+	 * Utility method to generate defaults for JS and regular PHP calls.
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 *
+	 * @param string $theme_mod The name of the mod.
+	 *
+	 * @return false|mixed|string
+	 */
+	public function filter_defaults( $theme_mod ) {
+		if ( empty( $theme_mod ) || ! $theme_mod || is_object( $theme_mod ) && empty( json_decode( json_encode( $theme_mod ), true ) ) ) {
+			return $this->define_defaults();
+		}
+
+		return $theme_mod;
+	}
+
+	/**
 	 * Render components in the row.
 	 *
 	 * @param null|string $device Device id.
@@ -598,6 +623,7 @@ abstract class Abstract_Builder implements Builder {
 		$data        = $this->get_layout_data()[ $device ][ $row_index ];
 		$max_columns = 12;
 		$last_item   = null;
+		$origin      = null;
 
 		$collection = new \CachingIterator(
 			new \ArrayIterator(
@@ -613,7 +639,7 @@ abstract class Abstract_Builder implements Builder {
 			 */
 			$component = $this->builder_components[ $component_location['id'] ];
 			$x         = intval( $component_location['x'] );
-			$width     = intval( $component_location['width'] );
+			$width     = $original_width = intval( $component_location['width'] );
 
 			if ( ! $collection->hasNext() && ( $x + $width < $max_columns ) ) {
 				$width += $max_columns - ( $x + $width );
@@ -629,6 +655,16 @@ abstract class Abstract_Builder implements Builder {
 				$push_left = 'offset-' . $x;
 			}
 
+			$edge_class = '';
+			if ( $x > 0 && ( ( $x + $origin ) === $max_columns ) ) {
+				$edge_class = 'hfg-edge-right';
+			}
+			if ( $x === 0 ) {
+				$edge_class = ( 'hfg-edge-left' );
+				if ( $x > 0 && ( ( $x + $original_width + $origin ) === $max_columns ) ) {
+					$edge_class = 'hfg-edge-right';
+				}
+			}
 			$component->current_x     = $x;
 			$component->current_width = $width;
 			$classes                  = [
@@ -637,6 +673,7 @@ abstract class Abstract_Builder implements Builder {
 				$last_item === null ? 'hfg-item-first' : '',
 				( ! $collection->hasNext() ) ? 'hfg-item-last' : '',
 				$push_left,
+				$edge_class,
 			];
 			self::$current_component  = $component_location['id'];
 			echo sprintf( '<div class="%s">', esc_attr( join( ' ', $classes ) ) );
