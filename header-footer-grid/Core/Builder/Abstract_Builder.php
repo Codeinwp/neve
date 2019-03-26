@@ -605,6 +605,13 @@ abstract class Abstract_Builder implements Builder {
 		$max_columns = 12;
 		$last_item   = null;
 
+		usort($data, function ( $item1, $item2 ) {
+			if ( $item1['x'] == $item2['x'])  {
+				return 0;
+			}
+			return $item1['x'] < $item2['x'] ? -1 : 1;
+		});
+
 		$collection = new \CachingIterator(
 			new \ArrayIterator(
 				$data
@@ -625,26 +632,28 @@ abstract class Abstract_Builder implements Builder {
 			if ( ! $collection->hasNext() && ( $x + $width < $max_columns ) ) {
 				$width += $max_columns - ( $x + $width );
 			}
-			$push_left = '';
+
+			$classes = [ 'builder-item' ];
+			$classes[] = 'col-' . $width . ' col-md-' . $width . ' col-sm-' . $width;
+			if ( $last_item === null ) {
+				$classes[] = 'hfg-item-first';
+			}
+			if ( ! $collection->hasNext() ) {
+				$classes[] = 'hfg-item-last';
+			}
+
 			if ( $x > 0 && $last_item !== null ) {
 				$origin = intval( $last_item['width'] ) + intval( $last_item['x'] );
-				if ( $x - $origin > 0 ) {
+				if ( ( $x - $origin ) > 0 ) {
 					$x         = $x - $origin;
-					$push_left = 'offset-' . $x;
+					$classes[] = 'offset-' . $x;
 				}
 			} elseif ( $x > 0 ) {
-				$push_left = 'offset-' . $x;
+				$classes[] = 'offset-' . $x;
 			}
 
 			$component->current_x     = $x;
 			$component->current_width = $width;
-			$classes                  = [
-				'col-' . $width . ' col-md-' . $width . ' col-sm-' . $width,
-				'builder-item',
-				$last_item === null ? 'hfg-item-first' : '',
-				( ! $collection->hasNext() ) ? 'hfg-item-last' : '',
-				$push_left,
-			];
 			self::$current_component  = $component_location['id'];
 			echo sprintf( '<div class="%s">', esc_attr( join( ' ', $classes ) ) );
 			$component->render();
