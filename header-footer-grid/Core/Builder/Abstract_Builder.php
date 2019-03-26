@@ -623,7 +623,13 @@ abstract class Abstract_Builder implements Builder {
 		$data        = $this->get_layout_data()[ $device ][ $row_index ];
 		$max_columns = 12;
 		$last_item   = null;
-		$origin      = null;
+
+		usort($data, function ( $item1, $item2 ) {
+			if ( $item1['x'] == $item2['x'])  {
+				return 0;
+			}
+			return $item1['x'] < $item2['x'] ? -1 : 1;
+		});
 
 		$collection = new \CachingIterator(
 			new \ArrayIterator(
@@ -639,42 +645,33 @@ abstract class Abstract_Builder implements Builder {
 			 */
 			$component = $this->builder_components[ $component_location['id'] ];
 			$x         = intval( $component_location['x'] );
-			$width     = $original_width = intval( $component_location['width'] );
+			$width     = intval( $component_location['width'] );
 
 			if ( ! $collection->hasNext() && ( $x + $width < $max_columns ) ) {
 				$width += $max_columns - ( $x + $width );
 			}
-			$push_left = '';
-			if ( $x > 0 && $last_item !== null ) {
-				$origin = intval( $last_item['width'] ) + intval( $last_item['x'] );
-				if ( $x - $origin > 0 ) {
-					$x         = $x - $origin;
-					$push_left = 'offset-' . $x;
-				}
-			} elseif ( $x > 0 ) {
-				$push_left = 'offset-' . $x;
+
+			$classes = [ 'builder-item' ];
+			$classes[] = 'col-' . $width . ' col-md-' . $width . ' col-sm-' . $width;
+			if ( $last_item === null ) {
+				$classes[] = 'hfg-item-first';
+			}
+			if ( ! $collection->hasNext() ) {
+				$classes[] = 'hfg-item-last';
 			}
 
-			$edge_class = '';
-			if ( $x > 0 && ( ( $x + $origin ) === $max_columns ) ) {
-				$edge_class = 'hfg-edge-right';
-			}
-			if ( $x === 0 ) {
-				$edge_class = ( 'hfg-edge-left' );
-				if ( $x > 0 && ( ( $x + $original_width + $origin ) === $max_columns ) ) {
-					$edge_class = 'hfg-edge-right';
+			if ( $x > 0 && $last_item !== null ) {
+				$origin = intval( $last_item['width'] ) + intval( $last_item['x'] );
+				if ( ( $x - $origin ) > 0 ) {
+					$x         = $x - $origin;
+					$classes[] = 'offset-' . $x;
 				}
+			} elseif ( $x > 0 ) {
+				$classes[] = 'offset-' . $x;
 			}
+
 			$component->current_x     = $x;
 			$component->current_width = $width;
-			$classes                  = [
-				'col-' . $width . ' col-md-' . $width . ' col-sm-' . $width,
-				'builder-item',
-				$last_item === null ? 'hfg-item-first' : '',
-				( ! $collection->hasNext() ) ? 'hfg-item-last' : '',
-				$push_left,
-				$edge_class,
-			];
 			self::$current_component  = $component_location['id'];
 			echo sprintf( '<div class="%s">', esc_attr( join( ' ', $classes ) ) );
 			$component->render();
