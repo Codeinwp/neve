@@ -4,11 +4,10 @@
 
 .nv-navbar {
   background-color: $navbar_background_color;
-  border-bottom: $muted-border;
   max-height: 100vh;
 }
 
-#nv-primary-navigation {
+.primary-menu-ul {
   max-height: 0;
   overflow-y: auto;
   transition: $transition_med;
@@ -49,7 +48,7 @@
   display: flex;
 }
 
-#nv-primary-navigation {
+.primary-menu-ul {
   .sub-menu {
     max-height: 0;
     overflow: hidden;
@@ -121,7 +120,7 @@
     transform: translateY(-50%);
   }
 
-  #nv-primary-navigation {
+  .primary-menu-ul {
     .amp-caret-wrap {
       display: none;
     }
@@ -131,7 +130,7 @@
     }
   }
 
-  #nv-primary-navigation {
+  .primary-menu-ul {
     @include horizontal-list($spacing-xs, 'true');
     overflow-y: inherit;
     max-height: inherit;
@@ -164,7 +163,7 @@
         text-decoration: none;
       }
 
-      > a > .caret-wrap .caret {
+      > a .caret {
         color: $link_hover_color;
       }
     }

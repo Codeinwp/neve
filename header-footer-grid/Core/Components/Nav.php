@@ -100,12 +100,10 @@ class Nav extends Abstract_Component {
 			)
 		);
 
-
 		$wp_customize->add_setting(
 			$this->id . '_color',
 			array(
 				'theme_supports' => 'hfg_support',
-				'transport'      => 'postMessage',
 				'default'        => '#404248'
 			)
 		);
@@ -114,18 +112,16 @@ class Nav extends Abstract_Component {
 				$wp_customize,
 				$this->id . '_color',
 				array(
-					'label' => __( 'Primary Menu Items Color', 'neve' ),
-					'section'     => $this->section,
+					'label'   => __( 'Items Color', 'neve' ),
+					'section' => $this->section,
 				)
 			)
 		);
-
 
 		$wp_customize->add_setting(
 			$this->id . '_hover_color',
 			array(
 				'theme_supports' => 'hfg_support',
-				'transport'      => 'postMessage',
 				'default'        => '#0366d6'
 			)
 		);
@@ -134,8 +130,8 @@ class Nav extends Abstract_Component {
 				$wp_customize,
 				$this->id . '_hover_color',
 				array(
-					'label' => __( 'Primary Menu Items Hover Color', 'neve' ),
-					'section'     => $this->section,
+					'label'   => __( 'Items Hover Color', 'neve' ),
+					'section' => $this->section,
 				)
 			)
 		);
@@ -186,5 +182,29 @@ class Nav extends Abstract_Component {
 	public function render_component() {
 		Main::get_instance()->load( 'component-nav' );
 	}
+
+	/**
+	 * Add styles to the component.
+	 *
+	 * @param array $css_array rules array.
+	 *
+	 * @return array
+	 */
+	public function add_style( array $css_array = array() ) {
+		$styles = array();
+
+		$color  = get_theme_mod( $this->id . '_color' );
+		if ( ! empty( $color ) ) {
+			$styles['#nv-primary-navigation a, #nv-primary-navigation li a .caret'] = array( 'color' => sanitize_hex_color( $color ) );
+		}
+
+		$hover_color = get_theme_mod( $this->id . '_hover_color' );
+		if ( ! empty( $hover_color ) ) {
+			$styles['#nv-primary-navigation li:hover > a, #nv-primary-navigation li:hover > a .caret'] = array( 'color' => sanitize_hex_color( $hover_color ) );
+		}
+
+		return $styles;
+	}
+
 
 }

@@ -71,16 +71,6 @@ class Colors_Background extends Base_Customizer {
 				'priority' => 25,
 				'label'    => __( 'Text Color', 'neve' ),
 			),
-			'neve_menu_item_color'       => array(
-				'default'  => '#404248',
-				'priority' => 25,
-				'label'    => __( 'Primary Menu Items Color', 'neve' ),
-			),
-			'neve_menu_item_hover_color' => array(
-				'default'  => '#0366d6',
-				'priority' => 25,
-				'label'    => __( 'Primary Menu Items Hover Color', 'neve' ),
-			),
 		);
 
 		foreach ( $color_controls as $control_id => $control_properties ) {

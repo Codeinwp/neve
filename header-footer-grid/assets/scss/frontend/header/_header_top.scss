@@ -1,16 +1,30 @@
-.header--row-inner.header-top-inner {
+.header--row-inner.header-top-inner.light-mode {
+  background-color: #f0f0f0;
+}
+
+.header--row-inner {
   &.light-mode {
-    background-color: #f0f0f0;
+    background-color: #fff;
     color: #404248;
     a:not(.button) {
       color: #404248;
     }
   }
   &.dark-mode {
-    background-color: #24292e;
-    color: #fff;
+    &, .sub-menu, .sub-menu li{
+      border-color: #333;
+      background-color: #24292e;
+      color: #fff;
+    }
     a {
       color: #fff;
     }
+  }
+}
+
+.header-main-inner {
+  border-bottom: 1px solid #ccc;
+  &.dark-mode {
+    border-bottom: 1px solid #333;
   }
 }
