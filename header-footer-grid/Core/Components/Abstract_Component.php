@@ -176,6 +176,11 @@ abstract class Abstract_Component implements Component {
 	public function render() {
 		self::$current_component = $this->get_id();
 
+		if ( is_customize_preview() ) {
+			$style = $this->css_array_to_css( $this->add_style() );
+			echo '<style type="text/css">' . $style . '</style>';
+		}
+
 		Main::get_instance()->load( 'component-wrapper' );
 	}
 
