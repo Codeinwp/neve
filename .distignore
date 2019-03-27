@@ -20,6 +20,14 @@ artifact
 composer.json
 composer.lock
 themeisle.enc
+header-footer-grid/assets/scss
+header-footer-grid/.babelrc
+header-footer-grid/.eslintignore
+header-footer-grid/.eslintrc.js
+header-footer-grid/node_modules
+header-footer-grid/package.json
+header-footer-grid/package-lock.json
+header-footer-grid/rollup.config.js
 inc/admin/onboarding/assets/vue
 inc/admin/onboarding/node_modules
 inc/admin/onboarding/.eslintrc
