@@ -14,14 +14,11 @@ $row_index  = current_row();
 $device     = current_device();
 $control_id = get_builders()->get_property( 'control_id' );
 
-$skin_mode   = get_theme_mod( $control_id . '_' . $row_index . '_skin', 'light-mode' );
+$skin_mode = get_theme_mod( $control_id . '_' . $row_index . '_skin', 'light-mode' );
 
-$row_visibility = '';
-if ( $row_index !== 'sidebar' ) {
-	$row_visibility = 'hide-on-desktop';
-	if ( $device === 'desktop' ) {
-		$row_visibility = 'hide-on-mobile hide-on-tablet';
-    }
+$row_visibility = 'hide-on-desktop';
+if ( $device === 'desktop' ) {
+	$row_visibility = 'hide-on-mobile hide-on-tablet';
 }
 
 $row_classes = [

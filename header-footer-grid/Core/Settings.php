@@ -206,7 +206,7 @@ class Settings {
 				'x'        => 0,
 				'settings' => [
 					'align' => 'center',
-				]
+				],
 			];
 			$defaults['desktop']['bottom']['primary-menu'] = [
 				'id'       => 'primary-menu',
@@ -214,7 +214,7 @@ class Settings {
 				'x'        => 0,
 				'settings' => [
 					'align' => 'center',
-				]
+				],
 			];
 		}
 
@@ -276,8 +276,8 @@ class Settings {
 		$defaults       = [
 			'desktop' => [
 				'top'    => [],
-				'bottom' => []
-			]
+				'bottom' => [],
+			],
 		];
 		$sidebars       = (int) get_theme_mod( 'neve_footer_widget_columns', '3' );
 		$sidebars_names = array(
@@ -301,7 +301,7 @@ class Settings {
 				'x'        => 0,
 				'settings' => [
 					'align' => 'center',
-				]
+				],
 			];
 		}
 		if ( $content_type === 'footer_menu' ) {
@@ -311,7 +311,7 @@ class Settings {
 				'x'        => 0,
 				'settings' => [
 					'align' => 'center',
-				]
+				],
 			];
 		}
 
@@ -324,7 +324,7 @@ class Settings {
 	 * @since   1.0.0
 	 * @access  public
 	 *
-	 * @param  mixed     $value The media reference.
+	 * @param  mixed      $value The media reference.
 	 * @param mixed|null $size Optional. The size desired.
 	 *
 	 * @return array|bool|false|string
