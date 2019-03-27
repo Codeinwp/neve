@@ -183,7 +183,7 @@ class Logo extends Abstract_Component {
 		}
 		if ( isset( $logo_max_width['desktop'] ) ) {
 			$logo_max_width['desktop']                             = ( $logo_max_width['desktop'] > 0 ) ? $logo_max_width['desktop'] . 'px' : 'auto';
-			$css_array[' @media (min-width: 796px)'][ $selector ] = array(
+			$css_array[' @media (min-width: 961px)'][ $selector ] = array(
 				'max-width' => $logo_max_width['desktop'],
 			);
 		}

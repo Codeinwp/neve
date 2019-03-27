@@ -32,7 +32,7 @@
         }
         var dropDownWidth = submenu.outerWidth();
         if (bounding + dropDownWidth >= windowWidth) {
-          $(dropDown).css({ 'right': '100%', 'left': 'auto' });
+          $(dropDown).css({'right': '100%', 'left': 'auto'});
         }
       });
       return false;
@@ -90,7 +90,7 @@
         e.stopPropagation();
       });
 
-      $('.menu-item-nav-search').on('touchstart focus', function () {
+      $('.menu-item-nav-search').on('click touchstart focus', function () {
         $(this).addClass('active');
         $('html').addClass('menu-opened');
         if (utils.isMobile()) {

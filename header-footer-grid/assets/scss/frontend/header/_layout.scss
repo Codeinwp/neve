@@ -39,7 +39,7 @@
       background-color: #24292e;
       color: #fff;
     }
-    a {
+    a:not(.button) {
       color: #fff;
     }
   }

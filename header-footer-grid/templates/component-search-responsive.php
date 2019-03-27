@@ -23,13 +23,15 @@ if ( ! empty( $component_styles_array ) ) {
 
 ?>
 <div class="nv-search-icon-component"<?php echo wp_kses_post( $component_styles ); ?>>
-	<a><span class="nv-icon nv-search"></span></a>
-	<div class="nv-nav-search" tabindex="0" aria-label="search">
-		<div class="nv-nav-search">
-			<div class="container close-container">
-				<a class="button button-secondary close-responsive-search"><?php echo __( 'Close', 'neve' ); ?></a>
+	<div class="menu-item-nav-search responsive-nav-search" tabindex="0">
+		<span class="nv-icon nv-search"></span>
+		<div class="nv-nav-search" tabindex="0" aria-label="search">
+			<div class="nv-nav-search">
+				<div class="container close-container">
+					<a class="button button-secondary close-responsive-search"><?php echo __( 'Close', 'neve' ); ?></a>
+				</div>
+				<?php get_search_form(); ?>
 			</div>
-			<?php get_search_form(); ?>
 		</div>
 	</div>
 </div>

@@ -89,7 +89,7 @@
             $(".nv-nav-search").on("touchstart click", function(e) {
                 e.stopPropagation();
             });
-            $(".menu-item-nav-search").on("touchstart focus", function() {
+            $(".menu-item-nav-search").on("click touchstart focus", function() {
                 $(this).addClass("active");
                 $("html").addClass("menu-opened");
                 if (utils.isMobile()) {

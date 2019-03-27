@@ -574,7 +574,7 @@ abstract class Abstract_Builder implements Builder {
 		}
 		if ( isset( $layout_height['desktop'] ) ) {
 			$layout_height['desktop']                             = ( $layout_height['desktop'] > 0 ) ? $layout_height['desktop'] . 'px' : 'auto';
-			$css_array[' @media (min-width: 796px)'][ $selector ] = array(
+			$css_array[' @media (min-width: 961px)'][ $selector ] = array(
 				'height' => $layout_height['desktop'],
 			);
 		}

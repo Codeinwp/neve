@@ -708,7 +708,6 @@ blockquote.wp-block-quote.is-style-large cite {
 }
 
 .primary-menu-ul {
-  max-height: 0;
   overflow-y: auto;
   transition: all 0.3s ease;
   margin-bottom: 0;
@@ -721,7 +720,7 @@ blockquote.wp-block-quote.is-style-large cite {
   color: #404248;
   font-weight: 500;
   width: 100%;
-  display: block;
+  display: flex;
   position: relative;
 }
 .primary-menu-ul li {
@@ -896,7 +895,6 @@ blockquote.wp-block-quote.is-style-large cite {
 }
 
 .nv-nav-search {
-  padding: 0;
   visibility: hidden;
   opacity: 0;
   transition: all 0.3s ease;
@@ -2557,6 +2555,10 @@ hr {
   .primary-menu-ul .menu-item-has-children:last-child {
     padding-right: 10px;
   }
+  .primary-menu-ul .menu-item-has-children > a {
+    /* display: flex; */
+    align-items: center;
+  }
   .primary-menu-ul > .menu-item-has-children > .sub-menu {
     right: 0;
   }
@@ -2597,10 +2599,6 @@ hr {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-  }
-
-  .menu-item-nav-search.responsive-nav-search {
-    display: none;
   }
 
   #nv-primary-navigation .menu-item-nav-search:not(.responsive-nav-search) {

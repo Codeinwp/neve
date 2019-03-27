@@ -8,7 +8,6 @@
 }
 
 .primary-menu-ul {
-  max-height: 0;
   overflow-y: auto;
   transition: $transition_med;
   margin-bottom: 0;
@@ -22,7 +21,7 @@
     color: $body-color;
     font-weight: 500;
     width: 100%;
-    display: block;
+    display: flex;
     position: relative;
   }
 
@@ -216,6 +215,11 @@
 
       &:last-child {
         padding-right: $spacing-xs;
+      }
+
+      > a {
+        display: flex;
+        align-items: center;
       }
     }
 
