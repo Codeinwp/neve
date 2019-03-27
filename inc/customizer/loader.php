@@ -61,7 +61,6 @@ class Loader {
 				'Customizer\Options\Typography',
 				'Customizer\Options\Colors_Background',
 				'Customizer\Options\Layout_Footer',
-				'Customizer\Options\Layout_Navigation',
 				'Customizer\Options\Rtl',
 			)
 		);

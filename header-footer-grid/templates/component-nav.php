@@ -26,7 +26,7 @@ $container_classes[] = 'nav-menu-primary';
 ?>
 <div class="nv-nav-wrap">
 	<div role="navigation" class="<?php echo esc_attr( join( ' ', $container_classes ) ); ?>"
-		aria-label="<?php echo esc_html( __( 'Primary Menu', 'neve' ) ); ?>">
+			aria-label="<?php echo esc_html( __( 'Primary Menu', 'neve' ) ); ?>">
 
 		<?php
 		echo wp_nav_menu(
@@ -37,7 +37,7 @@ $container_classes[] = 'nav-menu-primary';
 				'container'      => 'ul',
 				'walker'         => '\Neve\Views\Nav_Walker',
 				'fallback_cb'    => '\Neve\Views\Nav_Walker::fallback',
-                'echo'           => false
+				'echo'           => false
 			]
 		);
 		?>

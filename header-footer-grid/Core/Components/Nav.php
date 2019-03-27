@@ -141,11 +141,21 @@ class Nav extends Abstract_Component {
 		$wp_customize->add_setting(
 			'neve_last_menu_item',
 			array(
-				'default' => 'none',
+				'default'        => 'none',
 				'theme_supports' => 'hfg_support',
 				'transport'      => 'postMessage',
 			)
 		);
+		$choices = [
+			'none'   => __( 'None', 'neve' ),
+			'search' => __( 'Search', 'neve' ),
+		];
+
+		if ( class_exists( 'WooCommerce' ) ) {
+			$choices['cart']        = __( 'Cart', 'neve' );
+			$choices['search-cart'] = __( 'Search & Cart', 'neve' );
+		}
+
 		$wp_customize->add_control(
 			'neve_last_menu_item',
 			array(
@@ -154,10 +164,7 @@ class Nav extends Abstract_Component {
 				'type'        => 'select',
 				'priority'    => 800,
 				'section'     => $this->section,
-				'choices'     => array(
-					'none'   => __( 'None', 'neve' ),
-					'search' => __( 'Search', 'neve' ),
-				),
+				'choices'     => $choices
 			)
 		);
 
@@ -226,10 +233,8 @@ class Nav extends Abstract_Component {
 
 		$hover_color = get_theme_mod( $this->id . '_hover_color' );
 		if ( ! empty( $hover_color ) ) {
-			$css_array[
-			'.nav-menu-primary:not(.style-full-height) #nv-primary-navigation li:hover > a,
-			.nav-menu-primary:not(.style-full-height) #nv-primary-navigation li:hover > a .caret'
-			] = array( 'color' => sanitize_hex_color( $hover_color ) );
+			$css_array['.nav-menu-primary:not(.style-full-height) #nv-primary-navigation li:hover > a,
+			.nav-menu-primary:not(.style-full-height) #nv-primary-navigation li:hover > a .caret'] = array( 'color' => sanitize_hex_color( $hover_color ) );
 
 			$css_array['#nv-primary-navigation a:after'] = array( 'background-color' => sanitize_hex_color( $hover_color ) );
 		}

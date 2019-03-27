@@ -278,7 +278,7 @@ class Header extends Base_View {
 			$items .= $this->get_nav_menu_search();
 		}
 
-		if ( 'cart' === $additional_item || 'search-cart' === $additional_item ) {
+		if ( 'cart' === $additional_item || 'search-cart' === $additional_item || 'cart-search' === $additional_item ) {
 			$items .= $this->get_nav_menu_cart();
 		}
 
