@@ -99,15 +99,6 @@ abstract class Abstract_Component implements Component {
 	protected $panel;
 
 	/**
-	 * A list of partials passed from parent.
-	 *
-	 * @since   1.0.0
-	 * @access  protected
-	 * @var array[WP_Customize_Partial]
-	 */
-	protected $row_partials;
-
-	/**
 	 * Return the settings for the component.
 	 *
 	 * @since   1.0.0
@@ -121,19 +112,6 @@ abstract class Abstract_Component implements Component {
 			'width'   => $this->width,
 			'section' => $this->section, // Customizer section to focus when click settings.
 		);
-	}
-
-	/**
-	 * Shares the row partials list.
-	 *
-	 * @since   1.0.0
-	 * @access  public
-	 * @param array[WP_Customize_Partial] $partials_list A list of partials.
-	 *
-	 * @return mixed
-	 */
-	public function set_row_partials( array $partials_list = array() ) {
-		$this->row_partials = $partials_list;
 	}
 
 	/**
@@ -174,7 +152,7 @@ abstract class Abstract_Component implements Component {
 	 *
 	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
 	 *
-	 * @return WP_Customize_Manager
+	 * @return array
 	 */
 	public function customize_register( WP_Customize_Manager $wp_customize ) {
 		$partial_settings = array();
@@ -187,7 +165,7 @@ abstract class Abstract_Component implements Component {
 				'transport'      => 'postMessage',
 			)
 		);
-		array_push( $partial_settings, $this->id . '_align' );
+		array_push( $partial_settings, $this->id . '_component_align' );
 		$wp_customize->add_control(
 			$this->id . '_component_align',
 			[
@@ -205,12 +183,7 @@ abstract class Abstract_Component implements Component {
 			]
 		);
 
-		foreach ( $this->row_partials as $row_partial ) {
-			$row_partial->settings = array_merge( $row_partial->settings, $partial_settings );
-			$wp_customize->selective_refresh->remove_partial( $row_partial->id );
-			$wp_customize->selective_refresh->add_partial( $row_partial );
-		}
-		return $wp_customize;
+		return $partial_settings;
 	}
 
 	/**

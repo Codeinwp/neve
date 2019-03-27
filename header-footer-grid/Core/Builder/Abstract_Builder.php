@@ -228,7 +228,16 @@ abstract class Abstract_Builder implements Builder {
 			}
 		}
 
-		$row_partials = array();
+		$settings_for_parent = array();
+		/**
+		 * An instance of Component.
+		 *
+		 * @var Component $component
+		 */
+		foreach ( $this->builder_components as $component ) {
+			$settings_for_parent = array_merge( $settings_for_parent, $component->customize_register( $wp_customize ) );
+		}
+
 		if ( empty( $wp_customize->get_panel( $this->panel ) ) ) {
 			$this->set_property( 'section', $this->control_id . '_section' );
 			$builder_title = ( isset( $this->title ) && ! empty( $this->title ) ) ? $this->title : __( 'HFG Panel', 'neve' );
@@ -265,7 +274,7 @@ abstract class Abstract_Builder implements Builder {
 				$this->control_id . '_partial',
 				array(
 					'selector'        => '.' . $this->panel,
-					'settings'        => array( $this->control_id ),
+					'settings'        => array_merge( $settings_for_parent, array( $this->control_id ) ),
 					'render_callback' => array( $this, 'render' ),
 				)
 			);
@@ -280,17 +289,7 @@ abstract class Abstract_Builder implements Builder {
 				)
 			);
 
-			$row_partials = $this->add_rows_controls( $wp_customize );
-		}
-
-		/**
-		 * An instance of Component.
-		 *
-		 * @var Component $component
-		 */
-		foreach ( $this->builder_components as $component ) {
-			$component->set_row_partials( $row_partials );
-			$component->customize_register( $wp_customize );
+			$this->add_rows_controls( $wp_customize );
 		}
 
 		return $wp_customize;
@@ -324,13 +323,12 @@ abstract class Abstract_Builder implements Builder {
 	 *
 	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
 	 *
-	 * @return array[WP_Customize_Partial] A list of row partials.
+	 * @return WP_Customize_Manager|null
 	 */
 	protected function add_rows_controls( $wp_customize ) {
 		$rows         = $this->get_rows();
-		$row_partials = [];
 		if ( empty( $rows ) ) {
-			return $row_partials;
+			return null;
 		}
 		foreach ( $rows as $row_id => $row_label ) {
 			$partial_settings = array();
@@ -447,7 +445,7 @@ abstract class Abstract_Builder implements Builder {
 				)
 			);
 
-			$partial = $wp_customize->selective_refresh->add_partial(
+			$wp_customize->selective_refresh->add_partial(
 				$this->control_id . '_' . $row_id . '_partial',
 				array(
 					'selector'        => '.' . $this->panel,
@@ -455,10 +453,9 @@ abstract class Abstract_Builder implements Builder {
 					'render_callback' => array( $this, 'render' ),
 				)
 			);
-			array_push( $row_partials, $partial );
 		}
 
-		return $row_partials;
+		return $wp_customize;
 	}
 
 	/**

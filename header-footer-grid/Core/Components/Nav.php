@@ -139,6 +139,30 @@ class Nav extends Abstract_Component {
 		);
 
 		$wp_customize->add_setting(
+			'neve_last_menu_item',
+			array(
+				'default' => 'search',
+				'theme_supports' => 'hfg_support',
+				'transport'      => 'postMessage',
+			)
+		);
+		$wp_customize->add_control(
+			'neve_last_menu_item',
+			array(
+				'label'       => __( 'Last Menu Item', 'neve' ),
+				'description' => __( 'Set the last menu item.', 'neve' ),
+				'type'        => 'select',
+				'settings'    => 'neve_last_menu_item',
+				'priority'    => 800,
+				'section'     => $this->section,
+				'choices'     => array(
+					'none'   => __( 'None', 'neve' ),
+					'search' => __( 'Search', 'neve' ),
+				),
+			)
+		);
+
+		$wp_customize->add_setting(
 			$this->id . '_shortcut',
 			array(
 				'theme_supports' => 'hfg_support',
