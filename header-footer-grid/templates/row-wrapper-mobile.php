@@ -11,7 +11,7 @@ namespace HFG;
 
 use HFG\Core\Builder\Header as HeaderBuilder;
 
-$classes = [ 'hide-on-desktop', 'header-menu-sidebar', 'menu-sidebar-panel', 'dark-mode' ];
+$classes = [ 'header-menu-sidebar', 'menu-sidebar-panel', 'dark-mode' ];
 
 ?>
 <div id="header-menu-sidebar" class="<?php echo esc_attr( join( ' ', $classes ) ); ?>">
