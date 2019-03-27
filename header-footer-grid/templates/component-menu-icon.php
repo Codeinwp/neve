@@ -11,36 +11,25 @@ namespace HFG;
 
 use HFG\Core\Builder\Header as HeaderBuilder;
 
-$text           = get_theme_mod( current_component( HeaderBuilder::BUILDER_NAME )->get_section_id() . '_text' . '_setting', __( 'Menu', 'neve' ) );
-$item_classes   = [];
-$item_classes[] = 'menu-mobile-toggle item-button';
-$item_classes[] = 'is-size-desktop-medium';
-$item_classes[] = 'is-size-tablet-medium';
-$item_classes[] = 'is-size-mobile-medium';
-$label_classes  = array( 'nav-icon--label' );
+$text            = get_theme_mod( current_component( HeaderBuilder::BUILDER_NAME )->get_section_id() . '_text' . '_setting', __( 'Menu', 'neve' ) );
+$item_classes    = [];
+$item_classes[]  = 'menu-mobile-toggle item-button navbar-toggle-wrapper';
+$item_attributes = apply_filters( 'neve_nav_toggle_data_attrs', '' );
 
-$component_styles_array = [];
-
-$component_styles_array['padding'] = '0;';
-$component_styles_array['margin']  = '8px 2px;';
-
-$component_styles = '';
-if ( ! empty( $component_styles_array ) ) {
-	$component_styles = ' style="';
-	foreach ( $component_styles_array as $key => $value ) {
-		$component_styles .= sprintf( '%1$s: %2$s', $key, $value );
-	}
-	$component_styles .= '" ';
-}
+$label_classes = array( 'nav-icon--label' );
 
 ?>
-<a class="<?php echo esc_attr( join( ' ', $item_classes ) ); ?> " <?php echo  wp_kses_post( $component_styles ); ?>>
-	<span class="hamburger hamburger--squeeze">
-		<span class="hamburger-box">
-			<span class="hamburger-inner"></span>
-		</span>
-	</span>
-	<span class="<?php echo esc_attr( join( ' ', $label_classes ) ); ?>"><?php echo esc_attr( $text ); ?></span>
-</a>
+<div class="<?php echo esc_attr( join( ' ', $item_classes ) ); ?>">
+	<button class="navbar-toggle" <?php echo wp_kses_post( $item_attributes ); ?>
+			aria-label="<?php _e( 'Navigation Menu', 'neve' ); ?>">
+		<div class="bars">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</div>
+		<span class="screen-reader-text"><?php esc_html_e( 'Toggle Navigation', 'neve' ); ?></span>
+		<span class="<?php echo esc_attr( join( ' ', $label_classes ) ); ?>"><?php echo esc_attr( $text ); ?></span>
+	</button>
+</div> <!--.navbar-toggle-wrapper-->
 
 

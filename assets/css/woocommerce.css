@@ -1153,7 +1153,7 @@ body.woocommerce-account .nv-content-wrap > .woocommerce {
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.07);
   }
 
-  .row #nv-primary-navigation > li.menu-item-nav-cart > a {
+  #nv-primary-navigation > li.menu-item-nav-cart > a {
     display: block;
   }
 

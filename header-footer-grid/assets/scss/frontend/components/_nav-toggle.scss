@@ -1,19 +1,21 @@
-@mixin nav-toggle--laptop() {
-  .navbar-toggle-wrapper {
-    display: none;
-  }
-}
-
 .icon-bar {
-  transition: $transition_default;
+  transition: all .1s ease;
   position: relative;
   display: block;
-  background: $body-color;
   border-radius: 2px;
   width: 15px;
   height: 2px;
+
   &:nth-child(2) {
     margin: 3px 0;
+  }
+
+  .light-mode & {
+    background: #404248;
+  }
+
+  .dark-mode & {
+    background: #fff;
   }
 }
 
@@ -22,26 +24,40 @@
 }
 
 .navbar-toggle {
-  border: $muted-border;
   border-radius: 3px;
   background: none;
   cursor: pointer;
   padding: 10px 15px;
+  display: flex;
+  align-items: center;
   &:hover {
     box-shadow: none;
     transform: none;
     background: transparent;
   }
+
+  .nav-icon--label {
+    margin-left: 5px;
+  }
+  .light-mode & {
+    border: 1px solid #f0f0f0;
+    color: #404248;
+  }
+  .dark-mode & {
+    padding: 10px 0;
+  }
 }
 
-.navbar-toggle.active {
+.is-menu-sidebar .navbar-toggle {
   .icon-bar:nth-child(1) {
     transform: rotate(45deg);
     top: 5px;
   }
+
   .icon-bar:nth-child(2) {
     opacity: 0;
   }
+
   .icon-bar:nth-child(3) {
     transform: rotate(-45deg);
     bottom: 5px;

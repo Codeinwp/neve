@@ -656,48 +656,6 @@ blockquote.wp-block-quote.is-style-large cite {
   text-align: center;
 }
 
-.icon-bar {
-  transition: all 0.1s ease;
-  position: relative;
-  display: block;
-  background: #404248;
-  border-radius: 2px;
-  width: 15px;
-  height: 2px;
-}
-.icon-bar:nth-child(2) {
-  margin: 3px 0;
-}
-
-.navbar-toggle-wrapper {
-  align-items: center;
-}
-
-.navbar-toggle {
-  border: 1px solid #f0f0f0;
-  border-radius: 3px;
-  background: none;
-  cursor: pointer;
-  padding: 10px 15px;
-}
-.navbar-toggle:hover {
-  box-shadow: none;
-  transform: none;
-  background: transparent;
-}
-
-.navbar-toggle.active .icon-bar:nth-child(1) {
-  transform: rotate(45deg);
-  top: 5px;
-}
-.navbar-toggle.active .icon-bar:nth-child(2) {
-  opacity: 0;
-}
-.navbar-toggle.active .icon-bar:nth-child(3) {
-  transform: rotate(-45deg);
-  bottom: 5px;
-}
-
 .menu-opened {
   overflow: hidden;
 }
@@ -2445,10 +2403,6 @@ hr {
 
   .neve-main > .container > .row {
     flex-wrap: nowrap;
-  }
-
-  .navbar-toggle-wrapper {
-    display: none;
   }
 
   .menu-opened {

@@ -8,8 +8,8 @@
 // COMPONENTS
 @import "frontend/components/logo";
 @import "frontend/components/nav-menus";
-@import "frontend/components/nav-icon";
 @import "frontend/components/nav-cart";
+@import "frontend/components/nav-toggle";
 @import "frontend/components/search-field";
 
 .nv-search-icon-component a {
@@ -78,14 +78,8 @@
   }
 }
 
-// Common Header
-.site-header {
-  position: relative;
-  .hfg-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
+.hfg-grid {
+  display: flex;
 }
 
 /* Customizer Shortcut */

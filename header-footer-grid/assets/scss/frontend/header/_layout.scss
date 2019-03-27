@@ -1,22 +1,37 @@
-.hfg-grid {
-  display: flex;
+.site-header {
+  position: relative;
+
+  .hfg-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 }
 
 //<editor-fold desc="Row Layout">
-.header--row {
-  .header--row-inner, .header--row-inner .container .row {
-    display: flex;
-    align-items: center;
-  }
+$builder_types: header footer;
 
-  &.layout-fullwidth .header--row-inner .container {
-    max-width: 100% !important;
-  }
-  &.layout-contained {
-    max-width: $container_width;
-    margin:0 auto;
+@each $type in $builder_types {
+  .#{$type}--row {
+    .#{$type}--row-inner,
+    .#{$type}--row-inner .container .row {
+      display: flex;
+      align-items: center;
+    }
+
+    &.layout-fullwidth {
+      .#{$type}--row-inner .container {
+        max-width: 100% !important;
+      }
+    }
+
+    &.layout-contained {
+      max-width: $container_width;
+      margin: 0 auto;
+    }
   }
 }
+
 //</editor-fold>
 
 
@@ -29,16 +44,19 @@
   &.light-mode {
     background-color: #fff;
     color: #404248;
+
     a:not(.button) {
       color: #404248;
     }
   }
+
   &.dark-mode {
-    &, .sub-menu, .sub-menu li{
+    &, .sub-menu, .sub-menu li {
       border-color: #333;
       background-color: #24292e;
       color: #fff;
     }
+
     a:not(.button) {
       color: #fff;
     }
@@ -47,8 +65,10 @@
 
 .header-main-inner {
   border-bottom: 1px solid #f0f0f0;
+
   &.dark-mode {
     border-bottom: 1px solid #333;
   }
 }
+
 //</editor-fold>

@@ -46,15 +46,15 @@
     padding-right: 3px;
     position: relative;
     z-index: 1;
-  }
 
-  a:after {
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: auto;
-    z-index: -1;
+    &:after {
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: auto !important;
+      z-index: -1;
+    }
   }
 
   .sub-menu a:after {
@@ -84,4 +84,7 @@
       font-weight: 500;
     }
   }
+}
+
+.nav-menu-footer {
 }

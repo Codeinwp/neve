@@ -370,9 +370,6 @@ body {
       left: 0;
       visibility: visible;
     }
-    .menu-mobile-toggle {
-      opacity: 0;
-    }
   }
   &.menu_sidebar_slide_right {
     overflow: initial;
@@ -386,9 +383,6 @@ body {
       transform: translate3d(0, 0, 0);
       right: 0;
       visibility: visible;
-    }
-    .menu-mobile-toggle {
-      opacity: 0;
     }
   }
   &.menu_sidebar_dropdown {
