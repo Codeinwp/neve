@@ -15,10 +15,19 @@ $device     = current_device();
 $control_id = get_builders()->get_property( 'control_id' );
 
 $skin_mode   = get_theme_mod( $control_id . '_' . $row_index . '_skin', 'light-mode' );
+
+$row_visibility = '';
+if ( $row_index !== 'sidebar' ) {
+	$row_visibility = 'hide-on-desktop';
+	if ( $device === 'desktop' ) {
+		$row_visibility = 'hide-on-mobile hide-on-tablet';
+	}
+}
+
 $row_classes = [
 	'header--row',
 	'header-' . $row_index,
-	$device === 'desktop' ? 'hide-on-mobile hide-on-tablet' : 'hide-on-desktop',
+	$row_visibility,
 ];
 
 $row_classes[] = get_theme_mod( $control_id . '_' . $row_index . '_layout', 'layout-full-contained' );
