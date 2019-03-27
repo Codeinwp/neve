@@ -1,6 +1,6 @@
 
 .style-border-top, .style-border-bottom, .style-full-height {
-  a:after {
+  .menu-item > a:after {
     position: absolute;
     content: "";
     display: block;

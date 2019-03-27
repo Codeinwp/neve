@@ -61,7 +61,11 @@
 }
 
 .menu-item-nav-search {
+  cursor: pointer;
   outline: 0;
+  &:hover .search-icon {
+    opacity: .75;
+  }
 }
 
 .menu-item-nav-search:not(.responsive-nav-search).nv-nav-search {
@@ -133,11 +137,12 @@ a.button.close-responsive-search {
 }
 
 @mixin nav-search--laptop() {
-  #nv-primary-navigation .menu-item-nav-search:not(.responsive-nav-search) {
+  .row #nv-primary-navigation .menu-item-nav-search:not(.responsive-nav-search) {
     display: block;
   }
 
   #nv-primary-navigation > li.menu-item-nav-search > a {
     display: block;
   }
+
 }

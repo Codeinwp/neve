@@ -1153,11 +1153,11 @@ body.woocommerce-account .nv-content-wrap > .woocommerce {
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.07);
   }
 
-  #nv-primary-navigation > li.menu-item-nav-cart > a {
+  .row #nv-primary-navigation > li.menu-item-nav-cart > a {
     display: block;
   }
 
-  #nv-primary-navigation .menu-item-nav-cart:not(.responsive-nav-cart) {
+  .row #nv-primary-navigation .menu-item-nav-cart:not(.responsive-nav-cart) {
     display: block;
   }
 
@@ -1183,6 +1183,9 @@ body.woocommerce-account .nv-content-wrap > .woocommerce {
     right: 0;
     width: 350px;
     background: #fff;
+  }
+  .nv-nav-cart .widget_shopping_cart {
+    color: #404248;
   }
   .nv-nav-cart .widget_shopping_cart > .widget_shopping_cart_content > ul.woocommerce-mini-cart.cart_list.product_list_widget {
     max-height: 290px;
