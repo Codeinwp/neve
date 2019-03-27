@@ -24,7 +24,7 @@ if ( is_active_sidebar( $id ) ) {
 			<div class="textwidget">
 				<?php
 				echo sprintf(
-					/* translators: %s1 - url, %s2 - widget id */
+				/* translators: %s1 - url, %s2 - widget id */
 					__(
 						'<p>Replace this widget content by going to <a href="%1$s"><strong>Appearance &rarr; Customize &rarr; Footer &rarr; %2$s</strong></a> and add widgets into this widget area.</p>',
 						'neve'

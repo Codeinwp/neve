@@ -54,24 +54,6 @@ class Footer extends Abstract_Builder {
 	}
 
 	/**
-	 * Utility method to generate defaults for JS and regular PHP calls.
-	 *
-	 * @since   1.0.0
-	 * @access  public
-	 *
-	 * @param string $theme_mod The name of the mod.
-	 *
-	 * @return false|mixed|string
-	 */
-	public function filter_defaults( $theme_mod ) {
-		if ( empty( $theme_mod ) || ! $theme_mod || is_object( $theme_mod ) && empty( json_decode( json_encode( $theme_mod ), true ) ) ) {
-			return json_encode( Settings::get_instance()->get_footer_defaults_neve() );
-		}
-
-		return $theme_mod;
-	}
-
-	/**
 	 * Method called via hook.
 	 *
 	 * @since   1.0.0

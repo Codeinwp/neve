@@ -142,87 +142,43 @@ class Settings {
 			$alignament = get_theme_mod( 'neve_top_bar_layout', 'content-menu' );
 			if ( $alignament === 'content-menu' ) {
 				$defaults['desktop']['top']['custom_html']    = [
-					'id'    => 'custom_html',
-					'width' => 6,
-					'x'     => 0,
+					'id'       => 'custom_html',
+					'width'    => 6,
+					'settings' => [
+						'align' => 'left',
+					],
+					'x'        => 0,
 				];
 				$defaults['desktop']['top']['secondary-menu'] = [
-					'id'    => 'secondary-menu',
-					'width' => 6,
-					'x'     => 6,
+					'id'       => 'secondary-menu',
+					'width'    => 6,
+					'settings' => [
+						'align' => 'right',
+					],
+					'x'        => 6,
 				];
 			}
 			if ( $alignament === 'menu-content' ) {
 				$defaults['desktop']['top']['secondary-menu'] = [
-					'id'    => 'secondary-menu',
-					'width' => 6,
-					'x'     => 0,
+					'id'       => 'secondary-menu',
+					'width'    => 6,
+					'settings' => [
+						'align' => 'left',
+					],
+					'x'        => 0,
 				];
 				$defaults['desktop']['top']['custom_html']    = [
-					'id'    => 'custom_html',
-					'width' => 6,
-					'x'     => 6,
+					'id'       => 'custom_html',
+					'width'    => 6,
+					'settings' => [
+						'align' => 'right',
+					],
+					'x'        => 6,
 				];
 			}
 		}
 
-		$layout            = get_theme_mod( 'neve_navigation_layout', 'left' );
-		$last_item_default = 'search';
-		if ( class_exists( 'WooCommerce' ) ) {
-			$last_item_default = 'search-cart';
-		}
-
-		$last_item = get_theme_mod( 'neve_last_menu_item', $last_item_default );
-		$extra     = [];
-		if ( $last_item === 'none' ) {
-			$menu_width = 8;
-		}
-
-		if ( $last_item === 'search' ) {
-			$menu_width = 7;
-			$extra[]    = [
-				'id'    => 'header_search_responsive',
-				'width' => 1,
-				'x'     => 0,
-			];
-		}
-
-		if ( $last_item === 'cart' ) {
-			$menu_width = 7;
-			$extra[]    = [
-				'id'    => 'header_cart_icon',
-				'width' => 1,
-				'x'     => 0,
-			];
-		}
-
-		if ( $last_item === 'search-cart' ) {
-			$menu_width = 6;
-			$extra[]    = [
-				'id'    => 'header_search_responsive',
-				'width' => 1,
-				'x'     => 0,
-			];
-			$extra[]    = [
-				'id'    => 'header_cart_icon',
-				'width' => 1,
-				'x'     => 0,
-			];
-		}
-
-		if ( $last_item === 'cart-search' ) {
-			$menu_width = 6;
-			$extra[]    = [
-				'id'    => 'header_cart_icon',
-				'width' => 1,
-				'x'     => 0,
-			];
-			$extra[]    = [
-				'id'    => 'header_search_responsive',
-				'width' => 1,
-				'x'     => 0,
-			];
-		}
+		$layout = get_theme_mod( 'neve_navigation_layout', 'left' );
 
 		if ( $layout === 'left' ) {
 			$defaults['desktop']['main']['logo']         = [
@@ -230,54 +186,81 @@ class Settings {
 				'width'    => 4,
 				'x'        => 0,
 				'settings' => [
-					'align' => 'center',
+					'align' => 'left',
 				],
 			];
 			$defaults['desktop']['main']['primary-menu'] = [
-				'id'    => 'primary-menu',
-				'width' => $menu_width,
-				'x'     => 4,
+				'id'       => 'primary-menu',
+				'settings' => [
+					'align' => 'right',
+				],
+				'width'    => 8,
+				'x'        => 4,
 			];
-			foreach ( $extra as $extra_item ) {
-				$extra_item['x']                                    = 4 + $menu_width + 1;
-				$defaults['desktop']['bottom'][ $extra_item['id'] ] = $extra_item;
-			}
 		}
 
 		if ( $layout === 'center' ) {
 			$defaults['desktop']['main']['logo']           = [
-				'id'    => 'logo',
-				'width' => 6,
-				'x'     => 3,
+				'id'       => 'logo',
+				'width'    => 12,
+				'x'        => 0,
+				'settings' => [
+					'align' => 'center',
+				]
 			];
 			$defaults['desktop']['bottom']['primary-menu'] = [
-				'id'    => 'primary-menu',
-				'width' => $menu_width,
-				'x'     => 3,
+				'id'       => 'primary-menu',
+				'width'    => 12,
+				'x'        => 0,
+				'settings' => [
+					'align' => 'center',
+				]
 			];
-
-			foreach ( $extra as $extra_item ) {
-				$extra_item['x']                                    = 3 + $menu_width + 1;
-				$defaults['desktop']['bottom'][ $extra_item['id'] ] = $extra_item;
-			}
 		}
 
 		if ( $layout === 'right' ) {
 			$defaults['desktop']['main']['primary-menu'] = [
-				'id'    => 'primary-menu',
-				'width' => $menu_width,
-				'x'     => 0,
+				'id'       => 'primary-menu',
+				'width'    => 8,
+				'settings' => [
+					'align' => 'left',
+				],
+				'x'        => 0,
 			];
-			foreach ( $extra as $extra_item ) {
-				$extra_item['x']                                  = $menu_width + 1;
-				$defaults['desktop']['main'][ $extra_item['id'] ] = $extra_item;
-			}
-			$defaults['desktop']['main']['logo'] = [
-				'id'    => 'logo',
-				'width' => 4,
-				'x'     => 8,
+			$defaults['desktop']['main']['logo']         = [
+				'id'       => 'logo',
+				'width'    => 4,
+				'settings' => [
+					'align' => 'right',
+				],
+				'x'        => 8,
 			];
 		}
+
+		$defaults['mobile']['main']['logo']            = [
+			'id'       => 'logo',
+			'width'    => 8,
+			'settings' => [
+				'align' => 'left',
+			],
+			'x'        => 0,
+		];
+		$defaults['mobile']['main']['nav-icon']        = [
+			'id'       => 'nav-icon',
+			'width'    => 4,
+			'settings' => [
+				'align' => 'right',
+			],
+			'x'        => 8,
+		];
+		$defaults['mobile']['sidebar']['primary-menu'] = [
+			'id'       => 'primary-menu',
+			'width'    => 8,
+			'settings' => [
+				'align' => 'left',
+			],
+			'x'        => 0,
+		];
 
 		return json_encode( $defaults );
 	}
@@ -290,20 +273,49 @@ class Settings {
 	 * @return array
 	 */
 	public function get_footer_defaults_neve() {
-		return json_encode(
-			[
-				'desktop' => [
-					'top'    => [],
-					'bottom' => [
-						[
-							'id'    => 'footer_copyright',
-							'width' => 1,
-							'x'     => 6,
-						],
-					],
-				],
+		$defaults       = [
+			'desktop' => [
+				'top'    => [],
+				'bottom' => []
 			]
+		];
+		$sidebars       = (int) get_theme_mod( 'neve_footer_widget_columns', '3' );
+		$sidebars_names = array(
+			'footer-one-widgets',
+			'footer-two-widgets',
+			'footer-three-widgets',
+			'footer-four-widgets',
 		);
+		for ( $i = 0; $i < $sidebars; $i ++ ) {
+			$defaults['desktop']['top'][ $sidebars_names[ $i ] ] = [
+				'id'    => $sidebars_names[ $i ],
+				'width' => 12 / $sidebars,
+				'x'     => $i * ( 12 / $sidebars ),
+			];
+		}
+		$content_type = get_theme_mod( 'neve_footer_content_type', 'text' );
+		if ( $content_type === 'text' ) {
+			$defaults['desktop']['bottom']['footer_copyright'] = [
+				'id'       => 'footer_copyright',
+				'width'    => 12,
+				'x'        => 0,
+				'settings' => [
+					'align' => 'center',
+				]
+			];
+		}
+		if ( $content_type === 'footer_menu' ) {
+			$defaults['desktop']['bottom']['footer-menu'] = [
+				'id'       => 'footer-menu',
+				'width'    => 12,
+				'x'        => 0,
+				'settings' => [
+					'align' => 'center',
+				]
+			];
+		}
+
+		return json_encode( $defaults );
 	}
 
 	/**
@@ -312,7 +324,7 @@ class Settings {
 	 * @since   1.0.0
 	 * @access  public
 	 *
-	 * @param  mixed      $value The media reference.
+	 * @param  mixed     $value The media reference.
 	 * @param mixed|null $size Optional. The size desired.
 	 *
 	 * @return array|bool|false|string
