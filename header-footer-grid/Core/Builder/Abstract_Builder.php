@@ -350,69 +350,71 @@ abstract class Abstract_Builder implements Builder {
 				)
 			);
 
-			$wp_customize->add_setting(
-				$this->control_id . '_' . $row_id . '_layout',
-				array(
-					'theme_supports' => 'hfg_support',
-					'transport'      => 'postMessage',
-					'default'        => 'layout-full-contained',
-				)
-			);
-			array_push( $partial_settings, $this->control_id . '_' . $row_id . '_layout' );
-			$wp_customize->add_control(
-				$this->control_id . '_' . $row_id . '_layout',
-				[
-					'label'   => __( 'Layout', 'neve' ),
-					'type'    => 'select',
-					'section' => $this->control_id . '_' . $row_id,
-					'choices' => array(
-						'layout-full-contained' => __( 'Full Width - Contained', 'neve' ),
-						'layout-fullwidth'      => __( 'Full Width', 'neve' ),
-						'layout-contained'      => __( 'Contained', 'neve' ),
-					),
-				]
-			);
+			if ( $row_id !== 'sidebar' ) {
+				$wp_customize->add_setting(
+					$this->control_id . '_' . $row_id . '_layout',
+					array(
+						'theme_supports' => 'hfg_support',
+						'transport'      => 'postMessage',
+						'default'        => 'layout-full-contained',
+					)
+				);
+				array_push( $partial_settings, $this->control_id . '_' . $row_id . '_layout' );
+				$wp_customize->add_control(
+					$this->control_id . '_' . $row_id . '_layout',
+					[
+						'label'   => __( 'Layout', 'neve' ),
+						'type'    => 'select',
+						'section' => $this->control_id . '_' . $row_id,
+						'choices' => array(
+							'layout-full-contained' => __( 'Full Width - Contained', 'neve' ),
+							'layout-fullwidth'      => __( 'Full Width', 'neve' ),
+							'layout-contained'      => __( 'Contained', 'neve' ),
+						),
+					]
+				);
 
-			$wp_customize->add_setting(
-				$this->control_id . '_' . $row_id . '_height',
-				array(
-					'theme_supports' => 'hfg_support',
-					'transport'      => 'postMessage',
-					'default'        => '{ "mobile": "0", "tablet": "0", "desktop": "0" }',
-				)
-			);
-			array_push( $partial_settings, $this->control_id . '_' . $row_id . '_height' );
-			$wp_customize->add_control(
-				new Range(
-					$wp_customize,
+				$wp_customize->add_setting(
 					$this->control_id . '_' . $row_id . '_height',
 					array(
-						'label'       => esc_html__( 'Row height (px)', 'neve' ),
-						'section'     => $this->control_id . '_' . $row_id,
-						'type'        => 'range-value',
-						'media_query' => true,
-						'step'        => 1,
-						'input_attr'  => array(
-							'mobile'  => array(
-								'min'     => 0,
-								'max'     => 350,
-								'default' => 0,
-							),
-							'tablet'  => array(
-								'min'     => 0,
-								'max'     => 350,
-								'default' => 0,
-							),
-							'desktop' => array(
-								'min'     => 0,
-								'max'     => 350,
-								'default' => 0,
-							),
-						),
-						'priority'    => 25,
+						'theme_supports' => 'hfg_support',
+						'transport'      => 'postMessage',
+						'default'        => '{ "mobile": "0", "tablet": "0", "desktop": "0" }',
 					)
-				)
-			);
+				);
+				array_push( $partial_settings, $this->control_id . '_' . $row_id . '_height' );
+				$wp_customize->add_control(
+					new Range(
+						$wp_customize,
+						$this->control_id . '_' . $row_id . '_height',
+						array(
+							'label'       => esc_html__( 'Row height (px)', 'neve' ),
+							'section'     => $this->control_id . '_' . $row_id,
+							'type'        => 'range-value',
+							'media_query' => true,
+							'step'        => 1,
+							'input_attr'  => array(
+								'mobile'  => array(
+									'min'     => 0,
+									'max'     => 350,
+									'default' => 0,
+								),
+								'tablet'  => array(
+									'min'     => 0,
+									'max'     => 350,
+									'default' => 0,
+								),
+								'desktop' => array(
+									'min'     => 0,
+									'max'     => 350,
+									'default' => 0,
+								),
+							),
+							'priority'    => 25,
+						)
+					)
+				);
+			}
 
 			$wp_customize->add_setting(
 				$this->control_id . '_' . $row_id . '_skin',
