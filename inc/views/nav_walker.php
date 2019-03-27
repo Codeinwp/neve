@@ -35,7 +35,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	 * @return string
 	 */
 	public function add_caret( $title, $item, $args, $depth ) {
-		if( strpos( $title, 'class="caret"' ) ) {
+		if ( strpos( $title, 'class="caret"' ) ) {
 			return $title;
 		}
 

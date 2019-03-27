@@ -10,7 +10,6 @@
 namespace HFG;
 
 use HFG\Core\Builder\Header as HeaderBuilder;
-use Neve\Views\Header;
 
 $id         = current_component( HeaderBuilder::BUILDER_NAME )->get_id();
 $style      = get_theme_mod( $id . '_style', 'style-plain' );
@@ -37,7 +36,7 @@ $container_classes[] = 'nav-menu-primary';
 				'container'      => 'ul',
 				'walker'         => '\Neve\Views\Nav_Walker',
 				'fallback_cb'    => '\Neve\Views\Nav_Walker::fallback',
-				'echo'           => false
+				'echo'           => false,
 			]
 		);
 		?>

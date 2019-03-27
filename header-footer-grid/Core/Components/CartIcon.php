@@ -45,14 +45,15 @@ class CartIcon extends Abstract_Component {
 	 *
 	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
 	 *
-	 * @return WP_Customize_Manager
+	 * @return array
 	 */
 	public function customize_register( WP_Customize_Manager $wp_customize ) {
 		$fn       = array( $this, 'render' );
 		$selector = 'a.item--' . $this->id;
 
 		$wp_customize->add_section(
-			$this->section, array(
+			$this->section,
+			array(
 				'title'    => $this->label,
 				'priority' => 30,
 				'panel'    => $this->panel,
@@ -60,7 +61,8 @@ class CartIcon extends Abstract_Component {
 		);
 
 		$wp_customize->add_setting(
-			$this->id . '_placeholder', array(
+			$this->id . '_placeholder',
+			array(
 				'theme_supports' => 'hfg_support',
 				'default'        => __( 'Search for ...', 'neve' ),
 				'transport'      => 'refresh',
@@ -68,7 +70,8 @@ class CartIcon extends Abstract_Component {
 		);
 
 		$wp_customize->add_control(
-			$this->id . '_placeholder', array(
+			$this->id . '_placeholder',
+			array(
 				'name'            => $this->section . '_placeholder',
 				'label'           => __( 'Placeholder', 'neve' ),
 				'type'            => 'text',

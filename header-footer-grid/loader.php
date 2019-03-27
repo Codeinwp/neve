@@ -37,12 +37,14 @@ add_theme_support(
 require_once 'functions-template.php';
 
 add_action(
-	'neve_do_footer', function () {
+	'neve_do_footer',
+	function () {
 		do_action( 'hfg_footer_render' );
 	}
 );
 add_action(
-	'neve_do_header', function () {
+	'neve_do_header',
+	function () {
 		do_action( 'hfg_header_render' );
 	}
 );

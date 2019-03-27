@@ -326,7 +326,7 @@ abstract class Abstract_Builder implements Builder {
 	 * @return WP_Customize_Manager|null
 	 */
 	protected function add_rows_controls( $wp_customize ) {
-		$rows         = $this->get_rows();
+		$rows = $this->get_rows();
 		if ( empty( $rows ) ) {
 			return null;
 		}
@@ -635,7 +635,8 @@ abstract class Abstract_Builder implements Builder {
 		$last_item   = null;
 
 		usort(
-			$data, function ( $item1, $item2 ) {
+			$data,
+			function ( $item1, $item2 ) {
 				if ( $item1['x'] == $item2['x'] ) {
 					return 0;
 				}

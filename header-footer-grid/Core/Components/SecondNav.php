@@ -48,7 +48,7 @@ class SecondNav extends Abstract_Component {
 	 *
 	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
 	 *
-	 * @return WP_Customize_Manager
+	 * @return array
 	 */
 	public function customize_register( WP_Customize_Manager $wp_customize ) {
 		$fn       = array( $this, 'render' );
@@ -100,13 +100,12 @@ class SecondNav extends Abstract_Component {
 			)
 		);
 
-
 		$wp_customize->add_setting(
 			$this->id . '_color',
 			array(
 				'theme_supports' => 'hfg_support',
 				'transport'      => 'postMessage',
-				'default'        => '#404248'
+				'default'        => '#404248',
 			)
 		);
 		$wp_customize->add_control(
@@ -125,7 +124,7 @@ class SecondNav extends Abstract_Component {
 			array(
 				'theme_supports' => 'hfg_support',
 				'transport'      => 'postMessage',
-				'default'        => '#404248'
+				'default'        => '#404248',
 			)
 		);
 		$wp_customize->add_control(
@@ -204,7 +203,7 @@ class SecondNav extends Abstract_Component {
 		$hover_color = get_theme_mod( $this->id . '_hover_color' );
 		if ( ! empty( $hover_color ) ) {
 			$css_array['.nav-menu-secondary:not(.style-full-height) #secondary-menu li:hover > a'] = array( 'color' => sanitize_hex_color( $hover_color ) );
-			$css_array['#secondary-menu a:after']                                                  = array( 'background-color' => sanitize_hex_color( $hover_color ) );
+			$css_array['#secondary-menu a:after'] = array( 'background-color' => sanitize_hex_color( $hover_color ) );
 		}
 
 		return $css_array;
