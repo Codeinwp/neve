@@ -141,7 +141,7 @@ class Nav extends Abstract_Component {
 		$wp_customize->add_setting(
 			'neve_last_menu_item',
 			array(
-				'default' => 'search',
+				'default' => 'none',
 				'theme_supports' => 'hfg_support',
 				'transport'      => 'postMessage',
 			)
@@ -152,7 +152,6 @@ class Nav extends Abstract_Component {
 				'label'       => __( 'Last Menu Item', 'neve' ),
 				'description' => __( 'Set the last menu item.', 'neve' ),
 				'type'        => 'select',
-				'settings'    => 'neve_last_menu_item',
 				'priority'    => 800,
 				'section'     => $this->section,
 				'choices'     => array(
@@ -192,6 +191,7 @@ class Nav extends Abstract_Component {
 					$this->id . '_shortcut',
 					$this->id . '_color',
 					$this->id . '_hover_color',
+					'neve_last_menu_item'
 				),
 				'render_callback' => $fn,
 			)

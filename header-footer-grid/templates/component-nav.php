@@ -10,6 +10,7 @@
 namespace HFG;
 
 use HFG\Core\Builder\Header as HeaderBuilder;
+use Neve\Views\Header;
 
 $id         = current_component( HeaderBuilder::BUILDER_NAME )->get_id();
 $style      = get_theme_mod( $id . '_style', 'style-plain' );
@@ -28,7 +29,7 @@ $container_classes[] = 'nav-menu-primary';
 		aria-label="<?php echo esc_html( __( 'Primary Menu', 'neve' ) ); ?>">
 
 		<?php
-		wp_nav_menu(
+		echo wp_nav_menu(
 			[
 				'theme_location' => 'primary',
 				'menu_id'        => 'nv-primary-navigation',
@@ -36,6 +37,7 @@ $container_classes[] = 'nav-menu-primary';
 				'container'      => 'ul',
 				'walker'         => '\Neve\Views\Nav_Walker',
 				'fallback_cb'    => '\Neve\Views\Nav_Walker::fallback',
+                'echo'           => false
 			]
 		);
 		?>
