@@ -35,10 +35,6 @@ add_theme_support(
 	)
 );
 require_once 'functions-template.php';
-/**
- * Disable search icon in menu as HFG has a search icon item already.
- */
-add_filter( 'neve_should_search_in_menu', '__return_false' );
 
 add_action(
 	'neve_do_footer', function () {
