@@ -326,7 +326,7 @@ abstract class Abstract_Builder implements Builder {
 	 * @return WP_Customize_Manager|null
 	 */
 	protected function add_rows_controls( $wp_customize ) {
-		$rows         = $this->get_rows();
+		$rows = $this->get_rows();
 		if ( empty( $rows ) ) {
 			return null;
 		}

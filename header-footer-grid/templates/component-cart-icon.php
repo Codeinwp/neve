@@ -9,7 +9,7 @@
  */
 namespace HFG;
 
-$class = 'menu-item-nav-cart';
+$class  = 'menu-item-nav-cart';
 $class .= ' responsive-nav-cart ';
 
 ?>

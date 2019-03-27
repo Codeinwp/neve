@@ -105,7 +105,7 @@ class Nav extends Abstract_Component {
 			array(
 				'theme_supports' => 'hfg_support',
 				'transport'      => 'postMessage',
-				'default'        => '#404248'
+				'default'        => '#404248',
 			)
 		);
 		$wp_customize->add_control(
@@ -124,7 +124,7 @@ class Nav extends Abstract_Component {
 			array(
 				'theme_supports' => 'hfg_support',
 				'transport'      => 'postMessage',
-				'default'        => '#0366d6'
+				'default'        => '#0366d6',
 			)
 		);
 		$wp_customize->add_control(
@@ -164,7 +164,7 @@ class Nav extends Abstract_Component {
 				'type'        => 'select',
 				'priority'    => 800,
 				'section'     => $this->section,
-				'choices'     => $choices
+				'choices'     => $choices,
 			)
 		);
 
@@ -198,7 +198,7 @@ class Nav extends Abstract_Component {
 					$this->id . '_shortcut',
 					$this->id . '_color',
 					$this->id . '_hover_color',
-					'neve_last_menu_item'
+					'neve_last_menu_item',
 				),
 				'render_callback' => $fn,
 			)

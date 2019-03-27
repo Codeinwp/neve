@@ -47,7 +47,7 @@ class Logo extends Abstract_Component {
 	 *
 	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
 	 *
-	 * @return WP_Customize_Manager
+	 * @return array
 	 */
 	public function customize_register( WP_Customize_Manager $wp_customize ) {
 
@@ -166,23 +166,32 @@ class Logo extends Abstract_Component {
 		Main::get_instance()->load( 'component-logo' );
 	}
 
+	/**
+	 * Method to add Component css styles.
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 * @param array $css_array An array containing css rules.
+	 *
+	 * @return array
+	 */
 	public function add_style( array $css_array = array() ) {
-		$logo_max_width = json_decode(get_theme_mod( $this->id . '_max_width', '{ "mobile": "120", "tablet": "120", "desktop": "120" }' ), true);
-		$selector      = '.site-logo img';
+		$logo_max_width = json_decode( get_theme_mod( $this->id . '_max_width', '{ "mobile": "120", "tablet": "120", "desktop": "120" }' ), true );
+		$selector       = '.site-logo img';
 		if ( isset( $logo_max_width['mobile'] ) ) {
-			$logo_max_width['mobile']                              = ( $logo_max_width['mobile'] > 0 ) ? $logo_max_width['mobile'] . 'px' : 'auto';
+			$logo_max_width['mobile']                             = ( $logo_max_width['mobile'] > 0 ) ? $logo_max_width['mobile'] . 'px' : 'auto';
 			$css_array[' @media (max-width: 576px)'][ $selector ] = array(
 				'max-width' => $logo_max_width['mobile'],
 			);
 		}
 		if ( isset( $logo_max_width['tablet'] ) ) {
-			$logo_max_width['tablet']                              = ( $logo_max_width['tablet'] > 0 ) ? $logo_max_width['tablet'] . 'px' : 'auto';
+			$logo_max_width['tablet']                             = ( $logo_max_width['tablet'] > 0 ) ? $logo_max_width['tablet'] . 'px' : 'auto';
 			$css_array[' @media (min-width: 576px)'][ $selector ] = array(
 				'max-width' => $logo_max_width['tablet'],
 			);
 		}
 		if ( isset( $logo_max_width['desktop'] ) ) {
-			$logo_max_width['desktop']                             = ( $logo_max_width['desktop'] > 0 ) ? $logo_max_width['desktop'] . 'px' : 'auto';
+			$logo_max_width['desktop']                            = ( $logo_max_width['desktop'] > 0 ) ? $logo_max_width['desktop'] . 'px' : 'auto';
 			$css_array[' @media (min-width: 796px)'][ $selector ] = array(
 				'max-width' => $logo_max_width['desktop'],
 			);

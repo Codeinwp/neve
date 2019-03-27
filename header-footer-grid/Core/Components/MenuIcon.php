@@ -45,7 +45,7 @@ class MenuIcon extends Abstract_Component {
 	 *
 	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
 	 *
-	 * @return WP_Customize_Manager
+	 * @return array
 	 */
 	public function customize_register( WP_Customize_Manager $wp_customize ) {
 		$prefix   = $this->section;
