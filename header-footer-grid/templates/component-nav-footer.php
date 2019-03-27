@@ -23,7 +23,7 @@ if ( $hide_arrow ) {
 $container_classes[] = 'nav-menu-footer';
 
 ?>
-<div class="nv-nav-wrap nav-left">
+<div class="nv-nav-wrap">
 	<div role="navigation" class="<?php echo esc_attr( join( ' ', $container_classes ) ); ?>"
 		aria-label="<?php echo esc_html( __( 'Footer Menu', 'neve' ) ); ?>">
 

@@ -1,3 +1,26 @@
+.hfg-grid {
+  display: flex;
+}
+
+//<editor-fold desc="Row Layout">
+.header--row {
+  .header--row-inner, .header--row-inner .container .row {
+    display: flex;
+    align-items: center;
+  }
+
+  &.layout-fullwidth .header--row-inner .container {
+    max-width: 100% !important;
+  }
+  &.layout-contained {
+    max-width: $container_width;
+    margin:0 auto;
+  }
+}
+//</editor-fold>
+
+
+//<editor-fold desc="Row Styles">
 .header--row-inner.header-top-inner.light-mode {
   background-color: #f0f0f0;
 }
@@ -28,3 +51,4 @@
     border-bottom: 1px solid #333;
   }
 }
+//</editor-fold>

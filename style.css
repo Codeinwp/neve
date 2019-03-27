@@ -622,7 +622,6 @@ blockquote.wp-block-quote.is-style-large cite {
 }
 
 .site-logo {
-  min-width: 270px;
   align-items: center;
   display: flex;
   padding: 10px 0;

@@ -6,6 +6,7 @@
   background: transparent;
   //color: inherit;
   box-shadow: none;
+  color: currentColor;
   transition: transform .3s, border .3s, background .3s, box-shadow .3s, opacity .3s, color .3s;
   &:hover {
     box-shadow: none;

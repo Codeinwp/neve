@@ -1,16 +1,20 @@
 @import "frontend/mixins";
 @import "frontend/vars";
-@import "frontend/rows/layout";
-@import "frontend/header/header_top";
+@import "frontend/header/layout";
+@import "frontend/header/alignments";
 @import "frontend/header/mobile_sidebar";
 
 
 // COMPONENTS
 @import "frontend/components/logo";
-@import "frontend/components/nav-icon";
 @import "frontend/components/nav-menus";
+@import "frontend/components/nav-icon";
+@import "frontend/components/nav-cart";
 @import "frontend/components/search-field";
 
+.nv-search-icon-component a {
+  padding: 10px 0;
+}
 
 /* Customize Preview */
 .customize-previewing {
@@ -240,16 +244,4 @@
 .component-wrap{
   display: flex;
   margin: 4px 0;
-}
-.nv-search-icon-component a{
-  padding: 10px 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-}
-.nv-search-icon-component{
-  flex-direction: row;
-  align-items: center;
-  padding-bottom: 0;
 }

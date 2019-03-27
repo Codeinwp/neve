@@ -147,30 +147,6 @@ class Logo extends Abstract_Component {
 			)
 		);
 
-		$wp_customize->add_setting(
-			$this->id . '_logo_pos',
-			array(
-				'transport'      => 'postMessage',
-				'theme_supports' => 'hfg_support',
-				'default'        => 'top',
-			)
-		);
-		array_push( $partial_settings, $this->id . '_logo_pos' );
-		$wp_customize->add_control(
-			$this->id . '_logo_pos',
-			[
-				'label'   => __( 'Logo Position', 'neve' ),
-				'type'    => 'select',
-				'section' => $this->section,
-				'choices' => array(
-					'top'    => __( 'Top', 'neve' ),
-					'left'   => __( 'Left', 'neve' ),
-					'right'  => __( 'Right', 'neve' ),
-					'bottom' => __( 'Bottom', 'neve' ),
-				),
-			]
-		);
-
 		$wp_customize->selective_refresh->add_partial(
 			$this->id . '_partial',
 			array(
