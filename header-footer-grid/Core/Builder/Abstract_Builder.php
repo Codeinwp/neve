@@ -663,7 +663,7 @@ abstract class Abstract_Builder implements Builder {
 			if ( isset( $component_location['settings']['align'] ) && in_array( $component_location['settings']['align'], array( 'left', 'center', 'right' ) ) ) {
 				$alignment_default = $component_location['settings']['align'];
 			}
-			$align = get_theme_mod( $component_location['id'] . '_align', $alignment_default );
+			$align = get_theme_mod( $component_location['id'] . '_component_align', $alignment_default );
 
 			if ( ! $collection->hasNext() && ( $x + $width < $max_columns ) ) {
 				$width += $max_columns - ( $x + $width );
