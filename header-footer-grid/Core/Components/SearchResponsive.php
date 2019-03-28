@@ -100,7 +100,7 @@ class SearchResponsive extends Abstract_Component {
 	/**
 	 * Change the form placeholder.
 	 *
-	 * @param string $form form markup
+	 * @param string $form form markup.
 	 *
 	 * @return string
 	 */
