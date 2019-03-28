@@ -64,7 +64,7 @@ class Search extends Abstract_Component {
 			$this->id . '_placeholder',
 			array(
 				'theme_supports' => 'hfg_support',
-				'default'        => __( 'Search for ...', 'neve' ),
+				'default'        => __( 'Search for...', 'neve' ),
 				'transport'      => 'refresh',
 			)
 		);
@@ -92,6 +92,22 @@ class Search extends Abstract_Component {
 	 * @access  public
 	 */
 	public function render_component() {
+		add_filter( 'get_search_form', [ $this, 'change_placeholder' ] );
 		Main::get_instance()->load( 'component-search' );
+		remove_filter( 'get_search_form', [ $this, 'change_placeholder' ] );
+	}
+
+	public function change_placeholder( $form ) {
+		$markup      = '';
+		$placeholder = get_theme_mod( $this->id . '_placeholder', __( 'Search for...', 'neve' ) );
+		$markup      .= '<form role="search" method="get" class="search-form" action="' . esc_url( home_url( '/' ) ) . '">';
+		$markup      .= '<label>';
+		$markup      .= '<span class="screen-reader-text">' . __( 'Search for:', 'neve' ) . '</span>';
+		$markup      .= '<input type="search" class="search-field" placeholder="' . esc_html( $placeholder ) . '" value="" name="s">';
+		$markup      .= '</label>';
+		$markup      .= '<input type="submit" class="search-submit" value="Search">';
+		$markup      .= '</form>';
+
+		return $markup;
 	}
 }

@@ -24,7 +24,8 @@ if ( ! empty( $component_styles_array ) ) {
 }
 
 ?>
-
-<div class="widget widget-search" <?php echo  wp_kses_post( $component_styles ); ?> >
-	<?php get_search_form(); ?>
+<div class="component-wrap">
+	<div class="widget widget-search" <?php echo wp_kses_post( $component_styles ); ?> >
+		<?php get_search_form(); ?>
+	</div>
 </div>

@@ -1,5 +1,8 @@
 .builder-item--header_search {
   line-height: 1;
+  .widget {
+    width: 100%;
+  }
   input[type="search"] {
     background-color: #fff;
   }
