@@ -97,6 +97,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 		$fallback_args = array(
 			'depth'     => - 1,
 			'menu_id'   => 'nv-primary-navigation',
+			'menu_class'   => 'primary-menu-ul',
 			'container' => 'ul',
 			'before'    => '',
 			'echo'      => false,
