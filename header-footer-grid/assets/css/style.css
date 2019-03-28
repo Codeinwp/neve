@@ -523,7 +523,7 @@ body.menu_sidebar_dropdown:before {
 .site-header .cb-row--mobile .site-branding img {
   max-width: 100%; }
 
-.style-border-top li > a:after, .style-border-bottom li > a:after, .style-full-height li > a:after {
+.style-border-top ul:not(.mini_cart_item) > li > a:after, .style-border-bottom ul:not(.mini_cart_item) > li > a:after, .style-full-height ul:not(.mini_cart_item) > li > a:after {
   position: absolute;
   content: "";
   display: block;

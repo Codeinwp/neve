@@ -1,6 +1,6 @@
 
 .style-border-top, .style-border-bottom, .style-full-height {
-  li > a:after {
+  ul:not(.mini_cart_item) > li > a:after {
     position: absolute;
     content: "";
     display: block;
