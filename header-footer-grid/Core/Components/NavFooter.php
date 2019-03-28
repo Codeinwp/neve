@@ -101,6 +101,44 @@ class NavFooter extends Abstract_Component {
 		);
 
 		$wp_customize->add_setting(
+			$this->id . '_color',
+			array(
+				'theme_supports' => 'hfg_support',
+				'transport'      => 'postMessage',
+				'default'        => '#404248',
+			)
+		);
+		$wp_customize->add_control(
+			new \WP_Customize_Color_Control(
+				$wp_customize,
+				$this->id . '_color',
+				array(
+					'label'   => __( 'Items Color', 'neve' ),
+					'section' => $this->section,
+				)
+			)
+		);
+
+		$wp_customize->add_setting(
+			$this->id . '_hover_color',
+			array(
+				'theme_supports' => 'hfg_support',
+				'transport'      => 'postMessage',
+				'default'        => '#0366d6',
+			)
+		);
+		$wp_customize->add_control(
+			new \WP_Customize_Color_Control(
+				$wp_customize,
+				$this->id . '_hover_color',
+				array(
+					'label'   => __( 'Items Hover Color', 'neve' ),
+					'section' => $this->section,
+				)
+			)
+		);
+
+		$wp_customize->add_setting(
 			$this->id . '_shortcut',
 			array(
 				'theme_supports' => 'hfg_support',
@@ -128,6 +166,8 @@ class NavFooter extends Abstract_Component {
 				'settings'        => array(
 					$this->id . '_style',
 					$this->id . '_shortcut',
+					$this->id . '_color',
+					$this->id . '_hover_color',
 				),
 				'render_callback' => $fn,
 			)
@@ -145,6 +185,29 @@ class NavFooter extends Abstract_Component {
 	 */
 	public function render_component() {
 		Main::get_instance()->load( 'component-nav-footer' );
+	}
+
+	/**
+	 * Add styles to the component.
+	 *
+	 * @param array $css_array rules array.
+	 *
+	 * @return array
+	 */
+	public function add_style( array $css_array = array() ) {
+		$color = get_theme_mod( $this->id . '_color' );
+		if ( ! empty( $color ) ) {
+			$css_array['.nav-menu-footer li a'] = array( 'color' => sanitize_hex_color( $color ) );
+		}
+
+		$hover_color = get_theme_mod( $this->id . '_hover_color' );
+		if ( ! empty( $hover_color ) ) {
+			$css_array['.nav-menu-footer:not(.style-full-height) li:hover > a'] = array( 'color' => sanitize_hex_color( $hover_color ) );
+
+			$css_array['.nav-menu-footer li > a:after'] = array( 'background-color' => sanitize_hex_color( $hover_color ) );
+		}
+
+		return $css_array;
 	}
 
 }

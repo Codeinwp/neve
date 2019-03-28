@@ -1,6 +1,6 @@
 
 .style-border-top, .style-border-bottom, .style-full-height {
-  .menu-item > a:after {
+  li > a:after {
     position: absolute;
     content: "";
     display: block;
@@ -87,4 +87,9 @@
 }
 
 .nav-menu-footer {
+  a {
+    display: flex;
+    justify-content: center;
+    position: relative;
+  }
 }
