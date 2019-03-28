@@ -28,27 +28,11 @@ $row_classes = [
 
 $row_classes[] = get_theme_mod( $control_id . '_' . $row_index . '_layout', 'layout-full-contained' );
 
-$row_styles       = '';
-$row_styles_array = [];
-
-if ( $components_count > 0 ) {
-	$row_styles_array['padding'] = '8px;';
-}
-
-if ( ! empty( $row_styles_array ) ) {
-	$row_styles = ' style="';
-	foreach ( $row_styles_array as $key => $value ) {
-		$row_styles .= sprintf( '%1$s: %2$s', $key, $value );
-	}
-	$row_styles .= '" ';
-}
-
 ?>
 <div class="<?php echo esc_attr( join( ' ', $row_classes ) ); ?>"
 	id="cb-row--footer-<?php echo $row_index; ?>"
 	data-row-id="<?php echo $row_index; ?>" data-show-on="<?php echo $device; ?>">
-	<div class="footer--row-inner footer-<?php echo esc_attr( $row_index ); ?>-inner <?php echo esc_attr( $skin_mode ); ?> footer-content-wrap"
-		<?php echo wp_kses_post( $row_styles ); ?> >
+	<div class="footer--row-inner footer-<?php echo esc_attr( $row_index ); ?>-inner <?php echo esc_attr( $skin_mode ); ?> footer-content-wrap" >
 		<div class="container">
 			<div class="hfg-grid hfg-grid-<?php echo esc_attr( $row_index ); ?>   nv-footer-content">
 				<?php render_components(); ?>
