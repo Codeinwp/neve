@@ -248,8 +248,13 @@ $cb_padding: 20px;
   padding: 0;
   position: relative;
   border: $border;
-  display: block;
+  display: flex;
   margin-bottom: 10px;
+  margin-left: 20px;
+  @include rtl() {
+    margin-right: 20px;
+    margin-left: 0;
+  }
 
   &:last-child {
     margin-bottom: 0px;
@@ -278,19 +283,19 @@ $cb_padding: 20px;
 
   .hfg--cb-row-settings {
     background: #fff;
-    display: block;
-    transition: opacity .2s ease-out;
     position: absolute;
+    left: -20px;
     opacity: 0;
-    z-index: 10000;
-    top: -20px;
-    height: 20px;
-    left: -1px;
+    top: -1px;
+    bottom: -1px;
     border: 1px solid #ddd;
+    transition: opacity .2s ease-out;
+    z-index: 10000;
     box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     @include rtl() {
-      left: auto;
-      right: -1px;
       border-right: 0 none;
       border-left: 1px solid #ddd;
     }
@@ -308,7 +313,6 @@ $cb_padding: 20px;
       font: 400 14px/20px dashicons;
       content: "\f111";
       position: relative;
-      top: -2.5px;
     }
 
     &:hover {
@@ -376,7 +380,7 @@ $cb_padding: 20px;
       width: 100%;
       z-index: 1;
       display: flex;
-      bottom: 0px;
+      bottom: 0;
 
       div {
         border-right: 1px solid #fafafa;

@@ -1448,8 +1448,12 @@
   padding: 0;
   position: relative;
   border: 1px solid #ddd;
-  display: block;
-  margin-bottom: 10px; }
+  display: flex;
+  margin-bottom: 10px;
+  margin-left: 20px; }
+  html[dir="rtl"] .hfg--cb-row {
+    margin-right: 20px;
+    margin-left: 0; }
   .hfg--cb-row:last-child {
     margin-bottom: 0px; }
   .hfg--cb-row.row-active {
@@ -1469,23 +1473,23 @@
     opacity: 1; }
   .hfg--cb-row .hfg--cb-row-settings {
     background: #fff;
-    display: block;
-    transition: opacity .2s ease-out;
     position: absolute;
+    left: -20px;
     opacity: 0;
-    z-index: 10000;
-    top: -20px;
-    height: 20px;
-    left: -1px;
+    top: -1px;
+    bottom: -1px;
     border: 1px solid #ddd;
+    transition: opacity .2s ease-out;
+    z-index: 10000;
     box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-decoration: none;
     width: 20px;
     text-align: center;
     color: #444444; }
     html[dir="rtl"] .hfg--cb-row .hfg--cb-row-settings {
-      left: auto;
-      right: -1px;
       border-right: 0 none;
       border-left: 1px solid #ddd; }
     .hfg--cb-row .hfg--cb-row-settings:focus {
@@ -1494,8 +1498,7 @@
       -webkit-font-smoothing: antialiased;
       font: 400 14px/20px dashicons;
       content: "\f111";
-      position: relative;
-      top: -2.5px; }
+      position: relative; }
     .hfg--cb-row .hfg--cb-row-settings:hover {
       color: #0073aa; }
   .hfg--cb-row .hfg--cb-items {
@@ -1540,7 +1543,7 @@
       width: 100%;
       z-index: 1;
       display: flex;
-      bottom: 0px; }
+      bottom: 0; }
       .hfg--cb-row .hfg--row-inner .row--grid div {
         border-right: 1px solid #fafafa;
         width: 8.3333333333%;
@@ -1561,8 +1564,7 @@
   .hfg--cb-row .grid-stack-item-content {
     background: #fafafa;
     border: 1px solid #dddddd;
-    line-height: 1;
-    }
+    line-height: 1; }
   .hfg--cb-row .grid-stack-item.item-active .grid-stack-item-content {
     background-color: #0073aa;
     border-color: #0073aa;
@@ -1688,8 +1690,7 @@
     overflow: initial; }
   .grid-stack-item .grid-stack-item-content {
     background: #fafafa;
-    border-radius: 2px;
-    }
+    border-radius: 2px; }
   .grid-stack-item .hfg-cb-icon {
     position: absolute;
     opacity: 0;
