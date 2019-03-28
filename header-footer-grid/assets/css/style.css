@@ -523,7 +523,7 @@ body.menu_sidebar_dropdown:before {
 .site-header .cb-row--mobile .site-branding img {
   max-width: 100%; }
 
-.style-border-top ul:not(.mini_cart_item) > li > a:after, .style-border-bottom ul:not(.mini_cart_item) > li > a:after, .style-full-height ul:not(.mini_cart_item) > li > a:after {
+.style-border-top ul > li:not(.mini_cart_item) > a:after, .style-border-bottom ul > li:not(.mini_cart_item) > a:after, .style-full-height ul > li:not(.mini_cart_item) > a:after {
   position: absolute;
   content: "";
   display: block;
@@ -533,9 +533,9 @@ body.menu_sidebar_dropdown:before {
   background-color: #0366d6;
   transition: opacity .3s ease, width .3s ease; }
 
-.style-border-top li:hover > a, .style-border-bottom li:hover > a, .style-full-height li:hover > a {
+.style-border-top ul > li:hover > a, .style-border-bottom ul > li:hover > a, .style-full-height ul > li:hover > a {
   text-decoration: none; }
-  .style-border-top li:hover > a:after, .style-border-bottom li:hover > a:after, .style-full-height li:hover > a:after {
+  .style-border-top ul > li:hover > a:after, .style-border-bottom ul > li:hover > a:after, .style-full-height ul > li:hover > a:after {
     width: 100%; }
 
 .style-border-bottom a:after {

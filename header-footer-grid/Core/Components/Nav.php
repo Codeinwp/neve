@@ -139,6 +139,25 @@ class Nav extends Abstract_Component {
 		);
 
 		$wp_customize->add_setting(
+			$this->id . '_active_color',
+			array(
+				'theme_supports' => 'hfg_support',
+				'transport'      => 'postMessage',
+				'default'        => '#0366d6',
+			)
+		);
+		$wp_customize->add_control(
+			new \WP_Customize_Color_Control(
+				$wp_customize,
+				$this->id . '_active_color',
+				array(
+					'label'   => __( 'Active Item Color', 'neve' ),
+					'section' => $this->section,
+				)
+			)
+		);
+
+		$wp_customize->add_setting(
 			'neve_last_menu_item',
 			array(
 				'default'        => 'none',
@@ -198,6 +217,7 @@ class Nav extends Abstract_Component {
 					$this->id . '_shortcut',
 					$this->id . '_color',
 					$this->id . '_hover_color',
+					$this->id . '_active_color',
 					'neve_last_menu_item',
 				),
 				'render_callback' => $fn,
@@ -238,6 +258,12 @@ class Nav extends Abstract_Component {
 
 			$css_array['#nv-primary-navigation a:after'] = array( 'background-color' => sanitize_hex_color( $hover_color ) );
 		}
+
+//		$active_color = get_theme_mod( $this->id . '_active_color' );
+//		if ( ! empty( $active_color ) ) {
+//			$css_array['.nav-menu-primary #nv-primary-navigation li.current-menu-item > a,
+//			.nav-menu-primary:not(.style-full-height) #nv-primary-navigation li.current-menu-item > a .caret'] = array( 'color' => sanitize_hex_color( $active_color ) );
+//		}
 
 		return $css_array;
 	}

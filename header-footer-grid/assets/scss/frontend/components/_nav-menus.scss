@@ -1,6 +1,6 @@
 
 .style-border-top, .style-border-bottom, .style-full-height {
-  ul:not(.mini_cart_item) > li > a:after {
+  ul > li:not(.mini_cart_item) > a:after {
     position: absolute;
     content: "";
     display: block;
@@ -11,7 +11,7 @@
     transition: opacity .3s ease, width .3s ease;
   }
 
-  li:hover > a {
+  ul > li:hover > a {
     text-decoration: none;
 
     &:after {
