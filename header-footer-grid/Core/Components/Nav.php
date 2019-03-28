@@ -259,11 +259,11 @@ class Nav extends Abstract_Component {
 			$css_array['#nv-primary-navigation a:after'] = array( 'background-color' => sanitize_hex_color( $hover_color ) );
 		}
 
-//		$active_color = get_theme_mod( $this->id . '_active_color' );
-//		if ( ! empty( $active_color ) ) {
-//			$css_array['.nav-menu-primary #nv-primary-navigation li.current-menu-item > a,
-//			.nav-menu-primary:not(.style-full-height) #nv-primary-navigation li.current-menu-item > a .caret'] = array( 'color' => sanitize_hex_color( $active_color ) );
-//		}
+		$active_color = get_theme_mod( $this->id . '_active_color' );
+		if ( ! empty( $active_color ) ) {
+			$css_array['.nav-menu-primary #nv-primary-navigation li.current-menu-item > a,
+			.nav-menu-primary:not(.style-full-height) #nv-primary-navigation li.current-menu-item > a .caret'] = array( 'color' => sanitize_hex_color( $active_color ) );
+		}
 
 		return $css_array;
 	}
