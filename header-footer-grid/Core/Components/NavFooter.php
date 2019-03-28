@@ -197,14 +197,14 @@ class NavFooter extends Abstract_Component {
 	public function add_style( array $css_array = array() ) {
 		$color = get_theme_mod( $this->id . '_color' );
 		if ( ! empty( $color ) ) {
-			$css_array['.nav-menu-footer li a'] = array( 'color' => sanitize_hex_color( $color ) );
+			$css_array['.nav-menu-footer #footer-menu > li > a'] = array( 'color' => sanitize_hex_color( $color ) );
 		}
 
 		$hover_color = get_theme_mod( $this->id . '_hover_color' );
 		if ( ! empty( $hover_color ) ) {
-			$css_array['.nav-menu-footer:not(.style-full-height) li:hover > a'] = array( 'color' => sanitize_hex_color( $hover_color ) );
+			$css_array['.nav-menu-footer:not(.style-full-height) #footer-menu > li:hover > a'] = array( 'color' => sanitize_hex_color( $hover_color ) );
 
-			$css_array['.nav-menu-footer li > a:after'] = array( 'background-color' => sanitize_hex_color( $hover_color ) );
+			$css_array['#footer-menu > li > a:after'] = array( 'background-color' => sanitize_hex_color( $hover_color ) );
 		}
 
 		return $css_array;

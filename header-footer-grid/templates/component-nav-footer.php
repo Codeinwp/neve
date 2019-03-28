@@ -34,6 +34,7 @@ $container_classes[] = 'nav-menu-footer';
 				'depth'          => 1,
 				'container'      => 'ul',
 				'menu_class'     => 'footer-menu',
+				'menu_id'        => 'footer-menu',
 			)
 		);
 		?>

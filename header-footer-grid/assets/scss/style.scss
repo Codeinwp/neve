@@ -1,8 +1,9 @@
 @import "frontend/mixins";
 @import "frontend/vars";
-@import "frontend/header/layout";
-@import "frontend/header/alignments";
-@import "frontend/header/mobile_sidebar";
+@import "frontend/layout/main";
+@import "frontend/layout/alignments";
+@import "frontend/layout/mobile_sidebar";
+@import "frontend/layout/footer";
 
 
 // COMPONENTS
@@ -100,130 +101,6 @@
   }
 }
 
-
-// FOOTER
-
-/* Site Footer */
-.site-footer {
-  position: relative;
-  z-index: 10;
-  .item--inner {
-    width: 100%;
-    max-width: 100%;
-  }
-}
-
-// Footer Top
-.footer-top {
-
-  .light-mode {
-    background: #fff;
-  }
-  .dark-mode {
-    background: #292929;
-  }
-}
-
-// Footer Main
-.footer-main {
-  .footer--row-inner {
-    padding-top: 2.5em;
-    padding-bottom: 2.5em;
-  }
-
-  .light-mode {
-    background: #f9f9f9;
-  }
-  .dark-mode {
-    background: #303030;
-  }
-}
-
-// Footer Bottom
-.footer-bottom {
-  .light-mode {
-    background: #ededed;
-  }
-  .dark-mode {
-    background: #24292e;
-  }
-}
-
-// General footer skin mode colors.
-.footer--row-inner {
-  &.light-mode {
-    color: $dark_color;
-    .product_list_widget li {
-      border-color: $dark_color_border;
-    }
-  }
-  &.dark-mode {
-    color: $light_color;
-    a:not(.button) {
-      color: $light_color_link;
-      &:hover {
-        color: $light_color_link_hover;
-      }
-    }
-    .product_list_widget li {
-      border-color: $light_color_border;
-    }
-    table tbody td,
-    table th {
-      background: $dark_color_border;
-    }
-  }
-
-}
-
-.footer--row {
-  &.layout-fullwidth {
-    .hfg-container {
-      max-width: initial;
-    }
-  }
-  .builder-item--group {
-    justify-content: flex-start;
-    .item--inner {
-      width: auto;
-    }
-  }
-}
-
-.footer-main, .footer-top, .footer-bottom {
-  .builder-item {
-    &:last-child {
-      margin-bottom: 0;
-    }
-    .widget-area {
-      .widget {
-        &:last-child {
-          margin-bottom: 0;
-        }
-      }
-    }
-  }
-}
-
-.site-footer {
-  p {
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-  ul, li {
-    list-style: none;
-    margin: 0;
-  }
-
-  ul ul {
-    margin-left: 2.617924em;
-  }
-}
-
-.footer-copyright {
-  font-size: 0.875em;
-}
 .builder-item.hfg-edge-left .item--inner > div{
   flex-direction: row;
   display: flex;

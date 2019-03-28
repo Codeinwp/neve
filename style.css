@@ -1060,10 +1060,6 @@ footer {
   background-color: #fff;
 }
 
-.footer-content-wrap {
-  border-top: 1px solid #f0f0f0;
-}
-
 .footer-content-wrap.footer-second-section {
   border-top: none;
   background: #24292e;
