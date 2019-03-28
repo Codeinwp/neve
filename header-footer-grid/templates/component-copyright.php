@@ -21,7 +21,7 @@ $content = get_theme_mod(
 		apply_filters(
 			'ti_wl_copyright',
 			sprintf(
-			/* translators: %1$s is Theme Name ( Neve ), %2$s is WordPress */
+				/* translators: %1$s is Theme Name ( Neve ), %2$s is WordPress */
 				esc_html__( '%1$s | Powered by %2$s', 'neve' ),
 				wp_kses_post( '<a href="https://themeisle.com/themes/neve/" rel="nofollow">Neve</a>' ),
 				wp_kses_post( '<a href="http://wordpress.org" rel="nofollow">WordPress</a>' )

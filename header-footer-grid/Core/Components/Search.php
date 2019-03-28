@@ -108,13 +108,13 @@ class Search extends Abstract_Component {
 		$form        = '';
 		$placeholder = get_theme_mod( $this->id . '_placeholder', __( 'Search for...', 'neve' ) );
 
-		$form        .= '<form role="search" method="get" class="search-form" action="' . esc_url( home_url( '/' ) ) . '">';
-		$form        .= '<label>';
-		$form        .= '<span class="screen-reader-text">' . __( 'Search for:', 'neve' ) . '</span>';
-		$form        .= '<input type="search" class="search-field" placeholder="' . esc_html( $placeholder ) . '" value="" name="s">';
-		$form        .= '</label>';
-		$form        .= '<input type="submit" class="search-submit" value="Search">';
-		$form        .= '</form>';
+		$form .= '<form role="search" method="get" class="search-form" action="' . esc_url( home_url( '/' ) ) . '">';
+		$form .= '<label>';
+		$form .= '<span class="screen-reader-text">' . __( 'Search for:', 'neve' ) . '</span>';
+		$form .= '<input type="search" class="search-field" placeholder="' . esc_html( $placeholder ) . '" value="" name="s">';
+		$form .= '</label>';
+		$form .= '<input type="submit" class="search-submit" value="Search">';
+		$form .= '</form>';
 
 		return $form;
 	}

@@ -167,20 +167,28 @@ abstract class Abstract_Component implements Component {
 		);
 		array_push( $partial_settings, $this->id . '_component_align' );
 		$wp_customize->add_control(
-			$this->id . '_component_align',
-			[
-				'label'       => __( 'Component Alignment', 'neve' ),
-				'description' => __( 'Set the alignment for this component inside the active row.', 'neve' ),
-				'type'        => 'select',
-				'settings'    => $this->id . '_component_align',
-				'priority'    => 800,
-				'section'     => $this->section,
-				'choices'     => array(
-					'left'   => __( 'Left', 'neve' ),
-					'center' => __( 'Center', 'neve' ),
-					'right'  => __( 'Right', 'neve' ),
-				),
-			]
+			new Radio_Image(
+				$wp_customize,
+				$this->id . '_component_align',
+				[
+					'label'       => __( 'Component Alignment', 'neve' ),
+					'description' => __( 'Set the alignment for this component inside the active row.', 'neve' ),
+					'settings'    => $this->id . '_component_align',
+					'priority'    => 800,
+					'section'     => $this->section,
+					'choices'     => array(
+						'left'   => array(
+							'url' => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAS8AAADYBAMAAABIEHj+AAAAHlBMVEU/xPuk3/2w4/3P7f7V7/7a8f72/P/6/f/7/f////+OFjDPAAAA2ElEQVR42u3boQ2AMBCG0WLwBIElBMEarMBkWLZFV1RcQmibvG+CZy+XPz1tdicwMDAwMDAwMDAwMDAwMDAwMDCwfmHXFur4DbamUCMYGBgYGBgYGBgYWF+wcwq1ON/AwMDAwMDAwMDAwD6BBT8j5fa651u5AQwMDAwMDAwMDAysRVjwM1JudleCgYGBgYGBgYGBgdmMgIGBgYGBgYGBgYG1DrMZAQMDAwMDAwMDAwOrArMZAQMDAwMDAwMDAwOzGXFXgoGBgYGBgYGBgYGBgYGBgYGBgeWwF756V4XSI6GKAAAAAElFTkSuQmCC',
+						),
+						'center' => array(
+							'url' => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAS8AAADYBAMAAABIEHj+AAAAHlBMVEU/xPuk3/2w4/3P7f7V7/7a8f72/P/6/f/7/f////+OFjDPAAAA1UlEQVR42u3bMQ2AMBRF0SKhwQBpMIIFXCABCWysuGVma8hPU8i5Cs76hpeuPjsTGBgYGBgYGBgYGBgYGBgYGBgY2H9gpbqjLSxVt4GBgYGBgYGBgYGBfRCWq9vNNzAwMDAwMDAwMDCw97C1BDUHw6YU1AAGBgYGBgYGBgYG1iNsyUGNdiUYGBgYGBgYGBgYmM8IGBgYGBgYGBgYGNjXYD4jYGBgYGBgYGBgYGBNYD4jYGBgYGBgYGBgYGA+I3YlGBgYGBgYGBgYGBgYGBgYGBgY2BN2A1O85EFHf1n6AAAAAElFTkSuQmCC',
+						),
+						'right'  => array(
+							'url' => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAS8AAADYBAMAAABIEHj+AAAAElBMVEU/xPuk3/2w4/3V7/7a8f7///90D081AAAA1ElEQVR42u3bsQ2AIBCGURoGsKA3JA7gCk5g4/6rWFtechow75vgtRf4yzVmZwEDAwMDAwMDAwMDAwMDAwMDAwP7I+zoobbPYGsJVcHAwMDAwMDAwMDA5oLtS6jmfAMDAwMDAwMDAwMDC8B6VtkvIyWrCgYGBgYGBgYGBgY2ImzJqrkrwcDAwMDAwMDAwMBsRvy4AwMDAwMDAwMDA5sXZjMCBgYGBgYGBgYGBvYizGYEDAwMDAwMDAwMDMxmxF0JBgYGBgYGBgYGBgYGBgYGBgYG9oTdBpDUhkRAaPoAAAAASUVORK5CYII=',
+						),
+					),
+				]
+			)
 		);
 
 		return $partial_settings;
