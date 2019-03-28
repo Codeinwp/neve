@@ -60,28 +60,6 @@ class Search extends Abstract_Component {
 			)
 		);
 
-		$wp_customize->add_setting(
-			$this->id . '_placeholder',
-			array(
-				'theme_supports' => 'hfg_support',
-				'default'        => __( 'Search for...', 'neve' ),
-				'transport'      => 'refresh',
-			)
-		);
-
-		$wp_customize->add_control(
-			$this->id . '_placeholder',
-			array(
-				'name'            => $this->section . '_placeholder',
-				'label'           => __( 'Placeholder', 'neve' ),
-				'type'            => 'text',
-				'section'         => $this->section,
-				'selector'        => $selector,
-				'render_callback' => $fn,
-				'settings'        => $this->section . '_placeholder',
-			)
-		);
-
 		return parent::customize_register( $wp_customize );
 	}
 
@@ -100,7 +78,7 @@ class Search extends Abstract_Component {
 	/**
 	 * Change the form placeholder.
 	 *
-	 * @param string $form form markup
+	 * @param string $form form markup.
 	 *
 	 * @return string
 	 */
