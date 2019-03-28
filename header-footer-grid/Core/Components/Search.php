@@ -97,17 +97,25 @@ class Search extends Abstract_Component {
 		remove_filter( 'get_search_form', [ $this, 'change_placeholder' ] );
 	}
 
+	/**
+	 * Change the form placeholder.
+	 *
+	 * @param string $form form markup
+	 *
+	 * @return string
+	 */
 	public function change_placeholder( $form ) {
-		$markup      = '';
+		$form        = '';
 		$placeholder = get_theme_mod( $this->id . '_placeholder', __( 'Search for...', 'neve' ) );
-		$markup      .= '<form role="search" method="get" class="search-form" action="' . esc_url( home_url( '/' ) ) . '">';
-		$markup      .= '<label>';
-		$markup      .= '<span class="screen-reader-text">' . __( 'Search for:', 'neve' ) . '</span>';
-		$markup      .= '<input type="search" class="search-field" placeholder="' . esc_html( $placeholder ) . '" value="" name="s">';
-		$markup      .= '</label>';
-		$markup      .= '<input type="submit" class="search-submit" value="Search">';
-		$markup      .= '</form>';
 
-		return $markup;
+		$form        .= '<form role="search" method="get" class="search-form" action="' . esc_url( home_url( '/' ) ) . '">';
+		$form        .= '<label>';
+		$form        .= '<span class="screen-reader-text">' . __( 'Search for:', 'neve' ) . '</span>';
+		$form        .= '<input type="search" class="search-field" placeholder="' . esc_html( $placeholder ) . '" value="" name="s">';
+		$form        .= '</label>';
+		$form        .= '<input type="submit" class="search-submit" value="Search">';
+		$form        .= '</form>';
+
+		return $form;
 	}
 }
