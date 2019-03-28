@@ -10,10 +10,10 @@
 
 namespace HFG;
 
-$row_index  = current_row();
-$device     = current_device();
-$control_id = get_builders()->get_property( 'control_id' );
-
+$row_index        = current_row();
+$device           = current_device();
+$control_id       = get_builders()->get_property( 'control_id' );
+$components_count = sizeof( get_builders()->get_layout_data()[ $device ][ $row_index ] );
 
 $default_skin = 'light-mode';
 if ( $row_index === 'bottom' ) {
@@ -31,7 +31,9 @@ $row_classes[] = get_theme_mod( $control_id . '_' . $row_index . '_layout', 'lay
 $row_styles       = '';
 $row_styles_array = [];
 
-$row_styles_array['padding'] = '8px;';
+if ( $components_count > 0 ) {
+	$row_styles_array['padding'] = '8px;';
+}
 
 if ( ! empty( $row_styles_array ) ) {
 	$row_styles = ' style="';
