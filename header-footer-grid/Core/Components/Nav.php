@@ -38,6 +38,7 @@ class Nav extends Abstract_Component {
 		$this->set_property( 'width', 2 );
 		$this->set_property( 'section', 'header_menu_primary' );
 		$this->set_property( 'panel', $panel );
+		$this->default_align = 'right';
 	}
 
 	/**
@@ -156,15 +157,19 @@ class Nav extends Abstract_Component {
 				)
 			)
 		);
-
+		$default_last = 'search';
+		if ( class_exists( 'WooCommerce' ) ) {
+			$default_last = 'search-cart';
+		}
 		$wp_customize->add_setting(
 			'neve_last_menu_item',
 			array(
-				'default'        => 'none',
+				'default'        => $default_last,
 				'theme_supports' => 'hfg_support',
 				'transport'      => 'postMessage',
 			)
 		);
+
 		$choices = [
 			'none'   => __( 'None', 'neve' ),
 			'search' => __( 'Search', 'neve' ),

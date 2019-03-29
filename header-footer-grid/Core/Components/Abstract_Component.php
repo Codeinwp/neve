@@ -24,7 +24,14 @@ use WP_Customize_Manager;
  */
 abstract class Abstract_Component implements Component {
 	use Core;
-
+	/**
+	 * Default alignament value for the component.
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 * @var null|string
+	 */
+	public $default_align = 'left';
 	/**
 	 * Current id of the component.
 	 *
@@ -160,7 +167,7 @@ abstract class Abstract_Component implements Component {
 		$wp_customize->add_setting(
 			$this->id . '_component_align',
 			array(
-				'default'        => 'left',
+				'default'        => $this->default_align,
 				'theme_supports' => 'hfg_support',
 				'transport'      => 'postMessage',
 			)

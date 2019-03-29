@@ -31,12 +31,13 @@ if ( get_option( 'show_on_front' ) === 'posts' && is_home() ) {
 	$tag = 'h1';
 }
 
+$alt_attribute = get_post_meta( $custom_logo_id, '_wp_attachment_image_alt', true );
 ?>
 <div class="site-logo">
 	<a class="brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php bloginfo( 'name' ); ?>">
 		<?php if ( $logo_image ) { ?>
 			<img src="<?php echo esc_url( $logo_image ); ?>"
-				alt="' . esc_attr( $alt_attribute ) . '" <?php echo ( $logo_retina_image ) ? ( 'srcset="' . esc_url( $logo_retina_image ) . ' 2x"' ) : ''; ?> >
+				alt="<?php echo esc_attr( $alt_attribute ); ?>" <?php echo ( $logo_retina_image ) ? ( 'srcset="' . esc_url( $logo_retina_image ) . ' 2x"' ) : ''; ?> >
 		<?php } else { ?>
 				<?php if ( $show_name ) { ?>
 				<<?php echo esc_attr( $tag ); ?> class="site-title"> <?php echo get_bloginfo( 'name', 'display' ); ?> </<?php echo esc_attr( $tag ); ?>>
