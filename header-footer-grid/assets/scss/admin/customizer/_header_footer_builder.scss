@@ -142,13 +142,20 @@ $cb_padding: 20px;
 
   &.hfg--panel-mobile {
     .hfg--cp-rows {
-      width: 60%;
-      padding-left: 5px;
+      width: 80%;
+      flex-grow: 1;
     }
 
     .hfg--cp-sidebar {
-      width: 40%;
-      padding-right: 5px;
+      display: none;
+      width: 20%;
+      height: 25vh;
+      .hfg--cb-row {
+        height: 100%;
+        .hfg--row-inner .hfg--cb-items {
+          height: 100%;
+        }
+      }
     }
   }
 }

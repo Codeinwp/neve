@@ -12,6 +12,7 @@
 namespace HFG\Core\Components;
 
 use HFG\Main;
+use Neve\Customizer\Controls\Checkbox;
 use WP_Customize_Manager;
 
 /**
@@ -50,7 +51,8 @@ class MenuIcon extends Abstract_Component {
 	public function customize_register( WP_Customize_Manager $wp_customize ) {
 		$prefix   = $this->section;
 		$fn       = array( $this, 'render' );
-		$selector = 'a.item--' . $this->id;
+		$selector = '.builder-item--' . $this->id;
+		$partial_settings = array();
 
 		$wp_customize->add_section(
 			$this->section,
@@ -79,7 +81,37 @@ class MenuIcon extends Abstract_Component {
 				'section'         => $this->section,
 				'selector'        => $selector,
 				'render_callback' => $fn,
-				'settings'        => $prefix . '_text' . '_setting',
+				'settings'        => $this->id . '_text' . '_setting',
+			)
+		);
+
+		$wp_customize->add_setting(
+			$prefix . '_sidebar',
+			array(
+				'theme_supports' => 'hfg_support',
+				'default'        => 0,
+				'transport'      => 'postMessage',
+			)
+		);
+		array_push( $partial_settings, $prefix . '_sidebar' );
+		$wp_customize->add_control(
+			new Checkbox(
+				$wp_customize,
+				$prefix . '_sidebar',
+				[
+					'label'   => esc_html__( 'Activate Sidebar', 'neve' ),
+					'type'    => 'checkbox-toggle',
+					'section' => $this->section,
+				]
+			)
+		);
+
+		$wp_customize->selective_refresh->add_partial(
+			$prefix . '_partial',
+			array(
+				'selector'        => $selector,
+				'settings'        => $partial_settings,
+				'render_callback' => $fn,
 			)
 		);
 

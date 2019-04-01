@@ -1373,11 +1373,16 @@
   .hfg--device-panel.hfg--panel-desktop .hfg--cp-rows {
     width: 100%; }
   .hfg--device-panel.hfg--panel-mobile .hfg--cp-rows {
-    width: 60%;
-    padding-left: 5px; }
+    width: 80%;
+    flex-grow: 1; }
   .hfg--device-panel.hfg--panel-mobile .hfg--cp-sidebar {
-    width: 40%;
-    padding-right: 5px; }
+    display: none;
+    width: 20%;
+    height: 25vh; }
+    .hfg--device-panel.hfg--panel-mobile .hfg--cp-sidebar .hfg--cb-row {
+      height: 100%; }
+      .hfg--device-panel.hfg--panel-mobile .hfg--cp-sidebar .hfg--cb-row .hfg--row-inner .hfg--cb-items {
+        height: 100%; }
 
 .hfg--cb-header {
   padding: 10px 20px 0;

@@ -1053,7 +1053,7 @@ let CustomizeBuilderV1;
 					did = true;
 				} else {
 					did = insertToFlag( node );
-					$( '#accordion-section-' + node.el[0].dataset.section ).removeClass('hfg-section-inactive');
+					$( '#accordion-section-' + node.el[0].dataset.section ).removeClass( 'hfg-section-inactive' );
 				}
 
 				// console.log( 'Drop on X: ' + x + ', width: '+ w );
@@ -1323,7 +1323,7 @@ let CustomizeBuilderV1;
 
 				el.append( elItem );
 				that.updateGridFlag( el );
-				$( '#accordion-section-' + elItem[0].dataset.section ).removeClass('hfg-section-inactive');
+				$( '#accordion-section-' + elItem[0].dataset.section ).removeClass( 'hfg-section-inactive' );
 			},
 			addPanel: function( device ) {
 				let that = this;
@@ -1449,7 +1449,7 @@ let CustomizeBuilderV1;
 					that.activePanel = device;
 
 					$( '.hfg--device-panel .hfg-available-items .item-from-list' ).each( function ( index, item ) {
-						$( '#accordion-section-' + $( item )[0].dataset.section ).removeClass( "hfg-section-inactive");
+						$( '#accordion-section-' + $( item )[0].dataset.section ).removeClass( "hfg-section-inactive" );
 					} );
 
 					$( '.hfg--device-panel.hfg--panel-' + device + ' .hfg-available-items .item-from-list' ).each( function ( index, item ) {
@@ -1509,7 +1509,7 @@ let CustomizeBuilderV1;
 								item.attr( "data-gs-x", node.x );
 								item.removeClass( "item-from-list" );
 								that.addNewWidget( item, $rows[rowId] );
-								$( '#accordion-section-' + node.id ).removeClass("hfg-section-inactive" );
+								$( '#accordion-section-' + node.id ).removeClass( "hfg-section-inactive" );
 							} );
 						}
 					} );
@@ -1852,5 +1852,14 @@ let CustomizeBuilderV1;
 
 	$document.on( "mouseleave", ".hfg--cb-row .grid-stack-item", function( e ) {
 		$( this ).removeClass( "show-tooltip" );
+	} );
+
+	$document.on( "change", "#header_menu_icon_sidebar", function(){
+		let item = $( this );
+		if( item.is( ':checked' ) ) {
+			$( '.hfg--cp-sidebar' ).show();
+		} else {
+			$( '.hfg--cp-sidebar' ).hide();
+		}
 	} );
 } )( jQuery, wp.customize || null );
