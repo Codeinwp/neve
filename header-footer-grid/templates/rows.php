@@ -75,6 +75,7 @@
     }
     ?>
 	<div class="hfg--cp-sidebar" <?php echo  $style; ?> >
+        <h4><?php echo __( 'Mobile Sidebar', 'neve' ); ?></h4>
 		<div class="hfg--row-bottom hfg--cb-row" data-id="{{ data.id }}_sidebar">
 			<a class="hfg--cb-row-settings" title="{{ data.rows.sidebar }}" data-id="sidebar" href="#"></a>
 			<div class="hfg--row-inner">

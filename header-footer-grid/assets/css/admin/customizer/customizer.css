@@ -1379,6 +1379,10 @@
     display: none;
     width: 20%;
     height: 25vh; }
+    .hfg--device-panel.hfg--panel-mobile .hfg--cp-sidebar h4 {
+      margin-top: -20px;
+      margin-bottom: 4px;
+      margin-left: 25px; }
     .hfg--device-panel.hfg--panel-mobile .hfg--cp-sidebar .hfg--cb-row {
       height: 100%; }
       .hfg--device-panel.hfg--panel-mobile .hfg--cp-sidebar .hfg--cb-row .hfg--row-inner .hfg--cb-items {

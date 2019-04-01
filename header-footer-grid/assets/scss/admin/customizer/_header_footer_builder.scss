@@ -150,6 +150,11 @@ $cb_padding: 20px;
       display: none;
       width: 20%;
       height: 25vh;
+      h4 {
+        margin-top: -20px;
+        margin-bottom: 4px;
+        margin-left: 25px;
+      }
       .hfg--cb-row {
         height: 100%;
         .hfg--row-inner .hfg--cb-items {
