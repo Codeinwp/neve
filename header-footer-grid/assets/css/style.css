@@ -51,9 +51,9 @@
 .dark-mode a:not(.button) {
   color: #fff; }
 
-.header-main-inner {
+.header--row.header-bottom .header--row-inner {
   border-bottom: 1px solid #f0f0f0; }
-  .header-main-inner.dark-mode {
+  .header--row.header-bottom .header--row-inner.dark-mode {
     border-bottom: 1px solid #333; }
 
 .hfg-item-right {
@@ -174,8 +174,9 @@ body.menu_sidebar_dropdown:before {
   position: relative;
   word-wrap: break-word;
   min-height: 100%;
-  display: block;
-  padding: 1.2em 0; }
+  padding: 1.2em 0;
+  display: flex;
+  flex-direction: column; }
 
 /* Type : Overlay */
 .menu_sidebar_slide_overlay .header-menu-sidebar {

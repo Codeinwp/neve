@@ -66,7 +66,7 @@ $builder_types: header footer;
   }
 }
 
-.header-main-inner {
+.header--row.header-bottom .header--row-inner {
   border-bottom: 1px solid #f0f0f0;
 
   &.dark-mode {
