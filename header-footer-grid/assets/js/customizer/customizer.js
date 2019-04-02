@@ -113,7 +113,24 @@
 		} );
 	} );
 
+	api.bind( 'preview-ready', function() {
+		api.preview.bind( 'header_sidebar_open', function() {
+			dispatchEvent( document, "customize_control_sidebar", {
+				bubbles: true,
+				detail: 'open'
+			} );
+		} );
+		api.preview.bind( 'header_sidebar_close', function() {
+			dispatchEvent( document, "customize_control_sidebar", {
+				bubbles: true,
+				detail: 'close'
+			} );
+		} );
+	} );
+
+
 	wp.customize( "header_sidebar_animate", function( settings ) {
+		console.log ( "header_sidebar_animate -- triggered" );
 		settings.bind( function( to ) {
 			header_changed( "header_builder_panel", false );
 			$document.trigger( "customize_section_opened", ["header_sidebar"] );

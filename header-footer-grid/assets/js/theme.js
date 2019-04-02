@@ -89,6 +89,18 @@ if ( !Element.prototype.closest ) {
 		}
 
 		document.addEventListener(
+			"customize_control_sidebar",
+			function( e ) {
+				if ( e.detail === "open" ) {
+					this.toggleMenuSidebar( false );
+				}
+				if ( e.detail === "close" ) {
+					this.closeMenuSidebar();
+				}
+			}.bind( this )
+		);
+
+		document.addEventListener(
 			"customize_section_opened",
 			function( e ) {
 				if ( e.detail === "header_sidebar" ) {
