@@ -1034,9 +1034,6 @@
 .woocommerce table.shop_table.cart td {
   background: #fff !important;
   border-top: 0;
-  flex: 1;
-  flex-grow: 1;
-  align-self: normal;
 }
 .woocommerce table.shop_table.cart td a.remove {
   margin: 0;

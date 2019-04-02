@@ -71,11 +71,6 @@
   .hfg-item-center #secondary-menu, .hfg-item-center .nv-nav-wrap, .hfg-item-center .component-wrap, .hfg-item-center .site-logo {
     justify-content: center; }
 
-.header-menu-sidebar-inner .builder-item {
-  max-width: 100%;
-  flex: 0 0 100%;
-  margin-left: 0; }
-
 body:before {
   transition: all .5s linear;
   position: fixed;
