@@ -54,14 +54,19 @@ $builder_types: header footer;
   }
 }
 
-.dark-mode {
+.header--row-inner.dark-mode {
   &, .sub-menu, .sub-menu li {
     border-color: #333;
     background-color: #24292e;
     color: #fff;
   }
-
   a:not(.button) {
+    color: #fff;
+  }
+}
+
+.dark-mode {
+  .menu-item-nav-search, .menu-item-nav-cart > a {
     color: #fff;
   }
 }

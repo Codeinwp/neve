@@ -88,9 +88,11 @@
     &:hover {
       background: #f9f9f9;
     }
-
+    > *:not(.remove) {
+      padding-right: 60px;
+    }
     > a {
-      padding: 0 $spacing-lg 0 0;
+      padding: 0;
       display: inline;
       grid-column: span 10;
       grid-row-start: 1;
