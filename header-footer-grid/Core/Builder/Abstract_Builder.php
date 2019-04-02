@@ -672,6 +672,10 @@ abstract class Abstract_Builder implements Builder {
 				$width += $max_columns - ( $x + $width );
 			}
 
+			if ( $row_index === 'sidebar' ) {
+				$width = 12;
+			}
+
 			$classes   = [ 'builder-item' ];
 			$classes[] = 'col-' . $width . ' col-md-' . $width . ' col-sm-' . $width;
 			$classes[] = 'hfg-item-' . $align;
