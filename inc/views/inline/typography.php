@@ -112,13 +112,16 @@ class Typography extends Base_Inline {
 			$font_size = json_decode( $font_size, true );
 
 			if ( ! empty( $font_size ) ) {
-				$this->add_responsive_style( array(
+				$this->add_responsive_style(
 					array(
-						'css_prop' => 'font-size',
-						'value'    => $font_size,
-						'suffix'   => isset( $font_size['suffix'] ) ? $font_size['suffix'] : 'em',
+						array(
+							'css_prop' => 'font-size',
+							'value'    => $font_size,
+							'suffix'   => isset( $font_size['suffix'] ) ? $font_size['suffix'] : 'em',
+						),
 					),
-				), $selector );
+					$selector
+				);
 			}
 		}
 
