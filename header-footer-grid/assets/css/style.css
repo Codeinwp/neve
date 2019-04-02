@@ -7,7 +7,8 @@
     justify-content: center; }
 
 .builder-item {
-  margin: 8px 0; }
+  margin-top: 8px;
+  margin-bottom: 8px; }
 
 .header--row .header--row-inner,
 .header--row .header--row-inner .container .row {
@@ -69,6 +70,10 @@
   text-align: center; }
   .hfg-item-center #secondary-menu, .hfg-item-center .nv-nav-wrap, .hfg-item-center .component-wrap, .hfg-item-center .site-logo {
     justify-content: center; }
+
+.header-menu-sidebar-inner .builder-item {
+  max-width: 100%;
+  flex: 0 0 100%; }
 
 body:before {
   transition: all .5s linear;
@@ -157,8 +162,9 @@ body.menu_sidebar_dropdown:before {
 .header-menu-sidebar-bg {
   position: relative;
   word-wrap: break-word;
-  min-height: 100%;
-  display: block; }
+  min-height: 100vh;
+  display: block;
+  }
   .header-menu-sidebar-bg:before {
     content: "";
     position: absolute;
@@ -347,35 +353,20 @@ body.menu_sidebar_dropdown:before {
   visibility: visible; }
 
 /* Close Button */
-.close-sidebar-panel {
-  display: none;
+.header-menu-sidebar .navbar-toggle-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
   z-index: 999910;
-  cursor: pointer;
-  position: fixed;
-  top: 10px;
-  right: 12px; }
-  .close-sidebar-panel .hamburger-inner {
-    background: rgba(255, 255, 255, 0.99); }
-    .close-sidebar-panel .hamburger-inner:before, .close-sidebar-panel .hamburger-inner::after {
-      background: inherit; }
-  .close-sidebar-panel:hover .hamburger-inner {
-    background: rgba(255, 255, 255, 0.99); }
-
-.menu_sidebar_slide_right .close-sidebar-panel {
-  top: 10px;
-  right: auto;
-  left: 12px; }
-
-.menu_sidebar_dropdown .close-sidebar-panel {
-  display: none !important; }
+  padding: 8px 10px; }
+  .header-menu-sidebar .navbar-toggle-wrapper button.navbar-toggle {
+    padding: 8px 10px; }
 
 .is-menu-sidebar:before, .is-mobile-form-panel:before {
   z-index: 999897;
   visibility: visible;
   opacity: 1; }
-
-.is-menu-sidebar .close-sidebar-panel, .is-mobile-form-panel .close-sidebar-panel {
-  display: inline-block; }
 
 /* - Item showing animation  */
 .header-menu-sidebar .item--inner {
@@ -523,7 +514,7 @@ body.menu_sidebar_dropdown:before {
 .site-header .cb-row--mobile .site-branding img {
   max-width: 100%; }
 
-.style-border-top ul > li:not(.mini_cart_item) > a:after, .style-border-bottom ul > li:not(.mini_cart_item) > a:after, .style-full-height ul > li:not(.mini_cart_item) > a:after {
+.style-border-top ul > li:not(.menu-item-nav-search):not(.menu-item-nav-cart) > a:after, .style-border-bottom ul > li:not(.menu-item-nav-search):not(.menu-item-nav-cart) > a:after, .style-full-height ul > li:not(.menu-item-nav-search):not(.menu-item-nav-cart) > a:after {
   position: absolute;
   content: "";
   display: block;
@@ -536,7 +527,13 @@ body.menu_sidebar_dropdown:before {
 .style-border-top ul > li:hover > a, .style-border-bottom ul > li:hover > a, .style-full-height ul > li:hover > a {
   text-decoration: none; }
   .style-border-top ul > li:hover > a:after, .style-border-bottom ul > li:hover > a:after, .style-full-height ul > li:hover > a:after {
-    width: 100%; }
+    width: 100% !important; }
+
+.style-border-top ul > li.menu-item-nav-cart:hover a, .style-border-top ul > li.menu-item-nav-search:hover a, .style-border-bottom ul > li.menu-item-nav-cart:hover a, .style-border-bottom ul > li.menu-item-nav-search:hover a, .style-full-height ul > li.menu-item-nav-cart:hover a, .style-full-height ul > li.menu-item-nav-search:hover a {
+  opacity: .75; }
+
+.woocommerce-mini-cart-item > a:after {
+  content: none !important; }
 
 .style-border-bottom a:after {
   bottom: 0; }
@@ -583,6 +580,21 @@ body.menu_sidebar_dropdown:before {
       justify-content: center;
       padding: 0 10px;
       font-weight: 500; }
+  .header-menu-sidebar #secondary-menu {
+    flex-direction: column; }
+    .header-menu-sidebar #secondary-menu li a {
+      padding: 5px 0; }
+
+.header-menu-sidebar .nav-menu-primary ul {
+  flex-direction: column;
+  display: flex; }
+  .header-menu-sidebar .nav-menu-primary ul li {
+    padding: 3px 0;
+    width: auto;
+    display: inline-block; }
+    .header-menu-sidebar .nav-menu-primary ul li a {
+      display: inline-block;
+      padding: 3px 50px 3px 0; }
 
 .nav-menu-footer a {
   display: flex;

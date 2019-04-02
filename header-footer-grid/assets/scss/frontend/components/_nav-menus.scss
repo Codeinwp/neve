@@ -1,6 +1,6 @@
-
+// Hover Styles
 .style-border-top, .style-border-bottom, .style-full-height {
-  ul > li:not(.mini_cart_item) > a:after {
+  ul > li:not(.menu-item-nav-search):not(.menu-item-nav-cart) > a:after {
     position: absolute;
     content: "";
     display: block;
@@ -15,9 +15,19 @@
     text-decoration: none;
 
     &:after {
-      width: 100%;
+      width: 100% !important;
     }
   }
+
+  ul > li.menu-item-nav-cart:hover, ul > li.menu-item-nav-search:hover {
+    a {
+      opacity: .75;
+    }
+  }
+}
+
+.woocommerce-mini-cart-item > a:after {
+  content: none !important;
 }
 
 .style-border-bottom {
@@ -63,6 +73,7 @@
   }
 }
 
+// Secondary nav menu
 .nav-menu-secondary {
   padding: 10px 0;
   font-size: .9em;
@@ -84,8 +95,33 @@
       font-weight: 500;
     }
   }
+
+  .header-menu-sidebar & {
+    flex-direction: column;
+
+    li a {
+      padding: 5px 0;
+    }
+  }
 }
 
+.header-menu-sidebar .nav-menu-primary ul {
+  flex-direction: column;
+  display: flex;
+
+  li {
+    padding: 3px 0;
+    width: auto;
+    display: inline-block;
+
+    a {
+      display: inline-block;
+      padding: 3px 50px 3px 0;
+    }
+  }
+}
+
+// Footer nav menu
 .nav-menu-footer {
   a {
     display: flex;
