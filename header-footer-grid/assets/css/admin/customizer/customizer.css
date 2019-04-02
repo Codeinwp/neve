@@ -1378,7 +1378,8 @@
   .hfg--device-panel.hfg--panel-mobile .hfg--cp-sidebar {
     display: none;
     width: 20%;
-    height: 25vh; }
+    min-height: 160px;
+    height: 100%; }
     .hfg--device-panel.hfg--panel-mobile .hfg--cp-sidebar h4 {
       margin-top: -20px;
       margin-bottom: 4px;
@@ -1386,8 +1387,7 @@
     .hfg--device-panel.hfg--panel-mobile .hfg--cp-sidebar .hfg--cb-row {
       height: 100%; }
       .hfg--device-panel.hfg--panel-mobile .hfg--cp-sidebar .hfg--cb-row .hfg--row-inner .hfg--cb-items {
-        min-height: 100%;
-        }
+        height: 100%; }
 
 .hfg--cb-header {
   padding: 10px 20px 0;
