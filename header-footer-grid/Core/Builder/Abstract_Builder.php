@@ -686,7 +686,7 @@ abstract class Abstract_Builder implements Builder {
 				$classes[] = 'hfg-item-last';
 			}
 
-			if ( $x > 0 && $last_item !== null ) {
+			if ( $x > 0 && $last_item !== null && $row_index !== 'sidebar' ) {
 				$origin = intval( $last_item['width'] ) + intval( $last_item['x'] );
 				if ( ( $x - $origin ) > 0 ) {
 					$x         = $x - $origin;
