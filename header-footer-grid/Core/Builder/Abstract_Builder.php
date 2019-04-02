@@ -685,15 +685,16 @@ abstract class Abstract_Builder implements Builder {
 			if ( ! $collection->hasNext() ) {
 				$classes[] = 'hfg-item-last';
 			}
-
-			if ( $x > 0 && $last_item !== null && $row_index !== 'sidebar' ) {
-				$origin = intval( $last_item['width'] ) + intval( $last_item['x'] );
-				if ( ( $x - $origin ) > 0 ) {
-					$x         = $x - $origin;
+			if (  $row_index !== 'sidebar' ) {
+				if ( $x > 0 && $last_item !== null ) {
+					$origin = intval( $last_item['width'] ) + intval( $last_item['x'] );
+					if ( ( $x - $origin ) > 0 ) {
+						$x         = $x - $origin;
+						$classes[] = 'offset-' . $x;
+					}
+				} elseif ( $x > 0 ) {
 					$classes[] = 'offset-' . $x;
 				}
-			} elseif ( $x > 0 ) {
-				$classes[] = 'offset-' . $x;
 			}
 
 			$component->current_x     = $x;
