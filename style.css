@@ -781,9 +781,9 @@ blockquote.wp-block-quote.is-style-large cite {
 .menu-item-nav-search.responsive-nav-search .nv-nav-search {
   position: fixed;
   top: 0;
-  bottom: 0;
-  width: 100%;
-  display: flex;
+  /* bottom: 0; */
+  /* width: 100%; */
+  /* display: flex; */
   justify-content: center;
   align-items: center;
   background-color: #fff;
