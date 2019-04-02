@@ -162,9 +162,8 @@ body.menu_sidebar_dropdown:before {
 .header-menu-sidebar-bg {
   position: relative;
   word-wrap: break-word;
-  min-height: 100vh;
-  display: block;
-  }
+  min-height: 100%;
+  display: block; }
   .header-menu-sidebar-bg:before {
     content: "";
     position: absolute;
@@ -983,5 +982,3 @@ body.menu_sidebar_dropdown:before {
 
 .nv-html-content p {
   margin: 0; }
-
-/*# sourceMappingURL=style.css.map */
