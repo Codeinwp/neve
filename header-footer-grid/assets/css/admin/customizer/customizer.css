@@ -1386,7 +1386,8 @@
     .hfg--device-panel.hfg--panel-mobile .hfg--cp-sidebar .hfg--cb-row {
       height: 100%; }
       .hfg--device-panel.hfg--panel-mobile .hfg--cp-sidebar .hfg--cb-row .hfg--row-inner .hfg--cb-items {
-        height: 100%; }
+        min-height: 100%;
+        }
 
 .hfg--cb-header {
   padding: 10px 20px 0;

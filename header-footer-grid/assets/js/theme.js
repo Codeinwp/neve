@@ -37,7 +37,6 @@ if ( !Element.prototype.closest ) {
 	};
 }
 
-
 /**
  * Main HFG Scripts
  */
@@ -371,26 +370,6 @@ if ( !Element.prototype.closest ) {
 		}
 	};
 
-	HFG.prototype.setupMobileItemAnimations = function( element ) {
-		if ( typeof element === "undefined" ) {
-			element = document.getElementById( "header-menu-sidebar" );
-		}
-
-		if ( element === null ) {
-			return;
-		}
-
-		let t = 0.2;
-		let index = 0;
-		let itemsInner = element.querySelectorAll( ".item--inner" );
-		if ( itemsInner.length ) {
-			for ( let i = 0; i < itemsInner.length; i++ ) {
-				index++;
-				itemsInner[i].style.transitionDelay = index * t + "s";
-			}
-		}
-	};
-
 	/**
 	 * Toggle Element class name.
 	 *
@@ -583,7 +562,6 @@ if ( !Element.prototype.closest ) {
 	HFG.prototype.init = function() {
 		this.checkTouchScreen();
 		this.insertMenuOverlayClass();
-		this.setupMobileItemAnimations();
 		this.initMenuSidebar();
 
 		/**
@@ -600,9 +578,6 @@ if ( !Element.prototype.closest ) {
 		window.addEventListener(
 			"resize",
 			function() {
-				// Reset mobile animations
-				this.setupMobileItemAnimations();
-
 				// Reset search form alignment.
 				this.removeClass(
 					document.querySelectorAll( ".header-search_icon-item" ),
