@@ -91,7 +91,7 @@ class Typography extends Base_Customizer {
 				array(
 					'sanitize_callback' => 'neve_sanitize_font_weight',
 					'transport'         => $this->selective_refresh,
-					'default'           => '600',
+					'default'           => '400',
 				),
 				array(
 					'label'    => esc_html__( 'Font Weight', 'neve' ),

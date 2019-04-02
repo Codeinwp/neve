@@ -58,7 +58,7 @@ class Typography extends Base_Inline {
 		$spacing        = get_theme_mod( 'neve_body_letter_spacing' );
 		$style_setup    = array();
 
-		if ( ! empty( $body_font ) ) {
+		if ( ! empty( $body_font ) && $body_font !== 'default' ) {
 			$style_setup[] = array(
 				'css_prop' => 'font-family',
 				'value'    => esc_html( $body_font ),
@@ -147,7 +147,7 @@ class Typography extends Base_Inline {
 		$spacing        = get_theme_mod( 'neve_headings_letter_spacing' );
 		$style_setup    = array();
 
-		if ( ! empty( $headings_font ) ) {
+		if ( ! empty( $headings_font ) && $headings_font !== 'default' ) {
 			$style_setup[] = array(
 				'css_prop' => 'font-family',
 				'value'    => esc_html( $headings_font ),

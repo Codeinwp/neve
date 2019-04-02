@@ -1335,8 +1335,6 @@ button:hover, input[type=button]:hover, .btn:hover, input[type="submit"]:hover {
 
 .entry-title {
   word-wrap: break-word;
-  font-weight: 600;
-  line-height: 1.3em;
 }
 .entry-title a {
   color: #404248;
