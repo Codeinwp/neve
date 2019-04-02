@@ -99,7 +99,7 @@ class MenuIcon extends Abstract_Component {
 				$wp_customize,
 				$prefix . '_sidebar',
 				[
-					'label'   => esc_html__( 'Activate Sidebar', 'neve' ),
+					'label'   => esc_html__( 'Show sidebar', 'neve' ),
 					'type'    => 'checkbox-toggle',
 					'section' => $this->section,
 				]
