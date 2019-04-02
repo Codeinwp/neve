@@ -5,11 +5,12 @@
   "main": "index.js",
   "scripts": {
     "prebuild:css": "./node_modules/.bin/node-sass --watch assets/scss -o assets/css --source-map true",
-    "minify:style": "./node_modules/.bin/postcss --use autoprefixer -b 'last 2 versions' < assets/css/style.css | ./node_modules/.bin/postcss --use cssnano > assets/css/style.min.css",
-    "minify:customizer": "./node_modules/.bin/postcss --use autoprefixer -b 'last 2 versions' < assets/css/admin/customizer/customizer.css | ./node_modules/.bin/postcss --use cssnano > assets/css/admin/customizer/customizer.min.css",
-    "prefix:css": "npm run minify:style && npm run minify:customizer",
+    "builds:css": "./node_modules/.bin/node-sass assets/scss -o assets/css",
+    "minify:style": ".\"/node_modules/.bin/postcss\" --use autoprefixer -b \"last 2 versions\" < assets/css/style.css | .\"/node_modules/.bin/postcss\" --use cssnano > assets/css/style.min.css",
+    "minify:customizer": ".\"/node_modules/.bin/postcss\" --use autoprefixer -b \"last 2 versions\" < assets/css/admin/customizer/customizer.css | .\"/node_modules/.bin/postcss\" --use cssnano > assets/css/admin/customizer/customizer.min.css",
+    "prefix:css": "npm run minify:style & npm run minify:customizer",
     "dev": "./node_modules/.bin/rollup -c --watch",
-    "build": "./node_modules/.bin/rollup -c && npm run prefix:css"
+    "build": "./node_modules/.bin/rollup -c & npm run builds:css & npm run prefix:css"
   },
   "author": "ThemeIsle <friends@themeisle.com>",
   "license": "GPL-2.0+",
