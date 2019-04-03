@@ -55,6 +55,7 @@ class Header_Footer_Elementor {
 			return;
 		}
 		hfe_render_header();
+		remove_all_actions( 'neve_do_top_bar' );
 		remove_all_actions( 'neve_do_header' );
 	}
 
