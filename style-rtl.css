@@ -680,7 +680,6 @@ blockquote.wp-block-quote.is-style-large cite {
   width: 100%;
   display: flex;
   position: relative;
-  padding: 10px 0;
 }
 .primary-menu-ul li {
   cursor: pointer;
@@ -2419,17 +2418,15 @@ hr {
     margin-right: auto;
     justify-content: flex-start;
   }
-  .row .primary-menu-ul > li:not(:last-child) {
-    padding-left: 10px;
-  }
-  .row .primary-menu-ul > li:not(:first-child) {
-    padding-right: 10px;
-  }
   .responsive-opened .row .primary-menu-ul {
     padding-bottom: 0;
   }
   .row .primary-menu-ul > li {
     width: inherit;
+    padding: 10px 0;
+  }
+  .row .primary-menu-ul > li:not(:last-child) {
+    padding-left: 20px;
   }
   .row .primary-menu-ul > li > a {
     display: flex;
