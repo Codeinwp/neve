@@ -49,9 +49,9 @@ class MenuIcon extends Abstract_Component {
 	 * @return array
 	 */
 	public function customize_register( WP_Customize_Manager $wp_customize ) {
-		$prefix   = $this->section;
-		$fn       = array( $this, 'render' );
-		$selector = '.builder-item--' . $this->id;
+		$prefix           = $this->section;
+		$fn               = array( $this, 'render' );
+		$selector         = '.builder-item--' . $this->id;
 		$partial_settings = array();
 
 		$wp_customize->add_section(
@@ -99,7 +99,7 @@ class MenuIcon extends Abstract_Component {
 				$wp_customize,
 				$prefix . '_sidebar',
 				[
-					'label'   => esc_html__( 'Activate Sidebar', 'neve' ),
+					'label'   => esc_html__( 'Show sidebar', 'neve' ),
 					'type'    => 'checkbox-toggle',
 					'section' => $this->section,
 				]

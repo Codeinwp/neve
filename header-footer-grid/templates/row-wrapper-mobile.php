@@ -14,7 +14,7 @@ use HFG\Core\Builder\Header as HeaderBuilder;
 $row_index  = current_row();
 $control_id = get_builders()->get_property( 'control_id' );
 
-$skin_mode = get_theme_mod( $control_id . '_' . $row_index . '_skin', 'dark-mode' );
+$skin_mode = get_theme_mod( $control_id . '_' . $row_index . '_skin', 'light-mode' );
 $classes   = [ 'header-menu-sidebar', 'menu-sidebar-panel', $skin_mode ];
 
 ?>

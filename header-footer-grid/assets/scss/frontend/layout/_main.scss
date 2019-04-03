@@ -45,30 +45,33 @@ $builder_types: header footer;
   background-color: #f0f0f0;
 }
 
-.header--row-inner {
-  &.light-mode {
-    background-color: #fff;
+.light-mode {
+  background-color: #fff;
+  color: #404248;
+
+  a:not(.button) {
     color: #404248;
-
-    a:not(.button) {
-      color: #404248;
-    }
-  }
-
-  &.dark-mode {
-    &, .sub-menu, .sub-menu li {
-      border-color: #333;
-      background-color: #24292e;
-      color: #fff;
-    }
-
-    a:not(.button) {
-      color: #fff;
-    }
   }
 }
 
-.header-main-inner {
+.header--row-inner.dark-mode {
+  &, .sub-menu, .sub-menu li {
+    border-color: #333;
+    background-color: #24292e;
+    color: #fff;
+  }
+  a:not(.button) {
+    color: #fff;
+  }
+}
+
+.dark-mode {
+  .menu-item-nav-search, .menu-item-nav-cart > a {
+    color: #fff;
+  }
+}
+
+.header--row.header-bottom .header--row-inner {
   border-bottom: 1px solid #f0f0f0;
 
   &.dark-mode {

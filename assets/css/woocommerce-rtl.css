@@ -1222,8 +1222,11 @@ body.woocommerce-account .nv-content-wrap > .woocommerce {
   #nv-primary-navigation .widget_shopping_cart li.mini_cart_item:hover {
     background: #f9f9f9;
   }
+  #nv-primary-navigation .widget_shopping_cart li.mini_cart_item > *:not(.remove) {
+    padding-left: 60px;
+  }
   #nv-primary-navigation .widget_shopping_cart li.mini_cart_item > a {
-    padding: 0 0 0 60px;
+    padding: 0;
     display: inline;
     grid-column: span 10;
     grid-row-start: 1;

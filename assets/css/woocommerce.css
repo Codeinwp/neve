@@ -1034,9 +1034,6 @@
 .woocommerce table.shop_table.cart td {
   background: #fff !important;
   border-top: 0;
-  flex: 1;
-  flex-grow: 1;
-  align-self: normal;
 }
 .woocommerce table.shop_table.cart td a.remove {
   margin: 0;
@@ -1225,8 +1222,11 @@ body.woocommerce-account .nv-content-wrap > .woocommerce {
   #nv-primary-navigation .widget_shopping_cart li.mini_cart_item:hover {
     background: #f9f9f9;
   }
+  #nv-primary-navigation .widget_shopping_cart li.mini_cart_item > *:not(.remove) {
+    padding-right: 60px;
+  }
   #nv-primary-navigation .widget_shopping_cart li.mini_cart_item > a {
-    padding: 0 60px 0 0;
+    padding: 0;
     display: inline;
     grid-column: span 10;
     grid-row-start: 1;

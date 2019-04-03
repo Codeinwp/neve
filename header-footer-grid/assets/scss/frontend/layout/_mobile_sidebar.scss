@@ -1,9 +1,3 @@
-.header-menu-sidebar-inner {
-  .builder-item {
-    max-width: 100%;
-    flex: 0 0 100%;
-  }
-}
 
 body {
   &:before {
@@ -176,8 +170,9 @@ body {
   position: relative;
   word-wrap: break-word;
   min-height: 100%;
-  display: block;
   padding: 1.2em 0;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Type : Overlay */
@@ -452,6 +447,30 @@ body {
   }
 }
 
+.header-menu-sidebar .menu-item-nav-search {
+  display: flex;
+  align-items: center;
+}
+.header-menu-sidebar .menu-item-nav-search.responsive-nav-search .nv-nav-search {
+  margin-left: 20px;
+  position: relative;
+  background-color: transparent;
+  border: 0;
+  display: flex;
+  flex-direction: row-reverse;
+  width: 100%;
+  padding: 0;
+  line-height: 1;
+  .close-container {
+    position: static;
+    top: unset;
+    width: 35%;
+    padding: 0;
+  }
+  form input {
+    background-color: #fff;
+  }
+}
 
 /* Close Button */
 .header-menu-sidebar {
