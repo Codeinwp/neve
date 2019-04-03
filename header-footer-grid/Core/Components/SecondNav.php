@@ -13,7 +13,7 @@ namespace HFG\Core\Components;
 
 use HFG\Core\Settings;
 use HFG\Main;
-use Neve\Customizer\Controls\Button;
+use Neve\Customizer\Controls\Button as ButtonControl;
 use Neve\Customizer\Controls\Radio_Image;
 use WP_Customize_Manager;
 
@@ -145,7 +145,7 @@ class SecondNav extends Abstract_Component {
 			)
 		);
 		$wp_customize->add_control(
-			new Button(
+			new ButtonControl(
 				$wp_customize,
 				$this->id . '_shortcut',
 				array(
