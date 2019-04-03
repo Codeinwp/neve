@@ -12,7 +12,10 @@ export const initIntegrationToggle = function () {
         addMenuItem();
       }
 
-      if (mutation.target.classList.contains('components-panel__body')) {
+      if (
+          mutation.target.classList.contains('components-panel__body') ||
+          mutation.target.classList.contains('edit-post-meta-boxes-area__container')
+      ) {
         attachToTemplatePickerAndListen();
       }
     });
