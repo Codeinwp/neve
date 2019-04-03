@@ -36,12 +36,9 @@ class Footer extends Abstract_Builder {
 		$this->set_property( 'control_id', 'hfg_footer_layout' );
 		$this->set_property( 'panel', 'hfg_footer' );
 		$this->set_property( 'remove_sections', [ 'neve_footer' ] );
-
 		$this->devices = [
 			'desktop' => 'Footer Layout',
 		];
-		add_action( 'hfg_footer_render', array( $this, 'footer_render' ) );
-		add_filter( 'theme_mod_' . $this->control_id, array( $this, 'filter_defaults' ) );
 	}
 
 	/**
@@ -59,7 +56,7 @@ class Footer extends Abstract_Builder {
 	 * @since   1.0.0
 	 * @access  public
 	 */
-	public function footer_render() {
+	public function load_template() {
 
 		Main::get_instance()->load( 'footer-wrapper' );
 	}

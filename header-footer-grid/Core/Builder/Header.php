@@ -38,8 +38,6 @@ class Header extends Abstract_Builder {
 		$this->set_property( 'panel', 'hfg_header' );
 		$this->set_property( 'remove_panels', [ 'neve_header' ] );
 
-		add_action( 'hfg_header_render', array( $this, 'header_render' ) );
-		add_filter( 'theme_mod_' . $this->control_id, array( $this, 'filter_defaults' ) );
 	}
 
 
@@ -49,7 +47,7 @@ class Header extends Abstract_Builder {
 	 * @since   1.0.0
 	 * @access  public
 	 */
-	public function header_render() {
+	public function load_template() {
 		Main::get_instance()->load( 'header-wrapper' );
 	}
 
