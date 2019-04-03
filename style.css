@@ -599,6 +599,7 @@ blockquote.wp-block-quote.is-style-large cite {
   float: left;
 }
 .site-logo h1, .site-logo p {
+  font-family: inherit;
   font-size: 1.25em;
   margin-bottom: 0;
   font-weight: 600;
