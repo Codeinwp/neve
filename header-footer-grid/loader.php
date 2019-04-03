@@ -48,6 +48,6 @@ add_action(
 		do_action( 'hfg_header_render' );
 	}
 );
-if ( class_exists( 'HFG\Main' ) ) {
+if ( class_exists( 'HFG\Main' ) && version_compare( PHP_VERSION, '5.3.29' ) > 0 ) {
 	add_action( 'init', 'HFG\Main::get_instance' );
 }
