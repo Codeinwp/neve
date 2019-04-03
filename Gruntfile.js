@@ -7,13 +7,15 @@ module.exports = function ( grunt ) {
 		config = require( 'grunt-theme-fleet' );
 	config = config();
 
-  	config.files.php.push( '!**/node_modules/**/*' );
+	config.files.php.push( '!**/node_modules/**/*' );
 	config.files.js.push( '!**/node_modules/**/*' );
 
 	config.files.js.push( '!**/vendor/**/*' );
 	config.files.php.push( '!**/vendor/**/*' );
 	config.files.css.push( '!**/vendor/**/*' );
 
+	config.files.js.push( '!header-footer-grid/assets/js/**/*' );
+	config.files.js.push( '!header-footer-grid/rollup.config.js' );
 	//Task mapping.
 	config.taskMap.sass = 'grunt-contrib-sass';
 	config.taskMap.watch = 'grunt-contrib-watch';
