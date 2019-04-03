@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400px" height="400px" viewBox="0 0 400 400" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>blog_masonry</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-800.000000, -400.000000)">
+        <g id="Blog_Layouts">
+            <g id="blog_masonry" transform="translate(800.000000, 400.000000)">
+                <g id="Square-Wrapper" stroke="#0085BA" stroke-width="2">
+                    <rect id="Rectangle" x="1" y="1" width="398" height="398" rx="6"></rect>
+                </g>
+                <g id="Post-1" transform="translate(40.000000, 40.000000)" fill="#0085BA">
+                    <g id="Blue-Square">
+                        <rect id="Rectangle-2" x="0" y="0" width="90" height="100"></rect>
+                    </g>
+                    <g id="Group-3" transform="translate(0.000000, 120.000000)">
+                        <g id="Heading-Line">
+                            <rect id="Rectangle-3" x="0" y="0" width="50" height="4"></rect>
+                        </g>
+                        <g id="Heading-Line" transform="translate(0.000000, 18.000000)">
+                            <rect id="Rectangle-3" x="0" y="0" width="90" height="4"></rect>
+                        </g>
+                        <g id="Heading-Line" transform="translate(0.000000, 36.000000)">
+                            <rect id="Rectangle-3" x="0" y="0" width="90" height="4"></rect>
+                        </g>
+                    </g>
+                </g>
+                <g id="Group-2" transform="translate(40.000000, 240.000000)" fill="#0085BA">
+                    <g id="Blue-Square" transform="translate(115.000000, 60.000000)">
+                        <rect id="Rectangle-2" x="0" y="0" width="90" height="100"></rect>
+                    </g>
+                    <rect id="Rectangle-6-Copy-2" x="0" y="0" width="90" height="160"></rect>
+                    <g id="Blue-Square">
+                        <rect id="Rectangle-2" x="0" y="0" width="90" height="160"></rect>
+                    </g>
+                    <g id="Blue-Square" transform="translate(230.000000, 20.000000)">
+                        <rect id="Rectangle-2" x="0" y="0" width="90" height="140"></rect>
+                    </g>
+                </g>
+                <g id="Post-1-Copy-6" transform="translate(155.000000, 40.000000)" fill="#0085BA">
+                    <g id="Blue-Square">
+                        <rect id="Rectangle-2" x="0" y="0" width="90" height="160"></rect>
+                    </g>
+                    <g id="Group-3-Copy" transform="translate(0.000000, 180.000000)">
+                        <g id="Heading-Line">
+                            <rect id="Rectangle-3" x="0" y="0" width="50" height="4"></rect>
+                        </g>
+                        <g id="Heading-Line" transform="translate(0.000000, 18.000000)">
+                            <rect id="Rectangle-3" x="0" y="0" width="90" height="4"></rect>
+                        </g>
+                        <g id="Heading-Line" transform="translate(0.000000, 36.000000)">
+                            <rect id="Rectangle-3" x="0" y="0" width="90" height="4"></rect>
+                        </g>
+                    </g>
+                </g>
+                <g id="Post-1-Copy-7" transform="translate(270.000000, 40.000000)" fill="#0085BA">
+                    <g id="Blue-Square">
+                        <rect id="Rectangle-2" x="0" y="0" width="90" height="120"></rect>
+                    </g>
+                    <g id="Group-3-Copy-2" transform="translate(0.000000, 140.000000)">
+                        <g id="Heading-Line">
+                            <rect id="Rectangle-3" x="0" y="0" width="50" height="4"></rect>
+                        </g>
+                        <g id="Heading-Line" transform="translate(0.000000, 18.000000)">
+                            <rect id="Rectangle-3" x="0" y="0" width="90" height="4"></rect>
+                        </g>
+                        <g id="Heading-Line" transform="translate(0.000000, 36.000000)">
+                            <rect id="Rectangle-3" x="0" y="0" width="90" height="4"></rect>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -17,11 +17,8 @@
   @include grid-container--laptop();
   @include grid--laptop();
   @include content--laptop();
-  @include nav-toggle--laptop();
   @include nav-menu--laptop();
-  @include nav-menu-centered--laptop();
   @include nav-search--laptop();
-  @include nav-menu-right--laptop();
   @include blog-layout-default-alt--laptop();
   @include blogpost-index--laptop();
   @include single-post--laptop();

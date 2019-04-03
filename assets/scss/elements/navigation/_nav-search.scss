@@ -61,7 +61,11 @@
 }
 
 .menu-item-nav-search {
+  cursor: pointer;
   outline: 0;
+  &:hover .search-icon {
+    opacity: .75;
+  }
 }
 
 .menu-item-nav-search:not(.responsive-nav-search).nv-nav-search {
@@ -73,7 +77,6 @@
 }
 
 .nv-nav-search {
-  padding: 0;
   visibility: hidden;
   opacity: 0;
   transition: $transition_med;
@@ -86,8 +89,6 @@
   cursor: default;
   z-index: 100;
   @include soft-box-shadow();
-  .search-submit {
-  }
   .menu-item-nav-search.active & {
     visibility: visible;
     opacity: 1;
@@ -136,15 +137,12 @@ a.button.close-responsive-search {
 }
 
 @mixin nav-search--laptop() {
-  .menu-item-nav-search.responsive-nav-search {
-    display: none;
-  }
-
-  #nv-primary-navigation .menu-item-nav-search:not(.responsive-nav-search) {
+  .row #nv-primary-navigation .menu-item-nav-search:not(.responsive-nav-search) {
     display: block;
   }
 
   #nv-primary-navigation > li.menu-item-nav-search > a {
     display: block;
   }
+
 }

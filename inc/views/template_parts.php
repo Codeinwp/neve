@@ -98,7 +98,7 @@ class Template_Parts extends Base_View {
 				case 'excerpt':
 					$markup .= $this->get_excerpt();
 					break;
-				case 'default':
+				default:
 					break;
 			}
 		}

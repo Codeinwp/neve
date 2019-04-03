@@ -73,10 +73,8 @@ abstract class Page_Builder_Base {
 	private function set_page_template( $post_id ) {
 		global $post;
 
-		if ( isset( $post ) && ( is_admin() || is_singular() ) ) {
-			if ( empty( $post->post_content ) ) {
-				update_post_meta( $post_id, '_wp_page_template', 'page-templates/template-pagebuilder-full-width.php' );
-			}
+		if ( isset( $post ) && ( is_admin() || is_singular() ) && empty( $post->post_content ) ) {
+			update_post_meta( $post_id, '_wp_page_template', 'page-templates/template-pagebuilder-full-width.php' );
 		}
 	}
 }

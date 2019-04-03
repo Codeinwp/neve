@@ -234,7 +234,7 @@ class Typography extends Base_Customizer {
 						'class'            => 'headings-accordion',
 						'accordion'        => true,
 						'controls_to_wrap' => 2,
-						'expanded'         => $control_id === 'neve_h1' ? true : false,
+						'expanded'         => ( $control_id === 'neve_h1' ), // true or false
 					),
 					'Neve\Customizer\Controls\Heading'
 				)

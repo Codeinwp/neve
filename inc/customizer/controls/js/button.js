@@ -3,7 +3,7 @@
  *
  * @package Neve\Customizer\Controlss
  */
-(function ( $ ) {
+( function ( $ ) {
 	'use strict';
 	wp.tiCustomizeButton = {
 		init: function () {
@@ -21,4 +21,4 @@
 			wp.tiCustomizeButton.init();
 		}
 	);
-})( jQuery );
+} )( jQuery );

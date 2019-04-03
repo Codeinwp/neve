@@ -4,12 +4,10 @@
 
 .nv-navbar {
   background-color: $navbar_background_color;
-  border-bottom: $muted-border;
   max-height: 100vh;
 }
 
-#nv-primary-navigation {
-  max-height: 0;
+.primary-menu-ul {
   overflow-y: auto;
   transition: $transition_med;
   margin-bottom: 0;
@@ -23,8 +21,7 @@
     color: $body-color;
     font-weight: 500;
     width: 100%;
-    display: block;
-    padding: $spacing-xs 0;
+    display: flex;
     position: relative;
   }
 
@@ -49,7 +46,7 @@
   display: flex;
 }
 
-#nv-primary-navigation {
+.primary-menu-ul {
   .sub-menu {
     max-height: 0;
     overflow: hidden;
@@ -103,144 +100,157 @@
 }
 
 @mixin nav-menu--laptop() {
-  .menu-opened {
-    overflow: inherit;
-  }
-
-  .nv-nav-wrap {
-    flex-direction: row;
-    align-items: center;
-    padding-bottom: 0;
-  }
-
-  li > .caret-wrap {
-    float: right;
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
-  }
-
-  #nv-primary-navigation {
-    .amp-caret-wrap {
-      display: none;
+    .menu-opened {
+      overflow: inherit;
     }
 
-    .amp-desktop-caret-wrap {
-      display: block;
-    }
-  }
-
-  #nv-primary-navigation {
-    @include horizontal-list($spacing-xs, 'true');
-    overflow-y: inherit;
-    max-height: inherit;
-    margin-left: auto;
-    justify-content: flex-start;
-
-    .responsive-opened & {
+  .row {
+    .nv-nav-wrap {
+      flex-direction: row;
+      align-items: center;
       padding-bottom: 0;
     }
 
-    > li {
-      width: inherit;
-
-      > a {
-        padding: $spacing-xs 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100%;
-      }
-
-      li a {
-        position: relative;
-      }
-    }
-
-    li:hover, li:focus {
-      > a {
-        color: $link_hover_color;
-        text-decoration: none;
-      }
-
-      > a > .caret-wrap .caret {
-        color: $link_hover_color;
-      }
-    }
-
-    .sub-menu {
-      @include soft-box-shadow();
-      max-height: inherit;
-      padding: 0;
-      top: 100%;
-      background: $navbar_background_color;
-      border-left: none;
-      border-top: $muted-border;
+    li > .caret-wrap {
+      float: right;
       position: absolute;
-      overflow: visible;
-      z-index: 100;
-      opacity: 0;
-      visibility: hidden;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+    }
 
-      .sub-menu {
-        left: 100%;
-        right: auto;
-        top: -1px;
+    .primary-menu-ul {
+      .amp-caret-wrap {
+        display: none;
       }
 
-      li {
-        display: flex;
-        align-items: center;
-        background-color: $navbar_background_color;
-        border: $muted-border;
-        border-top: none;
-        min-width: 150px;
+      .amp-desktop-caret-wrap {
+        display: block;
+      }
+    }
 
-        a {
+    .primary-menu-ul {
+      display: flex;
+      flex-wrap: wrap;
+      padding-left: 0;
+      list-style-type: none;
+      overflow-y: inherit;
+      max-height: inherit;
+      margin-left: auto;
+      justify-content: flex-start;
+
+      .responsive-opened & {
+        padding-bottom: 0;
+      }
+
+      > li {
+        width: inherit;
+        padding: 10px 0;
+        &:not(:last-child) {
+         padding-right: $spacing-sm;
+        }
+        > a {
           display: flex;
           align-items: center;
-          white-space: nowrap;
-          width: 100%;
-          margin-right: $spacing-xs;
-          padding: 7px 14px;
+          justify-content: center;
+          height: 100%;
+        }
+
+        li a {
+          position: relative;
         }
       }
-    }
 
-    .menu-item-has-children {
-      &:hover > .sub-menu,
-      &:focus > .sub-menu,
-      &:focus-within > .sub-menu {
-        display: block;
-        visibility: visible;
-        opacity: 1;
+      li:hover, li:focus {
+        > a {
+          color: $link_hover_color;
+          text-decoration: none;
+        }
+
+        > a .caret {
+          color: $link_hover_color;
+        }
       }
 
-      &:last-child {
-        padding-right: $spacing-xs;
+      .sub-menu {
+        @include soft-box-shadow();
+        max-height: inherit;
+        padding: 0;
+        top: 100%;
+        background: $navbar_background_color;
+        border-left: none;
+        border-top: $muted-border;
+        position: absolute;
+        overflow: visible;
+        z-index: 100;
+        opacity: 0;
+        visibility: hidden;
+
+        .sub-menu {
+          left: 100%;
+          right: auto;
+          top: -1px;
+        }
+
+        li {
+          display: flex;
+          align-items: center;
+          background-color: $navbar_background_color;
+          border: $muted-border;
+          border-top: none;
+          min-width: 150px;
+
+          a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            white-space: nowrap;
+            width: 100%;
+            padding: 7px 14px;
+          }
+        }
+      }
+
+      .menu-item-has-children {
+        &:hover > .sub-menu,
+        &:focus > .sub-menu,
+        &:focus-within > .sub-menu {
+          display: block;
+          visibility: visible;
+          opacity: 1;
+        }
+
+        &:last-child {
+          padding-right: $spacing-xs;
+        }
+
+        > a {
+          display: flex;
+          align-items: center;
+        }
+      }
+
+      > .menu-item-has-children > .sub-menu {
+        right: 0;
+      }
+
+    }
+
+    .caret-wrap {
+      position: relative;
+      border: none;
+      top: 2px;
+      width: 10px;
+
+      &.dropdown-open .caret {
+        color: $body-color;
+        transform: rotate(135deg);
       }
     }
 
-    > .menu-item-has-children > .sub-menu {
-      right: 0;
+
+    .menu-item-has-children:last-child .caret-wrap {
+      right: -10px;
     }
-
-  }
-  .caret-wrap {
-    position: static;
-    border: none;
-    top: inherit;
-    width: 10px;
-
-    &.dropdown-open .caret {
-      color: $body-color;
-      transform: rotate(135deg);
-    }
-  }
-
-
-  .menu-item-has-children:last-child .caret-wrap {
-    right: -10px;
   }
 }

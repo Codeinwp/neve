@@ -30,7 +30,6 @@ class Top_Bar extends Base_View {
 		add_filter( 'neve_top_bar_content', 'wpautop' );
 		add_filter( 'neve_top_bar_content', 'shortcode_unautop' );
 		add_filter( 'neve_top_bar_content', 'do_shortcode' );
-
 	}
 
 	/**

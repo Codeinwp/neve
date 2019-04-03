@@ -132,6 +132,8 @@ class Main {
 				$url     = esc_url( admin_url( 'admin.php?page=jetpack#/settings' ) );
 				$button .= '<a  data-redirect="' . esc_url( $redirect ) . '" class="button" href="' . esc_url( $url ) . '">' . esc_html__( 'Activate', 'neve' ) . ' ' . esc_html__( 'Jetpack Portfolio', 'neve' ) . '</a>';
 				break;
+			default:
+				break;
 		}// End switch().
 		$button .= '</div>';
 
