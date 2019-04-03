@@ -763,21 +763,6 @@ blockquote.wp-block-quote.is-style-large cite {
   width: 20px;
 }
 
-.nav-right .site-logo {
-  justify-content: flex-end;
-}
-
-.nav-right .navbar-toggle-wrapper {
-  justify-content: flex-start;
-}
-
-.nav-right .nv-nav-header {
-  flex-direction: row-reverse;
-}
-.nav-right .nv-nav-header .brand > * {
-  text-align: right;
-}
-
 .menu-item-nav-search.responsive-nav-search .nv-nav-search {
   position: fixed;
   top: 0;
@@ -2433,17 +2418,15 @@ hr {
     margin-left: auto;
     justify-content: flex-start;
   }
-  .row .primary-menu-ul > li:not(:last-child) {
-    padding-right: 10px;
-  }
-  .row .primary-menu-ul > li:not(:first-child) {
-    padding-left: 10px;
-  }
   .responsive-opened .row .primary-menu-ul {
     padding-bottom: 0;
   }
   .row .primary-menu-ul > li {
     width: inherit;
+    padding: 10px 0;
+  }
+  .row .primary-menu-ul > li:not(:last-child) {
+    padding-right: 20px;
   }
   .row .primary-menu-ul > li > a {
     display: flex;
@@ -2527,54 +2510,12 @@ hr {
     right: -10px;
   }
 
-  .nv-nav-wrap.nav-center {
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .nav-center #nv-primary-navigation {
-    margin: 0 auto;
-    justify-content: center;
-  }
-  .nav-center #nv-primary-navigation > li > a {
-    padding-top: 10px;
-  }
-
-  .nav-center .site-logo {
-    justify-content: center;
-  }
-  .nav-center .site-logo a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-
   .row #nv-primary-navigation .menu-item-nav-search:not(.responsive-nav-search) {
     display: block;
   }
 
   #nv-primary-navigation > li.menu-item-nav-search > a {
     display: block;
-  }
-
-  .nv-nav-wrap.nav-right {
-    flex-direction: row-reverse;
-  }
-
-  .nav-right #nv-primary-navigation {
-    margin-left: 0;
-    margin-right: auto;
-  }
-
-  .nav-right .nv-nav-cart {
-    right: inherit;
-    left: 0;
-  }
-
-  .nav-right #nv-primary-navigation > .menu-item-has-children > .sub-menu {
-    left: 0;
-    right: inherit;
   }
 
   .layout-default .nv-post-thumbnail-wrap, .layout-alternative .nv-post-thumbnail-wrap {

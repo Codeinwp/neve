@@ -53,7 +53,9 @@ $builder_types: header footer;
     color: #404248;
   }
 }
-
+.header-top-inner {
+  font-size: .85em;
+}
 .header--row-inner.dark-mode {
   &, .sub-menu, .sub-menu li {
     border-color: #333;
@@ -71,12 +73,7 @@ $builder_types: header footer;
   }
 }
 
-.header--row.header-bottom .header--row-inner {
+.hfg_header.site-header {
   border-bottom: 1px solid #f0f0f0;
-
-  &.dark-mode {
-    border-bottom: 1px solid #333;
-  }
 }
-
 //</editor-fold>
