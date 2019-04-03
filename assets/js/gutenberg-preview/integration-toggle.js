@@ -2,13 +2,18 @@
 /* global neveGutenbergHelper */
 import { store } from './store.js';
 
-let integrationStatus;
+let integrationStatus, integrationToggle, pageTemplatePicker;
 
 export const initIntegrationToggle = function () {
+  attachToTemplatePickerAndListen();
   let observer = new MutationObserver(function (mutations) {
     mutations.forEach(function (mutation) {
       if (mutation.target.className === 'edit-post-more-menu') {
         addMenuItem();
+      }
+
+      if (mutation.target.classList.contains('components-panel__body')) {
+        attachToTemplatePickerAndListen();
       }
     });
   });
@@ -29,7 +34,7 @@ const addMenuItem = function () {
   integrationStatus = store.getState('integrationStatus');
   let target = document.querySelector('.components-menu-group:first-of-type div:not(.components-menu-group__label) button:last-child');
 
-  let integrationToggle = document.createElement('button');
+  integrationToggle = document.createElement('button');
 
   integrationToggle.classList.add('components-button', 'components-icon-button', 'components-menu-item__button');
 
@@ -62,7 +67,6 @@ const addMenuItem = function () {
       request.send(JSON.stringify({neve_gutenberg_integration: store.state.integrationStatus}));
 
     }).then(function () {
-      let wrap = document.querySelector('.editor-styles-wrapper');
       let check = integrationToggle.querySelector('svg');
       if (check.style.display === 'none') {
         check.style.display = 'block';
@@ -70,9 +74,46 @@ const addMenuItem = function () {
         check.style.display = 'none';
       }
       integrationToggle.classList.toggle('has-icon');
-      wrap.classList.toggle('neve-gtb');
+
+      if (wp.data.select('core/editor').getEditedPostAttribute('template') !== '') {
+        return false;
+      }
+      toggleDomIntegraton();
     });
   });
 
   target.parentNode.insertBefore(integrationToggle, target.nextSibling);
 };
+
+const attachToTemplatePickerAndListen = function () {
+  pageTemplatePicker = document.querySelector('.editor-page-attributes__template select');
+  if (pageTemplatePicker === null) {
+    return false;
+  }
+  pageTemplatePicker.addEventListener('change', function (event) {
+    if (event.target.value === '') {
+      if (store.getState('integrationStatus') === 'disabled') {
+        return false;
+      }
+      toggleDomIntegraton(true);
+      return false;
+    }
+    toggleDomIntegraton(false);
+  });
+};
+
+export const toggleDomIntegraton = function (remove) {
+  if (remove === null) {
+    remove = 'toggle';
+  }
+  let wrap = document.querySelector('.editor-styles-wrapper');
+  if (remove === false) {
+    wrap.classList.remove('neve-gtb');
+    return false;
+  } else if (remove === true) {
+    wrap.classList.add('neve-gtb');
+    return false;
+  }
+  wrap.classList.toggle('neve-gtb');
+};
+

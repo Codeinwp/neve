@@ -27,7 +27,7 @@ const addClasses = function () {
 
 
   // Add utilitary classes
-  if (store.getState('integrationStatus') === 'enabled') {
+  if (store.getState('integrationStatus') === 'enabled' && wp.data.select('core/editor').getEditedPostAttribute('template') === '') {
     editor.classList.add('neve-gtb');
   }
   contentWrap.classList.add('neve-content-wrap');
