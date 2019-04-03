@@ -13,7 +13,7 @@ namespace HFG\Core\Components;
 
 use HFG\Core\Settings;
 use HFG\Main;
-use Neve\Customizer\Controls\Button;
+use Neve\Customizer\Controls\Button as NeveButton;
 use Neve\Customizer\Controls\Radio_Image;
 use WP_Customize_Manager;
 

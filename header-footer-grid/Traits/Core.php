@@ -34,21 +34,6 @@ trait Core {
 		return $suffix;
 	}
 
-	/**
-	 * Utility method to wrap functions that echo.
-	 *
-	 * @since   1.0.0
-	 * @access  protected
-	 * @param callable $function The function to call.
-	 * @param mixed    ...$args Optional. The arguments to pass.
-	 *
-	 * @return false|string
-	 */
-	protected function safe_echo( $function, ...$args ) {
-		ob_start();
-		call_user_func( $function, ...$args );
-		return  ob_get_clean();
-	}
 
 	/**
 	 * Utility method to convert associative array to css rules.
