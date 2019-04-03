@@ -837,7 +837,7 @@ body.menu_sidebar_dropdown:before {
   transition-duration: 0.075s;
   transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19); }
   .hamburger--squeeze .hamburger-inner::before {
-    transition: top 0.075s 0.12s ease, opacity 0.075s ease; }
+    transition: top 0.075s 0.12s ease, opacity 0.075s ease; }
   .hamburger--squeeze .hamburger-inner::after {
     transition: bottom 0.075s 0.12s ease, transform 0.075s cubic-bezier(0.55, 0.055, 0.675, 0.19); }
 
@@ -848,7 +848,7 @@ body.menu_sidebar_dropdown:before {
   .hamburger--squeeze.is-active .hamburger-inner::before {
     top: 0;
     opacity: 0;
-    transition: top 0.075s ease, opacity 0.075s 0.12s ease; }
+    transition: top 0.075s ease, opacity 0.075s 0.12s ease; }
   .hamburger--squeeze.is-active .hamburger-inner::after {
     bottom: 0;
     transform: rotate(-90deg);
