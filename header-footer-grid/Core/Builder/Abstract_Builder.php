@@ -135,8 +135,15 @@ abstract class Abstract_Builder implements Builder {
 	 */
 	public function __construct() {
 		$this->init();
+
+		add_action( 'hfg_' . $this->get_id() . '_render', array( $this, 'load_template' ) );
+		add_filter( 'theme_mod_' . $this->control_id, array( $this, 'filter_defaults' ) );
 	}
 
+	/**
+	 *  Define templates used to loading the builder.
+	 */
+	public abstract function load_template();
 	/**
 	 * Returns current builder id.
 	 *
@@ -659,14 +666,10 @@ abstract class Abstract_Builder implements Builder {
 			 *
 			 * @var Abstract_Component $component
 			 */
-			$component         = $this->builder_components[ $component_location['id'] ];
-			$x                 = intval( $component_location['x'] );
-			$width             = intval( $component_location['width'] );
-			$alignment_default = 'left';
-			if ( isset( $component_location['settings']['align'] ) && in_array( $component_location['settings']['align'], array( 'left', 'center', 'right' ) ) ) {
-				$alignment_default = $component_location['settings']['align'];
-			}
-			$align = get_theme_mod( $component_location['id'] . '_component_align', $alignment_default );
+			$component = $this->builder_components[ $component_location['id'] ];
+			$x         = intval( $component_location['x'] );
+			$width     = intval( $component_location['width'] );
+			$align     = get_theme_mod( $component_location['id'] . '_component_align', $component->get_align_default() );
 
 			if ( ! $collection->hasNext() && ( $x + $width < $max_columns ) ) {
 				$width += $max_columns - ( $x + $width );

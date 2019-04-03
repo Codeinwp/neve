@@ -127,8 +127,9 @@ class Main {
 	 * @access  public
 	 */
 	public function enqueue_scripts() {
-		wp_enqueue_style( 'hfg-style', esc_url( $this->settings->url ) . '/assets/css/style.css' );
 		$suffix = $this->get_assets_suffix();
+		wp_enqueue_style( 'hfg-style', esc_url( $this->settings->url ) . '/assets/css/style' . $suffix . '.css' );
+
 		wp_enqueue_script(
 			'hfg-theme-functions',
 			esc_url( $this->settings->url ) . '/assets/js/theme' . $suffix . '.js',

@@ -27,7 +27,12 @@ class Settings {
 	 * @var Settings $_instance
 	 */
 	private static $_instance = null;
-
+	/**
+	 * Holds defaults for the builders.
+	 *
+	 * @var null|array Defaults for all builders.
+	 */
+	public $defaults = null;
 	/**
 	 * Holds the file path to the module directory.
 	 *
@@ -58,15 +63,16 @@ class Settings {
 	/**
 	 * Returns the instance of the class.
 	 *
+	 * @return Settings
 	 * @since   1.0.0
 	 * @access  public
-	 * @return Settings
 	 */
 	public static function get_instance() {
 		if ( is_null( self::$_instance ) ) {
-			self::$_instance       = new self();
-			self::$_instance->path = get_template_directory() . '/header-footer-grid';
-			self::$_instance->url  = get_template_directory_uri() . '/header-footer-grid';
+			self::$_instance           = new self();
+			self::$_instance->path     = get_template_directory() . '/header-footer-grid';
+			self::$_instance->defaults = self::$_instance->get_defaults();
+			self::$_instance->url      = get_template_directory_uri() . '/header-footer-grid';
 			self::$_instance->set();
 		}
 
@@ -74,56 +80,40 @@ class Settings {
 	}
 
 	/**
-	 * Set defaults
+	 * Return default for builders.
 	 *
-	 * @since   1.0.0
-	 * @access  private
+	 * @return array Defaults for builders.
 	 */
-	private function set() {
-		$theme_support_defaults = array(
-			'builders' => array(
-				'HFG\Core\Builder\Header' => array(
-					'HFG\Core\Components\Logo',
-					'HFG\Core\Components\MenuIcon',
-					'HFG\Core\Components\Button',
-					'HFG\Core\Components\CustomHtml',
-				),
-				'HFG\Core\Builder\Footer' => array(
-					'HFG\Core\Components\FooterWidgetOne',
-					'HFG\Core\Components\FooterWidgetTwo',
-					'HFG\Core\Components\FooterWidgetThree',
-					'HFG\Core\Components\FooterWidgetFour',
-					'HFG\Core\Components\FooterWidgetFive',
-					'HFG\Core\Components\FooterWidgetSix',
-					'HFG\Core\Components\Copyright',
-				),
-			),
-		);
-		$theme_support          = get_theme_support( 'hfg_support' );
+	public function get_defaults() {
+		$builders = [
+			'header'     => $this->define_header_defaults_neve(),
+			'footer'     => $this->define_footer_defaults_neve(),
+			'components' => [],
+		];
+		foreach ( $builders as $builder_id => $devices ) {
+			foreach ( $devices as $device_id => $rows ) {
+				foreach ( $rows as $row_id => $components ) {
+					foreach ( $components as $component_id => $component_data ) {
+						if ( ! isset( $builders['components'][ $component_id ] ) ) {
+							$builders['components'][ $component_id ] = $component_data;
+						}
+					}
+				}
+			}
+		}
 
-		$settings            = wp_parse_args( $theme_support, $theme_support_defaults );
-		$this->theme_support = $settings;
-	}
-
-	/**
-	 * Getter for theme support.
-	 *
-	 * @since   1.0.0
-	 * @access  public
-	 * @return array
-	 */
-	public function get_theme_support() {
-		return $this->theme_support;
+		return $builders;
 	}
 
 	/**
 	 * Header defaults for Neve
 	 *
+	 * @return array
 	 * @since   1.0.0
 	 * @access  public
-	 * @return array
 	 */
-	public function get_header_defaults_neve() {
+	public function define_header_defaults_neve() {
+
 		$defaults = [
 			'desktop' => [
 				'top'    => [],
@@ -262,17 +252,17 @@ class Settings {
 			'x'        => 0,
 		];
 
-		return json_encode( $defaults );
+		return $defaults;
 	}
 
 	/**
 	 * Footer defaults for Neve
 	 *
+	 * @return array
 	 * @since   1.0.0
 	 * @access  public
-	 * @return array
 	 */
-	public function get_footer_defaults_neve() {
+	public function define_footer_defaults_neve() {
 		$defaults       = [
 			'desktop' => [
 				'top'    => [],
@@ -315,19 +305,90 @@ class Settings {
 			];
 		}
 
-		return json_encode( $defaults );
+		return $defaults;
+	}
+
+	/**
+	 * Set defaults
+	 *
+	 * @since   1.0.0
+	 * @access  private
+	 */
+	private function set() {
+		$theme_support_defaults = array(
+			'builders' => array(
+				'HFG\Core\Builder\Header' => array(
+					'HFG\Core\Components\Logo',
+					'HFG\Core\Components\MenuIcon',
+					'HFG\Core\Components\Button',
+					'HFG\Core\Components\CustomHtml',
+				),
+				'HFG\Core\Builder\Footer' => array(
+					'HFG\Core\Components\FooterWidgetOne',
+					'HFG\Core\Components\FooterWidgetTwo',
+					'HFG\Core\Components\FooterWidgetThree',
+					'HFG\Core\Components\FooterWidgetFour',
+					'HFG\Core\Components\FooterWidgetFive',
+					'HFG\Core\Components\FooterWidgetSix',
+					'HFG\Core\Components\Copyright',
+				),
+			),
+		);
+		$theme_support          = get_theme_support( 'hfg_support' );
+
+		$settings            = wp_parse_args( $theme_support, $theme_support_defaults );
+		$this->theme_support = $settings;
+	}
+
+	/**
+	 * Get default component value.
+	 *
+	 * @param string $id Component id.
+	 *
+	 * @return mixed Default value.
+	 */
+	public function get_default_component_align( $id ) {
+		return isset( $this->defaults['components'][ $id ]['settings']['align'] ) ? $this->defaults['components'][ $id ]['settings']['align'] : null;
+	}
+
+	/**
+	 * Getter for theme support.
+	 *
+	 * @return array
+	 * @since   1.0.0
+	 * @access  public
+	 */
+	public function get_theme_support() {
+		return $this->theme_support;
+	}
+
+	/**
+	 * Get header defaults.
+	 *
+	 * @return mixed Defaults for header.
+	 */
+	public function get_header_defaults_neve() {
+		return json_encode( $this->defaults['header'] );
+	}
+
+	/**
+	 * Get footer defaults.
+	 *
+	 * @return mixed Defaults for footer.
+	 */
+	public function get_footer_defaults_neve() {
+		return json_encode( $this->defaults['footer'] );
 	}
 
 	/**
 	 * Utility method to return media url.
 	 *
-	 * @since   1.0.0
-	 * @access  public
-	 *
-	 * @param  mixed      $value The media reference.
+	 * @param mixed      $value The media reference.
 	 * @param mixed|null $size Optional. The size desired.
 	 *
 	 * @return array|bool|false|string
+	 * @since   1.0.0
+	 * @access  public
 	 */
 	public function get_media( $value, $size = 'full' ) {
 
@@ -350,13 +411,12 @@ class Settings {
 	/**
 	 * Retrieve media from post id.
 	 *
-	 * @since   1.0.0
-	 * @access  private
-	 *
 	 * @param int    $id Post ID.
 	 * @param string $size Media size.
 	 *
 	 * @return bool
+	 * @since   1.0.0
+	 * @access  private
 	 */
 	private function media_from_id( $id, $size = 'full' ) {
 		$image_attributes = wp_get_attachment_image_src( $id, $size );
@@ -370,13 +430,12 @@ class Settings {
 	/**
 	 * Retrieve media from attachment url.
 	 *
-	 * @since   1.0.0
-	 * @access  private
-	 *
 	 * @param string $url The attachment url.
 	 * @param string $size The media size.
 	 *
 	 * @return bool
+	 * @since   1.0.0
+	 * @access  private
 	 */
 	private function media_from_url( $url, $size = 'full' ) {
 		$img_id = attachment_url_to_postid( $url );

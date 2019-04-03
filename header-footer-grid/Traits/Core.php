@@ -27,7 +27,7 @@ trait Core {
 	 */
 	public function get_assets_suffix() {
 		$suffix = '.min';
-		if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+		if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
 			$suffix = '';
 		}
 

@@ -21,6 +21,22 @@ export default [
 		],
 	},
 	{
+		input: 'assets/js/customizer/customizer.js',
+		output: {
+			file: 'assets/js/customizer/customizer.min.js',
+			format: 'iife',
+			sourceMap: 'inline',
+		},
+		plugins: [
+			resolve(),
+			commonjs(),
+			babel( {
+				exclude: 'node_modules/**' // only transpile our source code
+			} ),
+			uglify(),
+		],
+	},
+	{
 		input: 'assets/js/theme.js',
 		output: {
 			file: 'assets/js/theme.min.js',

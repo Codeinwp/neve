@@ -12,6 +12,7 @@
 namespace HFG\Core\Components;
 
 use HFG\Core\Interfaces\Component;
+use HFG\Core\Settings;
 use HFG\Main;
 use HFG\Traits\Core;
 use Neve\Customizer\Controls\Radio_Image;
@@ -167,7 +168,7 @@ abstract class Abstract_Component implements Component {
 		$wp_customize->add_setting(
 			$this->id . '_component_align',
 			array(
-				'default'        => $this->default_align,
+				'default'        => $this->get_align_default(),
 				'theme_supports' => 'hfg_support',
 				'transport'      => 'postMessage',
 			)
@@ -239,6 +240,19 @@ abstract class Abstract_Component implements Component {
 		return $this->id;
 	}
 
+	/**
+	 * Get default align.
+	 *
+	 * @return mixed|string|null Default align.
+	 */
+	public function get_align_default() {
+		$setting_default = Settings::get_instance()->get_default_component_align( $this->get_id() );
+		if ( null !== $setting_default ) {
+			return $setting_default;
+		}
+
+		return $this->default_align;
+	}
 	/**
 	 * The render method for the component.
 	 *
