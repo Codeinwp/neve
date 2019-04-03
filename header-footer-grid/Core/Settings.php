@@ -85,10 +85,24 @@ class Settings {
 	 * @return array Defaults for builders.
 	 */
 	public function get_defaults() {
-		return [
-			'header' => $this->define_header_defaults_neve(),
-			'footer' => $this->define_footer_defaults_neve()
+		$builders = [
+			'header'     => $this->define_header_defaults_neve(),
+			'footer'     => $this->define_footer_defaults_neve(),
+			'components' => [],
 		];
+		foreach ( $builders as $builder_id => $devices ) {
+			foreach ( $devices as $device_id => $rows ) {
+				foreach ( $rows as $row_id => $components ) {
+					foreach ( $components as $component_id => $component_data ) {
+						if ( ! isset( $builders['components'][ $component_id ] ) ) {
+							$builders['components'][ $component_id ] = $component_data;
+						}
+					}
+				}
+			}
+		}
+
+		return $builders;
 	}
 
 	/**
@@ -325,6 +339,18 @@ class Settings {
 		$settings            = wp_parse_args( $theme_support, $theme_support_defaults );
 		$this->theme_support = $settings;
 	}
+
+	/**
+	 * Get default component value.
+	 *
+	 * @param string $id Component id.
+	 *
+	 * @return mixed Default value.
+	 */
+	public function get_default_component_align( $id ) {
+		return isset( $this->defaults['components'][ $id ]['settings']['align'] ) ? $this->defaults['components'][ $id ]['settings']['align'] : null;
+	}
+
 	/**
 	 * Getter for theme support.
 	 *
@@ -363,7 +389,6 @@ class Settings {
 	 * @return array|bool|false|string
 	 * @since   1.0.0
 	 * @access  public
-	 *
 	 */
 	public function get_media( $value, $size = 'full' ) {
 
@@ -392,7 +417,6 @@ class Settings {
 	 * @return bool
 	 * @since   1.0.0
 	 * @access  private
-	 *
 	 */
 	private function media_from_id( $id, $size = 'full' ) {
 		$image_attributes = wp_get_attachment_image_src( $id, $size );
@@ -412,7 +436,6 @@ class Settings {
 	 * @return bool
 	 * @since   1.0.0
 	 * @access  private
-	 *
 	 */
 	private function media_from_url( $url, $size = 'full' ) {
 		$img_id = attachment_url_to_postid( $url );

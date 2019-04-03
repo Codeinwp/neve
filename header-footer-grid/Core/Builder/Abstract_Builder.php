@@ -666,10 +666,11 @@ abstract class Abstract_Builder implements Builder {
 			 *
 			 * @var Abstract_Component $component
 			 */
-			$component         = $this->builder_components[ $component_location['id'] ];
-			$x                 = intval( $component_location['x'] );
-			$width             = intval( $component_location['width'] );
-			$align = get_theme_mod( $component_location['id'] . '_component_align',  '' );
+			$component = $this->builder_components[ $component_location['id'] ];
+			$x         = intval( $component_location['x'] );
+			$width     = intval( $component_location['width'] );
+			$align     = get_theme_mod( $component_location['id'] . '_component_align', $component->get_align_default() );
+
 			if ( ! $collection->hasNext() && ( $x + $width < $max_columns ) ) {
 				$width += $max_columns - ( $x + $width );
 			}
