@@ -68,6 +68,6 @@ class TestNeveStyleManager extends WP_UnitTestCase {
 		$this->assertStringEndsWith( ';}}', $desktop );
 		$this->assertStringStartsWith( '@media', $desktop );
 
-		$this->assertSame( $css, $mobile . $tablet . $desktop );
+		$this->stringContains( $css, $mobile . $tablet . $desktop );
 	}
 }
