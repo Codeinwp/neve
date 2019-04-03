@@ -16,7 +16,16 @@ Neve is a super fast, easily customizable, multi-purpose theme. It’s perfect f
 Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
-== Changelog ==
+== Changelog == 
+= 2.2.0 - 2019-03-18  = 
+
+* New Original starter site created in the new Gutenberg editor for WordPress 5 users
+* Improved onboarding page layout
+* Compatibility with the Neve Hooks plugin
+* WPML compatibility
+* Update Contact us with the correct link
+
+ 
 = 2.1.0 - 2019-03-07  = 
 
 * Two newly added Elementor Starter Sites

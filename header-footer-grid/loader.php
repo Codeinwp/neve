@@ -48,4 +48,6 @@ add_action(
 		do_action( 'hfg_header_render' );
 	}
 );
-add_action( 'init', 'HFG\Main::get_instance' );
+if ( class_exists( 'HFG\Main' ) ) {
+	add_action( 'init', 'HFG\Main::get_instance' );
+}
