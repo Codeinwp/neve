@@ -78,6 +78,8 @@ class Post_Meta extends Base_View {
 					break;
 				case 'default':
 					break;
+				default:
+					break;
 			}
 		}
 		$markup .= '</ul>';

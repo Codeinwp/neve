@@ -70,7 +70,7 @@ function neve_sanitize_checkbox( $value ) {
  * @return bool
  */
 function neve_is_json( $string ) {
-	return is_string( $string ) && is_array( json_decode( $string, true ) ) ? true : false;
+	return is_string( $string ) && is_array( json_decode( $string, true ) );
 }
 
 /**

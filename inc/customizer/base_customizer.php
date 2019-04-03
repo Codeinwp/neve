@@ -14,6 +14,7 @@ use Neve\Customizer\Types\Control;
 use Neve\Customizer\Types\Panel;
 use Neve\Customizer\Types\Partial;
 use Neve\Customizer\Types\Section;
+use WP_Customize_Manager;
 
 /**
  * Customizer module base.
@@ -24,9 +25,9 @@ abstract class Base_Customizer {
 	/**
 	 * WP_Customize object
 	 *
-	 * @var $wp_customize object
+	 * @var WP_Customize_Manager $wp_customize object
 	 */
-	private $wpc;
+	protected $wpc;
 
 	/**
 	 * Selective refresh.
@@ -115,9 +116,7 @@ abstract class Base_Customizer {
 	 *
 	 * @return void
 	 */
-	protected function change_controls() {
-		return;
-	}
+	protected function change_controls() {}
 
 	/**
 	 * Check selective refresh.
@@ -131,7 +130,7 @@ abstract class Base_Customizer {
 	 */
 	private function register_panels() {
 		$panels = $this->panels_to_register;
-		foreach ( $panels as $index => $panel ) {
+		foreach ( $panels as $panel ) {
 			$this->wpc->add_panel( $panel->id, $panel->args );
 		}
 	}
@@ -141,7 +140,7 @@ abstract class Base_Customizer {
 	 */
 	private function register_sections() {
 		$sections = $this->sections_to_register;
-		foreach ( $sections as $index => $section ) {
+		foreach ( $sections as $section ) {
 			if ( $section->custom_section !== null && class_exists( $section->custom_section ) ) {
 				$this->wpc->add_section( new $section->custom_section( $this->wpc, $section->id, $section->args ) );
 			} else {
@@ -155,7 +154,7 @@ abstract class Base_Customizer {
 	 */
 	private function register_controls() {
 		$controls = $this->controls_to_register;
-		foreach ( $controls as $index => $control ) {
+		foreach ( $controls as $control ) {
 			$this->wpc->add_setting( $control->id, $control->setting_args );
 			if ( $control->custom_control !== null && class_exists( $control->custom_control ) ) {
 				$this->wpc->add_control( new $control->custom_control( $this->wpc, $control->id, $control->control_args ) );
@@ -183,7 +182,7 @@ abstract class Base_Customizer {
 	 */
 	private function register_partials() {
 		$partials = $this->partials_to_register;
-		foreach ( $partials as $index => $partial ) {
+		foreach ( $partials as $partial ) {
 			if ( empty( $partial ) ) {
 				continue;
 			}

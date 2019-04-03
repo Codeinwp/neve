@@ -51,40 +51,25 @@ class Colors_Background extends Base_Customizer {
 	 */
 	private function controls_colors() {
 		$color_controls = array(
-			'neve_button_color'            => array(
+			'neve_button_color'     => array(
 				'default'  => '#0366d6',
 				'priority' => 10,
 				'label'    => __( 'Primary Button Color', 'neve' ),
 			),
-			'neve_link_color'              => array(
+			'neve_link_color'       => array(
 				'default'  => '#0366d6',
 				'priority' => 15,
 				'label'    => __( 'Link Color', 'neve' ),
 			),
-			'neve_link_hover_color'        => array(
+			'neve_link_hover_color' => array(
 				'default'  => '#0366d6',
 				'priority' => 20,
 				'label'    => __( 'Link Hover Color', 'neve' ),
 			),
-			'neve_text_color'              => array(
+			'neve_text_color'       => array(
 				'default'  => '#404248',
 				'priority' => 25,
 				'label'    => __( 'Text Color', 'neve' ),
-			),
-			'neve_menu_item_color'         => array(
-				'default'  => '#404248',
-				'priority' => 30,
-				'label'    => __( 'Primary Menu Items Color', 'neve' ),
-			),
-			'neve_menu_item_hover_color'   => array(
-				'default'  => '#0366d6',
-				'priority' => 35,
-				'label'    => __( 'Primary Menu Items Hover Color', 'neve' ),
-			),
-			'neve_current_menu_item_color' => array(
-				'default'  => '#0366d6',
-				'priority' => 40,
-				'label'    => __( 'Current Menu Item Color', 'neve' ),
 			),
 		);
 
@@ -111,7 +96,7 @@ class Colors_Background extends Base_Customizer {
 	 * Change controls.
 	 */
 	public function change_controls() {
-		$priority         = 50;
+		$priority         = 30;
 		$controls_to_move = array(
 			'background_color',
 			'background_image',

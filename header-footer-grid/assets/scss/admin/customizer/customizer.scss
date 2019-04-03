@@ -1,0 +1,110 @@
+// Import custom controls
+$border: 1px solid #ddd;
+$bg: #f1f1f1;
+$builder_active_color: #0073aa;
+
+
+.in-sub-panel #customize-theme-controls .customize-pane-child.current-panel-parent,
+#customize-theme-controls .customize-pane-child.current-section-parent {
+    -webkit-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    transform: translateX(-100%);
+}
+
+@mixin clearfix {
+    &:before, &:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+    &:after {
+        clear: both;
+    }
+}
+@mixin rtl() {
+    html[dir="rtl"] & {
+       @content;
+    }
+}
+
+@-webkit-keyframes spinnerRotate
+{
+    from{-webkit-transform:rotate(0deg);}
+    to{-webkit-transform:rotate(-360deg);}
+}
+@-moz-keyframes spinnerRotate
+{
+    from{-moz-transform:rotate(0deg);}
+    to{-moz-transform:rotate(-360deg);}
+}
+@-ms-keyframes spinnerRotate
+{
+    from{-ms-transform:rotate(0deg);}
+    to{-ms-transform:rotate(-360deg);}
+}
+
+.customize--reset-section {
+    background: 0 0;
+    border: none;
+    color: #555;
+    cursor: pointer;
+    margin: 0;
+    padding: 20px;
+    position: absolute;
+    right: 0;
+    top: 30px;
+    @include rtl(){
+        right: auto;
+        left: 0px;
+    }
+    &:focus, &:visited, &:active {
+        outline: none !important;
+    }
+    &:before {
+        -moz-osx-font-smoothing: grayscale;
+        border: none;
+        content: "\f531";
+        display: block;
+        font: 18px/1 dashicons;
+        padding: 5px;
+        text-align: center;
+        text-decoration: none!important;
+        text-indent: 0;
+        left: 6px;
+        position: absolute;
+        top: 6px;
+    }
+    &.loading {
+        -webkit-animation-name: spinnerRotate;
+        -webkit-animation-duration: 2s;
+        -webkit-animation-iteration-count: infinite;
+        -webkit-animation-timing-function: linear;
+        -moz-animation-name: spinnerRotate;
+        -moz-animation-duration: 2s;
+        -moz-animation-iteration-count: infinite;
+        -moz-animation-timing-function: linear;
+        -ms-animation-name: spinnerRotate;
+        -ms-animation-duration: 2s;
+        -ms-animation-iteration-count: infinite;
+        -ms-animation-timing-function: linear;
+    }
+}
+
+
+
+
+@import "control";
+@import "header_footer_builder";
+@import "builder_v1";
+
+ul[id^="sub-accordion-panel-hfg"] > li.hfg-section-active{
+    order:0;
+}
+ul[id^="sub-accordion-panel-hfg"] > li.hfg-section-inactive{
+    order:1;
+    opacity: 0.5;
+}
+#customize-theme-controls ul.customize-pane-child.accordion-sub-container[id^="sub-accordion-panel-hfg"]{
+    flex-direction: column;
+    display: flex;
+}

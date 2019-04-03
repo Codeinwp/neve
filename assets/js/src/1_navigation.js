@@ -4,7 +4,6 @@
   $.neveNavigation = {
     'init': function () {
       this.repositionDropdowns();
-      this.handleResponsiveNav();
       this.handleScrollLinks();
       this.handleMobileDropdowns();
       this.handleSearch();
@@ -32,22 +31,10 @@
         }
         var dropDownWidth = submenu.outerWidth();
         if (bounding + dropDownWidth >= windowWidth) {
-          $(dropDown).css({ 'right': '100%', 'left': 'auto' });
+          $(dropDown).css({'right': '100%', 'left': 'auto'});
         }
       });
       return false;
-    },
-    /**
-     * Handle the responsive navigation toggle.
-     */
-    'handleResponsiveNav': function () {
-      $('.navbar-toggle').on('click', function () {
-        $('.dropdown-open').removeClass('dropdown-open');
-        $('.nv-navbar').toggleClass('responsive-opened');
-        $(this).toggleClass('active');
-        $(this).attr('aria-expanded', this.attributes['aria-expanded'].value === 'true' ? 'false' : 'true');
-        $('html').toggleClass('menu-opened');
-      });
     },
     /**
      * Handle links that point to the same page
@@ -90,7 +77,7 @@
         e.stopPropagation();
       });
 
-      $('.menu-item-nav-search').on('touchstart focus', function () {
+      $('.menu-item-nav-search').on('click touchstart focus', function () {
         $(this).addClass('active');
         $('html').addClass('menu-opened');
         if (utils.isMobile()) {

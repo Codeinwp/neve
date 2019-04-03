@@ -245,7 +245,7 @@ class Woocommerce {
 	 */
 	private function add_inline_selectors() {
 		add_filter( 'neve_link_color_filter', array( $this, 'add_link_color' ) );
-		add_filter( 'neve_link_hover_color_filter', array( $this, 'add_link_hover_color' ) );
+		add_filter( 'neve_link_hover_color_filter', array( $this, 'add_link_color' ) );
 		add_filter( 'neve_button_color_filter', array( $this, 'add_button_color' ) );
 		add_filter( 'neve_menu_items_color_filter', array( $this, 'add_menu_items_color' ) );
 		add_filter( 'neve_menu_items_hover_color_filter', array( $this, 'add_menu_items_hover_color' ) );
@@ -340,19 +340,6 @@ class Woocommerce {
 	}
 
 	/**
-	 * Add link hover colors.
-	 *
-	 * @param array $color_setup the color setup from Neve\Views\Inline\Colors.
-	 *
-	 * @return array
-	 */
-	public function add_link_hover_color( $color_setup ) {
-		$color_setup['color']['selectors'] .= '';
-
-		return $color_setup;
-	}
-
-	/**
 	 * Adapt the meta-box so it works on the shop page.
 	 *
 	 * @param string $post_id post id.
@@ -387,8 +374,6 @@ class Woocommerce {
 			if ( $theme_mod !== 'right' && $theme_mod !== 'left' ) {
 				return false;
 			}
-
-			return true;
 		}
 
 		return true;

@@ -17,10 +17,9 @@ class Header extends Base_View {
 	 * Add hooks for the front end.
 	 */
 	public function init() {
-		add_action( 'neve_do_header', array( $this, 'render_navigation' ) );
+		// add_action( 'neve_do_header', array( $this, 'render_navigation' ) );
 		add_filter( 'wp_nav_menu_items', array( $this, 'add_last_menu_item' ), 10, 2 );
 		add_filter( 'wp_page_menu', array( $this, 'add_fallback_last_menu_items' ), 10, 2 );
-
 	}
 
 	/**
@@ -72,6 +71,7 @@ class Header extends Base_View {
 	 * @return string
 	 */
 	private function get_nav_menu_search( $responsive = false ) {
+		// TODO when HFG is live we should drop this at all as we have a section for icon, or offer a way of disabling it.
 		$tag   = 'li';
 		$class = 'menu-item-nav-search';
 		if ( $responsive === true ) {
@@ -278,10 +278,10 @@ class Header extends Base_View {
 			$items .= $this->get_nav_menu_search();
 		}
 
-		if ( 'cart' === $additional_item || 'search-cart' === $additional_item ) {
+		if ( 'cart' === $additional_item || 'search-cart' === $additional_item || 'cart-search' === $additional_item ) {
 			$items .= $this->get_nav_menu_cart();
 		}
 
-		return $items;
+		return apply_filters( 'neve_last_menu_item', $items );
 	}
 }

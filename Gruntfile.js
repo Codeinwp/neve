@@ -15,6 +15,8 @@ module.exports = function ( grunt ) {
 	config.files.php.push( '!**/vendor/**/*' );
 	config.files.css.push( '!**/vendor/**/*' );
 
+	config.files.js.push( '!header-footer-grid/assets/js/**/*' );
+	config.files.js.push( '!header-footer-grid/rollup.config.js' );
 	//Task mapping.
 	config.taskMap.sass = 'grunt-contrib-sass';
 	config.taskMap.watch = 'grunt-contrib-watch';

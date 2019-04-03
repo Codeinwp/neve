@@ -1,6 +1,6 @@
 # Neve #
 **Contributors:** [themeisle](https://profiles.wordpress.org/themeisle)  
-**Tags:** blog, custom-logo, e-commerce, rtl-language-support, post-formats, grid-layout, one-column, two-columns, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready  
+**Tags:** blog, custom-logo, e-commerce, rtl-language-support, post-formats, grid-layout, one-column, two-columns, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, accessibility-ready, wide-blocks, block-styles, footer-widgets, portfolio, left-sidebar, right-sidebar
 **Requires at least:** 4.0  
 **Tested up to:** 5.0  
 **Stable tag:** 1.0.23  
@@ -16,7 +16,34 @@ Neve is a super fast, easily customizable, multi-purpose theme. It’s perfect f
 Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
-## Changelog ##
+## Changelog ## 
+### 2.2.0 - 2019-03-18  ###
+
+* New Original starter site created in the new Gutenberg editor for WordPress 5 users
+* Improved onboarding page layout
+* Compatibility with the Neve Hooks plugin
+* WPML compatibility
+* Update Contact us with the correct link
+ 
+### 2.1.0 - 2019-03-07  ###
+
+* Two newly added Elementor Starter Sites
+* Small updates to the Starter Sites library
+* Improved WooCommerce page layouts
+* Improved onboarding page layout
+* Fixed issue with .aligncenter class not working properly
+* Fixed issue with sidebar not aligned properly on Safari 10
+* Fixed SSL issue for generated stylesheets
+
+
+### 2.0.0 - 2019-02-26  ###
+
+* Refactor the code to allow child themes to override the views folder - https://docs.themeisle.com/article/985-how-to-create-a-child-theme-for-neve
+* Updated the onboarding notice to provide more information
+* Fixed issue with the image source for the Video block for Otter
+* Updated starter sites to use Anchor widgets
+
+
 ### 1.1.4 - 2019-02-08  ###
 
 * Fixed alignment issues with the Gallery widget
@@ -319,3 +346,10 @@ All  images are licensed under CC0.
 * Neve Charity: children-734891, CC0, https://pixabay.com/en/children-burundi-bottle-water-734891/
 * Neve Charity: trouser-pockets-1439412, CC0, https://pixabay.com/en/trouser-pockets-empty-jeans-1439412/
 * Neve Gutenberg: street-at-night, CC0, https://mystock.themeisle.com/photo/street-at-night/
+* Neve Scholar: neve-scholar-big-title (used only in screenshot), https://www.pexels.com/photo/men-s-wearing-black-suit-jacket-and-pants-937481/
+* Neve Scholar: neve-scholar-placeholder (used as placeholder), CC0, https://mystock.themeisle.com/photo/arid-earth/
+* Neve Freelancer: neve-freelancere-hero-image (also used in screenshot), CC0, https://mystock.themeisle.com/photo/photographer-3/
+* Neve Freelancer: neve-freelancer-testimonial, CC0, https://mystock.themeisle.com/photo/girl/
+* Neve Freelancer: neve-freelancer-testimonial-bg, CC0, https://mystock.themeisle.com/photo/code-in-wp/
+* Neve Freelancer: neve-freelancer-faq, CC0, https://mystock.themeisle.com/photo/programming-laptop-2/
+* Neve Freelancer: neve-freelancer-about1, CC0, https://mystock.themeisle.com/photo/path-to-the-village/

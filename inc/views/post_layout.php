@@ -109,6 +109,8 @@ class Post_Layout extends Base_View {
 				case 'comments':
 					comments_template();
 					break;
+				default:
+					break;
 			}
 		}
 	}
