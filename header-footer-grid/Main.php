@@ -82,7 +82,7 @@ class Main {
 	 */
 	public function init() {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
-		add_filter( 'neve_style_output', array( $this, 'append_css_style' ) );
+		add_filter( 'neve_style_output_neve-generated-style', array( $this, 'append_css_style' ) );
 	}
 
 	/**
