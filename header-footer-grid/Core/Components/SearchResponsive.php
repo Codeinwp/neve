@@ -65,7 +65,7 @@ class SearchResponsive extends Abstract_Component {
 			array(
 				'theme_supports' => 'hfg_support',
 				'default'        => __( 'Search for...', 'neve' ),
-				'transport'      => 'refresh',
+				'transport'      => 'postMessage',
 			)
 		);
 
