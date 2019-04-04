@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!-- generator="WordPress/4.9.8" created="2019-03-04 10:33" -->
+<!-- generator="WordPress/4.9.10" created="2019-04-04 09:32" -->
 		<rss version="2.0"
 				xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
 				xmlns:content="http://purl.org/rss/1.0/modules/content/"
@@ -9,10 +9,10 @@
 		>
 
 			<channel>
-				<title>Neve Freelancer</title>
+				<title>Freelancer</title>
 				<link>https://demo.themeisle.com/neve-freelancer</link>
 				<description>Delivering fast &#38; top quality services</description>
-				<pubDate>Mon, 04 Mar 2019 10:33:34 +0000</pubDate>
+				<pubDate>Thu, 04 Apr 2019 09:32:33 +0000</pubDate>
 				<language>en-US</language>
 				<wp:wxr_version>1.2</wp:wxr_version>
 				<wp:base_site_url>https://demo.themeisle.com/</wp:base_site_url>
@@ -34,7 +34,7 @@
 									<wp:term><wp:term_id>3</wp:term_id><wp:term_taxonomy>nav_menu</wp:term_taxonomy><wp:term_slug><![CDATA[main]]></wp:term_slug><wp:term_name><![CDATA[Main]]></wp:term_name>
 </wp:term>
 
-				<generator>https://wordpress.org/?v=4.9.8</generator>
+				<generator>https://wordpress.org/?v=4.9.10</generator>
 
 						<item>
 			<title>

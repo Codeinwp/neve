@@ -16,17 +16,17 @@
     "neve_footer_content_type": "text",
     "neve_headings_font_family": "",
     "neve_blog_archive_layout": "alternative",
-    "neve_sitewide_content_width": 75,
-    "neve_post_excerpt_length": 70,
-    "neve_advanced_layout_options": true,
-    "neve_blog_archive_content_width": 75,
+    "neve_sitewide_content_width": "75",
+    "neve_post_excerpt_length": "70",
+    "neve_advanced_layout_options": "1",
+    "neve_blog_archive_content_width": "75",
     "neve_pagination_type": "number",
     "neve_shop_archive_sidebar_layout": "left",
     "neve_single_product_sidebar_layout": "full-width",
     "neve_other_pages_sidebar_layout": "full-width",
-    "neve_footer_text": "Original | Powered by <a href=\"http://wordpress.org\" rel=\"nofollow\">WordPress</a>",
-    "neve_single_product_content_width": 100,
-    "neve_generated_style_version": 1551965289,
+    "neve_footer_text": "<p>Original | Powered by <a href=\"http://wordpress.org\" rel=\"nofollow\">WordPress</a></p>",
+    "neve_single_product_content_width": "100",
+    "neve_generated_style_version": "1554368895",
     "__ti_import_menus_location": {
       "primary": "main-menu"
     }
@@ -83,10 +83,12 @@
     "themeisle-companion": "Orbit Fox by ThemeIsle",
     "woocommerce": "WooCommerce"
   },
-  "default_off_recommended_plugins": [ "woocommerce" ],
   "mandatory_plugins": {
     "elementor": "Elementor Page Builder"
   },
+  "default_off_recommended_plugins": [
+    "woocommerce"
+  ],
   "front_page": {
     "front_page": "neve-home",
     "blog_page": "neve-blog"
