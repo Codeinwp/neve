@@ -4,14 +4,15 @@
     "ti_prev_theme": "zerif-pro",
     "zelle_frontpage_was_imported": "yes",
     "ti_content_imported": "yes",
-    "custom_css_post_id": -1,
+    "custom_css_post_id": "-1",
     "neve_link_color": "#808080",
     "neve_menu_item_hover_color": "#313131",
     "neve_menu_item_color": "#313131",
     "neve_link_hover_color": "#e96656",
     "neve_button_color": "#e96656",
     "neve_blog_archive_layout": "grid",
-    "neve_generated_style_version": 1547736519,
+    "neve_footer_text": "<p><a href=\"https://themeisle.com/themes/neve/\" rel=\"nofollow\">Neve</a> | Powered by <a href=\"http://wordpress.org\" rel=\"nofollow\">WordPress</a></p>",
+    "neve_generated_style_version": "1554370452",
     "__ti_import_menus_location": {
       "primary": "neve-zelle-primary-menu"
     }
@@ -47,6 +48,7 @@
   "mandatory_plugins": {
     "elementor": "Elementor Page Builder"
   },
+  "default_off_recommended_plugins": null,
   "front_page": {
     "front_page": "zelle-frontpage",
     "blog_page": "blog"
