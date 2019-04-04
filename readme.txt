@@ -17,6 +17,14 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog == 
+= 2.3.0 - 2019-04-04  = 
+
+* NEW Header/Footer builder
+* Compatibility with the Header, Footer & Blocks for Elementor plugin
+* New option to allow disabling of the custom Gutenberg integration
+* Updated the tag list with the newly added tags
+
+
 = 2.2.0 - 2019-03-18  = 
 
 * New Original starter site created in the new Gutenberg editor for WordPress 5 users
