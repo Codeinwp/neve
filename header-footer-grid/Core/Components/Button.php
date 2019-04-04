@@ -67,6 +67,7 @@ class Button extends Abstract_Component {
 				'theme_supports' => 'hfg_support',
 				'default'        => __( 'Button', 'neve' ),
 				'transport'      => 'postMessage',
+				'sanitize_callback' => 'wp_filter_nohtml_kses'
 			)
 		);
 		$wp_customize->add_setting(
@@ -75,6 +76,7 @@ class Button extends Abstract_Component {
 				'theme_supports' => 'hfg_support',
 				'default'        => __( '#', 'neve' ),
 				'transport'      => 'postMessage',
+				'sanitize_callback' => 'wp_filter_nohtml_kses'
 			)
 		);
 

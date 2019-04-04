@@ -171,6 +171,7 @@ abstract class Abstract_Component implements Component {
 				'default'        => $this->get_align_default(),
 				'theme_supports' => 'hfg_support',
 				'transport'      => 'postMessage',
+				'sanitize_callback' => 'wp_filter_nohtml_kses'
 			)
 		);
 		array_push( $partial_settings, $this->id . '_component_align' );

@@ -69,6 +69,7 @@ class NavFooter extends Abstract_Component {
 				'default'        => 'style-plain',
 				'theme_supports' => 'hfg_support',
 				'transport'      => 'postMessage',
+				'sanitize_callback' => 'wp_filter_nohtml_kses'
 			)
 		);
 		$wp_customize->add_control(
@@ -106,6 +107,7 @@ class NavFooter extends Abstract_Component {
 				'theme_supports' => 'hfg_support',
 				'transport'      => 'postMessage',
 				'default'        => '#404248',
+				'sanitize_callback' => 'sanitize_hex_color'
 			)
 		);
 		$wp_customize->add_control(
@@ -125,6 +127,7 @@ class NavFooter extends Abstract_Component {
 				'theme_supports' => 'hfg_support',
 				'transport'      => 'postMessage',
 				'default'        => '#0366d6',
+				'sanitize_callback' => 'sanitize_hex_color'
 			)
 		);
 		$wp_customize->add_control(
@@ -143,6 +146,7 @@ class NavFooter extends Abstract_Component {
 			array(
 				'theme_supports' => 'hfg_support',
 				'transport'      => 'postMessage',
+				'sanitize_callback' => 'esc_atr'
 			)
 		);
 		$wp_customize->add_control(

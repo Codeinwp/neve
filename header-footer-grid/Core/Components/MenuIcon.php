@@ -69,6 +69,7 @@ class MenuIcon extends Abstract_Component {
 				'theme_supports' => 'hfg_support',
 				'default'        => __( 'Menu', 'neve' ),
 				'transport'      => 'refresh',
+				'sanitize_callback' => 'wp_filter_nohtml_kses'
 			)
 		);
 
@@ -91,6 +92,7 @@ class MenuIcon extends Abstract_Component {
 				'theme_supports' => 'hfg_support',
 				'default'        => 0,
 				'transport'      => 'postMessage',
+				'sanitize_callback' => 'absint'
 			)
 		);
 		array_push( $partial_settings, $prefix . '_sidebar' );

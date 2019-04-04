@@ -71,6 +71,7 @@ class Logo extends Abstract_Component {
 				'transport'      => 'postMessage',
 				'theme_supports' => 'hfg_support',
 				'default'        => '{ "mobile": "120", "tablet": "120", "desktop": "120" }',
+				'sanitize_callback' => 'wp_filter_nohtml_kses'
 			)
 		);
 		array_push( $partial_settings, $this->id . '_max_width' );
@@ -111,6 +112,7 @@ class Logo extends Abstract_Component {
 				'transport'      => 'postMessage',
 				'theme_supports' => 'hfg_support',
 				'default'        => 1,
+				'sanitize_callback' => 'absint'
 			)
 		);
 		array_push( $partial_settings, $this->id . '_show_title' );
@@ -132,6 +134,7 @@ class Logo extends Abstract_Component {
 				'transport'      => 'postMessage',
 				'theme_supports' => 'hfg_support',
 				'default'        => 1,
+				'sanitize_callback' => 'absint'
 			)
 		);
 		array_push( $partial_settings, $this->id . '_show_tagline' );
