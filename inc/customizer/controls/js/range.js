@@ -19,19 +19,19 @@ wp.customize.controlConstructor[ 'range-value' ] = wp.customize.Control.extend(
 
 			function syncRangeText( slider, input, from ) {
 				switch ( from ) {
-					case 'slider':
-						var value = slider.val();
-						var type = jQuery( input ).attr( 'type' );
-						if ( type === 'text' ) { // inputBox
-							if ( value >= 0 ) {
-								value = '+' + value;
-							}
+				case 'slider':
+					var value = slider.val();
+					var type = jQuery( input ).attr( 'type' );
+					if ( type === 'text' ) { // inputBox
+						if ( value >= 0 ) {
+							value = '+' + value;
 						}
-						input.val( value );
-						break;
-					case 'input':
-						slider.val( input.val() );
-						break;
+					}
+					input.val( value );
+					break;
+				case 'input':
+					slider.val( input.val() );
+					break;
 				}
 			}
 
@@ -90,7 +90,7 @@ wp.customize.controlConstructor[ 'range-value' ] = wp.customize.Control.extend(
 			);
 
 			theme_controls.on(
-				'keyup change', '.range-slider-value', function () {
+				'keyup change input', '.range-slider-value', function () {
 					var control = jQuery( this ).parent().parent();
 					var slider = jQuery( this ).prev();
 					var input = jQuery( this );

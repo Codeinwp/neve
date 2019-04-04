@@ -1,0 +1,132 @@
+// Hover Styles
+.style-border-top, .style-border-bottom, .style-full-height {
+  ul > li:not(.menu-item-nav-search):not(.menu-item-nav-cart) > a:after {
+    position: absolute;
+    content: "";
+    display: block;
+    margin: 0 auto;
+    width: 0;
+    height: 2px;
+    background-color: #0366d6;
+    transition: opacity .3s ease, width .3s ease;
+  }
+
+  ul > li:hover > a {
+    text-decoration: none;
+
+    &:after {
+      width: 100% !important;
+    }
+  }
+
+  ul > li.menu-item-nav-cart:hover, ul > li.menu-item-nav-search:hover {
+    a {
+      opacity: .75;
+    }
+  }
+}
+
+.woocommerce-mini-cart-item > a:after {
+  content: none !important;
+}
+
+.style-border-bottom {
+  a:after {
+    bottom: 0;
+  }
+
+  .sub-menu a:after {
+    bottom: 5px;
+  }
+}
+
+.style-border-top {
+  a:after {
+    top: 0;
+  }
+
+  .sub-menu a:after {
+    top: 5px;
+  }
+}
+
+.style-full-height {
+  a {
+    padding-left: 3px;
+    padding-right: 3px;
+    position: relative;
+    z-index: 1;
+
+    &:after {
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: auto !important;
+      z-index: -1;
+    }
+  }
+
+  .sub-menu a:after {
+    top: 5px;
+    bottom: 5px;
+  }
+}
+
+// Secondary nav menu
+#secondary-menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  li {
+    position: relative;
+    width: inherit;
+
+    a {
+      display: flex;
+      justify-content: center;
+      padding: 0 10px;
+      font-weight: 500;
+    }
+  }
+
+  i {
+    font-size: inherit;
+    line-height: inherit;
+    width: 20px;
+    margin-top: 0;
+  }
+
+  .header-menu-sidebar & {
+    flex-direction: column;
+
+    li a {
+      padding: 5px 0;
+    }
+  }
+}
+
+.header-menu-sidebar .nav-menu-primary ul {
+  flex-direction: column;
+  display: flex;
+  li {
+    background-color: transparent;
+    padding: 3px 0;
+    a {
+      padding: 3px 0;
+    }
+  }
+  .sub-menu {
+    background-color: transparent;
+  }
+}
+
+// Footer nav menu
+.nav-menu-footer {
+  a {
+    display: flex;
+    justify-content: center;
+    position: relative;
+  }
+}

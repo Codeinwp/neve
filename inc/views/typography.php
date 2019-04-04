@@ -22,6 +22,7 @@ class Typography extends Base_View {
 	public function init() {
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_google_fonts' ) );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'register_google_fonts_gutenberg' ) );
+		add_filter( 'neve_filter_font_weights', array( $this, 'add_font_weights' ), 10, 2 );
 	}
 
 	/**
@@ -50,6 +51,38 @@ class Typography extends Base_View {
 		if ( ! empty( $body_font ) ) {
 			$this->enqueue_google_font( $body_font, 'body' );
 		}
+	}
+
+	/**
+	 * Add headings font weights.
+	 *
+	 * @param array  $weights_array font weight array.
+	 * @param string $context       the context ['headings', 'body'].
+	 *
+	 * @return array
+	 */
+	public function add_font_weights( $weights_array, $context ) {
+		// Enqueue all the font weights in customizer preview.
+		if ( is_customize_preview() ) {
+			return array( '100', '200', '300', '400', '500', '600', '700', '800', '900' );
+		}
+
+		if ( $context !== 'headings' && $context !== 'body' ) {
+			return $weights_array;
+		}
+		$key = 'neve_headings_font_weight';
+		if ( $context === 'body' ) {
+			$key = 'neve_body_font_weight';
+		}
+
+		$font_weight = get_theme_mod( $key );
+
+		if ( empty( $font_weight ) || in_array( $font_weight, $weights_array ) ) {
+			return $weights_array;
+		}
+
+		$weights_array[] = $font_weight;
+		return $weights_array;
 	}
 
 	/**
@@ -87,7 +120,7 @@ class Typography extends Base_View {
 		}
 
 		// Weights.
-		$weights = apply_filters( 'neve_filter_font_weights', array( '300', '400', '500', '700' ) );
+		$weights = apply_filters( 'neve_filter_font_weights', array( '300', '400', '500', '700' ), $handle );
 
 		// Add weights to URL.
 		if ( ! empty( $weights ) ) {

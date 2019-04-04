@@ -3,7 +3,7 @@
  *
  * @package Neve\Customizer\Controls
  */
-(function ( $ ) {
+( function ( $ ) {
 	'use strict';
 	wp.neveOrderControl = {
 		init: function () {
@@ -46,4 +46,4 @@
 			wp.neveOrderControl.init();
 		}
 	);
-})( jQuery );
+} )( jQuery );

@@ -4,7 +4,6 @@
 }
 
 .site-logo {
-  width: 270px;
   align-items: center;
   display: flex;
   padding: $spacing-xs 0;
@@ -12,13 +11,13 @@
   amp-img img {
     max-height: 60px;
   }
-
-  img {
-    max-height: 60px;
-    float: left;
+  .brand {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
-
   h1, p {
+    font-family: inherit;
     font-size: $h4-font-size;
     margin-bottom: 0;
     font-weight: 600;

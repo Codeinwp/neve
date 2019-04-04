@@ -69,6 +69,7 @@ class Core_Loader {
 				'Compatibility\Gutenberg',
 				'Compatibility\WooCommerce',
 				'Compatibility\Elementor',
+				'Compatibility\Header_Footer_Elementor',
 				'Compatibility\Amp',
 				'Compatibility\Beaver',
 

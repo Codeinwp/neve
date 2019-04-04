@@ -1,0 +1,14 @@
+$component-alignments: (
+        'right' : flex-end,
+        'left' : flex-start,
+        'center': center,
+);
+
+@each $alignment, $flex-setting in $component-alignments {
+  .hfg-item-#{$alignment} {
+    text-align: #{$alignment};
+    #secondary-menu, .nv-nav-wrap, .component-wrap, .site-logo {
+      justify-content: $flex-setting;
+    }
+  }
+}

@@ -60,6 +60,7 @@ class Front_End {
 		add_theme_support( 'editor-color-palette', $this->get_gutenberg_color_palette() );
 		add_theme_support( 'fl-theme-builder-headers' );
 		add_theme_support( 'fl-theme-builder-footers' );
+		add_theme_support( 'header-footer-elementor' );
 
 		add_filter( 'themeisle_gutenberg_templates', array( $this, 'add_gutenberg_templates' ) );
 
@@ -74,10 +75,23 @@ class Front_End {
 		);
 
 		add_image_size( 'neve-blog', 930, 620, true );
-
+		add_filter( 'wp_nav_menu_args', array( $this, 'nav_walker' ), 1001 );
 		$this->add_woo_support();
 	}
 
+	/**
+	 * Tweak menu walker to support selective refresh.
+	 *
+	 * @param array $args List of arguments for navigation.
+	 *
+	 * @return mixed
+	 */
+	public function nav_walker( $args ) {
+		if ( isset( $args['walker'] ) && is_string( $args['walker'] ) && class_exists( $args['walker'] ) ) {
+			$args['walker'] = new $args['walker'];
+		}
+		return $args;
+	}
 	/**
 	 * Get the themeisle demo content support data.
 	 *
@@ -570,9 +584,7 @@ class Front_End {
 			)
 		);
 
-		$footer_columns  = is_customize_preview() ? '4' : get_theme_mod( 'neve_footer_widget_columns', '3' );
-		$footer_sidebars = array_slice( $footer_sidebars, 0, $footer_columns );
-		$sidebars        = array_merge( $sidebars, $footer_sidebars );
+		$sidebars = array_merge( $sidebars, $footer_sidebars );
 
 		foreach ( $sidebars as $sidebar_id => $sidebar_name ) {
 			$sidebar_settings = array(

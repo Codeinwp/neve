@@ -3,7 +3,7 @@
  *
  * @package Neve\Customizer\Controlss
  */
-(function ( $ ) {
+( function ( $ ) {
 	'use strict';
 	wp.neveSelect = {
 		init: function () {
@@ -78,4 +78,4 @@
 			wp.neveSelect.init();
 		}
 	);
-})( jQuery );
+} )( jQuery );

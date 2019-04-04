@@ -39,6 +39,7 @@ class Elementor extends Page_Builder_Base {
 		add_action( 'elementor/theme/register_locations', array( $this, 'register_theme_locations' ) );
 
 		// Override theme templates.
+		add_action( 'neve_do_top_bar', array( $this, 'do_header' ), 0 );
 		add_action( 'neve_do_header', array( $this, 'do_header' ), 0 );
 		add_action( 'neve_do_footer', array( $this, 'do_footer' ), 0 );
 
@@ -76,6 +77,7 @@ class Elementor extends Page_Builder_Base {
 	public function do_header() {
 		$did_location = \ElementorPro\Modules\ThemeBuilder\Module::instance()->get_locations_manager()->do_location( 'header' );
 		if ( $did_location ) {
+			remove_all_actions( 'neve_do_top_bar' );
 			remove_all_actions( 'neve_do_header' );
 		}
 	}

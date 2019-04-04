@@ -19,7 +19,6 @@
     $.neveNavigation = {
         init: function() {
             this.repositionDropdowns();
-            this.handleResponsiveNav();
             this.handleScrollLinks();
             this.handleMobileDropdowns();
             this.handleSearch();
@@ -48,15 +47,6 @@
                 }
             });
             return false;
-        },
-        handleResponsiveNav: function() {
-            $(".navbar-toggle").on("click", function() {
-                $(".dropdown-open").removeClass("dropdown-open");
-                $(".nv-navbar").toggleClass("responsive-opened");
-                $(this).toggleClass("active");
-                $(this).attr("aria-expanded", this.attributes["aria-expanded"].value === "true" ? "false" : "true");
-                $("html").toggleClass("menu-opened");
-            });
         },
         handleScrollLinks: function() {
             $(".nv-nav-wrap a").on("click", function() {
@@ -89,7 +79,7 @@
             $(".nv-nav-search").on("touchstart click", function(e) {
                 e.stopPropagation();
             });
-            $(".menu-item-nav-search").on("touchstart focus", function() {
+            $(".menu-item-nav-search").on("click touchstart focus", function() {
                 $(this).addClass("active");
                 $("html").addClass("menu-opened");
                 if (utils.isMobile()) {

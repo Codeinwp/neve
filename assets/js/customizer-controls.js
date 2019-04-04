@@ -221,7 +221,7 @@ wp.customize.controlConstructor["range-value"] = wp.customize.Control.extend({
             syncRangeText(slider, input, "slider");
             updateValues(control);
         });
-        theme_controls.on("keyup change", ".range-slider-value", function() {
+        theme_controls.on("keyup change input", ".range-slider-value", function() {
             var control = jQuery(this).parent().parent();
             var slider = jQuery(this).prev();
             var input = jQuery(this);
@@ -271,7 +271,7 @@ wp.customize.controlConstructor["responsive-number"] = wp.customize.Control.exte
     ready: function() {
         "use strict";
         var control = this;
-        this.container.on("change keyup paste", "input.responsive-number--input, select.responsive-number--select", function() {
+        this.container.on("change keyup paste input", "input.responsive-number--input, select.responsive-number--select", function() {
             control.updateValue();
         });
         this.container.on("click touchstart", ".reset-number-input", function() {
@@ -318,16 +318,16 @@ jQuery(document).ready(function($) {
         },
         manageSwitchers: function() {
             jQuery(".customize-control .responsive-switchers button").on("click", function(event) {
-                var $this = $(this), $devices = $(".responsive-switchers"), $device = $(event.currentTarget).data("device"), $control = $(".customize-control .has-media-queries"), $body = $(".wp-full-overlay"), $footer_devices = $(".wp-full-overlay-footer .devices");
-                $devices.find("button").removeClass("active");
-                $devices.find("button.preview-" + $device).addClass("active");
-                $control.find(".control-wrap").removeClass("active");
-                $control.find(".control-wrap." + $device).addClass("active");
-                $body.removeClass("preview-desktop preview-tablet preview-mobile").addClass("preview-" + $device);
-                $footer_devices.find("button").removeClass("active").attr("aria-pressed", false);
-                $footer_devices.find("button.preview-" + $device).addClass("active").attr("aria-pressed", true);
-                if ($this.hasClass("preview-desktop")) {
-                    $devices.toggleClass("responsive-switchers-open");
+                var $self = $(this), devices = $(".responsive-switchers"), device = $(event.currentTarget).data("device"), control = $(".customize-control .has-media-queries"), body = $(".wp-full-overlay"), footerDevices = $(".wp-full-overlay-footer .devices");
+                devices.find("button").removeClass("active");
+                devices.find("button.preview-" + device).addClass("active");
+                control.find(".control-wrap").removeClass("active");
+                control.find(".control-wrap." + device).addClass("active");
+                body.removeClass("preview-desktop preview-tablet preview-mobile").addClass("preview-" + device);
+                footerDevices.find("button").removeClass("active").attr("aria-pressed", "false");
+                footerDevices.find("button.preview-" + device).addClass("active").attr("aria-pressed", "true");
+                if ($self.hasClass("preview-desktop")) {
+                    devices.toggleClass("responsive-switchers-open");
                 }
             });
         },
@@ -348,6 +348,8 @@ jQuery(document).ready(function($) {
                 control.find(".tablet-range").removeClass("active");
                 control.find(".mobile-range").removeClass("active");
                 control.find("." + device + "-range").addClass("active");
+                control.find(".control-wrap").removeClass("active");
+                control.find(".control-wrap." + device).addClass("active");
             });
         }
     };
@@ -395,7 +397,7 @@ jQuery(document).ready(function($) {
                                         }
                                     }
                                 }
-                                if (typeof currentControl !== "undefined") {
+                                if (typeof currentControl === "object" && currentControl.hasOwnProperty(selector)) {
                                     selector = currentControl.selector;
                                     jQuery(selector).hide();
                                 }

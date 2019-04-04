@@ -3,7 +3,7 @@
  *
  * @package Neve\Customizer\Controls
  */
-(function ( $ ) {
+( function ( $ ) {
 	'use strict';
 	wp.neveHeadingAccordion = {
 		init: function () {
@@ -12,7 +12,7 @@
 		handleToggle: function () {
 			$( '.customize-control-customizer-heading.accordion .neve-customizer-heading' ).on( 'click', function () {
 				var accordion = $( this ).closest( '.accordion' );
-				$(accordion).toggleClass( 'expanded' );
+				$( accordion ).toggleClass( 'expanded' );
 				return false;
 			} );
 		},
@@ -23,4 +23,4 @@
 			wp.neveHeadingAccordion.init();
 		}
 	);
-})( jQuery );
+} )( jQuery );

@@ -35,6 +35,10 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	 * @return string
 	 */
 	public function add_caret( $title, $item, $args, $depth ) {
+		if ( strpos( $title, 'class="caret"' ) ) {
+			return $title;
+		}
+
 		if ( $args->menu_id !== 'nv-primary-navigation' ) {
 			return $title;
 		}
@@ -91,12 +95,13 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	 */
 	public static function fallback() {
 		$fallback_args = array(
-			'depth'     => - 1,
-			'menu_id'   => 'nv-primary-navigation',
-			'container' => 'ul',
-			'before'    => '',
-			'echo'      => false,
-			'after'     => '',
+			'depth'      => - 1,
+			'menu_id'    => 'nv-primary-navigation',
+			'menu_class' => 'primary-menu-ul',
+			'container'  => 'ul',
+			'before'     => '',
+			'echo'       => false,
+			'after'      => '',
 		);
 
 		return wp_page_menu( $fallback_args );

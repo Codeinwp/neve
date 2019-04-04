@@ -17,7 +17,7 @@ wp.customize.controlConstructor[ 'responsive-number' ] = wp.customize.Control.ex
 		/**
 		 * Save on change / keyup / paste
 		 */
-		this.container.on( 'change keyup paste', 'input.responsive-number--input, select.responsive-number--select', function () {
+		this.container.on( 'change keyup paste input', 'input.responsive-number--input, select.responsive-number--select', function () {
 			control.updateValue();
 		} );
 
