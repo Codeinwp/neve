@@ -1862,6 +1862,7 @@ let CustomizeBuilderV1;
 					inSidebar.push( $( el ).data( "section" ) );
 				} );
 				inSidebar.push( "header_menu_icon" );
+				inSidebar.push( "hfg_header_layout_sidebar" );
 
 				if ( section.id === "header_menu_icon" ) {
 					wpcustomize.previewedDevice.set( 'mobile' )

@@ -80,13 +80,13 @@ if ( !Element.prototype.closest ) {
 	 * Init mobile sidebar.
 	 */
 	HFG.prototype.initMenuSidebar = function() {
-		let themeMenuSidebar;
-		if ( ! document.body.classList.contains( "menu_sidebar_dropdown" ) ) {
-			themeMenuSidebar = document.getElementById( "header-menu-sidebar" );
-			if ( themeMenuSidebar ) {
-				document.body.append( themeMenuSidebar );
-			}
-		}
+		// let themeMenuSidebar;
+		// if ( ! document.body.classList.contains( "menu_sidebar_dropdown" ) ) {
+		// 	themeMenuSidebar = document.getElementById( "header-menu-sidebar" );
+		// 	if ( themeMenuSidebar ) {
+		// 		document.body.append( themeMenuSidebar );
+		// 	}
+		// }
 
 		document.addEventListener(
 			"customize_control_sidebar",
