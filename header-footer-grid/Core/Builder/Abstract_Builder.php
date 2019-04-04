@@ -245,7 +245,7 @@ abstract class Abstract_Builder implements Builder {
 			$settings_for_parent = array_merge( $settings_for_parent, $component->customize_register( $wp_customize ) );
 		}
 
-		if ( empty( $wp_customize->get_panel( $this->panel ) ) ) {
+		if ( null === $wp_customize->get_panel( $this->panel ) ) {
 			$this->set_property( 'section', $this->control_id . '_section' );
 			$builder_title = ( isset( $this->title ) && ! empty( $this->title ) ) ? $this->title : __( 'HFG Panel', 'neve' );
 
@@ -618,7 +618,7 @@ abstract class Abstract_Builder implements Builder {
 	 * @return false|mixed|string
 	 */
 	public function filter_defaults( $theme_mod ) {
-		if ( empty( $theme_mod ) || ! $theme_mod || is_object( $theme_mod ) && empty( json_decode( json_encode( $theme_mod ), true ) ) ) {
+		if ( empty( $theme_mod ) || ! $theme_mod || is_object( $theme_mod ) && count( (array) $theme_mod ) === 0 ) {
 			return $this->define_defaults();
 		}
 

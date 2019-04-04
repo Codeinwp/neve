@@ -1,7 +1,7 @@
 {
   "name": "neve",
   "nicename": "Neve",
-  "version": "2.2.0",
+  "version": "3.0.0",
   "description": "Neve theme by ThemeIsle",
   "category": "themes",
   "repository": {
@@ -39,20 +39,30 @@
     "grunt-version": "^1.1.1",
     "husky": "^1.2.0",
     "load-project-config": "~0.2.0",
-    "pre-commit": "^1.2.2"
+    "pre-commit": "^1.2.2",
+    "@babel/core": "^7.2.0",
+    "@babel/preset-env": "^7.2.0",
+    "babel-cli": "^6.26.0",
+    "babel-loader": "^8.0.4",
+    "cross-env": "^5.1.6",
+    "webpack": "^4.27.0",
+    "webpack-cli": "^3.1.2"
   },
   "scripts": {
     "phpcbf": "phpcbf || true ",
     "phpcs": "phpcs",
     "jshint": "grunt jshint",
     "buildCssJs": "grunt buildScripts",
-    "addNewStyles": "git add *.css assets/**/*.css"
+    "addNewStyles": "git add *.css assets/**/*.css",
+    "build": "cross-env webpack --mode production --module-bind js=babel-loader",
+    "dev": "cross-env webpack --mode development --module-bind js=babel-loader --watch"
   },
   "pre-commit": {
     "run": [
       "phpcbf",
       "phpcs",
       "jshint",
+      "build",
       "buildCssJs",
       "addNewStyles"
     ]

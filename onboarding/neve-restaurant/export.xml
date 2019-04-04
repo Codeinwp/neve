@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!-- generator="WordPress/4.9.8" created="2019-02-08 16:40" -->
+<!-- generator="WordPress/4.9.10" created="2019-04-04 09:26" -->
 		<rss version="2.0"
 				xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
 				xmlns:content="http://purl.org/rss/1.0/modules/content/"
@@ -9,10 +9,10 @@
 		>
 
 			<channel>
-				<title>Neve Restaurant</title>
+				<title>Restaurant</title>
 				<link>https://demo.themeisle.com/neve-restaurant</link>
 				<description></description>
-				<pubDate>Fri, 08 Feb 2019 16:40:11 +0000</pubDate>
+				<pubDate>Thu, 04 Apr 2019 09:26:31 +0000</pubDate>
 				<language>en-US</language>
 				<wp:wxr_version>1.2</wp:wxr_version>
 				<wp:base_site_url>https://demo.themeisle.com/</wp:base_site_url>
@@ -41,7 +41,7 @@
 									<wp:term><wp:term_id>4</wp:term_id><wp:term_taxonomy>nav_menu</wp:term_taxonomy><wp:term_slug><![CDATA[main]]></wp:term_slug><wp:term_name><![CDATA[Main]]></wp:term_name>
 </wp:term>
 
-				<generator>https://wordpress.org/?v=4.9.8</generator>
+				<generator>https://wordpress.org/?v=4.9.10</generator>
 
 						<item>
 			<title>
@@ -683,8 +683,8 @@
 				<h3>
 					Contact
 				</h3>
-				<p>📠 012 317 14 23<br>
-📧 reserve@neve.com</p>
+				<p>? 012 317 14 23<br>
+? reserve@neve.com</p>
 			<h2>Opening hours</h2>		
 			<h2>Monday</h2>		
 			<h2>8 AM - 11 PM</h2>		
@@ -741,7 +741,7 @@
 			<wp:is_sticky>0</wp:is_sticky>
 													<wp:postmeta>
 					<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
-					<wp:meta_value><![CDATA[77268]]></wp:meta_value>
+					<wp:meta_value><![CDATA[440]]></wp:meta_value>
 				</wp:postmeta>
 							<wp:postmeta>
 					<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
@@ -812,6 +812,19 @@
 	#nv-primary-navigation li a:hover {
 	transition: 0.3s ease-in;
 }
+}
+
+
+/* new header-footer builder */
+.home.page-template-template-pagebuilder-full-width .header-main-inner {
+    background-color: transparent;
+}
+.home.page-template-template-pagebuilder-full-width .hfg_header.site-header {
+    border-bottom: none;
+}
+.home.page-template-template-pagebuilder-full-width .builder-item {
+    margin-top: 0px;
+    margin-bottom: 0px;
 }]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>10</wp:post_id>
 			<wp:post_date><![CDATA[2018-11-22 13:21:52]]></wp:post_date>
 			<wp:post_date_gmt><![CDATA[2018-11-22 13:21:52]]></wp:post_date_gmt>
@@ -891,8 +904,8 @@
 				<h3>
 					Contact
 				</h3>
-				<p>📠 012 317 14 23<br>
-📧 reserve@neve.com</p>
+				<p>? 012 317 14 23<br>
+? reserve@neve.com</p>
 			<h2>Opening hours</h2>		
 			<h2>Monday</h2>		
 			<h2>8 AM - 11 PM</h2>		
@@ -949,7 +962,7 @@
 			<wp:is_sticky>0</wp:is_sticky>
 													<wp:postmeta>
 					<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
-					<wp:meta_value><![CDATA[119919]]></wp:meta_value>
+					<wp:meta_value><![CDATA[440]]></wp:meta_value>
 				</wp:postmeta>
 							<wp:postmeta>
 					<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
@@ -1209,8 +1222,8 @@
 				<h3>
 					Contact
 				</h3>
-				<p>📠 012 317 14 23<br>
-📧 reserve@neve.com</p>
+				<p>? 012 317 14 23<br>
+? reserve@neve.com</p>
 			<h2>Opening hours</h2>		
 			<h2>Monday</h2>		
 			<h2>8 AM - 11 PM</h2>		
@@ -1267,7 +1280,7 @@
 			<wp:is_sticky>0</wp:is_sticky>
 													<wp:postmeta>
 					<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
-					<wp:meta_value><![CDATA[119919]]></wp:meta_value>
+					<wp:meta_value><![CDATA[440]]></wp:meta_value>
 				</wp:postmeta>
 							<wp:postmeta>
 					<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>

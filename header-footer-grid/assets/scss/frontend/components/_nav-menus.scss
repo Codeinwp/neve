@@ -91,6 +91,13 @@
     }
   }
 
+  i {
+    font-size: inherit;
+    line-height: inherit;
+    width: 20px;
+    margin-top: 0;
+  }
+
   .header-menu-sidebar & {
     flex-direction: column;
 

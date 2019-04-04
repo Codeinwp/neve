@@ -75,7 +75,7 @@ class Front_End {
 		);
 
 		add_image_size( 'neve-blog', 930, 620, true );
-		add_filter( 'wp_nav_menu_args', [ $this, 'nav_walker' ], 1001 );
+		add_filter( 'wp_nav_menu_args', array( $this, 'nav_walker' ), 1001 );
 		$this->add_woo_support();
 	}
 
