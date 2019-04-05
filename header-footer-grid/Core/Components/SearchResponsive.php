@@ -111,7 +111,7 @@ class SearchResponsive extends Abstract_Component {
 
 		$form .= '<form role="search" method="get" class="search-form" action="' . esc_url( home_url( '/' ) ) . '">';
 		$form .= '<label>';
-		$form .= '<span class="screen-reader-text">' . __( 'Search for:', 'neve' ) . '</span>';
+		$form .= '<span class="screen-reader-text">' . __( 'Search for...', 'neve' ) . '</span>';
 		$form .= '<input type="search" class="search-field" placeholder="' . esc_html( $placeholder ) . '" value="" name="s">';
 		$form .= '</label>';
 		$form .= '<input type="submit" class="search-submit" value="Search">';

@@ -2,9 +2,9 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Neve 2.3.1\n"
+"Project-Id-Version: Neve 2.3.3\n"
 "Report-Msgid-Bugs-To: https://github.com/Codeinwp/neve/issues\n"
-"POT-Creation-Date: 2019-04-05 10:16:49+00:00\n"
+"POT-Creation-Date: 2019-04-05 15:18:35+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -38,9 +38,6 @@ msgid "upgrading PHP to the latest version"
 msgstr ""
 
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:250
-msgid "HFG Panel"
-msgstr ""
-
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:266
 #: header-footer-grid/Core/Builder/Header.php:36
 #: inc/customizer/options/main.php:57
@@ -54,15 +51,13 @@ msgid "Layout"
 msgstr ""
 
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:380
-msgid "Full Width - Contained"
-msgstr ""
-
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:381
 #: inc/admin/metabox/main.php:125
 #: inc/customizer/options/layout_container.php:142
 msgid "Full Width"
 msgstr ""
 
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:380
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:382
 #: inc/admin/metabox/main.php:124
 #: inc/customizer/options/layout_container.php:141
@@ -80,14 +75,6 @@ msgstr ""
 msgid "Skin Mode"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:451
-msgid "Light Mode"
-msgstr ""
-
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:455
-msgid "Dark Mode"
-msgstr ""
-
 #: header-footer-grid/Core/Builder/Footer.php:35
 #: inc/customizer/options/layout_footer.php:48
 msgid "Footer"
@@ -97,18 +84,10 @@ msgstr ""
 msgid "Component Alignment"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:184
-msgid "Set the alignment for this component inside the active row."
-msgstr ""
-
 #: header-footer-grid/Core/Components/Button.php:33
 #: header-footer-grid/Core/Components/Button.php:68
 #: header-footer-grid/templates/component-button.php:15
 msgid "Button"
-msgstr ""
-
-#: header-footer-grid/Core/Components/Button.php:77
-msgid "#"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Button.php:86
@@ -126,6 +105,7 @@ msgid "Cart Icon"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Copyright.php:33
+#: header-footer-grid/Core/Components/Copyright.php:86
 msgid "Copyright"
 msgstr ""
 
@@ -138,15 +118,12 @@ msgstr ""
 msgid "%1$s | Powered by %2$s"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Copyright.php:86
-msgid "Copyright Content"
-msgstr ""
-
 #: header-footer-grid/Core/Components/CustomHtml.php:33
 msgid "HTML"
 msgstr ""
 
 #: header-footer-grid/Core/Components/CustomHtml.php:75
+#: header-footer-grid/templates/component-html.php:16
 msgid "Custom HTML"
 msgstr ""
 
@@ -195,35 +172,32 @@ msgid "Menu"
 msgstr ""
 
 #: header-footer-grid/Core/Components/MenuIcon.php:104
-msgid "Show sidebar"
+msgid "Show Sidebar"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Nav.php:36
+#: header-footer-grid/Core/Components/Nav.php:215
 #: header-footer-grid/templates/component-nav.php:28 inc/core/front_end.php:71
 #: inc/views/header.php:206
 msgid "Primary Menu"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Nav.php:86
-#: header-footer-grid/Core/Components/NavFooter.php:85
 #: header-footer-grid/Core/Components/SecondNav.php:85
 msgid "Plain"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Nav.php:90
-#: header-footer-grid/Core/Components/NavFooter.php:89
 #: header-footer-grid/Core/Components/SecondNav.php:89
 msgid "Full Height"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Nav.php:94
-#: header-footer-grid/Core/Components/NavFooter.php:93
 #: header-footer-grid/Core/Components/SecondNav.php:93
 msgid "Bottom Border"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Nav.php:98
-#: header-footer-grid/Core/Components/NavFooter.php:97
 #: header-footer-grid/Core/Components/SecondNav.php:97
 msgid "Top Border"
 msgstr ""
@@ -257,7 +231,7 @@ msgstr ""
 
 #: header-footer-grid/Core/Components/Nav.php:184
 #: header-footer-grid/templates/component-cart-icon.php:19
-#: inc/compatibility/woocommerce.php:422 inc/views/header.php:122
+#: inc/compatibility/woocommerce.php:424 inc/views/header.php:122
 msgid "Cart"
 msgstr ""
 
@@ -269,22 +243,11 @@ msgstr ""
 msgid "Last Menu Item"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Nav.php:192
-msgid "Set the last menu item."
-msgstr ""
-
-#: header-footer-grid/Core/Components/Nav.php:215
-msgid "Select Primary Menu"
-msgstr ""
-
 #: header-footer-grid/Core/Components/NavFooter.php:36
+#: header-footer-grid/Core/Components/NavFooter.php:159
 #: header-footer-grid/templates/component-nav-footer.php:28
 #: inc/core/front_end.php:72
 msgid "Footer Menu"
-msgstr ""
-
-#: header-footer-grid/Core/Components/NavFooter.php:159
-msgid "Select Footer Menu"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Search.php:33
@@ -293,8 +256,10 @@ msgstr ""
 
 #: header-footer-grid/Core/Components/Search.php:67
 #: header-footer-grid/Core/Components/Search.php:110
+#: header-footer-grid/Core/Components/Search.php:114
 #: header-footer-grid/Core/Components/SearchResponsive.php:67
 #: header-footer-grid/Core/Components/SearchResponsive.php:110
+#: header-footer-grid/Core/Components/SearchResponsive.php:114
 msgid "Search for..."
 msgstr ""
 
@@ -303,22 +268,14 @@ msgstr ""
 msgid "Placeholder"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Search.php:114
-#: header-footer-grid/Core/Components/SearchResponsive.php:114
-msgid "Search for:"
-msgstr ""
-
 #: header-footer-grid/Core/Components/SearchResponsive.php:33
 msgid "Search Icon"
 msgstr ""
 
 #: header-footer-grid/Core/Components/SecondNav.php:36
+#: header-footer-grid/Core/Components/SecondNav.php:158
 #: header-footer-grid/templates/component-nav-secondary.php:28
 msgid "Secondary Menu"
-msgstr ""
-
-#: header-footer-grid/Core/Components/SecondNav.php:158
-msgid "Select Secondary Menu"
 msgstr ""
 
 #: header-footer-grid/Core/Customizer.php:255
@@ -327,29 +284,31 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: header-footer-grid/templates/component-footer-sidebar.php:28
-#. translators: %s1 - url, %s2 - widget id
+#: header-footer-grid/templates/component-footer-sidebar.php:31
+#. translators: %s - customizer link
 msgid ""
-"<p>Replace this widget content by going to <a "
-"href=\"%1$s\"><strong>Appearance &rarr; Customize &rarr; Footer &rarr; "
-"%2$s</strong></a> and add widgets into this widget area.</p>"
+"Replace this widget content by going to %s and add widgets into this widget "
+"area."
 msgstr ""
 
-#: header-footer-grid/templates/component-html.php:16
-msgid "Your custom HTML text"
+#: header-footer-grid/templates/component-footer-sidebar.php:36
+#. translators: %1$s - link %2$s - name %3$s - label
+msgid "Appearance &rarr; Customize &rarr; Footer &rarr;"
 msgstr ""
 
-#: header-footer-grid/templates/component-menu-icon.php:23 views/navbar.php:22
+#: header-footer-grid/templates/component-menu-icon.php:21
+#: header-footer-grid/templates/row-wrapper-mobile.php:26 views/navbar.php:22
 msgid "Navigation Menu"
 msgstr ""
 
-#: header-footer-grid/templates/component-menu-icon.php:29
-#: header-footer-grid/templates/row-wrapper-mobile.php:30 views/navbar.php:26
+#: header-footer-grid/templates/component-menu-icon.php:27
+#: header-footer-grid/templates/row-wrapper-mobile.php:32 views/navbar.php:26
 msgid "Toggle Navigation"
 msgstr ""
 
-#: header-footer-grid/templates/rows.php:78
-msgid "Sidebar builder"
+#: header-footer-grid/templates/rows.php:78 inc/admin/metabox/main.php:143
+#: inc/compatibility/gutenberg.php:261 inc/core/front_end.php:573
+msgid "Sidebar"
 msgstr ""
 
 #: header-footer-grid/templates/rows.php:90
@@ -413,11 +372,6 @@ msgstr ""
 msgid "No Sidebar"
 msgstr ""
 
-#: inc/admin/metabox/main.php:143 inc/compatibility/gutenberg.php:261
-#: inc/core/front_end.php:573
-msgid "Sidebar"
-msgstr ""
-
 #: inc/admin/metabox/manager.php:116
 #. translators: %s - post type
 msgid "%s Settings"
@@ -444,7 +398,7 @@ msgid "Activating "
 msgstr ""
 
 #: inc/compatibility/gutenberg.php:262
-msgid "Neve visual integration"
+msgid "Visual Integration"
 msgstr ""
 
 #: inc/compatibility/woocommerce.php:238

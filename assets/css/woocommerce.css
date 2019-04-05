@@ -552,7 +552,6 @@
 .woocommerce a.button.alt,
 .woocommerce button.button.alt,
 .woocommerce input.button.alt,
-.woocommerce button:not(.customize-partial-edit-shortcut-button),
 .woocommerce button.button,
 .woocommerce input.button,
 .woocommerce .button,
@@ -575,13 +574,22 @@
 .woocommerce a.button.alt:hover,
 .woocommerce button.button.alt:hover,
 .woocommerce input.button.alt:hover,
-.woocommerce button:not(.customize-partial-edit-shortcut-button):hover,
 .woocommerce button.button:hover,
 .woocommerce input.button:hover,
 .woocommerce .button:hover,
 .woocommerce a.button:hover,
 .woocommerce #respond input#submit:hover {
   text-decoration: none;
+  opacity: .9;
+}
+.woocommerce a.button.button-primary {
+  background-color: #0366d6;
+  color: #fff;
+}
+.woocommerce a.button.button-primary:hover {
+  text-decoration: none;
+  background-color: #0366d6;
+  color: #fff;
   opacity: .9;
 }
 .woocommerce a.button.alt,

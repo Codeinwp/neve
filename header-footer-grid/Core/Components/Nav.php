@@ -189,7 +189,7 @@ class Nav extends Abstract_Component {
 			'neve_last_menu_item',
 			array(
 				'label'       => __( 'Last Menu Item', 'neve' ),
-				'description' => __( 'Set the last menu item.', 'neve' ),
+				'description' => '',
 				'type'        => 'select',
 				'priority'    => 800,
 				'section'     => $this->section,
@@ -212,7 +212,7 @@ class Nav extends Abstract_Component {
 				array(
 					'button_class' => 'nv-top-bar-menu-shortcut',
 					'icon_class'   => 'menu',
-					'button_text'  => __( 'Select Primary Menu', 'neve' ),
+					'button_text'  => __( 'Primary Menu', 'neve' ),
 					'shortcut'     => true,
 					'section'      => $this->section,
 				)

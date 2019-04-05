@@ -12,7 +12,6 @@
   a.button.alt,
   button.button.alt,
   input.button.alt,
-  button:not(.customize-partial-edit-shortcut-button),
   button.button,
   input.button,
   .button,
@@ -20,7 +19,9 @@
   #respond input#submit {
     @include button();
   }
-
+  a.button.button-primary {
+    @include button-primary();
+  }
   a.button.alt,
   a.button.checkout-button,
   button.button:disabled,

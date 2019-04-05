@@ -21,9 +21,9 @@ class Amp {
 	 * Run the hooks and filters.
 	 */
 	public function init() {
-		add_filter( 'neve_nav_data_attrs', array( $this, 'add_nav_attrs' ) );
 		add_filter( 'neve_nav_toggle_data_attrs', array( $this, 'add_nav_toggle_attrs' ) );
 		add_filter( 'neve_caret_wrap_filter', array( $this, 'amp_dropdowns' ), 10, 2 );
+		add_filter( 'neve_body_data_attrs', array( $this, 'add_body_attributes' ) );
 
 		add_filter(
 			'neve_woocommerce_sidebar_filter_btn_data_attrs',
@@ -46,6 +46,26 @@ class Amp {
 	}
 
 	/**
+	 * Add body attributes to make sure sidebar works fine.
+	 *
+	 * @param string $input the incoming string.
+	 *
+	 * @return string
+	 */
+	function add_body_attributes( $input ) {
+		if ( ! neve_is_amp() ) {
+			return $input;
+		}
+
+		$body_classes = join( ' ', get_body_class() ) . ' ';
+
+		$input .= ' [class]="\'' . $body_classes . '\' + ( nvAmpMenuExpanded ? \'is-menu-sidebar\' : \'\' )" ';
+
+		return $input;
+	}
+
+
+	/**
 	 * Add amp states to the dom.
 	 */
 	public function render_amp_states() {
@@ -63,23 +83,6 @@ class Amp {
 	}
 
 	/**
-	 * Add navigation data attributes.
-	 *
-	 * @param string $input the data attrs already existing in the nav.
-	 *
-	 * @return string
-	 */
-	public function add_nav_attrs( $input ) {
-		if ( ! neve_is_amp() ) {
-			return $input;
-		}
-		$input .= ' [class]="( nvAmpMenuExpanded ? \'nv-navbar responsive-opened\' : \'nv-navbar\' )" ';
-		$input .= ' aria-expanded="false" [aria-expanded]="nvAmpMenuExpanded ? \'true\' : \'false\'" ';
-
-		return $input;
-	}
-
-	/**
 	 * Add the nav toggle data attributes.
 	 *
 	 * @param string $input the data attrs already existing in nav toggle.
@@ -93,7 +96,6 @@ class Amp {
 		$input .= ' on="tap:AMP.setState( { nvAmpMenuExpanded: ! nvAmpMenuExpanded } )" ';
 		$input .= ' role="button" ';
 		$input .= ' tabindex="0" ';
-		$input .= ' [class]="\'navbar-toggle\' + ( nvAmpMenuExpanded ? \' active\' : \'\' )" ';
 		$input .= ' aria-expanded="false" ';
 		$input .= ' [aria-expanded]="nvAmpMenuExpanded ? \'true\' : \'false\'" ';
 

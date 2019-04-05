@@ -4,8 +4,10 @@
     width: 100%;
     max-width: 100%;
     flex: 0 0 100%;
-    margin-bottom: 30px;
     margin-left: 0;
+    &:not(:last-child) {
+      margin-bottom: 30px;
+    }
   }
   .nv-footer-content {
     flex-wrap: wrap;

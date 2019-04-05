@@ -181,7 +181,7 @@ abstract class Abstract_Component implements Component {
 				$this->id . '_component_align',
 				[
 					'label'       => __( 'Component Alignment', 'neve' ),
-					'description' => __( 'Set the alignment for this component inside the active row.', 'neve' ),
+					'description' => '',
 					'settings'    => $this->id . '_component_align',
 					'priority'    => 800,
 					'section'     => $this->section,

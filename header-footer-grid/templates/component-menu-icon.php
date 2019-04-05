@@ -15,8 +15,6 @@ $item_classes    = [];
 $item_classes[]  = 'menu-mobile-toggle item-button navbar-toggle-wrapper';
 $item_attributes = apply_filters( 'neve_nav_toggle_data_attrs', '' );
 
-$label_classes = array( 'nav-icon--label' );
-
 ?>
 <div class="<?php echo esc_attr( join( ' ', $item_classes ) ); ?>">
 	<button class="navbar-toggle" <?php echo wp_kses_post( $item_attributes ); ?>

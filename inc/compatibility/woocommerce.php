@@ -237,7 +237,7 @@ class Woocommerce {
 
 		$button_text  = apply_filters( 'neve_filter_woo_sidebar_open_button_text', __( 'Filter', 'neve' ) . '»' );
 		$button_attrs = apply_filters( 'neve_woocommerce_sidebar_filter_btn_data_attrs', '' );
-		echo '<a class="nv-sidebar-toggle" ' . esc_attr( $button_attrs ) . '>' . esc_html( $button_text ) . '</a>';
+		echo '<a class="nv-sidebar-toggle" ' . wp_kses_post( $button_attrs ) . '>' . esc_html( $button_text ) . '</a>';
 	}
 
 	/**
@@ -302,6 +302,8 @@ class Woocommerce {
 		$color_setup['background']['selectors'] .=
 			',.woocommerce a.button.alt,
 .woocommerce a.button.alt:hover,
+.woocommerce a.button.button-primary,
+.woocommerce a.button.button-primary:hover,
 .woocommerce a.button.checkout-button,
 .woocommerce a.button.checkout-button:hover,
 .woocommerce button.button:disabled,

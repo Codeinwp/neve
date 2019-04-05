@@ -155,7 +155,7 @@ class SecondNav extends Abstract_Component {
 				array(
 					'button_class' => 'nv-top-bar-menu-shortcut',
 					'icon_class'   => 'menu',
-					'button_text'  => __( 'Select Secondary Menu', 'neve' ),
+					'button_text'  => __( 'Secondary Menu', 'neve' ),
 					'shortcut'     => true,
 					'section'      => $this->section,
 				)
