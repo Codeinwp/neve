@@ -93,7 +93,23 @@ trait Core {
 	}
 
 	/**
-	 * Sanitizite responsive control
+	 * Sanitize regular json.
+	 *
+	 * @param string $input Input.
+	 *
+	 * @return string
+	 */
+	public function sanitize_json( $input ) {
+		$inputs = json_decode( $input, true );
+		if ( is_array( $inputs ) && ! empty( $inputs ) ) {
+			return $input;
+		}
+
+		return '';
+	}
+
+	/**
+	 * Sanitize responsive control
 	 *
 	 * @param string $input Input.
 	 * @return string
