@@ -98,7 +98,7 @@ trait Core {
 	 * @param string $input Input.
 	 * @return string
 	 */
-	public function sanitize_responsive_int_json( string $input ) {
+	public function sanitize_responsive_int_json( $input ) {
 		$inputs   = json_decode( $input, true );
 		$filtered = array(
 			'mobile'  => 0,
