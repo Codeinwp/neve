@@ -14,14 +14,16 @@ use HFG\Core\Builder\Header as HeaderBuilder;
 $row_index  = current_row();
 $control_id = get_builders()->get_property( 'control_id' );
 
-$skin_mode = get_theme_mod( $control_id . '_' . $row_index . '_skin', 'light-mode' );
-$classes   = [ 'header-menu-sidebar', 'menu-sidebar-panel', $skin_mode ];
+$skin_mode       = get_theme_mod( $control_id . '_' . $row_index . '_skin', 'light-mode' );
+$classes         = [ 'header-menu-sidebar', 'menu-sidebar-panel', $skin_mode ];
+$item_attributes = apply_filters( 'neve_nav_toggle_data_attrs', '' );
 
 ?>
 <div id="header-menu-sidebar" class="<?php echo esc_attr( join( ' ', $classes ) ); ?>">
 	<div id="header-menu-sidebar-bg" class="header-menu-sidebar-bg">
 		<div class="close-sidebar-panel navbar-toggle-wrapper">
-			<button class="navbar-toggle active" aria-label="Navigation Menu">
+			<button class="navbar-toggle active" <?php echo wp_kses_post( $item_attributes ); ?>
+					aria-label="<?php _e( 'Navigation Menu', 'neve' ); ?>">
 				<div class="bars">
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>

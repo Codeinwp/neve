@@ -6,7 +6,7 @@
  */
 ?>
 
-<nav class="nv-navbar" <?php echo wp_kses_post( apply_filters( 'neve_nav_data_attrs', '' ) ); ?> role="navigation">
+<nav class="nv-navbar" role="navigation">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12 nv-nav-wrap <?php echo esc_attr( $args['navbar_class'] ); ?>">
