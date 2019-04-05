@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Neve 2.3.3\n"
 "Report-Msgid-Bugs-To: https://github.com/Codeinwp/neve/issues\n"
-"POT-Creation-Date: 2019-04-05 15:18:35+00:00\n"
+"POT-Creation-Date: 2019-04-05 16:14:19+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -180,26 +180,6 @@ msgstr ""
 #: header-footer-grid/templates/component-nav.php:28 inc/core/front_end.php:71
 #: inc/views/header.php:206
 msgid "Primary Menu"
-msgstr ""
-
-#: header-footer-grid/Core/Components/Nav.php:86
-#: header-footer-grid/Core/Components/SecondNav.php:85
-msgid "Plain"
-msgstr ""
-
-#: header-footer-grid/Core/Components/Nav.php:90
-#: header-footer-grid/Core/Components/SecondNav.php:89
-msgid "Full Height"
-msgstr ""
-
-#: header-footer-grid/Core/Components/Nav.php:94
-#: header-footer-grid/Core/Components/SecondNav.php:93
-msgid "Bottom Border"
-msgstr ""
-
-#: header-footer-grid/Core/Components/Nav.php:98
-#: header-footer-grid/Core/Components/SecondNav.php:97
-msgid "Top Border"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Nav.php:119
