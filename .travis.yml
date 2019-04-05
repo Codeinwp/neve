@@ -14,7 +14,6 @@ jobs:
       before_install:
         - nvm install && nvm use
         - npm install npm -g
-        - npm install
       script:
         - travis_retry npm install
         - travis_retry composer install

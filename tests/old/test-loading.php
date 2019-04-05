@@ -8,7 +8,7 @@
 /**
  * Test library loading.
  */
-class Loading_Old_Test extends WP_UnitTestCase {
+class Test_loading_old extends WP_UnitTestCase {
 	/**
 	 * Test if the library is loading properly and version is exported.
 	 */
