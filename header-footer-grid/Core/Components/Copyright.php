@@ -70,8 +70,8 @@ class Copyright extends Abstract_Component {
 						sprintf(
 							/* translators: %1$s is Theme Name ( Neve ), %2$s is WordPress */
 							esc_html__( '%1$s | Powered by %2$s', 'neve' ),
-							wp_kses_post( '<a href="https://themeisle.com/themes/neve/" rel="nofollow">Neve</a>' ),
-							wp_kses_post( '<a href="http://wordpress.org" rel="nofollow">WordPress</a>' )
+							wp_kses_post( '<p><a href="https://themeisle.com/themes/neve/" rel="nofollow">Neve</a>' ),
+							wp_kses_post( '<a href="http://wordpress.org" rel="nofollow">WordPress</a></p>' )
 						)
 					)
 				),
@@ -83,7 +83,7 @@ class Copyright extends Abstract_Component {
 		$wp_customize->add_control(
 			$this->id . '_content',
 			[
-				'label'   => esc_html__( 'Copyright Content', 'neve' ),
+				'label'   => esc_html__( 'Copyright', 'neve' ),
 				'type'    => 'textarea',
 				'section' => $this->section,
 			]

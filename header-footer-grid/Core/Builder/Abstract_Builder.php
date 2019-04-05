@@ -247,7 +247,7 @@ abstract class Abstract_Builder implements Builder {
 
 		if ( null === $wp_customize->get_panel( $this->panel ) ) {
 			$this->set_property( 'section', $this->control_id . '_section' );
-			$builder_title = ( isset( $this->title ) && ! empty( $this->title ) ) ? $this->title : __( 'HFG Panel', 'neve' );
+			$builder_title = ( isset( $this->title ) && ! empty( $this->title ) ) ? $this->title : __( 'Header', 'neve' );
 
 			$wp_customize->add_panel(
 				$this->panel,
@@ -377,7 +377,7 @@ abstract class Abstract_Builder implements Builder {
 						'type'    => 'select',
 						'section' => $this->control_id . '_' . $row_id,
 						'choices' => array(
-							'layout-full-contained' => __( 'Full Width - Contained', 'neve' ),
+							'layout-full-contained' => __( 'Full Width', 'neve' ) . ' - ' . __( 'Contained', 'neve' ),
 							'layout-fullwidth'      => __( 'Full Width', 'neve' ),
 							'layout-contained'      => __( 'Contained', 'neve' ),
 						),
@@ -448,11 +448,11 @@ abstract class Abstract_Builder implements Builder {
 						'choices'  => array(
 							'light-mode' => array(
 								'url'  => Settings::get_instance()->url . '/assets/images/customizer/text_mode_dark.svg',
-								'name' => __( 'Light Mode', 'neve' ),
+								'name' => '',
 							),
 							'dark-mode'  => array(
 								'url'  => Settings::get_instance()->url . '/assets/images/customizer/text_mode_light.svg',
-								'name' => __( 'Dark Mode', 'neve' ),
+								'name' => '',
 							),
 						),
 					]
