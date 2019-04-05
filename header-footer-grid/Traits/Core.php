@@ -62,7 +62,9 @@ trait Core {
 			$property = $key;
 			$css     .= $prefix . "$property: $value;\n";
 		}
-
+		if ( preg_match( '#</?\w+#', $css ) ) {
+			$css = '';
+		}
 		return $css;
 	}
 

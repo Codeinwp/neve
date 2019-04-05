@@ -101,14 +101,12 @@ class Gutenberg {
 
 	/**
 	 * Set the post ID.
-	 *
-	 * @return int|null
 	 */
 	private function set_post_id() {
 		if ( ! isset( $_GET['post'] ) ) {
 			return null;
 		}
-		$this->post_id = $_GET['post'];
+		$this->post_id = (int) $_GET['post'];
 	}
 
 	/**
@@ -149,11 +147,11 @@ class Gutenberg {
 	 * @return bool
 	 */
 	private function is_page() {
-		if ( isset( $_GET['post'] ) && get_post_type( $_GET['post'] ) === 'page' ) {
+		if ( isset( $_GET['post'] ) && get_post_type( (int) $_GET['post'] ) === 'page' ) {
 			return true;
 		}
 
-		if ( isset( $_GET['post_type'] ) && $_GET['post_type'] === 'page' ) {
+		if ( isset( $_GET['post_type'] ) && sanitize_key( $_GET['post_type'] ) === 'page' ) {
 			return true;
 		}
 

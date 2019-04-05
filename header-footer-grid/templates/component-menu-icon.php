@@ -20,7 +20,7 @@ $label_classes = array( 'nav-icon--label' );
 ?>
 <div class="<?php echo esc_attr( join( ' ', $item_classes ) ); ?>">
 	<button class="navbar-toggle" <?php echo wp_kses_post( $item_attributes ); ?>
-			aria-label="<?php _e( 'Navigation Menu', 'neve' ); ?>">
+			aria-label="<?php _e( 'Navigation Menu', 'neve' ); // WPCS: XSS ok. ?>">
 		<div class="bars">
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>

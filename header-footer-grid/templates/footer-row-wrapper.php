@@ -30,8 +30,8 @@ $row_classes[] = get_theme_mod( $control_id . '_' . $row_index . '_layout', 'lay
 
 ?>
 <div class="<?php echo esc_attr( join( ' ', $row_classes ) ); ?>"
-	id="cb-row--footer-<?php echo $row_index; ?>"
-	data-row-id="<?php echo $row_index; ?>" data-show-on="<?php echo $device; ?>">
+	id="cb-row--footer-<?php echo esc_attr( $row_index ); ?>"
+	data-row-id="<?php echo esc_attr( $row_index ); ?>" data-show-on="<?php echo esc_attr( $device ); ?>">
 	<div class="footer--row-inner footer-<?php echo esc_attr( $row_index ); ?>-inner <?php echo esc_attr( $skin_mode ); ?> footer-content-wrap" >
 		<div class="container">
 			<div class="hfg-grid hfg-grid-<?php echo esc_attr( $row_index ); ?>   nv-footer-content">

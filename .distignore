@@ -16,6 +16,8 @@ tests
 phpunit.xml
 npm-debug.log
 dist
+.nvmrc
+.editorconfig
 artifact
 composer.json
 composer.lock

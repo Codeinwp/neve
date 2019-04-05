@@ -84,7 +84,7 @@ class Post_Meta extends Base_View {
 		}
 		$markup .= '</ul>';
 
-		echo $markup;
+		echo wp_kses_post( $markup );
 	}
 
 	/**
@@ -146,7 +146,7 @@ class Post_Meta extends Base_View {
 			$html    .= esc_html( $tag->name ) . '</a>';
 		}
 		$html .= ' </div> ';
-		echo $html;
+		echo $html; // WPCS: XSS OK.
 	}
 
 	/**

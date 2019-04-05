@@ -200,7 +200,7 @@ class Woocommerce {
 	 */
 	public function wrap_main_content_start() {
 		$before_shop_classes = apply_filters( 'neve_before_shop_classes', 'nv-index-posts nv-shop col' );
-		echo '<div class="' . $before_shop_classes . '">';
+		echo '<div class="' . esc_attr( $before_shop_classes ) . '">';
 		do_action( 'neve_before_shop_loop_content' );
 	}
 

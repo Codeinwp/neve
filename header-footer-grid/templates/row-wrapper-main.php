@@ -33,8 +33,8 @@ $row_classes[] = 'nv-navbar';
 ?>
 
 <nav class="<?php echo esc_attr( apply_filters( 'neve_nav_data_attrs', join( ' ', $row_classes ) ) ); ?> header--row"
-	id="cb-row--header-<?php echo $row_index; ?>"
-	data-row-id="<?php echo $row_index; ?>" data-show-on="<?php echo $device; ?>">
+	id="cb-row--header-<?php echo esc_attr( $row_index ); ?>"
+	data-row-id="<?php echo esc_attr( $row_index ); ?>" data-show-on="<?php echo esc_attr( $device ); ?>">
 
 	<div class="header--row-inner header-<?php echo esc_attr( $row_index ); ?>-inner <?php echo esc_attr( $skin_mode ); ?>">
 		<div class="container">

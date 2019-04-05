@@ -12,10 +12,10 @@ namespace HFG;
 
 use HFG\Core\Builder\Footer as FooterBuilder;
 
-$id = current_component( FooterBuilder::BUILDER_NAME )->get_id();
+$_id = current_component( FooterBuilder::BUILDER_NAME )->get_id();
 
 $content = get_theme_mod(
-	$id . '_content',
+	$_id . '_content',
 	get_theme_mod(
 		'neve_footer_text',
 		apply_filters(

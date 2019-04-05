@@ -27,7 +27,7 @@ $classes   = [ 'header-menu-sidebar', 'menu-sidebar-panel', $skin_mode ];
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</div>
-				<span class="screen-reader-text"><?php _e( 'Toggle Navigation', 'neve' ); ?></span>
+				<span class="screen-reader-text"><?php _e( 'Toggle Navigation', 'neve' ); // WPCS: XSS ok. ?></span>
 			</button>
 		</div>
 		<div id="header-menu-sidebar-inner" class="header-menu-sidebar-inner">
