@@ -71,7 +71,7 @@ class Logo extends Abstract_Component {
 				'transport'      => 'postMessage',
 				'theme_supports' => 'hfg_support',
 				'default'        => '{ "mobile": "120", "tablet": "120", "desktop": "120" }',
-				'sanitize_callback' => 'wp_filter_nohtml_kses'
+				'sanitize_callback' => array( $this, 'sanitize_responsive_int_json' )
 			)
 		);
 		array_push( $partial_settings, $this->id . '_max_width' );
