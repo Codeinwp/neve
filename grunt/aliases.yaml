@@ -26,7 +26,6 @@ check:
 travis:
   descriptions: "Routine testing in CI"
   tasks: [
-    "phplint",
     "shell:phpcs",
     "jshint",
     "check:i18n"
