@@ -9,8 +9,16 @@
 }
 
 .builder-item {
-  margin-top: 8px;
-  margin-bottom: 8px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+$desktop : map-get($gl-devices-list, desktop);
+@media #{$desktop}{
+  .builder-item {
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
 }
 
 //<editor-fold desc="Row Layout">
@@ -53,15 +61,18 @@ $builder_types: header footer;
     color: #404248;
   }
 }
+
 .header-top-inner {
   font-size: .85em;
 }
+
 .header--row-inner.dark-mode {
   &, .sub-menu, .sub-menu li {
     border-color: #333;
     background-color: #24292e;
     color: #fff;
   }
+
   a:not(.button) {
     color: #fff;
   }
@@ -76,4 +87,5 @@ $builder_types: header footer;
 .hfg_header.site-header {
   border-bottom: 1px solid #f0f0f0;
 }
+
 //</editor-fold>
