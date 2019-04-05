@@ -69,8 +69,8 @@ class Footer extends Base_View {
 				sprintf(
 					/* translators: %1$s is Theme Name ( Neve ), %2$s is WordPress */
 					esc_html__( '%1$s | Powered by %2$s', 'neve' ),
-					wp_kses_post( '<a href="https://themeisle.com/themes/neve/" rel="nofollow">Neve</a>' ),
-					wp_kses_post( '<a href="http://wordpress.org" rel="nofollow">WordPress</a>' )
+					wp_kses_post( '<p><a href="https://themeisle.com/themes/neve/" rel="nofollow">Neve</a>' ),
+					wp_kses_post( '<a href="http://wordpress.org" rel="nofollow">WordPress</a></p>' )
 				)
 			)
 		);
