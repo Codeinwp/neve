@@ -274,7 +274,7 @@ abstract class Abstract_Builder implements Builder {
 				array(
 					'default'           => '',
 					'transport'         => 'postMessage',
-					'sanitize_callback' => 'wp_filter_nohtml_kses',
+					'sanitize_callback' => array( $this, 'sanitize_json' ),
 				)
 			);
 
@@ -355,7 +355,7 @@ abstract class Abstract_Builder implements Builder {
 					'transport'         => 'postMessage',
 					'theme_supports'    => 'hfg_support',
 					'default'           => '',
-					'sanitize_callback' => 'wp_filter_nohtml_kses',
+					'sanitize_callback' => array( $this, 'sanitize_json' ),
 				)
 			);
 

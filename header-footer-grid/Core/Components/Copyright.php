@@ -77,7 +77,7 @@ class Copyright extends Abstract_Component {
 				),
 				'theme_supports'    => 'hfg_support',
 				'transport'         => 'postMessage',
-				'sanitize_callback' => 'wp_filter_nohtml_kses',
+				'sanitize_callback' => 'wp_kses_post',
 			)
 		);
 		$wp_customize->add_control(
