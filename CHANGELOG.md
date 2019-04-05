@@ -1,4 +1,9 @@
 
+ ### v2.3.1 - 2019-04-05 
+ **Changes:** 
+ * Fixed missing sanitization functions
+* Fixed Gutenberg integration with the typography options
+ 
  ### v2.3.0 - 2019-04-04 
  **Changes:** 
  * NEW Header/Footer builder
