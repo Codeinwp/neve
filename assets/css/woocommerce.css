@@ -582,6 +582,16 @@
   text-decoration: none;
   opacity: .9;
 }
+.woocommerce a.button.button-primary {
+  background-color: #0366d6;
+  color: #fff;
+}
+.woocommerce a.button.button-primary:hover {
+  text-decoration: none;
+  background-color: #0366d6;
+  color: #fff;
+  opacity: .9;
+}
 .woocommerce a.button.alt,
 .woocommerce a.button.checkout-button,
 .woocommerce button.button:disabled,

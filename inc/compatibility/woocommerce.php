@@ -302,6 +302,8 @@ class Woocommerce {
 		$color_setup['background']['selectors'] .=
 			',.woocommerce a.button.alt,
 .woocommerce a.button.alt:hover,
+.woocommerce a.button.button-primary,
+.woocommerce a.button.button-primary:hover,
 .woocommerce a.button.checkout-button,
 .woocommerce a.button.checkout-button:hover,
 .woocommerce button.button:disabled,
