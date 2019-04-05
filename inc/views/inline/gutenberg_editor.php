@@ -20,7 +20,8 @@ class Gutenberg_Editor extends Base_Inline {
 	 * @return void
 	 */
 	public function init() {
-		$this->add_font_families();
+		$this->add_headings_font_styles();
+		$this->add_body_font_styles();
 		$this->add_font_sizes();
 		$this->add_container_style();
 		$this->add_content_width();
@@ -28,18 +29,97 @@ class Gutenberg_Editor extends Base_Inline {
 	}
 
 	/**
-	 * Add font families.
+	 * Add font styles for the body.
 	 */
-	private function add_font_families() {
-		$headings_font = get_theme_mod( 'neve_headings_font_family', false );
-		$body_font     = get_theme_mod( 'neve_body_font_family', false );
-		$this->add_style(
-			array(
+	private function add_body_font_styles() {
+		$body_font           = get_theme_mod( 'neve_body_font_family', false );
+		$body_font_weight    = get_theme_mod( 'neve_body_font_weight' );
+		$body_text_transform = get_theme_mod( 'neve_body_text_transform' );
+		$body_spacing        = get_theme_mod( 'neve_body_letter_spacing' );
+		$body_style_setup    = array();
+		if ( ! empty( $body_font ) && $body_font !== 'default' ) {
+			$body_style_setup[] = array(
+				'css_prop' => 'font-family',
+				'value'    => $body_font,
+			);
+		}
+		if ( ! empty( $body_font_weight ) ) {
+			$body_style_setup[] = array(
+				'css_prop' => 'font-weight',
+				'value'    => $body_font_weight,
+			);
+		}
+		if ( ! empty( $body_text_transform ) ) {
+			$body_style_setup[] = array(
+				'css_prop' => 'text-transform',
+				'value'    => $body_text_transform,
+			);
+		}
+		if ( ! empty( $body_spacing ) ) {
+			$body_style_setup[] =
 				array(
-					'css_prop' => 'font-family',
-					'value'    => esc_html( $headings_font ),
-				),
-			),
+					'css_prop' => 'letter-spacing',
+					'value'    => $body_spacing,
+					'suffix'   => 'px',
+				);
+		}
+		$this->add_style( $body_style_setup, '.block-editor-page #wpwrap .editor-styles-wrapper .editor-writing-flow' );
+
+		$body_line_height = get_theme_mod( 'neve_body_line_height' );
+		$body_line_height = json_decode( $body_line_height, true );
+		$settings         = array();
+		if ( ! empty( $body_line_height ) ) {
+			$settings[] = array(
+				'css_prop' => 'line-height',
+				'value'    => $body_line_height,
+			);
+		}
+
+		$this->add_responsive_style(
+			$settings,
+			'
+			.block-editor-page .editor-styles-wrapper .editor-writing-flow, 
+			.block-editor-page .editor-styles-wrapper .editor-writing-flow p:not(.wp-block-cover-text),
+			.editor-post-title__block'
+		);
+	}
+
+	/**
+	 * Add heading styles.
+	 */
+	private function add_headings_font_styles() {
+		$headings_font           = get_theme_mod( 'neve_headings_font_family', false );
+		$headings_font_weight    = get_theme_mod( 'neve_headings_font_weight' );
+		$headings_text_transform = get_theme_mod( 'neve_headings_text_transform' );
+		$headings_spacing        = get_theme_mod( 'neve_headings_letter_spacing' );
+		$style_setup             = array();
+		if ( ! empty( $headings_font ) && $headings_font !== 'default' ) {
+			$style_setup[] = array(
+				'css_prop' => 'font-family',
+				'value'    => $headings_font,
+			);
+		}
+		if ( ! empty( $headings_font_weight ) ) {
+			$style_setup[] = array(
+				'css_prop' => 'font-weight',
+				'value'    => $headings_font_weight,
+			);
+		}
+		if ( ! empty( $headings_text_transform ) ) {
+			$style_setup[] = array(
+				'css_prop' => 'text-transform',
+				'value'    => $headings_text_transform,
+			);
+		}
+		if ( ! empty( $headings_spacing ) ) {
+			$style_setup[] = array(
+				'css_prop' => 'letter-spacing',
+				'value'    => $headings_spacing,
+				'suffix'   => 'px',
+			);
+		}
+		$this->add_style(
+			$style_setup,
 			'.block-editor-page #wpwrap .editor-post-title__block .editor-post-title__input, 
 			.block-editor-page #wpwrap .editor-styles-wrapper h1, 
 			.block-editor-page #wpwrap .editor-styles-wrapper h2, 
@@ -48,14 +128,25 @@ class Gutenberg_Editor extends Base_Inline {
 			.block-editor-page #wpwrap .editor-styles-wrapper h5, 
 			.block-editor-page #wpwrap .editor-styles-wrapper h6'
 		);
-		$this->add_style(
-			array(
-				array(
-					'css_prop' => 'font-family',
-					'value'    => esc_html( $body_font ),
-				),
-			),
-			'.block-editor-page #wpwrap .editor-styles-wrapper .editor-writing-flow'
+
+		$line_height = get_theme_mod( 'neve_headings_line_height' );
+		$line_height = json_decode( $line_height, true );
+		$style_setup = array();
+		if ( ! empty( $line_height ) ) {
+			$style_setup[] = array(
+				'css_prop' => 'line-height',
+				'value'    => $line_height,
+			);
+		}
+		$this->add_responsive_style(
+			$style_setup,
+			'.block-editor-page #wpwrap .editor-post-title__block .editor-post-title__input, 
+			.block-editor-page #wpwrap .editor-styles-wrapper h1, 
+			.block-editor-page #wpwrap .editor-styles-wrapper h2, 
+			.block-editor-page #wpwrap .editor-styles-wrapper h3, 
+			.block-editor-page #wpwrap .editor-styles-wrapper h4, 
+			.block-editor-page #wpwrap .editor-styles-wrapper h5, 
+			.block-editor-page #wpwrap .editor-styles-wrapper h6'
 		);
 	}
 
@@ -224,8 +315,6 @@ class Gutenberg_Editor extends Base_Inline {
 		);
 
 		array_walk( $controls, array( $this, 'run_font_settings' ) );
-
-		return;
 	}
 
 	/**
