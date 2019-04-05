@@ -1,4 +1,8 @@
 
+ ### v2.3.2 - 2019-04-05 
+ **Changes:** 
+ * Header footer builder fixed sanitization
+ 
  ### v2.3.1 - 2019-04-05 
  **Changes:** 
  * Fixed missing sanitization functions
