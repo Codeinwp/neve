@@ -272,9 +272,9 @@ abstract class Abstract_Builder implements Builder {
 			$wp_customize->add_setting(
 				$this->control_id,
 				array(
-					'default'   => '',
-					'transport' => 'postMessage',
-					'sanitize_callback' => 'wp_filter_nohtml_kses'
+					'default'           => '',
+					'transport'         => 'postMessage',
+					'sanitize_callback' => 'wp_filter_nohtml_kses',
 				)
 			);
 
@@ -352,10 +352,10 @@ abstract class Abstract_Builder implements Builder {
 			$wp_customize->add_setting(
 				$this->control_id . '_' . $row_id,
 				array(
-					'transport'      => 'postMessage',
-					'theme_supports' => 'hfg_support',
-					'default'        => '',
-					'sanitize_callback' => 'wp_filter_nohtml_kses'
+					'transport'         => 'postMessage',
+					'theme_supports'    => 'hfg_support',
+					'default'           => '',
+					'sanitize_callback' => 'wp_filter_nohtml_kses',
 				)
 			);
 
@@ -363,10 +363,10 @@ abstract class Abstract_Builder implements Builder {
 				$wp_customize->add_setting(
 					$this->control_id . '_' . $row_id . '_layout',
 					array(
-						'theme_supports' => 'hfg_support',
-						'transport'      => 'postMessage',
-						'default'        => 'layout-full-contained',
-						'sanitize_callback' => 'wp_filter_nohtml_kses'
+						'theme_supports'    => 'hfg_support',
+						'transport'         => 'postMessage',
+						'default'           => 'layout-full-contained',
+						'sanitize_callback' => 'wp_filter_nohtml_kses',
 					)
 				);
 				array_push( $partial_settings, $this->control_id . '_' . $row_id . '_layout' );
@@ -387,10 +387,10 @@ abstract class Abstract_Builder implements Builder {
 				$wp_customize->add_setting(
 					$this->control_id . '_' . $row_id . '_height',
 					array(
-						'theme_supports' => 'hfg_support',
-						'transport'      => 'postMessage',
-						'default'        => '{ "mobile": "0", "tablet": "0", "desktop": "0" }',
-						'sanitize_callback' => array( $this, 'sanitize_responsive_int_json' )
+						'theme_supports'    => 'hfg_support',
+						'transport'         => 'postMessage',
+						'default'           => '{ "mobile": "0", "tablet": "0", "desktop": "0" }',
+						'sanitize_callback' => array( $this, 'sanitize_responsive_int_json' ),
 					)
 				);
 				array_push( $partial_settings, $this->control_id . '_' . $row_id . '_height' );
@@ -430,10 +430,10 @@ abstract class Abstract_Builder implements Builder {
 			$wp_customize->add_setting(
 				$this->control_id . '_' . $row_id . '_skin',
 				array(
-					'theme_supports' => 'hfg_support',
-					'transport'      => 'postMessage',
-					'default'        => 'light-mode',
-					'sanitize_callback' => 'wp_filter_nohtml_kses'
+					'theme_supports'    => 'hfg_support',
+					'transport'         => 'postMessage',
+					'default'           => 'light-mode',
+					'sanitize_callback' => 'wp_filter_nohtml_kses',
 				)
 			);
 			array_push( $partial_settings, $this->control_id . '_' . $row_id . '_skin' );

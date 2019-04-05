@@ -63,10 +63,10 @@ class CustomHtml extends Abstract_Component {
 		$wp_customize->add_setting(
 			$this->id . '_content',
 			array(
-				'default'        => get_theme_mod( 'neve_top_bar_content', '' ),
-				'theme_supports' => 'hfg_support',
-				'transport'      => 'postMessage',
-				'sanitize_callback' => 'wp_filter_nohtml_kses'
+				'default'           => get_theme_mod( 'neve_top_bar_content', '' ),
+				'theme_supports'    => 'hfg_support',
+				'transport'         => 'postMessage',
+				'sanitize_callback' => 'wp_filter_nohtml_kses',
 			)
 		);
 		$wp_customize->add_control(
