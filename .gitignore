@@ -4,7 +4,6 @@ logs
 dist
 artifact
 vendor
-bin
 **/*.js.map
 **/*.css.map
 **/.DS_Store
