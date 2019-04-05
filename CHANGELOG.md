@@ -1,4 +1,8 @@
 
+ ### v2.3.4 - 2019-04-05 
+ **Changes:** 
+ * Removed unused strings
+ 
  ### v2.3.3 - 2019-04-05 
  **Changes:** 
  * Fixed AMP issues with the header footer builder
