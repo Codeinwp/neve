@@ -91,4 +91,31 @@ trait Core {
 
 		return $merged;
 	}
+
+	/**
+	 * Sanitizite responsive control
+	 *
+	 * @param string $input Input.
+	 * @return string
+	 */
+	public function sanitize_responsive_int_json( $input ) {
+		$inputs   = json_decode( $input, true );
+		$filtered = array(
+			'mobile'  => 0,
+			'tablet'  => 0,
+			'desktop' => 0,
+		);
+
+		if ( ! is_array( $inputs ) || empty( $inputs ) ) {
+			return json_encode( $filtered );
+		}
+
+		foreach ( $inputs as $key => $value ) {
+			if ( isset( $filtered[ $key ] ) && is_numeric( $value ) ) {
+				$filtered[ $key ] = (int) $value;
+			}
+		}
+
+		return json_encode( $filtered );
+	}
 }

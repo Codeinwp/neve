@@ -21,7 +21,7 @@
       },
       'neve_headings_font_family': {
         'linkNodeId': 'neve-google-font-headings-css',
-        'selectors': 'h1,h2,h3,h4,h5,h6'
+        'selectors': 'h1:not(.site-title),h2,h3,h4,h5,h6'
       },
     },
 
@@ -87,13 +87,13 @@
         'styleClass': 'body-line-height-css'
       },
       'neve_headings_line_height': {
-        'selector': 'h1, .single .entry-title,h2,h3,h4,h5,h6',
+        'selector': 'h1:not(.site-title), .single .entry-title,h2,h3,h4,h5,h6',
         'cssProp': 'line-height',
         'unit': ' ',
         'styleClass': 'headings-line-height-css'
       },
       'neve_h1_font_size': {
-        'selector': 'h1, .single .entry-title',
+        'selector': 'h1:not(.site-title), .single .entry-title',
         'cssProp': 'font-size',
         'styleClass': 'h1-font-size-css'
       },
@@ -153,19 +153,19 @@
 
     fontProperties: {
       'neve_headings_font_weight': {
-        'selector': 'h1, .single .entry-title,h2,h3,h4,h5,h6',
+        'selector': 'h1:not(.site-title), .single .entry-title,h2,h3,h4,h5,h6',
         'cssProp': 'font-weight',
         'unit': ' ',
         'styleClass': 'headings-font-weight-css'
       },
       'neve_headings_text_transform': {
-        'selector': 'h1, .single .entry-title,h2,h3,h4,h5,h6',
+        'selector': 'h1:not(.site-title), .single .entry-title,h2,h3,h4,h5,h6',
         'cssProp': 'text-transform',
         'unit': ' ',
         'styleClass': 'headings-text-transform-css'
       },
       'neve_headings_letter_spacing': {
-        'selector': 'h1, .single .entry-title,h2,h3,h4,h5,h6',
+        'selector': 'h1:not(.site-title), .single .entry-title,h2,h3,h4,h5,h6',
         'cssProp': 'letter-spacing',
         'unit': 'px',
         'styleClass': 'headings-letter-spacing-css'
