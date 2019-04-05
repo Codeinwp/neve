@@ -64,17 +64,19 @@ class Button extends Abstract_Component {
 		$wp_customize->add_setting(
 			$prefix . '_text' . '_setting',
 			array(
-				'theme_supports' => 'hfg_support',
-				'default'        => __( 'Button', 'neve' ),
-				'transport'      => 'postMessage',
+				'theme_supports'    => 'hfg_support',
+				'default'           => __( 'Button', 'neve' ),
+				'transport'         => 'postMessage',
+				'sanitize_callback' => 'wp_filter_nohtml_kses',
 			)
 		);
 		$wp_customize->add_setting(
 			$prefix . '_link' . '_setting',
 			array(
-				'theme_supports' => 'hfg_support',
-				'default'        => __( '#', 'neve' ),
-				'transport'      => 'postMessage',
+				'theme_supports'    => 'hfg_support',
+				'default'           => '#',
+				'transport'         => 'postMessage',
+				'sanitize_callback' => 'wp_filter_nohtml_kses',
 			)
 		);
 

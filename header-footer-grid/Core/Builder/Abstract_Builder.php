@@ -247,7 +247,7 @@ abstract class Abstract_Builder implements Builder {
 
 		if ( null === $wp_customize->get_panel( $this->panel ) ) {
 			$this->set_property( 'section', $this->control_id . '_section' );
-			$builder_title = ( isset( $this->title ) && ! empty( $this->title ) ) ? $this->title : __( 'HFG Panel', 'neve' );
+			$builder_title = ( isset( $this->title ) && ! empty( $this->title ) ) ? $this->title : __( 'Header', 'neve' );
 
 			$wp_customize->add_panel(
 				$this->panel,
@@ -272,8 +272,9 @@ abstract class Abstract_Builder implements Builder {
 			$wp_customize->add_setting(
 				$this->control_id,
 				array(
-					'default'   => '',
-					'transport' => 'postMessage',
+					'default'           => '',
+					'transport'         => 'postMessage',
+					'sanitize_callback' => array( $this, 'sanitize_json' ),
 				)
 			);
 
@@ -351,9 +352,10 @@ abstract class Abstract_Builder implements Builder {
 			$wp_customize->add_setting(
 				$this->control_id . '_' . $row_id,
 				array(
-					'transport'      => 'postMessage',
-					'theme_supports' => 'hfg_support',
-					'default'        => '',
+					'transport'         => 'postMessage',
+					'theme_supports'    => 'hfg_support',
+					'default'           => '',
+					'sanitize_callback' => array( $this, 'sanitize_json' ),
 				)
 			);
 
@@ -361,9 +363,10 @@ abstract class Abstract_Builder implements Builder {
 				$wp_customize->add_setting(
 					$this->control_id . '_' . $row_id . '_layout',
 					array(
-						'theme_supports' => 'hfg_support',
-						'transport'      => 'postMessage',
-						'default'        => 'layout-full-contained',
+						'theme_supports'    => 'hfg_support',
+						'transport'         => 'postMessage',
+						'default'           => 'layout-full-contained',
+						'sanitize_callback' => 'wp_filter_nohtml_kses',
 					)
 				);
 				array_push( $partial_settings, $this->control_id . '_' . $row_id . '_layout' );
@@ -374,7 +377,7 @@ abstract class Abstract_Builder implements Builder {
 						'type'    => 'select',
 						'section' => $this->control_id . '_' . $row_id,
 						'choices' => array(
-							'layout-full-contained' => __( 'Full Width - Contained', 'neve' ),
+							'layout-full-contained' => __( 'Full Width', 'neve' ) . ' - ' . __( 'Contained', 'neve' ),
 							'layout-fullwidth'      => __( 'Full Width', 'neve' ),
 							'layout-contained'      => __( 'Contained', 'neve' ),
 						),
@@ -384,9 +387,10 @@ abstract class Abstract_Builder implements Builder {
 				$wp_customize->add_setting(
 					$this->control_id . '_' . $row_id . '_height',
 					array(
-						'theme_supports' => 'hfg_support',
-						'transport'      => 'postMessage',
-						'default'        => '{ "mobile": "0", "tablet": "0", "desktop": "0" }',
+						'theme_supports'    => 'hfg_support',
+						'transport'         => 'postMessage',
+						'default'           => '{ "mobile": "0", "tablet": "0", "desktop": "0" }',
+						'sanitize_callback' => array( $this, 'sanitize_responsive_int_json' ),
 					)
 				);
 				array_push( $partial_settings, $this->control_id . '_' . $row_id . '_height' );
@@ -426,9 +430,10 @@ abstract class Abstract_Builder implements Builder {
 			$wp_customize->add_setting(
 				$this->control_id . '_' . $row_id . '_skin',
 				array(
-					'theme_supports' => 'hfg_support',
-					'transport'      => 'postMessage',
-					'default'        => 'light-mode',
+					'theme_supports'    => 'hfg_support',
+					'transport'         => 'postMessage',
+					'default'           => 'light-mode',
+					'sanitize_callback' => 'wp_filter_nohtml_kses',
 				)
 			);
 			array_push( $partial_settings, $this->control_id . '_' . $row_id . '_skin' );
@@ -443,11 +448,11 @@ abstract class Abstract_Builder implements Builder {
 						'choices'  => array(
 							'light-mode' => array(
 								'url'  => Settings::get_instance()->url . '/assets/images/customizer/text_mode_dark.svg',
-								'name' => __( 'Light Mode', 'neve' ),
+								'name' => '',
 							),
 							'dark-mode'  => array(
 								'url'  => Settings::get_instance()->url . '/assets/images/customizer/text_mode_light.svg',
-								'name' => __( 'Dark Mode', 'neve' ),
+								'name' => '',
 							),
 						),
 					]

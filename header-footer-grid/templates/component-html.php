@@ -13,7 +13,7 @@ namespace HFG;
 use HFG\Core\Builder\Header as HeaderBuilder;
 
 $_id     = current_component( HeaderBuilder::BUILDER_NAME )->get_id();
-$content = get_theme_mod( $_id . '_content', get_theme_mod( 'neve_top_bar_content', is_customize_preview() ? __( 'Your custom HTML text', 'neve' ) : '' ) );
+$content = get_theme_mod( $_id . '_content', get_theme_mod( 'neve_top_bar_content', is_customize_preview() ? __( 'Custom HTML text', 'neve' ) : '' ) );
 
 $content = apply_filters( 'neve_top_bar_content', $content );
 ?>

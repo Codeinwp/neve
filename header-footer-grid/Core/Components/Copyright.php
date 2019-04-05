@@ -63,26 +63,27 @@ class Copyright extends Abstract_Component {
 		$wp_customize->add_setting(
 			$this->id . '_content',
 			array(
-				'default'        => get_theme_mod(
+				'default'           => get_theme_mod(
 					'neve_footer_text',
 					apply_filters(
 						'ti_wl_copyright',
 						sprintf(
 							/* translators: %1$s is Theme Name ( Neve ), %2$s is WordPress */
 							esc_html__( '%1$s | Powered by %2$s', 'neve' ),
-							wp_kses_post( '<a href="https://themeisle.com/themes/neve/" rel="nofollow">Neve</a>' ),
-							wp_kses_post( '<a href="http://wordpress.org" rel="nofollow">WordPress</a>' )
+							wp_kses_post( '<p><a href="https://themeisle.com/themes/neve/" rel="nofollow">Neve</a>' ),
+							wp_kses_post( '<a href="http://wordpress.org" rel="nofollow">WordPress</a></p>' )
 						)
 					)
 				),
-				'theme_supports' => 'hfg_support',
-				'transport'      => 'postMessage',
+				'theme_supports'    => 'hfg_support',
+				'transport'         => 'postMessage',
+				'sanitize_callback' => 'wp_kses_post',
 			)
 		);
 		$wp_customize->add_control(
 			$this->id . '_content',
 			[
-				'label'   => esc_html__( 'Copyright Content', 'neve' ),
+				'label'   => esc_html__( 'Copyright', 'neve' ),
 				'type'    => 'textarea',
 				'section' => $this->section,
 			]

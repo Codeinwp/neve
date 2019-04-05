@@ -24,14 +24,20 @@ if ( is_active_sidebar( $_id ) ) {
 			<div class="textwidget">
 				<?php
 				echo sprintf(
-					/* translators: %s1 - url, %s2 - widget id */
-					__(
-						'<p>Replace this widget content by going to <a href="%1$s"><strong>Appearance &rarr; Customize &rarr; Footer &rarr; %2$s</strong></a> and add widgets into this widget area.</p>',
-						'neve'
-					),
-					esc_url( admin_url( 'customize.php?autofocus[section]=sidebar-widgets-footer-' . $_id ) ),
-					esc_attr( current_component()->get_property( 'label' ) )
-				); // WPCS: XSS OK.
+					/* translators: %s - message */
+					'<p>%s</p>',
+					sprintf(
+						/* translators: %s - customizer link */
+							__( 'Replace this widget content by going to %s and add widgets into this widget area.', 'neve' ),
+						sprintf(
+							/* translators: %1$s - link %2$s - name %3$s - label */
+							'<a href="%1$s"><strong>%2$s  %3$s</strong></a>',
+							esc_url( admin_url( 'customize.php?autofocus[section]=sidebar-widgets-footer-' . $_id ) ),
+							__( 'Appearance &rarr; Customize &rarr; Footer &rarr;', 'neve' ),
+							esc_attr( current_component()->get_property( 'label' ) )
+						)
+					)
+				);  // WPCS: XSS OK.
 				?>
 			</div>
 		</section>

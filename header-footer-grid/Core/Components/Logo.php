@@ -68,9 +68,10 @@ class Logo extends Abstract_Component {
 		$wp_customize->add_setting(
 			$this->id . '_max_width',
 			array(
-				'transport'      => 'postMessage',
-				'theme_supports' => 'hfg_support',
-				'default'        => '{ "mobile": "120", "tablet": "120", "desktop": "120" }',
+				'transport'         => 'postMessage',
+				'theme_supports'    => 'hfg_support',
+				'default'           => '{ "mobile": "120", "tablet": "120", "desktop": "120" }',
+				'sanitize_callback' => array( $this, 'sanitize_responsive_int_json' ),
 			)
 		);
 		array_push( $partial_settings, $this->id . '_max_width' );
@@ -108,9 +109,10 @@ class Logo extends Abstract_Component {
 		$wp_customize->add_setting(
 			$this->id . '_show_title',
 			array(
-				'transport'      => 'postMessage',
-				'theme_supports' => 'hfg_support',
-				'default'        => 1,
+				'transport'         => 'postMessage',
+				'theme_supports'    => 'hfg_support',
+				'default'           => 1,
+				'sanitize_callback' => 'absint',
 			)
 		);
 		array_push( $partial_settings, $this->id . '_show_title' );
@@ -129,9 +131,10 @@ class Logo extends Abstract_Component {
 		$wp_customize->add_setting(
 			$this->id . '_show_tagline',
 			array(
-				'transport'      => 'postMessage',
-				'theme_supports' => 'hfg_support',
-				'default'        => 1,
+				'transport'         => 'postMessage',
+				'theme_supports'    => 'hfg_support',
+				'default'           => 1,
+				'sanitize_callback' => 'absint',
 			)
 		);
 		array_push( $partial_settings, $this->id . '_show_tagline' );

@@ -22,7 +22,7 @@
 	<?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>>
+<body <?php body_class(); ?> <?php echo( apply_filters( 'neve_body_data_attrs', '' ) ); ?>>
 <div class="wrapper">
 	<header class="header" role="banner">
 		<a class="neve-skip-link show-on-focus" href="#content" tabindex="0">

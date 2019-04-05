@@ -57,28 +57,24 @@ class Typography extends Base_Inline {
 		$text_transform = get_theme_mod( 'neve_body_text_transform' );
 		$spacing        = get_theme_mod( 'neve_body_letter_spacing' );
 		$style_setup    = array();
-
 		if ( ! empty( $body_font ) && $body_font !== 'default' ) {
 			$style_setup[] = array(
 				'css_prop' => 'font-family',
-				'value'    => esc_html( $body_font ),
+				'value'    => $body_font,
 			);
 		}
-
 		if ( ! empty( $font_weight ) ) {
 			$style_setup[] = array(
 				'css_prop' => 'font-weight',
 				'value'    => $font_weight,
 			);
 		}
-
 		if ( ! empty( $text_transform ) ) {
 			$style_setup[] = array(
 				'css_prop' => 'text-transform',
 				'value'    => $text_transform,
 			);
 		}
-
 		if ( ! empty( $spacing ) ) {
 			$style_setup[] =
 				array(
@@ -87,7 +83,6 @@ class Typography extends Base_Inline {
 					'suffix'   => 'px',
 				);
 		}
-
 		$this->add_style(
 			$style_setup,
 			apply_filters( 'neve_body_font_family_selectors', 'body' )
@@ -99,7 +94,7 @@ class Typography extends Base_Inline {
 	 */
 	private function add_headings_styles() {
 		$controls = array(
-			'h1' => 'h1, .single .entry-title',
+			'h1' => 'h1:not(.site-title), .single .entry-title',
 			'h2' => 'h2',
 			'h3' => 'h3',
 			'h4' => 'h4',
@@ -146,28 +141,24 @@ class Typography extends Base_Inline {
 		$text_transform = get_theme_mod( 'neve_headings_text_transform' );
 		$spacing        = get_theme_mod( 'neve_headings_letter_spacing' );
 		$style_setup    = array();
-
 		if ( ! empty( $headings_font ) && $headings_font !== 'default' ) {
 			$style_setup[] = array(
 				'css_prop' => 'font-family',
 				'value'    => esc_html( $headings_font ),
 			);
 		}
-
 		if ( ! empty( $font_weight ) ) {
 			$style_setup[] = array(
 				'css_prop' => 'font-weight',
 				'value'    => $font_weight,
 			);
 		}
-
 		if ( ! empty( $text_transform ) ) {
 			$style_setup[] = array(
 				'css_prop' => 'text-transform',
 				'value'    => $text_transform,
 			);
 		}
-
 		if ( ! empty( $spacing ) ) {
 			$style_setup[] = array(
 				'css_prop' => 'letter-spacing',
@@ -175,7 +166,6 @@ class Typography extends Base_Inline {
 				'suffix'   => 'px',
 			);
 		}
-
 		$this->add_style(
 			$style_setup,
 			apply_filters( 'neve_headings_font_family_selectors', 'h1, .single .entry-title, h2, h3, h4, h5, h6' )

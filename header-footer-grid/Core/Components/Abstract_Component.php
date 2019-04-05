@@ -168,9 +168,10 @@ abstract class Abstract_Component implements Component {
 		$wp_customize->add_setting(
 			$this->id . '_component_align',
 			array(
-				'default'        => $this->get_align_default(),
-				'theme_supports' => 'hfg_support',
-				'transport'      => 'postMessage',
+				'default'           => $this->get_align_default(),
+				'theme_supports'    => 'hfg_support',
+				'transport'         => 'postMessage',
+				'sanitize_callback' => 'wp_filter_nohtml_kses',
 			)
 		);
 		array_push( $partial_settings, $this->id . '_component_align' );
@@ -180,7 +181,7 @@ abstract class Abstract_Component implements Component {
 				$this->id . '_component_align',
 				[
 					'label'       => __( 'Component Alignment', 'neve' ),
-					'description' => __( 'Set the alignment for this component inside the active row.', 'neve' ),
+					'description' => '',
 					'settings'    => $this->id . '_component_align',
 					'priority'    => 800,
 					'section'     => $this->section,

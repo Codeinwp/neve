@@ -1,4 +1,23 @@
 
+ ### v2.3.4 - 2019-04-05 
+ **Changes:** 
+ * Removed unused strings
+ 
+ ### v2.3.3 - 2019-04-05 
+ **Changes:** 
+ * Fixed AMP issues with the header footer builder
+* Smaller header spacing on mobile devices
+* Fixed toggle button layout on WooCommerce pages
+ 
+ ### v2.3.2 - 2019-04-05 
+ **Changes:** 
+ * Header footer builder fixed sanitization
+ 
+ ### v2.3.1 - 2019-04-05 
+ **Changes:** 
+ * Fixed missing sanitization functions
+* Fixed Gutenberg integration with the typography options
+ 
  ### v2.3.0 - 2019-04-04 
  **Changes:** 
  * NEW Header/Footer builder

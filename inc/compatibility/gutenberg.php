@@ -257,7 +257,7 @@ class Gutenberg {
 	private function get_strings() {
 		return array(
 			'sidebar'       => __( 'Sidebar', 'neve' ),
-			'menuItemTitle' => __( 'Neve visual integration', 'neve' ),
+			'menuItemTitle' => 'Neve ' . __( 'Visual Integration', 'neve' ),
 		);
 	}
 

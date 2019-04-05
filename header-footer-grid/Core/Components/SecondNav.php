@@ -66,9 +66,10 @@ class SecondNav extends Abstract_Component {
 		$wp_customize->add_setting(
 			$this->id . '_style',
 			array(
-				'default'        => 'style-plain',
-				'theme_supports' => 'hfg_support',
-				'transport'      => 'postMessage',
+				'default'           => 'style-plain',
+				'theme_supports'    => 'hfg_support',
+				'transport'         => 'postMessage',
+				'sanitize_callback' => 'wp_filter_nohtml_kses',
 			)
 		);
 		$wp_customize->add_control(
@@ -81,19 +82,19 @@ class SecondNav extends Abstract_Component {
 					'choices' => array(
 						'style-plain'         => array(
 							'url'  => Settings::get_instance()->url . '/assets/images/customizer/menu_style_1.svg',
-							'name' => __( 'Plain', 'neve' ),
+							'name' => '',
 						),
 						'style-full-height'   => array(
 							'url'  => Settings::get_instance()->url . '/assets/images/customizer/menu_style_2.svg',
-							'name' => __( 'Full Height', 'neve' ),
+							'name' => '',
 						),
 						'style-border-bottom' => array(
 							'url'  => Settings::get_instance()->url . '/assets/images/customizer/menu_style_3.svg',
-							'name' => __( 'Bottom Border', 'neve' ),
+							'name' => '',
 						),
 						'style-border-top'    => array(
 							'url'  => Settings::get_instance()->url . '/assets/images/customizer/menu_style_4.svg',
-							'name' => __( 'Top Border', 'neve' ),
+							'name' => '',
 						),
 					),
 				]
@@ -103,9 +104,10 @@ class SecondNav extends Abstract_Component {
 		$wp_customize->add_setting(
 			$this->id . '_color',
 			array(
-				'theme_supports' => 'hfg_support',
-				'transport'      => 'postMessage',
-				'default'        => '#404248',
+				'theme_supports'    => 'hfg_support',
+				'transport'         => 'postMessage',
+				'default'           => '#404248',
+				'sanitize_callback' => 'sanitize_hex_color',
 			)
 		);
 		$wp_customize->add_control(
@@ -122,9 +124,10 @@ class SecondNav extends Abstract_Component {
 		$wp_customize->add_setting(
 			$this->id . '_hover_color',
 			array(
-				'theme_supports' => 'hfg_support',
-				'transport'      => 'postMessage',
-				'default'        => '#404248',
+				'theme_supports'    => 'hfg_support',
+				'transport'         => 'postMessage',
+				'default'           => '#404248',
+				'sanitize_callback' => 'sanitize_hex_color',
 			)
 		);
 		$wp_customize->add_control(
@@ -141,7 +144,8 @@ class SecondNav extends Abstract_Component {
 		$wp_customize->add_setting(
 			$this->id . '_shortcut',
 			array(
-				'theme_supports' => 'hfg_support',
+				'theme_supports'    => 'hfg_support',
+				'sanitize_callback' => 'esc_atr',
 			)
 		);
 		$wp_customize->add_control(
@@ -151,7 +155,7 @@ class SecondNav extends Abstract_Component {
 				array(
 					'button_class' => 'nv-top-bar-menu-shortcut',
 					'icon_class'   => 'menu',
-					'button_text'  => __( 'Select Secondary Menu', 'neve' ),
+					'button_text'  => __( 'Secondary Menu', 'neve' ),
 					'shortcut'     => true,
 					'section'      => $this->section,
 				)
