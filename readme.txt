@@ -17,6 +17,18 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog == 
+= 2.3.4 - 2019-04-05  = 
+
+* Removed unused strings
+
+
+= 2.3.3 - 2019-04-05  = 
+
+* Fixed AMP issues with the header footer builder
+* Smaller header spacing on mobile devices
+* Fixed toggle button layout on WooCommerce pages
+
+
 = 2.3.2 - 2019-04-05  = 
 
 * Header footer builder fixed sanitization
