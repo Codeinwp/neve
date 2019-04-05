@@ -83,7 +83,7 @@ class Copyright extends Abstract_Component {
 		$wp_customize->add_control(
 			$this->id . '_content',
 			[
-				'label'   => esc_html__( 'Copyright Content', 'neve' ),
+				'label'   => esc_html__( 'Copyright', 'neve' ),
 				'type'    => 'textarea',
 				'section' => $this->section,
 			]

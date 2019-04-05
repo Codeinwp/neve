@@ -156,7 +156,7 @@ class NavFooter extends Abstract_Component {
 				array(
 					'button_class' => 'nv-top-bar-menu-shortcut',
 					'icon_class'   => 'menu',
-					'button_text'  => __( 'Select Footer Menu', 'neve' ),
+					'button_text'  => __( 'Footer Menu', 'neve' ),
 					'shortcut'     => true,
 					'section'      => $this->section,
 				)

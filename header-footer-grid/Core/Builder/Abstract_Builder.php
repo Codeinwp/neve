@@ -247,7 +247,7 @@ abstract class Abstract_Builder implements Builder {
 
 		if ( null === $wp_customize->get_panel( $this->panel ) ) {
 			$this->set_property( 'section', $this->control_id . '_section' );
-			$builder_title = ( isset( $this->title ) && ! empty( $this->title ) ) ? $this->title : __( 'HFG Panel', 'neve' );
+			$builder_title = ( isset( $this->title ) && ! empty( $this->title ) ) ? $this->title : __( 'Header', 'neve' );
 
 			$wp_customize->add_panel(
 				$this->panel,
