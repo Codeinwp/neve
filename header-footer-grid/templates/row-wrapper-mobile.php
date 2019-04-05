@@ -23,7 +23,7 @@ $item_attributes = apply_filters( 'neve_nav_toggle_data_attrs', '' );
 	<div id="header-menu-sidebar-bg" class="header-menu-sidebar-bg">
 		<div class="close-sidebar-panel navbar-toggle-wrapper">
 			<button class="navbar-toggle active" <?php echo wp_kses_post( $item_attributes ); ?>
-					aria-label="<?php _e( 'Navigation Menu', 'neve' ); ?>">
+					aria-label="<?php _e( 'Navigation Menu', 'neve' ); // WPCS: XSS ok. ?>">
 				<div class="bars">
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
