@@ -63,7 +63,7 @@ class Copyright extends Abstract_Component {
 		$wp_customize->add_setting(
 			$this->id . '_content',
 			array(
-				'default'        => get_theme_mod(
+				'default'           => get_theme_mod(
 					'neve_footer_text',
 					apply_filters(
 						'ti_wl_copyright',
@@ -75,8 +75,9 @@ class Copyright extends Abstract_Component {
 						)
 					)
 				),
-				'theme_supports' => 'hfg_support',
-				'transport'      => 'postMessage',
+				'theme_supports'    => 'hfg_support',
+				'transport'         => 'postMessage',
+				'sanitize_callback' => 'wp_filter_nohtml_kses',
 			)
 		);
 		$wp_customize->add_control(

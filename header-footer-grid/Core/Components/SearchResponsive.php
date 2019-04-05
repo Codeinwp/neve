@@ -63,9 +63,10 @@ class SearchResponsive extends Abstract_Component {
 		$wp_customize->add_setting(
 			$this->id . '_placeholder',
 			array(
-				'theme_supports' => 'hfg_support',
-				'default'        => __( 'Search for...', 'neve' ),
-				'transport'      => 'postMessage',
+				'theme_supports'    => 'hfg_support',
+				'default'           => __( 'Search for...', 'neve' ),
+				'transport'         => 'postMessage',
+				'sanitize_callback' => 'wp_filter_nohtml_kses',
 			)
 		);
 
