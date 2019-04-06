@@ -61,7 +61,7 @@ jobs:
         - ". ./bin/prepare-deploy.sh"
       deploy:
         - provider: script
-          script: ". ./bin/deploy.sh"
+          script:  env CHANGES="$CHANGES" &&  ". ./bin/deploy.sh"
           skip_cleanup: true
           on:
             all_branches: true
@@ -74,6 +74,8 @@ jobs:
           overwrite: true
           local-dir: artifact/
           upload-dir: "$AWS_PRODUCTS_FOLDER/$BUILD_NAME/latest-testing"
+          on:
+            all_branches: true
 #        - provider: s3
 #          access_key_id: "$AWS_ACCESS_KEY"
 #          secret_access_key: "$AWS_SECRET_KEY"
