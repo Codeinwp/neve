@@ -74,8 +74,8 @@
 		$style = 'style="display: block;"';
 	}
 	?>
-	<div class="hfg--cp-sidebar" <?php echo  $style; ?> >
-		<h4><?php echo __( 'Sidebar', 'neve' ); ?></h4>
+	<div class="hfg--cp-sidebar" <?php echo  esc_html( $style ); ?> >
+		<h4><?php echo __( 'Sidebar', 'neve' ); // WPCS: XSS ok. ?></h4>
 		<div class="hfg--row-bottom hfg--cb-row" data-id="{{ data.id }}_sidebar">
 			<a class="hfg--cb-row-settings" title="{{ data.rows.sidebar }}" data-id="sidebar" href="#"></a>
 			<div class="hfg--row-inner">
@@ -87,8 +87,8 @@
 			<# } #>
 			<# } #>
 
-	<h4 class="hfg--widgets-info"><?php _e( 'Available components', 'neve' ); ?>
+	<h4 class="hfg--widgets-info"><?php _e( 'Available components', 'neve' ); // WPCS: XSS ok. ?>
 		<i class="dashicons dashicons-info"></i>
-		<span class="tooltip"><?php _e( 'To activate a component, drag it to one of the upper rows.', 'neve' ); ?></span>
+		<span class="tooltip"><?php _e( 'To activate a component, drag it to one of the upper rows.', 'neve' ); // WPCS: XSS ok. ?></span>
 	</h4>
 </script>

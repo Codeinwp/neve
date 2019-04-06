@@ -11,9 +11,9 @@ namespace HFG;
 
 use HFG\Core\Builder\Header as HeaderBuilder;
 
-$id         = current_component( HeaderBuilder::BUILDER_NAME )->get_id();
-$style      = get_theme_mod( $id . '_style', 'style-plain' );
-$hide_arrow = get_theme_mod( $id . '_hide-arrow', false );
+$_id        = current_component( HeaderBuilder::BUILDER_NAME )->get_id();
+$style      = get_theme_mod( $_id . '_style', 'style-plain' );
+$hide_arrow = get_theme_mod( $_id . '_hide-arrow', false );
 
 $container_classes = array( $style );
 if ( $hide_arrow ) {

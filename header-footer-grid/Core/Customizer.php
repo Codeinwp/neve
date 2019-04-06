@@ -252,7 +252,7 @@ class Customizer {
 							<?php do_action( 'hfg_builder_panel_actions_buttons' ); ?>
 							<a class="button button-secondary hfg--panel-close" href="#">
 								<span class="close-text"><i class="dashicons dashicons-arrow-down-alt2"
-															style="margin-top: 4px;"></i> <?php _e( 'Close', 'neve' ); ?></span>
+															style="margin-top: 4px;"></i> <?php _e( 'Close', 'neve' ); // WPCS: XSS OK. ?></span>
 								<span class="panel-name-text"><i class="dashicons dashicons-arrow-up-alt2"
 																style="margin-top: 4px;"></i> {{ data.title }}</span>
 							</a>

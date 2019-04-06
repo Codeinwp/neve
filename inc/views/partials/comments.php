@@ -126,7 +126,7 @@ class Comments extends Base_View {
 											content="<?php echo esc_attr( get_comment_time( 'Y-m-d' ) ); ?>">
 										<?php
 										/* translators: 1: date, 2: time */
-										echo sprintf( esc_html__( '%1$s at %2$s', 'neve' ), get_comment_date(), get_comment_time() );
+										echo sprintf( esc_html__( '%1$s at %2$s', 'neve' ), esc_html( get_comment_date() ), esc_html( get_comment_time() ) );
 										?>
 									</time>
 								</a>

@@ -15,7 +15,11 @@ bin
 tests
 phpunit.xml
 npm-debug.log
+package-lock.json
+webpack.config.js
 dist
+.nvmrc
+.editorconfig
 artifact
 composer.json
 composer.lock

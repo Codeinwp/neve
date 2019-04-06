@@ -13,7 +13,7 @@ namespace HFG;
 use HFG\Core\Builder\Footer as FooterBuilder;
 neve_before_footer_trigger();
 ?>
-<footer class="site-footer <?php echo get_builders( FooterBuilder::BUILDER_NAME )->get_property( 'panel' ); ?> " id="site-footer">
+<footer class="site-footer <?php echo esc_attr( get_builders( FooterBuilder::BUILDER_NAME )->get_property( 'panel' ) ); ?> " id="site-footer">
 	<?php
 	render_builder( FooterBuilder::BUILDER_NAME );
 	?>

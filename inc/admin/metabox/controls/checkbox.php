@@ -41,6 +41,6 @@ class Checkbox extends Control_Base {
 		$markup .= '</div>';
 		$markup .= '</p>';
 
-		echo $markup;
+		echo $markup; // WPCS: XSS ok.
 	}
 }

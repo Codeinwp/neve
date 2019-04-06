@@ -8,7 +8,7 @@
 <article id="<?php echo esc_attr( $args['post_id'] ); ?>" class="<?php echo esc_attr( $args['post_class'] ); ?>">
 	<div class="article-content-col">
 		<div class="content">
-			<?php echo $args['content']; ?>
+			<?php echo wp_kses_post( $args['content'] ); ?>
 		</div>
 	</div>
 </article>

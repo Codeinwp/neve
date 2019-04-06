@@ -1,28 +1,28 @@
-# Copyright (C) 2019 ThemeIsle
-# This file is distributed under the GNU General Public License v2 or later.
+# <!=Copyright (C) 2019 ThemeIsle
+# This file is distributed under the GNU General Public License v2 or later.=!>
 msgid ""
 msgstr ""
-"Project-Id-Version: Neve 2.3.3\n"
+"Project-Id-Version: Neve 2.3.4\n"
 "Report-Msgid-Bugs-To: https://github.com/Codeinwp/neve/issues\n"
-"POT-Creation-Date: 2019-04-05 16:14:19+00:00\n"
+"POT-Creation-Date: 2019-04-06 13:14:56+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "PO-Revision-Date: 2019-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Themeisle Translate Team <friends@themeisle.com>\n"
 "Language-Team: Themeisle Translate <friends@themeisle.com>\n"
-"X-Generator: grunt-wp-i18n 0.5.4\n"
-"X-Poedit-KeywordsList: "
-"__;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_"
-"attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
 "Language: en\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-Country: United States\n"
 "X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_"
+"attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
 "X-Poedit-Basepath: ../\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-Bookmarks: \n"
 "X-Textdomain-Support: yes\n"
+"X-Generator: grunt-wp-i18n 1.0.3\n"
 
 #: functions.php:44
 #. translators: %s message to upgrade PHP to the latest version
@@ -40,12 +40,11 @@ msgstr ""
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:250
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:266
 #: header-footer-grid/Core/Builder/Header.php:36
-#: inc/customizer/options/main.php:57
 msgid "Header"
 msgstr ""
 
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:376
-#: inc/customizer/options/layout_blog.php:65 inc/customizer/options/main.php:53
+#: inc/customizer/options/layout_blog.php:65 inc/customizer/options/main.php:52
 #: inc/customizer/options/top_bar.php:90
 msgid "Layout"
 msgstr ""
@@ -76,7 +75,6 @@ msgid "Skin Mode"
 msgstr ""
 
 #: header-footer-grid/Core/Builder/Footer.php:35
-#: inc/customizer/options/layout_footer.php:48
 msgid "Footer"
 msgstr ""
 
@@ -92,7 +90,6 @@ msgstr ""
 
 #: header-footer-grid/Core/Components/Button.php:86
 #: header-footer-grid/Core/Components/MenuIcon.php:80
-#: inc/customizer/options/layout_footer.php:140
 msgid "Text"
 msgstr ""
 
@@ -111,9 +108,6 @@ msgstr ""
 
 #: header-footer-grid/Core/Components/Copyright.php:72
 #: header-footer-grid/templates/component-copyright.php:25
-#: inc/customizer/options/layout_footer.php:178 inc/views/footer.php:71
-#. translators: %1$s is Theme Name ( Neve ), %2$s is WordPress
-#. translators: %1$s is Theme Name (Neve), %2$s is WordPress
 #. translators: %1$s is Theme Name ( Neve ), %2$s is WordPress
 msgid "%1$s | Powered by %2$s"
 msgstr ""
@@ -123,7 +117,6 @@ msgid "HTML"
 msgstr ""
 
 #: header-footer-grid/Core/Components/CustomHtml.php:75
-#: header-footer-grid/templates/component-html.php:16
 msgid "Custom HTML"
 msgstr ""
 
@@ -178,7 +171,6 @@ msgstr ""
 #: header-footer-grid/Core/Components/Nav.php:36
 #: header-footer-grid/Core/Components/Nav.php:215
 #: header-footer-grid/templates/component-nav.php:28 inc/core/front_end.php:71
-#: inc/views/header.php:206
 msgid "Primary Menu"
 msgstr ""
 
@@ -199,7 +191,6 @@ msgid "Active Item Color"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Nav.php:179
-#: inc/customizer/options/layout_footer.php:139
 #: inc/customizer/options/typography.php:132
 #: inc/customizer/options/typography.php:456
 msgid "None"
@@ -211,7 +202,7 @@ msgstr ""
 
 #: header-footer-grid/Core/Components/Nav.php:184
 #: header-footer-grid/templates/component-cart-icon.php:19
-#: inc/compatibility/woocommerce.php:424 inc/views/header.php:122
+#: inc/compatibility/woocommerce.php:424 inc/views/header.php:137
 msgid "Cart"
 msgstr ""
 
@@ -260,7 +251,7 @@ msgstr ""
 
 #: header-footer-grid/Core/Customizer.php:255
 #: header-footer-grid/templates/component-search-responsive.php:31
-#: inc/views/header.php:89 inc/views/layouts/layout_sidebar.php:141
+#: inc/views/header.php:104 inc/views/layouts/layout_sidebar.php:141
 msgid "Close"
 msgstr ""
 
@@ -276,18 +267,22 @@ msgstr ""
 msgid "Appearance &rarr; Customize &rarr; Footer &rarr;"
 msgstr ""
 
+#: header-footer-grid/templates/component-html.php:16
+msgid "Custom HTML text"
+msgstr ""
+
 #: header-footer-grid/templates/component-menu-icon.php:21
-#: header-footer-grid/templates/row-wrapper-mobile.php:26 views/navbar.php:22
+#: header-footer-grid/templates/row-wrapper-mobile.php:26
 msgid "Navigation Menu"
 msgstr ""
 
 #: header-footer-grid/templates/component-menu-icon.php:27
-#: header-footer-grid/templates/row-wrapper-mobile.php:32 views/navbar.php:26
+#: header-footer-grid/templates/row-wrapper-mobile.php:32
 msgid "Toggle Navigation"
 msgstr ""
 
 #: header-footer-grid/templates/rows.php:78 inc/admin/metabox/main.php:143
-#: inc/compatibility/gutenberg.php:261 inc/core/front_end.php:573
+#: inc/compatibility/gutenberg.php:259 inc/core/front_end.php:573
 msgid "Sidebar"
 msgstr ""
 
@@ -377,7 +372,7 @@ msgstr ""
 msgid "Activating "
 msgstr ""
 
-#: inc/compatibility/gutenberg.php:262
+#: inc/compatibility/gutenberg.php:260
 msgid "Visual Integration"
 msgstr ""
 
@@ -767,32 +762,6 @@ msgstr ""
 msgid "Single Product Container Style"
 msgstr ""
 
-#: inc/customizer/options/layout_footer.php:71
-#: inc/customizer/options/layout_single_post.php:69
-#: inc/customizer/options/top_bar.php:123
-msgid "Content"
-msgstr ""
-
-#: inc/customizer/options/layout_footer.php:74
-msgid "Widgets"
-msgstr ""
-
-#: inc/customizer/options/layout_footer.php:107
-msgid "Widget Columns"
-msgstr ""
-
-#: inc/customizer/options/layout_footer.php:137
-msgid "Content Type"
-msgstr ""
-
-#: inc/customizer/options/layout_footer.php:141
-msgid "Footer  Menu"
-msgstr ""
-
-#: inc/customizer/options/layout_footer.php:187
-msgid "Section Content"
-msgstr ""
-
 #: inc/customizer/options/layout_sidebar.php:62
 msgid "Sitewide Sidebar Layout"
 msgstr ""
@@ -830,6 +799,11 @@ msgstr ""
 msgid "Content Width (%)"
 msgstr ""
 
+#: inc/customizer/options/layout_single_post.php:69
+#: inc/customizer/options/top_bar.php:123
+msgid "Content"
+msgstr ""
+
 #: inc/customizer/options/layout_single_post.php:70
 #: inc/views/partials/post_meta.php:142
 msgid "Tags"
@@ -843,7 +817,7 @@ msgstr ""
 msgid "Elements Order"
 msgstr ""
 
-#: inc/customizer/options/main.php:61
+#: inc/customizer/options/main.php:56
 msgid "Typography"
 msgstr ""
 

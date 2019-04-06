@@ -45,18 +45,18 @@ class Range extends Control_Base {
 		id="' . esc_attr( $this->id ) . '-range' . '"
 		class="nv-range" 
 		name="' . esc_attr( $this->id ) . '" 
-		min="' . $this->settings['min'] . '" 
-		max="' . $this->settings['max'] . '" >';
+		min="' . esc_attr( $this->settings['min'] ) . '" 
+		max="' . esc_attr( $this->settings['max'] ) . '" >';
 		$markup .= '<input type="number" 
 		value="' . esc_attr( $value ) . '" 
 		id="' . esc_attr( $this->id ) . '" 
 		class="nv-number" 
 		name="' . esc_attr( $this->id ) . '" 
-		min="' . $this->settings['min'] . '" 
-		max="' . $this->settings['max'] . '" >';
+		min="' . esc_attr( $this->settings['min'] ) . '" 
+		max="' . esc_attr( $this->settings['max'] ) . '" >';
 		$markup .= '</p>';
 
-		echo $markup;
+		echo $markup; // WPCS: XSS OK.
 	}
 
 

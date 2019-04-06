@@ -71,9 +71,11 @@ class Ordering extends \WP_Customize_Control {
 	 * Render content of control.
 	 */
 	public function render_content() {
-		echo $this->render_control_label();
-		echo $this->render_sortable_list();
-		echo $this->render_collector_input();
+		echo wp_kses_post(
+			$this->render_control_label() .
+			$this->render_sortable_list() .
+			$this->render_collector_input()
+		);
 	}
 
 	/**

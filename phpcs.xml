@@ -6,29 +6,28 @@
 
     <exclude-pattern>node_modules/*</exclude-pattern>
     <exclude-pattern>vendor/*</exclude-pattern>
+    <exclude-pattern>tests/*</exclude-pattern>
     <exclude-pattern>*.min.js</exclude-pattern>
     <exclude-pattern>*.min.css</exclude-pattern>
     <exclude-pattern>*.js</exclude-pattern>
     <exclude-pattern>*.css</exclude-pattern>
-
-
-    <!--<rule ref="WPThemeReview">-->
-        <!--<exclude name="PHPCompatibility.Keywords.NewKeywords.t_namespaceFound"/>-->
-        <!--<exclude name="PHPCompatibility.Keywords.NewKeywords.t_useFound"/>-->
-        <!--<exclude name="PHPCompatibility.LanguageConstructs.NewLanguageConstructs.t_ns_separatorFound"/>-->
-    <!--</rule>-->
+    <arg name="extensions" value="php"/>
+    <arg value="sp"/>
+    <rule ref="WPThemeReview">
+        <exclude name="WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound"/>
+    </rule>
 
     <rule ref="WordPress-Core">
-        <exclude name="Squiz.Commenting.FileComment.SpacingAfterComment" />
-        <exclude name="Squiz.Commenting.FunctionComment.MissingParamTag" />
-        <exclude name="Squiz.Commenting.InlineComment.InvalidEndChar" />
-        <exclude name="Squiz.Commenting.InlineComment.NotCapital" />
-        <exclude name="Squiz.PHP.CommentedOutCode.Found" />
-        <exclude name="Squiz.PHP.Eval.Discouraged" />
-        <exclude name="Generic.PHP.DisallowShortOpenTag" />
-        <exclude name="WordPress.PHP.YodaConditions.NotYoda" />
-        <exclude name="WordPress.Files.FileName.InvalidClassFileName" />
-        <exclude name="WordPress.Files.FileName.NotHyphenatedLowercase" />
+        <exclude name="Squiz.Commenting.FileComment.SpacingAfterComment"/>
+        <exclude name="Squiz.Commenting.FunctionComment.MissingParamTag"/>
+        <exclude name="Squiz.Commenting.InlineComment.InvalidEndChar"/>
+        <exclude name="Squiz.Commenting.InlineComment.NotCapital"/>
+        <exclude name="Squiz.PHP.CommentedOutCode.Found"/>
+        <exclude name="Squiz.PHP.Eval.Discouraged"/>
+        <exclude name="Generic.PHP.DisallowShortOpenTag"/>
+        <exclude name="WordPress.PHP.YodaConditions.NotYoda"/>
+        <exclude name="WordPress.Files.FileName.InvalidClassFileName"/>
+        <exclude name="WordPress.Files.FileName.NotHyphenatedLowercase"/>
     </rule>
 
     <rule ref="WordPress-Docs">

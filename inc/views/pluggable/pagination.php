@@ -118,13 +118,15 @@ class Pagination extends Base_View {
 	 * Infinite scroll ajax callback function.
 	 */
 	public function infinite_scroll() {
-		$nonce = $_POST['nonce'];
-		if ( ! wp_verify_nonce( $nonce, 'neve-theme-nonce' ) ) {
+		if (
+			! isset( $_POST['nonce'] )
+			|| ! wp_verify_nonce( sanitize_key( $_POST['nonce'] ), 'neve-theme-nonce' )
+		) {
 			return;
 		}
 
-		$page           = $_POST['page'];
-		$counter        = $_POST['counter'];
+		$page           = ! isset( $_POST['page'] ) ? 0 : (int) $_POST['page'];
+		$counter        = ! isset( $_POST['counter'] ) ? 0 : (int) $_POST['counter'];
 		$posts_per_page = get_option( 'posts_per_page' );
 
 		$args = array(

@@ -224,7 +224,7 @@ abstract class Abstract_Component implements Component {
 
 		if ( is_customize_preview() ) {
 			$style = $this->css_array_to_css( $this->add_style() );
-			echo '<style type="text/css">' . $style . '</style>';
+			echo '<style type="text/css">' . $style . '</style>';  // WPCS: XSS OK.
 		}
 
 		Main::get_instance()->load( 'component-wrapper' );

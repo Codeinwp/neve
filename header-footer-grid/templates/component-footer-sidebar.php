@@ -10,12 +10,12 @@
 
 namespace HFG;
 
-$id = current_component()->get_id();
+$_id = current_component()->get_id();
 
-if ( is_active_sidebar( $id ) ) {
+if ( is_active_sidebar( $_id ) ) {
 	?>
 	<div class="widget-area">
-		<?php dynamic_sidebar( $id ); ?>
+		<?php dynamic_sidebar( $_id ); ?>
 	</div>
 <?php } elseif ( current_user_can( 'edit_theme_options' ) ) { ?>
 	<div class="widget-area">
@@ -32,12 +32,12 @@ if ( is_active_sidebar( $id ) ) {
 						sprintf(
 							/* translators: %1$s - link %2$s - name %3$s - label */
 							'<a href="%1$s"><strong>%2$s  %3$s</strong></a>',
-							esc_url( admin_url( 'customize.php?autofocus[section]=sidebar-widgets-footer-' . $id ) ),
+							esc_url( admin_url( 'customize.php?autofocus[section]=sidebar-widgets-footer-' . $_id ) ),
 							__( 'Appearance &rarr; Customize &rarr; Footer &rarr;', 'neve' ),
-							current_component()->get_property( 'label' )
+							esc_attr( current_component()->get_property( 'label' ) )
 						)
 					)
-				);
+				);  // WPCS: XSS OK.
 				?>
 			</div>
 		</section>

@@ -10,13 +10,13 @@
 
 namespace HFG;
 
-$id = current_component()->get_id();
+$_id = current_component()->get_id();
 
 $item_classes   = array();
 $item_classes[] = 'item--inner';
-$item_classes[] = 'builder-item--' . $id;
+$item_classes[] = 'builder-item--' . $_id;
 
-if ( strpos( $id, '-menu' ) ) {
+if ( strpos( $_id, '-menu' ) ) {
 	$item_classes[] = 'has_menu';
 }
 if ( is_customize_preview() ) {
