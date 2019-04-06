@@ -34,10 +34,9 @@ travis:
 deploy:
 - 'addtextdomain:composerDeps'
 - 'clean:wporg'
-- 'cachebuster'
+- 'cachebuster:full'
 - 'mkdir:dist'
 - 'mkdir:artifact'
-- 'copy:pro'
 - 'copy:full'
 - 'compress:full'
 #  - 'deploy_lite'

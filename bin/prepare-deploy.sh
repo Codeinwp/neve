@@ -50,5 +50,5 @@ fi
 grunt wp_readme_to_markdown
 
 if [ ! -d "dist" ]; then
-	grunt deploy
+	npm run-script deploy
 fi
