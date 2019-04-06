@@ -61,7 +61,7 @@ jobs:
         - ". ./bin/prepare-deploy.sh"
       deploy:
         - provider: script
-          script: ./bin/deploy.sh
+          script: env BUILD_VERSION="$BUILD_VERSION" && ./bin/deploy.sh
           skip_cleanup: true
           on:
             all_branches: true
