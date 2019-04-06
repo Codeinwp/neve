@@ -13,7 +13,8 @@ CHANGELOG="\n ### v$BUILD_VERSION - $(date +'%Y-%m-%d') \n **Changes:** \n";
 # Remove first line from the commit as is it used as commit title.
 NORMALIZED_MESSAGE=$(sed "1d"  <<< "$TRAVIS_COMMIT_MESSAGE");
 
-export CHANGES="";
+export CHANGES
+CHANGES="";
 while read -r line; do
    if ! [ -z "$line" ]; then
        line="${line//[$'\r\n']}";
