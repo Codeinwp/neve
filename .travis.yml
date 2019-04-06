@@ -1,7 +1,7 @@
 language: php
 dist: trusty
 env:
-  - WP_VERSION=latest UPSTREAM_REPO=Codeinwp/neve MASTER_BRANCH=feat/build_stages
+  - WP_VERSION=latest UPSTREAM_REPO=Codeinwp/neve MASTER_BRANCH=master
 cache:
   directories:
     - $HOME/.composer/cache
@@ -73,18 +73,20 @@ jobs:
           acl: public_read
           overwrite: true
           local-dir: artifact/
-          upload-dir: "$AWS_PRODUCTS_FOLDER/$BUILD_NAME/latest-testing"
+          upload-dir: "$AWS_PRODUCTS_FOLDER/$BUILD_NAME/latest"
           on:
             all_branches: true
-#        - provider: s3
-#          access_key_id: "$AWS_ACCESS_KEY"
-#          secret_access_key: "$AWS_SECRET_KEY"
-#          bucket: "$AWS_BUCKET"
-#          skip_cleanup: true
-#          acl: public_read
-#          overwrite: true
-#          local-dir: artifact/
-#          upload-dir: "$AWS_PRODUCTS_FOLDER/$BUILD_NAME/$BUILD_VERSION"
+        - provider: s3
+          access_key_id: "$AWS_ACCESS_KEY"
+          secret_access_key: "$AWS_SECRET_KEY"
+          bucket: "$AWS_BUCKET"
+          skip_cleanup: true
+          acl: public_read
+          overwrite: true
+          local-dir: artifact/
+          upload-dir: "$AWS_PRODUCTS_FOLDER/$BUILD_NAME/$BUILD_VERSION"
+          on:
+            all_branches: true
 stages:
   - name: deploy
     if: branch = env(MASTER_BRANCH) and type != "pull_request" and repo = env(UPSTREAM_REPO)
