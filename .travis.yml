@@ -17,6 +17,7 @@ jobs:
       script:
         - travis_retry npm install
         - travis_retry composer install
+        - npm ls
         - grunt travis
     - php: 5.2
       name: "Unit tests for PHP 5.2"
