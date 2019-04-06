@@ -49,7 +49,10 @@ if [ -f "themeisle.enc" ]; then
     DEMO_THEMEISLE_PATH="$DEMO_ROOT/wp-content/themes/$BUILD_NAME";
 
     openssl aes-256-cbc -K $encrypted_c0a6f152ac27_key -iv $encrypted_c0a6f152ac27_iv -in themeisle.enc -out /tmp/key -d
-    echo -e "key decripted"
+
+    if [ -f "/tmp/key" ]; then
+       echo -e "key decripted"
+    fi
 #
 #    # Adding the ssh key to the agent.
 #    eval "$(ssh-agent -s)"
