@@ -55,6 +55,7 @@
   "scripts": {
     "phpcbf": "composer run-script format || true ",
     "phpcs": "composer run-script phpcs",
+    "test": "grunt travis",
     "jshint": "grunt jshint",
     "buildCssJs": "grunt buildScripts",
     "addNewStyles": "git add *.css assets/**/*.css",
