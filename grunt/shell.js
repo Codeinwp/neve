@@ -6,6 +6,6 @@ module.exports = {
 		command: 'composer run-script phpcs'
 	},
 	phpcbf: {
-		command: 'composer run-script phpcs',
+		command: 'composer run-script format',
 	}
 };
