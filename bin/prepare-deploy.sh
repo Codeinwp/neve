@@ -46,9 +46,6 @@ if [ -n "$CHANGES" ]; then
 	echo -e "$CHANGELOG $(cat CHANGELOG.md)" > CHANGELOG.md
 fi
 
-
-grunt wp_readme_to_markdown
-
 if [ ! -d "dist" ]; then
 	npm run-script deploy
 fi
