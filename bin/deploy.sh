@@ -3,7 +3,6 @@ if [ ! -d "dist" ]; then
 	exit 1;
 fi
 
-
 git config user.name "selul"
 git config user.email "$GITHUB_EMAIL"
 git fetch

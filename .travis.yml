@@ -65,15 +65,15 @@ jobs:
           skip_cleanup: true
           on:
             all_branches: true
-#        - provider: s3
-#          access_key_id: "$AWS_ACCESS_KEY"
-#          secret_access_key: "$AWS_SECRET_KEY"
-#          bucket: "$AWS_BUCKET"
-#          skip_cleanup: true
-#          acl: public_read
-#          overwrite: true
-#          local-dir: artifact/
-#          upload-dir: "$AWS_PRODUCTS_FOLDER/$BUILD_NAME/latest"
+        - provider: s3
+          access_key_id: "$AWS_ACCESS_KEY"
+          secret_access_key: "$AWS_SECRET_KEY"
+          bucket: "$AWS_BUCKET"
+          skip_cleanup: true
+          acl: public_read
+          overwrite: true
+          local-dir: artifact/
+          upload-dir: "$AWS_PRODUCTS_FOLDER/$BUILD_NAME/latest-testing"
 #        - provider: s3
 #          access_key_id: "$AWS_ACCESS_KEY"
 #          secret_access_key: "$AWS_SECRET_KEY"
