@@ -7,7 +7,7 @@ git config user.name "selul"
 git config user.email "$GITHUB_EMAIL"
 git fetch
 
-echo -e " Changes for $BULD_VERSION: ";
+echo -e " Changes for $BUILD_VERSION: ";
 
 echo - e "$CHANGES";
 
