@@ -59,7 +59,7 @@ function neve_php_support() {
 	printf( '<div class="error"><p>%1$s</p></div>', neve_get_php_notice_text() ); // WPCS: XSS OK.
 }
 
-if ( version_compare( PHP_VERSION, '5.3.29' ) < 0 ) {
+if ( version_compare( PHP_VERSION, '5.3.29' ) <= 0 ) {
 	/**
 	 * Add notice for PHP upgrade.
 	 */
