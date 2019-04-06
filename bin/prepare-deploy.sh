@@ -49,3 +49,5 @@ fi
 if [ ! -d "dist" ]; then
 	npm run-script deploy
 fi
+
+echo "Deployment ready for v$BUILD_VERSION"
