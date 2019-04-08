@@ -539,6 +539,10 @@
 .ui-buttonset .ui-helper-hidden-accessible{
 	position:relative;
 }
+
+.customize-control-radio-image input[type=radio]{
+	display: none;
+}
 .range-slider {
 	display: -ms-flexbox;
 	display: -webkit-box;
