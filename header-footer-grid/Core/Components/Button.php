@@ -74,7 +74,7 @@ class Button extends Abstract_Component {
 			$prefix . '_link' . '_setting',
 			array(
 				'theme_supports'    => 'hfg_support',
-				'default'           => __( '#', 'neve' ),
+				'default'           => '#',
 				'transport'         => 'postMessage',
 				'sanitize_callback' => 'wp_filter_nohtml_kses',
 			)

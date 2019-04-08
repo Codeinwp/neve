@@ -82,19 +82,19 @@ class NavFooter extends Abstract_Component {
 					'choices' => array(
 						'style-plain'         => array(
 							'url'  => Settings::get_instance()->url . '/assets/images/customizer/menu_style_1.svg',
-							'name' => __( 'Plain', 'neve' ),
+							'name' => '',
 						),
 						'style-full-height'   => array(
 							'url'  => Settings::get_instance()->url . '/assets/images/customizer/menu_style_2.svg',
-							'name' => __( 'Full Height', 'neve' ),
+							'name' => '',
 						),
 						'style-border-bottom' => array(
 							'url'  => Settings::get_instance()->url . '/assets/images/customizer/menu_style_3.svg',
-							'name' => __( 'Bottom Border', 'neve' ),
+							'name' => '',
 						),
 						'style-border-top'    => array(
 							'url'  => Settings::get_instance()->url . '/assets/images/customizer/menu_style_4.svg',
-							'name' => __( 'Top Border', 'neve' ),
+							'name' => '',
 						),
 					),
 				]
@@ -156,7 +156,7 @@ class NavFooter extends Abstract_Component {
 				array(
 					'button_class' => 'nv-top-bar-menu-shortcut',
 					'icon_class'   => 'menu',
-					'button_text'  => __( 'Select Footer Menu', 'neve' ),
+					'button_text'  => __( 'Footer Menu', 'neve' ),
 					'shortcut'     => true,
 					'section'      => $this->section,
 				)
