@@ -125,7 +125,11 @@ const handleMetaboxChanges = function () {
   let editor = document.querySelector('.editor-styles-wrapper');
 
   // Title toggle.
-  document.querySelector('#neve-page-settings  #neve_meta_disable_title').addEventListener('change', function () {
+  let title = document.querySelector('#neve-page-settings  #neve_meta_disable_title');
+  if ( title === null ){
+    return;
+  }
+  title.addEventListener('change', function () {
     let title = editor.querySelector('.editor-post-title');
     if (title.style.display === 'none') {
       title.style.display = 'block';
