@@ -64,7 +64,6 @@ class Amp {
 		return $input;
 	}
 
-
 	/**
 	 * Add amp states to the dom.
 	 */

@@ -71,5 +71,9 @@
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
+  },
+  "dependencies": {
+    "bricks.js": "^1.8.0",
+    "in-view": "^0.6.1"
   }
 }
