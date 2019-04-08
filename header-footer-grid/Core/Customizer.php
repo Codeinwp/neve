@@ -12,10 +12,9 @@
 
 namespace HFG\Core;
 
-use HFG\Config\Customizer\Style;
-use HFG\Config\Customizer\Typography;
 use HFG\Core\Builder\Abstract_Builder;
 use HFG\Core\Interfaces\Builder;
+use HFG\Main;
 use HFG\Traits\Core;
 use WP_Customize_Manager;
 
@@ -119,7 +118,13 @@ class Customizer {
 	 */
 	public function scripts() {
 		$suffix = $this->get_assets_suffix();
-		wp_enqueue_style( 'hfg-customizer-control', esc_url( $this->settings->url ) . '/assets/css/admin/customizer/customizer' . $suffix . '.css' );
+		wp_enqueue_style(
+			'hfg-customizer-control',
+			esc_url( $this->settings->url ) . '/assets/css/admin/customizer/customizer' . $suffix . '.css',
+			array(),
+			Main::VERSION 
+		);
+
 		wp_register_script(
 			'hfg-layout-builder',
 			esc_url( $this->settings->url ) . '/assets/js/customizer/builder' . $suffix . '.js',
@@ -129,7 +134,7 @@ class Customizer {
 				'jquery-ui-droppable',
 				'jquery-ui-draggable',
 			),
-			false,
+			Main::VERSION,
 			true
 		);
 		wp_localize_script(
@@ -208,7 +213,7 @@ class Customizer {
 					'customize-preview',
 					'customize-selective-refresh',
 				),
-				'20151215',
+				Main::VERSION,
 				true
 			);
 		}
