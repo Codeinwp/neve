@@ -41,7 +41,10 @@ class Main {
 	 * @var Settings $settings
 	 */
 	private $settings;
-
+	/**
+	 * Define version constant used for assets.
+	 */
+	const VERSION = '1.0.3';
 	/**
 	 * Holds a reference to Customizer class
 	 *
@@ -127,7 +130,7 @@ class Main {
 	 */
 	public function enqueue_scripts() {
 		$suffix = $this->get_assets_suffix();
-		wp_enqueue_style( 'hfg-style', esc_url( $this->settings->url ) . '/assets/css/style' . $suffix . '.css' );
+		wp_enqueue_style( 'hfg-style', esc_url( $this->settings->url ) . '/assets/css/style' . $suffix . '.css', array(), Main::VERSION );
 
 		wp_enqueue_script(
 			'hfg-theme-functions',
@@ -135,7 +138,7 @@ class Main {
 			array(
 				'jquery',
 			),
-			false,
+			Main::VERSION,
 			true
 		);
 	}
