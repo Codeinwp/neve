@@ -1,0 +1,154 @@
+{
+  "content_file": "https://demo.themeisle.com/neve-shop/wp-content/uploads/sites/188/ti-demo-data/export.xml",
+  "theme_mods": {
+    "ti_prev_theme": "twentyseventeen",
+    "custom_css_post_id": "14",
+    "neve_body_font_family": "Open Sans",
+    "neve_body_font_size": "{\"suffix\":{\"mobile\":\"px\",\"tablet\":\"px\",\"desktop\":\"px\"},\"mobile\":15,\"tablet\":16,\"desktop\":14}",
+    "neve_headings_font_family": "Roboto Condensed",
+    "background_color": "ffffff",
+    "neve_link_color": "#000000",
+    "neve_menu_item_color": "#ffffff",
+    "neve_menu_item_hover_color": "#ffffff",
+    "neve_h3_line_height": "{\"mobile\":1.6,\"tablet\":1.6,\"desktop\":1.6}",
+    "neve_footer_text": "<a href=\"https://themeisle.com/themes/neve/\" rel=\"nofollow\">Neve</a> powered by <a href=\"http://wordpress.org\" rel=\"nofollow\">WordPress</a>",
+    "neve_footer_widget_columns": "4",
+    "neve_link_hover_color": "#aaaaaa",
+    "neve_blog_archive_layout": "grid",
+    "neve_button_color": "#404248",
+    "neve_body_font_weight": "400",
+    "neve_h1_font_size": "{\"suffix\":{\"mobile\":\"em\",\"tablet\":\"em\",\"desktop\":\"em\"},\"mobile\":1.5,\"tablet\":1.5,\"desktop\":2}",
+    "neve_h2_font_size": "{\"suffix\":{\"mobile\":\"em\",\"tablet\":\"em\",\"desktop\":\"px\"},\"mobile\":1.3,\"tablet\":1.3,\"desktop\":22}",
+    "neve_h3_font_size": "{\"suffix\":{\"mobile\":\"em\",\"tablet\":\"em\",\"desktop\":\"em\"},\"mobile\":1.1,\"tablet\":1.1,\"desktop\":1.5}",
+    "neve_h4_font_size": "{\"suffix\":{\"mobile\":\"em\",\"tablet\":\"em\",\"desktop\":\"em\"},\"mobile\":1,\"tablet\":1,\"desktop\":1.25}",
+    "neve_h5_font_size": "{\"suffix\":{\"mobile\":\"em\",\"tablet\":\"em\",\"desktop\":\"em\"},\"mobile\":0.75,\"tablet\":0.75,\"desktop\":1}",
+    "neve_h6_font_size": "{\"suffix\":{\"mobile\":\"em\",\"tablet\":\"em\",\"desktop\":\"em\"},\"mobile\":0.75,\"tablet\":0.75,\"desktop\":1}",
+    "neve_headings_letter_spacing": "0",
+    "neve_headings_font_weight": "400",
+    "hfg_header_layout_main_skin": "dark-mode",
+    "neve_headings_text_transform": "uppercase",
+    "footer_copyright_content": "<p><a href=\"https://themeisle.com/themes/neve/\" rel=\"nofollow\">Neve</a> powered by <a href=\"http://wordpress.org\" rel=\"nofollow\">WordPress</a></p> ",
+    "hfg_footer_layout_top_skin": "dark-mode",
+    "neve_text_color": "#404248",
+    "primary-menu_color": "#ffffff",
+    "primary-menu_hover_color": "#ffffff",
+    "primary-menu_active_color": "#ffffff",
+    "neve_advanced_layout_options": "1",
+    "neve_single_product_sidebar_layout": "full-width",
+    "neve_single_product_content_width": "100",
+    "neve_shop_archive_sidebar_layout": "left",
+    "neve_other_pages_sidebar_layout": "full-width",
+    "neve_other_pages_content_width": "100",
+    "__ti_import_menus_location": {
+      "primary": "main"
+    }
+  },
+  "widgets": {
+    "blog-sidebar": {
+      "search-2": {
+        "title": ""
+      },
+      "recent-posts-2": {
+        "title": "",
+        "number": 5
+      },
+      "recent-comments-2": {
+        "title": "",
+        "number": 5
+      },
+      "archives-2": {
+        "title": "",
+        "count": 0,
+        "dropdown": 0
+      },
+      "categories-2": {
+        "title": "",
+        "count": 0,
+        "hierarchical": 0,
+        "dropdown": 0
+      },
+      "meta-2": {
+        "title": ""
+      }
+    },
+    "shop-sidebar": {
+      "woocommerce_product_search-2": {
+        "title": ""
+      },
+      "woocommerce_price_filter-2": {
+        "title": "Filter by price"
+      },
+      "woocommerce_product_categories-3": {
+        "title": "Product categories",
+        "orderby": "name",
+        "dropdown": 0,
+        "count": 0,
+        "hierarchical": 0,
+        "show_children_only": 0,
+        "hide_empty": 0,
+        "max_depth": ""
+      },
+      "woocommerce_recent_reviews-2": {
+        "title": "Recent reviews",
+        "number": 5
+      },
+      "woocommerce_recently_viewed_products-2": {
+        "title": "Recently Viewed Products",
+        "number": 2
+      }
+    },
+    "footer-one-widgets": {
+      "text-2": {
+        "title": "About My Shop",
+        "text": "Pellentesque semper vulputate leo, nec malesuada massa. Aenean dapibus libero eget.\r\n\r\nPhone: +1 234 567 89 10\r\n\r\nEmail: <a href=\"mailto:company@example.com\">company@example.com</a>",
+        "filter": true,
+        "visual": true
+      }
+    },
+    "footer-two-widgets": {
+      "recent-comments-3": {
+        "title": "",
+        "number": 5
+      }
+    },
+    "footer-three-widgets": {
+      "woocommerce_top_rated_products-2": {
+        "title": "Top rated products",
+        "number": 2
+      }
+    },
+    "footer-four-widgets": {
+      "woocommerce_product_categories-2": {
+        "title": "Product categories",
+        "orderby": "name",
+        "dropdown": 0,
+        "count": 1,
+        "hierarchical": 0,
+        "show_children_only": 0,
+        "hide_empty": 0,
+        "max_depth": ""
+      }
+    }
+  },
+  "recommended_plugins": {
+    "woocommerce": "WooCommerce"
+  },
+  "mandatory_plugins": {
+    "elementor": "Elementor Page Builder",
+    "maxslider": "MaxSlider",
+    "themeisle-companion": "Orbit Fox by ThemeIsle"
+  },
+  "default_off_recommended_plugins": [
+    "woocommerce"
+  ],
+  "front_page": {
+    "front_page": "home",
+    "blog_page": "blog"
+  },
+  "shop_pages": {
+    "woocommerce_shop_page_id": "shop",
+    "woocommerce_cart_page_id": "cart",
+    "woocommerce_checkout_page_id": "checkout",
+    "woocommerce_myaccount_page_id": "my-account"
+  }
+}

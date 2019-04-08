@@ -143,6 +143,10 @@ class Front_End {
 						'url'   => 'https://demo.themeisle.com/neve-doctors/',
 						'title' => 'Doctors',
 					),
+                    'neve-shop'       => array(
+                        'url'   => 'https://demo.themeisle.com/neve-shop/',
+                        'title' => 'Shop',
+                    ),
 				),
 			),
 
