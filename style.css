@@ -1830,6 +1830,11 @@ hr {
   width: 100%;
 }
 
+audio {
+  display: flex;
+  height: 50px;
+}
+
 .widget_media_gallery .gallery-columns-1 .gallery-item {
   width: 100%;
   max-width: 100%;
