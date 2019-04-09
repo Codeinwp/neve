@@ -1778,7 +1778,7 @@ article {
   text-transform: uppercase;
 }
 
-#comments input:not([type="submit"]) {
+#comments input:not([type="submit"]):not([type="checkbox"]) {
   width: 100%;
 }
 
@@ -1834,6 +1834,19 @@ article {
   display: block;
   font-size: .85em;
   margin-top: 20px;
+}
+
+.comment-form-cookies-consent {
+  display: flex;
+  align-items: center;
+}
+
+.comment-form-cookies-consent input {
+  margin-right: 10px;
+}
+
+.comment-form-cookies-consent label {
+  margin-bottom: 0;
 }
 
 blockquote {
@@ -2358,8 +2371,14 @@ audio {
   #comments .comment-form {
     grid-template-columns: repeat(3, 1fr);
   }
-  #comments .comment-form .comment-notes, #comments .comment-form .comment-form-comment, #comments .comment-form .logged-in-as {
+  #comments .comment-form p:not(.comment-form-author):not(.comment-form-url):not(.comment-form-email) {
     grid-column: span 3;
+  }
+  #comments .form-submit {
+    align-items: center;
+    justify-content: flex-end;
+    display: flex;
+    margin-top: 0;
   }
   .hidden-on-mobile {
     display: initial;
