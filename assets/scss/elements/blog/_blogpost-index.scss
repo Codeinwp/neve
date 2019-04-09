@@ -70,6 +70,7 @@
 .nv-index-posts .posts-wrapper {
   display: flex;
   flex-wrap: wrap;
+  box-sizing: content-box;
 }
 
 .nv-index-posts .page-numbers {
