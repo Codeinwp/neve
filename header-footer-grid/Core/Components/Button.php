@@ -11,6 +11,7 @@
 
 namespace HFG\Core\Components;
 
+use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Main;
 use WP_Customize_Manager;
 
@@ -21,36 +22,33 @@ use WP_Customize_Manager;
  */
 class Button extends Abstract_Component {
 
+	const COMPONENT_ID = 'button_base';
+	const LINK_ID      = 'link_setting';
+	const TEXT_ID      = 'text_setting';
+
 	/**
 	 * Button constructor.
 	 *
 	 * @since   1.0.0
 	 * @access  public
-	 *
-	 * @param string $panel The panel name.
 	 */
-	public function __construct( $panel ) {
+	public function init() {
 		$this->set_property( 'label', __( 'Button', 'neve' ) );
-		$this->set_property( 'id', 'button_base' );
+		$this->set_property( 'id', self::COMPONENT_ID );
 		$this->set_property( 'width', 1 );
 		$this->set_property( 'section', 'header_button' );
-		$this->set_property( 'panel', $panel );
 	}
 
 	/**
 	 * Called to register component controls.
 	 *
-	 * @since   1.0.0
-	 * @access  public
-	 *
 	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
 	 *
 	 * @return WP_Customize_Manager
+	 * @since   1.0.0
+	 * @access  public
 	 */
-	public function customize_register( WP_Customize_Manager $wp_customize ) {
-		$prefix   = $this->id;
-		$fn       = array( $this, 'render' );
-		$selector = '.builder-item--' . $this->id;
+	public function add_settings( WP_Customize_Manager $wp_customize ) {
 
 		$wp_customize->add_section(
 			$this->section,
@@ -61,55 +59,34 @@ class Button extends Abstract_Component {
 			)
 		);
 
-		$wp_customize->add_setting(
-			$prefix . '_text' . '_setting',
-			array(
-				'theme_supports'    => 'hfg_support',
-				'default'           => __( 'Button', 'neve' ),
-				'transport'         => 'postMessage',
+		SettingsManager::get_instance()->add(
+			[
+				'id'                => self::LINK_ID,
+				'group'             => self::COMPONENT_ID,
+				'transport'         => 'post' . self::COMPONENT_ID,
 				'sanitize_callback' => 'wp_filter_nohtml_kses',
-			)
-		);
-		$wp_customize->add_setting(
-			$prefix . '_link' . '_setting',
-			array(
-				'theme_supports'    => 'hfg_support',
 				'default'           => '#',
-				'transport'         => 'postMessage',
+				'label'             => __( 'Link', 'neve' ),
+				'type'              => 'text',
+				'section'           => $this->section,
+			],
+			$wp_customize
+		);
+		SettingsManager::get_instance()->add(
+			[
+				'id'                => self::TEXT_ID,
+				'group'             => self::COMPONENT_ID,
+				'transport'         => 'post' . self::COMPONENT_ID,
 				'sanitize_callback' => 'wp_filter_nohtml_kses',
-			)
+				'default'           => __( 'Button', 'neve' ),
+				'label'             => __( 'Text', 'neve' ),
+				'type'              => 'text',
+				'section'           => $this->section,
+			],
+			$wp_customize
 		);
 
-		$wp_customize->add_control(
-			$prefix . '_text' . '_setting',
-			array(
-				'label'    => __( 'Text', 'neve' ),
-				'type'     => 'text',
-				'settings' => $prefix . '_text' . '_setting',
-				'section'  => $this->section,
-			)
-		);
-		$wp_customize->add_control(
-			$prefix . '_link' . '_setting',
-			array(
-				'label'    => __( 'Link', 'neve' ),
-				'type'     => 'text',
-				'settings' => $prefix . '_link' . '_setting',
-				'section'  => $this->section,
-			)
-		);
-		$wp_customize->selective_refresh->add_partial(
-			$this->panel,
-			array(
-				'selector'        => $selector,
-				'settings'        => array(
-					$prefix . '_link' . '_setting',
-					$prefix . '_text' . '_setting',
-				),
-				'render_callback' => $fn,
-			)
-		);
-		return parent::customize_register( $wp_customize );
+		return $wp_customize;
 	}
 
 	/**
@@ -119,6 +96,6 @@ class Button extends Abstract_Component {
 	 * @access  public
 	 */
 	public function render_component() {
-		Main::get_instance()->load( 'component-button' );
+		Main::get_instance()->load( 'components/component-button' );
 	}
 }

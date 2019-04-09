@@ -11,9 +11,8 @@
 
 namespace HFG\Core\Components;
 
+use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Main;
-use Neve\Customizer\Controls\Checkbox;
-use Neve\Customizer\Controls\Range;
 use WP_Customize_Manager;
 
 /**
@@ -23,160 +22,124 @@ use WP_Customize_Manager;
  */
 class Logo extends Abstract_Component {
 
+
+	const COMPONENT_ID = 'logo';
+	const MAX_WIDTH    = 'max_width';
+	const SHOW_TITLE   = 'show_title';
+	const SHOW_TAGLINE = 'show_tagline';
+
 	/**
 	 * Logo constructor.
 	 *
 	 * @since   1.0.0
 	 * @access  public
-	 *
-	 * @param string $panel The panel name.
 	 */
-	public function __construct( $panel ) {
+	public function init() {
 		$this->set_property( 'label', __( 'Logo & Site Identity', 'neve' ) );
-		$this->set_property( 'id', 'logo' );
+		$this->set_property( 'id', self::COMPONENT_ID );
 		$this->set_property( 'width', 2 );
 		$this->set_property( 'section', 'title_tagline' );
-		$this->set_property( 'panel', $panel );
 	}
 
 	/**
 	 * Called to register component controls.
 	 *
-	 * @since   1.0.0
-	 * @access  public
-	 *
 	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
 	 *
-	 * @return array
+	 * @return WP_Customize_Manager
+	 * @since   1.0.0
+	 * @access  public
 	 */
-	public function customize_register( WP_Customize_Manager $wp_customize ) {
+	public function add_settings( WP_Customize_Manager $wp_customize ) {
 
-		$fn = array( $this, 'render' );
-
-		$selector = '.builder-item--' . $this->id;
-
-		$wp_customize->add_section(
-			$this->section,
-			array(
-				'title'    => $this->label,
-				'priority' => 30,
-				'panel'    => $this->panel,
-			)
+		SettingsManager::get_instance()->add(
+			[
+				'id'                => self::SHOW_TAGLINE,
+				'group'             => self::COMPONENT_ID,
+				'transport'         => 'post' . self::COMPONENT_ID,
+				'sanitize_callback' => 'absint',
+				'default'           => 1,
+				'label'             => __( 'Show Site Tagline', 'neve' ),
+				'type'              => '\Neve\Customizer\Controls\Checkbox',
+				'options'           => [
+					'type' => 'checkbox-toggle',
+				],
+				'section'           => $this->section,
+			],
+			$wp_customize
 		);
-		$partial_settings = array();
 
-		$wp_customize->add_setting(
-			$this->id . '_max_width',
-			array(
-				'transport'         => 'postMessage',
-				'theme_supports'    => 'hfg_support',
-				'default'           => '{ "mobile": "120", "tablet": "120", "desktop": "120" }',
+		SettingsManager::get_instance()->add(
+			[
+				'id'                => self::SHOW_TITLE,
+				'group'             => self::COMPONENT_ID,
+				'transport'         => 'post' . self::COMPONENT_ID,
+				'sanitize_callback' => 'absint',
+				'default'           => 1,
+				'label'             => __( 'Show Site Title', 'neve' ),
+				'type'              => '\Neve\Customizer\Controls\Checkbox',
+				'options'           => [
+					'type' => 'checkbox-toggle',
+				],
+				'section'           => $this->section,
+			],
+			$wp_customize
+		);
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'                => self::MAX_WIDTH,
+				'group'             => self::COMPONENT_ID,
+				'transport'         => 'post' . self::COMPONENT_ID,
 				'sanitize_callback' => array( $this, 'sanitize_responsive_int_json' ),
-			)
-		);
-		array_push( $partial_settings, $this->id . '_max_width' );
-		$wp_customize->add_control(
-			new Range(
-				$wp_customize,
-				$this->id . '_max_width',
-				array(
-					'label'       => esc_html__( 'Logo max width (px)', 'neve' ),
-					'section'     => $this->section,
+				'default'           => '{ "mobile": "120", "tablet": "120", "desktop": "120" }',
+				'label'             => __( 'Logo max width (px)', 'neve' ),
+				'type'              => '\Neve\Customizer\Controls\Range',
+				'options'           => [
 					'type'        => 'range-value',
 					'media_query' => true,
 					'step'        => 1,
-					'input_attr'  => array(
-						'mobile'  => array(
+					'input_attr'  => [
+						'mobile'  => [
 							'min'     => 0,
 							'max'     => 350,
 							'default' => 120,
-						),
-						'tablet'  => array(
+						],
+						'tablet'  => [
 							'min'     => 0,
 							'max'     => 350,
 							'default' => 120,
-						),
-						'desktop' => array(
+						],
+						'desktop' => [
 							'min'     => 0,
 							'max'     => 350,
 							'default' => 120,
-						),
-					),
-				)
-			)
+						],
+					],
+				],
+				'section'           => $this->section,
+			],
+			$wp_customize
 		);
 
-		$wp_customize->add_setting(
-			$this->id . '_show_title',
-			array(
-				'transport'         => 'postMessage',
-				'theme_supports'    => 'hfg_support',
-				'default'           => 1,
-				'sanitize_callback' => 'absint',
-			)
-		);
-		array_push( $partial_settings, $this->id . '_show_title' );
-		$wp_customize->add_control(
-			new Checkbox(
-				$wp_customize,
-				$this->id . '_show_title',
-				[
-					'label'   => esc_html__( 'Show Site Title', 'neve' ),
-					'type'    => 'checkbox-toggle',
-					'section' => $this->section,
-				]
-			)
-		);
-
-		$wp_customize->add_setting(
-			$this->id . '_show_tagline',
-			array(
-				'transport'         => 'postMessage',
-				'theme_supports'    => 'hfg_support',
-				'default'           => 1,
-				'sanitize_callback' => 'absint',
-			)
-		);
-		array_push( $partial_settings, $this->id . '_show_tagline' );
-		$wp_customize->add_control(
-			new Checkbox(
-				$wp_customize,
-				$this->id . '_show_tagline',
-				[
-					'label'   => esc_html__( 'Show Site Tagline', 'neve' ),
-					'type'    => 'checkbox-toggle',
-					'section' => $this->section,
-				]
-			)
-		);
-
-		$wp_customize->selective_refresh->add_partial(
-			$this->id . '_partial',
-			array(
-				'selector'        => $selector,
-				'settings'        => $partial_settings,
-				'render_callback' => $fn,
-			)
-		);
-
-		return parent::customize_register( $wp_customize );
+		return $wp_customize;
 	}
 
 	/**
 	 * Render logo section.
 	 */
 	public function render_component() {
-		Main::get_instance()->load( 'component-logo' );
+		Main::get_instance()->load( 'components/component-logo' );
 	}
 
 	/**
 	 * Method to add Component css styles.
 	 *
-	 * @since   1.0.0
-	 * @access  public
 	 * @param array $css_array An array containing css rules.
 	 *
 	 * @return array
+	 * @since   1.0.0
+	 * @access  public
 	 */
 	public function add_style( array $css_array = array() ) {
 		$logo_max_width = json_decode( get_theme_mod( $this->id . '_max_width', '{ "mobile": "120", "tablet": "120", "desktop": "120" }' ), true );

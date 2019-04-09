@@ -40,6 +40,22 @@ interface Component {
 	public function get_settings();
 
 	/**
+	 * Define component props.
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 * @return mixed
+	 */
+	public function init();
+	/**
+	 * The render method for the component.
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 * @return mixed
+	 */
+	public function render_component();
+	/**
 	 * Called to register component controls.
 	 *
 	 * @since   1.0.0
@@ -49,6 +65,16 @@ interface Component {
 	 * @return WP_Customize_Manager
 	 */
 	public function customize_register( WP_Customize_Manager $wp_customize );
+	/**
+	 * Add component settings.
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
+	 *
+	 * @return WP_Customize_Manager
+	 */
+	public function add_settings( WP_Customize_Manager $wp_customize );
 
 	/**
 	 * Render method.

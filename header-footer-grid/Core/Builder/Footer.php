@@ -35,7 +35,6 @@ class Footer extends Abstract_Builder {
 		$this->set_property( 'title', __( 'Footer', 'neve' ) );
 		$this->set_property( 'control_id', 'hfg_footer_layout' );
 		$this->set_property( 'panel', 'hfg_footer' );
-		$this->set_property( 'remove_sections', [ 'neve_footer' ] );
 		$this->devices = [
 			'desktop' => 'Footer Layout',
 		];

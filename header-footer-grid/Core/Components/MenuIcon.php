@@ -11,6 +11,7 @@
 
 namespace HFG\Core\Components;
 
+use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Main;
 use Neve\Customizer\Controls\Checkbox;
 use WP_Customize_Manager;
@@ -22,102 +23,70 @@ use WP_Customize_Manager;
  */
 class MenuIcon extends Abstract_Component {
 
+	const COMPONENT_ID   = 'header_menu_icon';
+	const MENU_TEXT      = 'text_setting';
+	const SIDEBAR_TOGGLE = 'sidebar';
+
 	/**
 	 * MenuIcon constructor.
 	 *
 	 * @since   1.0.0
 	 * @access  public
-	 *
-	 * @param string $panel The panel name.
 	 */
-	public function __construct( $panel ) {
+	public function init() {
 		$this->set_property( 'label', __( 'Menu Icon', 'neve' ) );
+
 		$this->set_property( 'id', 'nav-icon' );
+
 		$this->set_property( 'width', 3 );
-		$this->set_property( 'section', 'header_menu_icon' );
-		$this->set_property( 'panel', $panel );
+
+		$this->set_property( 'section', self::COMPONENT_ID );
 	}
 
 	/**
 	 * Called to register component controls.
 	 *
-	 * @since   1.0.0
-	 * @access  public
-	 *
 	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
 	 *
-	 * @return array
+	 * @return WP_Customize_Manager
+	 * @since   1.0.0
+	 * @access  public
 	 */
-	public function customize_register( WP_Customize_Manager $wp_customize ) {
-		$prefix           = $this->section;
-		$fn               = array( $this, 'render' );
-		$selector         = '.builder-item--' . $this->id;
-		$partial_settings = array();
+	public function add_settings( WP_Customize_Manager $wp_customize ) {
 
-		$wp_customize->add_section(
-			$this->section,
-			array(
-				'title'    => $this->label,
-				'priority' => 30,
-				'panel'    => $this->panel,
-			)
-		);
-
-		$wp_customize->add_setting(
-			$prefix . '_text' . '_setting',
-			array(
-				'theme_supports'    => 'hfg_support',
-				'default'           => __( 'Menu', 'neve' ),
-				'transport'         => 'refresh',
+		SettingsManager::get_instance()->add(
+			[
+				'id'                => self::MENU_TEXT,
+				'group'             => self::COMPONENT_ID,
+				'transport'         => 'post' . self::COMPONENT_ID,
 				'sanitize_callback' => 'wp_filter_nohtml_kses',
-			)
+				'default'           => __( 'Menu', 'neve' ),
+				'label'             => __( 'Text', 'neve' ),
+				'type'              => 'text',
+				'section'           => $this->section,
+			],
+			$wp_customize
 		);
 
-		$wp_customize->add_control(
-			$prefix . '_text',
-			array(
-				'name'            => $prefix . '_text',
-				'label'           => __( 'Text', 'neve' ),
-				'type'            => 'text',
-				'section'         => $this->section,
-				'selector'        => $selector,
-				'render_callback' => $fn,
-				'settings'        => $this->id . '_text' . '_setting',
-			)
-		);
-
-		$wp_customize->add_setting(
-			$prefix . '_sidebar',
-			array(
-				'theme_supports'    => 'hfg_support',
-				'default'           => 0,
-				'transport'         => 'postMessage',
+		SettingsManager::get_instance()->add(
+			[
+				'id'                => self::SIDEBAR_TOGGLE,
+				'group'             => self::COMPONENT_ID,
+				'transport'         => 'post' . self::COMPONENT_ID,
 				'sanitize_callback' => 'absint',
-			)
-		);
-		array_push( $partial_settings, $prefix . '_sidebar' );
-		$wp_customize->add_control(
-			new Checkbox(
-				$wp_customize,
-				$prefix . '_sidebar',
-				[
-					'label'   => esc_html__( 'Show Sidebar', 'neve' ),
-					'type'    => 'checkbox-toggle',
-					'section' => $this->section,
-				]
-			)
+				'default'           => 0,
+				'label'             => __( 'Show Sidebar', 'neve' ),
+				'type'              => '\Neve\Customizer\Controls\Checkbox',
+				'options'           => [
+					'type' => 'checkbox-toggle',
+				],
+				'section'           => $this->section,
+			],
+			$wp_customize
 		);
 
-		$wp_customize->selective_refresh->add_partial(
-			$prefix . '_partial',
-			array(
-				'selector'        => $selector,
-				'settings'        => $partial_settings,
-				'render_callback' => $fn,
-			)
-		);
 
-		return parent::customize_register( $wp_customize );
+		return $wp_customize;
 	}
 
 	/**
@@ -127,6 +96,6 @@ class MenuIcon extends Abstract_Component {
 	 * @access  public
 	 */
 	public function render_component() {
-		Main::get_instance()->load( 'component-menu-icon' );
+		Main::get_instance()->load( 'components/component-menu-icon' );
 	}
 }

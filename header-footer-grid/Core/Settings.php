@@ -68,7 +68,7 @@ class Settings {
 	 * @access  public
 	 */
 	public static function get_instance() {
-		if ( is_null( self::$_instance ) ) {
+		if ( null === self::$_instance ) {
 			self::$_instance           = new self();
 			self::$_instance->path     = get_template_directory() . '/header-footer-grid';
 			self::$_instance->defaults = self::$_instance->get_defaults();
@@ -113,7 +113,7 @@ class Settings {
 	 * @access  public
 	 */
 	public function define_header_defaults_neve() {
-
+		return [];
 		$defaults = [
 			'desktop' => [
 				'top'    => [],

@@ -25,6 +25,10 @@ class Main {
 	use Core;
 
 	/**
+	 * Define version constant used for assets.
+	 */
+	const VERSION = '1.0.3';
+	/**
 	 * Holds the instance of this class.
 	 *
 	 * @since   1.0.0
@@ -32,7 +36,6 @@ class Main {
 	 * @var Main $_instance
 	 */
 	private static $_instance = null;
-
 	/**
 	 * Holds a reference to Settings class
 	 *
@@ -41,10 +44,6 @@ class Main {
 	 * @var Settings $settings
 	 */
 	private $settings;
-	/**
-	 * Define version constant used for assets.
-	 */
-	const VERSION = '1.0.3';
 	/**
 	 * Holds a reference to Customizer class
 	 *
@@ -58,9 +57,9 @@ class Main {
 	 * Main Instance
 	 * Ensures only one instance of class is loaded or can be loaded.
 	 *
+	 * @return \HFG\Main Instance.
 	 * @since   1.0.0
 	 * @access  public
-	 * @return \HFG\Main Instance.
 	 */
 	public static function get_instance() {
 		if ( ! apply_filters( 'hfg_active', true ) ) {
@@ -69,8 +68,8 @@ class Main {
 		if ( is_null( self::$_instance ) ) {
 			self::$_instance = new self();
 			self::$_instance->init();
-			self::$_instance->settings   = Settings::get_instance();
-			self::$_instance->customizer = new Customizer( Settings::get_instance() );
+			self::$_instance->settings   = new Settings\Manager();
+			self::$_instance->customizer = new Customizer( self::$_instance->settings );
 		}
 
 		return self::$_instance;
@@ -85,20 +84,6 @@ class Main {
 	public function init() {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 		add_filter( 'neve_style_output_neve-generated-style', array( $this, 'append_css_style' ) );
-	}
-
-	/**
-	 * Return builders list, or builder details.
-	 *
-	 * @param string $builder Builder name, if required.
-	 *
-	 * @return Abstract_Builder[]|Abstract_Builder Builder array(s).
-	 */
-	public function get_builders( $builder = '' ) {
-		if ( empty( $builder ) ) {
-			$builder = Abstract_Builder::get_current_builder();
-		}
-		return $this->customizer->get_builders( $builder );
 	}
 
 	/**
@@ -130,15 +115,15 @@ class Main {
 	 */
 	public function enqueue_scripts() {
 		$suffix = $this->get_assets_suffix();
-		wp_enqueue_style( 'hfg-style', esc_url( $this->settings->url ) . '/assets/css/style' . $suffix . '.css', array(), Main::VERSION );
+		wp_enqueue_style( 'hfg-style', esc_url( Settings\Config::get_url() ) . '/assets/css/style' . $suffix . '.css', array(), self::VERSION );
 
 		wp_enqueue_script(
 			'hfg-theme-functions',
-			esc_url( $this->settings->url ) . '/assets/js/theme' . $suffix . '.js',
+			esc_url( Settings\Config::get_url() ) . '/assets/js/theme' . $suffix . '.js',
 			array(
 				'jquery',
 			),
-			Main::VERSION,
+			self::VERSION,
 			true
 		);
 	}
@@ -146,11 +131,11 @@ class Main {
 	/**
 	 * Appends css style to neve inline styles.
 	 *
-	 * @since   1.0.0
-	 * @access  public
-	 * @param   string $style CSS rules.
+	 * @param string $style CSS rules.
 	 *
 	 * @return string
+	 * @since   1.0.0
+	 * @access  public
 	 */
 	public function append_css_style( $style ) {
 		return $style . $this->inline_styles();
@@ -159,10 +144,9 @@ class Main {
 	/**
 	 * Generate inline style CSS from array.
 	 *
+	 * @return string
 	 * @since   1.0.0
 	 * @access  public
-	 *
-	 * @return string
 	 */
 	public function inline_styles() {
 		$css_array = [];
@@ -180,12 +164,27 @@ class Main {
 	}
 
 	/**
+	 * Return builders list, or builder details.
+	 *
+	 * @param string $builder Builder name, if required.
+	 *
+	 * @return Abstract_Builder[]|Abstract_Builder Builder array(s).
+	 */
+	public function get_builders( $builder = '' ) {
+		if ( empty( $builder ) ) {
+			$builder = Abstract_Builder::get_current_builder();
+		}
+
+		return $this->customizer->get_builders( $builder );
+	}
+
+	/**
 	 * Called via hook to determine if module should be active or not.
 	 * TODO: implement additional logic if required.
 	 *
+	 * @return bool
 	 * @since   1.0.0
 	 * @access  public
-	 * @return bool
 	 */
 	public function is_active() {
 		return true;
@@ -215,8 +214,8 @@ class Main {
 /**
  * Function to return Main instance.
  *
- * @since   1.0.0
  * @return Main
+ * @since   1.0.0
  */
 function hfg() {
 	return Main::get_instance();

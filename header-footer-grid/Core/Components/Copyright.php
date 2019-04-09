@@ -11,6 +11,7 @@
 
 namespace HFG\Core\Components;
 
+use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Main;
 use WP_Customize_Manager;
 
@@ -20,49 +21,37 @@ use WP_Customize_Manager;
  * @package HFG\Core\Components
  */
 class Copyright extends Abstract_Component {
+	const COMPONENT_ID = 'footer_copyright';
+	const CONTENT_ID   = 'content';
 
 	/**
 	 * Copyright constructor.
 	 *
 	 * @since   1.0.0
 	 * @access  public
-	 *
-	 * @param string $panel The panel ID.
 	 */
-	public function __construct( $panel ) {
+	public function init() {
 		$this->set_property( 'label', __( 'Copyright', 'neve' ) );
-		$this->set_property( 'id', 'footer_copyright' );
+		$this->set_property( 'id', self::COMPONENT_ID );
 		$this->set_property( 'width', 2 );
-		$this->set_property( 'section', 'footer_copyright' );
-		$this->set_property( 'panel', $panel );
 	}
 
 	/**
 	 * Called to register component controls.
 	 *
-	 * @since   1.0.0
-	 * @access  public
-	 *
 	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
 	 *
-	 * @return array
+	 * @return WP_Customize_Manager
+	 * @since   1.0.0
+	 * @access  public
 	 */
-	public function customize_register( WP_Customize_Manager $wp_customize ) {
-		$fn       = array( $this, 'render' );
-		$selector = '.builder-item--' . $this->id;
-
-		$wp_customize->add_section(
-			$this->section,
-			array(
-				'title'    => $this->label,
-				'priority' => 30,
-				'panel'    => $this->panel,
-			)
-		);
-
-		$wp_customize->add_setting(
-			$this->id . '_content',
-			array(
+	public function add_settings( WP_Customize_Manager $wp_customize ) {
+		SettingsManager::get_instance()->add(
+			[
+				'id'                => self::CONTENT_ID,
+				'group'             => self::COMPONENT_ID,
+				'transport'         => 'post' . self::COMPONENT_ID,
+				'sanitize_callback' => 'wp_kses_post',
 				'default'           => get_theme_mod(
 					'neve_footer_text',
 					apply_filters(
@@ -75,32 +64,14 @@ class Copyright extends Abstract_Component {
 						)
 					)
 				),
-				'theme_supports'    => 'hfg_support',
-				'transport'         => 'postMessage',
-				'sanitize_callback' => 'wp_kses_post',
-			)
-		);
-		$wp_customize->add_control(
-			$this->id . '_content',
-			[
-				'label'   => esc_html__( 'Copyright', 'neve' ),
-				'type'    => 'textarea',
-				'section' => $this->section,
-			]
+				'label'             => __( 'Copyright', 'neve' ),
+				'type'              => 'textarea',
+				'section'           => $this->section,
+			],
+			$wp_customize
 		);
 
-		$wp_customize->selective_refresh->add_partial(
-			$this->id . '_partial',
-			array(
-				'selector'        => $selector,
-				'settings'        => array(
-					$this->id . '_content',
-				),
-				'render_callback' => $fn,
-			)
-		);
-
-		return parent::customize_register( $wp_customize );
+		return $wp_customize;
 	}
 
 	/**
@@ -110,6 +81,6 @@ class Copyright extends Abstract_Component {
 	 * @access  public
 	 */
 	public function render_component() {
-		Main::get_instance()->load( 'component-copyright' );
+		Main::get_instance()->load( 'components/component-copyright' );
 	}
 }

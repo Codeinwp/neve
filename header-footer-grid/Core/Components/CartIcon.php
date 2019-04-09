@@ -21,46 +21,31 @@ use WP_Customize_Manager;
  */
 class CartIcon extends Abstract_Component {
 
+	const COMPONENT_ID = 'header_cart_icon';
+
 	/**
 	 * Button constructor.
 	 *
 	 * @since   1.0.0
 	 * @access  public
-	 *
-	 * @param string $panel The panel name.
 	 */
-	public function __construct( $panel ) {
+	public function init() {
 		$this->set_property( 'label', __( 'Cart Icon', 'neve' ) );
-		$this->set_property( 'id', 'header_cart_icon' );
+		$this->set_property( 'id', self::COMPONENT_ID );
 		$this->set_property( 'width', 1 );
-		$this->set_property( 'section', 'header_cart_icon' );
-		$this->set_property( 'panel', $panel );
 	}
 
 	/**
 	 * Called to register component controls.
 	 *
-	 * @since   1.0.0
-	 * @access  public
-	 *
 	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
 	 *
-	 * @return array
+	 * @return WP_Customize_Manager
+	 * @since   1.0.0
+	 * @access  public
 	 */
-	public function customize_register( WP_Customize_Manager $wp_customize ) {
-		$fn       = array( $this, 'render' );
-		$selector = 'a.item--' . $this->id;
-
-		$wp_customize->add_section(
-			$this->section,
-			array(
-				'title'    => $this->label,
-				'priority' => 30,
-				'panel'    => $this->panel,
-			)
-		);
-
-		return parent::customize_register( $wp_customize );
+	public function add_settings( WP_Customize_Manager $wp_customize ) {
+		return $wp_customize;
 	}
 
 	/**
@@ -70,6 +55,6 @@ class CartIcon extends Abstract_Component {
 	 * @access  public
 	 */
 	public function render_component() {
-		Main::get_instance()->load( 'component-cart-icon' );
+		Main::get_instance()->load( 'components/component-cart-icon' );
 	}
 }

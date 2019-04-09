@@ -12,6 +12,7 @@
 namespace HFG;
 
 use HFG\Core\Builder\Abstract_Builder;
+use HFG\Core\Settings\Manager;
 
 /**
  * Return registered builders.
@@ -89,3 +90,22 @@ function current_device( $builder_name = '' ) {
 function current_row( $builder_name = '' ) {
 	return Main::get_instance()->get_builders( $builder_name )->get_current_row_index();
 }
+
+/**
+ * Get setting value of a certain component.
+ *
+ * @param string $id Id of component setting.
+ * @param null   $default Default value, otherwise use the one when the setting was defined.
+ * @param null   $component_id Component id.
+ *
+ * @return mixed Component settings.
+ */
+function component_setting( $id, $default = null, $component_id = null ) {
+	if ( null === $component_id ) {
+		$component_id = current_component()->get_id();
+	}
+
+	return Manager::get_instance()->get( $component_id . '_' . $id, $default );
+}
+
+
