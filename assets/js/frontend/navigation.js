@@ -1,3 +1,4 @@
+/* jshint esversion: 6 */
 import { isMobile } from "./utils.js";
 
 let pageUrl;

@@ -28,17 +28,24 @@ class Pagination extends Base_View {
 		add_action( 'neve_post_navigation', array( $this, 'render_post_navigation' ) );
 	}
 
+	/**
+	 * Register Rest API endpoint for posts retrieval.
+	 */
 	public function register_endpoints() {
-		register_rest_route( 'posts/v1', '/page/(?P<page_number>\d+)/', array(
-			'methods'  => \WP_REST_Server::READABLE,
-			'callback' => array( $this, 'get_posts' )
-		) );
+		register_rest_route(
+			'posts/v1',
+			'/page/(?P<page_number>\d+)/',
+			array(
+				'methods'  => \WP_REST_Server::READABLE,
+				'callback' => array( $this, 'get_posts' ),
+			)
+		);
 	}
 
 	/**
 	 * Get paginated posts.
 	 *
-	 * @param \WP_REST_Request $request
+	 * @param \WP_REST_Request $request the rest request.
 	 *
 	 * @return \WP_REST_Response
 	 */
@@ -57,7 +64,6 @@ class Pagination extends Base_View {
 			'ignore_sticky_posts' => 1,
 			'post_status'         => 'publish',
 		);
-
 
 		$query = new \WP_Query( $args );
 		if ( $query->have_posts() ) {

@@ -1372,6 +1372,7 @@ button:hover, input[type=button]:hover, .btn:hover, input[type="submit"]:hover {
 .nv-index-posts .posts-wrapper {
   display: flex;
   flex-wrap: wrap;
+  box-sizing: content-box;
 }
 
 .nv-index-posts .page-numbers {
@@ -1430,6 +1431,7 @@ article {
 .nv-loader {
   height: 50px;
   width: 50px;
+  margin-bottom: 25px;
   border-radius: 50%;
   border: 2px solid #0366d6;
   border-right: 1px solid transparent !important;

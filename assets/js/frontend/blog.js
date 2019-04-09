@@ -1,3 +1,4 @@
+/* jshint esversion: 6 */
 /* global NeveProperties */
 import inView from 'in-view';
 import { httpGetAsync } from './utils.js';

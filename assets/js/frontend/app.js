@@ -1,3 +1,4 @@
+/* jshint esversion: 6 */
 import { initShop } from "./shop.js";
 import { initBlog } from "./blog.js";
 import { initNavigation } from "./navigation.js";

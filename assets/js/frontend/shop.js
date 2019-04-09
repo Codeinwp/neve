@@ -1,3 +1,4 @@
+/* jshint esversion: 6 */
 export const initShop = function () {
 	if (!document.body.classList.contains( 'woocommerce' )) {
 		return false;

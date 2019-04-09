@@ -1,5 +1,4 @@
-import inView from "in-view";
-
+/* jshint esversion: 6 */
 /**
  * Check if we're on mobile resolution.
  *
