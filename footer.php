@@ -16,7 +16,9 @@ do_action( 'neve_before_primary_end' );
 
 <?php
 if ( apply_filters( 'neve_filter_toggle_content_parts', true, 'footer' ) === true ) {
+	neve_before_footer_trigger();
 	do_action( 'neve_do_footer' );
+	neve_after_footer_trigger();
 }
 ?>
 
