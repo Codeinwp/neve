@@ -48,11 +48,9 @@ const infiniteScroll = function () {
 
   inView('.infinite-scroll-trigger').on('enter', function () {
     if (typeof parent.wp.customize !== 'undefined') {
-      console.log('customizer-request');
       parent.wp.customize.requestChangesetUpdate().then(requestMorePosts());
       return false;
     }
-    console.log('request');
     requestMorePosts();
   });
 };
