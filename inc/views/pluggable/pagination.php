@@ -33,7 +33,7 @@ class Pagination extends Base_View {
 	 */
 	public function register_endpoints() {
 		register_rest_route(
-			'posts/v1',
+			'nv/v1/posts',
 			'/page/(?P<page_number>\d+)/',
 			array(
 				'methods'  => \WP_REST_Server::READABLE,
@@ -50,7 +50,6 @@ class Pagination extends Base_View {
 	 * @return \WP_REST_Response
 	 */
 	public function get_posts( \WP_REST_Request $request ) {
-
 		if ( empty( $request['page_number'] ) ) {
 			return new \WP_REST_Response( '' );
 		}
@@ -96,7 +95,7 @@ class Pagination extends Base_View {
 
 		$data['infiniteScroll']         = 'enabled';
 		$data['infiniteScrollMaxPages'] = $max_pages;
-		$data['infiniteScrollEndpoint'] = rest_url( 'posts/v1/page/' );
+		$data['infiniteScrollEndpoint'] = rest_url( 'nv/v1/posts/page/' );
 
 		return $data;
 	}
