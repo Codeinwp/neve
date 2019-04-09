@@ -77,7 +77,7 @@ class Button extends \WP_Customize_Control {
 		$control .= esc_html( $this->button_text );
 		$control .= '</button>';
 
-		echo $control;
+		echo $control;  // WPCS: XSS OK.
 	}
 
 	/**

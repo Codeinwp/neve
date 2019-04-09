@@ -28,7 +28,7 @@ if ( ! empty( $component_styles_array ) ) {
 		<div class="nv-nav-search" tabindex="0" aria-label="search">
 			<div class="nv-nav-search">
 				<div class="container close-container">
-					<a class="button button-secondary close-responsive-search"><?php echo __( 'Close', 'neve' ); ?></a>
+					<a class="button button-secondary close-responsive-search"><?php echo __( 'Close', 'neve' ); // WPCS: XSS ok. ?></a>
 				</div>
 				<?php get_search_form(); ?>
 			</div>

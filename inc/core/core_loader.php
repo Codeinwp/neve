@@ -47,7 +47,6 @@ class Core_Loader {
 				'Views\Typography',
 				'Views\Top_Bar',
 				'Views\Header',
-				'Views\Footer',
 				'Views\Template_Parts',
 				'Views\Page_Header',
 				'Views\Post_Layout',

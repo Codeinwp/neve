@@ -17,6 +17,29 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog == 
+= 2.3.4 - 2019-04-05  = 
+
+* Removed unused strings
+
+
+= 2.3.3 - 2019-04-05  = 
+
+* Fixed AMP issues with the header footer builder
+* Smaller header spacing on mobile devices
+* Fixed toggle button layout on WooCommerce pages
+
+
+= 2.3.2 - 2019-04-05  = 
+
+* Header footer builder fixed sanitization
+
+
+= 2.3.1 - 2019-04-05  = 
+
+* Fixed missing sanitization functions
+* Fixed Gutenberg integration with the typography options
+
+
 = 2.3.0 - 2019-04-04  = 
 
 * NEW Header/Footer builder
@@ -362,3 +385,8 @@ All  images are licensed under CC0.
 * Neve Freelancer: neve-freelancer-testimonial-bg, CC0, https://mystock.themeisle.com/photo/code-in-wp/
 * Neve Freelancer: neve-freelancer-faq, CC0, https://mystock.themeisle.com/photo/programming-laptop-2/
 * Neve Freelancer: neve-freelancer-about1, CC0, https://mystock.themeisle.com/photo/path-to-the-village/
+* Neve Shop (screenshot): https://stocksnap.io/photo/SS2GVMJTWH
+* Neve Shop (screenshot): https://stocksnap.io/photo/KQECHSBAOC
+* Neve Shop (screenshot): https://stocksnap.io/photo/1CXI0CSPE5
+* Neve Shop (screenshot): https://stocksnap.io/photo/JBCWCLO4JI
+* Neve Shop (screenshot): https://stocksnap.io/photo/AEENLCARXY

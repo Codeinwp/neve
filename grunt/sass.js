@@ -1,11 +1,14 @@
-/* jshint node:true */
-// https://github.com/gruntjs/grunt-contrib-sass
+// jshint ignore: start
+// https://github.com/gruntjs/grunt-sass
+
+const sass = require('node-sass');
+
 module.exports = {
 	style: {
 		options: {
-			noCache: true,
-			style: 'expanded',
-			sourcemap: 'auto',
+			implementation: sass,
+			outputStyle: 'expanded',
+			sourceMap: true,
 		},
 		files: [ {
 			'style.css': 'assets/scss/style.scss',
@@ -16,9 +19,9 @@ module.exports = {
 
 	min: {
 		options: {
-			noCache: true,
-			style: 'compressed',
-			sourcemap: 'none',
+			implementation: sass,
+			outputStyle: 'compressed',
+			sourceMap: false,
 		},
 		files: [ {
 			'style.min.css': 'assets/scss/style.scss',

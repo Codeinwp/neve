@@ -12,10 +12,10 @@ namespace HFG;
 
 use HFG\Core\Builder\Header as HeaderBuilder;
 
-$text = get_theme_mod( current_component( HeaderBuilder::BUILDER_NAME )->get_id() . '_text' . '_setting', __( 'Button', 'neve' ) );
-$link = get_theme_mod( current_component( HeaderBuilder::BUILDER_NAME )->get_id() . '_link' . '_setting', '#' );
+$text        = get_theme_mod( current_component( HeaderBuilder::BUILDER_NAME )->get_id() . '_text' . '_setting', __( 'Button', 'neve' ) );
+$button_link = get_theme_mod( current_component( HeaderBuilder::BUILDER_NAME )->get_id() . '_link' . '_setting', '#' );
 
 ?>
 <div class="component-wrap">
-	<a href="<?php echo esc_url( $link ); ?>" class="button button-primary"><?php echo wp_kses_post( $text ); ?></a>
+	<a href="<?php echo esc_url( $button_link ); ?>" class="button button-primary"><?php echo wp_kses_post( $text ); ?></a>
 </div>
