@@ -135,9 +135,7 @@ class Main {
 		wp_enqueue_script(
 			'hfg-theme-functions',
 			esc_url( $this->settings->url ) . '/assets/js/theme' . $suffix . '.js',
-			array(
-				'jquery',
-			),
+			array(),
 			Main::VERSION,
 			true
 		);
