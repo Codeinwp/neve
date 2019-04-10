@@ -19,7 +19,7 @@ function neve_hfg_footer_settings() {
 			'bottom' => [],
 		],
 	];
-	$sidebars = (int) get_theme_mod( 'neve_footer_widget_columns', '3' );
+	$sidebars = (int) get_theme_mod( 'neve_footer_widget_columns', '0' );
 
 	$sidebars_names = array(
 		'footer-one-widgets',
