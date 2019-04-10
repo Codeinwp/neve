@@ -12,7 +12,7 @@ namespace HFG;
 
 $row_index  = current_row();
 $device     = current_device();
-$control_id = get_builders()->get_property( 'control_id' );
+$control_id = get_builder()->get_property( 'control_id' );
 
 $skin_mode = get_theme_mod( $control_id . '_' . $row_index . '_skin', 'light-mode' );
 

@@ -13,7 +13,8 @@ namespace HFG;
 
 use HFG\Core\Builder\Abstract_Builder;
 use HFG\Core\Customizer;
-use HFG\Core\Settings;
+use HFG\Core\Settings\Config;
+use HFG\Core\Settings\Manager;
 use HFG\Traits\Core;
 
 /**
@@ -41,7 +42,7 @@ class Main {
 	 *
 	 * @since   1.0.0
 	 * @access  private
-	 * @var Settings $settings
+	 * @var Manager $settings
 	 */
 	private $settings;
 	/**
@@ -63,13 +64,13 @@ class Main {
 	 */
 	public static function get_instance() {
 		if ( ! apply_filters( 'hfg_active', true ) ) {
-			return;
+			return null;
 		}
-		if ( is_null( self::$_instance ) ) {
+		if ( null === self::$_instance ) {
 			self::$_instance = new self();
 			self::$_instance->init();
-			self::$_instance->settings   = new Settings\Manager();
-			self::$_instance->customizer = new Customizer( self::$_instance->settings );
+			self::$_instance->settings   = new Manager();
+			self::$_instance->customizer = new Customizer();
 		}
 
 		return self::$_instance;
@@ -115,11 +116,11 @@ class Main {
 	 */
 	public function enqueue_scripts() {
 		$suffix = $this->get_assets_suffix();
-		wp_enqueue_style( 'hfg-style', esc_url( Settings\Config::get_url() ) . '/assets/css/style' . $suffix . '.css', array(), self::VERSION );
+		wp_enqueue_style( 'hfg-style', esc_url( Config::get_url() ) . '/assets/css/style' . $suffix . '.css', array(), self::VERSION );
 
 		wp_enqueue_script(
 			'hfg-theme-functions',
-			esc_url( Settings\Config::get_url() ) . '/assets/js/theme' . $suffix . '.js',
+			esc_url( Config::get_url() ) . '/assets/js/theme' . $suffix . '.js',
 			array(
 				'jquery',
 			),
@@ -166,28 +167,25 @@ class Main {
 	/**
 	 * Return builders list, or builder details.
 	 *
-	 * @param string $builder Builder name, if required.
-	 *
-	 * @return Abstract_Builder[]|Abstract_Builder Builder array(s).
+	 * @return Abstract_Builder[] Builder array(s).
 	 */
 	public function get_builders( $builder = '' ) {
+		return $this->customizer->get_builders();
+	}
+
+	/**
+	 * Return builders list, or builder details.
+	 *
+	 * @param string $builder Builder name, if required.
+	 *
+	 * @return Abstract_Builder Builder array(s).
+	 */
+	public function get_builder( $builder = '' ) {
 		if ( empty( $builder ) ) {
 			$builder = Abstract_Builder::get_current_builder();
 		}
 
 		return $this->customizer->get_builders( $builder );
-	}
-
-	/**
-	 * Called via hook to determine if module should be active or not.
-	 * TODO: implement additional logic if required.
-	 *
-	 * @return bool
-	 * @since   1.0.0
-	 * @access  public
-	 */
-	public function is_active() {
-		return true;
 	}
 
 	/**

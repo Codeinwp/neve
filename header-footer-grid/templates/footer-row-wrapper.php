@@ -12,8 +12,8 @@ namespace HFG;
 
 $row_index        = current_row();
 $device           = current_device();
-$control_id       = get_builders()->get_property( 'control_id' );
-$components_count = sizeof( get_builders()->get_layout_data()[ $device ][ $row_index ] );
+$control_id       = get_builder()->get_property( 'control_id' );
+$components_count = sizeof( get_builder()->get_layout_data()[ $device ][ $row_index ] );
 
 $default_skin = 'light-mode';
 if ( $row_index === 'bottom' ) {
