@@ -25,6 +25,14 @@ class Manager {
 	 */
 	private static $_instance = null;
 	/**
+	 * Holds a defaults definition.
+	 *
+	 * @since   1.0.0
+	 * @access  private
+	 * @var Defaults $_defaults
+	 */
+	private static $_defaults = [];
+	/**
 	 * Used to save the register settings ids and their defaults.
 	 *
 	 * @var array Array of registered settings.
@@ -71,99 +79,89 @@ class Manager {
 	public static function get_instance() {
 		if ( null === self::$_instance ) {
 			self::$_instance = new self();
+			self::$_defaults = new Defaults();
 		}
 
 		return self::$_instance;
 	}
 
 	/**
-	 * Method used to add settings to to customizer.
+	 * Load settings/control group in customizer.
 	 *
-	 * TODO: Define arguments schema.
+	 * @param null                       $group Group to load.
+	 * @param \WP_Customize_Manager|null $customize_manager Manager object.
 	 *
-	 * @param array                      $arguments Setting argument.
-	 * @param \WP_Customize_Manager|null $customize_manager Customizer manager.
-	 *
-	 * @return bool|\WP_Customize_Manager
+	 * @return \WP_Customize_Manager Customizer object.
 	 */
-	public function add( $arguments = array(), \WP_Customize_Manager $customize_manager = null ) {
-		if ( $customize_manager === null ) {
-			return false;
-		}
-
-		if ( count( array_diff_key( array_filter( $this->fields ), $arguments ) ) !== 0 ) {
-			return false;
-		}
+	public function load( $group = null, \WP_Customize_Manager $customize_manager = null ) {
 		static $core_transports = [
 			'refresh'     => true,
 			'postMessage' => true,
 		];
-		$id                     = ( isset( $arguments['group'] )
-				? $arguments['group'] . '_'
-				: '' ) . $arguments['id'];
-		if ( isset( $arguments['group'] ) ) {
-			if ( ! isset( self::$groups[ $arguments['group'] ] ) ) {
-				self::$groups[ $arguments['group'] ] = [];
+		foreach ( $this->get_settings_group( $group ) as $id ) {
+
+			if ( ! isset( self::$settings[ $id ] ) ) {
+				continue;
 			}
-			self::$groups[ $arguments['group'] ] = $arguments['id'];
-		}
+			$arguments = self::$settings[ $id ];
+			$transport = isset( $core_transports[ $arguments['transport'] ] ) ? $arguments['transport'] : $this->handle_transport( $arguments['transport'], $id );
 
-		$transport = isset( $core_transports[ $arguments['transport'] ] ) ? $arguments['transport'] : $this->handle_transport( $arguments['transport'], $id );
-
-		$default = ( isset( $arguments['default'] )
-			? $arguments['default']
-			: '' );
-
-		$preview_default = isset( $arguments['preview_default'] )
-			? $arguments['preview_default']
-			: $default;
-
-		$customize_manager->add_setting(
-			$id,
-			array(
-				'default'           => $preview_default,
-				'theme_supports'    => Config::get_support(),
-				'transport'         => $transport,
-				'sanitize_callback' =>
-					isset( $arguments['sanitize_callback'] )
-						? $arguments['sanitize_callback']
-						: 'wp_filter_nohtml_kses',
-			)
-		);
-		self::$settings[ $id ] = [
-			'default'         => $default,
-			'preview_default' => $preview_default,
-		];
-
-		if ( ! isset( $arguments['type'] ) ) {
-			return $customize_manager;
-		}
-		$type         = $arguments['type'];
-		$control_args = array_merge(
-			[
-				'label'   => isset( $arguments['label'] ) ? $arguments['label'] : '',
-				'section' => isset( $arguments['section'] ) ? $arguments['section'] : '',
-			],
-			isset( $arguments['options'] ) ? $arguments['options'] : []
-		);
-
-		if ( ! is_subclass_of( $type, '\WP_Customize_Control' ) ) {
-			$control_args['type'] = $type;
-			$customize_manager->add_control(
+			$customize_manager->add_setting(
 				$id,
-				$control_args
-			);
-		} else {
-			$customize_manager->add_control(
-				new $type(
-					$customize_manager,
-					$id,
-					$control_args
+				array(
+					'default'           => $arguments['preview_default'],
+					'theme_supports'    => Config::get_support(),
+					'transport'         => $transport,
+					'sanitize_callback' =>
+						isset( $arguments['sanitize_callback'] )
+							? $arguments['sanitize_callback']
+							: 'wp_filter_nohtml_kses',
 				)
 			);
+
+			if ( ! isset( $arguments['type'] ) ) {
+				continue;
+			}
+			$type = $arguments['type'];
+
+			$control_args = array_merge(
+				[
+					'label'   => isset( $arguments['label'] ) ? $arguments['label'] : '',
+					'section' => isset( $arguments['section'] ) ? $arguments['section'] : '',
+				],
+				isset( $arguments['options'] ) ? $arguments['options'] : []
+			);
+
+			if ( ! is_subclass_of( $type, '\WP_Customize_Control' ) ) {
+				$control_args['type'] = $type;
+				$customize_manager->add_control(
+					$id,
+					$control_args
+				);
+			} else {
+				$customize_manager->add_control(
+					new $type(
+						$customize_manager,
+						$id,
+						$control_args
+					)
+				);
+			}
 		}
 
 		return $customize_manager;
+	}
+
+	/**
+	 *
+	 * Get settings assigned to certain group
+	 *
+	 * @param string $id Group id.
+	 *
+	 * @return array|mixed Settings ids.
+	 */
+	public function get_settings_group( $id ) {
+		return isset( self::$groups[ $id ] ) ? self::$groups[ $id ] : [];
 	}
 
 	/**
@@ -191,15 +189,55 @@ class Manager {
 	}
 
 	/**
+	 * Method used to add settings to to customizer.
 	 *
-	 * Get settings assigned to certain group
+	 * TODO: Define arguments schema.
 	 *
-	 * @param string $id Group id.
+	 * @param array $arguments Setting argument.
 	 *
-	 * @return array|mixed Settings ids.
+	 * @return bool;
 	 */
-	public function get_settings_group( $id ) {
-		return isset( self::$groups[ $id ] ) ? self::$groups[ $id ] : [];
+	public function add( $arguments = array() ) {
+
+
+		if ( count( array_diff_key( array_filter( $this->fields ), $arguments ) ) !== 0 ) {
+			return false;
+		}
+
+		$id = ( ( ! isset( $arguments['noformat'] ) || $arguments['noformat'] === false ) && isset( $arguments['group'] )
+				? $arguments['group'] . '_'
+				: '' ) . $arguments['id'];
+
+		$default = ( isset( $arguments['default'] )
+			? $arguments['default']
+			: '' );
+
+		$preview_default = isset( $arguments['preview_default'] )
+			? $arguments['preview_default']
+			: $default;
+
+		if ( isset( self::$_defaults[ $id ] ) ) {
+			$default         = self::$_defaults[ $id ];
+			$preview_default = $default;
+		}
+
+		if ( isset( $arguments['group'] ) ) {
+			if ( ! isset( self::$groups[ $arguments['group'] ] ) ) {
+				self::$groups[ $arguments['group'] ] = [];
+			}
+			self::$groups[ $arguments['group'] ][] = $id;
+		}
+
+
+		self::$settings[ $id ] = array_merge(
+			$arguments,
+			[
+				'default'         => $default,
+				'preview_default' => $preview_default,
+			] 
+		);
+
+		return true;
 	}
 
 	/**
@@ -210,6 +248,7 @@ class Manager {
 	 * @return mixed|null Transport group.
 	 */
 	public function get_transport_group( $id ) {
+
 		return isset( self::$transport_groups[ $id ] ) ? self::$transport_groups[ $id ] : null;
 	}
 
@@ -225,7 +264,6 @@ class Manager {
 		if ( null !== $default ) {
 			return get_theme_mod( $id, $default );
 		}
-
 		if ( isset( self::$settings[ $id ]['preview_default'] ) && is_customize_preview() ) {
 			return get_theme_mod( $id, self::$settings[ $id ]['preview_default'] );
 		}

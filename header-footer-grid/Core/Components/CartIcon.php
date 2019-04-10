@@ -12,7 +12,6 @@
 namespace HFG\Core\Components;
 
 use HFG\Main;
-use WP_Customize_Manager;
 
 /**
  * Class SearchResponsive
@@ -36,16 +35,10 @@ class CartIcon extends Abstract_Component {
 	}
 
 	/**
-	 * Called to register component controls.
-	 *
-	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
-	 *
-	 * @return WP_Customize_Manager
-	 * @since   1.0.0
-	 * @access  public
+	 * Define settings for this component.
 	 */
-	public function add_settings( WP_Customize_Manager $wp_customize ) {
-		return $wp_customize;
+	public function add_settings() {
+		// TODO: Implement add_settings() method.
 	}
 
 	/**

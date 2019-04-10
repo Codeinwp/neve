@@ -40,20 +40,24 @@ abstract class Abstract_FooterWidget extends Abstract_Component {
 	}
 
 	/**
-	 * Called to register component controls.
+	 * Change section name based on the child section.
 	 *
-	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
+	 * @param WP_Customize_Manager $wp_customize Customizer object.
 	 *
-	 * @return WP_Customize_Manager
-	 * @since   1.0.0
-	 * @access  public
+	 * @return WP_Customize_Manager Customizer object.
 	 */
-	public function add_settings( WP_Customize_Manager $wp_customize ) {
-
-
+	public function customize_register( WP_Customize_Manager $wp_customize ) {
+		parent::customize_register( $wp_customize );
 		$wp_customize->get_section( $this->section )->panel = $this->panel;
 
-		return ( $wp_customize );
+		return $wp_customize;
+	}
+
+	/**
+	 * Generic settings, if any.
+	 */
+	public function add_settings() {
+
 	}
 
 	/**

@@ -43,13 +43,10 @@ class NavFooter extends Abstract_Component {
 	/**
 	 * Called to register component controls.
 	 *
-	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
-	 *
-	 * @return WP_Customize_Manager
 	 * @since   1.0.0
 	 * @access  public
 	 */
-	public function add_settings( WP_Customize_Manager $wp_customize ) {
+	public function add_settings() {
 
 
 		SettingsManager::get_instance()->add(
@@ -64,27 +61,26 @@ class NavFooter extends Abstract_Component {
 				'options'           => [
 					'choices' => array(
 						'style-plain'         => array(
-							'url'  => Settings::get_instance()->url . '/assets/images/customizer/menu_style_1.svg',
+							'url'  => Settings\Config::get_url() . '/assets/images/customizer/menu_style_1.svg',
 							'name' => '',
 						),
 						'style-full-height'   => array(
-							'url'  => Settings::get_instance()->url . '/assets/images/customizer/menu_style_2.svg',
+							'url'  => Settings\Config::get_url() . '/assets/images/customizer/menu_style_2.svg',
 							'name' => '',
 						),
 						'style-border-bottom' => array(
-							'url'  => Settings::get_instance()->url . '/assets/images/customizer/menu_style_3.svg',
+							'url'  => Settings\Config::get_url() . '/assets/images/customizer/menu_style_3.svg',
 							'name' => '',
 						),
 						'style-border-top'    => array(
-							'url'  => Settings::get_instance()->url . '/assets/images/customizer/menu_style_4.svg',
+							'url'  => Settings\Config::get_url() . '/assets/images/customizer/menu_style_4.svg',
 							'name' => '',
 						),
 					),
 
 				],
 				'section'           => $this->section,
-			],
-			$wp_customize
+			]
 		);
 
 		SettingsManager::get_instance()->add(
@@ -97,8 +93,7 @@ class NavFooter extends Abstract_Component {
 				'label'             => __( 'Items Color', 'neve' ),
 				'type'              => '\WP_Customize_Color_Control',
 				'section'           => $this->section,
-			],
-			$wp_customize
+			]
 		);
 
 		SettingsManager::get_instance()->add(
@@ -111,8 +106,7 @@ class NavFooter extends Abstract_Component {
 				'label'             => __( 'Items Hover Color', 'neve' ),
 				'type'              => '\WP_Customize_Color_Control',
 				'section'           => $this->section,
-			],
-			$wp_customize
+			]
 		);
 
 		SettingsManager::get_instance()->add(
@@ -129,11 +123,8 @@ class NavFooter extends Abstract_Component {
 					'shortcut'     => true,
 				],
 				'section'           => $this->section,
-			],
-			$wp_customize
+			]
 		);
-
-		return $wp_customize;
 	}
 
 	/**

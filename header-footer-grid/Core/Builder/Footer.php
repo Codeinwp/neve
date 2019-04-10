@@ -33,20 +33,9 @@ class Footer extends Abstract_Builder {
 	 */
 	public function init() {
 		$this->set_property( 'title', __( 'Footer', 'neve' ) );
-		$this->set_property( 'control_id', 'hfg_footer_layout' );
-		$this->set_property( 'panel', 'hfg_footer' );
 		$this->devices = [
 			'desktop' => 'Footer Layout',
 		];
-	}
-
-	/**
-	 * Default data.
-	 *
-	 * @return array Default data.
-	 */
-	public function define_defaults() {
-		return Settings::get_instance()->get_footer_defaults_neve();
 	}
 
 	/**
@@ -83,9 +72,9 @@ class Footer extends Abstract_Builder {
 	/**
 	 * Overrides parent method to limit rows.
 	 *
+	 * @return array
 	 * @since   1.0.0
 	 * @access  protected
-	 * @return array
 	 */
 	protected function get_rows() {
 		return [

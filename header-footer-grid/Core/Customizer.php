@@ -49,7 +49,6 @@ class Customizer {
 		if ( empty( $theme_support ) ) {
 			return;
 		}
-
 		$theme_support = reset( $theme_support );
 		foreach ( $theme_support['builders'] as $builder => $components ) {
 			if ( class_exists( $builder ) && in_array( 'HFG\Core\Interfaces\Builder', class_implements( $builder ) ) ) {

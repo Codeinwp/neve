@@ -46,13 +46,10 @@ class MenuIcon extends Abstract_Component {
 	/**
 	 * Called to register component controls.
 	 *
-	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
-	 *
-	 * @return WP_Customize_Manager
 	 * @since   1.0.0
 	 * @access  public
 	 */
-	public function add_settings( WP_Customize_Manager $wp_customize ) {
+	public function add_settings() {
 
 		SettingsManager::get_instance()->add(
 			[
@@ -64,8 +61,7 @@ class MenuIcon extends Abstract_Component {
 				'label'             => __( 'Text', 'neve' ),
 				'type'              => 'text',
 				'section'           => $this->section,
-			],
-			$wp_customize
+			]
 		);
 
 		SettingsManager::get_instance()->add(
@@ -81,12 +77,10 @@ class MenuIcon extends Abstract_Component {
 					'type' => 'checkbox-toggle',
 				],
 				'section'           => $this->section,
-			],
-			$wp_customize
+			]
 		);
 
 
-		return $wp_customize;
 	}
 
 	/**

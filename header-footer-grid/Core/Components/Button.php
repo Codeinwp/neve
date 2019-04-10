@@ -42,22 +42,11 @@ class Button extends Abstract_Component {
 	/**
 	 * Called to register component controls.
 	 *
-	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
-	 *
-	 * @return WP_Customize_Manager
 	 * @since   1.0.0
 	 * @access  public
 	 */
-	public function add_settings( WP_Customize_Manager $wp_customize ) {
+	public function add_settings() {
 
-		$wp_customize->add_section(
-			$this->section,
-			array(
-				'title'    => $this->label,
-				'priority' => 30,
-				'panel'    => $this->panel,
-			)
-		);
 
 		SettingsManager::get_instance()->add(
 			[
@@ -69,8 +58,7 @@ class Button extends Abstract_Component {
 				'label'             => __( 'Link', 'neve' ),
 				'type'              => 'text',
 				'section'           => $this->section,
-			],
-			$wp_customize
+			]
 		);
 		SettingsManager::get_instance()->add(
 			[
@@ -82,11 +70,9 @@ class Button extends Abstract_Component {
 				'label'             => __( 'Text', 'neve' ),
 				'type'              => 'text',
 				'section'           => $this->section,
-			],
-			$wp_customize
+			]
 		);
 
-		return $wp_customize;
 	}
 
 	/**

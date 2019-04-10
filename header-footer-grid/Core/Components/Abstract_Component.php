@@ -126,6 +126,7 @@ abstract class Abstract_Component implements Component {
 		if ( $this->section === null ) {
 			$this->set_property( 'section', $this->get_id() );
 		}
+		add_action( 'init', [ $this, 'define_settings' ] );
 	}
 
 	/**
@@ -203,6 +204,52 @@ abstract class Abstract_Component implements Component {
 	}
 
 	/**
+	 * Define global settings.
+	 */
+	public function define_settings() {
+
+		$this->add_settings();
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'                => self::ALIGNAMENT_ID,
+				'group'             => $this->get_id(),
+				'transport'         => 'post' . $this->get_builder_id(),
+				'sanitize_callback' => 'wp_filter_nohtml_kses',
+				'default'           => $this->default_align,
+				'label'             => __( 'Component Alignment', 'neve' ),
+				'type'              => '\Neve\Customizer\Controls\Radio_Image',
+				'options'           => [
+					'choices' => [
+						'left'   => [
+							'url' => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAS8AAADYBAMAAABIEHj+AAAAHlBMVEU/xPuk3/2w4/3P7f7V7/7a8f72/P/6/f/7/f////+OFjDPAAAA2ElEQVR42u3boQ2AMBCG0WLwBIElBMEarMBkWLZFV1RcQmibvG+CZy+XPz1tdicwMDAwMDAwMDAwMDAwMDAwMDCwfmHXFur4DbamUCMYGBgYGBgYGBgYWF+wcwq1ON/AwMDAwMDAwMDAwD6BBT8j5fa651u5AQwMDAwMDAwMDAysRVjwM1JudleCgYGBgYGBgYGBgdmMgIGBgYGBgYGBgYG1DrMZAQMDAwMDAwMDAwOrArMZAQMDAwMDAwMDAwOzGXFXgoGBgYGBgYGBgYGBgYGBgYGBgeWwF756V4XSI6GKAAAAAElFTkSuQmCC',
+						],
+						'center' => [
+							'url' => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAS8AAADYBAMAAABIEHj+AAAAHlBMVEU/xPuk3/2w4/3P7f7V7/7a8f72/P/6/f/7/f////+OFjDPAAAA1UlEQVR42u3bMQ2AMBRF0SKhwQBpMIIFXCABCWysuGVma8hPU8i5Cs76hpeuPjsTGBgYGBgYGBgYGBgYGBgYGBgY2H9gpbqjLSxVt4GBgYGBgYGBgYGBfRCWq9vNNzAwMDAwMDAwMDCw97C1BDUHw6YU1AAGBgYGBgYGBgYG1iNsyUGNdiUYGBgYGBgYGBgYmM8IGBgYGBgYGBgYGNjXYD4jYGBgYGBgYGBgYGBNYD4jYGBgYGBgYGBgYGA+I3YlGBgYGBgYGBgYGBgYGBgYGBgY2BN2A1O85EFHf1n6AAAAAElFTkSuQmCC',
+						],
+						'right'  => [
+							'url' => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAS8AAADYBAMAAABIEHj+AAAAElBMVEU/xPuk3/2w4/3V7/7a8f7///90D081AAAA1ElEQVR42u3bsQ2AIBCGURoGsKA3JA7gCk5g4/6rWFtechow75vgtRf4yzVmZwEDAwMDAwMDAwMDAwMDAwMDAwP7I+zoobbPYGsJVcHAwMDAwMDAwMDA5oLtS6jmfAMDAwMDAwMDAwMDC8B6VtkvIyWrCgYGBgYGBgYGBgY2ImzJqrkrwcDAwMDAwMDAwMBsRvy4AwMDAwMDAwMDA5sXZjMCBgYGBgYGBgYGBvYizGYEDAwMDAwMDAwMDMxmxF0JBgYGBgYGBgYGBgYGBgYGBgYG9oTdBpDUhkRAaPoAAAAASUVORK5CYII=',
+						],
+					],
+
+				],
+				'section'           => $this->section,
+			]
+		);
+
+		do_action( 'hfg_component_settings', $this->get_id() );
+	}
+
+	/**
+	 * Get builder where component can be used.
+	 *
+	 * @return string Assigned builder.
+	 */
+	public function get_builder_id() {
+		return $this->builder_id;
+	}
+
+	/**
 	 * Called to register component controls.
 	 *
 	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
@@ -222,37 +269,7 @@ abstract class Abstract_Component implements Component {
 			)
 		);
 
-		$this->add_settings( $wp_customize );
-
-		SettingsManager::get_instance()->add(
-			[
-				'id'                => self::ALIGNAMENT_ID,
-				'group'             => $this->get_id(),
-				'transport'         => 'post' . $this->get_builder_id(),
-				'sanitize_callback' => 'wp_filter_nohtml_kses',
-				'default'           => $this->get_align_default(),
-				'label'             => __( 'Component Alignment', 'neve' ),
-				'type'              => '\Neve\Customizer\Controls\Radio_Image',
-				'options'           => [
-					'choices' => [
-						'left'   => [
-							'url' => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAS8AAADYBAMAAABIEHj+AAAAHlBMVEU/xPuk3/2w4/3P7f7V7/7a8f72/P/6/f/7/f////+OFjDPAAAA2ElEQVR42u3boQ2AMBCG0WLwBIElBMEarMBkWLZFV1RcQmibvG+CZy+XPz1tdicwMDAwMDAwMDAwMDAwMDAwMDCwfmHXFur4DbamUCMYGBgYGBgYGBgYWF+wcwq1ON/AwMDAwMDAwMDAwD6BBT8j5fa651u5AQwMDAwMDAwMDAysRVjwM1JudleCgYGBgYGBgYGBgdmMgIGBgYGBgYGBgYG1DrMZAQMDAwMDAwMDAwOrArMZAQMDAwMDAwMDAwOzGXFXgoGBgYGBgYGBgYGBgYGBgYGBgeWwF756V4XSI6GKAAAAAElFTkSuQmCC',
-						],
-						'center' => [
-							'url' => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAS8AAADYBAMAAABIEHj+AAAAHlBMVEU/xPuk3/2w4/3P7f7V7/7a8f72/P/6/f/7/f////+OFjDPAAAA1UlEQVR42u3bMQ2AMBRF0SKhwQBpMIIFXCABCWysuGVma8hPU8i5Cs76hpeuPjsTGBgYGBgYGBgYGBgYGBgYGBgY2H9gpbqjLSxVt4GBgYGBgYGBgYGBfRCWq9vNNzAwMDAwMDAwMDCw97C1BDUHw6YU1AAGBgYGBgYGBgYG1iNsyUGNdiUYGBgYGBgYGBgYmM8IGBgYGBgYGBgYGNjXYD4jYGBgYGBgYGBgYGBNYD4jYGBgYGBgYGBgYGA+I3YlGBgYGBgYGBgYGBgYGBgYGBgY2BN2A1O85EFHf1n6AAAAAElFTkSuQmCC',
-						],
-						'right'  => [
-							'url' => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAS8AAADYBAMAAABIEHj+AAAAElBMVEU/xPuk3/2w4/3V7/7a8f7///90D081AAAA1ElEQVR42u3bsQ2AIBCGURoGsKA3JA7gCk5g4/6rWFtechow75vgtRf4yzVmZwEDAwMDAwMDAwMDAwMDAwMDAwP7I+zoobbPYGsJVcHAwMDAwMDAwMDA5oLtS6jmfAMDAwMDAwMDAwMDC8B6VtkvIyWrCgYGBgYGBgYGBgY2ImzJqrkrwcDAwMDAwMDAwMBsRvy4AwMDAwMDAwMDA5sXZjMCBgYGBgYGBgYGBvYizGYEDAwMDAwMDAwMDMxmxF0JBgYGBgYGBgYGBgYGBgYGBgYG9oTdBpDUhkRAaPoAAAAASUVORK5CYII=',
-						],
-					],
-
-				],
-				'section'           => $this->section,
-			],
-			$wp_customize
-		);
-
-		do_action( 'hfg_component_settings', $this->get_id(), $wp_customize );
+		Settings\Manager::get_instance()->load( $this->get_id(), $wp_customize );
 
 		$wp_customize->selective_refresh->add_partial(
 			$this->get_id() . '_partial',
@@ -264,29 +281,6 @@ abstract class Abstract_Component implements Component {
 		);
 
 		return $wp_customize;
-	}
-
-	/**
-	 * Get builder where component can be used.
-	 *
-	 * @return string Assigned builder.
-	 */
-	public function get_builder_id() {
-		return $this->builder_id;
-	}
-
-	/**
-	 * Get default align.
-	 *
-	 * @return mixed|string|null Default align.
-	 */
-	public function get_align_default() {
-		$setting_default = Settings::get_instance()->get_default_component_align( $this->get_id() );
-		if ( null !== $setting_default ) {
-			return $setting_default;
-		}
-
-		return $this->default_align;
 	}
 
 	/**

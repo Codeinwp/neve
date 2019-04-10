@@ -34,8 +34,6 @@ class Header extends Abstract_Builder {
 	 */
 	public function init() {
 		$this->set_property( 'title', __( 'Header', 'neve' ) );
-		$this->set_property( 'control_id', 'hfg_header_layout' );
-		$this->set_property( 'panel', 'hfg_header' );
 	}
 
 
@@ -76,14 +74,6 @@ class Header extends Abstract_Builder {
 		Main::get_instance()->load( 'row-wrapper', $name );
 	}
 
-	/**
-	 * Default data.
-	 *
-	 * @return array Default data.
-	 */
-	public function define_defaults() {
-		return Settings::get_instance()->get_header_defaults_neve();
-	}
 
 	/**
 	 * Return  the builder rows.
