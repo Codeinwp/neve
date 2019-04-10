@@ -16,7 +16,7 @@ use HFG\Main;
 use WP_Customize_Manager;
 
 /**
- * Class Logo
+ * Class Logo.
  *
  * @package HFG\Core\Components
  */
