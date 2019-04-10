@@ -61,7 +61,7 @@ final class Manager {
 			if ( ! class_exists( $control_manager ) ) {
 				continue;
 			}
-			$control_instance = new $control_manager;
+			$control_instance = new $control_manager();
 			if ( ! $control_instance instanceof Controls_Base ) {
 				continue;
 			}

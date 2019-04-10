@@ -9,16 +9,11 @@
  */
 namespace HFG;
 
-use HFG\Core\Builder\Footer;
+use HFG\Core\Components\NavFooter;
 
-$_id        = current_component( Footer::BUILDER_NAME )->get_id();
-$style      = get_theme_mod( $_id . '_style', 'style-plain' );
-$hide_arrow = get_theme_mod( $_id . '_hide-arrow', false );
+$style = component_setting( NavFooter::STYLE_ID );
 
-$container_classes = array( $style );
-if ( $hide_arrow ) {
-	$container_classes[] = ' hide-arrow-active';
-}
+$container_classes = [ $style ];
 
 $container_classes[] = 'nav-menu-footer';
 

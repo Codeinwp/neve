@@ -35,6 +35,7 @@ add_theme_support(
 	)
 );
 require_once 'functions-template.php';
+require_once 'functions-migration.php';
 
 add_action(
 	'neve_do_footer',
@@ -42,6 +43,7 @@ add_action(
 		do_action( 'hfg_footer_render' );
 	}
 );
+
 add_action(
 	'neve_do_header',
 	function () {
@@ -49,5 +51,5 @@ add_action(
 	}
 );
 if ( version_compare( PHP_VERSION, '5.3.29' ) > 0 && class_exists( 'HFG\Main' ) ) {
-	add_action( 'init', 'HFG\Main::get_instance' );
+	add_action( 'after_setup_theme', 'HFG\Main::get_instance' );
 }

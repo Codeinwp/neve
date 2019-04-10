@@ -130,7 +130,7 @@ abstract class Control_Base {
 	 *
 	 * @return mixed
 	 */
-	protected final function get_value( $post_id ) {
+	final protected function get_value( $post_id ) {
 		$values = get_post_meta( $post_id );
 
 		return isset( $values[ $this->id ] ) ? esc_attr( $values[ $this->id ][0] ) : $this->settings['default'];
@@ -143,7 +143,7 @@ abstract class Control_Base {
 	 *
 	 * @return void
 	 */
-	public final function save( $post_id ) {
+	final public function save( $post_id ) {
 		if ( ! isset( $_POST['neve_meta_box_process'] ) ) {
 			return;
 		}

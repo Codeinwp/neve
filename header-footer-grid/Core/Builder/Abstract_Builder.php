@@ -15,9 +15,8 @@ use HFG\Core\Components\Abstract_Component;
 use HFG\Core\Interfaces\Builder;
 use HFG\Core\Interfaces\Component;
 use HFG\Core\Settings;
+use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Traits\Core;
-use Neve\Customizer\Controls\Radio_Image;
-use Neve\Customizer\Controls\Range;
 use WP_Customize_Manager;
 
 /**
@@ -27,7 +26,9 @@ use WP_Customize_Manager;
  */
 abstract class Abstract_Builder implements Builder {
 	use Core;
-
+	const LAYOUT_SETTING = 'layout';
+	const HEIGHT_SETTING = 'height';
+	const SKIN_SETTING   = 'skin';
 	/**
 	 * Internal pointer for current device id.
 	 *
@@ -134,16 +135,171 @@ abstract class Abstract_Builder implements Builder {
 	 * @access  public
 	 */
 	public function __construct() {
+
+		$this->set_property( 'control_id', 'hfg_' . $this->get_id() . '_layout' );
+		$this->set_property( 'panel', 'hfg_' . $this->get_id() );
+		$this->set_property( 'section', $this->control_id . '_section' );
 		$this->init();
 
-		add_action( 'hfg_' . $this->get_id() . '_render', array( $this, 'load_template' ) );
-		add_filter( 'theme_mod_' . $this->control_id, array( $this, 'filter_defaults' ) );
+		add_action( 'hfg_' . $this->get_id() . '_render', [ $this, 'load_template' ] );
+
+		$this->define_builder_settings();
+
+		foreach ( $this->get_rows() as $row_id => $row_name ) {
+			$this->define_row_settings( $row_id );
+		}
 	}
 
 	/**
-	 *  Define templates used to loading the builder.
+	 * Method to set protected properties for class.
+	 *
+	 * @param string $key The property key name.
+	 * @param string $value The property value.
+	 *
+	 * @return bool
+	 * @since   1.0.0
+	 * @access  protected
 	 */
-	public abstract function load_template();
+	protected function set_property( $key = '', $value = '' ) {
+		if ( ! property_exists( $this, $key ) ) {
+			return false;
+		}
+		$this->$key = $value;
+
+		return true;
+	}
+
+	/**
+	 * Define builder settings.
+	 */
+	public function define_builder_settings() {
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'                => $this->control_id,
+				'group'             => $this->control_id,
+				'noformat'          => true,
+				'transport'         => 'post' . $this->get_id(),
+				'sanitize_callback' => [ $this, 'sanitize_json' ],
+				'default'           => '',
+				'label'             => '',
+				'type'              => 'text',
+				'section'           => $this->section,
+			]
+		);
+		do_action( 'hfg_row_settings', $this->get_id(), $this->control_id );
+
+	}
+
+	/**
+	 * Used to define the rows in the builder sections.
+	 *
+	 * @return array Rows array.
+	 */
+	abstract protected function get_rows();
+
+	/**
+	 * Define Row settings.
+	 *
+	 * @param string $row_id Row id.
+	 */
+	public function define_row_settings( $row_id ) {
+
+		$row_setting_id = $this->control_id . '_' . $row_id;
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'                => $row_setting_id,
+				'transport'         => 'postMessage',
+				'sanitize_callback' => array( $this, 'sanitize_json' ),
+				'default'           => '',
+			]
+		);
+
+		if ( $row_id !== 'sidebar' ) {
+			SettingsManager::get_instance()->add(
+				[
+					'id'                => self::LAYOUT_SETTING,
+					'group'             => $row_setting_id,
+					'label'             => __( 'Layout', 'neve' ),
+					'type'              => 'select',
+					'section'           => $row_setting_id,
+					'options'           => [
+						'choices' => [
+							'layout-full-contained' => __( 'Full Width', 'neve' ) . ' - ' . __( 'Contained', 'neve' ),
+							'layout-fullwidth'      => __( 'Full Width', 'neve' ),
+							'layout-contained'      => __( 'Contained', 'neve' ),
+						],
+					],
+					'transport'         => 'post' . $row_setting_id,
+					'sanitize_callback' => 'wp_filter_nohtml_kses',
+					'default'           => 'layout-full-contained',
+				]
+			);
+			SettingsManager::get_instance()->add(
+				[
+					'id'                => self::HEIGHT_SETTING,
+					'group'             => $row_setting_id,
+					'section'           => $row_setting_id,
+					'label'             => __( 'Row height (px)', 'neve' ),
+					'type'              => '\Neve\Customizer\Controls\Range',
+					'options'           => [
+						'type'        => 'range-value',
+						'media_query' => true,
+						'step'        => 1,
+						'input_attr'  => [
+							'mobile'  => [
+								'min'     => 0,
+								'max'     => 350,
+								'default' => 0,
+							],
+							'tablet'  => [
+								'min'     => 0,
+								'max'     => 350,
+								'default' => 0,
+							],
+							'desktop' => [
+								'min'     => 0,
+								'max'     => 350,
+								'default' => 0,
+							],
+						],
+					],
+					'transport'         => 'post' . $row_setting_id,
+					'sanitize_callback' => array( $this, 'sanitize_responsive_int_json' ),
+					'default'           => '{ "mobile": "0", "tablet": "0", "desktop": "0" }',
+				]
+			);
+		}
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'                => self::SKIN_SETTING,
+				'group'             => $row_setting_id,
+				'label'             => __( 'Skin Mode', 'neve' ),
+				'section'           => $row_setting_id,
+				'type'              => '\Neve\Customizer\Controls\Radio_Image',
+				'options'           => [
+					'choices' => [
+						'light-mode' => array(
+							'url'  => Settings\Config::get_url() . '/assets/images/customizer/text_mode_dark.svg',
+							'name' => '',
+						),
+						'dark-mode'  => array(
+							'url'  => Settings\Config::get_url() . '/assets/images/customizer/text_mode_light.svg',
+							'name' => '',
+						),
+					],
+				],
+				'transport'         => 'post' . $row_setting_id,
+				'sanitize_callback' => 'wp_filter_nohtml_kses',
+				'default'           => 'light-mode',
+			]
+		);
+
+		do_action( 'hfg_row_settings', $this->get_id(), $row_id, $row_setting_id );
+	}
+
 	/**
 	 * Returns current builder id.
 	 *
@@ -154,14 +310,18 @@ abstract class Abstract_Builder implements Builder {
 	}
 
 	/**
+	 *  Define templates used to loading the builder.
+	 */
+	abstract public function load_template();
+
+	/**
 	 * Method to get protected properties for class.
-	 *
-	 * @since   1.0.0
-	 * @access  protected
 	 *
 	 * @param string $key The property key name.
 	 *
 	 * @return mixed
+	 * @since   1.0.0
+	 * @access  protected
 	 */
 	public function get_property( $key = '' ) {
 		if ( ! property_exists( $this, $key ) ) {
@@ -184,10 +344,9 @@ abstract class Abstract_Builder implements Builder {
 	/**
 	 * Returns a string of css rules.
 	 *
+	 * @return string
 	 * @since   1.0.0
 	 * @access  protected
-	 *
-	 * @return string
 	 */
 	protected function inline_builder_styles() {
 		$style = '';
@@ -206,132 +365,76 @@ abstract class Abstract_Builder implements Builder {
 	}
 
 	/**
-	 * Used to define the rows in the builder sections.
-	 *
-	 * @return array Rows array.
-	 */
-	protected abstract function get_rows();
-
-	/**
 	 * Called to register component controls.
-	 *
-	 * @since   1.0.0
-	 * @access  public
 	 *
 	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
 	 *
 	 * @return WP_Customize_Manager
+	 * @since   1.0.0
+	 * @access  public
 	 */
 	public function customize_register( WP_Customize_Manager $wp_customize ) {
-		if ( ! empty( $this->remove_panels ) ) {
-			foreach ( $this->remove_panels as $panel_to_remove ) {
-				$wp_customize->remove_panel( $panel_to_remove );
-			}
-		}
 
-		if ( ! empty( $this->remove_sections ) ) {
-			foreach ( $this->remove_sections as $section_to_remove ) {
-				$wp_customize->remove_section( $section_to_remove );
-			}
-		}
-
-		$settings_for_parent = array();
 		/**
 		 * An instance of Component.
 		 *
 		 * @var Component $component
 		 */
 		foreach ( $this->builder_components as $component ) {
-			$settings_for_parent = array_merge( $settings_for_parent, $component->customize_register( $wp_customize ) );
+			$component->customize_register( $wp_customize );
 		}
 
-		if ( null === $wp_customize->get_panel( $this->panel ) ) {
-			$this->set_property( 'section', $this->control_id . '_section' );
-			$builder_title = ( isset( $this->title ) && ! empty( $this->title ) ) ? $this->title : __( 'Header', 'neve' );
-
-			$wp_customize->add_panel(
-				$this->panel,
-				array(
-					'priority'       => 25,
-					'capability'     => 'edit_theme_options',
-					'theme_supports' => 'hfg_support',
-					'title'          => $builder_title,
-					'description'    => '',
-				)
-			);
-
-			$wp_customize->add_section(
-				$this->section,
-				array(
-					'title'    => __( 'Header', 'neve' ),
-					'priority' => 299,
-					'panel'    => $this->panel,
-				)
-			);
-
-			$wp_customize->add_setting(
-				$this->control_id,
-				array(
-					'default'           => '',
-					'transport'         => 'postMessage',
-					'sanitize_callback' => array( $this, 'sanitize_json' ),
-				)
-			);
-
-			$wp_customize->selective_refresh->add_partial(
-				$this->control_id . '_partial',
-				array(
-					'selector'        => '.' . $this->panel,
-					'settings'        => array_merge( $settings_for_parent, array( $this->control_id ) ),
-					'render_callback' => array( $this, 'render' ),
-				)
-			);
-
-			$wp_customize->add_control(
-				$this->control_id,
-				array(
-					'section'        => $this->control_id . '_section',
-					'settings'       => $this->control_id,
-					'theme_supports' => 'hfg_support',
-					'type'           => 'text',
-				)
-			);
-
-			$this->add_rows_controls( $wp_customize );
+		if ( null !== $wp_customize->get_panel( $this->panel ) ) {
+			return $wp_customize;
 		}
+
+		$title = ( isset( $this->title ) && ! empty( $this->title ) )
+			? $this->title
+			: __( 'Header', 'neve' );
+
+		$wp_customize->add_panel(
+			$this->panel,
+			array(
+				'priority'       => 25,
+				'capability'     => 'edit_theme_options',
+				'theme_supports' => Settings\Config::get_support(),
+				'title'          => $title,
+				'description'    => '',
+			)
+		);
+		$wp_customize->add_section(
+			$this->section,
+			array(
+				'title'    => $title,
+				'priority' => 299,
+				'panel'    => $this->panel,
+			)
+		);
+
+		Settings\Manager::get_instance()->load( $this->control_id, $wp_customize );
+
+		$this->add_rows_controls( $wp_customize );
+
+		$wp_customize->selective_refresh->add_partial(
+			$this->control_id . '_partial',
+			array(
+				'selector'        => '.' . $this->panel,
+				'settings'        => Settings\Manager::get_instance()->get_transport_group( $this->get_id() ),
+				'render_callback' => array( $this, 'render' ),
+			)
+		);
 
 		return $wp_customize;
 	}
 
 	/**
-	 * Method to set protected properties for class.
-	 *
-	 * @since   1.0.0
-	 * @access  protected
-	 *
-	 * @param string $key The property key name.
-	 * @param string $value The property value.
-	 *
-	 * @return bool
-	 */
-	protected function set_property( $key = '', $value = '' ) {
-		if ( ! property_exists( $this, $key ) ) {
-			return false;
-		}
-		$this->$key = $value;
-
-		return true;
-	}
-
-	/**
 	 * Adds row controls.
-	 *
-	 * @since   1.0.0
-	 * @access  protected
 	 *
 	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
 	 *
 	 * @return WP_Customize_Manager|null
+	 * @since   1.0.0
+	 * @access  protected
 	 */
 	protected function add_rows_controls( $wp_customize ) {
 		$rows = $this->get_rows();
@@ -339,9 +442,10 @@ abstract class Abstract_Builder implements Builder {
 			return null;
 		}
 		foreach ( $rows as $row_id => $row_label ) {
-			$partial_settings = array();
+
+			$row_setting_id = $this->control_id . '_' . $row_id;
 			$wp_customize->add_section(
-				$this->control_id . '_' . $row_id,
+				$row_setting_id,
 				array(
 					'title'    => $row_label,
 					'priority' => 100,
@@ -349,121 +453,13 @@ abstract class Abstract_Builder implements Builder {
 				)
 			);
 
-			$wp_customize->add_setting(
-				$this->control_id . '_' . $row_id,
-				array(
-					'transport'         => 'postMessage',
-					'theme_supports'    => 'hfg_support',
-					'default'           => '',
-					'sanitize_callback' => array( $this, 'sanitize_json' ),
-				)
-			);
-
-			if ( $row_id !== 'sidebar' ) {
-				$wp_customize->add_setting(
-					$this->control_id . '_' . $row_id . '_layout',
-					array(
-						'theme_supports'    => 'hfg_support',
-						'transport'         => 'postMessage',
-						'default'           => 'layout-full-contained',
-						'sanitize_callback' => 'wp_filter_nohtml_kses',
-					)
-				);
-				array_push( $partial_settings, $this->control_id . '_' . $row_id . '_layout' );
-				$wp_customize->add_control(
-					$this->control_id . '_' . $row_id . '_layout',
-					[
-						'label'   => __( 'Layout', 'neve' ),
-						'type'    => 'select',
-						'section' => $this->control_id . '_' . $row_id,
-						'choices' => array(
-							'layout-full-contained' => __( 'Full Width', 'neve' ) . ' - ' . __( 'Contained', 'neve' ),
-							'layout-fullwidth'      => __( 'Full Width', 'neve' ),
-							'layout-contained'      => __( 'Contained', 'neve' ),
-						),
-					]
-				);
-
-				$wp_customize->add_setting(
-					$this->control_id . '_' . $row_id . '_height',
-					array(
-						'theme_supports'    => 'hfg_support',
-						'transport'         => 'postMessage',
-						'default'           => '{ "mobile": "0", "tablet": "0", "desktop": "0" }',
-						'sanitize_callback' => array( $this, 'sanitize_responsive_int_json' ),
-					)
-				);
-				array_push( $partial_settings, $this->control_id . '_' . $row_id . '_height' );
-				$wp_customize->add_control(
-					new Range(
-						$wp_customize,
-						$this->control_id . '_' . $row_id . '_height',
-						array(
-							'label'       => esc_html__( 'Row height (px)', 'neve' ),
-							'section'     => $this->control_id . '_' . $row_id,
-							'type'        => 'range-value',
-							'media_query' => true,
-							'step'        => 1,
-							'input_attr'  => array(
-								'mobile'  => array(
-									'min'     => 0,
-									'max'     => 350,
-									'default' => 0,
-								),
-								'tablet'  => array(
-									'min'     => 0,
-									'max'     => 350,
-									'default' => 0,
-								),
-								'desktop' => array(
-									'min'     => 0,
-									'max'     => 350,
-									'default' => 0,
-								),
-							),
-							'priority'    => 25,
-						)
-					)
-				);
-			}
-
-			$wp_customize->add_setting(
-				$this->control_id . '_' . $row_id . '_skin',
-				array(
-					'theme_supports'    => 'hfg_support',
-					'transport'         => 'postMessage',
-					'default'           => 'light-mode',
-					'sanitize_callback' => 'wp_filter_nohtml_kses',
-				)
-			);
-			array_push( $partial_settings, $this->control_id . '_' . $row_id . '_skin' );
-			$wp_customize->add_control(
-				new Radio_Image(
-					$wp_customize,
-					$this->control_id . '_' . $row_id . '_skin',
-					[
-						'label'    => __( 'Skin Mode', 'neve' ),
-						'section'  => $this->control_id . '_' . $row_id,
-						'priority' => 10,
-						'choices'  => array(
-							'light-mode' => array(
-								'url'  => Settings::get_instance()->url . '/assets/images/customizer/text_mode_dark.svg',
-								'name' => '',
-							),
-							'dark-mode'  => array(
-								'url'  => Settings::get_instance()->url . '/assets/images/customizer/text_mode_light.svg',
-								'name' => '',
-							),
-						),
-					]
-				)
-			);
+			Settings\Manager::get_instance()->load( $row_setting_id, $wp_customize );
 
 			$wp_customize->selective_refresh->add_partial(
-				$this->control_id . '_' . $row_id . '_partial',
+				$row_setting_id . '_partial',
 				array(
 					'selector'        => '.' . $this->panel,
-					'settings'        => $partial_settings,
+					'settings'        => Settings\Manager::get_instance()->get_transport_group( $row_setting_id ),
 					'render_callback' => array( $this, 'render' ),
 				)
 			);
@@ -516,28 +512,17 @@ abstract class Abstract_Builder implements Builder {
 	 * @return array Builder data.
 	 */
 	public function get_layout_data() {
-		// TODO move default as filterable data and move default neve definition in theme integration.
-		$data = json_decode( get_theme_mod( $this->control_id, $this->define_defaults() ), true );
-
-		return wp_parse_args( $data, array_fill_keys( array_keys( $this->devices ), array_fill_keys( array_keys( $this->get_rows() ), [] ) ) );
+		return wp_parse_args( json_decode( SettingsManager::get_instance()->get( 'hfg_' . $this->get_id() . '_layout' ), true ), array_fill_keys( array_keys( $this->devices ), array_fill_keys( array_keys( $this->get_rows() ), [] ) ) );
 	}
-
-	/**
-	 * Define defaults for the builder, if any.
-	 *
-	 * @return mixed Default data.
-	 */
-	public abstract function define_defaults();
 
 	/**
 	 * Method to add Builder css styles.
 	 *
-	 * @since   1.0.0
-	 * @access  public
-	 *
 	 * @param array $css_array An array containing css rules.
 	 *
 	 * @return array
+	 * @since   1.0.0
+	 * @access  public
 	 */
 	public function add_style( array $css_array = array() ) {
 		$rows = $this->get_rows();
@@ -563,13 +548,12 @@ abstract class Abstract_Builder implements Builder {
 	/**
 	 * Method to generate css array for each row.
 	 *
-	 * @since   1.0.0
-	 * @access  private
-	 *
 	 * @param string $row_index The row index.
 	 * @param array  $css_array The css array.
 	 *
 	 * @return array
+	 * @since   1.0.0
+	 * @access  private
 	 */
 	private function add_row_style( $row_index, $css_array = array() ) {
 		$layout_height = json_decode( get_theme_mod( $this->control_id . '_' . $row_index . '_height', '{ desktop: 0, tablet: 0, mobile: 0 }' ), true );
@@ -613,24 +597,6 @@ abstract class Abstract_Builder implements Builder {
 	}
 
 	/**
-	 * Utility method to generate defaults for JS and regular PHP calls.
-	 *
-	 * @since   1.0.0
-	 * @access  public
-	 *
-	 * @param string $theme_mod The name of the mod.
-	 *
-	 * @return false|mixed|string
-	 */
-	public function filter_defaults( $theme_mod ) {
-		if ( empty( $theme_mod ) || ! $theme_mod || is_object( $theme_mod ) && count( (array) $theme_mod ) === 0 ) {
-			return $this->define_defaults();
-		}
-
-		return $theme_mod;
-	}
-
-	/**
 	 * Render components in the row.
 	 *
 	 * @param null|string $device Device id.
@@ -654,7 +620,8 @@ abstract class Abstract_Builder implements Builder {
 				if ( $item1['x'] == $item2['x'] ) {
 					return 0;
 				}
-				return $item1['x'] < $item2['x'] ? -1 : 1;
+
+				return $item1['x'] < $item2['x'] ? - 1 : 1;
 			}
 		);
 
@@ -671,10 +638,13 @@ abstract class Abstract_Builder implements Builder {
 			 *
 			 * @var Abstract_Component $component
 			 */
+			if ( ! isset( $this->builder_components[ $component_location['id'] ] ) ) {
+				continue;
+			}
 			$component = $this->builder_components[ $component_location['id'] ];
 			$x         = intval( $component_location['x'] );
 			$width     = intval( $component_location['width'] );
-			$align     = get_theme_mod( $component_location['id'] . '_component_align', $component->get_align_default() );
+			$align     = SettingsManager::get_instance()->get( $component_location['id'] . '_' . Abstract_Component::ALIGNAMENT_ID, null );
 
 			if ( ! $collection->hasNext() && ( $x + $width < $max_columns ) ) {
 				$width += $max_columns - ( $x + $width );
@@ -718,12 +688,11 @@ abstract class Abstract_Builder implements Builder {
 	/**
 	 * Register a new component for builder.
 	 *
-	 * @since   1.0.0
-	 * @access  public
-	 *
 	 * @param mixed $component_to_add A component.
 	 *
 	 * @return bool
+	 * @since   1.0.0
+	 * @access  public
 	 */
 	public function register_component( $component_to_add ) {
 
@@ -734,10 +703,11 @@ abstract class Abstract_Builder implements Builder {
 		/**
 		 * An instance of Component.
 		 *
-		 * @var Component $component
+		 * @var Abstract_Component $component
 		 */
 		$component                                        = new $component_to_add( $this->panel );
 		$this->builder_components[ $component->get_id() ] = $component;
+		$component->assign_builder( $this->get_id() );
 
 		return true;
 	}
@@ -745,12 +715,11 @@ abstract class Abstract_Builder implements Builder {
 	/**
 	 * Get a component from builder.
 	 *
-	 * @since   1.0.0
-	 * @access  public
-	 *
-	 * @param   string|null $id The id of the component.
+	 * @param string|null $id The id of the component.
 	 *
 	 * @return Abstract_Component
+	 * @since   1.0.0
+	 * @access  public
 	 */
 	public function get_component( $id = null ) {
 		if ( $id === null ) {
@@ -763,9 +732,9 @@ abstract class Abstract_Builder implements Builder {
 	/**
 	 * Returns the builder components.
 	 *
+	 * @return array
 	 * @since   1.0.0
 	 * @access  public
-	 * @return array
 	 */
 	public function get_components() {
 		return $this->builder_components;
@@ -774,11 +743,11 @@ abstract class Abstract_Builder implements Builder {
 	/**
 	 * A representation of the builder as array.
 	 *
+	 * @return array
 	 * @since   1.0.0
 	 * @access  public
-	 * @return array
 	 */
-	public final function get_builder() {
+	final public function get_builder() {
 		return array(
 			'id'         => $this->control_id,
 			'control_id' => $this->control_id,
@@ -794,9 +763,9 @@ abstract class Abstract_Builder implements Builder {
 	/**
 	 * Returns the components settings.
 	 *
+	 * @return array
 	 * @since   1.0.0
 	 * @access  public
-	 * @return array
 	 */
 	public function get_components_settings() {
 		$components_settings = array();

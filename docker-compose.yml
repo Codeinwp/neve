@@ -20,7 +20,7 @@ services:
     - 8080:80
     privileged: true
     volumes:
-    - ~/${WP_CORE_STASH:-WordPressDock/wp-core}:/var/www/html/
+    - ~/${WP_CORE_STASH:-wp-core}:/var/www/html/
     - .:/var/www/html/wp-content/themes/neve/
     restart: always
     environment:
