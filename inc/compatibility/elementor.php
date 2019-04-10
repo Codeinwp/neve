@@ -42,23 +42,9 @@ class Elementor extends Page_Builder_Base {
 		add_action( 'neve_do_top_bar', array( $this, 'do_header' ), 0 );
 		add_action( 'neve_do_header', array( $this, 'do_header' ), 0 );
 		add_action( 'neve_do_footer', array( $this, 'do_footer' ), 0 );
-
-	}
-
-	/**
-	 * Check if it page was edited with page builder.
-	 *
-	 * @param string $pid post id.
-	 *
-	 * @return bool
-	 */
-	protected function is_edited_with_builder( $pid ) {
-		$post_meta = get_post_meta( $pid, '_elementor_edit_mode', true );
-		if ( $post_meta === 'builder' ) {
-			return true;
-		}
-
-		return false;
+		add_action( 'neve_do_content_none', array( $this, 'do_content_none' ), 0 );
+		add_action( 'neve_do_single_post', array( $this, 'do_single_post' ), 0 );
+		add_action( 'neve_do_single_page', array( $this, 'do_single_page' ), 0 );
 	}
 
 	/**
@@ -90,5 +76,54 @@ class Elementor extends Page_Builder_Base {
 		if ( $did_location ) {
 			remove_all_actions( 'neve_do_footer' );
 		}
+	}
+
+	/**
+	 * Remove actions for elementor 404 to act properly.
+	 */
+	public function do_content_none() {
+		if ( ! is_404() ) {
+			return;
+		}
+		$did_location = \ElementorPro\Modules\ThemeBuilder\Module::instance()->get_locations_manager()->do_location( 'single' );
+		if ( $did_location ) {
+			remove_all_actions( 'neve_do_content_none' );
+		}
+	}
+
+	/**
+	 * Remove actions for elementor single post to act properly.
+	 */
+	public function do_single_post() {
+		$did_location = \ElementorPro\Modules\ThemeBuilder\Module::instance()->get_locations_manager()->do_location( 'single' );
+		if ( $did_location ) {
+			remove_all_actions( 'neve_do_single_post' );
+		}
+	}
+
+	/**
+	 * Remove actions for elementor single page to act properly.
+	 */
+	public function do_single_page(){
+		$did_location = \ElementorPro\Modules\ThemeBuilder\Module::instance()->get_locations_manager()->do_location( 'single' );
+		if ( $did_location ) {
+			remove_all_actions( 'neve_do_single_page' );
+		}
+	}
+
+	/**
+	 * Check if it page was edited with page builder.
+	 *
+	 * @param string $pid post id.
+	 *
+	 * @return bool
+	 */
+	protected function is_edited_with_builder( $pid ) {
+		$post_meta = get_post_meta( $pid, '_elementor_edit_mode', true );
+		if ( $post_meta === 'builder' ) {
+			return true;
+		}
+
+		return false;
 	}
 }
