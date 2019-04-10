@@ -48,7 +48,9 @@ const infiniteScroll = function () {
 
   inView('.infinite-scroll-trigger').on('enter', function () {
     if (typeof parent.wp.customize !== 'undefined') {
-      parent.wp.customize.requestChangesetUpdate().then(requestMorePosts());
+      parent.wp.customize.requestChangesetUpdate().then(function () {
+        requestMorePosts();
+      });
       return false;
     }
     requestMorePosts();
@@ -79,6 +81,9 @@ const requestMorePosts = function () {
   httpGetAsync(requestUrl, function (response) {
     blog.innerHTML += JSON.parse(response);
     refreshMasonry();
+    if (inView.is(trigger)) {
+      requestMorePosts();
+    }
   });
 };
 
