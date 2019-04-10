@@ -45,6 +45,8 @@ function neve_hfg_footer_settings() {
 		$components['footer_copyright']['component_align'] = 'center';
 	}
 
+	$components['hfg_footer_layout_bottom']['skin'] = 'dark-mode';
+
 	if ( $content_type === 'footer_menu' ) {
 		$builder['desktop']['bottom']['footer-menu']  = [
 			'id'    => 'footer-menu',
