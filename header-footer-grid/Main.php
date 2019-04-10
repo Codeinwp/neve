@@ -169,7 +169,7 @@ class Main {
 	 *
 	 * @return Abstract_Builder[] Builder array(s).
 	 */
-	public function get_builders( $builder = '' ) {
+	public function get_builders() {
 		return $this->customizer->get_builders();
 	}
 
