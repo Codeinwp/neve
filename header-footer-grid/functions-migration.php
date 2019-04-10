@@ -10,7 +10,7 @@
 /**
  * Define migration logic for footer.
  *
- * @return array Migratoin schema.
+ * @return array Migration schema.
  */
 function neve_hfg_footer_settings() {
 	$builder  = [
