@@ -24,7 +24,7 @@ if ( ! empty( $component_styles_array ) ) {
 ?>
 <div class="nv-search-icon-component"<?php echo wp_kses_post( $component_styles ); ?>>
 	<div class="menu-item-nav-search responsive-nav-search" tabindex="0">
-		<span class="nv-icon nv-search"></span>
+		<?php neve_search_icon( true ); ?>
 		<div class="nv-nav-search" tabindex="0" aria-label="search">
 			<div class="nv-nav-search">
 				<div class="container close-container">

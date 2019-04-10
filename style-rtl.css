@@ -393,54 +393,18 @@ a.neve-skip-link:focus {
   text-decoration: underline;
 }
 
-@font-face {
-  font-family: "neve-icons";
-  src: url("assets/neve-icons/neve-icons.eot?6iu2wo");
-  src: url("assets/neve-icons/neve-icons.eot?6iu2wo#iefix") format("embedded-opentype"), url("assets/neve-icons/neve-icons.ttf?6iu2wo") format("truetype"), url("assets/neve-icons/neve-icons.woff?6iu2wo") format("woff"), url("assets/neve-icons/neve-icons.svg?6iu2wo#neve-icons") format("svg");
-  font-weight: normal;
-  font-style: normal;
+.nv-search {
+  display: block;
+  width: 15px;
 }
 
 .nv-icon {
-  /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: "neve-icons" !important;
-  font-weight: normal;
-  font-style: normal;
-  font-variant: normal;
-  /* Better Font Rendering =========== */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  line-height: 1;
-  text-transform: none;
-  speak: none;
+  fill: currentColor;
 }
 
-.nv-search:before {
-  content: "\f002";
-}
-
-.nv-author:before {
-  content: "\f007";
-}
-
-.nv-comment:before {
-  content: "\f075";
-}
-
-.nv-cart:before {
-  content: "\f07a";
-}
-
-.nv-folder:before {
-  content: "\f07b";
-}
-
-.nv-calendar:before {
-  content: "\f133";
-}
-
-.nv-themeisle:before {
-  content: "\f2b2";
+.cart-icon-wrapper {
+  display: flex;
+  align-items: flex-end;
 }
 
 .nv-sidebar-full-width .alignfull, .nv-sidebar-full-width .alignwide {
@@ -823,9 +787,7 @@ blockquote.wp-block-quote.is-style-large cite {
   width: 75%;
 }
 
-.menu-item-nav-search.responsive-nav-search .nv-nav-search form:after {
-  font-family: "neve-icons";
-  content: "\f002";
+.menu-item-nav-search.responsive-nav-search .nv-nav-search form .nv-search-icon-wrap {
   position: absolute;
   top: 0;
   left: 0;
@@ -964,15 +926,6 @@ a.button.close-responsive-search:hover {
 
 #nv-primary-navigation .menu-item-nav-search:not(.responsive-nav-search) {
   display: none;
-}
-
-.menu-item-nav-search.responsive-nav-search {
-  padding-right: 12px;
-}
-
-.menu-item-nav-search.responsive-nav-search > a {
-  color: #24292e;
-  font-size: 1.2em;
 }
 
 #nv-primary-navigation > li.button, .menu > li.button {
@@ -1301,11 +1254,17 @@ button:hover, input[type=button]:hover, .btn:hover, input[type="submit"]:hover {
   opacity: .9;
 }
 
-.nv-seach-form-wrap .search-form {
+.nv-seach-form-wrap {
+  width: 100%;
   border-top: 1px solid #f0f0f0;
   padding-top: 20px;
   display: flex;
+  align-items: center;
   justify-content: center;
+}
+
+.nv-seach-form-wrap .search-form {
+  display: inline-block;
 }
 
 .nv-seach-form-wrap .search-form input[type="submit"] {
@@ -1316,22 +1275,18 @@ button:hover, input[type=button]:hover, .btn:hover, input[type="submit"]:hover {
   margin-bottom: 0;
 }
 
-.widget .search-form, .widget .woocommerce-product-search, .nv-nav-search .search-form {
+.search-form, .woocommerce-product-search {
   position: relative;
 }
 
-.widget .search-form label, .widget .woocommerce-product-search label, .nv-nav-search .search-form label {
+.search-form label, .woocommerce-product-search label {
   display: inline;
 }
 
-.widget .search-form:after, .widget .woocommerce-product-search:after, .nv-nav-search .search-form:after {
-  font-family: "neve-icons";
-  content: "\f002";
+.search-form .nv-search-icon-wrap, .woocommerce-product-search .nv-search-icon-wrap {
   position: absolute;
   top: 0;
   left: 0;
-  text-align: center;
-  line-height: 35px;
   height: 100%;
   width: 45px;
   z-index: 3;
@@ -1341,14 +1296,15 @@ button:hover, input[type=button]:hover, .btn:hover, input[type="submit"]:hover {
   display: flex;
   align-items: center;
   justify-content: center;
+  line-height: 0;
 }
 
-.widget .search-form input[type="search"], .widget .woocommerce-product-search input[type="search"], .nv-nav-search .search-form input[type="search"] {
+.search-form input[type="search"], .woocommerce-product-search input[type="search"] {
   width: 100%;
   padding: 8px 12px 7px 45px;
 }
 
-.widget .search-form button[type="submit"], .widget .search-form input[type="submit"], .widget .woocommerce-product-search button[type="submit"], .widget .woocommerce-product-search input[type="submit"], .nv-nav-search .search-form button[type="submit"], .nv-nav-search .search-form input[type="submit"] {
+.search-form button[type="submit"], .search-form input[type="submit"], .woocommerce-product-search button[type="submit"], .woocommerce-product-search input[type="submit"] {
   top: 0;
   left: 0;
   bottom: 0;
@@ -1361,7 +1317,7 @@ button:hover, input[type=button]:hover, .btn:hover, input[type="submit"]:hover {
   padding: 8px 12px 7px;
 }
 
-.widget .search-form button[type="submit"]:hover, .widget .search-form input[type="submit"]:hover, .widget .woocommerce-product-search button[type="submit"]:hover, .widget .woocommerce-product-search input[type="submit"]:hover, .nv-nav-search .search-form button[type="submit"]:hover, .nv-nav-search .search-form input[type="submit"]:hover {
+.search-form button[type="submit"]:hover, .search-form input[type="submit"]:hover, .woocommerce-product-search button[type="submit"]:hover, .woocommerce-product-search input[type="submit"]:hover {
   background-color: #eee;
 }
 
@@ -2617,9 +2573,6 @@ audio {
     left: -10px;
   }
   .row #nv-primary-navigation .menu-item-nav-search:not(.responsive-nav-search) {
-    display: block;
-  }
-  #nv-primary-navigation > li.menu-item-nav-search > a {
     display: block;
   }
   .layout-default .nv-post-thumbnail-wrap, .layout-alternative .nv-post-thumbnail-wrap {

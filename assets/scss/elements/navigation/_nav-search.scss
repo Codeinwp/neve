@@ -13,9 +13,7 @@
   form {
     position: relative;
     width: 75%;
-    &:after {
-      font-family: "neve-icons";
-      content: "\f002";
+    .nv-search-icon-wrap {
       position: absolute;
       top: 0;
       right: 0;
@@ -128,20 +126,8 @@ a.button.close-responsive-search {
   display: none;
 }
 
-.menu-item-nav-search.responsive-nav-search {
-  padding-left: 12px;
-  > a {
-    color: $git-black;
-    font-size: 1.2em;
-  }
-}
-
 @mixin nav-search--laptop() {
   .row #nv-primary-navigation .menu-item-nav-search:not(.responsive-nav-search) {
-    display: block;
-  }
-
-  #nv-primary-navigation > li.menu-item-nav-search > a {
     display: block;
   }
 

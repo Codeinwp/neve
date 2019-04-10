@@ -97,7 +97,7 @@ class Header extends Base_View {
 		$search = '';
 
 		$search .= '<' . esc_attr( $tag ) . ' class="' . esc_attr( $class ) . '" tabindex="0" aria-label="search">';
-		$search .= '<a><span class="nv-icon nv-search"></span></a>';
+		$search .= '<a>' . neve_search_icon() . '</a>';
 		$search .= '<div class="nv-nav-search">';
 		if ( $responsive === true ) {
 			$search .= '<div class="container close-container">';
@@ -133,7 +133,7 @@ class Header extends Base_View {
 		$cart = '';
 
 		$cart .= '<' . esc_attr( $tag ) . ' class="' . esc_attr( $class ) . '"><a href="' . esc_url( wc_get_cart_url() ) . '" class="cart-icon-wrapper">';
-		$cart .= '<span class="nv-icon nv-cart"></span>';
+		$cart .= neve_cart_icon();
 		$cart .= '<span class="screen-reader-text">' . __( 'Cart', 'neve' ) . '</span>';
 		$cart .= '<span class="cart-count">' . WC()->cart->get_cart_contents_count() . '</span>';
 		$cart .= '</a>';
