@@ -142,6 +142,8 @@ class Nav extends Abstract_Component {
 		SettingsManager::get_instance()->add(
 			[
 				'id'                => self::LAST_ITEM_ID,
+				'group'             => self::COMPONENT_ID,
+				'noformat'          => true,
 				'transport'         => 'post' . self::COMPONENT_ID,
 				'sanitize_callback' => 'wp_filter_nohtml_kses',
 				'default'           => $default_last,
