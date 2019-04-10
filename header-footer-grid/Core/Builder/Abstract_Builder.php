@@ -26,7 +26,9 @@ use WP_Customize_Manager;
  */
 abstract class Abstract_Builder implements Builder {
 	use Core;
-
+	const LAYOUT_SETTING = 'layout';
+	const HEIGHT_SETTING = 'height';
+	const SKIN_SETTING   = 'skin';
 	/**
 	 * Internal pointer for current device id.
 	 *
@@ -339,7 +341,7 @@ abstract class Abstract_Builder implements Builder {
 			if ( $row_id !== 'sidebar' ) {
 				SettingsManager::get_instance()->add(
 					[
-						'id'                => 'layout',
+						'id'                => self::LAYOUT_SETTING,
 						'group'             => $row_setting_id,
 						'label'             => __( 'Layout', 'neve' ),
 						'type'              => 'select',
@@ -359,7 +361,7 @@ abstract class Abstract_Builder implements Builder {
 				);
 				SettingsManager::get_instance()->add(
 					[
-						'id'                => 'height',
+						'id'                => self::HEIGHT_SETTING,
 						'group'             => $row_setting_id,
 						'section'           => $row_setting_id,
 						'label'             => __( 'Row height (px)', 'neve' ),
@@ -395,7 +397,7 @@ abstract class Abstract_Builder implements Builder {
 			}
 			SettingsManager::get_instance()->add(
 				[
-					'id'                => 'skin',
+					'id'                => self::SKIN_SETTING,
 					'group'             => $row_setting_id,
 					'label'             => __( 'Skin Mode', 'neve' ),
 					'section'           => $row_setting_id,

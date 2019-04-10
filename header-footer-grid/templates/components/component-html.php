@@ -13,7 +13,6 @@ namespace HFG;
 use HFG\Core\Components\CustomHtml;
 
 $content = component_setting( CustomHtml::CONTENT_ID );
-
 $content = apply_filters( 'neve_top_bar_content', $content );
 ?>
 <div class="nv-html-content">

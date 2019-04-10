@@ -21,7 +21,7 @@ $show_desc = component_setting( Logo::SHOW_TAGLINE );
 $custom_logo_id = get_theme_mod( 'custom_logo' );
 
 
-$logo_image = settings()->get_media( $custom_logo_id, 'full' );
+$logo_image = get_media( $custom_logo_id, 'full' );
 
 $wrapper_tag = 'p';
 if ( get_option( 'show_on_front' ) === 'posts' && is_home() ) {

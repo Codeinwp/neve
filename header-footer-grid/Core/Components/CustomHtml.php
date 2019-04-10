@@ -54,7 +54,7 @@ class CustomHtml extends Abstract_Component {
 				'id'                => self::CONTENT_ID,
 				'group'             => self::COMPONENT_ID,
 				'transport'         => 'post' . self::COMPONENT_ID,
-				'sanitize_callback' => 'wp_filter_nohtml_kses',
+				'sanitize_callback' => 'wp_kses_post',
 				'default'           => get_theme_mod( 'neve_top_bar_content', '' ),
 				'preview_default'   => __( 'Custom HTML text', 'neve' ),
 				'label'             => __( 'Custom HTML', 'neve' ),
