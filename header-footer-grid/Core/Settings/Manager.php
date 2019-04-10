@@ -193,21 +193,8 @@ class Manager {
 	 *
 	 * TODO: Define arguments schema.
 	 *
-	 * @param array $arguments Setting argument{
+	 * @param array $arguments Component arguments.
 	 *
-	 * @type string     id Component id. If group is present, it should relative to that group.
-	 * @type string     group Id group, used to register the settings in customizer.
-	 * @type boolean    noformat If the setting id wont use <group>_<id> format.
-	 * @type string     default Default value.
-	 * @type string     label Default value to show in customizer, inherit default prop is omitted.
-	 * @type string     section Sections used for control.
-	 * @type string     sanitize_callback Sanitize callback.
-	 * @type string     options Control options, if any.
-	 * @type string     label Control label.
-	 * @type string     preview_default Default value to show in customizer, inherit default prop is omitted.
-	 * @type string     transport Setting transport, if post<master_setting_id> used,
-	 *                                         it will use selective refresh to the group that uses the same master_setting_id.
-	 * }.
 	 * @return bool;
 	 */
 	public function add( $arguments = array() ) {
