@@ -243,7 +243,9 @@ abstract class Base_Style_Manager extends Base_View {
 			return;
 		}
 		remove_theme_mod( $this->style_version_theme_mod_key );
-		unlink( $this->style_path . $this->css_file_name );
+		if ( is_writable( $this->style_path . $this->css_file_name ) ) {
+			unlink( $this->style_path . $this->css_file_name );
+		}
 	}
 
 	/**
