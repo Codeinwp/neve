@@ -11,6 +11,7 @@
 
 namespace HFG\Core\Components;
 
+use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Main;
 use WP_Customize_Manager;
 
@@ -21,20 +22,19 @@ use WP_Customize_Manager;
  */
 class SearchResponsive extends Abstract_Component {
 
+	const COMPONENT_ID   = 'header_search_responsive';
+	const PLACEHOLDER_ID = 'placeholder';
+
 	/**
 	 * Button constructor.
 	 *
 	 * @since   1.0.0
 	 * @access  public
-	 *
-	 * @param string $panel The panel name.
 	 */
-	public function __construct( $panel ) {
+	public function init() {
 		$this->set_property( 'label', __( 'Search Icon', 'neve' ) );
-		$this->set_property( 'id', 'header_search_responsive' );
+		$this->set_property( 'id', self::COMPONENT_ID );
 		$this->set_property( 'width', 1 );
-		$this->set_property( 'section', 'header_search_responsive' );
-		$this->set_property( 'panel', $panel );
 	}
 
 	/**
@@ -42,48 +42,22 @@ class SearchResponsive extends Abstract_Component {
 	 *
 	 * @since   1.0.0
 	 * @access  public
-	 *
-	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
-	 *
-	 * @return array
 	 */
-	public function customize_register( WP_Customize_Manager $wp_customize ) {
-		$fn       = array( $this, 'render' );
-		$selector = 'a.item--' . $this->id;
+	public function add_settings() {
 
-		$wp_customize->add_section(
-			$this->section,
-			array(
-				'title'    => $this->label,
-				'priority' => 30,
-				'panel'    => $this->panel,
-			)
-		);
-
-		$wp_customize->add_setting(
-			$this->id . '_placeholder',
-			array(
-				'theme_supports'    => 'hfg_support',
-				'default'           => __( 'Search for...', 'neve' ),
-				'transport'         => 'postMessage',
+		SettingsManager::get_instance()->add(
+			[
+				'id'                => self::PLACEHOLDER_ID,
+				'group'             => self::COMPONENT_ID,
+				'transport'         => 'post' . self::COMPONENT_ID,
 				'sanitize_callback' => 'wp_filter_nohtml_kses',
-			)
+				'default'           => __( 'Search for...', 'neve' ),
+				'label'             => __( 'Placeholder', 'neve' ),
+				'type'              => 'text',
+				'section'           => $this->section,
+			]
 		);
 
-		$wp_customize->add_control(
-			$this->id . '_placeholder',
-			array(
-				'name'            => $this->section . '_placeholder',
-				'label'           => __( 'Placeholder', 'neve' ),
-				'type'            => 'text',
-				'section'         => $this->section,
-				'selector'        => $selector,
-				'render_callback' => $fn,
-				'settings'        => $this->section . '_placeholder',
-			)
-		);
-
-		return parent::customize_register( $wp_customize );
 	}
 
 	/**
@@ -94,7 +68,7 @@ class SearchResponsive extends Abstract_Component {
 	 */
 	public function render_component() {
 		add_filter( 'get_search_form', [ $this, 'change_placeholder' ] );
-		Main::get_instance()->load( 'component-search-responsive' );
+		Main::get_instance()->load( 'components/component-search-responsive' );
 		remove_filter( 'get_search_form', [ $this, 'change_placeholder' ] );
 	}
 

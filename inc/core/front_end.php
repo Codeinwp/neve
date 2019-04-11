@@ -88,7 +88,7 @@ class Front_End {
 	 */
 	public function nav_walker( $args ) {
 		if ( isset( $args['walker'] ) && is_string( $args['walker'] ) && class_exists( $args['walker'] ) ) {
-			$args['walker'] = new $args['walker'];
+			$args['walker'] = new $args['walker']();
 		}
 		return $args;
 	}

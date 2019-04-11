@@ -8,6 +8,8 @@
  * @version 1.0.0
  * @package HFG
  */
+
+namespace HFG;
 ?>
 <script type="text/html" id="tmpl-hfg--cb-panel">
 	<div class="hfg--cp-rows">
@@ -68,13 +70,13 @@
 	<# if ( data.device != 'desktop' ) { #>
 	<# if ( ! _.isUndefined( data.rows.sidebar ) ) { #>
 	<?php
-	$is_active = get_theme_mod( 'header_menu_icon_sidebar', 0 );
+	$is_active = setting( 'header_menu_icon_sidebar' );
 	$style     = '';
 	if ( $is_active ) {
 		$style = 'style="display: block;"';
 	}
 	?>
-	<div class="hfg--cp-sidebar" <?php echo  esc_html( $style ); ?> >
+	<div class="hfg--cp-sidebar" <?php echo ( $style );  // WPCS: XSS ok. ?> >
 		<h4><?php echo __( 'Sidebar', 'neve' ); // WPCS: XSS ok. ?></h4>
 		<div class="hfg--row-bottom hfg--cb-row" data-id="{{ data.id }}_sidebar">
 			<a class="hfg--cb-row-settings" title="{{ data.rows.sidebar }}" data-id="sidebar" href="#"></a>

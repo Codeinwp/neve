@@ -10,7 +10,6 @@
 
 namespace Neve\Core;
 
-
 /**
  * Class Admin
  *
