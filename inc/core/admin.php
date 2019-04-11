@@ -45,13 +45,13 @@ class Admin {
 		$config = apply_filters(
 			'ti_about_config',
 			array(
-				'welcome_notice'  => array(
+				'welcome_notice'      => array(
 					'type'            => 'custom',
 					'notice_class'    => 'nv-welcome-notice updated',
 					'dismiss_option'  => 'neve_notice_dismissed',
 					'render_callback' => array( $this, 'welcome_notice_content' ),
 				),
-				'footer_messages' => array(
+				'footer_messages'     => array(
 					'type'     => 'custom',
 					'messages' => array(
 						array(
@@ -71,7 +71,7 @@ class Admin {
 						),
 					),
 				),
-				'getting_started' => array(
+				'getting_started'     => array(
 					'type'    => 'columns-2',
 					'title'   => __( 'Getting Started', 'neve' ),
 					'content' => array(
@@ -91,7 +91,18 @@ class Admin {
 						),
 					),
 				),
-				'useful_plugins'  => array(
+				'recommended_actions' => array(
+					'type'    => 'recommended_actions',
+					'title'   => __( 'Recommended Actions', 'neve' ),
+					'plugins' => array(
+						'otter-blocks' => array(
+							'name'        => 'Gutenberg Blocks and Template Library by Otter',
+							'slug'        => 'otter-blocks',
+							'description' => __( 'Gutenberg Blocks and Template Library by Otter is a lightweight WordPress plugin that brings extra Gutenberg blocks to your site.', 'neve' ),
+						),
+					),
+				),
+				'useful_plugins'      => array(
 					'type'    => 'plugins',
 					'title'   => __( 'Useful Plugins', 'neve' ),
 					'plugins' => array(
@@ -107,7 +118,7 @@ class Admin {
 						'translatepress-multilingual',
 					),
 				),
-				'support'         => array(
+				'support'             => array(
 					'type'    => 'columns-2',
 					'title'   => __( 'Documentation', 'neve' ),
 					'content' => array(
@@ -177,11 +188,11 @@ class Admin {
 						),
 					),
 				),
-				'changelog'       => array(
+				'changelog'           => array(
 					'type'  => 'changelog',
 					'title' => __( 'Changelog', 'neve' ),
 				),
-				'custom_tabs'     => array(),
+				'custom_tabs'         => array(),
 			)
 		);
 
@@ -309,28 +320,28 @@ class Admin {
 			<style>%5$s</style>';
 
 		/* translators: 1 - notice title, 2 - notice message */
-		$notice_header = sprintf(
+		$notice_header       = sprintf(
 			'<h2>%1$s</h2><p class="about-description">%2$s</p></hr>',
 			esc_html__( 'Congratulations!', 'neve' ),
 			sprintf(
-				/* translators: %s - theme name */
+			/* translators: %s - theme name */
 				esc_html__( '%s is now installed and ready to use. We\'ve assembled some links to get you started.', 'neve' ),
 				$name
 			)
 		);
-		$ob_btn = sprintf(
-			/* translators: 1 - onboarding url, 2 - button text */
+		$ob_btn              = sprintf(
+		/* translators: 1 - onboarding url, 2 - button text */
 			'<a href="%1$s" class="button button-primary button-hero install-now" >%2$s</a>',
 			esc_url( admin_url( 'themes.php?page=' . $slug . '-welcome&onboarding=yes#sites_library' ) ),
 			sprintf( apply_filters( 'ti_onboarding_neve_start_site_cta', esc_html__( 'Try one of our ready to use Starter Sites', 'neve' ) ) )
 		);
 		$ob_return_dashboard = sprintf(
-			/* translators: 1 - button text */
+		/* translators: 1 - button text */
 			'<a href="#" class=" ti-return-dashboard  button button-secondary button-hero install-now" ><span>%1$s</span></a>',
 			__( 'Return to your dashboard', 'neve' )
 		);
-		$options_page_btn = sprintf(
-			/* translators: 1 - options page url, 2 - button text */
+		$options_page_btn    = sprintf(
+		/* translators: 1 - options page url, 2 - button text */
 			'<a href="%1$s" class="options-page-btn">%2$s</a>',
 			esc_url( admin_url( 'themes.php?page=' . $slug . '-welcome' ) ),
 			esc_html__( 'or go to the theme settings', 'neve' )
@@ -362,7 +373,7 @@ class Admin {
 			esc_html__( 'Read full documentation', 'neve' ),
 			$ob_return_dashboard
 		);
-		$style = '
+		$style                = '
 		.nv-notice-wrapper h2{
 		    margin: 0;
 		    font-size: 21px;
