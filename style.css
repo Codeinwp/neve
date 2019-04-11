@@ -153,7 +153,7 @@ abbr, acronym {
 }
 
 .col {
-  flex-basis: 0;
+  flex-basis: auto;
   flex-grow: 1;
   max-width: 100%;
   margin-left: auto;
@@ -2327,7 +2327,7 @@ audio {
   #comments .comment-form {
     grid-template-columns: repeat(3, 1fr);
   }
-  #comments .comment-form p:not(.comment-form-author):not(.comment-form-url):not(.comment-form-email) {
+  #comments .comment-form > *:not(.comment-form-author):not(.comment-form-url):not(.comment-form-email) {
     grid-column: span 3;
   }
   #comments .form-submit {
@@ -2520,6 +2520,10 @@ audio {
     z-index: 100;
     opacity: 0;
     visibility: hidden;
+  }
+  .row .primary-menu-ul .sub-menu.dropdown-open {
+    opacity: 1;
+    visibility: visible;
   }
   .row .primary-menu-ul .sub-menu .sub-menu {
     left: 100%;

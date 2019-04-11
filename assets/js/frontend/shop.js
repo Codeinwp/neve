@@ -1,4 +1,10 @@
 /* jshint esversion: 6 */
+import {neveEach} from './utils.js';
+
+/**
+ * Init shop.
+ * @returns {boolean}
+ */
 export const initShop = function () {
 	if (!document.body.classList.contains( 'woocommerce' )) {
 		return false;
@@ -20,7 +26,7 @@ const handleShopSidebar = function () {
 	}
 	html = document.querySelector( 'html' );
 	toggles = document.querySelectorAll( '.nv-sidebar-toggle' );
-	toggles.forEach( function ( toggle ) {
+	neveEach( toggles, function ( toggle ) {
 		toggle.addEventListener( 'click', function () {
 			sidebar.classList.toggle( 'sidebar-open' );
 			html.classList.toggle( 'menu-openend' );

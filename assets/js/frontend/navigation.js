@@ -1,5 +1,5 @@
 /* jshint esversion: 6 */
-import { isMobile } from "./utils.js";
+import { isMobile, neveEach, isBestBrowserEver as isIE } from "./utils.js";
 
 let pageUrl;
 
@@ -12,20 +12,23 @@ export const initNavigation = function () {
   handleScrollLinks();
   handleMobileDropdowns();
   handleSearch();
+  if (isIE() === true) {
+    handleIeDropdowns();
+  }
 };
 
 /**
  * Reposition drop downs in case they go off screen.
  * @returns {boolean}
  */
-const repositionDropdowns = function () {
+function repositionDropdowns () {
   if (isMobile()) return false;
 
   let dropDowns = document.querySelectorAll('.sub-menu .sub-menu');
   if (dropDowns.length === 0) return false;
 
   let windowWidth = window.innerWidth;
-  forEach(dropDowns, function (dropDown) {
+  neveEach(dropDowns, function (dropDown) {
     let bounding = dropDown.offset().left;
     if (/webkit.*mobile/i.test(navigator.userAgent)) {
       bounding -= window.scrollX;
@@ -36,91 +39,92 @@ const repositionDropdowns = function () {
       dropDown.style.left = 'auto';
     }
   });
-};
+}
 
 /**
  * Handle links that link to the current page.
  * @returns {boolean}
  */
-const handleScrollLinks = function () {
+function handleScrollLinks () {
   let links = document.querySelectorAll('.nv-nav-wrap a');
   if (links.length === 0) return false;
-  links.forEach(function (link) {
+  neveEach(links, function (link) {
     link.addEventListener('click', function (event) {
       let href = event.target.getAttribute('href');
       if (href === null) return false;
-      if( href.indexOf(pageUrl) > -1) {
+      if (href.indexOf(pageUrl) > -1) {
         document.body.classList.remove('is-menu-sidebar');
-        document.querySelectorAll('.dropdown-open').forEach(function (element) {
+        neveEach(document.querySelectorAll('.dropdown-open'), function (element) {
           element.classList.remove('dropdown-open');
         });
       }
     });
   });
-};
+}
 
 /**
  * Handle dropdowns on mobile devices.
  */
-const handleMobileDropdowns = function () {
+function handleMobileDropdowns () {
   let carets = document.querySelectorAll('.caret-wrap');
-  carets.forEach(function (caret) {
+  neveEach(carets, function (caret) {
     caret.addEventListener('click', function (event) {
+      let subMenu = this.parentNode.parentNode.querySelector('.sub-menu');
       this.classList.toggle('dropdown-open');
-      this.parentNode.parentNode.querySelector('.sub-menu').classList.toggle('dropdown-open');
-
-      if (isMobile()) return false;
-
-
+      subMenu.classList.toggle('dropdown-open');
     });
   });
-};
+}
 
 /**
  * Handle searches.
  */
-const handleSearch = function () {
+function handleSearch () {
   let navSearch = document.querySelectorAll('.nv-nav-search'),
       navItem = document.querySelectorAll('.menu-item-nav-search'),
       close = document.querySelectorAll('.close-responsive-search'),
       html = document.querySelector('html');
   // Handle search opening.
-  navItem.forEach(function (searchItem) {
+  neveEach(navItem, function (searchItem) {
     searchItem.addEventListener('click', function (e) {
       e.stopPropagation();
       searchItem.classList.toggle('active');
       html.classList.add('menu-opened');
-      if( ! isMobile() ) {
-       createNavOverlay(searchItem, 'active');
+      if (!isMobile()) {
+        createNavOverlay(searchItem, 'active');
       }
     });
   });
   // Don't close thee search if interacted with.
-  navSearch.forEach( function (item) {
-  	item.addEventListener( 'click', function (e) {
-  	  e.stopPropagation();
-  	} );
-  } );
+  neveEach(navSearch, function (item) {
+    item.addEventListener('click', function (e) {
+      e.stopPropagation();
+    });
+  });
   // Mobile search close buttons.
-  close.forEach(function (button) {
+  neveEach(close, function (button) {
     button.addEventListener('click', function (e) {
       e.preventDefault();
-      navItem.forEach(function (search) {
+      neveEach(navItem, function (search) {
         search.classList.remove('active');
       });
+      let overlay = document.querySelector('.nav-clickaway-overlay');
+      overlay.parentNode.removeChild(overlay);
       html.classList.remove('menu-opened');
     });
   });
-};
+}
 
 /**
  * Create an overlay to allow closing.
  *
  * @param item
  * @param classToRemove
+ * @param multiple
  * @returns {boolean}
  */
-const createNavOverlay = function (item, classToRemove) {
+function createNavOverlay (item, classToRemove, multiple = false) {
+
   let navClickaway = document.querySelector('.nav-clickaway-overlay');
   if (navClickaway !== null) {
     return false;
@@ -129,10 +133,33 @@ const createNavOverlay = function (item, classToRemove) {
   navClickaway.classList.add('nav-clickaway-overlay');
 
   let primaryNav = document.querySelector('#nv-primary-navigation');
-  primaryNav.after(navClickaway);
+  primaryNav.parentNode.insertBefore(navClickaway, primaryNav.nextSibling);
 
-  navClickaway.addEventListener('click', function (e) {
-    item.classList.remove(classToRemove);
+  navClickaway.addEventListener('click', function () {
+    if (multiple === true) {
+      neveEach(item, function (singleItem) {
+        singleItem.classList.remove(classToRemove);
+      });
+    } else {
+      item.classList.remove(classToRemove);
+    }
     navClickaway.parentNode.removeChild(navClickaway);
   });
-};
+}
+
+/**
+ * Handle dropdowns for special browsers that...
+ * have trouble understanding what hover is.
+ */
+function handleIeDropdowns () {
+  let dropdowns = document.querySelectorAll('.header--row[data-show-on="desktop"] .menu-item-has-children');
+  neveEach(dropdowns, function (dropdown) {
+    let subMenu = dropdown.parentNode.parentNode.querySelector('.sub-menu');
+    dropdown.addEventListener('mouseenter', function () {
+      subMenu.classList.add('dropdown-open');
+    });
+    dropdown.addEventListener('mouseleave', function () {
+      subMenu.classList.remove('dropdown-open');
+    });
+  });
+}
