@@ -23,6 +23,7 @@
 </head>
 
 <body <?php body_class(); ?> <?php echo esc_attr( apply_filters( 'neve_body_data_attrs', '' ) ); ?>>
+<?php wp_body_open(); ?>
 <div class="wrapper">
 	<header class="header" role="banner">
 		<a class="neve-skip-link show-on-focus" href="#content" tabindex="0">

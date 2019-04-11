@@ -49,3 +49,12 @@ function neve_before_footer_trigger() {
 function neve_after_footer_trigger() {
 	do_action( 'neve_after_footer_hook' );
 }
+
+if ( ! function_exists( 'wp_body_open' ) ) {
+	/**
+	 * Body open hook.
+	 */
+	function wp_body_open() {
+		do_action( 'wp_body_open' );
+	}
+}
