@@ -2,14 +2,18 @@
 @import "form-elements/buttons";
 
 
-.nv-seach-form-wrap .search-form {
+.nv-seach-form-wrap {
+  width: 100%;
   border-top: $muted-border;
   padding-top: $spacing-sm;
   display: flex;
+  align-items: center;
   justify-content: center;
-
-  input[type="submit"] {
-    margin-left: 10px;
+  .search-form {
+    display: inline-block;
+    input[type="submit"] {
+      margin-left: 10px;
+    }
   }
 }
 
@@ -17,21 +21,17 @@
   margin-bottom: 0;
 }
 
-.widget .search-form, .widget .woocommerce-product-search, .nv-nav-search .search-form {
+.search-form, .woocommerce-product-search {
   position: relative;
 
   label {
     display: inline;
   }
 
-  &:after {
-    font-family: "neve-icons";
-    content: "\f002";
+  .nv-search-icon-wrap {
     position: absolute;
     top: 0;
     right: 0;
-    text-align: center;
-    line-height: 35px;
     height: 100%;
     width: 45px;
     z-index: 3;
@@ -41,6 +41,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    line-height: 0;
   }
 
   input[type="search"] {

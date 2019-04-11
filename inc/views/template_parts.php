@@ -50,7 +50,6 @@ class Template_Parts extends Base_View {
 		} else {
 			$class .= ' nv-non-grid-article';
 		}
-
 		return $class;
 	}
 

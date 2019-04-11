@@ -45,7 +45,7 @@ class CustomHtml extends Abstract_Component {
 	 * @access  public
 	 */
 	public function add_settings() {
-	
+
 		SettingsManager::get_instance()->add(
 			[
 				'id'                => self::CONTENT_ID,

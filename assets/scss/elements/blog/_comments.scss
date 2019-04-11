@@ -1,15 +1,19 @@
 #comments {
   border-top: $muted-border;
   margin-top: $spacing-xs;
+
   ol {
     list-style: none;
+
     > ol {
       padding-left: $spacing-xs;
     }
   }
+
   li {
     padding: $spacing-xs 0 0;
   }
+
   .children > li {
     margin-top: $spacing-sm;
     padding-top: $spacing-sm;
@@ -20,6 +24,7 @@
     display: flex;
     justify-content: space-between;
     font-size: .85em;
+
     .nv-reply-link {
       margin-left: auto;
     }
@@ -46,6 +51,7 @@
   font-style: normal;
   font-size: .85em;
   margin-bottom: $spacing-sm;
+
   .comment-author {
     display: flex;
     flex-direction: column;
@@ -54,6 +60,7 @@
 
 .nv-comment-avatar {
   margin-right: $spacing-sm;
+
   > img {
     float: left;
     border-radius: 50%;
@@ -66,22 +73,26 @@
 }
 
 #comments {
-  input:not([type="submit"]) {
+  input:not([type="submit"]):not([type="checkbox"]) {
     width: 100%;
   }
+
   textarea {
     width: 100%;
     max-width: 100%;
     min-width: 100%;
   }
+
   .comment-respond {
     margin: $spacing 0;
   }
+
   .comment-reply-title {
     small {
       float: right;
     }
   }
+
   input[type=submit] {
     @include button-secondary();
   }
@@ -91,13 +102,16 @@
   display: grid;
   grid-column-gap: $spacing-sm;
   grid-row-gap: $spacing-sm;
+
   > p:not(.comment-notes) {
     margin-bottom: 0;
   }
+
   label {
     margin-bottom: $spacing-xs;
     display: inline-block;
   }
+
   .form-submit {
     margin-top: $spacing-xs;
   }
@@ -105,10 +119,24 @@
 
 .pingback {
   border-bottom: $muted-border;
+
   .edit-link {
     display: block;
     font-size: .85em;
     margin-top: $spacing-sm;
+  }
+}
+
+.comment-form-cookies-consent {
+  display: flex;
+  align-items: center;
+
+  input {
+    margin-right: $spacing-xs;
+  }
+
+  label {
+    margin-bottom: 0;
   }
 }
 
@@ -117,15 +145,24 @@
     li {
       margin-top: $spacing-sm;
     }
+
     ol > ol {
       padding-left: $spacing-sm;
     }
 
     .comment-form {
       grid-template-columns: repeat(3, 1fr);
-      .comment-notes, .comment-form-comment, .logged-in-as {
+
+      > *:not(.comment-form-author):not(.comment-form-url):not(.comment-form-email) {
         grid-column: span 3;
       }
+    }
+
+    .form-submit {
+      align-items: center;
+      justify-content: flex-end;
+      display: flex;
+      margin-top: 0;
     }
   }
 }
