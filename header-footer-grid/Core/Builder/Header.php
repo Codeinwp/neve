@@ -34,7 +34,6 @@ class Header extends Abstract_Builder {
 	 */
 	public function init() {
 		$this->set_property( 'title', __( 'Header', 'neve' ) );
-		$this->set_property( 'description', __( 'Header description', 'neve' ) );
 	}
 
 
@@ -86,22 +85,10 @@ class Header extends Abstract_Builder {
 	 */
 	protected function get_rows() {
 		return [
-			'top'     => [
-				'title'       => 'Header Top',
-				'description' => 'Description Top',
-			],
-			'main'    => [
-				'title'       => 'Header Main',
-				'description' => 'Description Main',
-			],
-			'bottom'  => [
-				'title'       => 'Header Bottom',
-				'description' => 'Description Bottom',
-			],
-			'sidebar' => [
-				'title'       => 'Header Sidebar',
-				'description' => 'Description Sidebar',
-			],
+			'top'     => 'Header Top',
+			'main'    => 'Header Main',
+			'bottom'  => 'Header Bottom',
+			'sidebar' => 'Header Sidebar',
 		];
 	}
 }
