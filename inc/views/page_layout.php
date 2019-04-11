@@ -1,5 +1,7 @@
 <?php
 /**
+ * Single page layout.
+ *
  * @package Neve\Views
  */
 
@@ -35,5 +37,4 @@ class Page_Layout extends Base_View {
 		do_action( 'neve_do_pagination', 'single' );
 		do_action( 'neve_after_content', 'single-page' );
 	}
-
 }

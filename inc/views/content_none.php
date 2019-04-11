@@ -1,6 +1,7 @@
 <?php
 /**
  * Content none class.
+ *
  * @package Neve\Views
  */
 
@@ -73,5 +74,4 @@ class Content_None extends Base_View {
 		get_search_form();
 		echo '</div>';
 	}
-
 }

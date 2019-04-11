@@ -15,8 +15,12 @@ namespace Neve\Compatibility;
  */
 class Elementor extends Page_Builder_Base {
 
-
+	/**
+	 * Elementor location manager
+	 * @var \ElementorPro\Modules\ThemeBuilder\Module
+	 */
 	public $elementor_location_manager;
+
 	/**
 	 * Init function.
 	 */
