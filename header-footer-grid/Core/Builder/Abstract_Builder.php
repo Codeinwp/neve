@@ -88,6 +88,14 @@ abstract class Abstract_Builder implements Builder {
 	 * @var string $title
 	 */
 	protected $title;
+	/**
+	 * Holds the description.
+	 *
+	 * @since   1.0.1
+	 * @access  protected
+	 * @var string $description
+	 */
+	protected $description;
 
 	/**
 	 * A list of panel keys to be removed.
@@ -392,6 +400,10 @@ abstract class Abstract_Builder implements Builder {
 			? $this->title
 			: __( 'Header', 'neve' );
 
+		$description = ( isset( $this->description ) && ! empty( $this->description ) )
+			? $this->description
+			: '';
+
 		$wp_customize->add_panel(
 			$this->panel,
 			array(
@@ -399,7 +411,7 @@ abstract class Abstract_Builder implements Builder {
 				'capability'     => 'edit_theme_options',
 				'theme_supports' => Settings\Config::get_support(),
 				'title'          => $title,
-				'description'    => '',
+				'description'    => $description,
 			)
 		);
 		$wp_customize->add_section(
@@ -441,15 +453,30 @@ abstract class Abstract_Builder implements Builder {
 		if ( empty( $rows ) ) {
 			return null;
 		}
-		foreach ( $rows as $row_id => $row_label ) {
+		foreach ( $rows as $row_id => $row ) {
 
 			$row_setting_id = $this->control_id . '_' . $row_id;
+
+			$title       = $row;
+			$description = '';
+			if ( is_array( $row ) ) {
+				$title = ( isset( $row['title'] ) && ! empty( $row['title'] ) )
+					? $row['title']
+					: __( 'Row', 'neve' );
+
+				$description = ( isset( $row['description'] ) && ! empty( $row['description'] ) )
+					? $row['description']
+					: $description;
+			}
+
 			$wp_customize->add_section(
 				$row_setting_id,
 				array(
-					'title'    => $row_label,
-					'priority' => 100,
-					'panel'    => $this->panel,
+					'title'              => $title,
+					'description'        => $description,
+					'description_hidden' => ( $description !== '' ),
+					'priority'           => 100,
+					'panel'              => $this->panel,
 				)
 			);
 
