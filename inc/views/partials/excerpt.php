@@ -8,7 +8,6 @@
 
 namespace Neve\Views\Partials;
 
-
 use Neve\Views\Base_View;
 
 /**

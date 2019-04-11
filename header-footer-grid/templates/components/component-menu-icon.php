@@ -8,17 +8,16 @@
  * @package HFG
  */
 namespace HFG;
-
-use HFG\Core\Builder\Header as HeaderBuilder;
-
-$item_classes    = [];
-$item_classes[]  = 'menu-mobile-toggle item-button navbar-toggle-wrapper';
 $item_attributes = apply_filters( 'neve_nav_toggle_data_attrs', '' );
 
 ?>
-<div class="<?php echo esc_attr( join( ' ', $item_classes ) ); ?>">
+<div class="menu-mobile-toggle item-button navbar-toggle-wrapper">
 	<button class="navbar-toggle" <?php echo wp_kses_post( $item_attributes ); ?>
-			aria-label="<?php _e( 'Navigation Menu', 'neve' ); // WPCS: XSS ok. ?>">
+			aria-label="
+			<?php 
+			_e( 'Navigation Menu', 'neve' ); // WPCS: XSS ok.
+			?>
+			">
 		<div class="bars">
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>

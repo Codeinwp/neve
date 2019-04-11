@@ -24,13 +24,12 @@ abstract class Abstract_FooterWidget extends Abstract_Component {
 	/**
 	 * Method to show footer widget
 	 *
-	 * @since   1.0.0
-	 * @access  public
-	 *
 	 * @param bool   $active Is active.
 	 * @param object $section The section id.
 	 *
 	 * @return bool
+	 * @since   1.0.0
+	 * @access  public
 	 */
 	public function footer_widgets_show( $active, $section ) {
 		if ( strpos( $section->id, 'widgets-footer-' ) ) {
@@ -41,36 +40,24 @@ abstract class Abstract_FooterWidget extends Abstract_Component {
 	}
 
 	/**
-	 * Called to register component controls.
+	 * Change section name based on the child section.
 	 *
-	 * @since   1.0.0
-	 * @access  public
+	 * @param WP_Customize_Manager $wp_customize Customizer object.
 	 *
-	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
-	 *
-	 * @return WP_Customize_Manager
+	 * @return WP_Customize_Manager Customizer object.
 	 */
 	public function customize_register( WP_Customize_Manager $wp_customize ) {
-
-		$wp_customize->add_section(
-			$this->section,
-			array(
-				'title' => $this->label,
-			)
-		);
-
+		parent::customize_register( $wp_customize );
 		$wp_customize->get_section( $this->section )->panel = $this->panel;
 
-		$wp_customize->selective_refresh->add_partial(
-			$this->id . '_partial',
-			array(
-				'selector'        => '.builder-item--' . $this->id,
-				'settings'        => array(),
-				'render_callback' => array( $this, 'render' ),
-			)
-		);
+		return $wp_customize;
+	}
 
-		return parent::customize_register( $wp_customize );
+	/**
+	 * Generic settings, if any.
+	 */
+	public function add_settings() {
+
 	}
 
 	/**
@@ -80,6 +67,6 @@ abstract class Abstract_FooterWidget extends Abstract_Component {
 	 * @access  public
 	 */
 	public function render_component() {
-		Main::get_instance()->load( 'component-footer-sidebar' );
+		Main::get_instance()->load( 'components/component-footer-sidebar' );
 	}
 }
