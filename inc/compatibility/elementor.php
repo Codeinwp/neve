@@ -15,6 +15,8 @@ namespace Neve\Compatibility;
  */
 class Elementor extends Page_Builder_Base {
 
+
+	public $elementor_location_manager;
 	/**
 	 * Init function.
 	 */
@@ -22,6 +24,7 @@ class Elementor extends Page_Builder_Base {
 		if ( ! defined( 'ELEMENTOR_VERSION' ) ) {
 			return;
 		}
+
 		$this->add_theme_builder_hooks();
 
 		add_action( 'elementor/editor/before_enqueue_scripts', array( $this, 'maybe_set_page_template' ), 1 );
@@ -45,6 +48,7 @@ class Elementor extends Page_Builder_Base {
 		add_action( 'neve_do_content_none', array( $this, 'do_content_none' ), 0 );
 		add_action( 'neve_do_single_post', array( $this, 'do_single_post' ), 0 );
 		add_action( 'neve_do_single_page', array( $this, 'do_single_page' ), 0 );
+		add_action( 'neve_page_header', array( $this, 'remove_header_on_page' ), 0 );
 	}
 
 	/**
@@ -55,13 +59,14 @@ class Elementor extends Page_Builder_Base {
 	 */
 	public function register_theme_locations( $manager ) {
 		$manager->register_all_core_location();
+		$this->elementor_location_manager = \ElementorPro\Modules\ThemeBuilder\Module::instance()->get_locations_manager();
 	}
 
 	/**
 	 * Remove actions for elementor header to act properly.
 	 */
 	public function do_header() {
-		$did_location = \ElementorPro\Modules\ThemeBuilder\Module::instance()->get_locations_manager()->do_location( 'header' );
+		$did_location = $this->elementor_location_manager->do_location( 'header' );
 		if ( $did_location ) {
 			remove_all_actions( 'neve_do_top_bar' );
 			remove_all_actions( 'neve_do_header' );
@@ -72,7 +77,7 @@ class Elementor extends Page_Builder_Base {
 	 * Remove actions for elementor footer to act properly.
 	 */
 	public function do_footer() {
-		$did_location = \ElementorPro\Modules\ThemeBuilder\Module::instance()->get_locations_manager()->do_location( 'footer' );
+		$did_location = $this->elementor_location_manager->do_location( 'footer' );
 		if ( $did_location ) {
 			remove_all_actions( 'neve_do_footer' );
 		}
@@ -85,7 +90,7 @@ class Elementor extends Page_Builder_Base {
 		if ( ! is_404() ) {
 			return;
 		}
-		$did_location = \ElementorPro\Modules\ThemeBuilder\Module::instance()->get_locations_manager()->do_location( 'single' );
+		$did_location = $this->elementor_location_manager->do_location( 'single' );
 		if ( $did_location ) {
 			remove_all_actions( 'neve_do_content_none' );
 		}
@@ -95,7 +100,7 @@ class Elementor extends Page_Builder_Base {
 	 * Remove actions for elementor single post to act properly.
 	 */
 	public function do_single_post() {
-		$did_location = \ElementorPro\Modules\ThemeBuilder\Module::instance()->get_locations_manager()->do_location( 'single' );
+		$did_location = $this->elementor_location_manager->do_location( 'single' );
 		if ( $did_location ) {
 			remove_all_actions( 'neve_do_single_post' );
 		}
@@ -104,10 +109,22 @@ class Elementor extends Page_Builder_Base {
 	/**
 	 * Remove actions for elementor single page to act properly.
 	 */
-	public function do_single_page(){
-		$did_location = \ElementorPro\Modules\ThemeBuilder\Module::instance()->get_locations_manager()->do_location( 'single' );
+	public function do_single_page() {
+		$did_location = $this->elementor_location_manager->do_location( 'single' );
 		if ( $did_location ) {
 			remove_all_actions( 'neve_do_single_page' );
+		}
+	}
+
+	/**
+	 * Remove title on single page.
+	 */
+	public function remove_header_on_page() {
+		if ( ! is_singular( 'page' ) ) {
+			return;
+		}
+		if ( $this->elementor_location_manager->location_exits( 'single' ) ) {
+			remove_all_actions( 'neve_page_header' );
 		}
 	}
 
