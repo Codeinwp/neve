@@ -34,7 +34,7 @@ class Footer extends Abstract_Builder {
 	public function init() {
 		$this->set_property( 'title', __( 'Footer', 'neve' ) );
 		$this->devices = [
-			'desktop' => 'Footer Layout',
+			'desktop' => __( 'Footer', 'neve' ),
 		];
 	}
 

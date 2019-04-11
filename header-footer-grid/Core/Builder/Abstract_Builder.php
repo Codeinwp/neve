@@ -462,7 +462,7 @@ abstract class Abstract_Builder implements Builder {
 			if ( is_array( $row ) ) {
 				$title = ( isset( $row['title'] ) && ! empty( $row['title'] ) )
 					? $row['title']
-					: __( 'Row', 'neve' );
+					: __( 'Section Content', 'neve' );
 
 				$description = ( isset( $row['description'] ) && ! empty( $row['description'] ) )
 					? $row['description']
