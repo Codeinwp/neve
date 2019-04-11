@@ -170,10 +170,10 @@ abstract class Abstract_Component implements Component {
 	/**
 	 * Return the settings for the component.
 	 *
-	 * @return array
 	 * @since   1.0.0
 	 * @updated 1.0.1
 	 * @access  public
+	 * @return array
 	 */
 	public function get_settings() {
 		return array(
