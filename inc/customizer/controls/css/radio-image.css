@@ -100,3 +100,11 @@
 .customizer-tab:not(.customizer-subtab) label:last-child {
 	border: none;
 }
+
+.ui-buttonset .ui-helper-hidden-accessible{
+	position:relative;
+}
+
+.customize-control-radio-image input[type=radio]{
+	display: none;
+}

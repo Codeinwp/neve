@@ -12,10 +12,8 @@
 namespace HFG\Core\Components;
 
 use HFG\Core\Settings;
+use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Main;
-use Neve\Customizer\Controls\Radio_Image;
-use Neve\Customizer\Controls\Button as ButtonControl;
-use WP_Customize_Manager;
 
 /**
  * Class Nav
@@ -23,22 +21,27 @@ use WP_Customize_Manager;
  * @package HFG\Core\Components
  */
 class Nav extends Abstract_Component {
+	const COMPONENT_ID    = 'primary-menu';
+	const STYLE_ID        = 'style';
+	const COLOR_ID        = 'color';
+	const HOVER_COLOR_ID  = 'hover_color';
+	const ACTIVE_COLOR_ID = 'active_color';
+	const LAST_ITEM_ID    = 'neve_last_menu_item';
 
 	/**
 	 * Nav constructor.
 	 *
 	 * @since   1.0.0
 	 * @access  public
-	 *
-	 * @param string $panel The panel name.
 	 */
-	public function __construct( $panel ) {
+	public function init() {
 		$this->set_property( 'label', __( 'Primary Menu', 'neve' ) );
-		$this->set_property( 'id', 'primary-menu' );
+		$this->set_property( 'id', self::COMPONENT_ID );
 		$this->set_property( 'width', 2 );
 		$this->set_property( 'section', 'header_menu_primary' );
-		$this->set_property( 'panel', $panel );
+
 		$this->default_align = 'right';
+
 	}
 
 	/**
@@ -46,134 +49,85 @@ class Nav extends Abstract_Component {
 	 *
 	 * @since   1.0.0
 	 * @access  public
-	 *
-	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
-	 *
-	 * @return WP_Customize_Manager
 	 */
-	public function customize_register( WP_Customize_Manager $wp_customize ) {
-		$fn       = array( $this, 'render' );
-		$selector = '.builder-item--' . $this->id;
+	public function add_settings() {
 
-		$wp_customize->add_section(
-			$this->section,
-			array(
-				'title'    => $this->label,
-				'priority' => 30,
-				'panel'    => $this->panel,
-			)
-		);
 
-		$wp_customize->add_setting(
-			$this->id . '_style',
-			array(
-				'default'           => 'style-plain',
-				'theme_supports'    => 'hfg_support',
-				'transport'         => 'postMessage',
+		SettingsManager::get_instance()->add(
+			[
+				'id'                => self::STYLE_ID,
+				'group'             => self::COMPONENT_ID,
+				'transport'         => 'post' . self::COMPONENT_ID,
 				'sanitize_callback' => 'wp_filter_nohtml_kses',
-			)
-		);
-		$wp_customize->add_control(
-			new Radio_Image(
-				$wp_customize,
-				$this->id . '_style',
-				[
-					'label'   => __( 'Skin Mode', 'neve' ),
-					'section' => $this->section,
+				'default'           => 'style-plain',
+				'label'             => __( 'Skin Mode', 'neve' ),
+				'type'              => '\Neve\Customizer\Controls\Radio_Image',
+				'options'           => [
 					'choices' => array(
 						'style-plain'         => array(
-							'url'  => Settings::get_instance()->url . '/assets/images/customizer/menu_style_1.svg',
+							'url'  => Settings\Config::get_url() . '/assets/images/customizer/menu_style_1.svg',
 							'name' => '',
 						),
 						'style-full-height'   => array(
-							'url'  => Settings::get_instance()->url . '/assets/images/customizer/menu_style_2.svg',
+							'url'  => Settings\Config::get_url() . '/assets/images/customizer/menu_style_2.svg',
 							'name' => '',
 						),
 						'style-border-bottom' => array(
-							'url'  => Settings::get_instance()->url . '/assets/images/customizer/menu_style_3.svg',
+							'url'  => Settings\Config::get_url() . '/assets/images/customizer/menu_style_3.svg',
 							'name' => '',
 						),
 						'style-border-top'    => array(
-							'url'  => Settings::get_instance()->url . '/assets/images/customizer/menu_style_4.svg',
+							'url'  => Settings\Config::get_url() . '/assets/images/customizer/menu_style_4.svg',
 							'name' => '',
 						),
 					),
-				]
-			)
+
+				],
+				'section'           => $this->section,
+			]
 		);
 
-		$wp_customize->add_setting(
-			$this->id . '_color',
-			array(
-				'theme_supports'    => 'hfg_support',
-				'transport'         => 'postMessage',
+		SettingsManager::get_instance()->add(
+			[
+				'id'                => self::COLOR_ID,
+				'group'             => self::COMPONENT_ID,
+				'transport'         => 'post' . self::COMPONENT_ID,
+				'sanitize_callback' => 'sanitize_hex_color',
 				'default'           => '#404248',
-				'sanitize_callback' => 'sanitize_hex_color',
-			)
+				'label'             => __( 'Items Color', 'neve' ),
+				'type'              => '\WP_Customize_Color_Control',
+				'section'           => $this->section,
+			]
 		);
-		$wp_customize->add_control(
-			new \WP_Customize_Color_Control(
-				$wp_customize,
-				$this->id . '_color',
-				array(
-					'label'   => __( 'Items Color', 'neve' ),
-					'section' => $this->section,
-				)
-			)
+		SettingsManager::get_instance()->add(
+			[
+				'id'                => self::ACTIVE_COLOR_ID,
+				'group'             => self::COMPONENT_ID,
+				'transport'         => 'post' . self::COMPONENT_ID,
+				'sanitize_callback' => 'sanitize_hex_color',
+				'default'           => '#0366d6',
+				'label'             => __( 'Active Item Color', 'neve' ),
+				'type'              => '\WP_Customize_Color_Control',
+				'section'           => $this->section,
+			]
+		);
+		SettingsManager::get_instance()->add(
+			[
+				'id'                => self::HOVER_COLOR_ID,
+				'group'             => self::COMPONENT_ID,
+				'transport'         => 'post' . self::COMPONENT_ID,
+				'sanitize_callback' => 'sanitize_hex_color',
+				'default'           => '#0366d6',
+				'label'             => __( 'Items Hover Color', 'neve' ),
+				'type'              => '\WP_Customize_Color_Control',
+				'section'           => $this->section,
+			]
 		);
 
-		$wp_customize->add_setting(
-			$this->id . '_hover_color',
-			array(
-				'theme_supports'    => 'hfg_support',
-				'transport'         => 'postMessage',
-				'default'           => '#0366d6',
-				'sanitize_callback' => 'sanitize_hex_color',
-			)
-		);
-		$wp_customize->add_control(
-			new \WP_Customize_Color_Control(
-				$wp_customize,
-				$this->id . '_hover_color',
-				array(
-					'label'   => __( 'Items Hover Color', 'neve' ),
-					'section' => $this->section,
-				)
-			)
-		);
-
-		$wp_customize->add_setting(
-			$this->id . '_active_color',
-			array(
-				'theme_supports'    => 'hfg_support',
-				'transport'         => 'postMessage',
-				'default'           => '#0366d6',
-				'sanitize_callback' => 'sanitize_hex_color',
-			)
-		);
-		$wp_customize->add_control(
-			new \WP_Customize_Color_Control(
-				$wp_customize,
-				$this->id . '_active_color',
-				array(
-					'label'   => __( 'Active Item Color', 'neve' ),
-					'section' => $this->section,
-				)
-			)
-		);
 		$default_last = 'search';
 		if ( class_exists( 'WooCommerce' ) ) {
 			$default_last = 'search-cart';
 		}
-		$wp_customize->add_setting(
-			'neve_last_menu_item',
-			array(
-				'default'           => $default_last,
-				'theme_supports'    => 'hfg_support',
-				'transport'         => 'postMessage',
-				'sanitize_callback' => 'wp_filter_nohtml_kses',
-			)
-		);
 
 		$choices = [
 			'none'   => __( 'None', 'neve' ),
@@ -185,57 +139,39 @@ class Nav extends Abstract_Component {
 			$choices['search-cart'] = __( 'Search & Cart', 'neve' );
 		}
 
-		$wp_customize->add_control(
-			'neve_last_menu_item',
-			array(
-				'label'       => __( 'Last Menu Item', 'neve' ),
-				'description' => '',
-				'type'        => 'select',
-				'priority'    => 800,
-				'section'     => $this->section,
-				'choices'     => $choices,
-			)
+		SettingsManager::get_instance()->add(
+			[
+				'id'                => self::LAST_ITEM_ID,
+				'group'             => self::COMPONENT_ID,
+				'noformat'          => true,
+				'transport'         => 'post' . self::COMPONENT_ID,
+				'sanitize_callback' => 'wp_filter_nohtml_kses',
+				'default'           => $default_last,
+				'label'             => __( 'Last Menu Item', 'neve' ),
+				'type'              => 'select',
+				'options'           => [
+					'choices' => $choices,
+				],
+				'section'           => $this->section,
+			]
 		);
-
-		$wp_customize->add_setting(
-			$this->id . '_shortcut',
-			array(
-				'theme_supports'    => 'hfg_support',
+		SettingsManager::get_instance()->add(
+			[
+				'id'                => 'shortcut',
+				'group'             => self::COMPONENT_ID,
 				'transport'         => 'postMessage',
 				'sanitize_callback' => 'esc_attr',
-			)
-		);
-		$wp_customize->add_control(
-			new ButtonControl(
-				$wp_customize,
-				$this->id . '_shortcut',
-				array(
+				'type'              => '\Neve\Customizer\Controls\Button',
+				'options'           => [
+					'button_text'  => __( 'Primary Menu', 'neve' ),
 					'button_class' => 'nv-top-bar-menu-shortcut',
 					'icon_class'   => 'menu',
-					'button_text'  => __( 'Primary Menu', 'neve' ),
 					'shortcut'     => true,
-					'section'      => $this->section,
-				)
-			)
+				],
+				'section'           => $this->section,
+			]
 		);
 
-		$wp_customize->selective_refresh->add_partial(
-			$this->id . '_partial',
-			array(
-				'selector'        => $selector,
-				'settings'        => array(
-					$this->id . '_style',
-					$this->id . '_shortcut',
-					$this->id . '_color',
-					$this->id . '_hover_color',
-					$this->id . '_active_color',
-					'neve_last_menu_item',
-				),
-				'render_callback' => $fn,
-			)
-		);
-
-		return parent::customize_register( $wp_customize );
 	}
 
 	/**
@@ -243,10 +179,9 @@ class Nav extends Abstract_Component {
 	 *
 	 * @since   1.0.0
 	 * @access  public
-	 * @return mixed
 	 */
 	public function render_component() {
-		Main::get_instance()->load( 'component-nav' );
+		Main::get_instance()->load( 'components/component-nav' );
 	}
 
 	/**

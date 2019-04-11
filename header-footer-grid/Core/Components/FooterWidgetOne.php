@@ -17,20 +17,21 @@ namespace HFG\Core\Components;
  * @package HFG\Core\Components
  */
 class FooterWidgetOne extends Abstract_FooterWidget {
+	const COMPONENT_ID = 'footer-one-widgets';
 
 	/**
-	 * FooterWidgetOne constructor.
+	 * FooterWidgetFour constructor.
 	 *
 	 * @since   1.0.0
 	 * @access  public
-	 * @param string $panel The panel ID.
 	 */
-	public function __construct( $panel ) {
+	public function init() {
 		$this->set_property( 'label', __( 'Footer One', 'neve' ) );
-		$this->set_property( 'id', 'footer-one-widgets' );
+
+		$this->set_property( 'id', self::COMPONENT_ID );
 		$this->set_property( 'width', 3 );
+
 		$this->set_property( 'section', 'sidebar-widgets-footer-one-widgets' );
-		$this->set_property( 'panel', $panel );
 
 		add_filter( 'customize_section_active', array( $this, 'footer_widgets_show' ), 15, 2 );
 	}

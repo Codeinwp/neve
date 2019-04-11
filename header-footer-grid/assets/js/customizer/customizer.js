@@ -115,6 +115,7 @@
 
 	api.bind( 'preview-ready', function() {
 		api.preview.bind( 'header_sidebar_open', function() {
+
 			dispatchEvent( document, "customize_control_sidebar", {
 				bubbles: true,
 				detail: 'open'
