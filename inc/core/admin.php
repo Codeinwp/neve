@@ -183,21 +183,22 @@ class Admin {
 		);
 		global $wp_version;
 		if ( version_compare( $wp_version, '5.0', '>=' ) ) {
-			$config_array = array_slice( $config_array, 0, 3, true ) +
-			                array(
-				                'recommended_actions' => array(
-					                'type'    => 'recommended_actions',
-					                'title'   => __( 'Recommended Actions', 'neve' ),
-					                'plugins' => array(
-						                'otter-blocks' => array(
-							                'name'        => 'Gutenberg Blocks and Template Library by Otter',
-							                'slug'        => 'otter-blocks',
-							                'description' => __( 'Gutenberg Blocks and Template Library by Otter is a lightweight WordPress plugin that brings extra Gutenberg blocks to your site.', 'neve' ),
-						                ),
-					                ),
-				                )
-			                ) +
-			                array_slice( $config_array, 3, count( $config_array ) - 1, true );
+			$config_array = array_merge(
+				array_slice( $config_array, 0, 3, true ),
+                array(
+	                'recommended_actions' => array(
+		                'type'    => 'recommended_actions',
+		                'title'   => __( 'Recommended Actions', 'neve' ),
+		                'plugins' => array(
+			                'otter-blocks' => array(
+				                'name'        => 'Gutenberg Blocks and Template Library by Otter',
+				                'slug'        => 'otter-blocks',
+				                'description' => __( 'Gutenberg Blocks and Template Library by Otter is a lightweight WordPress plugin that brings extra Gutenberg blocks to your site.', 'neve' ),
+			                ),
+		                ),
+	                )
+                ),
+			    array_slice( $config_array, 3, count( $config_array ) - 1, true ) );
 		}
 		$config = apply_filters( 'ti_about_config', $config_array );
 
