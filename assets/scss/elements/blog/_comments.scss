@@ -153,7 +153,7 @@
     .comment-form {
       grid-template-columns: repeat(3, 1fr);
 
-      p:not(.comment-form-author):not(.comment-form-url):not(.comment-form-email) {
+      > *:not(.comment-form-author):not(.comment-form-url):not(.comment-form-email) {
         grid-column: span 3;
       }
     }
