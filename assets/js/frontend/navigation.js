@@ -21,7 +21,7 @@ export const initNavigation = function () {
  * Reposition drop downs in case they go off screen.
  * @returns {boolean}
  */
-function repositionDropdowns () {
+export const repositionDropdowns = function () {
   if (isMobile()) return false;
 
   let dropDowns = document.querySelectorAll('.sub-menu .sub-menu');
@@ -39,7 +39,7 @@ function repositionDropdowns () {
       dropDown.style.left = 'auto';
     }
   });
-}
+};
 
 /**
  * Handle links that link to the current page.

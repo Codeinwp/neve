@@ -75,7 +75,7 @@ function neve_search_icon( $echo = false ) {
  *  Escape HTML strings containing SVG.
  *
  * @param string $input           the input string.
- * @param array $additional_args additional allowed.
+ * @param array  $additional_args additional allowed.
  *
  * @return string
  */
