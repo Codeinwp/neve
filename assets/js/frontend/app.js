@@ -1,26 +1,31 @@
 /* jshint esversion: 6 */
-import { initShop } from "./shop.js";
-import { initBlog } from "./blog.js";
-import { initNavigation } from "./navigation.js";
+import { initShop } from './shop.js';
+import { initBlog } from './blog.js';
+import { initNavigation, repositionDropdowns } from './navigation.js';
 
 
 function run () {
-	initShop();
-	initBlog();
-	initNavigation();
+  initShop();
+  initBlog();
+  initNavigation();
+}
+
+function onResizeDebouncedRun () {
+  repositionDropdowns();
 }
 
 /**
- * Do resize events timer based so they don't run continuously.
+ * Run JS on load.
  */
-// var neveResizeTimeout;
-// jQuery( window ).on( 'resize', function () {
-// 	clearTimeout( neveResizeTimeout );
-// 	neveResizeTimeout = setTimeout( function () {
-// 		jQuery.neveNavigation.repositionDropdowns();
-// 	}, 500 );
-// } );
+window.addEventListener('DOMContentLoaded', function () {
+  run();
+});
 
-window.addEventListener( 'DOMContentLoaded', function () {
-	run();
-} );
+/**
+ * Do resize events debounced.
+ */
+let neveResizeTimeout;
+window.addEventListener('resize', function () {
+  clearTimeout(neveResizeTimeout);
+  neveResizeTimeout = setTimeout(onResizeDebouncedRun, 500);
+});
