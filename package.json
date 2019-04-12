@@ -79,7 +79,6 @@
     }
   },
   "dependencies": {
-    "bricks.js": "^1.8.0",
     "in-view": "^0.6.1"
   }
 }
