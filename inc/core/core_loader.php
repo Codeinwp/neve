@@ -71,6 +71,7 @@ class Core_Loader {
 				'Compatibility\Header_Footer_Elementor',
 				'Compatibility\Amp',
 				'Compatibility\Beaver',
+				'Compatibility\Lifter',
 
 				'Admin\Metabox\Manager',
 			)
