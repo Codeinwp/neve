@@ -60,14 +60,14 @@ if [ -f "themeisle.enc" ]; then
     # Creating the maintenance file.
     echo "<?php \$upgrading = time(); ?>" > .maintenance
     # rsync the maintenance file.
-    grunt rsync:start
+    node_modules/.bin/grunt rsync:start
 
 
     # Copy the dist folder.
-    grunt rsync:prod
+    node_modules/.bin/grunt rsync:prod
 
     #Removing the maintenance.
     echo -n > .maintenance
-    grunt rsync:end
+    node_modules/.bin/grunt rsync:end
     rm -rf .maintenance
 fi
