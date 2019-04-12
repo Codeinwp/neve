@@ -185,9 +185,12 @@ function neve_hfg_header_settings() {
 		'x'     => 0,
 	];
 	$builder['mobile']['main']['nav-icon']        = [
-		'id'    => 'nav-icon',
-		'width' => 4,
-		'x'     => 8,
+		'id'       => 'nav-icon',
+		'width'    => 4,
+		'settings' => [
+			'align' => 'right',
+		],
+		'x'        => 8,
 	];
 	$builder['mobile']['sidebar']['primary-menu'] = [
 		'id'    => 'primary-menu',

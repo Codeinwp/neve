@@ -70,7 +70,7 @@ namespace HFG;
 	<# if ( data.device != 'desktop' ) { #>
 	<# if ( ! _.isUndefined( data.rows.sidebar ) ) { #>
 	<?php
-	$is_active = setting( 'header_menu_icon_sidebar' );
+	$is_active = setting( 'nav-icon_sidebar' );
 	$style     = '';
 	if ( $is_active ) {
 		$style = 'style="display: block;"';
