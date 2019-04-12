@@ -85,10 +85,10 @@ class Header extends Abstract_Builder {
 	 */
 	protected function get_rows() {
 		return [
-			'top'     => 'Header Top',
-			'main'    => 'Header Main',
-			'bottom'  => 'Header Bottom',
-			'sidebar' => 'Header Sidebar',
+			'top'     => __( 'Header Top', 'neve' ),
+			'main'    => __( 'Header Main', 'neve' ),
+			'bottom'  => __( 'Header Bottom', 'neve' ),
+			'sidebar' => __( 'Header Sidebar', 'neve' ),
 		];
 	}
 }
