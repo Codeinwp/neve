@@ -29,12 +29,13 @@ export const repositionDropdowns = function () {
 
   let windowWidth = window.innerWidth;
   neveEach(dropDowns, function (dropDown) {
-    let bounding = dropDown.offset().left;
+    let bounding = dropDown.getBoundingClientRect(),
+        rightDist = bounding.left;
     if (/webkit.*mobile/i.test(navigator.userAgent)) {
       bounding -= window.scrollX;
     }
-    let dropDownWidth = dropDown.outerWidth();
-    if (bounding + dropDownWidth >= windowWidth) {
+
+    if (rightDist + bounding.width >= windowWidth) {
       dropDown.style.right = '100%';
       dropDown.style.left = 'auto';
     }
