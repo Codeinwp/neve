@@ -1,5 +1,5 @@
 /* jshint esversion: 6 */
-import { isMobile, neveEach, isBestBrowserEver as isIE } from "./utils.js";
+import { isMobile, neveEach, isBestBrowserEver as isIE, unhashUrl } from "./utils.js";
 
 let pageUrl;
 
@@ -54,8 +54,10 @@ function handleScrollLinks () {
       let href = event.target.getAttribute('href');
       if (href === null) return false;
       console.log(href);
+      console.log(unhashUrl(href));
       console.log(pageUrl);
-      if (href.indexOf(pageUrl) > -1) {
+      console.log(unhashUrl(pageUrl));
+      if (unhashUrl(href) === unhashUrl(pageUrl)) {
         document.body.classList.remove('is-menu-sidebar');
         neveEach(document.querySelectorAll('.dropdown-open'), function (element) {
           element.classList.remove('dropdown-open');
@@ -168,3 +170,4 @@ function handleIeDropdowns () {
     });
   });
 }
+
