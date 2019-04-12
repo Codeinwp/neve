@@ -457,6 +457,7 @@ body {
   background-color: transparent;
   border: 0;
   display: flex;
+  box-shadow: none;
   flex-direction: row-reverse;
   width: 100%;
   padding: 0;
@@ -467,8 +468,14 @@ body {
     width: 35%;
     padding: 0;
   }
-  form input {
+  form input:not([type="submit"]) {
     background-color: #fff;
+  }
+  input[type="submit"] {
+    line-height: 1;
+  }
+  .nv-icon {
+    line-height: 1;
   }
 }
 
