@@ -194,6 +194,7 @@ function neve_hfg_header_settings() {
 		'width' => 8,
 		'x'     => 0,
 	];
+	$components['nav-icon']['component_align']    = 'right';
 
 	return [
 		'builder'    => $builder,

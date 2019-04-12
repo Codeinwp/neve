@@ -54,8 +54,8 @@ class MenuIcon extends Abstract_Component {
 		SettingsManager::get_instance()->add(
 			[
 				'id'                => self::MENU_TEXT,
-				'group'             => self::COMPONENT_ID,
-				'transport'         => 'post' . self::COMPONENT_ID,
+				'group'             => $this->get_id(),
+				'transport'         => 'post' . $this->get_id(),
 				'sanitize_callback' => 'wp_filter_nohtml_kses',
 				'default'           => __( 'Menu', 'neve' ),
 				'label'             => __( 'Text', 'neve' ),
@@ -67,8 +67,8 @@ class MenuIcon extends Abstract_Component {
 		SettingsManager::get_instance()->add(
 			[
 				'id'                => self::SIDEBAR_TOGGLE,
-				'group'             => self::COMPONENT_ID,
-				'transport'         => 'post' . self::COMPONENT_ID,
+				'group'             => $this->get_id(),
+				'transport'         => 'post' . $this->get_id(),
 				'sanitize_callback' => 'absint',
 				'default'           => 0,
 				'label'             => __( 'Show Sidebar', 'neve' ),

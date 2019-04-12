@@ -79,6 +79,7 @@ class Header extends Abstract_Builder {
 	 * Return  the builder rows.
 	 *
 	 * @since   1.0.0
+	 * @updated 1.0.1
 	 * @access  protected
 	 * @return array
 	 */
@@ -87,7 +88,7 @@ class Header extends Abstract_Builder {
 			'top'     => 'Header Top',
 			'main'    => 'Header Main',
 			'bottom'  => 'Header Bottom',
-			'sidebar' => 'Menu Sidebar',
+			'sidebar' => 'Header Sidebar',
 		];
 	}
 }

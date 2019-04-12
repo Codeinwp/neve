@@ -92,6 +92,14 @@ abstract class Abstract_Component implements Component {
 	 */
 	protected $label;
 	/**
+	 * The component description
+	 *
+	 * @since   1.0.1
+	 * @access  protected
+	 * @var string $description
+	 */
+	protected $description;
+	/**
 	 * The component priority in customizer
 	 *
 	 * @since   1.0.0
@@ -162,16 +170,18 @@ abstract class Abstract_Component implements Component {
 	/**
 	 * Return the settings for the component.
 	 *
-	 * @return array
 	 * @since   1.0.0
+	 * @updated 1.0.1
 	 * @access  public
+	 * @return array
 	 */
 	public function get_settings() {
 		return array(
-			'name'    => $this->label,
-			'id'      => $this->id,
-			'width'   => $this->width,
-			'section' => $this->section, // Customizer section to focus when click settings.
+			'name'        => $this->label,
+			'description' => $this->description,
+			'id'          => $this->id,
+			'width'       => $this->width,
+			'section'     => $this->section, // Customizer section to focus when click settings.
 		);
 	}
 
@@ -256,16 +266,23 @@ abstract class Abstract_Component implements Component {
 	 *
 	 * @return WP_Customize_Manager
 	 * @since   1.0.0
+	 * @updated 1.0.1
 	 * @access  public
 	 */
 	public function customize_register( WP_Customize_Manager $wp_customize ) {
 
+		$description = ( isset( $this->description ) && ! empty( $this->description ) )
+			? $this->description
+			: '';
+
 		$wp_customize->add_section(
 			$this->section,
 			array(
-				'title'    => $this->label,
-				'priority' => $this->priority,
-				'panel'    => $this->panel,
+				'title'              => $this->label,
+				'description'        => $description,
+				'description_hidden' => ( $description !== '' ),
+				'priority'           => $this->priority,
+				'panel'              => $this->panel,
 			)
 		);
 
