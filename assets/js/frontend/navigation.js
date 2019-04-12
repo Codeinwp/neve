@@ -153,14 +153,15 @@ function createNavOverlay (item, classToRemove, multiple = false) {
  * have trouble understanding what hover is.
  */
 function handleIeDropdowns () {
-  let dropdowns = document.querySelectorAll('.header--row[data-show-on="desktop"] .menu-item-has-children');
+  let dropdowns = document.querySelectorAll('.header--row[data-show-on="desktop"] .sub-menu');
   neveEach(dropdowns, function (dropdown) {
-    let subMenu = dropdown.parentNode.parentNode.querySelector('.sub-menu');
-    dropdown.addEventListener('mouseenter', function () {
-      subMenu.classList.add('dropdown-open');
+    let parentItem = dropdown.parentNode;
+
+    parentItem.addEventListener('mouseenter', function () {
+      dropdown.classList.add('dropdown-open');
     });
-    dropdown.addEventListener('mouseleave', function () {
-      subMenu.classList.remove('dropdown-open');
+    parentItem.addEventListener('mouseleave', function () {
+      dropdown.classList.remove('dropdown-open');
     });
   });
 }
