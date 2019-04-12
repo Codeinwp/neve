@@ -53,6 +53,8 @@ function handleScrollLinks () {
     link.addEventListener('click', function (event) {
       let href = event.target.getAttribute('href');
       if (href === null) return false;
+      console.log(href);
+      console.log(pageUrl);
       if (href.indexOf(pageUrl) > -1) {
         document.body.classList.remove('is-menu-sidebar');
         neveEach(document.querySelectorAll('.dropdown-open'), function (element) {
@@ -70,6 +72,7 @@ function handleMobileDropdowns () {
   let carets = document.querySelectorAll('.caret-wrap');
   neveEach(carets, function (caret) {
     caret.addEventListener('click', function (event) {
+      event.preventDefault();
       let subMenu = this.parentNode.parentNode.querySelector('.sub-menu');
       this.classList.toggle('dropdown-open');
       subMenu.classList.toggle('dropdown-open');

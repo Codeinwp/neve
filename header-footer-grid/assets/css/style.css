@@ -574,11 +574,17 @@ body.menu_sidebar_dropdown:before {
 .style-border-bottom .sub-menu a:after {
   bottom: 5px; }
 
+.header-menu-sidebar-inner .style-border-bottom .sub-menu a:after {
+  bottom: 0; }
+
 .style-border-top a:after {
   top: 0; }
 
 .style-border-top .sub-menu a:after {
   top: 5px; }
+
+.header-menu-sidebar-inner .style-border-top .sub-menu a:after {
+  top: 0; }
 
 .style-full-height a {
   padding-left: 3px;
