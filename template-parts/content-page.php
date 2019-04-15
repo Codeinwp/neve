@@ -6,16 +6,5 @@
  * @package Neve
  */
 
-do_action( 'neve_before_content', 'single-page' ); ?>
-	<div class="nv-content-wrap entry-content">
-		<?php the_content(); ?>
-		<?php
-		if ( comments_open() || get_comments_number() ) {
-			comments_template();
-		}
-		?>
-	</div>
-<?php do_action( 'neve_do_pagination', 'single' ); ?>
-<?php
-do_action( 'neve_after_content', 'single-page' );
+do_action( 'neve_do_single_page' );
 
