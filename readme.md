@@ -17,6 +17,20 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
+### 2.3.5 - 2019-04-15  ###
+
+* Fixed header HTML component stripping HTML code
+* Fixed Jetpack's comment form layout issue
+* Fixed dropdown menu not working in Microsoft Edge
+* Fixed main content shifted to the right in IE11
+* Fixed migration from Zelle
+* Fixed audio block not displaying in Chrome
+* Fixed compatibility with Elementor Pro Theme Locations API
+* Added new wp_body_open() function for WP 5.2
+* Replaced neve icons with SVGs for a better loading time
+* New Shop starter site
+
+
 ### 2.3.4 - 2019-04-05  ###
 
 * Removed unused strings
