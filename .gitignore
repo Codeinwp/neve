@@ -4,8 +4,6 @@ logs
 dist
 artifact
 vendor
-bin
-composer.lock
 **/*.js.map
 **/*.css.map
 **/.DS_Store

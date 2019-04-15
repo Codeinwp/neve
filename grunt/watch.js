@@ -1,12 +1,6 @@
 /* jshint node:true */
 // https://github.com/gruntjs/grunt-contrib-watch
 module.exports = {
-	js: {
-		files: [
-			'assets/js/src/**.js',
-		],
-		tasks: [ 'uglify:scripts', 'uglify:unMinified' ]
-	},
 	customizerJs: {
 		files: [
 			'inc/customizer/controls/js/*.js',

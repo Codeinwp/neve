@@ -385,3 +385,8 @@ All  images are licensed under CC0.
 * Neve Freelancer: neve-freelancer-testimonial-bg, CC0, https://mystock.themeisle.com/photo/code-in-wp/
 * Neve Freelancer: neve-freelancer-faq, CC0, https://mystock.themeisle.com/photo/programming-laptop-2/
 * Neve Freelancer: neve-freelancer-about1, CC0, https://mystock.themeisle.com/photo/path-to-the-village/
+* Neve Shop (screenshot): https://stocksnap.io/photo/SS2GVMJTWH
+* Neve Shop (screenshot): https://stocksnap.io/photo/KQECHSBAOC
+* Neve Shop (screenshot): https://stocksnap.io/photo/1CXI0CSPE5
+* Neve Shop (screenshot): https://stocksnap.io/photo/JBCWCLO4JI
+* Neve Shop (screenshot): https://stocksnap.io/photo/AEENLCARXY

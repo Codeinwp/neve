@@ -40,7 +40,6 @@ class Masonry extends Base_View {
 			return $data;
 		}
 		$data['masonry'] = 'enabled';
-
 		return $data;
 	}
 

@@ -10,7 +10,6 @@
 
 namespace Neve\Core;
 
-
 /**
  * Class Admin
  *
@@ -452,7 +451,7 @@ class Admin {
 			$notice_sites_list,
 			$notice_documentation,
 			$style
-		);
+		);// WPCS: XSS OK.
 	}
 
 	/**

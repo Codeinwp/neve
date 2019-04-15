@@ -12,10 +12,10 @@
 
 namespace HFG\Core;
 
-use HFG\Config\Customizer\Style;
-use HFG\Config\Customizer\Typography;
 use HFG\Core\Builder\Abstract_Builder;
 use HFG\Core\Interfaces\Builder;
+use HFG\Core\Settings\Config;
+use HFG\Main;
 use HFG\Traits\Core;
 use WP_Customize_Manager;
 
@@ -27,14 +27,6 @@ use WP_Customize_Manager;
 class Customizer {
 	use Core;
 
-	/**
-	 * Holds an instance of Settings
-	 *
-	 * @since   1.0.0
-	 * @access  private
-	 * @var Settings $settings
-	 */
-	private $settings;
 
 	/**
 	 * Holds the builders to register.
@@ -50,18 +42,13 @@ class Customizer {
 	 *
 	 * @since   1.0.0
 	 * @access  public
-	 *
-	 * @param Settings $settings The Settings class.
 	 */
-	public function __construct( Settings $settings ) {
-		$this->settings = $settings;
-
+	public function __construct() {
 		$theme_support = get_theme_support( 'hfg_support' );
 
 		if ( empty( $theme_support ) ) {
 			return;
 		}
-
 		$theme_support = reset( $theme_support );
 		foreach ( $theme_support['builders'] as $builder => $components ) {
 			if ( class_exists( $builder ) && in_array( 'HFG\Core\Interfaces\Builder', class_implements( $builder ) ) ) {
@@ -94,12 +81,11 @@ class Customizer {
 	/**
 	 * Classes for the body tag.
 	 *
-	 * @since   1.0.0
-	 * @access  public
-	 *
 	 * @param array $classes List of body classes.
 	 *
 	 * @return array
+	 * @since   1.0.0
+	 * @access  public
 	 */
 	public function hfg_body_classes( $classes ) {
 		if ( is_customize_preview() ) {
@@ -119,17 +105,23 @@ class Customizer {
 	 */
 	public function scripts() {
 		$suffix = $this->get_assets_suffix();
-		wp_enqueue_style( 'hfg-customizer-control', esc_url( $this->settings->url ) . '/assets/css/admin/customizer/customizer' . $suffix . '.css' );
+		wp_enqueue_style(
+			'hfg-customizer-control',
+			esc_url( Config::get_url() ) . '/assets/css/admin/customizer/customizer' . $suffix . '.css',
+			array(),
+			Main::VERSION
+		);
+
 		wp_register_script(
 			'hfg-layout-builder',
-			esc_url( $this->settings->url ) . '/assets/js/customizer/builder' . $suffix . '.js',
+			esc_url( Config::get_url() ) . '/assets/js/customizer/builder' . $suffix . '.js',
 			array(
 				'customize-controls',
 				'jquery-ui-resizable',
 				'jquery-ui-droppable',
 				'jquery-ui-draggable',
 			),
-			false,
+			Main::VERSION,
 			true
 		);
 		wp_localize_script(
@@ -139,7 +131,6 @@ class Customizer {
 				'footer_moved_widgets_text' => '',
 				'builders'                  => $this->get_builders_data(),
 				'is_rtl'                    => is_rtl(),
-				'change_version_nonce'      => wp_create_nonce( 'change_version_nonce' ),
 			)
 		);
 		wp_enqueue_script( 'hfg-layout-builder' );
@@ -157,9 +148,9 @@ class Customizer {
 	/**
 	 * Returns list of builders.
 	 *
+	 * @return array
 	 * @since   1.0.0
 	 * @access  public
-	 * @return array
 	 */
 	public function get_builders_data() {
 
@@ -199,28 +190,30 @@ class Customizer {
 	 * @access  public
 	 */
 	public function preview_js() {
-		if ( is_customize_preview() ) {
-			$suffix = $this->get_assets_suffix();
-			wp_enqueue_script(
-				'hfg-customizer',
-				esc_url( $this->settings->url ) . '/assets/js/customizer/customizer' . $suffix . '.js',
-				array(
-					'customize-preview',
-					'customize-selective-refresh',
-				),
-				'20151215',
-				true
-			);
+		if ( ! is_customize_preview() ) {
+			return;
 		}
+		$suffix = $this->get_assets_suffix();
+		wp_enqueue_script(
+			'hfg-customizer',
+			esc_url( Config::get_url() ) . '/assets/js/customizer/customizer' . $suffix . '.js',
+			array(
+				'customize-preview',
+				'customize-selective-refresh',
+			),
+			Main::VERSION,
+			true
+		);
+
 	}
 
 	/**
 	 * Register builder controls and settings.
 	 *
+	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
+	 *
 	 * @since   1.0.0
 	 * @access  public
-	 *
-	 * @param WP_Customize_Manager $wp_customize The Customize Manager.
 	 */
 	public function register( WP_Customize_Manager $wp_customize ) {
 		/**
@@ -240,7 +233,7 @@ class Customizer {
 	 * @access  public
 	 */
 	public function template() {
-		require_once $this->settings->path . '/templates/rows.php';
+		require_once Config::get_path() . '/templates/rows.php';
 		?>
 		<script type="text/html" id="tmpl-hfg--builder-panel">
 			<div class="hfg--customize-builder">
@@ -252,9 +245,11 @@ class Customizer {
 							<?php do_action( 'hfg_builder_panel_actions_buttons' ); ?>
 							<a class="button button-secondary hfg--panel-close" href="#">
 								<span class="close-text"><i class="dashicons dashicons-arrow-down-alt2"
-															style="margin-top: 4px;"></i> <?php _e( 'Close', 'neve' ); ?></span>
-								<span class="panel-name-text"><i class="dashicons dashicons-arrow-up-alt2"
-																style="margin-top: 4px;"></i> {{ data.title }}</span>
+										style="margin-top: 4px;"></i> <?php _e( 'Close', 'neve' ); // WPCS: XSS OK. ?></span>
+								<span class="panel-name-text">
+									<i class="dashicons dashicons-arrow-up-alt2" style="margin-top: 4px;"></i>
+									{{ data.title }}
+								</span>
 							</a>
 						</div>
 					</div>

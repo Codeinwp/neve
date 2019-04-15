@@ -26,6 +26,7 @@ trait Core {
 	 * @return string
 	 */
 	public function get_assets_suffix() {
+		return '';
 		$suffix = '.min';
 		if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
 			$suffix = '';
@@ -62,7 +63,9 @@ trait Core {
 			$property = $key;
 			$css     .= $prefix . "$property: $value;\n";
 		}
-
+		if ( preg_match( '#</?\w+#', $css ) ) {
+			$css = '';
+		}
 		return $css;
 	}
 

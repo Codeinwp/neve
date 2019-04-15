@@ -200,7 +200,7 @@ class Woocommerce {
 	 */
 	public function wrap_main_content_start() {
 		$before_shop_classes = apply_filters( 'neve_before_shop_classes', 'nv-index-posts nv-shop col' );
-		echo '<div class="' . $before_shop_classes . '">';
+		echo '<div class="' . esc_attr( $before_shop_classes ) . '">';
 		do_action( 'neve_before_shop_loop_content' );
 	}
 
@@ -419,8 +419,9 @@ class Woocommerce {
 	 * @return mixed
 	 */
 	public function cart_link_fragment( $fragments ) {
-		$fragments['.cart-icon-wrapper'] = '<a href="' . esc_url( wc_get_cart_url() ) . '" class="cart-icon-wrapper"><span class="nv-icon nv-cart"></span>';
+		$fragments['.cart-icon-wrapper'] = '<a href="' . esc_url( wc_get_cart_url() ) . '" class="cart-icon-wrapper">';
 
+		$fragments['.cart-icon-wrapper'] .= neve_cart_icon();
 		$fragments['.cart-icon-wrapper'] .= '<span class="screen-reader-text">' . __( 'Cart', 'neve' ) . '</span>';
 		$fragments['.cart-icon-wrapper'] .= '<span class="cart-count">' . WC()->cart->get_cart_contents_count() . '</span>';
 		$fragments['.cart-icon-wrapper'] .= '</a>';

@@ -1,0 +1,3032 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- generator="WordPress/4.9.10" created="2019-04-08 15:11" -->
+		<rss version="2.0"
+				xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
+				xmlns:content="http://purl.org/rss/1.0/modules/content/"
+				xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+				xmlns:dc="http://purl.org/dc/elements/1.1/"
+				xmlns:wp="http://wordpress.org/export/1.2/"
+		>
+
+			<channel>
+				<title>My Shop</title>
+				<link>https://demo.themeisle.com/neve-shop</link>
+				<description></description>
+				<pubDate>Mon, 08 Apr 2019 15:11:55 +0000</pubDate>
+				<language>en-US</language>
+				<wp:wxr_version>1.2</wp:wxr_version>
+				<wp:base_site_url>https://demo.themeisle.com/</wp:base_site_url>
+				<wp:base_blog_url>https://demo.themeisle.com/neve-shop</wp:base_blog_url>
+
+									<wp:category>
+						<wp:term_id>1</wp:term_id>
+						<wp:category_nicename><![CDATA[uncategorized]]></wp:category_nicename>
+						<wp:category_parent><![CDATA[]]></wp:category_parent>
+						<wp:cat_name><![CDATA[Uncategorized]]></wp:cat_name>
+					</wp:category>
+																	<wp:term>
+						<wp:term_id><![CDATA[8]]></wp:term_id>
+						<wp:term_taxonomy><![CDATA[product_visibility]]></wp:term_taxonomy>
+						<wp:term_slug><![CDATA[exclude-from-catalog]]></wp:term_slug>
+						<wp:term_parent><![CDATA[]]></wp:term_parent>
+						<wp:term_name><![CDATA[exclude-from-catalog]]></wp:term_name>
+					</wp:term>
+									<wp:term>
+						<wp:term_id><![CDATA[7]]></wp:term_id>
+						<wp:term_taxonomy><![CDATA[product_visibility]]></wp:term_taxonomy>
+						<wp:term_slug><![CDATA[exclude-from-search]]></wp:term_slug>
+						<wp:term_parent><![CDATA[]]></wp:term_parent>
+						<wp:term_name><![CDATA[exclude-from-search]]></wp:term_name>
+					</wp:term>
+									<wp:term>
+						<wp:term_id><![CDATA[6]]></wp:term_id>
+						<wp:term_taxonomy><![CDATA[product_type]]></wp:term_taxonomy>
+						<wp:term_slug><![CDATA[external]]></wp:term_slug>
+						<wp:term_parent><![CDATA[]]></wp:term_parent>
+						<wp:term_name><![CDATA[external]]></wp:term_name>
+					</wp:term>
+									<wp:term>
+						<wp:term_id><![CDATA[9]]></wp:term_id>
+						<wp:term_taxonomy><![CDATA[product_visibility]]></wp:term_taxonomy>
+						<wp:term_slug><![CDATA[featured]]></wp:term_slug>
+						<wp:term_parent><![CDATA[]]></wp:term_parent>
+						<wp:term_name><![CDATA[featured]]></wp:term_name>
+					</wp:term>
+									<wp:term>
+						<wp:term_id><![CDATA[4]]></wp:term_id>
+						<wp:term_taxonomy><![CDATA[product_type]]></wp:term_taxonomy>
+						<wp:term_slug><![CDATA[grouped]]></wp:term_slug>
+						<wp:term_parent><![CDATA[]]></wp:term_parent>
+						<wp:term_name><![CDATA[grouped]]></wp:term_name>
+					</wp:term>
+									<wp:term>
+						<wp:term_id><![CDATA[10]]></wp:term_id>
+						<wp:term_taxonomy><![CDATA[product_visibility]]></wp:term_taxonomy>
+						<wp:term_slug><![CDATA[outofstock]]></wp:term_slug>
+						<wp:term_parent><![CDATA[]]></wp:term_parent>
+						<wp:term_name><![CDATA[outofstock]]></wp:term_name>
+					</wp:term>
+									<wp:term>
+						<wp:term_id><![CDATA[11]]></wp:term_id>
+						<wp:term_taxonomy><![CDATA[product_visibility]]></wp:term_taxonomy>
+						<wp:term_slug><![CDATA[rated-1]]></wp:term_slug>
+						<wp:term_parent><![CDATA[]]></wp:term_parent>
+						<wp:term_name><![CDATA[rated-1]]></wp:term_name>
+					</wp:term>
+									<wp:term>
+						<wp:term_id><![CDATA[12]]></wp:term_id>
+						<wp:term_taxonomy><![CDATA[product_visibility]]></wp:term_taxonomy>
+						<wp:term_slug><![CDATA[rated-2]]></wp:term_slug>
+						<wp:term_parent><![CDATA[]]></wp:term_parent>
+						<wp:term_name><![CDATA[rated-2]]></wp:term_name>
+					</wp:term>
+									<wp:term>
+						<wp:term_id><![CDATA[13]]></wp:term_id>
+						<wp:term_taxonomy><![CDATA[product_visibility]]></wp:term_taxonomy>
+						<wp:term_slug><![CDATA[rated-3]]></wp:term_slug>
+						<wp:term_parent><![CDATA[]]></wp:term_parent>
+						<wp:term_name><![CDATA[rated-3]]></wp:term_name>
+					</wp:term>
+									<wp:term>
+						<wp:term_id><![CDATA[14]]></wp:term_id>
+						<wp:term_taxonomy><![CDATA[product_visibility]]></wp:term_taxonomy>
+						<wp:term_slug><![CDATA[rated-4]]></wp:term_slug>
+						<wp:term_parent><![CDATA[]]></wp:term_parent>
+						<wp:term_name><![CDATA[rated-4]]></wp:term_name>
+					</wp:term>
+									<wp:term>
+						<wp:term_id><![CDATA[15]]></wp:term_id>
+						<wp:term_taxonomy><![CDATA[product_visibility]]></wp:term_taxonomy>
+						<wp:term_slug><![CDATA[rated-5]]></wp:term_slug>
+						<wp:term_parent><![CDATA[]]></wp:term_parent>
+						<wp:term_name><![CDATA[rated-5]]></wp:term_name>
+					</wp:term>
+									<wp:term>
+						<wp:term_id><![CDATA[3]]></wp:term_id>
+						<wp:term_taxonomy><![CDATA[product_type]]></wp:term_taxonomy>
+						<wp:term_slug><![CDATA[simple]]></wp:term_slug>
+						<wp:term_parent><![CDATA[]]></wp:term_parent>
+						<wp:term_name><![CDATA[simple]]></wp:term_name>
+					</wp:term>
+									<wp:term>
+						<wp:term_id><![CDATA[16]]></wp:term_id>
+						<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
+						<wp:term_slug><![CDATA[uncategorized]]></wp:term_slug>
+						<wp:term_parent><![CDATA[]]></wp:term_parent>
+						<wp:term_name><![CDATA[Uncategorized]]></wp:term_name>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[product_count_product_cat]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+					</wp:term>
+									<wp:term>
+						<wp:term_id><![CDATA[5]]></wp:term_id>
+						<wp:term_taxonomy><![CDATA[product_type]]></wp:term_taxonomy>
+						<wp:term_slug><![CDATA[variable]]></wp:term_slug>
+						<wp:term_parent><![CDATA[]]></wp:term_parent>
+						<wp:term_name><![CDATA[variable]]></wp:term_name>
+					</wp:term>
+									<wp:term>
+						<wp:term_id><![CDATA[21]]></wp:term_id>
+						<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
+						<wp:term_slug><![CDATA[clothing]]></wp:term_slug>
+						<wp:term_parent><![CDATA[]]></wp:term_parent>
+						<wp:term_name><![CDATA[Clothing]]></wp:term_name>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[order]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[product_count_product_cat]]></wp:meta_key>
+			<wp:meta_value><![CDATA[7]]></wp:meta_value>
+		</wp:termmeta>
+					</wp:term>
+									<wp:term>
+						<wp:term_id><![CDATA[20]]></wp:term_id>
+						<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
+						<wp:term_slug><![CDATA[dresses]]></wp:term_slug>
+						<wp:term_parent><![CDATA[clothing]]></wp:term_parent>
+						<wp:term_name><![CDATA[Dresses]]></wp:term_name>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[order]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[product_count_product_cat]]></wp:meta_key>
+			<wp:meta_value><![CDATA[4]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[display_type]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[thumbnail_id]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+					</wp:term>
+									<wp:term>
+						<wp:term_id><![CDATA[17]]></wp:term_id>
+						<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
+						<wp:term_slug><![CDATA[hat]]></wp:term_slug>
+						<wp:term_parent><![CDATA[]]></wp:term_parent>
+						<wp:term_name><![CDATA[Hat]]></wp:term_name>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[order]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[product_count_product_cat]]></wp:meta_key>
+			<wp:meta_value><![CDATA[2]]></wp:meta_value>
+		</wp:termmeta>
+					</wp:term>
+									<wp:term>
+						<wp:term_id><![CDATA[22]]></wp:term_id>
+						<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
+						<wp:term_slug><![CDATA[tshirt]]></wp:term_slug>
+						<wp:term_parent><![CDATA[clothing]]></wp:term_parent>
+						<wp:term_name><![CDATA[Tshirt]]></wp:term_name>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[order]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[product_count_product_cat]]></wp:meta_key>
+			<wp:meta_value><![CDATA[3]]></wp:meta_value>
+		</wp:termmeta>
+					</wp:term>
+									<wp:term>
+						<wp:term_id><![CDATA[18]]></wp:term_id>
+						<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
+						<wp:term_slug><![CDATA[blouse]]></wp:term_slug>
+						<wp:term_parent><![CDATA[hat]]></wp:term_parent>
+						<wp:term_name><![CDATA[Blouse]]></wp:term_name>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[order]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[product_count_product_cat]]></wp:meta_key>
+			<wp:meta_value><![CDATA[1]]></wp:meta_value>
+		</wp:termmeta>
+					</wp:term>
+									<wp:term><wp:term_id>23</wp:term_id><wp:term_taxonomy>nav_menu</wp:term_taxonomy><wp:term_slug><![CDATA[main]]></wp:term_slug><wp:term_name><![CDATA[Main]]></wp:term_name>
+</wp:term>
+
+				<generator>https://wordpress.org/?v=4.9.10</generator>
+
+						<item>
+			<title>
+				neve			</title>
+			<link>https://demo.themeisle.com/neve-shop/2019/03/06/neve/</link>
+			<pubDate>Wed, 06 Mar 2019 08:38:06 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-shop/2019/03/06/neve/</guid>
+			<description></description>
+			<content:encoded><![CDATA[/* CUSTOM CSS FOR YOUR CUSTOM NEVE STARTER SITE */
+/* Header */
+.home header {
+	z-index: 10;
+}
+.home .nv-navbar, .home .header-main-inner {
+	background: transparent;
+}
+.home .builder-item {
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+.hfg_header.site-header {
+	border-bottom: 0px;
+}
+.home header > a {
+	color: #ffffff !important;
+}
+/* Slider */
+.home .maxslider {
+	height: 90vh;
+}
+.home .maxslider-slide-title {
+	font-weight: 400;
+	letter-spacing: 10px;
+	margin-bottom: 30px;
+}
+.home .maxslider-slide-subtitle {
+	letter-spacing: 4px;
+	margin-bottom: 40px;
+	    font-family: "Roboto Condensed", sans-serif;
+}
+.home .maxslider .maxslider-btn {
+	background-color: transparent;
+	border: 1px solid #ffff !important;
+	border-radius: 2px;
+	font-size: 11px;
+	padding: 8px 37px;
+	font-family: "Roboto Condensed", sans-serif;
+	letter-spacing: 2px;
+	font-weight: normal;
+}
+.home .maxslider .maxslider-btn:hover {
+	background-color: #ffffff;
+	color: #000000;
+}
+/* Footer */
+.footer-top-inner {
+	padding: 30px 0px;
+}
+/* Widgets */
+.widget p.widget-title {
+	font-weight: 400;
+	text-transform: uppercase;
+	font-size: 14px;
+}
+]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>14</wp:post_id>
+			<wp:post_date><![CDATA[2019-03-06 08:38:06]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-03-06 08:38:06]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[custom_css]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+											</item>
+				<item>
+			<title>
+							</title>
+			<link>https://demo.themeisle.com/neve-shop/2019/03/06/143/</link>
+			<pubDate>Wed, 06 Mar 2019 15:50:33 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-shop/?p=143</guid>
+			<description></description>
+			<content:encoded><![CDATA[ ]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>143</wp:post_id>
+			<wp:post_date><![CDATA[2019-03-06 15:50:33]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-03-06 15:50:33]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[143]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>4</wp:menu_order>
+			<wp:post_type><![CDATA[nav_menu_item]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+								<category domain="nav_menu" nicename="main"><![CDATA[Main]]></category>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_type]]></wp:meta_key>
+					<wp:meta_value><![CDATA[post_type]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_menu_item_parent]]></wp:meta_key>
+					<wp:meta_value><![CDATA[0]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_object_id]]></wp:meta_key>
+					<wp:meta_value><![CDATA[131]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_object]]></wp:meta_key>
+					<wp:meta_value><![CDATA[page]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_target]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_classes]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_xfn]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_url]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[obfx_menu_icon]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+							</title>
+			<link>https://demo.themeisle.com/neve-shop/2019/03/06/144/</link>
+			<pubDate>Wed, 06 Mar 2019 15:50:33 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-shop/?p=144</guid>
+			<description></description>
+			<content:encoded><![CDATA[ ]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>144</wp:post_id>
+			<wp:post_date><![CDATA[2019-03-06 15:50:33]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-03-06 15:50:33]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[144]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>3</wp:menu_order>
+			<wp:post_type><![CDATA[nav_menu_item]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+								<category domain="nav_menu" nicename="main"><![CDATA[Main]]></category>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_type]]></wp:meta_key>
+					<wp:meta_value><![CDATA[post_type]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_menu_item_parent]]></wp:meta_key>
+					<wp:meta_value><![CDATA[0]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_object_id]]></wp:meta_key>
+					<wp:meta_value><![CDATA[130]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_object]]></wp:meta_key>
+					<wp:meta_value><![CDATA[page]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_target]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_classes]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_xfn]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_url]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[obfx_menu_icon]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				About			</title>
+			<link>https://demo.themeisle.com/neve-shop/2019/03/06/about/</link>
+			<pubDate>Wed, 06 Mar 2019 15:50:32 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-shop/?p=145</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>145</wp:post_id>
+			<wp:post_date><![CDATA[2019-03-06 15:50:32]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-03-06 15:50:32]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[about]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>2</wp:menu_order>
+			<wp:post_type><![CDATA[nav_menu_item]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+								<category domain="nav_menu" nicename="main"><![CDATA[Main]]></category>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_type]]></wp:meta_key>
+					<wp:meta_value><![CDATA[post_type]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_menu_item_parent]]></wp:meta_key>
+					<wp:meta_value><![CDATA[0]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_object_id]]></wp:meta_key>
+					<wp:meta_value><![CDATA[120]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_object]]></wp:meta_key>
+					<wp:meta_value><![CDATA[page]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_target]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_classes]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_xfn]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_url]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[obfx_menu_icon]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+							</title>
+			<link>https://demo.themeisle.com/neve-shop/2019/03/06/146/</link>
+			<pubDate>Wed, 06 Mar 2019 15:50:33 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-shop/?p=146</guid>
+			<description></description>
+			<content:encoded><![CDATA[ ]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>146</wp:post_id>
+			<wp:post_date><![CDATA[2019-03-06 15:50:33]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-03-06 15:50:33]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[146]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>5</wp:menu_order>
+			<wp:post_type><![CDATA[nav_menu_item]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+								<category domain="nav_menu" nicename="main"><![CDATA[Main]]></category>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_type]]></wp:meta_key>
+					<wp:meta_value><![CDATA[post_type]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_menu_item_parent]]></wp:meta_key>
+					<wp:meta_value><![CDATA[0]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_object_id]]></wp:meta_key>
+					<wp:meta_value><![CDATA[53]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_object]]></wp:meta_key>
+					<wp:meta_value><![CDATA[page]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_target]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_classes]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_xfn]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_url]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[obfx_menu_icon]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+							</title>
+			<link>https://demo.themeisle.com/neve-shop/2019/03/06/147/</link>
+			<pubDate>Wed, 06 Mar 2019 15:50:32 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-shop/?p=147</guid>
+			<description></description>
+			<content:encoded><![CDATA[ ]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>147</wp:post_id>
+			<wp:post_date><![CDATA[2019-03-06 15:50:32]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-03-06 15:50:32]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[147]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>1</wp:menu_order>
+			<wp:post_type><![CDATA[nav_menu_item]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+								<category domain="nav_menu" nicename="main"><![CDATA[Main]]></category>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_type]]></wp:meta_key>
+					<wp:meta_value><![CDATA[post_type]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_menu_item_parent]]></wp:meta_key>
+					<wp:meta_value><![CDATA[0]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_object_id]]></wp:meta_key>
+					<wp:meta_value><![CDATA[5]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_object]]></wp:meta_key>
+					<wp:meta_value><![CDATA[page]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_target]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_classes]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_xfn]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_url]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[obfx_menu_icon]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+							</title>
+			<link>https://demo.themeisle.com/neve-shop/2019/03/06/148/</link>
+			<pubDate>Wed, 06 Mar 2019 15:51:08 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-shop/?p=148</guid>
+			<description></description>
+			<content:encoded><![CDATA[ ]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>148</wp:post_id>
+			<wp:post_date><![CDATA[2019-03-06 15:51:08]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-03-06 15:51:08]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[148]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>6</wp:menu_order>
+			<wp:post_type><![CDATA[nav_menu_item]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+								<category domain="nav_menu" nicename="main"><![CDATA[Main]]></category>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_type]]></wp:meta_key>
+					<wp:meta_value><![CDATA[taxonomy]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_menu_item_parent]]></wp:meta_key>
+					<wp:meta_value><![CDATA[146]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_object_id]]></wp:meta_key>
+					<wp:meta_value><![CDATA[21]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_object]]></wp:meta_key>
+					<wp:meta_value><![CDATA[product_cat]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_target]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_classes]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_xfn]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_url]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[obfx_menu_icon]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+							</title>
+			<link>https://demo.themeisle.com/neve-shop/2019/03/06/149/</link>
+			<pubDate>Wed, 06 Mar 2019 15:51:08 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-shop/?p=149</guid>
+			<description></description>
+			<content:encoded><![CDATA[ ]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>149</wp:post_id>
+			<wp:post_date><![CDATA[2019-03-06 15:51:08]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-03-06 15:51:08]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[149]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>21</wp:post_parent>
+			<wp:menu_order>7</wp:menu_order>
+			<wp:post_type><![CDATA[nav_menu_item]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+								<category domain="nav_menu" nicename="main"><![CDATA[Main]]></category>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_type]]></wp:meta_key>
+					<wp:meta_value><![CDATA[taxonomy]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_menu_item_parent]]></wp:meta_key>
+					<wp:meta_value><![CDATA[148]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_object_id]]></wp:meta_key>
+					<wp:meta_value><![CDATA[20]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_object]]></wp:meta_key>
+					<wp:meta_value><![CDATA[product_cat]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_target]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_classes]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_xfn]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_url]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[obfx_menu_icon]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+							</title>
+			<link>https://demo.themeisle.com/neve-shop/2019/03/06/150/</link>
+			<pubDate>Wed, 06 Mar 2019 15:51:08 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-shop/?p=150</guid>
+			<description></description>
+			<content:encoded><![CDATA[ ]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>150</wp:post_id>
+			<wp:post_date><![CDATA[2019-03-06 15:51:08]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-03-06 15:51:08]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[150]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>21</wp:post_parent>
+			<wp:menu_order>8</wp:menu_order>
+			<wp:post_type><![CDATA[nav_menu_item]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+								<category domain="nav_menu" nicename="main"><![CDATA[Main]]></category>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_type]]></wp:meta_key>
+					<wp:meta_value><![CDATA[taxonomy]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_menu_item_parent]]></wp:meta_key>
+					<wp:meta_value><![CDATA[148]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_object_id]]></wp:meta_key>
+					<wp:meta_value><![CDATA[22]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_object]]></wp:meta_key>
+					<wp:meta_value><![CDATA[product_cat]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_target]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_classes]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_xfn]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_url]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[obfx_menu_icon]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				placeholder-image			</title>
+			<link>https://demo.themeisle.com/neve-shop/placeholder-image/</link>
+			<pubDate>Mon, 08 Apr 2019 14:13:08 +0000</pubDate>
+			<guid isPermaLink="false"><![CDATA[https://s20206.pcdn.co/neve-shop/wp-content/uploads/sites/188/2019/04/placeholder-image.png]]></guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>208</wp:post_id>
+			<wp:post_date><![CDATA[2019-04-08 14:13:08]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-04-08 14:13:08]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[placeholder-image]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-shop/wp-content/uploads/sites/188/2019/04/placeholder-image.png]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/04/placeholder-image.png]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:1280;s:6:"height";i:960;s:4:"file";s:29:"2019/04/placeholder-image.png";s:5:"sizes";a:12:{s:9:"thumbnail";a:4:{s:4:"file";s:29:"placeholder-image-150x150.png";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:9:"image/png";}s:6:"medium";a:4:{s:4:"file";s:29:"placeholder-image-300x225.png";s:5:"width";i:300;s:6:"height";i:225;s:9:"mime-type";s:9:"image/png";}s:12:"medium_large";a:4:{s:4:"file";s:29:"placeholder-image-768x576.png";s:5:"width";i:768;s:6:"height";i:576;s:9:"mime-type";s:9:"image/png";}s:5:"large";a:4:{s:4:"file";s:30:"placeholder-image-1024x768.png";s:5:"width";i:1024;s:6:"height";i:768;s:9:"mime-type";s:9:"image/png";}s:9:"neve-blog";a:4:{s:4:"file";s:29:"placeholder-image-930x620.png";s:5:"width";i:930;s:6:"height";i:620;s:9:"mime-type";s:9:"image/png";}s:21:"woocommerce_thumbnail";a:5:{s:4:"file";s:29:"placeholder-image-230x283.png";s:5:"width";i:230;s:6:"height";i:283;s:9:"mime-type";s:9:"image/png";s:9:"uncropped";b:0;}s:18:"woocommerce_single";a:4:{s:4:"file";s:29:"placeholder-image-600x450.png";s:5:"width";i:600;s:6:"height";i:450;s:9:"mime-type";s:9:"image/png";}s:29:"woocommerce_gallery_thumbnail";a:4:{s:4:"file";s:29:"placeholder-image-160x160.png";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:9:"image/png";}s:12:"shop_catalog";a:4:{s:4:"file";s:29:"placeholder-image-230x283.png";s:5:"width";i:230;s:6:"height";i:283;s:9:"mime-type";s:9:"image/png";}s:11:"shop_single";a:4:{s:4:"file";s:29:"placeholder-image-600x450.png";s:5:"width";i:600;s:6:"height";i:450;s:9:"mime-type";s:9:"image/png";}s:14:"shop_thumbnail";a:4:{s:4:"file";s:29:"placeholder-image-160x160.png";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:9:"image/png";}s:15:"maxslider_slide";a:4:{s:4:"file";s:29:"placeholder-image-750x450.png";s:5:"width";i:750;s:6:"height";i:450;s:9:"mime-type";s:9:"image/png";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				Home			</title>
+			<link>https://demo.themeisle.com/neve-shop/</link>
+			<pubDate>Wed, 06 Mar 2019 08:23:20 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-shop/?page_id=5</guid>
+			<description></description>
+			<content:encoded><![CDATA[[maxslider id="29"]		
+			<h2>WE ARE ELEGANT</h2>		
+			<h2>Elegance isn't solely defined by what you wear. It's how you carry yourself.</h2>		
+															<h4>Beautiful products</h4>
+																<p>I never look at other people&#039;s work. My mind has to be completely focused on my own illusions. It&#039;s a philosophy of life. A practice with no end.</p>
+													<!-- /.obfx-service-box-content -->
+									<!-- /.obfx-service-box -->
+				</a>			<!-- /.obfx-grid-wrapper -->
+															<h4>Fast delivery</h4>
+																<p>If you do this, something will change, what will change is that you will change, your life will change, and if you can change you, you can perhaps change the world. </p>
+													<!-- /.obfx-service-box-content -->
+									<!-- /.obfx-service-box -->
+				</a>			<!-- /.obfx-grid-wrapper -->
+															<h4>100% Satisfaction</h4>
+																<p>I&#039;ve always thought of the T-shirt as the Alpha and Omega of the fashion alphabet. I like the things around me to be beautiful and slightly dreamy.</p>
+													<!-- /.obfx-service-box-content -->
+									<!-- /.obfx-service-box -->
+				</a>			<!-- /.obfx-grid-wrapper -->
+			<h2>LATEST PRODUCTS</h2>		
+		[products limit=8 columns=4]		
+			<a href="https://demo.themeisle.com/neve-shop/shop/" role="button">
+						See all products
+					</a>
+			<h2>Be inspired. Get ahead of trends.</h2>		
+		[products limit=4 columns=4 category='dresses']]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>5</wp:post_id>
+			<wp:post_date><![CDATA[2019-03-06 08:23:20]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-03-06 08:23:20]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[home]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[page]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+					<wp:meta_value><![CDATA[119919]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
+					<wp:meta_value><![CDATA[page-templates/template-pagebuilder-full-width.php]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
+					<wp:meta_value><![CDATA[70]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_yoast_wpseo_content_score]]></wp:meta_key>
+					<wp:meta_value><![CDATA[30]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
+					<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_elementor_template_type]]></wp:meta_key>
+					<wp:meta_value><![CDATA[post]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_elementor_data]]></wp:meta_key>
+					<wp:meta_value><![CDATA[[{"id":"0b26f21","elType":"section","settings":{"layout":"full_width","margin":{"unit":"px","top":"-71","right":0,"bottom":"0","left":0,"isLinked":false},"z_index":1,"background_background":"classic"},"elements":[{"id":"f3a74a0","elType":"column","settings":{"_column_size":100,"padding":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":false}},"elements":[{"id":208,"elType":"widget","settings":{"shortcode":"[maxslider id=\"29\"]","_background_background":"classic"},"elements":[],"widgetType":"shortcode"},{"id":"052843e","elType":"widget","settings":{"title":"WE ARE ELEGANT","align":"center","title_color":"#111111","typography_typography":"custom","typography_font_family":"Roboto Condensed","typography_font_size":{"unit":"px","size":30},"typography_font_weight":"400","typography_text_transform":"uppercase","typography_line_height":{"unit":"em","size":1.4},"typography_letter_spacing":{"unit":"px","size":4},"_margin":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":false},"typography_font_size_tablet":{"unit":"px","size":"","sizes":[]},"typography_font_size_mobile":{"unit":"px","size":"","sizes":[]},"typography_line_height_tablet":{"unit":"em","size":"","sizes":[]},"typography_line_height_mobile":{"unit":"em","size":"","sizes":[]},"typography_letter_spacing_tablet":{"unit":"px","size":"","sizes":[]},"typography_letter_spacing_mobile":{"unit":"px","size":"","sizes":[]},"_background_color_stop":{"unit":"%","size":0,"sizes":[]},"_background_color_b_stop":{"unit":"%","size":100,"sizes":[]},"_background_gradient_angle":{"unit":"deg","size":180,"sizes":[]},"_background_xpos":{"unit":"px","size":0,"sizes":[]},"_background_xpos_tablet":{"unit":"px","size":0,"sizes":[]},"_background_xpos_mobile":{"unit":"px","size":0,"sizes":[]},"_background_ypos":{"unit":"px","size":0,"sizes":[]},"_background_ypos_tablet":{"unit":"px","size":0,"sizes":[]},"_background_ypos_mobile":{"unit":"px","size":0,"sizes":[]},"_background_bg_width":{"unit":"%","size":100,"sizes":[]},"_background_bg_width_tablet":{"unit":"px","size":"","sizes":[]},"_background_bg_width_mobile":{"unit":"px","size":"","sizes":[]},"_background_hover_color_stop":{"unit":"%","size":0,"sizes":[]},"_background_hover_color_b_stop":{"unit":"%","size":100,"sizes":[]},"_background_hover_gradient_angle":{"unit":"deg","size":180,"sizes":[]},"_background_hover_xpos":{"unit":"px","size":0,"sizes":[]},"_background_hover_xpos_tablet":{"unit":"px","size":0,"sizes":[]},"_background_hover_xpos_mobile":{"unit":"px","size":0,"sizes":[]},"_background_hover_ypos":{"unit":"px","size":0,"sizes":[]},"_background_hover_ypos_tablet":{"unit":"px","size":0,"sizes":[]},"_background_hover_ypos_mobile":{"unit":"px","size":0,"sizes":[]},"_background_hover_bg_width":{"unit":"%","size":100,"sizes":[]},"_background_hover_bg_width_tablet":{"unit":"px","size":"","sizes":[]},"_background_hover_bg_width_mobile":{"unit":"px","size":"","sizes":[]},"_background_hover_transition":{"unit":"px","size":"","sizes":[]},"_border_hover_transition":{"unit":"px","size":"","sizes":[]},"_element_custom_width":{"unit":"px","size":"","sizes":[]},"_element_custom_width_tablet":{"unit":"px","size":"","sizes":[]},"_element_custom_width_mobile":{"unit":"px","size":"","sizes":[]},"_offset_x":{"unit":"px","size":"0","sizes":[]},"_offset_x_tablet":{"unit":"px","size":"","sizes":[]},"_offset_x_mobile":{"unit":"px","size":"","sizes":[]},"_offset_x_end":{"unit":"px","size":"0","sizes":[]},"_offset_x_end_tablet":{"unit":"px","size":"","sizes":[]},"_offset_x_end_mobile":{"unit":"px","size":"","sizes":[]},"_offset_y":{"unit":"px","size":"0","sizes":[]},"_offset_y_tablet":{"unit":"px","size":"","sizes":[]},"_offset_y_mobile":{"unit":"px","size":"","sizes":[]},"_offset_y_end":{"unit":"px","size":"0","sizes":[]},"_offset_y_end_tablet":{"unit":"px","size":"","sizes":[]},"_offset_y_end_mobile":{"unit":"px","size":"","sizes":[]},"_padding":{"unit":"px","top":"30","right":"0","bottom":"0","left":"0","isLinked":false}},"elements":[],"widgetType":"heading"},{"id":"840b23d","elType":"widget","settings":{"title":"Elegance isn't solely defined by what you wear. It's how you carry yourself.","align":"center","title_color":"#111111","typography_typography":"custom","typography_font_family":"Volkhov","typography_font_size":{"unit":"px","size":16,"sizes":[]},"typography_font_weight":"400","typography_text_transform":"none","typography_font_style":"italic","_padding":{"unit":"px","top":"0","right":"0","bottom":"60","left":"0","isLinked":false}},"elements":[],"widgetType":"heading"},{"id":"e987f7d","elType":"section","settings":[],"elements":[{"id":"cb3c304","elType":"column","settings":{"_column_size":100,"_inline_size":null},"elements":[{"id":"cff5040","elType":"widget","settings":{"services_list":[{"title":"Beautiful products","text":"I never look at other people's work. My mind has to be completely focused on my own illusions. It's a philosophy of life. A practice with no end.","icon":"fa fa-gift","color":"#333333","type":"icon","_id":"604d32c"},{"title":"Fast delivery","text":"If you do this, something will change, what will change is that you will change, your life will change, and if you can change you, you can perhaps change the world. ","icon":"fa fa-globe","color":"#333333","type":"icon","_id":"38629d2"},{"title":"100% Satisfaction","text":"I've always thought of the T-shirt as the Alpha and Omega of the fashion alphabet. I like the things around me to be beautiful and slightly dreamy.","icon":"fa fa-star","color":"#333333","type":"icon","_id":"e7fc577"}],"icon_size":{"unit":"px","size":45,"sizes":[]},"title_bottom_space":{"unit":"px","size":15,"sizes":[]},"title_color":"#111111","title_typography_typography":"custom","title_typography_font_family":"Roboto Condensed","title_typography_font_size":{"unit":"px","size":14,"sizes":[]},"title_typography_font_weight":"400","title_typography_text_transform":"uppercase","title_typography_letter_spacing":{"unit":"px","size":2,"sizes":[]},"description_color":"#111111","description_typography_typography":"custom","description_typography_font_family":"Open Sans","description_typography_font_size":{"unit":"px","size":13,"sizes":[]},"description_typography_font_weight":"400","_padding":{"unit":"px","top":"0","right":"0","bottom":"60","left":"0","isLinked":false}},"elements":[],"widgetType":"obfx-services"}],"isInner":true}],"isInner":true}],"isInner":false}],"isInner":false},{"id":"4a73b6a","elType":"section","settings":{"border_border":"solid","border_width":{"unit":"px","top":"1","right":"0","bottom":"1","left":"0","isLinked":false},"border_color":"#eaeaea","padding":{"unit":"px","top":"70","right":"0","bottom":"70","left":"0","isLinked":false}},"elements":[{"id":"0348ec9","elType":"column","settings":{"_column_size":100},"elements":[{"id":"593ddde","elType":"widget","settings":{"anchor":"products"},"elements":[],"widgetType":"menu-anchor"},{"id":"d39b8a8","elType":"widget","settings":{"title":"LATEST PRODUCTS","align":"center","title_color":"#111111","typography_typography":"custom","typography_font_family":"Roboto Condensed","typography_font_size":{"unit":"px","size":30},"typography_font_weight":"400","typography_text_transform":"uppercase","typography_line_height":{"unit":"em","size":1.4},"typography_letter_spacing":{"unit":"px","size":4},"_margin":{"unit":"px","top":"0","right":"0","bottom":"60","left":"0","isLinked":false},"typography_font_size_tablet":{"unit":"px","size":"","sizes":[]},"typography_font_size_mobile":{"unit":"px","size":"","sizes":[]},"typography_line_height_tablet":{"unit":"em","size":"","sizes":[]},"typography_line_height_mobile":{"unit":"em","size":"","sizes":[]},"typography_letter_spacing_tablet":{"unit":"px","size":"","sizes":[]},"typography_letter_spacing_mobile":{"unit":"px","size":"","sizes":[]},"_background_color_stop":{"unit":"%","size":0,"sizes":[]},"_background_color_b_stop":{"unit":"%","size":100,"sizes":[]},"_background_gradient_angle":{"unit":"deg","size":180,"sizes":[]},"_background_xpos":{"unit":"px","size":0,"sizes":[]},"_background_xpos_tablet":{"unit":"px","size":0,"sizes":[]},"_background_xpos_mobile":{"unit":"px","size":0,"sizes":[]},"_background_ypos":{"unit":"px","size":0,"sizes":[]},"_background_ypos_tablet":{"unit":"px","size":0,"sizes":[]},"_background_ypos_mobile":{"unit":"px","size":0,"sizes":[]},"_background_bg_width":{"unit":"%","size":100,"sizes":[]},"_background_bg_width_tablet":{"unit":"px","size":"","sizes":[]},"_background_bg_width_mobile":{"unit":"px","size":"","sizes":[]},"_background_hover_color_stop":{"unit":"%","size":0,"sizes":[]},"_background_hover_color_b_stop":{"unit":"%","size":100,"sizes":[]},"_background_hover_gradient_angle":{"unit":"deg","size":180,"sizes":[]},"_background_hover_xpos":{"unit":"px","size":0,"sizes":[]},"_background_hover_xpos_tablet":{"unit":"px","size":0,"sizes":[]},"_background_hover_xpos_mobile":{"unit":"px","size":0,"sizes":[]},"_background_hover_ypos":{"unit":"px","size":0,"sizes":[]},"_background_hover_ypos_tablet":{"unit":"px","size":0,"sizes":[]},"_background_hover_ypos_mobile":{"unit":"px","size":0,"sizes":[]},"_background_hover_bg_width":{"unit":"%","size":100,"sizes":[]},"_background_hover_bg_width_tablet":{"unit":"px","size":"","sizes":[]},"_background_hover_bg_width_mobile":{"unit":"px","size":"","sizes":[]},"_background_hover_transition":{"unit":"px","size":"","sizes":[]},"_border_hover_transition":{"unit":"px","size":"","sizes":[]},"_element_custom_width":{"unit":"px","size":"","sizes":[]},"_element_custom_width_tablet":{"unit":"px","size":"","sizes":[]},"_element_custom_width_mobile":{"unit":"px","size":"","sizes":[]},"_offset_x":{"unit":"px","size":"0","sizes":[]},"_offset_x_tablet":{"unit":"px","size":"","sizes":[]},"_offset_x_mobile":{"unit":"px","size":"","sizes":[]},"_offset_x_end":{"unit":"px","size":"0","sizes":[]},"_offset_x_end_tablet":{"unit":"px","size":"","sizes":[]},"_offset_x_end_mobile":{"unit":"px","size":"","sizes":[]},"_offset_y":{"unit":"px","size":"0","sizes":[]},"_offset_y_tablet":{"unit":"px","size":"","sizes":[]},"_offset_y_mobile":{"unit":"px","size":"","sizes":[]},"_offset_y_end":{"unit":"px","size":"0","sizes":[]},"_offset_y_end_tablet":{"unit":"px","size":"","sizes":[]},"_offset_y_end_mobile":{"unit":"px","size":"","sizes":[]}},"elements":[],"widgetType":"heading"},{"id":"6c8d0b6","elType":"widget","settings":{"shortcode":"[products limit=8 columns=4]"},"elements":[],"widgetType":"shortcode"},{"id":"5625ea7","elType":"widget","settings":{"text":"See all products","link":{"url":"https:\/\/demo.themeisle.com\/neve-shop\/shop\/","is_external":"","nofollow":""},"align":"center","typography_typography":"custom","typography_font_family":"Roboto Condensed","typography_font_size":{"unit":"px","size":11},"typography_text_transform":"uppercase","typography_line_height":{"unit":"em","size":1.42857143},"typography_letter_spacing":{"unit":"px","size":2},"button_text_color":"#ffffff","background_color":"#111111","button_background_hover_color":"rgba(17,17,17,0.8)","border_radius":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":true},"text_padding":{"unit":"px","top":"8","right":"37","bottom":"8","left":"37","isLinked":false},"_margin":{"unit":"px","top":"30","right":"0","bottom":"0","left":"0","isLinked":false}},"elements":[],"widgetType":"button"}],"isInner":false}],"isInner":false},{"id":"2a6a095","elType":"section","settings":{"layout":"full_width","height":"min-height","custom_height":{"unit":"px","size":312},"background_background":"video","background_video_link":"https:\/\/www.youtube.com\/embed\/EMy5krGcoOU?modestbranding=1&autoplay=0&controls=0&showinfo=0&rel=0&enablejsapi=1&version=3&playerapiid=iframe_YTP_1551879510518&origin=https%3A%2F%2Fdemo.themeisle.com&allowfullscreen=true&wmode=transparent&iv_load_policy=3&playsinline=1&mute=0&html5=1&widgetid=1"},"elements":[{"id":"ceb45fc","elType":"column","settings":{"_column_size":100},"elements":[{"id":"9904b0f","elType":"widget","settings":{"title":"Be inspired. Get ahead of trends.","align":"center","title_color":"#ffffff","typography_typography":"custom","typography_font_family":"Roboto Condensed","typography_font_size":{"unit":"px","size":30},"typography_font_weight":"400","typography_text_transform":"uppercase","typography_line_height":{"unit":"em","size":1.4},"typography_letter_spacing":{"unit":"px","size":4},"_margin":{"unit":"px","top":"10","right":"0","bottom":"0","left":"0","isLinked":false}},"elements":[],"widgetType":"heading"}],"isInner":false}],"isInner":false},{"id":"cc8421c","elType":"section","settings":{"padding":{"unit":"px","top":"90","right":"0","bottom":"20","left":"0","isLinked":false}},"elements":[{"id":"a0d4e99","elType":"column","settings":{"_column_size":100},"elements":[{"id":"fe5d17a","elType":"widget","settings":{"shortcode":"[products limit=4 columns=4 category='dresses']"},"elements":[],"widgetType":"shortcode"}],"isInner":false}],"isInner":false}]]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_elementor_version]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2.5.9]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_elementor_page_settings]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:12:{s:21:"background_color_stop";a:3:{s:4:"unit";s:1:"%";s:4:"size";i:0;s:5:"sizes";a:0:{}}s:23:"background_color_b_stop";a:3:{s:4:"unit";s:1:"%";s:4:"size";i:100;s:5:"sizes";a:0:{}}s:25:"background_gradient_angle";a:3:{s:4:"unit";s:3:"deg";s:4:"size";i:180;s:5:"sizes";a:0:{}}s:15:"background_xpos";a:3:{s:4:"unit";s:2:"px";s:4:"size";i:0;s:5:"sizes";a:0:{}}s:22:"background_xpos_tablet";a:3:{s:4:"unit";s:2:"px";s:4:"size";i:0;s:5:"sizes";a:0:{}}s:22:"background_xpos_mobile";a:3:{s:4:"unit";s:2:"px";s:4:"size";i:0;s:5:"sizes";a:0:{}}s:15:"background_ypos";a:3:{s:4:"unit";s:2:"px";s:4:"size";i:0;s:5:"sizes";a:0:{}}s:22:"background_ypos_tablet";a:3:{s:4:"unit";s:2:"px";s:4:"size";i:0;s:5:"sizes";a:0:{}}s:22:"background_ypos_mobile";a:3:{s:4:"unit";s:2:"px";s:4:"size";i:0;s:5:"sizes";a:0:{}}s:19:"background_bg_width";a:3:{s:4:"unit";s:1:"%";s:4:"size";i:100;s:5:"sizes";a:0:{}}s:26:"background_bg_width_tablet";a:3:{s:4:"unit";s:2:"px";s:4:"size";s:0:"";s:5:"sizes";a:0:{}}s:26:"background_bg_width_mobile";a:3:{s:4:"unit";s:2:"px";s:4:"size";s:0:"";s:5:"sizes";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				Shop			</title>
+			<link>https://demo.themeisle.com/neve-shop/shop/</link>
+			<pubDate>Wed, 06 Mar 2019 12:59:31 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-shop/shop/</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>53</wp:post_id>
+			<wp:post_date><![CDATA[2019-03-06 12:59:31]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-03-06 12:59:31]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[shop]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[page]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+					<wp:meta_value><![CDATA[119919]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
+					<wp:meta_value><![CDATA[default]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_sidebar]]></wp:meta_key>
+					<wp:meta_value><![CDATA[left]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
+					<wp:meta_value><![CDATA[70]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_yoast_wpseo_content_score]]></wp:meta_key>
+					<wp:meta_value><![CDATA[30]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				Cart			</title>
+			<link>https://demo.themeisle.com/neve-shop/cart/</link>
+			<pubDate>Wed, 06 Mar 2019 12:59:31 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-shop/cart/</guid>
+			<description></description>
+			<content:encoded><![CDATA[[woocommerce_cart]]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>54</wp:post_id>
+			<wp:post_date><![CDATA[2019-03-06 12:59:31]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-03-06 12:59:31]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[cart]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[page]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+											</item>
+				<item>
+			<title>
+				Checkout			</title>
+			<link>https://demo.themeisle.com/neve-shop/checkout/</link>
+			<pubDate>Wed, 06 Mar 2019 12:59:32 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-shop/checkout/</guid>
+			<description></description>
+			<content:encoded><![CDATA[[woocommerce_checkout]]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>55</wp:post_id>
+			<wp:post_date><![CDATA[2019-03-06 12:59:32]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-03-06 12:59:32]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[checkout]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[page]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+											</item>
+				<item>
+			<title>
+				My account			</title>
+			<link>https://demo.themeisle.com/neve-shop/my-account/</link>
+			<pubDate>Wed, 06 Mar 2019 12:59:32 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-shop/my-account/</guid>
+			<description></description>
+			<content:encoded><![CDATA[[woocommerce_my_account]]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>56</wp:post_id>
+			<wp:post_date><![CDATA[2019-03-06 12:59:32]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-03-06 12:59:32]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[my-account]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[page]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+											</item>
+				<item>
+			<title>
+				Black Hat			</title>
+			<link>https://demo.themeisle.com/neve-shop/product/black-hat/</link>
+			<pubDate>Wed, 06 Mar 2019 13:01:11 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-shop/?post_type=product&#038;p=57</guid>
+			<description></description>
+			<content:encoded><![CDATA[Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.]]></content:encoded><excerpt:encoded><![CDATA[Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.]]></excerpt:encoded>			<wp:post_id>57</wp:post_id>
+			<wp:post_date><![CDATA[2019-03-06 13:01:11]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-03-06 13:01:11]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[black-hat]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[product]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+								<category domain="product_visibility" nicename="rated-5"><![CDATA[rated-5]]></category>
+		<category domain="product_type" nicename="simple"><![CDATA[simple]]></category>
+		<category domain="product_cat" nicename="hat"><![CDATA[Hat]]></category>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wc_review_count]]></wp:meta_key>
+					<wp:meta_value><![CDATA[1]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wc_rating_count]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:1:{i:5;i:1;}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wc_average_rating]]></wp:meta_key>
+					<wp:meta_value><![CDATA[5.00]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+					<wp:meta_value><![CDATA[440]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_sku]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_regular_price]]></wp:meta_key>
+					<wp:meta_value><![CDATA[45]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_sale_price]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_sale_price_dates_from]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_sale_price_dates_to]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[total_sales]]></wp:meta_key>
+					<wp:meta_value><![CDATA[0]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_tax_status]]></wp:meta_key>
+					<wp:meta_value><![CDATA[taxable]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_tax_class]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_manage_stock]]></wp:meta_key>
+					<wp:meta_value><![CDATA[no]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_backorders]]></wp:meta_key>
+					<wp:meta_value><![CDATA[no]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_sold_individually]]></wp:meta_key>
+					<wp:meta_value><![CDATA[no]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_weight]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_length]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_width]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_height]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_upsell_ids]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:0:{}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_crosssell_ids]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:0:{}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_purchase_note]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_default_attributes]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:0:{}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_virtual]]></wp:meta_key>
+					<wp:meta_value><![CDATA[no]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_downloadable]]></wp:meta_key>
+					<wp:meta_value><![CDATA[no]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_product_image_gallery]]></wp:meta_key>
+					<wp:meta_value><![CDATA[59,61,60]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_download_limit]]></wp:meta_key>
+					<wp:meta_value><![CDATA[-1]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_download_expiry]]></wp:meta_key>
+					<wp:meta_value><![CDATA[-1]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_stock]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_stock_status]]></wp:meta_key>
+					<wp:meta_value><![CDATA[instock]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_product_version]]></wp:meta_key>
+					<wp:meta_value><![CDATA[3.5.7]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_price]]></wp:meta_key>
+					<wp:meta_value><![CDATA[45]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_yoast_wpseo_primary_product_cat]]></wp:meta_key>
+					<wp:meta_value><![CDATA[17]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
+					<wp:meta_value><![CDATA[70]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_yoast_wpseo_content_score]]></wp:meta_key>
+					<wp:meta_value><![CDATA[60]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_thumbnail_id]]></wp:meta_key>
+					<wp:meta_value><![CDATA[208]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_low_stock_amount]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_product_attributes]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:1:{s:5:"color";a:6:{s:4:"name";s:5:"color";s:5:"value";s:13:"black | white";s:8:"position";i:0;s:10:"is_visible";i:1;s:12:"is_variation";i:0;s:11:"is_taxonomy";i:0;}}]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				White Blouse			</title>
+			<link>https://demo.themeisle.com/neve-shop/product/white-blouse/</link>
+			<pubDate>Wed, 06 Mar 2019 13:05:30 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-shop/?post_type=product&#038;p=62</guid>
+			<description></description>
+			<content:encoded><![CDATA[<div class="woocommerce-product-details__short-description">
+
+Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.
+
+</div>]]></content:encoded><excerpt:encoded><![CDATA[<div class="woocommerce-product-details__short-description">
+
+Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.
+
+</div>]]></excerpt:encoded>			<wp:post_id>62</wp:post_id>
+			<wp:post_date><![CDATA[2019-03-06 13:05:30]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-03-06 13:05:30]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[white-blouse]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[product]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+								<category domain="product_visibility" nicename="rated-4"><![CDATA[rated-4]]></category>
+		<category domain="product_type" nicename="simple"><![CDATA[simple]]></category>
+		<category domain="product_cat" nicename="blouse"><![CDATA[Blouse]]></category>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wc_review_count]]></wp:meta_key>
+					<wp:meta_value><![CDATA[1]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wc_rating_count]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:1:{i:4;i:1;}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wc_average_rating]]></wp:meta_key>
+					<wp:meta_value><![CDATA[4.00]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+					<wp:meta_value><![CDATA[119919]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_sku]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_regular_price]]></wp:meta_key>
+					<wp:meta_value><![CDATA[45]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_sale_price]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_sale_price_dates_from]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_sale_price_dates_to]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[total_sales]]></wp:meta_key>
+					<wp:meta_value><![CDATA[0]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_tax_status]]></wp:meta_key>
+					<wp:meta_value><![CDATA[taxable]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_tax_class]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_manage_stock]]></wp:meta_key>
+					<wp:meta_value><![CDATA[no]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_backorders]]></wp:meta_key>
+					<wp:meta_value><![CDATA[no]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_sold_individually]]></wp:meta_key>
+					<wp:meta_value><![CDATA[no]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_weight]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_length]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_width]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_height]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_upsell_ids]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:0:{}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_crosssell_ids]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:0:{}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_purchase_note]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_default_attributes]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:0:{}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_virtual]]></wp:meta_key>
+					<wp:meta_value><![CDATA[no]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_downloadable]]></wp:meta_key>
+					<wp:meta_value><![CDATA[no]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_product_image_gallery]]></wp:meta_key>
+					<wp:meta_value><![CDATA[64,66,65]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_download_limit]]></wp:meta_key>
+					<wp:meta_value><![CDATA[-1]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_download_expiry]]></wp:meta_key>
+					<wp:meta_value><![CDATA[-1]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_stock]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_stock_status]]></wp:meta_key>
+					<wp:meta_value><![CDATA[instock]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_product_version]]></wp:meta_key>
+					<wp:meta_value><![CDATA[3.4.5]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_price]]></wp:meta_key>
+					<wp:meta_value><![CDATA[45]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_yoast_wpseo_primary_product_cat]]></wp:meta_key>
+					<wp:meta_value><![CDATA[18]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
+					<wp:meta_value><![CDATA[70]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_yoast_wpseo_content_score]]></wp:meta_key>
+					<wp:meta_value><![CDATA[60]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_thumbnail_id]]></wp:meta_key>
+					<wp:meta_value><![CDATA[208]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				Black Dress			</title>
+			<link>https://demo.themeisle.com/neve-shop/product/black-dress/</link>
+			<pubDate>Wed, 06 Mar 2019 13:11:39 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-shop/?post_type=product&#038;p=67</guid>
+			<description></description>
+			<content:encoded><![CDATA[Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.]]></content:encoded><excerpt:encoded><![CDATA[Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.]]></excerpt:encoded>			<wp:post_id>67</wp:post_id>
+			<wp:post_date><![CDATA[2019-03-06 13:11:39]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-03-06 13:11:39]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[black-dress]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[product]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+								<category domain="product_visibility" nicename="rated-5"><![CDATA[rated-5]]></category>
+		<category domain="product_type" nicename="simple"><![CDATA[simple]]></category>
+		<category domain="product_cat" nicename="dresses"><![CDATA[Dresses]]></category>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wc_review_count]]></wp:meta_key>
+					<wp:meta_value><![CDATA[1]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wc_rating_count]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:1:{i:5;i:1;}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wc_average_rating]]></wp:meta_key>
+					<wp:meta_value><![CDATA[5.00]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+					<wp:meta_value><![CDATA[440]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_thumbnail_id]]></wp:meta_key>
+					<wp:meta_value><![CDATA[208]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_sku]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_regular_price]]></wp:meta_key>
+					<wp:meta_value><![CDATA[15]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_sale_price]]></wp:meta_key>
+					<wp:meta_value><![CDATA[12]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_sale_price_dates_from]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_sale_price_dates_to]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[total_sales]]></wp:meta_key>
+					<wp:meta_value><![CDATA[0]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_tax_status]]></wp:meta_key>
+					<wp:meta_value><![CDATA[taxable]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_tax_class]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_manage_stock]]></wp:meta_key>
+					<wp:meta_value><![CDATA[no]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_backorders]]></wp:meta_key>
+					<wp:meta_value><![CDATA[no]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_sold_individually]]></wp:meta_key>
+					<wp:meta_value><![CDATA[no]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_weight]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_length]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_width]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_height]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_upsell_ids]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:0:{}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_crosssell_ids]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:0:{}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_purchase_note]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_default_attributes]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:0:{}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_virtual]]></wp:meta_key>
+					<wp:meta_value><![CDATA[no]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_downloadable]]></wp:meta_key>
+					<wp:meta_value><![CDATA[no]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_product_image_gallery]]></wp:meta_key>
+					<wp:meta_value><![CDATA[69,71,70]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_download_limit]]></wp:meta_key>
+					<wp:meta_value><![CDATA[-1]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_download_expiry]]></wp:meta_key>
+					<wp:meta_value><![CDATA[-1]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_stock]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_stock_status]]></wp:meta_key>
+					<wp:meta_value><![CDATA[instock]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_product_version]]></wp:meta_key>
+					<wp:meta_value><![CDATA[3.5.7]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_price]]></wp:meta_key>
+					<wp:meta_value><![CDATA[12]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_yoast_wpseo_primary_product_cat]]></wp:meta_key>
+					<wp:meta_value><![CDATA[20]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
+					<wp:meta_value><![CDATA[70]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_yoast_wpseo_content_score]]></wp:meta_key>
+					<wp:meta_value><![CDATA[60]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_low_stock_amount]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_product_attributes]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:1:{s:5:"color";a:6:{s:4:"name";s:5:"color";s:5:"value";s:13:"black | white";s:8:"position";i:0;s:10:"is_visible";i:1;s:12:"is_variation";i:0;s:11:"is_taxonomy";i:0;}}]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				Blue Sweater			</title>
+			<link>https://demo.themeisle.com/neve-shop/product/blue-sweater/</link>
+			<pubDate>Wed, 06 Mar 2019 13:15:41 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-shop/?post_type=product&#038;p=72</guid>
+			<description></description>
+			<content:encoded><![CDATA[<div class="woocommerce-product-details__short-description">
+
+Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.
+
+</div>]]></content:encoded><excerpt:encoded><![CDATA[<div class="woocommerce-product-details__short-description">
+
+Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.
+
+</div>]]></excerpt:encoded>			<wp:post_id>72</wp:post_id>
+			<wp:post_date><![CDATA[2019-03-06 13:15:41]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-03-06 13:15:41]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[blue-sweater]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[product]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+								<category domain="product_visibility" nicename="rated-5"><![CDATA[rated-5]]></category>
+		<category domain="product_type" nicename="simple"><![CDATA[simple]]></category>
+		<category domain="product_cat" nicename="dresses"><![CDATA[Dresses]]></category>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wc_review_count]]></wp:meta_key>
+					<wp:meta_value><![CDATA[1]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wc_rating_count]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:1:{i:5;i:1;}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wc_average_rating]]></wp:meta_key>
+					<wp:meta_value><![CDATA[5.00]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+					<wp:meta_value><![CDATA[119919]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_thumbnail_id]]></wp:meta_key>
+					<wp:meta_value><![CDATA[208]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_sku]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_regular_price]]></wp:meta_key>
+					<wp:meta_value><![CDATA[35]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_sale_price]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_sale_price_dates_from]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_sale_price_dates_to]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[total_sales]]></wp:meta_key>
+					<wp:meta_value><![CDATA[0]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_tax_status]]></wp:meta_key>
+					<wp:meta_value><![CDATA[taxable]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_tax_class]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_manage_stock]]></wp:meta_key>
+					<wp:meta_value><![CDATA[no]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_backorders]]></wp:meta_key>
+					<wp:meta_value><![CDATA[no]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_sold_individually]]></wp:meta_key>
+					<wp:meta_value><![CDATA[no]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_weight]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_length]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_width]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_height]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_upsell_ids]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:0:{}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_crosssell_ids]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:0:{}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_purchase_note]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_default_attributes]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:0:{}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_virtual]]></wp:meta_key>
+					<wp:meta_value><![CDATA[no]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_downloadable]]></wp:meta_key>
+					<wp:meta_value><![CDATA[no]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_product_image_gallery]]></wp:meta_key>
+					<wp:meta_value><![CDATA[74,76,75]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_download_limit]]></wp:meta_key>
+					<wp:meta_value><![CDATA[-1]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_download_expiry]]></wp:meta_key>
+					<wp:meta_value><![CDATA[-1]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_stock]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_stock_status]]></wp:meta_key>
+					<wp:meta_value><![CDATA[instock]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_product_version]]></wp:meta_key>
+					<wp:meta_value><![CDATA[3.4.5]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_price]]></wp:meta_key>
+					<wp:meta_value><![CDATA[35]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_yoast_wpseo_primary_product_cat]]></wp:meta_key>
+					<wp:meta_value><![CDATA[20]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
+					<wp:meta_value><![CDATA[70]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_yoast_wpseo_content_score]]></wp:meta_key>
+					<wp:meta_value><![CDATA[60]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_product_attributes]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:1:{s:4:"blue";a:6:{s:4:"name";s:4:"Blue";s:5:"value";s:4:"Blue";s:8:"position";i:0;s:10:"is_visible";i:1;s:12:"is_variation";i:0;s:11:"is_taxonomy";i:0;}}]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				Infuse Tshirt			</title>
+			<link>https://demo.themeisle.com/neve-shop/product/infuse-tshirt/</link>
+			<pubDate>Wed, 06 Mar 2019 13:30:29 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-shop/?post_type=product&#038;p=77</guid>
+			<description></description>
+			<content:encoded><![CDATA[<div class="woocommerce-product-details__short-description">
+
+Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.
+
+</div>]]></content:encoded><excerpt:encoded><![CDATA[<div class="woocommerce-product-details__short-description">
+
+Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.
+
+</div>]]></excerpt:encoded>			<wp:post_id>77</wp:post_id>
+			<wp:post_date><![CDATA[2019-03-06 13:30:29]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-03-06 13:30:29]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[infuse-tshirt]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[product]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+								<category domain="product_visibility" nicename="rated-4"><![CDATA[rated-4]]></category>
+		<category domain="product_type" nicename="simple"><![CDATA[simple]]></category>
+		<category domain="product_cat" nicename="dresses"><![CDATA[Dresses]]></category>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wc_review_count]]></wp:meta_key>
+					<wp:meta_value><![CDATA[1]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wc_rating_count]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:1:{i:4;i:1;}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wc_average_rating]]></wp:meta_key>
+					<wp:meta_value><![CDATA[4.00]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+					<wp:meta_value><![CDATA[119919]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_thumbnail_id]]></wp:meta_key>
+					<wp:meta_value><![CDATA[208]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_sku]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_regular_price]]></wp:meta_key>
+					<wp:meta_value><![CDATA[400]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_sale_price]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_sale_price_dates_from]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_sale_price_dates_to]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[total_sales]]></wp:meta_key>
+					<wp:meta_value><![CDATA[0]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_tax_status]]></wp:meta_key>
+					<wp:meta_value><![CDATA[taxable]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_tax_class]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_manage_stock]]></wp:meta_key>
+					<wp:meta_value><![CDATA[no]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_backorders]]></wp:meta_key>
+					<wp:meta_value><![CDATA[no]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_sold_individually]]></wp:meta_key>
+					<wp:meta_value><![CDATA[no]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_weight]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_length]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_width]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_height]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_upsell_ids]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:0:{}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_crosssell_ids]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:0:{}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_purchase_note]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_default_attributes]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:0:{}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_virtual]]></wp:meta_key>
+					<wp:meta_value><![CDATA[no]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_downloadable]]></wp:meta_key>
+					<wp:meta_value><![CDATA[no]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_product_image_gallery]]></wp:meta_key>
+					<wp:meta_value><![CDATA[79,81,80]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_download_limit]]></wp:meta_key>
+					<wp:meta_value><![CDATA[-1]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_download_expiry]]></wp:meta_key>
+					<wp:meta_value><![CDATA[-1]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_stock]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_stock_status]]></wp:meta_key>
+					<wp:meta_value><![CDATA[instock]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_product_version]]></wp:meta_key>
+					<wp:meta_value><![CDATA[3.4.5]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_price]]></wp:meta_key>
+					<wp:meta_value><![CDATA[400]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_yoast_wpseo_primary_product_cat]]></wp:meta_key>
+					<wp:meta_value><![CDATA[20]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
+					<wp:meta_value><![CDATA[70]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_yoast_wpseo_content_score]]></wp:meta_key>
+					<wp:meta_value><![CDATA[60]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				Striped dress			</title>
+			<link>https://demo.themeisle.com/neve-shop/product/striped-dress/</link>
+			<pubDate>Wed, 06 Mar 2019 13:32:12 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-shop/?post_type=product&#038;p=82</guid>
+			<description></description>
+			<content:encoded><![CDATA[<div class="woocommerce-product-details__short-description">
+
+Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.
+
+</div>]]></content:encoded><excerpt:encoded><![CDATA[<div class="woocommerce-product-details__short-description">
+
+Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.
+
+</div>]]></excerpt:encoded>			<wp:post_id>82</wp:post_id>
+			<wp:post_date><![CDATA[2019-03-06 13:32:12]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-03-06 13:32:12]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[striped-dress]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[product]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+								<category domain="product_visibility" nicename="rated-2"><![CDATA[rated-2]]></category>
+		<category domain="product_type" nicename="simple"><![CDATA[simple]]></category>
+		<category domain="product_cat" nicename="dresses"><![CDATA[Dresses]]></category>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wc_review_count]]></wp:meta_key>
+					<wp:meta_value><![CDATA[1]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wc_rating_count]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:1:{i:2;i:1;}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wc_average_rating]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2.00]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+					<wp:meta_value><![CDATA[119919]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_thumbnail_id]]></wp:meta_key>
+					<wp:meta_value><![CDATA[208]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_sku]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_regular_price]]></wp:meta_key>
+					<wp:meta_value><![CDATA[135]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_sale_price]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_sale_price_dates_from]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_sale_price_dates_to]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[total_sales]]></wp:meta_key>
+					<wp:meta_value><![CDATA[0]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_tax_status]]></wp:meta_key>
+					<wp:meta_value><![CDATA[taxable]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_tax_class]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_manage_stock]]></wp:meta_key>
+					<wp:meta_value><![CDATA[no]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_backorders]]></wp:meta_key>
+					<wp:meta_value><![CDATA[no]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_sold_individually]]></wp:meta_key>
+					<wp:meta_value><![CDATA[no]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_weight]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_length]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_width]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_height]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_upsell_ids]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:0:{}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_crosssell_ids]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:0:{}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_purchase_note]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_default_attributes]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:0:{}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_virtual]]></wp:meta_key>
+					<wp:meta_value><![CDATA[no]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_downloadable]]></wp:meta_key>
+					<wp:meta_value><![CDATA[no]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_product_image_gallery]]></wp:meta_key>
+					<wp:meta_value><![CDATA[84,86,85]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_download_limit]]></wp:meta_key>
+					<wp:meta_value><![CDATA[-1]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_download_expiry]]></wp:meta_key>
+					<wp:meta_value><![CDATA[-1]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_stock]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_stock_status]]></wp:meta_key>
+					<wp:meta_value><![CDATA[instock]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_product_version]]></wp:meta_key>
+					<wp:meta_value><![CDATA[3.4.5]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_price]]></wp:meta_key>
+					<wp:meta_value><![CDATA[135]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_yoast_wpseo_primary_product_cat]]></wp:meta_key>
+					<wp:meta_value><![CDATA[20]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
+					<wp:meta_value><![CDATA[70]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_yoast_wpseo_content_score]]></wp:meta_key>
+					<wp:meta_value><![CDATA[60]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				Custom Tee			</title>
+			<link>https://demo.themeisle.com/neve-shop/product/custom-tee/</link>
+			<pubDate>Wed, 06 Mar 2019 13:35:03 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-shop/?post_type=product&#038;p=87</guid>
+			<description></description>
+			<content:encoded><![CDATA[<div class="woocommerce-product-details__short-description">
+
+Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.
+
+</div>]]></content:encoded><excerpt:encoded><![CDATA[<div class="woocommerce-product-details__short-description">
+
+Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.
+
+</div>]]></excerpt:encoded>			<wp:post_id>87</wp:post_id>
+			<wp:post_date><![CDATA[2019-03-06 13:35:03]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-03-06 13:35:03]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[custom-tee]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[product]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+								<category domain="product_visibility" nicename="rated-3"><![CDATA[rated-3]]></category>
+		<category domain="product_type" nicename="simple"><![CDATA[simple]]></category>
+		<category domain="product_cat" nicename="clothing"><![CDATA[Clothing]]></category>
+		<category domain="product_cat" nicename="tshirt"><![CDATA[Tshirt]]></category>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wc_review_count]]></wp:meta_key>
+					<wp:meta_value><![CDATA[1]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wc_rating_count]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:1:{i:3;i:1;}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wc_average_rating]]></wp:meta_key>
+					<wp:meta_value><![CDATA[3.00]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+					<wp:meta_value><![CDATA[119919]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_thumbnail_id]]></wp:meta_key>
+					<wp:meta_value><![CDATA[208]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_sku]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_regular_price]]></wp:meta_key>
+					<wp:meta_value><![CDATA[335]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_sale_price]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_sale_price_dates_from]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_sale_price_dates_to]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[total_sales]]></wp:meta_key>
+					<wp:meta_value><![CDATA[0]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_tax_status]]></wp:meta_key>
+					<wp:meta_value><![CDATA[taxable]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_tax_class]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_manage_stock]]></wp:meta_key>
+					<wp:meta_value><![CDATA[no]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_backorders]]></wp:meta_key>
+					<wp:meta_value><![CDATA[no]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_sold_individually]]></wp:meta_key>
+					<wp:meta_value><![CDATA[no]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_weight]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_length]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_width]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_height]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_upsell_ids]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:0:{}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_crosssell_ids]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:0:{}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_purchase_note]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_default_attributes]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:0:{}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_virtual]]></wp:meta_key>
+					<wp:meta_value><![CDATA[no]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_downloadable]]></wp:meta_key>
+					<wp:meta_value><![CDATA[no]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_product_image_gallery]]></wp:meta_key>
+					<wp:meta_value><![CDATA[89,91,90]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_download_limit]]></wp:meta_key>
+					<wp:meta_value><![CDATA[-1]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_download_expiry]]></wp:meta_key>
+					<wp:meta_value><![CDATA[-1]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_stock]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_stock_status]]></wp:meta_key>
+					<wp:meta_value><![CDATA[instock]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_product_version]]></wp:meta_key>
+					<wp:meta_value><![CDATA[3.4.5]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_price]]></wp:meta_key>
+					<wp:meta_value><![CDATA[335]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_yoast_wpseo_primary_product_cat]]></wp:meta_key>
+					<wp:meta_value><![CDATA[22]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
+					<wp:meta_value><![CDATA[70]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_yoast_wpseo_content_score]]></wp:meta_key>
+					<wp:meta_value><![CDATA[60]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_product_attributes]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:1:{s:5:"green";a:6:{s:4:"name";s:5:"Green";s:5:"value";s:5:"Green";s:8:"position";i:0;s:10:"is_visible";i:1;s:12:"is_variation";i:0;s:11:"is_taxonomy";i:0;}}]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				About Us			</title>
+			<link>https://demo.themeisle.com/neve-shop/about-us/</link>
+			<pubDate>Wed, 06 Mar 2019 14:42:42 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-shop/?page_id=120</guid>
+			<description></description>
+			<content:encoded><![CDATA[<h1>About Us</h1>		
+		We are Shop. We are an empowering, bold and forward thinking online fashion brand, inspired by real life. We design and create product informed by you, our customers, our friends and global influences: Catwalk, celebrity, social media, bloggers and street style, creating an online fashion destination that encompasses and celebrates everything it means to be a girl in a digitally immersed world today.		
+			<h2>Meet our team</h2>		
+		<p>An awesome way to introduce the members of your team.</p>		
+			<figure><img width="263" height="357" src="https://s20206.pcdn.co/neve-shop/wp-content/uploads/sites/188/2019/04/placeholder-image.png" alt="" /></figure>Eva Bean<p>Developer</p>		
+			<figure><img width="263" height="357" src="https://s20206.pcdn.co/neve-shop/wp-content/uploads/sites/188/2019/04/placeholder-image.png" alt="" /></figure>Maria Woods<p>Designer</p>		
+			<figure><img width="263" height="357" src="https://s20206.pcdn.co/neve-shop/wp-content/uploads/sites/188/2019/04/placeholder-image.png" alt="" /></figure>BOOBY STONE<p>Director</p>		
+			<figure><img width="263" height="357" src="https://s20206.pcdn.co/neve-shop/wp-content/uploads/sites/188/2019/04/placeholder-image.png" alt="" /></figure>Anna Neaga<p>Art Director</p>		
+			Presentation		
+		<p>What the video about our new products</p>		
+			<h2>Our advantages</h2>		
+				<h3>
+					Ideas and concepts
+				</h3>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</p>
+				<h3>
+					Designs &amp; interfaces
+				</h3>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</p>
+				<h3>
+					Highly Customizable
+				</h3>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</p>
+				<h3>
+					Easy to use
+				</h3>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</p>]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>120</wp:post_id>
+			<wp:post_date><![CDATA[2019-03-06 14:42:42]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-03-06 14:42:42]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[about-us]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[page]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+					<wp:meta_value><![CDATA[119919]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
+					<wp:meta_value><![CDATA[page-templates/template-pagebuilder-full-width.php]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
+					<wp:meta_value><![CDATA[70]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_yoast_wpseo_content_score]]></wp:meta_key>
+					<wp:meta_value><![CDATA[30]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
+					<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_elementor_template_type]]></wp:meta_key>
+					<wp:meta_value><![CDATA[post]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_elementor_data]]></wp:meta_key>
+					<wp:meta_value><![CDATA[[{"id":"354a131","elType":"section","settings":{"content_width":{"unit":"px","size":975},"height":"min-height","background_background":"classic","background_image":{"url":"https://s20206.pcdn.co/neve-shop/wp-content/uploads/sites/188/2019/04/placeholder-image.png","id":208},"background_size":"cover","background_overlay_background":"classic","background_overlay_color":"#222222","background_overlay_opacity":{"unit":"px","size":0.3},"background_position":"center center","margin":{"unit":"px","top":"0","right":0,"bottom":"0","left":0,"isLinked":false}},"elements":[{"id":"0a4d936","elType":"column","settings":{"_column_size":100},"elements":[{"id":"e9da4ba","elType":"widget","settings":{"title":"About Us","header_size":"h1","align":"center","title_color":"#ffffff","typography_typography":"custom","typography_font_family":"Roboto Condensed","typography_font_size":{"unit":"px","size":30},"typography_font_weight":"400","typography_text_transform":"uppercase","typography_line_height":{"unit":"em","size":1.4},"typography_letter_spacing":{"unit":"px","size":4}},"elements":[],"widgetType":"heading"},{"id":"1a41a14","elType":"widget","settings":{"editor":"We are Shop. We are an empowering, bold and forward thinking online fashion brand, inspired by real life. We design and create product informed by you, our customers, our friends and global influences: Catwalk, celebrity, social media, bloggers and street style, creating an online fashion destination that encompasses and celebrates everything it means to be a girl in a digitally immersed world today.","align":"center","text_color":"#ffffff","typography_typography":"custom","typography_font_family":"Volkhov","typography_font_size":{"unit":"px","size":16},"typography_font_style":"italic"},"elements":[],"widgetType":"text-editor"}],"isInner":false}],"isInner":false},{"id":"d940a60","elType":"section","settings":{"padding":{"unit":"px","top":"130","right":"0","bottom":"70","left":"0","isLinked":false}},"elements":[{"id":"5bd1169","elType":"column","settings":{"_column_size":100},"elements":[{"id":"f5a77ef","elType":"widget","settings":{"title":"Meet our team","align":"center","title_color":"#111111","typography_typography":"custom","typography_font_family":"Roboto Condensed","typography_font_size":{"unit":"px","size":30},"typography_font_weight":"400","typography_text_transform":"uppercase","typography_line_height":{"unit":"em","size":1.4},"typography_letter_spacing":{"unit":"px","size":4}},"elements":[],"widgetType":"heading"},{"id":"b197025","elType":"widget","settings":{"editor":"<p>An awesome way to introduce the members of your team.<\/p>","align":"center","text_color":"#111111","typography_typography":"custom","typography_font_family":"Volkhov","typography_font_size":{"unit":"px","size":16},"typography_font_style":"italic"},"elements":[],"widgetType":"text-editor"}],"isInner":false}],"isInner":false},{"id":"1ac4ef8","elType":"section","settings":{"gap":"extended","structure":"40","padding":{"unit":"px","top":"0","right":"0","bottom":"130","left":"0","isLinked":false}},"elements":[{"id":"ed0e640","elType":"column","settings":{"_column_size":25,"_inline_size":null,"_inline_size_tablet":50},"elements":[{"id":"1daacc1","elType":"widget","settings":{"image":{"url":"https://s20206.pcdn.co/neve-shop/wp-content/uploads/sites/188/2019/04/placeholder-image.png","id":208},"title_text":"Eva Bean","description_text":"Developer","title_size":"div","image_space":{"unit":"px","size":20},"image_size":{"unit":"%","size":100},"title_color":"#111111","title_typography_typography":"custom","title_typography_font_family":"Roboto Condensed","title_typography_font_size":{"unit":"px","size":14},"title_typography_font_weight":"400","title_typography_text_transform":"uppercase","title_typography_letter_spacing":{"unit":"px","size":2},"description_color":"#aaaaaa","description_typography_typography":"custom","description_typography_font_family":"Roboto Condensed","description_typography_font_size":{"unit":"px","size":11},"description_typography_font_weight":"400","description_typography_text_transform":"uppercase","description_typography_letter_spacing":{"unit":"px","size":2},"_padding_mobile":{"unit":"px","top":"0","right":"0","bottom":"60","left":"0","isLinked":false}},"elements":[],"widgetType":"image-box"}],"isInner":false},{"id":"6916ba0","elType":"column","settings":{"_column_size":25,"_inline_size":null,"_inline_size_tablet":50},"elements":[{"id":"685750c","elType":"widget","settings":{"image":{"url":"https://s20206.pcdn.co/neve-shop/wp-content/uploads/sites/188/2019/04/placeholder-image.png","id":208},"title_text":"Maria Woods","description_text":"Designer","title_size":"div","image_space":{"unit":"px","size":20},"image_size":{"unit":"%","size":100},"title_color":"#111111","title_typography_typography":"custom","title_typography_font_family":"Roboto Condensed","title_typography_font_size":{"unit":"px","size":14},"title_typography_font_weight":"400","title_typography_text_transform":"uppercase","title_typography_letter_spacing":{"unit":"px","size":2},"description_color":"#aaaaaa","description_typography_typography":"custom","description_typography_font_family":"Roboto Condensed","description_typography_font_size":{"unit":"px","size":11},"description_typography_font_weight":"400","description_typography_text_transform":"uppercase","description_typography_letter_spacing":{"unit":"px","size":2},"_padding_mobile":{"unit":"px","top":"0","right":"0","bottom":"60","left":"0","isLinked":false}},"elements":[],"widgetType":"image-box"}],"isInner":false},{"id":"cd91ec9","elType":"column","settings":{"_column_size":25,"_inline_size":null,"_inline_size_tablet":50},"elements":[{"id":"ccdba9f","elType":"widget","settings":{"image":{"url":"https://s20206.pcdn.co/neve-shop/wp-content/uploads/sites/188/2019/04/placeholder-image.png","id":208},"title_text":"BOOBY STONE","description_text":"Director","title_size":"div","image_space":{"unit":"px","size":20},"image_size":{"unit":"%","size":100},"title_color":"#111111","title_typography_typography":"custom","title_typography_font_family":"Roboto Condensed","title_typography_font_size":{"unit":"px","size":14},"title_typography_font_weight":"400","title_typography_text_transform":"uppercase","title_typography_letter_spacing":{"unit":"px","size":2},"description_color":"#aaaaaa","description_typography_typography":"custom","description_typography_font_family":"Roboto Condensed","description_typography_font_size":{"unit":"px","size":11},"description_typography_font_weight":"400","description_typography_text_transform":"uppercase","description_typography_letter_spacing":{"unit":"px","size":2},"_padding_mobile":{"unit":"px","top":"0","right":"0","bottom":"60","left":"0","isLinked":false}},"elements":[],"widgetType":"image-box"}],"isInner":false},{"id":"12a4056","elType":"column","settings":{"_column_size":25,"_inline_size":null,"_inline_size_tablet":50},"elements":[{"id":"7191643","elType":"widget","settings":{"image":{"url":"https://s20206.pcdn.co/neve-shop/wp-content/uploads/sites/188/2019/04/placeholder-image.png","id":208},"title_text":"Anna Neaga","description_text":"Art Director","title_size":"div","image_space":{"unit":"px","size":20},"image_size":{"unit":"%","size":100},"title_color":"#111111","title_typography_typography":"custom","title_typography_font_family":"Roboto Condensed","title_typography_font_size":{"unit":"px","size":14},"title_typography_font_weight":"400","title_typography_text_transform":"uppercase","title_typography_letter_spacing":{"unit":"px","size":2},"description_color":"#aaaaaa","description_typography_typography":"custom","description_typography_font_family":"Roboto Condensed","description_typography_font_size":{"unit":"px","size":11},"description_typography_font_weight":"400","description_typography_text_transform":"uppercase","description_typography_letter_spacing":{"unit":"px","size":2},"_padding_mobile":{"unit":"px","top":"0","right":"0","bottom":"60","left":"0","isLinked":false}},"elements":[],"widgetType":"image-box"}],"isInner":false}],"isInner":false},{"id":"e316f6e","elType":"section","settings":{"height":"min-height","custom_height":{"unit":"px","size":427},"background_background":"classic","background_image":{"url":"https://s20206.pcdn.co/neve-shop/wp-content/uploads/sites/188/2019/04/placeholder-image.png","id":208},"background_position":"center center","background_size":"cover","background_overlay_background":"classic","background_overlay_color":"#222222","background_overlay_opacity":{"unit":"px","size":0.6}},"elements":[{"id":"92bacfe","elType":"column","settings":{"_column_size":100,"space_between_widgets":0},"elements":[{"id":"d965511","elType":"widget","settings":{"title":"Presentation","header_size":"div","align":"center","title_color":"#ffffff","typography_typography":"custom","typography_font_family":"Roboto Condensed","typography_font_size":{"unit":"px","size":30},"typography_font_weight":"400","typography_text_transform":"uppercase","typography_line_height":{"unit":"em","size":1.8},"typography_letter_spacing":{"unit":"px","size":4}},"elements":[],"widgetType":"heading"},{"id":"99173b5","elType":"widget","settings":{"editor":"<p>What the video about our new products<\/p>","align":"center","text_color":"rgba(255,255,255,0.8)","typography_typography":"custom","typography_font_family":"Roboto Condensed","typography_font_size":{"unit":"px","size":13},"typography_font_weight":"400","typography_text_transform":"uppercase","typography_line_height":{"unit":"em","size":1.8},"typography_letter_spacing":{"unit":"px","size":2}},"elements":[],"widgetType":"text-editor"}],"isInner":false}],"isInner":false},{"id":"1e870e8","elType":"section","settings":{"padding":{"unit":"px","top":"130","right":"0","bottom":"70","left":"0","isLinked":false}},"elements":[{"id":"c4eb85b","elType":"column","settings":{"_column_size":100},"elements":[{"id":"f0899a1","elType":"widget","settings":{"title":"Our advantages","align":"center","title_color":"#111111","typography_typography":"custom","typography_font_family":"Roboto Condensed","typography_font_size":{"unit":"px","size":30},"typography_font_weight":"400","typography_text_transform":"uppercase","typography_line_height":{"unit":"em","size":1.4},"typography_letter_spacing":{"unit":"px","size":4}},"elements":[],"widgetType":"heading"}],"isInner":false}],"isInner":false},{"id":"4dbfa3f","elType":"section","settings":{"gap":"extended","structure":"40","padding":{"unit":"px","top":"0","right":"0","bottom":"130","left":"0","isLinked":false}},"elements":[{"id":"2224c3c","elType":"column","settings":{"_column_size":25,"_inline_size":null,"_inline_size_tablet":50},"elements":[{"id":"dc9efc4","elType":"widget","settings":{"icon":"fa fa-lightbulb-o","title_text":"Ideas and concepts","description_text":"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n","primary_color":"#111111","icon_space":{"unit":"px","size":16},"icon_size":{"unit":"px","size":42},"title_bottom_space":{"unit":"px","size":15},"title_color":"#111111","title_typography_typography":"custom","title_typography_font_family":"Roboto Condensed","title_typography_font_size":{"unit":"px","size":14},"title_typography_font_weight":"400","title_typography_text_transform":"uppercase","title_typography_letter_spacing":{"unit":"px","size":2},"description_color":"#111111","description_typography_typography":"custom","description_typography_font_family":"Open Sans","description_typography_font_size":{"unit":"px","size":13},"description_typography_font_weight":"400"},"elements":[],"widgetType":"icon-box"}],"isInner":false},{"id":"5cd9da9","elType":"column","settings":{"_column_size":25,"_inline_size":null,"_inline_size_tablet":50},"elements":[{"id":"d9aa190","elType":"widget","settings":{"icon":"fa fa-wrench","title_text":"Designs & interfaces","description_text":"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n","primary_color":"#111111","icon_space":{"unit":"px","size":16},"icon_size":{"unit":"px","size":42},"title_bottom_space":{"unit":"px","size":15},"title_color":"#111111","title_typography_typography":"custom","title_typography_font_family":"Roboto Condensed","title_typography_font_size":{"unit":"px","size":14},"title_typography_font_weight":"400","title_typography_text_transform":"uppercase","title_typography_letter_spacing":{"unit":"px","size":2},"description_color":"#111111","description_typography_typography":"custom","description_typography_font_family":"Open Sans","description_typography_font_size":{"unit":"px","size":13},"description_typography_font_weight":"400"},"elements":[],"widgetType":"icon-box"}],"isInner":false},{"id":"026af8f","elType":"column","settings":{"_column_size":25,"_inline_size":null,"_inline_size_tablet":50},"elements":[{"id":"6fe81f4","elType":"widget","settings":{"icon":"fa fa-cogs","title_text":"Highly Customizable","description_text":"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n","primary_color":"#111111","icon_space":{"unit":"px","size":16},"icon_size":{"unit":"px","size":42},"title_bottom_space":{"unit":"px","size":15},"title_color":"#111111","title_typography_typography":"custom","title_typography_font_family":"Roboto Condensed","title_typography_font_size":{"unit":"px","size":14},"title_typography_font_weight":"400","title_typography_text_transform":"uppercase","title_typography_letter_spacing":{"unit":"px","size":2},"description_color":"#111111","description_typography_typography":"custom","description_typography_font_family":"Open Sans","description_typography_font_size":{"unit":"px","size":13},"description_typography_font_weight":"400"},"elements":[],"widgetType":"icon-box"}],"isInner":false},{"id":"b7a355d","elType":"column","settings":{"_column_size":25,"_inline_size":null,"_inline_size_tablet":50},"elements":[{"id":"aa6af61","elType":"widget","settings":{"icon":"fa fa-thumbs-o-up","title_text":"Easy to use","description_text":"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n","primary_color":"#111111","icon_space":{"unit":"px","size":16},"icon_size":{"unit":"px","size":42},"title_bottom_space":{"unit":"px","size":15},"title_color":"#111111","title_typography_typography":"custom","title_typography_font_family":"Roboto Condensed","title_typography_font_size":{"unit":"px","size":14},"title_typography_font_weight":"400","title_typography_text_transform":"uppercase","title_typography_letter_spacing":{"unit":"px","size":2},"description_color":"#111111","description_typography_typography":"custom","description_typography_font_family":"Open Sans","description_typography_font_size":{"unit":"px","size":13},"description_typography_font_weight":"400"},"elements":[],"widgetType":"icon-box"}],"isInner":false}],"isInner":false}]]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_elementor_version]]></wp:meta_key>
+					<wp:meta_value><![CDATA[0.4]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				Contact			</title>
+			<link>https://demo.themeisle.com/neve-shop/contact/</link>
+			<pubDate>Wed, 06 Mar 2019 15:19:55 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-shop/?page_id=130</guid>
+			<description></description>
+			<content:encoded><![CDATA[<h1>Contact</h1>		
+		<p>Feel free to contact us at your convenience and we'll be happy to get in touch with you.</p>		
+			<form action="https://demo.themeisle.com/neve-shop/wp-admin/admin-post.php" method="post" name="content-form-906d537" id="content-form-906d537">
+        <fieldset>
+            <label for="data[906d537][name]">
+				            </label>
+			                    
+					        </fieldset>
+        <fieldset>
+            <label for="data[906d537][email]">
+				            </label>
+			                    
+					        </fieldset>
+        <fieldset>
+            <label for="data[906d537][phone]">
+				            </label>
+			                    
+					        </fieldset>
+        <fieldset>
+            <label for="data[906d537][message]">
+				            </label>
+			                    <textarea name="data[906d537][message]" id="data[906d537][message]" cols="30" rows="5"></textarea>
+					        </fieldset>
+		        <fieldset>
+            <button type="submit" name="submit" value="submit-contact-906d537">
+	            Send message                            </button>
+        </fieldset>
+		</form>		
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pharetra odio quis varius maximus. Donec quis volutpat urna. Ut feugiat dolor eu velit luctus, sed viverra lectus malesuada. Proin vel feugiat justo, a feugiat justo. Nulla lacus elit, blandit ut vestibulum ac, pharetra et tellus. Duis tristique massa id dolor aliquam posuere. Sed est magna, facilisis in egestas ut, euismod eu ipsum. Vivamus at odio metus. In sit amet placerat quam.</p><p>Vestibulum eget dictum lacus. Proin fermentum, dui a malesuada maximus, ipsum nibh feugiat nulla, vitae congue lorem augue sit amet massa. Maecenas quis velit eu justo accumsan aliquam. Mauris gravida justo vehicula porttitor eleifend. Aenean leo nisl, condimentum eu consectetur sit amet, tristique sed eros. Aliquam sit amet velit est. Aenean eleifend erat sem, sit amet euismod metus ultricies ut. Fusce efficitur, massa finibus fermentum maximus, lectus lorem accumsan ipsum, non fringilla sem mauris ac est. Aenean blandit arcu et diam gravida, non efficitur nibh placerat. Vestibulum venenatis dictum mollis. Duis purus odio, accumsan eget fermentum eu, suscipit a nulla. Sed ex eros, rutrum vitae mollis et, lobortis vel dui.</p><p>Ut finibus ac turpis malesuada tempus. Sed aliquam erat ut ex egestas dignissim nec et eros. Proin quis blandit mi. Sed imperdiet, metus at euismod vehicula, erat ipsum placerat mi, a elementum elit lectus at est. Suspendisse vestibulum nibh vel mauris facilisis vulputate. Sed facilisis urna cursus auctor fringilla. Nullam in pulvinar nibh. Vivamus et nibh enim. Proin eleifend posuere nunc eget malesuada. Phasellus ac ligula iaculis, sodales felis non, laoreet turpis.</p>		
+			<h3>Share this:</h3>		
+							<a href="" target="_blank">
+					Facebook
+				</a>
+							<a href="" target="_blank">
+					Twitter
+				</a>
+							<a href="" target="_blank">
+					Google-plus
+				</a>
+			]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>130</wp:post_id>
+			<wp:post_date><![CDATA[2019-03-06 15:19:55]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-03-06 15:19:55]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[contact]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[page]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+					<wp:meta_value><![CDATA[119919]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
+					<wp:meta_value><![CDATA[page-templates/template-pagebuilder-full-width.php]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
+					<wp:meta_value><![CDATA[70]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_yoast_wpseo_content_score]]></wp:meta_key>
+					<wp:meta_value><![CDATA[30]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
+					<wp:meta_value><![CDATA[builder]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_elementor_template_type]]></wp:meta_key>
+					<wp:meta_value><![CDATA[post]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_elementor_data]]></wp:meta_key>
+					<wp:meta_value><![CDATA[[{"id":"dacbca7","elType":"section","settings":{"content_width":{"unit":"px","size":975},"height":"min-height","background_background":"classic","background_image":{"url":"https://s20206.pcdn.co/neve-shop/wp-content/uploads/sites/188/2019/04/placeholder-image.png","id":208},"background_size":"cover","background_overlay_background":"classic","background_overlay_color":"#222222","background_overlay_opacity":{"unit":"px","size":0.3},"background_position":"center center","margin":{"unit":"px","top":"0","right":0,"bottom":"0","left":0,"isLinked":false}},"elements":[{"id":"53c6380","elType":"column","settings":{"_column_size":100},"elements":[{"id":"a058565","elType":"widget","settings":{"title":"Contact","header_size":"h1","align":"center","title_color":"#ffffff","typography_typography":"custom","typography_font_family":"Roboto Condensed","typography_font_size":{"unit":"px","size":30},"typography_font_weight":"400","typography_text_transform":"uppercase","typography_line_height":{"unit":"em","size":1.4},"typography_letter_spacing":{"unit":"px","size":4}},"elements":[],"widgetType":"heading"},{"id":"cd07b87","elType":"widget","settings":{"editor":"<p>Feel free to contact us at your convenience and we'll be happy to get in touch with you.<\/p>","align":"center","text_color":"#ffffff","typography_typography":"custom","typography_font_family":"Volkhov","typography_font_size":{"unit":"px","size":16},"typography_font_style":"italic"},"elements":[],"widgetType":"text-editor"}],"isInner":false}],"isInner":false},{"id":"d4e1828","elType":"section","settings":{"gap":"extended","structure":"20","padding":{"unit":"px","top":"130","right":"0","bottom":"130","left":"0","isLinked":false}},"elements":[{"id":"6c0b8c0","elType":"column","settings":{"_column_size":50,"_inline_size":null},"elements":[{"id":"906d537","elType":"widget","settings":{"form_fields":[{"key":"name","type":"text","label":"","requirement":"","placeholder":"Your Name","field_width":"50","_id":"6f8d3c5","field_width_tablet":"","field_width_mobile":""},{"key":"email","type":"email","label":"","requirement":"","placeholder":"Your Email","field_width":"50","_id":"a71a18b","field_width_tablet":"","field_width_mobile":""},{"key":"phone","type":"text","label":"","requirement":"optional","placeholder":"Subject","field_width":"100","_id":"6959254","field_width_tablet":"","field_width_mobile":""},{"key":"message","type":"textarea","label":"","requirement":"","placeholder":"Your message","field_width":"100","_id":"13ada1b","field_width_tablet":"","field_width_mobile":""}],"to_send_email":"friends@themeisle.com","submit_label":"Send message","column_gap":{"unit":"px","size":30},"field_typography_typography":"custom","field_typography_font_family":"Roboto Condensed","field_typography_font_size":{"unit":"px","size":12},"field_typography_letter_spacing":{"unit":"px","size":2},"field-text-padding":{"unit":"px","top":"6","right":"12","bottom":"6","left":"12","isLinked":false},"field_border_radius":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":true},"button_background_color":"#111111","button_text_color":"#ffffff","button_typography_typography":"custom","button_typography_font_family":"Roboto Condensed","button_typography_font_size":{"unit":"px","size":11},"button_typography_letter_spacing":{"unit":"px","size":2},"button_border_radius":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":true},"button_text_padding":{"unit":"px","top":"8","right":"37","bottom":"8","left":"37","isLinked":false},"button_background_hover_color":"rgba(17,17,17,0.8)","align_submit_mobile":"center"},"elements":[],"widgetType":"content_form_contact"}],"isInner":false},{"id":"fee456b","elType":"column","settings":{"_column_size":50,"_inline_size":null,"space_between_widgets":0},"elements":[{"id":"8942749","elType":"widget","settings":{"editor":"<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pharetra odio quis varius maximus. Donec quis volutpat urna. Ut feugiat dolor eu velit luctus, sed viverra lectus malesuada. Proin vel feugiat justo, a feugiat justo. Nulla lacus elit, blandit ut vestibulum ac, pharetra et tellus. Duis tristique massa id dolor aliquam posuere. Sed est magna, facilisis in egestas ut, euismod eu ipsum. Vivamus at odio metus. In sit amet placerat quam.<\/p><p>Vestibulum eget dictum lacus. Proin fermentum, dui a malesuada maximus, ipsum nibh feugiat nulla, vitae congue lorem augue sit amet massa. Maecenas quis velit eu justo accumsan aliquam. Mauris gravida justo vehicula porttitor eleifend. Aenean leo nisl, condimentum eu consectetur sit amet, tristique sed eros. Aliquam sit amet velit est. Aenean eleifend erat sem, sit amet euismod metus ultricies ut. Fusce efficitur, massa finibus fermentum maximus, lectus lorem accumsan ipsum, non fringilla sem mauris ac est. Aenean blandit arcu et diam gravida, non efficitur nibh placerat. Vestibulum venenatis dictum mollis. Duis purus odio, accumsan eget fermentum eu, suscipit a nulla. Sed ex eros, rutrum vitae mollis et, lobortis vel dui.<\/p><p>Ut finibus ac turpis malesuada tempus. Sed aliquam erat ut ex egestas dignissim nec et eros. Proin quis blandit mi. Sed imperdiet, metus at euismod vehicula, erat ipsum placerat mi, a elementum elit lectus at est. Suspendisse vestibulum nibh vel mauris facilisis vulputate. Sed facilisis urna cursus auctor fringilla. Nullam in pulvinar nibh. Vivamus et nibh enim. Proin eleifend posuere nunc eget malesuada. Phasellus ac ligula iaculis, sodales felis non, laoreet turpis.<\/p>","text_color":"#666666","typography_typography":"custom","typography_font_family":"Open Sans","typography_font_size":{"unit":"px","size":13},"typography_font_weight":"400","typography_line_height":{"unit":"em","size":1.8}},"elements":[],"widgetType":"text-editor"},{"id":"9995929","elType":"widget","settings":{"color":"#aaaaaa","width":{"unit":"%","size":10},"gap":{"unit":"px","size":2}},"elements":[],"widgetType":"divider"},{"id":"aaa1c38","elType":"widget","settings":{"title":"Share this:","header_size":"h3","title_color":"#666666","typography_typography":"custom","typography_font_family":"Open Sans","typography_font_size":{"unit":"px","size":12},"typography_font_weight":"700","_margin":{"unit":"px","top":"12","right":"0","bottom":"12","left":"0","isLinked":false},"_border_width":{"unit":"px","top":"1","right":"0","bottom":"0","left":"0","isLinked":false}},"elements":[],"widgetType":"heading"},{"id":"4feb6fc","elType":"widget","settings":{"social_icon_list":[{"social":"fa fa-facebook","_id":"baff536","link":{"url":"","is_external":"true","nofollow":""}},{"social":"fa fa-twitter","_id":"ff37a61","link":{"url":"","is_external":"true","nofollow":""}},{"social":"fa fa-google-plus","_id":"a7f2c5c","link":{"url":"","is_external":"true","nofollow":""}}],"shape":"circle","align":"left","icon_size":{"unit":"px","size":12}},"elements":[],"widgetType":"social-icons"}],"isInner":false}],"isInner":false},{"id":"193e7a3","elType":"section","settings":{"layout":"full_width"},"elements":[{"id":"e58f79d","elType":"column","settings":{"_column_size":100,"padding":{"unit":"px","top":"0","right":"0","bottom":"0","left":"0","isLinked":false}},"elements":[{"id":208,"elType":"widget","settings":{"address":"London Eye, London, United Kingdom","height":{"unit":"px","size":300}},"elements":[],"widgetType":"google_maps"}],"isInner":false}],"isInner":false}]]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_elementor_version]]></wp:meta_key>
+					<wp:meta_value><![CDATA[0.4]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				Blog			</title>
+			<link>https://demo.themeisle.com/neve-shop/blog/</link>
+			<pubDate>Wed, 06 Mar 2019 15:31:43 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-shop/?page_id=131</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>131</wp:post_id>
+			<wp:post_date><![CDATA[2019-03-06 15:31:43]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-03-06 15:31:43]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[blog]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[page]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+					<wp:meta_value><![CDATA[440]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
+					<wp:meta_value><![CDATA[default]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
+					<wp:meta_value><![CDATA[70]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_yoast_wpseo_content_score]]></wp:meta_key>
+					<wp:meta_value><![CDATA[30]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_disable_title]]></wp:meta_key>
+					<wp:meta_value><![CDATA[on]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				Everything Mobile-Friendly and Responsive			</title>
+			<link>https://demo.themeisle.com/neve-shop/2019/03/06/everything-mobile-friendly-and-responsive/</link>
+			<pubDate>Wed, 06 Mar 2019 15:33:36 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-shop/?p=132</guid>
+			<description></description>
+			<content:encoded><![CDATA[&nbsp;
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Isto modo ne improbos quidem, si essent boni viri. Quae contraria sunt his, malane? Dic in quovis conventu te omnia facere, ne doleas. Post enim Chrysippum eum non sane est disputatum.
+
+<b>Quis est tam dissimile homini.</b> Ratio enim nostra consentit, pugnat oratio. Multa sunt dicta ab antiquis de contemnendis ac despiciendis rebus humanis; Qui-vere falsone, quaerere mittimus-dicitur oculis se privasse; <b>Polycratem Samium felicem appellabant.</b> In ipsa enim parum magna vis inest, ut quam optime se habere possit, si nulla cultura adhibeatur. Deinde prima illa, quae in congressu solemus: Quid tu, inquit, huc? Audeo dicere, inquit. Itaque homo in primis ingenuus et gravis, dignus illa familiaritate Scipionis et Laelii, Panaetius, cum ad Q. <i>Quodsi ipsam honestatem undique pertectam atque absolutam.</i>
+
+Duo Reges: constructio interrete. Negat esse eam, inquit, propter se expetendam. Et quidem, inquit, vehementer errat; Non minor, inquit, voluptas percipitur ex vilissimis rebus quam ex pretiosissimis. <i>Erat enim res aperta.</i> Mihi, inquam, qui te id ipsum rogavi? Paulum, cum regem Persem captum adduceret, eodem flumine invectio? Potius ergo illa dicantur: turpe esse, viri non esse debilitari dolore, frangi, succumbere.]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>132</wp:post_id>
+			<wp:post_date><![CDATA[2019-03-06 15:33:36]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-03-06 15:33:36]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[open]]></wp:ping_status>
+			<wp:post_name><![CDATA[everything-mobile-friendly-and-responsive]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[post]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+								<category domain="category" nicename="uncategorized"><![CDATA[Uncategorized]]></category>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+					<wp:meta_value><![CDATA[440]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
+					<wp:meta_value><![CDATA[default]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_yoast_wpseo_primary_category]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
+					<wp:meta_value><![CDATA[70]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_yoast_wpseo_content_score]]></wp:meta_key>
+					<wp:meta_value><![CDATA[60]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_thumbnail_id]]></wp:meta_key>
+					<wp:meta_value><![CDATA[208]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				Video Post			</title>
+			<link>https://demo.themeisle.com/neve-shop/2019/03/06/video-post/</link>
+			<pubDate>Wed, 06 Mar 2019 15:39:20 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-shop/?p=137</guid>
+			<description></description>
+			<content:encoded><![CDATA[Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti.
+
+Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at felis. Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod dui, eu pulvinar nunc sapien ornare nisl. Phasellus pede arcu, dapibus eu, fermentum et, dapibus sed, urna.
+
+<strong>Praesent elementum hendrerit</strong>
+
+Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu pulvinar risus, vitae facilisis libero dolor a purus. Sed vel lacus. Mauris nibh felis, adipiscing varius, adipiscing in, lacinia vel, tellus. Suspendisse ac urna. Etiam pellentesque mauris ut lectus. Nunc tellus ante, mattis eget, gravida vitae, ultricies ac, leo. Integer leo pede, ornare a, lacinia eu, vulputate vel, nisl.
+
+<em>Suspendisse mauris. Fusce accumsan mollis eros. Pellentesque a diam sit amet mi ullamcorper vehicula. Integer adipiscing risus a sem. Nullam quis massa sit amet nibh viverra malesuada.</em>
+
+<em>Nunc sem lacus, accumsan quis, faucibus non, congue vel, arcu. Ut scelerisque hendrerit tellus. Integer sagittis. Vivamus a mauris eget arcu gravida tristique. Nunc iaculis mi in ante. Vivamus imperdiet nibh feugiat est.</em>]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>137</wp:post_id>
+			<wp:post_date><![CDATA[2019-03-06 15:39:20]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-03-06 15:39:20]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[open]]></wp:ping_status>
+			<wp:post_name><![CDATA[video-post]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[post]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+								<category domain="category" nicename="uncategorized"><![CDATA[Uncategorized]]></category>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+					<wp:meta_value><![CDATA[440]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_thumbnail_id]]></wp:meta_key>
+					<wp:meta_value><![CDATA[208]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
+					<wp:meta_value><![CDATA[default]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_yoast_wpseo_primary_category]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
+					<wp:meta_value><![CDATA[70]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_yoast_wpseo_content_score]]></wp:meta_key>
+					<wp:meta_value><![CDATA[60]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				Blog Post Title			</title>
+			<link>https://demo.themeisle.com/neve-shop/2019/03/06/blog-post-title/</link>
+			<pubDate>Wed, 06 Mar 2019 15:39:48 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-shop/?p=139</guid>
+			<description></description>
+			<content:encoded><![CDATA[Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti.
+
+Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at felis. Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod dui, eu pulvinar nunc sapien ornare nisl. Phasellus pede arcu, dapibus eu, fermentum et, dapibus sed, urna.
+
+Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu pulvinar risus, vitae facilisis libero dolor a purus. Sed vel lacus. Mauris nibh felis, adipiscing varius, adipiscing in, lacinia vel, tellus. Etiam pellentesque mauris ut lectus. Nunc tellus ante, mattis eget, gravida vitae, ultricies ac, leo. Integer leo pede, ornare a, lacinia eu.
+
+Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu pulvinar risus, vitae facilisis libero dolor a purus. Sed vel lacus. Mauris nibh felis, adipiscing varius, adipiscing in, lacinia vel, tellus. Suspendisse ac urna. Etiam pellentesque mauris ut lectus. Nunc tellus ante, mattis eget, gravida vitae, ultricies ac, leo. Integer leo pede, ornare a, lacinia eu, vulputate vel, nisl.
+
+Suspendisse mauris. Fusce accumsan mollis eros. Pellentesque a diam sit amet mi ullamcorper vehicula. Integer adipiscing risus a sem. Nullam quis massa sit amet nibh viverra malesuada.]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>139</wp:post_id>
+			<wp:post_date><![CDATA[2019-03-06 15:39:48]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-03-06 15:39:48]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[open]]></wp:ping_status>
+			<wp:post_name><![CDATA[blog-post-title]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[post]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+								<category domain="category" nicename="uncategorized"><![CDATA[Uncategorized]]></category>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+					<wp:meta_value><![CDATA[440]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
+					<wp:meta_value><![CDATA[default]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_yoast_wpseo_primary_category]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
+					<wp:meta_value><![CDATA[70]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_yoast_wpseo_content_score]]></wp:meta_key>
+					<wp:meta_value><![CDATA[60]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_thumbnail_id]]></wp:meta_key>
+					<wp:meta_value><![CDATA[208]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				Hats			</title>
+			<link>https://demo.themeisle.com/neve-shop/2019/03/06/hats/</link>
+			<pubDate>Wed, 06 Mar 2019 15:51:08 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-shop/?p=151</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>151</wp:post_id>
+			<wp:post_date><![CDATA[2019-03-06 15:51:08]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-03-06 15:51:08]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[hats]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>10</wp:menu_order>
+			<wp:post_type><![CDATA[nav_menu_item]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+								<category domain="nav_menu" nicename="main"><![CDATA[Main]]></category>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_type]]></wp:meta_key>
+					<wp:meta_value><![CDATA[taxonomy]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_menu_item_parent]]></wp:meta_key>
+					<wp:meta_value><![CDATA[146]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_object_id]]></wp:meta_key>
+					<wp:meta_value><![CDATA[17]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_object]]></wp:meta_key>
+					<wp:meta_value><![CDATA[product_cat]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_target]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_classes]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_xfn]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_url]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[obfx_menu_icon]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+							</title>
+			<link>https://demo.themeisle.com/neve-shop/2019/03/06/152/</link>
+			<pubDate>Wed, 06 Mar 2019 15:51:08 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-shop/?p=152</guid>
+			<description></description>
+			<content:encoded><![CDATA[ ]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>152</wp:post_id>
+			<wp:post_date><![CDATA[2019-03-06 15:51:08]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-03-06 15:51:08]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[152]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>17</wp:post_parent>
+			<wp:menu_order>9</wp:menu_order>
+			<wp:post_type><![CDATA[nav_menu_item]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+								<category domain="nav_menu" nicename="main"><![CDATA[Main]]></category>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_type]]></wp:meta_key>
+					<wp:meta_value><![CDATA[taxonomy]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_menu_item_parent]]></wp:meta_key>
+					<wp:meta_value><![CDATA[148]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_object_id]]></wp:meta_key>
+					<wp:meta_value><![CDATA[18]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_object]]></wp:meta_key>
+					<wp:meta_value><![CDATA[product_cat]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_target]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_classes]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_xfn]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_url]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[obfx_menu_icon]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				Leather Jacket			</title>
+			<link>https://demo.themeisle.com/neve-shop/product/leather-jacket/</link>
+			<pubDate>Wed, 06 Mar 2019 13:36:32 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-shop/?post_type=product&#038;p=92</guid>
+			<description></description>
+			<content:encoded><![CDATA[<div class="woocommerce-product-details__short-description">
+
+Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.
+
+</div>]]></content:encoded><excerpt:encoded><![CDATA[<div class="woocommerce-product-details__short-description">
+
+Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.
+
+</div>]]></excerpt:encoded>			<wp:post_id>92</wp:post_id>
+			<wp:post_date><![CDATA[2019-03-06 13:36:32]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-03-06 13:36:32]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[leather-jacket]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[product]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+								<category domain="product_visibility" nicename="rated-1"><![CDATA[rated-1]]></category>
+		<category domain="product_type" nicename="simple"><![CDATA[simple]]></category>
+		<category domain="product_cat" nicename="clothing"><![CDATA[Clothing]]></category>
+		<category domain="product_cat" nicename="tshirt"><![CDATA[Tshirt]]></category>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wc_review_count]]></wp:meta_key>
+					<wp:meta_value><![CDATA[1]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wc_rating_count]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:1:{i:1;i:1;}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wc_average_rating]]></wp:meta_key>
+					<wp:meta_value><![CDATA[1.00]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+					<wp:meta_value><![CDATA[119919]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_thumbnail_id]]></wp:meta_key>
+					<wp:meta_value><![CDATA[208]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_sku]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_regular_price]]></wp:meta_key>
+					<wp:meta_value><![CDATA[15]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_sale_price]]></wp:meta_key>
+					<wp:meta_value><![CDATA[12]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_sale_price_dates_from]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_sale_price_dates_to]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[total_sales]]></wp:meta_key>
+					<wp:meta_value><![CDATA[0]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_tax_status]]></wp:meta_key>
+					<wp:meta_value><![CDATA[taxable]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_tax_class]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_manage_stock]]></wp:meta_key>
+					<wp:meta_value><![CDATA[no]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_backorders]]></wp:meta_key>
+					<wp:meta_value><![CDATA[no]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_sold_individually]]></wp:meta_key>
+					<wp:meta_value><![CDATA[no]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_weight]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_length]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_width]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_height]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_upsell_ids]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:0:{}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_crosssell_ids]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:0:{}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_purchase_note]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_default_attributes]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:0:{}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_virtual]]></wp:meta_key>
+					<wp:meta_value><![CDATA[no]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_downloadable]]></wp:meta_key>
+					<wp:meta_value><![CDATA[no]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_product_image_gallery]]></wp:meta_key>
+					<wp:meta_value><![CDATA[94,96,95]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_download_limit]]></wp:meta_key>
+					<wp:meta_value><![CDATA[-1]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_download_expiry]]></wp:meta_key>
+					<wp:meta_value><![CDATA[-1]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_stock]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_stock_status]]></wp:meta_key>
+					<wp:meta_value><![CDATA[instock]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_product_version]]></wp:meta_key>
+					<wp:meta_value><![CDATA[3.4.5]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_price]]></wp:meta_key>
+					<wp:meta_value><![CDATA[12]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_yoast_wpseo_primary_product_cat]]></wp:meta_key>
+					<wp:meta_value><![CDATA[22]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
+					<wp:meta_value><![CDATA[70]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_yoast_wpseo_content_score]]></wp:meta_key>
+					<wp:meta_value><![CDATA[60]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				Red Socks			</title>
+			<link>https://demo.themeisle.com/neve-shop/product/red-socks/</link>
+			<pubDate>Wed, 06 Mar 2019 13:38:27 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-shop/?post_type=product&#038;p=97</guid>
+			<description></description>
+			<content:encoded><![CDATA[<div class="woocommerce-product-details__short-description">
+
+Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.
+
+</div>]]></content:encoded><excerpt:encoded><![CDATA[<div class="woocommerce-product-details__short-description">
+
+Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.
+
+</div>]]></excerpt:encoded>			<wp:post_id>97</wp:post_id>
+			<wp:post_date><![CDATA[2019-03-06 13:38:27]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-03-06 13:38:27]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[red-socks]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[product]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+								<category domain="product_visibility" nicename="rated-4"><![CDATA[rated-4]]></category>
+		<category domain="product_type" nicename="simple"><![CDATA[simple]]></category>
+		<category domain="product_cat" nicename="clothing"><![CDATA[Clothing]]></category>
+		<category domain="product_cat" nicename="tshirt"><![CDATA[Tshirt]]></category>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wc_review_count]]></wp:meta_key>
+					<wp:meta_value><![CDATA[1]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wc_rating_count]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:1:{i:4;i:1;}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wc_average_rating]]></wp:meta_key>
+					<wp:meta_value><![CDATA[4.00]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+					<wp:meta_value><![CDATA[119919]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_thumbnail_id]]></wp:meta_key>
+					<wp:meta_value><![CDATA[208]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_sku]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_regular_price]]></wp:meta_key>
+					<wp:meta_value><![CDATA[18]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_sale_price]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_sale_price_dates_from]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_sale_price_dates_to]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[total_sales]]></wp:meta_key>
+					<wp:meta_value><![CDATA[0]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_tax_status]]></wp:meta_key>
+					<wp:meta_value><![CDATA[taxable]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_tax_class]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_manage_stock]]></wp:meta_key>
+					<wp:meta_value><![CDATA[no]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_backorders]]></wp:meta_key>
+					<wp:meta_value><![CDATA[no]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_sold_individually]]></wp:meta_key>
+					<wp:meta_value><![CDATA[no]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_weight]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_length]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_width]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_height]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_upsell_ids]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:0:{}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_crosssell_ids]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:0:{}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_purchase_note]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_default_attributes]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:0:{}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_virtual]]></wp:meta_key>
+					<wp:meta_value><![CDATA[no]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_downloadable]]></wp:meta_key>
+					<wp:meta_value><![CDATA[no]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_product_image_gallery]]></wp:meta_key>
+					<wp:meta_value><![CDATA[99,101,100]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_download_limit]]></wp:meta_key>
+					<wp:meta_value><![CDATA[-1]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_download_expiry]]></wp:meta_key>
+					<wp:meta_value><![CDATA[-1]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_stock]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_stock_status]]></wp:meta_key>
+					<wp:meta_value><![CDATA[instock]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_product_version]]></wp:meta_key>
+					<wp:meta_value><![CDATA[3.4.5]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_price]]></wp:meta_key>
+					<wp:meta_value><![CDATA[18]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_yoast_wpseo_primary_product_cat]]></wp:meta_key>
+					<wp:meta_value><![CDATA[22]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
+					<wp:meta_value><![CDATA[70]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_yoast_wpseo_content_score]]></wp:meta_key>
+					<wp:meta_value><![CDATA[60]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+					</channel>
+		</rss>
+		

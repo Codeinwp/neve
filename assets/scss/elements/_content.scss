@@ -156,6 +156,11 @@ hr {
   width: 100%;
 }
 
+audio {
+  display: flex;
+  height: 50px;
+}
+
 @mixin content--laptop() {
   .neve-main > .container .col {
     max-width: 70%;

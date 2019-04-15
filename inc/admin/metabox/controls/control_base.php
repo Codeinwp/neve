@@ -130,7 +130,7 @@ abstract class Control_Base {
 	 *
 	 * @return mixed
 	 */
-	protected final function get_value( $post_id ) {
+	final protected function get_value( $post_id ) {
 		$values = get_post_meta( $post_id );
 
 		return isset( $values[ $this->id ] ) ? esc_attr( $values[ $this->id ][0] ) : $this->settings['default'];
@@ -143,12 +143,11 @@ abstract class Control_Base {
 	 *
 	 * @return void
 	 */
-	public final function save( $post_id ) {
+	final public function save( $post_id ) {
 		if ( ! isset( $_POST['neve_meta_box_process'] ) ) {
 			return;
 		}
-
-		if ( ! wp_verify_nonce( $_POST['neve_meta_box_process'], 'neve_meta_box_nonce' ) ) {
+		if ( ! wp_verify_nonce( sanitize_key( $_POST['neve_meta_box_process'] ), 'neve_meta_box_nonce' ) ) {
 			return;
 		}
 		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
@@ -158,7 +157,7 @@ abstract class Control_Base {
 			return;
 		}
 		if ( isset( $_POST[ $this->id ] ) ) {
-			$value = wp_unslash( $_POST[ $this->id ] );
+			$value = wp_unslash( $_POST[ $this->id ] ); // WPCS: sanitization ok.
 
 			if ( $value === $this->settings['default'] ) {
 				delete_post_meta( $post_id, $this->id );

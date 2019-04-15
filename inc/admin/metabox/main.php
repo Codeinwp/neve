@@ -157,7 +157,7 @@ class Main extends Controls_Base {
 			return true;
 		}
 
-		$meta = get_post_meta( $_GET['post'], 'neve_meta_enable_content_width', true );
+		$meta = get_post_meta( (int) $_GET['post'], 'neve_meta_enable_content_width', true );
 
 		if ( $meta !== 'on' ) {
 			return true;
@@ -180,7 +180,7 @@ class Main extends Controls_Base {
 			return true;
 		}
 
-		$post_type = get_post_type( $_GET['post'] );
+		$post_type = get_post_type( (int) $_GET['post'] );
 
 		if ( $post_type !== 'product' ) {
 			return true;
@@ -203,7 +203,7 @@ class Main extends Controls_Base {
 			return true;
 		}
 
-		$post_type = get_post_type( $_GET['post'] );
+		$post_type = get_post_type( (int) $_GET['post'] );
 
 		if ( $post_type !== 'page' && $post_type !== 'product' ) {
 			return true;

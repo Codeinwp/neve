@@ -88,10 +88,12 @@ class Front_End {
 	 */
 	public function nav_walker( $args ) {
 		if ( isset( $args['walker'] ) && is_string( $args['walker'] ) && class_exists( $args['walker'] ) ) {
-			$args['walker'] = new $args['walker'];
+			$args['walker'] = new $args['walker']();
 		}
+
 		return $args;
 	}
+
 	/**
 	 * Get the themeisle demo content support data.
 	 *
@@ -142,6 +144,10 @@ class Front_End {
 					'neve-doctors'       => array(
 						'url'   => 'https://demo.themeisle.com/neve-doctors/',
 						'title' => 'Doctors',
+					),
+					'neve-shop'          => array(
+						'url'   => 'https://demo.themeisle.com/neve-shop/',
+						'title' => 'Shop',
 					),
 				),
 			),
@@ -544,7 +550,7 @@ class Front_End {
 			return;
 		}
 
-		wp_register_script( 'neve-script', NEVE_ASSETS_URL . 'js/script' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.js', apply_filters( 'neve_filter_main_script_dependencies', array( 'jquery' ) ), NEVE_VERSION, false );
+		wp_register_script( 'neve-script', NEVE_ASSETS_URL . 'js/frontend.js', apply_filters( 'neve_filter_main_script_dependencies', array() ), NEVE_VERSION, false );
 		wp_localize_script(
 			'neve-script',
 			'NeveProperties',
@@ -552,7 +558,7 @@ class Front_End {
 				'neve_filter_main_script_localization',
 				array(
 					'ajaxurl' => esc_url( admin_url( 'admin-ajax.php' ) ),
-					'nonce'   => wp_create_nonce( 'neve-theme-nonce' ),
+					'nonce'   => wp_create_nonce( 'wp_rest' ),
 				)
 			)
 		);

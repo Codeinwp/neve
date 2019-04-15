@@ -1876,7 +1876,7 @@ let CustomizeBuilderV1;
 		} );
 	} );
 
-	$document.on( "change", "#header_menu_icon_sidebar", function(){
+	$document.on( "change", "#nav-icon_sidebar", function(){
 		let item = $( this );
 		wpcustomize.previewedDevice.set( 'mobile' )
 		if( item.is( ':checked' ) ) {

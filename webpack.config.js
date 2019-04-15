@@ -6,6 +6,7 @@ const path = require('path');
 module.exports = {
   entry: {
     'assets/js/gutenberg-preview-manager': path.resolve(__dirname, 'assets/js/gutenberg-preview/app.js'),
+    'assets/js/frontend': path.resolve(__dirname, 'assets/js/frontend/app.js'),
 
   },
   output: {

@@ -83,8 +83,16 @@ class Post_Meta extends Base_View {
 			}
 		}
 		$markup .= '</ul>';
-
-		echo $markup;
+		echo neve_custom_kses_escape(
+			$markup,
+			array(
+				'time' => array(
+					'class'    => true,
+					'datetime' => true,
+					'content'  => true,
+				),
+			) 
+		); // WPCS: XSS ok.
 	}
 
 	/**
@@ -146,7 +154,7 @@ class Post_Meta extends Base_View {
 			$html    .= esc_html( $tag->name ) . '</a>';
 		}
 		$html .= ' </div> ';
-		echo $html;
+		echo $html; // WPCS: XSS OK.
 	}
 
 	/**

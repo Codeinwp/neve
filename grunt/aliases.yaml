@@ -18,21 +18,25 @@ check:
 - 'rtlcss'
 - 'cssmin'
 - 'makepot'
-- 'phpcbf'
+- 'shell:phpcbf'
 - 'newer:addtextdomain:main'
 - 'check:css'
 - 'travis'
 
-check:php:
-- 'phpunit'
+travis:
+  descriptions: "Routine testing in CI"
+  tasks: [
+    "shell:phpcs",
+    "jshint",
+    "check:i18n"
+  ]
 
 deploy:
 - 'addtextdomain:composerDeps'
 - 'clean:wporg'
-- 'cachebuster'
+- 'cachebuster:full'
 - 'mkdir:dist'
 - 'mkdir:artifact'
-- 'copy:pro'
 - 'copy:full'
 - 'compress:full'
 #  - 'deploy_lite'
