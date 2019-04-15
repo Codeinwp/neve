@@ -45,6 +45,12 @@ class Manager {
 	 */
 	private static $groups = [];
 	/**
+	 * Save tabs mappings.
+	 *
+	 * @var array Array of registered tabs.
+	 */
+	private static $tabs = [];
+	/**
 	 * Transport groups.
 	 *
 	 * @var array Array of registered transport groups.
@@ -165,6 +171,18 @@ class Manager {
 	}
 
 	/**
+	 *
+	 * Get tabs assigned to certain group
+	 *
+	 * @param string $id Group id.
+	 *
+	 * @return array|mixed Settings ids.
+	 */
+	public function get_tabs_group( $id ) {
+		return isset( self::$tabs[ $id ] ) ? self::$tabs[ $id ] : [];
+	}
+
+	/**
 	 * Assign setting to selective refresh partial based on the setting transport.
 	 *
 	 * It's using this format `post<component_id|builder_id|row_id>`.
@@ -226,6 +244,13 @@ class Manager {
 				self::$groups[ $arguments['group'] ] = [];
 			}
 			self::$groups[ $arguments['group'] ][] = $id;
+
+			if ( isset( $arguments['tab'] ) ) {
+				if ( ! isset( self::$tabs[ $arguments['group'] ][ $arguments['tab'] ] ) ) {
+					self::$tabs[ $arguments['group'] ][ $arguments['tab'] ] = [];
+				}
+				array_push( self::$tabs[ $arguments['group'] ][ $arguments['tab'] ], array( $id => array() ) );
+			}
 		}
 
 

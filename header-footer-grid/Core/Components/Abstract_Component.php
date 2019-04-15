@@ -11,6 +11,7 @@
 
 namespace HFG\Core\Components;
 
+use HFG\Core\Customizer\TabControl;
 use HFG\Core\Interfaces\Component;
 use HFG\Core\Settings;
 use HFG\Core\Settings\Manager as SettingsManager;

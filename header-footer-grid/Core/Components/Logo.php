@@ -51,6 +51,44 @@ class Logo extends Abstract_Component {
 
 		SettingsManager::get_instance()->add(
 			[
+				'id'                => 'test-tab',
+				'group'             => self::COMPONENT_ID,
+				'transport'         => 'post' . self::COMPONENT_ID,
+				'type'              => '\Neve\Customizer\Controls\Tabs',
+				'options'           => array(
+					'priority'          => 1,
+					'tabs'              => array(
+						'general' => array(
+							'label' => esc_html__( 'General', 'neve' ),
+							'icon'  => 'admin-generic',
+						),
+						'layout' => array(
+							'label' => esc_html__( 'Layout', 'neve' ),
+							'icon'  => 'layout',
+						),
+					),
+					'controls'          => array(
+						'general' => array(
+							'custom_logo' => array(),
+							'blogname' => array(),
+							'blogdescription' => array(),
+							'blogdescription' => array(),
+							'site_icon' => array(),
+							self::COMPONENT_ID . '_' . self::SHOW_TAGLINE => array(),
+							self::COMPONENT_ID . '_' . self::SHOW_TITLE => array(),
+							self::COMPONENT_ID . '_' . self::MAX_WIDTH => array()
+						),
+						'layout' => array(
+							self::COMPONENT_ID . '_' . self::ALIGNAMENT_ID => array()
+						),
+					),
+				),
+				'section'           => $this->section,
+			]
+		);
+
+		SettingsManager::get_instance()->add(
+			[
 				'id'                => self::SHOW_TAGLINE,
 				'group'             => self::COMPONENT_ID,
 				'transport'         => 'post' . self::COMPONENT_ID,
