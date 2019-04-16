@@ -11,7 +11,6 @@
 
 namespace HFG\Core\Components;
 
-use HFG\Core\Customizer\TabControl;
 use HFG\Core\Interfaces\Component;
 use HFG\Core\Settings;
 use HFG\Core\Settings\Manager as SettingsManager;
@@ -27,7 +26,9 @@ use WP_Customize_Manager;
 abstract class Abstract_Component implements Component {
 	use Core;
 
-	const ALIGNAMENT_ID = 'component_align';
+	const ALIGNMENT_ID = 'component_align';
+	const PADDING_ID   = 'component_padding';
+	const MARGIN_ID    = 'component_margin';
 	/**
 	 * Current id of the component.
 	 *
@@ -223,8 +224,9 @@ abstract class Abstract_Component implements Component {
 
 		SettingsManager::get_instance()->add(
 			[
-				'id'                => self::ALIGNAMENT_ID,
+				'id'                => self::ALIGNMENT_ID,
 				'group'             => $this->get_id(),
+				'tab'               => SettingsManager::get_instance()::TAB_LAYOUT,
 				'transport'         => 'post' . $this->get_builder_id(),
 				'sanitize_callback' => 'wp_filter_nohtml_kses',
 				'default'           => $this->default_align,
@@ -243,6 +245,98 @@ abstract class Abstract_Component implements Component {
 						],
 					],
 
+				],
+				'section'           => $this->section,
+			]
+		);
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'                => self::PADDING_ID,
+				'group'             => $this->get_id(),
+				'tab'               => SettingsManager::get_instance()::TAB_LAYOUT,
+				'transport'         => 'post' . $this->get_id(),
+				'sanitize_callback' => array( $this, 'sanitize_spacing_array' ),
+				'default'           => array(
+					'desktop'      => array(
+						'top'    => 0,
+						'right'  => 0,
+						'bottom' => 0,
+						'left'   => 0,
+					),
+					'tablet'       => array(
+						'top'    => 0,
+						'right'  => 0,
+						'bottom' => 0,
+						'left'   => 0,
+					),
+					'mobile'       => array(
+						'top'    => 0,
+						'right'  => 0,
+						'bottom' => 0,
+						'left'   => 0,
+					),
+					'desktop-unit' => 'px',
+					'tablet-unit'  => 'px',
+					'mobile-unit'  => 'px',
+				),
+				'label'             => __( 'Padding', 'neve' ),
+				'type'              => '\HFG\Core\Customizer\SpacingControl',
+				'options'           => [
+					'linked_choices' => true,
+					'unit_choices'   => array( 'px', 'em', '%' ),
+					'choices'        => array(
+						'top'    => __( 'Top', 'neve' ),
+						'right'  => __( 'Right', 'neve' ),
+						'bottom' => __( 'Bottom', 'neve' ),
+						'left'   => __( 'Left', 'neve' ),
+					),
+				],
+				'section'           => $this->section,
+			]
+		);
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'                => self::MARGIN_ID,
+				'group'             => $this->get_id(),
+				'tab'               => SettingsManager::get_instance()::TAB_LAYOUT,
+				'transport'         => 'post' . $this->get_id(),
+				'sanitize_callback' => array( $this, 'sanitize_spacing_array' ),
+				'default'           => array(
+					'desktop'      => array(
+						'top'    => 0,
+						'right'  => 0,
+						'bottom' => 0,
+						'left'   => 0,
+					),
+					'tablet'       => array(
+						'top'    => 0,
+						'right'  => 0,
+						'bottom' => 0,
+						'left'   => 0,
+					),
+					'mobile'       => array(
+						'top'    => 0,
+						'right'  => 0,
+						'bottom' => 0,
+						'left'   => 0,
+					),
+					'desktop-unit' => 'px',
+					'tablet-unit'  => 'px',
+					'mobile-unit'  => 'px',
+				),
+				'label'             => __( 'Margin', 'neve' ),
+				'type'              => '\HFG\Core\Customizer\SpacingControl',
+				'options'           => [
+					'linked_choices' => true,
+					'unit_choices'   => array( 'px', 'em', '%' ),
+					'choices'        => array(
+						'top'    => __( 'Top', 'neve' ),
+						'right'  => __( 'Right', 'neve' ),
+						'bottom' => __( 'Bottom', 'neve' ),
+						'left'   => __( 'Left', 'neve' ),
+					),
 				],
 				'section'           => $this->section,
 			]
@@ -287,6 +381,8 @@ abstract class Abstract_Component implements Component {
 			)
 		);
 
+		$wp_customize->register_control_type( '\HFG\Core\Customizer\SpacingControl' );
+
 		Settings\Manager::get_instance()->load( $this->get_id(), $wp_customize );
 
 		$wp_customize->selective_refresh->add_partial(
@@ -325,6 +421,48 @@ abstract class Abstract_Component implements Component {
 	 * @access  public
 	 */
 	public function add_style( array $css_array = array() ) {
+		$layout_padding = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::PADDING_ID, null );
+		$selector       = '.builder-item--' . $this->get_id();
+		if ( isset( $layout_padding['mobile'] ) ) {
+			$css_array[' @media (max-width: 576px)'][ $selector ]['padding'] = $layout_padding['mobile']['top'] . $layout_padding['mobile-unit'] . ' ' .
+							$layout_padding['mobile']['right'] . $layout_padding['mobile-unit'] . ' ' .
+							$layout_padding['mobile']['bottom'] . $layout_padding['mobile-unit'] . ' ' .
+							$layout_padding['mobile']['left'] . $layout_padding['mobile-unit'];
+		}
+		if ( isset( $layout_padding['tablet'] ) ) {
+			$css_array[' @media (min-width: 576px)'][ $selector ]['padding'] = $layout_padding['tablet']['top'] . $layout_padding['tablet-unit'] . ' ' .
+							$layout_padding['tablet']['right'] . $layout_padding['tablet-unit'] . ' ' .
+							$layout_padding['tablet']['bottom'] . $layout_padding['tablet-unit'] . ' ' .
+							$layout_padding['tablet']['left'] . $layout_padding['tablet-unit'];
+		}
+		if ( isset( $layout_padding['desktop'] ) ) {
+			$css_array[' @media (min-width: 961px)'][ $selector ]['padding'] = $layout_padding['desktop']['top'] . $layout_padding['desktop-unit'] . ' ' .
+							$layout_padding['desktop']['right'] . $layout_padding['desktop-unit'] . ' ' .
+							$layout_padding['desktop']['bottom'] . $layout_padding['desktop-unit'] . ' ' .
+							$layout_padding['desktop']['left'] . $layout_padding['desktop-unit'];
+		}
+
+		$layout_margin = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::MARGIN_ID, null );
+		$selector      = '.builder-item--' . $this->get_id();
+		if ( isset( $layout_margin['mobile'] ) ) {
+			$css_array[' @media (max-width: 576px)'][ $selector ]['margin'] = $layout_margin['mobile']['top'] . $layout_margin['mobile-unit'] . ' ' .
+							$layout_margin['mobile']['right'] . $layout_margin['mobile-unit'] . ' ' .
+							$layout_margin['mobile']['bottom'] . $layout_margin['mobile-unit'] . ' ' .
+							$layout_margin['mobile']['left'] . $layout_margin['mobile-unit'];
+		}
+		if ( isset( $layout_margin['tablet'] ) ) {
+			$css_array[' @media (min-width: 576px)'][ $selector ]['margin'] = $layout_margin['tablet']['top'] . $layout_margin['tablet-unit'] . ' ' .
+							$layout_margin['tablet']['right'] . $layout_margin['tablet-unit'] . ' ' .
+							$layout_margin['tablet']['bottom'] . $layout_margin['tablet-unit'] . ' ' .
+							$layout_margin['tablet']['left'] . $layout_margin['tablet-unit'];
+		}
+		if ( isset( $layout_margin['desktop'] ) ) {
+			$css_array[' @media (min-width: 961px)'][ $selector ]['margin'] = $layout_margin['desktop']['top'] . $layout_margin['desktop-unit'] . ' ' .
+							$layout_margin['desktop']['right'] . $layout_margin['desktop-unit'] . ' ' .
+							$layout_margin['desktop']['bottom'] . $layout_margin['desktop-unit'] . ' ' .
+							$layout_margin['desktop']['left'] . $layout_margin['desktop-unit'];
+		}
+
 		return $css_array;
 	}
 

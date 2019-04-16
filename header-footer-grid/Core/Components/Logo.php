@@ -13,7 +13,6 @@ namespace HFG\Core\Components;
 
 use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Main;
-use WP_Customize_Manager;
 
 /**
  * Class Logo.
@@ -49,48 +48,24 @@ class Logo extends Abstract_Component {
 	 */
 	public function add_settings() {
 
-		SettingsManager::get_instance()->add(
-			[
-				'id'                => 'test-tab',
-				'group'             => self::COMPONENT_ID,
-				'transport'         => 'post' . self::COMPONENT_ID,
-				'type'              => '\Neve\Customizer\Controls\Tabs',
-				'options'           => array(
-					'priority'          => 1,
-					'tabs'              => array(
-						'general' => array(
-							'label' => esc_html__( 'General', 'neve' ),
-							'icon'  => 'admin-generic',
-						),
-						'layout' => array(
-							'label' => esc_html__( 'Layout', 'neve' ),
-							'icon'  => 'layout',
-						),
-					),
-					'controls'          => array(
-						'general' => array(
-							'custom_logo' => array(),
-							'blogname' => array(),
-							'blogdescription' => array(),
-							'blogdescription' => array(),
-							'site_icon' => array(),
-							self::COMPONENT_ID . '_' . self::SHOW_TAGLINE => array(),
-							self::COMPONENT_ID . '_' . self::SHOW_TITLE => array(),
-							self::COMPONENT_ID . '_' . self::MAX_WIDTH => array()
-						),
-						'layout' => array(
-							self::COMPONENT_ID . '_' . self::ALIGNAMENT_ID => array()
-						),
-					),
+		SettingsManager::get_instance()->add_controls_to_tabs(
+			self::COMPONENT_ID,
+			array(
+				SettingsManager::get_instance()::TAB_GENERAL => array(
+					'custom_logo'     => array(),
+					'blogname'        => array(),
+					'blogdescription' => array(),
+					'blogdescription' => array(),
+					'site_icon'       => array(),
 				),
-				'section'           => $this->section,
-			]
+			)
 		);
 
 		SettingsManager::get_instance()->add(
 			[
 				'id'                => self::SHOW_TAGLINE,
 				'group'             => self::COMPONENT_ID,
+				'tab'               => SettingsManager::get_instance()::TAB_GENERAL,
 				'transport'         => 'post' . self::COMPONENT_ID,
 				'sanitize_callback' => 'absint',
 				'default'           => 1,
@@ -107,6 +82,7 @@ class Logo extends Abstract_Component {
 			[
 				'id'                => self::SHOW_TITLE,
 				'group'             => self::COMPONENT_ID,
+				'tab'               => SettingsManager::get_instance()::TAB_GENERAL,
 				'transport'         => 'post' . self::COMPONENT_ID,
 				'sanitize_callback' => 'absint',
 				'default'           => 1,
@@ -123,6 +99,7 @@ class Logo extends Abstract_Component {
 			[
 				'id'                => self::MAX_WIDTH,
 				'group'             => self::COMPONENT_ID,
+				'tab'               => SettingsManager::get_instance()::TAB_GENERAL,
 				'transport'         => 'post' . self::COMPONENT_ID,
 				'sanitize_callback' => array( $this, 'sanitize_responsive_int_json' ),
 				'default'           => '{ "mobile": "120", "tablet": "120", "desktop": "120" }',
@@ -194,7 +171,7 @@ class Logo extends Abstract_Component {
 			);
 		}
 
-		return $css_array;
+		return parent::add_style( $css_array );
 	}
 
 

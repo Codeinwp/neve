@@ -9,12 +9,18 @@
  */
 
 namespace HFG\Core\Settings;
+use Neve\Customizer\Controls\Tabs;
+
 /**
  * Class Manager
  *
  * @package HFG\Core\Settings
  */
 class Manager {
+
+	const TAB_GENERAL = 'general';
+	const TAB_LAYOUT  = 'layout';
+	const TAB_STYLE   = 'style';
 
 	/**
 	 * Holds an instance of this class.
@@ -68,6 +74,7 @@ class Manager {
 		'type'              => false,
 		'label'             => false,
 		'group'             => false,
+		'tab'               => false,
 		'transport'         => false,
 		'sanitize_callback' => false,
 		'preview_default'   => false,
@@ -153,9 +160,77 @@ class Manager {
 					)
 				);
 			}
+
+			$section = $arguments['section'];
 		}
 
+		$args = array(
+			'priority' => -100,
+			'section'  => $section,
+			'tabs'     => array(
+				self::TAB_GENERAL => array(
+					'label' => esc_html__( 'General', 'neve' ),
+					'icon'  => 'admin-generic',
+				),
+				self::TAB_LAYOUT  => array(
+					'label' => esc_html__( 'Layout', 'neve' ),
+					'icon'  => 'layout',
+				),
+				self::TAB_STYLE   => array(
+					'label' => esc_html__( 'Style', 'neve' ),
+					'icon'  => 'admin-customizer',
+				),
+			),
+			'controls' => $this->get_tabs_group( $group ),
+		);
+
+		foreach ( $args['tabs'] as $tab => $values ) {
+			$tabs = $this->get_tabs_group( $group );
+			if ( empty( $tabs[ $tab ] ) ) {
+				unset( $args['tabs'][ $tab ] );
+			}
+		}
+		$customize_manager->add_setting(
+			$group . '_tabs',
+			array(
+				'theme_supports'    => Config::get_support(),
+				'transport'         => 'refresh',
+				'sanitize_callback' => 'wp_filter_nohtml_kses',
+			)
+		);
+
+		// if ( $group === 'footer-one-widgets' ) {
+		// var_dump(  $group );
+		// var_dump(  $this->get_tabs_group( $group ) );
+		// }
+		$customize_manager->add_control(
+			new Tabs(
+				$customize_manager,
+				$group . '_tabs',
+				$args
+			)
+		);
+
 		return $customize_manager;
+	}
+
+	/**
+	 * Utility method to define existing controls for component tabs.
+	 *
+	 * @since   1.0.1
+	 * @access  public
+	 * @param string $id The ID for the tab.
+	 * @param array  $tabs List of tab and controls to use.
+	 */
+	public function add_controls_to_tabs( $id, $tabs = array() ) {
+		self::$tabs[ $id ] = array_merge_recursive(
+			array(
+				self::TAB_GENERAL => array(),
+				self::TAB_LAYOUT  => array(),
+				self::TAB_STYLE   => array(),
+			),
+			$tabs 
+		);
 	}
 
 	/**
@@ -245,11 +320,11 @@ class Manager {
 			}
 			self::$groups[ $arguments['group'] ][] = $id;
 
-			if ( isset( $arguments['tab'] ) ) {
+			if ( isset( $arguments['tab'] ) && in_array( $arguments['tab'], array( self::TAB_GENERAL, self::TAB_LAYOUT, self::TAB_STYLE ) ) ) {
 				if ( ! isset( self::$tabs[ $arguments['group'] ][ $arguments['tab'] ] ) ) {
 					self::$tabs[ $arguments['group'] ][ $arguments['tab'] ] = [];
 				}
-				array_push( self::$tabs[ $arguments['group'] ][ $arguments['tab'] ], array( $id => array() ) );
+				self::$tabs[ $arguments['group'] ][ $arguments['tab'] ][ $id ] = array();
 			}
 		}
 
@@ -266,7 +341,7 @@ class Manager {
 	}
 
 	/**
-	 * Get settings groupd for a certain partial to refresh.
+	 * Get settings grouped for a certain partial to refresh.
 	 *
 	 * @param string $id Selective refresh main id.
 	 *
