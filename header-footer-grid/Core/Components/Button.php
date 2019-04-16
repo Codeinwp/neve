@@ -52,7 +52,7 @@ class Button extends Abstract_Component {
 			[
 				'id'                => self::LINK_ID,
 				'group'             => self::COMPONENT_ID,
-				'tab'               => SettingsManager::get_instance()::TAB_GENERAL,
+				'tab'               => SettingsManager::TAB_GENERAL,
 				'transport'         => 'post' . self::COMPONENT_ID,
 				'sanitize_callback' => 'wp_filter_nohtml_kses',
 				'default'           => '#',
@@ -65,7 +65,7 @@ class Button extends Abstract_Component {
 			[
 				'id'                => self::TEXT_ID,
 				'group'             => self::COMPONENT_ID,
-				'tab'               => SettingsManager::get_instance()::TAB_GENERAL,
+				'tab'               => SettingsManager::TAB_GENERAL,
 				'transport'         => 'post' . self::COMPONENT_ID,
 				'sanitize_callback' => 'wp_filter_nohtml_kses',
 				'default'           => __( 'Button', 'neve' ),

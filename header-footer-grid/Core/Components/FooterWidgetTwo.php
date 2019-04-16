@@ -47,7 +47,7 @@ class FooterWidgetTwo extends Abstract_FooterWidget {
 		SettingsManager::get_instance()->add_controls_to_tabs(
 			self::COMPONENT_ID,
 			array(
-				SettingsManager::get_instance()::TAB_GENERAL => array(
+				SettingsManager::TAB_GENERAL => array(
 					'sidebars_widgets-footer-two-widgets' => array(),
 				),
 			)

@@ -226,7 +226,7 @@ abstract class Abstract_Component implements Component {
 			[
 				'id'                => self::ALIGNMENT_ID,
 				'group'             => $this->get_id(),
-				'tab'               => SettingsManager::get_instance()::TAB_LAYOUT,
+				'tab'               => SettingsManager::TAB_LAYOUT,
 				'transport'         => 'post' . $this->get_builder_id(),
 				'sanitize_callback' => 'wp_filter_nohtml_kses',
 				'default'           => $this->default_align,
@@ -254,7 +254,7 @@ abstract class Abstract_Component implements Component {
 			[
 				'id'                => self::PADDING_ID,
 				'group'             => $this->get_id(),
-				'tab'               => SettingsManager::get_instance()::TAB_LAYOUT,
+				'tab'               => SettingsManager::TAB_LAYOUT,
 				'transport'         => 'post' . $this->get_id(),
 				'sanitize_callback' => array( $this, 'sanitize_spacing_array' ),
 				'default'           => array(
@@ -300,7 +300,7 @@ abstract class Abstract_Component implements Component {
 			[
 				'id'                => self::MARGIN_ID,
 				'group'             => $this->get_id(),
-				'tab'               => SettingsManager::get_instance()::TAB_LAYOUT,
+				'tab'               => SettingsManager::TAB_LAYOUT,
 				'transport'         => 'post' . $this->get_id(),
 				'sanitize_callback' => array( $this, 'sanitize_spacing_array' ),
 				'default'           => array(

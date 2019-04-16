@@ -229,6 +229,7 @@ abstract class Abstract_Builder implements Builder {
 				[
 					'id'                => self::LAYOUT_SETTING,
 					'group'             => $row_setting_id,
+					'tab'               => SettingsManager::TAB_LAYOUT,
 					'label'             => __( 'Layout', 'neve' ),
 					'type'              => 'select',
 					'section'           => $row_setting_id,
@@ -248,6 +249,7 @@ abstract class Abstract_Builder implements Builder {
 				[
 					'id'                => self::HEIGHT_SETTING,
 					'group'             => $row_setting_id,
+					'tab'               => SettingsManager::TAB_STYLE,
 					'section'           => $row_setting_id,
 					'label'             => __( 'Row height (px)', 'neve' ),
 					'type'              => '\Neve\Customizer\Controls\Range',
@@ -284,6 +286,7 @@ abstract class Abstract_Builder implements Builder {
 			[
 				'id'                => self::SKIN_SETTING,
 				'group'             => $row_setting_id,
+				'tab'               => SettingsManager::TAB_STYLE,
 				'label'             => __( 'Skin Mode', 'neve' ),
 				'section'           => $row_setting_id,
 				'type'              => '\Neve\Customizer\Controls\Radio_Image',
