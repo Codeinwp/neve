@@ -52,7 +52,7 @@ wp.customize.controlConstructor['hfg-responsive-spacing'] = wp.customize.Control
 				item = spacing_input.data( 'id' ),
 				item_value = spacing_input.val();
 
-			newValue['desktop'][item] = item_value;
+			newValue.desktop[item] = item_value;
 		} );
 
 		control.container.find( 'input.hfg-spacing-tablet' ).each( function() {
@@ -60,7 +60,7 @@ wp.customize.controlConstructor['hfg-responsive-spacing'] = wp.customize.Control
 				item = spacing_input.data( 'id' ),
 				item_value = spacing_input.val();
 
-			newValue['tablet'][item] = item_value;
+			newValue.tablet[item] = item_value;
 		} );
 
 		control.container.find( 'input.hfg-spacing-mobile' ).each( function() {
@@ -68,7 +68,7 @@ wp.customize.controlConstructor['hfg-responsive-spacing'] = wp.customize.Control
 				item = spacing_input.data( 'id' ),
 				item_value = spacing_input.val();
 
-			newValue['mobile'][item] = item_value;
+			newValue.mobile[item] = item_value;
 		} );
 
 		control.container.find( '.hfg-spacing-unit-wrapper .hfg-spacing-unit-input' ).each( function() {
