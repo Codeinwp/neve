@@ -9,6 +9,12 @@ export const isMobile = function () {
   return windowWidth <= 960;
 };
 
+/**
+ * Http get request.
+ *
+ * @param theUrl
+ * @param callback
+ */
 export const httpGetAsync = function (theUrl, callback) {
   let xmlHttp = new XMLHttpRequest();
   xmlHttp.onload = function () {
@@ -22,6 +28,12 @@ export const httpGetAsync = function (theUrl, callback) {
   xmlHttp.send(null);
 };
 
+/**
+ * Foreach wrapper.
+ *
+ * @param iterable
+ * @param callback
+ */
 export const neveEach = function (iterable, callback) {
   for ( let i = 0; i < iterable.length; i++ ) {
     callback(iterable[i]);
@@ -39,9 +51,11 @@ export const isBestBrowserEver = function () {
   return (msie > 0 || trident > 0 || edge > 0);
 };
 
-export const nv = {
-  httpGetAsync,
-  isMobile,
-  neveEach,
-  isBestBrowserEver
+/**
+ * Unhash url.
+ * @param url
+ * @returns {string}
+ */
+export const unhashUrl = function (url) {
+  return url.substr(0, url.lastIndexOf("#"));
 };

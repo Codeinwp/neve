@@ -9,7 +9,7 @@ git fetch
 
 echo -e " Changes for $BUILD_VERSION: ";
 
-echo - e "$CHANGES";
+echo -e "$CHANGES";
 
 
 if ! git rev-parse "v$BUILD_VERSION" >/dev/null 2>&1
@@ -44,7 +44,7 @@ fi
 
 if [ -f "themeisle.enc" ]; then
 
-    DEMO_THEMEISLE_PATH="$DEMO_ROOT/wp-content/themes/$BUILD_NAME";
+    export DEMO_THEMEISLE_PATH="$DEMO_ROOT/wp-content/themes/$BUILD_NAME";
 
     openssl aes-256-cbc -K $encrypted_c0a6f152ac27_key -iv $encrypted_c0a6f152ac27_iv -in themeisle.enc -out /tmp/key -d
 
@@ -60,14 +60,14 @@ if [ -f "themeisle.enc" ]; then
     # Creating the maintenance file.
     echo "<?php \$upgrading = time(); ?>" > .maintenance
     # rsync the maintenance file.
-    grunt rsync:start
+    node_modules/.bin/grunt rsync:start
 
 
     # Copy the dist folder.
-    grunt rsync:prod
+    node_modules/.bin/grunt rsync:prod
 
     #Removing the maintenance.
     echo -n > .maintenance
-    grunt rsync:end
+    node_modules/.bin/grunt rsync:end
     rm -rf .maintenance
 fi

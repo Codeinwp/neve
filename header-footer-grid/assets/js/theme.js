@@ -582,6 +582,7 @@ if ( !Element.prototype.closest ) {
 		document.addEventListener(
 			"header_builder_panel_changed",
 			function() {
+				this.initMenuSidebar();
 				this.initMobileSubMenu();
 				this.insertMenuOverlayClass();
 			}.bind( this )
@@ -635,7 +636,7 @@ if ( !Element.prototype.closest ) {
 			} );
 		}
 	} )();
-	
+
 } )();
 
 

@@ -36,7 +36,6 @@
 		if ( _.isUndefined( remove_items ) ) {
 			remove_items = false;
 		}
-		console.log( 'partial_id', partial_id );
 		if (
 			partial_id === "header_builder_panel" ||
 			partial_id === "hfg_customize_render_header"
@@ -114,6 +113,14 @@
 	} );
 
 	api.bind( 'preview-ready', function() {
+		api.preview.bind( 'header_builder_panel_changed', function() {
+
+			dispatchEvent( document, "header_builder_panel_changed", {
+				bubbles: true,
+				detail: 'open'
+			} );
+		} );
+
 		api.preview.bind( 'header_sidebar_open', function() {
 
 			dispatchEvent( document, "customize_control_sidebar", {

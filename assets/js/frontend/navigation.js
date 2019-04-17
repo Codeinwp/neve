@@ -1,5 +1,5 @@
 /* jshint esversion: 6 */
-import { isMobile, neveEach, isBestBrowserEver as isIE } from "./utils.js";
+import { isMobile, neveEach, isBestBrowserEver as isIE, unhashUrl } from "./utils.js";
 
 let pageUrl;
 
@@ -21,7 +21,7 @@ export const initNavigation = function () {
  * Reposition drop downs in case they go off screen.
  * @returns {boolean}
  */
-function repositionDropdowns () {
+export const repositionDropdowns = function () {
   if (isMobile()) return false;
 
   let dropDowns = document.querySelectorAll('.sub-menu .sub-menu');
@@ -29,17 +29,18 @@ function repositionDropdowns () {
 
   let windowWidth = window.innerWidth;
   neveEach(dropDowns, function (dropDown) {
-    let bounding = dropDown.offset().left;
+    let bounding = dropDown.getBoundingClientRect(),
+        rightDist = bounding.left;
     if (/webkit.*mobile/i.test(navigator.userAgent)) {
       bounding -= window.scrollX;
     }
-    let dropDownWidth = dropDown.outerWidth();
-    if (bounding + dropDownWidth >= windowWidth) {
+
+    if (rightDist + bounding.width >= windowWidth) {
       dropDown.style.right = '100%';
       dropDown.style.left = 'auto';
     }
   });
-}
+};
 
 /**
  * Handle links that link to the current page.
@@ -52,7 +53,11 @@ function handleScrollLinks () {
     link.addEventListener('click', function (event) {
       let href = event.target.getAttribute('href');
       if (href === null) return false;
-      if (href.indexOf(pageUrl) > -1) {
+      console.log(href);
+      console.log(unhashUrl(href));
+      console.log(pageUrl);
+      console.log(unhashUrl(pageUrl));
+      if (unhashUrl(href) === unhashUrl(pageUrl)) {
         document.body.classList.remove('is-menu-sidebar');
         neveEach(document.querySelectorAll('.dropdown-open'), function (element) {
           element.classList.remove('dropdown-open');
@@ -69,6 +74,7 @@ function handleMobileDropdowns () {
   let carets = document.querySelectorAll('.caret-wrap');
   neveEach(carets, function (caret) {
     caret.addEventListener('click', function (event) {
+      event.preventDefault();
       let subMenu = this.parentNode.parentNode.querySelector('.sub-menu');
       this.classList.toggle('dropdown-open');
       subMenu.classList.toggle('dropdown-open');
@@ -152,14 +158,16 @@ function createNavOverlay (item, classToRemove, multiple = false) {
  * have trouble understanding what hover is.
  */
 function handleIeDropdowns () {
-  let dropdowns = document.querySelectorAll('.header--row[data-show-on="desktop"] .menu-item-has-children');
+  let dropdowns = document.querySelectorAll('.header--row[data-show-on="desktop"] .sub-menu');
   neveEach(dropdowns, function (dropdown) {
-    let subMenu = dropdown.parentNode.parentNode.querySelector('.sub-menu');
-    dropdown.addEventListener('mouseenter', function () {
-      subMenu.classList.add('dropdown-open');
+    let parentItem = dropdown.parentNode;
+
+    parentItem.addEventListener('mouseenter', function () {
+      dropdown.classList.add('dropdown-open');
     });
-    dropdown.addEventListener('mouseleave', function () {
-      subMenu.classList.remove('dropdown-open');
+    parentItem.addEventListener('mouseleave', function () {
+      dropdown.classList.remove('dropdown-open');
     });
   });
 }
+
