@@ -73,10 +73,28 @@ function neve_search_icon( $echo = false ) {
 
 /**
  *  Escape HTML strings containing SVG.
+ *
+ * @param string $input           the input string.
+ * @param array  $additional_args additional allowed.
+ *
+ * @return string
+ */
+function neve_custom_kses_escape( $input, $additional_args ) {
+	$kses_defaults = wp_kses_allowed_html( 'post' );
+	$allowed_tags  = array_merge( $kses_defaults, $additional_args );
+
+	return wp_kses( $input, $allowed_tags );
+}
+
+/**
+ * Kses svg.
+ *
+ * @param string $input input string to escape.
+ *
+ * @return string
  */
 function neve_kses_svg( $input ) {
-	$kses_defaults = wp_kses_allowed_html( 'post' );
-	$svg_args      = array(
+	$svg_args = array(
 		'svg'   => array(
 			'class'           => true,
 			'aria-hidden'     => true,
@@ -95,7 +113,5 @@ function neve_kses_svg( $input ) {
 		),
 	);
 
-	$allowed_tags = array_merge( $kses_defaults, $svg_args );
-
-	return wp_kses( $input, $allowed_tags );
+	return neve_custom_kses_escape( $input, $svg_args );
 }

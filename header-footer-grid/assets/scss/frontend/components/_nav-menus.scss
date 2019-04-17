@@ -38,6 +38,9 @@
   .sub-menu a:after {
     bottom: 5px;
   }
+  .header-menu-sidebar-inner & .sub-menu a:after {
+    bottom: 0;
+  }
 }
 
 .style-border-top {
@@ -47,6 +50,9 @@
 
   .sub-menu a:after {
     top: 5px;
+  }
+  .header-menu-sidebar-inner & .sub-menu a:after {
+    top: 0;
   }
 }
 

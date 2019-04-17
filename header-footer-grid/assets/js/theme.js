@@ -636,7 +636,7 @@ if ( !Element.prototype.closest ) {
 			} );
 		}
 	} )();
-	
+
 } )();
 
 

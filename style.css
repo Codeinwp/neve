@@ -393,13 +393,13 @@ a.neve-skip-link:focus {
   text-decoration: underline;
 }
 
-.nv-search {
-  display: block;
-  width: 15px;
-}
-
 .nv-icon {
   fill: currentColor;
+}
+
+.nv-search {
+  width: 15px;
+  display: flex;
 }
 
 .cart-icon-wrapper {

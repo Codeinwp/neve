@@ -50,6 +50,8 @@ class Core_Loader {
 				'Views\Template_Parts',
 				'Views\Page_Header',
 				'Views\Post_Layout',
+				'Views\Page_Layout',
+				'Views\Content_None',
 
 				'Views\Layouts\Layout_Container',
 				'Views\Layouts\Layout_Sidebar',
