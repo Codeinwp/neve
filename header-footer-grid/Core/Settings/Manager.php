@@ -111,6 +111,7 @@ class Manager {
 			'refresh'     => true,
 			'postMessage' => true,
 		];
+		$section                = '';
 		foreach ( $this->get_settings_group( $group ) as $id ) {
 
 			if ( ! isset( self::$settings[ $id ] ) ) {

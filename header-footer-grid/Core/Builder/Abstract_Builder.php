@@ -735,9 +735,11 @@ abstract class Abstract_Builder implements Builder {
 		 *
 		 * @var Abstract_Component $component
 		 */
-		$component                                        = new $component_to_add( $this->panel );
-		$this->builder_components[ $component->get_id() ] = $component;
-		$component->assign_builder( $this->get_id() );
+		$component = new $component_to_add( $this->panel );
+		if ( $component->should_component_be_active() ) {
+			$this->builder_components[ $component->get_id() ] = $component;
+			$component->assign_builder( $this->get_id() );
+		}
 
 		return true;
 	}
