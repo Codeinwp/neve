@@ -10,6 +10,7 @@ module.exports = function ( grunt ) {
 	config.files.php.push( '!**/node_modules/**/*' );
 	config.files.js.push( '!**/node_modules/**/*' );
 	config.files.js.push( '!assets/js/gutenberg-preview-manager.js' );
+	config.files.js.push( '!assets/js/frontend.js' );
 
 	config.files.js.push( '!**/vendor/**/*' );
 	config.files.php.push( '!**/vendor/**/*' );

@@ -989,6 +989,7 @@
   border-radius: 3px;
   color: #333;
   line-height: 1;
+  display: inline-block;
 }
 
 .nv-nav-cart {

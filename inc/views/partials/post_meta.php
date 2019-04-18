@@ -83,8 +83,16 @@ class Post_Meta extends Base_View {
 			}
 		}
 		$markup .= '</ul>';
-
-		echo wp_kses_post( $markup );
+		echo neve_custom_kses_escape(
+			$markup,
+			array(
+				'time' => array(
+					'class'    => true,
+					'datetime' => true,
+					'content'  => true,
+				),
+			) 
+		); // WPCS: XSS ok.
 	}
 
 	/**

@@ -5,7 +5,7 @@ Theme URI:      https://themeisle.com/themes/neve/
 Author:         ThemeIsle
 Author URI:     https://themeisle.com
 Description:    Neve is a super fast, easily customizable, multi-purpose theme. It’s perfect for blogs, small business, startups, agencies, firms, e-commerce shops (WooCommerce storefront) as well as personal portfolio sites and most types of projects. A fully AMP optimized and responsive theme, Neve will load in mere seconds and adapt perfectly on any viewing device. While it is lightweight and has a minimalist design, the theme is highly extendable, it has a highly SEO optimized code, resulting in top rankings in Google search results. Neve works perfectly with Gutenberg and the most popular page builders (Elementor, Brizy, Beaver Builder, Visual Composer, SiteOrigin, Divi). Neve is also WooCommerce ready, responsive, RTL & translation ready. Look no further. Neve is the perfect theme for you!
-Version:        2.3.4
+Version:        2.3.5
 License:        GNU General Public License v2 or later
 License URI:    http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain:    neve
@@ -153,7 +153,7 @@ abbr, acronym {
 }
 
 .col {
-  flex-basis: 0;
+  flex-basis: auto;
   flex-grow: 1;
   max-width: 100%;
   margin-left: auto;
@@ -393,54 +393,18 @@ a.neve-skip-link:focus {
   text-decoration: underline;
 }
 
-@font-face {
-  font-family: "neve-icons";
-  src: url("assets/neve-icons/neve-icons.eot?6iu2wo");
-  src: url("assets/neve-icons/neve-icons.eot?6iu2wo#iefix") format("embedded-opentype"), url("assets/neve-icons/neve-icons.ttf?6iu2wo") format("truetype"), url("assets/neve-icons/neve-icons.woff?6iu2wo") format("woff"), url("assets/neve-icons/neve-icons.svg?6iu2wo#neve-icons") format("svg");
-  font-weight: normal;
-  font-style: normal;
-}
-
 .nv-icon {
-  /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: "neve-icons" !important;
-  font-weight: normal;
-  font-style: normal;
-  font-variant: normal;
-  /* Better Font Rendering =========== */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  line-height: 1;
-  text-transform: none;
-  speak: none;
+  fill: currentColor;
 }
 
-.nv-search:before {
-  content: "\f002";
+.nv-search {
+  width: 15px;
+  display: flex;
 }
 
-.nv-author:before {
-  content: "\f007";
-}
-
-.nv-comment:before {
-  content: "\f075";
-}
-
-.nv-cart:before {
-  content: "\f07a";
-}
-
-.nv-folder:before {
-  content: "\f07b";
-}
-
-.nv-calendar:before {
-  content: "\f133";
-}
-
-.nv-themeisle:before {
-  content: "\f2b2";
+.cart-icon-wrapper {
+  display: flex;
+  align-items: flex-end;
 }
 
 .nv-sidebar-full-width .alignfull, .nv-sidebar-full-width .alignwide {
@@ -823,9 +787,7 @@ blockquote.wp-block-quote.is-style-large cite {
   width: 75%;
 }
 
-.menu-item-nav-search.responsive-nav-search .nv-nav-search form:after {
-  font-family: "neve-icons";
-  content: "\f002";
+.menu-item-nav-search.responsive-nav-search .nv-nav-search form .nv-search-icon-wrap {
   position: absolute;
   top: 0;
   right: 0;
@@ -964,15 +926,6 @@ a.button.close-responsive-search:hover {
 
 #nv-primary-navigation .menu-item-nav-search:not(.responsive-nav-search) {
   display: none;
-}
-
-.menu-item-nav-search.responsive-nav-search {
-  padding-left: 12px;
-}
-
-.menu-item-nav-search.responsive-nav-search > a {
-  color: #24292e;
-  font-size: 1.2em;
 }
 
 #nv-primary-navigation > li.button, .menu > li.button {
@@ -1301,11 +1254,17 @@ button:hover, input[type=button]:hover, .btn:hover, input[type="submit"]:hover {
   opacity: .9;
 }
 
-.nv-seach-form-wrap .search-form {
+.nv-seach-form-wrap {
+  width: 100%;
   border-top: 1px solid #f0f0f0;
   padding-top: 20px;
   display: flex;
+  align-items: center;
   justify-content: center;
+}
+
+.nv-seach-form-wrap .search-form {
+  display: inline-block;
 }
 
 .nv-seach-form-wrap .search-form input[type="submit"] {
@@ -1316,22 +1275,18 @@ button:hover, input[type=button]:hover, .btn:hover, input[type="submit"]:hover {
   margin-bottom: 0;
 }
 
-.widget .search-form, .widget .woocommerce-product-search, .nv-nav-search .search-form {
+.search-form, .woocommerce-product-search {
   position: relative;
 }
 
-.widget .search-form label, .widget .woocommerce-product-search label, .nv-nav-search .search-form label {
+.search-form label, .woocommerce-product-search label {
   display: inline;
 }
 
-.widget .search-form:after, .widget .woocommerce-product-search:after, .nv-nav-search .search-form:after {
-  font-family: "neve-icons";
-  content: "\f002";
+.search-form .nv-search-icon-wrap, .woocommerce-product-search .nv-search-icon-wrap {
   position: absolute;
   top: 0;
   right: 0;
-  text-align: center;
-  line-height: 35px;
   height: 100%;
   width: 45px;
   z-index: 3;
@@ -1341,14 +1296,15 @@ button:hover, input[type=button]:hover, .btn:hover, input[type="submit"]:hover {
   display: flex;
   align-items: center;
   justify-content: center;
+  line-height: 0;
 }
 
-.widget .search-form input[type="search"], .widget .woocommerce-product-search input[type="search"], .nv-nav-search .search-form input[type="search"] {
+.search-form input[type="search"], .woocommerce-product-search input[type="search"] {
   width: 100%;
   padding: 8px 45px 7px 12px;
 }
 
-.widget .search-form button[type="submit"], .widget .search-form input[type="submit"], .widget .woocommerce-product-search button[type="submit"], .widget .woocommerce-product-search input[type="submit"], .nv-nav-search .search-form button[type="submit"], .nv-nav-search .search-form input[type="submit"] {
+.search-form button[type="submit"], .search-form input[type="submit"], .woocommerce-product-search button[type="submit"], .woocommerce-product-search input[type="submit"] {
   top: 0;
   right: 0;
   bottom: 0;
@@ -1361,7 +1317,7 @@ button:hover, input[type=button]:hover, .btn:hover, input[type="submit"]:hover {
   padding: 8px 12px 7px;
 }
 
-.widget .search-form button[type="submit"]:hover, .widget .search-form input[type="submit"]:hover, .widget .woocommerce-product-search button[type="submit"]:hover, .widget .woocommerce-product-search input[type="submit"]:hover, .nv-nav-search .search-form button[type="submit"]:hover, .nv-nav-search .search-form input[type="submit"]:hover {
+.search-form button[type="submit"]:hover, .search-form input[type="submit"]:hover, .woocommerce-product-search button[type="submit"]:hover, .woocommerce-product-search input[type="submit"]:hover {
   background-color: #eee;
 }
 
@@ -1474,6 +1430,7 @@ button:hover, input[type=button]:hover, .btn:hover, input[type="submit"]:hover {
 .nv-index-posts .posts-wrapper {
   display: flex;
   flex-wrap: wrap;
+  box-sizing: content-box;
 }
 
 .nv-index-posts .page-numbers {
@@ -1541,6 +1498,7 @@ article {
 .nv-loader {
   height: 50px;
   width: 50px;
+  margin-bottom: 25px;
   border-radius: 50%;
   border: 2px solid #0366d6;
   border-left: 1px solid transparent !important;
@@ -1776,7 +1734,7 @@ article {
   text-transform: uppercase;
 }
 
-#comments input:not([type="submit"]) {
+#comments input:not([type="submit"]):not([type="checkbox"]) {
   width: 100%;
 }
 
@@ -1832,6 +1790,19 @@ article {
   display: block;
   font-size: .85em;
   margin-top: 20px;
+}
+
+.comment-form-cookies-consent {
+  display: flex;
+  align-items: center;
+}
+
+.comment-form-cookies-consent input {
+  margin-right: 10px;
+}
+
+.comment-form-cookies-consent label {
+  margin-bottom: 0;
 }
 
 blockquote {
@@ -1988,6 +1959,11 @@ hr {
   margin: 10px 0;
   display: inline-block;
   width: 100%;
+}
+
+audio {
+  display: flex;
+  height: 50px;
 }
 
 .widget_media_gallery .gallery-columns-1 .gallery-item {
@@ -2351,8 +2327,14 @@ hr {
   #comments .comment-form {
     grid-template-columns: repeat(3, 1fr);
   }
-  #comments .comment-form .comment-notes, #comments .comment-form .comment-form-comment, #comments .comment-form .logged-in-as {
+  #comments .comment-form > *:not(.comment-form-author):not(.comment-form-url):not(.comment-form-email) {
     grid-column: span 3;
+  }
+  #comments .form-submit {
+    align-items: center;
+    justify-content: flex-end;
+    display: flex;
+    margin-top: 0;
   }
   .hidden-on-mobile {
     display: initial;
@@ -2539,6 +2521,10 @@ hr {
     opacity: 0;
     visibility: hidden;
   }
+  .row .primary-menu-ul .sub-menu.dropdown-open {
+    opacity: 1;
+    visibility: visible;
+  }
   .row .primary-menu-ul .sub-menu .sub-menu {
     left: 100%;
     right: auto;
@@ -2591,9 +2577,6 @@ hr {
     right: -10px;
   }
   .row #nv-primary-navigation .menu-item-nav-search:not(.responsive-nav-search) {
-    display: block;
-  }
-  #nv-primary-navigation > li.menu-item-nav-search > a {
     display: block;
   }
   .layout-default .nv-post-thumbnail-wrap, .layout-alternative .nv-post-thumbnail-wrap {

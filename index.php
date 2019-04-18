@@ -13,7 +13,7 @@ get_header();
 	<div class="<?php echo esc_attr( $container_class ); ?> archive-container">
 		<div class="row">
 			<?php do_action( 'neve_do_sidebar', 'blog-archive', 'left' ); ?>
-			<div class="nv-index-posts col">
+			<div class="nv-index-posts blog col">
 				<?php
 				do_action( 'neve_page_header', 'index' );
 				if ( have_posts() ) {

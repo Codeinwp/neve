@@ -185,7 +185,10 @@
         z-index: 100;
         opacity: 0;
         visibility: hidden;
-
+        &.dropdown-open {
+          opacity: 1;
+          visibility: visible;
+        }
         .sub-menu {
           left: 100%;
           right: auto;

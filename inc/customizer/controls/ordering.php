@@ -71,58 +71,58 @@ class Ordering extends \WP_Customize_Control {
 	 * Render content of control.
 	 */
 	public function render_content() {
-		echo wp_kses_post(
-			$this->render_control_label() .
-			$this->render_sortable_list() .
-			$this->render_collector_input()
-		);
+		$this->render_control_label();
+		$this->render_sortable_list();
+		$this->render_collector_input();
 	}
 
 	/**
 	 * Render sortable list.
+	 *
+	 * @return void
 	 */
 	private function render_sortable_list() {
-		$markup = '<ul class="ti-order-sortable">';
-		foreach ( $this->components as $component => $name ) {
-			$markup .= '<li class="ui-state-default order-component' . esc_attr( $this->get_component_status_class( $component ) ) . '" data-id="' . esc_attr( $component ) . '">';
-			$markup .= '<span class="toggle-display"></span>';
-			$markup .= '<p>' . esc_html( $name ) . '</p>';
-			$markup .= '<span class="dashicons dashicons-menu drag"></span>';
-			$markup .= '</li>';
+		if ( empty( $this->components ) ) {
+			return;
 		}
-		$markup .= '</ul>';
 
-		return $markup;
+		echo '<ul class="ti-order-sortable">';
+		foreach ( $this->components as $component => $name ) {
+			echo '<li class="ui-state-default order-component' . esc_attr( $this->get_component_status_class( $component ) ) . '" data-id="' . esc_attr( $component ) . '">';
+			echo '<span class="toggle-display"></span>';
+			echo '<p>' . esc_html( $name ) . '</p>';
+			echo '<span class="dashicons dashicons-menu drag"></span>';
+			echo '</li>';
+		}
+		echo '</ul>';
 	}
 
 	/**
 	 * Render the collector input.
 	 *
-	 * @return string
+	 * @return void
 	 */
 	private function render_collector_input() {
-		return '<input type="hidden" class="ti-order-collector"' . $this->get_link() . '>';
+		echo '<input type="hidden" class="ti-order-collector"' . wp_kses_post( $this->get_link() ) . '>';
 	}
 
 	/**
 	 * Render title and description.
 	 *
-	 * @return string
+	 * @return void
 	 */
 	private function render_control_label() {
 		if ( empty( $this->label ) && empty( $this->description ) ) {
-			return '';
+			return;
 		}
-		$markup = '<label>';
+		echo '<label>';
 		if ( ! empty( $this->label ) ) {
-			$markup .= '<span class="customize-control-title">' . esc_html( $this->label ) . '</span>';
+			echo '<span class="customize-control-title">' . esc_html( $this->label ) . '</span>';
 		}
 		if ( ! empty( $this->description ) ) {
-			$markup .= '<span class="description customize-control-description">' . wp_kses_post( $this->description ) . '</span>';
+			echo '<span class="description customize-control-description">' . wp_kses_post( $this->description ) . '</span>';
 		}
-		$markup .= '</label>';
-
-		return $markup;
+		echo '</label>';
 	}
 
 	/**
@@ -145,5 +145,4 @@ class Ordering extends \WP_Customize_Control {
 
 		return ' enabled';
 	}
-
 }
