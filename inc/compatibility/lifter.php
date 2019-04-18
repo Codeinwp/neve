@@ -9,6 +9,7 @@ namespace Neve\Compatibility;
 
 /**
  * Class Lifter
+ *
  * @package Neve\Compatibility
  */
 class Lifter {
@@ -34,20 +35,41 @@ class Lifter {
 	 * Load hooks and filters.
 	 */
 	private function load_hooks() {
-		add_filter( 'llms_get_theme_default_sidebar', array( $this, 'lms_sidebar' ) );
 		remove_action( 'lifterlms_before_main_content', 'lifterlms_output_content_wrapper', 10 );
 		remove_action( 'lifterlms_after_main_content', 'lifterlms_output_content_wrapper_end', 10 );
-		add_action( 'lifterlms_before_main_content', array( $this, 'lms_content_wrapper_open' ), 10 );
-		add_action( 'lifterlms_after_main_content', array( $this, 'lms_content_wrapper_close' ), 10 );
-		add_action( 'lifterlms_sidebar', array( $this, 'lms_main_close' ), PHP_INT_MAX );
-		add_action( 'lifterlms_sidebar', array( $this, 'lms_before_sidebar' ), 0 );
-		add_filter( 'lifterlms_show_page_title', '__return_false' );
-		add_action( 'lifterlms_before_main_content', array( $this, 'lms_title' ), PHP_INT_MAX );
+		remove_all_actions( 'lifterlms_sidebar' );
 
+		add_action( 'lifterlms_before_main_content', array( $this, 'content_wrapper_open' ), 0 );
+		add_action( 'lifterlms_after_main_content', array( $this, 'content_wrapper_close' ), PHP_INT_MAX );
+		add_filter( 'lifterlms_show_page_title', '__return_false' );
+
+		add_action( 'neve_llms_content', array( $this, 'content_open' ), 10 );
+		add_action( 'lifterlms_after_main_content', array( $this, 'content_close' ), 10 );
+
+		add_action( 'widgets_init', array( $this, 'register_catalog_sidebar' ) );
+		add_filter( 'llms_get_theme_default_sidebar', array( $this, 'lms_sidebar' ) );
+		add_action( 'wp', array( $this, 'load_catalog_sidebar' ) );
 	}
 
 	/**
-	 * Add compatibility with Lifter Sidebar
+	 * Load Sidebar
+	 */
+	public function load_catalog_sidebar() {
+		$sidebar_position = get_theme_mod( 'neve_default_sidebar_layout', 'right' );
+		if ( $sidebar_position === 'right' ) {
+			add_action( 'lifterlms_after_main_content', array( $this, 'render_catalog_sidebar' ), 11 );
+		}
+		if ( $sidebar_position === 'left' ) {
+			add_action( 'neve_llms_content', array( $this, 'render_catalog_sidebar' ), 1 );
+		}
+	}
+
+	/**
+	 * Display LifterLMS Course and Lesson sidebars
+	 * on courses and lessons in place of the sidebar returned by
+	 * this function
+	 *
+	 * @return string
 	 */
 	public function lms_sidebar() {
 		return 'blog-sidebar';
@@ -56,17 +78,26 @@ class Lifter {
 	/**
 	 * Add markup before main content.
 	 */
-	public function lms_content_wrapper_open() {
+	public function content_wrapper_open() {
 		$container_class = apply_filters( 'neve_container_class_filter', 'container' );
 		echo '<div class="' . esc_attr( $container_class ) . ' lms-container">';
 		echo '<div class="row">';
-		echo '<div class="nv-single-page-wrap col">';
+		do_action( 'neve_llms_content' );
+	}
+
+	/**
+	 * Close Content Wrapper
+	 */
+	public function content_wrapper_close() {
+		echo '</div>'; // .row close
+		echo '</div>'; // .lms-container close
 	}
 
 	/**
 	 * Add markup for LifterLms title and open content wrap div
 	 */
-	public function lms_title() {
+	public function content_open() {
+		echo '<div class="nv-single-page-wrap col">';
 		echo '<div class="nv-page-title-wrap nv-big-title">';
 		echo '<div class="nv-page-title ">';
 		echo '<h1 class="page-title">';
@@ -78,27 +109,41 @@ class Lifter {
 	}
 
 	/**
-	 * Close content wrap div and open sidebar wrap div.
+	 * Close content.
 	 */
-	public function lms_before_sidebar() {
-		echo '</div>';
-		echo '<div class="nv-sidebar-wrap col-sm-12 nv-right blog-sidebar">';
-
+	public function content_close() {
+		echo '</div>'; // .nv-content-wrap .entry-content close
+		echo '</div>'; // .nv-single-page-wrap .col close
 	}
 
 	/**
-	 * Close blog sidebar div, row and container
+	 * Register LifterLMS Catalog Sidebar.
 	 */
-	public function lms_main_close() {
-		echo '</div>';
-		echo '</div>';
-		echo '</div>';
+	public function register_catalog_sidebar() {
+		register_sidebar(
+			array(
+				'name'          => __( 'Catalog Sidebar', 'neve' ),
+				'id'            => 'llms_shop',
+				'before_widget' => '<div id="%1$s" class="widget %2$s">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<p class="widget-title">',
+				'after_title'   => '</p>',
+			) 
+		);
 	}
 
 	/**
-	 * Close div main content
+	 * Sidebar Markup Wrapper open.
 	 */
-	public function lms_content_wrapper_close() {
+	public function render_catalog_sidebar() {
+		if ( ! is_active_sidebar( 'llms_shop' ) ) {
+			return;
+		}
+
+		$sidebar_position = get_theme_mod( 'neve_default_sidebar_layout', 'right' );
+		echo '<div class="nv-sidebar-wrap col-sm-12 nv-' . esc_attr( $sidebar_position ) . ' catalog-sidebar">';
+		dynamic_sidebar( 'llms_shop' );
 		echo '</div>';
 	}
+
 }
