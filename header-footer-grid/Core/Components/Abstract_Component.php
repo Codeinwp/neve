@@ -123,6 +123,15 @@ abstract class Abstract_Component implements Component {
 	 * @var string $builder_id Builder id.
 	 */
 	private $builder_id;
+	/**
+	 * Can override the default css selector.
+	 * Allows child components to specify their own selector for inherited style rules.
+	 *
+	 * @since   1.0.0
+	 * @access  protected
+	 * @var null|string $default_selector
+	 */
+	protected $default_selector = null;
 
 	/**
 	 * Abstract_Component constructor.
@@ -259,22 +268,22 @@ abstract class Abstract_Component implements Component {
 				'sanitize_callback' => array( $this, 'sanitize_spacing_array' ),
 				'default'           => array(
 					'desktop'      => array(
-						'top'    => 0,
-						'right'  => 0,
-						'bottom' => 0,
-						'left'   => 0,
+						'top'    => '',
+						'right'  => '',
+						'bottom' => '',
+						'left'   => '',
 					),
 					'tablet'       => array(
-						'top'    => 0,
-						'right'  => 0,
-						'bottom' => 0,
-						'left'   => 0,
+						'top'    => '',
+						'right'  => '',
+						'bottom' => '',
+						'left'   => '',
 					),
 					'mobile'       => array(
-						'top'    => 0,
-						'right'  => 0,
-						'bottom' => 0,
-						'left'   => 0,
+						'top'    => '',
+						'right'  => '',
+						'bottom' => '',
+						'left'   => '',
 					),
 					'desktop-unit' => 'px',
 					'tablet-unit'  => 'px',
@@ -305,22 +314,22 @@ abstract class Abstract_Component implements Component {
 				'sanitize_callback' => array( $this, 'sanitize_spacing_array' ),
 				'default'           => array(
 					'desktop'      => array(
-						'top'    => 0,
-						'right'  => 0,
-						'bottom' => 0,
-						'left'   => 0,
+						'top'    => '',
+						'right'  => '',
+						'bottom' => '',
+						'left'   => '',
 					),
 					'tablet'       => array(
-						'top'    => 0,
-						'right'  => 0,
-						'bottom' => 0,
-						'left'   => 0,
+						'top'    => '',
+						'right'  => '',
+						'bottom' => '',
+						'left'   => '',
 					),
 					'mobile'       => array(
-						'top'    => 0,
-						'right'  => 0,
-						'bottom' => 0,
-						'left'   => 0,
+						'top'    => '',
+						'right'  => '',
+						'bottom' => '',
+						'left'   => '',
 					),
 					'desktop-unit' => 'px',
 					'tablet-unit'  => 'px',
@@ -422,7 +431,10 @@ abstract class Abstract_Component implements Component {
 	 */
 	public function add_style( array $css_array = array() ) {
 		$layout_padding = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::PADDING_ID, null );
-		$selector       = '.builder-item--' . $this->get_id();
+		$selector       = '.builder-item--' . $this->get_id() . ' > :first-child';
+		if ( $this->default_selector !== null ) {
+			$selector = $this->default_selector;
+		}
 		if ( isset( $layout_padding['mobile'] ) ) {
 			$css_array[' @media (max-width: 576px)'][ $selector ]['padding'] = $layout_padding['mobile']['top'] . $layout_padding['mobile-unit'] . ' ' .
 							$layout_padding['mobile']['right'] . $layout_padding['mobile-unit'] . ' ' .

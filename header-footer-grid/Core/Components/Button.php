@@ -78,6 +78,20 @@ class Button extends Abstract_Component {
 	}
 
 	/**
+	 * Method to add Component css styles.
+	 *
+	 * @param array $css_array An array containing css rules.
+	 *
+	 * @return array
+	 * @since   1.0.0
+	 * @access  public
+	 */
+	public function add_style( array $css_array = array() ) {
+		$this->default_selector = '.builder-item--' . $this->get_id() . ' > .component-wrap > :first-child';
+		return parent::add_style( $css_array );
+	}
+
+	/**
 	 * The render method for the component.
 	 *
 	 * @since   1.0.0
