@@ -22,7 +22,6 @@ class Button_Group extends \WP_Customize_Control {
 	public function render_content() {
 		$name     = 'nv_radio_' . $this->id;
 		$input_id = 'nv_customize-input-' . $this->id;
-
 		if ( ! empty( $this->label ) ) { ?>
 			<span class="customize-control-title">
 				<span><?php echo esc_html( $this->label ); ?></span>
@@ -47,35 +46,5 @@ class Button_Group extends \WP_Customize_Control {
 			<?php } ?>
 		</div>
 		<?php
-	}
-
-	/**
-	 * Get the icon.
-	 *
-	 * @return string
-	 */
-	private function get_icon() {
-		if ( empty( $this->icon_class ) ) {
-			return '';
-		}
-
-		return '<i class="dashicons dashicons-' . esc_attr( $this->icon_class ) . '" style="margin-right: 10px"></i>';
-	}
-
-	/**
-	 * Get the button classes.
-	 *
-	 * @return string
-	 */
-	private function get_button_classes() {
-		$classes = 'button button-secondary';
-		if ( $this->shortcut ) {
-			$classes .= ' menu-shortcut ';
-		}
-		if ( $this->button_class ) {
-			$classes .= $this->button_class;
-		}
-
-		return $classes;
 	}
 }
