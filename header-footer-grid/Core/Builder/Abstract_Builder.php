@@ -280,6 +280,8 @@ abstract class Abstract_Builder implements Builder {
 					'default'           => '{ "mobile": "0", "tablet": "0", "desktop": "0" }',
 				]
 			);
+
+			do_action( 'neve_add_settings_to_hfg_rows', SettingsManager::get_instance(), $row_setting_id, $row_id );
 		}
 
 		SettingsManager::get_instance()->add(
