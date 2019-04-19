@@ -20,6 +20,46 @@
 #customize-theme-controls .customize-pane-child.accordion-section-content#sub-accordion-section-neve_sidebar {
 	overflow: initial;
 }
+.nv-button-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.nv-button-group label.button {
+    border-radius: 0;
+    flex: 1 1 0;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    height: 27px;
+}
+
+.nv-button-group input {
+    display: none;
+}
+
+.nv-button-group input:checked + label,
+.nv-button-group input:checked + label:hover {
+    background: #13aff0;
+    border: 1px solid #0f71a3;
+    box-shadow: 0 1px 0 #0f71a3;
+    color: #fff;
+}
+
+.nv-button-group label:first-of-type {
+    border-left: none;
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.nv-button-group label:last-of-type {
+    border-right: none;
+    border-bottom-left-radius: 3px;
+    border-top-left-radius: 3px;
+}
 .customize-control-checkbox-toggle .checkbox-toggle-wrap {
 	flex-direction: row;
 	padding: 7px 0;
