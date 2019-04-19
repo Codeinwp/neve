@@ -407,16 +407,33 @@ abstract class Abstract_Builder implements Builder {
 			? $this->description
 			: '';
 
-		$wp_customize->add_panel(
-			$this->panel,
-			array(
-				'priority'       => 25,
-				'capability'     => 'edit_theme_options',
-				'theme_supports' => Settings\Config::get_support(),
-				'title'          => $title,
-				'description'    => $description,
-			)
-		);
+		if ( class_exists( 'Neve_Pro\Modules\Header_Footer_Grid\Customizer\Custom_Panel' ) ) {
+			$wp_customize->register_panel_type( 'Neve_Pro\Modules\Header_Footer_Grid\Customizer\Custom_Panel' );
+			$panel = new \Neve_Pro\Modules\Header_Footer_Grid\Customizer\Custom_Panel(
+				$wp_customize,
+				$this->panel,
+				array(
+					'priority'       => 25,
+					'capability'     => 'edit_theme_options',
+					'theme_supports' => Settings\Config::get_support(),
+					'title'          => $title . ' custom',
+					'description'    => $description,
+				)
+			);
+			$wp_customize->add_panel( $panel );
+		} else {
+			$wp_customize->add_panel(
+				$this->panel,
+				array(
+					'priority'       => 25,
+					'capability'     => 'edit_theme_options',
+					'theme_supports' => Settings\Config::get_support(),
+					'title'          => $title,
+					'description'    => $description,
+				)
+			);
+		}
+
 		$wp_customize->add_section(
 			$this->section,
 			array(
