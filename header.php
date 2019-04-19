@@ -22,7 +22,7 @@
 	<?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?> <?php echo esc_attr( apply_filters( 'neve_body_data_attrs', '' ) ); ?>>
+<body <?php body_class(); ?> <?php echo wp_kses( apply_filters( 'neve_body_data_attrs', '' ), array( '[class]' => true ) ); ?>>
 <?php wp_body_open(); ?>
 <div class="wrapper">
 	<header class="header" role="banner">
