@@ -188,7 +188,7 @@ class Admin {
 				array(
 					'recommended_actions' => array(
 						'type'    => 'recommended_actions',
-						'title'   => __( 'Recommended Actions', 'neve' ),
+						'title'   => __( 'Recommended actions', 'neve' ),
 						'plugins' => array(
 							'otter-blocks' => array(
 								'name'        => 'Gutenberg Blocks and Template Library by Otter',
@@ -198,7 +198,7 @@ class Admin {
 						),
 					),
 				),
-				array_slice( $config_array, 3, count( $config_array ) - 1, true ) 
+				array_slice( $config_array, 3, count( $config_array ) - 1, true )
 			);
 		}
 		$config = apply_filters( 'ti_about_config', $config_array );
