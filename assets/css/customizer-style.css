@@ -60,6 +60,48 @@
     border-bottom-right-radius: 3px;
     border-top-right-radius: 3px;
 }
+
+.nv-button-group-header {
+    display: flex;
+    align-items: center;
+    position: relative;
+    flex-wrap: wrap;
+}
+
+.nv-button-group-header i {
+    margin-bottom: 4px;
+    margin-left: 4px;
+    cursor: pointer;
+}
+
+.nv-button-group-header i:hover {
+    opacity: .75;
+}
+
+.nv-button-group-header input {
+    display: none;
+}
+
+.nv-radio-description-info input{
+    display: none;
+}
+
+.nv-radio-hidden-info {
+    width: 100%;
+    padding: 0 10px;
+    border-radius: 5px;
+    margin-bottom: 7px;
+    max-height: 0;
+    border: none;
+    overflow: hidden;
+    background-color: #fff;
+    transition: all .3s ease;
+}
+
+.nv-button-group-header input:checked + .nv-radio-hidden-info {
+    padding: 7px 10px;
+    max-height: 200px;
+}
 .customize-control-checkbox-toggle .checkbox-toggle-wrap {
 	flex-direction: row;
 	padding: 7px 0;
