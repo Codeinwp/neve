@@ -1,0 +1,82 @@
+.nv-button-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.nv-button-group label.button {
+    border-radius: 0;
+    flex: 1 1 0;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    height: 27px;
+}
+
+.nv-button-group input {
+    display: none;
+}
+
+.nv-button-group input:checked + label,
+.nv-button-group input:checked + label:hover {
+    background: #13aff0;
+    border: 1px solid #0f71a3;
+    box-shadow: 0 1px 0 #0f71a3;
+    color: #fff;
+}
+
+.nv-button-group label:first-of-type {
+    border-right: none;
+    border-bottom-left-radius: 3px;
+    border-top-left-radius: 3px;
+}
+
+.nv-button-group label:last-of-type {
+    border-left: none;
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.nv-button-group-header {
+    display: flex;
+    align-items: center;
+    position: relative;
+    flex-wrap: wrap;
+}
+
+.nv-button-group-header i {
+    margin-bottom: 4px;
+    margin-left: 4px;
+    cursor: pointer;
+}
+
+.nv-button-group-header i:hover {
+    opacity: .75;
+}
+
+.nv-button-group-header input {
+    display: none;
+}
+
+.nv-radio-description-info input{
+    display: none;
+}
+
+.nv-radio-hidden-info {
+    width: 100%;
+    padding: 0 10px;
+    border-radius: 5px;
+    margin-bottom: 7px;
+    max-height: 0;
+    border: none;
+    overflow: hidden;
+    background-color: #fff;
+    transition: all .3s ease;
+}
+
+.nv-button-group-header input:checked + .nv-radio-hidden-info {
+    padding: 7px 10px;
+    max-height: 200px;
+}

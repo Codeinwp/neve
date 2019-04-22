@@ -61,6 +61,7 @@ class Manager {
 		'section'           => false,
 		'type'              => false,
 		'label'             => false,
+		'description'       => false,
 		'group'             => false,
 		'transport'         => false,
 		'sanitize_callback' => false,
@@ -88,7 +89,7 @@ class Manager {
 	/**
 	 * Load settings/control group in customizer.
 	 *
-	 * @param null                       $group Group to load.
+	 * @param null                       $group             Group to load.
 	 * @param \WP_Customize_Manager|null $customize_manager Manager object.
 	 *
 	 * @return \WP_Customize_Manager Customizer object.
@@ -126,8 +127,9 @@ class Manager {
 
 			$control_args = array_merge(
 				[
-					'label'   => isset( $arguments['label'] ) ? $arguments['label'] : '',
-					'section' => isset( $arguments['section'] ) ? $arguments['section'] : '',
+					'label'       => isset( $arguments['label'] ) ? $arguments['label'] : '',
+					'description' => isset( $arguments['description'] ) ? $arguments['description'] : '',
+					'section'     => isset( $arguments['section'] ) ? $arguments['section'] : '',
 				],
 				isset( $arguments['options'] ) ? $arguments['options'] : []
 			);
@@ -170,7 +172,7 @@ class Manager {
 	 * It's using this format `post<component_id|builder_id|row_id>`.
 	 *
 	 * @param string $transport Transport type.
-	 * @param string $id Component id.
+	 * @param string $id        Component id.
 	 *
 	 * @return string Core transport.
 	 */
@@ -234,7 +236,7 @@ class Manager {
 			[
 				'default'         => $default,
 				'preview_default' => $preview_default,
-			] 
+			]
 		);
 
 		return true;
@@ -255,7 +257,7 @@ class Manager {
 	/**
 	 * Get setting value based on context.
 	 *
-	 * @param string $id Setting id.
+	 * @param string $id      Setting id.
 	 * @param mixed  $default Default value.
 	 *
 	 * @return mixed Mod value.
