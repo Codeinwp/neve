@@ -38,9 +38,8 @@ class Post_Meta extends Base_View {
 		if ( ! is_array( $order ) || empty( $order ) ) {
 			return;
 		}
-		$order  = $this->sanitize_order_array( $order );
-		$markup = '';
-
+		$order   = $this->sanitize_order_array( $order );
+		$markup  = '';
 		$markup .= '<ul class="nv-meta-list">';
 		foreach ( $order as $meta ) {
 			switch ( $meta ) {
@@ -76,6 +75,11 @@ class Post_Meta extends Base_View {
 					$markup .= $comments;
 					$markup .= '</li>';
 					break;
+				case 'reading':
+					$markup .= '<li class="meta reading-time">';
+					$markup .= apply_filters( 'neve_do_read_time', '' );
+					$markup .= '</li>';
+					break;
 				case 'default':
 					break;
 				default:
@@ -91,7 +95,7 @@ class Post_Meta extends Base_View {
 					'datetime' => true,
 					'content'  => true,
 				),
-			) 
+			)
 		); // WPCS: XSS ok.
 	}
 
@@ -128,6 +132,7 @@ class Post_Meta extends Base_View {
 			'date',
 			'category',
 			'comments',
+			'reading',
 		);
 		foreach ( $order as $index => $value ) {
 			if ( ! in_array( $value, $allowed_order_values ) ) {
