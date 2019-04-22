@@ -254,11 +254,14 @@ class Layout_Blog extends Base_Customizer {
 			'comments',
 		);
 
-		$components = array(
-			'author'   => __( 'Author', 'neve' ),
-			'category' => __( 'Category', 'neve' ),
-			'date'     => __( 'Date', 'neve' ),
-			'comments' => __( 'Comments', 'neve' ),
+		$components = apply_filters(
+			'neve_meta_filter',
+			array(
+				'author'   => __( 'Author', 'neve' ),
+				'category' => __( 'Category', 'neve' ),
+				'date'     => __( 'Date', 'neve' ),
+				'comments' => __( 'Comments', 'neve' ),
+			) 
 		);
 
 		$this->add_control(
@@ -290,6 +293,7 @@ class Layout_Blog extends Base_Customizer {
 			'category',
 			'date',
 			'comments',
+			'reading',
 		);
 
 		if ( empty( $value ) ) {

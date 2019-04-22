@@ -105,6 +105,7 @@ class Layout_Single_Post extends Base_Customizer {
 			'comments',
 			'author-biography',
 			'related-posts',
+			'sharing-icons',
 		);
 
 		if ( empty( $value ) ) {
