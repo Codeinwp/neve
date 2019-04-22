@@ -193,7 +193,7 @@ class Admin {
 							'otter-blocks' => array(
 								'name'        => 'Gutenberg Blocks and Template Library by Otter',
 								'slug'        => 'otter-blocks',
-								'description' => __( 'Gutenberg Blocks and Template Library by Otter is a lightweight WordPress plugin that brings extra Gutenberg blocks to your site.', 'neve' ),
+								'description' => __( "Take the new WordPress editor to the next level by using Otter's blocks that are specially designed for Neve.", 'neve' ),
 							),
 						),
 					),
