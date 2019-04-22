@@ -41,7 +41,7 @@ class CartIcon extends Abstract_Component {
 	 * @access public
 	 * @return bool
 	 */
-	public function should_component_be_active() {
+	public function is_active() {
 		return  class_exists( 'WooCommerce' );
 	}
 
