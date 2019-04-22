@@ -25,7 +25,7 @@ class Header extends Base_View {
 	 * Add the last menu item.
 	 *
 	 * @param string $items the nav menu markup.
-	 * @param object $args menu properties.
+	 * @param object $args  menu properties.
 	 *
 	 * @return string
 	 */
@@ -147,7 +147,16 @@ class Header extends Base_View {
 		if ( $responsive === false ) {
 			ob_start();
 			echo '<div class="nv-nav-cart">';
-			the_widget( 'WC_Widget_Cart', 'title=' );
+			the_widget(
+				'WC_Widget_Cart',
+				array(
+					'title' => ' ',
+				),
+				array(
+					'before_title' => '',
+					'after_title'  => '',
+				) 
+			);
 			echo '</div>';
 			$cart_widget = ob_get_contents();
 			ob_end_clean();

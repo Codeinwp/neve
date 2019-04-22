@@ -140,7 +140,7 @@ abstract class Abstract_Component implements Component {
 	/**
 	 * Method to set protected properties for class.
 	 *
-	 * @param string $key The property key name.
+	 * @param string $key   The property key name.
 	 * @param string $value The property value.
 	 *
 	 * @return bool
@@ -228,20 +228,13 @@ abstract class Abstract_Component implements Component {
 				'sanitize_callback' => 'wp_filter_nohtml_kses',
 				'default'           => $this->default_align,
 				'label'             => __( 'Component Alignment', 'neve' ),
-				'type'              => '\Neve\Customizer\Controls\Radio_Image',
+				'type'              => '\Neve\Customizer\Controls\Button_Group',
 				'options'           => [
 					'choices' => [
-						'left'   => [
-							'url' => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAS8AAADYBAMAAABIEHj+AAAAHlBMVEU/xPuk3/2w4/3P7f7V7/7a8f72/P/6/f/7/f////+OFjDPAAAA2ElEQVR42u3boQ2AMBCG0WLwBIElBMEarMBkWLZFV1RcQmibvG+CZy+XPz1tdicwMDAwMDAwMDAwMDAwMDAwMDCwfmHXFur4DbamUCMYGBgYGBgYGBgYWF+wcwq1ON/AwMDAwMDAwMDAwD6BBT8j5fa651u5AQwMDAwMDAwMDAysRVjwM1JudleCgYGBgYGBgYGBgdmMgIGBgYGBgYGBgYG1DrMZAQMDAwMDAwMDAwOrArMZAQMDAwMDAwMDAwOzGXFXgoGBgYGBgYGBgYGBgYGBgYGBgeWwF756V4XSI6GKAAAAAElFTkSuQmCC',
-						],
-						'center' => [
-							'url' => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAS8AAADYBAMAAABIEHj+AAAAHlBMVEU/xPuk3/2w4/3P7f7V7/7a8f72/P/6/f/7/f////+OFjDPAAAA1UlEQVR42u3bMQ2AMBRF0SKhwQBpMIIFXCABCWysuGVma8hPU8i5Cs76hpeuPjsTGBgYGBgYGBgYGBgYGBgYGBgY2H9gpbqjLSxVt4GBgYGBgYGBgYGBfRCWq9vNNzAwMDAwMDAwMDCw97C1BDUHw6YU1AAGBgYGBgYGBgYG1iNsyUGNdiUYGBgYGBgYGBgYmM8IGBgYGBgYGBgYGNjXYD4jYGBgYGBgYGBgYGBNYD4jYGBgYGBgYGBgYGA+I3YlGBgYGBgYGBgYGBgYGBgYGBgY2BN2A1O85EFHf1n6AAAAAElFTkSuQmCC',
-						],
-						'right'  => [
-							'url' => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAS8AAADYBAMAAABIEHj+AAAAElBMVEU/xPuk3/2w4/3V7/7a8f7///90D081AAAA1ElEQVR42u3bsQ2AIBCGURoGsKA3JA7gCk5g4/6rWFtechow75vgtRf4yzVmZwEDAwMDAwMDAwMDAwMDAwMDAwP7I+zoobbPYGsJVcHAwMDAwMDAwMDA5oLtS6jmfAMDAwMDAwMDAwMDC8B6VtkvIyWrCgYGBgYGBgYGBgY2ImzJqrkrwcDAwMDAwMDAwMBsRvy4AwMDAwMDAwMDA5sXZjMCBgYGBgYGBgYGBvYizGYEDAwMDAwMDAwMDMxmxF0JBgYGBgYGBgYGBgYGBgYGBgYG9oTdBpDUhkRAaPoAAAAASUVORK5CYII=',
-						],
+						'left'   => 'dashicons-editor-alignleft',
+						'center' => 'dashicons-editor-aligncenter',
+						'right'  => 'dashicons-editor-alignright',
 					],
-
 				],
 				'section'           => $this->section,
 			]
