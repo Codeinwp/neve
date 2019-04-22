@@ -52,7 +52,7 @@ class Amp {
 	 *
 	 * @return string
 	 */
-	function add_body_attributes( $input ) {
+	public function add_body_attributes( $input ) {
 		if ( ! neve_is_amp() ) {
 			return $input;
 		}

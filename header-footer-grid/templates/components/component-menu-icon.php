@@ -12,9 +12,21 @@ $item_attributes = apply_filters( 'neve_nav_toggle_data_attrs', '' );
 
 ?>
 <div class="menu-mobile-toggle item-button navbar-toggle-wrapper">
-	<button class="navbar-toggle" <?php echo wp_kses_post( $item_attributes ); ?>
+	<button class="navbar-toggle" 
+	<?php 
+	echo wp_kses(
+		$item_attributes,
+		array(
+			'on'              => true,
+			'role'            => true,
+			'tabindex'        => true,
+			'aria-expanded'   => true,
+			'[aria-expanded]' => true,
+		) 
+	); 
+	?>
 			aria-label="
-			<?php 
+			<?php
 			_e( 'Navigation Menu', 'neve' ); // WPCS: XSS ok.
 			?>
 			">
