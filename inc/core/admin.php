@@ -42,148 +42,166 @@ class Admin {
 		/*
 		 * About page instance
 		 */
-		$config = apply_filters(
-			'ti_about_config',
-			array(
-				'welcome_notice'  => array(
-					'type'            => 'custom',
-					'notice_class'    => 'nv-welcome-notice updated',
-					'dismiss_option'  => 'neve_notice_dismissed',
-					'render_callback' => array( $this, 'welcome_notice_content' ),
-				),
-				'footer_messages' => array(
-					'type'     => 'custom',
-					'messages' => array(
-						array(
-							// translators: %s - theme name
-							'heading'   => sprintf( __( '%s Community', 'neve' ), $this->theme_name ),
-							// translators: %s - theme name
-							'text'      => sprintf( __( 'Join the community of %s users. Get connected, share opinions, ask questions and help each other!', 'neve' ), $this->theme_name ),
-							'link_text' => __( 'Join our Facebook Group', 'neve' ),
-							'link'      => 'https://www.facebook.com/groups/648646435537266/',
-						),
-						array(
-							'heading'   => __( 'Leave us a review', 'neve' ),
-							// translators: %s - theme name
-							'text'      => sprintf( __( 'Are you are enjoying %s? We would love to hear your feedback.', 'neve' ), $this->theme_name ),
-							'link_text' => __( 'Submit a review', 'neve' ),
-							'link'      => 'https://wordpress.org/support/theme/neve/reviews/#new-post',
-						),
+		$config_array = array(
+			'welcome_notice'  => array(
+				'type'            => 'custom',
+				'notice_class'    => 'nv-welcome-notice updated',
+				'dismiss_option'  => 'neve_notice_dismissed',
+				'render_callback' => array( $this, 'welcome_notice_content' ),
+			),
+			'footer_messages' => array(
+				'type'     => 'custom',
+				'messages' => array(
+					array(
+						// translators: %s - theme name
+						'heading'   => sprintf( __( '%s Community', 'neve' ), $this->theme_name ),
+						// translators: %s - theme name
+						'text'      => sprintf( __( 'Join the community of %s users. Get connected, share opinions, ask questions and help each other!', 'neve' ), $this->theme_name ),
+						'link_text' => __( 'Join our Facebook Group', 'neve' ),
+						'link'      => 'https://www.facebook.com/groups/648646435537266/',
+					),
+					array(
+						'heading'   => __( 'Leave us a review', 'neve' ),
+						// translators: %s - theme name
+						'text'      => sprintf( __( 'Are you are enjoying %s? We would love to hear your feedback.', 'neve' ), $this->theme_name ),
+						'link_text' => __( 'Submit a review', 'neve' ),
+						'link'      => 'https://wordpress.org/support/theme/neve/reviews/#new-post',
 					),
 				),
-				'getting_started' => array(
-					'type'    => 'columns-2',
-					'title'   => __( 'Getting Started', 'neve' ),
-					'content' => array(
-						array(
-							'title'  => esc_html__( 'Recommended actions', 'neve' ),
-							// translators: %s - theme name
-							'text'   => sprintf( esc_html__( '%s now comes with a sites library with various designs to pick from. Visit our collection of demos that are constantly being added.', 'neve' ), $this->theme_name ),
-							'button' => array(
-								'label'     => esc_html__( 'See demos', 'neve' ),
-								'link'      => esc_url( '#sites_library' ),
-								'is_button' => true,
-							),
-						),
-						array(
-							'title'        => esc_html__( 'Links to Customizer Settings', 'neve' ),
-							'html_content' => $this->get_customizer_settings(),
+			),
+			'getting_started' => array(
+				'type'    => 'columns-2',
+				'title'   => __( 'Getting Started', 'neve' ),
+				'content' => array(
+					array(
+						'title'  => esc_html__( 'Recommended actions', 'neve' ),
+						// translators: %s - theme name
+						'text'   => sprintf( esc_html__( '%s now comes with a sites library with various designs to pick from. Visit our collection of demos that are constantly being added.', 'neve' ), $this->theme_name ),
+						'button' => array(
+							'label'     => esc_html__( 'See demos', 'neve' ),
+							'link'      => esc_url( '#sites_library' ),
+							'is_button' => true,
 						),
 					),
-				),
-				'useful_plugins'  => array(
-					'type'    => 'plugins',
-					'title'   => __( 'Useful Plugins', 'neve' ),
-					'plugins' => array(
-						'optimole-wp',
-						'themeisle-companion',
-						'feedzy-rss-feeds',
-						'otter-blocks',
-						'elementor',
-						'wp-product-review',
-						'weglot',
-						'visualizer',
-						'wpforms-lite',
-						'translatepress-multilingual',
+					array(
+						'title'        => esc_html__( 'Links to Customizer Settings', 'neve' ),
+						'html_content' => $this->get_customizer_settings(),
 					),
 				),
-				'support'         => array(
-					'type'    => 'columns-2',
-					'title'   => __( 'Documentation', 'neve' ),
-					'content' => array(
-						array(
-							'icon'   => 'dashicons dashicons-sos',
-							'title'  => esc_html__( 'Contact Support', 'neve' ),
-							// translators: 1 - theme name, 2 - theme name
-							'text'   => sprintf( esc_html__( 'We want to make sure you have the best experience using %1$s, and that is why we have gathered all the necessary information here for you. We hope you will enjoy using %1$s as much as we enjoy creating great products.', 'neve' ), $this->theme_name ),
-							'button' => array(
-								'label'     => esc_html__( 'Contact Support', 'neve' ),
-								'link'      => apply_filters( 'ti_wl_agency_url', esc_url( 'https://wordpress.org/support/theme/neve/' ) ),
-								'is_button' => true,
-							),
+			),
+			'useful_plugins'  => array(
+				'type'    => 'plugins',
+				'title'   => __( 'Useful Plugins', 'neve' ),
+				'plugins' => array(
+					'optimole-wp',
+					'themeisle-companion',
+					'feedzy-rss-feeds',
+					'otter-blocks',
+					'elementor',
+					'wp-product-review',
+					'weglot',
+					'visualizer',
+					'wpforms-lite',
+					'translatepress-multilingual',
+				),
+			),
+			'support'         => array(
+				'type'    => 'columns-2',
+				'title'   => __( 'Documentation', 'neve' ),
+				'content' => array(
+					array(
+						'icon'   => 'dashicons dashicons-sos',
+						'title'  => esc_html__( 'Contact Support', 'neve' ),
+						// translators: 1 - theme name, 2 - theme name
+						'text'   => sprintf( esc_html__( 'We want to make sure you have the best experience using %1$s, and that is why we have gathered all the necessary information here for you. We hope you will enjoy using %1$s as much as we enjoy creating great products.', 'neve' ), $this->theme_name ),
+						'button' => array(
+							'label'     => esc_html__( 'Contact Support', 'neve' ),
+							'link'      => apply_filters( 'ti_wl_agency_url', esc_url( 'https://wordpress.org/support/theme/neve/' ) ),
+							'is_button' => true,
 						),
-						array(
-							'icon'   => 'dashicons dashicons-book-alt',
-							'title'  => esc_html__( 'Documentation', 'neve' ),
-							// translators: %s - theme name
-							'text'   => sprintf( esc_html__( 'Need more details? Please check our full documentation for detailed information on how to use %s.', 'neve' ), $this->theme_name ),
-							'button' => array(
-								'label'     => esc_html__( 'Read full documentation', 'neve' ),
-								'link'      => apply_filters( 'ti_wl_agency_url', 'https://docs.themeisle.com/article/946-neve-doc' ),
-								'is_button' => false,
-							),
+					),
+					array(
+						'icon'   => 'dashicons dashicons-book-alt',
+						'title'  => esc_html__( 'Documentation', 'neve' ),
+						// translators: %s - theme name
+						'text'   => sprintf( esc_html__( 'Need more details? Please check our full documentation for detailed information on how to use %s.', 'neve' ), $this->theme_name ),
+						'button' => array(
+							'label'     => esc_html__( 'Read full documentation', 'neve' ),
+							'link'      => apply_filters( 'ti_wl_agency_url', 'https://docs.themeisle.com/article/946-neve-doc' ),
+							'is_button' => false,
+						),
+					),
+
+					array(
+						'icon'   => 'dashicons dashicons-portfolio',
+						'title'  => esc_html__( 'Changelog', 'neve' ),
+						'text'   => esc_html__( 'Want to get the gist on the latest theme changes? Just consult our changelog below to get a taste of the recent fixes and features implemented.', 'neve' ),
+						'button' => array(
+							'label'     => esc_html__( 'Changelog', 'neve' ),
+							'link'      => esc_url( '#changelog' ),
+							'is_button' => false,
 						),
 
-						array(
-							'icon'   => 'dashicons dashicons-portfolio',
-							'title'  => esc_html__( 'Changelog', 'neve' ),
-							'text'   => esc_html__( 'Want to get the gist on the latest theme changes? Just consult our changelog below to get a taste of the recent fixes and features implemented.', 'neve' ),
-							'button' => array(
-								'label'     => esc_html__( 'Changelog', 'neve' ),
-								'link'      => esc_url( '#changelog' ),
-								'is_button' => false,
-							),
-
+					),
+					array(
+						'title'  => esc_html__( 'Create a child theme', 'neve' ),
+						'icon'   => 'dashicons dashicons-admin-customizer',
+						'text'   => esc_html__( "If you want to make changes to the theme's files, those changes are likely to be overwritten when you next update the theme. In order to prevent that from happening, you need to create a child theme. For this, please follow the documentation below.", 'neve' ),
+						'button' => array(
+							'label'     => esc_html__( 'View how to do this', 'neve' ),
+							'link'      => apply_filters( 'ti_wl_agency_url', 'http://docs.themeisle.com/article/14-how-to-create-a-child-theme' ),
+							'is_button' => false,
 						),
-						array(
-							'title'  => esc_html__( 'Create a child theme', 'neve' ),
-							'icon'   => 'dashicons dashicons-admin-customizer',
-							'text'   => esc_html__( "If you want to make changes to the theme's files, those changes are likely to be overwritten when you next update the theme. In order to prevent that from happening, you need to create a child theme. For this, please follow the documentation below.", 'neve' ),
-							'button' => array(
-								'label'     => esc_html__( 'View how to do this', 'neve' ),
-								'link'      => apply_filters( 'ti_wl_agency_url', 'http://docs.themeisle.com/article/14-how-to-create-a-child-theme' ),
-								'is_button' => false,
-							),
+					),
+					array(
+						'title'  => esc_html__( 'Speed up your site', 'neve' ),
+						'icon'   => 'dashicons dashicons-controls-skipforward',
+						'text'   => esc_html__( 'If you find yourself in a situation where everything on your site is running very slowly, you might consider having a look at the documentation below where you will find the most common issues causing this and possible solutions for each of the issues.', 'neve' ),
+						'button' => array(
+							'label'     => esc_html__( 'View how to do this', 'neve' ),
+							'link'      => apply_filters( 'ti_wl_agency_url', 'http://docs.themeisle.com/article/63-speed-up-your-wordpress-site' ),
+							'is_button' => false,
 						),
-						array(
-							'title'  => esc_html__( 'Speed up your site', 'neve' ),
-							'icon'   => 'dashicons dashicons-controls-skipforward',
-							'text'   => esc_html__( 'If you find yourself in a situation where everything on your site is running very slowly, you might consider having a look at the documentation below where you will find the most common issues causing this and possible solutions for each of the issues.', 'neve' ),
-							'button' => array(
-								'label'     => esc_html__( 'View how to do this', 'neve' ),
-								'link'      => apply_filters( 'ti_wl_agency_url', 'http://docs.themeisle.com/article/63-speed-up-your-wordpress-site' ),
-								'is_button' => false,
-							),
-						),
-						array(
-							'title'  => esc_html__( 'Build a landing page with a drag-and-drop content builder', 'neve' ),
-							'icon'   => 'dashicons dashicons-images-alt2',
-							'text'   => esc_html__( 'In the documentation below you will find an easy way to build a great looking landing page using a drag-and-drop content builder plugin.', 'neve' ),
-							'button' => array(
-								'label'     => esc_html__( 'View how to do this', 'neve' ),
-								'link'      => apply_filters( 'ti_wl_agency_url', 'http://docs.themeisle.com/article/219-how-to-build-a-landing-page-with-a-drag-and-drop-content-builder' ),
-								'is_button' => false,
-							),
+					),
+					array(
+						'title'  => esc_html__( 'Build a landing page with a drag-and-drop content builder', 'neve' ),
+						'icon'   => 'dashicons dashicons-images-alt2',
+						'text'   => esc_html__( 'In the documentation below you will find an easy way to build a great looking landing page using a drag-and-drop content builder plugin.', 'neve' ),
+						'button' => array(
+							'label'     => esc_html__( 'View how to do this', 'neve' ),
+							'link'      => apply_filters( 'ti_wl_agency_url', 'http://docs.themeisle.com/article/219-how-to-build-a-landing-page-with-a-drag-and-drop-content-builder' ),
+							'is_button' => false,
 						),
 					),
 				),
-				'changelog'       => array(
-					'type'  => 'changelog',
-					'title' => __( 'Changelog', 'neve' ),
-				),
-				'custom_tabs'     => array(),
-			)
+			),
+			'changelog'       => array(
+				'type'  => 'changelog',
+				'title' => __( 'Changelog', 'neve' ),
+			),
+			'custom_tabs'     => array(),
 		);
+		global $wp_version;
+		if ( version_compare( $wp_version, '5.0', '>=' ) ) {
+			$config_array = array_merge(
+				array_slice( $config_array, 0, 3, true ),
+				array(
+					'recommended_actions' => array(
+						'type'    => 'recommended_actions',
+						'title'   => __( 'Recommended actions', 'neve' ),
+						'plugins' => array(
+							'otter-blocks' => array(
+								'name'        => 'Gutenberg Blocks and Template Library by Otter',
+								'slug'        => 'otter-blocks',
+								'description' => __( 'Gutenberg Blocks and Template Library by Otter is a lightweight WordPress plugin that brings extra Gutenberg blocks to your site.', 'neve' ),
+							),
+						),
+					),
+				),
+				array_slice( $config_array, 3, count( $config_array ) - 1, true )
+			);
+		}
+		$config = apply_filters( 'ti_about_config', $config_array );
 
 		if ( class_exists( '\Ti_About_Page' ) ) {
 			$about_page = new \Ti_About_Page();
