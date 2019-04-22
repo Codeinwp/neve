@@ -38,9 +38,11 @@ class Post_Meta extends Base_View {
 		if ( ! is_array( $order ) || empty( $order ) ) {
 			return;
 		}
-		$order   = $this->sanitize_order_array( $order );
-		$markup  = '';
-		$markup .= '<ul class="nv-meta-list">';
+		$order     = $this->sanitize_order_array( $order );
+		$pid       = get_the_ID();
+		$post_type = get_post_type( $pid );
+		$markup    = '';
+		$markup    .= '<ul class="nv-meta-list">';
 		foreach ( $order as $meta ) {
 			switch ( $meta ) {
 				case 'author':
@@ -62,6 +64,9 @@ class Post_Meta extends Base_View {
 					$markup .= '</li>';
 					break;
 				case 'category':
+					if ( $post_type !== 'post' ) {
+						break;
+					}
 					$markup .= '<li class="meta category">';
 					$markup .= get_the_category_list( ', ', get_the_ID() );
 					$markup .= '</li>';
@@ -76,6 +81,9 @@ class Post_Meta extends Base_View {
 					$markup .= '</li>';
 					break;
 				case 'reading':
+					if ( $post_type !== 'post' ) {
+						break;
+					}
 					$markup .= '<li class="meta reading-time">';
 					$markup .= apply_filters( 'neve_do_read_time', '' );
 					$markup .= '</li>';
@@ -97,26 +105,6 @@ class Post_Meta extends Base_View {
 				),
 			)
 		); // WPCS: XSS ok.
-	}
-
-	/**
-	 * Get the comments with a link.
-	 *
-	 * @return string
-	 */
-	private function get_comments() {
-		$comments_number = get_comments_number();
-		if ( ! comments_open() ) {
-			return '';
-		}
-		if ( $comments_number == 0 ) {
-			return '';
-		} else {
-			/* translators: %s: number of comments */
-			$comments = sprintf( _n( '%s Comment', '%s Comments', $comments_number, 'neve' ), $comments_number );
-		}
-
-		return '<a href="' . esc_url( get_comments_link() ) . '">' . esc_html( $comments ) . '</a>';
 	}
 
 	/**
@@ -144,25 +132,6 @@ class Post_Meta extends Base_View {
 	}
 
 	/**
-	 * Render the tags list.
-	 */
-	public function render_tags_list() {
-		$tags = get_the_tags();
-		if ( ! is_array( $tags ) ) {
-			return;
-		}
-		$html  = '<div class="nv-tags-list">';
-		$html .= '<span>' . __( 'Tags', 'neve' ) . ':</span>';
-		foreach ( $tags as $tag ) {
-			$tag_link = get_tag_link( $tag->term_id );
-			$html    .= '<a href=' . esc_url( $tag_link ) . ' title="' . esc_attr( $tag->name ) . '" class=' . esc_attr( $tag->slug ) . ' rel="tag">';
-			$html    .= esc_html( $tag->name ) . '</a>';
-		}
-		$html .= ' </div> ';
-		echo $html; // WPCS: XSS OK.
-	}
-
-	/**
 	 * Get <time> tags.
 	 *
 	 * @return string
@@ -175,5 +144,44 @@ class Post_Meta extends Base_View {
 		$time .= '<time class="updated" datetime="' . esc_attr( get_the_modified_date( 'c' ) ) . '">' . esc_html( get_the_modified_date() ) . '</time>';
 
 		return $time;
+	}
+
+	/**
+	 * Get the comments with a link.
+	 *
+	 * @return string
+	 */
+	private function get_comments() {
+		$comments_number = get_comments_number();
+		if ( ! comments_open() ) {
+			return '';
+		}
+		if ( $comments_number == 0 ) {
+			return '';
+		} else {
+			/* translators: %s: number of comments */
+			$comments = sprintf( _n( '%s Comment', '%s Comments', $comments_number, 'neve' ), $comments_number );
+		}
+
+		return '<a href="' . esc_url( get_comments_link() ) . '">' . esc_html( $comments ) . '</a>';
+	}
+
+	/**
+	 * Render the tags list.
+	 */
+	public function render_tags_list() {
+		$tags = get_the_tags();
+		if ( ! is_array( $tags ) ) {
+			return;
+		}
+		$html = '<div class="nv-tags-list">';
+		$html .= '<span>' . __( 'Tags', 'neve' ) . ':</span>';
+		foreach ( $tags as $tag ) {
+			$tag_link = get_tag_link( $tag->term_id );
+			$html     .= '<a href=' . esc_url( $tag_link ) . ' title="' . esc_attr( $tag->name ) . '" class=' . esc_attr( $tag->slug ) . ' rel="tag">';
+			$html     .= esc_html( $tag->name ) . '</a>';
+		}
+		$html .= ' </div> ';
+		echo $html; // WPCS: XSS OK.
 	}
 }
