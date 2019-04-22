@@ -147,14 +147,16 @@ class Header extends Base_View {
 		if ( $responsive === false ) {
 			ob_start();
 			echo '<div class="nv-nav-cart">';
-			the_widget( 'WC_Widget_Cart',
+			the_widget(
+				'WC_Widget_Cart',
 				array(
-					'title' => ' '
+					'title' => ' ',
 				),
 				array(
 					'before_title' => '',
 					'after_title'  => '',
-				) );
+				) 
+			);
 			echo '</div>';
 			$cart_widget = ob_get_contents();
 			ob_end_clean();
