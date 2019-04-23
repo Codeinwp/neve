@@ -49,6 +49,8 @@ class Lifter {
 		add_action( 'widgets_init', array( $this, 'register_catalog_sidebar' ) );
 		add_filter( 'llms_get_theme_default_sidebar', array( $this, 'lms_sidebar' ) );
 		add_action( 'wp', array( $this, 'load_catalog_sidebar' ) );
+
+		add_filter( 'llms_checkout_error_output', array( $this, 'checkout_error_entry_content_close' ) );
 	}
 
 	/**
@@ -128,7 +130,7 @@ class Lifter {
 				'after_widget'  => '</div>',
 				'before_title'  => '<p class="widget-title">',
 				'after_title'   => '</p>',
-			) 
+			)
 		);
 	}
 
@@ -144,6 +146,17 @@ class Lifter {
 		echo '<div class="nv-sidebar-wrap col-sm-12 nv-' . esc_attr( $sidebar_position ) . ' catalog-sidebar">';
 		dynamic_sidebar( 'llms_shop' );
 		echo '</div>';
+	}
+
+	/**
+	 * Close entry content div on error.
+	 *
+	 * @param string $error Error text.
+	 *
+	 * @return string
+	 */
+	public function checkout_error_entry_content_close( $error ) {
+		return $error . '</div>';
 	}
 
 }
