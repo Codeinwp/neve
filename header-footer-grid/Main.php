@@ -117,7 +117,7 @@ class Main {
 					break;
 				}
 			}
-			if( '' !== $located ) {
+			if ( '' !== $located ) {
 				break;
 			}
 		}
