@@ -106,6 +106,9 @@ class Post_Layout extends Base_View {
 				case 'related-posts':
 					do_action( 'neve_do_related_posts' );
 					break;
+				case 'sharing-icons':
+					do_action( 'neve_do_sharing' );
+					break;
 				case 'comments':
 					comments_template();
 					break;

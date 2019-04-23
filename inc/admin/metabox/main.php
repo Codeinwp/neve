@@ -18,38 +18,44 @@ class Main extends Controls_Base {
 	 */
 	public function add_controls() {
 		$this->add_layout_controls();
-		$this->add_control( new Controls\Separator( 'neve_meta_separator', array(), 20 ) );
+		$this->add_control( new Controls\Separator( 'neve_meta_separator', array( 'priority' => 20 ) ) );
 		$this->add_content_toggles();
-		$this->add_control( new Controls\Separator( 'neve_meta_separator', array(), 45 ) );
+		$this->add_control( new Controls\Separator( 'neve_meta_separator', array( 'priority' => 45 ) ) );
 		$this->add_content_width();
 	}
 
 	/**
-	 * Add content width control.
+	 * Add layout controls.
 	 */
-	private function add_content_width() {
+	private function add_layout_controls() {
 		$this->add_control(
-			new Controls\Checkbox(
-				'neve_meta_enable_content_width',
+			new Controls\Radio(
+				'neve_meta_container',
 				array(
-					'default'     => 'off',
-					'label'       => __( 'Content Width', 'neve' ) . ' (%)',
-					'input_label' => __( 'Enable Individual Content Width', 'neve' ),
-				),
-				50
+					'default' => 'default',
+					'choices' => array(
+						'default'    => __( 'Customizer Setting', 'neve' ),
+						'contained'  => __( 'Contained', 'neve' ),
+						'full-width' => __( 'Full Width', 'neve' ),
+					),
+					'label'   => __( 'Container', 'neve' ),
+				)
 			)
 		);
 		$this->add_control(
-			new Controls\Range(
-				'neve_meta_content_width',
+			new Controls\Radio(
+				'neve_meta_sidebar',
 				array(
-					'default'    => 70,
-					'min'        => 50,
-					'max'        => 100,
-					'hidden'     => $this->hide_content_width(),
-					'depends_on' => 'neve_meta_enable_content_width',
-				),
-				55
+					'default'  => 'default',
+					'choices'  => array(
+						'default'    => __( 'Customizer Setting', 'neve' ),
+						'left'       => __( 'Left Sidebar', 'neve' ),
+						'right'      => __( 'Right Sidebar', 'neve' ),
+						'full-width' => __( 'No Sidebar', 'neve' ),
+					),
+					'label'    => __( 'Sidebar', 'neve' ),
+					'priority' => 15,
+				)
 			)
 		);
 	}
@@ -103,46 +109,39 @@ class Main extends Controls_Base {
 						'label'           => $args['label'],
 						'input_label'     => $args['input_label'],
 						'active_callback' => $args['active_callback'],
-					),
-					$args['priority']
+						'priority'        => $args['priority'],
+					)
 				)
 			);
 		}
 	}
 
 	/**
-	 * Add layout controls.
+	 * Add content width control.
 	 */
-	private function add_layout_controls() {
+	private function add_content_width() {
 		$this->add_control(
-			new Controls\Radio(
-				'neve_meta_container',
+			new Controls\Checkbox(
+				'neve_meta_enable_content_width',
 				array(
-					'default' => 'default',
-					'choices' => array(
-						'default'    => __( 'Customizer Setting', 'neve' ),
-						'contained'  => __( 'Contained', 'neve' ),
-						'full-width' => __( 'Full Width', 'neve' ),
-					),
-					'label'   => __( 'Container', 'neve' ),
-				),
-				10
+					'default'     => 'off',
+					'label'       => __( 'Content Width', 'neve' ) . ' (%)',
+					'input_label' => __( 'Enable Individual Content Width', 'neve' ),
+					'priority'    => 50,
+				)
 			)
 		);
 		$this->add_control(
-			new Controls\Radio(
-				'neve_meta_sidebar',
+			new Controls\Range(
+				'neve_meta_content_width',
 				array(
-					'default' => 'default',
-					'choices' => array(
-						'default'    => __( 'Customizer Setting', 'neve' ),
-						'left'       => __( 'Left Sidebar', 'neve' ),
-						'right'      => __( 'Right Sidebar', 'neve' ),
-						'full-width' => __( 'No Sidebar', 'neve' ),
-					),
-					'label'   => __( 'Sidebar', 'neve' ),
-				),
-				15
+					'default'    => 70,
+					'min'        => 50,
+					'max'        => 100,
+					'hidden'     => $this->hide_content_width(),
+					'depends_on' => 'neve_meta_enable_content_width',
+					'priority'   => 55,
+				)
 			)
 		);
 	}
