@@ -52,6 +52,7 @@ class Button extends Abstract_Component {
 			[
 				'id'                => self::LINK_ID,
 				'group'             => self::COMPONENT_ID,
+				'tab'               => SettingsManager::TAB_GENERAL,
 				'transport'         => 'post' . self::COMPONENT_ID,
 				'sanitize_callback' => 'wp_filter_nohtml_kses',
 				'default'           => '#',
@@ -64,6 +65,7 @@ class Button extends Abstract_Component {
 			[
 				'id'                => self::TEXT_ID,
 				'group'             => self::COMPONENT_ID,
+				'tab'               => SettingsManager::TAB_GENERAL,
 				'transport'         => 'post' . self::COMPONENT_ID,
 				'sanitize_callback' => 'wp_filter_nohtml_kses',
 				'default'           => __( 'Button', 'neve' ),
@@ -73,6 +75,20 @@ class Button extends Abstract_Component {
 			]
 		);
 
+	}
+
+	/**
+	 * Method to add Component css styles.
+	 *
+	 * @param array $css_array An array containing css rules.
+	 *
+	 * @return array
+	 * @since   1.0.0
+	 * @access  public
+	 */
+	public function add_style( array $css_array = array() ) {
+		$this->default_selector = '.builder-item--' . $this->get_id() . ' > .component-wrap > :first-child';
+		return parent::add_style( $css_array );
 	}
 
 	/**

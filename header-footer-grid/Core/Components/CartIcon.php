@@ -35,6 +35,17 @@ class CartIcon extends Abstract_Component {
 	}
 
 	/**
+	 * Method to filter component loading if needed.
+	 *
+	 * @since   1.0.1
+	 * @access public
+	 * @return bool
+	 */
+	public function is_active() {
+		return  class_exists( 'WooCommerce' );
+	}
+
+	/**
 	 * Define settings for this component.
 	 */
 	public function add_settings() {

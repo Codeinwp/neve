@@ -49,6 +49,7 @@ class SearchResponsive extends Abstract_Component {
 			[
 				'id'                => self::PLACEHOLDER_ID,
 				'group'             => self::COMPONENT_ID,
+				'tab'               => SettingsManager::TAB_GENERAL,
 				'transport'         => 'post' . self::COMPONENT_ID,
 				'sanitize_callback' => 'wp_filter_nohtml_kses',
 				'default'           => __( 'Search for...', 'neve' ),
