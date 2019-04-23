@@ -20,7 +20,7 @@ if ( class_exists( 'WooCommerce' ) ) {
 
 add_theme_support(
 	'hfg_support',
-	array(
+	apply_filters( 'hfg_support_components_filter', array(
 		'builders' => array(
 			'HFG\Core\Builder\Header' => $header_components,
 			'HFG\Core\Builder\Footer' => array(
@@ -32,7 +32,7 @@ add_theme_support(
 				'HFG\Core\Components\Copyright',
 			),
 		),
-	)
+	) )
 );
 require_once 'functions-template.php';
 require_once 'functions-migration.php';
