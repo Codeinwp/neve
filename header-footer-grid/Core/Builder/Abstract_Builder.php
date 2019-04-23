@@ -281,7 +281,7 @@ abstract class Abstract_Builder implements Builder {
 				]
 			);
 
-			do_action( 'hfg_add_settings_to_rows', SettingsManager::get_instance(), $row_setting_id, $row_id );
+			do_action( 'hfg_add_settings_to_rows', SettingsManager::get_instance(), $row_setting_id, $row_id, $this->get_id() );
 		}
 
 		SettingsManager::get_instance()->add(
