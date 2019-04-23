@@ -149,6 +149,17 @@ abstract class Abstract_Component implements Component {
 	}
 
 	/**
+	 * Method to filter component loading if needed.
+	 *
+	 * @since   1.0.1
+	 * @access public
+	 * @return bool
+	 */
+	public function is_active() {
+		return true;
+	}
+
+	/**
 	 * Method to set protected properties for class.
 	 *
 	 * @param string $key The property key name.
