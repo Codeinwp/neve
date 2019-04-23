@@ -57,6 +57,7 @@ class Nav extends Abstract_Component {
 			[
 				'id'                => self::STYLE_ID,
 				'group'             => self::COMPONENT_ID,
+				'tab'               => SettingsManager::TAB_STYLE,
 				'transport'         => 'post' . self::COMPONENT_ID,
 				'sanitize_callback' => 'wp_filter_nohtml_kses',
 				'default'           => 'style-plain',
@@ -91,6 +92,7 @@ class Nav extends Abstract_Component {
 			[
 				'id'                => self::COLOR_ID,
 				'group'             => self::COMPONENT_ID,
+				'tab'               => SettingsManager::TAB_STYLE,
 				'transport'         => 'post' . self::COMPONENT_ID,
 				'sanitize_callback' => 'sanitize_hex_color',
 				'default'           => '#404248',
@@ -103,6 +105,7 @@ class Nav extends Abstract_Component {
 			[
 				'id'                => self::ACTIVE_COLOR_ID,
 				'group'             => self::COMPONENT_ID,
+				'tab'               => SettingsManager::TAB_STYLE,
 				'transport'         => 'post' . self::COMPONENT_ID,
 				'sanitize_callback' => 'sanitize_hex_color',
 				'default'           => '#0366d6',
@@ -115,6 +118,7 @@ class Nav extends Abstract_Component {
 			[
 				'id'                => self::HOVER_COLOR_ID,
 				'group'             => self::COMPONENT_ID,
+				'tab'               => SettingsManager::TAB_STYLE,
 				'transport'         => 'post' . self::COMPONENT_ID,
 				'sanitize_callback' => 'sanitize_hex_color',
 				'default'           => '#0366d6',
@@ -143,6 +147,7 @@ class Nav extends Abstract_Component {
 			[
 				'id'                => self::LAST_ITEM_ID,
 				'group'             => self::COMPONENT_ID,
+				'tab'               => SettingsManager::TAB_GENERAL,
 				'noformat'          => true,
 				'transport'         => 'post' . self::COMPONENT_ID,
 				'sanitize_callback' => 'wp_filter_nohtml_kses',
@@ -159,6 +164,7 @@ class Nav extends Abstract_Component {
 			[
 				'id'                => 'shortcut',
 				'group'             => self::COMPONENT_ID,
+				'tab'               => SettingsManager::TAB_GENERAL,
 				'transport'         => 'postMessage',
 				'sanitize_callback' => 'esc_attr',
 				'type'              => '\Neve\Customizer\Controls\Button',
@@ -211,7 +217,7 @@ class Nav extends Abstract_Component {
 			.nav-menu-primary:not(.style-full-height) #nv-primary-navigation li.current-menu-item > a .caret'] = array( 'color' => sanitize_hex_color( $active_color ) );
 		}
 
-		return $css_array;
+		return parent::add_style( $css_array );
 	}
 
 

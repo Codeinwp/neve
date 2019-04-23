@@ -74,18 +74,19 @@ wp.customize.controlConstructor[ 'interface-tabs' ] = wp.customize.Control.exten
 		/**
 		 * This timeout is required because widget controls are rendered async and need some time.
 		 */
-		setTimeout( function () {
-			jQuery( 'li[id^="customize-control-sidebars_widgets"]' ).each( function () {
-				jQuery( this ).on(
-					'DOMNodeInserted', function () {
-						jQuery( '.neve-customizer-tab.active > label' ).trigger( 'click' );
-					} );
-			} );
-		}, 100 );
+		// setTimeout( function () {
+		// 	jQuery( 'li[id^="customize-control-sidebars_widgets"]' ).each( function () {
+		// 		//console.log( this );
+		// 		jQuery( this ).on(
+		// 			'DOMNodeInserted', function () {
+		// 				jQuery( '.neve-customizer-tab.active > label' ).trigger( 'click' );
+		// 			} );
+		// 	} );
+		// }, 100 );
 
 		wp.customize.bind( 'ready', function () {
 			control.hideAllControls( section );
-			var tab = Object.keys( control.params.controls )[ 0 ];
+			var tab = ( control.params.controls.general ) ? 'general' : Object.keys( control.params.controls )[ 0 ];
 			var controlsToShow = control.params.controls[ tab ];
 			var allControls = [];
 			for ( var controlName in controlsToShow ) {
@@ -146,7 +147,7 @@ wp.customize.controlConstructor[ 'interface-tabs' ] = wp.customize.Control.exten
 	showControls: function ( controls, section ) {
 		for ( var i in controls ) {
 			var controlName = controls[ i ];
-			if ( controlName === 'widgets' ) {
+			if ( controlName === 'widgets' || controlName.indexOf( 'sidebars_widgets' ) !== -1 ) {
 				var sectionContainer = wp.customize.section( section ).container;
 				jQuery( sectionContainer ).children( 'li[class*="widget"]' ).css( 'display', 'list-item' );
 			} else {
