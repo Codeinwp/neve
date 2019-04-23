@@ -435,7 +435,7 @@ abstract class Abstract_Component implements Component {
 	 */
 	public function add_style( array $css_array = array() ) {
 		$layout_padding = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::PADDING_ID, null );
-		$selector       = '.builder-item--' . $this->get_id() . ' > :first-child';
+		$selector       = '.builder-item--' . $this->get_id() . ' > :not(.customize-partial-edit-shortcut):first-of-type';
 		if ( $this->default_selector !== null ) {
 			$selector = $this->default_selector;
 		}
