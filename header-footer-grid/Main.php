@@ -117,6 +117,9 @@ class Main {
 					break;
 				}
 			}
+			if( '' !== $located ) {
+				break;
+			}
 		}
 
 		if ( '' !== $located ) {
