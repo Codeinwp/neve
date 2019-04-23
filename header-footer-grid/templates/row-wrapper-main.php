@@ -32,6 +32,7 @@ $row_classes = [
 $row_classes[] = row_setting( Abstract_Builder::LAYOUT_SETTING );
 
 $row_classes[] = 'nv-navbar';
+$row_classes   = apply_filters( 'hfg_header_row_classes', $row_classes, $row_index );
 ?>
 
 <nav class="<?php echo esc_attr( join( ' ', $row_classes ) ); ?> header--row"

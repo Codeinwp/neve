@@ -155,7 +155,7 @@ abstract class Abstract_Component implements Component {
 	 * @access public
 	 * @return bool
 	 */
-	public function should_component_be_active() {
+	public function is_active() {
 		return true;
 	}
 

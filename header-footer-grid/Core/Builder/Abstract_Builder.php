@@ -84,18 +84,18 @@ abstract class Abstract_Builder implements Builder {
 	 * Holds the title.
 	 *
 	 * @since   1.0.0
-	 * @access  protected
+	 * @access  public
 	 * @var string $title
 	 */
-	protected $title;
+	public $title;
 	/**
 	 * Holds the description.
 	 *
 	 * @since   1.0.1
-	 * @access  protected
+	 * @access  public
 	 * @var string $description
 	 */
-	protected $description;
+	public $description;
 
 	/**
 	 * A list of panel keys to be removed.
@@ -281,7 +281,7 @@ abstract class Abstract_Builder implements Builder {
 				]
 			);
 
-			do_action( 'neve_add_settings_to_hfg_rows', SettingsManager::get_instance(), $row_setting_id, $row_id );
+			do_action( 'hfg_add_settings_to_rows', SettingsManager::get_instance(), $row_setting_id, $row_id, $this->get_id() );
 		}
 
 		SettingsManager::get_instance()->add(
@@ -409,32 +409,16 @@ abstract class Abstract_Builder implements Builder {
 			? $this->description
 			: '';
 
-		if ( class_exists( 'Neve_Pro\Modules\Header_Footer_Grid\Customizer\Custom_Panel' ) ) {
-			$wp_customize->register_panel_type( 'Neve_Pro\Modules\Header_Footer_Grid\Customizer\Custom_Panel' );
-			$panel = new \Neve_Pro\Modules\Header_Footer_Grid\Customizer\Custom_Panel(
-				$wp_customize,
-				$this->panel,
-				array(
-					'priority'       => 25,
-					'capability'     => 'edit_theme_options',
-					'theme_supports' => Settings\Config::get_support(),
-					'title'          => $title . ' custom',
-					'description'    => $description,
-				)
-			);
-			$wp_customize->add_panel( $panel );
-		} else {
-			$wp_customize->add_panel(
-				$this->panel,
-				array(
-					'priority'       => 25,
-					'capability'     => 'edit_theme_options',
-					'theme_supports' => Settings\Config::get_support(),
-					'title'          => $title,
-					'description'    => $description,
-				)
-			);
-		}
+		$wp_customize->add_panel(
+			$this->panel,
+			array(
+				'priority'       => 25,
+				'capability'     => 'edit_theme_options',
+				'theme_supports' => Settings\Config::get_support(),
+				'title'          => $title,
+				'description'    => $description,
+			)
+		);
 
 		$wp_customize->add_section(
 			$this->section,
@@ -457,6 +441,8 @@ abstract class Abstract_Builder implements Builder {
 				'render_callback' => array( $this, 'render' ),
 			)
 		);
+
+		$wp_customize = apply_filters( 'hfg_after_builder_' . $this->get_id() . '_registered', $wp_customize, $this );
 
 		return $wp_customize;
 	}
@@ -755,7 +741,7 @@ abstract class Abstract_Builder implements Builder {
 		 * @var Abstract_Component $component
 		 */
 		$component = new $component_to_add( $this->panel );
-		if ( $component->should_component_be_active() ) {
+		if ( $component->is_active() ) {
 			$this->builder_components[ $component->get_id() ] = $component;
 			$component->assign_builder( $this->get_id() );
 		}
