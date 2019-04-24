@@ -33,7 +33,7 @@ function neve_hooks() {
 		),
 		'shop'       => array(
 			'neve_before_cart_popup',
-			'neve_after_cart_popup'
+			'neve_after_cart_popup',
 		),
 		'post'       => array(
 			'neve_before_post_content',
@@ -55,7 +55,7 @@ function neve_hooks() {
 		),
 		'pagination' => array(
 			'neve_before_pagination',
-		)
+		),
 	);
 
 	return apply_filters( 'neve_hooks_list', $hooks );

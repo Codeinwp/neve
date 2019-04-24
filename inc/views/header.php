@@ -147,7 +147,7 @@ class Header extends Base_View {
 		if ( $responsive === false ) {
 			ob_start();
 			echo '<div class="nv-nav-cart">';
-			do_action('neve_before_cart_popup' );
+			do_action( 'neve_before_cart_popup' );
 			the_widget(
 				'WC_Widget_Cart',
 				array(
