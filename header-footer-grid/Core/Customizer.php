@@ -50,6 +50,7 @@ class Customizer {
 			return;
 		}
 		$theme_support = reset( $theme_support );
+		$theme_support = apply_filters( 'hfg_support_components_filter', $theme_support );
 		foreach ( $theme_support['builders'] as $builder => $components ) {
 			if ( class_exists( $builder ) && in_array( 'HFG\Core\Interfaces\Builder', class_implements( $builder ) ) ) {
 				/**
@@ -245,7 +246,7 @@ class Customizer {
 							<?php do_action( 'hfg_builder_panel_actions_buttons' ); ?>
 							<a class="button button-secondary hfg--panel-close" href="#">
 								<span class="close-text"><i class="dashicons dashicons-arrow-down-alt2"
-										style="margin-top: 4px;"></i> <?php _e( 'Close', 'neve' ); // WPCS: XSS OK. ?></span>
+											style="margin-top: 4px;"></i> <?php _e( 'Close', 'neve' ); // WPCS: XSS OK. ?></span>
 								<span class="panel-name-text">
 									<i class="dashicons dashicons-arrow-up-alt2" style="margin-top: 4px;"></i>
 									{{ data.title }}
@@ -260,15 +261,15 @@ class Customizer {
 
 		<script type="text/html" id="tmpl-hfg--cb-item">
 			<div class="grid-stack-item item-from-list for-s-{{ data.section }}"
-				title="{{ data.name }}"
-				data-id="{{ data.id }}"
-				data-section="{{ data.section }}"
-				data-control="{{ data.control }}"
-				data-gs-x="{{ data.x }}"
-				data-gs-y="{{ data.y }}"
-				data-gs-width="{{ data.width }}"
-				data-df-width="{{ data.width }}"
-				data-gs-height="1"
+					title="{{ data.name }}"
+					data-id="{{ data.id }}"
+					data-section="{{ data.section }}"
+					data-control="{{ data.control }}"
+					data-gs-x="{{ data.x }}"
+					data-gs-y="{{ data.y }}"
+					data-gs-width="{{ data.width }}"
+					data-df-width="{{ data.width }}"
+					data-gs-height="1"
 			>
 				<div class="item-tooltip" data-section="{{ data.section }}">{{ data.name }}</div>
 				<div class="grid-stack-item-content">
