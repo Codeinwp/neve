@@ -341,6 +341,10 @@
   background: 0;
 }
 
+.woocommerce .woocommerce-Reviews-title {
+  display: none;
+}
+
 .woocommerce div.product div.images .flex-control-thumbs {
   margin: 5px -5px 0;
   display: flex;
