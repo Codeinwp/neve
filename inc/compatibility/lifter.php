@@ -35,6 +35,8 @@ class Lifter {
 	 * Load hooks and filters.
 	 */
 	private function load_hooks() {
+		add_action( 'wp_enqueue_scripts', array( $this, 'load_styles' ) );
+
 		remove_action( 'lifterlms_before_main_content', 'lifterlms_output_content_wrapper', 10 );
 		remove_action( 'lifterlms_after_main_content', 'lifterlms_output_content_wrapper_end', 10 );
 		remove_all_actions( 'lifterlms_sidebar' );
@@ -51,6 +53,13 @@ class Lifter {
 		add_action( 'wp', array( $this, 'load_catalog_sidebar' ) );
 
 		add_filter( 'llms_checkout_error_output', array( $this, 'checkout_error_entry_content_close' ) );
+	}
+
+	/**
+	 * Enqueue styles.
+	 */
+	public function load_styles() {
+		wp_enqueue_style( 'neve-lifter', NEVE_ASSETS_URL . 'css/lifter' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
 	}
 
 	/**

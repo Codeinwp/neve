@@ -5,16 +5,17 @@
   }
 }
 
-.llms-meta{
-  p{
+.llms-meta {
+  p {
     font-weight: 600;
   }
-  span{
+
+  span {
     font-weight: 400;
   }
 }
 
-.llms-loop-item-footer{
+.llms-loop-item-footer {
   .avatar, .llms-author-info {
     vertical-align: middle;
   }
@@ -23,11 +24,12 @@
 a.llms-loop-link,
 .lifterlms a,
 .llms_quiz-template-default a,
-a.llms-button-primary{
+a.llms-button-primary,
+a.llms-button-action{
   text-decoration: none;
 }
 
-footer.llms-loop-item-footer{
+footer.llms-loop-item-footer {
   background-color: inherit;
 }
 
@@ -35,13 +37,16 @@ footer.llms-loop-item-footer{
   width: 100%;
 }
 
-.review_box{
-  input[type="text"], textarea{
-    display: block;
-    margin: 10px 0;
-    width: 100%;
-  }
-  textarea{
-    height: 200px;
+.single-course {
+  .review_box {
+    input[type="text"], textarea {
+      display: block;
+      margin: 10px 0;
+      width: 100%;
+    }
+
+    textarea {
+      height: 200px;
+    }
   }
 }
