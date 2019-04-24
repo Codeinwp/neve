@@ -149,6 +149,19 @@ abstract class Abstract_Component implements Component {
 	}
 
 	/**
+	 * Allow for constant changes in pro.
+	 *
+	 * @since   1.0.0
+	 * @access  protected
+	 * @param string $const Name of the constant.
+	 *
+	 * @return mixed
+	 */
+	protected function get_class_const( $const ) {
+		return constant( 'self::' . $const );
+	}
+
+	/**
 	 * Method to filter component loading if needed.
 	 *
 	 * @since   1.0.1
