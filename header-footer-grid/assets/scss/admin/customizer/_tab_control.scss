@@ -1,0 +1,53 @@
+.customize-control-interface-tabs {
+	display: list-item !important;
+}
+
+.hfg-tabs-control {
+	border-bottom: 1px solid #ddd;
+	width: calc(100% + 28px);
+	margin: -15px 0 0 -12px;
+	table-layout: fixed;
+	display: table;
+
+	.hfg-customizer-tab {
+		border-right: 1px solid #ddd;
+		display: table-cell;
+		text-align: center;
+		width: 100%;
+		&:last-child {
+			border-right: none;
+		}
+
+		label{
+			text-transform: capitalize;
+			background: #fff;
+			box-shadow: inset 0 0 0 0 #0085ba;
+			transition: all .3s ease;
+			display: block;
+			width: 100%;
+			padding: 10px 0;
+			text-decoration: none;
+			font-weight: 600;
+			color: #333;
+			&:hover {
+			  color: #0085ba;
+			  background: #f3f3f5;
+			  i {
+				color: #333;
+			  }
+			}
+			i {
+				color: #333;
+				margin-right: 4px;
+			}
+		}
+	}
+	&.active label{
+		box-shadow: inset 0 -3px 0 0 #0085ba;
+		color: #0085ba;
+		background-color: #fff;
+	}
+	input[type="radio"] {
+		display: none !important;
+	}
+}

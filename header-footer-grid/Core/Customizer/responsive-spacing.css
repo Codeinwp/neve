@@ -1,0 +1,128 @@
+.customize-control-hfg-responsive-spacing {
+	/* Unit Screen wrap */
+}
+
+.customize-control-hfg-responsive-spacing .customize-control-title {
+	display: inline-block;
+}
+
+.customize-control-hfg-responsive-spacing .hfg-spacing-responsive-outer-wrapper {
+	display: flex;
+	position: relative;
+}
+
+.customize-control-hfg-responsive-spacing .hfg-spacing-responsive-btns {
+	display: block;
+	text-align: center;
+	line-height: 2;
+	border: 1px solid #ddd;
+}
+
+.customize-control-hfg-responsive-spacing .hfg-spacing-responsive-btns > li {
+	margin-bottom: 0;
+	display: none;
+	width: 35px;
+	height: 26px;
+}
+
+.customize-control-hfg-responsive-spacing .hfg-spacing-responsive-btns > li.active {
+	display: inline-block;
+}
+
+.customize-control-hfg-responsive-spacing .hfg-spacing-responsive-btns button[type="button"] {
+	padding: 0;
+	cursor: pointer;
+	background: none;
+	border: none;
+	opacity: .75;
+	outline: none;
+}
+
+.customize-control-hfg-responsive-spacing .hfg-spacing-responsive-btns button[type="button"] > i {
+	width: 15px;
+	height: 15px;
+	font-size: 15px;
+	margin-top: 1px;
+}
+
+.customize-control-hfg-responsive-spacing .hfg-spacing-responsive-units {
+	position: absolute;
+	transform: translateY(-100%);
+	font-size: 11px;
+	text-transform: uppercase;
+	top: 0;
+	right: 0;
+}
+
+.customize-control-hfg-responsive-spacing .hfg-spacing-responsive-units li.single-unit {
+	display: inline-block;
+	margin-left: 6px;
+	width: 16px;
+	text-align: center;
+	user-select: none;
+	opacity: 0.7;
+}
+
+.customize-control-hfg-responsive-spacing .hfg-spacing-responsive-units li.single-unit.active {
+	text-decoration: underline;
+	opacity: 1;
+}
+
+.customize-control-hfg-responsive-spacing .input-wrapper .hfg-spacing-wrapper {
+	display: none;
+}
+
+.customize-control-hfg-responsive-spacing .input-wrapper .hfg-spacing-wrapper li {
+	text-align: center;
+	-webkit-box-flex: 1;
+	-ms-flex: auto;
+	flex: auto;
+}
+
+.customize-control-hfg-responsive-spacing .input-wrapper .hfg-spacing-wrapper li input.hfg-spacing-input {
+	text-align: center;
+}
+
+.customize-control-hfg-responsive-spacing .input-wrapper .hfg-spacing-wrapper.active {
+	display: flex;
+}
+
+.customize-control-hfg-responsive-spacing .input-wrapper .hfg-spacing-wrapper span.hfg-spacing-title {
+	text-transform: uppercase;
+	font-size: 10px;
+	opacity: .75;
+}
+
+.customize-control-hfg-responsive-spacing .input-wrapper .hfg-spacing-wrapper .hfg-spacing-input-item-link .hfg-spacing-connected {
+	display: none;
+}
+
+.customize-control-hfg-responsive-spacing .input-wrapper .hfg-spacing-wrapper .hfg-spacing-input-item-link.disconnected .hfg-spacing-disconnected {
+	display: none;
+}
+
+.customize-control-hfg-responsive-spacing .input-wrapper .hfg-spacing-wrapper .hfg-spacing-input-item-link.disconnected .hfg-spacing-connected {
+	display: block;
+}
+
+.customize-control-hfg-responsive-spacing .input-wrapper .hfg-spacing-wrapper .hfg-spacing-input-item-link span {
+	width: 35px;
+	height: 26px;
+	line-height: 26px;
+	font-size: 14px;
+	border: 1px solid #ddd;
+}
+
+.customize-control-hfg-responsive-spacing .input-wrapper .hfg-spacing-wrapper .hfg-spacing-input-item-reset span {
+	width: 35px;
+	height: 26px;
+	line-height: 26px;
+	font-size: 14px;
+	border: 1px solid #ddd;
+}
+
+.customize-control-hfg-responsive-spacing .input-wrapper .hfg-spacing-wrapper .hfg-spacing-input-item-reset:focus span,
+.customize-control-hfg-responsive-spacing .input-wrapper .hfg-spacing-wrapper .hfg-spacing-input-item-reset:active span {
+	color: #fff;
+	background-color: #1e8cbe;
+}

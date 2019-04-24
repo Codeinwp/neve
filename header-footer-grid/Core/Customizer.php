@@ -45,7 +45,7 @@ class Customizer {
 	 */
 	public function __construct() {
 		$theme_support = get_theme_support( 'hfg_support' );
-
+		$theme_support = apply_filters( 'hfg_theme_support_filter', $theme_support );
 		if ( empty( $theme_support ) ) {
 			return;
 		}

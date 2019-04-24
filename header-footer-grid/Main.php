@@ -94,9 +94,37 @@ class Main {
 	 * @param string $name Template variation.
 	 */
 	public function load( $slug, $name = '' ) {
-		$location = apply_filters( 'hfg_load_template_' . $slug, $this->get_templates_location() . $slug, $name );
+		$template_locations = apply_filters(
+			'hfg_template_locations',
+			array(
+				get_stylesheet_directory() . '/' . $this->get_templates_location(),
+				get_template_directory() . '/' . $this->get_templates_location(),
+			)
+		);
 
-		get_template_part( $location, $name );
+		$templates = array();
+		$name      = (string) $name;
+		if ( $name !== '' ) {
+			$templates[] = "{$slug}-{$name}.php";
+		}
+		$templates[] = "{$slug}.php";
+
+		$located = '';
+		foreach ( $template_locations as $location ) {
+			foreach ( $templates as $template ) {
+				if ( file_exists( $location . $template ) ) {
+					$located = $location . $template;
+					break;
+				}
+			}
+			if ( '' !== $located ) {
+				break;
+			}
+		}
+
+		if ( '' !== $located ) {
+			load_template( $located, false );
+		}
 	}
 
 	/**

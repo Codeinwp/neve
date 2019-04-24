@@ -137,4 +137,19 @@ trait Core {
 
 		return json_encode( $filtered );
 	}
+
+	/**
+	 * Sanitize regular json.
+	 *
+	 * @param string $input Input.
+	 *
+	 * @return array
+	 */
+	public function sanitize_spacing_array( $input ) {
+		if ( is_array( $input ) ) {
+			return $input;
+		}
+
+		return array();
+	}
 }

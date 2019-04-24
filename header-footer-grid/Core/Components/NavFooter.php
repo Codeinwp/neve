@@ -53,6 +53,7 @@ class NavFooter extends Abstract_Component {
 			[
 				'id'                => self::STYLE_ID,
 				'group'             => self::COMPONENT_ID,
+				'tab'               => SettingsManager::TAB_STYLE,
 				'transport'         => 'post' . self::COMPONENT_ID,
 				'sanitize_callback' => 'wp_filter_nohtml_kses',
 				'default'           => 'style-plain',
@@ -87,6 +88,7 @@ class NavFooter extends Abstract_Component {
 			[
 				'id'                => self::COLOR_ID,
 				'group'             => self::COMPONENT_ID,
+				'tab'               => SettingsManager::TAB_STYLE,
 				'transport'         => 'post' . self::COMPONENT_ID,
 				'sanitize_callback' => 'sanitize_hex_color',
 				'default'           => '#404248',
@@ -100,6 +102,7 @@ class NavFooter extends Abstract_Component {
 			[
 				'id'                => self::HOVER_COLOR_ID,
 				'group'             => self::COMPONENT_ID,
+				'tab'               => SettingsManager::TAB_STYLE,
 				'transport'         => 'post' . self::COMPONENT_ID,
 				'sanitize_callback' => 'sanitize_hex_color',
 				'default'           => '#0366d6',
@@ -113,6 +116,7 @@ class NavFooter extends Abstract_Component {
 			[
 				'id'                => 'shortcut',
 				'group'             => self::COMPONENT_ID,
+				'tab'               => SettingsManager::TAB_GENERAL,
 				'transport'         => 'postMessage',
 				'sanitize_callback' => 'esc_attr',
 				'type'              => '\Neve\Customizer\Controls\Button',
@@ -157,7 +161,7 @@ class NavFooter extends Abstract_Component {
 			$css_array['#footer-menu > li > a:after'] = array( 'background-color' => sanitize_hex_color( $hover_color ) );
 		}
 
-		return $css_array;
+		return parent::add_style( $css_array );
 	}
 
 }

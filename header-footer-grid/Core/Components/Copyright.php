@@ -47,6 +47,7 @@ class Copyright extends Abstract_Component {
 			[
 				'id'                => self::CONTENT_ID,
 				'group'             => self::COMPONENT_ID,
+				'tab'               => SettingsManager::TAB_GENERAL,
 				'transport'         => 'post' . self::COMPONENT_ID,
 				'sanitize_callback' => 'wp_kses_post',
 				'default'           => get_theme_mod(
