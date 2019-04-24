@@ -17,6 +17,7 @@ get_header();
 			<article id="post-<?php echo esc_attr( get_the_ID() ); ?>"
 					class="<?php echo esc_attr( join( ' ', get_post_class( 'nv-single-post-wrap col' ) ) ); ?>">
 				<?php
+				do_action( 'neve_before_post_content' );
 				if ( have_posts() ) {
 					while ( have_posts() ) {
 						the_post();
@@ -25,6 +26,7 @@ get_header();
 				} else {
 					get_template_part( 'template-parts/content', 'none' );
 				}
+				do_action( 'neve_after_post_content' );
 				?>
 			</article>
 			<?php do_action( 'neve_do_sidebar', 'single-post', 'right' ); ?>

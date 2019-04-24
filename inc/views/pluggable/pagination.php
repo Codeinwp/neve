@@ -113,6 +113,7 @@ class Pagination extends Base_View {
 		}
 
 		if ( ! $this->has_infinite_scroll() ) {
+			do_action( 'neve_before_pagination' );
 			echo wp_kses_post(
 				paginate_links(
 					array(
