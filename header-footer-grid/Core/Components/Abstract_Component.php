@@ -158,8 +158,8 @@ abstract class Abstract_Component implements Component {
 	 * @return mixed
 	 */
 	protected function get_class_const( $const ) {
-		if ( defined( 'self::' . $const ) ) {
-			return constant( 'self::' . $const );
+		if ( defined( 'static::' . $const ) ) {
+			return constant( 'static::' . $const );
 		}
 		return '';
 	}
