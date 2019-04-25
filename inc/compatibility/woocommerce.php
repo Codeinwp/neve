@@ -68,6 +68,9 @@ class Woocommerce {
 
 		remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 );
 
+		add_filter( 'woocommerce_product_description_heading', '__return_false' );
+		add_filter( 'woocommerce_product_additional_information_heading', '__return_false' );
+
 		$this->edit_woocommerce_header();
 		$this->move_checkout_coupon();
 		$this->add_inline_selectors();
