@@ -1,0 +1,60 @@
+.lms-container {
+  .nv-page-title-wrap,
+  .nv-sidebar-wrap {
+    margin-top: 30px;
+  }
+}
+
+.llms-meta {
+  p {
+    font-weight: 600;
+  }
+
+  span {
+    font-weight: 400;
+  }
+}
+
+.llms-loop-item-footer {
+  .avatar, .llms-author-info {
+    vertical-align: middle;
+  }
+}
+
+a.llms-loop-link,
+.lifterlms a,
+.llms_quiz-template-default a,
+a.llms-button-primary,
+a.llms-button-action{
+  text-decoration: none;
+}
+
+footer.llms-loop-item-footer {
+  background-color: inherit;
+}
+
+.llms-choice > label {
+  width: 100%;
+}
+
+.single-course {
+  .review_box {
+    input[type="text"], textarea {
+      display: block;
+      margin: 10px 0;
+      width: 100%;
+    }
+
+    textarea {
+      height: 200px;
+    }
+  }
+  .llms-lesson-counter {
+    display: inline-block;
+    margin-bottom: 0px;
+  }
+}
+
+.llms-person-login-form-wrapper {
+  max-width: 100%;
+}
