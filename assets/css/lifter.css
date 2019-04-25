@@ -41,4 +41,13 @@ footer.llms-loop-item-footer {
   height: 200px;
 }
 
+.single-course .llms-lesson-counter {
+  display: inline-block;
+  margin-bottom: 0px;
+}
+
+.llms-person-login-form-wrapper {
+  max-width: 100%;
+}
+
 /*# sourceMappingURL=lifter.css.map */
