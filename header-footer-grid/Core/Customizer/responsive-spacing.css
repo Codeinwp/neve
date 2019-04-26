@@ -112,3 +112,17 @@
 	font-size: 14px;
 	border: 1px solid #ddd;
 }
+
+.customize-control-hfg-responsive-spacing .input-wrapper .hfg-spacing-wrapper .hfg-spacing-input-item-reset span {
+	width: 35px;
+	height: 26px;
+	line-height: 26px;
+	font-size: 14px;
+	border: 1px solid #ddd;
+}
+
+.customize-control-hfg-responsive-spacing .input-wrapper .hfg-spacing-wrapper .hfg-spacing-input-item-reset:focus span,
+.customize-control-hfg-responsive-spacing .input-wrapper .hfg-spacing-wrapper .hfg-spacing-input-item-reset:active span {
+	color: #fff;
+	background-color: #1e8cbe;
+}

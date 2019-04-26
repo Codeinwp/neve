@@ -149,6 +149,22 @@ abstract class Abstract_Component implements Component {
 	}
 
 	/**
+	 * Allow for constant changes in pro.
+	 *
+	 * @since   1.0.0
+	 * @access  protected
+	 * @param string $const Name of the constant.
+	 *
+	 * @return mixed
+	 */
+	protected function get_class_const( $const ) {
+		if ( defined( 'static::' . $const ) ) {
+			return constant( 'static::' . $const );
+		}
+		return '';
+	}
+
+	/**
 	 * Method to filter component loading if needed.
 	 *
 	 * @since   1.0.1
@@ -435,7 +451,7 @@ abstract class Abstract_Component implements Component {
 	 */
 	public function add_style( array $css_array = array() ) {
 		$layout_padding = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::PADDING_ID, null );
-		$selector       = '.builder-item--' . $this->get_id() . ' > :first-child';
+		$selector       = '.builder-item--' . $this->get_id() . ' > :not(.customize-partial-edit-shortcut):first-of-type';
 		if ( $this->default_selector !== null ) {
 			$selector = $this->default_selector;
 		}

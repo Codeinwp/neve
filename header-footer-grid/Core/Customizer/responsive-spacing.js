@@ -106,6 +106,21 @@ wp.customize.controlConstructor['hfg-responsive-spacing'] = wp.customize.Control
 			jQuery( '.wp-full-overlay-footer .devices button[data-device="' + device + '"]' ).trigger( 'click' );
 		} );
 
+		control.container.find( '.hfg-spacing-responsive-wrapper .hfg-spacing-input-item-reset span' ).on( 'click', function( event ) {
+
+			var device = jQuery( this ).attr( 'data-device' );
+
+			control.container.find( 'input.hfg-spacing-' + device ).each( function() {
+				var item = jQuery( this ).data( 'id' );
+				jQuery( this ).val( '' );
+			} );
+
+			control.container.find( '.hfg-spacing-unit-wrapper .hfg-spacing-unit-input.hfg-spacing-' + device + '-unit' ).val( 'px' );
+			jQuery( '.customize-control-hfg-responsive-spacing .input-wrapper .hfg-spacing-wrapper, .customize-control .hfg-spacing-responsive-btns > li' ).removeClass( 'active' );
+			jQuery( '.customize-control-hfg-responsive-spacing .input-wrapper .hfg-spacing-wrapper.' + device + ', .customize-control .hfg-spacing-responsive-btns > li.' + device ).addClass( 'active' );
+			control.updateValue();
+		} );
+
 		// Unit click
 		control.container.on( 'click', '.hfg-spacing-responsive-units .single-unit', function() {
 
@@ -155,6 +170,7 @@ jQuery( document ).ready( function( ) {
 		jQuery( this ).parent( '.hfg-spacing-input-item-link' ).addClass( 'disconnected' );
 
 	} );
+	jQuery( '.hfg-spacing-disconnected' ).trigger( 'click' );
 
 	// Values connected inputs
 	jQuery( '.hfg-spacing-input-item' ).on( 'input', '.connected', function() {

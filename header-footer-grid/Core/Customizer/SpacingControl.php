@@ -184,6 +184,9 @@ class SpacingControl extends WP_Customize_Control {
 							<span class="hfg-spacing-title">{{{ data.choices[ choiceID ] }}}</span>
 						</li><#
 						}); #>
+						<li class="hfg-spacing-input-item-reset">
+							<span class="dashicons dashicons-image-rotate" data-device='desktop'></span>
+						</li>
 						<ul class="hfg-spacing-responsive-units hfg-spacing-desktop-responsive-units">
 							<#_.each( data.unit_choices, function( unit_key ) {
 							unit_class = '';
@@ -211,6 +214,9 @@ class SpacingControl extends WP_Customize_Control {
 							<span class="hfg-spacing-title">{{{ data.choices[ choiceID ] }}}</span>
 						</li><#
 						}); #>
+						<li class="hfg-spacing-input-item-reset">
+							<span class="dashicons dashicons-image-rotate" data-device='tablet'></span>
+						</li>
 						<ul class="hfg-spacing-responsive-units hfg-spacing-tablet-responsive-units">
 							<#_.each( data.unit_choices, function( unit_key ) {
 							unit_class = '';
@@ -237,6 +243,9 @@ class SpacingControl extends WP_Customize_Control {
 							<span class="hfg-spacing-title">{{{ data.choices[ choiceID ] }}}</span>
 						</li><#
 						}); #>
+						<li class="hfg-spacing-input-item-reset">
+							<span class="dashicons dashicons-image-rotate" data-device='mobile'></span>
+						</li>
 						<ul class="hfg-spacing-responsive-units hfg-spacing-mobile-responsive-units">
 							<#_.each( data.unit_choices, function( unit_key ) {
 							unit_class = '';
