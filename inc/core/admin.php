@@ -103,6 +103,7 @@ class Admin {
 					'visualizer',
 					'wpforms-lite',
 					'translatepress-multilingual',
+					'amp',
 				),
 			),
 			'support'         => array(
