@@ -20,21 +20,18 @@ if ( class_exists( 'WooCommerce' ) ) {
 
 add_theme_support(
 	'hfg_support',
-	apply_filters(
-		'hfg_support_components_filter',
-		array(
-			'builders' => array(
-				'HFG\Core\Builder\Header' => $header_components,
-				'HFG\Core\Builder\Footer' => array(
-					'HFG\Core\Components\FooterWidgetOne',
-					'HFG\Core\Components\FooterWidgetTwo',
-					'HFG\Core\Components\FooterWidgetThree',
-					'HFG\Core\Components\FooterWidgetFour',
-					'HFG\Core\Components\NavFooter',
-					'HFG\Core\Components\Copyright',
-				),
+	array(
+		'builders' => array(
+			'HFG\Core\Builder\Header' => $header_components,
+			'HFG\Core\Builder\Footer' => array(
+				'HFG\Core\Components\FooterWidgetOne',
+				'HFG\Core\Components\FooterWidgetTwo',
+				'HFG\Core\Components\FooterWidgetThree',
+				'HFG\Core\Components\FooterWidgetFour',
+				'HFG\Core\Components\NavFooter',
+				'HFG\Core\Components\Copyright',
 			),
-		) 
+		),
 	)
 );
 require_once 'functions-template.php';

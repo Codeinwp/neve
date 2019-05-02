@@ -86,6 +86,8 @@
   justify-content: flex-start;
 
   li {
+    display: flex;
+    align-items: center;
     position: relative;
     width: inherit;
 

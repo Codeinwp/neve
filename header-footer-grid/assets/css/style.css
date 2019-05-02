@@ -608,6 +608,8 @@ body.menu_sidebar_dropdown:before {
   flex-wrap: wrap;
   justify-content: flex-start; }
   #secondary-menu li {
+    display: flex;
+    align-items: center;
     position: relative;
     width: inherit; }
     #secondary-menu li a {
