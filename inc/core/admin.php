@@ -103,6 +103,7 @@ class Admin {
 					'visualizer',
 					'wpforms-lite',
 					'translatepress-multilingual',
+					'amp',
 				),
 			),
 			'support'         => array(
@@ -193,7 +194,7 @@ class Admin {
 							'otter-blocks' => array(
 								'name'        => 'Gutenberg Blocks and Template Library by Otter',
 								'slug'        => 'otter-blocks',
-								'description' => __( "Take the new WordPress editor to the next level by using Otter's blocks that are specially designed for Neve.", 'neve' ),
+								'description' => sprintf( __( "Take the new WordPress editor to the next level by using Otter's blocks that are specially designed for %s.", 'neve' ), $this->theme_name ),
 							),
 						),
 					),
