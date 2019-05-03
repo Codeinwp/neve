@@ -48,8 +48,10 @@ class Ordering extends \WP_Customize_Control {
 	 * Add them at the and of all components in the customizer
 	 */
 	private function setup_components() {
-		$val     = json_decode( $this->value(), true );
-		$enabled = array_combine( $val, $val );
+		$val           = json_decode( $this->value(), true );
+		$enabled       = array_combine( $val, $val );
+		$default_setup = $this->components;
+
 
 		array_walk(
 			$enabled,
@@ -64,7 +66,7 @@ class Ordering extends \WP_Customize_Control {
 		$disabled = array_diff_assoc( $this->components, $enabled );
 
 		$this->components = array_merge( $enabled, $disabled );
-
+		$this->components = array_intersect( $default_setup, $this->components );
 	}
 
 	/**
@@ -74,6 +76,25 @@ class Ordering extends \WP_Customize_Control {
 		$this->render_control_label();
 		$this->render_sortable_list();
 		$this->render_collector_input();
+	}
+
+	/**
+	 * Render title and description.
+	 *
+	 * @return void
+	 */
+	private function render_control_label() {
+		if ( empty( $this->label ) && empty( $this->description ) ) {
+			return;
+		}
+		echo '<label>';
+		if ( ! empty( $this->label ) ) {
+			echo '<span class="customize-control-title">' . esc_html( $this->label ) . '</span>';
+		}
+		if ( ! empty( $this->description ) ) {
+			echo '<span class="description customize-control-description">' . wp_kses_post( $this->description ) . '</span>';
+		}
+		echo '</label>';
 	}
 
 	/**
@@ -98,34 +119,6 @@ class Ordering extends \WP_Customize_Control {
 	}
 
 	/**
-	 * Render the collector input.
-	 *
-	 * @return void
-	 */
-	private function render_collector_input() {
-		echo '<input type="hidden" class="ti-order-collector"' . wp_kses_post( $this->get_link() ) . '>';
-	}
-
-	/**
-	 * Render title and description.
-	 *
-	 * @return void
-	 */
-	private function render_control_label() {
-		if ( empty( $this->label ) && empty( $this->description ) ) {
-			return;
-		}
-		echo '<label>';
-		if ( ! empty( $this->label ) ) {
-			echo '<span class="customize-control-title">' . esc_html( $this->label ) . '</span>';
-		}
-		if ( ! empty( $this->description ) ) {
-			echo '<span class="description customize-control-description">' . wp_kses_post( $this->description ) . '</span>';
-		}
-		echo '</label>';
-	}
-
-	/**
 	 * Get the class for the component. (enabled/disabled)
 	 *
 	 * @param string $component the component to check.
@@ -144,5 +137,14 @@ class Ordering extends \WP_Customize_Control {
 		}
 
 		return ' enabled';
+	}
+
+	/**
+	 * Render the collector input.
+	 *
+	 * @return void
+	 */
+	private function render_collector_input() {
+		echo '<input type="hidden" class="ti-order-collector"' . wp_kses_post( $this->get_link() ) . '>';
 	}
 }
