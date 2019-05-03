@@ -2,20 +2,21 @@
   "content_file": "https://demo.themeisle.com/neve-onboarding-gutenberg/wp-content/uploads/sites/179/ti-demo-data/export.xml",
   "theme_mods": {
     "neve_blog_archive_layout": "alternative",
-    "neve_grid_layout": "3",
-    "neve_enable_masonry": "1",
-    "neve_sitewide_content_width": "70",
-    "neve_advanced_layout_options": "1",
+    "neve_grid_layout": 3,
+    "neve_enable_masonry": true,
+    "neve_sitewide_content_width": 70,
+    "neve_advanced_layout_options": true,
     "neve_post_content_ordering": "[\"thumbnail\",\"title-meta\",\"excerpt\"]",
     "neve_post_meta_ordering": "[\"author\",\"date\",\"comments\"]",
-    "neve_blog_archive_content_width": "75",
+    "neve_blog_archive_content_width": 75,
     "neve_blog_archive_sidebar_layout": "full-width",
     "neve_shop_archive_sidebar_layout": "left",
     "neve_single_post_sidebar_layout": "full-width",
     "neve_single_product_sidebar_layout": "full-width",
     "neve_other_pages_sidebar_layout": "full-width",
-    "neve_single_product_content_width": "100",
+    "neve_single_product_content_width": 100,
     "neve_footer_text": "<p><a href=\"https://themeisle.com/themes/neve/\" rel=\"nofollow\">Neve</a> | Powered by <a href=\"http://wordpress.org\" rel=\"nofollow\">WordPress</a></p>",
+    "logo_max_width": "{\"mobile\":120,\"tablet\":120,\"desktop\":120}",
     "__ti_import_menus_location": {
       "primary": "primary-menu"
     }
@@ -78,7 +79,8 @@
     "wpforms-lite": "Contact Form by WPForms &#8211; Drag &amp; Drop Form Builder for WordPress"
   },
   "mandatory_plugins": {
-    "otter-blocks": "Gutenberg Blocks and Template Library by Otter"
+    "otter-blocks": "Gutenberg Blocks and Template Library by Otter",
+    "blocks-animation": "Blocks CSS: CSS Animations for Gutenberg Blocks"
   },
   "default_off_recommended_plugins": [
     "woocommerce"
