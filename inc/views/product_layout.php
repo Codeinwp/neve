@@ -98,7 +98,7 @@ class Product_Layout extends Base_View {
 	 */
 	public function body_classes( $classes ) {
 		$products_category = get_theme_mod( 'neve_exclusive_products_category', '-' );
-		if ( $products_category === '-' ) {
+		if ( $products_category === '-' || ! is_product() ) {
 			return $classes;
 		}
 		$classes[] = 'nv-exclusive';

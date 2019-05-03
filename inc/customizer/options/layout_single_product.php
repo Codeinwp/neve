@@ -68,7 +68,7 @@ class Layout_Single_Product extends Base_Customizer {
 					'transport'         => $this->selective_refresh,
 				),
 				array(
-					'label'            => esc_html__( 'Excluseive Products' ),
+					'label'            => esc_html__( 'Exclusive Products' ),
 					'section'          => 'neve_single_product_layout',
 					'priority'         => 200,
 					'class'            => 'exclusive-products-accordion',
