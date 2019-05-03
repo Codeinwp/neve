@@ -60,6 +60,6 @@ const handleExclusiveSlider = function (  ) {
 		items: 4,
 		controls: false,
 		navPosition: 'bottom',
-		responsive
+		responsive,
 	});
 };

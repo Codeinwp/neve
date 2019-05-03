@@ -240,4 +240,6 @@ section.exclusive{
       }
     }
   }
+  .tns-ovh { overflow: hidden; }
+  .tns-visually-hidden { position: absolute; left: -10000em; }
 }
