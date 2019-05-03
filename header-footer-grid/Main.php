@@ -85,6 +85,27 @@ class Main {
 	public function init() {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 		add_filter( 'neve_style_output_neve-generated-style', array( $this, 'append_css_style' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'admin_utils_scripts' ) );
+	}
+
+	/**
+	 * JS utility scripts for admin
+	 *
+	 * @since   1.0.1
+	 * @access  public
+	 */
+	public function admin_utils_scripts() {
+		$hide_widgets = '
+		( function( $ ) {
+			setTimeout(function() {
+				$("#footer-one-widgets").parent().hide();
+				$("#footer-two-widgets").parent().hide();
+				$("#footer-three-widgets").parent().hide();
+				$("#footer-four-widgets").parent().hide();
+			}, 300);
+		})(jQuery)
+		';
+		wp_add_inline_script( 'jquery', $hide_widgets );
 	}
 
 	/**
