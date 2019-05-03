@@ -30,7 +30,7 @@ get_header();
 						if ( $posts_on_current_page > 2 ) {
 							$hook_after_post = intval( $posts_on_current_page / 2 );
 						}
-						$post_index = 1;
+						$post_index = 0;
 					}
 					while ( have_posts() ) {
 						the_post();
