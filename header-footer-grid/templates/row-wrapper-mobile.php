@@ -25,7 +25,7 @@ $item_attributes  = apply_filters( 'neve_nav_toggle_data_attrs', '' );
 					aria-label="
 				<?php
 					_e( 'Navigation Menu', 'neve' ); // WPCS: XSS ok.
-					?>
+				?>
 				">
 				<div class="bars">
 					<span class="icon-bar"></span>

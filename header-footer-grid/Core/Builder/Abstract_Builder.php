@@ -28,7 +28,7 @@ abstract class Abstract_Builder implements Builder {
 	use Core;
 	const LAYOUT_SETTING = 'layout';
 	const HEIGHT_SETTING = 'height';
-	const SKIN_SETTING = 'skin';
+	const SKIN_SETTING   = 'skin';
 	/**
 	 * Internal pointer for current device id.
 	 *
@@ -236,7 +236,7 @@ abstract class Abstract_Builder implements Builder {
 					'options'           => [
 						'choices' => [
 							'slide_left' => __( 'Slide from Left', 'neve' ),
-							'dropdown' => __( 'Toggle Dropdown', 'neve' ),
+							'dropdown'   => __( 'Toggle Dropdown', 'neve' ),
 						],
 					],
 					'transport'         => 'refresh',
