@@ -44,7 +44,8 @@
 
 .light-mode {
   background-color: #fff;
-  color: #404248; }
+  color: #404248;
+  }
   .light-mode a:not(.button) {
     color: #404248; }
 
@@ -63,7 +64,9 @@
   color: #fff; }
 
 .hfg_header.site-header {
-  border-bottom: 1px solid #f0f0f0; }
+  -webkit-box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.1); }
 
 .hfg-item-right {
   text-align: right; }
@@ -1030,3 +1033,5 @@ body.menu_sidebar_dropdown:before {
 
 .nv-html-content p {
   margin: 0; }
+
+/*# sourceMappingURL=style.css.map */
