@@ -28,7 +28,7 @@ abstract class Abstract_Builder implements Builder {
 	use Core;
 	const LAYOUT_SETTING = 'layout';
 	const HEIGHT_SETTING = 'height';
-	const SKIN_SETTING   = 'skin';
+	const SKIN_SETTING = 'skin';
 	/**
 	 * Internal pointer for current device id.
 	 *
@@ -161,7 +161,7 @@ abstract class Abstract_Builder implements Builder {
 	/**
 	 * Method to set protected properties for class.
 	 *
-	 * @param string $key The property key name.
+	 * @param string $key   The property key name.
 	 * @param string $value The property value.
 	 *
 	 * @return bool
@@ -223,6 +223,28 @@ abstract class Abstract_Builder implements Builder {
 				'default'           => '',
 			]
 		);
+
+		if ( $row_id === 'sidebar' ) {
+			SettingsManager::get_instance()->add(
+				[
+					'id'                => self::LAYOUT_SETTING,
+					'group'             => $row_setting_id,
+					'tab'               => SettingsManager::TAB_LAYOUT,
+					'label'             => __( 'Layout', 'neve' ),
+					'type'              => 'select',
+					'section'           => $row_setting_id,
+					'options'           => [
+						'choices' => [
+							'slide_left' => __( 'Slide from Left', 'neve' ),
+							'dropdown' => __( 'Toggle Dropdown', 'neve' ),
+						],
+					],
+					'transport'         => 'refresh',
+					'sanitize_callback' => 'wp_filter_nohtml_kses',
+					'default'           => 'slide_left',
+				]
+			);
+		}
 
 		if ( $row_id !== 'sidebar' ) {
 			SettingsManager::get_instance()->add(
@@ -618,7 +640,7 @@ abstract class Abstract_Builder implements Builder {
 	/**
 	 * Render device markup.
 	 *
-	 * @param string $device_name Device id.
+	 * @param string $device_name    Device id.
 	 * @param array  $device_details Device meta.
 	 */
 	public function render_device( $device_name, $device_details ) {
@@ -635,7 +657,7 @@ abstract class Abstract_Builder implements Builder {
 	 * Render components in the row.
 	 *
 	 * @param null|string $device Device id.
-	 * @param null|array  $row Row details.
+	 * @param null|array  $row    Row details.
 	 */
 	public function render_components( $device = null, $row = null ) {
 
