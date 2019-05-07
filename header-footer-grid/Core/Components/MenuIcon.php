@@ -56,7 +56,7 @@ class MenuIcon extends Abstract_Component {
 				'id'                => self::MENU_TEXT,
 				'group'             => $this->get_id(),
 				'tab'               => SettingsManager::TAB_GENERAL,
-				'transport'         => 'post' . $this->get_id(),
+				'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
 				'sanitize_callback' => 'wp_filter_nohtml_kses',
 				'default'           => __( 'Menu', 'neve' ),
 				'label'             => __( 'Text', 'neve' ),
