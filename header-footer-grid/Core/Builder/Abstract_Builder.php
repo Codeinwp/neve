@@ -612,6 +612,8 @@ abstract class Abstract_Builder implements Builder {
 			);
 		}
 
+		$css_array = apply_filters( 'neve_row_style', $css_array, $this->control_id, $this->get_id(), $row_index, $selector );
+
 		return $css_array;
 	}
 
