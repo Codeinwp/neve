@@ -108,14 +108,14 @@ class Front_End {
 		$theme_name    = apply_filters( 'ti_wl_theme_name', $theme_options->__get( 'Name' ) );
 
 		$this->onboarding_config = array(
-			'editors' => array(
+			'editors'     => array(
 				'elementor',
 			),
-			'local'   => array(
+			'local'       => array(
 				'elementor' => array(
 					'neve-main'          => array(
-						'url'   => 'https://demo.themeisle.com/neve/',
-						'title' => 'Original',
+						'url'              => 'https://demo.themeisle.com/neve/',
+						'title'            => 'Original',
 					),
 					'neve-restaurant'    => array(
 						'url'              => 'https://demo.themeisle.com/neve-restaurant/',
@@ -138,24 +138,24 @@ class Front_End {
 						'unsplash_gallery' => 'https://unsplash.com/collections/4587593/doctor',
 					),
 					'neve-energy-panels' => array(
-						'url'   => 'https://demo.themeisle.com/neve-energy-panels/',
-						'title' => 'Energy Panels',
+						'url'              => 'https://demo.themeisle.com/neve-energy-panels/',
+						'title'            => 'Energy Panels',
 					),
 					'neve-lawyers'       => array(
-						'url'   => 'https://demo.themeisle.com/neve-lawyers/',
-						'title' => 'Lawyers',
+						'url'              => 'https://demo.themeisle.com/neve-lawyers/',
+						'title'            => 'Lawyers',
 					),
 					'neve-freelancer'    => array(
-						'url'   => 'https://demo.themeisle.com/neve-freelancer/',
-						'title' => 'Freelancer',
+						'url'              => 'https://demo.themeisle.com/neve-freelancer/',
+						'title'            => 'Freelancer',
 					),
 					'neve-shop'          => array(
-						'url'   => 'https://demo.themeisle.com/neve-shop/',
-						'title' => 'Shop',
+						'url'              => 'https://demo.themeisle.com/neve-shop/',
+						'title'            => 'Shop',
 					),
 					'neve-zelle'         => array(
-						'url'   => 'https://demo.themeisle.com/neve-zelle/',
-						'title' => 'Travel Agency',
+						'url'              => 'https://demo.themeisle.com/neve-zelle/',
+						'title'            => 'Travel Agency',
 					),
 				),
 			),
