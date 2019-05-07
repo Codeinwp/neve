@@ -98,10 +98,18 @@ class Main {
 		$hide_widgets = '
 		( function( $ ) {
 			setTimeout(function() {
-				$("#footer-one-widgets").parent().hide();
-				$("#footer-two-widgets").parent().hide();
-				$("#footer-three-widgets").parent().hide();
-				$("#footer-four-widgets").parent().hide();
+				if ( $("#footer-one-widgets").find(\'div.widget\').length === 0 ) {
+					$("#footer-one-widgets").parent().hide();
+				}
+				if ( $("#footer-two-widgets").find(\'div.widget\').length === 0 ) {
+					$("#footer-two-widgets").parent().hide();
+				}
+				if ( $("#footer-three-widgets").find(\'div.widget\').length === 0 ) {
+					$("#footer-three-widgets").parent().hide();
+				}
+				if ( $("#footer-four-widgets").find(\'div.widget\').length === 0 ) {
+					$("#footer-four-widgets").parent().hide();
+				}
 			}, 300);
 		})(jQuery)
 		';
