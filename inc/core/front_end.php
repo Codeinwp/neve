@@ -61,18 +61,22 @@ class Front_End {
 		add_theme_support( 'fl-theme-builder-headers' );
 		add_theme_support( 'fl-theme-builder-footers' );
 		add_theme_support( 'header-footer-elementor' );
+		add_theme_support( 'lifterlms-sidebars' );
+		add_theme_support( 'lifterlms' );
 
 		add_filter( 'themeisle_gutenberg_templates', array( $this, 'add_gutenberg_templates' ) );
 
 		$this->add_amp_support();
 
-		register_nav_menus(
+		$nav_menus_to_register = apply_filters(
+			'neve_register_nav_menus',
 			array(
 				'primary' => esc_html__( 'Primary Menu', 'neve' ),
 				'footer'  => esc_html__( 'Footer Menu', 'neve' ),
 				'top-bar' => esc_html__( 'Top Bar Menu', 'neve' ),
 			)
 		);
+		register_nav_menus( $nav_menus_to_register );
 
 		add_image_size( 'neve-blog', 930, 620, true );
 		add_filter( 'wp_nav_menu_args', array( $this, 'nav_walker' ), 1001 );
@@ -113,9 +117,25 @@ class Front_End {
 						'url'   => 'https://demo.themeisle.com/neve/',
 						'title' => 'Original',
 					),
+					'neve-restaurant'    => array(
+						'url'              => 'https://demo.themeisle.com/neve-restaurant/',
+						'title'            => 'Restaurant',
+						'unsplash_gallery' => 'https://unsplash.com/collections/4587624/restaurant',
+					),
+					'neve-charity'       => array(
+						'url'              => 'https://demo.themeisle.com/neve-charity/',
+						'title'            => 'Charity',
+						'unsplash_gallery' => 'https://unsplash.com/collections/4587605/charity',
+					),
 					'neve-vet-center'    => array(
-						'url'   => 'https://demo.themeisle.com/neve-vet-center/',
-						'title' => 'Vet Center',
+						'url'              => 'https://demo.themeisle.com/neve-vet-center/',
+						'title'            => 'Vet Center',
+						'unsplash_gallery' => 'https://unsplash.com/collections/4587611/vet-center',
+					),
+					'neve-doctors'       => array(
+						'url'              => 'https://demo.themeisle.com/neve-doctors/',
+						'title'            => 'Doctors',
+						'unsplash_gallery' => 'https://unsplash.com/collections/4587593/doctor',
 					),
 					'neve-energy-panels' => array(
 						'url'   => 'https://demo.themeisle.com/neve-energy-panels/',
@@ -125,29 +145,17 @@ class Front_End {
 						'url'   => 'https://demo.themeisle.com/neve-lawyers/',
 						'title' => 'Lawyers',
 					),
-					'neve-restaurant'    => array(
-						'url'   => 'https://demo.themeisle.com/neve-restaurant/',
-						'title' => 'Restaurant',
-					),
 					'neve-freelancer'    => array(
 						'url'   => 'https://demo.themeisle.com/neve-freelancer/',
 						'title' => 'Freelancer',
 					),
-					'neve-zelle'         => array(
-						'url'   => 'https://demo.themeisle.com/neve-zelle/',
-						'title' => 'Travel Agency',
-					),
-					'neve-charity'       => array(
-						'url'   => 'https://demo.themeisle.com/neve-charity/',
-						'title' => 'Charity',
-					),
-					'neve-doctors'       => array(
-						'url'   => 'https://demo.themeisle.com/neve-doctors/',
-						'title' => 'Doctors',
-					),
 					'neve-shop'          => array(
 						'url'   => 'https://demo.themeisle.com/neve-shop/',
 						'title' => 'Shop',
+					),
+					'neve-zelle'         => array(
+						'url'   => 'https://demo.themeisle.com/neve-zelle/',
+						'title' => 'Travel Agency',
 					),
 				),
 			),

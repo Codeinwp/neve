@@ -84,7 +84,7 @@ class Tabs extends \WP_Customize_Control {
 				#>
 			<div class="neve-customizer-tab <# if( i === 1 ){#> active <#}#>" data-tab="{{tab}}">
 				<label class="{{allControlsInTabs}}">
-					<i class="fa fa-{{data.tabs[tab]['icon']}}"></i>
+					<i class="dashicons dashicons-{{data.tabs[tab]['icon']}}"></i>
 					{{data.tabs[tab]['label']}}
 				</label>
 			</div>

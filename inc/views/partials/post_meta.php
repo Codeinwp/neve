@@ -38,9 +38,11 @@ class Post_Meta extends Base_View {
 		if ( ! is_array( $order ) || empty( $order ) ) {
 			return;
 		}
-		$order   = $this->sanitize_order_array( $order );
-		$markup  = '';
-		$markup .= '<ul class="nv-meta-list">';
+		$order     = $this->sanitize_order_array( $order );
+		$pid       = get_the_ID();
+		$post_type = get_post_type( $pid );
+		$markup    = '';
+		$markup   .= '<ul class="nv-meta-list">';
 		foreach ( $order as $meta ) {
 			switch ( $meta ) {
 				case 'author':
@@ -62,6 +64,9 @@ class Post_Meta extends Base_View {
 					$markup .= '</li>';
 					break;
 				case 'category':
+					if ( $post_type !== 'post' ) {
+						break;
+					}
 					$markup .= '<li class="meta category">';
 					$markup .= get_the_category_list( ', ', get_the_ID() );
 					$markup .= '</li>';
@@ -76,6 +81,9 @@ class Post_Meta extends Base_View {
 					$markup .= '</li>';
 					break;
 				case 'reading':
+					if ( $post_type !== 'post' ) {
+						break;
+					}
 					$markup .= '<li class="meta reading-time">';
 					$markup .= apply_filters( 'neve_do_read_time', '' );
 					$markup .= '</li>';
@@ -100,6 +108,47 @@ class Post_Meta extends Base_View {
 	}
 
 	/**
+	 * Makes sure there's a valid meta order array.
+	 *
+	 * @param array $order meta order array.
+	 *
+	 * @return mixed
+	 */
+	private function sanitize_order_array( $order ) {
+		$allowed_order_values = apply_filters(
+			'neve_meta_filter',
+			array(
+				'author'   => __( 'Author', 'neve' ),
+				'category' => __( 'Category', 'neve' ),
+				'date'     => __( 'Date', 'neve' ),
+				'comments' => __( 'Comments', 'neve' ),
+			)
+		);
+		foreach ( $order as $index => $value ) {
+			if ( ! array_key_exists( $value, $allowed_order_values ) ) {
+				unset( $order[ $index ] );
+			}
+		}
+
+		return $order;
+	}
+
+	/**
+	 * Get <time> tags.
+	 *
+	 * @return string
+	 */
+	private function get_time_tags() {
+		$time = '<time class="entry-date published" datetime="' . esc_attr( get_the_date( 'c' ) ) . '" content="' . esc_attr( get_the_date( 'Y-m-d' ) ) . '">' . esc_html( get_the_date() ) . '</time>';
+		if ( get_the_time( 'U' ) === get_the_modified_time( 'U' ) ) {
+			return $time;
+		}
+		$time .= '<time class="updated" datetime="' . esc_attr( get_the_modified_date( 'c' ) ) . '">' . esc_html( get_the_modified_date() ) . '</time>';
+
+		return $time;
+	}
+
+	/**
 	 * Get the comments with a link.
 	 *
 	 * @return string
@@ -120,30 +169,6 @@ class Post_Meta extends Base_View {
 	}
 
 	/**
-	 * Makes sure there's a valid meta order array.
-	 *
-	 * @param array $order meta order array.
-	 *
-	 * @return mixed
-	 */
-	private function sanitize_order_array( $order ) {
-		$allowed_order_values = array(
-			'author',
-			'date',
-			'category',
-			'comments',
-			'reading',
-		);
-		foreach ( $order as $index => $value ) {
-			if ( ! in_array( $value, $allowed_order_values ) ) {
-				unset( $order[ $index ] );
-			}
-		}
-
-		return $order;
-	}
-
-	/**
 	 * Render the tags list.
 	 */
 	public function render_tags_list() {
@@ -160,20 +185,5 @@ class Post_Meta extends Base_View {
 		}
 		$html .= ' </div> ';
 		echo $html; // WPCS: XSS OK.
-	}
-
-	/**
-	 * Get <time> tags.
-	 *
-	 * @return string
-	 */
-	private function get_time_tags() {
-		$time = '<time class="entry-date published" datetime="' . esc_attr( get_the_date( 'c' ) ) . '" content="' . esc_attr( get_the_date( 'Y-m-d' ) ) . '">' . esc_html( get_the_date() ) . '</time>';
-		if ( get_the_time( 'U' ) === get_the_modified_time( 'U' ) ) {
-			return $time;
-		}
-		$time .= '<time class="updated" datetime="' . esc_attr( get_the_modified_date( 'c' ) ) . '">' . esc_html( get_the_modified_date() ) . '</time>';
-
-		return $time;
 	}
 }

@@ -33,7 +33,7 @@ class Search extends Abstract_Component {
 	 */
 	public function init() {
 		$this->set_property( 'label', __( 'Search Form', 'neve' ) );
-		$this->set_property( 'id', self::COMPONENT_ID );
+		$this->set_property( 'id', $this->get_class_const( 'COMPONENT_ID' ) );
 		$this->set_property( 'width', 1 );
 	}
 
@@ -48,8 +48,9 @@ class Search extends Abstract_Component {
 		SettingsManager::get_instance()->add(
 			[
 				'id'                => self::PLACEHOLDER_ID,
-				'group'             => self::COMPONENT_ID,
-				'transport'         => 'post' . self::COMPONENT_ID,
+				'group'             => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'               => SettingsManager::TAB_GENERAL,
+				'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
 				'sanitize_callback' => 'wp_filter_nohtml_kses',
 				'default'           => __( 'Search for...', 'neve' ),
 				'label'             => __( 'Placeholder', 'neve' ),
@@ -81,7 +82,7 @@ class Search extends Abstract_Component {
 	 */
 	public function change_placeholder( $form ) {
 		$form        = '';
-		$placeholder = get_theme_mod( $this->id . '_placeholder', __( 'Search for...', 'neve' ) );
+		$placeholder = get_theme_mod( $this->get_id() . '_placeholder', __( 'Search for...', 'neve' ) );
 
 		$form .= '<form role="search" method="get" class="search-form" action="' . esc_url( home_url( '/' ) ) . '">';
 		$form .= '<label>';

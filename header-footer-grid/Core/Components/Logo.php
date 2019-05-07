@@ -13,7 +13,6 @@ namespace HFG\Core\Components;
 
 use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Main;
-use WP_Customize_Manager;
 
 /**
  * Class Logo.
@@ -36,7 +35,7 @@ class Logo extends Abstract_Component {
 	 */
 	public function init() {
 		$this->set_property( 'label', __( 'Logo & Site Identity', 'neve' ) );
-		$this->set_property( 'id', self::COMPONENT_ID );
+		$this->set_property( 'id', $this->get_class_const( 'COMPONENT_ID' ) );
 		$this->set_property( 'width', 2 );
 		$this->set_property( 'section', 'title_tagline' );
 	}
@@ -49,11 +48,25 @@ class Logo extends Abstract_Component {
 	 */
 	public function add_settings() {
 
+		SettingsManager::get_instance()->add_controls_to_tabs(
+			$this->get_class_const( 'COMPONENT_ID' ),
+			array(
+				SettingsManager::TAB_GENERAL => array(
+					'custom_logo'     => array(),
+					'blogname'        => array(),
+					'blogdescription' => array(),
+					'blogdescription' => array(),
+					'site_icon'       => array(),
+				),
+			)
+		);
+
 		SettingsManager::get_instance()->add(
 			[
 				'id'                => self::SHOW_TAGLINE,
-				'group'             => self::COMPONENT_ID,
-				'transport'         => 'post' . self::COMPONENT_ID,
+				'group'             => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'               => SettingsManager::TAB_GENERAL,
+				'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
 				'sanitize_callback' => 'absint',
 				'default'           => 1,
 				'label'             => __( 'Show Site Tagline', 'neve' ),
@@ -68,8 +81,9 @@ class Logo extends Abstract_Component {
 		SettingsManager::get_instance()->add(
 			[
 				'id'                => self::SHOW_TITLE,
-				'group'             => self::COMPONENT_ID,
-				'transport'         => 'post' . self::COMPONENT_ID,
+				'group'             => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'               => SettingsManager::TAB_GENERAL,
+				'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
 				'sanitize_callback' => 'absint',
 				'default'           => 1,
 				'label'             => __( 'Show Site Title', 'neve' ),
@@ -84,8 +98,9 @@ class Logo extends Abstract_Component {
 		SettingsManager::get_instance()->add(
 			[
 				'id'                => self::MAX_WIDTH,
-				'group'             => self::COMPONENT_ID,
-				'transport'         => 'post' . self::COMPONENT_ID,
+				'group'             => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'               => SettingsManager::TAB_GENERAL,
+				'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
 				'sanitize_callback' => array( $this, 'sanitize_responsive_int_json' ),
 				'default'           => '{ "mobile": "120", "tablet": "120", "desktop": "120" }',
 				'label'             => __( 'Logo max width (px)', 'neve' ),
@@ -156,7 +171,7 @@ class Logo extends Abstract_Component {
 			);
 		}
 
-		return $css_array;
+		return parent::add_style( $css_array );
 	}
 
 

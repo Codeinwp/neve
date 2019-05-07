@@ -34,7 +34,7 @@ class Button extends Abstract_Component {
 	 */
 	public function init() {
 		$this->set_property( 'label', __( 'Button', 'neve' ) );
-		$this->set_property( 'id', self::COMPONENT_ID );
+		$this->set_property( 'id', $this->get_class_const( 'COMPONENT_ID' ) );
 		$this->set_property( 'width', 1 );
 		$this->set_property( 'section', 'header_button' );
 	}
@@ -51,8 +51,9 @@ class Button extends Abstract_Component {
 		SettingsManager::get_instance()->add(
 			[
 				'id'                => self::LINK_ID,
-				'group'             => self::COMPONENT_ID,
-				'transport'         => 'post' . self::COMPONENT_ID,
+				'group'             => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'               => SettingsManager::TAB_GENERAL,
+				'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
 				'sanitize_callback' => 'wp_filter_nohtml_kses',
 				'default'           => '#',
 				'label'             => __( 'Link', 'neve' ),
@@ -63,8 +64,9 @@ class Button extends Abstract_Component {
 		SettingsManager::get_instance()->add(
 			[
 				'id'                => self::TEXT_ID,
-				'group'             => self::COMPONENT_ID,
-				'transport'         => 'post' . self::COMPONENT_ID,
+				'group'             => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'               => SettingsManager::TAB_GENERAL,
+				'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
 				'sanitize_callback' => 'wp_filter_nohtml_kses',
 				'default'           => __( 'Button', 'neve' ),
 				'label'             => __( 'Text', 'neve' ),
@@ -73,6 +75,20 @@ class Button extends Abstract_Component {
 			]
 		);
 
+	}
+
+	/**
+	 * Method to add Component css styles.
+	 *
+	 * @param array $css_array An array containing css rules.
+	 *
+	 * @return array
+	 * @since   1.0.0
+	 * @access  public
+	 */
+	public function add_style( array $css_array = array() ) {
+		$this->default_selector = '.builder-item--' . $this->get_id() . ' > .component-wrap > :first-child';
+		return parent::add_style( $css_array );
 	}
 
 	/**

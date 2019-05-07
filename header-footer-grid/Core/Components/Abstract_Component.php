@@ -26,7 +26,9 @@ use WP_Customize_Manager;
 abstract class Abstract_Component implements Component {
 	use Core;
 
-	const ALIGNAMENT_ID = 'component_align';
+	const ALIGNMENT_ID = 'component_align';
+	const PADDING_ID   = 'component_padding';
+	const MARGIN_ID    = 'component_margin';
 	/**
 	 * Current id of the component.
 	 *
@@ -121,6 +123,27 @@ abstract class Abstract_Component implements Component {
 	 * @var string $builder_id Builder id.
 	 */
 	private $builder_id;
+	/**
+	 * Can override the default css selector.
+	 * Allows child components to specify their own selector for inherited style rules.
+	 *
+	 * @since   1.0.0
+	 * @access  protected
+	 * @var null|string $default_selector
+	 */
+	protected $default_selector = null;
+	/**
+	 * Default media selectors for device.
+	 *
+	 * @since   1.0.1
+	 * @access  protected
+	 * @var array $media_selectors The device and css media selector pairing.
+	 */
+	protected $media_selectors = array(
+		'mobile'  => ' @media (max-width: 576px)',
+		'tablet'  => ' @media (min-width: 576px)',
+		'desktop' => ' @media (min-width: 961px)',
+	);
 
 	/**
 	 * Abstract_Component constructor.
@@ -135,6 +158,33 @@ abstract class Abstract_Component implements Component {
 			$this->set_property( 'section', $this->get_id() );
 		}
 		add_action( 'init', [ $this, 'define_settings' ] );
+	}
+
+	/**
+	 * Allow for constant changes in pro.
+	 *
+	 * @since   1.0.0
+	 * @access  protected
+	 * @param string $const Name of the constant.
+	 *
+	 * @return mixed
+	 */
+	protected function get_class_const( $const ) {
+		if ( defined( 'static::' . $const ) ) {
+			return constant( 'static::' . $const );
+		}
+		return '';
+	}
+
+	/**
+	 * Method to filter component loading if needed.
+	 *
+	 * @since   1.0.1
+	 * @access public
+	 * @return bool
+	 */
+	public function is_active() {
+		return true;
 	}
 
 	/**
@@ -222,8 +272,9 @@ abstract class Abstract_Component implements Component {
 
 		SettingsManager::get_instance()->add(
 			[
-				'id'                => self::ALIGNAMENT_ID,
+				'id'                => self::ALIGNMENT_ID,
 				'group'             => $this->get_id(),
+				'tab'               => SettingsManager::TAB_LAYOUT,
 				'transport'         => 'post' . $this->get_builder_id(),
 				'sanitize_callback' => 'wp_filter_nohtml_kses',
 				'default'           => $this->default_align,
@@ -235,6 +286,98 @@ abstract class Abstract_Component implements Component {
 						'center' => 'dashicons-editor-aligncenter',
 						'right'  => 'dashicons-editor-alignright',
 					],
+				],
+				'section'           => $this->section,
+			]
+		);
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'                => self::PADDING_ID,
+				'group'             => $this->get_id(),
+				'tab'               => SettingsManager::TAB_LAYOUT,
+				'transport'         => 'post' . $this->get_id(),
+				'sanitize_callback' => array( $this, 'sanitize_spacing_array' ),
+				'default'           => array(
+					'desktop'      => array(
+						'top'    => '',
+						'right'  => '',
+						'bottom' => '',
+						'left'   => '',
+					),
+					'tablet'       => array(
+						'top'    => '',
+						'right'  => '',
+						'bottom' => '',
+						'left'   => '',
+					),
+					'mobile'       => array(
+						'top'    => '',
+						'right'  => '',
+						'bottom' => '',
+						'left'   => '',
+					),
+					'desktop-unit' => 'px',
+					'tablet-unit'  => 'px',
+					'mobile-unit'  => 'px',
+				),
+				'label'             => __( 'Padding', 'neve' ),
+				'type'              => '\HFG\Core\Customizer\SpacingControl',
+				'options'           => [
+					'linked_choices' => true,
+					'unit_choices'   => array( 'px', 'em', '%' ),
+					'choices'        => array(
+						'top'    => __( 'Top', 'neve' ),
+						'right'  => __( 'Right', 'neve' ),
+						'bottom' => __( 'Bottom', 'neve' ),
+						'left'   => __( 'Left', 'neve' ),
+					),
+				],
+				'section'           => $this->section,
+			]
+		);
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'                => self::MARGIN_ID,
+				'group'             => $this->get_id(),
+				'tab'               => SettingsManager::TAB_LAYOUT,
+				'transport'         => 'post' . $this->get_id(),
+				'sanitize_callback' => array( $this, 'sanitize_spacing_array' ),
+				'default'           => array(
+					'desktop'      => array(
+						'top'    => '',
+						'right'  => '',
+						'bottom' => '',
+						'left'   => '',
+					),
+					'tablet'       => array(
+						'top'    => '',
+						'right'  => '',
+						'bottom' => '',
+						'left'   => '',
+					),
+					'mobile'       => array(
+						'top'    => '',
+						'right'  => '',
+						'bottom' => '',
+						'left'   => '',
+					),
+					'desktop-unit' => 'px',
+					'tablet-unit'  => 'px',
+					'mobile-unit'  => 'px',
+				),
+				'label'             => __( 'Margin', 'neve' ),
+				'type'              => '\HFG\Core\Customizer\SpacingControl',
+				'options'           => [
+					'linked_choices' => true,
+					'unit_choices'   => array( 'px', 'em', '%' ),
+					'choices'        => array(
+						'top'    => __( 'Top', 'neve' ),
+						'right'  => __( 'Right', 'neve' ),
+						'bottom' => __( 'Bottom', 'neve' ),
+						'left'   => __( 'Left', 'neve' ),
+					),
 				],
 				'section'           => $this->section,
 			]
@@ -279,6 +422,8 @@ abstract class Abstract_Component implements Component {
 			)
 		);
 
+		$wp_customize->register_control_type( '\HFG\Core\Customizer\SpacingControl' );
+
 		Settings\Manager::get_instance()->load( $this->get_id(), $wp_customize );
 
 		$wp_customize->selective_refresh->add_partial(
@@ -308,6 +453,64 @@ abstract class Abstract_Component implements Component {
 	}
 
 	/**
+	 * Write position styles and filter values.
+	 *
+	 * @since   1.0.1
+	 * @access  protected
+	 * @param string $target CSS target property ( margin | padding ).
+	 * @param string $top Top value.
+	 * @param string $right Right value.
+	 * @param string $bottom Bottom value.
+	 * @param string $left Left value.
+	 * @param string $unit Unit to use ( px | em | % ).
+	 *
+	 * @return array
+	 */
+	protected function css_position_filter( $target, $top = '', $right = '', $bottom = '', $left = '', $unit = 'px' ) {
+		if ( empty( $target ) && ! in_array( $target, array( 'margin', 'padding' ) ) ) {
+			return array();
+		}
+
+		$result = array();
+		$params = compact( 'top', 'right', 'bottom', 'left' );
+		foreach ( $params as $pos => $value ) {
+			if ( $value !== '' ) {
+				$result[ $target . '-' . $pos ] = $value . $unit;
+			}
+		}
+		return $result;
+	}
+
+	/**
+	 * Method to reuse loop for generating position css.
+	 *
+	 * @since   1.0.1
+	 * @access  protected
+	 * @param array  $css_array The css array.
+	 * @param array  $position_values The position values array.
+	 * @param string $selector The item selector.
+	 * @param string $type The type to generate ( margin | padding ).
+	 *
+	 * @return mixed
+	 */
+	protected function generate_position_css( $css_array, $position_values, $selector, $type = 'margin' ) {
+		foreach ( $this->media_selectors as $device => $media_selector ) {
+			if ( isset( $position_values[ $device ] ) ) {
+				$position_filter = $this->css_position_filter( $type, $position_values[ $device ]['top'], $position_values[ $device ]['right'], $position_values[ $device ]['bottom'], $position_values[ $device ]['left'], $position_values[ $device . '-unit' ] );
+				if ( empty( $position_filter ) ) {
+					continue;
+				}
+				if ( ! isset( $css_array[ $media_selector ][ $selector ] ) || empty( $css_array[ $media_selector ][ $selector ] ) ) {
+					$css_array[ $media_selector ][ $selector ] = $position_filter;
+					continue;
+				}
+				$css_array[ $media_selector ][ $selector ] = array_merge( $css_array[ $media_selector ][ $selector ], $position_filter );
+			}
+		}
+		return $css_array;
+	}
+
+	/**
 	 * Method to add Component css styles.
 	 *
 	 * @param array $css_array An array containing css rules.
@@ -317,6 +520,17 @@ abstract class Abstract_Component implements Component {
 	 * @access  public
 	 */
 	public function add_style( array $css_array = array() ) {
+		$layout_padding = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::PADDING_ID, null );
+		$selector       = '.builder-item--' . $this->get_id() . ' > :not(.customize-partial-edit-shortcut):first-of-type';
+		if ( $this->default_selector !== null ) {
+			$selector = $this->default_selector;
+		}
+		$css_array = $this->generate_position_css( $css_array, $layout_padding, $selector, 'padding' );
+
+		$layout_margin = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::MARGIN_ID, null );
+		$selector      = '.builder-item--' . $this->get_id();
+		$css_array     = $this->generate_position_css( $css_array, $layout_margin, $selector, 'margin' );
+
 		return $css_array;
 	}
 

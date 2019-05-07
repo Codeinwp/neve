@@ -1,12 +1,12 @@
 {
   "content_file": "https://demo.themeisle.com/neve-vet-center/wp-content/uploads/sites/168/ti-demo-data/export.xml",
   "theme_mods": {
-    "custom_css_post_id": "156",
+    "custom_css_post_id": 156,
     "neve_theme_color": "#7c5e92",
-    "neve_link_color": "#555555",
-    "neve_link_hover_color": "#81c042",
-    "neve_text_color": "#555555",
-    "neve_top_bar_enable": "1",
+    "neve_link_color": "#0366d6",
+    "neve_link_hover_color": "#0366d6",
+    "neve_text_color": "#2d2d2d",
+    "neve_top_bar_enable": true,
     "neve_top_bar_layout": "menu-content",
     "neve_top_bar_content": "<a href=\"tel:+40722555888\"><i class=\"fa fa-phone\" style=\"margin-right: 3px\"></i>0722555888</a>",
     "neve_footer_content_type": "text",
@@ -15,18 +15,33 @@
     "neve_default_sidebar_layout": "full-width",
     "neve_blog_archive_sidebar_layout": "full-width",
     "neve_single_post_sidebar_layout": "full-width",
-    "neve_body_font_family": "Muli",
+    "neve_body_font_family": "Rubik",
     "neve_body_font_size": "{\"suffix\":{\"mobile\":\"px\",\"tablet\":\"px\",\"desktop\":\"px\"},\"mobile\":15,\"tablet\":16,\"desktop\":16}",
     "neve_footer_text": "<p><a href=\"https://themeisle.com/themes/neve/\" rel=\"nofollow\">Neve Vet Center</a> | Powered by <a href=\"http://wordpress.org\" rel=\"nofollow\">WordPress</a></p>",
     "neve_menu_item_hover_color": "#81c042",
     "neve_last_menu_item": "none",
-    "neve_button_color": "#81c042",
+    "neve_button_color": "#53ba7b",
     "neve_menu_item_color": "#2e393f",
-    "neve_generated_style_version": "1554299660",
+    "neve_body_text_transform": "none",
+    "neve_headings_font_family": "Rubik",
+    "primary-menu_color": "#0366d6",
+    "secondary-menu_style": "style-plain",
+    "secondary-menu_color": "#ffffff",
+    "secondary-menu_hover_color": "#53ba7b",
+    "hfg_header_layout": "{\"desktop\":{\"top\":[{\"x\":6,\"y\":1,\"width\":6,\"height\":1,\"id\":\"custom_html\"}],\"main\":[{\"x\":0,\"y\":1,\"width\":4,\"height\":1,\"id\":\"logo\"},{\"x\":4,\"y\":1,\"width\":8,\"height\":1,\"id\":\"primary-menu\"}],\"bottom\":[]},\"mobile\":{\"top\":[],\"main\":[{\"x\":0,\"y\":1,\"width\":8,\"height\":1,\"id\":\"logo\"},{\"x\":8,\"y\":1,\"width\":4,\"height\":1,\"id\":\"nav-icon\"}],\"bottom\":[],\"sidebar\":[{\"x\":0,\"y\":1,\"width\":8,\"height\":1,\"id\":\"primary-menu\"}]}}",
+    "footer_copyright_content": "<p><a href=\"https://themeisle.com/themes/neve/\" rel=\"nofollow\">Neve</a> | Powered by <a href=\"http://wordpress.org\" rel=\"nofollow\">WordPress</a></p>",
+    "hfg_footer_layout": "{\"desktop\":{\"top\":[],\"bottom\":[{\"x\":0,\"y\":1,\"width\":12,\"height\":1,\"id\":\"footer_copyright\"}]}}",
+    "custom_html_content": "<i class=\"fa fa-phone\" style=\"margin-right: 3px\"></i> We are here for you <a href=\"tel:+4072000000\">072.0000.000</a>",
+    "hfg_header_layout_top_skin": "dark-mode",
+    "neve_generated_style_version": 1557233969,
     "__ti_import_menus_location": {
       "top-bar": "very-top-bar",
       "primary": "primary-menu"
     }
+  },
+  "wp_options": {
+    "elementor_disable_color_schemes": "yes",
+    "elementor_disable_typography_schemes": "yes"
   },
   "widgets": {
     "blog-sidebar": {
@@ -65,7 +80,7 @@
   },
   "default_off_recommended_plugins": null,
   "front_page": {
-    "front_page": "home-vet-center",
+    "front_page": "neve-vet-center-home-page",
     "blog_page": null
   },
   "shop_pages": null

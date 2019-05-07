@@ -341,6 +341,10 @@
   background: 100%;
 }
 
+.woocommerce .woocommerce-Reviews-title {
+  display: none;
+}
+
 .woocommerce div.product div.images .flex-control-thumbs {
   margin: 5px -5px 0;
   display: flex;
@@ -350,6 +354,39 @@
 
 .woocommerce div.product div.images .flex-control-thumbs li {
   padding: 5px;
+}
+
+.woocommerce ul.products.exclusive-products li.product,
+.woocommerce-page ul.products.exclusive-products li.product {
+  margin: 0;
+  clear: none;
+}
+
+section.exclusive .tns-nav {
+  text-align: center;
+}
+
+section.exclusive .tns-nav button {
+  background: none;
+  border: 1px solid #B7B7B7;
+  margin: 5px;
+  width: 8px;
+  height: 8px;
+  padding: 0;
+}
+
+section.exclusive .tns-nav button.tns-nav-active {
+  background: #404248;
+  border-color: #404248;
+}
+
+section.exclusive .tns-ovh {
+  overflow: hidden;
+}
+
+section.exclusive .tns-visually-hidden {
+  position: absolute;
+  right: -10000em;
 }
 
 .woocommerce-checkout.nv-without-title main {

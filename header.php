@@ -8,7 +8,7 @@
  * @since   1.0.0
  */
 
-
+$header_classes = apply_filters( 'nv_header_classes', 'header' );
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 
@@ -25,7 +25,7 @@
 <body <?php body_class(); ?> <?php echo wp_kses( apply_filters( 'neve_body_data_attrs', '' ), array( '[class]' => true ) ); ?>>
 <?php wp_body_open(); ?>
 <div class="wrapper">
-	<header class="header" role="banner">
+	<header class="<?php echo esc_attr( $header_classes ); ?>" role="banner">
 		<a class="neve-skip-link show-on-focus" href="#content" tabindex="0">
 			<?php echo __( 'Skip to content', 'neve' ); // WPCS: XSS ok. ?>
 		</a>

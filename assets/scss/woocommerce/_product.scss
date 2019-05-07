@@ -173,6 +173,10 @@
     border: 0;
     background: 0;
   }
+
+  .woocommerce-Reviews-title{
+    display: none;
+  }
 }
 
 //<editor-fold desc="Gallery">
@@ -211,4 +215,31 @@
       }
     }
   }
+}
+
+
+.woocommerce ul.products.exclusive-products li.product,
+.woocommerce-page ul.products.exclusive-products li.product{
+  margin: 0;
+  clear: none;
+}
+
+section.exclusive{
+  .tns-nav{
+    text-align: center;
+    button{
+      background: none;
+      border: 1px solid #B7B7B7;
+      margin: 5px;
+      width: 8px;
+      height: 8px;
+      padding: 0;
+      &.tns-nav-active{
+        background: #404248;
+        border-color: #404248;
+      }
+    }
+  }
+  .tns-ovh { overflow: hidden; }
+  .tns-visually-hidden { position: absolute; left: -10000em; }
 }

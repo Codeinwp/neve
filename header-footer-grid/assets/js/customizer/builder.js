@@ -1053,7 +1053,9 @@ let CustomizeBuilderV1;
 					did = true;
 				} else {
 					did = insertToFlag( node );
-					$( '#accordion-section-' + node.el[0].dataset.section ).removeClass( 'hfg-section-inactive' );
+					if ( node.el[0].dataset ) {
+						$( '#accordion-section-' + node.el[0].dataset.section ).removeClass( 'hfg-section-inactive' );
+					}
 				}
 
 				// console.log( 'Drop on X: ' + x + ', width: '+ w );
@@ -1323,7 +1325,9 @@ let CustomizeBuilderV1;
 
 				el.append( elItem );
 				that.updateGridFlag( el );
-				$( '#accordion-section-' + elItem[0].dataset.section ).removeClass( 'hfg-section-inactive' );
+				if ( elItem[0] ) {
+					$( '#accordion-section-' + elItem[0].dataset.section ).removeClass( 'hfg-section-inactive' );
+				}
 			},
 			addPanel: function( device ) {
 				let that = this;

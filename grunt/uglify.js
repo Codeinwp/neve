@@ -27,7 +27,6 @@ module.exports = {
 
 	unMinified: {
 		files: {
-			'./assets/js/script.js': [ './assets/js/src/*.js' ],
 			'./assets/js/customizer-controls.js': [ './inc/customizer/controls/js/*.js', './inc/addons/customizer/controls/js/*.js' ],
 			'./assets/js/customizer-preview.js': [ './assets/js/admin/src/customizer-controls.js', './inc/customizer/options/js/*.js', './inc/addons/customizer/options/js/*.js' ],
 		},

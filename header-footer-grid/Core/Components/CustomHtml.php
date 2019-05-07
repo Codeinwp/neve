@@ -34,7 +34,7 @@ class CustomHtml extends Abstract_Component {
 	 */
 	public function init() {
 		$this->set_property( 'label', __( 'HTML', 'neve' ) );
-		$this->set_property( 'id', self::COMPONENT_ID );
+		$this->set_property( 'id', $this->get_class_const( 'COMPONENT_ID' ) );
 		$this->set_property( 'width', 2 );
 	}
 
@@ -49,8 +49,9 @@ class CustomHtml extends Abstract_Component {
 		SettingsManager::get_instance()->add(
 			[
 				'id'                => self::CONTENT_ID,
-				'group'             => self::COMPONENT_ID,
-				'transport'         => 'post' . self::COMPONENT_ID,
+				'group'             => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'               => SettingsManager::TAB_GENERAL,
+				'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
 				'sanitize_callback' => 'wp_kses_post',
 				'default'           => get_theme_mod( 'neve_top_bar_content', '' ),
 				'preview_default'   => '',

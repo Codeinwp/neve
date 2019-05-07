@@ -84,18 +84,18 @@ abstract class Abstract_Builder implements Builder {
 	 * Holds the title.
 	 *
 	 * @since   1.0.0
-	 * @access  protected
+	 * @access  public
 	 * @var string $title
 	 */
-	protected $title;
+	public $title;
 	/**
 	 * Holds the description.
 	 *
 	 * @since   1.0.1
-	 * @access  protected
+	 * @access  public
 	 * @var string $description
 	 */
-	protected $description;
+	public $description;
 
 	/**
 	 * A list of panel keys to be removed.
@@ -161,7 +161,7 @@ abstract class Abstract_Builder implements Builder {
 	/**
 	 * Method to set protected properties for class.
 	 *
-	 * @param string $key The property key name.
+	 * @param string $key   The property key name.
 	 * @param string $value The property value.
 	 *
 	 * @return bool
@@ -224,11 +224,34 @@ abstract class Abstract_Builder implements Builder {
 			]
 		);
 
+		if ( $row_id === 'sidebar' ) {
+			SettingsManager::get_instance()->add(
+				[
+					'id'                => self::LAYOUT_SETTING,
+					'group'             => $row_setting_id,
+					'tab'               => SettingsManager::TAB_LAYOUT,
+					'label'             => __( 'Layout', 'neve' ),
+					'type'              => 'select',
+					'section'           => $row_setting_id,
+					'options'           => [
+						'choices' => [
+							'slide_left' => __( 'Slide from Left', 'neve' ),
+							'dropdown'   => __( 'Toggle Dropdown', 'neve' ),
+						],
+					],
+					'transport'         => 'refresh',
+					'sanitize_callback' => 'wp_filter_nohtml_kses',
+					'default'           => 'slide_left',
+				]
+			);
+		}
+
 		if ( $row_id !== 'sidebar' ) {
 			SettingsManager::get_instance()->add(
 				[
 					'id'                => self::LAYOUT_SETTING,
 					'group'             => $row_setting_id,
+					'tab'               => SettingsManager::TAB_LAYOUT,
 					'label'             => __( 'Layout', 'neve' ),
 					'type'              => 'select',
 					'section'           => $row_setting_id,
@@ -248,6 +271,7 @@ abstract class Abstract_Builder implements Builder {
 				[
 					'id'                => self::HEIGHT_SETTING,
 					'group'             => $row_setting_id,
+					'tab'               => SettingsManager::TAB_STYLE,
 					'section'           => $row_setting_id,
 					'label'             => __( 'Row height (px)', 'neve' ),
 					'type'              => '\Neve\Customizer\Controls\Range',
@@ -278,12 +302,15 @@ abstract class Abstract_Builder implements Builder {
 					'default'           => '{ "mobile": "0", "tablet": "0", "desktop": "0" }',
 				]
 			);
+
+			do_action( 'hfg_add_settings_to_rows', SettingsManager::get_instance(), $row_setting_id, $row_id, $this->get_id() );
 		}
 
 		SettingsManager::get_instance()->add(
 			[
 				'id'                => self::SKIN_SETTING,
 				'group'             => $row_setting_id,
+				'tab'               => SettingsManager::TAB_STYLE,
 				'label'             => __( 'Skin Mode', 'neve' ),
 				'section'           => $row_setting_id,
 				'type'              => '\Neve\Customizer\Controls\Radio_Image',
@@ -414,6 +441,7 @@ abstract class Abstract_Builder implements Builder {
 				'description'    => $description,
 			)
 		);
+
 		$wp_customize->add_section(
 			$this->section,
 			array(
@@ -435,6 +463,8 @@ abstract class Abstract_Builder implements Builder {
 				'render_callback' => array( $this, 'render' ),
 			)
 		);
+
+		$wp_customize = apply_filters( 'hfg_after_builder_' . $this->get_id() . '_registered', $wp_customize, $this );
 
 		return $wp_customize;
 	}
@@ -604,13 +634,15 @@ abstract class Abstract_Builder implements Builder {
 			);
 		}
 
+		$css_array = apply_filters( 'neve_row_style', $css_array, $this->control_id, $this->get_id(), $row_index, $selector );
+
 		return $css_array;
 	}
 
 	/**
 	 * Render device markup.
 	 *
-	 * @param string $device_name Device id.
+	 * @param string $device_name    Device id.
 	 * @param array  $device_details Device meta.
 	 */
 	public function render_device( $device_name, $device_details ) {
@@ -627,7 +659,7 @@ abstract class Abstract_Builder implements Builder {
 	 * Render components in the row.
 	 *
 	 * @param null|string $device Device id.
-	 * @param null|array  $row Row details.
+	 * @param null|array  $row    Row details.
 	 */
 	public function render_components( $device = null, $row = null ) {
 
@@ -671,7 +703,7 @@ abstract class Abstract_Builder implements Builder {
 			$component = $this->builder_components[ $component_location['id'] ];
 			$x         = intval( $component_location['x'] );
 			$width     = intval( $component_location['width'] );
-			$align     = SettingsManager::get_instance()->get( $component_location['id'] . '_' . Abstract_Component::ALIGNAMENT_ID, null );
+			$align     = SettingsManager::get_instance()->get( $component_location['id'] . '_' . Abstract_Component::ALIGNMENT_ID, null );
 
 			if ( ! $collection->hasNext() && ( $x + $width < $max_columns ) ) {
 				$width += $max_columns - ( $x + $width );
@@ -732,9 +764,11 @@ abstract class Abstract_Builder implements Builder {
 		 *
 		 * @var Abstract_Component $component
 		 */
-		$component                                        = new $component_to_add( $this->panel );
-		$this->builder_components[ $component->get_id() ] = $component;
-		$component->assign_builder( $this->get_id() );
+		$component = new $component_to_add( $this->panel );
+		if ( $component->is_active() ) {
+			$this->builder_components[ $component->get_id() ] = $component;
+			$component->assign_builder( $this->get_id() );
+		}
 
 		return true;
 	}
