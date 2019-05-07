@@ -117,12 +117,12 @@ class Front_End {
 						'url'   => 'https://demo.themeisle.com/neve/',
 						'title' => 'Original',
 					),
-          'neve-restaurant'    => array(
+					'neve-restaurant'    => array(
 						'url'              => 'https://demo.themeisle.com/neve-restaurant/',
 						'title'            => 'Restaurant',
 						'unsplash_gallery' => 'https://unsplash.com/collections/4587624/restaurant',
 					),
-          'neve-charity'       => array(
+					'neve-charity'       => array(
 						'url'              => 'https://demo.themeisle.com/neve-charity/',
 						'title'            => 'Charity',
 						'unsplash_gallery' => 'https://unsplash.com/collections/4587605/charity',
@@ -132,7 +132,7 @@ class Front_End {
 						'title'            => 'Vet Center',
 						'unsplash_gallery' => 'https://unsplash.com/collections/4587611/vet-center',
 					),
-          'neve-doctors'       => array(
+					'neve-doctors'       => array(
 						'url'              => 'https://demo.themeisle.com/neve-doctors/',
 						'title'            => 'Doctors',
 						'unsplash_gallery' => 'https://unsplash.com/collections/4587593/doctor',
@@ -153,10 +153,10 @@ class Front_End {
 						'url'   => 'https://demo.themeisle.com/neve-shop/',
 						'title' => 'Shop',
 					),
-          'neve-zelle'         => array(
-              'url'   => 'https://demo.themeisle.com/neve-zelle/',
-              'title' => 'Travel Agency',
-          ),
+					'neve-zelle'         => array(
+						'url'   => 'https://demo.themeisle.com/neve-zelle/',
+						'title' => 'Travel Agency',
+					),
 				),
 			),
 
