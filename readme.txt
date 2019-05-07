@@ -338,9 +338,8 @@ All  images are licensed under CC0.
 * Neve Main: video-bg.jpg, CC0, https://mystock.themeisle.com/photo/cloudy-sunset/
 * Neve Main: winter-forest.jpg, CC0, https://mystock.themeisle.com/photo/winter-forest/
 * Neve Main: neve-onboarding-placeholder (used as placeholder), CC0, https://mystock.themeisle.com/photo/wood/
-* Neve Vet Center: neve-vet-center-big-title1.jpg, CC0, https://mystock.themeisle.com/photo/squirrel-2/
-* Neve Vet Center: neve-vet-center-testify.jpg, CC0, https://mystock.themeisle.com/photo/beagle-puppy/
-* Neve Vet Center: neve-vet-center-testify-cat.jpg, CC0, https://mystock.themeisle.com/photo/cat-2/
+* Neve Vet Center ( screenshot ): CC0 https://mystock.themeisle.com/photo/street-dog-sitting-on-a-beach/
+* Neve Vet Center ( screenshot ): CC0 https://mystock.themeisle.com/photo/dog-4/
 * Neve Energy: neve-energy-bg-title.jpg (also used in screenshot), CC0, https://mystock.themeisle.com/photo/citylights/
 * Neve Energy: neve-energy-testimony.jpg, CC0, https://mystock.themeisle.com/photo/train-station/
 * Neve Energy: neve-energy-sustainability.jpg, CC0, https://mystock.themeisle.com/photo/windmill/
@@ -381,6 +380,6 @@ All  images are licensed under CC0.
 * Neve Shop (screenshot): https://stocksnap.io/photo/1CXI0CSPE5
 * Neve Shop (screenshot): https://stocksnap.io/photo/JBCWCLO4JI
 * Neve Shop (screenshot): https://stocksnap.io/photo/AEENLCARXY
-* Neve Restaurant ( screenshot ): https://stocksnap.io/photo/3IRQDGCL7J
-* Neve Restaurant ( screenshot ): https://stocksnap.io/photo/ZPMWWMHBDE
-* Neve Restaurant ( screenshot ): https://stocksnap.io/photo/2HEQC6X2DF
+* Neve Restaurant ( screenshot ): CC0 https://stocksnap.io/photo/3IRQDGCL7J
+* Neve Restaurant ( screenshot ): CC0 https://stocksnap.io/photo/ZPMWWMHBDE
+* Neve Restaurant ( screenshot ): CC0 https://stocksnap.io/photo/2HEQC6X2DF
