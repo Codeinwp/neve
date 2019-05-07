@@ -108,31 +108,35 @@ class Front_End {
 		$theme_name    = apply_filters( 'ti_wl_theme_name', $theme_options->__get( 'Name' ) );
 
 		$this->onboarding_config = array(
-			'editors'     => array(
+			'editors' => array(
 				'elementor',
 			),
-			'local'       => array(
+			'local'   => array(
 				'elementor' => array(
 					'neve-main'          => array(
 						'url'   => 'https://demo.themeisle.com/neve/',
 						'title' => 'Original',
 					),
-                    'neve-restaurant'    => array(
-                        'url'   => 'https://demo.themeisle.com/neve-restaurant/',
-                        'title' => 'Restaurant',
-                    ),
-                    'neve-charity'       => array(
-                        'url'   => 'https://demo.themeisle.com/neve-charity/',
-                        'title' => 'Charity',
-                    ),
-					'neve-vet-center'    => array(
-						'url'   => 'https://demo.themeisle.com/neve-vet-center/',
-						'title' => 'Vet Center',
+          'neve-restaurant'    => array(
+						'url'              => 'https://demo.themeisle.com/neve-restaurant/',
+						'title'            => 'Restaurant',
+						'unsplash_gallery' => 'https://unsplash.com/collections/4587624/restaurant',
 					),
-                    'neve-doctors'       => array(
-                        'url'   => 'https://demo.themeisle.com/neve-doctors/',
-                        'title' => 'Doctors',
-                    ),
+          'neve-charity'       => array(
+						'url'              => 'https://demo.themeisle.com/neve-charity/',
+						'title'            => 'Charity',
+						'unsplash_gallery' => 'https://unsplash.com/collections/4587605/charity',
+					),
+					'neve-vet-center'    => array(
+						'url'              => 'https://demo.themeisle.com/neve-vet-center/',
+						'title'            => 'Vet Center',
+						'unsplash_gallery' => 'https://unsplash.com/collections/4587611/vet-center',
+					),
+          'neve-doctors'       => array(
+						'url'              => 'https://demo.themeisle.com/neve-doctors/',
+						'title'            => 'Doctors',
+						'unsplash_gallery' => 'https://unsplash.com/collections/4587593/doctor',
+					),
 					'neve-energy-panels' => array(
 						'url'   => 'https://demo.themeisle.com/neve-energy-panels/',
 						'title' => 'Energy Panels',
@@ -149,10 +153,10 @@ class Front_End {
 						'url'   => 'https://demo.themeisle.com/neve-shop/',
 						'title' => 'Shop',
 					),
-                    'neve-zelle'         => array(
-                        'url'   => 'https://demo.themeisle.com/neve-zelle/',
-                        'title' => 'Travel Agency',
-                    ),
+          'neve-zelle'         => array(
+              'url'   => 'https://demo.themeisle.com/neve-zelle/',
+              'title' => 'Travel Agency',
+          ),
 				),
 			),
 

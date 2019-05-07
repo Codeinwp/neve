@@ -37,6 +37,10 @@
       "primary": "main"
     }
   },
+  "wp_options": {
+    "elementor_disable_typography_schemes": "yes",
+    "elementor_disable_color_schemes": "yes"
+  },
   "widgets": {
     "blog-sidebar": {
       "search-2": {
