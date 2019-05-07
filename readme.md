@@ -355,17 +355,6 @@ All  images are licensed under CC0.
 * Neve Lawyers: office-2820890.jpg, CC0, https://pixabay.com/en/office-attorney-reading-read-laws-2820890/
 * Neve Lawyers: men-2608581.jpg, CC0, https://pixabay.com/en/men-women-people-group-walk-busy-2608581/
 * Neve Lawyers: police-850055.jpg, CC0, https://pixabay.com/en/police-crime-scene-blue-light-850054/
-* Neve Doctors: medical-3447369 (also used in screenshot), CC0,  https://pixabay.com/en/medical-care-health-healthcare-3447369/
-* Neve Doctors: nurse-2019420, CC0, https://pixabay.com/en/nurse-medicine-doctor-hospital-2019420/
-* Neve Doctors: dr-2157993, CC0, https://pixabay.com/en/dr-doctor-women-professional-2157993/
-* Neve Doctors: dentist-1191671, CC0, https://pixabay.com/en/dentist-doctor-1191671/
-* Neve Doctors: architecture-931283, CC0, https://pixabay.com/en/architecture-buildings-hospital-931283/
-* Neve Doctors: pills-3673645, CC0, https://pixabay.com/en/pills-medicine-medical-health-drug-3673645/
-* Neve Doctors: bach-flowers-1472825, CC0, https://pixabay.com/en/bach-flowers-bach-remedies-1472825/
-* Neve Doctors: feng-shui-1927590, CC0, https://pixabay.com/en/feng-shui-zen-stones-texture-1927590/
-* Neve Doctors: sunburn-2117350, CC0, https://pixabay.com/en/sunburn-skin-red-flushed-2117350/
-* Neve Doctors: teeth-1652976, CC0, https://pixabay.com/en/teeth-dentist-dental-mouth-tooth-1652976/
-* Neve Doctors: adult-1868750, CC0, https://pixabay.com/en/adult-bald-beard-corporate-1868750/
 * Neve Charity: children-63175, CC0, https://pixabay.com/en/children-afghanistan-afghani-girl-63175/
 * Neve Gutenberg: street-at-night, CC0, https://mystock.themeisle.com/photo/street-at-night/
 * Neve Scholar: neve-scholar-big-title (used only in screenshot), https://www.pexels.com/photo/men-s-wearing-black-suit-jacket-and-pants-937481/
@@ -383,3 +372,4 @@ All  images are licensed under CC0.
 * Neve Restaurant ( screenshot ): CC0 https://stocksnap.io/photo/3IRQDGCL7J
 * Neve Restaurant ( screenshot ): CC0 https://stocksnap.io/photo/ZPMWWMHBDE
 * Neve Restaurant ( screenshot ): CC0 https://stocksnap.io/photo/2HEQC6X2DF
+* Neve Doctors ( screenshot ): CC0 https://stocksnap.io/photo/GSBJXWRSDV

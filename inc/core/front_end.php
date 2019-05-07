@@ -117,10 +117,22 @@ class Front_End {
 						'url'   => 'https://demo.themeisle.com/neve/',
 						'title' => 'Original',
 					),
+                    'neve-restaurant'    => array(
+                        'url'   => 'https://demo.themeisle.com/neve-restaurant/',
+                        'title' => 'Restaurant',
+                    ),
+                    'neve-charity'       => array(
+                        'url'   => 'https://demo.themeisle.com/neve-charity/',
+                        'title' => 'Charity',
+                    ),
 					'neve-vet-center'    => array(
 						'url'   => 'https://demo.themeisle.com/neve-vet-center/',
 						'title' => 'Vet Center',
 					),
+                    'neve-doctors'       => array(
+                        'url'   => 'https://demo.themeisle.com/neve-doctors/',
+                        'title' => 'Doctors',
+                    ),
 					'neve-energy-panels' => array(
 						'url'   => 'https://demo.themeisle.com/neve-energy-panels/',
 						'title' => 'Energy Panels',
@@ -129,30 +141,18 @@ class Front_End {
 						'url'   => 'https://demo.themeisle.com/neve-lawyers/',
 						'title' => 'Lawyers',
 					),
-					'neve-restaurant'    => array(
-						'url'   => 'https://demo.themeisle.com/neve-restaurant/',
-						'title' => 'Restaurant',
-					),
 					'neve-freelancer'    => array(
 						'url'   => 'https://demo.themeisle.com/neve-freelancer/',
 						'title' => 'Freelancer',
-					),
-					'neve-zelle'         => array(
-						'url'   => 'https://demo.themeisle.com/neve-zelle/',
-						'title' => 'Travel Agency',
-					),
-					'neve-charity'       => array(
-						'url'   => 'https://demo.themeisle.com/neve-charity/',
-						'title' => 'Charity',
-					),
-					'neve-doctors'       => array(
-						'url'   => 'https://demo.themeisle.com/neve-doctors/',
-						'title' => 'Doctors',
 					),
 					'neve-shop'          => array(
 						'url'   => 'https://demo.themeisle.com/neve-shop/',
 						'title' => 'Shop',
 					),
+                    'neve-zelle'         => array(
+                        'url'   => 'https://demo.themeisle.com/neve-zelle/',
+                        'title' => 'Travel Agency',
+                    ),
 				),
 			),
 
