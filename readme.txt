@@ -17,6 +17,18 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog == 
+= 2.3.7 - 2019-05-07  = 
+
+* New Margin and Padding controls for each header builder component
+* Reorganized layout for the header/footer builder using tabs
+* Option for the mobile menu to slide from the left side or dropdown toggle
+* Basic compatibility with LifterLMS plugin
+* New Exclusive Products section on single product pages
+* Added animations to the main Gutenberg starter site
+* Updates for the Doctors, Restaurant, Vet Center starter sites
+* Updates for the latest version of Otter Blocks
+
+
 = 2.3.6 - 2019-04-22  = 
 
 * Fixed primary menu in AMP mode
