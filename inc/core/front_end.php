@@ -108,18 +108,19 @@ class Front_End {
 		$theme_name    = apply_filters( 'ti_wl_theme_name', $theme_options->__get( 'Name' ) );
 
 		$this->onboarding_config = array(
-			'editors'     => array(
+			'editors' => array(
 				'elementor',
 			),
-			'local'       => array(
+			'local'   => array(
 				'elementor' => array(
 					'neve-main'          => array(
 						'url'   => 'https://demo.themeisle.com/neve/',
 						'title' => 'Original',
 					),
 					'neve-vet-center'    => array(
-						'url'   => 'https://demo.themeisle.com/neve-vet-center/',
-						'title' => 'Vet Center',
+						'url'              => 'https://demo.themeisle.com/neve-vet-center/',
+						'title'            => 'Vet Center',
+						'unsplash_gallery' => 'https://unsplash.com/collections/4587611/vet-center',
 					),
 					'neve-energy-panels' => array(
 						'url'   => 'https://demo.themeisle.com/neve-energy-panels/',
@@ -130,8 +131,9 @@ class Front_End {
 						'title' => 'Lawyers',
 					),
 					'neve-restaurant'    => array(
-						'url'   => 'https://demo.themeisle.com/neve-restaurant/',
-						'title' => 'Restaurant',
+						'url'              => 'https://demo.themeisle.com/neve-restaurant/',
+						'title'            => 'Restaurant',
+						'unsplash_gallery' => 'https://unsplash.com/collections/4587624/restaurant',
 					),
 					'neve-freelancer'    => array(
 						'url'   => 'https://demo.themeisle.com/neve-freelancer/',
@@ -142,12 +144,14 @@ class Front_End {
 						'title' => 'Travel Agency',
 					),
 					'neve-charity'       => array(
-						'url'   => 'https://demo.themeisle.com/neve-charity/',
-						'title' => 'Charity',
+						'url'              => 'https://demo.themeisle.com/neve-charity/',
+						'title'            => 'Charity',
+						'unsplash_gallery' => 'https://unsplash.com/collections/4587605/charity',
 					),
 					'neve-doctors'       => array(
-						'url'   => 'https://demo.themeisle.com/neve-doctors/',
-						'title' => 'Doctors',
+						'url'              => 'https://demo.themeisle.com/neve-doctors/',
+						'title'            => 'Doctors',
+						'unsplash_gallery' => 'https://unsplash.com/collections/4587593/doctor',
 					),
 					'neve-shop'          => array(
 						'url'   => 'https://demo.themeisle.com/neve-shop/',
