@@ -165,6 +165,17 @@ class Gutenberg {
 	 * TODO: Really pull the sidebar setup from customizer.
 	 */
 	private function get_sidebar_setup() {
+		$post_type = '';
+		if ( isset( $_GET['post_type'] ) ) {
+			$post_type = sanitize_key( $_GET['post_type'] );
+		}
+		if ( isset( $_GET['post'] ) && get_post_type( (int) $_GET['post'] ) ) {
+			$post_type = get_post_type( (int) $_GET['post'] );
+		}
+		if ( $post_type === 'neve_custom_layouts' ) {
+			return 'none';
+		}
+
 		$context = 'single-post';
 		if ( $this->is_page() ) {
 			$context = 'single-page';
