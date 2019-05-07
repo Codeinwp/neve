@@ -115,15 +115,17 @@ class Post_Meta extends Base_View {
 	 * @return mixed
 	 */
 	private function sanitize_order_array( $order ) {
-		$allowed_order_values = array(
-			'author',
-			'date',
-			'category',
-			'comments',
-			'reading',
+		$allowed_order_values = apply_filters(
+			'neve_meta_filter',
+			array(
+				'author'   => __( 'Author', 'neve' ),
+				'category' => __( 'Category', 'neve' ),
+				'date'     => __( 'Date', 'neve' ),
+				'comments' => __( 'Comments', 'neve' ),
+			)
 		);
 		foreach ( $order as $index => $value ) {
-			if ( ! in_array( $value, $allowed_order_values ) ) {
+			if ( ! array_key_exists( $value, $allowed_order_values ) ) {
 				unset( $order[ $index ] );
 			}
 		}

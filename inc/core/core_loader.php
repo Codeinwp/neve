@@ -51,6 +51,7 @@ class Core_Loader {
 				'Views\Page_Header',
 				'Views\Post_Layout',
 				'Views\Page_Layout',
+				'Views\Product_Layout',
 				'Views\Content_None',
 
 				'Views\Layouts\Layout_Container',

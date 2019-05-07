@@ -1,4 +1,12 @@
 
+ ### v2.3.6 - 2019-04-22 
+ **Changes:** 
+ * Fixed primary menu in AMP mode
+* Notice for Otter Blocks for WordPress 5 users
+* Fixed vertical alignment in IE
+* Remove title appearing in the navigation cart in the latest update of WooCommerce
+* Updated the component alignment control in the header/footer builder
+ 
  ### v2.3.5 - 2019-04-15 
  **Changes:** 
  * Fixed header HTML component stripping HTML code
