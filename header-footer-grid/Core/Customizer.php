@@ -93,7 +93,9 @@ class Customizer {
 			$classes[] = 'customize-previewing';
 		}
 
-		$classes[] = 'menu_sidebar_slide_left';
+		$sidebar_class = 'menu_sidebar_' . get_theme_mod( 'hfg_header_layout_sidebar_layout', 'slide_left' );
+
+		$classes[] = $sidebar_class;
 
 		return $classes;
 	}

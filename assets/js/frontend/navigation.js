@@ -1,5 +1,5 @@
 /* jshint esversion: 6 */
-import { isMobile, neveEach, isBestBrowserEver as isIE, unhashUrl } from "./utils.js";
+import { isMobile, neveEach, isBestBrowserEver as isIE, unhashUrl } from './utils.js';
 
 let pageUrl;
 
@@ -17,6 +17,10 @@ export const initNavigation = function () {
   }
 };
 
+/**
+ * Reposition drop downs in case they go off screen.
+ * @returns {boolean}
+ */
 /**
  * Reposition drop downs in case they go off screen.
  * @returns {boolean}
@@ -115,6 +119,8 @@ function handleSearch () {
         search.classList.remove('active');
       });
       let overlay = document.querySelector('.nav-clickaway-overlay');
+      if (overlay === null)
+        return;
       overlay.parentNode.removeChild(overlay);
       html.classList.remove('menu-opened');
     });

@@ -17,6 +17,15 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog == 
+= 2.3.6 - 2019-04-22  = 
+
+* Fixed primary menu in AMP mode
+* Notice for Otter Blocks for WordPress 5 users
+* Fixed vertical alignment in IE
+* Remove title appearing in the navigation cart in the latest update of WooCommerce
+* Updated the component alignment control in the header/footer builder
+
+
 = 2.3.5 - 2019-04-15  = 
 
 * Fixed header HTML component stripping HTML code
@@ -329,9 +338,8 @@ All  images are licensed under CC0.
 * Neve Main: video-bg.jpg, CC0, https://mystock.themeisle.com/photo/cloudy-sunset/
 * Neve Main: winter-forest.jpg, CC0, https://mystock.themeisle.com/photo/winter-forest/
 * Neve Main: neve-onboarding-placeholder (used as placeholder), CC0, https://mystock.themeisle.com/photo/wood/
-* Neve Vet Center: neve-vet-center-big-title1.jpg, CC0, https://mystock.themeisle.com/photo/squirrel-2/
-* Neve Vet Center: neve-vet-center-testify.jpg, CC0, https://mystock.themeisle.com/photo/beagle-puppy/
-* Neve Vet Center: neve-vet-center-testify-cat.jpg, CC0, https://mystock.themeisle.com/photo/cat-2/
+* Neve Vet Center ( screenshot ): CC0 https://mystock.themeisle.com/photo/street-dog-sitting-on-a-beach/
+* Neve Vet Center ( screenshot ): CC0 https://mystock.themeisle.com/photo/dog-4/
 * Neve Energy: neve-energy-bg-title.jpg (also used in screenshot), CC0, https://mystock.themeisle.com/photo/citylights/
 * Neve Energy: neve-energy-testimony.jpg, CC0, https://mystock.themeisle.com/photo/train-station/
 * Neve Energy: neve-energy-sustainability.jpg, CC0, https://mystock.themeisle.com/photo/windmill/
@@ -347,50 +355,7 @@ All  images are licensed under CC0.
 * Neve Lawyers: office-2820890.jpg, CC0, https://pixabay.com/en/office-attorney-reading-read-laws-2820890/
 * Neve Lawyers: men-2608581.jpg, CC0, https://pixabay.com/en/men-women-people-group-walk-busy-2608581/
 * Neve Lawyers: police-850055.jpg, CC0, https://pixabay.com/en/police-crime-scene-blue-light-850054/
-* Neve Doctors: medical-3447369 (also used in screenshot), CC0,  https://pixabay.com/en/medical-care-health-healthcare-3447369/
-* Neve Doctors: nurse-2019420, CC0, https://pixabay.com/en/nurse-medicine-doctor-hospital-2019420/
-* Neve Doctors: dr-2157993, CC0, https://pixabay.com/en/dr-doctor-women-professional-2157993/
-* Neve Doctors: dentist-1191671, CC0, https://pixabay.com/en/dentist-doctor-1191671/
-* Neve Doctors: architecture-931283, CC0, https://pixabay.com/en/architecture-buildings-hospital-931283/
-* Neve Doctors: pills-3673645, CC0, https://pixabay.com/en/pills-medicine-medical-health-drug-3673645/
-* Neve Doctors: bach-flowers-1472825, CC0, https://pixabay.com/en/bach-flowers-bach-remedies-1472825/
-* Neve Doctors: feng-shui-1927590, CC0, https://pixabay.com/en/feng-shui-zen-stones-texture-1927590/
-* Neve Doctors: sunburn-2117350, CC0, https://pixabay.com/en/sunburn-skin-red-flushed-2117350/
-* Neve Doctors: teeth-1652976, CC0, https://pixabay.com/en/teeth-dentist-dental-mouth-tooth-1652976/
-* Neve Doctors: adult-1868750, CC0, https://pixabay.com/en/adult-bald-beard-corporate-1868750/
-* Neve Restaurant: restaurant-237060 (also used in screenshot), CC0, https://pixabay.com/en/restaurant-dinner-tables-yowani-237060/
-* Neve Restaurant: restaurant-691397, CC0, https://pixabay.com/en/restaurant-food-lunch-dinner-691397/
-* Neve Restaurant: breakfast-801827, CC0, https://pixabay.com/en/breakfast-buffet-food-restaurant-801827/
-* Neve Restaurant: cuisine-2248567, CC0, https://pixabay.com/en/cuisine-food-italian-antipasti-2248567/
-* Neve Restaurant: buffet-315691, CC0, https://pixabay.com/en/buffet-indian-food-spices-lunch-315691/
-* Neve Restaurant: restaurant-2602736, CC0, https://pixabay.com/en/restaurant-people-men-women-eating-2602736/
-* Neve Restaurant: restaurant-358238, CC0, https://pixabay.com/en/restaurant-glasses-drink-lichtspiel-358238/
-* Neve Restaurant: adult-2242162, CC0, https://pixabay.com/en/adult-beautiful-bride-card-2242162/
-* Neve Restaurant: restaurant-449952, CC0, https://pixabay.com/en/restaurant-wine-glasses-served-449952/
-* Neve Restaurant: food-263882, CC0, https://pixabay.com/en/food-soup-spinach-soup-bread-263881/
-* Neve Restaurant: tomatoes-1822185, CC0, https://pixabay.com/en/tomatoes-soup-vegetables-healthy-1822185/
-* Neve Restaurant: eat-2122072, CC0, https://pixabay.com/en/eat-onion-food-healthy-vegetables-2122072/
-* Neve Restaurant: cobb-salad-2736125, CC0, https://pixabay.com/en/cobb-salad-chicken-cobb-meal-2736125/
-* Neve Restaurant: waldorf-salad-3212344, CC0, https://pixabay.com/en/waldorf-salad-celery-apple-3212344/
-* Neve Restaurant: tomatoes-1603611, CC0, https://pixabay.com/en/tomatoes-tomato-quiche-red-yellow-1603611/
-* Neve Restaurant: chicken-3763827, CC0, https://pixabay.com/en/chicken-barbecue-grill-stuff-eat-3763827/
-* Neve Restaurant: spare-ribs-2225208, CC0, https://pixabay.com/en/spare-ribs-grill-bbq-sauce-2225208/
-* Neve Restaurant: fried-chicken-250863, CC0, https://pixabay.com/en/fried-chicken-chicken-fried-crunchy-250863/
-* Neve Restaurant: tuna-2418460, CC0, https://pixabay.com/en/tuna-grilled-bbq-food-healthy-2418460/
-* Neve Restaurant: grilled-3334579, CC0, https://pixabay.com/en/grilled-meat-grill-grilling-peace-3334579/
-* Neve Restaurant: thick-pig-roast-filet-izod-black-pepper-2336138, CC0, https://pixabay.com/en/thick-pig-roast-filet-izod-black-pepper%2C-2336138/
-* Neve Restaurant: cake-1850011, CC0, https://pixabay.com/en/cake-chocolate-chocolate-cake-1850011/
-* Neve Restaurant: cake-2459954, CC0, https://pixabay.com/en/cake-strawberries-2459954/
-* Neve Restaurant: sweet-1392724, CC0, https://pixabay.com/en/sweet-treat-hand-made-sweets-1392724/
-* Neve Restaurant: dessert-1373821, CC0, https://pixabay.com/en/dessert-cooking-sweet-dishes-sweets-1373821/
-* Neve Restaurant: tiramisu-2897900, CC0, https://pixabay.com/en/tiramisu-dessert-tiramisu-2897900/
-* Neve Restaurant: cream-puff-1694337, CC0, https://pixabay.com/en/cream-puff-pastries-bake-1694337/
-* Neve Restaurant: dinner-table-444434, CC0, https://pixabay.com/en/dinner-table-restaurant-dining-444434/
 * Neve Charity: children-63175, CC0, https://pixabay.com/en/children-afghanistan-afghani-girl-63175/
-* Neve Charity: africa-2179608, CC0, https://pixabay.com/en/africa-child-children-people-young-2179608/
-* Neve Charity: potion-1860939, CC0, https://pixabay.com/en/potion-poverty-misery-sadness-sdf-1860939/
-* Neve Charity: children-734891, CC0, https://pixabay.com/en/children-burundi-bottle-water-734891/
-* Neve Charity: trouser-pockets-1439412, CC0, https://pixabay.com/en/trouser-pockets-empty-jeans-1439412/
 * Neve Gutenberg: street-at-night, CC0, https://mystock.themeisle.com/photo/street-at-night/
 * Neve Scholar: neve-scholar-big-title (used only in screenshot), https://www.pexels.com/photo/men-s-wearing-black-suit-jacket-and-pants-937481/
 * Neve Scholar: neve-scholar-placeholder (used as placeholder), CC0, https://mystock.themeisle.com/photo/arid-earth/
@@ -404,3 +369,7 @@ All  images are licensed under CC0.
 * Neve Shop (screenshot): https://stocksnap.io/photo/1CXI0CSPE5
 * Neve Shop (screenshot): https://stocksnap.io/photo/JBCWCLO4JI
 * Neve Shop (screenshot): https://stocksnap.io/photo/AEENLCARXY
+* Neve Restaurant ( screenshot ): CC0 https://stocksnap.io/photo/3IRQDGCL7J
+* Neve Restaurant ( screenshot ): CC0 https://stocksnap.io/photo/ZPMWWMHBDE
+* Neve Restaurant ( screenshot ): CC0 https://stocksnap.io/photo/2HEQC6X2DF
+* Neve Doctors ( screenshot ): CC0 https://stocksnap.io/photo/GSBJXWRSDV

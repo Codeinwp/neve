@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!-- generator="WordPress/4.9.10" created="2019-04-08 15:11" -->
+<!-- generator="WordPress/5.1.1" created="2019-05-07 13:36" -->
 		<rss version="2.0"
 				xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
 				xmlns:content="http://purl.org/rss/1.0/modules/content/"
@@ -12,7 +12,7 @@
 				<title>My Shop</title>
 				<link>https://demo.themeisle.com/neve-shop</link>
 				<description></description>
-				<pubDate>Mon, 08 Apr 2019 15:11:55 +0000</pubDate>
+				<pubDate>Tue, 07 May 2019 13:36:04 +0000</pubDate>
 				<language>en-US</language>
 				<wp:wxr_version>1.2</wp:wxr_version>
 				<wp:base_site_url>https://demo.themeisle.com/</wp:base_site_url>
@@ -212,7 +212,7 @@
 									<wp:term><wp:term_id>23</wp:term_id><wp:term_taxonomy>nav_menu</wp:term_taxonomy><wp:term_slug><![CDATA[main]]></wp:term_slug><wp:term_name><![CDATA[Main]]></wp:term_name>
 </wp:term>
 
-				<generator>https://wordpress.org/?v=4.9.10</generator>
+				<generator>https://wordpress.org/?v=5.1.1</generator>
 
 						<item>
 			<title>
@@ -223,6 +223,7 @@
 			<description></description>
 			<content:encoded><![CDATA[/* CUSTOM CSS FOR YOUR CUSTOM NEVE STARTER SITE */
 /* Header */
+@media only screen and (min-width: 960px) {
 .home header {
 	z-index: 10;
 }
@@ -267,6 +268,7 @@
 	background-color: #ffffff;
 	color: #000000;
 }
+}
 /* Footer */
 .footer-top-inner {
 	padding: 30px 0px;
@@ -290,6 +292,70 @@
 			<wp:post_password><![CDATA[]]></wp:post_password>
 			<wp:is_sticky>0</wp:is_sticky>
 											</item>
+				<item>
+			<title>
+				Shop			</title>
+			<link>https://demo.themeisle.com/neve-shop/maxslider_slider/29/</link>
+			<pubDate>Wed, 06 Mar 2019 11:00:22 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-shop/?post_type=maxslider_slider&#038;p=29</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>29</wp:post_id>
+			<wp:post_date><![CDATA[2019-03-06 11:00:22]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-03-06 11:00:22]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[29]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[maxslider_slider]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+					<wp:meta_value><![CDATA[440]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_maxslider_slides]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:3:{i:0;a:15:{s:8:"image_id";s:2:"37";s:5:"title";s:23:"HUGE SALE UP TO 80% OFF";s:10:"title_size";s:2:"48";s:11:"title_color";s:7:"#ffffff";s:8:"subtitle";s:17:"PAIR STREET STYLE";s:13:"subtitle_size";s:2:"15";s:14:"subtitle_color";s:7:"#ffffff";s:6:"button";s:8:"SHOP NOW";s:10:"button_url";s:46:"https://demo.themeisle.com/neve-shop/#products";s:15:"button_fg_color";s:0:"";s:15:"button_bg_color";s:0:"";s:11:"button_size";s:21:"maxslider-btn-default";s:13:"content_align";s:22:"maxslider-align-center";s:14:"content_valign";s:22:"maxslider-align-middle";s:16:"content_bg_color";s:0:"";}i:1;a:15:{s:8:"image_id";s:2:"38";s:5:"title";s:34:"NEW ARRIVAL FOR MAN A MODERN STYLE";s:10:"title_size";s:2:"48";s:11:"title_color";s:7:"#ffffff";s:8:"subtitle";s:27:"DISCOVER THE NEW COLLECTION";s:13:"subtitle_size";s:2:"15";s:14:"subtitle_color";s:7:"#ffffff";s:6:"button";s:15:"VIEW COLLECTION";s:10:"button_url";s:46:"https://demo.themeisle.com/neve-shop/#products";s:15:"button_fg_color";s:0:"";s:15:"button_bg_color";s:0:"";s:11:"button_size";s:21:"maxslider-btn-default";s:13:"content_align";s:22:"maxslider-align-center";s:14:"content_valign";s:22:"maxslider-align-middle";s:16:"content_bg_color";s:0:"";}i:2;a:15:{s:8:"image_id";s:2:"39";s:5:"title";s:15:"SURPRISE EFFECT";s:10:"title_size";s:2:"48";s:11:"title_color";s:7:"#ffffff";s:8:"subtitle";s:48:"DIAL UP THE GLAMOUR IN AN ELEGANT COCKTAIL DRESS";s:13:"subtitle_size";s:2:"15";s:14:"subtitle_color";s:7:"#ffffff";s:6:"button";s:12:"SHOP DRESSES";s:10:"button_url";s:46:"https://demo.themeisle.com/neve-shop/#products";s:15:"button_fg_color";s:0:"";s:15:"button_bg_color";s:0:"";s:11:"button_size";s:21:"maxslider-btn-default";s:13:"content_align";s:22:"maxslider-align-center";s:14:"content_valign";s:22:"maxslider-align-middle";s:16:"content_bg_color";s:0:"";}}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_maxslider_autoslide]]></wp:meta_key>
+					<wp:meta_value><![CDATA[1]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_maxslider_effect]]></wp:meta_key>
+					<wp:meta_value><![CDATA[fade]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_maxslider_slide_speed]]></wp:meta_key>
+					<wp:meta_value><![CDATA[5000]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_maxslider_height]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_maxslider_navigation]]></wp:meta_key>
+					<wp:meta_value><![CDATA[dots]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_maxslider_navigation_position]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_maxslider_navigation_fg_color]]></wp:meta_key>
+					<wp:meta_value><![CDATA[#ffffff]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_maxslider_navigation_bg_color]]></wp:meta_key>
+					<wp:meta_value><![CDATA[#ffffff]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_maxslider_image_size]]></wp:meta_key>
+					<wp:meta_value><![CDATA[full]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
 				<item>
 			<title>
 							</title>

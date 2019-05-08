@@ -132,6 +132,18 @@ abstract class Abstract_Component implements Component {
 	 * @var null|string $default_selector
 	 */
 	protected $default_selector = null;
+	/**
+	 * Default media selectors for device.
+	 *
+	 * @since   1.0.1
+	 * @access  protected
+	 * @var array $media_selectors The device and css media selector pairing.
+	 */
+	protected $media_selectors = array(
+		'mobile'  => ' @media (max-width: 576px)',
+		'tablet'  => ' @media (min-width: 576px)',
+		'desktop' => ' @media (min-width: 961px)',
+	);
 
 	/**
 	 * Abstract_Component constructor.
@@ -441,6 +453,64 @@ abstract class Abstract_Component implements Component {
 	}
 
 	/**
+	 * Write position styles and filter values.
+	 *
+	 * @since   1.0.1
+	 * @access  protected
+	 * @param string $target CSS target property ( margin | padding ).
+	 * @param string $top Top value.
+	 * @param string $right Right value.
+	 * @param string $bottom Bottom value.
+	 * @param string $left Left value.
+	 * @param string $unit Unit to use ( px | em | % ).
+	 *
+	 * @return array
+	 */
+	protected function css_position_filter( $target, $top = '', $right = '', $bottom = '', $left = '', $unit = 'px' ) {
+		if ( empty( $target ) && ! in_array( $target, array( 'margin', 'padding' ) ) ) {
+			return array();
+		}
+
+		$result = array();
+		$params = compact( 'top', 'right', 'bottom', 'left' );
+		foreach ( $params as $pos => $value ) {
+			if ( $value !== '' ) {
+				$result[ $target . '-' . $pos ] = $value . $unit;
+			}
+		}
+		return $result;
+	}
+
+	/**
+	 * Method to reuse loop for generating position css.
+	 *
+	 * @since   1.0.1
+	 * @access  protected
+	 * @param array  $css_array The css array.
+	 * @param array  $position_values The position values array.
+	 * @param string $selector The item selector.
+	 * @param string $type The type to generate ( margin | padding ).
+	 *
+	 * @return mixed
+	 */
+	protected function generate_position_css( $css_array, $position_values, $selector, $type = 'margin' ) {
+		foreach ( $this->media_selectors as $device => $media_selector ) {
+			if ( isset( $position_values[ $device ] ) ) {
+				$position_filter = $this->css_position_filter( $type, $position_values[ $device ]['top'], $position_values[ $device ]['right'], $position_values[ $device ]['bottom'], $position_values[ $device ]['left'], $position_values[ $device . '-unit' ] );
+				if ( empty( $position_filter ) ) {
+					continue;
+				}
+				if ( ! isset( $css_array[ $media_selector ][ $selector ] ) || empty( $css_array[ $media_selector ][ $selector ] ) ) {
+					$css_array[ $media_selector ][ $selector ] = $position_filter;
+					continue;
+				}
+				$css_array[ $media_selector ][ $selector ] = array_merge( $css_array[ $media_selector ][ $selector ], $position_filter );
+			}
+		}
+		return $css_array;
+	}
+
+	/**
 	 * Method to add Component css styles.
 	 *
 	 * @param array $css_array An array containing css rules.
@@ -455,45 +525,11 @@ abstract class Abstract_Component implements Component {
 		if ( $this->default_selector !== null ) {
 			$selector = $this->default_selector;
 		}
-		if ( isset( $layout_padding['mobile'] ) ) {
-			$css_array[' @media (max-width: 576px)'][ $selector ]['padding'] = $layout_padding['mobile']['top'] . $layout_padding['mobile-unit'] . ' ' .
-							$layout_padding['mobile']['right'] . $layout_padding['mobile-unit'] . ' ' .
-							$layout_padding['mobile']['bottom'] . $layout_padding['mobile-unit'] . ' ' .
-							$layout_padding['mobile']['left'] . $layout_padding['mobile-unit'];
-		}
-		if ( isset( $layout_padding['tablet'] ) ) {
-			$css_array[' @media (min-width: 576px)'][ $selector ]['padding'] = $layout_padding['tablet']['top'] . $layout_padding['tablet-unit'] . ' ' .
-							$layout_padding['tablet']['right'] . $layout_padding['tablet-unit'] . ' ' .
-							$layout_padding['tablet']['bottom'] . $layout_padding['tablet-unit'] . ' ' .
-							$layout_padding['tablet']['left'] . $layout_padding['tablet-unit'];
-		}
-		if ( isset( $layout_padding['desktop'] ) ) {
-			$css_array[' @media (min-width: 961px)'][ $selector ]['padding'] = $layout_padding['desktop']['top'] . $layout_padding['desktop-unit'] . ' ' .
-							$layout_padding['desktop']['right'] . $layout_padding['desktop-unit'] . ' ' .
-							$layout_padding['desktop']['bottom'] . $layout_padding['desktop-unit'] . ' ' .
-							$layout_padding['desktop']['left'] . $layout_padding['desktop-unit'];
-		}
+		$css_array = $this->generate_position_css( $css_array, $layout_padding, $selector, 'padding' );
 
 		$layout_margin = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::MARGIN_ID, null );
 		$selector      = '.builder-item--' . $this->get_id();
-		if ( isset( $layout_margin['mobile'] ) ) {
-			$css_array[' @media (max-width: 576px)'][ $selector ]['margin'] = $layout_margin['mobile']['top'] . $layout_margin['mobile-unit'] . ' ' .
-							$layout_margin['mobile']['right'] . $layout_margin['mobile-unit'] . ' ' .
-							$layout_margin['mobile']['bottom'] . $layout_margin['mobile-unit'] . ' ' .
-							$layout_margin['mobile']['left'] . $layout_margin['mobile-unit'];
-		}
-		if ( isset( $layout_margin['tablet'] ) ) {
-			$css_array[' @media (min-width: 576px)'][ $selector ]['margin'] = $layout_margin['tablet']['top'] . $layout_margin['tablet-unit'] . ' ' .
-							$layout_margin['tablet']['right'] . $layout_margin['tablet-unit'] . ' ' .
-							$layout_margin['tablet']['bottom'] . $layout_margin['tablet-unit'] . ' ' .
-							$layout_margin['tablet']['left'] . $layout_margin['tablet-unit'];
-		}
-		if ( isset( $layout_margin['desktop'] ) ) {
-			$css_array[' @media (min-width: 961px)'][ $selector ]['margin'] = $layout_margin['desktop']['top'] . $layout_margin['desktop-unit'] . ' ' .
-							$layout_margin['desktop']['right'] . $layout_margin['desktop-unit'] . ' ' .
-							$layout_margin['desktop']['bottom'] . $layout_margin['desktop-unit'] . ' ' .
-							$layout_margin['desktop']['left'] . $layout_margin['desktop-unit'];
-		}
+		$css_array     = $this->generate_position_css( $css_array, $layout_margin, $selector, 'margin' );
 
 		return $css_array;
 	}
