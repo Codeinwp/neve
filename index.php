@@ -25,20 +25,22 @@ get_header();
 					$pagination_type = get_theme_mod( 'neve_pagination_type', 'number' );
 					if ( $pagination_type !== 'infinite' ) {
 						global $wp_query;
+
 						$posts_on_current_page = $wp_query->post_count;
-						$hook_after_post       = 0;
-						if ( $posts_on_current_page > 2 ) {
-							$hook_after_post = intval( $posts_on_current_page / 2 );
+						$hook_after_post       = -1;
+
+						if ( $posts_on_current_page >= 2 ) {
+							$hook_after_post = intval( ceil( $posts_on_current_page / 2 ) );
 						}
-						$post_index = 0;
+						$post_index = 1;
 					}
 					while ( have_posts() ) {
 						the_post();
 						get_template_part( 'template-parts/content', get_post_type() );
-						if ( $pagination_type !== 'infinite' && $post_index === $hook_after_post ) {
+						if ( $pagination_type !== 'infinite' && $post_index === $hook_after_post && $hook_after_post !== - 1 ) {
 							do_action( 'neve_inside_loop' );
 						}
-						$post_index++;
+						$post_index ++;
 					}
 					echo '</div>';
 					if ( ! is_singular() ) {
