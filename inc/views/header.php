@@ -7,6 +7,8 @@
 
 namespace Neve\Views;
 
+use HFG\Core\Components\Nav;
+
 /**
  * Class Header
  *
@@ -75,7 +77,12 @@ class Header extends Base_View {
 			$default = 'search-cart';
 		}
 
-		return get_theme_mod( 'neve_last_menu_item', $default );
+		$current_component = 'default';
+		if ( isset( Nav::$current_component ) ) {
+			$current_component = Nav::$current_component;
+		}
+		$last_menu_setting_slug = apply_filters( 'neve_last_menu_setting_slug_' . $current_component, 'neve_last_menu_item' );
+		return get_theme_mod( $last_menu_setting_slug, $default );
 	}
 
 	/**
