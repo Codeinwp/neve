@@ -31,13 +31,15 @@
   .actions > button[type=submit],
   .checkout.wc-forward,
   button#place_order,
+  a.add_to_cart_button,
   .return-to-shop > .button {
     @include button();
     @include button-primary();
+
   }
 
   button.button,
-    //.button.product_type_variable.add_to_cart_button,
+  a.added_to_cart,
   .checkout_coupon button.button,
   #review_form #respond input#submit {
     @include button();

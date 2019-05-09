@@ -303,7 +303,11 @@ class Woocommerce {
 	 */
 	public function add_button_color( $color_setup ) {
 		$color_setup['background']['selectors'] .=
-			',.woocommerce a.button.alt,
+			',.woocommerce a.button,
+.woocommerce a.button:hover,
+.woocommerce .button,
+.woocommerce .button:hover,
+.woocommerce a.button.alt,
 .woocommerce a.button.alt:hover,
 .woocommerce a.button.button-primary,
 .woocommerce a.button.button-primary:hover,
@@ -313,6 +317,8 @@ class Woocommerce {
 .woocommerce button.button:disabled:hover,
 .woocommerce button.button:disabled[disabled],
 .woocommerce button.button:disabled[disabled]:hover,
+.woocommerce a.button.add_to_cart,
+.woocommerce a.button.add_to_cart:hover,
 .woocommerce button.button.alt.single_add_to_cart_button.disabled,
 .woocommerce button.button.alt.single_add_to_cart_button.disabled:hover,
 .woocommerce button.button.alt.single_add_to_cart_button,
