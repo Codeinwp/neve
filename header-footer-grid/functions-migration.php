@@ -225,3 +225,20 @@ add_filter(
 
 	} 
 );
+
+
+/**
+ * Generate a notice for the widgets page.
+ */
+function neve_hfg_admin_notice() {
+	$current_screen = get_current_screen();
+	if ( $current_screen->id === 'widgets' ) {
+		echo '
+		<div class="notice update-nag neve-hfg-notice" style="width: 98%">
+			<p>' . esc_html__( 'We strongly recommend you to use the Header Footer Grid from Customizer for changing widgets.', 'neve' ) . '</p>
+		</div>
+		';
+	}
+}
+add_action( 'admin_notices', 'neve_hfg_admin_notice' );
+
