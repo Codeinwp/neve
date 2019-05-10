@@ -24,7 +24,6 @@ use WP_Customize_Manager;
 class MenuIcon extends Abstract_Component {
 
 	const COMPONENT_ID   = 'header_menu_icon';
-	const MENU_TEXT      = 'text_setting';
 	const SIDEBAR_TOGGLE = 'sidebar';
 
 	/**
@@ -50,20 +49,6 @@ class MenuIcon extends Abstract_Component {
 	 * @access  public
 	 */
 	public function add_settings() {
-
-		SettingsManager::get_instance()->add(
-			[
-				'id'                => self::MENU_TEXT,
-				'group'             => $this->get_id(),
-				'tab'               => SettingsManager::TAB_GENERAL,
-				'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
-				'sanitize_callback' => 'wp_filter_nohtml_kses',
-				'default'           => __( 'Menu', 'neve' ),
-				'label'             => __( 'Text', 'neve' ),
-				'type'              => 'text',
-				'section'           => $this->section,
-			]
-		);
 
 		SettingsManager::get_instance()->add(
 			[
