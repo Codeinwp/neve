@@ -390,8 +390,7 @@ section.exclusive .tns-ovh {
 }
 
 section.exclusive .tns-visually-hidden {
-  position: absolute;
-  right: -10000em;
+  display: none;
 }
 
 .woocommerce-checkout.nv-without-title main {

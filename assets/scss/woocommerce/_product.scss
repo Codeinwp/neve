@@ -250,10 +250,9 @@ section.exclusive {
     padding: 10px;
     overflow: unset;
   }
-
-  .tns-visually-hidden {
-    position: absolute;
-    left: -10000em;
+  .tns-visually-hidden{
+    display: none;
   }
+
 }
 
