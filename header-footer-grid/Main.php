@@ -95,21 +95,22 @@ class Main {
 	 * @access  public
 	 */
 	public function admin_utils_scripts() {
+		$layout_data   = Main::get_instance()->get_builder( 'footer' )->get_layout_data();
+		$footer_top    = ( isset( $layout_data['desktop']['top'] ) ) ? $layout_data['desktop']['top'] : array();
+		$footer_bottom = ( isset( $layout_data['desktop']['bottom'] ) ) ? $layout_data['desktop']['bottom'] : array();
+
+		$footer_rows        = array_merge( wp_list_pluck( $footer_top, 'id' ), wp_list_pluck( $footer_bottom, 'id' ) );
+		$sidebars_to_search = array( 'footer-one-widgets', 'footer-two-widgets', 'footer-three-widgets', 'footer-four-widgets' );
+		$hide               = '';
+		foreach ( $sidebars_to_search as $id ) {
+			if ( ! in_array( $id, $footer_rows ) ) {
+				$hide .= '$("#' . $id . '").parent().hide();';
+			}
+		}
 		$hide_widgets = '
 		( function( $ ) {
 			setTimeout(function() {
-				if ( $("#footer-one-widgets").find(\'div.widget\').length === 0 ) {
-					$("#footer-one-widgets").parent().hide();
-				}
-				if ( $("#footer-two-widgets").find(\'div.widget\').length === 0 ) {
-					$("#footer-two-widgets").parent().hide();
-				}
-				if ( $("#footer-three-widgets").find(\'div.widget\').length === 0 ) {
-					$("#footer-three-widgets").parent().hide();
-				}
-				if ( $("#footer-four-widgets").find(\'div.widget\').length === 0 ) {
-					$("#footer-four-widgets").parent().hide();
-				}
+				' . $hide . '
 			}, 300);
 		})(jQuery)
 		';
