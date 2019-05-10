@@ -736,6 +736,7 @@ section.exclusive .tns-visually-hidden {
 .woocommerce .actions > button[type=submit],
 .woocommerce .checkout.wc-forward,
 .woocommerce button#place_order,
+.woocommerce a.add_to_cart_button,
 .woocommerce .return-to-shop > .button {
   font-size: .8em;
   font-weight: 600;
@@ -762,6 +763,7 @@ section.exclusive .tns-visually-hidden {
 .woocommerce .actions > button[type=submit]:hover,
 .woocommerce .checkout.wc-forward:hover,
 .woocommerce button#place_order:hover,
+.woocommerce a.add_to_cart_button:hover,
 .woocommerce .return-to-shop > .button:hover {
   text-decoration: none;
   opacity: .9;
@@ -776,6 +778,7 @@ section.exclusive .tns-visually-hidden {
 .woocommerce .actions > button[type=submit]:hover,
 .woocommerce .checkout.wc-forward:hover,
 .woocommerce button#place_order:hover,
+.woocommerce a.add_to_cart_button:hover,
 .woocommerce .return-to-shop > .button:hover {
   text-decoration: none;
   background-color: #0366d6;
@@ -784,6 +787,7 @@ section.exclusive .tns-visually-hidden {
 }
 
 .woocommerce button.button,
+.woocommerce a.added_to_cart,
 .woocommerce .checkout_coupon button.button,
 .woocommerce #review_form #respond input#submit {
   font-size: .8em;
@@ -805,6 +809,7 @@ section.exclusive .tns-visually-hidden {
 }
 
 .woocommerce button.button:hover,
+.woocommerce a.added_to_cart:hover,
 .woocommerce .checkout_coupon button.button:hover,
 .woocommerce #review_form #respond input#submit:hover {
   text-decoration: none;
@@ -812,6 +817,7 @@ section.exclusive .tns-visually-hidden {
 }
 
 .woocommerce button.button:hover,
+.woocommerce a.added_to_cart:hover,
 .woocommerce .checkout_coupon button.button:hover,
 .woocommerce #review_form #respond input#submit:hover {
   background: transparent;
