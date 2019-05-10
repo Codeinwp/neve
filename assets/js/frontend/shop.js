@@ -1,5 +1,5 @@
 /* jshint esversion: 6 */
-import {neveEach} from './utils.js';
+import { neveEach } from './utils.js';
 import { tns } from 'tiny-slider/src/tiny-slider';
 
 /**
@@ -7,12 +7,14 @@ import { tns } from 'tiny-slider/src/tiny-slider';
  * @returns {boolean}
  */
 export const initShop = function () {
-	if (document.body.classList.contains( 'woocommerce' )) {
+	if (document.body.classList.contains('woocommerce')) {
 		handleShopSidebar();
 	}
-	if (document.body.classList.contains( 'nv-exclusive' )) {
+	if (document.body.classList.contains('nv-exclusive')) {
 		handleExclusiveSlider();
 	}
+
+	handleCartExpand();
 };
 
 /**
@@ -23,32 +25,32 @@ export const initShop = function () {
 const handleShopSidebar = function () {
 	let sidebar, toggles, html;
 
-	sidebar = document.querySelector( '.shop-sidebar' );
+	sidebar = document.querySelector('.shop-sidebar');
 	if (sidebar === null) {
 		return false;
 	}
-	html = document.querySelector( 'html' );
-	toggles = document.querySelectorAll( '.nv-sidebar-toggle' );
-	neveEach( toggles, function ( toggle ) {
-		toggle.addEventListener( 'click', function () {
-			sidebar.classList.toggle( 'sidebar-open' );
-			html.classList.toggle( 'menu-openend' );
-		} );
-	} );
+	html = document.querySelector('html');
+	toggles = document.querySelectorAll('.nv-sidebar-toggle');
+	neveEach(toggles, function (toggle) {
+		toggle.addEventListener('click', function () {
+			sidebar.classList.toggle('sidebar-open');
+			html.classList.toggle('menu-openend');
+		});
+	});
 };
 
 /**
  * Handle Exclusive Products Slider
  */
-const handleExclusiveSlider = function (  ) {
+const handleExclusiveSlider = function () {
 
 	let responsive = {
 		"0": {'items': 3, 'gutter': 10},
-		"768" : { 'items': 4, 'gutter': 36.59 },
+		"768": {'items': 4, 'gutter': 36.59},
 		"1200": {'items': 4, 'gutter': 44.85},
 	};
 
-	var slider = tns({
+	let slider = tns({
 		container: 'ul.exclusive-products',
 		slideBy: 'page',
 		mouseDrag: true,
@@ -62,4 +64,11 @@ const handleExclusiveSlider = function (  ) {
 		navPosition: 'bottom',
 		responsive,
 	});
+};
+
+/**
+ * Handle the expanding navigation cart.
+ */
+const handleCartExpand = function () {
+
 };
