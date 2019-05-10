@@ -380,8 +380,13 @@ section.exclusive .tns-nav button.tns-nav-active {
   border-color: #404248;
 }
 
-section.exclusive .tns-ovh {
+section.exclusive .tns-outer {
   overflow: hidden;
+}
+
+section.exclusive .tns-ovh {
+  padding: 10px;
+  overflow: unset;
 }
 
 section.exclusive .tns-visually-hidden {

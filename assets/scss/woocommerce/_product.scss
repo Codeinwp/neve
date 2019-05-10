@@ -243,8 +243,12 @@ section.exclusive {
     }
   }
 
-  .tns-ovh {
+  .tns-outer{
     overflow: hidden;
+  }
+  .tns-ovh {
+    padding: 10px;
+    overflow: unset;
   }
 
   .tns-visually-hidden {
