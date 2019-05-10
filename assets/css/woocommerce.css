@@ -362,11 +362,11 @@
   clear: none;
 }
 
-.woocommerce .nv-shop section.exclusive .tns-nav {
+section.exclusive .tns-nav {
   text-align: center;
 }
 
-.woocommerce .nv-shop section.exclusive .tns-nav button {
+section.exclusive .tns-nav button {
   background: none;
   border: 1px solid #B7B7B7;
   margin: 5px;
@@ -375,22 +375,18 @@
   padding: 0;
 }
 
-.woocommerce .nv-shop section.exclusive .tns-nav button.tns-nav-active {
+section.exclusive .tns-nav button.tns-nav-active {
   background: #404248;
   border-color: #404248;
 }
 
-.woocommerce .nv-shop section.exclusive .tns-ovh {
+section.exclusive .tns-ovh {
   overflow: hidden;
 }
 
-.woocommerce .nv-shop section.exclusive .tns-visually-hidden {
+section.exclusive .tns-visually-hidden {
   position: absolute;
   left: -10000em;
-}
-
-.woocommerce .nv-shop section.exclusive li.product {
-  float: left;
 }
 
 .woocommerce-checkout.nv-without-title main {
