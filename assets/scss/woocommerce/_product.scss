@@ -224,22 +224,35 @@
   clear: none;
 }
 
-section.exclusive{
-  .tns-nav{
+section.exclusive {
+  .tns-nav {
     text-align: center;
-    button{
+
+    button {
       background: none;
       border: 1px solid #B7B7B7;
       margin: 5px;
       width: 8px;
       height: 8px;
       padding: 0;
-      &.tns-nav-active{
+
+      &.tns-nav-active {
         background: #404248;
         border-color: #404248;
       }
     }
   }
-  .tns-ovh { overflow: hidden; }
-  .tns-visually-hidden { position: absolute; left: -10000em; }
+
+  .tns-outer{
+    overflow: hidden;
+  }
+  .tns-ovh {
+    padding: 10px;
+    overflow: unset;
+  }
+  .tns-visually-hidden{
+    display: none;
+  }
+
 }
+

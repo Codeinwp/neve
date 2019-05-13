@@ -41,7 +41,23 @@ class Nav extends Abstract_Component {
 		$this->set_property( 'section', 'header_menu_primary' );
 
 		$this->default_align = 'right';
+		add_filter( 'neve_last_menu_setting_slug_' . $this->get_class_const( 'COMPONENT_ID' ), array( $this, 'filter_neve_last_menu_setting_slug' ) );
+	}
 
+	/**
+	 * Filter the setting slug for last menu.
+	 *
+	 * @since   2.3.7
+	 * @access  public
+	 * @param string $slug The setting slug.
+	 *
+	 * @return string
+	 */
+	public function filter_neve_last_menu_setting_slug( $slug ) {
+		if ( $slug !== $this->get_class_const( 'LAST_ITEM_ID' ) ) {
+			return $this->get_class_const( 'LAST_ITEM_ID' );
+		}
+		return $slug;
 	}
 
 	/**
@@ -145,7 +161,7 @@ class Nav extends Abstract_Component {
 
 		SettingsManager::get_instance()->add(
 			[
-				'id'                => self::LAST_ITEM_ID,
+				'id'                => $this->get_class_const( 'LAST_ITEM_ID' ),
 				'group'             => $this->get_class_const( 'COMPONENT_ID' ),
 				'tab'               => SettingsManager::TAB_GENERAL,
 				'noformat'          => true,
@@ -198,23 +214,24 @@ class Nav extends Abstract_Component {
 	 * @return array
 	 */
 	public function add_style( array $css_array = array() ) {
-		$color = get_theme_mod( $this->id . '_color' );
+		$color    = get_theme_mod( $this->get_id() . '_color' );
+		$selector = '.builder-item--' . $this->get_id() . ' ul.primary-menu-ul';
 		if ( ! empty( $color ) ) {
-			$css_array['#nv-primary-navigation li a, #nv-primary-navigation li a .caret'] = array( 'color' => sanitize_hex_color( $color ) );
+			$css_array[ $selector . ' li a, ' . $selector . ' li a .caret' ] = array( 'color' => sanitize_hex_color( $color ) . ' !important' );
 		}
 
-		$hover_color = get_theme_mod( $this->id . '_hover_color' );
+		$hover_color = get_theme_mod( $this->get_id() . '_hover_color' );
 		if ( ! empty( $hover_color ) ) {
-			$css_array['.nav-menu-primary:not(.style-full-height) #nv-primary-navigation li:hover > a,
-			.nav-menu-primary:not(.style-full-height) #nv-primary-navigation li:hover > a .caret'] = array( 'color' => sanitize_hex_color( $hover_color ) );
+			$css_array[ '.nav-menu-primary:not(.style-full-height) ' . $selector . ' li:hover > a,
+			.nav-menu-primary:not(.style-full-height) ' . $selector . ' li:hover > a .caret' ] = array( 'color' => sanitize_hex_color( $hover_color ) );
 
-			$css_array['#nv-primary-navigation a:after'] = array( 'background-color' => sanitize_hex_color( $hover_color ) );
+			$css_array[ $selector . ' a:after' ] = array( 'background-color' => sanitize_hex_color( $hover_color ) . ' !important' );
 		}
 
-		$active_color = get_theme_mod( $this->id . '_active_color' );
+		$active_color = get_theme_mod( $this->get_id() . '_active_color' );
 		if ( ! empty( $active_color ) ) {
-			$css_array['.nav-menu-primary #nv-primary-navigation li.current-menu-item > a,
-			.nav-menu-primary:not(.style-full-height) #nv-primary-navigation li.current-menu-item > a .caret'] = array( 'color' => sanitize_hex_color( $active_color ) );
+			$css_array[ '.nav-menu-primary ' . $selector . ' li.current-menu-item > a,
+			.nav-menu-primary:not(.style-full-height) ' . $selector . ' li.current-menu-item > a .caret' ] = array( 'color' => sanitize_hex_color( $active_color ) . ' !important' );
 		}
 
 		return parent::add_style( $css_array );
