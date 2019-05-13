@@ -21,7 +21,7 @@ class Product_Layout extends Base_View {
 		if ( ! $this->should_load() ) {
 			return;
 		}
-		add_action( 'woocommerce_after_single_product', array( $this, 'render_exclusive_products_section' ) );
+		add_action( 'woocommerce_after_single_product_summary', array( $this, 'render_exclusive_products_section' ), 20 );
 		add_filter( 'body_class', array( $this, 'body_classes' ) );
 	}
 
