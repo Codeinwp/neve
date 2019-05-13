@@ -558,7 +558,7 @@ class Front_End {
 			return;
 		}
 
-		wp_register_script( 'neve-script', NEVE_ASSETS_URL . 'js/frontend.js', apply_filters( 'neve_filter_main_script_dependencies', array() ), NEVE_VERSION, false );
+		wp_register_script( 'neve-script', NEVE_ASSETS_URL . 'js/frontend.js', apply_filters( 'neve_filter_main_script_dependencies', array() ), NEVE_VERSION, true );
 		wp_localize_script(
 			'neve-script',
 			'NeveProperties',
