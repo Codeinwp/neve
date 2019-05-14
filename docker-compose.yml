@@ -6,8 +6,6 @@ services:
     volumes:
     - ~/${WP_MYSQL_STASH:-WordPressDock}/wp-db/neve:/var/lib/mysql
     restart: always
-    ports:
-      - 3308:3306
     environment:
       MYSQL_ROOT_PASSWORD: wordpress
       MYSQL_DATABASE: wordpress
@@ -24,7 +22,6 @@ services:
     volumes:
     - ~/${WP_CORE_STASH:-wp-core}:/var/www/html/
     - .:/var/www/html/wp-content/themes/neve/
-    - /var/www/html/neve-pro-addon:/var/www/html/wp-content/plugins/neve-pro-addon/
     restart: always
     environment:
       WORDPRESS_DB_NAME: wordpress
