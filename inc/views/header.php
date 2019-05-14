@@ -157,6 +157,7 @@ class Header extends Base_View {
 		if ( $responsive === false ) {
 			ob_start();
 			echo '<div class="nv-nav-cart">';
+			do_action( 'neve_before_cart_popup' );
 			the_widget(
 				'WC_Widget_Cart',
 				array(
@@ -167,6 +168,7 @@ class Header extends Base_View {
 					'after_title'  => '',
 				)
 			);
+			do_action( 'neve_after_cart_popup' );
 			echo '</div>';
 			$cart_widget = ob_get_contents();
 			ob_end_clean();
