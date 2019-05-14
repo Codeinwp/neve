@@ -186,7 +186,7 @@ class Top_Bar extends Base_Customizer {
 				array(
 					'button_class'    => 'nv-top-bar-menu-shortcut',
 					'icon_class'      => 'menu',
-					'button_text'     => __( 'Select Top Bar Menu', 'neve' ),
+					'button_text'     => __( 'Secondary Menu', 'neve' ),
 					'shortcut'        => true,
 					'priority'        => 40,
 					'section'         => 'neve_top_bar_section',
