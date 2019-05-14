@@ -49,9 +49,9 @@ function neve_hooks() {
 			'neve_after_sidebar_content',
 		),
 		'blog'       => array(
-			'neve_before_post_loop',
-			'neve_after_post_loop',
-			'neve_inside_loop',
+			'neve_before_posts_loop',
+			'neve_after_posts_loop',
+			'neve_middle_posts_loop',
 		),
 		'pagination' => array(
 			'neve_before_pagination',

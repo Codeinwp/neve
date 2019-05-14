@@ -16,7 +16,7 @@ get_header();
 			<div class="nv-index-posts blog col">
 				<?php
 				do_action( 'neve_page_header', 'index' );
-				do_action( 'neve_before_post_loop' );
+				do_action( 'neve_before_posts_loop' );
 				if ( have_posts() ) {
 					/* Start the Loop. */
 					echo '<div class="posts-wrapper row">';
@@ -38,7 +38,7 @@ get_header();
 						the_post();
 						get_template_part( 'template-parts/content', get_post_type() );
 						if ( $pagination_type !== 'infinite' && $post_index === $hook_after_post && $hook_after_post !== - 1 ) {
-							do_action( 'neve_inside_loop' );
+							do_action( 'neve_middle_posts_loop' );
 						}
 						$post_index ++;
 					}
@@ -51,7 +51,7 @@ get_header();
 				}
 				?>
 				<div class="w-100"></div>
-				<?php do_action( 'neve_after_post_loop' ); ?>
+				<?php do_action( 'neve_after_posts_loop' ); ?>
 			</div>
 			<?php do_action( 'neve_do_sidebar', 'blog-archive', 'right' ); ?>
 		</div>
