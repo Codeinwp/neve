@@ -57,9 +57,10 @@ class Header extends Base_View {
 		foreach ( $additional_items as $item ) {
 			if ( $item === 'search' ) {
 				$items .= $this->get_nav_menu_search();
-			}
-			if ( $item === 'cart' ) {
+			} else if ( $item === 'cart' ) {
 				$items .= $this->get_nav_menu_cart();
+			} else {
+				$items .= apply_filters( 'neve_last_menu_item_'. $item, '' );
 			}
 		}
 
