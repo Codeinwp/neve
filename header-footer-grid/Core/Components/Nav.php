@@ -214,24 +214,27 @@ class Nav extends Abstract_Component {
 	 * @return array
 	 */
 	public function add_style( array $css_array = array() ) {
-		$color    = get_theme_mod( $this->get_id() . '_color' );
-		$selector = '.builder-item--' . $this->get_id() . ' ul.primary-menu-ul';
+		$color    = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::COLOR_ID );
+		$selector = '.builder-item--' . $this->get_id() . ' > .nv-nav-wrap > .nav-menu-primary > ul.primary-menu-ul';
 		if ( ! empty( $color ) ) {
-			$css_array[ $selector . ' li a, ' . $selector . ' li a .caret' ] = array( 'color' => sanitize_hex_color( $color ) . ' !important' );
+			$css_array[ $selector . ' li a, ' . $selector . ' li a .caret' ] = array( 'color' => sanitize_hex_color( $color ) );
 		}
 
-		$hover_color = get_theme_mod( $this->get_id() . '_hover_color' );
+		$hover_color = SettingsManager::get_instance()->get( $this->get_id() . '_hover_color' );
 		if ( ! empty( $hover_color ) ) {
-			$css_array[ '.nav-menu-primary:not(.style-full-height) ' . $selector . ' li:hover > a,
-			.nav-menu-primary:not(.style-full-height) ' . $selector . ' li:hover > a .caret' ] = array( 'color' => sanitize_hex_color( $hover_color ) );
-
-			$css_array[ $selector . ' a:after' ] = array( 'background-color' => sanitize_hex_color( $hover_color ) . ' !important' );
+			if ( SettingsManager::get_instance()->get( $this->get_id() . 'style' ) !== 'style-plain' ) {
+				$css_array[ $selector . ' a:after' ] = array( 'background-color' => sanitize_hex_color( $hover_color ) );
+			} else {
+				$css_array[ '.nav-menu-primary:not(.style-full-height) ' . $selector . ' li:hover > a,
+				' . $selector . ' li:hover > a,
+				.nav-menu-primary:not(.style-full-height) ' . $selector . ' li:hover > a .caret' ] = array( 'color' => sanitize_hex_color( $hover_color ) );
+			}
 		}
 
-		$active_color = get_theme_mod( $this->get_id() . '_active_color' );
+		$active_color = SettingsManager::get_instance()->get( $this->get_id() . '_active_color' );
 		if ( ! empty( $active_color ) ) {
-			$css_array[ '.nav-menu-primary ' . $selector . ' li.current-menu-item > a,
-			.nav-menu-primary:not(.style-full-height) ' . $selector . ' li.current-menu-item > a .caret' ] = array( 'color' => sanitize_hex_color( $active_color ) . ' !important' );
+			$css_array[ '.nav-menu-primary ' . $selector . ' > li.current-menu-item > a,
+			.nav-menu-primary:not(.style-full-height) ' . $selector . ' > li.current-menu-item > a .caret' ] = array( 'color' => sanitize_hex_color( $active_color ) );
 		}
 
 		return parent::add_style( $css_array );
