@@ -32,6 +32,9 @@
   .checkout.wc-forward,
   button#place_order,
   a.add_to_cart_button,
+  a.product_type_grouped,
+  a.product_type_external,
+  a.product_type_variable,
   .return-to-shop > .button {
     @include button();
     @include button-primary();
