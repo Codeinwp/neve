@@ -23,15 +23,38 @@ function neve_is_amp() {
 function neve_hooks() {
 
 	$hooks = array(
-		'header' => array(
+		'header'     => array(
 			'neve_before_header_hook',
-			'neve_before_navbar_toggle_hook',
-			'neve_after_navbar_toggle_hook',
 			'neve_after_header_hook',
 		),
-		'footer' => array(
+		'footer'     => array(
 			'neve_before_footer_hook',
 			'neve_after_footer_hook',
+		),
+		'shop'       => array(
+			'neve_before_cart_popup',
+			'neve_after_cart_popup',
+		),
+		'post'       => array(
+			'neve_before_post_content',
+			'neve_after_post_content',
+		),
+		'page'       => array(
+			'neve_before_content',
+			'neve_after_content',
+			'neve_before_page_comments',
+		),
+		'sidebar'    => array(
+			'neve_before_sidebar_content',
+			'neve_after_sidebar_content',
+		),
+		'blog'       => array(
+			'neve_before_posts_loop',
+			'neve_after_posts_loop',
+			'neve_middle_posts_loop',
+		),
+		'pagination' => array(
+			'neve_before_pagination',
 		),
 	);
 

@@ -14,13 +14,15 @@ $args['close_button'] = neve_custom_kses_escape(
 			'role'     => true,
 			'tabindex' => true,
 		),
-	) 
+	)
 );
 
 ?>
 <div class="nv-sidebar-wrap col-sm-12 <?php echo esc_attr( $args['wrap_classes'] ); ?>" <?php echo wp_kses_post( $args['data_attrs'] ); ?>>
 	<?php echo $args['close_button']; // WPCS: XSS OK. ?>
 	<aside id="secondary" role="complementary">
+		<?php do_action( 'neve_before_sidebar_content' ); ?>
 		<?php dynamic_sidebar( $args['slug'] ); ?>
+		<?php do_action( 'neve_after_sidebar_content' ); ?>
 	</aside>
 </div>
