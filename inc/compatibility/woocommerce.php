@@ -323,6 +323,8 @@ class Woocommerce {
 .woocommerce a.product_type_grouped:hover,
 .woocommerce a.product_type_external,
 .woocommerce a.product_type_external:hover,
+.woocommerce a.product_type_variable,
+.woocommerce a.product_type_variable:hover,
 .woocommerce button.button.alt.single_add_to_cart_button.disabled,
 .woocommerce button.button.alt.single_add_to_cart_button.disabled:hover,
 .woocommerce button.button.alt.single_add_to_cart_button,
