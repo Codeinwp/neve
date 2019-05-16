@@ -41,22 +41,31 @@ class Nav extends Abstract_Component {
 		$this->set_property( 'section', 'header_menu_primary' );
 
 		$this->default_align = 'right';
-		add_filter( 'neve_last_menu_setting_slug_' . $this->get_class_const( 'COMPONENT_ID' ), array( $this, 'filter_neve_last_menu_setting_slug' ) );
+		add_filter(
+			'neve_last_menu_setting_slug_' . $this->get_class_const( 'COMPONENT_ID' ),
+			array(
+				$this,
+				'filter_neve_last_menu_setting_slug',
+			) 
+		);
+
+		add_action( 'init', array( $this, 'map_last_menu_item' ) );
 	}
 
 	/**
 	 * Filter the setting slug for last menu.
 	 *
-	 * @since   2.3.7
-	 * @access  public
 	 * @param string $slug The setting slug.
 	 *
 	 * @return string
+	 * @since   2.3.7
+	 * @access  public
 	 */
 	public function filter_neve_last_menu_setting_slug( $slug ) {
 		if ( $slug !== $this->get_class_const( 'LAST_ITEM_ID' ) ) {
 			return $this->get_class_const( 'LAST_ITEM_ID' );
 		}
+
 		return $slug;
 	}
 
@@ -144,20 +153,20 @@ class Nav extends Abstract_Component {
 			]
 		);
 
-		$default_last = 'search';
-		if ( class_exists( 'WooCommerce' ) ) {
-			$default_last = 'search-cart';
-		}
 
-		$choices = [
-			'none'   => __( 'None', 'neve' ),
+		$order_default_components = array(
+			'search',
+		);
+		$components               = array(
 			'search' => __( 'Search', 'neve' ),
-		];
+		);
 
 		if ( class_exists( 'WooCommerce' ) ) {
-			$choices['cart']        = __( 'Cart', 'neve' );
-			$choices['search-cart'] = __( 'Search & Cart', 'neve' );
+			array_push( $order_default_components, 'cart' );
+			$components['cart'] = __( 'Cart', 'neve' );
 		}
+
+		$components = apply_filters( 'neve_last_menu_item_components', $components );
 
 		SettingsManager::get_instance()->add(
 			[
@@ -166,12 +175,12 @@ class Nav extends Abstract_Component {
 				'tab'               => SettingsManager::TAB_GENERAL,
 				'noformat'          => true,
 				'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
-				'sanitize_callback' => 'wp_filter_nohtml_kses',
-				'default'           => $default_last,
+				'sanitize_callback' => array( $this, 'sanitize_last_menu_item' ),
+				'default'           => json_encode( $order_default_components ),
 				'label'             => __( 'Last Menu Item', 'neve' ),
-				'type'              => 'select',
+				'type'              => 'Neve\Customizer\Controls\Ordering',
 				'options'           => [
-					'choices' => $choices,
+					'components' => $components,
 				],
 				'section'           => $this->section,
 			]
@@ -194,6 +203,35 @@ class Nav extends Abstract_Component {
 			]
 		);
 
+	}
+
+	/**
+	 * Sanitize last menu item.
+	 *
+	 * @param string $value Json value of the control.
+	 *
+	 * @return string
+	 */
+	public function sanitize_last_menu_item( $value ) {
+		$allowed = array(
+			'cart',
+			'search',
+			'wish_list',
+		);
+
+		if ( empty( $value ) ) {
+			return json_encode( $allowed );
+		}
+
+		$decoded = json_decode( $value, true );
+
+		foreach ( $decoded as $val ) {
+			if ( ! in_array( $val, $allowed ) ) {
+				return json_encode( $allowed );
+			}
+		}
+
+		return $value;
 	}
 
 	/**
@@ -240,5 +278,30 @@ class Nav extends Abstract_Component {
 		return parent::add_style( $css_array );
 	}
 
+
+	/**
+	 * Map last menu item from select type control to ordering control.
+	 */
+	public function map_last_menu_item() {
+		$map_items = get_option( 'neve_map_menu_items' );
+		if ( $map_items === 'yes' ) {
+			return;
+		}
+		$last_menu_item         = get_theme_mod( 'neve_last_menu_item' );
+		$last_menu_item_decoded = json_decode( $last_menu_item, true );
+		if ( ! is_null( $last_menu_item_decoded ) ) {
+			return;
+		}
+		$last_menu_item_value = array();
+		if ( $last_menu_item === 'search-cart' ) {
+			$last_menu_item_value = array( 'search', 'cart' );
+		}
+		if ( $last_menu_item === 'search' || $last_menu_item === 'cart' ) {
+			$last_menu_item_value = array( $last_menu_item );
+		}
+
+		set_theme_mod( 'neve_last_menu_item', json_encode( $last_menu_item_value ) );
+		update_option( 'neve_map_menu_items', 'yes' );
+	}
 
 }
