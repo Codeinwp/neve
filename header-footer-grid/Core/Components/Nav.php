@@ -46,7 +46,7 @@ class Nav extends Abstract_Component {
 			array(
 				$this,
 				'filter_neve_last_menu_setting_slug',
-			) 
+			)
 		);
 
 		add_action( 'init', array( $this, 'map_last_menu_item' ) );
@@ -287,11 +287,12 @@ class Nav extends Abstract_Component {
 		if ( $map_items === 'yes' ) {
 			return;
 		}
-		$last_menu_item         = get_theme_mod( 'neve_last_menu_item' );
-		$last_menu_item_decoded = json_decode( $last_menu_item, true );
-		if ( ! is_null( $last_menu_item_decoded ) ) {
-			return;
+		$default_last = 'search';
+		if ( class_exists( 'WooCommerce' ) ) {
+			$default_last = 'search-cart';
 		}
+
+		$last_menu_item         = get_theme_mod( 'neve_last_menu_item', $default_last );
 		$last_menu_item_value = array();
 		if ( $last_menu_item === 'search-cart' ) {
 			$last_menu_item_value = array( 'search', 'cart' );

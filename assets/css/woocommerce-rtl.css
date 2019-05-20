@@ -743,6 +743,7 @@ section.exclusive .tns-visually-hidden {
 .woocommerce a.add_to_cart_button,
 .woocommerce a.product_type_grouped,
 .woocommerce a.product_type_external,
+.woocommerce a.product_type_variable,
 .woocommerce .return-to-shop > .button {
   font-size: .8em;
   font-weight: 600;
@@ -772,6 +773,7 @@ section.exclusive .tns-visually-hidden {
 .woocommerce a.add_to_cart_button:hover,
 .woocommerce a.product_type_grouped:hover,
 .woocommerce a.product_type_external:hover,
+.woocommerce a.product_type_variable:hover,
 .woocommerce .return-to-shop > .button:hover {
   text-decoration: none;
   opacity: .9;
@@ -789,6 +791,7 @@ section.exclusive .tns-visually-hidden {
 .woocommerce a.add_to_cart_button:hover,
 .woocommerce a.product_type_grouped:hover,
 .woocommerce a.product_type_external:hover,
+.woocommerce a.product_type_variable:hover,
 .woocommerce .return-to-shop > .button:hover {
   text-decoration: none;
   background-color: #0366d6;
