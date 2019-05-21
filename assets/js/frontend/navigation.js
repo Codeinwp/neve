@@ -57,10 +57,6 @@ function handleScrollLinks () {
     link.addEventListener('click', function (event) {
       let href = event.target.getAttribute('href');
       if (href === null) return false;
-      console.log(href);
-      console.log(unhashUrl(href));
-      console.log(pageUrl);
-      console.log(unhashUrl(pageUrl));
       if (unhashUrl(href) === unhashUrl(pageUrl)) {
         document.body.classList.remove('is-menu-sidebar');
         neveEach(document.querySelectorAll('.dropdown-open'), function (element) {

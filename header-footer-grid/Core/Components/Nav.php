@@ -27,6 +27,7 @@ class Nav extends Abstract_Component {
 	const HOVER_COLOR_ID  = 'hover_color';
 	const ACTIVE_COLOR_ID = 'active_color';
 	const LAST_ITEM_ID    = 'neve_last_menu_item';
+	const NAV_MENU_ID     = 'nv-primary-navigation';
 
 	/**
 	 * Nav constructor.

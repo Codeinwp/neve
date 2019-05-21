@@ -17,16 +17,17 @@ $container_classes = [ $style ];
 
 $container_classes[] = 'nav-menu-primary';
 
+$id = Nav::NAV_MENU_ID . '-' . current_row();
 ?>
 <div class="nv-nav-wrap">
 	<div role="navigation" class="<?php echo esc_attr( join( ' ', $container_classes ) ); ?>"
-		aria-label="<?php echo esc_html( __( 'Primary Menu', 'neve' ) ); ?>">
+			aria-label="<?php echo esc_html( __( 'Primary Menu', 'neve' ) ); ?>">
 
 		<?php
 		echo wp_nav_menu(
 			[
 				'theme_location' => 'primary',
-				'menu_id'        => 'nv-primary-navigation',
+				'menu_id'        => $id,
 				'menu_class'     => 'primary-menu-ul',
 				'container'      => 'ul',
 				'walker'         => '\Neve\Views\Nav_Walker',
