@@ -10,6 +10,7 @@
 namespace HFG;
 
 use HFG\Core\Components\Nav;
+use HFG\Core\Builder\Header as HeaderBuilder;
 
 $style = component_setting( Nav::STYLE_ID );
 
@@ -17,7 +18,7 @@ $container_classes = [ $style ];
 
 $container_classes[] = 'nav-menu-primary';
 
-$id = Nav::NAV_MENU_ID . '-' . current_row();
+$menu_id = Nav::NAV_MENU_ID . '-' . current_row( HeaderBuilder::BUILDER_NAME );
 ?>
 <div class="nv-nav-wrap">
 	<div role="navigation" class="<?php echo esc_attr( join( ' ', $container_classes ) ); ?>"
@@ -27,7 +28,7 @@ $id = Nav::NAV_MENU_ID . '-' . current_row();
 		echo wp_nav_menu(
 			[
 				'theme_location' => 'primary',
-				'menu_id'        => $id,
+				'menu_id'        => $menu_id,
 				'menu_class'     => 'primary-menu-ul',
 				'container'      => 'ul',
 				'walker'         => '\Neve\Views\Nav_Walker',

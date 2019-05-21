@@ -73,7 +73,7 @@ class Front_End {
 			array(
 				'primary' => esc_html__( 'Primary Menu', 'neve' ),
 				'footer'  => esc_html__( 'Footer Menu', 'neve' ),
-				'top-bar' => esc_html__( 'Top Bar Menu', 'neve' ),
+				'top-bar' => esc_html__( 'Secondary Menu', 'neve' ),
 			)
 		);
 		register_nav_menus( $nav_menus_to_register );

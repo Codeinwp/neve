@@ -113,6 +113,11 @@ class Gutenberg {
 	 * Enqueue gutenberg scripts.
 	 */
 	public function enqueue_gutenberg_scripts() {
+		$screen = get_current_screen();
+		if ( $screen->post_type !== 'post' && $screen->post_type !== 'page' ) {
+			return;
+		}
+
 		wp_enqueue_style( 'neve-gutenberg-style', NEVE_ASSETS_URL . 'css/gutenberg-editor-style' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), NEVE_VERSION );
 
 		wp_register_script( 'neve-gutenberg-script', NEVE_ASSETS_URL . 'js/gutenberg-preview-manager.js', array( 'jquery' ), NEVE_VERSION, true );
