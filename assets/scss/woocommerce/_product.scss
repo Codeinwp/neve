@@ -225,6 +225,7 @@
 }
 
 section.exclusive {
+  margin-bottom: $spacing;
   .tns-nav {
     text-align: center;
 
@@ -247,8 +248,9 @@ section.exclusive {
     overflow: hidden;
   }
   .tns-ovh {
-    padding: 10px;
+    padding-right: 4px;
     overflow: unset;
+    margin-bottom: $spacing-sm;
   }
   .tns-visually-hidden{
     display: none;

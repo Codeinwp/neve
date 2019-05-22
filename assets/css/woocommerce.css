@@ -362,6 +362,10 @@
   clear: none;
 }
 
+section.exclusive {
+  margin-bottom: 40px;
+}
+
 section.exclusive .tns-nav {
   text-align: center;
 }
@@ -385,8 +389,9 @@ section.exclusive .tns-outer {
 }
 
 section.exclusive .tns-ovh {
-  padding: 10px;
+  padding-right: 4px;
   overflow: unset;
+  margin-bottom: 20px;
 }
 
 section.exclusive .tns-visually-hidden {

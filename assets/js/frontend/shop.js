@@ -45,9 +45,9 @@ const handleShopSidebar = function () {
 const handleExclusiveSlider = function () {
 
 	let responsive = {
-		"0": {'items': 3, 'gutter': 10},
-		"768": {'items': 4, 'gutter': 36.59},
-		"1200": {'items': 4, 'gutter': 44.85},
+		"0": {'items': 2, 'gutter': 21},
+		"768": {'items': 4, 'gutter': 27},
+		"1200": {'items': 4, 'gutter': 30},
 	};
 
 	let slider = tns({
@@ -57,9 +57,13 @@ const handleExclusiveSlider = function () {
 		arrowKeys: true,
 		loop: true,
 		autoplay: true,
-		autoplayButton: false,
-		autoplayButtonOutput: false,
 		items: 4,
+		edgePadding: 0,
+		autoplayButtonOutput: false,
+		autoplayHoverPause: true,
+		speed: 500,
+		autoplayTimeout: 2500,
+		autoplayButton: false,
 		controls: false,
 		navPosition: 'bottom',
 		responsive,
