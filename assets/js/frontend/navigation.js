@@ -140,7 +140,7 @@ function createNavOverlay (item, classToRemove, multiple = false) {
   navClickaway = document.createElement('div');
   navClickaway.classList.add('nav-clickaway-overlay');
 
-  let primaryNav = document.querySelector('#nv-primary-navigation');
+  let primaryNav = document.querySelector('header.header');
   primaryNav.parentNode.insertBefore(navClickaway, primaryNav.nextSibling);
 
   navClickaway.addEventListener('click', function () {
