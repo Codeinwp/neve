@@ -292,7 +292,7 @@ class Nav extends Abstract_Component {
 			$default_last = 'search-cart';
 		}
 
-		$last_menu_item         = get_theme_mod( 'neve_last_menu_item', $default_last );
+		$last_menu_item       = get_theme_mod( 'neve_last_menu_item', $default_last );
 		$last_menu_item_value = array();
 		if ( $last_menu_item === 'search-cart' ) {
 			$last_menu_item_value = array( 'search', 'cart' );
