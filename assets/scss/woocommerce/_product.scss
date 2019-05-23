@@ -225,16 +225,20 @@
 
 section.exclusive {
   margin-bottom: $spacing;
-  .tns-nav {
-    text-align: center;
+  .dots-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 
-    button {
+    .dot {
       background: none;
       border: 1px solid #B7B7B7;
       margin: 5px;
       width: 8px;
       height: 8px;
       padding: 0;
+      border-radius: 100%;
 
       &.tns-nav-active {
         background: #404248;

@@ -366,20 +366,24 @@ section.exclusive {
   margin-bottom: 40px;
 }
 
-section.exclusive .tns-nav {
-  text-align: center;
+section.exclusive .dots-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
-section.exclusive .tns-nav button {
+section.exclusive .dots-nav .dot {
   background: none;
   border: 1px solid #B7B7B7;
   margin: 5px;
   width: 8px;
   height: 8px;
   padding: 0;
+  border-radius: 100%;
 }
 
-section.exclusive .tns-nav button.tns-nav-active {
+section.exclusive .dots-nav .dot.tns-nav-active {
   background: #404248;
   border-color: #404248;
 }
