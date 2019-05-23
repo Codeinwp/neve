@@ -141,7 +141,7 @@ function createNavOverlay (item, classToRemove, multiple = false) {
   navClickaway.classList.add('nav-clickaway-overlay');
 
   let primaryNav = document.querySelector('header.header');
-  primaryNav.parentNode.insertBefore(navClickaway, primaryNav.nextSibling);
+  primaryNav.parentNode.insertBefore(navClickaway, primaryNav);
 
   navClickaway.addEventListener('click', function () {
     if (multiple === true) {
