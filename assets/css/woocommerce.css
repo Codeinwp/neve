@@ -323,7 +323,7 @@
   grid-row-gap: 10px;
 }
 
-.woocommerce #review_form .comment-form input:not([type=submit]) {
+.woocommerce #review_form .comment-form input:not([type=submit]):not([type=checkbox]) {
   width: 100%;
 }
 
@@ -1365,7 +1365,7 @@ body.woocommerce-account .nv-content-wrap > .woocommerce {
   .woocommerce #review_form .comment-form {
     grid-template-columns: repeat(2, 1fr);
   }
-  .woocommerce #review_form .comment-form .comment-form-comment, .woocommerce #review_form .comment-form .comment-form-rating, .woocommerce #review_form .comment-form .comment-notes, .woocommerce #review_form .comment-form .form-submit {
+  .woocommerce #review_form .comment-form p:not(.comment-form-author):not(.comment-form-email), .woocommerce #review_form .comment-form div {
     grid-column: span 2;
   }
 }
