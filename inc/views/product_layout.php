@@ -88,7 +88,7 @@ class Product_Layout extends Base_View {
 		wp_reset_postdata();
 		echo '</ul>';
 		echo '<div class="dots-nav">';
-		for ( $i= 0; $i < $dots; $i++ ) {
+		for ( $i = 0; $i < $dots; $i++ ) {
 			echo '<a class="dot"></a>';
 		}
 		echo '</div>';
