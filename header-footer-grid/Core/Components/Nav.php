@@ -27,6 +27,7 @@ class Nav extends Abstract_Component {
 	const HOVER_COLOR_ID  = 'hover_color';
 	const ACTIVE_COLOR_ID = 'active_color';
 	const LAST_ITEM_ID    = 'neve_last_menu_item';
+	const NAV_MENU_ID     = 'nv-primary-navigation';
 
 	/**
 	 * Nav constructor.
@@ -253,26 +254,23 @@ class Nav extends Abstract_Component {
 	 */
 	public function add_style( array $css_array = array() ) {
 		$color    = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::COLOR_ID );
-		$selector = '.builder-item--' . $this->get_id() . ' > .nv-nav-wrap > .nav-menu-primary > ul.primary-menu-ul';
+		$selector = '.builder-item--' . $this->get_id() . ' > .nv-nav-wrap > .nav-menu-primary > ul.primary-menu-ul ';
 		if ( ! empty( $color ) ) {
-			$css_array[ $selector . ' li a, ' . $selector . ' li a .caret' ] = array( 'color' => sanitize_hex_color( $color ) );
+			$css_array[ $selector . 'li > a, 
+			' . $selector . 'li > a .caret-wrap .caret' ] = array( 'color' => sanitize_hex_color( $color ) );
 		}
 
 		$hover_color = SettingsManager::get_instance()->get( $this->get_id() . '_hover_color' );
 		if ( ! empty( $hover_color ) ) {
-			if ( SettingsManager::get_instance()->get( $this->get_id() . 'style' ) !== 'style-plain' ) {
-				$css_array[ $selector . ' a:after' ] = array( 'background-color' => sanitize_hex_color( $hover_color ) );
-			} else {
-				$css_array[ '.nav-menu-primary:not(.style-full-height) ' . $selector . ' li:hover > a,
-				' . $selector . ' li:hover > a,
-				.nav-menu-primary:not(.style-full-height) ' . $selector . ' li:hover > a .caret' ] = array( 'color' => sanitize_hex_color( $hover_color ) );
+			$css_array[ $selector . 'a:after' ] = array( 'background-color' => sanitize_hex_color( $hover_color ) );
+			if ( SettingsManager::get_instance()->get( $this->get_id() . '_style' ) !== 'style-full-height' ) {
+				$css_array[ $selector . 'li:hover > a,' . $selector . 'li:hover > a > .caret-wrap .caret' ] = array( 'color' => sanitize_hex_color( $hover_color ) );
 			}
 		}
 
 		$active_color = SettingsManager::get_instance()->get( $this->get_id() . '_active_color' );
 		if ( ! empty( $active_color ) ) {
-			$css_array[ '.nav-menu-primary ' . $selector . ' > li.current-menu-item > a,
-			.nav-menu-primary:not(.style-full-height) ' . $selector . ' > li.current-menu-item > a .caret' ] = array( 'color' => sanitize_hex_color( $active_color ) );
+			$css_array[ $selector . 'li.current-menu-item a, ' . $selector . 'li.current-menu-item a  .caret-wrap .caret' ] = array( 'color' => sanitize_hex_color( $active_color ) );
 		}
 
 		return parent::add_style( $css_array );

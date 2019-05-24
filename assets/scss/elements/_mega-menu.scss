@@ -1,5 +1,5 @@
 /* Style mega-menu and its children on mobile */
-#nv-primary-navigation .neve-mega-menu {
+ul[id^="nv-primary-navigation"] .neve-mega-menu {
   .sub-menu > li > a {
     white-space: normal;
   }
@@ -45,10 +45,10 @@
 }
 
 @mixin mega-menu--laptop() {
-  #nv-primary-navigation .neve-mega-menu {
+  ul[id^="nv-primary-navigation"] .neve-mega-menu {
     position: static;
   }
-  #nv-primary-navigation .neve-mega-menu > .sub-menu {
+  ul[id^="nv-primary-navigation"] .neve-mega-menu > .sub-menu {
     width: 950px;
     position: absolute;
     top: auto;
@@ -59,15 +59,15 @@
     padding: 20px;
     pointer-events: none;
   }
-  #nv-primary-navigation .neve-mega-menu:hover > .sub-menu,
-  #nv-primary-navigation .neve-mega-menu:focus > .sub-menu,
-  #nv-primary-navigation .neve-mega-menu:focus-within > .sub-menu {
+  ul[id^="nv-primary-navigation"] .neve-mega-menu:hover > .sub-menu,
+  ul[id^="nv-primary-navigation"] .neve-mega-menu:focus > .sub-menu,
+  ul[id^="nv-primary-navigation"] .neve-mega-menu:focus-within > .sub-menu {
     opacity: 1;
     display: grid;
     visibility: visible;
     pointer-events: all;
   }
-  #nv-primary-navigation .neve-mega-menu > .sub-menu {
+  ul[id^="nv-primary-navigation"] .neve-mega-menu > .sub-menu {
     .neve-mm-col {
       & > .sub-menu {
         left: initial;
@@ -75,13 +75,13 @@
       }
     }
   }
-  #nv-primary-navigation .neve-mega-menu .neve-mm-col {
+  ul[id^="nv-primary-navigation"] .neve-mega-menu .neve-mm-col {
     .neve-mm-heading a {
       font-weight: 700;
       text-transform: uppercase;
     }
   }
-  #nv-primary-navigation .neve-mega-menu .neve-mm-col > .sub-menu {
+  ul[id^="nv-primary-navigation"] .neve-mega-menu .neve-mm-col > .sub-menu {
     position: static;
     visibility: visible;
     opacity: 1;
@@ -96,7 +96,7 @@
 }
 
 @mixin mega-menu--desktop() {
-  #nv-primary-navigation .neve-mega-menu {
+  ul[id^="nv-primary-navigation"] .neve-mega-menu {
     > .sub-menu {
       width: 1170px;
     }

@@ -67,11 +67,13 @@
                     $("#" + self.fontControls[data.controlId].linkNodeId).remove();
                     if (data.source !== "system") {
                         self.generateLinkNode(self.fontControls[data.controlId].linkNodeId, data.value);
+                        data.value = '"' + data.value + '"';
                     }
-                    if (data.value === "Default") {
+                    if (data.value === "default") {
                         $(self.fontControls[data.controlId].selectors).css("font-family", '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif');
+                        return false;
                     }
-                    $(self.fontControls[data.controlId].selectors).css("font-family", '"' + data.value + '"');
+                    $(self.fontControls[data.controlId].selectors).css("font-family", data.value);
                     return false;
                 });
             });

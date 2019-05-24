@@ -125,9 +125,9 @@ class Colors extends Base_Inline {
 				.btn, input[type="submit"], 
 				.nv-tags-list a:hover,
 				/* Buttons in navigation */
-				#nv-primary-navigation li.button.button-primary > a, 
+				ul[id^="nv-primary-navigation"] li.button.button-primary > a, 
 				.menu li.button.button-primary > a,
-				#nv-primary-navigation li.button.button-primary > a:hover, 
+				ul[id^="nv-primary-navigation"] li.button.button-primary > a:hover, 
 				.menu li.button.button-primary > a:hover',
 			),
 		);

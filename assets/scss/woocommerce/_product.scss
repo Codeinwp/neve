@@ -155,7 +155,7 @@
     grid-template-columns: 1fr;
     grid-row-gap: $spacing-xs;
 
-    input:not([type=submit]) {
+    input:not([type=submit]):not([type=checkbox]) {
       width: 100%;
     }
 
@@ -209,8 +209,7 @@
 
     #review_form .comment-form {
       grid-template-columns: repeat(2, 1fr);
-
-      .comment-form-comment, .comment-form-rating, .comment-notes, .form-submit {
+      p:not(.comment-form-author):not(.comment-form-email), div {
         grid-column: span 2;
       }
     }
@@ -225,16 +224,21 @@
 }
 
 section.exclusive {
-  .tns-nav {
-    text-align: center;
+  margin-bottom: $spacing;
+  .dots-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 
-    button {
+    .dot {
       background: none;
       border: 1px solid #B7B7B7;
       margin: 5px;
       width: 8px;
       height: 8px;
       padding: 0;
+      border-radius: 100%;
 
       &.tns-nav-active {
         background: #404248;
@@ -247,8 +251,9 @@ section.exclusive {
     overflow: hidden;
   }
   .tns-ovh {
-    padding: 10px;
+    padding-right: 4px;
     overflow: unset;
+    margin-bottom: $spacing-sm;
   }
   .tns-visually-hidden{
     display: none;

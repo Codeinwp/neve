@@ -337,8 +337,8 @@ class Woocommerce {
 .woocommerce button#place_order:hover,
 .woocommerce .return-to-shop > .button,
 .woocommerce .return-to-shop > .button:hover,
-#nv-primary-navigation .nv-nav-cart a.button.checkout.wc-forward,
-#nv-primary-navigation .nv-nav-cart a.button.checkout.wc-forward:hover';
+ul[id^="nv-primary-navigation"] .nv-nav-cart a.button.checkout.wc-forward,
+ul[id^="nv-primary-navigation"] .nv-nav-cart a.button.checkout.wc-forward:hover';
 
 		return $color_setup;
 	}

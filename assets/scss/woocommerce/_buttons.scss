@@ -49,7 +49,7 @@
     @include button-secondary();
   }
 
-  #nv-primary-navigation .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout),
+  ul[id^="nv-primary-navigation"] .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout),
   .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout) {
     @include button();
     @include button-secondary();
@@ -64,7 +64,7 @@
   padding-right: $spacing;
 }
 
-#nv-primary-navigation .nv-nav-cart {
+ul[id^="nv-primary-navigation"] .nv-nav-cart {
   a.button.wc-forward:not(.checkout) {
     @include button();
     @include button-secondary();

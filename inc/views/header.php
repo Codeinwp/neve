@@ -86,7 +86,7 @@ class Header extends Base_View {
 		}
 		$last_menu_setting_slug = apply_filters( 'neve_last_menu_setting_slug_' . $current_component, 'neve_last_menu_item' );
 
-		return get_theme_mod( $last_menu_setting_slug, $default );
+		return get_theme_mod( $last_menu_setting_slug, json_encode( $default ) );
 	}
 
 	/**
