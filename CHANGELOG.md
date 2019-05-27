@@ -1,4 +1,8 @@
 
+ ### v2.3.9 - 2019-05-27 
+ **Changes:** 
+ * Fixed issues with redirects to Otter and WPForms dashboards in the onboarding process
+ 
  ### v2.3.8 - 2019-05-27 
  **Changes:** 
  * Redone the Last item in menu control to accommodate more items

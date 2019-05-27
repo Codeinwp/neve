@@ -17,6 +17,11 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
+### 2.3.9 - 2019-05-27  ###
+
+* Fixed issues with redirects to Otter and WPForms dashboards in the onboarding process
+
+
 ### 2.3.8 - 2019-05-27  ###
 
 * Redone the Last item in menu control to accommodate more items
