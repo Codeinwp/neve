@@ -17,6 +17,16 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog == 
+= 2.3.8 - 2019-05-27  = 
+
+* Redone the Last item in menu control to accommodate more items
+* Accessibility fixes
+* Improved footer widgets logic to better accommodate the footer builder
+* Exclusive Products section layout improvements
+* WooCommerce buttons enhancements
+* New hooks added
+
+
 = 2.3.7 - 2019-05-07  = 
 
 * New Margin and Padding controls for each header builder component

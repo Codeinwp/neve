@@ -1,4 +1,13 @@
 
+ ### v2.3.8 - 2019-05-27 
+ **Changes:** 
+ * Redone the Last item in menu control to accommodate more items
+* Accessibility fixes
+* Improved footer widgets logic to better accommodate the footer builder
+* Exclusive Products section layout improvements
+* WooCommerce buttons enhancements
+* New hooks added
+ 
  ### v2.3.7 - 2019-05-07 
  **Changes:** 
  * New Margin and Padding controls for each header builder component
