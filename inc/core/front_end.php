@@ -73,7 +73,7 @@ class Front_End {
 			array(
 				'primary' => esc_html__( 'Primary Menu', 'neve' ),
 				'footer'  => esc_html__( 'Footer Menu', 'neve' ),
-				'top-bar' => esc_html__( 'Top Bar Menu', 'neve' ),
+				'top-bar' => esc_html__( 'Secondary Menu', 'neve' ),
 			)
 		);
 		register_nav_menus( $nav_menus_to_register );
@@ -558,7 +558,7 @@ class Front_End {
 			return;
 		}
 
-		wp_register_script( 'neve-script', NEVE_ASSETS_URL . 'js/frontend.js', apply_filters( 'neve_filter_main_script_dependencies', array() ), NEVE_VERSION, false );
+		wp_register_script( 'neve-script', NEVE_ASSETS_URL . 'js/frontend.js', apply_filters( 'neve_filter_main_script_dependencies', array() ), NEVE_VERSION, true );
 		wp_localize_script(
 			'neve-script',
 			'NeveProperties',

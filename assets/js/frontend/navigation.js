@@ -57,10 +57,6 @@ function handleScrollLinks () {
     link.addEventListener('click', function (event) {
       let href = event.target.getAttribute('href');
       if (href === null) return false;
-      console.log(href);
-      console.log(unhashUrl(href));
-      console.log(pageUrl);
-      console.log(unhashUrl(pageUrl));
       if (unhashUrl(href) === unhashUrl(pageUrl)) {
         document.body.classList.remove('is-menu-sidebar');
         neveEach(document.querySelectorAll('.dropdown-open'), function (element) {
@@ -144,8 +140,8 @@ function createNavOverlay (item, classToRemove, multiple = false) {
   navClickaway = document.createElement('div');
   navClickaway.classList.add('nav-clickaway-overlay');
 
-  let primaryNav = document.querySelector('#nv-primary-navigation');
-  primaryNav.parentNode.insertBefore(navClickaway, primaryNav.nextSibling);
+  let primaryNav = document.querySelector('header.header');
+  primaryNav.parentNode.insertBefore(navClickaway, primaryNav);
 
   navClickaway.addEventListener('click', function () {
     if (multiple === true) {

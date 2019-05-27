@@ -122,12 +122,12 @@ a.button.close-responsive-search {
   height: 100vh;
 }
 
-#nv-primary-navigation .menu-item-nav-search:not(.responsive-nav-search) {
+ul[id^="nv-primary-navigation"] .menu-item-nav-search:not(.responsive-nav-search) {
   display: none;
 }
 
 @mixin nav-search--laptop() {
-  .row #nv-primary-navigation .menu-item-nav-search:not(.responsive-nav-search) {
+  .row ul[id^="nv-primary-navigation"] .menu-item-nav-search:not(.responsive-nav-search) {
     display: block;
   }
 

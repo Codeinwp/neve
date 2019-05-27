@@ -39,7 +39,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 			return $title;
 		}
 
-		if ( $args->menu_id !== 'nv-primary-navigation' ) {
+		if ( strpos( $args->menu_id, 'nv-primary-navigation' ) === false ) {
 			return $title;
 		}
 

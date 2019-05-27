@@ -21,7 +21,7 @@ class Product_Layout extends Base_View {
 		if ( ! $this->should_load() ) {
 			return;
 		}
-		add_action( 'woocommerce_after_single_product', array( $this, 'render_exclusive_products_section' ) );
+		add_action( 'woocommerce_after_single_product_summary', array( $this, 'render_exclusive_products_section' ), 20 );
 		add_filter( 'body_class', array( $this, 'body_classes' ) );
 	}
 
@@ -73,7 +73,7 @@ class Product_Layout extends Base_View {
 		if ( ! $loop->have_posts() ) {
 			return;
 		}
-
+		$dots = 0;
 		echo '<section class="exclusive products">';
 		if ( ! empty( $title ) ) {
 			echo '<h2>' . wp_kses_post( $title ) . '</h2>';
@@ -83,9 +83,15 @@ class Product_Layout extends Base_View {
 		while ( $loop->have_posts() ) {
 			$loop->the_post();
 			wc_get_template_part( 'content', 'product' );
+			$dots++;
 		}
 		wp_reset_postdata();
 		echo '</ul>';
+		echo '<div class="dots-nav">';
+		for ( $i = 0; $i < $dots; $i++ ) {
+			echo '<a class="dot"></a>';
+		}
+		echo '</div>';
 		echo '</section>';
 	}
 

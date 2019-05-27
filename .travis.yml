@@ -1,7 +1,7 @@
 language: php
 dist: trusty
 env:
-  - WP_VERSION=latest UPSTREAM_REPO=Codeinwp/neve MASTER_BRANCH=master STORE_URL=https://themeisle.com
+  - WP_VERSION=latest UPSTREAM_REPO=Codeinwp/neve MASTER_BRANCH=master STORE_URL=https://store.themeisle.com
 cache:
   directories:
     - $HOME/.composer/cache
@@ -20,20 +20,24 @@ jobs:
         - npm run-script test
     - php: 5.2
       name: "Unit tests for PHP 5.2"
+      env: WP_VERSION=5.1.1
       dist: precise
       script:
         - ./bin/run-unit-tests.sh
     - php: 5.3
       name: "Unit tests for PHP 5.3"
+      env: WP_VERSION=5.1.1
       dist: precise
       script:
         - ./bin/run-unit-tests.sh
     - php: 5.4
       name: "Unit tests for PHP 5.4"
+      env: WP_VERSION=5.1.1
       script:
         - ./bin/run-unit-tests.sh
     - php: 5.5
       name: "Unit tests for PHP 5.5"
+      env: WP_VERSION=5.1.1
       script:
         - ./bin/run-unit-tests.sh
     - php: 5.6

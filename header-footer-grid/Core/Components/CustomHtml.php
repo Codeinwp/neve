@@ -55,7 +55,7 @@ class CustomHtml extends Abstract_Component {
 				'sanitize_callback' => 'wp_kses_post',
 				'default'           => get_theme_mod( 'neve_top_bar_content', '' ),
 				'preview_default'   => '',
-				'label'             => __( 'Custom HTML', 'neve' ),
+				'label'             => __( 'HTML', 'neve' ),
 				'type'              => 'textarea',
 				'section'           => $this->section,
 			]

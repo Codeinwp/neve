@@ -39,7 +39,7 @@
   max-width: 1200px;
   margin: 0 auto; }
 
-.header--row-inner.header-top-inner.light-mode {
+.header-top-inner.light-mode {
   background-color: #f0f0f0; }
 
 .light-mode {
@@ -94,7 +94,8 @@ body:before {
   content: " ";
   background: rgba(0, 0, 0, 0.5);
   visibility: hidden;
-  opacity: 0; }
+  opacity: 0;
+  }
 
 body.menu_sidebar_dropdown:before {
   display: none; }
@@ -402,9 +403,10 @@ body.menu_sidebar_dropdown:before {
   display: none; }
 
 .is-menu-sidebar:before, .is-mobile-form-panel:before {
-  z-index: 999897;
+  z-index: 10000;
   visibility: visible;
-  opacity: 1; }
+  opacity: 1;
+  }
 
 /* - Item showing animation  */
 .header-menu-sidebar .item--inner {

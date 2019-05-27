@@ -100,7 +100,7 @@ class Layout_Single_Product extends Base_Customizer {
 			new Control(
 				'neve_exclusive_products_category',
 				array(
-					'default'           => esc_html__( '-', 'neve' ),
+					'default'           => '-',
 					'sanitize_callback' => array( $this, 'sanitize_categories' ),
 				),
 				array(

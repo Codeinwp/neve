@@ -1,18 +1,20 @@
 /* jshint esversion: 6 */
-import {neveEach} from './utils.js';
+import { neveEach } from './utils.js';
 import { tns } from 'tiny-slider/src/tiny-slider';
 
 /**
  * Init shop.
  * @returns {boolean}
  */
-export const initShop = function () {
-	if (document.body.classList.contains( 'woocommerce' )) {
+export const initShop = function() {
+	if ( document.body.classList.contains( 'woocommerce' ) ) {
 		handleShopSidebar();
 	}
-	if (document.body.classList.contains( 'nv-exclusive' )) {
+	if ( document.body.classList.contains( 'nv-exclusive' ) ) {
 		handleExclusiveSlider();
 	}
+
+	handleCartExpand();
 };
 
 /**
@@ -20,17 +22,17 @@ export const initShop = function () {
  *
  * @returns {boolean}
  */
-const handleShopSidebar = function () {
+const handleShopSidebar = function() {
 	let sidebar, toggles, html;
 
 	sidebar = document.querySelector( '.shop-sidebar' );
-	if (sidebar === null) {
+	if ( sidebar === null ) {
 		return false;
 	}
 	html = document.querySelector( 'html' );
 	toggles = document.querySelectorAll( '.nv-sidebar-toggle' );
-	neveEach( toggles, function ( toggle ) {
-		toggle.addEventListener( 'click', function () {
+	neveEach( toggles, function(toggle) {
+		toggle.addEventListener( 'click', function() {
 			sidebar.classList.toggle( 'sidebar-open' );
 			html.classList.toggle( 'menu-openend' );
 		} );
@@ -40,26 +42,41 @@ const handleShopSidebar = function () {
 /**
  * Handle Exclusive Products Slider
  */
-const handleExclusiveSlider = function (  ) {
+const handleExclusiveSlider = function() {
+	let items = document.querySelector( 'ul.exclusive-products' );
+
+	if ( items === null ) return false;
 
 	let responsive = {
-		"0": {'items': 3, 'gutter': 10},
-		"768" : { 'items': 4, 'gutter': 36.59 },
-		"1200": {'items': 4, 'gutter': 44.85},
+		'0': { 'items': 2, 'gutter': 21 },
+		'768': { 'items': 4, 'gutter': 27 },
+		'1200': { 'items': 4, 'gutter': 30 }
 	};
 
-	var slider = tns({
+	let slider = tns( {
 		container: 'ul.exclusive-products',
-		slideBy: 'page',
-		mouseDrag: true,
+		slideBy: 1,
 		arrowKeys: true,
 		loop: true,
 		autoplay: true,
-		autoplayButton: false,
-		autoplayButtonOutput: false,
 		items: 4,
+		edgePadding: 0,
+		autoplayButtonOutput: false,
+		autoplayHoverPause: true,
+		speed: 1000,
+		autoplayTimeout: 3000,
+		autoplayButton: false,
 		controls: false,
 		navPosition: 'bottom',
-		responsive,
-	});
+		navContainer: '.dots-nav',
+		navAsThumbnails: true,
+		responsive
+	} );
+};
+
+/**
+ * Handle the expanding navigation cart.
+ */
+const handleCartExpand = function() {
+
 };

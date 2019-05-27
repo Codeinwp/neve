@@ -95,7 +95,7 @@
   transition: $transition_med;
 }
 
-#nv-primary-navigation .current-menu-item > a {
+ul[id^="nv-primary-navigation"] .current-menu-item > a {
   color: $link_hover_color;
 }
 

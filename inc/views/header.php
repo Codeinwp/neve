@@ -7,6 +7,8 @@
 
 namespace Neve\Views;
 
+use HFG\Core\Components\Nav;
+
 /**
  * Class Header
  *
@@ -47,18 +49,19 @@ class Header extends Base_View {
 	 * @return string
 	 */
 	private function get_last_menu_items_markup( $items = '' ) {
-		$additional_item = $this->get_last_menu_item_setting();
-
-		if ( $additional_item === 'none' ) {
+		$additional_items = $this->get_last_menu_item_setting();
+		$additional_items = json_decode( $additional_items, true );
+		if ( empty( $additional_items ) ) {
 			return $items;
 		}
-
-		if ( 'search' === $additional_item || 'search-cart' === $additional_item ) {
-			$items .= $this->get_nav_menu_search();
-		}
-
-		if ( 'cart' === $additional_item || 'search-cart' === $additional_item || 'cart-search' === $additional_item ) {
-			$items .= $this->get_nav_menu_cart();
+		foreach ( $additional_items as $item ) {
+			if ( $item === 'search' ) {
+				$items .= $this->get_nav_menu_search();
+			} elseif ( $item === 'cart' ) {
+				$items .= $this->get_nav_menu_cart();
+			} else {
+				$items .= apply_filters( 'neve_last_menu_item_' . $item, '' );
+			}
 		}
 
 		return apply_filters( 'neve_last_menu_item', $items );
@@ -70,12 +73,20 @@ class Header extends Base_View {
 	 * @return string
 	 */
 	private function get_last_menu_item_setting() {
-		$default = 'search';
+		$default = array(
+			'search',
+		);
 		if ( class_exists( 'WooCommerce' ) ) {
-			$default = 'search-cart';
+			array_push( $default, 'cart' );
 		}
 
-		return get_theme_mod( 'neve_last_menu_item', $default );
+		$current_component = 'default';
+		if ( isset( Nav::$current_component ) ) {
+			$current_component = Nav::$current_component;
+		}
+		$last_menu_setting_slug = apply_filters( 'neve_last_menu_setting_slug_' . $current_component, 'neve_last_menu_item' );
+
+		return get_theme_mod( $last_menu_setting_slug, json_encode( $default ) );
 	}
 
 	/**
@@ -147,6 +158,7 @@ class Header extends Base_View {
 		if ( $responsive === false ) {
 			ob_start();
 			echo '<div class="nv-nav-cart">';
+			do_action( 'neve_before_cart_popup' );
 			the_widget(
 				'WC_Widget_Cart',
 				array(
@@ -155,8 +167,9 @@ class Header extends Base_View {
 				array(
 					'before_title' => '',
 					'after_title'  => '',
-				) 
+				)
 			);
+			do_action( 'neve_after_cart_popup' );
 			echo '</div>';
 			$cart_widget = ob_get_contents();
 			ob_end_clean();

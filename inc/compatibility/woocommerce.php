@@ -303,7 +303,11 @@ class Woocommerce {
 	 */
 	public function add_button_color( $color_setup ) {
 		$color_setup['background']['selectors'] .=
-			',.woocommerce a.button.alt,
+			',.woocommerce a.button,
+.woocommerce a.button:hover,
+.woocommerce .button,
+.woocommerce .button:hover,
+.woocommerce a.button.alt,
 .woocommerce a.button.alt:hover,
 .woocommerce a.button.button-primary,
 .woocommerce a.button.button-primary:hover,
@@ -313,6 +317,14 @@ class Woocommerce {
 .woocommerce button.button:disabled:hover,
 .woocommerce button.button:disabled[disabled],
 .woocommerce button.button:disabled[disabled]:hover,
+.woocommerce a.button.add_to_cart,
+.woocommerce a.button.add_to_cart:hover,
+.woocommerce a.product_type_grouped,
+.woocommerce a.product_type_grouped:hover,
+.woocommerce a.product_type_external,
+.woocommerce a.product_type_external:hover,
+.woocommerce a.product_type_variable,
+.woocommerce a.product_type_variable:hover,
 .woocommerce button.button.alt.single_add_to_cart_button.disabled,
 .woocommerce button.button.alt.single_add_to_cart_button.disabled:hover,
 .woocommerce button.button.alt.single_add_to_cart_button,
@@ -325,8 +337,8 @@ class Woocommerce {
 .woocommerce button#place_order:hover,
 .woocommerce .return-to-shop > .button,
 .woocommerce .return-to-shop > .button:hover,
-#nv-primary-navigation .nv-nav-cart a.button.checkout.wc-forward,
-#nv-primary-navigation .nv-nav-cart a.button.checkout.wc-forward:hover';
+ul[id^="nv-primary-navigation"] .nv-nav-cart a.button.checkout.wc-forward,
+ul[id^="nv-primary-navigation"] .nv-nav-cart a.button.checkout.wc-forward:hover';
 
 		return $color_setup;
 	}
