@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "codeinwp/themeisle-sdk",
-            "version": "3.0.5",
+            "version": "3.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeinwp/themeisle-sdk.git",
-                "reference": "7ead6c057d783ea6c827d5b5de52a25c0e72de58"
+                "reference": "f7395c814e9058a767021c41192141f38c44bee2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeinwp/themeisle-sdk/zipball/7ead6c057d783ea6c827d5b5de52a25c0e72de58",
-                "reference": "7ead6c057d783ea6c827d5b5de52a25c0e72de58",
+                "url": "https://api.github.com/repos/Codeinwp/themeisle-sdk/zipball/f7395c814e9058a767021c41192141f38c44bee2",
+                "reference": "f7395c814e9058a767021c41192141f38c44bee2",
                 "shasum": ""
             },
             "require-dev": {
@@ -42,7 +42,7 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2019-03-07T15:42:52+00:00"
+            "time": "2019-05-27T12:17:51+00:00"
         },
         {
             "name": "codeinwp/ti-about-page",
@@ -50,12 +50,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeinwp/ti-about-page.git",
-                "reference": "6f5e82195c36980afdae372e289e69fc98e7221a"
+                "reference": "bf9d97a8f1bc6c63eb88314cede3ea4fd54fa2c2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeinwp/ti-about-page/zipball/6f5e82195c36980afdae372e289e69fc98e7221a",
-                "reference": "6f5e82195c36980afdae372e289e69fc98e7221a",
+                "url": "https://api.github.com/repos/Codeinwp/ti-about-page/zipball/bf9d97a8f1bc6c63eb88314cede3ea4fd54fa2c2",
+                "reference": "bf9d97a8f1bc6c63eb88314cede3ea4fd54fa2c2",
                 "shasum": ""
             },
             "type": "library",
@@ -77,20 +77,20 @@
             ],
             "description": "The theme about page for themeisle themes.",
             "homepage": "https://github.com/Codeinwp/ti-about-page",
-            "time": "2019-04-05T11:09:04+00:00"
+            "time": "2019-05-15T14:17:48+00:00"
         },
         {
             "name": "codeinwp/ti-onboarding",
-            "version": "1.3.4",
+            "version": "1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeinwp/ti-onboarding.git",
-                "reference": "a4d4685e85fc90937b6f6a5957583c345b64b0d4"
+                "reference": "5478a1b3a0d78f88895560fc2a71b2a2b0312f40"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeinwp/ti-onboarding/zipball/a4d4685e85fc90937b6f6a5957583c345b64b0d4",
-                "reference": "a4d4685e85fc90937b6f6a5957583c345b64b0d4",
+                "url": "https://api.github.com/repos/Codeinwp/ti-onboarding/zipball/5478a1b3a0d78f88895560fc2a71b2a2b0312f40",
+                "reference": "5478a1b3a0d78f88895560fc2a71b2a2b0312f40",
                 "shasum": ""
             },
             "require-dev": {
@@ -117,7 +117,7 @@
             ],
             "description": "Onboarding for themeisle themes.",
             "homepage": "https://github.com/Codeinwp/ti-onboarding",
-            "time": "2019-04-11T13:09:46+00:00"
+            "time": "2019-05-24T10:32:25+00:00"
         }
     ],
     "packages-dev": [
