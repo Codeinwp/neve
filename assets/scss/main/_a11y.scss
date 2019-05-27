@@ -31,7 +31,7 @@ a.neve-skip-link {
 }
 
 //<editor-fold desc="Underline links in content and comments content">
-.nv-content-wrap a, .nv-comment-content a {
+.nv-content-wrap a:not(.button), .nv-comment-content a {
   text-decoration: underline;
 
   &:hover {

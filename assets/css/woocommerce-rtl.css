@@ -708,7 +708,7 @@ section.exclusive .tns-visually-hidden {
   text-align: center;
   vertical-align: middle;
   border: 1px solid transparent;
-  border-radius: .25rem;
+  border-radius: 3px;
   text-transform: uppercase;
   cursor: pointer;
   line-height: 1.68421;
@@ -761,7 +761,7 @@ section.exclusive .tns-visually-hidden {
   text-align: center;
   vertical-align: middle;
   border: 1px solid transparent;
-  border-radius: .25rem;
+  border-radius: 3px;
   text-transform: uppercase;
   cursor: pointer;
   line-height: 1.68421;
@@ -819,7 +819,7 @@ section.exclusive .tns-visually-hidden {
   text-align: center;
   vertical-align: middle;
   border: 1px solid transparent;
-  border-radius: .25rem;
+  border-radius: 3px;
   text-transform: uppercase;
   cursor: pointer;
   line-height: 1.68421;
@@ -854,7 +854,7 @@ section.exclusive .tns-visually-hidden {
   text-align: center;
   vertical-align: middle;
   border: 1px solid transparent;
-  border-radius: .25rem;
+  border-radius: 3px;
   text-transform: uppercase;
   cursor: pointer;
   line-height: 1.68421;
@@ -892,7 +892,7 @@ ul[id^="nv-primary-navigation"] .nv-nav-cart a.button.wc-forward:not(.checkout) 
   text-align: center;
   vertical-align: middle;
   border: 1px solid transparent;
-  border-radius: .25rem;
+  border-radius: 3px;
   text-transform: uppercase;
   cursor: pointer;
   line-height: 1.68421;
@@ -920,7 +920,7 @@ ul[id^="nv-primary-navigation"] .nv-nav-cart a.button.checkout.wc-forward {
   text-align: center;
   vertical-align: middle;
   border: 1px solid transparent;
-  border-radius: .25rem;
+  border-radius: 3px;
   text-transform: uppercase;
   cursor: pointer;
   line-height: 1.68421;

@@ -22,7 +22,6 @@ class Colors extends Base_Inline {
 	public function init() {
 		$this->links_colors();
 		$this->links_hover_colors();
-		$this->add_button_color();
 		$this->add_text_color();
 		$this->add_gutenberg_colors();
 	}
@@ -95,44 +94,6 @@ class Colors extends Base_Inline {
 			'body, 
 			.entry-title a, .entry-title a:hover, .entry-title a:focus'
 		);
-	}
-
-	/**
-	 * Add buttons color.
-	 */
-	private function add_button_color() {
-		$color = get_theme_mod( 'neve_button_color', false );
-		if ( empty( $color ) ) {
-			return;
-		}
-
-		$color_setup = array(
-			'color'        => array(
-				'css_prop'  => 'color',
-				'selectors' => '
-				.nv-tags-list a',
-			),
-			'border-color' => array(
-				'css_prop'  => 'border-color',
-				'selectors' => '.nv-tags-list a',
-			),
-			'background'   => array(
-				'css_prop'  => 'background-color',
-				'selectors' => '
-				.button.button-primary, 
-				.button.button-primary:hover, 
-				button, input[type=button], 
-				.btn, input[type="submit"], 
-				.nv-tags-list a:hover,
-				/* Buttons in navigation */
-				ul[id^="nv-primary-navigation"] li.button.button-primary > a, 
-				.menu li.button.button-primary > a,
-				ul[id^="nv-primary-navigation"] li.button.button-primary > a:hover, 
-				.menu li.button.button-primary > a:hover',
-			),
-		);
-
-		$this->add_color( apply_filters( 'neve_button_color_filter', $color_setup ), sanitize_hex_color( $color ) );
 	}
 
 	/**

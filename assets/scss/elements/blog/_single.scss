@@ -102,6 +102,7 @@
     color: $button_color;
     &:hover {
       background: $button_color;
+      border-color: $button-color;
       color: #fff;
     }
   }

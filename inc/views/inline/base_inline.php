@@ -94,6 +94,7 @@ abstract class Base_Inline {
 				$settings[ $index ]['value'] = $setting['value'][ $media_query ];
 			}
 
+
 			$this->add_style( $settings, $selectors, $media_query );
 		}
 	}
@@ -143,7 +144,7 @@ abstract class Base_Inline {
 	 * @return string
 	 */
 	private function add_styles( $style ) {
-		if ( ! isset( $style['css_prop'] ) || ! isset( $style['value'] ) ) {
+		if ( ! isset( $style['css_prop'] ) || ! isset( $style['value'] ) || ( empty( $style['value'] ) && $style['value'] !== 0 ) ) {
 			return '';
 		}
 		$suffix = isset( $style['suffix'] ) ? $style['suffix'] : '';
