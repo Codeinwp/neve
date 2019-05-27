@@ -1,4 +1,15 @@
 
+ ### v2.3.7 - 2019-05-07 
+ **Changes:** 
+ * New Margin and Padding controls for each header builder component
+* Reorganized layout for the header/footer builder using tabs
+* Option for the mobile menu to slide from the left side or dropdown toggle
+* Basic compatibility with LifterLMS plugin
+* New Exclusive Products section on single product pages
+* Added animations to the main Gutenberg starter site
+* Updates for the Doctors, Restaurant, Vet Center starter sites
+* Updates for the latest version of Otter Blocks
+ 
  ### v2.3.6 - 2019-04-22 
  **Changes:** 
  * Fixed primary menu in AMP mode
