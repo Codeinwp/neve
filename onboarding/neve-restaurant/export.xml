@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!-- generator="WordPress/5.1.1" created="2019-05-07 12:08" -->
+<!-- generator="WordPress/5.2.1" created="2019-05-28 11:48" -->
 		<rss version="2.0"
 				xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
 				xmlns:content="http://purl.org/rss/1.0/modules/content/"
@@ -12,7 +12,7 @@
 				<title>NEVE Restaurant</title>
 				<link>https://demo.themeisle.com/neve-restaurant</link>
 				<description></description>
-				<pubDate>Tue, 07 May 2019 12:08:15 +0000</pubDate>
+				<pubDate>Tue, 28 May 2019 11:48:27 +0000</pubDate>
 				<language>en-US</language>
 				<wp:wxr_version>1.2</wp:wxr_version>
 				<wp:base_site_url>https://demo.themeisle.com/</wp:base_site_url>
@@ -41,7 +41,7 @@
 									<wp:term><wp:term_id>4</wp:term_id><wp:term_taxonomy>nav_menu</wp:term_taxonomy><wp:term_slug><![CDATA[main]]></wp:term_slug><wp:term_name><![CDATA[Main]]></wp:term_name>
 </wp:term>
 
-				<generator>https://wordpress.org/?v=5.1.1</generator>
+				<generator>https://wordpress.org/?v=5.2.1</generator>
 
 						<item>
 			<title>
@@ -50,45 +50,7 @@
 			<pubDate>Thu, 22 Nov 2018 13:21:52 +0000</pubDate>
 			<guid isPermaLink="false">https://demo.themeisle.com/neve-restaurant/2018/11/22/neve/</guid>
 			<description></description>
-			<content:encoded><![CDATA[header {
-	z-index: 99;
-}
-
-@media only screen and (min-width: 1200px) {
-.home.page-template-template-pagebuilder-full-width .nv-navbar {
-	background-color: transparent;
-	border-bottom: none;
-}
-
-.home.page-template-template-pagebuilder-full-width .site-logo a {
-	color: transparent;
-}
-
-.home.page-template-template-pagebuilder-full-width #nv-primary-navigation a {
-	color: #fff;
-}
-
-	.home.page-template-template-pagebuilder-full-width #nv-primary-navigation a:hover {
-	color: #c59d5f;
-}
-
-	#nv-primary-navigation li a:hover {
-	transition: 0.3s ease-in;
-}
-}
-
-
-/* new header-footer builder */
-.home.page-template-template-pagebuilder-full-width .header-main-inner {
-    background-color: transparent;
-}
-.home.page-template-template-pagebuilder-full-width .hfg_header.site-header {
-    border-bottom: none;
-}
-.home.page-template-template-pagebuilder-full-width .builder-item {
-    margin-top: 0px;
-    margin-bottom: 0px;
-}]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>10</wp:post_id>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>10</wp:post_id>
 			<wp:post_date><![CDATA[2018-11-22 13:21:52]]></wp:post_date>
 			<wp:post_date_gmt><![CDATA[2018-11-22 13:21:52]]></wp:post_date_gmt>
 			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
@@ -759,7 +721,7 @@
 				placeholder-image			</title>
 			<link>https://demo.themeisle.com/neve-restaurant/placeholder-image/</link>
 			<pubDate>Tue, 07 May 2019 11:48:18 +0000</pubDate>
-			<guid isPermaLink="false"><![CDATA[<![CDATA[https://s20206.pcdn.co/neve-restaurant/wp-content/uploads/sites/177/2019/05/placeholder-image.png]]]]><![CDATA[>]]></guid>
+			<guid isPermaLink="false"><![CDATA[https://s20206.pcdn.co/neve-restaurant/wp-content/uploads/sites/177/2019/05/placeholder-image.png]]></guid>
 			<description></description>
 			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>189</wp:post_id>
 			<wp:post_date><![CDATA[2019-05-07 11:48:18]]></wp:post_date>
