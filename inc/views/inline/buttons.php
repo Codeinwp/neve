@@ -141,7 +141,7 @@ class Buttons extends Base_Inline {
 					'selectors' => '.button.button-secondary',
 				),
 			);
-			$this->add_color( apply_filters( 'neve_button_color_filter', $color_setup ), sanitize_hex_color( $color ) );
+			$this->add_color( apply_filters( 'neve_secondary_button_color_filter', $color_setup ), sanitize_hex_color( $color ) );
 		}
 
 		$hover_color = get_theme_mod( 'neve_secondary_button_hover_color' );
@@ -157,7 +157,7 @@ class Buttons extends Base_Inline {
 					'selectors' => '.button.button-secondary:hover',
 				),
 			);
-			$this->add_color( apply_filters( 'neve_button_color_filter', $color_setup ), sanitize_hex_color( $hover_color ) );
+			$this->add_color( apply_filters( 'neve_secondary_button_hover_color_filter', $color_setup ), sanitize_hex_color( $hover_color ) );
 		}
 	}
 
@@ -176,12 +176,15 @@ class Buttons extends Base_Inline {
 			);
 			$this->add_style(
 				$setup,
-				'.button.button-primary, 
+				apply_filters(
+					'neve_button_border_radius_selectors_filter',
+					'.button.button-primary, 
 				button, input[type=button], 
-				.btn, input[type="submit"], 
+				.btn, input[type="submit"]:not(.search-submit), 
 				/* Buttons in navigation */
 				ul[id^="nv-primary-navigation"] li.button.button-primary > a, 
 				.menu li.button.button-primary > a'
+				)
 			);
 		}
 
@@ -196,7 +199,10 @@ class Buttons extends Base_Inline {
 			);
 			$this->add_style(
 				$setup,
-				'.button.button-secondary'
+				apply_filters(
+					'neve_secondary_button_border_radius_selectors_filter',
+					'.button.button-secondary' 
+				)
 			);
 		}
 	}
@@ -243,7 +249,7 @@ class Buttons extends Base_Inline {
 							'suffix'   => 'px',
 						);
 				}
-				$this->add_responsive_style( $settings, $css_selectors );
+				$this->add_responsive_style( $settings, apply_filters( 'neve_button_padding_selectors', $css_selectors, $theme_mod ) );
 			}
 		}
 

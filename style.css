@@ -1315,6 +1315,7 @@ button:hover, input[type=button]:hover, .btn:hover, input[type="submit"]:hover {
   width: 45px;
   border: 0;
   padding: 8px 12px 7px;
+  border-radius: 0;
 }
 
 .search-form button[type="submit"]:hover, .search-form input[type="submit"]:hover, .woocommerce-product-search button[type="submit"]:hover, .woocommerce-product-search input[type="submit"]:hover {

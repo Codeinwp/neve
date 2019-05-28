@@ -70,6 +70,11 @@
   font-weight: 800;
 }
 
+.woocommerce .woocommerce-error .button.wc-forward,
+.woocommerce-page .woocommerce-error .button.wc-forward {
+  padding: 6px 12px;
+}
+
 .woocommerce .woocommerce-error .button, .woocommerce .woocommerce-error .button:focus, .woocommerce .woocommerce-error .button:active, .woocommerce .woocommerce-error .button:hover,
 .woocommerce-page .woocommerce-error .button,
 .woocommerce-page .woocommerce-error .button:focus,
@@ -95,6 +100,11 @@
 .woocommerce .woocommerce-info:before,
 .woocommerce-page .woocommerce-info:before {
   color: #404248;
+}
+
+.woocommerce .woocommerce-info .button.wc-forward,
+.woocommerce-page .woocommerce-info .button.wc-forward {
+  padding: 6px 12px;
 }
 
 .woocommerce .woocommerce-info .button, .woocommerce .woocommerce-info .button:focus, .woocommerce .woocommerce-info .button:active, .woocommerce .woocommerce-info .button:hover,
@@ -124,6 +134,11 @@
 .woocommerce-page .woocommerce-message a {
   color: #fff;
   font-weight: 800;
+}
+
+.woocommerce .woocommerce-message .button.wc-forward,
+.woocommerce-page .woocommerce-message .button.wc-forward {
+  padding: 6px 12px;
 }
 
 .woocommerce .woocommerce-message .button, .woocommerce .woocommerce-message .button:focus, .woocommerce .woocommerce-message .button:active, .woocommerce .woocommerce-message .button:hover,
@@ -1358,7 +1373,7 @@ body.woocommerce-account .nv-content-wrap > .woocommerce {
 
 @media (min-width: 769px) {
   .single_add_to_cart_button {
-    width: 220px;
+    width: auto;
   }
   .variations select {
     width: 75%;
