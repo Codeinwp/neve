@@ -94,7 +94,7 @@ class Upsell_Control extends \WP_Customize_Control {
 	 * @return array
 	 */
 	public function json() {
-		$json                      = parent::json();
+		$json                       = parent::json();
 		$json['button_text']        = $this->button_text;
 		$json['button_url']         = $this->button_url;
 		$json['options']            = $this->options;

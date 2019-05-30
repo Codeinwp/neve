@@ -40,7 +40,7 @@ class Main extends Base_Customizer {
 		$this->register_type( 'Neve\Customizer\Controls\Multi_Select', 'control' );
 		$this->register_type( 'Neve\Customizer\Controls\Reactive_Control', 'control' );
 		$this->register_type( 'Neve\Customizer\Controls\Checkbox', 'control' );
-        $this->register_type( 'Neve\Customizer\Controls\Upsell_Control', 'control' );
+		$this->register_type( 'Neve\Customizer\Controls\Upsell_Control', 'control' );
 	}
 
 	/**
