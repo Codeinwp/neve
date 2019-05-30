@@ -62,6 +62,7 @@ class Loader {
 				'Customizer\Options\Typography',
 				'Customizer\Options\Colors_Background',
 				'Customizer\Options\Rtl',
+                'Customizer\Options\Upsells',
 			)
 		);
 	}
