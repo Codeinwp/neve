@@ -199,7 +199,7 @@ class Admin {
 				'type'  => 'changelog',
 				'title' => __( 'Changelog', 'neve' ),
 			),
-			'custom_tabs'         => array(
+			'custom_tabs'     => array(
 				'free_pro' => array(
 					'title'           => __( 'Free vs PRO', 'neve' ),
 					'render_callback' => array( $this, 'free_pro_render' ),
@@ -297,7 +297,7 @@ class Admin {
 				),
 			),
 		);
-		$output = '';
+		$output   = '';
 		if ( ! empty( $free_pro ) ) {
 			if ( ! empty( $free_pro['features_type'] ) ) {
 				echo '<div class="feature-section">';
@@ -356,7 +356,7 @@ class Admin {
 						}
 						break;
 				}
-				echo $output;
+				echo wp_kses_post( $output );
 				echo '</div>';
 				echo '</div>';
 			}
