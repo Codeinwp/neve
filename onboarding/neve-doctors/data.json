@@ -13,7 +13,7 @@
     "neve_menu_item_hover_color": "#404248",
     "neve_button_color": "#23a455",
     "neve_footer_content_type": "footer_menu",
-    "neve_last_menu_item": "none",
+    "neve_last_menu_item": "[]",
     "neve_headings_font_family": "default",
     "hfg_header_layout": "{\"desktop\":{\"top\":[],\"main\":[{\"x\":0,\"y\":1,\"width\":4,\"height\":1,\"id\":\"logo\"},{\"x\":4,\"y\":1,\"width\":8,\"height\":1,\"id\":\"primary-menu\"}],\"bottom\":[]},\"mobile\":{\"top\":[],\"main\":[{\"x\":0,\"y\":1,\"width\":8,\"height\":1,\"id\":\"logo\"},{\"x\":8,\"y\":1,\"width\":4,\"height\":1,\"id\":\"nav-icon\"}],\"bottom\":[],\"sidebar\":[{\"x\":0,\"y\":1,\"width\":8,\"height\":1,\"id\":\"primary-menu\"}]}}",
     "hfg_footer_layout": "{\"desktop\":{\"top\":[],\"bottom\":[{\"x\":0,\"y\":1,\"width\":12,\"height\":1,\"id\":\"footer_copyright\"}]}}",
