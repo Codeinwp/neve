@@ -84,7 +84,7 @@ const requestMorePosts = function () {
     if (inView.is(trigger)) {
       requestMorePosts();
     }
-  });
+  }, NeveProperties.infiniteScrollQuery );
 };
 
 /**

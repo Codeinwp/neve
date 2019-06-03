@@ -15,7 +15,7 @@ export const isMobile = function () {
  * @param theUrl
  * @param callback
  */
-export const httpGetAsync = function (theUrl, callback) {
+export const httpGetAsync = function (theUrl, callback, params) {
   let xmlHttp = new XMLHttpRequest();
   xmlHttp.onload = function () {
     if (xmlHttp.readyState === 4 && xmlHttp.status === 200)
@@ -24,8 +24,9 @@ export const httpGetAsync = function (theUrl, callback) {
   xmlHttp.onerror = function (error) {
     console.error(error);
   };
-  xmlHttp.open('GET', theUrl, true);
-  xmlHttp.send(null);
+  xmlHttp.open('POST', theUrl, true);
+  xmlHttp.setRequestHeader( 'Content-Type', 'application/json; charset=UTF-8' );
+  xmlHttp.send(params);
 };
 
 /**
