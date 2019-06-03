@@ -202,7 +202,7 @@ class Admin {
 		);
 
 		if ( ! defined( 'NEVE_PRO_VERSION' ) ) {
-			$config_array[ 'custom_tabs' ][ 'free_pro' ] = array(
+			$config_array['custom_tabs']['free_pro'] = array(
 				'title'           => __( 'Free vs PRO', 'neve' ),
 				'render_callback' => array( $this, 'free_pro_render' ),
 			);
