@@ -199,13 +199,14 @@ class Admin {
 				'type'  => 'changelog',
 				'title' => __( 'Changelog', 'neve' ),
 			),
-			'custom_tabs'     => array(
-				'free_pro' => array(
-					'title'           => __( 'Free vs PRO', 'neve' ),
-					'render_callback' => array( $this, 'free_pro_render' ),
-				),
-			),
 		);
+
+		if ( ! defined( 'NEVE_PRO_VERSION' ) ) {
+			$config_array[ 'custom_tabs' ]['free_pro'] = array(
+				'title'           => __( 'Free vs PRO', 'neve' ),
+				'render_callback' => array( $this, 'free_pro_render' ),
+			);
+		}
 		global $wp_version;
 		if ( version_compare( $wp_version, '5.0', '>=' ) ) {
 			$config_array = array_merge(
