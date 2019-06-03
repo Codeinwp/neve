@@ -70,8 +70,7 @@ class Woocommerce {
 	 */
 	private $secondary_buttons_selectors = array(
 		'default'          => '
-			,#comments input[type=submit],
-			.woocommerce-cart table.cart td.actions .coupon > .input-text + .button,
+			,.woocommerce-cart table.cart td.actions .coupon > .input-text + .button,
 			.woocommerce-checkout #neve-checkout-coupon .woocommerce-form-coupon .form-row-last button,
 			.woocommerce button.button,
 			.woocommerce a.added_to_cart, 

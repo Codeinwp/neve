@@ -1755,6 +1755,7 @@ article {
 }
 
 #comments input[type=submit] {
+  border-radius: 3px;
   border: 1px solid #676767;
   background-color: transparent;
   font-weight: 600;

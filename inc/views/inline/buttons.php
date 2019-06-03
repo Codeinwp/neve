@@ -134,11 +134,11 @@ class Buttons extends Base_Inline {
 				'color'        => array(
 					'css_prop'  => 'color',
 					'selectors' => '
-				.button.button-secondary',
+				.button.button-secondary, #comments input[type="submit"]',
 				),
 				'border-color' => array(
 					'css_prop'  => 'border-color',
-					'selectors' => '.button.button-secondary',
+					'selectors' => '.button.button-secondary, #comments input[type="submit"]',
 				),
 			);
 			$this->add_color( apply_filters( 'neve_secondary_button_color_filter', $color_setup ), sanitize_hex_color( $color ) );
@@ -150,11 +150,11 @@ class Buttons extends Base_Inline {
 				'color'        => array(
 					'css_prop'  => 'color',
 					'selectors' => '
-				.button.button-secondary:hover',
+				.button.button-secondary:hover,  #comments input[type="submit"]:hover',
 				),
 				'border-color' => array(
 					'css_prop'  => 'border-color',
-					'selectors' => '.button.button-secondary:hover',
+					'selectors' => '.button.button-secondary:hover,  #comments input[type="submit"]:hover',
 				),
 			);
 			$this->add_color( apply_filters( 'neve_secondary_button_hover_color_filter', $color_setup ), sanitize_hex_color( $hover_color ) );
@@ -201,7 +201,7 @@ class Buttons extends Base_Inline {
 				$setup,
 				apply_filters(
 					'neve_secondary_button_border_radius_selectors_filter',
-					'.button.button-secondary' 
+					'.button.button-secondary, #comments input[type="submit"]'
 				)
 			);
 		}
@@ -213,7 +213,7 @@ class Buttons extends Base_Inline {
 	private function add_paddings() {
 		$paddings = array(
 			'neve_button_padding'           => '.button.button-primary',
-			'neve_secondary_button_padding' => '.button.button-secondary',
+			'neve_secondary_button_padding' => '.button.button-secondary, #comments input[type="submit"]',
 		);
 		foreach ( $paddings as $theme_mod => $css_selectors ) {
 			$padding = get_theme_mod( $theme_mod );
@@ -252,6 +252,5 @@ class Buttons extends Base_Inline {
 				$this->add_responsive_style( $settings, apply_filters( 'neve_button_padding_selectors', $css_selectors, $theme_mod ) );
 			}
 		}
-
 	}
 }
