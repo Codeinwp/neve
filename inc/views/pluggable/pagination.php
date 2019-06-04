@@ -36,7 +36,7 @@ class Pagination extends Base_View {
 			'nv/v1/posts',
 			'/page/(?P<page_number>\d+)/',
 			array(
-				'methods'  => \WP_REST_Server::READABLE,
+				'methods'  => \WP_REST_Server::CREATABLE,
 				'callback' => array( $this, 'get_posts' ),
 			)
 		);
@@ -54,15 +54,16 @@ class Pagination extends Base_View {
 			return new \WP_REST_Response( '' );
 		}
 
-		$output = '';
+		$query_args = $request->get_body();
+		$args       = json_decode( $query_args, true );
 
-		$args = array(
-			'posts_per_page'      => get_option( 'posts_per_page' ),
-			'post_type'           => 'post',
-			'paged'               => $request['page_number'],
-			'ignore_sticky_posts' => 1,
-			'post_status'         => 'publish',
-		);
+		$args['posts_per_page']      = get_option( 'posts_per_page' );
+		$args['post_type']           = 'post';
+		$args['paged']               = $request['page_number'];
+		$args['ignore_sticky_posts'] = 1;
+		$args['post_status']         = 'publish';
+
+		$output = '';
 
 		$query = new \WP_Query( $args );
 		if ( $query->have_posts() ) {
@@ -96,6 +97,7 @@ class Pagination extends Base_View {
 		$data['infiniteScroll']         = 'enabled';
 		$data['infiniteScrollMaxPages'] = $max_pages;
 		$data['infiniteScrollEndpoint'] = rest_url( 'nv/v1/posts/page/' );
+		$data['infiniteScrollQuery']    = json_encode( $wp_query->query );
 
 		return $data;
 	}
