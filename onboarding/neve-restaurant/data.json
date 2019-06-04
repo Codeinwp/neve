@@ -5,7 +5,7 @@
     "ti_prev_theme": "twentysixteen",
     "custom_css_post_id": 10,
     "neve_navigation_layout": "left",
-    "neve_last_menu_item": "none",
+    "neve_last_menu_item": "[]",
     "neve_text_color": "#404248",
     "neve_menu_item_color": "#404248",
     "neve_headings_font_family": "Source Sans Pro",
@@ -16,7 +16,9 @@
     "neve_footer_text": "<p><a href=\"https://themeisle.com/themes/neve/\" rel=\"nofollow\">Neve</a> | Powered by <a href=\"http://wordpress.org\" rel=\"nofollow\">WordPress</a></p>",
     "primary-menu_active_color": "#f36b6b",
     "primary-menu_hover_color": "#f36b6b",
-    "neve_generated_style_version": 1557227129,
+    "ti_about_recommended_plugins": {
+      "otter-blocks": "visible"
+    },
     "__ti_import_menus_location": {
       "primary": "main"
     }

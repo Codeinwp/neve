@@ -6,7 +6,7 @@
     "background_color": "ffffff",
     "neve_menu_item_color": "#ffffff",
     "neve_navigation_layout": "left",
-    "neve_last_menu_item": "none",
+    "neve_last_menu_item": "[]",
     "neve_menu_item_hover_color": "#ffffff",
     "neve_button_color": "#ffc42e",
     "neve_link_color": "#00a2dd",

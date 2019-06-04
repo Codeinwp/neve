@@ -32,6 +32,25 @@ class Admin {
 	private $theme_slug;
 
 	/**
+	 * Admin constructor.
+	 */
+	public function __construct() {
+		add_action(
+			'admin_init',
+			function () {
+				if ( get_option( 'themeisle_ob_plugins_installed' ) !== 'yes' ) {
+					return;
+				}
+				update_option( 'themeisle_blocks_settings_redirect', false );
+				delete_transient( 'wpforms_activation_redirect' );
+				update_option( 'themeisle_ob_plugins_installed', 'no' );
+			},
+			0
+		);
+	}
+
+
+	/**
 	 * Add the about page.
 	 */
 	public function do_about_page() {

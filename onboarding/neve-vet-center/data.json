@@ -19,7 +19,7 @@
     "neve_body_font_size": "{\"suffix\":{\"mobile\":\"px\",\"tablet\":\"px\",\"desktop\":\"px\"},\"mobile\":15,\"tablet\":16,\"desktop\":16}",
     "neve_footer_text": "<p><a href=\"https://themeisle.com/themes/neve/\" rel=\"nofollow\">Neve Vet Center</a> | Powered by <a href=\"http://wordpress.org\" rel=\"nofollow\">WordPress</a></p>",
     "neve_menu_item_hover_color": "#81c042",
-    "neve_last_menu_item": "none",
+    "neve_last_menu_item": "[]",
     "neve_button_color": "#53ba7b",
     "neve_menu_item_color": "#2e393f",
     "neve_body_text_transform": "none",
