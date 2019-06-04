@@ -243,7 +243,7 @@ class Admin {
 		$free_pro = array(
 			'free_theme_name'     => 'Neve',
 			'pro_theme_name'      => 'Neve Pro',
-			'pro_theme_link'      => apply_filters( 'neve_upgrade_link_from_child_theme_filter', 'https://themeisle.com/themes/neve/upgrade/?utm_medium=aboutneve&utm_source=button&utm_campaign=freevspro' ),
+			'pro_theme_link'      => apply_filters( 'neve_upgrade_link_from_child_theme_filter', 'https://themeisle.com/themes/neve/upgrade/?utm_medium=aboutneve&utm_source=freevspro&utm_campaign=neve' ),
 			/* translators: s - theme name */
 			'get_pro_theme_label' => sprintf( __( 'Get %s now!', 'neve' ), 'Neve Pro' ),
 			'features_type'       => 'table',

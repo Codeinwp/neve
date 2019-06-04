@@ -70,7 +70,7 @@ class Upsells extends Base_Customizer {
 						esc_html__( 'Easily create custom headers and footers as well as adding your own custom code or content in any of the hooks locations.', 'neve' ),
 						esc_html__( 'Leverage the true flexibility of Elementor with powerful addons and templates that you can import with just one click.', 'neve' ),
 					),
-					'button_url'         => esc_url( apply_filters( 'neve_upgrade_link_from_child_theme_filter', 'https://themeisle.com/themes/neve/upgrade/?utm_medium=customizer&utm_source=button&utm_campaign=profeatures' ) ),
+					'button_url'         => esc_url( apply_filters( 'neve_upgrade_link_from_child_theme_filter', 'https://themeisle.com/themes/neve/upgrade/?utm_medium=customizer&utm_source=getpro&utm_campaign=neve' ) ),
 					'button_text'        => esc_html__( 'Get the PRO version!', 'neve' ),
 				),
 				'Neve\Customizer\Controls\Upsell_Control'
