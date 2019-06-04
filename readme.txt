@@ -17,6 +17,14 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog == 
+= 2.3.10 - 2019-06-04  = 
+
+* New color, padding and border radius options for Primary and Secondary Buttons
+* Fixed issue with duplicated posts on the blog page
+* Fixed onboarding sites options throwing warnings after the last menu item migration
+* Updated the screenshot
+
+
 = 2.3.9 - 2019-05-27  = 
 
 * Fixed issues with redirects to Otter and WPForms dashboards in the onboarding process
