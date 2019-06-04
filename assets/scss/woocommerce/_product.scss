@@ -197,7 +197,7 @@
 
 @mixin product--tablet() {
   .single_add_to_cart_button {
-    width: 220px;
+    width: auto;
   }
   .variations select {
     width: 75%;

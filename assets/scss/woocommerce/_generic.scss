@@ -80,6 +80,9 @@ $notices: (
         color: #fff;
         font-weight: 800;
       }
+      .button.wc-forward {
+        padding: 6px 12px;
+      }
       .button, .button:focus, .button:active, .button:hover {
         background-color: #fff;
         color: $color;
@@ -91,6 +94,9 @@ $notices: (
       }
       &:before {
         color: $body-color;
+      }
+      .button.wc-forward {
+        padding: 6px 12px;
       }
       .button, .button:focus, .button:active, .button:hover {
         background-color: $body-color;

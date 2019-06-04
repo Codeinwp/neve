@@ -37,10 +37,13 @@ get_header();
 					while ( have_posts() ) {
 						the_post();
 						get_template_part( 'template-parts/content', get_post_type() );
-						if ( $pagination_type !== 'infinite' && $post_index === $hook_after_post && $hook_after_post !== - 1 ) {
-							do_action( 'neve_middle_posts_loop' );
-						}
-						$post_index ++;
+
+						if ( $pagination_type !== 'infinite' ) {
+							if ( $post_index === $hook_after_post && $hook_after_post !== - 1 ) {
+								do_action( 'neve_middle_posts_loop' );
+							}
+							$post_index ++;
+						}                   
 					}
 					echo '</div>';
 					if ( ! is_singular() ) {

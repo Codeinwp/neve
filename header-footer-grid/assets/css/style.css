@@ -55,7 +55,8 @@
 .header--row-inner.dark-mode, .header--row-inner.dark-mode .sub-menu, .header--row-inner.dark-mode .sub-menu li {
   border-color: #333;
   background-color: #24292e;
-  color: #fff; }
+  color: #fff;
+  }
 
 .header--row-inner.dark-mode a:not(.button) {
   color: #fff; }

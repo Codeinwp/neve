@@ -59,7 +59,7 @@ abstract class Base_Inline {
 
 		foreach ( $styles as $style ) {
 			/* Allow 0 values through, but don't allow empty style or undefined. */
-			if ( ! isset( $style['value'] ) || ( empty( $style['value'] ) && ( $style['value'] !== 0 ) ) ) {
+			if ( ! isset( $style['value'] ) || ( empty( $style['value'] ) && ( $style['value'] !== 0 && $style['value'] !== '0' ) ) ) {
 				continue;
 			}
 			$use_style = true;
@@ -93,7 +93,6 @@ abstract class Base_Inline {
 			foreach ( $settings as $index => $setting ) {
 				$settings[ $index ]['value'] = $setting['value'][ $media_query ];
 			}
-
 			$this->add_style( $settings, $selectors, $media_query );
 		}
 	}
@@ -143,7 +142,7 @@ abstract class Base_Inline {
 	 * @return string
 	 */
 	private function add_styles( $style ) {
-		if ( ! isset( $style['css_prop'] ) || ! isset( $style['value'] ) ) {
+		if ( ! isset( $style['css_prop'] ) || ! isset( $style['value'] ) || ( empty( $style['value'] ) && $style['value'] !== 0 && $style['value'] !== '0' ) ) {
 			return '';
 		}
 		$suffix = isset( $style['suffix'] ) ? $style['suffix'] : '';
