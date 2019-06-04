@@ -70,6 +70,11 @@
   font-weight: 800;
 }
 
+.woocommerce .woocommerce-error .button.wc-forward,
+.woocommerce-page .woocommerce-error .button.wc-forward {
+  padding: 6px 12px;
+}
+
 .woocommerce .woocommerce-error .button, .woocommerce .woocommerce-error .button:focus, .woocommerce .woocommerce-error .button:active, .woocommerce .woocommerce-error .button:hover,
 .woocommerce-page .woocommerce-error .button,
 .woocommerce-page .woocommerce-error .button:focus,
@@ -95,6 +100,11 @@
 .woocommerce .woocommerce-info:before,
 .woocommerce-page .woocommerce-info:before {
   color: #404248;
+}
+
+.woocommerce .woocommerce-info .button.wc-forward,
+.woocommerce-page .woocommerce-info .button.wc-forward {
+  padding: 6px 12px;
 }
 
 .woocommerce .woocommerce-info .button, .woocommerce .woocommerce-info .button:focus, .woocommerce .woocommerce-info .button:active, .woocommerce .woocommerce-info .button:hover,
@@ -124,6 +134,11 @@
 .woocommerce-page .woocommerce-message a {
   color: #fff;
   font-weight: 800;
+}
+
+.woocommerce .woocommerce-message .button.wc-forward,
+.woocommerce-page .woocommerce-message .button.wc-forward {
+  padding: 6px 12px;
 }
 
 .woocommerce .woocommerce-message .button, .woocommerce .woocommerce-message .button:focus, .woocommerce .woocommerce-message .button:active, .woocommerce .woocommerce-message .button:hover,
@@ -708,7 +723,7 @@ section.exclusive .tns-visually-hidden {
   text-align: center;
   vertical-align: middle;
   border: 1px solid transparent;
-  border-radius: .25rem;
+  border-radius: 3px;
   text-transform: uppercase;
   cursor: pointer;
   line-height: 1.68421;
@@ -761,7 +776,7 @@ section.exclusive .tns-visually-hidden {
   text-align: center;
   vertical-align: middle;
   border: 1px solid transparent;
-  border-radius: .25rem;
+  border-radius: 3px;
   text-transform: uppercase;
   cursor: pointer;
   line-height: 1.68421;
@@ -819,7 +834,7 @@ section.exclusive .tns-visually-hidden {
   text-align: center;
   vertical-align: middle;
   border: 1px solid transparent;
-  border-radius: .25rem;
+  border-radius: 3px;
   text-transform: uppercase;
   cursor: pointer;
   line-height: 1.68421;
@@ -854,7 +869,7 @@ section.exclusive .tns-visually-hidden {
   text-align: center;
   vertical-align: middle;
   border: 1px solid transparent;
-  border-radius: .25rem;
+  border-radius: 3px;
   text-transform: uppercase;
   cursor: pointer;
   line-height: 1.68421;
@@ -892,7 +907,7 @@ ul[id^="nv-primary-navigation"] .nv-nav-cart a.button.wc-forward:not(.checkout) 
   text-align: center;
   vertical-align: middle;
   border: 1px solid transparent;
-  border-radius: .25rem;
+  border-radius: 3px;
   text-transform: uppercase;
   cursor: pointer;
   line-height: 1.68421;
@@ -920,7 +935,7 @@ ul[id^="nv-primary-navigation"] .nv-nav-cart a.button.checkout.wc-forward {
   text-align: center;
   vertical-align: middle;
   border: 1px solid transparent;
-  border-radius: .25rem;
+  border-radius: 3px;
   text-transform: uppercase;
   cursor: pointer;
   line-height: 1.68421;
@@ -1358,7 +1373,7 @@ body.woocommerce-account .nv-content-wrap > .woocommerce {
 
 @media (min-width: 769px) {
   .single_add_to_cart_button {
-    width: 220px;
+    width: auto;
   }
   .variations select {
     width: 75%;

@@ -377,11 +377,11 @@ a.neve-skip-link:focus {
   top: 32px;
 }
 
-.nv-content-wrap a, .nv-comment-content a {
+.nv-content-wrap a:not(.button), .nv-comment-content a {
   text-decoration: underline;
 }
 
-.nv-content-wrap a:hover, .nv-comment-content a:hover {
+.nv-content-wrap a:not(.button):hover, .nv-comment-content a:hover {
   text-decoration: none;
 }
 
@@ -515,7 +515,7 @@ blockquote.wp-block-quote.is-style-large cite {
   text-align: center;
   vertical-align: middle;
   border: 1px solid transparent;
-  border-radius: .25rem;
+  border-radius: 3px;
   text-transform: uppercase;
   cursor: pointer;
   line-height: 1.68421;
@@ -894,7 +894,7 @@ a.button.close-responsive-search {
   text-align: center;
   vertical-align: middle;
   border: 1px solid transparent;
-  border-radius: .25rem;
+  border-radius: 3px;
   text-transform: uppercase;
   cursor: pointer;
   line-height: 1.68421;
@@ -951,7 +951,7 @@ ul[id^="nv-primary-navigation"] li.button > a, .menu li.button > a {
   text-align: center;
   vertical-align: middle;
   border: 1px solid transparent;
-  border-radius: .25rem;
+  border-radius: 3px;
   text-transform: uppercase;
   cursor: pointer;
   line-height: 1.68421;
@@ -1190,7 +1190,7 @@ fieldset input[type="text"], fieldset input[type="search"], fieldset input[type=
   text-align: center;
   vertical-align: middle;
   border: 1px solid transparent;
-  border-radius: .25rem;
+  border-radius: 3px;
   text-transform: uppercase;
   cursor: pointer;
   line-height: 1.68421;
@@ -1233,7 +1233,7 @@ button, input[type=button], .btn, input[type="submit"] {
   text-align: center;
   vertical-align: middle;
   border: 1px solid transparent;
-  border-radius: .25rem;
+  border-radius: 3px;
   text-transform: uppercase;
   cursor: pointer;
   line-height: 1.68421;
@@ -1315,6 +1315,7 @@ button:hover, input[type=button]:hover, .btn:hover, input[type="submit"]:hover {
   width: 45px;
   border: 0;
   padding: 8px 12px 7px;
+  border-radius: 0;
 }
 
 .search-form button[type="submit"]:hover, .search-form input[type="submit"]:hover, .woocommerce-product-search button[type="submit"]:hover, .woocommerce-product-search input[type="submit"]:hover {
@@ -1657,6 +1658,7 @@ article {
 
 .nv-tags-list a:hover {
   background: #0366d6;
+  border-color: #0366d6;
   color: #fff;
 }
 
@@ -1753,6 +1755,7 @@ article {
 }
 
 #comments input[type=submit] {
+  border-radius: 3px;
   border: 1px solid #676767;
   background-color: transparent;
   font-weight: 600;
