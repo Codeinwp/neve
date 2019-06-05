@@ -40,6 +40,7 @@
   .sub-menu a:after {
     bottom: 5px;
   }
+
   .header-menu-sidebar-inner & .sub-menu a:after {
     bottom: 0;
   }
@@ -53,6 +54,7 @@
   .sub-menu a:after {
     top: 5px;
   }
+
   .header-menu-sidebar-inner & .sub-menu a:after {
     top: 0;
   }
@@ -120,13 +122,16 @@
 .header-menu-sidebar .nav-menu-primary ul {
   flex-direction: column;
   display: flex;
+
   li {
     background-color: transparent;
     padding: 3px 0;
+
     a {
       padding: 3px 0;
     }
   }
+
   .sub-menu {
     background-color: transparent;
   }
@@ -139,4 +144,16 @@
     justify-content: center;
     position: relative;
   }
+}
+
+@media ( min-width: 960px ) {
+.nav-menu-primary {
+  width: 100%;
+
+  #mega-menu-wrap-primary #mega-menu-primary.max-mega-menu {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+}
 }

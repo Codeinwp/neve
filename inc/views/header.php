@@ -36,6 +36,10 @@ class Header extends Base_View {
 			return $items;
 		}
 
+		if ( strpos( $args->menu_class, 'max-mega-menu' ) ) {
+			return $items;
+		}
+
 		$items = $this->get_last_menu_items_markup( $items );
 
 		return $items;
