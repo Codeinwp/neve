@@ -22,7 +22,7 @@ $desktop : map-get($gl-devices-list, desktop);
 }
 
 //<editor-fold desc="Row Layout">
-$builder_types: header footer;
+$builder_types: page_header header footer;
 
 @each $type in $builder_types {
   .#{$type}--row {
