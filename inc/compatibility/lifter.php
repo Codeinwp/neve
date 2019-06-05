@@ -116,7 +116,8 @@ class Lifter {
 		echo '</h1>';
 		echo '</div>';
 		echo '</div>';
-		echo '<div class="nv-content-wrap entry-content">';
+		$class = apply_filters( 'neve_lifter_wrap_classes', 'nv-content-wrap entry-content' );
+		echo '<div class="' . esc_attr( $class ) . '">';
 	}
 
 	/**

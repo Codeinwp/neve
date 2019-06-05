@@ -1,3 +1,7 @@
+.nv-content-wrap ul.llms-loop-list {
+  padding: 0;
+}
+
 .lms-container .nv-page-title-wrap,
 .lms-container .nv-sidebar-wrap {
   margin-top: 30px;
