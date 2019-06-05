@@ -159,7 +159,7 @@ class Front_End {
 					),
 				),
 			),
-			'upsell'     => array(
+			'upsell'      => array(
 				'elementor' => array(
 					'neve-cafe'          => array(
 						'url'        => 'https://demo.themeisle.com/neve-cafe/',
