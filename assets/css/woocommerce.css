@@ -992,6 +992,7 @@ ul[id^="nv-primary-navigation"] .nv-nav-cart a.button.checkout.wc-forward:hover 
 .nv-sidebar-toggle.in-sidebar {
   float: right;
   margin-bottom: 20px;
+  background-color: transparent;
 }
 
 .woocommerce .widget_shopping_cart .cart_list li, .woocommerce.widget_shopping_cart .cart_list li {
