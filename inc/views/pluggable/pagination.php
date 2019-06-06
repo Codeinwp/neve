@@ -175,6 +175,9 @@ class Pagination extends Base_View {
 	 * @return string
 	 */
 	private function has_infinite_scroll() {
+		if ( neve_is_amp() ) {
+			return false;
+		}
 		if ( is_search() ) {
 			return false;
 		}
