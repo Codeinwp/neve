@@ -101,4 +101,12 @@ footer.llms-loop-item-footer {
   max-width: 100%;
 }
 
+.llms-course-nav .llms-lesson-preview {
+  width: 100%;
+}
+
+.llms-course-nav .llms-lesson-preview .llms-main .llms-pre-text, .llms-course-nav .llms-lesson-preview .llms-main .llms-lesson-title {
+  text-align: center;
+}
+
 /*# sourceMappingURL=lifter.css.map */

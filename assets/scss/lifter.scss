@@ -107,3 +107,12 @@ footer.llms-loop-item-footer {
 .llms-person-login-form-wrapper {
   max-width: 100%;
 }
+
+.llms-course-nav  .llms-lesson-preview{
+  width: 100%;
+  .llms-main{
+    .llms-pre-text, .llms-lesson-title{
+      text-align: center;
+    }
+  }
+}
