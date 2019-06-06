@@ -369,7 +369,8 @@ body.menu_sidebar_dropdown:before {
 
 .is-menu-sidebar.menu_sidebar_dropdown .header-menu-sidebar {
   z-index: 10;
-  visibility: visible; }
+  visibility: visible;
+  height: 100%; }
 
 .header-menu-sidebar .menu-item-nav-search {
   display: flex;
