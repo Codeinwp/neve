@@ -39,7 +39,7 @@ class Product_Layout extends Base_View {
 	 */
 	public function render_exclusive_products_section() {
 		$products_category = get_theme_mod( 'neve_exclusive_products_category', '-' );
-		if ( $products_category === '-' ) {
+		if ( $products_category === '-' || neve_is_amp() ) {
 			return;
 		}
 

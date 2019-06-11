@@ -443,6 +443,7 @@ body {
     .header-menu-sidebar {
       z-index: 10;
       visibility: visible;
+      height: 100%;
     }
   }
 }
@@ -501,7 +502,7 @@ body {
 
 .is-menu-sidebar, .is-mobile-form-panel {
   &:before {
-    z-index: $menu_sidebar_active_z_index - 3;
+    z-index: 100000;
     visibility: visible;
     opacity: 1;
   }

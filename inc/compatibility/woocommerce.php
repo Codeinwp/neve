@@ -25,7 +25,7 @@ class Woocommerce {
 	private $primary_buttons_selectors = array(
 		'default' => '
 			,.woocommerce a.button,
-			.woocommerce .button,
+			.woocommerce .button:not(.nv-sidebar-toggle),
 			.woocommerce a.button.alt,
 			.woocommerce a.button.button-primary,
 			.woocommerce a.button.checkout-button,
@@ -44,7 +44,7 @@ class Woocommerce {
 			ul[id^="nv-primary-navigation"] .nv-nav-cart a.button.checkout.wc-forward',
 		'hover'   => '
 			,.woocommerce a.button:hover,
-			.woocommerce .button:hover,
+			.woocommerce .button:not(.nv-sidebar-toggle):hover,
 			.woocommerce a.button.alt:hover,
 			.woocommerce a.button.button-primary:hover,
 			.woocommerce a.button.checkout-button:hover,
