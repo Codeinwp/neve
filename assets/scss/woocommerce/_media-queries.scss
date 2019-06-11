@@ -13,6 +13,7 @@
   @include cart--laptop();
   @include shop-loop--laptop();
   @include checkout--laptop();
+  @include account--laptop();
 }
 
 @media (min-width: #{$desktop}) {

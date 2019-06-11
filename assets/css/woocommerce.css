@@ -1323,8 +1323,10 @@ body.woocommerce-account .nv-content-wrap > .woocommerce {
 
 .nv-content-wrap .woocommerce-MyAccount-navigation > ul {
   list-style-type: none;
-  padding: 0;
+  padding: 0 0 20px 0;
   display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 
 .nv-content-wrap .woocommerce-MyAccount-navigation li {
@@ -1587,6 +1589,12 @@ body.woocommerce-account .nv-content-wrap > .woocommerce {
   .woocommerce-checkout-review-order {
     width: 48%;
     float: right;
+  }
+  .nv-content-wrap .woocommerce-MyAccount-navigation > ul {
+    text-align: left;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 0;
   }
 }
 
