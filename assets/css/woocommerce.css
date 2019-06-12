@@ -823,6 +823,8 @@ section.exclusive .tns-visually-hidden {
   opacity: .9;
 }
 
+.woocommerce .button.button-secondary.more-details,
+.woocommerce .woocommerce .price_slider_amount button.button,
 .woocommerce button.button,
 .woocommerce a.added_to_cart,
 .woocommerce .checkout_coupon button.button,
@@ -845,6 +847,8 @@ section.exclusive .tns-visually-hidden {
   color: #676767;
 }
 
+.woocommerce .button.button-secondary.more-details:hover,
+.woocommerce .woocommerce .price_slider_amount button.button:hover,
 .woocommerce button.button:hover,
 .woocommerce a.added_to_cart:hover,
 .woocommerce .checkout_coupon button.button:hover,
@@ -853,6 +857,8 @@ section.exclusive .tns-visually-hidden {
   opacity: .9;
 }
 
+.woocommerce .button.button-secondary.more-details:hover,
+.woocommerce .woocommerce .price_slider_amount button.button:hover,
 .woocommerce button.button:hover,
 .woocommerce a.added_to_cart:hover,
 .woocommerce .checkout_coupon button.button:hover,
