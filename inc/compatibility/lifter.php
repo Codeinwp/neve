@@ -15,6 +15,44 @@ namespace Neve\Compatibility;
 class Lifter {
 
 	/**
+	 * Primary button selectors.
+	 *
+	 * @var array
+	 */
+	private $primary_buttons_selectors = array(
+		'default' => '
+			,a.llms-button-primary,
+			button.llms-button-primary,
+			a.llms-button-action,
+			button.llms-button-action',
+		'hover'   => '
+			,a.llms-button-primary:hover,
+			button.llms-button-primary:hover,
+			a.llms-button-primary:active,
+			button.llms-button-primary:active,
+			a.llms-button-primary:focus,
+			button.llms-button-primary:focus,
+			a.llms-button-action:hover,
+			a.llms-button-action:active,
+			a.llms-button-action:focus,
+			button.llms-button-action:hover, 
+			button.llms-button-action:active,
+			button.llms-button-action:focus',
+	);
+
+	/**
+	 * Secondary buttons selectors.
+	 *
+	 * @var array
+	 */
+	private $secondary_buttons_selectors = array(
+		'default' => '
+			,a.llms-button-secondary',
+		'hover'   => '
+			,a.llms-button-secondary:hover',
+	);
+
+	/**
 	 * Init function.
 	 */
 	public function init() {
@@ -22,6 +60,7 @@ class Lifter {
 			return;
 		}
 		$this->load_hooks();
+		$this->add_inline_selectors();
 	}
 
 	/**
@@ -53,6 +92,126 @@ class Lifter {
 		add_action( 'wp', array( $this, 'load_catalog_sidebar' ) );
 
 		add_filter( 'llms_checkout_error_output', array( $this, 'checkout_error_entry_content_close' ) );
+	}
+
+	/**
+	 * Add inline selectors for LifterLMS.
+	 */
+	private function add_inline_selectors() {
+		add_filter( 'neve_button_color_filter', array( $this, 'add_button_color' ) );
+		add_filter( 'neve_button_hover_color_filter', array( $this, 'add_button_hover_color' ) );
+		add_filter( 'neve_button_border_radius_selectors_filter', array( $this, 'add_button_border_radius' ) );
+		add_filter( 'neve_button_padding_selectors', array( $this, 'add_button_padding_selectors' ), 10, 2 );
+
+		add_filter( 'neve_secondary_button_color_filter', array( $this, 'add_secondary_button_color' ) );
+		add_filter( 'neve_secondary_button_hover_color_filter', array( $this, 'add_secondary_button_hover_color' ) );
+		add_filter(
+			'neve_secondary_button_border_radius_selectors_filter',
+			array(
+				$this,
+				'add_secondary_button_border_radius',
+			)
+		);
+	}
+
+	/**
+	 * Add button color colors.
+	 *
+	 * @param array $color_setup the color setup from Neve\Views\Inline\Colors.
+	 *
+	 * @return array
+	 */
+	public function add_button_color( $color_setup ) {
+		$color_setup['background']['selectors'] .= $this->primary_buttons_selectors['default'];
+
+		return $color_setup;
+	}
+
+	/**
+	 * Add button hover color.
+	 *
+	 * @param array $color_setup the color setup from Neve\Views\Inline\Colors.
+	 *
+	 * @return array
+	 */
+	public function add_button_hover_color( $color_setup ) {
+		$color_setup['background']['selectors'] .= $this->primary_buttons_selectors['hover'];
+
+		return $color_setup;
+	}
+
+	/**
+	 * Add button border radius.
+	 *
+	 * @param string $selectors the color setup from Neve\Views\Inline\Colors.
+	 *
+	 * @return string
+	 */
+	public function add_button_border_radius( $selectors ) {
+		$selectors .= $this->primary_buttons_selectors['default'];
+
+		return $selectors;
+	}
+
+	/**
+	 * Add buttons paddings.
+	 *
+	 * @param string $selectors css selectors.
+	 * @param string $theme_mod theme mod key.
+	 *
+	 * @return string
+	 */
+	public function add_button_padding_selectors( $selectors, $theme_mod ) {
+		if ( $theme_mod === 'neve_button_padding' ) {
+			$selectors .= $this->primary_buttons_selectors['default'];
+		}
+
+		if ( $theme_mod === 'neve_secondary_button_padding' ) {
+			$selectors .= $this->secondary_buttons_selectors['default'];
+		}
+
+		return $selectors;
+	}
+
+	/**
+	 * Add secondary button color.
+	 *
+	 * @param array $color_setup the color setup from Neve\Views\Inline\Colors.
+	 *
+	 * @return array
+	 */
+	public function add_secondary_button_color( $color_setup ) {
+		$color_setup['color']['selectors']        .= $this->secondary_buttons_selectors['default'];
+		$color_setup['border-color']['selectors'] .= $this->secondary_buttons_selectors['default'];
+
+		return $color_setup;
+	}
+
+	/**
+	 * Add secondary button hover color.
+	 *
+	 * @param array $color_setup the color setup from Neve\Views\Inline\Colors.
+	 *
+	 * @return array
+	 */
+	public function add_secondary_button_hover_color( $color_setup ) {
+		$color_setup['color']['selectors']        .= $this->secondary_buttons_selectors['hover'];
+		$color_setup['border-color']['selectors'] .= $this->secondary_buttons_selectors['hover'];
+
+		return $color_setup;
+	}
+
+	/**
+	 * Add secondary button border radius.
+	 *
+	 * @param string $selectors the color setup from Neve\Views\Inline\Colors.
+	 *
+	 * @return string
+	 */
+	public function add_secondary_button_border_radius( $selectors ) {
+		$selectors .= $this->secondary_buttons_selectors['default'];
+
+		return $selectors;
 	}
 
 	/**
@@ -116,7 +275,8 @@ class Lifter {
 		echo '</h1>';
 		echo '</div>';
 		echo '</div>';
-		echo '<div class="nv-content-wrap entry-content">';
+		$class = apply_filters( 'neve_lifter_wrap_classes', 'nv-content-wrap entry-content' );
+		echo '<div class="' . esc_attr( $class ) . '">';
 	}
 
 	/**
