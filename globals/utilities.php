@@ -118,7 +118,7 @@ function neve_custom_kses_escape( $input, $additional_args ) {
  */
 function neve_kses_svg( $input ) {
 	$svg_args = array(
-		'svg'   => array(
+		'svg'      => array(
 			'class'           => true,
 			'aria-hidden'     => true,
 			'aria-labelledby' => true,
@@ -128,11 +128,17 @@ function neve_kses_svg( $input ) {
 			'height'          => true,
 			'viewbox'         => true, // <= Must be lower case!
 		),
-		'g'     => array( 'fill' => true ),
-		'title' => array( 'title' => true ),
-		'path'  => array(
+		'g'        => array( 'fill' => true ),
+		'title'    => array( 'title' => true ),
+		'path'     => array(
 			'd'    => true,
 			'fill' => true,
+		),
+		'polyline' => array(
+			'fill'         => true,
+			'stroke'       => true,
+			'stroke-width' => true,
+			'points'       => true,
 		),
 	);
 
