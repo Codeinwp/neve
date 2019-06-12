@@ -17,6 +17,14 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
+### 2.3.11 - 2019-06-12  ###
+
+* Redone the layout for the About page
+* Added fallbacks for JS features in AMP mode
+* Added compatibility between the LifterLMS plugin and the buttons options
+* Improved the WooCommerce My Account page layout on mobile devices
+
+
 ### 2.3.10 - 2019-06-04  ###
 
 * New color, padding and border radius options for Primary and Secondary Buttons
