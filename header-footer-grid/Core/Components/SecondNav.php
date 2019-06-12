@@ -35,7 +35,7 @@ class SecondNav extends Abstract_Component {
 	 */
 	public function init() {
 		$this->set_property( 'label', __( 'Secondary Menu', 'neve' ) );
-		$this->set_property( 'id', self::COMPONENT_ID );
+		$this->set_property( 'id', $this->get_class_const( 'COMPONENT_ID' ) );
 		$this->set_property( 'width', 2 );
 		$this->set_property( 'section', 'secondary_menu_primary' );
 	}
@@ -52,9 +52,9 @@ class SecondNav extends Abstract_Component {
 		SettingsManager::get_instance()->add(
 			[
 				'id'                => self::STYLE_ID,
-				'group'             => self::COMPONENT_ID,
+				'group'             => $this->get_class_const( 'COMPONENT_ID' ),
 				'tab'               => SettingsManager::TAB_STYLE,
-				'transport'         => 'post' . self::COMPONENT_ID,
+				'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
 				'sanitize_callback' => 'wp_filter_nohtml_kses',
 				'default'           => 'style-plain',
 				'label'             => __( 'Skin Mode', 'neve' ),
@@ -87,9 +87,9 @@ class SecondNav extends Abstract_Component {
 		SettingsManager::get_instance()->add(
 			[
 				'id'                => self::COLOR_ID,
-				'group'             => self::COMPONENT_ID,
+				'group'             => $this->get_class_const( 'COMPONENT_ID' ),
 				'tab'               => SettingsManager::TAB_STYLE,
-				'transport'         => 'post' . self::COMPONENT_ID,
+				'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
 				'sanitize_callback' => 'sanitize_hex_color',
 				'default'           => '#404248',
 				'label'             => __( 'Items Color', 'neve' ),
@@ -101,9 +101,9 @@ class SecondNav extends Abstract_Component {
 		SettingsManager::get_instance()->add(
 			[
 				'id'                => self::HOVER_COLOR_ID,
-				'group'             => self::COMPONENT_ID,
+				'group'             => $this->get_class_const( 'COMPONENT_ID' ),
 				'tab'               => SettingsManager::TAB_STYLE,
-				'transport'         => 'post' . self::COMPONENT_ID,
+				'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
 				'sanitize_callback' => 'sanitize_hex_color',
 				'default'           => '#0366d6',
 				'label'             => __( 'Items Hover Color', 'neve' ),
@@ -115,7 +115,7 @@ class SecondNav extends Abstract_Component {
 		SettingsManager::get_instance()->add(
 			[
 				'id'                => 'shortcut',
-				'group'             => self::COMPONENT_ID,
+				'group'             => $this->get_class_const( 'COMPONENT_ID' ),
 				'tab'               => SettingsManager::TAB_GENERAL,
 				'transport'         => 'postMessage',
 				'sanitize_callback' => 'esc_attr',

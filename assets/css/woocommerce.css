@@ -823,6 +823,8 @@ section.exclusive .tns-visually-hidden {
   opacity: .9;
 }
 
+.woocommerce .button.button-secondary.more-details,
+.woocommerce .woocommerce .price_slider_amount button.button,
 .woocommerce button.button,
 .woocommerce a.added_to_cart,
 .woocommerce .checkout_coupon button.button,
@@ -845,6 +847,8 @@ section.exclusive .tns-visually-hidden {
   color: #676767;
 }
 
+.woocommerce .button.button-secondary.more-details:hover,
+.woocommerce .woocommerce .price_slider_amount button.button:hover,
 .woocommerce button.button:hover,
 .woocommerce a.added_to_cart:hover,
 .woocommerce .checkout_coupon button.button:hover,
@@ -853,6 +857,8 @@ section.exclusive .tns-visually-hidden {
   opacity: .9;
 }
 
+.woocommerce .button.button-secondary.more-details:hover,
+.woocommerce .woocommerce .price_slider_amount button.button:hover,
 .woocommerce button.button:hover,
 .woocommerce a.added_to_cart:hover,
 .woocommerce .checkout_coupon button.button:hover,
@@ -992,6 +998,7 @@ ul[id^="nv-primary-navigation"] .nv-nav-cart a.button.checkout.wc-forward:hover 
 .nv-sidebar-toggle.in-sidebar {
   float: right;
   margin-bottom: 20px;
+  background-color: transparent;
 }
 
 .woocommerce .widget_shopping_cart .cart_list li, .woocommerce.widget_shopping_cart .cart_list li {
@@ -1322,8 +1329,10 @@ body.woocommerce-account .nv-content-wrap > .woocommerce {
 
 .nv-content-wrap .woocommerce-MyAccount-navigation > ul {
   list-style-type: none;
-  padding: 0;
+  padding: 0 0 20px 0;
   display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 
 .nv-content-wrap .woocommerce-MyAccount-navigation li {
@@ -1586,6 +1595,12 @@ body.woocommerce-account .nv-content-wrap > .woocommerce {
   .woocommerce-checkout-review-order {
     width: 48%;
     float: right;
+  }
+  .nv-content-wrap .woocommerce-MyAccount-navigation > ul {
+    text-align: left;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 0;
   }
 }
 

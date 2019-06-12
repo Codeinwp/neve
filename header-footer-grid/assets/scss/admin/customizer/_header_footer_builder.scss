@@ -117,6 +117,8 @@ $cb_padding: 20px;
   flex-direction: row-reverse;
   z-index: 4;
   position: relative;
+  padding: ($cb_padding+10) $cb_padding $cb_padding;
+  overflow: hidden;
 
   &.hfg--panel-hide {
     opacity: 0;
@@ -248,7 +250,6 @@ $cb_padding: 20px;
 }
 
 .hfg--cb-body {
-  padding: ($cb_padding+10) $cb_padding $cb_padding;
   position: relative;
   z-index: 4;
 }
