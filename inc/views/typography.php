@@ -36,62 +36,77 @@ class Typography extends Base_View {
 	 * Register the fonts that are selected in customizer.
 	 */
 	public function register_google_fonts() {
+
+		$typekit_fonts = $this->get_typekit_fonts();
+
 		/**
 		 * Headings font family.
 		 */
 		$headings_font = get_theme_mod( 'neve_headings_font_family', apply_filters( 'neve_headings_default', false ) );
-		if ( ! empty( $headings_font ) ) {
-			$this->enqueue_google_font( $headings_font, 'headings' );
+
+		if ( in_array( $headings_font, $typekit_fonts ) ) {
+			$this->enqueue_typekit_fonts();
+		} else {
+			if ( ! empty( $headings_font ) ) {
+				$this->enqueue_google_font( $headings_font, 'headings' );
+			}
 		}
 
 		/**
 		 * Body font family.
 		 */
 		$body_font = get_theme_mod( 'neve_body_font_family', apply_filters( 'neve_body_font_default', false ) );
-		if ( ! empty( $body_font ) ) {
-			$this->enqueue_google_font( $body_font, 'body' );
+		if ( in_array( $body_font, $typekit_fonts ) ) {
+			$this->enqueue_typekit_fonts();
+		} else {
+			if ( ! empty( $body_font ) ) {
+				$this->enqueue_google_font( $body_font, 'body' );
+			}
 		}
 	}
 
 	/**
-	 * Add headings font weights.
+	 * List of Typekit fonts.
 	 *
-	 * @param array  $weights_array font weight array.
-	 * @param string $context       the context ['headings', 'body'].
-	 *
-	 * @return array
+	 * @since 2.3.12
 	 */
-	public function add_font_weights( $weights_array, $context ) {
-		// Enqueue all the font weights in customizer preview.
-		if ( is_customize_preview() ) {
-			return array( '100', '200', '300', '400', '500', '600', '700', '800', '900' );
+	private function get_typekit_fonts() {
+		$fonts         = array();
+		$typekit_fonts = get_option( 'neve_pro_typekit_data' );
+		if ( empty( $typekit_fonts ) ) {
+			return apply_filters( 'neve_typekit_fonts_array', $fonts );
+		}
+		$typekit_fonts = json_decode( $typekit_fonts, true );
+		foreach ( $typekit_fonts as $font_name => $font_options ) {
+			$fonts[] = $font_options['family'];
 		}
 
-		if ( $context !== 'headings' && $context !== 'body' ) {
-			return $weights_array;
-		}
-		$key = 'neve_headings_font_weight';
-		if ( $context === 'body' ) {
-			$key = 'neve_body_font_weight';
+		return apply_filters( 'neve_typekit_fonts_array', $fonts );
+	}
+
+	/**
+	 * Enqueues a Typekit Font.
+	 *
+	 * @since 2.3.12
+	 */
+	private function enqueue_typekit_fonts() {
+		$typekit_id = get_option( 'neve_pro_typekit_id' );
+		if ( empty( $typekit_id ) ) {
+			return;
 		}
 
-		$font_weight = get_theme_mod( $key );
+		$url = '//use.typekit.net/' . $typekit_id . '.css';
 
-		if ( empty( $font_weight ) || in_array( $font_weight, $weights_array ) ) {
-			return $weights_array;
-		}
-
-		$weights_array[] = $font_weight;
-		return $weights_array;
+		wp_enqueue_style( 'neve-typekit-font', $url, array(), false );
 	}
 
 	/**
 	 * Enqueues a Google Font
 	 *
-	 * @since 1.1.38
-	 *
-	 * @param string $font   font string.
+	 * @param string $font font string.
 	 * @param string $handle body/headings.
+	 *
+	 * @since 1.1.38
 	 */
 	private function enqueue_google_font( $font, $handle ) {
 
@@ -949,5 +964,38 @@ class Typography extends Base_View {
 			'Yrsa',
 			'Zeyada',
 		);
+	}
+
+	/**
+	 * Add headings font weights.
+	 *
+	 * @param array  $weights_array font weight array.
+	 * @param string $context the context ['headings', 'body'].
+	 *
+	 * @return array
+	 */
+	public function add_font_weights( $weights_array, $context ) {
+		// Enqueue all the font weights in customizer preview.
+		if ( is_customize_preview() ) {
+			return array( '100', '200', '300', '400', '500', '600', '700', '800', '900' );
+		}
+
+		if ( $context !== 'headings' && $context !== 'body' ) {
+			return $weights_array;
+		}
+		$key = 'neve_headings_font_weight';
+		if ( $context === 'body' ) {
+			$key = 'neve_body_font_weight';
+		}
+
+		$font_weight = get_theme_mod( $key );
+
+		if ( empty( $font_weight ) || in_array( $font_weight, $weights_array ) ) {
+			return $weights_array;
+		}
+
+		$weights_array[] = $font_weight;
+
+		return $weights_array;
 	}
 }

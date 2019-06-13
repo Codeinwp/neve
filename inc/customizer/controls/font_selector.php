@@ -36,9 +36,10 @@ class Font_Selector extends \WP_Customize_Control {
 	 * @access protected
 	 */
 	protected function render_content() {
-		$std_fonts    = $this->get_standard_fonts();
-		$google_fonts = $this->get_google_fonts();
-		$value        = $this->value();
+		$std_fonts     = $this->get_standard_fonts();
+		$google_fonts  = $this->get_google_fonts();
+		$typekit_fonts = $this->get_typekit_fonts();
+		$value         = $this->value();
 
 		if ( empty( $value ) || $value === 'default' ) {
 			$value = ucwords( 'default' );
@@ -54,22 +55,17 @@ class Font_Selector extends \WP_Customize_Control {
 			<?php endif; ?>
 		</label>
 		<div class="neve-ss-wrap">
-			<input class="neve-fs-main-input" type="text"
-					name="<?php echo esc_attr( $this->id ); ?>"
-					value="<?php echo esc_attr( $value ); ?>"
-					readonly>
+			<input class="neve-fs-main-input" type="text" name="<?php echo esc_attr( $this->id ); ?>" value="<?php echo esc_attr( $value ); ?>" readonly>
 			<span class="neve-fs-input-addon"><i class="dashicons dashicons-arrow-down"></i></span>
 			<div class="neve-fs-dropdown">
 				<span class="neve-fs-search">
 						<input type="search" placeholder="<?php echo _x( 'Search', 'label', 'neve' ) . '...'; // WPCS: XSS OK. ?>">
 				</span>
 				<div class="neve-fs-options-wrapper">
-						<span class="neve-fs-option"
-								data-source="system"
-								data-control="<?php echo esc_attr( $this->id ); ?>"
-								data-option="default"><?php esc_html_e( 'Default', 'neve' ); ?></span>
+						<span class="neve-fs-option" data-source="system" data-control="<?php echo esc_attr( $this->id ); ?>" data-option="default"><?php esc_html_e( 'Default', 'neve' ); ?></span>
 					<?php
 					$this->render_dropdown_options_group( $std_fonts, esc_html__( 'Standard Fonts', 'neve' ), 'system' );
+					$this->render_dropdown_options_group( $typekit_fonts, esc_html__( 'Adobe Fonts', 'neve' ), 'adobe-fonts' );
 					$this->render_dropdown_options_group( $google_fonts, esc_html__( 'Google Fonts', 'neve' ), 'google-fonts' );
 					?>
 				</div>
@@ -77,30 +73,6 @@ class Font_Selector extends \WP_Customize_Control {
 			<input type="hidden" class="neve-ss-collector" <?php $this->link(); ?> >
 		</div>
 		<?php
-	}
-
-	/**
-	 * Render the dropdown option group.
-	 *
-	 * @param array  $options Options in group.
-	 * @param string $title   Title of options group.
-	 * @param string $source  system/google-font.
-	 */
-	protected function render_dropdown_options_group( $options, $title, $source ) {
-		if ( ! empty( $options ) ) {
-			?>
-			<span class="neve-fs-options-group">
-					<span class="neve-fs-options-heading"><?php echo esc_html( $title ); ?></span>
-				<?php foreach ( $options as $option ) { ?>
-					<span class="neve-fs-option"
-							data-source="<?php echo esc_attr( $source ); ?>"
-							data-control="<?php echo esc_attr( $this->id ); ?>"
-							data-filter="<?php echo esc_attr( strtolower( $option ) ); ?>"
-							data-option="<?php echo esc_attr( $option ); ?>"><?php echo esc_html( $option ); ?></span>
-				<?php } ?>
-				</span>
-			<?php
-		}
 	}
 
 	/**
@@ -950,5 +922,44 @@ class Font_Selector extends \WP_Customize_Control {
 				'Zeyada',
 			)
 		);
+	}
+
+	/**
+	 * List of Typekit fonts.
+	 *
+	 * @since 2.3.12
+	 */
+	private function get_typekit_fonts() {
+		$fonts         = array();
+		$typekit_fonts = get_option( 'neve_pro_typekit_data' );
+		if ( empty( $typekit_fonts ) ) {
+			return apply_filters( 'neve_typekit_fonts_array', $fonts );
+		}
+		$typekit_fonts = json_decode( $typekit_fonts, true );
+		foreach ( $typekit_fonts as $font_name => $font_options ) {
+			$fonts[] = $font_options['family'];
+		}
+
+		return apply_filters( 'neve_typekit_fonts_array', $fonts );
+	}
+
+	/**
+	 * Render the dropdown option group.
+	 *
+	 * @param array  $options Options in group.
+	 * @param string $title Title of options group.
+	 * @param string $source system/google-font.
+	 */
+	protected function render_dropdown_options_group( $options, $title, $source ) {
+		if ( ! empty( $options ) ) {
+			?>
+			<span class="neve-fs-options-group">
+					<span class="neve-fs-options-heading"><?php echo esc_html( $title ); ?></span>
+				<?php foreach ( $options as $option ) { ?>
+					<span class="neve-fs-option" data-source="<?php echo esc_attr( $source ); ?>" data-control="<?php echo esc_attr( $this->id ); ?>" data-filter="<?php echo esc_attr( strtolower( $option ) ); ?>" data-option="<?php echo esc_attr( $option ); ?>"><?php echo esc_html( $option ); ?></span>
+				<?php } ?>
+				</span>
+			<?php
+		}
 	}
 }
