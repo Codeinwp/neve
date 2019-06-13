@@ -1393,7 +1393,9 @@
   flex-wrap: wrap;
   flex-direction: row-reverse;
   z-index: 4;
-  position: relative; }
+  position: relative;
+  padding: 30px 20px 20px;
+  overflow: hidden; }
   .hfg--device-panel:before, .hfg--device-panel:after {
     content: "";
     display: block;
@@ -1489,7 +1491,6 @@
       text-transform: uppercase; }
 
 .hfg--cb-body {
-  padding: 30px 20px 20px;
   position: relative;
   z-index: 4; }
 
