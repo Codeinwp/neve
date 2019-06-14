@@ -1,0 +1,68 @@
+.nv-upsell {
+    background: #fff;
+    padding: 21px;
+    border-radius: 3px;
+}
+
+.nv-upsell .upsell-pro-label {
+    font-weight: bold;
+    background: #a7a7a7;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 2px 6px 2px 7px;
+    letter-spacing: .1px;
+    font-size: 12px;
+    border-radius: 3px;
+    margin-right: 10px;
+}
+
+.nv-upsell-features li {
+    line-height: 24px;
+    margin-bottom: 23px;
+    font-size: 14px;
+}
+.nv-upsell-features li:last-child {
+    margin-bottom: 20px;
+}
+.nv-upsell-features.no-explained li {
+    margin-bottom: 0;
+}
+.nv-upsell-features.no-explained li:last-child {
+    margin-bottom: 0;
+}
+
+.nv-upsell .button {
+    margin-right: 21px;
+    width: 100%;
+    text-align: center;
+    letter-spacing: .2px;
+}
+
+.nv-upsell hr {
+    margin-top: 22px;
+    margin-bottom: 16px;
+}
+
+.nv-upsell-feature-list li:before {
+    line-height: 37px;
+}
+
+.nv-upsell-feature-list li {
+    line-height: 22px;
+    font-size: 14px;
+    font-style: italic;
+    margin-bottom: 6px;
+}
+
+.nv-upsell-feature-list li:last-child {
+    margin-bottom: 0;
+}
+
+#customize-controls #accordion-section-neve_upsells_section.control-section .accordion-section-title:hover {
+    background-color: #0073aa;
+    color: #fff;
+}
+
+#customize-controls #accordion-section-neve_upsells_section.control-section .accordion-section-title:hover:after {
+    color: #fff;
+}
