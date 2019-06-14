@@ -159,41 +159,30 @@ class Front_End {
 					),
 				),
 			),
-
-			/*
-			Upsells for PRO version
-
-			'upsell'  => array(
+			'upsell'      => array(
 				'elementor' => array(
-					'neve-showcase'    => array(
+					'neve-cafe'          => array(
+						'url'        => 'https://demo.themeisle.com/neve-cafe/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/06/neve-cafe-demo-screenshot-big.png',
+						'title'      => 'Coffe Shop',
+					),
+					'neve-constructions' => array(
+						'url'        => 'https://demo.themeisle.com/neve-constructions/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/06/neve-constructions-demo-screenshot-big.png',
+						'title'      => 'Constructions Company',
+					),
+					'neve-showcase'      => array(
 						'url'        => 'https://demo.themeisle.com/neve-showcase/',
-						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/03/neve_showcase.jpg',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/06/neve-showcase-demo-screenshot-big.png',
 						'title'      => 'Showcase',
 					),
-					'neve-consultants' => array(
+					'neve-consultants'   => array(
 						'url'        => 'https://demo.themeisle.com/neve-consultants/',
-						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/03/neve_consultants.jpg',
-						'title'      => 'Consultants',
-					),
-					'neve-cafe'        => array(
-						'url'        => 'https://demo.themeisle.com/neve-cafe/',
-						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/03/neve_cafe.jpg',
-						'title'      => 'Cafe',
-					),
-					'neve-agency'      => array(
-						'url'        => 'https://demo.themeisle.com/neve-agency/',
-						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/03/neve_agency.jpg',
-						'title'      => 'Agency',
-					),
-					'neve-scholar'     => array(
-						'url'        => 'https://demo.themeisle.com/neve-scholar/',
-						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/03/neve_scholar.jpg',
-						'title'      => 'Scholar',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/06/neve-consulting-demo-screenshot-big.png',
+						'title'      => 'Business Consulting',
 					),
 				),
 			),
-			*/
-
 			'can_migrate' => array(
 				'zerif-pro'  => array(
 					'theme_name'        => 'Zelle Pro',

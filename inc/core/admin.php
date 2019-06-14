@@ -199,8 +199,14 @@ class Admin {
 				'type'  => 'changelog',
 				'title' => __( 'Changelog', 'neve' ),
 			),
-			'custom_tabs'     => array(),
 		);
+
+		if ( ! defined( 'NEVE_PRO_VERSION' ) ) {
+			$config_array['custom_tabs']['free_pro'] = array(
+				'title'           => __( 'Free vs PRO', 'neve' ),
+				'render_callback' => array( $this, 'free_pro_render' ),
+			);
+		}
 		global $wp_version;
 		if ( version_compare( $wp_version, '5.0', '>=' ) ) {
 			$config_array = array_merge(
@@ -228,6 +234,150 @@ class Admin {
 			$about_page = new \Ti_About_Page();
 			$about_page->init( $config );
 		}
+	}
+
+	/**
+	 * Free vs Pro tab content
+	 */
+	public function free_pro_render() {
+		$free_pro = array(
+			'free_theme_name'     => 'Neve',
+			'pro_theme_name'      => 'Neve Pro',
+			'pro_theme_link'      => apply_filters( 'neve_upgrade_link_from_child_theme_filter', 'https://themeisle.com/themes/neve/upgrade/?utm_medium=aboutneve&utm_source=freevspro&utm_campaign=neve' ),
+			/* translators: s - theme name */
+			'get_pro_theme_label' => sprintf( __( 'Get %s now!', 'neve' ), 'Neve Pro' ),
+			'features_type'       => 'table',
+			'features'            => array(
+				array(
+					'title'       => __( 'Header/Footer builder', 'neve' ),
+					'description' => __( 'Easily build your header and footer by dragging and dropping all the important elements in the real-time WordPress Customizer. More advanced options are available in PRO.', 'neve' ),
+					'is_in_lite'  => 'true',
+					'is_in_pro'   => 'true',
+				),
+				array(
+					'title'       => __( 'Page Builder Compatibility', 'neve' ),
+					'description' => __( 'Neve is fully compatible with Gutenberg, the new WordPress editor and for all of you page builder fans, Neve has full compatibility with Elementor, Beaver Builder, and all the other popular page builders.', 'neve' ),
+					'is_in_lite'  => 'true',
+					'is_in_pro'   => 'true',
+				),
+				array(
+					'title'       => __( 'Header Booster', 'neve' ),
+					'description' => __( 'Take the header builder to a new level with new awesome components: socials, contact, breadcrumbs, language switcher, multiple HTML, sticky and transparent menu, page header builder and many more.', 'neve' ),
+					'is_in_lite'  => 'false',
+					'is_in_pro'   => 'true',
+				),
+				array(
+					'title'       => __( 'Blog Booster', 'neve' ),
+					'description' => __( 'Give a huge boost to your entire blogging experience with features specially designed for increased user experience.', 'neve' ) . ' ' . __( 'Sharing, custom article sorting, comments integrations, number of minutes needed to read an article and many more.', 'neve' ),
+					'is_in_lite'  => 'false',
+					'is_in_pro'   => 'true',
+				),
+				array(
+					'title'       => __( 'Elementor Booster', 'neve' ),
+					'description' => __( 'Leverage the true flexibility of Elementor with powerful addons and templates that you can import with just one click.', 'neve' ),
+					'is_in_lite'  => 'false',
+					'is_in_pro'   => 'true',
+				),
+				array(
+					'title'       => __( 'WooCommerce Booster', 'neve' ),
+					'description' => __( 'Empower your online store with awesome new features, specially designed for a smooth WooCommerce integration.', 'neve' ) . ' ' . __( 'Wishlist, quick view, video products, advanced reviews, multiple dedicated layouts and many more.', 'neve' ),
+					'is_in_lite'  => 'false',
+					'is_in_pro'   => 'true',
+				),
+				array(
+					'title'       => __( 'White Label', 'neve' ),
+					'description' => __( "For any developer or agency out there building websites for their own clients, we've made it easy to present the theme as your own.", 'neve' ),
+					'is_in_lite'  => 'false',
+					'is_in_pro'   => 'true',
+				),
+				array(
+					'title'       => __( 'Scroll To Top', 'neve' ),
+					'description' => __( 'Simple but effective module to help you navigate back to the top of the really long pages.', 'neve' ),
+					'is_in_lite'  => 'false',
+					'is_in_pro'   => 'true',
+				),
+			),
+		);
+		$output   = '';
+		if ( ! empty( $free_pro ) ) {
+			if ( ! empty( $free_pro['features_type'] ) ) {
+				echo '<div class="feature-section">';
+				echo '<div id="free_pro" class="ti-about-page-tab-pane ti-about-page-fre-pro">';
+				switch ( $free_pro['features_type'] ) {
+					case 'image':
+						if ( ! empty( $free_pro['features_img'] ) ) {
+							$output .= '<img src="' . $free_pro['features_img'] . '">';
+							if ( ! empty( $free_pro['pro_theme_link'] ) && ! empty( $free_pro['get_pro_theme_label'] ) ) {
+								$output .= '<a href="' . esc_url( $free_pro['pro_theme_link'] ) . '" target="_blank" class="button button-primary button-hero">' . wp_kses_post( $free_pro['get_pro_theme_label'] ) . '</a>';
+							}
+						}
+						break;
+					case 'table':
+						if ( ! empty( $free_pro['features'] ) ) {
+							$output .= '<table class="free-pro-table">';
+							$output .= '<thead>';
+							$output .= '<tr class="ti-about-page-text-right">';
+							$output .= '<th></th>';
+							$output .= '<th>' . esc_html( $free_pro['free_theme_name'] ) . '</th>';
+							$output .= '<th>' . esc_html( $free_pro['pro_theme_name'] ) . '</th>';
+							$output .= '</tr>';
+							$output .= '</thead>';
+							$output .= '<tbody>';
+							foreach ( $free_pro['features'] as $feature ) {
+								$output .= '<tr>';
+								if ( ! empty( $feature['title'] ) || ! empty( $feature['description'] ) ) {
+									$output .= '<td>';
+									$output .= $this->get_feature_title_and_description( $feature );
+									$output .= '</td>';
+								}
+								if ( ! empty( $feature['is_in_lite'] ) && ( $feature['is_in_lite'] == 'true' ) ) {
+									$output .= '<td class="only-lite"><span class="dashicons-before dashicons-yes"></span></td>';
+								} else {
+									$output .= '<td class="only-pro"><span class="dashicons-before dashicons-no-alt"></span></td>';
+								}
+								if ( ! empty( $feature['is_in_pro'] ) && ( $feature['is_in_pro'] == 'true' ) ) {
+									$output .= '<td class="only-lite"><span class="dashicons-before dashicons-yes"></span></td>';
+								} else {
+									$output .= '<td class="only-pro"><span class="dashicons-before dashicons-no-alt"></span></td>';
+								}
+								echo '</tr>';
+							}
+							if ( ! empty( $free_pro['pro_theme_link'] ) && ! empty( $free_pro['get_pro_theme_label'] ) ) {
+								$output .= '<tr>';
+								$output .= '<td>';
+								if ( ! empty( $free_pro['banner_link'] ) && ! empty( $free_pro['banner_src'] ) ) {
+									$output .= '<a target="_blank" href="' . $free_pro['banner_link'] . '"><img src="' . $free_pro['banner_src'] . '" class="free_vs_pro_banner"></a>';
+								}
+								$output .= '</td>';
+								$output .= '<td colspan="2" class="ti-about-page-text-right"><a href="' . esc_url( $free_pro['pro_theme_link'] ) . '" target="_blank" class="button button-primary button-hero">' . wp_kses_post( $free_pro['get_pro_theme_label'] ) . '</a></td>';
+								$output .= '</tr>';
+							}
+							$output .= '</tbody>';
+							$output .= '</table>';
+						}
+						break;
+				}
+				echo wp_kses_post( $output );
+				echo '</div>';
+				echo '</div>';
+			}
+		}// End if().
+	}
+
+	/**
+	 * Display feature title and description
+	 *
+	 * @param array $feature Feature data.
+	 */
+	public function get_feature_title_and_description( $feature ) {
+		$output = '';
+		if ( ! empty( $feature['title'] ) ) {
+			$output .= '<h3>' . wp_kses_post( $feature['title'] ) . '</h3>';
+		}
+		if ( ! empty( $feature['description'] ) ) {
+			$output .= '<p>' . wp_kses_post( $feature['description'] ) . '</p>';
+		}
+		return $output;
 	}
 
 	/**
@@ -403,61 +553,61 @@ class Admin {
 		);
 		$style = '
 		.nv-notice-wrapper h2{
-		    margin: 0;
-		    font-size: 21px;
-		    font-weight: 400;
-		    line-height: 1.2;
+			margin: 0;
+			font-size: 21px;
+			font-weight: 400;
+			line-height: 1.2;
 		}
 		.nv-notice-wrapper p.about-description{
-            color: #72777c;
-		    font-size: 16px;
-		    margin: 0;
-		    padding:0px;
+			color: #72777c;
+			font-size: 16px;
+			margin: 0;
+			padding:0px;
 		}
 		.nv-notice-wrapper{
-            padding: 23px 10px 0;
-            max-width: 1500px;
+			padding: 23px 10px 0;
+			max-width: 1500px;
 		}
 		.nv-notice-wrapper hr {
 			margin: 20px -23px 0;
-	        border-top: 1px solid #f3f4f5;
-	        border-bottom: none;
-        }
+			border-top: 1px solid #f3f4f5;
+			border-bottom: none;
+		}
 		.nv-notice-column-container h3{	
-		    margin: 17px 0 0;
-		    font-size: 16px;
-		    line-height: 1.4;
+			margin: 17px 0 0;
+			font-size: 16px;
+			line-height: 1.4;
 		}
 		.nv-notice-column-container p {
 			color: #72777c;
 		}
 		.nv-notice-text p.ti-return-dashboard {
 			margin-top: 30px;
-    }
+	}
 		.nv-notice-column-container .nv-notice-column{
-             padding-right: 40px;
+			 padding-right: 40px;
 		} 
 		.nv-notice-column-container img{ 
-		    margin-top: 23px;
-		    width: calc(100% - 40px);
-		    border: 1px solid #f3f4f5; 
+			margin-top: 23px;
+			width: calc(100% - 40px);
+			border: 1px solid #f3f4f5; 
 		} 
 		.nv-notice-column-container { 
-		    display: -ms-grid;
-		    display: grid;
-		    -ms-grid-columns: 24% 32% 32%;
-		    grid-template-columns: 24% 32% 32%;
-		    margin-bottom: 13px;
+			display: -ms-grid;
+			display: grid;
+			-ms-grid-columns: 24% 32% 32%;
+			grid-template-columns: 24% 32% 32%;
+			margin-bottom: 13px;
 		}
 		.nv-notice-column-container a.button.button-hero.button-secondary,
 		.nv-notice-column-container a.button.button-hero.button-primary{
 			margin:0px;
 		}
 		.nv-notice-column-container .nv-notice-column:not(.nv-notice-image) {
-		    display: -ms-grid;
-		    display: grid;
-		    -ms-grid-rows: auto 100px;
-		    grid-template-rows: auto 100px;
+			display: -ms-grid;
+			display: grid;
+			-ms-grid-rows: auto 100px;
+			grid-template-rows: auto 100px;
 		} 
 		@media screen and (max-width: 1280px) {
 			.nv-notice-wrapper .nv-notice-column-container {
