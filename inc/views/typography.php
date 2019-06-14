@@ -37,67 +37,25 @@ class Typography extends Base_View {
 	 */
 	public function register_google_fonts() {
 
-		$typekit_fonts = $this->get_typekit_fonts();
+		$typekit_fonts = apply_filters( 'neve_typekit_fonts', array() );
 
 		/**
 		 * Headings font family.
 		 */
 		$headings_font = get_theme_mod( 'neve_headings_font_family', apply_filters( 'neve_headings_default', false ) );
 
-		if ( in_array( $headings_font, $typekit_fonts ) ) {
-			$this->enqueue_typekit_fonts();
-		} else {
-			if ( ! empty( $headings_font ) ) {
-				$this->enqueue_google_font( $headings_font, 'headings' );
-			}
+		if ( ! empty( $headings_font ) && ! in_array( $headings_font, $typekit_fonts ) ) {
+			$this->enqueue_google_font( $headings_font, 'headings' );
 		}
+
 
 		/**
 		 * Body font family.
 		 */
 		$body_font = get_theme_mod( 'neve_body_font_family', apply_filters( 'neve_body_font_default', false ) );
-		if ( in_array( $body_font, $typekit_fonts ) ) {
-			$this->enqueue_typekit_fonts();
-		} else {
-			if ( ! empty( $body_font ) ) {
-				$this->enqueue_google_font( $body_font, 'body' );
-			}
+		if ( ! empty( $body_font ) && ! in_array( $body_font, $typekit_fonts ) ) {
+			$this->enqueue_google_font( $body_font, 'body' );
 		}
-	}
-
-	/**
-	 * List of Typekit fonts.
-	 *
-	 * @since 2.3.12
-	 */
-	private function get_typekit_fonts() {
-		$fonts         = array();
-		$typekit_fonts = get_option( 'neve_pro_typekit_data' );
-		if ( empty( $typekit_fonts ) ) {
-			return apply_filters( 'neve_typekit_fonts_array', $fonts );
-		}
-		$typekit_fonts = json_decode( $typekit_fonts, true );
-		foreach ( $typekit_fonts as $font_name => $font_options ) {
-			$fonts[] = $font_options['family'];
-		}
-
-		return apply_filters( 'neve_typekit_fonts_array', $fonts );
-	}
-
-	/**
-	 * Enqueues a Typekit Font.
-	 *
-	 * @since 2.3.12
-	 */
-	private function enqueue_typekit_fonts() {
-		$typekit_id = get_option( 'neve_pro_typekit_id' );
-		if ( empty( $typekit_id ) ) {
-			return;
-		}
-
-		$url = '//use.typekit.net/' . $typekit_id . '.css';
-
-		wp_enqueue_style( 'neve-typekit-font', $url, array(), false );
 	}
 
 	/**

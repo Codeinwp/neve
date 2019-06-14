@@ -38,7 +38,7 @@ class Font_Selector extends \WP_Customize_Control {
 	protected function render_content() {
 		$std_fonts     = $this->get_standard_fonts();
 		$google_fonts  = $this->get_google_fonts();
-		$typekit_fonts = $this->get_typekit_fonts();
+		$typekit_fonts = apply_filters( 'neve_typekit_fonts', array() );
 		$value         = $this->value();
 
 		if ( empty( $value ) || $value === 'default' ) {
@@ -62,10 +62,12 @@ class Font_Selector extends \WP_Customize_Control {
 						<input type="search" placeholder="<?php echo _x( 'Search', 'label', 'neve' ) . '...'; // WPCS: XSS OK. ?>">
 				</span>
 				<div class="neve-fs-options-wrapper">
-						<span class="neve-fs-option" data-source="system" data-control="<?php echo esc_attr( $this->id ); ?>" data-option="default"><?php esc_html_e( 'Default', 'neve' ); ?></span>
+					<span class="neve-fs-option" data-source="system" data-control="<?php echo esc_attr( $this->id ); ?>" data-option="default"><?php esc_html_e( 'Default', 'neve' ); ?></span>
 					<?php
 					$this->render_dropdown_options_group( $std_fonts, esc_html__( 'Standard Fonts', 'neve' ), 'system' );
-					$this->render_dropdown_options_group( $typekit_fonts, esc_html__( 'Adobe Fonts', 'neve' ), 'adobe-fonts' );
+					if ( ! empty( $typekit_fonts ) ) {
+						$this->render_dropdown_options_group( $typekit_fonts, esc_html__( 'Adobe Fonts', 'neve' ), 'adobe-fonts' );
+					}
 					$this->render_dropdown_options_group( $google_fonts, esc_html__( 'Google Fonts', 'neve' ), 'google-fonts' );
 					?>
 				</div>
@@ -922,25 +924,6 @@ class Font_Selector extends \WP_Customize_Control {
 				'Zeyada',
 			)
 		);
-	}
-
-	/**
-	 * List of Typekit fonts.
-	 *
-	 * @since 2.3.12
-	 */
-	private function get_typekit_fonts() {
-		$fonts         = array();
-		$typekit_fonts = get_option( 'neve_pro_typekit_data' );
-		if ( empty( $typekit_fonts ) ) {
-			return apply_filters( 'neve_typekit_fonts_array', $fonts );
-		}
-		$typekit_fonts = json_decode( $typekit_fonts, true );
-		foreach ( $typekit_fonts as $font_name => $font_options ) {
-			$fonts[] = $font_options['family'];
-		}
-
-		return apply_filters( 'neve_typekit_fonts_array', $fonts );
 	}
 
 	/**
