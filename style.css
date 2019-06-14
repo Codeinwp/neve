@@ -2022,6 +2022,10 @@ audio {
   vertical-align: top;
 }
 
+.nv-content-wrap ul.wp-block-gallery {
+  padding-left: 0;
+}
+
 .nv-sidebar-wrap {
   margin-bottom: 40px;
 }
