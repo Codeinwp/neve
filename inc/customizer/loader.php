@@ -63,6 +63,7 @@ class Loader {
 				'Customizer\Options\Colors_Background',
 				'Customizer\Options\Buttons',
 				'Customizer\Options\Rtl',
+				'Customizer\Options\Upsells',
 			)
 		);
 	}

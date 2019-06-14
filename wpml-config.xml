@@ -10,6 +10,10 @@
   <admin-texts>
     <key name="theme_mods_neve">
       <key name="neve_footer_text"/>
+      <key name="neve_exclusive_products_title"/>
+      <key name="neve_sale_tag_text"/>
+      <key name="neve_metadata_separator"/>
+      <key name="neve_read_more_text"/>
     </key>
   </admin-texts>
 </wpml-config>
