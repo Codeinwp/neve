@@ -651,6 +651,11 @@ body.menu_sidebar_dropdown:before {
   justify-content: center;
   position: relative; }
 
+.header-menu-sidebar-inner #mega-menu-wrap-primary .mega-menu-toggle {
+  display: none; }
+  .header-menu-sidebar-inner #mega-menu-wrap-primary .mega-menu-toggle + #mega-menu-primary {
+    display: block; }
+
 @media (min-width: 960px) {
   .mega-menu-primary .nav-menu-primary {
     width: 100%; }
