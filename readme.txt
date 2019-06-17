@@ -18,6 +18,13 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog == 
+= 2.3.12 - 2019-06-17  = 
+
+* Added missing strings in the translation file wpml-config.xml file
+* Updated the min PHP version in the readme file
+* Upsells for Neve Pro
+
+
 = 2.3.11 - 2019-06-12  = 
 
 * Redone the layout for the About page

@@ -1,4 +1,10 @@
 
+ ### v2.3.12 - 2019-06-17 
+ **Changes:** 
+ * Added missing strings in the translation file wpml-config.xml file
+* Updated the min PHP version in the readme file
+* Upsells for Neve Pro
+ 
  ### v2.3.11 - 2019-06-12 
  **Changes:** 
  * Redone the layout for the About page

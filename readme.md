@@ -4,7 +4,7 @@
 **Requires at least:** 4.0  
 **Tested up to:** 5.0  
 **Stable tag:** 1.0.23  
-**Requires PHP:** 5.4.0
+**Requires PHP:** 5.4.0  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -18,6 +18,13 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
+### 2.3.12 - 2019-06-17  ###
+
+* Added missing strings in the translation file wpml-config.xml file
+* Updated the min PHP version in the readme file
+* Upsells for Neve Pro
+
+
 ### 2.3.11 - 2019-06-12  ###
 
 * Redone the layout for the About page
