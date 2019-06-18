@@ -1,118 +1,69 @@
 /* jshint node:true */
 // https://github.com/MohammadYounes/grunt-rtlcss
+
+const ext = '-rtl.css';
+const options = {
+	'autoRename': false,
+	'autoRenameStrict': false,
+	'blacklist': {},
+	'clean': true,
+	'greedy': false,
+	'processUrls': false,
+	'stringMap': [
+		{
+			'name': 'left-right',
+			'priority': 100,
+			'search': ['left', 'Left', 'LEFT'],
+			'replace': ['right', 'Right', 'RIGHT'],
+			'options': {
+				'scope': '*',
+				'ignoreCase': false
+			}
+		},
+		{
+			'name': 'ltr-rtl',
+			'priority': 100,
+			'search': ['ltr', 'Ltr', 'LTR'],
+			'replace': ['rtl', 'Rtl', 'RTL'],
+			'options': {
+				'scope': '*',
+				'ignoreCase': false
+			}
+		}
+	]
+};
+
 module.exports = {
 	style: {
-		// task options
-		options: {
-			'autoRename': false,
-			'autoRenameStrict': false,
-			'blacklist':{},
-			'clean': true,
-			'greedy': false,
-			'processUrls': false,
-			'stringMap': [
-				{
-					'name'    : 'left-right',
-					'priority': 100,
-					'search'  : ['left', 'Left', 'LEFT'],
-					'replace' : ['right', 'Right', 'RIGHT'],
-					'options' : {
-						'scope' : '*',
-						'ignoreCase' : false
-					}
-			},
-				{
-					'name'    : 'ltr-rtl',
-					'priority': 100,
-					'search'  : ['ltr', 'Ltr', 'LTR'],
-					'replace' : ['rtl', 'Rtl', 'RTL'],
-					'options' :	{
-						'scope' : '*',
-						'ignoreCase' : false
-					}
-			}
-			]
-		},
-		expand : true,
-		cwd    : './',
-		dest   : './',
-		ext   : '-rtl.css',
-		src    : ['style.css']
+		options,
+		expand: true,
+		cwd: './',
+		dest: './',
+		ext,
+		src: ['style.css']
 	},
 	woocommerce: {
-		// task options
-		options: {
-			'autoRename': false,
-			'autoRenameStrict': false,
-			'blacklist':{},
-			'clean': true,
-			'greedy': false,
-			'processUrls': false,
-			'stringMap': [
-				{
-					'name'    : 'left-right',
-					'priority': 100,
-					'search'  : ['left', 'Left', 'LEFT'],
-					'replace' : ['right', 'Right', 'RIGHT'],
-					'options' : {
-						'scope' : '*',
-						'ignoreCase' : false
-					}
-			},
-				{
-					'name'    : 'ltr-rtl',
-					'priority': 100,
-					'search'  : ['ltr', 'Ltr', 'LTR'],
-					'replace' : ['rtl', 'Rtl', 'RTL'],
-					'options' :	{
-						'scope' : '*',
-						'ignoreCase' : false
-					}
-			}
-			]
-		},
-		expand : true,
-		cwd    : './assets/css/',
-		dest   : './assets/css/',
-		ext   : '-rtl.css',
-		src    : ['woocommerce.css']
+		options,
+		expand: true,
+		cwd: './assets/css/',
+		dest: './assets/css/',
+		ext,
+		src: ['woocommerce.css']
 	},
 	customizerStyle: {
-		// task options
-		options: {
-			'autoRename': false,
-			'autoRenameStrict': false,
-			'blacklist':{},
-			'clean': true,
-			'greedy': false,
-			'processUrls': false,
-			'stringMap': [
-				{
-					'name'    : 'left-right',
-					'priority': 100,
-					'search'  : ['left', 'Left', 'LEFT'],
-					'replace' : ['right', 'Right', 'RIGHT'],
-					'options' : {
-						'scope' : '*',
-						'ignoreCase' : false
-					}
-			},
-				{
-					'name'    : 'ltr-rtl',
-					'priority': 100,
-					'search'  : ['ltr', 'Ltr', 'LTR'],
-					'replace' : ['rtl', 'Rtl', 'RTL'],
-					'options' :	{
-						'scope' : '*',
-						'ignoreCase' : false
-					}
-			}
-			]
-		},
-		expand : true,
-		cwd    : './assets/css/',
-		dest   : './assets/css/',
-		ext   : '-rtl.css',
-		src    : ['customizer-style.css']
+		options,
+		expand: true,
+		cwd: './assets/css/',
+		dest: './assets/css/',
+		ext,
+		src: ['customizer-style.css']
+	},
+	hfg: {
+		options,
+		expand: true,
+		cwd: './header-footer-grid/assets/css/',
+		dest: './header-footer-grid/assets/css/',
+		ext,
+		src: ['style.css']
 	},
 };

@@ -174,7 +174,10 @@ class Main {
 	 */
 	public function enqueue_scripts() {
 		$suffix = $this->get_assets_suffix();
-		wp_enqueue_style( 'hfg-style', esc_url( Config::get_url() ) . '/assets/css/style' . $suffix . '.css', array(), self::VERSION );
+		wp_register_style( 'hfg-style', esc_url( Config::get_url() ) . '/assets/css/style.min.css', array(), self::VERSION );
+		wp_style_add_data( 'hfg-style', 'rtl', 'replace' );
+		wp_style_add_data( 'hfg-style', 'suffix', '.min' );
+		wp_enqueue_style( 'hfg-style' );
 
 		wp_enqueue_script(
 			'hfg-theme-functions',
