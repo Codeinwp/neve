@@ -45,14 +45,8 @@ class Rtl extends Base_Customizer {
 			$sidebar_layout_controls = array_merge(
 				$sidebar_layout_controls,
 				array(
-					'neve_shop_archive_sidebar_layout'   => array(
-						'priority' => 45,
-						'label'    => __( 'Shop / Archive Sidebar Layout', 'neve' ),
-					),
-					'neve_single_product_sidebar_layout' => array(
-						'priority' => 50,
-						'label'    => __( 'Single Product Sidebar Layout', 'neve' ),
-					),
+					'neve_shop_archive_sidebar_layout',
+					'neve_single_product_sidebar_layout',
 				)
 			);
 		}
