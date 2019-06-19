@@ -22,6 +22,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	 */
 	public function __construct() {
 		add_filter( 'nav_menu_item_title', array( $this, 'add_caret' ), 10, 4 );
+		add_filter( 'nav_menu_item_args', array( $this, 'add_heading_classes' ), 10, 3 );
 	}
 
 	/**
@@ -76,18 +77,42 @@ class Nav_Walker extends \Walker_Nav_Menu {
 			return;
 		}
 
-		if ( isset( $item->title ) && ( strcasecmp( $item->title, 'divider' ) == 0 ) && $depth >= 1 ) {
-			$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
-
-			$output .= $indent . '<li role="presentation" class="neve-mm-divider">';
+		if ( isset( $item->title ) && strpos( $item->title, 'divider' ) && $depth >= 1 ) {
+			$output .= '<li role="presentation" class="neve-mm-divider">';
 
 			return;
+		}
+		if ( isset( $item->classes ) ) {
+			if ( in_array( 'neve-mm-col', $item->classes ) ) {
+				$output .= '<li class="neve-mm-col">';
+
+				return;
+			}
 		}
 
 		parent::start_el( $output, $item, $depth, $args, $id );
 
 		// Filter that is used for AMP proper event integration.
 		$output = apply_filters( 'neve_caret_wrap_filter', $output, $item->menu_order );
+	}
+
+
+	public function add_heading_classes( $args, $item, $depth ) {
+		if ( ! isset( $item->classes ) ) {
+			return $args;
+		}
+
+		if ( in_array( 'neve-mm-heading', $item->classes ) ) {
+			add_filter( 'nav_menu_css_class', function ( $classes, $nav_item, $args, $depth ) use ( $item ) {
+				if ( $nav_item !== $item ) {
+					return $classes;
+				}
+
+				return array( 'neve-mm-heading' );
+			}, 10, 4 );
+		}
+
+		return $args;
 	}
 
 	/**

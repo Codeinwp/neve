@@ -75,16 +75,11 @@ function handleScrollLinks() {
 function handleMobileDropdowns() {
 	let carets = document.querySelectorAll( '.caret-wrap' );
 	neveEach( carets, function(caret) {
-		let subMenu = caret.parentNode.parentNode.querySelector( '.sub-menu' );
 		caret.addEventListener( 'click', function(event) {
+			let subMenu = caret.parentNode.parentNode.querySelector( '.sub-menu' );
 			event.preventDefault();
-			this.classList.toggle( 'dropdown-open' );
+			caret.classList.toggle( 'dropdown-open' );
 			subMenu.classList.toggle( 'dropdown-open' );
-		} );
-		caret.addEventListener( 'focus', function(event) {
-			event.preventDefault();
-			this.classList.add( 'dropdown-open' );
-			subMenu.classList.add( 'dropdown-open' );
 		} );
 	} );
 }
