@@ -1,6 +1,6 @@
 // Hover Styles
 .style-border-top, .style-border-bottom, .style-full-height {
-  ul > li:hover > a {
+  ul:not(.max-mega-menu) > li:hover > a {
     text-decoration: none;
 
     &:after {
@@ -149,6 +149,7 @@
       display: flex;
       align-items: center;
       justify-content: flex-end;
+      flex-wrap: wrap;
     }
   }
 
