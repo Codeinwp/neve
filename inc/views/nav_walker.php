@@ -50,7 +50,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 		if ( in_array( 'menu-item-has-children', $item->classes ) ) {
 			$title = '<span class="menu-item-title-wrap">' . $title . '</span>';
 
-			$title .= '<div class="caret-wrap ' . $item->menu_order . '">';
+			$title .= '<div class="caret-wrap ' . $item->menu_order . '" tabindex="0">';
 			$title .= '<span class="caret"></span>';
 			$title .= '</div>';
 		}
