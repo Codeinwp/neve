@@ -1018,52 +1018,69 @@ ul[id^="nv-primary-navigation"] .button {
 }
 
 /* Style mega-menu and its children on mobile */
-ul[id^="nv-primary-navigation"] .neve-mega-menu .sub-menu > li > a {
-  white-space: normal;
-}
-
-ul[id^="nv-primary-navigation"] .neve-mega-menu > .sub-menu {
-  border-right: none;
-}
-
-ul[id^="nv-primary-navigation"] .neve-mega-menu .dropdown-open.sub-menu {
-  max-height: inherit;
-  width: 100%;
-  border-right: none;
-}
-
-ul[id^="nv-primary-navigation"] .neve-mega-menu .neve-mm-col {
-  border: none;
-}
-
-ul[id^="nv-primary-navigation"] .neve-mega-menu .neve-mm-col > a {
-  display: none;
-}
-
-ul[id^="nv-primary-navigation"] .neve-mega-menu .neve-mm-col > .sub-menu {
-  padding-right: 0;
-  border-right: none;
-}
-
-ul[id^="nv-primary-navigation"] .neve-mega-menu .neve-mm-col .neve-mm-heading > a {
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
-ul[id^="nv-primary-navigation"] .neve-mega-menu .neve-mm-divider {
-  height: 1px;
-  margin: 10px auto;
-  width: 75%;
-  background-color: #c9c9c9;
+.nv-nav-wrap .neve-mega-menu > .sub-menu {
   cursor: default;
 }
 
-ul[id^="nv-primary-navigation"] .neve-mega-menu .caret-wrap.dropdown-open + .sub-menu .sub-menu {
-  max-height: 2000px;
+.nv-nav-wrap .neve-mega-menu > .sub-menu > .sub-menu {
+  opacity: 1;
+  visibility: visible;
+  cursor: default;
 }
 
-ul[id^="nv-primary-navigation"] .neve-mega-menu .sub-menu .caret-wrap {
-  display: none;
+.nv-nav-wrap .neve-mega-menu .sub-menu .sub-menu {
+  max-height: none;
+}
+
+.nv-nav-wrap .neve-mega-menu .neve-mm-col {
+  text-align: right;
+  cursor: default;
+}
+
+.nv-nav-wrap .neve-mega-menu .neve-mm-col .sub-menu {
+  border: none;
+  padding-right: 0;
+}
+
+.nv-nav-wrap .neve-mega-menu .neve-mm-heading {
+  opacity: .75;
+  font-size: 1.1em;
+  cursor: default;
+}
+
+.nv-nav-wrap .neve-mega-menu .neve-mm-heading a, .nv-nav-wrap .neve-mega-menu .neve-mm-heading span {
+  font-weight: 700;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+}
+
+.nv-nav-wrap .neve-mega-menu .neve-mm-heading i {
+  margin-left: 10px;
+}
+
+.nv-nav-wrap .neve-mega-menu a {
+  display: flex;
+  align-items: center;
+}
+
+.nv-nav-wrap .neve-mega-menu a i {
+  margin-left: 10px;
+}
+
+.nv-nav-wrap .neve-mega-menu .neve-mm-divider {
+  height: 1px;
+  margin: 10px auto;
+  width: 100%;
+  background-color: #c9c9c9;
+  padding: 0;
+  cursor: default;
+}
+
+.nv-nav-wrap .neve-mega-menu .neve-mm-description {
+  font-size: .8em;
+  padding: 0 12px;
+  opacity: .9;
 }
 
 footer {
@@ -2022,6 +2039,10 @@ audio {
   vertical-align: top;
 }
 
+.nv-content-wrap ul.wp-block-gallery {
+  padding-right: 0;
+}
+
 .nv-sidebar-wrap {
   margin-bottom: 40px;
 }
@@ -2665,46 +2686,57 @@ audio {
     margin: inherit;
     padding: 6px 12px;
   }
-  ul[id^="nv-primary-navigation"] .neve-mega-menu {
+  .nv-nav-wrap .primary-menu-ul:not(#nv-primary-navigation-sidebar) .neve-mega-menu {
     position: static;
   }
-  ul[id^="nv-primary-navigation"] .neve-mega-menu > .sub-menu {
+  .nv-nav-wrap .primary-menu-ul:not(#nv-primary-navigation-sidebar) .neve-mega-menu > .sub-menu {
     width: 950px;
     position: absolute;
-    top: auto;
-    right: 50%;
-    transform: translateX(50%);
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    display: flex;
     padding: 20px;
     pointer-events: none;
+    right: 40%;
+    transform: translateX(50%);
   }
-  ul[id^="nv-primary-navigation"] .neve-mega-menu:hover > .sub-menu,
-  ul[id^="nv-primary-navigation"] .neve-mega-menu:focus > .sub-menu,
-  ul[id^="nv-primary-navigation"] .neve-mega-menu:focus-within > .sub-menu {
+  .nv-nav-wrap .primary-menu-ul:not(#nv-primary-navigation-sidebar) .neve-mega-menu:hover > .sub-menu,
+  .nv-nav-wrap .primary-menu-ul:not(#nv-primary-navigation-sidebar) .neve-mega-menu:focus > .sub-menu,
+  .nv-nav-wrap .primary-menu-ul:not(#nv-primary-navigation-sidebar) .neve-mega-menu:focus-within > .sub-menu {
     opacity: 1;
-    display: grid;
     visibility: visible;
     pointer-events: all;
   }
-  ul[id^="nv-primary-navigation"] .neve-mega-menu > .sub-menu .neve-mm-col > .sub-menu {
-    right: initial;
-    left: initial;
+  .nv-nav-wrap .primary-menu-ul:not(#nv-primary-navigation-sidebar) .neve-mega-menu li > a, .nv-nav-wrap .primary-menu-ul:not(#nv-primary-navigation-sidebar) .neve-mega-menu li > span {
+    padding: 7px 0;
+    margin: 0 14px;
   }
-  ul[id^="nv-primary-navigation"] .neve-mega-menu .neve-mm-col .neve-mm-heading a {
-    font-weight: 700;
-    text-transform: uppercase;
-  }
-  ul[id^="nv-primary-navigation"] .neve-mega-menu .neve-mm-col > .sub-menu {
-    position: static;
+  .nv-nav-wrap .primary-menu-ul:not(#nv-primary-navigation-sidebar) .neve-mega-menu .neve-mm-col > .sub-menu {
     visibility: visible;
-    opacity: 1;
+    position: relative;
     right: initial;
     left: initial;
-    border: none;
+    opacity: 1;
     box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    width: 100%;
   }
-  ul[id^="nv-primary-navigation"] .neve-mega-menu .neve-mm-col > .sub-menu li {
+  .nv-nav-wrap .primary-menu-ul:not(#nv-primary-navigation-sidebar) .neve-mega-menu .neve-mm-col > .sub-menu a {
+    white-space: normal;
+    justify-content: flex-start;
+  }
+  .nv-nav-wrap .primary-menu-ul:not(#nv-primary-navigation-sidebar) .neve-mega-menu .neve-mm-col {
+    padding: 0 10px;
+    align-items: flex-start;
+    border: none;
+  }
+  .nv-nav-wrap .primary-menu-ul:not(#nv-primary-navigation-sidebar) .neve-mega-menu .neve-mm-col:not(:last-child) {
+    border-left: 1px solid #f0f0f0;
+  }
+  .nv-nav-wrap .primary-menu-ul:not(#nv-primary-navigation-sidebar) .neve-mega-menu .neve-mm-divider {
+    width: 75%;
+  }
+  .nv-nav-wrap .primary-menu-ul:not(#nv-primary-navigation-sidebar) .neve-mega-menu .neve-mm-col > .sub-menu li:not(.neve-mm-divider) {
     border: none;
   }
   .hidden-on-tablet {
@@ -2813,10 +2845,10 @@ audio {
   .offset-xl-11 {
     margin-right: 91.6666666667%;
   }
-  ul[id^="nv-primary-navigation"] .neve-mega-menu {
+  .nv-nav-wrap .primary-menu-ul:not(#nv-primary-navigation-sidebar) .neve-mega-menu {
     position: static;
   }
-  ul[id^="nv-primary-navigation"] .neve-mega-menu > .sub-menu {
+  .nv-nav-wrap .primary-menu-ul:not(#nv-primary-navigation-sidebar) .neve-mega-menu > .sub-menu {
     width: 1170px;
   }
 }
