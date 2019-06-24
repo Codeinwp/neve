@@ -1018,9 +1018,14 @@ ul[id^="nv-primary-navigation"] .button {
 }
 
 /* Style mega-menu and its children on mobile */
+.nv-nav-wrap .neve-mega-menu > .sub-menu {
+  cursor: default;
+}
+
 .nv-nav-wrap .neve-mega-menu > .sub-menu > .sub-menu {
   opacity: 1;
   visibility: visible;
+  cursor: default;
 }
 
 .nv-nav-wrap .neve-mega-menu .sub-menu .sub-menu {
@@ -1029,6 +1034,7 @@ ul[id^="nv-primary-navigation"] .button {
 
 .nv-nav-wrap .neve-mega-menu .neve-mm-col {
   text-align: left;
+  cursor: default;
 }
 
 .nv-nav-wrap .neve-mega-menu .neve-mm-col .sub-menu {
@@ -1039,11 +1045,14 @@ ul[id^="nv-primary-navigation"] .button {
 .nv-nav-wrap .neve-mega-menu .neve-mm-heading {
   opacity: .75;
   font-size: 1.1em;
+  cursor: default;
 }
 
-.nv-nav-wrap .neve-mega-menu .neve-mm-heading a {
+.nv-nav-wrap .neve-mega-menu .neve-mm-heading a, .nv-nav-wrap .neve-mega-menu .neve-mm-heading span {
   font-weight: 700;
   text-transform: uppercase;
+  display: flex;
+  align-items: center;
 }
 
 .nv-nav-wrap .neve-mega-menu .neve-mm-heading i {
@@ -1066,6 +1075,12 @@ ul[id^="nv-primary-navigation"] .button {
   background-color: #c9c9c9;
   padding: 0;
   cursor: default;
+}
+
+.nv-nav-wrap .neve-mega-menu .neve-mm-description {
+  font-size: .8em;
+  padding: 0 12px;
+  opacity: .9;
 }
 
 footer {
@@ -2679,6 +2694,7 @@ audio {
     position: absolute;
     display: flex;
     padding: 20px;
+    pointer-events: none;
     left: 40%;
     transform: translateX(-50%);
   }
@@ -2688,6 +2704,10 @@ audio {
     opacity: 1;
     visibility: visible;
     pointer-events: all;
+  }
+  .nv-nav-wrap .primary-menu-ul:not(#nv-primary-navigation-sidebar) .neve-mega-menu li > a, .nv-nav-wrap .primary-menu-ul:not(#nv-primary-navigation-sidebar) .neve-mega-menu li > span {
+    padding: 7px 0;
+    margin: 0 14px;
   }
   .nv-nav-wrap .primary-menu-ul:not(#nv-primary-navigation-sidebar) .neve-mega-menu .neve-mm-col > .sub-menu {
     visibility: visible;

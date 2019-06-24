@@ -22,7 +22,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	 */
 	public function __construct() {
 		add_filter( 'nav_menu_item_title', array( $this, 'add_caret' ), 10, 4 );
-		add_filter( 'nav_menu_item_args', array( $this, 'add_heading_classes' ), 10, 3 );
+		add_filter( 'nav_menu_item_args', array( $this, 'tweak_mm_heading' ), 10, 3 );
 	}
 
 	/**
@@ -96,20 +96,77 @@ class Nav_Walker extends \Walker_Nav_Menu {
 		$output = apply_filters( 'neve_caret_wrap_filter', $output, $item->menu_order );
 	}
 
+	/**
+	 * Ends the element output, if needed.
+	 *
+	 * @param string   $output the end el string.
+	 * @param \WP_Post $item   item.
+	 * @param int      $depth  item depth.
+	 * @param array    $args   item args.
+	 */
+	public function end_el( &$output, $item, $depth = 0, $args = array() ) {
+		parent::end_el( $output, $item, $depth, $args );
 
-	public function add_heading_classes( $args, $item, $depth ) {
+		if ( $depth < 1 ) {
+			return;
+		}
+
+		if ( isset( $item->description ) && ! empty( $item->description ) ) {
+			$output .= '<span class="neve-mm-description">' . esc_html( $item->description ) . '</span>';
+		}
+	}
+
+
+	/**
+	 * Tweak the mega menu heading markup.
+	 *
+	 * @param array    $args  the menu item args.
+	 * @param \WP_Post $item  the menu item.
+	 * @param int      $depth the depth of the menu item.
+	 *
+	 * @return mixed
+	 */
+	public function tweak_mm_heading( $args, $item, $depth ) {
 		if ( ! isset( $item->classes ) ) {
 			return $args;
 		}
 
 		if ( in_array( 'neve-mm-heading', $item->classes ) ) {
-			add_filter( 'nav_menu_css_class', function ( $classes, $nav_item, $args, $depth ) use ( $item ) {
-				if ( $nav_item !== $item ) {
-					return $classes;
-				}
+			add_filter(
+				'nav_menu_css_class',
+				function ( $classes, $nav_item, $args, $depth ) use ( $item ) {
+					if ( $nav_item !== $item ) {
+						return $classes;
+					}
 
-				return array( 'neve-mm-heading' );
-			}, 10, 4 );
+					return array( 'neve-mm-heading' );
+				},
+				10,
+				4 
+			);
+
+			if ( $item->url === '#' ) {
+				add_filter(
+					'walker_nav_menu_start_el',
+					function ( $item_output, $nav_item, $depth, $args ) use ( $item ) {
+						if ( $nav_item !== $item ) {
+							return $item_output;
+						}
+
+						$item_output = '';
+
+						$item_output .= $args->before;
+						$item_output .= '<span>';
+						$item_output .= $args->link_before . $nav_item->title . $args->link_after;
+						$item_output .= '</span>';
+						$item_output .= $args->after;
+
+						return $item_output;
+					},
+					10,
+					4 
+				);
+			}
 		}
 
 		return $args;
