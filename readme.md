@@ -4,7 +4,7 @@
 **Requires at least:** 4.0  
 **Tested up to:** 5.0  
 **Stable tag:** 1.0.23  
-**Requires PHP:** 5.4.0
+**Requires PHP:** 5.4.0  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -18,6 +18,44 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
+### 2.3.12 - 2019-06-17  ###
+
+* Added missing strings in the translation file wpml-config.xml file
+* Updated the min PHP version in the readme file
+* Upsells for Neve Pro
+
+
+### 2.3.11 - 2019-06-12  ###
+
+* Redone the layout for the About page
+* Added fallbacks for JS features in AMP mode
+* Added compatibility between the LifterLMS plugin and the buttons options
+* Improved the WooCommerce My Account page layout on mobile devices
+
+
+### 2.3.10 - 2019-06-04  ###
+
+* New color, padding and border radius options for Primary and Secondary Buttons
+* Fixed issue with duplicated posts on the blog page
+* Fixed onboarding sites options throwing warnings after the last menu item migration
+* Updated the screenshot
+
+
+### 2.3.9 - 2019-05-27  ###
+
+* Fixed issues with redirects to Otter and WPForms dashboards in the onboarding process
+
+
+### 2.3.8 - 2019-05-27  ###
+
+* Redone the Last item in menu control to accommodate more items
+* Accessibility fixes
+* Improved footer widgets logic to better accommodate the footer builder
+* Exclusive Products section layout improvements
+* WooCommerce buttons enhancements
+* New hooks added
+
+
 ### 2.3.7 - 2019-05-07  ###
 
 * New Margin and Padding controls for each header builder component
