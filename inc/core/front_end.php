@@ -530,7 +530,10 @@ class Front_End {
 	 */
 	private function add_styles() {
 		if ( class_exists( 'WooCommerce' ) ) {
-			wp_enqueue_style( 'neve-woocommerce', NEVE_ASSETS_URL . 'css/woocommerce' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
+			wp_register_style( 'neve-woocommerce', NEVE_ASSETS_URL . 'css/woocommerce' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
+			wp_style_add_data( 'neve-woocommerce', 'rtl', 'replace' );
+			wp_style_add_data( 'neve-woocommerce', 'suffix', '.min' );
+			wp_enqueue_style( 'neve-woocommerce' );
 		}
 
 		wp_register_style( 'neve-style', get_template_directory_uri() . '/style' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );

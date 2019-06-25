@@ -110,14 +110,12 @@ function neve_custom_kses_escape( $input, $additional_args ) {
 }
 
 /**
- * Kses svg.
+ * Get allowed tags for SVG tags.
  *
- * @param string $input input string to escape.
- *
- * @return string
+ * @return array
  */
-function neve_kses_svg( $input ) {
-	$svg_args = array(
+function neve_get_svg_allowed_tags() {
+	return array(
 		'svg'      => array(
 			'class'           => true,
 			'aria-hidden'     => true,
@@ -141,6 +139,17 @@ function neve_kses_svg( $input ) {
 			'points'       => true,
 		),
 	);
+}
+
+/**
+ * Escape SVG.
+ *
+ * @param string $input input string to escape.
+ *
+ * @return string
+ */
+function neve_kses_svg( $input ) {
+	$svg_args = neve_get_svg_allowed_tags();
 
 	return neve_custom_kses_escape( $input, $svg_args );
 }

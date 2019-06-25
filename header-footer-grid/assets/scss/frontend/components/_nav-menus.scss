@@ -1,6 +1,6 @@
 // Hover Styles
 .style-border-top, .style-border-bottom, .style-full-height {
-  ul > li:hover > a {
+  ul:not(.max-mega-menu) > li:hover > a {
     text-decoration: none;
 
     &:after {
@@ -133,6 +133,14 @@
   }
 }
 
+.header-menu-sidebar-inner #mega-menu-wrap-primary .mega-menu-toggle {
+  display: none;
+
+  + #mega-menu-primary {
+    display: block;
+  }
+}
+
 @media (min-width: 960px) {
   .mega-menu-primary .nav-menu-primary {
     width: 100%;
@@ -141,6 +149,7 @@
       display: flex;
       align-items: center;
       justify-content: flex-end;
+      flex-wrap: wrap;
     }
   }
 
