@@ -417,7 +417,7 @@ section.exclusive .tns-visually-hidden {
   display: none;
 }
 
-.woocommerce-checkout.nv-without-title main {
+.woocommerce-checkout.nv-without-title .neve-main {
   padding-top: 40px;
 }
 
@@ -1098,7 +1098,7 @@ ul[id^="nv-primary-navigation"] .menu-item-nav-cart:not(.responsive-nav-cart) {
   display: none;
 }
 
-.woocommerce-cart.nv-without-title main {
+.woocommerce-cart.nv-without-title .neve-main {
   padding-top: 40px;
 }
 
