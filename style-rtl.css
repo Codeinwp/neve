@@ -851,7 +851,7 @@ ul[id^="nv-primary-navigation"] i {
 }
 
 .nv-nav-search {
-  visibility: hidden;
+  pointer-events: none;
   opacity: 0;
   transition: all 0.3s ease;
   position: absolute;
@@ -868,7 +868,7 @@ ul[id^="nv-primary-navigation"] i {
 }
 
 .menu-item-nav-search.active .nv-nav-search {
-  visibility: visible;
+  pointer-events: initial;
   opacity: 1;
 }
 
