@@ -136,7 +136,7 @@ class Admin {
 						'text'   => sprintf( esc_html__( 'We want to make sure you have the best experience using %1$s, and that is why we have gathered all the necessary information here for you. We hope you will enjoy using %1$s as much as we enjoy creating great products.', 'neve' ), $this->theme_name ),
 						'button' => array(
 							'label'     => esc_html__( 'Contact Support', 'neve' ),
-							'link'      => apply_filters( 'ti_wl_agency_url', esc_url( 'https://wordpress.org/support/theme/neve/' ) ),
+							'link'      => apply_filters( 'ti_wl_agency_url', apply_filters( 'neve_contact_support_filter', esc_url( 'https://wordpress.org/support/theme/neve/' ) ) ),
 							'is_button' => true,
 						),
 					),
