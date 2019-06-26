@@ -72,22 +72,20 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	 * @param int      $id     id.
 	 */
 	public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
-
 		if ( ! is_object( $args ) ) {
 			return;
 		}
 
-		if ( isset( $item->title ) && strpos( $item->title, 'divider' ) && $depth >= 1 ) {
+		if ( isset( $item->title ) && $item->title === 'divider' ) {
 			$output .= '<li role="presentation" class="neve-mm-divider">';
 
 			return;
 		}
-		if ( isset( $item->classes ) ) {
-			if ( in_array( 'neve-mm-col', $item->classes ) ) {
-				$output .= '<li class="neve-mm-col">';
 
-				return;
-			}
+		if ( isset( $item->classes ) && in_array( 'neve-mm-col', $item->classes ) ) {
+			$output .= '<li class="neve-mm-col">';
+
+			return;
 		}
 
 		parent::start_el( $output, $item, $depth, $args, $id );
@@ -142,7 +140,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 					return array( 'neve-mm-heading' );
 				},
 				10,
-				4 
+				4
 			);
 
 			if ( $item->url === '#' ) {
@@ -164,7 +162,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 						return $item_output;
 					},
 					10,
-					4 
+					4
 				);
 			}
 		}
