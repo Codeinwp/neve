@@ -197,11 +197,13 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
 
         li {
           display: flex;
+          flex-direction: column;
           align-items: center;
           background-color: $navbar_background_color;
           border: $muted-border;
           border-top: none;
           min-width: 150px;
+          cursor: default;
 
           a {
             display: flex;

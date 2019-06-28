@@ -103,15 +103,19 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	 * @param array    $args   item args.
 	 */
 	public function end_el( &$output, $item, $depth = 0, $args = array() ) {
-		parent::end_el( $output, $item, $depth, $args );
-
-		if ( $depth < 1 ) {
-			return;
+		if ( isset( $args->item_spacing ) && 'discard' === $args->item_spacing ) {
+			$t = '';
+			$n = '';
+		} else {
+			$t = "\t";
+			$n = "\n";
 		}
-
-		if ( isset( $item->description ) && ! empty( $item->description ) ) {
-			$output .= '<span class="neve-mm-description">' . esc_html( $item->description ) . '</span>';
+		if ( $depth >= 1 ) {
+			if ( isset( $item->description ) && ! empty( $item->description ) ) {
+				$output .= '<span class="neve-mm-description">' . esc_html( $item->description ) . '</span>';
+			}
 		}
+		$output .= "</li>{$n}";
 	}
 
 
