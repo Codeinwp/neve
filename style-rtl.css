@@ -1710,6 +1710,10 @@ article {
   padding-right: 10px;
 }
 
+#comments .nv-content-wrap ol {
+  list-style-type: decimal;
+}
+
 #comments li {
   padding: 10px 0 0;
 }

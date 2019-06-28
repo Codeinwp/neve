@@ -132,7 +132,7 @@ class Comments extends Base_View {
 								</a>
 							</div>
 						</div>
-						<div class="nv-comment-content comment">
+						<div class="nv-comment-content comment nv-content-wrap">
 							<?php comment_text(); ?>
 							<div class="edit-reply">
 								<?php edit_comment_link( '(' . esc_html__( 'Edit', 'neve' ) . ')' ); ?>
