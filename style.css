@@ -1042,6 +1042,16 @@ ul[id^="nv-primary-navigation"] .button {
   padding-left: 0;
 }
 
+.nv-nav-wrap .neve-mega-menu .neve-mm-col .sub-menu .sub-menu {
+  left: 0;
+  top: 100%;
+}
+
+.nv-nav-wrap .neve-mega-menu .neve-mm-col .sub-menu .sub-menu li {
+  padding: 0 12px;
+  border-bottom: 1px solid #f0f0f0 !important;
+}
+
 .nv-nav-wrap .neve-mega-menu .neve-mm-heading {
   opacity: .75;
   font-size: 1.1em;
@@ -1078,9 +1088,18 @@ ul[id^="nv-primary-navigation"] .button {
 }
 
 .nv-nav-wrap .neve-mega-menu .neve-mm-description {
+  text-align: left;
+  justify-content: flex-start;
+}
+
+.neve-mm-description {
   font-size: .8em;
-  padding: 0 12px;
+  padding: 0 12px 7px;
   opacity: .9;
+  width: 100%;
+  display: flex;
+  text-align: center;
+  justify-content: center;
 }
 
 footer {
@@ -2556,11 +2575,13 @@ audio {
   }
   .row .primary-menu-ul .sub-menu li {
     display: flex;
+    flex-direction: column;
     align-items: center;
     background-color: #fff;
     border: 1px solid #f0f0f0;
     border-top: none;
     min-width: 150px;
+    cursor: default;
   }
   .row .primary-menu-ul .sub-menu li a {
     display: flex;
