@@ -1,5 +1,6 @@
 {
   "id": "neve-starter-sites",
+  "onReadyScript": "neve-main-gutenberg.js",
   "viewports": [
     {
       "label": "Mobile",
@@ -9,11 +10,6 @@
     {
       "label": "Tablet",
       "width": 1024,
-      "height": 768
-    },
-    {
-      "label": "Laptop",
-      "width": 1366,
       "height": 768
     },
     {
@@ -27,22 +23,77 @@
       "label": "neve-main-gutenberg",
       "selectors": ["document"],
       "scrollToSelector": "footer",
-      "delay": 2000,
-      "onReadyScript": "neve-main-gutenberg.js",
+      "delay": 1000,
       "url": "http://localhost:8055"
     },
     {
       "label": "neve-main",
       "selectors": ["document"],
       "scrollToSelector": "footer",
-      "delay": 2000,
+      "delay": 1000,
       "url": "http://localhost:8055"
     },
     {
       "label": "neve-restaurant",
       "selectors": ["document"],
       "scrollToSelector": "footer",
-      "delay": 2000,
+      "delay": 1000,
+      "url": "http://localhost:8055"
+    },
+    {
+      "label": "neve-charity",
+      "selectors": ["document"],
+      "scrollToSelector": "footer",
+      "delay": 1000,
+      "url": "http://localhost:8055"
+    },
+    {
+      "label": "neve-vet-center",
+      "selectors": ["document"],
+      "scrollToSelector": "footer",
+      "delay": 1000,
+      "url": "http://localhost:8055"
+    },
+    {
+      "label": "neve-doctors",
+      "selectors": ["document"],
+      "scrollToSelector": "footer",
+      "delay": 1000,
+      "url": "http://localhost:8055"
+    },
+    {
+      "label": "neve-energy-panels",
+      "selectors": ["document"],
+      "scrollToSelector": "footer",
+      "delay": 1000,
+      "url": "http://localhost:8055"
+    },
+    {
+      "label": "neve-lawyers",
+      "selectors": ["document"],
+      "scrollToSelector": "footer",
+      "delay": 1000,
+      "url": "http://localhost:8055"
+    },
+    {
+      "label": "neve-freelancer",
+      "selectors": ["document"],
+      "scrollToSelector": "footer",
+      "delay": 1000,
+      "url": "http://localhost:8055"
+    },
+    {
+      "label": "neve-shop",
+      "selectors": ["document"],
+      "scrollToSelector": "footer",
+      "delay": 1000,
+      "url": "http://localhost:8055"
+    },
+    {
+      "label": "neve-zelle",
+      "selectors": ["document"],
+      "scrollToSelector": "footer",
+      "delay": 1000,
       "url": "http://localhost:8055"
     }
   ],

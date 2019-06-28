@@ -9,16 +9,16 @@ export DOCKER_FILE=docker-compose.travis.yml
 
 docker-compose -f $DOCKER_FILE up -d
 sleep 10
-#docker-compose -f $DOCKER_FILE run --rm cli wp core install --url=http://localhost:8055 --title=SandboxSite --admin_user=admin --admin_email=admin@admin.com
-#docker-compose -f $DOCKER_FILE run --rm -u root cli chmod 0777 -R /var/www/html
-#docker-compose -f $DOCKER_FILE run --rm cli wp site empty --yes
-#docker-compose -f $DOCKER_FILE run --rm cli wp theme mod remove --all
-#docker-compose -f $DOCKER_FILE run --rm cli wp theme activate neve
-#docker-compose -f $DOCKER_FILE run --rm cli wp themeisle-si import $1
-
+docker-compose -f $DOCKER_FILE run --rm cli wp core install --url=http://localhost:8055 --title=SandboxSite --admin_user=admin --admin_email=admin@admin.com
+docker-compose -f $DOCKER_FILE run --rm -u root cli chmod 0777 -R /var/www/html
+docker-compose -f $DOCKER_FILE run --rm cli wp site empty --yes
+docker-compose -f $DOCKER_FILE run --rm cli wp theme mod remove --all
+docker-compose -f $DOCKER_FILE run --rm cli wp theme activate neve
+docker-compose -f $DOCKER_FILE run --rm cli wp themeisle-si list
+docker-compose -f $DOCKER_FILE run --rm cli wp themeisle-si import $1
 
 npm run backstop:reference -- --filter=$1 || export BUILD_EXIT=1
 #npm run backstop:test -- --filter=$1 || export BUILD_EXIT=1
 
-#docker-compose -f $DOCKER_FILE down
+docker-compose -f $DOCKER_FILE down
 
