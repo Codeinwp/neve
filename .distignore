@@ -4,7 +4,9 @@
 .travis.yml
 .jshintrc
 .commitlintrc.js
+backstop
 docker-compose.yml
+docker-compose.travis.yml
 Gruntfile.js
 grunt
 phpcs.xml

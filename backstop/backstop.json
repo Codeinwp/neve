@@ -1,0 +1,55 @@
+{
+  "id": "neve-starter-sites",
+  "viewports": [
+    {
+      "label": "Mobile",
+      "width": 320,
+      "height": 640
+    },
+    {
+      "label": "Tablet",
+      "width": 1024,
+      "height": 768
+    },
+    {
+      "label": "Laptop",
+      "width": 1366,
+      "height": 768
+    },
+    {
+      "label": "Desktop",
+      "width": 1920,
+      "height": 1080
+    }
+  ],
+  "scenarios": [
+    {
+      "label": "neve-main",
+      "selectors": ["document"],
+      "delay":
+      "url": "http://localhost:8055"
+    },
+    {
+      "label": "neve-restaurant",
+      "selectors": ["document"],
+      "url": "http://localhost:8055"
+    }
+  ],
+  "paths": {
+    "bitmaps_reference": "backstop_data/bitmaps_reference",
+    "bitmaps_test": "backstop_data/bitmaps_test",
+    "engine_scripts": "backstop_data/engine_scripts",
+    "html_report": "backstop_data/html_report",
+    "ci_report": "backstop_data/ci_report"
+  },
+  "report": ["browser", "CI"],
+  "engine": "puppeteer",
+  "engineOptions": {
+    "args": ["--no-sandbox"]
+  },
+  "misMatchThreshold": 0.2,
+  "asyncCaptureLimit": 3,
+  "asyncCompareLimit": 20,
+  "debug": false,
+  "debugWindow": false
+}

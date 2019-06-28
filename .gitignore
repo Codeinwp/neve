@@ -7,3 +7,6 @@ vendor
 **/*.js.map
 **/*.css.map
 **/.DS_Store
+backstop/backstop_data/html_report/
+backstop/backstop_data/ci_report/
+backstop/backstop_data/bitmaps_test 
