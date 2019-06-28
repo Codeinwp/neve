@@ -3,7 +3,6 @@ version: '3.7'
 services:
   mysql:
     image: mysql:5.7
-    name: neve_db
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: wordpress
@@ -15,7 +14,6 @@ services:
     depends_on:
       - mysql
     image: wordpress
-    name: neve_wp
     ports:
       - 8055:80
     privileged: true
@@ -32,7 +30,6 @@ services:
 
   cli:
     image: wordpress:cli
-    name: neve_cli
     restart: always
     privileged: true
     volumes:

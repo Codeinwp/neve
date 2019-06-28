@@ -24,14 +24,25 @@
   ],
   "scenarios": [
     {
+      "label": "neve-main-gutenberg",
+      "selectors": ["document"],
+      "scrollToSelector": "footer",
+      "delay": 2000,
+      "onReadyScript": "neve-main-gutenberg.js",
+      "url": "http://localhost:8055"
+    },
+    {
       "label": "neve-main",
       "selectors": ["document"],
-      "delay":
+      "scrollToSelector": "footer",
+      "delay": 2000,
       "url": "http://localhost:8055"
     },
     {
       "label": "neve-restaurant",
       "selectors": ["document"],
+      "scrollToSelector": "footer",
+      "delay": 2000,
       "url": "http://localhost:8055"
     }
   ],
