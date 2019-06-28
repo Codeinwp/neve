@@ -18,6 +18,13 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
+### 2.3.15 - 2019-06-28  ###
+
+* Fixed primary menu on mobile devices not closing for anchor links
+* Fixed menu items description layout in the primary menu
+* Auto-focus in the search input
+
+
 ### 2.3.14 - 2019-06-25  ###
 
 * Fixed compatibility issues with the Max Mega Menu plugin

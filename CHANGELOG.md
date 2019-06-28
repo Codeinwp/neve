@@ -1,4 +1,10 @@
 
+ ### v2.3.15 - 2019-06-28 
+ **Changes:** 
+ * Fixed primary menu on mobile devices not closing for anchor links
+* Fixed menu items description layout in the primary menu
+* Auto-focus in the search input
+ 
  ### v2.3.14 - 2019-06-25 
  **Changes:** 
  * Fixed compatibility issues with the Max Mega Menu plugin
