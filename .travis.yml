@@ -1,5 +1,7 @@
 language: php
 dist: trusty
+services:
+  - docker
 env:
   - WP_VERSION=latest UPSTREAM_REPO=Codeinwp/neve MASTER_BRANCH=master STORE_URL=https://store.themeisle.com
 cache:
@@ -8,6 +10,30 @@ cache:
     - $HOME/.npm
 jobs:
   include:
+    - stage: visual
+      php: 7.1
+    - name: "Visual Regression - neve-main"
+      script: chmod +x ./bin/run-visual-regression.sh && ./bin/run-visual-regression.sh neve-main
+    - name: "Visual Regression - neve-main-gutenberg"
+      script: chmod +x ./bin/run-visual-regression.sh && ./bin/run-visual-regression.sh neve-main-gutenberg
+    - name: "Visual Regression - neve-restaurant"
+      script: chmod +x ./bin/run-visual-regression.sh && ./bin/run-visual-regression.sh neve-restaurant
+    - name: "Visual Regression - neve-charity"
+      script: chmod +x ./bin/run-visual-regression.sh && ./bin/run-visual-regression.sh neve-charity
+    - name: "Visual Regression - neve-vet-center"
+      script: chmod +x ./bin/run-visual-regression.sh && ./bin/run-visual-regression.sh neve-vet-center
+    - name: "Visual Regression - neve-doctors"
+      script: chmod +x ./bin/run-visual-regression.sh && ./bin/run-visual-regression.sh neve-doctors
+    - name: "Visual Regression - neve-energy-panels"
+      script: chmod +x ./bin/run-visual-regression.sh && ./bin/run-visual-regression.sh neve-energy-panels
+    - name: "Visual Regression - neve-lawyers"
+      script: chmod +x ./bin/run-visual-regression.sh && ./bin/run-visual-regression.sh neve-lawyers
+    - name: "Visual Regression - neve-freelancer"
+      script: chmod +x ./bin/run-visual-regression.sh && ./bin/run-visual-regression.sh neve-freelancer
+    - name: "Visual Regression - neve-shop"
+      script: chmod +x ./bin/run-visual-regression.sh && ./bin/run-visual-regression.sh neve-shop
+    - name: "Visual Regression - neve-zelle"
+      script: chmod +x ./bin/run-visual-regression.sh && ./bin/run-visual-regression.sh neve-zelle
     - stage: test
       php: 7.0
       name: "Different linters"
@@ -52,30 +78,6 @@ jobs:
       name: "Unit tests for PHP 7.1"
       script:
         - ./bin/run-unit-tests.sh
-    - stage: starter_sites_visual_regression
-      php: 7.0
-    - name: "Starter Sites Visual Regression - neve-main"
-      script: "./bin/visual-regression.sh neve-main"
-    - name: "Starter Sites Visual Regression - neve-main-gutenberg"
-      script: "./bin/visual-regression.sh neve-main-gutenberg"
-    - name: "Starter Sites Visual Regression - neve-restaurant"
-      script: "./bin/visual-regression.sh neve-restaurant"
-    - name: "Starter Sites Visual Regression - neve-charity"
-      script: "./bin/visual-regression.sh neve-charity"
-    - name: "Starter Sites Visual Regression - neve-vet-center"
-      script: "./bin/visual-regression.sh neve-vet-center"
-    - name: "Starter Sites Visual Regression - neve-doctors"
-      script: "./bin/visual-regression.sh neve-doctors"
-    - name: "Starter Sites Visual Regression - neve-energy-panels"
-      script: "./bin/visual-regression.sh neve-energy-panels"
-    - name: "Starter Sites Visual Regression - neve-lawyers"
-      script: "./bin/visual-regression.sh neve-lawyers"
-    - name: "Starter Sites Visual Regression - neve-freelancer"
-      script: "./bin/visual-regression.sh neve-freelancer"
-    - name: "Starter Sites Visual Regression - neve-shop"
-      script: "./bin/visual-regression.sh neve-shop"
-    - name: "Starter Sites Visual Regression - neve-zelle"
-      script: "./bin/visual-regression.sh neve-zelle"
     - stage: deploy
       name: "Deployment"
       php: 7.0
@@ -119,7 +121,7 @@ jobs:
 stages:
   - name: deploy
     if: branch = env(MASTER_BRANCH) and type != "pull_request" and repo = env(UPSTREAM_REPO)
-  - name: starter_sites_visual_regression
-    if: type = "pull_request"
+  - name: visual
+    if: head_branch = development and type = "pull_request" and repo = env(UPSTREAM_REPO)
   - name: test
     if: type = "pull_request"
