@@ -1,6 +1,6 @@
 {
   "id": "neve-starter-sites",
-  "onReadyScript": "neve-main-gutenberg.js",
+  "onReadyScript": "show-hidden.js",
   "viewports": [
     {
       "label": "Mobile",
@@ -22,77 +22,66 @@
     {
       "label": "neve-main-gutenberg",
       "selectors": ["document"],
-      "scrollToSelector": "footer",
       "delay": 1000,
       "url": "http://localhost:8055"
     },
     {
       "label": "neve-main",
       "selectors": ["document"],
-      "scrollToSelector": "footer",
       "delay": 1000,
       "url": "http://localhost:8055"
     },
     {
       "label": "neve-restaurant",
       "selectors": ["document"],
-      "scrollToSelector": "footer",
       "delay": 1000,
       "url": "http://localhost:8055"
     },
     {
       "label": "neve-charity",
       "selectors": ["document"],
-      "scrollToSelector": "footer",
       "delay": 1000,
       "url": "http://localhost:8055"
     },
     {
       "label": "neve-vet-center",
       "selectors": ["document"],
-      "scrollToSelector": "footer",
       "delay": 1000,
       "url": "http://localhost:8055"
     },
     {
       "label": "neve-doctors",
       "selectors": ["document"],
-      "scrollToSelector": "footer",
       "delay": 1000,
       "url": "http://localhost:8055"
     },
     {
       "label": "neve-energy-panels",
       "selectors": ["document"],
-      "scrollToSelector": "footer",
       "delay": 1000,
       "url": "http://localhost:8055"
     },
     {
       "label": "neve-lawyers",
       "selectors": ["document"],
-      "scrollToSelector": "footer",
       "delay": 1000,
       "url": "http://localhost:8055"
     },
     {
       "label": "neve-freelancer",
       "selectors": ["document"],
-      "scrollToSelector": "footer",
       "delay": 1000,
       "url": "http://localhost:8055"
     },
     {
       "label": "neve-shop",
       "selectors": ["document"],
-      "scrollToSelector": "footer",
       "delay": 1000,
       "url": "http://localhost:8055"
     },
     {
       "label": "neve-zelle",
       "selectors": ["document"],
-      "scrollToSelector": "footer",
       "delay": 1000,
       "url": "http://localhost:8055"
     }

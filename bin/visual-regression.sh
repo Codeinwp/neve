@@ -17,8 +17,10 @@ docker-compose -f $DOCKER_FILE run --rm cli wp theme activate neve
 docker-compose -f $DOCKER_FILE run --rm cli wp themeisle-si list
 docker-compose -f $DOCKER_FILE run --rm cli wp themeisle-si import $1
 
-npm run backstop:reference -- --filter=$1 || export BUILD_EXIT=1
-#npm run backstop:test -- --filter=$1 || export BUILD_EXIT=1
+curl http://localhost:8055
+
+#npm run backstop:reference -- --filter=$1\$ || export BUILD_EXIT=1
+npm run backstop:test -- --filter=$1 || export BUILD_EXIT=1
 
 docker-compose -f $DOCKER_FILE down
 

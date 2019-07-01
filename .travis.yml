@@ -52,6 +52,30 @@ jobs:
       name: "Unit tests for PHP 7.1"
       script:
         - ./bin/run-unit-tests.sh
+    - stage: starter_sites_visual_regression
+      php: 7.0
+    - name: "Starter Sites Visual Regression - neve-main"
+      script: "./bin/visual-regression.sh neve-main"
+    - name: "Starter Sites Visual Regression - neve-main-gutenberg"
+      script: "./bin/visual-regression.sh neve-main-gutenberg"
+    - name: "Starter Sites Visual Regression - neve-restaurant"
+      script: "./bin/visual-regression.sh neve-restaurant"
+    - name: "Starter Sites Visual Regression - neve-charity"
+      script: "./bin/visual-regression.sh neve-charity"
+    - name: "Starter Sites Visual Regression - neve-vet-center"
+      script: "./bin/visual-regression.sh neve-vet-center"
+    - name: "Starter Sites Visual Regression - neve-doctors"
+      script: "./bin/visual-regression.sh neve-doctors"
+    - name: "Starter Sites Visual Regression - neve-energy-panels"
+      script: "./bin/visual-regression.sh neve-energy-panels"
+    - name: "Starter Sites Visual Regression - neve-lawyers"
+      script: "./bin/visual-regression.sh neve-lawyers"
+    - name: "Starter Sites Visual Regression - neve-freelancer"
+      script: "./bin/visual-regression.sh neve-freelancer"
+    - name: "Starter Sites Visual Regression - neve-shop"
+      script: "./bin/visual-regression.sh neve-shop"
+    - name: "Starter Sites Visual Regression - neve-zelle"
+      script: "./bin/visual-regression.sh neve-zelle"
     - stage: deploy
       name: "Deployment"
       php: 7.0
@@ -91,8 +115,11 @@ jobs:
           upload-dir: "$AWS_PRODUCTS_FOLDER/$BUILD_NAME/$BUILD_VERSION"
           on:
             all_branches: true
+
 stages:
   - name: deploy
     if: branch = env(MASTER_BRANCH) and type != "pull_request" and repo = env(UPSTREAM_REPO)
+  - name: starter_sites_visual_regression
+    if: type = "pull_request"
   - name: test
     if: type = "pull_request"
