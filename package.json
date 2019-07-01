@@ -68,7 +68,7 @@
     "build": "npm-run-all --parallel build:webpack build:grunt",
     "pre-commit": "npm-run-all phpcbf phpcs jshint build git:add",
     "backstop:approve": "cd backstop && docker-compose run backstop approve",
-    "backstop:test": "cd backstop && docker-compose run backstop test  --exit-code-from backstop ",
+    "backstop:test": "cd backstop && docker-compose run backstop test --exit-code-from backstop",
     "backstop:reference": "cd backstop && docker-compose run backstop reference"
   },
   "husky": {
