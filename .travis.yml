@@ -11,29 +11,28 @@ cache:
 jobs:
   include:
     - stage: visual
-      php: 7.1
-    - name: "Visual Regression - neve-main"
-      script: chmod +x ./bin/run-visual-regression.sh && ./bin/run-visual-regression.sh neve-main
-    - name: "Visual Regression - neve-main-gutenberg"
-      script: chmod +x ./bin/run-visual-regression.sh && ./bin/run-visual-regression.sh neve-main-gutenberg
-    - name: "Visual Regression - neve-restaurant"
-      script: chmod +x ./bin/run-visual-regression.sh && ./bin/run-visual-regression.sh neve-restaurant
-    - name: "Visual Regression - neve-charity"
-      script: chmod +x ./bin/run-visual-regression.sh && ./bin/run-visual-regression.sh neve-charity
-    - name: "Visual Regression - neve-vet-center"
-      script: chmod +x ./bin/run-visual-regression.sh && ./bin/run-visual-regression.sh neve-vet-center
-    - name: "Visual Regression - neve-doctors"
-      script: chmod +x ./bin/run-visual-regression.sh && ./bin/run-visual-regression.sh neve-doctors
-    - name: "Visual Regression - neve-energy-panels"
-      script: chmod +x ./bin/run-visual-regression.sh && ./bin/run-visual-regression.sh neve-energy-panels
-    - name: "Visual Regression - neve-lawyers"
-      script: chmod +x ./bin/run-visual-regression.sh && ./bin/run-visual-regression.sh neve-lawyers
-    - name: "Visual Regression - neve-freelancer"
-      script: chmod +x ./bin/run-visual-regression.sh && ./bin/run-visual-regression.sh neve-freelancer
-    - name: "Visual Regression - neve-shop"
-      script: chmod +x ./bin/run-visual-regression.sh && ./bin/run-visual-regression.sh neve-shop
-    - name: "Visual Regression - neve-zelle"
-      script: chmod +x ./bin/run-visual-regression.sh && ./bin/run-visual-regression.sh neve-zelle
+      name: "Visual Regression ~ neve-main"
+      script: chmod +x ./bin/visual-regression.sh && ./bin/visual-regression.sh neve-main
+    - name: "Visual Regression ~ neve-main-gutenberg"
+      script: chmod +x ./bin/visual-regression.sh && ./bin/visual-regression.sh neve-main-gutenberg
+    - name: "Visual Regression ~ neve-restaurant"
+      script: chmod +x ./bin/visual-regression.sh && ./bin/visual-regression.sh neve-restaurant
+    - name: "Visual Regression ~ neve-charity"
+      script: chmod +x ./bin/visual-regression.sh && ./bin/visual-regression.sh neve-charity
+    - name: "Visual Regression ~ neve-vet-center"
+      script: chmod +x ./bin/visual-regression.sh && ./bin/visual-regression.sh neve-vet-center
+    - name: "Visual Regression ~ neve-doctors"
+      script: chmod +x ./bin/visual-regression.sh && ./bin/visual-regression.sh neve-doctors
+    - name: "Visual Regression ~ neve-energy-panels"
+      script: chmod +x ./bin/visual-regression.sh && ./bin/visual-regression.sh neve-energy-panels
+    - name: "Visual Regression ~ neve-lawyers"
+      script: chmod +x ./bin/visual-regression.sh && ./bin/visual-regression.sh neve-lawyers
+    - name: "Visual Regression ~ neve-freelancer"
+      script: chmod +x ./bin/visual-regression.sh && ./bin/visual-regression.sh neve-freelancer
+    - name: "Visual Regression ~ neve-shop"
+      script: chmod +x ./bin/visual-regression.sh && ./bin/visual-regression.sh neve-shop
+    - name: "Visual Regression ~ neve-zelle"
+      script: chmod +x ./bin/visual-regression.sh && ./bin/visual-regression.sh neve-zelle
     - stage: test
       php: 7.0
       name: "Different linters"
@@ -122,6 +121,6 @@ stages:
   - name: deploy
     if: branch = env(MASTER_BRANCH) and type != "pull_request" and repo = env(UPSTREAM_REPO)
   - name: visual
-    if: head_branch = development and type = "pull_request" and repo = env(UPSTREAM_REPO)
+    if: type = "pull_request"
   - name: test
     if: type = "pull_request"

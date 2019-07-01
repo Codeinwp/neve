@@ -2,10 +2,9 @@
 
 export DOCKER_FILE=docker-compose.travis.yml
 
-#npm install
-#npm run-script build
-#composer install --no-dev
-
+npm install
+npm run-script build
+composer install --no-dev
 
 docker-compose -f $DOCKER_FILE up -d
 sleep 10
