@@ -97,6 +97,7 @@ function handleSearch() {
 		searchItem.addEventListener( 'click', function(e) {
 			e.stopPropagation();
 			searchItem.classList.toggle( 'active' );
+			searchItem.querySelector( '.search-field' ).focus();
 			html.classList.add( 'menu-opened' );
 			if ( !isMobile() ) {
 				createNavOverlay( searchItem, 'active' );
