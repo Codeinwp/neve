@@ -32,5 +32,4 @@ cd backstop/backstop_data && aws s3 sync . s3://$BACKSTOP_BUCKET/$TRAVIS_REPO_SL
 
 echo -e "Link -> \e[32mhttp://backstop-reports.s3-website-us-east-1.amazonaws.com/$TRAVIS_REPO_SLUG/$TRAVIS_BUILD_NUMBER/$TRAVIS_JOB_NUMBER/html_report/index.html"
 
-
 exit $BUILD_EXIT
