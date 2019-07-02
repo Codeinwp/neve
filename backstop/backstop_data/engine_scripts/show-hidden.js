@@ -11,6 +11,11 @@ module.exports = async(page, scenario, vp) => {
 			elmHidden[i].classList.remove( 'elementor-invisible' );
 		}
 
+		let elmElements = document.querySelectorAll( '.elementor-element' );
+		for ( let i = 0; i < elmElements.length; i++ ) {
+			elmElements[i].classList.remove( 'elementor-invisible' );
+		}
+
 		let elContainers = document.querySelectorAll( '.elementor-container' );
 		for ( let i = 0; i < elContainers.length; i++ ) {
 			elContainers[i].style.minHeight = '0';

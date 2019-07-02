@@ -22,67 +22,78 @@
     {
       "label": "neve-main-gutenberg",
       "selectors": ["document"],
-      "delay": 1000,
+      "scrollToSelector": "footer",
+      "delay": 1500,
       "url": "http://localhost:8055"
     },
     {
       "label": "neve-main",
       "selectors": ["document"],
-      "delay": 1000,
+      "scrollToSelector": "footer",
+      "delay": 1500,
       "url": "http://localhost:8055"
     },
     {
       "label": "neve-restaurant",
       "selectors": ["document"],
-      "delay": 1000,
+      "scrollToSelector": "footer",
+      "delay": 1500,
       "url": "http://localhost:8055"
     },
     {
       "label": "neve-charity",
       "selectors": ["document"],
-      "delay": 1000,
+      "scrollToSelector": "footer",
+      "delay": 1500,
       "url": "http://localhost:8055"
     },
     {
       "label": "neve-vet-center",
       "selectors": ["document"],
-      "delay": 1000,
+      "scrollToSelector": "footer",
+      "delay": 1500,
       "url": "http://localhost:8055"
     },
     {
       "label": "neve-doctors",
       "selectors": ["document"],
-      "delay": 1000,
+      "scrollToSelector": "footer",
+      "delay": 1500,
       "url": "http://localhost:8055"
     },
     {
       "label": "neve-energy-panels",
       "selectors": ["document"],
-      "delay": 1000,
+      "scrollToSelector": "footer",
+      "delay": 1500,
       "url": "http://localhost:8055"
     },
     {
       "label": "neve-lawyers",
       "selectors": ["document"],
-      "delay": 1000,
+      "scrollToSelector": "footer",
+      "delay": 1500,
       "url": "http://localhost:8055"
     },
     {
       "label": "neve-freelancer",
       "selectors": ["document"],
-      "delay": 1000,
+      "scrollToSelector": "footer",
+      "delay": 1500,
       "url": "http://localhost:8055"
     },
     {
       "label": "neve-shop",
       "selectors": ["document"],
-      "delay": 1000,
+      "scrollToSelector": "footer",
+      "delay": 1500,
       "url": "http://localhost:8055"
     },
     {
       "label": "neve-zelle",
       "selectors": ["document"],
-      "delay": 1000,
+      "scrollToSelector": "footer",
+      "delay": 1500,
       "url": "http://localhost:8055"
     }
   ],
