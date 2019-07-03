@@ -16,11 +16,6 @@ module.exports = async(page, scenario, vp) => {
 			elContainers[i].style.minHeight = '0';
 		}
 
-		let counters = document.querySelectorAll( '[data-to-value]' );
-		for ( let i = 0; i < counters.length; i++ ) {
-			counters[i].innerHTML = counters[i].getAttribute( 'data-to-value' );
-		}
-
 		let tag = document.createElement( 'style' );
 		tag.innerHTML = '.animated, .fadeIn { animation: none!important; } .elementor-progress-bar { transition: 0s none !important }';
 		document.body.appendChild( tag );

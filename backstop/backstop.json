@@ -21,79 +21,109 @@
   "scenarios": [
     {
       "label": "neve-main-gutenberg",
-      "selectors": ["document"],
+      "selectors": [
+        "document"
+      ],
       "scrollToSelector": "footer",
       "delay": 1500,
-      "hideSelectors": [".wp-block-embed-youtube"],
+      "hideSelectors": [
+        ".wp-block-embed-youtube"
+      ],
       "url": "http://localhost:8055"
     },
     {
       "label": "neve-main",
-      "selectors": ["document"],
+      "selectors": [
+        "document"
+      ],
       "scrollToSelector": "footer",
       "delay": 1500,
       "url": "http://localhost:8055"
     },
     {
       "label": "neve-restaurant",
-      "selectors": ["document"],
+      "selectors": [
+        "document"
+      ],
       "scrollToSelector": "footer",
       "delay": 1500,
       "url": "http://localhost:8055"
     },
     {
       "label": "neve-charity",
-      "selectors": ["document"],
+      "selectors": [
+        "document"
+      ],
       "scrollToSelector": "footer",
-      "delay": 1500,
+      "delay": 10000,
+      "hideSelectors": [
+        "[data-to-value]",
+        ".entry-title.obfx-grid-title"
+      ],
       "url": "http://localhost:8055"
     },
     {
       "label": "neve-vet-center",
-      "selectors": ["document"],
+      "selectors": [
+        "document"
+      ],
       "scrollToSelector": "footer",
       "delay": 1500,
       "url": "http://localhost:8055"
     },
     {
       "label": "neve-doctors",
-      "selectors": ["document"],
+      "selectors": [
+        "document"
+      ],
       "scrollToSelector": "footer",
       "delay": 1500,
       "url": "http://localhost:8055"
     },
     {
       "label": "neve-energy-panels",
-      "selectors": ["document"],
+      "selectors": [
+        "document"
+      ],
       "scrollToSelector": "footer",
       "delay": 1500,
-      "hideSelectors": ["iframe"],
+      "hideSelectors": [
+        "iframe"
+      ],
       "url": "http://localhost:8055"
     },
     {
       "label": "neve-lawyers",
-      "selectors": ["document"],
+      "selectors": [
+        "document"
+      ],
       "scrollToSelector": "footer",
       "delay": 1500,
       "url": "http://localhost:8055"
     },
     {
       "label": "neve-freelancer",
-      "selectors": ["document"],
+      "selectors": [
+        "document"
+      ],
       "scrollToSelector": "footer",
       "delay": 1500,
       "url": "http://localhost:8055"
     },
     {
       "label": "neve-shop",
-      "selectors": ["document"],
+      "selectors": [
+        "document"
+      ],
       "scrollToSelector": "footer",
       "delay": 1500,
       "url": "http://localhost:8055"
     },
     {
       "label": "neve-zelle",
-      "selectors": ["document"],
+      "selectors": [
+        "document"
+      ],
       "scrollToSelector": "footer",
       "delay": 1500,
       "url": "http://localhost:8055"
@@ -106,10 +136,15 @@
     "html_report": "backstop_data/html_report",
     "ci_report": "backstop_data/ci_report"
   },
-  "report": ["browser", "CI"],
+  "report": [
+    "browser",
+    "CI"
+  ],
   "engine": "puppeteer",
   "engineOptions": {
-    "args": ["--no-sandbox"]
+    "args": [
+      "--no-sandbox"
+    ]
   },
   "misMatchThreshold": 0.2,
   "asyncCaptureLimit": 3,
