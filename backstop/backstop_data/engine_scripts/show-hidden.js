@@ -11,17 +11,18 @@ module.exports = async(page, scenario, vp) => {
 			elmHidden[i].classList.remove( 'elementor-invisible' );
 		}
 
-		let elmElements = document.querySelectorAll( '.elementor-element' );
-		for ( let i = 0; i < elmElements.length; i++ ) {
-			elmElements[i].classList.remove( 'elementor-invisible' );
-		}
-
 		let elContainers = document.querySelectorAll( '.elementor-container' );
 		for ( let i = 0; i < elContainers.length; i++ ) {
 			elContainers[i].style.minHeight = '0';
 		}
 
-		let vh = vp.height * 0.01;
-		document.documentElement.style.setProperty( '--vh', `${vh}px` );
+		let counters = document.querySelectorAll( '[data-to-value]' );
+		for ( let i = 0; i < counters.length; i++ ) {
+			counters[i].innerHTML = counters[i].getAttribute( 'data-to-value' );
+		}
+
+		let tag = document.createElement( 'style' );
+		tag.innerHTML = '.animated, .fadeIn { animation: none!important; } .elementor-progress-bar { transition: 0s none !important }';
+		document.body.appendChild( tag );
 	}, vp );
 };

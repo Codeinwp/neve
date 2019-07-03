@@ -24,6 +24,7 @@
       "selectors": ["document"],
       "scrollToSelector": "footer",
       "delay": 1500,
+      "hideSelectors": [".wp-block-embed-youtube"],
       "url": "http://localhost:8055"
     },
     {
@@ -66,6 +67,7 @@
       "selectors": ["document"],
       "scrollToSelector": "footer",
       "delay": 1500,
+      "hideSelectors": ["iframe"],
       "url": "http://localhost:8055"
     },
     {
