@@ -40,8 +40,5 @@ cd backstop/backstop_data && aws s3 sync . s3://$BACKSTOP_BUCKET/$TRAVIS_REPO_SL
 
 echo -e "Link -> \e[32mhttp://backstop-reports.s3-website-us-east-1.amazonaws.com/$TRAVIS_REPO_SLUG/$1/$TRAVIS_BUILD_NUMBER/$TRAVIS_JOB_NUMBER/html_report/index.html"
 
-# Bring down the test container.
-cd backstop && docker-compose down
-
 # Exit the build with code from the backstop:test npm script.
 exit $BUILD_EXIT
