@@ -10,6 +10,12 @@
     }
   }
 
+  .nv-content-wrap{
+    ol{
+      list-style-type: decimal;
+    }
+  }
+
   li {
     padding: $spacing-xs 0 0;
   }

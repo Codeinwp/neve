@@ -5,7 +5,7 @@ Theme URI:      https://themeisle.com/themes/neve/
 Author:         ThemeIsle
 Author URI:     https://themeisle.com
 Description:    Neve is a super fast, easily customizable, multi-purpose theme. It’s perfect for blogs, small business, startups, agencies, firms, e-commerce shops (WooCommerce storefront) as well as personal portfolio sites and most types of projects. A fully AMP optimized and responsive theme, Neve will load in mere seconds and adapt perfectly on any viewing device. While it is lightweight and has a minimalist design, the theme is highly extendable, it has a highly SEO optimized code, resulting in top rankings in Google search results. Neve works perfectly with Gutenberg and the most popular page builders (Elementor, Brizy, Beaver Builder, Visual Composer, SiteOrigin, Divi). Neve is also WooCommerce ready, responsive, RTL & translation ready. Look no further. Neve is the perfect theme for you!
-Version:        2.3.14
+Version:        2.3.15
 License:        GNU General Public License v2 or later
 License URI:    http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain:    neve
@@ -1042,6 +1042,16 @@ ul[id^="nv-primary-navigation"] .button {
   padding-left: 0;
 }
 
+.nv-nav-wrap .neve-mega-menu .neve-mm-col .sub-menu .sub-menu {
+  left: 0;
+  top: 100%;
+}
+
+.nv-nav-wrap .neve-mega-menu .neve-mm-col .sub-menu .sub-menu li {
+  padding: 0 12px;
+  border-bottom: 1px solid #f0f0f0 !important;
+}
+
 .nv-nav-wrap .neve-mega-menu .neve-mm-heading {
   opacity: .75;
   font-size: 1.1em;
@@ -1078,9 +1088,17 @@ ul[id^="nv-primary-navigation"] .button {
 }
 
 .nv-nav-wrap .neve-mega-menu .neve-mm-description {
+  text-align: left;
+  justify-content: flex-start;
+}
+
+.neve-mm-description {
   font-size: .8em;
-  padding: 0 12px;
+  padding: 0 0 7px;
   opacity: .9;
+  width: 100%;
+  display: flex;
+  text-align: center;
 }
 
 footer {
@@ -1690,6 +1708,10 @@ article {
 
 #comments ol > ol {
   padding-left: 10px;
+}
+
+#comments .nv-content-wrap ol {
+  list-style-type: decimal;
 }
 
 #comments li {
@@ -2556,11 +2578,13 @@ audio {
   }
   .row .primary-menu-ul .sub-menu li {
     display: flex;
+    flex-direction: column;
     align-items: center;
     background-color: #fff;
     border: 1px solid #f0f0f0;
     border-top: none;
     min-width: 150px;
+    cursor: default;
   }
   .row .primary-menu-ul .sub-menu li a {
     display: flex;
@@ -2738,6 +2762,10 @@ audio {
   }
   .nv-nav-wrap .primary-menu-ul:not(#nv-primary-navigation-sidebar) .neve-mega-menu .neve-mm-col > .sub-menu li:not(.neve-mm-divider) {
     border: none;
+  }
+  .neve-mm-description {
+    justify-content: center;
+    padding: 0 12px 7px;
   }
   .hidden-on-tablet {
     display: initial;
