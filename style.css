@@ -2719,7 +2719,7 @@ audio {
     display: flex;
     padding: 20px;
     pointer-events: none;
-    left: 40%;
+    left: 25%;
     transform: translateX(-50%);
   }
   .nv-nav-wrap .primary-menu-ul:not(#nv-primary-navigation-sidebar) .neve-mega-menu:hover > .sub-menu,
@@ -2756,9 +2756,6 @@ audio {
   }
   .nv-nav-wrap .primary-menu-ul:not(#nv-primary-navigation-sidebar) .neve-mega-menu .neve-mm-col:not(:last-child) {
     border-right: 1px solid #f0f0f0;
-  }
-  .nv-nav-wrap .primary-menu-ul:not(#nv-primary-navigation-sidebar) .neve-mega-menu .neve-mm-divider {
-    width: 75%;
   }
   .nv-nav-wrap .primary-menu-ul:not(#nv-primary-navigation-sidebar) .neve-mega-menu .neve-mm-col > .sub-menu li:not(.neve-mm-divider) {
     border: none;

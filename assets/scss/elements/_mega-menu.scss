@@ -95,7 +95,7 @@
       display: flex;
       padding: 20px;
       pointer-events: none;
-      left: 40%;
+      left: 25%;
       transform: translateX(-50%);
     }
 
@@ -142,10 +142,6 @@
 
     .neve-mega-menu .neve-mm-col:not(:last-child) {
       border-right: $muted-border;
-    }
-
-    .neve-mega-menu .neve-mm-divider {
-      width: 75%;
     }
 
     .neve-mega-menu .neve-mm-col > .sub-menu {
