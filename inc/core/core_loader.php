@@ -76,6 +76,7 @@ class Core_Loader {
 				'Compatibility\Amp',
 				'Compatibility\Beaver',
 				'Compatibility\Lifter',
+				'Compatibility\Yoast',
 
 				'Admin\Metabox\Manager',
 			)
