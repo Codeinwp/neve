@@ -16,6 +16,8 @@ docker-compose -f $DOCKER_FILE run --rm -u root cli chmod 0777 -R /var/www/html
 # Empty the site, remove theme mods, activate the theme and import the requested starter site.
 docker-compose -f $DOCKER_FILE run --rm cli wp site empty --yes
 docker-compose -f $DOCKER_FILE run --rm cli wp theme mod remove --all
+docker-compose -f $DOCKER_FILE run --rm cli wp plugin deactivate --all
+docker-compose -f $DOCKER_FILE run --rm cli wp plugin update --all
 docker-compose -f $DOCKER_FILE run --rm cli wp theme activate neve
 docker-compose -f $DOCKER_FILE run --rm cli wp themeisle-si list
 docker-compose -f $DOCKER_FILE run --rm cli wp themeisle-si import $1

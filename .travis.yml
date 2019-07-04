@@ -8,6 +8,7 @@ cache:
   directories:
     - $HOME/.composer/cache
     - $HOME/.npm
+    - $HOME/.wp-plugins
 jobs:
   include:
     - stage: visual

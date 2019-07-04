@@ -20,6 +20,7 @@ services:
     volumes:
       - core:/var/www/html
       - .:/var/www/html/wp-content/themes/neve/
+      - $HOME/.wp-plugins:/var/www/html/wp-content/plugins/
     restart: always
     environment:
       WORDPRESS_DB_NAME: wordpress
@@ -35,6 +36,7 @@ services:
     volumes:
       - core:/var/www/html
       - .:/var/www/html/wp-content/themes/neve/
+      - $HOME/.wp-plugins:/var/www/html/wp-content/plugins/
     depends_on:
       - mysql
       - wordpress

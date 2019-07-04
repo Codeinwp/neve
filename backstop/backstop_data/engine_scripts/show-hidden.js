@@ -13,7 +13,12 @@ module.exports = async(page, scenario, vp) => {
 
 		let elContainers = document.querySelectorAll( '.elementor-container' );
 		for ( let i = 0; i < elContainers.length; i++ ) {
-			elContainers[i].style.minHeight = '600px';
+			let style = window.getComputedStyle( elContainers[i] ),
+					height = style.getPropertyValue( 'min-height' );
+
+			if ( height !== '0px' ) {
+				elContainers[i].style.minHeight = '600px';
+			}
 		}
 
 		let tag = document.createElement( 'style' );

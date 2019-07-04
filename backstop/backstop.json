@@ -1,6 +1,13 @@
 {
   "id": "neve-starter-sites",
   "onReadyScript": "show-hidden.js",
+  "hideSelectors": [
+    ".elementor-custom-embed iframe",
+    ".wp-block-embed-youtube",
+    "[data-to-value]",
+    ".entry-title.obfx-grid-title",
+    "iframe"
+  ],
   "viewports": [
     {
       "label": "Mobile",
@@ -26,9 +33,6 @@
       ],
       "scrollToSelector": "footer",
       "delay": 1500,
-      "hideSelectors": [
-        ".wp-block-embed-youtube"
-      ],
       "url": "http://localhost:8055"
     },
     {
@@ -56,10 +60,6 @@
       ],
       "scrollToSelector": "footer",
       "delay": 10000,
-      "hideSelectors": [
-        "[data-to-value]",
-        ".entry-title.obfx-grid-title"
-      ],
       "url": "http://localhost:8055"
     },
     {
@@ -87,9 +87,6 @@
       ],
       "scrollToSelector": "footer",
       "delay": 1500,
-      "hideSelectors": [
-        "iframe"
-      ],
       "url": "http://localhost:8055"
     },
     {
