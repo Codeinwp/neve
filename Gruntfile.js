@@ -12,6 +12,7 @@ module.exports = function ( grunt ) {
 	config.files.js.push( '!assets/js/gutenberg-preview-manager.js' );
 	config.files.js.push( '!assets/js/frontend.js' );
 	config.files.js.push( '!grunt/**/*' );
+	config.files.js.push( '!backstop/**/*' );
 
 	config.files.js.push( '!**/vendor/**/*' );
 	config.files.php.push( '!**/vendor/**/*' );
