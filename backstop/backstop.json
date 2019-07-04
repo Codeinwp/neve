@@ -22,70 +22,66 @@
     {
       "label": "neve-main-gutenberg",
       "removeSelectors": [
-        ".obfx-grid-col-content"
+        ".obfx-grid"
       ],
       "hideSelectors": [
         ".elementor-custom-embed iframe",
         ".wp-block-embed-youtube",
         "[data-to-value]",
-        ".entry-title.obfx-grid-title",
         "iframe"
       ],
       "selectors": [
         "document"
       ],
       "scrollToSelector": "footer",
-      "delay": 1500,
+      "delay": 10000,
       "url": "http://localhost:8055"
     },
     {
       "label": "neve-main",
       "removeSelectors": [
-        ".obfx-grid-col-content"
+        ".obfx-grid"
       ],
       "hideSelectors": [
         ".elementor-custom-embed iframe",
         ".wp-block-embed-youtube",
         "[data-to-value]",
-        ".entry-title.obfx-grid-title",
         "iframe"
       ],
       "selectors": [
         "document"
       ],
       "scrollToSelector": "footer",
-      "delay": 1500,
+      "delay": 10000,
       "url": "http://localhost:8055"
     },
     {
       "label": "neve-restaurant",
       "removeSelectors": [
-        ".obfx-grid-col-content"
+        ".obfx-grid"
       ],
       "hideSelectors": [
         ".elementor-custom-embed iframe",
         ".wp-block-embed-youtube",
         "[data-to-value]",
-        ".entry-title.obfx-grid-title",
         "iframe"
       ],
       "selectors": [
         "document"
       ],
       "scrollToSelector": "footer",
-      "delay": 1500,
+      "delay": 10000,
       "url": "http://localhost:8055"
     },
     {
       "label": "neve-charity",
       "removeSelectors": [
-        ".obfx-grid-col-content"
+        ".obfx-grid"
       ],
       "hideSelectors": [
         ".elementor-custom-embed iframe",
         ".wp-block-embed-youtube",
         "[data-to-value]",
-        ".entry-title.obfx-grid-title",
         "iframe"
       ],
       "selectors": [
@@ -98,134 +94,127 @@
     {
       "label": "neve-vet-center",
       "removeSelectors": [
-        ".obfx-grid-col-content"
+        ".obfx-grid"
       ],
       "hideSelectors": [
         ".elementor-custom-embed iframe",
         ".wp-block-embed-youtube",
         "[data-to-value]",
-        ".entry-title.obfx-grid-title",
         "iframe"
       ],
       "selectors": [
         "document"
       ],
       "scrollToSelector": "footer",
-      "delay": 5000,
+      "delay": 10000,
       "url": "http://localhost:8055"
     },
     {
       "label": "neve-doctors",
       "removeSelectors": [
-        ".obfx-grid-col-content"
+        ".obfx-grid"
       ],
       "hideSelectors": [
         ".elementor-custom-embed iframe",
         ".wp-block-embed-youtube",
         "[data-to-value]",
-        ".entry-title.obfx-grid-title",
         "iframe"
       ],
       "selectors": [
         "document"
       ],
       "scrollToSelector": "footer",
-      "delay": 1500,
+      "delay": 10000,
       "url": "http://localhost:8055"
     },
     {
       "label": "neve-energy-panels",
       "removeSelectors": [
-        ".obfx-grid-col-content"
+        ".obfx-grid"
       ],
       "hideSelectors": [
         ".elementor-custom-embed iframe",
         ".wp-block-embed-youtube",
         "[data-to-value]",
-        ".entry-title.obfx-grid-title",
         "iframe"
       ],
       "selectors": [
         "document"
       ],
       "scrollToSelector": "footer",
-      "delay": 1500,
+      "delay": 10000,
       "url": "http://localhost:8055"
     },
     {
       "label": "neve-lawyers",
       "removeSelectors": [
-        ".obfx-grid-col-content"
+        ".obfx-grid"
       ],
       "hideSelectors": [
         ".elementor-custom-embed iframe",
         ".wp-block-embed-youtube",
         "[data-to-value]",
-        ".entry-title.obfx-grid-title",
         "iframe"
       ],
       "selectors": [
         "document"
       ],
       "scrollToSelector": "footer",
-      "delay": 1500,
+      "delay": 10000,
       "url": "http://localhost:8055"
     },
     {
       "label": "neve-freelancer",
       "removeSelectors": [
-        ".obfx-grid-col-content"
+        ".obfx-grid"
       ],
       "hideSelectors": [
         ".elementor-custom-embed iframe",
         ".wp-block-embed-youtube",
         "[data-to-value]",
-        ".entry-title.obfx-grid-title",
         "iframe"
       ],
       "selectors": [
         "document"
       ],
       "scrollToSelector": "footer",
-      "delay": 1500,
+      "delay": 10000,
       "url": "http://localhost:8055"
     },
     {
       "label": "neve-shop",
       "removeSelectors": [
-        ".obfx-grid-col-content"
+        ".obfx-grid"
       ],
       "hideSelectors": [
         ".elementor-custom-embed iframe",
         ".wp-block-embed-youtube",
         "[data-to-value]",
-        ".entry-title.obfx-grid-title",
         "iframe"
       ],
       "selectors": [
         "document"
       ],
       "scrollToSelector": "footer",
-      "delay": 1500,
+      "delay": 10000,
       "url": "http://localhost:8055"
     },
     {
       "label": "neve-zelle",
       "removeSelectors": [
-        ".obfx-grid-col-content"
+        ".obfx-grid"
       ],
       "hideSelectors": [
         ".elementor-custom-embed iframe",
         ".wp-block-embed-youtube",
         "[data-to-value]",
-        ".entry-title.obfx-grid-title",
         "iframe"
       ],
       "selectors": [
         "document"
       ],
       "scrollToSelector": "footer",
-      "delay": 1500,
+      "delay": 10000,
       "url": "http://localhost:8055"
     }
   ],
