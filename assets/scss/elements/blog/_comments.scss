@@ -16,7 +16,7 @@
     }
   }
 
-  li {
+  .nv-comments-list > li {
     padding: $spacing-xs 0 0;
   }
 
@@ -149,7 +149,7 @@
 
 @mixin comments--tablet() {
   #comments {
-    li {
+    .nv-comments-list > li {
       margin-top: $spacing-sm;
     }
 
