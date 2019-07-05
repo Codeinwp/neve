@@ -1714,7 +1714,7 @@ article {
   list-style-type: decimal;
 }
 
-#comments li {
+#comments .nv-comments-list > li {
   padding: 10px 0 0;
 }
 
@@ -2364,7 +2364,7 @@ audio {
     max-width: 60vw;
     margin-right: calc(50% - 30vw);
   }
-  #comments li {
+  #comments .nv-comments-list > li {
     margin-top: 20px;
   }
   #comments ol > ol {
