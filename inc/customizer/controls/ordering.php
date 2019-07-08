@@ -45,10 +45,19 @@ class Ordering extends \WP_Customize_Control {
 
 	/**
 	 * Get disabled components
-	 * Add them at the and of all components in the customizer
+	 * Add them at the end of all components in the customizer
 	 */
 	private function setup_components() {
-		$val           = json_decode( $this->value(), true );
+		$val = $this->value();
+		if ( ! is_string( $val ) ) {
+			$val = '[]';
+		}
+		$val = json_decode( $val, true );
+
+		if ( ! is_array( $val ) ) {
+			$val = array();
+		}
+
 		$enabled       = array_combine( $val, $val );
 		$default_setup = $this->components;
 
@@ -131,6 +140,10 @@ class Ordering extends \WP_Customize_Control {
 			return ' enabled';
 		}
 		$value = json_decode( $value, true );
+
+		if ( ! is_array( $value ) ) {
+			$value = array();
+		}
 
 		if ( ! in_array( $component, $value ) ) {
 			return '';

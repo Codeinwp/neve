@@ -483,7 +483,9 @@ class Admin {
 	public function welcome_notice_content() {
 		$theme_args = wp_get_theme();
 		$name       = apply_filters( 'ti_wl_theme_name', $theme_args->__get( 'Name' ) );
+		$template   = $theme_args->get( 'Template' );
 		$slug       = $theme_args->__get( 'stylesheet' );
+		$theme_page = ! empty( $template ) ? $template . '-welcome' : $slug . '-welcome';
 
 		$notice_template = '
 			<div class="nv-notice-wrapper">
@@ -510,7 +512,7 @@ class Admin {
 		$ob_btn = sprintf(
 			/* translators: 1 - onboarding url, 2 - button text */
 			'<a href="%1$s" class="button button-primary button-hero install-now" >%2$s</a>',
-			esc_url( admin_url( 'themes.php?page=' . $slug . '-welcome&onboarding=yes#sites_library' ) ),
+			esc_url( admin_url( 'themes.php?page=' . $theme_page . '&onboarding=yes#sites_library' ) ),
 			sprintf( apply_filters( 'ti_onboarding_neve_start_site_cta', esc_html__( 'Try one of our ready to use Starter Sites', 'neve' ) ) )
 		);
 		$ob_return_dashboard = sprintf(
@@ -521,7 +523,7 @@ class Admin {
 		$options_page_btn = sprintf(
 			/* translators: 1 - options page url, 2 - button text */
 			'<a href="%1$s" class="options-page-btn">%2$s</a>',
-			esc_url( admin_url( 'themes.php?page=' . $slug . '-welcome' ) ),
+			esc_url( admin_url( 'themes.php?page=' . $theme_page ) ),
 			esc_html__( 'or go to the theme settings', 'neve' )
 		);
 
