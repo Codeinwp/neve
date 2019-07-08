@@ -1,4 +1,11 @@
 
+ ### v2.3.16 - 2019-07-08 
+ **Changes:** 
+ * Fixed divider layout in the custom Mega Menu integration
+* Fixed onboarding popup for child themes
+* Fixed lists styling in the comments area
+* Fixed warnings from order control
+ 
  ### v2.3.15 - 2019-06-28 
  **Changes:** 
  * Fixed primary menu on mobile devices not closing for anchor links

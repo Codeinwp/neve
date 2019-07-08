@@ -18,6 +18,14 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
+### 2.3.16 - 2019-07-08  ###
+
+* Fixed divider layout in the custom Mega Menu integration
+* Fixed onboarding popup for child themes
+* Fixed lists styling in the comments area
+* Fixed warnings from order control
+
+
 ### 2.3.15 - 2019-06-28  ###
 
 * Fixed primary menu on mobile devices not closing for anchor links
