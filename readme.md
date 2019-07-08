@@ -18,6 +18,11 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
+### 2.3.17 - 2019-07-08  ###
+
+* Fixed theme check warning
+
+
 ### 2.3.16 - 2019-07-08  ###
 
 * Fixed divider layout in the custom Mega Menu integration

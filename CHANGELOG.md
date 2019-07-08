@@ -1,4 +1,8 @@
 
+ ### v2.3.17 - 2019-07-08 
+ **Changes:** 
+ * Fixed theme check warning
+ 
  ### v2.3.16 - 2019-07-08 
  **Changes:** 
  * Fixed divider layout in the custom Mega Menu integration
