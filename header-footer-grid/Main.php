@@ -100,7 +100,12 @@ class Main {
 		$footer_bottom = ( isset( $layout_data['desktop']['bottom'] ) ) ? $layout_data['desktop']['bottom'] : array();
 
 		$footer_rows        = array_merge( wp_list_pluck( $footer_top, 'id' ), wp_list_pluck( $footer_bottom, 'id' ) );
-		$sidebars_to_search = array( 'footer-one-widgets', 'footer-two-widgets', 'footer-three-widgets', 'footer-four-widgets' );
+		$sidebars_to_search = array(
+			'footer-one-widgets',
+			'footer-two-widgets',
+			'footer-three-widgets',
+			'footer-four-widgets',
+		);
 		$hide               = '';
 		foreach ( $sidebars_to_search as $id ) {
 			if ( ! in_array( $id, $footer_rows ) ) {
@@ -173,7 +178,14 @@ class Main {
 	 * @access  public
 	 */
 	public function enqueue_scripts() {
-		$suffix = $this->get_assets_suffix();
+		$disabled_templates = array( 'elementor_canvas' );
+
+		$current_template = get_page_template_slug();
+
+		if ( in_array( $current_template, $disabled_templates ) ) {
+			return;
+		}
+		
 		wp_register_style( 'hfg-style', esc_url( Config::get_url() ) . '/assets/css/style.min.css', array(), self::VERSION );
 		wp_style_add_data( 'hfg-style', 'rtl', 'replace' );
 		wp_style_add_data( 'hfg-style', 'suffix', '.min' );
@@ -181,7 +193,7 @@ class Main {
 
 		wp_enqueue_script(
 			'hfg-theme-functions',
-			esc_url( Config::get_url() ) . '/assets/js/theme' . $suffix . '.js',
+			esc_url( Config::get_url() ) . '/assets/js/theme.min.js',
 			array(),
 			self::VERSION,
 			true
