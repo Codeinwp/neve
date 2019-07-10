@@ -90,7 +90,13 @@
           "auto_update_checks": "0"
         }
       }
-    }
+    },
+    "woocommerce_thumbnail_cropping_custom_height": "320",
+    "woocommerce_thumbnail_cropping_custom_width": "260",
+    "woocommerce_thumbnail_image_width": "300",
+    "woocommerce_thumbnail_cropping": "custom",
+    "woocommerce_catalog_rows": "3",
+    "woocommerce_catalog_columns": "3"
   },
   "widgets": {
     "blog-sidebar": {
@@ -186,9 +192,7 @@
     "elementor": "Elementor Page Builder",
     "themeisle-companion": "Orbit Fox by ThemeIsle"
   },
-  "default_off_recommended_plugins": [
-    "woocommerce"
-  ],
+  "default_off_recommended_plugins": [],
   "front_page": {
     "front_page": "home",
     "blog_page": "blog"
