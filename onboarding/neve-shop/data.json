@@ -41,6 +41,7 @@
     "neve_last_menu_item": "[\"search\",\"cart\"]",
     "nav-icon_sidebar": 1,
     "hfg_header_layout_sidebar_skin": "dark-mode",
+    "neve_products_per_row": "{\"suffix\":{\"mobile\":\"items\",\"tablet\":\"items\",\"desktop\":\"items\"},\"mobile\":2,\"tablet\":2,\"desktop\":3}",
     "__ti_import_menus_location": {
       "primary": "main"
     }
