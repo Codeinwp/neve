@@ -1,6 +1,6 @@
 {
+  "content_file": "https://demo.themeisle.com/neve-shop/wp-content/uploads/sites/188/ti-demo-data/export.xml",
   "theme_mods": {
-    "ti_prev_theme": "twentyseventeen",
     "custom_css_post_id": 14,
     "neve_body_font_family": "Open Sans",
     "neve_body_font_size": "{\"suffix\":{\"mobile\":\"px\",\"tablet\":\"px\",\"desktop\":\"px\"},\"mobile\":15,\"tablet\":16,\"desktop\":14}",
@@ -38,12 +38,60 @@
     "neve_shop_archive_sidebar_layout": "left",
     "neve_other_pages_sidebar_layout": "full-width",
     "neve_other_pages_content_width": 100,
-    "neve_generated_style_version": 1555503576,
+    "neve_last_menu_item": "[\"search\",\"cart\"]",
+    "nav-icon_sidebar": 1,
+    "hfg_header_layout_sidebar_skin": "dark-mode",
     "__ti_import_menus_location": {
       "primary": "main"
     }
   },
-  "wp_options": [],
+  "wp_options": {
+    "obfx_data": {
+      "core_settings": [],
+      "module_status": {
+        "social-sharing": {
+          "showed_notices": [],
+          "active": false
+        },
+        "uptime-monitor": {
+          "showed_notices": []
+        },
+        "google-analytics": {
+          "showed_notices": []
+        },
+        "elementor-widgets": {
+          "showed_notices": []
+        },
+        "template-directory": {
+          "showed_notices": [],
+          "active": false
+        },
+        "menu-icons": {
+          "showed_notices": [],
+          "active": false
+        },
+        "mystock-import": {
+          "showed_notices": [],
+          "active": false
+        },
+        "policy-notice": {
+          "showed_notices": []
+        },
+        "safe-updates": {
+          "showed_notices": []
+        },
+        "gutenberg-blocks": {
+          "showed_notices": [],
+          "active": false
+        }
+      },
+      "module_settings": {
+        "safe-updates": {
+          "auto_update_checks": "0"
+        }
+      }
+    }
+  },
   "widgets": {
     "blog-sidebar": {
       "search-2": {
@@ -136,7 +184,6 @@
   },
   "mandatory_plugins": {
     "elementor": "Elementor Page Builder",
-    "maxslider": "MaxSlider",
     "themeisle-companion": "Orbit Fox by ThemeIsle"
   },
   "default_off_recommended_plugins": [
