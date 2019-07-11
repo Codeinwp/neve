@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!-- generator="WordPress/5.2.1" created="2019-06-25 09:42" -->
+<!-- generator="WordPress/5.2.1" created="2019-07-11 13:04" -->
 		<rss version="2.0"
 				xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
 				xmlns:content="http://purl.org/rss/1.0/modules/content/"
@@ -12,7 +12,7 @@
 				<title>Vet Center</title>
 				<link>https://demo.themeisle.com/neve-vet-center-brizy</link>
 				<description></description>
-				<pubDate>Tue, 25 Jun 2019 09:42:09 +0000</pubDate>
+				<pubDate>Thu, 11 Jul 2019 13:04:41 +0000</pubDate>
 				<language>en-US</language>
 				<wp:wxr_version>1.2</wp:wxr_version>
 				<wp:base_site_url>https://demo.themeisle.com/</wp:base_site_url>
@@ -152,31 +152,557 @@
 											</item>
 				<item>
 			<title>
-				placeholder-image			</title>
-			<link>https://demo.themeisle.com/neve-vet-center-brizy/placeholder-image/</link>
-			<pubDate>Tue, 07 May 2019 13:04:50 +0000</pubDate>
-			<guid isPermaLink="false"><![CDATA[<![CDATA[https://s20206.pcdn.co/neve-vet-center-brizy/wp-content/uploads/sites/201/2019/05/placeholder-image.png]]]]><![CDATA[>]]></guid>
+				10			</title>
+			<link>https://demo.themeisle.com/neve-vet-center-brizy/10/</link>
+			<pubDate>Mon, 10 Jun 2019 12:51:27 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-vet-center-brizy/wp-content/uploads/sites/201/2019/06/10.jpg</guid>
 			<description></description>
-			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>268</wp:post_id>
-			<wp:post_date><![CDATA[2019-05-07 13:04:50]]></wp:post_date>
-			<wp:post_date_gmt><![CDATA[2019-05-07 13:04:50]]></wp:post_date_gmt>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>278</wp:post_id>
+			<wp:post_date><![CDATA[2019-06-10 12:51:27]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-06-10 12:51:27]]></wp:post_date_gmt>
 			<wp:comment_status><![CDATA[open]]></wp:comment_status>
 			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-			<wp:post_name><![CDATA[placeholder-image]]></wp:post_name>
+			<wp:post_name><![CDATA[10]]></wp:post_name>
 			<wp:status><![CDATA[inherit]]></wp:status>
 			<wp:post_parent>0</wp:post_parent>
 			<wp:menu_order>0</wp:menu_order>
 			<wp:post_type><![CDATA[attachment]]></wp:post_type>
 			<wp:post_password><![CDATA[]]></wp:post_password>
 			<wp:is_sticky>0</wp:is_sticky>
-							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-vet-center-brizy/wp-content/uploads/sites/201/2019/05/placeholder-image.png]]></wp:attachment_url>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-vet-center-brizy/wp-content/uploads/sites/201/2019/06/10.jpg]]></wp:attachment_url>
 													<wp:postmeta>
 					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
-					<wp:meta_value><![CDATA[2019/05/placeholder-image.png]]></wp:meta_value>
+					<wp:meta_value><![CDATA[2019/06/10.jpg]]></wp:meta_value>
 				</wp:postmeta>
 							<wp:postmeta>
 					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
-					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:1280;s:6:"height";i:960;s:4:"file";s:29:"2019/05/placeholder-image.png";s:5:"sizes";a:0:{}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:1420;s:6:"height";i:815;s:4:"file";s:14:"2019/06/10.jpg";s:5:"sizes";a:5:{s:9:"thumbnail";a:4:{s:4:"file";s:14:"10-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:14:"10-300x172.jpg";s:5:"width";i:300;s:6:"height";i:172;s:9:"mime-type";s:10:"image/jpeg";}s:12:"medium_large";a:4:{s:4:"file";s:14:"10-768x441.jpg";s:5:"width";i:768;s:6:"height";i:441;s:9:"mime-type";s:10:"image/jpeg";}s:5:"large";a:4:{s:4:"file";s:15:"10-1024x588.jpg";s:5:"width";i:1024;s:6:"height";i:588;s:9:"mime-type";s:10:"image/jpeg";}s:9:"neve-blog";a:4:{s:4:"file";s:14:"10-930x620.jpg";s:5:"width";i:930;s:6:"height";i:620;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_attachment_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[wp-ef24547f03aedb6fd930fb40e07d6f14]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[352d24201cd88aa8210e6f6b6319848d]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				09			</title>
+			<link>https://demo.themeisle.com/neve-vet-center-brizy/09/</link>
+			<pubDate>Mon, 10 Jun 2019 12:51:28 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-vet-center-brizy/wp-content/uploads/sites/201/2019/06/09.jpg</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>279</wp:post_id>
+			<wp:post_date><![CDATA[2019-06-10 12:51:28]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-06-10 12:51:28]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[09]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-vet-center-brizy/wp-content/uploads/sites/201/2019/06/09.jpg]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/06/09.jpg]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:580;s:6:"height";i:508;s:4:"file";s:14:"2019/06/09.jpg";s:5:"sizes";a:2:{s:9:"thumbnail";a:4:{s:4:"file";s:14:"09-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:14:"09-300x263.jpg";s:5:"width";i:300;s:6:"height";i:263;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_attachment_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[wp-4661590588030b280bc646b6627fc7aa]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[352d24201cd88aa8210e6f6b6319848d]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				08			</title>
+			<link>https://demo.themeisle.com/neve-vet-center-brizy/08/</link>
+			<pubDate>Mon, 10 Jun 2019 12:51:28 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-vet-center-brizy/wp-content/uploads/sites/201/2019/06/08.jpg</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>280</wp:post_id>
+			<wp:post_date><![CDATA[2019-06-10 12:51:28]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-06-10 12:51:28]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[08]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-vet-center-brizy/wp-content/uploads/sites/201/2019/06/08.jpg]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/06/08.jpg]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:160;s:6:"height";i:160;s:4:"file";s:14:"2019/06/08.jpg";s:5:"sizes";a:1:{s:9:"thumbnail";a:4:{s:4:"file";s:14:"08-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_attachment_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[wp-9d73a805a28ff86f87ec03562ef2578e]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[352d24201cd88aa8210e6f6b6319848d]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				07			</title>
+			<link>https://demo.themeisle.com/neve-vet-center-brizy/07/</link>
+			<pubDate>Mon, 10 Jun 2019 12:51:29 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-vet-center-brizy/wp-content/uploads/sites/201/2019/06/07.jpg</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>281</wp:post_id>
+			<wp:post_date><![CDATA[2019-06-10 12:51:29]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-06-10 12:51:29]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[07]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-vet-center-brizy/wp-content/uploads/sites/201/2019/06/07.jpg]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/06/07.jpg]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:160;s:6:"height";i:160;s:4:"file";s:14:"2019/06/07.jpg";s:5:"sizes";a:1:{s:9:"thumbnail";a:4:{s:4:"file";s:14:"07-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_attachment_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[wp-de5dadca52f3495e6a5123c644e3aa10]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[352d24201cd88aa8210e6f6b6319848d]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				06			</title>
+			<link>https://demo.themeisle.com/neve-vet-center-brizy/06/</link>
+			<pubDate>Mon, 10 Jun 2019 12:51:30 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-vet-center-brizy/wp-content/uploads/sites/201/2019/06/06.jpg</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>282</wp:post_id>
+			<wp:post_date><![CDATA[2019-06-10 12:51:30]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-06-10 12:51:30]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[06]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-vet-center-brizy/wp-content/uploads/sites/201/2019/06/06.jpg]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/06/06.jpg]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:160;s:6:"height";i:160;s:4:"file";s:14:"2019/06/06.jpg";s:5:"sizes";a:1:{s:9:"thumbnail";a:4:{s:4:"file";s:14:"06-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_attachment_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[wp-152b73d4ae267a42fe6326a20f197167]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[352d24201cd88aa8210e6f6b6319848d]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				05			</title>
+			<link>https://demo.themeisle.com/neve-vet-center-brizy/05/</link>
+			<pubDate>Mon, 10 Jun 2019 12:51:30 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-vet-center-brizy/wp-content/uploads/sites/201/2019/06/05.jpg</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>283</wp:post_id>
+			<wp:post_date><![CDATA[2019-06-10 12:51:30]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-06-10 12:51:30]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[05]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-vet-center-brizy/wp-content/uploads/sites/201/2019/06/05.jpg]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/06/05.jpg]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:114;s:6:"height";i:114;s:4:"file";s:14:"2019/06/05.jpg";s:5:"sizes";a:0:{}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_attachment_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[wp-5953c803269a561acd1cb19f77dccf0d]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[352d24201cd88aa8210e6f6b6319848d]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				04			</title>
+			<link>https://demo.themeisle.com/neve-vet-center-brizy/04/</link>
+			<pubDate>Mon, 10 Jun 2019 12:51:30 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-vet-center-brizy/wp-content/uploads/sites/201/2019/06/04.jpg</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>284</wp:post_id>
+			<wp:post_date><![CDATA[2019-06-10 12:51:30]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-06-10 12:51:30]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[04]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-vet-center-brizy/wp-content/uploads/sites/201/2019/06/04.jpg]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/06/04.jpg]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:114;s:6:"height";i:114;s:4:"file";s:14:"2019/06/04.jpg";s:5:"sizes";a:0:{}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_attachment_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[wp-c84bb0aa6598ce3eb83a3e8692be659f]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[352d24201cd88aa8210e6f6b6319848d]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				03			</title>
+			<link>https://demo.themeisle.com/neve-vet-center-brizy/03/</link>
+			<pubDate>Mon, 10 Jun 2019 12:51:31 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-vet-center-brizy/wp-content/uploads/sites/201/2019/06/03.jpg</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>285</wp:post_id>
+			<wp:post_date><![CDATA[2019-06-10 12:51:31]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-06-10 12:51:31]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[03]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-vet-center-brizy/wp-content/uploads/sites/201/2019/06/03.jpg]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/06/03.jpg]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:114;s:6:"height";i:114;s:4:"file";s:14:"2019/06/03.jpg";s:5:"sizes";a:0:{}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_attachment_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[wp-fcfb22b572c4daede6f248014d00e824]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[352d24201cd88aa8210e6f6b6319848d]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				02			</title>
+			<link>https://demo.themeisle.com/neve-vet-center-brizy/02/</link>
+			<pubDate>Mon, 10 Jun 2019 12:51:31 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-vet-center-brizy/wp-content/uploads/sites/201/2019/06/02.jpg</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>286</wp:post_id>
+			<wp:post_date><![CDATA[2019-06-10 12:51:31]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-06-10 12:51:31]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[02]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-vet-center-brizy/wp-content/uploads/sites/201/2019/06/02.jpg]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/06/02.jpg]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:430;s:6:"height";i:331;s:4:"file";s:14:"2019/06/02.jpg";s:5:"sizes";a:2:{s:9:"thumbnail";a:4:{s:4:"file";s:14:"02-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:14:"02-300x231.jpg";s:5:"width";i:300;s:6:"height";i:231;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_attachment_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[wp-0fd8e9065dab069f80ec5e486a1834bc]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[352d24201cd88aa8210e6f6b6319848d]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				01 (1)			</title>
+			<link>https://demo.themeisle.com/neve-vet-center-brizy/01-1/</link>
+			<pubDate>Mon, 10 Jun 2019 12:51:32 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-vet-center-brizy/wp-content/uploads/sites/201/2019/06/01-1.jpg</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>287</wp:post_id>
+			<wp:post_date><![CDATA[2019-06-10 12:51:32]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-06-10 12:51:32]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[01-1]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-vet-center-brizy/wp-content/uploads/sites/201/2019/06/01-1.jpg]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/06/01-1.jpg]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:1420;s:6:"height";i:637;s:4:"file";s:16:"2019/06/01-1.jpg";s:5:"sizes";a:5:{s:9:"thumbnail";a:4:{s:4:"file";s:16:"01-1-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:16:"01-1-300x135.jpg";s:5:"width";i:300;s:6:"height";i:135;s:9:"mime-type";s:10:"image/jpeg";}s:12:"medium_large";a:4:{s:4:"file";s:16:"01-1-768x345.jpg";s:5:"width";i:768;s:6:"height";i:345;s:9:"mime-type";s:10:"image/jpeg";}s:5:"large";a:4:{s:4:"file";s:17:"01-1-1024x459.jpg";s:5:"width";i:1024;s:6:"height";i:459;s:9:"mime-type";s:10:"image/jpeg";}s:9:"neve-blog";a:4:{s:4:"file";s:16:"01-1-930x620.jpg";s:5:"width";i:930;s:6:"height";i:620;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_attachment_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[wp-abf6c49d3583fd85d2767577a86bcd8f]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[352d24201cd88aa8210e6f6b6319848d]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				pet-center-clinic			</title>
+			<link>https://demo.themeisle.com/neve-vet-center-brizy/pet-center-clinic/</link>
+			<pubDate>Tue, 11 Jun 2019 09:14:30 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-vet-center-brizy/wp-content/uploads/sites/201/2019/06/pet-center-clinic.jpg</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>333</wp:post_id>
+			<wp:post_date><![CDATA[2019-06-11 09:14:30]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-06-11 09:14:30]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[pet-center-clinic]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-vet-center-brizy/wp-content/uploads/sites/201/2019/06/pet-center-clinic.jpg]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/06/pet-center-clinic.jpg]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:1200;s:6:"height";i:700;s:4:"file";s:29:"2019/06/pet-center-clinic.jpg";s:5:"sizes";a:5:{s:9:"thumbnail";a:4:{s:4:"file";s:29:"pet-center-clinic-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:29:"pet-center-clinic-300x175.jpg";s:5:"width";i:300;s:6:"height";i:175;s:9:"mime-type";s:10:"image/jpeg";}s:12:"medium_large";a:4:{s:4:"file";s:29:"pet-center-clinic-768x448.jpg";s:5:"width";i:768;s:6:"height";i:448;s:9:"mime-type";s:10:"image/jpeg";}s:5:"large";a:4:{s:4:"file";s:30:"pet-center-clinic-1024x597.jpg";s:5:"width";i:1024;s:6:"height";i:597;s:9:"mime-type";s:10:"image/jpeg";}s:9:"neve-blog";a:4:{s:4:"file";s:29:"pet-center-clinic-930x620.jpg";s:5:"width";i:930;s:6:"height";i:620;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_attachment_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[wp-a9e5bbfa30dbed90eada3926a6155b53]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[dc98e2e40ecc59d5a3c2eba73f60720a]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				13			</title>
+			<link>https://demo.themeisle.com/neve-vet-center-brizy/13/</link>
+			<pubDate>Tue, 11 Jun 2019 09:14:32 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-vet-center-brizy/wp-content/uploads/sites/201/2019/06/13.jpg</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>334</wp:post_id>
+			<wp:post_date><![CDATA[2019-06-11 09:14:32]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-06-11 09:14:32]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[13]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-vet-center-brizy/wp-content/uploads/sites/201/2019/06/13.jpg]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/06/13.jpg]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:538;s:6:"height";i:325;s:4:"file";s:14:"2019/06/13.jpg";s:5:"sizes";a:2:{s:9:"thumbnail";a:4:{s:4:"file";s:14:"13-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:14:"13-300x181.jpg";s:5:"width";i:300;s:6:"height";i:181;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_attachment_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[wp-0b05840397d07cb9e14e02f3673d222e]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[dc98e2e40ecc59d5a3c2eba73f60720a]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				16			</title>
+			<link>https://demo.themeisle.com/neve-vet-center-brizy/16/</link>
+			<pubDate>Tue, 11 Jun 2019 09:14:32 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-vet-center-brizy/wp-content/uploads/sites/201/2019/06/16.jpg</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>335</wp:post_id>
+			<wp:post_date><![CDATA[2019-06-11 09:14:32]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-06-11 09:14:32]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[16]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-vet-center-brizy/wp-content/uploads/sites/201/2019/06/16.jpg]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/06/16.jpg]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:100;s:6:"height";i:100;s:4:"file";s:14:"2019/06/16.jpg";s:5:"sizes";a:0:{}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_attachment_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[wp-5890c0b3003d5634aee4a7019fb44628]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[dc98e2e40ecc59d5a3c2eba73f60720a]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				15			</title>
+			<link>https://demo.themeisle.com/neve-vet-center-brizy/15/</link>
+			<pubDate>Tue, 11 Jun 2019 09:14:33 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-vet-center-brizy/wp-content/uploads/sites/201/2019/06/15.jpg</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>336</wp:post_id>
+			<wp:post_date><![CDATA[2019-06-11 09:14:33]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-06-11 09:14:33]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[15]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-vet-center-brizy/wp-content/uploads/sites/201/2019/06/15.jpg]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/06/15.jpg]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:100;s:6:"height";i:100;s:4:"file";s:14:"2019/06/15.jpg";s:5:"sizes";a:0:{}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_attachment_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[wp-ddd3502ec12d64d8e6c64544df29cd70]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[dc98e2e40ecc59d5a3c2eba73f60720a]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				14			</title>
+			<link>https://demo.themeisle.com/neve-vet-center-brizy/14/</link>
+			<pubDate>Tue, 11 Jun 2019 09:14:33 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-vet-center-brizy/wp-content/uploads/sites/201/2019/06/14.jpg</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>337</wp:post_id>
+			<wp:post_date><![CDATA[2019-06-11 09:14:33]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-06-11 09:14:33]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[14]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-vet-center-brizy/wp-content/uploads/sites/201/2019/06/14.jpg]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/06/14.jpg]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:540;s:6:"height";i:315;s:4:"file";s:14:"2019/06/14.jpg";s:5:"sizes";a:2:{s:9:"thumbnail";a:4:{s:4:"file";s:14:"14-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:14:"14-300x175.jpg";s:5:"width";i:300;s:6:"height";i:175;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_attachment_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[wp-d6801ed5242fc9c017babee943992cad]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[dc98e2e40ecc59d5a3c2eba73f60720a]]></wp:meta_value>
 				</wp:postmeta>
 					</item>
 				<item>

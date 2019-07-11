@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!-- generator="WordPress/5.2.1" created="2019-06-25 09:34" -->
+<!-- generator="WordPress/5.2.1" created="2019-07-11 12:00" -->
 		<rss version="2.0"
 				xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
 				xmlns:content="http://purl.org/rss/1.0/modules/content/"
@@ -12,7 +12,7 @@
 				<title>Neve Charity</title>
 				<link>https://demo.themeisle.com/neve-charity-brizy</link>
 				<description>Just another Demos Sites site</description>
-				<pubDate>Tue, 25 Jun 2019 09:34:32 +0000</pubDate>
+				<pubDate>Thu, 11 Jul 2019 12:00:48 +0000</pubDate>
 				<language>en-US</language>
 				<wp:wxr_version>1.2</wp:wxr_version>
 				<wp:base_site_url>https://demo.themeisle.com/</wp:base_site_url>
@@ -570,7 +570,7 @@ footer .ci-socials-ignited {
 				Neve_charity_demo_logo-1-1			</title>
 			<link>https://demo.themeisle.com/neve-charity-brizy/neve_charity_demo_logo-1-1/</link>
 			<pubDate>Mon, 22 Apr 2019 09:45:11 +0000</pubDate>
-			<guid isPermaLink="false"><![CDATA[<![CDATA[https://s20206.pcdn.co/neve-charity-brizy/wp-content/uploads/sites/199/2019/04/Neve_charity_demo_logo-1-1.png]]]]><![CDATA[>]]></guid>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-charity-brizy/wp-content/uploads/sites/199/2019/04/Neve_charity_demo_logo-1-1.png</guid>
 			<description></description>
 			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>126</wp:post_id>
 			<wp:post_date><![CDATA[2019-04-22 09:45:11]]></wp:post_date>
@@ -592,201 +592,6 @@ footer .ci-socials-ignited {
 							<wp:postmeta>
 					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
 					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:154;s:6:"height";i:85;s:4:"file";s:38:"2019/04/Neve_charity_demo_logo-1-1.png";s:5:"sizes";a:0:{}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
-				</wp:postmeta>
-					</item>
-				<item>
-			<title>
-				placeholder-image			</title>
-			<link>https://demo.themeisle.com/neve-charity-brizy/placeholder-image/</link>
-			<pubDate>Mon, 22 Apr 2019 14:54:59 +0000</pubDate>
-			<guid isPermaLink="false"><![CDATA[<![CDATA[https://s20206.pcdn.co/neve-charity-brizy/wp-content/uploads/sites/199/2019/04/placeholder-image.png]]]]><![CDATA[>]]></guid>
-			<description></description>
-			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>129</wp:post_id>
-			<wp:post_date><![CDATA[2019-04-22 14:54:59]]></wp:post_date>
-			<wp:post_date_gmt><![CDATA[2019-04-22 14:54:59]]></wp:post_date_gmt>
-			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
-			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-			<wp:post_name><![CDATA[placeholder-image]]></wp:post_name>
-			<wp:status><![CDATA[inherit]]></wp:status>
-			<wp:post_parent>0</wp:post_parent>
-			<wp:menu_order>0</wp:menu_order>
-			<wp:post_type><![CDATA[attachment]]></wp:post_type>
-			<wp:post_password><![CDATA[]]></wp:post_password>
-			<wp:is_sticky>0</wp:is_sticky>
-							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-charity-brizy/wp-content/uploads/sites/199/2019/04/placeholder-image.png]]></wp:attachment_url>
-													<wp:postmeta>
-					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
-					<wp:meta_value><![CDATA[2019/04/placeholder-image.png]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
-					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:1280;s:6:"height";i:960;s:4:"file";s:29:"2019/04/placeholder-image.png";s:5:"sizes";a:0:{}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
-				</wp:postmeta>
-					</item>
-				<item>
-			<title>
-				woocommerce-placeholder			</title>
-			<link>https://demo.themeisle.com/neve-charity-brizy/woocommerce-placeholder/</link>
-			<pubDate>Wed, 12 Jun 2019 15:05:08 +0000</pubDate>
-			<guid isPermaLink="false"><![CDATA[<![CDATA[https://s20206.pcdn.co/neve-charity-brizy/wp-content/uploads/sites/199/2019/06/woocommerce-placeholder.png]]]]><![CDATA[>]]></guid>
-			<description></description>
-			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>183</wp:post_id>
-			<wp:post_date><![CDATA[2019-06-12 15:05:08]]></wp:post_date>
-			<wp:post_date_gmt><![CDATA[2019-06-12 15:05:08]]></wp:post_date_gmt>
-			<wp:comment_status><![CDATA[open]]></wp:comment_status>
-			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-			<wp:post_name><![CDATA[woocommerce-placeholder]]></wp:post_name>
-			<wp:status><![CDATA[inherit]]></wp:status>
-			<wp:post_parent>0</wp:post_parent>
-			<wp:menu_order>0</wp:menu_order>
-			<wp:post_type><![CDATA[attachment]]></wp:post_type>
-			<wp:post_password><![CDATA[]]></wp:post_password>
-			<wp:is_sticky>0</wp:is_sticky>
-							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-charity-brizy/wp-content/uploads/sites/199/woocommerce-placeholder.png]]></wp:attachment_url>
-													<wp:postmeta>
-					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
-					<wp:meta_value><![CDATA[woocommerce-placeholder.png]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
-					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:1200;s:6:"height";i:1200;s:4:"file";s:27:"woocommerce-placeholder.png";s:5:"sizes";a:5:{s:9:"thumbnail";a:4:{s:4:"file";s:35:"woocommerce-placeholder-150x150.png";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:9:"image/png";}s:6:"medium";a:4:{s:4:"file";s:35:"woocommerce-placeholder-300x300.png";s:5:"width";i:300;s:6:"height";i:300;s:9:"mime-type";s:9:"image/png";}s:12:"medium_large";a:4:{s:4:"file";s:35:"woocommerce-placeholder-768x768.png";s:5:"width";i:768;s:6:"height";i:768;s:9:"mime-type";s:9:"image/png";}s:5:"large";a:4:{s:4:"file";s:37:"woocommerce-placeholder-1024x1024.png";s:5:"width";i:1024;s:6:"height";i:1024;s:9:"mime-type";s:9:"image/png";}s:9:"neve-blog";a:4:{s:4:"file";s:35:"woocommerce-placeholder-930x620.png";s:5:"width";i:930;s:6:"height";i:620;s:9:"mime-type";s:9:"image/png";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
-				</wp:postmeta>
-					</item>
-				<item>
-			<title>
-				Life living in a poverty camp			</title>
-			<link>https://demo.themeisle.com/neve-charity-brizy/2018/11/28/life-living-in-a-poverty-camp/</link>
-			<pubDate>Wed, 28 Nov 2018 13:32:34 +0000</pubDate>
-			<guid isPermaLink="false">https://demo.themeisle.com/neve-charity/?p=25</guid>
-			<description></description>
-			<content:encoded><![CDATA[Alterum atomorum nam no, duis latine necessitatibus ne per. No maiorum eligendi per. Veri iuvaret sit te, te nihil molestiae philosophia vel. At illum graeco euismod mei. Repudiandae liberavisse cum an.
-
-Mea delenit repudiare incorrupte in, ea inimicus forensibus vel, te rebum doctus his. An mazim integre concludaturque nec, te duo illum mucius intellegebat. Fugit regione cu ius, eum ut cibo brute mandamus. Vel alienum volutpat ea, nonumy deleniti mediocritatem ut quo.]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>25</wp:post_id>
-			<wp:post_date><![CDATA[2018-11-28 13:32:34]]></wp:post_date>
-			<wp:post_date_gmt><![CDATA[2018-11-28 13:32:34]]></wp:post_date_gmt>
-			<wp:comment_status><![CDATA[open]]></wp:comment_status>
-			<wp:ping_status><![CDATA[open]]></wp:ping_status>
-			<wp:post_name><![CDATA[life-living-in-a-poverty-camp]]></wp:post_name>
-			<wp:status><![CDATA[publish]]></wp:status>
-			<wp:post_parent>0</wp:post_parent>
-			<wp:menu_order>0</wp:menu_order>
-			<wp:post_type><![CDATA[post]]></wp:post_type>
-			<wp:post_password><![CDATA[]]></wp:post_password>
-			<wp:is_sticky>0</wp:is_sticky>
-								<category domain="category" nicename="uncategorized"><![CDATA[Uncategorized]]></category>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_thumbnail_id]]></wp:meta_key>
-					<wp:meta_value><![CDATA[129]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-					<wp:meta_value><![CDATA[default]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_yoast_wpseo_primary_category]]></wp:meta_key>
-					<wp:meta_value><![CDATA[1]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
-					<wp:meta_value><![CDATA[70]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_yoast_wpseo_content_score]]></wp:meta_key>
-					<wp:meta_value><![CDATA[60]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
-					<wp:meta_value><![CDATA[440]]></wp:meta_value>
-				</wp:postmeta>
-					</item>
-				<item>
-			<title>
-				Providing water in dry areas			</title>
-			<link>https://demo.themeisle.com/neve-charity-brizy/2018/11/28/providing-water-in-dry-areas/</link>
-			<pubDate>Wed, 28 Nov 2018 13:33:47 +0000</pubDate>
-			<guid isPermaLink="false">https://demo.themeisle.com/neve-charity/?p=27</guid>
-			<description></description>
-			<content:encoded><![CDATA[Ex case epicuri pro, eu mel veri fastidii, audiam consectetuer an sed. Vel id soluta iuvaret deseruisse, error saepe dissentias vix ei. Virtute indoctum ei duo. Cum hinc dolores officiis cu, duo ut simul aliquando reprehendunt.]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>27</wp:post_id>
-			<wp:post_date><![CDATA[2018-11-28 13:33:47]]></wp:post_date>
-			<wp:post_date_gmt><![CDATA[2018-11-28 13:33:47]]></wp:post_date_gmt>
-			<wp:comment_status><![CDATA[open]]></wp:comment_status>
-			<wp:ping_status><![CDATA[open]]></wp:ping_status>
-			<wp:post_name><![CDATA[providing-water-in-dry-areas]]></wp:post_name>
-			<wp:status><![CDATA[publish]]></wp:status>
-			<wp:post_parent>0</wp:post_parent>
-			<wp:menu_order>0</wp:menu_order>
-			<wp:post_type><![CDATA[post]]></wp:post_type>
-			<wp:post_password><![CDATA[]]></wp:post_password>
-			<wp:is_sticky>0</wp:is_sticky>
-								<category domain="category" nicename="uncategorized"><![CDATA[Uncategorized]]></category>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_thumbnail_id]]></wp:meta_key>
-					<wp:meta_value><![CDATA[129]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-					<wp:meta_value><![CDATA[default]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_yoast_wpseo_primary_category]]></wp:meta_key>
-					<wp:meta_value><![CDATA[1]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
-					<wp:meta_value><![CDATA[70]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_yoast_wpseo_content_score]]></wp:meta_key>
-					<wp:meta_value><![CDATA[60]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
-					<wp:meta_value><![CDATA[440]]></wp:meta_value>
-				</wp:postmeta>
-					</item>
-				<item>
-			<title>
-				You can live without money			</title>
-			<link>https://demo.themeisle.com/neve-charity-brizy/2018/11/28/you-can-live-without-money/</link>
-			<pubDate>Wed, 28 Nov 2018 13:59:59 +0000</pubDate>
-			<guid isPermaLink="false">https://demo.themeisle.com/neve-charity/?p=29</guid>
-			<description></description>
-			<content:encoded><![CDATA[Mea delenit repudiare incorrupte in, ea inimicus forensibus vel, te rebum doctus his. An mazim integre concludaturque nec, te duo illum mucius intellegebat. Fugit regione cu ius, eum ut cibo brute mandamus. Vel alienum volutpat ea, nonumy deleniti mediocritatem ut quo.]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>29</wp:post_id>
-			<wp:post_date><![CDATA[2018-11-28 13:59:59]]></wp:post_date>
-			<wp:post_date_gmt><![CDATA[2018-11-28 13:59:59]]></wp:post_date_gmt>
-			<wp:comment_status><![CDATA[open]]></wp:comment_status>
-			<wp:ping_status><![CDATA[open]]></wp:ping_status>
-			<wp:post_name><![CDATA[you-can-live-without-money]]></wp:post_name>
-			<wp:status><![CDATA[publish]]></wp:status>
-			<wp:post_parent>0</wp:post_parent>
-			<wp:menu_order>0</wp:menu_order>
-			<wp:post_type><![CDATA[post]]></wp:post_type>
-			<wp:post_password><![CDATA[]]></wp:post_password>
-			<wp:is_sticky>0</wp:is_sticky>
-								<category domain="category" nicename="uncategorized"><![CDATA[Uncategorized]]></category>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_thumbnail_id]]></wp:meta_key>
-					<wp:meta_value><![CDATA[129]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-					<wp:meta_value><![CDATA[default]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_yoast_wpseo_primary_category]]></wp:meta_key>
-					<wp:meta_value><![CDATA[1]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
-					<wp:meta_value><![CDATA[70]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_yoast_wpseo_content_score]]></wp:meta_key>
-					<wp:meta_value><![CDATA[60]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
-					<wp:meta_value><![CDATA[440]]></wp:meta_value>
 				</wp:postmeta>
 					</item>
 				<item>
@@ -847,6 +652,365 @@ Mea delenit repudiare incorrupte in, ea inimicus forensibus vel, te rebum doctus
 							<wp:postmeta>
 					<wp:meta_key><![CDATA[brizy-post-compiler-version]]></wp:meta_key>
 					<wp:meta_value><![CDATA[1.0.101]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				abigail-keenan-27292-unsplash			</title>
+			<link>https://demo.themeisle.com/neve-charity-brizy/abigail-keenan-27292-unsplash/</link>
+			<pubDate>Fri, 07 Jun 2019 09:32:53 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-charity-brizy/wp-content/uploads/sites/199/2019/06/abigail-keenan-27292-unsplash.jpg</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>137</wp:post_id>
+			<wp:post_date><![CDATA[2019-06-07 09:32:53]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-06-07 09:32:53]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[abigail-keenan-27292-unsplash]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-charity-brizy/wp-content/uploads/sites/199/2019/06/abigail-keenan-27292-unsplash.jpg]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/06/abigail-keenan-27292-unsplash.jpg]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:257;s:6:"height";i:171;s:4:"file";s:41:"2019/06/abigail-keenan-27292-unsplash.jpg";s:5:"sizes";a:5:{s:9:"thumbnail";a:4:{s:4:"file";s:41:"abigail-keenan-27292-unsplash-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:21:"woocommerce_thumbnail";a:5:{s:4:"file";s:41:"abigail-keenan-27292-unsplash-230x171.jpg";s:5:"width";i:230;s:6:"height";i:171;s:9:"mime-type";s:10:"image/jpeg";s:9:"uncropped";b:0;}s:29:"woocommerce_gallery_thumbnail";a:4:{s:4:"file";s:41:"abigail-keenan-27292-unsplash-160x160.jpg";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:10:"image/jpeg";}s:12:"shop_catalog";a:4:{s:4:"file";s:41:"abigail-keenan-27292-unsplash-230x171.jpg";s:5:"width";i:230;s:6:"height";i:171;s:9:"mime-type";s:10:"image/jpeg";}s:14:"shop_thumbnail";a:4:{s:4:"file";s:41:"abigail-keenan-27292-unsplash-160x160.jpg";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_attachment_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[wp-8e87f5b5bff31d25a4e428370040ea83]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[78d69da7b9ff3ef9c9dacf3b79c1b6ca]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				capturing-the-human-heart-227847-unsplash			</title>
+			<link>https://demo.themeisle.com/neve-charity-brizy/capturing-the-human-heart-227847-unsplash/</link>
+			<pubDate>Fri, 07 Jun 2019 09:32:54 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-charity-brizy/wp-content/uploads/sites/199/2019/06/capturing-the-human-heart-227847-unsplash.jpg</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>138</wp:post_id>
+			<wp:post_date><![CDATA[2019-06-07 09:32:54]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-06-07 09:32:54]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[capturing-the-human-heart-227847-unsplash]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-charity-brizy/wp-content/uploads/sites/199/2019/06/capturing-the-human-heart-227847-unsplash.jpg]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/06/capturing-the-human-heart-227847-unsplash.jpg]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:255;s:6:"height";i:170;s:4:"file";s:53:"2019/06/capturing-the-human-heart-227847-unsplash.jpg";s:5:"sizes";a:5:{s:9:"thumbnail";a:4:{s:4:"file";s:53:"capturing-the-human-heart-227847-unsplash-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:21:"woocommerce_thumbnail";a:5:{s:4:"file";s:53:"capturing-the-human-heart-227847-unsplash-230x170.jpg";s:5:"width";i:230;s:6:"height";i:170;s:9:"mime-type";s:10:"image/jpeg";s:9:"uncropped";b:0;}s:29:"woocommerce_gallery_thumbnail";a:4:{s:4:"file";s:53:"capturing-the-human-heart-227847-unsplash-160x160.jpg";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:10:"image/jpeg";}s:12:"shop_catalog";a:4:{s:4:"file";s:53:"capturing-the-human-heart-227847-unsplash-230x170.jpg";s:5:"width";i:230;s:6:"height";i:170;s:9:"mime-type";s:10:"image/jpeg";}s:14:"shop_thumbnail";a:4:{s:4:"file";s:53:"capturing-the-human-heart-227847-unsplash-160x160.jpg";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_attachment_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[wp-c7c038b49de8244bb1606c98e4b06fc3]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[78d69da7b9ff3ef9c9dacf3b79c1b6ca]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				bill-wegener-391233-unsplash			</title>
+			<link>https://demo.themeisle.com/neve-charity-brizy/bill-wegener-391233-unsplash/</link>
+			<pubDate>Fri, 07 Jun 2019 09:32:55 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-charity-brizy/wp-content/uploads/sites/199/2019/06/bill-wegener-391233-unsplash.jpg</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>139</wp:post_id>
+			<wp:post_date><![CDATA[2019-06-07 09:32:55]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-06-07 09:32:55]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[bill-wegener-391233-unsplash]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-charity-brizy/wp-content/uploads/sites/199/2019/06/bill-wegener-391233-unsplash.jpg]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/06/bill-wegener-391233-unsplash.jpg]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:442;s:6:"height";i:579;s:4:"file";s:40:"2019/06/bill-wegener-391233-unsplash.jpg";s:5:"sizes";a:6:{s:9:"thumbnail";a:4:{s:4:"file";s:40:"bill-wegener-391233-unsplash-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:40:"bill-wegener-391233-unsplash-229x300.jpg";s:5:"width";i:229;s:6:"height";i:300;s:9:"mime-type";s:10:"image/jpeg";}s:21:"woocommerce_thumbnail";a:5:{s:4:"file";s:40:"bill-wegener-391233-unsplash-230x230.jpg";s:5:"width";i:230;s:6:"height";i:230;s:9:"mime-type";s:10:"image/jpeg";s:9:"uncropped";b:0;}s:29:"woocommerce_gallery_thumbnail";a:4:{s:4:"file";s:40:"bill-wegener-391233-unsplash-160x160.jpg";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:10:"image/jpeg";}s:12:"shop_catalog";a:4:{s:4:"file";s:40:"bill-wegener-391233-unsplash-230x230.jpg";s:5:"width";i:230;s:6:"height";i:230;s:9:"mime-type";s:10:"image/jpeg";}s:14:"shop_thumbnail";a:4:{s:4:"file";s:40:"bill-wegener-391233-unsplash-160x160.jpg";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_attachment_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[wp-3a69977451639fe7746ac85a1bfb7f4c]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[78d69da7b9ff3ef9c9dacf3b79c1b6ca]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				avel-chuklanov-686841-unsplash			</title>
+			<link>https://demo.themeisle.com/neve-charity-brizy/avel-chuklanov-686841-unsplash/</link>
+			<pubDate>Fri, 07 Jun 2019 09:32:56 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-charity-brizy/wp-content/uploads/sites/199/2019/06/avel-chuklanov-686841-unsplash.jpg</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>140</wp:post_id>
+			<wp:post_date><![CDATA[2019-06-07 09:32:56]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-06-07 09:32:56]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[avel-chuklanov-686841-unsplash]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-charity-brizy/wp-content/uploads/sites/199/2019/06/avel-chuklanov-686841-unsplash.jpg]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/06/avel-chuklanov-686841-unsplash.jpg]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:1000;s:6:"height";i:645;s:4:"file";s:42:"2019/06/avel-chuklanov-686841-unsplash.jpg";s:5:"sizes";a:10:{s:9:"thumbnail";a:4:{s:4:"file";s:42:"avel-chuklanov-686841-unsplash-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:42:"avel-chuklanov-686841-unsplash-300x194.jpg";s:5:"width";i:300;s:6:"height";i:194;s:9:"mime-type";s:10:"image/jpeg";}s:12:"medium_large";a:4:{s:4:"file";s:42:"avel-chuklanov-686841-unsplash-768x495.jpg";s:5:"width";i:768;s:6:"height";i:495;s:9:"mime-type";s:10:"image/jpeg";}s:9:"neve-blog";a:4:{s:4:"file";s:42:"avel-chuklanov-686841-unsplash-930x620.jpg";s:5:"width";i:930;s:6:"height";i:620;s:9:"mime-type";s:10:"image/jpeg";}s:21:"woocommerce_thumbnail";a:5:{s:4:"file";s:42:"avel-chuklanov-686841-unsplash-230x230.jpg";s:5:"width";i:230;s:6:"height";i:230;s:9:"mime-type";s:10:"image/jpeg";s:9:"uncropped";b:0;}s:18:"woocommerce_single";a:4:{s:4:"file";s:42:"avel-chuklanov-686841-unsplash-600x387.jpg";s:5:"width";i:600;s:6:"height";i:387;s:9:"mime-type";s:10:"image/jpeg";}s:29:"woocommerce_gallery_thumbnail";a:4:{s:4:"file";s:42:"avel-chuklanov-686841-unsplash-160x160.jpg";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:10:"image/jpeg";}s:12:"shop_catalog";a:4:{s:4:"file";s:42:"avel-chuklanov-686841-unsplash-230x230.jpg";s:5:"width";i:230;s:6:"height";i:230;s:9:"mime-type";s:10:"image/jpeg";}s:11:"shop_single";a:4:{s:4:"file";s:42:"avel-chuklanov-686841-unsplash-600x387.jpg";s:5:"width";i:600;s:6:"height";i:387;s:9:"mime-type";s:10:"image/jpeg";}s:14:"shop_thumbnail";a:4:{s:4:"file";s:42:"avel-chuklanov-686841-unsplash-160x160.jpg";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_attachment_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[wp-6fe4dd9efd95cec9d96d964cb3ad8daf]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[78d69da7b9ff3ef9c9dacf3b79c1b6ca]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				annie-spratt-135307-unsplash			</title>
+			<link>https://demo.themeisle.com/neve-charity-brizy/annie-spratt-135307-unsplash/</link>
+			<pubDate>Fri, 07 Jun 2019 09:32:57 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-charity-brizy/wp-content/uploads/sites/199/2019/06/annie-spratt-135307-unsplash.jpg</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>141</wp:post_id>
+			<wp:post_date><![CDATA[2019-06-07 09:32:57]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-06-07 09:32:57]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[annie-spratt-135307-unsplash]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-charity-brizy/wp-content/uploads/sites/199/2019/06/annie-spratt-135307-unsplash.jpg]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/06/annie-spratt-135307-unsplash.jpg]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:1000;s:6:"height";i:495;s:4:"file";s:40:"2019/06/annie-spratt-135307-unsplash.jpg";s:5:"sizes";a:10:{s:9:"thumbnail";a:4:{s:4:"file";s:40:"annie-spratt-135307-unsplash-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:40:"annie-spratt-135307-unsplash-300x149.jpg";s:5:"width";i:300;s:6:"height";i:149;s:9:"mime-type";s:10:"image/jpeg";}s:12:"medium_large";a:4:{s:4:"file";s:40:"annie-spratt-135307-unsplash-768x380.jpg";s:5:"width";i:768;s:6:"height";i:380;s:9:"mime-type";s:10:"image/jpeg";}s:9:"neve-blog";a:4:{s:4:"file";s:40:"annie-spratt-135307-unsplash-930x495.jpg";s:5:"width";i:930;s:6:"height";i:495;s:9:"mime-type";s:10:"image/jpeg";}s:21:"woocommerce_thumbnail";a:5:{s:4:"file";s:40:"annie-spratt-135307-unsplash-230x230.jpg";s:5:"width";i:230;s:6:"height";i:230;s:9:"mime-type";s:10:"image/jpeg";s:9:"uncropped";b:0;}s:18:"woocommerce_single";a:4:{s:4:"file";s:40:"annie-spratt-135307-unsplash-600x297.jpg";s:5:"width";i:600;s:6:"height";i:297;s:9:"mime-type";s:10:"image/jpeg";}s:29:"woocommerce_gallery_thumbnail";a:4:{s:4:"file";s:40:"annie-spratt-135307-unsplash-160x160.jpg";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:10:"image/jpeg";}s:12:"shop_catalog";a:4:{s:4:"file";s:40:"annie-spratt-135307-unsplash-230x230.jpg";s:5:"width";i:230;s:6:"height";i:230;s:9:"mime-type";s:10:"image/jpeg";}s:11:"shop_single";a:4:{s:4:"file";s:40:"annie-spratt-135307-unsplash-600x297.jpg";s:5:"width";i:600;s:6:"height";i:297;s:9:"mime-type";s:10:"image/jpeg";}s:14:"shop_thumbnail";a:4:{s:4:"file";s:40:"annie-spratt-135307-unsplash-160x160.jpg";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_attachment_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[wp-68f58d57dd4fd9c8b24e1c233a169c86]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[78d69da7b9ff3ef9c9dacf3b79c1b6ca]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				annie-spratt-427337-unsplash-1024x681			</title>
+			<link>https://demo.themeisle.com/neve-charity-brizy/annie-spratt-427337-unsplash-1024x681/</link>
+			<pubDate>Thu, 11 Jul 2019 11:56:50 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-charity-brizy/wp-content/uploads/sites/199/2019/06/annie-spratt-427337-unsplash-1024x681.jpg</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>142</wp:post_id>
+			<wp:post_date><![CDATA[2019-07-11 11:56:50]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-07-11 11:56:50]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[annie-spratt-427337-unsplash-1024x681]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-charity-brizy/wp-content/uploads/sites/199/2019/06/annie-spratt-427337-unsplash-1024x681.jpg]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/06/annie-spratt-427337-unsplash-1024x681.jpg]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:1024;s:6:"height";i:681;s:4:"file";s:49:"2019/06/annie-spratt-427337-unsplash-1024x681.jpg";s:5:"sizes";a:5:{s:9:"thumbnail";a:4:{s:4:"file";s:49:"annie-spratt-427337-unsplash-1024x681-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:49:"annie-spratt-427337-unsplash-1024x681-300x200.jpg";s:5:"width";i:300;s:6:"height";i:200;s:9:"mime-type";s:10:"image/jpeg";}s:12:"medium_large";a:4:{s:4:"file";s:49:"annie-spratt-427337-unsplash-1024x681-768x511.jpg";s:5:"width";i:768;s:6:"height";i:511;s:9:"mime-type";s:10:"image/jpeg";}s:5:"large";a:4:{s:4:"file";s:50:"annie-spratt-427337-unsplash-1024x681-1024x681.jpg";s:5:"width";i:1024;s:6:"height";i:681;s:9:"mime-type";s:10:"image/jpeg";}s:9:"neve-blog";a:4:{s:4:"file";s:49:"annie-spratt-427337-unsplash-1024x681-930x620.jpg";s:5:"width";i:930;s:6:"height";i:620;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_attachment_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[wp-cd4f2c746a7dff99b7890916a7e6da09]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[78d69da7b9ff3ef9c9dacf3b79c1b6ca]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				Life living in a poverty camp			</title>
+			<link>https://demo.themeisle.com/neve-charity-brizy/2018/11/28/life-living-in-a-poverty-camp/</link>
+			<pubDate>Wed, 28 Nov 2018 13:32:34 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-charity/?p=25</guid>
+			<description></description>
+			<content:encoded><![CDATA[Alterum atomorum nam no, duis latine necessitatibus ne per. No maiorum eligendi per. Veri iuvaret sit te, te nihil molestiae philosophia vel. At illum graeco euismod mei. Repudiandae liberavisse cum an.
+
+Mea delenit repudiare incorrupte in, ea inimicus forensibus vel, te rebum doctus his. An mazim integre concludaturque nec, te duo illum mucius intellegebat. Fugit regione cu ius, eum ut cibo brute mandamus. Vel alienum volutpat ea, nonumy deleniti mediocritatem ut quo.]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>25</wp:post_id>
+			<wp:post_date><![CDATA[2018-11-28 13:32:34]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2018-11-28 13:32:34]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[open]]></wp:ping_status>
+			<wp:post_name><![CDATA[life-living-in-a-poverty-camp]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[post]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+								<category domain="category" nicename="uncategorized"><![CDATA[Uncategorized]]></category>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_thumbnail_id]]></wp:meta_key>
+					<wp:meta_value><![CDATA[140]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
+					<wp:meta_value><![CDATA[default]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_yoast_wpseo_primary_category]]></wp:meta_key>
+					<wp:meta_value><![CDATA[1]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
+					<wp:meta_value><![CDATA[70]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_yoast_wpseo_content_score]]></wp:meta_key>
+					<wp:meta_value><![CDATA[60]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+					<wp:meta_value><![CDATA[440]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				Providing water in dry areas			</title>
+			<link>https://demo.themeisle.com/neve-charity-brizy/2018/11/28/providing-water-in-dry-areas/</link>
+			<pubDate>Wed, 28 Nov 2018 13:33:47 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-charity/?p=27</guid>
+			<description></description>
+			<content:encoded><![CDATA[Ex case epicuri pro, eu mel veri fastidii, audiam consectetuer an sed. Vel id soluta iuvaret deseruisse, error saepe dissentias vix ei. Virtute indoctum ei duo. Cum hinc dolores officiis cu, duo ut simul aliquando reprehendunt.]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>27</wp:post_id>
+			<wp:post_date><![CDATA[2018-11-28 13:33:47]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2018-11-28 13:33:47]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[open]]></wp:ping_status>
+			<wp:post_name><![CDATA[providing-water-in-dry-areas]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[post]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+								<category domain="category" nicename="uncategorized"><![CDATA[Uncategorized]]></category>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_thumbnail_id]]></wp:meta_key>
+					<wp:meta_value><![CDATA[141]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
+					<wp:meta_value><![CDATA[default]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_yoast_wpseo_primary_category]]></wp:meta_key>
+					<wp:meta_value><![CDATA[1]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
+					<wp:meta_value><![CDATA[70]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_yoast_wpseo_content_score]]></wp:meta_key>
+					<wp:meta_value><![CDATA[60]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+					<wp:meta_value><![CDATA[440]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				You can live without money			</title>
+			<link>https://demo.themeisle.com/neve-charity-brizy/2018/11/28/you-can-live-without-money/</link>
+			<pubDate>Wed, 28 Nov 2018 13:59:59 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-charity/?p=29</guid>
+			<description></description>
+			<content:encoded><![CDATA[Mea delenit repudiare incorrupte in, ea inimicus forensibus vel, te rebum doctus his. An mazim integre concludaturque nec, te duo illum mucius intellegebat. Fugit regione cu ius, eum ut cibo brute mandamus. Vel alienum volutpat ea, nonumy deleniti mediocritatem ut quo.]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>29</wp:post_id>
+			<wp:post_date><![CDATA[2018-11-28 13:59:59]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2018-11-28 13:59:59]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[open]]></wp:ping_status>
+			<wp:post_name><![CDATA[you-can-live-without-money]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[post]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+								<category domain="category" nicename="uncategorized"><![CDATA[Uncategorized]]></category>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_thumbnail_id]]></wp:meta_key>
+					<wp:meta_value><![CDATA[142]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
+					<wp:meta_value><![CDATA[default]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_yoast_wpseo_primary_category]]></wp:meta_key>
+					<wp:meta_value><![CDATA[1]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
+					<wp:meta_value><![CDATA[70]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_yoast_wpseo_content_score]]></wp:meta_key>
+					<wp:meta_value><![CDATA[60]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+					<wp:meta_value><![CDATA[440]]></wp:meta_value>
 				</wp:postmeta>
 					</item>
 					</channel>
