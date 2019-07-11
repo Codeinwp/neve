@@ -1,10 +1,8 @@
 buildScripts:
-- 'sass:style'
+- 'sass'
 - 'concat:customizerStyle'
-- 'sass:min'
 - 'uglify:scripts'
 - 'uglify:customizerControls'
-#- 'postcss'
 - 'rtlcss'
 - 'cssmin'
 

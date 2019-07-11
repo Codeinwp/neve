@@ -12,7 +12,7 @@
 		},
 		setupSorting: function () {
 			var self = this;
-			$( '.ti-order-sortable' ).each( function () {
+			$( '.ti-order-sortable' ).each( function () {                                  
 				$( this ).sortable( {
 					revert: true,
 					axis: 'y',

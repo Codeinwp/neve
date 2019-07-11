@@ -2,7 +2,6 @@
   "content_file": "https://demo.themeisle.com/neve-restaurant/wp-content/uploads/sites/177/ti-demo-data/export.xml",
   "theme_mods": {
     "zelle_frontpage_was_imported": "not-zerif",
-    "ti_prev_theme": "twentysixteen",
     "custom_css_post_id": 10,
     "neve_navigation_layout": "left",
     "neve_last_menu_item": "[]",
@@ -23,7 +22,51 @@
       "primary": "main"
     }
   },
-  "wp_options": [],
+  "wp_options": {
+    "obfx_data": {
+      "core_settings": [],
+      "module_status": {
+        "social-sharing": {
+          "showed_notices": []
+        },
+        "gutenberg-blocks": {
+          "showed_notices": [],
+          "active": false
+        },
+        "uptime-monitor": {
+          "showed_notices": []
+        },
+        "google-analytics": {
+          "showed_notices": []
+        },
+        "elementor-widgets": {
+          "showed_notices": []
+        },
+        "template-directory": {
+          "showed_notices": [],
+          "active": false
+        },
+        "menu-icons": {
+          "showed_notices": []
+        },
+        "mystock-import": {
+          "showed_notices": [],
+          "active": false
+        },
+        "policy-notice": {
+          "showed_notices": []
+        },
+        "safe-updates": {
+          "showed_notices": []
+        }
+      },
+      "module_settings": {
+        "safe-updates": {
+          "auto_update_checks": "0"
+        }
+      }
+    }
+  },
   "widgets": {
     "blog-sidebar": {
       "search-2": {

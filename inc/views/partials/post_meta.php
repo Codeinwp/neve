@@ -42,12 +42,15 @@ class Post_Meta extends Base_View {
 		$pid       = get_the_ID();
 		$post_type = get_post_type( $pid );
 		$markup    = '';
-		$markup   .= '<ul class="nv-meta-list">';
+		$markup    .= '<ul class="nv-meta-list">';
 		foreach ( $order as $meta ) {
 			switch ( $meta ) {
 				case 'author':
 					$author_email   = get_the_author_meta( 'user_email' );
-					$avatar_url     = get_avatar_url( $author_email );
+					$gravatar_args  = apply_filters( 'neve_gravatar_args', array(
+						'size' => 20
+					) );
+					$avatar_url     = get_avatar_url( $author_email, $gravatar_args );
 					$avatar_markup  = '<img class="photo" alt="' . get_the_author() . '" src="' . esc_url( $avatar_url ) . '" />&nbsp;';
 					$display_avatar = apply_filters( 'neve_display_author_avatar', true );
 
@@ -176,12 +179,12 @@ class Post_Meta extends Base_View {
 		if ( ! is_array( $tags ) ) {
 			return;
 		}
-		$html  = '<div class="nv-tags-list">';
+		$html = '<div class="nv-tags-list">';
 		$html .= '<span>' . __( 'Tags', 'neve' ) . ':</span>';
 		foreach ( $tags as $tag ) {
 			$tag_link = get_tag_link( $tag->term_id );
-			$html    .= '<a href=' . esc_url( $tag_link ) . ' title="' . esc_attr( $tag->name ) . '" class=' . esc_attr( $tag->slug ) . ' rel="tag">';
-			$html    .= esc_html( $tag->name ) . '</a>';
+			$html     .= '<a href=' . esc_url( $tag_link ) . ' title="' . esc_attr( $tag->name ) . '" class=' . esc_attr( $tag->slug ) . ' rel="tag">';
+			$html     .= esc_html( $tag->name ) . '</a>';
 		}
 		$html .= ' </div> ';
 		echo $html; // WPCS: XSS OK.
