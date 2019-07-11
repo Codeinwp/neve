@@ -110,6 +110,7 @@ class Front_End {
 		$this->onboarding_config = array(
 			'editors'     => array(
 				'elementor',
+				'brizy',
 			),
 			'local'       => array(
 				'elementor' => array(
@@ -158,6 +159,40 @@ class Front_End {
 						'title' => 'Travel Agency',
 					),
 				),
+				'brizy'     => array(
+					'neve-brizy-main'       => array(
+						'url'   => 'https://demo.themeisle.com/neve-onboarding-brizy/',
+						'title' => 'Original',
+					),
+					'neve-brizy-restaurant' => array(
+						'url'              => 'https://demo.themeisle.com/neve-restaurant-brizy/',
+						'title'            => 'Restaurant',
+						'unsplash_gallery' => 'https://unsplash.com/collections/4587624/restaurant',
+					),
+					'neve-brizy-charity'    => array(
+						'url'              => 'https://demo.themeisle.com/neve-charity-brizy/',
+						'title'            => 'Charity',
+						'unsplash_gallery' => 'https://unsplash.com/collections/4587605/charity',
+					),
+					'neve-brizy-vet-center' => array(
+						'url'              => 'https://demo.themeisle.com/neve-vet-center-brizy/',
+						'title'            => 'Vet Center',
+						'unsplash_gallery' => 'https://unsplash.com/collections/4587611/vet-center',
+					),
+					'neve-brizy-doctors'    => array(
+						'url'              => 'https://demo.themeisle.com/neve-doctors-brizy/',
+						'title'            => 'Doctors',
+						'unsplash_gallery' => 'https://unsplash.com/collections/4587593/doctor',
+					),
+					'neve-brizy-shop'       => array(
+						'url'   => 'https://demo.themeisle.com/neve-shop-brizy/',
+						'title' => 'Shop',
+					),
+					'neve-brizy-zelle'      => array(
+						'url'   => 'https://demo.themeisle.com/neve-zelle-brizy/',
+						'title' => 'Travel Agency',
+					),
+				),
 			),
 			'upsell'      => array(
 				'elementor' => array(
@@ -180,6 +215,18 @@ class Front_End {
 						'url'        => 'https://demo.themeisle.com/neve-consultants/',
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/06/neve-consulting-demo-screenshot-big.png',
 						'title'      => 'Business Consulting',
+					),
+				),
+				'brizy'     => array(
+					'neve-brizy-cafe'    => array(
+						'url'        => 'https://demo.themeisle.com/neve-cafe-brizy/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/06/neve-cafe-demo-screenshot-big.png',
+						'title'      => 'Coffe Shop',
+					),
+					'neve-constructions' => array(
+						'url'        => 'https://demo.themeisle.com/neve-constructions-brizy/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/06/neve-constructions-demo-screenshot-big.png',
+						'title'      => 'Constructions Company',
 					),
 				),
 			),

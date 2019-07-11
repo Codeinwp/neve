@@ -61,7 +61,7 @@ class Post_Meta extends Base_View {
 		$pid       = get_the_ID();
 		$post_type = get_post_type( $pid );
 		$markup    = '';
-		$markup    .= '<ul class="nv-meta-list">';
+		$markup   .= '<ul class="nv-meta-list">';
 		foreach ( $order as $meta ) {
 			switch ( $meta ) {
 				case 'author':
@@ -201,12 +201,12 @@ class Post_Meta extends Base_View {
 		if ( ! is_array( $tags ) ) {
 			return;
 		}
-		$html = '<div class="nv-tags-list">';
+		$html  = '<div class="nv-tags-list">';
 		$html .= '<span>' . __( 'Tags', 'neve' ) . ':</span>';
 		foreach ( $tags as $tag ) {
 			$tag_link = get_tag_link( $tag->term_id );
-			$html     .= '<a href=' . esc_url( $tag_link ) . ' title="' . esc_attr( $tag->name ) . '" class=' . esc_attr( $tag->slug ) . ' rel="tag">';
-			$html     .= esc_html( $tag->name ) . '</a>';
+			$html    .= '<a href=' . esc_url( $tag_link ) . ' title="' . esc_attr( $tag->name ) . '" class=' . esc_attr( $tag->slug ) . ' rel="tag">';
+			$html    .= esc_html( $tag->name ) . '</a>';
 		}
 		$html .= ' </div> ';
 		echo $html; // WPCS: XSS OK.
