@@ -178,14 +178,10 @@ class Main {
 	 * @access  public
 	 */
 	public function enqueue_scripts() {
-		$disabled_templates = array( 'elementor_canvas' );
-
-		$current_template = get_page_template_slug();
-
-		if ( in_array( $current_template, $disabled_templates ) ) {
+		if ( ! $this->should_enqueue_assets() ) {
 			return;
 		}
-		
+
 		wp_register_style( 'hfg-style', esc_url( Config::get_url() ) . '/assets/css/style.min.css', array(), self::VERSION );
 		wp_style_add_data( 'hfg-style', 'rtl', 'replace' );
 		wp_style_add_data( 'hfg-style', 'suffix', '.min' );
@@ -277,6 +273,31 @@ class Main {
 	 */
 	public function __wakeup() {
 		_doing_it_wrong( __FUNCTION__, '', '1.0.0' );
+	}
+
+
+	/**
+	 * Check if assets should be enqueued.
+	 *
+	 * @return bool
+	 */
+	private function should_enqueue_assets() {
+		$disabled_templates = array( 'elementor_canvas' );
+		$current_template   = get_page_template_slug();
+
+		if ( in_array( $current_template, $disabled_templates ) ) {
+			return false;
+		}
+		if ( is_singular() ) {
+			$id     = get_the_ID();
+			$header = get_post_meta( $id, 'neve_meta_disable_header', true );
+			$footer = get_post_meta( $id, 'neve_meta_disable_footer', true );
+			if ( $header === 'on' && $footer === 'on' ) {
+				return false;
+			}
+		}
+
+		return true;
 	}
 }
 
