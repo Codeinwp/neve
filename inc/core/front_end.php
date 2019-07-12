@@ -159,7 +159,7 @@ class Front_End {
 						'title' => 'Travel Agency',
 					),
 				),
-				'brizy' => array(
+				'brizy'     => array(
 					'neve-brizy-main'       => array(
 						'url'   => 'https://demo.themeisle.com/neve-onboarding-brizy/',
 						'title' => 'Original',
@@ -217,7 +217,7 @@ class Front_End {
 						'title'      => 'Business Consulting',
 					),
 				),
-				'brizy' => array(
+				'brizy'     => array(
 					'neve-brizy-cafe'    => array(
 						'url'        => 'https://demo.themeisle.com/neve-cafe-brizy/',
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/06/neve-cafe-demo-screenshot-big.png',
