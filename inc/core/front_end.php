@@ -198,12 +198,12 @@ class Front_End {
 				'elementor' => array(
 					'neve-cafe'          => array(
 						'url'        => 'https://demo.themeisle.com/neve-cafe/',
-						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/06/neve-cafe-demo-screenshot-big.png',
-						'title'      => 'Coffe Shop',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/06/neve-caffe-new-ss.jpg',
+						'title'      => 'Coffee Shop',
 					),
 					'neve-constructions' => array(
 						'url'        => 'https://demo.themeisle.com/neve-constructions/',
-						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/06/neve-constructions-demo-screenshot-big.png',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/06/neve-construction-new-screenshot.jpg',
 						'title'      => 'Constructions Company',
 					),
 					'neve-showcase'      => array(
@@ -220,12 +220,12 @@ class Front_End {
 				'brizy'     => array(
 					'neve-brizy-cafe'    => array(
 						'url'        => 'https://demo.themeisle.com/neve-cafe-brizy/',
-						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/06/neve-cafe-demo-screenshot-big.png',
-						'title'      => 'Coffe Shop',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/06/neve-caffe-new-ss.jpg',
+						'title'      => 'Coffee Shop',
 					),
 					'neve-constructions' => array(
 						'url'        => 'https://demo.themeisle.com/neve-constructions-brizy/',
-						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/06/neve-constructions-demo-screenshot-big.png',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/06/neve-construction-new-screenshot.jpg',
 						'title'      => 'Constructions Company',
 					),
 				),
