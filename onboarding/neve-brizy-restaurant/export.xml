@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!-- generator="WordPress/5.2.1" created="2019-06-24 15:26" -->
+<!-- generator="WordPress/5.2.1" created="2019-07-11 11:51" -->
 		<rss version="2.0"
 				xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
 				xmlns:content="http://purl.org/rss/1.0/modules/content/"
@@ -12,7 +12,7 @@
 				<title>NEVE Restaurant</title>
 				<link>https://demo.themeisle.com/neve-restaurant-brizy</link>
 				<description></description>
-				<pubDate>Mon, 24 Jun 2019 15:26:07 +0000</pubDate>
+				<pubDate>Thu, 11 Jul 2019 11:51:19 +0000</pubDate>
 				<language>en-US</language>
 				<wp:wxr_version>1.2</wp:wxr_version>
 				<wp:base_site_url>https://demo.themeisle.com/</wp:base_site_url>
@@ -25,11 +25,99 @@
 						<wp:cat_name><![CDATA[Uncategorized]]></wp:cat_name>
 					</wp:category>
 																	<wp:term>
+						<wp:term_id><![CDATA[7]]></wp:term_id>
+						<wp:term_taxonomy><![CDATA[product_visibility]]></wp:term_taxonomy>
+						<wp:term_slug><![CDATA[exclude-from-catalog]]></wp:term_slug>
+						<wp:term_parent><![CDATA[]]></wp:term_parent>
+						<wp:term_name><![CDATA[exclude-from-catalog]]></wp:term_name>
+					</wp:term>
+									<wp:term>
+						<wp:term_id><![CDATA[6]]></wp:term_id>
+						<wp:term_taxonomy><![CDATA[product_visibility]]></wp:term_taxonomy>
+						<wp:term_slug><![CDATA[exclude-from-search]]></wp:term_slug>
+						<wp:term_parent><![CDATA[]]></wp:term_parent>
+						<wp:term_name><![CDATA[exclude-from-search]]></wp:term_name>
+					</wp:term>
+									<wp:term>
+						<wp:term_id><![CDATA[5]]></wp:term_id>
+						<wp:term_taxonomy><![CDATA[product_type]]></wp:term_taxonomy>
+						<wp:term_slug><![CDATA[external]]></wp:term_slug>
+						<wp:term_parent><![CDATA[]]></wp:term_parent>
+						<wp:term_name><![CDATA[external]]></wp:term_name>
+					</wp:term>
+									<wp:term>
+						<wp:term_id><![CDATA[8]]></wp:term_id>
+						<wp:term_taxonomy><![CDATA[product_visibility]]></wp:term_taxonomy>
+						<wp:term_slug><![CDATA[featured]]></wp:term_slug>
+						<wp:term_parent><![CDATA[]]></wp:term_parent>
+						<wp:term_name><![CDATA[featured]]></wp:term_name>
+					</wp:term>
+									<wp:term>
+						<wp:term_id><![CDATA[3]]></wp:term_id>
+						<wp:term_taxonomy><![CDATA[product_type]]></wp:term_taxonomy>
+						<wp:term_slug><![CDATA[grouped]]></wp:term_slug>
+						<wp:term_parent><![CDATA[]]></wp:term_parent>
+						<wp:term_name><![CDATA[grouped]]></wp:term_name>
+					</wp:term>
+									<wp:term>
+						<wp:term_id><![CDATA[18]]></wp:term_id>
+						<wp:term_taxonomy><![CDATA[nav_menu]]></wp:term_taxonomy>
+						<wp:term_slug><![CDATA[main]]></wp:term_slug>
+						<wp:term_parent><![CDATA[]]></wp:term_parent>
+						<wp:term_name><![CDATA[Main]]></wp:term_name>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[brizy_uid]]></wp:meta_key>
+			<wp:meta_value><![CDATA[9a74b12e51a7d3fa12c48b8f08be8288]]></wp:meta_value>
+		</wp:termmeta>
+					</wp:term>
+									<wp:term>
+						<wp:term_id><![CDATA[9]]></wp:term_id>
+						<wp:term_taxonomy><![CDATA[product_visibility]]></wp:term_taxonomy>
+						<wp:term_slug><![CDATA[outofstock]]></wp:term_slug>
+						<wp:term_parent><![CDATA[]]></wp:term_parent>
+						<wp:term_name><![CDATA[outofstock]]></wp:term_name>
+					</wp:term>
+									<wp:term>
 						<wp:term_id><![CDATA[16]]></wp:term_id>
 						<wp:term_taxonomy><![CDATA[elementor_library_type]]></wp:term_taxonomy>
 						<wp:term_slug><![CDATA[page]]></wp:term_slug>
 						<wp:term_parent><![CDATA[]]></wp:term_parent>
 						<wp:term_name><![CDATA[page]]></wp:term_name>
+					</wp:term>
+									<wp:term>
+						<wp:term_id><![CDATA[10]]></wp:term_id>
+						<wp:term_taxonomy><![CDATA[product_visibility]]></wp:term_taxonomy>
+						<wp:term_slug><![CDATA[rated-1]]></wp:term_slug>
+						<wp:term_parent><![CDATA[]]></wp:term_parent>
+						<wp:term_name><![CDATA[rated-1]]></wp:term_name>
+					</wp:term>
+									<wp:term>
+						<wp:term_id><![CDATA[11]]></wp:term_id>
+						<wp:term_taxonomy><![CDATA[product_visibility]]></wp:term_taxonomy>
+						<wp:term_slug><![CDATA[rated-2]]></wp:term_slug>
+						<wp:term_parent><![CDATA[]]></wp:term_parent>
+						<wp:term_name><![CDATA[rated-2]]></wp:term_name>
+					</wp:term>
+									<wp:term>
+						<wp:term_id><![CDATA[12]]></wp:term_id>
+						<wp:term_taxonomy><![CDATA[product_visibility]]></wp:term_taxonomy>
+						<wp:term_slug><![CDATA[rated-3]]></wp:term_slug>
+						<wp:term_parent><![CDATA[]]></wp:term_parent>
+						<wp:term_name><![CDATA[rated-3]]></wp:term_name>
+					</wp:term>
+									<wp:term>
+						<wp:term_id><![CDATA[13]]></wp:term_id>
+						<wp:term_taxonomy><![CDATA[product_visibility]]></wp:term_taxonomy>
+						<wp:term_slug><![CDATA[rated-4]]></wp:term_slug>
+						<wp:term_parent><![CDATA[]]></wp:term_parent>
+						<wp:term_name><![CDATA[rated-4]]></wp:term_name>
+					</wp:term>
+									<wp:term>
+						<wp:term_id><![CDATA[14]]></wp:term_id>
+						<wp:term_taxonomy><![CDATA[product_visibility]]></wp:term_taxonomy>
+						<wp:term_slug><![CDATA[rated-5]]></wp:term_slug>
+						<wp:term_parent><![CDATA[]]></wp:term_parent>
+						<wp:term_name><![CDATA[rated-5]]></wp:term_name>
 					</wp:term>
 									<wp:term>
 						<wp:term_id><![CDATA[17]]></wp:term_id>
@@ -38,6 +126,34 @@
 						<wp:term_parent><![CDATA[]]></wp:term_parent>
 						<wp:term_name><![CDATA[section]]></wp:term_name>
 					</wp:term>
+									<wp:term>
+						<wp:term_id><![CDATA[2]]></wp:term_id>
+						<wp:term_taxonomy><![CDATA[product_type]]></wp:term_taxonomy>
+						<wp:term_slug><![CDATA[simple]]></wp:term_slug>
+						<wp:term_parent><![CDATA[]]></wp:term_parent>
+						<wp:term_name><![CDATA[simple]]></wp:term_name>
+					</wp:term>
+									<wp:term>
+						<wp:term_id><![CDATA[1]]></wp:term_id>
+						<wp:term_taxonomy><![CDATA[category]]></wp:term_taxonomy>
+						<wp:term_slug><![CDATA[uncategorized]]></wp:term_slug>
+						<wp:term_parent><![CDATA[]]></wp:term_parent>
+						<wp:term_name><![CDATA[Uncategorized]]></wp:term_name>
+					</wp:term>
+									<wp:term>
+						<wp:term_id><![CDATA[15]]></wp:term_id>
+						<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
+						<wp:term_slug><![CDATA[uncategorized]]></wp:term_slug>
+						<wp:term_parent><![CDATA[]]></wp:term_parent>
+						<wp:term_name><![CDATA[Uncategorized]]></wp:term_name>
+					</wp:term>
+									<wp:term>
+						<wp:term_id><![CDATA[4]]></wp:term_id>
+						<wp:term_taxonomy><![CDATA[product_type]]></wp:term_taxonomy>
+						<wp:term_slug><![CDATA[variable]]></wp:term_slug>
+						<wp:term_parent><![CDATA[]]></wp:term_parent>
+						<wp:term_name><![CDATA[variable]]></wp:term_name>
+					</wp:term>
 									<wp:term><wp:term_id>18</wp:term_id><wp:term_taxonomy>nav_menu</wp:term_taxonomy><wp:term_slug><![CDATA[main]]></wp:term_slug><wp:term_name><![CDATA[Main]]></wp:term_name>
 </wp:term>
 
@@ -45,39 +161,710 @@
 
 						<item>
 			<title>
-				placeholder-image			</title>
-			<link>https://demo.themeisle.com/neve-restaurant-brizy/placeholder-image/</link>
-			<pubDate>Tue, 07 May 2019 11:48:18 +0000</pubDate>
-			<guid isPermaLink="false"><![CDATA[<![CDATA[https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/05/placeholder-image.png]]]]><![CDATA[>]]></guid>
+				alasdair-elmes-682868-unsplash			</title>
+			<link>https://demo.themeisle.com/neve-restaurant-brizy/alasdair-elmes-682868-unsplash/</link>
+			<pubDate>Thu, 06 Jun 2019 13:06:42 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/alasdair-elmes-682868-unsplash.jpg</guid>
 			<description></description>
-			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>189</wp:post_id>
-			<wp:post_date><![CDATA[2019-05-07 11:48:18]]></wp:post_date>
-			<wp:post_date_gmt><![CDATA[2019-05-07 11:48:18]]></wp:post_date_gmt>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>210</wp:post_id>
+			<wp:post_date><![CDATA[2019-06-06 13:06:42]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-06-06 13:06:42]]></wp:post_date_gmt>
 			<wp:comment_status><![CDATA[open]]></wp:comment_status>
 			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-			<wp:post_name><![CDATA[placeholder-image]]></wp:post_name>
+			<wp:post_name><![CDATA[alasdair-elmes-682868-unsplash]]></wp:post_name>
 			<wp:status><![CDATA[inherit]]></wp:status>
 			<wp:post_parent>0</wp:post_parent>
 			<wp:menu_order>0</wp:menu_order>
 			<wp:post_type><![CDATA[attachment]]></wp:post_type>
 			<wp:post_password><![CDATA[]]></wp:post_password>
 			<wp:is_sticky>0</wp:is_sticky>
-							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/05/placeholder-image.png]]></wp:attachment_url>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/alasdair-elmes-682868-unsplash.jpg]]></wp:attachment_url>
 													<wp:postmeta>
 					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
-					<wp:meta_value><![CDATA[2019/05/placeholder-image.png]]></wp:meta_value>
+					<wp:meta_value><![CDATA[2019/06/alasdair-elmes-682868-unsplash.jpg]]></wp:meta_value>
 				</wp:postmeta>
 							<wp:postmeta>
 					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
-					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:1280;s:6:"height";i:960;s:4:"file";s:29:"2019/05/placeholder-image.png";s:5:"sizes";a:0:{}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:549;s:6:"height";i:510;s:4:"file";s:42:"2019/06/alasdair-elmes-682868-unsplash.jpg";s:5:"sizes";a:6:{s:9:"thumbnail";a:4:{s:4:"file";s:42:"alasdair-elmes-682868-unsplash-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:42:"alasdair-elmes-682868-unsplash-300x279.jpg";s:5:"width";i:300;s:6:"height";i:279;s:9:"mime-type";s:10:"image/jpeg";}s:21:"woocommerce_thumbnail";a:5:{s:4:"file";s:42:"alasdair-elmes-682868-unsplash-230x230.jpg";s:5:"width";i:230;s:6:"height";i:230;s:9:"mime-type";s:10:"image/jpeg";s:9:"uncropped";b:0;}s:29:"woocommerce_gallery_thumbnail";a:4:{s:4:"file";s:42:"alasdair-elmes-682868-unsplash-160x160.jpg";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:10:"image/jpeg";}s:12:"shop_catalog";a:4:{s:4:"file";s:42:"alasdair-elmes-682868-unsplash-230x230.jpg";s:5:"width";i:230;s:6:"height";i:230;s:9:"mime-type";s:10:"image/jpeg";}s:14:"shop_thumbnail";a:4:{s:4:"file";s:42:"alasdair-elmes-682868-unsplash-160x160.jpg";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
 				</wp:postmeta>
 							<wp:postmeta>
 					<wp:meta_key><![CDATA[brizy_attachment_uid]]></wp:meta_key>
-					<wp:meta_value><![CDATA[wp-b41cbefa5b92894184b993e7e8425315]]></wp:meta_value>
+					<wp:meta_value><![CDATA[wp-3e22036eec597cc8dec7a398fa7a5ca9]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[c729c045e4e5c1c2f802a2e3ced53e84]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				neve-restaurant-gallery-med-menu3a			</title>
+			<link>https://demo.themeisle.com/neve-restaurant-brizy/neve-restaurant-gallery-med-menu3a/</link>
+			<pubDate>Thu, 06 Jun 2019 13:06:43 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-gallery-med-menu3a.png</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>212</wp:post_id>
+			<wp:post_date><![CDATA[2019-06-06 13:06:43]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-06-06 13:06:43]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve-restaurant-gallery-med-menu3a]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-gallery-med-menu3a.png]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/06/neve-restaurant-gallery-med-menu3a.png]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:337;s:6:"height";i:320;s:4:"file";s:46:"2019/06/neve-restaurant-gallery-med-menu3a.png";s:5:"sizes";a:6:{s:9:"thumbnail";a:4:{s:4:"file";s:46:"neve-restaurant-gallery-med-menu3a-150x150.png";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:9:"image/png";}s:6:"medium";a:4:{s:4:"file";s:46:"neve-restaurant-gallery-med-menu3a-300x285.png";s:5:"width";i:300;s:6:"height";i:285;s:9:"mime-type";s:9:"image/png";}s:21:"woocommerce_thumbnail";a:5:{s:4:"file";s:46:"neve-restaurant-gallery-med-menu3a-230x230.png";s:5:"width";i:230;s:6:"height";i:230;s:9:"mime-type";s:9:"image/png";s:9:"uncropped";b:0;}s:29:"woocommerce_gallery_thumbnail";a:4:{s:4:"file";s:46:"neve-restaurant-gallery-med-menu3a-160x160.png";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:9:"image/png";}s:12:"shop_catalog";a:4:{s:4:"file";s:46:"neve-restaurant-gallery-med-menu3a-230x230.png";s:5:"width";i:230;s:6:"height";i:230;s:9:"mime-type";s:9:"image/png";}s:14:"shop_thumbnail";a:4:{s:4:"file";s:46:"neve-restaurant-gallery-med-menu3a-160x160.png";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:9:"image/png";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				neve-restaurant-gallery-menu1			</title>
+			<link>https://demo.themeisle.com/neve-restaurant-brizy/neve-restaurant-gallery-menu1/</link>
+			<pubDate>Thu, 06 Jun 2019 13:06:45 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-gallery-menu1.png</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>213</wp:post_id>
+			<wp:post_date><![CDATA[2019-06-06 13:06:45]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-06-06 13:06:45]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve-restaurant-gallery-menu1]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-gallery-menu1.png]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/06/neve-restaurant-gallery-menu1.png]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:277;s:6:"height";i:277;s:4:"file";s:41:"2019/06/neve-restaurant-gallery-menu1.png";s:5:"sizes";a:5:{s:9:"thumbnail";a:4:{s:4:"file";s:41:"neve-restaurant-gallery-menu1-150x150.png";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:9:"image/png";}s:21:"woocommerce_thumbnail";a:5:{s:4:"file";s:41:"neve-restaurant-gallery-menu1-230x230.png";s:5:"width";i:230;s:6:"height";i:230;s:9:"mime-type";s:9:"image/png";s:9:"uncropped";b:0;}s:29:"woocommerce_gallery_thumbnail";a:4:{s:4:"file";s:41:"neve-restaurant-gallery-menu1-160x160.png";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:9:"image/png";}s:12:"shop_catalog";a:4:{s:4:"file";s:41:"neve-restaurant-gallery-menu1-230x230.png";s:5:"width";i:230;s:6:"height";i:230;s:9:"mime-type";s:9:"image/png";}s:14:"shop_thumbnail";a:4:{s:4:"file";s:41:"neve-restaurant-gallery-menu1-160x160.png";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:9:"image/png";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_attachment_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[wp-f7f1106da5d317bbc7bf8458bfbe4d87]]></wp:meta_value>
 				</wp:postmeta>
 							<wp:postmeta>
 					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
 					<wp:meta_value><![CDATA[6df89d20a7e7d3fdf59ce8751377f78a]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				neve-restaurant-gallery-menu2			</title>
+			<link>https://demo.themeisle.com/neve-restaurant-brizy/neve-restaurant-gallery-menu2/</link>
+			<pubDate>Thu, 06 Jun 2019 13:06:46 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-gallery-menu2.png</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>214</wp:post_id>
+			<wp:post_date><![CDATA[2019-06-06 13:06:46]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-06-06 13:06:46]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve-restaurant-gallery-menu2]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-gallery-menu2.png]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/06/neve-restaurant-gallery-menu2.png]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:282;s:6:"height";i:282;s:4:"file";s:41:"2019/06/neve-restaurant-gallery-menu2.png";s:5:"sizes";a:5:{s:9:"thumbnail";a:4:{s:4:"file";s:41:"neve-restaurant-gallery-menu2-150x150.png";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:9:"image/png";}s:21:"woocommerce_thumbnail";a:5:{s:4:"file";s:41:"neve-restaurant-gallery-menu2-230x230.png";s:5:"width";i:230;s:6:"height";i:230;s:9:"mime-type";s:9:"image/png";s:9:"uncropped";b:0;}s:29:"woocommerce_gallery_thumbnail";a:4:{s:4:"file";s:41:"neve-restaurant-gallery-menu2-160x160.png";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:9:"image/png";}s:12:"shop_catalog";a:4:{s:4:"file";s:41:"neve-restaurant-gallery-menu2-230x230.png";s:5:"width";i:230;s:6:"height";i:230;s:9:"mime-type";s:9:"image/png";}s:14:"shop_thumbnail";a:4:{s:4:"file";s:41:"neve-restaurant-gallery-menu2-160x160.png";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:9:"image/png";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				neve-restaurant-gallery-menu3			</title>
+			<link>https://demo.themeisle.com/neve-restaurant-brizy/neve-restaurant-gallery-menu3/</link>
+			<pubDate>Thu, 06 Jun 2019 13:06:47 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-gallery-menu3.png</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>215</wp:post_id>
+			<wp:post_date><![CDATA[2019-06-06 13:06:47]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-06-06 13:06:47]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve-restaurant-gallery-menu3]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-gallery-menu3.png]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/06/neve-restaurant-gallery-menu3.png]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:280;s:6:"height";i:280;s:4:"file";s:41:"2019/06/neve-restaurant-gallery-menu3.png";s:5:"sizes";a:5:{s:9:"thumbnail";a:4:{s:4:"file";s:41:"neve-restaurant-gallery-menu3-150x150.png";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:9:"image/png";}s:21:"woocommerce_thumbnail";a:5:{s:4:"file";s:41:"neve-restaurant-gallery-menu3-230x230.png";s:5:"width";i:230;s:6:"height";i:230;s:9:"mime-type";s:9:"image/png";s:9:"uncropped";b:0;}s:29:"woocommerce_gallery_thumbnail";a:4:{s:4:"file";s:41:"neve-restaurant-gallery-menu3-160x160.png";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:9:"image/png";}s:12:"shop_catalog";a:4:{s:4:"file";s:41:"neve-restaurant-gallery-menu3-230x230.png";s:5:"width";i:230;s:6:"height";i:230;s:9:"mime-type";s:9:"image/png";}s:14:"shop_thumbnail";a:4:{s:4:"file";s:41:"neve-restaurant-gallery-menu3-160x160.png";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:9:"image/png";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_attachment_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[wp-27158468a92654dec2f86132b71bc019]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[6df89d20a7e7d3fdf59ce8751377f78a]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[b19788148cd9b0594020b8609623547b]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				neve-restaurant-gallery-menu4			</title>
+			<link>https://demo.themeisle.com/neve-restaurant-brizy/neve-restaurant-gallery-menu4/</link>
+			<pubDate>Thu, 06 Jun 2019 13:06:48 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-gallery-menu4.png</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>216</wp:post_id>
+			<wp:post_date><![CDATA[2019-06-06 13:06:48]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-06-06 13:06:48]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve-restaurant-gallery-menu4]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-gallery-menu4.png]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/06/neve-restaurant-gallery-menu4.png]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:280;s:6:"height";i:280;s:4:"file";s:41:"2019/06/neve-restaurant-gallery-menu4.png";s:5:"sizes";a:5:{s:9:"thumbnail";a:4:{s:4:"file";s:41:"neve-restaurant-gallery-menu4-150x150.png";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:9:"image/png";}s:21:"woocommerce_thumbnail";a:5:{s:4:"file";s:41:"neve-restaurant-gallery-menu4-230x230.png";s:5:"width";i:230;s:6:"height";i:230;s:9:"mime-type";s:9:"image/png";s:9:"uncropped";b:0;}s:29:"woocommerce_gallery_thumbnail";a:4:{s:4:"file";s:41:"neve-restaurant-gallery-menu4-160x160.png";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:9:"image/png";}s:12:"shop_catalog";a:4:{s:4:"file";s:41:"neve-restaurant-gallery-menu4-230x230.png";s:5:"width";i:230;s:6:"height";i:230;s:9:"mime-type";s:9:"image/png";}s:14:"shop_thumbnail";a:4:{s:4:"file";s:41:"neve-restaurant-gallery-menu4-160x160.png";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:9:"image/png";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				neve-restaurant-gallery-menu5			</title>
+			<link>https://demo.themeisle.com/neve-restaurant-brizy/neve-restaurant-gallery-menu5/</link>
+			<pubDate>Thu, 06 Jun 2019 13:06:49 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-gallery-menu5.png</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>217</wp:post_id>
+			<wp:post_date><![CDATA[2019-06-06 13:06:49]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-06-06 13:06:49]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve-restaurant-gallery-menu5]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-gallery-menu5.png]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/06/neve-restaurant-gallery-menu5.png]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:277;s:6:"height";i:277;s:4:"file";s:41:"2019/06/neve-restaurant-gallery-menu5.png";s:5:"sizes";a:5:{s:9:"thumbnail";a:4:{s:4:"file";s:41:"neve-restaurant-gallery-menu5-150x150.png";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:9:"image/png";}s:21:"woocommerce_thumbnail";a:5:{s:4:"file";s:41:"neve-restaurant-gallery-menu5-230x230.png";s:5:"width";i:230;s:6:"height";i:230;s:9:"mime-type";s:9:"image/png";s:9:"uncropped";b:0;}s:29:"woocommerce_gallery_thumbnail";a:4:{s:4:"file";s:41:"neve-restaurant-gallery-menu5-160x160.png";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:9:"image/png";}s:12:"shop_catalog";a:4:{s:4:"file";s:41:"neve-restaurant-gallery-menu5-230x230.png";s:5:"width";i:230;s:6:"height";i:230;s:9:"mime-type";s:9:"image/png";}s:14:"shop_thumbnail";a:4:{s:4:"file";s:41:"neve-restaurant-gallery-menu5-160x160.png";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:9:"image/png";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_attachment_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[wp-4af3a661f553ee9e30a3a3d1b97750eb]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[6df89d20a7e7d3fdf59ce8751377f78a]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				neve-restaurant-gallery-menu6			</title>
+			<link>https://demo.themeisle.com/neve-restaurant-brizy/neve-restaurant-gallery-menu6/</link>
+			<pubDate>Thu, 06 Jun 2019 13:06:51 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-gallery-menu6.png</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>218</wp:post_id>
+			<wp:post_date><![CDATA[2019-06-06 13:06:51]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-06-06 13:06:51]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve-restaurant-gallery-menu6]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-gallery-menu6.png]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/06/neve-restaurant-gallery-menu6.png]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:282;s:6:"height";i:282;s:4:"file";s:41:"2019/06/neve-restaurant-gallery-menu6.png";s:5:"sizes";a:5:{s:9:"thumbnail";a:4:{s:4:"file";s:41:"neve-restaurant-gallery-menu6-150x150.png";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:9:"image/png";}s:21:"woocommerce_thumbnail";a:5:{s:4:"file";s:41:"neve-restaurant-gallery-menu6-230x230.png";s:5:"width";i:230;s:6:"height";i:230;s:9:"mime-type";s:9:"image/png";s:9:"uncropped";b:0;}s:29:"woocommerce_gallery_thumbnail";a:4:{s:4:"file";s:41:"neve-restaurant-gallery-menu6-160x160.png";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:9:"image/png";}s:12:"shop_catalog";a:4:{s:4:"file";s:41:"neve-restaurant-gallery-menu6-230x230.png";s:5:"width";i:230;s:6:"height";i:230;s:9:"mime-type";s:9:"image/png";}s:14:"shop_thumbnail";a:4:{s:4:"file";s:41:"neve-restaurant-gallery-menu6-160x160.png";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:9:"image/png";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				neve-restaurant-gallery-menu7			</title>
+			<link>https://demo.themeisle.com/neve-restaurant-brizy/neve-restaurant-gallery-menu7/</link>
+			<pubDate>Thu, 06 Jun 2019 13:06:52 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-gallery-menu7.png</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>219</wp:post_id>
+			<wp:post_date><![CDATA[2019-06-06 13:06:52]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-06-06 13:06:52]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve-restaurant-gallery-menu7]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-gallery-menu7.png]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/06/neve-restaurant-gallery-menu7.png]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:280;s:6:"height";i:280;s:4:"file";s:41:"2019/06/neve-restaurant-gallery-menu7.png";s:5:"sizes";a:5:{s:9:"thumbnail";a:4:{s:4:"file";s:41:"neve-restaurant-gallery-menu7-150x150.png";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:9:"image/png";}s:21:"woocommerce_thumbnail";a:5:{s:4:"file";s:41:"neve-restaurant-gallery-menu7-230x230.png";s:5:"width";i:230;s:6:"height";i:230;s:9:"mime-type";s:9:"image/png";s:9:"uncropped";b:0;}s:29:"woocommerce_gallery_thumbnail";a:4:{s:4:"file";s:41:"neve-restaurant-gallery-menu7-160x160.png";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:9:"image/png";}s:12:"shop_catalog";a:4:{s:4:"file";s:41:"neve-restaurant-gallery-menu7-230x230.png";s:5:"width";i:230;s:6:"height";i:230;s:9:"mime-type";s:9:"image/png";}s:14:"shop_thumbnail";a:4:{s:4:"file";s:41:"neve-restaurant-gallery-menu7-160x160.png";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:9:"image/png";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_attachment_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[wp-1c9cbfae2f7c04f9fee44a7eeacfd808]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[6df89d20a7e7d3fdf59ce8751377f78a]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				neve-restaurant-gallery-menu8			</title>
+			<link>https://demo.themeisle.com/neve-restaurant-brizy/neve-restaurant-gallery-menu8/</link>
+			<pubDate>Thu, 06 Jun 2019 13:06:53 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-gallery-menu8.png</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>220</wp:post_id>
+			<wp:post_date><![CDATA[2019-06-06 13:06:53]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-06-06 13:06:53]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve-restaurant-gallery-menu8]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-gallery-menu8.png]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/06/neve-restaurant-gallery-menu8.png]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:280;s:6:"height";i:280;s:4:"file";s:41:"2019/06/neve-restaurant-gallery-menu8.png";s:5:"sizes";a:5:{s:9:"thumbnail";a:4:{s:4:"file";s:41:"neve-restaurant-gallery-menu8-150x150.png";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:9:"image/png";}s:21:"woocommerce_thumbnail";a:5:{s:4:"file";s:41:"neve-restaurant-gallery-menu8-230x230.png";s:5:"width";i:230;s:6:"height";i:230;s:9:"mime-type";s:9:"image/png";s:9:"uncropped";b:0;}s:29:"woocommerce_gallery_thumbnail";a:4:{s:4:"file";s:41:"neve-restaurant-gallery-menu8-160x160.png";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:9:"image/png";}s:12:"shop_catalog";a:4:{s:4:"file";s:41:"neve-restaurant-gallery-menu8-230x230.png";s:5:"width";i:230;s:6:"height";i:230;s:9:"mime-type";s:9:"image/png";}s:14:"shop_thumbnail";a:4:{s:4:"file";s:41:"neve-restaurant-gallery-menu8-160x160.png";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:9:"image/png";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_attachment_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[wp-062bd5ebd67766941a4b5c504fcdd784]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[6df89d20a7e7d3fdf59ce8751377f78a]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				neve-restaurant-gallery-small-menu1			</title>
+			<link>https://demo.themeisle.com/neve-restaurant-brizy/neve-restaurant-gallery-small-menu1/</link>
+			<pubDate>Thu, 06 Jun 2019 13:06:55 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-gallery-small-menu1.png</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>221</wp:post_id>
+			<wp:post_date><![CDATA[2019-06-06 13:06:55]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-06-06 13:06:55]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve-restaurant-gallery-small-menu1]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-gallery-small-menu1.png]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/06/neve-restaurant-gallery-small-menu1.png]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:90;s:6:"height";i:90;s:4:"file";s:47:"2019/06/neve-restaurant-gallery-small-menu1.png";s:5:"sizes";a:0:{}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				neve-restaurant-gallery-small-menu2			</title>
+			<link>https://demo.themeisle.com/neve-restaurant-brizy/neve-restaurant-gallery-small-menu2/</link>
+			<pubDate>Thu, 06 Jun 2019 13:06:56 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-gallery-small-menu2.png</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>222</wp:post_id>
+			<wp:post_date><![CDATA[2019-06-06 13:06:56]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-06-06 13:06:56]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve-restaurant-gallery-small-menu2]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-gallery-small-menu2.png]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/06/neve-restaurant-gallery-small-menu2.png]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:90;s:6:"height";i:90;s:4:"file";s:47:"2019/06/neve-restaurant-gallery-small-menu2.png";s:5:"sizes";a:0:{}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_attachment_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[wp-e23bc3c348113f6ffe65c462db9c5ec3]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[6df89d20a7e7d3fdf59ce8751377f78a]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				neve-restaurant-gallery-small-menu3			</title>
+			<link>https://demo.themeisle.com/neve-restaurant-brizy/neve-restaurant-gallery-small-menu3/</link>
+			<pubDate>Thu, 06 Jun 2019 13:06:57 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-gallery-small-menu3.png</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>223</wp:post_id>
+			<wp:post_date><![CDATA[2019-06-06 13:06:57]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-06-06 13:06:57]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve-restaurant-gallery-small-menu3]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-gallery-small-menu3.png]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/06/neve-restaurant-gallery-small-menu3.png]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:90;s:6:"height";i:90;s:4:"file";s:47:"2019/06/neve-restaurant-gallery-small-menu3.png";s:5:"sizes";a:0:{}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				neve-restaurant-gallery-small-menu4			</title>
+			<link>https://demo.themeisle.com/neve-restaurant-brizy/neve-restaurant-gallery-small-menu4/</link>
+			<pubDate>Thu, 06 Jun 2019 13:06:58 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-gallery-small-menu4.png</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>224</wp:post_id>
+			<wp:post_date><![CDATA[2019-06-06 13:06:58]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-06-06 13:06:58]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve-restaurant-gallery-small-menu4]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-gallery-small-menu4.png]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/06/neve-restaurant-gallery-small-menu4.png]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:90;s:6:"height";i:90;s:4:"file";s:47:"2019/06/neve-restaurant-gallery-small-menu4.png";s:5:"sizes";a:0:{}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_attachment_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[wp-1d521dd9d433d31469ab7b6d61cdb670]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[b19788148cd9b0594020b8609623547b]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				neve-restaurant-gallery-small-menu5			</title>
+			<link>https://demo.themeisle.com/neve-restaurant-brizy/neve-restaurant-gallery-small-menu5/</link>
+			<pubDate>Thu, 06 Jun 2019 13:06:59 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-gallery-small-menu5.png</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>225</wp:post_id>
+			<wp:post_date><![CDATA[2019-06-06 13:06:59]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-06-06 13:06:59]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve-restaurant-gallery-small-menu5]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-gallery-small-menu5.png]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/06/neve-restaurant-gallery-small-menu5.png]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:90;s:6:"height";i:90;s:4:"file";s:47:"2019/06/neve-restaurant-gallery-small-menu5.png";s:5:"sizes";a:0:{}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_attachment_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[wp-c5769ffc7dd7284bbec49c3447fa1a98]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[b19788148cd9b0594020b8609623547b]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				neve-restaurant-gallery-small-menu6			</title>
+			<link>https://demo.themeisle.com/neve-restaurant-brizy/neve-restaurant-gallery-small-menu6/</link>
+			<pubDate>Thu, 06 Jun 2019 13:07:00 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-gallery-small-menu6.png</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>226</wp:post_id>
+			<wp:post_date><![CDATA[2019-06-06 13:07:00]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-06-06 13:07:00]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve-restaurant-gallery-small-menu6]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-gallery-small-menu6.png]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/06/neve-restaurant-gallery-small-menu6.png]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:90;s:6:"height";i:90;s:4:"file";s:47:"2019/06/neve-restaurant-gallery-small-menu6.png";s:5:"sizes";a:0:{}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_attachment_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[wp-db6b757bd32e92f86c59152db9030e0f]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[b19788148cd9b0594020b8609623547b]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				neve-restaurant-header1			</title>
+			<link>https://demo.themeisle.com/neve-restaurant-brizy/neve-restaurant-header1/</link>
+			<pubDate>Thu, 06 Jun 2019 13:07:01 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-header1.jpg</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>227</wp:post_id>
+			<wp:post_date><![CDATA[2019-06-06 13:07:01]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-06-06 13:07:01]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve-restaurant-header1]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-header1.jpg]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/06/neve-restaurant-header1.jpg]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:1919;s:6:"height";i:1156;s:4:"file";s:35:"2019/06/neve-restaurant-header1.jpg";s:5:"sizes";a:11:{s:9:"thumbnail";a:4:{s:4:"file";s:35:"neve-restaurant-header1-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:35:"neve-restaurant-header1-300x181.jpg";s:5:"width";i:300;s:6:"height";i:181;s:9:"mime-type";s:10:"image/jpeg";}s:12:"medium_large";a:4:{s:4:"file";s:35:"neve-restaurant-header1-768x463.jpg";s:5:"width";i:768;s:6:"height";i:463;s:9:"mime-type";s:10:"image/jpeg";}s:5:"large";a:4:{s:4:"file";s:36:"neve-restaurant-header1-1024x617.jpg";s:5:"width";i:1024;s:6:"height";i:617;s:9:"mime-type";s:10:"image/jpeg";}s:9:"neve-blog";a:4:{s:4:"file";s:35:"neve-restaurant-header1-930x620.jpg";s:5:"width";i:930;s:6:"height";i:620;s:9:"mime-type";s:10:"image/jpeg";}s:21:"woocommerce_thumbnail";a:5:{s:4:"file";s:35:"neve-restaurant-header1-230x230.jpg";s:5:"width";i:230;s:6:"height";i:230;s:9:"mime-type";s:10:"image/jpeg";s:9:"uncropped";b:0;}s:18:"woocommerce_single";a:4:{s:4:"file";s:35:"neve-restaurant-header1-600x361.jpg";s:5:"width";i:600;s:6:"height";i:361;s:9:"mime-type";s:10:"image/jpeg";}s:29:"woocommerce_gallery_thumbnail";a:4:{s:4:"file";s:35:"neve-restaurant-header1-160x160.jpg";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:10:"image/jpeg";}s:12:"shop_catalog";a:4:{s:4:"file";s:35:"neve-restaurant-header1-230x230.jpg";s:5:"width";i:230;s:6:"height";i:230;s:9:"mime-type";s:10:"image/jpeg";}s:11:"shop_single";a:4:{s:4:"file";s:35:"neve-restaurant-header1-600x361.jpg";s:5:"width";i:600;s:6:"height";i:361;s:9:"mime-type";s:10:"image/jpeg";}s:14:"shop_thumbnail";a:4:{s:4:"file";s:35:"neve-restaurant-header1-160x160.jpg";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_attachment_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[wp-99c5570e84706c67725f7e012f0b3d5a]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[6df89d20a7e7d3fdf59ce8751377f78a]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[b19788148cd9b0594020b8609623547b]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				neve-restaurant-header4			</title>
+			<link>https://demo.themeisle.com/neve-restaurant-brizy/neve-restaurant-header4/</link>
+			<pubDate>Thu, 06 Jun 2019 13:07:04 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-header4.jpg</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>228</wp:post_id>
+			<wp:post_date><![CDATA[2019-06-06 13:07:04]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-06-06 13:07:04]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve-restaurant-header4]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-header4.jpg]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/06/neve-restaurant-header4.jpg]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:1920;s:6:"height";i:1244;s:4:"file";s:35:"2019/06/neve-restaurant-header4.jpg";s:5:"sizes";a:11:{s:9:"thumbnail";a:4:{s:4:"file";s:35:"neve-restaurant-header4-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:35:"neve-restaurant-header4-300x194.jpg";s:5:"width";i:300;s:6:"height";i:194;s:9:"mime-type";s:10:"image/jpeg";}s:12:"medium_large";a:4:{s:4:"file";s:35:"neve-restaurant-header4-768x498.jpg";s:5:"width";i:768;s:6:"height";i:498;s:9:"mime-type";s:10:"image/jpeg";}s:5:"large";a:4:{s:4:"file";s:36:"neve-restaurant-header4-1024x663.jpg";s:5:"width";i:1024;s:6:"height";i:663;s:9:"mime-type";s:10:"image/jpeg";}s:9:"neve-blog";a:4:{s:4:"file";s:35:"neve-restaurant-header4-930x620.jpg";s:5:"width";i:930;s:6:"height";i:620;s:9:"mime-type";s:10:"image/jpeg";}s:21:"woocommerce_thumbnail";a:5:{s:4:"file";s:35:"neve-restaurant-header4-230x230.jpg";s:5:"width";i:230;s:6:"height";i:230;s:9:"mime-type";s:10:"image/jpeg";s:9:"uncropped";b:0;}s:18:"woocommerce_single";a:4:{s:4:"file";s:35:"neve-restaurant-header4-600x389.jpg";s:5:"width";i:600;s:6:"height";i:389;s:9:"mime-type";s:10:"image/jpeg";}s:29:"woocommerce_gallery_thumbnail";a:4:{s:4:"file";s:35:"neve-restaurant-header4-160x160.jpg";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:10:"image/jpeg";}s:12:"shop_catalog";a:4:{s:4:"file";s:35:"neve-restaurant-header4-230x230.jpg";s:5:"width";i:230;s:6:"height";i:230;s:9:"mime-type";s:10:"image/jpeg";}s:11:"shop_single";a:4:{s:4:"file";s:35:"neve-restaurant-header4-600x389.jpg";s:5:"width";i:600;s:6:"height";i:389;s:9:"mime-type";s:10:"image/jpeg";}s:14:"shop_thumbnail";a:4:{s:4:"file";s:35:"neve-restaurant-header4-160x160.jpg";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_attachment_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[wp-30962e5de8350f1c0895804d01f73f5c]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[6df89d20a7e7d3fdf59ce8751377f78a]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[e2f60c90dbe48145ffba7c88b2698a03]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				neve-restaurant-menu1			</title>
+			<link>https://demo.themeisle.com/neve-restaurant-brizy/neve-restaurant-menu1/</link>
+			<pubDate>Thu, 06 Jun 2019 13:07:07 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-menu1.jpg</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>229</wp:post_id>
+			<wp:post_date><![CDATA[2019-06-06 13:07:07]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-06-06 13:07:07]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve-restaurant-menu1]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-menu1.jpg]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/06/neve-restaurant-menu1.jpg]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:310;s:6:"height";i:294;s:4:"file";s:33:"2019/06/neve-restaurant-menu1.jpg";s:5:"sizes";a:6:{s:9:"thumbnail";a:4:{s:4:"file";s:33:"neve-restaurant-menu1-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:33:"neve-restaurant-menu1-300x285.jpg";s:5:"width";i:300;s:6:"height";i:285;s:9:"mime-type";s:10:"image/jpeg";}s:21:"woocommerce_thumbnail";a:5:{s:4:"file";s:33:"neve-restaurant-menu1-230x230.jpg";s:5:"width";i:230;s:6:"height";i:230;s:9:"mime-type";s:10:"image/jpeg";s:9:"uncropped";b:0;}s:29:"woocommerce_gallery_thumbnail";a:4:{s:4:"file";s:33:"neve-restaurant-menu1-160x160.jpg";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:10:"image/jpeg";}s:12:"shop_catalog";a:4:{s:4:"file";s:33:"neve-restaurant-menu1-230x230.jpg";s:5:"width";i:230;s:6:"height";i:230;s:9:"mime-type";s:10:"image/jpeg";}s:14:"shop_thumbnail";a:4:{s:4:"file";s:33:"neve-restaurant-menu1-160x160.jpg";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_attachment_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[wp-03d01167e0c5fc58ee58eecbc6e0f582]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[6df89d20a7e7d3fdf59ce8751377f78a]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				neve-restaurant-menu2			</title>
+			<link>https://demo.themeisle.com/neve-restaurant-brizy/neve-restaurant-menu2/</link>
+			<pubDate>Thu, 06 Jun 2019 13:07:07 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-menu2.jpg</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>230</wp:post_id>
+			<wp:post_date><![CDATA[2019-06-06 13:07:07]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-06-06 13:07:07]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve-restaurant-menu2]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-menu2.jpg]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/06/neve-restaurant-menu2.jpg]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:310;s:6:"height";i:294;s:4:"file";s:33:"2019/06/neve-restaurant-menu2.jpg";s:5:"sizes";a:6:{s:9:"thumbnail";a:4:{s:4:"file";s:33:"neve-restaurant-menu2-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:33:"neve-restaurant-menu2-300x285.jpg";s:5:"width";i:300;s:6:"height";i:285;s:9:"mime-type";s:10:"image/jpeg";}s:21:"woocommerce_thumbnail";a:5:{s:4:"file";s:33:"neve-restaurant-menu2-230x230.jpg";s:5:"width";i:230;s:6:"height";i:230;s:9:"mime-type";s:10:"image/jpeg";s:9:"uncropped";b:0;}s:29:"woocommerce_gallery_thumbnail";a:4:{s:4:"file";s:33:"neve-restaurant-menu2-160x160.jpg";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:10:"image/jpeg";}s:12:"shop_catalog";a:4:{s:4:"file";s:33:"neve-restaurant-menu2-230x230.jpg";s:5:"width";i:230;s:6:"height";i:230;s:9:"mime-type";s:10:"image/jpeg";}s:14:"shop_thumbnail";a:4:{s:4:"file";s:33:"neve-restaurant-menu2-160x160.jpg";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_attachment_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[wp-31614a5234e537141b14e7f34478ec34]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[6df89d20a7e7d3fdf59ce8751377f78a]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[b19788148cd9b0594020b8609623547b]]></wp:meta_value>
 				</wp:postmeta>
 					</item>
 				<item>
@@ -100,6 +887,384 @@
 			<wp:post_password><![CDATA[]]></wp:post_password>
 			<wp:is_sticky>0</wp:is_sticky>
 											</item>
+				<item>
+			<title>
+				neve-restaurant-testimonial-1			</title>
+			<link>https://demo.themeisle.com/neve-restaurant-brizy/neve-restaurant-testimonial-1/</link>
+			<pubDate>Thu, 11 Jul 2019 11:46:17 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-testimonial-1.jpg</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>209</wp:post_id>
+			<wp:post_date><![CDATA[2019-07-11 11:46:17]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-07-11 11:46:17]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve-restaurant-testimonial-1]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-testimonial-1.jpg]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/06/neve-restaurant-testimonial-1.jpg]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:60;s:6:"height";i:60;s:4:"file";s:41:"2019/06/neve-restaurant-testimonial-1.jpg";s:5:"sizes";a:0:{}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_attachment_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[wp-a0d41830d8d4e5b409eb97fb5687b842]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[c729c045e4e5c1c2f802a2e3ced53e84]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				neve-restaurant-testimonial-3			</title>
+			<link>https://demo.themeisle.com/neve-restaurant-brizy/neve-restaurant-testimonial-3/</link>
+			<pubDate>Thu, 11 Jul 2019 11:45:44 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-testimonial-3.jpg</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>211</wp:post_id>
+			<wp:post_date><![CDATA[2019-07-11 11:45:44]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-07-11 11:45:44]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve-restaurant-testimonial-3]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-testimonial-3.jpg]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/06/neve-restaurant-testimonial-3.jpg]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:60;s:6:"height";i:60;s:4:"file";s:41:"2019/06/neve-restaurant-testimonial-3.jpg";s:5:"sizes";a:0:{}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_attachment_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[wp-2a262039cbf90e660fe0a983b6300da0]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[c729c045e4e5c1c2f802a2e3ced53e84]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				neve-restaurant-ourrestaurant-photo-m3			</title>
+			<link>https://demo.themeisle.com/neve-restaurant-brizy/neve-restaurant-ourrestaurant-photo-m3/</link>
+			<pubDate>Thu, 06 Jun 2019 13:07:08 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-ourrestaurant-photo-m3.jpg</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>231</wp:post_id>
+			<wp:post_date><![CDATA[2019-06-06 13:07:08]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-06-06 13:07:08]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve-restaurant-ourrestaurant-photo-m3]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-ourrestaurant-photo-m3.jpg]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/06/neve-restaurant-ourrestaurant-photo-m3.jpg]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:549;s:6:"height";i:557;s:4:"file";s:50:"2019/06/neve-restaurant-ourrestaurant-photo-m3.jpg";s:5:"sizes";a:6:{s:9:"thumbnail";a:4:{s:4:"file";s:50:"neve-restaurant-ourrestaurant-photo-m3-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:50:"neve-restaurant-ourrestaurant-photo-m3-296x300.jpg";s:5:"width";i:296;s:6:"height";i:300;s:9:"mime-type";s:10:"image/jpeg";}s:21:"woocommerce_thumbnail";a:5:{s:4:"file";s:50:"neve-restaurant-ourrestaurant-photo-m3-230x230.jpg";s:5:"width";i:230;s:6:"height";i:230;s:9:"mime-type";s:10:"image/jpeg";s:9:"uncropped";b:0;}s:29:"woocommerce_gallery_thumbnail";a:4:{s:4:"file";s:50:"neve-restaurant-ourrestaurant-photo-m3-160x160.jpg";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:10:"image/jpeg";}s:12:"shop_catalog";a:4:{s:4:"file";s:50:"neve-restaurant-ourrestaurant-photo-m3-230x230.jpg";s:5:"width";i:230;s:6:"height";i:230;s:9:"mime-type";s:10:"image/jpeg";}s:14:"shop_thumbnail";a:4:{s:4:"file";s:50:"neve-restaurant-ourrestaurant-photo-m3-160x160.jpg";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_attachment_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[wp-68647ef84a46392a51ca8739636a71aa]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[c729c045e4e5c1c2f802a2e3ced53e84]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				neve-restaurant-ourrestaurant-photo1			</title>
+			<link>https://demo.themeisle.com/neve-restaurant-brizy/neve-restaurant-ourrestaurant-photo1/</link>
+			<pubDate>Thu, 06 Jun 2019 13:07:09 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-ourrestaurant-photo1.jpg</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>232</wp:post_id>
+			<wp:post_date><![CDATA[2019-06-06 13:07:09]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-06-06 13:07:09]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve-restaurant-ourrestaurant-photo1]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-ourrestaurant-photo1.jpg]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/06/neve-restaurant-ourrestaurant-photo1.jpg]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:265;s:6:"height";i:265;s:4:"file";s:48:"2019/06/neve-restaurant-ourrestaurant-photo1.jpg";s:5:"sizes";a:5:{s:9:"thumbnail";a:4:{s:4:"file";s:48:"neve-restaurant-ourrestaurant-photo1-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:21:"woocommerce_thumbnail";a:5:{s:4:"file";s:48:"neve-restaurant-ourrestaurant-photo1-230x230.jpg";s:5:"width";i:230;s:6:"height";i:230;s:9:"mime-type";s:10:"image/jpeg";s:9:"uncropped";b:0;}s:29:"woocommerce_gallery_thumbnail";a:4:{s:4:"file";s:48:"neve-restaurant-ourrestaurant-photo1-160x160.jpg";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:10:"image/jpeg";}s:12:"shop_catalog";a:4:{s:4:"file";s:48:"neve-restaurant-ourrestaurant-photo1-230x230.jpg";s:5:"width";i:230;s:6:"height";i:230;s:9:"mime-type";s:10:"image/jpeg";}s:14:"shop_thumbnail";a:4:{s:4:"file";s:48:"neve-restaurant-ourrestaurant-photo1-160x160.jpg";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_attachment_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[wp-589dfa9b71b4c56eef333f3ff3d87c0e]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[c729c045e4e5c1c2f802a2e3ced53e84]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				neve-restaurant-ourrestaurant-photo2			</title>
+			<link>https://demo.themeisle.com/neve-restaurant-brizy/neve-restaurant-ourrestaurant-photo2/</link>
+			<pubDate>Thu, 06 Jun 2019 13:07:10 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-ourrestaurant-photo2.jpg</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>233</wp:post_id>
+			<wp:post_date><![CDATA[2019-06-06 13:07:10]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-06-06 13:07:10]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve-restaurant-ourrestaurant-photo2]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-ourrestaurant-photo2.jpg]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/06/neve-restaurant-ourrestaurant-photo2.jpg]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:265;s:6:"height";i:265;s:4:"file";s:48:"2019/06/neve-restaurant-ourrestaurant-photo2.jpg";s:5:"sizes";a:5:{s:9:"thumbnail";a:4:{s:4:"file";s:48:"neve-restaurant-ourrestaurant-photo2-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:21:"woocommerce_thumbnail";a:5:{s:4:"file";s:48:"neve-restaurant-ourrestaurant-photo2-230x230.jpg";s:5:"width";i:230;s:6:"height";i:230;s:9:"mime-type";s:10:"image/jpeg";s:9:"uncropped";b:0;}s:29:"woocommerce_gallery_thumbnail";a:4:{s:4:"file";s:48:"neve-restaurant-ourrestaurant-photo2-160x160.jpg";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:10:"image/jpeg";}s:12:"shop_catalog";a:4:{s:4:"file";s:48:"neve-restaurant-ourrestaurant-photo2-230x230.jpg";s:5:"width";i:230;s:6:"height";i:230;s:9:"mime-type";s:10:"image/jpeg";}s:14:"shop_thumbnail";a:4:{s:4:"file";s:48:"neve-restaurant-ourrestaurant-photo2-160x160.jpg";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_attachment_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[wp-56872cc70a1c2f02358fcdb443c0f5d2]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[6df89d20a7e7d3fdf59ce8751377f78a]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[c729c045e4e5c1c2f802a2e3ced53e84]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				neve-restaurant-ourrestaurant-photo3			</title>
+			<link>https://demo.themeisle.com/neve-restaurant-brizy/neve-restaurant-ourrestaurant-photo3/</link>
+			<pubDate>Thu, 06 Jun 2019 13:07:11 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-ourrestaurant-photo3.jpg</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>234</wp:post_id>
+			<wp:post_date><![CDATA[2019-06-06 13:07:11]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-06-06 13:07:11]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve-restaurant-ourrestaurant-photo3]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-ourrestaurant-photo3.jpg]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/06/neve-restaurant-ourrestaurant-photo3.jpg]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:265;s:6:"height";i:265;s:4:"file";s:48:"2019/06/neve-restaurant-ourrestaurant-photo3.jpg";s:5:"sizes";a:5:{s:9:"thumbnail";a:4:{s:4:"file";s:48:"neve-restaurant-ourrestaurant-photo3-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:21:"woocommerce_thumbnail";a:5:{s:4:"file";s:48:"neve-restaurant-ourrestaurant-photo3-230x230.jpg";s:5:"width";i:230;s:6:"height";i:230;s:9:"mime-type";s:10:"image/jpeg";s:9:"uncropped";b:0;}s:29:"woocommerce_gallery_thumbnail";a:4:{s:4:"file";s:48:"neve-restaurant-ourrestaurant-photo3-160x160.jpg";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:10:"image/jpeg";}s:12:"shop_catalog";a:4:{s:4:"file";s:48:"neve-restaurant-ourrestaurant-photo3-230x230.jpg";s:5:"width";i:230;s:6:"height";i:230;s:9:"mime-type";s:10:"image/jpeg";}s:14:"shop_thumbnail";a:4:{s:4:"file";s:48:"neve-restaurant-ourrestaurant-photo3-160x160.jpg";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_attachment_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[wp-6b4f1c1ee1f756e500244be5265ebaab]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[b19788148cd9b0594020b8609623547b]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[c729c045e4e5c1c2f802a2e3ced53e84]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				neve-restaurant-ourrestaurant-photo4			</title>
+			<link>https://demo.themeisle.com/neve-restaurant-brizy/neve-restaurant-ourrestaurant-photo4/</link>
+			<pubDate>Thu, 06 Jun 2019 13:07:11 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-ourrestaurant-photo4.jpg</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>235</wp:post_id>
+			<wp:post_date><![CDATA[2019-06-06 13:07:11]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-06-06 13:07:11]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve-restaurant-ourrestaurant-photo4]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-ourrestaurant-photo4.jpg]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/06/neve-restaurant-ourrestaurant-photo4.jpg]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:265;s:6:"height";i:265;s:4:"file";s:48:"2019/06/neve-restaurant-ourrestaurant-photo4.jpg";s:5:"sizes";a:5:{s:9:"thumbnail";a:4:{s:4:"file";s:48:"neve-restaurant-ourrestaurant-photo4-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:21:"woocommerce_thumbnail";a:5:{s:4:"file";s:48:"neve-restaurant-ourrestaurant-photo4-230x230.jpg";s:5:"width";i:230;s:6:"height";i:230;s:9:"mime-type";s:10:"image/jpeg";s:9:"uncropped";b:0;}s:29:"woocommerce_gallery_thumbnail";a:4:{s:4:"file";s:48:"neve-restaurant-ourrestaurant-photo4-160x160.jpg";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:10:"image/jpeg";}s:12:"shop_catalog";a:4:{s:4:"file";s:48:"neve-restaurant-ourrestaurant-photo4-230x230.jpg";s:5:"width";i:230;s:6:"height";i:230;s:9:"mime-type";s:10:"image/jpeg";}s:14:"shop_thumbnail";a:4:{s:4:"file";s:48:"neve-restaurant-ourrestaurant-photo4-160x160.jpg";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_attachment_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[wp-f47e459004d00ae362dae9bcf20c68cb]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[c729c045e4e5c1c2f802a2e3ced53e84]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				neve-restaurant-reservation-header1			</title>
+			<link>https://demo.themeisle.com/neve-restaurant-brizy/neve-restaurant-reservation-header1/</link>
+			<pubDate>Thu, 06 Jun 2019 13:07:12 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-reservation-header1.jpg</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>236</wp:post_id>
+			<wp:post_date><![CDATA[2019-06-06 13:07:12]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-06-06 13:07:12]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve-restaurant-reservation-header1]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-reservation-header1.jpg]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/06/neve-restaurant-reservation-header1.jpg]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:1920;s:6:"height";i:804;s:4:"file";s:47:"2019/06/neve-restaurant-reservation-header1.jpg";s:5:"sizes";a:11:{s:9:"thumbnail";a:4:{s:4:"file";s:47:"neve-restaurant-reservation-header1-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:47:"neve-restaurant-reservation-header1-300x126.jpg";s:5:"width";i:300;s:6:"height";i:126;s:9:"mime-type";s:10:"image/jpeg";}s:12:"medium_large";a:4:{s:4:"file";s:47:"neve-restaurant-reservation-header1-768x322.jpg";s:5:"width";i:768;s:6:"height";i:322;s:9:"mime-type";s:10:"image/jpeg";}s:5:"large";a:4:{s:4:"file";s:48:"neve-restaurant-reservation-header1-1024x429.jpg";s:5:"width";i:1024;s:6:"height";i:429;s:9:"mime-type";s:10:"image/jpeg";}s:9:"neve-blog";a:4:{s:4:"file";s:47:"neve-restaurant-reservation-header1-930x620.jpg";s:5:"width";i:930;s:6:"height";i:620;s:9:"mime-type";s:10:"image/jpeg";}s:21:"woocommerce_thumbnail";a:5:{s:4:"file";s:47:"neve-restaurant-reservation-header1-230x230.jpg";s:5:"width";i:230;s:6:"height";i:230;s:9:"mime-type";s:10:"image/jpeg";s:9:"uncropped";b:0;}s:18:"woocommerce_single";a:4:{s:4:"file";s:47:"neve-restaurant-reservation-header1-600x251.jpg";s:5:"width";i:600;s:6:"height";i:251;s:9:"mime-type";s:10:"image/jpeg";}s:29:"woocommerce_gallery_thumbnail";a:4:{s:4:"file";s:47:"neve-restaurant-reservation-header1-160x160.jpg";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:10:"image/jpeg";}s:12:"shop_catalog";a:4:{s:4:"file";s:47:"neve-restaurant-reservation-header1-230x230.jpg";s:5:"width";i:230;s:6:"height";i:230;s:9:"mime-type";s:10:"image/jpeg";}s:11:"shop_single";a:4:{s:4:"file";s:47:"neve-restaurant-reservation-header1-600x251.jpg";s:5:"width";i:600;s:6:"height";i:251;s:9:"mime-type";s:10:"image/jpeg";}s:14:"shop_thumbnail";a:4:{s:4:"file";s:47:"neve-restaurant-reservation-header1-160x160.jpg";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_attachment_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[wp-c62cd4a2ef1801a34dac3206e5605e60]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[e2f60c90dbe48145ffba7c88b2698a03]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				neve-restaurant-testimonial-2			</title>
+			<link>https://demo.themeisle.com/neve-restaurant-brizy/neve-restaurant-testimonial-2/</link>
+			<pubDate>Thu, 11 Jul 2019 11:45:15 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-testimonial-2.jpg</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>241</wp:post_id>
+			<wp:post_date><![CDATA[2019-07-11 11:45:15]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-07-11 11:45:15]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve-restaurant-testimonial-2]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-testimonial-2.jpg]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/06/neve-restaurant-testimonial-2.jpg]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:56;s:6:"height";i:56;s:4:"file";s:41:"2019/06/neve-restaurant-testimonial-2.jpg";s:5:"sizes";a:0:{}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_attachment_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[wp-741281dd73fccf8e79054e1ec58d19c5]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[6df89d20a7e7d3fdf59ce8751377f78a]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				neve-restaurant-our-header			</title>
+			<link>https://demo.themeisle.com/neve-restaurant-brizy/neve-restaurant-our-header/</link>
+			<pubDate>Fri, 07 Jun 2019 08:47:24 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-our-header.jpg</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>325</wp:post_id>
+			<wp:post_date><![CDATA[2019-06-07 08:47:24]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-06-07 08:47:24]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve-restaurant-our-header]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/neve-restaurant-our-header.jpg]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/06/neve-restaurant-our-header.jpg]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:1920;s:6:"height";i:500;s:4:"file";s:38:"2019/06/neve-restaurant-our-header.jpg";s:5:"sizes";a:11:{s:9:"thumbnail";a:4:{s:4:"file";s:38:"neve-restaurant-our-header-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:37:"neve-restaurant-our-header-300x78.jpg";s:5:"width";i:300;s:6:"height";i:78;s:9:"mime-type";s:10:"image/jpeg";}s:12:"medium_large";a:4:{s:4:"file";s:38:"neve-restaurant-our-header-768x200.jpg";s:5:"width";i:768;s:6:"height";i:200;s:9:"mime-type";s:10:"image/jpeg";}s:5:"large";a:4:{s:4:"file";s:39:"neve-restaurant-our-header-1024x267.jpg";s:5:"width";i:1024;s:6:"height";i:267;s:9:"mime-type";s:10:"image/jpeg";}s:9:"neve-blog";a:4:{s:4:"file";s:38:"neve-restaurant-our-header-930x500.jpg";s:5:"width";i:930;s:6:"height";i:500;s:9:"mime-type";s:10:"image/jpeg";}s:21:"woocommerce_thumbnail";a:5:{s:4:"file";s:38:"neve-restaurant-our-header-230x230.jpg";s:5:"width";i:230;s:6:"height";i:230;s:9:"mime-type";s:10:"image/jpeg";s:9:"uncropped";b:0;}s:18:"woocommerce_single";a:4:{s:4:"file";s:38:"neve-restaurant-our-header-600x156.jpg";s:5:"width";i:600;s:6:"height";i:156;s:9:"mime-type";s:10:"image/jpeg";}s:29:"woocommerce_gallery_thumbnail";a:4:{s:4:"file";s:38:"neve-restaurant-our-header-160x160.jpg";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:10:"image/jpeg";}s:12:"shop_catalog";a:4:{s:4:"file";s:38:"neve-restaurant-our-header-230x230.jpg";s:5:"width";i:230;s:6:"height";i:230;s:9:"mime-type";s:10:"image/jpeg";}s:11:"shop_single";a:4:{s:4:"file";s:38:"neve-restaurant-our-header-600x156.jpg";s:5:"width";i:600;s:6:"height";i:156;s:9:"mime-type";s:10:"image/jpeg";}s:14:"shop_thumbnail";a:4:{s:4:"file";s:38:"neve-restaurant-our-header-160x160.jpg";s:5:"width";i:160;s:6:"height";i:160;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_attachment_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[wp-1a544cd2f23f2fb57bd362c73c40457e]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[c729c045e4e5c1c2f802a2e3ced53e84]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
 				<item>
 			<title>
 							</title>
@@ -163,31 +1328,124 @@
 					</item>
 				<item>
 			<title>
-				woocommerce-placeholder			</title>
-			<link>https://demo.themeisle.com/neve-restaurant-brizy/woocommerce-placeholder/</link>
-			<pubDate>Wed, 12 Jun 2019 15:03:51 +0000</pubDate>
-			<guid isPermaLink="false"><![CDATA[<![CDATA[https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/2019/06/woocommerce-placeholder.png]]]]><![CDATA[>]]></guid>
+							</title>
+			<link>https://demo.themeisle.com/neve-restaurant-brizy/2019/06/07/355/</link>
+			<pubDate>Fri, 07 Jun 2019 09:09:10 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-restaurant-brizy/?p=355</guid>
 			<description></description>
-			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>370</wp:post_id>
-			<wp:post_date><![CDATA[2019-06-12 15:03:51]]></wp:post_date>
-			<wp:post_date_gmt><![CDATA[2019-06-12 15:03:51]]></wp:post_date_gmt>
-			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<content:encoded><![CDATA[ ]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>355</wp:post_id>
+			<wp:post_date><![CDATA[2019-06-07 09:09:10]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-06-07 09:09:10]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-			<wp:post_name><![CDATA[woocommerce-placeholder]]></wp:post_name>
-			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_name><![CDATA[355]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
 			<wp:post_parent>0</wp:post_parent>
-			<wp:menu_order>0</wp:menu_order>
-			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:menu_order>2</wp:menu_order>
+			<wp:post_type><![CDATA[nav_menu_item]]></wp:post_type>
 			<wp:post_password><![CDATA[]]></wp:post_password>
 			<wp:is_sticky>0</wp:is_sticky>
-							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-restaurant-brizy/wp-content/uploads/sites/198/woocommerce-placeholder.png]]></wp:attachment_url>
-													<wp:postmeta>
-					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
-					<wp:meta_value><![CDATA[woocommerce-placeholder.png]]></wp:meta_value>
+								<category domain="nav_menu" nicename="main"><![CDATA[Main]]></category>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_type]]></wp:meta_key>
+					<wp:meta_value><![CDATA[post_type]]></wp:meta_value>
 				</wp:postmeta>
 							<wp:postmeta>
-					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
-					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:1200;s:6:"height";i:1200;s:4:"file";s:27:"woocommerce-placeholder.png";s:5:"sizes";a:5:{s:9:"thumbnail";a:4:{s:4:"file";s:35:"woocommerce-placeholder-150x150.png";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:9:"image/png";}s:6:"medium";a:4:{s:4:"file";s:35:"woocommerce-placeholder-300x300.png";s:5:"width";i:300;s:6:"height";i:300;s:9:"mime-type";s:9:"image/png";}s:12:"medium_large";a:4:{s:4:"file";s:35:"woocommerce-placeholder-768x768.png";s:5:"width";i:768;s:6:"height";i:768;s:9:"mime-type";s:9:"image/png";}s:5:"large";a:4:{s:4:"file";s:37:"woocommerce-placeholder-1024x1024.png";s:5:"width";i:1024;s:6:"height";i:1024;s:9:"mime-type";s:9:"image/png";}s:9:"neve-blog";a:4:{s:4:"file";s:35:"woocommerce-placeholder-930x620.png";s:5:"width";i:930;s:6:"height";i:620;s:9:"mime-type";s:9:"image/png";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+					<wp:meta_key><![CDATA[_menu_item_menu_item_parent]]></wp:meta_key>
+					<wp:meta_value><![CDATA[0]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_object_id]]></wp:meta_key>
+					<wp:meta_value><![CDATA[291]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_object]]></wp:meta_key>
+					<wp:meta_value><![CDATA[page]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_target]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_classes]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_xfn]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_url]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[obfx_menu_icon]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[8a654949716b32bced063a7dc0afabda]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+							</title>
+			<link>https://demo.themeisle.com/neve-restaurant-brizy/2019/06/07/356/</link>
+			<pubDate>Fri, 07 Jun 2019 09:09:10 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-restaurant-brizy/?p=356</guid>
+			<description></description>
+			<content:encoded><![CDATA[ ]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>356</wp:post_id>
+			<wp:post_date><![CDATA[2019-06-07 09:09:10]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-06-07 09:09:10]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[356]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>1</wp:menu_order>
+			<wp:post_type><![CDATA[nav_menu_item]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+								<category domain="nav_menu" nicename="main"><![CDATA[Main]]></category>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_type]]></wp:meta_key>
+					<wp:meta_value><![CDATA[post_type]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_menu_item_parent]]></wp:meta_key>
+					<wp:meta_value><![CDATA[0]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_object_id]]></wp:meta_key>
+					<wp:meta_value><![CDATA[272]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_object]]></wp:meta_key>
+					<wp:meta_value><![CDATA[page]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_target]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_classes]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_xfn]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_url]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[obfx_menu_icon]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
+					<wp:meta_value><![CDATA[9a8f5aec2b7f877cd45b6662507a917b]]></wp:meta_value>
 				</wp:postmeta>
 					</item>
 				<item>
@@ -394,7 +1652,843 @@
 			<pubDate>Thu, 06 Jun 2019 13:54:17 +0000</pubDate>
 			<guid isPermaLink="false">https://demo.themeisle.com/neve-restaurant-brizy/?page_id=272</guid>
 			<description></description>
-			<content:encoded><![CDATA[<div class="brz-root__container brz-reset-all"><section id="okdijsobesiuuxmdxqhpantukbcwihwrugvj" class="brz-section css-7d6yzg" data-uid="okdijsobesiuuxmdxqhpantukbcwihwrugvj"><div class="brz-section__items"><div class="brz-section__content" data-custom-id="zitfkbucpbjsjpdejvtfpdfylyzaflsbcnju"><div class="brz-bg css-1pwqjuw"><div class="brz-bg-media"><div class="brz-bg-image"></div><div class="brz-bg-color"></div></div><div class="brz-bg-content"><div class="brz-container__wrap css-ygb3rn"><div class="brz-container css-1ptl1a3"><div class="brz-wrapper css-6fvry1"><div class="brz-d-xs-flex css-laz546"><div class="brz-rich-text" data-custom-id="vbadbbywycgwajynlwdpniwextjzuitogckb"><h1 class="brz-tp-heading1 brz-text-lg-center"><span class="brz-cp-color8">Make a Reservation</span></h1></div></div></div><div class="brz-wrapper css-6fvry1"><div class="brz-d-xs-flex css-laz546"><div class="brz-rich-text" data-custom-id="ozobbakzudbhifoagglaelmcjovymiqukekl"><h3 class="brz-tp-heading3 brz-text-lg-center"><span class="brz-cp-color8">Book your table by using the form below</span></h3></div></div></div></div></div></div></div></div></div></section><section id="skbeobrcmnovuldajjqturkeybzgxqtwpsmd" class="brz-section css-7d6yzg" data-uid="skbeobrcmnovuldajjqturkeybzgxqtwpsmd"><div class="brz-section__items"><div class="brz-section__content" data-custom-id="cwenrdbgomxgklqyeffdftgqwzwagugblqlz"><div class="brz-bg css-p86gvf"><div class="brz-bg-media"><div class="brz-bg-video" data-mute="on" data-autoplay="on"></div><div class="brz-bg-map"></div><div class="brz-bg-color"></div></div><div class="brz-bg-content"><div class="brz-container__wrap css-1098mzy"><div class="brz-container css-1ptl1a3"><div class="brz-row__container css-1xef2ox" data-custom-id="liexvspktvsbeluylhwzuveqzpmfluznbqzj"><div class="brz-bg brz-d-xs-flex brz-flex-xs-wrap css-8pkgbi"><div class="brz-bg-media"><div class="brz-bg-color"></div></div><div class="brz-bg-content"><div class="brz-row css-18qg7sn"><div class="brz-columns css-107dpyu" data-custom-id="yokdwlukqshbejznsjhgglcztkvbeafpdjjx"><div class="brz-bg brz-d-xs-flex css-k1kn5i"><div class="brz-bg-media"><div class="brz-bg-color"></div></div><div class="brz-bg-content"><div class="brz-wrapper css-f9gufi"><div class="brz-d-xs-flex css-1rmgdh0"><div class="brz-spacer css-10btme5"></div></div></div><div class="brz-wrapper css-6fvry1"><div class="brz-d-xs-flex css-laz546"><div class="brz-rich-text" data-custom-id="eqbobkoiinwgvmmroyftswtotvyepxpvejdb"><h2 class="brz-tp-heading2"><span class="brz-cp-color7">Contact information</span></h2></div></div></div><div class="brz-row__container css-1xef2ox" data-custom-id="uwnvzeqkcwwrbvkhayjdxikpiiuicyqkijrg"><div class="brz-bg brz-d-xs-flex brz-flex-xs-wrap css-8pkgbi"><div class="brz-bg-media"><div class="brz-bg-color"></div></div><div class="brz-bg-content"><div class="brz-row brz-row--inner css-18qg7sn"><div class="brz-columns css-107dpyu" data-custom-id="vjxznzjugvmygrfyxvblliuzqezbtdbtgdnh"><div class="brz-bg brz-d-xs-flex css-148vkvw"><div class="brz-bg-media"><div class="brz-bg-color"></div></div><div class="brz-bg-content"><div class="brz-wrapper css-6fvry1"><div class="brz-d-xs-flex css-blabo"><div class="brz-rich-text" data-custom-id="jwbngouugyvcqfyfnxzfdrmrjcqaxlgrynux"><p class="brz-tp-paragraph"><strong class="brz-cp-color2">Address</strong></p></div></div></div><div class="brz-wrapper css-6fvry1"><div class="brz-d-xs-flex css-laz546"><div class="brz-rich-text" data-custom-id="lypsbdbcrgpqodytcmxjanlbspfsclahmbdb"><p class="brz-lh-lg-1_3 brz-lh-sm-im-1_4 brz-lh-xs-im-1_4 brz-fs-lg-20 brz-fs-sm-im-24 brz-fs-xs-im-21 brz-ls-lg-0 brz-ls-sm-im-0 brz-ls-xs-im-0 brz-ff-source_serif_pro brz-fw-lg-400 brz-fw-sm-im-500 brz-fw-xs-im-500"><span class="brz-cp-color7">Brancusi 105, </span></p><p class="brz-lh-lg-1_3 brz-lh-sm-im-1_4 brz-lh-xs-im-1_4 brz-fs-lg-20 brz-fs-sm-im-24 brz-fs-xs-im-21 brz-ls-lg-0 brz-ls-sm-im-0 brz-ls-xs-im-0 brz-ff-source_serif_pro brz-fw-lg-400 brz-fw-sm-im-500 brz-fw-xs-im-500"><span class="brz-cp-color7">6511 Bucharest</span></p></div></div></div></div></div></div><div class="brz-columns css-107dpyu" data-custom-id="vgjxvdgwkjlmmzcjlvnifgpshqkoiytzqrbo"><div class="brz-bg brz-d-xs-flex css-148vkvw"><div class="brz-bg-media"><div class="brz-bg-color"></div></div><div class="brz-bg-content"><div class="brz-wrapper css-6fvry1"><div class="brz-d-xs-flex css-blabo"><div class="brz-rich-text" data-custom-id="qdigrblroonrfjbiiybbzsojbupmlspuxetz"><p class="brz-tp-paragraph"><strong class="brz-cp-color2">Contact</strong></p></div></div></div><div class="brz-wrapper css-6fvry1"><div class="brz-d-xs-flex css-laz546"><div class="brz-rich-text" data-custom-id="ysdrgydtkdejxyqakzehuspjedloalklabms"><p class="brz-fw-xs-im-500 brz-fw-sm-im-500 brz-fw-lg-400 brz-ff-source_serif_pro brz-ls-xs-im-0 brz-ls-sm-im-0 brz-ls-lg-0 brz-fs-xs-im-21 brz-fs-sm-im-24 brz-fs-lg-20 brz-lh-xs-im-1_4 brz-lh-sm-im-1_4 brz-lh-lg-1_3"><span class="brz-cp-color7">Tel: 012 317 14 23</span></p><p class="brz-fw-xs-im-500 brz-fw-sm-im-500 brz-fw-lg-400 brz-ff-source_serif_pro brz-ls-xs-im-0 brz-ls-sm-im-0 brz-ls-lg-0 brz-fs-xs-im-21 brz-fs-sm-im-24 brz-fs-lg-20 brz-lh-xs-im-1_4 brz-lh-sm-im-1_4 brz-lh-lg-1_3"><span class="brz-cp-color7">reserve@neve.com</span></p></div></div></div></div></div></div></div></div></div></div><div class="brz-wrapper css-f9gufi"><div class="brz-d-xs-flex css-1rmgdh0"><div class="brz-spacer css-10btme5"></div></div></div><div class="brz-wrapper css-6fvry1"><div class="brz-d-xs-flex css-laz546"><div class="brz-rich-text" data-custom-id="ocugclvcrrpioephipeffxjlfmxwrgwhffos"><h2 class="brz-tp-heading2"><span class="brz-cp-color7">Serving Hours</span></h2></div></div></div><div class="brz-wrapper css-f9gufi"><div class="brz-d-xs-flex css-1rmgdh0"><div class="brz-spacer css-j8tin6"></div></div></div><div class="brz-row__container css-1xef2ox" data-custom-id="pvqowsejwpawsqqwffwmuzyowygsdobnyugo"><div class="brz-bg brz-d-xs-flex brz-flex-xs-wrap css-8pkgbi"><div class="brz-bg-media"><div class="brz-bg-color"></div></div><div class="brz-bg-content"><div class="brz-row brz-row--inner css-18qg7sn"><div class="brz-columns css-107dpyu" data-custom-id="jkauogsmenxtkyampapuesemktwvwbzwpmsp"><div class="brz-bg brz-d-xs-flex css-148vkvw"><div class="brz-bg-media"><div class="brz-bg-color"></div></div><div class="brz-bg-content"><div class="brz-wrapper css-6fvry1"><div class="brz-d-xs-flex css-laz546"><div class="brz-rich-text" data-custom-id="wusuuntunygupkokslsrxrpxewpmmkwqpewn"><p class="brz-tp-paragraph"><strong class="brz-cp-color7">Monday</strong></p></div></div></div></div></div></div><div class="brz-columns css-107dpyu" data-custom-id="yxqbpsrarxogiiaazomdufobrrharwhltsnz"><div class="brz-bg brz-d-xs-flex css-1cs51t0"><div class="brz-bg-media"><div class="brz-bg-color"></div></div><div class="brz-bg-content"><div class="brz-wrapper css-6fvry1"><div class="brz-d-xs-flex css-laz546"><div class="brz-rich-text" data-custom-id="igedidlbtiuvipmbibxbyjarsfuavckulvpu"><p class="brz-tp-paragraph"><span class="brz-cp-color7">11:00 AM – 12:00 PM</span></p></div></div></div></div></div></div></div></div></div></div><div class="brz-wrapper css-6fvry1"><div class="brz-d-xs-flex css-1utquse"><div class="brz-line brz-css-tqygf brz-css-axgnf" data-custom-id="hapqucxfyjwrhklhmszsbmkgmgvofklufhpp"><hr class="brz-hr"></div></div></div><div class="brz-row__container css-1xef2ox" data-custom-id="qwzayxcubitszwegctjczhtpwaysqkujmffq"><div class="brz-bg brz-d-xs-flex brz-flex-xs-wrap css-8pkgbi"><div class="brz-bg-media"><div class="brz-bg-color"></div></div><div class="brz-bg-content"><div class="brz-row brz-row--inner css-18qg7sn"><div class="brz-columns css-107dpyu" data-custom-id="mrihssomdsudtsoudzlfexdlxscpchuvxufj"><div class="brz-bg brz-d-xs-flex css-148vkvw"><div class="brz-bg-media"><div class="brz-bg-color"></div></div><div class="brz-bg-content"><div class="brz-wrapper css-6fvry1"><div class="brz-d-xs-flex css-laz546"><div class="brz-rich-text" data-custom-id="fjlzugoculrqhhzdvnsowciiagdgmsqgbddj"><p class="brz-tp-paragraph"><strong class="brz-cp-color7">Tuesday</strong></p></div></div></div></div></div></div><div class="brz-columns css-107dpyu" data-custom-id="xaqinbbeedmpppkpqpwcdyppliawnhczqwfe"><div class="brz-bg brz-d-xs-flex css-1cs51t0"><div class="brz-bg-media"><div class="brz-bg-color"></div></div><div class="brz-bg-content"><div class="brz-wrapper css-6fvry1"><div class="brz-d-xs-flex css-laz546"><div class="brz-rich-text" data-custom-id="gqphcqqqisxhqabtemtsagurirysadwmfnof"><p class="brz-tp-paragraph"><span class="brz-cp-color7">11:00 AM – 12:00 PM</span></p></div></div></div></div></div></div></div></div></div></div><div class="brz-wrapper css-6fvry1"><div class="brz-d-xs-flex css-1utquse"><div class="brz-line brz-css-tqygf brz-css-mkhee" data-custom-id="wdoubyklhmivzdmuyhpvibvhtvacwfpoyjlu"><hr class="brz-hr"></div></div></div><div class="brz-row__container css-1xef2ox" data-custom-id="ufexzmlqokdxleqwbzroprujvigqfqnpoqaw"><div class="brz-bg brz-d-xs-flex brz-flex-xs-wrap css-8pkgbi"><div class="brz-bg-media"><div class="brz-bg-color"></div></div><div class="brz-bg-content"><div class="brz-row brz-row--inner css-18qg7sn"><div class="brz-columns css-107dpyu" data-custom-id="usdtbszcfzywyjhtbkbacvzpvnitscugdkpk"><div class="brz-bg brz-d-xs-flex css-148vkvw"><div class="brz-bg-media"><div class="brz-bg-color"></div></div><div class="brz-bg-content"><div class="brz-wrapper css-6fvry1"><div class="brz-d-xs-flex css-laz546"><div class="brz-rich-text" data-custom-id="ratxsmcopyaenqavghrvmidyidhrnipctpbc"><p class="brz-tp-paragraph"><strong class="brz-cp-color7">Wednesday</strong></p></div></div></div></div></div></div><div class="brz-columns css-107dpyu" data-custom-id="kvczrcxwnydbykxapcpmjwazxlvrnjffkwte"><div class="brz-bg brz-d-xs-flex css-1cs51t0"><div class="brz-bg-media"><div class="brz-bg-color"></div></div><div class="brz-bg-content"><div class="brz-wrapper css-6fvry1"><div class="brz-d-xs-flex css-laz546"><div class="brz-rich-text" data-custom-id="tyydfejpdvpmpwcylobrehfmaspmchviptix"><p class="brz-tp-paragraph"><span class="brz-cp-color7">11:00 AM – 12:00 PM</span></p></div></div></div></div></div></div></div></div></div></div><div class="brz-wrapper css-6fvry1"><div class="brz-d-xs-flex css-1utquse"><div class="brz-line brz-css-tqygf brz-css-fcygb" data-custom-id="leilxdnpmtxbeclbwvpfjttodwmfjutzlxsz"><hr class="brz-hr"></div></div></div><div class="brz-row__container css-1xef2ox" data-custom-id="zgxcxuvwtuvgbedphqhcnyvjvihfvlqevnjo"><div class="brz-bg brz-d-xs-flex brz-flex-xs-wrap css-8pkgbi"><div class="brz-bg-media"><div class="brz-bg-color"></div></div><div class="brz-bg-content"><div class="brz-row brz-row--inner css-18qg7sn"><div class="brz-columns css-107dpyu" data-custom-id="xychvurpsttooqponsgyasbnbnyyjnwbtexq"><div class="brz-bg brz-d-xs-flex css-148vkvw"><div class="brz-bg-media"><div class="brz-bg-color"></div></div><div class="brz-bg-content"><div class="brz-wrapper css-6fvry1"><div class="brz-d-xs-flex css-laz546"><div class="brz-rich-text" data-custom-id="vfwgbgpefmtgyuebslfjqjnzrmfuikpenbet"><p class="brz-tp-paragraph"><strong class="brz-cp-color7">Thursday</strong></p></div></div></div></div></div></div><div class="brz-columns css-107dpyu" data-custom-id="hpzdareyrjzwqznograjtvfxgpojitpyksvg"><div class="brz-bg brz-d-xs-flex css-1cs51t0"><div class="brz-bg-media"><div class="brz-bg-color"></div></div><div class="brz-bg-content"><div class="brz-wrapper css-6fvry1"><div class="brz-d-xs-flex css-laz546"><div class="brz-rich-text" data-custom-id="uoxatnozkufmcyacdmrstpwqbmbrkhwwofbt"><p class="brz-tp-paragraph"><span class="brz-cp-color7">11:00 AM – 12:00 PM</span></p></div></div></div></div></div></div></div></div></div></div><div class="brz-wrapper css-6fvry1"><div class="brz-d-xs-flex css-1utquse"><div class="brz-line brz-css-tqygf brz-css-bmnwn" data-custom-id="iwljntsnuidaqducvjrdgbotwlfkostshbtb"><hr class="brz-hr"></div></div></div><div class="brz-row__container css-1xef2ox" data-custom-id="hoetclcafigvwcriclwkrmfoqeigyleegqlj"><div class="brz-bg brz-d-xs-flex brz-flex-xs-wrap css-8pkgbi"><div class="brz-bg-media"><div class="brz-bg-color"></div></div><div class="brz-bg-content"><div class="brz-row brz-row--inner css-18qg7sn"><div class="brz-columns css-107dpyu" data-custom-id="yxjkukqhwipeirursqzmvlsggwefezinghqv"><div class="brz-bg brz-d-xs-flex css-148vkvw"><div class="brz-bg-media"><div class="brz-bg-color"></div></div><div class="brz-bg-content"><div class="brz-wrapper css-6fvry1"><div class="brz-d-xs-flex css-laz546"><div class="brz-rich-text" data-custom-id="asfopekwfmwajchxyxkpvzwyvsogancmzqrn"><p class="brz-tp-paragraph"><strong class="brz-cp-color7">Friday</strong></p></div></div></div></div></div></div><div class="brz-columns css-107dpyu" data-custom-id="znfirtutlkpsfutgmitgjbjleutjcyrfiqsh"><div class="brz-bg brz-d-xs-flex css-1cs51t0"><div class="brz-bg-media"><div class="brz-bg-color"></div></div><div class="brz-bg-content"><div class="brz-wrapper css-6fvry1"><div class="brz-d-xs-flex css-laz546"><div class="brz-rich-text" data-custom-id="bghiydplmuwbpyfrleilzyeoynjyfsgbltyd"><p class="brz-tp-paragraph"><span class="brz-cp-color7">11:00 AM – 12:00 PM</span></p></div></div></div></div></div></div></div></div></div></div><div class="brz-wrapper css-6fvry1"><div class="brz-d-xs-flex css-1utquse"><div class="brz-line brz-css-tqygf brz-css-ojezl" data-custom-id="xctdqplhgurwvuitqbuegmbtlisfppzbuktb"><hr class="brz-hr"></div></div></div><div class="brz-row__container css-1xef2ox" data-custom-id="abikkhmwvhxwjuzgxiafpbhtziogqmiaeeln"><div class="brz-bg brz-d-xs-flex brz-flex-xs-wrap css-8pkgbi"><div class="brz-bg-media"><div class="brz-bg-color"></div></div><div class="brz-bg-content"><div class="brz-row brz-row--inner css-18qg7sn"><div class="brz-columns css-107dpyu" data-custom-id="durljdxaejyygwcymdfswwuoseltgwronqxj"><div class="brz-bg brz-d-xs-flex css-148vkvw"><div class="brz-bg-media"><div class="brz-bg-color"></div></div><div class="brz-bg-content"><div class="brz-wrapper css-6fvry1"><div class="brz-d-xs-flex css-laz546"><div class="brz-rich-text" data-custom-id="xrphujkerswjkrdqcluxityjszuxwgncfnzh"><p class="brz-tp-paragraph"><strong class="brz-cp-color7">Saturday</strong></p></div></div></div></div></div></div><div class="brz-columns css-107dpyu" data-custom-id="sbupjacsfxtcvfkvuyfcveqajqjnyikybrcz"><div class="brz-bg brz-d-xs-flex css-1cs51t0"><div class="brz-bg-media"><div class="brz-bg-color"></div></div><div class="brz-bg-content"><div class="brz-wrapper css-6fvry1"><div class="brz-d-xs-flex css-laz546"><div class="brz-rich-text" data-custom-id="dvfuynsbghvgpedgpwkeszxmaomfeuaovlpq"><p class="brz-tp-paragraph"><span class="brz-cp-color7">Closed</span></p></div></div></div></div></div></div></div></div></div></div><div class="brz-wrapper css-6fvry1"><div class="brz-d-xs-flex css-1utquse"><div class="brz-line brz-css-tqygf brz-css-lqkos" data-custom-id="wwrpnfwlvqpkqwoaptxfieyqfllmtvggkiyd"><hr class="brz-hr"></div></div></div><div class="brz-row__container css-1xef2ox" data-custom-id="odvlnamcahtxjiwulkomwtiitxdfmoyhcoll"><div class="brz-bg brz-d-xs-flex brz-flex-xs-wrap css-8pkgbi"><div class="brz-bg-media"><div class="brz-bg-color"></div></div><div class="brz-bg-content"><div class="brz-row brz-row--inner css-18qg7sn"><div class="brz-columns css-107dpyu" data-custom-id="srovkmhrbfpevbrrwvwmlnbfeuellhmdvgeg"><div class="brz-bg brz-d-xs-flex css-148vkvw"><div class="brz-bg-media"><div class="brz-bg-color"></div></div><div class="brz-bg-content"><div class="brz-wrapper css-6fvry1"><div class="brz-d-xs-flex css-laz546"><div class="brz-rich-text" data-custom-id="nzjighergnfvmwufdfsbfhecrbyslduggahf"><p class="brz-tp-paragraph"><strong class="brz-cp-color7">Sunday</strong></p></div></div></div></div></div></div><div class="brz-columns css-107dpyu" data-custom-id="wppiplcjswqihogccndlidpmebweaqfoxaui"><div class="brz-bg brz-d-xs-flex css-1cs51t0"><div class="brz-bg-media"><div class="brz-bg-color"></div></div><div class="brz-bg-content"><div class="brz-wrapper css-6fvry1"><div class="brz-d-xs-flex css-laz546"><div class="brz-rich-text" data-custom-id="pbymbdkcsowogqjnujdmzktiqatkoaoojday"><p class="brz-tp-paragraph"><span class="brz-cp-color7">Closed</span></p></div></div></div></div></div></div></div></div></div></div><div class="brz-wrapper css-6fvry1"><div class="brz-d-xs-flex css-1utquse"><div class="brz-line brz-css-tqygf brz-css-glswx" data-custom-id="wpjgqqhdiohudlzmkowtiiysqblbqgjjfmwf"><hr class="brz-hr"></div></div></div></div></div></div><div class="brz-columns css-107dpyu" data-custom-id="dgjwnqypoccpoksvfyvmiivsiwmjqgbvvryt"><div class="brz-bg brz-d-xs-flex css-aqtejd"><div class="brz-bg-media"><div class="brz-bg-video" data-mute="on" data-autoplay="on"></div><div class="brz-bg-map"></div><div class="brz-bg-color"></div></div><div class="brz-bg-content"><div class="brz-wrapper css-6fvry1"><div class="brz-d-xs-flex css-laz546"><div class="brz-rich-text" data-custom-id="argayzfrgrogstbvsoefufksywpgqtxgpwdy"><h2 class="brz-tp-heading2"><span class="brz-cp-color7">Book your table</span></h2></div></div></div><div class="brz-wrapper css-b75mnq"><div class="brz-d-xs-flex css-1rmgdh0"><div class="brz-spacer css-j8tin6"></div></div></div><div class="brz-wrapper css-6fvry1"><div class="brz-d-xs-flex css-laz546"><div class="brz-form css-1nx6iz" data-custom-id="amyjhsjkqbupslizziitreovxluhosgaehqi"><div class="brz-form__fields css-hexdr4"><div class="brz-form__item css-1u0t999"></div><div class="brz-form__item css-1u0t999"></div><div class="brz-form__item css-1u0t999"></div><div class="brz-form__item css-1u0t999"></div><div class="brz-form__item css-1d1ieyt"><textarea class="brz-textarea brz-form__field" id="ehnndcxsqxqxrjbwjnoeumivtccitxxnadcw" name="ehnndcxsqxqxrjbwjnoeumivtccitxxnadcw" data-type="Paragraph" data-label="Message"></textarea></div></div><button class="brz-btn css-9ms7ue" data-custom-id="vqtcdlguvggyodzesrrbketslewfcqzxfdgt"><span class="brz-span brz-text__editor">MAKE RESERVATION</span></button></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></section><section id="mboiwdrudvdanrqabcqwazinpxyrtjlvntrq" class="brz-section css-7d6yzg" data-uid="mboiwdrudvdanrqabcqwazinpxyrtjlvntrq"><div class="brz-section__items"><div class="brz-section__content" data-custom-id="aeznhdostyydpizncgicyudajkeyhemhcivm"><div class="brz-bg css-nf8za5"><div class="brz-bg-media"><div class="brz-bg-image"></div><div class="brz-bg-color"></div></div><div class="brz-bg-content"><div class="brz-container__wrap css-1qzr5cs"><div class="brz-container css-1ptl1a3"><div class="brz-wrapper css-6fvry1"><div class="brz-d-xs-flex css-laz546"><div class="brz-rich-text" data-custom-id="wcvcuftazmacmajuhsiqnzdqdcmgysdmjghy"><h2 class="brz-text-lg-center brz-tp-heading2"><span class="brz-cp-color8">Follow us on social for exclusive offers!</span></h2></div></div></div><div class="brz-wrapper css-6fvry1"><div class="brz-d-xs-flex css-laz546"><div class="brz-rich-text" data-custom-id="lpabfnniztjpgwfkizzycxtzqxgkyhilypmd"><h3 class="brz-text-lg-center brz-tp-heading3"><span class="brz-cp-color8">Get exclusive deals, offers and rewards!</span></h3></div></div></div><div class="brz-wrapper-clone css-nil"><div class="brz-wrapper-clone__wrap css-15s8sb9"><div class="brz-d-xs-flex brz-flex-xs-wrap css-uo4t1y"><div class="brz-wrapper-clone__item css-1g5ql68" id="xyylowcpsnkvdzwdggdtqudlwlrratoglfoq"><div class="brz-icon__container" data-custom-id="xyylowcpsnkvdzwdggdtqudlwlrratoglfoq"><span class="brz-span brz-icon css-xcjckj"></span></div></div><div class="brz-wrapper-clone__item css-1g5ql68" id="pivanovcmjdgimofomrydekkyruvkbxvilcb"><div class="brz-icon__container" data-custom-id="pivanovcmjdgimofomrydekkyruvkbxvilcb"><span class="brz-span brz-icon css-xcjckj"></span></div></div><div class="brz-wrapper-clone__item css-1g5ql68" id="spywslglbmkiulvljmrxasqinxkwrpxpttic"><div class="brz-icon__container" data-custom-id="spywslglbmkiulvljmrxasqinxkwrpxpttic"><span class="brz-span brz-icon css-xcjckj"></span></div></div><div class="brz-wrapper-clone__item css-1g5ql68" id="rucfxxtlfjkryhfhtawxtcsqbvuhuaohwwls"><div class="brz-icon__container" data-custom-id="rucfxxtlfjkryhfhtawxtcsqbvuhuaohwwls"><span class="brz-span brz-icon css-xcjckj"></span></div></div></div></div></div></div></div></div></div></div></div></section><section id="sisqgljraigtwdppxjielmuwlmnnfosbldwb" class="brz-section css-7d6yzg" data-uid="sisqgljraigtwdppxjielmuwlmnnfosbldwb"><div class="brz-section__items"><div class="brz-section__content" data-custom-id="vtmeldhyijkcxobaszvzcaweqecsmzqpgeax"><div class="brz-bg css-1xlmxy4"><div class="brz-bg-media"><div class="brz-bg-video" data-mute="on" data-autoplay="on"></div><div class="brz-bg-map"></div><div class="brz-bg-color"></div></div><div class="brz-bg-content"><div class="brz-container__wrap css-1o1zu06"><div class="brz-container css-1ptl1a3"><div class="brz-row__container css-1xef2ox" data-custom-id="uunjlcwtvlgmrzxbpndalaihjvjrugouanul"><div class="brz-bg brz-d-xs-flex brz-flex-xs-wrap css-8pkgbi"><div class="brz-bg-media"><div class="brz-bg-color"></div></div><div class="brz-bg-content"><div class="brz-row css-18qg7sn"><div class="brz-columns css-1lcxv09" data-custom-id="jtybgmmlelzsgtdmlrdzxrdkoxgvyabdombz"><div class="brz-bg brz-d-xs-flex css-17s6ens"><div class="brz-bg-media"><div class="brz-bg-color"></div></div><div class="brz-bg-content"><div class="brz-wrapper css-6fvry1"><div class="brz-d-xs-flex css-laz546"><div class="brz-rich-text" data-custom-id="eqzdihcdrjvynlerhllvuoxylctytsrnevzu"><p class="brz-tp-paragraph"><strong class="brz-cp-color8">About us</strong></p></div></div></div><div class="brz-wrapper css-6fvry1"><div class="brz-d-xs-flex css-laz546"><div class="brz-rich-text" data-custom-id="txjdreeefvqtqcvwxkuymahtumrswsqzipnu"><p class="brz-tp-paragraph"><span class="brz-cp-color8">Are you tired of your project feed looking like a small screenshot of a bunch of screenshots? Follow these simple steps and you can make your project thumbnails look great!</span></p></div></div></div></div></div></div><div class="brz-columns css-1lcxv09" data-custom-id="vztvraisjwbddjymczehzocfrxwlrqrsschh"><div class="brz-bg brz-d-xs-flex css-17s6ens"><div class="brz-bg-media"><div class="brz-bg-color"></div></div><div class="brz-bg-content"><div class="brz-wrapper css-6fvry1"><div class="brz-d-xs-flex css-laz546"><div class="brz-rich-text" data-custom-id="twmtotxzfadhtxgmsycgjudzkjiwpoyevnts"><p class="brz-tp-paragraph"><strong class="brz-cp-color8">Page Menu</strong></p></div></div></div><div class="brz-wrapper css-6fvry1"><div class="brz-d-xs-flex css-laz546"><div class="brz-rich-text" data-custom-id="owqmndpngilhgitqgskuzebohedubuyaksvk"><p class="brz-fs-lg-19 brz-fs-sm-im-15 brz-fs-xs-im-15 brz-ls-lg-0 brz-ls-sm-im-0 brz-ls-xs-im-0 brz-ff-source_serif_pro brz-fw-lg-300 brz-fw-sm-im-300 brz-fw-xs-im-300 brz-lh-lg-1_1 brz-lh-sm-im-1_1 brz-lh-xs-im-1_1"><span class="brz-cp-color8">WordPress News</span></p></div></div></div><div class="brz-wrapper css-6fvry1"><div class="brz-d-xs-flex css-1lyekpi"><div class="brz-line brz-css-tqygf brz-css-ewcqb" data-custom-id="btafvhqutmbssqzaqehjfeugktduubmuvlga"><hr class="brz-hr"></div></div></div><div class="brz-wrapper css-6fvry1"><div class="brz-d-xs-flex css-y6jvco"><div class="brz-rich-text" data-custom-id="lgmopuivemdvmovowijcpmaophulzrkldrsj"><p class="brz-fs-lg-19 brz-fs-sm-im-15 brz-fs-xs-im-15 brz-ls-lg-0 brz-ls-sm-im-0 brz-ls-xs-im-0 brz-ff-source_serif_pro brz-fw-lg-300 brz-fw-sm-im-300 brz-fw-xs-im-300 brz-lh-lg-1_1 brz-lh-sm-im-1_1 brz-lh-xs-im-1_1"><span class="brz-cp-color8">Startups and tech</span></p></div></div></div><div class="brz-wrapper css-6fvry1"><div class="brz-d-xs-flex css-1lyekpi"><div class="brz-line brz-css-tqygf brz-css-zqfei" data-custom-id="otmzgnrefeudmpjrfbijxcoylxndfiphqdnf"><hr class="brz-hr"></div></div></div><div class="brz-wrapper css-6fvry1"><div class="brz-d-xs-flex css-y6jvco"><div class="brz-rich-text" data-custom-id="eybnxhumfurgdnwbhneafifcoijausdtnjiq"><p class="brz-fs-lg-19 brz-fs-sm-im-15 brz-fs-xs-im-15 brz-ls-lg-0 brz-ls-sm-im-0 brz-ls-xs-im-0 brz-ff-source_serif_pro brz-fw-lg-300 brz-fw-sm-im-300 brz-fw-xs-im-300 brz-lh-lg-1_1 brz-lh-sm-im-1_1 brz-lh-xs-im-1_1"><span class="brz-cp-color8">People and leaders</span></p></div></div></div><div class="brz-wrapper css-6fvry1"><div class="brz-d-xs-flex css-1lyekpi"><div class="brz-line brz-css-tqygf brz-css-zyugp" data-custom-id="ycbkruroptwwdeampzabwrmddvxotlxnyqjs"><hr class="brz-hr"></div></div></div><div class="brz-wrapper css-6fvry1"><div class="brz-d-xs-flex css-kpnp2l"><div class="brz-rich-text" data-custom-id="bsmkaobktnljpznbsffooumlbzipoxskzvzx"><p class="brz-fs-lg-19 brz-fs-sm-im-15 brz-fs-xs-im-15 brz-ls-lg-0 brz-ls-sm-im-0 brz-ls-xs-im-0 brz-ff-source_serif_pro brz-fw-lg-300 brz-fw-sm-im-300 brz-fw-xs-im-300 brz-lh-lg-1_1 brz-lh-sm-im-1_1 brz-lh-xs-im-1_1"><span class="brz-cp-color8">Events</span></p></div></div></div></div></div></div><div class="brz-columns css-1b1gvps" data-custom-id="wenbymmhcskjsguflrfiaqwkdhlrpcobecuu"><div class="brz-bg brz-d-xs-flex css-17s6ens"><div class="brz-bg-media"><div class="brz-bg-color"></div></div><div class="brz-bg-content"><div class="brz-wrapper css-6fvry1"><div class="brz-d-xs-flex css-laz546"><div class="brz-rich-text" data-custom-id="ikorlgpxrmzfgoqhfeksgroextanjvetywoa"><p class="brz-tp-paragraph"><strong class="brz-cp-color8">Social Follow</strong></p></div></div></div><div class="brz-wrapper css-6fvry1"><div class="brz-d-xs-flex css-laz546"><div class="brz-rich-text" data-custom-id="zczfapoiahnwitmssnkuxkxlairtevzcxxvz"><p class="brz-lh-xs-im-1_1 brz-lh-sm-im-1_1 brz-lh-lg-1_1 brz-fw-xs-im-300 brz-fw-sm-im-300 brz-fw-lg-300 brz-ff-source_serif_pro brz-ls-xs-im-0 brz-ls-sm-im-0 brz-ls-lg-0 brz-fs-xs-im-15 brz-fs-sm-im-15 brz-fs-lg-19"><span class="brz-cp-color8">Facebook</span></p></div></div></div><div class="brz-wrapper css-6fvry1"><div class="brz-d-xs-flex css-1lyekpi"><div class="brz-line brz-css-tqygf brz-css-ihgrb" data-custom-id="cctgisqninftlceiuhslsuukukfbxfmudqrk"><hr class="brz-hr"></div></div></div><div class="brz-wrapper css-6fvry1"><div class="brz-d-xs-flex css-y6jvco"><div class="brz-rich-text" data-custom-id="jqkslujemjhhjubdhkhnevmulzdqiaeowrvz"><p class="brz-lh-xs-im-1_1 brz-lh-sm-im-1_1 brz-lh-lg-1_1 brz-fw-xs-im-300 brz-fw-sm-im-300 brz-fw-lg-300 brz-ff-source_serif_pro brz-ls-xs-im-0 brz-ls-sm-im-0 brz-ls-lg-0 brz-fs-xs-im-15 brz-fs-sm-im-15 brz-fs-lg-19"><span class="brz-cp-color8">Twitter</span></p></div></div></div><div class="brz-wrapper css-6fvry1"><div class="brz-d-xs-flex css-1lyekpi"><div class="brz-line brz-css-tqygf brz-css-lrdck" data-custom-id="irvgedaqxndjntmpwaezlegmnmffkrgomslr"><hr class="brz-hr"></div></div></div><div class="brz-wrapper css-6fvry1"><div class="brz-d-xs-flex css-y6jvco"><div class="brz-rich-text" data-custom-id="xvifuiumeagnrevjiopoddmlcdjtpavwunoc"><p class="brz-lh-xs-im-1_1 brz-lh-sm-im-1_1 brz-lh-lg-1_1 brz-fw-xs-im-300 brz-fw-sm-im-300 brz-fw-lg-300 brz-ff-source_serif_pro brz-ls-xs-im-0 brz-ls-sm-im-0 brz-ls-lg-0 brz-fs-xs-im-15 brz-fs-sm-im-15 brz-fs-lg-19"><span class="brz-cp-color8">Instagram</span></p></div></div></div><div class="brz-wrapper css-6fvry1"><div class="brz-d-xs-flex css-1lyekpi"><div class="brz-line brz-css-tqygf brz-css-basdb" data-custom-id="wxxpjjpnfeacikcuhpfphutiztjknkuviebv"><hr class="brz-hr"></div></div></div><div class="brz-wrapper css-6fvry1"><div class="brz-d-xs-flex css-kpnp2l"><div class="brz-rich-text" data-custom-id="hsozarkknjnwxbvtotauowyhuiziadcdvjsg"><p class="brz-lh-xs-im-1_1 brz-lh-sm-im-1_1 brz-lh-lg-1_1 brz-fw-xs-im-300 brz-fw-sm-im-300 brz-fw-lg-300 brz-ff-source_serif_pro brz-ls-xs-im-0 brz-ls-sm-im-0 brz-ls-lg-0 brz-fs-xs-im-15 brz-fs-sm-im-15 brz-fs-lg-19"><span class="brz-cp-color8">Youtube</span></p></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></section></div>]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>272</wp:post_id>
+			<content:encoded><![CDATA[<div class="brz-root__container brz-reset-all">
+<section id="okdijsobesiuuxmdxqhpantukbcwihwrugvj" class="brz-section css-7d6yzg" data-uid="okdijsobesiuuxmdxqhpantukbcwihwrugvj">
+<div class="brz-section__items">
+<div class="brz-section__content" data-custom-id="zitfkbucpbjsjpdejvtfpdfylyzaflsbcnju">
+<div class="brz-bg css-1pwqjuw">
+<div class="brz-bg-media">
+<div class="brz-bg-image"></div>
+<div class="brz-bg-color"></div>
+</div>
+<div class="brz-bg-content">
+<div class="brz-container__wrap css-ygb3rn">
+<div class="brz-container css-1ptl1a3">
+<div class="brz-wrapper css-6fvry1">
+<div class="brz-d-xs-flex css-laz546">
+<div class="brz-rich-text" data-custom-id="vbadbbywycgwajynlwdpniwextjzuitogckb">
+<h1 class="brz-tp-heading1 brz-text-lg-center"><span class="brz-cp-color8">Make a Reservation</span></h1>
+</div>
+</div>
+</div>
+<div class="brz-wrapper css-6fvry1">
+<div class="brz-d-xs-flex css-laz546">
+<div class="brz-rich-text" data-custom-id="ozobbakzudbhifoagglaelmcjovymiqukekl">
+<h3 class="brz-tp-heading3 brz-text-lg-center"><span class="brz-cp-color8">Book your table by using the form below</span></h3>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="skbeobrcmnovuldajjqturkeybzgxqtwpsmd" class="brz-section css-7d6yzg" data-uid="skbeobrcmnovuldajjqturkeybzgxqtwpsmd">
+<div class="brz-section__items">
+<div class="brz-section__content" data-custom-id="cwenrdbgomxgklqyeffdftgqwzwagugblqlz">
+<div class="brz-bg css-p86gvf">
+<div class="brz-bg-media">
+<div class="brz-bg-video" data-mute="on" data-autoplay="on"></div>
+<div class="brz-bg-map"></div>
+<div class="brz-bg-color"></div>
+</div>
+<div class="brz-bg-content">
+<div class="brz-container__wrap css-1098mzy">
+<div class="brz-container css-1ptl1a3">
+<div class="brz-row__container css-1xef2ox" data-custom-id="liexvspktvsbeluylhwzuveqzpmfluznbqzj">
+<div class="brz-bg brz-d-xs-flex brz-flex-xs-wrap css-8pkgbi">
+<div class="brz-bg-media">
+<div class="brz-bg-color"></div>
+</div>
+<div class="brz-bg-content">
+<div class="brz-row css-18qg7sn">
+<div class="brz-columns css-107dpyu" data-custom-id="yokdwlukqshbejznsjhgglcztkvbeafpdjjx">
+<div class="brz-bg brz-d-xs-flex css-k1kn5i">
+<div class="brz-bg-media">
+<div class="brz-bg-color"></div>
+</div>
+<div class="brz-bg-content">
+<div class="brz-wrapper css-f9gufi">
+<div class="brz-d-xs-flex css-1rmgdh0">
+<div class="brz-spacer css-10btme5"></div>
+</div>
+</div>
+<div class="brz-wrapper css-6fvry1">
+<div class="brz-d-xs-flex css-laz546">
+<div class="brz-rich-text" data-custom-id="eqbobkoiinwgvmmroyftswtotvyepxpvejdb">
+<h2 class="brz-tp-heading2"><span class="brz-cp-color7">Contact information</span></h2>
+</div>
+</div>
+</div>
+<div class="brz-row__container css-1xef2ox" data-custom-id="uwnvzeqkcwwrbvkhayjdxikpiiuicyqkijrg">
+<div class="brz-bg brz-d-xs-flex brz-flex-xs-wrap css-8pkgbi">
+<div class="brz-bg-media">
+<div class="brz-bg-color"></div>
+</div>
+<div class="brz-bg-content">
+<div class="brz-row brz-row--inner css-18qg7sn">
+<div class="brz-columns css-107dpyu" data-custom-id="vjxznzjugvmygrfyxvblliuzqezbtdbtgdnh">
+<div class="brz-bg brz-d-xs-flex css-148vkvw">
+<div class="brz-bg-media">
+<div class="brz-bg-color"></div>
+</div>
+<div class="brz-bg-content">
+<div class="brz-wrapper css-6fvry1">
+<div class="brz-d-xs-flex css-blabo">
+<div class="brz-rich-text" data-custom-id="jwbngouugyvcqfyfnxzfdrmrjcqaxlgrynux">
+<p class="brz-tp-paragraph"><strong class="brz-cp-color2">Address</strong></p>
+
+</div>
+</div>
+</div>
+<div class="brz-wrapper css-6fvry1">
+<div class="brz-d-xs-flex css-laz546">
+<div class="brz-rich-text" data-custom-id="lypsbdbcrgpqodytcmxjanlbspfsclahmbdb">
+<p class="brz-lh-lg-1_3 brz-lh-sm-im-1_4 brz-lh-xs-im-1_4 brz-fs-lg-20 brz-fs-sm-im-24 brz-fs-xs-im-21 brz-ls-lg-0 brz-ls-sm-im-0 brz-ls-xs-im-0 brz-ff-source_serif_pro brz-fw-lg-400 brz-fw-sm-im-500 brz-fw-xs-im-500"><span class="brz-cp-color7">Brancusi 105, </span></p>
+<p class="brz-lh-lg-1_3 brz-lh-sm-im-1_4 brz-lh-xs-im-1_4 brz-fs-lg-20 brz-fs-sm-im-24 brz-fs-xs-im-21 brz-ls-lg-0 brz-ls-sm-im-0 brz-ls-xs-im-0 brz-ff-source_serif_pro brz-fw-lg-400 brz-fw-sm-im-500 brz-fw-xs-im-500"><span class="brz-cp-color7">6511 Bucharest</span></p>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="brz-columns css-107dpyu" data-custom-id="vgjxvdgwkjlmmzcjlvnifgpshqkoiytzqrbo">
+<div class="brz-bg brz-d-xs-flex css-148vkvw">
+<div class="brz-bg-media">
+<div class="brz-bg-color"></div>
+</div>
+<div class="brz-bg-content">
+<div class="brz-wrapper css-6fvry1">
+<div class="brz-d-xs-flex css-blabo">
+<div class="brz-rich-text" data-custom-id="qdigrblroonrfjbiiybbzsojbupmlspuxetz">
+<p class="brz-tp-paragraph"><strong class="brz-cp-color2">Contact</strong></p>
+
+</div>
+</div>
+</div>
+<div class="brz-wrapper css-6fvry1">
+<div class="brz-d-xs-flex css-laz546">
+<div class="brz-rich-text" data-custom-id="ysdrgydtkdejxyqakzehuspjedloalklabms">
+<p class="brz-fw-xs-im-500 brz-fw-sm-im-500 brz-fw-lg-400 brz-ff-source_serif_pro brz-ls-xs-im-0 brz-ls-sm-im-0 brz-ls-lg-0 brz-fs-xs-im-21 brz-fs-sm-im-24 brz-fs-lg-20 brz-lh-xs-im-1_4 brz-lh-sm-im-1_4 brz-lh-lg-1_3"><span class="brz-cp-color7">Tel: 012 317 14 23</span></p>
+<p class="brz-fw-xs-im-500 brz-fw-sm-im-500 brz-fw-lg-400 brz-ff-source_serif_pro brz-ls-xs-im-0 brz-ls-sm-im-0 brz-ls-lg-0 brz-fs-xs-im-21 brz-fs-sm-im-24 brz-fs-lg-20 brz-lh-xs-im-1_4 brz-lh-sm-im-1_4 brz-lh-lg-1_3"><span class="brz-cp-color7">reserve@neve.com</span></p>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="brz-wrapper css-f9gufi">
+<div class="brz-d-xs-flex css-1rmgdh0">
+<div class="brz-spacer css-10btme5"></div>
+</div>
+</div>
+<div class="brz-wrapper css-6fvry1">
+<div class="brz-d-xs-flex css-laz546">
+<div class="brz-rich-text" data-custom-id="ocugclvcrrpioephipeffxjlfmxwrgwhffos">
+<h2 class="brz-tp-heading2"><span class="brz-cp-color7">Serving Hours</span></h2>
+</div>
+</div>
+</div>
+<div class="brz-wrapper css-f9gufi">
+<div class="brz-d-xs-flex css-1rmgdh0">
+<div class="brz-spacer css-j8tin6"></div>
+</div>
+</div>
+<div class="brz-row__container css-1xef2ox" data-custom-id="pvqowsejwpawsqqwffwmuzyowygsdobnyugo">
+<div class="brz-bg brz-d-xs-flex brz-flex-xs-wrap css-8pkgbi">
+<div class="brz-bg-media">
+<div class="brz-bg-color"></div>
+</div>
+<div class="brz-bg-content">
+<div class="brz-row brz-row--inner css-18qg7sn">
+<div class="brz-columns css-107dpyu" data-custom-id="jkauogsmenxtkyampapuesemktwvwbzwpmsp">
+<div class="brz-bg brz-d-xs-flex css-148vkvw">
+<div class="brz-bg-media">
+<div class="brz-bg-color"></div>
+</div>
+<div class="brz-bg-content">
+<div class="brz-wrapper css-6fvry1">
+<div class="brz-d-xs-flex css-laz546">
+<div class="brz-rich-text" data-custom-id="wusuuntunygupkokslsrxrpxewpmmkwqpewn">
+<p class="brz-tp-paragraph"><strong class="brz-cp-color7">Monday</strong></p>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="brz-columns css-107dpyu" data-custom-id="yxqbpsrarxogiiaazomdufobrrharwhltsnz">
+<div class="brz-bg brz-d-xs-flex css-1cs51t0">
+<div class="brz-bg-media">
+<div class="brz-bg-color"></div>
+</div>
+<div class="brz-bg-content">
+<div class="brz-wrapper css-6fvry1">
+<div class="brz-d-xs-flex css-laz546">
+<div class="brz-rich-text" data-custom-id="igedidlbtiuvipmbibxbyjarsfuavckulvpu">
+<p class="brz-tp-paragraph"><span class="brz-cp-color7">11:00 AM – 12:00 PM</span></p>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="brz-wrapper css-6fvry1">
+<div class="brz-d-xs-flex css-1utquse">
+<div class="brz-line brz-css-tqygf brz-css-axgnf" data-custom-id="hapqucxfyjwrhklhmszsbmkgmgvofklufhpp">
+
+<hr class="brz-hr">
+
+</div>
+</div>
+</div>
+<div class="brz-row__container css-1xef2ox" data-custom-id="qwzayxcubitszwegctjczhtpwaysqkujmffq">
+<div class="brz-bg brz-d-xs-flex brz-flex-xs-wrap css-8pkgbi">
+<div class="brz-bg-media">
+<div class="brz-bg-color"></div>
+</div>
+<div class="brz-bg-content">
+<div class="brz-row brz-row--inner css-18qg7sn">
+<div class="brz-columns css-107dpyu" data-custom-id="mrihssomdsudtsoudzlfexdlxscpchuvxufj">
+<div class="brz-bg brz-d-xs-flex css-148vkvw">
+<div class="brz-bg-media">
+<div class="brz-bg-color"></div>
+</div>
+<div class="brz-bg-content">
+<div class="brz-wrapper css-6fvry1">
+<div class="brz-d-xs-flex css-laz546">
+<div class="brz-rich-text" data-custom-id="fjlzugoculrqhhzdvnsowciiagdgmsqgbddj">
+<p class="brz-tp-paragraph"><strong class="brz-cp-color7">Tuesday</strong></p>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="brz-columns css-107dpyu" data-custom-id="xaqinbbeedmpppkpqpwcdyppliawnhczqwfe">
+<div class="brz-bg brz-d-xs-flex css-1cs51t0">
+<div class="brz-bg-media">
+<div class="brz-bg-color"></div>
+</div>
+<div class="brz-bg-content">
+<div class="brz-wrapper css-6fvry1">
+<div class="brz-d-xs-flex css-laz546">
+<div class="brz-rich-text" data-custom-id="gqphcqqqisxhqabtemtsagurirysadwmfnof">
+<p class="brz-tp-paragraph"><span class="brz-cp-color7">11:00 AM – 12:00 PM</span></p>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="brz-wrapper css-6fvry1">
+<div class="brz-d-xs-flex css-1utquse">
+<div class="brz-line brz-css-tqygf brz-css-mkhee" data-custom-id="wdoubyklhmivzdmuyhpvibvhtvacwfpoyjlu">
+
+<hr class="brz-hr">
+
+</div>
+</div>
+</div>
+<div class="brz-row__container css-1xef2ox" data-custom-id="ufexzmlqokdxleqwbzroprujvigqfqnpoqaw">
+<div class="brz-bg brz-d-xs-flex brz-flex-xs-wrap css-8pkgbi">
+<div class="brz-bg-media">
+<div class="brz-bg-color"></div>
+</div>
+<div class="brz-bg-content">
+<div class="brz-row brz-row--inner css-18qg7sn">
+<div class="brz-columns css-107dpyu" data-custom-id="usdtbszcfzywyjhtbkbacvzpvnitscugdkpk">
+<div class="brz-bg brz-d-xs-flex css-148vkvw">
+<div class="brz-bg-media">
+<div class="brz-bg-color"></div>
+</div>
+<div class="brz-bg-content">
+<div class="brz-wrapper css-6fvry1">
+<div class="brz-d-xs-flex css-laz546">
+<div class="brz-rich-text" data-custom-id="ratxsmcopyaenqavghrvmidyidhrnipctpbc">
+<p class="brz-tp-paragraph"><strong class="brz-cp-color7">Wednesday</strong></p>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="brz-columns css-107dpyu" data-custom-id="kvczrcxwnydbykxapcpmjwazxlvrnjffkwte">
+<div class="brz-bg brz-d-xs-flex css-1cs51t0">
+<div class="brz-bg-media">
+<div class="brz-bg-color"></div>
+</div>
+<div class="brz-bg-content">
+<div class="brz-wrapper css-6fvry1">
+<div class="brz-d-xs-flex css-laz546">
+<div class="brz-rich-text" data-custom-id="tyydfejpdvpmpwcylobrehfmaspmchviptix">
+<p class="brz-tp-paragraph"><span class="brz-cp-color7">11:00 AM – 12:00 PM</span></p>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="brz-wrapper css-6fvry1">
+<div class="brz-d-xs-flex css-1utquse">
+<div class="brz-line brz-css-tqygf brz-css-fcygb" data-custom-id="leilxdnpmtxbeclbwvpfjttodwmfjutzlxsz">
+
+<hr class="brz-hr">
+
+</div>
+</div>
+</div>
+<div class="brz-row__container css-1xef2ox" data-custom-id="zgxcxuvwtuvgbedphqhcnyvjvihfvlqevnjo">
+<div class="brz-bg brz-d-xs-flex brz-flex-xs-wrap css-8pkgbi">
+<div class="brz-bg-media">
+<div class="brz-bg-color"></div>
+</div>
+<div class="brz-bg-content">
+<div class="brz-row brz-row--inner css-18qg7sn">
+<div class="brz-columns css-107dpyu" data-custom-id="xychvurpsttooqponsgyasbnbnyyjnwbtexq">
+<div class="brz-bg brz-d-xs-flex css-148vkvw">
+<div class="brz-bg-media">
+<div class="brz-bg-color"></div>
+</div>
+<div class="brz-bg-content">
+<div class="brz-wrapper css-6fvry1">
+<div class="brz-d-xs-flex css-laz546">
+<div class="brz-rich-text" data-custom-id="vfwgbgpefmtgyuebslfjqjnzrmfuikpenbet">
+<p class="brz-tp-paragraph"><strong class="brz-cp-color7">Thursday</strong></p>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="brz-columns css-107dpyu" data-custom-id="hpzdareyrjzwqznograjtvfxgpojitpyksvg">
+<div class="brz-bg brz-d-xs-flex css-1cs51t0">
+<div class="brz-bg-media">
+<div class="brz-bg-color"></div>
+</div>
+<div class="brz-bg-content">
+<div class="brz-wrapper css-6fvry1">
+<div class="brz-d-xs-flex css-laz546">
+<div class="brz-rich-text" data-custom-id="uoxatnozkufmcyacdmrstpwqbmbrkhwwofbt">
+<p class="brz-tp-paragraph"><span class="brz-cp-color7">11:00 AM – 12:00 PM</span></p>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="brz-wrapper css-6fvry1">
+<div class="brz-d-xs-flex css-1utquse">
+<div class="brz-line brz-css-tqygf brz-css-bmnwn" data-custom-id="iwljntsnuidaqducvjrdgbotwlfkostshbtb">
+
+<hr class="brz-hr">
+
+</div>
+</div>
+</div>
+<div class="brz-row__container css-1xef2ox" data-custom-id="hoetclcafigvwcriclwkrmfoqeigyleegqlj">
+<div class="brz-bg brz-d-xs-flex brz-flex-xs-wrap css-8pkgbi">
+<div class="brz-bg-media">
+<div class="brz-bg-color"></div>
+</div>
+<div class="brz-bg-content">
+<div class="brz-row brz-row--inner css-18qg7sn">
+<div class="brz-columns css-107dpyu" data-custom-id="yxjkukqhwipeirursqzmvlsggwefezinghqv">
+<div class="brz-bg brz-d-xs-flex css-148vkvw">
+<div class="brz-bg-media">
+<div class="brz-bg-color"></div>
+</div>
+<div class="brz-bg-content">
+<div class="brz-wrapper css-6fvry1">
+<div class="brz-d-xs-flex css-laz546">
+<div class="brz-rich-text" data-custom-id="asfopekwfmwajchxyxkpvzwyvsogancmzqrn">
+<p class="brz-tp-paragraph"><strong class="brz-cp-color7">Friday</strong></p>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="brz-columns css-107dpyu" data-custom-id="znfirtutlkpsfutgmitgjbjleutjcyrfiqsh">
+<div class="brz-bg brz-d-xs-flex css-1cs51t0">
+<div class="brz-bg-media">
+<div class="brz-bg-color"></div>
+</div>
+<div class="brz-bg-content">
+<div class="brz-wrapper css-6fvry1">
+<div class="brz-d-xs-flex css-laz546">
+<div class="brz-rich-text" data-custom-id="bghiydplmuwbpyfrleilzyeoynjyfsgbltyd">
+<p class="brz-tp-paragraph"><span class="brz-cp-color7">11:00 AM – 12:00 PM</span></p>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="brz-wrapper css-6fvry1">
+<div class="brz-d-xs-flex css-1utquse">
+<div class="brz-line brz-css-tqygf brz-css-ojezl" data-custom-id="xctdqplhgurwvuitqbuegmbtlisfppzbuktb">
+
+<hr class="brz-hr">
+
+</div>
+</div>
+</div>
+<div class="brz-row__container css-1xef2ox" data-custom-id="abikkhmwvhxwjuzgxiafpbhtziogqmiaeeln">
+<div class="brz-bg brz-d-xs-flex brz-flex-xs-wrap css-8pkgbi">
+<div class="brz-bg-media">
+<div class="brz-bg-color"></div>
+</div>
+<div class="brz-bg-content">
+<div class="brz-row brz-row--inner css-18qg7sn">
+<div class="brz-columns css-107dpyu" data-custom-id="durljdxaejyygwcymdfswwuoseltgwronqxj">
+<div class="brz-bg brz-d-xs-flex css-148vkvw">
+<div class="brz-bg-media">
+<div class="brz-bg-color"></div>
+</div>
+<div class="brz-bg-content">
+<div class="brz-wrapper css-6fvry1">
+<div class="brz-d-xs-flex css-laz546">
+<div class="brz-rich-text" data-custom-id="xrphujkerswjkrdqcluxityjszuxwgncfnzh">
+<p class="brz-tp-paragraph"><strong class="brz-cp-color7">Saturday</strong></p>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="brz-columns css-107dpyu" data-custom-id="sbupjacsfxtcvfkvuyfcveqajqjnyikybrcz">
+<div class="brz-bg brz-d-xs-flex css-1cs51t0">
+<div class="brz-bg-media">
+<div class="brz-bg-color"></div>
+</div>
+<div class="brz-bg-content">
+<div class="brz-wrapper css-6fvry1">
+<div class="brz-d-xs-flex css-laz546">
+<div class="brz-rich-text" data-custom-id="dvfuynsbghvgpedgpwkeszxmaomfeuaovlpq">
+<p class="brz-tp-paragraph"><span class="brz-cp-color7">Closed</span></p>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="brz-wrapper css-6fvry1">
+<div class="brz-d-xs-flex css-1utquse">
+<div class="brz-line brz-css-tqygf brz-css-lqkos" data-custom-id="wwrpnfwlvqpkqwoaptxfieyqfllmtvggkiyd">
+
+<hr class="brz-hr">
+
+</div>
+</div>
+</div>
+<div class="brz-row__container css-1xef2ox" data-custom-id="odvlnamcahtxjiwulkomwtiitxdfmoyhcoll">
+<div class="brz-bg brz-d-xs-flex brz-flex-xs-wrap css-8pkgbi">
+<div class="brz-bg-media">
+<div class="brz-bg-color"></div>
+</div>
+<div class="brz-bg-content">
+<div class="brz-row brz-row--inner css-18qg7sn">
+<div class="brz-columns css-107dpyu" data-custom-id="srovkmhrbfpevbrrwvwmlnbfeuellhmdvgeg">
+<div class="brz-bg brz-d-xs-flex css-148vkvw">
+<div class="brz-bg-media">
+<div class="brz-bg-color"></div>
+</div>
+<div class="brz-bg-content">
+<div class="brz-wrapper css-6fvry1">
+<div class="brz-d-xs-flex css-laz546">
+<div class="brz-rich-text" data-custom-id="nzjighergnfvmwufdfsbfhecrbyslduggahf">
+<p class="brz-tp-paragraph"><strong class="brz-cp-color7">Sunday</strong></p>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="brz-columns css-107dpyu" data-custom-id="wppiplcjswqihogccndlidpmebweaqfoxaui">
+<div class="brz-bg brz-d-xs-flex css-1cs51t0">
+<div class="brz-bg-media">
+<div class="brz-bg-color"></div>
+</div>
+<div class="brz-bg-content">
+<div class="brz-wrapper css-6fvry1">
+<div class="brz-d-xs-flex css-laz546">
+<div class="brz-rich-text" data-custom-id="pbymbdkcsowogqjnujdmzktiqatkoaoojday">
+<p class="brz-tp-paragraph"><span class="brz-cp-color7">Closed</span></p>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="brz-wrapper css-6fvry1">
+<div class="brz-d-xs-flex css-1utquse">
+<div class="brz-line brz-css-tqygf brz-css-glswx" data-custom-id="wpjgqqhdiohudlzmkowtiiysqblbqgjjfmwf">
+
+<hr class="brz-hr">
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="brz-columns css-107dpyu" data-custom-id="dgjwnqypoccpoksvfyvmiivsiwmjqgbvvryt">
+<div class="brz-bg brz-d-xs-flex css-aqtejd">
+<div class="brz-bg-media">
+<div class="brz-bg-video" data-mute="on" data-autoplay="on"></div>
+<div class="brz-bg-map"></div>
+<div class="brz-bg-color"></div>
+</div>
+<div class="brz-bg-content">
+<div class="brz-wrapper css-6fvry1">
+<div class="brz-d-xs-flex css-laz546">
+<div class="brz-rich-text" data-custom-id="argayzfrgrogstbvsoefufksywpgqtxgpwdy">
+<h2 class="brz-tp-heading2"><span class="brz-cp-color7">Book your table</span></h2>
+</div>
+</div>
+</div>
+<div class="brz-wrapper css-b75mnq">
+<div class="brz-d-xs-flex css-1rmgdh0">
+<div class="brz-spacer css-j8tin6"></div>
+</div>
+</div>
+<div class="brz-wrapper css-6fvry1">
+<div class="brz-d-xs-flex css-laz546">
+<div class="brz-form css-1nx6iz" data-custom-id="amyjhsjkqbupslizziitreovxluhosgaehqi">
+<div class="brz-form__fields css-hexdr4">
+<div class="brz-form__item css-1u0t999"></div>
+<div class="brz-form__item css-1u0t999"></div>
+<div class="brz-form__item css-1u0t999"></div>
+<div class="brz-form__item css-1u0t999"></div>
+<div class="brz-form__item css-1d1ieyt"><textarea class="brz-textarea brz-form__field" id="ehnndcxsqxqxrjbwjnoeumivtccitxxnadcw" name="ehnndcxsqxqxrjbwjnoeumivtccitxxnadcw" data-type="Paragraph" data-label="Message"></textarea></div>
+</div>
+<button class="brz-btn css-9ms7ue" data-custom-id="vqtcdlguvggyodzesrrbketslewfcqzxfdgt"><span class="brz-span brz-text__editor">MAKE RESERVATION</span></button>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="mboiwdrudvdanrqabcqwazinpxyrtjlvntrq" class="brz-section css-7d6yzg" data-uid="mboiwdrudvdanrqabcqwazinpxyrtjlvntrq">
+<div class="brz-section__items">
+<div class="brz-section__content" data-custom-id="aeznhdostyydpizncgicyudajkeyhemhcivm">
+<div class="brz-bg css-nf8za5">
+<div class="brz-bg-media">
+<div class="brz-bg-image"></div>
+<div class="brz-bg-color"></div>
+</div>
+<div class="brz-bg-content">
+<div class="brz-container__wrap css-1qzr5cs">
+<div class="brz-container css-1ptl1a3">
+<div class="brz-wrapper css-6fvry1">
+<div class="brz-d-xs-flex css-laz546">
+<div class="brz-rich-text" data-custom-id="wcvcuftazmacmajuhsiqnzdqdcmgysdmjghy">
+<h2 class="brz-text-lg-center brz-tp-heading2"><span class="brz-cp-color8">Follow us on social for exclusive offers!</span></h2>
+</div>
+</div>
+</div>
+<div class="brz-wrapper css-6fvry1">
+<div class="brz-d-xs-flex css-laz546">
+<div class="brz-rich-text" data-custom-id="lpabfnniztjpgwfkizzycxtzqxgkyhilypmd">
+<h3 class="brz-text-lg-center brz-tp-heading3"><span class="brz-cp-color8">Get exclusive deals, offers and rewards!</span></h3>
+</div>
+</div>
+</div>
+<div class="brz-wrapper-clone css-nil">
+<div class="brz-wrapper-clone__wrap css-15s8sb9">
+<div class="brz-d-xs-flex brz-flex-xs-wrap css-uo4t1y">
+<div class="brz-wrapper-clone__item css-1g5ql68" id="xyylowcpsnkvdzwdggdtqudlwlrratoglfoq">
+<div class="brz-icon__container" data-custom-id="xyylowcpsnkvdzwdggdtqudlwlrratoglfoq"><span class="brz-span brz-icon css-xcjckj"></span></div>
+</div>
+<div class="brz-wrapper-clone__item css-1g5ql68" id="pivanovcmjdgimofomrydekkyruvkbxvilcb">
+<div class="brz-icon__container" data-custom-id="pivanovcmjdgimofomrydekkyruvkbxvilcb"><span class="brz-span brz-icon css-xcjckj"></span></div>
+</div>
+<div class="brz-wrapper-clone__item css-1g5ql68" id="spywslglbmkiulvljmrxasqinxkwrpxpttic">
+<div class="brz-icon__container" data-custom-id="spywslglbmkiulvljmrxasqinxkwrpxpttic"><span class="brz-span brz-icon css-xcjckj"></span></div>
+</div>
+<div class="brz-wrapper-clone__item css-1g5ql68" id="rucfxxtlfjkryhfhtawxtcsqbvuhuaohwwls">
+<div class="brz-icon__container" data-custom-id="rucfxxtlfjkryhfhtawxtcsqbvuhuaohwwls"><span class="brz-span brz-icon css-xcjckj"></span></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="sisqgljraigtwdppxjielmuwlmnnfosbldwb" class="brz-section css-7d6yzg" data-uid="sisqgljraigtwdppxjielmuwlmnnfosbldwb">
+<div class="brz-section__items">
+<div class="brz-section__content" data-custom-id="vtmeldhyijkcxobaszvzcaweqecsmzqpgeax">
+<div class="brz-bg css-1xlmxy4">
+<div class="brz-bg-media">
+<div class="brz-bg-video" data-mute="on" data-autoplay="on"></div>
+<div class="brz-bg-map"></div>
+<div class="brz-bg-color"></div>
+</div>
+<div class="brz-bg-content">
+<div class="brz-container__wrap css-1o1zu06">
+<div class="brz-container css-1ptl1a3">
+<div class="brz-row__container css-1xef2ox" data-custom-id="uunjlcwtvlgmrzxbpndalaihjvjrugouanul">
+<div class="brz-bg brz-d-xs-flex brz-flex-xs-wrap css-8pkgbi">
+<div class="brz-bg-media">
+<div class="brz-bg-color"></div>
+</div>
+<div class="brz-bg-content">
+<div class="brz-row css-18qg7sn">
+<div class="brz-columns css-1lcxv09" data-custom-id="jtybgmmlelzsgtdmlrdzxrdkoxgvyabdombz">
+<div class="brz-bg brz-d-xs-flex css-17s6ens">
+<div class="brz-bg-media">
+<div class="brz-bg-color"></div>
+</div>
+<div class="brz-bg-content">
+<div class="brz-wrapper css-6fvry1">
+<div class="brz-d-xs-flex css-laz546">
+<div class="brz-rich-text" data-custom-id="eqzdihcdrjvynlerhllvuoxylctytsrnevzu">
+<p class="brz-tp-paragraph"><strong class="brz-cp-color8">About us</strong></p>
+
+</div>
+</div>
+</div>
+<div class="brz-wrapper css-6fvry1">
+<div class="brz-d-xs-flex css-laz546">
+<div class="brz-rich-text" data-custom-id="txjdreeefvqtqcvwxkuymahtumrswsqzipnu">
+<p class="brz-tp-paragraph"><span class="brz-cp-color8">Are you tired of your project feed looking like a small screenshot of a bunch of screenshots? Follow these simple steps and you can make your project thumbnails look great!</span></p>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="brz-columns css-1lcxv09" data-custom-id="vztvraisjwbddjymczehzocfrxwlrqrsschh">
+<div class="brz-bg brz-d-xs-flex css-17s6ens">
+<div class="brz-bg-media">
+<div class="brz-bg-color"></div>
+</div>
+<div class="brz-bg-content">
+<div class="brz-wrapper css-6fvry1">
+<div class="brz-d-xs-flex css-laz546">
+<div class="brz-rich-text" data-custom-id="twmtotxzfadhtxgmsycgjudzkjiwpoyevnts">
+<p class="brz-tp-paragraph"><strong class="brz-cp-color8">Page Menu</strong></p>
+
+</div>
+</div>
+</div>
+<div class="brz-wrapper css-6fvry1">
+<div class="brz-d-xs-flex css-laz546">
+<div class="brz-rich-text" data-custom-id="owqmndpngilhgitqgskuzebohedubuyaksvk">
+<p class="brz-fs-lg-19 brz-fs-sm-im-15 brz-fs-xs-im-15 brz-ls-lg-0 brz-ls-sm-im-0 brz-ls-xs-im-0 brz-ff-source_serif_pro brz-fw-lg-300 brz-fw-sm-im-300 brz-fw-xs-im-300 brz-lh-lg-1_1 brz-lh-sm-im-1_1 brz-lh-xs-im-1_1"><span class="brz-cp-color8">WordPress News</span></p>
+
+</div>
+</div>
+</div>
+<div class="brz-wrapper css-6fvry1">
+<div class="brz-d-xs-flex css-1lyekpi">
+<div class="brz-line brz-css-tqygf brz-css-ewcqb" data-custom-id="btafvhqutmbssqzaqehjfeugktduubmuvlga">
+
+<hr class="brz-hr">
+
+</div>
+</div>
+</div>
+<div class="brz-wrapper css-6fvry1">
+<div class="brz-d-xs-flex css-y6jvco">
+<div class="brz-rich-text" data-custom-id="lgmopuivemdvmovowijcpmaophulzrkldrsj">
+<p class="brz-fs-lg-19 brz-fs-sm-im-15 brz-fs-xs-im-15 brz-ls-lg-0 brz-ls-sm-im-0 brz-ls-xs-im-0 brz-ff-source_serif_pro brz-fw-lg-300 brz-fw-sm-im-300 brz-fw-xs-im-300 brz-lh-lg-1_1 brz-lh-sm-im-1_1 brz-lh-xs-im-1_1"><span class="brz-cp-color8">Startups and tech</span></p>
+
+</div>
+</div>
+</div>
+<div class="brz-wrapper css-6fvry1">
+<div class="brz-d-xs-flex css-1lyekpi">
+<div class="brz-line brz-css-tqygf brz-css-zqfei" data-custom-id="otmzgnrefeudmpjrfbijxcoylxndfiphqdnf">
+
+<hr class="brz-hr">
+
+</div>
+</div>
+</div>
+<div class="brz-wrapper css-6fvry1">
+<div class="brz-d-xs-flex css-y6jvco">
+<div class="brz-rich-text" data-custom-id="eybnxhumfurgdnwbhneafifcoijausdtnjiq">
+<p class="brz-fs-lg-19 brz-fs-sm-im-15 brz-fs-xs-im-15 brz-ls-lg-0 brz-ls-sm-im-0 brz-ls-xs-im-0 brz-ff-source_serif_pro brz-fw-lg-300 brz-fw-sm-im-300 brz-fw-xs-im-300 brz-lh-lg-1_1 brz-lh-sm-im-1_1 brz-lh-xs-im-1_1"><span class="brz-cp-color8">People and leaders</span></p>
+
+</div>
+</div>
+</div>
+<div class="brz-wrapper css-6fvry1">
+<div class="brz-d-xs-flex css-1lyekpi">
+<div class="brz-line brz-css-tqygf brz-css-zyugp" data-custom-id="ycbkruroptwwdeampzabwrmddvxotlxnyqjs">
+
+<hr class="brz-hr">
+
+</div>
+</div>
+</div>
+<div class="brz-wrapper css-6fvry1">
+<div class="brz-d-xs-flex css-kpnp2l">
+<div class="brz-rich-text" data-custom-id="bsmkaobktnljpznbsffooumlbzipoxskzvzx">
+<p class="brz-fs-lg-19 brz-fs-sm-im-15 brz-fs-xs-im-15 brz-ls-lg-0 brz-ls-sm-im-0 brz-ls-xs-im-0 brz-ff-source_serif_pro brz-fw-lg-300 brz-fw-sm-im-300 brz-fw-xs-im-300 brz-lh-lg-1_1 brz-lh-sm-im-1_1 brz-lh-xs-im-1_1"><span class="brz-cp-color8">Events</span></p>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="brz-columns css-1b1gvps" data-custom-id="wenbymmhcskjsguflrfiaqwkdhlrpcobecuu">
+<div class="brz-bg brz-d-xs-flex css-17s6ens">
+<div class="brz-bg-media">
+<div class="brz-bg-color"></div>
+</div>
+<div class="brz-bg-content">
+<div class="brz-wrapper css-6fvry1">
+<div class="brz-d-xs-flex css-laz546">
+<div class="brz-rich-text" data-custom-id="ikorlgpxrmzfgoqhfeksgroextanjvetywoa">
+<p class="brz-tp-paragraph"><strong class="brz-cp-color8">Social Follow</strong></p>
+
+</div>
+</div>
+</div>
+<div class="brz-wrapper css-6fvry1">
+<div class="brz-d-xs-flex css-laz546">
+<div class="brz-rich-text" data-custom-id="zczfapoiahnwitmssnkuxkxlairtevzcxxvz">
+<p class="brz-lh-xs-im-1_1 brz-lh-sm-im-1_1 brz-lh-lg-1_1 brz-fw-xs-im-300 brz-fw-sm-im-300 brz-fw-lg-300 brz-ff-source_serif_pro brz-ls-xs-im-0 brz-ls-sm-im-0 brz-ls-lg-0 brz-fs-xs-im-15 brz-fs-sm-im-15 brz-fs-lg-19"><span class="brz-cp-color8">Facebook</span></p>
+
+</div>
+</div>
+</div>
+<div class="brz-wrapper css-6fvry1">
+<div class="brz-d-xs-flex css-1lyekpi">
+<div class="brz-line brz-css-tqygf brz-css-ihgrb" data-custom-id="cctgisqninftlceiuhslsuukukfbxfmudqrk">
+
+<hr class="brz-hr">
+
+</div>
+</div>
+</div>
+<div class="brz-wrapper css-6fvry1">
+<div class="brz-d-xs-flex css-y6jvco">
+<div class="brz-rich-text" data-custom-id="jqkslujemjhhjubdhkhnevmulzdqiaeowrvz">
+<p class="brz-lh-xs-im-1_1 brz-lh-sm-im-1_1 brz-lh-lg-1_1 brz-fw-xs-im-300 brz-fw-sm-im-300 brz-fw-lg-300 brz-ff-source_serif_pro brz-ls-xs-im-0 brz-ls-sm-im-0 brz-ls-lg-0 brz-fs-xs-im-15 brz-fs-sm-im-15 brz-fs-lg-19"><span class="brz-cp-color8">Twitter</span></p>
+
+</div>
+</div>
+</div>
+<div class="brz-wrapper css-6fvry1">
+<div class="brz-d-xs-flex css-1lyekpi">
+<div class="brz-line brz-css-tqygf brz-css-lrdck" data-custom-id="irvgedaqxndjntmpwaezlegmnmffkrgomslr">
+
+<hr class="brz-hr">
+
+</div>
+</div>
+</div>
+<div class="brz-wrapper css-6fvry1">
+<div class="brz-d-xs-flex css-y6jvco">
+<div class="brz-rich-text" data-custom-id="xvifuiumeagnrevjiopoddmlcdjtpavwunoc">
+<p class="brz-lh-xs-im-1_1 brz-lh-sm-im-1_1 brz-lh-lg-1_1 brz-fw-xs-im-300 brz-fw-sm-im-300 brz-fw-lg-300 brz-ff-source_serif_pro brz-ls-xs-im-0 brz-ls-sm-im-0 brz-ls-lg-0 brz-fs-xs-im-15 brz-fs-sm-im-15 brz-fs-lg-19"><span class="brz-cp-color8">Instagram</span></p>
+
+</div>
+</div>
+</div>
+<div class="brz-wrapper css-6fvry1">
+<div class="brz-d-xs-flex css-1lyekpi">
+<div class="brz-line brz-css-tqygf brz-css-basdb" data-custom-id="wxxpjjpnfeacikcuhpfphutiztjknkuviebv">
+
+<hr class="brz-hr">
+
+</div>
+</div>
+</div>
+<div class="brz-wrapper css-6fvry1">
+<div class="brz-d-xs-flex css-kpnp2l">
+<div class="brz-rich-text" data-custom-id="hsozarkknjnwxbvtotauowyhuiziadcdvjsg">
+<p class="brz-lh-xs-im-1_1 brz-lh-sm-im-1_1 brz-lh-lg-1_1 brz-fw-xs-im-300 brz-fw-sm-im-300 brz-fw-lg-300 brz-ff-source_serif_pro brz-ls-xs-im-0 brz-ls-sm-im-0 brz-ls-lg-0 brz-fs-xs-im-15 brz-fs-sm-im-15 brz-fs-lg-19"><span class="brz-cp-color8">Youtube</span></p>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section></div>]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>272</wp:post_id>
 			<wp:post_date><![CDATA[2019-06-06 13:54:17]]></wp:post_date>
 			<wp:post_date_gmt><![CDATA[2019-06-06 13:54:17]]></wp:post_date_gmt>
 			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
@@ -416,11 +2510,11 @@
 				</wp:postmeta>
 							<wp:postmeta>
 					<wp:meta_key><![CDATA[_yoast_wpseo_content_score]]></wp:meta_key>
-					<wp:meta_value><![CDATA[30]]></wp:meta_value>
+					<wp:meta_value><![CDATA[90]]></wp:meta_value>
 				</wp:postmeta>
 							<wp:postmeta>
 					<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
-					<wp:meta_value><![CDATA[templates/builder-fullwidth-std.php]]></wp:meta_value>
+					<wp:meta_value><![CDATA[page-templates/template-pagebuilder-full-width.php]]></wp:meta_value>
 				</wp:postmeta>
 							<wp:postmeta>
 					<wp:meta_key><![CDATA[brizy-post-plugin-version]]></wp:meta_key>
@@ -445,6 +2539,18 @@
 							<wp:postmeta>
 					<wp:meta_key><![CDATA[brizy-post-compiler-version]]></wp:meta_key>
 					<wp:meta_value><![CDATA[1.0.101]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_container]]></wp:meta_key>
+					<wp:meta_value><![CDATA[full-width]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_sidebar]]></wp:meta_key>
+					<wp:meta_value><![CDATA[full-width]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_disable_title]]></wp:meta_key>
+					<wp:meta_value><![CDATA[on]]></wp:meta_value>
 				</wp:postmeta>
 					</item>
 				<item>
@@ -565,128 +2671,6 @@
 							<wp:postmeta>
 					<wp:meta_key><![CDATA[brizy-post-compiler-version]]></wp:meta_key>
 					<wp:meta_value><![CDATA[1.0.101]]></wp:meta_value>
-				</wp:postmeta>
-					</item>
-				<item>
-			<title>
-							</title>
-			<link>https://demo.themeisle.com/neve-restaurant-brizy/2019/06/07/355/</link>
-			<pubDate>Fri, 07 Jun 2019 09:09:10 +0000</pubDate>
-			<guid isPermaLink="false">https://demo.themeisle.com/neve-restaurant-brizy/?p=355</guid>
-			<description></description>
-			<content:encoded><![CDATA[ ]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>355</wp:post_id>
-			<wp:post_date><![CDATA[2019-06-07 09:09:10]]></wp:post_date>
-			<wp:post_date_gmt><![CDATA[2019-06-07 09:09:10]]></wp:post_date_gmt>
-			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
-			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-			<wp:post_name><![CDATA[355]]></wp:post_name>
-			<wp:status><![CDATA[publish]]></wp:status>
-			<wp:post_parent>0</wp:post_parent>
-			<wp:menu_order>2</wp:menu_order>
-			<wp:post_type><![CDATA[nav_menu_item]]></wp:post_type>
-			<wp:post_password><![CDATA[]]></wp:post_password>
-			<wp:is_sticky>0</wp:is_sticky>
-								<category domain="nav_menu" nicename="main"><![CDATA[Main]]></category>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_type]]></wp:meta_key>
-					<wp:meta_value><![CDATA[post_type]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_menu_item_parent]]></wp:meta_key>
-					<wp:meta_value><![CDATA[0]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_object_id]]></wp:meta_key>
-					<wp:meta_value><![CDATA[291]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_object]]></wp:meta_key>
-					<wp:meta_value><![CDATA[page]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_target]]></wp:meta_key>
-					<wp:meta_value><![CDATA[]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_classes]]></wp:meta_key>
-					<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_xfn]]></wp:meta_key>
-					<wp:meta_value><![CDATA[]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_url]]></wp:meta_key>
-					<wp:meta_value><![CDATA[]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[obfx_menu_icon]]></wp:meta_key>
-					<wp:meta_value><![CDATA[]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
-					<wp:meta_value><![CDATA[8a654949716b32bced063a7dc0afabda]]></wp:meta_value>
-				</wp:postmeta>
-					</item>
-				<item>
-			<title>
-							</title>
-			<link>https://demo.themeisle.com/neve-restaurant-brizy/2019/06/07/356/</link>
-			<pubDate>Fri, 07 Jun 2019 09:09:10 +0000</pubDate>
-			<guid isPermaLink="false">https://demo.themeisle.com/neve-restaurant-brizy/?p=356</guid>
-			<description></description>
-			<content:encoded><![CDATA[ ]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>356</wp:post_id>
-			<wp:post_date><![CDATA[2019-06-07 09:09:10]]></wp:post_date>
-			<wp:post_date_gmt><![CDATA[2019-06-07 09:09:10]]></wp:post_date_gmt>
-			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
-			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-			<wp:post_name><![CDATA[356]]></wp:post_name>
-			<wp:status><![CDATA[publish]]></wp:status>
-			<wp:post_parent>0</wp:post_parent>
-			<wp:menu_order>1</wp:menu_order>
-			<wp:post_type><![CDATA[nav_menu_item]]></wp:post_type>
-			<wp:post_password><![CDATA[]]></wp:post_password>
-			<wp:is_sticky>0</wp:is_sticky>
-								<category domain="nav_menu" nicename="main"><![CDATA[Main]]></category>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_type]]></wp:meta_key>
-					<wp:meta_value><![CDATA[post_type]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_menu_item_parent]]></wp:meta_key>
-					<wp:meta_value><![CDATA[0]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_object_id]]></wp:meta_key>
-					<wp:meta_value><![CDATA[272]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_object]]></wp:meta_key>
-					<wp:meta_value><![CDATA[page]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_target]]></wp:meta_key>
-					<wp:meta_value><![CDATA[]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_classes]]></wp:meta_key>
-					<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_xfn]]></wp:meta_key>
-					<wp:meta_value><![CDATA[]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_url]]></wp:meta_key>
-					<wp:meta_value><![CDATA[]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[obfx_menu_icon]]></wp:meta_key>
-					<wp:meta_value><![CDATA[]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[brizy_post_uid]]></wp:meta_key>
-					<wp:meta_value><![CDATA[9a8f5aec2b7f877cd45b6662507a917b]]></wp:meta_value>
 				</wp:postmeta>
 					</item>
 					</channel>
