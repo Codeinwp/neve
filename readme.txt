@@ -18,6 +18,11 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog == 
+= 2.3.19 - 2019-07-15  = 
+
+* Release
+
+
 = 2.3.18 - 2019-07-15  = 
 
 * Multiple speed optimizations: minified scripts, improved enqueued scripts logic, proper size for the gravatar images

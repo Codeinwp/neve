@@ -1,4 +1,8 @@
 
+ ### v2.3.19 - 2019-07-15 
+ **Changes:** 
+ * Release
+ 
  ### v2.3.18 - 2019-07-15 
  **Changes:** 
  * Multiple speed optimizations: minified scripts, improved enqueued scripts logic, proper size for the gravatar images
