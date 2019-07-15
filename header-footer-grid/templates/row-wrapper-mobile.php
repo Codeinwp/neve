@@ -44,4 +44,5 @@ $item_attributes  = apply_filters( 'neve_nav_toggle_data_attrs', '' );
 		</div>
 	</div>
 </div>
+<div class="header-menu-sidebar-overlay"></div>
 
