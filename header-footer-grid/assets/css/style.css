@@ -408,7 +408,7 @@ body.menu_sidebar_dropdown:before {
   z-index: 999910;
   padding: 8px 10px; }
   .header-menu-sidebar .navbar-toggle-wrapper button.navbar-toggle {
-    padding: 8px 10px; }
+    position: relative; }
 
 .menu_sidebar_dropdown .header-menu-sidebar .close-sidebar-panel {
   display: none; }
@@ -932,7 +932,8 @@ body.menu_sidebar_dropdown:before {
   cursor: pointer;
   padding: 10px 15px;
   display: flex;
-  align-items: center; }
+  align-items: center;
+  border: 1px solid #f0f0f0; }
   .navbar-toggle:hover {
     box-shadow: none;
     transform: none;
@@ -940,10 +941,7 @@ body.menu_sidebar_dropdown:before {
   .navbar-toggle .nav-icon--label {
     margin-left: 5px; }
   .light-mode .navbar-toggle {
-    border: 1px solid #f0f0f0;
     color: #404248; }
-  .dark-mode .navbar-toggle {
-    padding: 10px 0; }
 
 .is-menu-sidebar .navbar-toggle .icon-bar:nth-child(1) {
   transform: rotate(45deg);

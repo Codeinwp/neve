@@ -2,7 +2,7 @@
 **Contributors:** [themeisle](https://profiles.wordpress.org/themeisle)  
 **Tags:** blog, custom-logo, e-commerce, rtl-language-support, post-formats, grid-layout, one-column, two-columns, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, accessibility-ready, wide-blocks, block-styles, footer-widgets, portfolio, left-sidebar, right-sidebar  
 **Requires at least:** 4.0  
-**Tested up to:** 5.0  
+**Tested up to:** 5.2.2  
 **Stable tag:** 1.0.23  
 **Requires PHP:** 5.4.0  
 **License:** GPLv2 or later  
@@ -402,56 +402,64 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 Images used in the screenshot and in the demos:
 All  images are licensed under CC0.
 
-* Neve Main: testimonial-1.jpg, CC0, https://mystock.themeisle.com/photo/girl-in-the-forest/
-* Neve Main: team-4-1.jpg, CC0, https://mystock.themeisle.com/photo/girl/
-* Neve Main: team-3-1.jpg, CC0, https://mystock.themeisle.com/photo/thinking-time/
-* Neve Main: team-2-1.jpg, CC0, https://mystock.themeisle.com/photo/winter-hat/
-* Neve Main: team-1.jpg, CC0, https://mystock.themeisle.com/photo/sun-hat/
-* Neve Main: 3-3.jpg (also used in screenshot), CC0, https://pixabay.com/en/metro-subway-train-station-1209556/
-* Neve Main: blog3.jpg, CC0, https://mystock.themeisle.com/photo/river-bridge/
-* Neve Main: 11.jpg, CC0, https://mystock.themeisle.com/photo/yoga-2/
-* Neve Main: 9.jpg, CC0, https://mystock.themeisle.com/photo/alley-3/
-* Neve Main: 8.jpg, CC0, https://mystock.themeisle.com/photo/new-york-city-scape/
-* Neve Main: 6.jpg, CC0, https://mystock.themeisle.com/photo/devices/
-* Neve Main: 5.jpg, CC0, https://mystock.themeisle.com/photo/high-seats/
-* Neve Main: 4.jpg, CC0, https://mystock.themeisle.com/photo/ipad/
-* Neve Main: 1.jpg (also used in screenshot), CC0, https://mystock.themeisle.com/photo/path/
-* Neve Main: work-4.jpg, CC0 https://mystock.themeisle.com/photo/stockholm-street/
-* Neve Main: video-bg.jpg, CC0, https://mystock.themeisle.com/photo/cloudy-sunset/
-* Neve Main: winter-forest.jpg, CC0, https://mystock.themeisle.com/photo/winter-forest/
-* Neve Main: neve-onboarding-placeholder (used as placeholder), CC0, https://mystock.themeisle.com/photo/wood/
-* Neve Vet Center ( screenshot ): CC0 https://mystock.themeisle.com/photo/street-dog-sitting-on-a-beach/
-* Neve Vet Center ( screenshot ): CC0 https://mystock.themeisle.com/photo/dog-4/
-* Neve Energy: neve-energy-bg-title.jpg (also used in screenshot), CC0, https://mystock.themeisle.com/photo/citylights/
-* Neve Energy: neve-energy-testimony.jpg, CC0, https://mystock.themeisle.com/photo/train-station/
-* Neve Energy: neve-energy-sustainability.jpg, CC0, https://mystock.themeisle.com/photo/windmill/
-* Neve Lawyers: men-employees-suit-work-greeting-1979261.jpg (also used in screenshot), CC0, https://pixabay.com/en/men-employees-suit-work-greeting-1979261/
-* Neve Lawyers: lady-justice-2388500.jpg, CC0, https://pixabay.com/en/lady-justice-legal-law-justice-2388500/
-* Neve Lawyers: business-woman-2697954.jpg, CC0, https://pixabay.com/en/business-woman-professional-suit-2697954/
-* Neve Lawyers: business-woman-2756210.jpg, CC0, https://pixabay.com/en/business-woman-woman-secretary-2756210/
-* Neve Lawyers: women-2748752.jpg, CC0, https://pixabay.com/en/women-business-attractive-dynamic-2748752/
-* Neve Lawyers: justice-2060093.jpg, CC0, https://pixabay.com/en/justice-statue-lady-justice-2060093/
-* Neve Lawyers: writer-1421099.jpg, CC0, https://pixabay.com/en/writer-typewriter-author-blogging-1421099/
-* Neve Lawyers: library-869061.jpg, CC0, https://pixabay.com/en/library-books-education-literature-869061/
-* Neve Lawyers: chicago-1870010.jpg, CC0, https://pixabay.com/en/chicago-city-night-usa-1870010/
-* Neve Lawyers: office-2820890.jpg, CC0, https://pixabay.com/en/office-attorney-reading-read-laws-2820890/
-* Neve Lawyers: men-2608581.jpg, CC0, https://pixabay.com/en/men-women-people-group-walk-busy-2608581/
-* Neve Lawyers: police-850055.jpg, CC0, https://pixabay.com/en/police-crime-scene-blue-light-850054/
-* Neve Charity: children-63175, CC0, https://pixabay.com/en/children-afghanistan-afghani-girl-63175/
-* Neve Gutenberg: street-at-night, CC0, https://mystock.themeisle.com/photo/street-at-night/
-* Neve Scholar: neve-scholar-big-title (used only in screenshot), https://www.pexels.com/photo/men-s-wearing-black-suit-jacket-and-pants-937481/
-* Neve Scholar: neve-scholar-placeholder (used as placeholder), CC0, https://mystock.themeisle.com/photo/arid-earth/
-* Neve Freelancer: neve-freelancere-hero-image (also used in screenshot), CC0, https://mystock.themeisle.com/photo/photographer-3/
-* Neve Freelancer: neve-freelancer-testimonial, CC0, https://mystock.themeisle.com/photo/girl/
-* Neve Freelancer: neve-freelancer-testimonial-bg, CC0, https://mystock.themeisle.com/photo/code-in-wp/
-* Neve Freelancer: neve-freelancer-faq, CC0, https://mystock.themeisle.com/photo/programming-laptop-2/
-* Neve Freelancer: neve-freelancer-about1, CC0, https://mystock.themeisle.com/photo/path-to-the-village/
-* Neve Shop (screenshot): https://stocksnap.io/photo/SS2GVMJTWH
-* Neve Shop (screenshot): https://stocksnap.io/photo/KQECHSBAOC
-* Neve Shop (screenshot): https://stocksnap.io/photo/1CXI0CSPE5
-* Neve Shop (screenshot): https://stocksnap.io/photo/JBCWCLO4JI
-* Neve Shop (screenshot): https://stocksnap.io/photo/AEENLCARXY
-* Neve Restaurant ( screenshot ): CC0 https://stocksnap.io/photo/3IRQDGCL7J
-* Neve Restaurant ( screenshot ): CC0 https://stocksnap.io/photo/ZPMWWMHBDE
-* Neve Restaurant ( screenshot ): CC0 https://stocksnap.io/photo/2HEQC6X2DF
-* Neve Doctors ( screenshot ): CC0 https://stocksnap.io/photo/GSBJXWRSDV
+Screenshot resources:
+
+* [MyStock](http://mystock.themeisle.com/photo/statue-2/)
+* [MyStock](https://mystock.themeisle.com/photo/path/)
+
+Starter Sites screenshots resources:
+
+- Original
+* [MyStock](http://mystock.themeisle.com/photo/statue-2/)
+* [MyStock](https://mystock.themeisle.com/photo/path/)
+
+- Restaurant
+* [StockSnap](https://stocksnap.io/photo/3IRQDGCL7J)
+* [StockSnap](https://stocksnap.io/photo/ZPMWWMHBDE)
+* [StockSnap](https://stocksnap.io/photo/2HEQC6X2DF)
+
+- Charity
+* [StockSnap](https://stocksnap.io/photo/AEENLCARXY)
+
+- Vet Center
+* [MyStock](https://mystock.themeisle.com/photo/street-dog-sitting-on-a-beach/)
+* [MyStock](https://mystock.themeisle.com/photo/dog-4/)
+
+- Doctors
+* [StockSnap](https://stocksnap.io/photo/GSBJXWRSDV)
+
+- Energy Panels
+* [MyStock](https://mystock.themeisle.com/photo/citylights/)
+
+- Lawyers
+* [StockSnap](https://stocksnap.io/photo/GVUWVKUHZE)
+
+- Freelancer
+* [MyStock](https://mystock.themeisle.com/photo/photographer-3/)
+
+- Shop
+* [StockSnap](https://stocksnap.io/photo/SS2GVMJTWH)
+* [StockSnap](https://stocksnap.io/photo/KQECHSBAOC)
+* [StockSnap](https://stocksnap.io/photo/1CXI0CSPE5)
+* [StockSnap](https://stocksnap.io/photo/JBCWCLO4JI)
+* [StockSnap](https://stocksnap.io/photo/AEENLCARXY)
+
+- Travel Agency
+* [MyStock](https://mystock.themeisle.com/photo/amsterdam/)
+
+- Coffee Shop
+* [StockSnap](https://stocksnap.io/photo/HOHJK6B7TD)
+* [StockSnap](https://stocksnap.io/photo/DTKOOFPC06)
+
+- Constructions
+* [StockSnap](https://stocksnap.io/photo/T78VYSKHFS)
+* [StockSnap](https://stocksnap.io/photo/ZWTCO4R3G6)
+* [StockSnap](https://stocksnap.io/photo/6EAB6C3900)
+* [StockSnap](https://stocksnap.io/photo/BZ4FJO6KZE)
+
+- Showcase
+* [MyStock](http://mystock.themeisle.com/photo/thinking-time/)
+* [MyStock](http://mystock.themeisle.com/photo/photographer-2/)
+
+- Business Consulting
+* [MyStock](https://mystock.themeisle.com/photo/new-york-cityscape/)

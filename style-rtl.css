@@ -5,7 +5,7 @@ Theme URI:      https://themeisle.com/themes/neve/
 Author:         ThemeIsle
 Author URI:     https://themeisle.com
 Description:    Neve is a super fast, easily customizable, multi-purpose theme. It’s perfect for blogs, small business, startups, agencies, firms, e-commerce shops (WooCommerce storefront) as well as personal portfolio sites and most types of projects. A fully AMP optimized and responsive theme, Neve will load in mere seconds and adapt perfectly on any viewing device. While it is lightweight and has a minimalist design, the theme is highly extendable, it has a highly SEO optimized code, resulting in top rankings in Google search results. Neve works perfectly with Gutenberg and the most popular page builders (Elementor, Brizy, Beaver Builder, Visual Composer, SiteOrigin, Divi). Neve is also WooCommerce ready, responsive, RTL & translation ready. Look no further. Neve is the perfect theme for you!
-Version:        2.3.17
+Version:        2.3.18
 License:        GNU General Public License v2 or later
 License URI:    http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain:    neve
@@ -2008,54 +2008,58 @@ audio {
   height: 50px;
 }
 
-.widget_media_gallery .gallery-columns-1 .gallery-item {
+.gallery-columns-1 .gallery-item {
   width: 100%;
   max-width: 100%;
 }
 
-.widget_media_gallery .gallery-columns-2 .gallery-item {
+.gallery-columns-2 .gallery-item {
   max-width: 48%;
+  width: 48%;
 }
 
-.widget_media_gallery .gallery-columns-3 .gallery-item {
+.gallery-columns-3 .gallery-item {
   max-width: 31.3333333333%;
+  width: 31.3333333333%;
 }
 
-.widget_media_gallery .gallery-columns-4 .gallery-item {
+.gallery-columns-4 .gallery-item {
   max-width: 23%;
+  width: 23%;
 }
 
-.widget_media_gallery .gallery-columns-5 .gallery-item {
+.gallery-columns-5 .gallery-item {
   max-width: 18%;
+  width: 18%;
 }
 
-.widget_media_gallery .gallery-columns-6 .gallery-item {
+.gallery-columns-6 .gallery-item {
   max-width: 14.6666666667%;
+  width: 14.6666666667%;
 }
 
-.widget_media_gallery .gallery-columns-7 .gallery-item {
+.gallery-columns-7 .gallery-item {
   max-width: 12.2857142857%;
+  width: 12.2857142857%;
 }
 
-.widget_media_gallery .gallery-columns-8 .gallery-item {
+.gallery-columns-8 .gallery-item {
   max-width: 10.5%;
+  width: 10.5%;
 }
 
-.widget_media_gallery .gallery-columns-9 .gallery-item {
+.gallery-columns-9 .gallery-item {
   max-width: 9.1111111111%;
+  width: 9.1111111111%;
 }
 
-.widget_media_gallery .gallery {
+.gallery {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
 
-.widget_media_gallery br {
-  display: none;
-}
-
-.widget_media_gallery .gallery-item {
+.gallery-item {
   display: inline-block;
   text-align: center;
   vertical-align: top;

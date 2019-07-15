@@ -1,7 +1,6 @@
 {
   "content_file": "https://demo.themeisle.com/neve-charity/wp-content/uploads/sites/178/ti-demo-data/export.xml",
   "theme_mods": {
-    "ti_prev_theme": "twentysixteen",
     "custom_css_post_id": 16,
     "background_color": "ffffff",
     "neve_menu_item_color": "#ffffff",
@@ -32,14 +31,126 @@
     "primary-menu_hover_color": "#00a2dd",
     "hfg_header_layout": "{\"desktop\":{\"top\":[],\"main\":[{\"x\":0,\"y\":1,\"width\":4,\"height\":1,\"id\":\"logo\"},{\"x\":4,\"y\":1,\"width\":8,\"height\":1,\"id\":\"primary-menu\"}],\"bottom\":[]},\"mobile\":{\"top\":[],\"main\":[{\"x\":0,\"y\":1,\"width\":8,\"height\":1,\"id\":\"logo\"},{\"x\":8,\"y\":1,\"width\":4,\"height\":1,\"id\":\"nav-icon\"}],\"bottom\":[],\"sidebar\":[{\"x\":0,\"y\":1,\"width\":8,\"height\":1,\"id\":\"primary-menu\"}]}}",
     "footer_copyright_content": "<p><a href=\"https://themeisle.com/themes/neve/\" target=\"_blank\" rel=\"nofollow\">Neve Charity</a> | Powered by <a href=\"http://wordpress.org\" rel=\"nofollow\">WordPress</a></p>",
-    "neve_generated_style_version": 1555943907,
+    "ti_about_recommended_plugins": {
+      "otter-blocks": "visible"
+    },
     "__ti_import_menus_location": {
       "primary": "main"
     }
   },
   "wp_options": {
     "elementor_disable_typography_schemes": "yes",
-    "elementor_disable_color_schemes": "yes"
+    "elementor_disable_color_schemes": "yes",
+    "obfx_data": {
+      "core_settings": [],
+      "module_status": {
+        "social-sharing": {
+          "showed_notices": [],
+          "active": true
+        },
+        "image-cdn": {
+          "showed_notices": []
+        },
+        "uptime-monitor": {
+          "showed_notices": []
+        },
+        "google-analytics": {
+          "showed_notices": []
+        },
+        "elementor-widgets": {
+          "showed_notices": []
+        },
+        "template-directory": {
+          "showed_notices": [],
+          "active": false
+        },
+        "menu-icons": {
+          "showed_notices": [],
+          "active": false
+        },
+        "mystock-import": {
+          "showed_notices": [],
+          "active": false
+        },
+        "policy-notice": {
+          "showed_notices": []
+        },
+        "safe-updates": {
+          "showed_notices": []
+        },
+        "gutenberg-blocks": {
+          "showed_notices": [],
+          "active": false
+        }
+      },
+      "module_settings": {
+        "image-cdn": {
+          "enable_cdn_replacer": "0",
+          "obfx_connect_api_key": ""
+        },
+        "safe-updates": {
+          "auto_update_checks": "0"
+        },
+        "social-sharing": {
+          "display_on_posts": "1",
+          "socials_position": "0",
+          "mobile_position": "1",
+          "facebook": "1",
+          "facebook-desktop-show": "1",
+          "facebook-mobile-show": "1",
+          "twitter": "1",
+          "twitter-desktop-show": "1",
+          "twitter-mobile-show": "1",
+          "g-plus": "1",
+          "g-plus-desktop-show": "1",
+          "g-plus-mobile-show": "1",
+          "pinterest": "1",
+          "pinterest-desktop-show": "1",
+          "pinterest-mobile-show": "1",
+          "linkedin-desktop-show": "1",
+          "linkedin-mobile-show": "1",
+          "tumblr-desktop-show": "1",
+          "tumblr-mobile-show": "1",
+          "reddit-desktop-show": "1",
+          "reddit-mobile-show": "1",
+          "whatsapp-desktop-show": "1",
+          "whatsapp-mobile-show": "1",
+          "mail-desktop-show": "1",
+          "mail-mobile-show": "1",
+          "sms-desktop-show": "1",
+          "sms-mobile-show": "1",
+          "vk-desktop-show": "1",
+          "vk-mobile-show": "1",
+          "okru-desktop-show": "1",
+          "okru-mobile-show": "1",
+          "douban-desktop-show": "1",
+          "douban-mobile-show": "1",
+          "baidu-desktop-show": "1",
+          "baidu-mobile-show": "1",
+          "xing-desktop-show": "1",
+          "xing-mobile-show": "1",
+          "renren-desktop-show": "1",
+          "renren-mobile-show": "1",
+          "weibo-desktop-show": "1",
+          "weibo-mobile-show": "1",
+          "display_on_pages": "0",
+          "network_name": "0",
+          "linkedin": "0",
+          "tumblr": "0",
+          "reddit": "0",
+          "whatsapp": "0",
+          "mail": "0",
+          "sms": "0",
+          "vk": "0",
+          "okru": "0",
+          "douban": "0",
+          "baidu": "0",
+          "xing": "0",
+          "renren": "0",
+          "weibo": "0"
+        }
+      }
+    }
   },
   "widgets": {
     "blog-sidebar": {
