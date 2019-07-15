@@ -104,9 +104,9 @@ class Front_End {
 	 * @return array
 	 */
 	private function get_ti_demo_content_support_data() {
-		$theme_options = wp_get_theme();
-		$theme_name    = apply_filters( 'ti_wl_theme_name', $theme_options->__get( 'Name' ) );
-
+		$theme_options           = wp_get_theme();
+		$theme_name              = apply_filters( 'ti_wl_theme_name', $theme_options->__get( 'Name' ) );
+		$onboarding_folder_url   = get_template_directory_uri();
 		$this->onboarding_config = array(
 			'editors'     => array(
 				'elementor',
@@ -161,36 +161,43 @@ class Front_End {
 				),
 				'brizy'     => array(
 					'neve-brizy-main'       => array(
-						'url'   => 'https://demo.themeisle.com/neve-onboarding-brizy/',
-						'title' => 'Original',
+						'url'        => 'https://demo.themeisle.com/neve-onboarding-brizy/',
+						'title'      => 'Original',
+						'screenshot' => $onboarding_folder_url . '/onboarding/neve-main/screenshot.jpg',
 					),
 					'neve-brizy-restaurant' => array(
 						'url'              => 'https://demo.themeisle.com/neve-restaurant-brizy/',
 						'title'            => 'Restaurant',
 						'unsplash_gallery' => 'https://unsplash.com/collections/4587624/restaurant',
+						'screenshot'       => $onboarding_folder_url . '/onboarding/neve-restaurant/screenshot.jpg',
 					),
 					'neve-brizy-charity'    => array(
 						'url'              => 'https://demo.themeisle.com/neve-charity-brizy/',
 						'title'            => 'Charity',
 						'unsplash_gallery' => 'https://unsplash.com/collections/4587605/charity',
+						'screenshot'       => $onboarding_folder_url . '/onboarding/neve-charity/screenshot.jpg',
 					),
 					'neve-brizy-vet-center' => array(
 						'url'              => 'https://demo.themeisle.com/neve-vet-center-brizy/',
 						'title'            => 'Vet Center',
 						'unsplash_gallery' => 'https://unsplash.com/collections/4587611/vet-center',
+						'screenshot'       => $onboarding_folder_url . '/onboarding/neve-vet-center/screenshot.jpg',
 					),
 					'neve-brizy-doctors'    => array(
 						'url'              => 'https://demo.themeisle.com/neve-doctors-brizy/',
 						'title'            => 'Doctors',
 						'unsplash_gallery' => 'https://unsplash.com/collections/4587593/doctor',
+						'screenshot'       => $onboarding_folder_url . '/onboarding/neve-doctors/screenshot.jpg',
 					),
 					'neve-brizy-shop'       => array(
-						'url'   => 'https://demo.themeisle.com/neve-shop-brizy/',
-						'title' => 'Shop',
+						'url'        => 'https://demo.themeisle.com/neve-shop-brizy/',
+						'title'      => 'Shop',
+						'screenshot' => $onboarding_folder_url . '/onboarding/neve-shop/screenshot.jpg',
 					),
 					'neve-brizy-zelle'      => array(
-						'url'   => 'https://demo.themeisle.com/neve-zelle-brizy/',
-						'title' => 'Travel Agency',
+						'url'        => 'https://demo.themeisle.com/neve-zelle-brizy/',
+						'title'      => 'Travel Agency',
+						'screenshot' => $onboarding_folder_url . '/onboarding/neve-zelle/screenshot.jpg',
 					),
 				),
 			),
@@ -279,8 +286,9 @@ class Front_End {
 		$this->onboarding_config['editors'][]          = 'gutenberg';
 		$this->onboarding_config['local']['gutenberg'] = array(
 			'neve-main-gutenberg' => array(
-				'url'   => 'https://demo.themeisle.com/neve-onboarding-gutenberg',
-				'title' => 'Original',
+				'url'        => 'https://demo.themeisle.com/neve-onboarding-gutenberg',
+				'title'      => 'Original',
+				'screenshot' => get_template_directory_uri() . '/onboarding/neve-main/screenshot.jpg',
 			),
 		);
 
