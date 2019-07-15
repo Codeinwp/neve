@@ -18,6 +18,12 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog == 
+= 2.3.20 - 2019-07-15  = 
+
+* Updated composer
+* Fixed z-index issue with the About page
+
+
 = 2.3.19 - 2019-07-15  = 
 
 * Release

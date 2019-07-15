@@ -1,4 +1,9 @@
 
+ ### v2.3.20 - 2019-07-15 
+ **Changes:** 
+ * Updated composer
+* Fixed z-index issue with the About page
+ 
  ### v2.3.19 - 2019-07-15 
  **Changes:** 
  * Removed duplicated starter sites screenshots
