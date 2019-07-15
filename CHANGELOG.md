@@ -1,7 +1,8 @@
 
  ### v2.3.19 - 2019-07-15 
  **Changes:** 
- * Release
+ * Removed duplicated starter sites screenshots
+	* Fixed issue with admin menu overlapping the header
  
  ### v2.3.18 - 2019-07-15 
  **Changes:** 
