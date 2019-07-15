@@ -42,7 +42,7 @@ class Post_Meta extends Base_View {
 		$show_avatar = get_theme_mod( 'neve_author_avatar', false );
 
 		if ( $show_avatar === true ) {
-			return $value;
+			return true;
 		}
 
 		return false;
@@ -74,13 +74,18 @@ class Post_Meta extends Base_View {
 					);
 					$avatar_url     = get_avatar_url( $author_email, $gravatar_args );
 					$avatar_markup  = '<img class="photo" alt="' . get_the_author() . '" src="' . esc_url( $avatar_url ) . '" />&nbsp;';
-					$display_avatar = apply_filters( 'neve_display_author_avatar', true );
+					$display_avatar = apply_filters( 'neve_display_author_avatar', false );
 
 					$markup .= '<li class="meta author vcard">';
 					if ( $display_avatar ) {
 						$markup .= $avatar_markup;
 					}
-					$markup .= '<span class="author-name fn">' . __( 'by', 'neve' ) . ' ' . wp_kses_post( get_the_author_posts_link() ) . '</span>';
+					$markup .= '<span class="author-name fn">';
+					if( ! $display_avatar ) {
+						$markup .= __( 'by', 'neve' ) . ' ';
+					}
+					$markup .= wp_kses_post( get_the_author_posts_link() ) . '</span>';
+
 					$markup .= '</li>';
 					break;
 				case 'date':
