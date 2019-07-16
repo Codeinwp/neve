@@ -405,6 +405,10 @@ section.exclusive .dots-nav .dot.tns-nav-active {
 
 section.exclusive .tns-outer {
   overflow: hidden;
+  position: relative;
+  padding: 5px 10px 0 10px;
+  right: -10px;
+  width: calc( 100% + 20px);
 }
 
 section.exclusive .tns-ovh {
