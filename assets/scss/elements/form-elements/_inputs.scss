@@ -23,12 +23,9 @@ textarea {
     border-radius: 3px;
     transition: all 0.3s ease;
     margin-bottom: 10px;
-}
-
-input[type="text"], input[type="search"], input[type="password"], input[type="submit"], textarea {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 
 input, textarea, select, button {
