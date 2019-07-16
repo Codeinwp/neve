@@ -62,11 +62,19 @@
 .woocommerce-notices-wrapper > div {
   display: flex;
   align-items: center;
-  flex-direction: row-reverse;
+  flex-direction: column-reverse;
   justify-content: flex-end;
+  text-align: center;
+  padding: 15px;
+  &:before {
+    display: none;
+  }
   .button {
+    margin-top: 10px;
+    width: 100%;
     margin-left: auto;
-    align-self: flex-end;
+    align-self: center;
+    white-space: nowrap;
   }
 }
 
@@ -86,10 +94,6 @@ $notices: (
       color: #fff;
       &:before {
         color: #fff;
-        top: 0;
-        display: flex;
-        align-items: center;
-        height: 100%;
       }
       > a {
         color: #fff;
@@ -109,10 +113,6 @@ $notices: (
       }
       &:before {
         color: $body-color;
-        top: 0;
-        display: flex;
-        align-items: center;
-        height: 100%;
       }
       > a.button.wc-forward {
         padding: 8px 12px;
@@ -137,3 +137,22 @@ $notices: (
 
 //</editor-fold>
 
+
+@mixin generic--tablet-sm() {
+  .woocommerce-notices-wrapper > div {
+    flex-direction: row-reverse;
+    text-align: left;
+    padding-left: 45px;
+    &:before {
+      display: flex;
+      top: 0;
+      align-items: center;
+      height: 100%;
+    }
+    .button {
+      margin-top: 0;
+      width: auto;
+
+    }
+  }
+}
