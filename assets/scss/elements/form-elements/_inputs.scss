@@ -14,18 +14,21 @@ input[type="tel"],
 input[type="color"],
 select,
 textarea {
-    display: inline-block;
-    font-size: 14px;
-    padding: 7px 12px;
-    background-color: transparent;
-    color: #333;
-    border: 1px solid #dddddd;
-    border-radius: 3px;
-    transition: all 0.3s ease;
-    margin-bottom: 10px;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
+  display: inline-block;
+  font-size: 14px;
+  padding: 7px 12px;
+  background-color: transparent;
+  color: #333;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+input:not([type="search"]), textarea, select {
+  margin-bottom: 10px;
 }
 
 input, textarea, select, button {
@@ -47,10 +50,12 @@ label {
 fieldset {
   border: 0;
   margin: $spacing-sm 0;
+
   legend {
     font-size: .9em;
     margin-bottom: $spacing-xs;
   }
+
   input[type="text"], input[type="search"], input[type="password"], textarea {
     width: 100%;
   }
