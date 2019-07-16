@@ -510,7 +510,7 @@ blockquote.wp-block-quote.is-style-large cite {
 .wp-block-button a {
   font-size: .8em;
   font-weight: 600;
-  padding: 6px 12px;
+  padding: 8px 12px;
   transition: all .15s ease-in-out;
   text-align: center;
   vertical-align: middle;
@@ -889,7 +889,7 @@ ul[id^="nv-primary-navigation"] i {
 a.button.close-responsive-search {
   font-size: .8em;
   font-weight: 600;
-  padding: 6px 12px;
+  padding: 8px 12px;
   transition: all .15s ease-in-out;
   text-align: center;
   vertical-align: middle;
@@ -946,7 +946,7 @@ ul[id^="nv-primary-navigation"] li.button, .menu li.button {
 ul[id^="nv-primary-navigation"] li.button > a, .menu li.button > a {
   font-size: .8em;
   font-weight: 600;
-  padding: 6px 12px;
+  padding: 8px 12px;
   transition: all .15s ease-in-out;
   text-align: center;
   vertical-align: middle;
@@ -1220,7 +1220,7 @@ fieldset input[type="text"], fieldset input[type="search"], fieldset input[type=
 .button {
   font-size: .8em;
   font-weight: 600;
-  padding: 6px 12px;
+  padding: 8px 12px;
   transition: all .15s ease-in-out;
   text-align: center;
   vertical-align: middle;
@@ -1263,7 +1263,7 @@ fieldset input[type="text"], fieldset input[type="search"], fieldset input[type=
 button, input[type=button], .btn, input[type="submit"] {
   font-size: .8em;
   font-weight: 600;
-  padding: 6px 12px;
+  padding: 8px 12px;
   transition: all .15s ease-in-out;
   text-align: center;
   vertical-align: middle;
@@ -1899,10 +1899,11 @@ table tbody tr:hover {
   background-color: #fbfbfb;
 }
 
-code {
+p code {
   background: #d0effb;
   border-radius: 5px;
   border: 1px solid #f0f0f0;
+  padding: 0 3px;
 }
 
 pre {
@@ -2716,7 +2717,7 @@ br {
   }
   ul[id^="nv-primary-navigation"] .button {
     margin: inherit;
-    padding: 6px 12px;
+    padding: 8px 12px;
   }
   .nv-nav-wrap .primary-menu-ul:not(#nv-primary-navigation-sidebar) .neve-mega-menu {
     position: static;
