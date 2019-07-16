@@ -544,4 +544,12 @@ wp.customize.controlConstructor["interface-tabs"] = wp.customize.Control.extend(
         }
     }
 });
+
+document.addEventListener("DOMContentLoaded", function(event) {
+    var markup = '<div class="nv-upsell"><div class="nv-upsell-content">' + upsellConfig.text + '</div><a target="_blank" href="' + upsellConfig.button_url + '" class="button button-primary">' + upsellConfig.button_text + "</a></div>";
+    var elChild = document.createElement("li");
+    elChild.innerHTML = markup;
+    var el = document.getElementById("sub-accordion-panel-hfg_header");
+    el.insertBefore(elChild, el.children[1]);
+});
 //# sourceMappingURL=customizer-controls.js.map
