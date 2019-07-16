@@ -1172,7 +1172,22 @@ footer {
   margin-bottom: 60px;
 }
 
-input[type="text"], input[type="password"], input[type="email"], input[type="url"], input[type="date"], input[type="month"], input[type="time"], input[type="datetime"], input[type="datetime-local"], input[type="week"], input[type="number"], input[type="search"], input[type="tel"], input[type="color"], select, textarea {
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="url"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="week"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+select,
+textarea {
   display: inline-block;
   font-size: 14px;
   padding: 7px 12px;
@@ -1181,12 +1196,13 @@ input[type="text"], input[type="password"], input[type="email"], input[type="url
   border: 1px solid #dddddd;
   border-radius: 3px;
   transition: all 0.3s ease;
-}
-
-input[type="text"], input[type="search"], input[type="password"], input[type="submit"], textarea {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+}
+
+input:not([type="search"]), textarea, select {
+  margin-bottom: 10px;
 }
 
 input, textarea, select, button {
@@ -1196,6 +1212,10 @@ input, textarea, select, button {
   -moz-box-sizing: border-box;
   /* For legacy (Firefox <29) Gecko based browsers */
   box-sizing: border-box;
+}
+
+input, select {
+  height: 35px;
 }
 
 label {
@@ -1937,7 +1957,6 @@ pre {
 }
 
 .nv-content-wrap ul li, .nv-content-wrap ol li, .excerpt-wrap ul li, .excerpt-wrap ol li {
-  line-height: 2em;
   margin-bottom: 10px;
 }
 

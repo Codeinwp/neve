@@ -51,6 +51,27 @@
   color: #ffb100;
 }
 
+.woocommerce-notices-wrapper > div {
+  display: flex;
+  align-items: center;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  text-align: center;
+  padding: 15px;
+}
+
+.woocommerce-notices-wrapper > div:before {
+  display: none;
+}
+
+.woocommerce-notices-wrapper > div .button {
+  margin-top: 10px;
+  width: 100%;
+  margin-left: auto;
+  align-self: center;
+  white-space: nowrap;
+}
+
 .woocommerce .woocommerce-error,
 .woocommerce-page .woocommerce-error {
   background: #f5365c;
@@ -64,22 +85,22 @@
   color: #fff;
 }
 
-.woocommerce .woocommerce-error a,
-.woocommerce-page .woocommerce-error a {
+.woocommerce .woocommerce-error > a,
+.woocommerce-page .woocommerce-error > a {
   color: #fff;
   font-weight: 800;
 }
 
-.woocommerce .woocommerce-error .button.wc-forward,
-.woocommerce-page .woocommerce-error .button.wc-forward {
-  padding: 6px 12px;
+.woocommerce .woocommerce-error > a.button.wc-forward,
+.woocommerce-page .woocommerce-error > a.button.wc-forward {
+  padding: 8px 12px;
 }
 
-.woocommerce .woocommerce-error .button, .woocommerce .woocommerce-error .button:focus, .woocommerce .woocommerce-error .button:active, .woocommerce .woocommerce-error .button:hover,
-.woocommerce-page .woocommerce-error .button,
-.woocommerce-page .woocommerce-error .button:focus,
-.woocommerce-page .woocommerce-error .button:active,
-.woocommerce-page .woocommerce-error .button:hover {
+.woocommerce .woocommerce-error > a.button, .woocommerce .woocommerce-error > a.button:focus, .woocommerce .woocommerce-error > a.button:active, .woocommerce .woocommerce-error > a.button:hover,
+.woocommerce-page .woocommerce-error > a.button,
+.woocommerce-page .woocommerce-error > a.button:focus,
+.woocommerce-page .woocommerce-error > a.button:active,
+.woocommerce-page .woocommerce-error > a.button:hover {
   background-color: #fff;
   color: #f5365c;
   line-height: 1;
@@ -92,8 +113,8 @@
   font-size: .85em;
 }
 
-.woocommerce .woocommerce-info a,
-.woocommerce-page .woocommerce-info a {
+.woocommerce .woocommerce-info > a,
+.woocommerce-page .woocommerce-info > a {
   color: #404248;
 }
 
@@ -102,16 +123,16 @@
   color: #404248;
 }
 
-.woocommerce .woocommerce-info .button.wc-forward,
-.woocommerce-page .woocommerce-info .button.wc-forward {
-  padding: 6px 12px;
+.woocommerce .woocommerce-info > a.button.wc-forward,
+.woocommerce-page .woocommerce-info > a.button.wc-forward {
+  padding: 8px 12px;
 }
 
-.woocommerce .woocommerce-info .button, .woocommerce .woocommerce-info .button:focus, .woocommerce .woocommerce-info .button:active, .woocommerce .woocommerce-info .button:hover,
-.woocommerce-page .woocommerce-info .button,
-.woocommerce-page .woocommerce-info .button:focus,
-.woocommerce-page .woocommerce-info .button:active,
-.woocommerce-page .woocommerce-info .button:hover {
+.woocommerce .woocommerce-info > a.button, .woocommerce .woocommerce-info > a.button:focus, .woocommerce .woocommerce-info > a.button:active, .woocommerce .woocommerce-info > a.button:hover,
+.woocommerce-page .woocommerce-info > a.button,
+.woocommerce-page .woocommerce-info > a.button:focus,
+.woocommerce-page .woocommerce-info > a.button:active,
+.woocommerce-page .woocommerce-info > a.button:hover {
   background-color: #404248;
   color: #f0f0f0;
   line-height: 1;
@@ -130,22 +151,22 @@
   color: #fff;
 }
 
-.woocommerce .woocommerce-message a,
-.woocommerce-page .woocommerce-message a {
+.woocommerce .woocommerce-message > a,
+.woocommerce-page .woocommerce-message > a {
   color: #fff;
   font-weight: 800;
 }
 
-.woocommerce .woocommerce-message .button.wc-forward,
-.woocommerce-page .woocommerce-message .button.wc-forward {
-  padding: 6px 12px;
+.woocommerce .woocommerce-message > a.button.wc-forward,
+.woocommerce-page .woocommerce-message > a.button.wc-forward {
+  padding: 8px 12px;
 }
 
-.woocommerce .woocommerce-message .button, .woocommerce .woocommerce-message .button:focus, .woocommerce .woocommerce-message .button:active, .woocommerce .woocommerce-message .button:hover,
-.woocommerce-page .woocommerce-message .button,
-.woocommerce-page .woocommerce-message .button:focus,
-.woocommerce-page .woocommerce-message .button:active,
-.woocommerce-page .woocommerce-message .button:hover {
+.woocommerce .woocommerce-message > a.button, .woocommerce .woocommerce-message > a.button:focus, .woocommerce .woocommerce-message > a.button:active, .woocommerce .woocommerce-message > a.button:hover,
+.woocommerce-page .woocommerce-message > a.button,
+.woocommerce-page .woocommerce-message > a.button:focus,
+.woocommerce-page .woocommerce-message > a.button:active,
+.woocommerce-page .woocommerce-message > a.button:hover {
   background-color: #fff;
   color: #2dce89;
   line-height: 1;
@@ -699,6 +720,20 @@ section.exclusive .tns-visually-hidden {
   border-top: 1px solid #f0f0f0;
 }
 
+.place-order noscript {
+  padding: 10px 0;
+}
+
+.place-order noscript button {
+  display: block !important;
+  margin: 10px 0 10px auto !important;
+}
+
+.woocommerce-billing-fields__field-wrapper noscript button {
+  display: block !important;
+  margin: 10px 0 10px auto !important;
+}
+
 .woocommerce ul.products li.product .added_to_cart {
   margin-top: 1em;
 }
@@ -718,7 +753,7 @@ section.exclusive .tns-visually-hidden {
 .woocommerce #respond input#submit {
   font-size: .8em;
   font-weight: 600;
-  padding: 6px 12px;
+  padding: 8px 12px;
   transition: all .15s ease-in-out;
   text-align: center;
   vertical-align: middle;
@@ -756,6 +791,7 @@ section.exclusive .tns-visually-hidden {
 }
 
 .woocommerce a.button.alt,
+.woocommerce button.button.alt,
 .woocommerce a.button.checkout-button,
 .woocommerce button.button:disabled,
 .woocommerce button.button:disabled[disabled],
@@ -771,7 +807,7 @@ section.exclusive .tns-visually-hidden {
 .woocommerce .return-to-shop > .button {
   font-size: .8em;
   font-weight: 600;
-  padding: 6px 12px;
+  padding: 8px 12px;
   transition: all .15s ease-in-out;
   text-align: center;
   vertical-align: middle;
@@ -786,6 +822,7 @@ section.exclusive .tns-visually-hidden {
 }
 
 .woocommerce a.button.alt:hover,
+.woocommerce button.button.alt:hover,
 .woocommerce a.button.checkout-button:hover,
 .woocommerce button.button:disabled:hover,
 .woocommerce button.button:disabled[disabled]:hover,
@@ -804,6 +841,7 @@ section.exclusive .tns-visually-hidden {
 }
 
 .woocommerce a.button.alt:hover,
+.woocommerce button.button.alt:hover,
 .woocommerce a.button.checkout-button:hover,
 .woocommerce button.button:disabled:hover,
 .woocommerce button.button:disabled[disabled]:hover,
@@ -831,7 +869,7 @@ section.exclusive .tns-visually-hidden {
 .woocommerce #review_form #respond input#submit {
   font-size: .8em;
   font-weight: 600;
-  padding: 6px 12px;
+  padding: 8px 12px;
   transition: all .15s ease-in-out;
   text-align: center;
   vertical-align: middle;
@@ -870,7 +908,7 @@ section.exclusive .tns-visually-hidden {
 .woocommerce .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout) {
   font-size: .8em;
   font-weight: 600;
-  padding: 6px 12px;
+  padding: 8px 12px;
   transition: all .15s ease-in-out;
   text-align: center;
   vertical-align: middle;
@@ -908,7 +946,7 @@ section.exclusive .tns-visually-hidden {
 ul[id^="nv-primary-navigation"] .nv-nav-cart a.button.wc-forward:not(.checkout) {
   font-size: .8em;
   font-weight: 600;
-  padding: 6px 12px;
+  padding: 8px 12px;
   transition: all .15s ease-in-out;
   text-align: center;
   vertical-align: middle;
@@ -936,7 +974,7 @@ ul[id^="nv-primary-navigation"] .nv-nav-cart a.button.wc-forward:not(.checkout):
 ul[id^="nv-primary-navigation"] .nv-nav-cart a.button.checkout.wc-forward {
   font-size: .8em;
   font-weight: 600;
-  padding: 6px 12px;
+  padding: 8px 12px;
   transition: all .15s ease-in-out;
   text-align: center;
   vertical-align: middle;
@@ -1085,7 +1123,7 @@ ul[id^="nv-primary-navigation"] .nv-nav-cart a.button.checkout.wc-forward:hover 
 }
 
 ul[id^="nv-primary-navigation"] a.button {
-  padding: 6px 12px;
+  padding: 8px 12px;
 }
 
 .menu-item-nav-cart.responsive-nav-cart > a {
@@ -1378,6 +1416,24 @@ body.woocommerce-account .nv-content-wrap > .woocommerce {
 .woocommerce-account .woocommerce-MyAccount-content address {
   font-style: normal;
   font-size: .9em;
+}
+
+@media (min-width: 576px) {
+  .woocommerce-notices-wrapper > div {
+    flex-direction: row-reverse;
+    text-align: left;
+    padding-left: 45px;
+  }
+  .woocommerce-notices-wrapper > div:before {
+    display: flex;
+    top: 0;
+    align-items: center;
+    height: 100%;
+  }
+  .woocommerce-notices-wrapper > div .button {
+    margin-top: 0;
+    width: auto;
+  }
 }
 
 @media (min-width: 769px) {

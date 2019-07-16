@@ -421,7 +421,7 @@ body.menu_sidebar_slide_left .header-menu-sidebar-overlay {
   background: rgba(0, 0, 0, 0.5);
   position: fixed;
   transform: translate3d(0, 0, 0);
-  z-index: 0;
+  z-index: 999899;
   transition: all .5s linear;
   display: none;
   visibility: hidden;

@@ -81,7 +81,7 @@ class Post_Meta extends Base_View {
 						$markup .= $avatar_markup;
 					}
 					$markup .= '<span class="author-name fn">';
-					if( ! $display_avatar ) {
+					if ( ! $display_avatar ) {
 						$markup .= __( 'by', 'neve' ) . ' ';
 					}
 					$markup .= wp_kses_post( get_the_author_posts_link() ) . '</span>';
