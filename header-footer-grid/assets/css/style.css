@@ -966,7 +966,8 @@ body.menu_sidebar_slide_left.menu_sidebar_dropdown:before {
   .builder-item--header_search .widget {
     width: 100%; }
   .builder-item--header_search input[type="search"] {
-    background-color: #fff; }
+    background-color: #fff;
+    margin-bottom: 0; }
 
 .nv-search-icon-component a {
   padding: 10px 0; }

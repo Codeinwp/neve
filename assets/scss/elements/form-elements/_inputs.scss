@@ -1,4 +1,19 @@
-input[type="text"], input[type="password"], input[type="email"], input[type="url"], input[type="date"], input[type="month"], input[type="time"], input[type="datetime"], input[type="datetime-local"], input[type="week"], input[type="number"], input[type="search"], input[type="tel"], input[type="color"], select, textarea {
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="url"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="week"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+select,
+textarea {
     display: inline-block;
     font-size: 14px;
     padding: 7px 12px;
@@ -7,7 +22,8 @@ input[type="text"], input[type="password"], input[type="email"], input[type="url
     border: 1px solid #dddddd;
     border-radius: 3px;
     transition: all 0.3s ease;
-  }
+    margin-bottom: 10px;
+}
 
 input[type="text"], input[type="search"], input[type="password"], input[type="submit"], textarea {
   -webkit-appearance: none;
