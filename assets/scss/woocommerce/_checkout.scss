@@ -2,6 +2,7 @@
   &.nv-without-title .neve-main {
     padding-top: $spacing;
   }
+
   .nv-page-title-wrap.nv-big-title h1 {
     margin-bottom: 0;
   }
@@ -296,6 +297,7 @@
     #neve-checkout-coupon .woocommerce-form-coupon {
       flex-wrap: wrap;
       flex-direction: row;
+
       p.form-row {
         margin-bottom: 0;
         width: auto;
@@ -322,3 +324,21 @@
     float: right;
   }
 }
+
+
+
+//<editor-fold desc="No JS">
+.place-order noscript {
+  padding: 10px 0;
+
+  button {
+    display: block !important;
+    margin: 10px 0 10px auto !important;
+  }
+}
+
+.woocommerce-billing-fields__field-wrapper noscript button {
+  display: block !important;
+  margin: 10px 0 10px auto !important;
+}
+//</editor-fold>

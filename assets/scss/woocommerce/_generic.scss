@@ -63,7 +63,7 @@
   display: flex;
   align-items: center;
   flex-direction: row-reverse;
-
+  justify-content: flex-end;
   .button {
     margin-left: auto;
     align-self: flex-end;
