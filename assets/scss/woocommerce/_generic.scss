@@ -59,6 +59,17 @@
 //</editor-fold>
 
 //<editor-fold desc="WooCommerce Notices">
+.woocommerce-notices-wrapper > div {
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+
+  .button {
+    margin-left: auto;
+    align-self: flex-end;
+  }
+}
+
 $notices: (
         'error': $error,
         'info': #f0f0f0,
@@ -71,34 +82,42 @@ $notices: (
     background: $color;
     border: none;
     font-size: .85em;
-    @if ( $noticeName != 'info' ) {
-    color: #fff;
+    @if ($noticeName != 'info') {
+      color: #fff;
       &:before {
         color: #fff;
+        top: 0;
+        display: flex;
+        align-items: center;
+        height: 100%;
       }
-      a {
+      > a {
         color: #fff;
         font-weight: 800;
       }
-      .button.wc-forward {
+      > a.button.wc-forward {
         padding: 8px 12px;
       }
-      .button, .button:focus, .button:active, .button:hover {
+      > a.button, > a.button:focus, > a.button:active, > a.button:hover {
         background-color: #fff;
         color: $color;
         line-height: 1;
       }
     } @else {
-      a {
+      > a {
         color: $body-color;
       }
       &:before {
         color: $body-color;
+        top: 0;
+        display: flex;
+        align-items: center;
+        height: 100%;
       }
-      .button.wc-forward {
+      > a.button.wc-forward {
         padding: 8px 12px;
       }
-      .button, .button:focus, .button:active, .button:hover {
+      > a.button, > a.button:focus, > a.button:active, > a.button:hover {
         background-color: $body-color;
         color: $color;
         line-height: 1;
