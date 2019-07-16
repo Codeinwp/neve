@@ -17,7 +17,7 @@ class Yoast {
 	/**
 	 * Module init.
 	 */
-	public function init(){
+	public function init() {
 		$this->load_breadcrumbs();
 	}
 
@@ -25,7 +25,7 @@ class Yoast {
 	 * Load hooks and filters.
 	 */
 	private function load_breadcrumbs() {
-		if ( ! function_exists('yoast_breadcrumb') ){
+		if ( ! function_exists( 'yoast_breadcrumb' ) ) {
 			return;
 		}
 		$breadcrumbs_hooks = apply_filters(
@@ -33,20 +33,20 @@ class Yoast {
 			array(
 				'neve_before_loop',
 				'neve_before_page_header',
-				'neve_before_post_content'
+				'neve_before_post_content',
 			)
 		);
 
-		foreach ( $breadcrumbs_hooks as $hook ){
-			add_action( $hook, array( $this, 'render_yoast_breadcrumbs') );
+		foreach ( $breadcrumbs_hooks as $hook ) {
+			add_action( $hook, array( $this, 'render_yoast_breadcrumbs' ) );
 		}
 	}
 
 	/**
 	 * Render Yoast Bredcrumbs.
 	 */
-	public function render_yoast_breadcrumbs(){
-		yoast_breadcrumb( '<small id="breadcrumbs" style="margin-bottom: 20px; display: block;">','</small>' );
+	public function render_yoast_breadcrumbs() {
+		yoast_breadcrumb( '<small id="breadcrumbs" style="margin-bottom: 20px; display: block;">', '</small>' );
 	}
 
 }
