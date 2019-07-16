@@ -22,6 +22,10 @@ input, textarea, select, button {
   box-sizing: border-box;
 }
 
+input, select {
+  height: 35px;
+}
+
 label {
   display: inline-block;
   margin-bottom: $spacing-xs;
