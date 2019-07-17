@@ -1,10 +1,9 @@
-.builder-item--header_search {
+.builder-item {
   line-height: 1;
-  .widget {
+  .widget-search {
     width: 100%;
   }
   input[type="search"] {
     background-color: #fff;
-    margin-bottom: 0;
   }
 }
