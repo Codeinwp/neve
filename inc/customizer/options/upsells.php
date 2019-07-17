@@ -21,8 +21,14 @@ class Upsells extends Base_Customizer {
 
 	/**
 	 * Init function
+	 *
+	 * @return bool|void
 	 */
 	public function init() {
+		if ( defined( 'NEVE_PRO_VERSION' ) ) {
+			return false;
+		}
+
 		parent::init();
 		add_action( 'customize_controls_enqueue_scripts', array( $this, 'localize_upsell' ) );
 	}
@@ -38,7 +44,7 @@ class Upsells extends Base_Customizer {
 				'button_url'  => esc_url( apply_filters( 'neve_upgrade_link_from_child_theme_filter', 'https://themeisle.com/themes/neve/upgrade/?utm_medium=customizer&utm_source=getpro&utm_campaign=neve' ) ),
 				'button_text' => esc_html__( 'Get the PRO version!', 'neve' ),
 				'text'        => esc_html__( 'Add new awesome header components, sticky and transparent menu, socials, and many more.', 'neve' ),
-			) 
+			)
 		);
 	}
 	/**
