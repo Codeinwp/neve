@@ -1264,10 +1264,16 @@ ul[id^="nv-primary-navigation"] .menu-item-nav-cart:not(.responsive-nav-cart) {
   text-align: right;
 }
 
+.woocommerce .cart_totals ul#shipping_method .shipping-method-description {
+  margin: 0;
+}
+
 .woocommerce .cart_totals ul#shipping_method li {
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
 }
 
 .woocommerce .cart_totals ul#shipping_method li input {
