@@ -961,13 +961,12 @@ body.menu_sidebar_slide_left.menu_sidebar_dropdown:before {
   transform: rotate(45deg);
   bottom: 5px; }
 
-.builder-item--header_search {
+.builder-item {
   line-height: 1; }
-  .builder-item--header_search .widget {
+  .builder-item .widget-search {
     width: 100%; }
-  .builder-item--header_search input[type="search"] {
-    background-color: #fff;
-    margin-bottom: 0; }
+  .builder-item input[type="search"] {
+    background-color: #fff; }
 
 .nv-search-icon-component a {
   padding: 10px 0; }

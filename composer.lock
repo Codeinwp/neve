@@ -81,16 +81,16 @@
         },
         {
             "name": "codeinwp/ti-onboarding",
-            "version": "1.5.1",
+            "version": "1.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeinwp/ti-onboarding.git",
-                "reference": "167d5a1ef6fb4f9c50b5ed471a6eb54cc6fae12c"
+                "reference": "2398f693882bf2188bb0584033d09dfbe8d37406"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeinwp/ti-onboarding/zipball/167d5a1ef6fb4f9c50b5ed471a6eb54cc6fae12c",
-                "reference": "167d5a1ef6fb4f9c50b5ed471a6eb54cc6fae12c",
+                "url": "https://api.github.com/repos/Codeinwp/ti-onboarding/zipball/2398f693882bf2188bb0584033d09dfbe8d37406",
+                "reference": "2398f693882bf2188bb0584033d09dfbe8d37406",
                 "shasum": ""
             },
             "require-dev": {
@@ -117,7 +117,7 @@
             ],
             "description": "Onboarding for themeisle themes.",
             "homepage": "https://github.com/Codeinwp/ti-onboarding",
-            "time": "2019-07-08T10:41:18+00:00"
+            "time": "2019-07-15T11:48:52+00:00"
         }
     ],
     "packages-dev": [
