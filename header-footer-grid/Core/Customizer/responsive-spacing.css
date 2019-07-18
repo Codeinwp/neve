@@ -1,6 +1,9 @@
 .customize-control-hfg-responsive-spacing {
 	/* Unit Screen wrap */
 }
+.customize-control-hfg-responsive-spacing .customize-control-title{
+    margin-bottom: 0;
+}
 
 .customize-control-hfg-responsive-spacing .customize-control-title {
 	display: inline-block;
@@ -11,18 +14,29 @@
 	position: relative;
 }
 
+.hfg-spacing-header {
+	display: flex;
+	align-items: center;
+	margin-bottom: 5px;
+    margin-bottom: 10px;
+}
+
 .customize-control-hfg-responsive-spacing .hfg-spacing-responsive-btns {
-	display: block;
 	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	line-height: 2;
-	border: 1px solid #ddd;
+	border-radius: 50%;
+	width: 20px;
+	height: 20px;
+	margin-left: 10px;
+    background-color: #13aff0;
 }
 
 .customize-control-hfg-responsive-spacing .hfg-spacing-responsive-btns > li {
 	margin-bottom: 0;
 	display: none;
-	width: 35px;
-	height: 26px;
 }
 
 .customize-control-hfg-responsive-spacing .hfg-spacing-responsive-btns > li.active {
@@ -34,30 +48,35 @@
 	cursor: pointer;
 	background: none;
 	border: none;
-	opacity: .75;
 	outline: none;
+    display: flex;
+    align-items: center;
 }
 
 .customize-control-hfg-responsive-spacing .hfg-spacing-responsive-btns button[type="button"] > i {
-	width: 15px;
-	height: 15px;
-	font-size: 15px;
-	margin-top: 1px;
+	width: 12px;
+	height: 12px;
+	font-size: 12px;
+    color: #fff;
 }
 
 .customize-control-hfg-responsive-spacing .hfg-spacing-responsive-units {
-	position: absolute;
-	transform: translateY(-100%);
 	font-size: 11px;
 	text-transform: uppercase;
-	top: 0;
-	right: 0;
+	display: none;
+}
+
+.hfg-units-wrap {
+    margin-left: auto;
+}
+
+.customize-control-hfg-responsive-spacing .hfg-spacing-responsive-units.active {
+	display: flex;
 }
 
 .customize-control-hfg-responsive-spacing .hfg-spacing-responsive-units li.single-unit {
 	display: inline-block;
 	margin-left: 6px;
-	width: 16px;
 	text-align: center;
 	user-select: none;
 	opacity: 0.7;
@@ -106,23 +125,22 @@
 }
 
 .customize-control-hfg-responsive-spacing .input-wrapper .hfg-spacing-wrapper .hfg-spacing-input-item-link span {
-	width: 35px;
+	width: 28px;
 	height: 26px;
 	line-height: 26px;
 	font-size: 14px;
 	border: 1px solid #ddd;
+	border-right: 0;
 }
 
 .customize-control-hfg-responsive-spacing .input-wrapper .hfg-spacing-wrapper .hfg-spacing-input-item-reset span {
-	width: 35px;
-	height: 26px;
+	width: 25px;
+	height: 25px;
 	line-height: 26px;
 	font-size: 14px;
-	border: 1px solid #ddd;
+    text-align: right;
 }
 
-.customize-control-hfg-responsive-spacing .input-wrapper .hfg-spacing-wrapper .hfg-spacing-input-item-reset:focus span,
-.customize-control-hfg-responsive-spacing .input-wrapper .hfg-spacing-wrapper .hfg-spacing-input-item-reset:active span {
-	color: #fff;
-	background-color: #1e8cbe;
+.customize-control-hfg-responsive-spacing .input-wrapper .hfg-spacing-wrapper .hfg-spacing-input-item-reset:hover span {
+	color: #ff7f5f;
 }
