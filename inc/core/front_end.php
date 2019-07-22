@@ -138,6 +138,16 @@ class Front_End {
 						'title'            => 'Doctors',
 						'unsplash_gallery' => 'https://unsplash.com/collections/4587593/doctor',
 					),
+                    'neve-architecture'  => array(
+                        'url'              => 'https://demo.themeisle.com/neve-architecture/',
+                        'title'            => 'Architecture',
+                        'unsplash_gallery' => 'https://unsplash.com/collections/6802313/architecture/f59e19df059789d86d1066ea80130a87',
+                    ),
+                    'neve-fitness'  => array(
+                        'url'              => 'https://demo.themeisle.com/neve-fitness/',
+                        'title'            => 'Fitness',
+                        'unsplash_gallery' => 'https://unsplash.com/collections/6800490/fitness-gym',
+                    ),
 					'neve-energy-panels' => array(
 						'url'   => 'https://demo.themeisle.com/neve-energy-panels/',
 						'title' => 'Energy Panels',
@@ -213,6 +223,11 @@ class Front_End {
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/06/neve-construction-new-screenshot.jpg',
 						'title'      => 'Constructions Company',
 					),
+					'neve-fashion'       => array(
+                        'url'        => 'https://demo.themeisle.com/neve-fashion/',
+                        'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/07/neve-fashion-demo-screenshot.png',
+                        'title'      => 'Fashion',
+                    ),
 					'neve-showcase'      => array(
 						'url'        => 'https://demo.themeisle.com/neve-showcase/',
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/06/neve-showcase-demo-screenshot-big.png',
