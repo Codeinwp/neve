@@ -996,6 +996,10 @@ input::-moz-focus-outer {
     margin-bottom: 0;
 }
 
+.nv-upsell-content{
+    margin-bottom: 10px;
+}
+
 #customize-controls #accordion-section-neve_upsells_section.control-section .accordion-section-title:hover {
     background-color: #0073aa;
     color: #fff;

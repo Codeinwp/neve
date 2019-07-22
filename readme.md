@@ -18,6 +18,25 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
+### 2.3.20 - 2019-07-15  ###
+
+* Updated composer
+* Fixed z-index issue with the About page
+
+
+### 2.3.19 - 2019-07-15  ###
+
+* Release
+
+
+### 2.3.18 - 2019-07-15  ###
+
+* Multiple speed optimizations: minified scripts, improved enqueued scripts logic, proper size for the gravatar images
+* Removed author gravatar image by default and created a new option for it
+* Updates for current Starter Sites library
+* New Brizy Starter Sites library
+
+
 ### 2.3.17 - 2019-07-08  ###
 
 * Fixed theme check warning
@@ -399,67 +418,67 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 ## Resources ##
 * Neve Icons based on Font Awesome Icons licensed under CC BY 4.0 License (https://creativecommons.org/licenses/by/4.0/).
 
-Images used in the screenshot and in the demos:
 All  images are licensed under CC0.
 
 Screenshot resources:
 
-* [MyStock](http://mystock.themeisle.com/photo/statue-2/)
-* [MyStock](https://mystock.themeisle.com/photo/path/)
+* http://mystock.themeisle.com/photo/statue-2/
+* https://mystock.themeisle.com/photo/path/
 
 Starter Sites screenshots resources:
 
 - Original
-* [MyStock](http://mystock.themeisle.com/photo/statue-2/)
-* [MyStock](https://mystock.themeisle.com/photo/path/)
+* http://mystock.themeisle.com/photo/statue-2/
+* https://mystock.themeisle.com/photo/path/
 
 - Restaurant
-* [StockSnap](https://stocksnap.io/photo/3IRQDGCL7J)
-* [StockSnap](https://stocksnap.io/photo/ZPMWWMHBDE)
-* [StockSnap](https://stocksnap.io/photo/2HEQC6X2DF)
+* https://stocksnap.io/photo/3IRQDGCL7J
+* https://stocksnap.io/photo/ZPMWWMHBDE
+* https://stocksnap.io/photo/2HEQC6X2DF
 
 - Charity
-* [StockSnap](https://stocksnap.io/photo/AEENLCARXY)
+* https://stocksnap.io/photo/AEENLCARXY
 
 - Vet Center
-* [MyStock](https://mystock.themeisle.com/photo/street-dog-sitting-on-a-beach/)
-* [MyStock](https://mystock.themeisle.com/photo/dog-4/)
+* https://mystock.themeisle.com/photo/street-dog-sitting-on-a-beach/
+* https://mystock.themeisle.com/photo/dog-4/
 
 - Doctors
-* [StockSnap](https://stocksnap.io/photo/GSBJXWRSDV)
+* https://stocksnap.io/photo/GSBJXWRSDV
 
 - Energy Panels
-* [MyStock](https://mystock.themeisle.com/photo/citylights/)
+* https://mystock.themeisle.com/photo/citylights/
 
 - Lawyers
-* [StockSnap](https://stocksnap.io/photo/GVUWVKUHZE)
+* https://stocksnap.io/photo/GVUWVKUHZE
 
 - Freelancer
-* [MyStock](https://mystock.themeisle.com/photo/photographer-3/)
+* https://mystock.themeisle.com/photo/photographer-3/
 
 - Shop
-* [StockSnap](https://stocksnap.io/photo/SS2GVMJTWH)
-* [StockSnap](https://stocksnap.io/photo/KQECHSBAOC)
-* [StockSnap](https://stocksnap.io/photo/1CXI0CSPE5)
-* [StockSnap](https://stocksnap.io/photo/JBCWCLO4JI)
-* [StockSnap](https://stocksnap.io/photo/AEENLCARXY)
+* https://stocksnap.io/photo/SS2GVMJTWH
+* https://stocksnap.io/photo/KQECHSBAOC
+* https://stocksnap.io/photo/1CXI0CSPE5
+* https://stocksnap.io/photo/JBCWCLO4JI
+* https://stocksnap.io/photo/AEENLCARXY
 
 - Travel Agency
-* [MyStock](https://mystock.themeisle.com/photo/amsterdam/)
+* https://mystock.themeisle.com/photo/amsterdam/
 
 - Coffee Shop
-* [StockSnap](https://stocksnap.io/photo/HOHJK6B7TD)
-* [StockSnap](https://stocksnap.io/photo/DTKOOFPC06)
+* https://stocksnap.io/photo/HOHJK6B7TD
+* https://stocksnap.io/photo/DTKOOFPC06
 
 - Constructions
-* [StockSnap](https://stocksnap.io/photo/T78VYSKHFS)
-* [StockSnap](https://stocksnap.io/photo/ZWTCO4R3G6)
-* [StockSnap](https://stocksnap.io/photo/6EAB6C3900)
-* [StockSnap](https://stocksnap.io/photo/BZ4FJO6KZE)
+* https://stocksnap.io/photo/T78VYSKHFS
+* https://stocksnap.io/photo/ZWTCO4R3G6
+* https://stocksnap.io/photo/6EAB6C3900
+* https://stocksnap.io/photo/BZ4FJO6KZE
 
 - Showcase
-* [MyStock](http://mystock.themeisle.com/photo/thinking-time/)
-* [MyStock](http://mystock.themeisle.com/photo/photographer-2/)
+* http://mystock.themeisle.com/photo/thinking-time/
+* http://mystock.themeisle.com/photo/photographer-2/
 
 - Business Consulting
-* [MyStock](https://mystock.themeisle.com/photo/new-york-cityscape/)
+* https://mystock.themeisle.com/photo/new-york-cityscape/
+
