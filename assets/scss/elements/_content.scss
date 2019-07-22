@@ -50,10 +50,11 @@ table {
   }
 }
 
-code {
+p code {
   background: #d0effb;
   border-radius: 5px;
   border: $muted-border;
+  padding: 0 3px;
 }
 
 pre {
@@ -87,7 +88,6 @@ pre {
     padding-left: $spacing-sm;
 
     li {
-      line-height: 2em;
       margin-bottom: $spacing-xs;
     }
   }

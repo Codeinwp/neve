@@ -35,6 +35,7 @@ class Woocommerce {
 			.woocommerce a.product_type_grouped,
 			.woocommerce a.product_type_external,
 			.woocommerce a.product_type_variable,
+			.woocommerce button.button.alt,
 			.woocommerce button.button.alt.single_add_to_cart_button.disabled,
 			.woocommerce button.button.alt.single_add_to_cart_button,
 			.woocommerce .actions > button[type=submit],

@@ -1,9 +1,10 @@
 //<editor-fold desc="Title-less">
 .woocommerce-cart {
-  &.nv-without-title .neve-main  {
+  &.nv-without-title .neve-main {
     padding-top: $spacing;
   }
 }
+
 //</editor-fold>
 
 //<editor-fold desc="Remove button">
@@ -124,10 +125,16 @@
   ul#shipping_method {
     text-align: left;
 
+    .shipping-method-description {
+      margin: 0;
+    }
+
     li {
       display: flex;
       align-items: center;
       justify-content: flex-end;
+      flex-wrap: wrap;
+      margin-bottom: $spacing-sm;
 
       input {
         margin: 0 5px 0 0 !important;

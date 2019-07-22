@@ -104,6 +104,8 @@ wp.customize.controlConstructor['hfg-responsive-spacing'] = wp.customize.Control
 			}
 
 			jQuery( '.wp-full-overlay-footer .devices button[data-device="' + device + '"]' ).trigger( 'click' );
+			jQuery( '.hfg-spacing-responsive-units' ).removeClass( 'active' );
+			jQuery( '.customize-control-hfg-responsive-spacing .hfg-spacing-' + device + '-responsive-units' ).addClass( 'active' );
 		} );
 
 		control.container.find( '.hfg-spacing-responsive-wrapper .hfg-spacing-input-item-reset span' ).on( 'click', function( event ) {
