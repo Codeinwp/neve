@@ -1,3 +1,4 @@
+/* jshint esversion: 6 */
 export const hfg = function() {
 
 	/**
@@ -73,13 +74,6 @@ export const hfg = function() {
 		 * Init mobile sidebar.
 		 */
 		HFG.prototype.initMenuSidebar = function() {
-			// let themeMenuSidebar;
-			// if ( ! document.body.classList.contains( "menu_sidebar_dropdown" ) ) {
-			// 	themeMenuSidebar = document.getElementById( "header-menu-sidebar" );
-			// 	if ( themeMenuSidebar ) {
-			// 		document.body.append( themeMenuSidebar );
-			// 	}
-			// }
 
 			document.addEventListener(
 					'customize_control_sidebar',
@@ -189,105 +183,8 @@ export const hfg = function() {
 			);
 		};
 
-		HFG.prototype.toggleMobileSubmenu = function(e) {
-			e.preventDefault();
-			let that = this;
-			let li = e.target.closest( 'li' );
-			let firstSubmenu = li.querySelectorAll(
-					':scope  > .sub-menu, .sub-lv-0'
-			);
-
-			if ( !li.classList.contains( 'open-sub' ) ) {
-				// Show the sub menu.
-				li.classList.add( 'open-sub' );
-				if ( firstSubmenu.length ) {
-					for ( let i = 0; i < firstSubmenu.length; i++ ) {
-						that.slideDown(
-								firstSubmenu[i],
-								this.options.menuToggleDuration,
-								function() {
-									li.classList.add( 'open-sub' );
-								}
-						);
-					}
-				}
-			} else {
-				// Hide the sub menu.
-				if ( firstSubmenu.length ) {
-					for ( let i = 0; i < firstSubmenu.length; i++ ) {
-						that.slideUp(
-								firstSubmenu[i],
-								this.options.menuToggleDuration,
-								function() {
-									li.classList.remove( 'open-sub' );
-								}
-						);
-					}
-				}
-			}
-		};
-
 		/**
-		 * Add events listener for mobile toggle button.
-		 *
-		 * @param toggleIcon
-		 */
-		HFG.prototype.toggleMobileSubmenuEvents = function(toggleIcon) {
-			toggleIcon.addEventListener(
-					'click',
-					this.toggleMobileSubmenu.bind( this )
-			);
-		};
-
-		/**
-		 * Initial mobile submenu.
-		 */
-		HFG.prototype.initMobileSubMenu = function() {
-			let menuChildren = document.querySelectorAll(
-					'#header-menu-sidebar .nav-menu-mobile .menu-item-has-children'
-			);
-
-			if ( menuChildren.length ) {
-
-				for ( let i = 0; i < menuChildren.length; i++ ) {
-					let child = menuChildren[i];
-
-					if ( !child.classList.contains( 'toggle--added' ) ) {
-						child.classList.add( 'toggle--added' );
-
-						let fistLink = child.querySelector( ':scope > a' );
-						let d = fistLink.cloneNode( true );
-
-						let toggleButton = document.createElement( 'span' );
-						toggleButton.classList.add( 'nav-toggle-icon' );
-						toggleButton.innerHTML = '<i class="nav-icon-angle"></i>';
-
-						fistLink.parentNode.insertBefore( toggleButton, fistLink );
-						let submenu = child.querySelector( ':scope > .sub-menu' );
-						if ( '1' !== HFG_JS.sidebar_menu_no_duplicator ) {
-							submenu.prepend( d );
-						}
-						let firstSubmenu = child.querySelectorAll(
-								':scope  > .sub-menu, .sub-lv-0'
-						);
-						if ( firstSubmenu.length ) {
-							for ( let j = 0; j < firstSubmenu.length; j++ ) {
-								this.slideUp( firstSubmenu[j], 0 );
-							}
-						}
-						if ( '1' !== HFG_JS.sidebar_menu_no_duplicator ) {
-							let dWrapper = document.createElement( 'li' );
-							d.parentNode.prepend( dWrapper );
-							dWrapper.appendChild( d );
-						}
-						this.toggleMobileSubmenuEvents( toggleButton );
-					}
-				}
-			}
-		};
-
-		/**
-		 * SideUp
+		 * SlideUp
 		 *
 		 * @param element
 		 * @param duration
@@ -383,18 +280,10 @@ export const hfg = function() {
 		HFG.prototype.toggleClass = function(element, className) {
 			if ( element instanceof NodeList ) {
 				for ( let i = 0; i < element.length; i++ ) {
-					if ( element[i].classList.contains( className ) ) {
-						element[i].classList.remove( className );
-					} else {
-						element[i].classList.add( className );
-					}
+					element[i].classList.toggle( className );
 				}
 			} else if ( element instanceof Node || element instanceof Element ) {
-				if ( element.classList.contains( className ) ) {
-					element.classList.remove( className );
-				} else {
-					element.classList.add( className );
-				}
+				element.classList.toggle( className );
 			}
 		};
 
@@ -543,24 +432,6 @@ export const hfg = function() {
 		};
 
 		/**
-		 * Wrapper element
-		 *
-		 *
-		 * @return Element
-		 * @param element
-		 * @param tag
-		 */
-		HFG.prototype.wrapper = function(element, tag) {
-			if ( typeof tag === 'undefined' ) {
-				tag = 'div';
-			}
-			let wrapper = document.createElement( tag );
-			element.parentNode.replaceChild( wrapper, element );
-			wrapper.appendChild( element );
-			return wrapper;
-		};
-
-		/**
 		 * Initial
 		 */
 		HFG.prototype.init = function() {
@@ -577,17 +448,6 @@ export const hfg = function() {
 						this.initMenuSidebar();
 						this.initMobileSubMenu();
 						this.insertMenuOverlayClass();
-					}.bind( this )
-			);
-			// Add actions when window resize.
-			window.addEventListener(
-					'resize',
-					function() {
-						// Reset search form alignment.
-						this.removeClass(
-								document.querySelectorAll( '.header-search_icon-item' ),
-								'active'
-						);
 					}.bind( this )
 			);
 		};
@@ -630,139 +490,4 @@ export const hfg = function() {
 		} )();
 
 	} )();
-
-	/**
-	 *
-	 * Handles toggling the navigation menu for small screens and enables TAB key
-	 * navigation support for dropdown menus.
-	 */
-	( function() {
-		let container, menu, links, i, len;
-
-		container = document.getElementById( 'site-navigation-main-desktop' );
-		if ( !container ) {
-			return;
-		}
-
-		menu = container.getElementsByTagName( 'ul' )[0];
-		// Hide menu toggle button if menu is empty and return early.
-		if ( 'undefined' === typeof menu ) {
-			return;
-		}
-
-		menu.setAttribute( 'aria-expanded', 'false' );
-		if ( -1 === menu.className.indexOf( 'nav-menu' ) ) {
-			menu.className += ' nav-menu';
-		}
-
-		// Get all the link elements within the menu.
-		links = menu.getElementsByTagName( 'a' );
-
-		// Each time a menu link is focused or blurred, toggle focus.
-		for ( i = 0, len = links.length; i < len; i++ ) {
-			links[i].addEventListener( 'focus', toggleFocus, true );
-			links[i].addEventListener( 'blur', toggleFocus, true );
-		}
-
-		/**
-		 * Sets or removes .focus class on an element.
-		 */
-		function toggleFocus() {
-			let self = this;
-
-			// Move up through the ancestors of the current link until we hit .nav-menu.
-			while (-1 === self.className.indexOf( 'nav-menu' )) {
-				// On li elements toggle the class .focus.
-				if ( 'li' === self.tagName.toLowerCase() ) {
-					if ( -1 !== self.className.indexOf( 'focus' ) ) {
-						self.className = self.className.replace( ' focus', '' );
-					} else {
-						self.className += ' focus';
-					}
-				}
-
-				self = self.parentElement;
-			}
-		}
-
-		/**
-		 * Toggles `focus` class to allow submenu access on tablets.
-		 */
-		( function(container) {
-			let touchStartFn,
-					i,
-					parentLink = container.querySelectorAll(
-							'.menu-item-has-children > a, .page_item_has_children > a'
-					);
-
-			if ( 'ontouchstart' in window ) {
-				touchStartFn = function(e) {
-					let menuItem = this.parentNode,
-							i;
-
-					if ( !menuItem.classList.contains( 'focus' ) ) {
-						e.preventDefault();
-						for ( i = 0; i < menuItem.parentNode.children.length; ++i ) {
-							if ( menuItem === menuItem.parentNode.children[i] ) {
-								continue;
-							}
-							menuItem.parentNode.children[i].classList.remove(
-									'focus'
-							);
-						}
-						menuItem.classList.add( 'focus' );
-					} else {
-						menuItem.classList.remove( 'focus' );
-					}
-				};
-
-				for ( i = 0; i < parentLink.length; ++i ) {
-					parentLink[i].addEventListener(
-							'touchstart',
-							touchStartFn,
-							false
-					);
-				}
-			}
-		} )( container );
-	} )();
-
-	/**
-	 *
-	 * Helps with accessibility for keyboard only users.
-	 *
-	 * Learn more: https://git.io/vWdr2
-	 */
-	( function() {
-		let isIe = /(trident|msie)/i.test( navigator.userAgent );
-
-		if ( isIe && document.getElementById && window.addEventListener ) {
-			window.addEventListener(
-					'hashchange',
-					function() {
-						let id = location.hash.substring( 1 ),
-								element;
-
-						if ( !/^[A-z0-9_-]+$/.test( id ) ) {
-							return;
-						}
-
-						element = document.getElementById( id );
-
-						if ( element ) {
-							if (
-									!/^(?:a|select|input|button|textarea)$/i.test(
-											element.tagName
-									)
-							) {
-								element.tabIndex = -1;
-							}
-
-							element.focus();
-						}
-					},
-					false
-			);
-		}
-	} )();
-}
+};
