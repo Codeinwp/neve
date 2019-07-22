@@ -1,4 +1,21 @@
 
+ ### v2.3.20 - 2019-07-15 
+ **Changes:** 
+ * Updated composer
+* Fixed z-index issue with the About page
+ 
+ ### v2.3.19 - 2019-07-15 
+ **Changes:** 
+ * Removed duplicated starter sites screenshots
+	* Fixed issue with admin menu overlapping the header
+ 
+ ### v2.3.18 - 2019-07-15 
+ **Changes:** 
+ * Multiple speed optimizations: minified scripts, improved enqueued scripts logic, proper size for the gravatar images
+* Removed author gravatar image by default and created a new option for it
+* Updates for current Starter Sites library
+* New Brizy Starter Sites library
+ 
  ### v2.3.17 - 2019-07-08 
  **Changes:** 
  * Fixed theme check warning
