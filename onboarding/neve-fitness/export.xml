@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!-- generator="WordPress/5.2.1" created="2019-07-22 15:33" -->
+<!-- generator="WordPress/5.2.1" created="2019-07-23 12:24" -->
 		<rss version="2.0"
 				xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
 				xmlns:content="http://purl.org/rss/1.0/modules/content/"
@@ -12,7 +12,7 @@
 				<title>Fitness</title>
 				<link>https://demo.themeisle.com/neve-fitness</link>
 				<description>Just another Demos Sites site</description>
-				<pubDate>Mon, 22 Jul 2019 15:33:29 +0000</pubDate>
+				<pubDate>Tue, 23 Jul 2019 12:24:44 +0000</pubDate>
 				<language>en-US</language>
 				<wp:wxr_version>1.2</wp:wxr_version>
 				<wp:base_site_url>https://demo.themeisle.com/</wp:base_site_url>
@@ -70,7 +70,7 @@
 				<item>
 			<title>
 				map 1			</title>
-			<link>https://demo.themeisle.com/neve-fitness/contact/map-1/</link>
+			<link>https://demo.themeisle.com/neve-fitness/neve-fitness-contact/map-1/</link>
 			<pubDate>Wed, 17 Jul 2019 11:36:28 +0000</pubDate>
 			<guid isPermaLink="false">https://s20206.pcdn.co/neve-fitness/wp-content/uploads/sites/208/2019/07/map-1.png</guid>
 			<description></description>
@@ -99,7 +99,7 @@
 				<item>
 			<title>
 				map 2			</title>
-			<link>https://demo.themeisle.com/neve-fitness/contact/map-2/</link>
+			<link>https://demo.themeisle.com/neve-fitness/neve-fitness-contact/map-2/</link>
 			<pubDate>Wed, 17 Jul 2019 11:36:29 +0000</pubDate>
 			<guid isPermaLink="false">https://s20206.pcdn.co/neve-fitness/wp-content/uploads/sites/208/2019/07/map-2.png</guid>
 			<description></description>
@@ -1114,7 +1114,7 @@
 				<item>
 			<title>
 				neve-gym-demo-34			</title>
-			<link>https://demo.themeisle.com/neve-fitness/groups/neve-gym-demo-34/</link>
+			<link>https://demo.themeisle.com/neve-fitness/neve-fitness-groups/neve-gym-demo-34/</link>
 			<pubDate>Thu, 18 Jul 2019 08:10:11 +0000</pubDate>
 			<guid isPermaLink="false">https://s20206.pcdn.co/neve-fitness/wp-content/uploads/sites/208/2019/07/neve-gym-demo-34.jpg</guid>
 			<description></description>
@@ -1143,7 +1143,7 @@
 				<item>
 			<title>
 				neve-gym-demo-35			</title>
-			<link>https://demo.themeisle.com/neve-fitness/groups/neve-gym-demo-35/</link>
+			<link>https://demo.themeisle.com/neve-fitness/neve-fitness-groups/neve-gym-demo-35/</link>
 			<pubDate>Thu, 18 Jul 2019 08:10:11 +0000</pubDate>
 			<guid isPermaLink="false">https://s20206.pcdn.co/neve-fitness/wp-content/uploads/sites/208/2019/07/neve-gym-demo-35.jpg</guid>
 			<description></description>
@@ -1172,7 +1172,7 @@
 				<item>
 			<title>
 				neve-gym-demo-36			</title>
-			<link>https://demo.themeisle.com/neve-fitness/groups/neve-gym-demo-36/</link>
+			<link>https://demo.themeisle.com/neve-fitness/neve-fitness-groups/neve-gym-demo-36/</link>
 			<pubDate>Thu, 18 Jul 2019 08:10:11 +0000</pubDate>
 			<guid isPermaLink="false">https://s20206.pcdn.co/neve-fitness/wp-content/uploads/sites/208/2019/07/neve-gym-demo-36.jpg</guid>
 			<description></description>
@@ -1378,7 +1378,7 @@ Pitchfork snackwave vaporware tofu next level. Selfies VHS try-hard, ennui ethic
 			<wp:post_date_gmt><![CDATA[2019-07-16 12:41:26]]></wp:post_date_gmt>
 			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-			<wp:post_name><![CDATA[home]]></wp:post_name>
+			<wp:post_name><![CDATA[neve-fitness-home]]></wp:post_name>
 			<wp:status><![CDATA[publish]]></wp:status>
 			<wp:post_parent>0</wp:post_parent>
 			<wp:menu_order>0</wp:menu_order>
@@ -1391,7 +1391,7 @@ Pitchfork snackwave vaporware tofu next level. Selfies VHS try-hard, ennui ethic
 				</wp:postmeta>
 							<wp:postmeta>
 					<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
-					<wp:meta_value><![CDATA[146096]]></wp:meta_value>
+					<wp:meta_value><![CDATA[440]]></wp:meta_value>
 				</wp:postmeta>
 							<wp:postmeta>
 					<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
@@ -1425,7 +1425,7 @@ Pitchfork snackwave vaporware tofu next level. Selfies VHS try-hard, ennui ethic
 				<item>
 			<title>
 				The Gym			</title>
-			<link>https://demo.themeisle.com/neve-fitness/the-gym/</link>
+			<link>https://demo.themeisle.com/neve-fitness/neve-fitness-the-gym/</link>
 			<pubDate>Tue, 16 Jul 2019 16:30:07 +0000</pubDate>
 			<guid isPermaLink="false">https://demo.themeisle.com/neve-fitness/?page_id=34</guid>
 			<description></description>
@@ -1486,7 +1486,7 @@ Pitchfork snackwave vaporware tofu next level. Selfies VHS try-hard, ennui ethic
 			<wp:post_date_gmt><![CDATA[2019-07-16 16:30:07]]></wp:post_date_gmt>
 			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-			<wp:post_name><![CDATA[the-gym]]></wp:post_name>
+			<wp:post_name><![CDATA[neve-fitness-the-gym]]></wp:post_name>
 			<wp:status><![CDATA[publish]]></wp:status>
 			<wp:post_parent>0</wp:post_parent>
 			<wp:menu_order>0</wp:menu_order>
@@ -1499,7 +1499,7 @@ Pitchfork snackwave vaporware tofu next level. Selfies VHS try-hard, ennui ethic
 				</wp:postmeta>
 							<wp:postmeta>
 					<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
-					<wp:meta_value><![CDATA[146096]]></wp:meta_value>
+					<wp:meta_value><![CDATA[440]]></wp:meta_value>
 				</wp:postmeta>
 							<wp:postmeta>
 					<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
@@ -1533,7 +1533,7 @@ Pitchfork snackwave vaporware tofu next level. Selfies VHS try-hard, ennui ethic
 				<item>
 			<title>
 				Lesson Single			</title>
-			<link>https://demo.themeisle.com/neve-fitness/lesson-single/</link>
+			<link>https://demo.themeisle.com/neve-fitness/neve-fitness-lesson-single/</link>
 			<pubDate>Tue, 16 Jul 2019 19:39:13 +0000</pubDate>
 			<guid isPermaLink="false">https://demo.themeisle.com/neve-fitness/?page_id=41</guid>
 			<description></description>
@@ -1633,7 +1633,7 @@ Pitchfork snackwave vaporware tofu next level. Selfies VHS try-hard, ennui ethic
 			<wp:post_date_gmt><![CDATA[2019-07-16 19:39:13]]></wp:post_date_gmt>
 			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-			<wp:post_name><![CDATA[lesson-single]]></wp:post_name>
+			<wp:post_name><![CDATA[neve-fitness-lesson-single]]></wp:post_name>
 			<wp:status><![CDATA[publish]]></wp:status>
 			<wp:post_parent>0</wp:post_parent>
 			<wp:menu_order>0</wp:menu_order>
@@ -1642,7 +1642,7 @@ Pitchfork snackwave vaporware tofu next level. Selfies VHS try-hard, ennui ethic
 			<wp:is_sticky>0</wp:is_sticky>
 													<wp:postmeta>
 					<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
-					<wp:meta_value><![CDATA[146096]]></wp:meta_value>
+					<wp:meta_value><![CDATA[440]]></wp:meta_value>
 				</wp:postmeta>
 							<wp:postmeta>
 					<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
@@ -1680,7 +1680,7 @@ Pitchfork snackwave vaporware tofu next level. Selfies VHS try-hard, ennui ethic
 				<item>
 			<title>
 				Groups			</title>
-			<link>https://demo.themeisle.com/neve-fitness/groups/</link>
+			<link>https://demo.themeisle.com/neve-fitness/neve-fitness-groups/</link>
 			<pubDate>Tue, 16 Jul 2019 20:22:55 +0000</pubDate>
 			<guid isPermaLink="false">https://demo.themeisle.com/neve-fitness/?page_id=42</guid>
 			<description></description>
@@ -1906,7 +1906,7 @@ Pitchfork snackwave vaporware tofu next level. Selfies VHS try-hard, ennui ethic
 			<wp:post_date_gmt><![CDATA[2019-07-16 20:22:55]]></wp:post_date_gmt>
 			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-			<wp:post_name><![CDATA[groups]]></wp:post_name>
+			<wp:post_name><![CDATA[neve-fitness-groups]]></wp:post_name>
 			<wp:status><![CDATA[publish]]></wp:status>
 			<wp:post_parent>0</wp:post_parent>
 			<wp:menu_order>0</wp:menu_order>
@@ -1919,7 +1919,7 @@ Pitchfork snackwave vaporware tofu next level. Selfies VHS try-hard, ennui ethic
 				</wp:postmeta>
 							<wp:postmeta>
 					<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
-					<wp:meta_value><![CDATA[146096]]></wp:meta_value>
+					<wp:meta_value><![CDATA[440]]></wp:meta_value>
 				</wp:postmeta>
 							<wp:postmeta>
 					<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
@@ -2181,7 +2181,7 @@ Pitchfork snackwave vaporware tofu next level. Selfies VHS try-hard, ennui ethic
 				<item>
 			<title>
 				News			</title>
-			<link>https://demo.themeisle.com/neve-fitness/blog/</link>
+			<link>https://demo.themeisle.com/neve-fitness/neve-fitness-blog/</link>
 			<pubDate>Tue, 16 Jul 2019 21:00:18 +0000</pubDate>
 			<guid isPermaLink="false">https://demo.themeisle.com/neve-fitness/?page_id=50</guid>
 			<description></description>
@@ -2192,7 +2192,7 @@ Pitchfork snackwave vaporware tofu next level. Selfies VHS try-hard, ennui ethic
 			<wp:post_date_gmt><![CDATA[2019-07-16 21:00:18]]></wp:post_date_gmt>
 			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-			<wp:post_name><![CDATA[blog]]></wp:post_name>
+			<wp:post_name><![CDATA[neve-fitness-blog]]></wp:post_name>
 			<wp:status><![CDATA[publish]]></wp:status>
 			<wp:post_parent>0</wp:post_parent>
 			<wp:menu_order>0</wp:menu_order>
@@ -2201,7 +2201,7 @@ Pitchfork snackwave vaporware tofu next level. Selfies VHS try-hard, ennui ethic
 			<wp:is_sticky>0</wp:is_sticky>
 													<wp:postmeta>
 					<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
-					<wp:meta_value><![CDATA[146096]]></wp:meta_value>
+					<wp:meta_value><![CDATA[440]]></wp:meta_value>
 				</wp:postmeta>
 							<wp:postmeta>
 					<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
@@ -2211,11 +2211,15 @@ Pitchfork snackwave vaporware tofu next level. Selfies VHS try-hard, ennui ethic
 					<wp:meta_key><![CDATA[_yoast_wpseo_content_score]]></wp:meta_key>
 					<wp:meta_value><![CDATA[30]]></wp:meta_value>
 				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
+					<wp:meta_value><![CDATA[default]]></wp:meta_value>
+				</wp:postmeta>
 					</item>
 				<item>
 			<title>
 				Contact			</title>
-			<link>https://demo.themeisle.com/neve-fitness/contact/</link>
+			<link>https://demo.themeisle.com/neve-fitness/neve-fitness-contact/</link>
 			<pubDate>Tue, 16 Jul 2019 21:00:32 +0000</pubDate>
 			<guid isPermaLink="false">https://demo.themeisle.com/neve-fitness/?page_id=51</guid>
 			<description></description>
@@ -2283,7 +2287,7 @@ Pitchfork snackwave vaporware tofu next level. Selfies VHS try-hard, ennui ethic
 			<wp:post_date_gmt><![CDATA[2019-07-16 21:00:32]]></wp:post_date_gmt>
 			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-			<wp:post_name><![CDATA[contact]]></wp:post_name>
+			<wp:post_name><![CDATA[neve-fitness-contact]]></wp:post_name>
 			<wp:status><![CDATA[publish]]></wp:status>
 			<wp:post_parent>0</wp:post_parent>
 			<wp:menu_order>0</wp:menu_order>
@@ -2292,7 +2296,7 @@ Pitchfork snackwave vaporware tofu next level. Selfies VHS try-hard, ennui ethic
 			<wp:is_sticky>0</wp:is_sticky>
 													<wp:postmeta>
 					<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
-					<wp:meta_value><![CDATA[146096]]></wp:meta_value>
+					<wp:meta_value><![CDATA[440]]></wp:meta_value>
 				</wp:postmeta>
 							<wp:postmeta>
 					<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
@@ -2596,7 +2600,7 @@ Pitchfork snackwave vaporware tofu next level. Selfies VHS try-hard, ennui ethic
 				<item>
 			<title>
 				Privacy and Terms			</title>
-			<link>https://demo.themeisle.com/neve-fitness/privacy-and-terms/</link>
+			<link>https://demo.themeisle.com/neve-fitness/neve-fitness-privacy-and-terms/</link>
 			<pubDate>Wed, 17 Jul 2019 09:14:40 +0000</pubDate>
 			<guid isPermaLink="false">https://demo.themeisle.com/neve-fitness/?page_id=68</guid>
 			<description></description>
@@ -2605,7 +2609,7 @@ Pitchfork snackwave vaporware tofu next level. Selfies VHS try-hard, ennui ethic
 			<wp:post_date_gmt><![CDATA[2019-07-17 09:14:40]]></wp:post_date_gmt>
 			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-			<wp:post_name><![CDATA[privacy-and-terms]]></wp:post_name>
+			<wp:post_name><![CDATA[neve-fitness-privacy-and-terms]]></wp:post_name>
 			<wp:status><![CDATA[publish]]></wp:status>
 			<wp:post_parent>0</wp:post_parent>
 			<wp:menu_order>0</wp:menu_order>
@@ -2615,6 +2619,14 @@ Pitchfork snackwave vaporware tofu next level. Selfies VHS try-hard, ennui ethic
 													<wp:postmeta>
 					<wp:meta_key><![CDATA[_customize_changeset_uuid]]></wp:meta_key>
 					<wp:meta_value><![CDATA[9f426618-b168-4448-848e-e2186f7f183f]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+					<wp:meta_value><![CDATA[440]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
+					<wp:meta_value><![CDATA[default]]></wp:meta_value>
 				</wp:postmeta>
 					</item>
 				<item>
@@ -2726,7 +2738,7 @@ Pitchfork snackwave vaporware tofu next level. Selfies VHS try-hard, ennui ethic
 				<item>
 			<title>
 				neve-gym-demo-37			</title>
-			<link>https://demo.themeisle.com/neve-fitness/contact/neve-gym-demo-37/</link>
+			<link>https://demo.themeisle.com/neve-fitness/neve-fitness-contact/neve-gym-demo-37/</link>
 			<pubDate>Thu, 18 Jul 2019 08:14:26 +0000</pubDate>
 			<guid isPermaLink="false">https://s20206.pcdn.co/neve-fitness/wp-content/uploads/sites/208/2019/07/neve-gym-demo-37.jpg</guid>
 			<description></description>

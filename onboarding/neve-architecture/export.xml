@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!-- generator="WordPress/5.2.1" created="2019-07-22 13:58" -->
+<!-- generator="WordPress/5.2.1" created="2019-07-23 12:25" -->
 		<rss version="2.0"
 				xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
 				xmlns:content="http://purl.org/rss/1.0/modules/content/"
@@ -12,7 +12,7 @@
 				<title>Architecture</title>
 				<link>https://demo.themeisle.com/neve-architecture</link>
 				<description>Just another Demos Sites site</description>
-				<pubDate>Mon, 22 Jul 2019 13:58:43 +0000</pubDate>
+				<pubDate>Tue, 23 Jul 2019 12:25:34 +0000</pubDate>
 				<language>en-US</language>
 				<wp:wxr_version>1.2</wp:wxr_version>
 				<wp:base_site_url>https://demo.themeisle.com/</wp:base_site_url>
@@ -24,7 +24,14 @@
 						<wp:category_parent><![CDATA[]]></wp:category_parent>
 						<wp:cat_name><![CDATA[Uncategorized]]></wp:cat_name>
 					</wp:category>
-																	<wp:term><wp:term_id>3</wp:term_id><wp:term_taxonomy>nav_menu</wp:term_taxonomy><wp:term_slug><![CDATA[footer-menu]]></wp:term_slug><wp:term_name><![CDATA[Footer menu]]></wp:term_name>
+																	<wp:term>
+						<wp:term_id><![CDATA[5]]></wp:term_id>
+						<wp:term_taxonomy><![CDATA[elementor_library_type]]></wp:term_taxonomy>
+						<wp:term_slug><![CDATA[page]]></wp:term_slug>
+						<wp:term_parent><![CDATA[]]></wp:term_parent>
+						<wp:term_name><![CDATA[page]]></wp:term_name>
+					</wp:term>
+									<wp:term><wp:term_id>3</wp:term_id><wp:term_taxonomy>nav_menu</wp:term_taxonomy><wp:term_slug><![CDATA[footer-menu]]></wp:term_slug><wp:term_name><![CDATA[Footer menu]]></wp:term_name>
 </wp:term>
 	<wp:term><wp:term_id>4</wp:term_id><wp:term_taxonomy>nav_menu</wp:term_taxonomy><wp:term_slug><![CDATA[offices-menu]]></wp:term_slug><wp:term_name><![CDATA[Offices Menu]]></wp:term_name>
 </wp:term>
@@ -98,7 +105,7 @@
 				<item>
 			<title>
 				neve architect - demo 01			</title>
-			<link>https://demo.themeisle.com/neve-architecture/our-projects/neve-architect-demo-01/</link>
+			<link>https://demo.themeisle.com/neve-architecture/neve-architecture-our-projects/neve-architect-demo-01/</link>
 			<pubDate>Wed, 17 Jul 2019 17:46:03 +0000</pubDate>
 			<guid isPermaLink="false">https://s20206.pcdn.co/neve-architecture/wp-content/uploads/sites/207/2019/07/neve-architect-demo-01.jpg</guid>
 			<description></description>
@@ -127,7 +134,7 @@
 				<item>
 			<title>
 				neve architect - demo 02			</title>
-			<link>https://demo.themeisle.com/neve-architecture/our-projects/neve-architect-demo-02/</link>
+			<link>https://demo.themeisle.com/neve-architecture/neve-architecture-our-projects/neve-architect-demo-02/</link>
 			<pubDate>Wed, 17 Jul 2019 17:46:05 +0000</pubDate>
 			<guid isPermaLink="false">https://s20206.pcdn.co/neve-architecture/wp-content/uploads/sites/207/2019/07/neve-architect-demo-02.jpg</guid>
 			<description></description>
@@ -156,7 +163,7 @@
 				<item>
 			<title>
 				neve architect - demo 03			</title>
-			<link>https://demo.themeisle.com/neve-architecture/our-projects/neve-architect-demo-03/</link>
+			<link>https://demo.themeisle.com/neve-architecture/neve-architecture-our-projects/neve-architect-demo-03/</link>
 			<pubDate>Wed, 17 Jul 2019 17:46:06 +0000</pubDate>
 			<guid isPermaLink="false">https://s20206.pcdn.co/neve-architecture/wp-content/uploads/sites/207/2019/07/neve-architect-demo-03.jpg</guid>
 			<description></description>
@@ -185,7 +192,7 @@
 				<item>
 			<title>
 				neve architect - demo 04			</title>
-			<link>https://demo.themeisle.com/neve-architecture/our-projects/neve-architect-demo-04/</link>
+			<link>https://demo.themeisle.com/neve-architecture/neve-architecture-our-projects/neve-architect-demo-04/</link>
 			<pubDate>Wed, 17 Jul 2019 17:46:07 +0000</pubDate>
 			<guid isPermaLink="false">https://s20206.pcdn.co/neve-architecture/wp-content/uploads/sites/207/2019/07/neve-architect-demo-04.jpg</guid>
 			<description></description>
@@ -214,7 +221,7 @@
 				<item>
 			<title>
 				neve architect - demo 05			</title>
-			<link>https://demo.themeisle.com/neve-architecture/our-projects/neve-architect-demo-05/</link>
+			<link>https://demo.themeisle.com/neve-architecture/neve-architecture-our-projects/neve-architect-demo-05/</link>
 			<pubDate>Wed, 17 Jul 2019 17:46:07 +0000</pubDate>
 			<guid isPermaLink="false">https://s20206.pcdn.co/neve-architecture/wp-content/uploads/sites/207/2019/07/neve-architect-demo-05.jpg</guid>
 			<description></description>
@@ -243,7 +250,7 @@
 				<item>
 			<title>
 				neve architect - demo 06			</title>
-			<link>https://demo.themeisle.com/neve-architecture/our-projects/neve-architect-demo-06/</link>
+			<link>https://demo.themeisle.com/neve-architecture/neve-architecture-our-projects/neve-architect-demo-06/</link>
 			<pubDate>Wed, 17 Jul 2019 17:46:08 +0000</pubDate>
 			<guid isPermaLink="false">https://s20206.pcdn.co/neve-architecture/wp-content/uploads/sites/207/2019/07/neve-architect-demo-06.jpg</guid>
 			<description></description>
@@ -272,7 +279,7 @@
 				<item>
 			<title>
 				neve architect - demo 07			</title>
-			<link>https://demo.themeisle.com/neve-architecture/our-projects/neve-architect-demo-07/</link>
+			<link>https://demo.themeisle.com/neve-architecture/neve-architecture-our-projects/neve-architect-demo-07/</link>
 			<pubDate>Wed, 17 Jul 2019 17:46:10 +0000</pubDate>
 			<guid isPermaLink="false">https://s20206.pcdn.co/neve-architecture/wp-content/uploads/sites/207/2019/07/neve-architect-demo-07.jpg</guid>
 			<description></description>
@@ -301,7 +308,7 @@
 				<item>
 			<title>
 				neve architect - demo 08			</title>
-			<link>https://demo.themeisle.com/neve-architecture/our-projects/neve-architect-demo-08/</link>
+			<link>https://demo.themeisle.com/neve-architecture/neve-architecture-our-projects/neve-architect-demo-08/</link>
 			<pubDate>Wed, 17 Jul 2019 17:46:11 +0000</pubDate>
 			<guid isPermaLink="false">https://s20206.pcdn.co/neve-architecture/wp-content/uploads/sites/207/2019/07/neve-architect-demo-08.jpg</guid>
 			<description></description>
@@ -330,7 +337,7 @@
 				<item>
 			<title>
 				neve architect - demo 09			</title>
-			<link>https://demo.themeisle.com/neve-architecture/our-projects/neve-architect-demo-09/</link>
+			<link>https://demo.themeisle.com/neve-architecture/neve-architecture-our-projects/neve-architect-demo-09/</link>
 			<pubDate>Wed, 17 Jul 2019 17:46:12 +0000</pubDate>
 			<guid isPermaLink="false">https://s20206.pcdn.co/neve-architecture/wp-content/uploads/sites/207/2019/07/neve-architect-demo-09.jpg</guid>
 			<description></description>
@@ -359,7 +366,7 @@
 				<item>
 			<title>
 				neve architect - demo 10			</title>
-			<link>https://demo.themeisle.com/neve-architecture/our-projects/neve-architect-demo-10/</link>
+			<link>https://demo.themeisle.com/neve-architecture/neve-architecture-our-projects/neve-architect-demo-10/</link>
 			<pubDate>Wed, 17 Jul 2019 17:46:12 +0000</pubDate>
 			<guid isPermaLink="false">https://s20206.pcdn.co/neve-architecture/wp-content/uploads/sites/207/2019/07/neve-architect-demo-10.jpg</guid>
 			<description></description>
@@ -388,7 +395,7 @@
 				<item>
 			<title>
 				neve architect - demo 11			</title>
-			<link>https://demo.themeisle.com/neve-architecture/our-projects/neve-architect-demo-11/</link>
+			<link>https://demo.themeisle.com/neve-architecture/neve-architecture-our-projects/neve-architect-demo-11/</link>
 			<pubDate>Wed, 17 Jul 2019 17:46:13 +0000</pubDate>
 			<guid isPermaLink="false">https://s20206.pcdn.co/neve-architecture/wp-content/uploads/sites/207/2019/07/neve-architect-demo-11.jpg</guid>
 			<description></description>
@@ -417,7 +424,7 @@
 				<item>
 			<title>
 				neve architect - demo 12			</title>
-			<link>https://demo.themeisle.com/neve-architecture/our-projects/neve-architect-demo-12/</link>
+			<link>https://demo.themeisle.com/neve-architecture/neve-architecture-our-projects/neve-architect-demo-12/</link>
 			<pubDate>Wed, 17 Jul 2019 17:46:13 +0000</pubDate>
 			<guid isPermaLink="false">https://s20206.pcdn.co/neve-architecture/wp-content/uploads/sites/207/2019/07/neve-architect-demo-12.jpg</guid>
 			<description></description>
@@ -446,7 +453,7 @@
 				<item>
 			<title>
 				neve architect - demo 13			</title>
-			<link>https://demo.themeisle.com/neve-architecture/our-projects/neve-architect-demo-13/</link>
+			<link>https://demo.themeisle.com/neve-architecture/neve-architecture-our-projects/neve-architect-demo-13/</link>
 			<pubDate>Wed, 17 Jul 2019 17:46:14 +0000</pubDate>
 			<guid isPermaLink="false">https://s20206.pcdn.co/neve-architecture/wp-content/uploads/sites/207/2019/07/neve-architect-demo-13.jpg</guid>
 			<description></description>
@@ -475,7 +482,7 @@
 				<item>
 			<title>
 				neve architect - demo 14			</title>
-			<link>https://demo.themeisle.com/neve-architecture/our-projects/neve-architect-demo-14/</link>
+			<link>https://demo.themeisle.com/neve-architecture/neve-architecture-our-projects/neve-architect-demo-14/</link>
 			<pubDate>Wed, 17 Jul 2019 17:46:15 +0000</pubDate>
 			<guid isPermaLink="false">https://s20206.pcdn.co/neve-architecture/wp-content/uploads/sites/207/2019/07/neve-architect-demo-14.jpg</guid>
 			<description></description>
@@ -504,7 +511,7 @@
 				<item>
 			<title>
 				neve architect - demo 15			</title>
-			<link>https://demo.themeisle.com/neve-architecture/our-projects/neve-architect-demo-15/</link>
+			<link>https://demo.themeisle.com/neve-architecture/neve-architecture-our-projects/neve-architect-demo-15/</link>
 			<pubDate>Wed, 17 Jul 2019 17:46:15 +0000</pubDate>
 			<guid isPermaLink="false">https://s20206.pcdn.co/neve-architecture/wp-content/uploads/sites/207/2019/07/neve-architect-demo-15.jpg</guid>
 			<description></description>
@@ -533,7 +540,7 @@
 				<item>
 			<title>
 				neve architect - demo 16			</title>
-			<link>https://demo.themeisle.com/neve-architecture/our-projects/neve-architect-demo-16/</link>
+			<link>https://demo.themeisle.com/neve-architecture/neve-architecture-our-projects/neve-architect-demo-16/</link>
 			<pubDate>Wed, 17 Jul 2019 17:46:15 +0000</pubDate>
 			<guid isPermaLink="false">https://s20206.pcdn.co/neve-architecture/wp-content/uploads/sites/207/2019/07/neve-architect-demo-16.jpg</guid>
 			<description></description>
@@ -562,7 +569,7 @@
 				<item>
 			<title>
 				neve architect - demo 17			</title>
-			<link>https://demo.themeisle.com/neve-architecture/our-projects/neve-architect-demo-17/</link>
+			<link>https://demo.themeisle.com/neve-architecture/neve-architecture-our-projects/neve-architect-demo-17/</link>
 			<pubDate>Wed, 17 Jul 2019 17:46:16 +0000</pubDate>
 			<guid isPermaLink="false">https://s20206.pcdn.co/neve-architecture/wp-content/uploads/sites/207/2019/07/neve-architect-demo-17.jpg</guid>
 			<description></description>
@@ -591,7 +598,7 @@
 				<item>
 			<title>
 				neve architect - demo 18			</title>
-			<link>https://demo.themeisle.com/neve-architecture/our-projects/neve-architect-demo-18/</link>
+			<link>https://demo.themeisle.com/neve-architecture/neve-architecture-our-projects/neve-architect-demo-18/</link>
 			<pubDate>Wed, 17 Jul 2019 17:46:16 +0000</pubDate>
 			<guid isPermaLink="false">https://s20206.pcdn.co/neve-architecture/wp-content/uploads/sites/207/2019/07/neve-architect-demo-18.jpg</guid>
 			<description></description>
@@ -1079,61 +1086,8 @@
 					</item>
 				<item>
 			<title>
-				Tokyo			</title>
-			<link>https://demo.themeisle.com/neve-architecture/2019/07/17/tokyo/</link>
-			<pubDate>Wed, 17 Jul 2019 10:52:06 +0000</pubDate>
-			<guid isPermaLink="false">https://demo.themeisle.com/neve-architecture/2019/07/17/tokyo/</guid>
-			<description></description>
-			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>109</wp:post_id>
-			<wp:post_date><![CDATA[2019-07-17 10:52:06]]></wp:post_date>
-			<wp:post_date_gmt><![CDATA[2019-07-17 10:52:06]]></wp:post_date_gmt>
-			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
-			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-			<wp:post_name><![CDATA[tokyo]]></wp:post_name>
-			<wp:status><![CDATA[publish]]></wp:status>
-			<wp:post_parent>0</wp:post_parent>
-			<wp:menu_order>2</wp:menu_order>
-			<wp:post_type><![CDATA[nav_menu_item]]></wp:post_type>
-			<wp:post_password><![CDATA[]]></wp:post_password>
-			<wp:is_sticky>0</wp:is_sticky>
-								<category domain="nav_menu" nicename="offices-menu"><![CDATA[Offices Menu]]></category>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_type]]></wp:meta_key>
-					<wp:meta_value><![CDATA[post_type]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_menu_item_parent]]></wp:meta_key>
-					<wp:meta_value><![CDATA[0]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_object_id]]></wp:meta_key>
-					<wp:meta_value><![CDATA[7]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_object]]></wp:meta_key>
-					<wp:meta_value><![CDATA[page]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_target]]></wp:meta_key>
-					<wp:meta_value><![CDATA[]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_classes]]></wp:meta_key>
-					<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_xfn]]></wp:meta_key>
-					<wp:meta_value><![CDATA[]]></wp:meta_value>
-				</wp:postmeta>
-							<wp:postmeta>
-					<wp:meta_key><![CDATA[_menu_item_url]]></wp:meta_key>
-					<wp:meta_value><![CDATA[]]></wp:meta_value>
-				</wp:postmeta>
-					</item>
-				<item>
-			<title>
 				neve architect - demo 19			</title>
-			<link>https://demo.themeisle.com/neve-architecture/our-projects/neve-architect-demo-19/</link>
+			<link>https://demo.themeisle.com/neve-architecture/neve-architecture-our-projects/neve-architect-demo-19/</link>
 			<pubDate>Wed, 17 Jul 2019 17:46:17 +0000</pubDate>
 			<guid isPermaLink="false">https://s20206.pcdn.co/neve-architecture/wp-content/uploads/sites/207/2019/07/neve-architect-demo-19.jpg</guid>
 			<description></description>
@@ -1162,7 +1116,7 @@
 				<item>
 			<title>
 				neve architect - demo 20			</title>
-			<link>https://demo.themeisle.com/neve-architecture/our-projects/neve-architect-demo-20/</link>
+			<link>https://demo.themeisle.com/neve-architecture/neve-architecture-our-projects/neve-architect-demo-20/</link>
 			<pubDate>Wed, 17 Jul 2019 17:46:17 +0000</pubDate>
 			<guid isPermaLink="false">https://s20206.pcdn.co/neve-architecture/wp-content/uploads/sites/207/2019/07/neve-architect-demo-20.jpg</guid>
 			<description></description>
@@ -1191,7 +1145,7 @@
 				<item>
 			<title>
 				neve architect - demo 21			</title>
-			<link>https://demo.themeisle.com/neve-architecture/our-projects/neve-architect-demo-21/</link>
+			<link>https://demo.themeisle.com/neve-architecture/neve-architecture-our-projects/neve-architect-demo-21/</link>
 			<pubDate>Wed, 17 Jul 2019 17:46:19 +0000</pubDate>
 			<guid isPermaLink="false">https://s20206.pcdn.co/neve-architecture/wp-content/uploads/sites/207/2019/07/neve-architect-demo-21.jpg</guid>
 			<description></description>
@@ -1220,7 +1174,7 @@
 				<item>
 			<title>
 				neve architect - demo 22			</title>
-			<link>https://demo.themeisle.com/neve-architecture/our-projects/neve-architect-demo-22/</link>
+			<link>https://demo.themeisle.com/neve-architecture/neve-architecture-our-projects/neve-architect-demo-22/</link>
 			<pubDate>Wed, 17 Jul 2019 17:46:20 +0000</pubDate>
 			<guid isPermaLink="false">https://s20206.pcdn.co/neve-architecture/wp-content/uploads/sites/207/2019/07/neve-architect-demo-22.jpg</guid>
 			<description></description>
@@ -1249,7 +1203,7 @@
 				<item>
 			<title>
 				neve architect - demo 24			</title>
-			<link>https://demo.themeisle.com/neve-architecture/our-projects/neve-architect-demo-24/</link>
+			<link>https://demo.themeisle.com/neve-architecture/neve-architecture-our-projects/neve-architect-demo-24/</link>
 			<pubDate>Wed, 17 Jul 2019 17:46:22 +0000</pubDate>
 			<guid isPermaLink="false">https://s20206.pcdn.co/neve-architecture/wp-content/uploads/sites/207/2019/07/neve-architect-demo-24.jpg</guid>
 			<description></description>
@@ -1278,7 +1232,7 @@
 				<item>
 			<title>
 				neve architect - demo 25			</title>
-			<link>https://demo.themeisle.com/neve-architecture/our-projects/neve-architect-demo-25/</link>
+			<link>https://demo.themeisle.com/neve-architecture/neve-architecture-our-projects/neve-architect-demo-25/</link>
 			<pubDate>Wed, 17 Jul 2019 17:46:22 +0000</pubDate>
 			<guid isPermaLink="false">https://s20206.pcdn.co/neve-architecture/wp-content/uploads/sites/207/2019/07/neve-architect-demo-25.jpg</guid>
 			<description></description>
@@ -1307,7 +1261,7 @@
 				<item>
 			<title>
 				neve architect - demo 26			</title>
-			<link>https://demo.themeisle.com/neve-architecture/our-projects/neve-architect-demo-26/</link>
+			<link>https://demo.themeisle.com/neve-architecture/neve-architecture-our-projects/neve-architect-demo-26/</link>
 			<pubDate>Wed, 17 Jul 2019 17:46:23 +0000</pubDate>
 			<guid isPermaLink="false">https://s20206.pcdn.co/neve-architecture/wp-content/uploads/sites/207/2019/07/neve-architect-demo-26.jpg</guid>
 			<description></description>
@@ -1336,7 +1290,7 @@
 				<item>
 			<title>
 				neve architect - demo 27			</title>
-			<link>https://demo.themeisle.com/neve-architecture/our-projects/neve-architect-demo-27/</link>
+			<link>https://demo.themeisle.com/neve-architecture/neve-architecture-our-projects/neve-architect-demo-27/</link>
 			<pubDate>Wed, 17 Jul 2019 17:46:23 +0000</pubDate>
 			<guid isPermaLink="false">https://s20206.pcdn.co/neve-architecture/wp-content/uploads/sites/207/2019/07/neve-architect-demo-27.jpg</guid>
 			<description></description>
@@ -1365,7 +1319,7 @@
 				<item>
 			<title>
 				neve architect - demo 28			</title>
-			<link>https://demo.themeisle.com/neve-architecture/our-projects/neve-architect-demo-28/</link>
+			<link>https://demo.themeisle.com/neve-architecture/neve-architecture-our-projects/neve-architect-demo-28/</link>
 			<pubDate>Wed, 17 Jul 2019 17:46:24 +0000</pubDate>
 			<guid isPermaLink="false">https://s20206.pcdn.co/neve-architecture/wp-content/uploads/sites/207/2019/07/neve-architect-demo-28.jpg</guid>
 			<description></description>
@@ -1394,7 +1348,7 @@
 				<item>
 			<title>
 				neve architect - demo 29			</title>
-			<link>https://demo.themeisle.com/neve-architecture/our-projects/neve-architect-demo-29/</link>
+			<link>https://demo.themeisle.com/neve-architecture/neve-architecture-our-projects/neve-architect-demo-29/</link>
 			<pubDate>Wed, 17 Jul 2019 17:46:25 +0000</pubDate>
 			<guid isPermaLink="false">https://s20206.pcdn.co/neve-architecture/wp-content/uploads/sites/207/2019/07/neve-architect-demo-29.jpg</guid>
 			<description></description>
@@ -1484,7 +1438,7 @@ Man braid vaporware shabby chic church-key dreamcatcher, sriracha aesthetic kinf
 				<item>
 			<title>
 				Contact			</title>
-			<link>https://demo.themeisle.com/neve-architecture/contact/</link>
+			<link>https://demo.themeisle.com/neve-architecture/neve-architecture-contact/</link>
 			<pubDate>Tue, 16 Jul 2019 08:18:22 +0000</pubDate>
 			<guid isPermaLink="false">https://demo.themeisle.com/neve-architecture/?page_id=7</guid>
 			<description></description>
@@ -1575,7 +1529,7 @@ Man braid vaporware shabby chic church-key dreamcatcher, sriracha aesthetic kinf
 			<wp:post_date_gmt><![CDATA[2019-07-16 08:18:22]]></wp:post_date_gmt>
 			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-			<wp:post_name><![CDATA[contact]]></wp:post_name>
+			<wp:post_name><![CDATA[neve-architecture-contact]]></wp:post_name>
 			<wp:status><![CDATA[publish]]></wp:status>
 			<wp:post_parent>0</wp:post_parent>
 			<wp:menu_order>0</wp:menu_order>
@@ -1584,7 +1538,7 @@ Man braid vaporware shabby chic church-key dreamcatcher, sriracha aesthetic kinf
 			<wp:is_sticky>0</wp:is_sticky>
 													<wp:postmeta>
 					<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
-					<wp:meta_value><![CDATA[153997]]></wp:meta_value>
+					<wp:meta_value><![CDATA[440]]></wp:meta_value>
 				</wp:postmeta>
 							<wp:postmeta>
 					<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
@@ -1622,7 +1576,7 @@ Man braid vaporware shabby chic church-key dreamcatcher, sriracha aesthetic kinf
 				<item>
 			<title>
 				Our projects			</title>
-			<link>https://demo.themeisle.com/neve-architecture/our-projects/</link>
+			<link>https://demo.themeisle.com/neve-architecture/neve-architecture-our-projects/</link>
 			<pubDate>Tue, 16 Jul 2019 09:26:57 +0000</pubDate>
 			<guid isPermaLink="false">https://demo.themeisle.com/neve-architecture/?page_id=15</guid>
 			<description></description>
@@ -1687,7 +1641,7 @@ Man braid vaporware shabby chic church-key dreamcatcher, sriracha aesthetic kinf
 			<wp:post_date_gmt><![CDATA[2019-07-16 09:26:57]]></wp:post_date_gmt>
 			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-			<wp:post_name><![CDATA[our-projects]]></wp:post_name>
+			<wp:post_name><![CDATA[neve-architecture-our-projects]]></wp:post_name>
 			<wp:status><![CDATA[publish]]></wp:status>
 			<wp:post_parent>0</wp:post_parent>
 			<wp:menu_order>0</wp:menu_order>
@@ -1696,7 +1650,7 @@ Man braid vaporware shabby chic church-key dreamcatcher, sriracha aesthetic kinf
 			<wp:is_sticky>0</wp:is_sticky>
 													<wp:postmeta>
 					<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
-					<wp:meta_value><![CDATA[153997]]></wp:meta_value>
+					<wp:meta_value><![CDATA[440]]></wp:meta_value>
 				</wp:postmeta>
 							<wp:postmeta>
 					<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
@@ -1734,7 +1688,7 @@ Man braid vaporware shabby chic church-key dreamcatcher, sriracha aesthetic kinf
 				<item>
 			<title>
 				Project details			</title>
-			<link>https://demo.themeisle.com/neve-architecture/project-details/</link>
+			<link>https://demo.themeisle.com/neve-architecture/neve-architecture-project-details/</link>
 			<pubDate>Tue, 16 Jul 2019 10:27:53 +0000</pubDate>
 			<guid isPermaLink="false">https://demo.themeisle.com/neve-architecture/?page_id=23</guid>
 			<description></description>
@@ -1794,7 +1748,7 @@ Man braid vaporware shabby chic church-key dreamcatcher, sriracha aesthetic kinf
 			<wp:post_date_gmt><![CDATA[2019-07-16 10:27:53]]></wp:post_date_gmt>
 			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-			<wp:post_name><![CDATA[project-details]]></wp:post_name>
+			<wp:post_name><![CDATA[neve-architecture-project-details]]></wp:post_name>
 			<wp:status><![CDATA[publish]]></wp:status>
 			<wp:post_parent>0</wp:post_parent>
 			<wp:menu_order>0</wp:menu_order>
@@ -1807,7 +1761,7 @@ Man braid vaporware shabby chic church-key dreamcatcher, sriracha aesthetic kinf
 				</wp:postmeta>
 							<wp:postmeta>
 					<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
-					<wp:meta_value><![CDATA[153997]]></wp:meta_value>
+					<wp:meta_value><![CDATA[440]]></wp:meta_value>
 				</wp:postmeta>
 							<wp:postmeta>
 					<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
@@ -2181,7 +2135,7 @@ Man braid vaporware shabby chic church-key dreamcatcher, sriracha aesthetic kinf
 			<wp:post_date_gmt><![CDATA[2019-07-16 13:05:43]]></wp:post_date_gmt>
 			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-			<wp:post_name><![CDATA[homepage]]></wp:post_name>
+			<wp:post_name><![CDATA[neve-architecture-homepage]]></wp:post_name>
 			<wp:status><![CDATA[publish]]></wp:status>
 			<wp:post_parent>0</wp:post_parent>
 			<wp:menu_order>0</wp:menu_order>
@@ -2190,7 +2144,7 @@ Man braid vaporware shabby chic church-key dreamcatcher, sriracha aesthetic kinf
 			<wp:is_sticky>0</wp:is_sticky>
 													<wp:postmeta>
 					<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
-					<wp:meta_value><![CDATA[146096]]></wp:meta_value>
+					<wp:meta_value><![CDATA[440]]></wp:meta_value>
 				</wp:postmeta>
 							<wp:postmeta>
 					<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
@@ -2232,7 +2186,7 @@ Man braid vaporware shabby chic church-key dreamcatcher, sriracha aesthetic kinf
 				<item>
 			<title>
 				Privacy and Terms			</title>
-			<link>https://demo.themeisle.com/neve-architecture/privacy-and-terms/</link>
+			<link>https://demo.themeisle.com/neve-architecture/neve-architecture-privacy-and-terms/</link>
 			<pubDate>Wed, 17 Jul 2019 10:50:16 +0000</pubDate>
 			<guid isPermaLink="false">https://demo.themeisle.com/neve-architecture/?page_id=102</guid>
 			<description></description>
@@ -2256,7 +2210,7 @@ Man braid vaporware shabby chic church-key dreamcatcher, sriracha aesthetic kinf
 			<wp:post_date_gmt><![CDATA[2019-07-17 10:50:16]]></wp:post_date_gmt>
 			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-			<wp:post_name><![CDATA[privacy-and-terms]]></wp:post_name>
+			<wp:post_name><![CDATA[neve-architecture-privacy-and-terms]]></wp:post_name>
 			<wp:status><![CDATA[publish]]></wp:status>
 			<wp:post_parent>0</wp:post_parent>
 			<wp:menu_order>0</wp:menu_order>
@@ -2269,7 +2223,7 @@ Man braid vaporware shabby chic church-key dreamcatcher, sriracha aesthetic kinf
 				</wp:postmeta>
 							<wp:postmeta>
 					<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
-					<wp:meta_value><![CDATA[153997]]></wp:meta_value>
+					<wp:meta_value><![CDATA[440]]></wp:meta_value>
 				</wp:postmeta>
 							<wp:postmeta>
 					<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
@@ -2302,6 +2256,59 @@ Man braid vaporware shabby chic church-key dreamcatcher, sriracha aesthetic kinf
 							<wp:postmeta>
 					<wp:meta_key><![CDATA[_elementor_data]]></wp:meta_key>
 					<wp:meta_value><![CDATA[[{"id":"79110a3","elType":"section","settings":[],"elements":[{"id":"513c5b5","elType":"column","settings":{"_column_size":"100"},"elements":[{"id":"471d20a","elType":"widget","settings":{"space":{"unit":"px","size":"30","sizes":[]}},"elements":[],"widgetType":"spacer"},{"id":"73733ad","elType":"widget","settings":{"title":"Privacy and Terms"},"elements":[],"widgetType":"heading"},{"id":"0a0eb44","elType":"widget","settings":{"space":{"unit":"px","size":"30","sizes":[]}},"elements":[],"widgetType":"spacer"},{"id":"377a583","elType":"widget","settings":{"editor":"<h3>1. FINGERSTACHE SNACKWAVE BROOKLYN, SEMIOTICS HELVETICA ACTUALLY<\/h3>\n<p>Fingerstache snackwave brooklyn, semiotics helvetica actually hashtag gastropub health goth pinterest chambray hexagon. Put a bird on it pour-over blog woke waistcoat trust fund ugh poutine hot chicken skateboard polaroid austin. Activated charcoal raclette ramps distillery heirloom flannel. Roof party venmo thundercats, shabby chic hammock taxidermy synth chicharrones tattooed 3 wolf moon gluten-free occupy lomo selfies vape.<\/p>\n<p>Art party kickstarter adaptogen, pug lyft direct trade venmo artisan meh vexillologist poke taxidermy offal marfa sartorial. Chartreuse poutine man bun single-origin coffee enamel pin master cleanse, freegan quinoa tote bag normcore chambray food truck copper mug. Small batch kitsch tofu beard retro four dollar toast. Copper mug drinking vinegar disrupt, chambray chillwave man braid shaman gastropub shoreditch narwhal fanny pack.<\/p>\n<h3>2. GLOSSIER ENAMEL PIN FANNY PACK PITCHFORK<\/h3>\n<p>Fingerstache snackwave brooklyn, semiotics helvetica actually hashtag gastropub health goth pinterest chambray hexagon. Put a bird on it pour-over blog woke waistcoat trust fund ugh poutine hot chicken skateboard polaroid austin. Activated charcoal raclette ramps distillery heirloom flannel. Roof party venmo thundercats, shabby chic hammock taxidermy synth chicharrones tattooed 3 wolf moon gluten-free occupy lomo selfies vape.<\/p>\n<p>Art party kickstarter adaptogen, pug lyft direct trade venmo artisan meh vexillologist poke taxidermy offal marfa sartorial. Chartreuse poutine man bun single-origin coffee enamel pin master cleanse, freegan quinoa tote bag normcore chambray food truck copper mug. Small batch kitsch tofu beard retro four dollar toast. Copper mug drinking vinegar disrupt, chambray chillwave man braid shaman gastropub shoreditch narwhal fanny pack.<\/p>\n<h3>3. PICKLED AUSTIN PUT A BIRD ON IT<\/h3>\n<p>Fingerstache snackwave brooklyn, semiotics helvetica actually hashtag gastropub health goth pinterest chambray hexagon. Put a bird on it pour-over blog woke waistcoat trust fund ugh poutine hot chicken skateboard polaroid austin. Activated charcoal raclette ramps distillery heirloom flannel. Roof party venmo thundercats, shabby chic hammock taxidermy synth chicharrones tattooed 3 wolf moon gluten-free occupy lomo selfies vape.<\/p>\n<p>Art party kickstarter adaptogen, pug lyft direct trade venmo artisan meh vexillologist poke taxidermy offal marfa sartorial. Chartreuse poutine man bun single-origin coffee enamel pin master cleanse, freegan quinoa tote bag normcore chambray food truck copper mug. Small batch kitsch tofu beard retro four dollar toast. Copper mug drinking vinegar disrupt, chambray chillwave man braid shaman gastropub shoreditch narwhal fanny pack.<\/p>\n<h3>4. Viral ramps mlkshk, plaid celiac gluten-free retro hashtag<\/h3>\n<p>Fingerstache snackwave brooklyn, semiotics helvetica actually hashtag gastropub health goth pinterest chambray hexagon. Put a bird on it pour-over blog woke waistcoat trust fund ugh poutine hot chicken skateboard polaroid austin. Activated charcoal raclette ramps distillery heirloom flannel. Roof party venmo thundercats, shabby chic hammock taxidermy synth chicharrones tattooed 3 wolf moon gluten-free occupy lomo selfies vape.<\/p>\n<p>Art party kickstarter adaptogen, pug lyft direct trade venmo artisan meh vexillologist poke taxidermy offal marfa sartorial. Chartreuse poutine man bun single-origin coffee enamel pin master cleanse, freegan quinoa tote bag normcore chambray food truck copper mug. Small batch kitsch tofu beard retro four dollar toast. Copper mug drinking vinegar disrupt, chambray chillwave man braid shaman gastropub shoreditch narwhal fanny pack.<\/p>\n<h3>5. Chicharrones kickstarter shabby chic venmo<\/h3>\n<p>Fingerstache snackwave brooklyn, semiotics helvetica actually hashtag gastropub health goth pinterest chambray hexagon. Put a bird on it pour-over blog woke waistcoat trust fund ugh poutine hot chicken skateboard polaroid austin. Activated charcoal raclette ramps distillery heirloom flannel. Roof party venmo thundercats, shabby chic hammock taxidermy synth chicharrones tattooed 3 wolf moon gluten-free occupy lomo selfies vape.<\/p>\n<p>Art party kickstarter adaptogen, pug lyft direct trade venmo artisan meh vexillologist poke taxidermy offal marfa sartorial. Chartreuse poutine man bun single-origin coffee enamel pin master cleanse, freegan quinoa tote bag normcore chambray food truck copper mug. Small batch kitsch tofu beard retro four dollar toast. Copper mug drinking vinegar disrupt, chambray chillwave man braid shaman gastropub shoreditch narwhal fanny pack.<\/p>"},"elements":[],"widgetType":"text-editor"}],"isInner":""}],"isInner":""}]]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				Tokyo			</title>
+			<link>https://demo.themeisle.com/neve-architecture/2019/07/17/tokyo/</link>
+			<pubDate>Wed, 17 Jul 2019 10:52:06 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-architecture/2019/07/17/tokyo/</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>109</wp:post_id>
+			<wp:post_date><![CDATA[2019-07-17 10:52:06]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-07-17 10:52:06]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[tokyo]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>2</wp:menu_order>
+			<wp:post_type><![CDATA[nav_menu_item]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+								<category domain="nav_menu" nicename="offices-menu"><![CDATA[Offices Menu]]></category>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_type]]></wp:meta_key>
+					<wp:meta_value><![CDATA[post_type]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_menu_item_parent]]></wp:meta_key>
+					<wp:meta_value><![CDATA[0]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_object_id]]></wp:meta_key>
+					<wp:meta_value><![CDATA[7]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_object]]></wp:meta_key>
+					<wp:meta_value><![CDATA[page]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_target]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_classes]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_xfn]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_url]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
 				</wp:postmeta>
 					</item>
 				<item>
@@ -2360,7 +2367,7 @@ Man braid vaporware shabby chic church-key dreamcatcher, sriracha aesthetic kinf
 				<item>
 			<title>
 				News			</title>
-			<link>https://demo.themeisle.com/neve-architecture/news/</link>
+			<link>https://demo.themeisle.com/neve-architecture/neve-architecture-news/</link>
 			<pubDate>Wed, 17 Jul 2019 11:41:55 +0000</pubDate>
 			<guid isPermaLink="false">https://demo.themeisle.com/neve-architecture/?page_id=114</guid>
 			<description></description>
@@ -2371,7 +2378,7 @@ Man braid vaporware shabby chic church-key dreamcatcher, sriracha aesthetic kinf
 			<wp:post_date_gmt><![CDATA[2019-07-17 11:41:55]]></wp:post_date_gmt>
 			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-			<wp:post_name><![CDATA[news]]></wp:post_name>
+			<wp:post_name><![CDATA[neve-architecture-news]]></wp:post_name>
 			<wp:status><![CDATA[publish]]></wp:status>
 			<wp:post_parent>0</wp:post_parent>
 			<wp:menu_order>0</wp:menu_order>
@@ -2380,7 +2387,7 @@ Man braid vaporware shabby chic church-key dreamcatcher, sriracha aesthetic kinf
 			<wp:is_sticky>0</wp:is_sticky>
 													<wp:postmeta>
 					<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
-					<wp:meta_value><![CDATA[146096]]></wp:meta_value>
+					<wp:meta_value><![CDATA[440]]></wp:meta_value>
 				</wp:postmeta>
 							<wp:postmeta>
 					<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
@@ -2389,6 +2396,10 @@ Man braid vaporware shabby chic church-key dreamcatcher, sriracha aesthetic kinf
 							<wp:postmeta>
 					<wp:meta_key><![CDATA[_yoast_wpseo_content_score]]></wp:meta_key>
 					<wp:meta_value><![CDATA[30]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
+					<wp:meta_value><![CDATA[default]]></wp:meta_value>
 				</wp:postmeta>
 					</item>
 				<item>
