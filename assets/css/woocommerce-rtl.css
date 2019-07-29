@@ -1269,7 +1269,7 @@ ul[id^="nv-primary-navigation"] .menu-item-nav-cart:not(.responsive-nav-cart) {
 }
 
 .woocommerce .cart_totals ul#shipping_method .shipping-method-description {
-  margin: 0 0 0 5px;
+  margin: 0 5px 0 0;
 }
 
 .woocommerce .cart_totals ul#shipping_method li {

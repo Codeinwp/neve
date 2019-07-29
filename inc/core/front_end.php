@@ -224,10 +224,10 @@ class Front_End {
 						'title'      => 'Constructions Company',
 					),
 					'neve-fashion'       => array(
-                        'url'        => 'https://demo.themeisle.com/neve-fashion/',
-                        'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/07/neve-fashion-demo-screenshot.png',
-                        'title'      => 'Fashion',
-                    ),
+						'url'        => 'https://demo.themeisle.com/neve-fashion/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/07/neve-fashion-demo-screenshot.png',
+						'title'      => 'Fashion',
+					),
 					'neve-showcase'      => array(
 						'url'        => 'https://demo.themeisle.com/neve-showcase/',
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/06/neve-showcase-demo-screenshot-big.png',
