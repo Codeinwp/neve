@@ -148,6 +148,15 @@ class Front_End {
                         'title'            => 'Fitness',
                         'unsplash_gallery' => 'https://unsplash.com/collections/6800490/fitness-gym',
                     ),
+                    'neve-vacation-rental' => array(
+                        'url'              => 'https://demo.themeisle.com/neve-vacation-rental/',
+                        'title'            => 'Vacation Rental',
+                    ),
+                    'neve-music-band' => array(
+                        'url'              => 'https://demo.themeisle.com/neve-music-band/',
+                        'title'            => 'Music Band',
+                        'unsplash_gallery' => 'https://unsplash.com/collections/7338489/music/746c95e4a72ad242a07001a2ca0fa7cb',
+                    ),
 					'neve-energy-panels' => array(
 						'url'   => 'https://demo.themeisle.com/neve-energy-panels/',
 						'title' => 'Energy Panels',
