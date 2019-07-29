@@ -49,7 +49,6 @@ class Breadcrumbs extends Base_View {
 	 * @return bool | void
 	 */
 	public function render_theme_breadcrumbs() {
-		var_dump( $this->is_breadcrumb_enabled() );
 		if ( ! $this->is_breadcrumb_enabled() ) {
 			return false;
 		}
@@ -66,6 +65,7 @@ class Breadcrumbs extends Base_View {
 		if ( ! apply_filters( 'neve_show_breadcrumbs', true ) ) {
 			return false;
 		}
+
 		// Yoast breadcrumbs
 		if ( function_exists( 'yoast_breadcrumb' ) ) {
 			return WPSEO_Options::get( 'breadcrumbs-enable', false ) === true;
@@ -88,7 +88,7 @@ class Breadcrumbs extends Base_View {
 	 * Render Breadcrumbs.
 	 */
 	public function render_breadcrumbs( $html_tag ) {
-		if ( is_front_page() ) {
+		if ( is_front_page() && ! is_home() ) {
 			return false;
 		}
 		if ( empty( $html_tag ) ) {
@@ -109,6 +109,8 @@ class Breadcrumbs extends Base_View {
 		if ( function_exists( 'rank_math_the_breadcrumbs' ) ) {
 			return rank_math_the_breadcrumbs();
 		}
+
+		return false;
 	}
 
 
