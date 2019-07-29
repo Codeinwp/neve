@@ -127,6 +127,9 @@ abstract class Base_Style_Manager extends Base_View {
 			add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue' ), 100 );
 		}
 
+		// Skip style file generation
+		return;
+
 		add_action( 'customize_save_after', array( $this, 'wipe_customizer_css_file' ), 0 );
 		add_action( 'after_switch_theme', array( $this, 'wipe_customizer_css_file' ), 0 );
 
@@ -142,13 +145,16 @@ abstract class Base_Style_Manager extends Base_View {
 	public function maybe_enqueue() {
 		$this->run_inline_styles();
 		$this->wrap_styles();
+		wp_add_inline_style( $this->style_hook_handle, $this->get_style() );
+
+		// Skip style enqueueing
+		return;
 
 		if ( $this->should_add_style() ) {
 			wp_enqueue_style( $this->style_handle, $this->style_url . $this->css_file_name, array( $this->style_hook_handle ), $this->get_style_version() );
 
 			return;
 		}
-		wp_add_inline_style( $this->style_hook_handle, $this->get_style() );
 	}
 
 	/**

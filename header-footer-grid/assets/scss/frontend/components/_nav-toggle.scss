@@ -30,6 +30,7 @@
   padding: 10px 15px;
   display: flex;
   align-items: center;
+  border: 1px solid #f0f0f0;
   &:hover {
     box-shadow: none;
     transform: none;
@@ -40,11 +41,7 @@
     margin-left: 5px;
   }
   .light-mode & {
-    border: 1px solid #f0f0f0;
     color: #404248;
-  }
-  .dark-mode & {
-    padding: 10px 0;
   }
 }
 

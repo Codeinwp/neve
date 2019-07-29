@@ -10,6 +10,7 @@ grunt
 phpcs.xml
 node_modules
 logs
+cypress
 package.json
 bin
 tests

@@ -2,7 +2,9 @@
 import { initShop } from './shop.js';
 import { initBlog } from './blog.js';
 import { initNavigation, repositionDropdowns } from './navigation.js';
+import { hfg } from './header-footer-grid.js';
 
+hfg();
 
 function run () {
   initShop();

@@ -24,9 +24,28 @@ class Post_Meta extends Base_View {
 	 * @return void
 	 */
 	public function init() {
+		add_filter( 'neve_display_author_avatar', array( $this, 'should_display_author_avatar' ) );
 		add_action( 'neve_post_meta_archive', array( $this, 'render_meta_list' ) );
 		add_action( 'neve_post_meta_single', array( $this, 'render_meta_list' ) );
 		add_action( 'neve_do_tags', array( $this, 'render_tags_list' ) );
+	}
+
+	/**
+	 * Show/hide author avatar based on customizer option
+	 *
+	 * @param bool $value option value.
+	 *
+	 * @return bool
+	 */
+	public function should_display_author_avatar( $value ) {
+
+		$show_avatar = get_theme_mod( 'neve_author_avatar', false );
+
+		if ( $show_avatar === true ) {
+			return true;
+		}
+
+		return false;
 	}
 
 	/**
@@ -47,15 +66,26 @@ class Post_Meta extends Base_View {
 			switch ( $meta ) {
 				case 'author':
 					$author_email   = get_the_author_meta( 'user_email' );
-					$avatar_url     = get_avatar_url( $author_email );
+					$gravatar_args  = apply_filters(
+						'neve_gravatar_args',
+						array(
+							'size' => 20,
+						)
+					);
+					$avatar_url     = get_avatar_url( $author_email, $gravatar_args );
 					$avatar_markup  = '<img class="photo" alt="' . get_the_author() . '" src="' . esc_url( $avatar_url ) . '" />&nbsp;';
-					$display_avatar = apply_filters( 'neve_display_author_avatar', true );
+					$display_avatar = apply_filters( 'neve_display_author_avatar', false );
 
 					$markup .= '<li class="meta author vcard">';
 					if ( $display_avatar ) {
 						$markup .= $avatar_markup;
 					}
-					$markup .= '<span class="author-name fn">' . wp_kses_post( get_the_author_posts_link() ) . '</span>';
+					$markup .= '<span class="author-name fn">';
+					if ( ! $display_avatar ) {
+						$markup .= __( 'by', 'neve' ) . ' ';
+					}
+					$markup .= wp_kses_post( get_the_author_posts_link() ) . '</span>';
+
 					$markup .= '</li>';
 					break;
 				case 'date':

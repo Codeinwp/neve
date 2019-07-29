@@ -128,6 +128,32 @@ abstract class Abstract_Builder implements Builder {
 	];
 
 	/**
+	 * Default colors for rows.
+	 *
+	 * Holds the default values for row colors.
+	 *
+	 * @since   1.0.0
+	 * @access  protected
+	 * @var array
+	 */
+	protected $default_colors = array(
+		'header'      => array(
+			'top'     => '#f0f0f0',
+			'main'    => '#ffffff',
+			'bottom'  => '#ffffff',
+			'sidebar' => '#ffffff',
+		),
+		'footer'      => array(
+			'top'    => '#ffffff',
+			'bottom' => '#ffffff',
+		),
+		'page_header' => array(
+			'top'    => '#ffffff',
+			'bottom' => '#ffffff',
+		),
+	);
+
+	/**
 	 * A list of builder components.
 	 *
 	 * @since   1.0.0
@@ -303,6 +329,28 @@ abstract class Abstract_Builder implements Builder {
 				]
 			);
 		}
+
+		$default_color = '#ffffff';
+		if ( isset( $this->default_colors[ $this->get_id() ][ $row_id ] ) && ! empty( $this->default_colors[ $this->get_id() ][ $row_id ] ) ) {
+			$default_color = $this->default_colors[ $this->get_id() ][ $row_id ];
+		}
+		SettingsManager::get_instance()->add(
+			[
+				'id'                => 'color',
+				'group'             => $row_setting_id,
+				'tab'               => SettingsManager::TAB_STYLE,
+				'section'           => $row_setting_id,
+				'label'             => __( 'Row color', 'neve' ),
+				'type'              => 'WP_Customize_Color_Control',
+				'options'           => [
+					'priority' => 100,
+				],
+				'transport'         => 'post' . $row_setting_id,
+				'sanitize_callback' => 'neve_sanitize_colors',
+				'default'           => $default_color,
+			]
+		);
+
 		do_action( 'hfg_add_settings_to_rows', SettingsManager::get_instance(), $row_setting_id, $row_id, $this->get_id() );
 
 		SettingsManager::get_instance()->add(
@@ -630,6 +678,27 @@ abstract class Abstract_Builder implements Builder {
 			$layout_height['desktop']                             = ( $layout_height['desktop'] > 0 ) ? $layout_height['desktop'] . 'px' : 'auto';
 			$css_array[' @media (min-width: 961px)'][ $selector ] = array(
 				'height' => $layout_height['desktop'],
+			);
+		}
+
+		if ( $row_index == 'sidebar' ) {
+			$selector = '.header-menu-sidebar.dark-mode .header-menu-sidebar-bg:before, .header-menu-sidebar.light-mode .header-menu-sidebar-bg:before';
+		}
+		$default_color = '#ffffff';
+		if ( isset( $this->default_colors[ $this->get_id() ][ $row_index ] ) && ! empty( $this->default_colors[ $this->get_id() ][ $row_index ] ) ) {
+			$default_color = $this->default_colors[ $this->get_id() ][ $row_index ];
+		}
+		$color = get_theme_mod( $this->control_id . '_' . $row_index . '_color', $default_color );
+
+		if ( $color !== $default_color ) {
+			$css_array[ $selector ]                 = array(
+				'background-color' => $color,
+			);
+			$css_array[ $selector . '.dark-mode' ]  = array(
+				'background-color' => $color,
+			);
+			$css_array[ $selector . '.light-mode' ] = array(
+				'background-color' => $color,
 			);
 		}
 

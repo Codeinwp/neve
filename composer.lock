@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "codeinwp/themeisle-sdk",
-            "version": "3.0.8",
+            "version": "3.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeinwp/themeisle-sdk.git",
-                "reference": "0f2e90ba354f710d5105c531003330756c43aade"
+                "reference": "259e2afb33bd523f9807e04ace921f8690350a31"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeinwp/themeisle-sdk/zipball/0f2e90ba354f710d5105c531003330756c43aade",
-                "reference": "0f2e90ba354f710d5105c531003330756c43aade",
+                "url": "https://api.github.com/repos/Codeinwp/themeisle-sdk/zipball/259e2afb33bd523f9807e04ace921f8690350a31",
+                "reference": "259e2afb33bd523f9807e04ace921f8690350a31",
                 "shasum": ""
             },
             "require-dev": {
@@ -42,7 +42,7 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2019-05-28T08:56:53+00:00"
+            "time": "2019-06-26T14:38:00+00:00"
         },
         {
             "name": "codeinwp/ti-about-page",
@@ -50,12 +50,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeinwp/ti-about-page.git",
-                "reference": "6dd3fed0d23099b11017517a41cc957c87c128f3"
+                "reference": "88df9985cbe78429c993caa69b5d0c5d47ecbdbc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeinwp/ti-about-page/zipball/6dd3fed0d23099b11017517a41cc957c87c128f3",
-                "reference": "6dd3fed0d23099b11017517a41cc957c87c128f3",
+                "url": "https://api.github.com/repos/Codeinwp/ti-about-page/zipball/88df9985cbe78429c993caa69b5d0c5d47ecbdbc",
+                "reference": "88df9985cbe78429c993caa69b5d0c5d47ecbdbc",
                 "shasum": ""
             },
             "type": "library",
@@ -77,20 +77,20 @@
             ],
             "description": "The theme about page for themeisle themes.",
             "homepage": "https://github.com/Codeinwp/ti-about-page",
-            "time": "2019-06-05T12:47:53+00:00"
+            "time": "2019-07-08T09:08:27+00:00"
         },
         {
             "name": "codeinwp/ti-onboarding",
-            "version": "1.4.2",
+            "version": "1.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeinwp/ti-onboarding.git",
-                "reference": "66459cce2d8922717c0fcd8a4244fbfd7fc5bb83"
+                "reference": "2398f693882bf2188bb0584033d09dfbe8d37406"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeinwp/ti-onboarding/zipball/66459cce2d8922717c0fcd8a4244fbfd7fc5bb83",
-                "reference": "66459cce2d8922717c0fcd8a4244fbfd7fc5bb83",
+                "url": "https://api.github.com/repos/Codeinwp/ti-onboarding/zipball/2398f693882bf2188bb0584033d09dfbe8d37406",
+                "reference": "2398f693882bf2188bb0584033d09dfbe8d37406",
                 "shasum": ""
             },
             "require-dev": {
@@ -117,7 +117,7 @@
             ],
             "description": "Onboarding for themeisle themes.",
             "homepage": "https://github.com/Codeinwp/ti-onboarding",
-            "time": "2019-06-05T12:18:00+00:00"
+            "time": "2019-07-15T11:48:52+00:00"
         }
     ],
     "packages-dev": [
@@ -189,16 +189,16 @@
         },
         {
             "name": "phpcompatibility/php-compatibility",
-            "version": "9.1.1",
+            "version": "9.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCompatibility/PHPCompatibility.git",
-                "reference": "2b63c5d284ab8857f7b1d5c240ddb507a6b2293c"
+                "reference": "3db1bf1e28123fd574a4ae2e9a84072826d51b5e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCompatibility/PHPCompatibility/zipball/2b63c5d284ab8857f7b1d5c240ddb507a6b2293c",
-                "reference": "2b63c5d284ab8857f7b1d5c240ddb507a6b2293c",
+                "url": "https://api.github.com/repos/PHPCompatibility/PHPCompatibility/zipball/3db1bf1e28123fd574a4ae2e9a84072826d51b5e",
+                "reference": "3db1bf1e28123fd574a4ae2e9a84072826d51b5e",
                 "shasum": ""
             },
             "require": {
@@ -212,7 +212,7 @@
                 "phpunit/phpunit": "~4.5 || ^5.0 || ^6.0 || ^7.0"
             },
             "suggest": {
-                "dealerdirect/phpcodesniffer-composer-installer": "^0.4.3 || This Composer plugin will sort out the PHPCS 'installed_paths' automatically.",
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.5 || This Composer plugin will sort out the PHPCS 'installed_paths' automatically.",
                 "roave/security-advisories": "dev-master || Helps prevent installing dependencies with known security issues."
             },
             "type": "phpcodesniffer-standard",
@@ -243,7 +243,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2018-12-30T23:16:27+00:00"
+            "time": "2019-06-27T19:58:56+00:00"
         },
         {
             "name": "phpcompatibility/phpcompatibility-paragonie",

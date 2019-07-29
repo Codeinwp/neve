@@ -9,7 +9,7 @@ module.exports = {
 		tasks: [ 'uglify:customizerControls', 'uglify:unMinified' ]
 	},
 	sass: {
-		files: [ 'assets/scss/**/*.scss' ],
+		files: [ 'assets/scss/**/*.scss', 'header-footer-grid/assets/scss/**/*.scss' ],
 		tasks: [ 'sass:style', 'cssmin' ]
 	},
 	customizerSass: {

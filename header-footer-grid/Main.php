@@ -83,7 +83,7 @@ class Main {
 	 * @access  public
 	 */
 	public function init() {
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+		// add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 		add_filter( 'neve_style_output_neve-generated-style', array( $this, 'append_css_style' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_utils_scripts' ) );
 	}
@@ -100,7 +100,12 @@ class Main {
 		$footer_bottom = ( isset( $layout_data['desktop']['bottom'] ) ) ? $layout_data['desktop']['bottom'] : array();
 
 		$footer_rows        = array_merge( wp_list_pluck( $footer_top, 'id' ), wp_list_pluck( $footer_bottom, 'id' ) );
-		$sidebars_to_search = array( 'footer-one-widgets', 'footer-two-widgets', 'footer-three-widgets', 'footer-four-widgets' );
+		$sidebars_to_search = array(
+			'footer-one-widgets',
+			'footer-two-widgets',
+			'footer-three-widgets',
+			'footer-four-widgets',
+		);
 		$hide               = '';
 		foreach ( $sidebars_to_search as $id ) {
 			if ( ! in_array( $id, $footer_rows ) ) {
@@ -173,19 +178,21 @@ class Main {
 	 * @access  public
 	 */
 	public function enqueue_scripts() {
-		$suffix = $this->get_assets_suffix();
-		wp_register_style( 'hfg-style', esc_url( Config::get_url() ) . '/assets/css/style.min.css', array(), self::VERSION );
-		wp_style_add_data( 'hfg-style', 'rtl', 'replace' );
-		wp_style_add_data( 'hfg-style', 'suffix', '.min' );
-		wp_enqueue_style( 'hfg-style' );
+		if ( ! $this->should_enqueue_assets() ) {
+			return;
+		}
 
-		wp_enqueue_script(
-			'hfg-theme-functions',
-			esc_url( Config::get_url() ) . '/assets/js/theme' . $suffix . '.js',
-			array(),
-			self::VERSION,
-			true
-		);
+		// wp_register_style( 'hfg-style', esc_url( Config::get_url() ) . '/assets/css/style.min.css', array(), self::VERSION );
+		// wp_style_add_data( 'hfg-style', 'rtl', 'replace' );
+		// wp_style_add_data( 'hfg-style', 'suffix', '.min' );
+		// wp_enqueue_style( 'hfg-style' );
+		// wp_enqueue_script(
+		// 'hfg-theme-functions',
+		// esc_url( Config::get_url() ) . '/assets/js/theme.min.js',
+		// array(),
+		// self::VERSION,
+		// true
+		// );
 	}
 
 	/**
@@ -265,6 +272,31 @@ class Main {
 	 */
 	public function __wakeup() {
 		_doing_it_wrong( __FUNCTION__, '', '1.0.0' );
+	}
+
+
+	/**
+	 * Check if assets should be enqueued.
+	 *
+	 * @return bool
+	 */
+	private function should_enqueue_assets() {
+		$disabled_templates = array( 'elementor_canvas' );
+		$current_template   = get_page_template_slug();
+
+		if ( in_array( $current_template, $disabled_templates ) ) {
+			return false;
+		}
+		if ( is_singular() ) {
+			$id     = get_the_ID();
+			$header = get_post_meta( $id, 'neve_meta_disable_header', true );
+			$footer = get_post_meta( $id, 'neve_meta_disable_footer', true );
+			if ( $header === 'on' && $footer === 'on' ) {
+				return false;
+			}
+		}
+
+		return true;
 	}
 }
 
