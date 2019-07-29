@@ -120,8 +120,8 @@ class Typography extends Base_Inline {
 			}
 
 			$line_height_default = get_theme_mod( 'neve_headings_line_height' );
-			$line_height = get_theme_mod( 'neve_' . $control . '_line_height', $line_height_default );
-			$line_height = json_decode( $line_height, true );
+			$line_height         = get_theme_mod( 'neve_' . $control . '_line_height', $line_height_default );
+			$line_height         = json_decode( $line_height, true );
 
 			if ( ! empty( $line_height ) ) {
 				$this->add_responsive_style(
