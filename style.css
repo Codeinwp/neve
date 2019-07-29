@@ -518,7 +518,7 @@ blockquote.wp-block-quote.is-style-large cite {
   border-radius: 3px;
   text-transform: uppercase;
   cursor: pointer;
-  line-height: 1.68421;
+  line-height: normal;
   font-family: inherit;
 }
 
@@ -897,7 +897,7 @@ a.button.close-responsive-search {
   border-radius: 3px;
   text-transform: uppercase;
   cursor: pointer;
-  line-height: 1.68421;
+  line-height: normal;
   font-family: inherit;
   border: 1px solid #676767;
   background-color: transparent;
@@ -954,7 +954,7 @@ ul[id^="nv-primary-navigation"] li.button > a, .menu li.button > a {
   border-radius: 3px;
   text-transform: uppercase;
   cursor: pointer;
-  line-height: 1.68421;
+  line-height: normal;
   font-family: inherit;
   font-size: inherit;
 }
@@ -1186,7 +1186,6 @@ input[type="number"],
 input[type="search"],
 input[type="tel"],
 input[type="color"],
-select,
 textarea {
   display: inline-block;
   font-size: 14px;
@@ -1201,8 +1200,15 @@ textarea {
   appearance: none;
 }
 
-input:not([type="search"]), textarea, select {
-  margin-bottom: 10px;
+select {
+  display: inline-block;
+  font-size: 14px;
+  padding: 0 12px;
+  background-color: transparent;
+  color: #333;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  transition: all 0.3s ease;
 }
 
 input, textarea, select, button {
@@ -1214,7 +1220,7 @@ input, textarea, select, button {
   box-sizing: border-box;
 }
 
-input, select {
+input:not([type="radio"]):not([type="checkbox"]), select {
   height: 35px;
 }
 
@@ -1248,7 +1254,7 @@ fieldset input[type="text"], fieldset input[type="search"], fieldset input[type=
   border-radius: 3px;
   text-transform: uppercase;
   cursor: pointer;
-  line-height: 1.68421;
+  line-height: normal;
   font-family: inherit;
 }
 
@@ -1291,7 +1297,7 @@ button, input[type=button], .btn, input[type="submit"] {
   border-radius: 3px;
   text-transform: uppercase;
   cursor: pointer;
-  line-height: 1.68421;
+  line-height: normal;
   font-family: inherit;
   background-color: #0366d6;
   color: #fff;

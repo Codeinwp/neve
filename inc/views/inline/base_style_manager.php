@@ -102,6 +102,7 @@ abstract class Base_Style_Manager extends Base_View {
 	 * Style_Manager constructor.
 	 */
 	public function __construct() {
+		/*
 		$wp_upload_dir    = wp_upload_dir( null, false );
 		$this->style_path = $wp_upload_dir['basedir'] . '/neve-theme/';
 		$this->style_url  = $wp_upload_dir['baseurl'] . '/neve-theme/';
@@ -109,6 +110,7 @@ abstract class Base_Style_Manager extends Base_View {
 		if ( is_ssl() && ! strpos( $this->style_url, 'https://' ) ) {
 			$this->style_url = str_replace( 'http://', 'https://', $this->style_url );
 		}
+		*/
 	}
 
 	/**
@@ -302,6 +304,7 @@ abstract class Base_Style_Manager extends Base_View {
 	public function get_style() {
 		$style = $this->style . $this->tablet_style . $this->desktop_style;
 		$style = apply_filters( 'neve_style_output_' . $this->style_handle, $style );
+
 		return preg_replace( '!\s+!', ' ', $style );
 	}
 
