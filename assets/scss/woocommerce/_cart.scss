@@ -132,7 +132,6 @@
     li {
       display: flex;
       align-items: center;
-      justify-content: flex-end;
       flex-wrap: wrap;
       margin-bottom: $spacing-sm;
 
@@ -254,10 +253,6 @@
       vertical-align: top;
       border-bottom: 0;
       border-top: 1px solid #f0f0f0;
-    }
-
-    td {
-      text-align: right;
     }
 
     #shipping_method {
