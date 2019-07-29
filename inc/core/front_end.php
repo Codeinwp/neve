@@ -149,8 +149,8 @@ class Front_End {
 						'unsplash_gallery' => 'https://unsplash.com/collections/6800490/fitness-gym',
 					),
 					'neve-vacation-rental' => array(
-						'url'              => 'https://demo.themeisle.com/neve-vacation-rental/',
-						'title'            => 'Vacation Rental',
+						'url'   => 'https://demo.themeisle.com/neve-vacation-rental/',
+						'title' => 'Vacation Rental',
 					),
 					'neve-music-band'      => array(
 						'url'              => 'https://demo.themeisle.com/neve-music-band/',
