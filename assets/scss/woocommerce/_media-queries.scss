@@ -1,5 +1,5 @@
 @media (min-width: #{$tablet-sm}) {
-
+  @include generic--tablet-sm();
 }
 
 @media (min-width: #{$tablet}) {

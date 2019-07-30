@@ -1,18 +1,41 @@
-input[type="text"], input[type="password"], input[type="email"], input[type="url"], input[type="date"], input[type="month"], input[type="time"], input[type="datetime"], input[type="datetime-local"], input[type="week"], input[type="number"], input[type="search"], input[type="tel"], input[type="color"], select, textarea {
-    display: inline-block;
-    font-size: 14px;
-    padding: 7px 12px;
-    background-color: transparent;
-    color: #333;
-    border: 1px solid #dddddd;
-    border-radius: 3px;
-    transition: all 0.3s ease;
-  }
-
-input[type="text"], input[type="search"], input[type="password"], input[type="submit"], textarea {
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="url"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="week"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+textarea {
+  display: inline-block;
+  font-size: 14px;
+  padding: 7px 12px;
+  background-color: transparent;
+  color: #333;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  transition: all 0.3s ease;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+}
+
+input[type="color"],
+select {
+  display: inline-block;
+  font-size: 14px;
+  padding: 7px 12px;
+  background-color: transparent;
+  color: #333;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  transition: all 0.3s ease;
 }
 
 input, textarea, select, button {
@@ -20,6 +43,10 @@ input, textarea, select, button {
   -webkit-box-sizing: border-box; /* For legacy WebKit based browsers */
   -moz-box-sizing: border-box; /* For legacy (Firefox <29) Gecko based browsers */
   box-sizing: border-box;
+}
+
+select {
+  height: 35px;
 }
 
 label {
@@ -30,10 +57,12 @@ label {
 fieldset {
   border: 0;
   margin: $spacing-sm 0;
+
   legend {
     font-size: .9em;
     margin-bottom: $spacing-xs;
   }
+
   input[type="text"], input[type="search"], input[type="password"], textarea {
     width: 100%;
   }

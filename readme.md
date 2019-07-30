@@ -482,3 +482,36 @@ Starter Sites screenshots resources:
 - Business Consulting
 * https://mystock.themeisle.com/photo/new-york-cityscape/
 
+- Architecture
+* http://mystock.themeisle.com/photo/wind/
+* http://mystock.themeisle.com/photo/architectural-ceiling/
+* http://mystock.themeisle.com/photo/glass-building/
+* http://mystock.themeisle.com/photo/city-view/
+* http://mystock.themeisle.com/photo/trump-tower/
+* http://mystock.themeisle.com/photo/white-building/
+
+- Fashion
+* https://stocksnap.io/photo/K00RNBNJGC
+* https://stocksnap.io/photo/TFK0XBHMRE
+* https://stocksnap.io/photo/BRDLQ22VO4
+* https://stocksnap.io/photo/HZBJUNAK7H
+* https://stocksnap.io/photo/Y7WNWJC6NA
+
+- Fitness
+* https://stocksnap.io/photo/M5791YB6J9
+* https://stocksnap.io/photo/SRWV8BAHE6
+
+- Vacation Rental
+* http://mystock.themeisle.com/photo/pool/
+
+- Music Band
+* https://stocksnap.io/photo/G22LER7CJQ
+* https://stocksnap.io/photo/E9E65D3D04
+* https://stocksnap.io/photo/V2TT0P34KE
+* https://stocksnap.io/photo/BG80NXTTHY
+* https://stocksnap.io/photo/NV1FLKIE9U
+* https://stocksnap.io/photo/IUFVZUDPO5
+
+
+
+

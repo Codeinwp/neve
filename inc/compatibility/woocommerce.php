@@ -35,13 +35,15 @@ class Woocommerce {
 			.woocommerce a.product_type_grouped,
 			.woocommerce a.product_type_external,
 			.woocommerce a.product_type_variable,
+			.woocommerce button.button.alt,
 			.woocommerce button.button.alt.single_add_to_cart_button.disabled,
 			.woocommerce button.button.alt.single_add_to_cart_button,
 			.woocommerce .actions > button[type=submit],
 			.woocommerce .checkout.wc-forward,
 			.woocommerce button#place_order,
 			.woocommerce .return-to-shop > .button,
-			ul[id^="nv-primary-navigation"] .nv-nav-cart a.button.checkout.wc-forward',
+			ul[id^="nv-primary-navigation"] .nv-nav-cart a.button.checkout.wc-forward,
+			.button.woocommerce-form-login__submit',
 		'hover'   => '
 			,.woocommerce a.button:hover,
 			.woocommerce .button:not(.nv-sidebar-toggle):hover,
@@ -60,7 +62,8 @@ class Woocommerce {
 			.woocommerce .checkout.wc-forward:hover,
 			.woocommerce button#place_order:hover,
 			.woocommerce .return-to-shop > .button:hover,
-			ul[id^="nv-primary-navigation"] .nv-nav-cart a.button.checkout.wc-forward:hover',
+			ul[id^="nv-primary-navigation"] .nv-nav-cart a.button.checkout.wc-forward:hover,
+			.button.woocommerce-form-login__submit:hover',
 	);
 
 	/**
@@ -527,7 +530,8 @@ class Woocommerce {
 			.woocommerce .actions > button[type=submit],
 			.woocommerce .checkout.wc-forward,
 			.woocommerce button#place_order,
-			.woocommerce .return-to-shop > .button';
+			.woocommerce .return-to-shop > .button,
+			.woocommerce .button.woocommerce-form-login__submit';
 		}
 
 		if ( $theme_mod === 'neve_secondary_button_padding' ) {

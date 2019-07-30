@@ -249,6 +249,10 @@ section.exclusive {
 
   .tns-outer{
     overflow: hidden;
+    position: relative;
+    padding: 5px 10px 0 10px;
+    left: -10px;
+    width: calc( 100% + 20px );
   }
   .tns-ovh {
     padding-right: 4px;

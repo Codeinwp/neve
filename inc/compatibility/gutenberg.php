@@ -74,7 +74,7 @@ class Gutenberg {
 		$status = get_user_meta( get_current_user_id(), 'neve_gutenberg_integration', true );
 
 		if ( ! $status ) {
-			return 'enabled';
+			return 'disabled';
 		}
 
 		return $status;

@@ -29,11 +29,14 @@ const masonry = function () {
     return false;
   }
   masonryContainer = document.querySelector('.nv-index-posts .posts-wrapper');
-  masonryInstance = new Masonry(masonryContainer, {
-    itemSelector: 'article.layout-grid',
-    columnWidth: 'article.layout-grid',
-    percentPosition: true,
+  imagesLoaded( masonryContainer, function() {
+    masonryInstance = new Masonry(masonryContainer, {
+      itemSelector: 'article.layout-grid',
+      columnWidth: 'article.layout-grid',
+      percentPosition: true,
+    });
   });
+
 };
 
 /**

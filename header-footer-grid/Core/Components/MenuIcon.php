@@ -37,7 +37,7 @@ class MenuIcon extends Abstract_Component {
 
 		$this->set_property( 'id', 'nav-icon' );
 
-		$this->set_property( 'width', 3 );
+		$this->set_property( 'width', 1 );
 
 		$this->set_property( 'section', self::COMPONENT_ID );
 	}
