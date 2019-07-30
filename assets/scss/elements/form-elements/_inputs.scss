@@ -26,10 +26,11 @@ textarea {
   appearance: none;
 }
 
+input[type="color"],
 select {
   display: inline-block;
   font-size: 14px;
-  padding: 0 12px;
+  padding: 7px 12px;
   background-color: transparent;
   color: #333;
   border: 1px solid #dddddd;
@@ -44,7 +45,7 @@ input, textarea, select, button {
   box-sizing: border-box;
 }
 
-input:not([type="radio"]):not([type="checkbox"]), select {
+select {
   height: 35px;
 }
 
