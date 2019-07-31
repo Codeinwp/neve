@@ -57,6 +57,7 @@
     "phpcbf": "composer run-script format || true ",
     "phpcs": "composer run-script phpcs",
     "test": "grunt travis",
+    "dist": "grunt dist",
     "deploy": "grunt wp_readme_to_markdown && grunt deploy",
     "jshint": "grunt jshint",
     "build:grunt": "grunt buildScripts",
