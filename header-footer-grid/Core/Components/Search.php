@@ -34,7 +34,7 @@ class Search extends Abstract_Component {
 	public function init() {
 		$this->set_property( 'label', __( 'Search Form', 'neve' ) );
 		$this->set_property( 'id', $this->get_class_const( 'COMPONENT_ID' ) );
-		$this->set_property( 'width', 1 );
+		$this->set_property( 'width', 2 );
 	}
 
 	/**

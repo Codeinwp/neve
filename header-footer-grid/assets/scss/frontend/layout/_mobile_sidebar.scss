@@ -519,7 +519,7 @@ body.menu_sidebar_slide_left {
     background: rgba(0, 0, 0, 0.5);
     position: fixed;
     transform: translate3d(0, 0, 0);
-    z-index: 0;
+    z-index: $menu_sidebar_active_z_index - 1;
     transition: all .5s linear;
     display: none;
     visibility: hidden;

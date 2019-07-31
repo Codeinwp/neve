@@ -102,6 +102,7 @@ abstract class Base_Style_Manager extends Base_View {
 	 * Style_Manager constructor.
 	 */
 	public function __construct() {
+		/*
 		$wp_upload_dir    = wp_upload_dir( null, false );
 		$this->style_path = $wp_upload_dir['basedir'] . '/neve-theme/';
 		$this->style_url  = $wp_upload_dir['baseurl'] . '/neve-theme/';
@@ -109,6 +110,7 @@ abstract class Base_Style_Manager extends Base_View {
 		if ( is_ssl() && ! strpos( $this->style_url, 'https://' ) ) {
 			$this->style_url = str_replace( 'http://', 'https://', $this->style_url );
 		}
+		*/
 	}
 
 	/**
@@ -127,6 +129,9 @@ abstract class Base_Style_Manager extends Base_View {
 			add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue' ), 100 );
 		}
 
+		// Skip style file generation
+		return;
+
 		add_action( 'customize_save_after', array( $this, 'wipe_customizer_css_file' ), 0 );
 		add_action( 'after_switch_theme', array( $this, 'wipe_customizer_css_file' ), 0 );
 
@@ -142,13 +147,16 @@ abstract class Base_Style_Manager extends Base_View {
 	public function maybe_enqueue() {
 		$this->run_inline_styles();
 		$this->wrap_styles();
+		wp_add_inline_style( $this->style_hook_handle, $this->get_style() );
+
+		// Skip style enqueueing
+		return;
 
 		if ( $this->should_add_style() ) {
 			wp_enqueue_style( $this->style_handle, $this->style_url . $this->css_file_name, array( $this->style_hook_handle ), $this->get_style_version() );
 
 			return;
 		}
-		wp_add_inline_style( $this->style_hook_handle, $this->get_style() );
 	}
 
 	/**
@@ -296,6 +304,7 @@ abstract class Base_Style_Manager extends Base_View {
 	public function get_style() {
 		$style = $this->style . $this->tablet_style . $this->desktop_style;
 		$style = apply_filters( 'neve_style_output_' . $this->style_handle, $style );
+
 		return preg_replace( '!\s+!', ' ', $style );
 	}
 

@@ -13,6 +13,7 @@
     justify-content: center;
     line-height: 1;
     height: 27px;
+    opacity: .6;
 }
 
 .nv-button-group input {
@@ -21,10 +22,9 @@
 
 .nv-button-group input:checked + label,
 .nv-button-group input:checked + label:hover {
-    background: #13aff0;
-    border: 1px solid #0f71a3;
-    box-shadow: 0 1px 0 #0f71a3;
-    color: #fff;
+    background: #fff;
+    color: #13aff0;
+    opacity: 1;
 }
 
 .nv-button-group label:first-of-type {

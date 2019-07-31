@@ -126,31 +126,93 @@ class SpacingControl extends WP_Customize_Control {
 	 */
 	protected function content_template() {
 		?>
-		<label class='hfg-spacing-responsive' for="" >
+		<#
+		desktop_unit_val = 'px';
+		tablet_unit_val  = 'px';
+		mobile_unit_val  = 'px';
 
-			<# if ( data.label ) { #>
-			<span class="customize-control-title">{{{ data.label }}}</span>
-			<# } #>
+		if ( data.value['desktop-unit'] ) {
+		desktop_unit_val = data.value['desktop-unit'];
+		}
+
+		if ( data.value['tablet-unit'] ) {
+		tablet_unit_val = data.value['tablet-unit'];
+		}
+
+		if ( data.value['mobile-unit'] ) {
+		mobile_unit_val = data.value['mobile-unit'];
+		}
+		#>
+		<label class='hfg-spacing-responsive' for="" >
+			<div class="hfg-spacing-header">
+				<# if ( data.label ) { #>
+				<span class="customize-control-title">{{{ data.label }}}</span>
+				<# } #>
+				<ul class="hfg-spacing-responsive-btns">
+					<li class="desktop active">
+						<button type="button" class="preview-desktop active" data-device="desktop">
+							<i class="dashicons dashicons-desktop"></i>
+						</button>
+					</li>
+					<li class="tablet">
+						<button type="button" class="preview-tablet" data-device="tablet">
+							<i class="dashicons dashicons-tablet"></i>
+						</button>
+					</li>
+					<li class="mobile">
+						<button type="button" class="preview-mobile" data-device="mobile">
+							<i class="dashicons dashicons-smartphone"></i>
+						</button>
+					</li>
+				</ul>
+
+				<div class="hfg-spacing-responsive-units-screen-wrap">
+					<div class="unit-input-wrapper hfg-spacing-unit-wrapper">
+						<input type='hidden' class='hfg-spacing-unit-input hfg-spacing-desktop-unit' data-device='desktop' value='{{desktop_unit_val}}'>
+						<input type='hidden' class='hfg-spacing-unit-input hfg-spacing-tablet-unit' data-device='tablet' value='{{tablet_unit_val}}'>
+						<input type='hidden' class='hfg-spacing-unit-input hfg-spacing-mobile-unit' data-device='mobile' value='{{mobile_unit_val}}'>
+					</div>
+				</div>
+
+				<div class="hfg-units-wrap">
+					<ul class="hfg-spacing-responsive-units hfg-spacing-desktop-responsive-units active">
+						<#_.each( data.unit_choices, function( unit_key ) {
+						unit_class = '';
+						if ( desktop_unit_val === unit_key ) {
+						unit_class = 'active';
+						}
+						#><li class='single-unit {{ unit_class }}' data-unit='{{ unit_key }}' >
+							<span class="unit-text">{{{ unit_key }}}</span>
+						</li><#
+						});#>
+					</ul>
+					<ul class="hfg-spacing-responsive-units hfg-spacing-tablet-responsive-units">
+						<#_.each( data.unit_choices, function( unit_key ) {
+						unit_class = '';
+						if ( tablet_unit_val === unit_key ) {
+						unit_class = 'active';
+						}
+						#><li class='single-unit {{ unit_class }}' data-unit='{{ unit_key }}' >
+							<span class="unit-text">{{{ unit_key }}}</span>
+						</li><#
+						});#>
+					</ul>
+					<ul class="hfg-spacing-responsive-units hfg-spacing-mobile-responsive-units">
+						<#_.each( data.unit_choices, function( unit_key ) {
+						unit_class = '';
+						if ( mobile_unit_val === unit_key ) {
+						unit_class = 'active';
+						}
+						#><li class='single-unit {{ unit_class }}' data-unit='{{ unit_key }}' >
+							<span class="unit-text">{{{ unit_key }}}</span>
+						</li><#
+						});#>
+					</ul>
+				</div>
+			</div>
 			<# if ( data.description ) { #>
 			<span class="description customize-control-description">{{{ data.description }}}</span>
-			<# }
-
-			desktop_unit_val = 'px';
-			tablet_unit_val  = 'px';
-			mobile_unit_val  = 'px';
-
-			if ( data.value['desktop-unit'] ) {
-			desktop_unit_val = data.value['desktop-unit'];
-			}
-
-			if ( data.value['tablet-unit'] ) {
-			tablet_unit_val = data.value['tablet-unit'];
-			}
-
-			if ( data.value['mobile-unit'] ) {
-			mobile_unit_val = data.value['mobile-unit'];
-			} #>
-
+			<# } #>
 
 			<div class="hfg-spacing-responsive-outer-wrapper">
 				<#
@@ -187,17 +249,7 @@ class SpacingControl extends WP_Customize_Control {
 						<li class="hfg-spacing-input-item-reset">
 							<span class="dashicons dashicons-image-rotate" data-device='desktop'></span>
 						</li>
-						<ul class="hfg-spacing-responsive-units hfg-spacing-desktop-responsive-units">
-							<#_.each( data.unit_choices, function( unit_key ) {
-							unit_class = '';
-							if ( desktop_unit_val === unit_key ) {
-							unit_class = 'active';
-							}
-							#><li class='single-unit {{ unit_class }}' data-unit='{{ unit_key }}' >
-								<span class="unit-text">{{{ unit_key }}}</span>
-							</li><#
-							});#>
-						</ul>
+
 					</ul>
 
 					<ul class="hfg-spacing-wrapper tablet"><#
@@ -217,17 +269,7 @@ class SpacingControl extends WP_Customize_Control {
 						<li class="hfg-spacing-input-item-reset">
 							<span class="dashicons dashicons-image-rotate" data-device='tablet'></span>
 						</li>
-						<ul class="hfg-spacing-responsive-units hfg-spacing-tablet-responsive-units">
-							<#_.each( data.unit_choices, function( unit_key ) {
-							unit_class = '';
-							if ( tablet_unit_val === unit_key ) {
-							unit_class = 'active';
-							}
-							#><li class='single-unit {{ unit_class }}' data-unit='{{ unit_key }}' >
-								<span class="unit-text">{{{ unit_key }}}</span>
-							</li><#
-							});#>
-						</ul>
+
 					</ul>
 
 					<ul class="hfg-spacing-wrapper mobile"><#
@@ -246,45 +288,9 @@ class SpacingControl extends WP_Customize_Control {
 						<li class="hfg-spacing-input-item-reset">
 							<span class="dashicons dashicons-image-rotate" data-device='mobile'></span>
 						</li>
-						<ul class="hfg-spacing-responsive-units hfg-spacing-mobile-responsive-units">
-							<#_.each( data.unit_choices, function( unit_key ) {
-							unit_class = '';
-							if ( mobile_unit_val === unit_key ) {
-							unit_class = 'active';
-							}
-							#><li class='single-unit {{ unit_class }}' data-unit='{{ unit_key }}' >
-								<span class="unit-text">{{{ unit_key }}}</span>
-							</li><#
-							});#>
-						</ul>
+
 					</ul>
 				</div>
-
-				<div class="hfg-spacing-responsive-units-screen-wrap">
-					<div class="unit-input-wrapper hfg-spacing-unit-wrapper">
-						<input type='hidden' class='hfg-spacing-unit-input hfg-spacing-desktop-unit' data-device='desktop' value='{{desktop_unit_val}}'>
-						<input type='hidden' class='hfg-spacing-unit-input hfg-spacing-tablet-unit' data-device='tablet' value='{{tablet_unit_val}}'>
-						<input type='hidden' class='hfg-spacing-unit-input hfg-spacing-mobile-unit' data-device='mobile' value='{{mobile_unit_val}}'>
-					</div>
-					<ul class="hfg-spacing-responsive-btns">
-						<li class="desktop active">
-							<button type="button" class="preview-desktop active" data-device="desktop">
-								<i class="dashicons dashicons-desktop"></i>
-							</button>
-						</li>
-						<li class="tablet">
-							<button type="button" class="preview-tablet" data-device="tablet">
-								<i class="dashicons dashicons-tablet"></i>
-							</button>
-						</li>
-						<li class="mobile">
-							<button type="button" class="preview-mobile" data-device="mobile">
-								<i class="dashicons dashicons-smartphone"></i>
-							</button>
-						</li>
-					</ul>
-				</div>
-
 			</div>
 		</label>
 

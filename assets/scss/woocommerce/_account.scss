@@ -4,6 +4,40 @@ body.woocommerce-account {
     flex-direction: column;
     padding-top: $spacing-sm;
   }
+
+  .woocommerce-LostPassword {
+    font-size: .9em;
+    text-align: center;
+    margin: $spacing-xs 0 0 0;
+  }
+
+  .woocommerce-form-login {
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+
+    .woocommerce-form-login__submit {
+      float: none;
+      margin-left: auto;
+      margin-right: 0;
+    }
+
+    .woocommerce-form-login__rememberme {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0;
+
+      input {
+        margin-right: 10px;
+      }
+    }
+
+    .form-row:not(.woocommerce-form-row--wide) {
+      display: flex;
+      align-items: center;
+      margin-top: $spacing-sm;
+    }
+  }
 }
 
 .nv-content-wrap .woocommerce-MyAccount-navigation {
