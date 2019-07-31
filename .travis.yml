@@ -52,6 +52,11 @@ jobs:
       name: "Unit tests for PHP 7.1"
       script:
         - ./bin/run-unit-tests.sh
+    - php: 7.0
+      name: "Blackfire tests"
+      env: WP_VERSION=latest
+      script:
+        - ./bin/run-blackfire.sh
     - stage: deploy
       name: "Deployment"
       php: 7.0

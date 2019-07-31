@@ -1,0 +1,6 @@
+tests:
+  "Profiling the homepage":
+    path: "/"
+    assertions:
+      - "main.memory < 3MB"         # memory does not exceed 10mb
+      - "main.wall_time < 700ms"
