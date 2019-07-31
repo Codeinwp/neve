@@ -108,5 +108,13 @@
   }
 }
 
+.nv-thumb-caption {
+  margin-top: .5em;
+  margin-bottom: 1em;
+  color: #555d66;
+  text-align: center;
+  font-size: 13px;
+}
+
 @mixin single-post--laptop() {
 }
