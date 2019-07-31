@@ -44,9 +44,5 @@ services:
       - WORDPRESS_DB_PASSWORD=wordpress
       - WORDPRESS_DB_ROOT_PASSWORD=wordpress
       - WORDPRESS_DEBUG=1
-      - WORDPRESS_CONFIG_EXTRA='
-          /* Multisite */
-          define("WP_SITEURL", "http://" . $$_SERVER["HTTP_HOST"]. ($$_SERVER["REMOTE_PORT"] ?? '')  );
-          define("WP_HOME", "http://" .$$_SERVER["HTTP_HOST"] . ($$_SERVER["REMOTE_PORT"] ?? ''));'
 volumes:
    wpcore:
