@@ -27,12 +27,13 @@ fi
 if [ ! -d "dist" ]; then
   echo "Distribution files ( /dist folder ) are not present. Creating it ... "
   npm install
+  npm run-script build
   npm run-script dist
 fi
 
 BLACKFIRE_TEST_NAME="Local test for $(hostname)";
 
-if [ -z "TRAVIS_JOB_NUMBER" ]
+if [ -z "$TRAVIS_JOB_NUMBER" ]
 then
       BLACKFIRE_TEST_NAME="Travis job: #$TRAVIS_JOB_NUMBER";
 fi
