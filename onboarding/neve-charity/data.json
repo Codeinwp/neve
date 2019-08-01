@@ -46,7 +46,7 @@
       "module_status": {
         "social-sharing": {
           "showed_notices": [],
-          "active": true
+          "active": false
         },
         "image-cdn": {
           "showed_notices": []
@@ -58,7 +58,8 @@
           "showed_notices": []
         },
         "elementor-widgets": {
-          "showed_notices": []
+          "showed_notices": [],
+          "active": true
         },
         "template-directory": {
           "showed_notices": [],
@@ -150,7 +151,8 @@
           "weibo": "0"
         }
       }
-    }
+    },
+    "elementor_load_fa4_shim": "yes"
   },
   "widgets": {
     "blog-sidebar": {
@@ -181,13 +183,12 @@
       }
     }
   },
-  "recommended_plugins": {
+  "recommended_plugins": [],
+  "mandatory_plugins": {
+    "elementor": "Elementor Page Builder",
     "themeisle-companion": "Orbit Fox by ThemeIsle"
   },
-  "mandatory_plugins": {
-    "elementor": "Elementor Page Builder"
-  },
-  "default_off_recommended_plugins": null,
+  "default_off_recommended_plugins": [],
   "front_page": {
     "front_page": "neve-charity-demo-frontpage",
     "blog_page": "neve-charity-demo-blog"
