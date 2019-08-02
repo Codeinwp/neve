@@ -68,7 +68,8 @@
           "auto_update_checks": "0"
         }
       }
-    }
+    },
+    "elementor_load_fa4_shim": "yes"
   },
   "widgets": {
     "blog-sidebar": {
@@ -97,8 +98,8 @@
   },
   "recommended_plugins": [],
   "mandatory_plugins": {
-    "elementor": "Elementor Page Builder",
-    "themeisle-companion": "Orbit Fox by ThemeIsle"
+    "themeisle-companion": "Orbit Fox by ThemeIsle",
+    "elementor": "Elementor Page Builder"
   },
   "default_off_recommended_plugins": [],
   "front_page": {

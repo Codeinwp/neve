@@ -36,7 +36,9 @@
     }
   },
   "wp_options": {
-    "elementor_load_fa4_shim": "yes"
+    "elementor_load_fa4_shim": "yes",
+    "elementor_disable_color_schemes": "",
+    "elementor_disable_typography_schemes": ""
   },
   "widgets": {
     "blog-sidebar": {
@@ -90,8 +92,8 @@
     "woocommerce": "WooCommerce"
   },
   "mandatory_plugins": {
-    "elementor": "Elementor Page Builder",
-    "themeisle-companion": "Orbit Fox by ThemeIsle"
+    "themeisle-companion": "Orbit Fox by ThemeIsle",
+    "elementor": "Elementor Page Builder"
   },
   "default_off_recommended_plugins": [
     "woocommerce"
