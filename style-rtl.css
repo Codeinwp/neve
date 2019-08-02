@@ -5,7 +5,7 @@ Theme URI:      https://themeisle.com/themes/neve/
 Author:         ThemeIsle
 Author URI:     https://themeisle.com
 Description:    Neve is a super fast, easily customizable, multi-purpose theme. It’s perfect for blogs, small business, startups, agencies, firms, e-commerce shops (WooCommerce storefront) as well as personal portfolio sites and most types of projects. A fully AMP optimized and responsive theme, Neve will load in mere seconds and adapt perfectly on any viewing device. While it is lightweight and has a minimalist design, the theme is highly extendable, it has a highly SEO optimized code, resulting in top rankings in Google search results. Neve works perfectly with Gutenberg and the most popular page builders (Elementor, Brizy, Beaver Builder, Visual Composer, SiteOrigin, Divi). Neve is also WooCommerce ready, responsive, RTL & translation ready. Look no further. Neve is the perfect theme for you!
-Version:        2.3.20
+Version:        2.3.21
 License:        GNU General Public License v2 or later
 License URI:    http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain:    neve
@@ -1200,10 +1200,11 @@ textarea {
   appearance: none;
 }
 
+input[type="color"],
 select {
   display: inline-block;
   font-size: 14px;
-  padding: 0 12px;
+  padding: 7px 12px;
   background-color: transparent;
   color: #333;
   border: 1px solid #dddddd;
@@ -1220,7 +1221,7 @@ input, textarea, select, button {
   box-sizing: border-box;
 }
 
-input:not([type="radio"]):not([type="checkbox"]), select {
+select {
   height: 35px;
 }
 
@@ -1721,6 +1722,14 @@ article {
   background: #0366d6;
   border-color: #0366d6;
   color: #fff;
+}
+
+.nv-thumb-caption {
+  margin-top: .5em;
+  margin-bottom: 1em;
+  color: #555d66;
+  text-align: center;
+  font-size: 13px;
 }
 
 #comments {
@@ -3526,7 +3535,7 @@ body.menu_sidebar_slide_left.menu_sidebar_dropdown:before {
   z-index: 10;
 }
 
-.site-footer .item--inner:not([class*="widgets"]) {
+.site-footer .item--inner:not([class*="widgets"]):not([class*=copyright]) {
   width: 100%;
   max-width: 100%;
   align-items: center;
