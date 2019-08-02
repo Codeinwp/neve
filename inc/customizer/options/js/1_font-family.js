@@ -37,7 +37,7 @@
           if (data.source !== 'system') {
             self.generateLinkNode(self.fontControls[data.controlId].linkNodeId, data.value);
             data.value = '\"' + data.value + '\"';
-          } 
+          }
           if (data.value === 'default') {
             $(self.fontControls[data.controlId].selectors).css('font-family', '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif');
             return false;
@@ -88,12 +88,6 @@
         'unit': ' ',
         'styleClass': 'body-line-height-css'
       },
-      'neve_headings_line_height': {
-        'selector': 'h1:not(.site-title), .single .entry-title,h2,h3,h4,h5,h6',
-        'cssProp': 'line-height',
-        'unit': ' ',
-        'styleClass': 'headings-line-height-css'
-      },
       'neve_h1_font_size': {
         'selector': 'h1:not(.site-title), .single .entry-title',
         'cssProp': 'font-size',
@@ -123,6 +117,36 @@
         'selector': 'h6',
         'cssProp': 'font-size',
         'styleClass': 'h6-font-size-css'
+      },
+      'neve_h1_line_height': {
+        'selector': 'h1:not(.site-title), .single .entry-title',
+        'cssProp': 'line-height',
+        'styleClass': 'h1-line-height-css'
+      },
+      'neve_h2_line_height': {
+        'selector': 'h2',
+        'cssProp': 'line-height',
+        'styleClass': 'h2-line-height-css'
+      },
+      'neve_h3_line_height': {
+        'selector': 'h3',
+        'cssProp': 'line-height',
+        'styleClass': 'h3-line-height-css'
+      },
+      'neve_h4_line_height': {
+        'selector': 'h4',
+        'cssProp': 'line-height',
+        'styleClass': 'h4-line-height-css'
+      },
+      'neve_h5_line_height': {
+        'selector': 'h5',
+        'cssProp': 'line-height',
+        'styleClass': 'h5-line-height-css'
+      },
+      'neve_h6_line_height': {
+        'selector': 'h6',
+        'cssProp': 'line-height',
+        'styleClass': 'h6-line-height-css'
       },
     },
 
