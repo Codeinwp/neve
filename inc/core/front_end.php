@@ -157,11 +157,6 @@ class Front_End {
 						'title'            => 'Music Band',
 						'unsplash_gallery' => 'https://unsplash.com/collections/7338489/music/746c95e4a72ad242a07001a2ca0fa7cb',
 					),
-					/*'neve-wedding'         => array(
-						'url'              => 'https://demo.themeisle.com/neve-wedding/',
-						'title'            => 'Wedding',
-						'unsplash_gallery' => 'https://unsplash.com/collections/8116784/wedding/9afa9f6ba14422f348e1c7a49a9d51e9',
-					),*/
 					'neve-energy-panels'   => array(
 						'url'   => 'https://demo.themeisle.com/neve-energy-panels/',
 						'title' => 'Energy Panels',
