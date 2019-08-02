@@ -81,9 +81,6 @@ class Post_Layout extends Base_View {
 						null,
 						'neve-blog'
 					);
-					echo '<div class="nv-thumb-caption">';
-					echo wp_kses_post( get_the_post_thumbnail_caption() );
-					echo '</div>';
 					echo '</div>';
 					break;
 				case 'content':
