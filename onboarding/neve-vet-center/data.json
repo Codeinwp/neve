@@ -85,7 +85,8 @@
           "auto_update_checks": "0"
         }
       }
-    }
+    },
+    "elementor_load_fa4_shim": "yes"
   },
   "widgets": {
     "blog-sidebar": {
@@ -116,13 +117,12 @@
       }
     }
   },
-  "recommended_plugins": {
+  "recommended_plugins": [],
+  "mandatory_plugins": {
+    "elementor": "Elementor Page Builder",
     "themeisle-companion": "Orbit Fox by ThemeIsle"
   },
-  "mandatory_plugins": {
-    "elementor": "Elementor Page Builder"
-  },
-  "default_off_recommended_plugins": null,
+  "default_off_recommended_plugins": [],
   "front_page": {
     "front_page": "neve-vet-center-home-page",
     "blog_page": null

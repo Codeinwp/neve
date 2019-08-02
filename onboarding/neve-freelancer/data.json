@@ -2,15 +2,66 @@
   "content_file": "https://demo.themeisle.com/neve-freelancer/wp-content/uploads/sites/183/ti-demo-data/export.xml",
   "theme_mods": {
     "ti_prev_theme": "twentyseventeen",
-    "custom_css_post_id": "34",
+    "custom_css_post_id": 34,
     "neve_link_hover_color": "#67b3a3",
     "neve_menu_item_hover_color": "#67b3a3",
     "neve_last_menu_item": "[]",
     "neve_footer_text": "<p><a href=\"https://themeisle.com/themes/neve/\" rel=\"nofollow\">Neve</a> | Powered by <a href=\"http://wordpress.org\" rel=\"nofollow\">WordPress</a></p>",
-    "neve_generated_style_version": "1554370325",
+    "ti_about_recommended_plugins": {
+      "otter-blocks": "visible"
+    },
+    "neve_generated_style_version": 1560354026,
     "__ti_import_menus_location": {
       "primary": "main"
     }
+  },
+  "wp_options": {
+    "obfx_data": {
+      "core_settings": [],
+      "module_status": {
+        "social-sharing": {
+          "showed_notices": []
+        },
+        "gutenberg-blocks": {
+          "showed_notices": [],
+          "active": false
+        },
+        "uptime-monitor": {
+          "showed_notices": []
+        },
+        "google-analytics": {
+          "showed_notices": []
+        },
+        "elementor-widgets": {
+          "showed_notices": [],
+          "active": true
+        },
+        "template-directory": {
+          "showed_notices": [],
+          "active": false
+        },
+        "menu-icons": {
+          "showed_notices": [],
+          "active": false
+        },
+        "mystock-import": {
+          "showed_notices": [],
+          "active": false
+        },
+        "policy-notice": {
+          "showed_notices": []
+        },
+        "safe-updates": {
+          "showed_notices": []
+        }
+      },
+      "module_settings": {
+        "safe-updates": {
+          "auto_update_checks": "0"
+        }
+      }
+    },
+    "elementor_load_fa4_shim": "yes"
   },
   "widgets": {
     "blog-sidebar": {
@@ -41,13 +92,12 @@
       }
     }
   },
-  "recommended_plugins": {
+  "recommended_plugins": [],
+  "mandatory_plugins": {
+    "elementor": "Elementor Page Builder",
     "themeisle-companion": "Orbit Fox by ThemeIsle"
   },
-  "mandatory_plugins": {
-    "elementor": "Elementor Page Builder"
-  },
-  "default_off_recommended_plugins": null,
+  "default_off_recommended_plugins": [],
   "front_page": {
     "front_page": "demo-neve-freelancer",
     "blog_page": null
