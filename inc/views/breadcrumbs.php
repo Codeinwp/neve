@@ -4,6 +4,7 @@
  *
  * @package Neve\Views
  */
+
 namespace Neve\Views;
 
 use WPSEO_Options;
@@ -81,6 +82,10 @@ class Breadcrumbs extends Base_View {
 			return true;
 		}
 
+		if ( function_exists( 'bcn_display' ) ) {
+			return true;
+		}
+
 		return false;
 	}
 
@@ -98,6 +103,7 @@ class Breadcrumbs extends Base_View {
 		// Yoast breadcrumbs
 		if ( function_exists( 'yoast_breadcrumb' ) ) {
 			yoast_breadcrumb( '<' . esc_html( $html_tag ) . ' class="nv--yoast-breadcrumb">', '</' . esc_html( $html_tag ) . '>' );
+
 			return true;
 		}
 
@@ -109,6 +115,12 @@ class Breadcrumbs extends Base_View {
 		// Rank Math breadcrumbs
 		if ( function_exists( 'rank_math_the_breadcrumbs' ) ) {
 			return rank_math_the_breadcrumbs();
+		}
+
+		if ( function_exists( 'bcn_display' ) ) {
+			bcn_display();
+
+			return true;
 		}
 
 		return false;
