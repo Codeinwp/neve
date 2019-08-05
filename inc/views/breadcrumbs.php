@@ -88,7 +88,7 @@ class Breadcrumbs extends Base_View {
 	 * Render Breadcrumbs.
 	 */
 	public function render_breadcrumbs( $html_tag ) {
-		if ( is_front_page() && ! is_home() ) {
+		if ( is_front_page() ) {
 			return false;
 		}
 		if ( empty( $html_tag ) ) {
@@ -98,6 +98,7 @@ class Breadcrumbs extends Base_View {
 		// Yoast breadcrumbs
 		if ( function_exists( 'yoast_breadcrumb' ) ) {
 			yoast_breadcrumb( '<' . esc_html( $html_tag ) . ' class="nv--yoast-breadcrumb">', '</' . esc_html( $html_tag ) . '>' );
+			return true;
 		}
 
 		// SEOPress breadcrumbs
