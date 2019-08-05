@@ -65,7 +65,7 @@
   > .input-text + .button {
     float: none;
     width: 100%;
-    @include button-secondary('true')
+    @extend %nv-woo-button-secondary;
   }
 }
 
