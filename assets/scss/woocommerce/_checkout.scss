@@ -115,6 +115,7 @@
 
         button {
           width: 100%;
+          padding: 10px 12px;
         }
       }
     }
@@ -277,6 +278,12 @@
       }
     }
   }
+
+  .woocommerce-columns--addresses {
+    .woocommerce-column {
+      max-width: 50%;
+    }
+  }
 }
 
 @mixin checkout--laptop() {
@@ -326,7 +333,6 @@
 }
 
 
-
 //<editor-fold desc="No JS">
 .place-order noscript {
   padding: 10px 0;
@@ -341,4 +347,5 @@
   display: block !important;
   margin: 10px 0 10px auto !important;
 }
+
 //</editor-fold>

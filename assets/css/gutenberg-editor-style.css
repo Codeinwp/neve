@@ -184,7 +184,7 @@
   border-radius: 3px;
   text-transform: uppercase;
   cursor: pointer;
-  line-height: 1.68421;
+  line-height: normal;
   font-family: inherit;
 }
 

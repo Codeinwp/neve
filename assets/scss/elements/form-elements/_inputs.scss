@@ -12,7 +12,6 @@ input[type="number"],
 input[type="search"],
 input[type="tel"],
 input[type="color"],
-select,
 textarea {
   display: inline-block;
   font-size: 14px;
@@ -27,8 +26,16 @@ textarea {
   appearance: none;
 }
 
-input:not([type="search"]), textarea, select {
-  margin-bottom: 10px;
+input[type="color"],
+select {
+  display: inline-block;
+  font-size: 14px;
+  padding: 7px 12px;
+  background-color: transparent;
+  color: #333;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  transition: all 0.3s ease;
 }
 
 input, textarea, select, button {
@@ -38,7 +45,7 @@ input, textarea, select, button {
   box-sizing: border-box;
 }
 
-input, select {
+select {
   height: 35px;
 }
 

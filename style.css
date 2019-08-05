@@ -5,7 +5,7 @@ Theme URI:      https://themeisle.com/themes/neve/
 Author:         ThemeIsle
 Author URI:     https://themeisle.com
 Description:    Neve is a super fast, easily customizable, multi-purpose theme. It’s perfect for blogs, small business, startups, agencies, firms, e-commerce shops (WooCommerce storefront) as well as personal portfolio sites and most types of projects. A fully AMP optimized and responsive theme, Neve will load in mere seconds and adapt perfectly on any viewing device. While it is lightweight and has a minimalist design, the theme is highly extendable, it has a highly SEO optimized code, resulting in top rankings in Google search results. Neve works perfectly with Gutenberg and the most popular page builders (Elementor, Brizy, Beaver Builder, Visual Composer, SiteOrigin, Divi). Neve is also WooCommerce ready, responsive, RTL & translation ready. Look no further. Neve is the perfect theme for you!
-Version:        2.3.20
+Version:        2.3.22
 License:        GNU General Public License v2 or later
 License URI:    http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain:    neve
@@ -518,7 +518,7 @@ blockquote.wp-block-quote.is-style-large cite {
   border-radius: 3px;
   text-transform: uppercase;
   cursor: pointer;
-  line-height: 1.68421;
+  line-height: normal;
   font-family: inherit;
 }
 
@@ -897,7 +897,7 @@ a.button.close-responsive-search {
   border-radius: 3px;
   text-transform: uppercase;
   cursor: pointer;
-  line-height: 1.68421;
+  line-height: normal;
   font-family: inherit;
   border: 1px solid #676767;
   background-color: transparent;
@@ -954,7 +954,7 @@ ul[id^="nv-primary-navigation"] li.button > a, .menu li.button > a {
   border-radius: 3px;
   text-transform: uppercase;
   cursor: pointer;
-  line-height: 1.68421;
+  line-height: normal;
   font-family: inherit;
   font-size: inherit;
 }
@@ -1186,7 +1186,6 @@ input[type="number"],
 input[type="search"],
 input[type="tel"],
 input[type="color"],
-select,
 textarea {
   display: inline-block;
   font-size: 14px;
@@ -1201,8 +1200,16 @@ textarea {
   appearance: none;
 }
 
-input:not([type="search"]), textarea, select {
-  margin-bottom: 10px;
+input[type="color"],
+select {
+  display: inline-block;
+  font-size: 14px;
+  padding: 7px 12px;
+  background-color: transparent;
+  color: #333;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  transition: all 0.3s ease;
 }
 
 input, textarea, select, button {
@@ -1214,7 +1221,7 @@ input, textarea, select, button {
   box-sizing: border-box;
 }
 
-input, select {
+select {
   height: 35px;
 }
 
@@ -1248,7 +1255,7 @@ fieldset input[type="text"], fieldset input[type="search"], fieldset input[type=
   border-radius: 3px;
   text-transform: uppercase;
   cursor: pointer;
-  line-height: 1.68421;
+  line-height: normal;
   font-family: inherit;
 }
 
@@ -1291,7 +1298,7 @@ button, input[type=button], .btn, input[type="submit"] {
   border-radius: 3px;
   text-transform: uppercase;
   cursor: pointer;
-  line-height: 1.68421;
+  line-height: normal;
   font-family: inherit;
   background-color: #0366d6;
   color: #fff;
@@ -3520,7 +3527,7 @@ body.menu_sidebar_slide_left.menu_sidebar_dropdown:before {
   z-index: 10;
 }
 
-.site-footer .item--inner:not([class*="widgets"]) {
+.site-footer .item--inner:not([class*="widgets"]):not([class*=copyright]) {
   width: 100%;
   max-width: 100%;
   align-items: center;

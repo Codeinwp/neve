@@ -36,10 +36,10 @@
   a.product_type_grouped,
   a.product_type_external,
   a.product_type_variable,
-  .return-to-shop > .button {
+  .return-to-shop > .button,
+  .button.woocommerce-form-login__submit {
     @include button();
     @include button-primary();
-
   }
 
   .button.button-secondary.more-details,

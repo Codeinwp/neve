@@ -501,4 +501,21 @@ Starter Sites screenshots resources:
 * https://stocksnap.io/photo/M5791YB6J9
 * https://stocksnap.io/photo/SRWV8BAHE6
 
+- Vacation Rental
+* http://mystock.themeisle.com/photo/pool/
+
+- Music Band
+* https://stocksnap.io/photo/G22LER7CJQ
+* https://stocksnap.io/photo/E9E65D3D04
+* https://stocksnap.io/photo/V2TT0P34KE
+* https://stocksnap.io/photo/BG80NXTTHY
+* https://stocksnap.io/photo/NV1FLKIE9U
+* https://stocksnap.io/photo/IUFVZUDPO5
+
+- Wedding
+* https://stocksnap.io/photo/3RI84R6CYH
+* https://stocksnap.io/photo/GEVAEIZQH1
+* https://stocksnap.io/photo/UXZ782X55D
+
+
 
