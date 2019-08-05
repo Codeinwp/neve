@@ -47,6 +47,12 @@
     }
   },
   "wp_options": {
+    "woocommerce_thumbnail_cropping_custom_height": "320",
+    "woocommerce_thumbnail_cropping_custom_width": "260",
+    "woocommerce_thumbnail_image_width": "300",
+    "woocommerce_thumbnail_cropping": "custom",
+    "woocommerce_catalog_rows": "3",
+    "woocommerce_catalog_columns": "3",
     "obfx_data": {
       "core_settings": [],
       "module_status": {
@@ -61,7 +67,8 @@
           "showed_notices": []
         },
         "elementor-widgets": {
-          "showed_notices": []
+          "showed_notices": [],
+          "active": true
         },
         "template-directory": {
           "showed_notices": [],
@@ -92,12 +99,7 @@
         }
       }
     },
-    "woocommerce_thumbnail_cropping_custom_height": "320",
-    "woocommerce_thumbnail_cropping_custom_width": "260",
-    "woocommerce_thumbnail_image_width": "300",
-    "woocommerce_thumbnail_cropping": "custom",
-    "woocommerce_catalog_rows": "3",
-    "woocommerce_catalog_columns": "3"
+    "elementor_load_fa4_shim": "yes"
   },
   "widgets": {
     "blog-sidebar": {
@@ -186,22 +188,16 @@
       }
     }
   },
-  "recommended_plugins": {
-    "woocommerce": "WooCommerce"
-  },
+  "recommended_plugins": [],
   "mandatory_plugins": {
     "elementor": "Elementor Page Builder",
-    "themeisle-companion": "Orbit Fox by ThemeIsle"
+    "themeisle-companion": "Orbit Fox by ThemeIsle",
+    "woocommerce": "WooCommerce"
   },
   "default_off_recommended_plugins": [],
   "front_page": {
     "front_page": "home",
     "blog_page": "blog"
   },
-  "shop_pages": {
-    "woocommerce_shop_page_id": "shop",
-    "woocommerce_cart_page_id": "cart",
-    "woocommerce_checkout_page_id": "checkout",
-    "woocommerce_myaccount_page_id": "my-account"
-  }
+  "shop_pages": null
 }

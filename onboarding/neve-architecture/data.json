@@ -1,0 +1,269 @@
+{
+  "content_file": "https://demo.themeisle.com/neve-architecture/wp-content/uploads/sites/207/ti-demo-data/export.xml",
+  "theme_mods": {
+    "ti_about_recommended_plugins": {
+      "otter-blocks": "visible"
+    },
+    "neve_last_menu_item": "[\"search\"]",
+    "ti_prev_theme": "twentyseventeen",
+    "custom_css_post_id": 21,
+    "neve_headings_font_family": "Raleway",
+    "neve_h1_font_size": "{\"suffix\":{\"mobile\":\"px\",\"tablet\":\"px\",\"desktop\":\"px\"},\"mobile\":30,\"tablet\":50,\"desktop\":70}",
+    "neve_h2_font_size": "{\"suffix\":{\"mobile\":\"px\",\"tablet\":\"px\",\"desktop\":\"px\"},\"mobile\":25,\"tablet\":30,\"desktop\":40}",
+    "neve_h3_font_size": "{\"suffix\":{\"mobile\":\"px\",\"tablet\":\"px\",\"desktop\":\"px\"},\"mobile\":20,\"tablet\":20,\"desktop\":20}",
+    "neve_h4_font_size": "{\"suffix\":{\"mobile\":\"em\",\"tablet\":\"em\",\"desktop\":\"px\"},\"mobile\":1,\"tablet\":1,\"desktop\":18}",
+    "neve_h5_font_size": "{\"suffix\":{\"mobile\":\"em\",\"tablet\":\"em\",\"desktop\":\"px\"},\"mobile\":0.75,\"tablet\":0.75,\"desktop\":16}",
+    "neve_h6_font_size": "{\"suffix\":{\"mobile\":\"em\",\"tablet\":\"em\",\"desktop\":\"px\"},\"mobile\":0.75,\"tablet\":0.75,\"desktop\":14}",
+    "neve_headings_font_weight": "900",
+    "neve_headings_text_transform": "uppercase",
+    "neve_link_color": "#3333f5",
+    "neve_link_hover_color": "#0606ae",
+    "neve_text_color": "#111111",
+    "neve_button_color": "#3333f5",
+    "neve_button_hover_color": "#0606ae",
+    "neve_button_border_radius": 0,
+    "neve_secondary_button_color": "#111111",
+    "neve_secondary_button_hover_color": "#282828",
+    "neve_secondary_button_border_radius": 0,
+    "primary-menu_style": "style-border-bottom",
+    "neve_body_font_family": "Roboto",
+    "custom_logo": 13,
+    "logo_show_tagline": 0,
+    "logo_max_width": "{\"mobile\":120,\"tablet\":120,\"desktop\":94}",
+    "primary-menu_active_color": "#3333f5",
+    "primary-menu_hover_color": "#3333f5",
+    "neve_blog_archive_layout": "alternative",
+    "neve_grid_layout": 1,
+    "neve_author_avatar": false,
+    "neve_default_sidebar_layout": "full-width",
+    "neve_advanced_layout_options": true,
+    "neve_blog_archive_sidebar_layout": "full-width",
+    "neve_single_post_sidebar_layout": "full-width",
+    "neve_other_pages_sidebar_layout": "full-width",
+    "neve_post_excerpt_length": 80,
+    "neve_pagination_type": "infinite",
+    "neve_blog_archive_content_width": 100,
+    "neve_single_post_content_width": 60,
+    "neve_other_pages_content_width": 100,
+    "neve_post_meta_ordering": "[\"author\",\"date\",\"comments\"]",
+    "background_color": "ffffff",
+    "neve_sitewide_content_width": 100,
+    "hfg_footer_layout": "{\"desktop\":{\"top\":[],\"bottom\":[{\"x\":0,\"y\":1,\"width\":6,\"height\":1,\"id\":\"footer_copyright\"},{\"x\":6,\"y\":1,\"width\":6,\"height\":1,\"id\":\"footer-menu\"}]}}",
+    "footer-menu_component_align": "right",
+    "footer_copyright_component_align": "left",
+    "hfg_header_layout": "{\"desktop\":{\"top\":[],\"main\":[{\"x\":0,\"y\":1,\"width\":4,\"height\":1,\"id\":\"logo\"},{\"x\":4,\"y\":1,\"width\":8,\"height\":1,\"id\":\"primary-menu\"}],\"bottom\":[]},\"mobile\":{\"top\":[],\"main\":[{\"x\":0,\"y\":1,\"width\":8,\"height\":1,\"id\":\"logo\"},{\"x\":8,\"y\":1,\"width\":4,\"height\":1,\"id\":\"nav-icon\"}],\"bottom\":[],\"sidebar\":[{\"x\":0,\"y\":1,\"width\":8,\"height\":1,\"id\":\"primary-menu\"}]}}",
+    "footer-three-widgets_component_align": "left",
+    "hfg_header_layout_main_skin": "light-mode",
+    "neve_layout_single_post_elements_order": "[\"thumbnail\",\"title-meta\",\"content\",\"tags\"]",
+    "primary-menu_color": "#111111",
+    "hfg_header_layout_main_height": "{\"mobile\":0,\"tablet\":0,\"desktop\":80}",
+    "hfg_footer_layout_top_height": "{\"mobile\":0,\"tablet\":0,\"desktop\":300}",
+    "footer-one-widgets_component_padding": {
+      "desktop": {
+        "top": "40",
+        "right": "40",
+        "bottom": "40",
+        "left": "40"
+      },
+      "tablet": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "mobile": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "desktop-unit": "px",
+      "tablet-unit": "px",
+      "mobile-unit": "px"
+    },
+    "footer-two-widgets_component_padding": {
+      "desktop": {
+        "top": "40",
+        "right": "40",
+        "bottom": "40",
+        "left": "40"
+      },
+      "tablet": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "mobile": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "desktop-unit": "px",
+      "tablet-unit": "px",
+      "mobile-unit": "px"
+    },
+    "footer-three-widgets_component_padding": {
+      "desktop": {
+        "top": "40",
+        "right": "40",
+        "bottom": "40",
+        "left": "40"
+      },
+      "tablet": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "mobile": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "desktop-unit": "px",
+      "tablet-unit": "px",
+      "mobile-unit": "px"
+    },
+    "neve_body_font_weight": "400",
+    "neve_body_font_size": "{\"suffix\":{\"mobile\":\"px\",\"tablet\":\"px\",\"desktop\":\"px\"},\"mobile\":15,\"tablet\":16,\"desktop\":17}",
+    "footer-menu_color": "#ffffff",
+    "hfg_footer_layout_bottom_skin": "dark-mode",
+    "neve_generated_style_version": 1563522938,
+    "__ti_import_menus_location": {
+      "primary": "primary",
+      "footer": "footer-menu",
+      "top-bar": "offices-menu"
+    }
+  },
+  "wp_options": {
+    "obfx_data": {
+      "core_settings": [],
+      "module_status": {
+        "social-sharing": {
+          "showed_notices": []
+        },
+        "gutenberg-blocks": {
+          "showed_notices": [],
+          "active": false
+        },
+        "uptime-monitor": {
+          "showed_notices": []
+        },
+        "google-analytics": {
+          "showed_notices": []
+        },
+        "elementor-widgets": {
+          "showed_notices": []
+        },
+        "template-directory": {
+          "showed_notices": [],
+          "active": false
+        },
+        "menu-icons": {
+          "showed_notices": [],
+          "active": false
+        },
+        "mystock-import": {
+          "showed_notices": [],
+          "active": false
+        },
+        "policy-notice": {
+          "showed_notices": []
+        },
+        "safe-updates": {
+          "showed_notices": []
+        }
+      },
+      "module_settings": {
+        "safe-updates": {
+          "auto_update_checks": "0"
+        }
+      }
+    },
+    "elementor_disable_color_schemes": "yes",
+    "elementor_disable_typography_schemes": "yes",
+    "elementor_load_fa4_shim": "yes"
+  },
+  "widgets": {
+    "blog-sidebar": {
+      "search-2": {
+        "title": ""
+      },
+      "recent-posts-2": {
+        "title": "",
+        "number": 5
+      },
+      "recent-comments-2": {
+        "title": "",
+        "number": 5
+      },
+      "archives-2": {
+        "title": "",
+        "count": 0,
+        "dropdown": 0
+      },
+      "categories-2": {
+        "title": "",
+        "count": 0,
+        "hierarchical": 0,
+        "dropdown": 0
+      },
+      "meta-2": {
+        "title": ""
+      }
+    },
+    "footer-one-widgets": {
+      "text-3": {
+        "title": "ARCHITECTURE STUDIO",
+        "text": "Art party kickstarter adaptogen, pug lyft direct trade venmo artisan meh vexillologist poke taxidermy offal marfa sartorial. Chartreuse poutine man bun single-origin coffee enamel pin master cleanse, freegan quinoa bieman tin. Hella skateboard YOLO mustache pitchfork post-ironic hammock taxidermy offal marfa sartorial.",
+        "filter": true,
+        "visual": true
+      }
+    },
+    "footer-two-widgets": {
+      "nav_menu-3": {
+        "title": "SECTIONS",
+        "nav_menu": 2
+      }
+    },
+    "footer-three-widgets": {
+      "nav_menu-4": {
+        "title": "OUR OFFICES",
+        "nav_menu": 4
+      }
+    },
+    "footer-four-widgets": {
+      "media_image-3": {
+        "size": "full",
+        "width": 120,
+        "height": 120,
+        "caption": "",
+        "alt": "",
+        "link_type": "custom",
+        "link_url": "",
+        "image_classes": "",
+        "link_classes": "",
+        "link_rel": "",
+        "link_target_blank": false,
+        "image_title": "",
+        "attachment_id": 12,
+        "url": "https://demo.themeisle.com/neve-architecture/wp-content/uploads/sites/207/2019/07/archi-logo.png",
+        "title": ""
+      }
+    }
+  },
+  "recommended_plugins": [],
+  "mandatory_plugins": {
+    "themeisle-companion": "Orbit Fox by ThemeIsle",
+    "elementor": "Elementor Page Builder"
+  },
+  "default_off_recommended_plugins": [],
+  "front_page": {
+    "front_page": "neve-architecture-homepage",
+    "blog_page": "neve-architecture-news"
+  },
+  "shop_pages": null
+}

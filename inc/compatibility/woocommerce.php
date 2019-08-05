@@ -530,7 +530,8 @@ class Woocommerce {
 			.woocommerce .actions > button[type=submit],
 			.woocommerce .checkout.wc-forward,
 			.woocommerce button#place_order,
-			.woocommerce .return-to-shop > .button';
+			.woocommerce .return-to-shop > .button,
+			.woocommerce .button.woocommerce-form-login__submit';
 		}
 
 		if ( $theme_mod === 'neve_secondary_button_padding' ) {

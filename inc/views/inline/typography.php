@@ -118,23 +118,23 @@ class Typography extends Base_Inline {
 					$selector
 				);
 			}
+
+			$line_height_default = get_theme_mod( 'neve_headings_line_height' );
+			$line_height         = get_theme_mod( 'neve_' . $control . '_line_height', $line_height_default );
+			$line_height         = json_decode( $line_height, true );
+
+			if ( ! empty( $line_height ) ) {
+				$this->add_responsive_style(
+					array(
+						array(
+							'css_prop' => 'line-height',
+							'value'    => $line_height,
+						),
+					),
+					$selector
+				);
+			}
 		}
-
-		$line_height = get_theme_mod( 'neve_headings_line_height' );
-		$line_height = json_decode( $line_height, true );
-		$style_setup = array();
-
-		if ( ! empty( $line_height ) ) {
-			$style_setup[] = array(
-				'css_prop' => 'line-height',
-				'value'    => $line_height,
-			);
-		}
-
-		$this->add_responsive_style(
-			$style_setup,
-			'h1, .single .entry-title, h2, h3, h4, h5, h6'
-		);
 
 		$headings_font  = get_theme_mod( 'neve_headings_font_family', false );
 		$font_weight    = get_theme_mod( 'neve_headings_font_weight' );
