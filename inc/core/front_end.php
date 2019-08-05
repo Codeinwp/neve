@@ -157,6 +157,16 @@ class Front_End {
 						'title'            => 'Music Band',
 						'unsplash_gallery' => 'https://unsplash.com/collections/7338489/music/746c95e4a72ad242a07001a2ca0fa7cb',
 					),
+					'neve-wedding'         => array(
+						'url'              => 'https://demo.themeisle.com/neve-wedding/',
+						'title'            => 'Wedding',
+						'unsplash_gallery' => 'https://unsplash.com/collections/8116784/wedding/9afa9f6ba14422f348e1c7a49a9d51e9',
+					),
+					'neve-themotion'       => array(
+						'url'              => 'https://demo.themeisle.com/neve-themotion/',
+						'title'            => 'Video Blog',
+						'unsplash_gallery' => 'https://unsplash.com/collections/8256651/neve-the-motion/79f8c5a63926e7cee4deed75bc6724fc',
+					),
 					'neve-energy-panels'   => array(
 						'url'   => 'https://demo.themeisle.com/neve-energy-panels/',
 						'title' => 'Energy Panels',
@@ -179,41 +189,64 @@ class Front_End {
 					),
 				),
 				'brizy'     => array(
-					'neve-brizy-main'       => array(
+					'neve-brizy-main'        => array(
 						'url'        => 'https://demo.themeisle.com/neve-onboarding-brizy/',
 						'title'      => 'Original',
 						'screenshot' => $onboarding_folder_url . '/onboarding/neve-main/screenshot.jpg',
 					),
-					'neve-brizy-restaurant' => array(
+					'neve-brizy-restaurant'  => array(
 						'url'              => 'https://demo.themeisle.com/neve-restaurant-brizy/',
 						'title'            => 'Restaurant',
 						'unsplash_gallery' => 'https://unsplash.com/collections/4587624/restaurant',
 						'screenshot'       => $onboarding_folder_url . '/onboarding/neve-restaurant/screenshot.jpg',
 					),
-					'neve-brizy-charity'    => array(
+					'neve-brizy-charity'     => array(
 						'url'              => 'https://demo.themeisle.com/neve-charity-brizy/',
 						'title'            => 'Charity',
 						'unsplash_gallery' => 'https://unsplash.com/collections/4587605/charity',
 						'screenshot'       => $onboarding_folder_url . '/onboarding/neve-charity/screenshot.jpg',
 					),
-					'neve-brizy-vet-center' => array(
+					'neve-brizy-vet-center'  => array(
 						'url'              => 'https://demo.themeisle.com/neve-vet-center-brizy/',
 						'title'            => 'Vet Center',
 						'unsplash_gallery' => 'https://unsplash.com/collections/4587611/vet-center',
 						'screenshot'       => $onboarding_folder_url . '/onboarding/neve-vet-center/screenshot.jpg',
 					),
-					'neve-brizy-doctors'    => array(
+					'neve-brizy-doctors'     => array(
 						'url'              => 'https://demo.themeisle.com/neve-doctors-brizy/',
 						'title'            => 'Doctors',
 						'unsplash_gallery' => 'https://unsplash.com/collections/4587593/doctor',
 						'screenshot'       => $onboarding_folder_url . '/onboarding/neve-doctors/screenshot.jpg',
 					),
-					'neve-brizy-shop'       => array(
+					'neve-brizy-architecture' => array(
+						'url'              => 'https://demo.themeisle.com/neve-architecture-brizy/',
+						'title'            => 'Architecture',
+						'unsplash_gallery' => 'https://unsplash.com/collections/6802313/architecture/f59e19df059789d86d1066ea80130a87',
+						'screenshot'       => $onboarding_folder_url . '/onboarding/neve-architecture/screenshot.jpg',
+					),
+					'neve-brizy-fitness' => array(
+						'url'              => 'https://demo.themeisle.com/neve-fitness-brizy/',
+						'title'            => 'Fitness',
+						'unsplash_gallery' => 'https://unsplash.com/collections/6802313/architecture/f59e19df059789d86d1066ea80130a87',
+						'screenshot'       => $onboarding_folder_url . '/onboarding/neve-fitness/screenshot.jpg',
+					),
+					'neve-brizy-vacation-rental' => array(
+						'url'              => 'https://demo.themeisle.com/neve-vacation-rental-brizy/',
+						'title'            => 'Vacation Rental',
+						'screenshot'       => $onboarding_folder_url . '/onboarding/neve-vacation-rental/screenshot.jpg',
+					),
+					'neve-brizy-music-band' => array(
+						'url'              => 'https://demo.themeisle.com/neve-music-band-brizy/',
+						'title'            => 'Music Band',
+						'unsplash_gallery' => 'https://unsplash.com/collections/7338489/music/746c95e4a72ad242a07001a2ca0fa7cb',
+						'screenshot'       => $onboarding_folder_url . '/onboarding/neve-music-band/screenshot.jpg',
+					),
+					'neve-brizy-shop'         => array(
 						'url'        => 'https://demo.themeisle.com/neve-shop-brizy/',
 						'title'      => 'Shop',
 						'screenshot' => $onboarding_folder_url . '/onboarding/neve-shop/screenshot.jpg',
 					),
-					'neve-brizy-zelle'      => array(
+					'neve-brizy-zelle'        => array(
 						'url'        => 'https://demo.themeisle.com/neve-zelle-brizy/',
 						'title'      => 'Travel Agency',
 						'screenshot' => $onboarding_folder_url . '/onboarding/neve-zelle/screenshot.jpg',
@@ -258,6 +291,11 @@ class Front_End {
 						'url'        => 'https://demo.themeisle.com/neve-constructions-brizy/',
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/06/neve-construction-new-screenshot.jpg',
 						'title'      => 'Constructions Company',
+					),
+					'neve-fashion'       => array(
+						'url'        => 'https://demo.themeisle.com/neve-fashion-brizy/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/07/neve-fashion-demo-screenshot.png',
+						'title'      => 'Fashion',
 					),
 				),
 			),

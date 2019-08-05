@@ -512,6 +512,17 @@ Starter Sites screenshots resources:
 * https://stocksnap.io/photo/NV1FLKIE9U
 * https://stocksnap.io/photo/IUFVZUDPO5
 
+- Wedding
+* https://stocksnap.io/photo/3RI84R6CYH
+* https://stocksnap.io/photo/GEVAEIZQH1
+* https://stocksnap.io/photo/UXZ782X55D
+
+- TheMotion
+* http://mystock.themeisle.com/photo/code-in-wp/
+* http://mystock.themeisle.com/photo/empty-beach-2/
+* http://mystock.themeisle.com/photo/traffic-sign/
+* http://mystock.themeisle.com/photo/android/
+
 
 
 
