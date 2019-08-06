@@ -52,6 +52,16 @@ jobs:
       name: "Unit tests for PHP 7.1"
       script:
         - ./bin/run-unit-tests.sh
+    - php: 7.0
+      name: "Blackfire tests"
+      env: WP_VERSION=latest
+      script:
+        - ./bin/run-blackfire.sh
+    - stage: qa
+      name: "QA"
+      php: 7.0
+      script:
+        - ./bin/sync-qa.sh
     - stage: deploy
       name: "Deployment"
       php: 7.0
@@ -96,3 +106,5 @@ stages:
     if: branch = env(MASTER_BRANCH) and type != "pull_request" and repo = env(UPSTREAM_REPO)
   - name: test
     if: type = "pull_request"
+  - name: qa
+    if: type = "pull_request" and head_branch="development"

@@ -18,6 +18,24 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
+### 2.3.21 - 2019-07-30  ###
+
+* [Feat] Color options for each header and footer rows
+* [Feat] New Starter Sites in the library: Architecture, Fitness, Vacation Rental, and Music Band
+* [Fix] Posts overlapping when the Masonry layout was enabled on a slow Internet connection
+* [Fix] Importing options from any child theme of Zelle
+* [Fix] Updated the Google Fonts Library
+* [Fix] Improved layout of the My Account page
+* [Fix] Updated components default width in the Header builder to better accommodate each one
+* [Fix] Issue with multiple Shipping methods not aligning properly on the Cart page
+* [Fix] Sale tag that was cut off in the Exclusive Product section
+* [Fix] Redone the spacing control option
+* [Fix] Removed Neve's custom integration with Gutenberg by default
+* [Fix] Vertically align widgets in the footer area
+* [Fix] Slightly larger default height for buttons and inputs for a better layout
+* [Perf] Moved customizer CSS code to inline code for better speed results
+
+
 ### 2.3.20 - 2019-07-15  ###
 
 * Updated composer
@@ -511,7 +529,6 @@ Starter Sites screenshots resources:
 * https://stocksnap.io/photo/BG80NXTTHY
 * https://stocksnap.io/photo/NV1FLKIE9U
 * https://stocksnap.io/photo/IUFVZUDPO5
-
 
 
 
