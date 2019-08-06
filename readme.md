@@ -18,6 +18,10 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
+### 2.3.22 - 2019-08-02  ###
+
+* Speed updates for the Starter Sites Library
+
 ### 2.3.21 - 2019-07-30  ###
 
 * [Feat] Color options for each header and footer rows
@@ -530,5 +534,9 @@ Starter Sites screenshots resources:
 * https://stocksnap.io/photo/NV1FLKIE9U
 * https://stocksnap.io/photo/IUFVZUDPO5
 
+- Wedding
+* https://stocksnap.io/photo/3RI84R6CYH
+* https://stocksnap.io/photo/GEVAEIZQH1
+* https://stocksnap.io/photo/UXZ782X55D
 
 
