@@ -107,4 +107,4 @@ stages:
   - name: test
     if: type = "pull_request"
   - name: qa
-    if: type = "pull_request" and head_branch="blackfire"
+    if: type = "pull_request" and head_branch="development"
