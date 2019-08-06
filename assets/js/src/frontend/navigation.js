@@ -2,9 +2,12 @@
 import {
 	isMobile,
 	neveEach,
-	isBestBrowserEver as isIE,
-	unhashUrl
-} from './utils.js';
+	isIe,
+	unhashUrl,
+	toggleClass,
+	removeClass,
+	addClass
+} from '../utils.js';
 
 let pageUrl;
 
@@ -17,7 +20,7 @@ export const initNavigation = function() {
 	handleScrollLinks();
 	handleMobileDropdowns();
 	handleSearch();
-	if ( isIE() === true ) {
+	if ( isIe() === true ) {
 		handleIeDropdowns();
 	}
 };
@@ -54,16 +57,13 @@ export const repositionDropdowns = function() {
 function handleScrollLinks() {
 	let links = document.querySelectorAll( '.nv-nav-wrap a' );
 	if ( links.length === 0 ) return false;
+
 	neveEach( links, function(link) {
 		link.addEventListener( 'click', function(event) {
 			let href = event.target.getAttribute( 'href' );
 			if ( href === null ) return false;
 			if ( unhashUrl( href ) === unhashUrl( pageUrl ) ) {
-				document.body.classList.remove( 'is-menu-sidebar' );
-				neveEach( document.querySelectorAll( '.dropdown-open' ),
-						function(element) {
-							element.classList.remove( 'dropdown-open' );
-						} );
+				window.HFG.toggleMenuSidebar(false);
 			}
 		} );
 	} );
@@ -76,10 +76,10 @@ function handleMobileDropdowns() {
 	let carets = document.querySelectorAll( '.caret-wrap' );
 	neveEach( carets, function(caret) {
 		caret.addEventListener( 'click', function(event) {
-			let subMenu = caret.parentNode.parentNode.querySelector( '.sub-menu' );
 			event.preventDefault();
-			caret.classList.toggle( 'dropdown-open' );
-			subMenu.classList.toggle( 'dropdown-open' );
+			let subMenu = caret.parentNode.parentNode.querySelector( '.sub-menu' );
+			toggleClass( caret, 'dropdown-open' );
+			toggleClass( subMenu, 'dropdown-open' );
 		} );
 	} );
 }
@@ -96,9 +96,9 @@ function handleSearch() {
 	neveEach( navItem, function(searchItem) {
 		searchItem.addEventListener( 'click', function(e) {
 			e.stopPropagation();
-			searchItem.classList.toggle( 'active' );
+			toggleClass( searchItem, 'active' );
 			searchItem.querySelector( '.search-field' ).focus();
-			html.classList.add( 'menu-opened' );
+			addClass( html, 'menu-opened' );
 			if ( !isMobile() ) {
 				createNavOverlay( searchItem, 'active' );
 			}
@@ -115,13 +115,13 @@ function handleSearch() {
 		button.addEventListener( 'click', function(e) {
 			e.preventDefault();
 			neveEach( navItem, function(search) {
-				search.classList.remove( 'active' );
+				removeClass( search, 'active' );
 			} );
 			let overlay = document.querySelector( '.nav-clickaway-overlay' );
 			if ( overlay === null )
 				return;
 			overlay.parentNode.removeChild( overlay );
-			html.classList.remove( 'menu-opened' );
+			removeClass( html, 'menu-opened' );
 		} );
 	} );
 }
@@ -141,19 +141,13 @@ function createNavOverlay(item, classToRemove, multiple = false) {
 		return false;
 	}
 	navClickaway = document.createElement( 'div' );
-	navClickaway.classList.add( 'nav-clickaway-overlay' );
+	addClass( navClickaway, 'nav-clickaway-overlay' );
 
 	let primaryNav = document.querySelector( 'header.header' );
 	primaryNav.parentNode.insertBefore( navClickaway, primaryNav );
 
 	navClickaway.addEventListener( 'click', function() {
-		if ( multiple === true ) {
-			neveEach( item, function(singleItem) {
-				singleItem.classList.remove( classToRemove );
-			} );
-		} else {
-			item.classList.remove( classToRemove );
-		}
+		removeClass( item, classToRemove );
 		navClickaway.parentNode.removeChild( navClickaway );
 	} );
 }
@@ -169,10 +163,10 @@ function handleIeDropdowns() {
 		let parentItem = dropdown.parentNode;
 
 		parentItem.addEventListener( 'mouseenter', function() {
-			dropdown.classList.add( 'dropdown-open' );
+			addClass( dropdown, 'dropdown-open' );
 		} );
 		parentItem.addEventListener( 'mouseleave', function() {
-			dropdown.classList.remove( 'dropdown-open' );
+			removeClass( dropdown, 'dropdown-open' );
 		} );
 	} );
 }

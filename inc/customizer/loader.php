@@ -100,6 +100,20 @@ class Loader {
 			NEVE_VERSION,
 			true
 		);
+		wp_enqueue_script(
+			'neve-hfg-customizer-preview',
+			NEVE_ASSETS_URL . 'js/hfg-customizer-preview.js',
+			array(),
+			NEVE_VERSION,
+			true
+		);
+		wp_enqueue_style(
+			'neve-customizer-preview-style',
+			NEVE_ASSETS_URL . 'css/customizer-preview' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css',
+			array(),
+			NEVE_VERSION,
+			true
+		);
 	}
 
 	/**

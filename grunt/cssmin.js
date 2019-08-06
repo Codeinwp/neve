@@ -20,6 +20,7 @@ module.exports = {
 			'header-footer-grid/assets/css/style-rtl.min.css': ['header-footer-grid/assets/css/style-rtl.css'],
 			'header-footer-grid/assets/css/style.min.css': ['header-footer-grid/assets/css/style.css'],
 			'style.min.css': ['style.css'],
+			'assets/css/customizer-preview.min.css': ['assets/css/customizer-preview.css'],
 			'assets/css/woocommerce.min.css': ['assets/css/woocommerce.css'],
 			'assets/css/woocommerce-rtl.min.css': ['assets/css/woocommerce-rtl.css'],
 			'assets/css/lifter.min.css': ['assets/css/lifter.css'],

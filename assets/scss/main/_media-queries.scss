@@ -15,7 +15,6 @@
 
 @media (min-width: #{$laptop}) {
   @include grid-container--laptop();
-  @include grid--laptop();
   @include content--laptop();
   @include nav-menu--laptop();
   @include nav-search--laptop();
@@ -32,6 +31,5 @@
 
 @media (min-width: #{$desktop}) {
   @include grid-container--desktop();
-  @include grid--desktop();
   @include mega-menu--desktop();
 }
