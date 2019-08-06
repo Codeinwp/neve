@@ -19,4 +19,4 @@ eval "$(ssh-agent -s)"
 chmod 600 /tmp/key
 ssh-add /tmp/key
 
-rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/dist/ "$DEMO_THEMEISLE_USER@$DEMO_THEMEISLE_HOST:$QA_ROOT/wp-content/themes"
+rsync -e "ssh -o StrictHostKeyChecking=no" -r --delete-after --quiet $TRAVIS_BUILD_DIR/dist/ "$DEMO_THEMEISLE_USER@$DEMO_THEMEISLE_HOST:$QA_ROOT/wp-content/themes"
