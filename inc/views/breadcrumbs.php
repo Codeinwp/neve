@@ -33,9 +33,8 @@ class Breadcrumbs extends Base_View {
 		$breadcrumbs_hooks = apply_filters(
 			'neve_breadcrumbs_locations',
 			array(
-				'neve_before_loop',
-				'neve_before_page_header',
-				'neve_before_post_content',
+				'neve_before_page_title',
+				'neve_before_post_title',
 			)
 		);
 
@@ -102,23 +101,25 @@ class Breadcrumbs extends Base_View {
 
 		// Yoast breadcrumbs
 		if ( function_exists( 'yoast_breadcrumb' ) ) {
-			yoast_breadcrumb( '<' . esc_html( $html_tag ) . ' class="nv--yoast-breadcrumb">', '</' . esc_html( $html_tag ) . '>' );
+			yoast_breadcrumb( '<' . esc_html( $html_tag ) . ' class="nv--yoast-breadcrumb neve-breadcrumbs-wrapper">', '</' . esc_html( $html_tag ) . '>' );
 
 			return true;
 		}
 
 		// SEOPress breadcrumbs
 		if ( function_exists( 'seopress_display_breadcrumbs' ) ) {
-			return seopress_display_breadcrumbs();
+			return '<small class="neve-breadcrumbs-wrapper">' . seopress_display_breadcrumbs() . '</small>';
 		}
 
 		// Rank Math breadcrumbs
 		if ( function_exists( 'rank_math_the_breadcrumbs' ) ) {
-			return rank_math_the_breadcrumbs();
+			return '<small class="neve-breadcrumbs-wrapper">' . rank_math_the_breadcrumbs() . '</small>';
 		}
 
 		if ( function_exists( 'bcn_display' ) ) {
+			echo '<small class="neve-breadcrumbs-wrapper">';
 			bcn_display();
+			echo '</small>';
 
 			return true;
 		}

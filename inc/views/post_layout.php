@@ -146,6 +146,7 @@ class Post_Layout extends Base_View {
 	private function render_entry_header() {
 		echo '<div class="entry-header">';
 		echo '<div class="nv-title-meta-wrap">';
+		do_action( 'neve_before_post_title' );
 		echo '<h1 class="title entry-title">' . wp_kses_post( get_the_title() ) . '</h1>';
 		$this->render_post_meta();
 		echo '</div>';
