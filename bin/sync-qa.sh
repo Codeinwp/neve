@@ -10,7 +10,7 @@ fi
 
 openssl aes-256-cbc -K $encrypted_c0a6f152ac27_key -iv $encrypted_c0a6f152ac27_iv -in themeisle.enc -out /tmp/key -d
 
-if [ ! -d  "/tmp/key" ]; then
+if [ ! -f  "/tmp/key" ]; then
   echo "Fails to decrypt key"
   exit 1
 fi
