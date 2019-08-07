@@ -15,6 +15,7 @@ jobs:
         - nvm install && nvm use
         - npm install npm -g
       script:
+        - npm install
         - npm run-script size
     - stage: test
       php: 7.0
