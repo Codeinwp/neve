@@ -5,8 +5,7 @@
  * @returns {boolean}
  */
 export const isMobile = function() {
-	let windowWidth = window.innerWidth;
-	return windowWidth <= 960;
+	return window.innerWidth <= 960;
 };
 
 /**
