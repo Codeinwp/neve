@@ -9,7 +9,6 @@ buildScripts:
 check:
 - 'sass:style'
 - 'concat:customizerStyle'
-- 'sass:min'
 - 'uglify:scripts'
 - 'uglify:customizerControls'
 #- 'postcss'

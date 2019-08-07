@@ -71,8 +71,8 @@
     "watch:grunt": "grunt watch",
     "dev": "npm-run-all --parallel watch:rollup watch:grunt",
     "build": "npm-run-all --parallel build:rollup build:grunt",
-    "pre-commit": "npm-run-all phpcbf phpcs jshint build git:add",
-    "size": "size-limit"
+    "size": "size-limit",
+    "pre-commit": "npm-run-all phpcbf phpcs jshint build size git:add"
   },
   "size-limit": [
     {
