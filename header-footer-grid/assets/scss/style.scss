@@ -11,7 +11,6 @@
 // COMPONENTS
 @import "frontend/components/logo";
 @import "frontend/components/nav-menus";
-@import "frontend/components/nav-cart";
 @import "frontend/components/nav-toggle";
 @import "frontend/components/search-field";
 
@@ -19,87 +18,16 @@
   padding: 10px 0;
 }
 
-/* Customize Preview */
-.customize-previewing {
-  overflow-x: hidden;
-
-  .builder-item-focus {
-    &.item--inner {
-      position: relative;
-      &.has_menu {
-        .item--preview-name {
-          left: auto;
-        }
-      }
-    }
-    .item--preview-name {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      display: none;
-      background: #0073aa;
-      color: #fff;
-      padding: 5px 8px 6px;
-      font-size: 12px !important;
-      font-weight: 600;
-      line-height: 14px;
-      cursor: pointer;
-      border-bottom-left-radius: 2px;
-      border-bottom-right-radius: 2px;
-    }
-    &:hover {
-      &.item--inner {
-        transition-delay: 0s !important;
-        outline: 1px solid #0073aa;
-        outline-offset: -1px;
-        .item--preview-name {
-          display: block;
-          z-index: 9999999;
-        }
-      }
-    }
-  }
-
-  .header--row,
-  .header-menu-sidebar {
-    .customize-partial-edit-shortcut {
-      display: none;
-    }
-    .builder-item-focus {
-    }
-  }
-  .footer--row {
-    .builder-item-focus {
-      &:hover {
-        &.item--inner {
-          position: relative;
-          outline: 1px dashed #ff472e;
-          outline-offset: -1px;
-        }
-      }
-    }
-  }
-}
-
 .hfg-grid {
   display: flex;
 }
 
-/* Customizer Shortcut */
-#header-menu-sidebar {
-  .customize-partial-edit-shortcut {
-    display: none;
-  }
-}
 
 // HIDING COLS FOR DEVICES
 @each $mq-key, $mq-value in $gl-devices-list {
   @media #{$mq-value} {
     .hide-on-#{$mq-key},
     .hfg-grid .hide-on-#{$mq-key} { display: none; }
-    .align-left-#{$mq-key} { text-align: left; }
-    .align-center-#{$mq-key} { text-align: center; }
-    .align-right-#{$mq-key} { text-align: right; }
   }
 }
 
@@ -110,9 +38,6 @@
 .builder-item.hfg-edge-right .item--inner > div{
   flex-direction: row-reverse;
   display: flex;
-}
-.footer--row .nv-footer-content, .footer--row  .nv-footer-widgets {
-  padding:0;
 }
 .component-wrap{
   display: flex;

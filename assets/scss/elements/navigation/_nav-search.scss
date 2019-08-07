@@ -61,13 +61,6 @@
 .menu-item-nav-search {
   cursor: pointer;
   outline: 0;
-  &:hover .search-icon {
-    opacity: .75;
-  }
-}
-
-.menu-item-nav-search:not(.responsive-nav-search).nv-nav-search {
-  padding: $spacing-xs 0;
 }
 
 .menu-item-nav-search > a {
@@ -105,8 +98,8 @@
 }
 
 a.button.close-responsive-search {
-  @include button();
-  @include button-secondary();
+  @extend %nv-button;
+  @extend %nv-button-secondary;
 }
 
 .nav-clickaway-overlay {

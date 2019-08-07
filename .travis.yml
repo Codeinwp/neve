@@ -8,6 +8,14 @@ cache:
     - $HOME/.npm
 jobs:
   include:
+    - stage: bundle_size
+      php: 7.0
+      name: "Bundle Size"
+      before_install:
+        - nvm install && nvm use
+        - npm install npm -g
+      script:
+        - npm run-script size
     - stage: test
       php: 7.0
       name: "Different linters"

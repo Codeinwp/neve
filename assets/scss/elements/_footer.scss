@@ -2,24 +2,6 @@ footer {
   background-color: #fff;
 }
 
-.footer-content-wrap.footer-second-section {
-  border-top: none;
-  background: $git-black;
-  color: #fff;
-  text-align: center;
-  a {
-    color: #fff;
-  }
-}
-
-.nv-footer-content, .nv-footer-widgets {
-  padding: $spacing-sm 0;
-}
-
-.nv-footer-widgets + .nv-footer-content {
-  padding-top: 0;
-}
-
 .nv-footer-content .footer-menu {
   justify-content: center;
   @include horizontal-list($spacing-xs, 'true');

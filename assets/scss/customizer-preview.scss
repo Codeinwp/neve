@@ -1,0 +1,68 @@
+/* Customize Preview */
+.customize-previewing {
+  overflow-x: hidden;
+
+  .builder-item-focus {
+    &.item--inner {
+      position: relative;
+      &.has_menu {
+        .item--preview-name {
+          left: auto;
+        }
+      }
+    }
+    .item--preview-name {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      display: none;
+      background: #0073aa;
+      color: #fff;
+      padding: 5px 8px 6px;
+      font-size: 12px !important;
+      font-weight: 600;
+      line-height: 14px;
+      cursor: pointer;
+      border-bottom-left-radius: 2px;
+      border-bottom-right-radius: 2px;
+    }
+    &:hover {
+      &.item--inner {
+        transition-delay: 0s !important;
+        outline: 1px solid #0073aa;
+        outline-offset: -1px;
+        .item--preview-name {
+          display: block;
+          z-index: 9999999;
+        }
+      }
+    }
+  }
+
+  .header--row,
+  .header-menu-sidebar {
+    .customize-partial-edit-shortcut {
+      display: none;
+    }
+    .builder-item-focus {
+    }
+  }
+  .footer--row {
+    .builder-item-focus {
+      &:hover {
+        &.item--inner {
+          position: relative;
+          outline: 1px dashed #ff472e;
+          outline-offset: -1px;
+        }
+      }
+    }
+  }
+}
+
+/* Customizer Shortcut */
+#header-menu-sidebar {
+  .customize-partial-edit-shortcut {
+    display: none;
+  }
+}
