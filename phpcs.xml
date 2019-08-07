@@ -16,7 +16,9 @@
     <rule ref="WPThemeReview">
         <exclude name="WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound"/>
     </rule>
-
+	<rule ref="WPThemeReview.Templates.ReservedFileNamePrefix.ReservedTemplatePrefixFound">
+		<exclude-pattern>header.php</exclude-pattern>
+	</rule>
     <rule ref="WordPress-Core">
         <exclude name="Squiz.Commenting.FileComment.SpacingAfterComment"/>
         <exclude name="Squiz.Commenting.FunctionComment.MissingParamTag"/>

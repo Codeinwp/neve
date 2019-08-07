@@ -52,7 +52,7 @@ class Customizer {
 		$theme_support = reset( $theme_support );
 		$theme_support = apply_filters( 'hfg_support_components_filter', $theme_support );
 		foreach ( $theme_support['builders'] as $builder => $components ) {
-			if ( class_exists( $builder ) && in_array( 'HFG\Core\Interfaces\Builder', class_implements( $builder ) ) ) {
+			if ( class_exists( $builder ) && in_array( 'HFG\Core\Interfaces\Builder', class_implements( $builder ), true ) ) {
 				/**
 				 * A new builder instance.
 				 *
@@ -248,7 +248,7 @@ class Customizer {
 							<?php do_action( 'hfg_builder_panel_actions_buttons' ); ?>
 							<a class="button button-secondary hfg--panel-close" href="#">
 								<span class="close-text"><i class="dashicons dashicons-arrow-down-alt2"
-											style="margin-top: 4px;"></i> <?php _e( 'Close', 'neve' ); // WPCS: XSS OK. ?></span>
+											style="margin-top: 4px;"></i> <?php esc_html_e( 'Close', 'neve' ); ?></span>
 								<span class="panel-name-text">
 									<i class="dashicons dashicons-arrow-up-alt2" style="margin-top: 4px;"></i>
 									{{ data.title }}

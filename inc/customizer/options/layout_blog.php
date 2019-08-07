@@ -186,7 +186,7 @@ class Layout_Blog extends Base_Customizer {
 	 */
 	public function sanitize_blog_layout( $value ) {
 		$allowed_values = array( 'default', 'alternative', 'grid' );
-		if ( ! in_array( $value, $allowed_values ) ) {
+		if ( ! in_array( $value, $allowed_values, true ) ) {
 			return 'default';
 		}
 
@@ -202,7 +202,7 @@ class Layout_Blog extends Base_Customizer {
 	 */
 	public function sanitize_pagination_type( $value ) {
 		$allowed_values = array( 'number', 'infinite' );
-		if ( ! in_array( $value, $allowed_values ) ) {
+		if ( ! in_array( $value, $allowed_values, true ) ) {
 			return 'number';
 		}
 
@@ -304,7 +304,7 @@ class Layout_Blog extends Base_Customizer {
 		$decoded = json_decode( $value, true );
 
 		foreach ( $decoded as $val ) {
-			if ( ! in_array( $val, $allowed ) ) {
+			if ( ! in_array( $val, $allowed, true ) ) {
 				return $allowed;
 			}
 		}
@@ -329,7 +329,7 @@ class Layout_Blog extends Base_Customizer {
 		$decoded = json_decode( $value, true );
 
 		foreach ( $decoded as $val ) {
-			if ( ! in_array( $val, $allowed ) ) {
+			if ( ! in_array( $val, $allowed, true ) ) {
 				return $allowed;
 			}
 		}
@@ -355,7 +355,7 @@ class Layout_Blog extends Base_Customizer {
 		);
 		$content_order = get_theme_mod( 'neve_post_content_ordering', json_encode( $default ) );
 		$content_order = json_decode( $content_order, true );
-		if ( ! in_array( 'title-meta', $content_order ) ) {
+		if ( ! in_array( 'title-meta', $content_order, true ) ) {
 			return false;
 		}
 
@@ -397,11 +397,11 @@ class Layout_Blog extends Base_Customizer {
 	 */
 	public function should_show_masonry() {
 		$blog_layout = get_theme_mod( 'neve_blog_archive_layout', 'grid' );
-		$columns     = get_theme_mod( 'neve_grid_layout', 1 );
+		$columns     = (int) get_theme_mod( 'neve_grid_layout', 1 );
 		if ( $blog_layout !== 'grid' ) {
 			return false;
 		}
-		if ( $columns == 1 ) {
+		if ( $columns === 1 ) {
 			return false;
 		}
 

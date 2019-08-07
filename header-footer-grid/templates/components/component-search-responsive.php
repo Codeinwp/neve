@@ -28,8 +28,8 @@ if ( ! empty( $component_styles_array ) ) {
 			<div class="nv-nav-search">
 				<div class="container close-container">
 					<a class="button button-secondary close-responsive-search">
-					<?php 
-					echo __( 'Close', 'neve' ); // WPCS: XSS ok.
+					<?php
+					echo __( 'Close', 'neve' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 					?>
 						</a>
 				</div>

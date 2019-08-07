@@ -226,7 +226,7 @@ abstract class Base_Customizer {
 	 */
 	public function register_type( $object_name, $type ) {
 		$accepted_types = array( 'panel', 'section', 'control' );
-		if ( ! in_array( $type, $accepted_types ) ) {
+		if ( ! in_array( $type, $accepted_types, true ) ) {
 			return;
 		}
 		$this->types_to_register[ $object_name ] = $type;
@@ -254,7 +254,7 @@ abstract class Base_Customizer {
 	 */
 	public function get_customizer_object( $type, $id ) {
 		$accepted_types = array( 'setting', 'control', 'section', 'panel' );
-		if ( ! in_array( $type, $accepted_types ) ) {
+		if ( ! in_array( $type, $accepted_types, true ) ) {
 			return null;
 		}
 		$object = call_user_func_array( array( $this->wpc, 'get_' . $type ), array( $id ) );
@@ -275,7 +275,7 @@ abstract class Base_Customizer {
 	 */
 	public function change_customizer_object( $type, $id, $property, $value ) {
 		$accepted_types = array( 'setting', 'control', 'section', 'panel' );
-		if ( ! in_array( $type, $accepted_types ) ) {
+		if ( ! in_array( $type, $accepted_types, true ) ) {
 			return;
 		}
 		$object = call_user_func_array( array( $this->wpc, 'get_' . $type ), array( $id ) );

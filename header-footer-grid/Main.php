@@ -108,7 +108,7 @@ class Main {
 		);
 		$hide               = '';
 		foreach ( $sidebars_to_search as $id ) {
-			if ( ! in_array( $id, $footer_rows ) ) {
+			if ( ! in_array( $id, $footer_rows, true ) ) {
 				$hide .= '$("#' . $id . '").parent().hide();';
 			}
 		}
@@ -284,7 +284,7 @@ class Main {
 		$disabled_templates = array( 'elementor_canvas' );
 		$current_template   = get_page_template_slug();
 
-		if ( in_array( $current_template, $disabled_templates ) ) {
+		if ( in_array( $current_template, $disabled_templates, true ) ) {
 			return false;
 		}
 		if ( is_singular() ) {
