@@ -27,6 +27,7 @@ fi
 if [ ! -d "dist" ]; then
   echo "Distribution files ( /dist folder ) are not present. Creating it ... "
   npm install
+  composer install --no-dev
   npm run-script build
   npm run-script dist
 fi
@@ -59,7 +60,7 @@ if [[ $BLACKFIRE_OUTPUT == *"failing"* ]]; then
   exit 1;
 fi
 
-docker-compose down
+#docker-compose down
 
 exit 0;
 
