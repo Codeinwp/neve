@@ -58,9 +58,6 @@ final class Manager {
 			return;
 		}
 		foreach ( $this->control_classes as $control_manager ) {
-			if ( ! class_exists( $control_manager ) ) {
-				continue;
-			}
 			$control_instance = new $control_manager();
 			if ( ! $control_instance instanceof Controls_Base ) {
 				continue;

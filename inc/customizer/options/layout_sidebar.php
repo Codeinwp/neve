@@ -149,7 +149,7 @@ class Layout_Sidebar extends Base_Customizer {
 			'neve_single_post_heading'  => __( 'Single Post', 'neve' ),
 		);
 
-		if ( class_exists( 'WooCommerce' ) ) {
+		if ( class_exists( 'WooCommerce', false ) ) {
 			$headings = array_merge(
 				$headings,
 				array(
@@ -197,7 +197,7 @@ class Layout_Sidebar extends Base_Customizer {
 			'neve_single_post_sidebar_layout',
 		);
 
-		if ( class_exists( 'WooCommerce' ) ) {
+		if ( class_exists( 'WooCommerce', false ) ) {
 			$sidebar_layout_controls = array_merge(
 				$sidebar_layout_controls,
 				array(
@@ -240,7 +240,7 @@ class Layout_Sidebar extends Base_Customizer {
 			'neve_single_post_content_width',
 		);
 
-		if ( class_exists( 'WooCommerce' ) ) {
+		if ( class_exists( 'WooCommerce', false ) ) {
 			$sidebar_layout_controls = array_merge(
 				$sidebar_layout_controls,
 				array(

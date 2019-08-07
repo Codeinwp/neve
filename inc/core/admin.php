@@ -230,7 +230,7 @@ class Admin {
 		}
 		$config = apply_filters( 'ti_about_config', $config_array );
 
-		if ( class_exists( '\Ti_About_Page' ) ) {
+		if ( class_exists( '\Ti_About_Page', false ) ) {
 			$about_page = new \Ti_About_Page();
 			$about_page->init( $config );
 		}
@@ -649,7 +649,7 @@ class Admin {
 	 * Load site import module.
 	 */
 	public function load_site_import() {
-		if ( class_exists( '\Themeisle_Onboarding' ) ) {
+		if ( class_exists( '\Themeisle_Onboarding', false ) ) {
 			\Themeisle_Onboarding::instance();
 		}
 	}

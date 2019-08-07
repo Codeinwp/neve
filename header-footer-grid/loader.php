@@ -14,7 +14,7 @@ $header_components = array(
 	'HFG\Core\Components\SearchResponsive',
 	'HFG\Core\Components\SecondNav',
 );
-if ( class_exists( 'WooCommerce' ) ) {
+if ( class_exists( 'WooCommerce', false ) ) {
 	$header_components[] = 'HFG\Core\Components\CartIcon';
 }
 

@@ -107,7 +107,7 @@ class Layout_Container extends Base_Customizer {
 			),
 		);
 
-		if ( class_exists( 'WooCommerce' ) ) {
+		if ( class_exists( 'WooCommerce', false ) ) {
 			$container_style_controls = array_merge(
 				$container_style_controls,
 				array(

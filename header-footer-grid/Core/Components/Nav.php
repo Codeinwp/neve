@@ -162,7 +162,7 @@ class Nav extends Abstract_Component {
 			'search' => __( 'Search', 'neve' ),
 		);
 
-		if ( class_exists( 'WooCommerce' ) ) {
+		if ( class_exists( 'WooCommerce', false ) ) {
 			array_push( $order_default_components, 'cart' );
 			$components['cart'] = __( 'Cart', 'neve' );
 		}
@@ -286,7 +286,7 @@ class Nav extends Abstract_Component {
 			return;
 		}
 		$default_last = 'search';
-		if ( class_exists( 'WooCommerce' ) ) {
+		if ( class_exists( 'WooCommerce', false ) ) {
 			$default_last = 'search-cart';
 		}
 

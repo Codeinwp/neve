@@ -69,10 +69,6 @@ class Factory {
 	 */
 	public function build( $class ) {
 		$full_class_name = $this->namespace . $class;
-		if ( class_exists( $full_class_name ) ) {
-			return new $full_class_name();
-		}
-
-		return null;
+		return new $full_class_name();
 	}
 }

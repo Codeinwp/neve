@@ -86,7 +86,7 @@ class Layout_Sidebar extends Base_View {
 			'sidebar_slug' => 'blog-sidebar',
 		);
 
-		if ( class_exists( 'WooCommerce' ) && ( is_woocommerce() || is_product() || is_cart() || is_checkout() || is_account_page() ) ) {
+		if ( class_exists( 'WooCommerce', false ) && ( is_woocommerce() || is_product() || is_cart() || is_checkout() || is_account_page() ) ) {
 			$sidebar_setup['sidebar_slug'] = 'shop-sidebar';
 		}
 
@@ -102,7 +102,7 @@ class Layout_Sidebar extends Base_View {
 				break;
 			case 'single-post':
 				$sidebar_setup['theme_mod'] = 'neve_single_post_sidebar_layout';
-				if ( class_exists( 'WooCommerce' ) && is_product() ) {
+				if ( class_exists( 'WooCommerce', false ) && is_product() ) {
 					$sidebar_setup['theme_mod'] = 'neve_single_product_sidebar_layout';
 				}
 				break;
@@ -110,7 +110,7 @@ class Layout_Sidebar extends Base_View {
 				$sidebar_setup['theme_mod'] = 'neve_other_pages_sidebar_layout';
 				break;
 			case 'shop':
-				if ( class_exists( 'WooCommerce' ) ) {
+				if ( class_exists( 'WooCommerce', false ) ) {
 					$sidebar_setup['sidebar_slug'] = 'shop-sidebar';
 					if ( is_woocommerce() ) {
 						$sidebar_setup['theme_mod'] = 'neve_shop_archive_sidebar_layout';
@@ -150,7 +150,7 @@ class Layout_Sidebar extends Base_View {
 	 * @return string
 	 */
 	private function get_context() {
-		if ( class_exists( 'WooCommerce' ) && ( is_woocommerce() || is_product() || is_cart() || is_checkout() || is_account_page() ) ) {
+		if ( class_exists( 'WooCommerce', false ) && ( is_woocommerce() || is_product() || is_cart() || is_checkout() || is_account_page() ) ) {
 			return 'shop';
 		}
 

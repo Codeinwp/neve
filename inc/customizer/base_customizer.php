@@ -141,7 +141,7 @@ abstract class Base_Customizer {
 	private function register_sections() {
 		$sections = $this->sections_to_register;
 		foreach ( $sections as $section ) {
-			if ( $section->custom_section !== null && class_exists( $section->custom_section ) ) {
+			if ( $section->custom_section !== null ) {
 				$this->wpc->add_section( new $section->custom_section( $this->wpc, $section->id, $section->args ) );
 			} else {
 				$this->wpc->add_section( $section->id, $section->args );
@@ -156,7 +156,7 @@ abstract class Base_Customizer {
 		$controls = $this->controls_to_register;
 		foreach ( $controls as $control ) {
 			$this->wpc->add_setting( $control->id, $control->setting_args );
-			if ( $control->custom_control !== null && class_exists( $control->custom_control ) ) {
+			if ( $control->custom_control !== null ) {
 				$this->wpc->add_control( new $control->custom_control( $this->wpc, $control->id, $control->control_args ) );
 			} else {
 				$this->wpc->add_control( $control->id, $control->control_args );

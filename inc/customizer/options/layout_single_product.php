@@ -37,7 +37,7 @@ class Layout_Single_Product extends Base_Customizer {
 	 * Check if the controls for Single Product should load.
 	 */
 	private function should_load() {
-		return class_exists( 'WooCommerce' );
+		return class_exists( 'WooCommerce', false );
 	}
 
 	/**
