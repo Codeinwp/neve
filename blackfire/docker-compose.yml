@@ -1,0 +1,48 @@
+version: '3.3'
+
+services:
+  mysql:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: wordpress
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+  blackfire:
+    image: blackfire/blackfire
+    environment:
+      - BLACKFIRE_CLIENT_TOKEN
+      - BLACKFIRE_CLIENT_ID
+      - BLACKFIRE_SERVER_ID
+      - BLACKFIRE_SERVER_TOKEN
+  cli:
+    privileged: true
+    image: wordpress:cli
+    restart: always
+    volumes:
+      - wpcore:/var/www/html
+      - ../dist:/var/www/html/wp-content/themes
+    depends_on:
+      - mysql
+      - wordpress
+  wordpress:
+    privileged: true
+    ports:
+      - 8888:80
+    depends_on:
+      - mysql
+    build: .
+    volumes:
+      - wpcore:/var/www/html
+      - ../dist:/var/www/html/wp-content/themes
+      - .blackfire.yml:/var/www/html/.blackfire.yml
+    restart: always
+    environment:
+      - WORDPRESS_DB_NAME=wordpress
+      - WORDPRESS_DB_USER=wordpress
+      - WORDPRESS_DB_PASSWORD=wordpress
+      - WORDPRESS_DB_ROOT_PASSWORD=wordpress
+      - WORDPRESS_DEBUG=1
+volumes:
+   wpcore:
