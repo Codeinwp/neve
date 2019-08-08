@@ -159,7 +159,7 @@ abstract class Base_Style_Manager extends Base_View {
 
 		$accepted = array( 'tablet', 'desktop' );
 
-		if ( ! in_array( $query, $accepted ) ) {
+		if ( ! in_array( $query, $accepted, true ) ) {
 			return '';
 		}
 

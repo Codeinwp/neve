@@ -446,7 +446,7 @@ abstract class Abstract_Component implements Component {
 
 		if ( is_customize_preview() ) {
 			$style = $this->css_array_to_css( $this->add_style() );
-			echo '<style type="text/css">' . $style . '</style>';  // WPCS: XSS OK.
+			echo '<style type="text/css">' . $style . '</style>';  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
 
 		Main::get_instance()->load( 'component-wrapper' );
@@ -467,7 +467,7 @@ abstract class Abstract_Component implements Component {
 	 * @return array
 	 */
 	protected function css_position_filter( $target, $top = '', $right = '', $bottom = '', $left = '', $unit = 'px' ) {
-		if ( empty( $target ) && ! in_array( $target, array( 'margin', 'padding' ) ) ) {
+		if ( empty( $target ) && ! in_array( $target, array( 'margin', 'padding' ), true ) ) {
 			return array();
 		}
 

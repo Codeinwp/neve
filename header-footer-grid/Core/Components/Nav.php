@@ -227,7 +227,7 @@ class Nav extends Abstract_Component {
 		$decoded = json_decode( $value, true );
 
 		foreach ( $decoded as $val ) {
-			if ( ! in_array( $val, $allowed ) ) {
+			if ( ! in_array( $val, $allowed, true ) ) {
 				return json_encode( $allowed );
 			}
 		}

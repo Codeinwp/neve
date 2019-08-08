@@ -1819,19 +1819,6 @@ audio {
   margin-bottom: 40px;
 }
 
-.widget ul {
-  padding: 0;
-}
-
-.widget ul ul {
-  padding-right: 10px;
-  border-right: 1px solid #f0f0f0;
-}
-
-.widget_media_image img {
-  width: 100%;
-}
-
 .widget {
   word-break: break-word;
   padding-bottom: 20px;

@@ -59,7 +59,7 @@ class Font_Selector extends \WP_Customize_Control {
 			<span class="neve-fs-input-addon"><i class="dashicons dashicons-arrow-down"></i></span>
 			<div class="neve-fs-dropdown">
 				<span class="neve-fs-search">
-						<input type="search" placeholder="<?php echo _x( 'Search', 'label', 'neve' ) . '...'; // WPCS: XSS OK. ?>">
+						<input type="search" placeholder="<?php echo _x( 'Search', 'label', 'neve' ) . '...'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>">
 				</span>
 				<div class="neve-fs-options-wrapper">
 					<span class="neve-fs-option" data-source="system" data-control="<?php echo esc_attr( $this->id ); ?>" data-option="default"><?php esc_html_e( 'Default', 'neve' ); ?></span>

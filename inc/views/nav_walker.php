@@ -48,7 +48,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 			return $title;
 		}
 
-		if ( in_array( 'menu-item-has-children', $item->classes ) ) {
+		if ( in_array( 'menu-item-has-children', $item->classes, true ) ) {
 			$title = '<span class="menu-item-title-wrap">' . $title . '</span>';
 
 			$title .= '<div class="caret-wrap ' . $item->menu_order . '" tabindex="0">';
@@ -82,7 +82,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 			return;
 		}
 
-		if ( isset( $item->classes ) && in_array( 'neve-mm-col', $item->classes ) ) {
+		if ( isset( $item->classes ) && in_array( 'neve-mm-col', $item->classes, true ) ) {
 			$output .= '<li class="neve-mm-col">';
 
 			return;
@@ -133,7 +133,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 			return $args;
 		}
 
-		if ( in_array( 'neve-mm-heading', $item->classes ) ) {
+		if ( in_array( 'neve-mm-heading', $item->classes, true ) ) {
 			add_filter(
 				'nav_menu_css_class',
 				function ( $classes, $nav_item, $args, $depth ) use ( $item ) {

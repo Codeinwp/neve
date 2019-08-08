@@ -289,7 +289,7 @@ class Layout_Sidebar extends Base_Customizer {
 	 */
 	public function sanitize_sidebar_layout( $value ) {
 		$allowed_values = array( 'left', 'right', 'full-width' );
-		if ( ! in_array( $value, $allowed_values ) ) {
+		if ( ! in_array( $value, $allowed_values, true ) ) {
 			return 'right';
 		}
 

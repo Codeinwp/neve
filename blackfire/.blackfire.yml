@@ -7,11 +7,11 @@ tests:
   Pages should not do too many SQL queries:
     path: /.*
     assertions:
-      - metrics.sql.queries.count <= 25
+      - metrics.sql.queries.count <= 30
   Pages should be light:
     path: /.*
     assertions:
-      - metrics.output.network_out < 10KB
+      - metrics.output.network_out < 20KB
   Pages should not do any external HTTP request:
     path: /.*
     assertions:
