@@ -37,7 +37,7 @@ class Layout_Single_Product extends Base_Customizer {
 	 * Check if the controls for Single Product should load.
 	 */
 	private function should_load() {
-		return class_exists( 'WooCommerce' );
+		return class_exists( 'WooCommerce', false );
 	}
 
 	/**
@@ -158,7 +158,7 @@ class Layout_Single_Product extends Base_Customizer {
 	public function sanitize_categories( $value ) {
 		$categories      = $this->get_shop_categories();
 		$possible_values = array_keys( $categories );
-		if ( ! in_array( $value, $possible_values ) ) {
+		if ( ! in_array( $value, $possible_values, true ) ) {
 			return '-';
 		}
 

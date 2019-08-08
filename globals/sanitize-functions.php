@@ -102,7 +102,7 @@ function neve_sanitize_range_value( $input ) {
 function neve_sanitize_font_weight( $value ) {
 	$allowed = array( '100', '200', '300', '400', '500', '600', '700', '800', '900' );
 
-	if ( ! in_array( $value, $allowed ) ) {
+	if ( ! in_array( (string) $value, $allowed, true ) ) {
 		return '300';
 	}
 
@@ -118,7 +118,7 @@ function neve_sanitize_font_weight( $value ) {
 function neve_sanitize_text_transform( $value ) {
 	$allowed = array( 'none', 'capitalize', 'uppercase', 'lowercase' );
 
-	if ( ! in_array( $value, $allowed ) ) {
+	if ( ! in_array( $value, $allowed, true ) ) {
 		return 'none';
 	}
 

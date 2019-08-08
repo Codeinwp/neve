@@ -12,11 +12,6 @@
   transition: $transition_med;
   margin-bottom: 0;
 
-  .responsive-opened & {
-    max-height: calc(100vh - 70px);
-    padding-bottom: $spacing-sm;
-  }
-
   a {
     color: $body-color;
     font-weight: 500;
@@ -138,10 +133,6 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
       max-height: inherit;
       margin-left: auto;
       justify-content: flex-start;
-
-      .responsive-opened & {
-        padding-bottom: 0;
-      }
 
       > li {
         width: inherit;

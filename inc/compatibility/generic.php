@@ -20,7 +20,7 @@ class Generic {
 	 * Init function.
 	 */
 	public function init() {
-		if ( class_exists( 'Mega_Menu' ) ) {
+		if ( class_exists( 'Mega_Menu', false ) ) {
 			add_filter( 'megamenu_themes', array( $this, 'max_megamenu_theme' ) );
 		}
 	}

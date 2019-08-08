@@ -76,6 +76,9 @@
     height: 39px;
     margin-left: $spacing-xs;
   }
+  label {
+    margin-bottom: 0;
+  }
   p {
     display: flex;
     justify-content: center;

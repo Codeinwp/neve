@@ -530,7 +530,7 @@ class Typography extends Base_Customizer {
 			'vietnamese',
 		);
 		foreach ( $value as $index => $font_subset ) {
-			if ( ! in_array( $font_subset, $allowed_values ) ) {
+			if ( ! in_array( $font_subset, $allowed_values, true ) ) {
 				unset( $value[ $index ] );
 			}
 		}

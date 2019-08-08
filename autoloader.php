@@ -145,12 +145,7 @@ class Autoloader {
 	 * @return bool True if the file exists, false if not.
 	 */
 	protected function require_file( $file ) {
-		if ( file_exists( $file ) ) {
 			require $file;
-
 			return true;
-		}
-
-		return false;
 	}
 }

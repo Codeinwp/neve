@@ -31,7 +31,7 @@ class Product_Layout extends Base_View {
 	 * @return bool
 	 */
 	private function should_load() {
-		return class_exists( 'WooCommerce' );
+		return class_exists( 'WooCommerce', false );
 	}
 
 	/**

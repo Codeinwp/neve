@@ -24,7 +24,10 @@ use HFG\Traits\Core;
  */
 class Main {
 	use Core;
-
+	/**
+	 * Template relative directory.
+	 */
+	const TEMPLATES_DIRECTORY = 'header-footer-grid/templates/';
 	/**
 	 * Define version constant used for assets.
 	 */
@@ -46,6 +49,18 @@ class Main {
 	 */
 	private $settings;
 	/**
+	 * Cache is active filter result.
+	 *
+	 * @var bool Is active?
+	 */
+	private static $is_active = true;
+	/**
+	 * Teamplates locations.
+	 *
+	 * @var array Header templates locations.
+	 */
+	private static $templates_location = [];
+	/**
 	 * Holds a reference to Customizer class
 	 *
 	 * @since   1.0.0
@@ -63,14 +78,25 @@ class Main {
 	 * @access  public
 	 */
 	public static function get_instance() {
-		if ( ! apply_filters( 'hfg_active', true ) ) {
-			return null;
-		}
-		if ( null === self::$_instance ) {
+
+		if ( null === self::$_instance && self::$is_active ) {
+			if ( ! apply_filters( 'hfg_active', true ) ) {
+				self::$is_active = false;
+
+				return null;
+			}
 			self::$_instance = new self();
 			self::$_instance->init();
 			self::$_instance->settings   = new Manager();
 			self::$_instance->customizer = new Customizer();
+			$default_directories         = [
+				get_template_directory() . '/' . self::TEMPLATES_DIRECTORY,
+			];
+			if ( is_child_theme() ) {
+				$default_directories[] = get_stylesheet_directory() . '/' . self::TEMPLATES_DIRECTORY;
+			}
+			self::$templates_location = apply_filters( 'hfg_template_locations', $default_directories );
+
 		}
 
 		return self::$_instance;
@@ -108,7 +134,7 @@ class Main {
 		);
 		$hide               = '';
 		foreach ( $sidebars_to_search as $id ) {
-			if ( ! in_array( $id, $footer_rows ) ) {
+			if ( ! in_array( $id, $footer_rows, true ) ) {
 				$hide .= '$("#' . $id . '").parent().hide();';
 			}
 		}
@@ -129,13 +155,6 @@ class Main {
 	 * @param string $name Template variation.
 	 */
 	public function load( $slug, $name = '' ) {
-		$template_locations = apply_filters(
-			'hfg_template_locations',
-			array(
-				get_stylesheet_directory() . '/' . $this->get_templates_location(),
-				get_template_directory() . '/' . $this->get_templates_location(),
-			)
-		);
 
 		$templates = array();
 		$name      = (string) $name;
@@ -145,9 +164,15 @@ class Main {
 		$templates[] = "{$slug}.php";
 
 		$located = '';
-		foreach ( $template_locations as $location ) {
+
+		if ( count( self::$templates_location ) === 1 && count( $templates ) === 1 ) {
+			load_template( self::$templates_location[0] . $templates[0], false );
+			return;
+		}
+
+		foreach ( self::$templates_location as $location ) {
 			foreach ( $templates as $template ) {
-				if ( file_exists( $location . $template ) ) {
+				if ( is_file( $location . $template ) ) {
 					$located = $location . $template;
 					break;
 				}
@@ -160,15 +185,6 @@ class Main {
 		if ( '' !== $located ) {
 			load_template( $located, false );
 		}
-	}
-
-	/**
-	 * Get templates path location.
-	 *
-	 * @return string Templates path.
-	 */
-	public function get_templates_location() {
-		return 'header-footer-grid/templates/';
 	}
 
 	/**
@@ -284,7 +300,7 @@ class Main {
 		$disabled_templates = array( 'elementor_canvas' );
 		$current_template   = get_page_template_slug();
 
-		if ( in_array( $current_template, $disabled_templates ) ) {
+		if ( in_array( $current_template, $disabled_templates, true ) ) {
 			return false;
 		}
 		if ( is_singular() ) {

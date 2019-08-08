@@ -47,7 +47,7 @@ abstract class Base_Inline {
 	 * @param string $media_query media query.
 	 */
 	final protected function add_style( $styles, $selectors, $media_query = 'mobile' ) {
-		if ( ! in_array( $media_query, array( 'mobile', 'tablet', 'desktop' ) ) ) {
+		if ( ! in_array( $media_query, array( 'mobile', 'tablet', 'desktop' ), true ) ) {
 			return;
 		}
 
@@ -147,7 +147,17 @@ abstract class Base_Inline {
 		}
 		$suffix = isset( $style['suffix'] ) ? $style['suffix'] : '';
 
-		if ( in_array( $style['css_prop'], array( 'font-family', 'content' ) ) ) {
+
+		if (
+			in_array(
+				$style['css_prop'],
+				array(
+					'font-family',
+					'content',
+				),
+				true
+			) &&
+			! in_array( $style['value'], neve_get_standard_fonts(), true ) ) {
 			return esc_attr( $style['css_prop'] ) . ':' . '"' . esc_attr( $style['value'] ) . '"' . esc_attr( $suffix ) . ';';
 		}
 
@@ -163,7 +173,7 @@ abstract class Base_Inline {
 	 */
 	final public function get_style( $context ) {
 		$allowed_contexts = array( 'mobile', 'desktop', 'tablet' );
-		if ( ! in_array( $context, $allowed_contexts ) ) {
+		if ( ! in_array( $context, $allowed_contexts, true ) ) {
 			return '';
 		}
 		if ( ! array_key_exists( $context, $this->style ) ) {
