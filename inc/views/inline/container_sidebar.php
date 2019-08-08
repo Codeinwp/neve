@@ -76,7 +76,7 @@ class Container_Sidebar extends Base_Inline {
 			),
 		);
 
-		if ( class_exists( 'WooCommerce' ) ) {
+		if ( class_exists( 'WooCommerce', false ) ) {
 			$content_widths = array_merge(
 				$content_widths,
 				array(

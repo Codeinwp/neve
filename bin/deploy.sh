@@ -35,7 +35,7 @@ if ! git rev-parse "v$BUILD_VERSION" >/dev/null 2>&1
 
     # Send update to the store
     if [ ! -z "$THEMEISLE_ID" ]; then
-        STORE_JSON='{"version": "'$BUILD_VERSION'","id": "'$THEMEISLE_ID'","body": "'$CHANGES'"}';
+        STORE_JSON='{"version": "'$BUILD_VERSION'","id": "'$THEMEISLE_ID'","body": ""}';
         echo "$STORE_JSON";
         curl -X POST -H 'Cache-Control: no-cache' -H "Content-Type: application/json" -H "x-themeisle-auth: $THEMEISLE_AUTH"  --data "$STORE_JSON" "$STORE_URL/wp-json/edd-so/v1/update_changelog/" > /dev/null
     fi

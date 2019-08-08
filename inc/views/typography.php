@@ -44,7 +44,7 @@ class Typography extends Base_View {
 		 */
 		$headings_font = get_theme_mod( 'neve_headings_font_family', apply_filters( 'neve_headings_default', false ) );
 
-		if ( ! empty( $headings_font ) && ! in_array( $headings_font, $typekit_fonts ) ) {
+		if ( ! empty( $headings_font ) && ! in_array( $headings_font, $typekit_fonts, true ) ) {
 			$this->enqueue_google_font( $headings_font, 'headings' );
 		}
 
@@ -53,7 +53,7 @@ class Typography extends Base_View {
 		 * Body font family.
 		 */
 		$body_font = get_theme_mod( 'neve_body_font_family', apply_filters( 'neve_body_font_default', false ) );
-		if ( ! empty( $body_font ) && ! in_array( $body_font, $typekit_fonts ) ) {
+		if ( ! empty( $body_font ) && ! in_array( $body_font, $typekit_fonts, true ) ) {
 			$this->enqueue_google_font( $body_font, 'body' );
 		}
 	}
@@ -72,7 +72,7 @@ class Typography extends Base_View {
 		$google_fonts = $this->get_google_fonts();
 
 		// Make sure font is in our list of fonts.
-		if ( ! $google_fonts || ! in_array( $font, $google_fonts ) ) {
+		if ( ! $google_fonts || ! in_array( $font, $google_fonts, true ) ) {
 			return;
 		}
 
@@ -141,9 +141,9 @@ class Typography extends Base_View {
 			$key = 'neve_body_font_weight';
 		}
 
-		$font_weight = get_theme_mod( $key );
+		$font_weight = (string) get_theme_mod( $key );
 
-		if ( empty( $font_weight ) || in_array( $font_weight, $weights_array ) ) {
+		if ( empty( $font_weight ) || in_array( $font_weight, $weights_array, true ) ) {
 			return $weights_array;
 		}
 

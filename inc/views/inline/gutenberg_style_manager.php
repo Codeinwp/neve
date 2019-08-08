@@ -44,11 +44,4 @@ class Gutenberg_Style_Manager extends Base_Style_Manager {
 	protected $style_classes = array(
 		'\\Neve\\Views\\Inline\\Gutenberg_Editor',
 	);
-
-	/**
-	 * Generated style file name.
-	 *
-	 * @var string
-	 */
-	protected $css_file_name = 'neve-gutenberg-editor.css';
 }

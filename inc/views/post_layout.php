@@ -52,15 +52,15 @@ class Post_Layout extends Base_View {
 		$content_order = json_decode( $content_order, true );
 
 		if ( apply_filters( 'neve_filter_toggle_content_parts', true, 'title' ) !== true ) {
-			unset( $content_order[ array_search( 'title-meta', $content_order ) ] );
+			unset( $content_order[ array_search( 'title-meta', $content_order, true ) ] );
 		}
 
 		if ( apply_filters( 'neve_filter_toggle_content_parts', true, 'featured-image' ) !== true ) {
-			unset( $content_order[ array_search( 'thumbnail', $content_order ) ] );
+			unset( $content_order[ array_search( 'thumbnail', $content_order, true ) ] );
 		}
 
 		if ( ! has_post_thumbnail() ) {
-			$thumb_index = array_search( 'thumbnail', $content_order );
+			$thumb_index = array_search( 'thumbnail', $content_order, true );
 			if ( $thumb_index !== false ) {
 				unset( $content_order[ $thumb_index ] );
 			}

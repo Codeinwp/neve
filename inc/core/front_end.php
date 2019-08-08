@@ -607,7 +607,7 @@ class Front_End {
 	 * Add WooCommerce support
 	 */
 	private function add_woo_support() {
-		if ( ! class_exists( 'WooCommerce' ) ) {
+		if ( ! class_exists( 'WooCommerce', false ) ) {
 			return;
 		}
 
@@ -646,7 +646,7 @@ class Front_End {
 	 * Enqueue styles.
 	 */
 	private function add_styles() {
-		if ( class_exists( 'WooCommerce' ) ) {
+		if ( class_exists( 'WooCommerce', false ) ) {
 			wp_register_style( 'neve-woocommerce', NEVE_ASSETS_URL . 'css/woocommerce' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
 			wp_style_add_data( 'neve-woocommerce', 'rtl', 'replace' );
 			wp_style_add_data( 'neve-woocommerce', 'suffix', '.min' );
@@ -680,6 +680,11 @@ class Front_End {
 			)
 		);
 		wp_enqueue_script( 'neve-script' );
+		if ( class_exists( 'WooCommerce', false ) && is_woocommerce() ) {
+			wp_register_script( 'neve-shop-script', NEVE_ASSETS_URL . 'js/shop.js', array(), NEVE_VERSION, true );
+			wp_enqueue_script( 'neve-shop-script' );
+		}
+
 
 		if ( is_singular() ) {
 			wp_enqueue_script( 'comment-reply' );

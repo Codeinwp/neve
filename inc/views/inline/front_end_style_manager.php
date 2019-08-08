@@ -40,11 +40,4 @@ class Front_End_Style_Manager extends Base_Style_Manager {
 		'\\Neve\\Views\\Inline\\Colors',
 		'\\Neve\\Views\\Inline\\Buttons',
 	);
-
-	/**
-	 * Generated style file name.
-	 *
-	 * @var string
-	 */
-	protected $css_file_name = 'neve-customizer.css';
 }

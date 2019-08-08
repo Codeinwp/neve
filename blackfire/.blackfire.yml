@@ -1,0 +1,18 @@
+tests:
+  Pages should not consume too much memory:
+    path: /.*
+    assertions:
+      - main.memory < 3.6M
+      - main.peak_memory < 4M
+  Pages should not do too many SQL queries:
+    path: /.*
+    assertions:
+      - metrics.sql.queries.count <= 30
+  Pages should be light:
+    path: /.*
+    assertions:
+      - metrics.output.network_out < 20KB
+  Pages should not do any external HTTP request:
+    path: /.*
+    assertions:
+      - metrics.http.requests.count == 0

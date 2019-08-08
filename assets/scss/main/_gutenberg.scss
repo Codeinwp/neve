@@ -135,17 +135,13 @@ blockquote.wp-block-quote.is-style-large {
 //<editor-fold desc="Button">
 .wp-block-button {
   a {
-    @include button();
-
-    &:hover {
-      text-decoration: none;
-    }
+    @extend %nv-button;
+    text-decoration: none !important;
   }
 
   &.is-style-outline {
     a.wp-block-button__link {
-      @include button-secondary();
-      border: 1px solid;
+      @extend %nv-button-secondary;
     }
   }
 }

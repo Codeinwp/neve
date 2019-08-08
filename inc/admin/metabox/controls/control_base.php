@@ -147,7 +147,7 @@ abstract class Control_Base {
 			return;
 		}
 		if ( isset( $_POST[ $this->id ] ) ) {
-			$value = wp_unslash( $_POST[ $this->id ] ); // WPCS: sanitization ok.
+			$value = wp_unslash( $_POST[ $this->id ] ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 
 			if ( $value === $this->settings['default'] ) {
 				delete_post_meta( $post_id, $this->id );
@@ -182,7 +182,7 @@ abstract class Control_Base {
 				break;
 			case 'checkbox':
 				$allowed_values = array( 'on', 'off' );
-				if ( ! in_array( $value, $allowed_values ) ) {
+				if ( ! in_array( $value, $allowed_values, true ) ) {
 					return esc_html( $this->settings['default'] );
 				}
 
