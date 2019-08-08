@@ -2,8 +2,8 @@ tests:
   Pages should not consume too much memory:
     path: /.*
     assertions:
-      - main.memory < 3M
-      - main.peak_memory < 3M
+      - main.memory < 3.6M
+      - main.peak_memory < 4M
   Pages should not do too many SQL queries:
     path: /.*
     assertions:

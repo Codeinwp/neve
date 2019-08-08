@@ -172,7 +172,7 @@ class Main {
 
 		foreach ( self::$templates_location as $location ) {
 			foreach ( $templates as $template ) {
-				if ( file_exists( $location . $template ) ) {
+				if ( is_file( $location . $template ) ) {
 					$located = $location . $template;
 					break;
 				}
