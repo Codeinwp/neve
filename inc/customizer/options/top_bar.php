@@ -158,7 +158,7 @@ class Top_Bar extends Base_Customizer {
 	 */
 	public function sanitize_top_bar_layout( $value ) {
 		$allowed_values = array( 'content-menu', 'menu-content' );
-		if ( ! in_array( $value, $allowed_values ) ) {
+		if ( ! in_array( $value, $allowed_values, true ) ) {
 			return 'content-menu';
 		}
 

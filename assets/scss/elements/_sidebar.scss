@@ -45,19 +45,6 @@
 .nv-sidebar-wrap {
   margin-bottom: $spacing;
 }
-
-.widget ul {
-  padding: 0;
-  ul {
-    padding-left: $spacing-xs;
-    border-left: $muted-border;
-  }
-}
-
-.widget_media_image img {
-  width: 100%;
-}
-
 .widget {
   word-break: break-word;
   padding-bottom: $spacing-sm;

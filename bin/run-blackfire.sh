@@ -27,6 +27,7 @@ fi
 if [ ! -d "dist" ]; then
   echo "Distribution files ( /dist folder ) are not present. Creating it ... "
   npm install
+  composer install --no-dev
   npm run-script build
   npm run-script dist
 fi

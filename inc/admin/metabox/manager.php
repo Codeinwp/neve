@@ -139,7 +139,7 @@ final class Manager {
 		}
 
 		$restricted_pages_id = array();
-		if ( in_array( $post->ID, $restricted_pages_id ) ) {
+		if ( in_array( $post->ID, $restricted_pages_id, true ) ) {
 			return false;
 		}
 

@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "codeinwp/themeisle-sdk",
-            "version": "3.0.9",
+            "version": "3.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeinwp/themeisle-sdk.git",
-                "reference": "259e2afb33bd523f9807e04ace921f8690350a31"
+                "reference": "e3242627f3e77561e4f109f99399a1db9e231cf6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeinwp/themeisle-sdk/zipball/259e2afb33bd523f9807e04ace921f8690350a31",
-                "reference": "259e2afb33bd523f9807e04ace921f8690350a31",
+                "url": "https://api.github.com/repos/Codeinwp/themeisle-sdk/zipball/e3242627f3e77561e4f109f99399a1db9e231cf6",
+                "reference": "e3242627f3e77561e4f109f99399a1db9e231cf6",
                 "shasum": ""
             },
             "require-dev": {
@@ -42,7 +42,7 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2019-06-26T14:38:00+00:00"
+            "time": "2019-08-08T09:58:25+00:00"
         },
         {
             "name": "codeinwp/ti-about-page",
@@ -50,12 +50,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeinwp/ti-about-page.git",
-                "reference": "88df9985cbe78429c993caa69b5d0c5d47ecbdbc"
+                "reference": "29909e4b38e5b44ff2548a1efb2fa01570700690"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeinwp/ti-about-page/zipball/88df9985cbe78429c993caa69b5d0c5d47ecbdbc",
-                "reference": "88df9985cbe78429c993caa69b5d0c5d47ecbdbc",
+                "url": "https://api.github.com/repos/Codeinwp/ti-about-page/zipball/29909e4b38e5b44ff2548a1efb2fa01570700690",
+                "reference": "29909e4b38e5b44ff2548a1efb2fa01570700690",
                 "shasum": ""
             },
             "type": "library",
@@ -77,7 +77,7 @@
             ],
             "description": "The theme about page for themeisle themes.",
             "homepage": "https://github.com/Codeinwp/ti-about-page",
-            "time": "2019-07-08T09:08:27+00:00"
+            "time": "2019-07-15T12:43:23+00:00"
         },
         {
             "name": "codeinwp/ti-onboarding",
@@ -161,9 +161,9 @@
             "authors": [
                 {
                     "name": "Franck Nijhof",
+                    "role": "Developer / IT Manager",
                     "email": "franck.nijhof@dealerdirect.com",
-                    "homepage": "http://www.frenck.nl",
-                    "role": "Developer / IT Manager"
+                    "homepage": "http://www.frenck.nl"
                 }
             ],
             "description": "PHP_CodeSniffer Standards Composer Installer Plugin",
@@ -227,13 +227,13 @@
                 },
                 {
                     "name": "Wim Godden",
-                    "homepage": "https://github.com/wimg",
-                    "role": "lead"
+                    "role": "lead",
+                    "homepage": "https://github.com/wimg"
                 },
                 {
                     "name": "Juliette Reinders Folmer",
-                    "homepage": "https://github.com/jrfnl",
-                    "role": "lead"
+                    "role": "lead",
+                    "homepage": "https://github.com/jrfnl"
                 }
             ],
             "description": "A set of sniffs for PHP_CodeSniffer that checks for PHP cross-version compatibility.",
@@ -398,27 +398,29 @@
         },
         {
             "name": "wp-coding-standards/wpcs",
-            "version": "1.2.1",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards.git",
-                "reference": "f328bcafd97377e8e5e5d7b244d5ddbf301a3a5c"
+                "url": "https://github.com/WordPress/WordPress-Coding-Standards.git",
+                "reference": "bd9c33152115e6741e3510ff7189605b35167908"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WordPress-Coding-Standards/WordPress-Coding-Standards/zipball/f328bcafd97377e8e5e5d7b244d5ddbf301a3a5c",
-                "reference": "f328bcafd97377e8e5e5d7b244d5ddbf301a3a5c",
+                "url": "https://api.github.com/repos/WordPress/WordPress-Coding-Standards/zipball/bd9c33152115e6741e3510ff7189605b35167908",
+                "reference": "bd9c33152115e6741e3510ff7189605b35167908",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3",
-                "squizlabs/php_codesniffer": "^2.9.0 || ^3.0.2"
+                "php": ">=5.4",
+                "squizlabs/php_codesniffer": "^3.3.1"
             },
             "require-dev": {
-                "phpcompatibility/php-compatibility": "^9.0"
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0",
+                "phpcompatibility/php-compatibility": "^9.0",
+                "phpunit/phpunit": "^4.0 || ^5.0 || ^6.0 || ^7.0"
             },
             "suggest": {
-                "dealerdirect/phpcodesniffer-composer-installer": "^0.4.3 || This Composer plugin will sort out the PHPCS 'installed_paths' automatically."
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0 || This Composer plugin will sort out the PHPCS 'installed_paths' automatically."
             },
             "type": "phpcodesniffer-standard",
             "notification-url": "https://packagist.org/downloads/",
@@ -437,36 +439,36 @@
                 "standards",
                 "wordpress"
             ],
-            "time": "2018-12-18T09:43:51+00:00"
+            "time": "2019-05-21T02:50:00+00:00"
         },
         {
             "name": "wptrt/wpthemereview",
-            "version": "0.1.0",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WPTRT/WPThemeReview.git",
-                "reference": "d9fa0dfff3e842efa9d7f804c9ec241408fd3c19"
+                "reference": "1141d45d12718e9fca0211b843c51e4dbf681f13"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WPTRT/WPThemeReview/zipball/d9fa0dfff3e842efa9d7f804c9ec241408fd3c19",
-                "reference": "d9fa0dfff3e842efa9d7f804c9ec241408fd3c19",
+                "url": "https://api.github.com/repos/WPTRT/WPThemeReview/zipball/1141d45d12718e9fca0211b843c51e4dbf681f13",
+                "reference": "1141d45d12718e9fca0211b843c51e4dbf681f13",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.4",
                 "phpcompatibility/phpcompatibility-wp": "^2.0",
-                "squizlabs/php_codesniffer": "^3.3.0",
-                "wp-coding-standards/wpcs": "^1.0.0"
+                "squizlabs/php_codesniffer": "^3.3.1",
+                "wp-coding-standards/wpcs": "^2.1.0"
             },
             "require-dev": {
-                "dealerdirect/phpcodesniffer-composer-installer": "^0.4.3",
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0",
                 "phpcompatibility/php-compatibility": "^9.0",
                 "phpunit/phpunit": "^4.0 || ^5.0 || ^6.0 || ^7.0",
                 "roave/security-advisories": "dev-master"
             },
             "suggest": {
-                "dealerdirect/phpcodesniffer-composer-installer": "^0.4.3 || This Composer plugin will sort out the PHPCS 'installed_paths' automatically."
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0 || This Composer plugin will sort out the PHPCS 'installed_paths' automatically."
             },
             "type": "phpcodesniffer-standard",
             "notification-url": "https://packagist.org/downloads/",
@@ -476,23 +478,23 @@
             "authors": [
                 {
                     "name": "Theme Review Team",
-                    "homepage": "https://make.wordpress.org/themes/handbook/",
-                    "role": "Strategy and rule setting"
+                    "role": "Strategy and rule setting",
+                    "homepage": "https://make.wordpress.org/themes/handbook/"
                 },
                 {
                     "name": "Ulrich Pogson",
-                    "homepage": "https://github.com/grappler",
-                    "role": "Lead developer"
+                    "role": "Lead developer",
+                    "homepage": "https://github.com/grappler"
                 },
                 {
                     "name": "Juliette Reinders Folmer",
-                    "homepage": "https://github.com/jrfnl",
-                    "role": "Lead developer"
+                    "role": "Lead developer",
+                    "homepage": "https://github.com/jrfnl"
                 },
                 {
                     "name": "Denis Žoljom",
-                    "homepage": "https://github.com/dingo-d",
-                    "role": "Plugin integration lead"
+                    "role": "Plugin integration lead",
+                    "homepage": "https://github.com/dingo-d"
                 },
                 {
                     "name": "Contributors",
@@ -507,7 +509,7 @@
                 "themes",
                 "wordpress"
             ],
-            "time": "2018-10-31T17:02:38+00:00"
+            "time": "2019-07-18T07:48:56+00:00"
         }
     ],
     "aliases": [],
