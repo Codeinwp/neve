@@ -83,30 +83,7 @@ class Font_Selector extends \WP_Customize_Control {
 	 * @since 1.1.38
 	 */
 	private function get_standard_fonts() {
-		return apply_filters(
-			'neve_standard_fonts_array',
-			array(
-				'Arial, Helvetica, sans-serif',
-				'Arial Black, Gadget, sans-serif',
-				'Bookman Old Style, serif',
-				'Comic Sans MS, cursive',
-				'Courier, monospace',
-				'Georgia, serif',
-				'Garamond, serif',
-				'Impact, Charcoal, sans-serif',
-				'Lucida Console, Monaco, monospace',
-				'Lucida Sans Unicode, Lucida Grande, sans-serif',
-				'MS Sans Serif, Geneva, sans-serif',
-				'MS Serif, New York, sans-serif',
-				'Palatino Linotype, Book Antiqua, Palatino, serif',
-				'Tahoma, Geneva, sans-serif',
-				'Times New Roman, Times, serif',
-				'Trebuchet MS, Helvetica, sans-serif',
-				'Verdana, Geneva, sans-serif',
-				'Paratina Linotype',
-				'Trebuchet MS',
-			)
-		);
+		return neve_get_standard_fonts();
 	}
 
 	/**
