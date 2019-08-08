@@ -60,7 +60,7 @@ if [[ $BLACKFIRE_OUTPUT == *"failing"* ]]; then
   exit 1;
 fi
 
-#docker-compose down
+docker-compose down
 
 exit 0;
 
