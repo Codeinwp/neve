@@ -1859,6 +1859,14 @@ audio {
   width: 100%;
 }
 
+.neve-breadcrumbs-wrapper {
+  margin-bottom: 0;
+}
+
+.neve-breadcrumbs-wrapper a {
+  color: #676767;
+}
+
 @media (min-width: 576px) {
   .container {
     max-width: 540px;

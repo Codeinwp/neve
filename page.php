@@ -15,6 +15,7 @@ get_header();
 		<?php do_action( 'neve_do_sidebar', 'single-page', 'left' ); ?>
 		<div class="nv-single-page-wrap col">
 			<?php
+			do_action( 'neve_before_page_header' );
 			do_action( 'neve_page_header', 'single-page' );
 			do_action( 'neve_before_content', 'single-page' );
 			if ( have_posts() ) {

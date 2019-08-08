@@ -38,8 +38,10 @@ function neve_hooks() {
 		'post'       => array(
 			'neve_before_post_content',
 			'neve_after_post_content',
+			'neve_before_loop',
 		),
 		'page'       => array(
+			'neve_before_page_header',
 			'neve_before_content',
 			'neve_after_content',
 			'neve_before_page_comments',
