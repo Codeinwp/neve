@@ -21,7 +21,7 @@ class Header_Footer_Elementor {
 		if ( ! defined( 'ELEMENTOR_VERSION' ) ) {
 			return false;
 		}
-		if ( ! class_exists( 'Header_Footer_Elementor' ) ) {
+		if ( ! class_exists( 'Header_Footer_Elementor', false ) ) {
 			return false;
 		}
 

@@ -115,7 +115,7 @@ class Layout_Single_Post extends Base_Customizer {
 		$decoded = json_decode( $value, true );
 
 		foreach ( $decoded as $val ) {
-			if ( ! in_array( $val, $allowed ) ) {
+			if ( ! in_array( $val, $allowed, true ) ) {
 				return $allowed;
 			}
 		}

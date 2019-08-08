@@ -7,7 +7,7 @@ let masonryInstance = null,
 		page = 2;
 
 /**
- * Iniitialize blog JS.
+ * Initialize blog JS.
  */
 export const initBlog = function() {
 	if ( document.querySelector( '.blog.nv-index-posts' ) === null ) {

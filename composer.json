@@ -1,46 +1,49 @@
 {
-  "name": "codeinwp/neve",
-  "description": "Neve by ThemeIsle.",
-  "homepage": "https://themeisle.com/themes/neve/",
-  "license": "GPL-2.0+",
-  "authors": [
-    {
-      "name": "ThemeIsle Team",
-      "email": "friends@themeisle.com.com",
-      "homepage": "https://themeisle.com"
-    }
-  ],
-  "support": {
-    "issues": "https://github.com/Codeinwp/neve/issues",
-    "source": "https://github.com/Codeinwp/neve"
-  },
-  "require": {
-    "codeinwp/ti-about-page": "master",
-    "codeinwp/themeisle-sdk": "^3.0",
-    "codeinwp/ti-onboarding": "^1.1"
-  },
-  "autoload": {
-    "psr-4" : {
-      "HFG\\" : "header-footer-grid/"
-    },
-    "files": [
-      "vendor/codeinwp/themeisle-sdk/load.php",
-      "vendor/codeinwp/ti-about-page/load.php",
-      "vendor/codeinwp/ti-onboarding/load.php"
-    ]
-  },
-  "scripts": {
-    "format": "phpcbf --standard=phpcs.xml --report-summary --report-source -s  --runtime-set testVersion 5.4- ",
-    "phpcs": "phpcs --standard=phpcs.xml -s --runtime-set testVersion 5.4-",
-    "lint": "composer run-script phpcs"
-  },
-  "minimum-stability": "dev",
-  "prefer-stable": true,
-  "extra": {
-    "installer-disable": "true"
-  },
-  "require-dev": {
-    "wptrt/wpthemereview": "*",
-    "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0"
-  }
+	"name": "codeinwp/neve",
+	"description": "Neve by ThemeIsle.",
+	"homepage": "https://themeisle.com/themes/neve/",
+	"license": "GPL-2.0+",
+	"authors": [
+		{
+			"name": "ThemeIsle Team",
+			"email": "friends@themeisle.com.com",
+			"homepage": "https://themeisle.com"
+		}
+	],
+	"support": {
+		"issues": "https://github.com/Codeinwp/neve/issues",
+		"source": "https://github.com/Codeinwp/neve"
+	},
+	"require": {
+		"codeinwp/ti-about-page": "master",
+		"codeinwp/themeisle-sdk": "^3.0",
+		"codeinwp/ti-onboarding": "^1.1"
+	},
+	"autoload": {
+		"psr-4": {
+			"HFG\\": "header-footer-grid/"
+		},
+		"files": [
+			"vendor/codeinwp/themeisle-sdk/load.php",
+			"vendor/codeinwp/ti-about-page/load.php",
+			"vendor/codeinwp/ti-onboarding/load.php"
+		]
+	},
+	"scripts": {
+		"format": "phpcbf --standard=phpcs.xml --report-summary --report-source -s  --runtime-set testVersion 5.4- ",
+		"phpcs": "phpcs --standard=phpcs.xml -s --runtime-set testVersion 5.4-",
+		"lint": "composer run-script phpcs"
+	},
+	"minimum-stability": "dev",
+	"prefer-stable": true,
+	"config": {
+		"optimize-autoloader": true
+	},
+	"extra": {
+		"installer-disable": "true"
+	},
+	"require-dev": {
+		"wptrt/wpthemereview": "*",
+		"dealerdirect/phpcodesniffer-composer-installer": "^0.5.0"
+	}
 }

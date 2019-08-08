@@ -125,7 +125,7 @@ class Post_Meta extends Base_View {
 			}
 		}
 		$markup .= '</ul>';
-		echo neve_custom_kses_escape(
+		echo neve_custom_kses_escape( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			$markup,
 			array(
 				'time' => array(
@@ -134,7 +134,7 @@ class Post_Meta extends Base_View {
 					'content'  => true,
 				),
 			)
-		); // WPCS: XSS ok.
+		);
 	}
 
 	/**
@@ -188,7 +188,7 @@ class Post_Meta extends Base_View {
 		if ( ! comments_open() ) {
 			return '';
 		}
-		if ( $comments_number == 0 ) {
+		if ( $comments_number === 0 ) {
 			return '';
 		} else {
 			/* translators: %s: number of comments */
@@ -214,6 +214,6 @@ class Post_Meta extends Base_View {
 			$html    .= esc_html( $tag->name ) . '</a>';
 		}
 		$html .= ' </div> ';
-		echo $html; // WPCS: XSS OK.
+		echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 }

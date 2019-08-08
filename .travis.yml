@@ -8,15 +8,6 @@ cache:
     - $HOME/.npm
 jobs:
   include:
-    - stage: bundle_size
-      php: 7.0
-      name: "Bundle Size"
-      before_install:
-        - nvm install && nvm use
-        - npm install npm -g
-      script:
-        - npm install
-        - npm run-script size
     - stage: test
       php: 7.0
       name: "Different linters"
@@ -27,6 +18,8 @@ jobs:
         - travis_retry npm install
         - travis_retry composer install
         - npm run-script test
+        - npm run build
+        - npm run-script size
     - php: 5.2
       name: "Unit tests for PHP 5.2"
       env: WP_VERSION=5.1.1

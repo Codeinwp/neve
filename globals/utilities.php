@@ -76,7 +76,7 @@ function neve_cart_icon( $echo = false ) {
 	if ( $echo === false ) {
 		return $svg;
 	}
-	echo neve_kses_svg( $svg ); // WPCS: XSS OK.
+	echo neve_kses_svg( $svg ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 }
 
 /**
@@ -91,7 +91,7 @@ function neve_search_icon( $echo = false ) {
 	if ( $echo === false ) {
 		return $svg;
 	}
-	echo neve_kses_svg( $svg ); // WPCS: XSS OK.
+	echo neve_kses_svg( $svg ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 }
 
 /**
@@ -154,6 +154,11 @@ function neve_kses_svg( $input ) {
 	return neve_custom_kses_escape( $input, $svg_args );
 }
 
+/**
+ * Get standard fonts
+ *
+ * @return array
+ */
 function neve_get_standard_fonts() {
 	return apply_filters(
 		'neve_standard_fonts_array',

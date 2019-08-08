@@ -41,6 +41,6 @@ class Checkbox extends Control_Base {
 		$markup .= '</div>';
 		$markup .= '</p>';
 
-		echo $markup; // WPCS: XSS ok.
+		echo $markup; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 }

@@ -145,7 +145,7 @@ class Ordering extends \WP_Customize_Control {
 			$value = array();
 		}
 
-		if ( ! in_array( $component, $value ) ) {
+		if ( ! in_array( $component, $value, true ) ) {
 			return '';
 		}
 
