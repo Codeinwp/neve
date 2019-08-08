@@ -184,16 +184,12 @@ class Post_Meta extends Base_View {
 	 * @return string
 	 */
 	private function get_comments() {
-		$comments_number = get_comments_number();
 		if ( ! comments_open() ) {
 			return '';
 		}
-		if ( $comments_number == 0 ) {
-			return '';
-		} else {
-			/* translators: %s: number of comments */
-			$comments = sprintf( _n( '%s Comment', '%s Comments', $comments_number, 'neve' ), $comments_number );
-		}
+		$comments_number = get_comments_number();
+		/* translators: %s: number of comments */
+		$comments = sprintf( _n( '%s Comment', '%s Comments', $comments_number, 'neve' ), $comments_number );
 
 		return '<a href="' . esc_url( get_comments_link() ) . '">' . esc_html( $comments ) . '</a>';
 	}
