@@ -76,7 +76,7 @@ function neve_cart_icon( $echo = false ) {
 	if ( $echo === false ) {
 		return $svg;
 	}
-	echo neve_kses_svg( $svg ); // WPCS: XSS OK.
+	echo neve_kses_svg( $svg ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 }
 
 /**
@@ -91,7 +91,7 @@ function neve_search_icon( $echo = false ) {
 	if ( $echo === false ) {
 		return $svg;
 	}
-	echo neve_kses_svg( $svg ); // WPCS: XSS OK.
+	echo neve_kses_svg( $svg ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 }
 
 /**

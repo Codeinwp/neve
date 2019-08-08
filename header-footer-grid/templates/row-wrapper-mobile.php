@@ -24,7 +24,7 @@ $item_attributes  = apply_filters( 'neve_nav_toggle_data_attrs', '' );
 			<button class="navbar-toggle active" <?php echo wp_kses_post( $item_attributes ); ?>
 					aria-label="
 				<?php
-					_e( 'Navigation Menu', 'neve' ); // WPCS: XSS ok.
+					esc_html_e( 'Navigation Menu', 'neve' );
 				?>
 				">
 				<div class="bars">
@@ -34,7 +34,7 @@ $item_attributes  = apply_filters( 'neve_nav_toggle_data_attrs', '' );
 				</div>
 				<span class="screen-reader-text">
 				<?php
-				_e( 'Toggle Navigation', 'neve' ); // WPCS: XSS ok.
+				esc_html_e( 'Toggle Navigation', 'neve' );
 				?>
 					</span>
 			</button>

@@ -1,0 +1,40 @@
+%nv-woo-button {
+  font-size: .8em;
+  font-weight: 600;
+  padding: 8px 12px;
+  transition: all .15s ease-in-out;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+  line-height: normal;
+  font-family: inherit;
+  &:hover {
+    text-decoration: none;
+    opacity: .9;
+  }
+}
+
+
+%nv-woo-button-secondary {
+  border: 1px solid $gray-color;
+  background-color: transparent;
+  font-weight: 600;
+  color: $gray-color;
+  &:hover {
+    background: transparent;
+  }
+}
+
+%nv-woo-button-primary {
+  background-color: $button_color;
+  color: #fff;
+  &:hover {
+    text-decoration: none;
+    background-color: $button_color;
+    color: #fff;
+    opacity: .9;
+  }
+}

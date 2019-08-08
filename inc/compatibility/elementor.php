@@ -39,7 +39,7 @@ class Elementor extends Page_Builder_Base {
 	 * Add support for elementor theme locations.
 	 */
 	private function add_theme_builder_hooks() {
-		if ( ! class_exists( '\ElementorPro\Modules\ThemeBuilder\Module' ) ) {
+		if ( ! class_exists( '\ElementorPro\Modules\ThemeBuilder\Module', false ) ) {
 			return;
 		}
 

@@ -107,7 +107,7 @@ class Layout_Container extends Base_Customizer {
 			),
 		);
 
-		if ( class_exists( 'WooCommerce' ) ) {
+		if ( class_exists( 'WooCommerce', false ) ) {
 			$container_style_controls = array_merge(
 				$container_style_controls,
 				array(
@@ -156,7 +156,7 @@ class Layout_Container extends Base_Customizer {
 	 */
 	public function sanitize_container_layout( $value ) {
 		$allowed_values = array( 'contained', 'full-width' );
-		if ( ! in_array( $value, $allowed_values ) ) {
+		if ( ! in_array( $value, $allowed_values, true ) ) {
 			return 'contained';
 		}
 

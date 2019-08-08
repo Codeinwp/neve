@@ -109,7 +109,7 @@ class Woocommerce {
 	 * Initialize the module.
 	 */
 	public function init() {
-		if ( ! class_exists( 'WooCommerce' ) ) {
+		if ( ! class_exists( 'WooCommerce', false ) ) {
 			return;
 		}
 		$this->sidebar_manager = new Layout_Sidebar();

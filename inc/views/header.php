@@ -80,7 +80,7 @@ class Header extends Base_View {
 		$default = array(
 			'search',
 		);
-		if ( class_exists( 'WooCommerce' ) ) {
+		if ( class_exists( 'WooCommerce', false ) ) {
 			array_push( $default, 'cart' );
 		}
 
@@ -134,7 +134,7 @@ class Header extends Base_View {
 	 * @return string
 	 */
 	private function get_nav_menu_cart( $responsive = false ) {
-		if ( ! class_exists( 'WooCommerce' ) ) {
+		if ( ! class_exists( 'WooCommerce', false ) ) {
 			return '';
 		}
 

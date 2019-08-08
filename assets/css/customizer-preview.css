@@ -1,0 +1,57 @@
+/* Customize Preview */
+.customize-previewing {
+  overflow-x: hidden;
+}
+
+.customize-previewing .builder-item-focus.item--inner {
+  position: relative;
+}
+
+.customize-previewing .builder-item-focus.item--inner.has_menu .item--preview-name {
+  left: auto;
+}
+
+.customize-previewing .builder-item-focus .item--preview-name {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: none;
+  background: #0073aa;
+  color: #fff;
+  padding: 5px 8px 6px;
+  font-size: 12px !important;
+  font-weight: 600;
+  line-height: 14px;
+  cursor: pointer;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
+.customize-previewing .builder-item-focus:hover.item--inner {
+  transition-delay: 0s !important;
+  outline: 1px solid #0073aa;
+  outline-offset: -1px;
+}
+
+.customize-previewing .builder-item-focus:hover.item--inner .item--preview-name {
+  display: block;
+  z-index: 9999999;
+}
+
+.customize-previewing .header--row .customize-partial-edit-shortcut,
+.customize-previewing .header-menu-sidebar .customize-partial-edit-shortcut {
+  display: none;
+}
+
+.customize-previewing .footer--row .builder-item-focus:hover.item--inner {
+  position: relative;
+  outline: 1px dashed #ff472e;
+  outline-offset: -1px;
+}
+
+/* Customizer Shortcut */
+#header-menu-sidebar .customize-partial-edit-shortcut {
+  display: none;
+}
+
+/*# sourceMappingURL=customizer-preview.css.map */

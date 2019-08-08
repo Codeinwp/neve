@@ -1,17 +1,21 @@
 .button {
   //noinspection SassScssResolvedByNameOnly
-  @include button();
+  @extend %nv-button;
+
   &.button-primary {
     //noinspection SassScssResolvedByNameOnly
-    @include button-primary();
+    @extend %nv-button-primary;
   }
+
   &.button-secondary {
     //noinspection SassScssResolvedByNameOnly
-    @include button-secondary();
+    @extend %nv-button-secondary;
   }
 }
 
 button, input[type=button], .btn, input[type="submit"] {
-  @include button();
-  @include button-primary();
+  //noinspection SassScssResolvedByNameOnly
+  @extend %nv-button;
+  //noinspection SassScssResolvedByNameOnly
+  @extend %nv-button-primary;
 }

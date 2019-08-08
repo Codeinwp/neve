@@ -3,6 +3,7 @@
     .added_to_cart {
       margin-top: 1em;
     }
+
     .button.added {
       display: none;
     }
@@ -17,11 +18,13 @@
   .button,
   a.button,
   #respond input#submit {
-    @include button();
+    @extend %nv-woo-button;
   }
+
   a.button.button-primary {
-    @include button-primary();
+    @extend %nv-woo-button-primary;
   }
+
   a.button.alt,
   button.button.alt,
   a.button.checkout-button,
@@ -38,8 +41,8 @@
   a.product_type_variable,
   .return-to-shop > .button,
   .button.woocommerce-form-login__submit {
-    @include button();
-    @include button-primary();
+    @extend %nv-woo-button;
+    @extend %nv-woo-button-primary;
   }
 
   .button.button-secondary.more-details,
@@ -48,14 +51,14 @@
   a.added_to_cart,
   .checkout_coupon button.button,
   #review_form #respond input#submit {
-    @include button();
-    @include button-secondary();
+    @extend %nv-woo-button;
+    @extend %nv-woo-button-secondary;
   }
 
   ul[id^="nv-primary-navigation"] .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout),
   .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout) {
-    @include button();
-    @include button-secondary();
+    @extend %nv-woo-button;
+    @extend %nv-woo-button-secondary;
   }
 }
 
@@ -69,11 +72,12 @@
 
 ul[id^="nv-primary-navigation"] .nv-nav-cart {
   a.button.wc-forward:not(.checkout) {
-    @include button();
-    @include button-secondary();
+    @extend %nv-woo-button;
+    @extend %nv-woo-button-secondary;
   }
+
   a.button.checkout.wc-forward {
-    @include button();
-    @include button-primary();
+    @extend %nv-woo-button;
+    @extend %nv-woo-button-primary;
   }
 }

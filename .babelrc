@@ -1,5 +1,38 @@
 {
   "presets": [
-    "@babel/preset-env"
-  ]
+    [
+      "@babel/env",
+      {
+        "targets": {
+          "browsers": [
+            "Chrome >= 52",
+            "FireFox >= 44",
+            "Safari >= 8",
+            "Explorer 11",
+            "last 4 Edge versions"
+          ]
+        },
+        "modules": false,
+        "useBuiltIns": "usage",
+        "corejs": 3,
+        "exclude": [
+          "es.string.split"
+        ]
+      }
+    ]
+  ],
+  "env": {
+    "test": {
+      "presets": [
+        [
+          "@babel/env",
+          {
+            "modules": "commonjs",
+            "useBuiltIns": "usage",
+            "debug": false
+          }
+        ]
+      ]
+    }
+  }
 }

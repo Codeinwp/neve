@@ -232,7 +232,7 @@ class Manager {
 				self::TAB_LAYOUT  => array(),
 				self::TAB_STYLE   => array(),
 			),
-			$tabs 
+			$tabs
 		);
 	}
 
@@ -323,7 +323,7 @@ class Manager {
 			}
 			self::$groups[ $arguments['group'] ][] = $id;
 
-			if ( isset( $arguments['tab'] ) && in_array( $arguments['tab'], array( self::TAB_GENERAL, self::TAB_LAYOUT, self::TAB_STYLE ) ) ) {
+			if ( isset( $arguments['tab'] ) && in_array( $arguments['tab'], array( self::TAB_GENERAL, self::TAB_LAYOUT, self::TAB_STYLE ), true ) ) {
 				if ( ! isset( self::$tabs[ $arguments['group'] ][ $arguments['tab'] ] ) ) {
 					self::$tabs[ $arguments['group'] ][ $arguments['tab'] ] = [];
 				}

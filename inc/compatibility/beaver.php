@@ -35,7 +35,7 @@ class Beaver extends  Page_Builder_Base {
 	 * @return bool
 	 */
 	protected function is_edited_with_builder( $pid ) {
-		if ( class_exists( '\FLBuilderModel' ) ) {
+		if ( class_exists( '\FLBuilderModel', false ) ) {
 			return \FLBuilderModel::is_builder_enabled( $pid );
 		}
 		return false;
@@ -46,7 +46,7 @@ class Beaver extends  Page_Builder_Base {
 	 */
 	public function add_theme_builder_hooks() {
 
-		if ( ! class_exists( '\FLThemeBuilderLayoutData' ) ) {
+		if ( ! class_exists( '\FLThemeBuilderLayoutData', false ) ) {
 			return;
 		}
 		// Get the header ID.

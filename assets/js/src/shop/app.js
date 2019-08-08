@@ -1,28 +1,26 @@
 /* jshint esversion: 6 */
-import { neveEach } from './utils.js';
+import { neveEach } from '../utils.js';
 import { tns } from 'tiny-slider/src/tiny-slider';
 
 /**
  * Init shop.
  * @returns {boolean}
  */
-export const initShop = function() {
+function initShop() {
 	if ( document.body.classList.contains( 'woocommerce' ) ) {
 		handleShopSidebar();
 	}
 	if ( document.body.classList.contains( 'nv-exclusive' ) ) {
 		handleExclusiveSlider();
 	}
-
-	handleCartExpand();
-};
+}
 
 /**
  * Handle the shop sidebar.
  *
  * @returns {boolean}
  */
-const handleShopSidebar = function() {
+function handleShopSidebar() {
 	let sidebar, toggles, html;
 
 	sidebar = document.querySelector( '.shop-sidebar' );
@@ -37,12 +35,12 @@ const handleShopSidebar = function() {
 			html.classList.toggle( 'menu-openend' );
 		} );
 	} );
-};
+}
 
 /**
  * Handle Exclusive Products Slider
  */
-const handleExclusiveSlider = function() {
+function handleExclusiveSlider() {
 	let items = document.querySelector( 'ul.exclusive-products' );
 
 	if ( items === null ) return false;
@@ -72,11 +70,11 @@ const handleExclusiveSlider = function() {
 		navAsThumbnails: true,
 		responsive
 	} );
-};
+}
 
 /**
- * Handle the expanding navigation cart.
+ * Run JS on load.
  */
-const handleCartExpand = function() {
-
-};
+window.addEventListener( 'DOMContentLoaded', function() {
+	initShop();
+} );

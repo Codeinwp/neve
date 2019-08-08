@@ -175,7 +175,7 @@ class Metabox_Settings {
 		if (
 			! is_single()
 			&& ! is_page()
-			&& ( class_exists( 'WooCommerce' ) && ! is_shop() )
+			&& ( class_exists( 'WooCommerce', false ) && ! is_shop() )
 			&& ! $this->is_blog_static() ) {
 			return $position;
 		}
