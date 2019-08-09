@@ -10,6 +10,9 @@ function initShop() {
     if (document.body.classList.contains('woocommerce')) {
         handleShopSidebar();
     }
+    if (document.body.classList.contains('nv-exclusive')) {
+        handleExclusiveSlider();
+    }
 }
 
 /**
@@ -69,15 +72,7 @@ function handleExclusiveSlider() {
     });
 }
 
-window.addEventListener('load', function () {
-    if (document.body.classList.contains('nv-exclusive')) {
-        handleExclusiveSlider();
-    }
-});
-
 /**
  * Run JS on load.
  */
-window.addEventListener('DOMContentLoaded', function () {
-    initShop();
-});
+window.addEventListener( 'load', initShop );
