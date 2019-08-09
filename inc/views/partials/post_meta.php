@@ -188,6 +188,9 @@ class Post_Meta extends Base_View {
 			return '';
 		}
 		$comments_number = get_comments_number();
+		if ( $comments_number < 1 ) {
+			return '';
+		}
 		/* translators: %s: number of comments */
 		$comments = sprintf( _n( '%s Comment', '%s Comments', $comments_number, 'neve' ), $comments_number );
 
