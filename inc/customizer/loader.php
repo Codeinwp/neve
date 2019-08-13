@@ -87,6 +87,15 @@ class Loader {
 			NEVE_VERSION,
 			true
 		);
+
+		wp_enqueue_script( 'background-control', get_template_directory_uri() . '/inc/customizer/controls/react/background/dist/background.js', array(
+			'wp-components',
+			'react-dom',
+			'react',
+			'wp-element',
+			'wp-block-editor'
+		), NEVE_VERSION, true );
+		wp_enqueue_style( 'wp-components' );
 	}
 
 	/**
