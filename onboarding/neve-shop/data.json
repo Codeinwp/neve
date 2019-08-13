@@ -199,5 +199,11 @@
     "front_page": "home",
     "blog_page": "blog"
   },
-  "shop_pages": null
+  "shop_pages": {
+    "woocommerce_shop_page_id": "shop",
+    "woocommerce_cart_page_id": "cart",
+    "woocommerce_checkout_page_id": "checkout",
+    "woocommerce_myaccount_page_id": "my-account",
+    "woocommerce_terms_page_id": "scheduled-action-5d24a219955c94.63377844-V72GyTVBCy0xN8LTfkCsGH8dIYgUF3Qo"
+  }
 }

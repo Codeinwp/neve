@@ -38,7 +38,52 @@
   "wp_options": {
     "elementor_load_fa4_shim": "yes",
     "elementor_disable_color_schemes": "",
-    "elementor_disable_typography_schemes": ""
+    "elementor_disable_typography_schemes": "",
+    "obfx_data": {
+      "core_settings": [],
+      "module_status": {
+        "social-sharing": {
+          "showed_notices": []
+        },
+        "gutenberg-blocks": {
+          "showed_notices": [],
+          "active": false
+        },
+        "uptime-monitor": {
+          "showed_notices": []
+        },
+        "google-analytics": {
+          "showed_notices": []
+        },
+        "elementor-widgets": {
+          "showed_notices": [],
+          "active": true
+        },
+        "template-directory": {
+          "showed_notices": [],
+          "active": false
+        },
+        "menu-icons": {
+          "showed_notices": [],
+          "active": false
+        },
+        "mystock-import": {
+          "showed_notices": [],
+          "active": false
+        },
+        "policy-notice": {
+          "showed_notices": []
+        },
+        "safe-updates": {
+          "showed_notices": []
+        }
+      },
+      "module_settings": {
+        "safe-updates": {
+          "auto_update_checks": "0"
+        }
+      }
+    }
   },
   "widgets": {
     "blog-sidebar": {
@@ -92,8 +137,8 @@
     "woocommerce": "WooCommerce"
   },
   "mandatory_plugins": {
-    "themeisle-companion": "Orbit Fox by ThemeIsle",
-    "elementor": "Elementor Page Builder"
+    "elementor": "Elementor Page Builder",
+    "themeisle-companion": "Orbit Fox by ThemeIsle"
   },
   "default_off_recommended_plugins": [
     "woocommerce"
