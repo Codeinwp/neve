@@ -39,4 +39,6 @@ inc/admin/onboarding/.eslintrc
 inc/admin/onboarding/webpack.config.js
 inc/admin/onboarding/package.json
 inc/admin/onboarding/package-lock.json
-blackfire/
+blackfire
+rollup.config.js
+renovate.json
