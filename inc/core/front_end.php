@@ -167,6 +167,18 @@ class Front_End {
 						'title'            => 'Video Blog',
 						'unsplash_gallery' => 'https://unsplash.com/collections/8256651/neve-the-motion/79f8c5a63926e7cee4deed75bc6724fc',
 					),
+					'neve-amadeus'         => array(
+						'url'   => 'https://demo.themeisle.com/neve-amadeus/',
+						'title' => 'Music Teacher',
+					),
+					'neve-oblique'         => array(
+						'url'   => 'https://demo.themeisle.com/neve-oblique/',
+						'title' => 'Vintage',
+					),
+					'neve-rokophoto'       => array(
+						'url'   => 'https://demo.themeisle.com/neve-rokophoto/',
+						'title' => 'Photography',
+					),
 					'neve-energy-panels'   => array(
 						'url'   => 'https://demo.themeisle.com/neve-energy-panels/',
 						'title' => 'Energy Panels',
