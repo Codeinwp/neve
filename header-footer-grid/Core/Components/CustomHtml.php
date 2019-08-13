@@ -42,7 +42,7 @@ class CustomHtml extends Abstract_Component {
 	/**
 	 * Add form and input tag to allowed tags in header_footer_grid context.
 	 *
-	 * @param array $tags HTML Tags.
+	 * @param array        $tags HTML Tags.
 	 * @param string|array $context The context for which to retrieve tags.
 	 *
 	 * @return array
