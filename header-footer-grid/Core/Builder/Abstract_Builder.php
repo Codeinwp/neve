@@ -598,7 +598,7 @@ abstract class Abstract_Builder implements Builder {
 		self::$current_builder = $this->get_id();
 		if ( is_customize_preview() ) {
 			$style = $this->css_array_to_css( $this->add_style() );
-			echo '<style type="text/css">' . $style . '</style>';// WPCS: XSS OK.
+			echo '<style type="text/css">' . $style . '</style>';// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
 		foreach ( $layout as $device_name => $device ) {
 			if ( empty( $device ) ) {
@@ -681,7 +681,7 @@ abstract class Abstract_Builder implements Builder {
 			);
 		}
 
-		if ( $row_index == 'sidebar' ) {
+		if ( $row_index === 'sidebar' ) {
 			$selector = '.header-menu-sidebar.dark-mode .header-menu-sidebar-bg:before, .header-menu-sidebar.light-mode .header-menu-sidebar-bg:before';
 		}
 		$default_color = '#ffffff';
@@ -744,7 +744,7 @@ abstract class Abstract_Builder implements Builder {
 		usort(
 			$data,
 			function ( $item1, $item2 ) {
-				if ( $item1['x'] == $item2['x'] ) {
+				if ( $item1['x'] === $item2['x'] ) {
 					return 0;
 				}
 
@@ -823,7 +823,7 @@ abstract class Abstract_Builder implements Builder {
 	 */
 	public function register_component( $component_to_add ) {
 
-		if ( ! class_exists( $component_to_add ) || ! in_array( 'HFG\Core\Interfaces\Component', class_implements( $component_to_add ) ) ) {
+		if ( ! class_exists( $component_to_add ) || ! in_array( 'HFG\Core\Interfaces\Component', class_implements( $component_to_add ), true ) ) {
 			return false;
 		}
 

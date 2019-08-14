@@ -298,6 +298,7 @@ class Typography extends Base_Customizer {
 
 		$controls = $this->get_headings_controls();
 
+		$line_height_default = get_theme_mod( 'neve_headings_line_height' );
 		foreach ( $controls as $control_id => $control ) {
 			/**
 			 * Font size
@@ -340,45 +341,46 @@ class Typography extends Base_Customizer {
 					'Neve\Customizer\Controls\Responsive_Number'
 				)
 			);
-		}
 
-		/**
-		 * Line height
-		 */
-		$this->add_control(
-			new Control(
-				'neve_headings_line_height',
-				array(
-					'sanitize_callback' => 'neve_sanitize_range_value',
-					'transport'         => $this->selective_refresh,
-				),
-				array(
-					'label'       => esc_html__( 'Line Height', 'neve' ),
-					'section'     => 'neve_typography_headings',
-					'step'        => 0.1,
-					'input_attr'  => array(
-						'mobile'  => array(
-							'min'     => 0.5,
-							'max'     => 4,
-							'default' => 1.6,
-						),
-						'desktop' => array(
-							'min'     => 0.5,
-							'max'     => 4,
-							'default' => 1.6,
-						),
-						'tablet'  => array(
-							'min'     => 0.5,
-							'max'     => 4,
-							'default' => 1.6,
-						),
+			/**
+			 * Line height
+			 */
+			$this->add_control(
+				new Control(
+					$control_id . '_line_height',
+					array(
+						'sanitize_callback' => 'neve_sanitize_range_value',
+						'transport'         => $this->selective_refresh,
+						'default'           => $line_height_default,
 					),
-					'priority'    => 80,
-					'media_query' => true,
-				),
-				'Neve\Customizer\Controls\Range'
-			)
-		);
+					array(
+						'label'       => $control['heading'] . ' ' . esc_html__( 'Line Height', 'neve' ),
+						'section'     => 'neve_typography_headings',
+						'step'        => 0.1,
+						'input_attr'  => array(
+							'mobile'  => array(
+								'min'     => 0.5,
+								'max'     => 4,
+								'default' => 1.6,
+							),
+							'desktop' => array(
+								'min'     => 0.5,
+								'max'     => 4,
+								'default' => 1.6,
+							),
+							'tablet'  => array(
+								'min'     => 0.5,
+								'max'     => 4,
+								'default' => 1.6,
+							),
+						),
+						'priority'    => $control['priority'] + 1,
+						'media_query' => true,
+					),
+					'Neve\Customizer\Controls\Range'
+				)
+			);
+		}
 
 		/**
 		 * Letter Spacing
@@ -528,7 +530,7 @@ class Typography extends Base_Customizer {
 			'vietnamese',
 		);
 		foreach ( $value as $index => $font_subset ) {
-			if ( ! in_array( $font_subset, $allowed_values ) ) {
+			if ( ! in_array( $font_subset, $allowed_values, true ) ) {
 				unset( $value[ $index ] );
 			}
 		}

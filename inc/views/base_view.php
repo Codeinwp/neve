@@ -25,7 +25,7 @@ abstract class Base_View {
 	 * Get view path to include.
 	 *
 	 * @param string $view_slug the view to be loaded from `views` folder, without extension.
-	 * @param array  $vars      variables used in template.
+	 * @param array  $vars variables used in template.
 	 *
 	 * @return void
 	 */
@@ -40,7 +40,7 @@ abstract class Base_View {
 
 		$path = trailingslashit( get_stylesheet_directory() ) . $rest_of_path;
 
-		if ( file_exists( $path ) && is_readable( $path ) ) {
+		if ( is_file( $path ) ) {
 			include $path;
 
 			return;
@@ -48,7 +48,7 @@ abstract class Base_View {
 
 		$path = trailingslashit( get_template_directory() ) . $rest_of_path;
 
-		if ( file_exists( $path ) && is_readable( $path ) ) {
+		if ( is_file( $path ) ) {
 			include $path;
 
 			return;

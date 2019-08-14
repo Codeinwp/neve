@@ -1,13 +1,10 @@
 /* jshint esversion: 6 */
-import { initShop } from './shop.js';
 import { initBlog } from './blog.js';
 import { initNavigation, repositionDropdowns } from './navigation.js';
-import { hfg } from './header-footer-grid.js';
-
-hfg();
+import { HFG } from './hgf.js';
 
 function run () {
-  initShop();
+  window.HFG = new HFG();
   initBlog();
   initNavigation();
 }
@@ -19,7 +16,7 @@ function onResizeDebouncedRun () {
 /**
  * Run JS on load.
  */
-window.addEventListener('DOMContentLoaded', function () {
+window.addEventListener('load', function () {
   run();
 });
 

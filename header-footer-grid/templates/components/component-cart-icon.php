@@ -15,12 +15,12 @@ namespace HFG;
 			<?php neve_cart_icon( true ); ?>
 			<span class="screen-reader-text">
 				<?php
-				_e( 'Cart', 'neve' );  // WPCS: XSS OK.
+				esc_html_e( 'Cart', 'neve' );
 				?>
 				</span>
 			<span class="cart-count">
 			<?php
-			echo WC()->cart->get_cart_contents_count();  // WPCS: XSS OK.
+			echo WC()->cart->get_cart_contents_count();  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			?>
 				</span>
 		</a>

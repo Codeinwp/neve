@@ -141,7 +141,7 @@ abstract class Base_Customizer {
 	private function register_sections() {
 		$sections = $this->sections_to_register;
 		foreach ( $sections as $section ) {
-			if ( $section->custom_section !== null && class_exists( $section->custom_section ) ) {
+			if ( $section->custom_section !== null ) {
 				$this->wpc->add_section( new $section->custom_section( $this->wpc, $section->id, $section->args ) );
 			} else {
 				$this->wpc->add_section( $section->id, $section->args );
@@ -156,7 +156,7 @@ abstract class Base_Customizer {
 		$controls = $this->controls_to_register;
 		foreach ( $controls as $control ) {
 			$this->wpc->add_setting( $control->id, $control->setting_args );
-			if ( $control->custom_control !== null && class_exists( $control->custom_control ) ) {
+			if ( $control->custom_control !== null ) {
 				$this->wpc->add_control( new $control->custom_control( $this->wpc, $control->id, $control->control_args ) );
 			} else {
 				$this->wpc->add_control( $control->id, $control->control_args );
@@ -226,7 +226,7 @@ abstract class Base_Customizer {
 	 */
 	public function register_type( $object_name, $type ) {
 		$accepted_types = array( 'panel', 'section', 'control' );
-		if ( ! in_array( $type, $accepted_types ) ) {
+		if ( ! in_array( $type, $accepted_types, true ) ) {
 			return;
 		}
 		$this->types_to_register[ $object_name ] = $type;
@@ -254,7 +254,7 @@ abstract class Base_Customizer {
 	 */
 	public function get_customizer_object( $type, $id ) {
 		$accepted_types = array( 'setting', 'control', 'section', 'panel' );
-		if ( ! in_array( $type, $accepted_types ) ) {
+		if ( ! in_array( $type, $accepted_types, true ) ) {
 			return null;
 		}
 		$object = call_user_func_array( array( $this->wpc, 'get_' . $type ), array( $id ) );
@@ -275,7 +275,7 @@ abstract class Base_Customizer {
 	 */
 	public function change_customizer_object( $type, $id, $property, $value ) {
 		$accepted_types = array( 'setting', 'control', 'section', 'panel' );
-		if ( ! in_array( $type, $accepted_types ) ) {
+		if ( ! in_array( $type, $accepted_types, true ) ) {
 			return;
 		}
 		$object = call_user_func_array( array( $this->wpc, 'get_' . $type ), array( $id ) );

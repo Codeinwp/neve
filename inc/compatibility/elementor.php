@@ -30,16 +30,15 @@ class Elementor extends Page_Builder_Base {
 			return;
 		}
 
-		$this->add_theme_builder_hooks();
-
+		add_action( 'wp', array( $this, 'add_theme_builder_hooks' ) );
 		add_action( 'elementor/editor/before_enqueue_scripts', array( $this, 'maybe_set_page_template' ), 1 );
 	}
 
 	/**
 	 * Add support for elementor theme locations.
 	 */
-	private function add_theme_builder_hooks() {
-		if ( ! class_exists( '\ElementorPro\Modules\ThemeBuilder\Module' ) ) {
+	public function add_theme_builder_hooks() {
+		if ( ! class_exists( '\ElementorPro\Modules\ThemeBuilder\Module', false ) ) {
 			return;
 		}
 
@@ -128,7 +127,7 @@ class Elementor extends Page_Builder_Base {
 		if ( ! is_singular( 'page' ) ) {
 			return;
 		}
-		if ( $this->elementor_location_manager->location_exits( 'single' ) ) {
+		if ( elementor_theme_do_location( 'single' ) ) {
 			remove_all_actions( 'neve_page_header' );
 		}
 	}

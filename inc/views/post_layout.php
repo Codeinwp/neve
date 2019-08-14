@@ -52,15 +52,15 @@ class Post_Layout extends Base_View {
 		$content_order = json_decode( $content_order, true );
 
 		if ( apply_filters( 'neve_filter_toggle_content_parts', true, 'title' ) !== true ) {
-			unset( $content_order[ array_search( 'title-meta', $content_order ) ] );
+			unset( $content_order[ array_search( 'title-meta', $content_order, true ) ] );
 		}
 
 		if ( apply_filters( 'neve_filter_toggle_content_parts', true, 'featured-image' ) !== true ) {
-			unset( $content_order[ array_search( 'thumbnail', $content_order ) ] );
+			unset( $content_order[ array_search( 'thumbnail', $content_order, true ) ] );
 		}
 
 		if ( ! has_post_thumbnail() ) {
-			$thumb_index = array_search( 'thumbnail', $content_order );
+			$thumb_index = array_search( 'thumbnail', $content_order, true );
 			if ( $thumb_index !== false ) {
 				unset( $content_order[ $thumb_index ] );
 			}
@@ -146,6 +146,7 @@ class Post_Layout extends Base_View {
 	private function render_entry_header() {
 		echo '<div class="entry-header">';
 		echo '<div class="nv-title-meta-wrap">';
+		do_action( 'neve_before_post_title' );
 		echo '<h1 class="title entry-title">' . wp_kses_post( get_the_title() ) . '</h1>';
 		$this->render_post_meta();
 		echo '</div>';

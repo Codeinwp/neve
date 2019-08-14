@@ -230,7 +230,7 @@ class Admin {
 		}
 		$config = apply_filters( 'ti_about_config', $config_array );
 
-		if ( class_exists( '\Ti_About_Page' ) ) {
+		if ( class_exists( '\Ti_About_Page', false ) ) {
 			$about_page = new \Ti_About_Page();
 			$about_page->init( $config );
 		}
@@ -330,12 +330,12 @@ class Admin {
 									$output .= $this->get_feature_title_and_description( $feature );
 									$output .= '</td>';
 								}
-								if ( ! empty( $feature['is_in_lite'] ) && ( $feature['is_in_lite'] == 'true' ) ) {
+								if ( ! empty( $feature['is_in_lite'] ) && ( $feature['is_in_lite'] == 'true' ) ) { // phpcs:ignore WordPress.PHP.StrictComparisons.LooseComparison
 									$output .= '<td class="only-lite"><span class="dashicons-before dashicons-yes"></span></td>';
 								} else {
 									$output .= '<td class="only-pro"><span class="dashicons-before dashicons-no-alt"></span></td>';
 								}
-								if ( ! empty( $feature['is_in_pro'] ) && ( $feature['is_in_pro'] == 'true' ) ) {
+								if ( ! empty( $feature['is_in_pro'] ) && ( $feature['is_in_pro'] == 'true' ) ) {  // phpcs:ignore WordPress.PHP.StrictComparisons.LooseComparison
 									$output .= '<td class="only-lite"><span class="dashicons-before dashicons-yes"></span></td>';
 								} else {
 									$output .= '<td class="only-pro"><span class="dashicons-before dashicons-no-alt"></span></td>';
@@ -636,20 +636,20 @@ class Admin {
 		}
 		';
 		echo sprintf(
-			$notice_template,
-			$notice_header,
-			$notice_picture,
-			$notice_sites_list,
-			$notice_documentation,
-			$style
-		);// WPCS: XSS OK.
+			$notice_template, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			$notice_header, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			$notice_picture, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			$notice_sites_list, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			$notice_documentation, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			$style // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		);
 	}
 
 	/**
 	 * Load site import module.
 	 */
 	public function load_site_import() {
-		if ( class_exists( '\Themeisle_Onboarding' ) ) {
+		if ( class_exists( '\Themeisle_Onboarding', false ) ) {
 			\Themeisle_Onboarding::instance();
 		}
 	}

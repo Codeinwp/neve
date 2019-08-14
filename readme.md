@@ -22,7 +22,6 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 * Speed updates for the Starter Sites Library
 
-
 ### 2.3.21 - 2019-07-30  ###
 
 * [Feat] Color options for each header and footer rows
@@ -539,6 +538,12 @@ Starter Sites screenshots resources:
 * https://stocksnap.io/photo/3RI84R6CYH
 * https://stocksnap.io/photo/GEVAEIZQH1
 * https://stocksnap.io/photo/UXZ782X55D
+
+- TheMotion
+* http://mystock.themeisle.com/photo/code-in-wp/
+* http://mystock.themeisle.com/photo/empty-beach-2/
+* http://mystock.themeisle.com/photo/traffic-sign/
+* http://mystock.themeisle.com/photo/android/
 
 
 

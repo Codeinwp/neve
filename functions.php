@@ -8,7 +8,7 @@
  * @package Neve
  */
 
-define( 'NEVE_VERSION', '2.3.22' );
+define( 'NEVE_VERSION', '2.4.0' );
 define( 'NEVE_INC_DIR', trailingslashit( get_template_directory() ) . 'inc/' );
 define( 'NEVE_ASSETS_URL', trailingslashit( get_template_directory_uri() ) . 'assets/' );
 
@@ -56,7 +56,7 @@ function neve_get_php_notice_text() {
  * Adds notice for PHP < 5.3.29 hosts.
  */
 function neve_php_support() {
-	printf( '<div class="error"><p>%1$s</p></div>', neve_get_php_notice_text() ); // WPCS: XSS OK.
+	printf( '<div class="error"><p>%1$s</p></div>', neve_get_php_notice_text() ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 }
 
 if ( version_compare( PHP_VERSION, '5.3.29' ) <= 0 ) {

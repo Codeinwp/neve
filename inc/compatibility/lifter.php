@@ -67,7 +67,7 @@ class Lifter {
 	 * Check if LifterLMS plugin is activated.
 	 */
 	private function should_load() {
-		return class_exists( 'LifterLMS' );
+		return class_exists( 'LifterLMS', false );
 	}
 
 	/**

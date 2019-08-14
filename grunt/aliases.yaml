@@ -9,7 +9,6 @@ buildScripts:
 check:
 - 'sass:style'
 - 'concat:customizerStyle'
-- 'sass:min'
 - 'uglify:scripts'
 - 'uglify:customizerControls'
 #- 'postcss'
@@ -29,20 +28,17 @@ travis:
     "check:i18n"
   ]
 
-deploy:
+dist:
 - 'addtextdomain:composerDeps'
 - 'clean:wporg'
-- 'cachebuster:full'
 - 'mkdir:dist'
-- 'mkdir:artifact'
+- 'cachebuster:full'
 - 'copy:full'
-- 'compress:full'
-#  - 'deploy_lite'
 
-#deploy_lite:
-#  - 'compress:full'
-#  - 'copy:lite'
-#  - 'compress:lite'
+deploy:
+- 'dist'
+- 'mkdir:artifact'
+- 'compress:full'
 
 
 # Version:

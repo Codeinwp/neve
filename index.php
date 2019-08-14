@@ -15,6 +15,7 @@ get_header();
 			<?php do_action( 'neve_do_sidebar', 'blog-archive', 'left' ); ?>
 			<div class="nv-index-posts blog col">
 				<?php
+				do_action( 'neve_before_loop' );
 				do_action( 'neve_page_header', 'index' );
 				do_action( 'neve_before_posts_loop' );
 				if ( have_posts() ) {
@@ -43,7 +44,7 @@ get_header();
 								do_action( 'neve_middle_posts_loop' );
 							}
 							$post_index ++;
-						}                   
+						}
 					}
 					echo '</div>';
 					if ( ! is_singular() ) {

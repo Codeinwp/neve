@@ -56,7 +56,7 @@ class Range extends Control_Base {
 		max="' . esc_attr( $this->settings['max'] ) . '" >';
 		$markup .= '</p>';
 
-		echo $markup; // WPCS: XSS OK.
+		echo $markup; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 
 
