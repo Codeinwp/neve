@@ -1,50 +1,46 @@
 const {
-	FocalPointPicker,
-	FormFileUpload,
-	Placeholder,
+	// FocalPointPicker,
+	// FormFileUpload,
+	// Placeholder,
 	Button
+
 } = wp.components;
 
-const {
-	MediaUpload,
-	MediaUploadCheck,
-	MediaPlaceholder
-} = wp.blockEditor;
+// const {
+// 	MediaUpload,
+// 	MediaUploadCheck,
+// 	MediaPlaceholder
+// } = wp.blockEditor;
 
-const {
-	Component,
-	Fragment
-} = wp.element;
+// const {
+// 	Component,
+// 	Fragment
+// } = wp.element;
+//
+// const {
+// 	withState
+// } = wp.compose;
 
 export const Control = wp.customize.Control.extend( {
 
-	/**
-	 * Render the control into the DOM.
-	 *
-	 * This is called from the Control#embed() method in the parent class.
-	 *
-	 * @returns {void}
-	 */
 	renderContent: function renderContent() {
 		const control = this;
 		console.log( control );
 		const value = control.setting.get();
-		const ALLOWED_MEDIA_TYPES = ['image'];
-		const form =
-				<MediaPlaceholder
-						onSelect = {
-							( el ) => {
-								setAttributes( { theImage: el.url } );
-							}
-						}
-						allowedTypes = { ALLOWED_MEDIA_TYPES }
-						multiple = { false }
-						labels = { { title: 'The Image' } }
-				/>;
+		console.log( value );
+
+		const markup =
+				<Button
+						isLarge
+						isPrimary
+						onClick={() => {
+							console.log( 'clicked' );
+						}}
+				>React Mounted</Button>;
+
 		ReactDOM.render(
-				form,
+				markup,
 				control.container[0]
 		);
 	}
-
 } );

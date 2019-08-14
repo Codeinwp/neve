@@ -48,7 +48,7 @@ class Colors_Background extends Base_Customizer {
 				},
 			),
 			array(
-				'type'    => 'street_address',
+				'type'    => 'neve_background_control',
 				'section' => 'neve_colors_background_section',
 				'label'   => 'Business address',
 			) ) );
