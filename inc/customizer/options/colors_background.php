@@ -36,12 +36,15 @@ class Colors_Background extends Base_Customizer {
 
 		$this->add_control( new Control( 'background-test',
 			array(
-				'transport'         => 'postMessage',
 				'default'           => array(
-					'street' => '123 Main St',
-					'city'   => 'Portland',
-					'state'  => 'OR',
-					'zip'    => '97205',
+					'type'                => 'color',
+					'imageUrl'           => '',
+					'colorValue'         => '#cecece',
+					'overlayColorValue' => '#fefefe',
+					'focusPoint'         => array(
+						50,
+						50
+					)
 				),
 				'sanitize_callback' => function ( $value ) {
 					return $value;
@@ -51,6 +54,19 @@ class Colors_Background extends Base_Customizer {
 				'type'    => 'neve_background_control',
 				'section' => 'neve_colors_background_section',
 				'label'   => 'Business address',
+			) ) );
+
+		$this->add_control( new Control( 'toggle-test',
+			array(
+				'default'           => true,
+				'sanitize_callback' => function ( $value ) {
+					return $value;
+				},
+			),
+			array(
+				'type'    => 'neve_toggle_control',
+				'section' => 'neve_colors_background_section',
+				'label'   => 'Toggle Background',
 			) ) );
 	}
 

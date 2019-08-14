@@ -1,0 +1,30 @@
+.customize-control-neve_background_control {
+  margin-bottom: 20px;
+  label {
+    display: block;
+    margin: 15px 0 5px;
+  }
+  input.components-range-control__number {
+    width: 20%;
+    margin-left: 20px;
+  }
+}
+
+.neve-background-type-control {
+  width: 100%;
+
+  button {
+    width: 50%;
+    justify-content: center;
+  }
+}
+
+.neve-color-picker-wrap {
+  margin: 10px 0;
+}
+
+.neve-open-popover {
+  width: 100%;
+  box-shadow: none;
+  border: 1px solid #ccc;
+}

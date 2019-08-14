@@ -52,18 +52,18 @@ class Loader {
 		$this->customizer_modules = apply_filters(
 			'neve_filter_customizer_modules',
 			array(
-//				'Customizer\Options\Main',
-//				'Customizer\Options\Layout_Container',
-//				'Customizer\Options\Layout_Blog',
-//				'Customizer\Options\Layout_Single_Post',
-//				'Customizer\Options\Layout_Single_Product',
-//				'Customizer\Options\Layout_Sidebar',
-//				'Customizer\Options\Top_Bar',
-//				'Customizer\Options\Typography',
+				'Customizer\Options\Main',
+				'Customizer\Options\Layout_Container',
+				'Customizer\Options\Layout_Blog',
+				'Customizer\Options\Layout_Single_Post',
+				'Customizer\Options\Layout_Single_Product',
+				'Customizer\Options\Layout_Sidebar',
+				'Customizer\Options\Top_Bar',
+				'Customizer\Options\Typography',
 				'Customizer\Options\Colors_Background',
-//				'Customizer\Options\Buttons',
-//				'Customizer\Options\Rtl',
-//				'Customizer\Options\Upsells',
+				'Customizer\Options\Buttons',
+				'Customizer\Options\Rtl',
+				'Customizer\Options\Upsells',
 			)
 		);
 	}
@@ -88,15 +88,18 @@ class Loader {
 			true
 		);
 
-		wp_enqueue_script( 'background-control', get_template_directory_uri() . '/inc/customizer/controls/react/background/dist/background.js', array(
+		$react_dependencies = array(
 			'wp-components',
 			'react-dom',
 			'react',
 			'wp-element',
 			'wp-block-editor',
+			'wp-editor',
 			'wp-compose'
-		), NEVE_VERSION, true );
-		wp_enqueue_style( 'wp-components' );
+		);
+
+		wp_enqueue_script( 'react-controls', get_template_directory_uri() . '/inc/customizer/controls/react/dist/controls.js', $react_dependencies, NEVE_VERSION, true );
+		wp_enqueue_style( 'react-controls', get_template_directory_uri() . '/inc/customizer/controls/react/dist/controls.css', array( 'wp-components' ), NEVE_VERSION );
 	}
 
 	/**
