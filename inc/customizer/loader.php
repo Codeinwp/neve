@@ -88,15 +88,8 @@ class Loader {
 			true
 		);
 
-		$react_dependencies = array(
-			'wp-components',
-			'react-dom',
-			'react',
-			'wp-element',
-			'wp-block-editor',
-			'wp-editor',
-			'wp-compose'
-		);
+		$react_dependencies = array( 'lodash', 'wp-api', 'wp-i18n', 'wp-blocks', 'wp-components', 'wp-compose', 'wp-data', 'wp-editor', 'wp-edit-post', 'wp-element', 'wp-keycodes', 'wp-plugins', 'wp-rich-text', 'wp-url', 'wp-viewport' );
+
 
 		wp_enqueue_script( 'react-controls', get_template_directory_uri() . '/inc/customizer/controls/react/dist/controls.js', $react_dependencies, NEVE_VERSION, true );
 		wp_enqueue_style( 'react-controls', get_template_directory_uri() . '/inc/customizer/controls/react/dist/controls.css', array( 'wp-components' ), NEVE_VERSION );

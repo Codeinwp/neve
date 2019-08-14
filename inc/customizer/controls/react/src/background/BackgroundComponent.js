@@ -8,12 +8,11 @@ const {
 	Fragment
 } = wp.element;
 const {
-	MediaUpload,
-	MediaUploadCheck
-} = wp.blockEditor;
-const {
+	MediaUploadCheck,
 	MediaPlaceholder
+
 } = wp.editor;
+
 const {
 	Button,
 	ButtonGroup,
@@ -31,7 +30,8 @@ class BackgroundComponent extends Component {
 			focusPoint: value.focusPoint || [50, 50],
 			colorValue: value.colorValue || '',
 			overlayColorValue: value.overlayColorValue || '',
-			overlayOpacity: value.overlayOpacity || 50
+			overlayOpacity: value.overlayOpacity || 50,
+			imageData: null
 		};
 	}
 
@@ -76,18 +76,19 @@ class BackgroundComponent extends Component {
 					}
 					{this.state.type === 'image' &&
 					<Fragment>
-						<MediaPlaceholder
+						{!this.state.imageData && <MediaPlaceholder
 								icon="format-image"
-								labels={ {
-									title: __( 'Background Image' ),
-									name: __( 'an image' )
-								} }
-								onSelect={ (e) => {
-									console.log(e)
-								} }
-								accept="image/*"
-								allowedTypes={ ['image'] }
-						/>
+								labels={{
+									title: __( 'Image' )
+								}}
+								onSelect={(e) => {
+									this.setState( { imageData: e } );
+									this.updateSetting();
+								}}
+								allowedTypes={['image']}
+						/> || <Button isPrimary onClick={() => {
+							this.setState( { imageData: null } );
+						}}>Remove Attachment</Button>}
 						<NeveColorPicker
 								label={__( 'Overlay Color' )}
 								colorChangeCallback={(value) => {
