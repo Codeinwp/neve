@@ -78,5 +78,3 @@ require_once 'globals/hooks.php';
 require_once 'globals/sanitize-functions.php';
 
 require_once get_template_directory() . '/header-footer-grid/loader.php';
-
-//require_once 'wp-customize-react-street-address-control/customize-react-street-address-control.php';

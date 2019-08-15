@@ -1,35 +1,63 @@
 .customize-control-neve_background_control {
-  margin-bottom: 20px;
-  label {
-    display: block;
-    margin: 15px 0 5px;
-  }
-  input.components-range-control__number {
-    width: 20%;
-    margin-left: 20px;
-  }
+	margin-bottom: 20px;
+	.control--top-toolbar {
+		.neve-background-type-control button.components-button {
+			border-bottom-left-radius: 0;
+			border-bottom-right-radius: 0;
+		}
+	}
 
-  .components-placeholder {
-    width: auto;
-    min-height: 150px;
-  }
+	.control--body {
+		border: 1px solid #ccc;
+		border-bottom-left-radius: 3px;
+		border-bottom-right-radius: 3px;
+		background: #fff;
+		border-top: none;
+		padding: 15px;
+
+		label {
+			display: block;
+			margin: 20px 0 10px;
+			font-weight: 500;
+
+		}
+
+		.components-focal-point-picker-wrapper {
+			width: auto;
+			height: auto;
+		}
+
+	}
+
+
+	input.components-range-control__number {
+		width: 20%;
+		margin-left: 20px;
+	}
+
+	.components-placeholder {
+		width: auto;
+		min-height: 150px;
+	}
 }
 
 .neve-background-type-control {
-  width: 100%;
+	width: 100%;
 
-  button {
-    width: 50%;
-    justify-content: center;
-  }
+	button {
+		width: 50%;
+		justify-content: center;
+	}
 }
 
-.neve-color-picker-wrap {
-  margin: 10px 0;
+.neve-colorpicker-wrap:first-child {
+	label {
+		margin-top: 0;
+	}
 }
 
 .neve-open-popover {
-  width: 100%;
-  box-shadow: none;
-  border: 1px solid #ccc;
+	width: 100%;
+	box-shadow: none !important;
+	border: 0.5px solid #cecece !important;
 }

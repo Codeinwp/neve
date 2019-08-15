@@ -25,7 +25,8 @@ class NeveColorPicker extends Component {
 			backgroundColor: this.state.buttonColor
 		};
 		return (
-				<Fragment className="neve-color-picker-wrap">
+				<Fragment>
+					<div className="neve-colorpicker-wrap">
 					{this.props.label && <label>{this.props.label}</label>}
 					<Button
 							style={buttonStyle}
@@ -51,6 +52,7 @@ class NeveColorPicker extends Component {
 						</Popover>
 						}
 					</Button>
+					</div>
 				</Fragment>
 		);
 	}

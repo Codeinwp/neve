@@ -16,7 +16,8 @@ const {
 const {
 	Button,
 	ButtonGroup,
-	RangeControl
+	RangeControl,
+	FocalPointPicker
 } = wp.components;
 
 class BackgroundComponent extends Component {
@@ -27,7 +28,7 @@ class BackgroundComponent extends Component {
 		this.state = {
 			type: value.type || 'color',
 			imageUrl: value.imageUrl || '',
-			focusPoint: value.focusPoint || [50, 50],
+			focusPoint: value.focusPoint || {x:0.5, y:0.5},
 			colorValue: value.colorValue || '',
 			overlayColorValue: value.overlayColorValue || '',
 			overlayOpacity: value.overlayOpacity || 50,
@@ -39,15 +40,15 @@ class BackgroundComponent extends Component {
 		let types = ['color', 'image'],
 				labels = { 'color': __( 'Color' ), 'image': __( 'Image' ) },
 				buttons = [],
-				currentVals = this.state,
 				self = this;
 		types.map( function(type) {
 			buttons.push(
 					<Button
-							isPrimary={currentVals.type === type}
-							isDefault={currentVals.type !== type}
-							onClick={() => {
-								self.setState( { type } );
+							isPrimary={self.state.type === type}
+							isDefault={self.state.type !== type}
+							onClick={(e) => {
+								console.log(type);
+								self.setState( { type: type } );
 								self.updateSetting();
 							}}
 					>
@@ -62,9 +63,12 @@ class BackgroundComponent extends Component {
 		let self = this;
 		return (
 				<Fragment>
-					<ButtonGroup className="neve-background-type-control">
-						{this.getButtons()}
-					</ButtonGroup>
+					<div className="control--top-toolbar">
+						<ButtonGroup className="neve-background-type-control">
+							{this.getButtons()}
+						</ButtonGroup>
+					</div>
+					<div className="control--body">
 					{this.state.type === 'color' &&
 					<NeveColorPicker
 							label={__( 'Background Color' )}
@@ -76,19 +80,29 @@ class BackgroundComponent extends Component {
 					}
 					{this.state.type === 'image' &&
 					<Fragment>
+					{/* TODO: MOVE THIS TO A COMPONENT ALLTOGETHER.*/}
+
 						{!this.state.imageData && <MediaPlaceholder
 								icon="format-image"
 								labels={{
-									title: __( 'Image' )
+									title: __( 'Image' ),
+									instructions: __('Select from the Media Library or upload a new image')
 								}}
 								onSelect={(e) => {
 									this.setState( { imageData: e } );
 									this.updateSetting();
 								}}
 								allowedTypes={['image']}
-						/> || <Button isPrimary onClick={() => {
+						/> ||
+							<Fragment>
+						<FocalPointPicker
+						url={ this.state.imageData.url }
+						value={ this.state.focusPoint}
+						onChange={ (val) => { this.setState( {focusPoint: {x: val.x, y: val.y} } ); this.updateSetting();}}/>
+						<Button isPrimary onClick={() => {
 							this.setState( { imageData: null } );
-						}}>Remove Attachment</Button>}
+						}}>Remove Attachment</Button>
+						</Fragment>}
 						<NeveColorPicker
 								label={__( 'Overlay Color' )}
 								colorChangeCallback={(value) => {
@@ -108,19 +122,22 @@ class BackgroundComponent extends Component {
 						/>
 					</Fragment>
 					}
+					</div>
 				</Fragment>
 		);
 	}
 
 	updateSetting() {
-		this.props.control.setting.set( {
-			type: this.state.type,
-			imageUrl: this.state.imageUrl,
-			focusPoint: this.state.focusPoint,
-			colorValue: this.state.colorValue,
-			overlayColorValue: this.state.overlayColorValue,
-			overlayOpacity: this.state.overlayOpacity
-		} );
+		setTimeout( () => {
+			this.props.control.setting.set({
+				type: this.state.type,
+				imageUrl: this.state.imageUrl,
+				focusPoint: this.state.focusPoint,
+				colorValue: this.state.colorValue,
+				overlayColorValue: this.state.overlayColorValue,
+				overlayOpacity: this.state.overlayOpacity
+			});
+		}, 200);
 	}
 }
 
