@@ -1,7 +1,7 @@
+/* jshint esversion: 6 */
 import PropTypes from 'prop-types';
 import NeveColorPicker from '../common/NeveColorPicker.js';
 
-const ALLOWED_MEDIA_TYPES = ['audio'];
 const { __ } = wp.i18n;
 const {
 	Component,
@@ -22,15 +22,14 @@ const {
 
 class BackgroundComponent extends Component {
 	constructor(props) {
-		props.control.focus();
 		super(props);
 		let value = props.control.setting.get();
 		this.state = {
 			type: value.type || 'color',
 			imageUrl: value.imageUrl || '',
 			focusPoint: value.focusPoint || { x: 0.5, y: 0.5 },
-			colorValue: value.colorValue || '',
-			overlayColorValue: value.overlayColorValue || '',
+			colorValue: value.colorValue || '#ffffff',
+			overlayColorValue: value.overlayColorValue || '#000000',
 			overlayOpacity: value.overlayOpacity || 50,
 			fixed: value.fixed || false
 		};
@@ -145,15 +144,10 @@ class BackgroundComponent extends Component {
 	updateSetting() {
 		setTimeout(() => {
 			this.props.control.setting.set({
-				type: this.state.type,
-				imageUrl: this.state.imageUrl,
-				focusPoint: this.state.focusPoint,
-				colorValue: this.state.colorValue,
-				overlayColorValue: this.state.overlayColorValue,
-				overlayOpacity: this.state.overlayOpacity,
-				fixed: this.state.fixed
+				...this.props.control.setting.get(),
+				...this.state
 			});
-		}, 1);
+		}, 500);
 	}
 }
 

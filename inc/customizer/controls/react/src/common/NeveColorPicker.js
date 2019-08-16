@@ -1,3 +1,4 @@
+/* jshint esversion: 6 */
 import PropTypes from 'prop-types';
 
 const {

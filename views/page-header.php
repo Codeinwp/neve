@@ -6,8 +6,6 @@
  */
 ?>
 <div class="nv-page-title-wrap <?php echo esc_attr( $args['wrap-class'] ); ?>">
-	<?php var_dump( get_theme_mod( 'toggle-test', true ) ); ?>
-	<?php var_dump( get_theme_mod( 'background-test' ) ); ?>
 	<div class="nv-page-title <?php echo esc_attr( $args['class'] ); ?>">
 		<?php do_action( 'neve_before_page_title' ); ?>
 		<h1><?php echo wp_kses_post( html_entity_decode( $args['string'] ) ); ?></h1>

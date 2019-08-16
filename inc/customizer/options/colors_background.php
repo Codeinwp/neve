@@ -25,41 +25,48 @@ class Colors_Background extends Base_Customizer {
 	 *
 	 * @return void
 	 */
-
 	public function add_controls() {
 		$this->section_colors_background();
 		$this->controls_colors();
 
-		$this->add_control( new Control( 'background-test',
-			array(
-				'default'           => array(
-					'type'                => 'color',
-					'imageUrl'           => '',
-					'colorValue'         => '#cecece',
-					'overlayColorValue' => '#fefefe',
+		$this->add_control(
+			new Control(
+				'background-test',
+				array(
+					'default'           => array(
+						'type'              => 'color',
+						'imageUrl'          => '',
+						'colorValue'        => '#cecece',
+						'overlayColorValue' => '#fefefe',
+					),
+					'sanitize_callback' => function ( $value ) {
+						return $value;
+					},
 				),
-				'sanitize_callback' => function ( $value ) {
-					return $value;
-				},
-			),
-			array(
-				'type'    => 'neve_background_control',
-				'section' => 'neve_colors_background_section',
-				'label'   => 'Business address',
-			) ) );
+				array(
+					'type'    => 'neve_background_control',
+					'section' => 'neve_colors_background_section',
+					'label'   => 'Business address',
+				)
+			)
+		);
 
-		$this->add_control( new Control( 'toggle-test',
-			array(
-				'default'           => true,
-				'sanitize_callback' => function ( $value ) {
-					return $value;
-				},
-			),
-			array(
-				'type'    => 'neve_toggle_control',
-				'section' => 'neve_colors_background_section',
-				'label'   => 'Toggle Background',
-			) ) );
+		$this->add_control(
+			new Control(
+				'toggle-test',
+				array(
+					'default'           => true,
+					'sanitize_callback' => function ( $value ) {
+						return $value;
+					},
+				),
+				array(
+					'type'    => 'neve_toggle_control',
+					'section' => 'neve_colors_background_section',
+					'label'   => 'Toggle Background',
+				)
+			)
+		);
 	}
 
 	/**
@@ -137,7 +144,7 @@ class Colors_Background extends Base_Customizer {
 			$control           = $this->get_customizer_object( 'control', $control_slug );
 			$control->priority = $priority;
 			$control->section  = 'neve_colors_background_section';
-			$priority          += 5;
+			$priority         += 5;
 		}
 	}
 }

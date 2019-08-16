@@ -1,3 +1,4 @@
+/* jshint esversion: 6 */
 import ToggleComponent from './ToggleComponent.js';
 
 export const ToggleControl = wp.customize.Control.extend( {

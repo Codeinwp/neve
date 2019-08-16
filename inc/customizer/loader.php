@@ -52,18 +52,18 @@ class Loader {
 		$this->customizer_modules = apply_filters(
 			'neve_filter_customizer_modules',
 			array(
-//				'Customizer\Options\Main',
-//				'Customizer\Options\Layout_Container',
-//				'Customizer\Options\Layout_Blog',
-//				'Customizer\Options\Layout_Single_Post',
-//				'Customizer\Options\Layout_Single_Product',
-//				'Customizer\Options\Layout_Sidebar',
-//				'Customizer\Options\Top_Bar',
-//				'Customizer\Options\Typography',
+				'Customizer\Options\Main',
+				'Customizer\Options\Layout_Container',
+				'Customizer\Options\Layout_Blog',
+				'Customizer\Options\Layout_Single_Post',
+				'Customizer\Options\Layout_Single_Product',
+				'Customizer\Options\Layout_Sidebar',
+				'Customizer\Options\Top_Bar',
+				'Customizer\Options\Typography',
 				'Customizer\Options\Colors_Background',
-//				'Customizer\Options\Buttons',
-//				'Customizer\Options\Rtl',
-//				'Customizer\Options\Upsells',
+				'Customizer\Options\Buttons',
+				'Customizer\Options\Rtl',
+				'Customizer\Options\Upsells',
 			)
 		);
 	}
@@ -88,10 +88,13 @@ class Loader {
 			true
 		);
 
-		$react_dependencies = array( 'lodash', 'wp-api', 'wp-i18n', 'wp-blocks', 'wp-components', 'wp-compose', 'wp-data', 'wp-editor', 'wp-edit-post', 'wp-element', 'wp-keycodes', 'wp-plugins', 'wp-rich-text', 'wp-url', 'wp-viewport' );
-
-
-		wp_enqueue_script( 'react-controls', get_template_directory_uri() . '/inc/customizer/controls/react/dist/controls.js', $react_dependencies, NEVE_VERSION, true );
+		$editor_dependencies = array(
+			'wp-i18n',
+			'wp-components',
+			'wp-edit-post',
+			'wp-element',
+		);
+		wp_enqueue_script( 'react-controls', get_template_directory_uri() . '/inc/customizer/controls/react/dist/controls.js', $editor_dependencies, NEVE_VERSION, true );
 		wp_enqueue_style( 'react-controls', get_template_directory_uri() . '/inc/customizer/controls/react/dist/controls.css', array( 'wp-components' ), NEVE_VERSION );
 	}
 

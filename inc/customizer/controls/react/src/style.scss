@@ -1,16 +1,22 @@
 .customize-control-neve_background_control {
   margin-bottom: 20px;
+
   .control--top-toolbar {
     .neve-background-type-control button.components-button {
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
     }
   }
+
   .remove-image {
     align-items: center;
     width: 100%;
-  
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
   }
+
   .control--body {
     border: 1px solid #ccc;
     border-bottom-left-radius: 3px;
@@ -28,7 +34,9 @@
     .components-focal-point-picker-wrapper {
       width: auto;
       height: auto;
-      padding: 0;
+      padding: 10px;
+      border-radius: 3px;
+      background-color: #ededed;
     }
   }
 
@@ -40,20 +48,33 @@
   .components-placeholder {
     width: auto;
     min-height: 150px;
+    border-radius: 3px;
+    background-color: #ededed;
+    border: 1px solid #e2e4e7;
   }
 
   .components-focal-point-picker_position-display-container {
     margin: 0;
+
     .components-base-control {
       margin-bottom: 0;
       width: 50%;
+
       .components-base-control__field {
         margin: 0;
       }
     }
+
     label {
       margin-top: 10px;
     }
+  }
+
+  .components-toggle-control__label {
+    margin: 0 !important;
+  }
+  .components-toggle-control {
+    margin: 20px 0 25px;
   }
 }
 

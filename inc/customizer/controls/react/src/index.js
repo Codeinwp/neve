@@ -1,3 +1,4 @@
+/* jshint esversion: 6 */
 /* global wp */
 import {ToggleControl} from './toggle/Control.js';
 import {BackgroundControl} from './background/Control.js';
