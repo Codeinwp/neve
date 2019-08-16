@@ -1,63 +1,79 @@
 .customize-control-neve_background_control {
-	margin-bottom: 20px;
-	.control--top-toolbar {
-		.neve-background-type-control button.components-button {
-			border-bottom-left-radius: 0;
-			border-bottom-right-radius: 0;
-		}
-	}
+  margin-bottom: 20px;
+  .control--top-toolbar {
+    .neve-background-type-control button.components-button {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+  .remove-image {
+    align-items: center;
+    width: 100%;
+  
+  }
+  .control--body {
+    border: 1px solid #ccc;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    background: #fff;
+    border-top: none;
+    padding: 15px;
 
-	.control--body {
-		border: 1px solid #ccc;
-		border-bottom-left-radius: 3px;
-		border-bottom-right-radius: 3px;
-		background: #fff;
-		border-top: none;
-		padding: 15px;
+    label {
+      display: block;
+      margin: 20px 0 10px;
+      font-weight: 500;
+    }
 
-		label {
-			display: block;
-			margin: 20px 0 10px;
-			font-weight: 500;
+    .components-focal-point-picker-wrapper {
+      width: auto;
+      height: auto;
+      padding: 0;
+    }
+  }
 
-		}
+  input.components-range-control__number {
+    width: 20%;
+    margin-left: 20px;
+  }
 
-		.components-focal-point-picker-wrapper {
-			width: auto;
-			height: auto;
-		}
+  .components-placeholder {
+    width: auto;
+    min-height: 150px;
+  }
 
-	}
-
-
-	input.components-range-control__number {
-		width: 20%;
-		margin-left: 20px;
-	}
-
-	.components-placeholder {
-		width: auto;
-		min-height: 150px;
-	}
+  .components-focal-point-picker_position-display-container {
+    margin: 0;
+    .components-base-control {
+      margin-bottom: 0;
+      width: 50%;
+      .components-base-control__field {
+        margin: 0;
+      }
+    }
+    label {
+      margin-top: 10px;
+    }
+  }
 }
 
 .neve-background-type-control {
-	width: 100%;
+  width: 100%;
 
-	button {
-		width: 50%;
-		justify-content: center;
-	}
+  button {
+    width: 50%;
+    justify-content: center;
+  }
 }
 
 .neve-colorpicker-wrap:first-child {
-	label {
-		margin-top: 0;
-	}
+  label {
+    margin-top: 0;
+  }
 }
 
 .neve-open-popover {
-	width: 100%;
-	box-shadow: none !important;
-	border: 0.5px solid #cecece !important;
+  width: 100%;
+  box-shadow: none !important;
+  border: 0.5px solid #cecece !important;
 }
