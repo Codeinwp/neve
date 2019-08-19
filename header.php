@@ -39,29 +39,6 @@ $header_classes = apply_filters( 'nv_header_classes', 'header' );
 	</header>
 	<?php do_action( 'neve_before_primary' ); ?>
 
-	<?php 
-	$data          = get_theme_mod( 'background-test', false );
-	$style         = '';
-	$overlay_style = '';
-	if ( isset( $data['type'] ) ) {
-		if ( $data['type'] === 'color' ) {
-			$style .= 'background-color: ' . $data['colorValue'] . ';';
-		}
-
-		if ( $data['type'] === 'image' ) {
-			$style .= 'background-image: url(' . esc_url( $data['imageUrl'] ) . ');';
-			$style .= 'background-position:' . $data['focusPoint']['x'] * 100 . '%' . $data['focusPoint']['y'] * 100 . '%;';
-			$style .= $data['fixed'] === true ? 'background-attachment: fixed;' : '';
-			$style .= 'background-size: cover;';
-		}
-	}
-
-	?>
-	<div class="container-fluid">
-		<pre style="<?php echo wp_kses_post( $style ); ?>">
-			<?php print_r( $data ); ?>
-		</pre>
-	</div>
 	<main id="content" class="neve-main" role="main">
 
 <?php

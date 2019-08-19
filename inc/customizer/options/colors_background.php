@@ -28,45 +28,6 @@ class Colors_Background extends Base_Customizer {
 	public function add_controls() {
 		$this->section_colors_background();
 		$this->controls_colors();
-
-		$this->add_control(
-			new Control(
-				'background-test',
-				array(
-					'default'           => array(
-						'type'              => 'color',
-						'imageUrl'          => '',
-						'colorValue'        => '#cecece',
-						'overlayColorValue' => '#fefefe',
-					),
-					'sanitize_callback' => function ( $value ) {
-						return $value;
-					},
-				),
-				array(
-					'type'    => 'neve_background_control',
-					'section' => 'neve_colors_background_section',
-					'label'   => 'Business address',
-				)
-			)
-		);
-
-		$this->add_control(
-			new Control(
-				'toggle-test',
-				array(
-					'default'           => true,
-					'sanitize_callback' => function ( $value ) {
-						return $value;
-					},
-				),
-				array(
-					'type'    => 'neve_toggle_control',
-					'section' => 'neve_colors_background_section',
-					'label'   => 'Toggle Background',
-				)
-			)
-		);
 	}
 
 	/**
