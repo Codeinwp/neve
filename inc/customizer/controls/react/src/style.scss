@@ -12,6 +12,7 @@
     align-items: center;
     width: 100%;
     text-decoration: none;
+
     &:hover {
       text-decoration: underline;
     }
@@ -73,6 +74,7 @@
   .components-toggle-control__label {
     margin: 0 !important;
   }
+
   .components-toggle-control {
     margin: 20px 0 25px;
   }
@@ -87,9 +89,20 @@
   }
 }
 
-.neve-colorpicker-wrap:first-child {
-  label {
-    margin-top: 0;
+.neve-colorpicker-wrap {
+  .components-color-picker__inputs-toggle {
+    display: none;
+  }
+  .components-base-control__label{
+    font-weight: 600 !important;
+  }
+  .components-color-picker__inputs-fields, .components-color-picker__inputs-field {
+    width: 100%;
+  }
+  &:first-child {
+    label {
+      margin-top: 0;
+    }
   }
 }
 

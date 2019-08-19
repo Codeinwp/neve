@@ -334,20 +334,26 @@ abstract class Abstract_Builder implements Builder {
 		if ( isset( $this->default_colors[ $this->get_id() ][ $row_id ] ) && ! empty( $this->default_colors[ $this->get_id() ][ $row_id ] ) ) {
 			$default_color = $this->default_colors[ $this->get_id() ][ $row_id ];
 		}
+
+		$previous      = get_theme_mod( $this->control_id . '_' . $row_id . '_color' );
+		$default_color = ! empty( $previous ) ? $previous : $default_color;
 		SettingsManager::get_instance()->add(
 			[
-				'id'                => 'color',
+				'id'                => 'background',
 				'group'             => $row_setting_id,
 				'tab'               => SettingsManager::TAB_STYLE,
 				'section'           => $row_setting_id,
-				'label'             => __( 'Row color', 'neve' ),
-				'type'              => 'WP_Customize_Color_Control',
+				'label'             => __( 'Row Background', 'neve' ),
+				'type'              => 'neve_background_control',
 				'options'           => [
 					'priority' => 100,
 				],
 				'transport'         => 'post' . $row_setting_id,
-				'sanitize_callback' => 'neve_sanitize_colors',
-				'default'           => $default_color,
+				'sanitize_callback' => 'neve_sanitize_background',
+				'default'           => [
+					'type'       => 'color',
+					'colorValue' => $default_color,
+				],
 			]
 		);
 
@@ -688,19 +694,53 @@ abstract class Abstract_Builder implements Builder {
 		if ( isset( $this->default_colors[ $this->get_id() ][ $row_index ] ) && ! empty( $this->default_colors[ $this->get_id() ][ $row_index ] ) ) {
 			$default_color = $this->default_colors[ $this->get_id() ][ $row_index ];
 		}
-		$color = get_theme_mod( $this->control_id . '_' . $row_index . '_color', $default_color );
+		$previous   = get_theme_mod( $this->control_id . '_' . $row_index . '_color', $default_color );
+		$background = get_theme_mod(
+			$this->control_id . '_' . $row_index . '_background',
+			[
+				'type'       => 'color',
+				'colorValue' => ! empty( $previous ) ? $previous : $default_color,
+			]
+		);
 
-		if ( $color !== $default_color ) {
-			$css_array[ $selector ]                 = array(
-				'background-color' => $color,
-			);
-			$css_array[ $selector . '.dark-mode' ]  = array(
-				'background-color' => $color,
-			);
-			$css_array[ $selector . '.light-mode' ] = array(
-				'background-color' => $color,
-			);
+		$css_setup = [];
+
+		if ( $background['type'] === 'color' && ! empty( $background['colorValue'] ) && $background['colorValue'] !== $default_color ) {
+			$css_setup['background-color'] = $background['colorValue'];
 		}
+
+		if ( $background['type'] === 'image' ) {
+			if ( ! empty( $background['imageUrl'] ) ) {
+				$css_setup['background-image'] = 'url("' . esc_url( $background['imageUrl'] ) . '")';
+				$css_setup['background-size']  = 'cover';
+			}
+
+			if ( ! empty( $background['focusPoint'] ) &&
+			! empty( $background['focusPoint']['x'] ) &&
+			! empty( $background['focusPoint']['y'] ) ) {
+				$css_setup['background-position'] = round( $background['focusPoint']['x'] * 100 ) . '% ' . round( $background['focusPoint']['y'] * 100 ) . '%';
+			}
+
+			if ( $background['fixed'] === true ) {
+				$css_setup['background-attachment'] = 'fixed';
+			}
+
+			if ( ! empty( $background['overlayColorValue'] ) &&
+			! empty( $background['overlayOpacity'] ) ) {
+				$css_array[ $selector . ':after' ]      = array(
+					'background-color' => $background['overlayColorValue'],
+					'opacity'          => $background['overlayOpacity'] / 100,
+					'content'          => '""',
+					'position'         => 'absolute',
+					'top'              => '0',
+					'bottom'           => '0',
+					'width'            => '100%',
+				);
+				$css_array[ $selector ]                 = array( 'position' => 'relative' );
+				$css_array[ $selector . '>.container' ] = array( 'z-index' => 1 );
+			}
+		}
+		$css_array[ $selector . ',' . $selector . '.dark-mode,' . $selector . '.light-mode' ] = $css_setup;
 
 		$css_array = apply_filters( 'neve_row_style', $css_array, $this->control_id, $this->get_id(), $row_index, $selector );
 
