@@ -1,15 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="150px" height="150px" viewBox="0 0 150 150" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
-    <title>text_mode_dark</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-40.000000, -416.000000)">
-        <g id="text_mode_dark" transform="translate(40.000000, 416.000000)">
-            <rect id="wrapper" stroke="#0085BA" x="0.5" y="0.5" width="149" height="149" rx="6"></rect>
-            <text id="Text" font-family="AvenirNext-Medium, Avenir Next" font-size="48" font-weight="400" fill="#222222">
-                <tspan x="30.476" y="86">Text</tspan>
-            </text>
-        </g>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="150" height="60" viewBox="0 0 150 60"><defs><style>.a{isolation:isolate;}.b{fill:#fff;}.c{fill:#222;}</style></defs><title>lightsvg</title><g class="a"><rect class="b" width="150" height="60"/><g class="a"><path class="c" d="M35,48H27.69V19.81h-9.3v-6H44.26v6H35Z"/><path class="c" d="M69.27,48H49.53V13.77H69.27v5.95H56.8v7.52H68.4v6H56.8V42H69.27Z"/><path class="c" d="M104.12,48h-8.3l-8-13-8,13H72.1L83.47,30.36,72.83,13.77h8l7.38,12.32,7.24-12.32h7.83l-10.76,17Z"/><path class="c" d="M121.65,48h-7.26V19.81h-9.31v-6H131v6h-9.31Z"/></g></g></svg>
