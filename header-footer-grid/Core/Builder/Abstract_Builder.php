@@ -26,9 +26,10 @@ use WP_Customize_Manager;
  */
 abstract class Abstract_Builder implements Builder {
 	use Core;
-	const LAYOUT_SETTING = 'layout';
-	const HEIGHT_SETTING = 'height';
-	const SKIN_SETTING   = 'skin';
+	const LAYOUT_SETTING     = 'layout';
+	const HEIGHT_SETTING     = 'height';
+	const SKIN_SETTING       = 'skin';
+	const BACKGROUND_SETTING = 'background';
 	/**
 	 * Internal pointer for current device id.
 	 *
@@ -145,7 +146,7 @@ abstract class Abstract_Builder implements Builder {
 		),
 		'footer'      => array(
 			'top'    => '#ffffff',
-			'bottom' => '#ffffff',
+			'bottom' => '#24292e',
 		),
 		'page_header' => array(
 			'top'    => '#ffffff',
@@ -334,23 +335,41 @@ abstract class Abstract_Builder implements Builder {
 		if ( isset( $this->default_colors[ $this->get_id() ][ $row_id ] ) && ! empty( $this->default_colors[ $this->get_id() ][ $row_id ] ) ) {
 			$default_color = $this->default_colors[ $this->get_id() ][ $row_id ];
 		}
-
-		$previous      = get_theme_mod( $this->control_id . '_' . $row_id . '_color' );
+		$old_skin = get_theme_mod( $row_setting_id . '_' . self::SKIN_SETTING );
+		if ( ! empty( $old_skin ) ) {
+			$default_color = $old_skin === 'dark-mode' ? '#24292e' : '#ffffff';
+		}
+		$previous      = get_theme_mod( $row_setting_id . '_color' );
 		$default_color = ! empty( $previous ) ? $previous : $default_color;
+
+		$row_class = '.' . join(
+			'-',
+			array(
+				$this->get_id(),
+				$row_id,
+				'inner',
+			)
+		);
+
+		if ( $row_id === 'sidebar' ) {
+			$row_class = '.header-menu-sidebar-bg';
+		}
+
 		SettingsManager::get_instance()->add(
 			[
-				'id'                => 'background',
-				'group'             => $row_setting_id,
-				'tab'               => SettingsManager::TAB_STYLE,
-				'section'           => $row_setting_id,
-				'label'             => __( 'Row Background', 'neve' ),
-				'type'              => 'neve_background_control',
-				'options'           => [
+				'id'                    => self::BACKGROUND_SETTING,
+				'group'                 => $row_setting_id,
+				'tab'                   => SettingsManager::TAB_STYLE,
+				'section'               => $row_setting_id,
+				'label'                 => __( 'Row Background', 'neve' ),
+				'type'                  => 'neve_background_control',
+				'live_refresh_selector' => $row_class,
+				'options'               => [
 					'priority' => 100,
 				],
-				'transport'         => 'post' . $row_setting_id,
-				'sanitize_callback' => 'neve_sanitize_background',
-				'default'           => [
+				'transport'             => 'postMessage',
+				'sanitize_callback'     => 'neve_sanitize_background',
+				'default'               => [
 					'type'       => 'color',
 					'colorValue' => $default_color,
 				],
@@ -688,8 +707,10 @@ abstract class Abstract_Builder implements Builder {
 		}
 
 		if ( $row_index === 'sidebar' ) {
-			$selector = '.header-menu-sidebar.dark-mode .header-menu-sidebar-bg:before, .header-menu-sidebar.light-mode .header-menu-sidebar-bg:before';
+			$selector = '.header-menu-sidebar-bg';
 		}
+
+		$selector      = '.hfg_header:not(.neve-transparent-header) ' . $selector;
 		$default_color = '#ffffff';
 		if ( isset( $this->default_colors[ $this->get_id() ][ $row_index ] ) && ! empty( $this->default_colors[ $this->get_id() ][ $row_index ] ) ) {
 			$default_color = $this->default_colors[ $this->get_id() ][ $row_index ];
@@ -716,8 +737,8 @@ abstract class Abstract_Builder implements Builder {
 			}
 
 			if ( ! empty( $background['focusPoint'] ) &&
-			! empty( $background['focusPoint']['x'] ) &&
-			! empty( $background['focusPoint']['y'] ) ) {
+				! empty( $background['focusPoint']['x'] ) &&
+				! empty( $background['focusPoint']['y'] ) ) {
 				$css_setup['background-position'] = round( $background['focusPoint']['x'] * 100 ) . '% ' . round( $background['focusPoint']['y'] * 100 ) . '%';
 			}
 
@@ -725,9 +746,9 @@ abstract class Abstract_Builder implements Builder {
 				$css_setup['background-attachment'] = 'fixed';
 			}
 
-			if ( ! empty( $background['overlayColorValue'] ) &&
-			! empty( $background['overlayOpacity'] ) ) {
-				$css_array[ $selector . ':after' ]      = array(
+
+			if ( ! empty( $background['overlayColorValue'] ) && ! empty( $background['overlayOpacity'] ) ) {
+				$css_array[ $selector . ':before' ] = array(
 					'background-color' => $background['overlayColorValue'],
 					'opacity'          => $background['overlayOpacity'] / 100,
 					'content'          => '""',
@@ -736,12 +757,13 @@ abstract class Abstract_Builder implements Builder {
 					'bottom'           => '0',
 					'width'            => '100%',
 				);
-				$css_array[ $selector ]                 = array( 'position' => 'relative' );
-				$css_array[ $selector . '>.container' ] = array( 'z-index' => 1 );
 			}
+			$css_array[ $selector . ',' . $selector . '.dark-mode,' . $selector . '.light-mode' ] = array(
+				'background-color' => 'transparent',
+			);
 		}
-		$css_array[ $selector . ',' . $selector . '.dark-mode,' . $selector . '.light-mode' ] = $css_setup;
 
+		$css_array[ $selector . ',' . $selector . '.dark-mode,' . $selector . '.light-mode' ] = $css_setup;
 		$css_array = apply_filters( 'neve_row_style', $css_array, $this->control_id, $this->get_id(), $row_index, $selector );
 
 		return $css_array;

@@ -168,7 +168,7 @@ class Manager {
 		}
 
 		$args = array(
-			'priority' => -100,
+			'priority' => - 100,
 			'section'  => $section,
 			'tabs'     => array(
 				self::TAB_GENERAL => array(
@@ -329,6 +329,26 @@ class Manager {
 				}
 				self::$tabs[ $arguments['group'] ][ $arguments['tab'] ][ $id ] = array();
 			}
+		}
+
+		if ( isset( $arguments['live_refresh_selector'] ) ) {
+			add_filter(
+				'neve_hfg_preview_localization_filter',
+				function ( $array ) use ( $arguments ) {
+					if ( ! isset( $array[ $arguments['type'] ] ) ) {
+						$array[ $arguments['type'] ] = [];
+					}
+					$args = [
+						'selector' => $arguments['live_refresh_selector'],
+					];
+					if ( isset( $arguments['live_refresh_css_prop'] ) ) {
+						$args['cssProp'] = $arguments['live_refresh_css_prop'];
+					}
+					$array[ $arguments['type'] ][ $arguments['group'] . '_' . $arguments['id'] ] = $args;
+
+					return $array;
+				} 
+			);
 		}
 
 

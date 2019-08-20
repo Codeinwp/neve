@@ -35,11 +35,6 @@ class BackgroundComponent extends Component {
 		};
 	}
 
-	componentWillMount() {
-		document.querySelector(
-				this.props.control.selector ).style.display = 'block';
-	}
-
 	getButtons() {
 		let types = ['color', 'image'],
 				labels = { 'color': __( 'Color' ), 'image': __( 'Image' ) },
@@ -160,7 +155,7 @@ class BackgroundComponent extends Component {
 				...this.props.control.setting.get(),
 				...this.state
 			} );
-		}, 500 );
+		}, 100 );
 	}
 }
 

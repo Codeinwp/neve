@@ -122,6 +122,8 @@ class Loader {
 			NEVE_VERSION,
 			true
 		);
+		wp_localize_script( 'neve-hfg-customizer-preview', 'neveHFGPreview', apply_filters( 'neve_hfg_preview_localization_filter', array() ) );
+		wp_enqueue_script( 'neve-hfg-customizer-preview' );
 	}
 
 	/**

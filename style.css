@@ -2391,6 +2391,7 @@ audio {
 .page_header--row .page_header--row-inner .container .row {
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .page_header--row.layout-fullwidth .page_header--row-inner .container {
@@ -2406,6 +2407,7 @@ audio {
 .header--row .header--row-inner .container .row {
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .header--row.layout-fullwidth .header--row-inner .container {
@@ -2421,6 +2423,7 @@ audio {
 .footer--row .footer--row-inner .container .row {
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .footer--row.layout-fullwidth .footer--row-inner .container {
