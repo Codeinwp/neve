@@ -1,4 +1,5 @@
 /* global neveHFGPreview */
+/* jshint esversion: 6 */
 function addCss(id, content = '') {
 	let style = document.querySelector( '#' + id + '-css-style' );
 	if ( !style ) {
