@@ -539,4 +539,11 @@ Starter Sites screenshots resources:
 * https://stocksnap.io/photo/GEVAEIZQH1
 * https://stocksnap.io/photo/UXZ782X55D
 
+- TheMotion
+* http://mystock.themeisle.com/photo/code-in-wp/
+* http://mystock.themeisle.com/photo/empty-beach-2/
+* http://mystock.themeisle.com/photo/traffic-sign/
+* http://mystock.themeisle.com/photo/android/
+
+
 

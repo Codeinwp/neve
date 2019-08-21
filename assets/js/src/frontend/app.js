@@ -16,7 +16,7 @@ function onResizeDebouncedRun () {
 /**
  * Run JS on load.
  */
-window.addEventListener('DOMContentLoaded', function () {
+window.addEventListener('load', function () {
   run();
 });
 
