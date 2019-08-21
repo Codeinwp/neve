@@ -342,12 +342,12 @@ class Manager {
 						'selector' => $arguments['live_refresh_selector'],
 					];
 					if ( isset( $arguments['live_refresh_css_prop'] ) ) {
-						$args['cssProp'] = $arguments['live_refresh_css_prop'];
+						$args['additional'] = $arguments['live_refresh_css_prop'];
 					}
 					$array[ $arguments['type'] ][ $arguments['group'] . '_' . $arguments['id'] ] = $args;
 
 					return $array;
-				} 
+				}
 			);
 		}
 

@@ -1,5 +1,7 @@
 /* global neveHFGPreview */
 /* jshint esversion: 6 */
+import { removeClass, addClass } from '../utils.js';
+
 function addCss(id, content = '') {
 	let style = document.querySelector( '#' + id + '-css-style' );
 	if ( !style ) {
@@ -98,6 +100,27 @@ window.addEventListener( 'load', function() {
 									'!important;}';
 							style += args.selector +
 									'{ background-color: transparent !important; }';
+							addCss( settingId, style );
+							break;
+						case '\\Neve\\Customizer\\Controls\\Radio_Image':
+							let elements = document.querySelectorAll( args.selector );
+							removeClass( elements, 'dark-mode light-mode' );
+							addClass( elements, newValue );
+							break;
+						case '\\Neve\\Customizer\\Controls\\Range':
+							let value = JSON.parse( newValue );
+							if ( value.mobile > 0 ) {
+								style += '@media (max-width: 576px) { body ' + args.selector + '{ ' + args.additional.prop +':' +
+										value.mobile + args.additional.unit + ';}}';
+							}
+							if ( value.tablet > 0 ) {
+								style += '@media (min-width: 576px) { body ' + args.selector + '{ ' + args.additional.prop +':' +
+										value.tablet + args.additional.unit + ';}}';
+							}
+							if ( value.desktop > 0 ) {
+								style += '@media (min-width: 961px) { body ' + args.selector + '{ ' + args.additional.prop +':' +
+										value.desktop + args.additional.unit + ';}}';
+							}
 							addCss( settingId, style );
 							break;
 					}

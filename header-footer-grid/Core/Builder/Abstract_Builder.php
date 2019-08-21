@@ -241,6 +241,17 @@ abstract class Abstract_Builder implements Builder {
 	public function define_row_settings( $row_id ) {
 
 		$row_setting_id = $this->control_id . '_' . $row_id;
+		$row_class      = '.' . join(
+			'-',
+			array(
+				$this->get_id(),
+				$row_id,
+				'inner',
+			)
+		);
+		if ( $row_id === 'sidebar' ) {
+			$row_class = '.header-menu-sidebar-bg';
+		}
 
 		SettingsManager::get_instance()->add(
 			[
@@ -296,13 +307,18 @@ abstract class Abstract_Builder implements Builder {
 			);
 			SettingsManager::get_instance()->add(
 				[
-					'id'                => self::HEIGHT_SETTING,
-					'group'             => $row_setting_id,
-					'tab'               => SettingsManager::TAB_STYLE,
-					'section'           => $row_setting_id,
-					'label'             => __( 'Row height (px)', 'neve' ),
-					'type'              => '\Neve\Customizer\Controls\Range',
-					'options'           => [
+					'id'                    => self::HEIGHT_SETTING,
+					'group'                 => $row_setting_id,
+					'tab'                   => SettingsManager::TAB_STYLE,
+					'section'               => $row_setting_id,
+					'label'                 => __( 'Row height (px)', 'neve' ),
+					'type'                  => '\Neve\Customizer\Controls\Range',
+					'live_refresh_selector' => $row_class,
+					'live_refresh_css_prop' => array(
+						'prop' => 'height',
+						'unit' => 'px',
+					),
+					'options'               => [
 						'type'        => 'range-value',
 						'media_query' => true,
 						'step'        => 1,
@@ -324,9 +340,9 @@ abstract class Abstract_Builder implements Builder {
 							],
 						],
 					],
-					'transport'         => 'post' . $row_setting_id,
-					'sanitize_callback' => array( $this, 'sanitize_responsive_int_json' ),
-					'default'           => '{ "mobile": "0", "tablet": "0", "desktop": "0" }',
+					'transport'             => 'postMessage',
+					'sanitize_callback'     => array( $this, 'sanitize_responsive_int_json' ),
+					'default'               => '{ "mobile": "0", "tablet": "0", "desktop": "0" }',
 				]
 			);
 		}
@@ -341,19 +357,6 @@ abstract class Abstract_Builder implements Builder {
 		}
 		$previous      = get_theme_mod( $row_setting_id . '_color' );
 		$default_color = ! empty( $previous ) ? $previous : $default_color;
-
-		$row_class = '.' . join(
-			'-',
-			array(
-				$this->get_id(),
-				$row_id,
-				'inner',
-			)
-		);
-
-		if ( $row_id === 'sidebar' ) {
-			$row_class = '.header-menu-sidebar-bg';
-		}
 
 		SettingsManager::get_instance()->add(
 			[
@@ -380,13 +383,13 @@ abstract class Abstract_Builder implements Builder {
 
 		SettingsManager::get_instance()->add(
 			[
-				'id'                => self::SKIN_SETTING,
-				'group'             => $row_setting_id,
-				'tab'               => SettingsManager::TAB_STYLE,
-				'label'             => __( 'Skin Mode', 'neve' ),
-				'section'           => $row_setting_id,
-				'type'              => '\Neve\Customizer\Controls\Radio_Image',
-				'options'           => [
+				'id'                    => self::SKIN_SETTING,
+				'group'                 => $row_setting_id,
+				'tab'                   => SettingsManager::TAB_STYLE,
+				'label'                 => __( 'Skin Mode', 'neve' ),
+				'section'               => $row_setting_id,
+				'type'                  => '\Neve\Customizer\Controls\Radio_Image',
+				'options'               => [
 					'choices' => [
 						'light-mode' => array(
 							'url'  => Settings\Config::get_url() . '/assets/images/customizer/text_mode_dark.svg',
@@ -398,9 +401,10 @@ abstract class Abstract_Builder implements Builder {
 						),
 					],
 				],
-				'transport'         => 'post' . $row_setting_id,
-				'sanitize_callback' => 'wp_filter_nohtml_kses',
-				'default'           => 'light-mode',
+				'transport'             => 'postMessage',
+				'live_refresh_selector' => $row_class,
+				'sanitize_callback'     => 'wp_filter_nohtml_kses',
+				'default'               => 'light-mode',
 			]
 		);
 
