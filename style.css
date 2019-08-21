@@ -602,10 +602,6 @@ blockquote.wp-block-quote.is-style-large cite {
   opacity: .9;
 }
 
-.menu-opened {
-  overflow: hidden;
-}
-
 .nv-navbar {
   background-color: #fff;
   max-height: 100vh;
@@ -2072,9 +2068,6 @@ audio {
   }
   .neve-main > .container > .row {
     flex-wrap: nowrap;
-  }
-  .menu-opened {
-    overflow: inherit;
   }
   .row .nv-nav-wrap {
     flex-direction: row;
