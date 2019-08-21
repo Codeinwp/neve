@@ -1,6 +1,5 @@
 /* jshint esversion: 6 */
 import PropTypes from 'prop-types';
-import NeveColorPicker from '../common/NeveColorPicker.js';
 
 const { __ } = wp.i18n;
 const {
@@ -17,6 +16,7 @@ const {
 	RangeControl,
 	FocalPointPicker,
 	Dashicon,
+	ColorPalette,
 	ToggleControl
 } = wp.components;
 
@@ -59,10 +59,20 @@ class BackgroundComponent extends Component {
 
 	render() {
 		let self = this;
+
+		const colors = [
+			{ name: 'black', color: '#000000' },
+			{ name: 'white', color: '#ffffff' },
+			{ name: 'red', color: '#cc433c' },
+			{ name: 'orange', color: '#d39b48' },
+			{ name: 'green', color: '#95d45a' },
+			{ name: 'blue', color: '#3972b8' },
+		];
+
 		return (
 				<Fragment>
 					{this.props.control.params.label && <span
-							class="customize-control-title">{this.props.control.params.label}</span>}
+							className="customize-control-title">{this.props.control.params.label}</span>}
 					<div className="control--top-toolbar">
 						<ButtonGroup className="neve-background-type-control">
 							{this.getButtons()}
@@ -70,13 +80,14 @@ class BackgroundComponent extends Component {
 					</div>
 					<div className="control--body">
 						{this.state.type === 'color' &&
-						<NeveColorPicker
-								label={__( 'Background Color' )}
-								colorChangeCallback={(value) => {
-									self.setState( { colorValue: value.hex } );
+						<ColorPalette
+								colors={colors}
+								value={this.state.colorValue}
+								onChange={(colorValue) => {
+									self.setState( { colorValue } );
 									self.updateSetting();
 								}}
-								colorValue={this.state.colorValue}/>
+						/>
 						}
 						{this.state.type === 'image' &&
 						<Fragment>
@@ -125,13 +136,17 @@ class BackgroundComponent extends Component {
 										this.updateSetting();
 									}}
 							/>
-							<NeveColorPicker
-									label={__( 'Overlay Color' )}
-									colorChangeCallback={(value) => {
-										self.setState( { overlayColorValue: value.hex } );
+							<span className="customize-control-title">{
+								__( 'Overlay Color' )
+							}</span>
+							<ColorPalette
+									colors={colors}
+									value={this.state.overlayColorValue}
+									onChange={(overlayColorValue) => {
+										self.setState( { overlayColorValue } );
 										self.updateSetting();
 									}}
-									colorValue={this.state.overlayColorValue}/>
+							/>
 							<RangeControl
 									label={__( 'Overlay Opacity' )}
 									value={this.state.overlayOpacity}

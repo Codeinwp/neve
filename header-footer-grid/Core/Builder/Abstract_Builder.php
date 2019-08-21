@@ -710,7 +710,7 @@ abstract class Abstract_Builder implements Builder {
 			$selector = '.header-menu-sidebar-bg';
 		}
 
-		if( $this->get_id() === 'header' ) {
+		if ( $this->get_id() === 'header' ) {
 			$selector = '.hfg_header:not(.neve-transparent-header) ' . $selector;
 		}
 

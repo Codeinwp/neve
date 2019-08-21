@@ -1,6 +1,16 @@
 .customize-control-neve_background_control {
   margin-bottom: 20px;
 
+  .components-color-palette__item-wrapper {
+    margin-right: 12px;
+  }
+  .components-color-palette__item-wrapper:hover {
+    transform: scale(1.1);
+  }
+  .components-color-palette__item:focus:after {
+    content:none;
+  }
+
   .control--top-toolbar {
     .neve-background-type-control button.components-button {
       border-bottom-left-radius: 0;
@@ -87,27 +97,4 @@
     width: 50%;
     justify-content: center;
   }
-}
-
-.neve-colorpicker-wrap {
-  .components-color-picker__inputs-toggle {
-    display: none;
-  }
-  .components-base-control__label{
-    font-weight: 600 !important;
-  }
-  .components-color-picker__inputs-fields, .components-color-picker__inputs-field {
-    width: 100%;
-  }
-  &:first-child {
-    label {
-      margin-top: 0;
-    }
-  }
-}
-
-.neve-open-popover {
-  width: 100%;
-  box-shadow: none !important;
-  border: 0.5px solid #cecece !important;
 }
