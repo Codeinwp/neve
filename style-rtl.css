@@ -2380,7 +2380,7 @@ audio {
   margin-bottom: 4px;
 }
 
-@media screen and (min-width: 960px) {
+@media (min-width: 960px) {
   .builder-item {
     margin-top: 8px;
     margin-bottom: 8px;
@@ -3159,21 +3159,21 @@ body.menu_sidebar_slide_left.menu_sidebar_dropdown:before {
   display: flex;
 }
 
-@media screen and (min-width: 960px) {
+@media (min-width: 960px) {
   .hide-on-desktop,
   .hfg-grid .hide-on-desktop {
     display: none;
   }
 }
 
-@media screen and (max-width: 959px) {
+@media (max-width: 959px) {
   .hide-on-tablet,
   .hfg-grid .hide-on-tablet {
     display: none;
   }
 }
 
-@media screen and (max-width: 576px) {
+@media (max-width: 576px) {
   .hide-on-mobile,
   .hfg-grid .hide-on-mobile {
     display: none;
