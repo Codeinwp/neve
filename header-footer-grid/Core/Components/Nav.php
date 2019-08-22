@@ -254,7 +254,7 @@ class Nav extends Abstract_Component {
 	 */
 	public function add_style( array $css_array = array() ) {
 		$color    = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::COLOR_ID );
-		$selector = '.builder-item--' . $this->get_id() . ' > .nv-nav-wrap > .nav-menu-primary > ul.primary-menu-ul ';
+		$selector = '.builder-item--' . $this->get_id() . ' .nav-menu-primary > .primary-menu-ul ';
 		if ( ! empty( $color ) ) {
 			$css_array[ $selector . 'li:not(.woocommerce-mini-cart-item) > a, 
 			' . $selector . 'li > a .caret-wrap .caret' ] = array( 'color' => sanitize_hex_color( $color ) );
