@@ -715,7 +715,7 @@ abstract class Abstract_Builder implements Builder {
 		}
 
 		if ( $this->get_id() === 'header' ) {
-			$selector = '.hfg_header:not(.neve-transparent-header) ' . $selector;
+			$selector = '.hfg_header ' . $selector;
 		}
 
 		$default_color = '#ffffff';
