@@ -180,7 +180,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	public static function fallback() {
 		$fallback_args = array(
 			'depth'      => - 1,
-			'menu_id'    => 'nv-primary-navigation',
+			'menu_id'    => 'nv-primary-navigation' . '-' . \HFG\current_row( \HFG\Core\Builder\Header::BUILDER_NAME ),
 			'menu_class' => 'primary-menu-ul',
 			'container'  => 'ul',
 			'before'     => '',
