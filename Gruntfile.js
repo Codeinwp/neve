@@ -18,6 +18,7 @@ module.exports = function(grunt) {
 
 	config.files.php.push( '!**/node_modules/**/*' );
 	config.files.php.push( '!**/vendor/**/*' );
+	config.files.php.push( '!dist/**/*' );
 
 	config.files.css.push( '!**/vendor/**/*' );
 	//Task mapping.
