@@ -1,4 +1,14 @@
- ### v2.3.22 - 2019-08-02 
+
+ ### v2.4.0 - 2019-08-14 
+ **Changes:** 
+ * Fix issue with standard fonts not loading
+* Fix compatibility with Async loading of javascript files
+* Fix issue with page title on pages built with Elementor
+* Adds individual line-height option
+* Adds breadcrumbs compatibility with Yoast, Seopress, Rankmath and NavXT
+* Performance improvements to the codebase, optimize CSS/JS file loading
+* Adds 5 more starter sites
+  ### v2.3.22 - 2019-08-02 
  **Changes:** 
  * Speed updates for the Starter Sites Library
  

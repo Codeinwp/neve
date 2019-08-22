@@ -29,6 +29,15 @@ function neve_run() {
 	}
 
 	if ( class_exists( '\\Neve_Pro\\Core\\Loader' ) ) {
+		/**
+		 * Legacy code, compatibility with old pro version.
+		 */
+		if ( is_file( NEVE_PRO_SPL_ROOT . 'modules/header_footer_grid/components/Yoast_Breadcrumbs.php' ) ) {
+			require_once NEVE_PRO_SPL_ROOT . 'modules/header_footer_grid/components/Yoast_Breadcrumbs.php';
+		}
+		if ( is_file( NEVE_PRO_SPL_ROOT . 'modules/header_footer_grid/components/Language_Switcher.php' ) ) {
+			require_once NEVE_PRO_SPL_ROOT . 'modules/header_footer_grid/components/Language_Switcher.php';
+		}
 		\Neve_Pro\Core\Loader::instance();
 	}
 }
