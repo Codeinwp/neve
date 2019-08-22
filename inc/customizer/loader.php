@@ -94,8 +94,8 @@ class Loader {
 			'wp-edit-post',
 			'wp-element',
 		);
-		wp_enqueue_script( 'react-controls', get_template_directory_uri() . '/inc/customizer/controls/react/dist/controls.js', $editor_dependencies, NEVE_VERSION, true );
-		wp_enqueue_style( 'react-controls', get_template_directory_uri() . '/inc/customizer/controls/react/dist/controls.css', array( 'wp-components' ), NEVE_VERSION );
+		wp_enqueue_script( 'react-controls', get_template_directory_uri() . '/inc/customizer/controls/react/bundle/controls.js', $editor_dependencies, NEVE_VERSION, true );
+		wp_enqueue_style( 'react-controls', get_template_directory_uri() . '/inc/customizer/controls/react/bundle/controls.css', array( 'wp-components' ), NEVE_VERSION );
 	}
 
 	/**

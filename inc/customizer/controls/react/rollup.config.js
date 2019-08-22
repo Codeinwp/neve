@@ -9,7 +9,7 @@ export default [
 	{
 		input: 'src/index.js',
 		output: {
-			file: 'dist/controls.js',
+			file: 'bundle/controls.js',
 			format: 'iife',
 			sourceMap: 'inline'
 		},
