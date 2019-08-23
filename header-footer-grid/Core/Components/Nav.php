@@ -114,6 +114,21 @@ class Nav extends Abstract_Component {
 			]
 		);
 
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'                => 'typeface',
+				'group'             => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'               => SettingsManager::TAB_STYLE,
+				'transport'         => 'postMessage',
+//				'sanitize_callback' => 'sanitize_hex_color',
+				'default'           => [],
+				'label'             => __( 'Typeface', 'neve' ),
+				'type'              => 'neve_typeface_control',
+				'section'           => $this->section,
+			]
+		);
+
 		SettingsManager::get_instance()->add(
 			[
 				'id'                => self::COLOR_ID,
@@ -275,7 +290,6 @@ class Nav extends Abstract_Component {
 
 		return parent::add_style( $css_array );
 	}
-
 
 	/**
 	 * Map last menu item from select type control to ordering control.
