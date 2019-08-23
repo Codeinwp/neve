@@ -1,11 +1,9 @@
 .nv-loader {
   height: 50px;
   width: 50px;
-  margin-bottom: 25px;
   border-radius: 50%;
   border: 2px solid $button_color;
   border-left: 1px solid transparent !important;
-  animation: spin;
   -webkit-animation:spin 1s ease infinite;
   -moz-animation:spin 1s ease infinite;
   animation:spin 1s ease infinite;

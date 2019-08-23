@@ -223,7 +223,7 @@ class Header extends Base_View {
 	 * @return string;
 	 */
 	public function add_fallback_last_menu_items( $menu, $args ) {
-		if ( $args['menu_id'] !== 'nv-primary-navigation' ) {
+		if ( strpos( $args['menu_id'], 'nv-primary-navigation' ) === false ) {
 			return $menu;
 		}
 
