@@ -13,7 +13,8 @@ const { withInstanceId } = wp.compose;
 
 const {
 	Popover,
-	Button
+	Button,
+	TextControl
 } = wp.components;
 
 const {
@@ -27,8 +28,9 @@ class GoogleFontsControl extends Component {
 
 		this.state = {
 			fonts: null,
-			selected: null,
+			value: '',
 			isVisible: false,
+			filteredFonts: [],
 			search: ''
 		};
 	}
@@ -46,32 +48,42 @@ class GoogleFontsControl extends Component {
 	}
 
 	getFonts() {
+		console.log(this.state.fonts);
 		let controls = [],
 				self = this;
 		this.state.fonts && Object.keys( this.state.fonts ).forEach( function(key) {
-			// console.log( key, self.state.fonts[key] );
-			controls.push( {
-				name: key,
-				variants: self.state.fonts[key].variants || null
-
-			} );
+			if ( !self.state.search || key.toLowerCase().
+					includes( self.state.search.toLowerCase() ) ) {
+				controls.push( {
+					name: key,
+					variants: self.state.fonts[key].variants
+				} );
+			}
 		} );
 
-		return controls;
+		return controls || [];
 	}
 
 	getFontList() {
 		let controls = this.getFonts(),
-				options = [];
+				options = [],
+				self = this;
 
 		controls.map( (item) => {
 			let style = {
-				fontFamily: item.name
+				fontFamily: item.name + ', sans-serif'
 			};
+			console.log(item);
+			let link = document.createElement( 'link' );
+			link.setAttribute( 'rel', 'https://fonts.googleapis.com/css?family='+ item.name +'&text=' + item.name );
+			link.setAttribute( 'id', item.name );
+
+			console.log(link);
 			options.push( <li>
 				<a
 						style={style}
-						onClick={() => {
+						onClick={(e) => {
+							e.stopPropagation();
 							self.setState(
 									{ selected: item, dropdownOpen: false } );
 						}}>
@@ -79,7 +91,18 @@ class GoogleFontsControl extends Component {
 				</a></li> );
 		} );
 
-		return <ul>{options}</ul>;
+		return (
+				<Fragment>
+					<TextControl
+							value={this.state.search}
+							onChange={e => this.setState( { search: e } )}
+					/>
+					<ul>
+						{options.length && options ||
+						<li>{__( 'No fonts found for your search.' )}</li>}
+					</ul>
+				</Fragment>
+		);
 	}
 
 	render() {
@@ -94,6 +117,7 @@ class GoogleFontsControl extends Component {
 						{__( 'Font Family' )}
 						{this.state.isVisible && (
 								<Popover
+										noArrow
 										onClickOutside={() => this.setState( { isVisible: false } )}
 								>
 									{this.state.fonts && this.getFontList() || __( 'Loading...' )}
