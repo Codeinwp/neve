@@ -602,10 +602,6 @@ blockquote.wp-block-quote.is-style-large cite {
   opacity: .9;
 }
 
-.menu-opened {
-  overflow: hidden;
-}
-
 .nv-navbar {
   background-color: #fff;
   max-height: 100vh;
@@ -1288,11 +1284,9 @@ article {
 .nv-loader {
   height: 50px;
   width: 50px;
-  margin-bottom: 25px;
   border-radius: 50%;
   border: 2px solid #0366d6;
   border-right: 1px solid transparent !important;
-  animation: spin;
   -webkit-animation: spin 1s ease infinite;
   -moz-animation: spin 1s ease infinite;
   animation: spin 1s ease infinite;
@@ -2073,9 +2067,6 @@ audio {
   .neve-main > .container > .row {
     flex-wrap: nowrap;
   }
-  .menu-opened {
-    overflow: inherit;
-  }
   .row .nv-nav-wrap {
     flex-direction: row;
     align-items: center;
@@ -2380,7 +2371,7 @@ audio {
   margin-bottom: 4px;
 }
 
-@media screen and (min-width: 960px) {
+@media (min-width: 960px) {
   .builder-item {
     margin-top: 8px;
     margin-bottom: 8px;
@@ -3162,21 +3153,21 @@ body.menu_sidebar_slide_left.menu_sidebar_dropdown:before {
   display: flex;
 }
 
-@media screen and (min-width: 960px) {
+@media (min-width: 960px) {
   .hide-on-desktop,
   .hfg-grid .hide-on-desktop {
     display: none;
   }
 }
 
-@media screen and (max-width: 959px) {
+@media (max-width: 959px) {
   .hide-on-tablet,
   .hfg-grid .hide-on-tablet {
     display: none;
   }
 }
 
-@media screen and (max-width: 576px) {
+@media (max-width: 576px) {
   .hide-on-mobile,
   .hfg-grid .hide-on-mobile {
     display: none;

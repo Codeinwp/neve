@@ -161,20 +161,19 @@ class Header extends Base_View {
 
 		if ( $responsive === false ) {
 			ob_start();
-			echo '<div class="nv-nav-cart">';
-			do_action( 'neve_before_cart_popup' );
 			the_widget(
 				'WC_Widget_Cart',
 				array(
-					'title' => ' ',
+					'title'         => ' ',
+					'hide_if_empty' => true,
 				),
 				array(
-					'before_title' => '',
-					'after_title'  => '',
+					'before_widget' => $this->before_cart_popup(),
+					'after_widget'  => $this->after_cart_popup(),
+					'before_title'  => '',
+					'after_title'   => '',
 				)
 			);
-			do_action( 'neve_after_cart_popup' );
-			echo '</div>';
 			$cart_widget = ob_get_contents();
 			ob_end_clean();
 			$cart .= $cart_widget;
@@ -185,6 +184,37 @@ class Header extends Base_View {
 	}
 
 	/**
+	 * Markup before cart popup widget in header.
+	 *
+	 * @return string
+	 */
+	private function before_cart_popup() {
+		ob_start();
+		echo '<div class="nv-nav-cart widget">';
+		echo '<div class="widget woocommerce widget_shopping_cart">';
+		do_action( 'neve_before_cart_popup' );
+		$markup = ob_get_contents();
+		ob_end_clean();
+		return $markup;
+	}
+
+	/**
+	 * Markup after cart popup widget in header.
+	 *
+	 * @return string
+	 */
+	private function after_cart_popup() {
+		ob_start();
+		do_action( 'neve_after_cart_popup' );
+		echo '</div>';
+		echo '</div>';
+		$markup = ob_get_contents();
+		ob_end_clean();
+		return $markup;
+	}
+
+
+	/**
 	 * Add last menu items to fallback menu.
 	 *
 	 * @param string $menu the menu markup.
@@ -193,7 +223,7 @@ class Header extends Base_View {
 	 * @return string;
 	 */
 	public function add_fallback_last_menu_items( $menu, $args ) {
-		if ( $args['menu_id'] !== 'nv-primary-navigation' ) {
+		if ( strpos( $args['menu_id'], 'nv-primary-navigation' ) === false ) {
 			return $menu;
 		}
 

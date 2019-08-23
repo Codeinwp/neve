@@ -17,6 +17,7 @@
 	-ms-flex-pack: center;
 	-webkit-justify-content: center;
 	justify-content: center;
+	z-index: 1;
 }
 
 .ti-order-sortable li.enabled {
