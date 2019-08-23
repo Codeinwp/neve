@@ -18,10 +18,23 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
+### 2.4.0 - 2019-08-14  ###
+
+* Fix issue with standard fonts not loading
+* Fix compatibility with Async loading of javascript files
+* Fix issue with page title on pages built with Elementor
+* Adds individual line-height option
+* Adds breadcrumbs compatibility with Yoast, Seopress, Rankmath and NavXT
+* Performance improvements to the codebase, optimize CSS/JS file loading
+* Adds 5 more starter sites
+
+
+
 ### 2.3.22 - 2019-08-02  ###
 
 * Speed updates for the Starter Sites Library
 
+ 
 ### 2.3.21 - 2019-07-30  ###
 
 * [Feat] Color options for each header and footer rows
