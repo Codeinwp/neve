@@ -134,12 +134,14 @@ class Front_End {
 			'lawyeria-lite'  => 'neve-lawyer',
 			'lawyeria'       => 'neve-lawyer',
 		);
-		if ( array_key_exists( $previous_theme, $slug_association ) ) {
-			$starter_slug = $slug_association[ $previous_theme ];
-			$this->put_starter_site_first( $starter_slug );
-			return true;
+		if ( ! array_key_exists( $previous_theme, $slug_association ) ) {
+			return false;
 		}
-		return false;
+
+		$starter_slug = $slug_association[ $previous_theme ];
+		$this->put_starter_site_first( $starter_slug );
+
+		return true;
 	}
 
 	/**
