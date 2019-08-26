@@ -37,7 +37,7 @@ class BackgroundComponent extends Component {
 
 	getButtons() {
 		let types = ['color', 'image'],
-				labels = { 'color': __( 'Color' ), 'image': __( 'Image' ) },
+				labels = { 'color': __( 'Color', 'neve' ), 'image': __( 'Image', 'neve' ) },
 				buttons = [],
 				self = this;
 		types.map( function(type) {
@@ -94,9 +94,9 @@ class BackgroundComponent extends Component {
 							{!this.state.imageUrl && <MediaPlaceholder
 									icon="format-image"
 									labels={{
-										title: __( 'Image' ),
+										title: __( 'Image', 'neve' ),
 										instructions: __(
-												'Select from the Media Library or upload a new image' )
+												'Select from the Media Library or upload a new image', 'neve' )
 									}}
 									onSelect={(imageData) => {
 										this.setState( { imageUrl: imageData.url } );
@@ -129,7 +129,7 @@ class BackgroundComponent extends Component {
 										}}/>
 							</Fragment>}
 							<ToggleControl
-									label={__( 'Fixed Background' )}
+									label={__( 'Fixed Background', 'neve' )}
 									checked={this.state.fixed}
 									onChange={(fixed) => {
 										this.setState( { fixed: fixed } );
@@ -137,7 +137,7 @@ class BackgroundComponent extends Component {
 									}}
 							/>
 							<span className="customize-control-title">{
-								__( 'Overlay Color' )
+								__( 'Overlay Color', 'neve' )
 							}</span>
 							<ColorPalette
 									colors={colors}
@@ -148,7 +148,7 @@ class BackgroundComponent extends Component {
 									}}
 							/>
 							<RangeControl
-									label={__( 'Overlay Opacity' )}
+									label={__( 'Overlay Opacity', 'neve' )}
 									value={this.state.overlayOpacity}
 									onChange={(overlayOpacity) => {
 										this.setState( { overlayOpacity } );
