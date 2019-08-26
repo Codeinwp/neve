@@ -15,31 +15,31 @@
 // Mobile first responsive
 @mixin mq($media) {
   @if $media == min-xs {
-    @media screen and (min-width: $screen_xs) { @content; }
+    @media (min-width: $screen_xs) { @content; }
   }
   @else if $media == max-xs {
-    @media screen and (max-width: $screen_xs) { @content; }
+    @media (max-width: $screen_xs) { @content; }
   }
 
   @if $media == min-sm {
-    @media screen and (min-width: $screen_sm) { @content; }
+    @media (min-width: $screen_sm) { @content; }
   }
   @else if $media == max-sm {
-    @media screen and (max-width: $screen_sm) { @content; }
+    @media (max-width: $screen_sm) { @content; }
   }
 
   @else if $media == min-md {
-    @media screen and (min-width: $screen_md) { @content; }
+    @media (min-width: $screen_md) { @content; }
   }
   @else if $media == max-md {
-    @media screen and (max-width: $screen_md) { @content; }
+    @media (max-width: $screen_md) { @content; }
   }
 
   @else if $media == min-lg {
-    @media screen and (min-width: $screen_lg) { @content; }
+    @media (min-width: $screen_lg) { @content; }
   }
   @else if $media == max-lg {
-    @media screen and (max-width: $screen_lg) { @content; }
+    @media (max-width: $screen_lg) { @content; }
   }
 }
 

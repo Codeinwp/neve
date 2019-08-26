@@ -55,6 +55,7 @@ jobs:
       script:
         - ./bin/run-unit-tests.sh
     - php: 7.0
+      if: repo = env(UPSTREAM_REPO)
       name: "Blackfire tests"
       env: WP_VERSION=latest
       script:
@@ -109,4 +110,4 @@ stages:
   - name: test
     if: type = "pull_request"
   - name: qa
-    if: type = "pull_request" and head_branch="development"
+    if: type = "pull_request" and head_branch="development" and repo = env(UPSTREAM_REPO)

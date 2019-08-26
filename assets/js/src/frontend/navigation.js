@@ -98,7 +98,6 @@ function handleSearch() {
 			e.stopPropagation();
 			toggleClass( searchItem, 'active' );
 			searchItem.querySelector( '.search-field' ).focus();
-			addClass( html, 'menu-opened' );
 			if ( !isMobile() ) {
 				createNavOverlay( searchItem, 'active' );
 			}
@@ -121,7 +120,6 @@ function handleSearch() {
 			if ( overlay === null )
 				return;
 			overlay.parentNode.removeChild( overlay );
-			removeClass( html, 'menu-opened' );
 		} );
 	} );
 }
