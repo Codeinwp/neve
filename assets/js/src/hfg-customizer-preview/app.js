@@ -113,14 +113,23 @@ window.addEventListener( 'load', function() {
 							if ( value.mobile > 0 ) {
 								style += '@media (max-width: 576px) { body ' + args.selector + '{ ' + args.additional.prop +':' +
 										value.mobile + args.additional.unit + ';}}';
+							} else {
+								style += '@media (max-width: 576px) { body ' + args.selector +
+										'{ ' + args.additional.prop + ':unset;}}';
 							}
 							if ( value.tablet > 0 ) {
 								style += '@media (min-width: 576px) { body ' + args.selector + '{ ' + args.additional.prop +':' +
 										value.tablet + args.additional.unit + ';}}';
+							} else {
+								style += '@media (min-width: 576px) { body ' + args.selector +
+										'{ ' + args.additional.prop + ':unset;}}';
 							}
 							if ( value.desktop > 0 ) {
 								style += '@media (min-width: 961px) { body ' + args.selector + '{ ' + args.additional.prop +':' +
 										value.desktop + args.additional.unit + ';}}';
+							} else {
+								style += '@media (min-width: 961px) { body ' + args.selector +
+										'{ ' + args.additional.prop + ':unset;}}';
 							}
 							addCss( settingId, style );
 							break;
