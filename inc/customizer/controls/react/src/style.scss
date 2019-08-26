@@ -1,6 +1,15 @@
 .customize-control-neve_background_control {
   margin-bottom: 20px;
-
+  .color-preview {
+    width: 20px;
+    border-radius: 3px;
+    border:1px solid #767676;
+    height: 15px;
+    left: 3px;
+    top: -20px;
+    float: left;
+    position: relative;
+  }
   .components-color-palette__item-wrapper {
     margin-right: 12px;
     span {
@@ -8,7 +17,7 @@
     }
   }
   .components-color-palette__item-wrapper:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
   }
   .components-color-palette__item:focus:after {
     content:none;

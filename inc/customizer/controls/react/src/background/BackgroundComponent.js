@@ -37,7 +37,10 @@ class BackgroundComponent extends Component {
 
 	getButtons() {
 		let types = ['color', 'image'],
-				labels = { 'color': __( 'Color', 'neve' ), 'image': __( 'Image', 'neve' ) },
+				labels = {
+					'color': __( 'Color', 'neve' ),
+					'image': __( 'Image', 'neve' )
+				},
 				buttons = [],
 				self = this;
 		types.map( function(type) {
@@ -66,7 +69,7 @@ class BackgroundComponent extends Component {
 			{ name: 'red', color: '#cc433c' },
 			{ name: 'orange', color: '#d39b48' },
 			{ name: 'green', color: '#95d45a' },
-			{ name: 'blue', color: '#3972b8' },
+			{ name: 'blue', color: '#3972b8' }
 		];
 
 		return (
@@ -80,7 +83,7 @@ class BackgroundComponent extends Component {
 					</div>
 					<div className="control--body">
 						{this.state.type === 'color' &&
-						<ColorPalette
+						<Fragment><ColorPalette
 								colors={colors}
 								value={this.state.colorValue}
 								onChange={(colorValue) => {
@@ -88,6 +91,11 @@ class BackgroundComponent extends Component {
 									self.updateSetting();
 								}}
 						/>
+							<div
+									className="color-preview"
+									style={{ backgroundColor: this.state.colorValue }}>
+							</div>
+						</Fragment>
 						}
 						{this.state.type === 'image' &&
 						<Fragment>
@@ -96,7 +104,8 @@ class BackgroundComponent extends Component {
 									labels={{
 										title: __( 'Image', 'neve' ),
 										instructions: __(
-												'Select from the Media Library or upload a new image', 'neve' )
+												'Select from the Media Library or upload a new image',
+												'neve' )
 									}}
 									onSelect={(imageData) => {
 										this.setState( { imageUrl: imageData.url } );
@@ -147,6 +156,10 @@ class BackgroundComponent extends Component {
 										self.updateSetting();
 									}}
 							/>
+							<div
+									className="color-preview"
+									style={{ backgroundColor: this.state.overlayColorValue }}>
+							</div>
 							<RangeControl
 									label={__( 'Overlay Opacity', 'neve' )}
 									value={this.state.overlayOpacity}

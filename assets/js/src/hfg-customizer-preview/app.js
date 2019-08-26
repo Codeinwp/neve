@@ -67,9 +67,9 @@ window.addEventListener( 'load', function() {
 							if ( newValue.type === 'color' ) {
 								style += 'body ' + args.selector + '{' +
 										'background-image: none !important;}';
-
+								let color = newValue.colorValue !== 'undefined' ? newValue.colorValue : 'inherit';
 								style += 'body ' + args.selector + '{' +
-										'background-color: ' + newValue.colorValue +
+										'background-color: ' + color +
 										' !important; }';
 								style += args.selector + ':before{ content: none !important; }';
 								addCss( settingId, style );
@@ -91,10 +91,11 @@ window.addEventListener( 'load', function() {
 							style += 'background-size: cover !important;';
 							style += 'position: absolute; top: 0; bottom: 0; width: 100%; content:"";';
 							style += '}';
+							let color = newValue.overlayColorValue !== 'undefined' ? newValue.overlayColorValue : 'inherit';
 							style += args.selector + ':before { ' +
 									'content: "";' +
 									'position: absolute; top: 0; bottom: 0; width: 100%;' +
-									'background-color: ' + newValue.overlayColorValue +
+									'background-color: ' + color +
 									' !important;' +
 									'opacity: ' + ( newValue.overlayOpacity / 100 ) +
 									'!important;}';
