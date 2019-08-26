@@ -322,9 +322,10 @@ abstract class Abstract_Component implements Component {
 					'mobile-unit'  => 'px',
 				),
 				'label'             => __( 'Padding', 'neve' ),
-				'type'              => '\HFG\Core\Customizer\SpacingControl',
+				'type'              => 'neve_spacing',
+				'linked_choices' => true,
+				'unit_choices'   => array( 'px', 'em', '%' ),
 				'options'           => [
-					'linked_choices' => true,
 					'unit_choices'   => array( 'px', 'em', '%' ),
 					'choices'        => array(
 						'top'    => __( 'Top', 'neve' ),
@@ -522,6 +523,7 @@ abstract class Abstract_Component implements Component {
 	public function add_style( array $css_array = array() ) {
 		$layout_padding = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::PADDING_ID, null );
 		$selector       = '.builder-item--' . $this->get_id() . ' > :not(.customize-partial-edit-shortcut):first-of-type';
+
 		if ( $this->default_selector !== null ) {
 			$selector = $this->default_selector;
 		}
