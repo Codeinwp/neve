@@ -108,6 +108,7 @@ function neve_sanitize_font_weight( $value ) {
 
 	return $value;
 }
+
 /**
  * Sanitize font weight values.
  *
@@ -120,6 +121,25 @@ function neve_sanitize_text_transform( $value ) {
 
 	if ( ! in_array( $value, $allowed, true ) ) {
 		return 'none';
+	}
+
+	return $value;
+}
+
+/**
+ * Sanitize the background control.
+ *
+ * @param array $value input value.
+ *
+ * @return WP_Error | array
+ */
+function neve_sanitize_background( $value ) {
+	if ( ! is_array( $value ) ) {
+		return new WP_Error();
+	}
+
+	if ( ! isset( $value['type'] ) || ! in_array( $value['type'], array( 'image', 'color' ), true ) ) {
+		return new WP_Error();
 	}
 
 	return $value;
