@@ -165,6 +165,7 @@ abstract class Abstract_Component implements Component {
 	 *
 	 * @since   1.0.0
 	 * @access  protected
+	 *
 	 * @param string $const Name of the constant.
 	 *
 	 * @return mixed
@@ -173,6 +174,7 @@ abstract class Abstract_Component implements Component {
 		if ( defined( 'static::' . $const ) ) {
 			return constant( 'static::' . $const );
 		}
+
 		return '';
 	}
 
@@ -180,7 +182,7 @@ abstract class Abstract_Component implements Component {
 	 * Method to filter component loading if needed.
 	 *
 	 * @since   1.0.1
-	 * @access public
+	 * @access  public
 	 * @return bool
 	 */
 	public function is_active() {
@@ -324,9 +326,10 @@ abstract class Abstract_Component implements Component {
 				'label'             => __( 'Padding', 'neve' ),
 				'type'              => '\HFG\Core\Customizer\SpacingControl',
 				'options'           => [
-					'linked_choices' => true,
-					'unit_choices'   => array( 'px', 'em', '%' ),
-					'choices'        => array(
+					'hide_responsive_switches' => true,
+					'linked_choices'           => true,
+					'unit_choices'             => array( 'px', 'em', '%' ),
+					'choices'                  => array(
 						'top'    => __( 'Top', 'neve' ),
 						'right'  => __( 'Right', 'neve' ),
 						'bottom' => __( 'Bottom', 'neve' ),
@@ -370,9 +373,10 @@ abstract class Abstract_Component implements Component {
 				'label'             => __( 'Margin', 'neve' ),
 				'type'              => '\HFG\Core\Customizer\SpacingControl',
 				'options'           => [
-					'linked_choices' => true,
-					'unit_choices'   => array( 'px', 'em', '%' ),
-					'choices'        => array(
+					'hide_responsive_switches' => true,
+					'linked_choices'           => true,
+					'unit_choices'             => array( 'px', 'em', '%' ),
+					'choices'                  => array(
 						'top'    => __( 'Top', 'neve' ),
 						'right'  => __( 'Right', 'neve' ),
 						'bottom' => __( 'Bottom', 'neve' ),
@@ -457,12 +461,13 @@ abstract class Abstract_Component implements Component {
 	 *
 	 * @since   1.0.1
 	 * @access  protected
+	 *
 	 * @param string $target CSS target property ( margin | padding ).
-	 * @param string $top Top value.
-	 * @param string $right Right value.
+	 * @param string $top    Top value.
+	 * @param string $right  Right value.
 	 * @param string $bottom Bottom value.
-	 * @param string $left Left value.
-	 * @param string $unit Unit to use ( px | em | % ).
+	 * @param string $left   Left value.
+	 * @param string $unit   Unit to use ( px | em | % ).
 	 *
 	 * @return array
 	 */
@@ -478,6 +483,7 @@ abstract class Abstract_Component implements Component {
 				$result[ $target . '-' . $pos ] = $value . $unit;
 			}
 		}
+
 		return $result;
 	}
 
@@ -486,10 +492,11 @@ abstract class Abstract_Component implements Component {
 	 *
 	 * @since   1.0.1
 	 * @access  protected
-	 * @param array  $css_array The css array.
+	 *
+	 * @param array  $css_array       The css array.
 	 * @param array  $position_values The position values array.
-	 * @param string $selector The item selector.
-	 * @param string $type The type to generate ( margin | padding ).
+	 * @param string $selector        The item selector.
+	 * @param string $type            The type to generate ( margin | padding ).
 	 *
 	 * @return mixed
 	 */
@@ -507,6 +514,7 @@ abstract class Abstract_Component implements Component {
 				$css_array[ $media_selector ][ $selector ] = array_merge( $css_array[ $media_selector ][ $selector ], $position_filter );
 			}
 		}
+
 		return $css_array;
 	}
 

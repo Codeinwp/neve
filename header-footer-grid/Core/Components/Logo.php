@@ -106,10 +106,11 @@ class Logo extends Abstract_Component {
 				'label'             => __( 'Logo max width (px)', 'neve' ),
 				'type'              => '\Neve\Customizer\Controls\Range',
 				'options'           => [
-					'type'        => 'range-value',
-					'media_query' => true,
-					'step'        => 1,
-					'input_attr'  => [
+					'type'                     => 'range-value',
+					'hide_responsive_switches' => true,
+					'media_query'              => true,
+					'step'                     => 1,
+					'input_attr'               => [
 						'mobile'  => [
 							'min'     => 0,
 							'max'     => 350,
