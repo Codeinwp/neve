@@ -2,6 +2,8 @@
   margin-bottom: 20px; }
   .customize-control-neve_background_control .components-color-palette__item-wrapper {
     margin-right: 12px; }
+    .customize-control-neve_background_control .components-color-palette__item-wrapper span {
+      display: none !important; }
   .customize-control-neve_background_control .components-color-palette__item-wrapper:hover {
     transform: scale(1.1); }
   .customize-control-neve_background_control .components-color-palette__item:focus:after {
