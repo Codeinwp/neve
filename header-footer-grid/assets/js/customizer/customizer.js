@@ -197,7 +197,7 @@
 		// for custom when click on preview
 		$document.on(
 				'click',
-				'.builder-item-focus .item--preview-name',
+				'.builder-item-focus .item--preview-name, .builder-item-focus .edit-row-action',
 				function(e) {
 					e.preventDefault();
 					var p = $( this ).closest( '.builder-item-focus' );
