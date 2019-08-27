@@ -1,10 +1,4 @@
 import PropTypes from 'prop-types';
-import SizingControl from './Sizing';
-
-/**
- * WordPress dependencies
- */
-
 
 const { __ } = wp.i18n;
 const {
@@ -24,10 +18,7 @@ class ResponsiveControl extends Component {
 		this.state = {
 			view: 'desktop'
 		};
-	}
-
-	componentHasMounted() {
-		this.setState( { view: wp.customize.previewedDevice() } );
+		this.linkResponsiveButtons();
 	}
 
 	render() {
@@ -39,13 +30,13 @@ class ResponsiveControl extends Component {
 						<span
 								className="customize-control-title">{this.props.controlLabel}</span>
 						}
-						<div className="floating-controls">
+						{false && <div className="floating-controls">
 							<Dropdown
 									position="top left"
 									renderToggle={({ isOpen, onToggle }) => (
 											<IconButton
 													icon={'mobile' === view ? 'smartphone' : view}
-													label={__( 'Responsiveness Settings' )}
+													label={__( 'Responsiveness Settings', 'neve' )}
 													className="is-button"
 													onClick={onToggle}
 													aria-expanded={isOpen}
@@ -58,12 +49,11 @@ class ResponsiveControl extends Component {
 														onClick={() => {
 															onToggle();
 															this.changeViewType( 'desktop' );
-															this.props.onChange( 'desktop' );
 														}}
 												>
 													<Dashicon icon="desktop"/>
 													<span className="popover-title">
-											{__( 'Desktop' )}
+											{__( 'Desktop', 'neve' )}
 										</span>
 												</Button>
 
@@ -72,12 +62,11 @@ class ResponsiveControl extends Component {
 														onClick={() => {
 															onToggle();
 															this.changeViewType( 'tablet' );
-															this.props.onChange( 'tablet' );
 														}}
 												>
 													<Dashicon icon="tablet"/>
 													<span className="popover-title">
-											{__( 'Tablet Devices' )}
+											{__( 'Tablet Devices', 'neve' )}
 										</span>
 												</Button>
 
@@ -86,18 +75,17 @@ class ResponsiveControl extends Component {
 														onClick={() => {
 															onToggle();
 															this.changeViewType( 'mobile' );
-															this.props.onChange( 'mobile' );
 														}}
 												>
 													<Dashicon icon="smartphone"/>
 													<span className="popover-title">
-											{__( 'Smartphones' )}
+											{__( 'Smartphones', 'neve' )}
 										</span>
 												</Button>
 											</div>
 									)}
 							/>
-						</div>
+						</div> }
 					</div>
 					{this.props.children}
 				</Fragment>
@@ -107,6 +95,14 @@ class ResponsiveControl extends Component {
 	changeViewType(device) {
 		this.setState( { view: device } );
 		wp.customize.previewedDevice( device );
+		this.props.onChange( device );
+	}
+
+	linkResponsiveButtons() {
+		let self = this;
+		document.addEventListener( 'neveChangedRepsonsivePreview', function(e) {
+			self.changeViewType( e.detail );
+		} );
 	}
 }
 

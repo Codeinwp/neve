@@ -8,44 +8,126 @@ const {
 	Component,
 	Fragment
 } = wp.element;
+const {
+	ButtonGroup,
+	Button,
+	Dashicon
+} = wp.components;
+const {
+	mapValues
+} = lodash;
 
 class SpacingComponent extends Component {
 	constructor(props) {
 		super( props );
-		console.log(props.control.setting);
+		let value = props.control.setting.get();
 		this.state = {
-			value: props.control.setting.get(),
-			linked: false,
-			device: 'desktop'
+			value,
+			linked: true,
+			currentDevice: 'desktop'
 		};
 	}
 
 	render() {
-		console.log( this.state.value );
-		const options = [
-			{ 'label': 'top' },
-			{ 'label': 'right' },
-			{ 'label': 'bottom' },
-			{ 'label': 'left' }
+		let options = [
+			{
+				'type': 'top',
+				'value': this.state.value[this.state.currentDevice]['top']
+			},
+			{
+				'type': 'right',
+				'value': this.state.value[this.state.currentDevice]['right']
+			},
+			{
+				'type': 'bottom',
+				'value': this.state.value[this.state.currentDevice]['bottom']
+			},
+			{
+				'type': 'left',
+				'value': this.state.value[this.state.currentDevice]['left']
+			}
 		];
 		return (
 				<Fragment>
 					<ResponsiveControl
 							controlLabel={this.props.control.params.label}
-							onChange={(device) => {
-								this.setState( { device } );
+							onChange={(currentDevice) => {
+								this.setState( { currentDevice } );
 							}}
 					>
 						<SizingControl
 								options={options}
-								min={0}
-								max={150}
 								linked={this.state.linked}
 								onLinked={() => this.setState( { linked: !this.state.linked } )}
+								onChange={(optionType, numericValue) => {
+									this.updateValues( optionType, numericValue );
+								}}
 						/>
+						<div className="neve-units">
+							<ButtonGroup className="units">
+								{this.getButtons()}
+							</ButtonGroup>
+							<Button
+									isLink
+									isDestructive
+									onClick={() => {
+										let devices = ['mobile', 'desktop', 'tablet'];
+										let value = { ...this.state.value };
+										devices.map( (device) => {
+											value[device] = mapValues( value[device], () => '' );
+										} );
+										this.setState( { value } );
+										this.props.control.setting.set( value );
+									}}
+									tooltip={__( 'Reset all Values', 'neve' )}
+									className="reset">
+								<Dashicon icon="image-rotate"/>
+							</Button>
+						</div>
 					</ResponsiveControl>
 				</Fragment>
 		);
+	}
+
+	getButtons() {
+		let types = ['px', 'em', '%'],
+				buttons = [],
+				self = this;
+		types.map( function(type) {
+			buttons.push(
+					<Button
+							isDefault
+							className={self.state.value[self.state.currentDevice +
+							'-unit'] === type ? 'is-active' : ''}
+							onClick={() => {
+								let value = { ...self.state.value };
+								value[self.state.currentDevice + '-unit'] = type;
+								self.setState( { value } );
+								self.props.control.setting.set( value );
+							}}
+					>
+						{type}
+					</Button> );
+		} );
+
+		return buttons;
+	}
+
+	updateValues(optionType, numericValue) {
+		let value = { ...this.state.value };
+		numericValue = numericValue === 0 ? 0 : numericValue || '';
+		if ( this.state.linked ) {
+			value[this.state.currentDevice] = mapValues(
+					value[this.state.currentDevice], () => numericValue );
+		} else {
+			value[this.state.currentDevice] = {
+				...value[this.state.currentDevice],
+				[optionType]: numericValue
+			};
+		}
+
+		this.setState( { value } );
+		this.props.control.setting.set( value );
 	}
 }
 
