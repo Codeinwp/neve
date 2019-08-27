@@ -11,7 +11,6 @@
 
 namespace HFG\Core\Builder;
 
-use HFG\Core\Settings;
 use HFG\Main;
 
 /**
@@ -77,9 +76,25 @@ class Footer extends Abstract_Builder {
 	 * @access  protected
 	 */
 	protected function get_rows() {
+		$description = sprintf(
+			/* translators: %s link to documentation */
+			esc_html__( 'You can easily drag-and-drop and arrange the available components you can find at the bottom of the builder. Each component has specific options you can customize once that component is clicked on. Also, each component\'s width can be adjusted so that it corresponds to your needs. %s.', 'neve' ),
+			/* translators: %s link text */
+			sprintf(
+				'<a target="_blank" href="https://docs.themeisle.com/article/946-neve-doc#footer-builder">%s</a>',
+				esc_html__( 'Read full documentation', 'neve' )
+			)
+		);
+
 		return [
-			'top'    => __( 'Footer Top', 'neve' ),
-			'bottom' => __( 'Footer Bottom', 'neve' ),
+			'top'    => array(
+				'title'       => __( 'Footer Top', 'neve' ),
+				'description' => $description,
+			),
+			'bottom' => array(
+				'title'       => __( 'Footer Bottom', 'neve' ),
+				'description' => $description,
+			),
 		];
 	}
 }
