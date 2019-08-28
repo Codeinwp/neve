@@ -68,6 +68,7 @@ $animation_speed: .3s !default;
     }
 
     > .grid-stack-item {
+        pointer-events: initial;
         min-width: 100% / $gridstack-columns;
         position: absolute;
         padding: 0;

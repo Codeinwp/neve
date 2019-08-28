@@ -282,6 +282,12 @@ class Customizer {
 			</div>
 		</script>
 
+		<script type="text/html" id="tmpl-hfg--widgets-sidebar">
+			<div class="hfg--widgets-panel" data-id="{{ data.id }}">
+				<div class="hfg-widgets-panel-inner"></div>
+			</div>
+		</script>
+
 		<?php
 	}
 }

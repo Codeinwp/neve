@@ -1578,12 +1578,13 @@
     background: #ffffff;
     position: relative; }
     .hfg--cb-row .hfg--row-inner .row--title {
+      pointer-events: none;
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
       text-align: center;
       width: 100%;
-      z-index: 2;
+      z-index: 1;
       font-size: 16px;
       font-weight: 600;
       color: #ccc;
@@ -1599,11 +1600,10 @@
       display: flex;
       bottom: 0; }
       .hfg--cb-row .hfg--row-inner .row--grid div {
-        border-right: 1px solid #fafafa;
+        border-right: 1px solid #f3f3f3;
         width: 8.3333333333%;
         flex-basis: 8.3333333333%;
-        max-width: 8.3333333333%;
-        display: block; }
+        max-width: 8.3333333333%; }
         .hfg--cb-row .hfg--row-inner .row--grid div:last-child {
           border-right: 0 none; }
         html[dir="rtl"] .hfg--cb-row .hfg--row-inner .row--grid div {
@@ -1614,7 +1614,8 @@
             border-left: 0px none; }
     .hfg--cb-row .hfg--row-inner .hfg--cb-items {
       z-index: 36;
-      background: transparent; }
+      background: transparent;
+      pointer-events: none; }
   .hfg--cb-row .grid-stack-item-content {
     background: #fafafa;
     border: 1px solid #dddddd;
@@ -2787,6 +2788,7 @@
     z-index: 0 !important;
     text-align: center; }
   .grid-stack > .grid-stack-item {
+    pointer-events: initial;
     min-width: 8.33333%;
     position: absolute;
     padding: 0; }
@@ -3030,3 +3032,35 @@
 
 ul[id^="sub-accordion-panel-hfg"] > li.hfg-section-inactive {
   display: none !important; }
+
+.row--grid > div {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  .row--grid > div:hover .add-button--grid {
+    opacity: .5; }
+    .row--grid > div:hover .add-button--grid:hover {
+      opacity: 1; }
+
+.add-button--grid {
+  transition: .3s ease;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 1000;
+  position: relative;
+  background: #00a0d2;
+  line-height: 21px;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  height: 26px;
+  width: 26px;
+  text-align: center;
+  padding: 0;
+  font-weight: 600;
+  font-size: 22px; }
+  .add-button--grid:focus {
+    outline: none;
+    border: 1px solid #0360d2; }
+
+/*# sourceMappingURL=customizer.css.map */

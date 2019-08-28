@@ -15,6 +15,7 @@ let CustomizeBuilderV1;
 			cellHeight: 45,
 			items: [],
 			container: null,
+			widgetsSidebar: null,
 			ready: false,
 			devices: { desktop: "Desktop", mobile: "Mobile/Tablet" },
 			activePanel: "desktop",
@@ -1371,6 +1372,9 @@ let CustomizeBuilderV1;
 						'</span></a>'
 					);
 					$( ".hfg--cb-body", that.container ).append( panelHTML );
+					console.log(that.widgetSidebarContainer);
+					$( ".hfg-widgets-panel-inner", that.widgetSidebarContainer )
+					.append('<div class=" hfg--widgets hfg--widgets-' + device + '" data-device="' + device + '"></div>');
 				} );
 
 				let tmplUpsell = $( "#hfg-upsell-tmpl" );
@@ -1425,7 +1429,8 @@ let CustomizeBuilderV1;
 						}
 						if ( _d ) {
 							let item = that.addItem( node );
-							$itemWrapper.append( item );
+							// $itemWrapper.append( item );
+							$( '.hfg--widgets-' + device, that.widgetSidebarContainer ).append(item);
 							$( '#accordion-section-' + node.section ).addClass( "hfg-section-inactive" );
 						}
 					} );
@@ -1503,7 +1508,7 @@ let CustomizeBuilderV1;
 						if ( !_.isUndefined( items ) ) {
 							_.each( items, function( node, index ) {
 								let item = $(
-									'.hfg-available-items[data-device="' +
+									'.hfg--widgets[data-device="' +
 									device +
 									'"] .grid-stack-item[data-id="' +
 									node.id +
@@ -1687,9 +1692,12 @@ let CustomizeBuilderV1;
 
 				let template = that.getTemplate();
 				let templateId = "tmpl-hfg--builder-panel";
+				let sidebarId = "tmpl-hfg--widgets-sidebar";
 				let html = template( options, templateId );
+				let widgetsSidebar = template( options, sidebarId );
 				that.container = $( html );
-				$( "body .wp-full-overlay" ).append( that.container );
+				that.widgetSidebarContainer = $(widgetsSidebar);
+				$( "body .wp-full-overlay" ).append( that.container ).append( that.widgetSidebarContainer );
 				that.controlId = controlId;
 				that.items = items;
 				that.devices = devices;
