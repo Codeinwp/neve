@@ -68,9 +68,13 @@ class SearchResponsive extends Abstract_Component {
 	 * @access  public
 	 */
 	public function render_component() {
+		ob_start();
 		add_filter( 'get_search_form', [ $this, 'change_placeholder' ] );
 		Main::get_instance()->load( 'components/component-search-responsive' );
 		remove_filter( 'get_search_form', [ $this, 'change_placeholder' ] );
+		$responsive_search = ob_get_contents();
+		ob_end_clean();
+		echo  balanceTags( $responsive_search, true ); // phpcs:ignore
 	}
 
 	/**

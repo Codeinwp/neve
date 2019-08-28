@@ -42,7 +42,52 @@ class Amp {
 			2
 		);
 		add_filter( 'neve_sidebar_data_attrs', array( $this, 'add_woo_sidebar_attrs' ), 10, 2 );
+		add_filter( 'neve_responsive_search_component_filter', array( $this, 'add_search_icon_attrs' ), 10 );
+		add_filter( 'neve_search_menu_item_filter', array( $this, 'add_search_menu_item_attrs' ), 10 );
 		add_action( 'neve_after_header_hook', array( $this, 'render_amp_states' ) );
+	}
+
+	/**
+	 * Add amp parameters for hfg search component.
+	 *
+	 * @param string $input Search component markup.
+	 *
+	 * @return string
+	 */
+	public function add_search_icon_attrs( $input ) {
+		if ( ! neve_is_amp() ) {
+			return $input;
+		}
+
+		$state   = 'nvAmpSearchIconExpanded';
+		$wrapper = '<div [class]="\'menu-item-nav-search responsive-nav-search amp-responsive-nav-search\' + ( ' . $state . ' ? \' active\' : \'\')">';
+		$icon    = '<span class="nv-icon nv-search amp-nv-icon amp-nv-search" on="tap:AMP.setState( { ' . $state . ': ! ' . $state . ' } )">';
+		$close   = '<a class="button button-secondary close-responsive-search" on="tap:AMP.setState( { ' . $state . ': ! ' . $state . ' } )">';
+
+		$output = str_replace( '<div class="menu-item-nav-search responsive-nav-search" tabindex="0">', $wrapper, $input );
+		$output = str_replace( '<span class="nv-icon nv-search">', $icon, $output );
+		$output = str_replace( '<a class="button button-secondary close-responsive-search">', $close, $output );
+
+		return $output;
+	}
+
+	/**
+	 * Add amp parameters for menu child search icon.
+	 *
+	 * @param string $input Search menu item wrapper markup.
+	 *
+	 * @return string
+	 */
+	public function add_search_menu_item_attrs( $input ) {
+		if ( ! neve_is_amp() ) {
+			return $input;
+		}
+		$state = 'nvAmpMenuSearchIconExpanded';
+
+		$wrapper = '<li [class]="\'menu-item-nav-search amp-menu-item-nav-search\' + ( ' . $state . ' ? \' active\' : \'\')" on="tap:AMP.setState( { ' . $state . ': ! ' . $state . ' } )">';
+
+		$output = str_replace( '<li class="menu-item-nav-search" tabindex="0" aria-label="search">', $wrapper, $input );
+		return $output;
 	}
 
 	/**
@@ -77,6 +122,14 @@ class Amp {
 		echo '</amp-state>';
 
 		echo '<amp-state id="nvAmpWooSidebarExpanded">';
+		echo '<script type="application/json">false</script>';
+		echo '</amp-state>';
+
+		echo '<amp-state id="nvAmpSearchIconExpanded">';
+		echo '<script type="application/json">false</script>';
+		echo '</amp-state>';
+
+		echo '<amp-state id="nvAmpMenuSearchIconExpanded">';
 		echo '<script type="application/json">false</script>';
 		echo '</amp-state>';
 	}
