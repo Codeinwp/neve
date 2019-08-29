@@ -11,7 +11,6 @@
 
 namespace HFG\Core\Builder;
 
-use HFG\Core\Settings;
 use HFG\Main;
 
 /**
@@ -33,6 +32,20 @@ class Footer extends Abstract_Builder {
 	 */
 	public function init() {
 		$this->set_property( 'title', __( 'Footer', 'neve' ) );
+		$this->set_property(
+			'description',
+			sprintf(
+				/* translators: %s link to documentation */
+				esc_html__( 'Design your %1$s by dragging, dropping and resizing all the elements in real-time. %2$s.', 'neve' ),
+				/* translators: %s builder type */
+				$this->get_property( 'title' ),
+				/* translators: %s link text */
+				sprintf(
+					'<br/><a target="_blank" href="https://docs.themeisle.com/article/946-neve-doc#footer-builder">%s</a>',
+					esc_html__( 'Read full documentation', 'neve' )
+				)
+			)
+		);
 		$this->devices = [
 			'desktop' => __( 'Footer', 'neve' ),
 		];
@@ -77,9 +90,16 @@ class Footer extends Abstract_Builder {
 	 * @access  protected
 	 */
 	protected function get_rows() {
+
 		return [
-			'top'    => __( 'Footer Top', 'neve' ),
-			'bottom' => __( 'Footer Bottom', 'neve' ),
+			'top'    => array(
+				'title'       => __( 'Footer Top', 'neve' ),
+				'description' => $this->get_property( 'description' ),
+			),
+			'bottom' => array(
+				'title'       => __( 'Footer Bottom', 'neve' ),
+				'description' => $this->get_property( 'description' ),
+			),
 		];
 	}
 }
