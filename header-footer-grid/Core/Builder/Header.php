@@ -11,7 +11,6 @@
 
 namespace HFG\Core\Builder;
 
-use HFG\Core\Settings;
 use HFG\Main;
 
 /**
@@ -34,6 +33,18 @@ class Header extends Abstract_Builder {
 	 */
 	public function init() {
 		$this->set_property( 'title', __( 'Header', 'neve' ) );
+		$this->set_property(
+			'description',
+			sprintf(
+				/* translators: %s link to documentation */
+				esc_html__( 'Design your header by dragging, dropping and resizing all the elements in real-time. %s.', 'neve' ),
+				/* translators: %s link text */
+				sprintf(
+					'<br/><a target="_blank" href="https://docs.themeisle.com/article/946-neve-doc#header">%s</a>',
+					esc_html__( 'Read full documentation', 'neve' )
+				)
+			) 
+		);
 	}
 
 
@@ -78,17 +89,39 @@ class Header extends Abstract_Builder {
 	/**
 	 * Return  the builder rows.
 	 *
+	 * @return array
 	 * @since   1.0.0
 	 * @updated 1.0.1
 	 * @access  protected
-	 * @return array
 	 */
 	protected function get_rows() {
+		$description = sprintf(
+			/* translators: %s link to documentation */
+			esc_html__( 'Design your header by dragging, dropping and resizing all the elements in real-time. %s.', 'neve' ),
+			/* translators: %s link text */
+			sprintf(
+				'<br/><a target="_blank" href="https://docs.themeisle.com/article/946-neve-doc#header">%s</a>',
+				esc_html__( 'Read full documentation', 'neve' )
+			)
+		);
+
 		return [
-			'top'     => __( 'Header Top', 'neve' ),
-			'main'    => __( 'Header Main', 'neve' ),
-			'bottom'  => __( 'Header Bottom', 'neve' ),
-			'sidebar' => __( 'Header Sidebar', 'neve' ),
+			'top'     => array(
+				'title'       => esc_html__( 'Header Top', 'neve' ),
+				'description' => $description,
+			),
+			'main'    => array(
+				'title'       => esc_html__( 'Header Main', 'neve' ),
+				'description' => $description,
+			),
+			'bottom'  => array(
+				'title'       => esc_html__( 'Header Bottom', 'neve' ),
+				'description' => $description,
+			),
+			'sidebar' => array(
+				'title'       => esc_html__( 'Header Sidebar', 'neve' ),
+				'description' => $description,
+			),
 		];
 	}
 }
