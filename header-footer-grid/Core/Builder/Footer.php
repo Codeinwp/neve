@@ -36,13 +36,15 @@ class Footer extends Abstract_Builder {
 			'description',
 			sprintf(
 				/* translators: %s link to documentation */
-				esc_html__( 'Design your footer by dragging, dropping and resizing all the elements in real-time. %s.', 'neve' ),
+				esc_html__( 'Design your %1$s by dragging, dropping and resizing all the elements in real-time. %2$s.', 'neve' ),
+				/* translators: %s builder type */
+				$this->get_property( 'title' ),
 				/* translators: %s link text */
 				sprintf(
 					'<br/><a target="_blank" href="https://docs.themeisle.com/article/946-neve-doc#footer-builder">%s</a>',
 					esc_html__( 'Read full documentation', 'neve' )
 				)
-			) 
+			)
 		);
 		$this->devices = [
 			'desktop' => __( 'Footer', 'neve' ),
@@ -88,24 +90,15 @@ class Footer extends Abstract_Builder {
 	 * @access  protected
 	 */
 	protected function get_rows() {
-		$description = sprintf(
-			/* translators: %s link to documentation */
-			esc_html__( 'Design your footer by dragging, dropping and resizing all the elements in real-time. %s.', 'neve' ),
-			/* translators: %s link text */
-			sprintf(
-				'<br/><a target="_blank" href="https://docs.themeisle.com/article/946-neve-doc#footer-builder">%s</a>',
-				esc_html__( 'Read full documentation', 'neve' )
-			)
-		);
 
 		return [
 			'top'    => array(
 				'title'       => __( 'Footer Top', 'neve' ),
-				'description' => $description,
+				'description' => $this->get_property( 'description' ),
 			),
 			'bottom' => array(
 				'title'       => __( 'Footer Bottom', 'neve' ),
-				'description' => $description,
+				'description' => $this->get_property( 'description' ),
 			),
 		];
 	}
