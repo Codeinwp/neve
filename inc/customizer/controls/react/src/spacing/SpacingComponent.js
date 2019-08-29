@@ -26,6 +26,10 @@ class SpacingComponent extends Component {
 			linked: true,
 			currentDevice: 'desktop'
 		};
+
+		if ( !this.shouldValuesBeLinked() ) {
+			this.state.linked = false;
+		}
 	}
 
 	render() {
@@ -47,12 +51,14 @@ class SpacingComponent extends Component {
 				'value': this.state.value[this.state.currentDevice]['left']
 			}
 		];
+
 		return (
 				<Fragment>
 					<ResponsiveControl
 							controlLabel={this.props.control.params.label}
 							onChange={(currentDevice) => {
 								this.setState( { currentDevice } );
+								this.setState( { linked: this.shouldValuesBeLinked() } );
 							}}
 					>
 						<SizingControl
@@ -128,6 +134,17 @@ class SpacingComponent extends Component {
 
 		this.setState( { value } );
 		this.props.control.setting.set( value );
+	}
+
+	shouldValuesBeLinked() {
+		let values = [
+			this.state.value[this.state.currentDevice]['top'],
+			this.state.value[this.state.currentDevice]['right'],
+			this.state.value[this.state.currentDevice]['bottom'],
+			this.state.value[this.state.currentDevice]['left']
+		];
+
+		return values.every( value => value === values[0] );
 	}
 }
 
