@@ -2545,7 +2545,7 @@ audio {
 }
 
 .header-menu-sidebar.light-mode .header-menu-sidebar-bg:before {
-  background: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
 .header-menu-sidebar.light-mode .nav-menu-mobile .menu li a, .header-menu-sidebar.light-mode .sub-menu, .header-menu-sidebar.light-mode .nav-menu-mobile .nav-toggle-icon {
@@ -2587,7 +2587,7 @@ audio {
 }
 
 .header-menu-sidebar.dark-mode .header-menu-sidebar-bg:before {
-  background: rgba(0, 0, 0, 0.9);
+  background-color: rgba(0, 0, 0, 0.9);
 }
 
 .header-menu-sidebar.dark-mode .nav-menu-mobile .menu li a, .header-menu-sidebar.dark-mode .sub-menu, .header-menu-sidebar.dark-mode .nav-menu-mobile .nav-toggle-icon {
