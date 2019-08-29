@@ -32,6 +32,18 @@ class Footer extends Abstract_Builder {
 	 */
 	public function init() {
 		$this->set_property( 'title', __( 'Footer', 'neve' ) );
+		$this->set_property(
+			'description',
+			sprintf(
+				/* translators: %s link to documentation */
+				esc_html__( 'Design your footer by dragging, dropping and resizing all the elements in real-time. %s.', 'neve' ),
+				/* translators: %s link text */
+				sprintf(
+					'<br/><a target="_blank" href="https://docs.themeisle.com/article/946-neve-doc#footer-builder">%s</a>',
+					esc_html__( 'Read full documentation', 'neve' )
+				)
+			) 
+		);
 		$this->devices = [
 			'desktop' => __( 'Footer', 'neve' ),
 		];
@@ -78,10 +90,10 @@ class Footer extends Abstract_Builder {
 	protected function get_rows() {
 		$description = sprintf(
 			/* translators: %s link to documentation */
-			esc_html__( 'You can easily drag-and-drop and arrange the available components you can find at the bottom of the builder. Each component has specific options you can customize once that component is clicked on. Also, each component\'s width can be adjusted so that it corresponds to your needs. %s.', 'neve' ),
+			esc_html__( 'Design your footer by dragging, dropping and resizing all the elements in real-time. %s.', 'neve' ),
 			/* translators: %s link text */
 			sprintf(
-				'<a target="_blank" href="https://docs.themeisle.com/article/946-neve-doc#footer-builder">%s</a>',
+				'<br/><a target="_blank" href="https://docs.themeisle.com/article/946-neve-doc#footer-builder">%s</a>',
 				esc_html__( 'Read full documentation', 'neve' )
 			)
 		);
