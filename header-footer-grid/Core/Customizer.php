@@ -284,6 +284,12 @@ class Customizer {
 
 		<script type="text/html" id="tmpl-hfg--widgets-sidebar">
 			<div class="hfg--widgets-panel" data-id="{{ data.id }}">
+				<div class="hfg-widgets-panel-header">
+					<button class="close button button-secondary">
+						<i class="dashicons dashicons-no"></i>
+						<span><?php esc_html_e( 'Close', 'neve' ); ?></span>
+					</button>
+				</div>
 				<div class="hfg-widgets-panel-inner"></div>
 			</div>
 		</script>

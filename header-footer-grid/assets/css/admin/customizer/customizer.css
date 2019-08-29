@@ -3063,4 +3063,77 @@ ul[id^="sub-accordion-panel-hfg"] > li.hfg-section-inactive {
     outline: none;
     border: 1px solid #0360d2; }
 
+body.hfg--widgets-open .wp-full-overlay:after {
+  content: "";
+  display: block;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  z-index: 1;
+  position: absolute; }
+
+.hfg--widgets-panel {
+  top: 0;
+  bottom: 0;
+  left: -301px;
+  visibility: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 300px;
+  margin: 0;
+  z-index: 4;
+  background: #fff;
+  transition: left .18s;
+  border-right: 1px solid #ddd;
+  position: absolute;
+  padding-top: 55px; }
+  .hfg--widgets-panel.widgets-panel--visible {
+    left: 0;
+    visibility: visible; }
+  .hfg--widgets-panel .hfg-widgets-panel-header {
+    border-bottom: 1px solid #ddd;
+    padding: 13px 15px;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    width: 300px;
+    background: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; }
+    .hfg--widgets-panel .hfg-widgets-panel-header button {
+      display: flex;
+      align-items: center; }
+  .hfg--widgets-panel .hfg--widgets {
+    display: none;
+    flex-direction: column; }
+    .hfg--widgets-panel .hfg--widgets.widgets--visible {
+      display: flex; }
+    .hfg--widgets-panel .hfg--widgets .grid-stack-item {
+      display: flex;
+      max-width: 100%;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+      border-left: 4px solid transparent;
+      padding: 15px 15px 15px 60px;
+      transition: .15s color ease-in-out, .15s background-color ease-in-out, .15s border-color ease-in-out;
+      background: #fff; }
+      .hfg--widgets-panel .hfg--widgets .grid-stack-item:hover {
+        background: #f3f3f5;
+        border-bottom-color: #ccc;
+        color: #0073aa;
+        border-left: 4px solid #0073aa; }
+      .hfg--widgets-panel .hfg--widgets .grid-stack-item .grid-stack-item-content {
+        color: #23282d;
+        line-height: 1.4em;
+        font-size: 13px;
+        font-weight: 600;
+        background-color: transparent; }
+      .hfg--widgets-panel .hfg--widgets .grid-stack-item .hfg-cb-icon, .hfg--widgets-panel .hfg--widgets .grid-stack-item .item-tooltip {
+        display: none; }
+
 /*# sourceMappingURL=customizer.css.map */

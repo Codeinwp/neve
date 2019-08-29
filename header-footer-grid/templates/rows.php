@@ -22,7 +22,7 @@ namespace HFG;
 				<div class="row--grid">
 					<?php
 					for ( $i = 1; $i <= 12; $i ++ ) {
-						echo '<div><button class="add-button--grid">+</button></div>';
+						echo '<div><button class="add-button--grid" data-slot="'. esc_attr( $i ) .'">+</button></div>';
 					}
 					?>
 				</div>
@@ -40,7 +40,7 @@ namespace HFG;
 				<div class="row--grid">
 					<?php
 					for ( $i = 1; $i <= 12; $i ++ ) {
-						echo '<div><button class="add-button--grid">+</button></div>';
+						echo '<div><button class="add-button--grid" data-slot="'. esc_attr( $i ) .'">+</button></div>';
 					}
 					?>
 				</div>
@@ -57,7 +57,7 @@ namespace HFG;
 				<div class="row--grid">
 					<?php
 					for ( $i = 1; $i <= 12; $i ++ ) {
-						echo '<div><button class="add-button--grid">+</button></div>';
+						echo '<div><button class="add-button--grid" data-slot="'. esc_attr( $i ) .'">+</button></div>';
 					}
 					?>
 				</div>

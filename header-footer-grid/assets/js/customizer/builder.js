@@ -22,6 +22,8 @@ let CustomizeBuilderV1;
 			panels: {},
 			activeRow: "main",
 			draggingItem: null,
+			insertPoint: null,
+			insertRow: null,
 			getTemplate: _.memoize( function() {
 				let control = this;
 				let compiled,
@@ -92,8 +94,8 @@ let CustomizeBuilderV1;
 					let sidebarId = sidebar.attr( "id" ) || false;
 
 					$(
-						".hfg-available-items .grid-stack-item",
-						panel
+						".grid-stack-item",
+						panel + ',' + that.widgetsSidebar
 					).draggable( {
 						revert: "invalid",
 						connectToSortable: sidebarId
@@ -225,6 +227,9 @@ let CustomizeBuilderV1;
 						flag[i].attr( "data-gs-x", i );
 					}
 				}
+			},
+			moveToPoint: function( item, coordinate ) {
+				$(item).attr('data-gs-x', coordinate);
 			},
 			gridster: function( $wrapper, ui, event ) {
 				let flag = [];
@@ -1569,19 +1574,80 @@ let CustomizeBuilderV1;
 					}
 				);
 			},
+			closeComponentsSidebar: function() {
+				$( '.widgets-panel--visible' ).removeClass( 'widgets-panel--visible' );
+				$( '.hfg--widgets.widgets--visible' ).removeClass( 'widgets--visible' );
+				$('body').removeClass('hfg--widgets-open');
+			},
+			initComponentsSidebar: function() {
+				let that = this;
+				$( that.container ).on( 'click', '.add-button--grid', function(e) {
+					e.preventDefault();
+					that.closeComponentsSidebar();
+					$('body').addClass('hfg--widgets-open');
+					let panel = $( this ).closest( '.hfg--device-panel' ),
+							device = panel[0].getAttribute( 'data-device' );
+
+					that.insertPoint = $( this ).data( 'slot' );
+					that.insertRow = $( this ).
+							closest( '.hfg--row-inner' ).
+							find( '.hfg--cb-items' ).
+							data( 'id' );
+
+					$( that.widgetSidebarContainer ).addClass( 'widgets-panel--visible' );
+					$( that.widgetSidebarContainer ).
+							find( ' .hfg--widgets-' + device ).
+							addClass( 'widgets--visible' );
+				} );
+
+				$( '.hfg-widgets-panel-header .close' ).
+						on( 'click', function(e) {
+							that.closeComponentsSidebar();
+						} );
+
+				$(that.widgetSidebarContainer).on('click', '.grid-stack-item', function(e) {
+					let data = JSON.parse(
+							wpcustomize.control( that.controlId ).setting.get() ),
+							device = $( this ).closest( '.hfg--widgets' ).data('device'),
+							initialWidth = $( this ).data( 'df-width' ),
+							itemId = $( this ).data( 'id' );
+
+					$('#_sid_' + device +'-' + that.insertRow,that.container).append( this );
+					data[device][that.insertRow].push( {
+						x: that.insertPoint - 1,
+						y: 1,
+						width: initialWidth,
+						height: 1,
+						id: itemId
+					} );
+					that.moveToPoint(this, that.insertPoint-1);
+					that.sortGrid( '#_sid_' + device +'-' + that.insertRow );
+					that.updateAllGrids();
+					that.save();
+
+					// wpcustomize.control( that.controlId ).
+					// 		setting.
+					// 		set( that.encodeValue( data ) );
+					// that.updateGridFlag('#_sid_' + device +'-' + that.insertRow);
+					// that.updateItemsPositions(this);
+					// that.updateAllGrids();
+					// that.save();
+				} );
+			},
 			remove: function() {
 				let that = this;
-				$document.on(
+				$(that.container).on(
 					"click",
 					".hfg--device-panel .hfg--cb-item-remove",
-					function( e ) {
+						function( e ) {
 						e.preventDefault();
-						let item = $( this ).closest( ".grid-stack-item" );
-						let panel = item.closest( ".hfg--device-panel" );
+						let item = $( this ).closest( ".grid-stack-item" ),
+						panel = item.closest( ".hfg--device-panel" ),
+						device = panel[0].getAttribute('data-device');
 						item.attr( "data-gs-width", 1 );
 						item.attr( "data-gs-x", 0 );
 						item.removeAttr( "style" );
-						$( ".hfg-available-items", panel ).append( item );
+						$(that.widgetSidebarContainer).find(".hfg--widgets-" + device).append(item);
 						$( '#accordion-section-' + item[0].dataset.section ).addClass( "hfg-section-inactive" );
 						that.updateAllGrids();
 						that.save();
@@ -1654,6 +1720,7 @@ let CustomizeBuilderV1;
 						that.showPanel();
 					} else {
 						that.hidePanel();
+						that.closeComponentsSidebar();
 					}
 				} );
 
@@ -1712,6 +1779,7 @@ let CustomizeBuilderV1;
 				that.addAvailableItems();
 				that.switchToDevice( that.activePanel );
 				that.drag_drop();
+				that.initComponentsSidebar();
 				that.focus();
 				that.remove();
 				that.addExistingRowsItems();
@@ -1720,6 +1788,7 @@ let CustomizeBuilderV1;
 					that.showPanel();
 				} else {
 					that.hidePanel();
+					that.closeComponentsSidebar();
 				}
 
 				wpcustomize.previewedDevice.bind( function( newDevice ) {
