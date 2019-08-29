@@ -1,0 +1,112 @@
+.customize-control-neve_background_control {
+  margin-bottom: 20px;
+  .color-preview {
+    width: 20px;
+    border-radius: 3px;
+    border:1px solid #767676;
+    height: 15px;
+    left: 3px;
+    top: -20px;
+    float: left;
+    position: relative;
+  }
+  .components-color-palette__item-wrapper {
+    margin-right: 12px;
+    span {
+      display: none !important;
+    }
+  }
+  .components-color-palette__item-wrapper:hover {
+    transform: scale(1.05);
+  }
+  .components-color-palette__item:focus:after {
+    content:none;
+  }
+
+  .control--top-toolbar {
+    .neve-background-type-control button.components-button {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+
+  .remove-image {
+    align-items: center;
+    width: 100%;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .control--body {
+    border: 1px solid #ccc;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    background: #fff;
+    border-top: none;
+    padding: 15px;
+
+    label {
+      display: block;
+      margin: 20px 0 10px;
+      font-weight: 500;
+    }
+
+    .components-focal-point-picker-wrapper {
+      width: auto;
+      height: auto;
+      padding: 10px;
+      border-radius: 3px;
+      background-color: #ededed;
+    }
+  }
+
+  input.components-range-control__number {
+    width: 20%;
+    margin-left: 20px;
+  }
+
+  .components-placeholder {
+    width: auto;
+    min-height: 150px;
+    border-radius: 3px;
+    background-color: #ededed;
+    border: 1px solid #e2e4e7;
+  }
+
+  .components-focal-point-picker_position-display-container {
+    margin: 0;
+
+    .components-base-control {
+      margin-bottom: 0;
+      width: 50%;
+
+      .components-base-control__field {
+        margin: 0;
+      }
+    }
+
+    label {
+      margin-top: 10px;
+    }
+  }
+
+  .components-toggle-control__label {
+    margin: 0 !important;
+  }
+
+  .components-toggle-control {
+    margin: 20px 0 25px;
+  }
+}
+
+.neve-background-type-control {
+  width: 100%;
+
+  button {
+    width: 50%;
+    justify-content: center;
+  }
+}
