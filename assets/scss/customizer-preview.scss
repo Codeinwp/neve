@@ -3,7 +3,7 @@
   overflow-x: hidden;
 
   .builder-item-focus {
-    &.item--inner {
+    &.item--inner, &.row--wrapper {
       position: relative;
       &.has_menu {
         .item--preview-name {
@@ -26,12 +26,23 @@
       border-bottom-left-radius: 2px;
       border-bottom-right-radius: 2px;
     }
+    .edit-row-action{
+      top: 0;
+      width: 26px;
+      position: absolute;
+      right: 0;
+      background: #0073aa;
+      fill: #FFFFFE;
+      font-size: 0;
+      display: none;
+      cursor: pointer;
+    }
     &:hover {
-      &.item--inner {
+      &.item--inner, &.row--wrapper {
         transition-delay: 0s !important;
         outline: 1px solid #0073aa;
         outline-offset: -1px;
-        .item--preview-name {
+        > .item--preview-name, > .edit-row-action {
           display: block;
           z-index: 9999999;
         }

@@ -36,7 +36,7 @@ class NavFooter extends Abstract_Component {
 	public function init() {
 		$this->set_property( 'label', __( 'Footer Menu', 'neve' ) );
 		$this->set_property( 'id', self::COMPONENT_ID );
-		$this->set_property( 'width', 2 );
+		$this->set_property( 'width', 6 );
 		$this->set_property( 'section', 'footer_menu_primary' );
 	}
 

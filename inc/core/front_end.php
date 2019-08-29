@@ -98,6 +98,44 @@ class Front_End {
 		return $args;
 	}
 
+
+	/**
+	 * Reorder starter sites based on previous theme
+	 *
+	 * @return bool
+	 */
+	private function reorder_starter_sites() {
+		$previous_theme = get_theme_mod( 'ti_prev_theme' );
+		if ( empty( $previous_theme ) ) {
+			return false;
+		}
+
+		$slug_association = array(
+			'zerif-pro'      => 'neve-zelle',
+			'zerif-lite'     => 'neve-zelle',
+			'themotion'      => 'neve-themotion',
+			'themotion-lite' => 'neve-themotion',
+			'amadeus'        => 'neve-amadeus',
+			'rokophoto-lite' => 'neve-rokophoto',
+			'rokophoto'      => 'neve-rokophoto',
+			'oblique'        => 'neve-oblique',
+			'shop-isle'      => 'neve-shop',
+			'shop-isle-pro'  => 'neve-shop',
+			'lawyeria-lite'  => 'neve-lawyer',
+			'lawyeria'       => 'neve-lawyer',
+		);
+		if ( ! array_key_exists( $previous_theme, $slug_association ) ) {
+			return false;
+		}
+		if ( ! isset( $this->onboarding_config['local']['elementor'][ $slug_association[ $previous_theme ] ] ) ) {
+			return false;
+		}
+		$starter_site = $this->onboarding_config['local']['elementor'][ $slug_association[ $previous_theme ] ];
+		unset( $this->onboarding_config['local']['elementor'][ $slug_association[ $previous_theme ] ] );
+		$this->onboarding_config['local']['elementor'] = array( $slug_association[ $previous_theme ] => $starter_site ) + $this->onboarding_config['local']['elementor'];
+		return true;
+	}
+
 	/**
 	 * Get the themeisle demo content support data.
 	 *
@@ -341,7 +379,7 @@ class Front_End {
 			'pro_link'    => 'https://themeisle.com/themes/neve/upgrade/',
 
 		);
-
+		$this->reorder_starter_sites();
 		$this->add_gutenberg_starter_sites();
 
 		return apply_filters( 'neve_filter_onboarding_data', $this->onboarding_config );
