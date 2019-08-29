@@ -127,6 +127,9 @@ class Front_End {
 		if ( ! array_key_exists( $previous_theme, $slug_association ) ) {
 			return false;
 		}
+		if ( ! isset( $this->onboarding_config['local']['elementor'][ $slug_association[ $previous_theme ] ] ) ) {
+			return false;
+		}
 		$starter_site = $this->onboarding_config['local']['elementor'][ $slug_association[ $previous_theme ] ];
 		unset( $this->onboarding_config['local']['elementor'][ $slug_association[ $previous_theme ] ] );
 		$this->onboarding_config['local']['elementor'] = array( $slug_association[ $previous_theme ] => $starter_site ) + $this->onboarding_config['local']['elementor'];
