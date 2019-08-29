@@ -32,7 +32,7 @@ class Front_End {
 		// Maximum allowed width for any content in the theme, like oEmbeds and images added to posts.  https://codex.wordpress.org/Content_Width
 		global $content_width;
 		if ( ! isset( $content_width ) ) {
-			$content_width = 750;
+			$content_width = apply_filters( 'neve_content_width', 1200 );
 		}
 
 		load_theme_textdomain( 'neve', get_template_directory() . '/languages' );
