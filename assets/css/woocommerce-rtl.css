@@ -706,6 +706,11 @@ section.exclusive .tns-visually-hidden {
   padding: 0 18px 12px 18px;
 }
 
+.woocommerce-checkout .woocommerce-billing-fields > p {
+  padding: 9px 12px;
+  font-size: 14px;
+}
+
 .woocommerce-checkout .woocommerce-billing-fields__field-wrapper,
 .woocommerce-checkout .woocommerce-shipping-fields__field-wrapper,
 .woocommerce-checkout .woocommerce-additional-fields,
@@ -798,6 +803,14 @@ section.exclusive .tns-visually-hidden {
 
 .woocommerce-checkout #payment ul.payment_methods {
   border-bottom: 1px solid #f0f0f0;
+}
+
+.woocommerce-checkout #payment ul.payment_methods li {
+  margin-bottom: 10px;
+}
+
+.woocommerce-checkout #payment ul.payment_methods label {
+  display: initial;
 }
 
 .woocommerce-checkout #payment .place-order {
@@ -1042,7 +1055,6 @@ ul[id^="nv-primary-navigation"] .menu-item-nav-cart:not(.responsive-nav-cart) {
 .woocommerce table.cart .product-thumbnail,
 .woocommerce-page #content table.cart .product-thumbnail,
 .woocommerce-page table.cart .product-thumbnail {
-  display: block;
   text-align: center !important;
 }
 
