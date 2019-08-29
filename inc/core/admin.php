@@ -559,13 +559,12 @@ class Admin {
 			esc_url( admin_url( 'themes.php?page=' . $theme_page ) ),
 			esc_html__( 'or go to the theme settings', 'neve' )
 		);
-		$notice_picture_url = $this->get_notice_picture();
-		$notice_picture     = sprintf(
+		$notice_picture = sprintf(
 			'<picture>
 					<source srcset="about:blank" media="(max-width: 1024px)">
 					<img src="%1$s">
 				</picture>',
-			esc_url( $notice_picture_url )
+			esc_url( $this->get_notice_picture() )
 		);
 
 		$notice_sites_list = sprintf(

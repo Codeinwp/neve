@@ -98,16 +98,6 @@ class Front_End {
 		return $args;
 	}
 
-	/**
-	 * Put an Elementor starter site first in list.
-	 *
-	 * @param string $site_slug Starter site.
-	 */
-	private function put_starter_site_first( $site_slug ) {
-		$starter_site = $this->onboarding_config['local']['elementor'][ $site_slug ];
-		unset( $this->onboarding_config['local']['elementor'][ $site_slug ] );
-		$this->onboarding_config['local']['elementor'] = array( $site_slug => $starter_site ) + $this->onboarding_config['local']['elementor'];
-	}
 
 	/**
 	 * Reorder starter sites based on previous theme
@@ -137,10 +127,9 @@ class Front_End {
 		if ( ! array_key_exists( $previous_theme, $slug_association ) ) {
 			return false;
 		}
-
-		$starter_slug = $slug_association[ $previous_theme ];
-		$this->put_starter_site_first( $starter_slug );
-
+		$starter_site = $this->onboarding_config['local']['elementor'][ $slug_association[ $previous_theme ] ];
+		unset( $this->onboarding_config['local']['elementor'][ $slug_association[ $previous_theme ] ] );
+		$this->onboarding_config['local']['elementor'] = array( $slug_association[ $previous_theme ] => $starter_site ) + $this->onboarding_config['local']['elementor'];
 		return true;
 	}
 
