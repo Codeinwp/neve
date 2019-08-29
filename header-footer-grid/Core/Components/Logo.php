@@ -36,7 +36,7 @@ class Logo extends Abstract_Component {
 	public function init() {
 		$this->set_property( 'label', __( 'Logo & Site Identity', 'neve' ) );
 		$this->set_property( 'id', $this->get_class_const( 'COMPONENT_ID' ) );
-		$this->set_property( 'width', 2 );
+		$this->set_property( 'width', 3 );
 		$this->set_property( 'section', 'title_tagline' );
 	}
 

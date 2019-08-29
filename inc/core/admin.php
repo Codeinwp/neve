@@ -652,6 +652,39 @@ class Admin {
 	}
 
 	/**
+	 * Get notice screenshot based on previous theme.
+	 *
+	 * @return string Image url.
+	 */
+	private function get_notice_picture() {
+		$previous_theme = get_theme_mod( 'ti_prev_theme' );
+		$onboarding_dir = get_template_directory_uri() . '/onboarding/';
+		switch ( $previous_theme ) {
+			case 'themotion-lite':
+			case 'themotion':
+				return $onboarding_dir . 'neve-themotion/screenshot.jpg';
+			case 'amadeus':
+				return $onboarding_dir . 'neve-amadeus/screenshot.jpg';
+			case 'rokophoto-lite':
+			case 'rokophoto':
+				return $onboarding_dir . 'neve-rokophoto/screenshot.jpg';
+			case 'oblique':
+				return $onboarding_dir . 'neve-oblique/screenshot.jpg';
+			case 'shop-isle':
+			case 'shop-isle-pro':
+				return $onboarding_dir . 'neve-shop/screenshot.jpg';
+			case 'zerif-pro':
+			case 'zerif-lite':
+				return $onboarding_dir . 'neve-zelle/screenshot.jpg';
+			case 'lawyeria-lite':
+			case 'lawyeria':
+				return $onboarding_dir . 'neve-lawyers/screenshot.jpg';
+			default:
+				return get_template_directory_uri() . '/assets/img/sites-list.jpg';
+		}
+	}
+
+	/**
 	 * Render welcome notice content
 	 */
 	public function welcome_notice_content() {
@@ -700,13 +733,12 @@ class Admin {
 			esc_url( admin_url( 'themes.php?page=' . $theme_page ) ),
 			esc_html__( 'or go to the theme settings', 'neve' )
 		);
-
 		$notice_picture = sprintf(
 			'<picture>
 					<source srcset="about:blank" media="(max-width: 1024px)">
 					<img src="%1$s">
 				</picture>',
-			esc_url( get_template_directory_uri() . '/assets/img/sites-list.jpg' )
+			esc_url( $this->get_notice_picture() )
 		);
 
 		$notice_sites_list = sprintf(

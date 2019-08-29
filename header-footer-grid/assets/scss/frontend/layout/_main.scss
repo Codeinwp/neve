@@ -13,7 +13,7 @@
   margin-bottom: 4px;
 }
 
-$desktop : map-get($gl-devices-list, desktop);
+$desktop: map-get($gl-devices-list, desktop);
 @media #{$desktop}{
   .builder-item {
     margin-top: 8px;
@@ -30,6 +30,7 @@ $builder_types: page_header header footer;
     .#{$type}--row-inner .container .row {
       display: flex;
       align-items: center;
+      position: relative;
     }
 
     &.layout-fullwidth {
