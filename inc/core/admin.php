@@ -48,9 +48,19 @@ class Admin {
 			0
 		);
 		add_action( 'wp_ajax_neve_toggle_logger', array( $this, 'toggle_logger' ) );
+		add_filter( 'neve_logger_heading', array( $this, 'add_tracking_policy' ) );
 	}
 
-
+	/**
+	 * Add tracking usage link to notice.
+	 *
+	 * @param string $text Notice text.
+	 *
+	 * @return string New notice text.
+	 */
+	public function add_tracking_policy( $text ) {
+		return sprintf( '%s <a href="https://docs.themeisle.com/article/1122-neve-usage-tracking" target="_blank">%s</a>', $text, __( 'What do we track?', 'neve' ) );
+	}
 	/**
 	 * Add the about page.
 	 */
@@ -282,7 +292,7 @@ class Admin {
 						</span>
 					</label>
 				</p>
-				<a href="#"><?php echo esc_html( $strings['link-text'] ); ?></a>
+				<a target="_blank" href="https://docs.themeisle.com/article/1122-neve-usage-tracking"><?php echo esc_html( $strings['link-text'] ); ?></a>
 				<p class="error-well"><?php echo esc_html( $strings['error-text'] ); ?></p>
 				<p class="success-well"><?php echo esc_html( $strings['success-text'] ); ?></p>
 			</div>
