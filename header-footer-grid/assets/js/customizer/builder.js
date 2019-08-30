@@ -93,10 +93,7 @@ let CustomizeBuilderV1;
 					let sidebar = $( "#_sid_mobile-sidebar", panel );
 					let sidebarId = sidebar.attr( "id" ) || false;
 
-					$(
-						".grid-stack-item",
-						panel + ',' + that.widgetsSidebar
-					).draggable( {
+					$( ".grid-stack-item", panel ).draggable( {
 						revert: "invalid",
 						connectToSortable: sidebarId
 							? "#" + sidebarId
@@ -1606,6 +1603,7 @@ let CustomizeBuilderV1;
 						} );
 
 				$(that.widgetSidebarContainer).on('click', '.grid-stack-item', function(e) {
+					that.closeComponentsSidebar();
 					let data = JSON.parse(
 							wpcustomize.control( that.controlId ).setting.get() ),
 							device = $( this ).closest( '.hfg--widgets' ).data('device'),
@@ -1620,18 +1618,14 @@ let CustomizeBuilderV1;
 						height: 1,
 						id: itemId
 					} );
-					that.moveToPoint(this, that.insertPoint-1);
-					that.sortGrid( '#_sid_' + device +'-' + that.insertRow );
 					that.updateAllGrids();
 					that.save();
-
-					// wpcustomize.control( that.controlId ).
-					// 		setting.
-					// 		set( that.encodeValue( data ) );
-					// that.updateGridFlag('#_sid_' + device +'-' + that.insertRow);
-					// that.updateItemsPositions(this);
-					// that.updateAllGrids();
-					// that.save();
+					that.moveToPoint(this, that.insertPoint-1);
+					that.addNewWidget($(this), $('#_sid_' + device +'-' + that.insertRow));
+					that.sortGrid( '#_sid_' + device +'-' + that.insertRow );
+					that.insertRow = null;
+					that.insertPoint = null;
+					// that.drag_drop();
 				} );
 			},
 			remove: function() {
