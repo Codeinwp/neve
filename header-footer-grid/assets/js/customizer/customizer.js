@@ -200,6 +200,7 @@
 				'.builder-item-focus .item--preview-name, .builder-item-focus .edit-row-action',
 				function(e) {
 					e.preventDefault();
+					e.stopPropagation();
 					var p = $( this ).closest( '.builder-item-focus' );
 					var section_id = p.attr( 'data-section' ) || '';
 					if ( section_id ) {
