@@ -61,6 +61,7 @@ window.addEventListener( 'load', function() {
 		'tablet': 'min-width: 576px',
 		'desktop': 'min-width: 961px'
 	};
+
 	_.each( neveHFGPreview, function(settings, settingType) {
 		_.each( settings, function(args, settingId) {
 			wp.customize( settingId, function(setting) {
@@ -155,7 +156,7 @@ window.addEventListener( 'load', function() {
 							}
 							addCss( settingId, style );
 							break;
-						case 'neve_spacing':
+						case '\\Neve\\Customizer\\Controls\\React\\Spacing':
 							for ( let device in deviceMap ) {
 								style += '@media (' + deviceMap[device] + ') { body ' +
 										args.selector + '{';
