@@ -30,9 +30,21 @@ class SpacingComponent extends Component {
 		if ( !this.shouldValuesBeLinked() ) {
 			this.state.linked = false;
 		}
+
+		let defaultParams = {
+			min: -300,
+			max: 300
+		};
+
+		this.controlParams = props.control.params.input_attrs ? {
+			...defaultParams,
+			...props.control.params.input_attrs
+		} : defaultParams;
+
 	}
 
 	render() {
+
 		let options = [
 			{
 				'type': 'top',
@@ -62,6 +74,10 @@ class SpacingComponent extends Component {
 							}}
 					>
 						<SizingControl
+								min={this.controlParams.min}
+								max={this.controlParams.max}
+								step={this.state.value[this.state.currentDevice + '-unit'] ===
+								'em' ? 0.1 : 1}
 								options={options}
 								linked={this.state.linked}
 								onLinked={() => this.setState( { linked: !this.state.linked } )}
@@ -108,6 +124,11 @@ class SpacingComponent extends Component {
 							onClick={() => {
 								let value = { ...self.state.value };
 								value[self.state.currentDevice + '-unit'] = type;
+								if( type !== 'em') {
+									value[self.state.currentDevice] = mapValues(
+											value[self.state.currentDevice],
+											(value) => value ? parseInt( value ) : value );
+								}
 								self.setState( { value } );
 								self.props.control.setting.set( value );
 							}}
