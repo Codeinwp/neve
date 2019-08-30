@@ -34,7 +34,7 @@ class CustomHtml extends Abstract_Component {
 	public function init() {
 		$this->set_property( 'label', __( 'HTML', 'neve' ) );
 		$this->set_property( 'id', $this->get_class_const( 'COMPONENT_ID' ) );
-		$this->set_property( 'width', 2 );
+		$this->set_property( 'width', 3 );
 
 		add_filter( 'wp_kses_allowed_html', array( $this, 'allow_input_form_tags' ), 10, 2 );
 	}
