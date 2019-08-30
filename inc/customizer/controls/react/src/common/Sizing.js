@@ -22,7 +22,6 @@ class SizingControl extends Component {
 									<Dropdown
 											position="top center"
 											focusOnMount={false}
-											onBlur={() => {console.log('aaaa')}}
 											renderToggle={({ isOpen, onToggle }) => (
 													<input
 															type="number"
@@ -79,15 +78,29 @@ class SizingControl extends Component {
 								onClick={() => this.props.onLinked()}
 						/>
 					</div>
+					{ this.hasSetValues() && <div className="nv-sizing-reset">
+						<IconButton
+								onClick={this.props.onReset}
+								tooltip={__( 'Reset all Values', 'neve' )}
+								icon="image-rotate"
+								className="reset">
+						</IconButton>
+					</div> }
 				</div>
 		);
+	}
+
+	hasSetValues() {
+		return  this.props.options.filter( option => option.value ).length > 0;
 	}
 }
 
 SizingControl.propTypes = {
+	options: PropTypes.array.isRequired,
 	onLinked: PropTypes.func.isRequired,
 	onChange: PropTypes.func.isRequired,
-	linked: PropTypes.bool.isRequired
+	linked: PropTypes.bool.isRequired,
+	onReset: PropTypes.func,
 };
 
 export default SizingControl;

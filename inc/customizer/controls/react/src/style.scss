@@ -137,8 +137,8 @@
     height: 23px;
     line-height: 1;
     font-size: 11px;
-    color: #000;
-    border: 1px solid #333;
+    color: #555;
+    border: 1px solid #999;
     box-shadow: none;
     background: #fff;
     &.is-active {
@@ -188,15 +188,15 @@
       align-items: center;
       margin: 0;
       input[type="number"] {
-        width: 25%;
+        width: 27%;
       }
     }
   }
-  .nv-sizing-item,
-  .nv-sizing-link {
-    width: calc(20% + 1px);
+  .nv-sizing-item {
+    width: calc(19% + 1px);
   }
-  .nv-sizing-link {
+  .nv-sizing-link, .nv-sizing-reset {
+    width: calc(12% + 1px);
     margin-left: -1px;
     button {
       width: 100%;
@@ -205,7 +205,7 @@
       align-items: center;
       justify-content: center;
       justify-items: center;
-      border: 1px solid #333;
+      border: 1px solid #999;
       border-radius: 0 3px 3px 0;
       background: #fff;
       &.is-linked {
@@ -216,7 +216,7 @@
   }
   .nv-sizing-item {
   input[type="number"] {
-    border: 1px solid #333;
+    border: 1px solid #999;
     border-radius: 0;
   }
     &:not(:first-child) {
@@ -233,6 +233,6 @@
     text-align: center;
     display: block;
     font-weight: 300;
-    color: #333;
+    color: #555;
   }
 }

@@ -91,8 +91,8 @@
     height: 23px;
     line-height: 1;
     font-size: 11px;
-    color: #000;
-    border: 1px solid #333;
+    color: #555;
+    border: 1px solid #999;
     box-shadow: none;
     background: #fff; }
     .neve-units .components-button.is-button.is-active {
@@ -131,27 +131,27 @@
     align-items: center;
     margin: 0; }
     .neve-responsive-sizing .range-control .components-base-control__field input[type="number"] {
-      width: 25%; }
-  .neve-responsive-sizing .nv-sizing-item,
-  .neve-responsive-sizing .nv-sizing-link {
-    width: calc(20% + 1px); }
-  .neve-responsive-sizing .nv-sizing-link {
+      width: 27%; }
+  .neve-responsive-sizing .nv-sizing-item {
+    width: calc(19% + 1px); }
+  .neve-responsive-sizing .nv-sizing-link, .neve-responsive-sizing .nv-sizing-reset {
+    width: calc(12% + 1px);
     margin-left: -1px; }
-    .neve-responsive-sizing .nv-sizing-link button {
+    .neve-responsive-sizing .nv-sizing-link button, .neve-responsive-sizing .nv-sizing-reset button {
       width: 100%;
       padding: 3px;
       flex-direction: row;
       align-items: center;
       justify-content: center;
       justify-items: center;
-      border: 1px solid #333;
+      border: 1px solid #999;
       border-radius: 0 3px 3px 0;
       background: #fff; }
-      .neve-responsive-sizing .nv-sizing-link button.is-linked {
+      .neve-responsive-sizing .nv-sizing-link button.is-linked, .neve-responsive-sizing .nv-sizing-reset button.is-linked {
         background: #008dc2;
         color: #fff; }
   .neve-responsive-sizing .nv-sizing-item input[type="number"] {
-    border: 1px solid #333;
+    border: 1px solid #999;
     border-radius: 0; }
   .neve-responsive-sizing .nv-sizing-item:not(:first-child) {
     margin-left: -1px; }
@@ -164,4 +164,4 @@
     text-align: center;
     display: block;
     font-weight: 300;
-    color: #333; }
+    color: #555; }

@@ -11,7 +11,6 @@ const {
 const {
 	ButtonGroup,
 	Button,
-	Dashicon
 } = wp.components;
 const {
 	mapValues
@@ -84,27 +83,20 @@ class SpacingComponent extends Component {
 								onChange={(optionType, numericValue) => {
 									this.updateValues( optionType, numericValue );
 								}}
+								onReset={() => {
+									let devices = ['mobile', 'desktop', 'tablet'];
+									let value = { ...this.state.value };
+									devices.map( (device) => {
+										value[device] = mapValues( value[device], () => '' );
+									} );
+									this.setState( { value } );
+									this.props.control.setting.set( value );
+								}}
 						/>
 						<div className="neve-units">
 							<ButtonGroup className="units">
 								{this.getButtons()}
 							</ButtonGroup>
-							<Button
-									isLink
-									isDestructive
-									onClick={() => {
-										let devices = ['mobile', 'desktop', 'tablet'];
-										let value = { ...this.state.value };
-										devices.map( (device) => {
-											value[device] = mapValues( value[device], () => '' );
-										} );
-										this.setState( { value } );
-										this.props.control.setting.set( value );
-									}}
-									tooltip={__( 'Reset all Values', 'neve' )}
-									className="reset">
-								<Dashicon icon="image-rotate"/>
-							</Button>
 						</div>
 					</ResponsiveControl>
 				</Fragment>
