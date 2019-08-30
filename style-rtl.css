@@ -5,10 +5,11 @@ Theme URI:      https://themeisle.com/themes/neve/
 Author:         ThemeIsle
 Author URI:     https://themeisle.com
 Description:    Neve is a super fast, easily customizable, multi-purpose theme. It’s perfect for blogs, small business, startups, agencies, firms, e-commerce shops (WooCommerce storefront) as well as personal portfolio sites and most types of projects. A fully AMP optimized and responsive theme, Neve will load in mere seconds and adapt perfectly on any viewing device. While it is lightweight and has a minimalist design, the theme is highly extendable, it has a highly SEO optimized code, resulting in top rankings in Google search results. Neve works perfectly with Gutenberg and the most popular page builders (Elementor, Brizy, Beaver Builder, Visual Composer, SiteOrigin, Divi). Neve is also WooCommerce ready, responsive, RTL & translation ready. Look no further. Neve is the perfect theme for you!
-Version:        2.4.0
+Version:        2.4.1
 License:        GNU General Public License v2 or later
 License URI:    http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain:    neve
+Pro Slug:  neve-pro-addon
 WordPress Available:  yes
 Requires License:     no
 Tags: blog, custom-logo, e-commerce, rtl-language-support, post-formats, grid-layout, one-column, two-columns, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, accessibility-ready, wide-blocks, block-styles, footer-widgets, portfolio, left-sidebar, right-sidebar
@@ -2382,6 +2383,7 @@ audio {
 .page_header--row .page_header--row-inner .container .row {
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .page_header--row.layout-fullwidth .page_header--row-inner .container {
@@ -2397,6 +2399,7 @@ audio {
 .header--row .header--row-inner .container .row {
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .header--row.layout-fullwidth .header--row-inner .container {
@@ -2412,6 +2415,7 @@ audio {
 .footer--row .footer--row-inner .container .row {
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .footer--row.layout-fullwidth .footer--row-inner .container {

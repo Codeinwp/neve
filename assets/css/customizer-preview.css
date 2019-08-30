@@ -3,11 +3,11 @@
   overflow-x: hidden;
 }
 
-.customize-previewing .builder-item-focus.item--inner {
+.customize-previewing .builder-item-focus.item--inner, .customize-previewing .builder-item-focus.row--wrapper {
   position: relative;
 }
 
-.customize-previewing .builder-item-focus.item--inner.has_menu .item--preview-name {
+.customize-previewing .builder-item-focus.item--inner.has_menu .item--preview-name, .customize-previewing .builder-item-focus.row--wrapper.has_menu .item--preview-name {
   left: auto;
 }
 
@@ -27,13 +27,25 @@
   border-bottom-right-radius: 2px;
 }
 
-.customize-previewing .builder-item-focus:hover.item--inner {
+.customize-previewing .builder-item-focus .edit-row-action {
+  top: 0;
+  width: 26px;
+  position: absolute;
+  right: 0;
+  background: #0073aa;
+  fill: #FFFFFE;
+  font-size: 0;
+  display: none;
+  cursor: pointer;
+}
+
+.customize-previewing .builder-item-focus:hover.item--inner, .customize-previewing .builder-item-focus:hover.row--wrapper {
   transition-delay: 0s !important;
   outline: 1px solid #0073aa;
   outline-offset: -1px;
 }
 
-.customize-previewing .builder-item-focus:hover.item--inner .item--preview-name {
+.customize-previewing .builder-item-focus:hover.item--inner > .item--preview-name, .customize-previewing .builder-item-focus:hover.item--inner > .edit-row-action, .customize-previewing .builder-item-focus:hover.row--wrapper > .item--preview-name, .customize-previewing .builder-item-focus:hover.row--wrapper > .edit-row-action {
   display: block;
   z-index: 9999999;
 }

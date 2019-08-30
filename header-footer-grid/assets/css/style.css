@@ -18,7 +18,8 @@
 .page_header--row .page_header--row-inner,
 .page_header--row .page_header--row-inner .container .row {
   display: flex;
-  align-items: center; }
+  align-items: center;
+  position: relative; }
 
 .page_header--row.layout-fullwidth .page_header--row-inner .container {
   max-width: 100% !important; }
@@ -30,7 +31,8 @@
 .header--row .header--row-inner,
 .header--row .header--row-inner .container .row {
   display: flex;
-  align-items: center; }
+  align-items: center;
+  position: relative; }
 
 .header--row.layout-fullwidth .header--row-inner .container {
   max-width: 100% !important; }
@@ -42,7 +44,8 @@
 .footer--row .footer--row-inner,
 .footer--row .footer--row-inner .container .row {
   display: flex;
-  align-items: center; }
+  align-items: center;
+  position: relative; }
 
 .footer--row.layout-fullwidth .footer--row-inner .container {
   max-width: 100% !important; }
