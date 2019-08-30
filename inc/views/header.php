@@ -111,7 +111,7 @@ class Header extends Base_View {
 		}
 		$search = '';
 
-		$search .= '<' . esc_attr( $tag ) . ' class="' . esc_attr( $class ) . '" tabindex="0" aria-label="search">';
+		$search .= apply_filters( 'neve_search_menu_item_filter', '<' . esc_attr( $tag ) . ' class="' . esc_attr( $class ) . '" tabindex="0" aria-label="search">' );
 		$search .= '<a>' . neve_search_icon() . '</a>';
 		$search .= '<div class="nv-nav-search">';
 		if ( $responsive === true ) {

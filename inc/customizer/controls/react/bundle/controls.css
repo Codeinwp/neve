@@ -82,3 +82,86 @@
   .neve-background-type-control button {
     width: 50%;
     justify-content: center; }
+
+.neve-units {
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 20px; }
+  .neve-units .components-button.is-button {
+    height: 23px;
+    line-height: 1;
+    font-size: 11px;
+    color: #000;
+    border: 1px solid #333;
+    box-shadow: none;
+    background: #fff; }
+    .neve-units .components-button.is-button.is-active {
+      background: #008dc2;
+      color: #fff; }
+  .neve-units .reset {
+    margin-left: auto; }
+
+.neve-responsive-control-bar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 10px; }
+  .neve-responsive-control-bar .customize-control-title {
+    margin: 0; }
+  .neve-responsive-control-bar .floating-controls {
+    margin-left: auto; }
+  .neve-responsive-control-bar .neve-devices-dropdown {
+    display: flex;
+    flex-direction: column; }
+    .neve-responsive-control-bar .neve-devices-dropdown button {
+      padding: 10px 20px;
+      display: flex; }
+      .neve-responsive-control-bar .neve-devices-dropdown button.is-selected {
+        color: #fff;
+        background-color: #008dc2; }
+      .neve-responsive-control-bar .neve-devices-dropdown button svg {
+        margin-right: 10px; }
+
+.neve-responsive-sizing {
+  display: flex; }
+  .neve-responsive-sizing .range-control .components-base-control__field {
+    padding: 10px;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    margin: 0; }
+    .neve-responsive-sizing .range-control .components-base-control__field input[type="number"] {
+      width: 25%; }
+  .neve-responsive-sizing .nv-sizing-item,
+  .neve-responsive-sizing .nv-sizing-link {
+    width: calc(20% + 1px); }
+  .neve-responsive-sizing .nv-sizing-link {
+    margin-left: -1px; }
+    .neve-responsive-sizing .nv-sizing-link button {
+      width: 100%;
+      padding: 3px;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      justify-items: center;
+      border: 1px solid #333;
+      border-radius: 0 3px 3px 0;
+      background: #fff; }
+      .neve-responsive-sizing .nv-sizing-link button.is-linked {
+        background: #008dc2;
+        color: #fff; }
+  .neve-responsive-sizing .nv-sizing-item input[type="number"] {
+    border: 1px solid #333;
+    border-radius: 0; }
+  .neve-responsive-sizing .nv-sizing-item:not(:first-child) {
+    margin-left: -1px; }
+  .neve-responsive-sizing .nv-sizing-item:first-child input {
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px; }
+  .neve-responsive-sizing label {
+    text-transform: uppercase;
+    font-size: 11px;
+    text-align: center;
+    display: block;
+    font-weight: 300;
+    color: #333; }

@@ -56,7 +56,11 @@ window.addEventListener( 'load', function() {
 				}
 			}.bind( this )
 	);
-
+	let deviceMap = {
+		'mobile': 'max-width: 576px',
+		'tablet': 'min-width: 576px',
+		'desktop': 'min-width: 961px'
+	};
 	_.each( neveHFGPreview, function(settings, settingType) {
 		_.each( settings, function(args, settingId) {
 			wp.customize( settingId, function(setting) {
@@ -67,7 +71,9 @@ window.addEventListener( 'load', function() {
 							if ( newValue.type === 'color' ) {
 								style += 'body ' + args.selector + '{' +
 										'background-image: none !important;}';
-								let color = newValue.colorValue !== 'undefined' ? newValue.colorValue : 'inherit';
+								let color = newValue.colorValue !== 'undefined' ?
+										newValue.colorValue :
+										'inherit';
 								style += 'body ' + args.selector + '{' +
 										'background-color: ' + color +
 										' !important; }';
@@ -94,7 +100,9 @@ window.addEventListener( 'load', function() {
 							}
 							style += 'top: 0; bottom: 0; width: 100%; content:"";';
 							style += '}';
-							let color = newValue.overlayColorValue !== 'undefined' ? newValue.overlayColorValue : 'inherit';
+							let color = newValue.overlayColorValue !== 'undefined' ?
+									newValue.overlayColorValue :
+									'inherit';
 							style += args.selector + ':before { ' +
 									'content: "";' +
 									'position: absolute; top: 0; bottom: 0; width: 100%;' +
@@ -106,6 +114,14 @@ window.addEventListener( 'load', function() {
 									'{ background-color: transparent !important; }';
 							addCss( settingId, style );
 							break;
+						case '\\Neve\\Customizer\\Controls\\Button_Group':
+							let itemInner = document.querySelectorAll( args.selector );
+							_.each( itemInner, function(item) {
+								removeClass( item.parentNode,
+										'hfg-item-center hfg-item-right hfg-item-left' );
+								addClass( item.parentNode, 'hfg-item-' + newValue );
+							} );
+							break;
 						case '\\Neve\\Customizer\\Controls\\Radio_Image':
 							let elements = document.querySelectorAll( args.selector );
 							removeClass( elements, 'dark-mode light-mode' );
@@ -114,25 +130,46 @@ window.addEventListener( 'load', function() {
 						case '\\Neve\\Customizer\\Controls\\Range':
 							let value = JSON.parse( newValue );
 							if ( value.mobile > 0 ) {
-								style += '@media (max-width: 576px) { body ' + args.selector + '{ ' + args.additional.prop +':' +
+								style += '@media (max-width: 576px) { body ' + args.selector +
+										'{ ' + args.additional.prop + ':' +
 										value.mobile + args.additional.unit + ';}}';
 							} else {
 								style += '@media (max-width: 576px) { body ' + args.selector +
 										'{ ' + args.additional.prop + ':unset;}}';
 							}
 							if ( value.tablet > 0 ) {
-								style += '@media (min-width: 576px) { body ' + args.selector + '{ ' + args.additional.prop +':' +
+								style += '@media (min-width: 576px) { body ' + args.selector +
+										'{ ' + args.additional.prop + ':' +
 										value.tablet + args.additional.unit + ';}}';
 							} else {
 								style += '@media (min-width: 576px) { body ' + args.selector +
 										'{ ' + args.additional.prop + ':unset;}}';
 							}
 							if ( value.desktop > 0 ) {
-								style += '@media (min-width: 961px) { body ' + args.selector + '{ ' + args.additional.prop +':' +
+								style += '@media (min-width: 961px) { body ' + args.selector +
+										'{ ' + args.additional.prop + ':' +
 										value.desktop + args.additional.unit + ';}}';
 							} else {
 								style += '@media (min-width: 961px) { body ' + args.selector +
 										'{ ' + args.additional.prop + ':unset;}}';
+							}
+							addCss( settingId, style );
+							break;
+						case 'neve_spacing':
+							for ( let device in deviceMap ) {
+								style += '@media (' + deviceMap[device] + ') { body ' +
+										args.selector + '{';
+								for ( let optionType in newValue[device] ) {
+									if ( newValue[device][optionType] !== '' ) {
+										style += args.additional.prop + '-' + optionType + ':' +
+												newValue[device][optionType] +
+												newValue[device + '-unit'] + ';';
+									} else {
+										style += args.additional.prop + '-' + optionType +
+												': unset;';
+									}
+								}
+								style += '}}';
 							}
 							addCss( settingId, style );
 							break;

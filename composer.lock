@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "codeinwp/themeisle-sdk",
-            "version": "3.1.1",
+            "version": "3.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeinwp/themeisle-sdk.git",
-                "reference": "e3242627f3e77561e4f109f99399a1db9e231cf6"
+                "reference": "ede4dbdb119ad5b5d317f3866d68c90a45fe8179"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeinwp/themeisle-sdk/zipball/e3242627f3e77561e4f109f99399a1db9e231cf6",
-                "reference": "e3242627f3e77561e4f109f99399a1db9e231cf6",
+                "url": "https://api.github.com/repos/Codeinwp/themeisle-sdk/zipball/ede4dbdb119ad5b5d317f3866d68c90a45fe8179",
+                "reference": "ede4dbdb119ad5b5d317f3866d68c90a45fe8179",
                 "shasum": ""
             },
             "require-dev": {
@@ -42,7 +42,7 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2019-08-08T09:58:25+00:00"
+            "time": "2019-08-23T08:47:43+00:00"
         },
         {
             "name": "codeinwp/ti-about-page",
@@ -50,12 +50,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeinwp/ti-about-page.git",
-                "reference": "29909e4b38e5b44ff2548a1efb2fa01570700690"
+                "reference": "16b20e178d6ed956ec79e98867d11ecdc80bcc0a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeinwp/ti-about-page/zipball/29909e4b38e5b44ff2548a1efb2fa01570700690",
-                "reference": "29909e4b38e5b44ff2548a1efb2fa01570700690",
+                "url": "https://api.github.com/repos/Codeinwp/ti-about-page/zipball/16b20e178d6ed956ec79e98867d11ecdc80bcc0a",
+                "reference": "16b20e178d6ed956ec79e98867d11ecdc80bcc0a",
                 "shasum": ""
             },
             "type": "library",
@@ -77,7 +77,7 @@
             ],
             "description": "The theme about page for themeisle themes.",
             "homepage": "https://github.com/Codeinwp/ti-about-page",
-            "time": "2019-07-15T12:43:23+00:00"
+            "time": "2019-08-28T06:32:01+00:00"
         },
         {
             "name": "codeinwp/ti-onboarding",
