@@ -10,6 +10,22 @@
     float: left;
     position: relative;
   }
+  .components-color-picker__inputs-toggle {
+    margin-left: auto;
+  }
+  .components-tooltip.components-popover {
+    display: none;
+  }
+  .components-color-picker__inputs-field {
+    margin: 0;
+  }
+  .components-color-picker__inputs-wrapper {
+    display: flex;
+    align-items: flex-end;
+    .components-base-control__label {
+      margin: 0;
+    }
+  }
   .components-color-palette__item-wrapper {
     margin-right: 12px;
     span {

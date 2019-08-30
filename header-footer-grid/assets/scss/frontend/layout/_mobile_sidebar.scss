@@ -55,7 +55,7 @@
 
     .header-menu-sidebar-bg {
       &:before {
-        background: $light_bg;
+        background-color: $light_bg;
       }
     }
 
@@ -103,7 +103,7 @@
 
     .header-menu-sidebar-bg {
       &:before {
-        background: $dark_bg;
+        background-color: $dark_bg;
       }
     }
 

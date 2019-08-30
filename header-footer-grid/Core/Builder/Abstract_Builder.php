@@ -711,7 +711,7 @@ abstract class Abstract_Builder implements Builder {
 		}
 
 		if ( $row_index === 'sidebar' ) {
-			$selector = '.header-menu-sidebar-bg';
+			$selector = '.header-menu-sidebar .header-menu-sidebar-bg';
 		}
 
 		if ( $this->get_id() === 'header' ) {
