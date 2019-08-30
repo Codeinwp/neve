@@ -1604,41 +1604,55 @@ let CustomizeBuilderV1;
 					let data = JSON.parse(
 							wpcustomize.control( that.controlId ).setting.get() ),
 							device = $( this ).closest( '.hfg--widgets' ).data('device'),
-							initialWidth = $( this ).data( 'df-width' ),
+							width = $( this ).data( 'df-width' ),
 							itemId = $( this ).data( 'id' );
-
 					let dataInRow = data[device][that.insertRow];
 
-					dataInRow.push( {
+					console.log('insert', that.insertPoint);
+					console.log(width);
+					if( that.insertPoint + width > 12 ) {
+						width = 12 - that.insertPoint;
+					};
+
+					let newItem = {
 						x: that.insertPoint,
 						y: 1,
-						width: initialWidth,
+						width: width,
 						height: 1,
 						id: itemId
-					} );
+					};
+
+					dataInRow.push( newItem );
 
 					$(this).attr('data-gs-x', that.insertPoint);
+					$(this).attr('data-gs-width', width);
 
 					dataInRow.sort( function( current, next ) {
 						if( current.x < next.x ) return -1;
 						if( current.x > next.x ) return 1;
 						return 0;
 					} );
-
-					// let currentItemWidth =
-
+					console.log(dataInRow);
+					for ( let i = 0; i < dataInRow.length; i++ ) {
+						if( dataInRow[i].id === itemId ) {
+							if ( i === dataInRow.length - 1 ) {
+								if( dataInRow[i].x + dataInRow[i].width > 12 ) {
+									dataInRow[i].width = dataInRow[i].x + dataInRow[i].width - 12;
+									$(this).attr('data-gs-width', dataInRow[i].width);
+								}
+							} else {
+								if( dataInRow[i].x + dataInRow[i].width > dataInRow[i+1].x ) {
+									dataInRow[i].width = dataInRow[i+1].x - dataInRow[i].x;
+									$(this).attr('data-gs-width', dataInRow[i].width);
+								}
+							}
+						}
+					}
 					$('#_sid_' + device +'-' + that.insertRow,that.container).append( this );
 					that.addNewWidget($(this), $('#_sid_' + device +'-' + that.insertRow));
-
-					console.log(dataInRow);
-					// console.log(data);
-					// data[device][that.insertRow]
-
 					that.save();
-					// that.drag_drop();
 					that.insertRow = null;
 					that.insertPoint = null;
-					// console.log(event);
 				} );
 			},
 			remove: function() {
@@ -1651,9 +1665,10 @@ let CustomizeBuilderV1;
 						let item = $( this ).closest( ".grid-stack-item" ),
 						panel = item.closest( ".hfg--device-panel" ),
 						device = panel[0].getAttribute('data-device');
-						item.attr( "data-gs-width", 1 );
+
 						item.attr( "data-gs-x", 0 );
-						item.removeAttr( "style" );
+						// $(this).attr('data-gs-width', item.attr('data-df-width'));
+							item.removeAttr( "style" );
 						$(that.widgetSidebarContainer).find(".hfg--widgets-" + device).append(item);
 						$( '#accordion-section-' + item[0].dataset.section ).addClass( "hfg-section-inactive" );
 						that.updateAllGrids();
@@ -1980,3 +1995,14 @@ let CustomizeBuilderV1;
 		}
 	} );
 } )( jQuery, wp.customize || null );
+
+hashCode = function( string ) {
+	var hash = 0, i, chr;
+	if (string.length === 0) return hash;
+	for (i = 0; i < this.length; i++) {
+		chr   = this.charCodeAt(i);
+		hash  = ((hash << 5) - hash) + chr;
+		hash |= 0; // Convert to 32bit integer
+	}
+	return hash;
+};
