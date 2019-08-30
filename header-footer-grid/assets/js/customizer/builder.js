@@ -225,9 +225,6 @@ let CustomizeBuilderV1;
 					}
 				}
 			},
-			moveToPoint: function( item, coordinate ) {
-				$(item).attr('data-gs-x', coordinate);
-			},
 			gridster: function( $wrapper, ui, event ) {
 				let flag = [];
 				let maxCol = this.cols;
@@ -1610,22 +1607,38 @@ let CustomizeBuilderV1;
 							initialWidth = $( this ).data( 'df-width' ),
 							itemId = $( this ).data( 'id' );
 
-					$('#_sid_' + device +'-' + that.insertRow,that.container).append( this );
-					data[device][that.insertRow].push( {
-						x: that.insertPoint - 1,
+					let dataInRow = data[device][that.insertRow];
+
+					dataInRow.push( {
+						x: that.insertPoint,
 						y: 1,
 						width: initialWidth,
 						height: 1,
 						id: itemId
 					} );
-					that.updateAllGrids();
-					that.save();
-					that.moveToPoint(this, that.insertPoint-1);
+
+					$(this).attr('data-gs-x', that.insertPoint);
+
+					dataInRow.sort( function( current, next ) {
+						if( current.x < next.x ) return -1;
+						if( current.x > next.x ) return 1;
+						return 0;
+					} );
+
+					// let currentItemWidth =
+
+					$('#_sid_' + device +'-' + that.insertRow,that.container).append( this );
 					that.addNewWidget($(this), $('#_sid_' + device +'-' + that.insertRow));
-					that.sortGrid( '#_sid_' + device +'-' + that.insertRow );
+
+					console.log(dataInRow);
+					// console.log(data);
+					// data[device][that.insertRow]
+
+					that.save();
+					// that.drag_drop();
 					that.insertRow = null;
 					that.insertPoint = null;
-					// that.drag_drop();
+					// console.log(event);
 				} );
 			},
 			remove: function() {
