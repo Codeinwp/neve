@@ -88,9 +88,4 @@ namespace HFG;
 	</div>
 			<# } #>
 			<# } #>
-
-	<h4 class="hfg--widgets-info"><?php esc_html_e( 'Available components', 'neve' ); ?>
-		<i class="dashicons dashicons-info"></i>
-		<span class="tooltip"><?php esc_html_e( 'To activate a component, drag it to one of the upper rows.', 'neve' ); ?></span>
-	</h4>
 </script>

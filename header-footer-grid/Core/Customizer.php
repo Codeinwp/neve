@@ -275,7 +275,11 @@ class Customizer {
 			>
 				<div class="item-tooltip" data-section="{{ data.section }}">{{ data.name }}</div>
 				<div class="grid-stack-item-content">
+					<div class="hfg--sidebar-visible icon"><i class="dashicons dashicons-{{data.icon}}"></i></div>
 					<span class="hfg--cb-item-name" data-section="{{ data.section }}">{{ data.name }}</span>
+					<# if(data.description) { #>
+					<div class="hfg--sidebar-visible description">{{data.description}}</div>
+					<# } #>
 					<span class="hfg--cb-item-remove hfg-cb-icon"></span>
 					<span class="hfg--cb-item-setting hfg-cb-icon" data-section="{{ data.section }}"></span>
 				</div>

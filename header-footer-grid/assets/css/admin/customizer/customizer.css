@@ -1645,60 +1645,6 @@
 .builder-item-moving .ui-resizable-handle {
   display: none !important; }
 
-.hfg-available-items {
-  clear: both;
-  margin-top: 10px;
-  width: 100%;
-  display: inline-block; }
-  .hfg-available-items:before, .hfg-available-items:after {
-    content: "";
-    display: block;
-    clear: both; }
-  .hfg-available-items:after {
-    clear: both; }
-  .hfg-available-items:empty {
-    border: 1px dashed #ccc;
-    height: 35px;
-    background-color: #eee; }
-  .hfg-available-items.hfg--panel-hide {
-    height: 0px;
-    overflow: hidden;
-    display: block;
-    visibility: hidden; }
-  .hfg-available-items:before, .hfg-available-items:after {
-    content: "";
-    display: block;
-    clear: both; }
-  .hfg-available-items:after {
-    clear: both; }
-  .hfg-available-items .grid-stack-item-content {
-    padding: 6px 15px;
-    border: 1px solid #ddd;
-    margin-right: 10px;
-    cursor: -webkit-grab;
-    cursor: -moz-grab;
-    box-shadow: 0 1px 0 #ccc;
-    background: #f7f7f7;
-    color: #555555;
-    border-radius: 2px; }
-    .hfg-available-items .grid-stack-item-content:hover {
-      color: #23282d;
-      background: #fafafa;
-      border-color: #999; }
-    .hfg-available-items .grid-stack-item-content:active {
-      cursor: -webkit-grabbing;
-      cursor: -moz-grabbing; }
-  .hfg-available-items * {
-    box-sizing: content-box; }
-  .hfg-available-items .grid-stack-item {
-    float: left;
-    width: auto !important; }
-    .hfg-available-items .grid-stack-item .item-tooltip {
-      display: none; }
-  .hfg-available-items .hfg--cb-item-setting,
-  .hfg-available-items .hfg--cb-item-remove {
-    display: none; }
-
 .grid-stack > .grid-stack-item > .grid-stack-item-content {
   overflow: hidden !important; }
 
@@ -2738,35 +2684,6 @@
   padding-top: 8px;
   color: #888888; }
 
-.hfg--widgets-info {
-  width: 100%;
-  margin-bottom: 0;
-  color: #555555;
-  display: flex;
-  align-items: center;
-  position: relative; }
-  .hfg--widgets-info i {
-    line-height: 20px;
-    margin-left: 5px;
-    font-size: 18px;
-    cursor: pointer; }
-    .hfg--widgets-info i:hover {
-      opacity: .75; }
-      .hfg--widgets-info i:hover + .tooltip {
-        display: block; }
-  .hfg--widgets-info .tooltip {
-    background: rgba(0, 0, 0, 0.6);
-    color: #fff;
-    border-radius: 3px;
-    font-weight: 300;
-    font-size: 12px;
-    padding: 5px;
-    position: absolute;
-    top: -30px;
-    left: 20px;
-    z-index: 200;
-    display: none; }
-
 :root .grid-stack-item > .ui-resizable-handle {
   filter: none; }
 
@@ -3038,7 +2955,8 @@ ul[id^="sub-accordion-panel-hfg"] > li.hfg-section-inactive {
   align-items: center;
   justify-content: center; }
   .row--grid > div:hover .add-button--grid {
-    opacity: .5; }
+    opacity: .5;
+    background: #00a0d2; }
     .row--grid > div:hover .add-button--grid:hover {
       opacity: 1; }
 
@@ -3048,10 +2966,10 @@ ul[id^="sub-accordion-panel-hfg"] > li.hfg-section-inactive {
   cursor: pointer;
   z-index: 1000;
   position: relative;
-  background: #00a0d2;
+  background: #ccc;
   line-height: 21px;
   color: #fff;
-  border: none;
+  border: 1px solid transparent;
   border-radius: 50%;
   height: 26px;
   width: 26px;
@@ -3059,6 +2977,8 @@ ul[id^="sub-accordion-panel-hfg"] > li.hfg-section-inactive {
   padding: 0;
   font-weight: 600;
   font-size: 22px; }
+  .add-button--grid.hfg-highlight {
+    opacity: 0.4; }
   .add-button--grid:focus {
     outline: none;
     border: 1px solid #0360d2; }
@@ -3135,5 +3055,32 @@ body.hfg--widgets-open .wp-full-overlay:after {
         background-color: transparent; }
       .hfg--widgets-panel .hfg--widgets .grid-stack-item .hfg-cb-icon, .hfg--widgets-panel .hfg--widgets .grid-stack-item .item-tooltip {
         display: none; }
+
+.hfg--sidebar-visible {
+  display: none; }
+
+.hfg--widgets-panel .hfg--sidebar-visible {
+  display: block; }
+  .hfg--widgets-panel .hfg--sidebar-visible.icon {
+    position: absolute;
+    left: 15px; }
+  .hfg--widgets-panel .hfg--sidebar-visible.description {
+    color: #72777c;
+    font-weight: 300;
+    font-size: 12px;
+    padding-top: 5px; }
+
+.hfg--widgets-panel .grid-stack-item-content {
+  display: flex;
+  flex-direction: column; }
+  .hfg--widgets-panel .grid-stack-item-content i {
+    margin-right: 10px; }
+
+.hfg-highlight {
+  animation: hfg-highlight 1s infinite; }
+
+@keyframes hfg-highlight {
+  50% {
+    border-color: #03a9f4; } }
 
 /*# sourceMappingURL=customizer.css.map */

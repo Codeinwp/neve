@@ -127,17 +127,6 @@ let CustomizeBuilderV1;
 
 						that.panels[device]["sidebar"] = sidebar;
 					}
-
-					$(
-						".hfg-available-items .grid-stack-item",
-						panel
-					).resizable( {
-						handles: "w, e",
-						stop: function( event, ui ) {
-							that.setGridWidth( ui.element.parent(), ui );
-							that.save();
-						}
-					} );
 				} );
 			},
 			sortGrid: function( $wrapper ) {
@@ -1395,16 +1384,7 @@ let CustomizeBuilderV1;
 			addAvailableItems: function() {
 				let that = this;
 				_.each( that.devices, function( deviceName, device ) {
-					let $itemWrapper = $(
-						'<div class="hfg-available-items" data-device="' +
-						device +
-						'"></div>'
-					);
-					$( ".hfg--panel-" + device, that.container ).append(
-						$itemWrapper
-					);
 					_.each( that.items, function( node ) {
-
 						let _d = true;
 						if (
 							!_.isUndefined( node.devices ) &&
@@ -1428,7 +1408,6 @@ let CustomizeBuilderV1;
 						}
 						if ( _d ) {
 							let item = that.addItem( node );
-							// $itemWrapper.append( item );
 							$( '.hfg--widgets-' + device, that.widgetSidebarContainer ).append(item);
 							$( '#accordion-section-' + node.section ).addClass( "hfg-section-inactive" );
 						}
@@ -1606,14 +1585,8 @@ let CustomizeBuilderV1;
 							device = $( this ).closest( '.hfg--widgets' ).data('device'),
 							width = $( this ).data( 'df-width' ),
 							itemId = $( this ).data( 'id' );
+
 					let dataInRow = data[device][that.insertRow];
-
-					console.log('insert', that.insertPoint);
-					console.log(width);
-					if( that.insertPoint + width > 12 ) {
-						width = 12 - that.insertPoint;
-					};
-
 					let newItem = {
 						x: that.insertPoint,
 						y: 1,
@@ -1632,7 +1605,7 @@ let CustomizeBuilderV1;
 						if( current.x > next.x ) return 1;
 						return 0;
 					} );
-					console.log(dataInRow);
+
 					for ( let i = 0; i < dataInRow.length; i++ ) {
 						if( dataInRow[i].id === itemId ) {
 							if ( i === dataInRow.length - 1 ) {
@@ -1648,7 +1621,14 @@ let CustomizeBuilderV1;
 							}
 						}
 					}
+					let item = $(this).find('.grid-stack-item-content');
+					// console.log(item);
+					item.addClass('hfg-highlight');
+					setTimeout( function() {
+						item.removeClass('hfg-highlight');
+					}, 3500 );
 					$('#_sid_' + device +'-' + that.insertRow,that.container).append( this );
+					console.log(this);
 					that.addNewWidget($(this), $('#_sid_' + device +'-' + that.insertRow));
 					that.save();
 					that.insertRow = null;
@@ -1715,6 +1695,10 @@ let CustomizeBuilderV1;
 			},
 			showPanel: function() {
 				let that = this;
+				this.container.find('.add-button--grid').addClass('hfg-highlight');
+				setTimeout (function () {
+					that.container.find('.add-button--grid').removeClass('hfg-highlight');
+				}, 1000);
 				this.container
 					.removeClass( "hfg--builder--hide" )
 					.addClass( "hfg--builder-show" );
@@ -1723,6 +1707,7 @@ let CustomizeBuilderV1;
 					$( "#customize-preview" )
 						.addClass( "cb--preview-panel-show" )
 						.css( { bottom: h - 1, "margin-top": "0px" } );
+
 				}, 100 );
 			},
 			hidePanel: function() {

@@ -39,6 +39,7 @@ ul[id^="sub-accordion-panel-hfg"] > li.hfg-section-inactive {
 
   &:hover .add-button--grid {
     opacity: .5;
+    background: #00a0d2;
 
     &:hover {
       opacity: 1;
@@ -52,10 +53,10 @@ ul[id^="sub-accordion-panel-hfg"] > li.hfg-section-inactive {
   cursor: pointer;
   z-index: 1000;
   position: relative;
-  background: #00a0d2;
+  background: #ccc;
   line-height: 21px;
   color: #fff;
-  border: none;
+  border: 1px solid transparent;
   border-radius: 50%;
   height: 26px;
   width: 26px;
@@ -63,7 +64,9 @@ ul[id^="sub-accordion-panel-hfg"] > li.hfg-section-inactive {
   padding: 0;
   font-weight: 600;
   font-size: 22px;
-
+  &.hfg-highlight {
+    opacity: 0.4;
+  }
   &:focus {
     outline: none;
     border: 1px solid #0360d2;
@@ -156,5 +159,42 @@ body.hfg--widgets-open .wp-full-overlay:after {
         display: none;
       }
     }
+  }
+}
+
+.hfg--sidebar-visible {
+  display: none;
+}
+
+.hfg--widgets-panel {
+  .hfg--sidebar-visible {
+    display: block;
+    &.icon {
+      position: absolute;
+      left: 15px;
+    }
+    &.description {
+      color: #72777c;
+      font-weight: 300;
+      font-size: 12px;
+      padding-top: 5px;
+    }
+  }
+  .grid-stack-item-content {
+    display: flex;
+    flex-direction: column;
+    i {
+      margin-right: 10px;
+    }
+  }
+}
+
+.hfg-highlight {
+  animation: hfg-highlight 1s infinite;
+}
+
+@keyframes hfg-highlight {
+  50% {
+    border-color: #03a9f4;
   }
 }

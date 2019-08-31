@@ -77,6 +77,14 @@ abstract class Abstract_Component implements Component {
 	 * @var string $section
 	 */
 	protected $section;
+
+	/**
+	 * The section icon.
+	 *
+	 * @access protected
+	 * @var string $icon
+	 */
+	protected $icon = 'welcome-widgets-menus';
 	/**
 	 * The component default width.
 	 *
@@ -154,6 +162,7 @@ abstract class Abstract_Component implements Component {
 		$this->init();
 
 		$this->set_property( 'panel', $panel );
+		$this->set_property('icon', $this->icon);
 		if ( $this->section === null ) {
 			$this->set_property( 'section', $this->get_id() );
 		}
@@ -234,6 +243,7 @@ abstract class Abstract_Component implements Component {
 			'id'          => $this->id,
 			'width'       => $this->width,
 			'section'     => $this->section, // Customizer section to focus when click settings.
+			'icon'        => $this->icon
 		);
 	}
 
