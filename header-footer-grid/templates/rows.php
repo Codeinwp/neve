@@ -83,6 +83,11 @@ namespace HFG;
 			<div class="hfg--row-inner">
 				<div class="row--title">{{ data.rows.sidebar.title || data.rows.sidebar }}</div>
 				<div class="hfg--cb-items hfg--sidebar-items" data-id="sidebar"></div>
+				<div class="row--grid">
+					<div>
+						<button class="add-button--grid" data-slot="1">+</button>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

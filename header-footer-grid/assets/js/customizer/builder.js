@@ -71,7 +71,7 @@ let CustomizeBuilderV1;
 						}
 						$( this ).attr( "id", id );
 					} );
-					$( ".grid-stack", panel ).each( function() {
+					$( ".grid-stack, .hfg--sidebar-items", panel ).each( function() {
 						let _id = $( this ).attr( "data-id" ) || "";
 						that.panels[device][_id] = $( this );
 						$( this ).droppable( {
@@ -92,7 +92,6 @@ let CustomizeBuilderV1;
 
 					let sidebar = $( "#_sid_mobile-sidebar", panel );
 					let sidebarId = sidebar.attr( "id" ) || false;
-
 					$( ".grid-stack-item", panel ).draggable( {
 						revert: "invalid",
 						connectToSortable: sidebarId
@@ -1360,7 +1359,6 @@ let CustomizeBuilderV1;
 						'</span></a>'
 					);
 					$( ".hfg--cb-body", that.container ).append( panelHTML );
-					console.log(that.widgetSidebarContainer);
 					$( ".hfg-widgets-panel-inner", that.widgetSidebarContainer )
 					.append('<div class=" hfg--widgets hfg--widgets-' + device + '" data-device="' + device + '"></div>');
 				} );
@@ -1622,13 +1620,11 @@ let CustomizeBuilderV1;
 						}
 					}
 					let item = $(this).find('.grid-stack-item-content');
-					// console.log(item);
 					item.addClass('hfg-highlight');
 					setTimeout( function() {
 						item.removeClass('hfg-highlight');
 					}, 3500 );
 					$('#_sid_' + device +'-' + that.insertRow,that.container).append( this );
-					console.log(this);
 					that.addNewWidget($(this), $('#_sid_' + device +'-' + that.insertRow));
 					that.save();
 					that.insertRow = null;
