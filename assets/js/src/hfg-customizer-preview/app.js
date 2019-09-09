@@ -61,6 +61,7 @@ window.addEventListener( 'load', function() {
 		'tablet': 'min-width: 576px',
 		'desktop': 'min-width: 961px'
 	};
+
 	_.each( neveHFGPreview, function(settings, settingType) {
 		_.each( settings, function(args, settingId) {
 			wp.customize( settingId, function(setting) {
@@ -95,7 +96,10 @@ window.addEventListener( 'load', function() {
 									( newValue.focusPoint.y * 100 ).toFixed( 2 ) +
 									'% !important;';
 							style += 'background-size: cover !important;';
-							style += 'position: absolute; top: 0; bottom: 0; width: 100%; content:"";';
+							if( ! document.querySelector('.header-menu-sidebar').classList.contains('dropdown') ) {
+								style += 'position: absolute;';
+							}
+							style += 'top: 0; bottom: 0; width: 100%; content:"";';
 							style += '}';
 							let color = newValue.overlayColorValue !== 'undefined' ?
 									newValue.overlayColorValue :
@@ -152,7 +156,7 @@ window.addEventListener( 'load', function() {
 							}
 							addCss( settingId, style );
 							break;
-						case 'neve_spacing':
+						case '\\Neve\\Customizer\\Controls\\React\\Spacing':
 							for ( let device in deviceMap ) {
 								style += '@media (' + deviceMap[device] + ') { body ' +
 										args.selector + '{';

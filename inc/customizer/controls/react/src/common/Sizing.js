@@ -27,14 +27,16 @@ class SizingControl extends Component {
 															type="number"
 															id={i.type + '-input'}
 															value={i.value && i.value}
-															min={this.props.min || -300}
-															max={this.props.max || 300}
+															min={this.props.min}
+															max={this.props.max}
+															step={this.props.step}
 															onFocus={onToggle}
-															onFocusOut={onToggle}
-															onChange={e => this.props.onChange( i.type,
-																	parseInt( e.target.value ) === 0 ?
-																			0 :
-																			parseInt( e.target.value ) || '' )}
+															onChange={
+																e => this.props.onChange( i.type,
+																		e.target.value === 0 ?
+																				0 :
+																				e.target.value || '' )
+															}
 													/>
 											)}
 											renderContent={({ onToggle }) => (
@@ -44,10 +46,13 @@ class SizingControl extends Component {
 																initialPosition={i.value && i.value || 0}
 																beforeIcon="minus"
 																afterIcon="plus"
-																min={this.props.min || -300}
-																max={this.props.max || 300}
-																onChange={e => this.props.onChange( i.type,
-																		e === 0 ? 0 : e || '' )}
+																min={this.props.min}
+																max={this.props.max}
+																step={this.props.step}
+																onChange={
+																	e => this.props.onChange( i.type,
+																			e === 0 ? 0 : e || '' )
+																}
 														/>
 													</div>
 											)}
@@ -73,15 +78,29 @@ class SizingControl extends Component {
 								onClick={() => this.props.onLinked()}
 						/>
 					</div>
+					{ this.hasSetValues() && <div className="nv-sizing-reset">
+						<IconButton
+								onClick={this.props.onReset}
+								tooltip={__( 'Reset all Values', 'neve' )}
+								icon="image-rotate"
+								className="reset">
+						</IconButton>
+					</div> }
 				</div>
 		);
+	}
+
+	hasSetValues() {
+		return  this.props.options.filter( option => option.value ).length > 0;
 	}
 }
 
 SizingControl.propTypes = {
+	options: PropTypes.array.isRequired,
 	onLinked: PropTypes.func.isRequired,
 	onChange: PropTypes.func.isRequired,
-	linked: PropTypes.bool.isRequired
+	linked: PropTypes.bool.isRequired,
+	onReset: PropTypes.func,
 };
 
 export default SizingControl;
