@@ -289,9 +289,12 @@ class Customizer {
 		<script type="text/html" id="tmpl-hfg--widgets-sidebar">
 			<div class="hfg--widgets-panel" data-id="{{ data.id }}">
 				<div class="hfg-widgets-panel-header">
-					<button class="close button button-secondary">
+					<div class="hfg-component-search">
+						<i class="dashicons dashicons-search"></i>
+						<input class="component-search" type="search" placeholder="<?php esc_html_e( 'Search Components', 'neve' ); ?>..."/>
+					</div>
+					<button class="close button button-link">
 						<i class="dashicons dashicons-no"></i>
-						<span><?php esc_html_e( 'Close', 'neve' ); ?></span>
 					</button>
 				</div>
 				<div class="hfg-widgets-panel-inner"></div>

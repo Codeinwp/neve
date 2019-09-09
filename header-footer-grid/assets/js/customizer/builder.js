@@ -1548,6 +1548,7 @@ let CustomizeBuilderV1;
 			closeComponentsSidebar: function() {
 				$( '.widgets-panel--visible' ).removeClass( 'widgets-panel--visible' );
 				$( '.hfg--widgets.widgets--visible' ).removeClass( 'widgets--visible' );
+				$( this.widgetSidebarContainer ).find( '.component-search' ).val( '' ).trigger('keyup');
 				$('body').removeClass('hfg--widgets-open');
 			},
 			initComponentsSidebar: function() {
@@ -1555,7 +1556,7 @@ let CustomizeBuilderV1;
 				$( that.container ).on( 'click', '.add-button--grid', function(e) {
 					e.preventDefault();
 					that.closeComponentsSidebar();
-					$('body').addClass('hfg--widgets-open');
+					$( 'body' ).addClass( 'hfg--widgets-open' );
 					let panel = $( this ).closest( '.hfg--device-panel' ),
 							device = panel[0].getAttribute( 'data-device' );
 
@@ -1571,65 +1572,82 @@ let CustomizeBuilderV1;
 							addClass( 'widgets--visible' );
 				} );
 
-				$( '.hfg-widgets-panel-header .close' ).
-						on( 'click', function(e) {
+				$( that.widgetSidebarContainer ).
+						on( 'click', '.hfg-widgets-panel-header .close', function(e) {
 							that.closeComponentsSidebar();
 						} );
 
-				$(that.widgetSidebarContainer).on('click', '.grid-stack-item', function(e) {
-					that.closeComponentsSidebar();
-					let data = JSON.parse(
-							wpcustomize.control( that.controlId ).setting.get() ),
-							device = $( this ).closest( '.hfg--widgets' ).data('device'),
-							width = $( this ).data( 'df-width' ),
-							itemId = $( this ).data( 'id' );
+				$( that.widgetSidebarContainer ).
+						on( 'keyup input', '.component-search', function(e) {
+							let query = e.target.value.toLowerCase();
+							_.each( that.widgetSidebarContainer.find('.grid-stack-item'), function( item ) {
+								$(item).filter(function() {
+									$(this).toggle($(this).text().toLowerCase().indexOf(query) > -1);
+								});
+							} );
+						} );
 
-					let dataInRow = data[device][that.insertRow];
-					let newItem = {
-						x: that.insertPoint,
-						y: 1,
-						width: width,
-						height: 1,
-						id: itemId
-					};
+				$( that.widgetSidebarContainer ).
+						on( 'click', '.grid-stack-item', function(e) {
+							that.closeComponentsSidebar();
+							let data = JSON.parse(
+									wpcustomize.control( that.controlId ).setting.get() ),
+									device = $( this ).
+											closest( '.hfg--widgets' ).
+											data( 'device' ),
+									width = $( this ).data( 'df-width' ),
+									itemId = $( this ).data( 'id' );
 
-					dataInRow.push( newItem );
+							let dataInRow = data[device][that.insertRow];
+							let newItem = {
+								x: that.insertPoint,
+								y: 1,
+								width: width,
+								height: 1,
+								id: itemId
+							};
 
-					$(this).attr('data-gs-x', that.insertPoint);
-					$(this).attr('data-gs-width', width);
+							dataInRow.push( newItem );
 
-					dataInRow.sort( function( current, next ) {
-						if( current.x < next.x ) return -1;
-						if( current.x > next.x ) return 1;
-						return 0;
-					} );
+							$( this ).attr( 'data-gs-x', that.insertPoint );
+							$( this ).attr( 'data-gs-width', width );
 
-					for ( let i = 0; i < dataInRow.length; i++ ) {
-						if( dataInRow[i].id === itemId ) {
-							if ( i === dataInRow.length - 1 ) {
-								if( dataInRow[i].x + dataInRow[i].width > 12 ) {
-									dataInRow[i].width = dataInRow[i].x + dataInRow[i].width - 12;
-									$(this).attr('data-gs-width', dataInRow[i].width);
-								}
-							} else {
-								if( dataInRow[i].x + dataInRow[i].width > dataInRow[i+1].x ) {
-									dataInRow[i].width = dataInRow[i+1].x - dataInRow[i].x;
-									$(this).attr('data-gs-width', dataInRow[i].width);
+							dataInRow.sort( function(current, next) {
+								if ( current.x < next.x ) return -1;
+								if ( current.x > next.x ) return 1;
+								return 0;
+							} );
+
+							for ( let i = 0; i < dataInRow.length; i++ ) {
+								if ( dataInRow[i].id === itemId ) {
+									if ( i === dataInRow.length - 1 ) {
+										if ( dataInRow[i].x + dataInRow[i].width > 12 ) {
+											dataInRow[i].width = dataInRow[i].x + dataInRow[i].width -
+													12;
+											$( this ).attr( 'data-gs-width', dataInRow[i].width );
+										}
+									} else {
+										if ( dataInRow[i].x + dataInRow[i].width >
+												dataInRow[i + 1].x ) {
+											dataInRow[i].width = dataInRow[i + 1].x - dataInRow[i].x;
+											$( this ).attr( 'data-gs-width', dataInRow[i].width );
+										}
+									}
 								}
 							}
-						}
-					}
-					let item = $(this).find('.grid-stack-item-content');
-					item.addClass('hfg-highlight');
-					setTimeout( function() {
-						item.removeClass('hfg-highlight');
-					}, 3500 );
-					$('#_sid_' + device +'-' + that.insertRow,that.container).append( this );
-					that.addNewWidget($(this), $('#_sid_' + device +'-' + that.insertRow));
-					that.save();
-					that.insertRow = null;
-					that.insertPoint = null;
-				} );
+							let item = $( this ).find( '.grid-stack-item-content' );
+							item.addClass( 'hfg-highlight' );
+							setTimeout( function() {
+								item.removeClass( 'hfg-highlight' );
+							}, 3500 );
+							$( '#_sid_' + device + '-' + that.insertRow, that.container ).
+									append( this );
+							that.addNewWidget( $( this ),
+									$( '#_sid_' + device + '-' + that.insertRow ) );
+							that.save();
+							that.insertRow = null;
+							that.insertPoint = null;
+						} );
 			},
 			remove: function() {
 				let that = this;
