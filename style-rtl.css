@@ -2649,6 +2649,10 @@ audio {
   overflow: hidden;
 }
 
+.menu_sidebar_dropdown .header-menu-sidebar .close-sidebar-panel {
+  display: none;
+}
+
 .menu_sidebar_dropdown .header-menu-sidebar-inner {
   max-width: 48em;
   margin: 0 auto;
