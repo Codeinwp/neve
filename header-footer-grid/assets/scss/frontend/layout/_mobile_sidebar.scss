@@ -172,6 +172,9 @@
     visibility: visible;
     z-index: $menu_sidebar_active_z_index;
     overflow: hidden;
+    .close-sidebar-panel {
+      display: none;
+    }
   }
 
   .header-menu-sidebar-inner {
