@@ -77,3 +77,14 @@
     display: none;
   }
 }
+
+.customize-previewing {
+	.header-menu-sidebar {
+		.builder-item-focus {
+			.item--preview-name {
+				padding: 1px 3px;
+				font-size: 10px !important;
+			}
+		}
+	}
+}
