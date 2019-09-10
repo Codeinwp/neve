@@ -257,9 +257,13 @@
       margin-bottom: 0;
     }
 
-    .product-quantity {
-      float: right;
-    }
+		.variation {
+			margin-top: $spacing-xs;
+		}
+
+		td.product-total {
+			vertical-align: top;
+		}
 
     tr, td, th {
       border: none;
