@@ -276,29 +276,30 @@ abstract class Abstract_Component implements Component {
 			$padding_selector = $this->default_selector;
 		}
 		$margin_selector = '.builder-item--' . $this->get_id();
-
-
-		SettingsManager::get_instance()->add(
-			[
-				'id'                    => self::ALIGNMENT_ID,
-				'group'                 => $this->get_id(),
-				'tab'                   => SettingsManager::TAB_LAYOUT,
-				'transport'             => 'postMessage',
-				'sanitize_callback'     => 'wp_filter_nohtml_kses',
-				'default'               => $this->default_align,
-				'label'                 => __( 'Component Alignment', 'neve' ),
-				'type'                  => '\Neve\Customizer\Controls\Button_Group',
-				'live_refresh_selector' => $margin_selector,
-				'options'               => [
-					'choices' => [
-						'left'   => 'dashicons-editor-alignleft',
-						'center' => 'dashicons-editor-aligncenter',
-						'right'  => 'dashicons-editor-alignright',
+		if ( strpos( $this->get_id(), 'header_search' ) === false ||
+		     strpos( $this->get_id(), 'header_search_responsive' ) !== false ) {
+			SettingsManager::get_instance()->add(
+				[
+					'id'                    => self::ALIGNMENT_ID,
+					'group'                 => $this->get_id(),
+					'tab'                   => SettingsManager::TAB_LAYOUT,
+					'transport'             => 'postMessage',
+					'sanitize_callback'     => 'wp_filter_nohtml_kses',
+					'default'               => $this->default_align,
+					'label'                 => __( 'Component Alignment', 'neve' ),
+					'type'                  => '\Neve\Customizer\Controls\Button_Group',
+					'live_refresh_selector' => $margin_selector,
+					'options'               => [
+						'choices' => [
+							'left'   => 'dashicons-editor-alignleft',
+							'center' => 'dashicons-editor-aligncenter',
+							'right'  => 'dashicons-editor-alignright',
+						],
 					],
-				],
-				'section'               => $this->section,
-			]
-		);
+					'section'               => $this->section,
+				]
+			);
+		}
 
 		SettingsManager::get_instance()->add(
 			[
