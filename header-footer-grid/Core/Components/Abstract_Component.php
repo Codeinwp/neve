@@ -334,7 +334,8 @@ abstract class Abstract_Component implements Component {
 				'type'                  => '\Neve\Customizer\Controls\React\Spacing',
 				'options'               => [
 					'input_attrs' => array(
-						'min' => 0,
+						'min'                   => 0,
+						'hideResponsiveButtons' => true,
 					),
 				],
 				'live_refresh_selector' => $padding_selector,
@@ -377,6 +378,11 @@ abstract class Abstract_Component implements Component {
 				),
 				'label'                 => __( 'Margin', 'neve' ),
 				'type'                  => '\Neve\Customizer\Controls\React\Spacing',
+				'options'               => [
+					'input_attrs' => array(
+						'hideResponsiveButtons' => true,
+					),
+				],
 				'live_refresh_selector' => $margin_selector,
 				'live_refresh_css_prop' => array(
 					'prop' => 'margin',
