@@ -30,7 +30,7 @@ class ResponsiveControl extends Component {
 						<span
 								className="customize-control-title">{this.props.controlLabel}</span>
 						}
-						{false && <div className="floating-controls">
+						{!this.props.hideResponsive && <div className="floating-controls">
 							<Dropdown
 									position="top left"
 									renderToggle={({ isOpen, onToggle }) => (
