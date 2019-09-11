@@ -133,6 +133,7 @@ class Front_End {
 		$starter_site = $this->onboarding_config['local']['elementor'][ $slug_association[ $previous_theme ] ];
 		unset( $this->onboarding_config['local']['elementor'][ $slug_association[ $previous_theme ] ] );
 		$this->onboarding_config['local']['elementor'] = array( $slug_association[ $previous_theme ] => $starter_site ) + $this->onboarding_config['local']['elementor'];
+
 		return true;
 	}
 
@@ -149,9 +150,17 @@ class Front_End {
 			'editors'     => array(
 				'elementor',
 				'brizy',
+				'beaver builder',
 			),
 			'local'       => array(
-				'elementor' => array(
+				'beaver builder' => [
+					'neve-beaver-zelle' => array(
+						'url'        => 'https://demo.themeisle.com/neve-zelle-bb/',
+						'title'      => 'Travel Agency',
+						'screenshot' => $onboarding_folder_url . '/onboarding/neve-zelle/screenshot.jpg',
+					),
+				],
+				'elementor'      => array(
 					'neve-main'               => array(
 						'url'   => 'https://demo.themeisle.com/neve/',
 						'title' => 'Original',
@@ -261,7 +270,7 @@ class Front_End {
 						'unsplash_gallery' => 'https://unsplash.com/collections/8334242/creative-portfolio',
 					),
 				),
-				'brizy'     => array(
+				'brizy'          => array(
 					'neve-brizy-main'            => array(
 						'url'        => 'https://demo.themeisle.com/neve-onboarding-brizy/',
 						'title'      => 'Original',
