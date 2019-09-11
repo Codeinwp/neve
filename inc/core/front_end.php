@@ -195,9 +195,9 @@ class Front_End {
 						'unsplash_gallery' => 'https://unsplash.com/collections/6800490/fitness-gym',
 					),
 					'neve-beaver-vacation-rental'    => array(
-						'url'              => 'https://demo.themeisle.com/neve-bb-vacantion-rental/',
-						'title'            => 'Vacation Rental',
-						'screenshot'       => $onboarding_folder_url . '/onboarding/neve-vacation-rental/screenshot.jpg',
+						'url'        => 'https://demo.themeisle.com/neve-bb-vacantion-rental/',
+						'title'      => 'Vacation Rental',
+						'screenshot' => $onboarding_folder_url . '/onboarding/neve-vacation-rental/screenshot.jpg',
 					),
 					'neve-beaver-music-band'         => array(
 						'url'              => 'https://demo.themeisle.com/neve-bb-music-band/',

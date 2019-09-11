@@ -276,8 +276,7 @@ abstract class Abstract_Component implements Component {
 			$padding_selector = $this->default_selector;
 		}
 		$margin_selector = '.builder-item--' . $this->get_id();
-		if ( strpos( $this->get_id(), 'header_search' ) === false ||
-		     strpos( $this->get_id(), 'header_search_responsive' ) !== false ) {
+		if ( strpos( $this->get_id(), 'header_search' ) === false || strpos( $this->get_id(), 'header_search_responsive' ) !== false ) {
 			SettingsManager::get_instance()->add(
 				[
 					'id'                    => self::ALIGNMENT_ID,
