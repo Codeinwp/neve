@@ -361,7 +361,7 @@ class Front_End {
 					),
 					'neve-consultants'     => array(
 						'url'        => 'https://demo.themeisle.com/neve-consultants/',
-						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/06/neve-consulting-demo-screenshot-big.png',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/09/neve-business-consulting.jpg',
 						'title'      => 'Business Consulting',
 					),
 					'neve-job-listings'    => array(
