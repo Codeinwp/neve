@@ -1680,27 +1680,9 @@ pre {
   margin-bottom: 10px;
 }
 
-.nv-content-wrap dl:not(.gallery-item), .excerpt-wrap dl:not(.gallery-item) {
-  width: 100%;
-  overflow: hidden;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-row-gap: 40px;
-  margin: 20px 0;
-}
-
-.nv-content-wrap dt:not(.gallery-icon), .excerpt-wrap dt:not(.gallery-icon) {
-  border-right: 1px solid #f0f0f0;
-  padding: 0 20px;
-}
-
-.nv-content-wrap dt:not(.gallery-icon) dfn, .excerpt-wrap dt:not(.gallery-icon) dfn {
-  font-style: normal;
+.nv-content-wrap dt, .excerpt-wrap dt {
   font-weight: 600;
-}
-
-.nv-content-wrap dd:not(.gallery-caption), .excerpt-wrap dd:not(.gallery-caption) {
-  padding: 0 20px;
+  display: block;
 }
 
 .alignleft {
