@@ -109,6 +109,5 @@ class Core_Loader {
 		add_action( 'wp_enqueue_scripts', array( $front_end, 'enqueue_scripts' ) );
 		add_action( 'after_setup_theme', array( $front_end, 'setup_theme' ) );
 		add_action( 'widgets_init', array( $front_end, 'register_sidebars' ) );
-		add_filter( 'ti_onboarding_filter_cache_key', array( $front_end, 'register_onboarding_cache_key' ) );
 	}
 }

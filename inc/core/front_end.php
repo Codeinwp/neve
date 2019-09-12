@@ -25,17 +25,6 @@ class Front_End {
 	private $onboarding_config = array();
 
 	/**
-	 * Adds self to cache key.
-	 *
-	 * @param string $key the cache key from onboarding.
-	 *
-	 * @return string
-	 */
-	public function register_onboarding_cache_key( $key ) {
-		return $key . 'neve_' . NEVE_VERSION;
-	}
-
-	/**
 	 * Theme setup.
 	 */
 	public function setup_theme() {
