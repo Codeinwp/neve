@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
     "content-hash": "a1f97965e23ba6dd6fbca5ca44e333d3",
@@ -50,12 +50,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeinwp/ti-about-page.git",
-                "reference": "16b20e178d6ed956ec79e98867d11ecdc80bcc0a"
+                "reference": "b97cdd8a28af43920e33c0196b3093b86011b15f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeinwp/ti-about-page/zipball/16b20e178d6ed956ec79e98867d11ecdc80bcc0a",
-                "reference": "16b20e178d6ed956ec79e98867d11ecdc80bcc0a",
+                "url": "https://api.github.com/repos/Codeinwp/ti-about-page/zipball/b97cdd8a28af43920e33c0196b3093b86011b15f",
+                "reference": "b97cdd8a28af43920e33c0196b3093b86011b15f",
                 "shasum": ""
             },
             "type": "library",
@@ -77,20 +77,20 @@
             ],
             "description": "The theme about page for themeisle themes.",
             "homepage": "https://github.com/Codeinwp/ti-about-page",
-            "time": "2019-08-28T06:32:01+00:00"
+            "time": "2019-09-12 18:43:31"
         },
         {
             "name": "codeinwp/ti-onboarding",
-            "version": "1.7.3",
+            "version": "1.7.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeinwp/ti-onboarding.git",
-                "reference": "732ee290b0fa79f672fea5730e44651cb64d3b6d"
+                "reference": "f79cdf4a6432dd741d9cf0c1a091db63f5212015"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeinwp/ti-onboarding/zipball/732ee290b0fa79f672fea5730e44651cb64d3b6d",
-                "reference": "732ee290b0fa79f672fea5730e44651cb64d3b6d",
+                "url": "https://api.github.com/repos/Codeinwp/ti-onboarding/zipball/f79cdf4a6432dd741d9cf0c1a091db63f5212015",
+                "reference": "f79cdf4a6432dd741d9cf0c1a091db63f5212015",
                 "shasum": ""
             },
             "require-dev": {
@@ -117,7 +117,7 @@
             ],
             "description": "Onboarding for themeisle themes.",
             "homepage": "https://github.com/Codeinwp/ti-onboarding",
-            "time": "2019-09-12T12:18:28+00:00"
+            "time": "2019-09-12T17:42:40+00:00"
         }
     ],
     "packages-dev": [
@@ -161,9 +161,9 @@
             "authors": [
                 {
                     "name": "Franck Nijhof",
-                    "role": "Developer / IT Manager",
                     "email": "franck.nijhof@dealerdirect.com",
-                    "homepage": "http://www.frenck.nl"
+                    "homepage": "http://www.frenck.nl",
+                    "role": "Developer / IT Manager"
                 }
             ],
             "description": "PHP_CodeSniffer Standards Composer Installer Plugin",
@@ -480,23 +480,23 @@
             "authors": [
                 {
                     "name": "Theme Review Team",
-                    "role": "Strategy and rule setting",
-                    "homepage": "https://make.wordpress.org/themes/handbook/"
+                    "homepage": "https://make.wordpress.org/themes/handbook/",
+                    "role": "Strategy and rule setting"
                 },
                 {
                     "name": "Ulrich Pogson",
-                    "role": "Lead developer",
-                    "homepage": "https://github.com/grappler"
+                    "homepage": "https://github.com/grappler",
+                    "role": "Lead developer"
                 },
                 {
                     "name": "Juliette Reinders Folmer",
-                    "role": "Lead developer",
-                    "homepage": "https://github.com/jrfnl"
+                    "homepage": "https://github.com/jrfnl",
+                    "role": "Lead developer"
                 },
                 {
                     "name": "Denis Žoljom",
-                    "role": "Plugin integration lead",
-                    "homepage": "https://github.com/dingo-d"
+                    "homepage": "https://github.com/dingo-d",
+                    "role": "Plugin integration lead"
                 },
                 {
                     "name": "Contributors",
