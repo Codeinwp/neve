@@ -154,11 +154,6 @@ class Front_End {
 			),
 			'local'       => array(
 				'beaver builder' => [
-					'neve-beaver-main'               => array(
-						'url'        => 'https://demo.themeisle.com/neve-onboarding-bb/',
-						'title'      => 'Original',
-						'screenshot' => $onboarding_folder_url . '/onboarding/neve-main/screenshot.jpg',
-					),
 					'neve-beaver-restaurant'         => array(
 						'url'        => 'https://demo.themeisle.com/neve-bb-restaurant/',
 						'title'      => 'Restaurant',
@@ -187,12 +182,6 @@ class Front_End {
 						'title'            => 'Architecture',
 						'screenshot'       => $onboarding_folder_url . '/onboarding/neve-architecture/screenshot.jpg',
 						'unsplash_gallery' => 'https://unsplash.com/collections/6802313/architecture/f59e19df059789d86d1066ea80130a87',
-					),
-					'neve-beaver-fitness'            => array(
-						'url'              => 'https://demo.themeisle.com/neve-fitness-bb/',
-						'title'            => 'Fitness',
-						'screenshot'       => $onboarding_folder_url . '/onboarding/neve-fitness/screenshot.jpg',
-						'unsplash_gallery' => 'https://unsplash.com/collections/6800490/fitness-gym',
 					),
 					'neve-beaver-vacation-rental'    => array(
 						'url'        => 'https://demo.themeisle.com/neve-bb-vacantion-rental/',
@@ -234,12 +223,6 @@ class Front_End {
 						'title'            => 'Photography',
 						'screenshot'       => $onboarding_folder_url . '/onboarding/neve-rokophoto/screenshot.jpg',
 						'unsplash_gallery' => 'https://unsplash.com/collections/8311183/rokophoto/ecebabcd40134eacf11cbd3cba504f44',
-					),
-					'neve-beaver-lawyers'            => array(
-						'url'              => 'https://demo.themeisle.com/neve-lawyers-bb/',
-						'title'            => 'Lawyers',
-						'screenshot'       => $onboarding_folder_url . '/onboarding/neve-lawyers/screenshot.jpg',
-						'unsplash_gallery' => 'https://unsplash.com/collections/4587639/neve-lawyers',
 					),
 					'neve-beaver-shop'               => array(
 						'url'              => 'https://demo.themeisle.com/neve-shop-bb/',
