@@ -514,8 +514,9 @@ Starter Sites screenshots resources:
 * https://stocksnap.io/photo/BZ4FJO6KZE
 
 - Showcase
-* http://mystock.themeisle.com/photo/thinking-time/
-* http://mystock.themeisle.com/photo/photographer-2/
+* http://mystock.themeisle.com/photo/mountain/
+* http://mystock.themeisle.com/photo/mountain-at-sunset/
+* http://mystock.themeisle.com/photo/forest-landscape/
 
 - Business Consulting
 * http://mystock.themeisle.com/photo/photographer-2/
