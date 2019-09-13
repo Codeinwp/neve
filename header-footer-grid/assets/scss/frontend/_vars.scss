@@ -38,9 +38,9 @@ $screen_sm: 48em;   // max 768px
 $screen_xs: 35.5em; // up to 568px
 
 $gl-devices-list: (
-        desktop: "screen and (min-width: 960px)",
-        tablet: "screen and (max-width: 959px)",
-        mobile: "screen and (max-width: 576px)"
+        desktop: "(min-width: 960px)",
+        tablet: "(max-width: 959px)",
+        mobile: "(max-width: 576px)"
 ) !default;
 
 // Header mobile sidebar

@@ -63,8 +63,14 @@ wp.customize.controlConstructor[ 'interface-tabs' ] = wp.customize.Control.exten
 			}
 		} );
 
-		this.init();
-		this.handleClick();
+		var self = this;
+		/**
+		 * Run JS on load.
+		 */
+		jQuery(window).on('load', function () {
+			self.init();
+			self.handleClick();
+		});
 	},
 
 	init: function () {
@@ -84,7 +90,6 @@ wp.customize.controlConstructor[ 'interface-tabs' ] = wp.customize.Control.exten
 		// 	} );
 		// }, 100 );
 
-		wp.customize.bind( 'ready', function () {
 			control.hideAllControls( section );
 			var tab = ( control.params.controls.general ) ? 'general' : Object.keys( control.params.controls )[ 0 ];
 			var controlsToShow = control.params.controls[ tab ];
@@ -100,8 +105,6 @@ wp.customize.controlConstructor[ 'interface-tabs' ] = wp.customize.Control.exten
 				}
 			}
 			control.showControls( allControls, section );
-		} );
-
 	},
 
 	hideAllControls: function ( section ) {

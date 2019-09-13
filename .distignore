@@ -33,6 +33,10 @@ header-footer-grid/node_modules
 header-footer-grid/package.json
 header-footer-grid/package-lock.json
 header-footer-grid/rollup.config.js
+vendor/codeinwp/ti-onboarding/assets/vue
+vendor/codeinwp/ti-about-page/assets/scss
+vendor/codeinwp/ti-about-page/assets/scss
+vendor/codeinwp/ti-onboarding/assets/scss
 inc/admin/onboarding/assets/vue
 inc/admin/onboarding/node_modules
 inc/admin/onboarding/.eslintrc

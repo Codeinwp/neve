@@ -42,7 +42,27 @@ class Amp {
 			2
 		);
 		add_filter( 'neve_sidebar_data_attrs', array( $this, 'add_woo_sidebar_attrs' ), 10, 2 );
+		add_filter( 'neve_search_menu_item_filter', array( $this, 'add_search_menu_item_attrs' ), 10 );
 		add_action( 'neve_after_header_hook', array( $this, 'render_amp_states' ) );
+	}
+
+	/**
+	 * Add amp parameters for menu child search icon.
+	 *
+	 * @param string $input Search menu item wrapper markup.
+	 *
+	 * @return string
+	 */
+	public function add_search_menu_item_attrs( $input ) {
+		if ( ! neve_is_amp() ) {
+			return $input;
+		}
+
+		$wrapper = 'class="neve-nav-search-icon" on="tap:nv-menu-item-search.toggleClass(class=\'active\')" ';
+
+		$output = str_replace( 'class="nv-nav-search-icon"', $wrapper, $input );
+
+		return $output;
 	}
 
 	/**
@@ -191,9 +211,7 @@ class Amp {
 		$attrs .= ' tabindex="0" ';
 		$attrs .= ' aria-expanded="false" ';
 		$attrs .= ' [aria-expanded]="' . $state . ' ? \'true\' : \'false\'"><span class="caret"></span></div>';
-
-		$output = str_replace( '<div class="caret-wrap ' . $id . '"><span class="caret"></span></div></a>', $attrs, $output );
-
+		$output = str_replace( '<div class="caret-wrap ' . $id . '" tabindex="0"><span class="caret"></span></div></a>', $attrs, $output );
 		return $output;
 	}
 }

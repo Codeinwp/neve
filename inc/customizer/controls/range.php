@@ -51,6 +51,13 @@ class Range extends \WP_Customize_Control {
 	public $sum_type = false;
 
 	/**
+	 * Hide the responsive switches
+	 *
+	 * @var bool
+	 */
+	public $hide_responsive_switches = false;
+
+	/**
 	 * Range constructor.
 	 *
 	 * @param \WP_Customize_Manager $manager Customize manager.
@@ -70,12 +77,13 @@ class Range extends \WP_Customize_Control {
 	public function json() {
 		$json = parent::json();
 
-		$json['value']       = json_decode( $this->value(), true );
-		$json['link']        = $this->get_link();
-		$json['media_query'] = $this->media_query;
-		$json['step']        = $this->step;
-		$json['sum_type']    = $this->sum_type;
-		$json['inputAttr']   = $this->input_attr;
+		$json['value']                    = json_decode( $this->value(), true );
+		$json['link']                     = $this->get_link();
+		$json['media_query']              = $this->media_query;
+		$json['step']                     = $this->step;
+		$json['sum_type']                 = $this->sum_type;
+		$json['inputAttr']                = $this->input_attr;
+		$json['hide_responsive_switches'] = $this->hide_responsive_switches;
 
 		return $json;
 	}
@@ -93,7 +101,7 @@ class Range extends \WP_Customize_Control {
 							title="{{{ data.description }}}"></i>
 				<# } #>
 		</span>
-		<# if( data.media_query === true ) { #>
+		<# if( data.media_query === true && data.hide_responsive_switches === false ) { #>
 		<?php $this->render_responsive_switches(); ?>
 		<# } #>
 		<# } #>
@@ -153,15 +161,15 @@ class Range extends \WP_Customize_Control {
 			>
 			<input
 			<# if( data.sum_type ) { #>
-					readonly
+			readonly
 			<# } #>
-					class="range-slider-value"
-					type="{{type}}"
-					title="{{{data.label}}}"
-					min="{{attr.min}}"
-					max="{{attr.max}}"
-					step="{{data.step}}"
-					value="{{ value }}"
+			class="range-slider-value"
+			type="{{type}}"
+			title="{{{data.label}}}"
+			min="{{attr.min}}"
+			max="{{attr.max}}"
+			step="{{data.step}}"
+			value="{{ value }}"
 			>
 			<span class="range-reset-slider"><span class="dashicons dashicons-image-rotate"></span></span>
 		</div>

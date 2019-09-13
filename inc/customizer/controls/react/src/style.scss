@@ -1,0 +1,238 @@
+.customize-control-neve_background_control {
+  margin-bottom: 20px;
+  .color-preview {
+    width: 20px;
+    border-radius: 3px;
+    border:1px solid #767676;
+    height: 15px;
+    left: 3px;
+    top: -20px;
+    float: left;
+    position: relative;
+  }
+  .components-color-picker__inputs-toggle {
+    margin-left: auto;
+  }
+  .components-tooltip.components-popover {
+    display: none;
+  }
+  .components-color-picker__inputs-field {
+    margin: 0;
+  }
+  .components-color-picker__inputs-wrapper {
+    display: flex;
+    align-items: flex-end;
+    .components-base-control__label {
+      margin: 0;
+    }
+  }
+  .components-color-palette__item-wrapper {
+    margin-right: 12px;
+    span {
+      display: none !important;
+    }
+  }
+  .components-color-palette__item-wrapper:hover {
+    transform: scale(1.05);
+  }
+  .components-color-palette__item:focus:after {
+    content:none;
+  }
+
+  .control--top-toolbar {
+    .neve-background-type-control button.components-button {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+
+  .remove-image {
+    align-items: center;
+    width: 100%;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .control--body {
+    border: 1px solid #ccc;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    background: #fff;
+    border-top: none;
+    padding: 15px;
+
+    label {
+      display: block;
+      margin: 20px 0 10px;
+      font-weight: 500;
+    }
+
+    .components-focal-point-picker-wrapper {
+      width: auto;
+      height: auto;
+      padding: 10px;
+      border-radius: 3px;
+      background-color: #ededed;
+    }
+  }
+
+  input.components-range-control__number {
+    width: 20%;
+    margin-left: 20px;
+  }
+
+  .components-placeholder {
+    width: auto;
+    min-height: 150px;
+    border-radius: 3px;
+    background-color: #ededed;
+    border: 1px solid #e2e4e7;
+  }
+
+  .components-focal-point-picker_position-display-container {
+    margin: 0;
+
+    .components-base-control {
+      margin-bottom: 0;
+      width: 50%;
+
+      .components-base-control__field {
+        margin: 0;
+      }
+    }
+
+    label {
+      margin-top: 10px;
+    }
+  }
+
+  .components-toggle-control__label {
+    margin: 0 !important;
+  }
+
+  .components-toggle-control {
+    margin: 20px 0 25px;
+  }
+}
+
+.neve-background-type-control {
+  width: 100%;
+
+  button {
+    width: 50%;
+    justify-content: center;
+  }
+}
+
+
+@import "spacing/style";
+.neve-units {
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  .components-button.is-button {
+    height: 23px;
+    line-height: 1;
+    font-size: 11px;
+    color: #555;
+    border: 1px solid #999;
+    box-shadow: none;
+    background: #fff;
+    &.is-active {
+      background: #008dc2;
+      color: #fff;
+    }
+  }
+  .reset {
+    margin-left: auto;
+  }
+}
+.neve-responsive-control-bar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 10px;
+  .customize-control-title {
+    margin: 0;
+  }
+  .floating-controls {
+    margin-left: auto;
+  }
+  .neve-devices-dropdown {
+    display: flex;
+    flex-direction: column;
+    button {
+      padding: 10px 20px;
+      display: flex;
+      &.is-selected {
+        color: #fff;
+        background-color: #008dc2;
+      }
+      svg {
+        margin-right: 10px;
+      }
+    }
+  }
+}
+.neve-responsive-sizing {
+  display: flex;
+
+  .range-control {
+    .components-base-control__field {
+      padding: 10px;
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      margin: 0;
+      input[type="number"] {
+        width: 27%;
+      }
+    }
+  }
+  .nv-sizing-item {
+    width: calc(19% + 1px);
+  }
+  .nv-sizing-link, .nv-sizing-reset {
+    width: calc(12% + 1px);
+    margin-left: -1px;
+    button {
+      width: 100%;
+      padding: 3px;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      justify-items: center;
+      border: 1px solid #999;
+      border-radius: 0 3px 3px 0;
+      background: #fff;
+      &.is-linked {
+        background: #008dc2;
+        color: #fff;
+      }
+    }
+  }
+  .nv-sizing-item {
+  input[type="number"] {
+    border: 1px solid #999;
+    border-radius: 0;
+  }
+    &:not(:first-child) {
+      margin-left: -1px;
+    }
+    &:first-child input {
+     border-top-left-radius: 3px;
+     border-bottom-left-radius: 3px;
+   }
+  }
+  label {
+    text-transform: uppercase;
+    font-size: 11px;
+    text-align: center;
+    display: block;
+    font-weight: 300;
+    color: #555;
+  }
+}

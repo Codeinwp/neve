@@ -47,9 +47,20 @@ class Admin {
 			},
 			0
 		);
+		add_action( 'wp_ajax_neve_toggle_logger', array( $this, 'toggle_logger' ) );
+		add_filter( 'neve_logger_heading', array( $this, 'add_tracking_policy' ) );
 	}
 
-
+	/**
+	 * Add tracking usage link to notice.
+	 *
+	 * @param string $text Notice text.
+	 *
+	 * @return string New notice text.
+	 */
+	public function add_tracking_policy( $text ) {
+		return sprintf( '%s <a href="https://docs.themeisle.com/article/1122-neve-usage-tracking" target="_blank">%s</a>', $text, __( 'What do we track?', 'neve' ) );
+	}
 	/**
 	 * Add the about page.
 	 */
@@ -237,6 +248,178 @@ class Admin {
 	}
 
 	/**
+	 * Toggles the logger option from the SDK.
+	 */
+	public function toggle_logger() {
+		check_ajax_referer( (string) __CLASS__, 'nonce' );
+
+		if ( ! isset( $_POST['value'] ) || ! in_array( $_POST['value'], [ 'yes', 'no' ], true ) ) {
+			wp_send_json( [ 'success' => false ] );
+		}
+
+		$value = sanitize_text_field( wp_unslash( $_POST['value'] ) );
+
+		update_option( 'neve_logger_flag', $value );
+		wp_send_json( [ 'success' => true ] );
+	}
+
+	/**
+	 * Render the logger toggle in the about page sidebar.
+	 *
+	 * @return void
+	 */
+	public function render_logger_toggle() {
+		$strings       = [
+			'heading'      => __( 'Contributing', 'neve' ),
+			'content'      => __( 'Become a contributor by opting in to our anonymous data tracking. We guarantee no sensitive data is collected.', 'neve' ),
+			'toggle-label' => __( 'Allow anonymous tracking', 'neve' ),
+			'link-text'    => __( 'What do we track?', 'neve' ),
+			'error-text'   => __( 'Could not update option. Please try again.', 'neve' ),
+			'success-text' => __( 'Option updated.', 'neve' ),
+		];
+		$logger_status = get_option( 'neve_logger_flag', 'no' ) === 'yes';
+		?>
+		<div class="about-sidebar-item nv-anon">
+			<h4><?php echo esc_html( $strings['heading'] ); ?></h4>
+			<div class="inside"><p><?php echo esc_html( $strings['content'] ); ?></p>
+				<p>
+					<label for="neve-anonymous-data" class="nv-anon-label">
+						<span class="label"><?php echo esc_html( $strings['toggle-label'] ); ?></span>
+						<span class="switch">
+							<input <?php echo( $logger_status === true ? ' checked ' : '' ); ?> id="neve-anonymous-data"
+									type="checkbox">
+							<span class="slider round"></span>
+						</span>
+					</label>
+				</p>
+				<a target="_blank" href="https://docs.themeisle.com/article/1122-neve-usage-tracking"><?php echo esc_html( $strings['link-text'] ); ?></a>
+				<p class="error-well"><?php echo esc_html( $strings['error-text'] ); ?></p>
+				<p class="success-well"><?php echo esc_html( $strings['success-text'] ); ?></p>
+			</div>
+		</div>
+		<script type="application/javascript">
+					( function($) {
+						$( '#neve-anonymous-data' ).on( 'change', function(event) {
+							var toggle = this;
+							var value = $( toggle ).prop( 'checked' ) ? 'yes' : 'no';
+							var data = {
+								'action': 'neve_toggle_logger',
+								'nonce': '<?php echo esc_attr( wp_create_nonce( (string) __CLASS__ ) ); ?>',
+								'value': value
+							};
+							var toastHandler = function(selector) {
+								$( selector ).fadeIn();
+								setTimeout( function() {
+									$( selector ).fadeOut();
+								}, 1500 );
+							};
+							$.ajax( {
+								type: 'POST',
+								url: ajaxurl,
+								data: data,
+								success(data) {
+									if ( !data.success ) {
+										toastHandler( '.nv-anon .error-well' );
+										$( toggle ).prop( 'checked', value === 'yes' ? 'no' : 'yes' );
+										return false;
+									}
+									toastHandler( '.nv-anon .success-well' );
+								},
+								error(err) {
+									toastHandler( '.nv-anon .error-well' );
+									$( toggle ).prop( 'checked', value === 'yes' ? 'no' : 'yes' );
+									console.error( err );
+								}
+							} );
+						} );
+					}( jQuery ) );
+		</script>
+		<style>
+			.nv-anon .error-well,
+			.nv-anon .success-well {
+				font-size: 12px;
+				padding: 5px;
+				font-weight: 500;
+				text-align: center;
+				border-radius: 3px;
+				display: none;
+			}
+
+			.nv-anon .error-well {
+				border: 1px solid #ff0000;
+				background-color: #ffd9d9;
+			}
+
+			.nv-anon .success-well {
+				border: 1px solid #8bc34a;
+				background-color: #c8ffbb;
+			}
+
+			.nv-anon-label {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+			}
+
+			.nv-anon-label .label {
+				margin-right: 15px;
+				font-size: 15px;
+				font-weight: 500;
+			}
+
+			.switch {
+				display: inline-block;
+				height: 23px;
+				position: relative;
+				width: 44px;
+			}
+
+			.switch input {
+				display: none;
+			}
+
+			.slider {
+				background-color: #ccc;
+				bottom: 0;
+				cursor: pointer;
+				left: 0;
+				position: absolute;
+				right: 0;
+				top: 0;
+				transition: .4s;
+			}
+
+			.slider:before {
+				background-color: #fff;
+				bottom: 3px;
+				content: "";
+				height: 17px;
+				left: 3px;
+				position: absolute;
+				transition: .4s;
+				width: 17px;
+			}
+
+			input:checked + .slider {
+				background-color: rgb(0, 165, 222);
+			}
+
+			input:checked + .slider:before {
+				transform: translateX(21px);
+			}
+
+			.slider.round {
+				border-radius: 34px;
+			}
+
+			.slider.round:before {
+				border-radius: 50%;
+			}
+		</style>
+		<?php
+	}
+
+	/**
 	 * Free vs Pro tab content
 	 */
 	public function free_pro_render() {
@@ -267,6 +450,18 @@ class Admin {
 					'is_in_pro'   => 'true',
 				),
 				array(
+					'title'       => __( 'Page Header Builder', 'neve' ),
+					'description' => __( 'The Page Header is the horizontal area that sits directly below the header and contains the page/post title. Easily design an attractive Page Header area using our dedicated builder.', 'neve' ),
+					'is_in_lite'  => 'false',
+					'is_in_pro'   => 'true',
+				),
+				array(
+					'title'       => __( 'Custom Layouts', 'neve' ),
+					'description' => __( 'Powerful Custom Layouts builder which allows you to easily create your own header, footer or custom content on any of the hook locations available in the theme.', 'neve' ),
+					'is_in_lite'  => 'false',
+					'is_in_pro'   => 'true',
+				),
+				array(
 					'title'       => __( 'Blog Booster', 'neve' ),
 					'description' => __( 'Give a huge boost to your entire blogging experience with features specially designed for increased user experience.', 'neve' ) . ' ' . __( 'Sharing, custom article sorting, comments integrations, number of minutes needed to read an article and many more.', 'neve' ),
 					'is_in_lite'  => 'false',
@@ -281,6 +476,18 @@ class Admin {
 				array(
 					'title'       => __( 'WooCommerce Booster', 'neve' ),
 					'description' => __( 'Empower your online store with awesome new features, specially designed for a smooth WooCommerce integration.', 'neve' ) . ' ' . __( 'Wishlist, quick view, video products, advanced reviews, multiple dedicated layouts and many more.', 'neve' ),
+					'is_in_lite'  => 'false',
+					'is_in_pro'   => 'true',
+				),
+				array(
+					'title'       => __( 'LifterLMS Booster', 'neve' ),
+					'description' => __( 'Make your LifterLMS pages look stunning with our PRO design options. Specially created to help you set up your online courses with minimum customizations.', 'neve' ),
+					'is_in_lite'  => 'false',
+					'is_in_pro'   => 'true',
+				),
+				array(
+					'title'       => __( 'Typekit(Adobe) Fonts', 'neve' ),
+					'description' => __( "The module allows for an easy way of enabling new awesome Adobe (previous Typekit) Fonts in Neve's Typography options.", 'neve' ),
 					'is_in_lite'  => 'false',
 					'is_in_pro'   => 'true',
 				),
@@ -377,6 +584,7 @@ class Admin {
 		if ( ! empty( $feature['description'] ) ) {
 			$output .= '<p>' . wp_kses_post( $feature['description'] ) . '</p>';
 		}
+
 		return $output;
 	}
 
@@ -478,6 +686,39 @@ class Admin {
 	}
 
 	/**
+	 * Get notice screenshot based on previous theme.
+	 *
+	 * @return string Image url.
+	 */
+	private function get_notice_picture() {
+		$previous_theme = get_theme_mod( 'ti_prev_theme' );
+		$onboarding_dir = get_template_directory_uri() . '/onboarding/';
+		switch ( $previous_theme ) {
+			case 'themotion-lite':
+			case 'themotion':
+				return $onboarding_dir . 'neve-themotion/screenshot.jpg';
+			case 'amadeus':
+				return $onboarding_dir . 'neve-amadeus/screenshot.jpg';
+			case 'rokophoto-lite':
+			case 'rokophoto':
+				return $onboarding_dir . 'neve-rokophoto/screenshot.jpg';
+			case 'oblique':
+				return $onboarding_dir . 'neve-oblique/screenshot.jpg';
+			case 'shop-isle':
+			case 'shop-isle-pro':
+				return $onboarding_dir . 'neve-shop/screenshot.jpg';
+			case 'zerif-pro':
+			case 'zerif-lite':
+				return $onboarding_dir . 'neve-zelle/screenshot.jpg';
+			case 'lawyeria-lite':
+			case 'lawyeria':
+				return $onboarding_dir . 'neve-lawyers/screenshot.jpg';
+			default:
+				return get_template_directory_uri() . '/assets/img/sites-list.jpg';
+		}
+	}
+
+	/**
 	 * Render welcome notice content
 	 */
 	public function welcome_notice_content() {
@@ -526,13 +767,12 @@ class Admin {
 			esc_url( admin_url( 'themes.php?page=' . $theme_page ) ),
 			esc_html__( 'or go to the theme settings', 'neve' )
 		);
-
 		$notice_picture = sprintf(
 			'<picture>
 					<source srcset="about:blank" media="(max-width: 1024px)">
 					<img src="%1$s">
 				</picture>',
-			esc_url( get_template_directory_uri() . '/assets/img/sites-list.jpg' )
+			esc_url( $this->get_notice_picture() )
 		);
 
 		$notice_sites_list = sprintf(

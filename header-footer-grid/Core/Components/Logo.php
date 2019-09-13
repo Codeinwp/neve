@@ -36,7 +36,7 @@ class Logo extends Abstract_Component {
 	public function init() {
 		$this->set_property( 'label', __( 'Logo & Site Identity', 'neve' ) );
 		$this->set_property( 'id', $this->get_class_const( 'COMPONENT_ID' ) );
-		$this->set_property( 'width', 2 );
+		$this->set_property( 'width', 3 );
 		$this->set_property( 'section', 'title_tagline' );
 	}
 
@@ -106,10 +106,11 @@ class Logo extends Abstract_Component {
 				'label'             => __( 'Logo max width (px)', 'neve' ),
 				'type'              => '\Neve\Customizer\Controls\Range',
 				'options'           => [
-					'type'        => 'range-value',
-					'media_query' => true,
-					'step'        => 1,
-					'input_attr'  => [
+					'type'                     => 'range-value',
+					'hide_responsive_switches' => true,
+					'media_query'              => true,
+					'step'                     => 1,
+					'input_attr'               => [
 						'mobile'  => [
 							'min'     => 0,
 							'max'     => 350,
