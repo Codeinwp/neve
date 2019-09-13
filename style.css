@@ -5,10 +5,11 @@ Theme URI:      https://themeisle.com/themes/neve/
 Author:         ThemeIsle
 Author URI:     https://themeisle.com
 Description:    Neve is a super fast, easily customizable, multi-purpose theme. It’s perfect for blogs, small business, startups, agencies, firms, e-commerce shops (WooCommerce storefront) as well as personal portfolio sites and most types of projects. A fully AMP optimized and responsive theme, Neve will load in mere seconds and adapt perfectly on any viewing device. While it is lightweight and has a minimalist design, the theme is highly extendable, it has a highly SEO optimized code, resulting in top rankings in Google search results. Neve works perfectly with Gutenberg and the most popular page builders (Elementor, Brizy, Beaver Builder, Visual Composer, SiteOrigin, Divi). Neve is also WooCommerce ready, responsive, RTL & translation ready. Look no further. Neve is the perfect theme for you!
-Version:        2.4.0
+Version:        2.4.1
 License:        GNU General Public License v2 or later
 License URI:    http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain:    neve
+Pro Slug:  neve-pro-addon
 WordPress Available:  yes
 Requires License:     no
 Tags: blog, custom-logo, e-commerce, rtl-language-support, post-formats, grid-layout, one-column, two-columns, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, accessibility-ready, wide-blocks, block-styles, footer-widgets, portfolio, left-sidebar, right-sidebar
@@ -434,7 +435,6 @@ a.neve-skip-link:focus {
 }
 
 .nv-search {
-  width: 15px;
   display: flex;
 }
 
@@ -600,10 +600,6 @@ blockquote.wp-block-quote.is-style-large cite {
   color: #404248;
   text-decoration: none;
   opacity: .9;
-}
-
-.menu-opened {
-  overflow: hidden;
 }
 
 .nv-navbar {
@@ -1288,11 +1284,9 @@ article {
 .nv-loader {
   height: 50px;
   width: 50px;
-  margin-bottom: 25px;
   border-radius: 50%;
   border: 2px solid #0366d6;
   border-left: 1px solid transparent !important;
-  animation: spin;
   -webkit-animation: spin 1s ease infinite;
   -moz-animation: spin 1s ease infinite;
   animation: spin 1s ease infinite;
@@ -1686,27 +1680,9 @@ pre {
   margin-bottom: 10px;
 }
 
-.nv-content-wrap dl:not(.gallery-item), .excerpt-wrap dl:not(.gallery-item) {
-  width: 100%;
-  overflow: hidden;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-row-gap: 40px;
-  margin: 20px 0;
-}
-
-.nv-content-wrap dt:not(.gallery-icon), .excerpt-wrap dt:not(.gallery-icon) {
-  border-right: 1px solid #f0f0f0;
-  padding: 0 20px;
-}
-
-.nv-content-wrap dt:not(.gallery-icon) dfn, .excerpt-wrap dt:not(.gallery-icon) dfn {
-  font-style: normal;
+.nv-content-wrap dt, .excerpt-wrap dt {
   font-weight: 600;
-}
-
-.nv-content-wrap dd:not(.gallery-caption), .excerpt-wrap dd:not(.gallery-caption) {
-  padding: 0 20px;
+  display: block;
 }
 
 .alignleft {
@@ -2073,9 +2049,6 @@ audio {
   .neve-main > .container > .row {
     flex-wrap: nowrap;
   }
-  .menu-opened {
-    overflow: inherit;
-  }
   .row .nv-nav-wrap {
     flex-direction: row;
     align-items: center;
@@ -2380,7 +2353,7 @@ audio {
   margin-bottom: 4px;
 }
 
-@media screen and (min-width: 960px) {
+@media (min-width: 960px) {
   .builder-item {
     margin-top: 8px;
     margin-bottom: 8px;
@@ -2476,7 +2449,7 @@ audio {
   text-align: right;
 }
 
-.hfg-item-right #secondary-menu, .hfg-item-right .nv-nav-wrap, .hfg-item-right .component-wrap, .hfg-item-right .site-logo {
+.hfg-item-right #secondary-menu, .hfg-item-right .nv-nav-wrap, .hfg-item-right .component-wrap, .hfg-item-right .site-logo, .hfg-item-right .nv-search-icon-component .nv-search {
   justify-content: flex-end;
 }
 
@@ -2484,7 +2457,7 @@ audio {
   text-align: left;
 }
 
-.hfg-item-left #secondary-menu, .hfg-item-left .nv-nav-wrap, .hfg-item-left .component-wrap, .hfg-item-left .site-logo {
+.hfg-item-left #secondary-menu, .hfg-item-left .nv-nav-wrap, .hfg-item-left .component-wrap, .hfg-item-left .site-logo, .hfg-item-left .nv-search-icon-component .nv-search {
   justify-content: flex-start;
 }
 
@@ -2492,7 +2465,7 @@ audio {
   text-align: center;
 }
 
-.hfg-item-center #secondary-menu, .hfg-item-center .nv-nav-wrap, .hfg-item-center .component-wrap, .hfg-item-center .site-logo {
+.hfg-item-center #secondary-menu, .hfg-item-center .nv-nav-wrap, .hfg-item-center .component-wrap, .hfg-item-center .site-logo, .hfg-item-center .nv-search-icon-component .nv-search {
   justify-content: center;
 }
 
@@ -2554,7 +2527,7 @@ audio {
 }
 
 .header-menu-sidebar.light-mode .header-menu-sidebar-bg:before {
-  background: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
 .header-menu-sidebar.light-mode .nav-menu-mobile .menu li a, .header-menu-sidebar.light-mode .sub-menu, .header-menu-sidebar.light-mode .nav-menu-mobile .nav-toggle-icon {
@@ -2596,7 +2569,7 @@ audio {
 }
 
 .header-menu-sidebar.dark-mode .header-menu-sidebar-bg:before {
-  background: rgba(0, 0, 0, 0.9);
+  background-color: rgba(0, 0, 0, 0.9);
 }
 
 .header-menu-sidebar.dark-mode .nav-menu-mobile .menu li a, .header-menu-sidebar.dark-mode .sub-menu, .header-menu-sidebar.dark-mode .nav-menu-mobile .nav-toggle-icon {
@@ -2655,6 +2628,10 @@ audio {
   visibility: visible;
   z-index: 999900;
   overflow: hidden;
+}
+
+.menu_sidebar_dropdown .header-menu-sidebar .close-sidebar-panel {
+  display: none;
 }
 
 .menu_sidebar_dropdown .header-menu-sidebar-inner {
@@ -3162,21 +3139,21 @@ body.menu_sidebar_slide_left.menu_sidebar_dropdown:before {
   display: flex;
 }
 
-@media screen and (min-width: 960px) {
+@media (min-width: 960px) {
   .hide-on-desktop,
   .hfg-grid .hide-on-desktop {
     display: none;
   }
 }
 
-@media screen and (max-width: 959px) {
+@media (max-width: 959px) {
   .hide-on-tablet,
   .hfg-grid .hide-on-tablet {
     display: none;
   }
 }
 
-@media screen and (max-width: 576px) {
+@media (max-width: 576px) {
   .hide-on-mobile,
   .hfg-grid .hide-on-mobile {
     display: none;

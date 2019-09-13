@@ -10,13 +10,3 @@
 .has-media-queries .control-wrap.active {
 	display: block;
 }
-
-#sub-accordion-section-neve_typography_body,
-#sub-accordion-section-neve_typography_headings {
-	min-height: 600px;
-}
-
-#customize-theme-controls .customize-pane-child.accordion-section-content#sub-accordion-section-neve_typography_headings,
-#customize-theme-controls .customize-pane-child.accordion-section-content#sub-accordion-section-neve_sidebar {
-	overflow: initial;
-}

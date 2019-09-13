@@ -27,7 +27,6 @@ class ToggleComponent extends Component {
 	render() {
 		return (
 				<ToggleControl
-						label={__( 'A customizer toggle' )}
 						checked={this.state.value}
 						onChange={(value) => this.toggleValue( value )}
 				/>

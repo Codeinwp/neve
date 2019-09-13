@@ -16,9 +16,11 @@ module.exports = function(grunt) {
 	config.files.js.push( '!**/rollup.config.js' );
 	config.files.js.push( '!assets/js/gutenberg-preview-manager.js' );
 	config.files.js.push( '!inc/customizer/controls/react/**/*');
+	config.files.js.push( '!dist/**/*' );
 
 	config.files.php.push( '!**/node_modules/**/*' );
 	config.files.php.push( '!**/vendor/**/*' );
+	config.files.php.push( '!dist/**/*' );
 
 	config.files.css.push( '!**/vendor/**/*' );
 	//Task mapping.

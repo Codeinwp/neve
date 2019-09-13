@@ -18,10 +18,23 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
+### 2.4.0 - 2019-08-14  ###
+
+* Fix issue with standard fonts not loading
+* Fix compatibility with Async loading of javascript files
+* Fix issue with page title on pages built with Elementor
+* Adds individual line-height option
+* Adds breadcrumbs compatibility with Yoast, Seopress, Rankmath and NavXT
+* Performance improvements to the codebase, optimize CSS/JS file loading
+* Adds 5 more starter sites
+
+
+
 ### 2.3.22 - 2019-08-02  ###
 
 * Speed updates for the Starter Sites Library
 
+ 
 ### 2.3.21 - 2019-07-30  ###
 
 * [Feat] Color options for each header and footer rows
@@ -469,13 +482,16 @@ Starter Sites screenshots resources:
 * https://stocksnap.io/photo/GSBJXWRSDV
 
 - Energy Panels
-* https://mystock.themeisle.com/photo/citylights/
+* http://mystock.themeisle.com/photo/sunny-rome/
+* http://mystock.themeisle.com/photo/tour-eiffel/
 
 - Lawyers
-* https://stocksnap.io/photo/GVUWVKUHZE
+* http://mystock.themeisle.com/photo/architecture-3/
+* http://mystock.themeisle.com/photo/architecture-2/
 
 - Freelancer
-* https://mystock.themeisle.com/photo/photographer-3/
+* http://mystock.themeisle.com/photo/programming-laptop/
+* http://mystock.themeisle.com/photo/code-in-wp/
 
 - Shop
 * https://stocksnap.io/photo/SS2GVMJTWH
@@ -498,11 +514,13 @@ Starter Sites screenshots resources:
 * https://stocksnap.io/photo/BZ4FJO6KZE
 
 - Showcase
-* http://mystock.themeisle.com/photo/thinking-time/
-* http://mystock.themeisle.com/photo/photographer-2/
+* http://mystock.themeisle.com/photo/mountain/
+* http://mystock.themeisle.com/photo/mountain-at-sunset/
+* http://mystock.themeisle.com/photo/forest-landscape/
 
 - Business Consulting
-* https://mystock.themeisle.com/photo/new-york-cityscape/
+* http://mystock.themeisle.com/photo/photographer-2/
+* http://mystock.themeisle.com/photo/cameras/
 
 - Architecture
 * http://mystock.themeisle.com/photo/wind/
@@ -544,6 +562,49 @@ Starter Sites screenshots resources:
 * http://mystock.themeisle.com/photo/empty-beach-2/
 * http://mystock.themeisle.com/photo/traffic-sign/
 * http://mystock.themeisle.com/photo/android/
+
+- Life Coach
+* http://mystock.themeisle.com/photo/city-park-night/
+* http://mystock.themeisle.com/photo/temple-2/
+
+- Tattoo
+* http://mystock.themeisle.com/photo/unconventional-store-with-unicorn-in-the-window/
+* http://mystock.themeisle.com/photo/street-at-night/
+
+- Job Listing
+* http://mystock.themeisle.com/photo/registration/
+* http://mystock.themeisle.com/photo/stockholm-street/
+
+- Barber Shop
+* https://stocksnap.io/photo/R9YRHH2JQY
+* http://mystock.themeisle.com/photo/fancy-restaurant/
+
+- Personal Trainer
+* http://mystock.themeisle.com/photo/street-vendor-selling-fruits-on-his-fruit-cart/
+* http://mystock.themeisle.com/photo/yoga-2/
+* http://mystock.themeisle.com/photo/mac-and-cheese-pizza/
+* http://mystock.themeisle.com/photo/hotel-with-terrace-on-the-sea/
+* http://mystock.themeisle.com/photo/indian-restaurant-dishes/
+
+- Creative Portfolio
+* http://mystock.themeisle.com/photo/rocking-chair-on-a-blue-carpet/
+* http://mystock.themeisle.com/photo/vintage-framed-photo-of-desserts/
+* http://mystock.themeisle.com/photo/bathtub-in-the-center-of-the-room/
+* http://mystock.themeisle.com/photo/registration/
+* http://mystock.themeisle.com/photo/big-ben/
+* http://mystock.themeisle.com/photo/glass-building/
+
+- Real Estate
+* http://mystock.themeisle.com/photo/city/
+* http://mystock.themeisle.com/photo/glass-building-2/
+
+- Events
+* http://mystock.themeisle.com/photo/young-boy-attending-a-concert/
+* http://mystock.themeisle.com/photo/performing-artist-with-cool-projections-behind/
+* http://mystock.themeisle.com/photo/drummer-plays-drums-kit/
+* http://mystock.themeisle.com/photo/concert/
+* http://mystock.themeisle.com/photo/rock-on/
+
 
 
 

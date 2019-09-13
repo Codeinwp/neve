@@ -13,7 +13,9 @@ namespace HFG;
 use HFG\Core\Components\Button;
 
 $text        = component_setting( Button::TEXT_ID );
+$text        = apply_filters( 'neve_translate_single_string', $text );
 $button_link = component_setting( Button::LINK_ID );
+$button_link = apply_filters( 'neve_translate_single_string', $button_link )
 ?>
 <div class="component-wrap">
 	<a href="<?php echo esc_url( $button_link ); ?>"

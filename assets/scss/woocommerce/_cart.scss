@@ -27,7 +27,6 @@
 .woocommerce table.cart .product-thumbnail,
 .woocommerce-page #content table.cart .product-thumbnail,
 .woocommerce-page table.cart .product-thumbnail {
-  display: block;
   text-align: center !important;
 
   &:before {
@@ -227,6 +226,25 @@
 }
 
 //</editor-fold>
+
+.woocommerce td.product-name {
+	a {
+		margin-bottom: $spacing-xs;
+		display: block;
+	}
+	dl.variation {
+		font-size: .9em;
+		dt {
+			float: none;
+		}
+		dd {
+			margin-bottom: 5px;
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+}
 
 @mixin cart--tablet() {
 }

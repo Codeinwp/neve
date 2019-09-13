@@ -92,28 +92,10 @@ pre {
     }
   }
 
-  dl:not(.gallery-item) {
-    width: 100%;
-    overflow: hidden;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    grid-row-gap: $spacing;
-    margin: $spacing-sm 0;
-  }
-
-  dt:not(.gallery-icon) {
-    border-right: $muted-border;
-    padding: 0 $spacing-sm;
-
-    dfn {
-      font-style: normal;
-      font-weight: 600;
-    }
-  }
-
-  dd:not(.gallery-caption) {
-    padding: 0 $spacing-sm;
-  }
+	dt {
+		font-weight: 600;
+		display: block;
+	}
 }
 
 .alignleft {
