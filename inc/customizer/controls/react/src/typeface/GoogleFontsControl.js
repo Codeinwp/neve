@@ -2,19 +2,17 @@
  * WordPress dependencies
  */
 /*global NeveReactCustomize*/
-const {
-	startCase,
-	toLower
-} = lodash;
+
+import FontPreviewLink from './FontPreviewLink.js';
 
 const { __ } = wp.i18n;
-
-const { withInstanceId } = wp.compose;
 
 const {
 	Popover,
 	Button,
-	TextControl
+	TextControl,
+	Dashicon,
+	ButtonGroup
 } = wp.components;
 
 const {
@@ -27,37 +25,44 @@ class GoogleFontsControl extends Component {
 		super( props );
 
 		this.state = {
-			fonts: null,
+			fonts: NeveReactCustomize.fonts,
 			value: '',
 			isVisible: false,
 			filteredFonts: [],
-			search: ''
+			search: '',
+			loadUntil: 20,
+			fontTypeSelected: Object.keys( NeveReactCustomize.fonts )[0]
 		};
 	}
 
-	componentDidMount() {
-		let self = this;
-		window.addEventListener( 'load', async function() {
-			fetch( NeveReactCustomize.fontsJson ).
-					then( blob => blob.json() ).
-					then( fonts => {
-						self.setState( { fonts } );
-					} ).finally( () => {
-			} );
+	getButtons() {
+		let types = Object.keys( NeveReactCustomize.fonts ),
+				buttons = [],
+				self = this;
+		types.map( function(type) {
+			buttons.push(
+					<Button
+							isPrimary={self.state.fontTypeSelected === type}
+							isDefault={self.state.fontTypeSelected !== type}
+							onClick={() => {
+								self.setState( { fontTypeSelected: type } );
+							}}
+					>
+						{type}
+					</Button> );
 		} );
+
+		return ( <ButtonGroup className="neve-font-types">{buttons}</ButtonGroup> );
 	}
 
 	getFonts() {
-		console.log(this.state.fonts);
 		let controls = [],
 				self = this;
-		this.state.fonts && Object.keys( this.state.fonts ).forEach( function(key) {
-			if ( !self.state.search || key.toLowerCase().
+		this.state.fonts[this.state.fontTypeSelected] &&
+		this.state.fonts[this.state.fontTypeSelected].forEach( function(item) {
+			if ( !self.state.search || item.toLowerCase().
 					includes( self.state.search.toLowerCase() ) ) {
-				controls.push( {
-					name: key,
-					variants: self.state.fonts[key].variants
-				} );
+				controls.push( item );
 			}
 		} );
 
@@ -69,38 +74,56 @@ class GoogleFontsControl extends Component {
 				options = [],
 				self = this;
 
-		controls.map( (item) => {
-			let style = {
-				fontFamily: item.name + ', sans-serif'
-			};
-			console.log(item);
-			let link = document.createElement( 'link' );
-			link.setAttribute( 'rel', 'https://fonts.googleapis.com/css?family='+ item.name +'&text=' + item.name );
-			link.setAttribute( 'id', item.name );
-
-			console.log(link);
-			options.push( <li>
-				<a
-						style={style}
-						onClick={(e) => {
-							e.stopPropagation();
-							self.setState(
-									{ selected: item, dropdownOpen: false } );
-						}}>
-					{item.name}
-				</a></li> );
+		controls.map( (item, key) => {
+			if ( key < self.state.loadUntil ) {
+				options.push(
+						<li>
+							<FontPreviewLink fontFace={item} onClick={() => {
+								console.log( item );
+							}}/>
+						</li>
+				);
+			}
 		} );
+
+		if ( this.state.loadUntil < controls.length && this.state.search === '' ) {
+			options.push(
+					<li className="load-more">
+						<Button isPrimary onClick={() => {
+							self.setState( { loadUntil: self.state.loadUntil += 20 } );
+						}}>
+							{__( 'Load more', 'neve' )}
+						</Button>
+					</li>
+			);
+		}
 
 		return (
 				<Fragment>
-					<TextControl
-							value={this.state.search}
-							onChange={e => this.setState( { search: e } )}
-					/>
-					<ul>
-						{options.length && options ||
-						<li>{__( 'No fonts found for your search.' )}</li>}
-					</ul>
+					<div className="popover-content">
+						<div className="popover-header">
+							{this.getButtons()}
+							<div className="search">
+								<TextControl
+										placeholder={__( 'Search', 'neve' ) + '...'}
+										value={this.state.search}
+										onChange={e => {
+											this.setState( {
+												search: e,
+												loadUntil: 20
+											} );
+										}
+										}
+								/>
+								<Button onClick={() => this.setState( { search: '' } )} isLink
+										isDestructive><Dashicon icon="no"/></Button>
+							</div>
+						</div>
+						<ul className="neve-fonts-list">
+							{options.length && options ||
+							<li>{__( 'No results.', 'neve' )}</li>}
+						</ul>
+					</div>
 				</Fragment>
 		);
 	}
@@ -117,7 +140,7 @@ class GoogleFontsControl extends Component {
 						{__( 'Font Family' )}
 						{this.state.isVisible && (
 								<Popover
-										noArrow
+										position="bottom right"
 										onClickOutside={() => this.setState( { isVisible: false } )}
 								>
 									{this.state.fonts && this.getFontList() || __( 'Loading...' )}
@@ -129,4 +152,4 @@ class GoogleFontsControl extends Component {
 	}
 }
 
-export default withInstanceId( GoogleFontsControl );
+export default GoogleFontsControl;

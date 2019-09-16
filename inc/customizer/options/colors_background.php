@@ -28,6 +28,33 @@ class Colors_Background extends Base_Customizer {
 	public function add_controls() {
 		$this->section_colors_background();
 		$this->controls_colors();
+
+		$this->add_control( new Control(
+				'typeface',
+				[
+					'transport' => 'postMessage',
+				],
+				[
+					'label'   => __( 'Typeface', 'neve' ),
+					'section' => 'neve_colors_background_section',
+					'type'    => 'neve_typeface_control',
+				]
+
+			)
+		);
+		$this->add_control( new Control(
+				'typeface222',
+				[
+					'transport' => 'postMessage',
+				],
+				[
+					'label'   => __( 'Typeface', 'neve' ),
+					'section' => 'neve_colors_background_section',
+					'type'    => 'neve_typeface_control',
+				]
+
+			)
+		);
 	}
 
 	/**

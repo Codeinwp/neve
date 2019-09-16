@@ -96,10 +96,24 @@ class Loader {
 		);
 		wp_register_script( 'react-controls', get_template_directory_uri() . '/inc/customizer/controls/react/bundle/controls.js', $editor_dependencies, NEVE_VERSION, true );
 		wp_localize_script( 'react-controls', 'NeveReactCustomize', array(
-			'fontsJson' => esc_url(get_template_directory_uri() . '/inc/customizer/controls/react/src/typeface/data/google-fonts.json' ),
+			'fonts' => array(
+				'System' => neve_get_standard_fonts(),
+				'Google' => neve_get_google_fonts(),
+			),
 		) );
 		wp_enqueue_script( 'react-controls' );
-		wp_enqueue_style( 'react-controls', get_template_directory_uri() . '/inc/customizer/controls/react/bundle/controls.css', array( 'wp-components' ), NEVE_VERSION );
+		wp_enqueue_style( 'react-controls',
+			get_template_directory_uri() .
+			'/inc/customizer/controls/react/bundle/controls.css',
+			array( 'wp-components' ),
+			NEVE_VERSION
+		);
+		wp_enqueue_style(
+			'neve-fonts-control-google-fonts',
+			'https://fonts.googleapis.com/css?family=' . join( '|', neve_get_google_fonts() ). '&text=Abc',
+			[],
+			NEVE_VERSION
+		);
 	}
 
 	/**

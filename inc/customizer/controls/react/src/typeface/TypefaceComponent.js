@@ -62,9 +62,11 @@ class TypefaceComponent extends Component {
 	render() {
 		return (
 				<Fragment>
-					{this.props.control.params.label && <span
-							className="customize-control-title">{this.props.control.params.label}</span>}
-					<GoogleFontsControl/>
+					<div className="neve-typeface-control">
+						{this.props.control.params.label && <span
+								className="customize-control-title">{this.props.control.params.label}</span>}
+						<GoogleFontsControl/>
+					</div>
 				</Fragment>
 		);
 	}
