@@ -72,7 +72,7 @@ class Excerpt extends Base_View {
 		if ( strpos( $post->post_content, '<!--more-->' ) ) {
 			$content = apply_filters( 'the_content', get_the_content() );
 
-			return $content;
+			return apply_filters( 'the_content', $content );
 		}
 
 		if ( has_excerpt() ) {
