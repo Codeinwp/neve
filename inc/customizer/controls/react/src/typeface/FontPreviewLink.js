@@ -27,14 +27,15 @@ class FontPreviewLink extends Component {
 					e.stopPropagation();
 					this.props.onClick();
 				}}>
-					<span className="neve-font-family">{this.props.fontFace}</span>
+					<span className="neve-font-family">{this.props.label || this.props.fontFace}</span>
 					<VisibilitySensor onChange={(isVisible) => {
 						if ( isVisible ) {
 							this.setState( { previewWasRendered: true } );
 						}
 					}}>
 						{
-							this.state.previewWasRendered &&
+							( this.state.previewWasRendered || this.props.delayLoad ===
+									false ) &&
 							<span className="neve-font-preview" style={style}>Abc</span> ||
 							<span className="neve-font-preview ">...</span>
 						}
@@ -46,7 +47,9 @@ class FontPreviewLink extends Component {
 
 FontPreviewLink.propTypes = {
 	fontFace: PropTypes.string.isRequired,
-	onClick: PropTypes.func.isRequired
+	delayLoad: PropTypes.bool.isRequired,
+	onClick: PropTypes.func.isRequired,
+	label: PropTypes.string
 };
 
 export default FontPreviewLink;

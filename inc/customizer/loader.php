@@ -95,12 +95,16 @@ class Loader {
 			'wp-element',
 		);
 		wp_register_script( 'react-controls', get_template_directory_uri() . '/inc/customizer/controls/react/bundle/controls.js', $editor_dependencies, NEVE_VERSION, true );
-		wp_localize_script( 'react-controls', 'NeveReactCustomize', array(
-			'fonts' => array(
-				'System' => neve_get_standard_fonts(),
-				'Google' => neve_get_google_fonts(),
-			),
-		) );
+		wp_localize_script( 'react-controls', 'NeveReactCustomize',
+			apply_filters( 'neve_react_controls_localization',
+				array(
+					'fonts' => array(
+						'System' => neve_get_standard_fonts(),
+						'Google' => neve_get_google_fonts(),
+					),
+				)
+			)
+		);
 		wp_enqueue_script( 'react-controls' );
 		wp_enqueue_style( 'react-controls',
 			get_template_directory_uri() .
@@ -110,7 +114,7 @@ class Loader {
 		);
 		wp_enqueue_style(
 			'neve-fonts-control-google-fonts',
-			'https://fonts.googleapis.com/css?family=' . join( '|', neve_get_google_fonts() ). '&text=Abc',
+			'https://fonts.googleapis.com/css?family=' . join( '|', neve_get_google_fonts() ) . '&text=Abc',
 			[],
 			NEVE_VERSION
 		);

@@ -37,20 +37,7 @@ class Colors_Background extends Base_Customizer {
 				[
 					'label'   => __( 'Typeface', 'neve' ),
 					'section' => 'neve_colors_background_section',
-					'type'    => 'neve_typeface_control',
-				]
-
-			)
-		);
-		$this->add_control( new Control(
-				'typeface222',
-				[
-					'transport' => 'postMessage',
-				],
-				[
-					'label'   => __( 'Typeface', 'neve' ),
-					'section' => 'neve_colors_background_section',
-					'type'    => 'neve_typeface_control',
+					'type'    => 'neve_style_presets_control',
 				]
 
 			)

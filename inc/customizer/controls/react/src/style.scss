@@ -269,38 +269,55 @@
 
 //FONTS
 .neve-typeface-control {
+
+  .font-family-selector-toggle {
+    width: 100%;
+    height: 45px;
+    font-size: 15px;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    > strong {
+      align-self: flex-start;
+      flex: 1;
+      text-align: left;
+    }
+
+    .ff-name {
+      align-self: flex-start;
+      max-width: 65%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .ff-preview {
+      align-self: flex-end;
+      margin-left: auto;
+      font-size: 21px;
+    }
+  }
+
   .popover-content {
     position: relative;
     display: block;
-    width: 260px !important;
+    width: 300px !important;
   }
-  .neve-font-types {
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
-    width: 100%;
-    padding: 5px 5px 0;
-    box-sizing: border-box;
-    button {
-      text-align: center;
-      align-items: center;
-      justify-content: center;
-      flex: 1;
-    }
-  }
+
   .popover-header {
     position: fixed;
     top: 0;
   }
+
   .search {
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #fff;
-    box-shadow: 0 5px 5px -3px rgba(0,0,0,.2);
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, .2);
     border-bottom: 1px solid #ccc;
     padding: 5px;
-    width: 260px;
+    width: 300px;
     top: 0;
     box-sizing: border-box;
 
@@ -325,30 +342,56 @@
 
   .components-popover__content {
     overflow: hidden !important;
-    //max-height: 355px !important;
   }
 
   .neve-fonts-list {
     max-height: 400px;
-    margin-top: 70px;
+    margin-top: 35px;
     overflow: auto;
+
     .load-more {
       padding: 10px 0;
-      background-color: #eee;
-      border-top: 1px solid #ccc;
+
+      svg {
+        fill: #0073aa;
+        animation: 2s infinite linear neve-spin;
+      }
     }
+
     li {
       margin: 0;
+
+      &.selected a {
+        background-color: #0b69da;
+        color: #fff;
+      }
+
+      &.no-result {
+        opacity: .75;
+        font-weight: 600;
+        padding: 10px 0;
+      }
+
+      &.font-group-header {
+        text-align: left;
+        padding: 5px 10px;
+        font-size: 15px;
+        font-weight: 600;
+        background-color: #efefef;
+      }
 
       a {
         display: flex;
         padding: 5px 10px;
         transition: .2s ease;
+        color: #333;
+        border-bottom: 1px solid #efefef;
 
         &:hover {
           color: #fff;
           background-color: #0073aa;
         }
+
         .neve-font-family {
           font-size: 14px;
           font-weight: 400;
@@ -357,6 +400,7 @@
           overflow: hidden;
           text-overflow: ellipsis;
         }
+
         .neve-font-preview {
           font-display: swap;
           margin-left: auto;
@@ -364,5 +408,40 @@
         }
       }
     }
+  }
+}
+
+@-moz-keyframes neve-spin {
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes neve-spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes neve-spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+
+// neve-style-presets
+
+.neve-style-presets {
+  .single-preset {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+  }
+
+  .preset-header {
+    border-bottom: 1px solid #ccc;
   }
 }
