@@ -65,6 +65,22 @@ class Typography extends Base_Customizer {
 		/**
 		 * Body font family
 		 */
+
+
+		$this->add_control( new Control(
+				'neve_typeface_general',
+				[
+					'transport' => 'postMessage',
+					'default'   => $this->get_body_typography_defaults()
+				],
+				[
+					'label'   => __( 'Body', 'neve' ),
+					'section' => 'neve_typography_general',
+					'type'    => 'neve_typeface_control',
+				]
+			)
+		);
+
 		$this->add_control(
 			new Control(
 				'neve_body_font_family',
@@ -233,7 +249,7 @@ class Typography extends Base_Customizer {
 					'section'    => 'neve_typography_general',
 					'step'       => 0.1,
 					'input_attr' => array(
-						'min'     => -5,
+						'min'     => - 5,
 						'max'     => 20,
 						'default' => 0,
 					),
@@ -398,7 +414,7 @@ class Typography extends Base_Customizer {
 					'section'    => 'neve_typography_headings',
 					'step'       => 0.1,
 					'input_attr' => array(
-						'min'     => -5,
+						'min'     => - 5,
 						'max'     => 20,
 						'default' => 0,
 					),
@@ -536,6 +552,62 @@ class Typography extends Base_Customizer {
 		}
 
 		return $value;
+	}
+
+	private function get_body_typography_defaults() {
+		$default = array(
+			'fontFamily'    => 'default',
+			'fontSize'      => array(
+				'suffix'  => array( 'mobile' => 'px', 'tablet' => 'px', 'desktop' => 'px' ),
+				'mobile'  => 15,
+				'tablet'  => 16,
+				'desktop' => 16,
+			),
+			'lineHeight'    => array(
+				'mobile'  => 1.6,
+				'tablet'  => 1.6,
+				'desktop' => 1.6,
+			),
+			'letterSpacing' => array(
+				'mobile'  => 0,
+				'tablet'  => 0,
+				'desktop' => 0,
+			),
+			'fontWeight'    => '400',
+			'textTransform' => 'none'
+		);
+
+		$font_size      = get_theme_mod( 'neve_body_font_size' );
+		$line_height    = get_theme_mod( 'neve_body_line_height' );
+		$body_font      = get_theme_mod( 'neve_body_font_family' );
+		$spacing        = get_theme_mod( 'neve_body_letter_spacing' );
+		$text_transform = get_theme_mod( 'neve_body_text_transform' );
+		$font_weight    = get_theme_mod( 'neve_body_font_weight' );
+
+		if ( ! empty( $font_size ) ) {
+			$default['fontSize'] = json_decode( $font_size, true );
+		}
+		if ( ! empty( $line_height ) ) {
+			$default['lineHeight'] = json_decode( $line_height, true );
+		}
+		if ( ! empty( $body_font ) ) {
+			$default['fontFamily'] = $body_font;
+		}
+		if ( ! empty( $spacing ) ) {
+			$default['letterSpacing'] = array(
+				'mobile'  => $spacing,
+				'tablet'  => $spacing,
+				'desktop' => $spacing,
+			);
+		}
+		if ( ! empty( $text_transform ) ) {
+			$default['textTransform'] = $text_transform;
+		}
+		if ( ! empty( $font_weight ) ) {
+			$default['fontWeight'] = $font_weight;
+		}
+
+		return $default;
 	}
 }
 

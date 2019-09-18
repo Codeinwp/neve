@@ -56,6 +56,13 @@ class Typography extends Base_Inline {
 		$font_weight    = get_theme_mod( 'neve_body_font_weight' );
 		$text_transform = get_theme_mod( 'neve_body_text_transform' );
 		$spacing        = get_theme_mod( 'neve_body_letter_spacing' );
+
+		var_dump($font_size);
+		var_dump($line_height);
+		var_dump( $body_font );
+		var_dump( $font_weight );
+		var_dump( $text_transform );
+		var_dump( $spacing );
 		$style_setup    = array();
 		if ( ! empty( $body_font ) && $body_font !== 'default' ) {
 			$style_setup[] = array(

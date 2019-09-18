@@ -137,8 +137,6 @@
   }
 }
 
-
-@import "spacing/style";
 .neve-units {
   display: flex;
   margin-top: 10px;
@@ -170,6 +168,11 @@
   width: 100%;
   margin-bottom: 10px;
 
+  &.bordered {
+    border-bottom: 3px solid #d8d8d8;
+    margin-bottom: 0;
+  }
+
   .customize-control-title {
     margin: 0;
   }
@@ -178,28 +181,46 @@
     margin-left: auto;
   }
 
-  .neve-devices-dropdown {
-    display: flex;
-    flex-direction: column;
+  button {
+    font-size: 14px;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -3px;
 
-    button {
-      padding: 10px 20px;
-      display: flex;
-
-      &.is-selected {
-        color: #fff;
-        background-color: #008dc2;
-      }
+    &.active-device {
+      border-bottom: 3px solid currentColor;
+      border-bottom-color: #191e23;
 
       svg {
-        margin-right: 10px;
+        fill: #191e23 !important;
       }
+    }
+
+    &:not(.active-device) {
+      svg {
+        fill: #656a6f !important;
+      }
+    }
+
+    svg {
+      height: 17px;
+      width: 17px;
     }
   }
 }
 
+.neve-responsive-controls-content {
+  border: 1px solid #ccc;
+  border-top: 0;
+  background-color: #fff;
+  padding: 10px;
+}
+
 .neve-responsive-sizing {
   display: flex;
+
+  &.single-input .nv-sizing-item {
+    width: calc(100% - 12% + 1px)
+  }
 
   .range-control {
     .components-base-control__field {
@@ -269,20 +290,16 @@
 
 //FONTS
 .neve-typeface-control {
+  border: 1px solid #ccc;
+  padding: 10px;
+  background: #fff;
 
   .font-family-selector-toggle {
     width: 100%;
-    height: 45px;
-    font-size: 15px;
+    height: 35px;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-
-    > strong {
-      align-self: flex-start;
-      flex: 1;
-      text-align: left;
-    }
 
     .ff-name {
       align-self: flex-start;
@@ -443,5 +460,41 @@
 
   .preset-header {
     border-bottom: 1px solid #ccc;
+  }
+}
+
+
+.neve-text-transform:not(:last-child), .neve-font-family-control:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.neve-number-control-wrap {
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+
+  .header {
+    display: flex;
+
+    .neve-units {
+      margin: 0 0 0 auto;
+    }
+  }
+}
+
+.neve-text-transform {
+  .buttons {
+    width: 100%;
+    display: flex;
+    button {
+      flex: 1;
+      text-align: center;
+      font-weight: 700;
+      justify-content: center;
+      &.is-active, &.is-active:focus {
+        background: #008dc2;
+        color: #fff;
+      }
+    }
   }
 }

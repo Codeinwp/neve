@@ -97,7 +97,7 @@ class FontFamilySelector extends Component {
 								onChange={(isVisible) => {
 									if ( isVisible ) {
 										this.setState( {
-											loadUntil: ( self.state.loadUntil + 10 ).toFixed(),
+											loadUntil: ( self.state.loadUntil + 5 ),
 											delayFontInclusion: false
 										} );
 									}
@@ -140,8 +140,10 @@ class FontFamilySelector extends Component {
 	render() {
 		self = this;
 		return (
-				<Fragment>
-					<span>{__( 'Font family', 'neve' )}</span>
+				<div className="neve-font-family-control">
+					<span className="customize-control-title">
+						{__( 'Font family', 'neve' )}
+					</span>
 					<Button
 							className="font-family-selector-toggle"
 							isDefault
@@ -163,7 +165,7 @@ class FontFamilySelector extends Component {
 								</Popover>
 						)}
 					</Button>
-				</Fragment>
+				</div>
 		);
 	}
 }
