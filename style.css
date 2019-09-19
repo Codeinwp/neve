@@ -2982,10 +2982,17 @@ body.menu_sidebar_slide_left.menu_sidebar_dropdown:before {
 }
 
 #secondary-menu li a {
-  display: flex;
-  justify-content: center;
+  text-align: center;
   padding: 0 10px;
   font-weight: 500;
+}
+
+#secondary-menu li:last-of-type a {
+  padding-right: 0;
+}
+
+#secondary-menu li:first-of-type a {
+  padding-left: 0;
 }
 
 #secondary-menu i {
