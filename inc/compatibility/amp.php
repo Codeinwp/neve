@@ -58,9 +58,9 @@ class Amp {
 			return $input;
 		}
 
-		$wrapper = ' aria-label="search" id="nv-menu-item-search" on="tap:nv-menu-item-search.toggleClass(class=\'active\')" ';
+		$wrapper = 'class="neve-nav-search-icon" on="tap:nv-menu-item-search.toggleClass(class=\'active\')" ';
 
-		$output = str_replace( 'aria-label="search"', $wrapper, $input );
+		$output = str_replace( 'class="nv-nav-search-icon"', $wrapper, $input );
 
 		return $output;
 	}

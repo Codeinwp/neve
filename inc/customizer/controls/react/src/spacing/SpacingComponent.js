@@ -32,7 +32,8 @@ class SpacingComponent extends Component {
 
 		let defaultParams = {
 			min: -300,
-			max: 300
+			max: 300,
+			hideResponsiveButtons: false
 		};
 
 		this.controlParams = props.control.params.input_attrs ? {
@@ -67,6 +68,7 @@ class SpacingComponent extends Component {
 				<Fragment>
 					<ResponsiveControl
 							controlLabel={this.props.control.params.label}
+							hideResponsive={this.controlParams.hideResponsiveButtons}
 							onChange={(currentDevice) => {
 								this.setState( { currentDevice } );
 								this.setState( { linked: this.shouldValuesBeLinked() } );
