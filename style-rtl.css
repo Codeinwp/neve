@@ -1809,6 +1809,10 @@ audio {
   padding-right: 0;
 }
 
+.gallery-caption {
+  box-sizing: border-box;
+}
+
 .nv-sidebar-wrap {
   margin-bottom: 40px;
 }
