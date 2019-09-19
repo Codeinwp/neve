@@ -353,6 +353,19 @@
   font-weight: 300;
 }
 
+.woocommerce.single .entry-summary ul, .woocommerce.single #tab-description ul {
+  list-style-type: circle;
+}
+
+.woocommerce.single .entry-summary ul, .woocommerce.single .entry-summary ol, .woocommerce.single #tab-description ul, .woocommerce.single #tab-description ol {
+  padding-right: 20px;
+  margin-bottom: 20px;
+}
+
+.woocommerce.single .entry-summary ul li, .woocommerce.single .entry-summary ol li, .woocommerce.single #tab-description ul li, .woocommerce.single #tab-description ol li {
+  margin-bottom: 10px;
+}
+
 .single_add_to_cart_button {
   width: 100%;
 }
@@ -556,7 +569,7 @@ section.exclusive .tns-outer {
   position: relative;
   padding: 5px 10px 0 10px;
   right: -10px;
-  width: calc( 100% + 20px);
+  width: calc(100% + 20px);
 }
 
 section.exclusive .tns-ovh {
