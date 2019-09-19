@@ -65,7 +65,21 @@ class Typography extends Base_Customizer {
 		/**
 		 * Body font family
 		 */
-
+		$this->add_control(
+			new Control(
+				'neve_body_font_family',
+				[
+					'transport'         => $this->selective_refresh,
+					'sanitize_callback' => 'sanitize_text_field',
+				],
+				[
+					'label'    => esc_html__( 'Font Family', 'neve' ),
+					'section'  => 'neve_typography_general',
+					'priority' => 10,
+					'type'     => 'neve_font_family_control'
+				]
+			)
+		);
 
 		$this->add_control( new Control(
 				'neve_typeface_general',
@@ -74,29 +88,30 @@ class Typography extends Base_Customizer {
 					'default'   => $this->get_body_typography_defaults()
 				],
 				[
-					'label'   => __( 'Body', 'neve' ),
-					'section' => 'neve_typography_general',
-					'type'    => 'neve_typeface_control',
+					'priority' => 11,
+					'label'    => __( 'Body', 'neve' ),
+					'section'  => 'neve_typography_general',
+					'type'     => 'neve_typeface_control',
 				]
 			)
 		);
 
-		$this->add_control(
-			new Control(
-				'neve_body_font_family',
-				array(
-					'transport'         => $this->selective_refresh,
-					'sanitize_callback' => 'sanitize_text_field',
-					'default'           => 'default',
-				),
-				array(
-					'label'    => esc_html__( 'Font Family', 'neve' ),
-					'section'  => 'neve_typography_general',
-					'priority' => 10,
-				),
-				'Neve\Customizer\Controls\Font_Selector'
-			)
-		);
+//		$this->add_control(
+//			new Control(
+//				'neve_body_font_family',
+//				array(
+//					'transport'         => $this->selective_refresh,
+//					'sanitize_callback' => 'sanitize_text_field',
+//					'default'           => 'default',
+//				),
+//				array(
+//					'label'    => esc_html__( 'Font Family', 'neve' ),
+//					'section'  => 'neve_typography_general',
+//					'priority' => 12,
+//				),
+//				'Neve\Customizer\Controls\Font_Selector'
+//			)
+//		);
 
 		/**
 		 * Font Weight

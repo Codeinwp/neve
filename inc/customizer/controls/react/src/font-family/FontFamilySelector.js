@@ -2,7 +2,6 @@
  * WordPress dependencies
  */
 /*global NeveReactCustomize*/
-
 import FontPreviewLink from './FontPreviewLink.js';
 import VisibilitySensor from 'react-visibility-sensor';
 import PropTypes from 'prop-types';
@@ -24,7 +23,6 @@ const {
 class FontFamilySelector extends Component {
 	constructor(props) {
 		super( props );
-
 		this.state = {
 			fonts: NeveReactCustomize.fonts,
 			isVisible: false,
@@ -49,18 +47,17 @@ class FontFamilySelector extends Component {
 	getFontList() {
 		let fontGroups = this.getFonts(),
 				options = [],
-				self = this,
-				defaultFontface = '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif';
+				self = this;
 
 		options.push(
-				<li className="default-value">
+				<li className={'default-value ' + !this.props.selected ? 'selected' : ''}>
 					<FontPreviewLink
-							fontFace={defaultFontface}
+							fontFace='default'
 							delayLoad={false}
 							label={__( 'Default', 'neve' )}
 							onClick={() => {
 								this.setState( { isVisible: false } );
-								this.props.onFontChoice( 'system', defaultFontface );
+								this.props.onFontChoice( 'system', false );
 							}}/>
 				</li>
 		);
@@ -71,13 +68,11 @@ class FontFamilySelector extends Component {
 						{key}
 					</li>
 			);
-			console.log( fontGroups );
 			fontGroups[key].map( (font, index) => {
 				if ( index < self.state.loadUntil ) {
 					options.push(
 							<li className={
 								(
-										key === this.props.selectedType &&
 										font === this.props.selected
 								) ? 'selected' : ''}>
 								<FontPreviewLink delayLoad={this.state.delayFontInclusion}
@@ -138,12 +133,12 @@ class FontFamilySelector extends Component {
 	}
 
 	render() {
-		self = this;
+		let defaultFontface = '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif';
 		return (
 				<div className="neve-font-family-control">
-					<span className="customize-control-title">
-						{__( 'Font family', 'neve' )}
-					</span>
+					{this.props.label && <span className="customize-control-title">
+						{this.props.label}
+					</span>}
 					<Button
 							className="font-family-selector-toggle"
 							isDefault
@@ -151,10 +146,12 @@ class FontFamilySelector extends Component {
 								this.setState( { isVisible: true } );
 							}}>
 
-						<span className="ff-name">{this.props.selected}</span>
-						{this.props.selected &&
+						<span className="ff-name">{this.props.selected ||
+						__( 'Default', 'neve' )}</span>
 						<span className="ff-preview"
-								style={{ fontFamily: this.props.selected }}>Abc</span>}
+								style={{
+									fontFamily: this.props.selected || defaultFontface
+								}}>Abc</span>
 						{this.state.isVisible && (
 								<Popover
 										position="bottom left"
@@ -173,7 +170,8 @@ class FontFamilySelector extends Component {
 FontFamilySelector.propTypes = {
 	onFontChoice: PropTypes.func.isRequired,
 	selected: PropTypes.string,
-	selectedType: PropTypes.string
+	selectedType: PropTypes.string,
+	label: PropTypes.string
 };
 
 export default FontFamilySelector;

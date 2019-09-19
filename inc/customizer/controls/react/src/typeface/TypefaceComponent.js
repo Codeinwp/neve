@@ -1,7 +1,6 @@
 /* jshint esversion: 6 */
 import PropTypes from 'prop-types';
 
-import FontFamilySelector from './FontFamilySelector.js';
 import ResponsiveControl from '../common/Responsive.js';
 import TextTransform from './TextTransform.js';
 import NumberControl from '../common/NumberControl.js';
@@ -47,14 +46,6 @@ class TypefaceComponent extends Component {
 							{this.props.control.params.label}
 						</span>}
 					<div className="neve-typeface-control">
-						<FontFamilySelector
-								selected={this.state.fontFamily}
-								selectedType={this.state.fontFamilySource}
-								onFontChoice={(fontFamilySource, fontFamily) => {
-									self.setState( { fontFamilySource, fontFamily } );
-								}}
-						/>
-
 						<TextTransform
 								onChange={(textTransform) => {
 									this.setState( { textTransform } );

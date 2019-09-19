@@ -33,9 +33,9 @@ class NumberControl extends Component {
 							noRange
 							options={[{ 'value': value }]}
 							onChange={( value ) => { this.props.onChange( value ); }}
-							max={100}
-							min={0}
-							step={10}
+							max={this.props.max || 100}
+							min={this.props.min || 0}
+							step={this.props.step || 1}
 							onReset={() => {
 								this.props.onReset();
 							}}
@@ -73,7 +73,10 @@ NumberControl.propTypes = {
 	onReset: PropTypes.func.isRequired,
 	units: PropTypes.array || PropTypes.bool,
 	onUnitChange: PropTypes.func,
-	activeUnit: PropTypes.string
+	activeUnit: PropTypes.string,
+	max: PropTypes.number,
+	min: PropTypes.number,
+	step: PropTypes.number,
 };
 
 export default NumberControl;
