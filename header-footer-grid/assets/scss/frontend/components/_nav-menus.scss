@@ -81,12 +81,16 @@
     align-items: center;
     position: relative;
     width: inherit;
-
     a {
-      display: flex;
-      justify-content: center;
+      text-align: center;
       padding: 0 10px;
       font-weight: 500;
+    }
+    &:last-of-type a {
+      padding-right: 0;
+    }
+    &:first-of-type a {
+      padding-left: 0;
     }
   }
 
