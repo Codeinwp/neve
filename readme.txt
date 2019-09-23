@@ -18,6 +18,14 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
+= 2.4.2 - 2019-09-23  = 
+
+* [Fix] Alignment options for the Secondary and Footer menus
+* [Fix] Style ul/li on WooCommerce single product short descriptions
+* [Fix] Add support for responsive embeds
+* New Beaver Builder Starter Sites: Freelancer & Life Coach
+
+
 = 2.4.1 - 2019-09-13  = 
 
 * [Feat] New background image options for the header and the footer

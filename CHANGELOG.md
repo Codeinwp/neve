@@ -1,4 +1,11 @@
 
+ ### v2.4.2 - 2019-09-23 
+ **Changes:** 
+ * [Fix] Alignment options for the Secondary and Footer menus
+* [Fix] Style ul/li on WooCommerce single product short descriptions
+* [Fix] Add support for responsive embeds
+* New Beaver Builder Starter Sites: Freelancer & Life Coach
+ 
  ### v2.4.1 - 2019-09-13 
  **Changes:** 
  * [Feat] New background image options for the header and the footer
