@@ -10,7 +10,7 @@ const {
 } = wp.element;
 const {
 	ButtonGroup,
-	Button,
+	Button
 } = wp.components;
 const {
 	mapValues
@@ -41,6 +41,18 @@ class SpacingComponent extends Component {
 			...props.control.params.input_attrs
 		} : defaultParams;
 
+		let baseDefault = {
+			'mobile': { 'top': 0, 'right': 0, 'bottom': 0, 'left': 0 },
+			'tablet': { 'top': 0, 'right': 0, 'bottom': 0, 'left': 0 },
+			'desktop': { 'top': 0, 'right': 0, 'bottom': 0, 'left': 0 },
+			'mobile-unit': 'px',
+			'tablet-unit': 'px',
+			'desktop-unit': 'px'
+		};
+		this.defaultValue = props.control.params.default ? {
+			...baseDefault,
+			...props.control.params.default
+		} : baseDefault;
 	}
 
 	render() {
@@ -80,19 +92,15 @@ class SpacingComponent extends Component {
 								step={this.state.value[this.state.currentDevice + '-unit'] ===
 								'em' ? 0.1 : 1}
 								options={options}
+								defaults={ this.defaultValue[this.state.currentDevice] }
 								linked={this.state.linked}
 								onLinked={() => this.setState( { linked: !this.state.linked } )}
 								onChange={(optionType, numericValue) => {
 									this.updateValues( optionType, numericValue );
 								}}
 								onReset={() => {
-									let devices = ['mobile', 'desktop', 'tablet'];
-									let value = { ...this.state.value };
-									devices.map( (device) => {
-										value[device] = mapValues( value[device], () => '' );
-									} );
-									this.setState( { value } );
-									this.props.control.setting.set( value );
+									this.setState( { value: this.defaultValue } );
+									this.props.control.setting.set( this.defaultValue );
 								}}
 						/>
 						<div className="neve-units">
@@ -118,7 +126,7 @@ class SpacingComponent extends Component {
 							onClick={() => {
 								let value = { ...self.state.value };
 								value[self.state.currentDevice + '-unit'] = type;
-								if( type !== 'em') {
+								if ( type !== 'em' ) {
 									value[self.state.currentDevice] = mapValues(
 											value[self.state.currentDevice],
 											(value) => value ? parseInt( value ) : value );
@@ -136,7 +144,6 @@ class SpacingComponent extends Component {
 
 	updateValues(optionType, numericValue) {
 		let value = { ...this.state.value };
-		numericValue = numericValue === 0 ? 0 : numericValue || '';
 		if ( this.state.linked ) {
 			value[this.state.currentDevice] = mapValues(
 					value[this.state.currentDevice], () => numericValue );

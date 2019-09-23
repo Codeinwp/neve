@@ -628,6 +628,34 @@ Starter Sites screenshots resources:
 * http://mystock.themeisle.com/photo/concert/
 * http://mystock.themeisle.com/photo/rock-on/
 
+- Wedding Photography
+* http://mystock.themeisle.com/photo/wedding-flower-decorations/
+* http://mystock.themeisle.com/photo/bride-and-groom-table-decorated-with-flowers-2/
+* http://mystock.themeisle.com/photo/bride-and-groom/
+
+- Photography Studio
+* https://stocksnap.io/photo/3IJLXXN9OY
+* https://stocksnap.io/photo/83PSG6Y1FM
+
+- Video Agency
+* http://mystock.themeisle.com/photo/cameras/
+* http://mystock.themeisle.com/photo/protest/
+* http://mystock.themeisle.com/photo/selfie/
+* http://mystock.themeisle.com/photo/flatiron-2/
+
+- Furniture Shop
+* http://mystock.themeisle.com/photo/bathtub-in-the-center-of-the-room/
+* http://mystock.themeisle.com/photo/resort-premium-room/
+* http://mystock.themeisle.com/photo/rocking-chair-on-a-blue-carpet/
+* http://mystock.themeisle.com/photo/resort-room-with-a-view/
+* http://mystock.themeisle.com/photo/couch-with-two-green-pillows/
+
+- Farm
+* http://mystock.themeisle.com/photo/yellow-and-green/
+* http://mystock.themeisle.com/photo/oranges/
+* http://mystock.themeisle.com/photo/swamp/
+* http://mystock.themeisle.com/photo/strawberries-and-oranges-for-sale-in-baskets/
+* http://mystock.themeisle.com/photo/rosehip/
 
 
 
