@@ -442,13 +442,6 @@ class Front_End {
 						'unsplash_gallery' => 'https://unsplash.com/collections/4587634/freelancer/920c5eb680fa5f20b9b19a0d84a385eb',
 						'local_json'       => $onboarding_folder_path . '/neve-beaver-freelancer/data.json',
 					),
-					'neve-beaver-tattoo'             => array(
-						'url'              => 'https://demo.themeisle.com/neve-tatoo-bb/',
-						'title'            => 'Tattoo',
-						'screenshot'       => $onboarding_folder_url . '/neve-tattoo/screenshot.jpg',
-						'unsplash_gallery' => 'https://unsplash.com/collections/8459353/tatoo-studio',
-						'local_json'       => $onboarding_folder_path . '/neve-beaver-tattoo/data.json',
-					),
 					'neve-beaver-zelle'              => array(
 						'url'              => 'https://demo.themeisle.com/neve-zelle-bb/',
 						'title'            => 'Travel Agency',
