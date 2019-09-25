@@ -9,7 +9,6 @@
 namespace Neve\Views\Partials;
 
 use Neve\Views\Base_View;
-use ThemeIsle\BlockCSS\Block_Frontend;
 
 /**
  * Class Excerpt
@@ -36,7 +35,7 @@ class Excerpt extends Base_View {
 		}
 		global $post;
 		$pid            = $post->ID;
-		$otter_instance = new Block_Frontend();
+		$otter_instance = new \ThemeIsle\BlockCSS\Block_Frontend();
 		$otter_instance->enqueue_styles( $pid, true );
 		return $content;
 
