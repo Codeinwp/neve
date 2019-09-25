@@ -58,7 +58,7 @@ class Header_Footer_Beaver {
 		remove_all_actions( 'neve_do_top_bar' );
 		remove_all_actions( 'neve_do_header' );
 
-		echo '<header id="masthead">';
+		echo '<header id="nv-beaver-header">';
 		\BB_Header_Footer::get_header_content();
 		echo '</header>';
 
@@ -74,7 +74,7 @@ class Header_Footer_Beaver {
 			return false;
 		}
 		remove_all_actions( 'neve_do_footer' );
-		echo '<footer>';
+		echo '<footer id="nv-beaver-footer">';
 		\BB_Header_Footer::get_footer_content();
 		echo '</footer>';
 
