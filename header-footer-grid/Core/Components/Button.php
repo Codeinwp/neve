@@ -33,7 +33,7 @@ class Button extends Abstract_Component {
 	 */
 	public function __construct( $panel ) {
 		parent::__construct( $panel );
-		$this->default_selector = '.builder-item--' . $this->get_id() . ' > .component-wrap > :first-child';
+		$this->default_selector = '.builder-item--' . $this->get_id() . ' > .component-wrap > .button.button-primary:first-child';
 	}
 
 	/**
