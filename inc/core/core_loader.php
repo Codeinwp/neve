@@ -53,6 +53,7 @@ class Core_Loader {
 				'Views\Page_Layout',
 				'Views\Product_Layout',
 				'Views\Content_None',
+				'Views\Content_404',
 				'Views\Breadcrumbs',
 
 				'Views\Layouts\Layout_Container',
