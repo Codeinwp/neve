@@ -12,11 +12,3 @@ Cypress.Commands.add("login", ( nextRoute = null ) => {
 	}
 	cy.visit(nextRoute);
 });
-
-Cypress.Commands.add('iframe', { prevSubject: 'element' }, $iframe => {
-	return new Cypress.Promise(resolve => {
-		$iframe.on('load', () => {
-			resolve($iframe.contents().find('body'));
-		});
-	});
-});
