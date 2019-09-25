@@ -46,7 +46,7 @@ class Main extends Controls_Base {
 			new Controls\Radio(
 				'neve_meta_sidebar',
 				array(
-					'default'  => 'default',
+					'default'  => $this->is_new_page() ? 'full-width' : 'default',
 					'choices'  => array(
 						'default'    => __( 'Customizer Setting', 'neve' ),
 						'left'       => __( 'Left Sidebar', 'neve' ),
@@ -124,7 +124,7 @@ class Main extends Controls_Base {
 			new Controls\Checkbox(
 				'neve_meta_enable_content_width',
 				array(
-					'default'     => 'off',
+					'default'     => $this->is_new_page() ? 'on' : 'off',
 					'label'       => __( 'Content Width', 'neve' ) . ' (%)',
 					'input_label' => __( 'Enable Individual Content Width', 'neve' ),
 					'priority'    => 50,
@@ -135,7 +135,7 @@ class Main extends Controls_Base {
 			new Controls\Range(
 				'neve_meta_content_width',
 				array(
-					'default'    => 70,
+					'default'    => $this->is_new_page() ? 100 : 70,
 					'min'        => 50,
 					'max'        => 100,
 					'hidden'     => $this->hide_content_width(),
@@ -152,6 +152,10 @@ class Main extends Controls_Base {
 	 * @return bool
 	 */
 	public function hide_content_width() {
+		if ( $this->is_new_page() ) {
+			return false;
+		}
+
 		if ( ! isset( $_GET['post'] ) ) {
 			return true;
 		}
@@ -209,5 +213,27 @@ class Main extends Controls_Base {
 		}
 
 		return false;
+	}
+
+	/**
+	 * Check if we're adding a new post of type `page`.
+	 *
+	 * @return bool
+	 */
+	private function is_new_page() {
+		global $pagenow;
+
+		if ( $pagenow !== 'post-new.php' ) {
+			return false;
+		}
+
+		if ( ! isset( $_GET['post_type'] ) ) {
+			return false;
+		}
+		if ( ( $_GET['post_type'] !== 'page' ) ) {
+			return false;
+		}
+
+		return true;
 	}
 }
