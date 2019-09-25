@@ -75,6 +75,7 @@ class Core_Loader {
 				'Compatibility\Elementor',
 				'Compatibility\Header_Footer_Elementor',
 				'Compatibility\Amp',
+				'Compatibility\Header_Footer_Beaver',
 				'Compatibility\Beaver',
 				'Compatibility\Lifter',
 
