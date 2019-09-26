@@ -64,6 +64,7 @@ class Front_End {
 		add_theme_support( 'lifterlms-sidebars' );
 		add_theme_support( 'lifterlms' );
 		add_theme_support( 'responsive-embeds' );
+		add_theme_support( 'service_worker', true );
 
 		add_filter( 'themeisle_gutenberg_templates', array( $this, 'add_gutenberg_templates' ) );
 
