@@ -2341,7 +2341,7 @@ audio {
   list-style: inherit;
 }
 
-body.bbhf-transparent-header #nv-beaver-header .bhf-fixed-header:not(.bhf-fixed) .fl-row-content-wrap {
+body.bbhf-transparent-header.fl-builder #nv-beaver-header .bhf-fixed-header:not(.bhf-fixed) .fl-row-content-wrap {
   background-color: transparent;
 }
 
