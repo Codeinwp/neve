@@ -2341,6 +2341,24 @@ audio {
   list-style: inherit;
 }
 
+.fl-builder.bbhf-transparent-header:not(.bhf-sticky-header) #nv-beaver-header .fl-row-content-wrap {
+  background-color: transparent;
+  border: none;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.fl-builder.bbhf-transparent-header .bhf-fixed-header:not(.bhf-fixed) .fl-row-content-wrap {
+  background-color: transparent;
+  border: none;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.fl-builder.bbhf-transparent-header #nv-beaver-header {
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+}
+
 /*Skin*/
 .site-header {
   position: relative;

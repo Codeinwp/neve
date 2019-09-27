@@ -565,6 +565,16 @@ class Front_End {
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/09/neve-farm.jpg',
 						'title'      => 'Farm',
 					),
+					'neve-photographer'          => array(
+						'url'        => 'https://demo.themeisle.com/neve-photography/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/09/neve-photographer.jpg',
+						'title'      => 'Photographer',
+					),
+					'neve-kindergarten'          => array(
+						'url'        => 'https://demo.themeisle.com/neve-kindergarten/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/09/neve-kindergarden.jpg',
+						'title'      => 'Kindergarten',
+					),
 				),
 				'brizy'          => array(
 					'neve-brizy-cafe'    => array(
