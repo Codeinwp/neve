@@ -16,6 +16,14 @@ if ( ! defined( 'NEVE_DEBUG' ) ) {
 	define( 'NEVE_DEBUG', false );
 }
 
+add_filter( 'neve_the_content', 'do_blocks' );
+add_filter( 'neve_the_content', 'wptexturize' );
+add_filter( 'neve_the_content', 'convert_smilies' );
+add_filter( 'neve_the_content', 'convert_chars' );
+add_filter( 'neve_the_content', 'wpautop' );
+add_filter( 'neve_the_content', 'shortcode_unautop' );
+add_filter( 'neve_the_content', 'do_shortcode' );
+
 /**
  * Themeisle SDK filter.
  *
