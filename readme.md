@@ -634,6 +634,17 @@ Starter Sites screenshots resources:
 * http://mystock.themeisle.com/photo/strawberries-and-oranges-for-sale-in-baskets/
 * http://mystock.themeisle.com/photo/rosehip/
 
+- Photographer
+* http://mystock.themeisle.com/photo/old-casino/
+* http://mystock.themeisle.com/photo/photographer-3/
+* http://mystock.themeisle.com/photo/sea-breeze/
+* http://mystock.themeisle.com/photo/church/
+* http://mystock.themeisle.com/photo/flatiron-2/
+
+- Kindergarten
+* https://stocksnap.io/photo/NY963ZH6T2
+* https://stocksnap.io/photo/PBHFF6RJPH
+
 
 
 
