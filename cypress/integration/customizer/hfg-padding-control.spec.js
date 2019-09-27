@@ -3,12 +3,12 @@ describe( 'Header Builder Padding Control', function() {
         cy.login();
         aliasRestRoutes();
         setupCustomizer();
-        /*cy.wait( '@customizerSave' ).then( (req) => {
+        cy.wait( '@customizerSave' ).then( (req) => {
             expect( req.response.body.success ).to.be.true;
             expect( req.status ).to.equal( 200 );
             cy.wait(2000);
             checkFrontEnd();
-        } );*/
+        } );
     } );
 } );
 
@@ -38,16 +38,18 @@ function setupCustomizer() {
         click();
 
     // Increase Top Padding value
-    /*cy.get( '#customize-control-logo_component_padding > .neve-responsive-sizing > .nv-sizing-item > div > #top-input' ).
-        type('{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}');*/
-
-    // Increase Top Padding value
     cy.get( '#customize-control-logo_component_padding > .neve-responsive-sizing > .nv-sizing-item > div > #top-input' ).
-        invoke('val', 30).
+        type('{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}').
         trigger('change');
 
-
-
-
     cy.get( '#save' ).click();
+}
+
+function checkFrontEnd() {
+    cy.visit( '/' );
+
+    cy.get( '.site-logo' ).should( 'be.visible' );
+    cy.get( '.site-logo' ).
+    should( 'have.css', 'padding-top' ).
+    and( 'contain', '30px' );
 }
