@@ -5,12 +5,7 @@ describe( 'Page meta box settings', function() {
 		'url': null
 	};
 	it( 'Create new page named "' + pageSetup.title + '".', function() {
-		cy.login( '/wp-admin/post-new.php?post_type=page' );
-		cy.get( '.editor-post-title__input' ).type( pageSetup.title );
-		cy.get( 'textarea.block-editor-default-block-appender__content' ).click();
-		cy.get( '.block-editor-rich-text__editable' ).type( pageSetup.content );
-		cy.get( '.editor-post-publish-panel__toggle' ).click();
-		cy.get( '.editor-post-publish-button' ).click();
+		cy.insertPost( pageSetup.title, pageSetup.content, 'page' );
 		cy.get( '.post-publish-panel__postpublish-header a' ).
 				contains( pageSetup.title ).
 				should( 'have.attr', 'href' ).
@@ -53,7 +48,7 @@ describe( 'Page meta box settings', function() {
 	} );
 
 	it( 'Edited meta box settings on front end.', function() {
-		cy.login( pageSetup.url );
+		cy.navigate( pageSetup.url );
 		cy.get( '.nv-sidebar-wrap' ).
 				should( 'have.class', 'nv-left' ).
 				and( 'be.visible' );
@@ -77,13 +72,7 @@ describe( 'Posts meta box settings', function() {
 		'url': null
 	};
 	it( 'Create new post named "' + postSetup.title + '".', function() {
-		cy.login( '/wp-admin/post-new.php' );
-		addFeaturedImage();
-		cy.get( '.editor-post-title__input' ).type( postSetup.title );
-		cy.get( 'textarea.block-editor-default-block-appender__content' ).click();
-		cy.get( '.block-editor-rich-text__editable' ).type( postSetup.content );
-		cy.get( '.editor-post-publish-panel__toggle' ).click();
-		cy.get( '.editor-post-publish-button' ).click();
+		cy.insertPost(postSetup.title, postSetup.content, 'post', true);
 		cy.get( '.post-publish-panel__postpublish-header a' ).
 				contains( postSetup.title ).
 				should( 'have.attr', 'href' ).
