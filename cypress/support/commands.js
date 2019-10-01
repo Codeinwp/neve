@@ -12,3 +12,7 @@ Cypress.Commands.add("login", ( nextRoute = null ) => {
 	}
 	cy.visit(nextRoute);
 });
+Cypress.Commands.add("navigate", ( nextRoute = null ) => {
+	cy.viewport( 1920, 1080 );
+	cy.visit(nextRoute);
+});
