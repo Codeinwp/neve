@@ -63,8 +63,8 @@ class Front_End {
 		add_theme_support( 'header-footer-elementor' );
 		add_theme_support( 'lifterlms-sidebars' );
 		add_theme_support( 'lifterlms' );
-		add_theme_support( 'responsive-embeds' );
 
+		add_filter( 'embed_oembed_html', array( $this, 'wrap_oembeds' ), 10, 3 );
 		add_filter( 'themeisle_gutenberg_templates', array( $this, 'add_gutenberg_templates' ) );
 
 		$this->add_amp_support();
@@ -85,6 +85,26 @@ class Front_End {
 	}
 
 	/**
+	 * Wrap embeds.
+	 *
+	 * @param string $markup embed markup.
+	 * @param string $url embed url.
+	 * @param array $attr embed attributes [width/height].
+	 *
+	 * @return string
+	 */
+	public function wrap_oembeds( $markup, $url, $attr ) {
+		$sources = [ 'vimeo.com', 'youtube.com', 'youtu.be' ];
+		foreach ( $sources as $source ) {
+			if ( strpos( $url, $source ) !== false ) {
+				return '<div class="nv-iframe-embed">' . $markup . '</div>';
+			}
+		}
+
+		return $markup;
+	}
+
+	/**
 	 * Tweak menu walker to support selective refresh.
 	 *
 	 * @param array $args List of arguments for navigation.
@@ -98,7 +118,6 @@ class Front_End {
 
 		return $args;
 	}
-
 
 	/**
 	 * Reorder starter sites based on previous theme
