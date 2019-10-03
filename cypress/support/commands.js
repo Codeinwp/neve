@@ -13,8 +13,7 @@ Cypress.Commands.add( 'login', (nextRoute = null) => {
 	cy.visit( nextRoute );
 } );
 Cypress.Commands.add( 'navigate',
-		(nextRoute = '/', viewPortWidth = 1920, viewPortHeight = 1080) => {
-			cy.viewport( viewPortWidth, viewPortHeight );
+		(nextRoute = '/') => {
 			cy.visit( nextRoute );
 		} );
 
@@ -29,7 +28,7 @@ Cypress.Commands.add( 'insertPost',
 				addFeaturedImage();
 			}
 			cy.get( '.editor-post-title__input' ).type( title );
-			cy.get( 'textarea.block-editor-default-block-appender__content' ).click();
+			cy.get( '.editor-default-block-appender textarea.block-editor-default-block-appender__content' ).click({force: true});
 			cy.get( '.block-editor-rich-text__editable' ).type( content );
 			cy.get( '.editor-post-publish-panel__toggle' ).click();
 			cy.get( '.editor-post-publish-button' ).click();
@@ -52,7 +51,7 @@ function addFeaturedImage() {
 				{ subjectType: 'drag-n-drop' }
 		);
 	} );
-
+	cy.wait(2500);
 	cy.get( '.media-button-select' ).contains( 'Select' ).click();
 }
 

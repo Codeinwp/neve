@@ -54,7 +54,7 @@ function setupCustomizer() {
         should( 'have.value', '2' );
 
     // Click on Reset button
-    cy.get( '.nv-sizing-reset button' ).
+    cy.get( '#customize-control-primary-menu_component_margin .nv-sizing-reset button' ).
         click();
 
     // Check if Reset button works

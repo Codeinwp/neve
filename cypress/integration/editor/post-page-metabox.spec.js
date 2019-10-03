@@ -15,7 +15,7 @@ describe( 'Page meta box settings', function() {
 	} );
 
 	it( 'Default meta box settings on front end.', function() {
-		cy.navigate( pageSetup.url );
+		cy.visit( pageSetup.url );
 		cy.get( '.nv-sidebar-wrap' ).
 				should( 'not.exist' );
 		cy.get( '.single-page-container' ).
@@ -48,7 +48,7 @@ describe( 'Page meta box settings', function() {
 	} );
 
 	it( 'Edited meta box settings on front end.', function() {
-		cy.navigate( pageSetup.url );
+		cy.visit( pageSetup.url );
 		cy.get( '.nv-sidebar-wrap' ).
 				should( 'have.class', 'nv-left' ).
 				and( 'be.visible' );
@@ -82,7 +82,7 @@ describe( 'Posts meta box settings', function() {
 	} );
 
 	it( 'Default meta box settings on front end.', function() {
-		cy.navigate( postSetup.url );
+		cy.visit( postSetup.url );
 		cy.get( '.nv-sidebar-wrap' ).
 				should( 'have.class', 'nv-right' ).
 				and( 'be.visible' );
@@ -133,7 +133,7 @@ describe( 'Posts meta box settings', function() {
 	} );
 
 	it( 'Edited meta box settings on front end.', function() {
-		cy.navigate( postSetup.url );
+		cy.visit( postSetup.url );
 		cy.get( '.nv-sidebar-wrap' ).
 				should( 'have.class', 'nv-left' ).
 				and( 'be.visible' );

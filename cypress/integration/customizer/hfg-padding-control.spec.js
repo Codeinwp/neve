@@ -43,7 +43,7 @@ function setupCustomizer() {
         trigger('change');
 
     // Click on Reset button
-    cy.get( '.nv-sizing-reset button' ).
+    cy.get( '#customize-control-primary-menu_component_padding .nv-sizing-reset button' ).
         click();
 
     // Check if Reset button works

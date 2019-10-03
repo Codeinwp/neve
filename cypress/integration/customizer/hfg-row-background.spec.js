@@ -1,7 +1,5 @@
 describe( 'Header Row Background Control', function() {
 	it( 'Setup Customizer Control', function() {
-		aliasRestRoutes();
-
 		cy.login('/wp-admin/customize.php');
 
 		// Open customizer panel.
@@ -55,6 +53,7 @@ describe( 'Header Row Background Control', function() {
 				contains( 'Select' ).
 				click();
 		cy.get( '@bgCtrl' ).find( '.components-form-toggle__input' ).click();
+		aliasRestRoutes();
 		cy.get( '#save' ).click();
 		cy.wait( '@customizerSave' ).then( (req) => {
 			expect( req.response.body.success ).to.be.true;

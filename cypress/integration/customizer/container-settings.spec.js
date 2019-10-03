@@ -53,7 +53,7 @@ describe( 'Container Settings', function() {
 	} );
 
 	it( 'Container width on front end.', function() {
-		cy.navigate( setup.pageUrl );
+		cy.visit( setup.pageUrl );
 		cy.get( '.single-page-container' ).as( 'container' );
 		cy.get( '@container' ).should( 'have.css', 'max-width' ).
 				and( 'eq', '1200px' );
@@ -86,10 +86,10 @@ describe( 'Container Settings', function() {
 	} );
 
 	it( 'Container style on front end.', function() {
-		cy.navigate( setup.pageUrl );
+		cy.visit( setup.pageUrl );
 		cy.get( '.single-page-container' ).as( 'container' );
 		cy.get( '@container' ).should( 'have.class', 'container-fluid' );
-		cy.navigate( setup.postUrl );
+		cy.visit( setup.postUrl );
 		cy.get( '.single-post-container' ).as( 'container' );
 		cy.get( '@container' ).should( 'have.class', 'container-fluid' );
 	} );

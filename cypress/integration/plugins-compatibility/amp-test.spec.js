@@ -1,7 +1,7 @@
 describe('AMP Check', function () {
 
     it('Checks the search box from the menu', function () {
-        cy.visit('/');
+        cy.visit('/?amp');
         cy.get('#nv-primary-navigation-main .menu-item-nav-search')
             .as('navSearchButton')
             .should('be.visible')
@@ -39,7 +39,7 @@ describe('AMP Check', function () {
     });
 
     it('Checks the sidebar menu on mobile', function () {
-        cy.visit('/');
+        cy.visit('/?amp');
         cy.viewport(550, 750);
 
         cy.get('#header-menu-sidebar')
@@ -64,7 +64,7 @@ describe('AMP Check', function () {
     });
 
     it('Checks the sidebar sub-menu', function () {
-        cy.visit('/');
+        cy.visit('/?amp');
         cy.viewport(550, 750);
 
         cy.get('.menu-mobile-toggle .navbar-toggle').click();
