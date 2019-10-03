@@ -37,19 +37,6 @@ function setupCustomizer() {
         should( 'be.visible' ).
         click();
 
-    // Increase Top Padding value
-    cy.get( '#customize-control-logo_component_padding > .neve-responsive-sizing > .nv-sizing-item > div > #top-input' ).
-        type('{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}').
-        trigger('change');
-
-    // Click on Reset button
-    cy.get( '.nv-sizing-reset button' ).
-        click();
-
-    // Check if Reset button works
-    cy.get( '#customize-control-logo_component_padding > .neve-responsive-sizing > .nv-sizing-item > div > #top-input' ).
-        should( 'have.value', '10' );
-
     // Link values
     cy.get( '#customize-control-logo_component_padding > .neve-responsive-sizing > .nv-sizing-link > button' ).
         click();
@@ -68,6 +55,20 @@ function setupCustomizer() {
         should( 'have.value', '30' );
     cy.get( '#customize-control-logo_component_padding > .neve-responsive-sizing > .nv-sizing-item > div > #right-input' ).
         should( 'have.value', '30' );
+
+    // Click on Reset button
+    cy.get( '#customize-control-logo_component_padding .neve-responsive-sizing .nv-sizing-reset button' ).
+    click();
+
+    // Check if Reset button works
+    cy.get( '#customize-control-logo_component_padding > .neve-responsive-sizing > .nv-sizing-item > div > #top-input' ).
+        should( 'have.value', '10' );
+    cy.get( '#customize-control-logo_component_padding > .neve-responsive-sizing > .nv-sizing-item > div > #right-input' ).
+        should( 'have.value', '0' );
+    cy.get( '#customize-control-logo_component_padding > .neve-responsive-sizing > .nv-sizing-item > div > #bottom-input' ).
+        should( 'have.value', '10' );
+    cy.get( '#customize-control-logo_component_padding > .neve-responsive-sizing > .nv-sizing-item > div > #left-input' ).
+        should( 'have.value', '0' );
 
     // Unlink values
     cy.get( '#customize-control-logo_component_padding > .neve-responsive-sizing > .nv-sizing-link > button' ).
@@ -92,9 +93,9 @@ function checkFrontEnd() {
     cy.get( '.site-logo' ).should( 'be.visible' );
     cy.get( '.site-logo' ).
         should( 'have.css', 'padding-top' ).
-        and( 'contain', '31px' );
+        and( 'contain', '11px' );
     cy.get( '.site-logo' ).
         should( 'have.css', 'padding-bottom' ).
-        and( 'contain', '29px' );
+        and( 'contain', '9px' );
 
 }
