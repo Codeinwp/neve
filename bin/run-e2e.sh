@@ -5,7 +5,7 @@ npm install --only=dev --prefix ./cypress/
 composer install --no-dev
 
 export DOCKER_FILE=docker-compose.yml
-
+export CYPRESS_RECORD_KEY=b3fe67a9-6362-43cd-ab44-e12d230b96b0
 # Bring stack up.
 docker-compose -f $DOCKER_FILE up -d
 sleep 15
