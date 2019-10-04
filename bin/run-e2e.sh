@@ -21,15 +21,15 @@ docker-compose -f $DOCKER_FILE run --rm wordpress bash wp theme activate neve
 docker-compose -f $DOCKER_FILE run --rm wordpress bash wp plugin install amp --activate
 docker-compose -f $DOCKER_FILE run --rm wordpress bash wp plugin install wordpress-importer --activate
 # Configure amp
-docker-compose -f $DOCKER_FILE run --rm wordpress bash wp option patch update amp-options theme_support 'standard'
+docker-compose -f $DOCKER_FILE run --rm wordpress bash wp option patch update amp-options theme_support 'transitional'
 # Import theme unit test data
 docker-compose -f $DOCKER_FILE run --rm wordpress curl -O https://wpcom-themes.svn.automattic.com/demo/theme-unit-test-data.xml
 docker-compose -f $DOCKER_FILE run --rm wordpress bash wp import ./theme-unit-test-data.xml --authors=create
-docker-compose -f $DOCKER_FILE run --rm wordpress rm theme-unit-test-data.xml
+docker-compose -f $DOCKER_FILE run --rm wordpress bash wp rewrite structure /%postname%/
 # Set primary menu
 docker-compose -f $DOCKER_FILE run --rm wordpress bash wp menu location assign all-pages primary
 # Update core.
-#docker-compose -f $DOCKER_FILE run --rm wordpress bash wp theme mod remove --all
+docker-compose -f $DOCKER_FILE run --rm wordpress bash wp theme mod remove --all
 docker-compose -f $DOCKER_FILE run --rm wordpress bash wp core update
 
 # Run Cypress

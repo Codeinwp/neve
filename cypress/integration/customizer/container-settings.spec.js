@@ -1,26 +1,27 @@
 describe( 'Container Settings', function() {
 
 	const setup = {
-		'title': 'Container Test',
+		'pageTitle': 'Container on Page',
+		'postTitle': 'Container on Post',
 		'content': 'Container Test Content',
 		'pageUrl': null,
 		'postUrl': null
 	};
 
-	it( 'Create new page named "' + setup.title + '".', function() {
-		cy.insertPost( setup.title, setup.content, 'page' );
+	it( 'Create new page named "' + setup.pageTitle + '".', function() {
+		cy.insertPost( setup.pageTitle, setup.content, 'page' );
 		cy.get( '.post-publish-panel__postpublish-header a' ).
-				contains( setup.title ).
+				contains( setup.pageTitle ).
 				should( 'have.attr', 'href' ).
 				then( (href) => {
 					setup.pageUrl = href;
 				} );
 	} );
 
-	it( 'Create new post named "' + setup.title + '".', function() {
-		cy.insertPost( setup.title, setup.content, 'post', true );
+	it( 'Create new post named "' + setup.postTitle + '".', function() {
+		cy.insertPost( setup.postTitle, setup.content, 'post', true );
 		cy.get( '.post-publish-panel__postpublish-header a' ).
-				contains( setup.title ).
+				contains( setup.postTitle ).
 				should( 'have.attr', 'href' ).
 				then( (href) => {
 					setup.postUrl = href;
