@@ -150,27 +150,3 @@ describe( 'Posts meta box settings', function() {
 		cy.get( '.nv-content-wrap' ).should( 'contain', postSetup.content );
 	} );
 } );
-
-/**
- * Uploads a featured image in the post edit screen.
- */
-function addFeaturedImage() {
-	cy.get( '.components-panel__body-toggle' ).
-			contains( 'Featured Image' ).
-			click();
-	cy.get( '.editor-post-featured-image__toggle' ).click();
-	cy.get( '.media-frame' ).
-			find( '.media-menu-item' ).
-			contains( 'Upload Files' ).
-			click();
-
-	const fileName = 'image.jpg';
-	cy.fixture( fileName ).then( fileContent => {
-		cy.get( '.upload-ui' ).upload(
-				{ fileContent, fileName, mimeType: 'image/jpg' },
-				{ subjectType: 'drag-n-drop' }
-		);
-	} );
-
-	cy.get( '.media-button-select' ).contains( 'Select' ).click();
-}

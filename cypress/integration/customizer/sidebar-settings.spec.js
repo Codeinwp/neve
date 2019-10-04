@@ -21,28 +21,32 @@ describe( 'Sidebar/Content Settings', function() {
 		//Index
 		cy.visit( '/' );
 		cy.get( '.nv-sidebar-wrap' ).should( 'have.css', 'max-width' ).
-				and( 'eq', '50%' ).and( 'have.class', 'nv-right' );
+				and( 'eq', '50%' );
+		cy.get( '.nv-sidebar-wrap' ).should( 'have.class', 'nv-left' );
 		cy.get( '.nv-index-posts' ).should( 'have.css', 'max-width' ).
 				and( 'eq', '50%' );
 
 		//Page
-		cy.get( '.menu-item-object-page' ).first().click();
+		cy.visit( '/sample-page' );
 		cy.get( '.nv-sidebar-wrap' ).should( 'have.css', 'max-width' ).
-				and( 'eq', '50%' ).and( 'have.class', 'nv-right' );
+				and( 'eq', '50%' );
+		cy.get( '.nv-sidebar-wrap' ).should( 'have.class', 'nv-left' );
 		cy.get( '.nv-single-page-wrap' ).should( 'have.css', 'max-width' ).
 				and( 'eq', '50%' );
 
 		//Author archive
 		cy.visit( '/?author=1' );
 		cy.get( '.nv-sidebar-wrap' ).should( 'have.css', 'max-width' ).
-				and( 'eq', '50%' ).and( 'have.class', 'nv-right' );
+				and( 'eq', '50%' );
+		cy.get( '.nv-sidebar-wrap' ).should( 'have.class', 'nv-left' );
 		cy.get( '.nv-index-posts' ).should( 'have.css', 'max-width' ).
 				and( 'eq', '50%' );
 
 		//Single Post
 		cy.get( '.widget_recent_entries' ).first().find( 'a' ).first().click();
 		cy.get( '.nv-sidebar-wrap' ).should( 'have.css', 'max-width' ).
-				and( 'eq', '50%' ).and( 'have.class', 'nv-right' );
+				and( 'eq', '50%' );
+		cy.get( '.nv-sidebar-wrap' ).should( 'have.class', 'nv-left' );
 		cy.get( '.nv-single-post-wrap' ).should( 'have.css', 'max-width' ).
 				and( 'eq', '50%' );
 	} );
@@ -52,7 +56,7 @@ describe( 'Sidebar/Content Settings', function() {
 		aliasRestRoutes();
 		cy.get( '#accordion-panel-neve_layout' ).click();
 		cy.get( '#accordion-section-neve_sidebar' ).click();
-		cy.get( '#customize-control-neve_advanced_layout_options label' ).click();
+		cy.get( '#customize-control-neve_advanced_layout_options label' ).click({force: true});
 		cy.get( '#save' ).click();
 		cy.wait( '@customizerSave' ).then( (req) => {
 			expect( req.response.body.success ).to.be.true;
@@ -102,7 +106,7 @@ describe( 'Sidebar/Content Settings', function() {
 				and( 'eq', '50%' );
 
 		//Page
-		cy.get( '.menu-item-object-page' ).first().click();
+		cy.visit( '/sample-page' );
 		cy.get( '.nv-sidebar-wrap' ).should( 'have.css', 'max-width' ).
 				and( 'eq', '50%' );
 		cy.get( '.nv-sidebar-wrap' ).should( 'have.class', 'nv-left' );
@@ -129,7 +133,7 @@ describe( 'Sidebar/Content Settings', function() {
 	it( 'Go back to defaults.', function() {
 		cy.login( '/wp-admin/customize.php' );
 		aliasRestRoutes();
-		cy.get( '#customize-control-neve_advanced_layout_options label' ).click();
+		cy.get( '#customize-control-neve_advanced_layout_options label' ).click({force: true});
 		cy.get( '#save' ).click();
 		cy.wait( '@customizerSave' ).then( (req) => {
 			expect( req.response.body.success ).to.be.true;
