@@ -14,7 +14,7 @@ sleep 15
 docker-compose -f $DOCKER_FILE run --rm wordpress bash wp core install --url=http://localhost:8080 --title=SandboxSite --admin_user=admin --admin_password=admin --admin_email=admin@admin.com
 # Set up permissions.
 docker-compose -f $DOCKER_FILE run --rm -u root wordpress mkdir /var/www/html/wp-content/uploads
-docker-compose -f $DOCKER_FILE run --rm -u root wordpress chmod 0777 -R /var/www/html/wp-content/uploads
+docker-compose -f $DOCKER_FILE run --rm -u root wordpress chmod 0777 -R /var/www/html/wp-content/
 # Activate theme.
 docker-compose -f $DOCKER_FILE run --rm wordpress bash wp theme activate neve
 # Install necessary plugins
