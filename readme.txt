@@ -676,5 +676,10 @@ Starter Sites screenshots resources:
 * https://stocksnap.io/photo/NY963ZH6T2
 * https://stocksnap.io/photo/PBHFF6RJPH
 
+- Florist
+* https://stocksnap.io/photo/01SN8V4M9O
+* http://mystock.themeisle.com/photo/wedding-bouquet/
+* http://mystock.themeisle.com/photo/wedding-flower-decorations/
+
 
 
