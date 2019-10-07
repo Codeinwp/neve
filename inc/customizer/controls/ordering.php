@@ -58,24 +58,9 @@ class Ordering extends \WP_Customize_Control {
 			$val = array();
 		}
 
-		$enabled       = array_combine( $val, $val );
-		$default_setup = $this->components;
-
-
-		array_walk(
-			$enabled,
-			function ( &$value, $key ) {
-				if ( isset( $this->components[ $key ] ) ) {
-					$value = $this->components[ $key ];
-				}
-			},
-			$enabled
-		);
-
-		$disabled = array_diff_assoc( $this->components, $enabled );
-
+		$enabled          = array_combine( $val, $val );
+		$disabled         = array_diff_assoc( $this->components, $enabled );
 		$this->components = array_merge( $enabled, $disabled );
-		$this->components = array_intersect( $default_setup, $this->components );
 	}
 
 	/**
