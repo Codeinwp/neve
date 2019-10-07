@@ -47,6 +47,9 @@ class NumberControl extends Component {
 	getButtons() {
 		let { units } = this.props;
 		if ( !units ) return '';
+		if( units.length === 1 ) {
+			return <Button isDefault className="is-active" disabled={true}>{units[0]}</Button>
+		}
 		let buttons = [],
 				self = this;
 		units.map( function(type) {

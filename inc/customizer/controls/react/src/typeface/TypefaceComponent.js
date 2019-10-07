@@ -22,8 +22,36 @@ class TypefaceComponent extends Component {
 		super( props );
 
 		let value = props.control.setting.get();
+		let defaultParams = {
+			size_units: ['px', 'em'],
+			weight_default: 400,
+			text_transform: 'none',
+			size_default: {
+				suffix: {
+					mobile: 'px',
+					tablet: 'px',
+					desktop: 'px'
+				},
+				mobile: 15,
+				tablet: 15,
+				desktop: 15
+			},
+			line_height_default: {
+				mobile: 1.6,
+				tablet: 1.6,
+				desktop: 1.6
+			},
+			letter_spacing_default: {
+				mobile: 0,
+				tablet: 0,
+				desktop: 0
+			}
+		};
 
-		console.log( value );
+		this.controlParams = props.control.params.input_attrs ? {
+			...defaultParams,
+			...props.control.params.input_attrs
+		} : defaultParams;
 
 		this.state = {
 			currentDevice: 'desktop',
@@ -31,6 +59,7 @@ class TypefaceComponent extends Component {
 			fontFamily: value.fontFamily,
 			fontSize: value.fontSize,
 			lineHeight: value.lineHeight,
+			letterSpacing: value.letterSpacing,
 			fontWeight: value.fontWeight,
 			textTransform: value.textTransform
 		};
@@ -38,7 +67,6 @@ class TypefaceComponent extends Component {
 
 	render() {
 		let self = this;
-		// console.log( this.state );
 		return (
 				<Fragment>
 					{this.props.control.params.label &&
@@ -79,13 +107,17 @@ class TypefaceComponent extends Component {
 										let value = self.state.fontSize;
 										value[self.state.currentDevice] = val;
 										self.setState( { fontSize: value } );
-										console.log( val );
 									}}
+									step={this.state.fontSize.suffix[this.state.currentDevice] ===
+									'em' ? 0.1 : 1}
 									onReset={() => {
-										console.log( 'reset' );
+										let value = this.state.fontSize;
+										value.suffix[this.state.currentDevice] = this.controlParams.size_default.suffix[this.state.currentDevice];
+										value[this.state.currentDevice] = this.controlParams.size_default[this.state.currentDevice];
+										this.setState( { fontSize: value } );
 									}}
 									value={this.state.fontSize[this.state.currentDevice]}
-									units={['px', 'em']}
+									units={this.controlParams.size_units}
 									activeUnit={this.state.fontSize.suffix[this.state.currentDevice]}
 									onUnitChange={(val) => {
 										let value = self.state.fontSize;
@@ -95,30 +127,38 @@ class TypefaceComponent extends Component {
 							/>
 							<NumberControl
 									label={__( 'Line Height', 'neve' )}
-									onChange={(e) => {
-										console.log( e );
+									step={0.1}
+									onChange={(val) => {
+										let value = this.state.lineHeight;
+										value[this.state.currentDevice] = val;
+										this.setState( { lineHeight: value } );
 									}}
 									onReset={() => {
-										console.log( 'reset' );
+										let value = this.state.lineHeight;
+										value[this.state.currentDevice] = this.controlParams.line_height_default;
+										this.setState({lineHeight : value});
 									}}
-									value="10"
+									value={this.state.lineHeight[this.state.currentDevice]}
 							/>
 							<NumberControl
 									label={__( 'Letter Spacing', 'neve' )}
-									onChange={(e) => {
-										console.log( e );
+									onChange={(val) => {
+										let value = this.state.letterSpacing;
+										value[this.state.currentDevice] = val;
+										this.setState( { letterSpacing: value } );
 									}}
 									onReset={() => {
-										console.log( 'reset' );
+										let value = this.state.letterSpacing;
+										value[this.state.currentDevice] = this.controlParams.letter_spacing_default;
+										this.setState( { letterSpacing: value } );
 									}}
-									value="10"
+									value={this.state.letterSpacing[this.state.currentDevice]}
 							/>
 						</ResponsiveControl>
 					</div>
 				</Fragment>
 		);
 	}
-
 }
 
 TypefaceComponent.propTypes = {

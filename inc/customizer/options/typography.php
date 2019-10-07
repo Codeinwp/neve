@@ -65,6 +65,7 @@ class Typography extends Base_Customizer {
 		/**
 		 * Body font family
 		 */
+
 		$this->add_control(
 			new Control(
 				'neve_body_font_family',
@@ -76,7 +77,7 @@ class Typography extends Base_Customizer {
 					'label'    => esc_html__( 'Font Family', 'neve' ),
 					'section'  => 'neve_typography_general',
 					'priority' => 10,
-					'type'     => 'neve_font_family_control'
+					'type'     => 'neve_font_family_control',
 				]
 			)
 		);
@@ -88,11 +89,36 @@ class Typography extends Base_Customizer {
 					'default'   => $this->get_body_typography_defaults()
 				],
 				[
-					'priority' => 11,
-					'label'    => __( 'Body', 'neve' ),
-					'section'  => 'neve_typography_general',
-					'type'     => 'neve_typeface_control',
-				]
+					'priority'    => 11,
+					'label'       => __( 'Body', 'neve' ),
+					'section'     => 'neve_typography_general',
+					'type'        => 'neve_typeface_control',
+					'input_attrs' => array(
+						'size_units'          => [ 'px' ],
+						'weight_default'      => 400,
+						'size_default'       => array(
+							'suffix' => array(
+								'mobile'  => 'px',
+								'tablet'  => 'px',
+								'desktop' => 'px',
+							),
+							'mobile'  => 15,
+							'tablet'  => 16,
+							'desktop' => 16,
+						),
+						'line_height_default' => array(
+							'mobile'  => 1.6,
+							'tablet'  => 1.6,
+							'desktop' => 1.6,
+						),
+						'letter_spacing_default'    => array(
+							'mobile'  => 0,
+							'tablet'  => 0,
+							'desktop' => 0,
+						),
+					),
+				],
+				'\Neve\Customizer\Controls\React\Typography'
 			)
 		);
 
