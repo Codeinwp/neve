@@ -521,11 +521,6 @@ class Front_End {
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/09/neve-events.jpg',
 						'title'      => 'Events',
 					),
-					'neve-beaver-photography-portfolio' => array(
-						'url'        => 'https://demo.themeisle.com/neve-photography-portfolio-bb/',
-						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/09/neve-studio-photography.jpg',
-						'title'      => 'Photography Studio',
-					),
 					'neve-beaver-video-agency'          => array(
 						'url'        => 'https://demo.themeisle.com/neve-video-agency-bb/',
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/09/neve-vide-agency.jpg',
