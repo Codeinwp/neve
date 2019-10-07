@@ -108,6 +108,7 @@ class Typography extends Base_View {
 		}
 		$url = add_query_arg( $query_args, $base_url );
 
+		var_dump($url);
 		// Enqueue style
 		wp_enqueue_style( 'neve-google-font-' . $handle, $url, array(), false );
 	}

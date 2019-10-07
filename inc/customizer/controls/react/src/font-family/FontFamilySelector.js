@@ -50,7 +50,9 @@ class FontFamilySelector extends Component {
 				self = this;
 
 		options.push(
-				<li className={'default-value ' + !this.props.selected ? 'selected' : ''}>
+				<li className={'default-value ' + !this.props.selected ?
+						'selected' :
+						''}>
 					<FontPreviewLink
 							fontFace='default'
 							delayLoad={false}
@@ -58,7 +60,6 @@ class FontFamilySelector extends Component {
 							onClick={() => {
 								this.setState( { isVisible: false } );
 								this.props.onFontChoice( 'system', false );
-								wp.customize.previewer.send( 'font-selection', { 'value': value, 'source': source, 'controlId' : controlId } );
 							}}/>
 				</li>
 		);
@@ -171,7 +172,7 @@ class FontFamilySelector extends Component {
 FontFamilySelector.propTypes = {
 	onFontChoice: PropTypes.func.isRequired,
 	selected: PropTypes.string,
-	selectedType: PropTypes.string,
+	selectedType: PropTypes.string
 };
 
 export default FontFamilySelector;

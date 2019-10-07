@@ -62,7 +62,6 @@ window.addEventListener( 'load', function() {
 		'desktop': 'min-width: 961px'
 	};
 
-	console.log( neveCustomizePreview );
 	_.each( neveCustomizePreview, function(settings, settingType) {
 		_.each( settings, function(args, settingId) {
 			wp.customize( settingId, function(setting) {
@@ -194,13 +193,39 @@ window.addEventListener( 'load', function() {
 							addCss( settingId, style );
 							break;
 						case 'neve_font_family_control':
-							console.log(newValue);
-							console.log(args);
 							break;
 					}
 				} );
 			} );
 		} );
+	} );
+	wp.customize.preview.bind( 'font-selection', function(data) {
+		let selector = neveCustomizePreview[data.type][data.controlId].selector,
+				source = data.source,
+				gFontUrl = '';
+		if ( data.value === false ) {
+			addCss( data.controlId, '' );
+		} else {
+			addCss( data.controlId, 'html ' + selector + '{ font-family: ' + data.value + '; }' );
+		}
+		if ( source.toLowerCase() === 'google' ) {
+			let linkNode = $( '#' + data.controlId );
+			let fontValue = data.value.replace( ' ', '+' );
+			let url = '//fonts.googleapis.com/css?family=' + fontValue +
+					'%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800';
+			if ( linkNode.length !== 0 ) {
+				return false;
+			}
+			let newNode = document.createElement( 'link' );
+			newNode.setAttribute( 'rel', 'stylesheet' );
+			newNode.setAttribute( 'id', data.controlId );
+			newNode.setAttribute( 'href', url );
+			newNode.setAttribute( 'type', 'text/css' );
+			newNode.setAttribute( 'media', 'all' );
+			jQuery( 'head' ).append( newNode );
+		}
+		console.log( data );
+
 	} );
 } );
 
@@ -278,25 +303,25 @@ window.addEventListener( 'load', function() {
 			} );
 			'use strict';
 			var self = this;
-			$( function() {
-				wp.customize.preview.bind( 'font-selection', function(data) {
-					$( '#' + self.fontControls[data.controlId].linkNodeId ).remove();
-					if ( data.source !== 'system' ) {
-						self.generateLinkNode( self.fontControls[data.controlId].linkNodeId,
-								data.value );
-						data.value = '"' + data.value + '"';
-					}
-					if ( data.value === 'default' ) {
-						$( self.fontControls[data.controlId].selectors ).
-								css( 'font-family',
-										'-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif' );
-						return false;
-					}
-					$( self.fontControls[data.controlId].selectors ).
-							css( 'font-family', data.value );
-					return false;
-				} );
-			} );
+			// $( function() {
+			// 	wp.customize.preview.bind( 'font-selection', function(data) {
+			// 		$( '#' + self.fontControls[data.controlId].linkNodeId ).remove();
+			// 		if ( data.source !== 'system' ) {
+			// 			self.generateLinkNode( self.fontControls[data.controlId].linkNodeId,
+			// 					data.value );
+			// 			data.value = '"' + data.value + '"';
+			// 		}
+			// 		if ( data.value === 'default' ) {
+			// 			$( self.fontControls[data.controlId].selectors ).
+			// 					css( 'font-family',
+			// 							'-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif' );
+			// 			return false;
+			// 		}
+			// 		$( self.fontControls[data.controlId].selectors ).
+			// 				css( 'font-family', data.value );
+			// 		return false;
+			// 	} );
+			// } );
 		},
 		generateLinkNode: function(elementId, googleFontName) {
 			var linkNode = $( '#' + elementId );

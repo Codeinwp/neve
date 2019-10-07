@@ -41,10 +41,14 @@ class TypefaceComponent extends Component {
 
 	updateControl() {
 		setTimeout( () => {
-			this.props.control.setting.set( { ...this.state } );
-			console.log( this.props.control.setting.get() );
+			this.props.control.setting.set( this.state.fontFamily );
+			wp.customize.previewer.send( 'font-selection', {
+				'value': this.state.fontFamily,
+				'source': this.state.fontFamilySource,
+				'controlId': this.props.control.id,
+				'type': this.props.control.params.type
+			} );
 		}, 100 );
-
 	}
 }
 
