@@ -130,22 +130,15 @@ class Loader {
 			array(),
 			NEVE_VERSION
 		);
-		wp_enqueue_script(
+		wp_register_script(
 			'neve-customizer-preview',
-			NEVE_ASSETS_URL . 'js/customizer-preview' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.js',
+			NEVE_ASSETS_URL . 'js/customizer-preview.js',
 			array(),
 			NEVE_VERSION,
 			true
 		);
-		wp_enqueue_script(
-			'neve-hfg-customizer-preview',
-			NEVE_ASSETS_URL . 'js/hfg-customizer-preview.js',
-			array(),
-			NEVE_VERSION,
-			true
-		);
-		wp_localize_script( 'neve-hfg-customizer-preview', 'neveHFGPreview', apply_filters( 'neve_hfg_preview_localization_filter', array() ) );
-		wp_enqueue_script( 'neve-hfg-customizer-preview' );
+		wp_localize_script( 'neve-customizer-preview', 'neveCustomizePreview', apply_filters( 'neve_customize_preview_localization', array() ) );
+		wp_enqueue_script( 'neve-customizer-preview' );
 	}
 
 	/**

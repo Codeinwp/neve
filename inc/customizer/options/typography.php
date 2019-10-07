@@ -74,10 +74,11 @@ class Typography extends Base_Customizer {
 					'sanitize_callback' => 'sanitize_text_field',
 				],
 				[
-					'label'    => esc_html__( 'Font Family', 'neve' ),
+					'label'    => esc_html__( 'Body', 'neve' ),
 					'section'  => 'neve_typography_general',
 					'priority' => 10,
 					'type'     => 'neve_font_family_control',
+					'live_refresh_selector' => 'body'
 				]
 			)
 		);
@@ -90,9 +91,7 @@ class Typography extends Base_Customizer {
 				],
 				[
 					'priority'    => 11,
-					'label'       => __( 'Body', 'neve' ),
 					'section'     => 'neve_typography_general',
-					'type'        => 'neve_typeface_control',
 					'input_attrs' => array(
 						'size_units'          => [ 'px' ],
 						'weight_default'      => 400,
@@ -117,186 +116,10 @@ class Typography extends Base_Customizer {
 							'desktop' => 0,
 						),
 					),
+					'type'        => 'neve_typeface_control',
+					'live_refresh_selector' => 'body'
 				],
 				'\Neve\Customizer\Controls\React\Typography'
-			)
-		);
-
-//		$this->add_control(
-//			new Control(
-//				'neve_body_font_family',
-//				array(
-//					'transport'         => $this->selective_refresh,
-//					'sanitize_callback' => 'sanitize_text_field',
-//					'default'           => 'default',
-//				),
-//				array(
-//					'label'    => esc_html__( 'Font Family', 'neve' ),
-//					'section'  => 'neve_typography_general',
-//					'priority' => 12,
-//				),
-//				'Neve\Customizer\Controls\Font_Selector'
-//			)
-//		);
-
-		/**
-		 * Font Weight
-		 */
-		$this->add_control(
-			new Control(
-				'neve_body_font_weight',
-				array(
-					'sanitize_callback' => 'neve_sanitize_font_weight',
-					'transport'         => $this->selective_refresh,
-					'default'           => '400',
-				),
-				array(
-					'label'    => esc_html__( 'Font Weight', 'neve' ),
-					'section'  => 'neve_typography_general',
-					'type'     => 'select',
-					'choices'  => array(
-						100 => '100',
-						200 => '200',
-						300 => '300',
-						400 => '400',
-						500 => '500',
-						600 => '600',
-						700 => '700',
-						800 => '800',
-						900 => '900',
-					),
-					'priority' => 15,
-				)
-			)
-		);
-
-		/**
-		 * Text Transform
-		 */
-		$this->add_control(
-			new Control(
-				'neve_body_text_transform',
-				array(
-					'sanitize_callback' => 'neve_sanitize_text_transform',
-					'transport'         => $this->selective_refresh,
-					'default'           => 'none',
-				),
-				array(
-					'label'    => esc_html__( 'Text Transform', 'neve' ),
-					'section'  => 'neve_typography_general',
-					'type'     => 'select',
-					'choices'  => array(
-						'none'       => __( 'None', 'neve' ),
-						'capitalize' => __( 'Capitalize', 'neve' ),
-						'uppercase'  => __( 'Uppercase', 'neve' ),
-						'lowercase'  => __( 'Lowercase', 'neve' ),
-					),
-					'priority' => 20,
-				)
-			)
-		);
-
-		/**
-		 * Body font size
-		 */
-		$this->add_control(
-			new Control(
-				'neve_body_font_size',
-				array(
-					'sanitize_callback' => 'neve_sanitize_range_value',
-					'transport'         => $this->selective_refresh,
-				),
-				array(
-					'label'      => esc_html__( 'Font Size', 'neve' ),
-					'section'    => 'neve_typography_general',
-					'units'      => array(
-						'px',
-					),
-					'input_attr' => array(
-						'mobile'  => array(
-							'min'          => 10,
-							'default'      => 15,
-							'default_unit' => 'px',
-						),
-						'tablet'  => array(
-							'min'          => 10,
-							'default'      => 16,
-							'default_unit' => 'px',
-						),
-						'desktop' => array(
-							'min'          => 10,
-							'default'      => 16,
-							'default_unit' => 'px',
-						),
-					),
-					'priority'   => 25,
-					'responsive' => true,
-				),
-				'Neve\Customizer\Controls\Responsive_Number'
-			)
-		);
-
-		/**
-		 * Body line height
-		 */
-		$this->add_control(
-			new Control(
-				'neve_body_line_height',
-				array(
-					'sanitize_callback' => 'neve_sanitize_range_value',
-					'transport'         => $this->selective_refresh,
-				),
-				array(
-					'label'       => esc_html__( 'Line Height', 'neve' ),
-					'section'     => 'neve_typography_general',
-					'step'        => 0.1,
-					'input_attr'  => array(
-						'mobile'  => array(
-							'min'     => 0.5,
-							'max'     => 4,
-							'default' => 1.6,
-						),
-						'tablet'  => array(
-							'min'     => 0.5,
-							'max'     => 4,
-							'default' => 1.6,
-						),
-						'desktop' => array(
-							'min'     => 0.5,
-							'max'     => 4,
-							'default' => 1.6,
-						),
-					),
-					'priority'    => 35,
-					'media_query' => true,
-				),
-				'Neve\Customizer\Controls\Range'
-			)
-		);
-
-		/**
-		 * Letter Spacing
-		 */
-		$this->add_control(
-			new Control(
-				'neve_body_letter_spacing',
-				array(
-					'sanitize_callback' => 'neve_sanitize_range_value',
-					'transport'         => $this->selective_refresh,
-					'default'           => '',
-				),
-				array(
-					'label'      => esc_html__( 'Letter Spacing', 'neve' ) . ' (px)',
-					'section'    => 'neve_typography_general',
-					'step'       => 0.1,
-					'input_attr' => array(
-						'min'     => - 5,
-						'max'     => 20,
-						'default' => 0,
-					),
-					'priority'   => 35,
-				),
-				'Neve\Customizer\Controls\Range'
 			)
 		);
 

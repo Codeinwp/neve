@@ -73,7 +73,6 @@ class TextTransform extends Component {
 
 		return buttons;
 	}
-
 }
 
 TextTransform.propTypes = {

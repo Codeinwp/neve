@@ -12,8 +12,6 @@ const {
 } = wp.element;
 
 const {
-	Button,
-	ButtonGroup,
 	SelectControl
 } = wp.components;
 
@@ -55,13 +53,11 @@ class TypefaceComponent extends Component {
 
 		this.state = {
 			currentDevice: 'desktop',
-			// fontFamilySource: '',
-			fontFamily: value.fontFamily,
 			fontSize: value.fontSize,
 			lineHeight: value.lineHeight,
 			letterSpacing: value.letterSpacing,
 			fontWeight: value.fontWeight,
-			textTransform: value.textTransform
+			textTransform: value.textTransform,
 		};
 	}
 
@@ -77,6 +73,7 @@ class TypefaceComponent extends Component {
 						<TextTransform
 								onChange={(textTransform) => {
 									this.setState( { textTransform } );
+									this.updateValues();
 								}}
 								value={this.state.textTransform}/>
 
@@ -96,17 +93,22 @@ class TypefaceComponent extends Component {
 									{ value: 800, label: '800' },
 									{ value: 900, label: '900' }
 								]}
-								onChange={(fontWeight) => this.setState( { fontWeight } )}
+								onChange={(fontWeight) => {
+									this.setState( { fontWeight } );
+									this.updateValues();
+								}}
 						/>
 						<ResponsiveControl
 								onChange={(currentDevice) => this.setState(
 										{ currentDevice } )}>
 							<NumberControl
 									label={__( 'Font Size', 'neve' )}
+									default={this.controlParams.size_default[this.state.currentDevice]}
 									onChange={(val) => {
 										let value = self.state.fontSize;
 										value[self.state.currentDevice] = val;
 										self.setState( { fontSize: value } );
+										this.updateValues();
 									}}
 									step={this.state.fontSize.suffix[this.state.currentDevice] ===
 									'em' ? 0.1 : 1}
@@ -115,6 +117,7 @@ class TypefaceComponent extends Component {
 										value.suffix[this.state.currentDevice] = this.controlParams.size_default.suffix[this.state.currentDevice];
 										value[this.state.currentDevice] = this.controlParams.size_default[this.state.currentDevice];
 										this.setState( { fontSize: value } );
+										this.updateValues();
 									}}
 									value={this.state.fontSize[this.state.currentDevice]}
 									units={this.controlParams.size_units}
@@ -123,41 +126,65 @@ class TypefaceComponent extends Component {
 										let value = self.state.fontSize;
 										value.suffix[self.state.currentDevice] = val;
 										self.setState( { fontSize: value } );
+										this.updateValues();
 									}}
 							/>
 							<NumberControl
 									label={__( 'Line Height', 'neve' )}
 									step={0.1}
+									default={this.controlParams.line_height_default[this.state.currentDevice]}
 									onChange={(val) => {
 										let value = this.state.lineHeight;
 										value[this.state.currentDevice] = val;
 										this.setState( { lineHeight: value } );
+										this.updateValues();
 									}}
 									onReset={() => {
 										let value = this.state.lineHeight;
-										value[this.state.currentDevice] = this.controlParams.line_height_default;
-										this.setState({lineHeight : value});
+										value[this.state.currentDevice] = this.controlParams.line_height_default[this.state.currentDevice];
+										this.setState( { lineHeight: value } );
+										this.updateValues();
 									}}
 									value={this.state.lineHeight[this.state.currentDevice]}
+									max={4}
+									min={0.5}
 							/>
 							<NumberControl
 									label={__( 'Letter Spacing', 'neve' )}
+									step={0.1}
+									default={this.controlParams.letter_spacing_default[this.state.currentDevice]}
 									onChange={(val) => {
 										let value = this.state.letterSpacing;
 										value[this.state.currentDevice] = val;
 										this.setState( { letterSpacing: value } );
+										this.updateValues();
 									}}
 									onReset={() => {
 										let value = this.state.letterSpacing;
-										value[this.state.currentDevice] = this.controlParams.letter_spacing_default;
+										value[this.state.currentDevice] = this.controlParams.letter_spacing_default[this.state.currentDevice];
 										this.setState( { letterSpacing: value } );
+										this.updateValues();
 									}}
 									value={this.state.letterSpacing[this.state.currentDevice]}
+									max={20}
+									min={-5}
 							/>
 						</ResponsiveControl>
 					</div>
 				</Fragment>
 		);
+	}
+
+	updateValues() {
+		setTimeout( () => {
+		this.props.control.setting.set( {
+			textTransform: this.state.textTransform,
+			fontWeight: this.state.fontWeight,
+			fontSize: {...this.state.fontSize},
+			lineHeight: {...this.state.lineHeight},
+			letterSpacing: {...this.state.letterSpacing}
+		} );
+		}, 100 );
 	}
 }
 

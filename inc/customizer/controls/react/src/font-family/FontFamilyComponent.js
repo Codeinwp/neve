@@ -12,7 +12,8 @@ class TypefaceComponent extends Component {
 		super( props );
 		let value = props.control.setting.get();
 		this.state = {
-			fontFamily: value
+			fontFamily: value,
+			fontFamilySource: null
 		};
 	}
 
@@ -20,13 +21,17 @@ class TypefaceComponent extends Component {
 		let self = this;
 		return (
 				<Fragment>
+					{this.props.control.params.label &&
+					<span className="customize-control-title">
+							{this.props.control.params.label}
+					</span>
+					}
 					<div className="neve-typeface-control">
 						<FontFamilySelector
-								label={this.props.control.params.label}
 								selected={this.state.fontFamily}
 								onFontChoice={(fontFamilySource, fontFamily) => {
-									self.setState( { fontFamily } );
-									self.updateControl( fontFamily );
+									self.setState( { fontFamily, fontFamilySource } );
+									self.updateControl();
 								}}
 						/>
 					</div>
@@ -34,8 +39,12 @@ class TypefaceComponent extends Component {
 		);
 	}
 
-	updateControl(fontFamily) {
-		this.props.control.setting.set( fontFamily );
+	updateControl() {
+		setTimeout( () => {
+			this.props.control.setting.set( { ...this.state } );
+			console.log( this.props.control.setting.get() );
+		}, 100 );
+
 	}
 }
 

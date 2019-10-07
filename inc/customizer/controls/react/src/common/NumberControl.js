@@ -6,7 +6,7 @@ const {
 	ButtonGroup,
 	Button
 } = wp.components;
-const { Component, Fragment } = wp.element;
+const { Component } = wp.element;
 
 class NumberControl extends Component {
 
@@ -22,9 +22,7 @@ class NumberControl extends Component {
 						{label && <span className="customize-control-title">{label}</span>}
 						{
 							units && <div className="neve-units inline">
-								<ButtonGroup className="units">
 									{this.getButtons()}
-								</ButtonGroup>
 							</div>
 						}
 					</div>
@@ -32,10 +30,11 @@ class NumberControl extends Component {
 							noLinking
 							noRange
 							options={[{ 'value': value }]}
-							onChange={( value ) => { this.props.onChange( value ); }}
+							onChange={( type, value ) => { this.props.onChange( value ); }}
 							max={this.props.max || 100}
 							min={this.props.min || 0}
 							step={this.props.step || 1}
+							defaults={this.props.default}
 							onReset={() => {
 								this.props.onReset();
 							}}
@@ -48,7 +47,7 @@ class NumberControl extends Component {
 		let { units } = this.props;
 		if ( !units ) return '';
 		if( units.length === 1 ) {
-			return <Button isDefault className="is-active" disabled={true}>{units[0]}</Button>
+			return <Button isDefault className="is-active is-single" disabled={true}>{units[0]}</Button>
 		}
 		let buttons = [],
 				self = this;
@@ -64,8 +63,7 @@ class NumberControl extends Component {
 						{type}
 					</Button> );
 		} );
-
-		return buttons;
+		return <ButtonGroup className="units"> buttons </ButtonGroup>;
 	}
 }
 
@@ -77,6 +75,7 @@ NumberControl.propTypes = {
 	units: PropTypes.array || PropTypes.bool,
 	onUnitChange: PropTypes.func,
 	activeUnit: PropTypes.string,
+	default: PropTypes.number,
 	max: PropTypes.number,
 	min: PropTypes.number,
 	step: PropTypes.number,

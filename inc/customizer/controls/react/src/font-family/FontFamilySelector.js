@@ -58,6 +58,7 @@ class FontFamilySelector extends Component {
 							onClick={() => {
 								this.setState( { isVisible: false } );
 								this.props.onFontChoice( 'system', false );
+								wp.customize.previewer.send( 'font-selection', { 'value': value, 'source': source, 'controlId' : controlId } );
 							}}/>
 				</li>
 		);
@@ -136,9 +137,9 @@ class FontFamilySelector extends Component {
 		let defaultFontface = '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif';
 		return (
 				<div className="neve-font-family-control">
-					{this.props.label && <span className="customize-control-title">
-						{this.props.label}
-					</span>}
+					<span className="customize-control-title">
+					{__( 'Font Family', 'neve' )}
+					</span>
 					<Button
 							className="font-family-selector-toggle"
 							isDefault
@@ -171,7 +172,6 @@ FontFamilySelector.propTypes = {
 	onFontChoice: PropTypes.func.isRequired,
 	selected: PropTypes.string,
 	selectedType: PropTypes.string,
-	label: PropTypes.string
 };
 
 export default FontFamilySelector;

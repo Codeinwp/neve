@@ -28,13 +28,22 @@ class Typography extends Base_Inline {
 	 * Body styles.
 	 */
 	private function add_body_style() {
-		$font_size   = get_theme_mod( 'neve_body_font_size' );
-		$line_height = get_theme_mod( 'neve_body_line_height' );
-		$font_size   = json_decode( $font_size, true );
-		$line_height = json_decode( $line_height, true );
+
+		$old_font_size   = get_theme_mod( 'neve_body_font_size' );
+		$old_line_height = get_theme_mod( 'neve_body_line_height' );
+		$old_font_size   = json_decode( $old_font_size, true );
+		$old_line_height = json_decode( $old_line_height, true );
+
+		$typeface_setup     = get_theme_mod( 'neve_typeface_general' );
+		$old_letter_spacing = get_theme_mod( 'neve_body_letter_spacing' );
+
+		$font_size   = isset( $typeface_setup['fontSize'] ) ? $typeface_setup['fontSize'] : $old_font_size;
+		$line_height = isset( $typeface_setup['lineHeight'] ) ? $typeface_setup['lineHeight'] : $old_line_height;
+
+		// Letter spacing wasn't previously a responsive setting.
+		$letter_spacing = isset( $typeface_setup['letterSpacing'] ) ? $typeface_setup['letterSpacing'] : $old_letter_spacing;
 
 		$style_setup = array();
-
 		if ( ! empty( $font_size ) ) {
 			$style_setup[] = array(
 				'css_prop' => 'font-size',
@@ -50,20 +59,32 @@ class Typography extends Base_Inline {
 			);
 		}
 
+		if ( ! empty( $letter_spacing ) && is_array( $letter_spacing ) ) {
+			$style_setup[] = array(
+				'css_prop' => 'letter-spacing',
+				'value'    => $letter_spacing,
+				'suffix'   => 'px'
+			);
+		}
+
 		$this->add_responsive_style( $style_setup, 'body' );
 
-		$body_font      = get_theme_mod( 'neve_body_font_family', false );
-		$font_weight    = get_theme_mod( 'neve_body_font_weight' );
-		$text_transform = get_theme_mod( 'neve_body_text_transform' );
-		$spacing        = get_theme_mod( 'neve_body_letter_spacing' );
+		$old_font_weight    = get_theme_mod( 'neve_body_font_weight' );
+		$old_text_transform = get_theme_mod( 'neve_body_text_transform' );
 
-		var_dump($font_size);
-		var_dump($line_height);
-		var_dump( $body_font );
-		var_dump( $font_weight );
-		var_dump( $text_transform );
-		var_dump( $spacing );
-		$style_setup    = array();
+		$font_weight    = isset( $typeface_setup['fontWeight'] ) ? $typeface_setup['fontWeight'] : $old_font_weight;
+		$text_transform = isset( $typeface_setup['textTransform'] ) ? $typeface_setup['textTransform'] : $old_text_transform;
+		$body_font          = get_theme_mod( 'neve_body_font_family', false );
+
+		$style_setup = array();
+		// Letter spacing was not previously responsive - this accounts for that.
+		if ( ! empty( $letter_spacing ) && ! is_array( $letter_spacing ) ) {
+			$style_setup[] = array(
+				'css_prop' => 'letter-spacing',
+				'value'    => $letter_spacing,
+				'suffix'   => 'px',
+			);
+		}
 		if ( ! empty( $body_font ) && $body_font !== 'default' ) {
 			$style_setup[] = array(
 				'css_prop' => 'font-family',
@@ -82,14 +103,7 @@ class Typography extends Base_Inline {
 				'value'    => $text_transform,
 			);
 		}
-		if ( ! empty( $spacing ) ) {
-			$style_setup[] =
-				array(
-					'css_prop' => 'letter-spacing',
-					'value'    => $spacing,
-					'suffix'   => 'px',
-				);
-		}
+
 		$this->add_style(
 			$style_setup,
 			apply_filters( 'neve_body_font_family_selectors', 'body' )
