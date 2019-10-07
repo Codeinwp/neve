@@ -7,7 +7,7 @@ services:
     - ~/${WP_MYSQL_STASH:-WordPressDock}/wp-db/neve:/var/lib/mysql
     restart: always
     ports:
-      - 3306:3306
+      - 3307:3306
     environment:
       MYSQL_ROOT_PASSWORD: wordpress
       MYSQL_DATABASE: wordpress

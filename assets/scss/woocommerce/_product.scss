@@ -7,6 +7,21 @@
     font-size: 1.3em;
     font-weight: 300;
   }
+
+  .entry-summary, #tab-description {
+    ul {
+      list-style-type: circle;
+    }
+
+    ul, ol {
+      padding-left: $spacing-sm;
+      margin-bottom: $spacing-sm;
+
+      li {
+        margin-bottom: $spacing-xs;
+      }
+    }
+  }
 }
 
 .single_add_to_cart_button {
@@ -174,7 +189,7 @@
     background: 0;
   }
 
-  .woocommerce-Reviews-title{
+  .woocommerce-Reviews-title {
     display: none;
   }
 }
@@ -209,6 +224,7 @@
 
     #review_form .comment-form {
       grid-template-columns: repeat(2, 1fr);
+
       p:not(.comment-form-author):not(.comment-form-email), div {
         grid-column: span 2;
       }
@@ -218,13 +234,14 @@
 
 
 .woocommerce ul.products.exclusive-products li.product,
-.woocommerce-page ul.products.exclusive-products li.product{
+.woocommerce-page ul.products.exclusive-products li.product {
   margin: 0;
   clear: none;
 }
 
 section.exclusive {
   margin-bottom: $spacing;
+
   .dots-nav {
     display: flex;
     align-items: center;
@@ -247,19 +264,21 @@ section.exclusive {
     }
   }
 
-  .tns-outer{
+  .tns-outer {
     overflow: hidden;
     position: relative;
     padding: 5px 10px 0 10px;
     left: -10px;
-    width: calc( 100% + 20px );
+    width: calc(100% + 20px);
   }
+
   .tns-ovh {
     padding-right: 4px;
     overflow: unset;
     margin-bottom: $spacing-sm;
   }
-  .tns-visually-hidden{
+
+  .tns-visually-hidden {
     display: none;
   }
 

@@ -33,18 +33,23 @@ $alt_attribute = get_post_meta( $custom_logo_id, '_wp_attachment_image_alt', tru
 <div class="site-logo">
 	<a class="brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php bloginfo( 'name' ); ?>"
 			aria-label="<?php bloginfo( 'name' ); ?>">
-		<?php if ( $logo_image ) { ?>
-			<img src="<?php echo esc_url( $logo_image ); ?>"
-					alt="<?php echo esc_attr( $alt_attribute ); ?>">
-		<?php } else { ?>
-			<?php if ( $show_name ) { ?>
+		<?php 
+		if ( $logo_image ) {
+			echo '<img src="' . esc_url( $logo_image ) . '" alt="' . esc_attr( $alt_attribute ) . '">';
+		} else {
+			if ( $show_name ) { 
+				?>
 		<<?php echo esc_attr( $wrapper_tag ); ?> class="site-title"> <?php bloginfo( 'name' ); ?>
 	</<?php echo esc_attr( $wrapper_tag ); ?>>
-	<?php } ?>
-			<?php if ( $show_desc ) { ?>
+				<?php 
+			}
+			if ( $show_desc ) { 
+				?>
 		<small><?php bloginfo( 'description' ); ?></small>
-	<?php } ?>
-	<?php } ?>
+				<?php 
+			}
+		} 
+		?>
 	</a>
 </div>
 

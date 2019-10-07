@@ -1,0 +1,20 @@
+.fl-builder.bbhf-transparent-header{
+
+  &:not(.bhf-sticky-header) #nv-beaver-header .fl-row-content-wrap {
+    background-color: transparent;
+    border: none;
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  .bhf-fixed-header:not(.bhf-fixed) .fl-row-content-wrap {
+    background-color: transparent;
+    border: none;
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  #nv-beaver-header  {
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+  }
+}

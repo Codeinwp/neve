@@ -16,7 +16,7 @@ class SizingControl extends Component {
 	render() {
 
 		let wrapClasses = 'neve-responsive-sizing';
-		if( this.props.options.length === 1 ) {
+		if ( this.props.options.length === 1 ) {
 			wrapClasses += ' single-input';
 		}
 
@@ -44,9 +44,7 @@ class SizingControl extends Component {
 															}}
 															onChange={
 																e => this.props.onChange( i.type,
-																		e.target.value === 0 ?
-																				0 :
-																				e.target.value || '' )
+																		e.target.value === '' ? 0 : e.target.value )
 															}
 													/>
 											)}
@@ -62,7 +60,7 @@ class SizingControl extends Component {
 																step={this.props.step}
 																onChange={
 																	e => this.props.onChange( i.type,
-																			e === 0 ? 0 : e || '' )
+																			e === '' ? 0 : e )
 																}
 														/>
 													</div>
@@ -104,18 +102,26 @@ class SizingControl extends Component {
 	}
 
 	hasSetValues() {
-		return this.props.options.filter( option => option.value ).length > 0;
+		let defaults = this.props.defaults;
+		if ( typeof defaults !== 'object' ) {
+			return parseFloat( defaults ) !==
+					parseFloat( this.props.options[0].value );
+		}
+		return this.props.options.filter( option => {
+			return option.value !== defaults[option.type];
+		} ).length > 0;
 	}
 }
 
 SizingControl.propTypes = {
 	options: PropTypes.array.isRequired,
+	defaults: PropTypes.array || PropTypes.string || PropTypes.number,
+	onLinked: PropTypes.func.isRequired,
 	onChange: PropTypes.func.isRequired,
-	linked: PropTypes.bool,
-	onLinked: PropTypes.func,
+	linked: PropTypes.bool.isRequired,
 	onReset: PropTypes.func,
 	noLinking: PropTypes.bool,
-	noRange: PropTypes.bool,
+	noRange: PropTypes.bool
 };
 
 export default SizingControl;

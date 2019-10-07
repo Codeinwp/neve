@@ -1,0 +1,13 @@
+{
+  "name": "cypress-neve",
+  "description": "Cypress package file",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Codeinwp/neve.git"
+  },
+  "license": "GPL-2.0+",
+  "devDependencies": {
+    "cypress": "^3.4.1",
+    "cypress-file-upload": "^3.3.4"
+  }
+}

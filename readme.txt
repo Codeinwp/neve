@@ -18,6 +18,37 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
+= 2.4.2 - 2019-09-23  = 
+
+* [Fix] Alignment options for the Secondary and Footer menus
+* [Fix] Style ul/li on WooCommerce single product short descriptions
+* [Fix] Add support for responsive embeds
+* New Beaver Builder Starter Sites: Freelancer & Life Coach
+
+
+= 2.4.1 - 2019-09-13  = 
+
+* [Feat] New background image options for the header and the footer
+* [Feat] Allow custom shortcodes in the HTML components of the header
+* [Fix] Improve the cart menu icon, remove empty products message on the dropdown menu
+* [Fix] Issue with duplicating thumbnails when using SG Optimizer Lazy Load option
+* [Fix] On-print behavior, causing duplicating of the header elements
+* [Fix] Page scroll while menu sidebar is open
+* [Fix] Search icon alignment options
+* [Fix] Issue with hiding the thumbnail on single post pages
+* [Fix] Improve header customization UX
+* [Fix] Validation errors in AMP
+* New Starter Sites
+* Tattoo - https://themeisle.com/demo/?theme=Tattoo
+* Life Coach - https://themeisle.com/demo/?theme=Life%20Coach
+* Creative Portfolio - https://themeisle.com/demo/?theme=Creative%20Portfolio
+* Redesigned Starter Sites
+* Energy Panels - https://themeisle.com/demo/?theme=Energy%20Panels
+* Lawyers - https://themeisle.com/demo/?theme=Lawyers
+* Freelancer - https://themeisle.com/demo/?theme=Freelancer
+* New Beaver Builder Starter Sites
+
+
 = 2.4.0 - 2019-08-14  = 
 
 * Fix issue with standard fonts not loading
@@ -605,6 +636,45 @@ Starter Sites screenshots resources:
 * http://mystock.themeisle.com/photo/concert/
 * http://mystock.themeisle.com/photo/rock-on/
 
+- Wedding Photography
+* http://mystock.themeisle.com/photo/wedding-flower-decorations/
+* http://mystock.themeisle.com/photo/bride-and-groom-table-decorated-with-flowers-2/
+* http://mystock.themeisle.com/photo/bride-and-groom/
+
+- Photography Studio
+* https://stocksnap.io/photo/3IJLXXN9OY
+* https://stocksnap.io/photo/83PSG6Y1FM
+
+- Video Agency
+* http://mystock.themeisle.com/photo/cameras/
+* http://mystock.themeisle.com/photo/protest/
+* http://mystock.themeisle.com/photo/selfie/
+* http://mystock.themeisle.com/photo/flatiron-2/
+
+- Furniture Shop
+* http://mystock.themeisle.com/photo/bathtub-in-the-center-of-the-room/
+* http://mystock.themeisle.com/photo/resort-premium-room/
+* http://mystock.themeisle.com/photo/rocking-chair-on-a-blue-carpet/
+* http://mystock.themeisle.com/photo/resort-room-with-a-view/
+* http://mystock.themeisle.com/photo/couch-with-two-green-pillows/
+
+- Farm
+* http://mystock.themeisle.com/photo/yellow-and-green/
+* http://mystock.themeisle.com/photo/oranges/
+* http://mystock.themeisle.com/photo/swamp/
+* http://mystock.themeisle.com/photo/strawberries-and-oranges-for-sale-in-baskets/
+* http://mystock.themeisle.com/photo/rosehip/
+
+- Photographer
+* http://mystock.themeisle.com/photo/old-casino/
+* http://mystock.themeisle.com/photo/photographer-3/
+* http://mystock.themeisle.com/photo/sea-breeze/
+* http://mystock.themeisle.com/photo/church/
+* http://mystock.themeisle.com/photo/flatiron-2/
+
+- Kindergarten
+* https://stocksnap.io/photo/NY963ZH6T2
+* https://stocksnap.io/photo/PBHFF6RJPH
 
 
 

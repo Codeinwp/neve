@@ -146,6 +146,64 @@ abstract class Abstract_Component implements Component {
 	);
 
 	/**
+	 * Padding settings default values.
+	 *
+	 * @var array
+	 */
+	protected $default_padding_value = array(
+		'mobile'       => array(
+			'top'    => 0,
+			'right'  => 0,
+			'bottom' => 0,
+			'left'   => 0,
+		),
+		'tablet'       => array(
+			'top'    => 0,
+			'right'  => 0,
+			'bottom' => 0,
+			'left'   => 0,
+		),
+		'desktop'      => array(
+			'top'    => 0,
+			'right'  => 0,
+			'bottom' => 0,
+			'left'   => 0,
+		),
+		'mobile-unit'  => 'px',
+		'tablet-unit'  => 'px',
+		'desktop-unit' => 'px',
+	);
+
+	/**
+	 * Margin settings default values.
+	 *
+	 * @var array
+	 */
+	protected $default_margin_value = array(
+		'mobile'       => array(
+			'top'    => 0,
+			'right'  => 0,
+			'bottom' => 0,
+			'left'   => 0,
+		),
+		'tablet'       => array(
+			'top'    => 0,
+			'right'  => 0,
+			'bottom' => 0,
+			'left'   => 0,
+		),
+		'desktop'      => array(
+			'top'    => 0,
+			'right'  => 0,
+			'bottom' => 0,
+			'left'   => 0,
+		),
+		'mobile-unit'  => 'px',
+		'tablet-unit'  => 'px',
+		'desktop-unit' => 'px',
+	);
+
+	/**
 	 * Abstract_Component constructor.
 	 *
 	 * @param string $panel Builder panel.
@@ -307,29 +365,7 @@ abstract class Abstract_Component implements Component {
 				'tab'                   => SettingsManager::TAB_LAYOUT,
 				'transport'             => 'postMessage',
 				'sanitize_callback'     => array( $this, 'sanitize_spacing_array' ),
-				'default'               => array(
-					'desktop'      => array(
-						'top'    => '',
-						'right'  => '',
-						'bottom' => '',
-						'left'   => '',
-					),
-					'tablet'       => array(
-						'top'    => '',
-						'right'  => '',
-						'bottom' => '',
-						'left'   => '',
-					),
-					'mobile'       => array(
-						'top'    => '',
-						'right'  => '',
-						'bottom' => '',
-						'left'   => '',
-					),
-					'desktop-unit' => 'px',
-					'tablet-unit'  => 'px',
-					'mobile-unit'  => 'px',
-				),
+				'default'               => $this->default_padding_value,
 				'label'                 => __( 'Padding', 'neve' ),
 				'type'                  => '\Neve\Customizer\Controls\React\Spacing',
 				'options'               => [
@@ -337,6 +373,7 @@ abstract class Abstract_Component implements Component {
 						'min'                   => 0,
 						'hideResponsiveButtons' => true,
 					),
+					'default'     => $this->default_padding_value,
 				],
 				'live_refresh_selector' => $padding_selector,
 				'live_refresh_css_prop' => array(
@@ -353,29 +390,7 @@ abstract class Abstract_Component implements Component {
 				'tab'                   => SettingsManager::TAB_LAYOUT,
 				'transport'             => 'postMessage',
 				'sanitize_callback'     => array( $this, 'sanitize_spacing_array' ),
-				'default'               => array(
-					'desktop'      => array(
-						'top'    => '',
-						'right'  => '',
-						'bottom' => '',
-						'left'   => '',
-					),
-					'tablet'       => array(
-						'top'    => '',
-						'right'  => '',
-						'bottom' => '',
-						'left'   => '',
-					),
-					'mobile'       => array(
-						'top'    => '',
-						'right'  => '',
-						'bottom' => '',
-						'left'   => '',
-					),
-					'desktop-unit' => 'px',
-					'tablet-unit'  => 'px',
-					'mobile-unit'  => 'px',
-				),
+				'default'               => $this->default_margin_value,
 				'label'                 => __( 'Margin', 'neve' ),
 				'type'                  => '\Neve\Customizer\Controls\React\Spacing',
 				'options'               => [

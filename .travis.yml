@@ -8,6 +8,11 @@ cache:
     - $HOME/.npm
 jobs:
   include:
+    - stage: teste2e
+      php: 7.0
+      name: E2E tests
+      script:
+        - ./bin/run-e2e.sh
     - stage: test
       php: 7.0
       name: "Different linters"
@@ -111,3 +116,5 @@ stages:
     if: type = "pull_request"
   - name: qa
     if: type = "pull_request" and head_branch="development" and repo = env(UPSTREAM_REPO)
+  - name: teste2e
+    if: type = "pull_request" and repo = "Codeinwp/neve"
