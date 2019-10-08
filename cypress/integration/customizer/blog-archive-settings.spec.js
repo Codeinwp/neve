@@ -34,6 +34,7 @@ describe('Blog/Archive Check', function () {
         aliasRestRoutes();
         goToCustomizerSection();
         maybeChangeBlogLayoutValue('grid');
+        cy.visit('/');
         checkGridCols(1);
         checkGridCols(2);
         checkGridCols(3);
