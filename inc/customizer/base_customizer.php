@@ -169,16 +169,19 @@ abstract class Base_Customizer {
 				$control_args = array(
 					'selector' => $control->control_args['live_refresh_selector'],
 					'id'       => $control->id,
-					'type'     => $control_type
+					'type'     => $control_type,
 				);
-				add_filter( 'neve_customize_preview_localization', function ( $array ) use ( $control_args ) {
-					if ( ! isset( $array[ $control_args['type'] ] ) ) {
-						$array[ $control_args['type'] ] = [];
-					}
-					$array[ $control_args['type'] ][ $control_args['id'] ] = [ 'selector' => $control_args['selector'] ];
+				add_filter(
+					'neve_customize_preview_localization',
+					function ( $array ) use ( $control_args ) {
+						if ( ! isset( $array[ $control_args['type'] ] ) ) {
+							$array[ $control_args['type'] ] = [];
+						}
+						$array[ $control_args['type'] ][ $control_args['id'] ] = [ 'selector' => $control_args['selector'] ];
 
-					return $array;
-				} );
+						return $array;
+					} 
+				);
 			}
 			if ( isset( $control->partial ) ) {
 				$this->add_partial( new Partial( $control->id, $control->partial ) );

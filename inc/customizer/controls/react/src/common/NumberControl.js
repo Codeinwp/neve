@@ -63,7 +63,7 @@ class NumberControl extends Component {
 						{type}
 					</Button> );
 		} );
-		return <ButtonGroup className="units"> buttons </ButtonGroup>;
+		return <ButtonGroup className="units"> {buttons} </ButtonGroup>;
 	}
 }
 

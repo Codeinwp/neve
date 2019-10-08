@@ -58,6 +58,7 @@ class TypefaceComponent extends Component {
 			letterSpacing: value.letterSpacing,
 			fontWeight: value.fontWeight,
 			textTransform: value.textTransform,
+			flag: false,
 		};
 	}
 
@@ -182,9 +183,10 @@ class TypefaceComponent extends Component {
 			fontWeight: this.state.fontWeight,
 			fontSize: {...this.state.fontSize},
 			lineHeight: {...this.state.lineHeight},
-			letterSpacing: {...this.state.letterSpacing}
+			letterSpacing: {...this.state.letterSpacing},
+			flag: ! this.state.flag
 		} );
-		}, 100 );
+		}, 10 );
 	}
 }
 

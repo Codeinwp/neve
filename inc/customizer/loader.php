@@ -95,8 +95,11 @@ class Loader {
 			'wp-element',
 		);
 		wp_register_script( 'react-controls', get_template_directory_uri() . '/inc/customizer/controls/react/bundle/controls.js', $editor_dependencies, NEVE_VERSION, true );
-		wp_localize_script( 'react-controls', 'NeveReactCustomize',
-			apply_filters( 'neve_react_controls_localization',
+		wp_localize_script(
+			'react-controls',
+			'NeveReactCustomize',
+			apply_filters(
+				'neve_react_controls_localization',
 				array(
 					'fonts' => array(
 						'System' => neve_get_standard_fonts(),
@@ -106,7 +109,8 @@ class Loader {
 			)
 		);
 		wp_enqueue_script( 'react-controls' );
-		wp_enqueue_style( 'react-controls',
+		wp_enqueue_style(
+			'react-controls',
 			get_template_directory_uri() .
 			'/inc/customizer/controls/react/bundle/controls.css',
 			array( 'wp-components' ),

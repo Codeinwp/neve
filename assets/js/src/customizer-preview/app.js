@@ -177,13 +177,13 @@ window.addEventListener( 'load', function() {
 							addCss( settingId, style );
 							break;
 						case '\\Neve\\Customizer\\Controls\\React\\Typography':
-							style += args.selector + '{' +
+							style += 'html ' + args.selector + '{' +
 									'text-transform:' + newValue.textTransform + ';' +
 									'font-weight:' + newValue.fontWeight + ';' +
 									'}';
 							for ( let device in deviceMap ) {
 								style += '@media (' + deviceMap[device] + ') { ' +
-										args.selector + '{' +
+										'html ' + args.selector + '{' +
 										'font-size:' + newValue.fontSize[device] +
 										newValue.fontSize.suffix[device] + ';' +
 										'letter-spacing:' + newValue.letterSpacing[device] + 'px;' +
@@ -202,30 +202,39 @@ window.addEventListener( 'load', function() {
 	wp.customize.preview.bind( 'font-selection', function(data) {
 		let selector = neveCustomizePreview[data.type][data.controlId].selector,
 				source = data.source,
-				gFontUrl = '';
+				id = data.controlId + '_font_family',
+				defaultFontface = '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif';
+
+		// Make selector more specific by adding `html` before.
+		selector = selector.split( ',' );
+		selector = selector.map( function(sel) {
+			return 'html ' + sel;
+		} ).join( ',' );
+
 		if ( data.value === false ) {
-			addCss( data.controlId, '' );
+			addCss( data.controlId,
+					selector + '{font-family: ' + defaultFontface + ';}' );
 		} else {
-			addCss( data.controlId, 'html ' + selector + '{ font-family: ' + data.value + '; }' );
+			addCss( data.controlId,
+					selector + '{font-family: ' + data.value + ' ;}' );
 		}
 		if ( source.toLowerCase() === 'google' ) {
-			let linkNode = $( '#' + data.controlId );
-			let fontValue = data.value.replace( ' ', '+' );
-			let url = '//fonts.googleapis.com/css?family=' + fontValue +
-					'%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800';
-			if ( linkNode.length !== 0 ) {
+			let linkNode = document.querySelector( '#' + id ),
+					fontValue = data.value.replace( ' ', '+' ),
+					url = '//fonts.googleapis.com/css?family=' + fontValue +
+							'%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800';
+			if ( linkNode !== null ) {
+				linkNode.setAttribute( 'href', url );
 				return false;
 			}
 			let newNode = document.createElement( 'link' );
 			newNode.setAttribute( 'rel', 'stylesheet' );
-			newNode.setAttribute( 'id', data.controlId );
+			newNode.setAttribute( 'id', id );
 			newNode.setAttribute( 'href', url );
 			newNode.setAttribute( 'type', 'text/css' );
 			newNode.setAttribute( 'media', 'all' );
-			jQuery( 'head' ).append( newNode );
+			document.querySelector( 'head' ).appendChild( newNode );
 		}
-		console.log( data );
-
 	} );
 } );
 
@@ -279,148 +288,21 @@ window.addEventListener( 'load', function() {
 } )( jQuery );
 
 ( function($) {
-	$.neveTypographyPreview = {
+	$.neveRangesPreview = {
 		init: function() {
-			this.fontSelectionPreview();
-			this.fontPropertiesRangesPreview();
-			this.fontPropertiesPreview();
+			this.rangesPreview();
 		},
-		fontControls: {
-			neve_body_font_family: {
-				linkNodeId: 'neve-google-font-body-css',
-				selectors: 'body'
-			},
-			neve_headings_font_family: {
-				linkNodeId: 'neve-google-font-headings-css',
-				selectors: 'h1:not(.site-title),h2,h3,h4,h5,h6'
-			}
-		},
-		fontSelectionPreview: function() {
-			wp.customize( 'neve_body_font_family', function(value) {
-				value.bind( function(newval) {
-					console.log( newval );
-				} );
-			} );
-			'use strict';
-			var self = this;
-			// $( function() {
-			// 	wp.customize.preview.bind( 'font-selection', function(data) {
-			// 		$( '#' + self.fontControls[data.controlId].linkNodeId ).remove();
-			// 		if ( data.source !== 'system' ) {
-			// 			self.generateLinkNode( self.fontControls[data.controlId].linkNodeId,
-			// 					data.value );
-			// 			data.value = '"' + data.value + '"';
-			// 		}
-			// 		if ( data.value === 'default' ) {
-			// 			$( self.fontControls[data.controlId].selectors ).
-			// 					css( 'font-family',
-			// 							'-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif' );
-			// 			return false;
-			// 		}
-			// 		$( self.fontControls[data.controlId].selectors ).
-			// 				css( 'font-family', data.value );
-			// 		return false;
-			// 	} );
-			// } );
-		},
-		generateLinkNode: function(elementId, googleFontName) {
-			var linkNode = $( '#' + elementId );
-			var fontValue = googleFontName.replace( ' ', '+' );
-			var url = '//fonts.googleapis.com/css?family=' + fontValue +
-					'%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800&subset=latin&ver=4.9.8';
-			if ( linkNode.length !== 0 ) {
-				return false;
-			}
-			var newNode = document.createElement( 'link' );
-			newNode.setAttribute( 'rel', 'stylesheet' );
-			newNode.setAttribute( 'id', elementId );
-			newNode.setAttribute( 'href', url );
-			newNode.setAttribute( 'type', 'text/css' );
-			newNode.setAttribute( 'media', 'all' );
-			$( '#neve-style-css' ).after( newNode );
-		},
-		fontPropertiesRanges: {
+		ranges: {
 			neve_container_width: {
 				selector: '.container',
 				cssProp: 'max-width',
 				unit: 'px',
 				styleClass: 'container-width-css'
 			},
-			neve_body_font_size: {
-				selector: 'body',
-				cssProp: 'font-size',
-				styleClass: 'body-font-size-css'
-			},
-			neve_body_line_height: {
-				selector: 'body',
-				cssProp: 'line-height',
-				unit: ' ',
-				styleClass: 'body-line-height-css'
-			},
-			neve_h1_font_size: {
-				selector: 'h1:not(.site-title), .single .entry-title',
-				cssProp: 'font-size',
-				styleClass: 'h1-font-size-css'
-			},
-			neve_h2_font_size: {
-				selector: 'h2',
-				cssProp: 'font-size',
-				styleClass: 'h2-font-size-css'
-			},
-			neve_h3_font_size: {
-				selector: 'h3',
-				cssProp: 'font-size',
-				styleClass: 'h3-font-size-css'
-			},
-			neve_h4_font_size: {
-				selector: 'h4',
-				cssProp: 'font-size',
-				styleClass: 'h4-font-size-css'
-			},
-			neve_h5_font_size: {
-				selector: 'h5',
-				cssProp: 'font-size',
-				styleClass: 'h5-font-size-css'
-			},
-			neve_h6_font_size: {
-				selector: 'h6',
-				cssProp: 'font-size',
-				styleClass: 'h6-font-size-css'
-			},
-			neve_h1_line_height: {
-				selector: 'h1:not(.site-title), .single .entry-title',
-				cssProp: 'line-height',
-				styleClass: 'h1-line-height-css'
-			},
-			neve_h2_line_height: {
-				selector: 'h2',
-				cssProp: 'line-height',
-				styleClass: 'h2-line-height-css'
-			},
-			neve_h3_line_height: {
-				selector: 'h3',
-				cssProp: 'line-height',
-				styleClass: 'h3-line-height-css'
-			},
-			neve_h4_line_height: {
-				selector: 'h4',
-				cssProp: 'line-height',
-				styleClass: 'h4-line-height-css'
-			},
-			neve_h5_line_height: {
-				selector: 'h5',
-				cssProp: 'line-height',
-				styleClass: 'h5-line-height-css'
-			},
-			neve_h6_line_height: {
-				selector: 'h6',
-				cssProp: 'line-height',
-				styleClass: 'h6-line-height-css'
-			}
 		},
-		fontPropertiesRangesPreview: function() {
+		rangesPreview: function() {
 			'use strict';
-			_.each( this.fontPropertiesRanges, function(args, id) {
+			_.each( this.ranges, function(args, id) {
 				wp.customize( id, function(value) {
 					value.bind( function(newval) {
 						var values = JSON.parse( newval );
@@ -440,65 +322,10 @@ window.addEventListener( 'load', function() {
 					} );
 				} );
 			} );
-		},
-		fontProperties: {
-			neve_headings_font_weight: {
-				selector: 'h1:not(.site-title), .single .entry-title,h2,h3,h4,h5,h6',
-				cssProp: 'font-weight',
-				unit: ' ',
-				styleClass: 'headings-font-weight-css'
-			},
-			neve_headings_text_transform: {
-				selector: 'h1:not(.site-title), .single .entry-title,h2,h3,h4,h5,h6',
-				cssProp: 'text-transform',
-				unit: ' ',
-				styleClass: 'headings-text-transform-css'
-			},
-			neve_headings_letter_spacing: {
-				selector: 'h1:not(.site-title), .single .entry-title,h2,h3,h4,h5,h6',
-				cssProp: 'letter-spacing',
-				unit: 'px',
-				styleClass: 'headings-letter-spacing-css'
-			},
-			neve_body_font_weight: {
-				selector: 'body',
-				cssProp: 'font-weight',
-				unit: ' ',
-				styleClass: 'body-font-weight-css'
-			},
-			neve_body_text_transform: {
-				selector: 'body',
-				cssProp: 'text-transform',
-				unit: ' ',
-				styleClass: 'body-text-transform-css'
-			},
-			neve_body_letter_spacing: {
-				selector: 'body',
-				cssProp: 'letter-spacing',
-				unit: 'px',
-				styleClass: 'body-letter-spacing-css'
-			}
-		},
-		fontPropertiesPreview: function() {
-			'use strict';
-			_.each( this.fontProperties, function(args, id) {
-				wp.customize( id, function(value) {
-					value.bind( function(newval) {
-						var settings = {
-							selectors: args.selector,
-							cssProperty: args.cssProp,
-							propertyUnit: args.unit ? args.unit : '',
-							styleClass: args.styleClass
-						};
-						$.neveCustomizeUtilities.setLiveCss( settings, newval );
-					} );
-				} );
-			} );
 		}
 	};
 } )( jQuery );
-
-jQuery.neveTypographyPreview.init();
+jQuery.neveRangesPreview.init();
 
 ( function($) {
 	$.neveLayoutPreview = {

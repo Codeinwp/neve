@@ -61,7 +61,7 @@ class Typography extends Base_View {
 	/**
 	 * Enqueues a Google Font
 	 *
-	 * @param string $font font string.
+	 * @param string $font   font string.
 	 * @param string $handle body/headings.
 	 *
 	 * @since 1.1.38
@@ -81,20 +81,8 @@ class Typography extends Base_View {
 
 		$base_url = '//fonts.googleapis.com/css';
 
-		// Apply the chosen subset from customizer.
-		$subsets     = '';
-		$get_subsets = get_theme_mod( 'neve_font_subsets', array( 'latin' ) );
-		if ( ! empty( $get_subsets ) ) {
-			$font_subsets = array();
-			foreach ( $get_subsets as $get_subset ) {
-				$font_subsets[] = $get_subset;
-			}
-			$subsets .= implode( ',', $font_subsets );
-		}
-
 		// Weights.
 		$weights = apply_filters( 'neve_filter_font_weights', array( '300', '400', '500', '700' ), $handle );
-
 		// Add weights to URL.
 		if ( ! empty( $weights ) ) {
 			$font .= ':' . implode( ',', $weights );
@@ -103,12 +91,25 @@ class Typography extends Base_View {
 		$query_args = array(
 			'family' => urlencode( $font ),
 		);
-		if ( ! empty( $subsets ) ) {
-			$query_args['subset'] = urlencode( $subsets );
+
+		$subsets = [
+			'ru_RU' => 'cyrillic',
+			'bg_BG' => 'cyrillic',
+			'he_IL' => 'hebrew',
+			'el'    => 'greek',
+			'vi'    => 'vietnamese',
+			'uk'    => 'cyrillic',
+			'cs_CZ' => 'latin-ext',
+			'ro_RO' => 'latin-ext',
+			'pl_PL' => 'latin-ext',
+		];
+		$locale  = get_locale();
+
+		if ( isset( $subsets[ $locale ] ) ) {
+			$query_args['subset'] = urlencode( $subsets[ $locale ] );
 		}
 		$url = add_query_arg( $query_args, $base_url );
 
-		var_dump($url);
 		// Enqueue style
 		wp_enqueue_style( 'neve-google-font-' . $handle, $url, array(), false );
 	}
@@ -124,7 +125,7 @@ class Typography extends Base_View {
 	 * Add headings font weights.
 	 *
 	 * @param array  $weights_array font weight array.
-	 * @param string $context the context ['headings', 'body'].
+	 * @param string $context       the context ['headings', 'body'].
 	 *
 	 * @return array
 	 */

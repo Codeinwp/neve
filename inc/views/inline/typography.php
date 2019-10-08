@@ -63,7 +63,7 @@ class Typography extends Base_Inline {
 			$style_setup[] = array(
 				'css_prop' => 'letter-spacing',
 				'value'    => $letter_spacing,
-				'suffix'   => 'px'
+				'suffix'   => 'px',
 			);
 		}
 
@@ -74,7 +74,7 @@ class Typography extends Base_Inline {
 
 		$font_weight    = isset( $typeface_setup['fontWeight'] ) ? $typeface_setup['fontWeight'] : $old_font_weight;
 		$text_transform = isset( $typeface_setup['textTransform'] ) ? $typeface_setup['textTransform'] : $old_text_transform;
-		$body_font          = get_theme_mod( 'neve_body_font_family', false );
+		$body_font      = get_theme_mod( 'neve_body_font_family', false );
 
 		$style_setup = array();
 		// Letter spacing was not previously responsive - this accounts for that.
