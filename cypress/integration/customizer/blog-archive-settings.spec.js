@@ -90,20 +90,6 @@ describe('Blog/Archive Check', function () {
         })
     });
 
-    it('Pagination Number', function () {
-        cy.login();
-        aliasRestRoutes();
-        goToCustomizerSection();
-        cy.get('#_customize-input-neve_pagination_type').invoke('attr', 'value').then((val) => {
-            if (val !== 'number') {
-                cy.get('#_customize-input-neve_pagination_type').select('number');
-                saveCustomizer();
-            }
-        });
-        cy.visit('/');
-        cy.get('.page-numbers').should('exist');
-    });
-
     it('Pagination Infinite', function () {
         cy.login();
         aliasRestRoutes();
@@ -116,6 +102,20 @@ describe('Blog/Archive Check', function () {
         });
         cy.visit('/');
         cy.get('.page-numbers').should('not.exist');
+    });
+
+    it('Pagination Number', function () {
+        cy.login();
+        aliasRestRoutes();
+        goToCustomizerSection();
+        cy.get('#_customize-input-neve_pagination_type').invoke('attr', 'value').then((val) => {
+            if (val !== 'number') {
+                cy.get('#_customize-input-neve_pagination_type').select('number');
+                saveCustomizer();
+            }
+        });
+        cy.visit('/');
+        cy.get('.page-numbers').should('exist');
     });
 
     it('Meta Visibility', function () {
