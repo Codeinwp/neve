@@ -2,5 +2,7 @@
   "projectId": "i2uk98",
   "pluginsFile": false,
   "supportFile": "cypress/support/commands.js",
-  "baseUrl": "http://localhost:8080"
+  "baseUrl": "http://localhost:8080",
+  "viewportWidth": 1920,
+  "viewportHeight": 1080
 }
