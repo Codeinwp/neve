@@ -1,7 +1,6 @@
 describe('Blog/Archive Check', function () {
     it('Default layout', function () {
         cy.login();
-        aliasRestRoutes();
         goToCustomizerSection();
         maybeChangeBlogLayoutValue('default');
         cy.visit('/');
@@ -13,7 +12,6 @@ describe('Blog/Archive Check', function () {
 
     it('Alternative layout', function () {
         cy.login();
-        aliasRestRoutes();
         goToCustomizerSection();
         maybeChangeBlogLayoutValue('alternative');
         cy.visit('/');
@@ -31,19 +29,16 @@ describe('Blog/Archive Check', function () {
 
     it('Grid layout', function () {
         cy.login();
-        aliasRestRoutes();
         goToCustomizerSection();
         maybeChangeBlogLayoutValue('grid');
-        cy.visit('/');
-        checkGridCols(1);
-        checkGridCols(2);
-        checkGridCols(3);
         checkGridCols(4);
+        checkGridCols(3);
+        checkGridCols(2);
+        checkGridCols(1);
     });
 
     it('Masonry', function () {
         cy.login();
-        aliasRestRoutes();
         goToCustomizerSection();
         cy.get('#customize-control-neve_blog_archive_layout').find('label[for="neve_blog_archive_layout-grid"]').click();
         cy.get('#_customize-input-neve_grid_layout').select('2');
@@ -59,7 +54,6 @@ describe('Blog/Archive Check', function () {
 
     it('Excerpt length', function () {
         cy.login();
-        aliasRestRoutes();
         goToCustomizerSection();
         cy.get('#customize-control-neve_post_excerpt_length')
             .find('.range-slider-value')
@@ -92,7 +86,6 @@ describe('Blog/Archive Check', function () {
 
     it('Pagination Infinite', function () {
         cy.login();
-        aliasRestRoutes();
         goToCustomizerSection();
         cy.get('#_customize-input-neve_pagination_type').invoke('attr', 'value').then((val) => {
             if (val !== 'infinite') {
@@ -106,7 +99,6 @@ describe('Blog/Archive Check', function () {
 
     it('Pagination Number', function () {
         cy.login();
-        aliasRestRoutes();
         goToCustomizerSection();
         cy.get('#_customize-input-neve_pagination_type').invoke('attr', 'value').then((val) => {
             if (val !== 'number') {
@@ -120,7 +112,6 @@ describe('Blog/Archive Check', function () {
 
     it('Meta Visibility', function () {
         cy.login();
-        aliasRestRoutes();
         goToCustomizerSection();
 
         let status = {'author': 'be.visible', 'category': 'be.visible', 'date': 'be.visible', 'comments': 'be.visible'};
@@ -162,7 +153,6 @@ describe('Blog/Archive Check', function () {
 
     it('Meta order', function () {
         cy.login();
-        aliasRestRoutes();
         goToCustomizerSection();
         setOrderElementsVisible('#customize-control-neve_post_meta_ordering');
         dropElAfter('#customize-control-neve_post_meta_ordering .ti-order-sortable li', 0, 2);
@@ -186,7 +176,6 @@ describe('Blog/Archive Check', function () {
 
     it('Post content elements visibility', function () {
         cy.login();
-        aliasRestRoutes();
         goToCustomizerSection();
 
         let status = {'thumbnail': 'have.descendants', 'title-meta': 'have.descendants', 'excerpt': 'have.descendants'};
@@ -216,7 +205,6 @@ describe('Blog/Archive Check', function () {
 
     it('Post content elements order', function () {
         cy.login();
-        aliasRestRoutes();
         goToCustomizerSection();
         setOrderElementsVisible('#customize-control-neve_post_content_ordering');
         dropElAfter('#customize-control-neve_post_content_ordering .ti-order-sortable li', 0, 1);
@@ -242,7 +230,6 @@ describe('Blog/Archive Check', function () {
 
     it('Author avatar in meta', function () {
         cy.login();
-        aliasRestRoutes();
         goToCustomizerSection();
         cy.get('#customize-control-neve_post_meta_ordering')
             .find('li[data-id="author"]')
@@ -271,6 +258,8 @@ describe('Blog/Archive Check', function () {
  * Publish customizer changes.
  */
 function saveCustomizer() {
+    let home = Cypress.config().baseUrl;
+    cy.server().route('POST', home + '/wp-admin/admin-ajax.php').as('customizerSave');
     cy.get('#save').click({force: true});
     cy.wait('@customizerSave').then((req) => {
         expect(req.response.body.success).to.be.true;
@@ -343,14 +332,6 @@ function goToCustomizerSection() {
     cy.visit('/wp-admin/customize.php');
     cy.get('#accordion-panel-neve_layout').click();
     cy.get('#accordion-section-neve_blog_archive_layout').click();
-}
-
-/**
- * Alias Rest Routes
- */
-function aliasRestRoutes() {
-    let home = Cypress.config().baseUrl;
-    cy.server().route('POST', home + '/wp-admin/admin-ajax.php').as('customizerSave');
 }
 
 /**
