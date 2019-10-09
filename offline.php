@@ -1,4 +1,10 @@
 <?php
+/**
+ * The template for offline page in PWA.
+ *
+ * @package Neve
+ * @since   2.4.3
+ */
 
 pwa_get_header( 'pwa' );
 
