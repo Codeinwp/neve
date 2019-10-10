@@ -63,6 +63,8 @@ class Front_End {
 		add_theme_support( 'header-footer-elementor' );
 		add_theme_support( 'lifterlms-sidebars' );
 		add_theme_support( 'lifterlms' );
+		add_theme_support( 'responsive-embeds' );
+		add_theme_support( 'service_worker', true );
 
 		add_filter( 'embed_oembed_html', array( $this, 'wrap_oembeds' ), 10, 3 );
 		add_filter( 'themeisle_gutenberg_templates', array( $this, 'add_gutenberg_templates' ) );
@@ -118,6 +120,7 @@ class Front_End {
 
 		return $args;
 	}
+
 
 	/**
 	 * Reorder starter sites based on previous theme
@@ -627,11 +630,6 @@ class Front_End {
 						'url'        => 'https://demo.themeisle.com/neve-kindergarten/',
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/09/neve-kindergarden.jpg',
 						'title'      => 'Kindergarten',
-					),
-					'neve-florist'               => array(
-						'url'        => 'https://demo.themeisle.com/neve-florist/',
-						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/10/neve-florist.jpg',
-						'title'      => 'Florist',
 					),
 				),
 				'brizy'          => array(

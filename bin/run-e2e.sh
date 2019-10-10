@@ -29,7 +29,6 @@ docker-compose -f $DOCKER_FILE run --rm wordpress bash wp rewrite structure /%po
 # Set primary menu
 docker-compose -f $DOCKER_FILE run --rm wordpress bash wp menu location assign all-pages primary
 # Update core.
-#docker-compose -f $DOCKER_FILE run --rm wordpress bash wp theme mod remove --all
 docker-compose -f $DOCKER_FILE run --rm wordpress bash wp core update
 
 # Run Cypress
