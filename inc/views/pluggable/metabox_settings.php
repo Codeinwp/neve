@@ -99,12 +99,13 @@ class Metabox_Settings {
 		}
 
 		$content_width_status = get_post_meta( $post_id, 'neve_meta_enable_content_width', true );
-
+		$content_width_status = empty( $content_width_status ) ? $this->get_content_width_status_default() : $content_width_status;
 		if ( $content_width_status !== 'on' ) {
 			return;
 		}
 
 		$meta_value = get_post_meta( $post_id, 'neve_meta_content_width', true );
+		$meta_value = empty( $meta_value ) ? $this->get_content_width_default() : $meta_value;
 
 		if ( empty( $meta_value ) ) {
 			return;
@@ -187,7 +188,8 @@ class Metabox_Settings {
 		}
 
 		$meta_value = get_post_meta( $post_id, 'neve_meta_sidebar', true );
-		if ( empty( $meta_value ) ) {
+		$meta_value = empty( $meta_value ) ? $this->get_sidebar_default() : $meta_value;
+		if ( empty( $meta_value ) || $meta_value === 'default' ) {
 			return $position;
 		}
 
@@ -216,7 +218,7 @@ class Metabox_Settings {
 
 		$meta_value = get_post_meta( $post_id, 'neve_meta_container', true );
 
-		if ( empty( $meta_value ) ) {
+		if ( empty( $meta_value ) || $meta_value === 'default' ) {
 			return $class;
 		}
 
@@ -270,5 +272,44 @@ class Metabox_Settings {
 	 */
 	private function is_blog_static() {
 		return ( get_option( 'show_on_front' ) === 'page' && is_home() );
+	}
+
+	/**
+	 * Get content width status default.
+	 *
+	 * @return string
+	 */
+	private function get_content_width_status_default() {
+		if ( (int) $this->get_post_id() === (int) get_option( 'woocommerce_checkout_page_id' ) ) {
+			return 'on';
+		}
+
+		return '';
+	}
+
+	/**
+	 * Get content width status.
+	 *
+	 * @return int|string
+	 */
+	private function get_content_width_default() {
+		if ( (int) $this->get_post_id() === (int) get_option( 'woocommerce_checkout_page_id' ) ) {
+			return 100;
+		}
+
+		return '';
+	}
+
+	/**
+	 * Get sidebar default.
+	 *
+	 * @return string
+	 */
+	private function get_sidebar_default() {
+		if ( (int) $this->get_post_id() === (int) get_option( 'woocommerce_checkout_page_id' ) ) {
+			return 'full-width';
+		}
+
+		return '';
 	}
 }
