@@ -61,7 +61,11 @@ class ResponsiveControl extends Component {
 															isTertiary
 															className={{ 'active-device': device === view }}
 															onClick={() => {
-																this.changeViewType( device );
+																let event = new CustomEvent(
+																		'neveChangedRepsonsivePreview', {
+																			'detail': device
+																		} );
+																document.dispatchEvent( event );
 															}}
 													>
 														<Dashicon icon={deviceMap[device].icon}/>
