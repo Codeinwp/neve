@@ -17,6 +17,7 @@ module.exports = function(grunt) {
 	config.files.js.push( '!assets/js/gutenberg-preview-manager.js' );
 	config.files.js.push( '!inc/customizer/controls/react/**/*');
 	config.files.js.push( '!dist/**/*' );
+	config.files.js.push( '!cypress/**/*' );
 
 	config.files.php.push( '!**/node_modules/**/*' );
 	config.files.php.push( '!**/vendor/**/*' );
