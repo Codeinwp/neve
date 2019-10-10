@@ -138,19 +138,50 @@ class Typography extends Base_View {
 		if ( $context !== 'headings' && $context !== 'body' ) {
 			return $weights_array;
 		}
-		$key = 'neve_headings_font_weight';
+		if ( $context === 'headings' ) {
+			$added_weights           = [];
+			$should_check_old_weight = false;
+			foreach ( [ 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ] as $heading ) {
+				$setup = get_theme_mod( 'neve_' . $heading . '_typeface_general' );
+				if ( empty( $setup ) || ! isset( $setup['fontWeight'] ) ) {
+					$should_check_old_weight = true;
+					continue;
+				}
+				if ( in_array( $setup['fontWeight'], $weights_array, true ) ) {
+					continue;
+				}
+				$added_weights[] = $setup['fontWeight'];
+			}
+
+			// Check for old setting if not all settings are set.
+			if ( $should_check_old_weight ) {
+				$weight = get_theme_mod( 'neve_headings_font_weight' );
+				if ( ! empty( $weight ) ) {
+					$added_weights[] = $weight;
+				}
+			}
+
+			$weights_array = array_merge( $weights_array, $added_weights );
+
+			return array_unique( $weights_array );
+		}
+
 		if ( $context === 'body' ) {
-			$key = 'neve_body_font_weight';
+			$setup = get_theme_mod( 'neve_typeface_general' );
+			if ( ! empty( $setup ) && isset( $setup['fontWeight'] ) ) {
+				$weights_array[] = $setup['fontWeight'];
+
+				return array_unique( $weights_array );
+			}
+
+			$old_font_weight = get_theme_mod( 'neve_body_font_weight' );
+			if ( ! empty( $old_font_weight ) ) {
+				$weights_array[] = $old_font_weight;
+
+				return array_unique( $weights_array );
+			}
 		}
 
-		$font_weight = (string) get_theme_mod( $key );
-
-		if ( empty( $font_weight ) || in_array( $font_weight, $weights_array, true ) ) {
-			return $weights_array;
-		}
-
-		$weights_array[] = $font_weight;
-
-		return $weights_array;
+		return array_unique( $weights_array );
 	}
 }

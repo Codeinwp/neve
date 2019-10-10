@@ -159,40 +159,52 @@ class Typography extends Base_Inline {
 			}
 
 			if ( ! empty( $font_weight ) ) {
-				$this->add_style( array(
+				$this->add_style(
 					array(
-						'css_prop' => 'font-weight',
-						'value'    => $font_weight,
-					)
-				), $selector );
+						array(
+							'css_prop' => 'font-weight',
+							'value'    => $font_weight,
+						),
+					),
+					$selector 
+				);
 			}
 			if ( ! empty( $text_transform ) ) {
-				$this->add_style( array(
+				$this->add_style(
 					array(
-						'css_prop' => 'text-transform',
-						'value'    => $text_transform,
-					)
-				), $selector );
+						array(
+							'css_prop' => 'text-transform',
+							'value'    => $text_transform,
+						),
+					),
+					$selector 
+				);
 			}
 			// Letter spacing was not previously responsive - this accounts for that.
 			if ( ! empty( $letter_spacing ) && ! is_array( $letter_spacing ) ) {
-				$this->add_style( array(
+				$this->add_style(
 					array(
-						'css_prop' => 'letter-spacing',
-						'value'    => $letter_spacing,
-						'suffix'   => 'px',
-					)
-				), $selector );
+						array(
+							'css_prop' => 'letter-spacing',
+							'value'    => $letter_spacing,
+							'suffix'   => 'px',
+						),
+					),
+					$selector 
+				);
 			}
 
 			if ( ! empty( $letter_spacing ) && is_array( $letter_spacing ) ) {
-				$this->add_responsive_style( array(
+				$this->add_responsive_style(
 					array(
-						'css_prop' => 'letter-spacing',
-						'value'    => $letter_spacing,
-						'suffix'   => 'px',
-					)
-				), $selector );
+						array(
+							'css_prop' => 'letter-spacing',
+							'value'    => $letter_spacing,
+							'suffix'   => 'px',
+						),
+					),
+					$selector 
+				);
 			}
 
 			if ( ! empty( $line_height ) ) {
@@ -205,8 +217,7 @@ class Typography extends Base_Inline {
 					),
 					$selector
 				);
-			}
-
+			}       
 		}
 
 		$headings_font = get_theme_mod( 'neve_headings_font_family', false );
