@@ -346,6 +346,12 @@ class Front_End {
 					),
 				),
 				'beaver builder' => [
+					'neve-beaver-onboarding'         => array(
+						'url'        => 'https://demo.themeisle.com/neve-onboarding-bb/',
+						'title'      => 'Original',
+						'screenshot' => $onboarding_folder_url . '/neve-main/screenshot.jpg',
+						'local_json' => $onboarding_folder_path . '/neve-beaver-onboarding/data.json',
+					),
 					'neve-beaver-restaurant'         => array(
 						'url'        => 'https://demo.themeisle.com/neve-bb-restaurant/',
 						'title'      => 'Restaurant',
@@ -379,6 +385,12 @@ class Front_End {
 						'screenshot'       => $onboarding_folder_url . '/neve-architecture/screenshot.jpg',
 						'unsplash_gallery' => 'https://unsplash.com/collections/6802313/architecture/f59e19df059789d86d1066ea80130a87',
 						'local_json'       => $onboarding_folder_path . '/neve-beaver-architecture/data.json',
+					),
+					'neve-beaver-fitness'            => array(
+						'url'        => 'https://demo.themeisle.com/neve-fitness-bb/',
+						'title'      => 'Fitness',
+						'screenshot' => $onboarding_folder_url . '/neve-fitness/screenshot.jpg',
+						'local_json' => $onboarding_folder_path . '/neve-beaver-fitness/data.json',
 					),
 					'neve-beaver-vacation-rental'    => array(
 						'url'        => 'https://demo.themeisle.com/neve-bb-vacantion-rental/',
@@ -434,6 +446,18 @@ class Front_End {
 						'screenshot'       => $onboarding_folder_url . '/neve-shop/screenshot.jpg',
 						'unsplash_gallery' => 'https://unsplash.com/collections/4587704/shop/56488e52ed6e70495219537f7d3846f2',
 						'local_json'       => $onboarding_folder_path . '/neve-beaver-shop/data.json',
+					),
+					'neve-beaver-lawyers'            => array(
+						'url'        => 'https://demo.themeisle.com/neve-lawyers-bb/',
+						'title'      => 'Lawyers',
+						'screenshot' => $onboarding_folder_url . '/neve-lawyers/screenshot.jpg',
+						'local_json' => $onboarding_folder_path . '/neve-beaver-lawyers/data.json',
+					),
+					'neve-beaver-tattoo'             => array(
+						'url'        => 'https://demo.themeisle.com/neve-tatoo-bb/',
+						'title'      => 'Tattoo',
+						'screenshot' => $onboarding_folder_url . '/neve-tattoo/screenshot.jpg',
+						'local_json' => $onboarding_folder_path . '/neve-beaver-tattoo/data.json',
 					),
 					'neve-beaver-zelle'              => array(
 						'url'              => 'https://demo.themeisle.com/neve-zelle-bb/',
