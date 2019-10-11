@@ -27,13 +27,42 @@ class Button extends Abstract_Component {
 	const TEXT_ID      = 'text_setting';
 
 	/**
+	 * Default spacing value
+	 *
+	 * @var array
+	 */
+	protected $default_padding_value = array(
+		'mobile'       => array(
+			'top'    => 8,
+			'right'  => 12,
+			'bottom' => 8,
+			'left'   => 12,
+		),
+		'tablet'       => array(
+			'top'    => 8,
+			'right'  => 12,
+			'bottom' => 8,
+			'left'   => 12,
+		),
+		'desktop'      => array(
+			'top'    => 8,
+			'right'  => 12,
+			'bottom' => 8,
+			'left'   => 12,
+		),
+		'mobile-unit'  => 'px',
+		'tablet-unit'  => 'px',
+		'desktop-unit' => 'px',
+	);
+
+	/**
 	 * Button constructor.
 	 *
 	 * @param string $panel Builder panel.
 	 */
 	public function __construct( $panel ) {
 		parent::__construct( $panel );
-		$this->default_selector = '.builder-item--' . $this->get_id() . ' > .component-wrap > :first-child';
+		$this->default_selector = '.builder-item--' . $this->get_id() . ' > .component-wrap > .button.button-primary:first-child';
 	}
 
 	/**

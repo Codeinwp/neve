@@ -33,9 +33,7 @@ class SizingControl extends Component {
 															onFocus={onToggle}
 															onChange={
 																e => this.props.onChange( i.type,
-																		e.target.value === 0 ?
-																				0 :
-																				e.target.value || '' )
+																		e.target.value === '' ? 0 : e.target.value )
 															}
 													/>
 											)}
@@ -51,7 +49,7 @@ class SizingControl extends Component {
 																step={this.props.step}
 																onChange={
 																	e => this.props.onChange( i.type,
-																			e === 0 ? 0 : e || '' )
+																			e === '' ? 0 : e )
 																}
 														/>
 													</div>
@@ -78,29 +76,33 @@ class SizingControl extends Component {
 								onClick={() => this.props.onLinked()}
 						/>
 					</div>
-					{ this.hasSetValues() && <div className="nv-sizing-reset">
+					{this.hasSetValues() && <div className="nv-sizing-reset">
 						<IconButton
 								onClick={this.props.onReset}
 								tooltip={__( 'Reset all Values', 'neve' )}
 								icon="image-rotate"
 								className="reset">
 						</IconButton>
-					</div> }
+					</div>}
 				</div>
 		);
 	}
 
 	hasSetValues() {
-		return  this.props.options.filter( option => option.value ).length > 0;
+		let defaults = this.props.defaults;
+		return this.props.options.filter( option => {
+			return option.value !== defaults[option.type];
+		} ).length > 0;
 	}
 }
 
 SizingControl.propTypes = {
 	options: PropTypes.array.isRequired,
+	defaults: PropTypes.array.isRequired,
 	onLinked: PropTypes.func.isRequired,
 	onChange: PropTypes.func.isRequired,
 	linked: PropTypes.bool.isRequired,
-	onReset: PropTypes.func,
+	onReset: PropTypes.func
 };
 
 export default SizingControl;

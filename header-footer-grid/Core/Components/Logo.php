@@ -28,6 +28,35 @@ class Logo extends Abstract_Component {
 	const SHOW_TAGLINE = 'show_tagline';
 
 	/**
+	 * Default spacing value
+	 *
+	 * @var array
+	 */
+	protected $default_padding_value = array(
+		'mobile'       => array(
+			'top'    => 10,
+			'right'  => 0,
+			'bottom' => 10,
+			'left'   => 0,
+		),
+		'tablet'       => array(
+			'top'    => 10,
+			'right'  => 0,
+			'bottom' => 10,
+			'left'   => 0,
+		),
+		'desktop'      => array(
+			'top'    => 10,
+			'right'  => 0,
+			'bottom' => 10,
+			'left'   => 0,
+		),
+		'mobile-unit'  => 'px',
+		'tablet-unit'  => 'px',
+		'desktop-unit' => 'px',
+	);
+
+	/**
 	 * Logo constructor.
 	 *
 	 * @since   1.0.0

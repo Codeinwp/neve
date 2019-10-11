@@ -1,23 +1,23 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
     "content-hash": "a1f97965e23ba6dd6fbca5ca44e333d3",
     "packages": [
         {
             "name": "codeinwp/themeisle-sdk",
-            "version": "3.1.5",
+            "version": "3.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeinwp/themeisle-sdk.git",
-                "reference": "1f98fb7bd044ac52721cd49a1aeca8864d95b23d"
+                "reference": "6d2661b91b8ebaed6dea99a29832f33225796c5a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeinwp/themeisle-sdk/zipball/1f98fb7bd044ac52721cd49a1aeca8864d95b23d",
-                "reference": "1f98fb7bd044ac52721cd49a1aeca8864d95b23d",
+                "url": "https://api.github.com/repos/Codeinwp/themeisle-sdk/zipball/6d2661b91b8ebaed6dea99a29832f33225796c5a",
+                "reference": "6d2661b91b8ebaed6dea99a29832f33225796c5a",
                 "shasum": ""
             },
             "require-dev": {
@@ -42,7 +42,7 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2019-09-11T15:16:53+00:00"
+            "time": "2019-09-24T12:35:52+00:00"
         },
         {
             "name": "codeinwp/ti-about-page",
@@ -77,20 +77,20 @@
             ],
             "description": "The theme about page for themeisle themes.",
             "homepage": "https://github.com/Codeinwp/ti-about-page",
-            "time": "2019-09-12 18:43:31"
+            "time": "2019-09-12T18:43:31+00:00"
         },
         {
             "name": "codeinwp/ti-onboarding",
-            "version": "1.7.5",
+            "version": "1.7.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeinwp/ti-onboarding.git",
-                "reference": "f79cdf4a6432dd741d9cf0c1a091db63f5212015"
+                "reference": "49ebb78450bc6038dd10e000055950f93da0e62c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeinwp/ti-onboarding/zipball/f79cdf4a6432dd741d9cf0c1a091db63f5212015",
-                "reference": "f79cdf4a6432dd741d9cf0c1a091db63f5212015",
+                "url": "https://api.github.com/repos/Codeinwp/ti-onboarding/zipball/49ebb78450bc6038dd10e000055950f93da0e62c",
+                "reference": "49ebb78450bc6038dd10e000055950f93da0e62c",
                 "shasum": ""
             },
             "require-dev": {
@@ -117,7 +117,7 @@
             ],
             "description": "Onboarding for themeisle themes.",
             "homepage": "https://github.com/Codeinwp/ti-onboarding",
-            "time": "2019-09-12T17:42:40+00:00"
+            "time": "2019-09-20T09:50:19+00:00"
         }
     ],
     "packages-dev": [
@@ -349,16 +349,16 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.4.2",
+            "version": "3.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "b8a7362af1cc1aadb5bd36c3defc4dda2cf5f0a8"
+                "reference": "0afebf16a2e7f1e434920fa976253576151effe9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/b8a7362af1cc1aadb5bd36c3defc4dda2cf5f0a8",
-                "reference": "b8a7362af1cc1aadb5bd36c3defc4dda2cf5f0a8",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/0afebf16a2e7f1e434920fa976253576151effe9",
+                "reference": "0afebf16a2e7f1e434920fa976253576151effe9",
                 "shasum": ""
             },
             "require": {
@@ -396,7 +396,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2019-04-10T23:49:02+00:00"
+            "time": "2019-09-26T23:12:26+00:00"
         },
         {
             "name": "wp-coding-standards/wpcs",

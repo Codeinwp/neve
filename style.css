@@ -5,7 +5,7 @@ Theme URI:      https://themeisle.com/themes/neve/
 Author:         ThemeIsle
 Author URI:     https://themeisle.com
 Description:    Neve is a super fast, easily customizable, multi-purpose theme. It’s perfect for blogs, small business, startups, agencies, firms, e-commerce shops (WooCommerce storefront) as well as personal portfolio sites and most types of projects. A fully AMP optimized and responsive theme, Neve will load in mere seconds and adapt perfectly on any viewing device. While it is lightweight and has a minimalist design, the theme is highly extendable, it has a highly SEO optimized code, resulting in top rankings in Google search results. Neve works perfectly with Gutenberg and the most popular page builders (Elementor, Brizy, Beaver Builder, Visual Composer, SiteOrigin, Divi). Neve is also WooCommerce ready, responsive, RTL & translation ready. Look no further. Neve is the perfect theme for you!
-Version:        2.4.1
+Version:        2.4.2
 License:        GNU General Public License v2 or later
 License URI:    http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain:    neve
@@ -1791,6 +1791,10 @@ audio {
   padding-left: 0;
 }
 
+.gallery-caption {
+  box-sizing: border-box;
+}
+
 .nv-sidebar-wrap {
   margin-bottom: 40px;
 }
@@ -2337,6 +2341,24 @@ audio {
   list-style: inherit;
 }
 
+.fl-builder.bbhf-transparent-header:not(.bhf-sticky-header) #nv-beaver-header .fl-row-content-wrap {
+  background-color: transparent;
+  border: none;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.fl-builder.bbhf-transparent-header .bhf-fixed-header:not(.bhf-fixed) .fl-row-content-wrap {
+  background-color: transparent;
+  border: none;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.fl-builder.bbhf-transparent-header #nv-beaver-header {
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+}
+
 /*Skin*/
 .site-header {
   position: relative;
@@ -2449,7 +2471,7 @@ audio {
   text-align: right;
 }
 
-.hfg-item-right #secondary-menu, .hfg-item-right .nv-nav-wrap, .hfg-item-right .component-wrap, .hfg-item-right .site-logo, .hfg-item-right .nv-search-icon-component .nv-search {
+.hfg-item-right #secondary-menu, .hfg-item-right .nv-nav-wrap, .hfg-item-right .component-wrap, .hfg-item-right .site-logo, .hfg-item-right .nv-search-icon-component .nv-search, .hfg-item-right .builder-item--footer-menu {
   justify-content: flex-end;
 }
 
@@ -2457,7 +2479,7 @@ audio {
   text-align: left;
 }
 
-.hfg-item-left #secondary-menu, .hfg-item-left .nv-nav-wrap, .hfg-item-left .component-wrap, .hfg-item-left .site-logo, .hfg-item-left .nv-search-icon-component .nv-search {
+.hfg-item-left #secondary-menu, .hfg-item-left .nv-nav-wrap, .hfg-item-left .component-wrap, .hfg-item-left .site-logo, .hfg-item-left .nv-search-icon-component .nv-search, .hfg-item-left .builder-item--footer-menu {
   justify-content: flex-start;
 }
 
@@ -2465,7 +2487,7 @@ audio {
   text-align: center;
 }
 
-.hfg-item-center #secondary-menu, .hfg-item-center .nv-nav-wrap, .hfg-item-center .component-wrap, .hfg-item-center .site-logo, .hfg-item-center .nv-search-icon-component .nv-search {
+.hfg-item-center #secondary-menu, .hfg-item-center .nv-nav-wrap, .hfg-item-center .component-wrap, .hfg-item-center .site-logo, .hfg-item-center .nv-search-icon-component .nv-search, .hfg-item-center .builder-item--footer-menu {
   justify-content: center;
 }
 
