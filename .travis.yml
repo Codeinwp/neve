@@ -69,7 +69,12 @@ jobs:
       name: "QA"
       php: 7.0
       script:
-        - ./bin/sync-qa.sh
+        - ./bin/sync.sh qa
+    - stage: import
+      name: "Import sync"
+      php: 7.0
+      script:
+        - ./bin/sync.sh import
     - stage: deploy
       name: "Deployment"
       php: 7.0
@@ -111,9 +116,11 @@ jobs:
             all_branches: true
 stages:
   - name: deploy
-    if: branch = env(MASTER_BRANCH) and type != "pull_request" and repo = env(UPSTREAM_REPO)
+    if: branch = env(MASTER_BRANCH) and type = "push" and repo = env(UPSTREAM_REPO)
   - name: test
     if: type = "pull_request"
+  - name: import
+    if: type = "cron" and branch="master"
   - name: qa
     if: type = "pull_request" and head_branch="development" and repo = env(UPSTREAM_REPO)
   - name: teste2e
