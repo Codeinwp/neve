@@ -15,12 +15,15 @@ let CustomizeBuilderV1;
 			cellHeight: 45,
 			items: [],
 			container: null,
+			widgetsSidebar: null,
 			ready: false,
 			devices: { desktop: "Desktop", mobile: "Mobile/Tablet" },
 			activePanel: "desktop",
 			panels: {},
 			activeRow: "main",
 			draggingItem: null,
+			insertPoint: null,
+			insertRow: null,
 			getTemplate: _.memoize( function() {
 				let control = this;
 				let compiled,
@@ -68,7 +71,7 @@ let CustomizeBuilderV1;
 						}
 						$( this ).attr( "id", id );
 					} );
-					$( ".grid-stack", panel ).each( function() {
+					$( ".grid-stack, .hfg--sidebar-items", panel ).each( function() {
 						let _id = $( this ).attr( "data-id" ) || "";
 						that.panels[device][_id] = $( this );
 						$( this ).droppable( {
@@ -89,11 +92,7 @@ let CustomizeBuilderV1;
 
 					let sidebar = $( "#_sid_mobile-sidebar", panel );
 					let sidebarId = sidebar.attr( "id" ) || false;
-
-					$(
-						".hfg-available-items .grid-stack-item",
-						panel
-					).draggable( {
+					$( ".grid-stack-item", panel ).draggable( {
 						revert: "invalid",
 						connectToSortable: sidebarId
 							? "#" + sidebarId
@@ -127,17 +126,6 @@ let CustomizeBuilderV1;
 
 						that.panels[device]["sidebar"] = sidebar;
 					}
-
-					$(
-						".hfg-available-items .grid-stack-item",
-						panel
-					).resizable( {
-						handles: "w, e",
-						stop: function( event, ui ) {
-							that.setGridWidth( ui.element.parent(), ui );
-							that.save();
-						}
-					} );
 				} );
 			},
 			sortGrid: function( $wrapper ) {
@@ -1371,6 +1359,8 @@ let CustomizeBuilderV1;
 						'</span></a>'
 					);
 					$( ".hfg--cb-body", that.container ).append( panelHTML );
+					$( ".hfg-widgets-panel-inner", that.widgetSidebarContainer )
+					.append('<div class=" hfg--widgets hfg--widgets-' + device + '" data-device="' + device + '"></div>');
 				} );
 
 				let tmplUpsell = $( "#hfg-upsell-tmpl" );
@@ -1392,16 +1382,7 @@ let CustomizeBuilderV1;
 			addAvailableItems: function() {
 				let that = this;
 				_.each( that.devices, function( deviceName, device ) {
-					let $itemWrapper = $(
-						'<div class="hfg-available-items" data-device="' +
-						device +
-						'"></div>'
-					);
-					$( ".hfg--panel-" + device, that.container ).append(
-						$itemWrapper
-					);
 					_.each( that.items, function( node ) {
-
 						let _d = true;
 						if (
 							!_.isUndefined( node.devices ) &&
@@ -1425,7 +1406,7 @@ let CustomizeBuilderV1;
 						}
 						if ( _d ) {
 							let item = that.addItem( node );
-							$itemWrapper.append( item );
+							$( '.hfg--widgets-' + device, that.widgetSidebarContainer ).append(item);
 							$( '#accordion-section-' + node.section ).addClass( "hfg-section-inactive" );
 						}
 					} );
@@ -1503,7 +1484,7 @@ let CustomizeBuilderV1;
 						if ( !_.isUndefined( items ) ) {
 							_.each( items, function( node, index ) {
 								let item = $(
-									'.hfg-available-items[data-device="' +
+									'.hfg--widgets[data-device="' +
 									device +
 									'"] .grid-stack-item[data-id="' +
 									node.id +
@@ -1564,19 +1545,125 @@ let CustomizeBuilderV1;
 					}
 				);
 			},
+			closeComponentsSidebar: function() {
+				$( '.widgets-panel--visible' ).removeClass( 'widgets-panel--visible' );
+				$( '.hfg--widgets.widgets--visible' ).removeClass( 'widgets--visible' );
+				$( this.widgetSidebarContainer ).find( '.component-search' ).val( '' ).trigger('keyup');
+				$('body').removeClass('hfg--widgets-open');
+			},
+			initComponentsSidebar: function() {
+				let that = this;
+				$( that.container ).on( 'click', '.add-button--grid', function(e) {
+					e.preventDefault();
+					that.closeComponentsSidebar();
+					$( 'body' ).addClass( 'hfg--widgets-open' );
+					let panel = $( this ).closest( '.hfg--device-panel' ),
+							device = panel[0].getAttribute( 'data-device' );
+
+					that.insertPoint = $( this ).data( 'slot' );
+					that.insertRow = $( this ).
+							closest( '.hfg--row-inner' ).
+							find( '.hfg--cb-items' ).
+							data( 'id' );
+
+					$( that.widgetSidebarContainer ).addClass( 'widgets-panel--visible' );
+					$( that.widgetSidebarContainer ).
+							find( ' .hfg--widgets-' + device ).
+							addClass( 'widgets--visible' );
+				} );
+
+				$( that.widgetSidebarContainer ).
+						on( 'click', '.hfg-widgets-panel-header .close', function(e) {
+							that.closeComponentsSidebar();
+						} );
+
+				$( that.widgetSidebarContainer ).
+						on( 'keyup input', '.component-search', function(e) {
+							let query = e.target.value.toLowerCase();
+							_.each( that.widgetSidebarContainer.find('.grid-stack-item'), function( item ) {
+								$(item).filter(function() {
+									$(this).toggle($(this).text().toLowerCase().indexOf(query) > -1);
+								});
+							} );
+						} );
+
+				$( that.widgetSidebarContainer ).
+						on( 'click', '.grid-stack-item', function(e) {
+							that.closeComponentsSidebar();
+							let data = JSON.parse(
+									wpcustomize.control( that.controlId ).setting.get() ),
+									device = $( this ).
+											closest( '.hfg--widgets' ).
+											data( 'device' ),
+									width = $( this ).data( 'df-width' ),
+									itemId = $( this ).data( 'id' );
+
+							let dataInRow = data[device][that.insertRow];
+							let newItem = {
+								x: that.insertPoint,
+								y: 1,
+								width: width,
+								height: 1,
+								id: itemId
+							};
+
+							dataInRow.push( newItem );
+
+							$( this ).attr( 'data-gs-x', that.insertPoint );
+							$( this ).attr( 'data-gs-width', width );
+
+							dataInRow.sort( function(current, next) {
+								if ( current.x < next.x ) return -1;
+								if ( current.x > next.x ) return 1;
+								return 0;
+							} );
+
+							for ( let i = 0; i < dataInRow.length; i++ ) {
+								if ( dataInRow[i].id === itemId ) {
+									if ( i === dataInRow.length - 1 ) {
+										if ( dataInRow[i].x + dataInRow[i].width > 12 ) {
+											dataInRow[i].width = dataInRow[i].x + dataInRow[i].width -
+													12;
+											$( this ).attr( 'data-gs-width', dataInRow[i].width );
+										}
+									} else {
+										if ( dataInRow[i].x + dataInRow[i].width >
+												dataInRow[i + 1].x ) {
+											dataInRow[i].width = dataInRow[i + 1].x - dataInRow[i].x;
+											$( this ).attr( 'data-gs-width', dataInRow[i].width );
+										}
+									}
+								}
+							}
+							let item = $( this ).find( '.grid-stack-item-content' );
+							item.addClass( 'hfg-highlight' );
+							setTimeout( function() {
+								item.removeClass( 'hfg-highlight' );
+							}, 3500 );
+							$( '#_sid_' + device + '-' + that.insertRow, that.container ).
+									append( this );
+							that.addNewWidget( $( this ),
+									$( '#_sid_' + device + '-' + that.insertRow ) );
+							that.save();
+							that.insertRow = null;
+							that.insertPoint = null;
+						} );
+			},
 			remove: function() {
 				let that = this;
-				$document.on(
+				$(that.container).on(
 					"click",
 					".hfg--device-panel .hfg--cb-item-remove",
-					function( e ) {
+						function( e ) {
 						e.preventDefault();
-						let item = $( this ).closest( ".grid-stack-item" );
-						let panel = item.closest( ".hfg--device-panel" );
-						item.attr( "data-gs-width", 1 );
+						let item = $( this ).closest( ".grid-stack-item" ),
+						panel = item.closest( ".hfg--device-panel" ),
+						device = panel[0].getAttribute('data-device');
+
 						item.attr( "data-gs-x", 0 );
-						item.removeAttr( "style" );
-						$( ".hfg-available-items", panel ).append( item );
+						// $(this).attr('data-gs-width', item.attr('data-df-width'));
+							item.removeAttr( "style" );
+						$(that.widgetSidebarContainer).find(".hfg--widgets-" + device).append(item);
 						$( '#accordion-section-' + item[0].dataset.section ).addClass( "hfg-section-inactive" );
 						that.updateAllGrids();
 						that.save();
@@ -1622,6 +1709,10 @@ let CustomizeBuilderV1;
 			},
 			showPanel: function() {
 				let that = this;
+				this.container.find('.add-button--grid').addClass('hfg-highlight');
+				setTimeout (function () {
+					that.container.find('.add-button--grid').removeClass('hfg-highlight');
+				}, 1000);
 				this.container
 					.removeClass( "hfg--builder--hide" )
 					.addClass( "hfg--builder-show" );
@@ -1630,6 +1721,7 @@ let CustomizeBuilderV1;
 					$( "#customize-preview" )
 						.addClass( "cb--preview-panel-show" )
 						.css( { bottom: h - 1, "margin-top": "0px" } );
+
 				}, 100 );
 			},
 			hidePanel: function() {
@@ -1649,6 +1741,7 @@ let CustomizeBuilderV1;
 						that.showPanel();
 					} else {
 						that.hidePanel();
+						that.closeComponentsSidebar();
 					}
 				} );
 
@@ -1687,9 +1780,12 @@ let CustomizeBuilderV1;
 
 				let template = that.getTemplate();
 				let templateId = "tmpl-hfg--builder-panel";
+				let sidebarId = "tmpl-hfg--widgets-sidebar";
 				let html = template( options, templateId );
+				let widgetsSidebar = template( options, sidebarId );
 				that.container = $( html );
-				$( "body .wp-full-overlay" ).append( that.container );
+				that.widgetSidebarContainer = $(widgetsSidebar);
+				$( "body .wp-full-overlay" ).append( that.container ).append( that.widgetSidebarContainer );
 				that.controlId = controlId;
 				that.items = items;
 				that.devices = devices;
@@ -1704,6 +1800,7 @@ let CustomizeBuilderV1;
 				that.addAvailableItems();
 				that.switchToDevice( that.activePanel );
 				that.drag_drop();
+				that.initComponentsSidebar();
 				that.focus();
 				that.remove();
 				that.addExistingRowsItems();
@@ -1712,6 +1809,7 @@ let CustomizeBuilderV1;
 					that.showPanel();
 				} else {
 					that.hidePanel();
+					that.closeComponentsSidebar();
 				}
 
 				wpcustomize.previewedDevice.bind( function( newDevice ) {
@@ -1896,3 +1994,14 @@ let CustomizeBuilderV1;
 		}
 	} );
 } )( jQuery, wp.customize || null );
+
+hashCode = function( string ) {
+	var hash = 0, i, chr;
+	if (string.length === 0) return hash;
+	for (i = 0; i < this.length; i++) {
+		chr   = this.charCodeAt(i);
+		hash  = ((hash << 5) - hash) + chr;
+		hash |= 0; // Convert to 32bit integer
+	}
+	return hash;
+};
