@@ -148,19 +148,16 @@ abstract class Control_Base {
 		}
 		if ( isset( $_POST[ $this->id ] ) ) {
 			$value = wp_unslash( $_POST[ $this->id ] ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-
-			if ( $value === $this->settings['default'] ) {
-				delete_post_meta( $post_id, $this->id );
+			update_post_meta( $post_id, $this->id, $this->sanitize_value( $value ) );
+			return;
+		} else {
+			if ( $this->type === 'checkbox' ) {
+				update_post_meta( $post_id, $this->id, $this->sanitize_value( 'off' ) );
 
 				return;
 			}
-
-			update_post_meta( $post_id, $this->id, $this->sanitize_value( $value ) );
-
-			return;
 		}
 		delete_post_meta( $post_id, $this->id );
-
 	}
 
 	/**

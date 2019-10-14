@@ -117,4 +117,4 @@ stages:
   - name: qa
     if: type = "pull_request" and head_branch="development" and repo = env(UPSTREAM_REPO)
   - name: teste2e
-    if: type = "pull_request" and repo = "Codeinwp/neve"
+    if: type = "pull_request" and head_repo = env(UPSTREAM_REPO)
