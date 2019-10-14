@@ -33,10 +33,10 @@ eval "$(ssh-agent -s)"
 chmod 600 /tmp/key
 ssh-add /tmp/key
 
-if[ "$LOCATION" == "qa" ]; then
+if [ "$LOCATION" == "qa" ]; then
   rsync -e "ssh -o StrictHostKeyChecking=no" -r --delete-after --quiet $TRAVIS_BUILD_DIR/dist/ "$DEMO_THEMEISLE_USER@$DEMO_THEMEISLE_HOST:$QA_ROOT/wp-content/themes"
 fi
 
-if[ "$LOCATION" == "import" ]; then
+if [ "$LOCATION" == "import" ]; then
   rsync -e "ssh -o StrictHostKeyChecking=no" -r --delete-after --quiet $TRAVIS_BUILD_DIR/dist/ "$DEMO_THEMEISLE_USER@$DEMO_THEMEISLE_HOST:$IMPORT_ROOT/wp-content/themes"
 fi
