@@ -120,7 +120,7 @@ stages:
   - name: test
     if: type = "pull_request"
   - name: import
-    if: type = "cron" and branch="master"
+    if: ( type = "cron" or type = "api" ) and branch="master"
   - name: qa
     if: type = "pull_request" and head_branch="development" and repo = env(UPSTREAM_REPO)
   - name: teste2e
