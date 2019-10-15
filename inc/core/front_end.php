@@ -535,7 +535,7 @@ class Front_End {
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/07/neve-fashion-demo-screenshot.png',
 						'title'      => 'Fashion',
 					),
-					'neve-beaver-showcase'               => array(
+					'neve-beaver-showcase'              => array(
 						'url'        => 'https://demo.themeisle.com/neve-showcase-bb/',
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/09/neve-showcase-new.jpg',
 						'title'      => 'Showcase',
