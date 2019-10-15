@@ -1,4 +1,13 @@
 
+ ### v2.4.3 - 2019-10-10 
+ **Changes:** 
+ * [Feat] Compatibility with the Header Footer for Beaver Builder plugin
+* [Feat] Integrate Cypress E2E testing
+* [Fix] Header button component padding affected by general buttons options
+* [Fix] Set newly created pages to Full width
+* [Fix] Embeds in the Classic Editor
+* [Fix] Compatibility with the Smush Lazy Loading
+ 
  ### v2.4.2 - 2019-09-23 
  **Changes:** 
  * [Fix] Alignment options for the Secondary and Footer menus

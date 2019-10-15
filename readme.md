@@ -18,6 +18,16 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
+### 2.4.3 - 2019-10-10  ###
+
+* [Feat] Compatibility with the Header Footer for Beaver Builder plugin
+* [Feat] Integrate Cypress E2E testing
+* [Fix] Header button component padding affected by general buttons options
+* [Fix] Set newly created pages to Full width
+* [Fix] Embeds in the Classic Editor
+* [Fix] Compatibility with the Smush Lazy Loading
+
+
 ### 2.4.2 - 2019-09-23  ###
 
 * [Fix] Alignment options for the Secondary and Footer menus
