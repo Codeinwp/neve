@@ -462,6 +462,13 @@ class Front_End {
 						'unsplash_gallery' => 'https://unsplash.com/collections/8311183/rokophoto/ecebabcd40134eacf11cbd3cba504f44',
 						'local_json'       => $onboarding_folder_path . '/neve-beaver-rokophoto/data.json',
 					),
+					'neve-beaver-energy-panels'      => array(
+						'url'              => 'https://demo.themeisle.com/neve-energy-panels-bb/',
+						'title'            => 'Energy Panels',
+						'screenshot'       => $onboarding_folder_url . '/neve-energy-panels/screenshot.jpg',
+						'unsplash_gallery' => 'https://unsplash.com/collections/4587602/energy-panels',
+						'local_json'       => $onboarding_folder_path . '/neve-beaver-energy-panels/data.json',
+					),
 					'neve-beaver-shop'               => array(
 						'url'              => 'https://demo.themeisle.com/neve-shop-bb/',
 						'title'            => 'Shop',
@@ -528,6 +535,11 @@ class Front_End {
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/07/neve-fashion-demo-screenshot.png',
 						'title'      => 'Fashion',
 					),
+					'neve-beaver-showcase'               => array(
+						'url'        => 'https://demo.themeisle.com/neve-showcase-bb/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/09/neve-showcase-new.jpg',
+						'title'      => 'Showcase',
+					),
 					'neve-beaver-consultants'           => array(
 						'url'        => 'https://demo.themeisle.com/neve-consultants-bb/',
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/09/neve-business-consulting.jpg',
@@ -567,6 +579,11 @@ class Front_End {
 						'url'        => 'https://demo.themeisle.com/neve-video-agency-bb/',
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/09/neve-vide-agency.jpg',
 						'title'      => 'Video Agency',
+					),
+					'neve-beaver-furniture-shop'        => array(
+						'url'        => 'https://demo.themeisle.com/neve-furniture-shop-bb/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/09/neve-furniture-shop.jpg',
+						'title'      => 'Furniture Shop',
 					),
 					'neve-beaver-farm'                  => array(
 						'url'        => 'https://demo.themeisle.com/neve-farm-bb/',
@@ -664,6 +681,31 @@ class Front_End {
 						'url'        => 'https://demo.themeisle.com/neve-kindergarten/',
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/09/neve-kindergarden.jpg',
 						'title'      => 'Kindergarten',
+					),
+					'neve-florist'               => array(
+						'url'        => 'https://demo.themeisle.com/neve-florist/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/10/neve-florist.jpg',
+						'title'      => 'Florist',
+					),
+					'neve-cake-shop'             => array(
+						'url'        => 'https://demo.themeisle.com/neve-cake-shop/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/10/neve-cake-shop.jpg',
+						'title'      => 'Cake Shop',
+					),
+					'neve-transport'             => array(
+						'url'        => 'https://demo.themeisle.com/neve-transport/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/10/neve-transport.jpg',
+						'title'      => 'Transport',
+					),
+					'neve-ebook'                 => array(
+						'url'        => 'https://demo.themeisle.com/neve-ebook/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/10/neve-ebook.jpg',
+						'title'      => 'eBook',
+					),
+					'neve-speed'                 => array(
+						'url'        => 'https://demo.themeisle.com/neve-pro/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/10/neve-speed.jpg',
+						'title'      => 'Speed',
 					),
 				),
 				'brizy'          => array(

@@ -681,5 +681,22 @@ Starter Sites screenshots resources:
 * http://mystock.themeisle.com/photo/wedding-bouquet/
 * http://mystock.themeisle.com/photo/wedding-flower-decorations/
 
+- Cake Shop
+* https://stocksnap.io/photo/F6DNP46F78
+* https://stocksnap.io/photo/7G24TFZEKU
 
+- Transport
+* http://mystock.themeisle.com/photo/docks/
+* http://mystock.themeisle.com/photo/industrial-boat/
+
+- eBook
+* http://mystock.themeisle.com/photo/the-statue-of-liberty-at-sunset/
+* http://mystock.themeisle.com/photo/brasov-old-city/
+* http://mystock.themeisle.com/photo/mysterious-man-2/
+
+- Speed
+* http://mystock.themeisle.com/photo/couch-with-two-green-pillows/
+* http://mystock.themeisle.com/photo/mannequin/
+* http://mystock.themeisle.com/photo/grooms-suite/
+* http://mystock.themeisle.com/photo/luggage-tag-label-on-suitcase-or-bag-with-the-sea-behind-it/
 
