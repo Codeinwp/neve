@@ -1604,6 +1604,10 @@ article {
   height: 100%;
 }
 
+.wp-embed-responsive .wp-block-embed .wp-block-embed__wrapper:before {
+  padding-top: 0 !important;
+}
+
 blockquote {
   text-align: center;
   margin: 40px 0;
