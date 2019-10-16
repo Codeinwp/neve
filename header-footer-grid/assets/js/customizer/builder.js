@@ -1549,22 +1549,45 @@ let CustomizeBuilderV1;
 				$( '.widgets-panel--visible' ).removeClass( 'widgets-panel--visible' );
 				$( '.hfg--widgets.widgets--visible' ).removeClass( 'widgets--visible' );
 				$( this.widgetSidebarContainer ).find( '.component-search' ).val( '' ).trigger('keyup');
+				$( this.widgetSidebarContainer ).removeClass('preview-right preview-left');
 				$('body').removeClass('hfg--widgets-open');
+				$('.hfg--component-preview.visible').removeClass('visible');
 			},
 			initComponentsSidebar: function() {
 				let that = this;
-				$( that.container ).on( 'click', '.add-button--grid', function(e) {
-					e.preventDefault();
-					that.closeComponentsSidebar();
-					$( 'body' ).addClass( 'hfg--widgets-open' );
-					let panel = $( this ).closest( '.hfg--device-panel' ),
-							device = panel[0].getAttribute( 'data-device' );
 
+				$( that.container ).on( 'click', '.add-button--grid', function(e) {
 					that.insertPoint = $( this ).data( 'slot' );
 					that.insertRow = $( this ).
 							closest( '.hfg--row-inner' ).
 							find( '.hfg--cb-items' ).
 							data( 'id' );
+
+					e.preventDefault();
+					that.closeComponentsSidebar();
+					let pos = e.target.getBoundingClientRect();
+					let sidebar = $('.wp-full-overlay').hasClass('collapsed') ? 0 : $('#customize-controls').outerWidth();
+					let width = $( that.widgetSidebarContainer ).outerWidth();
+					let height = $( that.widgetSidebarContainer ).outerHeight();
+					let positionStyle = {
+						top: pos.top - ( height + 5 )
+					};
+
+					if ( that.insertPoint > 6 ) {
+						$( that.widgetSidebarContainer ).addClass( 'preview-left' );
+						positionStyle.left = pos.left - sidebar - width + width / 7 + $(this).outerWidth();
+					} else if( that.insertPoint < 5 ) {
+						$( that.widgetSidebarContainer ).addClass( 'preview-right' );
+						positionStyle.left = pos.left - sidebar - width / 7;
+					} else {
+						positionStyle.left = pos.left - sidebar - width / 2 + $(this).outerWidth() / 2;
+					}
+
+					$( that.widgetSidebarContainer ).css( positionStyle );
+
+					// $( 'body' ).addClass( 'hfg--widgets-open' );
+					let panel = $( this ).closest( '.hfg--device-panel' ),
+							device = panel[0].getAttribute( 'data-device' );
 
 					$( that.widgetSidebarContainer ).addClass( 'widgets-panel--visible' );
 					$( that.widgetSidebarContainer ).
@@ -1640,10 +1663,10 @@ let CustomizeBuilderV1;
 							setTimeout( function() {
 								item.removeClass( 'hfg-highlight' );
 							}, 3500 );
-							$( '#_sid_' + device + '-' + that.insertRow, that.container ).
+							$( '#_sid_' + device + '-' + that.insertRow, that.container[0] ).
 									append( this );
 							that.addNewWidget( $( this ),
-									$( '#_sid_' + device + '-' + that.insertRow ) );
+									$( that.container[0] ).find( ' #_sid_' + device + '-' + that.insertRow ) );
 							that.save();
 							that.insertRow = null;
 							that.insertPoint = null;
@@ -1775,6 +1798,17 @@ let CustomizeBuilderV1;
 						.css( { "margin-left": sidebarWidth } );
 				}
 			},
+			populateComponentPreviews: function() {
+				let that = this;
+				let template = that.getTemplate();
+				let previewTemplate = "tmpl-hfg--widgets-preview";
+				_.each( that.devices, function( deviceName, device ) {
+					_.each( that.items, function( node ) {
+						let componentPreview = template( node, previewTemplate );
+						$(that.widgetSidebarContainer).append(componentPreview);
+					} );
+				} );
+			},
 			init: function( controlId, items, devices ) {
 				let that = this;
 
@@ -1798,6 +1832,7 @@ let CustomizeBuilderV1;
 				that.addDevicePanels();
 				that.switchToDevice( that.activePanel );
 				that.addAvailableItems();
+				that.populateComponentPreviews();
 				that.switchToDevice( that.activePanel );
 				that.drag_drop();
 				that.initComponentsSidebar();
@@ -1943,6 +1978,22 @@ let CustomizeBuilderV1;
 				wpcustomize.panel( id ).focus();
 			}
 		}
+	} );
+
+	$document.on( "mouseover", ".hfg--widgets .grid-stack-item", function( e ) {
+		let item = $( this );
+		let id = item.attr( "data-id" );
+		let description = $(item).closest( '.hfg--widgets-panel').find('[data-for-component="' + id +'"]' );
+
+		description.addClass('visible');
+	} );
+
+	$document.on( "mouseleave", ".hfg--widgets .grid-stack-item", function( e ) {
+		let item = $( this );
+		let id = item.attr( "data-id" );
+		let description = $(item).closest( '.hfg--widgets-panel').find('[data-for-component="' + id +'"]' );
+
+		description.removeClass('visible');
 	} );
 
 	$document.on( "mouseover", ".hfg--cb-row .grid-stack-item", function( e ) {
