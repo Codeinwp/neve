@@ -12,6 +12,7 @@
 namespace HFG\Core\Builder;
 
 use HFG\Core\Components\Abstract_Component;
+use HFG\Core\Customizer\Instructions_Section;
 use HFG\Core\Interfaces\Builder;
 use HFG\Core\Interfaces\Component;
 use HFG\Core\Settings;
@@ -526,6 +527,19 @@ abstract class Abstract_Builder implements Builder {
 				'panel'    => $this->panel,
 			)
 		);
+
+		$wp_customize->add_section(
+			new Instructions_Section(
+				$wp_customize,
+				$this->section . '_instructions',
+				array(
+					'priority' => -100,
+					'panel'    => $this->panel,
+				)
+			)
+		);
+
+		$wp_customize->add_control( $this->section . '_instructions_control', array() );
 
 		Settings\Manager::get_instance()->load( $this->control_id, $wp_customize );
 

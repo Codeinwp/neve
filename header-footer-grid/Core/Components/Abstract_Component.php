@@ -468,6 +468,7 @@ abstract class Abstract_Component implements Component {
 		);
 
 		$wp_customize->register_control_type( '\HFG\Core\Customizer\SpacingControl' );
+		$wp_customize->register_section_type( '\HFG\Core\Customizer\Instructions_Section' );
 
 		Settings\Manager::get_instance()->load( $this->get_id(), $wp_customize );
 

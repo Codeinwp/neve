@@ -2946,8 +2946,15 @@
 #customize-controls ul[id^="sub-accordion-panel-hfg"] > li.panel-meta {
   margin: 0; }
 
-ul[id^="sub-accordion-panel-hfg"] > li.hfg-section-inactive {
+ul[id^="sub-accordion-panel-hfg"] > li.control-section {
   display: none !important; }
+
+.hfg-instructions-section {
+  display: list-item !important; }
+  .hfg-instructions-section img {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box; }
 
 .hfg--device-panel.hfg--panel-mobile .hfg--cp-sidebar .hfg--cb-row .hfg--row-inner .hfg--cb-items.hfg--sidebar-items {
   height: calc(100% - 30px); }

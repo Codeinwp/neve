@@ -1041,9 +1041,9 @@ let CustomizeBuilderV1;
 					did = true;
 				} else {
 					did = insertToFlag( node );
-					if ( node.el[0].dataset ) {
-						$( '#accordion-section-' + node.el[0].dataset.section ).removeClass( 'hfg-section-inactive' );
-					}
+					// if ( node.el[0].dataset ) {
+					// 	$( '#accordion-section-' + node.el[0].dataset.section ).removeClass( 'hfg-section-inactive' );
+					// }
 				}
 
 				// console.log( 'Drop on X: ' + x + ', width: '+ w );
