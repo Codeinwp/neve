@@ -265,6 +265,7 @@ class Customizer {
 			<div class="grid-stack-item item-from-list for-s-{{ data.section }}"
 					title="{{ data.name }}"
 					data-id="{{ data.id }}"
+					data-slug="{{ data.componentSlug }}"
 					data-section="{{ data.section }}"
 					data-control="{{ data.control }}"
 					data-gs-x="{{ data.x }}"

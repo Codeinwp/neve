@@ -66,6 +66,7 @@ class Logo extends Abstract_Component {
 		$this->set_property( 'label', __( 'Logo & Site Identity', 'neve' ) );
 		$this->set_property( 'description', __( 'Display your company logo here or simply use words to describe your business.', 'neve' ) );
 		$this->set_property( 'id', $this->get_class_const( 'COMPONENT_ID' ) );
+		$this->set_property( 'component_slug', 'hfg-logo' );
 		$this->set_property( 'width', 3 );
 		$this->set_property( 'section', 'title_tagline' );
 		$this->set_property( 'preview_image', esc_url( get_template_directory_uri() . '/header-footer-grid/assets/images/customizer/component-site-logo.jpg' ) );

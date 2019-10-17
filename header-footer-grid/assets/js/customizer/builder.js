@@ -1498,6 +1498,7 @@ let CustomizeBuilderV1;
 							} );
 						}
 					} );
+					that.hideDuplicates( device );
 				} );
 
 				that.ready = true;
@@ -1605,6 +1606,9 @@ let CustomizeBuilderV1;
 							let query = e.target.value.toLowerCase();
 							_.each( that.widgetSidebarContainer.find('.grid-stack-item'), function( item ) {
 								$(item).filter(function() {
+									if ( $( this ).hasClass( 'duplicate' ) ) {
+										return false;
+									}
 									$(this).toggle($(this).text().toLowerCase().indexOf(query) > -1);
 								});
 							} );
@@ -1670,6 +1674,7 @@ let CustomizeBuilderV1;
 							that.save();
 							that.insertRow = null;
 							that.insertPoint = null;
+							that.hideDuplicates( device );
 						} );
 			},
 			remove: function() {
@@ -1689,9 +1694,38 @@ let CustomizeBuilderV1;
 						$(that.widgetSidebarContainer).find(".hfg--widgets-" + device).append(item);
 						$( '#accordion-section-' + item[0].dataset.section ).addClass( "hfg-section-inactive" );
 						that.updateAllGrids();
+						that.hideDuplicates( device );
 						that.save();
 					}
 				);
+			},
+			hideDuplicates: function(device) {
+				let that = this;
+				let items = $( that.widgetSidebarContainer ).
+						find( '.hfg--widgets-' + device + ' .grid-stack-item' );
+				let map = {};
+				_.each( items, function(item) {
+					let slug = $( item ).data( 'slug' );
+					if ( slug === 'hfg-generic-component' ) return false;
+					if ( typeof map[slug] === 'undefined' ) {
+						map[slug] = [];
+					}
+					map[slug].push( item );
+				} );
+
+				_.each( map, function(components, slug) {
+					if ( components.length < 2 ) {
+						$( components[0] ).removeClass( 'duplicate' );
+						return false;
+					}
+					_.each( components, function(component, index) {
+						if ( index === 0 ) {
+							$( component ).removeClass( 'duplicate' );
+							return false;
+						}
+						$( component ).addClass( 'duplicate' );
+					} );
+				} );
 			},
 			encodeValue: function( value ) {
 				return JSON.stringify( value );

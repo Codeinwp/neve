@@ -3032,6 +3032,8 @@ body.hfg--widgets-open .wp-full-overlay:after {
   position: absolute;
   border: 1px solid #e1e4e7;
   box-shadow: 0 3px 30px rgba(25, 30, 35, 0.1); }
+  .hfg--widgets-panel .duplicate {
+    display: none !important; }
   .hfg--widgets-panel:after, .hfg--widgets-panel:before {
     content: '';
     position: absolute;

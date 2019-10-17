@@ -77,6 +77,14 @@ abstract class Abstract_Component implements Component {
 	 * @var string $section
 	 */
 	protected $section;
+	/**
+	 * The component slug.
+	 *
+	 * @since   1.0.0
+	 * @access  protected
+	 * @var string $section
+	 */
+	protected $component_slug = 'hfg-generic-component';
 
 	/**
 	 * The section icon.
@@ -307,13 +315,14 @@ abstract class Abstract_Component implements Component {
 	 */
 	public function get_settings() {
 		return array(
-			'name'         => $this->label,
-			'description'  => $this->description,
-			'id'           => $this->id,
-			'width'        => $this->width,
-			'section'      => $this->section, // Customizer section to focus when click settings.
-			'icon'         => $this->icon,
-			'previewImage' => $this->preview_image,
+			'name'          => $this->label,
+			'description'   => $this->description,
+			'id'            => $this->id,
+			'width'         => $this->width,
+			'section'       => $this->section, // Customizer section to focus when click settings.
+			'icon'          => $this->icon,
+			'previewImage'  => $this->preview_image,
+			'componentSlug' => $this->component_slug,
 		);
 	}
 

@@ -533,7 +533,7 @@ abstract class Abstract_Builder implements Builder {
 				$wp_customize,
 				$this->section . '_instructions',
 				array(
-					'priority' => -100,
+					'priority' => - 100,
 					'panel'    => $this->panel,
 				)
 			)
