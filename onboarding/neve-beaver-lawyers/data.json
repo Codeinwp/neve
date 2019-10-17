@@ -1,0 +1,152 @@
+{
+  "content_file": "https://s20206.pcdn.co/neve-lawyers-bb/wp-content/uploads/sites/260/ti-demo-data/export.xml",
+  "theme_mods": {
+    "zelle_frontpage_was_imported": "not-zerif",
+    "custom_css_post_id": 34,
+    "neve_top_bar_enable": false,
+    "neve_last_menu_item": "[]",
+    "neve_button_color": "#c8b291",
+    "neve_link_color": "#c8b291",
+    "neve_link_hover_color": "#c6a979",
+    "ti_prev_theme": "belise-lite",
+    "neve_menu_item_color": "#404248",
+    "neve_menu_item_hover_color": "#bc002f",
+    "neve_body_font_family": "Roboto",
+    "neve_headings_font_family": "Playfair Display",
+    "neve_body_font_size": "{\"suffix\":{\"mobile\":\"px\",\"tablet\":\"px\",\"desktop\":\"px\"},\"mobile\":17,\"tablet\":17,\"desktop\":16}",
+    "neve_footer_content_type": "footer_menu",
+    "neve_grid_layout": 2,
+    "neve_post_meta_ordering": "[\"date\",\"comments\"]",
+    "neve_blog_archive_sidebar_layout": "full-width",
+    "neve_h2_font_size": "{\"suffix\":{\"mobile\":\"px\",\"tablet\":\"px\",\"desktop\":\"px\"},\"mobile\":25,\"tablet\":30,\"desktop\":40}",
+    "ti_about_recommended_plugins": {
+      "otter-blocks": "visible"
+    },
+    "neve_generated_style_version": 1560355437,
+    "neve_h1_font_size": "{\"suffix\":{\"mobile\":\"px\",\"tablet\":\"px\",\"desktop\":\"px\"},\"mobile\":30,\"tablet\":45,\"desktop\":60}",
+    "neve_h3_font_size": "{\"suffix\":{\"mobile\":\"px\",\"tablet\":\"px\",\"desktop\":\"px\"},\"mobile\":20,\"tablet\":20,\"desktop\":22}",
+    "neve_h4_font_size": "{\"suffix\":{\"mobile\":\"px\",\"tablet\":\"px\",\"desktop\":\"px\"},\"mobile\":14,\"tablet\":16,\"desktop\":18}",
+    "neve_h5_font_size": "{\"suffix\":{\"mobile\":\"px\",\"tablet\":\"px\",\"desktop\":\"px\"},\"mobile\":12,\"tablet\":14,\"desktop\":16}",
+    "neve_h6_font_size": "{\"suffix\":{\"mobile\":\"px\",\"tablet\":\"px\",\"desktop\":\"px\"},\"mobile\":12,\"tablet\":12,\"desktop\":14}",
+    "neve_headings_font_weight": "900",
+    "neve_headings_text_transform": "none",
+    "neve_h1_line_height": "{\"mobile\":1.6,\"tablet\":1.6,\"desktop\":1.2}",
+    "neve_blog_archive_layout": "grid",
+    "neve_default_sidebar_layout": "full-width",
+    "neve_sitewide_content_width": 70,
+    "neve_h2_line_height": "{\"mobile\":1.6,\"tablet\":1.6,\"desktop\":1.2}",
+    "neve_text_color": "#333333",
+    "neve_advanced_layout_options": true,
+    "neve_blog_archive_content_width": 100,
+    "hfg_header_layout_bottom_skin": "light-mode",
+    "primary-menu_color": "#333333",
+    "primary-menu_active_color": "#c6a979",
+    "primary-menu_hover_color": "#333333",
+    "footer-menu_color": "#ffffff",
+    "footer-menu_hover_color": "#c8b291",
+    "hfg_footer_layout_bottom_color": "#2f2e42",
+    "hfg_footer_layout_bottom_skin": "dark-mode",
+    "footer-menu_component_align": "center",
+    "logo_show_tagline": 0,
+    "custom_logo": 136,
+    "logo_max_width": "{\"mobile\":120,\"tablet\":120,\"desktop\":170}",
+    "neve_other_pages_sidebar_layout": "full-width",
+    "neve_other_pages_content_width": 100,
+    "neve_default_container_style": "full-width",
+    "neve_button_hover_color": "#2f2e42",
+    "__ti_import_menus_location": {
+      "primary": "main",
+      "footer": "main"
+    }
+  },
+  "wp_options": {
+    "obfx_data": {
+      "core_settings": [],
+      "module_status": {
+        "social-sharing": {
+          "showed_notices": []
+        },
+        "gutenberg-blocks": {
+          "showed_notices": [],
+          "active": false
+        },
+        "uptime-monitor": {
+          "showed_notices": []
+        },
+        "google-analytics": {
+          "showed_notices": []
+        },
+        "elementor-widgets": {
+          "showed_notices": []
+        },
+        "template-directory": {
+          "showed_notices": [],
+          "active": false
+        },
+        "menu-icons": {
+          "showed_notices": [],
+          "active": false
+        },
+        "mystock-import": {
+          "showed_notices": [],
+          "active": false
+        },
+        "policy-notice": {
+          "showed_notices": []
+        },
+        "safe-updates": {
+          "showed_notices": []
+        },
+        "beaver-widgets": {
+          "showed_notices": []
+        }
+      },
+      "module_settings": {
+        "safe-updates": {
+          "auto_update_checks": "0"
+        }
+      }
+    }
+  },
+  "widgets": {
+    "blog-sidebar": {
+      "search-2": {
+        "title": ""
+      },
+      "recent-posts-2": {
+        "title": "",
+        "number": 5
+      },
+      "recent-comments-2": {
+        "title": "",
+        "number": 5
+      },
+      "archives-2": {
+        "title": "",
+        "count": 0,
+        "dropdown": 0
+      },
+      "categories-2": {
+        "title": "",
+        "count": 0,
+        "hierarchical": 0,
+        "dropdown": 0
+      },
+      "meta-2": {
+        "title": ""
+      }
+    }
+  },
+  "recommended_plugins": [],
+  "mandatory_plugins": {
+    "themeisle-companion": "Orbit Fox by ThemeIsle",
+    "beaver-builder-lite-version": "WordPress Page Builder &#8211; Beaver Builder",
+    "wpzoom-addons-for-beaver-builder": "Beaver Builder Addons by WPZOOM"
+  },
+  "default_off_recommended_plugins": [],
+  "front_page": {
+    "front_page": "neve-lawyers-bb-homepage",
+    "blog_page": "neve-lawyers-bb-news"
+  },
+  "shop_pages": null
+}
