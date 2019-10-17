@@ -67,7 +67,7 @@ class Typography extends Base_Inline {
 			);
 		}
 
-		$this->add_responsive_style( $style_setup, 'body' );
+		$this->add_responsive_style( $style_setup, 'body, .site-title' );
 
 		$old_font_weight    = get_theme_mod( 'neve_body_font_weight' );
 		$old_text_transform = get_theme_mod( 'neve_body_text_transform' );
@@ -106,7 +106,7 @@ class Typography extends Base_Inline {
 
 		$this->add_style(
 			$style_setup,
-			apply_filters( 'neve_body_font_family_selectors', 'body' )
+			apply_filters( 'neve_body_font_family_selectors', 'body, .site-title' )
 		);
 	}
 
@@ -166,7 +166,7 @@ class Typography extends Base_Inline {
 							'value'    => $font_weight,
 						),
 					),
-					$selector 
+					$selector
 				);
 			}
 			if ( ! empty( $text_transform ) ) {
@@ -177,7 +177,7 @@ class Typography extends Base_Inline {
 							'value'    => $text_transform,
 						),
 					),
-					$selector 
+					$selector
 				);
 			}
 			// Letter spacing was not previously responsive - this accounts for that.
@@ -190,7 +190,7 @@ class Typography extends Base_Inline {
 							'suffix'   => 'px',
 						),
 					),
-					$selector 
+					$selector
 				);
 			}
 
@@ -203,7 +203,7 @@ class Typography extends Base_Inline {
 							'suffix'   => 'px',
 						),
 					),
-					$selector 
+					$selector
 				);
 			}
 
@@ -217,7 +217,7 @@ class Typography extends Base_Inline {
 					),
 					$selector
 				);
-			}       
+			}
 		}
 
 		$headings_font = get_theme_mod( 'neve_headings_font_family', false );

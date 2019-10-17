@@ -162,8 +162,8 @@ abstract class Base_Customizer {
 				$this->wpc->add_control( new $control->custom_control( $this->wpc, $control->id, $control->control_args ) );
 				$control_type = $control->custom_control;
 			} else {
-				$this->wpc->add_control( $control->id, $control->control_args );
-				$control_type = $control->control_args['type'];
+				$new_control  = $this->wpc->add_control( $control->id, $control->control_args );
+				$control_type = isset( $control->control_args['type'] ) ? $control->control_args['type'] : $new_control->type;
 			}
 			if ( isset( $control->control_args['live_refresh_selector'] ) ) {
 				$control_args = array(
@@ -180,7 +180,7 @@ abstract class Base_Customizer {
 						$array[ $control_args['type'] ][ $control_args['id'] ] = [ 'selector' => $control_args['selector'] ];
 
 						return $array;
-					} 
+					}
 				);
 			}
 			if ( isset( $control->partial ) ) {

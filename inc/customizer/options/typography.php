@@ -146,7 +146,7 @@ class Typography extends Base_Customizer {
 					'section'               => 'neve_typography_general',
 					'priority'              => 10,
 					'type'                  => 'neve_font_family_control',
-					'live_refresh_selector' => apply_filters( 'neve_body_font_family_selectors', 'body' ),
+					'live_refresh_selector' => apply_filters( 'neve_body_font_family_selectors', 'body, h1.site-title' ),
 				]
 			)
 		);
@@ -264,7 +264,7 @@ class Typography extends Base_Customizer {
 							),
 						),
 						'type'                  => 'neve_typeface_control',
-						'live_refresh_selector' => $heading_id === 'h1' ? 'h1:not(.site-title)' : $heading_id,
+						'live_refresh_selector' => $heading_id === 'h1' ? 'h1:not(.site-title), .single .entry-title' : $heading_id,
 					],
 					'\Neve\Customizer\Controls\React\Typography'
 				)
