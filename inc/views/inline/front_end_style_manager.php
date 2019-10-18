@@ -39,5 +39,6 @@ class Front_End_Style_Manager extends Base_Style_Manager {
 		'\\Neve\\Views\\Inline\\Container_Sidebar',
 		'\\Neve\\Views\\Inline\\Colors',
 		'\\Neve\\Views\\Inline\\Buttons',
+		'\\Neve\\Views\\Inline\\Blog',
 	);
 }
