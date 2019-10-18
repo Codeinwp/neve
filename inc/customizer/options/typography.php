@@ -146,7 +146,7 @@ class Typography extends Base_Customizer {
 					'section'               => 'neve_typography_general',
 					'priority'              => 10,
 					'type'                  => 'neve_font_family_control',
-					'live_refresh_selector' => apply_filters( 'neve_body_font_family_selectors', 'body, h1.site-title' ),
+					'live_refresh_selector' => apply_filters( 'neve_body_font_family_selectors', 'body, .site-title' ),
 				]
 			)
 		);
@@ -186,7 +186,7 @@ class Typography extends Base_Customizer {
 						),
 					),
 					'type'                  => 'neve_typeface_control',
-					'live_refresh_selector' => 'body',
+					'live_refresh_selector' => 'body, .site-title',
 				],
 				'\Neve\Customizer\Controls\React\Typography'
 			)
@@ -270,32 +270,6 @@ class Typography extends Base_Customizer {
 				)
 			);
 		}
-	}
-
-	/**
-	 * Sanitize the font subsets
-	 */
-	public function sanitize_font_subsets( $value ) {
-		if ( ! is_array( $value ) ) {
-			return array( 'latin' );
-		}
-
-		$allowed_values = array(
-			'latin',
-			'latin-ext',
-			'cyrillic',
-			'cyrillic-ext',
-			'greek',
-			'greek-ext',
-			'vietnamese',
-		);
-		foreach ( $value as $index => $font_subset ) {
-			if ( ! in_array( $font_subset, $allowed_values, true ) ) {
-				unset( $value[ $index ] );
-			}
-		}
-
-		return $value;
 	}
 
 	/**
