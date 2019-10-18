@@ -14,8 +14,14 @@ class SizingControl extends Component {
 	}
 
 	render() {
+
+		let wrapClasses = 'neve-responsive-sizing';
+		if ( this.props.options.length === 1 ) {
+			wrapClasses += ' single-input';
+		}
+
 		return (
-				<div className="neve-responsive-sizing">
+				<div className={wrapClasses}>
 					{this.props.options.map( (i, n) => {
 						return (
 								<div className="nv-sizing-item">
@@ -30,7 +36,12 @@ class SizingControl extends Component {
 															min={this.props.min}
 															max={this.props.max}
 															step={this.props.step}
-															onFocus={onToggle}
+															onFocus={() => {
+																if ( this.props.noRange ) {
+																	return false;
+																}
+																onToggle();
+															}}
 															onChange={
 																e => this.props.onChange( i.type,
 																		e.target.value === '' ? 0 : e.target.value )
@@ -64,7 +75,7 @@ class SizingControl extends Component {
 						);
 					} )}
 
-					<div className="nv-sizing-link">
+					{this.props.noLinking || <div className="nv-sizing-link">
 						<IconButton
 								className={this.props.linked && 'is-linked'}
 								icon={this.props.linked ?
@@ -75,11 +86,13 @@ class SizingControl extends Component {
 										__( 'Link Values', 'neve' )}
 								onClick={() => this.props.onLinked()}
 						/>
-					</div>
+					</div>}
 					{this.hasSetValues() && <div className="nv-sizing-reset">
 						<IconButton
 								onClick={this.props.onReset}
-								tooltip={__( 'Reset all Values', 'neve' )}
+								tooltip={this.props.options.length > 1 ?
+										__( 'Reset all Values', 'neve' ) :
+										__( 'Reset Value', 'neve' )}
 								icon="image-rotate"
 								className="reset">
 						</IconButton>
@@ -90,6 +103,10 @@ class SizingControl extends Component {
 
 	hasSetValues() {
 		let defaults = this.props.defaults;
+		if ( typeof defaults !== 'object' ) {
+			return parseFloat( defaults ) !==
+					parseFloat( this.props.options[0].value );
+		}
 		return this.props.options.filter( option => {
 			return option.value !== defaults[option.type];
 		} ).length > 0;
@@ -98,11 +115,13 @@ class SizingControl extends Component {
 
 SizingControl.propTypes = {
 	options: PropTypes.array.isRequired,
-	defaults: PropTypes.array.isRequired,
+	defaults: PropTypes.array || PropTypes.string || PropTypes.number,
 	onLinked: PropTypes.func.isRequired,
 	onChange: PropTypes.func.isRequired,
 	linked: PropTypes.bool.isRequired,
-	onReset: PropTypes.func
+	onReset: PropTypes.func,
+	noLinking: PropTypes.bool,
+	noRange: PropTypes.bool
 };
 
 export default SizingControl;

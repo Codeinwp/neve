@@ -116,7 +116,8 @@ abstract class Base_Customizer {
 	 *
 	 * @return void
 	 */
-	protected function change_controls() {}
+	protected function change_controls() {
+	}
 
 	/**
 	 * Check selective refresh.
@@ -156,10 +157,31 @@ abstract class Base_Customizer {
 		$controls = $this->controls_to_register;
 		foreach ( $controls as $control ) {
 			$this->wpc->add_setting( $control->id, $control->setting_args );
+			$control_type = null;
 			if ( $control->custom_control !== null ) {
 				$this->wpc->add_control( new $control->custom_control( $this->wpc, $control->id, $control->control_args ) );
+				$control_type = $control->custom_control;
 			} else {
-				$this->wpc->add_control( $control->id, $control->control_args );
+				$new_control  = $this->wpc->add_control( $control->id, $control->control_args );
+				$control_type = isset( $control->control_args['type'] ) ? $control->control_args['type'] : $new_control->type;
+			}
+			if ( isset( $control->control_args['live_refresh_selector'] ) ) {
+				$control_args = array(
+					'selector' => $control->control_args['live_refresh_selector'],
+					'id'       => $control->id,
+					'type'     => $control_type,
+				);
+				add_filter(
+					'neve_customize_preview_localization',
+					function ( $array ) use ( $control_args ) {
+						if ( ! isset( $array[ $control_args['type'] ] ) ) {
+							$array[ $control_args['type'] ] = [];
+						}
+						$array[ $control_args['type'] ][ $control_args['id'] ] = [ 'selector' => $control_args['selector'] ];
+
+						return $array;
+					}
+				);
 			}
 			if ( isset( $control->partial ) ) {
 				$this->add_partial( new Partial( $control->id, $control->partial ) );
