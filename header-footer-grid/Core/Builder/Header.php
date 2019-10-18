@@ -38,7 +38,7 @@ class Header extends Abstract_Builder {
 			apply_filters(
 				'hfg_header_panel_description',
 				sprintf(
-				/* translators: %s link to documentation */
+					/* translators: %s link to documentation */
 					esc_html__( 'Design your %1$s by dragging, dropping and resizing all the elements in real-time. %2$s.', 'neve' ),
 					/* translators: %s builder type */
 					$this->get_property( 'title' ),
