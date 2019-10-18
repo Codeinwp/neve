@@ -1,0 +1,123 @@
+{
+  "content_file": "https://s20206.pcdn.co/neve-onboarding-bb/wp-content/uploads/sites/250/ti-demo-data/export.xml",
+  "theme_mods": {
+    "custom_css_post_id": 93,
+    "neve_last_menu_item": "[\"search\",\"cart\"]",
+    "neve_body_font_family": "Poppins",
+    "neve_body_font_size": "{\"suffix\":{\"mobile\":\"px\",\"tablet\":\"px\",\"desktop\":\"px\"},\"mobile\":15,\"tablet\":16,\"desktop\":15}",
+    "neve_navigation_layout": "left",
+    "neve_theme_color": "#00a4f7",
+    "neve_link_color": "#0366d6",
+    "neve_link_hover_color": "#005bf7",
+    "neve_top_bar_enable": "",
+    "neve_top_bar_layout": "menu-content",
+    "neve_default_sidebar_layout": "full-width",
+    "neve_blog_archive_sidebar_layout": "full-width",
+    "neve_single_post_sidebar_layout": "full-width",
+    "neve_footer_content_type": "text",
+    "neve_headings_font_family": "Libre Baskerville",
+    "neve_blog_archive_layout": "alternative",
+    "neve_sitewide_content_width": 75,
+    "neve_post_excerpt_length": 70,
+    "neve_advanced_layout_options": true,
+    "neve_blog_archive_content_width": 75,
+    "neve_pagination_type": "number",
+    "neve_shop_archive_sidebar_layout": "left",
+    "neve_single_product_sidebar_layout": "full-width",
+    "neve_other_pages_sidebar_layout": "full-width",
+    "neve_footer_text": "<p>Original | Powered by <a href=\"http://wordpress.org\" rel=\"nofollow\">WordPress</a></p>",
+    "neve_single_product_content_width": 100,
+    "neve_generated_style_version": 1560360515,
+    "neve_text_color": "#313131",
+    "neve_h1_font_size": "{\"suffix\":{\"mobile\":\"px\",\"tablet\":\"px\",\"desktop\":\"px\"},\"mobile\":37,\"tablet\":60,\"desktop\":60}",
+    "neve_h2_font_size": "{\"suffix\":{\"mobile\":\"px\",\"tablet\":\"px\",\"desktop\":\"px\"},\"mobile\":31,\"tablet\":50,\"desktop\":50}",
+    "neve_h4_font_size": "{\"suffix\":{\"mobile\":\"px\",\"tablet\":\"px\",\"desktop\":\"px\"},\"mobile\":25,\"tablet\":25,\"desktop\":25}",
+    "neve_h3_font_size": "{\"suffix\":{\"mobile\":\"px\",\"tablet\":\"px\",\"desktop\":\"px\"},\"mobile\":30,\"tablet\":30,\"desktop\":30}",
+    "neve_h5_font_size": "{\"suffix\":{\"mobile\":\"px\",\"tablet\":\"px\",\"desktop\":\"px\"},\"mobile\":18,\"tablet\":20,\"desktop\":20}",
+    "neve_h6_font_size": "{\"suffix\":{\"mobile\":\"px\",\"tablet\":\"px\",\"desktop\":\"px\"},\"mobile\":16,\"tablet\":18,\"desktop\":18}",
+    "neve_h1_line_height": "{\"mobile\":1.6,\"tablet\":1.6,\"desktop\":1.4}",
+    "neve_headings_font_weight": "500",
+    "__ti_import_menus_location": {
+      "primary": "main-menu"
+    }
+  },
+  "wp_options": {
+    "_fl_builder_color_presets": [
+      "f34123",
+      "ffffff",
+      "00ba78",
+      "38c695",
+      "b27cf5",
+      "feb960"
+    ]
+  },
+  "widgets": {
+    "blog-sidebar": {
+      "search-2": {
+        "title": ""
+      },
+      "recent-posts-2": {
+        "title": "",
+        "number": 5
+      },
+      "recent-comments-2": {
+        "title": "",
+        "number": 5
+      },
+      "archives-2": {
+        "title": "",
+        "count": 0,
+        "dropdown": 0
+      },
+      "categories-2": {
+        "title": "",
+        "count": 0,
+        "hierarchical": 0,
+        "dropdown": 0
+      },
+      "meta-2": {
+        "title": ""
+      }
+    },
+    "shop-sidebar": {
+      "woocommerce_top_rated_products-2": {
+        "title": "Top rated products",
+        "number": 5
+      },
+      "woocommerce_price_filter-2": {
+        "title": "Filter by price"
+      },
+      "woocommerce_product_categories-2": {
+        "title": "Product categories",
+        "orderby": "name",
+        "dropdown": 0,
+        "count": 1,
+        "hierarchical": 1,
+        "show_children_only": 0,
+        "hide_empty": 0,
+        "max_depth": ""
+      }
+    }
+  },
+  "recommended_plugins": {
+    "woocommerce": "WooCommerce"
+  },
+  "mandatory_plugins": {
+    "themeisle-companion": "Orbit Fox by ThemeIsle",
+    "beaver-builder-lite-version": "WordPress Page Builder &#8211; Beaver Builder",
+    "wpzoom-addons-for-beaver-builder": "Beaver Builder Addons by WPZOOM"
+  },
+  "default_off_recommended_plugins": [
+    "woocommerce"
+  ],
+  "front_page": {
+    "front_page": "neve-onboarding-bb-home",
+    "blog_page": "neve-onboarding-bb-blog"
+  },
+  "shop_pages": {
+    "woocommerce_shop_page_id": "shop",
+    "woocommerce_cart_page_id": "cart",
+    "woocommerce_checkout_page_id": "checkout",
+    "woocommerce_myaccount_page_id": "my-account"
+  }
+}

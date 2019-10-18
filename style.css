@@ -606,7 +606,6 @@ blockquote.wp-block-quote.is-style-large cite {
 
 .nv-navbar {
   background-color: #fff;
-  max-height: 100vh;
 }
 
 .primary-menu-ul {
@@ -1604,6 +1603,10 @@ article {
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+.wp-embed-responsive .wp-block-embed .wp-block-embed__wrapper:before {
+  padding-top: 0 !important;
 }
 
 blockquote {
