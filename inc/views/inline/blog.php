@@ -9,6 +9,7 @@ namespace Neve\Views\Inline;
 
 /**
  * Class Blog
+ *
  * @package Neve\Views\Inline
  */
 class Blog extends Base_Inline {
@@ -24,9 +25,8 @@ class Blog extends Base_Inline {
 
 	/**
 	 * Add inline style for posts thumbnail box shadow.
-	 *
 	 */
-	private function add_post_thumbnail_box_shadow(){
+	private function add_post_thumbnail_box_shadow() {
 		$box_shadow = get_theme_mod( 'neve_post_thumbnail_box_shadow', 0 );
 		if ( $box_shadow === 0 ) {
 			return;
