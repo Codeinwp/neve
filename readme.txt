@@ -19,7 +19,7 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
 
-= 2.4.3 - 2019-10-10  = 
+= 2.4.3 - 2019-10-10  =
 
 * [Feat] Compatibility with the Header Footer for Beaver Builder plugin
 * [Feat] Integrate Cypress E2E testing
@@ -707,6 +707,26 @@ Starter Sites screenshots resources:
 * http://mystock.themeisle.com/photo/mannequin/
 * http://mystock.themeisle.com/photo/grooms-suite/
 * http://mystock.themeisle.com/photo/luggage-tag-label-on-suitcase-or-bag-with-the-sea-behind-it/
+
+- Food Magazine
+* https://mystock.themeisle.com/photo/caesar-salad/
+* https://mystock.themeisle.com/photo/indian-restaurant-dishes/
+* https://mystock.themeisle.com/photo/mac-and-cheese-pizza/
+* https://mystock.themeisle.com/photo/delicious-morning-breakfast-served-on-a-tray/
+
+- Web Design
+* https://mystock.themeisle.com/photo/programming-laptop/
+* https://mystock.themeisle.com/photo/ipad/
+
+- Yoga Studio
+* https://stocksnap.io/photo/OYD9ZOOCCQ
+* https://stocksnap.io/photo/TL7LKEE0HR
+* https://stocksnap.io/photo/W23EUNXBCG
+* https://stocksnap.io/photo/MM6OVJGYRU
+* https://mystock.themeisle.com/photo/floor-pattern/
+
+- Sales Funnel
+* https://mystock.themeisle.com/photo/cityscape-of-new-york-2/
 
 
 

@@ -707,6 +707,26 @@ class Front_End {
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/10/neve-speed.jpg',
 						'title'      => 'Speed',
 					),
+					'neve-food-magazine'         => array(
+						'url'        => 'https://demo.themeisle.com/neve-food-magazine/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/10/neve-food-magazine.jpg',
+						'title'      => 'Food Magazine',
+					),
+					'neve-web-design'            => array(
+						'url'        => 'https://demo.themeisle.com/neve-web-design/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/10/neve-web-design.jpg',
+						'title'      => 'Web Design',
+					),
+					'neve-yoga-studio'           => array(
+						'url'        => 'https://demo.themeisle.com/neve-yoga-studio/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/10/neve-yoga.jpg',
+						'title'      => 'Yoga Studio',
+					),
+					'neve-sales-funnel'          => array(
+						'url'        => 'https://demo.themeisle.com/neve-sales-funnel/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/10/neve-sales.jpg',
+						'title'      => 'Sales Funnel',
+					),
 				),
 				'brizy'          => array(
 					'neve-brizy-cafe'    => array(
