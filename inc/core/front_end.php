@@ -715,7 +715,7 @@ class Front_End {
 					'neve-web-design'            => array(
 						'url'        => 'https://demo.themeisle.com/neve-web-design/',
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/10/neve-web-design.jpg',
-						'title'      => 'Web Design',
+						'title'      => 'eCourse - Web Design',
 					),
 					'neve-yoga-studio'           => array(
 						'url'        => 'https://demo.themeisle.com/neve-yoga-studio/',
