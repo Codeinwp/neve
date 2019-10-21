@@ -170,7 +170,17 @@
 
 .editor-styles-wrapper .wp-block-separator {
   margin: 20px auto 40px;
-  padding-top: 20px;
+  background-color: #8f98a1;
+  border: none;
+  height: 2px;
+}
+
+.editor-styles-wrapper .wp-block-separator.is-style-wide {
+  height: 1px;
+}
+
+.editor-styles-wrapper .wp-block-separator.is-style-dots {
+  height: auto;
 }
 
 .editor-styles-wrapper .wp-block-button .wp-block-button__link {

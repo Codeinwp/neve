@@ -521,16 +521,25 @@ blockquote.wp-block-quote.is-style-large cite {
   width: 100%;
 }
 
-.wp-block-separator:not(.is-style-wide):not(.is-style-dots) {
-  border-bottom: 2px solid #8f98a1;
+.wp-block-separator {
   display: block;
-  max-width: 100px;
   margin: 40px auto;
+  width: 100px;
+  border: none;
+  background-color: #8f98a1;
+  height: 2px;
 }
 
-.wp-block-separator.is-style-wide, .wp-block-separator.is-style-dots {
-  border-color: #8e98a2;
-  margin: 20px auto 40px;
+.wp-block-separator.is-style-wide {
+  height: 1px;
+}
+
+.wp-block-separator.is-style-dots {
+  height: auto;
+}
+
+.wp-block-separator.is-style-dots, .wp-block-separator.is-style-wide {
+  width: 100%;
 }
 
 .wp-block-verse {
@@ -547,6 +556,10 @@ blockquote.wp-block-quote.is-style-large cite {
 
 .wp-block-button a {
   text-decoration: none !important;
+}
+
+.nv-content-wrap ul.blocks-gallery-grid {
+  padding: 0;
 }
 
 .hidden-on-mobile {

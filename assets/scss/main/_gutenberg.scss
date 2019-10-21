@@ -98,18 +98,24 @@ blockquote.wp-block-quote.is-style-large {
 //</editor-fold>
 
 //<editor-fold desc="Separator">
-.wp-block-separator:not(.is-style-wide):not(.is-style-dots) {
-  border-bottom: 2px solid #8f98a1;
-  display: block;
-  max-width: 100px;
-  margin: $spacing auto;
-}
+.wp-block-separator {
+	display: block;
+	margin: $spacing auto;
+	width: 100px;
+	border: none;
+	background-color: #8f98a1;
+	height: 2px;
+	&.is-style-wide {
+		height: 1px;
+	}
+	&.is-style-dots {
+		height: auto;
+	}
 
-.wp-block-separator.is-style-wide, .wp-block-separator.is-style-dots {
-  border-color: #8e98a2;
-  margin: $spacing-sm auto $spacing;
+	&.is-style-dots, &.is-style-wide {
+		width: 100%;
+	}
 }
-
 //</editor-fold>
 
 //<editor-fold desc="Verse">
@@ -144,6 +150,10 @@ blockquote.wp-block-quote.is-style-large {
       @extend %nv-button-secondary;
     }
   }
+}
+
+.nv-content-wrap ul.blocks-gallery-grid {
+	padding: 0;
 }
 
 //</editor-fold>
