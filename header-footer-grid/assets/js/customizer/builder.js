@@ -2078,6 +2078,15 @@ let CustomizeBuilderV1;
 			wpcustomize.previewer.send( "header_sidebar_close" );
 		}
 	} );
+
+	//Quick links
+	$document.on( 'click', '.quick-links a', function(e) {
+		e.preventDefault();
+		e.stopPropagation();
+		var control = $( this ).data( 'control-focus' );
+		wp.customize.control( control ).focus();
+		$( 'label.' + control ).click();
+	} );
 } )( jQuery, wp.customize || null );
 
 hashCode = function( string ) {

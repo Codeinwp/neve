@@ -27,9 +27,9 @@ use WP_Customize_Manager;
  */
 abstract class Abstract_Builder implements Builder {
 	use Core;
-	const LAYOUT_SETTING     = 'layout';
-	const HEIGHT_SETTING     = 'height';
-	const SKIN_SETTING       = 'skin';
+	const LAYOUT_SETTING = 'layout';
+	const HEIGHT_SETTING = 'height';
+	const SKIN_SETTING = 'skin';
 	const BACKGROUND_SETTING = 'background';
 	/**
 	 * Internal pointer for current device id.
@@ -165,6 +165,13 @@ abstract class Abstract_Builder implements Builder {
 	protected $builder_components = array();
 
 	/**
+	 * The quick links setup array.
+	 *
+	 * @var array
+	 */
+	protected $instructions_array = array();
+
+	/**
 	 * Abstract_Builder constructor.
 	 *
 	 * @since   1.0.0
@@ -243,13 +250,13 @@ abstract class Abstract_Builder implements Builder {
 
 		$row_setting_id = $this->control_id . '_' . $row_id;
 		$row_class      = '.' . join(
-			'-',
-			array(
-				$this->get_id(),
-				$row_id,
-				'inner',
-			)
-		);
+				'-',
+				array(
+					$this->get_id(),
+					$row_id,
+					'inner',
+				)
+			);
 		if ( $row_id === 'sidebar' ) {
 			$row_class = '.header-menu-sidebar-bg';
 		}
@@ -528,18 +535,25 @@ abstract class Abstract_Builder implements Builder {
 			)
 		);
 
-		$wp_customize->add_section(
-			new Instructions_Section(
-				$wp_customize,
-				$this->section . '_instructions',
-				array(
-					'priority' => - 100,
-					'panel'    => $this->panel,
-				)
-			)
-		);
+		if ( ! empty( $this->instructions_array ) ) {
+			if ( get_theme_mod( $this->panel . '_layout', false ) !== false ) {
+				$this->instructions_array['image'] = false;
+			}
 
-		$wp_customize->add_control( $this->section . '_instructions_control', array() );
+			$wp_customize->add_section(
+				new Instructions_Section(
+					$wp_customize,
+					$this->section . '_quick_links',
+					array(
+						'priority' => - 100,
+						'panel'    => $this->panel,
+						'type'     => 'hfg_instructions',
+						'options'  => $this->instructions_array
+					)
+				)
+			);
+		}
+
 
 		Settings\Manager::get_instance()->load( $this->control_id, $wp_customize );
 
@@ -758,8 +772,8 @@ abstract class Abstract_Builder implements Builder {
 			}
 
 			if ( ! empty( $background['focusPoint'] ) &&
-				! empty( $background['focusPoint']['x'] ) &&
-				! empty( $background['focusPoint']['y'] ) ) {
+			     ! empty( $background['focusPoint']['x'] ) &&
+			     ! empty( $background['focusPoint']['y'] ) ) {
 				$css_setup['background-position'] = round( $background['focusPoint']['x'] * 100 ) . '% ' . round( $background['focusPoint']['y'] * 100 ) . '%';
 			}
 
@@ -785,7 +799,7 @@ abstract class Abstract_Builder implements Builder {
 		}
 
 		$css_array[ $selector . ',' . $selector . '.dark-mode,' . $selector . '.light-mode' ] = $css_setup;
-		$css_array = apply_filters( 'neve_row_style', $css_array, $this->control_id, $this->get_id(), $row_index, $selector );
+		$css_array                                                                            = apply_filters( 'neve_row_style', $css_array, $this->control_id, $this->get_id(), $row_index, $selector );
 
 		return $css_array;
 	}

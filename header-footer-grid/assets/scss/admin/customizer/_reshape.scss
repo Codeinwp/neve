@@ -28,16 +28,38 @@
   }
 }
 
-ul[id^="sub-accordion-panel-hfg"] > li.control-section {
+ul[id^="sub-accordion-panel-hfg"] > li.accordion-section:not(.panel-meta) {
   display: none !important;
 }
 
 .hfg-instructions-section {
   display: list-item !important;
-  img {
+
+  video {
     border-radius: 5px;
     border: 1px solid #ccc;
     box-sizing: border-box;
+  }
+
+  .quick-links {
+    font-size: 14px;
+    font-weight: 500;
+
+    a {
+      text-decoration: none;
+    }
+  }
+
+  .quick-links-wrap {
+    margin: 10px 0;
+    display: block;
+    background: #fff;
+    border-radius: 3px;
+    padding: 10px 20px;
+
+    span {
+      margin-right: 10px;
+    }
   }
 }
 
@@ -137,9 +159,11 @@ body.hfg--widgets-open .wp-full-overlay:after {
   position: absolute;
   border: 1px solid #e1e4e7;
   box-shadow: 0 3px 30px rgba(25, 30, 35, .1);
+
   .duplicate {
     display: none !important;
   }
+
   &:after, &:before {
     content: '';
     position: absolute;
