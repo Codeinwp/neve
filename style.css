@@ -2565,7 +2565,7 @@ audio {
   background: rgba(0, 0, 0, 0.08);
 }
 
-.header-menu-sidebar.light-mode .header-menu-sidebar-bg:before {
+.header-menu-sidebar.light-mode .header-menu-sidebar-bg {
   background-color: rgba(255, 255, 255, 0.9);
 }
 
@@ -2607,7 +2607,7 @@ audio {
   background: rgba(255, 255, 255, 0.08);
 }
 
-.header-menu-sidebar.dark-mode .header-menu-sidebar-bg:before {
+.header-menu-sidebar.dark-mode .header-menu-sidebar-bg {
   background-color: rgba(0, 0, 0, 0.9);
 }
 
