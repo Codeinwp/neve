@@ -90,8 +90,8 @@ class Front_End {
 	 * Wrap embeds.
 	 *
 	 * @param string $markup embed markup.
-	 * @param string $url embed url.
-	 * @param array  $attr embed attributes [width/height].
+	 * @param string $url    embed url.
+	 * @param array  $attr   embed attributes [width/height].
 	 *
 	 * @return string
 	 */
@@ -175,6 +175,7 @@ class Front_End {
 				'elementor',
 				'brizy',
 				'beaver builder',
+				'thrive architect',
 			),
 			'local'       => array(
 				'elementor' => array(
@@ -290,8 +291,22 @@ class Front_End {
 				),
 			),
 			'remote'      => array(
-
-				'brizy'          => array(
+				'thrive architect' => array(
+					'neve-divi-cafe' => array(
+						'url'              => 'https://demo.themeisle.com/neve-fashion-th',
+						'local_json'       => $onboarding_folder_path . '/neve-thrive-fashion/data.json',
+						'screenshot'       => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/07/neve-fashion-demo-screenshot.png',
+						'title'            => 'Fashion',
+						'external_plugins' => array(
+							[
+								'name'       => 'Thrive Architect',
+								'active'     => is_plugin_active( 'thrive-visual-editor/thrive-visual-editor.php' ),
+								'author_url' => esc_url( 'https://thrivethemes.com/architect/' ),
+							],
+						),
+					),
+				),
+				'brizy'            => array(
 					'neve-brizy-main'            => array(
 						'url'        => 'https://demo.themeisle.com/neve-onboarding-brizy/',
 						'title'      => 'Original',
@@ -369,7 +384,7 @@ class Front_End {
 						'local_json'       => $onboarding_folder_path . '/neve-brizy-zelle/data.json',
 					),
 				),
-				'beaver builder' => [
+				'beaver builder'   => [
 					'neve-beaver-onboarding'         => array(
 						'url'        => 'https://demo.themeisle.com/neve-onboarding-bb/',
 						'title'      => 'Original',
@@ -377,11 +392,11 @@ class Front_End {
 						'local_json' => $onboarding_folder_path . '/neve-beaver-onboarding/data.json',
 					),
 					'neve-beaver-restaurant'         => array(
-						'url'        => 'https://demo.themeisle.com/neve-bb-restaurant/',
-						'title'      => 'Restaurant',
-						'screenshot' => $onboarding_folder_url . '/neve-restaurant/screenshot.jpg',
+						'url'              => 'https://demo.themeisle.com/neve-bb-restaurant/',
+						'title'            => 'Restaurant',
+						'screenshot'       => $onboarding_folder_url . '/neve-restaurant/screenshot.jpg',
 						'unsplash_gallery' => 'https://unsplash.com/collections/4587624/restaurant',
-						'local_json' => $onboarding_folder_path . '/neve-beaver-restaurant/data.json',
+						'local_json'       => $onboarding_folder_path . '/neve-beaver-restaurant/data.json',
 					),
 					'neve-beaver-charity'            => array(
 						'url'              => 'https://demo.themeisle.com/neve-charity-bb/',
