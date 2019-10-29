@@ -61,7 +61,7 @@ class Typography extends Base_View {
 	/**
 	 * Enqueues a Google Font
 	 *
-	 * @param string $font font string.
+	 * @param string $font   font string.
 	 * @param string $handle body/headings.
 	 *
 	 * @since 1.1.38
@@ -81,20 +81,8 @@ class Typography extends Base_View {
 
 		$base_url = '//fonts.googleapis.com/css';
 
-		// Apply the chosen subset from customizer.
-		$subsets     = '';
-		$get_subsets = get_theme_mod( 'neve_font_subsets', array( 'latin' ) );
-		if ( ! empty( $get_subsets ) ) {
-			$font_subsets = array();
-			foreach ( $get_subsets as $get_subset ) {
-				$font_subsets[] = $get_subset;
-			}
-			$subsets .= implode( ',', $font_subsets );
-		}
-
 		// Weights.
 		$weights = apply_filters( 'neve_filter_font_weights', array( '300', '400', '500', '700' ), $handle );
-
 		// Add weights to URL.
 		if ( ! empty( $weights ) ) {
 			$font .= ':' . implode( ',', $weights );
@@ -103,8 +91,22 @@ class Typography extends Base_View {
 		$query_args = array(
 			'family' => urlencode( $font ),
 		);
-		if ( ! empty( $subsets ) ) {
-			$query_args['subset'] = urlencode( $subsets );
+
+		$subsets = [
+			'ru_RU' => 'cyrillic',
+			'bg_BG' => 'cyrillic',
+			'he_IL' => 'hebrew',
+			'el'    => 'greek',
+			'vi'    => 'vietnamese',
+			'uk'    => 'cyrillic',
+			'cs_CZ' => 'latin-ext',
+			'ro_RO' => 'latin-ext',
+			'pl_PL' => 'latin-ext',
+		];
+		$locale  = get_locale();
+
+		if ( isset( $subsets[ $locale ] ) ) {
+			$query_args['subset'] = urlencode( $subsets[ $locale ] );
 		}
 		$url = add_query_arg( $query_args, $base_url );
 
@@ -123,7 +125,7 @@ class Typography extends Base_View {
 	 * Add headings font weights.
 	 *
 	 * @param array  $weights_array font weight array.
-	 * @param string $context the context ['headings', 'body'].
+	 * @param string $context       the context ['headings', 'body'].
 	 *
 	 * @return array
 	 */
@@ -136,19 +138,50 @@ class Typography extends Base_View {
 		if ( $context !== 'headings' && $context !== 'body' ) {
 			return $weights_array;
 		}
-		$key = 'neve_headings_font_weight';
+		if ( $context === 'headings' ) {
+			$added_weights           = [];
+			$should_check_old_weight = false;
+			foreach ( [ 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ] as $heading ) {
+				$setup = get_theme_mod( 'neve_' . $heading . '_typeface_general' );
+				if ( empty( $setup ) || ! isset( $setup['fontWeight'] ) ) {
+					$should_check_old_weight = true;
+					continue;
+				}
+				if ( in_array( $setup['fontWeight'], $weights_array, true ) ) {
+					continue;
+				}
+				$added_weights[] = $setup['fontWeight'];
+			}
+
+			// Check for old setting if not all settings are set.
+			if ( $should_check_old_weight ) {
+				$weight = get_theme_mod( 'neve_headings_font_weight' );
+				if ( ! empty( $weight ) ) {
+					$added_weights[] = $weight;
+				}
+			}
+
+			$weights_array = array_merge( $weights_array, $added_weights );
+
+			return array_unique( $weights_array );
+		}
+
 		if ( $context === 'body' ) {
-			$key = 'neve_body_font_weight';
+			$setup = get_theme_mod( 'neve_typeface_general' );
+			if ( ! empty( $setup ) && isset( $setup['fontWeight'] ) ) {
+				$weights_array[] = $setup['fontWeight'];
+
+				return array_unique( $weights_array );
+			}
+
+			$old_font_weight = get_theme_mod( 'neve_body_font_weight' );
+			if ( ! empty( $old_font_weight ) ) {
+				$weights_array[] = $old_font_weight;
+
+				return array_unique( $weights_array );
+			}
 		}
 
-		$font_weight = (string) get_theme_mod( $key );
-
-		if ( empty( $font_weight ) || in_array( $font_weight, $weights_array, true ) ) {
-			return $weights_array;
-		}
-
-		$weights_array[] = $font_weight;
-
-		return $weights_array;
+		return array_unique( $weights_array );
 	}
 }

@@ -5,7 +5,7 @@ Theme URI:      https://themeisle.com/themes/neve/
 Author:         ThemeIsle
 Author URI:     https://themeisle.com
 Description:    Neve is a super fast, easily customizable, multi-purpose theme. It’s perfect for blogs, small business, startups, agencies, firms, e-commerce shops (WooCommerce storefront) as well as personal portfolio sites and most types of projects. A fully AMP optimized and responsive theme, Neve will load in mere seconds and adapt perfectly on any viewing device. While it is lightweight and has a minimalist design, the theme is highly extendable, it has a highly SEO optimized code, resulting in top rankings in Google search results. Neve works perfectly with Gutenberg and the most popular page builders (Elementor, Brizy, Beaver Builder, Visual Composer, SiteOrigin, Divi). Neve is also WooCommerce ready, responsive, RTL & translation ready. Look no further. Neve is the perfect theme for you!
-Version:        2.4.3
+Version:        2.5.0
 License:        GNU General Public License v2 or later
 License URI:    http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain:    neve
@@ -325,6 +325,8 @@ h3,
 h4,
 h5,
 h6 {
+  text-transform: none;
+  letter-spacing: 0;
   font-family: Graphik, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
   line-height: 1.68421;
   margin-bottom: 0.8rem;
@@ -519,16 +521,25 @@ blockquote.wp-block-quote.is-style-large cite {
   width: 100%;
 }
 
-.wp-block-separator:not(.is-style-wide):not(.is-style-dots) {
-  border-bottom: 2px solid #8f98a1;
+.wp-block-separator {
   display: block;
-  max-width: 100px;
   margin: 40px auto;
+  width: 100px;
+  border: none;
+  background-color: #8f98a1;
+  height: 2px;
 }
 
-.wp-block-separator.is-style-wide, .wp-block-separator.is-style-dots {
-  border-color: #8e98a2;
-  margin: 20px auto 40px;
+.wp-block-separator.is-style-wide {
+  height: 1px;
+}
+
+.wp-block-separator.is-style-dots {
+  height: auto;
+}
+
+.wp-block-separator.is-style-dots, .wp-block-separator.is-style-wide {
+  width: 100%;
 }
 
 .wp-block-verse {
@@ -545,6 +556,10 @@ blockquote.wp-block-quote.is-style-large cite {
 
 .wp-block-button a {
   text-decoration: none !important;
+}
+
+.nv-content-wrap ul.blocks-gallery-grid {
+  padding: 0;
 }
 
 .hidden-on-mobile {
@@ -604,7 +619,6 @@ blockquote.wp-block-quote.is-style-large cite {
 
 .nv-navbar {
   background-color: #fff;
-  max-height: 100vh;
 }
 
 .primary-menu-ul {
@@ -1602,6 +1616,10 @@ article {
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+.wp-embed-responsive .wp-block-embed .wp-block-embed__wrapper:before {
+  padding-top: 0 !important;
 }
 
 blockquote {
@@ -2843,7 +2861,7 @@ body.menu_sidebar_slide_left.menu_sidebar_dropdown:before {
   z-index: 10;
 }
 
-.site-footer .item--inner:not([class*="widgets"]):not([class*=copyright]) {
+.site-footer .item--inner:not([class*="widgets"]):not([class*=copyright]):not([class*=social]) {
   width: 100%;
   max-width: 100%;
   align-items: center;

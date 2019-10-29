@@ -325,17 +325,17 @@ abstract class Abstract_Builder implements Builder {
 						'input_attr'  => [
 							'mobile'  => [
 								'min'     => 0,
-								'max'     => 350,
+								'max'     => 700,
 								'default' => 0,
 							],
 							'tablet'  => [
 								'min'     => 0,
-								'max'     => 350,
+								'max'     => 700,
 								'default' => 0,
 							],
 							'desktop' => [
 								'min'     => 0,
-								'max'     => 350,
+								'max'     => 700,
 								'default' => 0,
 							],
 						],

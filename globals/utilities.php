@@ -42,9 +42,11 @@ function neve_hooks() {
 		),
 		'page'       => array(
 			'neve_before_page_header',
+			'neve_before_page_comments',
+		),
+		'single'     => array(
 			'neve_before_content',
 			'neve_after_content',
-			'neve_before_page_comments',
 		),
 		'sidebar'    => array(
 			'neve_before_sidebar_content',
@@ -84,7 +86,7 @@ function neve_cart_icon( $echo = false ) {
 /**
  * Search Icon
  *
- * @param bool $echo should be echoed.
+ * @param bool $echo      should be echoed.
  * @param bool $amp_ready Should we add the AMP binding.
  *
  * @return string
