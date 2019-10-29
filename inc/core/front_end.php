@@ -377,11 +377,11 @@ class Front_End {
 						'local_json' => $onboarding_folder_path . '/neve-beaver-onboarding/data.json',
 					),
 					'neve-beaver-restaurant'         => array(
-						'url'        => 'https://demo.themeisle.com/neve-bb-restaurant/',
-						'title'      => 'Restaurant',
-						'screenshot' => $onboarding_folder_url . '/neve-restaurant/screenshot.jpg',
+						'url'              => 'https://demo.themeisle.com/neve-bb-restaurant/',
+						'title'            => 'Restaurant',
+						'screenshot'       => $onboarding_folder_url . '/neve-restaurant/screenshot.jpg',
 						'unsplash_gallery' => 'https://unsplash.com/collections/4587624/restaurant',
-						'local_json' => $onboarding_folder_path . '/neve-beaver-restaurant/data.json',
+						'local_json'       => $onboarding_folder_path . '/neve-beaver-restaurant/data.json',
 					),
 					'neve-beaver-charity'            => array(
 						'url'              => 'https://demo.themeisle.com/neve-charity-bb/',
