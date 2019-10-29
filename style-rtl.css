@@ -1618,6 +1618,11 @@ article {
   height: 100%;
 }
 
+.wp-block-cover-image .wp-block-cover__inner-container, .wp-block-cover .wp-block-cover__inner-container {
+  width: auto;
+  max-width: calc(100% - 70px);
+}
+
 .wp-embed-responsive .wp-block-embed .wp-block-embed__wrapper:before {
   padding-top: 0 !important;
 }

@@ -125,7 +125,7 @@ class Colors extends Base_Inline {
 				'selectors' => $selectors,
 			);
 
-			$this->add_color( $color_setup, sanitize_hex_color( $control_value ) );
+			$this->add_color( $color_setup, sanitize_hex_color( $control_value ) . '!important' );
 		}
 	}
 }
