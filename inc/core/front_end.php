@@ -592,6 +592,11 @@ class Front_End {
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/09/neve-furniture-shop.jpg',
 						'title'      => 'Furniture Shop',
 					),
+					'neve-beaver-portrait-photography'  => array(
+						'url'              => 'https://demo.themeisle.com/neve-portrait-photopraphy-bb/',
+						'screenshot'       => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/09/neve-wedding-photography.jpg',
+						'title'            => 'Wedding Photography',
+					),
 					'neve-beaver-farm'                  => array(
 						'url'        => 'https://demo.themeisle.com/neve-farm-bb/',
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/09/neve-farm.jpg',
@@ -743,6 +748,16 @@ class Front_End {
 						'url'        => 'https://demo.themeisle.com/neve-sales-funnel/',
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/10/neve-sales.jpg',
 						'title'      => 'Sales Funnel',
+					),
+					'neve-church'                => array(
+						'url'        => 'https://demo.themeisle.com/neve-church/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/10/neve-church.jpg',
+						'title'      => 'Church',
+					),
+					'neve-fashion-magazine'      => array(
+						'url'        => 'https://demo.themeisle.com/neve-fashion-magazine/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/10/neve-fashion-mag.jpg',
+						'title'      => 'Fashion Magazine',
 					),
 				),
 				'brizy'          => array(
