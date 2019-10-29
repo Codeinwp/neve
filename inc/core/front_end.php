@@ -121,7 +121,6 @@ class Front_End {
 		return $args;
 	}
 
-
 	/**
 	 * Reorder starter sites based on previous theme
 	 *
@@ -166,10 +165,12 @@ class Front_End {
 	 * @return array
 	 */
 	private function get_ti_demo_content_support_data() {
-		$theme_options           = wp_get_theme();
-		$theme_name              = apply_filters( 'ti_wl_theme_name', $theme_options->__get( 'Name' ) );
-		$onboarding_folder_url   = get_template_directory_uri() . '/onboarding';
-		$onboarding_folder_path  = get_template_directory() . '/onboarding';
+		$theme_options          = wp_get_theme();
+		$theme_name             = apply_filters( 'ti_wl_theme_name', $theme_options->__get( 'Name' ) );
+		$onboarding_folder_url  = get_template_directory_uri() . '/onboarding';
+		$onboarding_folder_path = get_template_directory() . '/onboarding';
+		require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+
 		$this->onboarding_config = array(
 			'editors'     => array(
 				'elementor',
