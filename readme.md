@@ -729,3 +729,15 @@ Starter Sites screenshots resources:
 
 - Sales Funnel
 * https://mystock.themeisle.com/photo/cityscape-of-new-york-2/
+
+- Church
+* https://mystock.themeisle.com/photo/vatican-streets/
+* https://stocksnap.io/photo/M2XAYFTTEN
+* https://stocksnap.io/photo/MOUVID40QD
+* https://stocksnap.io/photo/AM7OQR2274
+
+- Fashion Magazine
+* https://stocksnap.io/photo/F08ZV0M412
+* https://stocksnap.io/photo/V5A73VEOJO
+* https://stocksnap.io/photo/AOOC3CJARN
+* https://stocksnap.io/photo/HKTKMOVXNO

@@ -250,7 +250,7 @@ abstract class Abstract_Builder implements Builder {
 			)
 		);
 		if ( $row_id === 'sidebar' ) {
-			$row_class = '.header-menu-sidebar-bg';
+			$row_class = '.header-menu-sidebar';
 		}
 
 		SettingsManager::get_instance()->add(
@@ -366,7 +366,7 @@ abstract class Abstract_Builder implements Builder {
 				'section'               => $row_setting_id,
 				'label'                 => __( 'Row Background', 'neve' ),
 				'type'                  => 'neve_background_control',
-				'live_refresh_selector' => $row_class,
+				'live_refresh_selector' => $row_id === 'sidebar' ? $row_class . ' .header-menu-sidebar-bg' : $row_class,
 				'options'               => [
 					'priority' => 100,
 				],
@@ -743,16 +743,13 @@ abstract class Abstract_Builder implements Builder {
 				$css_setup['background-size']  = 'cover';
 			}
 
-			if ( ! empty( $background['focusPoint'] ) &&
-				! empty( $background['focusPoint']['x'] ) &&
-				! empty( $background['focusPoint']['y'] ) ) {
+			if ( ! empty( $background['focusPoint'] ) && ! empty( $background['focusPoint']['x'] ) && ! empty( $background['focusPoint']['y'] ) ) {
 				$css_setup['background-position'] = round( $background['focusPoint']['x'] * 100 ) . '% ' . round( $background['focusPoint']['y'] * 100 ) . '%';
 			}
 
 			if ( $background['fixed'] === true ) {
 				$css_setup['background-attachment'] = 'fixed';
 			}
-
 
 			if ( ! empty( $background['overlayColorValue'] ) && ! empty( $background['overlayOpacity'] ) ) {
 				$css_array[ $selector . ':before' ] = array(
