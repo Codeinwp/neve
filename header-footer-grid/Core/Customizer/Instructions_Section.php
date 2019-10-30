@@ -32,7 +32,7 @@ class Instructions_Section extends \WP_Customize_Section {
 	public $default_options = [
 		'description' => '',
 		'image'       => '',
-		'quickLinks'  => []
+		'quickLinks'  => [],
 	];
 
 	/**
@@ -75,7 +75,10 @@ class Instructions_Section extends \WP_Customize_Section {
 		?>
 		<li id="accordion-section-{{ data.id }}"
 				class="hfg-instructions-section control-section control-section-{{ data.type }}">
+
+			<# if( data.options.image ) { #>
 			<p>{{data.options.description}}</p>
+			<# } #>
 			<hr>
 			<# if( data.options.quickLinks ) { #>
 			<div class="quick-links-wrap">
@@ -94,7 +97,7 @@ class Instructions_Section extends \WP_Customize_Section {
 
 			<# if( data.options.image ) { #>
 			<hr>
-			<video autoplay loop>
+			<video style="width: 90%;margin: auto;display: block;" autoplay muted loop playsinline >
 				<source src="{{data.options.image}}" type="video/mp4">
 			</video>
 			<hr>

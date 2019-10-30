@@ -46,20 +46,27 @@ class Footer extends Abstract_Builder {
 				)
 			)
 		);
-		$this->set_property( 'instructions_array', array(
-			'description' => esc_html__( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. An me, inquis, tam amentems.', 'neve' ),
-			'image'       => esc_url( get_template_directory_uri() . '/header-footer-grid/assets/images/customizer/hfg.mp4' ),
-			'quickLinks'  => array(
-				'footer_copyright_content'                       => array(
-					'label' => esc_html__( 'Change Copyright', 'neve' ),
-					'icon'  => 'dashicons-nametag',
+		$this->set_property(
+			'instructions_array',
+			array(
+				'description' => sprintf(
+					esc_html__( 'Welcome to the %1$s builder!  Click the “+” (“Add”) button to add a new component or follow the Quick Links.', 'neve' ),
+					/* translators: %s builder type */
+					$this->get_property( 'title' ) 
 				),
-				'hfg_footer_layout_bottom_background' => array(
-					'label' => esc_html__( 'Change Footer Color', 'neve' ),
-					'icon'  => 'dashicons-admin-appearance',
+				'image'       => esc_url( get_template_directory_uri() . '/header-footer-grid/assets/images/customizer/hfg.mp4' ),
+				'quickLinks'  => array(
+					'footer_copyright_content'            => array(
+						'label' => esc_html__( 'Change Copyright', 'neve' ),
+						'icon'  => 'dashicons-nametag',
+					),
+					'hfg_footer_layout_bottom_background' => array(
+						'label' => esc_html__( 'Change Footer Color', 'neve' ),
+						'icon'  => 'dashicons-admin-appearance',
+					),
 				),
-			),
-		) );
+			) 
+		);
 		$this->devices = [
 			'desktop' => __( 'Footer', 'neve' ),
 		];

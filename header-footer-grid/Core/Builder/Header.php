@@ -36,7 +36,7 @@ class Header extends Abstract_Builder {
 		$this->set_property(
 			'description',
 			sprintf(
-			/* translators: %s link to documentation */
+				/* translators: %s link to documentation */
 				esc_html__( 'Design your %1$s by dragging, dropping and resizing all the elements in real-time. %2$s.', 'neve' ),
 				/* translators: %s builder type */
 				$this->get_property( 'title' ),
@@ -47,24 +47,31 @@ class Header extends Abstract_Builder {
 				)
 			)
 		);
-		$this->set_property( 'instructions_array', array(
-			'description' => esc_html__( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. An me, inquis, tam amentems.', 'neve' ),
-			'image'       => esc_url( get_template_directory_uri() . '/header-footer-grid/assets/images/customizer/hfg.mp4' ),
-			'quickLinks'  => array(
-				'custom_logo'                       => array(
-					'label' => esc_html__( 'Change Logo', 'neve' ),
-					'icon'  => 'dashicons-editor-customchar',
+		$this->set_property(
+			'instructions_array',
+			array(
+				'description' => sprintf(
+					esc_html__( 'Welcome to the %1$s builder!  Click the “+” (“Add”) button to add a new component or follow the Quick Links.', 'neve' ),
+					/* translators: %s builder type */
+					$this->get_property( 'title' ) 
 				),
-				'hfg_header_layout_main_background' => array(
-					'label' => esc_html__( 'Change Header Color', 'neve' ),
-					'icon'  => 'dashicons-admin-appearance',
+				'image'       => esc_url( get_template_directory_uri() . '/header-footer-grid/assets/images/customizer/hfg.mp4' ),
+				'quickLinks'  => array(
+					'custom_logo'                       => array(
+						'label' => esc_html__( 'Change Logo', 'neve' ),
+						'icon'  => 'dashicons-editor-customchar',
+					),
+					'hfg_header_layout_main_background' => array(
+						'label' => esc_html__( 'Change Header Color', 'neve' ),
+						'icon'  => 'dashicons-admin-appearance',
+					),
+					'primary-menu_shortcut'             => array(
+						'label' => esc_html__( 'Change Menu', 'neve' ),
+						'icon'  => 'dashicons-menu',
+					),
 				),
-				'primary-menu_shortcut'             => array(
-					'label' => esc_html__( 'Change Menu', 'neve' ),
-					'icon'  => 'dashicons-menu',
-				),
-			),
-		) );
+			) 
+		);
 	}
 
 
@@ -90,8 +97,8 @@ class Header extends Abstract_Builder {
 	/**
 	 * Render builder row.
 	 *
-	 * @param string $device_id   The device id.
-	 * @param string $row_id      The row id.
+	 * @param string $device_id The device id.
+	 * @param string $row_id The row id.
 	 * @param array  $row_details Row data.
 	 */
 	public function render_row( $device_id, $row_id, $row_details ) {
