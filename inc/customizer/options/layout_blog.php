@@ -258,7 +258,7 @@ class Layout_Blog extends Base_Customizer {
 					'step'       => 1,
 					'input_attr' => array(
 						'min'     => 0,
-						'max'     => 30,
+						'max'     => 5,
 						'default' => 0,
 					),
 					'priority'   => 50,
