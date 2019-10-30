@@ -292,22 +292,7 @@ class Front_End {
 				),
 			),
 			'remote'      => array(
-				'thrive architect' => array(
-					'neve-divi-cafe' => array(
-						'url'              => 'https://demo.themeisle.com/neve-fashion-th',
-						'local_json'       => $onboarding_folder_path . '/neve-thrive-fashion/data.json',
-						'screenshot'       => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/07/neve-fashion-demo-screenshot.png',
-						'title'            => 'Fashion',
-						'external_plugins' => array(
-							[
-								'name'       => 'Thrive Architect',
-								'active'     => is_plugin_active( 'thrive-visual-editor/thrive-visual-editor.php' ),
-								'author_url' => esc_url( 'https://thrivethemes.com/architect/' ),
-							],
-						),
-					),
-				),
-				'brizy'            => array(
+				'brizy'          => array(
 					'neve-brizy-main'            => array(
 						'url'        => 'https://demo.themeisle.com/neve-onboarding-brizy/',
 						'title'      => 'Original',
@@ -385,7 +370,7 @@ class Front_End {
 						'local_json'       => $onboarding_folder_path . '/neve-brizy-zelle/data.json',
 					),
 				),
-				'beaver builder'   => [
+				'beaver builder' => [
 					'neve-beaver-onboarding'         => array(
 						'url'        => 'https://demo.themeisle.com/neve-onboarding-bb/',
 						'title'      => 'Original',
@@ -542,7 +527,14 @@ class Front_End {
 				],
 			),
 			'upsell'      => array(
-				'beaver builder' => array(
+				'thrive architect' => array(
+					'neve-thrive-fashion' => array(
+						'url'        => 'https://demo.themeisle.com/neve-fashion-th',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/07/neve-fashion-demo-screenshot.png',
+						'title'      => 'Fashion',
+					),
+				),
+				'beaver builder'   => array(
 					'neve-beaver-cafe'                  => array(
 						'url'        => 'https://demo.themeisle.com/neve-cafe-bb/',
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/06/neve-caffe-new-ss.jpg',
@@ -629,7 +621,7 @@ class Front_End {
 						'title'      => 'eBook',
 					),
 				),
-				'elementor'      => array(
+				'elementor'        => array(
 					'neve-cafe'                  => array(
 						'url'        => 'https://demo.themeisle.com/neve-cafe/',
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/06/neve-caffe-new-ss.jpg',
@@ -761,7 +753,7 @@ class Front_End {
 						'title'      => 'Sales Funnel',
 					),
 				),
-				'brizy'          => array(
+				'brizy'            => array(
 					'neve-brizy-cafe'    => array(
 						'url'        => 'https://demo.themeisle.com/neve-cafe-brizy/',
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/06/neve-caffe-new-ss.jpg',
