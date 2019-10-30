@@ -773,8 +773,8 @@ abstract class Abstract_Builder implements Builder {
 			}
 
 			if ( ! empty( $background['focusPoint'] ) &&
-				 ! empty( $background['focusPoint']['x'] ) &&
-				 ! empty( $background['focusPoint']['y'] ) ) {
+				! empty( $background['focusPoint']['x'] ) &&
+				! empty( $background['focusPoint']['y'] ) ) {
 				$css_setup['background-position'] = round( $background['focusPoint']['x'] * 100 ) . '% ' . round( $background['focusPoint']['y'] * 100 ) . '%';
 			}
 

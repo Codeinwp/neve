@@ -54,9 +54,9 @@ class Header extends Abstract_Builder {
 			'instructions_array',
 			array(
 				'description' => sprintf(
-					esc_html__( 'Welcome to the %1$s builder!  Click the “+” (“Add”) button to add a new component or follow the Quick Links.', 'neve' ),
 					/* translators: %s builder type */
-					$this->get_property( 'title' ) 
+					esc_html__( 'Welcome to the %1$s builder!  Click the “+” (“Add”) button to add a new component or follow the Quick Links.', 'neve' ),
+					$this->get_property( 'title' )
 				),
 				'image'       => esc_url( get_template_directory_uri() . '/header-footer-grid/assets/images/customizer/hfg.mp4' ),
 				'quickLinks'  => array(
@@ -73,7 +73,7 @@ class Header extends Abstract_Builder {
 						'icon'  => 'dashicons-menu',
 					),
 				),
-			) 
+			)
 		);
 	}
 
