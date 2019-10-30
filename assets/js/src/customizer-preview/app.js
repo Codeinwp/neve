@@ -335,7 +335,7 @@ jQuery.neveRangesPreview.init();
 		},
 		contentWidths: {
 			neve_sitewide_content_width: {
-				content: '.neve-main > .container .col',
+				content: '.neve-main > .container .nv-col',
 				sidebar: '.nv-sidebar-wrap'
 			},
 			neve_blog_archive_content_width: {
@@ -347,15 +347,15 @@ jQuery.neveRangesPreview.init();
 				sidebar: '.single-post-container .nv-sidebar-wrap'
 			},
 			neve_shop_archive_content_width: {
-				content: '.archive.woocommerce .shop-container .nv-shop.col',
+				content: '.archive.woocommerce .shop-container .nv-shop.nv-col',
 				sidebar: '.archive.woocommerce .shop-container .nv-sidebar-wrap'
 			},
 			neve_single_product_content_width: {
-				content: '.single-product .shop-container .nv-shop.col',
+				content: '.single-product .shop-container .nv-shop.nv-col',
 				sidebar: '.single-product .shop-container .nv-sidebar-wrap'
 			},
 			neve_other_pages_content_width: {
-				content: 'body:not(.single):not(.archive):not(.blog) .neve-main > .container .col',
+				content: 'body:not(.single):not(.archive):not(.blog) .neve-main > .container .nv-col',
 				sidebar: 'body:not(.single):not(.archive):not(.blog) .nv-sidebar-wrap'
 			}
 		},

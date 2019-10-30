@@ -120,8 +120,8 @@ class Metabox_Settings {
 		}
 
 		$style = '@media(min-width: 960px) {
-			#content.neve-main > .container > .row > .col, 
-			#content.neve-main > .container-fluid > .row > .col { max-width: ' . absint( $meta_value ) . '%' . esc_attr( $important ) . '; } 
+			#content.neve-main > .container > .row > .nv-col, 
+			#content.neve-main > .container-fluid > .row > .nv-col { max-width: ' . absint( $meta_value ) . '%' . esc_attr( $important ) . '; } 
 			#content.neve-main > .container > .row > .nv-sidebar-wrap, 
 			#content.neve-main > .container > .row > .nv-sidebar-wrap.shop-sidebar,
 			#content.neve-main > .container-fluid > .row > .nv-sidebar-wrap, 

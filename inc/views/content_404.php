@@ -30,7 +30,7 @@ class Content_404 extends Base_View {
 		echo '<div class="' . esc_attr( $container_class ) . ' archive-container">';
 		echo '<div class="row">';
 		do_action( 'neve_do_sidebar', 'blog-archive', 'left' );
-		echo '<div class="nv-index-posts blog col">';
+		echo '<div class="nv-index-posts blog nv-col">';
 
 		echo '<div class="col-12 nv-content-none-wrap">';
 		echo '<p>';

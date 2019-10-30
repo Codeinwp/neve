@@ -173,7 +173,7 @@ abbr, acronym {
   margin-left: -15px;
 }
 
-.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12, .col,
+.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12, .nv-col,
 .col-auto, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm,
 .col-sm-auto, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-md,
 .col-md-auto {
@@ -184,7 +184,7 @@ abbr, acronym {
   padding-left: 15px;
 }
 
-.col {
+.nv-col {
   flex-basis: auto;
   flex-grow: 1;
   max-width: 100%;
@@ -2087,7 +2087,7 @@ audio {
   .container {
     max-width: 960px;
   }
-  .neve-main > .container .col {
+  .neve-main > .container .nv-col {
     max-width: 70%;
   }
   .neve-main > .container > .row {

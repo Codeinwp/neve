@@ -14,7 +14,7 @@ get_header();
 	<div class="<?php echo esc_attr( $container_class ); ?> archive-container">
 		<div class="row">
 			<?php do_action( 'neve_do_sidebar', 'blog-archive', 'left' ); ?>
-			<div class="nv-index-posts search col">
+			<div class="nv-index-posts search nv-col">
 				<?php
 				do_action( 'neve_page_header', 'search' );
 				if ( have_posts() ) {

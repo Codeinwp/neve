@@ -267,7 +267,7 @@ class Lifter {
 	 * Add markup for LifterLms title and open content wrap div
 	 */
 	public function content_open() {
-		echo '<div class="nv-single-page-wrap col">';
+		echo '<div class="nv-single-page-wrap nv-col">';
 		echo '<div class="nv-page-title-wrap nv-big-title">';
 		echo '<div class="nv-page-title ">';
 		echo '<h1 class="page-title">';

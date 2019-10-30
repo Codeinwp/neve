@@ -13,7 +13,7 @@ get_header();
 <div class="<?php echo esc_attr( $container_class ); ?> single-page-container">
 	<div class="row">
 		<?php do_action( 'neve_do_sidebar', 'single-page', 'left' ); ?>
-		<div class="nv-single-page-wrap col">
+		<div class="nv-single-page-wrap nv-col">
 			<?php
 			do_action( 'neve_before_page_header' );
 			do_action( 'neve_page_header', 'single-page' );
