@@ -2,7 +2,11 @@
   "name": "neve-background-control",
   "version": "0.0.1",
   "dependencies": {
-    "prop-types": "^15.7.2"
+    "prop-types": "^15.7.2",
+    "react": "^16.1.1",
+    "react-dom": "^16.1.1",
+    "react-scripts": "1.0.17",
+    "react-visibility-sensor": "^5.1.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",
@@ -12,7 +16,7 @@
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
     "core-js": "^3.1.4",
-    "cross-env": "^5.2.0",
+    "cross-env": "^6.0.3",
     "rollup": "^1.19.3",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-commonjs": "^10.0.2",

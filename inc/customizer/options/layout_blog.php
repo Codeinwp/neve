@@ -243,6 +243,29 @@ class Layout_Blog extends Base_Customizer {
 				'Neve\Customizer\Controls\Ordering'
 			)
 		);
+
+		$this->add_control(
+			new Control(
+				'neve_post_thumbnail_box_shadow',
+				array(
+					'sanitize_callback' => 'neve_sanitize_range_value',
+					'default'           => 0,
+				),
+				array(
+					'label'      => esc_html__( 'Thumbnail Shadow', 'neve' ),
+					'section'    => 'neve_blog_archive_layout',
+					'type'       => 'range-value',
+					'step'       => 1,
+					'input_attr' => array(
+						'min'     => 0,
+						'max'     => 5,
+						'default' => 0,
+					),
+					'priority'   => 50,
+				),
+				'Neve\Customizer\Controls\Range'
+			)
+		);
 	}
 
 	/**

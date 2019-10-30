@@ -258,7 +258,7 @@ abstract class Abstract_Builder implements Builder {
 			)
 		);
 		if ( $row_id === 'sidebar' ) {
-			$row_class = '.header-menu-sidebar-bg';
+			$row_class = '.header-menu-sidebar';
 		}
 
 		SettingsManager::get_instance()->add(
@@ -333,17 +333,17 @@ abstract class Abstract_Builder implements Builder {
 						'input_attr'  => [
 							'mobile'  => [
 								'min'     => 0,
-								'max'     => 350,
+								'max'     => 700,
 								'default' => 0,
 							],
 							'tablet'  => [
 								'min'     => 0,
-								'max'     => 350,
+								'max'     => 700,
 								'default' => 0,
 							],
 							'desktop' => [
 								'min'     => 0,
-								'max'     => 350,
+								'max'     => 700,
 								'default' => 0,
 							],
 						],
@@ -374,7 +374,7 @@ abstract class Abstract_Builder implements Builder {
 				'section'               => $row_setting_id,
 				'label'                 => __( 'Row Background', 'neve' ),
 				'type'                  => 'neve_background_control',
-				'live_refresh_selector' => $row_class,
+				'live_refresh_selector' => $row_id === 'sidebar' ? $row_class . ' .header-menu-sidebar-bg' : $row_class,
 				'options'               => [
 					'priority' => 100,
 				],
@@ -781,7 +781,6 @@ abstract class Abstract_Builder implements Builder {
 			if ( $background['fixed'] === true ) {
 				$css_setup['background-attachment'] = 'fixed';
 			}
-
 
 			if ( ! empty( $background['overlayColorValue'] ) && ! empty( $background['overlayOpacity'] ) ) {
 				$css_array[ $selector . ':before' ] = array(

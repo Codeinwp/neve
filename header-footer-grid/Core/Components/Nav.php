@@ -277,7 +277,6 @@ class Nav extends Abstract_Component {
 		return parent::add_style( $css_array );
 	}
 
-
 	/**
 	 * Map last menu item from select type control to ordering control.
 	 */

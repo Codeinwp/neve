@@ -106,24 +106,38 @@
   align-items: center;
   width: 100%;
   margin-bottom: 10px; }
+  .neve-responsive-control-bar.bordered {
+    border-bottom: 3px solid #d8d8d8;
+    margin-bottom: 0; }
   .neve-responsive-control-bar .customize-control-title {
     margin: 0; }
   .neve-responsive-control-bar .floating-controls {
     margin-left: auto; }
-  .neve-responsive-control-bar .neve-devices-dropdown {
-    display: flex;
-    flex-direction: column; }
-    .neve-responsive-control-bar .neve-devices-dropdown button {
-      padding: 10px 20px;
-      display: flex; }
-      .neve-responsive-control-bar .neve-devices-dropdown button.is-selected {
-        color: #fff;
-        background-color: #008dc2; }
-      .neve-responsive-control-bar .neve-devices-dropdown button svg {
-        margin-right: 10px; }
+  .neve-responsive-control-bar button {
+    font-size: 14px;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -3px; }
+    .neve-responsive-control-bar button.active-device {
+      border-bottom: 3px solid currentColor;
+      border-bottom-color: #191e23; }
+      .neve-responsive-control-bar button.active-device svg {
+        fill: #191e23 !important; }
+    .neve-responsive-control-bar button:not(.active-device) svg {
+      fill: #656a6f !important; }
+    .neve-responsive-control-bar button svg {
+      height: 17px;
+      width: 17px; }
+
+.neve-typeface-control .neve-responsive-controls-content {
+  border: 1px solid #ccc;
+  border-top: 0;
+  background-color: #fff;
+  padding: 10px; }
 
 .neve-responsive-sizing {
   display: flex; }
+  .neve-responsive-sizing.single-input .nv-sizing-item {
+    width: calc(100% - 12% + 1px); }
   .neve-responsive-sizing .range-control .components-base-control__field {
     padding: 10px;
     display: flex;
@@ -165,3 +179,142 @@
     display: block;
     font-weight: 300;
     color: #555; }
+
+.neve-typeface-control {
+  border: 1px solid #ccc;
+  padding: 10px;
+  background: #fff; }
+  .neve-typeface-control .font-family-selector-toggle {
+    width: 100%;
+    height: 35px;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap; }
+    .neve-typeface-control .font-family-selector-toggle .ff-name {
+      align-self: flex-start;
+      max-width: 65%;
+      overflow: hidden;
+      text-overflow: ellipsis; }
+    .neve-typeface-control .font-family-selector-toggle .ff-preview {
+      align-self: flex-end;
+      margin-left: auto;
+      font-size: 21px; }
+  .neve-typeface-control .popover-content {
+    position: relative;
+    display: block;
+    width: 300px !important; }
+  .neve-typeface-control .popover-header {
+    position: fixed;
+    top: 0; }
+  .neve-typeface-control .search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid #ccc;
+    padding: 5px;
+    width: 300px;
+    top: 0;
+    box-sizing: border-box; }
+    .neve-typeface-control .search .components-base-control__field {
+      margin-bottom: 0; }
+      .neve-typeface-control .search .components-base-control__field input {
+        height: 25px;
+        width: 100%; }
+    .neve-typeface-control .search .components-base-control {
+      width: 85%; }
+    .neve-typeface-control .search button {
+      padding: 0 5px;
+      margin-left: auto; }
+  .neve-typeface-control .components-popover__content {
+    overflow: hidden !important; }
+  .neve-typeface-control .neve-fonts-list {
+    max-height: 400px;
+    margin-top: 35px;
+    overflow: auto; }
+    .neve-typeface-control .neve-fonts-list .load-more {
+      padding: 10px 0; }
+      .neve-typeface-control .neve-fonts-list .load-more svg {
+        fill: #0073aa;
+        animation: 2s infinite linear neve-spin; }
+    .neve-typeface-control .neve-fonts-list li {
+      margin: 0; }
+      .neve-typeface-control .neve-fonts-list li.selected a {
+        background-color: #0b69da;
+        color: #fff; }
+      .neve-typeface-control .neve-fonts-list li.no-result {
+        opacity: .75;
+        font-weight: 600;
+        padding: 10px 0; }
+      .neve-typeface-control .neve-fonts-list li.font-group-header {
+        text-align: left;
+        padding: 5px 10px;
+        font-size: 15px;
+        font-weight: 600;
+        background-color: #efefef; }
+      .neve-typeface-control .neve-fonts-list li a {
+        display: flex;
+        padding: 5px 10px;
+        transition: .2s ease;
+        color: #333;
+        border-bottom: 1px solid #efefef; }
+        .neve-typeface-control .neve-fonts-list li a:hover {
+          color: #fff;
+          background-color: #0073aa; }
+        .neve-typeface-control .neve-fonts-list li a .neve-font-family {
+          font-size: 14px;
+          font-weight: 400;
+          text-align: left;
+          max-width: 75%;
+          overflow: hidden;
+          text-overflow: ellipsis; }
+        .neve-typeface-control .neve-fonts-list li a .neve-font-preview {
+          font-display: swap;
+          margin-left: auto;
+          font-size: 20px; }
+
+@-moz-keyframes neve-spin {
+  100% {
+    -moz-transform: rotate(360deg); } }
+
+@-webkit-keyframes neve-spin {
+  100% {
+    -webkit-transform: rotate(360deg); } }
+
+@keyframes neve-spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+
+.neve-style-presets .single-preset {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  padding: 5px 10px; }
+
+.neve-style-presets .preset-header {
+  border-bottom: 1px solid #ccc; }
+
+.neve-text-transform:not(:last-child), .neve-font-family-control:not(:last-child) {
+  margin-bottom: 10px; }
+
+.neve-number-control-wrap:not(:last-child) {
+  margin-bottom: 10px; }
+
+.neve-number-control-wrap .header {
+  display: flex; }
+  .neve-number-control-wrap .header .neve-units {
+    margin: 0 0 0 auto; }
+
+.neve-text-transform .buttons {
+  width: 100%;
+  display: flex; }
+  .neve-text-transform .buttons button {
+    flex: 1;
+    text-align: center;
+    font-weight: 700;
+    justify-content: center; }
+    .neve-text-transform .buttons button.is-active, .neve-text-transform .buttons button.is-active:focus {
+      background: #008dc2;
+      color: #fff; }

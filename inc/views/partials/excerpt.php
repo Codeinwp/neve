@@ -47,7 +47,7 @@ class Excerpt extends Base_View {
 	 * @param string $context the provided context in do_action.
 	 */
 	public function render_post_excerpt( $context ) {
-		echo wp_kses_post( $this->get_post_excerpt( $context ) );
+		echo $this->get_post_excerpt( $context ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 
 	/**
@@ -62,7 +62,7 @@ class Excerpt extends Base_View {
 
 		$output  = '';
 		$output .= '<div class="excerpt-wrap entry-summary">';
-		$output .= wp_kses_post( $this->get_excerpt( $length ) );
+		$output .= $this->get_excerpt( $length );
 		$output .= '</div>';
 
 		return $output;
@@ -80,6 +80,8 @@ class Excerpt extends Base_View {
 		global $post;
 
 		if ( $length === 300 ) {
+			$embed = new \WP_Embed();
+			add_filter( 'neve_the_content', array( $embed, 'autoembed' ), 8 );
 			return apply_filters( 'neve_the_content', get_the_content() );
 		}
 
@@ -89,7 +91,6 @@ class Excerpt extends Base_View {
 
 		if ( has_excerpt() ) {
 			$content = get_the_excerpt();
-
 			return $content;
 		}
 
