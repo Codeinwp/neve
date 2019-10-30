@@ -593,9 +593,9 @@ class Front_End {
 						'title'      => 'Furniture Shop',
 					),
 					'neve-beaver-portrait-photography'  => array(
-						'url'              => 'https://demo.themeisle.com/neve-portrait-photopraphy-bb/',
-						'screenshot'       => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/09/neve-wedding-photography.jpg',
-						'title'            => 'Wedding Photography',
+						'url'        => 'https://demo.themeisle.com/neve-portrait-photopraphy-bb/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/09/neve-wedding-photography.jpg',
+						'title'      => 'Wedding Photography',
 					),
 					'neve-beaver-farm'                  => array(
 						'url'        => 'https://demo.themeisle.com/neve-farm-bb/',
