@@ -115,7 +115,7 @@ class Typography extends Base_Inline {
 	 */
 	private function add_headings_styles() {
 		$controls = array(
-			'h1' => 'h1:not(.site-title), .single .entry-title',
+			'h1' => 'h1:not(.site-title), .single h1.entry-title',
 			'h2' => 'h2',
 			'h3' => 'h3',
 			'h4' => 'h4',
@@ -231,7 +231,7 @@ class Typography extends Base_Inline {
 		}
 		$this->add_style(
 			$style_setup,
-			apply_filters( 'neve_headings_font_family_selectors', 'h1, .single .entry-title, h2, h3, h4, h5, h6' )
+			apply_filters( 'neve_headings_font_family_selectors', 'h1, .single h1.entry-title, h2, h3, h4, h5, h6' )
 		);
 	}
 }

@@ -1,9 +1,0 @@
-{
-	"extends": [
-		"config:base"
-	],
-	"composer": {
-		"enabled": true
-	},
-	"baseBranch": "development"
-}
