@@ -112,8 +112,8 @@ class Comments extends Base_View {
 				break;
 			default:
 				?>
-				<li <?php comment_class(); ?> >
-					<article id="comment-item-<?php comment_ID(); ?>" class="nv-comment-article">
+				<li <?php comment_class(); ?> id="comment-item-<?php comment_ID(); ?>">
+				<article id="comment-<?php comment_ID(); ?>" class="nv-comment-article">
 						<div class="nv-comment-header">
 							<div class='nv-comment-avatar'>
 								<?php echo get_avatar( $comment, 50 ); ?>
