@@ -355,28 +355,28 @@ class Front_End {
 						'screenshot'       => $onboarding_folder_url . '/neve-music-band/screenshot.jpg',
 						'local_json'       => $onboarding_folder_path . '/neve-brizy-music-band/data.json',
 					),
-					'neve-brizy-amadeus'            => array(
+					'neve-brizy-amadeus'         => array(
 						'url'              => 'https://demo.themeisle.com/neve-amadeus-brizy/',
 						'title'            => 'Music Teacher',
 						'screenshot'       => $onboarding_folder_url . '/neve-amadeus/screenshot.jpg',
 						'unsplash_gallery' => 'https://unsplash.com/collections/8271695/neve-amadeus/ba699571eb4fc205ad8385c0440ced80',
 						'local_json'       => $onboarding_folder_path . '/neve-brizy-amadeus/data.json',
 					),
-					'neve-brizy-oblique'            => array(
+					'neve-brizy-oblique'         => array(
 						'url'              => 'https://demo.themeisle.com/neve-oblique-brizy/',
 						'title'            => 'Vintage',
 						'screenshot'       => $onboarding_folder_url . '/neve-oblique/screenshot.jpg',
 						'unsplash_gallery' => 'https://unsplash.com/collections/8325788/oblique/7281d963f7b798d5fa7d6327bfd26804',
 						'local_json'       => $onboarding_folder_path . '/neve-brizy-oblique/data.json',
 					),
-					'neve-brizy-rokophoto'          => array(
+					'neve-brizy-rokophoto'       => array(
 						'url'              => 'https://demo.themeisle.com/neve-rokophoto-brizy/',
 						'title'            => 'Photography',
 						'screenshot'       => $onboarding_folder_url . '/neve-rokophoto/screenshot.jpg',
 						'unsplash_gallery' => 'https://unsplash.com/collections/8311183/rokophoto/ecebabcd40134eacf11cbd3cba504f44',
 						'local_json'       => $onboarding_folder_path . '/neve-brizy-rokophoto/data.json',
 					),
-					'neve-brizy-energy-panels'      => array(
+					'neve-brizy-energy-panels'   => array(
 						'url'              => 'https://demo.themeisle.com/neve-energy-panels-brizy/',
 						'title'            => 'Energy Panels',
 						'screenshot'       => $onboarding_folder_url . '/neve-energy-panels/screenshot.jpg',
