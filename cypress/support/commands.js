@@ -69,7 +69,7 @@ function addFeaturedImage() {
 	cy.fixture( fileName ).then( fileContent => {
 		cy.get( '.upload-ui' ).upload(
 				{ fileContent, fileName, mimeType: 'image/jpg' },
-				{ subjectType: 'drag-n-drop' }
+				{ subjectType: 'drag-n-drop',force:true }
 		);
 	} );
 	cy.wait(2500);
