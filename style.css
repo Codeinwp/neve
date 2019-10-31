@@ -950,6 +950,9 @@ footer {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+}
+
+body > .wrapper:not(.et-fb-iframe-ancestor) {
   overflow: hidden;
 }
 
