@@ -2,7 +2,10 @@
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  overflow: hidden;
+}
+
+body > .wrapper:not(.et-fb-iframe-ancestor) {
+	overflow: hidden;
 }
 
 .neve-main {
