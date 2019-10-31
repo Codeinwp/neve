@@ -355,6 +355,34 @@ class Front_End {
 						'screenshot'       => $onboarding_folder_url . '/neve-music-band/screenshot.jpg',
 						'local_json'       => $onboarding_folder_path . '/neve-brizy-music-band/data.json',
 					),
+					'neve-brizy-amadeus'            => array(
+						'url'              => 'https://demo.themeisle.com/neve-amadeus-brizy/',
+						'title'            => 'Music Teacher',
+						'screenshot'       => $onboarding_folder_url . '/neve-amadeus/screenshot.jpg',
+						'unsplash_gallery' => 'https://unsplash.com/collections/8271695/neve-amadeus/ba699571eb4fc205ad8385c0440ced80',
+						'local_json'       => $onboarding_folder_path . '/neve-brizy-amadeus/data.json',
+					),
+					'neve-brizy-oblique'            => array(
+						'url'              => 'https://demo.themeisle.com/neve-oblique-brizy/',
+						'title'            => 'Vintage',
+						'screenshot'       => $onboarding_folder_url . '/neve-oblique/screenshot.jpg',
+						'unsplash_gallery' => 'https://unsplash.com/collections/8325788/oblique/7281d963f7b798d5fa7d6327bfd26804',
+						'local_json'       => $onboarding_folder_path . '/neve-brizy-oblique/data.json',
+					),
+					'neve-brizy-rokophoto'          => array(
+						'url'              => 'https://demo.themeisle.com/neve-rokophoto-brizy/',
+						'title'            => 'Photography',
+						'screenshot'       => $onboarding_folder_url . '/neve-rokophoto/screenshot.jpg',
+						'unsplash_gallery' => 'https://unsplash.com/collections/8311183/rokophoto/ecebabcd40134eacf11cbd3cba504f44',
+						'local_json'       => $onboarding_folder_path . '/neve-brizy-rokophoto/data.json',
+					),
+					'neve-brizy-energy-panels'      => array(
+						'url'              => 'https://demo.themeisle.com/neve-energy-panels-brizy/',
+						'title'            => 'Energy Panels',
+						'screenshot'       => $onboarding_folder_url . '/neve-energy-panels/screenshot.jpg',
+						'unsplash_gallery' => 'https://unsplash.com/collections/4587602/energy-panels',
+						'local_json'       => $onboarding_folder_path . '/neve-brizy-energy-panels/data.json',
+					),
 					'neve-brizy-shop'            => array(
 						'url'              => 'https://demo.themeisle.com/neve-shop-brizy/',
 						'title'            => 'Shop',
@@ -814,20 +842,55 @@ class Front_End {
 					),
 				),
 				'brizy'            => array(
-					'neve-brizy-cafe'    => array(
+					'neve-brizy-cafe'            => array(
 						'url'        => 'https://demo.themeisle.com/neve-cafe-brizy/',
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/06/neve-caffe-new-ss.jpg',
 						'title'      => 'Coffee Shop',
 					),
-					'neve-constructions' => array(
+					'neve-brizy-constructions'   => array(
 						'url'        => 'https://demo.themeisle.com/neve-constructions-brizy/',
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/06/neve-construction-new-screenshot.jpg',
 						'title'      => 'Constructions Company',
 					),
-					'neve-fashion'       => array(
+					'neve-brizy-fashion'         => array(
 						'url'        => 'https://demo.themeisle.com/neve-fashion-brizy/',
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/07/neve-fashion-demo-screenshot.png',
 						'title'      => 'Fashion',
+					),
+					'neve-brizy-showcase'        => array(
+						'url'        => 'https://demo.themeisle.com/neve-showcase-brizy/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/09/neve-showcase-new.jpg',
+						'title'      => 'Showcase',
+					),
+					'neve-brizy-consultants'     => array(
+						'url'        => 'https://demo.themeisle.com/neve-consultants-brizy/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/09/neve-business-consulting.jpg',
+						'title'      => 'Business Consulting',
+					),
+					'neve-brizy-job-listings'    => array(
+						'url'        => 'https://demo.themeisle.com/neve-job-listings-brizy/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/09/neve-job-listings.jpg',
+						'title'      => 'Job Listing',
+					),
+					'neve-brizy-barber-shop'     => array(
+						'url'        => 'https://demo.themeisle.com/neve-barber-shop-brizy/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/09/neve-barber-shop.jpg',
+						'title'      => 'Barber Shop',
+					),
+					'neve-brizy-personal-traner' => array(
+						'url'        => 'https://demo.themeisle.com/neve-personal-trainer-brizy/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/09/neve-personal-trainer.jpg',
+						'title'      => 'Personal Trainer',
+					),
+					'neve-brizy-real-estate'     => array(
+						'url'        => 'https://demo.themeisle.com/neve-real-estate-brizy/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/09/neve-real-estate.jpg',
+						'title'      => 'Real Estate',
+					),
+					'neve-brizy-events'          => array(
+						'url'        => 'https://demo.themeisle.com/neve-events-brizy/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/09/neve-events.jpg',
+						'title'      => 'Events',
 					),
 				),
 			),
