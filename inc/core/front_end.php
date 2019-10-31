@@ -528,10 +528,55 @@ class Front_End {
 			),
 			'upsell'      => array(
 				'thrive architect' => array(
-					'neve-thrive-fashion' => array(
-						'url'        => 'https://demo.themeisle.com/neve-fashion-th',
+					'neve-thrive-cafe'                  => array(
+						'url'        => 'https://demo.themeisle.com/neve-cafe-th/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/06/neve-caffe-new-ss.jpg',
+						'title'      => 'Coffee Shop',
+					),
+					'neve-thrive-fashion'               => array(
+						'url'        => 'https://demo.themeisle.com/neve-fashion-th/',
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/07/neve-fashion-demo-screenshot.png',
 						'title'      => 'Fashion',
+					),
+					'neve-thrive-showcase'              => array(
+						'url'        => 'https://demo.themeisle.com/neve-showcase-th/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/09/neve-showcase-new.jpg',
+						'title'      => 'Showcase',
+					),
+					'neve-thrive-job-listings'          => array(
+						'url'        => 'https://demo.themeisle.com/neve-job-listings-th/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/09/neve-job-listings.jpg',
+						'title'      => 'Job Listing',
+					),
+					'neve-thrive-real-estate'           => array(
+						'url'        => 'https://demo.themeisle.com/neve-real-estate-th/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/09/neve-real-estate.jpg',
+						'title'      => 'Real Estate',
+					),
+					'neve-thrive-events'                => array(
+						'url'        => 'https://demo.themeisle.com/neve-events-th/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/09/neve-events.jpg',
+						'title'      => 'Events',
+					),
+					'neve-thrive-photography-portfolio' => array(
+						'url'        => 'https://demo.themeisle.com/neve-photography-portfolio-th/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/09/neve-studio-photography.jpg',
+						'title'      => 'Photography Studio',
+					),
+					'neve-thrive-video-agency'          => array(
+						'url'        => 'https://demo.themeisle.com/neve-video-th/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/09/neve-vide-agency.jpg',
+						'title'      => 'Video Agency',
+					),
+					'neve-thrive-farm'                  => array(
+						'url'        => 'https://demo.themeisle.com/neve-farm-th/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/09/neve-farm.jpg',
+						'title'      => 'Farm',
+					),
+					'neve-thrive-speed'                 => array(
+						'url'        => 'https://demo.themeisle.com/neve-pro-th/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/10/neve-speed.jpg',
+						'title'      => 'Speed',
 					),
 				),
 				'beaver builder'   => array(
