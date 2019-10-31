@@ -90,8 +90,8 @@ class Front_End {
 	 * Wrap embeds.
 	 *
 	 * @param string $markup embed markup.
-	 * @param string $url embed url.
-	 * @param array  $attr embed attributes [width/height].
+	 * @param string $url    embed url.
+	 * @param array  $attr   embed attributes [width/height].
 	 *
 	 * @return string
 	 */
@@ -120,7 +120,6 @@ class Front_End {
 
 		return $args;
 	}
-
 
 	/**
 	 * Reorder starter sites based on previous theme
@@ -166,15 +165,18 @@ class Front_End {
 	 * @return array
 	 */
 	private function get_ti_demo_content_support_data() {
-		$theme_options           = wp_get_theme();
-		$theme_name              = apply_filters( 'ti_wl_theme_name', $theme_options->__get( 'Name' ) );
-		$onboarding_folder_url   = get_template_directory_uri() . '/onboarding';
-		$onboarding_folder_path  = get_template_directory() . '/onboarding';
+		$theme_options          = wp_get_theme();
+		$theme_name             = apply_filters( 'ti_wl_theme_name', $theme_options->__get( 'Name' ) );
+		$onboarding_folder_url  = get_template_directory_uri() . '/onboarding';
+		$onboarding_folder_path = get_template_directory() . '/onboarding';
+		require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+
 		$this->onboarding_config = array(
 			'editors'     => array(
 				'elementor',
 				'brizy',
 				'beaver builder',
+				'thrive architect',
 			),
 			'local'       => array(
 				'elementor' => array(
@@ -290,7 +292,6 @@ class Front_End {
 				),
 			),
 			'remote'      => array(
-
 				'brizy'          => array(
 					'neve-brizy-main'            => array(
 						'url'        => 'https://demo.themeisle.com/neve-onboarding-brizy/',
@@ -526,7 +527,14 @@ class Front_End {
 				],
 			),
 			'upsell'      => array(
-				'beaver builder' => array(
+				'thrive architect' => array(
+					'neve-thrive-fashion' => array(
+						'url'        => 'https://demo.themeisle.com/neve-fashion-th',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/07/neve-fashion-demo-screenshot.png',
+						'title'      => 'Fashion',
+					),
+				),
+				'beaver builder'   => array(
 					'neve-beaver-cafe'                  => array(
 						'url'        => 'https://demo.themeisle.com/neve-cafe-bb/',
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/06/neve-caffe-new-ss.jpg',
@@ -618,7 +626,7 @@ class Front_End {
 						'title'      => 'eBook',
 					),
 				),
-				'elementor'      => array(
+				'elementor'        => array(
 					'neve-cafe'                  => array(
 						'url'        => 'https://demo.themeisle.com/neve-cafe/',
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/06/neve-caffe-new-ss.jpg',
@@ -760,7 +768,7 @@ class Front_End {
 						'title'      => 'Fashion Magazine',
 					),
 				),
-				'brizy'          => array(
+				'brizy'            => array(
 					'neve-brizy-cafe'    => array(
 						'url'        => 'https://demo.themeisle.com/neve-cafe-brizy/',
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/06/neve-caffe-new-ss.jpg',

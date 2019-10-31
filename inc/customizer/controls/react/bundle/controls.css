@@ -306,15 +306,28 @@
   display: flex; }
   .neve-number-control-wrap .header .neve-units {
     margin: 0 0 0 auto; }
+    .neve-number-control-wrap .header .neve-units .units {
+      border: none; }
+    .neve-number-control-wrap .header .neve-units .components-toolbar__control.components-button {
+      height: auto; }
+      .neve-number-control-wrap .header .neve-units .components-toolbar__control.components-button > svg {
+        width: 20px;
+        height: 18px;
+        padding: 0 5px; }
 
 .neve-text-transform .buttons {
-  width: 100%;
-  display: flex; }
-  .neve-text-transform .buttons button {
+  width: 100%; }
+
+.neve-text-transform .components-toolbar {
+  width: 100%; }
+  .neve-text-transform .components-toolbar button, .neve-text-transform .components-toolbar svg {
+    width: 100%; }
+  .neve-text-transform .components-toolbar button {
+    height: 30px; }
+  .neve-text-transform .components-toolbar svg {
+    padding: 0;
+    height: 25px; }
+  .neve-text-transform .components-toolbar > div {
     flex: 1;
-    text-align: center;
-    font-weight: 700;
+    align-items: center;
     justify-content: center; }
-    .neve-text-transform .buttons button.is-active, .neve-text-transform .buttons button.is-active:focus {
-      background: #008dc2;
-      color: #fff; }
