@@ -37,6 +37,7 @@ class Nav extends Abstract_Component {
 	 */
 	public function init() {
 		$this->set_property( 'label', __( 'Primary Menu', 'neve' ) );
+		$this->set_property( 'component_slug', 'hfg-primary-menu' );
 		$this->set_property( 'id', $this->get_class_const( 'COMPONENT_ID' ) );
 		$this->set_property( 'width', 6 );
 		$this->set_property( 'section', 'header_menu_primary' );

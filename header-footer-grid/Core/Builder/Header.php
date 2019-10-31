@@ -50,6 +50,31 @@ class Header extends Abstract_Builder {
 				)
 			)
 		);
+		$this->set_property(
+			'instructions_array',
+			array(
+				'description' => sprintf(
+					/* translators: %s builder type */
+					esc_html__( 'Welcome to the %1$s builder! Click the “+” button to add a new component or follow the Quick Links.', 'neve' ),
+					$this->get_property( 'title' )
+				),
+				'image'       => esc_url( get_template_directory_uri() . '/header-footer-grid/assets/images/customizer/hfg.mp4' ),
+				'quickLinks'  => array(
+					'custom_logo'                       => array(
+						'label' => esc_html__( 'Change Logo', 'neve' ),
+						'icon'  => 'dashicons-editor-customchar',
+					),
+					'hfg_header_layout_main_background' => array(
+						'label' => esc_html__( 'Change Header Color', 'neve' ),
+						'icon'  => 'dashicons-admin-appearance',
+					),
+					'primary-menu_shortcut'             => array(
+						'label' => esc_html__( 'Change Menu', 'neve' ),
+						'icon'  => 'dashicons-menu',
+					),
+				),
+			)
+		);
 	}
 
 

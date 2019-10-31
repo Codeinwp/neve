@@ -45,7 +45,7 @@ describe( 'Header Row Background Control', function() {
 		cy.fixture( fileName ).then( fileContent => {
 			cy.get( '.upload-ui' ).upload(
 					{ fileContent, fileName, mimeType: 'image/jpg' },
-					{ subjectType: 'drag-n-drop' }
+					{ subjectType: 'drag-n-drop',force:true }
 			);
 		} );
 		cy.get( '.media-toolbar-primary' ).

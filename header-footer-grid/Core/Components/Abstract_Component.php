@@ -78,6 +78,30 @@ abstract class Abstract_Component implements Component {
 	 */
 	protected $section;
 	/**
+	 * The component slug.
+	 *
+	 * @since   1.0.0
+	 * @access  protected
+	 * @var string $section
+	 */
+	protected $component_slug = 'hfg-generic-component';
+
+	/**
+	 * The section icon.
+	 *
+	 * @access protected
+	 * @var string $icon
+	 */
+	protected $icon = 'welcome-widgets-menus';
+	/**
+	 * The component preview image.
+	 *
+	 * @access protected
+	 * @var string $preview_image
+	 */
+	protected $preview_image = null;
+
+	/**
 	 * The component default width.
 	 *
 	 * @since   1.0.0
@@ -212,6 +236,10 @@ abstract class Abstract_Component implements Component {
 		$this->init();
 
 		$this->set_property( 'panel', $panel );
+		$this->set_property( 'icon', $this->icon );
+		if ( $this->preview_image === null ) {
+			$this->set_property( 'preview_image', $this->preview_image );
+		}
 		if ( $this->section === null ) {
 			$this->set_property( 'section', $this->get_id() );
 		}
@@ -287,11 +315,14 @@ abstract class Abstract_Component implements Component {
 	 */
 	public function get_settings() {
 		return array(
-			'name'        => $this->label,
-			'description' => $this->description,
-			'id'          => $this->id,
-			'width'       => $this->width,
-			'section'     => $this->section, // Customizer section to focus when click settings.
+			'name'          => $this->label,
+			'description'   => $this->description,
+			'id'            => $this->id,
+			'width'         => $this->width,
+			'section'       => $this->section, // Customizer section to focus when click settings.
+			'icon'          => $this->icon,
+			'previewImage'  => $this->preview_image,
+			'componentSlug' => $this->component_slug,
 		);
 	}
 
@@ -446,6 +477,7 @@ abstract class Abstract_Component implements Component {
 		);
 
 		$wp_customize->register_control_type( '\HFG\Core\Customizer\SpacingControl' );
+		$wp_customize->register_section_type( '\HFG\Core\Customizer\Instructions_Section' );
 
 		Settings\Manager::get_instance()->load( $this->get_id(), $wp_customize );
 

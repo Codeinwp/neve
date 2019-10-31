@@ -22,7 +22,7 @@ namespace HFG;
 				<div class="row--grid">
 					<?php
 					for ( $i = 1; $i <= 12; $i ++ ) {
-						echo '<div></div>';
+						echo '<div><button class="add-button--grid" data-slot="' . esc_attr( $i - 1 ) . '">+</button></div>';
 					}
 					?>
 				</div>
@@ -40,7 +40,7 @@ namespace HFG;
 				<div class="row--grid">
 					<?php
 					for ( $i = 1; $i <= 12; $i ++ ) {
-						echo '<div></div>';
+						echo '<div><button class="add-button--grid" data-slot="' . esc_attr( $i - 1 ) . '">+</button></div>';
 					}
 					?>
 				</div>
@@ -57,7 +57,7 @@ namespace HFG;
 				<div class="row--grid">
 					<?php
 					for ( $i = 1; $i <= 12; $i ++ ) {
-						echo '<div></div>';
+						echo '<div><button class="add-button--grid" data-slot="' . esc_attr( $i - 1 ) . '">+</button></div>';
 					}
 					?>
 				</div>
@@ -83,14 +83,14 @@ namespace HFG;
 			<div class="hfg--row-inner">
 				<div class="row--title">{{ data.rows.sidebar.title || data.rows.sidebar }}</div>
 				<div class="hfg--cb-items hfg--sidebar-items" data-id="sidebar"></div>
+				<div class="row--grid">
+					<div>
+						<button class="add-button--grid" data-slot="1">+</button>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
 			<# } #>
 			<# } #>
-
-	<h4 class="hfg--widgets-info"><?php esc_html_e( 'Available components', 'neve' ); ?>
-		<i class="dashicons dashicons-info"></i>
-		<span class="tooltip"><?php esc_html_e( 'To activate a component, drag it to one of the upper rows.', 'neve' ); ?></span>
-	</h4>
 </script>

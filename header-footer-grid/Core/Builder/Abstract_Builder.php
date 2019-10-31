@@ -12,6 +12,7 @@
 namespace HFG\Core\Builder;
 
 use HFG\Core\Components\Abstract_Component;
+use HFG\Core\Customizer\Instructions_Section;
 use HFG\Core\Interfaces\Builder;
 use HFG\Core\Interfaces\Component;
 use HFG\Core\Settings;
@@ -162,6 +163,13 @@ abstract class Abstract_Builder implements Builder {
 	 * @var array $builder_components
 	 */
 	protected $builder_components = array();
+
+	/**
+	 * The quick links setup array.
+	 *
+	 * @var array
+	 */
+	protected $instructions_array = array();
 
 	/**
 	 * Abstract_Builder constructor.
@@ -527,6 +535,27 @@ abstract class Abstract_Builder implements Builder {
 			)
 		);
 
+		if ( ! empty( $this->instructions_array ) ) {
+			if ( get_theme_mod( $this->panel . '_layout', false ) !== false ) {
+				$this->instructions_array['image']       = false;
+				$this->instructions_array['description'] = false;
+			}
+
+			$wp_customize->add_section(
+				new Instructions_Section(
+					$wp_customize,
+					$this->section . '_quick_links',
+					array(
+						'priority' => - 100,
+						'panel'    => $this->panel,
+						'type'     => 'hfg_instructions',
+						'options'  => $this->instructions_array,
+					)
+				)
+			);
+		}
+
+
 		Settings\Manager::get_instance()->load( $this->control_id, $wp_customize );
 
 		$this->add_rows_controls( $wp_customize );
@@ -743,7 +772,9 @@ abstract class Abstract_Builder implements Builder {
 				$css_setup['background-size']  = 'cover';
 			}
 
-			if ( ! empty( $background['focusPoint'] ) && ! empty( $background['focusPoint']['x'] ) && ! empty( $background['focusPoint']['y'] ) ) {
+			if ( ! empty( $background['focusPoint'] ) &&
+				! empty( $background['focusPoint']['x'] ) &&
+				! empty( $background['focusPoint']['y'] ) ) {
 				$css_setup['background-position'] = round( $background['focusPoint']['x'] * 100 ) . '% ' . round( $background['focusPoint']['y'] * 100 ) . '%';
 			}
 

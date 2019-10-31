@@ -49,6 +49,27 @@ class Footer extends Abstract_Builder {
 				)
 			)
 		);
+		$this->set_property(
+			'instructions_array',
+			array(
+				'description' => sprintf(
+					/* translators: %s builder type */
+					esc_html__( 'Welcome to the %1$s builder! Click the “+” button to add a new component or follow the Quick Links.', 'neve' ),
+					$this->get_property( 'title' )
+				),
+				'image'       => esc_url( get_template_directory_uri() . '/header-footer-grid/assets/images/customizer/hfg.mp4' ),
+				'quickLinks'  => array(
+					'footer_copyright_content'            => array(
+						'label' => esc_html__( 'Change Copyright', 'neve' ),
+						'icon'  => 'dashicons-nametag',
+					),
+					'hfg_footer_layout_bottom_background' => array(
+						'label' => esc_html__( 'Change Footer Color', 'neve' ),
+						'icon'  => 'dashicons-admin-appearance',
+					),
+				),
+			)
+		);
 		$this->devices = [
 			'desktop' => __( 'Footer', 'neve' ),
 		];
