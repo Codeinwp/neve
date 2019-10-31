@@ -1586,7 +1586,6 @@ let CustomizeBuilderV1;
 
 					$( that.widgetSidebarContainer ).css( positionStyle );
 
-					// $( 'body' ).addClass( 'hfg--widgets-open' );
 					let panel = $( this ).closest( '.hfg--device-panel' ),
 							device = panel[0].getAttribute( 'data-device' );
 
@@ -1624,8 +1623,10 @@ let CustomizeBuilderV1;
 											data( 'device' ),
 									width = $( this ).data( 'df-width' ),
 									itemId = $( this ).data( 'id' );
-
-							let dataInRow = data[device][that.insertRow];
+							// Default data gets reformatted after one change.
+							// We're using only the values, or adding widgets to the sidebar is going to break.
+							// Just don't change the line below pls.
+							let dataInRow = Object.values( data[ device ][ that.insertRow ] );
 							let newItem = {
 								x: that.insertPoint,
 								y: 1,
