@@ -12,7 +12,11 @@ Cypress.Commands.add( 'login', (nextRoute = null) => {
 				isLoggedIn = true;
 			}
 		});
+
 		if(isLoggedIn){
+			if ( nextRoute === null ) {
+				return;
+			}
 			return;
 		}
 		cy.viewport( 1920, 1080 );
