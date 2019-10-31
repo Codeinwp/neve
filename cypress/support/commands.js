@@ -14,8 +14,8 @@ Cypress.Commands.add( 'login', (nextRoute = null) => {
 		});
 
 		if(isLoggedIn){
-			if ( nextRoute === null ) {
-				return;
+			if ( nextRoute !== null ) {
+				cy.visit( nextRoute );
 			}
 			return;
 		}
