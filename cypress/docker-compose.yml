@@ -2,7 +2,7 @@ version: '3.2'
 services:
   cypress:
     ipc: host
-    image: "cypress/included:3.4.1"
+    image: "cypress/included:3.5.0"
     environment:
       - COMMIT_INFO_BRANCH=${TRAVIS_PULL_REQUEST_BRANCH}
       - COMMIT_INFO_SHA=${TRAVIS_COMMIT}
@@ -12,4 +12,4 @@ services:
       - ./:/e2e/cypress
       - ../cypress.json:/e2e/cypress.json
     network_mode: "host"
-    command: --record
+    command: --record --spec "$BUILD_SPEC"

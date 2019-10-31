@@ -97,6 +97,7 @@
     }
   },
   "dependencies": {
+    "cypress-file-upload": "^3.4.0",
     "tiny-slider": "^2.9.2"
   }
 }
