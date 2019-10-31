@@ -2100,3 +2100,15 @@ hashCode = function( string ) {
 	}
 	return hash;
 };
+
+
+wp.customize.sectionConstructor['hfg_instructions'] = wp.customize.Section.extend( {
+
+	// No events for this type of section.
+	attachEvents: function () {},
+
+	// Always make the section active.
+	isContextuallyActive: function () {
+		return true;
+	}
+} );
