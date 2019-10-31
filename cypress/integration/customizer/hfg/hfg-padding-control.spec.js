@@ -38,22 +38,22 @@ function setupCustomizer() {
         click();
 
     // Link values
-    cy.get( '#customize-control-logo_component_padding > .neve-responsive-sizing > .nv-sizing-link > button' ).
+    cy.get( '#customize-control-logo_component_padding  .neve-responsive-sizing > .nv-sizing-link > button' ).
         click();
 
     // Increase Top Padding value
-    cy.get( '#customize-control-logo_component_padding > .neve-responsive-sizing > .nv-sizing-item > div > #top-input' ).
+    cy.get( '#customize-control-logo_component_padding .neve-responsive-sizing > .nv-sizing-item > div > #top-input' ).
         type('{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}').
         trigger('change');
 
     // Check if linked values
-    cy.get( '#customize-control-logo_component_padding > .neve-responsive-sizing > .nv-sizing-item > div > #top-input' ).
+    cy.get( '#customize-control-logo_component_padding .neve-responsive-sizing > .nv-sizing-item > div > #top-input' ).
         should( 'have.value', '30' );
-    cy.get( '#customize-control-logo_component_padding > .neve-responsive-sizing > .nv-sizing-item > div > #bottom-input' ).
+    cy.get( '#customize-control-logo_component_padding  .neve-responsive-sizing > .nv-sizing-item > div > #bottom-input' ).
         should( 'have.value', '30' );
-    cy.get( '#customize-control-logo_component_padding > .neve-responsive-sizing > .nv-sizing-item > div > #left-input' ).
+    cy.get( '#customize-control-logo_component_padding .neve-responsive-sizing > .nv-sizing-item > div > #left-input' ).
         should( 'have.value', '30' );
-    cy.get( '#customize-control-logo_component_padding > .neve-responsive-sizing > .nv-sizing-item > div > #right-input' ).
+    cy.get( '#customize-control-logo_component_padding .neve-responsive-sizing > .nv-sizing-item > div > #right-input' ).
         should( 'have.value', '30' );
 
     // Click on Reset button
@@ -61,26 +61,26 @@ function setupCustomizer() {
     click();
 
     // Check if Reset button works
-    cy.get( '#customize-control-logo_component_padding > .neve-responsive-sizing > .nv-sizing-item > div > #top-input' ).
+    cy.get( '#customize-control-logo_component_padding  .neve-responsive-sizing > .nv-sizing-item > div > #top-input' ).
         should( 'have.value', '10' );
-    cy.get( '#customize-control-logo_component_padding > .neve-responsive-sizing > .nv-sizing-item > div > #right-input' ).
+    cy.get( '#customize-control-logo_component_padding .neve-responsive-sizing > .nv-sizing-item > div > #right-input' ).
         should( 'have.value', '0' );
-    cy.get( '#customize-control-logo_component_padding > .neve-responsive-sizing > .nv-sizing-item > div > #bottom-input' ).
+    cy.get( '#customize-control-logo_component_padding .neve-responsive-sizing > .nv-sizing-item > div > #bottom-input' ).
         should( 'have.value', '10' );
-    cy.get( '#customize-control-logo_component_padding > .neve-responsive-sizing > .nv-sizing-item > div > #left-input' ).
+    cy.get( '#customize-control-logo_component_padding  .neve-responsive-sizing > .nv-sizing-item > div > #left-input' ).
         should( 'have.value', '0' );
 
     // Unlink values
-    cy.get( '#customize-control-logo_component_padding > .neve-responsive-sizing > .nv-sizing-link > button' ).
+    cy.get( '#customize-control-logo_component_padding  .neve-responsive-sizing > .nv-sizing-link > button' ).
         click();
 
     // Increase Top Padding value
-    cy.get( '#customize-control-logo_component_padding > .neve-responsive-sizing > .nv-sizing-item > div > #top-input' ).
+    cy.get( '#customize-control-logo_component_padding  .neve-responsive-sizing > .nv-sizing-item > div > #top-input' ).
         type('{uparrow}').
         trigger('change');
 
     // Decrease Bottom Padding value
-    cy.get( '#customize-control-logo_component_padding > .neve-responsive-sizing > .nv-sizing-item > div > #bottom-input' ).
+    cy.get( '#customize-control-logo_component_padding .neve-responsive-sizing > .nv-sizing-item > div > #bottom-input' ).
         type('{downarrow}').
         trigger('change');
 
