@@ -1672,11 +1672,12 @@ let CustomizeBuilderV1;
 									append( this );
 							that.addNewWidget( $( this ),
 									$( that.container[0] ).find( ' #_sid_' + device + '-' + that.insertRow ) );
+							wpcustomize.section( this.getAttribute( 'data-section' ) ).focus();
 							that.save();
 							that.insertRow = null;
 							that.insertPoint = null;
 							that.hideDuplicates( device );
-						} );
+				} );
 			},
 			remove: function() {
 				let that = this;
