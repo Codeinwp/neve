@@ -1,3 +1,9 @@
+.neve-white-background-control {
+	border: 1px solid #ccc;
+	padding: 10px;
+	background: #fff;
+}
+
 .customize-control-neve_background_control {
 	margin-bottom: 20px;
 
@@ -137,6 +143,11 @@
 	}
 }
 
+
+.neve-control-header {
+	display: flex;
+}
+
 .neve-units {
 	display: flex;
 	margin-top: 10px;
@@ -159,6 +170,24 @@
 
 	.reset {
 		margin-left: auto;
+	}
+}
+
+.neve-units.inline {
+	margin: 0 0 0 auto;
+
+	.units {
+		border: none;
+	}
+
+	.components-toolbar__control.components-button {
+		height: auto;
+
+		> svg {
+			width: 20px;
+			height: 18px;
+			padding: 0 5px;
+		}
 	}
 }
 
@@ -218,6 +247,10 @@
 .neve-responsive-sizing {
 	display: flex;
 
+	&.single-input .components-toolbar {
+		width: calc(12% + 1px);
+	}
+
 	&.single-input .nv-sizing-item {
 		width: calc(100% - 12% + 1px)
 	}
@@ -236,28 +269,19 @@
 		}
 	}
 
-	.nv-sizing-item {
-		width: calc(19% + 1px);
-	}
-
-	.nv-sizing-link, .nv-sizing-reset {
-		width: calc(12% + 1px);
-		margin-left: -1px;
+	.components-toolbar {
+		width: calc(24% + 2px);
+		border: none;
 
 		button {
-			width: 100%;
-			padding: 3px;
-			flex-direction: row;
-			align-items: center;
-			justify-content: center;
-			justify-items: center;
-			border: 1px solid #999;
-			border-radius: 0 3px 3px 0;
-			background: #fff;
+			padding: 0;
+			height: 28px;
+			border-radius: 0;
 
-			&.is-linked {
-				background: #008dc2;
-				color: #fff;
+			svg {
+				padding: 3px 2px;
+				height: 22px;
+				border-radius: 0;
 			}
 		}
 	}
@@ -290,9 +314,6 @@
 
 //FONTS
 .neve-typeface-control {
-	border: 1px solid #ccc;
-	padding: 10px;
-	background: #fff;
 
 	.font-family-selector-toggle {
 		width: 100%;
@@ -447,24 +468,7 @@
 	}
 }
 
-
-// neve-style-presets
-
-.neve-style-presets {
-	.single-preset {
-		background-color: #fff;
-		border: 1px solid #ccc;
-		margin-bottom: 10px;
-		padding: 5px 10px;
-	}
-
-	.preset-header {
-		border-bottom: 1px solid #ccc;
-	}
-}
-
-
-.neve-text-transform:not(:last-child), .neve-font-family-control:not(:last-child) {
+.neve-radio-icons:not(:last-child), .neve-font-family-control:not(:last-child) {
 	margin-bottom: 10px;
 }
 
@@ -472,46 +476,29 @@
 	&:not(:last-child) {
 		margin-bottom: 10px;
 	}
-
-	.header {
-		display: flex;
-
-		.neve-units {
-			margin: 0 0 0 auto;
-
-			.units {
-				border: none;
-			}
-
-			.components-toolbar__control.components-button {
-				height: auto;
-
-				> svg {
-					width: 20px;
-					height: 18px;
-					padding: 0 5px;
-				}
-			}
-		}
-	}
 }
 
-.neve-text-transform {
+.neve-radio-icons {
 	.buttons {
 		width: 100%;
 	}
+
 	.components-toolbar {
 		width: 100%;
+
 		button, svg {
 			width: 100%;
 		}
+
 		button {
 			height: 30px
 		}
+
 		svg {
 			padding: 0;
 			height: 25px;
 		}
+
 		> div {
 			flex: 1;
 			align-items: center;

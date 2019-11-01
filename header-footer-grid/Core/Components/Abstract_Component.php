@@ -375,13 +375,22 @@ abstract class Abstract_Component implements Component {
 					'sanitize_callback'     => 'wp_filter_nohtml_kses',
 					'default'               => $this->default_align,
 					'label'                 => __( 'Component Alignment', 'neve' ),
-					'type'                  => '\Neve\Customizer\Controls\Button_Group',
+					'type'                  => '\Neve\Customizer\Controls\React\Radio_Buttons',
 					'live_refresh_selector' => $margin_selector,
 					'options'               => [
 						'choices' => [
-							'left'   => 'dashicons-editor-alignleft',
-							'center' => 'dashicons-editor-aligncenter',
-							'right'  => 'dashicons-editor-alignright',
+							'left'   => [
+								'tooltip' => __( 'Left', 'neve' ),
+								'icon'    => 'editor-alignleft',
+							],
+							'center' => [
+								'tooltip' => __( 'Center', 'neve' ),
+								'icon'    => 'editor-aligncenter',
+							],
+							'right'  => [
+								'tooltip' => __( 'Right', 'neve' ),
+								'icon'    => 'editor-alignright',
+							],
 						],
 					],
 					'section'               => $this->section,
