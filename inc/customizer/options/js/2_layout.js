@@ -17,7 +17,7 @@
 		 */
 		contentWidths: {
 			'neve_sitewide_content_width': {
-				content: '.neve-main > .container .col',
+				content: '.neve-main > .container .col, .neve-main > .container-fluid .col',
 				sidebar: '.nv-sidebar-wrap'
 			},
 			'neve_blog_archive_content_width': {
