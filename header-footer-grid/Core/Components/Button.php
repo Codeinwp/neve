@@ -77,6 +77,7 @@ class Button extends Abstract_Component {
 		$this->set_property( 'component_slug', 'hfg-button' );
 		$this->set_property( 'width', 2 );
 		$this->set_property( 'section', 'header_button' );
+		$this->set_property( 'icon', 'admin-links' );
 	}
 
 	/**

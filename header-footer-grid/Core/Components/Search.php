@@ -36,6 +36,7 @@ class Search extends Abstract_Component {
 		$this->set_property( 'id', $this->get_class_const( 'COMPONENT_ID' ) );
 		$this->set_property( 'component_slug', 'hfg-search-form' );
 		$this->set_property( 'width', 2 );
+		$this->set_property( 'icon', 'code-standards' );
 	}
 
 	/**
