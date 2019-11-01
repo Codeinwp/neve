@@ -47,7 +47,7 @@ class Container_Sidebar extends Base_Inline {
 		$advanced_options = get_theme_mod( 'neve_advanced_layout_options', false );
 		if ( $advanced_options === false ) {
 			$selectors = array(
-				'content' => '#content .container .col',
+				'content' => '#content .container .col, #content .container-fluid .col',
 				'sidebar' => '.nv-sidebar-wrap, .nv-sidebar-wrap.shop-sidebar',
 			);
 			$this->add_one_content_width( $selectors, 'neve_sitewide_content_width' );
