@@ -1,6 +1,6 @@
 <?php
 /**
- * Shell control. Handles data passing from args to JS.
+ * Spacing Control. Handles data passing from args to JS.
  *
  * @package Neve\Customizer\Controls\React
  */
@@ -8,7 +8,7 @@
 namespace Neve\Customizer\Controls\React;
 
 /**
- * Class Shell
+ * Class Spacing
  *
  * @package Neve\Customizer\Controls\React
  */

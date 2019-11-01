@@ -4,6 +4,8 @@ const { __ } = wp.i18n;
 const {
 	Dropdown,
 	IconButton,
+	ToolbarButton,
+	Toolbar,
 	RangeControl
 } = wp.components;
 const { Component } = wp.element;
@@ -18,6 +20,27 @@ class SizingControl extends Component {
 		let wrapClasses = 'neve-responsive-sizing';
 		if ( this.props.options.length === 1 ) {
 			wrapClasses += ' single-input';
+		}
+
+		let controls = [];
+		if ( !this.props.noLinking ) {
+			controls.push(
+				{
+					title: this.props.linked ? __( 'Unlink Values', 'neve' ) : __( 'Link Values', 'neve' ),
+					icon: this.props.linked ? 'admin-links' : 'editor-unlink',
+					isActive: this.props.linked,
+					onClick: () => this.props.onLinked()
+				}
+			)
+		}
+		if ( this.hasSetValues() ) {
+			controls.push(
+				{
+					title: this.props.options.length > 1 ? __( 'Reset all Values', 'neve' ) : __( 'Reset Value', 'neve' ),
+					icon: 'image-rotate',
+					onClick: () => this.props.onReset()
+				}
+			)
 		}
 
 		return (
@@ -75,28 +98,7 @@ class SizingControl extends Component {
 						);
 					} )}
 
-					{this.props.noLinking || <div className="nv-sizing-link">
-						<IconButton
-								className={this.props.linked && 'is-linked'}
-								icon={this.props.linked ?
-										'admin-links' :
-										'editor-unlink'}
-								tooltip={this.props.linked ?
-										__( 'Unlink Values', 'neve' ) :
-										__( 'Link Values', 'neve' )}
-								onClick={() => this.props.onLinked()}
-						/>
-					</div>}
-					{this.hasSetValues() && <div className="nv-sizing-reset">
-						<IconButton
-								onClick={this.props.onReset}
-								tooltip={this.props.options.length > 1 ?
-										__( 'Reset all Values', 'neve' ) :
-										__( 'Reset Value', 'neve' )}
-								icon="image-rotate"
-								className="reset">
-						</IconButton>
-					</div>}
+					<Toolbar controls={controls}/>
 				</div>
 		);
 	}
