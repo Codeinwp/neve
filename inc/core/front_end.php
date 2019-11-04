@@ -1086,7 +1086,9 @@ class Front_End {
 			)
 		);
 
-		return array_intersect_key( $gutenberg_color_palette, $temp_arr );
+		$colors = array_intersect_key( $gutenberg_color_palette, $temp_arr );
+
+		return array_values( $colors );
 	}
 
 	/**
