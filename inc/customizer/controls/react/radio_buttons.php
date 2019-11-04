@@ -1,6 +1,6 @@
 <?php
 /**
- * Typography control. Handles data passing from args to JS.
+ * Radio Buttons Control. Handles data passing from args to JS.
  *
  * @package Neve\Customizer\Controls\React
  */
@@ -8,29 +8,29 @@
 namespace Neve\Customizer\Controls\React;
 
 /**
- * Class Typography
+ * Class Spacing
  *
  * @package Neve\Customizer\Controls\React
  */
-class Typography extends \WP_Customize_Control {
+class Radio_Buttons extends \WP_Customize_Control {
 	/**
 	 * Control type.
 	 *
 	 * @var string
 	 */
-	public $type = 'neve_typography';
+	public $type = 'neve_radio_buttons_control';
 	/**
 	 * Additional arguments passed to JS.
 	 *
 	 * @var array
 	 */
-	public $input_attrs = [];
+	public $choices = [];
 
 	/**
 	 * Send to JS.
 	 */
 	public function to_json() {
 		parent::to_json();
-		$this->json['input_attrs'] = $this->input_attrs;
+		$this->json['choices'] = $this->choices;
 	}
 }

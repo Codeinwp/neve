@@ -117,7 +117,7 @@ window.addEventListener( 'load', function() {
 									'{ background-color: transparent !important; }';
 							addCss( settingId, style );
 							break;
-						case '\\Neve\\Customizer\\Controls\\Button_Group':
+						case '\\Neve\\Customizer\\Controls\\React\\Radio_Buttons':
 							let itemInner = document.querySelectorAll( args.selector );
 							_.each( itemInner, function(item) {
 								removeClass( item.parentNode,

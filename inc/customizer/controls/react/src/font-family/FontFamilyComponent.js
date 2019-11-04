@@ -26,7 +26,7 @@ class TypefaceComponent extends Component {
 							{this.props.control.params.label}
 					</span>
 					}
-					<div className="neve-typeface-control">
+					<div className="neve-typeface-control neve-white-background-control">
 						<FontFamilySelector
 								selected={this.state.fontFamily}
 								onFontChoice={(fontFamilySource, fontFamily) => {

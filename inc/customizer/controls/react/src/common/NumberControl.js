@@ -18,7 +18,7 @@ class NumberControl extends Component {
 		let { label, units, value } = this.props;
 		return (
 			<div className="neve-number-control-wrap">
-				<div className="header">
+				<div className="neve-control-header">
 					{label && <span className="customize-control-title">{label}</span>}
 					{
 						units && <div className="neve-units inline">

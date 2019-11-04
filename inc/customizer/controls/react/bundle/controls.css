@@ -1,3 +1,8 @@
+.neve-white-background-control {
+  border: 1px solid #ccc;
+  padding: 10px;
+  background: #fff; }
+
 .customize-control-neve_background_control {
   margin-bottom: 20px; }
   .customize-control-neve_background_control .color-preview {
@@ -83,6 +88,9 @@
     width: 50%;
     justify-content: center; }
 
+.neve-control-header {
+  display: flex; }
+
 .neve-units {
   display: flex;
   margin-top: 10px;
@@ -100,6 +108,17 @@
       color: #fff; }
   .neve-units .reset {
     margin-left: auto; }
+
+.neve-units.inline {
+  margin: 0 0 0 auto; }
+  .neve-units.inline .units {
+    border: none; }
+  .neve-units.inline .components-toolbar__control.components-button {
+    height: auto; }
+    .neve-units.inline .components-toolbar__control.components-button > svg {
+      width: 20px;
+      height: 18px;
+      padding: 0 5px; }
 
 .neve-responsive-control-bar {
   display: flex;
@@ -136,6 +155,8 @@
 
 .neve-responsive-sizing {
   display: flex; }
+  .neve-responsive-sizing.single-input .components-toolbar {
+    width: calc(12% + 1px); }
   .neve-responsive-sizing.single-input .nv-sizing-item {
     width: calc(100% - 12% + 1px); }
   .neve-responsive-sizing .range-control .components-base-control__field {
@@ -146,24 +167,17 @@
     margin: 0; }
     .neve-responsive-sizing .range-control .components-base-control__field input[type="number"] {
       width: 27%; }
-  .neve-responsive-sizing .nv-sizing-item {
-    width: calc(19% + 1px); }
-  .neve-responsive-sizing .nv-sizing-link, .neve-responsive-sizing .nv-sizing-reset {
-    width: calc(12% + 1px);
-    margin-left: -1px; }
-    .neve-responsive-sizing .nv-sizing-link button, .neve-responsive-sizing .nv-sizing-reset button {
-      width: 100%;
-      padding: 3px;
-      flex-direction: row;
-      align-items: center;
-      justify-content: center;
-      justify-items: center;
-      border: 1px solid #999;
-      border-radius: 0 3px 3px 0;
-      background: #fff; }
-      .neve-responsive-sizing .nv-sizing-link button.is-linked, .neve-responsive-sizing .nv-sizing-reset button.is-linked {
-        background: #008dc2;
-        color: #fff; }
+  .neve-responsive-sizing .components-toolbar {
+    width: calc(24% + 2px);
+    border: none; }
+    .neve-responsive-sizing .components-toolbar button {
+      padding: 0;
+      height: 28px;
+      border-radius: 0; }
+      .neve-responsive-sizing .components-toolbar button svg {
+        padding: 3px 2px;
+        height: 22px;
+        border-radius: 0; }
   .neve-responsive-sizing .nv-sizing-item input[type="number"] {
     border: 1px solid #999;
     border-radius: 0; }
@@ -180,99 +194,100 @@
     font-weight: 300;
     color: #555; }
 
-.neve-typeface-control {
-  border: 1px solid #ccc;
-  padding: 10px;
-  background: #fff; }
-  .neve-typeface-control .font-family-selector-toggle {
-    width: 100%;
-    height: 35px;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap; }
-    .neve-typeface-control .font-family-selector-toggle .ff-name {
-      align-self: flex-start;
-      max-width: 65%;
-      overflow: hidden;
-      text-overflow: ellipsis; }
-    .neve-typeface-control .font-family-selector-toggle .ff-preview {
-      align-self: flex-end;
-      margin-left: auto;
-      font-size: 21px; }
-  .neve-typeface-control .popover-content {
-    position: relative;
-    display: block;
-    width: 300px !important; }
-  .neve-typeface-control .popover-header {
-    position: fixed;
-    top: 0; }
-  .neve-typeface-control .search {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #fff;
-    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2);
-    border-bottom: 1px solid #ccc;
-    padding: 5px;
-    width: 300px;
-    top: 0;
-    box-sizing: border-box; }
-    .neve-typeface-control .search .components-base-control__field {
-      margin-bottom: 0; }
-      .neve-typeface-control .search .components-base-control__field input {
-        height: 25px;
-        width: 100%; }
-    .neve-typeface-control .search .components-base-control {
-      width: 85%; }
-    .neve-typeface-control .search button {
-      padding: 0 5px;
-      margin-left: auto; }
-  .neve-typeface-control .components-popover__content {
-    overflow: hidden !important; }
-  .neve-typeface-control .neve-fonts-list {
-    max-height: 400px;
-    margin-top: 35px;
-    overflow: auto; }
-    .neve-typeface-control .neve-fonts-list .load-more {
+.neve-typeface-control .font-family-selector-toggle {
+  width: 100%;
+  height: 35px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap; }
+  .neve-typeface-control .font-family-selector-toggle .ff-name {
+    align-self: flex-start;
+    max-width: 65%;
+    overflow: hidden;
+    text-overflow: ellipsis; }
+  .neve-typeface-control .font-family-selector-toggle .ff-preview {
+    align-self: flex-end;
+    margin-left: auto;
+    font-size: 21px; }
+
+.neve-typeface-control .popover-content {
+  position: relative;
+  display: block;
+  width: 300px !important; }
+
+.neve-typeface-control .popover-header {
+  position: fixed;
+  top: 0; }
+
+.neve-typeface-control .search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid #ccc;
+  padding: 5px;
+  width: 300px;
+  top: 0;
+  box-sizing: border-box; }
+  .neve-typeface-control .search .components-base-control__field {
+    margin-bottom: 0; }
+    .neve-typeface-control .search .components-base-control__field input {
+      height: 25px;
+      width: 100%; }
+  .neve-typeface-control .search .components-base-control {
+    width: 85%; }
+  .neve-typeface-control .search button {
+    padding: 0 5px;
+    margin-left: auto; }
+
+.neve-typeface-control .components-popover__content {
+  overflow: hidden !important; }
+
+.neve-typeface-control .neve-fonts-list {
+  max-height: 400px;
+  margin-top: 35px;
+  overflow: auto; }
+  .neve-typeface-control .neve-fonts-list .load-more {
+    padding: 10px 0; }
+    .neve-typeface-control .neve-fonts-list .load-more svg {
+      fill: #0073aa;
+      animation: 2s infinite linear neve-spin; }
+  .neve-typeface-control .neve-fonts-list li {
+    margin: 0; }
+    .neve-typeface-control .neve-fonts-list li.selected a {
+      background-color: #0b69da;
+      color: #fff; }
+    .neve-typeface-control .neve-fonts-list li.no-result {
+      opacity: .75;
+      font-weight: 600;
       padding: 10px 0; }
-      .neve-typeface-control .neve-fonts-list .load-more svg {
-        fill: #0073aa;
-        animation: 2s infinite linear neve-spin; }
-    .neve-typeface-control .neve-fonts-list li {
-      margin: 0; }
-      .neve-typeface-control .neve-fonts-list li.selected a {
-        background-color: #0b69da;
-        color: #fff; }
-      .neve-typeface-control .neve-fonts-list li.no-result {
-        opacity: .75;
-        font-weight: 600;
-        padding: 10px 0; }
-      .neve-typeface-control .neve-fonts-list li.font-group-header {
+    .neve-typeface-control .neve-fonts-list li.font-group-header {
+      text-align: left;
+      padding: 5px 10px;
+      font-size: 15px;
+      font-weight: 600;
+      background-color: #efefef; }
+    .neve-typeface-control .neve-fonts-list li a {
+      display: flex;
+      padding: 5px 10px;
+      transition: .2s ease;
+      color: #333;
+      border-bottom: 1px solid #efefef; }
+      .neve-typeface-control .neve-fonts-list li a:hover {
+        color: #fff;
+        background-color: #0073aa; }
+      .neve-typeface-control .neve-fonts-list li a .neve-font-family {
+        font-size: 14px;
+        font-weight: 400;
         text-align: left;
-        padding: 5px 10px;
-        font-size: 15px;
-        font-weight: 600;
-        background-color: #efefef; }
-      .neve-typeface-control .neve-fonts-list li a {
-        display: flex;
-        padding: 5px 10px;
-        transition: .2s ease;
-        color: #333;
-        border-bottom: 1px solid #efefef; }
-        .neve-typeface-control .neve-fonts-list li a:hover {
-          color: #fff;
-          background-color: #0073aa; }
-        .neve-typeface-control .neve-fonts-list li a .neve-font-family {
-          font-size: 14px;
-          font-weight: 400;
-          text-align: left;
-          max-width: 75%;
-          overflow: hidden;
-          text-overflow: ellipsis; }
-        .neve-typeface-control .neve-fonts-list li a .neve-font-preview {
-          font-display: swap;
-          margin-left: auto;
-          font-size: 20px; }
+        max-width: 75%;
+        overflow: hidden;
+        text-overflow: ellipsis; }
+      .neve-typeface-control .neve-fonts-list li a .neve-font-preview {
+        font-display: swap;
+        margin-left: auto;
+        font-size: 20px; }
 
 @-moz-keyframes neve-spin {
   100% {
@@ -287,47 +302,25 @@
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg); } }
 
-.neve-style-presets .single-preset {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  margin-bottom: 10px;
-  padding: 5px 10px; }
-
-.neve-style-presets .preset-header {
-  border-bottom: 1px solid #ccc; }
-
-.neve-text-transform:not(:last-child), .neve-font-family-control:not(:last-child) {
+.neve-radio-icons:not(:last-child), .neve-font-family-control:not(:last-child) {
   margin-bottom: 10px; }
 
 .neve-number-control-wrap:not(:last-child) {
   margin-bottom: 10px; }
 
-.neve-number-control-wrap .header {
-  display: flex; }
-  .neve-number-control-wrap .header .neve-units {
-    margin: 0 0 0 auto; }
-    .neve-number-control-wrap .header .neve-units .units {
-      border: none; }
-    .neve-number-control-wrap .header .neve-units .components-toolbar__control.components-button {
-      height: auto; }
-      .neve-number-control-wrap .header .neve-units .components-toolbar__control.components-button > svg {
-        width: 20px;
-        height: 18px;
-        padding: 0 5px; }
-
-.neve-text-transform .buttons {
+.neve-radio-icons .buttons {
   width: 100%; }
 
-.neve-text-transform .components-toolbar {
+.neve-radio-icons .components-toolbar {
   width: 100%; }
-  .neve-text-transform .components-toolbar button, .neve-text-transform .components-toolbar svg {
+  .neve-radio-icons .components-toolbar button, .neve-radio-icons .components-toolbar svg {
     width: 100%; }
-  .neve-text-transform .components-toolbar button {
+  .neve-radio-icons .components-toolbar button {
     height: 30px; }
-  .neve-text-transform .components-toolbar svg {
+  .neve-radio-icons .components-toolbar svg {
     padding: 0;
     height: 25px; }
-  .neve-text-transform .components-toolbar > div {
+  .neve-radio-icons .components-toolbar > div {
     flex: 1;
     align-items: center;
     justify-content: center; }
