@@ -1840,6 +1840,9 @@ let CustomizeBuilderV1;
 				let previewTemplate = "tmpl-hfg--widgets-preview";
 				_.each( that.devices, function( deviceName, device ) {
 					_.each( that.items, function( node ) {
+						if( node.description === null ) {
+							return false;
+						}
 						let componentPreview = template( node, previewTemplate );
 						$(that.widgetSidebarContainer).append(componentPreview);
 					} );

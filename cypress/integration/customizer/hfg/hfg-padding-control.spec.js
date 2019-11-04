@@ -38,7 +38,7 @@ function setupCustomizer() {
         click();
 
     // Link values
-    cy.get( '#customize-control-logo_component_padding  .neve-responsive-sizing > .nv-sizing-link > button' ).
+    cy.get( '#customize-control-logo_component_padding  .neve-responsive-sizing .components-toolbar div:first-child button' ).
         click();
 
     // Increase Top Padding value
@@ -57,7 +57,7 @@ function setupCustomizer() {
         should( 'have.value', '30' );
 
     // Click on Reset button
-    cy.get( '#customize-control-logo_component_padding .neve-responsive-sizing .nv-sizing-reset button' ).
+    cy.get( '#customize-control-logo_component_padding .neve-responsive-sizing .components-toolbar div:last-child button' ).
     click();
 
     // Check if Reset button works
@@ -71,7 +71,7 @@ function setupCustomizer() {
         should( 'have.value', '0' );
 
     // Unlink values
-    cy.get( '#customize-control-logo_component_padding  .neve-responsive-sizing > .nv-sizing-link > button' ).
+    cy.get( '#customize-control-logo_component_padding  .neve-responsive-sizing .components-toolbar div:first-child button' ).
         click();
 
     // Increase Top Padding value
