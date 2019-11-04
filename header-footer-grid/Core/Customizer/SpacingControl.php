@@ -41,6 +41,14 @@ class SpacingControl extends WP_Customize_Control {
 	 * @var array
 	 */
 	public $unit_choices = array( 'px' => 'px' );
+
+	/**
+	 * Hide the responsive switches.
+	 *
+	 * @var bool
+	 */
+	public $hide_responsive_switches = false;
+
 	/**
 	 * Enqueue control related scripts/styles.
 	 *
@@ -48,9 +56,19 @@ class SpacingControl extends WP_Customize_Control {
 	 */
 	public function enqueue() {
 		$base = Config::get_url() . '/Core/Customizer/';
-		wp_enqueue_script( 'hfg-responsive-spacing', $base . 'responsive-spacing.js', array( 'jquery', 'customize-base' ), NEVE_VERSION, true );
+		wp_enqueue_script(
+			'hfg-responsive-spacing',
+			$base . 'responsive-spacing.js',
+			array(
+				'jquery',
+				'customize-base',
+			),
+			NEVE_VERSION,
+			true 
+		);
 		wp_enqueue_style( 'hfg-responsive-spacing', $base . 'responsive-spacing.css', null, NEVE_VERSION );
 	}
+
 	/**
 	 * Refresh the parameters passed to the JavaScript via JSON.
 	 *
@@ -99,14 +117,15 @@ class SpacingControl extends WP_Customize_Control {
 				$val[ $unit_key ] = $unit_value;
 			}
 		}
-		$json['value']          = $val;
-		$json['choices']        = $this->choices;
-		$json['link']           = $this->get_link();
-		$json['id']             = $this->id;
-		$json['label']          = esc_html( $this->label );
-		$json['linked_choices'] = $this->linked_choices;
-		$json['unit_choices']   = $this->unit_choices;
-		$json['inputAttrs']     = '';
+		$json['value']                    = $val;
+		$json['choices']                  = $this->choices;
+		$json['link']                     = $this->get_link();
+		$json['id']                       = $this->id;
+		$json['label']                    = esc_html( $this->label );
+		$json['linked_choices']           = $this->linked_choices;
+		$json['unit_choices']             = $this->unit_choices;
+		$json['inputAttrs']               = '';
+		$json['hide_responsive_switches'] = $this->hide_responsive_switches;
 		foreach ( $this->input_attrs as $attr => $value ) {
 			$json['inputAttrs'] .= $attr . '="' . esc_attr( $value ) . '" ';
 		}
@@ -114,13 +133,14 @@ class SpacingControl extends WP_Customize_Control {
 
 		return $json;
 	}
+
 	/**
 	 * An Underscore (JS) template for this control's content (but not its container).
 	 *
 	 * Class variables for this control class are available in the `data` JS object;
 	 * export custom variables by overriding {@see WP_Customize_Control::to_json()}.
 	 *
-	 * @see WP_Customize_Control::print_template()
+	 * @see    WP_Customize_Control::print_template()
 	 *
 	 * @access protected
 	 */
@@ -143,11 +163,12 @@ class SpacingControl extends WP_Customize_Control {
 		mobile_unit_val = data.value['mobile-unit'];
 		}
 		#>
-		<label class='hfg-spacing-responsive' for="" >
+		<label class='hfg-spacing-responsive' for="">
 			<div class="hfg-spacing-header">
 				<# if ( data.label ) { #>
 				<span class="customize-control-title">{{{ data.label }}}</span>
 				<# } #>
+				<# if( data.hide_responsive_switches === false ) { #>
 				<ul class="hfg-spacing-responsive-btns">
 					<li class="desktop active">
 						<button type="button" class="preview-desktop active" data-device="desktop">
@@ -165,12 +186,15 @@ class SpacingControl extends WP_Customize_Control {
 						</button>
 					</li>
 				</ul>
-
+				<# } #>
 				<div class="hfg-spacing-responsive-units-screen-wrap">
 					<div class="unit-input-wrapper hfg-spacing-unit-wrapper">
-						<input type='hidden' class='hfg-spacing-unit-input hfg-spacing-desktop-unit' data-device='desktop' value='{{desktop_unit_val}}'>
-						<input type='hidden' class='hfg-spacing-unit-input hfg-spacing-tablet-unit' data-device='tablet' value='{{tablet_unit_val}}'>
-						<input type='hidden' class='hfg-spacing-unit-input hfg-spacing-mobile-unit' data-device='mobile' value='{{mobile_unit_val}}'>
+						<input type='hidden' class='hfg-spacing-unit-input hfg-spacing-desktop-unit'
+								data-device='desktop' value='{{desktop_unit_val}}'>
+						<input type='hidden' class='hfg-spacing-unit-input hfg-spacing-tablet-unit' data-device='tablet'
+								value='{{tablet_unit_val}}'>
+						<input type='hidden' class='hfg-spacing-unit-input hfg-spacing-mobile-unit' data-device='mobile'
+								value='{{mobile_unit_val}}'>
 					</div>
 				</div>
 
@@ -181,9 +205,11 @@ class SpacingControl extends WP_Customize_Control {
 						if ( desktop_unit_val === unit_key ) {
 						unit_class = 'active';
 						}
-						#><li class='single-unit {{ unit_class }}' data-unit='{{ unit_key }}' >
+						#>
+						<li class='single-unit {{ unit_class }}' data-unit='{{ unit_key }}'>
 							<span class="unit-text">{{{ unit_key }}}</span>
-						</li><#
+						</li>
+						<#
 						});#>
 					</ul>
 					<ul class="hfg-spacing-responsive-units hfg-spacing-tablet-responsive-units">
@@ -192,9 +218,11 @@ class SpacingControl extends WP_Customize_Control {
 						if ( tablet_unit_val === unit_key ) {
 						unit_class = 'active';
 						}
-						#><li class='single-unit {{ unit_class }}' data-unit='{{ unit_key }}' >
+						#>
+						<li class='single-unit {{ unit_class }}' data-unit='{{ unit_key }}'>
 							<span class="unit-text">{{{ unit_key }}}</span>
-						</li><#
+						</li>
+						<#
 						});#>
 					</ul>
 					<ul class="hfg-spacing-responsive-units hfg-spacing-mobile-responsive-units">
@@ -203,9 +231,11 @@ class SpacingControl extends WP_Customize_Control {
 						if ( mobile_unit_val === unit_key ) {
 						unit_class = 'active';
 						}
-						#><li class='single-unit {{ unit_class }}' data-unit='{{ unit_key }}' >
+						#>
+						<li class='single-unit {{ unit_class }}' data-unit='{{ unit_key }}'>
 							<span class="unit-text">{{{ unit_key }}}</span>
-						</li><#
+						</li>
+						<#
 						});#>
 					</ul>
 				</div>
@@ -217,8 +247,8 @@ class SpacingControl extends WP_Customize_Control {
 			<div class="hfg-spacing-responsive-outer-wrapper">
 				<#
 				value_desktop = '';
-				value_tablet  = '';
-				value_mobile  = '';
+				value_tablet = '';
+				value_mobile = '';
 
 				if ( data.value['desktop'] ) {
 				value_desktop = data.value['desktop'];
@@ -236,15 +266,21 @@ class SpacingControl extends WP_Customize_Control {
 					<ul class="hfg-spacing-wrapper desktop active"><#
 						if ( data.linked_choices ) { #>
 						<li class="hfg-spacing-input-item-link">
-							<span class="dashicons dashicons-admin-links hfg-spacing-connected wp-ui-highlight" data-element-connect="{{ data.id }}" title="{{ data.title }}"></span>
-							<span class="dashicons dashicons-editor-unlink hfg-spacing-disconnected" data-element-connect="{{ data.id }}" title="{{ data.title }}"></span>
-						</li><#
+							<span class="dashicons dashicons-admin-links hfg-spacing-connected wp-ui-highlight"
+									data-element-connect="{{ data.id }}" title="{{ data.title }}"></span>
+							<span class="dashicons dashicons-editor-unlink hfg-spacing-disconnected"
+									data-element-connect="{{ data.id }}" title="{{ data.title }}"></span>
+						</li>
+						<#
 						}
 						_.each( data.choices, function( choiceLabel, choiceID ) {
-						#><li {{{ data.inputAttrs }}} class='hfg-spacing-input-item'>
-							<input type='number' class='hfg-spacing-input hfg-spacing-desktop' data-id= '{{ choiceID }}' value='{{ value_desktop[ choiceID ] }}'>
+						#>
+						<li {{{ data.inputAttrs }}} class='hfg-spacing-input-item'>
+							<input type='number' class='hfg-spacing-input hfg-spacing-desktop' data-id='{{ choiceID }}'
+									value='{{ value_desktop[ choiceID ] }}'>
 							<span class="hfg-spacing-title">{{{ data.choices[ choiceID ] }}}</span>
-						</li><#
+						</li>
+						<#
 						}); #>
 						<li class="hfg-spacing-input-item-reset">
 							<span class="dashicons dashicons-image-rotate" data-device='desktop'></span>
@@ -256,15 +292,21 @@ class SpacingControl extends WP_Customize_Control {
 
 						if ( data.linked_choices ) { #>
 						<li class="hfg-spacing-input-item-link">
-							<span class="dashicons dashicons-admin-links hfg-spacing-connected wp-ui-highlight" data-element-connect="{{ data.id }}" title="{{ data.title }}"></span>
-							<span class="dashicons dashicons-editor-unlink hfg-spacing-disconnected" data-element-connect="{{ data.id }}" title="{{ data.title }}"></span>
-						</li><#
+							<span class="dashicons dashicons-admin-links hfg-spacing-connected wp-ui-highlight"
+									data-element-connect="{{ data.id }}" title="{{ data.title }}"></span>
+							<span class="dashicons dashicons-editor-unlink hfg-spacing-disconnected"
+									data-element-connect="{{ data.id }}" title="{{ data.title }}"></span>
+						</li>
+						<#
 						}
 						_.each( data.choices, function( choiceLabel, choiceID ) {
-						#><li {{{ data.inputAttrs }}} class='hfg-spacing-input-item'>
-							<input type='number' class='hfg-spacing-input hfg-spacing-tablet' data-id='{{ choiceID }}' value='{{ value_tablet[ choiceID ] }}'>
+						#>
+						<li {{{ data.inputAttrs }}} class='hfg-spacing-input-item'>
+							<input type='number' class='hfg-spacing-input hfg-spacing-tablet' data-id='{{ choiceID }}'
+									value='{{ value_tablet[ choiceID ] }}'>
 							<span class="hfg-spacing-title">{{{ data.choices[ choiceID ] }}}</span>
-						</li><#
+						</li>
+						<#
 						}); #>
 						<li class="hfg-spacing-input-item-reset">
 							<span class="dashicons dashicons-image-rotate" data-device='tablet'></span>
@@ -275,15 +317,21 @@ class SpacingControl extends WP_Customize_Control {
 					<ul class="hfg-spacing-wrapper mobile"><#
 						if ( data.linked_choices ) { #>
 						<li class="hfg-spacing-input-item-link">
-							<span class="dashicons dashicons-admin-links hfg-spacing-connected wp-ui-highlight" data-element-connect="{{ data.id }}" title="{{ data.title }}"></span>
-							<span class="dashicons dashicons-editor-unlink hfg-spacing-disconnected" data-element-connect="{{ data.id }}" title="{{ data.title }}"></span>
-						</li><#
+							<span class="dashicons dashicons-admin-links hfg-spacing-connected wp-ui-highlight"
+									data-element-connect="{{ data.id }}" title="{{ data.title }}"></span>
+							<span class="dashicons dashicons-editor-unlink hfg-spacing-disconnected"
+									data-element-connect="{{ data.id }}" title="{{ data.title }}"></span>
+						</li>
+						<#
 						}
 						_.each( data.choices, function( choiceLabel, choiceID ) {
-						#><li {{{ data.inputAttrs }}} class='hfg-spacing-input-item'>
-							<input type='number' class='hfg-spacing-input hfg-spacing-mobile' data-id='{{ choiceID }}' value='{{ value_mobile[ choiceID ] }}'>
+						#>
+						<li {{{ data.inputAttrs }}} class='hfg-spacing-input-item'>
+							<input type='number' class='hfg-spacing-input hfg-spacing-mobile' data-id='{{ choiceID }}'
+									value='{{ value_mobile[ choiceID ] }}'>
 							<span class="hfg-spacing-title">{{{ data.choices[ choiceID ] }}}</span>
-						</li><#
+						</li>
+						<#
 						}); #>
 						<li class="hfg-spacing-input-item-reset">
 							<span class="dashicons dashicons-image-rotate" data-device='mobile'></span>
@@ -296,10 +344,12 @@ class SpacingControl extends WP_Customize_Control {
 
 		<?php
 	}
+
 	/**
 	 * Render the control's content.
 	 *
 	 * @see WP_Customize_Control::render_content()
 	 */
-	protected function render_content() {}
+	protected function render_content() {
+	}
 }

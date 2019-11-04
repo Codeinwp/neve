@@ -84,17 +84,17 @@
 
 .hfg-item-right {
   text-align: left; }
-  .hfg-item-right #secondary-menu, .hfg-item-right .nv-nav-wrap, .hfg-item-right .component-wrap, .hfg-item-right .site-logo {
+  .hfg-item-right #secondary-menu, .hfg-item-right .nv-nav-wrap, .hfg-item-right .component-wrap, .hfg-item-right .site-logo, .hfg-item-right .nv-search-icon-component .nv-search, .hfg-item-right .builder-item--footer-menu {
     justify-content: flex-end; }
 
 .hfg-item-left {
   text-align: right; }
-  .hfg-item-left #secondary-menu, .hfg-item-left .nv-nav-wrap, .hfg-item-left .component-wrap, .hfg-item-left .site-logo {
+  .hfg-item-left #secondary-menu, .hfg-item-left .nv-nav-wrap, .hfg-item-left .component-wrap, .hfg-item-left .site-logo, .hfg-item-left .nv-search-icon-component .nv-search, .hfg-item-left .builder-item--footer-menu {
     justify-content: flex-start; }
 
 .hfg-item-center {
   text-align: center; }
-  .hfg-item-center #secondary-menu, .hfg-item-center .nv-nav-wrap, .hfg-item-center .component-wrap, .hfg-item-center .site-logo {
+  .hfg-item-center #secondary-menu, .hfg-item-center .nv-nav-wrap, .hfg-item-center .component-wrap, .hfg-item-center .site-logo, .hfg-item-center .nv-search-icon-component .nv-search, .hfg-item-center .builder-item--footer-menu {
     justify-content: center; }
 
 .header-menu-sidebar {
@@ -204,6 +204,8 @@
   visibility: visible;
   z-index: 999900;
   overflow: hidden; }
+  .menu_sidebar_dropdown .header-menu-sidebar .close-sidebar-panel {
+    display: none; }
 
 .menu_sidebar_dropdown .header-menu-sidebar-inner {
   max-width: 48em;
@@ -466,10 +468,13 @@ body.menu_sidebar_slide_left.menu_sidebar_dropdown:before {
     position: relative;
     width: inherit; }
     #secondary-menu li a {
-      display: flex;
-      justify-content: center;
+      text-align: center;
       padding: 0 10px;
       font-weight: 500; }
+    #secondary-menu li:last-of-type a {
+      padding-left: 0; }
+    #secondary-menu li:first-of-type a {
+      padding-right: 0; }
   #secondary-menu i {
     font-size: inherit;
     line-height: inherit;

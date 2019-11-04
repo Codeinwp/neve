@@ -13,6 +13,11 @@ export default [
 			format: 'iife',
 			sourceMap: 'inline'
 		},
+		watch: {
+			chokidar: {
+				usePolling: true
+			}
+		},
 		plugins: [
 			replace( {
 				'process.env.NODE_ENV': JSON.stringify( 'production' )

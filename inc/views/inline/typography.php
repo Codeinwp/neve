@@ -28,13 +28,22 @@ class Typography extends Base_Inline {
 	 * Body styles.
 	 */
 	private function add_body_style() {
-		$font_size   = get_theme_mod( 'neve_body_font_size' );
-		$line_height = get_theme_mod( 'neve_body_line_height' );
-		$font_size   = json_decode( $font_size, true );
-		$line_height = json_decode( $line_height, true );
+
+		$old_font_size   = get_theme_mod( 'neve_body_font_size' );
+		$old_line_height = get_theme_mod( 'neve_body_line_height' );
+		$old_font_size   = json_decode( $old_font_size, true );
+		$old_line_height = json_decode( $old_line_height, true );
+
+		$typeface_setup     = get_theme_mod( 'neve_typeface_general' );
+		$old_letter_spacing = get_theme_mod( 'neve_body_letter_spacing' );
+
+		$font_size   = isset( $typeface_setup['fontSize'] ) ? $typeface_setup['fontSize'] : $old_font_size;
+		$line_height = isset( $typeface_setup['lineHeight'] ) ? $typeface_setup['lineHeight'] : $old_line_height;
+
+		// Letter spacing wasn't previously a responsive setting.
+		$letter_spacing = isset( $typeface_setup['letterSpacing'] ) ? $typeface_setup['letterSpacing'] : $old_letter_spacing;
 
 		$style_setup = array();
-
 		if ( ! empty( $font_size ) ) {
 			$style_setup[] = array(
 				'css_prop' => 'font-size',
@@ -50,13 +59,32 @@ class Typography extends Base_Inline {
 			);
 		}
 
-		$this->add_responsive_style( $style_setup, 'body' );
+		if ( ! empty( $letter_spacing ) && is_array( $letter_spacing ) ) {
+			$style_setup[] = array(
+				'css_prop' => 'letter-spacing',
+				'value'    => $letter_spacing,
+				'suffix'   => 'px',
+			);
+		}
 
+		$this->add_responsive_style( $style_setup, 'body, .site-title' );
+
+		$old_font_weight    = get_theme_mod( 'neve_body_font_weight' );
+		$old_text_transform = get_theme_mod( 'neve_body_text_transform' );
+
+		$font_weight    = isset( $typeface_setup['fontWeight'] ) ? $typeface_setup['fontWeight'] : $old_font_weight;
+		$text_transform = isset( $typeface_setup['textTransform'] ) ? $typeface_setup['textTransform'] : $old_text_transform;
 		$body_font      = get_theme_mod( 'neve_body_font_family', false );
-		$font_weight    = get_theme_mod( 'neve_body_font_weight' );
-		$text_transform = get_theme_mod( 'neve_body_text_transform' );
-		$spacing        = get_theme_mod( 'neve_body_letter_spacing' );
-		$style_setup    = array();
+
+		$style_setup = array();
+		// Letter spacing was not previously responsive - this accounts for that.
+		if ( ! empty( $letter_spacing ) && ! is_array( $letter_spacing ) ) {
+			$style_setup[] = array(
+				'css_prop' => 'letter-spacing',
+				'value'    => $letter_spacing,
+				'suffix'   => 'px',
+			);
+		}
 		if ( ! empty( $body_font ) && $body_font !== 'default' ) {
 			$style_setup[] = array(
 				'css_prop' => 'font-family',
@@ -75,17 +103,10 @@ class Typography extends Base_Inline {
 				'value'    => $text_transform,
 			);
 		}
-		if ( ! empty( $spacing ) ) {
-			$style_setup[] =
-				array(
-					'css_prop' => 'letter-spacing',
-					'value'    => $spacing,
-					'suffix'   => 'px',
-				);
-		}
+
 		$this->add_style(
 			$style_setup,
-			apply_filters( 'neve_body_font_family_selectors', 'body' )
+			apply_filters( 'neve_body_font_family_selectors', 'body, .site-title' )
 		);
 	}
 
@@ -94,7 +115,7 @@ class Typography extends Base_Inline {
 	 */
 	private function add_headings_styles() {
 		$controls = array(
-			'h1' => 'h1:not(.site-title), .single .entry-title',
+			'h1' => 'h1:not(.site-title), .single h1.entry-title',
 			'h2' => 'h2',
 			'h3' => 'h3',
 			'h4' => 'h4',
@@ -103,8 +124,26 @@ class Typography extends Base_Inline {
 		);
 
 		foreach ( $controls as $control => $selector ) {
-			$font_size = get_theme_mod( 'neve_' . $control . '_font_size' );
-			$font_size = json_decode( $font_size, true );
+			$old_font_size      = json_decode( get_theme_mod( 'neve_' . $control . '_font_size' ), true );
+			$old_font_weight    = get_theme_mod( 'neve_headings_font_weight' );
+			$old_letter_spacing = get_theme_mod( 'neve_headings_letter_spacing' );
+			$old_text_transform = get_theme_mod( 'neve_headings_text_transform' );
+
+			$typeface_setup = get_theme_mod( 'neve_' . $control . '_typeface_general' );
+
+			// Check if previous settings version was set and use that.
+			$old_line_height = get_theme_mod( 'neve_' . $control . '_line_height' );
+			// Check if even older version was set and use that if latest doesn't exist.
+			$old_line_height = empty( $old_line_height ) ? get_theme_mod( 'neve_headings_line_height' ) : $old_line_height;
+			$old_line_height = json_decode( $old_line_height, true );
+			// If there's no new value, use the old options.
+			$line_height = isset( $typeface_setup['lineHeight'] ) ? $typeface_setup['lineHeight'] : $old_line_height;
+
+			$font_size      = isset( $typeface_setup['fontSize'] ) ? $typeface_setup['fontSize'] : $old_font_size;
+			$font_weight    = isset( $typeface_setup['fontWeight'] ) ? $typeface_setup['fontWeight'] : $old_font_weight;
+			$text_transform = isset( $typeface_setup['textTransform'] ) ? $typeface_setup['textTransform'] : $old_text_transform;
+			// Letter spacing wasn't previously a responsive setting.
+			$letter_spacing = isset( $typeface_setup['letterSpacing'] ) ? $typeface_setup['letterSpacing'] : $old_letter_spacing;
 
 			if ( ! empty( $font_size ) ) {
 				$this->add_responsive_style(
@@ -119,9 +158,54 @@ class Typography extends Base_Inline {
 				);
 			}
 
-			$line_height_default = get_theme_mod( 'neve_headings_line_height' );
-			$line_height         = get_theme_mod( 'neve_' . $control . '_line_height', $line_height_default );
-			$line_height         = json_decode( $line_height, true );
+			if ( ! empty( $font_weight ) ) {
+				$this->add_style(
+					array(
+						array(
+							'css_prop' => 'font-weight',
+							'value'    => $font_weight,
+						),
+					),
+					$selector
+				);
+			}
+			if ( ! empty( $text_transform ) ) {
+				$this->add_style(
+					array(
+						array(
+							'css_prop' => 'text-transform',
+							'value'    => $text_transform,
+						),
+					),
+					$selector
+				);
+			}
+			// Letter spacing was not previously responsive - this accounts for that.
+			if ( ! empty( $letter_spacing ) && ! is_array( $letter_spacing ) ) {
+				$this->add_style(
+					array(
+						array(
+							'css_prop' => 'letter-spacing',
+							'value'    => $letter_spacing,
+							'suffix'   => 'px',
+						),
+					),
+					$selector
+				);
+			}
+
+			if ( ! empty( $letter_spacing ) && is_array( $letter_spacing ) ) {
+				$this->add_responsive_style(
+					array(
+						array(
+							'css_prop' => 'letter-spacing',
+							'value'    => $letter_spacing,
+							'suffix'   => 'px',
+						),
+					),
+					$selector
+				);
+			}
 
 			if ( ! empty( $line_height ) ) {
 				$this->add_responsive_style(
@@ -136,39 +220,18 @@ class Typography extends Base_Inline {
 			}
 		}
 
-		$headings_font  = get_theme_mod( 'neve_headings_font_family', false );
-		$font_weight    = get_theme_mod( 'neve_headings_font_weight' );
-		$text_transform = get_theme_mod( 'neve_headings_text_transform' );
-		$spacing        = get_theme_mod( 'neve_headings_letter_spacing' );
-		$style_setup    = array();
+		$headings_font = get_theme_mod( 'neve_headings_font_family', false );
+
+		$style_setup = array();
 		if ( ! empty( $headings_font ) && $headings_font !== 'default' ) {
 			$style_setup[] = array(
 				'css_prop' => 'font-family',
 				'value'    => esc_html( $headings_font ),
 			);
 		}
-		if ( ! empty( $font_weight ) ) {
-			$style_setup[] = array(
-				'css_prop' => 'font-weight',
-				'value'    => $font_weight,
-			);
-		}
-		if ( ! empty( $text_transform ) ) {
-			$style_setup[] = array(
-				'css_prop' => 'text-transform',
-				'value'    => $text_transform,
-			);
-		}
-		if ( ! empty( $spacing ) ) {
-			$style_setup[] = array(
-				'css_prop' => 'letter-spacing',
-				'value'    => $spacing,
-				'suffix'   => 'px',
-			);
-		}
 		$this->add_style(
 			$style_setup,
-			apply_filters( 'neve_headings_font_family_selectors', 'h1, .single .entry-title, h2, h3, h4, h5, h6' )
+			apply_filters( 'neve_headings_font_family_selectors', 'h1, .single h1.entry-title, h2, h3, h4, h5, h6' )
 		);
 	}
 }

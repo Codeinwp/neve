@@ -15,21 +15,6 @@
 
 (function($) {
     "use strict";
-    wp.tiCustomizeButton = {
-        init: function() {
-            jQuery("#customize-theme-controls").on("click", ".menu-shortcut", function(e) {
-                wp.customize.section("menu_locations").focus();
-                e.preventDefault();
-            });
-        }
-    };
-    $(document).ready(function() {
-        wp.tiCustomizeButton.init();
-    });
-})(jQuery);
-
-(function($) {
-    "use strict";
     wp.neveSelect = {
         init: function() {
             var self = this;
@@ -484,28 +469,29 @@ wp.customize.controlConstructor["interface-tabs"] = wp.customize.Control.extend(
                 });
             }
         });
-        this.init();
-        this.handleClick();
+        var self = this;
+        jQuery(window).on("load", function() {
+            self.init();
+            self.handleClick();
+        });
     },
     init: function() {
         var control = this;
         var section = control.section();
-        wp.customize.bind("ready", function() {
-            control.hideAllControls(section);
-            var tab = control.params.controls.general ? "general" : Object.keys(control.params.controls)[0];
-            var controlsToShow = control.params.controls[tab];
-            var allControls = [];
-            for (var controlName in controlsToShow) {
-                if (controlsToShow.hasOwnProperty(controlName)) {
-                    if (jQuery.isEmptyObject(controlsToShow[controlName]) === false && typeof wp.customize.control(controlName) !== "undefined") {
-                        var subTabValue = wp.customize.control(controlName).setting._value;
-                        allControls = allControls.concat(controlsToShow[controlName][subTabValue]);
-                    }
-                    allControls.push(controlName);
+        control.hideAllControls(section);
+        var tab = control.params.controls.general ? "general" : Object.keys(control.params.controls)[0];
+        var controlsToShow = control.params.controls[tab];
+        var allControls = [];
+        for (var controlName in controlsToShow) {
+            if (controlsToShow.hasOwnProperty(controlName)) {
+                if (jQuery.isEmptyObject(controlsToShow[controlName]) === false && typeof wp.customize.control(controlName) !== "undefined") {
+                    var subTabValue = wp.customize.control(controlName).setting._value;
+                    allControls = allControls.concat(controlsToShow[controlName][subTabValue]);
                 }
+                allControls.push(controlName);
             }
-            control.showControls(allControls, section);
-        });
+        }
+        control.showControls(allControls, section);
     },
     hideAllControls: function(section) {
         var controls = wp.customize.section(section).controls();
@@ -566,7 +552,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         var elChild = document.createElement("li");
         elChild.innerHTML = markup;
         var el = document.getElementById("sub-accordion-panel-hfg_header");
-        el.insertBefore(elChild, el.children[1]);
+        el.appendChild(elChild);
     }
 });
 //# sourceMappingURL=customizer-controls.js.map

@@ -265,6 +265,7 @@ class Customizer {
 			<div class="grid-stack-item item-from-list for-s-{{ data.section }}"
 					title="{{ data.name }}"
 					data-id="{{ data.id }}"
+					data-slug="{{ data.componentSlug }}"
 					data-section="{{ data.section }}"
 					data-control="{{ data.control }}"
 					data-gs-x="{{ data.x }}"
@@ -275,10 +276,44 @@ class Customizer {
 			>
 				<div class="item-tooltip" data-section="{{ data.section }}">{{ data.name }}</div>
 				<div class="grid-stack-item-content">
+					<div class="hfg--sidebar-visible icon"><i class="dashicons dashicons-{{data.icon}}"></i></div>
 					<span class="hfg--cb-item-name" data-section="{{ data.section }}">{{ data.name }}</span>
 					<span class="hfg--cb-item-remove hfg-cb-icon"></span>
 					<span class="hfg--cb-item-setting hfg-cb-icon" data-section="{{ data.section }}"></span>
 				</div>
+			</div>
+		</script>
+
+		<script type="text/html" id="tmpl-hfg--widgets-sidebar">
+			<div class="hfg--widgets-panel" data-id="{{ data.id }}">
+				<div class="hfg-widgets-panel-header">
+					<div class="hfg-component-search">
+						<i class="dashicons dashicons-search"></i>
+						<input class="component-search" type="search"
+								placeholder="<?php esc_html_e( 'Search Components', 'neve' ); ?>..."/>
+					</div>
+					<button class="close button button-link">
+						<i class="dashicons dashicons-no"></i>
+					</button>
+				</div>
+				<div class="hfg-widgets-panel-inner"></div>
+			</div>
+		</script>
+
+		<script type="text/html" id="tmpl-hfg--widgets-preview">
+			<div class="hfg--component-preview" data-for-component="{{ data.id }}">
+				<div class="header">
+					<div class="title-wrap">
+						<div class="icon"><i class="dashicons dashicons-{{data.icon}}"></i></div>
+						<span class="name" data-section="{{ data.section }}">{{ data.name }}</span>
+					</div>
+					<# if(data.description) { #>
+					<div class="description">{{data.description}}</div>
+					<# } #>
+				</div>
+				<# if(data.previewImage) {#>
+				<img src="{{data.previewImage}}" alt="{{data.name}}">
+				<# } #>
 			</div>
 		</script>
 

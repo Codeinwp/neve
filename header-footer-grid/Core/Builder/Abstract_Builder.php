@@ -12,6 +12,7 @@
 namespace HFG\Core\Builder;
 
 use HFG\Core\Components\Abstract_Component;
+use HFG\Core\Customizer\Instructions_Section;
 use HFG\Core\Interfaces\Builder;
 use HFG\Core\Interfaces\Component;
 use HFG\Core\Settings;
@@ -164,6 +165,13 @@ abstract class Abstract_Builder implements Builder {
 	protected $builder_components = array();
 
 	/**
+	 * The quick links setup array.
+	 *
+	 * @var array
+	 */
+	protected $instructions_array = array();
+
+	/**
 	 * Abstract_Builder constructor.
 	 *
 	 * @since   1.0.0
@@ -250,7 +258,7 @@ abstract class Abstract_Builder implements Builder {
 			)
 		);
 		if ( $row_id === 'sidebar' ) {
-			$row_class = '.header-menu-sidebar-bg';
+			$row_class = '.header-menu-sidebar';
 		}
 
 		SettingsManager::get_instance()->add(
@@ -325,17 +333,17 @@ abstract class Abstract_Builder implements Builder {
 						'input_attr'  => [
 							'mobile'  => [
 								'min'     => 0,
-								'max'     => 350,
+								'max'     => 700,
 								'default' => 0,
 							],
 							'tablet'  => [
 								'min'     => 0,
-								'max'     => 350,
+								'max'     => 700,
 								'default' => 0,
 							],
 							'desktop' => [
 								'min'     => 0,
-								'max'     => 350,
+								'max'     => 700,
 								'default' => 0,
 							],
 						],
@@ -366,7 +374,7 @@ abstract class Abstract_Builder implements Builder {
 				'section'               => $row_setting_id,
 				'label'                 => __( 'Row Background', 'neve' ),
 				'type'                  => 'neve_background_control',
-				'live_refresh_selector' => $row_class,
+				'live_refresh_selector' => $row_id === 'sidebar' ? $row_class . ' .header-menu-sidebar-bg' : $row_class,
 				'options'               => [
 					'priority' => 100,
 				],
@@ -526,6 +534,27 @@ abstract class Abstract_Builder implements Builder {
 				'panel'    => $this->panel,
 			)
 		);
+
+		if ( ! empty( $this->instructions_array ) ) {
+			if ( get_theme_mod( $this->panel . '_layout', false ) !== false ) {
+				$this->instructions_array['image']       = false;
+				$this->instructions_array['description'] = false;
+			}
+
+			$wp_customize->add_section(
+				new Instructions_Section(
+					$wp_customize,
+					$this->section . '_quick_links',
+					array(
+						'priority' => - 100,
+						'panel'    => $this->panel,
+						'type'     => 'hfg_instructions',
+						'options'  => $this->instructions_array,
+					)
+				)
+			);
+		}
+
 
 		Settings\Manager::get_instance()->load( $this->control_id, $wp_customize );
 
@@ -752,7 +781,6 @@ abstract class Abstract_Builder implements Builder {
 			if ( $background['fixed'] === true ) {
 				$css_setup['background-attachment'] = 'fixed';
 			}
-
 
 			if ( ! empty( $background['overlayColorValue'] ) && ! empty( $background['overlayOpacity'] ) ) {
 				$css_array[ $selector . ':before' ] = array(

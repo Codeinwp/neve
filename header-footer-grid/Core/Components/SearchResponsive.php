@@ -35,6 +35,7 @@ class SearchResponsive extends Abstract_Component {
 		$this->set_property( 'label', __( 'Search Icon', 'neve' ) );
 		$this->set_property( 'id', self::COMPONENT_ID );
 		$this->set_property( 'width', 1 );
+		$this->set_property( 'icon', 'search' );
 	}
 
 	/**

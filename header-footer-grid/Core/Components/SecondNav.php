@@ -38,6 +38,7 @@ class SecondNav extends Abstract_Component {
 		$this->set_property( 'id', $this->get_class_const( 'COMPONENT_ID' ) );
 		$this->set_property( 'width', 6 );
 		$this->set_property( 'section', 'secondary_menu_primary' );
+		$this->set_property( 'icon', 'tagcloud' );
 	}
 
 	/**

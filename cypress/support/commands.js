@@ -1,16 +1,37 @@
 import 'cypress-file-upload';
-
+Cypress.Cookies.defaults({
+	whitelist: /wordpress_.*/
+});
 Cypress.Commands.add( 'login', (nextRoute = null) => {
-	cy.viewport( 1920, 1080 );
-	cy.visit( '/wp-admin' );
-	cy.wait( 500 );
-	cy.get( '#user_login' ).type( 'admin' );
-	cy.get( '#user_pass' ).type( 'admin' );
-	cy.get( '#wp-submit' ).click();
-	if ( nextRoute === null ) {
-		return;
-	}
-	cy.visit( nextRoute );
+	//console.log(cy.getCookies());
+
+	let cookies = cy.getCookies({log:true}).then(function(cookies){
+		let isLoggedIn = false;
+		cookies.forEach(function(value) {
+			if (value.name.includes("wordpress_")) {
+				isLoggedIn = true;
+			}
+		});
+
+		if(isLoggedIn){
+			if ( nextRoute !== null ) {
+				cy.visit( nextRoute );
+			}
+			return;
+		}
+		cy.viewport( 1920, 1080 );
+		cy.visit( '/wp-admin' );
+		cy.wait( 500 );
+		cy.get( '#user_login' ).type( 'admin' );
+		cy.get( '#user_pass' ).type( 'admin' );
+		cy.get( '#wp-submit' ).click();
+		if ( nextRoute === null ) {
+			return;
+		}
+		cy.visit( nextRoute );
+	});
+
+
 } );
 Cypress.Commands.add( 'navigate',
 		(nextRoute = '/') => {
@@ -48,7 +69,7 @@ function addFeaturedImage() {
 	cy.fixture( fileName ).then( fileContent => {
 		cy.get( '.upload-ui' ).upload(
 				{ fileContent, fileName, mimeType: 'image/jpg' },
-				{ subjectType: 'drag-n-drop' }
+				{ subjectType: 'drag-n-drop',force:true }
 		);
 	} );
 	cy.wait(2500);
