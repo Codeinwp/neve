@@ -310,7 +310,7 @@ class Typography extends Base_Customizer {
 		$font_weight    = get_theme_mod( 'neve_body_font_weight' );
 
 		if ( ! empty( $font_size ) ) {
-			$default['fontSize'] = json_decode( $font_size, true );
+			$default['fontSize'] = array_merge( json_decode( $font_size, true ), $default['fontSize'] );
 		}
 		if ( ! empty( $line_height ) ) {
 			$default['lineHeight'] = json_decode( $line_height, true );
