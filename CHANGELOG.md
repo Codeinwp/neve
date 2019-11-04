@@ -1,4 +1,8 @@
 
+ ### v2.5.1 - 2019-11-04 
+ **Changes:** 
+ * [Fix] Correct migration of body font size to new version
+ 
  ### v2.5.0 - 2019-11-04 
  **Changes:** 
  * [Feat] Improve header/footer builder UX

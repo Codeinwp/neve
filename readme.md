@@ -18,6 +18,11 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
+### 2.5.1 - 2019-11-04  ###
+
+* [Fix] Correct migration of body font size to new version
+
+
 ### 2.5.0 - 2019-11-04  ###
 
 * [Feat] Improve header/footer builder UX
