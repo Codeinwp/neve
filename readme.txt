@@ -18,6 +18,24 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
+= 2.5.0 - 2019-11-04  = 
+
+* [Feat] Improve header/footer builder UX
+* [Feat] Increased header/footer builder row height to 700px
+* [Feat] Improve typography controls, adds Text Transform, Font Weight, Letter Spacing controls for headings.
+* [Feat] Shadow option for the blog thumbnails
+* [Fix] Removed extra padding-top on embeds
+* [Fix] Embeds not visible on the blog page
+* [Fix] Small compatibility issues with WP 5.3
+* [Fix] Cover block text color not updating
+* [Fix] Reply comments mechanism when Yoast is installed
+* [Fix] Scroll on mobile and tablet and wireframe view in the Divi editor
+* [Fix] Content width on full-width container
+* [Fix] Headings blocks errors with Gutenberg 6.8.0
+* New Beaver Builder Starter Sites
+* New Brizy Starter Sites
+
+
 
 = 2.4.3 - 2019-10-10  =
 
