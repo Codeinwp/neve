@@ -54,7 +54,7 @@ function setupCustomizer() {
         should( 'have.value', '2' );
 
     // Click on Reset button
-    cy.get( '#customize-control-primary-menu_component_margin .nv-sizing-reset button' ).
+    cy.get( '#customize-control-primary-menu_component_margin .neve-responsive-sizing .components-toolbar div:last-child button' ).
         click();
 
     // Check if Reset button works
@@ -68,7 +68,7 @@ function setupCustomizer() {
         should( 'have.value', '0' );
 
     // Unlink values
-    cy.get( '#customize-control-primary-menu_component_margin  .neve-responsive-sizing > .nv-sizing-link > button' ).
+    cy.get( '#customize-control-primary-menu_component_margin .neve-responsive-sizing .components-toolbar div:first-child button' ).
         click();
 
     // Increase Top Margin value

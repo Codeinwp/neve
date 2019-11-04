@@ -50,7 +50,7 @@ function setupCustomizer() {
 function alignCenter() {
 
     // Click on align center button
-    cy.get('label[for="nv_customize-input-logo_component_align-radio-center"]').
+    cy.get('#customize-control-logo_component_align .components-toolbar div:nth-child(2) button').
         click();
 
     cy.get( '#save' ).should('be.visible').click();
@@ -69,7 +69,7 @@ function checkAlignCenter() {
 function alignRight() {
 
     // Click on align right button
-    cy.get('label[for="nv_customize-input-logo_component_align-radio-right"]').
+    cy.get('#customize-control-logo_component_align .components-toolbar div:last-child button').
         click();
 
     cy.get( '#save' ).should('be.visible').click();
