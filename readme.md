@@ -691,5 +691,53 @@ Starter Sites screenshots resources:
 * http://mystock.themeisle.com/photo/wedding-bouquet/
 * http://mystock.themeisle.com/photo/wedding-flower-decorations/
 
+- Cake Shop
+* https://stocksnap.io/photo/F6DNP46F78
+* https://stocksnap.io/photo/7G24TFZEKU
 
+- Transport
+* http://mystock.themeisle.com/photo/docks/
+* http://mystock.themeisle.com/photo/industrial-boat/
 
+- eBook
+* http://mystock.themeisle.com/photo/the-statue-of-liberty-at-sunset/
+* http://mystock.themeisle.com/photo/brasov-old-city/
+* http://mystock.themeisle.com/photo/mysterious-man-2/
+
+- Speed
+* http://mystock.themeisle.com/photo/couch-with-two-green-pillows/
+* http://mystock.themeisle.com/photo/mannequin/
+* http://mystock.themeisle.com/photo/grooms-suite/
+* http://mystock.themeisle.com/photo/luggage-tag-label-on-suitcase-or-bag-with-the-sea-behind-it/
+
+- Food Magazine
+* https://mystock.themeisle.com/photo/caesar-salad/
+* https://mystock.themeisle.com/photo/indian-restaurant-dishes/
+* https://mystock.themeisle.com/photo/mac-and-cheese-pizza/
+* https://mystock.themeisle.com/photo/delicious-morning-breakfast-served-on-a-tray/
+
+- Web Design
+* https://mystock.themeisle.com/photo/programming-laptop/
+* https://mystock.themeisle.com/photo/ipad/
+
+- Yoga Studio
+* https://stocksnap.io/photo/OYD9ZOOCCQ
+* https://stocksnap.io/photo/TL7LKEE0HR
+* https://stocksnap.io/photo/W23EUNXBCG
+* https://stocksnap.io/photo/MM6OVJGYRU
+* https://mystock.themeisle.com/photo/floor-pattern/
+
+- Sales Funnel
+* https://mystock.themeisle.com/photo/cityscape-of-new-york-2/
+
+- Church
+* https://mystock.themeisle.com/photo/vatican-streets/
+* https://stocksnap.io/photo/M2XAYFTTEN
+* https://stocksnap.io/photo/MOUVID40QD
+* https://stocksnap.io/photo/AM7OQR2274
+
+- Fashion Magazine
+* https://stocksnap.io/photo/F08ZV0M412
+* https://stocksnap.io/photo/V5A73VEOJO
+* https://stocksnap.io/photo/AOOC3CJARN
+* https://stocksnap.io/photo/HKTKMOVXNO

@@ -37,8 +37,10 @@ class Nav extends Abstract_Component {
 	 */
 	public function init() {
 		$this->set_property( 'label', __( 'Primary Menu', 'neve' ) );
+		$this->set_property( 'component_slug', 'hfg-primary-menu' );
 		$this->set_property( 'id', $this->get_class_const( 'COMPONENT_ID' ) );
 		$this->set_property( 'width', 6 );
+		$this->set_property( 'icon', 'tagcloud' );
 		$this->set_property( 'section', 'header_menu_primary' );
 
 		$this->default_align = 'right';
@@ -275,7 +277,6 @@ class Nav extends Abstract_Component {
 
 		return parent::add_style( $css_array );
 	}
-
 
 	/**
 	 * Map last menu item from select type control to ordering control.

@@ -5,6 +5,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
         var elChild = document.createElement('li');
         elChild.innerHTML = markup;
         var el = document.getElementById('sub-accordion-panel-hfg_header');
-        el.insertBefore(elChild, el.children[1]);
+        el.appendChild(elChild);
     }
 });
