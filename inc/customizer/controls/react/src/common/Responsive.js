@@ -59,7 +59,7 @@ class ResponsiveControl extends Component {
 												<Tooltip text={deviceMap[device].tooltip}>
 													<Button
 															isTertiary
-															className={{ 'active-device': device === view }}
+															className={ (device === view ? 'active-device ' : '') + device}
 															onClick={() => {
 																let event = new CustomEvent(
 																		'neveChangedRepsonsivePreview', {

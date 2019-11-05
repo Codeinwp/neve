@@ -54,7 +54,6 @@ class SizingControl extends Component {
 											renderToggle={({ isOpen, onToggle }) => (
 													<input
 															type="number"
-															id={i.type + '-input'}
 															value={i.value && i.value}
 															min={this.props.min}
 															max={this.props.max}
