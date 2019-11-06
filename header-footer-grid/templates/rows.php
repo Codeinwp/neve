@@ -69,16 +69,13 @@ namespace HFG;
 
 	<# if ( data.device != 'desktop' ) { #>
 	<# if ( ! _.isUndefined( data.rows.sidebar ) ) { #>
-	<?php
-	$is_active = setting( 'nav-icon_sidebar' );
-	$style     = '';
-	if ( $is_active ) {
-		$style = 'style="display: block;"';
-	}
-	?>
-	<div class="hfg--cp-sidebar" <?php echo ( $style );  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> >
-		<h4><?php echo __( 'Sidebar', 'neve' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></h4>
+	<div class="hfg--cp-sidebar">
+		<h4><?php echo __( 'Mobile menu content', 'neve' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></h4>
 		<div class="hfg--row-bottom hfg--cb-row" data-id="{{ data.id }}_sidebar">
+			<a href="#" class="toggle">
+				<span class="show"><?php echo esc_html__( 'Show', 'neve' ); ?></span>
+				<span class="hide"><?php echo esc_html__( 'Hide', 'neve' ); ?></span>
+			</a>
 			<a class="hfg--cb-row-settings" title="{{ data.rows.sidebar.title || data.rows.sidebar }}" data-id="sidebar" href="#"></a>
 			<div class="hfg--row-inner">
 				<div class="row--title">{{ data.rows.sidebar.title || data.rows.sidebar }}</div>

@@ -402,3 +402,30 @@ body.hfg--widgets-open .wp-full-overlay:after {
     line-height: 1.6;
   }
 }
+
+.hfg--cp-sidebar {
+  position: relative;
+
+  .toggle {
+    position: absolute;
+    top: -24px;
+    right: -1px;
+    padding: 2px 10px;
+    font-weight: 600;
+    text-decoration: none;
+
+    span.hide {
+      display: none;
+    }
+
+    &.active {
+      span.hide {
+        display: block;
+      }
+
+      span.show {
+        display: none;
+      }
+    }
+  }
+}

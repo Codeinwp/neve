@@ -1419,7 +1419,6 @@
     width: 80%;
     flex-grow: 1; }
   .hfg--device-panel.hfg--panel-mobile .hfg--cp-sidebar {
-    display: none;
     width: 20%;
     min-height: 160px;
     height: 100%; }
@@ -3209,3 +3208,19 @@ body.hfg--widgets-open .wp-full-overlay:after {
   .hfg--component-preview .description {
     margin-top: 10px;
     line-height: 1.6; }
+
+.hfg--cp-sidebar {
+  position: relative; }
+  .hfg--cp-sidebar .toggle {
+    position: absolute;
+    top: -24px;
+    right: -1px;
+    padding: 2px 10px;
+    font-weight: 600;
+    text-decoration: none; }
+    .hfg--cp-sidebar .toggle span.hide {
+      display: none; }
+    .hfg--cp-sidebar .toggle.active span.hide {
+      display: block; }
+    .hfg--cp-sidebar .toggle.active span.show {
+      display: none; }

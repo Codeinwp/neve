@@ -125,8 +125,6 @@ class Header extends Abstract_Builder {
 	 * @access  protected
 	 */
 	protected function get_rows() {
-
-
 		return [
 			'top'     => array(
 				'title'       => esc_html__( 'Header Top', 'neve' ),
@@ -141,7 +139,7 @@ class Header extends Abstract_Builder {
 				'description' => $this->get_property( 'description' ),
 			),
 			'sidebar' => array(
-				'title'       => esc_html__( 'Header Sidebar', 'neve' ),
+				'title'       => esc_html__( 'Mobile menu content', 'neve' ),
 				'description' => $this->get_property( 'description' ),
 			),
 		];
