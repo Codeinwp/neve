@@ -31,7 +31,7 @@
     "@commitlint/cli": "^8.3.3",
     "@commitlint/config-conventional": "^8.2.0",
     "babel-loader": "^8.0.6",
-    "core-js": "^3.3.5",
+    "core-js": "^3.3.6",
     "cross-env": "^6.0.3",
     "cypress": "^3.6.0",
     "grunt": "^1.0.4",
