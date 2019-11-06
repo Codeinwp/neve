@@ -154,6 +154,7 @@ class TypefaceComponent extends Component {
 								onChange={(currentDevice) => this.setState(
 										{ currentDevice } )}>
 							<NumberControl
+									className="font-size"
 									label={__( 'Font Size', 'neve' )}
 									default={this.controlParams.size_default[this.state.currentDevice]}
 									onChange={(val) => {
@@ -182,6 +183,7 @@ class TypefaceComponent extends Component {
 									}}
 							/>
 							<NumberControl
+									className="line-height"
 									label={__( 'Line Height', 'neve' )}
 									step={0.1}
 									default={this.controlParams.line_height_default[this.state.currentDevice]}
@@ -202,6 +204,7 @@ class TypefaceComponent extends Component {
 									min={0.5}
 							/>
 							<NumberControl
+									className="letter-spacing"
 									label={__( 'Letter Spacing', 'neve' )}
 									step={0.1}
 									default={this.controlParams.letter_spacing_default[this.state.currentDevice]}

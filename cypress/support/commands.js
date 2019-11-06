@@ -19,7 +19,6 @@ Cypress.Commands.add( 'login', (nextRoute = null) => {
 			}
 			return;
 		}
-		cy.viewport( 1920, 1080 );
 		cy.visit( '/wp-admin' );
 		cy.wait( 500 );
 		cy.get( '#user_login' ).type( 'admin' );
