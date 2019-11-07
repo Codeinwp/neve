@@ -907,7 +907,7 @@ class Front_End {
 					'neve-fishing-club'          => array(
 						'url'        => 'https://demo.themeisle.com/neve-fishing-club/',
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/11/neve-fishing.jpg',
-						'title'      => 'Fishing & Hunting Club',
+						'title'      => 'Fishing and Hunting Club',
 					),
 				),
 				'brizy'            => array(
