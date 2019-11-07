@@ -3,83 +3,93 @@
   padding: 10px;
   background: #fff; }
 
-.customize-control-neve_background_control {
+.neve-color-preview {
+  width: 20px;
+  border-radius: 3px;
+  border: 1px solid #767676;
+  height: 15px;
+  left: 3px;
+  top: -20px;
+  float: left;
+  position: relative; }
+
+.neve-button-appearance-control .neve-white-background-control {
+  padding-bottom: 0; }
+
+.neve-button-appearance-control .components-panel {
+  margin: 0 -11px; }
+
+.neve-button-appearance-control .components-panel__row {
+  display: block; }
+
+.customize-control-neve_background_control, .neve-button-appearance-control {
   margin-bottom: 20px; }
-  .customize-control-neve_background_control .color-preview {
-    width: 20px;
-    border-radius: 3px;
-    border: 1px solid #767676;
-    height: 15px;
-    left: 3px;
-    top: -20px;
-    float: left;
-    position: relative; }
-  .customize-control-neve_background_control .components-color-picker__inputs-toggle {
+  .customize-control-neve_background_control .components-color-picker__inputs-toggle, .neve-button-appearance-control .components-color-picker__inputs-toggle {
     margin-left: auto; }
-  .customize-control-neve_background_control .components-tooltip.components-popover {
+  .customize-control-neve_background_control .components-tooltip.components-popover, .neve-button-appearance-control .components-tooltip.components-popover {
     display: none; }
-  .customize-control-neve_background_control .components-color-picker__inputs-field {
+  .customize-control-neve_background_control .components-color-picker__inputs-field, .neve-button-appearance-control .components-color-picker__inputs-field {
     margin: 0; }
-  .customize-control-neve_background_control .components-color-picker__inputs-wrapper {
+  .customize-control-neve_background_control .components-color-picker__inputs-wrapper, .neve-button-appearance-control .components-color-picker__inputs-wrapper {
     display: flex;
     align-items: flex-end; }
-    .customize-control-neve_background_control .components-color-picker__inputs-wrapper .components-base-control__label {
+    .customize-control-neve_background_control .components-color-picker__inputs-wrapper .components-base-control__label, .neve-button-appearance-control .components-color-picker__inputs-wrapper .components-base-control__label {
       margin: 0; }
-  .customize-control-neve_background_control .components-color-palette__item-wrapper {
+  .customize-control-neve_background_control .components-color-palette__item-wrapper, .neve-button-appearance-control .components-color-palette__item-wrapper {
     margin-right: 12px; }
-    .customize-control-neve_background_control .components-color-palette__item-wrapper span {
+    .customize-control-neve_background_control .components-color-palette__item-wrapper span, .neve-button-appearance-control .components-color-palette__item-wrapper span {
       display: none !important; }
-  .customize-control-neve_background_control .components-color-palette__item-wrapper:hover {
+  .customize-control-neve_background_control .components-color-palette__item-wrapper:hover, .neve-button-appearance-control .components-color-palette__item-wrapper:hover {
     transform: scale(1.05); }
-  .customize-control-neve_background_control .components-color-palette__item:focus:after {
+  .customize-control-neve_background_control .components-color-palette__item:focus:after, .neve-button-appearance-control .components-color-palette__item:focus:after {
     content: none; }
-  .customize-control-neve_background_control .control--top-toolbar .neve-background-type-control button.components-button {
+  .customize-control-neve_background_control .control--top-toolbar .neve-background-type-control button.components-button, .neve-button-appearance-control .control--top-toolbar .neve-background-type-control button.components-button {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0; }
-  .customize-control-neve_background_control .remove-image {
+  .customize-control-neve_background_control .remove-image, .neve-button-appearance-control .remove-image {
     align-items: center;
     width: 100%;
     text-decoration: none; }
-    .customize-control-neve_background_control .remove-image:hover {
+    .customize-control-neve_background_control .remove-image:hover, .neve-button-appearance-control .remove-image:hover {
       text-decoration: underline; }
-  .customize-control-neve_background_control .control--body {
+  .customize-control-neve_background_control .control--body, .neve-button-appearance-control .control--body {
     border: 1px solid #ccc;
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
     background: #fff;
     border-top: none;
     padding: 15px; }
-    .customize-control-neve_background_control .control--body label {
+    .customize-control-neve_background_control .control--body label, .neve-button-appearance-control .control--body label {
       display: block;
       margin: 20px 0 10px;
       font-weight: 500; }
-    .customize-control-neve_background_control .control--body .components-focal-point-picker-wrapper {
+    .customize-control-neve_background_control .control--body .components-focal-point-picker-wrapper, .neve-button-appearance-control .control--body .components-focal-point-picker-wrapper {
       width: auto;
       height: auto;
       padding: 10px;
       border-radius: 3px;
       background-color: #ededed; }
-  .customize-control-neve_background_control input.components-range-control__number {
+  .customize-control-neve_background_control input.components-range-control__number, .neve-button-appearance-control input.components-range-control__number {
     width: 20%;
     margin-left: 20px; }
-  .customize-control-neve_background_control .components-placeholder {
+  .customize-control-neve_background_control .components-placeholder, .neve-button-appearance-control .components-placeholder {
     width: auto;
     min-height: 150px;
     border-radius: 3px;
     background-color: #ededed;
     border: 1px solid #e2e4e7; }
-  .customize-control-neve_background_control .components-focal-point-picker_position-display-container {
+  .customize-control-neve_background_control .components-focal-point-picker_position-display-container, .neve-button-appearance-control .components-focal-point-picker_position-display-container {
     margin: 0; }
-    .customize-control-neve_background_control .components-focal-point-picker_position-display-container .components-base-control {
+    .customize-control-neve_background_control .components-focal-point-picker_position-display-container .components-base-control, .neve-button-appearance-control .components-focal-point-picker_position-display-container .components-base-control {
       margin-bottom: 0;
       width: 50%; }
-      .customize-control-neve_background_control .components-focal-point-picker_position-display-container .components-base-control .components-base-control__field {
+      .customize-control-neve_background_control .components-focal-point-picker_position-display-container .components-base-control .components-base-control__field, .neve-button-appearance-control .components-focal-point-picker_position-display-container .components-base-control .components-base-control__field {
         margin: 0; }
-    .customize-control-neve_background_control .components-focal-point-picker_position-display-container label {
+    .customize-control-neve_background_control .components-focal-point-picker_position-display-container label, .neve-button-appearance-control .components-focal-point-picker_position-display-container label {
       margin-top: 10px; }
-  .customize-control-neve_background_control .components-toggle-control__label {
+  .customize-control-neve_background_control .components-toggle-control__label, .neve-button-appearance-control .components-toggle-control__label {
     margin: 0 !important; }
-  .customize-control-neve_background_control .components-toggle-control {
+  .customize-control-neve_background_control .components-toggle-control, .neve-button-appearance-control .components-toggle-control {
     margin: 20px 0 25px; }
 
 .neve-background-type-control {

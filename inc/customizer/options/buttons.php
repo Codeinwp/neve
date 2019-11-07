@@ -65,6 +65,7 @@ class Buttons extends Base_Customizer {
 					),
 					'controls' => array(
 						'button'           => array(
+							'neve_button_appearance'       => array(),
 							'neve_button_color'            => array(),
 							'neve_button_hover_color'      => array(),
 							'neve_button_text_color'       => array(),
@@ -73,9 +74,10 @@ class Buttons extends Base_Customizer {
 							'neve_button_border_radius'    => array(),
 						),
 						'secondary_button' => array(
-							'neve_secondary_button_color' => array(),
-							'neve_secondary_button_hover_color' => array(),
-							'neve_secondary_button_padding' => array(),
+							'neve_secondary_button_appearance'    => array(),
+							'neve_secondary_button_color'         => array(),
+							'neve_secondary_button_hover_color'   => array(),
+							'neve_secondary_button_padding'       => array(),
 							'neve_secondary_button_border_radius' => array(),
 						),
 					),
@@ -116,7 +118,24 @@ class Buttons extends Base_Customizer {
 		);
 
 		foreach ( $buttons as $button => $settings ) {
-
+			$defaults = $this->get_button_defaults( $button );
+			$this->add_control( new Control(
+				'neve_' . $button . '_appearance',
+				[
+					'label'   => __( 'Button Appearance', 'neve' ),
+					'default' => [
+						'type'            => 'fill',
+						'background'      => '',
+						'backgroundHover' => '',
+						'text'            => '',
+						'textHover'       => '',
+					]
+				],
+				[
+					'section' => $this->section_id,
+					'type'    => 'neve_button_appearance'
+				]
+			) );
 			foreach ( $settings as $color_type => $args ) {
 				$this->add_control(
 					new Control(
@@ -174,7 +193,7 @@ class Buttons extends Base_Customizer {
 						),
 					),
 					'\HFG\Core\Customizer\SpacingControl'
-				) 
+				)
 			);
 
 			$this->add_control(
@@ -199,5 +218,27 @@ class Buttons extends Base_Customizer {
 				)
 			);
 		}
+	}
+
+	private function get_button_defaults( $button ) {
+		$defaults = [
+			'type'            => '',
+			'background'      => '',
+			'backgroundHover' => '',
+			'text'            => '',
+			'textHover'       => '',
+		];
+
+		if ( $button === 'button_secondary' ) {
+			$defaults['type'] = 'outline';
+		} else {
+			$defaults['type'] = 'fill';
+			$defaults['background'] = '#0366d6';
+			$defaults['backgroundHover'] = '#0366d6';
+			$defaults['text'] = '#ffffff';
+			$defaults['textHover'] = '#ffffff';
+		}
+
+		return $defaults;
 	}
 }
