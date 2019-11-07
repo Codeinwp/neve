@@ -374,7 +374,7 @@ abstract class Abstract_Component implements Component {
 					'transport'             => 'postMessage',
 					'sanitize_callback'     => 'wp_filter_nohtml_kses',
 					'default'               => $this->default_align,
-					'label'                 => __( 'Component Alignment', 'neve' ),
+					'label'                 => __( 'Alignment', 'neve' ),
 					'type'                  => '\Neve\Customizer\Controls\React\Radio_Buttons',
 					'live_refresh_selector' => $margin_selector,
 					'options'               => [
