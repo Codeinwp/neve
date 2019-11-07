@@ -1697,10 +1697,6 @@ table td, table th {
   border-bottom: 1px solid #f0f0f0;
 }
 
-table tbody tr:hover {
-  background-color: #fbfbfb;
-}
-
 p code {
   background: #d0effb;
   border-radius: 5px;
