@@ -211,6 +211,10 @@
 				}
 		);
 
+		$document.on( 'click', '.navbar-toggle', function( e ) {
+			wp.customize.preview.send( 'neve-toggle-navbar', {} );
+		} );
+
 		$document.on( 'click', '.builder-item-focus', function(e) {
 			if ( !e.shiftKey ) return false;
 
