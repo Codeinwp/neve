@@ -889,6 +889,26 @@ class Front_End {
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/10/neve-fashion-mag.jpg',
 						'title'      => 'Fashion Magazine',
 					),
+					'neve-winery'                => array(
+						'url'        => 'https://demo.themeisle.com/neve-winery/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/11/neve-winery.png',
+						'title'      => 'Winery - Wine Shop',
+					),
+					'neve-news-magazine'         => array(
+						'url'        => 'https://demo.themeisle.com/neve-news-magazine/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/11/neve-news.jpg',
+						'title'      => 'News Magazine',
+					),
+					'neve-coworking'             => array(
+						'url'        => 'https://demo.themeisle.com/neve-coworking/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/11/neve-coworking.jpg',
+						'title'      => 'Coworking Space',
+					),
+					'neve-fishing-club'          => array(
+						'url'        => 'https://demo.themeisle.com/neve-fishing-club/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/11/neve-fishing.jpg',
+						'title'      => 'Fishing & Hunting Club',
+					),
 				),
 				'brizy'            => array(
 					'neve-brizy-cafe'                 => array(

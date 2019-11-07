@@ -740,5 +740,23 @@ Starter Sites screenshots resources:
 * https://stocksnap.io/photo/AOOC3CJARN
 * https://stocksnap.io/photo/HKTKMOVXNO
 
+- Winery
+* https://stocksnap.io/photo/CM4WVU6WO0
+
+- News Magazine
+* https://mystock.themeisle.com/photo/man-sitting-under-a-tree/
+* https://mystock.themeisle.com/photo/smartphone/
+* https://mystock.themeisle.com/photo/protest/
+* https://mystock.themeisle.com/photo/indian-food-bhel-puri-2/
+* https://mystock.themeisle.com/photo/skiers/
+* https://mystock.themeisle.com/photo/new-york-skyscrapers-on-a-cloudy-wheather/
+* https://mystock.themeisle.com/photo/metropolitan-museum/
+
+- Coworking
+* https://mystock.themeisle.com/photo/hotel-lobby/
+* https://mystock.themeisle.com/photo/code-in-wp/
+
+- Fishing
+* https://mystock.themeisle.com/photo/boat-on-a-volcanic-green-lake-surrounded-of-a-forest-2/
 
 
