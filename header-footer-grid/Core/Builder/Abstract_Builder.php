@@ -942,7 +942,6 @@ abstract class Abstract_Builder implements Builder {
 					}
 				}
 			}
-			error_log( $component_location['id'] . ' -> ' . $x );
 			if ( ! isset( $render_buffer[ $render_index ] ) ) {
 				$render_buffer[ $render_index ] = [
 					'components' => [],
