@@ -22,11 +22,49 @@
   }
 
   .components-panel {
-    margin: 0 -11px;
+    margin: 0 -11px -1px;
   }
 
   .components-panel__row {
     display: block;
+  }
+
+  .neve-radio-icons .components-toolbar svg {
+    height: 16px;
+    padding: 4px 0;
+  }
+
+  .components-toolbar {
+
+    .button-filled-svg {
+      path {
+        fill: #fff;
+      }
+    }
+
+    .button-outline-svg {
+      rect {
+        fill: none;
+        stroke: #555d66;
+        stroke-miterlimit: 10;
+      }
+    }
+
+    button.is-active {
+      .button-filled-svg {
+        path {
+          fill: #555d66;
+        }
+      }
+
+      .button-outline-svg {
+        rect {
+          fill: none;
+          stroke: #fff;
+          stroke-miterlimit: 10;
+        }
+      }
+    }
   }
 }
 
