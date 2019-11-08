@@ -8,6 +8,6 @@
   "license": "GPL-2.0+",
   "devDependencies": {
     "cypress": "^3.6.0",
-    "cypress-file-upload": "^3.3.4"
+    "cypress-file-upload": "^3.5.0"
   }
 }
