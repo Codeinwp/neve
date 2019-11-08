@@ -196,7 +196,7 @@ abstract class Abstract_Builder implements Builder {
 	/**
 	 * Method to set protected properties for class.
 	 *
-	 * @param string $key   The property key name.
+	 * @param string $key The property key name.
 	 * @param string $value The property value.
 	 *
 	 * @return bool
@@ -773,8 +773,8 @@ abstract class Abstract_Builder implements Builder {
 			}
 
 			if ( ! empty( $background['focusPoint'] ) &&
-				! empty( $background['focusPoint']['x'] ) &&
-				! empty( $background['focusPoint']['y'] ) ) {
+					! empty( $background['focusPoint']['x'] ) &&
+					! empty( $background['focusPoint']['y'] ) ) {
 				$css_setup['background-position'] = round( $background['focusPoint']['x'] * 100 ) . '% ' . round( $background['focusPoint']['y'] * 100 ) . '%';
 			}
 
@@ -807,7 +807,7 @@ abstract class Abstract_Builder implements Builder {
 	/**
 	 * Render device markup.
 	 *
-	 * @param string $device_name    Device id.
+	 * @param string $device_name Device id.
 	 * @param array  $device_details Device meta.
 	 */
 	public function render_device( $device_name, $device_details ) {
@@ -824,7 +824,7 @@ abstract class Abstract_Builder implements Builder {
 	 * Render components in the row.
 	 *
 	 * @param null|string $device Device id.
-	 * @param null|array  $row    Row details.
+	 * @param null|array  $row Row details.
 	 */
 	public function render_components( $device = null, $row = null ) {
 
@@ -849,63 +849,146 @@ abstract class Abstract_Builder implements Builder {
 			}
 		);
 
-		$collection = new \CachingIterator(
+		$collection    = new \CachingIterator(
 			new \ArrayIterator(
 				$data
 			),
 			\CachingIterator::TOSTRING_USE_CURRENT
 		);
-
+		$render_buffer = [];
+		$render_index  = 1;
 		foreach ( $collection as $component_location ) {
+
+			if ( ! isset( $this->builder_components[ $component_location['id'] ] ) ) {
+				continue;
+			}
 			/**
 			 * An instance of Abstract_Component
 			 *
 			 * @var Abstract_Component $component
 			 */
-			if ( ! isset( $this->builder_components[ $component_location['id'] ] ) ) {
-				continue;
-			}
 			$component = $this->builder_components[ $component_location['id'] ];
 			$x         = intval( $component_location['x'] );
 			$width     = intval( $component_location['width'] );
 			$align     = SettingsManager::get_instance()->get( $component_location['id'] . '_' . Abstract_Component::ALIGNMENT_ID, null );
 
+
 			if ( ! $collection->hasNext() && ( $x + $width < $max_columns ) ) {
 				$width += $max_columns - ( $x + $width );
 			}
 
+			$is_auto_width = $component->get_property( 'is_auto_width' );
 			if ( $row_index === 'sidebar' ) {
-				$width = 12;
+				$width         = 12;
+				$is_auto_width = false;
 			}
 
-			$classes   = [ 'builder-item' ];
-			$classes[] = 'col-' . $width . ' col-md-' . $width . ' col-sm-' . $width;
-			$classes[] = 'hfg-item-' . $align;
+			// Let's check if the component is nearby another.
+			$is_near_next = $collection->hasNext();
+			$is_near_prev = $last_item !== null;
+
+			// Check if component is nearby the next component.
+			if ( $collection->hasNext() ) {
+				$next_component_object = $collection->getInnerIterator()->current();
+				if ( $next_component_object['x'] - ( $x + $width ) !== 0 ) {
+					$is_near_next = false;
+				}
+			}
+
+			// Check if component is nearby the prev component.
+			if ( $last_item !== null ) {
+				if ( ( (int) $last_item['x'] + (int) $last_item['width'] ) - $x !== 0 ) {
+					$is_near_prev = false;
+				}
+			}
+
+			// If there is a gap between components, build new group.
+			if ( $last_item !== null && ! $is_near_prev ) {
+				$render_index ++;
+			}
+			// If there are two neighbours and none of them have auto_width, build new group.
+			if ( $is_near_prev && ! $last_item['is_auto_width'] && ! $is_auto_width ) {
+				$render_index ++;
+			}
+			// If there are neighbours prev and next, always group with the next on.
+			if ( $is_near_prev && $is_near_next && ! $last_item['is_auto_width'] && $is_auto_width ) {
+				$render_index ++;
+			}
+
+			// Use alignament only of non-auto width element.
+			if ( ! $is_auto_width && isset( $render_buffer[ $render_index ] ) ) {
+				$render_buffer[ $render_index ]['align'] = $align;
+			}
+
+
+			$is_first = false;
+			$is_last  = false;
 			if ( $last_item === null ) {
-				$classes[] = 'hfg-item-first';
+				$is_first     = true;
+				$render_index = 0;
 			}
 			if ( ! $collection->hasNext() ) {
-				$classes[] = 'hfg-item-last';
+				$is_last = true;
 			}
+
+
 			if ( $row_index !== 'sidebar' ) {
 				if ( $x > 0 && $last_item !== null ) {
 					$origin = intval( $last_item['width'] ) + intval( $last_item['x'] );
 					if ( ( $x - $origin ) > 0 ) {
-						$x         = $x - $origin;
-						$classes[] = 'offset-' . $x;
+						$x = $x - $origin;
+					} else {
+						$x = 0;
 					}
-				} elseif ( $x > 0 ) {
-					$classes[] = 'offset-' . $x;
 				}
 			}
+			error_log( $component_location['id'] . ' -> ' . $x );
+			if ( ! isset( $render_buffer[ $render_index ] ) ) {
+				$render_buffer[ $render_index ] = [
+					'components' => [],
+					'align'      => $align,
+					'is_first'   => $is_first,
+					'is_last'    => false,
+				];
+			}
+			$render_buffer[ $render_index ]['is_last']      = $is_last;
+			$render_buffer[ $render_index ]['components'][] = [
+				'component' => $component,
+				'offset'    => $x,
+				'width'     => $width,
+			];
+			$component_location['is_auto_width']            = $is_auto_width;
+			$component_location['align']                    = $align;
+			$last_item                                      = $component_location;
+		}
+		foreach ( $render_buffer as $render_groups ) {
+			$width   = array_sum( array_column( $render_groups['components'], 'width' ) );
+			$x       = max( array_column( $render_groups['components'], 'offset' ) );
+			$align   = $render_groups['align'];
+			$classes = [ 'builder-item' ];
+			if ( $render_groups['is_last'] ) {
+				$classes[] = 'hfg-item-last';
+			}
+			if ( $render_groups['is_first'] ) {
+				$classes[] = 'hfg-item-first';
+			}
+			$classes[] = 'col-' . $width . ' col-md-' . $width . ' col-sm-' . $width;
+			$classes[] = 'hfg-item-' . $align;
 
-			$component->current_x     = $x;
-			$component->current_width = $width;
-			self::$current_component  = $component_location['id'];
+			if ( $row_index !== 'sidebar' && $x > 0 ) {
+				$classes[] = 'offset-' . $x;
+			}
+			if ( count( $render_groups['components'] ) > 1 ) {
+				$classes[] = 'hfg-is-group';
+			}
 			echo sprintf( '<div class="%s">', esc_attr( join( ' ', $classes ) ) );
-			$component->render();
+			foreach ( $render_groups['components'] as $component_data ) {
+				$component_data['component']->current_x     = $x;
+				$component_data['component']->current_width = $width;
+				self::$current_component                    = $component_data['component']->get_id();
+				$component_data['component']->render();
+			}
 			echo '</div>';
-			$last_item = $component_location;
 		}
 	}
 
