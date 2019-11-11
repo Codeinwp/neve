@@ -72,14 +72,16 @@ class ButtonAppearanceComponent extends Component {
 						label: __( 'Normal', 'neve' ),
 						controls: {
 							background: __( 'Background', 'neve' ),
-							text: __( 'Text', 'neve' )
+							text: this.state.type === 'fill' && __( 'Text', 'neve' ) ||
+									__( 'Text and Border', 'neve' )
 						}
 					},
 					hover: {
 						label: __( 'Hover', 'neve' ),
 						controls: {
 							backgroundHover: __( 'Background', 'neve' ),
-							textHover: __( 'Text', 'neve' )
+							textHover: this.state.type === 'fill' && __( 'Text', 'neve' ) ||
+									__( 'Text and Border', 'neve' )
 						}
 					}
 				},

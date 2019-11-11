@@ -166,7 +166,7 @@ class Buttons extends Base_Inline {
 				/* Buttons in navigation */
 				ul[id^="nv-primary-navigation"] li.button.button-primary > a, 
 				.menu li.button.button-primary > a'
-				) 
+				)
 			);
 		}
 	}
@@ -177,7 +177,7 @@ class Buttons extends Base_Inline {
 	private function add_secondary_button_style() {
 		if ( ! empty( $this->secondary_button['background'] ) ) {
 			$color_setup = array(
-				'color' => array(
+				'background-color' => array(
 					'css_prop'  => 'background-color',
 					'selectors' => '.button.button-secondary, #comments input[type="submit"]',
 				),
@@ -192,7 +192,7 @@ class Buttons extends Base_Inline {
 					'selectors' => '.button.button-secondary:hover, #comments input[type="submit"]:hover',
 				),
 			);
-			$this->add_color( apply_filters( 'neve_secondary_button_color_filter', $color_setup ), sanitize_hex_color( $this->secondary_button['backgroundHover'] ) );
+			$this->add_color( apply_filters( 'neve_secondary_button_hover_color_filter', $color_setup ), sanitize_hex_color( $this->secondary_button['backgroundHover'] ) );
 		}
 
 		if ( ! empty( $this->secondary_button['text'] ) ) {
@@ -250,7 +250,7 @@ class Buttons extends Base_Inline {
 						'value'    => 'none',
 					],
 				],
-				apply_filters( 'neve_secondary_button_border_radius_selector_filter', '.button.button-secondary, #comments input[type="submit"]' ) 
+				apply_filters( 'neve_secondary_button_border_radius_selector_filter', '.button.button-secondary, #comments input[type="submit"]' )
 			);
 		}
 		if ( $this->secondary_button['type'] === 'outline' ) {
@@ -273,7 +273,7 @@ class Buttons extends Base_Inline {
 				apply_filters(
 					'neve_secondary_button_border_radius_selectors_filter',
 					'.button.button-secondary, #comments input[type="submit"]'
-				) 
+				)
 			);
 		}
 	}
