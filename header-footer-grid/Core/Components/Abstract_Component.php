@@ -378,12 +378,12 @@ abstract class Abstract_Component implements Component {
 					'id'                    => self::ALIGNMENT_ID,
 					'group'                 => $this->get_id(),
 					'tab'                   => SettingsManager::TAB_LAYOUT,
-					'transport'             => 'postMessage',
+					'transport'             => $this->is_auto_width ? 'post' . $this->get_builder_id() : 'postMessage',
 					'sanitize_callback'     => 'wp_filter_nohtml_kses',
 					'default'               => $this->default_align,
 					'label'                 => __( 'Alignment', 'neve' ),
 					'type'                  => '\Neve\Customizer\Controls\React\Radio_Buttons',
-					'live_refresh_selector' => $margin_selector,
+					'live_refresh_selector' => $this->is_auto_width ? null : $margin_selector,
 					'options'               => [
 						'choices' => [
 							'left'   => [

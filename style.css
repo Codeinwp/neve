@@ -2521,6 +2521,15 @@ audio {
   box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.1);
 }
 
+.hfg-is-group {
+  display: flex;
+  align-items: center;
+}
+
+.hfg-is-group.hfg-item-right {
+  justify-content: flex-end;
+}
+
 .hfg-item-right {
   text-align: right;
 }
@@ -2529,12 +2538,20 @@ audio {
   justify-content: flex-end;
 }
 
+.hfg-is-group.hfg-item-left {
+  justify-content: flex-start;
+}
+
 .hfg-item-left {
   text-align: left;
 }
 
 .hfg-item-left #secondary-menu, .hfg-item-left .nv-nav-wrap, .hfg-item-left .component-wrap, .hfg-item-left .site-logo, .hfg-item-left .nv-search-icon-component .nv-search, .hfg-item-left .builder-item--footer-menu {
   justify-content: flex-start;
+}
+
+.hfg-is-group.hfg-item-center {
+  justify-content: center;
 }
 
 .hfg-item-center {

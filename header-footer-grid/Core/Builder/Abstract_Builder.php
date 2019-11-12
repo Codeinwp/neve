@@ -915,7 +915,7 @@ abstract class Abstract_Builder implements Builder {
 				$render_index ++;
 			}
 
-			// Use alignament only of non-auto width element.
+			// Use alignment only of non-auto width element.
 			if ( ! $is_auto_width && isset( $render_buffer[ $render_index ] ) ) {
 				$render_buffer[ $render_index ]['align'] = $align;
 			}
