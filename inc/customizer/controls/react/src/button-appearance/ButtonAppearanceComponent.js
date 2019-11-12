@@ -16,10 +16,10 @@ class ButtonAppearanceComponent extends Component {
 		let value = props.control.setting.get();
 		this.state = {
 			type: value.type,
-			background: value.background || '#333',
-			backgroundHover: value.backgroundHover || '#333',
-			text: value.text || '#fff',
-			textHover: value.textHover || '#fff',
+			background: value.background || '',
+			backgroundHover: value.backgroundHover || '',
+			text: value.text || '',
+			textHover: value.textHover || '',
 			borderRadius: value.borderRadius || 3,
 			borderWidth: value.borderWidth || 1
 		};
