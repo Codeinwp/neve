@@ -911,7 +911,7 @@ abstract class Abstract_Builder implements Builder {
 				$render_index ++;
 			}
 			// If there are neighbours prev and next, always group with the next on.
-			if ( $is_near_prev && $is_near_next && ! $last_item['is_auto_width'] && $is_auto_width ) {
+			if ( $is_near_prev && $is_near_next && ! $last_item['is_auto_width'] && $is_auto_width && ! isset( $render_buffer[ $render_index ] ) ) {
 				$render_index ++;
 			}
 
