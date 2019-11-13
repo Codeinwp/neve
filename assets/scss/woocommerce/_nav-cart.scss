@@ -27,7 +27,6 @@ ul[id^="nv-primary-navigation"] a.button {
   > a {
     display: flex;
     color: $git-black;
-    font-size: 1.2em;
   }
 }
 
@@ -78,7 +77,8 @@ ul[id^="nv-primary-navigation"] .menu-item-nav-cart:not(.responsive-nav-cart) {
     background: $navbar_background_color;
     @include cart-widget();
   }
-  ul[id^="nv-primary-navigation"] .widget_shopping_cart li.mini_cart_item {
+  ul[id^="nv-primary-navigation"] .widget_shopping_cart li.mini_cart_item,
+  .menu-item-nav-cart .nv-nav-cart .widget_shopping_cart .cart_list li.mini_cart_item {
     padding: $spacing-xs;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
