@@ -21,8 +21,6 @@
 .hfg-grid {
   display: flex;
 }
-
-
 // HIDING COLS FOR DEVICES
 @each $mq-key, $mq-value in $gl-devices-list {
   @media #{$mq-value} {
@@ -30,20 +28,8 @@
     .hfg-grid .hide-on-#{$mq-key} { display: none; }
   }
 }
-
-.builder-item.hfg-edge-left .item--inner > div{
-  flex-direction: row;
-  display: flex;
-}
-.builder-item.hfg-edge-right .item--inner > div{
-  flex-direction: row-reverse;
-  display: flex;
-}
 .component-wrap{
   display: flex;
   margin: 4px 0;
 }
 
-.nv-html-content p {
-  margin: 0;
-}

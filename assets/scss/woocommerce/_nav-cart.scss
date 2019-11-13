@@ -14,6 +14,9 @@
   }
 }
 
+.woocommerce-mini-cart-item > a:after {
+	content: none !important;
+}
 .nv-nav-cart {
   display: none;
   z-index: 1000;
