@@ -909,6 +909,21 @@ class Front_End {
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/11/neve-fishing.jpg',
 						'title'      => 'Fishing and Hunting Club',
 					),
+					'neve-car-rental'            => array(
+						'url'        => 'https://demo.themeisle.com/neve-car-rental/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/11/neve-cart-rental.jpg',
+						'title'      => 'Car Rental',
+					),
+					'neve-ski-resort'            => array(
+						'url'        => 'https://demo.themeisle.com/neve-ski-resort/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/11/sky-resort.jpg',
+						'title'      => 'Ski Resort Winter Hotel',
+					),
+					'neve-digital-product'       => array(
+						'url'        => 'https://demo.themeisle.com/neve-digital-product-funnel/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/11/neve-digital-product.jpg',
+						'title'      => 'Digital Product Funnel',
+					),
 				),
 				'brizy'            => array(
 					'neve-brizy-cafe'                 => array(

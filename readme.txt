@@ -759,4 +759,20 @@ Starter Sites screenshots resources:
 - Fishing
 * https://mystock.themeisle.com/photo/boat-on-a-volcanic-green-lake-surrounded-of-a-forest-2/
 
+- Car Rental
+* https://stocksnap.io/photo/5XRZI55HKV
+* https://stocksnap.io/photo/Q1KQCULDV5
+* https://stocksnap.io/photo/OYLXO1QZ5K
+
+- Ski Resort
+* https://stocksnap.io/photo/Z5WEX57EKA
+* https://mystock.themeisle.com/photo/mountain/
+* https://mystock.themeisle.com/photo/gondola-2/
+* https://stocksnap.io/photo/QT3VEK73I5
+* https://stocksnap.io/photo/JJE5DPU0U9
+* https://stocksnap.io/photo/KRXK7LH6XL
+
+- Digital Product
+* https://mystock.themeisle.com/photo/cityscape-of-new-york-2/
+
 
