@@ -1,7 +1,12 @@
 .menu-item-nav-cart {
+  .nv-cart {
+    display: flex;
+  }
+
   a {
     position: relative;
   }
+
   .cart-count {
     background: #fff;
     border: $muted-border;
@@ -11,12 +16,15 @@
     color: #333;
     line-height: 1;
     display: inline-block;
+    bottom: -5px;
+    position: relative;
   }
 }
 
 .woocommerce-mini-cart-item > a:after {
-	content: none !important;
+  content: none !important;
 }
+
 .nv-nav-cart {
   display: none;
   z-index: 1000;
@@ -44,8 +52,8 @@ ul[id^="nv-primary-navigation"] .menu-item-nav-cart:not(.responsive-nav-cart) {
     }
 
     .woocommerce-mini-cart {
-			overflow: auto;
-			max-height: 350px;
+      overflow: auto;
+      max-height: 350px;
       width: 400px;
     }
 
@@ -53,12 +61,7 @@ ul[id^="nv-primary-navigation"] .menu-item-nav-cart:not(.responsive-nav-cart) {
       @include soft-box-shadow('true');
     }
   }
-  ul[id^="nv-primary-navigation"] > li.menu-item-nav-cart > a {
-    display: block;
-  }
-  .row ul[id^="nv-primary-navigation"] .menu-item-nav-cart:not(.responsive-nav-cart) {
-    display: block;
-  }
+
   .menu-item-nav-cart:hover .nv-nav-cart,
   .menu-item-nav-cart > a:focus + .nv-nav-cart,
   .nv-nav-cart:focus-within {
@@ -94,9 +97,11 @@ ul[id^="nv-primary-navigation"] .menu-item-nav-cart:not(.responsive-nav-cart) {
     &:hover {
       background: #f9f9f9;
     }
+
     > *:not(.remove) {
       padding-right: 60px;
     }
+
     > a {
       padding: 0;
       display: inline;
@@ -129,26 +134,29 @@ ul[id^="nv-primary-navigation"] .menu-item-nav-cart:not(.responsive-nav-cart) {
     }
 
     dl.variation {
-			border: none;
+      border: none;
       grid-row-start: 3;
       grid-column-start: 2;
       grid-column-end: span 9;
-			padding: 0;
-			text-align: right;
-			dt::before {
-				width: 100%;
-				content: "\A";
-				white-space: pre-wrap;
-				display: block;
-				height: 0;
-			}
-			dt {
-				margin-left: auto;
-			}
-			dt, dd {
-				line-height: 1.2em;
-				margin-bottom: 3px;
-			}
+      padding: 0;
+      text-align: right;
+
+      dt::before {
+        width: 100%;
+        content: "\A";
+        white-space: pre-wrap;
+        display: block;
+        height: 0;
+      }
+
+      dt {
+        margin-left: auto;
+      }
+
+      dt, dd {
+        line-height: 1.2em;
+        margin-bottom: 3px;
+      }
     }
-	}
+  }
 }
