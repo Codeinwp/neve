@@ -542,6 +542,15 @@ wp.customize.controlConstructor["interface-tabs"] = wp.customize.Control.extend(
                     jQuery(selector).show();
                 }
             }
+            var control = wp.customize.control(controlName);
+            if (typeof control !== "undefined") {
+                var status = wp.customize.control(controlName).active();
+                if (status === true) {
+                    jQuery(wp.customize.control(controlName).selector).show();
+                } else {
+                    jQuery(wp.customize.control(controlName).selector).hide();
+                }
+            }
         }
     }
 });
