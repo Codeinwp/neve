@@ -18,6 +18,30 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
+### 2.5.1 - 2019-11-04  ###
+
+* [Fix] Correct migration of body font size to new version
+
+
+### 2.5.0 - 2019-11-04  ###
+
+* [Feat] Improve header/footer builder UX
+* [Feat] Increased header/footer builder row height to 700px
+* [Feat] Improve typography controls, adds Text Transform, Font Weight, Letter Spacing controls for headings.
+* [Feat] Shadow option for the blog thumbnails
+* [Fix] Removed extra padding-top on embeds
+* [Fix] Embeds not visible on the blog page
+* [Fix] Small compatibility issues with WP 5.3
+* [Fix] Cover block text color not updating
+* [Fix] Reply comments mechanism when Yoast is installed
+* [Fix] Scroll on mobile and tablet and wireframe view in the Divi editor
+* [Fix] Content width on full-width container
+* [Fix] Headings blocks errors with Gutenberg 6.8.0
+* New Beaver Builder Starter Sites
+* New Brizy Starter Sites
+
+
+
 ### 2.4.3 - 2019-10-10  ###
 
 * [Feat] Compatibility with the Header Footer for Beaver Builder plugin
@@ -26,9 +50,6 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 * [Fix] Set newly created pages to Full width
 * [Fix] Embeds in the Classic Editor
 * [Fix] Compatibility with the Smush Lazy Loading
-
-
-### 2.4.2 - 2019-09-23  ###
 
 * [Fix] Alignment options for the Secondary and Footer menus
 * [Fix] Style ul/li on WooCommerce single product short descriptions
@@ -75,7 +96,7 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 * Speed updates for the Starter Sites Library
 
- 
+
 ### 2.3.21 - 2019-07-30  ###
 
 * [Feat] Color options for each header and footer rows
@@ -256,7 +277,7 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 * WPML compatibility
 * Update Contact us with the correct link
 
- 
+
 ### 2.1.0 - 2019-03-07  ###
 
 * Two newly added Elementor Starter Sites
@@ -477,15 +498,15 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 * Release Date - 2018-09-24*
 * Add proper Elementor Header and Footer support
 * Fixed warning caused by forgotten "var_dump" in page / post metabox handler
- 
+
 ### v1.0.2 ###
 * Release Date - 2018-09-07*
 * Demo data for Neve 2018 template
- 
+
 ### 1.0.1 ###
 * Release Date - 2018-09-07*
 * Updated description and screenshot
- 
+
 ### 1.0.0 ###
 * Release Date - 2018-09-06*
 * Lowercase file names.

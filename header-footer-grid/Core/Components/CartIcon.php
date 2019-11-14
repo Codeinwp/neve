@@ -33,17 +33,44 @@ class CartIcon extends Abstract_Component {
 		$this->set_property( 'id', self::COMPONENT_ID );
 		$this->set_property( 'width', 1 );
 		$this->set_property( 'icon', 'store' );
+		$this->set_property( 'is_auto_width', true );
+		$this->set_property(
+			'default_padding_value',
+			array(
+				'mobile'       => array(
+					'top'    => 0,
+					'right'  => 10,
+					'bottom' => 0,
+					'left'   => 10,
+				),
+				'tablet'       => array(
+					'top'    => 0,
+					'right'  => 10,
+					'bottom' => 0,
+					'left'   => 10,
+				),
+				'desktop'      => array(
+					'top'    => 0,
+					'right'  => 10,
+					'bottom' => 0,
+					'left'   => 10,
+				),
+				'mobile-unit'  => 'px',
+				'tablet-unit'  => 'px',
+				'desktop-unit' => 'px',
+			) 
+		);
 	}
 
 	/**
 	 * Method to filter component loading if needed.
 	 *
 	 * @since   1.0.1
-	 * @access public
+	 * @access  public
 	 * @return bool
 	 */
 	public function is_active() {
-		return  class_exists( 'WooCommerce', false );
+		return class_exists( 'WooCommerce', false );
 	}
 
 	/**
