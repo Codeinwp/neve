@@ -38,7 +38,6 @@ class SingleSizingInput extends Component {
 							onFocusOutside={() => {
 								this.setState( { visible: false } );
 							}}
-							focusOnMount={false}
 					>
 						<div className="range-control">
 							<RangeControl
