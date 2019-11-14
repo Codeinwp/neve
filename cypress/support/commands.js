@@ -72,7 +72,7 @@ function addFeaturedImage() {
 		);
 	} );
 	cy.wait(2500);
-	cy.get( '.media-button-select' ).contains( 'Select' ).click();
+	cy.get( '.media-button-select' ).contains( 'Set' ).click();
 }
 
 

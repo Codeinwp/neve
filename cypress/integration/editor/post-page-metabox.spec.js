@@ -44,7 +44,7 @@ describe( 'Page meta box settings', function() {
 				invoke( 'val', 70 ).
 				trigger( 'change' );
 		cy.get( '.editor-post-publish-button' ).contains( 'Update' ).click();
-		cy.get( '.components-notice__action' ).contains( 'View Page' );
+		cy.get( '.components-snackbar__content' ).contains( 'View Page' );
 	} );
 
 	it( 'Edited meta box settings on front end.', function() {
@@ -129,7 +129,7 @@ describe( 'Posts meta box settings', function() {
 				invoke( 'val', 50 ).
 				trigger( 'change' );
 		cy.get( '.editor-post-publish-button' ).contains( 'Update' ).click();
-		cy.get( '.components-notice__action' ).contains( 'View Post' );
+		cy.get( '.components-snackbar__content' ).contains( 'View Post' );
 	} );
 
 	it( 'Edited meta box settings on front end.', function() {
