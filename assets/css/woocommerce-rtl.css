@@ -1043,11 +1043,6 @@ section.exclusive .tns-visually-hidden {
   content: none !important;
 }
 
-.nv-nav-cart {
-  display: none;
-  z-index: 1000;
-}
-
 ul[id^="nv-primary-navigation"] a.button {
   padding: 8px 12px;
 }
@@ -1057,7 +1052,7 @@ ul[id^="nv-primary-navigation"] a.button {
   color: #24292e;
 }
 
-ul[id^="nv-primary-navigation"] .menu-item-nav-cart:not(.responsive-nav-cart) {
+.header-menu-sidebar .nv-nav-cart, .header-menu-sidebar li.menu-item-nav-cart {
   display: none;
 }
 
