@@ -192,6 +192,24 @@ window.addEventListener( 'load', function() {
 							}
 							addCss( settingId, style );
 							break;
+						case '\\Neve\\Customizer\\Controls\\React\\Button_Appearance':
+							style += 'html ' + args.selector + '{' +
+									'background-color:' +
+									( newValue.background || 'inherit' ) +
+									';' +
+									'border-radius:' + newValue.borderRadius + 'px;' +
+									'color: ' + ( newValue.text || 'inherit' ) + ';';
+							if ( newValue.type === 'outline' ) {
+								style += 'border: ' + newValue.borderWidth + 'px solid ' +
+										newValue.text + ';';
+							}
+							style += '}';
+							style += 'html ' + args.selector + ' .icon-bar {' +
+									'background-color: ' + ( newValue.text || 'inherit' ) + ';' +
+									'}';
+							console.log( settingId, style );
+							addCss( settingId, style );
+							break;
 						case 'neve_font_family_control':
 							break;
 					}
@@ -298,7 +316,7 @@ window.addEventListener( 'load', function() {
 				cssProp: 'max-width',
 				unit: 'px',
 				styleClass: 'container-width-css'
-			},
+			}
 		},
 		rangesPreview: function() {
 			'use strict';

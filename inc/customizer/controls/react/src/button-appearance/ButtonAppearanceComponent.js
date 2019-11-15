@@ -95,6 +95,9 @@ class ButtonAppearanceComponent extends Component {
 				],
 				self = this;
 
+		if ( this.props.control.params.no_hover ) {
+			delete settings.hover;
+		}
 		return (
 				<Fragment>
 					<span className="customize-control-title">
@@ -105,7 +108,9 @@ class ButtonAppearanceComponent extends Component {
 							Object.keys( settings ).map( (type) => {
 								return (
 										<PanelBody
-												title={settings[type].label}
+												title={this.props.control.params.no_hover ?
+														'' :
+														settings[type].label}
 												initialOpen={type === 'normal'}
 										>
 											{
