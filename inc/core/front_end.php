@@ -924,6 +924,16 @@ class Front_End {
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/11/neve-digital-product.jpg',
 						'title'      => 'Digital Product Funnel',
 					),
+					'neve-moving-company'        => array(
+						'url'        => 'https://demo.themeisle.com/neve-moving-company/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/11/neve-moving-company.jpg',
+						'title'      => 'Moving Company Logistics Services',
+					),
+					'neve-translation-services'  => array(
+						'url'        => 'https://demo.themeisle.com/neve-translation-services/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/11/neve-translations.jpg',
+						'title'      => 'Translation and Interpreter Services',
+					),
 				),
 				'brizy'            => array(
 					'neve-brizy-cafe'                 => array(
