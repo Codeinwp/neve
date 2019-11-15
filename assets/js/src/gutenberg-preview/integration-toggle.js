@@ -31,7 +31,6 @@ export const initIntegrationToggle = function() {
 
 const addMenuItem = function() {
 	let menu = document.getElementsByClassName( 'edit-post-more-menu__content' );
-	console.log( menu );
 	if ( menu.length <= 0 )
 		return false;
 
