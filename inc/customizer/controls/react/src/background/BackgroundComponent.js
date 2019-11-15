@@ -92,7 +92,7 @@ class BackgroundComponent extends Component {
 								}}
 						/>
 							<div
-									className="color-preview"
+									className="neve-color-preview"
 									style={{ backgroundColor: this.state.colorValue }}>
 							</div>
 						</Fragment>
@@ -157,7 +157,7 @@ class BackgroundComponent extends Component {
 									}}
 							/>
 							<div
-									className="color-preview"
+									className="neve-color-preview"
 									style={{ backgroundColor: this.state.overlayColorValue }}>
 							</div>
 							<RangeControl
