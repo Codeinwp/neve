@@ -425,10 +425,18 @@ class Woocommerce {
 	 * @return array
 	 */
 	public function add_secondary_button_color( $color_setup ) {
-		$color_setup['color']['selectors']        .= $this->secondary_buttons_selectors['no-padding'];
-		$color_setup['color']['selectors']        .= $this->secondary_buttons_selectors['default'];
-		$color_setup['border-color']['selectors'] .= $this->secondary_buttons_selectors['no-padding'];
-		$color_setup['border-color']['selectors'] .= $this->secondary_buttons_selectors['default'];
+		if ( isset( $color_setup['color'] ) ) {
+			$color_setup['color']['selectors'] .= $this->secondary_buttons_selectors['no-padding'];
+			$color_setup['color']['selectors'] .= $this->secondary_buttons_selectors['default'];
+		}
+		if ( isset( $color_setup['background-color'] ) ) {
+			$color_setup['background-color']['selectors'] .= $this->secondary_buttons_selectors['no-padding'];
+			$color_setup['background-color']['selectors'] .= $this->secondary_buttons_selectors['default'];
+		}
+		if ( isset( $color_setup['border-color'] ) ) {
+			$color_setup['border-color']['selectors'] .= $this->secondary_buttons_selectors['no-padding'];
+			$color_setup['border-color']['selectors'] .= $this->secondary_buttons_selectors['default'];
+		}
 
 		return $color_setup;
 	}
@@ -441,10 +449,18 @@ class Woocommerce {
 	 * @return array
 	 */
 	public function add_secondary_button_hover_color( $color_setup ) {
-		$color_setup['color']['selectors']        .= $this->secondary_buttons_selectors['hover'];
-		$color_setup['color']['selectors']        .= $this->secondary_buttons_selectors['no-padding-hover'];
-		$color_setup['border-color']['selectors'] .= $this->secondary_buttons_selectors['hover'];
-		$color_setup['border-color']['selectors'] .= $this->secondary_buttons_selectors['no-padding-hover'];
+		if ( isset( $color_setup['color'] ) ) {
+			$color_setup['color']['selectors'] .= $this->secondary_buttons_selectors['hover'];
+			$color_setup['color']['selectors'] .= $this->secondary_buttons_selectors['no-padding-hover'];
+		}
+		if ( isset( $color_setup['background-color'] ) ) {
+			$color_setup['background-color']['selectors'] .= $this->secondary_buttons_selectors['hover'];
+			$color_setup['background-color']['selectors'] .= $this->secondary_buttons_selectors['no-padding-hover'];
+		}
+		if ( isset( $color_setup['border-color'] ) ) {
+			$color_setup['border-color']['selectors'] .= $this->secondary_buttons_selectors['hover'];
+			$color_setup['border-color']['selectors'] .= $this->secondary_buttons_selectors['no-padding-hover'];
+		}
 
 		return $color_setup;
 	}
