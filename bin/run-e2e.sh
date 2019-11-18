@@ -31,6 +31,8 @@ docker-compose -f $DOCKER_FILE run --rm wordpress bash wp menu location assign a
 # Update core.
 docker-compose -f $DOCKER_FILE run --rm wordpress bash wp core update
 
+docker-compose -f $DOCKER_FILE run --rm wordpress bash wp core update-db
+
 export BUILD_INFO_MESSAGE="${BUILD_SPEC} \n ${COMMIT_INFO_MESSAGE}"
 # Run Cypress
 #npm run cypress:open

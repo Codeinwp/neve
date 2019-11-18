@@ -1,7 +1,15 @@
 /* Customize Preview */
 .customize-previewing {
   overflow-x: hidden;
+	&.is-menu-sidebar .customize-partial-refreshing{
+		opacity: 1;
+		transition:none;
+	}
 
+	&.is-menu-sidebar .customize-partial-refreshing #header-menu-sidebar #header-menu-sidebar-inner{
+		opacity: 0.5;
+		transition: opacity .25s;
+	}
   .builder-item-focus {
     &.item--inner, &.row--wrapper {
       position: relative;

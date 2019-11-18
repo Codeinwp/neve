@@ -236,6 +236,7 @@
     overflow: hidden;
     text-overflow: ellipsis; }
   .neve-typeface-control .font-family-selector-toggle .ff-preview {
+    line-height: initial;
     align-self: flex-end;
     margin-left: auto;
     font-size: 21px; }
@@ -276,7 +277,7 @@
 
 .neve-typeface-control .neve-fonts-list {
   max-height: 400px;
-  margin-top: 35px;
+  margin-top: 40px;
   overflow: auto; }
   .neve-typeface-control .neve-fonts-list .load-more {
     padding: 10px 0; }
@@ -299,6 +300,7 @@
       font-weight: 600;
       background-color: #efefef; }
     .neve-typeface-control .neve-fonts-list li a {
+      align-items: center;
       display: flex;
       padding: 5px 10px;
       transition: .2s ease;
@@ -315,6 +317,7 @@
         overflow: hidden;
         text-overflow: ellipsis; }
       .neve-typeface-control .neve-fonts-list li a .neve-font-preview {
+        line-height: initial;
         font-display: swap;
         margin-left: auto;
         font-size: 20px; }
