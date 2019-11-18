@@ -348,11 +348,6 @@
   display: none;
 }
 
-.woocommerce.single .product_title {
-  font-size: 1.3em;
-  font-weight: 300;
-}
-
 .woocommerce.single .entry-summary ul, .woocommerce.single #tab-description ul {
   list-style-type: circle;
 }

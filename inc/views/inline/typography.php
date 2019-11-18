@@ -114,13 +114,16 @@ class Typography extends Base_Inline {
 	 * Headings font style.
 	 */
 	private function add_headings_styles() {
-		$controls = array(
-			'h1' => 'h1:not(.site-title), .single h1.entry-title',
-			'h2' => 'h2',
-			'h3' => 'h3',
-			'h4' => 'h4',
-			'h5' => 'h5',
-			'h6' => 'h6',
+		$controls = apply_filters(
+			'neve_headings_typeface_selectors',
+			array(
+				'h1' => 'h1:not(.site-title), .single h1.entry-title',
+				'h2' => 'h2',
+				'h3' => 'h3',
+				'h4' => 'h4',
+				'h5' => 'h5',
+				'h6' => 'h6',
+			) 
 		);
 
 		foreach ( $controls as $control => $selector ) {
