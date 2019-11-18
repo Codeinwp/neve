@@ -732,6 +732,11 @@ class Front_End {
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/10/neve-florist.jpg',
 						'title'      => 'Florist',
 					),
+					'neve-beaver-cake-shop'             => array(
+						'url'        => 'https://demo.themeisle.com/neve-cake-shop-bb/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/10/neve-cake-shop.jpg',
+						'title'      => 'Cake Shop',
+					),
 					'neve-beaver-transport'             => array(
 						'url'        => 'https://demo.themeisle.com/neve-transport-bb/',
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/10/neve-transport.jpg',
@@ -746,6 +751,16 @@ class Front_End {
 						'url'        => 'https://demo.themeisle.com/neve-pro-bb/',
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/10/neve-speed.jpg',
 						'title'      => 'Speed',
+					),
+					'neve-beaver-yoga-studio'           => array(
+						'url'        => 'https://demo.themeisle.com/neve-yoga-studio-bb/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/10/neve-yoga.jpg',
+						'title'      => 'Yoga Studio',
+					),
+					'neve-beaver-sales-funnel'          => array(
+						'url'        => 'https://demo.themeisle.com/neve-sales-funnel-bb/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/10/neve-sales.jpg',
+						'title'      => 'Sales Funnel',
 					),
 				),
 				'elementor'        => array(
