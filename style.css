@@ -35,7 +35,7 @@ Tags: blog, custom-logo, e-commerce, rtl-language-support, post-formats, grid-la
 }
 
 .wp-block-button.is-style-outline a.wp-block-button__link, a.button.close-responsive-search, .button.button-secondary, #comments input[type=submit] {
-  border: 1px solid #676767;
+  border: 1px solid;
   background-color: transparent;
   font-weight: 600;
   color: #676767;
