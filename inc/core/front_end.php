@@ -96,7 +96,24 @@ class Front_End {
 	 * @return string
 	 */
 	public function wrap_oembeds( $markup, $url, $attr ) {
-		$sources = [ 'vimeo.com', 'youtube.com', 'youtu.be', 'soundcloud', 'spotify', 'reverbnation' ];
+		$sources = [
+			'vimeo.com',
+			'youtube.com',
+			'youtu.be',
+			'soundcloud',
+			'spotify',
+			'reverbnation',
+			'animoto',
+			'cloudup',
+			'collegehumor',
+			'dailymotion',
+			'kck.st',
+			'kickstarter',
+			'mixcloud',
+			'speakerdeck',
+			'ted',
+			'wordpress.tv',
+		];
 		foreach ( $sources as $source ) {
 			if ( strpos( $url, $source ) !== false ) {
 				return '<div class="nv-iframe-embed">' . $markup . '</div>';
