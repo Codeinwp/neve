@@ -122,10 +122,6 @@
   border-bottom: 1px solid #f0f0f0;
 }
 
-.editor-styles-wrapper .editor-writing-flow table tbody tr:hover {
-  background-color: #fbfbfb;
-}
-
 .editor-styles-wrapper .editor-writing-flow table .wp-block-table__cell-content {
   padding: 0;
 }

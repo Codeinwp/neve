@@ -5,7 +5,7 @@ Theme URI:      https://themeisle.com/themes/neve/
 Author:         ThemeIsle
 Author URI:     https://themeisle.com
 Description:    Neve is a super fast, easily customizable, multi-purpose theme. It’s perfect for blogs, small business, startups, agencies, firms, e-commerce shops (WooCommerce storefront) as well as personal portfolio sites and most types of projects. A fully AMP optimized and responsive theme, Neve will load in mere seconds and adapt perfectly on any viewing device. While it is lightweight and has a minimalist design, the theme is highly extendable, it has a highly SEO optimized code, resulting in top rankings in Google search results. Neve works perfectly with Gutenberg and the most popular page builders (Elementor, Brizy, Beaver Builder, Visual Composer, SiteOrigin, Divi). Neve is also WooCommerce ready, responsive, RTL & translation ready. Look no further. Neve is the perfect theme for you!
-Version:        2.5.0
+Version:        2.5.1
 License:        GNU General Public License v2 or later
 License URI:    http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain:    neve
@@ -79,6 +79,7 @@ h2,
 h3,
 h4,
 h5,
+.nv-html-content p,
 h6 {
   margin: 0;
   padding: 0;
@@ -1177,10 +1178,6 @@ fieldset input[type="text"], fieldset input[type="search"], fieldset input[type=
   color: #404248;
 }
 
-.posts-wrapper .excerpt-wrap {
-  color: #676767;
-}
-
 .nv-shadow-1 .nv-post-thumbnail-wrap {
   box-shadow: 0 1px 3px -2px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.1);
 }
@@ -1642,7 +1639,6 @@ article {
 }
 
 .wp-block-cover-image .wp-block-cover__inner-container, .wp-block-cover .wp-block-cover__inner-container {
-  width: auto;
   max-width: calc(100% - 70px);
 }
 
@@ -1696,10 +1692,6 @@ table {
 table td, table th {
   padding: 10px;
   border-bottom: 1px solid #f0f0f0;
-}
-
-table tbody tr:hover {
-  background-color: #fbfbfb;
 }
 
 p code {
@@ -2530,6 +2522,15 @@ audio {
   box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.1);
 }
 
+.hfg-is-group {
+  display: flex;
+  align-items: center;
+}
+
+.hfg-is-group.hfg-item-right {
+  justify-content: flex-end;
+}
+
 .hfg-item-right {
   text-align: left;
 }
@@ -2538,12 +2539,20 @@ audio {
   justify-content: flex-end;
 }
 
+.hfg-is-group.hfg-item-left {
+  justify-content: flex-start;
+}
+
 .hfg-item-left {
   text-align: right;
 }
 
 .hfg-item-left #secondary-menu, .hfg-item-left .nv-nav-wrap, .hfg-item-left .component-wrap, .hfg-item-left .site-logo, .hfg-item-left .nv-search-icon-component .nv-search, .hfg-item-left .builder-item--footer-menu {
   justify-content: flex-start;
+}
+
+.hfg-is-group.hfg-item-center {
+  justify-content: center;
 }
 
 .hfg-item-center {
@@ -3004,10 +3013,6 @@ body.menu_sidebar_slide_left.menu_sidebar_dropdown:before {
   opacity: .75;
 }
 
-.woocommerce-mini-cart-item > a:after {
-  content: none !important;
-}
-
 .style-border-bottom a:after {
   bottom: 0;
 }
@@ -3252,21 +3257,7 @@ body.menu_sidebar_slide_left.menu_sidebar_dropdown:before {
   }
 }
 
-.builder-item.hfg-edge-left .item--inner > div {
-  flex-direction: row;
-  display: flex;
-}
-
-.builder-item.hfg-edge-right .item--inner > div {
-  flex-direction: row-reverse;
-  display: flex;
-}
-
 .component-wrap {
   display: flex;
   margin: 4px 0;
-}
-
-.nv-html-content p {
-  margin: 0;
 }

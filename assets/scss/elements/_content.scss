@@ -15,7 +15,6 @@
 }
 
 .wp-block-cover-image .wp-block-cover__inner-container, .wp-block-cover .wp-block-cover__inner-container {
-  width: auto;
   max-width: calc(100% - 70px);
 }
 
@@ -68,10 +67,6 @@ table {
   td, th {
     padding: $spacing-xs;
     border-bottom: $muted-border;
-  }
-
-  tbody tr:hover {
-    background-color: #fbfbfb;
   }
 }
 

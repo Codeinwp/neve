@@ -49,27 +49,7 @@ class MenuIcon extends Abstract_Component {
 	 * @since   1.0.0
 	 * @access  public
 	 */
-	public function add_settings() {
-
-		SettingsManager::get_instance()->add(
-			[
-				'id'                => self::SIDEBAR_TOGGLE,
-				'group'             => $this->get_id(),
-				'tab'               => SettingsManager::TAB_GENERAL,
-				'transport'         => 'post' . $this->get_id(),
-				'sanitize_callback' => 'absint',
-				'default'           => 0,
-				'label'             => __( 'Show Sidebar', 'neve' ),
-				'type'              => '\Neve\Customizer\Controls\Checkbox',
-				'options'           => [
-					'type' => 'checkbox-toggle',
-				],
-				'section'           => $this->section,
-			]
-		);
-
-
-	}
+	public function add_settings() {}
 
 	/**
 	 * Render method.

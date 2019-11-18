@@ -3,6 +3,16 @@
   overflow-x: hidden;
 }
 
+.customize-previewing.is-menu-sidebar .customize-partial-refreshing {
+  opacity: 1;
+  transition: none;
+}
+
+.customize-previewing.is-menu-sidebar .customize-partial-refreshing #header-menu-sidebar #header-menu-sidebar-inner {
+  opacity: 0.5;
+  transition: opacity .25s;
+}
+
 .customize-previewing .builder-item-focus.item--inner, .customize-previewing .builder-item-focus.row--wrapper {
   position: relative;
 }
