@@ -200,7 +200,7 @@
 }
 
 .editor-styles-wrapper .wp-block-button.is-style-outline .wp-block-button__link {
-  border: 1px solid #676767;
+  border: 1px solid;
   background-color: transparent;
   font-weight: 600;
   color: #676767;
