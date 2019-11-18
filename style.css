@@ -1638,6 +1638,10 @@ article {
   height: 100%;
 }
 
+.wp-block-embed-soundcloud .nv-iframe-embed {
+  padding-top: 100%;
+}
+
 .wp-block-cover-image .wp-block-cover__inner-container, .wp-block-cover .wp-block-cover__inner-container {
   max-width: calc(100% - 70px);
 }
