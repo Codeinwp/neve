@@ -42,18 +42,18 @@ function setupCustomizer() {
         click();
 
     // Increase Top Padding value
-    cy.get( '#customize-control-logo_component_padding .neve-responsive-sizing > .nv-sizing-item > div > .top-input' ).
+    cy.get( '#customize-control-logo_component_padding .neve-responsive-sizing > .nv-sizing-item > .top-input' ).click().
         type('{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}{uparrow}').
         trigger('change');
 
     // Check if linked values
-    cy.get( '#customize-control-logo_component_padding .neve-responsive-sizing > .nv-sizing-item > div > .top-input' ).
+    cy.get( '#customize-control-logo_component_padding .neve-responsive-sizing > .nv-sizing-item > .top-input' ).
         should( 'have.value', '30' );
-    cy.get( '#customize-control-logo_component_padding  .neve-responsive-sizing > .nv-sizing-item > div > .bottom-input' ).
+    cy.get( '#customize-control-logo_component_padding  .neve-responsive-sizing > .nv-sizing-item  > .bottom-input' ).
         should( 'have.value', '30' );
-    cy.get( '#customize-control-logo_component_padding .neve-responsive-sizing > .nv-sizing-item > div > .left-input' ).
+    cy.get( '#customize-control-logo_component_padding .neve-responsive-sizing > .nv-sizing-item  > .left-input' ).
         should( 'have.value', '30' );
-    cy.get( '#customize-control-logo_component_padding .neve-responsive-sizing > .nv-sizing-item > div > .right-input' ).
+    cy.get( '#customize-control-logo_component_padding .neve-responsive-sizing > .nv-sizing-item  > .right-input' ).
         should( 'have.value', '30' );
 
     // Click on Reset button
@@ -61,13 +61,13 @@ function setupCustomizer() {
     click();
 
     // Check if Reset button works
-    cy.get( '#customize-control-logo_component_padding  .neve-responsive-sizing > .nv-sizing-item > div > .top-input' ).
+    cy.get( '#customize-control-logo_component_padding  .neve-responsive-sizing > .nv-sizing-item  > .top-input' ).
         should( 'have.value', '10' );
-    cy.get( '#customize-control-logo_component_padding .neve-responsive-sizing > .nv-sizing-item > div > .right-input' ).
+    cy.get( '#customize-control-logo_component_padding .neve-responsive-sizing > .nv-sizing-item  > .right-input' ).
         should( 'have.value', '0' );
-    cy.get( '#customize-control-logo_component_padding .neve-responsive-sizing > .nv-sizing-item > div > .bottom-input' ).
+    cy.get( '#customize-control-logo_component_padding .neve-responsive-sizing > .nv-sizing-item  > .bottom-input' ).
         should( 'have.value', '10' );
-    cy.get( '#customize-control-logo_component_padding  .neve-responsive-sizing > .nv-sizing-item > div > .left-input' ).
+    cy.get( '#customize-control-logo_component_padding  .neve-responsive-sizing > .nv-sizing-item  > .left-input' ).
         should( 'have.value', '0' );
 
     // Unlink values
@@ -75,12 +75,12 @@ function setupCustomizer() {
         click();
 
     // Increase Top Padding value
-    cy.get( '#customize-control-logo_component_padding  .neve-responsive-sizing > .nv-sizing-item > div > .top-input' ).
+    cy.get( '#customize-control-logo_component_padding  .neve-responsive-sizing > .nv-sizing-item  > .top-input' ).click().
         type('{uparrow}').
         trigger('change');
 
     // Decrease Bottom Padding value
-    cy.get( '#customize-control-logo_component_padding .neve-responsive-sizing > .nv-sizing-item > div > .bottom-input' ).
+    cy.get( '#customize-control-logo_component_padding .neve-responsive-sizing > .nv-sizing-item  > .bottom-input' ).click().
         type('{downarrow}').
         trigger('change');
 
