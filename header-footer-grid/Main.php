@@ -89,12 +89,11 @@ class Main {
 			self::$_instance->init();
 			self::$_instance->settings   = new Manager();
 			self::$_instance->customizer = new Customizer();
-			$default_directories         = [
-				get_template_directory() . '/' . self::TEMPLATES_DIRECTORY,
-			];
+			$default_directories         = [];
 			if ( is_child_theme() ) {
 				$default_directories[] = get_stylesheet_directory() . '/' . self::TEMPLATES_DIRECTORY;
 			}
+			$default_directories[]    = get_template_directory() . '/' . self::TEMPLATES_DIRECTORY;
 			self::$templates_location = apply_filters( 'hfg_template_locations', $default_directories );
 
 		}
@@ -167,6 +166,7 @@ class Main {
 
 		if ( count( self::$templates_location ) === 1 && count( $templates ) === 1 ) {
 			load_template( self::$templates_location[0] . $templates[0], false );
+
 			return;
 		}
 
