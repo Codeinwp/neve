@@ -7,8 +7,8 @@ const {
 	Fragment
 } = wp.element;
 const {
-	MediaPlaceholder
-} = wp.editor;
+	MediaUpload
+} = wp.blockEditor;
 
 const {
 	Button,
@@ -17,7 +17,8 @@ const {
 	FocalPointPicker,
 	Dashicon,
 	ColorPalette,
-	ToggleControl
+	ToggleControl,
+	Placeholder
 } = wp.components;
 
 class BackgroundComponent extends Component {
@@ -49,8 +50,8 @@ class BackgroundComponent extends Component {
 							isPrimary={self.state.type === type}
 							isDefault={self.state.type !== type}
 							onClick={(e) => {
-								self.setState( { type: type } );
-								self.updateSetting();
+								self.setState( { type } );
+								self.updateSetting( { type } );
 							}}
 					>
 						{labels[type]}
@@ -88,7 +89,7 @@ class BackgroundComponent extends Component {
 								value={this.state.colorValue}
 								onChange={(colorValue) => {
 									self.setState( { colorValue } );
-									self.updateSetting();
+									self.updateSetting( { colorValue } );
 								}}
 						/>
 							<div
@@ -99,20 +100,29 @@ class BackgroundComponent extends Component {
 						}
 						{this.state.type === 'image' &&
 						<Fragment>
-							{!this.state.imageUrl && <MediaPlaceholder
+							{!this.state.imageUrl &&
+							<Placeholder
 									icon="format-image"
-									labels={{
-										title: __( 'Image', 'neve' ),
-										instructions: __(
-												'Select from the Media Library or upload a new image',
-												'neve' )
-									}}
-									onSelect={(imageData) => {
-										this.setState( { imageUrl: imageData.url } );
-										this.updateSetting();
-									}}
-									allowedTypes={['image']}
-							/> ||
+									label={__( 'Image', 'neve' )}
+							>
+								<p>
+									{__( 'Select from the Media Library or upload a new image',
+											'neve' )}
+								</p>
+								<MediaUpload
+										onSelect={(imageData) => {
+											this.setState( { imageUrl: imageData.url } );
+											this.updateSetting( { imageUrl: imageData.url } );
+										}}
+										allowedTypes={['image']}
+										render={({ open }) => (
+												<Button isDefault onClick={open}>
+													{__( 'Add Image', 'neve' )}
+												</Button>
+										)}
+								/>
+							</Placeholder>
+							||
 							<Fragment>
 								<Button
 										className="remove-image"
@@ -120,7 +130,7 @@ class BackgroundComponent extends Component {
 										isLink
 										onClick={() => {
 											this.setState( { imageUrl: '' } );
-											this.updateSetting();
+											this.updateSetting( { imageUrl: '' } );
 										}}>
 									<Dashicon icon="no"/>
 									Remove Image</Button>
@@ -128,21 +138,20 @@ class BackgroundComponent extends Component {
 										url={this.state.imageUrl}
 										value={this.state.focusPoint}
 										onChange={(val) => {
-											this.setState( {
-												focusPoint: {
-													x: parseFloat( val.x ).toFixed( 2 ),
-													y: parseFloat( val.y ).toFixed( 2 )
-												}
-											} );
-											this.updateSetting();
+											let newPoint = {
+												x: parseFloat( val.x ).toFixed( 2 ),
+												y: parseFloat( val.y ).toFixed( 2 )
+											};
+											this.setState( { focusPoint: newPoint } );
+											this.updateSetting( { focusPoint: newPoint } );
 										}}/>
 							</Fragment>}
 							<ToggleControl
 									label={__( 'Fixed Background', 'neve' )}
 									checked={this.state.fixed}
 									onChange={(fixed) => {
-										this.setState( { fixed: fixed } );
-										this.updateSetting();
+										this.setState( { fixed } );
+										this.updateSetting( { fixed } );
 									}}
 							/>
 							<span className="customize-control-title">{
@@ -153,7 +162,7 @@ class BackgroundComponent extends Component {
 									value={this.state.overlayColorValue}
 									onChange={(overlayColorValue) => {
 										self.setState( { overlayColorValue } );
-										self.updateSetting();
+										self.updateSetting( { overlayColorValue } );
 									}}
 							/>
 							<div
@@ -165,7 +174,7 @@ class BackgroundComponent extends Component {
 									value={this.state.overlayOpacity}
 									onChange={(overlayOpacity) => {
 										this.setState( { overlayOpacity } );
-										this.updateSetting();
+										this.updateSetting( { overlayOpacity } );
 									}}
 									min="0"
 									max="100"
@@ -177,13 +186,13 @@ class BackgroundComponent extends Component {
 		);
 	}
 
-	updateSetting() {
-		setTimeout( () => {
-			this.props.control.setting.set( {
-				...this.props.control.setting.get(),
-				...this.state
-			} );
-		}, 100 );
+	updateSetting(newValues) {
+		// setTimeout( () => {
+		this.props.control.setting.set( {
+			...this.props.control.setting.get(),
+			...newValues
+		} );
+		// }, 100 );
 	}
 }
 
