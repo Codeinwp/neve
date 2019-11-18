@@ -107,7 +107,7 @@ class MenuIcon extends Abstract_Component {
 	public function add_style( array $css_array = array() ) {
 		$appearance = \HFG\component_setting( self::BUTTON_APPEARANCE, null, $this->id );
 
-		if ( ! empty( $appearance['borderRadius'] ) || $appearance['borderRadius'] === 0 ) {
+		if ( isset( $appearance['borderRadius'] ) ) {
 			$css_array[ $this->button_selector ]['border-radius'] = $appearance['borderRadius'] . 'px';
 		}
 
