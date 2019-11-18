@@ -23,9 +23,9 @@ use WP_Customize_Manager;
  */
 class MenuIcon extends Abstract_Component {
 
-	const COMPONENT_ID = 'header_menu_icon';
-	const SIDEBAR_TOGGLE = 'sidebar';
-	const TEXT_ID = 'menu_label';
+	const COMPONENT_ID      = 'header_menu_icon';
+	const SIDEBAR_TOGGLE    = 'sidebar';
+	const TEXT_ID           = 'menu_label';
 	const BUTTON_APPEARANCE = 'button_appearance';
 
 	/**

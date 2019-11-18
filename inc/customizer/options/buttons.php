@@ -87,7 +87,7 @@ class Buttons extends Base_Customizer {
 					'neve_' . $button . '_appearance',
 					[
 						'sanitize_callback' => 'neve_sanitize_button_appearance',
-						'default' => $defaults,
+						'default'           => $defaults,
 					],
 					[
 						'label'   => __( 'Button Appearance', 'neve' ),
