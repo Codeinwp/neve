@@ -82,7 +82,6 @@ window.addEventListener( 'load', function() {
 								addCss( settingId, style );
 								return false;
 							}
-
 							style += args.selector + '{';
 							style += newValue.imageUrl ?
 									'background-image: url("' + newValue.imageUrl +
@@ -207,8 +206,21 @@ window.addEventListener( 'load', function() {
 							style += 'html ' + args.selector + ' .icon-bar {' +
 									'background-color: ' + ( newValue.text || 'inherit' ) + ';' +
 									'}';
-							console.log( settingId, style );
 							addCss( settingId, style );
+							break;
+						case 'text':
+							let textContainer = document.querySelector( args.selector );
+							if ( newValue === '' ) {
+								textContainer.parentNode.removeChild( textContainer );
+								return false;
+							}
+							if ( textContainer === null ) {
+								let wrap = document.createElement( args.additional.html_tag );
+								wrap.classList.add( args.additional.wrap_class );
+								document.querySelector( args.additional.parent ).
+										prepend( wrap );
+							}
+							document.querySelector( args.selector ).innerHTML = newValue;
 							break;
 						case 'neve_font_family_control':
 							break;

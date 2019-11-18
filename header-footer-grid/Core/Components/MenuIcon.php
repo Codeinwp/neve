@@ -23,9 +23,9 @@ use WP_Customize_Manager;
  */
 class MenuIcon extends Abstract_Component {
 
-	const COMPONENT_ID      = 'header_menu_icon';
-	const SIDEBAR_TOGGLE    = 'sidebar';
-	const TEXT_ID           = 'menu_label';
+	const COMPONENT_ID = 'header_menu_icon';
+	const SIDEBAR_TOGGLE = 'sidebar';
+	const TEXT_ID = 'menu_label';
 	const BUTTON_APPEARANCE = 'button_appearance';
 
 	/**
@@ -60,15 +60,22 @@ class MenuIcon extends Abstract_Component {
 	public function add_settings() {
 		SettingsManager::get_instance()->add(
 			[
-				'id'                => self::TEXT_ID,
-				'group'             => $this->get_id(),
-				'transport'         => 'post' . $this->get_id(),
-				'tab'               => SettingsManager::TAB_GENERAL,
-				'sanitize_callback' => 'wp_filter_nohtml_kses',
-				'default'           => '',
-				'label'             => __( 'Menu label', 'neve' ),
-				'type'              => 'text',
-				'section'           => $this->section,
+				'id'                    => self::TEXT_ID,
+				'group'                 => $this->get_id(),
+				// 'transport'         => 'post' . $this->get_id(),
+				'transport'             => 'postMessage',
+				'tab'                   => SettingsManager::TAB_GENERAL,
+				'sanitize_callback'     => 'wp_filter_nohtml_kses',
+				'default'               => '',
+				'label'                 => __( 'Menu label', 'neve' ),
+				'type'                  => 'text',
+				'section'               => $this->section,
+				'live_refresh_selector' => $this->button_selector . ' .nav-toggle-label',
+				'live_refresh_css_prop' => array(
+					'parent'     => $this->button_selector,
+					'wrap_class' => 'nav-toggle-label',
+					'html_tag'   => 'span',
+				),
 			]
 		);
 		SettingsManager::get_instance()->add(
@@ -90,6 +97,13 @@ class MenuIcon extends Abstract_Component {
 		);
 	}
 
+	/**
+	 * Add CSS style for the component.
+	 *
+	 * @param array $css_array the css style array.
+	 *
+	 * @return array
+	 */
 	public function add_style( array $css_array = array() ) {
 		$appearance = \HFG\component_setting( self::BUTTON_APPEARANCE, null, $this->id );
 
