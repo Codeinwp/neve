@@ -23,6 +23,7 @@ class ButtonAppearanceComponent extends Component {
 			borderRadius: value.borderRadius || 3,
 			borderWidth: value.borderWidth || 1
 		};
+		this.updateValues(this.state);
 	}
 
 	getBorderControls() {
