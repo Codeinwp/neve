@@ -350,6 +350,7 @@ class Woocommerce {
 		add_filter( 'neve_menu_items_color_filter', array( $this, 'add_menu_items_color' ) );
 		add_filter( 'neve_menu_items_hover_color_filter', array( $this, 'add_menu_items_hover_color' ) );
 		add_filter( 'neve_body_font_family_selectors', array( $this, 'add_font_families' ) );
+		add_filter( 'neve_headings_typeface_selectors', array( $this, 'add_typeface_selectors' ) );
 	}
 
 	/**
@@ -376,6 +377,19 @@ class Woocommerce {
 		$color_setup['color']['selectors'] .= ', .menu-item-nav-cart:hover .cart-count';
 
 		return $color_setup;
+	}
+
+	/**
+	 * Add selectors for the headings typeface styles.
+	 *
+	 * @param array $array the headings selectors.
+	 *
+	 * @return array
+	 */
+	public function add_typeface_selectors( $array ) {
+		$array['h1'] = $array['h1'] . ', .woocommerce.single .product_title';
+
+		return $array;
 	}
 
 	/**
@@ -425,10 +439,18 @@ class Woocommerce {
 	 * @return array
 	 */
 	public function add_secondary_button_color( $color_setup ) {
-		$color_setup['color']['selectors']        .= $this->secondary_buttons_selectors['no-padding'];
-		$color_setup['color']['selectors']        .= $this->secondary_buttons_selectors['default'];
-		$color_setup['border-color']['selectors'] .= $this->secondary_buttons_selectors['no-padding'];
-		$color_setup['border-color']['selectors'] .= $this->secondary_buttons_selectors['default'];
+		if ( isset( $color_setup['color'] ) ) {
+			$color_setup['color']['selectors'] .= $this->secondary_buttons_selectors['no-padding'];
+			$color_setup['color']['selectors'] .= $this->secondary_buttons_selectors['default'];
+		}
+		if ( isset( $color_setup['background-color'] ) ) {
+			$color_setup['background-color']['selectors'] .= $this->secondary_buttons_selectors['no-padding'];
+			$color_setup['background-color']['selectors'] .= $this->secondary_buttons_selectors['default'];
+		}
+		if ( isset( $color_setup['border-color'] ) ) {
+			$color_setup['border-color']['selectors'] .= $this->secondary_buttons_selectors['no-padding'];
+			$color_setup['border-color']['selectors'] .= $this->secondary_buttons_selectors['default'];
+		}
 
 		return $color_setup;
 	}
@@ -441,10 +463,18 @@ class Woocommerce {
 	 * @return array
 	 */
 	public function add_secondary_button_hover_color( $color_setup ) {
-		$color_setup['color']['selectors']        .= $this->secondary_buttons_selectors['hover'];
-		$color_setup['color']['selectors']        .= $this->secondary_buttons_selectors['no-padding-hover'];
-		$color_setup['border-color']['selectors'] .= $this->secondary_buttons_selectors['hover'];
-		$color_setup['border-color']['selectors'] .= $this->secondary_buttons_selectors['no-padding-hover'];
+		if ( isset( $color_setup['color'] ) ) {
+			$color_setup['color']['selectors'] .= $this->secondary_buttons_selectors['hover'];
+			$color_setup['color']['selectors'] .= $this->secondary_buttons_selectors['no-padding-hover'];
+		}
+		if ( isset( $color_setup['background-color'] ) ) {
+			$color_setup['background-color']['selectors'] .= $this->secondary_buttons_selectors['hover'];
+			$color_setup['background-color']['selectors'] .= $this->secondary_buttons_selectors['no-padding-hover'];
+		}
+		if ( isset( $color_setup['border-color'] ) ) {
+			$color_setup['border-color']['selectors'] .= $this->secondary_buttons_selectors['hover'];
+			$color_setup['border-color']['selectors'] .= $this->secondary_buttons_selectors['no-padding-hover'];
+		}
 
 		return $color_setup;
 	}

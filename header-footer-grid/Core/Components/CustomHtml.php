@@ -139,6 +139,7 @@ class CustomHtml extends Abstract_Component {
 				'default'           => get_theme_mod( 'neve_top_bar_content', '' ),
 				'preview_default'   => '',
 				'label'             => __( 'HTML', 'neve' ),
+				'description'       => __( 'Arbitrary HTML code. It supports also shortcodes.', 'neve' ),
 				'type'              => 'textarea',
 				'section'           => $this->section,
 			]

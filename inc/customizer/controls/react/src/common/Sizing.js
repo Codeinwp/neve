@@ -1,12 +1,9 @@
 import PropTypes from 'prop-types';
+import SingleSizingInput from '../common/SingleSizingInput.js';
 
 const { __ } = wp.i18n;
 const {
-	Dropdown,
-	IconButton,
-	ToolbarButton,
 	Toolbar,
-	RangeControl
 } = wp.components;
 const { Component } = wp.element;
 
@@ -25,79 +22,43 @@ class SizingControl extends Component {
 		let controls = [];
 		if ( !this.props.noLinking ) {
 			controls.push(
-				{
-					title: this.props.linked ? __( 'Unlink Values', 'neve' ) : __( 'Link Values', 'neve' ),
-					icon: this.props.linked ? 'admin-links' : 'editor-unlink',
-					isActive: this.props.linked,
-					onClick: () => this.props.onLinked()
-				}
-			)
+					{
+						title: this.props.linked ?
+								__( 'Unlink Values', 'neve' ) :
+								__( 'Link Values', 'neve' ),
+						icon: this.props.linked ? 'admin-links' : 'editor-unlink',
+						isActive: this.props.linked,
+						onClick: () => this.props.onLinked()
+					}
+			);
 		}
 		if ( this.hasSetValues() ) {
 			controls.push(
-				{
-					title: this.props.options.length > 1 ? __( 'Reset all Values', 'neve' ) : __( 'Reset Value', 'neve' ),
-					icon: 'image-rotate',
-					onClick: () => this.props.onReset()
-				}
-			)
+					{
+						title: this.props.options.length > 1 ?
+								__( 'Reset all Values', 'neve' ) :
+								__( 'Reset Value', 'neve' ),
+						icon: 'image-rotate',
+						onClick: () => this.props.onReset()
+					}
+			);
 		}
 
 		return (
 				<div className={wrapClasses}>
 					{this.props.options.map( (i, n) => {
 						return (
-								<div className="nv-sizing-item">
-									<Dropdown
-											position="top center"
-											focusOnMount={false}
-											renderToggle={({ isOpen, onToggle }) => (
-													<input
-															type="number"
-															id={i.type + '-input'}
-															value={i.value && i.value}
-															min={this.props.min}
-															max={this.props.max}
-															step={this.props.step}
-															onFocus={() => {
-																if ( this.props.noRange ) {
-																	return false;
-																}
-																onToggle();
-															}}
-															onChange={
-																e => this.props.onChange( i.type,
-																		e.target.value === '' ? 0 : e.target.value )
-															}
-													/>
-											)}
-											renderContent={({ onToggle }) => (
-													<div className="range-control">
-														<RangeControl
-																value={i.value && i.value}
-																initialPosition={i.value && i.value || 0}
-																beforeIcon="minus"
-																afterIcon="plus"
-																min={this.props.min}
-																max={this.props.max}
-																step={this.props.step}
-																onChange={
-																	e => this.props.onChange( i.type,
-																			e === '' ? 0 : e )
-																}
-														/>
-													</div>
-											)}
-									/>
-									{i.type && (
-											<label className="label" for={i.type + '-input'}>
-												{i.type}
-											</label>
-									)}
-								</div>
+								<SingleSizingInput
+										onChange={(type, value) => this.props.onChange( type,
+												value )}
+										value={i.value}
+										className={i.type ? i.type + '-input' : ''}
+										type={i.type}
+										max={this.props.max}
+										min={this.props.min}
+										step={this.props.step}/>
 						);
 					} )}
-
 					<Toolbar controls={controls}/>
 				</div>
 		);

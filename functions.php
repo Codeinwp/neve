@@ -8,7 +8,7 @@
  * @package Neve
  */
 
-define( 'NEVE_VERSION', '2.5.1' );
+define( 'NEVE_VERSION', '2.5.2' );
 define( 'NEVE_INC_DIR', trailingslashit( get_template_directory() ) . 'inc/' );
 define( 'NEVE_ASSETS_URL', trailingslashit( get_template_directory_uri() ) . 'assets/' );
 
@@ -84,5 +84,6 @@ require_once get_template_directory() . '/start.php';
 require_once 'globals/utilities.php';
 require_once 'globals/hooks.php';
 require_once 'globals/sanitize-functions.php';
+require_once 'globals/migrations.php';
 
 require_once get_template_directory() . '/header-footer-grid/loader.php';

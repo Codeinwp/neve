@@ -9,7 +9,7 @@ export const initIntegrationToggle = function() {
 	attachToTemplatePickerAndListen();
 	let observer = new MutationObserver( function(mutations) {
 		neveEach( mutations, function(mutation) {
-			if ( mutation.target.className === 'edit-post-more-menu' ) {
+			if ( mutation.target.className.includes( 'edit-post-more-menu' ) ) {
 				addMenuItem();
 			}
 			if (
@@ -31,13 +31,12 @@ export const initIntegrationToggle = function() {
 
 const addMenuItem = function() {
 	let menu = document.getElementsByClassName( 'edit-post-more-menu__content' );
-
 	if ( menu.length <= 0 )
 		return false;
 
 	integrationStatus = store.getState( 'integrationStatus' );
 	let target = document.querySelector(
-			'.components-menu-group:first-of-type div:not(.components-menu-group__label) button:last-child' );
+			'.edit-post-more-menu__content .components-menu-group:first-of-type div:not(.components-menu-group__label) button:last-child' );
 
 	integrationToggle = document.createElement( 'button' );
 

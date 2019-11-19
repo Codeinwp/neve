@@ -216,7 +216,8 @@ class Typography extends Base_Customizer {
 			)
 		);
 
-		$priority = 20;
+		$selectors = neve_get_headings_selectors();
+		$priority  = 20;
 		foreach ( $this->headings_default_sizes as $heading_id => $default_values ) {
 			$this->add_control(
 				new Control(
@@ -264,7 +265,7 @@ class Typography extends Base_Customizer {
 							),
 						),
 						'type'                  => 'neve_typeface_control',
-						'live_refresh_selector' => $heading_id === 'h1' ? 'h1:not(.site-title), .single h1.entry-title' : $heading_id,
+						'live_refresh_selector' => $selectors[ $heading_id ],
 					],
 					'\Neve\Customizer\Controls\React\Typography'
 				)

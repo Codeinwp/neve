@@ -34,7 +34,7 @@ describe( 'Header Row Background Control', function() {
 				should( 'have.length', 2 );
 
 		cy.get( '@bgCtrl' ).find( 'button' ).contains( 'Image' ).click();
-		cy.get( '@bgCtrl' ).find( 'button' ).contains( 'Media Library' ).click();
+		cy.get( '@bgCtrl' ).find( 'button' ).contains( 'Add' ).click();
 
 		cy.get( '.media-frame' ).
 				find( '.media-menu-item' ).

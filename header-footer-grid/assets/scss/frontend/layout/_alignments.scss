@@ -1,3 +1,8 @@
+.hfg-is-group {
+  display: flex;
+  align-items: center;
+}
+
 $component-alignments: (
         'right' : flex-end,
         'left' : flex-start,
@@ -5,6 +10,9 @@ $component-alignments: (
 );
 
 @each $alignment, $flex-setting in $component-alignments {
+  .hfg-is-group.hfg-item-#{$alignment} {
+    justify-content: $flex-setting;
+  }
   .hfg-item-#{$alignment} {
     text-align: #{$alignment};
 

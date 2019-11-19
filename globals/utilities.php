@@ -1162,3 +1162,22 @@ function neve_get_google_fonts() {
 		)
 	);
 }
+
+/**
+ * Get the heading selectors array.
+ *
+ * @return array
+ */
+function neve_get_headings_selectors() {
+	return apply_filters(
+		'neve_headings_typeface_selectors',
+		array(
+			'h1' => 'h1:not(.site-title), .single h1.entry-title',
+			'h2' => 'h2',
+			'h3' => 'h3',
+			'h4' => 'h4',
+			'h5' => 'h5',
+			'h6' => 'h6',
+		)
+	);
+}
