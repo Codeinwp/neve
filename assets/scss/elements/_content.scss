@@ -1,7 +1,6 @@
-.nv-iframe-embed {
+.wp-block-embed:not(.is-provider-scribd):not(.is-provider-slideshare) .nv-iframe-embed {
   position: relative;
   padding-top: 56.25%;
-  height: 0;
   overflow: hidden;
   max-width: 100%;
   height: auto;
@@ -21,7 +20,7 @@
   max-width: calc(100% - 70px);
 }
 
-.wp-embed-responsive .wp-block-embed .wp-block-embed__wrapper:before {
+.wp-embed-responsive .wp-block-embed:not(.is-provider-scribd):not(.is-provider-slideshare) .wp-block-embed__wrapper:before {
   padding-top: 0 !important;
 }
 
