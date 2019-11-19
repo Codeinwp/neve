@@ -202,9 +202,14 @@ window.addEventListener( 'load', function() {
 								style += 'border: ' + newValue.borderWidth + 'px solid ' +
 										newValue.text + ';';
 							}
+							if ( newValue.type === 'fill' ) {
+								style += 'border: none;';
+							}
 							style += '}';
-							style += 'html ' + args.selector + ' .icon-bar {' +
-									'background-color: ' + ( newValue.text || 'inherit' ) + ';' +
+							let selector = 'html ' + args.selector + ' .icon-bar';
+
+							style += selector+' {' +
+									'background-color: ' + ( newValue.text || document.querySelector(selector).style.backgroundColor ) + ';' +
 									'}';
 							addCss( settingId, style );
 							break;
