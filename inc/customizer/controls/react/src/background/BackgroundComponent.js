@@ -25,15 +25,17 @@ class BackgroundComponent extends Component {
 	constructor(props) {
 		super( props );
 		let value = props.control.setting.get();
+
 		this.state = {
 			type: value.type || 'color',
 			imageUrl: value.imageUrl || '',
 			focusPoint: value.focusPoint || { x: 0.5, y: 0.5 },
 			colorValue: value.colorValue || '#ffffff',
-			overlayColorValue: value.overlayColorValue || '#000000',
+			overlayColorValue: value.overlayColorValue || '',
 			overlayOpacity: value.overlayOpacity || 50,
 			fixed: value.fixed || false
 		};
+		this.updateSetting(this.state);
 	}
 
 	getButtons() {
@@ -50,8 +52,7 @@ class BackgroundComponent extends Component {
 							isPrimary={self.state.type === type}
 							isDefault={self.state.type !== type}
 							onClick={(e) => {
-								self.setState( { type } );
-								self.updateSetting( { type } );
+								self.updateSetting( { type: type } );
 							}}
 					>
 						{labels[type]}
@@ -88,8 +89,7 @@ class BackgroundComponent extends Component {
 								colors={colors}
 								value={this.state.colorValue}
 								onChange={(colorValue) => {
-									self.setState( { colorValue } );
-									self.updateSetting( { colorValue } );
+									self.updateSetting( {colorValue:  colorValue } );
 								}}
 						/>
 							<div
@@ -111,7 +111,6 @@ class BackgroundComponent extends Component {
 								</p>
 								<MediaUpload
 										onSelect={(imageData) => {
-											this.setState( { imageUrl: imageData.url } );
 											this.updateSetting( { imageUrl: imageData.url } );
 										}}
 										allowedTypes={['image']}
@@ -129,8 +128,7 @@ class BackgroundComponent extends Component {
 										isDestructive
 										isLink
 										onClick={() => {
-											this.setState( { imageUrl: '' } );
-											this.updateSetting( { imageUrl: '' } );
+											this.updateSetting( { imageUrl: '', overlayColorValue:'' } );
 										}}>
 									<Dashicon icon="no"/>
 									Remove Image</Button>
@@ -142,7 +140,6 @@ class BackgroundComponent extends Component {
 												x: parseFloat( val.x ).toFixed( 2 ),
 												y: parseFloat( val.y ).toFixed( 2 )
 											};
-											this.setState( { focusPoint: newPoint } );
 											this.updateSetting( { focusPoint: newPoint } );
 										}}/>
 							</Fragment>}
@@ -150,8 +147,7 @@ class BackgroundComponent extends Component {
 									label={__( 'Fixed Background', 'neve' )}
 									checked={this.state.fixed}
 									onChange={(fixed) => {
-										this.setState( { fixed } );
-										this.updateSetting( { fixed } );
+										this.updateSetting( { fixed: fixed } );
 									}}
 							/>
 							<span className="customize-control-title">{
@@ -161,8 +157,7 @@ class BackgroundComponent extends Component {
 									colors={colors}
 									value={this.state.overlayColorValue}
 									onChange={(overlayColorValue) => {
-										self.setState( { overlayColorValue } );
-										self.updateSetting( { overlayColorValue } );
+										self.updateSetting( { overlayColorValue: overlayColorValue } );
 									}}
 							/>
 							<div
@@ -173,8 +168,7 @@ class BackgroundComponent extends Component {
 									label={__( 'Overlay Opacity', 'neve' )}
 									value={this.state.overlayOpacity}
 									onChange={(overlayOpacity) => {
-										this.setState( { overlayOpacity } );
-										this.updateSetting( { overlayOpacity } );
+										this.updateSetting( {overlayOpacity: overlayOpacity } );
 									}}
 									min="0"
 									max="100"
@@ -188,6 +182,7 @@ class BackgroundComponent extends Component {
 
 	updateSetting(newValues) {
 		// setTimeout( () => {
+		this.setState( newValues );
 		this.props.control.setting.set( {
 			...this.props.control.setting.get(),
 			...newValues
