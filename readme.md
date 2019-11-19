@@ -2,7 +2,7 @@
 **Contributors:** [themeisle](https://profiles.wordpress.org/themeisle)  
 **Tags:** blog, custom-logo, e-commerce, rtl-language-support, post-formats, grid-layout, one-column, two-columns, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, accessibility-ready, wide-blocks, block-styles, footer-widgets, portfolio, left-sidebar, right-sidebar  
 **Requires at least:** 4.0  
-**Tested up to:** 5.3 
+**Tested up to:** 5.3  
 **Stable tag:** 1.0.23  
 **Requires PHP:** 5.4.0  
 **License:** GPLv2 or later  
@@ -18,6 +18,23 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
+### 2.5.2 - 2019-11-19  ###
+
+* [Feat] Improved mobile header/footer builder UX
+* [Feat] New styling controls for the Menu Icon component
+* [Feat] New Filled and Outline style options for buttons
+* [Fix] Uploading background images in the header/footer builder
+* [Fix] Content alignment when Gutenberg is activated
+* [Fix] Multiple embeds not visible on the single post page
+* [Fix] Better alignment for small icon components of the header/footer builder
+* [Fix] Excerpts now inherit text color
+* [Fix] Single product titles now inherit H1 typography options
+* [Fix] Typography units changes did not trigger control refresh
+* [Fix] Enlarged the narrow content in the editor
+* [Fix] Removed hover effect on table rows overriding block colors
+* [Fix] Overriding header/footer builder templates using child themes
+
+
 ### 2.5.1 - 2019-11-04  ###
 
 * [Fix] Correct migration of body font size to new version
@@ -803,3 +820,5 @@ Starter Sites screenshots resources:
 
 - Translation Services
 * https://mystock.themeisle.com/photo/metropolitan-museum/
+
+

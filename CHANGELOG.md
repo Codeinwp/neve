@@ -1,4 +1,20 @@
 
+ ### v2.5.2 - 2019-11-19 
+ **Changes:** 
+ * [Feat] Improved mobile header/footer builder UX
+* [Feat] New styling controls for the Menu Icon component
+* [Feat] New Filled and Outline style options for buttons
+* [Fix] Uploading background images in the header/footer builder
+* [Fix] Content alignment when Gutenberg is activated
+* [Fix] Multiple embeds not visible on the single post page
+* [Fix] Better alignment for small icon components of the header/footer builder
+* [Fix] Excerpts now inherit text color
+* [Fix] Single product titles now inherit H1 typography options
+* [Fix] Typography units changes did not trigger control refresh
+* [Fix] Enlarged the narrow content in the editor
+* [Fix] Removed hover effect on table rows overriding block colors
+* [Fix] Overriding header/footer builder templates using child themes
+ 
  ### v2.5.1 - 2019-11-04 
  **Changes:** 
  * [Fix] Correct migration of body font size to new version
