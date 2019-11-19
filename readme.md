@@ -2,7 +2,7 @@
 **Contributors:** [themeisle](https://profiles.wordpress.org/themeisle)  
 **Tags:** blog, custom-logo, e-commerce, rtl-language-support, post-formats, grid-layout, one-column, two-columns, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, accessibility-ready, wide-blocks, block-styles, footer-widgets, portfolio, left-sidebar, right-sidebar  
 **Requires at least:** 4.0  
-**Tested up to:** 5.2.2  
+**Tested up to:** 5.3 
 **Stable tag:** 1.0.23  
 **Requires PHP:** 5.4.0  
 **License:** GPLv2 or later  
@@ -763,5 +763,43 @@ Starter Sites screenshots resources:
 * https://stocksnap.io/photo/AOOC3CJARN
 * https://stocksnap.io/photo/HKTKMOVXNO
 
+- Winery
+* https://stocksnap.io/photo/CM4WVU6WO0
 
+- News Magazine
+* https://mystock.themeisle.com/photo/man-sitting-under-a-tree/
+* https://mystock.themeisle.com/photo/smartphone/
+* https://mystock.themeisle.com/photo/protest/
+* https://mystock.themeisle.com/photo/indian-food-bhel-puri-2/
+* https://mystock.themeisle.com/photo/skiers/
+* https://mystock.themeisle.com/photo/new-york-skyscrapers-on-a-cloudy-wheather/
+* https://mystock.themeisle.com/photo/metropolitan-museum/
 
+- Coworking
+* https://mystock.themeisle.com/photo/hotel-lobby/
+* https://mystock.themeisle.com/photo/code-in-wp/
+
+- Fishing
+* https://mystock.themeisle.com/photo/boat-on-a-volcanic-green-lake-surrounded-of-a-forest-2/
+
+- Car Rental
+* https://stocksnap.io/photo/5XRZI55HKV
+* https://stocksnap.io/photo/Q1KQCULDV5
+* https://stocksnap.io/photo/OYLXO1QZ5K
+
+- Ski Resort
+* https://stocksnap.io/photo/Z5WEX57EKA
+* https://mystock.themeisle.com/photo/mountain/
+* https://mystock.themeisle.com/photo/gondola-2/
+* https://stocksnap.io/photo/QT3VEK73I5
+* https://stocksnap.io/photo/JJE5DPU0U9
+* https://stocksnap.io/photo/KRXK7LH6XL
+
+- Digital Product
+* https://mystock.themeisle.com/photo/cityscape-of-new-york-2/
+
+- Moving Company
+* https://stocksnap.io/photo/YF3WGBL0AK
+
+- Translation Services
+* https://mystock.themeisle.com/photo/metropolitan-museum/

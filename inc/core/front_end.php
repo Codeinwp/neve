@@ -96,7 +96,7 @@ class Front_End {
 	 * @return string
 	 */
 	public function wrap_oembeds( $markup, $url, $attr ) {
-		$sources = [ 'vimeo.com', 'youtube.com', 'youtu.be' ];
+		$sources = [ 'vimeo.com', 'youtube.com', 'youtu.be', 'soundcloud', 'spotify', 'reverbnation' ];
 		foreach ( $sources as $source ) {
 			if ( strpos( $url, $source ) !== false ) {
 				return '<div class="nv-iframe-embed">' . $markup . '</div>';
@@ -732,6 +732,11 @@ class Front_End {
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/10/neve-florist.jpg',
 						'title'      => 'Florist',
 					),
+					'neve-beaver-cake-shop'             => array(
+						'url'        => 'https://demo.themeisle.com/neve-cake-shop-bb/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/10/neve-cake-shop.jpg',
+						'title'      => 'Cake Shop',
+					),
 					'neve-beaver-transport'             => array(
 						'url'        => 'https://demo.themeisle.com/neve-transport-bb/',
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/10/neve-transport.jpg',
@@ -746,6 +751,16 @@ class Front_End {
 						'url'        => 'https://demo.themeisle.com/neve-pro-bb/',
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/10/neve-speed.jpg',
 						'title'      => 'Speed',
+					),
+					'neve-beaver-yoga-studio'           => array(
+						'url'        => 'https://demo.themeisle.com/neve-yoga-studio-bb/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/10/neve-yoga.jpg',
+						'title'      => 'Yoga Studio',
+					),
+					'neve-beaver-sales-funnel'          => array(
+						'url'        => 'https://demo.themeisle.com/neve-sales-funnel-bb/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/10/neve-sales.jpg',
+						'title'      => 'Sales Funnel',
 					),
 				),
 				'elementor'        => array(
@@ -888,6 +903,51 @@ class Front_End {
 						'url'        => 'https://demo.themeisle.com/neve-fashion-magazine/',
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/10/neve-fashion-mag.jpg',
 						'title'      => 'Fashion Magazine',
+					),
+					'neve-winery'                => array(
+						'url'        => 'https://demo.themeisle.com/neve-winery/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/11/neve-winery.png',
+						'title'      => 'Winery - Wine Shop',
+					),
+					'neve-news-magazine'         => array(
+						'url'        => 'https://demo.themeisle.com/neve-news-magazine/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/11/neve-news.jpg',
+						'title'      => 'News Magazine',
+					),
+					'neve-coworking'             => array(
+						'url'        => 'https://demo.themeisle.com/neve-coworking/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/11/neve-coworking.jpg',
+						'title'      => 'Coworking Space',
+					),
+					'neve-fishing-club'          => array(
+						'url'        => 'https://demo.themeisle.com/neve-fishing-club/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/11/neve-fishing.jpg',
+						'title'      => 'Fishing and Hunting Club',
+					),
+					'neve-car-rental'            => array(
+						'url'        => 'https://demo.themeisle.com/neve-car-rental/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/11/neve-cart-rental.jpg',
+						'title'      => 'Car Rental',
+					),
+					'neve-ski-resort'            => array(
+						'url'        => 'https://demo.themeisle.com/neve-ski-resort/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/11/sky-resort.jpg',
+						'title'      => 'Ski Resort Winter Hotel',
+					),
+					'neve-digital-product'       => array(
+						'url'        => 'https://demo.themeisle.com/neve-digital-product-funnel/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/11/neve-digital-product.jpg',
+						'title'      => 'Digital Product Funnel',
+					),
+					'neve-moving-company'        => array(
+						'url'        => 'https://demo.themeisle.com/neve-moving-company/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/11/neve-moving-company.jpg',
+						'title'      => 'Moving Company Logistics Services',
+					),
+					'neve-translation-services'  => array(
+						'url'        => 'https://demo.themeisle.com/neve-translation-services/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/11/neve-translations.jpg',
+						'title'      => 'Translation and Interpreter Services',
 					),
 				),
 				'brizy'            => array(
