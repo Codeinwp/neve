@@ -86,14 +86,15 @@ class Buttons extends Base_Customizer {
 				new Control(
 					'neve_' . $button . '_appearance',
 					[
-						'default' => $defaults,
+						'sanitize_callback' => 'neve_sanitize_button_appearance',
+						'default'           => $defaults,
 					],
 					[
 						'label'   => __( 'Button Appearance', 'neve' ),
 						'section' => $this->section_id,
 						'type'    => 'neve_button_appearance',
 					]
-				) 
+				)
 			);
 			$this->add_control(
 				new Control(

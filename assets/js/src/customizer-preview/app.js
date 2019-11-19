@@ -82,7 +82,6 @@ window.addEventListener( 'load', function() {
 								addCss( settingId, style );
 								return false;
 							}
-
 							style += args.selector + '{';
 							style += newValue.imageUrl ?
 									'background-image: url("' + newValue.imageUrl +
@@ -192,6 +191,42 @@ window.addEventListener( 'load', function() {
 							}
 							addCss( settingId, style );
 							break;
+						case '\\Neve\\Customizer\\Controls\\React\\Button_Appearance':
+							style += 'html ' + args.selector + '{' +
+									'background-color:' +
+									( newValue.background || 'inherit' ) +
+									';' +
+									'border-radius:' + newValue.borderRadius + 'px;' +
+									'color: ' + ( newValue.text || 'inherit' ) + ';';
+							if ( newValue.type === 'outline' ) {
+								style += 'border: ' + newValue.borderWidth + 'px solid ' +
+										newValue.text + ';';
+							}
+							if ( newValue.type === 'fill' ) {
+								style += 'border: none;';
+							}
+							style += '}';
+							let selector = 'html ' + args.selector + ' .icon-bar';
+
+							style += selector+' {' +
+									'background-color: ' + ( newValue.text || document.querySelector(selector).style.backgroundColor ) + ';' +
+									'}';
+							addCss( settingId, style );
+							break;
+						case 'text':
+							let textContainer = document.querySelector( args.selector );
+							if ( newValue === '' ) {
+								textContainer.parentNode.removeChild( textContainer );
+								return false;
+							}
+							if ( textContainer === null ) {
+								let wrap = document.createElement( args.additional.html_tag );
+								wrap.classList.add( args.additional.wrap_class );
+								document.querySelector( args.additional.parent ).
+										prepend( wrap );
+							}
+							document.querySelector( args.selector ).innerHTML = newValue;
+							break;
 						case 'neve_font_family_control':
 							break;
 					}
@@ -298,7 +333,7 @@ window.addEventListener( 'load', function() {
 				cssProp: 'max-width',
 				unit: 'px',
 				styleClass: 'container-width-css'
-			},
+			}
 		},
 		rangesPreview: function() {
 			'use strict';

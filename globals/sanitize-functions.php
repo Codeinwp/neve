@@ -144,3 +144,14 @@ function neve_sanitize_background( $value ) {
 
 	return $value;
 }
+
+/**
+ * Sanitize the button appearance control.
+ *
+ * @param array $value the control value.
+ *
+ * @return array
+ */
+function neve_sanitize_button_appearance( $value ) {
+	return $value;
+}

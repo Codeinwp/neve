@@ -3142,6 +3142,11 @@ body.menu_sidebar_slide_left.menu_sidebar_dropdown:before {
   }
 }
 
+.nav-toggle-label {
+  margin-left: 5px;
+  line-height: 100%;
+}
+
 .icon-bar {
   transition: all .1s ease;
   position: relative;
