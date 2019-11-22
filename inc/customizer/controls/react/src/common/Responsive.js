@@ -44,7 +44,9 @@ class ResponsiveControl extends Component {
 		if ( !this.props.hideResponsive ) {
 			controlClasses += ' bordered';
 		}
-
+	if(  this.props.hideResponsive) {
+		return ('');
+	}
 		return (
 				<Fragment>
 					<div className={controlClasses}>
