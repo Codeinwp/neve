@@ -48,7 +48,7 @@ class TypefaceComponent extends Component {
 
 		this.controlParams = props.control.params.input_attrs ? {
 			...defaultParams,
-			...props.control.params.input_attrs
+			...JSON.parse( props.control.params.input_attrs ),
 		} : defaultParams;
 
 		this.state = {

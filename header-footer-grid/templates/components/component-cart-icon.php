@@ -31,10 +31,8 @@ namespace HFG;
 						'hide_if_empty' => true,
 					),
 					array(
-						// 'before_widget' => $this->before_cart_popup(),
-						// 'after_widget'  => $this->after_cart_popup(),
-							'before_title' => '',
-						'after_title'      => '',
+						'before_title' => '',
+						'after_title'  => '',
 					)
 				);
 				do_action( 'neve_after_cart_popup' );

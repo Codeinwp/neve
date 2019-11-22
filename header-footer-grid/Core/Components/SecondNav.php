@@ -39,6 +39,9 @@ class SecondNav extends Abstract_Component {
 		$this->set_property( 'width', 6 );
 		$this->set_property( 'section', 'secondary_menu_primary' );
 		$this->set_property( 'icon', 'tagcloud' );
+		$this->set_property( 'has_font_family_control', true );
+		$this->set_property( 'has_typeface_control', true );
+		$this->set_property( 'default_typography_selector', $this->default_typography_selector . '.builder-item--' . $this->get_id() . ' #secondary-menu li.menu-item > a' );
 	}
 
 	/**
@@ -143,7 +146,6 @@ class SecondNav extends Abstract_Component {
 	public function render_component() {
 		Main::get_instance()->load( 'components/component-nav-secondary' );
 	}
-
 
 	/**
 	 * Add styles to the component.

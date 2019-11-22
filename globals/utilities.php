@@ -72,11 +72,12 @@ function neve_hooks() {
  * In that case deactivate and reactivate WooCommerce.
  *
  * @param bool $echo should be echoed.
+ * @param int  $size icon size.
  *
  * @return string|null
  */
-function neve_cart_icon( $echo = false ) {
-	$svg = '<span class="nv-icon nv-cart"><svg width="15" height="15" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M704 1536q0 52-38 90t-90 38-90-38-38-90 38-90 90-38 90 38 38 90zm896 0q0 52-38 90t-90 38-90-38-38-90 38-90 90-38 90 38 38 90zm128-1088v512q0 24-16.5 42.5t-40.5 21.5l-1044 122q13 60 13 70 0 16-24 64h920q26 0 45 19t19 45-19 45-45 19h-1024q-26 0-45-19t-19-45q0-11 8-31.5t16-36 21.5-40 15.5-29.5l-177-823h-204q-26 0-45-19t-19-45 19-45 45-19h256q16 0 28.5 6.5t19.5 15.5 13 24.5 8 26 5.5 29.5 4.5 26h1201q26 0 45 19t19 45z"/></svg></span>';
+function neve_cart_icon( $echo = false, $size = 15 ) {
+	$svg = '<span class="nv-icon nv-cart"><svg width="' . $size . '" height="' . $size . '" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M704 1536q0 52-38 90t-90 38-90-38-38-90 38-90 90-38 90 38 38 90zm896 0q0 52-38 90t-90 38-90-38-38-90 38-90 90-38 90 38 38 90zm128-1088v512q0 24-16.5 42.5t-40.5 21.5l-1044 122q13 60 13 70 0 16-24 64h920q26 0 45 19t19 45-19 45-45 19h-1024q-26 0-45-19t-19-45q0-11 8-31.5t16-36 21.5-40 15.5-29.5l-177-823h-204q-26 0-45-19t-19-45 19-45 45-19h256q16 0 28.5 6.5t19.5 15.5 13 24.5 8 26 5.5 29.5 4.5 26h1201q26 0 45 19t19 45z"/></svg></span>';
 	if ( $echo === false ) {
 		return $svg;
 	}
@@ -87,11 +88,12 @@ function neve_cart_icon( $echo = false ) {
  * Search Icon
  *
  * @param bool $echo      should be echoed.
+ * @param int  $size      icon size.
  * @param bool $amp_ready Should we add the AMP binding.
  *
  * @return string
  */
-function neve_search_icon( $echo = false, $amp_ready = false ) {
+function neve_search_icon( $echo = false, $size = 15, $amp_ready = false ) {
 
 	$amp_state = '';
 	if ( $amp_ready ) {
@@ -99,7 +101,7 @@ function neve_search_icon( $echo = false, $amp_ready = false ) {
 	}
 
 	$svg = '<span class="nv-icon nv-search" ' . $amp_state . '>
-				<svg width="15" height="15" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1216 832q0-185-131.5-316.5t-316.5-131.5-316.5 131.5-131.5 316.5 131.5 316.5 316.5 131.5 316.5-131.5 131.5-316.5zm512 832q0 52-38 90t-90 38q-54 0-90-38l-343-342q-179 124-399 124-143 0-273.5-55.5t-225-150-150-225-55.5-273.5 55.5-273.5 150-225 225-150 273.5-55.5 273.5 55.5 225 150 150 225 55.5 273.5q0 220-124 399l343 343q37 37 37 90z"/></svg>
+				<svg width="' . $size . '" height="' . $size . '" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1216 832q0-185-131.5-316.5t-316.5-131.5-316.5 131.5-131.5 316.5 131.5 316.5 316.5 131.5 316.5-131.5 131.5-316.5zm512 832q0 52-38 90t-90 38q-54 0-90-38l-343-342q-179 124-399 124-143 0-273.5-55.5t-225-150-150-225-55.5-273.5 55.5-273.5 150-225 225-150 273.5-55.5 273.5 55.5 225 150 150 225 55.5 273.5q0 220-124 399l343 343q37 37 37 90z"/></svg>
 			</span>';
 	if ( $echo === false ) {
 		return $svg;

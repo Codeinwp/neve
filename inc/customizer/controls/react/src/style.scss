@@ -1,3 +1,10 @@
+#customize-theme-controls .components-color-palette__item:focus:after {
+  width: 30px;
+  height: 30px;
+  top: -3px;
+  left: -3px;
+}
+
 .neve-white-background-control {
   border: 1px solid #ccc;
   padding: 10px;
@@ -103,10 +110,6 @@
 
   .components-color-palette__item-wrapper:hover {
     transform: scale(1.05);
-  }
-
-  .components-color-palette__item:focus:after {
-    content: none;
   }
 
   .control--top-toolbar {
@@ -383,13 +386,13 @@
       text-overflow: ellipsis;
     }
 
-		.ff-preview {
-			line-height: initial;
-			align-self: flex-end;
-			margin-left: auto;
-			font-size: 21px;
-		}
-	}
+    .ff-preview {
+      line-height: 1;
+      align-self: flex-end;
+      margin-left: auto;
+      font-size: 21px;
+    }
+  }
 
   .popover-content {
     position: relative;
@@ -398,8 +401,8 @@
   }
 
   .popover-header {
-    position: fixed;
-    top: 0;
+    position: absolute;
+    top: -40px;
   }
 
   .search {
@@ -437,10 +440,10 @@
     overflow: hidden !important;
   }
 
-	.neve-fonts-list {
-		max-height: 400px;
-		margin-top: 40px;
-		overflow: auto;
+  .neve-fonts-list {
+    max-height: 400px;
+    margin-top: 40px;
+    overflow: auto;
 
     .load-more {
       padding: 10px 0;
@@ -473,13 +476,13 @@
         background-color: #efefef;
       }
 
-			a {
-				align-items: center;
-				display: flex;
-				padding: 5px 10px;
-				transition: .2s ease;
-				color: #333;
-				border-bottom: 1px solid #efefef;
+      a {
+        align-items: center;
+        display: flex;
+        padding: 5px 10px;
+        transition: .2s ease;
+        color: #333;
+        border-bottom: 1px solid #efefef;
 
         &:hover {
           color: #fff;
@@ -495,15 +498,15 @@
           text-overflow: ellipsis;
         }
 
-				.neve-font-preview {
-                    line-height: initial;
-					font-display: swap;
-					margin-left: auto;
-					font-size: 20px;
-				}
-			}
-		}
-	}
+        .neve-font-preview {
+          line-height: initial;
+          font-display: swap;
+          margin-left: auto;
+          font-size: 20px;
+        }
+      }
+    }
+  }
 }
 
 @-moz-keyframes neve-spin {
@@ -560,6 +563,24 @@
       flex: 1;
       align-items: center;
       justify-content: center;
+    }
+  }
+}
+
+
+// Range control.
+
+.neve-range-control {
+  .components-base-control__field {
+    flex-direction: row;
+
+    .components-range-control__slider {
+      width: 70%;
+    }
+
+    .components-range-control__number {
+      width: 25%;
+      margin-left: 5%;
     }
   }
 }
