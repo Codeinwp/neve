@@ -23,6 +23,7 @@ class Logo extends Abstract_Component {
 
 
 	const COMPONENT_ID = 'logo';
+	const CUSTOM_LOGO  = 'custom_logo';
 	const MAX_WIDTH    = 'max_width';
 	const SHOW_TITLE   = 'show_title';
 	const SHOW_TAGLINE = 'show_tagline';
@@ -80,19 +81,19 @@ class Logo extends Abstract_Component {
 	 * @access  public
 	 */
 	public function add_settings() {
-
-		SettingsManager::get_instance()->add_controls_to_tabs(
-			$this->get_class_const( 'COMPONENT_ID' ),
-			array(
-				SettingsManager::TAB_GENERAL => array(
-					'custom_logo'     => array(),
-					'blogname'        => array(),
-					'blogdescription' => array(),
-					'blogdescription' => array(),
-					'site_icon'       => array(),
-				),
-			)
-		);
+		if ( $this->get_class_const( 'COMPONENT_ID' ) === 'logo' ) {
+			SettingsManager::get_instance()->add_controls_to_tabs(
+				$this->get_class_const( 'COMPONENT_ID' ),
+				array(
+					SettingsManager::TAB_GENERAL => array(
+						self::CUSTOM_LOGO => array(),
+						'blogname'        => array(),
+						'blogdescription' => array(),
+						'site_icon'       => array(),
+					),
+				)
+			);
+		}
 
 		SettingsManager::get_instance()->add(
 			[
@@ -184,8 +185,8 @@ class Logo extends Abstract_Component {
 	 * @access  public
 	 */
 	public function add_style( array $css_array = array() ) {
-		$logo_max_width = json_decode( get_theme_mod( $this->id . '_max_width', '{ "mobile": "120", "tablet": "120", "desktop": "120" }' ), true );
-		$selector       = '.site-logo img';
+		$logo_max_width = json_decode( SettingsManager::get_instance()->get( $this->get_id() . '_' . self::MAX_WIDTH, '{ "mobile": "120", "tablet": "120", "desktop": "120" }' ), true );
+		$selector       = '.builder-item--' . $this->get_id() . ' .site-logo img';
 		if ( isset( $logo_max_width['mobile'] ) ) {
 			$logo_max_width['mobile']                             = ( $logo_max_width['mobile'] > 0 ) ? $logo_max_width['mobile'] . 'px' : 'auto';
 			$css_array[' @media (max-width: 576px)'][ $selector ] = array(
@@ -207,6 +208,4 @@ class Logo extends Abstract_Component {
 
 		return parent::add_style( $css_array );
 	}
-
-
 }
