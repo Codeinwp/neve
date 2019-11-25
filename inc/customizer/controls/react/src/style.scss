@@ -563,3 +563,13 @@
     }
   }
 }
+
+.large-buttons .neve-radio-icons {
+  .components-toolbar button {
+    height: 50px;
+    svg {
+      height: 30px;
+      padding: 7px;
+    }
+  }
+}

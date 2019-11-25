@@ -24,6 +24,7 @@ class Logo extends Abstract_Component {
 
 	const COMPONENT_ID = 'logo';
 	const CUSTOM_LOGO  = 'custom_logo';
+	const DISPLAY      = 'display';
 	const MAX_WIDTH    = 'max_width';
 	const SHOW_TITLE   = 'show_title';
 	const SHOW_TAGLINE = 'show_tagline';
@@ -94,6 +95,25 @@ class Logo extends Abstract_Component {
 				)
 			);
 		}
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'                => self::DISPLAY,
+				'group'             => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'               => SettingsManager::TAB_LAYOUT,
+				'transport'         => 'post' . $this->get_builder_id(),
+				'sanitize_callback' => 'wp_filter_nohtml_kses',
+				'default'           => 'default',
+				'label'             => __( 'Display', 'neve' ),
+				'type'              => '\Neve\Customizer\Controls\React\Radio_Buttons',
+				'options'           => [
+					'priority'      => 10,
+					'is_for'        => 'logo',
+					'large_buttons' => true,
+				],
+				'section'           => $this->section,
+			]
+		);
 
 		SettingsManager::get_instance()->add(
 			[

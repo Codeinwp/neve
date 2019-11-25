@@ -357,3 +357,9 @@
     flex: 1;
     align-items: center;
     justify-content: center; }
+
+.large-buttons .neve-radio-icons .components-toolbar button {
+  height: 50px; }
+  .large-buttons .neve-radio-icons .components-toolbar button svg {
+    height: 30px;
+    padding: 7px; }
