@@ -171,23 +171,31 @@ class Nav extends Abstract_Component {
 
 		$components = apply_filters( 'neve_last_menu_item_components', $components );
 
-		SettingsManager::get_instance()->add(
-			[
-				'id'                => $this->get_class_const( 'LAST_ITEM_ID' ),
-				'group'             => $this->get_class_const( 'COMPONENT_ID' ),
-				'tab'               => SettingsManager::TAB_GENERAL,
-				'noformat'          => true,
-				'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
-				'sanitize_callback' => array( $this, 'sanitize_last_menu_item' ),
-				'default'           => json_encode( $order_default_components ),
-				'label'             => __( 'Last Menu Item', 'neve' ),
-				'type'              => 'Neve\Customizer\Controls\Ordering',
-				'options'           => [
-					'components' => $components,
-				],
-				'section'           => $this->section,
-			]
-		);
+		/**
+		 * Last menu item removed for new users and users who didn't have it set.
+		 *
+		 * @since 2.5.3
+		 */
+		$old_last_menu_item = json_decode( get_theme_mod( 'neve_last_menu_item' ) );
+		if ( $old_last_menu_item !== false && ! empty( $old_last_menu_item ) ) {
+			SettingsManager::get_instance()->add(
+				[
+					'id'                => $this->get_class_const( 'LAST_ITEM_ID' ),
+					'group'             => $this->get_class_const( 'COMPONENT_ID' ),
+					'tab'               => SettingsManager::TAB_GENERAL,
+					'noformat'          => true,
+					'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
+					'sanitize_callback' => array( $this, 'sanitize_last_menu_item' ),
+					'default'           => json_encode( $order_default_components ),
+					'label'             => __( 'Last Menu Item', 'neve' ),
+					'type'              => 'Neve\Customizer\Controls\Ordering',
+					'options'           => [
+						'components' => $components,
+					],
+					'section'           => $this->section,
+				]
+			);
+		}
 		SettingsManager::get_instance()->add(
 			[
 				'id'                => 'shortcut',
