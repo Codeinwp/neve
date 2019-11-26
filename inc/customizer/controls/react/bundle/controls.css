@@ -363,3 +363,12 @@
   .large-buttons .neve-radio-icons .components-toolbar button svg {
     height: 30px;
     padding: 7px; }
+
+.neve-sizing.inline-header .bordered {
+  border: none; }
+
+.neve-sizing.inline-header .neve-responsive-sizing {
+  padding-top: 15px; }
+
+.neve-sizing.inline-header .neve-control-header {
+  border-bottom: 3px solid #d8d8d8; }
