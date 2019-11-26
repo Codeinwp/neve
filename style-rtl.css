@@ -595,6 +595,16 @@ blockquote.wp-block-quote.is-style-large cite {
   justify-content: center;
 }
 
+.site-logo .title-with-logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.site-logo .title-with-logo > img:first-child, .site-logo .title-with-logo > div:first-child {
+  margin-left: 10px;
+}
+
 .site-logo h1, .site-logo p {
   font-family: inherit;
   font-size: 1.25em;
