@@ -401,8 +401,8 @@ jQuery.neveRangesPreview.init();
 				wp.customize( id, function(value) {
 					value.bind( function(newval) {
 						let style = ` @media (min-width: 961px) {
-							${args.content} { max-width: ${newval}%; }
-							${args.sidebar} { max-width: ${100 - newval}%; }
+							${args.content} { max-width: ${newval}% !important; }
+							${args.sidebar} { max-width: ${100 - newval}% !important; }
 						}`;
 						addCss( id + '-css', style );
 					} );
