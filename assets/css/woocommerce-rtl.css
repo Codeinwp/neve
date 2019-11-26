@@ -307,6 +307,11 @@
   margin: 0;
 }
 
+.nv-content-wrap ul.wc-block-grid__products {
+  list-style-type: none;
+  padding-right: 0;
+}
+
 .orderby {
   color: #676767;
 }
