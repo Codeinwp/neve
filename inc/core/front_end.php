@@ -769,6 +769,16 @@ class Front_End {
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/10/neve-speed.jpg',
 						'title'      => 'Speed',
 					),
+					'neve-beaver-food-magazine'         => array(
+						'url'        => 'https://demo.themeisle.com/neve-food-magazine-bb/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/10/neve-food-magazine.jpg',
+						'title'      => 'Food Magazine',
+					),
+					'neve-beaver-web-design'            => array(
+						'url'        => 'https://demo.themeisle.com/neve-web-design-bb/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/10/neve-web-design.jpg',
+						'title'      => 'eCourse - Web Design',
+					),
 					'neve-beaver-yoga-studio'           => array(
 						'url'        => 'https://demo.themeisle.com/neve-yoga-studio-bb/',
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/10/neve-yoga.jpg',
@@ -778,6 +788,11 @@ class Front_End {
 						'url'        => 'https://demo.themeisle.com/neve-sales-funnel-bb/',
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/10/neve-sales.jpg',
 						'title'      => 'Sales Funnel',
+					),
+					'neve-beaver-coworking'             => array(
+						'url'        => 'https://demo.themeisle.com/neve-coworking-bb/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/11/neve-coworking.jpg',
+						'title'      => 'Coworking Space',
 					),
 				),
 				'elementor'        => array(
@@ -965,6 +980,21 @@ class Front_End {
 						'url'        => 'https://demo.themeisle.com/neve-translation-services/',
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/11/neve-translations.jpg',
 						'title'      => 'Translation and Interpreter Services',
+					),
+					'neve-blogger'               => array(
+						'url'        => 'https://demo.themeisle.com/neve-blogger/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/11/neve-blogger.jpg',
+						'title'      => 'Blogger',
+					),
+					'neve-coupons'               => array(
+						'url'        => 'https://demo.themeisle.com/neve-coupons/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/11/neve-coupons.jpg',
+						'title'      => 'Coupons Discounts and Offers',
+					),
+					'neve-escape-room'           => array(
+						'url'        => 'https://demo.themeisle.com/neve-escape-room/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/11/neve-escape-room.jpg',
+						'title'      => 'Escape Room',
 					),
 				),
 				'brizy'            => array(
