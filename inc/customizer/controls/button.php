@@ -21,27 +21,30 @@ class Button extends \WP_Customize_Control {
 	 * @var string $id Control id.
 	 */
 	public $id = '';
-
 	/**
 	 * Button class.
 	 *
 	 * @var mixed|string
 	 */
 	public $button_class = '';
-
 	/**
 	 * Icon class.
 	 *
 	 * @var mixed|string
 	 */
 	public $icon_class = '';
-
 	/**
 	 * Button text.
 	 *
 	 * @var mixed|string
 	 */
 	public $button_text = '';
+	/**
+	 * Control to focus.
+	 *
+	 * @var string
+	 */
+	public $control_to_focus = '';
 	/**
 	 * Shortcut.
 	 *
@@ -72,7 +75,11 @@ class Button extends \WP_Customize_Control {
 		}
 		$control = '';
 
-		$control .= '<button class="' . esc_attr( $this->get_button_classes() ) . '" style="display: flex; align-items: center;">';
+		$control .= '<button ';
+		if ( $this->control_to_focus ) {
+			$control .= 'data-control-to-focus="' . esc_attr( $this->control_to_focus ) . '"';
+		}
+		$control .= ' class="' . esc_attr( $this->get_button_classes() ) . '" style="display: flex; align-items: center;">';
 		$control .= $this->get_icon();
 		$control .= esc_html( $this->button_text );
 		$control .= '</button>';
@@ -105,6 +112,9 @@ class Button extends \WP_Customize_Control {
 		}
 		if ( $this->button_class ) {
 			$classes .= $this->button_class;
+		}
+		if ( $this->control_to_focus ) {
+			$classes .= ' neve-control-focus';
 		}
 
 		return $classes;

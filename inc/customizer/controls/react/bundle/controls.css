@@ -357,3 +357,12 @@
     flex: 1;
     align-items: center;
     justify-content: center; }
+
+.neve-sizing.inline-header .bordered {
+  border: none; }
+
+.neve-sizing.inline-header .neve-responsive-sizing {
+  padding-top: 15px; }
+
+.neve-sizing.inline-header .neve-control-header {
+  border-bottom: 3px solid #d8d8d8; }
