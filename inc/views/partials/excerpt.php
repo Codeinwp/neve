@@ -37,6 +37,7 @@ class Excerpt extends Base_View {
 		$pid            = $post->ID;
 		$otter_instance = new \ThemeIsle\BlockCSS\Block_Frontend();
 		$otter_instance->enqueue_styles( $pid, true );
+
 		return $content;
 
 	}
@@ -82,7 +83,8 @@ class Excerpt extends Base_View {
 		if ( $length === 300 ) {
 			$embed = new \WP_Embed();
 			add_filter( 'neve_the_content', array( $embed, 'autoembed' ), 8 );
-			return apply_filters( 'neve_the_content', get_the_content() );
+
+			return apply_filters( 'neve_the_content', apply_filters( 'the_excerpt_embed', get_the_content() ) );
 		}
 
 		if ( strpos( $post->post_content, '<!--more-->' ) ) {
@@ -91,6 +93,7 @@ class Excerpt extends Base_View {
 
 		if ( has_excerpt() ) {
 			$content = get_the_excerpt();
+
 			return $content;
 		}
 
