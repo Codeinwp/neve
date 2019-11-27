@@ -51,8 +51,6 @@ class Nav extends Abstract_Component {
 				'filter_neve_last_menu_setting_slug',
 			)
 		);
-
-		add_action( 'init', array( $this, 'map_last_menu_item' ) );
 	}
 
 	/**
@@ -285,31 +283,4 @@ class Nav extends Abstract_Component {
 
 		return parent::add_style( $css_array );
 	}
-
-	/**
-	 * Map last menu item from select type control to ordering control.
-	 */
-	public function map_last_menu_item() {
-		$map_items = get_option( 'neve_map_menu_items' );
-		if ( $map_items === 'yes' ) {
-			return;
-		}
-		$default_last = 'search';
-		if ( class_exists( 'WooCommerce', false ) ) {
-			$default_last = 'search-cart';
-		}
-
-		$last_menu_item       = get_theme_mod( 'neve_last_menu_item', $default_last );
-		$last_menu_item_value = array();
-		if ( $last_menu_item === 'search-cart' ) {
-			$last_menu_item_value = array( 'search', 'cart' );
-		}
-		if ( $last_menu_item === 'search' || $last_menu_item === 'cart' ) {
-			$last_menu_item_value = array( $last_menu_item );
-		}
-
-		set_theme_mod( 'neve_last_menu_item', json_encode( $last_menu_item_value ) );
-		update_option( 'neve_map_menu_items', 'yes' );
-	}
-
 }
