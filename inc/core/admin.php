@@ -49,6 +49,7 @@ class Admin {
 		);
 		add_action( 'wp_ajax_neve_toggle_logger', array( $this, 'toggle_logger' ) );
 		add_filter( 'neve_logger_heading', array( $this, 'add_tracking_policy' ) );
+		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_gutenberg_scripts' ) );
 	}
 
 	/**
@@ -892,6 +893,18 @@ class Admin {
 		if ( class_exists( '\Themeisle_Onboarding', false ) ) {
 			\Themeisle_Onboarding::instance();
 		}
+	}
+
+	/**
+	 * Enqueue gutenberg scripts.
+	 */
+	public function enqueue_gutenberg_scripts() {
+		$screen = get_current_screen();
+		if ( $screen->post_type !== 'post' && $screen->post_type !== 'page' ) {
+			return;
+		}
+
+		wp_enqueue_style( 'neve-gutenberg-style', NEVE_ASSETS_URL . 'css/gutenberg-editor-style' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), NEVE_VERSION );
 	}
 
 }
