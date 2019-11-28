@@ -42,13 +42,13 @@ class Gutenberg_Editor extends Base_Inline {
 		}
 		$this->add_style(
 			$style_setup,
-			'.block-editor-page #wpwrap .editor-post-title__block .editor-post-title__input, 
-			.block-editor-page #wpwrap .editor-styles-wrapper h1, 
-			.block-editor-page #wpwrap .editor-styles-wrapper h2, 
-			.block-editor-page #wpwrap .editor-styles-wrapper h3, 
-			.block-editor-page #wpwrap .editor-styles-wrapper h4, 
-			.block-editor-page #wpwrap .editor-styles-wrapper h5, 
-			.block-editor-page #wpwrap .editor-styles-wrapper h6'
+			'#editor .editor-styles-wrapper .editor-post-title__block .editor-post-title__input, 
+			#editor .editor-styles-wrapper h1, 
+			#editor .editor-styles-wrapper h2, 
+			#editor .editor-styles-wrapper h3, 
+			#editor .editor-styles-wrapper h4, 
+			#editor .editor-styles-wrapper h5, 
+			#editor .editor-styles-wrapper h6'
 		);
 
 		$body_style_setup = array();
@@ -58,7 +58,7 @@ class Gutenberg_Editor extends Base_Inline {
 				'value'    => $body_font,
 			);
 		}
-		$this->add_style( $body_style_setup, '.block-editor-page #wpwrap .editor-styles-wrapper .editor-writing-flow' );
+		$this->add_style( $body_style_setup, '#editor .editor-styles-wrapper .editor-writing-flow' );
 	}
 
 	/**
@@ -73,7 +73,7 @@ class Gutenberg_Editor extends Base_Inline {
 					'tablet'  => 992,
 					'desktop' => 1170,
 				]
-			) 
+			)
 		);
 		$container_width = json_decode( $container_width, true );
 		$settings        = array(
@@ -117,27 +117,27 @@ class Gutenberg_Editor extends Base_Inline {
 		$color_settings = array(
 			'background_color'      => array(
 				'css_prop'  => 'background-color',
-				'selectors' => '.block-editor-page .editor-styles-wrapper .editor-writing-flow',
+				'selectors' => '#editor .editor-styles-wrapper .editor-writing-flow',
 			),
 			'neve_link_color'       => array(
 				'css_prop'  => 'color',
-				'selectors' => '.block-editor-page .editor-styles-wrapper .editor-writing-flow a',
+				'selectors' => '#editor .editor-styles-wrapper .editor-writing-flow a',
 			),
 			'neve_link_hover_color' => array(
 				'css_prop'  => 'color',
-				'selectors' => '.block-editor-page .editor-styles-wrapper .editor-writing-flow a:hover',
+				'selectors' => '#editor .editor-styles-wrapper .editor-writing-flow a:hover',
 			),
 			'neve_text_color'       => array(
 				'css_prop'  => 'color',
 				'selectors' => '
-				.block-editor-page .editor-styles-wrapper .editor-writing-flow,
-				.block-editor-page .editor-styles-wrapper .editor-post-title__block .editor-post-title__input,
-				.block-editor-page .editor-styles-wrapper h1,
-				.block-editor-page .editor-styles-wrapper h2,
-				.block-editor-page .editor-styles-wrapper h3,
-				.block-editor-page .editor-styles-wrapper h4,
-				.block-editor-page .editor-styles-wrapper h5,
-				.block-editor-page .editor-styles-wrapper h6',
+				#editor .editor-styles-wrapper .editor-writing-flow,
+				#editor .editor-styles-wrapper .editor-post-title__block .editor-post-title__input,
+				#editor .editor-styles-wrapper h1,
+				#editor .editor-styles-wrapper h2,
+				#editor .editor-styles-wrapper h3,
+				#editor .editor-styles-wrapper h4,
+				#editor .editor-styles-wrapper h5,
+				#editor .editor-styles-wrapper h6',
 			),
 		);
 
@@ -152,16 +152,16 @@ class Gutenberg_Editor extends Base_Inline {
 	private function add_typeface_values() {
 		$controls = array(
 			'neve_typeface_general'    => '
-			.editor-styles-wrapper .editor-writing-flow .wp-block,
+			#editor .editor-styles-wrapper .editor-writing-flow .wp-block,
 			.block-editor-block-list__block[data-type="core/paragraph"] p',
 			'neve_h1_typeface_general' => '
-			.editor-styles-wrapper .editor-writing-flow h1, 
-			.editor-styles-wrapper .editor-post-title__block .editor-post-title__input',
-			'neve_h2_typeface_general' => '.editor-styles-wrapper .editor-writing-flow h2',
-			'neve_h3_typeface_general' => '.editor-styles-wrapper .editor-writing-flow h3',
-			'neve_h4_typeface_general' => '.editor-styles-wrapper .editor-writing-flow h4',
-			'neve_h5_typeface_general' => '.editor-styles-wrapper .editor-writing-flow h5',
-			'neve_h6_typeface_general' => '.editor-styles-wrapper .editor-writing-flow h6',
+			#editor .editor-styles-wrapper .editor-writing-flow h1, 
+			#editor .editor-styles-wrapper .editor-post-title__block .editor-post-title__input',
+			'neve_h2_typeface_general' => '#editor .editor-styles-wrapper .editor-writing-flow h2',
+			'neve_h3_typeface_general' => '#editor .editor-styles-wrapper .editor-writing-flow h3',
+			'neve_h4_typeface_general' => '#editor .editor-styles-wrapper .editor-writing-flow h4',
+			'neve_h5_typeface_general' => '#editor .editor-styles-wrapper .editor-writing-flow h5',
+			'neve_h6_typeface_general' => '#editor .editor-styles-wrapper .editor-writing-flow h6',
 		);
 
 		array_walk( $controls, array( $this, 'run_font_settings' ) );
@@ -196,7 +196,7 @@ class Gutenberg_Editor extends Base_Inline {
 					'suffix'   => 'px',
 				],
 			],
-			$selector 
+			$selector
 		);
 
 		$this->add_style(

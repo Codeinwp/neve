@@ -218,35 +218,3 @@
 		}
 	}
 }
-
-@mixin gutenberg-typograpgy--tablet() {
-	.editor-styles-wrapper {
-		font-size: $html-font-size;
-
-		.editor-writing-flow h1, .editor-styles-wrapper .editor-post-title__block .editor-post-title__input {
-			font-size: $h1-font-size;
-		}
-
-		.editor-writing-flow {
-			h2 {
-				font-size: $h2-font-size;
-			}
-
-			h3 {
-				font-size: $h3-font-size;
-			}
-
-			h4 {
-				font-size: $h4-font-size;
-			}
-
-			h5 {
-				font-size: $h5-font-size;
-			}
-
-			h6 {
-				font-size: $h6-font-size;
-			}
-		}
-	}
-}
