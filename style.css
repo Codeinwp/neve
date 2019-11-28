@@ -3262,4 +3262,8 @@ body.menu_sidebar_slide_left.menu_sidebar_dropdown:before {
   margin: 4px 0;
 }
 
+.builder-item--footer_copyright .component-wrap {
+  display: inline;
+}
+
 /*# sourceMappingURL=style.css.map */
