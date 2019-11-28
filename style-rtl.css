@@ -2493,10 +2493,6 @@ audio {
   color: #404248;
 }
 
-.header-top-inner {
-  font-size: .85em;
-}
-
 .header--row-inner.dark-mode, .header--row-inner.dark-mode .sub-menu, .header--row-inner.dark-mode .sub-menu li {
   border-color: #333;
   background-color: #24292e;

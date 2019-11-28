@@ -26,10 +26,14 @@ class Radio_Buttons extends \WP_Customize_Control {
 	 */
 	public $choices = [];
 	/**
+	 * Send context to the control that will handle the choices differently.
+	 *
 	 * @var bool|string
 	 */
 	public $is_for = false;
 	/**
+	 * Should have larger buttons.
+	 *
 	 * @var array
 	 */
 	public $large_buttons = false;
