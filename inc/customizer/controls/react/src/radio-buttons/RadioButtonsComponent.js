@@ -31,6 +31,10 @@ class RadioButtonsComponent extends Component {
 				titleLogo: {
 					tooltip: __( 'Title & Tagline - Logo', 'neve' ),
 					icon: SVG.titleLogo
+				},
+				logoTopTitle: {
+					tooltip: __( 'Logo on Top', 'neve' ),
+					icon: SVG.logoTopTitle
 				}
 			};
 		}

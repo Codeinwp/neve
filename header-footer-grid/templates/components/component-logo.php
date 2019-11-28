@@ -49,7 +49,6 @@ $alt_attribute = get_post_meta( $custom_logo_id, '_wp_attachment_image_alt', tru
 		<?php
 		if ( $logo_image ) {
 			$image = '<img src="' . esc_url( $logo_image ) . '" alt="' . esc_attr( $alt_attribute ) . '">';
-
 			switch ( $display_order ) {
 				case 'default':
 					echo wp_kses_post( $image );
@@ -61,6 +60,11 @@ $alt_attribute = get_post_meta( $custom_logo_id, '_wp_attachment_image_alt', tru
 					break;
 				case 'logoTitle':
 					echo '<div class="title-with-logo">';
+					echo wp_kses_post( $image . $title_tagline );
+					echo '</div>';
+					break;
+				case 'logoTopTitle':
+					echo '<div class="logo-on-top">';
 					echo wp_kses_post( $image . $title_tagline );
 					echo '</div>';
 					break;

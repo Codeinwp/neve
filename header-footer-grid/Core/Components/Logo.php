@@ -100,14 +100,14 @@ class Logo extends Abstract_Component {
 			[
 				'id'                => self::DISPLAY,
 				'group'             => $this->get_class_const( 'COMPONENT_ID' ),
-				'tab'               => SettingsManager::TAB_LAYOUT,
+				'tab'               => SettingsManager::TAB_GENERAL,
 				'transport'         => 'post' . $this->get_builder_id(),
 				'sanitize_callback' => 'wp_filter_nohtml_kses',
 				'default'           => 'default',
 				'label'             => __( 'Display', 'neve' ),
 				'type'              => '\Neve\Customizer\Controls\React\Radio_Buttons',
 				'options'           => [
-					'priority'      => 10,
+					'priority'      => 11,
 					'is_for'        => 'logo',
 					'large_buttons' => true,
 				],
@@ -124,7 +124,7 @@ class Logo extends Abstract_Component {
 				'sanitize_callback' => 'absint',
 				'default'           => 1,
 				'label'             => __( 'Show Site Tagline', 'neve' ),
-				'type'              => '\Neve\Customizer\Controls\Checkbox',
+				'type'              => 'neve_toggle_control',
 				'options'           => [
 					'type' => 'checkbox-toggle',
 				],
@@ -141,7 +141,7 @@ class Logo extends Abstract_Component {
 				'sanitize_callback' => 'absint',
 				'default'           => 1,
 				'label'             => __( 'Show Site Title', 'neve' ),
-				'type'              => '\Neve\Customizer\Controls\Checkbox',
+				'type'              => 'neve_toggle_control',
 				'options'           => [
 					'type' => 'checkbox-toggle',
 				],
@@ -160,6 +160,7 @@ class Logo extends Abstract_Component {
 				'label'             => __( 'Logo max width (px)', 'neve' ),
 				'type'              => '\Neve\Customizer\Controls\Range',
 				'options'           => [
+					'priority'                 => 12,
 					'type'                     => 'range-value',
 					'hide_responsive_switches' => true,
 					'media_query'              => true,
