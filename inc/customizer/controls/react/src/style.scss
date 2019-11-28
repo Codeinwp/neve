@@ -564,6 +564,16 @@
   }
 }
 
+.large-buttons .neve-radio-icons {
+  .components-toolbar button {
+    height: 50px;
+    svg {
+      height: 30px;
+      padding: 7px;
+    }
+  }
+}
+
 .neve-sizing.inline-header {
   .bordered {
     border: none;
@@ -575,5 +585,11 @@
 
   .neve-control-header {
     border-bottom: 3px solid #d8d8d8;
+  }
+}
+
+.neve-toggle-control {
+  > .components-base-control__field, label {
+    margin-bottom: 0 !important;
   }
 }

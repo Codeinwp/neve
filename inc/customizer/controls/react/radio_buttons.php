@@ -25,12 +25,22 @@ class Radio_Buttons extends \WP_Customize_Control {
 	 * @var array
 	 */
 	public $choices = [];
+	/**
+	 * @var bool|string
+	 */
+	public $is_for = false;
+	/**
+	 * @var array
+	 */
+	public $large_buttons = false;
 
 	/**
 	 * Send to JS.
 	 */
 	public function to_json() {
 		parent::to_json();
-		$this->json['choices'] = $this->choices;
+		$this->json['choices']       = $this->choices;
+		$this->json['is_for']        = $this->is_for;
+		$this->json['large_buttons'] = $this->large_buttons;
 	}
 }
