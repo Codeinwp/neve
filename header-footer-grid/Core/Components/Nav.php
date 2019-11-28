@@ -44,7 +44,7 @@ class Nav extends Abstract_Component {
 		$this->set_property( 'section', 'header_menu_primary' );
 		$this->set_property( 'has_font_family_control', true );
 		$this->set_property( 'has_typeface_control', true );
-		$this->set_property( 'default_typography_selector', $this->default_typography_selector . '.builder-item--' . $this->get_id() . ' li.menu-item > a' );
+		$this->set_property( 'default_typography_selector', $this->default_typography_selector . '.builder-item--' . $this->get_id() . ' li > a' );
 		$this->default_align = 'right';
 		add_filter(
 			'neve_last_menu_setting_slug_' . $this->get_class_const( 'COMPONENT_ID' ),
