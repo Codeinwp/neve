@@ -7,7 +7,6 @@ let scripts = {
 			'assets/js/src/frontend/app.js': 'assets/js/frontend.js',
 			'assets/js/src/shop/app.js': 'assets/js/shop.js',
 			'assets/js/src/customizer-preview/app.js': 'assets/js/customizer-preview.js',
-			'assets/js/src/gutenberg-preview/app.js': 'assets/js/gutenberg-preview-manager.js'
 		},
 		__export = [];
 
