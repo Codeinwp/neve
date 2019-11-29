@@ -1,27 +1,5 @@
-.wp-block-embed:not(.is-provider-scribd):not(.is-provider-slideshare) .nv-iframe-embed {
-  position: relative;
-  padding-top: 56.25%;
-  overflow: hidden;
-  max-width: 100%;
-  height: auto;
-  > * {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-  .wp-block-embed-soundcloud & {
-    padding-top: 100%;
-  }
-}
-
 .wp-block-cover-image .wp-block-cover__inner-container, .wp-block-cover .wp-block-cover__inner-container {
   max-width: calc(100% - 70px);
-}
-
-.wp-embed-responsive .wp-block-embed:not(.is-provider-scribd):not(.is-provider-slideshare) .wp-block-embed__wrapper:before {
-  padding-top: 0 !important;
 }
 
 blockquote {

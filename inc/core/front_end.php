@@ -66,7 +66,6 @@ class Front_End {
 		add_theme_support( 'responsive-embeds' );
 		add_theme_support( 'service_worker', true );
 
-		add_filter( 'embed_oembed_html', array( $this, 'wrap_oembeds' ), 10, 3 );
 		add_filter( 'themeisle_gutenberg_templates', array( $this, 'add_gutenberg_templates' ) );
 
 		$this->add_amp_support();
@@ -84,43 +83,6 @@ class Front_End {
 		add_image_size( 'neve-blog', 930, 620, true );
 		add_filter( 'wp_nav_menu_args', array( $this, 'nav_walker' ), 1001 );
 		$this->add_woo_support();
-	}
-
-	/**
-	 * Wrap embeds.
-	 *
-	 * @param string $markup embed markup.
-	 * @param string $url    embed url.
-	 * @param array  $attr   embed attributes [width/height].
-	 *
-	 * @return string
-	 */
-	public function wrap_oembeds( $markup, $url, $attr ) {
-		$sources = [
-			'vimeo.com',
-			'youtube.com',
-			'youtu.be',
-			'soundcloud',
-			'spotify',
-			'reverbnation',
-			'animoto',
-			'cloudup',
-			'collegehumor',
-			'dailymotion',
-			'kck.st',
-			'kickstarter',
-			'mixcloud',
-			'speakerdeck',
-			'ted',
-			'wordpress.tv',
-		];
-		foreach ( $sources as $source ) {
-			if ( strpos( $url, $source ) !== false ) {
-				return '<div class="nv-iframe-embed">' . $markup . '</div>';
-			}
-		}
-
-		return $markup;
 	}
 
 	/**
