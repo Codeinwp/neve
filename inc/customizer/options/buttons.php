@@ -96,46 +96,47 @@ class Buttons extends Base_Customizer {
 					]
 				)
 			);
+			$default_padding_values = array(
+				'desktop'      => array(
+					'top'    => 8,
+					'right'  => 12,
+					'bottom' => 8,
+					'left'   => 12,
+				),
+				'tablet'       => array(
+					'top'    => 8,
+					'right'  => 12,
+					'bottom' => 8,
+					'left'   => 12,
+				),
+				'mobile'       => array(
+					'top'    => 8,
+					'right'  => 12,
+					'bottom' => 8,
+					'left'   => 12,
+				),
+				'desktop-unit' => 'px',
+				'tablet-unit'  => 'px',
+				'mobile-unit'  => 'px',
+			);
+
 			$this->add_control(
 				new Control(
 					'neve_' . $button . '_padding',
 					array(
-						'default' => array(
-							'desktop'      => array(
-								'top'    => '',
-								'right'  => '',
-								'bottom' => '',
-								'left'   => '',
-							),
-							'tablet'       => array(
-								'top'    => '',
-								'right'  => '',
-								'bottom' => '',
-								'left'   => '',
-							),
-							'mobile'       => array(
-								'top'    => '',
-								'right'  => '',
-								'bottom' => '',
-								'left'   => '',
-							),
-							'desktop-unit' => 'px',
-							'tablet-unit'  => 'px',
-							'mobile-unit'  => 'px',
-						),
+						'default' => $default_padding_values,
 					),
 					array(
-						'label'          => __( 'Padding', 'neve' ),
-						'section'        => $this->section_id,
-						'linked_choices' => false,
-						'choices'        => array(
-							'top'    => __( 'Top', 'neve' ),
-							'right'  => __( 'Right', 'neve' ),
-							'bottom' => __( 'Bottom', 'neve' ),
-							'left'   => __( 'Left', 'neve' ),
-						),
+						'label'             => __( 'Padding', 'neve' ),
+						'sanitize_callback' => array( $this, 'sanitize_spacing_array' ),
+						'section'           => $this->section_id,
+						'input_attrs'       => [
+							'units'        => [ 'px' ],
+							'inlineHeader' => true,
+						],
+						'default'           => $default_padding_values,
 					),
-					'\HFG\Core\Customizer\SpacingControl'
+					'\Neve\Customizer\Controls\React\Spacing'
 				)
 			);
 			$this->add_control(

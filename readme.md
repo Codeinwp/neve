@@ -821,4 +821,19 @@ Starter Sites screenshots resources:
 - Translation Services
 * https://mystock.themeisle.com/photo/metropolitan-museum/
 
+- Blogger
+* https://mystock.themeisle.com/photo/passing-girl/
+
+- Coupons
+* https://mystock.themeisle.com/photo/gift-shop-in-punjim/
+* https://mystock.themeisle.com/photo/teddy/
+* https://mystock.themeisle.com/photo/couch-with-two-green-pillows/
+* https://mystock.themeisle.com/photo/luggage-tag-label-on-suitcase-or-bag-with-the-sea-behind-it/
+
+- Escape Room
+* https://mystock.themeisle.com/photo/scary-nymph-group-holding-hands-2/
+* https://mystock.themeisle.com/photo/mannequin/
+* https://mystock.themeisle.com/photo/light-carpet/
+* https://mystock.themeisle.com/photo/mannequin-with-unicorn-mask-standing-in-the-window/
+
 

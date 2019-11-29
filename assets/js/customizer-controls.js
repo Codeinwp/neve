@@ -2,9 +2,16 @@
     "use strict";
     wp.tiCustomizeButton = {
         init: function() {
-            jQuery("#customize-theme-controls").on("click", ".menu-shortcut", function(e) {
+            $("#customize-theme-controls").on("click", ".menu-shortcut", function(e) {
                 wp.customize.section("menu_locations").focus();
                 e.preventDefault();
+            });
+            $("#customize-theme-controls").on("click", ".neve-control-focus", function(e) {
+                e.preventDefault();
+                var control_id = $(this).data("control-to-focus");
+                if (typeof control_id !== "undefined") {
+                    wp.customize.control(control_id).focus();
+                }
             });
         }
     };

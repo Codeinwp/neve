@@ -71,7 +71,6 @@ class Core_Loader {
 				'Views\Inline\Gutenberg_Style_Manager',
 
 				'Compatibility\Generic',
-				'Compatibility\Gutenberg',
 				'Compatibility\WooCommerce',
 				'Compatibility\Elementor',
 				'Compatibility\Header_Footer_Elementor',
