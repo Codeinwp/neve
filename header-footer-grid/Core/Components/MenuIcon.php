@@ -29,12 +29,34 @@ class MenuIcon extends Abstract_Component {
 	const BUTTON_APPEARANCE = 'button_appearance';
 
 	/**
-	 * The <button> inside the component selector.
+	 * Padding settings default values.
 	 *
-	 * @var string
+	 * @var array
 	 */
-	public $button_selector;
+	protected $default_padding_value = array(
 
+		'mobile'       => array(
+			'top'    => 10,
+			'right'  => 15,
+			'bottom' => 10,
+			'left'   => 15,
+		),
+		'tablet'       => array(
+			'top'    => 10,
+			'right'  => 15,
+			'bottom' => 10,
+			'left'   => 15,
+		),
+		'desktop'      => array(
+			'top'    => 10,
+			'right'  => 15,
+			'bottom' => 10,
+			'left'   => 15,
+		),
+		'mobile-unit'  => 'px',
+		'tablet-unit'  => 'px',
+		'desktop-unit' => 'px',
+	);
 
 	/**
 	 * MenuIcon constructor.
@@ -48,7 +70,7 @@ class MenuIcon extends Abstract_Component {
 		$this->set_property( 'width', 1 );
 		$this->set_property( 'icon', 'menu' );
 		$this->set_property( 'section', self::COMPONENT_ID );
-		$this->set_property( 'button_selector', '.builder-item--' . $this->get_id() . ' .navbar-toggle' );
+		$this->set_property( 'default_selector', '.builder-item--' . $this->get_id() . ' .navbar-toggle' );
 	}
 
 	/**
@@ -62,7 +84,6 @@ class MenuIcon extends Abstract_Component {
 			[
 				'id'                    => self::TEXT_ID,
 				'group'                 => $this->get_id(),
-				// 'transport'         => 'post' . $this->get_id(),
 				'transport'             => 'postMessage',
 				'tab'                   => SettingsManager::TAB_GENERAL,
 				'sanitize_callback'     => 'wp_filter_nohtml_kses',
@@ -70,9 +91,9 @@ class MenuIcon extends Abstract_Component {
 				'label'                 => __( 'Menu label', 'neve' ),
 				'type'                  => 'text',
 				'section'               => $this->section,
-				'live_refresh_selector' => $this->button_selector . ' .nav-toggle-label',
+				'live_refresh_selector' => $this->default_selector . ' .nav-toggle-label',
 				'live_refresh_css_prop' => array(
-					'parent'     => $this->button_selector,
+					'parent'     => $this->default_selector,
 					'wrap_class' => 'nav-toggle-label',
 					'html_tag'   => 'span',
 				),
@@ -92,7 +113,7 @@ class MenuIcon extends Abstract_Component {
 				'options'               => [
 					'no_hover' => true,
 				],
-				'live_refresh_selector' => $this->button_selector,
+				'live_refresh_selector' => $this->default_selector,
 			]
 		);
 	}
@@ -108,27 +129,27 @@ class MenuIcon extends Abstract_Component {
 		$appearance = \HFG\component_setting( self::BUTTON_APPEARANCE, null, $this->id );
 
 		if ( isset( $appearance['borderRadius'] ) ) {
-			$css_array[ $this->button_selector ]['border-radius'] = $appearance['borderRadius'] . 'px';
+			$css_array[ $this->default_selector ]['border-radius'] = $appearance['borderRadius'] . 'px';
 		}
 
 		if ( ! empty( $appearance['background'] ) ) {
-			$css_array[ $this->button_selector ]['background-color'] = $appearance['background'];
+			$css_array[ $this->default_selector ]['background-color'] = $appearance['background'];
 		}
 
 		if ( ! empty( $appearance['text'] ) ) {
-			$css_array[ $this->button_selector ]['color']                           = $appearance['text'];
-			$css_array[ $this->button_selector . ' .icon-bar' ]['background-color'] = $appearance['text'];
+			$css_array[ $this->default_selector ]['color']                           = $appearance['text'];
+			$css_array[ $this->default_selector . ' .icon-bar' ]['background-color'] = $appearance['text'];
 			if ( $appearance['type'] === 'outline' ) {
-				$css_array[ $this->button_selector ]['border-color'] = $appearance['text'];
+				$css_array[ $this->default_selector ]['border-color'] = $appearance['text'];
 			}
 		}
 
 		if ( ! empty( $appearance['borderWidth'] ) && $appearance['type'] === 'outline' ) {
-			$css_array[ $this->button_selector ]['border'] = $appearance['borderWidth'] . 'px solid';
+			$css_array[ $this->default_selector ]['border'] = $appearance['borderWidth'] . 'px solid';
 		}
 
 		if ( $appearance['type'] !== 'outline' ) {
-			$css_array[ $this->button_selector ]['border'] = 'none';
+			$css_array[ $this->default_selector ]['border'] = 'none';
 		}
 
 		return parent::add_style( $css_array );
