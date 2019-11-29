@@ -76,23 +76,15 @@ wp.customize.controlConstructor[ 'interface-tabs' ] = wp.customize.Control.exten
 	init: function () {
 		var control = this;
 		var section = control.section();
-
-		/**
-		 * This timeout is required because widget controls are rendered async and need some time.
-		 */
-		// setTimeout( function () {
-		// 	jQuery( 'li[id^="customize-control-sidebars_widgets"]' ).each( function () {
-		// 		//console.log( this );
-		// 		jQuery( this ).on(
-		// 			'DOMNodeInserted', function () {
-		// 				jQuery( '.neve-customizer-tab.active > label' ).trigger( 'click' );
-		// 			} );
-		// 	} );
-		// }, 100 );
-
 			control.hideAllControls( section );
-			var tab = ( control.params.controls.general ) ? 'general' : Object.keys( control.params.controls )[ 0 ];
-			var controlsToShow = control.params.controls[ tab ];
+		var tab = ( control.params.controls.general )
+				? 'general'
+				: control.params.controls.layout
+						? 'layout'
+						: control.params.controls.style
+								? 'style'
+								: Object.keys( control.params.controls )[0];
+		var controlsToShow = control.params.controls[tab];
 			var allControls = [];
 			for ( var controlName in controlsToShow ) {
 				if ( controlsToShow.hasOwnProperty( controlName ) ) {
