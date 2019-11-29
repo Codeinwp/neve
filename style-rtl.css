@@ -1745,7 +1745,7 @@ pre {
 }
 
 .nv-content-wrap ul li, .nv-content-wrap ol li, .excerpt-wrap ul li, .excerpt-wrap ol li {
-  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .nv-content-wrap dt, .excerpt-wrap dt {
