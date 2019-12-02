@@ -44,7 +44,7 @@ class Core_Loader {
 			array(
 				'Customizer\Loader',
 				'Views\Tweaks',
-				'Views\Typography',
+				'Views\Font_Manager',
 				'Views\Top_Bar',
 				'Views\Header',
 				'Views\Template_Parts',

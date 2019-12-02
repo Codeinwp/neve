@@ -1,6 +1,6 @@
 <?php
 /**
- * Typography control. Handles data passing from args to JS.
+ * Color Control. Handles data passing from args to JS.
  *
  * @package Neve\Customizer\Controls\React
  */
@@ -8,29 +8,28 @@
 namespace Neve\Customizer\Controls\React;
 
 /**
- * Class Typography
+ * Class Button_Appearance
  *
  * @package Neve\Customizer\Controls\React
  */
-class Typography extends \WP_Customize_Control {
+class Color extends \WP_Customize_Control {
 	/**
 	 * Control type.
 	 *
 	 * @var string
 	 */
-	public $type = 'neve_typeface_control';
+	public $type = 'neve_color_control';
 	/**
 	 * Additional arguments passed to JS.
 	 *
 	 * @var array
 	 */
-	public $input_attrs = [];
-
+	public $default = [];
 	/**
 	 * Send to JS.
 	 */
 	public function to_json() {
 		parent::to_json();
-		$this->json['input_attrs'] = is_array( $this->input_attrs ) ? json_encode( $this->input_attrs ) : $this->input_attrs;
+		$this->json['default'] = $this->default;
 	}
 }

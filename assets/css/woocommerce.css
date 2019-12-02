@@ -1052,7 +1052,7 @@ ul[id^="nv-primary-navigation"] a.button {
   color: #24292e;
 }
 
-.header-menu-sidebar .nv-nav-cart, .header-menu-sidebar li.menu-item-nav-cart {
+.nv-nav-cart, .header-menu-sidebar li.menu-item-nav-cart {
   display: none;
 }
 

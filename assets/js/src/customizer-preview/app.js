@@ -176,43 +176,47 @@ window.addEventListener( 'load', function() {
 							addCss( settingId, style );
 							break;
 						case '\\Neve\\Customizer\\Controls\\React\\Typography':
-							style += 'html ' + args.selector + '{' +
-									'text-transform:' + newValue.textTransform + ';' +
-									'font-weight:' + newValue.fontWeight + ';' +
-									'}';
+							style +=
+									`html ${args.selector}{
+										text-transform: ${newValue.textTransform};
+										font-weight: ${newValue.fontWeight};
+									}`;
 							for ( let device in deviceMap ) {
-								style += '@media (' + deviceMap[device] + ') { ' +
-										'html ' + args.selector + '{' +
-										'font-size:' + newValue.fontSize[device] +
-										newValue.fontSize.suffix[device] + ';' +
-										'letter-spacing:' + newValue.letterSpacing[device] + 'px;' +
-										'line-height:' + newValue.lineHeight[device] + ';' +
-										'}}';
+								style +=
+										`@media (${deviceMap[device]}) { 
+											html ${args.selector} {
+												font-size:${newValue.fontSize[device]}${newValue.fontSize.suffix[device]};
+												letter-spacing:${newValue.letterSpacing[device]}px;
+												line-height:${newValue.lineHeight[device]};
+											}
+										}`;
 							}
 							addCss( settingId, style );
 							break;
 						case '\\Neve\\Customizer\\Controls\\React\\Button_Appearance':
-							style += 'html ' + args.selector + '{' +
-									'background-color:' +
-									( newValue.background || 'inherit' ) +
-									';' +
-									'border-radius:' + newValue.borderRadius + 'px;' +
-									'color: ' + ( newValue.text || 'inherit' ) + ';';
+							let bgColor = newValue.background === '' ? 'unset' : newValue.background;
+							let txtColor = newValue.text === '' ? 'unset' : newValue.text;
+							let borderColor = newValue.text === '' ? 'currentColor' : newValue.text;
+							style += `html ${args.selector} .icon-bar { background-color: ${borderColor} }`;
+							style +=
+									`html ${args.selector} {
+										background-color: ${bgColor};
+										border-radius: ${newValue.borderRadius}px;
+										color: ${txtColor};`;
 							if ( newValue.type === 'outline' ) {
-								style += 'border: ' + newValue.borderWidth + 'px solid ' +
-										newValue.text + ';';
+								style += `border: ${newValue.borderWidth}px solid ${borderColor};`;
 							}
 							if ( newValue.type === 'fill' ) {
 								style += 'border: none;';
 							}
 							style += '}';
-							let selector = 'html ' + args.selector + ' .icon-bar';
+							let selector = `html ${args.selector} .icon-bar`;
 
-							style += selector + ' {' +
-									'background-color: ' + ( newValue.text ||
-											document.querySelector(
-													selector ).style.backgroundColor ) + ';' +
-									'}';
+							style +=
+									`${selector} {
+										background-color: ${newValue.text ||
+									document.querySelector( selector ).style.backgroundColor};
+									}`;
 							addCss( settingId, style );
 							break;
 						case 'text':
@@ -229,7 +233,25 @@ window.addEventListener( 'load', function() {
 							}
 							document.querySelector( args.selector ).innerHTML = newValue;
 							break;
-						case 'neve_font_family_control':
+						case 'neve_range_control':
+							if ( args.additional.type === 'svg-icon-size' ) {
+								style +=
+										`html ${args.selector} {
+											width: ${newValue}px;
+											height: ${newValue}px;
+										}`;
+								addCss( settingId, style );
+							}
+							break;
+						case '\\Neve\\Customizer\\Controls\\React\\Color':
+							let colorValue = newValue === '' ? 'unset' : newValue;
+							style +=
+									`html ${args.selector} {
+										${args.additional.prop}: ${colorValue};
+									}`;
+							addCss( settingId, style );
+							break;
+						case '\\Neve\\Customizer\\Controls\\React\\Font_Family':
 							break;
 					}
 				} );
@@ -240,14 +262,15 @@ window.addEventListener( 'load', function() {
 		let selector = neveCustomizePreview[data.type][data.controlId].selector,
 				source = data.source,
 				id = data.controlId + '_font_family',
-				defaultFontface = '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif';
+				defaultFontface = data.inherit ?
+						'inherit' :
+						'-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif';
 
 		// Make selector more specific by adding `html` before.
 		selector = selector.split( ',' );
 		selector = selector.map( function(sel) {
 			return 'html ' + sel;
 		} ).join( ',' );
-
 		if ( data.value === false ) {
 			addCss( data.controlId,
 					selector + '{font-family: ' + defaultFontface + ';}' );
