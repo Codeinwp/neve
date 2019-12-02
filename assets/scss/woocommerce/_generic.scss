@@ -156,3 +156,10 @@ $notices: (
     }
   }
 }
+
+//<editor-fold [WooCommerce Blocks]>
+.nv-content-wrap ul.wc-block-grid__products {
+  list-style-type: none;
+  padding-left: 0;
+}
+//</editor-fold>
