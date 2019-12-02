@@ -18,7 +18,7 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
-= 2.5.2 - 2019-11-19  = 
+= 2.5.2 - 2019-11-19  =
 
 * [Feat] Improved mobile header/footer builder UX
 * [Feat] New styling controls for the Menu Icon component
@@ -820,5 +820,20 @@ Starter Sites screenshots resources:
 
 - Translation Services
 * https://mystock.themeisle.com/photo/metropolitan-museum/
+
+- Blogger
+* https://mystock.themeisle.com/photo/passing-girl/
+
+- Coupons
+* https://mystock.themeisle.com/photo/gift-shop-in-punjim/
+* https://mystock.themeisle.com/photo/teddy/
+* https://mystock.themeisle.com/photo/couch-with-two-green-pillows/
+* https://mystock.themeisle.com/photo/luggage-tag-label-on-suitcase-or-bag-with-the-sea-behind-it/
+
+- Escape Room
+* https://mystock.themeisle.com/photo/scary-nymph-group-holding-hands-2/
+* https://mystock.themeisle.com/photo/mannequin/
+* https://mystock.themeisle.com/photo/light-carpet/
+* https://mystock.themeisle.com/photo/mannequin-with-unicorn-mask-standing-in-the-window/
 
 
