@@ -423,8 +423,11 @@ jQuery.neveRangesPreview.init();
 			$.each( this.contentWidths, function(id, args) {
 				wp.customize( id, function(value) {
 					value.bind( function(newval) {
-						jQuery( args.content ).css( 'max-width', newval + '%' );
-						jQuery( args.sidebar ).css( 'max-width', 100 - newval + '%' );
+						let style = ` @media (min-width: 961px) {
+							${args.content} { max-width: ${newval}% !important; }
+							${args.sidebar} { max-width: ${100 - newval}% !important; }
+						}`;
+						addCss( id + '-css', style );
 					} );
 				} );
 			} );
