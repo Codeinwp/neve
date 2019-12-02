@@ -208,8 +208,10 @@ window.addEventListener( 'load', function() {
 							style += '}';
 							let selector = 'html ' + args.selector + ' .icon-bar';
 
-							style += selector+' {' +
-									'background-color: ' + ( newValue.text || document.querySelector(selector).style.backgroundColor ) + ';' +
+							style += selector + ' {' +
+									'background-color: ' + ( newValue.text ||
+											document.querySelector(
+													selector ).style.backgroundColor ) + ';' +
 									'}';
 							addCss( settingId, style );
 							break;
@@ -398,8 +400,11 @@ jQuery.neveRangesPreview.init();
 			$.each( this.contentWidths, function(id, args) {
 				wp.customize( id, function(value) {
 					value.bind( function(newval) {
-						jQuery( args.content ).css( 'max-width', newval + '%' );
-						jQuery( args.sidebar ).css( 'max-width', 100 - newval + '%' );
+						let style = ` @media (min-width: 961px) {
+							${args.content} { max-width: ${newval}% !important; }
+							${args.sidebar} { max-width: ${100 - newval}% !important; }
+						}`;
+						addCss( id + '-css', style );
 					} );
 				} );
 			} );
