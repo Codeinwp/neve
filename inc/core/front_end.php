@@ -193,6 +193,7 @@ class Front_End {
 				'brizy',
 				'beaver builder',
 				'thrive architect',
+				'divi builder',
 			),
 			'local'       => array(
 				'elementor' => array(
