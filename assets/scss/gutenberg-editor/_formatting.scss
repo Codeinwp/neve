@@ -7,11 +7,19 @@
 
   //</editor-fold>
 
-  //<editor-fold desc="Separator">
-  .wp-block-separator {
-    margin: $spacing - 20px auto $spacing;
-    padding-top: $spacing - 20px;
-  }
+	//<editor-fold desc="Separator">
+	.wp-block-separator {
+		margin: $spacing - 20px auto $spacing;
+		background-color: #8f98a1;
+		border: none;
+		height: 2px;
+		&.is-style-wide {
+			height: 1px;
+		}
+		&.is-style-dots {
+			height: auto;
+		}
+	}
 
   //</editor-fold>
 

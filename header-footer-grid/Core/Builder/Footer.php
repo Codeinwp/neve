@@ -34,16 +34,40 @@ class Footer extends Abstract_Builder {
 		$this->set_property( 'title', __( 'Footer', 'neve' ) );
 		$this->set_property(
 			'description',
-			sprintf(
-				/* translators: %s link to documentation */
-				esc_html__( 'Design your %1$s by dragging, dropping and resizing all the elements in real-time. %2$s.', 'neve' ),
-				/* translators: %s builder type */
-				$this->get_property( 'title' ),
-				/* translators: %s link text */
+			apply_filters(
+				'hfg_footer_panel_description',
 				sprintf(
-					'<br/><a target="_blank" href="https://docs.themeisle.com/article/946-neve-doc#footer-builder">%s</a>',
-					esc_html__( 'Read full documentation', 'neve' )
+					/* translators: %s link to documentation */
+					esc_html__( 'Design your %1$s by dragging, dropping and resizing all the elements in real-time. %2$s.', 'neve' ),
+					/* translators: %s builder type */
+					$this->get_property( 'title' ),
+					/* translators: %s link text */
+					sprintf(
+						'<br/><a target="_blank" href="https://docs.themeisle.com/article/946-neve-doc#footer-builder">%s</a>',
+						esc_html__( 'Read full documentation', 'neve' )
+					)
 				)
+			)
+		);
+		$this->set_property(
+			'instructions_array',
+			array(
+				'description' => sprintf(
+					/* translators: %s builder type */
+					esc_html__( 'Welcome to the %1$s builder! Click the “+” button to add a new component or follow the Quick Links.', 'neve' ),
+					$this->get_property( 'title' )
+				),
+				'image'       => esc_url( get_template_directory_uri() . '/header-footer-grid/assets/images/customizer/hfg.mp4' ),
+				'quickLinks'  => array(
+					'footer_copyright_content'            => array(
+						'label' => esc_html__( 'Change Copyright', 'neve' ),
+						'icon'  => 'dashicons-nametag',
+					),
+					'hfg_footer_layout_bottom_background' => array(
+						'label' => esc_html__( 'Change Footer Color', 'neve' ),
+						'icon'  => 'dashicons-admin-appearance',
+					),
+				),
 			)
 		);
 		$this->devices = [

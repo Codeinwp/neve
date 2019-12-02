@@ -78,6 +78,38 @@ abstract class Abstract_Component implements Component {
 	 */
 	protected $section;
 	/**
+	 * The component slug.
+	 *
+	 * @since   1.0.0
+	 * @access  protected
+	 * @var string $section
+	 */
+	protected $component_slug = 'hfg-generic-component';
+
+	/**
+	 * Should component merge?
+	 *
+	 * @since 2.5.2
+	 * @access protected
+	 * @var bool $is_auto_width
+	 */
+	protected $is_auto_width = false;
+	/**
+	 * The section icon.
+	 *
+	 * @access protected
+	 * @var string $icon
+	 */
+	protected $icon = 'welcome-widgets-menus';
+	/**
+	 * The component preview image.
+	 *
+	 * @access protected
+	 * @var string $preview_image
+	 */
+	protected $preview_image = null;
+
+	/**
 	 * The component default width.
 	 *
 	 * @since   1.0.0
@@ -212,6 +244,10 @@ abstract class Abstract_Component implements Component {
 		$this->init();
 
 		$this->set_property( 'panel', $panel );
+		$this->set_property( 'icon', $this->icon );
+		if ( $this->preview_image === null ) {
+			$this->set_property( 'preview_image', $this->preview_image );
+		}
 		if ( $this->section === null ) {
 			$this->set_property( 'section', $this->get_id() );
 		}
@@ -221,12 +257,11 @@ abstract class Abstract_Component implements Component {
 	/**
 	 * Allow for constant changes in pro.
 	 *
-	 * @since   1.0.0
-	 * @access  protected
-	 *
 	 * @param string $const Name of the constant.
 	 *
 	 * @return mixed
+	 * @since   1.0.0
+	 * @access  protected
 	 */
 	protected function get_class_const( $const ) {
 		if ( defined( 'static::' . $const ) ) {
@@ -239,9 +274,9 @@ abstract class Abstract_Component implements Component {
 	/**
 	 * Method to filter component loading if needed.
 	 *
+	 * @return bool
 	 * @since   1.0.1
 	 * @access  public
-	 * @return bool
 	 */
 	public function is_active() {
 		return true;
@@ -250,7 +285,7 @@ abstract class Abstract_Component implements Component {
 	/**
 	 * Method to set protected properties for class.
 	 *
-	 * @param string $key   The property key name.
+	 * @param string $key The property key name.
 	 * @param string $value The property value.
 	 *
 	 * @return bool
@@ -280,18 +315,21 @@ abstract class Abstract_Component implements Component {
 	/**
 	 * Return the settings for the component.
 	 *
+	 * @return array
 	 * @since   1.0.0
 	 * @updated 1.0.1
 	 * @access  public
-	 * @return array
 	 */
 	public function get_settings() {
 		return array(
-			'name'        => $this->label,
-			'description' => $this->description,
-			'id'          => $this->id,
-			'width'       => $this->width,
-			'section'     => $this->section, // Customizer section to focus when click settings.
+			'name'          => $this->label,
+			'description'   => $this->description,
+			'id'            => $this->id,
+			'width'         => $this->width,
+			'section'       => $this->section, // Customizer section to focus when click settings.
+			'icon'          => $this->icon,
+			'previewImage'  => $this->preview_image,
+			'componentSlug' => $this->component_slug,
 		);
 	}
 
@@ -334,23 +372,32 @@ abstract class Abstract_Component implements Component {
 			$padding_selector = $this->default_selector;
 		}
 		$margin_selector = '.builder-item--' . $this->get_id();
-		if ( strpos( $this->get_id(), 'header_search' ) === false || strpos( $this->get_id(), 'header_search_responsive' ) !== false ) {
+		if ( $this->get_id() !== Search::COMPONENT_ID ) {
 			SettingsManager::get_instance()->add(
 				[
 					'id'                    => self::ALIGNMENT_ID,
 					'group'                 => $this->get_id(),
 					'tab'                   => SettingsManager::TAB_LAYOUT,
-					'transport'             => 'postMessage',
+					'transport'             => $this->is_auto_width ? 'post' . $this->get_builder_id() : 'postMessage',
 					'sanitize_callback'     => 'wp_filter_nohtml_kses',
 					'default'               => $this->default_align,
-					'label'                 => __( 'Component Alignment', 'neve' ),
-					'type'                  => '\Neve\Customizer\Controls\Button_Group',
-					'live_refresh_selector' => $margin_selector,
+					'label'                 => __( 'Alignment', 'neve' ),
+					'type'                  => '\Neve\Customizer\Controls\React\Radio_Buttons',
+					'live_refresh_selector' => $this->is_auto_width ? null : $margin_selector,
 					'options'               => [
 						'choices' => [
-							'left'   => 'dashicons-editor-alignleft',
-							'center' => 'dashicons-editor-aligncenter',
-							'right'  => 'dashicons-editor-alignright',
+							'left'   => [
+								'tooltip' => __( 'Left', 'neve' ),
+								'icon'    => 'editor-alignleft',
+							],
+							'center' => [
+								'tooltip' => __( 'Center', 'neve' ),
+								'icon'    => 'editor-aligncenter',
+							],
+							'right'  => [
+								'tooltip' => __( 'Right', 'neve' ),
+								'icon'    => 'editor-alignright',
+							],
 						],
 					],
 					'section'               => $this->section,
@@ -446,6 +493,7 @@ abstract class Abstract_Component implements Component {
 		);
 
 		$wp_customize->register_control_type( '\HFG\Core\Customizer\SpacingControl' );
+		$wp_customize->register_section_type( '\HFG\Core\Customizer\Instructions_Section' );
 
 		Settings\Manager::get_instance()->load( $this->get_id(), $wp_customize );
 
@@ -478,17 +526,16 @@ abstract class Abstract_Component implements Component {
 	/**
 	 * Write position styles and filter values.
 	 *
-	 * @since   1.0.1
-	 * @access  protected
-	 *
 	 * @param string $target CSS target property ( margin | padding ).
-	 * @param string $top    Top value.
-	 * @param string $right  Right value.
+	 * @param string $top Top value.
+	 * @param string $right Right value.
 	 * @param string $bottom Bottom value.
-	 * @param string $left   Left value.
-	 * @param string $unit   Unit to use ( px | em | % ).
+	 * @param string $left Left value.
+	 * @param string $unit Unit to use ( px | em | % ).
 	 *
 	 * @return array
+	 * @since   1.0.1
+	 * @access  protected
 	 */
 	protected function css_position_filter( $target, $top = '', $right = '', $bottom = '', $left = '', $unit = 'px' ) {
 		if ( empty( $target ) && ! in_array( $target, array( 'margin', 'padding' ), true ) ) {
@@ -509,15 +556,14 @@ abstract class Abstract_Component implements Component {
 	/**
 	 * Method to reuse loop for generating position css.
 	 *
-	 * @since   1.0.1
-	 * @access  protected
-	 *
-	 * @param array  $css_array       The css array.
+	 * @param array  $css_array The css array.
 	 * @param array  $position_values The position values array.
-	 * @param string $selector        The item selector.
-	 * @param string $type            The type to generate ( margin | padding ).
+	 * @param string $selector The item selector.
+	 * @param string $type The type to generate ( margin | padding ).
 	 *
 	 * @return mixed
+	 * @since   1.0.1
+	 * @access  protected
 	 */
 	protected function generate_position_css( $css_array, $position_values, $selector, $type = 'margin' ) {
 		foreach ( $this->media_selectors as $device => $media_selector ) {

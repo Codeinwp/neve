@@ -74,8 +74,10 @@ class Button extends Abstract_Component {
 	public function init() {
 		$this->set_property( 'label', __( 'Button', 'neve' ) );
 		$this->set_property( 'id', $this->get_class_const( 'COMPONENT_ID' ) );
+		$this->set_property( 'component_slug', 'hfg-button' );
 		$this->set_property( 'width', 2 );
 		$this->set_property( 'section', 'header_button' );
+		$this->set_property( 'icon', 'admin-links' );
 	}
 
 	/**

@@ -7,8 +7,8 @@ const {
 	Fragment
 } = wp.element;
 const {
-	MediaPlaceholder
-} = wp.editor;
+	MediaUpload
+} = wp.blockEditor;
 
 const {
 	Button,
@@ -17,22 +17,25 @@ const {
 	FocalPointPicker,
 	Dashicon,
 	ColorPalette,
-	ToggleControl
+	ToggleControl,
+	Placeholder
 } = wp.components;
 
 class BackgroundComponent extends Component {
 	constructor(props) {
 		super( props );
 		let value = props.control.setting.get();
+
 		this.state = {
 			type: value.type || 'color',
 			imageUrl: value.imageUrl || '',
 			focusPoint: value.focusPoint || { x: 0.5, y: 0.5 },
 			colorValue: value.colorValue || '#ffffff',
-			overlayColorValue: value.overlayColorValue || '#000000',
+			overlayColorValue: value.overlayColorValue || '',
 			overlayOpacity: value.overlayOpacity || 50,
 			fixed: value.fixed || false
 		};
+		this.updateSetting(this.state);
 	}
 
 	getButtons() {
@@ -49,8 +52,7 @@ class BackgroundComponent extends Component {
 							isPrimary={self.state.type === type}
 							isDefault={self.state.type !== type}
 							onClick={(e) => {
-								self.setState( { type: type } );
-								self.updateSetting();
+								self.updateSetting( { type: type } );
 							}}
 					>
 						{labels[type]}
@@ -87,40 +89,46 @@ class BackgroundComponent extends Component {
 								colors={colors}
 								value={this.state.colorValue}
 								onChange={(colorValue) => {
-									self.setState( { colorValue } );
-									self.updateSetting();
+									self.updateSetting( {colorValue:  colorValue } );
 								}}
 						/>
 							<div
-									className="color-preview"
+									className="neve-color-preview"
 									style={{ backgroundColor: this.state.colorValue }}>
 							</div>
 						</Fragment>
 						}
 						{this.state.type === 'image' &&
 						<Fragment>
-							{!this.state.imageUrl && <MediaPlaceholder
+							{!this.state.imageUrl &&
+							<Placeholder
 									icon="format-image"
-									labels={{
-										title: __( 'Image', 'neve' ),
-										instructions: __(
-												'Select from the Media Library or upload a new image',
-												'neve' )
-									}}
-									onSelect={(imageData) => {
-										this.setState( { imageUrl: imageData.url } );
-										this.updateSetting();
-									}}
-									allowedTypes={['image']}
-							/> ||
+									label={__( 'Image', 'neve' )}
+							>
+								<p>
+									{__( 'Select from the Media Library or upload a new image',
+											'neve' )}
+								</p>
+								<MediaUpload
+										onSelect={(imageData) => {
+											this.updateSetting( { imageUrl: imageData.url } );
+										}}
+										allowedTypes={['image']}
+										render={({ open }) => (
+												<Button isDefault onClick={open}>
+													{__( 'Add Image', 'neve' )}
+												</Button>
+										)}
+								/>
+							</Placeholder>
+							||
 							<Fragment>
 								<Button
 										className="remove-image"
 										isDestructive
 										isLink
 										onClick={() => {
-											this.setState( { imageUrl: '' } );
-											this.updateSetting();
+											this.updateSetting( { imageUrl: '', overlayColorValue:'' } );
 										}}>
 									<Dashicon icon="no"/>
 									Remove Image</Button>
@@ -128,21 +136,18 @@ class BackgroundComponent extends Component {
 										url={this.state.imageUrl}
 										value={this.state.focusPoint}
 										onChange={(val) => {
-											this.setState( {
-												focusPoint: {
-													x: parseFloat( val.x ).toFixed( 2 ),
-													y: parseFloat( val.y ).toFixed( 2 )
-												}
-											} );
-											this.updateSetting();
+											let newPoint = {
+												x: parseFloat( val.x ).toFixed( 2 ),
+												y: parseFloat( val.y ).toFixed( 2 )
+											};
+											this.updateSetting( { focusPoint: newPoint } );
 										}}/>
 							</Fragment>}
 							<ToggleControl
 									label={__( 'Fixed Background', 'neve' )}
 									checked={this.state.fixed}
 									onChange={(fixed) => {
-										this.setState( { fixed: fixed } );
-										this.updateSetting();
+										this.updateSetting( { fixed: fixed } );
 									}}
 							/>
 							<span className="customize-control-title">{
@@ -152,20 +157,18 @@ class BackgroundComponent extends Component {
 									colors={colors}
 									value={this.state.overlayColorValue}
 									onChange={(overlayColorValue) => {
-										self.setState( { overlayColorValue } );
-										self.updateSetting();
+										self.updateSetting( { overlayColorValue: overlayColorValue } );
 									}}
 							/>
 							<div
-									className="color-preview"
+									className="neve-color-preview"
 									style={{ backgroundColor: this.state.overlayColorValue }}>
 							</div>
 							<RangeControl
 									label={__( 'Overlay Opacity', 'neve' )}
 									value={this.state.overlayOpacity}
 									onChange={(overlayOpacity) => {
-										this.setState( { overlayOpacity } );
-										this.updateSetting();
+										this.updateSetting( {overlayOpacity: overlayOpacity } );
 									}}
 									min="0"
 									max="100"
@@ -177,13 +180,14 @@ class BackgroundComponent extends Component {
 		);
 	}
 
-	updateSetting() {
-		setTimeout( () => {
-			this.props.control.setting.set( {
-				...this.props.control.setting.get(),
-				...this.state
-			} );
-		}, 100 );
+	updateSetting(newValues) {
+		// setTimeout( () => {
+		this.setState( newValues );
+		this.props.control.setting.set( {
+			...this.props.control.setting.get(),
+			...newValues
+		} );
+		// }, 100 );
 	}
 }
 

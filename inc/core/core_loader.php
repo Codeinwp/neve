@@ -71,7 +71,6 @@ class Core_Loader {
 				'Views\Inline\Gutenberg_Style_Manager',
 
 				'Compatibility\Generic',
-				'Compatibility\Gutenberg',
 				'Compatibility\WooCommerce',
 				'Compatibility\Elementor',
 				'Compatibility\Header_Footer_Elementor',
@@ -79,6 +78,7 @@ class Core_Loader {
 				'Compatibility\Header_Footer_Beaver',
 				'Compatibility\Beaver',
 				'Compatibility\Lifter',
+				'Compatibility\PWA',
 
 				'Admin\Metabox\Manager',
 			)

@@ -2,24 +2,16 @@
     "use strict";
     wp.tiCustomizeButton = {
         init: function() {
-            jQuery("#customize-theme-controls").on("click", ".menu-shortcut", function(e) {
+            $("#customize-theme-controls").on("click", ".menu-shortcut", function(e) {
                 wp.customize.section("menu_locations").focus();
                 e.preventDefault();
             });
-        }
-    };
-    $(document).ready(function() {
-        wp.tiCustomizeButton.init();
-    });
-})(jQuery);
-
-(function($) {
-    "use strict";
-    wp.tiCustomizeButton = {
-        init: function() {
-            jQuery("#customize-theme-controls").on("click", ".menu-shortcut", function(e) {
-                wp.customize.section("menu_locations").focus();
+            $("#customize-theme-controls").on("click", ".neve-control-focus", function(e) {
                 e.preventDefault();
+                var control_id = $(this).data("control-to-focus");
+                if (typeof control_id !== "undefined") {
+                    wp.customize.control(control_id).focus();
+                }
             });
         }
     };
@@ -484,28 +476,29 @@ wp.customize.controlConstructor["interface-tabs"] = wp.customize.Control.extend(
                 });
             }
         });
-        this.init();
-        this.handleClick();
+        var self = this;
+        jQuery(window).on("load", function() {
+            self.init();
+            self.handleClick();
+        });
     },
     init: function() {
         var control = this;
         var section = control.section();
-        wp.customize.bind("ready", function() {
-            control.hideAllControls(section);
-            var tab = control.params.controls.general ? "general" : Object.keys(control.params.controls)[0];
-            var controlsToShow = control.params.controls[tab];
-            var allControls = [];
-            for (var controlName in controlsToShow) {
-                if (controlsToShow.hasOwnProperty(controlName)) {
-                    if (jQuery.isEmptyObject(controlsToShow[controlName]) === false && typeof wp.customize.control(controlName) !== "undefined") {
-                        var subTabValue = wp.customize.control(controlName).setting._value;
-                        allControls = allControls.concat(controlsToShow[controlName][subTabValue]);
-                    }
-                    allControls.push(controlName);
+        control.hideAllControls(section);
+        var tab = control.params.controls.general ? "general" : Object.keys(control.params.controls)[0];
+        var controlsToShow = control.params.controls[tab];
+        var allControls = [];
+        for (var controlName in controlsToShow) {
+            if (controlsToShow.hasOwnProperty(controlName)) {
+                if (jQuery.isEmptyObject(controlsToShow[controlName]) === false && typeof wp.customize.control(controlName) !== "undefined") {
+                    var subTabValue = wp.customize.control(controlName).setting._value;
+                    allControls = allControls.concat(controlsToShow[controlName][subTabValue]);
                 }
+                allControls.push(controlName);
             }
-            control.showControls(allControls, section);
-        });
+        }
+        control.showControls(allControls, section);
     },
     hideAllControls: function(section) {
         var controls = wp.customize.section(section).controls();
@@ -556,6 +549,15 @@ wp.customize.controlConstructor["interface-tabs"] = wp.customize.Control.extend(
                     jQuery(selector).show();
                 }
             }
+            var control = wp.customize.control(controlName);
+            if (typeof control !== "undefined") {
+                var status = wp.customize.control(controlName).active();
+                if (status === true) {
+                    jQuery(wp.customize.control(controlName).selector).show();
+                } else {
+                    jQuery(wp.customize.control(controlName).selector).hide();
+                }
+            }
         }
     }
 });
@@ -566,7 +568,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         var elChild = document.createElement("li");
         elChild.innerHTML = markup;
         var el = document.getElementById("sub-accordion-panel-hfg_header");
-        el.insertBefore(elChild, el.children[1]);
+        el.appendChild(elChild);
     }
 });
 //# sourceMappingURL=customizer-controls.js.map

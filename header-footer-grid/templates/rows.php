@@ -22,7 +22,7 @@ namespace HFG;
 				<div class="row--grid">
 					<?php
 					for ( $i = 1; $i <= 12; $i ++ ) {
-						echo '<div></div>';
+						echo '<div><button class="add-button--grid" data-slot="' . esc_attr( $i - 1 ) . '">+</button></div>';
 					}
 					?>
 				</div>
@@ -40,7 +40,7 @@ namespace HFG;
 				<div class="row--grid">
 					<?php
 					for ( $i = 1; $i <= 12; $i ++ ) {
-						echo '<div></div>';
+						echo '<div><button class="add-button--grid" data-slot="' . esc_attr( $i - 1 ) . '">+</button></div>';
 					}
 					?>
 				</div>
@@ -57,7 +57,7 @@ namespace HFG;
 				<div class="row--grid">
 					<?php
 					for ( $i = 1; $i <= 12; $i ++ ) {
-						echo '<div></div>';
+						echo '<div><button class="add-button--grid" data-slot="' . esc_attr( $i - 1 ) . '">+</button></div>';
 					}
 					?>
 				</div>
@@ -69,28 +69,25 @@ namespace HFG;
 
 	<# if ( data.device != 'desktop' ) { #>
 	<# if ( ! _.isUndefined( data.rows.sidebar ) ) { #>
-	<?php
-	$is_active = setting( 'nav-icon_sidebar' );
-	$style     = '';
-	if ( $is_active ) {
-		$style = 'style="display: block;"';
-	}
-	?>
-	<div class="hfg--cp-sidebar" <?php echo ( $style );  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> >
-		<h4><?php echo __( 'Sidebar', 'neve' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></h4>
+	<div class="hfg--cp-sidebar">
+		<h4><?php echo __( 'Mobile menu content', 'neve' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></h4>
 		<div class="hfg--row-bottom hfg--cb-row" data-id="{{ data.id }}_sidebar">
+			<a href="#" class="toggle">
+				<span class="show"><?php echo esc_html__( 'Show', 'neve' ); ?></span>
+				<span class="hide"><?php echo esc_html__( 'Hide', 'neve' ); ?></span>
+			</a>
 			<a class="hfg--cb-row-settings" title="{{ data.rows.sidebar.title || data.rows.sidebar }}" data-id="sidebar" href="#"></a>
 			<div class="hfg--row-inner">
 				<div class="row--title">{{ data.rows.sidebar.title || data.rows.sidebar }}</div>
 				<div class="hfg--cb-items hfg--sidebar-items" data-id="sidebar"></div>
+				<div class="row--grid">
+					<div>
+						<button class="add-button--grid" data-slot="1">+</button>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
 			<# } #>
 			<# } #>
-
-	<h4 class="hfg--widgets-info"><?php esc_html_e( 'Available components', 'neve' ); ?>
-		<i class="dashicons dashicons-info"></i>
-		<span class="tooltip"><?php esc_html_e( 'To activate a component, drag it to one of the upper rows.', 'neve' ); ?></span>
-	</h4>
 </script>

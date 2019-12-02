@@ -2,15 +2,15 @@
 import PropTypes from 'prop-types';
 import ResponsiveControl from '../common/Responsive.js';
 import SizingControl from '../common/Sizing.js';
+import SVG from '../common/svg.js';
 
 const { __ } = wp.i18n;
 const {
-	Component,
-	Fragment
+	Component
 } = wp.element;
 const {
-	ButtonGroup,
-	Button
+	Toolbar,
+	ToolbarButton
 } = wp.components;
 const {
 	mapValues
@@ -33,7 +33,9 @@ class SpacingComponent extends Component {
 		let defaultParams = {
 			min: -300,
 			max: 300,
-			hideResponsiveButtons: false
+			hideResponsiveButtons: false,
+			units: ['px', 'em', '%'],
+			inlineHeader: false
 		};
 
 		this.controlParams = props.control.params.input_attrs ? {
@@ -56,7 +58,6 @@ class SpacingComponent extends Component {
 	}
 
 	render() {
-
 		let options = [
 			{
 				'type': 'top',
@@ -75,71 +76,77 @@ class SpacingComponent extends Component {
 				'value': this.state.value[this.state.currentDevice]['left']
 			}
 		];
-
+		let wrapClass = 'neve-white-background-control neve-sizing' +
+				( this.controlParams.inlineHeader ? ' inline-header' : '' );
 		return (
-				<Fragment>
-					<ResponsiveControl
-							controlLabel={this.props.control.params.label}
-							hideResponsive={this.controlParams.hideResponsiveButtons}
-							onChange={(currentDevice) => {
-								this.setState( { currentDevice } );
-								this.setState( { linked: this.shouldValuesBeLinked() } );
-							}}
-					>
-						<SizingControl
-								min={this.controlParams.min}
-								max={this.controlParams.max}
-								step={this.state.value[this.state.currentDevice + '-unit'] ===
-								'em' ? 0.1 : 1}
-								options={options}
-								defaults={ this.defaultValue[this.state.currentDevice] }
-								linked={this.state.linked}
-								onLinked={() => this.setState( { linked: !this.state.linked } )}
-								onChange={(optionType, numericValue) => {
-									this.updateValues( optionType, numericValue );
-								}}
-								onReset={() => {
-									this.setState( { value: this.defaultValue } );
-									this.props.control.setting.set( this.defaultValue );
+				<div className={wrapClass}>
+					<div className="neve-control-header">
+						{this.props.control.params.label &&
+						<span
+								className="customize-control-title">{this.props.control.params.label}</span>}
+						<div className="neve-units inline">
+							{this.getButtons()}
+						</div>
+						<ResponsiveControl
+								hideResponsive={this.controlParams.hideResponsiveButtons}
+								onChange={(currentDevice) => {
+									this.setState( { currentDevice } );
+									this.setState( { linked: this.shouldValuesBeLinked() } );
 								}}
 						/>
-						<div className="neve-units">
-							<ButtonGroup className="units">
-								{this.getButtons()}
-							</ButtonGroup>
-						</div>
-					</ResponsiveControl>
-				</Fragment>
+					</div>
+					<SizingControl
+							min={this.controlParams.min}
+							max={this.controlParams.max}
+							step={this.state.value[this.state.currentDevice + '-unit'] ===
+							'em' ? 0.1 : 1}
+							options={options}
+							defaults={this.defaultValue[this.state.currentDevice]}
+							linked={this.state.linked}
+							onLinked={() => this.setState( { linked: !this.state.linked } )}
+							onChange={(optionType, numericValue) => {
+								this.updateValues( optionType, numericValue );
+							}}
+							onReset={() => {
+								this.setState( { value: this.defaultValue } );
+								this.props.control.setting.set( this.defaultValue );
+							}}
+					/>
+				</div>
 		);
 	}
 
 	getButtons() {
-		let types = ['px', 'em', '%'],
-				buttons = [],
-				self = this;
-		types.map( function(type) {
-			buttons.push(
-					<Button
-							isDefault
-							className={self.state.value[self.state.currentDevice +
-							'-unit'] === type ? 'is-active' : ''}
-							onClick={() => {
-								let value = { ...self.state.value };
-								value[self.state.currentDevice + '-unit'] = type;
-								if ( type !== 'em' ) {
-									value[self.state.currentDevice] = mapValues(
-											value[self.state.currentDevice],
-											(value) => value ? parseInt( value ) : value );
-								}
-								self.setState( { value } );
-								self.props.control.setting.set( value );
-							}}
-					>
-						{type}
-					</Button> );
+		let svg = {
+			px: SVG.px,
+			em: SVG.em,
+			'%': SVG.percent
+		}
+		let self = this,
+				units = this.controlParams.units;
+		if ( units.length === 1 ) {
+			return <ToolbarButton className="is-active is-single" isActive isDisabled
+					icon={svg[units[0]]}/>;
+		}
+		let controls = units.map( (unit) => {
+			return {
+				title: unit,
+				icon: svg[unit],
+				isActive: self.state.value[self.state.currentDevice + '-unit'] === unit,
+				onClick: () => {
+					let value = { ...self.state.value };
+					value[self.state.currentDevice + '-unit'] = unit;
+					if ( unit !== 'em' ) {
+						value[self.state.currentDevice] = mapValues(
+								value[self.state.currentDevice],
+								(value) => value ? parseInt( value ) : value );
+					}
+					self.setState( { value } );
+					self.props.control.setting.set( value );
+				}
+			};
 		} );
-
-		return buttons;
+		return <Toolbar controls={controls} className="units"/>;
 	}
 
 	updateValues(optionType, numericValue) {

@@ -333,7 +333,7 @@ class Manager {
 
 		if ( isset( $arguments['live_refresh_selector'] ) ) {
 			add_filter(
-				'neve_hfg_preview_localization_filter',
+				'neve_customize_preview_localization',
 				function ( $array ) use ( $arguments ) {
 					if ( ! isset( $array[ $arguments['type'] ] ) ) {
 						$array[ $arguments['type'] ] = [];

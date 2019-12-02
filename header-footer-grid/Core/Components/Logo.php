@@ -23,6 +23,8 @@ class Logo extends Abstract_Component {
 
 
 	const COMPONENT_ID = 'logo';
+	const CUSTOM_LOGO  = 'custom_logo';
+	const DISPLAY      = 'display';
 	const MAX_WIDTH    = 'max_width';
 	const SHOW_TITLE   = 'show_title';
 	const SHOW_TAGLINE = 'show_tagline';
@@ -64,9 +66,13 @@ class Logo extends Abstract_Component {
 	 */
 	public function init() {
 		$this->set_property( 'label', __( 'Logo & Site Identity', 'neve' ) );
+		$this->set_property( 'description', __( 'Display your company logo here or simply use words to describe your business.', 'neve' ) );
 		$this->set_property( 'id', $this->get_class_const( 'COMPONENT_ID' ) );
+		$this->set_property( 'component_slug', 'hfg-logo' );
 		$this->set_property( 'width', 3 );
+		$this->set_property( 'icon', 'admin-appearance' );
 		$this->set_property( 'section', 'title_tagline' );
+		$this->set_property( 'preview_image', esc_url( get_template_directory_uri() . '/header-footer-grid/assets/images/customizer/component-site-logo.jpg' ) );
 	}
 
 	/**
@@ -76,18 +82,37 @@ class Logo extends Abstract_Component {
 	 * @access  public
 	 */
 	public function add_settings() {
+		if ( $this->get_class_const( 'COMPONENT_ID' ) === 'logo' ) {
+			SettingsManager::get_instance()->add_controls_to_tabs(
+				$this->get_class_const( 'COMPONENT_ID' ),
+				array(
+					SettingsManager::TAB_GENERAL => array(
+						self::CUSTOM_LOGO => array(),
+						'blogname'        => array(),
+						'blogdescription' => array(),
+						'site_icon'       => array(),
+					),
+				)
+			);
+		}
 
-		SettingsManager::get_instance()->add_controls_to_tabs(
-			$this->get_class_const( 'COMPONENT_ID' ),
-			array(
-				SettingsManager::TAB_GENERAL => array(
-					'custom_logo'     => array(),
-					'blogname'        => array(),
-					'blogdescription' => array(),
-					'blogdescription' => array(),
-					'site_icon'       => array(),
-				),
-			)
+		SettingsManager::get_instance()->add(
+			[
+				'id'                => self::DISPLAY,
+				'group'             => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'               => SettingsManager::TAB_GENERAL,
+				'transport'         => 'post' . $this->get_builder_id(),
+				'sanitize_callback' => 'wp_filter_nohtml_kses',
+				'default'           => 'default',
+				'label'             => __( 'Display', 'neve' ),
+				'type'              => '\Neve\Customizer\Controls\React\Radio_Buttons',
+				'options'           => [
+					'priority'      => 11,
+					'is_for'        => 'logo',
+					'large_buttons' => true,
+				],
+				'section'           => $this->section,
+			]
 		);
 
 		SettingsManager::get_instance()->add(
@@ -99,7 +124,7 @@ class Logo extends Abstract_Component {
 				'sanitize_callback' => 'absint',
 				'default'           => 1,
 				'label'             => __( 'Show Site Tagline', 'neve' ),
-				'type'              => '\Neve\Customizer\Controls\Checkbox',
+				'type'              => 'neve_toggle_control',
 				'options'           => [
 					'type' => 'checkbox-toggle',
 				],
@@ -116,7 +141,7 @@ class Logo extends Abstract_Component {
 				'sanitize_callback' => 'absint',
 				'default'           => 1,
 				'label'             => __( 'Show Site Title', 'neve' ),
-				'type'              => '\Neve\Customizer\Controls\Checkbox',
+				'type'              => 'neve_toggle_control',
 				'options'           => [
 					'type' => 'checkbox-toggle',
 				],
@@ -135,6 +160,7 @@ class Logo extends Abstract_Component {
 				'label'             => __( 'Logo max width (px)', 'neve' ),
 				'type'              => '\Neve\Customizer\Controls\Range',
 				'options'           => [
+					'priority'                 => 12,
 					'type'                     => 'range-value',
 					'hide_responsive_switches' => true,
 					'media_query'              => true,
@@ -180,8 +206,8 @@ class Logo extends Abstract_Component {
 	 * @access  public
 	 */
 	public function add_style( array $css_array = array() ) {
-		$logo_max_width = json_decode( get_theme_mod( $this->id . '_max_width', '{ "mobile": "120", "tablet": "120", "desktop": "120" }' ), true );
-		$selector       = '.site-logo img';
+		$logo_max_width = json_decode( SettingsManager::get_instance()->get( $this->get_id() . '_' . self::MAX_WIDTH, '{ "mobile": "120", "tablet": "120", "desktop": "120" }' ), true );
+		$selector       = '.builder-item--' . $this->get_id() . ' .site-logo img';
 		if ( isset( $logo_max_width['mobile'] ) ) {
 			$logo_max_width['mobile']                             = ( $logo_max_width['mobile'] > 0 ) ? $logo_max_width['mobile'] . 'px' : 'auto';
 			$css_array[' @media (max-width: 576px)'][ $selector ] = array(
@@ -203,6 +229,4 @@ class Logo extends Abstract_Component {
 
 		return parent::add_style( $css_array );
 	}
-
-
 }

@@ -15,44 +15,43 @@ namespace Neve\Views\Inline;
  */
 class Buttons extends Base_Inline {
 	/**
+	 * Primary button setup.
+	 *
+	 * @var array
+	 */
+	private $primary_setup;
+
+	/**
+	 * Secondary button setup.
+	 *
+	 * @var array
+	 */
+	private $secondary_button;
+
+	/**
 	 * Do all actions necessary.
 	 *
 	 * @return void
 	 */
 	public function init() {
-		add_action( 'init', array( $this, 'migrate_colors' ) );
-		$this->add_button_colors();
-		$this->add_secondary_button_colors();
-		$this->add_border_radius();
+		$this->primary_setup    = get_theme_mod( 'neve_button_appearance', neve_get_button_appearance_default() );
+		$this->secondary_button = get_theme_mod( 'neve_secondary_button_appearance', neve_get_button_appearance_default( 'secondary_button' ) );
+
+		$this->add_primary_button_style();
+		$this->add_secondary_button_style();
 		$this->add_paddings();
 	}
 
-	/**
-	 * Migrate old settings.
-	 */
-	public function migrate_colors() {
-		if ( get_theme_mod( 'migrated_button_color', 'no' ) === 'yes' ) {
-			return;
-		}
-		set_theme_mod( 'migrated_button_color', 'yes' );
-		$old_color = get_theme_mod( 'neve_button_color' );
-		if ( empty( $old_color ) ) {
-			return;
-		}
-		set_theme_mod( 'neve_button_hover_color', $old_color );
-	}
 
 	/**
 	 * Add buttons color.
 	 */
-	private function add_button_colors() {
-		$color = get_theme_mod( 'neve_button_color' );
-		if ( ! empty( $color ) ) {
+	private function add_primary_button_style() {
+		if ( array_key_exists( 'background', $this->primary_setup ) ) {
 			$color_setup = array(
 				'color'        => array(
 					'css_prop'  => 'color',
-					'selectors' => '
-				.nv-tags-list a',
+					'selectors' => '.nv-tags-list a',
 				),
 				'border-color' => array(
 					'css_prop'  => 'border-color',
@@ -69,11 +68,10 @@ class Buttons extends Base_Inline {
 				.menu li.button.button-primary > a',
 				),
 			);
-			$this->add_color( apply_filters( 'neve_button_color_filter', $color_setup ), sanitize_hex_color( $color ) );
+			$this->add_color( apply_filters( 'neve_button_color_filter', $color_setup ), $this->primary_setup['background'] ? sanitize_hex_color( $this->primary_setup['background'] ) : 'transparent' );
 		}
 
-		$text_color = get_theme_mod( 'neve_button_text_color' );
-		if ( ! empty( $text_color ) ) {
+		if ( ! empty( $this->primary_setup['text'] ) ) {
 			$color_setup = array(
 				'color' => array(
 					'css_prop'  => 'color',
@@ -86,11 +84,10 @@ class Buttons extends Base_Inline {
 				.menu li.button.button-primary > a',
 				),
 			);
-			$this->add_color( apply_filters( 'neve_button_text_color_filter', $color_setup ), sanitize_hex_color( $text_color ) );
+			$this->add_color( apply_filters( 'neve_button_text_color_filter', $color_setup ), sanitize_hex_color( $this->primary_setup['text'] ) );
 		}
 
-		$hover_color = get_theme_mod( 'neve_button_hover_color' );
-		if ( ! empty( $hover_color ) ) {
+		if ( array_key_exists( 'backgroundHover', $this->primary_setup ) ) {
 			$color_setup = array(
 				'border-color' => array(
 					'css_prop'  => 'border-color',
@@ -105,11 +102,10 @@ class Buttons extends Base_Inline {
 				.menu li.button.button-primary > a:hover',
 				),
 			);
-			$this->add_color( apply_filters( 'neve_button_hover_color_filter', $color_setup ), sanitize_hex_color( $hover_color ) );
+			$this->add_color( apply_filters( 'neve_button_hover_color_filter', $color_setup ), ! empty( $this->primary_setup['backgroundHover'] ) ? sanitize_hex_color( $this->primary_setup['backgroundHover'] ) : 'transparent' );
 		}
 
-		$hover_text_color = get_theme_mod( 'neve_button_hover_text_color' );
-		if ( ! empty( $hover_text_color ) ) {
+		if ( ! empty( $this->primary_setup['textHover'] ) ) {
 			$color_setup = array(
 				'color' => array(
 					'css_prop'  => 'color',
@@ -120,57 +116,14 @@ class Buttons extends Base_Inline {
 				.menu li.button.button-primary > a:hover',
 				),
 			);
-			$this->add_color( apply_filters( 'neve_button_hover_text_color_filter', $color_setup ), sanitize_hex_color( $hover_text_color ) );
-		}
-	}
-
-	/**
-	 * Add secondary buttons color.
-	 */
-	private function add_secondary_button_colors() {
-		$color = get_theme_mod( 'neve_secondary_button_color' );
-		if ( ! empty( $color ) ) {
-			$color_setup = array(
-				'color'        => array(
-					'css_prop'  => 'color',
-					'selectors' => '
-				.button.button-secondary, #comments input[type="submit"]',
-				),
-				'border-color' => array(
-					'css_prop'  => 'border-color',
-					'selectors' => '.button.button-secondary, #comments input[type="submit"]',
-				),
-			);
-			$this->add_color( apply_filters( 'neve_secondary_button_color_filter', $color_setup ), sanitize_hex_color( $color ) );
+			$this->add_color( apply_filters( 'neve_button_hover_text_color_filter', $color_setup ), sanitize_hex_color( $this->primary_setup['textHover'] ) );
 		}
 
-		$hover_color = get_theme_mod( 'neve_secondary_button_hover_color' );
-		if ( ! empty( $hover_color ) ) {
-			$color_setup = array(
-				'color'        => array(
-					'css_prop'  => 'color',
-					'selectors' => '
-				.button.button-secondary:hover,  #comments input[type="submit"]:hover',
-				),
-				'border-color' => array(
-					'css_prop'  => 'border-color',
-					'selectors' => '.button.button-secondary:hover,  #comments input[type="submit"]:hover',
-				),
-			);
-			$this->add_color( apply_filters( 'neve_secondary_button_hover_color_filter', $color_setup ), sanitize_hex_color( $hover_color ) );
-		}
-	}
-
-	/**
-	 * Add buttons border radius.
-	 */
-	private function add_border_radius() {
-		$primary_border_radius = get_theme_mod( 'neve_button_border_radius' );
-		if ( $primary_border_radius !== false ) {
+		if ( ! empty( $this->primary_setup['borderRadius'] ) || $this->primary_setup['borderRadius'] === 0 ) {
 			$setup = array(
 				array(
 					'css_prop' => 'border-radius',
-					'value'    => absint( $primary_border_radius ),
+					'value'    => absint( $this->primary_setup['borderRadius'] ),
 					'suffix'   => 'px',
 				),
 			);
@@ -188,15 +141,133 @@ class Buttons extends Base_Inline {
 			);
 		}
 
-		$secondary_border_radius = get_theme_mod( 'neve_secondary_button_border_radius' );
-		if ( $secondary_border_radius !== false ) {
+		if ( $this->primary_setup['type'] === 'outline' ) {
+			$setup = [
+				[
+					'css_prop' => 'border',
+					'value'    => '1px solid',
+				],
+			];
+
+			if ( ! empty( $this->primary_setup['borderWidth'] ) ) {
+				$setup[] = [
+					'css_prop' => 'border-width',
+					'value'    => $this->primary_setup['borderWidth'],
+					'suffix'   => 'px',
+				];
+			}
+			$this->add_style(
+				$setup,
+				apply_filters(
+					'neve_button_border_radius_selectors_filter',
+					'.button.button-primary, 
+				button, input[type=button], 
+				.btn, input[type="submit"]:not(.search-submit), 
+				/* Buttons in navigation */
+				ul[id^="nv-primary-navigation"] li.button.button-primary > a, 
+				.menu li.button.button-primary > a'
+				)
+			);
+		}
+	}
+
+	/**
+	 * Add secondary buttons color.
+	 */
+	private function add_secondary_button_style() {
+		if ( ! empty( $this->secondary_button['background'] ) ) {
+			$color_setup = array(
+				'background-color' => array(
+					'css_prop'  => 'background-color',
+					'selectors' => '.button.button-secondary, #comments input[type="submit"]',
+				),
+			);
+			$this->add_color( apply_filters( 'neve_secondary_button_color_filter', $color_setup ), sanitize_hex_color( $this->secondary_button['background'] ) );
+		}
+
+		if ( ! empty( $this->secondary_button['backgroundHover'] ) ) {
+			$color_setup = array(
+				'color' => array(
+					'css_prop'  => 'background-color',
+					'selectors' => '.button.button-secondary:hover, #comments input[type="submit"]:hover',
+				),
+			);
+			$this->add_color( apply_filters( 'neve_secondary_button_hover_color_filter', $color_setup ), sanitize_hex_color( $this->secondary_button['backgroundHover'] ) );
+		}
+
+		if ( ! empty( $this->secondary_button['text'] ) ) {
+			$color_setup = array(
+				'color'        => array(
+					'css_prop'  => 'color',
+					'selectors' => '
+				.button.button-secondary, #comments input[type="submit"]',
+				),
+				'border-color' => array(
+					'css_prop'  => 'border-color',
+					'selectors' => '.button.button-secondary, #comments input[type="submit"]',
+				),
+			);
+			$this->add_color( apply_filters( 'neve_secondary_button_color_filter', $color_setup ), sanitize_hex_color( $this->secondary_button['text'] ) );
+		}
+
+		if ( ! empty( $this->secondary_button['textHover'] ) ) {
+			$color_setup = array(
+				'color'        => array(
+					'css_prop'  => 'color',
+					'selectors' => '
+				.button.button-secondary:hover,  #comments input[type="submit"]:hover',
+				),
+				'border-color' => array(
+					'css_prop'  => 'border-color',
+					'selectors' => '.button.button-secondary:hover,  #comments input[type="submit"]:hover',
+				),
+			);
+			$this->add_color( apply_filters( 'neve_secondary_button_hover_color_filter', $color_setup ), sanitize_hex_color( $this->secondary_button['textHover'] ) );
+		}
+
+		if ( ! empty( $this->secondary_button['borderRadius'] ) || $this->secondary_button['borderRadius'] === 0 ) {
 			$setup = array(
 				array(
 					'css_prop' => 'border-radius',
-					'value'    => absint( $secondary_border_radius ),
+					'value'    => absint( $this->secondary_button['borderRadius'] ),
 					'suffix'   => 'px',
 				),
 			);
+			$this->add_style(
+				$setup,
+				apply_filters(
+					'neve_secondary_button_border_radius_selectors_filter',
+					'.button.button-secondary, #comments input[type="submit"]'
+				)
+			);
+		}
+
+		if ( $this->secondary_button['type'] === 'fill' ) {
+			$this->add_style(
+				[
+					[
+						'css_prop' => 'border',
+						'value'    => 'none',
+					],
+				],
+				apply_filters( 'neve_secondary_button_border_radius_selector_filter', '.button.button-secondary, #comments input[type="submit"]' )
+			);
+		}
+		if ( $this->secondary_button['type'] === 'outline' ) {
+			$setup = [
+				[
+					'css_prop' => 'border',
+					'value'    => '1px solid',
+				],
+			];
+
+			if ( ! empty( $this->secondary_button['borderWidth'] ) ) {
+				$setup[] = [
+					'css_prop' => 'border-width',
+					'value'    => $this->secondary_button['borderWidth'],
+					'suffix'   => 'px',
+				];
+			}
 			$this->add_style(
 				$setup,
 				apply_filters(

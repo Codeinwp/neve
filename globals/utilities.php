@@ -42,9 +42,11 @@ function neve_hooks() {
 		),
 		'page'       => array(
 			'neve_before_page_header',
+			'neve_before_page_comments',
+		),
+		'single'     => array(
 			'neve_before_content',
 			'neve_after_content',
-			'neve_before_page_comments',
 		),
 		'sidebar'    => array(
 			'neve_before_sidebar_content',
@@ -84,7 +86,7 @@ function neve_cart_icon( $echo = false ) {
 /**
  * Search Icon
  *
- * @param bool $echo should be echoed.
+ * @param bool $echo      should be echoed.
  * @param bool $amp_ready Should we add the AMP binding.
  *
  * @return string
@@ -1157,6 +1159,25 @@ function neve_get_google_fonts() {
 			'Zhi Mang Xing',
 			'Zilla Slab',
 			'Zilla Slab Highlight',
+		)
+	);
+}
+
+/**
+ * Get the heading selectors array.
+ *
+ * @return array
+ */
+function neve_get_headings_selectors() {
+	return apply_filters(
+		'neve_headings_typeface_selectors',
+		array(
+			'h1' => 'h1:not(.site-title), .single h1.entry-title',
+			'h2' => 'h2',
+			'h3' => 'h3',
+			'h4' => 'h4',
+			'h5' => 'h5',
+			'h6' => 'h6',
 		)
 	);
 }

@@ -35,16 +35,44 @@ class Header extends Abstract_Builder {
 		$this->set_property( 'title', __( 'Header', 'neve' ) );
 		$this->set_property(
 			'description',
-			sprintf(
-				/* translators: %s link to documentation */
-				esc_html__( 'Design your %1$s by dragging, dropping and resizing all the elements in real-time. %2$s.', 'neve' ),
-				/* translators: %s builder type */
-				$this->get_property( 'title' ),
-				/* translators: %s link text */
+			apply_filters(
+				'hfg_header_panel_description',
 				sprintf(
-					'<br/><a target="_blank" href="https://docs.themeisle.com/article/946-neve-doc#header">%s</a>',
-					esc_html__( 'Read full documentation', 'neve' )
+					/* translators: %s link to documentation */
+					esc_html__( 'Design your %1$s by dragging, dropping and resizing all the elements in real-time. %2$s.', 'neve' ),
+					/* translators: %s builder type */
+					$this->get_property( 'title' ),
+					/* translators: %s link text */
+					sprintf(
+						'<br/><a target="_blank" href="https://docs.themeisle.com/article/946-neve-doc#header">%s</a>',
+						esc_html__( 'Read full documentation', 'neve' )
+					)
 				)
+			)
+		);
+		$this->set_property(
+			'instructions_array',
+			array(
+				'description' => sprintf(
+					/* translators: %s builder type */
+					esc_html__( 'Welcome to the %1$s builder! Click the “+” button to add a new component or follow the Quick Links.', 'neve' ),
+					$this->get_property( 'title' )
+				),
+				'image'       => esc_url( get_template_directory_uri() . '/header-footer-grid/assets/images/customizer/hfg.mp4' ),
+				'quickLinks'  => array(
+					'custom_logo'                       => array(
+						'label' => esc_html__( 'Change Logo', 'neve' ),
+						'icon'  => 'dashicons-editor-customchar',
+					),
+					'hfg_header_layout_main_background' => array(
+						'label' => esc_html__( 'Change Header Color', 'neve' ),
+						'icon'  => 'dashicons-admin-appearance',
+					),
+					'primary-menu_shortcut'             => array(
+						'label' => esc_html__( 'Change Menu', 'neve' ),
+						'icon'  => 'dashicons-menu',
+					),
+				),
 			)
 		);
 	}
@@ -97,8 +125,6 @@ class Header extends Abstract_Builder {
 	 * @access  protected
 	 */
 	protected function get_rows() {
-
-
 		return [
 			'top'     => array(
 				'title'       => esc_html__( 'Header Top', 'neve' ),
@@ -113,7 +139,7 @@ class Header extends Abstract_Builder {
 				'description' => $this->get_property( 'description' ),
 			),
 			'sidebar' => array(
-				'title'       => esc_html__( 'Header Sidebar', 'neve' ),
+				'title'       => esc_html__( 'Mobile menu content', 'neve' ),
 				'description' => $this->get_property( 'description' ),
 			),
 		];

@@ -7,3 +7,5 @@ vendor
 **/*.js.map
 **/*.css.map
 **/.DS_Store
+cypress/videos/*
+header-footer-grid/assets/css/style*

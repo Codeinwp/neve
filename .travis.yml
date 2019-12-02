@@ -10,7 +10,32 @@ jobs:
   include:
     - stage: teste2e
       php: 7.0
-      name: E2E tests
+      name: E2E tests - customizer/hfg
+      env: BUILD_SPEC=cypress/integration/customizer/hfg/*
+      script:
+        - ./bin/run-e2e.sh
+    - stage: teste2e
+      php: 7.0
+      name: E2E tests - customizer/layout
+      env: BUILD_SPEC=cypress/integration/customizer/layout/*
+      script:
+        - ./bin/run-e2e.sh
+    - stage: teste2e
+      php: 7.0
+      name: E2E tests - customizer/typography
+      env: BUILD_SPEC=cypress/integration/customizer/typography/*
+      script:
+        - ./bin/run-e2e.sh
+    - stage: teste2e
+      php: 7.0
+      name: E2E tests - editor
+      env: BUILD_SPEC=cypress/integration/editor/*
+      script:
+        - ./bin/run-e2e.sh
+    - stage: teste2e
+      php: 7.0
+      name: E2E tests - plugin compatibility
+      env: BUILD_SPEC=cypress/integration/plugins-compatibility/*
       script:
         - ./bin/run-e2e.sh
     - stage: test
@@ -69,7 +94,12 @@ jobs:
       name: "QA"
       php: 7.0
       script:
-        - ./bin/sync-qa.sh
+        - ./bin/sync.sh qa
+    - stage: import
+      name: "Import sync"
+      php: 7.0
+      script:
+        - ./bin/sync.sh import
     - stage: deploy
       name: "Deployment"
       php: 7.0
@@ -111,10 +141,12 @@ jobs:
             all_branches: true
 stages:
   - name: deploy
-    if: branch = env(MASTER_BRANCH) and type != "pull_request" and repo = env(UPSTREAM_REPO)
+    if: branch = env(MASTER_BRANCH) and type = "push" and repo = env(UPSTREAM_REPO)
   - name: test
     if: type = "pull_request"
+  - name: import
+    if: ( type = "cron" or type = "api" ) and branch="master"
   - name: qa
     if: type = "pull_request" and head_branch="development" and repo = env(UPSTREAM_REPO)
   - name: teste2e
-    if: type = "pull_request" and repo = "Codeinwp/neve"
+    if: type = "pull_request" and head_repo = env(UPSTREAM_REPO)

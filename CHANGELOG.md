@@ -1,4 +1,79 @@
 
+ ### v2.5.2 - 2019-11-19 
+ **Changes:** 
+ * [Feat] Improved mobile header/footer builder UX
+* [Feat] New styling controls for the Menu Icon component
+* [Feat] New Filled and Outline style options for buttons
+* [Fix] Uploading background images in the header/footer builder
+* [Fix] Content alignment when Gutenberg is activated
+* [Fix] Multiple embeds not visible on the single post page
+* [Fix] Better alignment for small icon components of the header/footer builder
+* [Fix] Excerpts now inherit text color
+* [Fix] Single product titles now inherit H1 typography options
+* [Fix] Typography units changes did not trigger control refresh
+* [Fix] Enlarged the narrow content in the editor
+* [Fix] Removed hover effect on table rows overriding block colors
+* [Fix] Overriding header/footer builder templates using child themes
+ 
+ ### v2.5.1 - 2019-11-04 
+ **Changes:** 
+ * [Fix] Correct migration of body font size to new version
+ 
+ ### v2.5.0 - 2019-11-04 
+ **Changes:** 
+ * [Feat] Improve header/footer builder UX
+* [Feat] Increased header/footer builder row height to 700px
+* [Feat] Improve typography controls, adds Text Transform, Font Weight, Letter Spacing controls for headings.
+* [Feat] Shadow option for the blog thumbnails
+* [Fix] Removed extra padding-top on embeds
+* [Fix] Embeds not visible on the blog page
+* [Fix] Small compatibility issues with WP 5.3
+* [Fix] Cover block text color not updating
+* [Fix] Reply comments mechanism when Yoast is installed
+* [Fix] Scroll on mobile and tablet and wireframe view in the Divi editor
+* [Fix] Content width on full-width container
+* [Fix] Headings blocks errors with Gutenberg 6.8.0
+* New Beaver Builder Starter Sites
+* New Brizy Starter Sites
+ 
+ ### v2.4.3 - 2019-10-10 
+ **Changes:** 
+ * [Feat] Compatibility with the Header Footer for Beaver Builder plugin
+* [Feat] Integrate Cypress E2E testing
+* [Fix] Header button component padding affected by general buttons options
+* [Fix] Set newly created pages to Full width
+* [Fix] Embeds in the Classic Editor
+* [Fix] Compatibility with the Smush Lazy Loading
+ 
+ ### v2.4.2 - 2019-09-23 
+ **Changes:** 
+ * [Fix] Alignment options for the Secondary and Footer menus
+* [Fix] Style ul/li on WooCommerce single product short descriptions
+* [Fix] Add support for responsive embeds
+* New Beaver Builder Starter Sites: Freelancer & Life Coach
+ 
+ ### v2.4.1 - 2019-09-13 
+ **Changes:** 
+ * [Feat] New background image options for the header and the footer
+* [Feat] Allow custom shortcodes in the HTML components of the header
+* [Fix] Improve the cart menu icon, remove empty products message on the dropdown menu
+* [Fix] Issue with duplicating thumbnails when using SG Optimizer Lazy Load option
+* [Fix] On-print behavior, causing duplicating of the header elements
+* [Fix] Page scroll while menu sidebar is open
+* [Fix] Search icon alignment options
+* [Fix] Issue with hiding the thumbnail on single post pages
+* [Fix] Improve header customization UX
+* [Fix] Validation errors in AMP
+* New Starter Sites
+* Tattoo - https://themeisle.com/demo/?theme=Tattoo
+* Life Coach - https://themeisle.com/demo/?theme=Life%20Coach
+* Creative Portfolio - https://themeisle.com/demo/?theme=Creative%20Portfolio
+* Redesigned Starter Sites
+* Energy Panels - https://themeisle.com/demo/?theme=Energy%20Panels
+* Lawyers - https://themeisle.com/demo/?theme=Lawyers
+* Freelancer - https://themeisle.com/demo/?theme=Freelancer
+* New Beaver Builder Starter Sites
+ 
  ### v2.4.0 - 2019-08-14 
  **Changes:** 
  * Fix issue with standard fonts not loading

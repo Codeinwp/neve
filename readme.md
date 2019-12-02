@@ -2,7 +2,7 @@
 **Contributors:** [themeisle](https://profiles.wordpress.org/themeisle)  
 **Tags:** blog, custom-logo, e-commerce, rtl-language-support, post-formats, grid-layout, one-column, two-columns, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, accessibility-ready, wide-blocks, block-styles, footer-widgets, portfolio, left-sidebar, right-sidebar  
 **Requires at least:** 4.0  
-**Tested up to:** 5.2.2  
+**Tested up to:** 5.3  
 **Stable tag:** 1.0.23  
 **Requires PHP:** 5.4.0  
 **License:** GPLv2 or later  
@@ -18,6 +18,85 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
+### 2.5.2 - 2019-11-19  ###
+
+* [Feat] Improved mobile header/footer builder UX
+* [Feat] New styling controls for the Menu Icon component
+* [Feat] New Filled and Outline style options for buttons
+* [Fix] Uploading background images in the header/footer builder
+* [Fix] Content alignment when Gutenberg is activated
+* [Fix] Multiple embeds not visible on the single post page
+* [Fix] Better alignment for small icon components of the header/footer builder
+* [Fix] Excerpts now inherit text color
+* [Fix] Single product titles now inherit H1 typography options
+* [Fix] Typography units changes did not trigger control refresh
+* [Fix] Enlarged the narrow content in the editor
+* [Fix] Removed hover effect on table rows overriding block colors
+* [Fix] Overriding header/footer builder templates using child themes
+
+
+### 2.5.1 - 2019-11-04  ###
+
+* [Fix] Correct migration of body font size to new version
+
+
+### 2.5.0 - 2019-11-04  ###
+
+* [Feat] Improve header/footer builder UX
+* [Feat] Increased header/footer builder row height to 700px
+* [Feat] Improve typography controls, adds Text Transform, Font Weight, Letter Spacing controls for headings.
+* [Feat] Shadow option for the blog thumbnails
+* [Fix] Removed extra padding-top on embeds
+* [Fix] Embeds not visible on the blog page
+* [Fix] Small compatibility issues with WP 5.3
+* [Fix] Cover block text color not updating
+* [Fix] Reply comments mechanism when Yoast is installed
+* [Fix] Scroll on mobile and tablet and wireframe view in the Divi editor
+* [Fix] Content width on full-width container
+* [Fix] Headings blocks errors with Gutenberg 6.8.0
+* New Beaver Builder Starter Sites
+* New Brizy Starter Sites
+
+
+
+### 2.4.3 - 2019-10-10  ###
+
+* [Feat] Compatibility with the Header Footer for Beaver Builder plugin
+* [Feat] Integrate Cypress E2E testing
+* [Fix] Header button component padding affected by general buttons options
+* [Fix] Set newly created pages to Full width
+* [Fix] Embeds in the Classic Editor
+* [Fix] Compatibility with the Smush Lazy Loading
+
+* [Fix] Alignment options for the Secondary and Footer menus
+* [Fix] Style ul/li on WooCommerce single product short descriptions
+* [Fix] Add support for responsive embeds
+* New Beaver Builder Starter Sites: Freelancer & Life Coach
+
+
+### 2.4.1 - 2019-09-13  ###
+
+* [Feat] New background image options for the header and the footer
+* [Feat] Allow custom shortcodes in the HTML components of the header
+* [Fix] Improve the cart menu icon, remove empty products message on the dropdown menu
+* [Fix] Issue with duplicating thumbnails when using SG Optimizer Lazy Load option
+* [Fix] On-print behavior, causing duplicating of the header elements
+* [Fix] Page scroll while menu sidebar is open
+* [Fix] Search icon alignment options
+* [Fix] Issue with hiding the thumbnail on single post pages
+* [Fix] Improve header customization UX
+* [Fix] Validation errors in AMP
+* New Starter Sites
+* Tattoo - https://themeisle.com/demo/?theme=Tattoo
+* Life Coach - https://themeisle.com/demo/?theme=Life%20Coach
+* Creative Portfolio - https://themeisle.com/demo/?theme=Creative%20Portfolio
+* Redesigned Starter Sites
+* Energy Panels - https://themeisle.com/demo/?theme=Energy%20Panels
+* Lawyers - https://themeisle.com/demo/?theme=Lawyers
+* Freelancer - https://themeisle.com/demo/?theme=Freelancer
+* New Beaver Builder Starter Sites
+
+
 ### 2.4.0 - 2019-08-14  ###
 
 * Fix issue with standard fonts not loading
@@ -34,7 +113,7 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 * Speed updates for the Starter Sites Library
 
- 
+
 ### 2.3.21 - 2019-07-30  ###
 
 * [Feat] Color options for each header and footer rows
@@ -215,7 +294,7 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 * WPML compatibility
 * Update Contact us with the correct link
 
- 
+
 ### 2.1.0 - 2019-03-07  ###
 
 * Two newly added Elementor Starter Sites
@@ -436,15 +515,15 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 * Release Date - 2018-09-24*
 * Add proper Elementor Header and Footer support
 * Fixed warning caused by forgotten "var_dump" in page / post metabox handler
- 
+
 ### v1.0.2 ###
 * Release Date - 2018-09-07*
 * Demo data for Neve 2018 template
- 
+
 ### 1.0.1 ###
 * Release Date - 2018-09-07*
 * Updated description and screenshot
- 
+
 ### 1.0.0 ###
 * Release Date - 2018-09-06*
 * Lowercase file names.
@@ -645,6 +724,116 @@ Starter Sites screenshots resources:
 * https://stocksnap.io/photo/NY963ZH6T2
 * https://stocksnap.io/photo/PBHFF6RJPH
 
+- Florist
+* https://stocksnap.io/photo/01SN8V4M9O
+* http://mystock.themeisle.com/photo/wedding-bouquet/
+* http://mystock.themeisle.com/photo/wedding-flower-decorations/
 
+- Cake Shop
+* https://stocksnap.io/photo/F6DNP46F78
+* https://stocksnap.io/photo/7G24TFZEKU
+
+- Transport
+* http://mystock.themeisle.com/photo/docks/
+* http://mystock.themeisle.com/photo/industrial-boat/
+
+- eBook
+* http://mystock.themeisle.com/photo/the-statue-of-liberty-at-sunset/
+* http://mystock.themeisle.com/photo/brasov-old-city/
+* http://mystock.themeisle.com/photo/mysterious-man-2/
+
+- Speed
+* http://mystock.themeisle.com/photo/couch-with-two-green-pillows/
+* http://mystock.themeisle.com/photo/mannequin/
+* http://mystock.themeisle.com/photo/grooms-suite/
+* http://mystock.themeisle.com/photo/luggage-tag-label-on-suitcase-or-bag-with-the-sea-behind-it/
+
+- Food Magazine
+* https://mystock.themeisle.com/photo/caesar-salad/
+* https://mystock.themeisle.com/photo/indian-restaurant-dishes/
+* https://mystock.themeisle.com/photo/mac-and-cheese-pizza/
+* https://mystock.themeisle.com/photo/delicious-morning-breakfast-served-on-a-tray/
+
+- Web Design
+* https://mystock.themeisle.com/photo/programming-laptop/
+* https://mystock.themeisle.com/photo/ipad/
+
+- Yoga Studio
+* https://stocksnap.io/photo/OYD9ZOOCCQ
+* https://stocksnap.io/photo/TL7LKEE0HR
+* https://stocksnap.io/photo/W23EUNXBCG
+* https://stocksnap.io/photo/MM6OVJGYRU
+* https://mystock.themeisle.com/photo/floor-pattern/
+
+- Sales Funnel
+* https://mystock.themeisle.com/photo/cityscape-of-new-york-2/
+
+- Church
+* https://mystock.themeisle.com/photo/vatican-streets/
+* https://stocksnap.io/photo/M2XAYFTTEN
+* https://stocksnap.io/photo/MOUVID40QD
+* https://stocksnap.io/photo/AM7OQR2274
+
+- Fashion Magazine
+* https://stocksnap.io/photo/F08ZV0M412
+* https://stocksnap.io/photo/V5A73VEOJO
+* https://stocksnap.io/photo/AOOC3CJARN
+* https://stocksnap.io/photo/HKTKMOVXNO
+
+- Winery
+* https://stocksnap.io/photo/CM4WVU6WO0
+
+- News Magazine
+* https://mystock.themeisle.com/photo/man-sitting-under-a-tree/
+* https://mystock.themeisle.com/photo/smartphone/
+* https://mystock.themeisle.com/photo/protest/
+* https://mystock.themeisle.com/photo/indian-food-bhel-puri-2/
+* https://mystock.themeisle.com/photo/skiers/
+* https://mystock.themeisle.com/photo/new-york-skyscrapers-on-a-cloudy-wheather/
+* https://mystock.themeisle.com/photo/metropolitan-museum/
+
+- Coworking
+* https://mystock.themeisle.com/photo/hotel-lobby/
+* https://mystock.themeisle.com/photo/code-in-wp/
+
+- Fishing
+* https://mystock.themeisle.com/photo/boat-on-a-volcanic-green-lake-surrounded-of-a-forest-2/
+
+- Car Rental
+* https://stocksnap.io/photo/5XRZI55HKV
+* https://stocksnap.io/photo/Q1KQCULDV5
+* https://stocksnap.io/photo/OYLXO1QZ5K
+
+- Ski Resort
+* https://stocksnap.io/photo/Z5WEX57EKA
+* https://mystock.themeisle.com/photo/mountain/
+* https://mystock.themeisle.com/photo/gondola-2/
+* https://stocksnap.io/photo/QT3VEK73I5
+* https://stocksnap.io/photo/JJE5DPU0U9
+* https://stocksnap.io/photo/KRXK7LH6XL
+
+- Digital Product
+* https://mystock.themeisle.com/photo/cityscape-of-new-york-2/
+
+- Moving Company
+* https://stocksnap.io/photo/YF3WGBL0AK
+
+- Translation Services
+* https://mystock.themeisle.com/photo/metropolitan-museum/
+
+- Blogger
+* https://mystock.themeisle.com/photo/passing-girl/
+
+- Coupons
+* https://mystock.themeisle.com/photo/gift-shop-in-punjim/
+* https://mystock.themeisle.com/photo/teddy/
+* https://mystock.themeisle.com/photo/couch-with-two-green-pillows/
+* https://mystock.themeisle.com/photo/luggage-tag-label-on-suitcase-or-bag-with-the-sea-behind-it/
+
+- Escape Room
+* https://mystock.themeisle.com/photo/scary-nymph-group-holding-hands-2/
+* https://mystock.themeisle.com/photo/mannequin/
+* https://mystock.themeisle.com/photo/light-carpet/
+* https://mystock.themeisle.com/photo/mannequin-with-unicorn-mask-standing-in-the-window/
 
 
