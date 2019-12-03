@@ -98,6 +98,11 @@ class Front_End {
 		$sources = [
 			'youtube.com',
 			'youtu.be',
+			'cloudup.com',
+			'dailymotion.com',
+			'collegehumor.com',
+			'ted.com',
+			'vimeo.com',
 		];
 		foreach ( $sources as $source ) {
 			if ( strpos( $url, $source ) !== false ) {
