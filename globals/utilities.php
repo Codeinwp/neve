@@ -209,7 +209,6 @@ function neve_get_standard_fonts() {
 function neve_get_google_fonts() {
 	return apply_filters(
 		'neve_google_fonts_array',
-
 		// Updated on 02/12/19
 		array(
 			'ABeeZee',
