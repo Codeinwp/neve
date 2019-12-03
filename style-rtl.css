@@ -1630,15 +1630,15 @@ article {
   margin-bottom: 0;
 }
 
-.wp-block-embed:not(.is-provider-scribd):not(.is-provider-slideshare) .nv-iframe-embed {
+.nv-iframe-embed {
   position: relative;
-  padding-top: 56.25%;
-  overflow: hidden;
-  max-width: 100%;
-  height: auto;
+  padding-bottom: 56.25%;
+  /* 16:9 */
+  padding-top: 25px;
+  height: 0;
 }
 
-.wp-block-embed:not(.is-provider-scribd):not(.is-provider-slideshare) .nv-iframe-embed > * {
+.nv-iframe-embed iframe {
   position: absolute;
   top: 0;
   right: 0;
@@ -1646,16 +1646,8 @@ article {
   height: 100%;
 }
 
-.wp-block-embed-soundcloud .wp-block-embed:not(.is-provider-scribd):not(.is-provider-slideshare) .nv-iframe-embed {
-  padding-top: 100%;
-}
-
 .wp-block-cover-image .wp-block-cover__inner-container, .wp-block-cover .wp-block-cover__inner-container {
   max-width: calc(100% - 70px);
-}
-
-.wp-embed-responsive .wp-block-embed:not(.is-provider-scribd):not(.is-provider-slideshare) .wp-block-embed__wrapper:before {
-  padding-top: 0 !important;
 }
 
 blockquote {
