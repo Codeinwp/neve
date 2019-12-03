@@ -1286,6 +1286,10 @@ fieldset input[type="text"], fieldset input[type="search"], fieldset input[type=
   margin-top: 0;
 }
 
+.layout-grid .content .excerpt-wrap > *:last-child {
+  margin-bottom: 0;
+}
+
 .nv-non-grid-article .non-grid-content {
   display: flex;
   flex-direction: column;
