@@ -66,6 +66,7 @@ class Front_End {
 		add_theme_support( 'service_worker', true );
 
 		add_filter( 'embed_oembed_html', array( $this, 'wrap_oembeds' ), 10, 3 );
+		add_filter( 'video_embed_html', array( $this, 'wrap_jetpack_oembeds' ), 10, 1 );
 		add_filter( 'themeisle_gutenberg_templates', array( $this, 'add_gutenberg_templates' ) );
 
 		$this->add_amp_support();
@@ -111,6 +112,18 @@ class Front_End {
 		}
 
 		return $markup;
+	}
+
+	/**
+	 * Wrap Jetpack embeds.
+	 * Fixes the compose module aspect ratio issue.
+	 *
+	 * @param string $markup embed markup.
+	 *
+	 * @return string
+	 */
+	public function wrap_jetpack_oembeds( $markup ) {
+		return '<div class="nv-iframe-embed">' . $markup . '</div>';
 	}
 
 	/**
