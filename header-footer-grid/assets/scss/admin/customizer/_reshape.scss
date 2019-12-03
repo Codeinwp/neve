@@ -429,3 +429,9 @@ body.hfg--widgets-open .wp-full-overlay:after {
     }
   }
 }
+
+@for $i from 1 through 30 {
+  .hfg--widgets .grid-stack-item.order-#{$i} {
+    order: #{$i};
+  }
+}

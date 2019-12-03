@@ -232,6 +232,9 @@ class Main {
 	 * @access  public
 	 */
 	public function inline_styles() {
+		if ( is_customize_preview() ) {
+			return;
+		}
 		$css_array = [];
 		/**
 		 * An instance of Abstract_Builder.

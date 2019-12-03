@@ -1373,19 +1373,20 @@ let CustomizeBuilderV1;
 					);
 				}
 			},
-			addItem: function(node) {
+			addItem: function(node, index) {
 				let template = this.getTemplate();
 				let templateId = 'tmpl-hfg--cb-item';
 				if ( $( '#' + templateId ).length === 0 ) {
 					return;
 				}
+				node['elementOrder'] = index;
 				let html = template( node, templateId );
 				return $( html );
 			},
 			addAvailableItems: function() {
 				let that = this;
 				_.each( that.devices, function(deviceName, device) {
-					_.each( that.items, function(node) {
+					_.each( that.items, function(node, index) {
 						let _d = true;
 						if (
 								!_.isUndefined( node.devices ) &&
@@ -1408,11 +1409,10 @@ let CustomizeBuilderV1;
 							}
 						}
 						if ( _d ) {
-							let item = that.addItem( node );
+							index = Object.keys(that.items).indexOf(index);
+							let item = that.addItem( node, index );
 							$( '.hfg--widgets-' + device, that.widgetSidebarContainer ).
-									append( item );
-							$( '#accordion-section-' + node.section ).
-									addClass( 'hfg-section-inactive' );
+									prepend( item );
 						}
 					} );
 				} );
@@ -1724,7 +1724,7 @@ let CustomizeBuilderV1;
 							item.removeAttr( 'style' );
 							$( that.widgetSidebarContainer ).
 									find( '.hfg--widgets-' + device ).
-									append( item );
+									prepend( item );
 							$( '#accordion-section-' + item[0].dataset.section ).
 									addClass( 'hfg-section-inactive' );
 							that.updateAllGrids();

@@ -262,7 +262,7 @@ class Customizer {
 		</script>
 
 		<script type="text/html" id="tmpl-hfg--cb-item">
-			<div class="grid-stack-item item-from-list for-s-{{ data.section }}"
+			<div class="grid-stack-item item-from-list for-s-{{ data.section }} order-{{data.elementOrder}}"
 					title="{{ data.name }}"
 					data-id="{{ data.id }}"
 					data-slug="{{ data.componentSlug }}"

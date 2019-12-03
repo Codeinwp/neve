@@ -1,6 +1,6 @@
 <?php
 /**
- * Typography control. Handles data passing from args to JS.
+ * Font_Family Control. Handles data passing from args to JS.
  *
  * @package Neve\Customizer\Controls\React
  */
@@ -8,24 +8,23 @@
 namespace Neve\Customizer\Controls\React;
 
 /**
- * Class Typography
+ * Class Button_Appearance
  *
  * @package Neve\Customizer\Controls\React
  */
-class Typography extends \WP_Customize_Control {
+class Font_Family extends \WP_Customize_Control {
 	/**
 	 * Control type.
 	 *
 	 * @var string
 	 */
-	public $type = 'neve_typeface_control';
+	public $type = 'neve_font_family_control';
 	/**
 	 * Additional arguments passed to JS.
 	 *
 	 * @var array
 	 */
 	public $input_attrs = [];
-
 	/**
 	 * Send to JS.
 	 */
