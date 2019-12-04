@@ -836,4 +836,17 @@ Starter Sites screenshots resources:
 * https://mystock.themeisle.com/photo/light-carpet/
 * https://mystock.themeisle.com/photo/mannequin-with-unicorn-mask-standing-in-the-window/
 
+- Resume
+* https://mystock.themeisle.com/photo/programming-laptop-2/
+* https://mystock.themeisle.com/photo/thinking-time/
 
+- Wellness Spa
+* https://mystock.themeisle.com/photo/bathtub-in-the-center-of-the-room/
+* https://mystock.themeisle.com/photo/hotel-with-terrace-on-the-sea/
+* https://mystock.themeisle.com/photo/exotic-beach-in-maldives/
+
+- Courses
+* https://stocksnap.io/photo/SCC00WCQ3I
+* https://mystock.themeisle.com/photo/code-in-wp/
+* https://mystock.themeisle.com/photo/photographer-2/
+* https://mystock.themeisle.com/photo/browser-tabs/

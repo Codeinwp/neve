@@ -1052,6 +1052,21 @@ class Front_End {
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/11/neve-escape-room.jpg',
 						'title'      => 'Escape Room',
 					),
+					'neve-cv'                    => array(
+						'url'        => 'https://demo.themeisle.com/neve-cv/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/12/neve-resume.jpg',
+						'title'      => 'Resume',
+					),
+					'neve-wellness'              => array(
+						'url'        => 'https://demo.themeisle.com/neve-wellness/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/12/neve-wellness.jpg',
+						'title'      => 'Wellness Spa',
+					),
+					'neve-courses'               => array(
+						'url'        => 'https://demo.themeisle.com/neve-courses/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/12/neve-courses.jpg',
+						'title'      => 'Online Courses',
+					),
 				),
 				'brizy'            => array(
 					'neve-brizy-cafe'                 => array(
