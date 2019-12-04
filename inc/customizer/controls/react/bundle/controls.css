@@ -189,10 +189,10 @@
 
 .neve-responsive-sizing {
   display: flex; }
-  .neve-responsive-sizing.single-input .components-toolbar {
-    width: calc(12% + 1px); }
+  .neve-responsive-sizing.single-input .components-toolbar .reset {
+    margin-left: -1px; }
   .neve-responsive-sizing.single-input .nv-sizing-item {
-    width: calc(100% - 12% + 1px); }
+    flex-grow: 1; }
   .neve-responsive-sizing .range-control .components-base-control__field {
     padding: 10px;
     display: flex;
@@ -202,16 +202,32 @@
     .neve-responsive-sizing .range-control .components-base-control__field input[type="number"] {
       width: 27%; }
   .neve-responsive-sizing .components-toolbar {
-    width: calc(24% + 2px);
-    border: none; }
+    border: 0; }
     .neve-responsive-sizing .components-toolbar button {
       padding: 0;
-      height: 28px;
-      border-radius: 0; }
-      .neve-responsive-sizing .components-toolbar button svg {
-        padding: 3px 2px;
-        height: 22px;
+      height: 30px;
+      border: 1px solid;
+      margin-left: -1px; }
+      .neve-responsive-sizing .components-toolbar button.link, .neve-responsive-sizing .components-toolbar button.link > svg {
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0; }
+      .neve-responsive-sizing .components-toolbar button.link.has-reset, .neve-responsive-sizing .components-toolbar button.link.has-reset > svg {
         border-radius: 0; }
+      .neve-responsive-sizing .components-toolbar button.reset {
+        margin-left: 2px; }
+        .neve-responsive-sizing .components-toolbar button.reset, .neve-responsive-sizing .components-toolbar button.reset > svg {
+          border-bottom-left-radius: 0;
+          border-top-left-radius: 0; }
+        .neve-responsive-sizing .components-toolbar button.reset, .neve-responsive-sizing .components-toolbar button.reset:hover {
+          background-color: transparent !important; }
+      .neve-responsive-sizing .components-toolbar button svg {
+        height: 14px;
+        padding: 8px 0;
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        display: flex; }
   .neve-responsive-sizing .nv-sizing-item input[type="number"] {
     border: 1px solid #999;
     border-radius: 0; }
@@ -222,7 +238,7 @@
     border-bottom-left-radius: 3px; }
   .neve-responsive-sizing label {
     text-transform: uppercase;
-    font-size: 11px;
+    font-size: 10px;
     text-align: center;
     display: block;
     font-weight: 300;

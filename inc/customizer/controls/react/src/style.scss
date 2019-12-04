@@ -304,12 +304,12 @@
 .neve-responsive-sizing {
   display: flex;
 
-  &.single-input .components-toolbar {
-    width: calc(12% + 1px);
+  &.single-input .components-toolbar .reset {
+    margin-left: -1px;
   }
 
   &.single-input .nv-sizing-item {
-    width: calc(100% - 12% + 1px)
+    flex-grow: 1;
   }
 
   .range-control {
@@ -327,18 +327,48 @@
   }
 
   .components-toolbar {
-    width: calc(24% + 2px);
-    border: none;
+    border: 0;
 
     button {
       padding: 0;
-      height: 28px;
-      border-radius: 0;
+      height: 30px;
+      border: 1px solid;
+      margin-left: -1px;
+
+      &.link, &.link > svg {
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+      }
+
+      &.link {
+        &.has-reset {
+          &, & > svg {
+            border-radius: 0;
+          }
+        }
+      }
+
+      &.reset {
+        margin-left: 2px;
+
+        &, & > svg {
+          border-bottom-left-radius: 0;
+          border-top-left-radius: 0;
+        }
+
+        &, &:hover {
+          background-color: transparent !important;
+        }
+      }
 
       svg {
-        padding: 3px 2px;
-        height: 22px;
-        border-radius: 0;
+        height: 14px;
+        padding: 8px 0;
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        display: flex;
       }
     }
   }
@@ -361,7 +391,7 @@
 
   label {
     text-transform: uppercase;
-    font-size: 11px;
+    font-size: 10px;
     text-align: center;
     display: block;
     font-weight: 300;
@@ -570,6 +600,7 @@
 .large-buttons .neve-radio-icons {
   .components-toolbar button {
     height: 50px;
+
     svg {
       height: 30px;
       padding: 7px;
