@@ -196,7 +196,7 @@ abstract class Abstract_Builder implements Builder {
 	/**
 	 * Method to set protected properties for class.
 	 *
-	 * @param string $key The property key name.
+	 * @param string $key   The property key name.
 	 * @param string $value The property value.
 	 *
 	 * @return bool
@@ -773,8 +773,8 @@ abstract class Abstract_Builder implements Builder {
 			}
 
 			if ( ! empty( $background['focusPoint'] ) &&
-					! empty( $background['focusPoint']['x'] ) &&
-					! empty( $background['focusPoint']['y'] ) ) {
+				! empty( $background['focusPoint']['x'] ) &&
+				! empty( $background['focusPoint']['y'] ) ) {
 				$css_setup['background-position'] = round( $background['focusPoint']['x'] * 100 ) . '% ' . round( $background['focusPoint']['y'] * 100 ) . '%';
 			}
 
@@ -1085,6 +1085,12 @@ abstract class Abstract_Builder implements Builder {
 		foreach ( $this->builder_components as $component ) {
 			$components_settings[ $component->get_id() ] = $component->get_settings();
 		}
+		uasort(
+			$components_settings,
+			function( $a, $b ) {
+				return $a['name'] > $b['name'];
+			}
+		);
 
 		return $components_settings;
 	}

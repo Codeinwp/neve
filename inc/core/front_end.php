@@ -63,10 +63,10 @@ class Front_End {
 		add_theme_support( 'header-footer-elementor' );
 		add_theme_support( 'lifterlms-sidebars' );
 		add_theme_support( 'lifterlms' );
-		add_theme_support( 'responsive-embeds' );
 		add_theme_support( 'service_worker', true );
 
 		add_filter( 'embed_oembed_html', array( $this, 'wrap_oembeds' ), 10, 3 );
+		add_filter( 'video_embed_html', array( $this, 'wrap_jetpack_oembeds' ), 10, 1 );
 		add_filter( 'themeisle_gutenberg_templates', array( $this, 'add_gutenberg_templates' ) );
 
 		$this->add_amp_support();
@@ -97,22 +97,13 @@ class Front_End {
 	 */
 	public function wrap_oembeds( $markup, $url, $attr ) {
 		$sources = [
-			'vimeo.com',
 			'youtube.com',
 			'youtu.be',
-			'soundcloud',
-			'spotify',
-			'reverbnation',
-			'animoto',
-			'cloudup',
-			'collegehumor',
-			'dailymotion',
-			'kck.st',
-			'kickstarter',
-			'mixcloud',
-			'speakerdeck',
-			'ted',
-			'wordpress.tv',
+			'cloudup.com',
+			'dailymotion.com',
+			'collegehumor.com',
+			'ted.com',
+			'vimeo.com',
 		];
 		foreach ( $sources as $source ) {
 			if ( strpos( $url, $source ) !== false ) {
@@ -121,6 +112,18 @@ class Front_End {
 		}
 
 		return $markup;
+	}
+
+	/**
+	 * Wrap Jetpack embeds.
+	 * Fixes the compose module aspect ratio issue.
+	 *
+	 * @param string $markup embed markup.
+	 *
+	 * @return string
+	 */
+	public function wrap_jetpack_oembeds( $markup ) {
+		return '<div class="nv-iframe-embed">' . $markup . '</div>';
 	}
 
 	/**
@@ -193,6 +196,7 @@ class Front_End {
 				'brizy',
 				'beaver builder',
 				'thrive architect',
+				'divi builder',
 			),
 			'local'       => array(
 				'elementor' => array(
@@ -606,6 +610,58 @@ class Front_End {
 				],
 			),
 			'upsell'      => array(
+				'divi builder'     => array(
+					'neve-divi-lawyers'      => array(
+						'url'        => 'https://demo.themeisle.com/neve-lawyers-dv/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/12/neve-lawyers.jpg',
+						'title'      => 'Lawyers',
+					),
+					'neve-divi-cafe'         => array(
+						'url'        => 'https://demo.themeisle.com/neve-cafe-dv/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/06/neve-caffe-new-ss.jpg',
+						'title'      => 'Coffee Shop',
+					),
+					'neve-divi-fashion'      => array(
+						'url'        => 'https://demo.themeisle.com/neve-fashion-dv/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/07/neve-fashion-demo-screenshot.png',
+						'title'      => 'Fashion',
+					),
+					'neve-divi-job-listings' => array(
+						'url'        => 'https://demo.themeisle.com/neve-job-listing-dv/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/09/neve-job-listings.jpg',
+						'title'      => 'Job Listing',
+					),
+					'neve-divi-real-estate'  => array(
+						'url'        => 'https://demo.themeisle.com/neve-real-estate-dv/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/09/neve-real-estate.jpg',
+						'title'      => 'Real Estate',
+					),
+					'neve-divi-events'       => array(
+						'url'        => 'https://demo.themeisle.com/neve-events-dv/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/09/neve-events.jpg',
+						'title'      => 'Events',
+					),
+					'neve-divi-farm'         => array(
+						'url'        => 'https://demo.themeisle.com/neve-farm-dv/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/09/neve-farm.jpg',
+						'title'      => 'Farm',
+					),
+					'neve-divi-kindergarten' => array(
+						'url'        => 'https://demo.themeisle.com/neve-kindergarten-dv/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/09/neve-kindergarden.jpg',
+						'title'      => 'Kindergarten',
+					),
+					'neve-divi-speed'        => array(
+						'url'        => 'https://demo.themeisle.com/neve-pro-dv/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/10/neve-speed.jpg',
+						'title'      => 'Speed',
+					),
+					'neve-divi-funnel'       => array(
+						'url'        => 'https://demo.themeisle.com/neve-sales-funnel-dv/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/10/neve-sales.jpg',
+						'title'      => 'Sales Funnel',
+					),
+				),
 				'thrive architect' => array(
 					'neve-thrive-cafe'                  => array(
 						'url'        => 'https://demo.themeisle.com/neve-cafe-th/',

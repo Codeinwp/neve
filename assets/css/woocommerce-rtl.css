@@ -307,6 +307,11 @@
   margin: 0;
 }
 
+.nv-content-wrap ul.wc-block-grid__products {
+  list-style-type: none;
+  padding-right: 0;
+}
+
 .orderby {
   color: #676767;
 }
@@ -1047,7 +1052,7 @@ ul[id^="nv-primary-navigation"] a.button {
   color: #24292e;
 }
 
-.header-menu-sidebar .nv-nav-cart, .header-menu-sidebar li.menu-item-nav-cart {
+.nv-nav-cart, .header-menu-sidebar li.menu-item-nav-cart {
   display: none;
 }
 

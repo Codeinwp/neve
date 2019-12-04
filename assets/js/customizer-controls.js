@@ -486,7 +486,7 @@ wp.customize.controlConstructor["interface-tabs"] = wp.customize.Control.extend(
         var control = this;
         var section = control.section();
         control.hideAllControls(section);
-        var tab = control.params.controls.general ? "general" : Object.keys(control.params.controls)[0];
+        var tab = control.params.controls.general ? "general" : control.params.controls.layout ? "layout" : control.params.controls.style ? "style" : Object.keys(control.params.controls)[0];
         var controlsToShow = control.params.controls[tab];
         var allControls = [];
         for (var controlName in controlsToShow) {

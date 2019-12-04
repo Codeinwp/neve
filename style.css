@@ -595,6 +595,16 @@ blockquote.wp-block-quote.is-style-large cite {
   justify-content: center;
 }
 
+.site-logo .title-with-logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.site-logo .title-with-logo > img:first-child, .site-logo .title-with-logo > div:first-child {
+  margin-right: 10px;
+}
+
 .site-logo h1, .site-logo p {
   font-family: inherit;
   font-size: 1.25em;
@@ -630,7 +640,6 @@ blockquote.wp-block-quote.is-style-large cite {
 
 .primary-menu-ul a {
   color: #404248;
-  font-weight: 500;
   width: 100%;
   display: flex;
   position: relative;
@@ -1625,15 +1634,15 @@ article {
   margin-bottom: 0;
 }
 
-.wp-block-embed:not(.is-provider-scribd):not(.is-provider-slideshare) .nv-iframe-embed {
+.nv-iframe-embed {
   position: relative;
-  padding-top: 56.25%;
-  overflow: hidden;
-  max-width: 100%;
-  height: auto;
+  padding-bottom: 56.25%;
+  /* 16:9 */
+  padding-top: 25px;
+  height: 0;
 }
 
-.wp-block-embed:not(.is-provider-scribd):not(.is-provider-slideshare) .nv-iframe-embed > * {
+.nv-iframe-embed iframe {
   position: absolute;
   top: 0;
   left: 0;
@@ -1641,16 +1650,8 @@ article {
   height: 100%;
 }
 
-.wp-block-embed-soundcloud .wp-block-embed:not(.is-provider-scribd):not(.is-provider-slideshare) .nv-iframe-embed {
-  padding-top: 100%;
-}
-
 .wp-block-cover-image .wp-block-cover__inner-container, .wp-block-cover .wp-block-cover__inner-container {
   max-width: calc(100% - 70px);
-}
-
-.wp-embed-responsive .wp-block-embed:not(.is-provider-scribd):not(.is-provider-slideshare) .wp-block-embed__wrapper:before {
-  padding-top: 0 !important;
 }
 
 blockquote {
@@ -1739,7 +1740,7 @@ pre {
 }
 
 .nv-content-wrap ul li, .nv-content-wrap ol li, .excerpt-wrap ul li, .excerpt-wrap ol li {
-  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .nv-content-wrap dt, .excerpt-wrap dt {
@@ -2485,10 +2486,6 @@ audio {
 
 .light-mode a:not(.button) {
   color: #404248;
-}
-
-.header-top-inner {
-  font-size: .85em;
 }
 
 .header--row-inner.dark-mode, .header--row-inner.dark-mode .sub-menu, .header--row-inner.dark-mode .sub-menu li {
@@ -3254,6 +3251,10 @@ body.menu_sidebar_slide_left.menu_sidebar_dropdown:before {
 .component-wrap {
   display: flex;
   margin: 4px 0;
+}
+
+.builder-item--footer_copyright .component-wrap {
+  display: inline;
 }
 
 /*# sourceMappingURL=style.css.map */

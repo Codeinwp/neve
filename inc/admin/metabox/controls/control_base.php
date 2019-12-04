@@ -149,6 +149,7 @@ abstract class Control_Base {
 		if ( isset( $_POST[ $this->id ] ) ) {
 			$value = wp_unslash( $_POST[ $this->id ] ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 			update_post_meta( $post_id, $this->id, $this->sanitize_value( $value ) );
+
 			return;
 		} else {
 			if ( $this->type === 'checkbox' ) {
@@ -186,25 +187,29 @@ abstract class Control_Base {
 				return sanitize_text_field( $value );
 				break;
 			case 'range':
-				return absint( $value );
+				return sanitize_text_field( $value );
 				break;
 			case 'input':
-				return esc_url( $value );
+				return sanitize_text_field( $value );
 				break;
 			case 'separator':
 			default:
 				break;
 		}
+
+		return sanitize_text_field( $value );
 	}
 
 	/**
 	 * Get the value.
 	 *
+	 * @param int $post_id the post id.
+	 *
 	 * @return mixed
 	 */
 	final protected function get_value( $post_id ) {
-		$values = get_post_meta( $post_id );
+		$value = get_post_meta( $post_id, $this->id, true );
 
-		return isset( $values[ $this->id ] ) ? esc_attr( $values[ $this->id ][0] ) : $this->settings['default'];
+		return ! empty( $value ) ? $value : $this->settings['default'];
 	}
 }

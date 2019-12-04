@@ -8,6 +8,8 @@
 
 namespace Neve\Views\Inline;
 
+use Neve\Views\Font_Manager;
+
 /**
  * Class Typography
  *
@@ -76,6 +78,8 @@ class Typography extends Base_Inline {
 		$text_transform = isset( $typeface_setup['textTransform'] ) ? $typeface_setup['textTransform'] : $old_text_transform;
 		$body_font      = get_theme_mod( 'neve_body_font_family', false );
 
+		Font_Manager::add_google_font( $body_font, $font_weight );
+
 		$style_setup = array();
 		// Letter spacing was not previously responsive - this accounts for that.
 		if ( ! empty( $letter_spacing ) && ! is_array( $letter_spacing ) ) {
@@ -114,7 +118,8 @@ class Typography extends Base_Inline {
 	 * Headings font style.
 	 */
 	private function add_headings_styles() {
-		$controls = neve_get_headings_selectors();
+		$controls      = neve_get_headings_selectors();
+		$headings_font = get_theme_mod( 'neve_headings_font_family', false );
 
 		foreach ( $controls as $control => $selector ) {
 			$old_font_size      = json_decode( get_theme_mod( 'neve_' . $control . '_font_size' ), true );
@@ -211,9 +216,9 @@ class Typography extends Base_Inline {
 					$selector
 				);
 			}
+			Font_Manager::add_google_font( $headings_font, $font_weight );
 		}
 
-		$headings_font = get_theme_mod( 'neve_headings_font_family', false );
 
 		$style_setup = array();
 		if ( ! empty( $headings_font ) && $headings_font !== 'default' ) {

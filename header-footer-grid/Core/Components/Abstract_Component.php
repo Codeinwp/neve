@@ -16,6 +16,7 @@ use HFG\Core\Settings;
 use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Main;
 use HFG\Traits\Core;
+use Neve\Views\Font_Manager;
 use WP_Customize_Manager;
 
 /**
@@ -26,9 +27,11 @@ use WP_Customize_Manager;
 abstract class Abstract_Component implements Component {
 	use Core;
 
-	const ALIGNMENT_ID = 'component_align';
-	const PADDING_ID   = 'component_padding';
-	const MARGIN_ID    = 'component_margin';
+	const ALIGNMENT_ID   = 'component_align';
+	const PADDING_ID     = 'component_padding';
+	const MARGIN_ID      = 'component_margin';
+	const FONT_FAMILY_ID = 'component_font_family';
+	const TYPEFACE_ID    = 'component_typeface';
 	/**
 	 * Current id of the component.
 	 *
@@ -89,7 +92,7 @@ abstract class Abstract_Component implements Component {
 	/**
 	 * Should component merge?
 	 *
-	 * @since 2.5.2
+	 * @since  2.5.2
 	 * @access protected
 	 * @var bool $is_auto_width
 	 */
@@ -176,6 +179,12 @@ abstract class Abstract_Component implements Component {
 		'tablet'  => ' @media (min-width: 576px)',
 		'desktop' => ' @media (min-width: 961px)',
 	);
+	/**
+	 * The default typography selector on which to apply the settings.
+	 *
+	 * @var null
+	 */
+	protected $default_typography_selector = null;
 
 	/**
 	 * Padding settings default values.
@@ -236,13 +245,57 @@ abstract class Abstract_Component implements Component {
 	);
 
 	/**
+	 * Typography control default values.
+	 *
+	 * @var array
+	 */
+	protected $typography_default = array(
+		'fontSize'      => array(
+			'suffix'  => array(
+				'mobile'  => 'em',
+				'tablet'  => 'em',
+				'desktop' => 'em',
+			),
+			'mobile'  => 1,
+			'tablet'  => 1,
+			'desktop' => 1,
+		),
+		'lineHeight'    => array(
+			'mobile'  => 1.6,
+			'tablet'  => 1.6,
+			'desktop' => 1.6,
+		),
+		'letterSpacing' => array(
+			'mobile'  => 0,
+			'tablet'  => 0,
+			'desktop' => 0,
+		),
+		'fontWeight'    => '500',
+		'textTransform' => 'none',
+	);
+
+	/**
+	 * Should have font family control.
+	 *
+	 * @var bool
+	 */
+	public $has_font_family_control = false;
+
+	/**
+	 * Should have typeface control.
+	 *
+	 * @var bool
+	 */
+	public $has_typeface_control = false;
+
+	/**
 	 * Abstract_Component constructor.
 	 *
 	 * @param string $panel Builder panel.
 	 */
 	public function __construct( $panel ) {
 		$this->init();
-
+		$this->maybe_enqueue_fonts();
 		$this->set_property( 'panel', $panel );
 		$this->set_property( 'icon', $this->icon );
 		if ( $this->preview_image === null ) {
@@ -285,7 +338,7 @@ abstract class Abstract_Component implements Component {
 	/**
 	 * Method to set protected properties for class.
 	 *
-	 * @param string $key The property key name.
+	 * @param string $key   The property key name.
 	 * @param string $value The property value.
 	 *
 	 * @return bool
@@ -365,7 +418,6 @@ abstract class Abstract_Component implements Component {
 	 * Define global settings.
 	 */
 	public function define_settings() {
-
 		$this->add_settings();
 		$padding_selector = '.builder-item--' . $this->get_id() . ' > :not(.customize-partial-edit-shortcut):not(.item--preview-name):first-of-type';
 		if ( $this->default_selector !== null ) {
@@ -453,6 +505,8 @@ abstract class Abstract_Component implements Component {
 			]
 		);
 
+		$this->add_typography_controls();
+
 		do_action( 'hfg_component_settings', $this->get_id() );
 	}
 
@@ -527,11 +581,11 @@ abstract class Abstract_Component implements Component {
 	 * Write position styles and filter values.
 	 *
 	 * @param string $target CSS target property ( margin | padding ).
-	 * @param string $top Top value.
-	 * @param string $right Right value.
+	 * @param string $top    Top value.
+	 * @param string $right  Right value.
 	 * @param string $bottom Bottom value.
-	 * @param string $left Left value.
-	 * @param string $unit Unit to use ( px | em | % ).
+	 * @param string $left   Left value.
+	 * @param string $unit   Unit to use ( px | em | % ).
 	 *
 	 * @return array
 	 * @since   1.0.1
@@ -556,10 +610,10 @@ abstract class Abstract_Component implements Component {
 	/**
 	 * Method to reuse loop for generating position css.
 	 *
-	 * @param array  $css_array The css array.
+	 * @param array  $css_array       The css array.
 	 * @param array  $position_values The position values array.
-	 * @param string $selector The item selector.
-	 * @param string $type The type to generate ( margin | padding ).
+	 * @param string $selector        The item selector.
+	 * @param string $type            The type to generate ( margin | padding ).
 	 *
 	 * @return mixed
 	 * @since   1.0.1
@@ -594,11 +648,29 @@ abstract class Abstract_Component implements Component {
 	 */
 	public function add_style( array $css_array = array() ) {
 		$layout_padding = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::PADDING_ID, null );
-		$selector       = '.builder-item--' . $this->get_id() . ' > :not(.customize-partial-edit-shortcut):first-of-type';
+		$font_family    = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::FONT_FAMILY_ID );
+		$typeface       = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::TYPEFACE_ID );
+		if ( $font_family ) {
+			$css_array[ $this->default_typography_selector ]['font-family'] = $font_family;
+		}
+		if ( $typeface ) {
+			foreach ( $this->media_selectors as $media => $media_query ) {
+				$css_array[ $media_query ][ $this->default_typography_selector ]['font-size']       = $typeface['fontSize'][ $media ] . $typeface['fontSize']['suffix'][ $media ];
+				$css_array[ $media_query ][ $this->default_typography_selector . ' svg' ]['height'] = $typeface['fontSize'][ $media ] . $typeface['fontSize']['suffix'][ $media ];
+				$css_array[ $media_query ][ $this->default_typography_selector . ' svg' ]['width']  = $typeface['fontSize'][ $media ] . $typeface['fontSize']['suffix'][ $media ];
+				$css_array[ $media_query ][ $this->default_typography_selector ]['line-height']     = $typeface['lineHeight'][ $media ];
+				$css_array[ $media_query ][ $this->default_typography_selector ]['letter-spacing']  = $typeface['letterSpacing'][ $media ] . 'px';
+			}
+			$css_array[ $this->default_typography_selector ]['font-weight']    = $typeface['fontWeight'];
+			$css_array[ $this->default_typography_selector ]['text-transform'] = $typeface['textTransform'];
+		}
 
 		if ( $this->default_selector !== null ) {
 			$selector = $this->default_selector;
+		} else {
+			$selector = '.builder-item--' . $this->get_id();
 		}
+
 		$css_array = $this->generate_position_css( $css_array, $layout_padding, $selector, 'padding' );
 
 		$layout_margin = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::MARGIN_ID, null );
@@ -615,5 +687,103 @@ abstract class Abstract_Component implements Component {
 	 */
 	public function assign_builder( $builder_id ) {
 		$this->builder_id = $builder_id;
+	}
+
+	/**
+	 * Add typography controls.
+	 */
+	private function add_typography_controls() {
+		if ( ! $this->has_font_family_control && ! $this->has_typeface_control ) {
+			return;
+		}
+		$accordion_wrap = 0;
+		$priority       = 2000;
+
+		if ( $this->has_typeface_control ) {
+			$accordion_wrap += 1;
+		}
+		if ( $this->has_font_family_control ) {
+			$accordion_wrap += 1;
+		}
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'                => $this->get_id() . '_typography_wrap',
+				'group'             => $this->get_id(),
+				'tab'               => SettingsManager::TAB_STYLE,
+				'transport'         => 'postMessage',
+				'priority'          => $priority,
+				'type'              => 'Neve\Customizer\Controls\Heading',
+				'sanitize_callback' => 'sanitize_text_field',
+				'label'             => __( 'Typography', 'neve' ),
+				'section'           => $this->section,
+				'options'           => [
+					'accordion'        => true,
+					'controls_to_wrap' => $accordion_wrap,
+					'expanded'         => false,
+					'class'            => esc_attr( 'typography-accordion-' . $this->get_id() ),
+				],
+			]
+		);
+		if ( $this->has_font_family_control ) {
+			SettingsManager::get_instance()->add(
+				[
+					'id'                    => self::FONT_FAMILY_ID,
+					'group'                 => $this->get_id(),
+					'tab'                   => SettingsManager::TAB_STYLE,
+					'transport'             => 'postMessage',
+					'priority'              => $priority + 1,
+					'type'                  => '\Neve\Customizer\Controls\React\Font_Family',
+					'live_refresh_selector' => $this->default_typography_selector,
+					'section'               => $this->section,
+					'options'               => [
+						'input_attrs' => [
+							'default_is_inherit' => true,
+						],
+					],
+				]
+			);
+		}
+		if ( $this->has_typeface_control ) {
+			SettingsManager::get_instance()->add(
+				[
+					'id'                    => self::TYPEFACE_ID,
+					'group'                 => $this->get_id(),
+					'tab'                   => SettingsManager::TAB_STYLE,
+					'transport'             => 'postMessage',
+					'priority'              => $priority + 2,
+					'type'                  => '\Neve\Customizer\Controls\React\Typography',
+					'live_refresh_selector' => $this->default_typography_selector,
+					'section'               => $this->section,
+					'default'               => $this->typography_default,
+					'sanitize_callback'     => 'neve_sanitize_typography_control',
+					'options'               => [
+						'input_attrs' => array(
+							'size_units'             => [ 'em', 'px' ],
+							'weight_default'         => $this->typography_default['fontWeight'],
+							'size_default'           => $this->typography_default['fontSize'],
+							'line_height_default'    => $this->typography_default['lineHeight'],
+							'letter_spacing_default' => $this->typography_default['letterSpacing'],
+						),
+					],
+				]
+			);
+		}
+	}
+
+	/**
+	 * Maybe enqueue google fonts.
+	 */
+	private function maybe_enqueue_fonts() {
+		if ( ! $this->has_font_family_control ) {
+			return;
+		}
+		$font = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::FONT_FAMILY_ID );
+		if ( empty( $font ) ) {
+			return;
+		}
+		$typography = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::TYPEFACE_ID );
+		$weight     = ! isset( $typography['fontWeight'] ) ? [ '300' ] : $typography['fontWeight'];
+		Font_Manager::add_google_font( $font, $weight );
 	}
 }
