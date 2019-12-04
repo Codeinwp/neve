@@ -845,6 +845,21 @@ class Front_End {
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/10/neve-sales.jpg',
 						'title'      => 'Sales Funnel',
 					),
+					'neve-beaver-church'                => array(
+						'url'        => 'https://demo.themeisle.com/neve-church-bb/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/10/neve-church.jpg',
+						'title'      => 'Church',
+					),
+					'neve-beaver-fashion-magazine'      => array(
+						'url'        => 'https://demo.themeisle.com/neve-fashion-magazine-bb/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/10/neve-fashion-mag.jpg',
+						'title'      => 'Fashion Magazine',
+					),
+					'neve-beaver-winery'                => array(
+						'url'        => 'https://demo.themeisle.com/neve-winery-bb/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/11/neve-winery.png',
+						'title'      => 'Winery - Wine Shop',
+					),
 					'neve-beaver-coworking'             => array(
 						'url'        => 'https://demo.themeisle.com/neve-coworking-bb/',
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/11/neve-coworking.jpg',
