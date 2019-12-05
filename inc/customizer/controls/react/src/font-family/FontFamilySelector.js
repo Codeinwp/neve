@@ -55,7 +55,7 @@ class FontFamilySelector extends Component {
 				<FontPreviewLink
 					fontFace='default'
 					delayLoad={false}
-					label={__( 'Default', 'neve' )}
+					label={this.props.inheritDefault ? __( 'Inherit', 'neve' ) : __( 'Default', 'neve' )}
 					onClick={() => {
 						this.setState( { isVisible: false } );
 						this.props.onFontChoice( 'system', false );
@@ -151,9 +151,12 @@ class FontFamilySelector extends Component {
 					onClick={() => {
 						this.setState( { isVisible: true } );
 					}}>
-
-						<span className="ff-name">{this.props.selected ||
-						__( 'Default', 'neve' )}</span>
+						<span className="ff-name">{
+							this.props.selected ||
+							( this.props.inheritDefault ?
+									__( 'Inherit', 'neve' ) :
+									__( 'Default', 'neve' ) )
+						}</span>
 					<span className="ff-preview"
 						style={{
 							fontFamily: this.props.selected || defaultFontface
@@ -175,8 +178,9 @@ class FontFamilySelector extends Component {
 
 FontFamilySelector.propTypes = {
 	onFontChoice: PropTypes.func.isRequired,
+	inheritDefault: PropTypes.bool.isRequired,
 	selected: PropTypes.string,
-	selectedType: PropTypes.string
+	selectedType: PropTypes.string,
 };
 
 export default FontFamilySelector;

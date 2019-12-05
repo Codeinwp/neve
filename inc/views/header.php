@@ -77,13 +77,7 @@ class Header extends Base_View {
 	 * @return string
 	 */
 	private function get_last_menu_item_setting() {
-		$default = array(
-			'search',
-		);
-		if ( class_exists( 'WooCommerce', false ) ) {
-			array_push( $default, 'cart' );
-		}
-
+		$default           = array();
 		$current_component = 'default';
 		if ( isset( Nav::$current_component ) ) {
 			$current_component = Nav::$current_component;

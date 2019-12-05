@@ -153,5 +153,51 @@ function neve_sanitize_background( $value ) {
  * @return array
  */
 function neve_sanitize_button_appearance( $value ) {
+	if ( is_array( $value ) ) {
+		return $value;
+	}
+
+	return $value;
+}
+
+/**
+ * Sanitize the typography control.
+ *
+ * @param array $value the control value.
+ *
+ * @return array
+ */
+function neve_sanitize_typography_control( $value ) {
+	$keys = [
+		'lineHeight',
+		'letterSpacing',
+		'fontWeight',
+		'fontSize',
+		'textTransform',
+	];
+
+	// Approve Keys.
+	foreach ( $value as $key => $values ) {
+		if ( ! in_array( $key, $keys, true ) ) {
+			unset( $value[ $key ] );
+		}
+	}
+
+	// Font Weight.
+	if ( ! in_array( $value['fontWeight'], [ '100', '200', '300', '400', '500', '600', '700', '800', '900' ], true ) ) {
+		$value['fontWeight'] = '300';
+	}
+	// Text Transform.
+	if ( ! in_array( $value['textTransform'], [ 'none', 'uppercase', 'lowercase', 'capitalize' ], true ) ) {
+		$value['textTransform'] = 'none';
+	}
+
+	// Make sure we deal with arrays.
+	foreach ( [ 'letterSpacing', 'lineHeight', 'fontSize' ] as $value_type ) {
+		if ( ! is_array( $value[ $value_type ] ) ) {
+			$value[ $value_type ] = [];
+		}
+	}
+
 	return $value;
 }

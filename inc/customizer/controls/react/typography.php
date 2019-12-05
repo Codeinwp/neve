@@ -18,7 +18,7 @@ class Typography extends \WP_Customize_Control {
 	 *
 	 * @var string
 	 */
-	public $type = 'neve_typography';
+	public $type = 'neve_typeface_control';
 	/**
 	 * Additional arguments passed to JS.
 	 *
@@ -31,6 +31,6 @@ class Typography extends \WP_Customize_Control {
 	 */
 	public function to_json() {
 		parent::to_json();
-		$this->json['input_attrs'] = $this->input_attrs;
+		$this->json['input_attrs'] = is_array( $this->input_attrs ) ? json_encode( $this->input_attrs ) : $this->input_attrs;
 	}
 }

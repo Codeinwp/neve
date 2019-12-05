@@ -27,7 +27,9 @@ class ToggleComponent extends Component {
 	render() {
 		return (
 				<ToggleControl
+						className="neve-toggle-control neve-white-background-control"
 						checked={this.state.value}
+						label={this.props.control.params.label}
 						onChange={(value) => this.toggleValue( value )}
 				/>
 		);

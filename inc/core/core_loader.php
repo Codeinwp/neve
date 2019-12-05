@@ -44,7 +44,7 @@ class Core_Loader {
 			array(
 				'Customizer\Loader',
 				'Views\Tweaks',
-				'Views\Typography',
+				'Views\Font_Manager',
 				'Views\Top_Bar',
 				'Views\Header',
 				'Views\Template_Parts',
@@ -71,7 +71,6 @@ class Core_Loader {
 				'Views\Inline\Gutenberg_Style_Manager',
 
 				'Compatibility\Generic',
-				'Compatibility\Gutenberg',
 				'Compatibility\WooCommerce',
 				'Compatibility\Elementor',
 				'Compatibility\Header_Footer_Elementor',

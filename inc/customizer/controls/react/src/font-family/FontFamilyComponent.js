@@ -15,6 +15,15 @@ class TypefaceComponent extends Component {
 			fontFamily: value,
 			fontFamilySource: null
 		};
+
+		let defaultParams = {
+			default_is_inherit: false,
+		};
+
+		this.controlParams = props.control.params.input_attrs ? {
+			...defaultParams,
+			...JSON.parse( props.control.params.input_attrs ),
+		} : defaultParams;
 	}
 
 	render() {
@@ -33,6 +42,7 @@ class TypefaceComponent extends Component {
 									self.setState( { fontFamily, fontFamilySource } );
 									self.updateControl();
 								}}
+								inheritDefault={this.controlParams.default_is_inherit}
 						/>
 					</div>
 				</Fragment>
@@ -46,14 +56,15 @@ class TypefaceComponent extends Component {
 				'value': this.state.fontFamily,
 				'source': this.state.fontFamilySource,
 				'controlId': this.props.control.id,
-				'type': this.props.control.params.type
+				'type': '\\Neve\\Customizer\\Controls\\React\\Font_Family',
+				'inherit': this.controlParams.default_is_inherit
 			} );
 		}, 100 );
 	}
 }
 
 TypefaceComponent.propTypes = {
-	onChange: PropTypes.func.isRequired
+	control: PropTypes.object.isRequired
 };
 
 export default TypefaceComponent;

@@ -821,4 +821,33 @@ Starter Sites screenshots resources:
 - Translation Services
 * https://mystock.themeisle.com/photo/metropolitan-museum/
 
+- Blogger
+* https://mystock.themeisle.com/photo/passing-girl/
+
+- Coupons
+* https://mystock.themeisle.com/photo/gift-shop-in-punjim/
+* https://mystock.themeisle.com/photo/teddy/
+* https://mystock.themeisle.com/photo/couch-with-two-green-pillows/
+* https://mystock.themeisle.com/photo/luggage-tag-label-on-suitcase-or-bag-with-the-sea-behind-it/
+
+- Escape Room
+* https://mystock.themeisle.com/photo/scary-nymph-group-holding-hands-2/
+* https://mystock.themeisle.com/photo/mannequin/
+* https://mystock.themeisle.com/photo/light-carpet/
+* https://mystock.themeisle.com/photo/mannequin-with-unicorn-mask-standing-in-the-window/
+
+- Resume
+* https://mystock.themeisle.com/photo/programming-laptop-2/
+* https://mystock.themeisle.com/photo/thinking-time/
+
+- Wellness Spa
+* https://mystock.themeisle.com/photo/bathtub-in-the-center-of-the-room/
+* https://mystock.themeisle.com/photo/hotel-with-terrace-on-the-sea/
+* https://mystock.themeisle.com/photo/exotic-beach-in-maldives/
+
+- Courses
+* https://stocksnap.io/photo/SCC00WCQ3I
+* https://mystock.themeisle.com/photo/code-in-wp/
+* https://mystock.themeisle.com/photo/photographer-2/
+* https://mystock.themeisle.com/photo/browser-tabs/
 

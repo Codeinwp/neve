@@ -5,7 +5,7 @@ Theme URI:      https://themeisle.com/themes/neve/
 Author:         ThemeIsle
 Author URI:     https://themeisle.com
 Description:    Neve is a super fast, easily customizable, multi-purpose theme. It’s perfect for blogs, small business, startups, agencies, firms, e-commerce shops (WooCommerce storefront) as well as personal portfolio sites and most types of projects. A fully AMP optimized and responsive theme, Neve will load in mere seconds and adapt perfectly on any viewing device. While it is lightweight and has a minimalist design, the theme is highly extendable, it has a highly SEO optimized code, resulting in top rankings in Google search results. Neve works perfectly with Gutenberg and the most popular page builders (Elementor, Brizy, Beaver Builder, Visual Composer, SiteOrigin, Divi). Neve is also WooCommerce ready, responsive, RTL & translation ready. Look no further. Neve is the perfect theme for you!
-Version:        2.5.2
+Version:        2.5.3
 License:        GNU General Public License v2 or later
 License URI:    http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain:    neve
@@ -595,6 +595,16 @@ blockquote.wp-block-quote.is-style-large cite {
   justify-content: center;
 }
 
+.site-logo .title-with-logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.site-logo .title-with-logo > img:first-child, .site-logo .title-with-logo > div:first-child {
+  margin-left: 10px;
+}
+
 .site-logo h1, .site-logo p {
   font-family: inherit;
   font-size: 1.25em;
@@ -630,7 +640,6 @@ blockquote.wp-block-quote.is-style-large cite {
 
 .primary-menu-ul a {
   color: #404248;
-  font-weight: 500;
   width: 100%;
   display: flex;
   position: relative;
@@ -1286,6 +1295,10 @@ fieldset input[type="text"], fieldset input[type="search"], fieldset input[type=
   margin-top: 0;
 }
 
+.layout-grid .content .excerpt-wrap > *:last-child {
+  margin-bottom: 0;
+}
+
 .nv-non-grid-article .non-grid-content {
   display: flex;
   flex-direction: column;
@@ -1621,15 +1634,15 @@ article {
   margin-bottom: 0;
 }
 
-.wp-block-embed:not(.is-provider-scribd):not(.is-provider-slideshare) .nv-iframe-embed {
+.nv-iframe-embed {
   position: relative;
-  padding-top: 56.25%;
-  overflow: hidden;
-  max-width: 100%;
-  height: auto;
+  padding-bottom: 56.25%;
+  /* 16:9 */
+  padding-top: 25px;
+  height: 0;
 }
 
-.wp-block-embed:not(.is-provider-scribd):not(.is-provider-slideshare) .nv-iframe-embed > * {
+.nv-iframe-embed iframe {
   position: absolute;
   top: 0;
   right: 0;
@@ -1637,16 +1650,8 @@ article {
   height: 100%;
 }
 
-.wp-block-embed-soundcloud .wp-block-embed:not(.is-provider-scribd):not(.is-provider-slideshare) .nv-iframe-embed {
-  padding-top: 100%;
-}
-
 .wp-block-cover-image .wp-block-cover__inner-container, .wp-block-cover .wp-block-cover__inner-container {
   max-width: calc(100% - 70px);
-}
-
-.wp-embed-responsive .wp-block-embed:not(.is-provider-scribd):not(.is-provider-slideshare) .wp-block-embed__wrapper:before {
-  padding-top: 0 !important;
 }
 
 blockquote {
@@ -1735,7 +1740,7 @@ pre {
 }
 
 .nv-content-wrap ul li, .nv-content-wrap ol li, .excerpt-wrap ul li, .excerpt-wrap ol li {
-  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .nv-content-wrap dt, .excerpt-wrap dt {
@@ -2481,10 +2486,6 @@ audio {
 
 .light-mode a:not(.button) {
   color: #404248;
-}
-
-.header-top-inner {
-  font-size: .85em;
 }
 
 .header--row-inner.dark-mode, .header--row-inner.dark-mode .sub-menu, .header--row-inner.dark-mode .sub-menu li {
@@ -3250,4 +3251,8 @@ body.menu_sidebar_slide_left.menu_sidebar_dropdown:before {
 .component-wrap {
   display: flex;
   margin: 4px 0;
+}
+
+.builder-item--footer_copyright .component-wrap {
+  display: inline;
 }

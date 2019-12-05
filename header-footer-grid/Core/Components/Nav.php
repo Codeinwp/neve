@@ -42,7 +42,9 @@ class Nav extends Abstract_Component {
 		$this->set_property( 'width', 6 );
 		$this->set_property( 'icon', 'tagcloud' );
 		$this->set_property( 'section', 'header_menu_primary' );
-
+		$this->set_property( 'has_font_family_control', true );
+		$this->set_property( 'has_typeface_control', true );
+		$this->set_property( 'default_typography_selector', $this->default_typography_selector . '.builder-item--' . $this->get_id() . ' li > a' );
 		$this->default_align = 'right';
 		add_filter(
 			'neve_last_menu_setting_slug_' . $this->get_class_const( 'COMPONENT_ID' ),
@@ -51,8 +53,6 @@ class Nav extends Abstract_Component {
 				'filter_neve_last_menu_setting_slug',
 			)
 		);
-
-		add_action( 'init', array( $this, 'map_last_menu_item' ) );
 	}
 
 	/**
@@ -79,8 +79,6 @@ class Nav extends Abstract_Component {
 	 * @access  public
 	 */
 	public function add_settings() {
-
-
 		SettingsManager::get_instance()->add(
 			[
 				'id'                => self::STYLE_ID,
@@ -171,23 +169,31 @@ class Nav extends Abstract_Component {
 
 		$components = apply_filters( 'neve_last_menu_item_components', $components );
 
-		SettingsManager::get_instance()->add(
-			[
-				'id'                => $this->get_class_const( 'LAST_ITEM_ID' ),
-				'group'             => $this->get_class_const( 'COMPONENT_ID' ),
-				'tab'               => SettingsManager::TAB_GENERAL,
-				'noformat'          => true,
-				'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
-				'sanitize_callback' => array( $this, 'sanitize_last_menu_item' ),
-				'default'           => json_encode( $order_default_components ),
-				'label'             => __( 'Last Menu Item', 'neve' ),
-				'type'              => 'Neve\Customizer\Controls\Ordering',
-				'options'           => [
-					'components' => $components,
-				],
-				'section'           => $this->section,
-			]
-		);
+		/**
+		 * Last menu item removed for new users and users who didn't have it set.
+		 *
+		 * @since 2.5.3
+		 */
+		$old_last_menu_item = json_decode( get_theme_mod( 'neve_last_menu_item' ) );
+		if ( $old_last_menu_item !== false && ! empty( $old_last_menu_item ) ) {
+			SettingsManager::get_instance()->add(
+				[
+					'id'                => $this->get_class_const( 'LAST_ITEM_ID' ),
+					'group'             => $this->get_class_const( 'COMPONENT_ID' ),
+					'tab'               => SettingsManager::TAB_GENERAL,
+					'noformat'          => true,
+					'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
+					'sanitize_callback' => array( $this, 'sanitize_last_menu_item' ),
+					'default'           => json_encode( $order_default_components ),
+					'label'             => __( 'Last Menu Item', 'neve' ),
+					'type'              => 'Neve\Customizer\Controls\Ordering',
+					'options'           => [
+						'components' => $components,
+					],
+					'section'           => $this->section,
+				]
+			);
+		}
 		SettingsManager::get_instance()->add(
 			[
 				'id'                => 'shortcut',
@@ -277,31 +283,4 @@ class Nav extends Abstract_Component {
 
 		return parent::add_style( $css_array );
 	}
-
-	/**
-	 * Map last menu item from select type control to ordering control.
-	 */
-	public function map_last_menu_item() {
-		$map_items = get_option( 'neve_map_menu_items' );
-		if ( $map_items === 'yes' ) {
-			return;
-		}
-		$default_last = 'search';
-		if ( class_exists( 'WooCommerce', false ) ) {
-			$default_last = 'search-cart';
-		}
-
-		$last_menu_item       = get_theme_mod( 'neve_last_menu_item', $default_last );
-		$last_menu_item_value = array();
-		if ( $last_menu_item === 'search-cart' ) {
-			$last_menu_item_value = array( 'search', 'cart' );
-		}
-		if ( $last_menu_item === 'search' || $last_menu_item === 'cart' ) {
-			$last_menu_item_value = array( $last_menu_item );
-		}
-
-		set_theme_mod( 'neve_last_menu_item', json_encode( $last_menu_item_value ) );
-		update_option( 'neve_map_menu_items', 'yes' );
-	}
-
 }

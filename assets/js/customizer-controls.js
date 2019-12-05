@@ -2,9 +2,16 @@
     "use strict";
     wp.tiCustomizeButton = {
         init: function() {
-            jQuery("#customize-theme-controls").on("click", ".menu-shortcut", function(e) {
+            $("#customize-theme-controls").on("click", ".menu-shortcut", function(e) {
                 wp.customize.section("menu_locations").focus();
                 e.preventDefault();
+            });
+            $("#customize-theme-controls").on("click", ".neve-control-focus", function(e) {
+                e.preventDefault();
+                var control_id = $(this).data("control-to-focus");
+                if (typeof control_id !== "undefined") {
+                    wp.customize.control(control_id).focus();
+                }
             });
         }
     };
@@ -479,7 +486,7 @@ wp.customize.controlConstructor["interface-tabs"] = wp.customize.Control.extend(
         var control = this;
         var section = control.section();
         control.hideAllControls(section);
-        var tab = control.params.controls.general ? "general" : Object.keys(control.params.controls)[0];
+        var tab = control.params.controls.general ? "general" : control.params.controls.layout ? "layout" : control.params.controls.style ? "style" : Object.keys(control.params.controls)[0];
         var controlsToShow = control.params.controls[tab];
         var allControls = [];
         for (var controlName in controlsToShow) {

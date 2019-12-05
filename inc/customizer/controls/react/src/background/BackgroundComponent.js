@@ -106,8 +106,7 @@ class BackgroundComponent extends Component {
 									label={__( 'Image', 'neve' )}
 							>
 								<p>
-									{__( 'Select from the Media Library or upload a new image',
-											'neve' )}
+									{ __( 'Select from the Media Library or upload a new image', 'neve' ) }
 								</p>
 								<MediaUpload
 										onSelect={(imageData) => {

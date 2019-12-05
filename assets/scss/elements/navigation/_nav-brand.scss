@@ -11,6 +11,14 @@
     flex-direction: column;
     justify-content: center;
   }
+  .title-with-logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    > img:first-child, > div:first-child {
+      margin-right: 10px;
+    }
+  }
   h1, p {
     font-family: inherit;
     font-size: $h4-font-size;
