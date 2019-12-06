@@ -8,12 +8,39 @@
 
 namespace Neve\Views\Inline;
 
+use Neve\Views\Font_Manager;
+
 /**
  * Class Gutenberg_Editor
  *
  * @package Neve\Views\Inline
  */
 class Gutenberg_Editor extends Base_Inline {
+	/**
+	 * Body font weight
+	 *
+	 * @var array
+	 */
+	private $body_weight = [ 400 ];
+	/**
+	 * Body font family
+	 *
+	 * @var string
+	 */
+	private $body_family = '';
+	/**
+	 * Headings font weights
+	 *
+	 * @var array
+	 */
+	private $heading_weights = [ 600 ];
+	/**
+	 * Headings font family
+	 *
+	 * @var string
+	 */
+	private $headings_family = '';
+
 	/**
 	 * Do all actions necessary.
 	 *
@@ -24,6 +51,7 @@ class Gutenberg_Editor extends Base_Inline {
 		$this->add_typeface_values();
 		$this->add_container_style();
 		$this->add_colors();
+		$this->add_google_fonts();
 	}
 
 	/**
@@ -35,10 +63,11 @@ class Gutenberg_Editor extends Base_Inline {
 
 		$style_setup = array();
 		if ( ! empty( $headings_font ) && $headings_font !== 'default' ) {
-			$style_setup[] = array(
+			$style_setup[]         = array(
 				'css_prop' => 'font-family',
 				'value'    => $headings_font,
 			);
+			$this->headings_family = $headings_font;
 		}
 		$this->add_style(
 			$style_setup,
@@ -57,6 +86,7 @@ class Gutenberg_Editor extends Base_Inline {
 				'css_prop' => 'font-family',
 				'value'    => $body_font,
 			);
+			$this->body_family  = $body_font;
 		}
 		$this->add_style( $body_style_setup, '#editor .editor-styles-wrapper .editor-writing-flow' );
 	}
@@ -213,5 +243,24 @@ class Gutenberg_Editor extends Base_Inline {
 			$selector
 		);
 
+		if ( ! empty( $value['fontWeight'] ) ) {
+			if ( $control === 'neve_typeface_general' ) {
+				array_push( $this->body_weight, $value['fontWeight'] );
+			} else {
+				array_push( $this->heading_weights, $value['fontWeight'] );
+			}
+		}
+	}
+
+	/**
+	 * Enqueue google fonts in the editor.
+	 */
+	private function add_google_fonts() {
+		if ( ! empty( $this->headings_family ) ) {
+			Font_Manager::add_google_font( $this->headings_family, $this->heading_weights );
+		}
+		if ( ! empty( $this->body_family ) ) {
+			Font_Manager::add_google_font( $this->body_family, $this->body_weight );
+		}
 	}
 }
