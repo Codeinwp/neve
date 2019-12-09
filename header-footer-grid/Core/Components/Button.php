@@ -25,6 +25,7 @@ class Button extends Abstract_Component {
 	const COMPONENT_ID = 'button_base';
 	const LINK_ID      = 'link_setting';
 	const TEXT_ID      = 'text_setting';
+	const STYLE_ID     = 'style_setting';
 
 	/**
 	 * Default spacing value
@@ -87,8 +88,6 @@ class Button extends Abstract_Component {
 	 * @access  public
 	 */
 	public function add_settings() {
-
-
 		SettingsManager::get_instance()->add(
 			[
 				'id'                => self::LINK_ID,
@@ -116,6 +115,73 @@ class Button extends Abstract_Component {
 			]
 		);
 
+
+		$defaults = [
+			'type'            => 'fill',
+			'background'      => '',
+			'backgroundHover' => '',
+			'text'            => '',
+			'textHover'       => '',
+			'borderRadius'    => 3,
+			'borderWidth'     => 1,
+		];
+		SettingsManager::get_instance()->add(
+			[
+				'id'                => self::STYLE_ID,
+				'group'             => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'               => SettingsManager::TAB_STYLE,
+				'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
+				'default'           => $defaults,
+				'sanitize_callback' => 'neve_sanitize_button_appearance',
+				'label'             => __( 'Appearance', 'neve' ),
+				'type'              => 'neve_button_appearance',
+				'section'           => $this->section,
+			]
+		);
+	}
+
+	/**
+	 * Method to add Component css styles.
+	 *
+	 * @param array $css_array An array containing css rules.
+	 *
+	 * @return array
+	 * @since   1.0.0
+	 * @access  public
+	 */
+	public function add_style( array $css_array = array() ) {
+		$style = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::STYLE_ID );
+		if ( ! empty( $style ) ) {
+			if ( ! empty( $style['background'] ) ) {
+				$css_array[ $this->default_selector ]['background-color'] = $style['background'];
+			}
+			if ( ! empty( $style['backgroundHover'] ) ) {
+				$css_array[ $this->default_selector . ':hover' ]['background-color'] = $style['backgroundHover'];
+			}
+			if ( ! empty( $style['text'] ) ) {
+				$css_array[ $this->default_selector ]['color'] = $style['text'];
+			}
+			if ( ! empty( $style['textHover'] ) ) {
+				$css_array[ $this->default_selector . ':hover' ]['color'] = $style['textHover'];
+			}
+			if ( ! empty( $style['borderRadius'] ) || $style['borderRadius'] === 0 ) {
+				$css_array[ $this->default_selector ]['border-radius'] = $style['borderRadius'] . 'px';
+			}
+
+			if ( $style['type'] === 'outline' ) {
+				if ( ! empty( $style['text'] ) ) {
+					$css_array[ $this->default_selector ]['border-color'] = $style['text'];
+				}
+				if ( ! empty( $style['textHover'] ) ) {
+					$css_array[ $this->default_selector . ':hover' ]['border-color'] = $style['textHover'];
+				}
+				if ( ! empty( $style['borderWidth'] ) ) {
+					$css_array[ $this->default_selector ]['border'] = $style['borderWidth'] . 'px solid';
+				}
+			}
+		}
+
+		return parent::add_style( $css_array );
 	}
 
 	/**
