@@ -17,7 +17,7 @@
   "author": "ThemeIsle <friends@themeisle.com>",
   "license": "GPL-2.0+",
   "devDependencies": {
-    "@babel/cli": "^7.7.4",
+    "@babel/cli": "^7.7.5",
     "@babel/core": "^7.7.5",
     "@babel/plugin-transform-runtime": "^7.7.4",
     "@babel/polyfill": "^7.7.0",
