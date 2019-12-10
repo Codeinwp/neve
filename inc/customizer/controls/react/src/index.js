@@ -1,5 +1,6 @@
 /* jshint esversion: 6 */
 /* global wp */
+import { init as initDynamicFields } from './dynamic-fields/index.js';
 import { ToggleControl } from './toggle/Control.js';
 import { BackgroundControl } from './background/Control.js';
 import { SpacingControl } from './spacing/Control.js';
@@ -15,7 +16,7 @@ wp.customize.controlConstructor.neve_toggle_control = ToggleControl;
 wp.customize.controlConstructor.neve_background_control = BackgroundControl;
 wp.customize.controlConstructor.neve_spacing = SpacingControl;
 wp.customize.controlConstructor.neve_typeface_control = TypefaceControl;
-wp.customize.controlConstructor.neve_font_family_control= FontFamilyControl;
+wp.customize.controlConstructor.neve_font_family_control = FontFamilyControl;
 wp.customize.controlConstructor.neve_radio_buttons_control = RadioButtonsControl;
 wp.customize.controlConstructor.neve_button_appearance = ButtonAppearanceControl;
 wp.customize.controlConstructor.neve_range_control = RangeControl;
@@ -30,4 +31,5 @@ window.addEventListener( 'load', () => {
 		} );
 		document.dispatchEvent( event );
 	} );
+	initDynamicFields();
 } );

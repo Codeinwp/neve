@@ -570,6 +570,7 @@
 .large-buttons .neve-radio-icons {
   .components-toolbar button {
     height: 50px;
+
     svg {
       height: 30px;
       padding: 7px;
@@ -611,6 +612,45 @@
     .components-range-control__number {
       width: 25%;
       margin-left: 5%;
+    }
+  }
+}
+
+
+.neve-has-dynamic-tag-selector {
+  position: relative;
+
+  > input {
+    padding-right: 30px;
+  }
+
+  &.customize-control-textarea .neve-dynamic-tag-selector {
+    bottom: 80px;
+  }
+
+  .neve-dynamic-tag-selector {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    .components-dropdown-menu {
+      padding: 0 !important;
+
+      button {
+        svg {
+          opacity: .75;
+        }
+
+        &:hover, &:active {
+          border-color: transparent !important;
+          box-shadow: none !important;
+          background: transparent !important;
+
+          svg {
+            opacity: 1;
+          }
+        }
+      }
     }
   }
 }

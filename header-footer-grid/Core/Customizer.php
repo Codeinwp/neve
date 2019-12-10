@@ -77,6 +77,57 @@ class Customizer {
 		}
 
 		add_filter( 'body_class', array( $this, 'hfg_body_classes' ) );
+		add_filter( 'neve_react_controls_localization', array( $this, 'add_dynamic_tags_options' ) );
+	}
+
+	/**x
+	 * Add the dynamic tags options.
+	 *
+	 * @param array $array the localized array.
+	 *
+	 * @return mixed
+	 */
+	public function add_dynamic_tags_options( $array ) {
+		$options = array(
+			'strings' => array(
+				'current_single_title'   => __( 'Current Single Title', 'neve' ),
+				'current_single_excerpt' => __( 'Current Single Excerpt', 'neve' ),
+				'archive_description'    => __( 'Archive Description', 'neve' ),
+				'archive_title'          => __( 'Archive Title', 'neve' ),
+				'site_title'             => __( 'Site Title', 'neve' ),
+				'site_tagline'           => __( 'Site Tagline', 'neve' ),
+				'author_bio'             => __( 'Author Bio', 'neve' ),
+				'author_name'            => __( 'Author Name', 'neve' ),
+			),
+			'urls'    => array(
+				'current_single_url' => __( 'Current Single URL', 'neve' ),
+				'home_url'           => __( 'Home URL', 'neve' ),
+				'archive_url'        => __( 'Archive URL', 'neve' ),
+				'author_url'         => __( 'Author URL', 'neve' ),
+			),
+		);
+
+		if ( class_exists( 'WooCommerce', false ) ) {
+			$options['strings'] = array_merge(
+				$options['strings'],
+				[
+					'product_price' => __( 'Product Price', 'neve' ),
+					'product_title' => __( 'Product Title', 'neve' ),
+				]
+			);
+
+			$options['urls'] = array_merge(
+				$options['urls'],
+				[
+					'cart_link'     => __( 'Cart URL', 'neve' ),
+					'checkout_link' => __( 'Checkout URL', 'neve' ),
+				]
+			);
+		}
+
+		$array['dynamicTags']['options'] = $options;
+
+		return $array;
 	}
 
 	/**

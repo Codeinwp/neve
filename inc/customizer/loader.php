@@ -101,7 +101,11 @@ class Loader {
 			apply_filters(
 				'neve_react_controls_localization',
 				array(
-					'fonts' => array(
+					'dynamicTags' => array(
+						'controls' => array(),
+						'options'  => array(),
+					),
+					'fonts'       => array(
 						'System' => neve_get_standard_fonts(),
 						'Google' => neve_get_google_fonts(),
 					),
