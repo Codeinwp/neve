@@ -34,7 +34,7 @@ $item_classes = join( ' ', $item_classes );
 	?>
 	<?php if ( is_customize_preview() ) { ?>
 		<span class="item--preview-name">
-			<span class="dashicons dashicons-admin-generic"></span>
+			<span class="dashicons dashicons-edit"></span>
 		</span>
 	<?php } ?>
 </div>
