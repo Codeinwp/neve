@@ -80,7 +80,7 @@ class Customizer {
 		add_filter( 'neve_react_controls_localization', array( $this, 'add_dynamic_tags_options' ) );
 	}
 
-	/**x
+	/**
 	 * Add the dynamic tags options.
 	 *
 	 * @param array $array the localized array.
@@ -88,41 +88,103 @@ class Customizer {
 	 * @return mixed
 	 */
 	public function add_dynamic_tags_options( $array ) {
-		$options = array(
-			'strings' => array(
-				'current_single_title'   => __( 'Current Single Title', 'neve' ),
-				'current_single_excerpt' => __( 'Current Single Excerpt', 'neve' ),
-				'archive_description'    => __( 'Archive Description', 'neve' ),
-				'archive_title'          => __( 'Archive Title', 'neve' ),
-				'site_title'             => __( 'Site Title', 'neve' ),
-				'site_tagline'           => __( 'Site Tagline', 'neve' ),
-				'author_bio'             => __( 'Author Bio', 'neve' ),
-				'author_name'            => __( 'Author Name', 'neve' ),
-			),
-			'urls'    => array(
-				'current_single_url' => __( 'Current Single URL', 'neve' ),
-				'home_url'           => __( 'Home URL', 'neve' ),
-				'archive_url'        => __( 'Archive URL', 'neve' ),
-				'author_url'         => __( 'Author URL', 'neve' ),
-			),
-		);
+		$options = [
+			[
+				'label'    => __( 'Single', 'neve' ),
+				'controls' => [
+					'current_single_title'   => [
+						'label' => __( 'Current Single Title', 'neve' ),
+						'type'  => 'string',
+					],
+					'current_single_excerpt' => [
+						'label' => __( 'Current Single Excerpt', 'neve' ),
+						'type'  => 'string',
+					],
+					'current_single_url'     => [
+						'label' => __( 'Current Single URL', 'neve' ),
+						'type'  => 'url',
+					],
+				],
+			],
+			[
+				'label'    => __( 'Archive', 'neve' ),
+				'controls' => [
+					'archive_description' => [
+						'label' => __( 'Archive Description', 'neve' ),
+						'type'  => 'string',
+					],
+					'archive_title'       => [
+						'label' => __( 'Archive Title', 'neve' ),
+						'type'  => 'string',
+					],
+					'archive_url'         => [
+						'label' => __( 'Archive URL', 'neve' ),
+						'type'  => 'url',
+					],
+				],
+			],
+			[
+				'label'    => __( 'Author', 'neve' ),
+				'controls' => [
+					'author_bio'  => [
+						'label' => __( 'Author Bio', 'neve' ),
+						'type'  => 'string',
+					],
+					'author_name' => [
+						'label' => __( 'Author Name', 'neve' ),
+						'type'  => 'string',
+					],
+					'author_url'  => [
+						'label' => __( 'Author URL', 'neve' ),
+						'type'  => 'url',
+					],
+				],
+			],
+			[
+				'label'    => __( 'Global', 'neve' ),
+				'controls' => [
+					'site_title'   => [
+						'label' => __( 'Site Title', 'neve' ),
+						'type'  => 'string',
+					],
+					'site_tagline' => [
+						'label' => __( 'Site Tagline', 'neve' ),
+						'type'  => 'string',
+					],
+					'home_url'     => [
+						'label' => __( 'Home URL', 'neve' ),
+						'type'  => 'url',
+					],
+					'current_year' => [
+						'label' => __( 'Current Year', 'neve' ),
+						'type'  => 'string',
+					],
+				],
+			],
+		];
 
 		if ( class_exists( 'WooCommerce', false ) ) {
-			$options['strings'] = array_merge(
-				$options['strings'],
-				[
-					'product_price' => __( 'Product Price', 'neve' ),
-					'product_title' => __( 'Product Title', 'neve' ),
-				]
-			);
-
-			$options['urls'] = array_merge(
-				$options['urls'],
-				[
-					'cart_link'     => __( 'Cart URL', 'neve' ),
-					'checkout_link' => __( 'Checkout URL', 'neve' ),
-				]
-			);
+			$options[] = [
+				'label'    => __( 'WooCommerce', 'neve' ),
+				'controls' => [
+					'product_price' => [
+						'label' => __( 'Product Price', 'neve' ),
+						'type'  => 'string',
+					],
+					'product_title' => [
+						'label' => __( 'Product Title', 'neve' ),
+						'type'  => 'string',
+					],
+					'cart_link'     => [
+						'label' => __( 'Cart URL', 'neve' ),
+						'type'  => 'url',
+					],
+					'checkout_link' => [
+						'label' => __( 'Checkout URL', 'neve' ),
+						'type'  => 'url',
+					],
+				],
+			];
 		}
 
 		$array['dynamicTags']['options'] = $options;

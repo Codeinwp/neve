@@ -246,6 +246,10 @@ function media_from_array( $array = array(), $size = 'full' ) {
  * @return string
  */
 function parse_dynamic_tags( $string ) {
+	if ( ! preg_match( '/\\{\\w+\\}/', $string ) ) {
+
+		return $string;
+	}
 	$author_id = get_post_field( 'post_author', get_the_ID() );
 	$tags      = [
 		'{current_single_title}'   => is_singular() ? get_the_title() : '',
@@ -260,6 +264,7 @@ function parse_dynamic_tags( $string ) {
 		'{home_url}'               => get_home_url(),
 		'{archive_url}'            => get_post_type_archive_link( get_post_field( 'post_type' ) ),
 		'{author_url}'             => get_author_posts_url( $author_id ),
+		'{current_year}'           => date( 'Y' ),
 	];
 
 	if ( class_exists( 'WooCommerce' ) ) {
@@ -273,7 +278,7 @@ function parse_dynamic_tags( $string ) {
 				'{product_title}' => $title,
 				'{cart_link}'     => wc_get_cart_url(),
 				'{checkout_link}' => wc_get_checkout_url(),
-			] 
+			]
 		);
 	}
 

@@ -3,8 +3,8 @@
 import PropTypes from 'prop-types';
 
 const { __ } = wp.i18n;
-const { Component } = wp.element;
-const { DropdownMenu } = wp.components;
+const { Component, Fragment } = wp.element;
+const { DropdownMenu, MenuGroup, MenuItem } = wp.components;
 
 class DynamicFieldInserter extends Component {
 	constructor(props) {
@@ -13,15 +13,32 @@ class DynamicFieldInserter extends Component {
 	}
 
 	getOptions() {
-		const allOptions = NeveReactCustomize.dynamicTags.options;
+		const { onSelect, allowedOptionsTypes } = this.props,
+				allOptions = NeveReactCustomize.dynamicTags.options;
+
 		let options = [];
-		this.props.availableOptions.forEach( (optionGroup, index) => {
-			Object.keys( allOptions[optionGroup] ).forEach( (optionId, index) => {
-				options.push( {
-					title: allOptions[optionGroup][optionId],
-					onClick: () => this.props.onSelect( optionId, optionGroup )
-				} );
-			} );
+		allOptions.forEach( (optionGroup, index) => {
+			let children = [];
+			Object.keys( optionGroup.controls ).
+					forEach( (slug, index) => {
+								if ( !allowedOptionsTypes.includes(
+										optionGroup.controls[slug].type ) ) {
+									return false;
+								}
+								children.push( <MenuItem
+										onClick={() => {
+											onSelect( slug, optionGroup.controls[slug].type );
+										}}>
+									{optionGroup.controls[slug].label}
+								</MenuItem> );
+							}
+					);
+
+			options.push(
+					<MenuGroup label={optionGroup.label}>
+						{children}
+					</MenuGroup>
+			);
 		} );
 		return options;
 	}
@@ -30,21 +47,19 @@ class DynamicFieldInserter extends Component {
 		return (
 				<DropdownMenu
 						icon="image-filter"
-						label={__( 'Insert Dynamic Tag', 'neve' )}
-						controls={this.getOptions()}
-				/>
+						label={__( 'Insert Dynamic Tag', 'neve' )}>
+					{() => (
+							<Fragment>
+								{this.getOptions()}
+							</Fragment>
+					)}
+				</DropdownMenu>
 		);
-	}
-
-	toggleDropdown() {
-		this.setState( prevState => ( {
-			opened: !prevState.opened
-		} ) );
 	}
 }
 
 DynamicFieldInserter.propTypes = {
-	availableOptions: PropTypes.array.isRequired,
+	allowedOptionsTypes: PropTypes.array.isRequired,
 	onSelect: PropTypes.func.isRequired
 };
 

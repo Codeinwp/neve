@@ -144,7 +144,7 @@ class CustomHtml extends Abstract_Component {
 				'description'        => __( 'Arbitrary HTML code. It supports also shortcodes.', 'neve' ),
 				'type'               => 'textarea',
 				'section'            => $this->section,
-				'use_dynamic_fields' => array( 'strings', 'urls' ),
+				'use_dynamic_fields' => array( 'string', 'url' ),
 			]
 		);
 

@@ -99,7 +99,7 @@ class Button extends Abstract_Component {
 				'label'              => __( 'Link', 'neve' ),
 				'type'               => 'text',
 				'section'            => $this->section,
-				'use_dynamic_fields' => array( 'urls' ),
+				'use_dynamic_fields' => array( 'url' ),
 			]
 		);
 		SettingsManager::get_instance()->add(
@@ -113,7 +113,7 @@ class Button extends Abstract_Component {
 				'label'              => __( 'Text', 'neve' ),
 				'type'               => 'text',
 				'section'            => $this->section,
-				'use_dynamic_fields' => array( 'strings' ),
+				'use_dynamic_fields' => array( 'string' ),
 			]
 		);
 
