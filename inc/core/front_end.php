@@ -845,6 +845,21 @@ class Front_End {
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/10/neve-sales.jpg',
 						'title'      => 'Sales Funnel',
 					),
+					'neve-beaver-church'                => array(
+						'url'        => 'https://demo.themeisle.com/neve-church-bb/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/10/neve-church.jpg',
+						'title'      => 'Church',
+					),
+					'neve-beaver-fashion-magazine'      => array(
+						'url'        => 'https://demo.themeisle.com/neve-fashion-magazine-bb/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/10/neve-fashion-mag.jpg',
+						'title'      => 'Fashion Magazine',
+					),
+					'neve-beaver-winery'                => array(
+						'url'        => 'https://demo.themeisle.com/neve-winery-bb/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/11/neve-winery.png',
+						'title'      => 'Winery - Wine Shop',
+					),
 					'neve-beaver-coworking'             => array(
 						'url'        => 'https://demo.themeisle.com/neve-coworking-bb/',
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/11/neve-coworking.jpg',
@@ -1051,6 +1066,21 @@ class Front_End {
 						'url'        => 'https://demo.themeisle.com/neve-escape-room/',
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/11/neve-escape-room.jpg',
 						'title'      => 'Escape Room',
+					),
+					'neve-cv'                    => array(
+						'url'        => 'https://demo.themeisle.com/neve-cv/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/12/neve-resume.jpg',
+						'title'      => 'Resume',
+					),
+					'neve-wellness'              => array(
+						'url'        => 'https://demo.themeisle.com/neve-wellness/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/12/neve-wellness.jpg',
+						'title'      => 'Wellness Spa',
+					),
+					'neve-courses'               => array(
+						'url'        => 'https://demo.themeisle.com/neve-courses/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/12/neve-courses.jpg',
+						'title'      => 'Online Courses',
 					),
 				),
 				'brizy'            => array(

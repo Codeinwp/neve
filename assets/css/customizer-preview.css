@@ -26,17 +26,16 @@
   position: absolute;
   top: 100%;
   left: 0;
-  display: none;
   background: #0073aa;
   color: #fff;
-  padding: 5px 8px 6px !important;
+  padding: 5px !important;
   font-size: 12px !important;
   font-weight: 600 !important;
   line-height: 14px !important;
   letter-spacing: normal !important;
   cursor: pointer;
-  border-bottom-left-radius: 2px;
-  border-bottom-right-radius: 2px;
+  border-radius: 0;
+  display: none;
 }
 
 .customize-previewing .builder-item-focus .edit-row-action {

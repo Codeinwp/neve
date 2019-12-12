@@ -57,20 +57,10 @@ HFG.prototype.init = function(skipSidebar = false) {
  */
 HFG.prototype.toggleMenuSidebar = function(toggle) {
 	let buttons = document.querySelectorAll( '.menu-mobile-toggle' );
-
 	removeClass( document.body, 'hiding-header-menu-sidebar' );
 
-	if ( typeof toggle === 'undefined' ) {
-		toggleClass( document.body, 'is-menu-sidebar' );
-		toggleClass( buttons, 'is-active' );
-	}
-
-	if ( toggle === true ) {
-		addClass( document.body, 'is-menu-sidebar' );
-		addClass( buttons, 'is-active' );
-	}
-
-	if ( toggle === false ) {
+	if ( document.body.classList.contains( 'is-menu-sidebar' ) ||
+			toggle === false ) {
 		addClass( document.body, 'hiding-header-menu-sidebar' );
 		removeClass( document.body, 'is-menu-sidebar' );
 		removeClass( buttons, 'is-active' );
@@ -78,6 +68,9 @@ HFG.prototype.toggleMenuSidebar = function(toggle) {
 		setTimeout( function() {
 			removeClass( document.body, 'hiding-header-menu-sidebar' );
 		}.bind( this ), 1000 );
+	} else {
+		addClass( document.body, 'is-menu-sidebar' );
+		addClass( buttons, 'is-active' );
 	}
 };
 
