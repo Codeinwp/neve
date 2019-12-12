@@ -18,6 +18,24 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
+### 2.5.3 - 2019-12-05  ###
+
+* [Feat] New option to allow both logo and site and tagline in different layouts
+* [Feat] New dedicated typography controls for the Primary, Secondary and Footer menus, HTML, Copyright, Cart and Search icons components on the header builder
+* [Fix] Embeds compatibility issues with Jetpack and the Embed Plus for YouTube – Gallery, [Fix] Channel, Playlist, Live Stream plugin
+* [Fix] Excerpt compatibility with the Seriously Simple Podcasting plugin
+* [Fix] Removed list styling from the All Products block in the WooCommerce Block plugin
+* [Fix] Content width live preview on mobile devices
+* [Fix] Replaced the Last menu item option with dedicated components for new users
+* [Fix] Removed Neve Visual Integration causing issues in the editor
+* [Fix] Copyright component striping spaces before and after links
+* [Fix] Replaced buttons old padding control with a new version
+* [Fix] Padding for the Menu Icon component
+* [Fix] Lists spacing alignment
+* [Fix] Updated Google Fonts list
+* [Fix] Getting post meta value for single product page meta-box
+
+
 ### 2.5.2 - 2019-11-19  ###
 
 * [Feat] Improved mobile header/footer builder UX
@@ -883,6 +901,3 @@ Starter Sites screenshots resources:
 * https://mystock.themeisle.com/photo/browser-tabs/
 * https://mystock.themeisle.com/photo/code-in-wp/
 * https://mystock.themeisle.com/photo/tourists/
-
-
-
