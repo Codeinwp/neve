@@ -13,7 +13,7 @@ namespace HFG;
 
 use HFG\Core\Builder\Abstract_Builder;
 use HFG\Core\Settings\Manager;
-use Neve\Views\Pluggable\Magic_Tags;
+use HFG\Core\Magic_Tags;
 
 /**
  * Return registered builders.

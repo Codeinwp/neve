@@ -5,7 +5,7 @@
  * @package Neve
  */
 
-namespace Neve\Views\Pluggable;
+namespace HFG\Core;
 
 /**
  * Class Short_Codes
@@ -14,25 +14,18 @@ namespace Neve\Views\Pluggable;
  */
 class Magic_Tags {
 	/**
+	 * The magic tags options used for Customizer.
+	 *
+	 * @var array
+	 */
+	private $options = [];
+
+	/**
 	 * Available short codes.
 	 *
 	 * @var array
 	 */
-	private $magic_tags = [
-		'current_single_title',
-		'current_single_excerpt',
-		'archive_description',
-		'archive_title',
-		'site_title',
-		'site_tagline',
-		'author_bio',
-		'author_name',
-		'current_single_url',
-		'home_url',
-		'archive_url',
-		'author_url',
-		'current_year',
-	];
+	private $magic_tags = [];
 
 	/**
 	 * Magic tag regex.
@@ -67,6 +60,7 @@ class Magic_Tags {
 	 * @return void
 	 */
 	public function __construct() {
+		$this->setup_config();
 		if ( class_exists( 'WooCommerce', false ) ) {
 			$this->magic_tags = array_merge(
 				$this->magic_tags,
@@ -293,5 +287,124 @@ class Magic_Tags {
 		}
 
 		return wc_get_checkout_url();
+	}
+
+	/**
+	 * Get the options array.
+	 *
+	 * @return mixed
+	 */
+	public function get_options() {
+		return $this->options;
+	}
+
+	/**
+	 * Setup the magic tags config and options array.
+	 */
+	private function setup_config() {
+		$this->options = [
+			[
+				'label'    => __( 'Single', 'neve' ),
+				'controls' => [
+					'current_single_title'   => [
+						'label' => __( 'Current Single Title', 'neve' ),
+						'type'  => 'string',
+					],
+					'current_single_excerpt' => [
+						'label' => __( 'Current Single Excerpt', 'neve' ),
+						'type'  => 'string',
+					],
+					'current_single_url'     => [
+						'label' => __( 'Current Single URL', 'neve' ),
+						'type'  => 'url',
+					],
+				],
+			],
+			[
+				'label'    => __( 'Archive', 'neve' ),
+				'controls' => [
+					'archive_description' => [
+						'label' => __( 'Archive Description', 'neve' ),
+						'type'  => 'string',
+					],
+					'archive_title'       => [
+						'label' => __( 'Archive Title', 'neve' ),
+						'type'  => 'string',
+					],
+					'archive_url'         => [
+						'label' => __( 'Archive URL', 'neve' ),
+						'type'  => 'url',
+					],
+				],
+			],
+			[
+				'label'    => __( 'Author', 'neve' ),
+				'controls' => [
+					'author_bio'  => [
+						'label' => __( 'Author Bio', 'neve' ),
+						'type'  => 'string',
+					],
+					'author_name' => [
+						'label' => __( 'Author Name', 'neve' ),
+						'type'  => 'string',
+					],
+					'author_url'  => [
+						'label' => __( 'Author URL', 'neve' ),
+						'type'  => 'url',
+					],
+				],
+			],
+			[
+				'label'    => __( 'Global', 'neve' ),
+				'controls' => [
+					'site_title'   => [
+						'label' => __( 'Site Title', 'neve' ),
+						'type'  => 'string',
+					],
+					'site_tagline' => [
+						'label' => __( 'Site Tagline', 'neve' ),
+						'type'  => 'string',
+					],
+					'home_url'     => [
+						'label' => __( 'Home URL', 'neve' ),
+						'type'  => 'url',
+					],
+					'current_year' => [
+						'label' => __( 'Current Year', 'neve' ),
+						'type'  => 'string',
+					],
+				],
+			],
+		];
+
+		if ( class_exists( 'WooCommerce', false ) ) {
+			$this->options[] = [
+				'label'    => __( 'WooCommerce', 'neve' ),
+				'controls' => [
+					'product_price' => [
+						'label' => __( 'Product Price', 'neve' ),
+						'type'  => 'string',
+					],
+					'product_title' => [
+						'label' => __( 'Product Title', 'neve' ),
+						'type'  => 'string',
+					],
+					'cart_link'     => [
+						'label' => __( 'Cart URL', 'neve' ),
+						'type'  => 'url',
+					],
+					'checkout_link' => [
+						'label' => __( 'Checkout URL', 'neve' ),
+						'type'  => 'url',
+					],
+				],
+			];
+		}
+
+		foreach ( $this->options as $magic_tag_group => $args ) {
+			foreach ( $args['controls'] as $tag => $tag_args ) {
+				$this->magic_tags[] = $tag;
+			}
+		}
 	}
 }
