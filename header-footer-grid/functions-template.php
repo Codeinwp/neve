@@ -13,6 +13,7 @@ namespace HFG;
 
 use HFG\Core\Builder\Abstract_Builder;
 use HFG\Core\Settings\Manager;
+use Neve\Views\Pluggable\Magic_Tags;
 
 /**
  * Return registered builders.
@@ -246,45 +247,7 @@ function media_from_array( $array = array(), $size = 'full' ) {
  * @return string
  */
 function parse_dynamic_tags( $string ) {
-	if ( ! preg_match( '/\\{\\w+\\}/', $string ) ) {
-
-		return $string;
-	}
-	$author_id = get_post_field( 'post_author', get_the_ID() );
-	$tags      = [
-		'{current_single_title}'   => is_singular() ? get_the_title() : '',
-		'{current_single_excerpt}' => is_singular() ? get_the_excerpt() : '',
-		'{archive_description}'    => get_the_archive_description(),
-		'{archive_title}'          => html_entity_decode( get_the_archive_title() ),
-		'{site_title}'             => get_bloginfo( 'title' ),
-		'{site_tagline}'           => get_bloginfo( 'description' ),
-		'{author_bio}'             => get_the_author_meta( 'description', $author_id ),
-		'{author_name}'            => get_the_author_meta( 'display_name', $author_id ),
-		'{current_single_url}'     => is_singular() ? get_permalink() : '',
-		'{home_url}'               => get_home_url(),
-		'{archive_url}'            => get_post_type_archive_link( get_post_field( 'post_type' ) ),
-		'{author_url}'             => get_author_posts_url( $author_id ),
-		'{current_year}'           => date( 'Y' ),
-	];
-
-	if ( class_exists( 'WooCommerce' ) ) {
-		$product = wc_get_product( get_the_ID() );
-		$price   = is_singular( 'product' ) ? wc_price( $product->get_price() ) : '';
-		$title   = is_singular( 'product' ) ? $product->get_title() : '';
-		$tags    = array_merge(
-			$tags,
-			[
-				'{product_price}' => $price,
-				'{product_title}' => $title,
-				'{cart_link}'     => wc_get_cart_url(),
-				'{checkout_link}' => wc_get_checkout_url(),
-			]
-		);
-	}
-
-	$string = strtr( $string, $tags );
-
-	return $string;
+	return Magic_Tags::get_instance()->do_magic_tags( $string );
 }
 
 

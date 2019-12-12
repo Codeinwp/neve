@@ -11,6 +11,7 @@ export const init = function() {
 		return false;
 	}
 	const controls = NeveReactCustomize.dynamicTags.controls;
+	NeveReactCustomize.fieldSelection = {};
 	Object.keys( controls ).forEach( function(controlId, index) {
 		let control = wp.customize.control( controlId ),
 				container = control.container[0],
@@ -20,6 +21,16 @@ export const init = function() {
 		dynamicControlWrap.classList.add( 'neve-dynamic-tag-selector' );
 		container.classList.add( 'neve-has-dynamic-tag-selector' );
 		container.appendChild( dynamicControlWrap );
+
+		const input = document.querySelector(
+				`[data-customize-setting-link="${control.id}"]` );
+
+		input.addEventListener( 'focusout', function(e) {
+			NeveReactCustomize.fieldSelection[controlId] = {
+				start: e.target.selectionStart,
+				end: e.target.selectionEnd
+			};
+		} );
 
 		ReactDOM.render(
 				<DynamicFieldInserter
@@ -52,9 +63,18 @@ const addToField = function(magicTag, control, optionType) {
 		tag = `{${magicTag}}`;
 	}
 
-	input.value = ( input.value === '#' && optionType === 'url' ) ?
-			tag :
-			input.value + tag;
+	if ( optionType === 'url' && input.value === '#' ) {
+		input.value = tag;
+	} else if ( NeveReactCustomize.fieldSelection[control.id] ) {
+		let { start, end } = NeveReactCustomize.fieldSelection[control.id],
+				length = input.value.length;
+		input.value =
+				input.value.substring( 0, start ) + tag +
+				input.value.substring( end, length );
+	} else {
+		input.value += tag;
+	}
+	NeveReactCustomize.fieldSelection[control.id] = false;
 	input.focus();
 	input.dispatchEvent( new Event( 'change' ) );
 };
