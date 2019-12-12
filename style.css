@@ -2724,13 +2724,6 @@ audio {
 }
 
 /* Hiding Menu Sidebar animation. */
-.hiding-header-menu-sidebar {
-  overflow-x: hidden;
-  position: relative;
-  width: 100%;
-  display: block;
-}
-
 .hiding-header-menu-sidebar.menu_sidebar_slide_left .header-menu-sidebar {
   height: 100%;
   transform: translateX(-100%);
