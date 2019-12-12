@@ -224,17 +224,21 @@
   font-size: .85em;
 }
 
-#editor .editor-styles-wrapper {
+#editor .edit-post-layout__content .editor-styles-wrapper {
   margin: 0 auto;
   width: 100%;
 }
 
-#editor .editor-styles-wrapper .editor-post-title .wp-block {
+#editor .edit-post-layout__content .editor-styles-wrapper .editor-post-title .wp-block {
   max-width: 100%;
 }
 
-#editor .editor-styles-wrapper .wp-block {
+#editor .edit-post-layout__content .editor-styles-wrapper .wp-block {
   max-width: 100%;
+}
+
+#editor .block-editor-block-preview__container .wp-block {
+  text-align: center;
 }
 
 @media (min-width: 769px) {
