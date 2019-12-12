@@ -850,3 +850,36 @@ Starter Sites screenshots resources:
 * https://mystock.themeisle.com/photo/code-in-wp/
 * https://mystock.themeisle.com/photo/photographer-2/
 * https://mystock.themeisle.com/photo/browser-tabs/
+
+- Fashion Model Agency
+* https://mystock.themeisle.com/photo/thinking-time/
+* https://mystock.themeisle.com/photo/bride-and-groom/
+* https://mystock.themeisle.com/photo/mannequin/
+* https://stocksnap.io/photo/WB9WHQU68Q
+* https://stocksnap.io/photo/F08ZV0M412
+* https://stocksnap.io/photo/Q8FQMQWYKB
+* https://stocksnap.io/photo/D626O6RC44
+
+- IT Technology Agency
+* https://mystock.themeisle.com/photo/programming-laptop-2/
+* https://mystock.themeisle.com/photo/couple-jogging-together-along-the-river-coas/
+* https://mystock.themeisle.com/photo/new-york-skyscrapers-on-a-cloudy-wheather/
+
+- Christmas Market
+* https://stocksnap.io/photo/A8CFE9WADG
+* https://mystock.themeisle.com/photo/young-boy-attending-a-concert/
+* https://mystock.themeisle.com/photo/pool-party/
+
+- Podcast
+* https://mystock.themeisle.com/photo/tour-eiffel/
+* https://mystock.themeisle.com/photo/new-york-skyscrapers-on-a-cloudy-wheather/
+* https://mystock.themeisle.com/photo/harbour-air-seaplanes-docked-in-maldives-2/
+* https://mystock.themeisle.com/photo/fancy-restaurant/
+* https://mystock.themeisle.com/photo/registration/
+
+- Digital Agency
+* https://stocksnap.io/photo/RCFX768X06
+* https://mystock.themeisle.com/photo/bucharest-at-night/
+* https://mystock.themeisle.com/photo/browser-tabs/
+* https://mystock.themeisle.com/photo/code-in-wp/
+* https://mystock.themeisle.com/photo/tourists/
