@@ -206,7 +206,8 @@
     .neve-responsive-sizing .components-toolbar button {
       padding: 0;
       height: 30px;
-      border: 1px solid;
+      border: none !important;
+      outline: 2px solid transparent;
       margin-left: -1px; }
       .neve-responsive-sizing .components-toolbar button.link, .neve-responsive-sizing .components-toolbar button.link > svg {
         border-bottom-left-radius: 0;
@@ -227,7 +228,8 @@
         text-align: center;
         justify-content: center;
         align-items: center;
-        display: flex; }
+        display: flex;
+        box-shadow: inset 0 0 0 1px #555d66, inset 0 0 0 2px #fff; }
   .neve-responsive-sizing .nv-sizing-item input[type="number"] {
     border: 1px solid #999;
     border-radius: 0; }

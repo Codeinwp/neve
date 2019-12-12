@@ -332,7 +332,8 @@
     button {
       padding: 0;
       height: 30px;
-      border: 1px solid;
+      border: none !important;
+      outline: 2px solid transparent;
       margin-left: -1px;
 
       &.link, &.link > svg {
@@ -369,6 +370,7 @@
         justify-content: center;
         align-items: center;
         display: flex;
+        box-shadow: inset 0 0 0 1px #555d66, inset 0 0 0 2px #fff;
       }
     }
   }
