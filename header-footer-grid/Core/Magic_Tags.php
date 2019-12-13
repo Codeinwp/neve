@@ -87,12 +87,12 @@ class Magic_Tags {
 			return $input;
 		}
 
-		if ( ! preg_match( '/\\{\\w+\\}/', $input ) ) {
+		if ( ! preg_match( '/\\{\\s?\\w+\\s?\\}/', $input ) ) {
 			return $input;
 		}
 
 		return preg_replace_callback(
-			'/\\{\b(?:' . self::$magic_tag_regex . ')\b\\}/',
+			'/\\{\s?\b(?:' . self::$magic_tag_regex . ')\b\s?\\}/',
 			[
 				$this,
 				'do_magic_tag',
@@ -113,7 +113,7 @@ class Magic_Tags {
 			$tag = reset( $tag );
 		}
 
-		$tag = trim( $tag, '{}' );
+		$tag = trim( $tag, '{} ' );
 
 		if ( ! method_exists( $this, $tag ) ) {
 			return '';
