@@ -8,8 +8,6 @@ const {
 const {
 	Button,
 	Dashicon,
-	Dropdown,
-	IconButton,
 	Tooltip,
 	ButtonGroup
 } = wp.components;
@@ -44,9 +42,9 @@ class ResponsiveControl extends Component {
 		if ( !this.props.hideResponsive ) {
 			controlClasses += ' bordered';
 		}
-	if(  this.props.hideResponsive) {
-		return ('');
-	}
+		if ( this.props.hideResponsive ) {
+			return ( '' );
+		}
 		return (
 				<Fragment>
 					<div className={controlClasses}>
@@ -61,7 +59,9 @@ class ResponsiveControl extends Component {
 												<Tooltip text={deviceMap[device].tooltip}>
 													<Button
 															isTertiary
-															className={ (device === view ? 'active-device ' : '') + device}
+															className={( device === view ?
+																	'active-device ' :
+																	'' ) + device}
 															onClick={() => {
 																let event = new CustomEvent(
 																		'neveChangedRepsonsivePreview', {
