@@ -113,7 +113,11 @@ class Magic_Tags {
 			$tag = reset( $tag );
 		}
 
-		$tag = substr( $tag, 1, - 1 );
+		$tag = trim( $tag, '{}' );
+
+		if ( ! method_exists( $this, $tag ) ) {
+			return '';
+		}
 
 		return wp_kses_post( call_user_func( [ $this, $tag ] ) );
 	}
