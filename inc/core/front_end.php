@@ -1082,6 +1082,31 @@ class Front_End {
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/12/neve-courses.jpg',
 						'title'      => 'Online Courses',
 					),
+					'neve-model-agency'          => array(
+						'url'        => 'https://demo.themeisle.com/neve-model-agency/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/12/neve-model-agency.jpg',
+						'title'      => 'Fashion Model Agency',
+					),
+					'neve-it-company'            => array(
+						'url'        => 'https://demo.themeisle.com/neve-it-company/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/12/neve-it-solution.jpg',
+						'title'      => 'IT Technology Agency',
+					),
+					'neve-christmas-market'      => array(
+						'url'        => 'https://demo.themeisle.com/neve-christmas-market/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/12/neve-christmas.jpg',
+						'title'      => 'Christmas Market',
+					),
+					'neve-podcast'               => array(
+						'url'        => 'https://demo.themeisle.com/neve-podcast/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/12/neve-podcast.jpg',
+						'title'      => 'Podcast',
+					),
+					'neve-digital-agency'        => array(
+						'url'        => 'https://demo.themeisle.com/neve-digital-agency/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/12/neve-digital-agency.jpg',
+						'title'      => 'Digital Agency',
+					),
 				),
 				'brizy'            => array(
 					'neve-brizy-cafe'                 => array(

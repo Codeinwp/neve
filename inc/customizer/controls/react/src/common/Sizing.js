@@ -12,6 +12,7 @@ const { Component } = wp.element;
 class SizingControl extends Component {
 	constructor(props) {
 		super( props );
+		this.hasSetValues = this.hasSetValues.bind( this );
 	}
 
 	render() {
@@ -68,14 +69,14 @@ class SizingControl extends Component {
 	}
 
 	hasSetValues() {
-		let defaults = this.props.defaults;
+		const { defaults, options } = this.props;
 		if ( typeof defaults !== 'object' ) {
 			return parseFloat( defaults ) !==
-					parseFloat( this.props.options[0].value );
+					parseFloat( options[0].value );
 		}
-		return this.props.options.filter( option => {
-			return option.value !== defaults[option.type];
-		} ).length > 0;
+		return options.filter(
+				option => option.value !== defaults[option.type]
+		).length > 0;
 	}
 }
 
