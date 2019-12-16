@@ -49,7 +49,9 @@ describe( 'Header Row Background Control', function() {
 				find( 'button' ).
 				contains( 'Select' ).
 				click();
-		cy.get( '@bgCtrl' ).find( '.components-form-toggle__input' ).click();
+		cy.get( '@bgCtrl' ).
+				find( '.components-form-toggle__input' ).
+				click( { multiple: true } );
 		aliasRestRoutes();
 		cy.get( '#save' ).click();
 		cy.wait( '@customizerSave' ).then( (req) => {

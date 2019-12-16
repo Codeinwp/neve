@@ -178,6 +178,7 @@ describe( 'Typography Control', function() {
 		cy.get( '#wp-admin-bar-edit > a' ).click();
 
 		cy.get( '.block-editor-block-list__block[data-type="core/paragraph"] p' ).
+				first().
 				as( 'editorBody' );
 		// Test text transform.
 		cy.get( '@editorBody' ).
