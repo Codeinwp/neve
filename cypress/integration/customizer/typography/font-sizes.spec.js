@@ -28,9 +28,9 @@ function aliasRestRoutes() {
 }
 
 function changeNumberInputValue(input, value) {
-	cy.get( input ).type( '{backspace}{backspace}{leftarrow}' );
-	cy.get( input ).type( value );
-	cy.get( input ).type( '{rightarrow}{backspace}' );
+	cy.get( input ).
+			clear().
+			type( '{leftarrow}' + value + '{rightarrow}{backspace}' );
 }
 
 /**
@@ -171,5 +171,42 @@ describe( 'Typography Control', function() {
 					and( 'match',
 							new RegExp( setup.general.letterSpacing[device], 'g' ) );
 		} );
+	} );
+
+	it( 'Test Typography inside the Editor', function() {
+		cy.visit( '/markup-html-tags-and-formatting/' );
+		cy.get( '#wp-admin-bar-edit > a' ).click();
+
+		cy.get( '.block-editor-block-list__block[data-type="core/paragraph"] p' ).
+				as( 'editorBody' );
+		// Test text transform.
+		cy.get( '@editorBody' ).
+				should( 'have.css', 'text-transform' ).
+				and( 'match',
+						new RegExp( setup.general.transform.toLowerCase(), 'g' ) );
+
+		// Test font weight.
+		cy.get( '@editorBody' ).
+				should( 'have.css', 'font-weight' ).
+				and( 'match',
+						new RegExp( setup.general.weight, 'g' ) );
+
+		// Test font size.
+		cy.get( '@editorBody' ).
+				should( 'have.css', 'font-size' ).
+				and( 'match',
+						new RegExp( setup.general.fontSize['desktop'] + 'px', 'g' ) );
+
+		// Test line height.
+		cy.get( '@editorBody' ).
+				should( 'have.css', 'line-height' ).
+				and( 'match',
+						new RegExp( setup.general.lineHeight['desktop'], 'g' ) );
+
+		// Test letter spacing.
+		cy.get( '@editorBody' ).
+				should( 'have.css', 'letter-spacing' ).
+				and( 'match',
+						new RegExp( setup.general.letterSpacing['desktop'], 'g' ) );
 	} );
 } );
