@@ -133,17 +133,18 @@ class CustomHtml extends Abstract_Component {
 
 		SettingsManager::get_instance()->add(
 			[
-				'id'                => self::CONTENT_ID,
-				'group'             => $this->get_class_const( 'COMPONENT_ID' ),
-				'tab'               => SettingsManager::TAB_GENERAL,
-				'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
-				'sanitize_callback' => 'wp_kses_post',
-				'default'           => get_theme_mod( 'neve_top_bar_content', '' ),
-				'preview_default'   => '',
-				'label'             => __( 'HTML', 'neve' ),
-				'description'       => __( 'Arbitrary HTML code. It supports also shortcodes.', 'neve' ),
-				'type'              => 'textarea',
-				'section'           => $this->section,
+				'id'                 => self::CONTENT_ID,
+				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'                => SettingsManager::TAB_GENERAL,
+				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
+				'sanitize_callback'  => 'wp_kses_post',
+				'default'            => get_theme_mod( 'neve_top_bar_content', '' ),
+				'preview_default'    => '',
+				'label'              => __( 'HTML', 'neve' ),
+				'description'        => __( 'Arbitrary HTML code. It supports also shortcodes.', 'neve' ),
+				'type'               => 'textarea',
+				'section'            => $this->section,
+				'use_dynamic_fields' => array( 'string', 'url' ),
 			]
 		);
 

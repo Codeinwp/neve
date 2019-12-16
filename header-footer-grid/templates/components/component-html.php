@@ -19,5 +19,5 @@ $allowed_post_tags = wp_kses_allowed_html( 'header_footer_grid' );
 
 ?>
 <div class="nv-html-content">
-	<?php echo wp_kses( balanceTags( $content, true ), $allowed_post_tags ); ?>
+	<?php echo wp_kses( balanceTags( parse_dynamic_tags( $content ), true ), $allowed_post_tags ); ?>
 </div>
