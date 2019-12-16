@@ -33,9 +33,10 @@ class BackgroundComponent extends Component {
 			colorValue: value.colorValue || '#ffffff',
 			overlayColorValue: value.overlayColorValue || '',
 			overlayOpacity: value.overlayOpacity || 50,
-			fixed: value.fixed || false
+			fixed: value.fixed || false,
+			useFeatured: value.useFeatured || false
 		};
-		this.updateSetting(this.state);
+		this.updateSetting( this.state );
 	}
 
 	getButtons() {
@@ -89,7 +90,7 @@ class BackgroundComponent extends Component {
 								colors={colors}
 								value={this.state.colorValue}
 								onChange={(colorValue) => {
-									self.updateSetting( {colorValue:  colorValue } );
+									self.updateSetting( { colorValue: colorValue } );
 								}}
 						/>
 							<div
@@ -100,13 +101,23 @@ class BackgroundComponent extends Component {
 						}
 						{this.state.type === 'image' &&
 						<Fragment>
+							<ToggleControl
+									label={__( 'Use Featured Image', 'neve' )}
+									checked={this.state.useFeatured}
+									onChange={(useFeatured) => {
+										this.updateSetting( { useFeatured: useFeatured } );
+									}}
+							/>
 							{!this.state.imageUrl &&
 							<Placeholder
 									icon="format-image"
-									label={__( 'Image', 'neve' )}
+									label={this.state.useFeatured ?
+											__( 'Fallback Image', 'neve' ) :
+											__( 'Image', 'neve' )}
 							>
 								<p>
-									{ __( 'Select from the Media Library or upload a new image', 'neve' ) }
+									{__( 'Select from the Media Library or upload a new image',
+											'neve' )}
 								</p>
 								<MediaUpload
 										onSelect={(imageData) => {
@@ -127,10 +138,13 @@ class BackgroundComponent extends Component {
 										isDestructive
 										isLink
 										onClick={() => {
-											this.updateSetting( { imageUrl: '', overlayColorValue:'' } );
+											this.updateSetting(
+													{ imageUrl: '', overlayColorValue: '' } );
 										}}>
 									<Dashicon icon="no"/>
-									Remove Image</Button>
+									{this.state.useFeatured ?
+											__( 'Remove Fallback Image', 'neve' ) :
+											__( 'Remove Image', 'neve' )}</Button>
 								<FocalPointPicker
 										url={this.state.imageUrl}
 										value={this.state.focusPoint}
@@ -156,7 +170,8 @@ class BackgroundComponent extends Component {
 									colors={colors}
 									value={this.state.overlayColorValue}
 									onChange={(overlayColorValue) => {
-										self.updateSetting( { overlayColorValue: overlayColorValue } );
+										self.updateSetting(
+												{ overlayColorValue: overlayColorValue } );
 									}}
 							/>
 							<div
@@ -167,7 +182,7 @@ class BackgroundComponent extends Component {
 									label={__( 'Overlay Opacity', 'neve' )}
 									value={this.state.overlayOpacity}
 									onChange={(overlayOpacity) => {
-										this.updateSetting( {overlayOpacity: overlayOpacity } );
+										this.updateSetting( { overlayOpacity: overlayOpacity } );
 									}}
 									min="0"
 									max="100"
@@ -180,13 +195,11 @@ class BackgroundComponent extends Component {
 	}
 
 	updateSetting(newValues) {
-		// setTimeout( () => {
 		this.setState( newValues );
 		this.props.control.setting.set( {
 			...this.props.control.setting.get(),
 			...newValues
 		} );
-		// }, 100 );
 	}
 }
 

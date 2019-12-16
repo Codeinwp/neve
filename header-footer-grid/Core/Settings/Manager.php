@@ -9,6 +9,7 @@
  */
 
 namespace HFG\Core\Settings;
+
 use Neve\Customizer\Controls\Tabs;
 
 /**
@@ -222,7 +223,8 @@ class Manager {
 	 *
 	 * @since   1.0.1
 	 * @access  public
-	 * @param string $id The ID for the tab.
+	 *
+	 * @param string $id   The ID for the tab.
 	 * @param array  $tabs List of tab and controls to use.
 	 */
 	public function add_controls_to_tabs( $id, $tabs = array() ) {
@@ -323,14 +325,31 @@ class Manager {
 			}
 			self::$groups[ $arguments['group'] ][] = $id;
 
-			if ( isset( $arguments['tab'] ) && in_array( $arguments['tab'], array( self::TAB_GENERAL, self::TAB_LAYOUT, self::TAB_STYLE ), true ) ) {
+			if ( isset( $arguments['tab'] ) && in_array(
+				$arguments['tab'],
+				array(
+					self::TAB_GENERAL,
+					self::TAB_LAYOUT,
+					self::TAB_STYLE,
+				),
+				true 
+			) ) {
 				if ( ! isset( self::$tabs[ $arguments['group'] ][ $arguments['tab'] ] ) ) {
 					self::$tabs[ $arguments['group'] ][ $arguments['tab'] ] = [];
 				}
 				self::$tabs[ $arguments['group'] ][ $arguments['tab'] ][ $id ] = array();
 			}
 		}
+		if ( isset( $arguments['use_dynamic_fields'] ) ) {
+			add_filter(
+				'neve_react_controls_localization',
+				function ( $array ) use ( $arguments ) {
+					$array['dynamicTags']['controls'][ $arguments['group'] . '_' . $arguments['id'] ] = $arguments['use_dynamic_fields'];
 
+					return $array;
+				} 
+			);
+		}
 		if ( isset( $arguments['live_refresh_selector'] ) ) {
 			add_filter(
 				'neve_customize_preview_localization',
