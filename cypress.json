@@ -2,7 +2,9 @@
   "projectId": "d8fiqf",
   "pluginsFile": false,
   "supportFile": "cypress/support/commands.js",
-  "baseUrl": "http://localhost:8080",
+  "baseUrl": "http://dev.local",
   "viewportWidth": 1920,
-  "viewportHeight": 1080
+  "viewportHeight": 1080,
+  "user": "andrei",
+  "password": "andrei"
 }
