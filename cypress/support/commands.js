@@ -63,16 +63,12 @@ function addFeaturedImage() {
 	cy.get( '.editor-post-featured-image__toggle' ).click();
 	cy.get( '.media-frame' ).
 			find( '.media-menu-item' ).
-			contains( 'Upload Files' ).
+			contains( 'Media Library' ).
 			click();
 
-	const fileName = 'image.jpg';
-	cy.fixture( fileName ).then( fileContent => {
-		cy.get( '.upload-ui' ).upload(
-				{ fileContent, fileName, mimeType: 'image/jpg' },
-				{ subjectType: 'drag-n-drop', force: true }
-		);
-	} );
+	cy.get( '.attachments-browser .attachments > li.attachment' ).
+			first().
+			click();
 	cy.wait( 2500 );
 	cy.get( '.media-button-select' ).click();
 }
