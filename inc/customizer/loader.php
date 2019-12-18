@@ -29,6 +29,7 @@ class Loader {
 	 */
 	public function __construct() {
 		add_action( 'customize_preview_init', array( $this, 'enqueue_customizer_preview' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'set_featured_image' ) );
 		add_action( 'customize_controls_enqueue_scripts', array( $this, 'enqueue_customizer_controls' ) );
 	}
 
@@ -101,7 +102,11 @@ class Loader {
 			apply_filters(
 				'neve_react_controls_localization',
 				array(
-					'fonts' => array(
+					'dynamicTags' => array(
+						'controls' => array(),
+						'options'  => array(),
+					),
+					'fonts'       => array(
 						'System' => neve_get_standard_fonts(),
 						'Google' => neve_get_google_fonts(),
 					),
@@ -141,8 +146,35 @@ class Loader {
 			NEVE_VERSION,
 			true
 		);
-		wp_localize_script( 'neve-customizer-preview', 'neveCustomizePreview', apply_filters( 'neve_customize_preview_localization', array() ) );
+		global $post_id;
+		wp_localize_script(
+			'neve-customizer-preview',
+			'neveCustomizePreview',
+			apply_filters(
+				'neve_customize_preview_localization',
+				array(
+					'currentFeaturedImage' => '',
+				)
+			)
+		);
 		wp_enqueue_script( 'neve-customizer-preview' );
+	}
+
+	/**
+	 * Save featured image in previously localized object.
+	 */
+	public function set_featured_image() {
+		if ( ! is_customize_preview() ) {
+			return;
+		}
+		if ( ! is_singular() ) {
+			return;
+		}
+		$thumbnail = get_the_post_thumbnail_url();
+		if ( $thumbnail === false ) {
+			return;
+		}
+		wp_add_inline_script( 'neve-customizer-preview', 'neveCustomizePreview.currentFeaturedImage = "' . esc_url( get_the_post_thumbnail_url() ) . '";' );
 	}
 
 	/**

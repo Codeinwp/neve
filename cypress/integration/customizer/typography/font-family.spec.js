@@ -104,4 +104,19 @@ describe( 'Font Family', function() {
 				should( 'have.css', 'font-family' ).
 				and( 'match', new RegExp( fonts.headings, 'g' ) );
 	} );
+
+	it( 'Test Font Family inside the Editor', function() {
+		cy.visit( '/markup-html-tags-and-formatting/' );
+		cy.get( '#wp-admin-bar-edit > a' ).click();
+		cy.get( '#editor .editor-styles-wrapper .editor-writing-flow' ).
+				as( 'body' );
+		cy.get( '@body' ).should( 'have.css', 'font-family' ).
+				and( 'match', new RegExp( fonts.general, 'g' ) );
+
+		['h1', 'h2', 'h3', 'h4', 'h5', 'h6'].forEach( function(heading) {
+			cy.get( `#editor .editor-styles-wrapper ${heading}` ).
+					should( 'have.css', 'font-family' ).
+					and( 'match', new RegExp( fonts.headings, 'g' ) );
+		} );
+	} );
 } );

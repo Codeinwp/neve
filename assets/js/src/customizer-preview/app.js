@@ -82,6 +82,10 @@ window.addEventListener( 'load', function() {
 								addCss( settingId, style );
 								return false;
 							}
+							if ( newValue.useFeatured &&
+									neveCustomizePreview.currentFeaturedImage ) {
+								newValue.imageUrl = neveCustomizePreview.currentFeaturedImage;
+							}
 							style += args.selector + '{';
 							style += newValue.imageUrl ?
 									'background-image: url("' + newValue.imageUrl +
@@ -194,9 +198,13 @@ window.addEventListener( 'load', function() {
 							addCss( settingId, style );
 							break;
 						case '\\Neve\\Customizer\\Controls\\React\\Button_Appearance':
-							let bgColor = newValue.background === '' ? 'unset' : newValue.background;
+							let bgColor = newValue.background === '' ?
+									'unset' :
+									newValue.background;
 							let txtColor = newValue.text === '' ? 'unset' : newValue.text;
-							let borderColor = newValue.text === '' ? 'currentColor' : newValue.text;
+							let borderColor = newValue.text === '' ?
+									'currentColor' :
+									newValue.text;
 							style += `html ${args.selector} .icon-bar { background-color: ${borderColor} }`;
 							style +=
 									`html ${args.selector} {

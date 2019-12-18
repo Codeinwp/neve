@@ -31,6 +31,8 @@ describe( 'AMP Check', function() {
 			expect( req.response.body.success ).to.be.true;
 			expect( req.status ).to.equal( 200 );
 		} );
+		cy.visit( '/wp-admin' );
+		cy.get( '#wp-admin-bar-logout > a' ).click( { force: true } );
 	} );
 
 	it( 'Checks the search box from the menu', function() {
@@ -71,7 +73,7 @@ describe( 'AMP Check', function() {
 
 	it( 'Checks the sidebar menu on mobile', function() {
 		cy.visit( '/?amp' );
-		cy.viewport( 550, 750 );
+		cy.viewport( 375, 812 );
 
 		cy.get( '#header-menu-sidebar' ).
 				as( 'navSidebar' ).

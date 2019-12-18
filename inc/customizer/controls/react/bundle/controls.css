@@ -402,3 +402,24 @@
   .large-buttons .neve-radio-icons button svg {
     width: 50px;
     height: 30px; }
+
+.neve-has-dynamic-tag-selector {
+  position: relative; }
+  .neve-has-dynamic-tag-selector > input {
+    padding-right: 30px; }
+  .neve-has-dynamic-tag-selector.customize-control-textarea .neve-dynamic-tag-selector {
+    bottom: 80px; }
+  .neve-has-dynamic-tag-selector .neve-dynamic-tag-selector {
+    position: absolute;
+    bottom: 0;
+    right: 0; }
+    .neve-has-dynamic-tag-selector .neve-dynamic-tag-selector .components-dropdown-menu {
+      padding: 0 !important; }
+      .neve-has-dynamic-tag-selector .neve-dynamic-tag-selector .components-dropdown-menu button svg {
+        opacity: .75; }
+      .neve-has-dynamic-tag-selector .neve-dynamic-tag-selector .components-dropdown-menu button:hover, .neve-has-dynamic-tag-selector .neve-dynamic-tag-selector .components-dropdown-menu button:active {
+        border-color: transparent !important;
+        box-shadow: none !important;
+        background: transparent !important; }
+        .neve-has-dynamic-tag-selector .neve-dynamic-tag-selector .components-dropdown-menu button:hover svg, .neve-has-dynamic-tag-selector .neve-dynamic-tag-selector .components-dropdown-menu button:active svg {
+          opacity: 1; }
