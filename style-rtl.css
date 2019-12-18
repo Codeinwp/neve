@@ -3173,7 +3173,7 @@ body.menu_sidebar_slide_left.menu_sidebar_dropdown:before {
   padding: 10px 15px;
   display: flex;
   align-items: center;
-  border: 1px solid #f0f0f0;
+  border: 1px solid;
 }
 
 .navbar-toggle:hover {

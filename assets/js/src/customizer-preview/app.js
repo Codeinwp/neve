@@ -198,14 +198,9 @@ window.addEventListener( 'load', function() {
 							addCss( settingId, style );
 							break;
 						case '\\Neve\\Customizer\\Controls\\React\\Button_Appearance':
-							let bgColor = newValue.background === '' ?
-									'unset' :
-									newValue.background;
-							let txtColor = newValue.text === '' ? 'unset' : newValue.text;
-							let borderColor = newValue.text === '' ?
-									'currentColor' :
-									newValue.text;
-							style += `html ${args.selector} .icon-bar { background-color: ${borderColor} }`;
+							let bgColor = newValue.background || 'unset';
+							let txtColor = newValue.text || 'currentColor';
+							let borderColor = newValue.text || '';
 							style +=
 									`html ${args.selector} {
 										background-color: ${bgColor};
@@ -218,12 +213,8 @@ window.addEventListener( 'load', function() {
 								style += 'border: none;';
 							}
 							style += '}';
-							let selector = `html ${args.selector} .icon-bar`;
-
-							style +=
-									`${selector} {
-										background-color: ${newValue.text ||
-									document.querySelector( selector ).style.backgroundColor};
+							style += `html ${args.selector} .icon-bar {
+										background-color: ${txtColor};
 									}`;
 							addCss( settingId, style );
 							break;
