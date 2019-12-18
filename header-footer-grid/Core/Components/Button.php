@@ -90,28 +90,30 @@ class Button extends Abstract_Component {
 	public function add_settings() {
 		SettingsManager::get_instance()->add(
 			[
-				'id'                => self::LINK_ID,
-				'group'             => $this->get_class_const( 'COMPONENT_ID' ),
-				'tab'               => SettingsManager::TAB_GENERAL,
-				'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
-				'sanitize_callback' => 'wp_filter_nohtml_kses',
-				'default'           => '#',
-				'label'             => __( 'Link', 'neve' ),
-				'type'              => 'text',
-				'section'           => $this->section,
+				'id'                 => self::LINK_ID,
+				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'                => SettingsManager::TAB_GENERAL,
+				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
+				'sanitize_callback'  => 'wp_filter_nohtml_kses',
+				'default'            => '#',
+				'label'              => __( 'Link', 'neve' ),
+				'type'               => 'text',
+				'section'            => $this->section,
+				'use_dynamic_fields' => array( 'url' ),
 			]
 		);
 		SettingsManager::get_instance()->add(
 			[
-				'id'                => self::TEXT_ID,
-				'group'             => $this->get_class_const( 'COMPONENT_ID' ),
-				'tab'               => SettingsManager::TAB_GENERAL,
-				'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
-				'sanitize_callback' => 'wp_filter_nohtml_kses',
-				'default'           => __( 'Button', 'neve' ),
-				'label'             => __( 'Text', 'neve' ),
-				'type'              => 'text',
-				'section'           => $this->section,
+				'id'                 => self::TEXT_ID,
+				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'                => SettingsManager::TAB_GENERAL,
+				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
+				'sanitize_callback'  => 'wp_filter_nohtml_kses',
+				'default'            => __( 'Button', 'neve' ),
+				'label'              => __( 'Text', 'neve' ),
+				'type'               => 'text',
+				'section'            => $this->section,
+				'use_dynamic_fields' => array( 'string' ),
 			]
 		);
 

@@ -30,7 +30,7 @@
 		"@babel/preset-env": "^7.7.6",
 		"@commitlint/cli": "^8.3.3",
 		"@commitlint/config-conventional": "^8.2.0",
-		"@size-limit/preset-app": "^2.2.2",
+		"@size-limit/preset-app": "^2.2.3",
 		"babel-loader": "^8.0.6",
 		"core-js": "^3.5.0",
 		"cross-env": "^6.0.3",
@@ -52,12 +52,12 @@
 		"load-project-config": "~0.2.1",
 		"node-sass": "^4.13.0",
 		"npm-run-all": "^4.1.5",
-		"rollup": "^1.27.12",
+		"rollup": "^1.27.13",
 		"rollup-plugin-babel": "^4.3.3",
 		"rollup-plugin-commonjs": "^10.1.0",
 		"rollup-plugin-node-resolve": "^5.2.0",
 		"rollup-plugin-uglify": "^6.0.4",
-		"webpack": "^4.41.2"
+		"webpack": "^4.41.3"
 	},
 	"scripts": {
 		"phpcbf": "composer run-script format || true ",
@@ -98,7 +98,7 @@
 		}
 	},
 	"dependencies": {
-		"@size-limit/webpack": "^2.2.2",
+		"@size-limit/webpack": "^2.2.3",
 		"cypress-file-upload": "^3.5.1",
 		"tiny-slider": "^2.9.2"
 	}
