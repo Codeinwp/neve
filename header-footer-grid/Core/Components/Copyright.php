@@ -48,12 +48,12 @@ class Copyright extends Abstract_Component {
 	public function add_settings() {
 		SettingsManager::get_instance()->add(
 			[
-				'id'                => self::CONTENT_ID,
-				'group'             => self::COMPONENT_ID,
-				'tab'               => SettingsManager::TAB_GENERAL,
-				'transport'         => 'post' . self::COMPONENT_ID,
-				'sanitize_callback' => 'wp_kses_post',
-				'default'           => get_theme_mod(
+				'id'                 => self::CONTENT_ID,
+				'group'              => self::COMPONENT_ID,
+				'tab'                => SettingsManager::TAB_GENERAL,
+				'transport'          => 'post' . self::COMPONENT_ID,
+				'sanitize_callback'  => 'wp_kses_post',
+				'default'            => get_theme_mod(
 					'neve_footer_text',
 					apply_filters(
 						'ti_wl_copyright',
@@ -65,9 +65,10 @@ class Copyright extends Abstract_Component {
 						)
 					)
 				),
-				'label'             => __( 'Copyright', 'neve' ),
-				'type'              => 'textarea',
-				'section'           => $this->section,
+				'label'              => __( 'Copyright', 'neve' ),
+				'type'               => 'textarea',
+				'section'            => $this->section,
+				'use_dynamic_fields' => array( 'url', 'string' ),
 			]
 		);
 

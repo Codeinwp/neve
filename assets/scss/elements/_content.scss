@@ -3,6 +3,7 @@
   padding-bottom: 56.25%; /* 16:9 */
   padding-top: 25px;
   height: 0;
+
   iframe {
     position: absolute;
     top: 0;
@@ -106,10 +107,10 @@ pre {
     }
   }
 
-	dt {
-		font-weight: 600;
-		display: block;
-	}
+  dt {
+    font-weight: 600;
+    display: block;
+  }
 }
 
 .alignleft {
@@ -163,5 +164,9 @@ audio {
   }
   .neve-main > .container > .row {
     flex-wrap: nowrap;
+  }
+
+  .nv-empty-sidebar .neve-main > .container .col {
+    max-width: 100%;
   }
 }

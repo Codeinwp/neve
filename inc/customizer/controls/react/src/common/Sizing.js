@@ -1,46 +1,52 @@
 import PropTypes from 'prop-types';
 import SingleSizingInput from '../common/SingleSizingInput.js';
+import classnames from 'classnames';
 
 const { __ } = wp.i18n;
 const {
-	Toolbar,
+	IconButton,
+	Tooltip
 } = wp.components;
 const { Component } = wp.element;
 
 class SizingControl extends Component {
 	constructor(props) {
 		super( props );
+		this.hasSetValues = this.hasSetValues.bind( this );
 	}
 
 	render() {
-
-		let wrapClasses = 'neve-responsive-sizing';
-		if ( this.props.options.length === 1 ) {
-			wrapClasses += ' single-input';
-		}
+		const wrapClasses = classnames( [
+			'neve-responsive-sizing',
+			{ 'single-input': this.props.options.length === 1 }
+		] );
 
 		let controls = [];
 		if ( !this.props.noLinking ) {
 			controls.push(
-					{
-						title: this.props.linked ?
-								__( 'Unlink Values', 'neve' ) :
-								__( 'Link Values', 'neve' ),
-						icon: this.props.linked ? 'admin-links' : 'editor-unlink',
-						isActive: this.props.linked,
-						onClick: () => this.props.onLinked()
-					}
+					<Tooltip text={this.props.linked ?
+							__( 'Unlink Values', 'neve' ) :
+							__( 'Link Values', 'neve' )}>
+						<IconButton
+								icon={this.props.linked ? 'admin-links' : 'editor-unlink'}
+								onClick={() => this.props.onLinked()}
+								className={classnames(
+										[{ 'active': this.props.linked }, 'link'] )}
+						/>
+					</Tooltip>
 			);
 		}
 		if ( this.hasSetValues() ) {
 			controls.push(
-					{
-						title: this.props.options.length > 1 ?
-								__( 'Reset all Values', 'neve' ) :
-								__( 'Reset Value', 'neve' ),
-						icon: 'image-rotate',
-						onClick: () => this.props.onReset()
-					}
+					<Tooltip text={this.props.options.length > 1 ?
+							__( 'Reset all Values', 'neve' ) :
+							__( 'Reset Value', 'neve' )}>
+						<IconButton
+								icon='image-rotate'
+								className="reset"
+								onClick={() => this.props.onReset()}
+						/>
+					</Tooltip>
 			);
 		}
 
@@ -59,20 +65,20 @@ class SizingControl extends Component {
 										step={this.props.step}/>
 						);
 					} )}
-					<Toolbar controls={controls}/>
+					{controls}
 				</div>
 		);
 	}
 
 	hasSetValues() {
-		let defaults = this.props.defaults;
+		const { defaults, options } = this.props;
 		if ( typeof defaults !== 'object' ) {
 			return parseFloat( defaults ) !==
-					parseFloat( this.props.options[0].value );
+					parseFloat( options[0].value );
 		}
-		return this.props.options.filter( option => {
-			return option.value !== defaults[option.type];
-		} ).length > 0;
+		return options.filter(
+				option => option.value !== defaults[option.type]
+		).length > 0;
 	}
 }
 

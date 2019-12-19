@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import SizingControl from '../common/Sizing.js';
 import SVG from '../common/svg.js';
+import classnames from 'classnames';
 
 const { __ } = wp.i18n;
 const {
-	ToolbarButton,
-	Toolbar
+	Button
 } = wp.components;
 const { Component } = wp.element;
 
@@ -16,7 +16,7 @@ class NumberControl extends Component {
 	}
 
 	render() {
-		let { label, units, value, className } = this.props;
+		const { label, units, value, className } = this.props;
 		return (
 				<div className={className + ' neve-number-control-wrap'}>
 					<div className="neve-control-header">
@@ -55,20 +55,25 @@ class NumberControl extends Component {
 		let { units } = this.props;
 		if ( !units ) return '';
 		if ( units.length === 1 ) {
-			return <ToolbarButton className="is-active is-single" isActive isDisabled
-					icon={svg[units[0]]}/>;
+			return ( <Button
+					className="is-active is-single"
+					isSmall
+					disabled
+			>{units[0]}</Button> );
 		}
-		let controls = units.map( (unit) => {
-			return {
-				title: unit,
-				icon: svg[unit],
-				isActive: self.props.activeUnit === unit,
-				onClick: () => {
-					self.props.onUnitChange( unit );
-				}
-			};
+		return units.map( (unit) => {
+			const buttonClass = classnames( {
+				'active': self.props.activeUnit === unit
+			} );
+			return ( <Button
+					isSmall
+					onClick={() => {
+						self.props.onUnitChange( unit );
+					}}
+					className={buttonClass}>
+				{unit}
+			</Button> );
 		} );
-		return <Toolbar controls={controls} className="units"/>;
 	}
 }
 

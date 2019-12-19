@@ -1,42 +1,46 @@
 /* Customize Preview */
 .customize-previewing {
   overflow-x: hidden;
-	&.is-menu-sidebar .customize-partial-refreshing{
-		opacity: 1;
-		transition:none;
-	}
 
-	&.is-menu-sidebar .customize-partial-refreshing #header-menu-sidebar #header-menu-sidebar-inner{
-		opacity: 0.5;
-		transition: opacity .25s;
-	}
+  &.is-menu-sidebar .customize-partial-refreshing {
+    opacity: 1;
+    transition: none;
+  }
+
+  &.is-menu-sidebar .customize-partial-refreshing #header-menu-sidebar #header-menu-sidebar-inner {
+    opacity: 0.5;
+    transition: opacity .25s;
+  }
+
   .builder-item-focus {
     &.item--inner, &.row--wrapper {
       position: relative;
+
       &.has_menu {
         .item--preview-name {
           left: auto;
         }
       }
     }
+
     .item--preview-name {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif !important;
       position: absolute;
       top: 100%;
       left: 0;
-      display: none;
       background: #0073aa;
       color: #fff;
-      padding: 5px 8px 6px !important;
+      padding: 5px !important;
       font-size: 12px !important;
       font-weight: 600 !important;
       line-height: 14px !important;
       letter-spacing: normal !important;
       cursor: pointer;
-      border-bottom-left-radius: 2px;
-      border-bottom-right-radius: 2px;
+      border-radius: 0;
+      display: none;
     }
-    .edit-row-action{
+
+    .edit-row-action {
       top: 0;
       width: 26px;
       position: absolute;
@@ -47,11 +51,13 @@
       display: none;
       cursor: pointer;
     }
+
     &:hover {
       &.item--inner, &.row--wrapper {
         transition-delay: 0s !important;
         outline: 1px solid #0073aa;
         outline-offset: -1px;
+
         > .item--preview-name, > .edit-row-action {
           display: block;
           z-index: 9999999;
@@ -65,9 +71,11 @@
     .customize-partial-edit-shortcut {
       display: none;
     }
+
     .builder-item-focus {
     }
   }
+
   .footer--row {
     .builder-item-focus {
       &:hover {

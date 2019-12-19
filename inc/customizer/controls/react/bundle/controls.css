@@ -1,8 +1,7 @@
+#customize-theme-controls .components-circular-option-picker__option:focus:after,
 #customize-theme-controls .components-color-palette__item:focus:after {
-  width: 30px;
-  height: 30px;
-  top: -3px;
-  left: -3px; }
+  top: -4px;
+  left: -4px; }
 
 .neve-white-background-control {
   border: 1px solid #ccc;
@@ -28,25 +27,23 @@
 .neve-button-appearance-control .components-panel__row {
   display: block; }
 
-.neve-button-appearance-control .neve-radio-icons .components-toolbar svg {
-  height: 16px;
-  padding: 4px 0; }
-
-.neve-button-appearance-control .components-toolbar .button-filled-svg path {
-  fill: #fff; }
-
-.neve-button-appearance-control .components-toolbar .button-outline-svg rect {
-  fill: none;
-  stroke: #555d66;
-  stroke-miterlimit: 10; }
-
-.neve-button-appearance-control .components-toolbar button.is-active .button-filled-svg path {
-  fill: #555d66; }
-
-.neve-button-appearance-control .components-toolbar button.is-active .button-outline-svg rect {
-  fill: none;
-  stroke: #fff;
-  stroke-miterlimit: 10; }
+.neve-button-appearance-control .neve-radio-icons button {
+  height: 30px; }
+  .neve-button-appearance-control .neve-radio-icons button svg {
+    height: 20px;
+    width: 55px; }
+  .neve-button-appearance-control .neve-radio-icons button .button-filled-svg path {
+    fill: #fff; }
+  .neve-button-appearance-control .neve-radio-icons button .button-outline-svg rect {
+    fill: none;
+    stroke: #555d66;
+    stroke-miterlimit: 10; }
+  .neve-button-appearance-control .neve-radio-icons button.active .button-filled-svg path {
+    fill: #555d66; }
+  .neve-button-appearance-control .neve-radio-icons button.active .button-outline-svg rect {
+    fill: none;
+    stroke: #fff;
+    stroke-miterlimit: 10; }
 
 .customize-control-neve_background_control, .neve-button-appearance-control {
   margin-bottom: 20px; }
@@ -125,35 +122,6 @@
 .neve-control-header {
   display: flex; }
 
-.neve-units {
-  display: flex;
-  margin-top: 10px;
-  margin-bottom: 20px; }
-  .neve-units .components-button.is-button {
-    height: 23px;
-    line-height: 1;
-    font-size: 11px;
-    color: #555;
-    border: 1px solid #999;
-    box-shadow: none;
-    background: #fff; }
-    .neve-units .components-button.is-button.is-active {
-      background: #008dc2;
-      color: #fff; }
-  .neve-units .reset {
-    margin-left: auto; }
-
-.neve-units.inline {
-  margin: 0 0 0 auto; }
-  .neve-units.inline .units {
-    border: none; }
-  .neve-units.inline .components-toolbar__control.components-button {
-    height: auto; }
-    .neve-units.inline .components-toolbar__control.components-button > svg {
-      width: 20px;
-      height: 18px;
-      padding: 0 5px; }
-
 .neve-responsive-control-bar {
   display: flex;
   align-items: center;
@@ -187,58 +155,18 @@
   background-color: #fff;
   padding: 10px; }
 
-.neve-responsive-sizing {
-  display: flex; }
-  .neve-responsive-sizing.single-input .components-toolbar {
-    width: calc(12% + 1px); }
-  .neve-responsive-sizing.single-input .nv-sizing-item {
-    width: calc(100% - 12% + 1px); }
-  .neve-responsive-sizing .range-control .components-base-control__field {
-    padding: 10px;
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
-    margin: 0; }
-    .neve-responsive-sizing .range-control .components-base-control__field input[type="number"] {
-      width: 27%; }
-  .neve-responsive-sizing .components-toolbar {
-    width: calc(24% + 2px);
-    border: none; }
-    .neve-responsive-sizing .components-toolbar button {
-      padding: 0;
-      height: 28px;
-      border-radius: 0; }
-      .neve-responsive-sizing .components-toolbar button svg {
-        padding: 3px 2px;
-        height: 22px;
-        border-radius: 0; }
-  .neve-responsive-sizing .nv-sizing-item input[type="number"] {
-    border: 1px solid #999;
-    border-radius: 0; }
-  .neve-responsive-sizing .nv-sizing-item:not(:first-child) {
-    margin-left: -1px; }
-  .neve-responsive-sizing .nv-sizing-item:first-child input {
-    border-top-left-radius: 3px;
-    border-bottom-left-radius: 3px; }
-  .neve-responsive-sizing label {
-    text-transform: uppercase;
-    font-size: 11px;
-    text-align: center;
-    display: block;
-    font-weight: 300;
-    color: #555; }
-
 .neve-typeface-control .font-family-selector-toggle {
   width: 100%;
   height: 35px;
   align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap; }
+  justify-content: center;
+  display: flex; }
   .neve-typeface-control .font-family-selector-toggle .ff-name {
-    align-self: flex-start;
-    max-width: 65%;
+    width: 65%;
     overflow: hidden;
-    text-overflow: ellipsis; }
+    text-overflow: ellipsis;
+    line-height: 1;
+    text-align: left; }
   .neve-typeface-control .font-family-selector-toggle .ff-preview {
     line-height: 1;
     align-self: flex-end;
@@ -345,38 +273,6 @@
 .neve-number-control-wrap:not(:last-child) {
   margin-bottom: 10px; }
 
-.neve-radio-icons .buttons {
-  width: 100%; }
-
-.neve-radio-icons .components-toolbar {
-  width: 100%; }
-  .neve-radio-icons .components-toolbar button, .neve-radio-icons .components-toolbar svg {
-    width: 100%; }
-  .neve-radio-icons .components-toolbar button {
-    height: 30px; }
-  .neve-radio-icons .components-toolbar svg {
-    padding: 0;
-    height: 25px; }
-  .neve-radio-icons .components-toolbar > div {
-    flex: 1;
-    align-items: center;
-    justify-content: center; }
-
-.large-buttons .neve-radio-icons .components-toolbar button {
-  height: 50px; }
-  .large-buttons .neve-radio-icons .components-toolbar button svg {
-    height: 30px;
-    padding: 7px; }
-
-.neve-sizing.inline-header .bordered {
-  border: none; }
-
-.neve-sizing.inline-header .neve-responsive-sizing {
-  padding-top: 15px; }
-
-.neve-sizing.inline-header .neve-control-header {
-  border-bottom: 3px solid #d8d8d8; }
-
 .neve-toggle-control > .components-base-control__field, .neve-toggle-control label {
   margin-bottom: 0 !important; }
 
@@ -387,3 +283,143 @@
   .neve-range-control .components-base-control__field .components-range-control__number {
     width: 25%;
     margin-left: 5%; }
+
+.neve-units {
+  margin-left: auto;
+  display: flex; }
+  .neve-units.inline {
+    margin-bottom: 4px; }
+  .neve-units button.components-button.is-button {
+    border: none;
+    color: #555d66;
+    margin-left: 3px;
+    background: none;
+    padding: 0 5px;
+    height: 20px;
+    line-height: 20px; }
+    .neve-units button.components-button.is-button:disabled {
+      opacity: .5; }
+    .neve-units button.components-button.is-button.active {
+      background: #555d66;
+      color: #fff; }
+
+.neve-sizing.inline-header .bordered {
+  border: none; }
+
+.neve-sizing.inline-header .neve-responsive-sizing {
+  padding-top: 15px; }
+
+.neve-sizing.inline-header .neve-control-header {
+  border-bottom: 3px solid #d8d8d8; }
+
+.neve-responsive-sizing {
+  display: flex; }
+  .neve-responsive-sizing.single-input .nv-sizing-item {
+    width: 80%; }
+    .neve-responsive-sizing.single-input .nv-sizing-item:last-child {
+      width: 100%; }
+      .neve-responsive-sizing.single-input .nv-sizing-item:last-child > input {
+        border-radius: 3px; }
+  .neve-responsive-sizing button:last-child {
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px; }
+  .neve-responsive-sizing .nv-sizing-item {
+    width: 20%; }
+    .neve-responsive-sizing .nv-sizing-item:first-child input {
+      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px; }
+    .neve-responsive-sizing .nv-sizing-item:not(:first-child) {
+      margin-left: -1px; }
+    .neve-responsive-sizing .nv-sizing-item > input {
+      border: 1px solid #999;
+      border-radius: 0;
+      min-height: 30px; }
+  .neve-responsive-sizing button {
+    margin-left: -1px;
+    border-radius: 0;
+    border: 1px solid #999;
+    height: 30px;
+    padding: 3px;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    color: #555d66; }
+    .neve-responsive-sizing button:focus, .neve-responsive-sizing button:active {
+      background: inherit;
+      border-color: inherit;
+      color: inherit;
+      outline: none;
+      box-shadow: none; }
+    .neve-responsive-sizing button.active, .neve-responsive-sizing button.active:hover, .neve-responsive-sizing button.active:focus:enabled {
+      box-shadow: none !important;
+      outline: none !important;
+      background: #555d66 !important;
+      border-color: #555d66 !important;
+      color: #fff !important; }
+    .neve-responsive-sizing button svg {
+      margin-right: 0 !important;
+      width: 16px; }
+  .neve-responsive-sizing label {
+    text-transform: uppercase;
+    font-size: 10px;
+    text-align: center;
+    display: block;
+    font-weight: 600;
+    color: #555; }
+  .neve-responsive-sizing .range-control .components-base-control__field {
+    padding: 10px;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    margin: 0; }
+    .neve-responsive-sizing .range-control .components-base-control__field input[type="number"] {
+      width: 27%; }
+
+.neve-radio-icons {
+  display: flex;
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 3px; }
+  .neve-radio-icons button {
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    padding: 3px; }
+    .neve-radio-icons button:not(:first-child) {
+      margin-left: 3px; }
+    .neve-radio-icons button svg {
+      width: 20px;
+      margin-right: 0 !important; }
+    .neve-radio-icons button.active, .neve-radio-icons button.active:hover {
+      background-color: #555d66 !important;
+      border-color: #555d66 !important;
+      color: #fff !important;
+      box-shadow: none !important; }
+
+.large-buttons .neve-radio-icons button {
+  height: 45px; }
+  .large-buttons .neve-radio-icons button svg {
+    width: 50px;
+    height: 30px; }
+
+.neve-has-dynamic-tag-selector {
+  position: relative; }
+  .neve-has-dynamic-tag-selector > input {
+    padding-right: 30px; }
+  .neve-has-dynamic-tag-selector.customize-control-textarea .neve-dynamic-tag-selector {
+    bottom: 80px; }
+  .neve-has-dynamic-tag-selector .neve-dynamic-tag-selector {
+    position: absolute;
+    bottom: 0;
+    right: 0; }
+    .neve-has-dynamic-tag-selector .neve-dynamic-tag-selector .components-dropdown-menu {
+      padding: 0 !important; }
+      .neve-has-dynamic-tag-selector .neve-dynamic-tag-selector .components-dropdown-menu button svg {
+        opacity: .75; }
+      .neve-has-dynamic-tag-selector .neve-dynamic-tag-selector .components-dropdown-menu button:hover, .neve-has-dynamic-tag-selector .neve-dynamic-tag-selector .components-dropdown-menu button:active {
+        border-color: transparent !important;
+        box-shadow: none !important;
+        background: transparent !important; }
+        .neve-has-dynamic-tag-selector .neve-dynamic-tag-selector .components-dropdown-menu button:hover svg, .neve-has-dynamic-tag-selector .neve-dynamic-tag-selector .components-dropdown-menu button:active svg {
+          opacity: 1; }

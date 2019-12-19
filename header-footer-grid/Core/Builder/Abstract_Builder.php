@@ -767,10 +767,17 @@ abstract class Abstract_Builder implements Builder {
 		}
 
 		if ( $background['type'] === 'image' ) {
-			if ( ! empty( $background['imageUrl'] ) ) {
+			if ( $background['useFeatured'] === true && is_singular() ) {
+				$featured_image = get_the_post_thumbnail_url();
+				if ( ! empty( $featured_image ) ) {
+					$css_setup['background-image'] = 'url("' . esc_url( $featured_image ) . '")';
+				} else {
+					$css_setup['background-image'] = 'url("' . esc_url( $background['imageUrl'] ) . '")';
+				}
+			} elseif ( ! empty( $background['imageUrl'] ) ) {
 				$css_setup['background-image'] = 'url("' . esc_url( $background['imageUrl'] ) . '")';
-				$css_setup['background-size']  = 'cover';
 			}
+			$css_setup['background-size'] = 'cover';
 
 			if ( ! empty( $background['focusPoint'] ) &&
 				! empty( $background['focusPoint']['x'] ) &&

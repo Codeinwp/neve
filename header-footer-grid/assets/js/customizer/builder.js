@@ -1409,7 +1409,7 @@ let CustomizeBuilderV1;
 							}
 						}
 						if ( _d ) {
-							index = Object.keys(that.items).indexOf(index);
+							index = Object.keys( that.items ).indexOf( index );
 							let item = that.addItem( node, index );
 							$( '.hfg--widgets-' + device, that.widgetSidebarContainer ).
 									prepend( item );
@@ -1650,6 +1650,16 @@ let CustomizeBuilderV1;
 											data( 'device' ),
 									width = $( this ).data( 'df-width' ),
 									itemId = $( this ).data( 'id' );
+
+							// Make sure we have proper objects set up for what row we're trying to insert in.
+							if ( typeof data[device] === 'undefined' ) {
+								data[device] = {};
+							}
+
+							if ( typeof data[device][that.insertRow] === 'undefined' ) {
+								data[device][that.insertRow] = {};
+							}
+
 							// Default data gets reformatted after one change.
 							// We're using only the values, or adding widgets to the sidebar is going to break.
 							// Just don't change the line below pls.

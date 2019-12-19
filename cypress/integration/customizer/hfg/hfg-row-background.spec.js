@@ -1,6 +1,6 @@
 describe( 'Header Row Background Control', function() {
 	it( 'Setup Customizer Control', function() {
-		cy.login('/wp-admin/customize.php');
+		cy.login( '/wp-admin/customize.php' );
 
 		// Open customizer panel.
 		cy.get( '#accordion-panel-hfg_header' ).should( 'be.visible' ).click();
@@ -18,7 +18,8 @@ describe( 'Header Row Background Control', function() {
 				click();
 
 		// Switch to style tab.
-		cy.get( '#customize-control-hfg_header_layout_main_tabs [data-tab="style"]' ).
+		cy.get(
+				'#customize-control-hfg_header_layout_main_tabs [data-tab="style"]' ).
 				should( 'be.visible' ).
 				click();
 
@@ -38,32 +39,30 @@ describe( 'Header Row Background Control', function() {
 
 		cy.get( '.media-frame' ).
 				find( '.media-menu-item' ).
-				contains( 'Upload Files' ).
+				contains( 'Media Library' ).
 				click();
 
-		const fileName = 'image.jpg';
-		cy.fixture( fileName ).then( fileContent => {
-			cy.get( '.upload-ui' ).upload(
-					{ fileContent, fileName, mimeType: 'image/jpg' },
-					{ subjectType: 'drag-n-drop',force:true }
-			);
-		} );
+		cy.get( '.attachments-browser .attachments > li.attachment' ).
+				first().
+				click();
 		cy.get( '.media-toolbar-primary' ).
 				find( 'button' ).
 				contains( 'Select' ).
 				click();
-		cy.get( '@bgCtrl' ).find( '.components-form-toggle__input' ).click();
+		cy.get( '@bgCtrl' ).
+				find( '.components-form-toggle__input' ).
+				click( { multiple: true } );
 		aliasRestRoutes();
 		cy.get( '#save' ).click();
 		cy.wait( '@customizerSave' ).then( (req) => {
 			expect( req.response.body.success ).to.be.true;
 			expect( req.status ).to.equal( 200 );
-			cy.wait(2000);
+			cy.wait( 2000 );
 		} );
 	} );
 
 	it( 'Background image control on front end.', function() {
-		cy.visit('/');
+		cy.visit( '/' );
 		cy.get( '.header-main[data-show-on="desktop"] .header--row-inner' ).
 				as( 'row' );
 

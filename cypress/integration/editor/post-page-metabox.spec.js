@@ -72,7 +72,7 @@ describe( 'Posts meta box settings', function() {
 		'url': null
 	};
 	it( 'Create new post named "' + postSetup.title + '".', function() {
-		cy.insertPost(postSetup.title, postSetup.content, 'post', true);
+		cy.insertPost( postSetup.title, postSetup.content, 'post', true );
 		cy.get( '.post-publish-panel__postpublish-header a' ).
 				contains( postSetup.title ).
 				should( 'have.attr', 'href' ).
@@ -104,13 +104,7 @@ describe( 'Posts meta box settings', function() {
 				then( ($href) => {
 					expect( $href ).
 							to.
-							contain( '/wp-content/uploads/' ).
-							and.
-							to.
-							contain( 'image' ).
-							and.
-							to.
-							contain( '.png' );
+							contain( '/wp-content/uploads/' );
 				} );
 		cy.get( '.nv-content-wrap' ).should( 'contain', postSetup.content );
 	} );

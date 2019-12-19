@@ -297,7 +297,7 @@ class Metabox_Settings {
 			return 100;
 		}
 
-		return '';
+		return 70;
 	}
 
 	/**

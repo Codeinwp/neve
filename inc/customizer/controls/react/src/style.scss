@@ -1,8 +1,8 @@
+$button_color: #555d66;
+#customize-theme-controls .components-circular-option-picker__option:focus:after,
 #customize-theme-controls .components-color-palette__item:focus:after {
-  width: 30px;
-  height: 30px;
-  top: -3px;
-  left: -3px;
+  top: -4px;
+  left: -4px;
 }
 
 .neve-white-background-control {
@@ -36,39 +36,42 @@
     display: block;
   }
 
-  .neve-radio-icons .components-toolbar svg {
-    height: 16px;
-    padding: 4px 0;
-  }
+  .neve-radio-icons {
+    button {
+      height: 30px;
 
-  .components-toolbar {
-
-    .button-filled-svg {
-      path {
-        fill: #fff;
+      svg {
+        height: 20px;
+        width: 55px;
       }
-    }
 
-    .button-outline-svg {
-      rect {
-        fill: none;
-        stroke: #555d66;
-        stroke-miterlimit: 10;
-      }
-    }
-
-    button.is-active {
       .button-filled-svg {
         path {
-          fill: #555d66;
+          fill: #fff;
         }
       }
 
       .button-outline-svg {
         rect {
           fill: none;
-          stroke: #fff;
+          stroke: $button_color;
           stroke-miterlimit: 10;
+        }
+      }
+
+      &.active {
+        .button-filled-svg {
+          path {
+            fill: $button_color;
+          }
+        }
+
+        .button-outline-svg {
+          rect {
+            fill: none;
+            stroke: #fff;
+            stroke-miterlimit: 10;
+          }
         }
       }
     }
@@ -205,49 +208,6 @@
   display: flex;
 }
 
-.neve-units {
-  display: flex;
-  margin-top: 10px;
-  margin-bottom: 20px;
-
-  .components-button.is-button {
-    height: 23px;
-    line-height: 1;
-    font-size: 11px;
-    color: #555;
-    border: 1px solid #999;
-    box-shadow: none;
-    background: #fff;
-
-    &.is-active {
-      background: #008dc2;
-      color: #fff;
-    }
-  }
-
-  .reset {
-    margin-left: auto;
-  }
-}
-
-.neve-units.inline {
-  margin: 0 0 0 auto;
-
-  .units {
-    border: none;
-  }
-
-  .components-toolbar__control.components-button {
-    height: auto;
-
-    > svg {
-      width: 20px;
-      height: 18px;
-      padding: 0 5px;
-    }
-  }
-}
-
 .neve-responsive-control-bar {
   display: flex;
   align-items: center;
@@ -301,74 +261,6 @@
   padding: 10px;
 }
 
-.neve-responsive-sizing {
-  display: flex;
-
-  &.single-input .components-toolbar {
-    width: calc(12% + 1px);
-  }
-
-  &.single-input .nv-sizing-item {
-    width: calc(100% - 12% + 1px)
-  }
-
-  .range-control {
-    .components-base-control__field {
-      padding: 10px;
-      display: flex;
-      flex-wrap: nowrap;
-      align-items: center;
-      margin: 0;
-
-      input[type="number"] {
-        width: 27%;
-      }
-    }
-  }
-
-  .components-toolbar {
-    width: calc(24% + 2px);
-    border: none;
-
-    button {
-      padding: 0;
-      height: 28px;
-      border-radius: 0;
-
-      svg {
-        padding: 3px 2px;
-        height: 22px;
-        border-radius: 0;
-      }
-    }
-  }
-
-  .nv-sizing-item {
-    input[type="number"] {
-      border: 1px solid #999;
-      border-radius: 0;
-    }
-
-    &:not(:first-child) {
-      margin-left: -1px;
-    }
-
-    &:first-child input {
-      border-top-left-radius: 3px;
-      border-bottom-left-radius: 3px;
-    }
-  }
-
-  label {
-    text-transform: uppercase;
-    font-size: 11px;
-    text-align: center;
-    display: block;
-    font-weight: 300;
-    color: #555;
-  }
-}
-
 //FONTS
 .neve-typeface-control {
 
@@ -376,14 +268,15 @@
     width: 100%;
     height: 35px;
     align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    justify-content: center;
+    display: flex;
 
     .ff-name {
-      align-self: flex-start;
-      max-width: 65%;
+      width: 65%;
       overflow: hidden;
       text-overflow: ellipsis;
+      line-height: 1;
+      text-align: left;
     }
 
     .ff-preview {
@@ -538,68 +431,13 @@
   }
 }
 
-.neve-radio-icons {
-  .buttons {
-    width: 100%;
-  }
-
-  .components-toolbar {
-    width: 100%;
-
-    button, svg {
-      width: 100%;
-    }
-
-    button {
-      height: 30px
-    }
-
-    svg {
-      padding: 0;
-      height: 25px;
-    }
-
-    > div {
-      flex: 1;
-      align-items: center;
-      justify-content: center;
-    }
-  }
-}
-
-.large-buttons .neve-radio-icons {
-  .components-toolbar button {
-    height: 50px;
-    svg {
-      height: 30px;
-      padding: 7px;
-    }
-  }
-}
-
-.neve-sizing.inline-header {
-  .bordered {
-    border: none;
-  }
-
-  .neve-responsive-sizing {
-    padding-top: 15px;
-  }
-
-  .neve-control-header {
-    border-bottom: 3px solid #d8d8d8;
-  }
-}
-
 .neve-toggle-control {
   > .components-base-control__field, label {
     margin-bottom: 0 !important;
   }
 }
 
-
 // Range control.
-
 .neve-range-control {
   .components-base-control__field {
     flex-direction: row;
@@ -611,6 +449,231 @@
     .components-range-control__number {
       width: 25%;
       margin-left: 5%;
+    }
+  }
+}
+
+//REFACTOR
+.neve-units {
+  margin-left: auto;
+  display: flex;
+
+  &.inline {
+    margin-bottom: 4px;
+  }
+
+  button.components-button.is-button {
+    border: none;
+    color: $button_color;
+    margin-left: 3px;
+    background: none;
+    padding: 0 5px;
+    height: 20px;
+    line-height: 20px;
+
+    &:disabled {
+      opacity: .5;
+    }
+
+    &.active {
+      background: $button_color;
+      color: #fff;
+    }
+  }
+}
+
+.neve-sizing {
+  &.inline-header {
+    .bordered {
+      border: none;
+    }
+
+    .neve-responsive-sizing {
+      padding-top: 15px;
+    }
+
+    .neve-control-header {
+      border-bottom: 3px solid #d8d8d8;
+    }
+  }
+}
+
+.neve-responsive-sizing {
+  display: flex;
+
+  &.single-input .nv-sizing-item {
+    width: 80%;
+
+    &:last-child {
+      width: 100%;
+
+      > input {
+        border-radius: 3px;
+      }
+    }
+  }
+
+  button:last-child {
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px;
+  }
+
+  .nv-sizing-item {
+    width: 20%;
+
+    &:first-child input {
+      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px;
+    }
+
+    &:not(:first-child) {
+      margin-left: -1px;
+    }
+
+    > input {
+      border: 1px solid #999;
+      border-radius: 0;
+      min-height: 30px;
+    }
+  }
+
+  button {
+    margin-left: -1px;
+    border-radius: 0;
+    border: 1px solid #999;
+    height: 30px;
+    padding: 3px;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    color: $button_color;
+
+    &:focus, &:active {
+      background: inherit;
+      border-color: inherit;
+      color: inherit;
+      outline: none;
+      box-shadow: none;
+    }
+
+    &.active, &.active:hover, &.active:focus:enabled {
+      box-shadow: none !important;
+      outline: none !important;
+      background: $button_color !important;
+      border-color: $button_color !important;
+      color: #fff !important;
+    }
+
+    svg {
+      margin-right: 0 !important;
+      width: 16px;
+    }
+  }
+
+  label {
+    text-transform: uppercase;
+    font-size: 10px;
+    text-align: center;
+    display: block;
+    font-weight: 600;
+    color: #555;
+  }
+
+  .range-control {
+    .components-base-control__field {
+      padding: 10px;
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      margin: 0;
+
+      input[type="number"] {
+        width: 27%;
+      }
+    }
+  }
+}
+
+
+.neve-radio-icons {
+  display: flex;
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 3px;
+
+  button {
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    padding: 3px;
+
+    &:not(:first-child) {
+      margin-left: 3px;
+    }
+
+    svg {
+      width: 20px;
+      margin-right: 0 !important;
+    }
+
+    &.active {
+      &, &:hover {
+        background-color: $button_color !important;
+        border-color: $button_color !important;
+        color: #fff !important;
+        box-shadow: none !important;
+      }
+    }
+  }
+}
+
+.large-buttons {
+  .neve-radio-icons button {
+    height: 45px;
+
+    svg {
+      width: 50px;
+      height: 30px;
+    }
+  }
+}
+
+
+.neve-has-dynamic-tag-selector {
+  position: relative;
+
+  > input {
+    padding-right: 30px;
+  }
+
+  &.customize-control-textarea .neve-dynamic-tag-selector {
+    bottom: 80px;
+  }
+
+  .neve-dynamic-tag-selector {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    .components-dropdown-menu {
+      padding: 0 !important;
+
+      button {
+        svg {
+          opacity: .75;
+        }
+
+        &:hover, &:active {
+          border-color: transparent !important;
+          box-shadow: none !important;
+          background: transparent !important;
+
+          svg {
+            opacity: 1;
+          }
+        }
+      }
     }
   }
 }
