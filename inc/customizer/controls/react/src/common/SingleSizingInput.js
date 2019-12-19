@@ -69,7 +69,7 @@ class SingleSizingInput extends Component {
 	render() {
 		const { isOpen } = this.state;
 		return (
-				<div className="nv-sizing-item" >
+				<div className="nv-sizing-item">
 					<input ref={ this.containerRef }
 							onFocus={() => this.toggle()}
 							type="number"

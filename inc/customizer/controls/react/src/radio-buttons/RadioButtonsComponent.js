@@ -2,6 +2,7 @@
 import PropTypes from 'prop-types';
 import RadioIcons from '../common/RadioIcons';
 import SVG from '../common/svg.js';
+import classnames from 'classnames';
 
 const { __ } = wp.i18n;
 const {
@@ -43,10 +44,9 @@ class RadioButtonsComponent extends Component {
 	}
 
 	render() {
-		let wrapClasses = 'neve-white-background-control ';
-		if ( this.props.control.params.large_buttons === true ) {
-			wrapClasses += ' large-buttons';
-		}
+		const wrapClasses = classnames( [
+			'neve-white-background-control',
+			{ 'large-buttons': this.props.control.params.large_buttons === true }] );
 		return (
 				<div className={wrapClasses}>
 					{this.props.control.params.label &&
