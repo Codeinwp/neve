@@ -62,7 +62,7 @@ class Layout_Sidebar extends Base_Customizer {
 					'label'           => __( 'Sitewide Sidebar Layout', 'neve' ),
 					'section'         => 'neve_sidebar',
 					'priority'        => 10,
-					'choices'         => $this->sidebar_layout_choices(),
+					'choices'         => $this->sidebar_layout_choices( 'neve_default_sidebar_layout' ),
 					'active_callback' => array( $this, 'sidewide_options_active_callback' ),
 				),
 				'Neve\Customizer\Controls\Radio_Image'
@@ -294,7 +294,7 @@ class Layout_Sidebar extends Base_Customizer {
 	 * @return bool
 	 */
 	public function sanitize_sidebar_layout( $value ) {
-		$allowed_values = array( 'left', 'right', 'full-width' );
+		$allowed_values = array( 'left', 'right', 'full-width', 'offcanvas' );
 		if ( ! in_array( $value, $allowed_values, true ) ) {
 			return 'right';
 		}
