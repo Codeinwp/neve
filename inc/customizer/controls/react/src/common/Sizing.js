@@ -30,7 +30,8 @@ class SizingControl extends Component {
 						<IconButton
 								icon={this.props.linked ? 'admin-links' : 'editor-unlink'}
 								onClick={() => this.props.onLinked()}
-								className={classnames( { 'active': this.props.linked } )}
+								className={classnames(
+										[{ 'active': this.props.linked }, 'link'] )}
 						/>
 					</Tooltip>
 			);
@@ -42,6 +43,7 @@ class SizingControl extends Component {
 							__( 'Reset Value', 'neve' )}>
 						<IconButton
 								icon='image-rotate'
+								className="reset"
 								onClick={() => this.props.onReset()}
 						/>
 					</Tooltip>

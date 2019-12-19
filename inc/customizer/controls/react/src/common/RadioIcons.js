@@ -39,6 +39,7 @@ class RadioIcons extends Component {
 			return (
 					<Tooltip text={options[type].tooltip}>
 						<IconButton
+								aria-label={options[type].tooltip}
 								className={classnames(
 										{ 'active': self.props.value === type } )}
 								icon={options[type].icon}
