@@ -69,6 +69,10 @@ class Layout_Sidebar extends Base_View {
 
 		$classes[] = 'nv-sidebar-' . $theme_mod;
 
+		if ( ! $sidebar_setup['has_widgets'] && $theme_mod !== 'full-width' ) {
+			$classes[] = 'nv-empty-sidebar';
+		}
+
 		return $classes;
 	}
 
@@ -91,7 +95,8 @@ class Layout_Sidebar extends Base_View {
 		}
 
 		if ( $advanced_options === false ) {
-			$sidebar_setup['theme_mod'] = 'neve_default_sidebar_layout';
+			$sidebar_setup['theme_mod']   = 'neve_default_sidebar_layout';
+			$sidebar_setup['has_widgets'] = is_active_sidebar( $sidebar_setup['sidebar_slug'] );
 
 			return $sidebar_setup;
 		}
@@ -123,6 +128,8 @@ class Layout_Sidebar extends Base_View {
 			default:
 				$sidebar_setup['theme_mod'] = 'neve_other_pages_sidebar_layout';
 		}
+
+		$sidebar_setup['has_widgets'] = is_active_sidebar( $sidebar_setup['sidebar_slug'] );
 
 		return $sidebar_setup;
 	}

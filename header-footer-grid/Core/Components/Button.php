@@ -166,7 +166,7 @@ class Button extends Abstract_Component {
 			if ( ! empty( $style['textHover'] ) ) {
 				$css_array[ $this->default_selector . ':hover' ]['color'] = $style['textHover'];
 			}
-			if ( ! empty( $style['borderRadius'] ) || $style['borderRadius'] === 0 ) {
+			if ( isset( $style['borderRadius'] ) ) {
 				$css_array[ $this->default_selector ]['border-radius'] = $style['borderRadius'] . 'px';
 			}
 

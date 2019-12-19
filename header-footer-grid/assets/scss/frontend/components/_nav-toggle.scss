@@ -35,7 +35,8 @@
   padding: 10px 15px;
   display: flex;
   align-items: center;
-  border: 1px solid #f0f0f0;
+  border: 1px solid;
+
   &:hover {
     box-shadow: none;
     transform: none;

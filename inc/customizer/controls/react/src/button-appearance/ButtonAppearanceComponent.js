@@ -21,7 +21,9 @@ class ButtonAppearanceComponent extends Component {
 			backgroundHover: value.backgroundHover || '',
 			text: value.text || '',
 			textHover: value.textHover || '',
-			borderRadius: value.borderRadius || 3,
+			borderRadius: typeof value.borderRadius !== 'undefined' ?
+					value.borderRadius :
+					3,
 			borderWidth: value.borderWidth || 1
 		};
 		this.updateValues( this.state );
