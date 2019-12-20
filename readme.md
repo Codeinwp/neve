@@ -18,6 +18,20 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
+### 2.5.4 - 2019-12-19  ###
+
+* [Feat] New styling options for buttons in the header builder
+* [Feat] New dynamic tags for the header and footer builder
+* [Fix] External fonts not loading in editor
+* [Fix] Removed unnecessary post metadata saved in the database
+* [Fix] Improved primary menu closing animation on mobile
+* [Fix] Button block preview in the editor
+* [Fix] Compatibility with the latest update of Gutenberg
+* [Fix] Improved padding and margin components layout
+* [Fix] Button border-radius control default value not allowing a zero value
+* [Fix] Made default layout full width when the sidebar is empty
+
+
 ### 2.5.3 - 2019-12-05  ###
 
 * [Feat] New option to allow both logo and site and tagline in different layouts
