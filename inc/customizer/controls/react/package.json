@@ -10,7 +10,7 @@
     "react-visibility-sensor": "^5.1.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.7.5",
+    "@babel/cli": "^7.7.7",
     "@babel/core": "^7.7.5",
     "@babel/plugin-proposal-object-rest-spread": "^7.7.4",
     "@babel/plugin-transform-react-jsx": "^7.7.4",
