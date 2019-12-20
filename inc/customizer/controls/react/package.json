@@ -25,7 +25,7 @@
     "rollup-plugin-replace": "^2.2.0",
     "rollup-plugin-scss": "^1.0.2",
     "rollup-plugin-uglify": "^6.0.4",
-    "webpack": "^4.41.3"
+    "webpack": "^4.41.4"
   },
   "scripts": {
     "start": "./node_modules/.bin/rollup -c --watch",
