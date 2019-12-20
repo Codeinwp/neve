@@ -1,7 +1,7 @@
 {
 	"name": "neve",
 	"nicename": "Neve",
-	"version": "2.5.3",
+	"version": "2.5.4",
 	"description": "Neve theme by ThemeIsle",
 	"category": "themes",
 	"repository": {
@@ -25,14 +25,14 @@
 		"lasttranslator": "Themeisle Translate Team <friends@themeisle.com>"
 	},
 	"devDependencies": {
-		"@babel/cli": "^7.7.5",
-		"@babel/core": "^7.7.5",
-		"@babel/preset-env": "^7.7.6",
+		"@babel/cli": "^7.7.7",
+		"@babel/core": "^7.7.7",
+		"@babel/preset-env": "^7.7.7",
 		"@commitlint/cli": "^8.3.3",
 		"@commitlint/config-conventional": "^8.2.0",
 		"@size-limit/preset-app": "^2.2.3",
 		"babel-loader": "^8.0.6",
-		"core-js": "^3.5.0",
+		"core-js": "^3.6.0",
 		"cross-env": "^6.0.3",
 		"cypress": "^3.8.0",
 		"grunt": "^1.0.4",
@@ -57,7 +57,7 @@
 		"rollup-plugin-commonjs": "^10.1.0",
 		"rollup-plugin-node-resolve": "^5.2.0",
 		"rollup-plugin-uglify": "^6.0.4",
-		"webpack": "^4.41.3"
+		"webpack": "^4.41.4"
 	},
 	"scripts": {
 		"phpcbf": "composer run-script format || true ",

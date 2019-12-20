@@ -1,5 +1,6 @@
 /* jshint esversion: 6 */
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
 const { __ } = wp.i18n;
 const {
@@ -7,45 +8,49 @@ const {
 } = wp.element;
 
 const {
-	ButtonGroup,
-	Toolbar,
+	Tooltip,
+	IconButton
 } = wp.components;
 
 class RadioIcons extends Component {
-	constructor( props ) {
+	constructor(props) {
 		super( props );
 
 		this.state = {
 			value: 'none'
 		};
+
+		this.getButtons = this.getButtons.bind( this );
 	}
 
 	render() {
 		return (
-			<div className="neve-radio-icons">
-				<ButtonGroup className="buttons">
+				<div className="neve-radio-icons">
 					{this.getButtons()}
-				</ButtonGroup>
-			</div>
+				</div>
 		);
 	}
 
 	getButtons() {
-		let types = this.props.options,
-			self = this;
+		const { options } = this.props,
+				self = this;
 
-		let controls = Object.keys( types ).map( ( type ) => {
-			return {
-				title: types[type].tooltip,
-				icon: types[type].icon,
-				isActive: self.props.value === type,
-				onClick: () => {
-					self.props.onChange( type );
-				}
-			}
-		} )
+		const buttons = Object.keys( options ).map( (type) => {
+			return (
+					<Tooltip text={options[type].tooltip}>
+						<IconButton
+								aria-label={options[type].tooltip}
+								className={classnames(
+										{ 'active': self.props.value === type } )}
+								icon={options[type].icon}
+								onClick={() => {
+									self.props.onChange( type );
+								}}
+						/>
+					</Tooltip> );
+		} );
 
-		return <Toolbar controls={controls}/>;
+		return buttons;
 	}
 }
 

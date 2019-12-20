@@ -119,7 +119,7 @@ class Buttons extends Base_Inline {
 			$this->add_color( apply_filters( 'neve_button_hover_text_color_filter', $color_setup ), sanitize_hex_color( $this->primary_setup['textHover'] ) );
 		}
 
-		if ( ! empty( $this->primary_setup['borderRadius'] ) || $this->primary_setup['borderRadius'] === 0 ) {
+		if ( isset( $this->primary_setup['borderRadius'] ) ) {
 			$setup = array(
 				array(
 					'css_prop' => 'border-radius',
@@ -225,7 +225,7 @@ class Buttons extends Base_Inline {
 			$this->add_color( apply_filters( 'neve_secondary_button_hover_color_filter', $color_setup ), sanitize_hex_color( $this->secondary_button['textHover'] ) );
 		}
 
-		if ( ! empty( $this->secondary_button['borderRadius'] ) || $this->secondary_button['borderRadius'] === 0 ) {
+		if ( isset( $this->secondary_button['borderRadius'] ) ) {
 			$setup = array(
 				array(
 					'css_prop' => 'border-radius',
