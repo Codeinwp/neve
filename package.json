@@ -98,7 +98,7 @@
 		}
 	},
 	"dependencies": {
-		"@size-limit/webpack": "^2.2.4",
+		"@size-limit/webpack": "^3.0.0",
 		"cypress-file-upload": "^3.5.3",
 		"tiny-slider": "^2.9.2"
 	}
