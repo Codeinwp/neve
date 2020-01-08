@@ -89,17 +89,13 @@ export const addEvent = function(element, event, callBack) {
 /**
  * Toggle Element class name.
  *
+ * Toggle don't allow multiple classes on update, so this needs to be only on single ones.
+ *
  * @param element
- * @param className
+ * @param className Singular class name.
  */
 export const toggleClass = function(element, className) {
-	if ( element instanceof NodeList ) {
-		for ( let i = 0; i < element.length; i++ ) {
-			element[i].classList.toggle( className );
-		}
-	} else if ( element instanceof Node || element instanceof Element ) {
-		element.classList.toggle( className );
-	}
+	batchProcess(element,className,'toggle');
 };
 
 /**
@@ -109,13 +105,7 @@ export const toggleClass = function(element, className) {
  * @param className
  */
 export const addClass = function(element, className) {
-	if ( element instanceof NodeList ) {
-		for ( let i = 0; i < element.length; i++ ) {
-			element[i].classList.add( className );
-		}
-	} else if ( element instanceof Node || element instanceof Element ) {
-		element.classList.add( className );
-	}
+	batchProcess(element,className,'add');
 };
 
 /**
@@ -125,21 +115,15 @@ export const addClass = function(element, className) {
  * @param className
  */
 export const removeClass = function(element, className) {
-	// Split each class by space.
-	let classes = className.split( ' ' );
-	if ( element instanceof NodeList ) {
-		for ( let i = 0; i < element.length; i++ ) {
-			for ( let j = 0; j < classes.length; j++ ) {
-				element[i].classList.remove( classes[j] );
-			}
-		}
-	} else if ( element instanceof Node || element instanceof Element ) {
-		for ( let j = 0; j < classes.length; j++ ) {
-			element.classList.remove( classes[j] );
-		}
-	}
+	batchProcess(element,className,'remove');
 };
 
+export const batchProcess = function (element, classNames, method){
+	let classes = className.split( ' ' );
+	element = (element.length ? element : [element]).forEach(value=>{
+		value.classList[method].apply(value.classList,classes);
+	});
+}
 /**
  * Check if element is in view.
  * @param element

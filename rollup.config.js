@@ -2,6 +2,7 @@ import babel from 'rollup-plugin-babel';
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import { uglify } from 'rollup-plugin-uglify';
+import { terser } from 'rollup-plugin-terser';
 
 let scripts = {
 			'assets/js/src/frontend/app.js': 'assets/js/frontend.js',
@@ -24,7 +25,7 @@ Object.keys( scripts ).forEach( function(item) {
 			babel( {
 				exclude: 'node_modules/**' // transpile without .node_modules
 			} ),
-			uglify()
+			terser()
 		]
 	} );
 } );
