@@ -24,7 +24,6 @@ let hfgPanels = {};
 			activeRow: 'main',
 			draggingItem: null,
 			insertPoint: null,
-			saveAsThemeMod: true,
 			insertRow: null,
 			getTemplate: _.memoize( function() {
 				let control = this;
@@ -58,19 +57,6 @@ let hfgPanels = {};
 					return compiled( data );
 				};
 			} ),
-			getControlValue: function() {
-				let that = this, data;
-				if ( that.saveAsThemeMod ) {
-					if ( wpcustomize.control( that.controlId ) ) {
-						data = JSON.parse( wpcustomize.control( that.controlId ).setting.get() )
-					}
-					if ( !_.isObject( data ) ) {
-						data = {}
-					}
-
-					return data;
-				}
-			},
 			drag_drop: function() {
 				let that = this;
 
@@ -1495,7 +1481,15 @@ let hfgPanels = {};
 			addExistingRowsItems: function() {
 				let that = this;
 				let data = false;
-				data = that.getControlValue();
+				if ( wpcustomize.control( that.controlId ).setting.get() ) {
+					data = JSON.parse(
+							wpcustomize.control( that.controlId ).setting.get() );
+				}
+
+				if ( !_.isObject( data ) ) {
+					data = {};
+				}
+
 				_.each( that.panels, function($rows, device) {
 					let deviceData = {};
 					if ( _.isObject( data[device] ) ) {
@@ -1650,7 +1644,8 @@ let hfgPanels = {};
 				$( that.widgetSidebarContainer ).
 						on( 'click', '.grid-stack-item', function(e) {
 							that.closeComponentsSidebar();
-							let data = that.getControlValue(),
+							let data = JSON.parse(
+									wpcustomize.control( that.controlId ).setting.get() ),
 									device = $( this ).
 											closest( '.hfg--widgets' ).
 											data( 'device' ),
@@ -1808,16 +1803,11 @@ let hfgPanels = {};
 						);
 					} );
 				} );
-				if( that.saveAsThemeMod) {
-					wpcustomize.control( that.controlId )
-						.setting
-						.set( that.encodeValue( data ) );
-					return false;
-				}
-				document.dispatchEvent(
-					new CustomEvent( 'neve_transport_hfg_setup',
-						{ detail: that.encodeValue( ( data ) ) } )
-				);
+
+				wpcustomize.control( that.controlId ).
+						setting.
+						set( that.encodeValue( data ) );
+
 			},
 			showPanel: function() {
 				let that = this;
@@ -1899,13 +1889,6 @@ let hfgPanels = {};
 					} );
 				} );
 			},
-			listenForConditionalLayout: function() {
-				let that = this;
-				document.addEventListener( 'neve_toggle_hfg_theme_mod_storage',
-					function(e) {
-						that.saveAsThemeMod = e.detail;
-					} );
-			},
 			init: function(controlId, items, devices) {
 				let that = this;
 
@@ -1938,7 +1921,6 @@ let hfgPanels = {};
 				that.focus();
 				that.remove();
 				that.addExistingRowsItems();
-				that.listenForConditionalLayout();
 
 				if ( wpcustomize.panel( options.panel ).expanded() ) {
 					that.showPanel();
@@ -1987,7 +1969,7 @@ let hfgPanels = {};
 				$document.trigger( 'hfg_builder_panel_loaded', [id, that] );
 			}
 		};
-		console.log(options);
+
 		Builder.init( options.control_id, options.items, options.devices );
 		return Builder;
 	};

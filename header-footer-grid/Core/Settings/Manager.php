@@ -332,7 +332,7 @@ class Manager {
 					self::TAB_LAYOUT,
 					self::TAB_STYLE,
 				),
-				true 
+				true
 			) ) {
 				if ( ! isset( self::$tabs[ $arguments['group'] ][ $arguments['tab'] ] ) ) {
 					self::$tabs[ $arguments['group'] ][ $arguments['tab'] ] = [];
@@ -347,7 +347,7 @@ class Manager {
 					$array['dynamicTags']['controls'][ $arguments['group'] . '_' . $arguments['id'] ] = $arguments['use_dynamic_fields'];
 
 					return $array;
-				} 
+				}
 			);
 		}
 		if ( isset( $arguments['live_refresh_selector'] ) ) {
@@ -370,6 +370,16 @@ class Manager {
 			);
 		}
 
+		if ( defined( 'NEVE_PRO_VERSION' ) ) {
+			add_filter(
+				'neve_pro_react_controls_localization',
+				function ( $array ) use ( $id ) {
+					$array['headerControls'][] = $id;
+
+					return $array;
+				}
+			);
+		}
 
 		self::$settings[ $id ] = array_merge(
 			$arguments,
