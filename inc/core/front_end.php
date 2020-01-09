@@ -860,10 +860,40 @@ class Front_End {
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/11/neve-winery.png',
 						'title'      => 'Winery - Wine Shop',
 					),
+					'neve-beaver-news-magazine'         => array(
+						'url'        => 'https://demo.themeisle.com/neve-news-magazine-bb/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/11/neve-news.jpg',
+						'title'      => 'News Magazine',
+					),
 					'neve-beaver-coworking'             => array(
 						'url'        => 'https://demo.themeisle.com/neve-coworking-bb/',
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/11/neve-coworking.jpg',
 						'title'      => 'Coworking Space',
+					),
+					'neve-beaver-car-rental'            => array(
+						'url'        => 'https://demo.themeisle.com/neve-car-rental-bb/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/11/neve-cart-rental.jpg',
+						'title'      => 'Car Rental',
+					),
+					'neve-beaver-translation-services'  => array(
+						'url'        => 'https://demo.themeisle.com/neve-translation-services-bb/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/11/neve-translations.jpg',
+						'title'      => 'Translation and Interpreter Services',
+					),
+					'neve-beaver-blogger'               => array(
+						'url'        => 'https://demo.themeisle.com/neve-blogger-bb/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/11/neve-blogger.jpg',
+						'title'      => 'Blogger',
+					),
+					'neve-beaver-coupons'               => array(
+						'url'        => 'https://demo.themeisle.com/neve-coupons-bb/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/11/neve-coupons.jpg',
+						'title'      => 'Coupons Discounts and Offers',
+					),
+					'neve-beaver-escape-room'           => array(
+						'url'        => 'https://demo.themeisle.com/neve-escape-room-bb/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/11/neve-escape-room.jpg',
+						'title'      => 'Escape Room',
 					),
 				),
 				'elementor'        => array(

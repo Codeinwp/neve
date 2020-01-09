@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
 import SingleSizingInput from '../common/SingleSizingInput.js';
-import classNames from 'classnames';
+import classnames from 'classnames';
 
 const { __ } = wp.i18n;
 const {
-	Toolbar
+	IconButton,
+	Tooltip
 } = wp.components;
 const { Component } = wp.element;
 
@@ -12,63 +13,59 @@ class SizingControl extends Component {
 	constructor(props) {
 		super( props );
 		this.hasSetValues = this.hasSetValues.bind( this );
-		this.getControls = this.getControls.bind( this );
 	}
 
-	getControls() {
-		const { noLinking, linked, onLinked, options, onReset } = this.props;
+	render() {
+		const wrapClasses = classnames( [
+			'neve-responsive-sizing',
+			{ 'single-input': this.props.options.length === 1 }
+		] );
+
 		let controls = [];
-		if ( noLinking && !this.hasSetValues() ) {
-			return [];
-		}
-		if ( !noLinking ) {
+		if ( !this.props.noLinking ) {
 			controls.push(
-					{
-						title: linked ?
-								__( 'Unlink Values', 'neve' ) :
-								__( 'Link Values', 'neve' ),
-						icon: linked ? 'admin-links' : 'editor-unlink',
-						isActive: linked,
-						onClick: () => onLinked(),
-						className: classNames( 'link',
-								{ 'has-reset': this.hasSetValues() } )
-					}
+					<Tooltip text={this.props.linked ?
+							__( 'Unlink Values', 'neve' ) :
+							__( 'Link Values', 'neve' )}>
+						<IconButton
+								icon={this.props.linked ? 'admin-links' : 'editor-unlink'}
+								onClick={() => this.props.onLinked()}
+								className={classnames(
+										[{ 'active': this.props.linked }, 'link'] )}
+						/>
+					</Tooltip>
 			);
 		}
 		if ( this.hasSetValues() ) {
 			controls.push(
-					{
-						title: options.length > 1 ?
-								__( 'Reset all Values', 'neve' ) :
-								__( 'Reset Value', 'neve' ),
-						icon: 'image-rotate',
-						onClick: () => onReset(),
-						className: 'reset'
-					}
+					<Tooltip text={this.props.options.length > 1 ?
+							__( 'Reset all Values', 'neve' ) :
+							__( 'Reset Value', 'neve' )}>
+						<IconButton
+								icon='image-rotate'
+								className="reset"
+								onClick={() => this.props.onReset()}
+						/>
+					</Tooltip>
 			);
 		}
-		return controls;
-	}
 
-	render() {
-		const { options, onChange, max, min, step } = this.props;
 		return (
-				<div className={classNames( 'neve-responsive-sizing',
-						{ 'single-input': options.length === 1 } )}>
-					{options.map( (i, n) => {
+				<div className={wrapClasses}>
+					{this.props.options.map( (i, n) => {
 						return (
 								<SingleSizingInput
-										onChange={(type, value) => onChange( type,
+										onChange={(type, value) => this.props.onChange( type,
 												value )}
 										value={i.value}
 										className={i.type ? i.type + '-input' : ''}
 										type={i.type}
-										max={max}
-										min={min}
-										step={step}/>
+										max={this.props.max}
+										min={this.props.min}
+										step={this.props.step}/>
 						);
 					} )}
-					<Toolbar controls={this.getControls()}/>
+					{controls}
 				</div>
 		);
 	}
