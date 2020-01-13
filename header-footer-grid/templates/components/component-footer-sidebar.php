@@ -28,7 +28,7 @@ if ( is_active_sidebar( $_id ) ) {
 					'<p>%s</p>',
 					sprintf(
 						/* translators: %s - customizer link */
-							esc_html( 'Replace this widget content by going to %s and add widgets into this widget area.', 'neve' ),
+						esc_html( 'Replace this widget content by going to %s and add widgets into this widget area.', 'neve' ),
 						sprintf(
 							/* translators: %1$s - link %2$s - name %3$s - label */
 							'<a href="%1$s"><strong>%2$s  %3$s</strong></a>',
