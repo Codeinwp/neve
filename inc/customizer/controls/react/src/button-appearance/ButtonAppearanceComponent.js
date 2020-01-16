@@ -201,6 +201,16 @@ class ButtonAppearanceComponent extends Component {
     )
   }
 
+  componentDidMount() {
+    const { control } = this.props
+
+    document.addEventListener( 'neve-changed-customizer-value', (e) => {
+      if ( !e.detail ) return false
+      if ( e.detail.id !== control.id ) return false
+      this.updateValues( e.detail.value )
+    } )
+  }
+
   updateValues(value) {
     this.props.control.setting.set( {
       ...this.props.control.setting.get(),

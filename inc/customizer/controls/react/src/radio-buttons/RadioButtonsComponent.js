@@ -16,6 +16,7 @@ class RadioButtonsComponent extends Component {
       value: props.control.setting.get()
     }
     this.getChoices = this.getChoices.bind( this )
+    this.updateValue = this.updateValue.bind( this )
   }
 
   getChoices() {
@@ -50,20 +51,32 @@ class RadioButtonsComponent extends Component {
     return (
       <div className={wrapClasses}>
         {this.props.control.params.label &&
-          <span
-            className='customize-control-title'
-          >{this.props.control.params.label}
+        <span
+          className='customize-control-title'
+        >{this.props.control.params.label}
           </span>}
         <RadioIcons
           value={this.state.value}
           options={this.getChoices()}
-          onChange={(value) => {
-            this.setState( { value } )
-            this.props.control.setting.set( value )
-          }}
+          onChange={(value) => {this.updateValue( value )}}
         />
       </div>
     )
+  }
+
+  componentDidMount() {
+    const { control } = this.props
+
+    document.addEventListener( 'neve-changed-customizer-value', (e) => {
+      if ( !e.detail ) return false
+      if ( e.detail.id !== control.id ) return false
+      this.updateValue( e.detail.value )
+    } )
+  }
+
+  updateValue(newVal) {
+    this.setState( { value: newVal } )
+    this.props.control.setting.set( newVal )
   }
 }
 

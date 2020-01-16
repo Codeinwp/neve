@@ -123,7 +123,7 @@ class Nav extends Abstract_Component {
 				'sanitize_callback' => 'sanitize_hex_color',
 				'default'           => '#404248',
 				'label'             => __( 'Items Color', 'neve' ),
-				'type'              => '\WP_Customize_Color_Control',
+				'type'              => 'neve_color_control',
 				'section'           => $this->section,
 			]
 		);
@@ -136,7 +136,7 @@ class Nav extends Abstract_Component {
 				'sanitize_callback' => 'sanitize_hex_color',
 				'default'           => '#0366d6',
 				'label'             => __( 'Active Item Color', 'neve' ),
-				'type'              => '\WP_Customize_Color_Control',
+				'type'              => 'neve_color_control',
 				'section'           => $this->section,
 			]
 		);
@@ -149,7 +149,7 @@ class Nav extends Abstract_Component {
 				'sanitize_callback' => 'sanitize_hex_color',
 				'default'           => '#0366d6',
 				'label'             => __( 'Items Hover Color', 'neve' ),
-				'type'              => '\WP_Customize_Color_Control',
+				'type'              => 'neve_color_control',
 				'section'           => $this->section,
 			]
 		);
