@@ -21,10 +21,10 @@ use HFG\Main;
  */
 class SearchResponsive extends Abstract_Component {
 
-	const COMPONENT_ID   = 'header_search_responsive';
+	const COMPONENT_ID = 'header_search_responsive';
 	const PLACEHOLDER_ID = 'placeholder';
-	const SIZE_ID        = 'icon_size';
-	const COLOR_ID       = 'color';
+	const SIZE_ID = 'icon_size';
+	const COLOR_ID = 'color';
 	const HOVER_COLOR_ID = 'hover_color';
 
 	/**
@@ -125,6 +125,7 @@ class SearchResponsive extends Abstract_Component {
 					'prop'     => 'fill',
 					'fallback' => '',
 				),
+				'conditional_header'    => true,
 			]
 		);
 
@@ -142,6 +143,7 @@ class SearchResponsive extends Abstract_Component {
 				'live_refresh_css_prop' => array(
 					'prop' => 'fill',
 				),
+				'conditional_header'    => true,
 			]
 		);
 	}

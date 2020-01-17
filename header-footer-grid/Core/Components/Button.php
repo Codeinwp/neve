@@ -23,9 +23,9 @@ use WP_Customize_Manager;
 class Button extends Abstract_Component {
 
 	const COMPONENT_ID = 'button_base';
-	const LINK_ID      = 'link_setting';
-	const TEXT_ID      = 'text_setting';
-	const STYLE_ID     = 'style_setting';
+	const LINK_ID = 'link_setting';
+	const TEXT_ID = 'text_setting';
+	const STYLE_ID = 'style_setting';
 
 	/**
 	 * Default spacing value
@@ -100,6 +100,7 @@ class Button extends Abstract_Component {
 				'type'               => 'text',
 				'section'            => $this->section,
 				'use_dynamic_fields' => array( 'url' ),
+				'conditional_header' => true,
 			]
 		);
 		SettingsManager::get_instance()->add(
@@ -114,6 +115,7 @@ class Button extends Abstract_Component {
 				'type'               => 'text',
 				'section'            => $this->section,
 				'use_dynamic_fields' => array( 'string' ),
+				'conditional_header' => true,
 			]
 		);
 
@@ -129,15 +131,16 @@ class Button extends Abstract_Component {
 		];
 		SettingsManager::get_instance()->add(
 			[
-				'id'                => self::STYLE_ID,
-				'group'             => $this->get_class_const( 'COMPONENT_ID' ),
-				'tab'               => SettingsManager::TAB_STYLE,
-				'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
-				'default'           => $defaults,
-				'sanitize_callback' => 'neve_sanitize_button_appearance',
-				'label'             => __( 'Appearance', 'neve' ),
-				'type'              => 'neve_button_appearance',
-				'section'           => $this->section,
+				'id'                 => self::STYLE_ID,
+				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'                => SettingsManager::TAB_STYLE,
+				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
+				'default'            => $defaults,
+				'sanitize_callback'  => 'neve_sanitize_button_appearance',
+				'label'              => __( 'Appearance', 'neve' ),
+				'type'               => 'neve_button_appearance',
+				'section'            => $this->section,
+				'conditional_header' => true,
 			]
 		);
 	}

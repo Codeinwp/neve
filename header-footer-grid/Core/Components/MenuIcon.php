@@ -23,9 +23,9 @@ use WP_Customize_Manager;
  */
 class MenuIcon extends Abstract_Component {
 
-	const COMPONENT_ID      = 'header_menu_icon';
-	const SIDEBAR_TOGGLE    = 'sidebar';
-	const TEXT_ID           = 'menu_label';
+	const COMPONENT_ID = 'header_menu_icon';
+	const SIDEBAR_TOGGLE = 'sidebar';
+	const TEXT_ID = 'menu_label';
 	const BUTTON_APPEARANCE = 'button_appearance';
 
 	/**
@@ -97,6 +97,7 @@ class MenuIcon extends Abstract_Component {
 					'wrap_class' => 'nav-toggle-label',
 					'html_tag'   => 'span',
 				),
+				'conditional_header'    => true,
 			]
 		);
 		SettingsManager::get_instance()->add(
@@ -114,6 +115,7 @@ class MenuIcon extends Abstract_Component {
 					'no_hover' => true,
 				],
 				'live_refresh_selector' => $this->default_selector,
+				'conditional_header'    => true,
 			]
 		);
 	}

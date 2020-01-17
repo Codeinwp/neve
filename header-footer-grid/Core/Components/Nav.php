@@ -21,13 +21,13 @@ use HFG\Main;
  * @package HFG\Core\Components
  */
 class Nav extends Abstract_Component {
-	const COMPONENT_ID    = 'primary-menu';
-	const STYLE_ID        = 'style';
-	const COLOR_ID        = 'color';
-	const HOVER_COLOR_ID  = 'hover_color';
+	const COMPONENT_ID = 'primary-menu';
+	const STYLE_ID = 'style';
+	const COLOR_ID = 'color';
+	const HOVER_COLOR_ID = 'hover_color';
 	const ACTIVE_COLOR_ID = 'active_color';
-	const LAST_ITEM_ID    = 'neve_last_menu_item';
-	const NAV_MENU_ID     = 'nv-primary-navigation';
+	const LAST_ITEM_ID = 'neve_last_menu_item';
+	const NAV_MENU_ID = 'nv-primary-navigation';
 
 	/**
 	 * Nav constructor.
@@ -116,41 +116,44 @@ class Nav extends Abstract_Component {
 
 		SettingsManager::get_instance()->add(
 			[
-				'id'                => self::COLOR_ID,
-				'group'             => $this->get_class_const( 'COMPONENT_ID' ),
-				'tab'               => SettingsManager::TAB_STYLE,
-				'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
-				'sanitize_callback' => 'sanitize_hex_color',
-				'default'           => '#404248',
-				'label'             => __( 'Items Color', 'neve' ),
-				'type'              => 'neve_color_control',
-				'section'           => $this->section,
+				'id'                 => self::COLOR_ID,
+				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'                => SettingsManager::TAB_STYLE,
+				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
+				'sanitize_callback'  => 'sanitize_hex_color',
+				'default'            => '#404248',
+				'label'              => __( 'Items Color', 'neve' ),
+				'type'               => 'neve_color_control',
+				'section'            => $this->section,
+				'conditional_header' => true,
 			]
 		);
 		SettingsManager::get_instance()->add(
 			[
-				'id'                => self::ACTIVE_COLOR_ID,
-				'group'             => $this->get_class_const( 'COMPONENT_ID' ),
-				'tab'               => SettingsManager::TAB_STYLE,
-				'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
-				'sanitize_callback' => 'sanitize_hex_color',
-				'default'           => '#0366d6',
-				'label'             => __( 'Active Item Color', 'neve' ),
-				'type'              => 'neve_color_control',
-				'section'           => $this->section,
+				'id'                 => self::ACTIVE_COLOR_ID,
+				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'                => SettingsManager::TAB_STYLE,
+				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
+				'sanitize_callback'  => 'sanitize_hex_color',
+				'default'            => '#0366d6',
+				'label'              => __( 'Active Item Color', 'neve' ),
+				'type'               => 'neve_color_control',
+				'section'            => $this->section,
+				'conditional_header' => true,
 			]
 		);
 		SettingsManager::get_instance()->add(
 			[
-				'id'                => self::HOVER_COLOR_ID,
-				'group'             => $this->get_class_const( 'COMPONENT_ID' ),
-				'tab'               => SettingsManager::TAB_STYLE,
-				'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
-				'sanitize_callback' => 'sanitize_hex_color',
-				'default'           => '#0366d6',
-				'label'             => __( 'Items Hover Color', 'neve' ),
-				'type'              => 'neve_color_control',
-				'section'           => $this->section,
+				'id'                 => self::HOVER_COLOR_ID,
+				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'                => SettingsManager::TAB_STYLE,
+				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
+				'sanitize_callback'  => 'sanitize_hex_color',
+				'default'            => '#0366d6',
+				'label'              => __( 'Items Hover Color', 'neve' ),
+				'type'               => 'neve_color_control',
+				'section'            => $this->section,
+				'conditional_header' => true,
 			]
 		);
 

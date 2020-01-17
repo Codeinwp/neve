@@ -23,10 +23,10 @@ class Logo extends Abstract_Component {
 
 
 	const COMPONENT_ID = 'logo';
-	const CUSTOM_LOGO  = 'custom_logo';
-	const DISPLAY      = 'display';
-	const MAX_WIDTH    = 'max_width';
-	const SHOW_TITLE   = 'show_title';
+	const CUSTOM_LOGO = 'custom_logo';
+	const DISPLAY = 'display';
+	const MAX_WIDTH = 'max_width';
+	const SHOW_TITLE = 'show_title';
 	const SHOW_TAGLINE = 'show_tagline';
 
 	/**
@@ -99,54 +99,57 @@ class Logo extends Abstract_Component {
 
 		SettingsManager::get_instance()->add(
 			[
-				'id'                => self::DISPLAY,
-				'group'             => $this->get_class_const( 'COMPONENT_ID' ),
-				'tab'               => SettingsManager::TAB_GENERAL,
-				'transport'         => 'post' . $this->get_builder_id(),
-				'sanitize_callback' => 'wp_filter_nohtml_kses',
-				'default'           => 'default',
-				'label'             => __( 'Display', 'neve' ),
-				'type'              => '\Neve\Customizer\Controls\React\Radio_Buttons',
-				'options'           => [
+				'id'                 => self::DISPLAY,
+				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'                => SettingsManager::TAB_GENERAL,
+				'transport'          => 'post' . $this->get_builder_id(),
+				'sanitize_callback'  => 'wp_filter_nohtml_kses',
+				'default'            => 'default',
+				'label'              => __( 'Display', 'neve' ),
+				'type'               => '\Neve\Customizer\Controls\React\Radio_Buttons',
+				'options'            => [
 					'priority'      => 11,
 					'is_for'        => 'logo',
 					'large_buttons' => true,
 				],
-				'section'           => $this->section,
+				'section'            => $this->section,
+				'conditional_header' => true,
 			]
 		);
 
 		SettingsManager::get_instance()->add(
 			[
-				'id'                => self::SHOW_TAGLINE,
-				'group'             => $this->get_class_const( 'COMPONENT_ID' ),
-				'tab'               => SettingsManager::TAB_GENERAL,
-				'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
-				'sanitize_callback' => 'absint',
-				'default'           => 1,
-				'label'             => __( 'Show Site Tagline', 'neve' ),
-				'type'              => 'neve_toggle_control',
-				'options'           => [
+				'id'                 => self::SHOW_TAGLINE,
+				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'                => SettingsManager::TAB_GENERAL,
+				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
+				'sanitize_callback'  => 'absint',
+				'default'            => 1,
+				'label'              => __( 'Show Site Tagline', 'neve' ),
+				'type'               => 'neve_toggle_control',
+				'options'            => [
 					'type' => 'checkbox-toggle',
 				],
-				'section'           => $this->section,
+				'section'            => $this->section,
+				'conditional_header' => true,
 			]
 		);
 
 		SettingsManager::get_instance()->add(
 			[
-				'id'                => self::SHOW_TITLE,
-				'group'             => $this->get_class_const( 'COMPONENT_ID' ),
-				'tab'               => SettingsManager::TAB_GENERAL,
-				'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
-				'sanitize_callback' => 'absint',
-				'default'           => 1,
-				'label'             => __( 'Show Site Title', 'neve' ),
-				'type'              => 'neve_toggle_control',
-				'options'           => [
+				'id'                 => self::SHOW_TITLE,
+				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'                => SettingsManager::TAB_GENERAL,
+				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
+				'sanitize_callback'  => 'absint',
+				'default'            => 1,
+				'label'              => __( 'Show Site Title', 'neve' ),
+				'type'               => 'neve_toggle_control',
+				'options'            => [
 					'type' => 'checkbox-toggle',
 				],
-				'section'           => $this->section,
+				'section'            => $this->section,
+				'conditional_header' => true,
 			]
 		);
 
