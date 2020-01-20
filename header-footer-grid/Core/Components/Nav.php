@@ -21,13 +21,13 @@ use HFG\Main;
  * @package HFG\Core\Components
  */
 class Nav extends Abstract_Component {
-	const COMPONENT_ID = 'primary-menu';
-	const STYLE_ID = 'style';
-	const COLOR_ID = 'color';
-	const HOVER_COLOR_ID = 'hover_color';
+	const COMPONENT_ID    = 'primary-menu';
+	const STYLE_ID        = 'style';
+	const COLOR_ID        = 'color';
+	const HOVER_COLOR_ID  = 'hover_color';
 	const ACTIVE_COLOR_ID = 'active_color';
-	const LAST_ITEM_ID = 'neve_last_menu_item';
-	const NAV_MENU_ID = 'nv-primary-navigation';
+	const LAST_ITEM_ID    = 'neve_last_menu_item';
+	const NAV_MENU_ID     = 'nv-primary-navigation';
 
 	/**
 	 * Nav constructor.
@@ -81,36 +81,20 @@ class Nav extends Abstract_Component {
 	public function add_settings() {
 		SettingsManager::get_instance()->add(
 			[
-				'id'                => self::STYLE_ID,
-				'group'             => $this->get_class_const( 'COMPONENT_ID' ),
-				'tab'               => SettingsManager::TAB_STYLE,
-				'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
-				'sanitize_callback' => 'wp_filter_nohtml_kses',
-				'default'           => 'style-plain',
-				'label'             => __( 'Skin Mode', 'neve' ),
-				'type'              => '\Neve\Customizer\Controls\Radio_Image',
-				'options'           => [
-					'choices' => array(
-						'style-plain'         => array(
-							'url'  => Settings\Config::get_url() . '/assets/images/customizer/menu_style_1.svg',
-							'name' => '',
-						),
-						'style-full-height'   => array(
-							'url'  => Settings\Config::get_url() . '/assets/images/customizer/menu_style_2.svg',
-							'name' => '',
-						),
-						'style-border-bottom' => array(
-							'url'  => Settings\Config::get_url() . '/assets/images/customizer/menu_style_3.svg',
-							'name' => '',
-						),
-						'style-border-top'    => array(
-							'url'  => Settings\Config::get_url() . '/assets/images/customizer/menu_style_4.svg',
-							'name' => '',
-						),
-					),
-
+				'id'                 => self::STYLE_ID,
+				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'                => SettingsManager::TAB_STYLE,
+				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
+				'sanitize_callback'  => 'wp_filter_nohtml_kses',
+				'default'            => 'style-plain',
+				'conditional_header' => true,
+				'label'              => __( 'Skin Mode', 'neve' ),
+				'type'               => '\Neve\Customizer\Controls\React\Radio_Buttons',
+				'section'            => $this->section,
+				'options'            => [
+					'large_buttons' => true,
+					'is_for'        => 'menu',
 				],
-				'section'           => $this->section,
 			]
 		);
 

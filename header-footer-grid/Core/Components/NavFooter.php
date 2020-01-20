@@ -62,29 +62,12 @@ class NavFooter extends Abstract_Component {
 				'sanitize_callback' => 'wp_filter_nohtml_kses',
 				'default'           => 'style-plain',
 				'label'             => __( 'Skin Mode', 'neve' ),
-				'type'              => '\Neve\Customizer\Controls\Radio_Image',
-				'options'           => [
-					'choices' => array(
-						'style-plain'         => array(
-							'url'  => Settings\Config::get_url() . '/assets/images/customizer/menu_style_1.svg',
-							'name' => '',
-						),
-						'style-full-height'   => array(
-							'url'  => Settings\Config::get_url() . '/assets/images/customizer/menu_style_2.svg',
-							'name' => '',
-						),
-						'style-border-bottom' => array(
-							'url'  => Settings\Config::get_url() . '/assets/images/customizer/menu_style_3.svg',
-							'name' => '',
-						),
-						'style-border-top'    => array(
-							'url'  => Settings\Config::get_url() . '/assets/images/customizer/menu_style_4.svg',
-							'name' => '',
-						),
-					),
-
-				],
+				'type'              => '\Neve\Customizer\Controls\React\Radio_Buttons',
 				'section'           => $this->section,
+				'options'           => [
+					'large_buttons' => true,
+					'is_for'        => 'menu',
+				],
 			]
 		);
 

@@ -423,3 +423,9 @@
         background: transparent !important; }
         .neve-has-dynamic-tag-selector .neve-dynamic-tag-selector .components-dropdown-menu button:hover svg, .neve-has-dynamic-tag-selector .neve-dynamic-tag-selector .components-dropdown-menu button:active svg {
           opacity: 1; }
+
+.components-icon-button .svg-text {
+  fill: #fff; }
+
+.components-icon-button.active .svg-text {
+  fill: #555d66; }

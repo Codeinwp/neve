@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+import classnames from 'classnames'
 
 const { __ } = wp.i18n
 const {
@@ -38,47 +39,46 @@ class ResponsiveControl extends Component {
       }
     }
 
-    let controlClasses = 'neve-responsive-control-bar'
-    if ( !this.props.hideResponsive ) {
-      controlClasses += ' bordered'
-    }
-    if ( this.props.hideResponsive ) {
+    const { controlLabel, hideResponsive } = this.props
+    if ( hideResponsive ) {
       return ( '' )
     }
     return (
       <Fragment>
-        <div className={controlClasses}>
-          {this.props.controlLabel && <span
+        <div className={classnames(
+          ['neve-responsive-control-bar', { 'bordered': !hideResponsive }] )}>
+          {controlLabel && <span
             className='customize-control-title'
-          >{this.props.controlLabel}
+          >{controlLabel}
           </span>}
           {
-            !this.props.hideResponsive &&
-              <div className='floating-controls'>
-                <ButtonGroup>
-                  {Object.keys( deviceMap ).map( (device) => {
-							      return (
-  <Tooltip text={deviceMap[device].tooltip}>
-                        <Button
-      isTertiary
-      className={( device === view
-                            ? 'active-device '
-                            : '' ) + device}
-      onClick={() => {
-							              const event = new CustomEvent(
-							                'neveChangedRepsonsivePreview', {
-							                  detail: device
-							                } )
-                            document.dispatchEvent( event )
-                          }}
-    >
-      <Dashicon icon={deviceMap[device].icon} />
-    </Button>
-                      </Tooltip>
-							      )
-							    } )}
-                </ButtonGroup>
-              </div>
+            !hideResponsive &&
+            <div className='floating-controls'>
+              <ButtonGroup>
+                {Object.keys( deviceMap ).map( (device) => {
+                  const { tooltip, icon } = deviceMap[device]
+                  return (
+                    <Tooltip text={tooltip}>
+                      <Button
+                        isTertiary
+                        className={( device === view
+                          ? 'active-device '
+                          : '' ) + device}
+                        onClick={() => {
+                          const event = new CustomEvent(
+                            'neveChangedRepsonsivePreview', {
+                              detail: device
+                            } )
+                          document.dispatchEvent( event )
+                        }}
+                      >
+                        <Dashicon icon={icon}/>
+                      </Button>
+                    </Tooltip>
+                  )
+                } )}
+              </ButtonGroup>
+            </div>
           }
         </div>
         <div className='neve-responsive-controls-content'>

@@ -23,10 +23,10 @@ class Logo extends Abstract_Component {
 
 
 	const COMPONENT_ID = 'logo';
-	const CUSTOM_LOGO = 'custom_logo';
-	const DISPLAY = 'display';
-	const MAX_WIDTH = 'max_width';
-	const SHOW_TITLE = 'show_title';
+	const CUSTOM_LOGO  = 'custom_logo';
+	const DISPLAY      = 'display';
+	const MAX_WIDTH    = 'max_width';
+	const SHOW_TITLE   = 'show_title';
 	const SHOW_TAGLINE = 'show_tagline';
 
 	/**

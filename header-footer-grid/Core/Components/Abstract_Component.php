@@ -27,11 +27,11 @@ use WP_Customize_Manager;
 abstract class Abstract_Component implements Component {
 	use Core;
 
-	const ALIGNMENT_ID = 'component_align';
-	const PADDING_ID = 'component_padding';
-	const MARGIN_ID = 'component_margin';
+	const ALIGNMENT_ID   = 'component_align';
+	const PADDING_ID     = 'component_padding';
+	const MARGIN_ID      = 'component_margin';
 	const FONT_FAMILY_ID = 'component_font_family';
-	const TYPEFACE_ID = 'component_typeface';
+	const TYPEFACE_ID    = 'component_typeface';
 	/**
 	 * Current id of the component.
 	 *

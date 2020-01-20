@@ -22,9 +22,9 @@ use HFG\Main;
  */
 class SecondNav extends Abstract_Component {
 
-	const COMPONENT_ID = 'secondary-menu';
-	const STYLE_ID = 'style';
-	const COLOR_ID = 'color';
+	const COMPONENT_ID   = 'secondary-menu';
+	const STYLE_ID       = 'style';
+	const COLOR_ID       = 'color';
 	const HOVER_COLOR_ID = 'hover_color';
 
 	/**
@@ -55,36 +55,20 @@ class SecondNav extends Abstract_Component {
 
 		SettingsManager::get_instance()->add(
 			[
-				'id'                => self::STYLE_ID,
-				'group'             => $this->get_class_const( 'COMPONENT_ID' ),
-				'tab'               => SettingsManager::TAB_STYLE,
-				'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
-				'sanitize_callback' => 'wp_filter_nohtml_kses',
-				'default'           => 'style-plain',
-				'label'             => __( 'Skin Mode', 'neve' ),
-				'type'              => '\Neve\Customizer\Controls\Radio_Image',
-				'options'           => [
-					'choices' => array(
-						'style-plain'         => array(
-							'url'  => Settings\Config::get_url() . '/assets/images/customizer/menu_style_1.svg',
-							'name' => '',
-						),
-						'style-full-height'   => array(
-							'url'  => Settings\Config::get_url() . '/assets/images/customizer/menu_style_2.svg',
-							'name' => '',
-						),
-						'style-border-bottom' => array(
-							'url'  => Settings\Config::get_url() . '/assets/images/customizer/menu_style_3.svg',
-							'name' => '',
-						),
-						'style-border-top'    => array(
-							'url'  => Settings\Config::get_url() . '/assets/images/customizer/menu_style_4.svg',
-							'name' => '',
-						),
-					),
-
+				'id'                 => self::STYLE_ID,
+				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'                => SettingsManager::TAB_STYLE,
+				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
+				'sanitize_callback'  => 'wp_filter_nohtml_kses',
+				'default'            => 'style-plain',
+				'label'              => __( 'Skin Mode', 'neve' ),
+				'conditional_header' => true,
+				'type'               => '\Neve\Customizer\Controls\React\Radio_Buttons',
+				'section'            => $this->section,
+				'options'            => [
+					'large_buttons' => true,
+					'is_for'        => 'menu',
 				],
-				'section'           => $this->section,
 			]
 		);
 
@@ -165,7 +149,7 @@ class SecondNav extends Abstract_Component {
 		$hover_color = get_theme_mod( $this->id . '_hover_color' );
 		if ( ! empty( $hover_color ) ) {
 			$css_array['.nav-menu-secondary:not(.style-full-height) #secondary-menu li:hover > a'] = array( 'color' => sanitize_hex_color( $hover_color ) );
-			$css_array['#secondary-menu a:after']                                                  = array( 'background-color' => sanitize_hex_color( $hover_color ) );
+			$css_array['#secondary-menu a:after'] = array( 'background-color' => sanitize_hex_color( $hover_color ) );
 		}
 
 		return parent::add_style( $css_array );

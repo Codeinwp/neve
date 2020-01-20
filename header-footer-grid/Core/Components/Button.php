@@ -23,9 +23,9 @@ use WP_Customize_Manager;
 class Button extends Abstract_Component {
 
 	const COMPONENT_ID = 'button_base';
-	const LINK_ID = 'link_setting';
-	const TEXT_ID = 'text_setting';
-	const STYLE_ID = 'style_setting';
+	const LINK_ID      = 'link_setting';
+	const TEXT_ID      = 'text_setting';
+	const STYLE_ID     = 'style_setting';
 
 	/**
 	 * Default spacing value

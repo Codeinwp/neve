@@ -20,7 +20,13 @@ class RadioButtonsComponent extends Component {
   }
 
   getChoices() {
-    if ( this.props.control.params.is_for === 'logo' ) {
+    const { is_for, choices } = this.props.control.params
+
+    if ( !is_for ) {
+      return choices
+    }
+
+    if ( is_for === 'logo' ) {
       return {
         default: {
           tooltip: __( 'Logo Only', 'neve' ),
@@ -41,22 +47,53 @@ class RadioButtonsComponent extends Component {
       }
     }
 
-    return this.props.control.params.choices
+    if ( is_for === 'menu' ) {
+      return {
+        'style-plain': {
+          tooltip: __( 'Plain', 'neve' ),
+          icon: SVG.menuPlain
+        },
+        'style-full-height': {
+          tooltip: __( 'Background', 'neve' ),
+          icon: SVG.menuFilled
+        },
+        'style-border-bottom': {
+          tooltip: __( 'Bottom Border', 'neve' ),
+          icon: SVG.menuUnderline
+        },
+        'style-border-top': {
+          tooltip: __( 'Top Border', 'neve' ),
+          icon: SVG.menuOverline
+        }
+      }
+    }
+
+    if ( is_for === 'row_skin' ) {
+      return {
+        'light-mode': {
+          tooltip: __( 'Light', 'neve' ),
+          icon: SVG.light
+        },
+        'dark-mode': {
+          tooltip: __( 'Dark', 'neve' ),
+          icon: SVG.dark
+        }
+      }
+    }
+
   }
 
   render() {
+    const { label, large_buttons } = this.props.control.params
+    const { value } = this.state
     const wrapClasses = classnames( [
       'neve-white-background-control',
-      { 'large-buttons': this.props.control.params.large_buttons === true }] )
+      { 'large-buttons': large_buttons === true }] )
     return (
       <div className={wrapClasses}>
-        {this.props.control.params.label &&
-        <span
-          className='customize-control-title'
-        >{this.props.control.params.label}
-          </span>}
+        {label && <span className='customize-control-title'>{label}</span>}
         <RadioIcons
-          value={this.state.value}
+          value={value}
           options={this.getChoices()}
           onChange={(value) => {this.updateValue( value )}}
         />

@@ -677,3 +677,14 @@ $button_color: #555d66;
     }
   }
 }
+
+
+.components-icon-button {
+  .svg-text {
+    fill: #fff;
+  }
+
+  &.active .svg-text {
+    fill: $button_color;
+  }
+}

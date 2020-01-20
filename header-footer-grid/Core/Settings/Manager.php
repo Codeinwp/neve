@@ -20,8 +20,8 @@ use Neve\Customizer\Controls\Tabs;
 class Manager {
 
 	const TAB_GENERAL = 'general';
-	const TAB_LAYOUT = 'layout';
-	const TAB_STYLE = 'style';
+	const TAB_LAYOUT  = 'layout';
+	const TAB_STYLE   = 'style';
 
 	/**
 	 * Holds an instance of this class.
@@ -113,7 +113,7 @@ class Manager {
 			'refresh'     => true,
 			'postMessage' => true,
 		];
-		$section = '';
+		$section                = '';
 		foreach ( $this->get_settings_group( $group ) as $id ) {
 
 			if ( ! isset( self::$settings[ $id ] ) ) {
@@ -226,7 +226,6 @@ class Manager {
 	 *
 	 * @since   1.0.1
 	 * @access  public
-	 *
 	 */
 	public function add_controls_to_tabs( $id, $tabs = array() ) {
 		self::$tabs[ $id ] = array_merge_recursive(
@@ -327,14 +326,14 @@ class Manager {
 			self::$groups[ $arguments['group'] ][] = $id;
 
 			if ( isset( $arguments['tab'] ) && in_array(
-					$arguments['tab'],
-					array(
-						self::TAB_GENERAL,
-						self::TAB_LAYOUT,
-						self::TAB_STYLE,
-					),
-					true
-				) ) {
+				$arguments['tab'],
+				array(
+					self::TAB_GENERAL,
+					self::TAB_LAYOUT,
+					self::TAB_STYLE,
+				),
+				true
+			) ) {
 				if ( ! isset( self::$tabs[ $arguments['group'] ][ $arguments['tab'] ] ) ) {
 					self::$tabs[ $arguments['group'] ][ $arguments['tab'] ] = [];
 				}

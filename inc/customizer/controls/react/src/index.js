@@ -9,6 +9,7 @@ import { FontFamilyControl } from './font-family/Control.js'
 import { RadioButtonsControl } from './radio-buttons/Control.js'
 import { ButtonAppearanceControl } from './button-appearance/Control.js'
 import { RangeControl } from './range/Control.js'
+import { ResponsiveRangeControl } from './responsive-range/Control.js'
 import { ColorControl } from './color/Control.js'
 import './style.scss'
 
@@ -20,6 +21,7 @@ wp.customize.controlConstructor.neve_font_family_control = FontFamilyControl
 wp.customize.controlConstructor.neve_radio_buttons_control = RadioButtonsControl
 wp.customize.controlConstructor.neve_button_appearance = ButtonAppearanceControl
 wp.customize.controlConstructor.neve_range_control = RangeControl
+wp.customize.controlConstructor.neve_responsive_range_control = ResponsiveRangeControl
 wp.customize.controlConstructor.neve_color_control = ColorControl
 
 window.addEventListener( 'load', () => {
