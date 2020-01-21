@@ -13,6 +13,7 @@ export const isMobile = () => {
  *
  * @param theUrl
  * @param callback
+ * @param params
  */
 export const httpGetAsync = (theUrl, callback, params) => {
 	let xmlHttp = new XMLHttpRequest();
@@ -100,7 +101,7 @@ export const batchProcess =  (element, classNames, method)=>{
 	(element.length ? element : [element]).forEach(value=>{
 		value.classList[method].apply(value.classList,classes);
 	});
-}
+};
 /**
  * Check if element is in view.
  * @param element

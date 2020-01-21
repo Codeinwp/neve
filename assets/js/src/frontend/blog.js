@@ -50,7 +50,7 @@ const infiniteScroll = () => {
 
 	isInView( document.querySelector( '.infinite-scroll-trigger' ),
 			() => {
-				if ( typeof parent.wp.customize !== 'undefined' ) {
+				if ( parent.wp.customize ) {
 					parent.wp.customize.requestChangesetUpdate().then( () => {
 						requestMorePosts();
 					} );
