@@ -59,8 +59,9 @@ export const unhashUrl = (url) => {
  * @param callBack
  */
 export const addEvent = (element, event, callBack) => {
-	(element.length ? element : [element]).forEach( value => {
-		value.addEventListener( event, callBack );
+
+	((element && element.forEach) ? element : [element]).forEach( value => {
+		value && value.addEventListener( event, callBack );
 	});
 };
 
@@ -98,8 +99,8 @@ export const removeClass = (element, className) => {
 
 export const batchProcess =  (element, classNames, method)=>{
 	let classes = classNames.split( ' ' );
-	(element.length ? element : [element]).forEach(value=>{
-		value.classList[method].apply(value.classList,classes);
+	((element && element.forEach) ? element : [element]).forEach(value=>{
+		value && value.classList[method].apply(value.classList,classes);
 	});
 };
 /**
