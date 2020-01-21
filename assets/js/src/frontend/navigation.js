@@ -13,7 +13,7 @@ let pageUrl;
 /**
  * Initialize nav logic.
  */
-export const initNavigation = function() {
+export const initNavigation = ()=> {
 	pageUrl = window.location.href;
 	repositionDropdowns();
 	handleScrollLinks();
@@ -28,7 +28,7 @@ export const initNavigation = function() {
  * Reposition drop downs in case they go off screen.
  * @returns {boolean}
  */
-export const repositionDropdowns = function() {
+export const repositionDropdowns =  () => {
 	if ( isMobile() ) return false;
 
 	let dropDowns = document.querySelectorAll( '.sub-menu .sub-menu' );
@@ -58,7 +58,7 @@ function handleScrollLinks() {
 	if ( links.length === 0 ) return false;
 
 	links.forEach( link => {
-		link.addEventListener( 'click', function(event) {
+		link.addEventListener( 'click', (event) => {
 			let href = event.target.getAttribute( 'href' );
 			if ( href === null ) return false;
 			if ( unhashUrl( href ) === unhashUrl( pageUrl ) ) {
@@ -74,7 +74,7 @@ function handleScrollLinks() {
 function handleMobileDropdowns() {
 	let carets = document.querySelectorAll( '.caret-wrap' );
 	carets.forEach( caret => {
-		caret.addEventListener( 'click', function(event) {
+		caret.addEventListener( 'click', (event) => {
 			event.preventDefault();
 			let subMenu = caret.parentNode.parentNode.querySelector( '.sub-menu' );
 			toggleClass( caret, 'dropdown-open' );
@@ -93,7 +93,7 @@ function handleSearch() {
 			html = document.querySelector( 'html' );
 	// Handle search opening.
 	navItem.forEach(searchItem => {
-		searchItem.addEventListener( 'click', function(e) {
+		searchItem.addEventListener( 'click', (e) => {
 			e.stopPropagation();
 			toggleClass( searchItem, 'active' );
 			searchItem.querySelector( '.search-field' ).focus();
@@ -104,13 +104,13 @@ function handleSearch() {
 	} );
 	// Don't close thee search if interacted with.
 	navSearch.forEach( item => {
-		item.addEventListener( 'click', function(e) {
+		item.addEventListener( 'click', (e) => {
 			e.stopPropagation();
 		} );
 	} );
 	// Mobile search close buttons.
 	close.forEach(button => {
-		button.addEventListener( 'click', function(e) {
+		button.addEventListener( 'click', (e) => {
 			e.preventDefault();
 			navItem.forEach( search => {
 				removeClass( search, 'active' );
@@ -143,7 +143,7 @@ function createNavOverlay(item, classToRemove, multiple = false) {
 	let primaryNav = document.querySelector( 'header.header' );
 	primaryNav.parentNode.insertBefore( navClickaway, primaryNav );
 
-	navClickaway.addEventListener( 'click', function() {
+	navClickaway.addEventListener( 'click',  () => {
 		removeClass( item, classToRemove );
 		navClickaway.parentNode.removeChild( navClickaway );
 	} );
@@ -159,10 +159,10 @@ function handleIeDropdowns() {
 	dropdowns.forEach(dropdown =>  {
 		let parentItem = dropdown.parentNode;
 
-		parentItem.addEventListener( 'mouseenter', function() {
+		parentItem.addEventListener( 'mouseenter', () => {
 			addClass( dropdown, 'dropdown-open' );
 		} );
-		parentItem.addEventListener( 'mouseleave', function() {
+		parentItem.addEventListener( 'mouseleave', () => {
 			removeClass( dropdown, 'dropdown-open' );
 		} );
 	} );

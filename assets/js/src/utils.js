@@ -4,7 +4,7 @@
  *
  * @returns {boolean}
  */
-export const isMobile = function() {
+export const isMobile = () => {
 	return window.innerWidth <= 960;
 };
 
@@ -14,13 +14,13 @@ export const isMobile = function() {
  * @param theUrl
  * @param callback
  */
-export const httpGetAsync = function(theUrl, callback, params) {
+export const httpGetAsync = (theUrl, callback, params) => {
 	let xmlHttp = new XMLHttpRequest();
-	xmlHttp.onload = function() {
+	xmlHttp.onload = () => {
 		if ( xmlHttp.readyState === 4 && xmlHttp.status === 200 )
 			callback( xmlHttp.response );
 	};
-	xmlHttp.onerror = function(error) {
+	xmlHttp.onerror = (error) => {
 		console.error( error );
 	};
 	xmlHttp.open( 'POST', theUrl, true );
@@ -32,7 +32,7 @@ export const httpGetAsync = function(theUrl, callback, params) {
 /**
  * Check if user is viewing on the best browser ever.
  */
-export const isIe = function() {
+export const isIe = () => {
 	return /(Trident|MSIE|Edge)/.test(window.navigator.userAgent);
 };
 
@@ -41,7 +41,7 @@ export const isIe = function() {
  * @param url
  * @returns {string}
  */
-export const unhashUrl = function(url) {
+export const unhashUrl = (url) => {
 
 	let parts =    url.split('#');
 	if(parts.length > 1){
@@ -57,7 +57,7 @@ export const unhashUrl = function(url) {
  * @param event
  * @param callBack
  */
-export const addEvent = function(element, event, callBack) {
+export const addEvent = (element, event, callBack) => {
 	(element.length ? element : [element]).forEach( value => {
 		value.addEventListener( event, callBack );
 	});
@@ -71,7 +71,7 @@ export const addEvent = function(element, event, callBack) {
  * @param element
  * @param className Singular class name.
  */
-export const toggleClass = function(element, className) {
+export const toggleClass = (element, className)=> {
 	batchProcess(element,className,'toggle');
 };
 
@@ -81,7 +81,7 @@ export const toggleClass = function(element, className) {
  * @param element
  * @param className
  */
-export const addClass = function(element, className) {
+export const addClass = (element, className)=> {
 	batchProcess(element,className,'add');
 };
 
@@ -91,11 +91,11 @@ export const addClass = function(element, className) {
  * @param element
  * @param className
  */
-export const removeClass = function(element, className) {
+export const removeClass = (element, className) => {
 	batchProcess(element,className,'remove');
 };
 
-export const batchProcess = function (element, classNames, method){
+export const batchProcess =  (element, classNames, method)=>{
 	let classes = classNames.split( ' ' );
 	(element.length ? element : [element]).forEach(value=>{
 		value.classList[method].apply(value.classList,classes);
@@ -107,7 +107,7 @@ export const batchProcess = function (element, classNames, method){
  * @param callback
  * @param intersectionRatio
  */
-export const isInView = function(element, callback, intersectionRatio = 0.5) {
+export const isInView = (element, callback, intersectionRatio = 0.5) => {
 	let intersectionObserver = new IntersectionObserver( entries => {
 		if ( entries[0].intersectionRatio <= intersectionRatio ) {
 			return;
