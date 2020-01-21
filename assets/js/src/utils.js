@@ -28,27 +28,12 @@ export const httpGetAsync = function(theUrl, callback, params) {
 	xmlHttp.send( params );
 };
 
-/**
- * Foreach wrapper.
- *
- * @param iterable
- * @param callback
- */
-export const neveEach = function(iterable, callback) {
-	for ( let i = 0; i < iterable.length; i++ ) {
-		callback( iterable[i] );
-	}
-};
 
 /**
  * Check if user is viewing on the best browser ever.
  */
 export const isIe = function() {
-	let ua = window.navigator.userAgent;
-	let msie = ua.indexOf( 'MSIE ' ),
-			edge = ua.indexOf( 'Edge/' ),
-			trident = ua.indexOf( 'Trident/' );
-	return ( msie > 0 || trident > 0 || edge > 0 );
+	return /(Trident|MSIE|Edge)/.test(window.navigator.userAgent);
 };
 
 /**
@@ -58,14 +43,10 @@ export const isIe = function() {
  */
 export const unhashUrl = function(url) {
 
-	if ( url.indexOf( '#' ) > -1 ) {
-		url = url.substr( 0, url.lastIndexOf( '#' ) );
+	let parts =    url.split('#');
+	if(parts.length > 1){
+		return parts[0];
 	}
-
-	if ( url.substr( -1 ) === '/' ) {
-		url = url.substring( 0, url.length - 1 );
-	}
-
 	return url;
 };
 
@@ -77,13 +58,9 @@ export const unhashUrl = function(url) {
  * @param callBack
  */
 export const addEvent = function(element, event, callBack) {
-	if ( element instanceof NodeList ) {
-		for ( let i = 0; i < element.length; i++ ) {
-			element[i].addEventListener( event, callBack );
-		}
-	} else if ( element instanceof Node || element instanceof Element ) {
-		element.addEventListener( event, callBack );
-	}
+	(element.length ? element : [element]).forEach( value => {
+		value.addEventListener( event, callBack );
+	});
 };
 
 /**
@@ -119,8 +96,8 @@ export const removeClass = function(element, className) {
 };
 
 export const batchProcess = function (element, classNames, method){
-	let classes = className.split( ' ' );
-	element = (element.length ? element : [element]).forEach(value=>{
+	let classes = classNames.split( ' ' );
+	(element.length ? element : [element]).forEach(value=>{
 		value.classList[method].apply(value.classList,classes);
 	});
 }

@@ -84,8 +84,23 @@
 	"size-limit": [
 		{
 			"gzip": false,
-			"limit": "10 KB",
+			"limit": "6 KB",
 			"path": "assets/js/build/modern/frontend.js"
+		},
+		{
+			"gzip": false,
+			"limit": "32 KB",
+			"path": "assets/js/build/modern/shop.js"
+		},
+		{
+			"gzip": false,
+			"limit": "40 KB",
+			"path": "assets/js/build/all/shop.js"
+		},
+		{
+			"gzip": false,
+			"limit": "15 KB",
+			"path": "assets/js/build/all/frontend.js"
 		},
 		{
 			"gzip": false,

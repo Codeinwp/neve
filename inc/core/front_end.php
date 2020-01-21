@@ -68,7 +68,7 @@ class Front_End {
 		add_filter( 'embed_oembed_html', array( $this, 'wrap_oembeds' ), 10, 3 );
 		add_filter( 'video_embed_html', array( $this, 'wrap_jetpack_oembeds' ), 10, 1 );
 		add_filter( 'themeisle_gutenberg_templates', array( $this, 'add_gutenberg_templates' ) );
-
+		add_filter( 'script_loader_tag', array($this, 'add_module_nomodule'), 10, 3 );
 		$this->add_amp_support();
 
 		$nav_menus_to_register = apply_filters(
@@ -1576,7 +1576,10 @@ class Front_End {
 			return;
 		}
 
-		wp_register_script( 'neve-script', NEVE_ASSETS_URL . 'js/frontend.js', apply_filters( 'neve_filter_main_script_dependencies', array() ), NEVE_VERSION, true );
+		wp_register_script( 'neve-script', NEVE_ASSETS_URL . 'js/build/modern/frontend.js', apply_filters( 'neve_filter_main_script_dependencies', array() ), NEVE_VERSION, true );
+		wp_register_script( 'neve-script-legacy', NEVE_ASSETS_URL . 'js/build/all/frontend.js', apply_filters( 'neve_filter_main_script_dependencies', array() ), NEVE_VERSION, true );
+		wp_script_add_data( 'neve-script', 'type', 'module' );
+		wp_script_add_data( 'neve-script-legacy', 'nomodule', true );
 		wp_localize_script(
 			'neve-script',
 			'NeveProperties',
@@ -1589,9 +1592,14 @@ class Front_End {
 			)
 		);
 		wp_enqueue_script( 'neve-script' );
+		wp_enqueue_script( 'neve-script-legacy' );
 		if ( class_exists( 'WooCommerce', false ) && is_woocommerce() ) {
-			wp_register_script( 'neve-shop-script', NEVE_ASSETS_URL . 'js/shop.js', array(), NEVE_VERSION, true );
+			wp_register_script( 'neve-shop-script', NEVE_ASSETS_URL . 'js/build/modern/shop.js', array(), NEVE_VERSION, true );
+			wp_register_script( 'neve-shop-script-legacy', NEVE_ASSETS_URL . 'js/build/all/shop.js', array(), NEVE_VERSION, true );
+			wp_script_add_data( 'neve-shop-script', 'type', 'module' );
+			wp_script_add_data( 'neve-shop-script-legacy', 'nomodule', true );
 			wp_enqueue_script( 'neve-shop-script' );
+			wp_enqueue_script( 'neve-shop-script-legacy' );
 		}
 
 
@@ -1600,6 +1608,46 @@ class Front_End {
 		}
 	}
 
+	/**
+	 * Add type="module" and nomodule parameters to a script tag.
+	 *
+	 * Add type="module" and nomodule parameters to script tags when the values are set via wp_script_add_data.
+	 *
+	 * wp_script_add_data( 'script-handle', 'type', 'module' );
+	 * wp_script_add_data( 'script-handle', 'nomodule', true );
+	 *
+	 * Ref: https://github.com/kylereicks/wp-script-module-nomodule
+	 *
+	 * @since 2.8.5
+	 *
+	 * @global \WP_Scripts $wp_scripts The global WP_Scripts object, containing registered scripts.
+	 *
+	 * @param string $tag The filtered HTML tag.
+	 * @param string $handle The handle for the registered script/style.
+	 * @param string $src The resource URL.
+	 * @return string The filtered HTML tag.
+	 */
+	function add_module_nomodule( $tag, $handle, $src ) {
+		global $wp_scripts;
+
+		if ( ! empty( $wp_scripts->registered[ $handle ]->extra['type'] ) ) {
+			if ( preg_match( '/\stype=[\'"][^\'"]*[\'"]/', $tag, $match ) ) {
+				$tag = str_replace( $match[0], " type='" . esc_attr( $wp_scripts->registered[ $handle ]->extra['type'] ) . "'", $tag );
+			} else {
+				$tag = str_replace( '<script ', '<script type="' . esc_attr( $wp_scripts->registered[ $handle ]->extra['type'] ) . '" ', $tag );
+			}
+		}
+
+		if ( ! empty( $wp_scripts->registered[ $handle ]->extra['nomodule'] ) ) {
+			if ( preg_match( '/snomodule([=\s]([\'\"])((?!\2).+?[^\\\])\2)?/', $tag, $match ) ) {
+				$tag = str_replace( $match[0], ' nomodule', $tag );
+			} else {
+				$tag = str_replace( '<script ', '<script nomodule ', $tag );
+			}
+		}
+
+		return $tag;
+	}
 	/**
 	 * Register widgets for the theme.
 	 *
