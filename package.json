@@ -77,7 +77,7 @@
 		"dev": "npm-run-all --parallel watch:rollup watch:grunt",
 		"build": "npm-run-all --parallel build:rollup build:grunt",
 		"size": "size-limit",
-		"pre-commit": "npm-run-all phpcbf phpcs jshint build size git:add",
+		"pre-commit": "npm-run-all phpcs build size",
 		"cypress:open": "cypress open",
 		"cypress:run": "cd cypress && docker-compose up --exit-code-from cypress"
 	},
