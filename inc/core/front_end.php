@@ -68,7 +68,7 @@ class Front_End {
 		add_filter( 'embed_oembed_html', array( $this, 'wrap_oembeds' ), 10, 3 );
 		add_filter( 'video_embed_html', array( $this, 'wrap_jetpack_oembeds' ), 10, 1 );
 		add_filter( 'themeisle_gutenberg_templates', array( $this, 'add_gutenberg_templates' ) );
-		add_filter( 'script_loader_tag', array($this, 'add_module_nomodule'), 10, 3 );
+		add_filter( 'script_loader_tag', array( $this, 'add_module_nomodule' ), 10, 3 );
 		$this->add_amp_support();
 
 		$nav_menus_to_register = apply_filters(
