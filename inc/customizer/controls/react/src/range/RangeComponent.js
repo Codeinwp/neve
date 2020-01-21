@@ -16,6 +16,8 @@ class RangeComponent extends Component {
     this.state = {
       value
     }
+
+    this.updateValues = this.updateValues.bind( this )
   }
 
   render() {
@@ -23,7 +25,7 @@ class RangeComponent extends Component {
       <div className='neve-white-background-control neve-range-control'>
         {
           this.props.control.params.label &&
-            <span className='customize-control-title'>
+          <span className='customize-control-title'>
               {this.props.control.params.label}
             </span>
         }
@@ -43,6 +45,15 @@ class RangeComponent extends Component {
   updateValues(value) {
     this.setState( { value } )
     this.props.control.setting.set( value )
+  }
+
+  componentDidMount() {
+    const { control } = this.props
+    document.addEventListener( 'neve-changed-customizer-value', (e) => {
+      if ( !e.detail ) return false
+      if ( e.detail.id !== control.id ) return false
+      this.updateValues( e.detail.value )
+    } )
   }
 }
 

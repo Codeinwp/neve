@@ -370,7 +370,7 @@ class Manager {
 			);
 		}
 
-		if ( defined( 'NEVE_PRO_VERSION' ) && isset( $arguments['conditional_header'] ) ) {
+		if ( defined( 'NEVE_PRO_VERSION' ) && isset( $arguments['conditional_header'] ) && $arguments['conditional_header'] === true ) {
 			add_filter(
 				'neve_pro_react_controls_localization',
 				function ( $array ) use ( $id ) {

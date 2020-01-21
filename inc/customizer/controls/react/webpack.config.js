@@ -1,4 +1,4 @@
-module.exports = {
+const config = {
   entry: ['./src/index.js', './src/style.scss'],
   devtool: 'inline-source-map',
   output: {
@@ -12,7 +12,7 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: [
-          'babel-loader',
+          'babel-loader'
           // 'eslint-loader'
         ]
       },
@@ -39,3 +39,11 @@ module.exports = {
     ]
   }
 }
+
+module.exports = (env, argv) => {
+  if ( argv.mode === 'production' ) {
+    config.devtool = 'none'
+  }
+  return config
+}
+

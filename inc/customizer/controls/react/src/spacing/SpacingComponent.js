@@ -6,15 +6,9 @@ import SizingControl from '../common/Sizing.js'
 import SVG from '../common/svg.js'
 
 const { __ } = wp.i18n
-const {
-  Component
-} = wp.element
-const {
-  Button
-} = wp.components
-const {
-  mapValues
-} = lodash
+const { Component } = wp.element
+const { Button } = wp.components
+const { mapValues } = lodash
 
 class SpacingComponent extends Component {
   constructor(props) {
@@ -58,6 +52,8 @@ class SpacingComponent extends Component {
 
     this.shouldValuesBeLinked = this.shouldValuesBeLinked.bind( this )
     this.getButtons = this.getButtons.bind( this )
+    this.updateValue = this.updateValue.bind( this )
+    this.setValue = this.setValue.bind( this )
   }
 
   render() {
@@ -80,18 +76,20 @@ class SpacingComponent extends Component {
       }
     ]
     const { inlineHeader, hideResponsiveButtons } = this.controlParams
+
+    const wrapClasses = classnames( [
+      'neve-white-background-control',
+      'neve-sizing',
+      { 'inline-header': inlineHeader }
+    ] )
+
     return (
-      <div className={classnames( [
-        'neve-white-background-control',
-        'neve-sizing',
-        { 'inline-header': inlineHeader }] )}
-      >
+      <div className={wrapClasses}>
         <div className='neve-control-header'>
           {this.props.control.params.label &&
-            <span
-              className='customize-control-title'
-            >{this.props.control.params.label}
-            </span>}
+          <span className='customize-control-title'>
+            {this.props.control.params.label}
+          </span>}
           <div className='neve-units inline'>
             {this.getButtons()}
           </div>
@@ -107,13 +105,13 @@ class SpacingComponent extends Component {
           min={this.controlParams.min}
           max={this.controlParams.max}
           step={this.state.value[this.state.currentDevice + '-unit'] ===
-							'em' ? 0.1 : 1}
+          'em' ? 0.1 : 1}
           options={options}
           defaults={this.defaultValue[this.state.currentDevice]}
           linked={this.state.linked}
           onLinked={() => this.setState( { linked: !this.state.linked } )}
           onChange={(optionType, numericValue) => {
-            this.updateValues( optionType, numericValue )
+            this.setValue( optionType, numericValue )
           }}
           onReset={() => {
             this.setState( { value: this.defaultValue } )
@@ -140,7 +138,7 @@ class SpacingComponent extends Component {
       const buttonClass = classnames(
         {
           active: self.state.value[self.state.currentDevice +
-						'-unit'] === unit
+          '-unit'] === unit
         }
       )
       return <Button
@@ -157,12 +155,12 @@ class SpacingComponent extends Component {
           self.setState( { value } )
           self.props.control.setting.set( value )
         }}
-             >{unit}
+      >{unit}
       </Button>
     } )
   }
 
-  updateValues(optionType, numericValue) {
+  setValue(optionType, numericValue) {
     const value = { ...this.state.value }
     if ( this.state.linked ) {
       value[this.state.currentDevice] = mapValues(
@@ -174,6 +172,10 @@ class SpacingComponent extends Component {
       }
     }
 
+    this.updateValue( value )
+  }
+
+  updateValue(value) {
     this.setState( { value } )
     this.props.control.setting.set( value )
   }
@@ -187,6 +189,17 @@ class SpacingComponent extends Component {
     ]
 
     return values.every( value => value === values[0] )
+  }
+
+  componentDidMount() {
+    const { control } = this.props
+
+    document.addEventListener( 'neve-changed-customizer-value', (e) => {
+      if ( !e.detail ) return false
+      if ( e.detail.id !== control.id ) return false
+
+      this.updateValue( e.detail.value || this.defaultValue )
+    } )
   }
 }
 
