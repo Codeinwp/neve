@@ -1,16 +1,12 @@
 buildScripts:
 - 'sass'
 - 'concat:customizerStyle'
-- 'uglify:scripts'
-- 'uglify:customizerControls'
 - 'rtlcss'
 - 'cssmin'
 
 check:
 - 'sass:style'
 - 'concat:customizerStyle'
-- 'uglify:scripts'
-- 'uglify:customizerControls'
 #- 'postcss'
 - 'rtlcss'
 - 'cssmin'
