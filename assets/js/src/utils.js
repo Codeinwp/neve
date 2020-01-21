@@ -9,6 +9,17 @@ export const isMobile = () => {
 };
 
 /**
+ * Foreach wrapper.
+ *
+ * @param iterable
+ * @param callback
+ */
+export const neveEach = function (iterable, callback) {
+	for (let i = 0; i < iterable.length; i++) {
+		callback(iterable[i]);
+	}
+};
+/**
  * Http get request.
  *
  * @param theUrl
@@ -18,15 +29,15 @@ export const isMobile = () => {
 export const httpGetAsync = (theUrl, callback, params) => {
 	let xmlHttp = new XMLHttpRequest();
 	xmlHttp.onload = () => {
-		if ( xmlHttp.readyState === 4 && xmlHttp.status === 200 )
-			callback( xmlHttp.response );
+		if (xmlHttp.readyState === 4 && xmlHttp.status === 200)
+			callback(xmlHttp.response);
 	};
 	xmlHttp.onerror = (error) => {
-		console.error( error );
+		console.error(error);
 	};
-	xmlHttp.open( 'POST', theUrl, true );
-	xmlHttp.setRequestHeader( 'Content-Type', 'application/json; charset=UTF-8' );
-	xmlHttp.send( params );
+	xmlHttp.open('POST', theUrl, true);
+	xmlHttp.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+	xmlHttp.send(params);
 };
 
 
@@ -44,8 +55,8 @@ export const isIe = () => {
  */
 export const unhashUrl = (url) => {
 
-	let parts =    url.split('#');
-	if(parts.length > 1){
+	let parts = url.split('#');
+	if (parts.length > 1) {
 		return parts[0];
 	}
 	return url;
@@ -59,10 +70,10 @@ export const unhashUrl = (url) => {
  * @param callBack
  */
 export const addEvent = (element, event, callBack) => {
-
-	((element && element.forEach) ? element : [element]).forEach( value => {
-		value && value.addEventListener( event, callBack );
-	});
+	let array = ((element instanceof NodeList) ? element : [element]);
+	for (let i = 0; i < array.length; i++) {
+		array[i].addEventListener(event, callBack);
+	}
 };
 
 /**
@@ -73,8 +84,8 @@ export const addEvent = (element, event, callBack) => {
  * @param element
  * @param className Singular class name.
  */
-export const toggleClass = (element, className)=> {
-	batchProcess(element,className,'toggle');
+export const toggleClass = (element, className) => {
+	batchProcess(element, className, 'toggle');
 };
 
 /**
@@ -83,8 +94,8 @@ export const toggleClass = (element, className)=> {
  * @param element
  * @param className
  */
-export const addClass = (element, className)=> {
-	batchProcess(element,className,'add');
+export const addClass = (element, className) => {
+	batchProcess(element, className, 'add');
 };
 
 /**
@@ -94,14 +105,17 @@ export const addClass = (element, className)=> {
  * @param className
  */
 export const removeClass = (element, className) => {
-	batchProcess(element,className,'remove');
+	batchProcess(element, className, 'remove');
 };
 
-export const batchProcess =  (element, classNames, method)=>{
-	let classes = classNames.split( ' ' );
-	((element && element.forEach) ? element : [element]).forEach(value=>{
-		value && value.classList[method].apply(value.classList,classes);
-	});
+export const batchProcess = (element, classNames, method) => {
+	let classes = classNames.split(' ');
+
+	let array = ((element instanceof NodeList) ? element : [element]);
+
+	for (let i = 0; i < array.length; i++) {
+		array[i].classList[method].apply(array[i].classList, classes);
+	}
 };
 /**
  * Check if element is in view.
@@ -110,11 +124,11 @@ export const batchProcess =  (element, classNames, method)=>{
  * @param intersectionRatio
  */
 export const isInView = (element, callback, intersectionRatio = 0.5) => {
-	let intersectionObserver = new IntersectionObserver( entries => {
-		if ( entries[0].intersectionRatio <= intersectionRatio ) {
+	let intersectionObserver = new IntersectionObserver(entries => {
+		if (entries[0].intersectionRatio <= intersectionRatio) {
 			return;
 		}
 		callback();
-	} );
-	intersectionObserver.observe( element );
+	});
+	intersectionObserver.observe(element);
 };

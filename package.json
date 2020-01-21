@@ -94,12 +94,12 @@
 		},
 		{
 			"gzip": false,
-			"limit": "40 KB",
+			"limit": "32 KB",
 			"path": "assets/js/build/all/shop.js"
 		},
 		{
 			"gzip": false,
-			"limit": "15 KB",
+			"limit": "6 KB",
 			"path": "assets/js/build/all/frontend.js"
 		},
 		{

@@ -14,18 +14,14 @@ const ROLLUP_LEGACY = {
 			{
 				"targets": {
 					"browsers": [
-						"Chrome >= 52",
-						"FireFox >= 44",
-						"Safari >= 8",
-						"Explorer 11",
-						"last 4 Edge versions"
+						"> 0.5%, last 2 versions, Firefox ESR, not dead"
 					]
 				},
-				"modules": false,
 				"useBuiltIns": "usage",
 				"corejs": 3,
 				"exclude": [
-					"es.string.split"
+					'es.regexp.exec',
+					'es.string.split',
 				]
 			}
 		],

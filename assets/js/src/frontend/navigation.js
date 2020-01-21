@@ -5,7 +5,8 @@ import {
 	unhashUrl,
 	toggleClass,
 	removeClass,
-	addClass
+	addClass,
+	neveEach
 } from '../utils.js';
 
 let pageUrl;
@@ -35,7 +36,7 @@ export const repositionDropdowns =  () => {
 	if ( dropDowns.length === 0 ) return false;
 
 	let windowWidth = window.innerWidth;
-	dropDowns.forEach(dropDown => {
+	neveEach(dropDowns, (dropDown) => {
 		let bounding = dropDown.getBoundingClientRect(),
 				rightDist = bounding.left;
 		if ( /webkit.*mobile/i.test( navigator.userAgent ) ) {
@@ -57,7 +58,7 @@ function handleScrollLinks() {
 	let links = document.querySelectorAll( '.nv-nav-wrap a' );
 	if ( links.length === 0 ) return false;
 
-	links.forEach( link => {
+	neveEach( links, (link) => {
 		link.addEventListener( 'click', (event) => {
 			let href = event.target.getAttribute( 'href' );
 			if ( href === null ) return false;
@@ -73,7 +74,7 @@ function handleScrollLinks() {
  */
 function handleMobileDropdowns() {
 	let carets = document.querySelectorAll( '.caret-wrap' );
-	carets.forEach( caret => {
+	neveEach( carets, (caret) => {
 		caret.addEventListener( 'click', (event) => {
 			event.preventDefault();
 			let subMenu = caret.parentNode.parentNode.querySelector( '.sub-menu' );
@@ -92,7 +93,7 @@ function handleSearch() {
 			close = document.querySelectorAll( '.close-responsive-search' ),
 			html = document.querySelector( 'html' );
 	// Handle search opening.
-	navItem.forEach(searchItem => {
+	neveEach( navItem, (searchItem) => {
 		searchItem.addEventListener( 'click', (e) => {
 			e.stopPropagation();
 			toggleClass( searchItem, 'active' );
@@ -103,16 +104,16 @@ function handleSearch() {
 		} );
 	} );
 	// Don't close thee search if interacted with.
-	navSearch.forEach( item => {
+	neveEach(navSearch, (item) => {
 		item.addEventListener( 'click', (e) => {
 			e.stopPropagation();
 		} );
 	} );
 	// Mobile search close buttons.
-	close.forEach(button => {
+	neveEach(close, (button) => {
 		button.addEventListener( 'click', (e) => {
 			e.preventDefault();
-			navItem.forEach( search => {
+			neveEach( navItem, ( search ) => {
 				removeClass( search, 'active' );
 			} );
 			let overlay = document.querySelector( '.nav-clickaway-overlay' );
@@ -156,7 +157,7 @@ function createNavOverlay(item, classToRemove, multiple = false) {
 function handleIeDropdowns() {
 	let dropdowns = document.querySelectorAll(
 			'.header--row[data-show-on="desktop"] .sub-menu' );
-	dropdowns.forEach(dropdown =>  {
+	neveEach( dropdowns,(dropdown) =>  {
 		let parentItem = dropdown.parentNode;
 
 		parentItem.addEventListener( 'mouseenter', () => {

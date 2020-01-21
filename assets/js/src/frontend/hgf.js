@@ -2,7 +2,8 @@
 import {
 	addEvent,
 	addClass,
-	removeClass
+	removeClass,
+	neveEach
 } from '../utils.js';
 
 export let HFG = function() {
@@ -32,7 +33,7 @@ HFG.prototype.init = function(skipSidebar = false) {
 	/**
 	 * When click to toggle buttons.
 	 */
-	menuMobileToggleButtons.forEach( function(item) {
+	neveEach(menuMobileToggleButtons, function(item) {
 		item.removeEventListener( 'click', handleToggle.bind( this ) );
 	}.bind( this ) );
 
