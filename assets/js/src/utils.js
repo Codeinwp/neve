@@ -71,8 +71,9 @@ export const unhashUrl = (url) => {
  */
 export const addEvent = (element, event, callBack) => {
 	let array = ((element instanceof NodeList) ? element : [element]);
+
 	for (let i = 0; i < array.length; i++) {
-		array[i].addEventListener(event, callBack);
+		array[i] && array[i].addEventListener(event, callBack);
 	}
 };
 
@@ -114,7 +115,7 @@ export const batchProcess = (element, classNames, method) => {
 	let array = ((element instanceof NodeList) ? element : [element]);
 
 	for (let i = 0; i < array.length; i++) {
-		array[i].classList[method].apply(array[i].classList, classes);
+		array[i] && array[i].classList[method].apply(array[i].classList, classes);
 	}
 };
 /**
