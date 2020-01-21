@@ -1137,6 +1137,42 @@ class Front_End {
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/12/neve-digital-agency.jpg',
 						'title'      => 'Digital Agency',
 					),
+					'neve-industrial'            => array(
+						'url'        => 'https://demo.themeisle.com/neve-industrial/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/neve-industrial.jpg',
+						'title'      => 'Industrial',
+					),
+					'neve-adventure'            => array(
+						'url'        => 'https://demo.themeisle.com/neve-adventure/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/neve-adventure.jpg',
+						'title'      => 'Adventure',
+					),
+					'neve-product-launch'       => array(
+						'url'        => 'https://demo.themeisle.com/neve-product-launch/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/neve-product-lunch.jpg',
+						'title'      => 'Product Launch',
+					),
+					'neve-accounting'            => array(
+						'url'        => 'https://demo.themeisle.com/neve-accounting/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/neve-accounting.jpg',
+						'title'      => 'Accounting',
+					),
+					'neve-beauty-shop'           => array(
+						'url'        => 'https://demo.themeisle.com/neve-beauty-shop/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/neve-beauty-shop.jpg',
+						'title'      => 'Beauty Shop',
+					),
+					'neve-recruitment'           => array(
+						'url'        => 'https://demo.themeisle.com/neve-recruitment/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/neve-recruitment.jpg',
+						'title'      => 'Recruitment Agency',
+					),
+					'neve-artist'                => array(
+						'url'        => 'https://demo.themeisle.com/neve-artist/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/neve-artist.jpg',
+						'title'      => 'Artist',
+					),
+
 				),
 				'brizy'            => array(
 					'neve-brizy-cafe'                 => array(

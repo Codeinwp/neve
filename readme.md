@@ -915,3 +915,36 @@ Starter Sites screenshots resources:
 * https://mystock.themeisle.com/photo/browser-tabs/
 * https://mystock.themeisle.com/photo/code-in-wp/
 * https://mystock.themeisle.com/photo/tourists/
+
+- Industrial
+* https://mystock.themeisle.com/photo/bucharest-at-night/
+* https://mystock.themeisle.com/photo/two-fast-trains-in-a-train-station/
+* https://mystock.themeisle.com/photo/fishing-boats-2/
+* https://mystock.themeisle.com/photo/engine/
+
+- Adventure
+* https://mystock.themeisle.com/photo/mountain/
+* https://mystock.themeisle.com/photo/mountain-path/
+* https://mystock.themeisle.com/photo/skiers/
+* https://mystock.themeisle.com/photo/picnic-2/
+
+- Product Launch
+* https://mystock.themeisle.com/photo/harley-davidson-motorcycle-with-a-field-of-wheat-behind-it-3/
+* https://stocksnap.io/photo/AJAA85Y0SH
+
+- Accounting
+* https://mystock.themeisle.com/photo/shopping-building-in-copenhagen-center/
+
+- Beauty Shop
+* https://stocksnap.io/photo/JVZSMMHS8J
+* https://stocksnap.io/photo/LHMA01FPBE
+* https://stocksnap.io/photo/V2JTH0ST4Y
+* https://stocksnap.io/photo/S6RLOBPAOZ
+
+- Recruitment Agency
+* https://stocksnap.io/photo/GVUWVKUHZE
+
+- Artist
+* https://mystock.themeisle.com/photo/graffiti/
+* https://stocksnap.io/photo/OZCMRCGRX9
+* https://stocksnap.io/photo/1PY0DYZSDT
