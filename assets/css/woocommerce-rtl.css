@@ -924,7 +924,7 @@ section.exclusive .tns-visually-hidden {
   right: 0;
   bottom: 0;
   padding: 60px 20px 20px;
-  z-index: 100;
+  z-index: 1000;
   overflow: scroll;
   transition: all 0.3s ease-out;
   opacity: 0;
