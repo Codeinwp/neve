@@ -20,6 +20,9 @@
   .quantity input{
     padding: 4px 12px;
   }
+  .entry-summary > form.cart {
+    display: flex;
+  }
 }
 
 .single_add_to_cart_button {
