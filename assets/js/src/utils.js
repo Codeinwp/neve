@@ -4,28 +4,8 @@
  *
  * @returns {boolean}
  */
-export const isMobile = function() {
+export const isMobile = () => {
 	return window.innerWidth <= 960;
-};
-
-/**
- * Http get request.
- *
- * @param theUrl
- * @param callback
- */
-export const httpGetAsync = function(theUrl, callback, params) {
-	let xmlHttp = new XMLHttpRequest();
-	xmlHttp.onload = function() {
-		if ( xmlHttp.readyState === 4 && xmlHttp.status === 200 )
-			callback( xmlHttp.response );
-	};
-	xmlHttp.onerror = function(error) {
-		console.error( error );
-	};
-	xmlHttp.open( 'POST', theUrl, true );
-	xmlHttp.setRequestHeader( 'Content-Type', 'application/json; charset=UTF-8' );
-	xmlHttp.send( params );
 };
 
 /**
@@ -34,21 +14,38 @@ export const httpGetAsync = function(theUrl, callback, params) {
  * @param iterable
  * @param callback
  */
-export const neveEach = function(iterable, callback) {
-	for ( let i = 0; i < iterable.length; i++ ) {
-		callback( iterable[i] );
+export const neveEach = function (iterable, callback) {
+	for (let i = 0; i < iterable.length; i++) {
+		callback(iterable[i]);
 	}
 };
+/**
+ * Http get request.
+ *
+ * @param theUrl
+ * @param callback
+ * @param params
+ */
+export const httpGetAsync = (theUrl, callback, params) => {
+	let xmlHttp = new XMLHttpRequest();
+	xmlHttp.onload = () => {
+		if (xmlHttp.readyState === 4 && xmlHttp.status === 200)
+			callback(xmlHttp.response);
+	};
+	xmlHttp.onerror = (error) => {
+		console.error(error);
+	};
+	xmlHttp.open('POST', theUrl, true);
+	xmlHttp.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+	xmlHttp.send(params);
+};
+
 
 /**
  * Check if user is viewing on the best browser ever.
  */
-export const isIe = function() {
-	let ua = window.navigator.userAgent;
-	let msie = ua.indexOf( 'MSIE ' ),
-			edge = ua.indexOf( 'Edge/' ),
-			trident = ua.indexOf( 'Trident/' );
-	return ( msie > 0 || trident > 0 || edge > 0 );
+export const isIe = () => {
+	return /(Trident|MSIE|Edge)/.test(window.navigator.userAgent);
 };
 
 /**
@@ -56,16 +53,12 @@ export const isIe = function() {
  * @param url
  * @returns {string}
  */
-export const unhashUrl = function(url) {
+export const unhashUrl = (url) => {
 
-	if ( url.indexOf( '#' ) > -1 ) {
-		url = url.substr( 0, url.lastIndexOf( '#' ) );
+	let parts = url.split('#');
+	if (parts.length > 1) {
+		return parts[0];
 	}
-
-	if ( url.substr( -1 ) === '/' ) {
-		url = url.substring( 0, url.length - 1 );
-	}
-
 	return url;
 };
 
@@ -76,30 +69,24 @@ export const unhashUrl = function(url) {
  * @param event
  * @param callBack
  */
-export const addEvent = function(element, event, callBack) {
-	if ( element instanceof NodeList ) {
-		for ( let i = 0; i < element.length; i++ ) {
-			element[i].addEventListener( event, callBack );
-		}
-	} else if ( element instanceof Node || element instanceof Element ) {
-		element.addEventListener( event, callBack );
+export const addEvent = (element, event, callBack) => {
+	let array = ((element instanceof NodeList) ? element : [element]);
+
+	for (let i = 0; i < array.length; i++) {
+		array[i] && array[i].addEventListener(event, callBack);
 	}
 };
 
 /**
  * Toggle Element class name.
  *
+ * Toggle don't allow multiple classes on update, so this needs to be only on single ones.
+ *
  * @param element
- * @param className
+ * @param className Singular class name.
  */
-export const toggleClass = function(element, className) {
-	if ( element instanceof NodeList ) {
-		for ( let i = 0; i < element.length; i++ ) {
-			element[i].classList.toggle( className );
-		}
-	} else if ( element instanceof Node || element instanceof Element ) {
-		element.classList.toggle( className );
-	}
+export const toggleClass = (element, className) => {
+	batchProcess(element, className, 'toggle');
 };
 
 /**
@@ -108,14 +95,8 @@ export const toggleClass = function(element, className) {
  * @param element
  * @param className
  */
-export const addClass = function(element, className) {
-	if ( element instanceof NodeList ) {
-		for ( let i = 0; i < element.length; i++ ) {
-			element[i].classList.add( className );
-		}
-	} else if ( element instanceof Node || element instanceof Element ) {
-		element.classList.add( className );
-	}
+export const addClass = (element, className) => {
+	batchProcess(element, className, 'add');
 };
 
 /**
@@ -124,34 +105,31 @@ export const addClass = function(element, className) {
  * @param element
  * @param className
  */
-export const removeClass = function(element, className) {
-	// Split each class by space.
-	let classes = className.split( ' ' );
-	if ( element instanceof NodeList ) {
-		for ( let i = 0; i < element.length; i++ ) {
-			for ( let j = 0; j < classes.length; j++ ) {
-				element[i].classList.remove( classes[j] );
-			}
-		}
-	} else if ( element instanceof Node || element instanceof Element ) {
-		for ( let j = 0; j < classes.length; j++ ) {
-			element.classList.remove( classes[j] );
-		}
-	}
+export const removeClass = (element, className) => {
+	batchProcess(element, className, 'remove');
 };
 
+export const batchProcess = (element, classNames, method) => {
+	let classes = classNames.split(' ');
+
+	let array = ((element instanceof NodeList) ? element : [element]);
+
+	for (let i = 0; i < array.length; i++) {
+		array[i] && array[i].classList[method].apply(array[i].classList, classes);
+	}
+};
 /**
  * Check if element is in view.
  * @param element
  * @param callback
  * @param intersectionRatio
  */
-export const isInView = function(element, callback, intersectionRatio = 0.5) {
-	let intersectionObserver = new IntersectionObserver( entries => {
-		if ( entries[0].intersectionRatio <= intersectionRatio ) {
+export const isInView = (element, callback, intersectionRatio = 0.5) => {
+	let intersectionObserver = new IntersectionObserver(entries => {
+		if (entries[0].intersectionRatio <= intersectionRatio) {
 			return;
 		}
 		callback();
-	} );
-	intersectionObserver.observe( element );
+	});
+	intersectionObserver.observe(element);
 };
