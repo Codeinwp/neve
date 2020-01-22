@@ -27,10 +27,6 @@
 	float: left;
 }
 
-.customize-control-radio-image label:nth-of-type(n + 3) {
-	float: right;
-}
-
 .customize-control-radio-image label:hover {
 	border-color: inherit;
 	color: inherit;
