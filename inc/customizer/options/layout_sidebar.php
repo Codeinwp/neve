@@ -208,13 +208,17 @@ class Layout_Sidebar extends Base_Customizer {
 		}
 		array_push( $sidebar_layout_controls, 'neve_other_pages_sidebar_layout' );
 
+		$default_value = 'right';
 		foreach ( $sidebar_layout_controls as $control_id ) {
+			if ( $control_id === 'neve_single_product_sidebar_layout' ) {
+				$default_value = 'full-width';
+			}
 			$this->add_control(
 				new Control(
 					$control_id,
 					array(
 						'sanitize_callback' => array( $this, 'sanitize_sidebar_layout' ),
-						'default'           => 'right',
+						'default'           => $default_value,
 					),
 					array(
 						'label'           => __( 'Sidebar Layout', 'neve' ),
