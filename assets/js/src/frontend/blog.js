@@ -9,7 +9,7 @@ let masonryInstance = null,
 /**
  * Initialize blog JS.
  */
-export const initBlog = function() {
+export const initBlog = () => {
 	if ( document.querySelector( '.blog.nv-index-posts' ) === null ) {
 		return false;
 	}
@@ -22,13 +22,13 @@ export const initBlog = function() {
  *
  * @returns {boolean}
  */
-const masonry = function() {
+const masonry = () => {
 	if ( NeveProperties.masonry !== 'enabled' || NeveProperties.masonryColumns <
 			2 ) {
 		return false;
 	}
 	masonryContainer = document.querySelector( '.nv-index-posts .posts-wrapper' );
-	imagesLoaded( masonryContainer, function() {
+	imagesLoaded( masonryContainer, () => {
 		masonryInstance = new Masonry( masonryContainer, {
 			itemSelector: 'article.layout-grid',
 			columnWidth: 'article.layout-grid',
@@ -43,15 +43,15 @@ const masonry = function() {
  *
  * @returns {boolean}
  */
-const infiniteScroll = function() {
+const infiniteScroll = () => {
 	if ( NeveProperties.infiniteScroll !== 'enabled' ) {
 		return false;
 	}
 
 	isInView( document.querySelector( '.infinite-scroll-trigger' ),
-			function() {
-				if ( typeof parent.wp.customize !== 'undefined' ) {
-					parent.wp.customize.requestChangesetUpdate().then( function() {
+			() => {
+				if ( parent.wp.customize ) {
+					parent.wp.customize.requestChangesetUpdate().then( () => {
 						requestMorePosts();
 					} );
 					return false;
@@ -64,7 +64,7 @@ const infiniteScroll = function() {
  * Request more posts
  * @returns {boolean}
  */
-const requestMorePosts = function() {
+const requestMorePosts = () => {
 	let trigger = document.querySelector( '.infinite-scroll-trigger' );
 	if ( trigger === null ) {
 		return false;
@@ -81,7 +81,7 @@ const requestMorePosts = function() {
 			NeveProperties.infiniteScrollEndpoint + page );
 	page++;
 
-	httpGetAsync( requestUrl, function(response) {
+	httpGetAsync( requestUrl, (response) => {
 		blog.innerHTML += JSON.parse( response );
 		refreshMasonry();
 	}, NeveProperties.infiniteScrollQuery );
@@ -90,11 +90,11 @@ const requestMorePosts = function() {
 /**
  * Refresh masonry
  */
-const refreshMasonry = function() {
+const refreshMasonry =  () =>  {
 	if ( masonryInstance === null ) {
 		return;
 	}
-	imagesLoaded( masonryContainer ).on( 'progress', function(e) {
+	imagesLoaded( masonryContainer ).on( 'progress', (e) => {
 		masonryInstance.layout();
 		masonryInstance.reloadItems();
 	} );
@@ -105,7 +105,7 @@ const refreshMasonry = function() {
  * @param url
  * @returns {*}
  */
-const maybeParseUrlForCustomizer = function(url) {
+const maybeParseUrlForCustomizer =  (url) => {
 	//Add change-set uuid.
 	if ( typeof wp.customize === 'undefined' ) return url;
 	url += '?customize_changeset_uuid=' + wp.customize.settings.changeset.uuid +

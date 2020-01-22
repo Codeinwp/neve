@@ -1,6 +1,6 @@
 /* jshint esversion: 6 */
-import {neveEach} from '../utils.js';
 import {tns} from 'tiny-slider/src/tiny-slider';
+import {neveEach} from "../utils";
 
 /**
  * Init shop.
@@ -29,7 +29,7 @@ function handleShopSidebar() {
     }
     html = document.querySelector('html');
     toggles = document.querySelectorAll('.nv-sidebar-toggle');
-    neveEach(toggles, function (toggle) {
+	neveEach(toggles,  (toggle) =>  {
         toggle.addEventListener('click', function () {
             sidebar.classList.toggle('sidebar-open');
             html.classList.toggle('menu-openend');
