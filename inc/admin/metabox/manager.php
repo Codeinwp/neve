@@ -160,7 +160,7 @@ final class Manager {
 			return;
 		}
 
-		wp_register_script( 'neve-metabox', NEVE_ASSETS_URL . 'js/metabox' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.js', array( 'jquery' ), NEVE_VERSION, true );
+		wp_register_script( 'neve-metabox', NEVE_ASSETS_URL . 'js/build/all/metabox.js', array( 'jquery' ), NEVE_VERSION, true );
 
 		wp_localize_script( 'neve-metabox', 'neveMetabox', $this->get_localization() );
 

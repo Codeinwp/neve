@@ -1,7 +1,6 @@
 /* jshint esversion: 6 */
 import {
 	addEvent,
-	toggleClass,
 	addClass,
 	removeClass,
 	neveEach
@@ -34,7 +33,7 @@ HFG.prototype.init = function(skipSidebar = false) {
 	/**
 	 * When click to toggle buttons.
 	 */
-	neveEach( menuMobileToggleButtons, function(item) {
+	neveEach(menuMobileToggleButtons, function(item) {
 		item.removeEventListener( 'click', handleToggle.bind( this ) );
 	}.bind( this ) );
 
