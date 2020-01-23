@@ -1187,12 +1187,12 @@ class Front_End {
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/neve-industrial.jpg',
 						'title'      => 'Industrial',
 					),
-					'neve-adventure'            => array(
+					'neve-adventure'             => array(
 						'url'        => 'https://demo.themeisle.com/neve-adventure/',
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/neve-adventure.jpg',
 						'title'      => 'Adventure',
 					),
-					'neve-product-launch'       => array(
+					'neve-product-launch'        => array(
 						'url'        => 'https://demo.themeisle.com/neve-product-launch/',
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/neve-product-lunch.jpg',
 						'title'      => 'Product Launch',
