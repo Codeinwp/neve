@@ -115,8 +115,8 @@ class Woocommerce {
 		$this->sidebar_manager = new Layout_Sidebar();
 
 
-		add_action( 'admin_init', 'set_update_woo_width_flag', 9 );
-		add_action( 'admin_init', 'update_woo_width' );
+		add_action( 'admin_init', array( $this, 'set_update_woo_width_flag' ), 9 );
+		add_action( 'admin_init', array( $this, 'update_woo_width' ) );
 
 		// Wrap content.
 		add_action( 'neve_after_primary_start', array( $this, 'wrap_pages_start' ) );
