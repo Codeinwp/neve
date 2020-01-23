@@ -37,8 +37,8 @@
 				sidebar: '.single-product .shop-container .nv-sidebar-wrap'
 			},
 			'neve_other_pages_content_width': {
-				content: 'body:not(.single):not(.archive):not(.blog) .neve-main > .container .col',
-				sidebar: 'body:not(.single):not(.archive):not(.blog) .nv-sidebar-wrap'
+				content: 'body:not(.single):not(.archive):not(.blog):not(.search) .neve-main > .container .col',
+				sidebar: 'body:not(.single):not(.archive):not(.blog):not(.search) .nv-sidebar-wrap'
 			},
 		},
 
