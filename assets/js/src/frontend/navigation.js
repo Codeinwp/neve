@@ -20,6 +20,7 @@ export const initNavigation = ()=> {
 	handleScrollLinks();
 	handleMobileDropdowns();
 	handleSearch();
+	handleMiniCartPosition();
 	if ( isIe() === true ) {
 		handleIeDropdowns();
 	}
@@ -122,6 +123,25 @@ function handleSearch() {
 			overlay.parentNode.removeChild( overlay );
 		} );
 	} );
+}
+
+/**
+ * Handle the mini cart position in nav.
+ * @returns {boolean}
+ */
+function  handleMiniCartPosition() {
+	let elem = document.querySelectorAll( '.header--row .nv-nav-cart' );
+	if ( elem.length === 0 ){
+		return false;
+	}
+	for ( let i = 0; i < elem.length; i++ ){
+		let item     = elem[i];
+		let bounding = item.getBoundingClientRect();
+		if ( bounding.left < 0 ) {
+			item.style.left = 0;
+		}
+	}
+	return true;
 }
 
 /**
