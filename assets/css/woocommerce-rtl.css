@@ -1026,6 +1026,14 @@ section.exclusive .tns-visually-hidden {
   width: 100%;
 }
 
+.menu-item-nav-cart:last-child .nv-nav-cart {
+  left: 0;
+}
+
+.menu-item-nav-cart .nv-nav-cart {
+  left: 20px;
+}
+
 .menu-item-nav-cart .nv-cart {
   display: flex;
 }
@@ -1053,6 +1061,10 @@ section.exclusive .tns-visually-hidden {
 
 ul[id^="nv-primary-navigation"] a.button {
   padding: 8px 12px;
+}
+
+.menu-item-nav-cart.responsive-nav-cart {
+  position: relative;
 }
 
 .menu-item-nav-cart.responsive-nav-cart > a {
