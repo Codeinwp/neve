@@ -481,7 +481,6 @@ blockquote.wp-block-quote.is-style-large p {
 }
 
 blockquote.wp-block-quote.is-style-large cite {
-  text-align: center;
   font-size: .95em;
 }
 
@@ -499,7 +498,6 @@ blockquote.wp-block-quote.is-style-large cite {
 }
 
 .wp-block-pullquote blockquote cite {
-  text-align: right;
   font-size: .85em;
 }
 
@@ -515,7 +513,6 @@ blockquote.wp-block-quote.is-style-large cite {
 
 .wp-block-pullquote:not(.is-style-solid-color) blockquote cite {
   text-transform: uppercase;
-  text-align: center;
 }
 
 .wp-block-table {
@@ -1655,7 +1652,6 @@ article {
 }
 
 blockquote {
-  text-align: center;
   margin: 40px 0;
 }
 
@@ -1669,7 +1665,6 @@ blockquote cite {
   color: #676767;
   font-style: normal;
   font-size: .95em;
-  text-align: center;
 }
 
 blockquote:after, blockquote:before {
