@@ -948,3 +948,15 @@ Starter Sites screenshots resources:
 * https://mystock.themeisle.com/photo/graffiti/
 * https://stocksnap.io/photo/OZCMRCGRX9
 * https://stocksnap.io/photo/1PY0DYZSDT
+
+- VR Studio
+* https://stocksnap.io/photo/PFHFKXTMYD
+* https://mystock.themeisle.com/photo/scale-model-of-a-street/
+
+- Makeup Artist
+* https://stocksnap.io/photo/F08ZV0M412
+* https://stocksnap.io/photo/G40JKFC5I5
+* https://stocksnap.io/photo/SSSLXNZ1RQ
+
+- Web Agency
+* https://stocksnap.io/photo/KDQNVQNBYD

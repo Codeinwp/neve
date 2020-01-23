@@ -875,6 +875,11 @@ class Front_End {
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/11/neve-cart-rental.jpg',
 						'title'      => 'Car Rental',
 					),
+					'neve-beaver-moving-company'        => array(
+						'url'        => 'https://demo.themeisle.com/neve-moving-company-bb/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/11/neve-moving-company.jpg',
+						'title'      => 'Moving Company Logistics Services',
+					),
 					'neve-beaver-translation-services'  => array(
 						'url'        => 'https://demo.themeisle.com/neve-translation-services-bb/',
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/11/neve-translations.jpg',
@@ -894,6 +899,46 @@ class Front_End {
 						'url'        => 'https://demo.themeisle.com/neve-escape-room-bb/',
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/11/neve-escape-room.jpg',
 						'title'      => 'Escape Room',
+					),
+					'neve-beaver-cv'                    => array(
+						'url'        => 'https://demo.themeisle.com/neve-cv-bb/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/12/neve-resume.jpg',
+						'title'      => 'Resume',
+					),
+					'neve-beaver-courses'               => array(
+						'url'        => 'https://demo.themeisle.com/neve-courses-bb/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/12/neve-courses.jpg',
+						'title'      => 'Online Courses',
+					),
+					'neve-beaver-model-agency'          => array(
+						'url'        => 'https://demo.themeisle.com/neve-model-agency-bb/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/12/neve-model-agency.jpg',
+						'title'      => 'Fashion Model Agency',
+					),
+					'neve-beaver-it-company'            => array(
+						'url'        => 'https://demo.themeisle.com/neve-it-company-bb/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/12/neve-it-solution.jpg',
+						'title'      => 'IT Technology Agency',
+					),
+					'neve-beaver-podcast'               => array(
+						'url'        => 'https://demo.themeisle.com/neve-podcast-bb/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/12/neve-podcast.jpg',
+						'title'      => 'Podcast',
+					),
+					'neve-beaver-digital-agency'        => array(
+						'url'        => 'https://demo.themeisle.com/neve-digital-agency-bb/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/12/neve-digital-agency.jpg',
+						'title'      => 'Digital Agency',
+					),
+					'neve-beaver-industrial'            => array(
+						'url'        => 'https://demo.themeisle.com/neve-industrial-bb/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/neve-industrial.jpg',
+						'title'      => 'Industrial',
+					),
+					'neve-beaver-adventure'             => array(
+						'url'        => 'https://demo.themeisle.com/neve-adventure-bb/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/neve-adventure.jpg',
+						'title'      => 'Adventure',
 					),
 				),
 				'elementor'        => array(
@@ -1171,6 +1216,21 @@ class Front_End {
 						'url'        => 'https://demo.themeisle.com/neve-artist/',
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/neve-artist.jpg',
 						'title'      => 'Artist',
+					),
+					'neve-vr-studio'             => array(
+						'url'        => 'https://demo.themeisle.com/neve-vr-studio/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/neve-vr.jpg',
+						'title'      => 'VR Studio',
+					),
+					'neve-makeup-artist'         => array(
+						'url'        => 'https://demo.themeisle.com/neve-makeup-artist/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/neve-makeup.jpg',
+						'title'      => 'Makeup Artist',
+					),
+					'neve-web-agency'            => array(
+						'url'        => 'https://demo.themeisle.com/neve-web-agency/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/neve-web-agency.jpg',
+						'title'      => 'Web Agency',
 					),
 
 				),
