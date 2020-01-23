@@ -143,6 +143,7 @@ function  handleMiniCartPosition() {
 	}
 	return true;
 }
+window.addEventListener( 'resize', handleMiniCartPosition );
 
 /**
  * Create an overlay to allow closing.
