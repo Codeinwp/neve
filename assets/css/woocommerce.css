@@ -366,6 +366,14 @@
   margin-bottom: 10px;
 }
 
+.woocommerce.single .quantity input {
+  padding: 4px 12px;
+}
+
+.woocommerce.single .entry-summary > form.cart {
+  display: flex;
+}
+
 .single_add_to_cart_button {
   width: 100%;
 }
