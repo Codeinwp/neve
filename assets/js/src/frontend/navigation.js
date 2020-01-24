@@ -20,6 +20,7 @@ export const initNavigation = ()=> {
 	handleScrollLinks();
 	handleMobileDropdowns();
 	handleSearch();
+	handleMiniCartPosition();
 	if ( isIe() === true ) {
 		handleIeDropdowns();
 	}
@@ -124,6 +125,22 @@ function handleSearch() {
 	} );
 }
 
+/**
+ * Handle the mini cart position in nav.
+ */
+function  handleMiniCartPosition() {
+	let elem = document.querySelectorAll( '.header--row .nv-nav-cart' );
+	if ( elem.length === 0 ){
+		return;
+	}
+	neveEach(elem,(item)=>{
+		let bounding = item.getBoundingClientRect();
+		if ( bounding.left < 0 ) {
+			item.style.left = 0;
+		}
+	});
+}
+window.addEventListener( 'resize', handleMiniCartPosition );
 
 /**
  * Create an overlay to allow closing.

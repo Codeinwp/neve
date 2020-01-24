@@ -13,26 +13,8 @@ function initShop() {
     if (document.body.classList.contains('nv-exclusive')) {
         handleExclusiveSlider();
     }
-
-	handleMiniCartPosition();
 }
 
-/**
- * Handle the mini cart position in nav.
- */
-function  handleMiniCartPosition() {
-	let elem = document.querySelectorAll( '.header--row .nv-nav-cart' );
-	if ( elem.length === 0 ){
-		return;
-	}
-	neveEach(elem,(item)=>{
-		let bounding = item.getBoundingClientRect();
-		if ( bounding.left < 0 ) {
-			item.style.left = 0;
-		}
-	});
-}
-window.addEventListener( 'resize', handleMiniCartPosition );
 /**
  * Handle the shop sidebar.
  *
