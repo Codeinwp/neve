@@ -89,12 +89,12 @@
 		},
 		{
 			"gzip": false,
-			"limit": "32 KB",
+			"limit": "33 KB",
 			"path": "assets/js/build/modern/shop.js"
 		},
 		{
 			"gzip": false,
-			"limit": "32 KB",
+			"limit": "33 KB",
 			"path": "assets/js/build/all/shop.js"
 		},
 		{
