@@ -36,7 +36,7 @@
 		"@size-limit/webpack": "^3.0.0",
 		"babel-loader": "^8.0.6",
 		"core-js": "^3.6.4",
-		"cross-env": "^6.0.3",
+		"cross-env": "^7.0.0",
 		"cypress": "^3.8.2",
 		"cypress-file-upload": "^3.5.3",
 		"grunt": "^1.0.4",
