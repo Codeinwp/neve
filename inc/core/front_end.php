@@ -204,6 +204,11 @@ class Front_End {
 						'url'   => 'https://demo.themeisle.com/neve/',
 						'title' => 'Original',
 					),
+					'neve-web-agency'         => array(
+						'url'              => 'https://demo.themeisle.com/neve-web-agency/',
+						'title'            => 'Web Agency',
+						'unsplash_gallery' => 'https://unsplash.com/collections/9015394/neve-digital-agency/c794fcd505d0ac7fe2134479c3b8f670',
+					),
 					'neve-restaurant'         => array(
 						'url'              => 'https://demo.themeisle.com/neve-restaurant/',
 						'title'            => 'Restaurant',
@@ -1227,12 +1232,6 @@ class Front_End {
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/neve-makeup.jpg',
 						'title'      => 'Makeup Artist',
 					),
-					'neve-web-agency'            => array(
-						'url'        => 'https://demo.themeisle.com/neve-web-agency/',
-						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/neve-web-agency.jpg',
-						'title'      => 'Web Agency',
-					),
-
 				),
 				'brizy'            => array(
 					'neve-brizy-cafe'                 => array(
