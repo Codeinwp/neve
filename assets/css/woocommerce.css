@@ -367,7 +367,10 @@
 }
 
 .woocommerce.single .quantity input {
-  padding: 4px 12px;
+  padding-right: 4px !important;
+  padding-left: 4px !important;
+  box-sizing: border-box;
+  line-height: normal;
 }
 
 .woocommerce.single .entry-summary > form.cart {
