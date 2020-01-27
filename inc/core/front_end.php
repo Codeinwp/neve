@@ -1349,10 +1349,15 @@ class Front_End {
 
 		$this->onboarding_config['editors'][]          = 'gutenberg';
 		$this->onboarding_config['local']['gutenberg'] = array(
-			'neve-main-gutenberg' => array(
+			'neve-main-gutenberg'       => array(
 				'url'        => 'https://demo.themeisle.com/neve-onboarding-gutenberg',
 				'title'      => 'Original',
 				'screenshot' => get_template_directory_uri() . '/onboarding/neve-main/screenshot.jpg',
+			),
+			'neve-web-agency-gutenberg' => array(
+				'url'        => 'https://demo.themeisle.com/neve-web-agency-gb/',
+				'title'      => 'Web Agency',
+				'screenshot' => get_template_directory_uri() . '/onboarding/neve-web-agency/screenshot.jpg',
 			),
 		);
 
