@@ -209,6 +209,11 @@ class Front_End {
 						'title'            => 'Web Agency',
 						'unsplash_gallery' => 'https://unsplash.com/collections/9015394/neve-digital-agency/c794fcd505d0ac7fe2134479c3b8f670',
 					),
+					'neve-blogger'            => array(
+						'url'              => 'https://demo.themeisle.com/neve-blogger/',
+						'title'            => 'Blogger',
+						'unsplash_gallery' => 'https://unsplash.com/collections/8936140/minimal-blog',
+					),
 					'neve-restaurant'         => array(
 						'url'              => 'https://demo.themeisle.com/neve-restaurant/',
 						'title'            => 'Restaurant',
@@ -464,6 +469,12 @@ class Front_End {
 						'title'      => 'Original',
 						'screenshot' => $onboarding_folder_url . '/neve-main/screenshot.jpg',
 						'local_json' => $onboarding_folder_path . '/neve-beaver-onboarding/data.json',
+					),
+					'neve-beaver-blogger'            => array(
+						'url'        => 'https://demo.themeisle.com/neve-blogger-bb/',
+						'title'      => 'Blogger',
+						'screenshot' => $onboarding_folder_url . '/neve-blogger/screenshot.jpg',
+						'local_json' => $onboarding_folder_path . '/neve-beaver-blogger/data.json',
 					),
 					'neve-beaver-restaurant'         => array(
 						'url'              => 'https://demo.themeisle.com/neve-bb-restaurant/',
@@ -1358,6 +1369,11 @@ class Front_End {
 				'url'        => 'https://demo.themeisle.com/neve-web-agency-gb/',
 				'title'      => 'Web Agency',
 				'screenshot' => get_template_directory_uri() . '/onboarding/neve-web-agency/screenshot.jpg',
+			),
+			'neve-blogger-gutenberg'    => array(
+				'url'        => 'https://demo.themeisle.com/neve-blogger-gb/',
+				'title'      => 'Blogger',
+				'screenshot' => get_template_directory_uri() . '/onboarding/neve-blogger/screenshot.jpg',
 			),
 		);
 

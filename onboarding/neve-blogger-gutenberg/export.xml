@@ -1,0 +1,1761 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- generator="WordPress/5.3.2" created="2020-01-27 09:22" -->
+		<rss version="2.0"
+				xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
+				xmlns:content="http://purl.org/rss/1.0/modules/content/"
+				xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+				xmlns:dc="http://purl.org/dc/elements/1.1/"
+				xmlns:wp="http://wordpress.org/export/1.2/"
+		>
+
+			<channel>
+				<title>Blogger</title>
+				<link>https://demo.themeisle.com/neve-blogger-gb</link>
+				<description>Just another Demos Sites site</description>
+				<pubDate>Mon, 27 Jan 2020 09:22:44 +0000</pubDate>
+				<language>en-US</language>
+				<wp:wxr_version>1.2</wp:wxr_version>
+				<wp:base_site_url>https://demo.themeisle.com/</wp:base_site_url>
+				<wp:base_blog_url>https://demo.themeisle.com/neve-blogger-gb</wp:base_blog_url>
+
+									<wp:category>
+						<wp:term_id>1</wp:term_id>
+						<wp:category_nicename><![CDATA[uncategorized]]></wp:category_nicename>
+						<wp:category_parent><![CDATA[]]></wp:category_parent>
+						<wp:cat_name><![CDATA[Uncategorized]]></wp:cat_name>
+					</wp:category>
+																	<wp:term><wp:term_id>2</wp:term_id><wp:term_taxonomy>nav_menu</wp:term_taxonomy><wp:term_slug><![CDATA[neve-blogger-gb-main-menu]]></wp:term_slug><wp:term_name><![CDATA[neve-blogger-gb-main-menu]]></wp:term_name>
+</wp:term>
+
+				<generator>https://wordpress.org/?v=5.3.2</generator>
+
+						<item>
+			<title>
+				News			</title>
+			<link>https://demo.themeisle.com/neve-blogger-gb/neve-blogger-gb-news/</link>
+			<pubDate>Mon, 25 Nov 2019 12:14:13 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-blogger-gb/?page_id=2</guid>
+			<description></description>
+			<content:encoded><![CDATA[<!-- wp:paragraph -->
+<p>This is an example page. It's different from a blog post because it will stay in one place and will show up in your site navigation (in most themes). Most people start with an About page that introduces them to potential site visitors. It might say something like this:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote -->
+<blockquote class="wp-block-quote"><p>Hi there! I'm a bike messenger by day, aspiring actor by night, and this is my website. I live in Los Angeles, have a great dog named Jack, and I like pi&#241;a coladas. (And gettin' caught in the rain.)</p></blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:paragraph -->
+<p>...or something like this:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote -->
+<blockquote class="wp-block-quote"><p>The XYZ Doohickey Company was founded in 1971, and has been providing quality doohickeys to the public ever since. Located in Gotham City, XYZ employs over 2,000 people and does all kinds of awesome things for the Gotham community.</p></blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:paragraph -->
+<p>As a new WordPress user, you should go to <a href="https://demo.themeisle.com/neve-blogger-gb/wp-admin/">your dashboard</a> to delete this page and create new pages for your content. Have fun!</p>
+<!-- /wp:paragraph -->]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>2</wp:post_id>
+			<wp:post_date><![CDATA[2019-11-25 12:14:13]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-11-25 12:14:13]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve-blogger-gb-news]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[page]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
+					<wp:meta_value><![CDATA[default]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				Home			</title>
+			<link>https://demo.themeisle.com/neve-blogger-gb/</link>
+			<pubDate>Tue, 26 Nov 2019 12:22:54 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-blogger-gb/?page_id=5</guid>
+			<description></description>
+			<content:encoded><![CDATA[<!-- wp:themeisle-blocks/advanced-columns {"id":"wp-block-themeisle-blocks-advanced-columns-e5e06ebd","columns":2,"layout":"equal","layoutMobile":"twoOne","columnsGap":"nogap","paddingType":"unlinked","paddingTop":80,"paddingBottom":80,"columnsWidth":1180,"horizontalAlign":"center","backgroundType":"image","backgroundImageID":21,"backgroundImageURL":"https://s20206.pcdn.co/neve-blogger-gb/wp-content/uploads/sites/388/2019/11/neve-minimal-blogger-12.png","backgroundAttachment":"local","backgroundPosition":"center center","backgroundRepeat":"no-repeat","backgroundSize":"contain"} -->
+<div class="wp-block-themeisle-blocks-advanced-columns has-2-columns has-desktop-equal-layout has-tablet-equal-layout has-mobile-twoOne-layout has-nogap-gap has-vertical-unset" id="wp-block-themeisle-blocks-advanced-columns-e5e06ebd" style="background-image:url( 'https://s20206.pcdn.co/neve-blogger-gb/wp-content/uploads/sites/388/2019/11/neve-minimal-blogger-12.png' );background-attachment:local;background-position:center center;background-repeat:no-repeat;background-size:contain;border-width:0px;border-style:solid;border-color:#000000;border-radius:0px;justify-content:center"><div class="wp-themeisle-block-overlay" style="opacity:0.5;mix-blend-mode:normal"></div><div class="innerblocks-wrap" style="max-width:1180px"><!-- wp:themeisle-blocks/advanced-column {"id":"wp-block-themeisle-blocks-advanced-column-faefdc1c","paddingMobile":0,"columnWidth":"33.52","className":"ticss-262bb66b","hasCustomCSS":true} -->
+<div class="wp-block-themeisle-blocks-advanced-column ticss-262bb66b" id="wp-block-themeisle-blocks-advanced-column-faefdc1c" style="border-width:0px;border-style:solid;border-color:#000000;border-radius:0px"></div>
+<!-- /wp:themeisle-blocks/advanced-column -->
+
+<!-- wp:themeisle-blocks/advanced-column {"id":"wp-block-themeisle-blocks-advanced-column-101a17aa","columnWidth":"66.48"} -->
+<div class="wp-block-themeisle-blocks-advanced-column" id="wp-block-themeisle-blocks-advanced-column-101a17aa" style="border-width:0px;border-style:solid;border-color:#000000;border-radius:0px"><!-- wp:themeisle-blocks/advanced-heading {"id":"wp-block-themeisle-blocks-advanced-heading-cb8c227d","tag":"p","fontSize":12,"textTransform":"uppercase"} -->
+<p id="wp-block-themeisle-blocks-advanced-heading-cb8c227d" class="wp-block-themeisle-blocks-advanced-heading wp-block-themeisle-blocks-advanced-heading-cb8c227d" style="color:#000000;font-style:normal;text-transform:uppercase"><strong>Minimized simplicity</strong></p>
+<!-- /wp:themeisle-blocks/advanced-heading -->
+
+<!-- wp:heading {"align":"left","level":1,"className":"ticss-323b0dc0","hasCustomCSS":true} -->
+<h1 class="has-text-align-left ticss-323b0dc0">The minimal blog</h1>
+<!-- /wp:heading --></div>
+<!-- /wp:themeisle-blocks/advanced-column --></div></div>
+<!-- /wp:themeisle-blocks/advanced-columns -->
+
+<!-- wp:themeisle-blocks/advanced-columns {"id":"wp-block-themeisle-blocks-advanced-columns-b320f813","columns":3,"layout":"equal","layoutMobile":"collapsedRows","columnsWidth":1180,"horizontalAlign":"center"} -->
+<div class="wp-block-themeisle-blocks-advanced-columns has-3-columns has-desktop-equal-layout has-tablet-equal-layout has-mobile-collapsedRows-layout has-default-gap has-vertical-unset" id="wp-block-themeisle-blocks-advanced-columns-b320f813" style="border-width:0px;border-style:solid;border-color:#000000;border-radius:0px;justify-content:center"><div class="wp-themeisle-block-overlay" style="opacity:0.5;mix-blend-mode:normal"></div><div class="innerblocks-wrap" style="max-width:1180px"><!-- wp:themeisle-blocks/advanced-column {"id":"wp-block-themeisle-blocks-advanced-column-42182f0d","columnWidth":"33.89"} -->
+<div class="wp-block-themeisle-blocks-advanced-column" id="wp-block-themeisle-blocks-advanced-column-42182f0d" style="border-width:0px;border-style:solid;border-color:#000000;border-radius:0px"><!-- wp:separator {"color":"black","className":"is-style-wide ticss-7bda112f","hasCustomCSS":true,"customCSS":".ticss-7bda112f {\n}\n"} -->
+<hr class="wp-block-separator has-text-color has-background has-black-background-color has-black-color is-style-wide ticss-7bda112f" />
+<!-- /wp:separator -->
+
+<!-- wp:heading {"level":3} -->
+<h3>Blog Posts</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>I am a fashion photographer and blogger, feel free to read the whole story. Whereas a trend often connotes a very specific aesthetic expression, and often lasting shorter than a season.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:themeisle-blocks/advanced-heading {"id":"wp-block-themeisle-blocks-advanced-heading-852c591d","tag":"p","fontSize":12,"textTransform":"uppercase"} -->
+<p id="wp-block-themeisle-blocks-advanced-heading-852c591d" class="wp-block-themeisle-blocks-advanced-heading wp-block-themeisle-blocks-advanced-heading-852c591d" style="color:#000000;font-style:normal;text-transform:uppercase"><strong><a href="https://demo.themeisle.com/neve-blogger-gb/neve-blogger-gb-news/">View Posts</a></strong></p>
+<!-- /wp:themeisle-blocks/advanced-heading --></div>
+<!-- /wp:themeisle-blocks/advanced-column -->
+
+<!-- wp:themeisle-blocks/advanced-column {"id":"wp-block-themeisle-blocks-advanced-column-cd359245","columnWidth":"32.77"} -->
+<div class="wp-block-themeisle-blocks-advanced-column" id="wp-block-themeisle-blocks-advanced-column-cd359245" style="border-width:0px;border-style:solid;border-color:#000000;border-radius:0px"><!-- wp:separator {"color":"black","className":"is-style-wide ticss-7bda112f","hasCustomCSS":true,"customCSS":".ticss-7bda112f {\n}\n"} -->
+<hr class="wp-block-separator has-text-color has-background has-black-background-color has-black-color is-style-wide ticss-7bda112f" />
+<!-- /wp:separator -->
+
+<!-- wp:heading {"level":3} -->
+<h3>Services</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>I am a fashion photographer and blogger, feel free to read the whole story. Whereas a trend often connotes a very specific aesthetic expression, and often lasting shorter than a season.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:themeisle-blocks/advanced-heading {"id":"wp-block-themeisle-blocks-advanced-heading-98c8b9c2","tag":"p","fontSize":12,"textTransform":"uppercase"} -->
+<p id="wp-block-themeisle-blocks-advanced-heading-98c8b9c2" class="wp-block-themeisle-blocks-advanced-heading wp-block-themeisle-blocks-advanced-heading-98c8b9c2" style="color:#000000;font-style:normal;text-transform:uppercase"><strong><a href="https://demo.themeisle.com/neve-blogger-gb/neve-blogger-gb-contact/">Get in Touch</a></strong></p>
+<!-- /wp:themeisle-blocks/advanced-heading --></div>
+<!-- /wp:themeisle-blocks/advanced-column -->
+
+<!-- wp:themeisle-blocks/advanced-column {"id":"wp-block-themeisle-blocks-advanced-column-9a9f49aa","columnWidth":33.33} -->
+<div class="wp-block-themeisle-blocks-advanced-column" id="wp-block-themeisle-blocks-advanced-column-9a9f49aa" style="border-width:0px;border-style:solid;border-color:#000000;border-radius:0px"><!-- wp:separator {"color":"black","className":"is-style-wide ticss-7bda112f","hasCustomCSS":true,"customCSS":".ticss-7bda112f {\n}\n"} -->
+<hr class="wp-block-separator has-text-color has-background has-black-background-color has-black-color is-style-wide ticss-7bda112f" />
+<!-- /wp:separator -->
+
+<!-- wp:heading {"level":3} -->
+<h3>About me</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>I am a fashion photographer and blogger, feel free to read the whole story. Whereas a trend often connotes a very specific aesthetic expression, and often lasting shorter than a season.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:themeisle-blocks/advanced-heading {"id":"wp-block-themeisle-blocks-advanced-heading-a687c894","tag":"p","fontSize":12,"textTransform":"uppercase"} -->
+<p id="wp-block-themeisle-blocks-advanced-heading-a687c894" class="wp-block-themeisle-blocks-advanced-heading wp-block-themeisle-blocks-advanced-heading-a687c894" style="color:#000000;font-style:normal;text-transform:uppercase"><strong><a href="https://demo.themeisle.com/neve-blogger-gb/neve-blogger-gb-about/">ABOUT ME</a></strong></p>
+<!-- /wp:themeisle-blocks/advanced-heading --></div>
+<!-- /wp:themeisle-blocks/advanced-column --></div></div>
+<!-- /wp:themeisle-blocks/advanced-columns -->
+
+<!-- wp:themeisle-blocks/advanced-columns {"id":"wp-block-themeisle-blocks-advanced-columns-5a83b79b","columns":2,"layout":"equal","layoutTablet":"collapsedRows","layoutMobile":"collapsedRows","paddingType":"unlinked","paddingMobile":0,"paddingTop":80,"paddingBottom":80,"marginTop":0,"marginBottom":0,"columnsWidth":1180,"horizontalAlign":"center","backgroundColor":"#0c0c0c","align":"full"} -->
+<div class="wp-block-themeisle-blocks-advanced-columns alignfull has-2-columns has-desktop-equal-layout has-tablet-collapsedRows-layout has-mobile-collapsedRows-layout has-default-gap has-vertical-unset" id="wp-block-themeisle-blocks-advanced-columns-5a83b79b" style="background:#0c0c0c;border-width:0px;border-style:solid;border-color:#000000;border-radius:0px;justify-content:center"><div class="wp-themeisle-block-overlay" style="opacity:0.5;mix-blend-mode:normal"></div><div class="innerblocks-wrap" style="max-width:1180px"><!-- wp:themeisle-blocks/advanced-column {"id":"wp-block-themeisle-blocks-advanced-column-02495679","paddingType":"unlinked","marginType":"linked","marginTypeTablet":"linked","marginTypeMobile":"linked","margin":0,"marginTablet":0,"marginMobile":0,"marginTop":0,"marginTopMobile":0,"columnWidth":50,"className":"ticss-48ef8f35","hasCustomCSS":true} -->
+<div class="wp-block-themeisle-blocks-advanced-column ticss-48ef8f35" id="wp-block-themeisle-blocks-advanced-column-02495679" style="border-width:0px;border-style:solid;border-color:#000000;border-radius:0px"><!-- wp:themeisle-blocks/advanced-heading {"id":"wp-block-themeisle-blocks-advanced-heading-a67260d8","tag":"p","headingColor":"#ffffff","fontSize":12,"textTransform":"uppercase"} -->
+<p id="wp-block-themeisle-blocks-advanced-heading-a67260d8" class="wp-block-themeisle-blocks-advanced-heading wp-block-themeisle-blocks-advanced-heading-a67260d8" style="color:#ffffff;font-style:normal;text-transform:uppercase"><strong>Minimized simplicity</strong></p>
+<!-- /wp:themeisle-blocks/advanced-heading -->
+
+<!-- wp:heading {"textColor":"white"} -->
+<h2 class="has-white-color has-text-color">Welcome friend.</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"textColor":"white"} -->
+<p class="has-text-color has-white-color">I am a fashion photographer and blogger, feel free to read the whole story. Whereas a trend often connotes.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"textColor":"white"} -->
+<p class="has-text-color has-white-color">I am a fashion photographer and blogger, feel free to read the whole story. Whereas a trend often connotes a very specific aesthetic expression, and often lasting shorter than a season.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"className":"wp-block-themeisle-blocks-advanced-heading wp-block-themeisle-blocks-advanced-heading-291a439a"} -->
+<p class="wp-block-themeisle-blocks-advanced-heading wp-block-themeisle-blocks-advanced-heading-291a439a"><a href="https://demo.themeisle.com/neve-blogger-gb/neve-blogger-gb-news/">Go to blog</a></p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:themeisle-blocks/advanced-column -->
+
+<!-- wp:themeisle-blocks/advanced-column {"id":"wp-block-themeisle-blocks-advanced-column-67e16009","padding":0,"paddingTablet":0,"paddingMobile":0,"paddingTop":0,"marginType":"linked","margin":0,"marginBottom":0,"columnWidth":50,"className":"ticss-5418d6a3","hasCustomCSS":true} -->
+<div class="wp-block-themeisle-blocks-advanced-column ticss-5418d6a3" id="wp-block-themeisle-blocks-advanced-column-67e16009" style="border-width:0px;border-style:solid;border-color:#000000;border-radius:0px"><!-- wp:cover {"url":"https://s20206.pcdn.co/neve-blogger-gb/wp-content/uploads/sites/388/2019/11/neve-minimal-blogger-02.jpg","id":19,"align":"center"} -->
+<div class="wp-block-cover aligncenter has-background-dim" style="background-image:url(https://s20206.pcdn.co/neve-blogger-gb/wp-content/uploads/sites/388/2019/11/neve-minimal-blogger-02.jpg)"><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"align":"center","placeholder":"Write title…","fontSize":"large"} -->
+<p class="has-text-align-center has-large-font-size"></p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:cover --></div>
+<!-- /wp:themeisle-blocks/advanced-column --></div></div>
+<!-- /wp:themeisle-blocks/advanced-columns -->
+
+<!-- wp:themeisle-blocks/advanced-columns {"id":"wp-block-themeisle-blocks-advanced-columns-194b2b21","columns":1,"layout":"equal","columnsGap":"nogap","padding":0,"marginTop":0,"marginBottom":0,"columnsWidth":1180,"horizontalAlign":"center","backgroundColor":"#f7f7f7","align":"full"} -->
+<div class="wp-block-themeisle-blocks-advanced-columns alignfull has-1-columns has-desktop-equal-layout has-tablet-equal-layout has-mobile-equal-layout has-nogap-gap has-vertical-unset" id="wp-block-themeisle-blocks-advanced-columns-194b2b21" style="background:#f7f7f7;border-width:0px;border-style:solid;border-color:#000000;border-radius:0px;justify-content:center"><div class="wp-themeisle-block-overlay" style="opacity:0.5;mix-blend-mode:normal"></div><div class="innerblocks-wrap" style="max-width:1180px"><!-- wp:themeisle-blocks/advanced-column {"id":"wp-block-themeisle-blocks-advanced-column-204c7024","marginTop":0,"marginBottom":0,"columnWidth":100} -->
+<div class="wp-block-themeisle-blocks-advanced-column" id="wp-block-themeisle-blocks-advanced-column-204c7024" style="border-width:0px;border-style:solid;border-color:#000000;border-radius:0px"><!-- wp:separator {"color":"black","className":"is-style-wide"} -->
+<hr class="wp-block-separator has-text-color has-background has-black-background-color has-black-color is-style-wide" />
+<!-- /wp:separator -->
+
+<!-- wp:themeisle-blocks/advanced-heading {"id":"wp-block-themeisle-blocks-advanced-heading-a6bbd4ea","tag":"p","fontSize":12,"textTransform":"uppercase"} -->
+<p id="wp-block-themeisle-blocks-advanced-heading-a6bbd4ea" class="wp-block-themeisle-blocks-advanced-heading wp-block-themeisle-blocks-advanced-heading-a6bbd4ea" style="color:#000000;font-style:normal;text-transform:uppercase"><strong>Minimized simplicity</strong></p>
+<!-- /wp:themeisle-blocks/advanced-heading -->
+
+<!-- wp:heading -->
+<h2>Blog Topics</h2>
+<!-- /wp:heading -->
+
+<!-- wp:themeisle-blocks/advanced-columns {"id":"wp-block-themeisle-blocks-advanced-columns-33738250","columns":3,"layout":"equal","layoutMobile":"collapsedRows","columnsGap":"nogap","padding":0,"marginTop":0,"marginBottom":0} -->
+<div class="wp-block-themeisle-blocks-advanced-columns has-3-columns has-desktop-equal-layout has-tablet-equal-layout has-mobile-collapsedRows-layout has-nogap-gap has-vertical-unset" id="wp-block-themeisle-blocks-advanced-columns-33738250" style="border-width:0px;border-style:solid;border-color:#000000;border-radius:0px;justify-content:unset"><div class="wp-themeisle-block-overlay" style="opacity:0.5;mix-blend-mode:normal"></div><div class="innerblocks-wrap"><!-- wp:themeisle-blocks/advanced-column {"id":"wp-block-themeisle-blocks-advanced-column-c4c3925f","padding":0,"marginType":"linked","margin":0,"columnWidth":33.33} -->
+<div class="wp-block-themeisle-blocks-advanced-column" id="wp-block-themeisle-blocks-advanced-column-c4c3925f" style="border-width:0px;border-style:solid;border-color:#000000;border-radius:0px"><!-- wp:cover {"url":"https://s20206.pcdn.co/neve-blogger-gb/wp-content/uploads/sites/388/2019/11/neve-minimal-blogger-01.jpg","id":23,"dimRatio":0,"minHeight":400,"align":"center","className":"ticss-adf356bf","hasCustomCSS":true} -->
+<div class="wp-block-cover aligncenter ticss-adf356bf" style="background-image:url(https://s20206.pcdn.co/neve-blogger-gb/wp-content/uploads/sites/388/2019/11/neve-minimal-blogger-01.jpg);min-height:400px"><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"align":"center","placeholder":"Write title…","fontSize":"large"} -->
+<p class="has-text-align-center has-large-font-size"></p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:cover -->
+
+<!-- wp:heading {"level":3} -->
+<h3>People</h3>
+<!-- /wp:heading -->
+
+<!-- wp:themeisle-blocks/advanced-heading {"id":"wp-block-themeisle-blocks-advanced-heading-741fa943","tag":"p","fontSize":12,"textTransform":"uppercase"} -->
+<p id="wp-block-themeisle-blocks-advanced-heading-741fa943" class="wp-block-themeisle-blocks-advanced-heading wp-block-themeisle-blocks-advanced-heading-741fa943" style="color:#000000;font-style:normal;text-transform:uppercase"><strong><a href="https://demo.themeisle.com/neve-blogger-gb/neve-blogger-gb-news/">View Posts</a></strong></p>
+<!-- /wp:themeisle-blocks/advanced-heading --></div>
+<!-- /wp:themeisle-blocks/advanced-column -->
+
+<!-- wp:themeisle-blocks/advanced-column {"id":"wp-block-themeisle-blocks-advanced-column-2fac3b7a","padding":0,"paddingMobile":0,"marginType":"linked","margin":0,"columnWidth":33.33} -->
+<div class="wp-block-themeisle-blocks-advanced-column" id="wp-block-themeisle-blocks-advanced-column-2fac3b7a" style="border-width:0px;border-style:solid;border-color:#000000;border-radius:0px"><!-- wp:cover {"url":"https://s20206.pcdn.co/neve-blogger-gb/wp-content/uploads/sites/388/2019/11/neve-minimal-blogger-06.jpg","id":28,"dimRatio":0,"minHeight":400,"align":"center","className":"ticss-adf356bf","hasCustomCSS":true} -->
+<div class="wp-block-cover aligncenter ticss-adf356bf" style="background-image:url(https://s20206.pcdn.co/neve-blogger-gb/wp-content/uploads/sites/388/2019/11/neve-minimal-blogger-06.jpg);min-height:400px"><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"align":"center","placeholder":"Write title…","fontSize":"large"} -->
+<p class="has-text-align-center has-large-font-size"></p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:cover -->
+
+<!-- wp:heading {"level":3} -->
+<h3>Urban</h3>
+<!-- /wp:heading -->
+
+<!-- wp:themeisle-blocks/advanced-heading {"id":"wp-block-themeisle-blocks-advanced-heading-8e5023f8","tag":"p","fontSize":12,"textTransform":"uppercase"} -->
+<p id="wp-block-themeisle-blocks-advanced-heading-8e5023f8" class="wp-block-themeisle-blocks-advanced-heading wp-block-themeisle-blocks-advanced-heading-8e5023f8" style="color:#000000;font-style:normal;text-transform:uppercase"><strong><a href="https://demo.themeisle.com/neve-blogger-gb/neve-blogger-gb-news/">View PoSTS</a></strong></p>
+<!-- /wp:themeisle-blocks/advanced-heading --></div>
+<!-- /wp:themeisle-blocks/advanced-column -->
+
+<!-- wp:themeisle-blocks/advanced-column {"id":"wp-block-themeisle-blocks-advanced-column-dcbf27d1","padding":0,"marginType":"linked","margin":0,"columnWidth":33.33} -->
+<div class="wp-block-themeisle-blocks-advanced-column" id="wp-block-themeisle-blocks-advanced-column-dcbf27d1" style="border-width:0px;border-style:solid;border-color:#000000;border-radius:0px"><!-- wp:cover {"url":"https://s20206.pcdn.co/neve-blogger-gb/wp-content/uploads/sites/388/2019/11/neve-minimal-blogger-11.jpg","id":20,"dimRatio":0,"minHeight":400,"align":"center","className":"ticss-adf356bf","hasCustomCSS":true} -->
+<div class="wp-block-cover aligncenter ticss-adf356bf" style="background-image:url(https://s20206.pcdn.co/neve-blogger-gb/wp-content/uploads/sites/388/2019/11/neve-minimal-blogger-11.jpg);min-height:400px"><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"align":"center","placeholder":"Write title…","fontSize":"large"} -->
+<p class="has-text-align-center has-large-font-size"></p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:cover -->
+
+<!-- wp:heading {"level":3} -->
+<h3>Abstract</h3>
+<!-- /wp:heading -->
+
+<!-- wp:themeisle-blocks/advanced-heading {"id":"wp-block-themeisle-blocks-advanced-heading-c6f25443","tag":"p","fontSize":12,"textTransform":"uppercase"} -->
+<p id="wp-block-themeisle-blocks-advanced-heading-c6f25443" class="wp-block-themeisle-blocks-advanced-heading wp-block-themeisle-blocks-advanced-heading-c6f25443" style="color:#000000;font-style:normal;text-transform:uppercase"><strong><a href="https://demo.themeisle.com/neve-blogger-gb/neve-blogger-gb-news/">View Posts</a></strong></p>
+<!-- /wp:themeisle-blocks/advanced-heading --></div>
+<!-- /wp:themeisle-blocks/advanced-column --></div></div>
+<!-- /wp:themeisle-blocks/advanced-columns --></div>
+<!-- /wp:themeisle-blocks/advanced-column --></div></div>
+<!-- /wp:themeisle-blocks/advanced-columns -->
+
+<!-- wp:themeisle-blocks/advanced-columns {"id":"wp-block-themeisle-blocks-advanced-columns-6f11e740","columns":1,"layout":"equal","columnsWidth":726,"horizontalAlign":"center","align":"full"} -->
+<div class="wp-block-themeisle-blocks-advanced-columns alignfull has-1-columns has-desktop-equal-layout has-tablet-equal-layout has-mobile-equal-layout has-default-gap has-vertical-unset" id="wp-block-themeisle-blocks-advanced-columns-6f11e740" style="border-width:0px;border-style:solid;border-color:#000000;border-radius:0px;justify-content:center"><div class="wp-themeisle-block-overlay" style="opacity:0.5;mix-blend-mode:normal"></div><div class="innerblocks-wrap" style="max-width:726px"><!-- wp:themeisle-blocks/advanced-column {"id":"wp-block-themeisle-blocks-advanced-column-085d763a","columnWidth":100} -->
+<div class="wp-block-themeisle-blocks-advanced-column" id="wp-block-themeisle-blocks-advanced-column-085d763a" style="border-width:0px;border-style:solid;border-color:#000000;border-radius:0px"><!-- wp:themeisle-blocks/advanced-heading {"id":"wp-block-themeisle-blocks-advanced-heading-a38d6050","tag":"p","align":"center","fontSize":12,"textTransform":"uppercase"} -->
+<p id="wp-block-themeisle-blocks-advanced-heading-a38d6050" class="wp-block-themeisle-blocks-advanced-heading wp-block-themeisle-blocks-advanced-heading-a38d6050" style="color:#000000;font-style:normal;text-transform:uppercase"><strong>Minimized simplicity</strong></p>
+<!-- /wp:themeisle-blocks/advanced-heading -->
+
+<!-- wp:themeisle-blocks/advanced-heading {"id":"wp-block-themeisle-blocks-advanced-heading-4e96de44","align":"center"} -->
+<h2 id="wp-block-themeisle-blocks-advanced-heading-4e96de44" class="wp-block-themeisle-blocks-advanced-heading wp-block-themeisle-blocks-advanced-heading-4e96de44" style="color:#000000;font-style:normal;text-transform:none">Follow along the journey</h2>
+<!-- /wp:themeisle-blocks/advanced-heading -->
+
+<!-- wp:paragraph {"align":"center"} -->
+<p class="has-text-align-center">Follow me on social and never miss a post from this blog. Only original content and minimalist views, shared daily on social.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:themeisle-blocks/sharing-icons {"pinterest":true,"align":"center","className":"is-style-icons"} /--></div>
+<!-- /wp:themeisle-blocks/advanced-column --></div></div>
+<!-- /wp:themeisle-blocks/advanced-columns -->
+
+<!-- wp:themeisle-blocks/advanced-columns {"id":"wp-block-themeisle-blocks-advanced-columns-6a564611","columns":4,"layout":"equal","layoutTablet":"twoColumnGrid","layoutMobile":"collapsedRows","columnsGap":"nogap","padding":0,"paddingTablet":0,"paddingMobile":0,"backgroundColor":"#0c0c0c","align":"full"} -->
+<div class="wp-block-themeisle-blocks-advanced-columns alignfull has-4-columns has-desktop-equal-layout has-tablet-twoColumnGrid-layout has-mobile-collapsedRows-layout has-nogap-gap has-vertical-unset" id="wp-block-themeisle-blocks-advanced-columns-6a564611" style="background:#0c0c0c;border-width:0px;border-style:solid;border-color:#000000;border-radius:0px;justify-content:unset"><div class="wp-themeisle-block-overlay" style="opacity:0.5;mix-blend-mode:normal"></div><div class="innerblocks-wrap"><!-- wp:themeisle-blocks/advanced-column {"id":"wp-block-themeisle-blocks-advanced-column-374d5d80","padding":0,"paddingTablet":0,"paddingMobile":0,"marginType":"linked","margin":0,"columnWidth":25,"className":"ticss-0e1467b8","hasCustomCSS":true} -->
+<div class="wp-block-themeisle-blocks-advanced-column ticss-0e1467b8" id="wp-block-themeisle-blocks-advanced-column-374d5d80" style="border-width:0px;border-style:solid;border-color:#000000;border-radius:0px"><!-- wp:cover {"url":"https://s20206.pcdn.co/neve-blogger-gb/wp-content/uploads/sites/388/2019/11/neve-minimal-blogger-07.jpg","id":26,"minHeight":600,"align":"center"} -->
+<div class="wp-block-cover aligncenter has-background-dim" style="background-image:url(https://s20206.pcdn.co/neve-blogger-gb/wp-content/uploads/sites/388/2019/11/neve-minimal-blogger-07.jpg);min-height:600px"><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"align":"center","placeholder":"Write title…","fontSize":"large"} -->
+<p class="has-text-align-center has-large-font-size"></p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:cover --></div>
+<!-- /wp:themeisle-blocks/advanced-column -->
+
+<!-- wp:themeisle-blocks/advanced-column {"id":"wp-block-themeisle-blocks-advanced-column-329f066d","padding":0,"paddingTablet":0,"paddingMobile":0,"marginType":"linked","margin":0,"columnWidth":25} -->
+<div class="wp-block-themeisle-blocks-advanced-column" id="wp-block-themeisle-blocks-advanced-column-329f066d" style="border-width:0px;border-style:solid;border-color:#000000;border-radius:0px"><!-- wp:cover {"url":"https://s20206.pcdn.co/neve-blogger-gb/wp-content/uploads/sites/388/2019/11/neve-minimal-blogger-08.jpg","id":39,"dimRatio":0,"minHeight":600,"align":"center","className":"ticss-adf356bf","hasCustomCSS":true} -->
+<div class="wp-block-cover aligncenter ticss-adf356bf" style="background-image:url(https://s20206.pcdn.co/neve-blogger-gb/wp-content/uploads/sites/388/2019/11/neve-minimal-blogger-08.jpg);min-height:600px"><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"align":"center","placeholder":"Write title…","fontSize":"large"} -->
+<p class="has-text-align-center has-large-font-size"></p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:cover --></div>
+<!-- /wp:themeisle-blocks/advanced-column -->
+
+<!-- wp:themeisle-blocks/advanced-column {"id":"wp-block-themeisle-blocks-advanced-column-a131c8d8","padding":0,"paddingTablet":0,"paddingMobile":0,"marginType":"linked","margin":0,"columnWidth":25} -->
+<div class="wp-block-themeisle-blocks-advanced-column" id="wp-block-themeisle-blocks-advanced-column-a131c8d8" style="border-width:0px;border-style:solid;border-color:#000000;border-radius:0px"><!-- wp:cover {"url":"https://s20206.pcdn.co/neve-blogger-gb/wp-content/uploads/sites/388/2019/11/neve-minimal-blogger-10.jpg","id":22,"dimRatio":0,"minHeight":600,"align":"center","className":"ticss-adf356bf","hasCustomCSS":true} -->
+<div class="wp-block-cover aligncenter ticss-adf356bf" style="background-image:url(https://s20206.pcdn.co/neve-blogger-gb/wp-content/uploads/sites/388/2019/11/neve-minimal-blogger-10.jpg);min-height:600px"><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"align":"center","placeholder":"Write title…","fontSize":"large"} -->
+<p class="has-text-align-center has-large-font-size"></p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:cover --></div>
+<!-- /wp:themeisle-blocks/advanced-column -->
+
+<!-- wp:themeisle-blocks/advanced-column {"id":"wp-block-themeisle-blocks-advanced-column-b20eafeb","padding":0,"paddingTablet":0,"paddingMobile":0,"marginTop":0,"marginBottom":0,"columnWidth":25} -->
+<div class="wp-block-themeisle-blocks-advanced-column" id="wp-block-themeisle-blocks-advanced-column-b20eafeb" style="border-width:0px;border-style:solid;border-color:#000000;border-radius:0px"><!-- wp:cover {"url":"https://s20206.pcdn.co/neve-blogger-gb/wp-content/uploads/sites/388/2019/11/neve-minimal-blogger-05.jpg","id":27,"dimRatio":0,"minHeight":600,"align":"center","className":"ticss-adf356bf","hasCustomCSS":true} -->
+<div class="wp-block-cover aligncenter ticss-adf356bf" style="background-image:url(https://s20206.pcdn.co/neve-blogger-gb/wp-content/uploads/sites/388/2019/11/neve-minimal-blogger-05.jpg);min-height:600px"><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"align":"center","placeholder":"Write title…","fontSize":"large"} -->
+<p class="has-text-align-center has-large-font-size"></p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:cover --></div>
+<!-- /wp:themeisle-blocks/advanced-column --></div></div>
+<!-- /wp:themeisle-blocks/advanced-columns -->]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>5</wp:post_id>
+			<wp:post_date><![CDATA[2019-11-26 12:22:54]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-11-26 12:22:54]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve-blogger-gb-home]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[page]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_container]]></wp:meta_key>
+					<wp:meta_value><![CDATA[default]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_sidebar]]></wp:meta_key>
+					<wp:meta_value><![CDATA[full-width]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_disable_header]]></wp:meta_key>
+					<wp:meta_value><![CDATA[off]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_disable_title]]></wp:meta_key>
+					<wp:meta_value><![CDATA[on]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_disable_featured_image]]></wp:meta_key>
+					<wp:meta_value><![CDATA[off]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_disable_footer]]></wp:meta_key>
+					<wp:meta_value><![CDATA[off]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_enable_content_width]]></wp:meta_key>
+					<wp:meta_value><![CDATA[on]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
+					<wp:meta_value><![CDATA[100]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_themeisle_gutenberg_block_styles]]></wp:meta_key>
+					<wp:meta_value><![CDATA[#wp-block-themeisle-blocks-advanced-columns-e5e06ebd{padding-top:80px;padding-right:20px;padding-bottom:80px;padding-left:20px;margin-top:20px;margin-bottom:20px;min-height:auto}#wp-block-themeisle-blocks-advanced-columns-e5e06ebd .wp-themeisle-block-overlay{filter:blur(unsetpx) brightness(1) contrast(1) grayscale(unset) hue-rotate(unsetdeg) saturate(1)}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-columns-e5e06ebd{padding:20px;margin-top:20px;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-columns-e5e06ebd{padding:20px;margin-top:20px;margin-bottom:20px}}#wp-block-themeisle-blocks-advanced-column-faefdc1c{padding:20px;margin-top:20px;margin-bottom:20px}@media (min-width:960px){#wp-block-themeisle-blocks-advanced-column-faefdc1c{flex-basis:33.52%}}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-column-faefdc1c{padding:20px;margin-top:20px;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-column-faefdc1c{padding:20px;margin-top:20px;margin-bottom:20px}}#wp-block-themeisle-blocks-advanced-column-101a17aa{padding:20px;margin-top:20px;margin-bottom:20px}@media (min-width:960px){#wp-block-themeisle-blocks-advanced-column-101a17aa{flex-basis:66.48%}}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-column-101a17aa{padding:20px;margin-top:20px;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-column-101a17aa{padding:20px;margin-top:20px;margin-bottom:20px}}#wp-block-themeisle-blocks-advanced-heading-cb8c227d{font-size:12px;padding:0;margin-top:0;margin-bottom:25px}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-heading-cb8c227d{padding:0;margin-top:0;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-heading-cb8c227d{padding:0;margin-top:0;margin-bottom:20px}}#wp-block-themeisle-blocks-advanced-columns-b320f813{padding:20px;margin-top:20px;margin-bottom:20px;min-height:auto}#wp-block-themeisle-blocks-advanced-columns-b320f813 .wp-themeisle-block-overlay{filter:blur(unsetpx) brightness(1) contrast(1) grayscale(unset) hue-rotate(unsetdeg) saturate(1)}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-columns-b320f813{padding:20px;margin-top:20px;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-columns-b320f813{padding:20px;margin-top:20px;margin-bottom:20px}}#wp-block-themeisle-blocks-advanced-column-42182f0d{padding:20px;margin-top:20px;margin-bottom:20px}@media (min-width:960px){#wp-block-themeisle-blocks-advanced-column-42182f0d{flex-basis:33.89%}}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-column-42182f0d{padding:20px;margin-top:20px;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-column-42182f0d{padding:20px;margin-top:20px;margin-bottom:20px}}#wp-block-themeisle-blocks-advanced-heading-852c591d{font-size:12px;padding:0;margin-top:0;margin-bottom:25px}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-heading-852c591d{padding:0;margin-top:0;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-heading-852c591d{padding:0;margin-top:0;margin-bottom:20px}}#wp-block-themeisle-blocks-advanced-column-cd359245{padding:20px;margin-top:20px;margin-bottom:20px}@media (min-width:960px){#wp-block-themeisle-blocks-advanced-column-cd359245{flex-basis:32.77%}}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-column-cd359245{padding:20px;margin-top:20px;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-column-cd359245{padding:20px;margin-top:20px;margin-bottom:20px}}#wp-block-themeisle-blocks-advanced-heading-98c8b9c2{font-size:12px;padding:0;margin-top:0;margin-bottom:25px}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-heading-98c8b9c2{padding:0;margin-top:0;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-heading-98c8b9c2{padding:0;margin-top:0;margin-bottom:20px}}#wp-block-themeisle-blocks-advanced-column-9a9f49aa{padding:20px;margin-top:20px;margin-bottom:20px}@media (min-width:960px){#wp-block-themeisle-blocks-advanced-column-9a9f49aa{flex-basis:33.33%}}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-column-9a9f49aa{padding:20px;margin-top:20px;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-column-9a9f49aa{padding:20px;margin-top:20px;margin-bottom:20px}}#wp-block-themeisle-blocks-advanced-heading-a687c894{font-size:12px;padding:0;margin-top:0;margin-bottom:25px}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-heading-a687c894{padding:0;margin-top:0;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-heading-a687c894{padding:0;margin-top:0;margin-bottom:20px}}#wp-block-themeisle-blocks-advanced-columns-5a83b79b{padding-top:80px;padding-right:20px;padding-bottom:80px;padding-left:20px;margin-top:20px;margin-bottom:20px;min-height:auto}#wp-block-themeisle-blocks-advanced-columns-5a83b79b .wp-themeisle-block-overlay{filter:blur(unsetpx) brightness(1) contrast(1) grayscale(unset) hue-rotate(unsetdeg) saturate(1)}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-columns-5a83b79b{padding:20px;margin-top:20px;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-columns-5a83b79b{padding:20px;margin-top:20px;margin-bottom:20px}}#wp-block-themeisle-blocks-advanced-column-02495679{padding-top:20px;padding-right:20px;padding-bottom:20px;padding-left:20px;margin-top:20px;margin-right:20px;margin-bottom:20px;margin-left:20px}@media (min-width:960px){#wp-block-themeisle-blocks-advanced-column-02495679{flex-basis:50%}}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-column-02495679{padding:20px;margin-top:20px;margin-right:20px;margin-bottom:20px;margin-left:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-column-02495679{padding:20px;margin-top:20px;margin-right:20px;margin-bottom:20px;margin-left:20px}}#wp-block-themeisle-blocks-advanced-heading-a67260d8{font-size:12px;padding:0;margin-top:0;margin-bottom:25px}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-heading-a67260d8{padding:0;margin-top:0;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-heading-a67260d8{padding:0;margin-top:0;margin-bottom:20px}}#wp-block-themeisle-blocks-advanced-column-67e16009{padding:20px;margin-top:20px;margin-right:20px;margin-bottom:20px;margin-left:20px}@media (min-width:960px){#wp-block-themeisle-blocks-advanced-column-67e16009{flex-basis:50%}}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-column-67e16009{padding:20px;margin-top:20px;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-column-67e16009{padding:20px;margin-top:20px;margin-bottom:20px}}#wp-block-themeisle-blocks-advanced-columns-194b2b21{padding:20px;margin-top:20px;margin-bottom:20px;min-height:auto}#wp-block-themeisle-blocks-advanced-columns-194b2b21 .wp-themeisle-block-overlay{filter:blur(unsetpx) brightness(1) contrast(1) grayscale(unset) hue-rotate(unsetdeg) saturate(1)}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-columns-194b2b21{padding:20px;margin-top:20px;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-columns-194b2b21{padding:20px;margin-top:20px;margin-bottom:20px}}#wp-block-themeisle-blocks-advanced-column-204c7024{padding:20px;margin-top:20px;margin-bottom:20px}@media (min-width:960px){#wp-block-themeisle-blocks-advanced-column-204c7024{flex-basis:100%}}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-column-204c7024{padding:20px;margin-top:20px;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-column-204c7024{padding:20px;margin-top:20px;margin-bottom:20px}}#wp-block-themeisle-blocks-advanced-heading-a6bbd4ea{font-size:12px;padding:0;margin-top:0;margin-bottom:25px}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-heading-a6bbd4ea{padding:0;margin-top:0;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-heading-a6bbd4ea{padding:0;margin-top:0;margin-bottom:20px}}#wp-block-themeisle-blocks-advanced-columns-33738250{padding:20px;margin-top:20px;margin-bottom:20px;min-height:auto}#wp-block-themeisle-blocks-advanced-columns-33738250 .wp-themeisle-block-overlay{filter:blur(unsetpx) brightness(1) contrast(1) grayscale(unset) hue-rotate(unsetdeg) saturate(1)}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-columns-33738250{padding:20px;margin-top:20px;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-columns-33738250{padding:20px;margin-top:20px;margin-bottom:20px}}#wp-block-themeisle-blocks-advanced-column-c4c3925f{padding:20px;margin-top:20px;margin-right:20px;margin-bottom:20px;margin-left:20px}@media (min-width:960px){#wp-block-themeisle-blocks-advanced-column-c4c3925f{flex-basis:33.33%}}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-column-c4c3925f{padding:20px;margin-top:20px;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-column-c4c3925f{padding:20px;margin-top:20px;margin-bottom:20px}}#wp-block-themeisle-blocks-advanced-heading-741fa943{font-size:12px;padding:0;margin-top:0;margin-bottom:25px}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-heading-741fa943{padding:0;margin-top:0;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-heading-741fa943{padding:0;margin-top:0;margin-bottom:20px}}#wp-block-themeisle-blocks-advanced-column-2fac3b7a{padding:20px;margin-top:20px;margin-right:20px;margin-bottom:20px;margin-left:20px}@media (min-width:960px){#wp-block-themeisle-blocks-advanced-column-2fac3b7a{flex-basis:33.33%}}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-column-2fac3b7a{padding:20px;margin-top:20px;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-column-2fac3b7a{padding:20px;margin-top:20px;margin-bottom:20px}}#wp-block-themeisle-blocks-advanced-heading-8e5023f8{font-size:12px;padding:0;margin-top:0;margin-bottom:25px}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-heading-8e5023f8{padding:0;margin-top:0;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-heading-8e5023f8{padding:0;margin-top:0;margin-bottom:20px}}#wp-block-themeisle-blocks-advanced-column-dcbf27d1{padding:20px;margin-top:20px;margin-right:20px;margin-bottom:20px;margin-left:20px}@media (min-width:960px){#wp-block-themeisle-blocks-advanced-column-dcbf27d1{flex-basis:33.33%}}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-column-dcbf27d1{padding:20px;margin-top:20px;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-column-dcbf27d1{padding:20px;margin-top:20px;margin-bottom:20px}}#wp-block-themeisle-blocks-advanced-heading-c6f25443{font-size:12px;padding:0;margin-top:0;margin-bottom:25px}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-heading-c6f25443{padding:0;margin-top:0;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-heading-c6f25443{padding:0;margin-top:0;margin-bottom:20px}}#wp-block-themeisle-blocks-advanced-columns-6f11e740{padding:20px;margin-top:20px;margin-bottom:20px;min-height:auto}#wp-block-themeisle-blocks-advanced-columns-6f11e740 .wp-themeisle-block-overlay{filter:blur(unsetpx) brightness(1) contrast(1) grayscale(unset) hue-rotate(unsetdeg) saturate(1)}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-columns-6f11e740{padding:20px;margin-top:20px;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-columns-6f11e740{padding:20px;margin-top:20px;margin-bottom:20px}}#wp-block-themeisle-blocks-advanced-column-085d763a{padding:20px;margin-top:20px;margin-bottom:20px}@media (min-width:960px){#wp-block-themeisle-blocks-advanced-column-085d763a{flex-basis:100%}}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-column-085d763a{padding:20px;margin-top:20px;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-column-085d763a{padding:20px;margin-top:20px;margin-bottom:20px}}#wp-block-themeisle-blocks-advanced-heading-a38d6050{text-align:center;font-size:12px;padding:0;margin-top:0;margin-bottom:25px}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-heading-a38d6050{padding:0;margin-top:0;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-heading-a38d6050{padding:0;margin-top:0;margin-bottom:20px}}#wp-block-themeisle-blocks-advanced-heading-4e96de44{text-align:center;padding:0;margin-top:0;margin-bottom:25px}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-heading-4e96de44{padding:0;margin-top:0;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-heading-4e96de44{padding:0;margin-top:0;margin-bottom:20px}}#wp-block-themeisle-blocks-advanced-columns-6a564611{padding:20px;margin-top:20px;margin-bottom:20px;min-height:auto}#wp-block-themeisle-blocks-advanced-columns-6a564611 .wp-themeisle-block-overlay{filter:blur(unsetpx) brightness(1) contrast(1) grayscale(unset) hue-rotate(unsetdeg) saturate(1)}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-columns-6a564611{padding:20px;margin-top:20px;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-columns-6a564611{padding:20px;margin-top:20px;margin-bottom:20px}}#wp-block-themeisle-blocks-advanced-column-374d5d80{padding:20px;margin-top:20px;margin-right:20px;margin-bottom:20px;margin-left:20px}@media (min-width:960px){#wp-block-themeisle-blocks-advanced-column-374d5d80{flex-basis:25%}}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-column-374d5d80{padding:20px;margin-top:20px;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-column-374d5d80{padding:20px;margin-top:20px;margin-bottom:20px}}#wp-block-themeisle-blocks-advanced-column-329f066d{padding:20px;margin-top:20px;margin-right:20px;margin-bottom:20px;margin-left:20px}@media (min-width:960px){#wp-block-themeisle-blocks-advanced-column-329f066d{flex-basis:25%}}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-column-329f066d{padding:20px;margin-top:20px;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-column-329f066d{padding:20px;margin-top:20px;margin-bottom:20px}}#wp-block-themeisle-blocks-advanced-column-a131c8d8{padding:20px;margin-top:20px;margin-right:20px;margin-bottom:20px;margin-left:20px}@media (min-width:960px){#wp-block-themeisle-blocks-advanced-column-a131c8d8{flex-basis:25%}}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-column-a131c8d8{padding:20px;margin-top:20px;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-column-a131c8d8{padding:20px;margin-top:20px;margin-bottom:20px}}#wp-block-themeisle-blocks-advanced-column-b20eafeb{padding:20px;margin-top:20px;margin-bottom:20px}@media (min-width:960px){#wp-block-themeisle-blocks-advanced-column-b20eafeb{flex-basis:25%}}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-column-b20eafeb{padding:20px;margin-top:20px;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-column-b20eafeb{padding:20px;margin-top:20px;margin-bottom:20px}}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_themeisle_gutenberg_block_stylesheet]]></wp:meta_key>
+					<wp:meta_value><![CDATA[post-5]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+							</title>
+			<link>https://demo.themeisle.com/neve-blogger-gb/2019/11/26/12/</link>
+			<pubDate>Tue, 26 Nov 2019 12:30:40 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-blogger-gb/?p=12</guid>
+			<description></description>
+			<content:encoded><![CDATA[ ]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>12</wp:post_id>
+			<wp:post_date><![CDATA[2019-11-26 12:30:40]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-11-26 12:30:40]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[12]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>4</wp:menu_order>
+			<wp:post_type><![CDATA[nav_menu_item]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+								<category domain="nav_menu" nicename="neve-blogger-gb-main-menu"><![CDATA[neve-blogger-gb-main-menu]]></category>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_type]]></wp:meta_key>
+					<wp:meta_value><![CDATA[post_type]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_menu_item_parent]]></wp:meta_key>
+					<wp:meta_value><![CDATA[0]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_object_id]]></wp:meta_key>
+					<wp:meta_value><![CDATA[7]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_object]]></wp:meta_key>
+					<wp:meta_value><![CDATA[page]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_target]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_classes]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_xfn]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_url]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[obfx_menu_icon]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+							</title>
+			<link>https://demo.themeisle.com/neve-blogger-gb/2019/11/26/13/</link>
+			<pubDate>Tue, 26 Nov 2019 12:30:40 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-blogger-gb/?p=13</guid>
+			<description></description>
+			<content:encoded><![CDATA[ ]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>13</wp:post_id>
+			<wp:post_date><![CDATA[2019-11-26 12:30:40]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-11-26 12:30:40]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[13]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>2</wp:menu_order>
+			<wp:post_type><![CDATA[nav_menu_item]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+								<category domain="nav_menu" nicename="neve-blogger-gb-main-menu"><![CDATA[neve-blogger-gb-main-menu]]></category>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_type]]></wp:meta_key>
+					<wp:meta_value><![CDATA[post_type]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_menu_item_parent]]></wp:meta_key>
+					<wp:meta_value><![CDATA[0]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_object_id]]></wp:meta_key>
+					<wp:meta_value><![CDATA[6]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_object]]></wp:meta_key>
+					<wp:meta_value><![CDATA[page]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_target]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_classes]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_xfn]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_url]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[obfx_menu_icon]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				neve-minimal-blogger-04			</title>
+			<link>https://demo.themeisle.com/neve-blogger-gb/neve-minimal-blogger-04/</link>
+			<pubDate>Tue, 26 Nov 2019 13:06:40 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-blogger-gb/wp-content/uploads/sites/388/2019/11/neve-minimal-blogger-04.jpg</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>17</wp:post_id>
+			<wp:post_date><![CDATA[2019-11-26 13:06:40]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-11-26 13:06:40]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve-minimal-blogger-04]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-blogger-gb/wp-content/uploads/sites/388/2019/11/neve-minimal-blogger-04.jpg]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/11/neve-minimal-blogger-04.jpg]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:900;s:6:"height";i:600;s:4:"file";s:35:"2019/11/neve-minimal-blogger-04.jpg";s:5:"sizes";a:3:{s:6:"medium";a:4:{s:4:"file";s:35:"neve-minimal-blogger-04-300x200.jpg";s:5:"width";i:300;s:6:"height";i:200;s:9:"mime-type";s:10:"image/jpeg";}s:9:"thumbnail";a:4:{s:4:"file";s:35:"neve-minimal-blogger-04-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:12:"medium_large";a:4:{s:4:"file";s:35:"neve-minimal-blogger-04-768x512.jpg";s:5:"width";i:768;s:6:"height";i:512;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				neve-minimal-blogger-03			</title>
+			<link>https://demo.themeisle.com/neve-blogger-gb/neve-minimal-blogger-03/</link>
+			<pubDate>Tue, 26 Nov 2019 13:06:41 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-blogger-gb/wp-content/uploads/sites/388/2019/11/neve-minimal-blogger-03.jpg</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>18</wp:post_id>
+			<wp:post_date><![CDATA[2019-11-26 13:06:41]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-11-26 13:06:41]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve-minimal-blogger-03]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-blogger-gb/wp-content/uploads/sites/388/2019/11/neve-minimal-blogger-03.jpg]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/11/neve-minimal-blogger-03.jpg]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:603;s:6:"height";i:600;s:4:"file";s:35:"2019/11/neve-minimal-blogger-03.jpg";s:5:"sizes";a:2:{s:6:"medium";a:4:{s:4:"file";s:35:"neve-minimal-blogger-03-300x300.jpg";s:5:"width";i:300;s:6:"height";i:300;s:9:"mime-type";s:10:"image/jpeg";}s:9:"thumbnail";a:4:{s:4:"file";s:35:"neve-minimal-blogger-03-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				neve-minimal-blogger-02			</title>
+			<link>https://demo.themeisle.com/neve-blogger-gb/neve-minimal-blogger-02/</link>
+			<pubDate>Tue, 26 Nov 2019 13:06:43 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-blogger-gb/wp-content/uploads/sites/388/2019/11/neve-minimal-blogger-02.jpg</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>19</wp:post_id>
+			<wp:post_date><![CDATA[2019-11-26 13:06:43]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-11-26 13:06:43]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve-minimal-blogger-02]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-blogger-gb/wp-content/uploads/sites/388/2019/11/neve-minimal-blogger-02.jpg]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/11/neve-minimal-blogger-02.jpg]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:900;s:6:"height";i:600;s:4:"file";s:35:"2019/11/neve-minimal-blogger-02.jpg";s:5:"sizes";a:3:{s:6:"medium";a:4:{s:4:"file";s:35:"neve-minimal-blogger-02-300x200.jpg";s:5:"width";i:300;s:6:"height";i:200;s:9:"mime-type";s:10:"image/jpeg";}s:9:"thumbnail";a:4:{s:4:"file";s:35:"neve-minimal-blogger-02-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:12:"medium_large";a:4:{s:4:"file";s:35:"neve-minimal-blogger-02-768x512.jpg";s:5:"width";i:768;s:6:"height";i:512;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				neve-minimal-blogger-11			</title>
+			<link>https://demo.themeisle.com/neve-blogger-gb/neve-minimal-blogger-11/</link>
+			<pubDate>Tue, 26 Nov 2019 13:06:44 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-blogger-gb/wp-content/uploads/sites/388/2019/11/neve-minimal-blogger-11.jpg</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>20</wp:post_id>
+			<wp:post_date><![CDATA[2019-11-26 13:06:44]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-11-26 13:06:44]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve-minimal-blogger-11]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-blogger-gb/wp-content/uploads/sites/388/2019/11/neve-minimal-blogger-11.jpg]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/11/neve-minimal-blogger-11.jpg]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:900;s:6:"height";i:600;s:4:"file";s:35:"2019/11/neve-minimal-blogger-11.jpg";s:5:"sizes";a:3:{s:6:"medium";a:4:{s:4:"file";s:35:"neve-minimal-blogger-11-300x200.jpg";s:5:"width";i:300;s:6:"height";i:200;s:9:"mime-type";s:10:"image/jpeg";}s:9:"thumbnail";a:4:{s:4:"file";s:35:"neve-minimal-blogger-11-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:12:"medium_large";a:4:{s:4:"file";s:35:"neve-minimal-blogger-11-768x512.jpg";s:5:"width";i:768;s:6:"height";i:512;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				neve-minimal-blogger-12			</title>
+			<link>https://demo.themeisle.com/neve-blogger-gb/neve-minimal-blogger-12/</link>
+			<pubDate>Tue, 26 Nov 2019 13:06:44 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-blogger-gb/wp-content/uploads/sites/388/2019/11/neve-minimal-blogger-12.png</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>21</wp:post_id>
+			<wp:post_date><![CDATA[2019-11-26 13:06:44]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-11-26 13:06:44]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve-minimal-blogger-12]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-blogger-gb/wp-content/uploads/sites/388/2019/11/neve-minimal-blogger-12.png]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/11/neve-minimal-blogger-12.png]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:584;s:6:"height";i:584;s:4:"file";s:35:"2019/11/neve-minimal-blogger-12.png";s:5:"sizes";a:2:{s:6:"medium";a:4:{s:4:"file";s:35:"neve-minimal-blogger-12-300x300.png";s:5:"width";i:300;s:6:"height";i:300;s:9:"mime-type";s:9:"image/png";}s:9:"thumbnail";a:4:{s:4:"file";s:35:"neve-minimal-blogger-12-150x150.png";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:9:"image/png";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				neve-minimal-blogger-10			</title>
+			<link>https://demo.themeisle.com/neve-blogger-gb/neve-minimal-blogger-10/</link>
+			<pubDate>Tue, 26 Nov 2019 13:06:45 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-blogger-gb/wp-content/uploads/sites/388/2019/11/neve-minimal-blogger-10.jpg</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>22</wp:post_id>
+			<wp:post_date><![CDATA[2019-11-26 13:06:45]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-11-26 13:06:45]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve-minimal-blogger-10]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-blogger-gb/wp-content/uploads/sites/388/2019/11/neve-minimal-blogger-10.jpg]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/11/neve-minimal-blogger-10.jpg]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:900;s:6:"height";i:600;s:4:"file";s:35:"2019/11/neve-minimal-blogger-10.jpg";s:5:"sizes";a:3:{s:6:"medium";a:4:{s:4:"file";s:35:"neve-minimal-blogger-10-300x200.jpg";s:5:"width";i:300;s:6:"height";i:200;s:9:"mime-type";s:10:"image/jpeg";}s:9:"thumbnail";a:4:{s:4:"file";s:35:"neve-minimal-blogger-10-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:12:"medium_large";a:4:{s:4:"file";s:35:"neve-minimal-blogger-10-768x512.jpg";s:5:"width";i:768;s:6:"height";i:512;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				neve-minimal-blogger-01			</title>
+			<link>https://demo.themeisle.com/neve-blogger-gb/neve-minimal-blogger-01/</link>
+			<pubDate>Tue, 26 Nov 2019 13:06:46 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-blogger-gb/wp-content/uploads/sites/388/2019/11/neve-minimal-blogger-01.jpg</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>23</wp:post_id>
+			<wp:post_date><![CDATA[2019-11-26 13:06:46]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-11-26 13:06:46]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve-minimal-blogger-01]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-blogger-gb/wp-content/uploads/sites/388/2019/11/neve-minimal-blogger-01.jpg]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/11/neve-minimal-blogger-01.jpg]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:900;s:6:"height";i:600;s:4:"file";s:35:"2019/11/neve-minimal-blogger-01.jpg";s:5:"sizes";a:3:{s:6:"medium";a:4:{s:4:"file";s:35:"neve-minimal-blogger-01-300x200.jpg";s:5:"width";i:300;s:6:"height";i:200;s:9:"mime-type";s:10:"image/jpeg";}s:9:"thumbnail";a:4:{s:4:"file";s:35:"neve-minimal-blogger-01-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:12:"medium_large";a:4:{s:4:"file";s:35:"neve-minimal-blogger-01-768x512.jpg";s:5:"width";i:768;s:6:"height";i:512;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				neve-minimal-blogger-10 (1)			</title>
+			<link>https://demo.themeisle.com/neve-blogger-gb/neve-minimal-blogger-10-1/</link>
+			<pubDate>Tue, 26 Nov 2019 13:06:47 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-blogger-gb/wp-content/uploads/sites/388/2019/11/neve-minimal-blogger-10-1.jpg</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>24</wp:post_id>
+			<wp:post_date><![CDATA[2019-11-26 13:06:47]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-11-26 13:06:47]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve-minimal-blogger-10-1]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-blogger-gb/wp-content/uploads/sites/388/2019/11/neve-minimal-blogger-10-1.jpg]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/11/neve-minimal-blogger-10-1.jpg]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:900;s:6:"height";i:600;s:4:"file";s:37:"2019/11/neve-minimal-blogger-10-1.jpg";s:5:"sizes";a:3:{s:6:"medium";a:4:{s:4:"file";s:37:"neve-minimal-blogger-10-1-300x200.jpg";s:5:"width";i:300;s:6:"height";i:200;s:9:"mime-type";s:10:"image/jpeg";}s:9:"thumbnail";a:4:{s:4:"file";s:37:"neve-minimal-blogger-10-1-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:12:"medium_large";a:4:{s:4:"file";s:37:"neve-minimal-blogger-10-1-768x512.jpg";s:5:"width";i:768;s:6:"height";i:512;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				neve-minimal-blogger-09			</title>
+			<link>https://demo.themeisle.com/neve-blogger-gb/neve-minimal-blogger-09/</link>
+			<pubDate>Tue, 26 Nov 2019 13:06:48 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-blogger-gb/wp-content/uploads/sites/388/2019/11/neve-minimal-blogger-09.jpg</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>25</wp:post_id>
+			<wp:post_date><![CDATA[2019-11-26 13:06:48]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-11-26 13:06:48]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve-minimal-blogger-09]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-blogger-gb/wp-content/uploads/sites/388/2019/11/neve-minimal-blogger-09.jpg]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/11/neve-minimal-blogger-09.jpg]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:900;s:6:"height";i:600;s:4:"file";s:35:"2019/11/neve-minimal-blogger-09.jpg";s:5:"sizes";a:3:{s:6:"medium";a:4:{s:4:"file";s:35:"neve-minimal-blogger-09-300x200.jpg";s:5:"width";i:300;s:6:"height";i:200;s:9:"mime-type";s:10:"image/jpeg";}s:9:"thumbnail";a:4:{s:4:"file";s:35:"neve-minimal-blogger-09-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:12:"medium_large";a:4:{s:4:"file";s:35:"neve-minimal-blogger-09-768x512.jpg";s:5:"width";i:768;s:6:"height";i:512;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				neve-minimal-blogger-07			</title>
+			<link>https://demo.themeisle.com/neve-blogger-gb/neve-minimal-blogger-07/</link>
+			<pubDate>Tue, 26 Nov 2019 13:06:49 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-blogger-gb/wp-content/uploads/sites/388/2019/11/neve-minimal-blogger-07.jpg</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>26</wp:post_id>
+			<wp:post_date><![CDATA[2019-11-26 13:06:49]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-11-26 13:06:49]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve-minimal-blogger-07]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-blogger-gb/wp-content/uploads/sites/388/2019/11/neve-minimal-blogger-07.jpg]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/11/neve-minimal-blogger-07.jpg]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:900;s:6:"height";i:600;s:4:"file";s:35:"2019/11/neve-minimal-blogger-07.jpg";s:5:"sizes";a:3:{s:6:"medium";a:4:{s:4:"file";s:35:"neve-minimal-blogger-07-300x200.jpg";s:5:"width";i:300;s:6:"height";i:200;s:9:"mime-type";s:10:"image/jpeg";}s:9:"thumbnail";a:4:{s:4:"file";s:35:"neve-minimal-blogger-07-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:12:"medium_large";a:4:{s:4:"file";s:35:"neve-minimal-blogger-07-768x512.jpg";s:5:"width";i:768;s:6:"height";i:512;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				neve-minimal-blogger-05			</title>
+			<link>https://demo.themeisle.com/neve-blogger-gb/neve-minimal-blogger-05/</link>
+			<pubDate>Tue, 26 Nov 2019 13:06:50 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-blogger-gb/wp-content/uploads/sites/388/2019/11/neve-minimal-blogger-05.jpg</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>27</wp:post_id>
+			<wp:post_date><![CDATA[2019-11-26 13:06:50]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-11-26 13:06:50]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve-minimal-blogger-05]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-blogger-gb/wp-content/uploads/sites/388/2019/11/neve-minimal-blogger-05.jpg]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/11/neve-minimal-blogger-05.jpg]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:900;s:6:"height";i:600;s:4:"file";s:35:"2019/11/neve-minimal-blogger-05.jpg";s:5:"sizes";a:3:{s:6:"medium";a:4:{s:4:"file";s:35:"neve-minimal-blogger-05-300x200.jpg";s:5:"width";i:300;s:6:"height";i:200;s:9:"mime-type";s:10:"image/jpeg";}s:9:"thumbnail";a:4:{s:4:"file";s:35:"neve-minimal-blogger-05-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:12:"medium_large";a:4:{s:4:"file";s:35:"neve-minimal-blogger-05-768x512.jpg";s:5:"width";i:768;s:6:"height";i:512;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				neve-minimal-blogger-06			</title>
+			<link>https://demo.themeisle.com/neve-blogger-gb/neve-minimal-blogger-06/</link>
+			<pubDate>Tue, 26 Nov 2019 13:06:52 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-blogger-gb/wp-content/uploads/sites/388/2019/11/neve-minimal-blogger-06.jpg</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>28</wp:post_id>
+			<wp:post_date><![CDATA[2019-11-26 13:06:52]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-11-26 13:06:52]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve-minimal-blogger-06]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-blogger-gb/wp-content/uploads/sites/388/2019/11/neve-minimal-blogger-06.jpg]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/11/neve-minimal-blogger-06.jpg]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:900;s:6:"height";i:600;s:4:"file";s:35:"2019/11/neve-minimal-blogger-06.jpg";s:5:"sizes";a:3:{s:6:"medium";a:4:{s:4:"file";s:35:"neve-minimal-blogger-06-300x200.jpg";s:5:"width";i:300;s:6:"height";i:200;s:9:"mime-type";s:10:"image/jpeg";}s:9:"thumbnail";a:4:{s:4:"file";s:35:"neve-minimal-blogger-06-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:12:"medium_large";a:4:{s:4:"file";s:35:"neve-minimal-blogger-06-768x512.jpg";s:5:"width";i:768;s:6:"height";i:512;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				neve-minimal-blogger-08			</title>
+			<link>https://demo.themeisle.com/neve-blogger-gb/2019/11/26/blog-tips-for-beginners/neve-minimal-blogger-08/</link>
+			<pubDate>Wed, 27 Nov 2019 06:45:27 +0000</pubDate>
+			<guid isPermaLink="false">https://s20206.pcdn.co/neve-blogger-gb/wp-content/uploads/sites/388/2019/11/neve-minimal-blogger-08.jpg</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>39</wp:post_id>
+			<wp:post_date><![CDATA[2019-11-27 06:45:27]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-11-27 06:45:27]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve-minimal-blogger-08]]></wp:post_name>
+			<wp:status><![CDATA[inherit]]></wp:status>
+			<wp:post_parent>37</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[attachment]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+							<wp:attachment_url><![CDATA[https://s20206.pcdn.co/neve-blogger-gb/wp-content/uploads/sites/388/2019/11/neve-minimal-blogger-08.jpg]]></wp:attachment_url>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2019/11/neve-minimal-blogger-08.jpg]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:5:{s:5:"width";i:900;s:6:"height";i:600;s:4:"file";s:35:"2019/11/neve-minimal-blogger-08.jpg";s:5:"sizes";a:3:{s:6:"medium";a:4:{s:4:"file";s:35:"neve-minimal-blogger-08-300x200.jpg";s:5:"width";i:300;s:6:"height";i:200;s:9:"mime-type";s:10:"image/jpeg";}s:9:"thumbnail";a:4:{s:4:"file";s:35:"neve-minimal-blogger-08-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:12:"medium_large";a:4:{s:4:"file";s:35:"neve-minimal-blogger-08-768x512.jpg";s:5:"width";i:768;s:6:"height";i:512;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				Home			</title>
+			<link>https://demo.themeisle.com/neve-blogger-gb/2019/11/27/home/</link>
+			<pubDate>Wed, 27 Nov 2019 06:48:14 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-blogger-gb/2019/11/27/home/</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>42</wp:post_id>
+			<wp:post_date><![CDATA[2019-11-27 06:48:14]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-11-27 06:48:14]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[home]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>1</wp:menu_order>
+			<wp:post_type><![CDATA[nav_menu_item]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+								<category domain="nav_menu" nicename="neve-blogger-gb-main-menu"><![CDATA[neve-blogger-gb-main-menu]]></category>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_type]]></wp:meta_key>
+					<wp:meta_value><![CDATA[custom]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_menu_item_parent]]></wp:meta_key>
+					<wp:meta_value><![CDATA[0]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_object_id]]></wp:meta_key>
+					<wp:meta_value><![CDATA[42]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_object]]></wp:meta_key>
+					<wp:meta_value><![CDATA[custom]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_target]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_classes]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_xfn]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_url]]></wp:meta_key>
+					<wp:meta_value><![CDATA[https://demo.themeisle.com/neve-blogger-gb]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+							</title>
+			<link>https://demo.themeisle.com/neve-blogger-gb/2019/11/27/43/</link>
+			<pubDate>Wed, 27 Nov 2019 06:48:14 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-blogger-gb/2019/11/27/43/</guid>
+			<description></description>
+			<content:encoded><![CDATA[ ]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>43</wp:post_id>
+			<wp:post_date><![CDATA[2019-11-27 06:48:14]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-11-27 06:48:14]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[43]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>3</wp:menu_order>
+			<wp:post_type><![CDATA[nav_menu_item]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+								<category domain="nav_menu" nicename="neve-blogger-gb-main-menu"><![CDATA[neve-blogger-gb-main-menu]]></category>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_type]]></wp:meta_key>
+					<wp:meta_value><![CDATA[post_type]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_menu_item_parent]]></wp:meta_key>
+					<wp:meta_value><![CDATA[0]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_object_id]]></wp:meta_key>
+					<wp:meta_value><![CDATA[2]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_object]]></wp:meta_key>
+					<wp:meta_value><![CDATA[page]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_target]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_classes]]></wp:meta_key>
+					<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_xfn]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_menu_item_url]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				neve			</title>
+			<link>https://demo.themeisle.com/neve-blogger-gb/2019/12/12/neve/</link>
+			<pubDate>Thu, 12 Dec 2019 18:00:05 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-blogger-gb/2019/12/12/neve/</guid>
+			<description></description>
+			<content:encoded><![CDATA[]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>70</wp:post_id>
+			<wp:post_date><![CDATA[2019-12-12 18:00:05]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-12-12 18:00:05]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[custom_css]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+											</item>
+				<item>
+			<title>
+				Minimalist books			</title>
+			<link>https://demo.themeisle.com/neve-blogger-gb/2019/11/25/hello-world/</link>
+			<pubDate>Mon, 25 Nov 2019 12:14:13 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-blogger-gb/?p=1</guid>
+			<description></description>
+			<content:encoded><![CDATA[<!-- wp:heading -->
+<h2>Introduction</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Readymade godard brooklyn, kogi shoreditch hashtag hella shaman kitsch man bun pinterest flexitarian. Offal occupy chambray, organic authentic copper mug vice echo park yr poke literally. Ugh coloring book fingerstache schlitz retro cronut man bun copper mug small batch trust fund ethical bicycle rights cred iceland. Celiac schlitz la croix 3 wolf moon butcher. Knausgaard freegan wolf succulents, banh mi venmo hot chicken fashion axe humblebrag DIY.&nbsp;</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Waistcoat gluten-free cronut cred quinoa. Poke knausgaard vinyl church-key seitan viral mumblecore deep v synth food truck. Ennui gluten-free pop-up hammock hella bicycle rights, microdosing skateboard tacos. Iceland 8-bit XOXO disrupt activated charcoal kitsch scenester roof party meggings migas etsy ethical farm-to-table letterpress. Banjo wayfarers chartreuse taiyaki, stumptown prism 8-bit tote bag.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2>Story</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Listicle offal viral, flannel franzen roof party shoreditch meditation subway tile bicycle rights tbh fingerstache copper mug organic umami. Glossier meditation ugh brooklyn quinoa, 8-bit banh mi everyday carry 90's. Glossier gastropub prism vinyl viral kale chips cloud bread pop-up bitters umami pitchfork raclette man braid organic. Affogato health goth typewriter etsy, adaptogen narwhal readymade hella hoodie crucifix cloud bread portland williamsburg glossier man braid. Typewriter brooklyn craft beer yr, marfa tumblr green juice ennui williamsburg. Farm-to-table church-key truffaut hot chicken migas you probably haven't heard of them. Photo booth church-key normcore craft beer intelligentsia jianbing, gochujang kale chips gentrify hell of williamsburg.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2>Conclusion</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Venmo fixie knausgaard readymade. 3 wolf moon blue bottle sartorial blog. Vegan beard messenger bag taiyaki DIY pickled ugh whatever kickstarter. Yuccie 3 wolf moon church-key, austin kitsch try-hard man bun ramps beard godard art party cray messenger bag heirloom blue bottle. Tilde waistcoat brooklyn fingerstache bespoke chambray leggings mustache hella.<br></p>
+<!-- /wp:paragraph -->]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>1</wp:post_id>
+			<wp:post_date><![CDATA[2019-11-25 12:14:13]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-11-25 12:14:13]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[open]]></wp:ping_status>
+			<wp:post_name><![CDATA[hello-world]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[post]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+								<category domain="category" nicename="uncategorized"><![CDATA[Uncategorized]]></category>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_container]]></wp:meta_key>
+					<wp:meta_value><![CDATA[default]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_sidebar]]></wp:meta_key>
+					<wp:meta_value><![CDATA[default]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_disable_header]]></wp:meta_key>
+					<wp:meta_value><![CDATA[off]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_disable_title]]></wp:meta_key>
+					<wp:meta_value><![CDATA[off]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_disable_featured_image]]></wp:meta_key>
+					<wp:meta_value><![CDATA[off]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_disable_footer]]></wp:meta_key>
+					<wp:meta_value><![CDATA[off]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_enable_content_width]]></wp:meta_key>
+					<wp:meta_value><![CDATA[off]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
+					<wp:meta_value><![CDATA[70]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_thumbnail_id]]></wp:meta_key>
+					<wp:meta_value><![CDATA[20]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				About			</title>
+			<link>https://demo.themeisle.com/neve-blogger-gb/neve-blogger-gb-about/</link>
+			<pubDate>Tue, 26 Nov 2019 12:23:06 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-blogger-gb/?page_id=6</guid>
+			<description></description>
+			<content:encoded><![CDATA[<!-- wp:themeisle-blocks/advanced-columns {"id":"wp-block-themeisle-blocks-advanced-columns-c3397b6c","columns":2,"layout":"equal","layoutMobile":"twoOne","columnsGap":"nogap","columnsWidth":1180,"horizontalAlign":"center","align":"full"} -->
+<div class="wp-block-themeisle-blocks-advanced-columns alignfull has-2-columns has-desktop-equal-layout has-tablet-equal-layout has-mobile-twoOne-layout has-nogap-gap has-vertical-unset" id="wp-block-themeisle-blocks-advanced-columns-c3397b6c" style="border-width:0px;border-style:solid;border-color:#000000;border-radius:0px;justify-content:center"><div class="wp-themeisle-block-overlay" style="opacity:0.5;mix-blend-mode:normal"></div><div class="innerblocks-wrap" style="max-width:1180px"><!-- wp:themeisle-blocks/advanced-column {"id":"wp-block-themeisle-blocks-advanced-column-f1a738cd","paddingMobile":0,"columnWidth":"69.97"} -->
+<div class="wp-block-themeisle-blocks-advanced-column" id="wp-block-themeisle-blocks-advanced-column-f1a738cd" style="border-width:0px;border-style:solid;border-color:#000000;border-radius:0px"><!-- wp:heading {"level":1,"className":"ticss-323b0dc0","hasCustomCSS":true} -->
+<h1 class="ticss-323b0dc0">About</h1>
+<!-- /wp:heading --></div>
+<!-- /wp:themeisle-blocks/advanced-column -->
+
+<!-- wp:themeisle-blocks/advanced-column {"id":"wp-block-themeisle-blocks-advanced-column-cf352b2d","columnWidth":"30.03"} -->
+<div class="wp-block-themeisle-blocks-advanced-column" id="wp-block-themeisle-blocks-advanced-column-cf352b2d" style="border-width:0px;border-style:solid;border-color:#000000;border-radius:0px"></div>
+<!-- /wp:themeisle-blocks/advanced-column --></div></div>
+<!-- /wp:themeisle-blocks/advanced-columns -->
+
+<!-- wp:themeisle-blocks/advanced-columns {"id":"wp-block-themeisle-blocks-advanced-columns-c0dddeb4","columns":3,"layout":"equal","layoutMobile":"collapsedRows","paddingType":"unlinked","paddingTop":80,"paddingBottom":80,"marginTop":0,"marginBottom":0,"columnsWidth":1180,"horizontalAlign":"center","backgroundColor":"#0c0c0c","align":"full","className":"ticss-e5dae148","hasCustomCSS":true} -->
+<div class="wp-block-themeisle-blocks-advanced-columns alignfull has-3-columns has-desktop-equal-layout has-tablet-equal-layout has-mobile-collapsedRows-layout has-default-gap has-vertical-unset ticss-e5dae148" id="wp-block-themeisle-blocks-advanced-columns-c0dddeb4" style="background:#0c0c0c;border-width:0px;border-style:solid;border-color:#000000;border-radius:0px;justify-content:center"><div class="wp-themeisle-block-overlay" style="opacity:0.5;mix-blend-mode:normal"></div><div class="innerblocks-wrap" style="max-width:1180px"><!-- wp:themeisle-blocks/advanced-column {"id":"wp-block-themeisle-blocks-advanced-column-05a9c2d9","paddingMobile":0,"columnWidth":33.33,"className":"ticss-1c8994ea","hasCustomCSS":true} -->
+<div class="wp-block-themeisle-blocks-advanced-column ticss-1c8994ea" id="wp-block-themeisle-blocks-advanced-column-05a9c2d9" style="border-width:0px;border-style:solid;border-color:#000000;border-radius:0px"><!-- wp:cover {"url":"https://s20206.pcdn.co/neve-blogger-gb/wp-content/uploads/sites/388/2019/11/neve-minimal-blogger-01.jpg","id":23,"dimRatio":0,"minHeight":500,"align":"center","className":"ticss-257d4cb4","hasCustomCSS":true} -->
+<div class="wp-block-cover aligncenter ticss-257d4cb4" style="background-image:url(https://s20206.pcdn.co/neve-blogger-gb/wp-content/uploads/sites/388/2019/11/neve-minimal-blogger-01.jpg);min-height:500px"><div class="wp-block-cover__inner-container"><!-- wp:paragraph -->
+<p></p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:cover --></div>
+<!-- /wp:themeisle-blocks/advanced-column -->
+
+<!-- wp:themeisle-blocks/advanced-column {"id":"wp-block-themeisle-blocks-advanced-column-44e0e60e","paddingMobile":0,"columnWidth":33.33} -->
+<div class="wp-block-themeisle-blocks-advanced-column" id="wp-block-themeisle-blocks-advanced-column-44e0e60e" style="border-width:0px;border-style:solid;border-color:#000000;border-radius:0px"><!-- wp:cover {"url":"https://s20206.pcdn.co/neve-blogger-gb/wp-content/uploads/sites/388/2019/11/neve-minimal-blogger-05.jpg","id":27,"dimRatio":0,"minHeight":500,"align":"center"} -->
+<div class="wp-block-cover aligncenter" style="background-image:url(https://s20206.pcdn.co/neve-blogger-gb/wp-content/uploads/sites/388/2019/11/neve-minimal-blogger-05.jpg);min-height:500px"><div class="wp-block-cover__inner-container"><!-- wp:paragraph -->
+<p></p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:cover --></div>
+<!-- /wp:themeisle-blocks/advanced-column -->
+
+<!-- wp:themeisle-blocks/advanced-column {"id":"wp-block-themeisle-blocks-advanced-column-95e2559b","paddingMobile":0,"columnWidth":33.33} -->
+<div class="wp-block-themeisle-blocks-advanced-column" id="wp-block-themeisle-blocks-advanced-column-95e2559b" style="border-width:0px;border-style:solid;border-color:#000000;border-radius:0px"><!-- wp:cover {"url":"https://s20206.pcdn.co/neve-blogger-gb/wp-content/uploads/sites/388/2019/11/neve-minimal-blogger-11.jpg","id":20,"dimRatio":0,"minHeight":500,"align":"center"} -->
+<div class="wp-block-cover aligncenter" style="background-image:url(https://s20206.pcdn.co/neve-blogger-gb/wp-content/uploads/sites/388/2019/11/neve-minimal-blogger-11.jpg);min-height:500px"><div class="wp-block-cover__inner-container"><!-- wp:paragraph -->
+<p></p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:cover --></div>
+<!-- /wp:themeisle-blocks/advanced-column --></div></div>
+<!-- /wp:themeisle-blocks/advanced-columns -->
+
+<!-- wp:themeisle-blocks/advanced-columns {"id":"wp-block-themeisle-blocks-advanced-columns-ba35ac10","columns":2,"layout":"equal","layoutTablet":"collapsedRows","layoutMobile":"collapsedRows","paddingType":"unlinked","paddingMobile":0,"paddingTop":80,"paddingBottom":80,"marginTop":0,"marginBottom":0,"columnsWidth":1180,"horizontalAlign":"center","align":"full"} -->
+<div class="wp-block-themeisle-blocks-advanced-columns alignfull has-2-columns has-desktop-equal-layout has-tablet-collapsedRows-layout has-mobile-collapsedRows-layout has-default-gap has-vertical-unset" id="wp-block-themeisle-blocks-advanced-columns-ba35ac10" style="border-width:0px;border-style:solid;border-color:#000000;border-radius:0px;justify-content:center"><div class="wp-themeisle-block-overlay" style="opacity:0.5;mix-blend-mode:normal"></div><div class="innerblocks-wrap" style="max-width:1180px"><!-- wp:themeisle-blocks/advanced-column {"id":"wp-block-themeisle-blocks-advanced-column-6436fd26","padding":0,"paddingTablet":0,"paddingMobile":0,"marginType":"linked","marginTypeTablet":"linked","marginTypeMobile":"linked","margin":0,"marginTablet":0,"marginMobile":0,"marginTop":0,"marginTopMobile":0,"columnWidth":50,"className":"ticss-48ef8f35","hasCustomCSS":true} -->
+<div class="wp-block-themeisle-blocks-advanced-column ticss-48ef8f35" id="wp-block-themeisle-blocks-advanced-column-6436fd26" style="border-width:0px;border-style:solid;border-color:#000000;border-radius:0px"><!-- wp:image {"id":18,"width":600,"sizeSlug":"large","className":"ticss-39ebe30d","hasCustomCSS":true} -->
+<figure class="wp-block-image size-large is-resized ticss-39ebe30d"><img src="https://s20206.pcdn.co/neve-blogger-gb/wp-content/uploads/sites/388/2019/11/neve-minimal-blogger-03.jpg" alt="" class="wp-image-18" width="600" /></figure>
+<!-- /wp:image --></div>
+<!-- /wp:themeisle-blocks/advanced-column -->
+
+<!-- wp:themeisle-blocks/advanced-column {"id":"wp-block-themeisle-blocks-advanced-column-c5a7861d","paddingType":"unlinked","paddingTablet":0,"paddingMobile":0,"paddingTop":140,"marginType":"linked","marginBottom":0,"columnWidth":50,"className":"ticss-5418d6a3","hasCustomCSS":true} -->
+<div class="wp-block-themeisle-blocks-advanced-column ticss-5418d6a3" id="wp-block-themeisle-blocks-advanced-column-c5a7861d" style="border-width:0px;border-style:solid;border-color:#000000;border-radius:0px"><!-- wp:separator {"color":"black","className":"ticss-c859e1b5 is-style-wide","hasCustomCSS":true,"customCSS":".ticss-c859e1b5 {\n}\n"} -->
+<hr class="wp-block-separator has-text-color has-background has-black-background-color has-black-color ticss-c859e1b5 is-style-wide" />
+<!-- /wp:separator -->
+
+<!-- wp:themeisle-blocks/advanced-heading {"id":"wp-block-themeisle-blocks-advanced-heading-e18518c3","tag":"p","fontSize":12,"textTransform":"uppercase"} -->
+<p id="wp-block-themeisle-blocks-advanced-heading-e18518c3" class="wp-block-themeisle-blocks-advanced-heading wp-block-themeisle-blocks-advanced-heading-e18518c3" style="color:#000000;font-style:normal;text-transform:uppercase"><strong>Minimized simplicity</strong></p>
+<!-- /wp:themeisle-blocks/advanced-heading -->
+
+<!-- wp:heading -->
+<h2>I love simplicity</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>I am a fashion photographer and blogger, feel free to read the whole story. Whereas a trend often connotes.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:themeisle-blocks/advanced-column --></div></div>
+<!-- /wp:themeisle-blocks/advanced-columns -->
+
+<!-- wp:themeisle-blocks/advanced-columns {"id":"wp-block-themeisle-blocks-advanced-columns-350732b2","columns":2,"layout":"equal","layoutMobile":"collapsedRows","paddingType":"unlinked","paddingTypeTablet":"unlinked","paddingTop":80,"paddingTopTablet":80,"paddingBottom":80,"paddingBottomTablet":80,"marginTop":0,"marginBottom":0,"columnsWidth":1180,"horizontalAlign":"center","backgroundColor":"#000000","align":"full"} -->
+<div class="wp-block-themeisle-blocks-advanced-columns alignfull has-2-columns has-desktop-equal-layout has-tablet-equal-layout has-mobile-collapsedRows-layout has-default-gap has-vertical-unset" id="wp-block-themeisle-blocks-advanced-columns-350732b2" style="background:#000000;border-width:0px;border-style:solid;border-color:#000000;border-radius:0px;justify-content:center"><div class="wp-themeisle-block-overlay" style="opacity:0.5;mix-blend-mode:normal"></div><div class="innerblocks-wrap" style="max-width:1180px"><!-- wp:themeisle-blocks/advanced-column {"id":"wp-block-themeisle-blocks-advanced-column-b9f983d5","padding":0,"columnWidth":50} -->
+<div class="wp-block-themeisle-blocks-advanced-column" id="wp-block-themeisle-blocks-advanced-column-b9f983d5" style="border-width:0px;border-style:solid;border-color:#000000;border-radius:0px"><!-- wp:heading {"level":3,"textColor":"white"} -->
+<h3 class="has-white-color has-text-color">Blog Posts</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"textColor":"white"} -->
+<p class="has-text-color has-white-color">I am a fashion photographer and blogger, feel free to read the whole story. Whereas a trend often connotes a very specific aesthetic expression, and often lasting shorter than a season.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:themeisle-blocks/advanced-column -->
+
+<!-- wp:themeisle-blocks/advanced-column {"id":"wp-block-themeisle-blocks-advanced-column-57d9480e","padding":0,"columnWidth":50} -->
+<div class="wp-block-themeisle-blocks-advanced-column" id="wp-block-themeisle-blocks-advanced-column-57d9480e" style="border-width:0px;border-style:solid;border-color:#000000;border-radius:0px"><!-- wp:heading {"level":3,"textColor":"white"} -->
+<h3 class="has-white-color has-text-color">Services</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"textColor":"white"} -->
+<p class="has-text-color has-white-color">I am a fashion photographer and blogger, feel free to read the whole story. Whereas a trend often connotes a very specific aesthetic expression, and often lasting shorter than a season.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:themeisle-blocks/advanced-column --></div></div>
+<!-- /wp:themeisle-blocks/advanced-columns -->
+
+<!-- wp:themeisle-blocks/advanced-columns {"id":"wp-block-themeisle-blocks-advanced-columns-0420b78e","columns":1,"layout":"equal","columnsWidth":700,"horizontalAlign":"center"} -->
+<div class="wp-block-themeisle-blocks-advanced-columns has-1-columns has-desktop-equal-layout has-tablet-equal-layout has-mobile-equal-layout has-default-gap has-vertical-unset" id="wp-block-themeisle-blocks-advanced-columns-0420b78e" style="border-width:0px;border-style:solid;border-color:#000000;border-radius:0px;justify-content:center"><div class="wp-themeisle-block-overlay" style="opacity:0.5;mix-blend-mode:normal"></div><div class="innerblocks-wrap" style="max-width:700px"><!-- wp:themeisle-blocks/advanced-column {"id":"wp-block-themeisle-blocks-advanced-column-07c8372f","columnWidth":100,"className":"ticss-1e4a2cbe","hasCustomCSS":true} -->
+<div class="wp-block-themeisle-blocks-advanced-column ticss-1e4a2cbe" id="wp-block-themeisle-blocks-advanced-column-07c8372f" style="border-width:0px;border-style:solid;border-color:#000000;border-radius:0px"><!-- wp:separator {"color":"black","className":"is-style-wide"} -->
+<hr class="wp-block-separator has-text-color has-background has-black-background-color has-black-color is-style-wide" />
+<!-- /wp:separator -->
+
+<!-- wp:themeisle-blocks/advanced-heading {"id":"wp-block-themeisle-blocks-advanced-heading-00861d10","tag":"p","align":"center","fontSize":12,"textTransform":"uppercase"} -->
+<p id="wp-block-themeisle-blocks-advanced-heading-00861d10" class="wp-block-themeisle-blocks-advanced-heading wp-block-themeisle-blocks-advanced-heading-00861d10" style="color:#000000;font-style:normal;text-transform:uppercase"><strong>What I blog about</strong></p>
+<!-- /wp:themeisle-blocks/advanced-heading -->
+
+<!-- wp:heading {"align":"center"} -->
+<h2 class="has-text-align-center">My Story</h2>
+<!-- /wp:heading -->
+
+<!-- wp:image {"align":"center","id":21,"width":146,"height":146,"sizeSlug":"large"} -->
+<div class="wp-block-image"><figure class="aligncenter size-large is-resized"><img src="https://s20206.pcdn.co/neve-blogger-gb/wp-content/uploads/sites/388/2019/11/neve-minimal-blogger-12.png" alt="" class="wp-image-21" width="146" height="146" /></figure></div>
+<!-- /wp:image -->
+
+<!-- wp:paragraph {"align":"center"} -->
+<p class="has-text-align-center">Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:themeisle-blocks/advanced-column --></div></div>
+<!-- /wp:themeisle-blocks/advanced-columns -->]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>6</wp:post_id>
+			<wp:post_date><![CDATA[2019-11-26 12:23:06]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-11-26 12:23:06]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve-blogger-gb-about]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[page]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_container]]></wp:meta_key>
+					<wp:meta_value><![CDATA[default]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_sidebar]]></wp:meta_key>
+					<wp:meta_value><![CDATA[full-width]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_disable_header]]></wp:meta_key>
+					<wp:meta_value><![CDATA[off]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_disable_title]]></wp:meta_key>
+					<wp:meta_value><![CDATA[on]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_disable_featured_image]]></wp:meta_key>
+					<wp:meta_value><![CDATA[off]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_disable_footer]]></wp:meta_key>
+					<wp:meta_value><![CDATA[off]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_enable_content_width]]></wp:meta_key>
+					<wp:meta_value><![CDATA[on]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
+					<wp:meta_value><![CDATA[100]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_themeisle_gutenberg_block_styles]]></wp:meta_key>
+					<wp:meta_value><![CDATA[#wp-block-themeisle-blocks-advanced-columns-c3397b6c{padding:20px;margin-top:20px;margin-bottom:20px;min-height:auto}#wp-block-themeisle-blocks-advanced-columns-c3397b6c .wp-themeisle-block-overlay{filter:blur(unsetpx) brightness(1) contrast(1) grayscale(unset) hue-rotate(unsetdeg) saturate(1)}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-columns-c3397b6c{padding:20px;margin-top:20px;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-columns-c3397b6c{padding:20px;margin-top:20px;margin-bottom:20px}}#wp-block-themeisle-blocks-advanced-column-f1a738cd{padding:20px;margin-top:20px;margin-bottom:20px}@media (min-width:960px){#wp-block-themeisle-blocks-advanced-column-f1a738cd{flex-basis:69.97%}}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-column-f1a738cd{padding:20px;margin-top:20px;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-column-f1a738cd{padding:20px;margin-top:20px;margin-bottom:20px}}#wp-block-themeisle-blocks-advanced-column-cf352b2d{padding:20px;margin-top:20px;margin-bottom:20px}@media (min-width:960px){#wp-block-themeisle-blocks-advanced-column-cf352b2d{flex-basis:30.03%}}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-column-cf352b2d{padding:20px;margin-top:20px;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-column-cf352b2d{padding:20px;margin-top:20px;margin-bottom:20px}}#wp-block-themeisle-blocks-advanced-columns-c0dddeb4{padding-top:80px;padding-right:20px;padding-bottom:80px;padding-left:20px;margin-top:20px;margin-bottom:20px;min-height:auto}#wp-block-themeisle-blocks-advanced-columns-c0dddeb4 .wp-themeisle-block-overlay{filter:blur(unsetpx) brightness(1) contrast(1) grayscale(unset) hue-rotate(unsetdeg) saturate(1)}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-columns-c0dddeb4{padding:20px;margin-top:20px;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-columns-c0dddeb4{padding:20px;margin-top:20px;margin-bottom:20px}}#wp-block-themeisle-blocks-advanced-column-05a9c2d9{padding:20px;margin-top:20px;margin-bottom:20px}@media (min-width:960px){#wp-block-themeisle-blocks-advanced-column-05a9c2d9{flex-basis:33.33%}}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-column-05a9c2d9{padding:20px;margin-top:20px;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-column-05a9c2d9{padding:20px;margin-top:20px;margin-bottom:20px}}#wp-block-themeisle-blocks-advanced-column-44e0e60e{padding:20px;margin-top:20px;margin-bottom:20px}@media (min-width:960px){#wp-block-themeisle-blocks-advanced-column-44e0e60e{flex-basis:33.33%}}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-column-44e0e60e{padding:20px;margin-top:20px;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-column-44e0e60e{padding:20px;margin-top:20px;margin-bottom:20px}}#wp-block-themeisle-blocks-advanced-column-95e2559b{padding:20px;margin-top:20px;margin-bottom:20px}@media (min-width:960px){#wp-block-themeisle-blocks-advanced-column-95e2559b{flex-basis:33.33%}}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-column-95e2559b{padding:20px;margin-top:20px;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-column-95e2559b{padding:20px;margin-top:20px;margin-bottom:20px}}#wp-block-themeisle-blocks-advanced-columns-ba35ac10{padding-top:80px;padding-right:20px;padding-bottom:80px;padding-left:20px;margin-top:20px;margin-bottom:20px;min-height:auto}#wp-block-themeisle-blocks-advanced-columns-ba35ac10 .wp-themeisle-block-overlay{filter:blur(unsetpx) brightness(1) contrast(1) grayscale(unset) hue-rotate(unsetdeg) saturate(1)}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-columns-ba35ac10{padding:20px;margin-top:20px;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-columns-ba35ac10{padding:20px;margin-top:20px;margin-bottom:20px}}#wp-block-themeisle-blocks-advanced-column-6436fd26{padding:20px;margin-top:20px;margin-right:20px;margin-bottom:20px;margin-left:20px}@media (min-width:960px){#wp-block-themeisle-blocks-advanced-column-6436fd26{flex-basis:50%}}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-column-6436fd26{padding:20px;margin-top:20px;margin-right:20px;margin-bottom:20px;margin-left:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-column-6436fd26{padding:20px;margin-top:20px;margin-right:20px;margin-bottom:20px;margin-left:20px}}#wp-block-themeisle-blocks-advanced-column-c5a7861d{padding-top:140px;padding-right:20px;padding-bottom:20px;padding-left:20px;margin-top:20px;margin-bottom:20px}@media (min-width:960px){#wp-block-themeisle-blocks-advanced-column-c5a7861d{flex-basis:50%}}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-column-c5a7861d{padding:20px;margin-top:20px;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-column-c5a7861d{padding:20px;margin-top:20px;margin-bottom:20px}}#wp-block-themeisle-blocks-advanced-heading-e18518c3{font-size:12px;padding:0;margin-top:0;margin-bottom:25px}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-heading-e18518c3{padding:0;margin-top:0;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-heading-e18518c3{padding:0;margin-top:0;margin-bottom:20px}}#wp-block-themeisle-blocks-advanced-columns-350732b2{padding-top:80px;padding-right:20px;padding-bottom:80px;padding-left:20px;margin-top:20px;margin-bottom:20px;min-height:auto}#wp-block-themeisle-blocks-advanced-columns-350732b2 .wp-themeisle-block-overlay{filter:blur(unsetpx) brightness(1) contrast(1) grayscale(unset) hue-rotate(unsetdeg) saturate(1)}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-columns-350732b2{padding-top:80px;padding-right:20px;padding-bottom:80px;padding-left:20px;margin-top:20px;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-columns-350732b2{padding:20px;margin-top:20px;margin-bottom:20px}}#wp-block-themeisle-blocks-advanced-column-b9f983d5{padding:20px;margin-top:20px;margin-bottom:20px}@media (min-width:960px){#wp-block-themeisle-blocks-advanced-column-b9f983d5{flex-basis:50%}}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-column-b9f983d5{padding:20px;margin-top:20px;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-column-b9f983d5{padding:20px;margin-top:20px;margin-bottom:20px}}#wp-block-themeisle-blocks-advanced-column-57d9480e{padding:20px;margin-top:20px;margin-bottom:20px}@media (min-width:960px){#wp-block-themeisle-blocks-advanced-column-57d9480e{flex-basis:50%}}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-column-57d9480e{padding:20px;margin-top:20px;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-column-57d9480e{padding:20px;margin-top:20px;margin-bottom:20px}}#wp-block-themeisle-blocks-advanced-columns-0420b78e{padding:20px;margin-top:20px;margin-bottom:20px;min-height:auto}#wp-block-themeisle-blocks-advanced-columns-0420b78e .wp-themeisle-block-overlay{filter:blur(unsetpx) brightness(1) contrast(1) grayscale(unset) hue-rotate(unsetdeg) saturate(1)}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-columns-0420b78e{padding:20px;margin-top:20px;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-columns-0420b78e{padding:20px;margin-top:20px;margin-bottom:20px}}#wp-block-themeisle-blocks-advanced-column-07c8372f{padding:20px;margin-top:20px;margin-bottom:20px}@media (min-width:960px){#wp-block-themeisle-blocks-advanced-column-07c8372f{flex-basis:100%}}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-column-07c8372f{padding:20px;margin-top:20px;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-column-07c8372f{padding:20px;margin-top:20px;margin-bottom:20px}}#wp-block-themeisle-blocks-advanced-heading-00861d10{text-align:center;font-size:12px;padding:0;margin-top:0;margin-bottom:25px}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-heading-00861d10{padding:0;margin-top:0;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-heading-00861d10{padding:0;margin-top:0;margin-bottom:20px}}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_themeisle_gutenberg_block_stylesheet]]></wp:meta_key>
+					<wp:meta_value><![CDATA[post-6]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				Contact me			</title>
+			<link>https://demo.themeisle.com/neve-blogger-gb/neve-blogger-gb-contact/</link>
+			<pubDate>Tue, 26 Nov 2019 12:23:14 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-blogger-gb/?page_id=7</guid>
+			<description></description>
+			<content:encoded><![CDATA[<!-- wp:themeisle-blocks/advanced-columns {"id":"wp-block-themeisle-blocks-advanced-columns-bcbef4b5","columns":2,"layout":"equal","layoutMobile":"twoOne","columnsGap":"nogap","columnsWidth":1180,"horizontalAlign":"center","align":"full"} -->
+<div class="wp-block-themeisle-blocks-advanced-columns alignfull has-2-columns has-desktop-equal-layout has-tablet-equal-layout has-mobile-twoOne-layout has-nogap-gap has-vertical-unset" id="wp-block-themeisle-blocks-advanced-columns-bcbef4b5" style="border-width:0px;border-style:solid;border-color:#000000;border-radius:0px;justify-content:center"><div class="wp-themeisle-block-overlay" style="opacity:0.5;mix-blend-mode:normal"></div><div class="innerblocks-wrap" style="max-width:1180px"><!-- wp:themeisle-blocks/advanced-column {"id":"wp-block-themeisle-blocks-advanced-column-08c6144b","paddingMobile":0,"columnWidth":"69.97"} -->
+<div class="wp-block-themeisle-blocks-advanced-column" id="wp-block-themeisle-blocks-advanced-column-08c6144b" style="border-width:0px;border-style:solid;border-color:#000000;border-radius:0px"><!-- wp:heading {"level":1,"className":"ticss-323b0dc0","hasCustomCSS":true} -->
+<h1 class="ticss-323b0dc0">Contact me</h1>
+<!-- /wp:heading --></div>
+<!-- /wp:themeisle-blocks/advanced-column -->
+
+<!-- wp:themeisle-blocks/advanced-column {"id":"wp-block-themeisle-blocks-advanced-column-fc422951","columnWidth":"30.03"} -->
+<div class="wp-block-themeisle-blocks-advanced-column" id="wp-block-themeisle-blocks-advanced-column-fc422951" style="border-width:0px;border-style:solid;border-color:#000000;border-radius:0px"></div>
+<!-- /wp:themeisle-blocks/advanced-column --></div></div>
+<!-- /wp:themeisle-blocks/advanced-columns -->
+
+<!-- wp:themeisle-blocks/advanced-columns {"id":"wp-block-themeisle-blocks-advanced-columns-eace65bb","columns":2,"layout":"equal","layoutMobile":"collapsedRows","paddingType":"unlinked","paddingTop":40,"paddingBottom":40,"marginTop":0,"marginBottom":0,"columnsWidth":1170,"horizontalAlign":"center","backgroundColor":"#f7f7f7","align":"full","className":"ticss-caf6e84b","hasCustomCSS":true} -->
+<div class="wp-block-themeisle-blocks-advanced-columns alignfull has-2-columns has-desktop-equal-layout has-tablet-equal-layout has-mobile-collapsedRows-layout has-default-gap has-vertical-unset ticss-caf6e84b" id="wp-block-themeisle-blocks-advanced-columns-eace65bb" style="background:#f7f7f7;border-width:0px;border-style:solid;border-color:#000000;border-radius:0px;justify-content:center"><div class="wp-themeisle-block-overlay" style="opacity:0.5;mix-blend-mode:normal"></div><div class="innerblocks-wrap" style="max-width:1170px"><!-- wp:themeisle-blocks/advanced-column {"id":"wp-block-themeisle-blocks-advanced-column-54cebeb3","columnWidth":50} -->
+<div class="wp-block-themeisle-blocks-advanced-column" id="wp-block-themeisle-blocks-advanced-column-54cebeb3" style="border-width:0px;border-style:solid;border-color:#000000;border-radius:0px"><!-- wp:separator {"color":"black","className":"ticss-c859e1b5 is-style-wide","hasCustomCSS":true,"customCSS":".ticss-c859e1b5 {\n}\n"} -->
+<hr class="wp-block-separator has-text-color has-background has-black-background-color has-black-color ticss-c859e1b5 is-style-wide" />
+<!-- /wp:separator -->
+
+<!-- wp:themeisle-blocks/advanced-heading {"id":"wp-block-themeisle-blocks-advanced-heading-b857909f","tag":"p","fontSize":12,"textTransform":"uppercase"} -->
+<p id="wp-block-themeisle-blocks-advanced-heading-b857909f" class="wp-block-themeisle-blocks-advanced-heading wp-block-themeisle-blocks-advanced-heading-b857909f" style="color:#000000;font-style:normal;text-transform:uppercase"><strong>social Follow</strong></p>
+<!-- /wp:themeisle-blocks/advanced-heading -->
+
+<!-- wp:heading -->
+<h2>Connect on social</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>I am a fashion photographer and blogger, feel free to read the whole story. Whereas a trend often connotes.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:themeisle-blocks/sharing-icons {"pinterest":true,"className":"is-style-icons ticss-a0f5d393","hasCustomCSS":true} /--></div>
+<!-- /wp:themeisle-blocks/advanced-column -->
+
+<!-- wp:themeisle-blocks/advanced-column {"id":"wp-block-themeisle-blocks-advanced-column-12b83180","paddingTablet":0,"paddingMobile":0,"marginType":"linked","marginTypeTablet":"linked","marginTypeMobile":"linked","margin":0,"marginTablet":0,"marginMobile":0,"marginTopTablet":0,"marginTopMobile":0,"marginBottom":0,"marginBottomMobile":0,"columnWidth":50,"className":"ticss-5418d6a3","hasCustomCSS":true,"customCSS":"\n\n/* Style the field labels */\n\ndiv.wpforms-container-full .wpforms-form .wpforms-field-label {\n    display: block;\n    font-weight: 400;\n    font-size: 16px;\n    float: none;\n    line-height: 1.3;\n    margin: 0 0 4px 0;\n    padding: 0;\n}\n\n/* Change the color of the required mark */\ndiv.wpforms-container-full .wpforms-form .wpforms-required-label{color:#000000;}\n\n/* Style the text area */\n\ndiv.wpforms-container-full .wpforms-form .wpforms-field.wpforms-field-textarea textarea, div.wpforms-container-full .wpforms-form .wpforms-field.wpforms-field-textarea input {\n    background-color: transparent;\n    box-sizing: border-box;\n    border-radius:0px;\n    color: #333;\n    -webkit-box-sizing: border-box;\n    -moz-box-sizing: border-box;\n    display: block;\n    float: none;\n    font-size: 16px;\n    border: 3px solid #000;\n    padding: 5px 10px;\n    height: 120px;\n    width: 100%;\n    line-height: 1.3;\n}\n\n\n/* Style the text and email inputs */\ndiv.wpforms-container-full .wpforms-form input[type=text], div.wpforms-container-full .wpforms-form input[type=email]{\n\t\n\t background-color: transparent;\n    box-sizing: border-box;\n    border-radius:0px;\n    color: #333;\n    -webkit-box-sizing: border-box;\n    -moz-box-sizing: border-box;\n    display: block;\n    float: none;\n    font-size: 16px;\n    border: 3px solid #000;\n    padding: 5px 10px;\n    height: 60px;\n    width: 100%;\n    line-height: 1.3;\n}\n\n/* Style the submit button */\ndiv.wpforms-container-full .wpforms-form input[type=submit], div.wpforms-container-full .wpforms-form button[type=submit], div.wpforms-container-full .wpforms-form .wpforms-page-button {\n\tbackground-color: #000;\n    border: none;\n    color: #fff;\n    font-size: 0.9em;\n\ttext-transform:uppercase;\n\tfont-weight:600;\n    padding: 15px 20px;\n\t\n}\n"} -->
+<div class="wp-block-themeisle-blocks-advanced-column ticss-5418d6a3" id="wp-block-themeisle-blocks-advanced-column-12b83180" style="border-width:0px;border-style:solid;border-color:#000000;border-radius:0px"><!-- wp:separator {"color":"black","className":"ticss-c859e1b5 is-style-wide","hasCustomCSS":true,"customCSS":".ticss-c859e1b5 {\n}\n"} -->
+<hr class="wp-block-separator has-text-color has-background has-black-background-color has-black-color ticss-c859e1b5 is-style-wide" />
+<!-- /wp:separator -->
+
+<!-- wp:themeisle-blocks/advanced-heading {"id":"wp-block-themeisle-blocks-advanced-heading-dfeacf54","tag":"p","fontSize":12,"textTransform":"uppercase"} -->
+<p id="wp-block-themeisle-blocks-advanced-heading-dfeacf54" class="wp-block-themeisle-blocks-advanced-heading wp-block-themeisle-blocks-advanced-heading-dfeacf54" style="color:#000000;font-style:normal;text-transform:uppercase"><strong>Direct message</strong></p>
+<!-- /wp:themeisle-blocks/advanced-heading -->
+
+<!-- wp:heading -->
+<h2>Send a message</h2>
+<!-- /wp:heading -->
+
+<!-- wp:shortcode -->
+[wpforms id="62" title="false" description="false"]
+<!-- /wp:shortcode --></div>
+<!-- /wp:themeisle-blocks/advanced-column --></div></div>
+<!-- /wp:themeisle-blocks/advanced-columns -->]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>7</wp:post_id>
+			<wp:post_date><![CDATA[2019-11-26 12:23:14]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-11-26 12:23:14]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+			<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+			<wp:post_name><![CDATA[neve-blogger-gb-contact]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[page]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+													<wp:postmeta>
+					<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
+					<wp:meta_value><![CDATA[]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_container]]></wp:meta_key>
+					<wp:meta_value><![CDATA[default]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_sidebar]]></wp:meta_key>
+					<wp:meta_value><![CDATA[full-width]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_disable_header]]></wp:meta_key>
+					<wp:meta_value><![CDATA[off]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_disable_title]]></wp:meta_key>
+					<wp:meta_value><![CDATA[on]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_disable_featured_image]]></wp:meta_key>
+					<wp:meta_value><![CDATA[off]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_disable_footer]]></wp:meta_key>
+					<wp:meta_value><![CDATA[off]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_enable_content_width]]></wp:meta_key>
+					<wp:meta_value><![CDATA[on]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
+					<wp:meta_value><![CDATA[100]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_themeisle_gutenberg_block_styles]]></wp:meta_key>
+					<wp:meta_value><![CDATA[#wp-block-themeisle-blocks-advanced-columns-bcbef4b5{padding:20px;margin-top:20px;margin-bottom:20px;min-height:auto}#wp-block-themeisle-blocks-advanced-columns-bcbef4b5 .wp-themeisle-block-overlay{filter:blur(unsetpx) brightness(1) contrast(1) grayscale(unset) hue-rotate(unsetdeg) saturate(1)}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-columns-bcbef4b5{padding:20px;margin-top:20px;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-columns-bcbef4b5{padding:20px;margin-top:20px;margin-bottom:20px}}#wp-block-themeisle-blocks-advanced-column-08c6144b{padding:20px;margin-top:20px;margin-bottom:20px}@media (min-width:960px){#wp-block-themeisle-blocks-advanced-column-08c6144b{flex-basis:69.97%}}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-column-08c6144b{padding:20px;margin-top:20px;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-column-08c6144b{padding:20px;margin-top:20px;margin-bottom:20px}}#wp-block-themeisle-blocks-advanced-column-fc422951{padding:20px;margin-top:20px;margin-bottom:20px}@media (min-width:960px){#wp-block-themeisle-blocks-advanced-column-fc422951{flex-basis:30.03%}}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-column-fc422951{padding:20px;margin-top:20px;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-column-fc422951{padding:20px;margin-top:20px;margin-bottom:20px}}#wp-block-themeisle-blocks-advanced-columns-eace65bb{padding-top:40px;padding-right:20px;padding-bottom:40px;padding-left:20px;margin-top:20px;margin-bottom:20px;min-height:auto}#wp-block-themeisle-blocks-advanced-columns-eace65bb .wp-themeisle-block-overlay{filter:blur(unsetpx) brightness(1) contrast(1) grayscale(unset) hue-rotate(unsetdeg) saturate(1)}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-columns-eace65bb{padding:20px;margin-top:20px;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-columns-eace65bb{padding:20px;margin-top:20px;margin-bottom:20px}}#wp-block-themeisle-blocks-advanced-column-54cebeb3{padding:20px;margin-top:20px;margin-bottom:20px}@media (min-width:960px){#wp-block-themeisle-blocks-advanced-column-54cebeb3{flex-basis:50%}}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-column-54cebeb3{padding:20px;margin-top:20px;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-column-54cebeb3{padding:20px;margin-top:20px;margin-bottom:20px}}#wp-block-themeisle-blocks-advanced-heading-b857909f{font-size:12px;padding:0;margin-top:0;margin-bottom:25px}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-heading-b857909f{padding:0;margin-top:0;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-heading-b857909f{padding:0;margin-top:0;margin-bottom:20px}}#wp-block-themeisle-blocks-advanced-column-12b83180{padding:20px;margin-top:20px;margin-right:20px;margin-bottom:20px;margin-left:20px}@media (min-width:960px){#wp-block-themeisle-blocks-advanced-column-12b83180{flex-basis:50%}}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-column-12b83180{padding:20px;margin-top:20px;margin-right:20px;margin-bottom:20px;margin-left:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-column-12b83180{padding:20px;margin-top:20px;margin-right:20px;margin-bottom:20px;margin-left:20px}}#wp-block-themeisle-blocks-advanced-heading-dfeacf54{font-size:12px;padding:0;margin-top:0;margin-bottom:25px}@media (min-width:600px) and (max-width:960px){#wp-block-themeisle-blocks-advanced-heading-dfeacf54{padding:0;margin-top:0;margin-bottom:20px}}@media (max-width:600px){#wp-block-themeisle-blocks-advanced-heading-dfeacf54{padding:0;margin-top:0;margin-bottom:20px}}]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_themeisle_gutenberg_block_stylesheet]]></wp:meta_key>
+					<wp:meta_value><![CDATA[post-7]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				Why is living coral color of the year?			</title>
+			<link>https://demo.themeisle.com/neve-blogger-gb/2019/11/26/why-is-living-coral-color-of-the-year/</link>
+			<pubDate>Tue, 26 Nov 2019 14:58:02 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-blogger-gb/?p=34</guid>
+			<description></description>
+			<content:encoded><![CDATA[<!-- wp:heading -->
+<h2>Introduction</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Readymade godard brooklyn, kogi shoreditch hashtag hella shaman kitsch man bun pinterest flexitarian. Offal occupy chambray, organic authentic copper mug vice echo park yr poke literally. Ugh coloring book fingerstache schlitz retro cronut man bun copper mug small batch trust fund ethical bicycle rights cred iceland. Celiac schlitz la croix 3 wolf moon butcher. Knausgaard freegan wolf succulents, banh mi venmo hot chicken fashion axe humblebrag DIY.&nbsp;</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Waistcoat gluten-free cronut cred quinoa. Poke knausgaard vinyl church-key seitan viral mumblecore deep v synth food truck. Ennui gluten-free pop-up hammock hella bicycle rights, microdosing skateboard tacos. Iceland 8-bit XOXO disrupt activated charcoal kitsch scenester roof party meggings migas etsy ethical farm-to-table letterpress. Banjo wayfarers chartreuse taiyaki, stumptown prism 8-bit tote bag.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2>Story</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Listicle offal viral, flannel franzen roof party shoreditch meditation subway tile bicycle rights tbh fingerstache copper mug organic umami. Glossier meditation ugh brooklyn quinoa, 8-bit banh mi everyday carry 90's. Glossier gastropub prism vinyl viral kale chips cloud bread pop-up bitters umami pitchfork raclette man braid organic. Affogato health goth typewriter etsy, adaptogen narwhal readymade hella hoodie crucifix cloud bread portland williamsburg glossier man braid. Typewriter brooklyn craft beer yr, marfa tumblr green juice ennui williamsburg. Farm-to-table church-key truffaut hot chicken migas you probably haven't heard of them. Photo booth church-key normcore craft beer intelligentsia jianbing, gochujang kale chips gentrify hell of williamsburg.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2>Conclusion</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Venmo fixie knausgaard readymade. 3 wolf moon blue bottle sartorial blog. Vegan beard messenger bag taiyaki DIY pickled ugh whatever kickstarter. Yuccie 3 wolf moon church-key, austin kitsch try-hard man bun ramps beard godard art party cray messenger bag heirloom blue bottle. Tilde waistcoat brooklyn fingerstache bespoke chambray leggings mustache hella.<br></p>
+<!-- /wp:paragraph -->]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>34</wp:post_id>
+			<wp:post_date><![CDATA[2019-11-26 14:58:02]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-11-26 14:58:02]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[open]]></wp:ping_status>
+			<wp:post_name><![CDATA[why-is-living-coral-color-of-the-year]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[post]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+								<category domain="category" nicename="uncategorized"><![CDATA[Uncategorized]]></category>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_container]]></wp:meta_key>
+					<wp:meta_value><![CDATA[default]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_sidebar]]></wp:meta_key>
+					<wp:meta_value><![CDATA[default]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_disable_header]]></wp:meta_key>
+					<wp:meta_value><![CDATA[off]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_disable_title]]></wp:meta_key>
+					<wp:meta_value><![CDATA[off]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_disable_featured_image]]></wp:meta_key>
+					<wp:meta_value><![CDATA[off]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_disable_footer]]></wp:meta_key>
+					<wp:meta_value><![CDATA[off]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_enable_content_width]]></wp:meta_key>
+					<wp:meta_value><![CDATA[off]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
+					<wp:meta_value><![CDATA[70]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_thumbnail_id]]></wp:meta_key>
+					<wp:meta_value><![CDATA[28]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				Join Zabibas Global Giveaway			</title>
+			<link>https://demo.themeisle.com/neve-blogger-gb/2019/11/26/join-zabibas-global-giveaway/</link>
+			<pubDate>Tue, 26 Nov 2019 14:58:08 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-blogger-gb/?p=35</guid>
+			<description></description>
+			<content:encoded><![CDATA[<!-- wp:heading -->
+<h2>Introduction</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Readymade godard brooklyn, kogi shoreditch hashtag hella shaman kitsch man bun pinterest flexitarian. Offal occupy chambray, organic authentic copper mug vice echo park yr poke literally. Ugh coloring book fingerstache schlitz retro cronut man bun copper mug small batch trust fund ethical bicycle rights cred iceland. Celiac schlitz la croix 3 wolf moon butcher. Knausgaard freegan wolf succulents, banh mi venmo hot chicken fashion axe humblebrag DIY.&nbsp;</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Waistcoat gluten-free cronut cred quinoa. Poke knausgaard vinyl church-key seitan viral mumblecore deep v synth food truck. Ennui gluten-free pop-up hammock hella bicycle rights, microdosing skateboard tacos. Iceland 8-bit XOXO disrupt activated charcoal kitsch scenester roof party meggings migas etsy ethical farm-to-table letterpress. Banjo wayfarers chartreuse taiyaki, stumptown prism 8-bit tote bag.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2>Story</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Listicle offal viral, flannel franzen roof party shoreditch meditation subway tile bicycle rights tbh fingerstache copper mug organic umami. Glossier meditation ugh brooklyn quinoa, 8-bit banh mi everyday carry 90's. Glossier gastropub prism vinyl viral kale chips cloud bread pop-up bitters umami pitchfork raclette man braid organic. Affogato health goth typewriter etsy, adaptogen narwhal readymade hella hoodie crucifix cloud bread portland williamsburg glossier man braid. Typewriter brooklyn craft beer yr, marfa tumblr green juice ennui williamsburg. Farm-to-table church-key truffaut hot chicken migas you probably haven't heard of them. Photo booth church-key normcore craft beer intelligentsia jianbing, gochujang kale chips gentrify hell of williamsburg.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2>Conclusion</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Venmo fixie knausgaard readymade. 3 wolf moon blue bottle sartorial blog. Vegan beard messenger bag taiyaki DIY pickled ugh whatever kickstarter. Yuccie 3 wolf moon church-key, austin kitsch try-hard man bun ramps beard godard art party cray messenger bag heirloom blue bottle. Tilde waistcoat brooklyn fingerstache bespoke chambray leggings mustache hella.<br></p>
+<!-- /wp:paragraph -->]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>35</wp:post_id>
+			<wp:post_date><![CDATA[2019-11-26 14:58:08]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-11-26 14:58:08]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[open]]></wp:ping_status>
+			<wp:post_name><![CDATA[join-zabibas-global-giveaway]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[post]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+								<category domain="category" nicename="uncategorized"><![CDATA[Uncategorized]]></category>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_container]]></wp:meta_key>
+					<wp:meta_value><![CDATA[default]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_sidebar]]></wp:meta_key>
+					<wp:meta_value><![CDATA[default]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_disable_header]]></wp:meta_key>
+					<wp:meta_value><![CDATA[off]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_disable_title]]></wp:meta_key>
+					<wp:meta_value><![CDATA[off]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_disable_featured_image]]></wp:meta_key>
+					<wp:meta_value><![CDATA[off]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_disable_footer]]></wp:meta_key>
+					<wp:meta_value><![CDATA[off]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_enable_content_width]]></wp:meta_key>
+					<wp:meta_value><![CDATA[off]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
+					<wp:meta_value><![CDATA[70]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_thumbnail_id]]></wp:meta_key>
+					<wp:meta_value><![CDATA[19]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				Venice Stay &#038; Thoughts			</title>
+			<link>https://demo.themeisle.com/neve-blogger-gb/2019/11/26/venice-stay-thoughts/</link>
+			<pubDate>Tue, 26 Nov 2019 14:57:40 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-blogger-gb/?p=36</guid>
+			<description></description>
+			<content:encoded><![CDATA[<!-- wp:heading -->
+<h2>Introduction</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Readymade godard brooklyn, kogi shoreditch hashtag hella shaman kitsch man bun pinterest flexitarian. Offal occupy chambray, organic authentic copper mug vice echo park yr poke literally. Ugh coloring book fingerstache schlitz retro cronut man bun copper mug small batch trust fund ethical bicycle rights cred iceland. Celiac schlitz la croix 3 wolf moon butcher. Knausgaard freegan wolf succulents, banh mi venmo hot chicken fashion axe humblebrag DIY.&nbsp;</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Waistcoat gluten-free cronut cred quinoa. Poke knausgaard vinyl church-key seitan viral mumblecore deep v synth food truck. Ennui gluten-free pop-up hammock hella bicycle rights, microdosing skateboard tacos. Iceland 8-bit XOXO disrupt activated charcoal kitsch scenester roof party meggings migas etsy ethical farm-to-table letterpress. Banjo wayfarers chartreuse taiyaki, stumptown prism 8-bit tote bag.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2>Story</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Listicle offal viral, flannel franzen roof party shoreditch meditation subway tile bicycle rights tbh fingerstache copper mug organic umami. Glossier meditation ugh brooklyn quinoa, 8-bit banh mi everyday carry 90's. Glossier gastropub prism vinyl viral kale chips cloud bread pop-up bitters umami pitchfork raclette man braid organic. Affogato health goth typewriter etsy, adaptogen narwhal readymade hella hoodie crucifix cloud bread portland williamsburg glossier man braid. Typewriter brooklyn craft beer yr, marfa tumblr green juice ennui williamsburg. Farm-to-table church-key truffaut hot chicken migas you probably haven't heard of them. Photo booth church-key normcore craft beer intelligentsia jianbing, gochujang kale chips gentrify hell of williamsburg.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2>Conclusion</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Venmo fixie knausgaard readymade. 3 wolf moon blue bottle sartorial blog. Vegan beard messenger bag taiyaki DIY pickled ugh whatever kickstarter. Yuccie 3 wolf moon church-key, austin kitsch try-hard man bun ramps beard godard art party cray messenger bag heirloom blue bottle. Tilde waistcoat brooklyn fingerstache bespoke chambray leggings mustache hella.<br></p>
+<!-- /wp:paragraph -->]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>36</wp:post_id>
+			<wp:post_date><![CDATA[2019-11-26 14:57:40]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-11-26 14:57:40]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[open]]></wp:ping_status>
+			<wp:post_name><![CDATA[venice-stay-thoughts]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[post]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+								<category domain="category" nicename="uncategorized"><![CDATA[Uncategorized]]></category>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_container]]></wp:meta_key>
+					<wp:meta_value><![CDATA[default]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_sidebar]]></wp:meta_key>
+					<wp:meta_value><![CDATA[default]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_disable_header]]></wp:meta_key>
+					<wp:meta_value><![CDATA[off]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_disable_title]]></wp:meta_key>
+					<wp:meta_value><![CDATA[off]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_disable_featured_image]]></wp:meta_key>
+					<wp:meta_value><![CDATA[off]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_disable_footer]]></wp:meta_key>
+					<wp:meta_value><![CDATA[off]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_enable_content_width]]></wp:meta_key>
+					<wp:meta_value><![CDATA[off]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
+					<wp:meta_value><![CDATA[70]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_thumbnail_id]]></wp:meta_key>
+					<wp:meta_value><![CDATA[27]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				Blog tips for beginners			</title>
+			<link>https://demo.themeisle.com/neve-blogger-gb/2019/11/26/blog-tips-for-beginners/</link>
+			<pubDate>Tue, 26 Nov 2019 14:58:40 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-blogger-gb/?p=37</guid>
+			<description></description>
+			<content:encoded><![CDATA[<!-- wp:heading -->
+<h2>Introduction</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Readymade godard brooklyn, kogi shoreditch hashtag hella shaman kitsch man bun pinterest flexitarian. Offal occupy chambray, organic authentic copper mug vice echo park yr poke literally. Ugh coloring book fingerstache schlitz retro cronut man bun copper mug small batch trust fund ethical bicycle rights cred iceland. Celiac schlitz la croix 3 wolf moon butcher. Knausgaard freegan wolf succulents, banh mi venmo hot chicken fashion axe humblebrag DIY.&nbsp;</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Waistcoat gluten-free cronut cred quinoa. Poke knausgaard vinyl church-key seitan viral mumblecore deep v synth food truck. Ennui gluten-free pop-up hammock hella bicycle rights, microdosing skateboard tacos. Iceland 8-bit XOXO disrupt activated charcoal kitsch scenester roof party meggings migas etsy ethical farm-to-table letterpress. Banjo wayfarers chartreuse taiyaki, stumptown prism 8-bit tote bag.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2>Story</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Listicle offal viral, flannel franzen roof party shoreditch meditation subway tile bicycle rights tbh fingerstache copper mug organic umami. Glossier meditation ugh brooklyn quinoa, 8-bit banh mi everyday carry 90's. Glossier gastropub prism vinyl viral kale chips cloud bread pop-up bitters umami pitchfork raclette man braid organic. Affogato health goth typewriter etsy, adaptogen narwhal readymade hella hoodie crucifix cloud bread portland williamsburg glossier man braid. Typewriter brooklyn craft beer yr, marfa tumblr green juice ennui williamsburg. Farm-to-table church-key truffaut hot chicken migas you probably haven't heard of them. Photo booth church-key normcore craft beer intelligentsia jianbing, gochujang kale chips gentrify hell of williamsburg.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2>Conclusion</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Venmo fixie knausgaard readymade. 3 wolf moon blue bottle sartorial blog. Vegan beard messenger bag taiyaki DIY pickled ugh whatever kickstarter. Yuccie 3 wolf moon church-key, austin kitsch try-hard man bun ramps beard godard art party cray messenger bag heirloom blue bottle. Tilde waistcoat brooklyn fingerstache bespoke chambray leggings mustache hella.<br></p>
+<!-- /wp:paragraph -->]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>37</wp:post_id>
+			<wp:post_date><![CDATA[2019-11-26 14:58:40]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-11-26 14:58:40]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[open]]></wp:ping_status>
+			<wp:post_name><![CDATA[blog-tips-for-beginners]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[post]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+								<category domain="category" nicename="uncategorized"><![CDATA[Uncategorized]]></category>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_container]]></wp:meta_key>
+					<wp:meta_value><![CDATA[default]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_sidebar]]></wp:meta_key>
+					<wp:meta_value><![CDATA[default]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_disable_header]]></wp:meta_key>
+					<wp:meta_value><![CDATA[off]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_disable_title]]></wp:meta_key>
+					<wp:meta_value><![CDATA[off]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_disable_featured_image]]></wp:meta_key>
+					<wp:meta_value><![CDATA[off]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_disable_footer]]></wp:meta_key>
+					<wp:meta_value><![CDATA[off]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_enable_content_width]]></wp:meta_key>
+					<wp:meta_value><![CDATA[off]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
+					<wp:meta_value><![CDATA[70]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_thumbnail_id]]></wp:meta_key>
+					<wp:meta_value><![CDATA[39]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+				<item>
+			<title>
+				2020 trends in home decor			</title>
+			<link>https://demo.themeisle.com/neve-blogger-gb/2019/11/26/2020-trends-in-home-decor/</link>
+			<pubDate>Tue, 26 Nov 2019 14:58:48 +0000</pubDate>
+			<guid isPermaLink="false">https://demo.themeisle.com/neve-blogger-gb/?p=38</guid>
+			<description></description>
+			<content:encoded><![CDATA[<!-- wp:heading -->
+<h2>Introduction</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Readymade godard brooklyn, kogi shoreditch hashtag hella shaman kitsch man bun pinterest flexitarian. Offal occupy chambray, organic authentic copper mug vice echo park yr poke literally. Ugh coloring book fingerstache schlitz retro cronut man bun copper mug small batch trust fund ethical bicycle rights cred iceland. Celiac schlitz la croix 3 wolf moon butcher. Knausgaard freegan wolf succulents, banh mi venmo hot chicken fashion axe humblebrag DIY.&nbsp;</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Waistcoat gluten-free cronut cred quinoa. Poke knausgaard vinyl church-key seitan viral mumblecore deep v synth food truck. Ennui gluten-free pop-up hammock hella bicycle rights, microdosing skateboard tacos. Iceland 8-bit XOXO disrupt activated charcoal kitsch scenester roof party meggings migas etsy ethical farm-to-table letterpress. Banjo wayfarers chartreuse taiyaki, stumptown prism 8-bit tote bag.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2>Story</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Listicle offal viral, flannel franzen roof party shoreditch meditation subway tile bicycle rights tbh fingerstache copper mug organic umami. Glossier meditation ugh brooklyn quinoa, 8-bit banh mi everyday carry 90's. Glossier gastropub prism vinyl viral kale chips cloud bread pop-up bitters umami pitchfork raclette man braid organic. Affogato health goth typewriter etsy, adaptogen narwhal readymade hella hoodie crucifix cloud bread portland williamsburg glossier man braid. Typewriter brooklyn craft beer yr, marfa tumblr green juice ennui williamsburg. Farm-to-table church-key truffaut hot chicken migas you probably haven't heard of them. Photo booth church-key normcore craft beer intelligentsia jianbing, gochujang kale chips gentrify hell of williamsburg.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2>Conclusion</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Venmo fixie knausgaard readymade. 3 wolf moon blue bottle sartorial blog. Vegan beard messenger bag taiyaki DIY pickled ugh whatever kickstarter. Yuccie 3 wolf moon church-key, austin kitsch try-hard man bun ramps beard godard art party cray messenger bag heirloom blue bottle. Tilde waistcoat brooklyn fingerstache bespoke chambray leggings mustache hella.<br></p>
+<!-- /wp:paragraph -->]]></content:encoded><excerpt:encoded><![CDATA[]]></excerpt:encoded>			<wp:post_id>38</wp:post_id>
+			<wp:post_date><![CDATA[2019-11-26 14:58:48]]></wp:post_date>
+			<wp:post_date_gmt><![CDATA[2019-11-26 14:58:48]]></wp:post_date_gmt>
+			<wp:comment_status><![CDATA[open]]></wp:comment_status>
+			<wp:ping_status><![CDATA[open]]></wp:ping_status>
+			<wp:post_name><![CDATA[2020-trends-in-home-decor]]></wp:post_name>
+			<wp:status><![CDATA[publish]]></wp:status>
+			<wp:post_parent>0</wp:post_parent>
+			<wp:menu_order>0</wp:menu_order>
+			<wp:post_type><![CDATA[post]]></wp:post_type>
+			<wp:post_password><![CDATA[]]></wp:post_password>
+			<wp:is_sticky>0</wp:is_sticky>
+								<category domain="category" nicename="uncategorized"><![CDATA[Uncategorized]]></category>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_container]]></wp:meta_key>
+					<wp:meta_value><![CDATA[default]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_sidebar]]></wp:meta_key>
+					<wp:meta_value><![CDATA[default]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_disable_header]]></wp:meta_key>
+					<wp:meta_value><![CDATA[off]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_disable_title]]></wp:meta_key>
+					<wp:meta_value><![CDATA[off]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_disable_featured_image]]></wp:meta_key>
+					<wp:meta_value><![CDATA[off]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_disable_footer]]></wp:meta_key>
+					<wp:meta_value><![CDATA[off]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_enable_content_width]]></wp:meta_key>
+					<wp:meta_value><![CDATA[off]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[neve_meta_content_width]]></wp:meta_key>
+					<wp:meta_value><![CDATA[70]]></wp:meta_value>
+				</wp:postmeta>
+							<wp:postmeta>
+					<wp:meta_key><![CDATA[_thumbnail_id]]></wp:meta_key>
+					<wp:meta_value><![CDATA[22]]></wp:meta_value>
+				</wp:postmeta>
+					</item>
+					</channel>
+		</rss>
+		
