@@ -377,6 +377,14 @@
   display: flex;
 }
 
+.woocommerce.single .entry-summary > form.cart.variations_form {
+  flex-direction: column;
+}
+
+.woocommerce.single .entry-summary > form.cart .woocommerce-variation-add-to-cart {
+  display: flex;
+}
+
 .single_add_to_cart_button {
   width: 100%;
 }
