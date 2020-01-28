@@ -248,9 +248,6 @@ class Layout_Sidebar extends Base_Customizer {
 		if ( $control_id === 'neve_single_product_sidebar_layout' ) {
 			return 'full-width';
 		}
-		if ( $control_id === 'neve_shop_archive_sidebar_layout' ) {
-			return 'full-width';
-		}
 		return 'right';
 	}
 
@@ -312,18 +309,14 @@ class Layout_Sidebar extends Base_Customizer {
 			);
 		}
 		array_push( $sidebar_layout_controls, 'neve_other_pages_content_width' );
-		$default_value = 70;
 		foreach ( $sidebar_layout_controls as $control_id ) {
-			if ( $control_id === 'neve_shop_archive_content_width' ) {
-				$default_value = 100;
-			}
 			$this->add_control(
 				new Control(
 					$control_id,
 					array(
 						'sanitize_callback' => 'absint',
 						'transport'         => $this->selective_refresh,
-						'default'           => $default_value,
+						'default'           => 70,
 					),
 					array(
 						'label'           => esc_html__( 'Content Width (%)', 'neve' ),
