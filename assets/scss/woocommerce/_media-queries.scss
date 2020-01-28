@@ -11,6 +11,7 @@
   @include nav-cart--laptop();
   @include shop-sidebar--laptop();
   @include cart--laptop();
+	@include product--laptop();
   @include shop-loop--laptop();
   @include checkout--laptop();
   @include account--laptop();
