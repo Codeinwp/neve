@@ -962,8 +962,12 @@ section.exclusive .tns-visually-hidden {
   white-space: normal;
 }
 
-.woocommerce ul.products li.product .button.loading {
-  padding-right: 40px;
+.woocommerce #respond input#submit.loading::after, .woocommerce a.button.loading::after, .woocommerce button.button.loading::after, .woocommerce input.button.loading::after {
+  display: block;
+  position: initial;
+  float: right;
+  margin-left: 5px;
+  margin-top: 1px;
 }
 
 .nv-sidebar-wrap.shop-sidebar {

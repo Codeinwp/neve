@@ -94,11 +94,9 @@ class Woocommerce {
 			.woocommerce .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout):hover,
 			.woocommerce .button.button-secondary.more-details:hover',
 		'no-padding'       => '
-			,.woocommerce ul[id^="nv-primary-navigation"] .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout),
-			.woocommerce .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout)',
+			,.woocommerce ul[id^="nv-primary-navigation"] .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout)',
 		'no-padding-hover' => '
-			,.woocommerce ul[id^="nv-primary-navigation"] .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout):hover,
-			.woocommerce .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout):hover',
+			,.woocommerce ul[id^="nv-primary-navigation"] .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout):hover',
 	);
 	/**
 	 * Sidebar manager.
@@ -533,6 +531,7 @@ class Woocommerce {
 			$selectors .= '
 			,.woocommerce a.button,
 			.woocommerce .button,
+			.woocommerce a.button.loading,
 			.woocommerce a.button.alt,
 			.woocommerce a.button.button-primary,
 			.woocommerce a.button.checkout-button,
