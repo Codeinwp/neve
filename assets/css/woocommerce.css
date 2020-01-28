@@ -381,8 +381,24 @@
   flex-direction: column;
 }
 
+.woocommerce.single .entry-summary > form.cart.grouped_form {
+  flex-wrap: wrap;
+}
+
+.woocommerce.single .entry-summary > form.cart .group_table td {
+  vertical-align: middle;
+}
+
+.woocommerce.single .entry-summary > form.cart .group_table td label {
+  margin-bottom: 0;
+}
+
 .woocommerce.single .entry-summary > form.cart .woocommerce-variation-add-to-cart {
   display: flex;
+}
+
+.woocommerce.single .entry-summary > form.cart .woocommerce-grouped-product-list {
+  width: 100%;
 }
 
 .single_add_to_cart_button {

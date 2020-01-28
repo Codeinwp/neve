@@ -32,8 +32,22 @@
 			flex-direction: column;
 		}
 
+		&.grouped_form {
+			flex-wrap: wrap;
+		}
+
+		.group_table td {
+			vertical-align: middle;
+			label {
+				margin-bottom: 0;
+			}
+		}
+
 		.woocommerce-variation-add-to-cart {
 			display: flex;
+		}
+		.woocommerce-grouped-product-list {
+			width: 100%;
 		}
 	}
 }
