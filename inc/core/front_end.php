@@ -68,7 +68,6 @@ class Front_End {
 		add_filter( 'embed_oembed_html', array( $this, 'wrap_oembeds' ), 10, 3 );
 		add_filter( 'video_embed_html', array( $this, 'wrap_jetpack_oembeds' ), 10, 1 );
 		add_filter( 'themeisle_gutenberg_templates', array( $this, 'add_gutenberg_templates' ) );
-
 		$this->add_amp_support();
 
 		$nav_menus_to_register = apply_filters(
@@ -189,6 +188,7 @@ class Front_End {
 		$theme_name    = apply_filters( 'ti_wl_theme_name', $theme_options->__get( 'Name' ) );
 
 		$this->onboarding_config = array(
+			'bulk_json' => 'https://s20206.pcdn.co/wp-json/ti-demo-data/data?type=all',
 			'editors'     => array(
 				'elementor',
 				'brizy',
@@ -1740,7 +1740,8 @@ class Front_End {
 			return;
 		}
 
-		wp_register_script( 'neve-script', NEVE_ASSETS_URL . 'js/frontend.js', apply_filters( 'neve_filter_main_script_dependencies', array() ), NEVE_VERSION, true );
+		wp_register_script( 'neve-script', NEVE_ASSETS_URL . 'js/build/modern/frontend.js', apply_filters( 'neve_filter_main_script_dependencies', array() ), NEVE_VERSION, true );
+
 		wp_localize_script(
 			'neve-script',
 			'NeveProperties',
@@ -1754,7 +1755,7 @@ class Front_End {
 		);
 		wp_enqueue_script( 'neve-script' );
 		if ( class_exists( 'WooCommerce', false ) && is_woocommerce() ) {
-			wp_register_script( 'neve-shop-script', NEVE_ASSETS_URL . 'js/shop.js', array(), NEVE_VERSION, true );
+			wp_register_script( 'neve-shop-script', NEVE_ASSETS_URL . 'js/build/modern/shop.js', array(), NEVE_VERSION, true );
 			wp_enqueue_script( 'neve-shop-script' );
 		}
 
