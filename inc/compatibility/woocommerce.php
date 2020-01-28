@@ -76,8 +76,8 @@ class Woocommerce {
 			,.woocommerce-cart table.cart td.actions .coupon > .input-text + .button,
 			.woocommerce-checkout #neve-checkout-coupon .woocommerce-form-coupon .form-row-last button,
 			.woocommerce button.button,
-			.woocommerce a.added_to_cart, 
-			.woocommerce .checkout_coupon button.button, 
+			.woocommerce a.added_to_cart,
+			.woocommerce .checkout_coupon button.button,
 			.woocommerce #review_form #respond input#submit,
 			.woocommerce .price_slider_amount button.button:not(.nv-sidebar-toggle),
 			.woocommerce .button.button-secondary.more-details',
@@ -85,17 +85,17 @@ class Woocommerce {
 			,#comments input[type=submit]:hover,
 			.woocommerce-cart table.cart td.actions .coupon > .input-text + .button:hover,
 			.woocommerce-checkout #neve-checkout-coupon .woocommerce-form-coupon .form-row-last button:hover,
-			.woocommerce button.button:hover, 
-			.woocommerce a.added_to_cart:hover, 
-			.woocommerce .checkout_coupon button.button:hover, 
+			.woocommerce button.button:hover,
+			.woocommerce a.added_to_cart:hover,
+			.woocommerce .checkout_coupon button.button:hover,
 			.woocommerce #review_form #respond input#submit:hover,
 			.woocommerce .price_slider_amount button.button:hover,
 			.woocommerce .button.button-secondary.more-details:hover',
 		'no-padding'       => '
-			,.woocommerce ul[id^="nv-primary-navigation"] .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout), 
+			,.woocommerce ul[id^="nv-primary-navigation"] .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout),
 			.woocommerce .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout)',
 		'no-padding-hover' => '
-			,.woocommerce ul[id^="nv-primary-navigation"] .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout):hover, 
+			,.woocommerce ul[id^="nv-primary-navigation"] .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout):hover,
 			.woocommerce .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout):hover',
 	);
 	/**
@@ -604,7 +604,8 @@ class Woocommerce {
 			.woocommerce .checkout.wc-forward,
 			.woocommerce button#place_order,
 			.woocommerce .return-to-shop > .button,
-			.woocommerce .button.woocommerce-form-login__submit';
+			.woocommerce .button.woocommerce-form-login__submit,
+			.woocommerce.single .quantity input';
 		}
 
 		if ( $theme_mod === 'neve_secondary_button_padding' ) {
