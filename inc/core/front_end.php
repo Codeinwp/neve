@@ -185,8 +185,8 @@ class Front_End {
 	 * @return array
 	 */
 	private function get_ti_demo_content_support_data() {
-		$theme_options          = wp_get_theme();
-		$theme_name             = apply_filters( 'ti_wl_theme_name', $theme_options->__get( 'Name' ) );
+		$theme_options = wp_get_theme();
+		$theme_name    = apply_filters( 'ti_wl_theme_name', $theme_options->__get( 'Name' ) );
 
 		$this->onboarding_config = array(
 			'editors'     => array(
@@ -197,7 +197,7 @@ class Front_End {
 				'divi builder',
 			),
 			'remote'      => array(
-				'elementor' => array(
+				'elementor'      => array(
 					'neve-main'               => array(
 						'url'        => 'https://demo.themeisle.com/neve/',
 						'remote_url' => 'https://s20206.pcdn.co/neve/',
@@ -406,7 +406,7 @@ class Front_End {
 						'remote_url'       => 'https://s20206.pcdn.co/neve-architecture-brizy/',
 						'title'            => 'Architecture',
 						'unsplash_gallery' => 'https://unsplash.com/collections/6802313/architecture/f59e19df059789d86d1066ea80130a87',
-						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/06/neve-caffe-new-ss.jpg',
+						'screenshot'       => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/06/neve-caffe-new-ss.jpg',
 					),
 					'neve-brizy-fitness'            => array(
 						'url'              => 'https://demo.themeisle.com/neve-fitness-brizy/',
@@ -462,7 +462,7 @@ class Front_End {
 						'remote_url'       => 'https://s20206.pcdn.co/neve-lawyers-brizy/',
 						'title'            => 'Lawyers',
 						'unsplash_gallery' => 'https://unsplash.com/collections/4587639/neve-lawyers',
-						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/12/neve-lawyers.jpg',
+						'screenshot'       => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/12/neve-lawyers.jpg',
 					),
 					'neve-brizy-freelancer'         => array(
 						'url'              => 'https://demo.themeisle.com/neve-freelancer-brizy',
@@ -510,15 +510,15 @@ class Front_End {
 				'beaver builder' => [
 					'neve-beaver-onboarding'         => array(
 						'url'        => 'https://demo.themeisle.com/neve-onboarding-bb/',
-						'remote_url'       => 'https://s20206.pcdn.co/neve-onboarding-bb/',
+						'remote_url' => 'https://s20206.pcdn.co/neve-onboarding-bb/',
 						'title'      => 'Original',
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/neve-original.png',
 					),
 					'neve-beaver-blogger'            => array(
 						'url'        => 'https://demo.themeisle.com/neve-blogger-bb/',
-						'remote_url'       => 'https://s20206.pcdn.co/neve-blogger-bb/',
+						'remote_url' => 'https://s20206.pcdn.co/neve-blogger-bb/',
 						'title'      => 'Blogger',
-						'screenshot'       => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/11/neve-blogger.jpg',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/11/neve-blogger.jpg',
 					),
 					'neve-beaver-restaurant'         => array(
 						'url'              => 'https://demo.themeisle.com/neve-bb-restaurant/',
@@ -553,7 +553,7 @@ class Front_End {
 						'remote_url'       => 'https://s20206.pcdn.co/neve-bb-architecture/',
 						'title'            => 'Architecture',
 						'unsplash_gallery' => 'https://unsplash.com/collections/6802313/architecture/f59e19df059789d86d1066ea80130a87',
-						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/06/neve-caffe-new-ss.jpg',
+						'screenshot'       => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/06/neve-caffe-new-ss.jpg',
 					),
 					'neve-beaver-fitness'            => array(
 						'url'              => 'https://demo.themeisle.com/neve-fitness-bb/',
@@ -638,7 +638,7 @@ class Front_End {
 						'remote_url'       => 'https://s20206.pcdn.co/neve-lawyers-bb/',
 						'title'            => 'Lawyers',
 						'unsplash_gallery' => 'https://unsplash.com/collections/4587639/neve-lawyers',
-						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/12/neve-lawyers.jpg',
+						'screenshot'       => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/12/neve-lawyers.jpg',
 					),
 					'neve-beaver-tattoo'             => array(
 						'url'              => 'https://demo.themeisle.com/neve-tatoo-bb/',
@@ -1403,7 +1403,7 @@ class Front_End {
 			return;
 		}
 
-		$this->onboarding_config['editors'][]          = 'gutenberg';
+		$this->onboarding_config['editors'][]           = 'gutenberg';
 		$this->onboarding_config['remote']['gutenberg'] = array(
 			'neve-main-gutenberg'       => array(
 				'url'        => 'https://demo.themeisle.com/neve-onboarding-gutenberg',
