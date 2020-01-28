@@ -116,7 +116,7 @@ class Woocommerce {
 
 
 		add_action( 'admin_init', array( $this, 'set_update_woo_width_flag' ), 9 );
-		add_action( 'admin_init', array( $this, 'update_woo_width' ) );
+		add_action( 'admin_footer', array( $this, 'update_woo_width' ) );
 
 		// Wrap content.
 		add_action( 'neve_after_primary_start', array( $this, 'wrap_pages_start' ) );
@@ -199,11 +199,10 @@ class Woocommerce {
 			return false;
 		}
 
-		$shop_id     = get_option( 'woocommerce_shop_page_id' );
 		$cart_id     = get_option( 'woocommerce_cart_page_id' );
 		$checkout_id = get_option( 'woocommerce_checkout_page_id' );
 		$my_account  = get_option( 'woocommerce_myaccount_page_id' );
-		$pages       = array( $shop_id, $cart_id, $checkout_id, $my_account );
+		$pages       = array( $cart_id, $checkout_id, $my_account );
 		foreach ( $pages as $page_id ) {
 			if ( empty( $page_id ) ) {
 				continue;
