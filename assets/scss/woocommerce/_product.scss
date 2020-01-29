@@ -27,6 +27,20 @@
 
 	.entry-summary > form.cart {
 		display: flex;
+		align-items: center;
+
+		> a, > button {
+			align-self: center;
+		}
+
+		.single_variation_wrap {
+			width: 100%;
+		}
+
+		.wc-forward {
+			margin-left: 4px;
+			flex-basis: 50%;
+		}
 
 		&.variations_form {
 			flex-direction: column;
@@ -38,6 +52,7 @@
 
 		.group_table td {
 			vertical-align: middle;
+
 			label {
 				margin-bottom: 0;
 			}
@@ -45,7 +60,9 @@
 
 		.woocommerce-variation-add-to-cart {
 			display: flex;
+			align-items: center;
 		}
+
 		.woocommerce-grouped-product-list {
 			width: 100%;
 		}
@@ -260,6 +277,15 @@
 	}
 }
 
+@mixin product--laptop() {
+	.woocommerce.single {
+		.entry-summary > form.cart {
+			.wc-forward {
+				flex-basis: auto;
+			}
+		}
+	}
+}
 
 .woocommerce ul.products.exclusive-products li.product,
 .woocommerce-page ul.products.exclusive-products li.product {

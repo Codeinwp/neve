@@ -80,6 +80,7 @@ class Woocommerce {
 			.woocommerce .checkout_coupon button.button,
 			.woocommerce #review_form #respond input#submit,
 			.woocommerce .price_slider_amount button.button:not(.nv-sidebar-toggle),
+			.woocommerce .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout),
 			.woocommerce .button.button-secondary.more-details',
 		'hover'            => '
 			,#comments input[type=submit]:hover,
@@ -90,13 +91,12 @@ class Woocommerce {
 			.woocommerce .checkout_coupon button.button:hover,
 			.woocommerce #review_form #respond input#submit:hover,
 			.woocommerce .price_slider_amount button.button:hover,
+			.woocommerce .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout):hover,
 			.woocommerce .button.button-secondary.more-details:hover',
 		'no-padding'       => '
-			,.woocommerce ul[id^="nv-primary-navigation"] .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout),
-			.woocommerce .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout)',
+			,.woocommerce ul[id^="nv-primary-navigation"] .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout)',
 		'no-padding-hover' => '
-			,.woocommerce ul[id^="nv-primary-navigation"] .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout):hover,
-			.woocommerce .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout):hover',
+			,.woocommerce ul[id^="nv-primary-navigation"] .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout):hover',
 	);
 	/**
 	 * Sidebar manager.
@@ -531,6 +531,7 @@ class Woocommerce {
 			$selectors .= '
 			,.woocommerce a.button,
 			.woocommerce .button,
+			.woocommerce a.button.loading,
 			.woocommerce a.button.alt,
 			.woocommerce a.button.button-primary,
 			.woocommerce a.button.checkout-button,
