@@ -1442,7 +1442,6 @@ class Front_End {
 		$this->onboarding_config['upsell']['gutenberg'] = array(
 			'neve-fashion-magazine-gutenberg' => array(
 				'url'        => 'https://demo.themeisle.com/neve-fashion-magazine-gb/',
-				'remote_url' => 'https://s20206.pcdn.co/neve-fashion-magazine-gb/',
 				'title'      => 'Fashion Magazine',
 				'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/10/neve-fashion-mag.jpg',
 			),
