@@ -18,7 +18,7 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
-= 2.5.4 - 2019-12-19  = 
+= 2.5.4 - 2019-12-19  =
 
 * [Feat] New styling options for buttons in the header builder
 * [Feat] New dynamic tags for the header and footer builder
@@ -32,7 +32,7 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 * [Fix] Made default layout full width when the sidebar is empty
 
 
-= 2.5.3 - 2019-12-05  = 
+= 2.5.3 - 2019-12-05  =
 
 * [Feat] New option to allow both logo and site and tagline in different layouts
 * [Feat] New dedicated typography controls for the Primary, Secondary and Footer menus, HTML, Copyright, Cart and Search icons components on the header builder
@@ -915,3 +915,48 @@ Starter Sites screenshots resources:
 * https://mystock.themeisle.com/photo/browser-tabs/
 * https://mystock.themeisle.com/photo/code-in-wp/
 * https://mystock.themeisle.com/photo/tourists/
+
+- Industrial
+* https://mystock.themeisle.com/photo/bucharest-at-night/
+* https://mystock.themeisle.com/photo/two-fast-trains-in-a-train-station/
+* https://mystock.themeisle.com/photo/fishing-boats-2/
+* https://mystock.themeisle.com/photo/engine/
+
+- Adventure
+* https://mystock.themeisle.com/photo/mountain/
+* https://mystock.themeisle.com/photo/mountain-path/
+* https://mystock.themeisle.com/photo/skiers/
+* https://mystock.themeisle.com/photo/picnic-2/
+
+- Product Launch
+* https://mystock.themeisle.com/photo/harley-davidson-motorcycle-with-a-field-of-wheat-behind-it-3/
+* https://stocksnap.io/photo/AJAA85Y0SH
+
+- Accounting
+* https://mystock.themeisle.com/photo/shopping-building-in-copenhagen-center/
+
+- Beauty Shop
+* https://stocksnap.io/photo/JVZSMMHS8J
+* https://stocksnap.io/photo/LHMA01FPBE
+* https://stocksnap.io/photo/V2JTH0ST4Y
+* https://stocksnap.io/photo/S6RLOBPAOZ
+
+- Recruitment Agency
+* https://stocksnap.io/photo/GVUWVKUHZE
+
+- Artist
+* https://mystock.themeisle.com/photo/graffiti/
+* https://stocksnap.io/photo/OZCMRCGRX9
+* https://stocksnap.io/photo/1PY0DYZSDT
+
+- VR Studio
+* https://stocksnap.io/photo/PFHFKXTMYD
+* https://mystock.themeisle.com/photo/scale-model-of-a-street/
+
+- Makeup Artist
+* https://stocksnap.io/photo/F08ZV0M412
+* https://stocksnap.io/photo/G40JKFC5I5
+* https://stocksnap.io/photo/SSSLXNZ1RQ
+
+- Web Agency
+* https://stocksnap.io/photo/KDQNVQNBYD
