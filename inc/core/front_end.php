@@ -966,6 +966,11 @@ class Front_End {
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/12/neve-resume.jpg',
 						'title'      => 'Resume',
 					),
+					'neve-beaver-wellness'              => array(
+						'url'        => 'https://demo.themeisle.com/neve-wellness-bb/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/12/neve-wellness.jpg',
+						'title'      => 'Wellness Spa',
+					),
 					'neve-beaver-courses'               => array(
 						'url'        => 'https://demo.themeisle.com/neve-courses-bb/',
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/12/neve-courses.jpg',
@@ -1000,6 +1005,16 @@ class Front_End {
 						'url'        => 'https://demo.themeisle.com/neve-adventure-bb/',
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/neve-adventure.jpg',
 						'title'      => 'Adventure',
+					),
+					'neve-beaver-product-launch'        => array(
+						'url'        => 'https://demo.themeisle.com/neve-product-launch-bb/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/neve-product-lunch.jpg',
+						'title'      => 'Product Launch',
+					),
+					'neve-beaver-accounting'            => array(
+						'url'        => 'https://demo.themeisle.com/neve-accounting-bb/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/neve-accounting.jpg',
+						'title'      => 'Accounting',
 					),
 				),
 				'elementor'        => array(
@@ -1424,7 +1439,14 @@ class Front_End {
 				'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/11/neve-blogger.jpg',
 			),
 		);
-
+		$this->onboarding_config['upsell']['gutenberg'] = array(
+			'neve-fashion-magazine-gutenberg' => array(
+				'url'        => 'https://demo.themeisle.com/neve-fashion-magazine-gb/',
+				'remote_url' => 'https://s20206.pcdn.co/neve-fashion-magazine-gb/',
+				'title'      => 'Fashion Magazine',
+				'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/10/neve-fashion-mag.jpg',
+			),
+		);
 	}
 
 	/**
