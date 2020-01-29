@@ -188,7 +188,7 @@ class Front_End {
 		$theme_name    = apply_filters( 'ti_wl_theme_name', $theme_options->__get( 'Name' ) );
 
 		$this->onboarding_config = array(
-			'bulk_json' => 'https://s20206.pcdn.co/wp-json/ti-demo-data/data?type=all',
+			'bulk_json'   => 'https://s20206.pcdn.co/wp-json/ti-demo-data/data?type=all',
 			'editors'     => array(
 				'elementor',
 				'brizy',
