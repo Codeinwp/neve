@@ -453,6 +453,7 @@ abstract class Abstract_Component implements Component {
 						],
 					],
 					'section'               => $this->section,
+					'conditional_header'    => $this->get_builder_id() === 'header',
 				]
 			);
 		}
@@ -479,6 +480,7 @@ abstract class Abstract_Component implements Component {
 					'prop' => 'padding',
 				),
 				'section'               => $this->section,
+				'conditional_header'    => $this->get_builder_id() === 'header',
 			]
 		);
 
@@ -502,6 +504,7 @@ abstract class Abstract_Component implements Component {
 					'prop' => 'margin',
 				),
 				'section'               => $this->section,
+				'conditional_header'    => $this->get_builder_id() === 'header',
 			]
 		);
 

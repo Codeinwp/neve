@@ -1,0 +1,37 @@
+{
+  "parser": "babel-eslint",
+  "extends": [
+    "standard",
+    "standard-react"
+  ],
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "rules": {
+    "space-before-function-paren": [
+      "off"
+    ],
+    "react/react-in-jsx-scope": [
+      "off"
+    ],
+    "space-in-parens": [
+      "off"
+    ],
+    "computed-property-spacing": [
+      "off"
+    ],
+    "max-len": [
+      "error",
+      {
+        "code": 100,
+        "tabWidth": 4
+      }
+    ]
+  }
+}
