@@ -199,8 +199,8 @@ class Front_End {
 			'remote'      => array(
 				'elementor'      => array(
 					'neve-main'               => array(
-						'url'        => 'https://demo.themeisle.com/neve/',
-						'remote_url' => 'https://s20206.pcdn.co/neve/',
+						'url'        => 'https://demo.themeisle.com/neve-onboarding/',
+						'remote_url' => 'https://s20206.pcdn.co/neve-onboarding/',
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/neve-original.png',
 						'title'      => 'Original',
 					),
