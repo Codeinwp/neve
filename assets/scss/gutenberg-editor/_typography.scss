@@ -79,9 +79,20 @@
 	//<editor-fold desc="Blockquote">
 	blockquote.wp-block-quote {
 		border: none;
-		text-align: center;
 		margin: $spacing 0;
 		padding: 0;
+
+        &.has-text-align-center{
+          text-align: center;
+        }
+
+        &.has-text-align-left{
+          text-align: left;
+        }
+
+        &.has-text-align-right{
+          text-align: right;
+        }
 
 		p:not(.wp-block-quote__citation) {
 			font-size: 1.1em;

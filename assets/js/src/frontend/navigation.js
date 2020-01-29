@@ -1,12 +1,12 @@
 /* jshint esversion: 6 */
 import {
 	isMobile,
-	neveEach,
 	isIe,
 	unhashUrl,
 	toggleClass,
 	removeClass,
-	addClass
+	addClass,
+	neveEach
 } from '../utils.js';
 
 let pageUrl;
@@ -14,12 +14,13 @@ let pageUrl;
 /**
  * Initialize nav logic.
  */
-export const initNavigation = function() {
+export const initNavigation = ()=> {
 	pageUrl = window.location.href;
 	repositionDropdowns();
 	handleScrollLinks();
 	handleMobileDropdowns();
 	handleSearch();
+	handleMiniCartPosition();
 	if ( isIe() === true ) {
 		handleIeDropdowns();
 	}
@@ -29,14 +30,14 @@ export const initNavigation = function() {
  * Reposition drop downs in case they go off screen.
  * @returns {boolean}
  */
-export const repositionDropdowns = function() {
+export const repositionDropdowns =  () => {
 	if ( isMobile() ) return false;
 
 	let dropDowns = document.querySelectorAll( '.sub-menu .sub-menu' );
 	if ( dropDowns.length === 0 ) return false;
 
 	let windowWidth = window.innerWidth;
-	neveEach( dropDowns, function(dropDown) {
+	neveEach(dropDowns, (dropDown) => {
 		let bounding = dropDown.getBoundingClientRect(),
 				rightDist = bounding.left;
 		if ( /webkit.*mobile/i.test( navigator.userAgent ) ) {
@@ -58,8 +59,8 @@ function handleScrollLinks() {
 	let links = document.querySelectorAll( '.nv-nav-wrap a' );
 	if ( links.length === 0 ) return false;
 
-	neveEach( links, function(link) {
-		link.addEventListener( 'click', function(event) {
+	neveEach( links, (link) => {
+		link.addEventListener( 'click', (event) => {
 			let href = event.target.getAttribute( 'href' );
 			if ( href === null ) return false;
 			if ( unhashUrl( href ) === unhashUrl( pageUrl ) ) {
@@ -74,8 +75,8 @@ function handleScrollLinks() {
  */
 function handleMobileDropdowns() {
 	let carets = document.querySelectorAll( '.caret-wrap' );
-	neveEach( carets, function(caret) {
-		caret.addEventListener( 'click', function(event) {
+	neveEach( carets, (caret) => {
+		caret.addEventListener( 'click', (event) => {
 			event.preventDefault();
 			let subMenu = caret.parentNode.parentNode.querySelector( '.sub-menu' );
 			toggleClass( caret, 'dropdown-open' );
@@ -93,8 +94,8 @@ function handleSearch() {
 			close = document.querySelectorAll( '.close-responsive-search' ),
 			html = document.querySelector( 'html' );
 	// Handle search opening.
-	neveEach( navItem, function(searchItem) {
-		searchItem.addEventListener( 'click', function(e) {
+	neveEach( navItem, (searchItem) => {
+		searchItem.addEventListener( 'click', (e) => {
 			e.stopPropagation();
 			toggleClass( searchItem, 'active' );
 			searchItem.querySelector( '.search-field' ).focus();
@@ -104,16 +105,16 @@ function handleSearch() {
 		} );
 	} );
 	// Don't close thee search if interacted with.
-	neveEach( navSearch, function(item) {
-		item.addEventListener( 'click', function(e) {
+	neveEach(navSearch, (item) => {
+		item.addEventListener( 'click', (e) => {
 			e.stopPropagation();
 		} );
 	} );
 	// Mobile search close buttons.
-	neveEach( close, function(button) {
-		button.addEventListener( 'click', function(e) {
+	neveEach(close, (button) => {
+		button.addEventListener( 'click', (e) => {
 			e.preventDefault();
-			neveEach( navItem, function(search) {
+			neveEach( navItem, ( search ) => {
 				removeClass( search, 'active' );
 			} );
 			let overlay = document.querySelector( '.nav-clickaway-overlay' );
@@ -123,6 +124,23 @@ function handleSearch() {
 		} );
 	} );
 }
+
+/**
+ * Handle the mini cart position in nav.
+ */
+function  handleMiniCartPosition() {
+	let elem = document.querySelectorAll( '.header--row .nv-nav-cart' );
+	if ( elem.length === 0 ){
+		return;
+	}
+	neveEach(elem,(item)=>{
+		let bounding = item.getBoundingClientRect();
+		if ( bounding.left < 0 ) {
+			item.style.left = 0;
+		}
+	});
+}
+window.addEventListener( 'resize', handleMiniCartPosition );
 
 /**
  * Create an overlay to allow closing.
@@ -144,7 +162,7 @@ function createNavOverlay(item, classToRemove, multiple = false) {
 	let primaryNav = document.querySelector( 'header.header' );
 	primaryNav.parentNode.insertBefore( navClickaway, primaryNav );
 
-	navClickaway.addEventListener( 'click', function() {
+	navClickaway.addEventListener( 'click',  () => {
 		removeClass( item, classToRemove );
 		navClickaway.parentNode.removeChild( navClickaway );
 	} );
@@ -157,13 +175,13 @@ function createNavOverlay(item, classToRemove, multiple = false) {
 function handleIeDropdowns() {
 	let dropdowns = document.querySelectorAll(
 			'.header--row[data-show-on="desktop"] .sub-menu' );
-	neveEach( dropdowns, function(dropdown) {
+	neveEach( dropdowns,(dropdown) =>  {
 		let parentItem = dropdown.parentNode;
 
-		parentItem.addEventListener( 'mouseenter', function() {
+		parentItem.addEventListener( 'mouseenter', () => {
 			addClass( dropdown, 'dropdown-open' );
 		} );
-		parentItem.addEventListener( 'mouseleave', function() {
+		parentItem.addEventListener( 'mouseleave', () => {
 			removeClass( dropdown, 'dropdown-open' );
 		} );
 	} );

@@ -6,7 +6,7 @@
   left: 0;
   bottom: 0;
   padding: $spacing-lg $spacing-sm $spacing-sm;
-  z-index: 100;
+  z-index: 1000;
   overflow: scroll;
   transition: all 0.3s ease-out;
   opacity: 0;

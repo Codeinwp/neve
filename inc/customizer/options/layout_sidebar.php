@@ -62,7 +62,7 @@ class Layout_Sidebar extends Base_Customizer {
 					'label'           => __( 'Sitewide Sidebar Layout', 'neve' ),
 					'section'         => 'neve_sidebar',
 					'priority'        => 10,
-					'choices'         => $this->sidebar_layout_choices(),
+					'choices'         => $this->sidebar_layout_choices( 'neve_default_sidebar_layout' ),
 					'active_callback' => array( $this, 'sidewide_options_active_callback' ),
 				),
 				'Neve\Customizer\Controls\Radio_Image'
@@ -115,19 +115,25 @@ class Layout_Sidebar extends Base_Customizer {
 	/**
 	 * Get the sidebar layout choices.
 	 *
+	 * @param string $control_id Name of the control.
+	 *
 	 * @return array
 	 */
-	private function sidebar_layout_choices() {
-		return array(
-			'full-width' => array(
-				'url' => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqAQMAAABknzrDAAAABlBMVEX////V1dXUdjOkAAAAPUlEQVRIx2NgGAUkAcb////Y/+d/+P8AdcQoc8vhH/X/5P+j2kG+GA3CCgrwi43aMWrHqB2jdowEO4YpAACyKSE0IzIuBgAAAABJRU5ErkJggg==',
+	private function sidebar_layout_choices( $control_id ) {
+		return apply_filters(
+			'neve_sidebar_layout_choices',
+			array(
+				'full-width' => array(
+					'url' => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqAQMAAABknzrDAAAABlBMVEX////V1dXUdjOkAAAAPUlEQVRIx2NgGAUkAcb////Y/+d/+P8AdcQoc8vhH/X/5P+j2kG+GA3CCgrwi43aMWrHqB2jdowEO4YpAACyKSE0IzIuBgAAAABJRU5ErkJggg==',
+				),
+				'left'       => array(
+					'url' => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqAgMAAAAjP0ATAAAACVBMVEX///8+yP/V1dXG9YqxAAAAWElEQVR42mNgGAXDE4RCQMDAKONaBQINWqtWrWBatQDIaxg8ygYqQIAOYwC6bwHUmYNH2eBPSMhgBQXKRr0w6oVRL4x6YdQLo14Y9cKoF0a9QCO3jYLhBADvmFlNY69qsQAAAABJRU5ErkJggg==',
+				),
+				'right'      => array(
+					'url' => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqAgMAAAAjP0ATAAAACVBMVEX///8+yP/V1dXG9YqxAAAAWUlEQVR42mNgGAUjB4iGgkEIzZStAoEVTECiQWsVkLdiECkboAABOmwBF9BtUGcOImUDEiCkJCQU0ECBslEvjHph1AujXhj1wqgXRr0w6oVRLwyEF0bBUAUAz/FTNXm+R/MAAAAASUVORK5CYII=',
+				),
 			),
-			'left'       => array(
-				'url' => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqAgMAAAAjP0ATAAAACVBMVEX///8+yP/V1dXG9YqxAAAAWElEQVR42mNgGAXDE4RCQMDAKONaBQINWqtWrWBatQDIaxg8ygYqQIAOYwC6bwHUmYNH2eBPSMhgBQXKRr0w6oVRL4x6YdQLo14Y9cKoF0a9QCO3jYLhBADvmFlNY69qsQAAAABJRU5ErkJggg==',
-			),
-			'right'      => array(
-				'url' => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqAgMAAAAjP0ATAAAACVBMVEX///8+yP/V1dXG9YqxAAAAWUlEQVR42mNgGAUjB4iGgkEIzZStAoEVTECiQWsVkLdiECkboAABOmwBF9BtUGcOImUDEiCkJCQU0ECBslEvjHph1AujXhj1wqgXRr0w6oVRLwyEF0bBUAUAz/FTNXm+R/MAAAAASUVORK5CYII=',
-			),
+			$control_id
 		);
 	}
 
@@ -208,19 +214,23 @@ class Layout_Sidebar extends Base_Customizer {
 		}
 		array_push( $sidebar_layout_controls, 'neve_other_pages_sidebar_layout' );
 
+		$default_value = 'right';
 		foreach ( $sidebar_layout_controls as $control_id ) {
+			if ( $control_id === 'neve_single_product_sidebar_layout' ) {
+				$default_value = 'full-width';
+			}
 			$this->add_control(
 				new Control(
 					$control_id,
 					array(
 						'sanitize_callback' => array( $this, 'sanitize_sidebar_layout' ),
-						'default'           => 'right',
+						'default'           => $default_value,
 					),
 					array(
 						'label'           => __( 'Sidebar Layout', 'neve' ),
 						'section'         => 'neve_sidebar',
 						'priority'        => $priority,
-						'choices'         => $this->sidebar_layout_choices(),
+						'choices'         => $this->sidebar_layout_choices( $control_id ),
 						'active_callback' => array( $this, 'advanced_options_active_callback' ),
 					),
 					'Neve\Customizer\Controls\Radio_Image'
@@ -288,7 +298,7 @@ class Layout_Sidebar extends Base_Customizer {
 	 * @return bool
 	 */
 	public function sanitize_sidebar_layout( $value ) {
-		$allowed_values = array( 'left', 'right', 'full-width' );
+		$allowed_values = array( 'left', 'right', 'full-width', 'off-canvas' );
 		if ( ! in_array( $value, $allowed_values, true ) ) {
 			return 'right';
 		}
