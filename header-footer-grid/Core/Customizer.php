@@ -259,7 +259,12 @@ class Customizer {
 						<div class="hfg--cb-devices-switcher">
 						</div>
 						<div class="hfg--cb-conditional-header hidden">
-							<i class="dashicons dashicons-info"/><p><?php echo wp_kses_post( sprintf( __( 'You are customizing the %s Header', 'neve' ), ' <a>' . __( 'Default' ) . '</a> ' ) ); ?></p>
+							<i class="dashicons dashicons-info"/><p>
+							<?php
+								/* translators: %s is the header name */
+								echo wp_kses_post( sprintf( __( 'You are customizing the %s Header', 'neve' ), ' <a>' . __( 'Default' ) . '</a> ' ) );
+							?>
+								</p>
 						</div>
 						<div class="hfg--cb-actions">
 							<?php do_action( 'hfg_builder_panel_actions_buttons' ); ?>
