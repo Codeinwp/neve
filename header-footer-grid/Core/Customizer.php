@@ -262,7 +262,7 @@ class Customizer {
 							<i class="dashicons dashicons-info"/><p>
 							<?php
 								/* translators: %s is the header name */
-								echo wp_kses_post( sprintf( __( 'You are customizing the %s Header', 'neve' ), ' <a>' . __( 'Default' ) . '</a> ' ) );
+								echo wp_kses_post( sprintf( __( 'You are customizing the %s Header', 'neve' ), ' <a>' . __( 'Default', 'neve' ) . '</a> ' ) );
 							?>
 								</p>
 						</div>
