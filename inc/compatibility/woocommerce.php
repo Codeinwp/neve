@@ -208,6 +208,8 @@ class Woocommerce {
 				continue;
 			}
 			update_post_meta( $page_id, 'neve_meta_sidebar', 'full-width' );
+			update_post_meta( $page_id, 'neve_meta_enable_content_width', 'on' );
+			update_post_meta( $page_id, 'neve_meta_content_width', 100 );
 		}
 		update_option( 'neve_update_woo_width', false );
 		return true;
