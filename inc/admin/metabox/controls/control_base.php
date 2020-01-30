@@ -159,9 +159,11 @@ abstract class Control_Base {
 
 			return;
 		} else {
-			// Delete on unset.
-			delete_post_meta( $post_id, $this->id );
-
+			if ( $this->id === 'neve_meta_enable_content_width' ) {
+				update_post_meta( $post_id, 'neve_meta_enable_content_width', 'off' );
+			} else {
+				delete_post_meta( $post_id, $this->id );
+			}
 			return;
 		}
 	}
