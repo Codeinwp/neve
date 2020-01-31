@@ -214,20 +214,17 @@ class Layout_Sidebar extends Base_Customizer {
 		}
 		array_push( $sidebar_layout_controls, 'neve_other_pages_sidebar_layout' );
 
-		$default_value = 'right';
 		foreach ( $sidebar_layout_controls as $control_id ) {
-			if ( $control_id === 'neve_single_product_sidebar_layout' ) {
-				$default_value = 'full-width';
-			}
 			$this->add_control(
 				new Control(
 					$control_id,
 					array(
 						'sanitize_callback' => array( $this, 'sanitize_sidebar_layout' ),
-						'default'           => $default_value,
+						'default'           => $this->get_sidebar_control_default_value( $control_id ),
 					),
 					array(
 						'label'           => __( 'Sidebar Layout', 'neve' ),
+						'description'     => $this->get_sidebar_control_description( $control_id ),
 						'section'         => 'neve_sidebar',
 						'priority'        => $priority,
 						'choices'         => $this->sidebar_layout_choices( $control_id ),
@@ -240,6 +237,58 @@ class Layout_Sidebar extends Base_Customizer {
 		}
 	}
 
+	/**
+	 * Get sidebar control default value.
+	 *
+	 * @param string $control_id Control id.
+	 *
+	 * @return string
+	 */
+	private function get_sidebar_control_default_value( $control_id ) {
+		if ( $control_id === 'neve_single_product_sidebar_layout' ) {
+			return 'full-width';
+		}
+		return 'right';
+	}
+
+	/**
+	 * Get the description for sidebar position.
+	 *
+	 * @param string $control_id Control id.
+	 *
+	 * @return string
+	 */
+	private function get_sidebar_control_description( $control_id ) {
+		if ( $control_id !== 'neve_shop_archive_sidebar_layout' ) {
+			return '';
+		}
+
+		$shop_id = get_option( 'woocommerce_shop_page_id' );
+		if ( empty( $shop_id ) ) {
+			return '';
+		}
+
+		$meta = get_post_meta( $shop_id, 'neve_meta_sidebar', true );
+		if ( empty( $meta ) ) {
+			return '';
+		}
+
+		/* translators: %s is Notice text */
+		$template = '<div class="notice notice-info"><p>%s</p></div>';
+		return sprintf(
+			$template,
+			sprintf(
+				/* translators: %s is edit page link */
+				esc_html__( 'Note: It seems that the shop page has an individual sidebar layout already set. To be able to control the layout from here, %s your page and set the sidebar to "Customizer Setting".', 'neve' ),
+				sprintf(
+					/* translators: %s is edit label */
+					'<a target="_blank" href="' . get_edit_post_link( $shop_id ) . '">%s</a>',
+					__( 'edit', 'neve' )
+				)
+			)
+		);
+
+	}
 	/**
 	 * Add content width controls.
 	 */
@@ -260,7 +309,6 @@ class Layout_Sidebar extends Base_Customizer {
 			);
 		}
 		array_push( $sidebar_layout_controls, 'neve_other_pages_content_width' );
-
 		foreach ( $sidebar_layout_controls as $control_id ) {
 			$this->add_control(
 				new Control(
