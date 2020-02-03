@@ -88,8 +88,22 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
   color: $link_hover_color;
 }
 
+#secondary-menu {
+  .hfg-item-left &, .hfg-item-center & {
+    li:not(:last-child) {
+      padding-right: $spacing-sm;
+    }
+  }
+
+  .hfg-item-right & {
+    li:not(:first-child) {
+      padding-left: $spacing-sm;
+    }
+  }
+}
+
 @mixin nav-menu--laptop() {
-  .primary-menu-ul, #secondary-menu {
+  .primary-menu-ul {
     .hfg-item-left &, .hfg-item-center & {
       li:not(:last-child) {
         padding-right: $spacing-sm;
@@ -102,7 +116,6 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
       }
     }
   }
-
   .row {
     .nv-nav-wrap {
       flex-direction: row;

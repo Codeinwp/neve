@@ -721,6 +721,14 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
   color: #0366d6;
 }
 
+.hfg-item-left #secondary-menu li:not(:last-child), .hfg-item-center #secondary-menu li:not(:last-child) {
+  padding-left: 20px;
+}
+
+.hfg-item-right #secondary-menu li:not(:first-child) {
+  padding-right: 20px;
+}
+
 ul[id^="nv-primary-navigation"] i {
   font-size: inherit;
   line-height: inherit;
@@ -2114,10 +2122,10 @@ audio {
   .nv-empty-sidebar .neve-main > .container .col {
     max-width: 100%;
   }
-  .hfg-item-left .primary-menu-ul li:not(:last-child), .hfg-item-center .primary-menu-ul li:not(:last-child), .hfg-item-left #secondary-menu li:not(:last-child), .hfg-item-center #secondary-menu li:not(:last-child) {
+  .hfg-item-left .primary-menu-ul li:not(:last-child), .hfg-item-center .primary-menu-ul li:not(:last-child) {
     padding-left: 20px;
   }
-  .hfg-item-right .primary-menu-ul li:not(:first-child), .hfg-item-right #secondary-menu li:not(:first-child) {
+  .hfg-item-right .primary-menu-ul li:not(:first-child) {
     padding-right: 20px;
   }
   .row .nv-nav-wrap {
