@@ -18,6 +18,19 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
+= 2.6.0 - 2020-02-03  = 
+
+* [Feat] Adds quantity box back to the product pages 
+* [Feat] Better organize the Woocommerce controls in the customizer
+*  [Fix] Fixed metabox range input style in Firefox 
+* [Fix] Fixed editor alignment for the quote block
+*  [Fix] Fixed sidebar layout not updating on single product pages [Fix] Fixed search results page sidebar when using Elementor
+*  [Fix] Fixed expanded cart positioning
+* New Starter Sites
+*  Web Agency - https://themeisle.com/demo/?theme=Web%20Agency
+*  Blogger -  https://themeisle.com/demo/?theme=Blogger
+
+
 = 2.5.4 - 2019-12-19  =
 
 * [Feat] New styling options for buttons in the header builder
