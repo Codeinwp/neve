@@ -208,7 +208,7 @@ class Front_End {
 						'url'              => 'https://demo.themeisle.com/neve-web-agency/',
 						'remote_url'       => 'https://s20206.pcdn.co/neve-web-agency/',
 						'title'            => 'Web Agency',
-						'screenshot'       => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/neve-web-agency.jpg',
+						'screenshot'       => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/02/neve-web-agency-all-new.png',
 						'unsplash_gallery' => 'https://unsplash.com/collections/9015394/neve-digital-agency/c794fcd505d0ac7fe2134479c3b8f670',
 					),
 					'neve-blogger'            => array(
@@ -1430,7 +1430,7 @@ class Front_End {
 				'url'        => 'https://demo.themeisle.com/neve-web-agency-gb/',
 				'remote_url' => 'https://s20206.pcdn.co/neve-web-agency-gb/',
 				'title'      => 'Web Agency',
-				'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/neve-web-agency.jpg',
+				'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/02/neve-web-agency-all-new.png',
 			),
 			'neve-blogger-gutenberg'    => array(
 				'url'        => 'https://demo.themeisle.com/neve-blogger-gb/',
