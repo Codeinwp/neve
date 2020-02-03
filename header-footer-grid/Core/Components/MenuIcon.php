@@ -58,6 +58,11 @@ class MenuIcon extends Abstract_Component {
 		'desktop-unit' => 'px',
 	);
 
+	/**
+	 * Close button target CSS selector.
+	 *
+	 * @var string
+	 */
 	private $close_button = '.header-menu-sidebar .close-sidebar-panel .navbar-toggle';
 
 	/**
@@ -123,10 +128,6 @@ class MenuIcon extends Abstract_Component {
 							'button' => $this->close_button,
 							'text'   => '.icon-bar',
 						],
-						[
-							'button' => '.caret-wrap',
-							'text'   => '.caret',
-						],
 					],
 
 				),
@@ -157,6 +158,7 @@ class MenuIcon extends Abstract_Component {
 
 		if ( ! empty( $appearance['text'] ) ) {
 			$css_array[ $this->default_selector ]['color']                           = $appearance['text'];
+			$css_array[ $this->close_button ]['color']                               = $appearance['text'];
 			$css_array[ $this->default_selector . ' .icon-bar' ]['background-color'] = $appearance['text'];
 			$css_array[ $this->close_button . ' .icon-bar' ]['background-color']     = $appearance['text'];
 			if ( $appearance['type'] === 'outline' ) {
