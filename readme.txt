@@ -568,8 +568,7 @@ All  images are licensed under CC0.
 
 Screenshot resources:
 
-* http://mystock.themeisle.com/photo/statue-2/
-* https://mystock.themeisle.com/photo/path/
+* https://www.pexels.com/photo/landscape-photography-of-mountains-covered-in-snow-691668/
 
 Starter Sites screenshots resources:
 
@@ -959,4 +958,4 @@ Starter Sites screenshots resources:
 * https://stocksnap.io/photo/SSSLXNZ1RQ
 
 - Web Agency
-* https://stocksnap.io/photo/KDQNVQNBYD
+* https://www.pexels.com/photo/landscape-photography-of-mountains-covered-in-snow-691668/
