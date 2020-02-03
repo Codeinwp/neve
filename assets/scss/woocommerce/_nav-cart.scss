@@ -1,4 +1,12 @@
 .menu-item-nav-cart {
+  &:last-child{
+    .nv-nav-cart{
+      right: 0;
+    }
+  }
+  .nv-nav-cart{
+    right: 20px;
+  }
   .nv-cart {
     display: flex;
   }
@@ -30,6 +38,7 @@ ul[id^="nv-primary-navigation"] a.button {
 }
 
 .menu-item-nav-cart.responsive-nav-cart {
+  position: relative;
   > a {
     display: flex;
     color: $git-black;

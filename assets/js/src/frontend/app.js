@@ -16,7 +16,7 @@ function onResizeDebouncedRun () {
 /**
  * Run JS on load.
  */
-window.addEventListener('load', function () {
+window.addEventListener('load', () => {
   run();
 });
 
@@ -24,7 +24,7 @@ window.addEventListener('load', function () {
  * Do resize events debounced.
  */
 let neveResizeTimeout;
-window.addEventListener('resize', function () {
+window.addEventListener('resize', () => {
   clearTimeout(neveResizeTimeout);
   neveResizeTimeout = setTimeout(onResizeDebouncedRun, 500);
 });

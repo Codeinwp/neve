@@ -80,7 +80,7 @@ class Loader {
 
 		wp_enqueue_script(
 			'neve-customizer-controls',
-			NEVE_ASSETS_URL . 'js/customizer-controls' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.js',
+			NEVE_ASSETS_URL . 'js/build/all/customizer-controls.js',
 			array(
 				'jquery',
 				'wp-color-picker',
@@ -141,7 +141,7 @@ class Loader {
 		);
 		wp_register_script(
 			'neve-customizer-preview',
-			NEVE_ASSETS_URL . 'js/customizer-preview.js',
+			NEVE_ASSETS_URL . 'js/build/all/customizer-preview.js',
 			array(),
 			NEVE_VERSION,
 			true

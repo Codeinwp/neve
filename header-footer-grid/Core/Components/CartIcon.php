@@ -71,9 +71,9 @@ class CartIcon extends Abstract_Component {
 	/**
 	 * Method to filter component loading if needed.
 	 *
+	 * @return bool
 	 * @since   1.0.1
 	 * @access  public
-	 * @return bool
 	 */
 	public function is_active() {
 		return class_exists( 'WooCommerce', false );
@@ -98,6 +98,7 @@ class CartIcon extends Abstract_Component {
 					'type' => 'svg-icon-size',
 				),
 				'section'               => $this->section,
+				'conditional_header'    => true,
 			]
 		);
 

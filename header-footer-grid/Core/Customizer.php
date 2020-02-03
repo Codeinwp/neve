@@ -258,11 +258,19 @@ class Customizer {
 					<div class="hfg--cb-header">
 						<div class="hfg--cb-devices-switcher">
 						</div>
+						<div class="hfg--cb-conditional-header hidden">
+							<i class="dashicons dashicons-info"/><p>
+							<?php
+								/* translators: %s is the header name */
+								echo wp_kses_post( sprintf( __( 'You are customizing the %s Header', 'neve' ), ' <a>' . __( 'Default', 'neve' ) . '</a> ' ) );
+							?>
+								</p>
+						</div>
 						<div class="hfg--cb-actions">
 							<?php do_action( 'hfg_builder_panel_actions_buttons' ); ?>
 							<a class="button button-secondary hfg--panel-close" href="#">
 								<span class="close-text"><i class="dashicons dashicons-arrow-down-alt2"
-											style="margin-top: 4px;"></i> <?php esc_html_e( 'Close', 'neve' ); ?></span>
+										style="margin-top: 4px;"></i> <?php esc_html_e( 'Close', 'neve' ); ?></span>
 								<span class="panel-name-text">
 									<i class="dashicons dashicons-arrow-up-alt2" style="margin-top: 4px;"></i>
 									{{ data.title }}
@@ -277,16 +285,16 @@ class Customizer {
 
 		<script type="text/html" id="tmpl-hfg--cb-item">
 			<div class="grid-stack-item item-from-list for-s-{{ data.section }} order-{{data.elementOrder}}"
-					title="{{ data.name }}"
-					data-id="{{ data.id }}"
-					data-slug="{{ data.componentSlug }}"
-					data-section="{{ data.section }}"
-					data-control="{{ data.control }}"
-					data-gs-x="{{ data.x }}"
-					data-gs-y="{{ data.y }}"
-					data-gs-width="{{ data.width }}"
-					data-df-width="{{ data.width }}"
-					data-gs-height="1"
+				title="{{ data.name }}"
+				data-id="{{ data.id }}"
+				data-slug="{{ data.componentSlug }}"
+				data-section="{{ data.section }}"
+				data-control="{{ data.control }}"
+				data-gs-x="{{ data.x }}"
+				data-gs-y="{{ data.y }}"
+				data-gs-width="{{ data.width }}"
+				data-df-width="{{ data.width }}"
+				data-gs-height="1"
 			>
 				<div class="item-tooltip" data-section="{{ data.section }}">{{ data.name }}</div>
 				<div class="grid-stack-item-content">
@@ -304,7 +312,7 @@ class Customizer {
 					<div class="hfg-component-search">
 						<i class="dashicons dashicons-search"></i>
 						<input class="component-search" type="search"
-								placeholder="<?php esc_html_e( 'Search Components', 'neve' ); ?>..."/>
+							placeholder="<?php esc_html_e( 'Search Components', 'neve' ); ?>..."/>
 					</div>
 					<button class="close button button-link">
 						<i class="dashicons dashicons-no"></i>

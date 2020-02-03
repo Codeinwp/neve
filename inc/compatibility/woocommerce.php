@@ -76,27 +76,27 @@ class Woocommerce {
 			,.woocommerce-cart table.cart td.actions .coupon > .input-text + .button,
 			.woocommerce-checkout #neve-checkout-coupon .woocommerce-form-coupon .form-row-last button,
 			.woocommerce button.button,
-			.woocommerce a.added_to_cart, 
-			.woocommerce .checkout_coupon button.button, 
+			.woocommerce a.added_to_cart,
+			.woocommerce .checkout_coupon button.button,
 			.woocommerce #review_form #respond input#submit,
 			.woocommerce .price_slider_amount button.button:not(.nv-sidebar-toggle),
+			.woocommerce .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout),
 			.woocommerce .button.button-secondary.more-details',
 		'hover'            => '
 			,#comments input[type=submit]:hover,
 			.woocommerce-cart table.cart td.actions .coupon > .input-text + .button:hover,
 			.woocommerce-checkout #neve-checkout-coupon .woocommerce-form-coupon .form-row-last button:hover,
-			.woocommerce button.button:hover, 
-			.woocommerce a.added_to_cart:hover, 
-			.woocommerce .checkout_coupon button.button:hover, 
+			.woocommerce button.button:hover,
+			.woocommerce a.added_to_cart:hover,
+			.woocommerce .checkout_coupon button.button:hover,
 			.woocommerce #review_form #respond input#submit:hover,
 			.woocommerce .price_slider_amount button.button:hover,
+			.woocommerce .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout):hover,
 			.woocommerce .button.button-secondary.more-details:hover',
 		'no-padding'       => '
-			,.woocommerce ul[id^="nv-primary-navigation"] .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout), 
-			.woocommerce .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout)',
+			,.woocommerce ul[id^="nv-primary-navigation"] .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout)',
 		'no-padding-hover' => '
-			,.woocommerce ul[id^="nv-primary-navigation"] .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout):hover, 
-			.woocommerce .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout):hover',
+			,.woocommerce ul[id^="nv-primary-navigation"] .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout):hover',
 	);
 	/**
 	 * Sidebar manager.
@@ -113,6 +113,10 @@ class Woocommerce {
 			return;
 		}
 		$this->sidebar_manager = new Layout_Sidebar();
+
+
+		add_action( 'admin_init', array( $this, 'set_update_woo_width_flag' ), 9 );
+		add_action( 'admin_footer', array( $this, 'update_woo_width' ) );
 
 		// Wrap content.
 		add_action( 'neve_after_primary_start', array( $this, 'wrap_pages_start' ) );
@@ -145,8 +149,6 @@ class Woocommerce {
 		 */
 		add_filter( 'woocommerce_add_to_cart_fragments', array( $this, 'cart_link_fragment' ) );
 
-		add_filter( 'woocommerce_is_sold_individually', array( $this, 'remove_quantity' ), 10, 2 );
-
 		remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 );
 
 		add_filter( 'woocommerce_product_description_heading', '__return_false' );
@@ -158,15 +160,58 @@ class Woocommerce {
 	}
 
 	/**
-	 * Remove quantity input on single product.
+	 * Set a flag that tells the plugin that woocommerce pages were created from their tool.
 	 *
 	 * @return bool
 	 */
-	public function remove_quantity() {
-		if ( ! is_product() ) {
+	public function set_update_woo_width_flag() {
+
+		if ( ! isset( $_GET['page'] ) ) {
 			return false;
 		}
 
+		$current_page = sanitize_text_field( wp_unslash( $_GET['page'] ) );
+		if ( 'wc-status' !== $current_page && 'wc-setup' !== $current_page ) {
+			return false;
+		}
+
+		if ( $current_page === 'wc-status' && ( ! isset( $_GET['action'] ) || ! isset( $_GET['_wpnonce'] ) || 'install_pages' !== sanitize_text_field( wp_unslash( $_GET['action'] ) ) ) ) {
+			return false;
+		}
+
+		if ( $current_page === 'wc-setup' && ( ! isset( $_GET['step'] ) || 'payment' !== sanitize_text_field( wp_unslash( $_GET['step'] ) ) ) ) {
+			return false;
+		}
+
+		update_option( 'neve_update_woo_width', 'yes' );
+		set_transient( 'woocommerce_shop_page_id', 'executed', 10 * MINUTE_IN_SECONDS );
+
+		return true;
+	}
+
+	/**
+	 * Update WooCommerce pages after the pages were created from their tool,
+	 *
+	 * @return bool
+	 */
+	public function update_woo_width() {
+		if ( get_option( 'neve_update_woo_width' ) !== 'yes' ) {
+			return false;
+		}
+
+		$cart_id     = get_option( 'woocommerce_cart_page_id' );
+		$checkout_id = get_option( 'woocommerce_checkout_page_id' );
+		$my_account  = get_option( 'woocommerce_myaccount_page_id' );
+		$pages       = array( $cart_id, $checkout_id, $my_account );
+		foreach ( $pages as $page_id ) {
+			if ( empty( $page_id ) ) {
+				continue;
+			}
+			update_post_meta( $page_id, 'neve_meta_sidebar', 'full-width' );
+			update_post_meta( $page_id, 'neve_meta_enable_content_width', 'on' );
+			update_post_meta( $page_id, 'neve_meta_content_width', 100 );
+		}
+		update_option( 'neve_update_woo_width', false );
 		return true;
 	}
 
@@ -546,6 +591,7 @@ class Woocommerce {
 			$selectors .= '
 			,.woocommerce a.button,
 			.woocommerce .button,
+			.woocommerce a.button.loading,
 			.woocommerce a.button.alt,
 			.woocommerce a.button.button-primary,
 			.woocommerce a.button.checkout-button,
@@ -561,7 +607,8 @@ class Woocommerce {
 			.woocommerce .checkout.wc-forward,
 			.woocommerce button#place_order,
 			.woocommerce .return-to-shop > .button,
-			.woocommerce .button.woocommerce-form-login__submit';
+			.woocommerce .button.woocommerce-form-login__submit,
+			.woocommerce.single .quantity input';
 		}
 
 		if ( $theme_mod === 'neve_secondary_button_padding' ) {

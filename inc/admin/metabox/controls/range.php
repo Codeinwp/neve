@@ -37,22 +37,28 @@ class Range extends Control_Base {
 			$class      .= ' neve-dependent';
 		}
 
-		$markup = '<style>.neve-range-input{display: flex; align-items: center; justify-content: space-between;}.neve-range-input.neve-hidden{display: none;}</style>';
+		$markup = '
+<style>
+.neve-range-input{display: flex; align-items: center;}
+.neve-range-input .nv-range{flex-grow: 1; margin-right: 5px;}
+.neve-range-input .nv-number{min-width: 0; margin-left: auto;}
+.neve-range-input.neve-hidden{display: none;}
+</style>';
 
 		$markup .= '<p class="' . esc_attr( $class ) . '" ' . esc_attr( $dependency ) . ' >';
-		$markup .= '<input type="range" 
-		value="' . esc_attr( $value ) . '" 
+		$markup .= '<input type="range"
+		value="' . esc_attr( $value ) . '"
 		id="' . esc_attr( $this->id ) . '-range' . '"
-		class="nv-range" 
-		name="' . esc_attr( $this->id ) . '" 
-		min="' . esc_attr( $this->settings['min'] ) . '" 
+		class="nv-range"
+		name="' . esc_attr( $this->id ) . '"
+		min="' . esc_attr( $this->settings['min'] ) . '"
 		max="' . esc_attr( $this->settings['max'] ) . '" >';
-		$markup .= '<input type="number" 
-		value="' . esc_attr( $value ) . '" 
-		id="' . esc_attr( $this->id ) . '" 
-		class="nv-number" 
-		name="' . esc_attr( $this->id ) . '" 
-		min="' . esc_attr( $this->settings['min'] ) . '" 
+		$markup .= '<input type="number"
+		value="' . esc_attr( $value ) . '"
+		id="' . esc_attr( $this->id ) . '"
+		class="nv-number"
+		name="' . esc_attr( $this->id ) . '"
+		min="' . esc_attr( $this->settings['min'] ) . '"
 		max="' . esc_attr( $this->settings['max'] ) . '" >';
 		$markup .= '</p>';
 

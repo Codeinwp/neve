@@ -81,76 +81,63 @@ class Nav extends Abstract_Component {
 	public function add_settings() {
 		SettingsManager::get_instance()->add(
 			[
-				'id'                => self::STYLE_ID,
-				'group'             => $this->get_class_const( 'COMPONENT_ID' ),
-				'tab'               => SettingsManager::TAB_STYLE,
-				'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
-				'sanitize_callback' => 'wp_filter_nohtml_kses',
-				'default'           => 'style-plain',
-				'label'             => __( 'Skin Mode', 'neve' ),
-				'type'              => '\Neve\Customizer\Controls\Radio_Image',
-				'options'           => [
-					'choices' => array(
-						'style-plain'         => array(
-							'url'  => Settings\Config::get_url() . '/assets/images/customizer/menu_style_1.svg',
-							'name' => '',
-						),
-						'style-full-height'   => array(
-							'url'  => Settings\Config::get_url() . '/assets/images/customizer/menu_style_2.svg',
-							'name' => '',
-						),
-						'style-border-bottom' => array(
-							'url'  => Settings\Config::get_url() . '/assets/images/customizer/menu_style_3.svg',
-							'name' => '',
-						),
-						'style-border-top'    => array(
-							'url'  => Settings\Config::get_url() . '/assets/images/customizer/menu_style_4.svg',
-							'name' => '',
-						),
-					),
-
+				'id'                 => self::STYLE_ID,
+				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'                => SettingsManager::TAB_STYLE,
+				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
+				'sanitize_callback'  => 'wp_filter_nohtml_kses',
+				'default'            => 'style-plain',
+				'conditional_header' => true,
+				'label'              => __( 'Skin Mode', 'neve' ),
+				'type'               => '\Neve\Customizer\Controls\React\Radio_Buttons',
+				'section'            => $this->section,
+				'options'            => [
+					'large_buttons' => true,
+					'is_for'        => 'menu',
 				],
-				'section'           => $this->section,
 			]
 		);
 
 		SettingsManager::get_instance()->add(
 			[
-				'id'                => self::COLOR_ID,
-				'group'             => $this->get_class_const( 'COMPONENT_ID' ),
-				'tab'               => SettingsManager::TAB_STYLE,
-				'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
-				'sanitize_callback' => 'sanitize_hex_color',
-				'default'           => '#404248',
-				'label'             => __( 'Items Color', 'neve' ),
-				'type'              => '\WP_Customize_Color_Control',
-				'section'           => $this->section,
+				'id'                 => self::COLOR_ID,
+				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'                => SettingsManager::TAB_STYLE,
+				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
+				'sanitize_callback'  => 'sanitize_hex_color',
+				'default'            => '#404248',
+				'label'              => __( 'Items Color', 'neve' ),
+				'type'               => 'neve_color_control',
+				'section'            => $this->section,
+				'conditional_header' => true,
 			]
 		);
 		SettingsManager::get_instance()->add(
 			[
-				'id'                => self::ACTIVE_COLOR_ID,
-				'group'             => $this->get_class_const( 'COMPONENT_ID' ),
-				'tab'               => SettingsManager::TAB_STYLE,
-				'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
-				'sanitize_callback' => 'sanitize_hex_color',
-				'default'           => '#0366d6',
-				'label'             => __( 'Active Item Color', 'neve' ),
-				'type'              => '\WP_Customize_Color_Control',
-				'section'           => $this->section,
+				'id'                 => self::ACTIVE_COLOR_ID,
+				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'                => SettingsManager::TAB_STYLE,
+				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
+				'sanitize_callback'  => 'sanitize_hex_color',
+				'default'            => '#0366d6',
+				'label'              => __( 'Active Item Color', 'neve' ),
+				'type'               => 'neve_color_control',
+				'section'            => $this->section,
+				'conditional_header' => true,
 			]
 		);
 		SettingsManager::get_instance()->add(
 			[
-				'id'                => self::HOVER_COLOR_ID,
-				'group'             => $this->get_class_const( 'COMPONENT_ID' ),
-				'tab'               => SettingsManager::TAB_STYLE,
-				'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
-				'sanitize_callback' => 'sanitize_hex_color',
-				'default'           => '#0366d6',
-				'label'             => __( 'Items Hover Color', 'neve' ),
-				'type'              => '\WP_Customize_Color_Control',
-				'section'           => $this->section,
+				'id'                 => self::HOVER_COLOR_ID,
+				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'                => SettingsManager::TAB_STYLE,
+				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
+				'sanitize_callback'  => 'sanitize_hex_color',
+				'default'            => '#0366d6',
+				'label'              => __( 'Items Hover Color', 'neve' ),
+				'type'               => 'neve_color_control',
+				'section'            => $this->section,
+				'conditional_header' => true,
 			]
 		);
 
