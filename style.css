@@ -1585,6 +1585,10 @@ article {
   margin: 40px 0;
 }
 
+#comments .comment-reply-title {
+  margin-bottom: 5px;
+}
+
 #comments .comment-reply-title small {
   float: right;
 }
