@@ -33,7 +33,7 @@
 		"@rollup/plugin-multi-entry": "^3.0.0",
 		"@rollup/plugin-node-resolve": "^7.0.0",
 		"@size-limit/preset-app": "^3.0.1",
-		"@size-limit/webpack": "^3.0.0",
+		"@size-limit/webpack": "^3.0.1",
 		"babel-loader": "^8.0.6",
 		"core-js": "^3.6.4",
 		"cross-env": "^7.0.0",
