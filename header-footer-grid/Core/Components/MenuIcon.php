@@ -59,6 +59,13 @@ class MenuIcon extends Abstract_Component {
 	);
 
 	/**
+	 * Close button target CSS selector.
+	 *
+	 * @var string
+	 */
+	private $close_button = '.header-menu-sidebar .close-sidebar-panel .navbar-toggle';
+
+	/**
 	 * MenuIcon constructor.
 	 *
 	 * @since   1.0.0
@@ -115,6 +122,15 @@ class MenuIcon extends Abstract_Component {
 					'no_hover' => true,
 				],
 				'live_refresh_selector' => $this->default_selector,
+				'live_refresh_css_prop' => array(
+					'additional_buttons' => [
+						[
+							'button' => $this->close_button,
+							'text'   => '.icon-bar',
+						],
+					],
+
+				),
 				'conditional_header'    => true,
 			]
 		);
@@ -132,26 +148,33 @@ class MenuIcon extends Abstract_Component {
 
 		if ( isset( $appearance['borderRadius'] ) ) {
 			$css_array[ $this->default_selector ]['border-radius'] = $appearance['borderRadius'] . 'px';
+			$css_array[ $this->close_button ]['border-radius']     = $appearance['borderRadius'] . 'px';
 		}
 
 		if ( ! empty( $appearance['background'] ) ) {
 			$css_array[ $this->default_selector ]['background-color'] = $appearance['background'];
+			$css_array[ $this->close_button ]['background-color']     = $appearance['background'];
 		}
 
 		if ( ! empty( $appearance['text'] ) ) {
 			$css_array[ $this->default_selector ]['color']                           = $appearance['text'];
+			$css_array[ $this->close_button ]['color']                               = $appearance['text'];
 			$css_array[ $this->default_selector . ' .icon-bar' ]['background-color'] = $appearance['text'];
+			$css_array[ $this->close_button . ' .icon-bar' ]['background-color']     = $appearance['text'];
 			if ( $appearance['type'] === 'outline' ) {
 				$css_array[ $this->default_selector ]['border-color'] = $appearance['text'];
+				$css_array[ $this->close_button ]['border-color']     = $appearance['text'];
 			}
 		}
 
 		if ( ! empty( $appearance['borderWidth'] ) && $appearance['type'] === 'outline' ) {
 			$css_array[ $this->default_selector ]['border'] = $appearance['borderWidth'] . 'px solid';
+			$css_array[ $this->close_button ]['border']     = $appearance['borderWidth'] . 'px solid';
 		}
 
 		if ( $appearance['type'] !== 'outline' ) {
 			$css_array[ $this->default_selector ]['border'] = 'none';
+			$css_array[ $this->close_button ]['border']     = 'none';
 		}
 
 		return parent::add_style( $css_array );

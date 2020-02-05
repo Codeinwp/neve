@@ -19,18 +19,6 @@
   }
 }
 
-@mixin caret() {
-  content: " ";
-  height: 6px;
-  width: 6px;
-  position: relative;
-  display: inline-block;
-  border: 2px solid;
-  border-radius: 1px;
-  border-left: 0;
-  border-bottom: 0;
-}
-
 @mixin soft-box-shadow( $inverted : 'false' ) {
   @if $inverted == 'false' {
     -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
