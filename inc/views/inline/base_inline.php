@@ -91,6 +91,9 @@ abstract class Base_Inline {
 		foreach ( $media_queries as $media_query ) {
 			$settings = $styles;
 			foreach ( $settings as $index => $setting ) {
+				if ( ! isset( $setting['value'] ) || ! isset( $setting['value'][ $media_query ] ) ) {
+					continue;
+				}
 				$settings[ $index ]['value'] = $setting['value'][ $media_query ];
 			}
 			$this->add_style( $settings, $selectors, $media_query );

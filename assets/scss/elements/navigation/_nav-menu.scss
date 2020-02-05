@@ -93,7 +93,34 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
   color: $link_hover_color;
 }
 
+#secondary-menu {
+  .hfg-item-left &, .hfg-item-center & {
+    li:not(:last-child) {
+      padding-right: $spacing-sm;
+    }
+  }
+
+  .hfg-item-right & {
+    li:not(:first-child) {
+      padding-left: $spacing-sm;
+    }
+  }
+}
+
 @mixin nav-menu--laptop() {
+  .primary-menu-ul {
+    .hfg-item-left &, .hfg-item-center & {
+      li:not(:last-child) {
+        padding-right: $spacing-sm;
+      }
+    }
+
+    .hfg-item-right & {
+      li:not(:first-child) {
+        padding-left: $spacing-sm;
+      }
+    }
+  }
   .row {
     .nv-nav-wrap {
       flex-direction: row;
@@ -119,16 +146,11 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
       overflow-y: inherit;
       max-height: inherit;
       margin-left: auto;
-      justify-content: flex-start;
 
       > li {
         width: inherit;
         padding: 10px 0;
-
-        &:not(:last-child) {
-          padding-right: $spacing-sm;
-        }
-
+        
         > a {
           display: flex;
           align-items: center;
