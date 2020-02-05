@@ -79,6 +79,21 @@ class Button extends Abstract_Component {
 		$this->set_property( 'width', 2 );
 		$this->set_property( 'section', 'header_button' );
 		$this->set_property( 'icon', 'admin-links' );
+		$this->set_property( 'is_auto_width', true );
+		$this->set_property(
+			'default_margin_value',
+			array_merge(
+				$this->default_margin_value,
+				array(
+					'desktop' => array(
+						'top'    => 0,
+						'right'  => 0,
+						'bottom' => 0,
+						'left'   => 20,
+					),
+				) 
+			) 
+		);
 	}
 
 	/**
