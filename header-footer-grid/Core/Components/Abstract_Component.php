@@ -11,6 +11,7 @@
 
 namespace HFG\Core\Components;
 
+use HFG\Core\Builder\Abstract_Builder;
 use HFG\Core\Interfaces\Component;
 use HFG\Core\Settings;
 use HFG\Core\Settings\Manager as SettingsManager;
@@ -570,8 +571,8 @@ abstract class Abstract_Component implements Component {
 	 * Render component markup.
 	 */
 	public function render() {
-		self::$current_component = $this->get_id();
-
+		self::$current_component           = $this->get_id();
+		Abstract_Builder::$current_builder = $this->get_builder_id();
 		if ( is_customize_preview() ) {
 			$style = $this->css_array_to_css( $this->add_style() );
 			echo '<style type="text/css">' . $style . '</style>';  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
