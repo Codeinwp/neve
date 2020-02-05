@@ -639,6 +639,7 @@ blockquote.wp-block-quote.is-style-large cite {
   color: #404248;
   width: 100%;
   display: flex;
+  align-items: center;
   position: relative;
 }
 
@@ -647,6 +648,17 @@ blockquote.wp-block-quote.is-style-large cite {
   width: 100%;
   display: block;
   position: relative;
+}
+
+.primary-menu-ul .amp-caret-wrap {
+  z-index: 1000;
+  right: 0;
+  position: absolute;
+  top: 5px;
+}
+
+.primary-menu-ul .amp-caret-wrap svg {
+  width: 1em;
 }
 
 .primary-menu-ul .amp-desktop-caret-wrap {
@@ -686,39 +698,33 @@ blockquote.wp-block-quote.is-style-large cite {
 }
 
 .caret {
-  content: " ";
-  height: 6px;
-  width: 6px;
-  position: relative;
-  display: inline-block;
-  border: 2px solid;
-  border-radius: 1px;
-  border-left: 0;
-  border-bottom: 0;
-  transform: rotate(135deg);
-  color: #676767;
-  top: -4px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.caret svg {
   transition: all 0.3s ease;
 }
 
-.dropdown-open.caret-wrap > .caret {
-  transform: rotate(-45deg);
-  top: -2px;
+.dropdown-open.caret-wrap > .caret svg {
+  transform: rotate(-180deg);
 }
 
 .caret-wrap {
-  position: absolute;
-  top: 0;
-  right: 0;
-  cursor: pointer;
-  border-radius: 3px;
-  border: 1px solid #c9c9c9;
-  padding: 0 10px;
-  transition: all 0.3s ease;
+  margin-left: auto;
 }
 
 ul[id^="nv-primary-navigation"] .current-menu-item > a {
   color: #0366d6;
+}
+
+.hfg-item-left #secondary-menu li:not(:last-child), .hfg-item-center #secondary-menu li:not(:last-child) {
+  padding-right: 20px;
+}
+
+.hfg-item-right #secondary-menu li:not(:first-child) {
+  padding-left: 20px;
 }
 
 ul[id^="nv-primary-navigation"] i {
@@ -1585,6 +1591,10 @@ article {
   margin: 40px 0;
 }
 
+#comments .comment-reply-title {
+  margin-bottom: 5px;
+}
+
 #comments .comment-reply-title small {
   float: right;
 }
@@ -2114,17 +2124,16 @@ audio {
   .nv-empty-sidebar .neve-main > .container .col {
     max-width: 100%;
   }
+  .hfg-item-left .primary-menu-ul li:not(:last-child), .hfg-item-center .primary-menu-ul li:not(:last-child) {
+    padding-right: 20px;
+  }
+  .hfg-item-right .primary-menu-ul li:not(:first-child) {
+    padding-left: 20px;
+  }
   .row .nv-nav-wrap {
     flex-direction: row;
     align-items: center;
     padding-bottom: 0;
-  }
-  .row li > .caret-wrap {
-    float: right;
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
   }
   .row .primary-menu-ul .amp-caret-wrap {
     display: none;
@@ -2140,14 +2149,10 @@ audio {
     overflow-y: inherit;
     max-height: inherit;
     margin-left: auto;
-    justify-content: flex-start;
   }
   .row .primary-menu-ul > li {
     width: inherit;
     padding: 10px 0;
-  }
-  .row .primary-menu-ul > li:not(:last-child) {
-    padding-right: 20px;
   }
   .row .primary-menu-ul > li > a {
     display: flex;
@@ -2215,9 +2220,6 @@ audio {
     visibility: visible;
     opacity: 1;
   }
-  .row .primary-menu-ul .menu-item-has-children:last-child {
-    padding-right: 10px;
-  }
   .row .primary-menu-ul .menu-item-has-children > a {
     display: flex;
     align-items: center;
@@ -2227,16 +2229,11 @@ audio {
   }
   .row .caret-wrap {
     position: relative;
-    border: none;
-    top: 2px;
-    width: 10px;
+    font-size: .65em;
+    padding-left: 0;
   }
-  .row .caret-wrap.dropdown-open .caret {
-    color: #404248;
-    transform: rotate(135deg);
-  }
-  .row .menu-item-has-children:last-child .caret-wrap {
-    right: -10px;
+  .row .menu-item-has-children:last-child .caret {
+    padding-right: 0;
   }
   .row ul[id^="nv-primary-navigation"] .menu-item-nav-search:not(.responsive-nav-search) {
     display: block;
@@ -2519,7 +2516,7 @@ audio {
   text-align: right;
 }
 
-.hfg-item-right #secondary-menu, .hfg-item-right .nv-nav-wrap, .hfg-item-right .component-wrap, .hfg-item-right .site-logo, .hfg-item-right .nv-search-icon-component .nv-search, .hfg-item-right .builder-item--footer-menu {
+.hfg-item-right #secondary-menu, .hfg-item-right .primary-menu-ul, .hfg-item-right .nv-nav-wrap, .hfg-item-right .component-wrap, .hfg-item-right .site-logo, .hfg-item-right .nv-search-icon-component .nv-search, .hfg-item-right .builder-item--footer-menu {
   justify-content: flex-end;
 }
 
@@ -2531,7 +2528,7 @@ audio {
   text-align: left;
 }
 
-.hfg-item-left #secondary-menu, .hfg-item-left .nv-nav-wrap, .hfg-item-left .component-wrap, .hfg-item-left .site-logo, .hfg-item-left .nv-search-icon-component .nv-search, .hfg-item-left .builder-item--footer-menu {
+.hfg-item-left #secondary-menu, .hfg-item-left .primary-menu-ul, .hfg-item-left .nv-nav-wrap, .hfg-item-left .component-wrap, .hfg-item-left .site-logo, .hfg-item-left .nv-search-icon-component .nv-search, .hfg-item-left .builder-item--footer-menu {
   justify-content: flex-start;
 }
 
@@ -2543,7 +2540,7 @@ audio {
   text-align: center;
 }
 
-.hfg-item-center #secondary-menu, .hfg-item-center .nv-nav-wrap, .hfg-item-center .component-wrap, .hfg-item-center .site-logo, .hfg-item-center .nv-search-icon-component .nv-search, .hfg-item-center .builder-item--footer-menu {
+.hfg-item-center #secondary-menu, .hfg-item-center .primary-menu-ul, .hfg-item-center .nv-nav-wrap, .hfg-item-center .component-wrap, .hfg-item-center .site-logo, .hfg-item-center .nv-search-icon-component .nv-search, .hfg-item-center .builder-item--footer-menu {
   justify-content: center;
 }
 
@@ -3054,7 +3051,6 @@ body.menu_sidebar_slide_left.menu_sidebar_dropdown:before {
 
 #secondary-menu li a {
   text-align: center;
-  padding: 0 10px;
   font-weight: 500;
 }
 
@@ -3202,15 +3198,16 @@ body.menu_sidebar_slide_left.menu_sidebar_dropdown:before {
   bottom: 5px;
 }
 
-.builder-item div[class*="builder-item--header_search"] {
+.builder-item div[class*="builder-item--header_search"]:not(.builder-item--header_search_responsive) {
   line-height: 1;
+  flex-grow: 1;
 }
 
-.builder-item div[class*="builder-item--header_search"] .widget-search {
+.builder-item div[class*="builder-item--header_search"]:not(.builder-item--header_search_responsive) .widget-search {
   width: 100%;
 }
 
-.builder-item div[class*="builder-item--header_search"] input[type="search"] {
+.builder-item div[class*="builder-item--header_search"]:not(.builder-item--header_search_responsive) input[type="search"] {
   background-color: #fff;
 }
 

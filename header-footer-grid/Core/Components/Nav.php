@@ -251,21 +251,23 @@ class Nav extends Abstract_Component {
 		$color    = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::COLOR_ID );
 		$selector = '.builder-item--' . $this->get_id() . ' .nav-menu-primary > .primary-menu-ul ';
 		if ( ! empty( $color ) ) {
-			$css_array[ $selector . 'li:not(.woocommerce-mini-cart-item) > a, 
-			' . $selector . 'li > a .caret-wrap .caret' ] = array( 'color' => sanitize_hex_color( $color ) );
+			$css_array[ $selector . 'li:not(.woocommerce-mini-cart-item) > a' ]                          = array( 'color' => sanitize_hex_color( $color ) );
+			$css_array[ $selector . 'li > a .caret-wrap svg,' . $selector . 'li > .amp-caret-wrap svg' ] = array( 'fill' => sanitize_hex_color( $color ) );
 		}
 
 		$hover_color = SettingsManager::get_instance()->get( $this->get_id() . '_hover_color' );
 		if ( ! empty( $hover_color ) ) {
 			$css_array[ $selector . 'li:not(.woocommerce-mini-cart-item) > a:after' ] = array( 'background-color' => sanitize_hex_color( $hover_color ) );
 			if ( SettingsManager::get_instance()->get( $this->get_id() . '_style' ) !== 'style-full-height' ) {
-				$css_array[ $selector . 'li:not(.woocommerce-mini-cart-item):hover > a,' . $selector . 'li:hover > a > .caret-wrap .caret' ] = array( 'color' => sanitize_hex_color( $hover_color ) );
+				$css_array[ $selector . 'li:not(.woocommerce-mini-cart-item):hover > a' ]                                = array( 'color' => sanitize_hex_color( $hover_color ) );
+				$css_array[ $selector . 'li:hover > a .caret-wrap svg,' . $selector . 'li:hover > .amp-caret-wrap svg' ] = array( 'fill' => sanitize_hex_color( $hover_color ) );
 			}
 		}
 
 		$active_color = SettingsManager::get_instance()->get( $this->get_id() . '_active_color' );
 		if ( ! empty( $active_color ) ) {
-			$css_array[ $selector . 'li.current-menu-item a, ' . $selector . 'li.current-menu-item a  .caret-wrap .caret' ] = array( 'color' => sanitize_hex_color( $active_color ) );
+			$css_array[ $selector . 'li.current-menu-item a' ] = array( 'color' => sanitize_hex_color( $active_color ) );
+			$css_array[ $selector . 'li.current-menu-item > a .caret-wrap svg,' . $selector . 'li.current-menu-item > .amp-caret-wrap svg' ] = array( 'fill' => sanitize_hex_color( $active_color ) );
 		}
 
 		return parent::add_style( $css_array );

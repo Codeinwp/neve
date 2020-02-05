@@ -207,8 +207,18 @@ window.addEventListener( 'load', function() {
               let bgColor = newValue.background || 'unset'
               let txtColor = newValue.text || 'currentColor'
               let borderColor = newValue.text || ''
+
+              let mainSelector = `html ${args.selector}`,
+                  colorSelector = `html ${args.selector} .icon-bar`
+
+              if(args.additional && args.additional.additional_buttons ) {
+               _.each( args.additional.additional_buttons, ( button ) => {
+                 mainSelector += ',html ' + button.button
+                 colorSelector += ',html ' + button.button + ' ' + button.text
+                } )
+              }
               style +=
-                `html ${args.selector} {
+                `${mainSelector} {
 										background-color: ${bgColor};
 										border-radius: ${newValue.borderRadius}px;
 										color: ${txtColor};`
@@ -219,8 +229,9 @@ window.addEventListener( 'load', function() {
                 style += 'border: none;'
               }
               style += '}'
-              style += `html ${args.selector} .icon-bar {
+              style += `${colorSelector} {
 										background-color: ${txtColor};
+										color: ${txtColor};
 									}`
               addCss( settingId, style )
               break
