@@ -81,6 +81,43 @@ class RadioButtonsComponent extends Component {
       }
     }
 
+    if ( is_for === 'account_component' ) {
+      return {
+        'icon_style1': {
+          tooltip: __( 'Icon Style 2', 'neve' ),
+          icon: SVG.myAccountUserSolid
+        },
+        'icon_style2': {
+          tooltip: __( 'Icon Style 1', 'neve' ),
+          icon: SVG.myAccountUserRegular
+        },
+        'icon_style3': {
+          tooltip: __( 'Icon Style 3', 'neve' ),
+          icon: SVG.myAccountUserTagSolid
+        },
+        'icon_style4': {
+          tooltip: __( 'Icon Style 4', 'neve' ),
+          icon: SVG.myAccountUserAltSolid
+        },
+        'icon_style5': {
+          tooltip: __( 'Icon Style 5', 'neve' ),
+          icon: SVG.myAccountUsersSolid
+        },
+        'icon_style6': {
+          tooltip: __( 'Icon Style 6', 'neve' ),
+          icon: SVG.myAccountUsersFirendsSolid
+        },
+        'user_avatar': {
+          tooltip: __( 'WordPress Avatar', 'neve' ),
+          icon: SVG.myAccountUserAvatar
+        },
+        'none': {
+          tooltip: __( 'No Icon', 'neve' ),
+          icon: SVG.myAccountNone
+        }
+      }
+    }
+
   }
 
   render() {

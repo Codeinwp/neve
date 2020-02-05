@@ -246,7 +246,15 @@ window.addEventListener( 'load', function() {
 											height: ${newValue}px;
 										}`
                 addCss( settingId, style )
+	              return false
               }
+
+		            style +=
+			            `html ${args.selector} {
+											${args.additional.type}: ${newValue}px;
+										}`
+		            addCss( settingId, style )
+
               break
             case '\\Neve\\Customizer\\Controls\\React\\Color':
               let colorValue = newValue === '' ? 'unset' : newValue

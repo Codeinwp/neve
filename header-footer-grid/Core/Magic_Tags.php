@@ -359,6 +359,23 @@ class Magic_Tags {
 				],
 			],
 			[
+				'label'    => __( 'Current User', 'neve' ),
+				'controls' => [
+					'user_nicename' => [
+						'label' => __( 'User Nice Name', 'neve' ),
+						'type'  => 'custom_user',
+					],
+					'display_name'  => [
+						'label' => __( 'Display Name', 'neve' ),
+						'type'  => 'custom_user',
+					],
+					'user_email'    => [
+						'label' => __( 'User Email', 'neve' ),
+						'type'  => 'custom_user',
+					],
+				],
+			],
+			[
 				'label'    => __( 'Global', 'neve' ),
 				'controls' => [
 					'site_title'   => [
