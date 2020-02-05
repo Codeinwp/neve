@@ -2544,6 +2544,10 @@ audio {
   justify-content: center;
 }
 
+.hfg-item-justify .button {
+  flex-grow: 1;
+}
+
 .header-menu-sidebar {
   padding: 0;
   position: fixed;

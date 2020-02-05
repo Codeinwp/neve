@@ -425,6 +425,28 @@ abstract class Abstract_Component implements Component {
 			$padding_selector = $this->default_selector;
 		}
 		$margin_selector = '.builder-item--' . $this->get_id();
+		$align_choices   = [
+			'left'   => [
+				'tooltip' => __( 'Left', 'neve' ),
+				'icon'    => 'editor-alignleft',
+			],
+			'center' => [
+				'tooltip' => __( 'Center', 'neve' ),
+				'icon'    => 'editor-aligncenter',
+			],
+			'right'  => [
+				'tooltip' => __( 'Right', 'neve' ),
+				'icon'    => 'editor-alignright',
+			],
+		];
+
+		if ( $this->get_id() === Button::COMPONENT_ID ) {
+			$align_choices['justify'] = [
+				'tooltip' => __( 'Justify', 'neve' ),
+				'icon'    => 'editor-justify',
+			];
+		}
+
 		if ( $this->get_id() !== Search::COMPONENT_ID ) {
 			SettingsManager::get_instance()->add(
 				[
@@ -438,20 +460,7 @@ abstract class Abstract_Component implements Component {
 					'type'                  => '\Neve\Customizer\Controls\React\Radio_Buttons',
 					'live_refresh_selector' => $this->is_auto_width ? null : $margin_selector,
 					'options'               => [
-						'choices' => [
-							'left'   => [
-								'tooltip' => __( 'Left', 'neve' ),
-								'icon'    => 'editor-alignleft',
-							],
-							'center' => [
-								'tooltip' => __( 'Center', 'neve' ),
-								'icon'    => 'editor-aligncenter',
-							],
-							'right'  => [
-								'tooltip' => __( 'Right', 'neve' ),
-								'icon'    => 'editor-alignright',
-							],
-						],
+						'choices' => $align_choices,
 					],
 					'section'               => $this->section,
 					'conditional_header'    => $this->get_builder_id() === 'header',
