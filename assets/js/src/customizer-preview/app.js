@@ -132,7 +132,7 @@ window.addEventListener( 'load', function() {
               let itemInner = document.querySelectorAll( args.selector )
               _.each( itemInner, function(item) {
                 removeClass( item.parentNode,
-                  'hfg-item-center hfg-item-right hfg-item-left' )
+                  'hfg-item-center hfg-item-right hfg-item-left hfg-item-justify' )
                 addClass( item.parentNode, 'hfg-item-' + newValue )
               } )
               break
@@ -392,42 +392,42 @@ window.addEventListener( 'load', function() {
 jQuery.neveRangesPreview.init();
 
 ( function($) {
-	$.neveLayoutPreview = {
-		init: function() {
-			this.contentWidthsPreview();
-			this.containersLivePreview();
-		},
-		contentWidths: {
-			neve_sitewide_content_width: {
-				content: '.neve-main > .container .col',
-				sidebar: '.nv-sidebar-wrap'
-			},
-			neve_blog_archive_content_width: {
-				content: '.archive-container .nv-index-posts',
-				sidebar: '.archive-container .nv-sidebar-wrap'
-			},
-			neve_single_post_content_width: {
-				content: '.single-post-container .nv-single-post-wrap',
-				sidebar: '.single-post-container .nv-sidebar-wrap'
-			},
-			neve_shop_archive_content_width: {
-				content: '.archive.woocommerce .shop-container .nv-shop.col',
-				sidebar: '.archive.woocommerce .shop-container .nv-sidebar-wrap'
-			},
-			neve_single_product_content_width: {
-				content: '.single-product .shop-container .nv-shop.col',
-				sidebar: '.single-product .shop-container .nv-sidebar-wrap'
-			},
-			neve_other_pages_content_width: {
-				content: 'body:not(.single):not(.archive):not(.blog):not(.search) .neve-main > .container .col',
-				sidebar: 'body:not(.single):not(.archive):not(.blog):not(.search) .nv-sidebar-wrap'
-			}
-		},
-		contentWidthsPreview: function() {
-			$.each( this.contentWidths, function(id, args) {
-				wp.customize( id, function(value) {
-					value.bind( function(newval) {
-						let style = ` @media (min-width: 961px) {
+  $.neveLayoutPreview = {
+    init: function() {
+      this.contentWidthsPreview()
+      this.containersLivePreview()
+    },
+    contentWidths: {
+      neve_sitewide_content_width: {
+        content: '.neve-main > .container .col',
+        sidebar: '.nv-sidebar-wrap'
+      },
+      neve_blog_archive_content_width: {
+        content: '.archive-container .nv-index-posts',
+        sidebar: '.archive-container .nv-sidebar-wrap'
+      },
+      neve_single_post_content_width: {
+        content: '.single-post-container .nv-single-post-wrap',
+        sidebar: '.single-post-container .nv-sidebar-wrap'
+      },
+      neve_shop_archive_content_width: {
+        content: '.archive.woocommerce .shop-container .nv-shop.col',
+        sidebar: '.archive.woocommerce .shop-container .nv-sidebar-wrap'
+      },
+      neve_single_product_content_width: {
+        content: '.single-product .shop-container .nv-shop.col',
+        sidebar: '.single-product .shop-container .nv-sidebar-wrap'
+      },
+      neve_other_pages_content_width: {
+        content: 'body:not(.single):not(.archive):not(.blog):not(.search) .neve-main > .container .col',
+        sidebar: 'body:not(.single):not(.archive):not(.blog):not(.search) .nv-sidebar-wrap'
+      }
+    },
+    contentWidthsPreview: function() {
+      $.each( this.contentWidths, function(id, args) {
+        wp.customize( id, function(value) {
+          value.bind( function(newval) {
+            let style = ` @media (min-width: 961px) {
 							${args.content} { max-width: ${newval}% !important; }
 							${args.sidebar} { max-width: ${100 - newval}% !important; }
 						}`
