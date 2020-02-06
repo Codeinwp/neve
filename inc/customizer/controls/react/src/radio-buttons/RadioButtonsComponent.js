@@ -83,27 +83,27 @@ class RadioButtonsComponent extends Component {
 
     if ( is_for === 'account_component' ) {
       return {
-        'icon_style1': {
+        'user_icon_style1': {
           tooltip: __( 'Icon Style 2', 'neve' ),
           icon: SVG.myAccountUserSolid
         },
-        'icon_style2': {
+        'user_icon_style2': {
           tooltip: __( 'Icon Style 1', 'neve' ),
           icon: SVG.myAccountUserRegular
         },
-        'icon_style3': {
+        'user_icon_style3': {
           tooltip: __( 'Icon Style 3', 'neve' ),
           icon: SVG.myAccountUserTagSolid
         },
-        'icon_style4': {
+        'user_icon_style4': {
           tooltip: __( 'Icon Style 4', 'neve' ),
           icon: SVG.myAccountUserAltSolid
         },
-        'icon_style5': {
+        'user_icon_style5': {
           tooltip: __( 'Icon Style 5', 'neve' ),
           icon: SVG.myAccountUsersSolid
         },
-        'icon_style6': {
+        'user_icon_style6': {
           tooltip: __( 'Icon Style 6', 'neve' ),
           icon: SVG.myAccountUsersFirendsSolid
         },
