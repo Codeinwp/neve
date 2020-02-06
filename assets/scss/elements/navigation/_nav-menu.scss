@@ -108,7 +108,7 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
 }
 
 @mixin nav-menu--laptop() {
-  .primary-menu-ul {
+  .header--row .primary-menu-ul {
     .hfg-item-left &, .hfg-item-center & {
       li:not(:last-child) {
         padding-right: $spacing-sm;
@@ -150,7 +150,7 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
       > li {
         width: inherit;
         padding: 10px 0;
-        
+
         > a {
           display: flex;
           align-items: center;
