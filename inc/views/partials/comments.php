@@ -198,8 +198,8 @@ class Comments extends Base_View {
 	 * @return array
 	 */
 	public function leave_reply_title_tag( $args ) {
-		$args['title_reply_before'] = '<h2 id="reply-title" class="comment-reply-title">';
-		$args['title_reply_after']  = '</h2>';
+		$args['title_reply_before'] = '<h3 id="reply-title" class="comment-reply-title">';
+		$args['title_reply_after']  = '</h3>';
 
 		return $args;
 	}

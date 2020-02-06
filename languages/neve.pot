@@ -2,9 +2,9 @@
 # This file is distributed under the GNU General Public License v2 or later.=!>
 msgid ""
 msgstr ""
-"Project-Id-Version: Neve 2.5.5\n"
+"Project-Id-Version: Neve 2.6.0\n"
 "Report-Msgid-Bugs-To: https://github.com/Codeinwp/neve/issues\n"
-"POT-Creation-Date: 2020-01-30 16:15:02+00:00\n"
+"POT-Creation-Date: 2020-02-05 12:31:33+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -164,51 +164,51 @@ msgstr ""
 msgid "Mobile menu content"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:436
+#: header-footer-grid/Core/Components/Abstract_Component.php:437
 msgid "Alignment"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:442
+#: header-footer-grid/Core/Components/Abstract_Component.php:443
 msgid "Left"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:446
+#: header-footer-grid/Core/Components/Abstract_Component.php:447
 msgid "Center"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:450
+#: header-footer-grid/Core/Components/Abstract_Component.php:451
 msgid "Right"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:469
+#: header-footer-grid/Core/Components/Abstract_Component.php:470
 #: inc/customizer/options/buttons.php:130
 msgid "Padding"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:495
+#: header-footer-grid/Core/Components/Abstract_Component.php:496
 msgid "Margin"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:721
+#: header-footer-grid/Core/Components/Abstract_Component.php:722
 #: inc/customizer/options/main.php:57
 msgid "Typography"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Button.php:76
-#: header-footer-grid/Core/Components/Button.php:113
+#: header-footer-grid/Core/Components/Button.php:128
 msgid "Button"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Button.php:99
+#: header-footer-grid/Core/Components/Button.php:114
 msgid "Link"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Button.php:114
+#: header-footer-grid/Core/Components/Button.php:129
 msgid "Text"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Button.php:140
-#: header-footer-grid/Core/Components/MenuIcon.php:111
+#: header-footer-grid/Core/Components/Button.php:155
+#: header-footer-grid/Core/Components/MenuIcon.php:118
 msgid "Appearance"
 msgstr ""
 
@@ -296,11 +296,11 @@ msgstr ""
 msgid "Logo max width (px)"
 msgstr ""
 
-#: header-footer-grid/Core/Components/MenuIcon.php:68
+#: header-footer-grid/Core/Components/MenuIcon.php:75
 msgid "Menu Icon"
 msgstr ""
 
-#: header-footer-grid/Core/Components/MenuIcon.php:91
+#: header-footer-grid/Core/Components/MenuIcon.php:98
 msgid "Menu label"
 msgstr ""
 

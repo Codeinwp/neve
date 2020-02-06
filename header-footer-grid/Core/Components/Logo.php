@@ -108,7 +108,7 @@ class Logo extends Abstract_Component {
 				'label'              => __( 'Display', 'neve' ),
 				'type'               => '\Neve\Customizer\Controls\React\Radio_Buttons',
 				'options'            => [
-					'priority'      => 11,
+					'priority'      => -1,
 					'is_for'        => 'logo',
 					'large_buttons' => true,
 				],
