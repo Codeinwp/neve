@@ -77,7 +77,7 @@
   align-items: center;
 
   svg {
-    transition: $transition_med;
+    fill: currentColor;
   }
 
   .dropdown-open.caret-wrap > & svg {
@@ -168,10 +168,6 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
           color: $link_hover_color;
           text-decoration: none;
         }
-
-        > a .caret {
-          color: $link_hover_color;
-        }
       }
 
       .sub-menu {
@@ -245,6 +241,7 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
       position: relative;
       font-size: .65em;
       padding-left: 0;
+      margin-left: 5px;
     }
 
     .menu-item-has-children:last-child .caret {

@@ -704,7 +704,7 @@ blockquote.wp-block-quote.is-style-large cite {
 }
 
 .caret svg {
-  transition: all 0.3s ease;
+  fill: currentColor;
 }
 
 .dropdown-open.caret-wrap > .caret svg {
@@ -2167,9 +2167,6 @@ audio {
     color: #0366d6;
     text-decoration: none;
   }
-  .row .primary-menu-ul li:hover > a .caret, .row .primary-menu-ul li:focus > a .caret {
-    color: #0366d6;
-  }
   .row .primary-menu-ul .sub-menu {
     -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -2231,6 +2228,7 @@ audio {
     position: relative;
     font-size: .65em;
     padding-left: 0;
+    margin-left: 5px;
   }
   .row .menu-item-has-children:last-child .caret {
     padding-right: 0;
@@ -3009,6 +3007,10 @@ body.menu_sidebar_slide_left.menu_sidebar_dropdown:before {
 
 .header-menu-sidebar-inner .style-border-top .sub-menu a:after {
   top: 0;
+}
+
+.style-full-height .primary-menu-ul li:hover > a, .style-full-height .row .primary-menu-ul li:focus > a {
+  color: #404248;
 }
 
 .style-full-height a {

@@ -45,6 +45,10 @@
 }
 
 .style-full-height {
+  .primary-menu-ul li:hover > a, .row .primary-menu-ul li:focus > a {
+    color: $body-color;
+  }
+
   a {
     padding-left: 3px;
     padding-right: 3px;
@@ -78,13 +82,16 @@
     align-items: center;
     position: relative;
     width: inherit;
+
     a {
       text-align: center;
       font-weight: 500;
     }
+
     &:last-of-type a {
       padding-right: 0;
     }
+
     &:first-of-type a {
       padding-left: 0;
     }
