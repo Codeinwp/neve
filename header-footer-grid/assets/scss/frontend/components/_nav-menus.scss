@@ -50,9 +50,8 @@
   }
 
   a {
-    padding-left: 3px;
-    padding-right: 3px;
     position: relative;
+    align-items: center;
     z-index: 1;
 
     &:after {
@@ -78,12 +77,13 @@
   justify-content: flex-start;
 
   li {
-    display: flex;
-    align-items: center;
     position: relative;
     width: inherit;
 
     a {
+      display: flex;
+      position: relative;
+      align-items: center;
       text-align: center;
       font-weight: 500;
     }

@@ -946,17 +946,17 @@ footer {
   background-color: #fff;
 }
 
-.nv-footer-content .footer-menu {
-  justify-content: center;
+.footer-menu {
   display: flex;
-  flex-wrap: wrap;
-  padding-left: 0;
-  list-style-type: none;
+  justify-content: center;
 }
 
-.nv-footer-content .footer-menu li {
-  padding-right: 10px;
-  padding-left: 10px;
+.hfg-item-left .footer-menu li:not(:last-child), .hfg-item-center .footer-menu li:not(:last-child) {
+  padding-right: 20px;
+}
+
+.hfg-item-right .footer-menu li:not(:first-child) {
+  padding-left: 20px;
 }
 
 .wrapper {
@@ -3018,9 +3018,8 @@ body.menu_sidebar_slide_left.menu_sidebar_dropdown:before {
 }
 
 .style-full-height a {
-  padding-left: 3px;
-  padding-right: 3px;
   position: relative;
+  align-items: center;
   z-index: 1;
 }
 
@@ -3045,13 +3044,14 @@ body.menu_sidebar_slide_left.menu_sidebar_dropdown:before {
 }
 
 #secondary-menu li {
-  display: flex;
-  align-items: center;
   position: relative;
   width: inherit;
 }
 
 #secondary-menu li a {
+  display: flex;
+  position: relative;
+  align-items: center;
   text-align: center;
   font-weight: 500;
 }

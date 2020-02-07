@@ -2,7 +2,18 @@ footer {
   background-color: #fff;
 }
 
-.nv-footer-content .footer-menu {
+.footer-menu {
+  display: flex;
   justify-content: center;
-  @include horizontal-list($spacing-xs, 'true');
+  .hfg-item-left &, .hfg-item-center & {
+    li:not(:last-child) {
+      padding-right: $spacing-sm;
+    }
+  }
+
+  .hfg-item-right & {
+    li:not(:first-child) {
+      padding-left: $spacing-sm;
+    }
+  }
 }

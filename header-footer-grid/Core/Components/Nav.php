@@ -210,47 +210,27 @@ class Nav extends Abstract_Component {
 				'section'            => $this->section,
 				'label'              => __( 'Items Spacing (px)', 'neve' ),
 				'type'               => 'neve_range_control',
-				// 'live_refresh_selector' => '.builder-item--' . $this->get_id() . ' li',
-				// 'live_refresh_css_prop' => array(
-				// 'prop' => 'height',
-				// 'unit' => 'px',
-				// ),
-				// 'transport'             => 'postMessage',
 				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
 				'sanitize_callback'  => 'absint',
 				'default'            => 20,
-				'conditional_header' => $this->get_builder_id() === 'header',
+				'conditional_header' => true,
 			]
 		);
 
 		SettingsManager::get_instance()->add(
 			[
-				'id'                => self::ITEM_HEIGHT,
-				'group'             => $this->get_class_const( 'COMPONENT_ID' ),
-				'tab'               => SettingsManager::TAB_LAYOUT,
-				'section'           => $this->section,
-				'label'             => __( 'Items Height (px)', 'neve' ),
-				'type'              => 'neve_range_control',
-				// 'live_refresh_selector' => '.builder-item--' . $this->get_id() . ' li',
-				// 'live_refresh_css_prop' => array(
-				// 'prop' => 'height',
-				// 'unit' => 'px',
-				// ),
-				// 'options'               => [
-				// 'input_attrs' => [
-				// 'step'           => 1,
-				// 'min'            => 10,
-				// 'max'            => 100,
-				// 'hideResponsive' => true,
-				// ],
-				// ],
-				// 'transport'         => 'postMessage',
-				'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
-				'sanitize_callback' => 'absint',
-				'default'           => 25,
+				'id'                 => self::ITEM_HEIGHT,
+				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'                => SettingsManager::TAB_LAYOUT,
+				'section'            => $this->section,
+				'label'              => __( 'Items Height (px)', 'neve' ),
+				'type'               => 'neve_range_control',
+				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
+				'sanitize_callback'  => 'absint',
+				'default'            => 25,
+				'conditional_header' => true,
 			]
 		);
-
 	}
 
 	/**

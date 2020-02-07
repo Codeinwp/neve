@@ -26,6 +26,8 @@ class NavFooter extends Abstract_Component {
 	const STYLE_ID       = 'style';
 	const COLOR_ID       = 'color';
 	const HOVER_COLOR_ID = 'hover_color';
+	const ITEM_HEIGHT    = 'item_height';
+	const SPACING        = 'spacing';
 
 	/**
 	 * Nav constructor.
@@ -116,6 +118,36 @@ class NavFooter extends Abstract_Component {
 				'section'           => $this->section,
 			]
 		);
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'                 => self::SPACING,
+				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'                => SettingsManager::TAB_LAYOUT,
+				'section'            => $this->section,
+				'label'              => __( 'Items Spacing (px)', 'neve' ),
+				'type'               => 'neve_range_control',
+				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
+				'sanitize_callback'  => 'absint',
+				'default'            => 20,
+				'conditional_header' => true,
+			]
+		);
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'                 => self::ITEM_HEIGHT,
+				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'                => SettingsManager::TAB_LAYOUT,
+				'section'            => $this->section,
+				'label'              => __( 'Items Height (px)', 'neve' ),
+				'type'               => 'neve_range_control',
+				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
+				'sanitize_callback'  => 'absint',
+				'default'            => 25,
+				'conditional_header' => true,
+			]
+		);
 	}
 
 	/**
@@ -146,6 +178,24 @@ class NavFooter extends Abstract_Component {
 			$css_array['.nav-menu-footer:not(.style-full-height) #footer-menu > li:hover > a'] = array( 'color' => sanitize_hex_color( $hover_color ) );
 
 			$css_array['#footer-menu > li > a:after'] = array( 'background-color' => sanitize_hex_color( $hover_color ) );
+		}
+
+		$item_spacing = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::SPACING );
+		if ( ! empty( $item_spacing ) ) {
+			$css_array[ '.hfg-item-right .builder-item--' . $this->get_id() . ' .footer-menu > li:not(:first-child)' ] = [ 'padding-left' => absint( $item_spacing ) . 'px' ];
+			$css_array[ '.hfg-item-center .builder-item--' . $this->get_id() . ' .footer-menu li:not(:last-child), .hfg-item-left .builder-item--' . $this->get_id() . ' .footer-menu > li:not(:last-child)' ] = [ 'padding-right' => absint( $item_spacing ) . 'px' ];
+			$css_array[ '.builder-item--' . $this->get_id() . ' .style-full-height .footer-menu > li > a:after' ]       = [
+				'left'  => - $item_spacing / 2 . 'px !important',
+				'right' => - $item_spacing / 2 . 'px !important',
+			];
+			$css_array[ '.builder-item--' . $this->get_id() . ' .style-full-height .footer-menu > li:hover > a:after' ] = [
+				'width' => 'calc(100% + ' . $item_spacing . 'px) !important;',
+			];
+		}
+
+		$item_height = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::ITEM_HEIGHT );
+		if ( ! empty( $item_height ) ) {
+			$css_array[ '.builder-item--' . $this->get_id() . ' .footer-menu > li > a' ] = [ 'height' => absint( $item_height ) . 'px' ];
 		}
 
 		return parent::add_style( $css_array );
