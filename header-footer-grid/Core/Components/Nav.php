@@ -304,8 +304,8 @@ class Nav extends Abstract_Component {
 
 		$item_spacing = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::SPACING );
 		if ( ! empty( $item_spacing ) ) {
-			$css_array['@media (min-width: 961px)'][ '.header--row .hfg-item-right .builder-item--' . $this->get_id() . ' .primary-menu-ul > li:not(:first-child)' ] = [ 'padding-left' => absint( $item_spacing ) . 'px' ];
-			$css_array['@media (min-width: 961px)'][ '.header--row .hfg-item-center .builder-item--' . $this->get_id() . ' .primary-menu-ul > li:not(:last-child), .header--row .hfg-item-left .builder-item--' . $this->get_id() . ' .primary-menu-ul > li:not(:last-child)' ] = [ 'padding-right' => absint( $item_spacing ) . 'px' ];
+			$css_array['@media (min-width: 961px)'][ '.header--row .hfg-item-right .builder-item--' . $this->get_id() . ' .primary-menu-ul > li:not(:first-child)' ] = [ 'margin-left' => absint( $item_spacing ) . 'px' ];
+			$css_array['@media (min-width: 961px)'][ '.header--row .hfg-item-center .builder-item--' . $this->get_id() . ' .primary-menu-ul > li:not(:last-child), .header--row .hfg-item-left .builder-item--' . $this->get_id() . ' .primary-menu-ul > li:not(:last-child)' ] = [ 'margin-right' => absint( $item_spacing ) . 'px' ];
 			$css_array['@media (min-width: 961px)'][ '.builder-item--' . $this->get_id() . ' .style-full-height .primary-menu-ul > li:not(.menu-item-nav-search):not(.menu-item-nav-cart) > a:after' ] = [
 				'left'  => - $item_spacing / 2 . 'px',
 				'right' => - $item_spacing / 2 . 'px',

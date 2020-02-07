@@ -182,8 +182,8 @@ class NavFooter extends Abstract_Component {
 
 		$item_spacing = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::SPACING );
 		if ( ! empty( $item_spacing ) ) {
-			$css_array[ '.hfg-item-right .builder-item--' . $this->get_id() . ' .footer-menu > li:not(:first-child)' ] = [ 'padding-left' => absint( $item_spacing ) . 'px' ];
-			$css_array[ '.hfg-item-center .builder-item--' . $this->get_id() . ' .footer-menu li:not(:last-child), .hfg-item-left .builder-item--' . $this->get_id() . ' .footer-menu > li:not(:last-child)' ] = [ 'padding-right' => absint( $item_spacing ) . 'px' ];
+			$css_array[ '.hfg-item-right .builder-item--' . $this->get_id() . ' .footer-menu > li:not(:first-child)' ] = [ 'margin-left' => absint( $item_spacing ) . 'px' ];
+			$css_array[ '.hfg-item-center .builder-item--' . $this->get_id() . ' .footer-menu li:not(:last-child), .hfg-item-left .builder-item--' . $this->get_id() . ' .footer-menu > li:not(:last-child)' ] = [ 'margin-right' => absint( $item_spacing ) . 'px' ];
 			$css_array[ '.builder-item--' . $this->get_id() . ' .style-full-height .footer-menu > li > a:after' ]       = [
 				'left'  => - $item_spacing / 2 . 'px !important',
 				'right' => - $item_spacing / 2 . 'px !important',

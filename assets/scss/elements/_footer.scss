@@ -7,13 +7,13 @@ footer {
   justify-content: center;
   .hfg-item-left &, .hfg-item-center & {
     li:not(:last-child) {
-      padding-right: $spacing-sm;
+      margin-right: $spacing-sm;
     }
   }
 
   .hfg-item-right & {
     li:not(:first-child) {
-      padding-left: $spacing-sm;
+      margin-left: $spacing-sm;
     }
   }
 }

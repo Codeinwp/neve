@@ -720,11 +720,11 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
 }
 
 .hfg-item-left #secondary-menu li:not(:last-child), .hfg-item-center #secondary-menu li:not(:last-child) {
-  padding-right: 20px;
+  margin-right: 20px;
 }
 
 .hfg-item-right #secondary-menu li:not(:first-child) {
-  padding-left: 20px;
+  margin-left: 20px;
 }
 
 ul[id^="nv-primary-navigation"] i {
@@ -952,11 +952,11 @@ footer {
 }
 
 .hfg-item-left .footer-menu li:not(:last-child), .hfg-item-center .footer-menu li:not(:last-child) {
-  padding-right: 20px;
+  margin-right: 20px;
 }
 
 .hfg-item-right .footer-menu li:not(:first-child) {
-  padding-left: 20px;
+  margin-left: 20px;
 }
 
 .wrapper {
@@ -2125,10 +2125,10 @@ audio {
     max-width: 100%;
   }
   .hfg-item-left .header--row .primary-menu-ul li:not(:last-child), .hfg-item-center .header--row .primary-menu-ul li:not(:last-child) {
-    padding-right: 20px;
+    margin-right: 20px;
   }
   .hfg-item-right .header--row .primary-menu-ul li:not(:first-child) {
-    padding-left: 20px;
+    margin-left: 20px;
   }
   .row .nv-nav-wrap {
     flex-direction: row;

@@ -96,13 +96,13 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
 #secondary-menu {
   .hfg-item-left &, .hfg-item-center & {
     li:not(:last-child) {
-      padding-right: $spacing-sm;
+      margin-right: $spacing-sm;
     }
   }
 
   .hfg-item-right & {
     li:not(:first-child) {
-      padding-left: $spacing-sm;
+      margin-left: $spacing-sm;
     }
   }
 }
@@ -111,13 +111,13 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
   .header--row .primary-menu-ul {
     .hfg-item-left &, .hfg-item-center & {
       li:not(:last-child) {
-        padding-right: $spacing-sm;
+        margin-right: $spacing-sm;
       }
     }
 
     .hfg-item-right & {
       li:not(:first-child) {
-        padding-left: $spacing-sm;
+        margin-left: $spacing-sm;
       }
     }
   }
