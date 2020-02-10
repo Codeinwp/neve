@@ -68,6 +68,15 @@ window.addEventListener( 'load', function() {
         setting.bind( function(newValue) {
           let style = ''
           switch (settingType) {
+            case 'neve_color_control':
+              _.each( args.additional, (i) => {
+                newValue = newValue || i.fallback
+                style += `body ${i.selector} {
+                  ${i.prop}: ${newValue} !important;
+                }`
+              } )
+              addCss( settingId, style )
+              break
             case 'neve_background_control':
               if ( newValue.type === 'color' ) {
                 style += 'body ' + args.selector + '{' +
@@ -209,12 +218,12 @@ window.addEventListener( 'load', function() {
               let borderColor = newValue.text || ''
 
               let mainSelector = `html ${args.selector}`,
-                  colorSelector = `html ${args.selector} .icon-bar`
+                colorSelector = `html ${args.selector} .icon-bar`
 
-              if(args.additional && args.additional.additional_buttons ) {
-               _.each( args.additional.additional_buttons, ( button ) => {
-                 mainSelector += ',html ' + button.button
-                 colorSelector += ',html ' + button.button + ' ' + button.text
+              if ( args.additional && args.additional.additional_buttons ) {
+                _.each( args.additional.additional_buttons, (button) => {
+                  mainSelector += ',html ' + button.button
+                  colorSelector += ',html ' + button.button + ' ' + button.text
                 } )
               }
               style +=
@@ -257,14 +266,14 @@ window.addEventListener( 'load', function() {
 											height: ${newValue}px;
 										}`
                 addCss( settingId, style )
-	              return false
+                return false
               }
 
-		            style +=
-			            `html ${args.selector} {
+              style +=
+                `html ${args.selector} {
 											${args.additional.type}: ${newValue}px;
 										}`
-		            addCss( settingId, style )
+              addCss( settingId, style )
 
               break
             case '\\Neve\\Customizer\\Controls\\React\\Color':
