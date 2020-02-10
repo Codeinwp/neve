@@ -61,8 +61,8 @@ class SecondNav extends Abstract_Component {
 				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
 				'sanitize_callback'  => 'wp_filter_nohtml_kses',
 				'default'            => 'style-plain',
-				'label'              => __( 'Skin Mode', 'neve' ),
 				'conditional_header' => true,
+				'label'              => __( 'Hover Skin Mode', 'neve' ),
 				'type'               => '\Neve\Customizer\Controls\React\Radio_Buttons',
 				'section'            => $this->section,
 				'options'            => [

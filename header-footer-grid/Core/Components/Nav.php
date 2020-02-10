@@ -88,7 +88,7 @@ class Nav extends Abstract_Component {
 				'sanitize_callback'  => 'wp_filter_nohtml_kses',
 				'default'            => 'style-plain',
 				'conditional_header' => true,
-				'label'              => __( 'Skin Mode', 'neve' ),
+				'label'              => __( 'Hover Skin Mode', 'neve' ),
 				'type'               => '\Neve\Customizer\Controls\React\Radio_Buttons',
 				'section'            => $this->section,
 				'options'            => [

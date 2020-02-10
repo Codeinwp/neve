@@ -61,7 +61,7 @@ class NavFooter extends Abstract_Component {
 				'transport'         => 'post' . self::COMPONENT_ID,
 				'sanitize_callback' => 'wp_filter_nohtml_kses',
 				'default'           => 'style-plain',
-				'label'             => __( 'Skin Mode', 'neve' ),
+				'label'             => __( 'Hover Skin Mode', 'neve' ),
 				'type'              => '\Neve\Customizer\Controls\React\Radio_Buttons',
 				'section'           => $this->section,
 				'options'           => [
