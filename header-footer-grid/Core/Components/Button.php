@@ -13,7 +13,6 @@ namespace HFG\Core\Components;
 
 use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Main;
-use WP_Customize_Manager;
 
 /**
  * Class Button
@@ -63,7 +62,7 @@ class Button extends Abstract_Component {
 	 */
 	public function __construct( $panel ) {
 		parent::__construct( $panel );
-		$this->default_selector = '.builder-item--' . $this->get_id() . ' > .component-wrap > .button.button-primary:first-child';
+		$this->default_selector = '.builder-item--' . $this->get_id() . ' > .component-wrap > .button';
 	}
 
 	/**
@@ -80,20 +79,6 @@ class Button extends Abstract_Component {
 		$this->set_property( 'section', 'header_button' );
 		$this->set_property( 'icon', 'admin-links' );
 		$this->set_property( 'is_auto_width', true );
-		$this->set_property(
-			'default_margin_value',
-			array_merge(
-				$this->default_margin_value,
-				array(
-					'desktop' => array(
-						'top'    => 0,
-						'right'  => 0,
-						'bottom' => 0,
-						'left'   => 20,
-					),
-				) 
-			) 
-		);
 	}
 
 	/**
