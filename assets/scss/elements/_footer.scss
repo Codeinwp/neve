@@ -4,6 +4,7 @@ footer {
 
 .footer-menu {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   .hfg-item-left &, .hfg-item-center & {
     li:not(:last-child) {
