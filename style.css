@@ -1438,16 +1438,12 @@ article {
   text-align: right;
 }
 
-.nv-content-wrap .page-numbers {
-  justify-content: center;
-  margin: 10px auto;
+.post-pages-links {
   display: flex;
-  flex-wrap: wrap;
-  padding-left: 0;
   list-style-type: none;
 }
 
-.nv-content-wrap .page-numbers > a:not(:last-child) span, .nv-content-wrap .page-numbers > span {
+.post-pages-links > a:not(:last-child) span, .post-pages-links > span {
   padding-right: 20px;
 }
 
@@ -3212,6 +3208,14 @@ body.menu_sidebar_slide_left.menu_sidebar_dropdown:before {
 
 .builder-item div[class*="builder-item--header_search"]:not(.builder-item--header_search_responsive) input[type="search"] {
   background-color: #fff;
+}
+
+.hfg-is-group > div:first-of-type .button {
+  margin-right: 20px;
+}
+
+.hfg-is-group > div:last-of-type .button {
+  margin-left: 20px;
 }
 
 .nv-search-icon-component a {

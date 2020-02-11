@@ -42,6 +42,12 @@ abstract class Abstract_Component implements Component {
 	 */
 	public static $current_component = null;
 	/**
+	 * Check if current component should show CSS when rendered inside customizer.
+	 *
+	 * @var bool
+	 */
+	public static $should_show_css = true;
+	/**
 	 * Default alignament value for the component.
 	 *
 	 * @since   1.0.0
@@ -582,9 +588,10 @@ abstract class Abstract_Component implements Component {
 	public function render() {
 		self::$current_component           = $this->get_id();
 		Abstract_Builder::$current_builder = $this->get_builder_id();
-		if ( is_customize_preview() ) {
+		if ( self::$should_show_css && is_customize_preview() ) {
 			$style = $this->css_array_to_css( $this->add_style() );
-			echo '<style type="text/css">' . $style . '</style>';  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo '<style type="text/css" id="' . esc_attr( $this->get_id() ) . '-style">' . $style . '</style>';  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			self::$should_show_css = false;
 		}
 
 		Main::get_instance()->load( 'component-wrapper' );

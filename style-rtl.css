@@ -3213,6 +3213,14 @@ body.menu_sidebar_slide_left.menu_sidebar_dropdown:before {
   background-color: #fff;
 }
 
+.hfg-is-group > div:first-of-type .button {
+  margin-left: 20px;
+}
+
+.hfg-is-group > div:last-of-type .button {
+  margin-right: 20px;
+}
+
 .nv-search-icon-component a {
   padding: 10px 0;
 }

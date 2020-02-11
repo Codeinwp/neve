@@ -63,7 +63,7 @@ class NavFooter extends Abstract_Component {
 				'transport'         => 'post' . self::COMPONENT_ID,
 				'sanitize_callback' => 'wp_filter_nohtml_kses',
 				'default'           => 'style-plain',
-				'label'             => __( 'Skin Mode', 'neve' ),
+				'label'             => __( 'Hover Skin Mode', 'neve' ),
 				'type'              => '\Neve\Customizer\Controls\React\Radio_Buttons',
 				'section'           => $this->section,
 				'options'           => [
@@ -75,29 +75,50 @@ class NavFooter extends Abstract_Component {
 
 		SettingsManager::get_instance()->add(
 			[
-				'id'                => self::COLOR_ID,
-				'group'             => self::COMPONENT_ID,
-				'tab'               => SettingsManager::TAB_STYLE,
-				'transport'         => 'post' . self::COMPONENT_ID,
-				'sanitize_callback' => 'sanitize_hex_color',
-				'default'           => '#404248',
-				'label'             => __( 'Items Color', 'neve' ),
-				'type'              => 'neve_color_control',
-				'section'           => $this->section,
+				'id'                    => self::COLOR_ID,
+				'group'                 => self::COMPONENT_ID,
+				'tab'                   => SettingsManager::TAB_STYLE,
+				'transport'             => 'postMessage',
+				'sanitize_callback'     => 'sanitize_hex_color',
+				'default'               => '#404248',
+				'label'                 => __( 'Items Color', 'neve' ),
+				'type'                  => 'neve_color_control',
+				'section'               => $this->section,
+				'live_refresh_selector' => true,
+				'live_refresh_css_prop' => [
+					[
+						'selector' => $this->default_typography_selector,
+						'prop'     => 'color',
+						'fallback' => 'inherit',
+					],
+				],
 			]
 		);
 
 		SettingsManager::get_instance()->add(
 			[
-				'id'                => self::HOVER_COLOR_ID,
-				'group'             => self::COMPONENT_ID,
-				'tab'               => SettingsManager::TAB_STYLE,
-				'transport'         => 'post' . self::COMPONENT_ID,
-				'sanitize_callback' => 'sanitize_hex_color',
-				'default'           => '#0366d6',
-				'label'             => __( 'Items Hover Color', 'neve' ),
-				'type'              => 'neve_color_control',
-				'section'           => $this->section,
+				'id'                    => self::HOVER_COLOR_ID,
+				'group'                 => self::COMPONENT_ID,
+				'tab'                   => SettingsManager::TAB_STYLE,
+				'transport'             => 'postMessage',
+				'sanitize_callback'     => 'sanitize_hex_color',
+				'default'               => '#0366d6',
+				'label'                 => __( 'Items Hover Color', 'neve' ),
+				'type'                  => 'neve_color_control',
+				'section'               => $this->section,
+				'live_refresh_selector' => true,
+				'live_refresh_css_prop' => [
+					[
+						'selector' => $this->default_typography_selector . ':after',
+						'prop'     => 'background-color',
+						'fallback' => 'inherit',
+					],
+					[
+						'selector' => '.builder-item--' . $this->get_id() . ' .nav-menu-footer:not(.style-full-height) #footer-menu li:hover > a',
+						'prop'     => 'color',
+						'fallback' => 'inherit',
+					],
+				],
 			]
 		);
 
