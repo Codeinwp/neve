@@ -294,6 +294,45 @@ class Magic_Tags {
 	}
 
 	/**
+	 * User nicename.
+	 *
+	 * @return string
+	 */
+	public function user_nicename() {
+		$current_user = wp_get_current_user();
+		if ( empty( $current_user ) ) {
+			return '';
+		}
+		return $current_user->user_nicename;
+	}
+
+	/**
+	 * User display name.
+	 *
+	 * @return string
+	 */
+	public function display_name() {
+		$current_user = wp_get_current_user();
+		if ( empty( $current_user ) ) {
+			return '';
+		}
+		return $current_user->display_name;
+	}
+
+	/**
+	 * User email.
+	 *
+	 * @return string
+	 */
+	public function user_email() {
+		$current_user = wp_get_current_user();
+		if ( empty( $current_user ) ) {
+			return '';
+		}
+		return $current_user->user_email;
+	}
+
+	/**
 	 * Get the options array.
 	 *
 	 * @return mixed

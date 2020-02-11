@@ -1437,16 +1437,12 @@ article {
   text-align: left;
 }
 
-.nv-content-wrap .page-numbers {
-  justify-content: center;
-  margin: 10px auto;
+.post-pages-links {
   display: flex;
-  flex-wrap: wrap;
-  padding-right: 0;
   list-style-type: none;
 }
 
-.nv-content-wrap .page-numbers > a:not(:last-child) span, .nv-content-wrap .page-numbers > span {
+.post-pages-links > a:not(:last-child) span, .post-pages-links > span {
   padding-left: 20px;
 }
 
