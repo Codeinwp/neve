@@ -77,7 +77,7 @@
   align-items: center;
 
   svg {
-    transition: $transition_med;
+    fill: currentColor;
   }
 
   .dropdown-open.caret-wrap > & svg {
@@ -96,28 +96,28 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
 #secondary-menu {
   .hfg-item-left &, .hfg-item-center & {
     li:not(:last-child) {
-      padding-right: $spacing-sm;
+      margin-right: $spacing-sm;
     }
   }
 
   .hfg-item-right & {
     li:not(:first-child) {
-      padding-left: $spacing-sm;
+      margin-left: $spacing-sm;
     }
   }
 }
 
 @mixin nav-menu--laptop() {
-  .primary-menu-ul {
+  .header--row .primary-menu-ul {
     .hfg-item-left &, .hfg-item-center & {
       li:not(:last-child) {
-        padding-right: $spacing-sm;
+        margin-right: $spacing-sm;
       }
     }
 
     .hfg-item-right & {
       li:not(:first-child) {
-        padding-left: $spacing-sm;
+        margin-left: $spacing-sm;
       }
     }
   }
@@ -150,7 +150,7 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
       > li {
         width: inherit;
         padding: 10px 0;
-        
+
         > a {
           display: flex;
           align-items: center;
@@ -167,10 +167,6 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
         > a {
           color: $link_hover_color;
           text-decoration: none;
-        }
-
-        > a .caret {
-          color: $link_hover_color;
         }
       }
 
@@ -245,6 +241,7 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
       position: relative;
       font-size: .65em;
       padding-left: 0;
+      margin-left: 5px;
     }
 
     .menu-item-has-children:last-child .caret {
