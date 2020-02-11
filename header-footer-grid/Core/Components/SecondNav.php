@@ -22,12 +22,12 @@ use HFG\Main;
  */
 class SecondNav extends Abstract_Component {
 
-	const COMPONENT_ID = 'secondary-menu';
-	const STYLE_ID = 'style';
-	const COLOR_ID = 'color';
+	const COMPONENT_ID   = 'secondary-menu';
+	const STYLE_ID       = 'style';
+	const COLOR_ID       = 'color';
 	const HOVER_COLOR_ID = 'hover_color';
-	const ITEM_HEIGHT = 'item_height';
-	const SPACING = 'spacing';
+	const ITEM_HEIGHT    = 'item_height';
+	const SPACING        = 'spacing';
 
 	/**
 	 * Nav constructor.
@@ -200,18 +200,18 @@ class SecondNav extends Abstract_Component {
 		$hover_color = get_theme_mod( $this->id . '_hover_color' );
 		if ( ! empty( $hover_color ) ) {
 			$css_array[ '.builder-item--' . $this->get_id() . ' .nav-menu-secondary:not(.style-full-height) #secondary-menu li:hover > a' ] = array( 'color' => sanitize_hex_color( $hover_color ) );
-			$css_array[ '.builder-item--' . $this->get_id() . ' #secondary-menu a:after' ]                                                  = array( 'background-color' => sanitize_hex_color( $hover_color ) );
+			$css_array[ '.builder-item--' . $this->get_id() . ' #secondary-menu a:after' ] = array( 'background-color' => sanitize_hex_color( $hover_color ) );
 		}
 
 		$item_spacing = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::SPACING );
 		if ( ! empty( $item_spacing ) ) {
-			$css_array[ '.hfg-item-right .builder-item--' . $this->get_id() . ' #secondary-menu > li:not(:first-child)' ]                                                                                            = [ 'margin-left' => absint( $item_spacing ) . 'px' ];
+			$css_array[ '.hfg-item-right .builder-item--' . $this->get_id() . ' #secondary-menu > li:not(:first-child)' ] = [ 'margin-left' => absint( $item_spacing ) . 'px' ];
 			$css_array[ '.hfg-item-center .builder-item--' . $this->get_id() . ' #secondary-menu li:not(:last-child), .hfg-item-left .builder-item--' . $this->get_id() . ' #secondary-menu > li:not(:last-child)' ] = [ 'margin-right' => absint( $item_spacing ) . 'px' ];
-			$css_array[ '.builder-item--' . $this->get_id() . ' .style-full-height #secondary-menu > li > a:after' ]                                                                                                 = [
+			$css_array[ '.builder-item--' . $this->get_id() . ' .style-full-height #secondary-menu > li > a:after' ]       = [
 				'left'  => - $item_spacing / 2 . 'px',
 				'right' => - $item_spacing / 2 . 'px',
 			];
-			$css_array[ '.builder-item--' . $this->get_id() . ' .style-full-height #secondary-menu > li:hover > a:after' ]                                                                                           = [
+			$css_array[ '.builder-item--' . $this->get_id() . ' .style-full-height #secondary-menu > li:hover > a:after' ] = [
 				'width' => 'calc(100% + ' . $item_spacing . 'px) !important;',
 			];
 		}
