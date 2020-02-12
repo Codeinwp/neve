@@ -35,9 +35,9 @@ class RadioIcons extends Component {
     const { options } = this.props
     const self = this
 
-    const buttons = Object.keys( options ).map( (type) => {
+    const buttons = Object.keys( options ).map( (type, index) => {
       return (
-        <Tooltip text={options[type].tooltip}>
+        <Tooltip text={options[type].tooltip} key={index}>
           <IconButton
             aria-label={options[type].tooltip}
             className={classnames(
