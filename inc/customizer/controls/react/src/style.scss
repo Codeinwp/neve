@@ -1,3 +1,9 @@
+@import "presets-selector/scss/main";
+
+#sub-accordion-panel-hfg_header #accordion-section-neve_header_presets {
+  display: list-item !important;
+}
+
 $button_color: #555d66;
 #customize-theme-controls .components-circular-option-picker__option:focus:after,
 #customize-theme-controls .components-color-palette__item:focus:after {
@@ -688,3 +694,4 @@ $button_color: #555d66;
     fill: $button_color;
   }
 }
+
