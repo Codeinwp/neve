@@ -16,8 +16,12 @@ $component-alignments: (
   .hfg-item-#{$alignment} {
     text-align: #{$alignment};
 
-    #secondary-menu, .nv-nav-wrap, .component-wrap, .site-logo, .nv-search-icon-component .nv-search, .builder-item--footer-menu {
+    #secondary-menu, .primary-menu-ul, .nv-nav-wrap, .component-wrap, .site-logo, .nv-search-icon-component .nv-search, .footer-menu {
       justify-content: $flex-setting;
     }
   }
+}
+
+.hfg-item-justify .button {
+  flex-grow: 1;
 }

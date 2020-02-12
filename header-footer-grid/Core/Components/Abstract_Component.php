@@ -11,6 +11,7 @@
 
 namespace HFG\Core\Components;
 
+use HFG\Core\Builder\Abstract_Builder;
 use HFG\Core\Interfaces\Component;
 use HFG\Core\Settings;
 use HFG\Core\Settings\Manager as SettingsManager;
@@ -40,6 +41,12 @@ abstract class Abstract_Component implements Component {
 	 * @var null|string
 	 */
 	public static $current_component = null;
+	/**
+	 * Check if current component should show CSS when rendered inside customizer.
+	 *
+	 * @var bool
+	 */
+	public static $should_show_css = true;
 	/**
 	 * Default alignament value for the component.
 	 *
@@ -424,6 +431,28 @@ abstract class Abstract_Component implements Component {
 			$padding_selector = $this->default_selector;
 		}
 		$margin_selector = '.builder-item--' . $this->get_id();
+		$align_choices   = [
+			'left'   => [
+				'tooltip' => __( 'Left', 'neve' ),
+				'icon'    => 'editor-alignleft',
+			],
+			'center' => [
+				'tooltip' => __( 'Center', 'neve' ),
+				'icon'    => 'editor-aligncenter',
+			],
+			'right'  => [
+				'tooltip' => __( 'Right', 'neve' ),
+				'icon'    => 'editor-alignright',
+			],
+		];
+
+		if ( $this->get_id() === Button::COMPONENT_ID ) {
+			$align_choices['justify'] = [
+				'tooltip' => __( 'Justify', 'neve' ),
+				'icon'    => 'editor-justify',
+			];
+		}
+
 		if ( $this->get_id() !== Search::COMPONENT_ID ) {
 			SettingsManager::get_instance()->add(
 				[
@@ -437,20 +466,7 @@ abstract class Abstract_Component implements Component {
 					'type'                  => '\Neve\Customizer\Controls\React\Radio_Buttons',
 					'live_refresh_selector' => $this->is_auto_width ? null : $margin_selector,
 					'options'               => [
-						'choices' => [
-							'left'   => [
-								'tooltip' => __( 'Left', 'neve' ),
-								'icon'    => 'editor-alignleft',
-							],
-							'center' => [
-								'tooltip' => __( 'Center', 'neve' ),
-								'icon'    => 'editor-aligncenter',
-							],
-							'right'  => [
-								'tooltip' => __( 'Right', 'neve' ),
-								'icon'    => 'editor-alignright',
-							],
-						],
+						'choices' => $align_choices,
 					],
 					'section'               => $this->section,
 					'conditional_header'    => $this->get_builder_id() === 'header',
@@ -570,11 +586,12 @@ abstract class Abstract_Component implements Component {
 	 * Render component markup.
 	 */
 	public function render() {
-		self::$current_component = $this->get_id();
-
-		if ( is_customize_preview() ) {
+		self::$current_component           = $this->get_id();
+		Abstract_Builder::$current_builder = $this->get_builder_id();
+		if ( self::$should_show_css && is_customize_preview() ) {
 			$style = $this->css_array_to_css( $this->add_style() );
-			echo '<style type="text/css">' . $style . '</style>';  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo '<style type="text/css" id="' . esc_attr( $this->get_id() ) . '-style">' . $style . '</style>';  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			self::$should_show_css = false;
 		}
 
 		Main::get_instance()->load( 'component-wrapper' );

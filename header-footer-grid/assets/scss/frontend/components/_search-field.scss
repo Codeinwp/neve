@@ -1,5 +1,6 @@
-.builder-item div[class*="builder-item--header_search"] {
+.builder-item div[class*="builder-item--header_search"]:not(.builder-item--header_search_responsive) {
   line-height: 1;
+  flex-grow: 1;
 
   .widget-search {
     width: 100%;

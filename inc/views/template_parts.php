@@ -71,6 +71,15 @@ class Template_Parts extends Base_View {
 			$markup .= $this->get_title();
 			$markup .= $this->get_meta();
 			$markup .= $this->get_excerpt();
+			$markup .= wp_link_pages(
+				array(
+					'before'      => '<div class="post-pages-links"><span>' . apply_filters( 'neve_page_link_before', esc_html__( 'Pages:', 'neve' ) ) . '</span>',
+					'after'       => '</div>',
+					'link_before' => '<span class="page-link">',
+					'link_after'  => '</span>',
+					'echo'        => false,
+				)
+			);
 			$markup .= '</div>';
 
 			return $markup;
@@ -100,6 +109,15 @@ class Template_Parts extends Base_View {
 					break;
 				case 'excerpt':
 					$markup .= $this->get_excerpt();
+					$markup .= wp_link_pages(
+						array(
+							'before'      => '<div class="post-pages-links"><span>' . apply_filters( 'neve_page_link_before', esc_html__( 'Pages:', 'neve' ) ) . '</span>',
+							'after'       => '</div>',
+							'link_before' => '<span class="page-link">',
+							'link_after'  => '</span>',
+							'echo'        => false,
+						)
+					);
 					break;
 				default:
 					break;

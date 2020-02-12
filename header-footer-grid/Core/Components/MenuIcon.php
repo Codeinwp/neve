@@ -27,6 +27,7 @@ class MenuIcon extends Abstract_Component {
 	const SIDEBAR_TOGGLE    = 'sidebar';
 	const TEXT_ID           = 'menu_label';
 	const BUTTON_APPEARANCE = 'button_appearance';
+	const COMPONENT_SLUG    = 'nav-icon';
 
 	/**
 	 * Padding settings default values.
@@ -59,6 +60,13 @@ class MenuIcon extends Abstract_Component {
 	);
 
 	/**
+	 * Close button target CSS selector.
+	 *
+	 * @var string
+	 */
+	private $close_button = '.header-menu-sidebar .close-sidebar-panel .navbar-toggle';
+
+	/**
 	 * MenuIcon constructor.
 	 *
 	 * @since   1.0.0
@@ -66,7 +74,7 @@ class MenuIcon extends Abstract_Component {
 	 */
 	public function init() {
 		$this->set_property( 'label', __( 'Menu Icon', 'neve' ) );
-		$this->set_property( 'id', 'nav-icon' );
+		$this->set_property( 'id', $this->get_class_const( 'COMPONENT_SLUG' ) );
 		$this->set_property( 'width', 1 );
 		$this->set_property( 'icon', 'menu' );
 		$this->set_property( 'section', self::COMPONENT_ID );
@@ -115,6 +123,14 @@ class MenuIcon extends Abstract_Component {
 					'no_hover' => true,
 				],
 				'live_refresh_selector' => $this->default_selector,
+				'live_refresh_css_prop' => array(
+					'additional_buttons' => $this->get_class_const( 'COMPONENT_ID' ) !== 'header_menu_icon' ? [] : [
+						[
+							'button' => $this->close_button,
+							'text'   => '.icon-bar',
+						],
+					],
+				),
 				'conditional_header'    => true,
 			]
 		);
@@ -154,7 +170,41 @@ class MenuIcon extends Abstract_Component {
 			$css_array[ $this->default_selector ]['border'] = 'none';
 		}
 
+		$css_array = array_merge( $css_array, $this->get_close_button_style( $appearance ) );
+
 		return parent::add_style( $css_array );
+	}
+
+	/**
+	 * Add sidebar close button style.
+	 *
+	 * @param array $appearance_array the button appearance control value.
+	 *
+	 * @return array
+	 */
+	protected function get_close_button_style( $appearance_array ) {
+		$additional_style = [];
+		if ( isset( $appearance_array['borderRadius'] ) ) {
+			$additional_style[ $this->close_button ]['border-radius'] = $appearance_array['borderRadius'] . 'px';
+		}
+		if ( ! empty( $appearance_array['background'] ) ) {
+			$additional_style[ $this->close_button ]['background-color'] = $appearance_array['background'];
+		}
+		if ( ! empty( $appearance_array['text'] ) ) {
+			$additional_style[ $this->close_button ]['color']                           = $appearance_array['text'];
+			$additional_style[ $this->close_button . ' .icon-bar' ]['background-color'] = $appearance_array['text'];
+			if ( $appearance_array['type'] === 'outline' ) {
+				$additional_style[ $this->close_button ]['border-color'] = $appearance_array['text'];
+			}
+		}
+		if ( ! empty( $appearance_array['borderWidth'] ) && $appearance_array['type'] === 'outline' ) {
+			$additional_style[ $this->close_button ]['border'] = $appearance_array['borderWidth'] . 'px solid';
+		}
+		if ( $appearance_array['type'] !== 'outline' ) {
+			$additional_style[ $this->close_button ]['border'] = 'none';
+		}
+
+		return $additional_style;
 	}
 
 	/**
