@@ -198,27 +198,30 @@ class Header extends Abstract_Builder {
 	 * @return array
 	 */
 	private function get_header_presets() {
-		return apply_filters( 'neve_header_presets', [
+		return apply_filters(
+			'neve_header_presets',
 			[
-				'label' => 'Classic',
-				'image' => NEVE_ASSETS_URL . 'img/header-presets/Classic.jpg',
-				'setup' => '{"hfg_header_layout":"{\"desktop\":{\"top\":[],\"main\":[{\"x\":0,\"y\":1,\"width\":4,\"height\":1,\"id\":\"logo\"},{\"x\":4,\"y\":1,\"width\":7,\"height\":1,\"id\":\"primary-menu\"},{\"x\":11,\"y\":1,\"width\":1,\"height\":1,\"id\":\"header_search_responsive\"}],\"bottom\":[]},\"mobile\":{\"top\":[],\"main\":[{\"x\":0,\"y\":1,\"width\":8,\"height\":1,\"id\":\"logo\"},{\"x\":8,\"y\":1,\"width\":4,\"height\":1,\"id\":\"nav-icon\"}],\"bottom\":[],\"sidebar\":[{\"x\":0,\"y\":1,\"width\":8,\"height\":1,\"id\":\"primary-menu\"}]}}", "primary-menu_component_align":"right","logo_component_align":"left","header_search_responsive_icon_size":"15"}',
-			],
-			[
-				'label' => 'Inverted',
-				'image' => NEVE_ASSETS_URL . 'img/header-presets/Inverted.jpg',
-				'setup' => '{"hfg_header_layout":"{\"desktop\":{\"top\":[],\"main\":[{\"x\":6,\"y\":1,\"width\":1,\"height\":1,\"id\":\"header_search_responsive\"},{\"x\":0,\"y\":1,\"width\":6,\"height\":1,\"id\":\"primary-menu\"},{\"x\":8,\"y\":1,\"width\":4,\"height\":1,\"id\":\"logo\"}],\"bottom\":[]},\"mobile\":{\"top\":[],\"main\":[{\"x\":0,\"y\":1,\"width\":8,\"height\":1,\"id\":\"logo\"},{\"x\":8,\"y\":1,\"width\":4,\"height\":1,\"id\":\"nav-icon\"}],\"bottom\":[],\"sidebar\":[{\"x\":0,\"y\":1,\"width\":8,\"height\":1,\"id\":\"primary-menu\"}]}}","primary-menu_component_align":"left","logo_component_align":"right","header_search_responsive_icon_size":"15"}',
-			],
-			[
-				'label' => 'Centered',
-				'image' => NEVE_ASSETS_URL . 'img/header-presets/Centered.jpg',
-				'setup' => '{"hfg_header_layout": "{\"desktop\":{\"top\":[],\"main\":[{\"x\":0,\"y\":1,\"width\":12,\"height\":1,\"id\":\"logo\"}],\"bottom\":[{\"x\":0,\"y\":1,\"width\":12,\"height\":1,\"id\":\"primary-menu\"}]},\"mobile\":{\"top\":[],\"main\":[{\"x\":0,\"y\":1,\"width\":8,\"height\":1,\"id\":\"logo\"},{\"x\":8,\"y\":1,\"width\":4,\"height\":1,\"id\":\"nav-icon\"}],\"bottom\":[],\"sidebar\":[{\"x\":0,\"y\":1,\"width\":8,\"height\":1,\"id\":\"primary-menu\"}]}}","primary-menu_component_align":"center","logo_component_align":"center","header_search_responsive_icon_size":"15"}',
-			],
-			[
-				'label' => 'Spaced',
-				'image' => NEVE_ASSETS_URL . 'img/header-presets/Spaced.jpg',
-				'setup' => '{"hfg_header_layout": "{\"desktop\":{\"top\":[],\"main\":[{\"x\":0,\"y\":1,\"width\":1,\"height\":1,\"id\":\"header_search_responsive\"},{\"x\":4,\"y\":1,\"width\":4,\"height\":1,\"id\":\"logo\"},{\"x\":11,\"y\":1,\"width\":1,\"height\":1,\"id\":\"nav-icon\"}],\"bottom\":[]},\"mobile\":{\"top\":[],\"main\":[{\"x\":0,\"y\":1,\"width\":8,\"height\":1,\"id\":\"logo\"},{\"x\":8,\"y\":1,\"width\":4,\"height\":1,\"id\":\"nav-icon\"}],\"bottom\":[],\"sidebar\":[{\"x\":0,\"y\":1,\"width\":8,\"height\":1,\"id\":\"primary-menu\"}]}}","nav-icon_component_align": "right","logo_component_align": "center","header_search_responsive_icon_size":"25"}',
-			],
-		] );
+				[
+					'label' => 'Classic',
+					'image' => NEVE_ASSETS_URL . 'img/header-presets/Classic.jpg',
+					'setup' => '{"hfg_header_layout":"{\"desktop\":{\"top\":[],\"main\":[{\"x\":0,\"y\":1,\"width\":4,\"height\":1,\"id\":\"logo\"},{\"x\":4,\"y\":1,\"width\":7,\"height\":1,\"id\":\"primary-menu\"},{\"x\":11,\"y\":1,\"width\":1,\"height\":1,\"id\":\"header_search_responsive\"}],\"bottom\":[]},\"mobile\":{\"top\":[],\"main\":[{\"x\":0,\"y\":1,\"width\":8,\"height\":1,\"id\":\"logo\"},{\"x\":8,\"y\":1,\"width\":4,\"height\":1,\"id\":\"nav-icon\"}],\"bottom\":[],\"sidebar\":[{\"x\":0,\"y\":1,\"width\":8,\"height\":1,\"id\":\"primary-menu\"}]}}", "primary-menu_component_align":"right","logo_component_align":"left","header_search_responsive_icon_size":"15"}',
+				],
+				[
+					'label' => 'Inverted',
+					'image' => NEVE_ASSETS_URL . 'img/header-presets/Inverted.jpg',
+					'setup' => '{"hfg_header_layout":"{\"desktop\":{\"top\":[],\"main\":[{\"x\":6,\"y\":1,\"width\":1,\"height\":1,\"id\":\"header_search_responsive\"},{\"x\":0,\"y\":1,\"width\":6,\"height\":1,\"id\":\"primary-menu\"},{\"x\":8,\"y\":1,\"width\":4,\"height\":1,\"id\":\"logo\"}],\"bottom\":[]},\"mobile\":{\"top\":[],\"main\":[{\"x\":0,\"y\":1,\"width\":8,\"height\":1,\"id\":\"logo\"},{\"x\":8,\"y\":1,\"width\":4,\"height\":1,\"id\":\"nav-icon\"}],\"bottom\":[],\"sidebar\":[{\"x\":0,\"y\":1,\"width\":8,\"height\":1,\"id\":\"primary-menu\"}]}}","primary-menu_component_align":"left","logo_component_align":"right","header_search_responsive_icon_size":"15"}',
+				],
+				[
+					'label' => 'Centered',
+					'image' => NEVE_ASSETS_URL . 'img/header-presets/Centered.jpg',
+					'setup' => '{"hfg_header_layout": "{\"desktop\":{\"top\":[],\"main\":[{\"x\":0,\"y\":1,\"width\":12,\"height\":1,\"id\":\"logo\"}],\"bottom\":[{\"x\":0,\"y\":1,\"width\":12,\"height\":1,\"id\":\"primary-menu\"}]},\"mobile\":{\"top\":[],\"main\":[{\"x\":0,\"y\":1,\"width\":8,\"height\":1,\"id\":\"logo\"},{\"x\":8,\"y\":1,\"width\":4,\"height\":1,\"id\":\"nav-icon\"}],\"bottom\":[],\"sidebar\":[{\"x\":0,\"y\":1,\"width\":8,\"height\":1,\"id\":\"primary-menu\"}]}}","primary-menu_component_align":"center","logo_component_align":"center","header_search_responsive_icon_size":"15"}',
+				],
+				[
+					'label' => 'Spaced',
+					'image' => NEVE_ASSETS_URL . 'img/header-presets/Spaced.jpg',
+					'setup' => '{"hfg_header_layout": "{\"desktop\":{\"top\":[],\"main\":[{\"x\":0,\"y\":1,\"width\":1,\"height\":1,\"id\":\"header_search_responsive\"},{\"x\":4,\"y\":1,\"width\":4,\"height\":1,\"id\":\"logo\"},{\"x\":11,\"y\":1,\"width\":1,\"height\":1,\"id\":\"nav-icon\"}],\"bottom\":[]},\"mobile\":{\"top\":[],\"main\":[{\"x\":0,\"y\":1,\"width\":8,\"height\":1,\"id\":\"logo\"},{\"x\":8,\"y\":1,\"width\":4,\"height\":1,\"id\":\"nav-icon\"}],\"bottom\":[],\"sidebar\":[{\"x\":0,\"y\":1,\"width\":8,\"height\":1,\"id\":\"primary-menu\"}]}}","nav-icon_component_align": "right","logo_component_align": "center","header_search_responsive_icon_size":"25"}',
+				],
+			] 
+		);
 	}
 }
