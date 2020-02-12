@@ -5,7 +5,7 @@ Theme URI:      https://themeisle.com/themes/neve/
 Author:         ThemeIsle
 Author URI:     https://themeisle.com
 Description:    Neve is a super fast, easily customizable, multi-purpose theme. It’s perfect for blogs, small business, startups, agencies, firms, e-commerce shops (WooCommerce storefront) as well as personal portfolio sites and most types of projects. A fully AMP optimized and responsive theme, Neve will load in mere seconds and adapt perfectly on any viewing device. While it is lightweight and has a minimalist design, the theme is highly extendable, it has a highly SEO optimized code, resulting in top rankings in Google search results. Neve works perfectly with Gutenberg and the most popular page builders (Elementor, Brizy, Beaver Builder, Visual Composer, SiteOrigin, Divi). Neve is also WooCommerce ready, responsive, RTL & translation ready. Look no further. Neve is the perfect theme for you!
-Version:        2.6.0
+Version:        2.6.1
 License:        GNU General Public License v2 or later
 License URI:    http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain:    neve
@@ -704,7 +704,7 @@ blockquote.wp-block-quote.is-style-large cite {
 }
 
 .caret svg {
-  transition: all 0.3s ease;
+  fill: currentColor;
 }
 
 .dropdown-open.caret-wrap > .caret svg {
@@ -720,11 +720,11 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
 }
 
 .hfg-item-left #secondary-menu li:not(:last-child), .hfg-item-center #secondary-menu li:not(:last-child) {
-  padding-right: 20px;
+  margin-right: 20px;
 }
 
 .hfg-item-right #secondary-menu li:not(:first-child) {
-  padding-left: 20px;
+  margin-left: 20px;
 }
 
 ul[id^="nv-primary-navigation"] i {
@@ -946,17 +946,18 @@ footer {
   background-color: #fff;
 }
 
-.nv-footer-content .footer-menu {
-  justify-content: center;
+.footer-menu {
   display: flex;
   flex-wrap: wrap;
-  padding-left: 0;
-  list-style-type: none;
+  justify-content: center;
 }
 
-.nv-footer-content .footer-menu li {
-  padding-right: 10px;
-  padding-left: 10px;
+.hfg-item-left .footer-menu li:not(:last-child), .hfg-item-center .footer-menu li:not(:last-child) {
+  margin-right: 20px;
+}
+
+.hfg-item-right .footer-menu li:not(:first-child) {
+  margin-left: 20px;
 }
 
 .wrapper {
@@ -2120,11 +2121,11 @@ audio {
   .nv-empty-sidebar .neve-main > .container .col {
     max-width: 100%;
   }
-  .hfg-item-left .primary-menu-ul li:not(:last-child), .hfg-item-center .primary-menu-ul li:not(:last-child) {
-    padding-right: 20px;
+  .hfg-item-left .header--row .primary-menu-ul li:not(:last-child), .hfg-item-center .header--row .primary-menu-ul li:not(:last-child) {
+    margin-right: 20px;
   }
-  .hfg-item-right .primary-menu-ul li:not(:first-child) {
-    padding-left: 20px;
+  .hfg-item-right .header--row .primary-menu-ul li:not(:first-child) {
+    margin-left: 20px;
   }
   .row .nv-nav-wrap {
     flex-direction: row;
@@ -2162,9 +2163,6 @@ audio {
   .row .primary-menu-ul li:hover > a, .row .primary-menu-ul li:focus > a {
     color: #0366d6;
     text-decoration: none;
-  }
-  .row .primary-menu-ul li:hover > a .caret, .row .primary-menu-ul li:focus > a .caret {
-    color: #0366d6;
   }
   .row .primary-menu-ul .sub-menu {
     -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -2227,6 +2225,7 @@ audio {
     position: relative;
     font-size: .65em;
     padding-left: 0;
+    margin-left: 5px;
   }
   .row .menu-item-has-children:last-child .caret {
     padding-right: 0;
@@ -2512,7 +2511,7 @@ audio {
   text-align: right;
 }
 
-.hfg-item-right #secondary-menu, .hfg-item-right .primary-menu-ul, .hfg-item-right .nv-nav-wrap, .hfg-item-right .component-wrap, .hfg-item-right .site-logo, .hfg-item-right .nv-search-icon-component .nv-search, .hfg-item-right .builder-item--footer-menu {
+.hfg-item-right #secondary-menu, .hfg-item-right .primary-menu-ul, .hfg-item-right .nv-nav-wrap, .hfg-item-right .component-wrap, .hfg-item-right .site-logo, .hfg-item-right .nv-search-icon-component .nv-search, .hfg-item-right .footer-menu {
   justify-content: flex-end;
 }
 
@@ -2524,7 +2523,7 @@ audio {
   text-align: left;
 }
 
-.hfg-item-left #secondary-menu, .hfg-item-left .primary-menu-ul, .hfg-item-left .nv-nav-wrap, .hfg-item-left .component-wrap, .hfg-item-left .site-logo, .hfg-item-left .nv-search-icon-component .nv-search, .hfg-item-left .builder-item--footer-menu {
+.hfg-item-left #secondary-menu, .hfg-item-left .primary-menu-ul, .hfg-item-left .nv-nav-wrap, .hfg-item-left .component-wrap, .hfg-item-left .site-logo, .hfg-item-left .nv-search-icon-component .nv-search, .hfg-item-left .footer-menu {
   justify-content: flex-start;
 }
 
@@ -2536,7 +2535,7 @@ audio {
   text-align: center;
 }
 
-.hfg-item-center #secondary-menu, .hfg-item-center .primary-menu-ul, .hfg-item-center .nv-nav-wrap, .hfg-item-center .component-wrap, .hfg-item-center .site-logo, .hfg-item-center .nv-search-icon-component .nv-search, .hfg-item-center .builder-item--footer-menu {
+.hfg-item-center #secondary-menu, .hfg-item-center .primary-menu-ul, .hfg-item-center .nv-nav-wrap, .hfg-item-center .component-wrap, .hfg-item-center .site-logo, .hfg-item-center .nv-search-icon-component .nv-search, .hfg-item-center .footer-menu {
   justify-content: center;
 }
 
@@ -3011,10 +3010,13 @@ body.menu_sidebar_slide_left.menu_sidebar_dropdown:before {
   top: 0;
 }
 
+.style-full-height .primary-menu-ul li:hover > a, .style-full-height .row .primary-menu-ul li:focus > a {
+  color: #404248;
+}
+
 .style-full-height a {
-  padding-left: 3px;
-  padding-right: 3px;
   position: relative;
+  align-items: center;
   z-index: 1;
 }
 
@@ -3039,13 +3041,14 @@ body.menu_sidebar_slide_left.menu_sidebar_dropdown:before {
 }
 
 #secondary-menu li {
-  display: flex;
-  align-items: center;
   position: relative;
   width: inherit;
 }
 
 #secondary-menu li a {
+  display: flex;
+  position: relative;
+  align-items: center;
   text-align: center;
   font-weight: 500;
 }
