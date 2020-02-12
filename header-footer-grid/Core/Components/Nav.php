@@ -28,6 +28,8 @@ class Nav extends Abstract_Component {
 	const ACTIVE_COLOR_ID = 'active_color';
 	const LAST_ITEM_ID    = 'neve_last_menu_item';
 	const NAV_MENU_ID     = 'nv-primary-navigation';
+	const ITEM_HEIGHT     = 'item_height';
+	const SPACING         = 'spacing';
 
 	/**
 	 * Nav constructor.
@@ -45,6 +47,7 @@ class Nav extends Abstract_Component {
 		$this->set_property( 'has_font_family_control', true );
 		$this->set_property( 'has_typeface_control', true );
 		$this->set_property( 'default_typography_selector', $this->default_typography_selector . '.builder-item--' . $this->get_id() . ' li > a' );
+		$this->set_property( 'default_selector', $this->default_typography_selector . '.builder-item--' . $this->get_id() . ' li > a' );
 		$this->default_align = 'right';
 		add_filter(
 			'neve_last_menu_setting_slug_' . $this->get_class_const( 'COMPONENT_ID' ),
@@ -88,7 +91,7 @@ class Nav extends Abstract_Component {
 				'sanitize_callback'  => 'wp_filter_nohtml_kses',
 				'default'            => 'style-plain',
 				'conditional_header' => true,
-				'label'              => __( 'Skin Mode', 'neve' ),
+				'label'              => __( 'Hover Skin Mode', 'neve' ),
 				'type'               => '\Neve\Customizer\Controls\React\Radio_Buttons',
 				'section'            => $this->section,
 				'options'            => [
@@ -100,44 +103,73 @@ class Nav extends Abstract_Component {
 
 		SettingsManager::get_instance()->add(
 			[
-				'id'                 => self::COLOR_ID,
-				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
-				'tab'                => SettingsManager::TAB_STYLE,
-				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
-				'sanitize_callback'  => 'sanitize_hex_color',
-				'default'            => '#404248',
-				'label'              => __( 'Items Color', 'neve' ),
-				'type'               => 'neve_color_control',
-				'section'            => $this->section,
-				'conditional_header' => true,
+				'id'                    => self::COLOR_ID,
+				'group'                 => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'                   => SettingsManager::TAB_STYLE,
+				'transport'             => 'postMessage',
+				'sanitize_callback'     => 'sanitize_hex_color',
+				'default'               => '#404248',
+				'label'                 => __( 'Items Color', 'neve' ),
+				'type'                  => 'neve_color_control',
+				'section'               => $this->section,
+				'conditional_header'    => true,
+				'live_refresh_selector' => true,
+				'live_refresh_css_prop' => [
+					[
+						'selector' => $this->default_typography_selector . ', ' . $this->default_typography_selector . ' svg',
+						'prop'     => 'color',
+						'fallback' => 'inherit',
+					],
+				],
 			]
 		);
 		SettingsManager::get_instance()->add(
 			[
-				'id'                 => self::ACTIVE_COLOR_ID,
-				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
-				'tab'                => SettingsManager::TAB_STYLE,
-				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
-				'sanitize_callback'  => 'sanitize_hex_color',
-				'default'            => '#0366d6',
-				'label'              => __( 'Active Item Color', 'neve' ),
-				'type'               => 'neve_color_control',
-				'section'            => $this->section,
-				'conditional_header' => true,
+				'id'                    => self::ACTIVE_COLOR_ID,
+				'group'                 => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'                   => SettingsManager::TAB_STYLE,
+				'transport'             => 'postMessage',
+				'sanitize_callback'     => 'sanitize_hex_color',
+				'default'               => '#0366d6',
+				'label'                 => __( 'Active Item Color', 'neve' ),
+				'type'                  => 'neve_color_control',
+				'section'               => $this->section,
+				'conditional_header'    => true,
+				'live_refresh_selector' => true,
+				'live_refresh_css_prop' => [
+					[
+						'selector' => '.builder-item--' . $this->get_id() . ' li.current_page_item > a',
+						'prop'     => 'color',
+						'fallback' => 'inherit',
+					],
+				],
 			]
 		);
 		SettingsManager::get_instance()->add(
 			[
-				'id'                 => self::HOVER_COLOR_ID,
-				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
-				'tab'                => SettingsManager::TAB_STYLE,
-				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
-				'sanitize_callback'  => 'sanitize_hex_color',
-				'default'            => '#0366d6',
-				'label'              => __( 'Items Hover Color', 'neve' ),
-				'type'               => 'neve_color_control',
-				'section'            => $this->section,
-				'conditional_header' => true,
+				'id'                    => self::HOVER_COLOR_ID,
+				'group'                 => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'                   => SettingsManager::TAB_STYLE,
+				'transport'             => 'postMessage',
+				'sanitize_callback'     => 'sanitize_hex_color',
+				'default'               => '#0366d6',
+				'label'                 => __( 'Items Hover Color', 'neve' ),
+				'type'                  => 'neve_color_control',
+				'section'               => $this->section,
+				'conditional_header'    => true,
+				'live_refresh_selector' => true,
+				'live_refresh_css_prop' => [
+					[
+						'selector' => '.builder-item--' . $this->get_id() . ' .nav-menu-primary > .primary-menu-ul li:not(.woocommerce-mini-cart-item) > a:after',
+						'prop'     => 'background-color',
+						'fallback' => 'inherit',
+					],
+					[
+						'selector' => '.builder-item--' . $this->get_id() . ' .nav-menu-primary:not(.style-full-height) > .primary-menu-ul li:not(.woocommerce-mini-cart-item):hover > a',
+						'prop'     => 'color',
+						'fallback' => 'inherit',
+					],
+				],
 			]
 		);
 
@@ -199,6 +231,35 @@ class Nav extends Abstract_Component {
 			]
 		);
 
+		SettingsManager::get_instance()->add(
+			[
+				'id'                 => self::SPACING,
+				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'                => SettingsManager::TAB_LAYOUT,
+				'section'            => $this->section,
+				'label'              => __( 'Items Spacing (px)', 'neve' ),
+				'type'               => 'neve_range_control',
+				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
+				'sanitize_callback'  => 'absint',
+				'default'            => 20,
+				'conditional_header' => true,
+			]
+		);
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'                 => self::ITEM_HEIGHT,
+				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'                => SettingsManager::TAB_LAYOUT,
+				'section'            => $this->section,
+				'label'              => __( 'Items Height (px)', 'neve' ),
+				'type'               => 'neve_range_control',
+				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
+				'sanitize_callback'  => 'absint',
+				'default'            => 25,
+				'conditional_header' => true,
+			]
+		);
 	}
 
 	/**
@@ -266,8 +327,26 @@ class Nav extends Abstract_Component {
 
 		$active_color = SettingsManager::get_instance()->get( $this->get_id() . '_active_color' );
 		if ( ! empty( $active_color ) ) {
-			$css_array[ $selector . 'li.current-menu-item a' ] = array( 'color' => sanitize_hex_color( $active_color ) );
+			$css_array[ $selector . 'li.current-menu-item > a' ] = array( 'color' => sanitize_hex_color( $active_color ) );
 			$css_array[ $selector . 'li.current-menu-item > a .caret-wrap svg,' . $selector . 'li.current-menu-item > .amp-caret-wrap svg' ] = array( 'fill' => sanitize_hex_color( $active_color ) );
+		}
+
+		$item_spacing = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::SPACING );
+		if ( ! empty( $item_spacing ) ) {
+			$css_array['@media (min-width: 961px)'][ '.header--row .hfg-item-right .builder-item--' . $this->get_id() . ' .primary-menu-ul > li:not(:first-child)' ] = [ 'margin-left' => absint( $item_spacing ) . 'px' ];
+			$css_array['@media (min-width: 961px)'][ '.header--row .hfg-item-center .builder-item--' . $this->get_id() . ' .primary-menu-ul > li:not(:last-child), .header--row .hfg-item-left .builder-item--' . $this->get_id() . ' .primary-menu-ul > li:not(:last-child)' ] = [ 'margin-right' => absint( $item_spacing ) . 'px' ];
+			$css_array['@media (min-width: 961px)'][ '.builder-item--' . $this->get_id() . ' .style-full-height .primary-menu-ul > li:not(.menu-item-nav-search):not(.menu-item-nav-cart) > a:after' ] = [
+				'left'  => - $item_spacing / 2 . 'px',
+				'right' => - $item_spacing / 2 . 'px',
+			];
+			$css_array['@media (min-width: 961px)'][ '.builder-item--' . $this->get_id() . ' .style-full-height .primary-menu-ul:not(#nv-primary-navigation-sidebar) > li:not(.menu-item-nav-search):not(.menu-item-nav-cart):hover > a:after' ] = [
+				'width' => 'calc(100% + ' . $item_spacing . 'px) !important;',
+			];
+		}
+
+		$item_height = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::ITEM_HEIGHT );
+		if ( ! empty( $item_height ) ) {
+			$css_array[ '.builder-item--' . $this->get_id() . ' .primary-menu-ul > li > a' ] = [ 'height' => absint( $item_height ) . 'px' ];
 		}
 
 		return parent::add_style( $css_array );

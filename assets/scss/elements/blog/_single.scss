@@ -57,12 +57,8 @@
   }
 }
 
-.nv-content-wrap .page-numbers {
-  justify-content: center;
-  margin: $spacing-xs auto;
+.post-pages-links {
   display: flex;
-  flex-wrap: wrap;
-  padding-left: 0;
   list-style-type: none;
   > a:not(:last-child) span, > span {
     padding-right: $spacing-sm;
