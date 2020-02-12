@@ -18,6 +18,13 @@ class PresetsSelector extends Component {
     this.replaceSettings = this.replaceSettings.bind( this )
   }
 
+  /**
+   * You can get the value in the console with this command:
+   *
+   * copy(HFG.getSettings());
+   *
+   * @returns {*}
+   */
   getPresets() {
     const { presets } = this.props.control.params
 
@@ -60,32 +67,44 @@ class PresetsSelector extends Component {
 
   replaceSettings(setup) {
     setup = maybeParseJson( setup )
-    Object.keys( setup ).map( (themeMod) => {
-      if ( themeMod === 'hfg_header_layout' ) {
-        document.dispatchEvent( new CustomEvent( 'neve-changed-builder-value', {
-          detail: {
-            value: maybeParseJson( setup.hfg_header_layout ),
-            id: 'header'
-          }
-        } ) )
-        return false
-      } else {
-        if ( !wp.customize.control( themeMod ) ) return false
-        if ( ['text', 'textarea', 'select'].includes(
-          wp.customize.control( themeMod ).params.type ) ) {
-          wp.customize.control( themeMod ).setting.set( setup[themeMod] )
+    if ( typeof NeveProReactCustomize === 'undefined' ) {
+      Object.keys( setup ).map( (themeMod) => {
+        if ( themeMod === 'hfg_header_layout' ) {
+          wp.customize.control( themeMod )
+            .setting
+            .set( setup[themeMod] )
+          document.dispatchEvent(
+            new CustomEvent( 'neve-changed-builder-value', {
+              detail: {
+                value: maybeParseJson( setup[themeMod] ),
+                id: 'header'
+              }
+            } ) )
           return false
-        }
+        } else {
+          if ( !wp.customize.control( themeMod ) ) return false
+          if ( ['text', 'textarea', 'select'].includes(
+            wp.customize.control( themeMod ).params.type ) ) {
+            wp.customize.control( themeMod ).setting.set( setup[themeMod] )
+            return false
+          }
 
-        document.dispatchEvent(
-          new CustomEvent( 'neve-changed-customizer-value', {
-            detail: {
-              value: setup[themeMod] || '',
-              id: themeMod
-            }
-          } ) )
+          document.dispatchEvent(
+            new CustomEvent( 'neve-changed-customizer-value', {
+              detail: {
+                value: setup[themeMod] || '',
+                id: themeMod
+              }
+            } ) )
+        }
+      } )
+      return false
+    }
+    document.dispatchEvent( new CustomEvent( 'neve-preset-changed', {
+      detail: {
+        themeMods: setup
       }
-    } )
+    } ) )
   }
 }
 
