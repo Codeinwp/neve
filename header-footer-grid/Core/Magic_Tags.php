@@ -435,7 +435,7 @@ class Magic_Tags {
 				],
 			],
 			[
-				'label'    => __( 'Cart', 'neve ' ),
+				'label'    => __( 'Cart', 'neve' ),
 				'controls' => [
 					'cart_total'      => [
 						'label' => __( 'Total', 'neve' ),
