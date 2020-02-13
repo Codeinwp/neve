@@ -106,6 +106,7 @@ class SearchResponsive extends Abstract_Component {
 					'type' => 'svg-icon-size',
 				),
 				'section'               => $this->section,
+				'conditional_header'    => true,
 			]
 		);
 
