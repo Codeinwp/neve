@@ -370,15 +370,25 @@ class Manager {
 			);
 		}
 
-		if ( defined( 'NEVE_PRO_VERSION' ) && isset( $arguments['conditional_header'] ) && $arguments['conditional_header'] === true ) {
+		if ( isset( $arguments['conditional_header'] ) && $arguments['conditional_header'] === true ) {
 			add_filter(
-				'neve_pro_react_controls_localization',
+				'neve_react_controls_localization',
 				function ( $array ) use ( $id ) {
 					$array['headerControls'][] = $id;
 
 					return $array;
 				}
 			);
+			if ( defined( 'NEVE_PRO_VERSION' ) ) {
+				add_filter(
+					'neve_pro_react_controls_localization',
+					function ( $array ) use ( $id ) {
+						$array['headerControls'][] = $id;
+
+						return $array;
+					}
+				);
+			}
 		}
 
 		self::$settings[ $id ] = array_merge(

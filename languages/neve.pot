@@ -2,9 +2,9 @@
 # This file is distributed under the GNU General Public License v2 or later.=!>
 msgid ""
 msgstr ""
-"Project-Id-Version: Neve 2.5.5\n"
+"Project-Id-Version: Neve 2.6.1\n"
 "Report-Msgid-Bugs-To: https://github.com/Codeinwp/neve/issues\n"
-"POT-Creation-Date: 2020-01-30 16:15:02+00:00\n"
+"POT-Creation-Date: 2020-02-11 16:26:48+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -76,9 +76,6 @@ msgid "Row Background"
 msgstr ""
 
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:387
-#: header-footer-grid/Core/Components/Nav.php:91
-#: header-footer-grid/Core/Components/NavFooter.php:64
-#: header-footer-grid/Core/Components/SecondNav.php:64
 msgid "Skin Mode"
 msgstr ""
 
@@ -165,36 +162,40 @@ msgid "Mobile menu content"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:436
-msgid "Alignment"
-msgstr ""
-
-#: header-footer-grid/Core/Components/Abstract_Component.php:442
 msgid "Left"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:446
+#: header-footer-grid/Core/Components/Abstract_Component.php:440
 msgid "Center"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:450
+#: header-footer-grid/Core/Components/Abstract_Component.php:444
 msgid "Right"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:469
+#: header-footer-grid/Core/Components/Abstract_Component.php:451
+msgid "Justify"
+msgstr ""
+
+#: header-footer-grid/Core/Components/Abstract_Component.php:465
+msgid "Alignment"
+msgstr ""
+
+#: header-footer-grid/Core/Components/Abstract_Component.php:485
 #: inc/customizer/options/buttons.php:130
 msgid "Padding"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:495
+#: header-footer-grid/Core/Components/Abstract_Component.php:511
 msgid "Margin"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:721
+#: header-footer-grid/Core/Components/Abstract_Component.php:738
 #: inc/customizer/options/main.php:57
 msgid "Typography"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Button.php:76
+#: header-footer-grid/Core/Components/Button.php:75
 #: header-footer-grid/Core/Components/Button.php:113
 msgid "Button"
 msgstr ""
@@ -208,7 +209,7 @@ msgid "Text"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Button.php:140
-#: header-footer-grid/Core/Components/MenuIcon.php:111
+#: header-footer-grid/Core/Components/MenuIcon.php:119
 msgid "Appearance"
 msgstr ""
 
@@ -296,53 +297,71 @@ msgstr ""
 msgid "Logo max width (px)"
 msgstr ""
 
-#: header-footer-grid/Core/Components/MenuIcon.php:68
+#: header-footer-grid/Core/Components/MenuIcon.php:76
 msgid "Menu Icon"
 msgstr ""
 
-#: header-footer-grid/Core/Components/MenuIcon.php:91
+#: header-footer-grid/Core/Components/MenuIcon.php:99
 msgid "Menu label"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Nav.php:39
-#: header-footer-grid/Core/Components/Nav.php:193
+#: header-footer-grid/Core/Components/Nav.php:41
+#: header-footer-grid/Core/Components/Nav.php:225
 #: header-footer-grid/templates/components/component-nav.php:25
 #: inc/core/front_end.php:76
 msgid "Primary Menu"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Nav.php:109
-#: header-footer-grid/Core/Components/NavFooter.php:82
-#: header-footer-grid/Core/Components/SecondNav.php:83
+#: header-footer-grid/Core/Components/Nav.php:94
+#: header-footer-grid/Core/Components/NavFooter.php:66
+#: header-footer-grid/Core/Components/SecondNav.php:66
+msgid "Hover Skin Mode"
+msgstr ""
+
+#: header-footer-grid/Core/Components/Nav.php:112
+#: header-footer-grid/Core/Components/NavFooter.php:84
+#: header-footer-grid/Core/Components/SecondNav.php:84
 msgid "Items Color"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Nav.php:123
+#: header-footer-grid/Core/Components/Nav.php:134
 msgid "Active Item Color"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Nav.php:137
-#: header-footer-grid/Core/Components/NavFooter.php:96
-#: header-footer-grid/Core/Components/SecondNav.php:98
+#: header-footer-grid/Core/Components/Nav.php:156
+#: header-footer-grid/Core/Components/NavFooter.php:106
+#: header-footer-grid/Core/Components/SecondNav.php:107
 msgid "Items Hover Color"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Nav.php:149
+#: header-footer-grid/Core/Components/Nav.php:181
 msgid "Search"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Nav.php:154
+#: header-footer-grid/Core/Components/Nav.php:186
 #: header-footer-grid/templates/components/component-cart-icon.php:17
 #: inc/views/header.php:146
 msgid "Cart"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Nav.php:175
+#: header-footer-grid/Core/Components/Nav.php:207
 msgid "Last Menu Item"
 msgstr ""
 
-#: header-footer-grid/Core/Components/NavFooter.php:37
-#: header-footer-grid/Core/Components/NavFooter.php:113
+#: header-footer-grid/Core/Components/Nav.php:240
+#: header-footer-grid/Core/Components/NavFooter.php:149
+#: header-footer-grid/Core/Components/SecondNav.php:152
+msgid "Items Spacing (px)"
+msgstr ""
+
+#: header-footer-grid/Core/Components/Nav.php:255
+#: header-footer-grid/Core/Components/NavFooter.php:164
+#: header-footer-grid/Core/Components/SecondNav.php:167
+msgid "Items Height (px)"
+msgstr ""
+
+#: header-footer-grid/Core/Components/NavFooter.php:39
+#: header-footer-grid/Core/Components/NavFooter.php:136
 #: header-footer-grid/templates/components/component-nav-footer.php:23
 #: inc/core/front_end.php:77
 msgid "Footer Menu"
@@ -370,14 +389,14 @@ msgstr ""
 msgid "Search Icon"
 msgstr ""
 
-#: header-footer-grid/Core/Components/SecondNav.php:37
-#: header-footer-grid/Core/Components/SecondNav.php:112
+#: header-footer-grid/Core/Components/SecondNav.php:39
+#: header-footer-grid/Core/Components/SecondNav.php:134
 #: header-footer-grid/templates/components/component-nav-secondary.php:23
 #: inc/core/front_end.php:78 inc/customizer/options/top_bar.php:189
 msgid "Secondary Menu"
 msgstr ""
 
-#: header-footer-grid/Core/Components/SecondNav.php:118
+#: header-footer-grid/Core/Components/SecondNav.php:140
 msgid "Select Menu"
 msgstr ""
 
@@ -456,42 +475,58 @@ msgid "Author URL"
 msgstr ""
 
 #: header-footer-grid/Core/Magic_Tags.php:362
-msgid "Global"
+msgid "Current User"
 msgstr ""
 
 #: header-footer-grid/Core/Magic_Tags.php:365
-msgid "Site Title"
+msgid "User Nice Name"
 msgstr ""
 
 #: header-footer-grid/Core/Magic_Tags.php:369
-msgid "Site Tagline"
+msgid "Display Name"
 msgstr ""
 
 #: header-footer-grid/Core/Magic_Tags.php:373
-msgid "Home URL"
+msgid "User Email"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:377
-msgid "Current Year"
+#: header-footer-grid/Core/Magic_Tags.php:379
+msgid "Global"
+msgstr ""
+
+#: header-footer-grid/Core/Magic_Tags.php:382
+msgid "Site Title"
 msgstr ""
 
 #: header-footer-grid/Core/Magic_Tags.php:386
+msgid "Site Tagline"
+msgstr ""
+
+#: header-footer-grid/Core/Magic_Tags.php:390
+msgid "Home URL"
+msgstr ""
+
+#: header-footer-grid/Core/Magic_Tags.php:394
+msgid "Current Year"
+msgstr ""
+
+#: header-footer-grid/Core/Magic_Tags.php:403
 msgid "WooCommerce"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:389
+#: header-footer-grid/Core/Magic_Tags.php:406
 msgid "Product Price"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:393
+#: header-footer-grid/Core/Magic_Tags.php:410
 msgid "Product Title"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:397
+#: header-footer-grid/Core/Magic_Tags.php:414
 msgid "Cart URL"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:401
+#: header-footer-grid/Core/Magic_Tags.php:418
 msgid "Checkout URL"
 msgstr ""
 
@@ -1409,6 +1444,11 @@ msgid_plural "%s Comments"
 msgstr[0] ""
 msgstr[1] ""
 
+#: inc/views/pluggable/pagination.php:140 inc/views/template_parts.php:76
+#: inc/views/template_parts.php:114
+msgid "Pages:"
+msgstr ""
+
 #: inc/views/pluggable/pagination.php:157
 msgid "previous"
 msgstr ""
@@ -1417,7 +1457,7 @@ msgstr ""
 msgid "next"
 msgstr ""
 
-#: inc/views/template_parts.php:240
+#: inc/views/template_parts.php:258
 msgid "Read More"
 msgstr ""
 

@@ -29,6 +29,7 @@ $row_wrapper_classes = array(
 	'nv-footer-content',
 	'hfg-grid-' . esc_attr( $row_index ),
 	'row--wrapper',
+	'row',
 );
 if ( is_customize_preview() ) {
 	$row_wrapper_classes[] = 'builder-item-focus';
