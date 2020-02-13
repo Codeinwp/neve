@@ -28,6 +28,7 @@ class Logo extends Abstract_Component {
 	const MAX_WIDTH    = 'max_width';
 	const SHOW_TITLE   = 'show_title';
 	const SHOW_TAGLINE = 'show_tagline';
+	const DISABLE_LINK = 'disable_link';
 
 	/**
 	 * Default spacing value
@@ -108,7 +109,7 @@ class Logo extends Abstract_Component {
 				'label'              => __( 'Display', 'neve' ),
 				'type'               => '\Neve\Customizer\Controls\React\Radio_Buttons',
 				'options'            => [
-					'priority'      => -1,
+					'priority'      => - 1,
 					'is_for'        => 'logo',
 					'large_buttons' => true,
 				],
@@ -191,6 +192,20 @@ class Logo extends Abstract_Component {
 			]
 		);
 
+		SettingsManager::get_instance()->add(
+			[
+				'id'                 => self::DISABLE_LINK,
+				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'                => SettingsManager::TAB_GENERAL,
+				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
+				'sanitize_callback'  => 'absint',
+				'default'            => false,
+				'label'              => __( 'Disable Homepage Link', 'neve' ),
+				'type'               => 'neve_toggle_control',
+				'section'            => $this->section,
+				'conditional_header' => true,
+			]
+		);
 	}
 
 	/**
