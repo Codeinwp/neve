@@ -11,6 +11,7 @@ import { ButtonAppearanceControl } from './button-appearance/Control.js'
 import { RangeControl } from './range/Control.js'
 import { ResponsiveRangeControl } from './responsive-range/Control.js'
 import { ColorControl } from './color/Control.js'
+import { PresetsSelectorControl } from './presets-selector/Control.js'
 import './style.scss'
 
 wp.customize.controlConstructor.neve_toggle_control = ToggleControl
@@ -23,6 +24,7 @@ wp.customize.controlConstructor.neve_button_appearance = ButtonAppearanceControl
 wp.customize.controlConstructor.neve_range_control = RangeControl
 wp.customize.controlConstructor.neve_responsive_range_control = ResponsiveRangeControl
 wp.customize.controlConstructor.neve_color_control = ColorControl
+wp.customize.controlConstructor.neve_presets_selector = PresetsSelectorControl
 
 window.addEventListener( 'load', () => {
   const deviceButtons = document.querySelector(
@@ -35,3 +37,14 @@ window.addEventListener( 'load', () => {
   } )
   initDynamicFields()
 } )
+
+window.HFG = {
+  getSettings: () => {
+    const usedSettings = {}
+    NeveReactCustomize.headerControls.map( (item) => {
+      if ( !wp.customize.control( item ) ) return false
+      usedSettings[item] = wp.customize.control( item ).setting.get()
+    } )
+    return JSON.stringify( usedSettings )
+  }
+}
