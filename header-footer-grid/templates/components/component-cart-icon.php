@@ -16,6 +16,7 @@ $nav_cart_wrapper_classes = apply_filters( 'neve_cart_icon_wrapper_classes', arr
 <div class="component-wrap">
 	<div class="<?php echo esc_attr( implode( ' ', $nav_cart_wrapper_classes ) ); ?>">
 		<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="cart-icon-wrapper">
+			<?php do_action( 'neve_cart_icon_before_icon' ); ?>
 			<?php neve_cart_icon( true, 15, $icon_type ); ?>
 			<span class="screen-reader-text">
 				<?php esc_html_e( 'Cart', 'neve' ); ?>
