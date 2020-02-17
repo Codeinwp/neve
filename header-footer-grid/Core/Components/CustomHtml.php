@@ -20,10 +20,9 @@ use HFG\Main;
  * @package HFG\Core\Components
  */
 class CustomHtml extends Abstract_Component {
-
-	const CONTENT_ID = 'content';
-
+	const CONTENT_ID   = 'content';
 	const COMPONENT_ID = 'custom_html';
+	const COLOR_ID     = 'color';
 
 	/**
 	 * CustomHtml constructor.
@@ -38,7 +37,7 @@ class CustomHtml extends Abstract_Component {
 		$this->set_property( 'component_slug', 'hfg-html' );
 		$this->set_property( 'icon', 'welcome-write-blog' );
 		$this->set_property( 'has_typeface_control', true );
-		$this->set_property( 'default_typography_selector', $this->default_typography_selector . '.builder-item--' . $this->get_id() );
+		$this->set_property( 'default_typography_selector', $this->default_typography_selector . '.builder-item--' . $this->get_id() . ' .nv-html-content' );
 		add_filter( 'wp_kses_allowed_html', array( $this, 'allow_input_form_tags' ), 10, 2 );
 	}
 
@@ -130,7 +129,6 @@ class CustomHtml extends Abstract_Component {
 	 * @access  public
 	 */
 	public function add_settings() {
-
 		SettingsManager::get_instance()->add(
 			[
 				'id'                 => self::CONTENT_ID,
@@ -149,6 +147,46 @@ class CustomHtml extends Abstract_Component {
 			]
 		);
 
+		SettingsManager::get_instance()->add(
+			[
+				'id'                    => self::COLOR_ID,
+				'group'                 => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'                   => SettingsManager::TAB_STYLE,
+				'transport'             => 'postMessage',
+				'sanitize_callback'     => 'sanitize_hex_color',
+				'label'                 => __( 'Text Color', 'neve' ),
+				'type'                  => 'neve_color_control',
+				'section'               => $this->section,
+				'live_refresh_selector' => true,
+				'live_refresh_css_prop' => [
+					[
+						'selector' => $this->default_typography_selector . ', ' . $this->default_typography_selector . ' *:not(a)',
+						'prop'     => 'color',
+						'fallback' => 'inherit',
+					],
+				],
+				'conditional_header'    => $this->get_builder_id() === 'header',
+			]
+		);
+	}
+
+	/**
+	 * Method to add Component css styles.
+	 *
+	 * @param array $css_array An array containing css rules.
+	 *
+	 * @return array
+	 * @since   1.0.0
+	 * @access  public
+	 */
+	public function add_style( array $css_array = array() ) {
+		$color = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::COLOR_ID );
+		if ( ! empty( $color ) ) {
+			$css_array[ $this->default_typography_selector ]        = [ 'color' => sanitize_hex_color( $color ) ];
+			$css_array[ $this->default_typography_selector . ' *' ] = [ 'color' => sanitize_hex_color( $color ) ];
+		}
+
+		return parent::add_style( $css_array );
 	}
 
 	/**
