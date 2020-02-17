@@ -75,6 +75,7 @@ class MenuIcon extends Abstract_Component {
 	public function init() {
 		$this->set_property( 'label', __( 'Menu Icon', 'neve' ) );
 		$this->set_property( 'id', $this->get_class_const( 'COMPONENT_SLUG' ) );
+		$this->set_property( 'component_slug', self::COMPONENT_SLUG );
 		$this->set_property( 'width', 1 );
 		$this->set_property( 'icon', 'menu' );
 		$this->set_property( 'section', self::COMPONENT_ID );

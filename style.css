@@ -658,6 +658,7 @@ blockquote.wp-block-quote.is-style-large cite {
 }
 
 .primary-menu-ul .amp-caret-wrap svg {
+  fill: currentColor;
   width: 1em;
 }
 
@@ -2320,9 +2321,11 @@ audio {
     position: absolute;
     display: flex;
     padding: 20px;
-    pointer-events: none;
     left: 25%;
     transform: translateX(-50%);
+  }
+  .nv-nav-wrap .primary-menu-ul:not(#nv-primary-navigation-sidebar) .neve-mega-menu > .sub-menu:not(.dropdown-open) {
+    pointer-events: none;
   }
   .nv-nav-wrap .primary-menu-ul:not(#nv-primary-navigation-sidebar) .neve-mega-menu:hover > .sub-menu,
   .nv-nav-wrap .primary-menu-ul:not(#nv-primary-navigation-sidebar) .neve-mega-menu:focus > .sub-menu,
