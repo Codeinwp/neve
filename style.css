@@ -658,6 +658,7 @@ blockquote.wp-block-quote.is-style-large cite {
 }
 
 .primary-menu-ul .amp-caret-wrap svg {
+  fill: currentColor;
   width: 1em;
 }
 
