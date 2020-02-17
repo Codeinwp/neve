@@ -84,6 +84,10 @@ $button_color: #555d66;
   }
 }
 
+.neve-color-control .components-tooltip {
+  display: none !important;
+}
+
 .customize-control-neve_background_control, .neve-button-appearance-control {
   margin-bottom: 20px;
 
@@ -93,7 +97,7 @@ $button_color: #555d66;
   }
 
   .components-tooltip.components-popover {
-    display: none;
+    display: none !important;
   }
 
   .components-color-picker__inputs-field {
@@ -685,7 +689,7 @@ $button_color: #555d66;
 }
 
 
-.components-icon-button {
+.components-icon-button, .components-button {
   .svg-text {
     fill: #fff;
   }
