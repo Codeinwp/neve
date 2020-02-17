@@ -160,7 +160,7 @@ class CustomHtml extends Abstract_Component {
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
 					[
-						'selector' => $this->default_typography_selector . ', ' . $this->default_typography_selector . ' *',
+						'selector' => $this->default_typography_selector . ', ' . $this->default_typography_selector . ' *:not(a)',
 						'prop'     => 'color',
 						'fallback' => 'inherit',
 					],
