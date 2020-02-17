@@ -23,6 +23,7 @@ use WP_Customize_Manager;
 class Copyright extends Abstract_Component {
 	const COMPONENT_ID = 'footer_copyright';
 	const CONTENT_ID   = 'content';
+	const COLOR_ID     = 'color';
 
 	/**
 	 * Copyright constructor.
@@ -58,7 +59,7 @@ class Copyright extends Abstract_Component {
 					apply_filters(
 						'ti_wl_copyright',
 						sprintf(
-							/* translators: %1$s is Theme Name ( Neve ), %2$s is WordPress */
+						/* translators: %1$s is Theme Name ( Neve ), %2$s is WordPress */
 							esc_html__( '%1$s | Powered by %2$s', 'neve' ),
 							wp_kses_post( '<p><a href="https://themeisle.com/themes/neve/" rel="nofollow">Neve</a>' ),
 							wp_kses_post( '<a href="http://wordpress.org" rel="nofollow">WordPress</a></p>' )
@@ -72,6 +73,46 @@ class Copyright extends Abstract_Component {
 			]
 		);
 
+		SettingsManager::get_instance()->add(
+			[
+				'id'                    => self::COLOR_ID,
+				'group'                 => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'                   => SettingsManager::TAB_STYLE,
+				'transport'             => 'postMessage',
+				'sanitize_callback'     => 'sanitize_hex_color',
+				'label'                 => __( 'Text Color', 'neve' ),
+				'type'                  => 'neve_color_control',
+				'section'               => $this->section,
+				'live_refresh_selector' => true,
+				'live_refresh_css_prop' => [
+					[
+						'selector' => $this->default_typography_selector . ', ' . $this->default_typography_selector . ' *:not(a)',
+						'prop'     => 'color',
+						'fallback' => 'inherit',
+					],
+				],
+			]
+		);
+	}
+
+
+	/**
+	 * Method to add Component css styles.
+	 *
+	 * @param array $css_array An array containing css rules.
+	 *
+	 * @return array
+	 * @since   1.0.0
+	 * @access  public
+	 */
+	public function add_style( array $css_array = array() ) {
+		$color = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::COLOR_ID );
+		if ( ! empty( $color ) ) {
+			$css_array[ $this->default_typography_selector ]        = [ 'color' => sanitize_hex_color( $color ) ];
+			$css_array[ $this->default_typography_selector . ' *' ] = [ 'color' => sanitize_hex_color( $color ) ];
+		}
+
+		return parent::add_style( $css_array );
 	}
 
 	/**
