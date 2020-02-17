@@ -16,7 +16,7 @@ $_id = current_component( HeaderBuilder::BUILDER_NAME )->get_id();
 
 $show_name     = component_setting( Logo::SHOW_TITLE );
 $show_desc     = component_setting( Logo::SHOW_TAGLINE );
-$is_not_link   = component_setting( Logo::DISABLE_LINK, true );
+$is_not_link   = component_setting( Logo::DISABLE_LINK, false );
 $display_order = component_setting( Logo::DISPLAY, 'default' );
 $main_logo     = get_theme_mod( 'custom_logo' );
 
