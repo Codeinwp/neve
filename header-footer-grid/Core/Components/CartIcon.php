@@ -12,8 +12,9 @@
 namespace HFG\Core\Components;
 
 use HFG\Core\Settings\Manager as SettingsManager;
-
 use HFG\Main;
+use Neve_Pro\Modules\Woocommerce_Booster\Customizer\Cart_Icon;
+use Neve_Pro\Modules\Woocommerce_Booster\Module;
 
 /**
  * Class SearchResponsive
@@ -66,6 +67,16 @@ class CartIcon extends Abstract_Component {
 				'desktop-unit' => 'px',
 			)
 		);
+
+		if ( function_exists( 'do_blocks' ) ) {
+			add_filter( 'neve_post_content', 'do_blocks' );
+		}
+		add_filter( 'neve_post_content', 'wptexturize' );
+		add_filter( 'neve_post_content', 'convert_smilies' );
+		add_filter( 'neve_post_content', 'convert_chars' );
+		add_filter( 'neve_post_content', 'wpautop' );
+		add_filter( 'neve_post_content', 'shortcode_unautop' );
+		add_filter( 'neve_post_content', 'do_shortcode' );
 	}
 
 	/**
@@ -83,6 +94,9 @@ class CartIcon extends Abstract_Component {
 	 * Define settings for this component.
 	 */
 	public function add_settings() {
+
+		do_action( 'nv_cart_icon_component_controls' );
+
 		SettingsManager::get_instance()->add(
 			[
 				'id'                    => self::SIZE_ID,
@@ -153,7 +167,6 @@ class CartIcon extends Abstract_Component {
 				],
 			]
 		);
-
 	}
 
 	/**
@@ -169,6 +182,7 @@ class CartIcon extends Abstract_Component {
 		$size        = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::SIZE_ID );
 		$color       = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::COLOR_ID );
 		$color_hover = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::HOVER_COLOR_ID );
+		$label_size  = class_exists( '\Neve_Pro\Modules\Woocommerce_Booster\Customizer\Cart_Icon' ) ? SettingsManager::get_instance()->get( $this->get_id() . '_' . Cart_Icon::LABEL_SIZE_ID ) : '';
 
 		if ( ! empty( $size ) ) {
 			$css_array[ $this->default_selector . ' svg' ]['width']  = $size . 'px';
@@ -185,7 +199,11 @@ class CartIcon extends Abstract_Component {
 			$css_array[ $this->default_selector . ':hover .cart-icon-label' ]['color'] = $color;
 		}
 
-		return parent::add_style( $css_array );
+		if ( ! empty( $label_size ) ) {
+			$css_array[ $this->default_selector . ' .cart-icon-label' ]['font-size'] = $label_size . 'px';
+		}
+
+		return $css_array;
 	}
 
 	/**

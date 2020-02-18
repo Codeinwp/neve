@@ -311,7 +311,7 @@ class Magic_Tags {
 		if ( ! class_exists( 'WooCommerce' ) ) {
 			return '';
 		}
-		return '<span class="nv-mini-cart-total">' . WC()->cart->cart_contents_total . '</span>';
+		return '<span class="nv-cart-icon-total-plain">' . WC()->cart->cart_contents_total . '</span>';
 	}
 
 	/**
@@ -323,8 +323,8 @@ class Magic_Tags {
 		if ( ! class_exists( 'WooCommerce' ) ) {
 			return '';
 		}
-		global $woocommerce;
-		return $woocommerce->cart->get_cart_total();
+
+		return '<span class="nv-cart-icon-total-currency">' . WC()->cart->get_cart_total() . '</span>';
 	}
 
 	/**
@@ -350,7 +350,7 @@ class Magic_Tags {
 			return '';
 		}
 
-		return get_woocommerce_currency_symbol();
+		return '<span class="woocommerce-Price-currencySymbol">' . get_woocommerce_currency_symbol() . '</span>';
 	}
 
 	/**
@@ -452,17 +452,17 @@ class Magic_Tags {
 				'controls' => [
 					'cart_total_currency_symbol' => [
 						'label' => __( 'Total + Currency Symbol', 'neve' ),
-						'type'  => 'custom_cart'
+						'type'  => 'custom_cart',
 					],
-					'cart_total'      => [
+					'cart_total'                 => [
 						'label' => __( 'Total', 'neve' ),
 						'type'  => 'custom_cart',
 					],
-					'currency_name'   => [
+					'currency_name'              => [
 						'label' => __( 'Currency Name', 'neve' ),
 						'type'  => 'custom_cart',
 					],
-					'currency_symbol' => [
+					'currency_symbol'            => [
 						'label' => __( 'Currency Symbol', 'neve' ),
 						'type'  => 'custom_cart',
 					],

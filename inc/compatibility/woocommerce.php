@@ -9,6 +9,7 @@
 namespace Neve\Compatibility;
 
 use Neve\Views\Layouts\Layout_Sidebar;
+use Neve_Pro\Modules\Woocommerce_Booster\Module;
 
 /**
  * Class Woocommerce
@@ -711,6 +712,15 @@ class Woocommerce {
 	 */
 	public function cart_link_fragment( $fragments ) {
 		$fragments['.cart-count'] = '<span class="cart-count">' . WC()->cart->get_cart_contents_count() . '</span>';
+
+		$cart_label = get_theme_mod( 'header_cart_icon_' . Module::CART_LABEL );
+		if ( strpos( $cart_label, '{cart_total}' ) !== false ) {
+			$fragments['.nv-cart-icon-total-plain'] = '<span class="nv-cart-icon-total-plain">' . WC()->cart->cart_contents_total . '</span>';
+		}
+		if ( strpos( $cart_label, '{cart_total_currency_symbol}' ) !== false ) {
+			$fragments['.nv-cart-icon-total-currency'] = '<span class="nv-cart-icon-total-currency">' . WC()->cart->get_cart_total() . '</span>';
+		}
+
 
 		return $fragments;
 	}
