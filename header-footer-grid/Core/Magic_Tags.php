@@ -303,7 +303,7 @@ class Magic_Tags {
 	}
 
 	/**
-	 * Cart total,
+	 * Cart total.
 	 *
 	 * @return string
 	 */
@@ -312,6 +312,19 @@ class Magic_Tags {
 			return '';
 		}
 		return '<span class="nv-mini-cart-total">' . WC()->cart->cart_contents_total . '</span>';
+	}
+
+	/**
+	 * Cart total + currency.
+	 *
+	 * @return string
+	 */
+	public function cart_total_currency_symbol() {
+		if ( ! class_exists( 'WooCommerce' ) ) {
+			return '';
+		}
+		global $woocommerce;
+		return $woocommerce->cart->get_cart_total();
 	}
 
 	/**
@@ -437,6 +450,10 @@ class Magic_Tags {
 			[
 				'label'    => __( 'Cart', 'neve' ),
 				'controls' => [
+					'cart_total_currency_symbol' => [
+						'label' => __( 'Total + Currency Symbol', 'neve' ),
+						'type'  => 'custom_cart'
+					],
 					'cart_total'      => [
 						'label' => __( 'Total', 'neve' ),
 						'type'  => 'custom_cart',
