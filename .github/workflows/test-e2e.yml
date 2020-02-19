@@ -4,7 +4,8 @@ on: [push]
 #  pull_request:
 #    branches:
 #      - master
-
+env:
+  record_key: ${{ secrets.CYPRESS_RECORD_KEY }}
 jobs:
   e2e:
     runs-on: ubuntu-latest
