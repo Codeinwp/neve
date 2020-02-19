@@ -1,0 +1,32 @@
+name: E2E Tests
+
+on: [push]
+#  pull_request:
+#    branches:
+#      - master
+
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: E2E tests - customizer/hfg
+        env:
+          BUILD_SPEC: cypress/integration/customizer/hfg/*
+        run: ./bin/run-e2e.sh
+      - name: E2E tests - customizer/layout
+        env:
+          BUILD_SPEC: cypress/integration/customizer/layout/*
+        run: ./bin/run-e2e.sh
+      - name: E2E tests - customizer/typography
+        env:
+          BUILD_SPEC: cypress/integration/customizer/typography/*
+        run: ./bin/run-e2e.sh
+      - name: E2E tests - editor
+        env:
+          BUILD_SPEC: cypress/integration/editor/*
+        run: ./bin/run-e2e.sh
+      - name: E2E tests - plugin compatibility
+        env:
+          BUILD_SPEC: cypress/integration/plugins-compatibility/*
+        run: ./bin/run-e2e.sh
