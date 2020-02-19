@@ -118,6 +118,35 @@ class RadioButtonsComponent extends Component {
       }
     }
 
+    if ( is_for === 'cart_component' ) {
+    	return {
+		    'cart-icon-style1': {
+			    tooltip: __( 'Style 1', 'neve' ),
+			    icon: SVG.cartIconStyle1
+		    },
+		    'cart-icon-style2': {
+			    tooltip: __( 'Style 2', 'neve' ),
+			    icon: SVG.cartIconStyle2
+		    },
+		    'cart-icon-style3': {
+			    tooltip: __( 'Style 3', 'neve' ),
+			    icon: SVG.cartIconStyle3
+		    },
+		    'cart-icon-style4': {
+			    tooltip: __( 'Style 4', 'neve' ),
+			    icon: SVG.cartIconStyle4
+		    },
+		    'cart-icon-style5': {
+			    tooltip: __( 'Style 5', 'neve' ),
+			    icon: SVG.cartIconStyle5
+		    },
+		    'cart-icon-style6': {
+			    tooltip: __( 'Style 6', 'neve' ),
+			    icon: SVG.cartIconStyle6
+		    }
+	    }
+    }
+
   }
 
   render() {

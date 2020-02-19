@@ -110,12 +110,21 @@ class CartIcon extends Abstract_Component {
 				'transport'             => 'postMessage',
 				'sanitize_callback'     => 'sanitize_hex_color',
 				'label'                 => __( 'Color', 'neve' ),
-				'type'                  => '\Neve\Customizer\Controls\React\Color',
+				'type'                  => 'neve_color_control',
 				'section'               => $this->section,
-				'live_refresh_selector' => $this->default_selector . ' svg',
-				'live_refresh_css_prop' => array(
-					'prop' => 'fill',
-				),
+				'live_refresh_selector' => true,
+				'live_refresh_css_prop' => [
+					[
+						'selector' => $this->default_selector . ' svg',
+						'prop'     => 'fill',
+						'fallback' => 'inherit',
+					],
+					[
+						'selector' => $this->default_selector . ' .cart-icon-label',
+						'prop'     => 'color',
+						'fallback' => 'inherit',
+					],
+				],
 			]
 		);
 
@@ -127,12 +136,21 @@ class CartIcon extends Abstract_Component {
 				'transport'             => 'postMessage',
 				'sanitize_callback'     => 'sanitize_hex_color',
 				'label'                 => __( 'Hover Color', 'neve' ),
-				'type'                  => '\Neve\Customizer\Controls\React\Color',
+				'type'                  => 'neve_color_control',
 				'section'               => $this->section,
-				'live_refresh_selector' => $this->default_selector . ':hover svg',
-				'live_refresh_css_prop' => array(
-					'prop' => 'fill',
-				),
+				'live_refresh_selector' => true,
+				'live_refresh_css_prop' => [
+					[
+						'selector' => $this->default_selector . ':hover svg',
+						'prop'     => 'fill',
+						'fallback' => 'inherit',
+					],
+					[
+						'selector' => $this->default_selector . ':hover .cart-icon-label',
+						'prop'     => 'color',
+						'fallback' => 'inherit',
+					],
+				],
 			]
 		);
 
@@ -158,11 +176,13 @@ class CartIcon extends Abstract_Component {
 		}
 
 		if ( ! empty( $color ) ) {
-			$css_array[ $this->default_selector . ' svg' ]['fill'] = $color;
+			$css_array[ $this->default_selector . ' svg' ]['fill']               = $color;
+			$css_array[ $this->default_selector . ' .cart-icon-label' ]['color'] = $color;
 		}
 
 		if ( ! empty( $color_hover ) ) {
-			$css_array[ $this->default_selector . ':hover svg' ]['fill'] = $color_hover;
+			$css_array[ $this->default_selector . ':hover svg' ]['fill']               = $color_hover;
+			$css_array[ $this->default_selector . ':hover .cart-icon-label' ]['color'] = $color;
 		}
 
 		return parent::add_style( $css_array );
