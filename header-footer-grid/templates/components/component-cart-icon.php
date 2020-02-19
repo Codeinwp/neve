@@ -9,39 +9,34 @@
  */
 namespace HFG;
 
-use Neve_Pro\Modules\Woocommerce_Booster\Customizer\Cart_Icon;
+use HFG\Core\Components\CartIcon;
 
-$icon_type         = class_exists( '\Neve_Pro\Modules\Woocommerce_Booster\Customizer\Cart_Icon' ) ? component_setting( Cart_Icon::ICON_SELECTOR, 'cart-icon-style1' ) : '';
-$cart_style        = class_exists( '\Neve_Pro\Modules\Woocommerce_Booster\Customizer\Cart_Icon' ) ? component_setting( Cart_Icon::MINI_CART_STYLE, 'dropdown' ) : 'dropdown';
-$cart_label        = class_exists( '\Neve_Pro\Modules\Woocommerce_Booster\Customizer\Cart_Icon' ) ? parse_dynamic_tags( component_setting( Cart_Icon::CART_LABEL ) ) : '';
-$custom_html       = class_exists( '\Neve_Pro\Modules\Woocommerce_Booster\Customizer\Cart_Icon' ) ? component_setting( Cart_Icon::AFTER_CART_HTML ) : '';
+$icon_type         = CartIcon::should_load_pro_features() ? component_setting( CartIcon::ICON_SELECTOR, 'cart-icon-style1' ) : 'cart-icon-style1';
+$cart_style        = CartIcon::should_load_pro_features() ? component_setting( CartIcon::MINI_CART_STYLE, 'dropdown' ) : 'dropdown';
+$custom_html       = CartIcon::should_load_pro_features() ? component_setting( CartIcon::AFTER_CART_HTML ) : '';
+$expand_enabled    = CartIcon::should_load_pro_features() ? component_setting( CartIcon::CART_FOCUS, 1 ) : true;
+$cart_label        = CartIcon::should_load_pro_features() ? parse_dynamic_tags( component_setting( CartIcon::CART_LABEL ) ) : '';
 $allowed_post_tags = wp_kses_allowed_html( 'header_footer_grid' );
+$cart_is_empty     = WC()->cart->get_cart_contents_count() === 0;
 
 $off_canvas_closing_button = '';
 $mini_cart_classes         = array( 'nv-nav-cart', 'widget' );
-if ( class_exists( '\Neve_Pro\Modules\Woocommerce_Booster\Customizer\Cart_Icon' ) && (bool) component_setting( Cart_Icon::CART_FOCUS, 1 ) === false ) {
+if ( $cart_style === 'off-canvas' ) {
+	$mini_cart_classes         = array( 'cart-off-canvas', 'col-sm-12', 'col-sm-12' );
+	$off_canvas_closing_button = '<div class="cart-off-canvas-button-wrapper"><span class="nv-close-cart-sidebar button button-secondary">' . __( 'Close', 'neve' ) . '</span></div>';
+}
+if ( (bool) $expand_enabled === false ) {
 	$mini_cart_classes[] = 'expand-disable';
 }
-if ( $cart_style === 'off-canvas' ) {
-	$mini_cart_classes[] = 'cart-off-canvas';
-	$mini_cart_classes[] = 'col-sm-12';
-	$mini_cart_classes[] = 'nv-right';
-
-	$key = array_search( 'nv-nav-cart', $mini_cart_classes, true );
-	if ( $key !== false ) {
-		unset( $mini_cart_classes[ $key ] );
-	}
-
-	$key = array_search( 'widget', $mini_cart_classes, true );
-	if ( $key !== false ) {
-		unset( $mini_cart_classes[ $key ] );
-	}
-
-	$off_canvas_closing_button = '<div class="cart-off-canvas-button-wrapper"><span class="nv-close-cart-sidebar button button-secondary">' . __( 'Close', 'neve' ) . '</span></div>';
-} ?>
+?>
 
 <div class="component-wrap">
-	<div class="responsive-nav-cart menu-item-nav-cart <?php echo esc_attr( $cart_style ); ?>">
+	<div class="responsive-nav-cart menu-item-nav-cart 
+	<?php 
+	echo esc_attr( $cart_style );
+	echo $cart_is_empty ? ' cart-is-empty' : ''; 
+	?>
+	">
 		<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="cart-icon-wrapper">
 			<?php
 			if ( ! empty( $cart_label ) ) {

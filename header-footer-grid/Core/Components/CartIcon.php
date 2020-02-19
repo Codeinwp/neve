@@ -13,7 +13,7 @@ namespace HFG\Core\Components;
 
 use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Main;
-use Neve_Pro\Modules\Woocommerce_Booster\Customizer\Cart_Icon;
+use Neve_Pro\Core\Settings;
 
 /**
  * Class SearchResponsive
@@ -22,10 +22,17 @@ use Neve_Pro\Modules\Woocommerce_Booster\Customizer\Cart_Icon;
  */
 class CartIcon extends Abstract_Component {
 
-	const COMPONENT_ID   = 'header_cart_icon';
-	const SIZE_ID        = 'icon_size';
-	const COLOR_ID       = 'color';
-	const HOVER_COLOR_ID = 'hover_color';
+	const COMPONENT_ID    = 'header_cart_icon';
+	const SIZE_ID         = 'icon_size';
+	const COLOR_ID        = 'color';
+	const HOVER_COLOR_ID  = 'hover_color';
+	const ICON_SELECTOR   = 'icon_selector';
+	const CART_TOTAL      = 'cart_total';
+	const CART_LABEL      = 'cart_label';
+	const CART_FOCUS      = 'cart_focus';
+	const MINI_CART_STYLE = 'mini_cart_style';
+	const AFTER_CART_HTML = 'after_cart_html';
+	const LABEL_SIZE_ID   = 'label_size';
 
 	/**
 	 * Button constructor.
@@ -181,7 +188,7 @@ class CartIcon extends Abstract_Component {
 		$size        = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::SIZE_ID );
 		$color       = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::COLOR_ID );
 		$color_hover = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::HOVER_COLOR_ID );
-		$label_size  = class_exists( '\Neve_Pro\Modules\Woocommerce_Booster\Customizer\Cart_Icon' ) ? SettingsManager::get_instance()->get( $this->get_id() . '_' . Cart_Icon::LABEL_SIZE_ID ) : '';
+		$label_size  = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::LABEL_SIZE_ID );
 
 		if ( ! empty( $size ) ) {
 			$css_array[ $this->default_selector . ' svg' ]['width']  = $size . 'px';
@@ -213,5 +220,25 @@ class CartIcon extends Abstract_Component {
 	 */
 	public function render_component() {
 		Main::get_instance()->load( 'components/component-cart-icon' );
+	}
+
+	/**
+	 * Check if pro features should load.
+	 *
+	 * @return bool
+	 */
+	static function should_load_pro_features() {
+		if ( ! class_exists( '\Neve_Pro\Modules\Woocommerce_Booster\Customizer\Cart_Icon' ) ) {
+			return false;
+		}
+
+		if ( class_exists( '\Neve_Pro\Core\Settings' ) ) {
+			$settings = new Settings();
+			if ( ! $settings->is_module_active( 'woocommerce_booster' ) || ! class_exists( 'WooCommerce' ) ) {
+				return false;
+			}
+		}
+
+		return true;
 	}
 }
