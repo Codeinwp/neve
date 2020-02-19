@@ -14,7 +14,6 @@ namespace HFG\Core\Components;
 use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Main;
 use Neve_Pro\Modules\Woocommerce_Booster\Customizer\Cart_Icon;
-use Neve_Pro\Modules\Woocommerce_Booster\Module;
 
 /**
  * Class SearchResponsive
