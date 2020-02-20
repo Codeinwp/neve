@@ -29,7 +29,8 @@ function aliasRestRoutes() {
 
 function changeNumberInputValue(input, value) {
 	cy.get( input ).
-			type( '{selectall}{backspace}{leftarrow}' + value + '{rightarrow}{backspace}' );
+			clear().
+			type( '{leftarrow}' + value + '{rightarrow}{backspace}' );
 }
 
 /**
