@@ -8,63 +8,17 @@ env:
   CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
 
 jobs:
-  customizer-hfg:
+  e2e:
+    strategy:
+      matrix:
+        spec: [customizer/hfg, customizer/layout, customizer/typography, editor, plugins-compatibility]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - run: ./bin/run-e2e.sh
-      - name: Customizer > HFG
+      - name: ${{matrix.spec}}
         uses: cypress-io/github-action@v1
         with:
           env: host=localhost,port=8080
           record: true
-          spec: cypress/integration/customizer/hfg/*
-
-  customizer-layout:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - run: ./bin/run-e2e.sh
-      - name: Customizer > Layout
-        uses: cypress-io/github-action@v1
-        with:
-          env: host=localhost,port=8080
-          record: true
-          spec: cypress/integration/customizer/layout/*
-
-  customizer-typography:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - run: ./bin/run-e2e.sh
-      - name: Customizer > Typography
-        uses: cypress-io/github-action@v1
-        with:
-          env: host=localhost,port=8080
-          record: true
-          spec: cypress/integration/customizer/typography/*
-   
-  editor:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - run: ./bin/run-e2e.sh
-      - name: Editor
-        uses: cypress-io/github-action@v1
-        with:
-          env: host=localhost,port=8080
-          record: true
-          spec: cypress/integration/editor/*
-   
-   
-  plugins-compat:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - run: ./bin/run-e2e.sh
-      - name: Plugin Compatibility
-        uses: cypress-io/github-action@v1
-        with:
-          env: host=localhost,port=8080
-          record: true
-          spec: cypress/integration/plugins-compatibility/*
+          spec: cypress/integration/${{matrix.spec}}/*
