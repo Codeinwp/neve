@@ -6,28 +6,50 @@ on: [push]
 #      - master
 env:
   CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+
 jobs:
-  e2e:
+  customizer/hfg:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: E2E tests - customizer/hfg
+      - name: Customizer > HFG
         env:
           BUILD_SPEC: cypress/integration/customizer/hfg/*
         run: ./bin/run-e2e.sh
-      - name: E2E tests - customizer/layout
+
+  customizer/layout:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Customizer > Layout
         env:
           BUILD_SPEC: cypress/integration/customizer/layout/*
         run: ./bin/run-e2e.sh
-      - name: E2E tests - customizer/typography
+
+  customizer/typography:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Customizer > Typography
         env:
           BUILD_SPEC: cypress/integration/customizer/typography/*
         run: ./bin/run-e2e.sh
-      - name: E2E tests - editor
+   
+  editor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Editor
         env:
           BUILD_SPEC: cypress/integration/editor/*
         run: ./bin/run-e2e.sh
-      - name: E2E tests - plugin compatibility
+   
+   
+  plugin-compat:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Plugin Compatibility
         env:
           BUILD_SPEC: cypress/integration/plugins-compatibility/*
         run: ./bin/run-e2e.sh
