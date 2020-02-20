@@ -8,7 +8,7 @@ env:
   CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
 
 jobs:
-  customizer/hfg:
+  customizer-hfg:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -17,7 +17,7 @@ jobs:
           BUILD_SPEC: cypress/integration/customizer/hfg/*
         run: ./bin/run-e2e.sh
 
-  customizer/layout:
+  customizer-layout:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -26,7 +26,7 @@ jobs:
           BUILD_SPEC: cypress/integration/customizer/layout/*
         run: ./bin/run-e2e.sh
 
-  customizer/typography:
+  customizer-typography:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -45,7 +45,7 @@ jobs:
         run: ./bin/run-e2e.sh
    
    
-  plugin-compat:
+  plugins-compat:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
