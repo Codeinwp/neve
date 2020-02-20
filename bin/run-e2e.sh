@@ -35,6 +35,3 @@ docker-compose -f $DOCKER_FILE run --rm wordpress bash wp core update-db
 docker-compose -f $DOCKER_FILE run --rm wordpress bash wp option admin_email_lifespan 1763469022
 
 export BUILD_INFO_MESSAGE="${BUILD_SPEC} \n ${COMMIT_INFO_MESSAGE}"
-
-# Bring stack down.
-docker-compose -f $DOCKER_FILE down
