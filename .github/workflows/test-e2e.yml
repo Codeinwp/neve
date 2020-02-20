@@ -5,7 +5,7 @@ on: [push]
 #    branches:
 #      - master
 env:
-  record_key: ${{ secrets.CYPRESS_RECORD_KEY }}
+  CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
 jobs:
   e2e:
     runs-on: ubuntu-latest
