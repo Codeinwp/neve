@@ -28,6 +28,7 @@ class Logo extends Abstract_Component {
 	const MAX_WIDTH    = 'max_width';
 	const SHOW_TITLE   = 'show_title';
 	const SHOW_TAGLINE = 'show_tagline';
+	const DISABLE_LINK = 'disable_link';
 	const COLOR_ID     = 'color';
 
 	/**
@@ -192,6 +193,20 @@ class Logo extends Abstract_Component {
 			]
 		);
 
+		SettingsManager::get_instance()->add(
+			[
+				'id'                 => self::DISABLE_LINK,
+				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'                => SettingsManager::TAB_GENERAL,
+				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
+				'sanitize_callback'  => 'absint',
+				'default'            => false,
+				'label'              => __( 'Disable Homepage Link', 'neve' ),
+				'type'               => 'neve_toggle_control',
+				'section'            => $this->section,
+				'conditional_header' => true,
+			]
+		);
 		SettingsManager::get_instance()->add(
 			[
 				'id'                    => self::COLOR_ID,
