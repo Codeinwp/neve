@@ -12,44 +12,54 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - run: ./bin/run-e2e.sh
       - name: Customizer > HFG
-        env:
-          BUILD_SPEC: cypress/integration/customizer/hfg/*
-        run: ./bin/run-e2e.sh
+        uses: cypress-io/github-action@v1
+        with:
+          env: host=localhost,port=8080
+          spec: cypress/integration/customizer/hfg/*
 
   customizer-layout:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - run: ./bin/run-e2e.sh
       - name: Customizer > Layout
-        env:
-          BUILD_SPEC: cypress/integration/customizer/layout/*
-        run: ./bin/run-e2e.sh
+        uses: cypress-io/github-action@v1
+        with:
+          env: host=localhost,port=8080
+          spec: cypress/integration/customizer/layout/*
 
   customizer-typography:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - run: ./bin/run-e2e.sh
       - name: Customizer > Typography
-        env:
-          BUILD_SPEC: cypress/integration/customizer/typography/*
-        run: ./bin/run-e2e.sh
+        uses: cypress-io/github-action@v1
+        with:
+          env: host=localhost,port=8080
+          spec: cypress/integration/customizer/typography/*
    
   editor:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - run: ./bin/run-e2e.sh
       - name: Editor
-        env:
-          BUILD_SPEC: cypress/integration/editor/*
-        run: ./bin/run-e2e.sh
+        uses: cypress-io/github-action@v1
+        with:
+          env: host=localhost,port=8080
+          spec: cypress/integration/editor/*
    
    
   plugins-compat:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - run: ./bin/run-e2e.sh
       - name: Plugin Compatibility
-        env:
-          BUILD_SPEC: cypress/integration/plugins-compatibility/*
-        run: ./bin/run-e2e.sh
+        uses: cypress-io/github-action@v1
+        with:
+          env: host=localhost,port=8080
+          spec: cypress/integration/plugins-compatibility/*
