@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         spec: [customizer/hfg, customizer/layout, customizer/typography, editor, plugins-compatibility]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-16.04
     steps:
       - uses: actions/checkout@v2
       - run: ./bin/run-e2e.sh
