@@ -17,6 +17,7 @@ jobs:
         uses: cypress-io/github-action@v1
         with:
           env: host=localhost,port=8080
+          record: true
           spec: cypress/integration/customizer/hfg/*
 
   customizer-layout:
@@ -28,6 +29,7 @@ jobs:
         uses: cypress-io/github-action@v1
         with:
           env: host=localhost,port=8080
+          record: true
           spec: cypress/integration/customizer/layout/*
 
   customizer-typography:
@@ -39,6 +41,7 @@ jobs:
         uses: cypress-io/github-action@v1
         with:
           env: host=localhost,port=8080
+          record: true
           spec: cypress/integration/customizer/typography/*
    
   editor:
@@ -50,6 +53,7 @@ jobs:
         uses: cypress-io/github-action@v1
         with:
           env: host=localhost,port=8080
+          record: true
           spec: cypress/integration/editor/*
    
    
@@ -62,4 +66,5 @@ jobs:
         uses: cypress-io/github-action@v1
         with:
           env: host=localhost,port=8080
+          record: true
           spec: cypress/integration/plugins-compatibility/*
