@@ -1,0 +1,15 @@
+name: NPM Tests
+
+on: [pull_request]
+
+jobs:
+  npm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+          npm install npm -g
+          composer install
+      - run: npm run-script test
+      - run: npm run build
+      - run: npm run-script size
