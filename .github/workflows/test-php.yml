@@ -1,6 +1,5 @@
 name: PHP Tests
 
-
 on: [push]
 # on: [pull_request]
 
@@ -35,26 +34,6 @@ jobs:
   phpunit:
       name: PHPUnit
       runs-on: ubuntu-latest
-      strategy:
-        matrix:
-          phpv: ['5.2', '5.3', '5.4', '5.5', '5.6', '7.0', '7.1']
-          wpv: ['5.1.1', 'latest']
-          exclude:
-          # wall of text.
-          - phpv: '5.2'
-            wpv: 'latest'
-          - phpv: '5.3'
-            wpv: 'latest'
-          - phpv: '5.4'
-            wpv: 'latest'
-          - phpv: '5.5'
-            wpv: 'latest'
-          - phpv: '5.6'
-            wpv: '5.1.1'
-          - phpv: '7.0'
-            wpv: '5.1.1'
-          - phpv: '7.1'
-            wpv: '5.1.1'
       services:
         mysql:
           image: mysql:5.7
@@ -68,17 +47,14 @@ jobs:
         - name: Setup PHP version
           uses: shivammathur/setup-php@v1
           with:
-            php-version: ${{matrix.phpv}}
+            php-version: '7.0'
             extensions: simplexml, mysql
             tools: phpunit:7.5.15
         - name: Checkout source code
           uses: actions/checkout@v2
         - name: Install WordPress Test Suite
-          env: 
-            WP_VERSION: ${{matrix.wpv}}
           run: |
-            echo $WP_VERSION
-            bash bin/install-wp-tests.sh wordpress_test root root 127.0.0.1 ${{matrix.wpv}}
+            bash bin/install-wp-tests.sh wordpress_test root root 127.0.0.1
         - name: Get Composer Cache Directory
           id: composer-cache
           run: |
