@@ -8,24 +8,6 @@ cache:
     - $HOME/.npm
 jobs:
   include:
-    - stage: test
-      php: 7.0
-      name: "Different linters"
-      before_install:
-        - nvm install && nvm use
-        - npm install npm -g
-      script:
-        - travis_retry npm install
-        - travis_retry composer install
-        - npm run-script test
-        - npm run build
-        - npm run-script size
-    - php: 7.0
-      if: repo = env(UPSTREAM_REPO)
-      name: "Blackfire tests"
-      env: WP_VERSION=latest
-      script:
-        - ./bin/run-blackfire.sh
     - stage: qa
       name: "QA"
       php: 7.0
