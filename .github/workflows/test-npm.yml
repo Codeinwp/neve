@@ -24,8 +24,9 @@ jobs:
         run: npm install
       - run: npm run build
       # WORKAROUND FOR SIZE-LIMIT
-      - run: GITHUB_RUN_NUMBER_TMP=GITHUB_RUN_NUMBER && export GITHUB_RUN_NUMBER=1;
-      - run: echo "$GITHUB_RUN_NUMBER"
-      - run: npm run-script size
-      - run: export GITHUB_RUN_NUMBER=GITHUB_RUN_NUMBER_TMP
-      - run: echo "$GITHUB_RUN_NUMBER"
+      - run: |
+          GITHUB_RUN_NUMBER_TMP=GITHUB_RUN_NUMBER && export GITHUB_RUN_NUMBER=1;
+          echo "$GITHUB_RUN_NUMBER"
+          npm run-script size
+          export GITHUB_RUN_NUMBER=GITHUB_RUN_NUMBER_TMP
+          echo "$GITHUB_RUN_NUMBER"
