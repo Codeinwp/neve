@@ -26,4 +26,5 @@ jobs:
           composer install
       - run: npm run-script test
       - run: npm run build
+      - run: echo "$GITHUB_RUN_NUMBER"
       - run: npm run-script size
