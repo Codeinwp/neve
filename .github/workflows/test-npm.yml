@@ -13,8 +13,10 @@ jobs:
             extensions: simplexml
       - name: Checkout source code
         uses: actions/checkout@v2
-      - name: Run tests
-      - run: |
+      - name: Setup node
+        uses: actions/setup-node@v1
+      - name: Install Dependencies
+        run: |
           npm install
           composer install
       - run: npm run-script test
