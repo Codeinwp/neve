@@ -14,14 +14,6 @@ check:
 - 'shell:phpcbf'
 - 'newer:addtextdomain:main'
 - 'check:css'
-- 'travis'
-
-travis:
-  descriptions: "Routine testing in CI"
-  tasks: [
-    "shell:phpcs",
-    "check:i18n"
-  ]
 
 dist:
 - 'addtextdomain:composerDeps'
