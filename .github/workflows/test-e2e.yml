@@ -1,9 +1,10 @@
 name: E2E Tests
 
-on: [push]
-#  pull_request:
-#    branches:
-#      - master
+on:
+ pull_request:
+   branches:
+     - master
+       - 
 env:
   CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
 
