@@ -10,10 +10,10 @@ jobs:
         node-version: [12.x]
     steps:
       - name: Setup PHP version
-          uses: shivammathur/setup-php@v1
-          with:
-            php-version: '7.1'
-            extensions: simplexml
+        uses: shivammathur/setup-php@v1
+        with:
+          php-version: '7.1'
+          extensions: simplexml
       - name: Checkout source code
         uses: actions/checkout@v2
       - name: Setup node
