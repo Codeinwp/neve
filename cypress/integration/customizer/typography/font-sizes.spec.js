@@ -114,12 +114,12 @@ describe( 'Typography Control', function() {
 		setTypographyControl( '#customize-control-neve_typeface_general',
 				setup.general );
 		aliasRestRoutes();
-		// cy.get( '#save' ).click();
-		// cy.wait( '@customizerSave' ).then( (req) => {
-		// 	expect( req.response.body.success ).to.be.true;
-		// 	expect( req.status ).to.equal( 200 );
-		// 	cy.wait( 2000 );
-		// } );
+		cy.get( '#save' ).click();
+		cy.wait( '@customizerSave' ).then( (req) => {
+			expect( req.response.body.success ).to.be.true;
+			expect( req.status ).to.equal( 200 );
+			cy.wait( 2000 );
+		} );
 	} );
 
 	it( 'Test Typography on Front End', function() {
