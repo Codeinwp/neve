@@ -47,7 +47,7 @@ jobs:
         - name: Setup PHP version
           uses: shivammathur/setup-php@v1
           with:
-            php-version: '7.0'
+            php-version: '7.1'
             extensions: simplexml, mysql
             tools: phpunit:7.5.15
         - name: Checkout source code
