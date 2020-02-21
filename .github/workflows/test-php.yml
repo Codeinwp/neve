@@ -1,7 +1,6 @@
 name: PHP Tests
 
-on: [push]
-# on: [pull_request]
+on: [pull_request]
 
 jobs:
   phplint:
@@ -70,3 +69,5 @@ jobs:
           run: composer install --prefer-dist --no-progress --no-suggest --no-dev
         - name: Run phpunit
           run: phpunit
+  
+  
