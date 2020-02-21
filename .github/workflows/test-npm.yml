@@ -6,9 +6,16 @@ jobs:
   npm:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Setup PHP version
+          uses: shivammathur/setup-php@v1
+          with:
+            php-version: '7.1'
+            extensions: simplexml
+      - name: Checkout source code
+        uses: actions/checkout@v2
+      - name: Run tests
       - run: |
-          npm install npm -g
+          npm install
           composer install
       - run: npm run-script test
       - run: npm run build
