@@ -29,7 +29,9 @@ $builder_types: page_header header footer;
     .#{$type}--row-inner,
     .#{$type}--row-inner .container .row {
       display: flex;
-      align-items: center;
+			@if $type != footer {
+				align-items: center;
+			}
       position: relative;
     }
 
