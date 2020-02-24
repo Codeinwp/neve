@@ -16,6 +16,7 @@ $_id = current_component( HeaderBuilder::BUILDER_NAME )->get_id();
 
 $show_name     = component_setting( Logo::SHOW_TITLE );
 $show_desc     = component_setting( Logo::SHOW_TAGLINE );
+$is_not_link   = component_setting( Logo::DISABLE_LINK, false );
 $display_order = component_setting( Logo::DISPLAY, 'default' );
 $main_logo     = get_theme_mod( 'custom_logo' );
 
@@ -40,39 +41,46 @@ if ( $show_desc ) {
 }
 $title_tagline .= '</div>';
 
+if ( $is_not_link ) {
+	$start_tag = '<span class="brand" title="' . get_bloginfo( 'name' ) . '" aria-label="' . get_bloginfo( 'name' ) . '">';
+	$end_tag   = '</span>';
+} else {
+	$start_tag = '<a class="brand" href="' . esc_url( home_url( '/' ) ) . '" title="' . get_bloginfo( 'name' ) . '"
+			aria-label="' . get_bloginfo( 'name' ) . '">';
+	$end_tag   = '</a>';
+}
 
 $alt_attribute = get_post_meta( $custom_logo_id, '_wp_attachment_image_alt', true );
 ?>
 <div class="site-logo">
-	<a class="brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php bloginfo( 'name' ); ?>"
-			aria-label="<?php bloginfo( 'name' ); ?>">
-		<?php
-		if ( $logo_image ) {
-			$image = '<img src="' . esc_url( $logo_image ) . '" alt="' . esc_attr( $alt_attribute ) . '">';
-			switch ( $display_order ) {
-				case 'default':
-					echo wp_kses_post( $image );
-					break;
-				case 'titleLogo':
-					echo '<div class="title-with-logo">';
-					echo wp_kses_post( $title_tagline . $image );
-					echo '</div>';
-					break;
-				case 'logoTitle':
-					echo '<div class="title-with-logo">';
-					echo wp_kses_post( $image . $title_tagline );
-					echo '</div>';
-					break;
-				case 'logoTopTitle':
-					echo '<div class="logo-on-top">';
-					echo wp_kses_post( $image . $title_tagline );
-					echo '</div>';
-					break;
-			}
-		} else {
-			echo wp_kses_post( $title_tagline );
+	<?php
+	echo wp_kses_post( $start_tag );
+	if ( $logo_image ) {
+		$image = '<img src="' . esc_url( $logo_image ) . '" alt="' . esc_attr( $alt_attribute ) . '">';
+		switch ( $display_order ) {
+			case 'default':
+				echo wp_kses_post( $image );
+				break;
+			case 'titleLogo':
+				echo '<div class="title-with-logo">';
+				echo wp_kses_post( $title_tagline . $image );
+				echo '</div>';
+				break;
+			case 'logoTitle':
+				echo '<div class="title-with-logo">';
+				echo wp_kses_post( $image . $title_tagline );
+				echo '</div>';
+				break;
+			case 'logoTopTitle':
+				echo '<div class="logo-on-top">';
+				echo wp_kses_post( $image . $title_tagline );
+				echo '</div>';
+				break;
 		}
-		?>
-	</a>
+	} else {
+		echo wp_kses_post( $title_tagline );
+	}
+	echo wp_kses_post( $end_tag )
+	?>
 </div>
 

@@ -235,16 +235,12 @@
   font-size: .85em;
 }
 
-#editor .edit-post-layout__content .editor-styles-wrapper {
+#editor .editor-styles-wrapper {
   margin: 0 auto;
   width: 100%;
 }
 
-#editor .edit-post-layout__content .editor-styles-wrapper .editor-post-title .wp-block {
-  max-width: 100%;
-}
-
-#editor .edit-post-layout__content .editor-styles-wrapper .wp-block {
+#editor .editor-styles-wrapper .wp-block {
   max-width: 100%;
 }
 

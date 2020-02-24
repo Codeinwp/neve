@@ -277,6 +277,7 @@ window.addEventListener( 'load', function() {
 
               break
             case '\\Neve\\Customizer\\Controls\\React\\Color':
+            	console.log( newValue );
               let colorValue = newValue === '' ? 'unset' : newValue
               style +=
                 `html ${args.selector} {

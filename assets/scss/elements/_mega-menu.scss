@@ -94,9 +94,12 @@
       position: absolute;
       display: flex;
       padding: 20px;
-      pointer-events: none;
       left: 25%;
       transform: translateX(-50%);
+
+      &:not(.dropdown-open) {
+        pointer-events: none;
+      }
     }
 
     .neve-mega-menu:hover > .sub-menu,
