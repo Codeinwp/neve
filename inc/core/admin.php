@@ -50,6 +50,7 @@ class Admin {
 		add_action( 'wp_ajax_neve_toggle_logger', array( $this, 'toggle_logger' ) );
 		add_filter( 'neve_logger_heading', array( $this, 'add_tracking_policy' ) );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_gutenberg_scripts' ) );
+		add_filter( 'themeisle_sdk_hide_dashboard_widget', '__return_true' );
 	}
 
 	/**
@@ -737,7 +738,7 @@ class Admin {
 					<div class="nv-notice-column nv-notice-image">%2$s</div>
 					<div class="nv-notice-column nv-notice-starter-sites">%3$s</div>
 					<div class="nv-notice-column nv-notice-documentation">%4$s</div>
-				</div> 
+				</div>
 			</div>
 			<style>%5$s</style>';
 
@@ -816,7 +817,7 @@ class Admin {
 			border-top: 1px solid #f3f4f5;
 			border-bottom: none;
 		}
-		.nv-notice-column-container h3{	
+		.nv-notice-column-container h3{
 			margin: 17px 0 0;
 			font-size: 16px;
 			line-height: 1.4;
@@ -829,13 +830,13 @@ class Admin {
 	}
 		.nv-notice-column-container .nv-notice-column{
 			 padding-right: 40px;
-		} 
-		.nv-notice-column-container img{ 
+		}
+		.nv-notice-column-container img{
 			margin-top: 23px;
 			width: calc(100% - 40px);
-			border: 1px solid #f3f4f5; 
-		} 
-		.nv-notice-column-container { 
+			border: 1px solid #f3f4f5;
+		}
+		.nv-notice-column-container {
 			display: -ms-grid;
 			display: grid;
 			-ms-grid-columns: 24% 32% 32%;
@@ -851,7 +852,7 @@ class Admin {
 			display: grid;
 			-ms-grid-rows: auto 100px;
 			grid-template-rows: auto 100px;
-		} 
+		}
 		@media screen and (max-width: 1280px) {
 			.nv-notice-wrapper .nv-notice-column-container {
 				-ms-grid-columns: 50% 50%;
@@ -864,9 +865,9 @@ class Admin {
 			.nv-notice-wrapper .nv-notice-image {
 				display: none;
 			}
-		} 
+		}
 		@media screen and (max-width: 870px) {
-			 
+
 			.nv-notice-wrapper .nv-notice-column-container {
 				-ms-grid-columns: 100%;
 				grid-template-columns: 100%;
