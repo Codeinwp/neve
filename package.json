@@ -32,9 +32,13 @@
 		"@rollup/plugin-commonjs": "^11.0.2",
 		"@rollup/plugin-multi-entry": "^3.0.0",
 		"@rollup/plugin-node-resolve": "^7.1.1",
+		"@semantic-release/changelog": "^5.0.0",
+		"@semantic-release/exec": "^5.0.0",
+		"@semantic-release/git": "^9.0.0",
 		"@size-limit/preset-app": "^3.0.1",
 		"@size-limit/webpack": "^3.0.1",
 		"babel-loader": "^8.0.6",
+		"conventional-changelog-simple-preset": "^1.0.13",
 		"core-js": "^3.6.4",
 		"cross-env": "^7.0.0",
 		"cypress": "^4.0.2",
@@ -60,6 +64,7 @@
 		"rollup-plugin-babel": "^4.3.3",
 		"rollup-plugin-terser": "^5.2.0",
 		"rollup-plugin-uglify": "^6.0.4",
+		"semantic-release": "^17.0.4",
 		"size-limit": "^4.0.2",
 		"webpack": "^4.41.5"
 	},
@@ -79,7 +84,8 @@
 		"size": "size-limit",
 		"pre-commit": "npm-run-all phpcs build size",
 		"cypress:open": "cypress open",
-		"cypress:run": "cd cypress && docker-compose up --exit-code-from cypress"
+		"cypress:run": "cd cypress && docker-compose up --exit-code-from cypress",
+		"release": "npx semantic-release"
 	},
 	"size-limit": [
 		{

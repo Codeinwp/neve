@@ -1,0 +1,25 @@
+---
+branch: master
+plugins:
+  - - "@semantic-release/commit-analyzer"
+    - preset: simple-preset
+      releaseRules: conventional-changelog-simple-preset/release-rules
+  - - "@semantic-release/changelog"
+    - changelogFile: CHANGELOG.md
+  - - "@semantic-release/release-notes-generator"
+    - preset: simple-preset
+  - - "@semantic-release/exec"
+    - prepareCmd: "replace-in-file \"== Changelog ==\" \"== Changelog ==\n\n${nextRelease.notes}\" readme.txt"
+  - - "@semantic-release/exec"
+    - prepareCmd: grunt version::${nextRelease.version} && grunt wp_readme_to_markdown
+  - - "@semantic-release/git"
+    - assets:
+        - CHANGELOG.md
+        - readme.md
+        - readme.txt
+        - style.css
+        - assets/scss/style.scss
+        - functions.php
+        - package-lock.json
+        - package.json
+  - - "@semantic-release/github"
