@@ -179,7 +179,7 @@ class Buttons extends Base_Inline {
 			$color_setup = array(
 				'background-color' => array(
 					'css_prop'  => 'background-color',
-					'selectors' => '.button.button-secondary, #comments input[type="submit"]',
+					'selectors' => '.button.button-secondary, #comments input[type="submit"], .cart-off-canvas .button.nv-close-cart-sidebar',
 				),
 			);
 			$this->add_color( apply_filters( 'neve_secondary_button_color_filter', $color_setup ), sanitize_hex_color( $this->secondary_button['background'] ) );
@@ -189,7 +189,7 @@ class Buttons extends Base_Inline {
 			$color_setup = array(
 				'color' => array(
 					'css_prop'  => 'background-color',
-					'selectors' => '.button.button-secondary:hover, #comments input[type="submit"]:hover',
+					'selectors' => '.button.button-secondary:hover, #comments input[type="submit"]:hover, .cart-off-canvas .button.nv-close-cart-sidebar:hover',
 				),
 			);
 			$this->add_color( apply_filters( 'neve_secondary_button_hover_color_filter', $color_setup ), sanitize_hex_color( $this->secondary_button['backgroundHover'] ) );
@@ -200,11 +200,11 @@ class Buttons extends Base_Inline {
 				'color'        => array(
 					'css_prop'  => 'color',
 					'selectors' => '
-				.button.button-secondary, #comments input[type="submit"]',
+				.button.button-secondary, #comments input[type="submit"], .cart-off-canvas .button.nv-close-cart-sidebar',
 				),
 				'border-color' => array(
 					'css_prop'  => 'border-color',
-					'selectors' => '.button.button-secondary, #comments input[type="submit"]',
+					'selectors' => '.button.button-secondary, #comments input[type="submit"], .cart-off-canvas .button.nv-close-cart-sidebar',
 				),
 			);
 			$this->add_color( apply_filters( 'neve_secondary_button_color_filter', $color_setup ), sanitize_hex_color( $this->secondary_button['text'] ) );
