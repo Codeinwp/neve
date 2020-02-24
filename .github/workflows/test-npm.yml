@@ -21,7 +21,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: Install Dependencies
-        run: npm install
+        run: npm ci
       - run: npm run build
       # WORKAROUND FOR SIZE-LIMIT JOB NUMBER
       - env:
