@@ -315,6 +315,21 @@ abstract class Abstract_Component implements Component {
 	}
 
 	/**
+	 * Render CSS code for component.
+	 */
+	public function render_css() {
+		if ( ! self::$should_show_css ) {
+			return;
+		}
+		if ( ! is_customize_preview() ) {
+			return;
+		}
+		$style = $this->css_array_to_css( $this->add_style() );
+		echo '<style type="text/css" id="' . esc_attr( $this->get_id() ) . '-style">' . $style . '</style>';  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		self::$should_show_css = false;
+	}
+
+	/**
 	 * Allow for constant changes in pro.
 	 *
 	 * @param string $const Name of the constant.
@@ -573,9 +588,10 @@ abstract class Abstract_Component implements Component {
 		$wp_customize->selective_refresh->add_partial(
 			$this->get_id() . '_partial',
 			array(
-				'selector'        => '.builder-item--' . $this->get_id(),
-				'settings'        => Settings\Manager::get_instance()->get_transport_group( $this->get_id() ),
-				'render_callback' => [ $this, 'render' ],
+				'selector'            => '.builder-item--' . $this->get_id() . ':parent',
+				'settings'            => Settings\Manager::get_instance()->get_transport_group( $this->get_id() ),
+				'render_callback'     => [ $this, 'render' ],
+				'container_inclusive' => true,
 			)
 		);
 
@@ -588,12 +604,6 @@ abstract class Abstract_Component implements Component {
 	public function render() {
 		self::$current_component           = $this->get_id();
 		Abstract_Builder::$current_builder = $this->get_builder_id();
-		if ( self::$should_show_css && is_customize_preview() ) {
-			$style = $this->css_array_to_css( $this->add_style() );
-			echo '<style type="text/css" id="' . esc_attr( $this->get_id() ) . '-style">' . $style . '</style>';  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-			self::$should_show_css = false;
-		}
-
 		Main::get_instance()->load( 'component-wrapper' );
 	}
 
