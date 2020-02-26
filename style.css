@@ -2455,6 +2455,7 @@ audio {
 .footer--row .footer--row-inner,
 .footer--row .footer--row-inner .container .row {
   display: flex;
+  align-items: center;
   position: relative;
 }
 
