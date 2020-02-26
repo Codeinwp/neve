@@ -1,4 +1,14 @@
 
+ ### v2.6.2 - 2020-02-26 
+ **Changes:** 
+ * [Feat] New text color option for the HTML and Copyright components
+* [Feat] New option to Disable Homepage Link in the Logo & Site Identity component
+* [Fix] Issues in AMP when using Google Tag Manager Codeless Injection
+* [Fix] Footer menu alignment
+* [Fix] Mega Menu not working in Edge
+* [Fix] Narrow editor with the new Gutenberg version
+* New Gutenberg and Beaver Builder Starter Sites
+ 
  ### v2.6.1 - 2020-02-13 
  **Changes:** 
  * [Feat] New header presets
