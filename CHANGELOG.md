@@ -1,4 +1,18 @@
 
+ ### v2.6.1 - 2020-02-13 
+ **Changes:** 
+ * [Feat] New header presets
+* [Feat] New justify option for the button component
+* [Feat] New menu item spacing and menu item height options
+* [Fix] Style closing menu icon to match menu icon
+* [Fix] Primary and secondary menu alignments
+* [Fix] Made button a mergeable component in the header builder
+* [Fix] Changed the Leave a reply title to H3
+* [Fix] Search form width when merged with mergeable components
+* [Fix] Selective refresh on non-header builders
+* [Fix] Notice from array offset in responsive style method
+* [Fix] Page break pagination not appearing on the blog page
+ 
  ### v2.6.0 - 2020-02-03 
  **Changes:** 
  * [Feat] Adds quantity box back to the product pages 

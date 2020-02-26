@@ -18,6 +18,21 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
+= 2.6.1 - 2020-02-13  = 
+
+* [Feat] New header presets
+* [Feat] New justify option for the button component
+* [Feat] New menu item spacing and menu item height options
+* [Fix] Style closing menu icon to match menu icon
+* [Fix] Primary and secondary menu alignments
+* [Fix] Made button a mergeable component in the header builder
+* [Fix] Changed the Leave a reply title to H3
+* [Fix] Search form width when merged with mergeable components
+* [Fix] Selective refresh on non-header builders
+* [Fix] Notice from array offset in responsive style method
+* [Fix] Page break pagination not appearing on the blog page
+
+
 = 2.6.0 - 2020-02-03  =
 
 * [Feat] Adds quantity box back to the product pages 
