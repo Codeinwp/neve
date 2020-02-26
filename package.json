@@ -1,7 +1,7 @@
 {
 	"name": "neve",
 	"nicename": "Neve",
-	"version": "2.6.1",
+	"version": "2.6.2",
 	"description": "Neve theme by ThemeIsle",
 	"category": "themes",
 	"repository": {
@@ -52,15 +52,15 @@
 		"grunt-shell": "^3.0.1",
 		"grunt-theme-fleet": "github:codeinwp/grunt-theme-fleet",
 		"grunt-version": "^1.3.2",
-		"husky": "^4.2.1",
+		"husky": "^4.2.3",
 		"load-project-config": "~0.2.1",
 		"node-sass": "^4.13.1",
 		"npm-run-all": "^4.1.5",
-		"rollup": "^1.31.0",
+		"rollup": "^1.31.1",
 		"rollup-plugin-babel": "^4.3.3",
 		"rollup-plugin-terser": "^5.2.0",
 		"rollup-plugin-uglify": "^6.0.4",
-		"webpack": "^4.41.5"
+		"webpack": "^4.41.6"
 	},
 	"scripts": {
 		"phpcbf": "composer run-script format || true ",

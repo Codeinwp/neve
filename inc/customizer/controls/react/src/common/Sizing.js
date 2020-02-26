@@ -24,11 +24,12 @@ class SizingControl extends Component {
     const controls = []
     if ( !this.props.noLinking ) {
       controls.push(
-        <Tooltip text={this.props.linked
-          ? __( 'Unlink Values', 'neve' )
-          : __( 'Link Values', 'neve' )}
+        <Tooltip
+          key='tooltip-link'
+          text={this.props.linked ? __( 'Unlink Values', 'neve' ) : __( 'Link Values', 'neve' )}
         >
           <IconButton
+            key='link-icon'
             icon={this.props.linked ? 'admin-links' : 'editor-unlink'}
             onClick={() => this.props.onLinked()}
             className={classnames(
@@ -39,11 +40,15 @@ class SizingControl extends Component {
     }
     if ( this.hasSetValues() ) {
       controls.push(
-        <Tooltip text={this.props.options.length > 1
-          ? __( 'Reset all Values', 'neve' )
-          : __( 'Reset Value', 'neve' )}
+        <Tooltip
+          key='tooltip-reset'
+          text={
+            this.props.options.length > 1
+              ? __( 'Reset all Values', 'neve' ) : __( 'Reset Value', 'neve' )
+          }
         >
           <IconButton
+            key='reset-icon'
             icon='image-rotate'
             className='reset'
             onClick={() => this.props.onReset()}
@@ -57,6 +62,7 @@ class SizingControl extends Component {
         {this.props.options.map( (i, n) => {
           return (
             <SingleSizingInput
+              key={n}
               onChange={(type, value) => this.props.onChange( type,
                 value )}
               value={i.value}
@@ -87,13 +93,12 @@ class SizingControl extends Component {
 
 SizingControl.propTypes = {
   options: PropTypes.array.isRequired,
-  defaults: PropTypes.array || PropTypes.string || PropTypes.number,
-  onLinked: PropTypes.func.isRequired,
+  defaults: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.object]),
+  onLinked: PropTypes.func,
   onChange: PropTypes.func.isRequired,
-  linked: PropTypes.bool.isRequired,
+  linked: PropTypes.bool,
   onReset: PropTypes.func,
-  noLinking: PropTypes.bool,
-  noRange: PropTypes.bool
+  noLinking: PropTypes.bool
 }
 
 export default SizingControl

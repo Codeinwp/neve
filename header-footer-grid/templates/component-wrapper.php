@@ -30,6 +30,7 @@ $item_classes = join( ' ', $item_classes );
 		data-section="<?php echo esc_attr( current_component()->get_section_id() ); ?>"
 		data-item-id="<?php echo esc_attr( current_component()->get_id() ); ?>">
 	<?php
+	current_component()->render_css();
 	current_component()->render_component();
 	?>
 	<?php if ( is_customize_preview() ) { ?>

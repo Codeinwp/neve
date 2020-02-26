@@ -61,11 +61,12 @@ class NumberControl extends Component {
                >{units[0]}
       </Button> )
     }
-    return units.map( (unit) => {
+    return units.map( (unit, index) => {
       const buttonClass = classnames( {
         active: self.props.activeUnit === unit
       } )
       return ( <Button
+        key={index}
         isSmall
         onClick={() => {
           self.props.onUnitChange( unit )
@@ -80,13 +81,13 @@ class NumberControl extends Component {
 
 NumberControl.propTypes = {
   label: PropTypes.string,
-  value: PropTypes.number.isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   onChange: PropTypes.func.isRequired,
   onReset: PropTypes.func.isRequired,
   units: PropTypes.array || PropTypes.bool,
   onUnitChange: PropTypes.func,
   activeUnit: PropTypes.string,
-  default: PropTypes.number,
+  default: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   max: PropTypes.number,
   min: PropTypes.number,
   step: PropTypes.number

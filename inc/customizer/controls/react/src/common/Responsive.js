@@ -55,10 +55,10 @@ class ResponsiveControl extends Component {
             !hideResponsive &&
             <div className='floating-controls'>
               <ButtonGroup>
-                {Object.keys( deviceMap ).map( (device) => {
+                {Object.keys( deviceMap ).map( (device, index) => {
                   const { tooltip, icon } = deviceMap[device]
                   return (
-                    <Tooltip text={tooltip}>
+                    <Tooltip text={tooltip} key={index}>
                       <Button
                         isTertiary
                         className={( device === view

@@ -47,7 +47,6 @@ class Nav extends Abstract_Component {
 		$this->set_property( 'has_font_family_control', true );
 		$this->set_property( 'has_typeface_control', true );
 		$this->set_property( 'default_typography_selector', $this->default_typography_selector . '.builder-item--' . $this->get_id() . ' li > a' );
-		$this->set_property( 'default_selector', $this->default_typography_selector . '.builder-item--' . $this->get_id() . ' li > a' );
 		$this->default_align = 'right';
 		add_filter(
 			'neve_last_menu_setting_slug_' . $this->get_class_const( 'COMPONENT_ID' ),
@@ -116,7 +115,7 @@ class Nav extends Abstract_Component {
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
 					[
-						'selector' => $this->default_typography_selector . ', ' . $this->default_typography_selector . ' svg',
+						'selector' => $this->default_typography_selector,
 						'prop'     => 'color',
 						'fallback' => 'inherit',
 					],
@@ -312,23 +311,23 @@ class Nav extends Abstract_Component {
 		$color    = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::COLOR_ID );
 		$selector = '.builder-item--' . $this->get_id() . ' .nav-menu-primary > .primary-menu-ul ';
 		if ( ! empty( $color ) ) {
-			$css_array[ $selector . 'li:not(.woocommerce-mini-cart-item) > a' ]                          = array( 'color' => sanitize_hex_color( $color ) );
-			$css_array[ $selector . 'li > a .caret-wrap svg,' . $selector . 'li > .amp-caret-wrap svg' ] = array( 'fill' => sanitize_hex_color( $color ) );
+			$css_array[ $selector . 'li:not(.woocommerce-mini-cart-item) > a' ] = array( 'color' => sanitize_hex_color( $color ) );
+			$css_array[ $selector . 'li > .amp-caret-wrap svg' ]                = array( 'fill' => sanitize_hex_color( $color ) );
 		}
 
 		$hover_color = SettingsManager::get_instance()->get( $this->get_id() . '_hover_color' );
 		if ( ! empty( $hover_color ) ) {
 			$css_array[ $selector . 'li:not(.woocommerce-mini-cart-item) > a:after' ] = array( 'background-color' => sanitize_hex_color( $hover_color ) );
 			if ( SettingsManager::get_instance()->get( $this->get_id() . '_style' ) !== 'style-full-height' ) {
-				$css_array[ $selector . 'li:not(.woocommerce-mini-cart-item):hover > a' ]                                = array( 'color' => sanitize_hex_color( $hover_color ) );
-				$css_array[ $selector . 'li:hover > a .caret-wrap svg,' . $selector . 'li:hover > .amp-caret-wrap svg' ] = array( 'fill' => sanitize_hex_color( $hover_color ) );
+				$css_array[ $selector . 'li:not(.woocommerce-mini-cart-item):hover > a' ] = array( 'color' => sanitize_hex_color( $hover_color ) );
+				$css_array[ $selector . 'li:hover > .amp-caret-wrap svg' ]                = array( 'fill' => sanitize_hex_color( $hover_color ) );
 			}
 		}
 
 		$active_color = SettingsManager::get_instance()->get( $this->get_id() . '_active_color' );
 		if ( ! empty( $active_color ) ) {
-			$css_array[ $selector . 'li.current-menu-item > a' ] = array( 'color' => sanitize_hex_color( $active_color ) );
-			$css_array[ $selector . 'li.current-menu-item > a .caret-wrap svg,' . $selector . 'li.current-menu-item > .amp-caret-wrap svg' ] = array( 'fill' => sanitize_hex_color( $active_color ) );
+			$css_array[ $selector . 'li.current-menu-item > a' ]                   = array( 'color' => sanitize_hex_color( $active_color ) );
+			$css_array[ $selector . 'li.current-menu-item > .amp-caret-wrap svg' ] = array( 'fill' => sanitize_hex_color( $active_color ) );
 		}
 
 		$item_spacing = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::SPACING );

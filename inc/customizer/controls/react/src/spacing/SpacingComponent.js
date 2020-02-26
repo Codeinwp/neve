@@ -134,7 +134,7 @@ class SpacingComponent extends Component {
     if ( units.length === 1 ) {
       return <Button isSmall disabled>{units[0]}</Button>
     }
-    return units.map( (unit) => {
+    return units.map( (unit, index) => {
       const buttonClass = classnames(
         {
           active: self.state.value[self.state.currentDevice +
@@ -142,6 +142,7 @@ class SpacingComponent extends Component {
         }
       )
       return <Button
+        key={index}
         isSmall
         className={buttonClass}
         onClick={() => {
