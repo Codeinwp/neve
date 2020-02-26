@@ -71,7 +71,7 @@
 		"git:add": "git add *.css assets/**/*.css assets/**/*.js",
 		"build:grunt": "grunt build",
 		"build:rollup": "./node_modules/.bin/rollup -c",
-		"build:makepot": "docker run --rm --volume \"$(pwd):/var/www/html/neve\" wordpress:cli wp i18n make-pot ./neve/ ./neve/languages/neve.pot",
+		"build:makepot": "docker run --rm --user root --volume \"$(pwd):/var/www/html/neve\" wordpress:cli wp i18n make-pot ./neve/ ./neve/languages/neve.pot --allow-root",
 		"watch:rollup": "./node_modules/.bin/rollup -c --watch",
 		"watch:grunt": "grunt watch",
 		"dev": "npm-run-all --parallel watch:*",
