@@ -52,14 +52,14 @@ jobs:
           SOURCE_DIR: 'artifact'      # optional: defaults to entire repository
           DEST_DIR: ${{ secrets.AWS_PRODUCTS_FOLDER }}/$BUILD_NAME/$BUILD_VERSION
       - name: Send update to the store
-          env:
-            THEMEISLE_ID: ${{ secrets.THEMEISLE_ID }}
-            THEMEISLE_AUTH: ${{ secrets.THEMEISLE_AUTH }}
-            STORE_URL: ${{ secrets.STORE_URL }}
-          run: |
-            if [ ! -z "$THEMEISLE_ID" ]; then
-                STORE_JSON='{"version": "'$BUILD_VERSION'","id": "'$THEMEISLE_ID'","body": ""}';
-                echo "$STORE_JSON";
-                curl -X POST -H 'Cache-Control: no-cache' -H "Content-Type: application/json" -H "x-themeisle-auth: $THEMEISLE_AUTH"  --data "$STORE_JSON" "$STORE_URL/wp-json/edd-so/v1/update_changelog/" > /dev/null
-            fi
+        env:
+          THEMEISLE_ID: ${{ secrets.THEMEISLE_ID }}
+          THEMEISLE_AUTH: ${{ secrets.THEMEISLE_AUTH }}
+          STORE_URL: ${{ secrets.STORE_URL }}
+        run: |
+          if [ ! -z "$THEMEISLE_ID" ]; then
+              STORE_JSON='{"version": "'$BUILD_VERSION'","id": "'$THEMEISLE_ID'","body": ""}';
+              echo "$STORE_JSON";
+              curl -X POST -H 'Cache-Control: no-cache' -H "Content-Type: application/json" -H "x-themeisle-auth: $THEMEISLE_AUTH"  --data "$STORE_JSON" "$STORE_URL/wp-json/edd-so/v1/update_changelog/" > /dev/null
+          fi
 
