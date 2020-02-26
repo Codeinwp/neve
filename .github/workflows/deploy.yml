@@ -25,11 +25,6 @@ jobs:
           mkdir $HOME/.ssh
           echo "$SSH_KEY" > "$HOME/.ssh/key"
           chmod 600 "$HOME/.ssh/key"
-      - name: Deploy to QA
-        env: 
-          QA_ROOT: ${{ secrets.QA_ROOT }}
-        run: |
-          rsync -rc --exclude-from="$GITHUB_WORKSPACE/.distignore" -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no -p $SSH_PORT" "$GITHUB_WORKSPACE/dist/" $SSH_USERNAME@$SSH_HOST:$QA_ROOT/wp-content/themes
       - name: Deploy to server
         run: |
           rsync -rc --exclude-from="$GITHUB_WORKSPACE/.distignore" -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no -p $SSH_PORT" "$GITHUB_WORKSPACE/dist/" $SSH_USERNAME@$SSH_HOST:$SSH_PATH
