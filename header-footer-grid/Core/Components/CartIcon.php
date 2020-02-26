@@ -209,7 +209,7 @@ class CartIcon extends Abstract_Component {
 			$css_array[ $this->default_selector . ' .cart-icon-label' ]['font-size'] = $label_size . 'px';
 		}
 
-		return $css_array;
+		return parent::add_style( $css_array );
 	}
 
 	/**
