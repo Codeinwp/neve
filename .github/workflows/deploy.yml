@@ -20,10 +20,6 @@ jobs:
           npm ci
           npm run build
           composer install --no-dev --prefer-dist --no-progress --no-suggest
-          BUILD_VERSION=$(node -pe "require('./package.json').version")
-          BUILD_NAME=$(node -pe "require('./package.json').name")
-          export BUILD_VERSION
-          export BUILD_NAME
           bash ./bin/dist.sh
       - name: Add SSH Key
         run: |

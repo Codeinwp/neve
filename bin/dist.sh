@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
+
+BUILD_VERSION=$(node -pe "require('./package.json').version")
+export BUILD_VERSION
+BUILD_NAME=$(node -pe "require('./package.json').name")
+export BUILD_NAME
+
 if [ ! -d "dist" ]; then
   mkdir "dist"
 fi
