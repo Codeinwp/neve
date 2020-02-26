@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Neve 2.6.1\n"
 "Report-Msgid-Bugs-To: https://github.com/Codeinwp/neve/issues\n"
-"POT-Creation-Date: 2020-02-11 16:26:48+00:00\n"
+"POT-Creation-Date: 2020-02-26 09:17:27+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -80,7 +80,7 @@ msgid "Skin Mode"
 msgstr ""
 
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:496
-#: header-footer-grid/Core/Builder/Header.php:35
+#: header-footer-grid/Core/Builder/Header.php:38
 msgid "Header"
 msgstr ""
 
@@ -94,7 +94,7 @@ msgid "Footer"
 msgstr ""
 
 #: header-footer-grid/Core/Builder/Footer.php:41
-#: header-footer-grid/Core/Builder/Header.php:42
+#: header-footer-grid/Core/Builder/Header.php:45
 #. translators: %s link to documentation
 msgid ""
 "Design your %1$s by dragging, dropping and resizing all the elements in "
@@ -102,14 +102,14 @@ msgid ""
 msgstr ""
 
 #: header-footer-grid/Core/Builder/Footer.php:47
-#: header-footer-grid/Core/Builder/Header.php:48 inc/core/admin.php:161
-#: inc/core/admin.php:794
+#: header-footer-grid/Core/Builder/Header.php:51 inc/core/admin.php:162
+#: inc/core/admin.php:795
 #. translators: %s link text
 msgid "Read full documentation"
 msgstr ""
 
 #: header-footer-grid/Core/Builder/Footer.php:57
-#: header-footer-grid/Core/Builder/Header.php:58
+#: header-footer-grid/Core/Builder/Header.php:61
 #. translators: %s builder type
 msgid ""
 "Welcome to the %1$s builder! Click the “+” button to add a new component or "
@@ -132,65 +132,70 @@ msgstr ""
 msgid "Footer Bottom"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Header.php:64
+#: header-footer-grid/Core/Builder/Header.php:67
 msgid "Change Logo"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Header.php:68
+#: header-footer-grid/Core/Builder/Header.php:71
 msgid "Change Header Color"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Header.php:72
+#: header-footer-grid/Core/Builder/Header.php:75
 msgid "Change Menu"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Header.php:130
+#: header-footer-grid/Core/Builder/Header.php:96
+#: header-footer-grid/Core/Builder/Header.php:106
+msgid "Header Presets"
+msgstr ""
+
+#: header-footer-grid/Core/Builder/Header.php:176
 msgid "Header Top"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Header.php:134
+#: header-footer-grid/Core/Builder/Header.php:180
 msgid "Header Main"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Header.php:138
+#: header-footer-grid/Core/Builder/Header.php:184
 msgid "Header Bottom"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Header.php:142
+#: header-footer-grid/Core/Builder/Header.php:188
 #: header-footer-grid/templates/rows.php:73
 msgid "Mobile menu content"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:436
+#: header-footer-grid/Core/Components/Abstract_Component.php:451
 msgid "Left"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:440
+#: header-footer-grid/Core/Components/Abstract_Component.php:455
 msgid "Center"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:444
+#: header-footer-grid/Core/Components/Abstract_Component.php:459
 msgid "Right"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:451
+#: header-footer-grid/Core/Components/Abstract_Component.php:466
 msgid "Justify"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:465
+#: header-footer-grid/Core/Components/Abstract_Component.php:480
 msgid "Alignment"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:485
+#: header-footer-grid/Core/Components/Abstract_Component.php:500
 #: inc/customizer/options/buttons.php:130
 msgid "Padding"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:511
+#: header-footer-grid/Core/Components/Abstract_Component.php:526
 msgid "Margin"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:738
+#: header-footer-grid/Core/Components/Abstract_Component.php:748
 #: inc/customizer/options/main.php:57
 msgid "Typography"
 msgstr ""
@@ -209,152 +214,164 @@ msgid "Text"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Button.php:140
-#: header-footer-grid/Core/Components/MenuIcon.php:119
+#: header-footer-grid/Core/Components/MenuIcon.php:120
 msgid "Appearance"
 msgstr ""
 
-#: header-footer-grid/Core/Components/CartIcon.php:37
+#: header-footer-grid/Core/Components/CartIcon.php:44
 msgid "Cart Icon"
 msgstr ""
 
-#: header-footer-grid/Core/Components/CartIcon.php:94
+#: header-footer-grid/Core/Components/CartIcon.php:114
 #: header-footer-grid/Core/Components/SearchResponsive.php:102
 msgid "Icon Size"
 msgstr ""
 
-#: header-footer-grid/Core/Components/CartIcon.php:112
-#: header-footer-grid/Core/Components/SearchResponsive.php:120
+#: header-footer-grid/Core/Components/CartIcon.php:132
+#: header-footer-grid/Core/Components/SearchResponsive.php:121
 msgid "Color"
 msgstr ""
 
-#: header-footer-grid/Core/Components/CartIcon.php:129
-#: header-footer-grid/Core/Components/SearchResponsive.php:139
+#: header-footer-grid/Core/Components/CartIcon.php:158
+#: header-footer-grid/Core/Components/SearchResponsive.php:140
 msgid "Hover Color"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Copyright.php:34
-#: header-footer-grid/Core/Components/Copyright.php:68
+#: header-footer-grid/Core/Components/Copyright.php:35
+#: header-footer-grid/Core/Components/Copyright.php:69
 msgid "Copyright"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Copyright.php:62
+#: header-footer-grid/Core/Components/Copyright.php:63
 #. translators: %1$s is Theme Name ( Neve ), %2$s is WordPress
 msgid "%1$s | Powered by %2$s"
 msgstr ""
 
-#: header-footer-grid/Core/Components/CustomHtml.php:35
-#: header-footer-grid/Core/Components/CustomHtml.php:143
+#: header-footer-grid/Core/Components/Copyright.php:83
+#: header-footer-grid/Core/Components/CustomHtml.php:157
+#: header-footer-grid/Core/Components/Logo.php:217 inc/core/front_end.php:1599
+#: inc/customizer/options/colors_background.php:66
+msgid "Text Color"
+msgstr ""
+
+#: header-footer-grid/Core/Components/CustomHtml.php:34
+#: header-footer-grid/Core/Components/CustomHtml.php:141
 msgid "HTML"
 msgstr ""
 
-#: header-footer-grid/Core/Components/CustomHtml.php:144
+#: header-footer-grid/Core/Components/CustomHtml.php:142
 msgid "Arbitrary HTML code. It supports also shortcodes."
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetFour.php:32
-#: inc/core/front_end.php:1806
+#: inc/core/front_end.php:1913
 msgid "Footer Four"
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetOne.php:31
-#: inc/core/front_end.php:1803
+#: inc/core/front_end.php:1910
 msgid "Footer One"
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetThree.php:31
-#: inc/core/front_end.php:1805
+#: inc/core/front_end.php:1912
 msgid "Footer Three"
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetTwo.php:32
-#: inc/core/front_end.php:1804
+#: inc/core/front_end.php:1911
 msgid "Footer Two"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Logo.php:68
+#: header-footer-grid/Core/Components/Logo.php:70
 msgid "Logo & Site Identity"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Logo.php:69
+#: header-footer-grid/Core/Components/Logo.php:71
 msgid ""
 "Display your company logo here or simply use words to describe your "
 "business."
 msgstr ""
 
-#: header-footer-grid/Core/Components/Logo.php:108
+#: header-footer-grid/Core/Components/Logo.php:110
 msgid "Display"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Logo.php:128
+#: header-footer-grid/Core/Components/Logo.php:130
 msgid "Show Site Tagline"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Logo.php:146
+#: header-footer-grid/Core/Components/Logo.php:148
 msgid "Show Site Title"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Logo.php:164
+#: header-footer-grid/Core/Components/Logo.php:166
 msgid "Logo max width (px)"
+msgstr ""
+
+#: header-footer-grid/Core/Components/Logo.php:204
+msgid "Disable Homepage Link"
 msgstr ""
 
 #: header-footer-grid/Core/Components/MenuIcon.php:76
 msgid "Menu Icon"
 msgstr ""
 
-#: header-footer-grid/Core/Components/MenuIcon.php:99
+#: header-footer-grid/Core/Components/MenuIcon.php:100
 msgid "Menu label"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Nav.php:41
-#: header-footer-grid/Core/Components/Nav.php:225
+#: header-footer-grid/Core/Components/Nav.php:224
 #: header-footer-grid/templates/components/component-nav.php:25
 #: inc/core/front_end.php:76
 msgid "Primary Menu"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Nav.php:94
+#: header-footer-grid/Core/Components/Nav.php:93
 #: header-footer-grid/Core/Components/NavFooter.php:66
 #: header-footer-grid/Core/Components/SecondNav.php:66
 msgid "Hover Skin Mode"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Nav.php:112
+#: header-footer-grid/Core/Components/Nav.php:111
 #: header-footer-grid/Core/Components/NavFooter.php:84
 #: header-footer-grid/Core/Components/SecondNav.php:84
 msgid "Items Color"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Nav.php:134
+#: header-footer-grid/Core/Components/Nav.php:133
 msgid "Active Item Color"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Nav.php:156
+#: header-footer-grid/Core/Components/Nav.php:155
 #: header-footer-grid/Core/Components/NavFooter.php:106
 #: header-footer-grid/Core/Components/SecondNav.php:107
 msgid "Items Hover Color"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Nav.php:181
+#: header-footer-grid/Core/Components/Nav.php:180
 msgid "Search"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Nav.php:186
-#: header-footer-grid/templates/components/component-cart-icon.php:17
+#: header-footer-grid/Core/Components/Nav.php:185
+#: header-footer-grid/Core/Magic_Tags.php:490
+#: header-footer-grid/templates/components/component-cart-icon.php:50
 #: inc/views/header.php:146
 msgid "Cart"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Nav.php:207
+#: header-footer-grid/Core/Components/Nav.php:206
 msgid "Last Menu Item"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Nav.php:240
+#: header-footer-grid/Core/Components/Nav.php:239
 #: header-footer-grid/Core/Components/NavFooter.php:149
 #: header-footer-grid/Core/Components/SecondNav.php:152
 msgid "Items Spacing (px)"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Nav.php:255
+#: header-footer-grid/Core/Components/Nav.php:254
 #: header-footer-grid/Core/Components/NavFooter.php:164
 #: header-footer-grid/Core/Components/SecondNav.php:167
 msgid "Items Height (px)"
@@ -375,8 +392,8 @@ msgstr ""
 #: header-footer-grid/Core/Components/Search.php:87
 #: header-footer-grid/Core/Components/Search.php:91
 #: header-footer-grid/Core/Components/SearchResponsive.php:86
-#: header-footer-grid/Core/Components/SearchResponsive.php:202
-#: header-footer-grid/Core/Components/SearchResponsive.php:206
+#: header-footer-grid/Core/Components/SearchResponsive.php:203
+#: header-footer-grid/Core/Components/SearchResponsive.php:207
 msgid "Search for..."
 msgstr ""
 
@@ -415,6 +432,7 @@ msgid "Default"
 msgstr ""
 
 #: header-footer-grid/Core/Customizer.php:273
+#: header-footer-grid/templates/components/component-cart-icon.php:26
 #: header-footer-grid/templates/components/component-search-responsive.php:41
 #: inc/views/header.php:113 inc/views/layouts/layout_sidebar.php:148
 msgid "Close"
@@ -424,109 +442,125 @@ msgstr ""
 msgid "Search Components"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:311
+#: header-footer-grid/Core/Magic_Tags.php:401
 msgid "Single"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:314
+#: header-footer-grid/Core/Magic_Tags.php:404
 msgid "Current Single Title"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:318
+#: header-footer-grid/Core/Magic_Tags.php:408
 msgid "Current Single Excerpt"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:322
+#: header-footer-grid/Core/Magic_Tags.php:412
 msgid "Current Single URL"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:328
+#: header-footer-grid/Core/Magic_Tags.php:418
 msgid "Archive"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:331
+#: header-footer-grid/Core/Magic_Tags.php:421
 msgid "Archive Description"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:335
+#: header-footer-grid/Core/Magic_Tags.php:425
 msgid "Archive Title"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:339
+#: header-footer-grid/Core/Magic_Tags.php:429
 msgid "Archive URL"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:345
+#: header-footer-grid/Core/Magic_Tags.php:435
 #: inc/customizer/options/layout_blog.php:284
 #: inc/views/partials/post_meta.php:151
 msgid "Author"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:348
+#: header-footer-grid/Core/Magic_Tags.php:438
 msgid "Author Bio"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:352
+#: header-footer-grid/Core/Magic_Tags.php:442
 msgid "Author Name"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:356
+#: header-footer-grid/Core/Magic_Tags.php:446
 msgid "Author URL"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:362
+#: header-footer-grid/Core/Magic_Tags.php:452
 msgid "Current User"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:365
+#: header-footer-grid/Core/Magic_Tags.php:455
 msgid "User Nice Name"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:369
+#: header-footer-grid/Core/Magic_Tags.php:459
 msgid "Display Name"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:373
+#: header-footer-grid/Core/Magic_Tags.php:463
 msgid "User Email"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:379
+#: header-footer-grid/Core/Magic_Tags.php:469
 msgid "Global"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:382
+#: header-footer-grid/Core/Magic_Tags.php:472
 msgid "Site Title"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:386
+#: header-footer-grid/Core/Magic_Tags.php:476
 msgid "Site Tagline"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:390
+#: header-footer-grid/Core/Magic_Tags.php:480
 msgid "Home URL"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:394
+#: header-footer-grid/Core/Magic_Tags.php:484
 msgid "Current Year"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:403
+#: header-footer-grid/Core/Magic_Tags.php:493
+msgid "Total + Currency Symbol"
+msgstr ""
+
+#: header-footer-grid/Core/Magic_Tags.php:497
+msgid "Total"
+msgstr ""
+
+#: header-footer-grid/Core/Magic_Tags.php:501
+msgid "Currency Name"
+msgstr ""
+
+#: header-footer-grid/Core/Magic_Tags.php:505
+msgid "Currency Symbol"
+msgstr ""
+
+#: header-footer-grid/Core/Magic_Tags.php:514
 msgid "WooCommerce"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:406
+#: header-footer-grid/Core/Magic_Tags.php:517
 msgid "Product Price"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:410
+#: header-footer-grid/Core/Magic_Tags.php:521
 msgid "Product Title"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:414
+#: header-footer-grid/Core/Magic_Tags.php:525
 msgid "Cart URL"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:418
+#: header-footer-grid/Core/Magic_Tags.php:529
 msgid "Checkout URL"
 msgstr ""
 
@@ -581,7 +615,7 @@ msgstr ""
 msgid "No Sidebar"
 msgstr ""
 
-#: inc/admin/metabox/main.php:56 inc/core/front_end.php:1796
+#: inc/admin/metabox/main.php:56 inc/core/front_end.php:1903
 msgid "Sidebar"
 msgstr ""
 
@@ -650,79 +684,79 @@ msgstr ""
 msgid "Oops! Something went wrong."
 msgstr ""
 
-#: inc/compatibility/woocommerce.php:367
+#: inc/compatibility/woocommerce.php:368
 msgid "Filter"
 msgstr ""
 
-#: inc/core/admin.php:63 inc/core/admin.php:277
+#: inc/core/admin.php:64 inc/core/admin.php:278
 msgid "What do we track?"
 msgstr ""
 
-#: inc/core/admin.php:88
+#: inc/core/admin.php:89
 #. translators: %s - theme name
 msgid "%s Community"
 msgstr ""
 
-#: inc/core/admin.php:90
+#: inc/core/admin.php:91
 #. translators: %s - theme name
 msgid ""
 "Join the community of %s users. Get connected, share opinions, ask "
 "questions and help each other!"
 msgstr ""
 
-#: inc/core/admin.php:91
+#: inc/core/admin.php:92
 msgid "Join our Facebook Group"
 msgstr ""
 
-#: inc/core/admin.php:95
+#: inc/core/admin.php:96
 msgid "Leave us a review"
 msgstr ""
 
-#: inc/core/admin.php:97
+#: inc/core/admin.php:98
 #. translators: %s - theme name
 msgid "Are you are enjoying %s? We would love to hear your feedback."
 msgstr ""
 
-#: inc/core/admin.php:98
+#: inc/core/admin.php:99
 msgid "Submit a review"
 msgstr ""
 
-#: inc/core/admin.php:105
+#: inc/core/admin.php:106
 msgid "Getting Started"
 msgstr ""
 
-#: inc/core/admin.php:108 inc/core/admin.php:229
+#: inc/core/admin.php:109 inc/core/admin.php:230
 msgid "Recommended actions"
 msgstr ""
 
-#: inc/core/admin.php:110 inc/core/admin.php:783
+#: inc/core/admin.php:111 inc/core/admin.php:784
 #. translators: %s - theme name
 msgid ""
 "%s now comes with a sites library with various designs to pick from. Visit "
 "our collection of demos that are constantly being added."
 msgstr ""
 
-#: inc/core/admin.php:112
+#: inc/core/admin.php:113
 msgid "See demos"
 msgstr ""
 
-#: inc/core/admin.php:118
+#: inc/core/admin.php:119
 msgid "Links to Customizer Settings"
 msgstr ""
 
-#: inc/core/admin.php:125
+#: inc/core/admin.php:126
 msgid "Useful Plugins"
 msgstr ""
 
-#: inc/core/admin.php:142 inc/core/admin.php:157 inc/core/admin.php:790
+#: inc/core/admin.php:143 inc/core/admin.php:158 inc/core/admin.php:791
 msgid "Documentation"
 msgstr ""
 
-#: inc/core/admin.php:146 inc/core/admin.php:150
+#: inc/core/admin.php:147 inc/core/admin.php:151
 msgid "Contact Support"
 msgstr ""
 
-#: inc/core/admin.php:148
+#: inc/core/admin.php:149
 #. translators: 1 - theme name, 2 - theme name
 msgid ""
 "We want to make sure you have the best experience using %1$s, and that is "
@@ -730,28 +764,28 @@ msgid ""
 "you will enjoy using %1$s as much as we enjoy creating great products."
 msgstr ""
 
-#: inc/core/admin.php:159 inc/core/admin.php:792
+#: inc/core/admin.php:160 inc/core/admin.php:793
 #. translators: %s - theme name
 msgid ""
 "Need more details? Please check our full documentation for detailed "
 "information on how to use %s."
 msgstr ""
 
-#: inc/core/admin.php:169 inc/core/admin.php:172 inc/core/admin.php:212
+#: inc/core/admin.php:170 inc/core/admin.php:173 inc/core/admin.php:213
 msgid "Changelog"
 msgstr ""
 
-#: inc/core/admin.php:170
+#: inc/core/admin.php:171
 msgid ""
 "Want to get the gist on the latest theme changes? Just consult our "
 "changelog below to get a taste of the recent fixes and features implemented."
 msgstr ""
 
-#: inc/core/admin.php:179
+#: inc/core/admin.php:180
 msgid "Create a child theme"
 msgstr ""
 
-#: inc/core/admin.php:181
+#: inc/core/admin.php:182
 msgid ""
 "If you want to make changes to the theme's files, those changes are likely "
 "to be overwritten when you next update the theme. In order to prevent that "
@@ -759,15 +793,15 @@ msgid ""
 "the documentation below."
 msgstr ""
 
-#: inc/core/admin.php:183 inc/core/admin.php:193 inc/core/admin.php:203
+#: inc/core/admin.php:184 inc/core/admin.php:194 inc/core/admin.php:204
 msgid "View how to do this"
 msgstr ""
 
-#: inc/core/admin.php:189
+#: inc/core/admin.php:190
 msgid "Speed up your site"
 msgstr ""
 
-#: inc/core/admin.php:191
+#: inc/core/admin.php:192
 msgid ""
 "If you find yourself in a situation where everything on your site is "
 "running very slowly, you might consider having a look at the documentation "
@@ -775,260 +809,260 @@ msgid ""
 "solutions for each of the issues."
 msgstr ""
 
-#: inc/core/admin.php:199
+#: inc/core/admin.php:200
 msgid "Build a landing page with a drag-and-drop content builder"
 msgstr ""
 
-#: inc/core/admin.php:201
+#: inc/core/admin.php:202
 msgid ""
 "In the documentation below you will find an easy way to build a great "
 "looking landing page using a drag-and-drop content builder plugin."
 msgstr ""
 
-#: inc/core/admin.php:218
+#: inc/core/admin.php:219
 msgid "Free vs PRO"
 msgstr ""
 
-#: inc/core/admin.php:235
+#: inc/core/admin.php:236
 #. translators: %s: Name of current theme
 msgid ""
 "Take the new WordPress editor to the next level by using Otter's blocks "
 "that are specially designed for %s."
 msgstr ""
 
-#: inc/core/admin.php:274
+#: inc/core/admin.php:275
 msgid "Contributing"
 msgstr ""
 
-#: inc/core/admin.php:275
+#: inc/core/admin.php:276
 msgid ""
 "Become a contributor by opting in to our anonymous data tracking. We "
 "guarantee no sensitive data is collected."
 msgstr ""
 
-#: inc/core/admin.php:276
+#: inc/core/admin.php:277
 msgid "Allow anonymous tracking"
 msgstr ""
 
-#: inc/core/admin.php:278
+#: inc/core/admin.php:279
 msgid "Could not update option. Please try again."
 msgstr ""
 
-#: inc/core/admin.php:279
+#: inc/core/admin.php:280
 msgid "Option updated."
 msgstr ""
 
-#: inc/core/admin.php:432
+#: inc/core/admin.php:433
 #. translators: s - theme name
 msgid "Get %s now!"
 msgstr ""
 
-#: inc/core/admin.php:436
+#: inc/core/admin.php:437
 msgid "Header/Footer builder"
 msgstr ""
 
-#: inc/core/admin.php:437
+#: inc/core/admin.php:438
 msgid ""
 "Easily build your header and footer by dragging and dropping all the "
 "important elements in the real-time WordPress Customizer. More advanced "
 "options are available in PRO."
 msgstr ""
 
-#: inc/core/admin.php:442
+#: inc/core/admin.php:443
 msgid "Page Builder Compatibility"
 msgstr ""
 
-#: inc/core/admin.php:443
+#: inc/core/admin.php:444
 msgid ""
 "Neve is fully compatible with Gutenberg, the new WordPress editor and for "
 "all of you page builder fans, Neve has full compatibility with Elementor, "
 "Beaver Builder, and all the other popular page builders."
 msgstr ""
 
-#: inc/core/admin.php:448 inc/customizer/options/upsells.php:89
+#: inc/core/admin.php:449 inc/customizer/options/upsells.php:89
 msgid "Header Booster"
 msgstr ""
 
-#: inc/core/admin.php:449
+#: inc/core/admin.php:450
 msgid ""
 "Take the header builder to a new level with new awesome components: "
 "socials, contact, breadcrumbs, language switcher, multiple HTML, sticky and "
 "transparent menu, page header builder and many more."
 msgstr ""
 
-#: inc/core/admin.php:454
+#: inc/core/admin.php:455
 msgid "Page Header Builder"
 msgstr ""
 
-#: inc/core/admin.php:455
+#: inc/core/admin.php:456
 msgid ""
 "The Page Header is the horizontal area that sits directly below the header "
 "and contains the page/post title. Easily design an attractive Page Header "
 "area using our dedicated builder."
 msgstr ""
 
-#: inc/core/admin.php:460 inc/customizer/options/upsells.php:92
+#: inc/core/admin.php:461 inc/customizer/options/upsells.php:92
 msgid "Custom Layouts"
 msgstr ""
 
-#: inc/core/admin.php:461
+#: inc/core/admin.php:462
 msgid ""
 "Powerful Custom Layouts builder which allows you to easily create your own "
 "header, footer or custom content on any of the hook locations available in "
 "the theme."
 msgstr ""
 
-#: inc/core/admin.php:466 inc/customizer/options/upsells.php:90
+#: inc/core/admin.php:467 inc/customizer/options/upsells.php:90
 msgid "Blog Booster"
 msgstr ""
 
-#: inc/core/admin.php:467
+#: inc/core/admin.php:468
 msgid ""
 "Give a huge boost to your entire blogging experience with features "
 "specially designed for increased user experience."
 msgstr ""
 
-#: inc/core/admin.php:467
+#: inc/core/admin.php:468
 msgid ""
 "Sharing, custom article sorting, comments integrations, number of minutes "
 "needed to read an article and many more."
 msgstr ""
 
-#: inc/core/admin.php:472 inc/customizer/options/upsells.php:95
+#: inc/core/admin.php:473 inc/customizer/options/upsells.php:95
 msgid "Elementor Booster"
 msgstr ""
 
-#: inc/core/admin.php:473 inc/customizer/options/upsells.php:100
+#: inc/core/admin.php:474 inc/customizer/options/upsells.php:100
 msgid ""
 "Leverage the true flexibility of Elementor with powerful addons and "
 "templates that you can import with just one click."
 msgstr ""
 
-#: inc/core/admin.php:478 inc/customizer/options/upsells.php:91
+#: inc/core/admin.php:479 inc/customizer/options/upsells.php:91
 msgid "WooCommerce Booster"
 msgstr ""
 
-#: inc/core/admin.php:479
+#: inc/core/admin.php:480
 msgid ""
 "Empower your online store with awesome new features, specially designed for "
 "a smooth WooCommerce integration."
 msgstr ""
 
-#: inc/core/admin.php:479
+#: inc/core/admin.php:480
 msgid ""
 "Wishlist, quick view, video products, advanced reviews, multiple dedicated "
 "layouts and many more."
 msgstr ""
 
-#: inc/core/admin.php:484
+#: inc/core/admin.php:485
 msgid "LifterLMS Booster"
 msgstr ""
 
-#: inc/core/admin.php:485
+#: inc/core/admin.php:486
 msgid ""
 "Make your LifterLMS pages look stunning with our PRO design options. "
 "Specially created to help you set up your online courses with minimum "
 "customizations."
 msgstr ""
 
-#: inc/core/admin.php:490
+#: inc/core/admin.php:491
 msgid "Typekit(Adobe) Fonts"
 msgstr ""
 
-#: inc/core/admin.php:491
+#: inc/core/admin.php:492
 msgid ""
 "The module allows for an easy way of enabling new awesome Adobe (previous "
 "Typekit) Fonts in Neve's Typography options."
 msgstr ""
 
-#: inc/core/admin.php:496
+#: inc/core/admin.php:497
 msgid "White Label"
 msgstr ""
 
-#: inc/core/admin.php:497
+#: inc/core/admin.php:498
 msgid ""
 "For any developer or agency out there building websites for their own "
 "clients, we've made it easy to present the theme as your own."
 msgstr ""
 
-#: inc/core/admin.php:502
+#: inc/core/admin.php:503
 msgid "Scroll To Top"
 msgstr ""
 
-#: inc/core/admin.php:503
+#: inc/core/admin.php:504
 msgid ""
 "Simple but effective module to help you navigate back to the top of the "
 "really long pages."
 msgstr ""
 
-#: inc/core/admin.php:602
+#: inc/core/admin.php:603
 msgid "Upload Logo"
 msgstr ""
 
-#: inc/core/admin.php:607
+#: inc/core/admin.php:608
 msgid "Set Colors"
 msgstr ""
 
-#: inc/core/admin.php:612
+#: inc/core/admin.php:613
 msgid "Customize Fonts"
 msgstr ""
 
-#: inc/core/admin.php:617
+#: inc/core/admin.php:618
 msgid "Layout Options"
 msgstr ""
 
-#: inc/core/admin.php:622
+#: inc/core/admin.php:623
 msgid "Header Options"
 msgstr ""
 
-#: inc/core/admin.php:627
+#: inc/core/admin.php:628
 msgid "Blog Layouts"
 msgstr ""
 
-#: inc/core/admin.php:632
+#: inc/core/admin.php:633
 msgid "Footer Options"
 msgstr ""
 
-#: inc/core/admin.php:637 inc/customizer/options/layout_sidebar.php:43
+#: inc/core/admin.php:638 inc/customizer/options/layout_sidebar.php:43
 msgid "Content / Sidebar"
 msgstr ""
 
-#: inc/core/admin.php:747
+#: inc/core/admin.php:748
 #. translators: 1 - notice title, 2 - notice message
 msgid "Congratulations!"
 msgstr ""
 
-#: inc/core/admin.php:750
+#: inc/core/admin.php:751
 #. translators: %s - theme name
 msgid ""
 "%s is now installed and ready to use. We've assembled some links to get you "
 "started."
 msgstr ""
 
-#: inc/core/admin.php:758
+#: inc/core/admin.php:759
 #. translators: 1 - onboarding url, 2 - button text
 msgid "Try one of our ready to use Starter Sites"
 msgstr ""
 
-#: inc/core/admin.php:763
+#: inc/core/admin.php:764
 #. translators: 1 - button text
 msgid "Return to your dashboard"
 msgstr ""
 
-#: inc/core/admin.php:769
+#: inc/core/admin.php:770
 #. translators: 1 - options page url, 2 - button text
 msgid "or go to the theme settings"
 msgstr ""
 
-#: inc/core/admin.php:781
+#: inc/core/admin.php:782
 msgid "Sites Library"
 msgstr ""
 
-#: inc/core/front_end.php:1380 inc/core/front_end.php:1390
+#: inc/core/front_end.php:1445 inc/core/front_end.php:1455
 msgid "Want to keep using Zelle's homepage?"
 msgstr ""
 
-#: inc/core/front_end.php:1381 inc/core/front_end.php:1391
+#: inc/core/front_end.php:1446 inc/core/front_end.php:1456
 msgid ""
 "Hi! We've noticed you were using Zelle before. To make your transition "
 "easier, we can help you keep the same beautiful homepage you had before, by "
@@ -1036,11 +1070,11 @@ msgid ""
 "homepage content."
 msgstr ""
 
-#: inc/core/front_end.php:1398
+#: inc/core/front_end.php:1463
 msgid "Ready to use pre-built websites with 1-click installation"
 msgstr ""
 
-#: inc/core/front_end.php:1400
+#: inc/core/front_end.php:1465
 #. translators: %s - theme name
 msgid ""
 "With %s, you can choose from multiple unique demos, specially designed for "
@@ -1048,31 +1082,27 @@ msgid ""
 "your favorite, and we will take care of everything else."
 msgstr ""
 
-#: inc/core/front_end.php:1462
+#: inc/core/front_end.php:1569
 msgid "Black"
 msgstr ""
 
-#: inc/core/front_end.php:1471
+#: inc/core/front_end.php:1578
 msgid "White"
 msgstr ""
 
-#: inc/core/front_end.php:1480
+#: inc/core/front_end.php:1587
 msgid "Button Color"
 msgstr ""
 
-#: inc/core/front_end.php:1484 inc/customizer/options/colors_background.php:56
+#: inc/core/front_end.php:1591 inc/customizer/options/colors_background.php:56
 msgid "Link Color"
 msgstr ""
 
-#: inc/core/front_end.php:1488 inc/customizer/options/colors_background.php:61
+#: inc/core/front_end.php:1595 inc/customizer/options/colors_background.php:61
 msgid "Link Hover Color"
 msgstr ""
 
-#: inc/core/front_end.php:1492 inc/customizer/options/colors_background.php:66
-msgid "Text Color"
-msgstr ""
-
-#: inc/core/front_end.php:1797
+#: inc/core/front_end.php:1904
 msgid "Shop Sidebar"
 msgstr ""
 

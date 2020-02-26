@@ -36,7 +36,6 @@ class BackgroundComponent extends Component {
       fixed: value.fixed || false,
       useFeatured: value.useFeatured || false
     }
-    this.updateSetting( this.state )
   }
 
   getButtons() {
@@ -47,9 +46,10 @@ class BackgroundComponent extends Component {
     }
     const buttons = []
     const self = this
-    types.map( function(type) {
+    types.map( function(type, index) {
       buttons.push(
         <Button
+          key={index}
           isPrimary={self.state.type === type}
           isDefault={self.state.type !== type}
           onClick={(e) => {
@@ -200,6 +200,7 @@ class BackgroundComponent extends Component {
   }
 
   componentDidMount() {
+    this.updateSetting( this.state )
     const { control } = this.props
 
     document.addEventListener( 'neve-changed-customizer-value', (e) => {

@@ -110,9 +110,9 @@ class ButtonAppearanceComponent extends Component {
         </span>
         <Panel>
           {
-            Object.keys( settings ).map( (type) => {
+            Object.keys( settings ).map( (type, index) => {
               return (
-                <PanelBody
+                <PanelBody key={index}
                   title={this.props.control.params.no_hover
                     ? ''
                     : settings[type].label}
@@ -120,9 +120,9 @@ class ButtonAppearanceComponent extends Component {
                 >
                   {
                     Object.keys( settings[type].controls )
-                      .map( (controlSlug) => {
+                      .map( (controlSlug, index) => {
                         return (
-                          <Fragment>
+                          <Fragment key={index}>
                             <PanelRow>
                               <span>{settings[type].controls[controlSlug]}</span>
                             </PanelRow>

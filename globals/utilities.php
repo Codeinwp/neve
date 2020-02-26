@@ -64,6 +64,31 @@ function neve_hooks() {
 		),
 	);
 
+	if ( class_exists( 'WooCommerce' ) ) {
+		$hooks['cart']     = array(
+			'woocommerce_after_cart_table',
+			'woocommerce_before_cart_totals',
+			'woocommerce_before_shipping_calculator',
+			'woocommerce_after_shipping_calculator',
+			'woocommerce_cart_totals_before_order_total',
+			'woocommerce_proceed_to_checkout',
+			'woocommerce_after_cart_totals',
+		);
+		$hooks['checkout'] = array(
+			'woocommerce_before_checkout_billing_form',
+			'woocommerce_after_checkout_billing_form',
+			'woocommerce_before_checkout_shipping_form',
+			'woocommerce_after_checkout_shipping_form',
+			'woocommerce_before_order_notes',
+			'woocommerce_after_order_notes',
+			'woocommerce_review_order_before_order_total',
+			'woocommerce_review_order_before_payment',
+			'woocommerce_review_order_before_submit',
+			'woocommerce_review_order_after_submit',
+			'woocommerce_review_order_after_payment',
+		);
+	}
+
 	return apply_filters( 'neve_hooks_list', $hooks );
 }
 
