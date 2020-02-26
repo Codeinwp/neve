@@ -15,11 +15,16 @@ jobs:
       SSH_PATH: ${{ secrets.SSH_PATH }}
     steps:
       - uses: actions/checkout@master
-      - name: Build
+      - name: Build & create dist/artifact
         run: |
           npm ci
           npm run build
           composer install --no-dev --prefer-dist --no-progress --no-suggest
+          BUILD_VERSION=$(node -pe "require('./package.json').version")
+          BUILD_NAME=$(node -pe "require('./package.json').name")
+          export BUILD_VERSION
+          export BUILD_NAME
+          bash ./bin/dist.sh
       - name: Add SSH Key
         run: |
           mkdir $HOME/.ssh
@@ -28,16 +33,6 @@ jobs:
       - name: Deploy to server
         run: |
           rsync -rc --exclude-from="$GITHUB_WORKSPACE/.distignore" -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no -p $SSH_PORT" "$GITHUB_WORKSPACE/dist/" $SSH_USERNAME@$SSH_HOST:$SSH_PATH
-      - name: Build and create dist folders
-        run: |
-          npm ci
-          npm run build
-          composer install --no-dev --prefer-dist --no-progress --no-suggest
-          npm run dist
-          export BUILD_VERSION
-          BUILD_VERSION=$(node -pe "require('./package.json').version")
-          export BUILD_NAME
-          BUILD_NAME=$(node -pe "require('./package.json').name")
       - name: Upload Latest Version to S3
         uses: jakejarvis/s3-sync-action@master
         with:
