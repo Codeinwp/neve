@@ -8,6 +8,7 @@
 
 namespace Neve\Compatibility;
 
+use HFG\Core\Components\CartIcon;
 use Neve\Views\Layouts\Layout_Sidebar;
 
 /**
@@ -25,7 +26,7 @@ class Woocommerce {
 	private $primary_buttons_selectors = array(
 		'default' => '
 			,.woocommerce a.button,
-			.woocommerce .button:not(.nv-sidebar-toggle),
+			.woocommerce .button:not(.nv-sidebar-toggle):not(.nv-close-cart-sidebar),
 			.woocommerce a.button.alt,
 			.woocommerce a.button.button-primary,
 			.woocommerce a.button.checkout-button,
@@ -46,7 +47,7 @@ class Woocommerce {
 			.button.woocommerce-form-login__submit',
 		'hover'   => '
 			,.woocommerce a.button:hover,
-			.woocommerce .button:not(.nv-sidebar-toggle):hover,
+			.woocommerce .button:not(.nv-sidebar-toggle):not(.nv-close-cart-sidebar):hover,
 			.woocommerce a.button.alt:hover,
 			.woocommerce a.button.button-primary:hover,
 			.woocommerce a.button.checkout-button:hover,
@@ -79,7 +80,7 @@ class Woocommerce {
 			.woocommerce a.added_to_cart,
 			.woocommerce .checkout_coupon button.button,
 			.woocommerce #review_form #respond input#submit,
-			.woocommerce .price_slider_amount button.button:not(.nv-sidebar-toggle),
+			.woocommerce .price_slider_amount button.button:not(.nv-sidebar-toggle):not(.nv-close-cart-sidebar),
 			.woocommerce .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout),
 			.woocommerce .button.button-secondary.more-details',
 		'hover'            => '
@@ -711,6 +712,15 @@ class Woocommerce {
 	 */
 	public function cart_link_fragment( $fragments ) {
 		$fragments['.cart-count'] = '<span class="cart-count">' . WC()->cart->get_cart_contents_count() . '</span>';
+
+		$cart_label = get_theme_mod( 'header_cart_icon_' . CartIcon::CART_LABEL );
+		if ( strpos( $cart_label, '{cart_total}' ) !== false ) {
+			$fragments['.nv-cart-icon-total-plain'] = '<span class="nv-cart-icon-total-plain">' . WC()->cart->cart_contents_total . '</span>';
+		}
+		if ( strpos( $cart_label, '{cart_total_currency_symbol}' ) !== false ) {
+			$fragments['.nv-cart-icon-total-currency'] = '<span class="nv-cart-icon-total-currency">' . WC()->cart->get_cart_total() . '</span>';
+		}
+
 
 		return $fragments;
 	}

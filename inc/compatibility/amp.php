@@ -77,9 +77,7 @@ class Amp {
 			return $input;
 		}
 
-		$body_classes = join( ' ', get_body_class() ) . ' ';
-
-		$input .= ' [class]="\'' . $body_classes . '\' + ( nvAmpMenuExpanded ? \'is-menu-sidebar\' : \'\' )" ';
+		$input .= ' id="neve_body" ';
 
 		return $input;
 	}
@@ -112,7 +110,7 @@ class Amp {
 		if ( ! neve_is_amp() ) {
 			return $input;
 		}
-		$input .= ' on="tap:AMP.setState( { nvAmpMenuExpanded: ! nvAmpMenuExpanded } )" ';
+		$input .= ' on="tap:neve_body.toggleClass(class=\'is-menu-sidebar\'),AMP.setState( { nvAmpMenuExpanded: ! nvAmpMenuExpanded } )" ';
 		$input .= ' role="button" ';
 		$input .= ' tabindex="0" ';
 		$input .= ' aria-expanded="false" ';

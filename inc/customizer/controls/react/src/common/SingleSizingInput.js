@@ -120,7 +120,7 @@ class SingleSizingInput extends Component {
 
 SingleSizingInput.propTypes = {
   type: PropTypes.string,
-  value: PropTypes.number,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   min: PropTypes.number,
   max: PropTypes.number,
   step: PropTypes.number,

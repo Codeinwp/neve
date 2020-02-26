@@ -18,6 +18,17 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
+### 2.6.2 - 2020-02-26  ###
+
+* [Feat] New text color option for the HTML and Copyright components
+* [Feat] New option to Disable Homepage Link in the Logo & Site Identity component
+* [Fix] Issues in AMP when using Google Tag Manager Codeless Injection
+* [Fix] Footer menu alignment
+* [Fix] Mega Menu not working in Edge
+* [Fix] Narrow editor with the new Gutenberg version
+* New Gutenberg and Beaver Builder Starter Sites
+
+
 ### 2.6.1 - 2020-02-13  ###
 
 * [Feat] New header presets
@@ -987,3 +998,49 @@ Starter Sites screenshots resources:
 
 - Web Agency
 * https://www.pexels.com/photo/landscape-photography-of-mountains-covered-in-snow-691668/
+
+- Scuba Diving
+* https://stocksnap.io/photo/1S3SUI4VRD
+* https://mystock.themeisle.com/photo/group-of-fish-swimming-in-crystal-clear-water/
+
+- Wine Bar
+* https://stocksnap.io/photo/VXU7CK0T65
+
+- Mountain Biking Race
+* https://stocksnap.io/photo/U3Z5GNZUQR
+* https://stocksnap.io/photo/SNIKX3KGKD
+
+- Movie
+* https://mystock.themeisle.com/photo/illuminated-alley-of-a-luxurious-resort-at-sunset/
+* https://mystock.themeisle.com/photo/times-square/
+* https://mystock.themeisle.com/photo/bucharest-at-night/
+
+- Running Club
+* https://mystock.themeisle.com/photo/couple-jogging-together-along-the-river-coas/
+* https://stocksnap.io/photo/X1T5YTO2MB
+* https://stocksnap.io/photo/6X9WTXG24A
+* https://stocksnap.io/photo/X2Q7LBUF6U
+
+- Jewellery Shop
+* https://stocksnap.io/photo/BIR9EBVX6K
+* https://stocksnap.io/photo/VHIX76K7EH
+* https://stocksnap.io/photo/MK72WQXVOE
+* https://stocksnap.io/photo/TDFUZEW0FS
+
+- Car Service
+* https://mystock.themeisle.com/photo/engine/
+* https://mystock.themeisle.com/photo/old-mini-cooper/
+
+- Museum
+* https://mystock.themeisle.com/photo/front-view-of-magasin-du-nord-copenhagen/
+
+- Art Exhibition
+* https://stocksnap.io/photo/TIHPAM0QFG
+* https://stocksnap.io/photo/I0CYW7MWNV
+* https://mystock.themeisle.com/photo/beautiful-painting-of-a-sunny-day-on-a-building/
+* https://mystock.themeisle.com/photo/rain-painting/
+
+- Conference
+* https://mystock.themeisle.com/photo/cityscape-of-new-york-2/
+* https://mystock.themeisle.com/photo/performing-artist-with-cool-projections-behind/
+* https://mystock.themeisle.com/photo/young-boy-attending-a-concert/

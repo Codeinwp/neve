@@ -294,12 +294,102 @@ class Magic_Tags {
 	}
 
 	/**
+	 * User nicename.
+	 *
+	 * @return string
+	 */
+	public function user_nicename() {
+		$current_user = wp_get_current_user();
+		if ( empty( $current_user ) ) {
+			return '';
+		}
+		return $current_user->user_nicename;
+	}
+
+	/**
+	 * User display name.
+	 *
+	 * @return string
+	 */
+	public function display_name() {
+		$current_user = wp_get_current_user();
+		if ( empty( $current_user ) ) {
+			return '';
+		}
+		return $current_user->display_name;
+	}
+
+	/**
+	 * User email.
+	 *
+	 * @return string
+	 */
+	public function user_email() {
+		$current_user = wp_get_current_user();
+		if ( empty( $current_user ) ) {
+			return '';
+		}
+		return $current_user->user_email;
+	}
+
+	/**
 	 * Get the options array.
 	 *
 	 * @return mixed
 	 */
 	public function get_options() {
 		return $this->options;
+	}
+
+	/**
+	 * Cart total.
+	 *
+	 * @return string
+	 */
+	public function cart_total() {
+		if ( ! class_exists( 'WooCommerce' ) ) {
+			return '';
+		}
+		return '<span class="nv-cart-icon-total-plain">' . WC()->cart->cart_contents_total . '</span>';
+	}
+
+	/**
+	 * Cart total + currency.
+	 *
+	 * @return string
+	 */
+	public function cart_total_currency_symbol() {
+		if ( ! class_exists( 'WooCommerce' ) ) {
+			return '';
+		}
+
+		return '<span class="nv-cart-icon-total-currency">' . WC()->cart->get_cart_total() . '</span>';
+	}
+
+	/**
+	 * WooCommerce currency.
+	 *
+	 * @return string
+	 */
+	public function currency_name() {
+		if ( ! class_exists( 'WooCommerce' ) || ! function_exists( 'get_woocommerce_currency' ) ) {
+			return '';
+		}
+
+		return get_woocommerce_currency();
+	}
+
+	/**
+	 * WooCommerce currency.
+	 *
+	 * @return string
+	 */
+	public function currency_symbol() {
+		if ( ! class_exists( 'WooCommerce' ) || ! function_exists( 'get_woocommerce_currency_symbol' ) ) {
+			return '';
+		}
+
+		return '<span class="woocommerce-Price-currencySymbol">' . get_woocommerce_currency_symbol() . '</span>';
 	}
 
 	/**
@@ -393,6 +483,27 @@ class Magic_Tags {
 					'current_year' => [
 						'label' => __( 'Current Year', 'neve' ),
 						'type'  => 'string',
+					],
+				],
+			],
+			[
+				'label'    => __( 'Cart', 'neve' ),
+				'controls' => [
+					'cart_total_currency_symbol' => [
+						'label' => __( 'Total + Currency Symbol', 'neve' ),
+						'type'  => 'custom_cart',
+					],
+					'cart_total'                 => [
+						'label' => __( 'Total', 'neve' ),
+						'type'  => 'custom_cart',
+					],
+					'currency_name'              => [
+						'label' => __( 'Currency Name', 'neve' ),
+						'type'  => 'custom_cart',
+					],
+					'currency_symbol'            => [
+						'label' => __( 'Currency Symbol', 'neve' ),
+						'type'  => 'custom_cart',
 					],
 				],
 			],
