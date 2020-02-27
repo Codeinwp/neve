@@ -28,7 +28,7 @@ jobs:
           chmod 600 "$HOME/.ssh/key"
       - name: Deploy to server
         run: |
-          rsync -rc --exclude-from="$GITHUB_WORKSPACE/.distignore" -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no -p $SSH_PORT" "$GITHUB_WORKSPACE/dist/" $SSH_USERNAME@$SSH_HOST:$SSH_PATH
+          rsync -rc --exclude-from="$GITHUB_WORKSPACE/.distignore" -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no -p $SSH_PORT" "$GITHUB_WORKSPACE/" $SSH_USERNAME@$SSH_HOST:$SSH_PATH
       - name: Upload Latest Version to S3
         uses: jakejarvis/s3-sync-action@master
         with:
