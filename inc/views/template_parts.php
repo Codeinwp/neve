@@ -90,7 +90,7 @@ class Template_Parts extends Base_View {
 			'title-meta',
 			'excerpt',
 		);
-		$order         = get_theme_mod( 'neve_post_content_ordering', json_encode( $default_order ) );
+		$order         = get_theme_mod( 'neve_post_content_ordering', wp_json_encode( $default_order ) );
 		$order         = json_decode( $order, true );
 		foreach ( $order as $content_bit ) {
 			switch ( $content_bit ) {
@@ -192,7 +192,7 @@ class Template_Parts extends Base_View {
 	 * @return string
 	 */
 	private function get_meta() {
-		$default_meta_order = json_encode(
+		$default_meta_order = wp_json_encode(
 			array(
 				'author',
 				'date',

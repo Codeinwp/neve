@@ -53,7 +53,7 @@ class Product_Layout extends Base_View {
 		);
 
 		if ( $products_category !== 'all' ) {
-			$query_args['tax_query'] = array(
+			$query_args['tax_query'] = array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
 				array(
 					'taxonomy' => 'product_cat',
 					'field'    => 'term_id', // This is optional, as it defaults to 'term_id'

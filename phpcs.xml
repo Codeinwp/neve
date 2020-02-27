@@ -15,6 +15,8 @@
     <arg value="sp"/>
 
     <rule ref="WordPress-VIP-Go">
+        <exclude name="WordPress.Security.NonceVerification.Recommended"/>
+        <exclude name="WordPress.WP.TimezoneChange.DeprecatedSniff"/>
     </rule>
     <rule ref="WPThemeReview">
         <exclude name="WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound"/>

@@ -45,9 +45,9 @@ class Post_Layout extends Base_View {
 			)
 		);
 
-		$content_order = get_theme_mod( 'neve_layout_single_post_elements_order', json_encode( $default_order ) );
+		$content_order = get_theme_mod( 'neve_layout_single_post_elements_order', wp_json_encode( $default_order ) );
 		if ( ! is_string( $content_order ) ) {
-			$content_order = json_encode( $default_order );
+			$content_order = wp_json_encode( $default_order );
 		}
 		$content_order = json_decode( $content_order, true );
 		if ( apply_filters( 'neve_filter_toggle_content_parts', true, 'title' ) !== true ) {
@@ -123,7 +123,7 @@ class Post_Layout extends Base_View {
 	 * Render the post meta.
 	 */
 	private function render_post_meta() {
-		$default_meta_order = json_encode(
+		$default_meta_order = wp_json_encode(
 			array(
 				'author',
 				'date',

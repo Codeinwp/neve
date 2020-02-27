@@ -97,7 +97,7 @@ class Gutenberg_Editor extends Base_Inline {
 	private function add_container_style() {
 		$container_width = get_theme_mod(
 			'neve_container_width',
-			json_encode(
+			wp_json_encode(
 				[
 					'mobile'  => 748,
 					'tablet'  => 992,

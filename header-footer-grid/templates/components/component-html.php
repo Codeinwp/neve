@@ -18,6 +18,6 @@ $content           = apply_filters( 'neve_top_bar_content', $content );
 $allowed_post_tags = wp_kses_allowed_html( 'header_footer_grid' );
 
 ?>
-<div class="nv-html-content">
+<div class="nv-html-content"> <?php //phpcs:ignore WordPressVIPMinimum.Security.Vuejs.RawHTMLDirectiveFound ?>
 	<?php echo wp_kses( balanceTags( parse_dynamic_tags( $content ), true ), $allowed_post_tags ); ?>
 </div>
