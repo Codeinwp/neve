@@ -60,7 +60,7 @@
 		"rollup-plugin-babel": "^4.3.3",
 		"rollup-plugin-terser": "^5.2.0",
 		"rollup-plugin-uglify": "^6.0.4",
-		"webpack": "^4.41.6"
+		"webpack": "^4.42.0"
 	},
 	"scripts": {
 		"phpcbf": "composer run-script format || true ",
