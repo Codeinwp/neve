@@ -8,7 +8,7 @@ jobs:
   deploy:
     name: Deploy to QA server
     runs-on: ubuntu-latest
-    if: "github.event.fork === false"
+    if: "github.event.fork == false"
     env:
       SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
       SSH_KEY: ${{ secrets.SSH_KEY }}
