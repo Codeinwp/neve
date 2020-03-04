@@ -621,7 +621,7 @@ class Admin {
 			array(
 				'icon' => 'dashicons-align-center',
 				'text' => __( 'Header Options', 'neve' ),
-				'link' => add_query_arg( array( 'autofocus[panel]' => 'neve_header' ), admin_url( 'customize.php' ) ),
+				'link' => add_query_arg( array( 'autofocus[panel]' => 'hfg_header' ), admin_url( 'customize.php' ) ),
 			),
 			array(
 				'icon' => 'dashicons-welcome-write-blog',
@@ -631,7 +631,7 @@ class Admin {
 			array(
 				'icon' => 'dashicons-admin-generic',
 				'text' => __( 'Footer Options', 'neve' ),
-				'link' => add_query_arg( array( 'autofocus[panel]' => 'neve_footer' ), admin_url( 'customize.php' ) ),
+				'link' => add_query_arg( array( 'autofocus[panel]' => 'hfg_footer' ), admin_url( 'customize.php' ) ),
 			),
 			array(
 				'icon' => 'dashicons-align-left',
