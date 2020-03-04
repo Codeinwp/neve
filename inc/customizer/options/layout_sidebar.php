@@ -104,10 +104,9 @@ class Layout_Sidebar extends Base_Customizer {
 				array(
 					'label'    => esc_html__( 'Enable Advanced Options', 'neve' ),
 					'section'  => 'neve_sidebar',
-					'type'     => 'checkbox-toggle',
+					'type'     => 'neve_toggle_control',
 					'priority' => 30,
-				),
-				'Neve\Customizer\Controls\Checkbox'
+				)
 			)
 		);
 	}

@@ -113,13 +113,12 @@ class Layout_Blog extends Base_Customizer {
 					'default'           => false,
 				),
 				array(
-					'type'            => 'checkbox',
+					'type'            => 'neve_toggle_control',
 					'priority'        => 35,
 					'section'         => 'neve_blog_archive_layout',
 					'label'           => esc_html__( 'Enable Masonry', 'neve' ),
 					'active_callback' => array( $this, 'should_show_masonry' ),
-				),
-				'Neve\Customizer\Controls\Checkbox'
+				)
 			)
 		);
 	}
@@ -463,10 +462,9 @@ class Layout_Blog extends Base_Customizer {
 				array(
 					'label'    => esc_html__( 'Show Author Avatar', 'neve' ),
 					'section'  => 'neve_blog_archive_layout',
-					'type'     => 'checkbox',
+					'type'     => 'neve_toggle_control',
 					'priority' => 75,
-				),
-				'Neve\Customizer\Controls\Checkbox'
+				)
 			)
 		);
 	}

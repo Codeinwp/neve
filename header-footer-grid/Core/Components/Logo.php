@@ -129,9 +129,6 @@ class Logo extends Abstract_Component {
 				'default'            => 1,
 				'label'              => __( 'Show Site Tagline', 'neve' ),
 				'type'               => 'neve_toggle_control',
-				'options'            => [
-					'type' => 'checkbox-toggle',
-				],
 				'section'            => $this->section,
 				'conditional_header' => true,
 			]
@@ -147,9 +144,6 @@ class Logo extends Abstract_Component {
 				'default'            => 1,
 				'label'              => __( 'Show Site Title', 'neve' ),
 				'type'               => 'neve_toggle_control',
-				'options'            => [
-					'type' => 'checkbox-toggle',
-				],
 				'section'            => $this->section,
 				'conditional_header' => true,
 			]
