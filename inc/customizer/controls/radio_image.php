@@ -165,7 +165,7 @@ class Radio_Image extends \WP_Customize_Control {
 			<# for ( key in data.choices ) { #>
 
 			<input <# if( data.is_tab) {#>data-controls="{{data.controls[key]}}"<#}#> type="radio" value="{{ key }}"
-			name="_customize-{{ data.type }}-{{ data.id }}" id="{{ data.id }}-{{ key }}" {{ data.link }} <# if ( key
+			name="_customize-{{ data.type }}-{{ data.id }}" id="{{ data.id }}-{{ key }}" {{{ data.link }}} <# if ( key
 			=== data.value && ( !data.is_tab || data.is_subtab) ) { #> checked="checked" <# } #> />
 			<label for="{{ data.id }}-{{ key }}" style="width:{{data.width}}%">
 				<# if( !data.is_tab) {#>
