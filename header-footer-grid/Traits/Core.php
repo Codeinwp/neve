@@ -126,7 +126,7 @@ trait Core {
 		);
 
 		if ( ! is_array( $inputs ) || empty( $inputs ) ) {
-			return json_encode( $filtered );
+			return wp_json_encode( $filtered );
 		}
 
 		foreach ( $inputs as $key => $value ) {
@@ -135,7 +135,7 @@ trait Core {
 			}
 		}
 
-		return json_encode( $filtered );
+		return wp_json_encode( $filtered );
 	}
 
 	/**

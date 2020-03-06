@@ -1,4 +1,5 @@
 .git
+CONTRIBUTING.md
 .distignore
 .gitignore
 .travis.yml
@@ -11,6 +12,14 @@ phpcs.xml
 node_modules
 logs
 cypress
+cypress.json
+.eslintignore
+.eslintrc.js
+.releaserc.yml
+.gitattributes
+.babelrc
+.eslintrc
+.github
 package.json
 bin
 tests
@@ -25,6 +34,7 @@ artifact
 composer.json
 composer.lock
 themeisle.enc
+assets/scss
 header-footer-grid/assets/scss
 header-footer-grid/.babelrc
 header-footer-grid/.eslintignore
@@ -46,3 +56,4 @@ inc/admin/onboarding/package-lock.json
 blackfire
 rollup.config.js
 renovate.json
+
