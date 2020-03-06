@@ -1,35 +1,92 @@
+/* global require, __dirname */
 // jshint node:true
+const path = require( 'path' )
+const paths = {
+  global: {
+    config: path.join( __dirname, 'grunt/' ),
+    grunt: path.join( __dirname, 'grunt/' )
+  },
+  config: 'grunt/',
+  grunt: 'grunt/',
+  languages: 'languages/',
+  logs: 'logs/',
+  images: 'images/',
+  vendor: 'vendor/'
+}
+const taskMap = {
+  sass: 'grunt-contrib-sass',
+  watch: 'grunt-contrib-watch',
+  rtlcss: 'grunt-rtlcss',
+  concat: 'grunt-contrib-concat',
+  cssmin: 'grunt-contrib-cssmin',
+  addtextdomain: 'grunt-wp-i18n'
+}
+const files = {
+  php: [
+    '*.php',
+    '**/*.php',
+    '!.git/**',
+    '!vendor/**',
+    '!node_modules/**',
+    '!logs/**'
+  ],
+  css: [
+    '*.css',
+    '**/*.css',
+    '**/*.css',
+    '!*.min.css',
+    '!**/*.min.css',
+    '!css/vendor/*.css',
+    '!vendor/**',
+    '!node_modules/**',
+    '!logs/**'
+  ],
+  js: [
+    '*.js',
+    '**/*.js',
+    '!*.min.js',
+    '!**/*.min.js',
+    '!.git/**',
+    '!vendor/**',
+    '!js/vendor/*.js',
+    '!node_modules/**',
+    '!logs/**'
+  ]
+}
 
-module.exports = function(grunt) {
-	'use strict';
+const gruntConfig = (grunt) => {
+  'use strict'
+  const config = {}
+  const loader = require( 'load-project-config' )
 
-	var loader = require( 'load-project-config' ),
-			config = require( 'grunt-theme-fleet' );
-	config = config();
+  config.paths = paths
+  config.taskMap = taskMap
+  config.files = files
+  config.files.config = config.paths.config + '**/*.js'
 
-	config.files.js.push( '!**/node_modules/**/*' );
-	config.files.js.push( '!assets/js/*.js' );
-	config.files.js.push( '!assets/js/frontend.js' );
-	config.files.js.push( '!grunt/**/*' );
-	config.files.js.push( '!**/vendor/**/*' );
-	config.files.js.push( '!header-footer-grid/assets/js/**/*' );
-	config.files.js.push( '!**/rollup.config.js' );
-	config.files.js.push( '!inc/customizer/controls/react/**/*');
-	config.files.js.push( '!dist/**/*' );
-	config.files.js.push( '!cypress/**/*' );
+  // Exclude JS Files
+  config.files.js = config.files.js.concat( [
+    '!**/node_modules/**/*',
+    '!assets/js/*.js',
+    '!assets/js/frontend.js',
+    '!grunt/**/*',
+    '!**/vendor/**/*',
+    '!header-footer-grid/assets/js/**/*',
+    '!**/rollup.config.js',
+    '!inc/customizer/controls/react/**/*',
+    '!dist/**/*',
+    '!cypress/**/*'
+  ] )
+  // Exclude PHP Files
+  config.files.php = config.files.php.concat( [
+    '!**/node_modules/**/*',
+    '!**/vendor/**/*',
+    '!dist/**/*'
+  ] )
+  // Exclude CSS Files
+  config.files.css = config.files.css.concat( ['!**/vendor/**/*'] )
 
-	config.files.php.push( '!**/node_modules/**/*' );
-	config.files.php.push( '!**/vendor/**/*' );
-	config.files.php.push( '!dist/**/*' );
+  loader( grunt, config ).init()
+}
 
-	config.files.css.push( '!**/vendor/**/*' );
-	//Task mapping.
-	config.taskMap.sass = 'grunt-contrib-sass';
-	config.taskMap.watch = 'grunt-contrib-watch';
-	config.taskMap.rtlcss = 'grunt-rtlcss';
-	config.taskMap.uglify = 'grunt-contrib-uglify';
-	config.taskMap.concat = 'grunt-contrib-concat';
-	config.taskMap.cssmin = 'grunt-contrib-cssmin';
-
-	loader( grunt, config ).init();
-};
+module.exports = gruntConfig

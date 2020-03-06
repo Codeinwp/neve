@@ -1,0 +1,25 @@
+name: E2E Tests
+
+on:
+ pull_request:
+   branches:
+     - master
+
+env:
+  CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+
+jobs:
+  e2e:
+    strategy:
+      matrix:
+        spec: [customizer/hfg, customizer/layout, customizer/typography, editor, plugins-compatibility]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: ./bin/run-e2e.sh
+      - name: ${{matrix.spec}}
+        uses: cypress-io/github-action@v1
+        with:
+          env: host=localhost,port=8080
+          record: true
+          spec: cypress/integration/${{matrix.spec}}/*
