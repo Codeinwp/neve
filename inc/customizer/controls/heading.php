@@ -104,8 +104,8 @@ class Heading extends \WP_Customize_Control {
 		if(data.accordion) {
 		expandButton = '<span class="accordion-expand-button"></span>';
 		} #>
-		<h4 class="neve-customizer-heading">{{{ data.label }}}{{{expandButton}}}</h4>
-		{{{data.style}}}
+		<h4 class="neve-customizer-heading">{{ data.label }}{{expandButton}}</h4>
+		{{data.style}}
 		<?php
 	}
 

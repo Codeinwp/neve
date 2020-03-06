@@ -202,7 +202,7 @@ class Nav extends Abstract_Component {
 					'noformat'          => true,
 					'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
 					'sanitize_callback' => array( $this, 'sanitize_last_menu_item' ),
-					'default'           => json_encode( $order_default_components ),
+					'default'           => wp_json_encode( $order_default_components ),
 					'label'             => __( 'Last Menu Item', 'neve' ),
 					'type'              => 'Neve\Customizer\Controls\Ordering',
 					'options'           => [
@@ -276,14 +276,14 @@ class Nav extends Abstract_Component {
 		);
 
 		if ( empty( $value ) ) {
-			return json_encode( $allowed );
+			return wp_json_encode( $allowed );
 		}
 
 		$decoded = json_decode( $value, true );
 
 		foreach ( $decoded as $val ) {
 			if ( ! in_array( $val, $allowed, true ) ) {
-				return json_encode( $allowed );
+				return wp_json_encode( $allowed );
 			}
 		}
 

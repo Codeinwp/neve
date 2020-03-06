@@ -1,0 +1,73 @@
+name: PHP Tests
+
+on: [pull_request]
+
+jobs:
+  phplint:
+    name: PHP Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup PHP version
+        uses: shivammathur/setup-php@v1
+        with:
+          php-version: '7.1'
+          extensions: simplexml
+      - name: Checkout source code
+        uses: actions/checkout@v2
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: |
+          echo "::set-output name=dir::$(composer config cache-files-dir)"
+      - name: Setup Composer cache
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+      - name: Install composer
+        run: composer install --prefer-dist --no-progress --no-suggest
+      - name: Run PHPCS
+        run: composer run lint
+ 
+  phpunit:
+      name: PHPUnit
+      runs-on: ubuntu-latest
+      services:
+        mysql:
+          image: mysql:5.7
+          env:
+            MYSQL_ROOT_PASSWORD: root
+          ports:
+            - 3306
+          volumes:
+            - $HOME/mysql:/var/lib/mysql
+      steps:
+        - name: Setup PHP version
+          uses: shivammathur/setup-php@v1
+          with:
+            php-version: '7.1'
+            extensions: simplexml, mysql
+            tools: phpunit:7.5.15
+        - name: Checkout source code
+          uses: actions/checkout@v2
+        - name: Install WordPress Test Suite
+          run: |
+            bash bin/install-wp-tests.sh wordpress_test root root 127.0.0.1
+        - name: Get Composer Cache Directory
+          id: composer-cache
+          run: |
+            echo "::set-output name=dir::$(composer config cache-files-dir)"
+        - name: Setup Composer cache
+          uses: actions/cache@v1
+          with:
+            path: ${{ steps.composer-cache.outputs.dir }}
+            key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+            restore-keys: |
+              ${{ runner.os }}-composer-
+        - name: Install composer
+          run: composer install --prefer-dist --no-progress --no-suggest --no-dev
+        - name: Run phpunit
+          run: phpunit
+  
+  

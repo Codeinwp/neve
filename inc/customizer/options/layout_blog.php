@@ -229,7 +229,7 @@ class Layout_Blog extends Base_Customizer {
 				'neve_post_content_ordering',
 				array(
 					'sanitize_callback' => array( $this, 'sanitize_post_content_ordering' ),
-					'default'           => json_encode( $order_default_components ),
+					'default'           => wp_json_encode( $order_default_components ),
 				),
 				array(
 					'label'           => esc_html__( 'Post Content Order', 'neve' ),
@@ -292,7 +292,7 @@ class Layout_Blog extends Base_Customizer {
 				'neve_post_meta_ordering',
 				array(
 					'sanitize_callback' => array( $this, 'sanitize_meta_ordering' ),
-					'default'           => json_encode( $order_default_components ),
+					'default'           => wp_json_encode( $order_default_components ),
 				),
 				array(
 					'label'           => esc_html__( 'Meta Order', 'neve' ),
@@ -375,7 +375,7 @@ class Layout_Blog extends Base_Customizer {
 			'title-meta',
 			'excerpt',
 		);
-		$content_order = get_theme_mod( 'neve_post_content_ordering', json_encode( $default ) );
+		$content_order = get_theme_mod( 'neve_post_content_ordering', wp_json_encode( $default ) );
 		$content_order = json_decode( $content_order, true );
 		if ( ! in_array( 'title-meta', $content_order, true ) ) {
 			return false;

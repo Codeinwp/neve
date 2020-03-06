@@ -97,7 +97,7 @@ class Pagination extends Base_View {
 		$data['infiniteScroll']         = 'enabled';
 		$data['infiniteScrollMaxPages'] = $max_pages;
 		$data['infiniteScrollEndpoint'] = rest_url( 'nv/v1/posts/page/' );
-		$data['infiniteScrollQuery']    = json_encode( $wp_query->query );
+		$data['infiniteScrollQuery']    = wp_json_encode( $wp_query->query );
 
 		return $data;
 	}
