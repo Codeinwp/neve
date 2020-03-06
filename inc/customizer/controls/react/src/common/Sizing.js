@@ -13,17 +13,14 @@ class SizingControl extends Component {
   constructor(props) {
     super( props )
     this.hasSetValues = this.hasSetValues.bind( this )
+    this.linkButton = this.linkButton.bind( this )
   }
 
-  render() {
-    const wrapClasses = classnames( [
-      'neve-responsive-sizing',
-      { 'single-input': this.props.options.length === 1 }
-    ] )
-
-    const controls = []
-    if ( !this.props.noLinking ) {
-      controls.push(
+  linkButton() {
+    if ( this.props.noLinking ) {
+      return null;
+    }
+      return (
         <Tooltip
           key='tooltip-link'
           text={this.props.linked ? __( 'Unlink Values', 'neve' ) : __( 'Link Values', 'neve' )}
@@ -38,27 +35,17 @@ class SizingControl extends Component {
         </Tooltip>
       )
     }
-    if ( this.hasSetValues() ) {
-      controls.push(
-        <Tooltip
-          key='tooltip-reset'
-          text={
-            this.props.options.length > 1
-              ? __( 'Reset all Values', 'neve' ) : __( 'Reset Value', 'neve' )
-          }
-        >
-          <IconButton
-            key='reset-icon'
-            icon='image-rotate'
-            className='reset'
-            onClick={() => this.props.onReset()}
-          />
-        </Tooltip>
-      )
-    }
+
+  render() {
+    const wrapClasses = classnames( [
+      'neve-responsive-sizing',
+      { 'single-input': this.props.options.length === 1 }
+    ] )
+
 
     return (
       <div className={wrapClasses}>
+        {this.linkButton()}
         {this.props.options.map( (i, n) => {
           return (
             <SingleSizingInput
@@ -74,7 +61,20 @@ class SizingControl extends Component {
             />
           )
         } )}
-        {controls}
+        {this.hasSetValues() && <Tooltip
+          key='tooltip-reset'
+          text={
+            this.props.options.length > 1
+              ? __( 'Reset all Values', 'neve' ) : __( 'Reset Value', 'neve' )
+          }
+        >
+          <IconButton
+            key='reset-icon'
+            icon='image-rotate'
+            className='reset'
+            onClick={() => this.props.onReset()}
+          />
+        </Tooltip>}
       </div>
     )
   }

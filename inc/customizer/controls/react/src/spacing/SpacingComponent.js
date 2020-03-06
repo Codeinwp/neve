@@ -90,16 +90,16 @@ class SpacingComponent extends Component {
           <span className='customize-control-title'>
             {this.props.control.params.label}
           </span>}
-          <div className='neve-units inline'>
-            {this.getButtons()}
-          </div>
           <ResponsiveControl
-            hideResponsive={hideResponsiveButtons}
+            // hideResponsive={hideResponsiveButtons}
             onChange={(currentDevice) => {
               this.setState( { currentDevice } )
               this.setState( { linked: this.shouldValuesBeLinked() } )
             }}
           />
+          <div className='neve-units inline'>
+            {this.getButtons()}
+          </div>
         </div>
         <SizingControl
           min={this.controlParams.min}
