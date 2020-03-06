@@ -217,12 +217,12 @@ add_filter(
 
 		return array_merge(
 			[
-				'hfg_header_layout' => json_encode( $header['builder'] ),
-				'hfg_footer_layout' => json_encode( $footer['builder'] ),
+				'hfg_header_layout' => wp_json_encode( $header['builder'] ),
+				'hfg_footer_layout' => wp_json_encode( $footer['builder'] ),
 			],
-			$defaults 
+			$defaults
 		);
 
-	} 
+	}
 );
 

@@ -13,8 +13,6 @@ namespace HFG\Core\Components;
 
 use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Main;
-use Neve\Customizer\Controls\Checkbox;
-use WP_Customize_Manager;
 
 /**
  * Class MenuIcon

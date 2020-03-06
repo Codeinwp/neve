@@ -78,7 +78,7 @@ class Layout_Single_Post extends Base_Customizer {
 				'neve_layout_single_post_elements_order',
 				array(
 					'sanitize_callback' => array( $this, 'sanitize_post_elements_ordering' ),
-					'default'           => json_encode( $order_default_components ),
+					'default'           => wp_json_encode( $order_default_components ),
 				),
 				array(
 					'label'      => esc_html__( 'Elements Order', 'neve' ),
