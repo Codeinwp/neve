@@ -1,10 +1,9 @@
-@import "presets-selector/scss/main";
-
+@import "scss/vars";
+@import "scss/presets-selector";
 #sub-accordion-panel-hfg_header #accordion-section-neve_header_presets {
   display: list-item !important;
 }
 
-$button_color: #555d66;
 #customize-theme-controls .components-circular-option-picker__option:focus:after,
 #customize-theme-controls .components-color-palette__item:focus:after {
   top: -4px;
@@ -60,7 +59,7 @@ $button_color: #555d66;
       .button-outline-svg {
         rect {
           fill: none;
-          stroke: $button_color;
+          stroke: $accent-color;
           stroke-miterlimit: 10;
         }
       }
@@ -68,7 +67,7 @@ $button_color: #555d66;
       &.active {
         .button-filled-svg {
           path {
-            fill: $button_color;
+            fill: $accent-color;
           }
         }
 
@@ -215,51 +214,10 @@ $button_color: #555d66;
 
 .neve-control-header {
   display: flex;
-}
-
-.neve-responsive-control-bar {
-  display: flex;
   align-items: center;
-  width: 100%;
-  margin-bottom: 10px;
-
-  &.bordered {
-    border-bottom: 3px solid #d8d8d8;
-    margin-bottom: 0;
-  }
-
+  flex-direction: row;
   .customize-control-title {
     margin: 0;
-  }
-
-  .floating-controls {
-    margin-left: auto;
-  }
-
-  button {
-    font-size: 14px;
-    border-bottom: 3px solid transparent;
-    margin-bottom: -3px;
-
-    &.active-device {
-      border-bottom: 3px solid currentColor;
-      border-bottom-color: #191e23;
-
-      svg {
-        fill: #191e23 !important;
-      }
-    }
-
-    &:not(.active-device) {
-      svg {
-        fill: #656a6f !important;
-      }
-    }
-
-    svg {
-      height: 17px;
-      width: 17px;
-    }
   }
 }
 
@@ -462,149 +420,6 @@ $button_color: #555d66;
   }
 }
 
-//REFACTOR
-.neve-units {
-  margin-left: auto;
-  display: flex;
-
-  &.inline {
-    margin-bottom: 4px;
-  }
-
-  button.components-button.is-button {
-    border: none;
-    color: $button_color;
-    margin-left: 3px;
-    background: none;
-    padding: 0 5px;
-    height: 20px;
-    line-height: 20px;
-
-    &:disabled {
-      opacity: .5;
-    }
-
-    &.active {
-      background: $button_color;
-      color: #fff;
-    }
-  }
-}
-
-.neve-sizing {
-  &.inline-header {
-    .bordered {
-      border: none;
-    }
-
-    .neve-responsive-sizing {
-      padding-top: 15px;
-    }
-
-    .neve-control-header {
-      border-bottom: 3px solid #d8d8d8;
-    }
-  }
-}
-
-.neve-responsive-sizing {
-  display: flex;
-
-  &.single-input .nv-sizing-item {
-    width: 80%;
-
-    &:last-child {
-      width: 100%;
-
-      > input {
-        border-radius: 3px;
-      }
-    }
-  }
-
-  button:last-child {
-    border-bottom-right-radius: 3px;
-    border-top-right-radius: 3px;
-  }
-
-  .nv-sizing-item {
-    width: 20%;
-
-    &:first-child input {
-      border-top-left-radius: 3px;
-      border-bottom-left-radius: 3px;
-    }
-
-    &:not(:first-child) {
-      margin-left: -1px;
-    }
-
-    > input {
-      border: 1px solid #999;
-      border-radius: 0;
-      min-height: 30px;
-    }
-  }
-
-  button {
-    margin-left: -1px;
-    border-radius: 0;
-    border: 1px solid #999;
-    height: 30px;
-    padding: 3px;
-    flex-grow: 1;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
-    color: $button_color;
-
-    &:focus, &:active {
-      background: inherit;
-      border-color: inherit;
-      color: inherit;
-      outline: none;
-      box-shadow: none;
-    }
-
-    &.active, &.active:hover, &.active:focus:enabled {
-      box-shadow: none !important;
-      outline: none !important;
-      background: $button_color !important;
-      border-color: $button_color !important;
-      color: #fff !important;
-    }
-
-    svg {
-      margin-right: 0 !important;
-      width: 16px;
-    }
-  }
-
-  label {
-    text-transform: uppercase;
-    font-size: 10px;
-    text-align: center;
-    display: block;
-    font-weight: 600;
-    color: #555;
-  }
-
-  .range-control {
-    .components-base-control__field {
-      padding: 10px;
-      display: flex;
-      flex-wrap: nowrap;
-      align-items: center;
-      margin: 0;
-
-      input[type="number"] {
-        width: 27%;
-      }
-    }
-  }
-}
-
-
 .neve-radio-icons {
   display: flex;
   border: 1px solid #999;
@@ -628,8 +443,8 @@ $button_color: #555d66;
 
     &.active {
       &, &:hover {
-        background-color: $button_color !important;
-        border-color: $button_color !important;
+        background-color: $accent-color !important;
+        border-color: $accent-color !important;
         color: #fff !important;
         box-shadow: none !important;
       }
@@ -694,7 +509,11 @@ $button_color: #555d66;
   }
 
   &.active .svg-text {
-    fill: $button_color;
+    fill: $accent-color;
   }
 }
 
+@import "scss/vars";
+@import "scss/responsive";
+@import "scss/units";
+@import "scss/sizing";

@@ -132,7 +132,6 @@ class Buttons extends Base_Customizer {
 						'section'           => $this->section_id,
 						'input_attrs'       => [
 							'units'        => [ 'px' ],
-							'inlineHeader' => true,
 						],
 						'default'           => $default_padding_values,
 					),

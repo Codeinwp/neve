@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types'
-import classnames from 'classnames'
 
 const { __ } = wp.i18n
 const {
@@ -40,13 +39,10 @@ class ResponsiveControl extends Component {
     }
 
     const { controlLabel, hideResponsive } = this.props
-    if ( hideResponsive ) {
-      return ( '' )
-    }
+
     return (
       <Fragment>
-        <div className={classnames(
-          ['neve-responsive-control-bar', { 'bordered': !hideResponsive }] )}>
+        <div className="neve-responsive-control-bar">
           {controlLabel && <span
             className='customize-control-title'
           >{controlLabel}
@@ -60,7 +56,6 @@ class ResponsiveControl extends Component {
                   return (
                     <Tooltip text={tooltip} key={index}>
                       <Button
-                        isTertiary
                         className={( device === view
                           ? 'active-device '
                           : '' ) + device}
@@ -81,9 +76,11 @@ class ResponsiveControl extends Component {
             </div>
           }
         </div>
+        {this.props.children &&
         <div className='neve-responsive-controls-content'>
           {this.props.children}
         </div>
+        }
       </Fragment>
     )
   }

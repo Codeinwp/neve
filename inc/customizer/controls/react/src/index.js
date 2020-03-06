@@ -12,7 +12,6 @@ import { RangeControl } from './range/Control.js'
 import { ResponsiveRangeControl } from './responsive-range/Control.js'
 import { ColorControl } from './color/Control.js'
 import { PresetsSelectorControl } from './presets-selector/Control.js'
-import './style.scss'
 
 wp.customize.controlConstructor.neve_toggle_control = ToggleControl
 wp.customize.controlConstructor.neve_background_control = BackgroundControl

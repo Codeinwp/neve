@@ -21,7 +21,7 @@ class NumberControl extends Component {
         <div className='neve-control-header'>
           {label && <span className='customize-control-title'>{label}</span>}
           {
-            units && <div className='neve-units inline'>
+            units && <div className='neve-units'>
               {this.getButtons()}
                      </div>
           }

@@ -29,7 +29,6 @@ class SpacingComponent extends Component {
       max: 300,
       hideResponsiveButtons: false,
       units: ['px', 'em', '%'],
-      inlineHeader: false
     }
 
     this.controlParams = props.control.params.input_attrs ? {
@@ -75,12 +74,11 @@ class SpacingComponent extends Component {
         value: this.state.value[this.state.currentDevice].left
       }
     ]
-    const { inlineHeader, hideResponsiveButtons } = this.controlParams
+    const { hideResponsiveButtons } = this.controlParams
 
     const wrapClasses = classnames( [
       'neve-white-background-control',
       'neve-sizing',
-      { 'inline-header': inlineHeader }
     ] )
 
     return (
@@ -91,13 +89,13 @@ class SpacingComponent extends Component {
             {this.props.control.params.label}
           </span>}
           <ResponsiveControl
-            // hideResponsive={hideResponsiveButtons}
+            hideResponsive={hideResponsiveButtons}
             onChange={(currentDevice) => {
               this.setState( { currentDevice } )
               this.setState( { linked: this.shouldValuesBeLinked() } )
             }}
           />
-          <div className='neve-units inline'>
+          <div className='neve-units'>
             {this.getButtons()}
           </div>
         </div>
@@ -123,16 +121,11 @@ class SpacingComponent extends Component {
   }
 
   getButtons() {
-    const svg = {
-      px: SVG.px,
-      em: SVG.em,
-      '%': SVG.percent
-    }
     const self = this
     const { units } = this.controlParams
 
     if ( units.length === 1 ) {
-      return <Button isSmall disabled>{units[0]}</Button>
+      return <Button isSmall disabled className="active alone">{units[0]}</Button>
     }
     return units.map( (unit, index) => {
       const buttonClass = classnames(
@@ -189,7 +182,7 @@ class SpacingComponent extends Component {
       this.state.value[this.state.currentDevice].left
     ]
 
-    return values.every( value => value === values[0] )
+    return values.every( value => value == values[0] )
   }
 
   componentDidMount() {
