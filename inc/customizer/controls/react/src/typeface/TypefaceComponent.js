@@ -2,7 +2,6 @@
 /* global wp */
 import PropTypes from 'prop-types'
 
-import ResponsiveControl from '../common/Responsive.js'
 import NumberControl from '../common/NumberControl.js'
 import RadioIcons from '../common/RadioIcons'
 import SVG from '../common/svg.js'
@@ -65,28 +64,6 @@ class TypefaceComponent extends Component {
   }
 
   render() {
-    const textTransforms = {
-      none: {
-        label: 'none',
-        tooltip: __( 'None', 'neve' ),
-        icon: 'no'
-      },
-      capitalize: {
-        label: 'Aa',
-        tooltip: __( 'Capitalize', 'neve' ),
-        icon: SVG.capitalize
-      },
-      lowercase: {
-        label: 'aa',
-        tooltip: __( 'Lowercase', 'neve' ),
-        icon: SVG.lowercase
-      },
-      uppercase: {
-        label: 'AA',
-        tooltip: __( 'Uppercase', 'neve' ),
-        icon: SVG.uppercase
-      }
-    }
     const self = this
     return (
       <Fragment>
@@ -95,20 +72,27 @@ class TypefaceComponent extends Component {
             {this.props.control.params.label}
           </span>}
         <div className='neve-typeface-control neve-white-background-control'>
+		  <div className="select-inline">
           <span className='customize-control-title'>
-            {__( 'Text Transform', 'neve' )}
+            {__( 'Transform', 'neve' )}
           </span>
-          <RadioIcons
-            options={textTransforms}
-            onChange={(textTransform) => {
-              this.setState( { textTransform } )
-              this.updateValues( { textTransform } )
-            }}
-            value={this.state.textTransform}
-          />
-
+		  <SelectControl
+			value={this.state.textTransform}
+			options={[
+			  { value: 'none', label: __( 'None', 'neve' ) },
+			  { value: 'capitalize', label: __( 'Capitalize', 'neve' ) },
+			  { value: 'lowercase', label: __( 'Lowercase', 'neve' ) },
+			  { value: 'uppercase', label: __( 'Uppercase', 'neve' )} ,
+			]}
+			onChange={(textTransform) => {
+			  this.setState( { textTransform } )
+			  this.updateValues( { textTransform } )
+			}}
+		  />
+		  </div>
+		  <div className="select-inline">
           <span className='customize-control-title'>
-            {__( 'Font Weight', 'neve' )}
+            {__( 'Weight', 'neve' )}
           </span>
           <SelectControl
             value={this.state.fontWeight}
@@ -128,6 +112,7 @@ class TypefaceComponent extends Component {
               this.updateValues( { fontWeight } )
             }}
           />
+		  </div>
             <NumberControl
               className='font-size'
               label={__( 'Font Size', 'neve' )}
