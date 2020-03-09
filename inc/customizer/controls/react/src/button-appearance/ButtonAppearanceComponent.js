@@ -112,7 +112,8 @@ class ButtonAppearanceComponent extends Component {
           {
             Object.keys( settings ).map( (type, index) => {
               return (
-                <PanelBody key={index}
+                <PanelBody
+                  key={index}
                   title={this.props.control.params.no_hover
                     ? ''
                     : settings[type].label}

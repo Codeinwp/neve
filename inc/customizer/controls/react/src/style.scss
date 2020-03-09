@@ -1,9 +1,11 @@
 @import "scss/vars";
+@import "scss/general";
 @import "scss/presets-selector";
+@import "scss/ranges";
+
 #sub-accordion-panel-hfg_header #accordion-section-neve_header_presets {
   display: list-item !important;
 }
-
 #customize-theme-controls .components-circular-option-picker__option:focus:after,
 #customize-theme-controls .components-color-palette__item:focus:after {
   top: -4px;

@@ -18,30 +18,29 @@ class SizingControl extends Component {
 
   linkButton() {
     if ( this.props.noLinking ) {
-      return null;
+      return null
     }
-      return (
-        <Tooltip
-          key='tooltip-link'
-          text={this.props.linked ? __( 'Unlink Values', 'neve' ) : __( 'Link Values', 'neve' )}
-        >
-          <IconButton
-            key='link-icon'
-            icon={this.props.linked ? 'admin-links' : 'editor-unlink'}
-            onClick={() => this.props.onLinked()}
-            className={classnames(
-              [{ active: this.props.linked }, 'link'] )}
-          />
-        </Tooltip>
-      )
-    }
+    return (
+      <Tooltip
+        key='tooltip-link'
+        text={this.props.linked ? __( 'Unlink Values', 'neve' ) : __( 'Link Values', 'neve' )}
+      >
+        <IconButton
+          key='link-icon'
+          icon={this.props.linked ? 'admin-links' : 'editor-unlink'}
+          onClick={() => this.props.onLinked()}
+          className={classnames(
+            [{ active: this.props.linked }, 'link'] )}
+        />
+      </Tooltip>
+    )
+  }
 
   render() {
     const wrapClasses = classnames( [
       'neve-responsive-sizing',
       { 'single-input': this.props.options.length === 1 }
     ] )
-
 
     return (
       <div className={wrapClasses}>

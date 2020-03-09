@@ -112,7 +112,14 @@ class CartIcon extends Abstract_Component {
 				'sanitize_callback'     => 'absint',
 				'default'               => 15,
 				'label'                 => __( 'Icon Size', 'neve' ),
-				'type'                  => 'neve_range_control',
+				'type'                  => 'Neve\Customizer\Controls\React\Range',
+				'options'               => [
+					'input_attrs' => [
+						'min'        => 10,
+						'max'        => 100,
+						'defaultVal' => 15,
+					],
+				],
 				'live_refresh_selector' => $this->default_selector . ' svg',
 				'live_refresh_css_prop' => array(
 					'type' => 'svg-icon-size',

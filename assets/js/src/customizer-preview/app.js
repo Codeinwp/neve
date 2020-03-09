@@ -259,6 +259,7 @@ window.addEventListener( 'load', function() {
               document.querySelector( args.selector ).innerHTML = newValue
               break
             case 'neve_range_control':
+            case 'Neve\\Customizer\\Controls\\React\\Range':
               if ( args.additional.type === 'svg-icon-size' ) {
                 style +=
                   `html ${args.selector} {

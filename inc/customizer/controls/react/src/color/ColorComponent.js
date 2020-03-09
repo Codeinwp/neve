@@ -40,7 +40,7 @@ class ColorComponent extends Component {
       <div className='neve-white-background-control neve-color-control'>
         {
           this.props.control.params.label &&
-          <span className='customize-control-title'>
+            <span className='customize-control-title'>
               {this.props.control.params.label}
             </span>
         }

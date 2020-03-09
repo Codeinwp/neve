@@ -54,36 +54,28 @@ class Layout_Container extends Base_Customizer {
 		$this->add_control(
 			new Control(
 				'neve_container_width',
-				array(
+				[
 					'sanitize_callback' => 'neve_sanitize_range_value',
 					'transport'         => $this->selective_refresh,
-				),
-				array(
-					'label'       => esc_html__( 'Container width (px)', 'neve' ),
+					'default'           => '{ "mobile": 748, "tablet": 992, "desktop": 1170 }',
+				],
+				[
+					'label'       => esc_html__( 'Container width', 'neve' ),
 					'section'     => 'neve_container',
-					'type'        => 'range-value',
-					'media_query' => true,
-					'step'        => 1,
-					'input_attr'  => array(
-						'mobile'  => array(
-							'min'     => 200,
-							'max'     => 748,
-							'default' => 748,
-						),
-						'tablet'  => array(
-							'min'     => 300,
-							'max'     => 992,
-							'default' => 992,
-						),
-						'desktop' => array(
-							'min'     => 700,
-							'max'     => 2000,
-							'default' => 1170,
-						),
-					),
+					'type'        => 'neve_responsive_range_control',
+					'input_attrs' => [
+						'min'        => 200,
+						'max'        => 2000,
+						'units'      => [ 'px' ],
+						'defaultVal' => [
+							'mobile'  => 748,
+							'tablet'  => 992,
+							'desktop' => 1170,
+						],
+					],
 					'priority'    => 25,
-				),
-				'Neve\Customizer\Controls\Range'
+				],
+				'\Neve\Customizer\Controls\React\Responsive_Range'
 			)
 		);
 	}

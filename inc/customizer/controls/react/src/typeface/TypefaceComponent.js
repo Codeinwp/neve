@@ -91,7 +91,7 @@ class TypefaceComponent extends Component {
     return (
       <Fragment>
         {this.props.control.params.label &&
-        <span className='customize-control-title'>
+          <span className='customize-control-title'>
             {this.props.control.params.label}
           </span>}
         <div className='neve-typeface-control neve-white-background-control'>

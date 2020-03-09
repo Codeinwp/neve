@@ -42,45 +42,44 @@ class ResponsiveControl extends Component {
 
     return (
       <Fragment>
-        <div className="neve-responsive-control-bar">
+        <div className='neve-responsive-control-bar'>
           {controlLabel && <span
             className='customize-control-title'
           >{controlLabel}
           </span>}
           {
             !hideResponsive &&
-            <div className='floating-controls'>
-              <ButtonGroup>
-                {Object.keys( deviceMap ).map( (device, index) => {
-                  const { tooltip, icon } = deviceMap[device]
-                  return (
-                    <Tooltip text={tooltip} key={index}>
-                      <Button
-                        className={( device === view
-                          ? 'active-device '
-                          : '' ) + device}
-                        onClick={() => {
-                          const event = new CustomEvent(
-                            'neveChangedRepsonsivePreview', {
-                              detail: device
-                            } )
-                          document.dispatchEvent( event )
-                        }}
-                      >
-                        <Dashicon icon={icon}/>
-                      </Button>
-                    </Tooltip>
-                  )
-                } )}
-              </ButtonGroup>
-            </div>
+              <div className='floating-controls'>
+                <ButtonGroup>
+                  {Object.keys( deviceMap ).map( (device, index) => {
+                    const { tooltip, icon } = deviceMap[device]
+                    return (
+                      <Tooltip text={tooltip} key={index}>
+                        <Button
+                          className={( device === view
+                            ? 'active-device '
+                            : '' ) + device}
+                          onClick={() => {
+                            const event = new CustomEvent(
+                              'neveChangedRepsonsivePreview', {
+                                detail: device
+                              } )
+                            document.dispatchEvent( event )
+                          }}
+                        >
+                          <Dashicon icon={icon} />
+                        </Button>
+                      </Tooltip>
+                    )
+                  } )}
+                </ButtonGroup>
+              </div>
           }
         </div>
         {this.props.children &&
-        <div className='neve-responsive-controls-content'>
-          {this.props.children}
-        </div>
-        }
+          <div className='neve-responsive-controls-content'>
+            {this.props.children}
+          </div>}
       </Fragment>
     )
   }

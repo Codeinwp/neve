@@ -78,10 +78,9 @@ class BackgroundComponent extends Component {
     return (
       <Fragment>
         {this.props.control.params.label &&
-        <span className='customize-control-title'>
-          {this.props.control.params.label}
-        </span>
-        }
+          <span className='customize-control-title'>
+            {this.props.control.params.label}
+          </span>}
         <div className='control--top-toolbar'>
           <ButtonGroup className='neve-background-type-control'>
             {this.getButtons()}
@@ -89,111 +88,110 @@ class BackgroundComponent extends Component {
         </div>
         <div className='control--body'>
           {this.state.type === 'color' &&
-          <Fragment><ColorPalette
-            colors={colors}
-            value={this.state.colorValue}
-            onChange={(colorValue) => {
-              self.updateSetting( { colorValue: colorValue } )
-            }}
-          />
-            <div
-              className='neve-color-preview'
-              style={{ backgroundColor: this.state.colorValue }}
-            >
-            </div>
-          </Fragment>}
-          {this.state.type === 'image' &&
-          <Fragment>
-            <ToggleControl
-              label={__( 'Use Featured Image', 'neve' )}
-              checked={this.state.useFeatured}
-              onChange={(useFeatured) => {
-                this.updateSetting( { useFeatured: useFeatured } )
+            <Fragment><ColorPalette
+              colors={colors}
+              value={this.state.colorValue}
+              onChange={(colorValue) => {
+                self.updateSetting( { colorValue: colorValue } )
               }}
-            />
-            {!this.state.imageUrl &&
-            <Placeholder
-              icon='format-image'
-              label={this.state.useFeatured
-                ? __( 'Fallback Image', 'neve' )
-                : __( 'Image', 'neve' )}
-            >
-              <p>
-                {__( 'Select from the Media Library or upload a new image',
-                  'neve' )}
-              </p>
-              <MediaUpload
-                onSelect={(imageData) => {
-                  this.updateSetting( { imageUrl: imageData.url } )
-                }}
-                allowedTypes={['image']}
-                render={({ open }) => (
-                  <Button isDefault onClick={open}>
-                    {__( 'Add Image', 'neve' )}
-                  </Button>
-                )}
-              />
-            </Placeholder> ||
-            <Fragment>
-              <Button
-                className='remove-image'
-                isDestructive
-                isLink
-                onClick={() => {
-                  this.updateSetting(
-                    { imageUrl: '', overlayColorValue: '' } )
-                }}
-              >
-                <Dashicon icon='no'/>
-                {this.state.useFeatured
-                  ? __( 'Remove Fallback Image', 'neve' )
-                  : __( 'Remove Image', 'neve' )}
-              </Button>
-              <FocalPointPicker
-                url={this.state.imageUrl}
-                value={this.state.focusPoint}
-                onChange={(val) => {
-                  const newPoint = {
-                    x: parseFloat( val.x ).toFixed( 2 ),
-                    y: parseFloat( val.y ).toFixed( 2 )
-                  }
-                  this.updateSetting( { focusPoint: newPoint } )
-                }}
+                      />
+            <div
+                className='neve-color-preview'
+                style={{ backgroundColor: this.state.colorValue }}
               />
             </Fragment>}
-            <ToggleControl
-              label={__( 'Fixed Background', 'neve' )}
-              checked={this.state.fixed}
-              onChange={(fixed) => {
-                this.updateSetting( { fixed: fixed } )
-              }}
-            />
-            <span className='customize-control-title'>{
-              __( 'Overlay Color', 'neve' )
-            }
+          {this.state.type === 'image' &&
+            <Fragment>
+              <ToggleControl
+                label={__( 'Use Featured Image', 'neve' )}
+                checked={this.state.useFeatured}
+                onChange={(useFeatured) => {
+                  this.updateSetting( { useFeatured: useFeatured } )
+                }}
+              />
+              {!this.state.imageUrl &&
+                <Placeholder
+                  icon='format-image'
+                  label={this.state.useFeatured
+                    ? __( 'Fallback Image', 'neve' )
+                    : __( 'Image', 'neve' )}
+                >
+                  <p>
+                    {__( 'Select from the Media Library or upload a new image',
+                      'neve' )}
+                  </p>
+                  <MediaUpload
+                    onSelect={(imageData) => {
+                      this.updateSetting( { imageUrl: imageData.url } )
+                    }}
+                    allowedTypes={['image']}
+                    render={({ open }) => (
+                      <Button isDefault onClick={open}>
+                        {__( 'Add Image', 'neve' )}
+                      </Button>
+                    )}
+                  />
+                </Placeholder> ||
+                  <Fragment>
+                    <Button
+                      className='remove-image'
+                      isDestructive
+                      isLink
+                      onClick={() => {
+                        this.updateSetting(
+                          { imageUrl: '', overlayColorValue: '' } )
+                      }}
+                    >
+                      <Dashicon icon='no' />
+                      {this.state.useFeatured
+                        ? __( 'Remove Fallback Image', 'neve' )
+                        : __( 'Remove Image', 'neve' )}
+                    </Button>
+                    <FocalPointPicker
+                      url={this.state.imageUrl}
+                      value={this.state.focusPoint}
+                      onChange={(val) => {
+                        const newPoint = {
+                          x: parseFloat( val.x ).toFixed( 2 ),
+                          y: parseFloat( val.y ).toFixed( 2 )
+                        }
+                        this.updateSetting( { focusPoint: newPoint } )
+                      }}
+                    />
+                  </Fragment>}
+              <ToggleControl
+                label={__( 'Fixed Background', 'neve' )}
+                checked={this.state.fixed}
+                onChange={(fixed) => {
+                  this.updateSetting( { fixed: fixed } )
+                }}
+              />
+              <span className='customize-control-title'>{
+                __( 'Overlay Color', 'neve' )
+              }
               </span>
-            <ColorPalette
-              colors={colors}
-              value={this.state.overlayColorValue}
-              onChange={(overlayColorValue) => {
-                self.updateSetting(
-                  { overlayColorValue: overlayColorValue } )
-              }}
-            />
-            <div
-              className='neve-color-preview'
-              style={{ backgroundColor: this.state.overlayColorValue }}
-            />
-            <RangeControl
-              label={__( 'Overlay Opacity', 'neve' )}
-              value={this.state.overlayOpacity}
-              onChange={(overlayOpacity) => {
-                this.updateSetting( { overlayOpacity: overlayOpacity } )
-              }}
-              min='0'
-              max='100'
-            />
-          </Fragment>}
+              <ColorPalette
+                colors={colors}
+                value={this.state.overlayColorValue}
+                onChange={(overlayColorValue) => {
+                  self.updateSetting(
+                    { overlayColorValue: overlayColorValue } )
+                }}
+              />
+              <div
+                className='neve-color-preview'
+                style={{ backgroundColor: this.state.overlayColorValue }}
+              />
+              <RangeControl
+                label={__( 'Overlay Opacity', 'neve' )}
+                value={this.state.overlayOpacity}
+                onChange={(overlayOpacity) => {
+                  this.updateSetting( { overlayOpacity: overlayOpacity } )
+                }}
+                min='0'
+                max='100'
+              />
+            </Fragment>}
         </div>
       </Fragment>
     )

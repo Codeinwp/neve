@@ -1,0 +1,25 @@
+.neve-control-header {
+  margin-bottom: 7px;
+}
+
+.neve-white-background-control button.reset {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  flex-grow: 0;
+  outline: 0;
+  border-radius: 0;
+  height: 30px;
+  padding: 5px 0 5px 5px;
+  &:hover {
+	box-shadow: none !important;
+	svg {
+	  fill: $accent-color;
+	}
+  }
+  svg {
+	margin: 0;
+	width: 17px;
+	fill: $icon-fill;
+  }
+}

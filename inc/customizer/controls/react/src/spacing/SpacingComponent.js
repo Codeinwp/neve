@@ -28,7 +28,7 @@ class SpacingComponent extends Component {
       min: -300,
       max: 300,
       hideResponsiveButtons: false,
-      units: ['px', 'em', '%'],
+      units: ['px', 'em', '%']
     }
 
     this.controlParams = props.control.params.input_attrs ? {
@@ -78,16 +78,16 @@ class SpacingComponent extends Component {
 
     const wrapClasses = classnames( [
       'neve-white-background-control',
-      'neve-sizing',
+      'neve-sizing'
     ] )
 
     return (
       <div className={wrapClasses}>
         <div className='neve-control-header'>
           {this.props.control.params.label &&
-          <span className='customize-control-title'>
-            {this.props.control.params.label}
-          </span>}
+            <span className='customize-control-title'>
+              {this.props.control.params.label}
+            </span>}
           <ResponsiveControl
             hideResponsive={hideResponsiveButtons}
             onChange={(currentDevice) => {
@@ -125,7 +125,7 @@ class SpacingComponent extends Component {
     const { units } = this.controlParams
 
     if ( units.length === 1 ) {
-      return <Button isSmall disabled className="active alone">{units[0]}</Button>
+      return <Button isSmall disabled className='active alone'>{units[0]}</Button>
     }
     return units.map( (unit, index) => {
       const buttonClass = classnames(

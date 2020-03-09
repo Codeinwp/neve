@@ -1,9 +1,3 @@
-.neve-sizing {
-  .neve-control-header {
-    margin-bottom: 7px;
-  }
-}
-
 .neve-responsive-sizing {
   display: flex;
 
@@ -48,11 +42,6 @@
       border-color: $accent-color !important;
       color: #fff !important;
     }
-
-    &.reset svg {
-      fill: $icon-fill;
-    }
-
     svg {
       margin-right: 0 !important;
       width: 17px;

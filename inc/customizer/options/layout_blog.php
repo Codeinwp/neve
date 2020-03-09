@@ -135,18 +135,18 @@ class Layout_Blog extends Base_Customizer {
 					'default'           => 25,
 				),
 				array(
-					'label'      => esc_html__( 'Excerpt Length', 'neve' ),
-					'section'    => 'neve_blog_archive_layout',
-					'type'       => 'range-value',
-					'step'       => 5,
-					'input_attr' => array(
-						'min'     => 5,
-						'max'     => 300,
-						'default' => 40,
-					),
-					'priority'   => 35,
+					'label'       => esc_html__( 'Excerpt Length', 'neve' ),
+					'section'     => 'neve_blog_archive_layout',
+					'type'        => 'neve_range_control',
+					'input_attrs' => [
+						'min'        => 5,
+						'max'        => 300,
+						'defaultVal' => 40,
+						'step'       => 5,
+					],
+					'priority'    => 35,
 				),
-				'Neve\Customizer\Controls\Range'
+				'Neve\Customizer\Controls\React\Range'
 			)
 		);
 	}
@@ -251,18 +251,18 @@ class Layout_Blog extends Base_Customizer {
 					'default'           => 0,
 				),
 				array(
-					'label'      => esc_html__( 'Thumbnail Shadow', 'neve' ),
-					'section'    => 'neve_blog_archive_layout',
-					'type'       => 'range-value',
-					'step'       => 1,
-					'input_attr' => array(
-						'min'     => 0,
-						'max'     => 5,
-						'default' => 0,
-					),
-					'priority'   => 50,
+					'label'       => esc_html__( 'Thumbnail Shadow', 'neve' ),
+					'section'     => 'neve_blog_archive_layout',
+					'type'        => 'neve_range_control',
+					'step'        => 1,
+					'input_attrs' => [
+						'min'        => 0,
+						'max'        => 5,
+						'defaultVal' => 0,
+					],
+					'priority'    => 50,
 				),
-				'Neve\Customizer\Controls\Range'
+				'Neve\Customizer\Controls\React\Range'
 			)
 		);
 	}
