@@ -106,7 +106,7 @@ class Responsive_Number extends \WP_Customize_Control {
 					class="responsive-number-collector"
 					title="{{data.label}}"
 					value="{{data.value}}"
-					{{data.link}}
+					{{{data.link}}}  <?php // phpcs:ignore WordPressVIPMinimum.Security.Mustache.OutputNotation ?>
 			>
 		</div>
 		<?php

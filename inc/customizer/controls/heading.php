@@ -101,11 +101,11 @@ class Heading extends \WP_Customize_Control {
 		?>
 		<h4 class="neve-customizer-heading">{{ data.label }}
 			<# if(data.accordion) { #>
-				<span class="accordion-expand-button"></span>
+			<span class="accordion-expand-button"></span>
 			<# } #>
 		</h4>
-		{{{data.style}}}
-		<?php
+		{{{data.style}}} <?php // phpcs:ignore WordPressVIPMinimum.Security.Mustache.OutputNotation ?>
+		<?php 
 	}
 
 	/**
