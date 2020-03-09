@@ -198,7 +198,7 @@ class Range extends \WP_Customize_Control {
 				class="range-collector"
 				title="{{data.label}}"
 				value="{{data.value}}"
-				{{data.link}}
+				{{{data.link}}}  <?php // phpcs:ignore WordPressVIPMinimum.Security.Mustache.OutputNotation ?>
 		>
 		<?php
 	}
