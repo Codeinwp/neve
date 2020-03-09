@@ -128,10 +128,6 @@ class TypefaceComponent extends Component {
               this.updateValues( { fontWeight } )
             }}
           />
-          <ResponsiveControl
-            onChange={(currentDevice) => this.setState(
-              { currentDevice } )}
-          >
             <NumberControl
               className='font-size'
               label={__( 'Font Size', 'neve' )}
@@ -160,6 +156,8 @@ class TypefaceComponent extends Component {
                 self.setState( { fontSize: value } )
                 self.updateValues( { fontSize: value } )
               }}
+			  hasResponsive={true}
+			  onChangedDevice={(currentDevice) => this.setState({currentDevice})}
             />
             <NumberControl
               className='line-height'
@@ -181,6 +179,8 @@ class TypefaceComponent extends Component {
               value={this.state.lineHeight[this.state.currentDevice]}
               max={4}
               min={0.5}
+			  hasResponsive={true}
+			  onChangedDevice={(currentDevice) => this.setState({currentDevice})}
             />
             <NumberControl
               className='letter-spacing'
@@ -202,8 +202,9 @@ class TypefaceComponent extends Component {
               value={this.state.letterSpacing[this.state.currentDevice]}
               max={20}
               min={-5}
+			  hasResponsive={true}
+			  onChangedDevice={(currentDevice) => this.setState({currentDevice})}
             />
-          </ResponsiveControl>
         </div>
       </Fragment>
     )

@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import SizingControl from '../common/Sizing.js'
 import SVG from '../common/svg.js'
 import classnames from 'classnames'
+import ResponsiveControl from '../common/Responsive.js'
 
 const { __ } = wp.i18n
 const {
@@ -15,17 +16,15 @@ class NumberControl extends Component {
   }
 
   render() {
-    const { label, units, value, className } = this.props
+    const { label, units, value, className, hasResponsive } = this.props
     return (
       <div className={className + ' neve-number-control-wrap'}>
-        <div className='neve-control-header'>
-          {label && <span className='customize-control-title'>{label}</span>}
-          {
-            units && <div className='neve-units'>
-              {this.getButtons()}
-                     </div>
-          }
-        </div>
+		<div className='neve-control-header'>
+		  {label && <span className='customize-control-title'>{label}</span>}
+		  {hasResponsive && <ResponsiveControl
+			onChange={(currentDevice) => this.props.onChangedDevice( currentDevice )}/>}
+		  {units && <div className='neve-units'>{this.getButtons()}</div>}
+		</div>
         <SizingControl
           noLinking
           noRange
@@ -90,7 +89,9 @@ NumberControl.propTypes = {
   default: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   max: PropTypes.number,
   min: PropTypes.number,
-  step: PropTypes.number
+  step: PropTypes.number,
+  hasResponsive: PropTypes.bool,
+  onChangedDevice: PropTypes.func
 }
 
 export default NumberControl
