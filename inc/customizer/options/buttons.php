@@ -56,11 +56,9 @@ class Buttons extends Base_Customizer {
 					'tabs'     => array(
 						'button'           => array(
 							'label' => esc_html__( 'Primary', 'neve' ),
-							'icon'  => 'star-filled',
 						),
 						'secondary_button' => array(
 							'label' => esc_html__( 'Secondary', 'neve' ),
-							'icon'  => 'star-empty',
 						),
 					),
 					'controls' => array(
