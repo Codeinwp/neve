@@ -9,9 +9,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-03-09T15:46:15+00:00\n"
+"POT-Creation-Date: 2020-03-10T12:49:52+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.4.0\n"
+"X-Generator: WP-CLI 2.3.0\n"
 "X-Domain: neve\n"
 
 #. Theme Name of the theme
@@ -197,7 +197,7 @@ msgstr ""
 msgid "Margin"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:747
+#: header-footer-grid/Core/Components/Abstract_Component.php:748
 #: inc/customizer/options/main.php:55
 msgid "Typography"
 msgstr ""
@@ -1296,7 +1296,7 @@ msgid "Title"
 msgstr ""
 
 #: inc/customizer/options/layout_single_product.php:124
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:71
+#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:146
 msgid "None"
 msgstr ""
 
@@ -1670,34 +1670,34 @@ msgstr ""
 msgid "Style 6"
 msgstr ""
 
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:76
+#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:113
+msgid "Weight"
+msgstr ""
+
+#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:141
+msgid "Transform"
+msgstr ""
+
+#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:147
 msgid "Capitalize"
 msgstr ""
 
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:81
+#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:148
 msgid "Lowercase"
 msgstr ""
 
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:86
+#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:149
 msgid "Uppercase"
 msgstr ""
 
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:99
-msgid "Text Transform"
-msgstr ""
-
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:111
-msgid "Font Weight"
-msgstr ""
-
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:137
+#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:165
 msgid "Font Size"
 msgstr ""
 
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:166
+#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:201
 msgid "Line Height"
 msgstr ""
 
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:187
+#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:243
 msgid "Letter Spacing"
 msgstr ""

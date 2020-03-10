@@ -219,6 +219,7 @@ class Gutenberg_Editor extends Base_Inline {
 				[
 					'css_prop' => 'line-height',
 					'value'    => $value['lineHeight'],
+					'suffix'   => isset( $value['lineHeight']['suffix'] ) ? $value['lineHeight']['suffix'] : '',
 				],
 				[
 					'css_prop' => 'letter-spacing',

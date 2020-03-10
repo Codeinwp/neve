@@ -684,10 +684,11 @@ abstract class Abstract_Component implements Component {
 		}
 		if ( $typeface ) {
 			foreach ( $this->media_selectors as $media => $media_query ) {
+				$lh_suffix = isset( $typeface['lineHeight']['suffix'] ) ? $typeface['lineHeight']['suffix'][ $media ] : '';
 				$css_array[ $media_query ][ $this->default_typography_selector ]['font-size']       = $typeface['fontSize'][ $media ] . $typeface['fontSize']['suffix'][ $media ];
 				$css_array[ $media_query ][ $this->default_typography_selector . ' svg' ]['height'] = $typeface['fontSize'][ $media ] . $typeface['fontSize']['suffix'][ $media ];
 				$css_array[ $media_query ][ $this->default_typography_selector . ' svg' ]['width']  = $typeface['fontSize'][ $media ] . $typeface['fontSize']['suffix'][ $media ];
-				$css_array[ $media_query ][ $this->default_typography_selector ]['line-height']     = $typeface['lineHeight'][ $media ];
+				$css_array[ $media_query ][ $this->default_typography_selector ]['line-height']     = $typeface['lineHeight'][ $media ] . $lh_suffix;
 				$css_array[ $media_query ][ $this->default_typography_selector ]['letter-spacing']  = $typeface['letterSpacing'][ $media ] . 'px';
 			}
 			$css_array[ $this->default_typography_selector ]['font-weight']    = $typeface['fontWeight'];
