@@ -1,0 +1,16 @@
+.neve-color-component {
+  margin: 0;
+  align-items: center;
+  > div {
+    margin-left: auto;
+    > button {
+      width: 60px;
+      display: block;
+      border-color: $input-borders;
+    }
+  }
+
+  .components-tooltip {
+    display: none !important;
+  }
+}

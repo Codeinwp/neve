@@ -2,7 +2,8 @@
 @import "scss/general";
 @import "scss/presets-selector";
 @import "scss/ranges";
-
+@import "scss/button-appearance";
+@import "scss/color";
 #sub-accordion-panel-hfg_header #accordion-section-neve_header_presets {
   display: list-item !important;
 }
@@ -16,77 +17,6 @@
   border: 1px solid #ccc;
   padding: 10px;
   background: #fff;
-}
-
-.neve-color-preview {
-  width: 20px;
-  border-radius: 3px;
-  border: 1px solid #767676;
-  height: 15px;
-  left: 3px;
-  top: -20px;
-  float: left;
-  position: relative;
-}
-
-.neve-button-appearance-control {
-
-  .neve-white-background-control {
-    padding-bottom: 0;
-  }
-
-  .components-panel {
-    margin: 0 -11px -1px;
-  }
-
-  .components-panel__row {
-    display: block;
-  }
-
-  .neve-radio-icons {
-    button {
-      height: 30px;
-
-      svg {
-        height: 20px;
-        width: 55px;
-      }
-
-      .button-filled-svg {
-        path {
-          fill: #fff;
-        }
-      }
-
-      .button-outline-svg {
-        rect {
-          fill: none;
-          stroke: $accent-color;
-          stroke-miterlimit: 10;
-        }
-      }
-
-      &.active {
-        .button-filled-svg {
-          path {
-            fill: $accent-color;
-          }
-        }
-
-        .button-outline-svg {
-          rect {
-            fill: none;
-            stroke: #fff;
-            stroke-miterlimit: 10;
-          }
-        }
-      }
-    }
-  }
-}
-
-.neve-color-control .components-tooltip {
-  display: none !important;
 }
 
 .customize-control-neve_background_control, .neve-button-appearance-control {

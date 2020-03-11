@@ -1,5 +1,5 @@
 /* jshint esversion: 6 */
-/* global NeveReactCustomize, wp */
+/* global wp */
 import PropTypes from 'prop-types'
 import { maybeParseJson } from '../common/common'
 
@@ -49,14 +49,14 @@ class PresetsSelector extends Component {
           presets.length > 0 ? presets.map( (preset, index) => {
             return (
               <Tooltip key={index} text={preset.label}>
-                <a
+                <button
                   onClick={(e) => {
                     e.preventDefault()
                     this.replaceSettings( preset.setup )
                   }}
                 >
                   <img src={preset.image} alt={preset.label} />
-                </a>
+                </button>
               </Tooltip>
             )
           } )

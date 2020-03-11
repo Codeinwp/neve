@@ -1,5 +1,5 @@
 /* jshint esversion: 6 */
-/* global wp */
+/* global NeveReactCustomize, wp */
 import { init as initDynamicFields } from './dynamic-fields/index.js'
 import { ToggleControl } from './toggle/Control.js'
 import { BackgroundControl } from './background/Control.js'

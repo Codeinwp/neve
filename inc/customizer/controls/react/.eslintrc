@@ -32,6 +32,8 @@
         "code": 100,
         "tabWidth": 4
       }
-    ]
+    ],
+    "camelcase": "off",
+    "operator-linebreak": "off"
   }
 }

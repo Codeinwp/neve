@@ -1,4 +1,5 @@
 /* jshint esversion: 6 */
+/* global wp */
 import PropTypes from 'prop-types'
 
 const { __ } = wp.i18n
@@ -23,7 +24,7 @@ const {
 
 class BackgroundComponent extends Component {
   constructor(props) {
-    super( props )
+    super(props)
     const value = props.control.setting.get()
 
     this.state = {
@@ -41,24 +42,24 @@ class BackgroundComponent extends Component {
   getButtons() {
     const types = ['color', 'image']
     const labels = {
-      color: __( 'Color', 'neve' ),
-      image: __( 'Image', 'neve' )
+      color: __('Color', 'neve'),
+      image: __('Image', 'neve')
     }
     const buttons = []
     const self = this
-    types.map( function(type, index) {
+    types.map(function (type, index) {
       buttons.push(
         <Button
           key={index}
           isPrimary={self.state.type === type}
           isDefault={self.state.type !== type}
           onClick={(e) => {
-            self.updateSetting( { type: type } )
+            self.updateSetting({ type: type })
           }}
         >
           {labels[type]}
-        </Button> )
-    } )
+        </Button>)
+    })
 
     return buttons
   }
@@ -88,14 +89,15 @@ class BackgroundComponent extends Component {
         </div>
         <div className='control--body'>
           {this.state.type === 'color' &&
-            <Fragment><ColorPalette
-              colors={colors}
-              value={this.state.colorValue}
-              onChange={(colorValue) => {
-                self.updateSetting( { colorValue: colorValue } )
-              }}
-                      />
-            <div
+            <Fragment>
+              <ColorPalette
+                colors={colors}
+                value={this.state.colorValue}
+                onChange={(colorValue) => {
+                  self.updateSetting({ colorValue: colorValue })
+                }}
+              />
+              <div
                 className='neve-color-preview'
                 style={{ backgroundColor: this.state.colorValue }}
               />
@@ -103,71 +105,71 @@ class BackgroundComponent extends Component {
           {this.state.type === 'image' &&
             <Fragment>
               <ToggleControl
-                label={__( 'Use Featured Image', 'neve' )}
+                label={__('Use Featured Image', 'neve')}
                 checked={this.state.useFeatured}
                 onChange={(useFeatured) => {
-                  this.updateSetting( { useFeatured: useFeatured } )
+                  this.updateSetting({ useFeatured: useFeatured })
                 }}
               />
-              {!this.state.imageUrl &&
+              {!this.state.imageUrl ?
                 <Placeholder
                   icon='format-image'
                   label={this.state.useFeatured
-                    ? __( 'Fallback Image', 'neve' )
-                    : __( 'Image', 'neve' )}
+                    ? __('Fallback Image', 'neve')
+                    : __('Image', 'neve')}
                 >
                   <p>
-                    {__( 'Select from the Media Library or upload a new image',
-                      'neve' )}
+                    {__('Select from the Media Library or upload a new image',
+                      'neve')}
                   </p>
                   <MediaUpload
                     onSelect={(imageData) => {
-                      this.updateSetting( { imageUrl: imageData.url } )
+                      this.updateSetting({ imageUrl: imageData.url })
                     }}
                     allowedTypes={['image']}
                     render={({ open }) => (
                       <Button isDefault onClick={open}>
-                        {__( 'Add Image', 'neve' )}
+                        {__('Add Image', 'neve')}
                       </Button>
                     )}
                   />
-                </Placeholder> ||
-                  <Fragment>
-                    <Button
-                      className='remove-image'
-                      isDestructive
-                      isLink
-                      onClick={() => {
-                        this.updateSetting(
-                          { imageUrl: '', overlayColorValue: '' } )
-                      }}
-                    >
-                      <Dashicon icon='no' />
-                      {this.state.useFeatured
-                        ? __( 'Remove Fallback Image', 'neve' )
-                        : __( 'Remove Image', 'neve' )}
-                    </Button>
-                    <FocalPointPicker
-                      url={this.state.imageUrl}
-                      value={this.state.focusPoint}
-                      onChange={(val) => {
-                        const newPoint = {
-                          x: parseFloat( val.x ).toFixed( 2 ),
-                          y: parseFloat( val.y ).toFixed( 2 )
-                        }
-                        this.updateSetting( { focusPoint: newPoint } )
-                      }}
-                    />
-                  </Fragment>}
+                </Placeholder> :
+                <Fragment>
+                  <Button
+                    className='remove-image'
+                    isDestructive
+                    isLink
+                    onClick={() => {
+                      this.updateSetting(
+                        { imageUrl: '', overlayColorValue: '' })
+                    }}
+                  >
+                    <Dashicon icon='no' />
+                    {this.state.useFeatured
+                      ? __('Remove Fallback Image', 'neve')
+                      : __('Remove Image', 'neve')}
+                  </Button>
+                  <FocalPointPicker
+                    url={this.state.imageUrl}
+                    value={this.state.focusPoint}
+                    onChange={(val) => {
+                      const newPoint = {
+                        x: parseFloat(val.x).toFixed(2),
+                        y: parseFloat(val.y).toFixed(2)
+                      }
+                      this.updateSetting({ focusPoint: newPoint })
+                    }}
+                  />
+                </Fragment>}
               <ToggleControl
-                label={__( 'Fixed Background', 'neve' )}
+                label={__('Fixed Background', 'neve')}
                 checked={this.state.fixed}
                 onChange={(fixed) => {
-                  this.updateSetting( { fixed: fixed } )
+                  this.updateSetting({ fixed: fixed })
                 }}
               />
               <span className='customize-control-title'>{
-                __( 'Overlay Color', 'neve' )
+                __('Overlay Color', 'neve')
               }
               </span>
               <ColorPalette
@@ -175,7 +177,7 @@ class BackgroundComponent extends Component {
                 value={this.state.overlayColorValue}
                 onChange={(overlayColorValue) => {
                   self.updateSetting(
-                    { overlayColorValue: overlayColorValue } )
+                    { overlayColorValue: overlayColorValue })
                 }}
               />
               <div
@@ -183,10 +185,10 @@ class BackgroundComponent extends Component {
                 style={{ backgroundColor: this.state.overlayColorValue }}
               />
               <RangeControl
-                label={__( 'Overlay Opacity', 'neve' )}
+                label={__('Overlay Opacity', 'neve')}
                 value={this.state.overlayOpacity}
                 onChange={(overlayOpacity) => {
-                  this.updateSetting( { overlayOpacity: overlayOpacity } )
+                  this.updateSetting({ overlayOpacity: overlayOpacity })
                 }}
                 min='0'
                 max='100'
@@ -198,22 +200,22 @@ class BackgroundComponent extends Component {
   }
 
   componentDidMount() {
-    this.updateSetting( this.state )
+    this.updateSetting(this.state)
     const { control } = this.props
 
-    document.addEventListener( 'neve-changed-customizer-value', (e) => {
-      if ( !e.detail ) return false
-      if ( e.detail.id !== control.id ) return false
-      this.updateSetting( e.detail.value )
-    } )
+    document.addEventListener('neve-changed-customizer-value', (e) => {
+      if (!e.detail) return false
+      if (e.detail.id !== control.id) return false
+      this.updateSetting(e.detail.value)
+    })
   }
 
   updateSetting(newValues) {
-    this.setState( newValues )
-    this.props.control.setting.set( {
+    this.setState(newValues)
+    this.props.control.setting.set({
       ...this.props.control.setting.get(),
       ...newValues
-    } )
+    })
   }
 }
 

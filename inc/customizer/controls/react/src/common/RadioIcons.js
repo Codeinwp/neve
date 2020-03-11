@@ -34,40 +34,37 @@ class RadioIcons extends Component {
   }
 
   getButtons() {
-    const {options} = this.props
+    const { options } = this.props
 
-    const buttons = Object.keys(options).map((type, index) => {
+    return Object.keys(options).map((type, index) => {
       return (
-        <Fragment>
-          {
-            options[type].icon === 'text'
-              ? <Button
-                key={index}
+        <Fragment key={index}>
+          {options[type].icon === 'text' &&
+            <Button
+              key={index}
+              className={classnames(
+                [{ active: this.props.value === type }, 'is-text'])}
+              onClick={() => {
+                this.props.onChange(type)
+              }}
+            >
+              {options[type].tooltip}
+            </Button>}
+          {options[type].icon !== 'text' &&
+            <Tooltip text={options[type].tooltip} key={index}>
+              <IconButton
+                aria-label={options[type].tooltip}
                 className={classnames(
-                  {active: this.props.value === type})}
+                  { active: this.props.value === type })}
+                icon={options[type].icon}
                 onClick={() => {
                   this.props.onChange(type)
-                }}>
-                {options[type].tooltip}
-              </Button>
-              :
-              <Tooltip text={options[type].tooltip} key={index}>
-                <IconButton
-                  aria-label={options[type].tooltip}
-                  className={classnames(
-                    {active: this.props.value === type})}
-                  icon={options[type].icon}
-                  onClick={() => {
-                    this.props.onChange(type)
-                  }}
-                />
-              </Tooltip>
-          }
+                }}
+              />
+            </Tooltip>}
         </Fragment>
       )
     })
-
-    return buttons
   }
 }
 

@@ -333,7 +333,11 @@ abstract class Abstract_Builder implements Builder {
 							'step'           => 1,
 							'min'            => 0,
 							'max'            => 700,
-							'defaultVal'     => 0,
+							'defaultVal'     => [
+								'mobile'  => 0,
+								'tablet'  => 0,
+								'desktop' => 0,
+							],
 							'units'          => [ 'px' ],
 							'hideResponsive' => true,
 						],

@@ -88,9 +88,10 @@ class Buttons extends Base_Customizer {
 						'default'           => $defaults,
 					],
 					[
-						'label'   => __( 'Button Appearance', 'neve' ),
-						'section' => $this->section_id,
-						'type'    => 'neve_button_appearance',
+						'defaultVals' => $defaults,
+						'label'       => __( 'Button Appearance', 'neve' ),
+						'section'     => $this->section_id,
+						'type'        => 'neve_button_appearance',
 					]
 				)
 			);

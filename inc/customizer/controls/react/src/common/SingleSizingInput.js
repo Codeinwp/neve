@@ -1,6 +1,6 @@
+/* global wp */
 import PropTypes from 'prop-types'
 
-const { __ } = wp.i18n
 const { Component } = wp.element
 
 class SingleSizingInput extends Component {

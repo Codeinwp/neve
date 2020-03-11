@@ -160,36 +160,38 @@ class TypefaceComponent extends Component {
   renderFontSize() {
     const { currentDevice, fontSize } = this.state
     const { size_default, size_units } = this.controlParams
-    return (<NumberControl
-      className='font-size'
-      label={__('Font Size', 'neve')}
-      default={size_default[currentDevice]}
-      value={fontSize[currentDevice]}
-      step={fontSize.suffix[currentDevice] === 'em' ? 0.1 : 1}
-      units={size_units}
-      activeUnit={fontSize.suffix[currentDevice]}
-      hasResponsive
-      onChange={(val) => {
-        const value = fontSize
-        value[currentDevice] = val
-        this.setState({ fontSize: value })
-        this.updateValues({ fontSize: value })
-      }}
-      onUnitChange={(val) => {
-        const value = fontSize
-        value.suffix[currentDevice] = val
-        this.setState({ fontSize: value })
-        this.updateValues({ fontSize: value })
-      }}
-      onReset={() => {
-        const value = fontSize
-        value.suffix[currentDevice] = size_default.suffix[currentDevice]
-        value[currentDevice] = size_default[currentDevice]
-        this.setState({ fontSize: value })
-        this.updateValues({ fontSize: value })
-      }}
-      onChangedDevice={(currentDevice) => this.setState({ currentDevice })}
-    />)
+    return (
+      <NumberControl
+        className='font-size'
+        label={__('Font Size', 'neve')}
+        default={size_default[currentDevice]}
+        value={fontSize[currentDevice]}
+        step={fontSize.suffix[currentDevice] === 'em' ? 0.1 : 1}
+        units={size_units}
+        activeUnit={fontSize.suffix[currentDevice]}
+        hasResponsive
+        onChange={(val) => {
+          const value = fontSize
+          value[currentDevice] = val
+          this.setState({ fontSize: value })
+          this.updateValues({ fontSize: value })
+        }}
+        onUnitChange={(val) => {
+          const value = fontSize
+          value.suffix[currentDevice] = val
+          this.setState({ fontSize: value })
+          this.updateValues({ fontSize: value })
+        }}
+        onReset={() => {
+          const value = fontSize
+          value.suffix[currentDevice] = size_default.suffix[currentDevice]
+          value[currentDevice] = size_default[currentDevice]
+          this.setState({ fontSize: value })
+          this.updateValues({ fontSize: value })
+        }}
+        onChangedDevice={(currentDevice) => this.setState({ currentDevice })}
+      />
+    )
   }
 
   renderLineHeight() {

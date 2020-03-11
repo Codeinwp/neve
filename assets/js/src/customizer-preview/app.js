@@ -229,10 +229,31 @@ window.addEventListener('load', function () {
               style +=
                 `${mainSelector} {
 										background-color: ${bgColor};
-										border-radius: ${newValue.borderRadius}px;
 										color: ${txtColor};`
+              if( typeof newValue.borderRadius === 'number' ) {
+                style += `border-radius: ${newValue.borderRadius}px;`
+              } else {
+                style += `
+                border-top-left-radius: ${newValue.borderRadius.top}px;
+                border-top-right-radius: ${newValue.borderRadius.right}px;
+                border-bottom-right-radius: ${newValue.borderRadius.bottom}px;
+                border-bottom-left-radius: ${newValue.borderRadius.left}px;
+                `;
+              }
+
               if (newValue.type === 'outline') {
-                style += `border: ${newValue.borderWidth}px solid ${borderColor};`
+                if( typeof newValue.borderWidth === 'number' ) {
+                  style += `border: ${newValue.borderWidth}px solid ${borderColor};`
+                } else {
+                  style += `
+                  border-style: solid;
+                  border-color: ${borderColor};
+                  border-top-width: ${newValue.borderWidth.top}px;
+                  border-right-width: ${newValue.borderWidth.right}px;
+                  border-bottom-width: ${newValue.borderWidth.bottom}px;
+                  border-left-width: ${newValue.borderWidth.left}px;
+                  `
+                }
               }
               if (newValue.type === 'fill') {
                 style += 'border: none;'

@@ -170,7 +170,14 @@ class Button extends Abstract_Component {
 				$css_array[ $this->default_selector . ':hover' ]['color'] = $style['textHover'];
 			}
 			if ( isset( $style['borderRadius'] ) ) {
-				$css_array[ $this->default_selector ]['border-radius'] = $style['borderRadius'] . 'px';
+				if ( is_array( $style['borderRadius'] ) ) {
+					$css_array[ $this->default_selector ]['border-top-left-radius']     = $style['borderRadius']['top'];
+					$css_array[ $this->default_selector ]['border-top-right-radius']    = $style['borderRadius']['right'];
+					$css_array[ $this->default_selector ]['border-bottom-right-radius'] = $style['borderRadius']['bottom'];
+					$css_array[ $this->default_selector ]['border-bottom-left-radius']  = $style['borderRadius']['left'];
+				} else {
+					$css_array[ $this->default_selector ]['border-radius'] = $style['borderRadius'] . 'px';
+				}
 			}
 
 			if ( $style['type'] === 'outline' ) {
@@ -181,7 +188,14 @@ class Button extends Abstract_Component {
 					$css_array[ $this->default_selector . ':hover' ]['border-color'] = $style['textHover'];
 				}
 				if ( ! empty( $style['borderWidth'] ) ) {
-					$css_array[ $this->default_selector ]['border'] = $style['borderWidth'] . 'px solid';
+					if ( is_array( $style['borderWidth'] ) ) {
+						$css_array[ $this->default_selector ]['border-style'] = 'solid';
+						foreach ( $style['borderWidth'] as $k => $v ) {
+							$css_array[ $this->default_selector ][ 'border-' . $k . '-width' ] = $v . 'px';
+						}
+					} else {
+						$css_array[ $this->default_selector ]['border'] = $style['borderWidth'] . 'px solid';
+					}
 				}
 			}
 		}

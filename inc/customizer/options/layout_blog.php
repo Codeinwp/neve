@@ -141,7 +141,7 @@ class Layout_Blog extends Base_Customizer {
 					'input_attrs' => [
 						'min'        => 5,
 						'max'        => 300,
-						'defaultVal' => 40,
+						'defaultVal' => 25,
 						'step'       => 5,
 					],
 					'priority'    => 35,
