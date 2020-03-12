@@ -18,14 +18,14 @@ function neve_get_button_appearance_default( $button = 'button' ) {
 		'background'      => '',
 		'backgroundHover' => '',
 		'text'            => '',
-		'textHover'    => '',
-		'borderRadius' => [
+		'textHover'       => '',
+		'borderRadius'    => [
 			'top'     => 3,
 			'right'   => 3,
 			'botttom' => 3,
 			'left'    => 3,
 		],
-		'borderWidth'  => [
+		'borderWidth'     => [
 			'top'    => 1,
 			'right'  => 1,
 			'bottom' => 1,
