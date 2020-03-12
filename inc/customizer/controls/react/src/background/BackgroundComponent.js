@@ -1,6 +1,7 @@
 /* jshint esversion: 6 */
 /* global wp */
 import PropTypes from 'prop-types'
+import ColorControl from '../common/ColorControl'
 
 const { __ } = wp.i18n
 const {
@@ -17,7 +18,6 @@ const {
   RangeControl,
   FocalPointPicker,
   Dashicon,
-  ColorPalette,
   ToggleControl,
   Placeholder
 } = wp.components
@@ -67,15 +67,6 @@ class BackgroundComponent extends Component {
   render() {
     const self = this
 
-    const colors = [
-      { name: 'black', color: '#000000' },
-      { name: 'white', color: '#ffffff' },
-      { name: 'red', color: '#cc433c' },
-      { name: 'orange', color: '#d39b48' },
-      { name: 'green', color: '#95d45a' },
-      { name: 'blue', color: '#3972b8' }
-    ]
-
     return (
       <Fragment>
         {this.props.control.params.label &&
@@ -90,12 +81,12 @@ class BackgroundComponent extends Component {
         <div className='control--body'>
           {this.state.type === 'color' &&
             <Fragment>
-              <ColorPalette
-                colors={colors}
-                value={this.state.colorValue}
+              <ColorControl
                 onChange={(colorValue) => {
                   self.updateSetting({ colorValue: colorValue })
                 }}
+                selectedColor={this.state.colorValue}
+                label={__( 'Color', 'neve' )}
               />
               <div
                 className='neve-color-preview'
@@ -168,17 +159,13 @@ class BackgroundComponent extends Component {
                   this.updateSetting({ fixed: fixed })
                 }}
               />
-              <span className='customize-control-title'>{
-                __('Overlay Color', 'neve')
-              }
-              </span>
-              <ColorPalette
-                colors={colors}
-                value={this.state.overlayColorValue}
+              <ColorControl
+                selectedColor={this.state.overlayColorValue}
                 onChange={(overlayColorValue) => {
                   self.updateSetting(
                     { overlayColorValue: overlayColorValue })
                 }}
+                label={__('Overlay Color', 'neve')}
               />
               <div
                 className='neve-color-preview'

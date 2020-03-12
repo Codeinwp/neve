@@ -27,3 +27,73 @@
 	fill: $icon-fill;
   }
 }
+
+
+@-moz-keyframes neve-spin {
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes neve-spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes neve-spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+
+#sub-accordion-panel-hfg_header #accordion-section-neve_header_presets {
+  display: list-item !important;
+}
+
+.neve-white-background-control {
+  border: 1px solid #ccc;
+  padding: 10px;
+  background: #fff;
+}
+
+
+
+.neve-control-header {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  .customize-control-title {
+    margin: 0;
+  }
+}
+
+
+.neve-radio-icons:not(:last-child), .neve-font-family-control:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.neve-number-control-wrap {
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+}
+
+.neve-toggle-control {
+  > .components-base-control__field, label {
+    margin-bottom: 0 !important;
+  }
+}
+
+
+.components-icon-button, .components-button {
+  .svg-text {
+    fill: #fff;
+  }
+
+  &.active .svg-text {
+    fill: $accent-color;
+  }
+}

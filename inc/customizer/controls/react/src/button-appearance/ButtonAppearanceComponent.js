@@ -308,7 +308,7 @@ class ButtonAppearanceComponent extends Component {
           left: w
         }
       }
-
+      this.setState( { ...this.state, ...e.detail.value } )
       this.updateValues(e.detail.value)
     })
   }
