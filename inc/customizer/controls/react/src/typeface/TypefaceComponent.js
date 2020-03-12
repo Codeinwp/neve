@@ -108,7 +108,7 @@ class TypefaceComponent extends Component {
 
   renderFontWeight() {
     return (
-      <div className='select-inline'>
+      <div className='select-inline font-weight'>
         <span className='customize-control-title'>
           {__('Weight', 'neve')}
         </span>
@@ -136,7 +136,7 @@ class TypefaceComponent extends Component {
 
   renderTextTransform() {
     return (
-      <div className='select-inline'>
+      <div className='select-inline text-transform'>
         <span className='customize-control-title'>
           {__('Transform', 'neve')}
         </span>
