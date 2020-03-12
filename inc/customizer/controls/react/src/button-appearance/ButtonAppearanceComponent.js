@@ -64,12 +64,11 @@ class ButtonAppearanceComponent extends Component {
       radiusLinked: false,
       widthLinked: false
     }
-
     // Set linking.
     this.state.radiusLinked = this.isLinked(this.state.borderRadius)
     this.state.widthLinked = this.isLinked(this.state.borderWidth)
 
-    this.updateValues(this.state)
+    // this.updateValues(this.state)
 
     this.renderBorderControls = this.renderBorderControls.bind(this)
     this.renderTypeControls = this.renderTypeControls.bind(this)
@@ -191,14 +190,7 @@ class ButtonAppearanceComponent extends Component {
         }
       }
     }
-    /* const palette = [
-      { name: 'black', color: '#000000' },
-      { name: 'white', color: '#ffffff' },
-      { name: 'red', color: '#cc433c' },
-      { name: 'orange', color: '#d39b48' },
-      { name: 'green', color: '#95d45a' },
-      { name: 'blue', color: '#3972b8' }
-    ] */
+
     const self = this
 
     if (this.props.control.params.no_hover) {

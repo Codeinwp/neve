@@ -18,18 +18,18 @@ function neve_get_button_appearance_default( $button = 'button' ) {
 		'background'      => '',
 		'backgroundHover' => '',
 		'text'            => '',
-		'textHover'       => '',
-		'borderRadius'    => [
-			'border-bottom-left-radius'  => 3,
-			'border-top-left-radius'     => 3,
-			'border-bottom-right-radius' => 3,
-			'border-top-right-radius'    => 3,
+		'textHover'    => '',
+		'borderRadius' => [
+			'top'     => 3,
+			'right'   => 3,
+			'botttom' => 3,
+			'left'    => 3,
 		],
-		'borderWidth'     => [
-			'border-top-width'    => 1,
-			'border-right-width'  => 1,
-			'border-bottom-width' => 1,
-			'border-left-width'   => 1,
+		'borderWidth'  => [
+			'top'    => 1,
+			'right'  => 1,
+			'bottom' => 1,
+			'left'   => 1,
 		],
 	];
 	if ( $button === 'secondary_button' ) {

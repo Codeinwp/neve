@@ -6,15 +6,6 @@ const { Component } = wp.element
 
 class NumberControl extends Component {
   render() {
-    /* const palette = [
-      { name: 'black', color: '#000000' },
-      { name: 'white', color: '#ffffff' },
-      { name: 'red', color: '#cc433c' },
-      { name: 'orange', color: '#d39b48' },
-      { name: 'green', color: '#95d45a' },
-      { name: 'blue', color: '#3972b8' }
-    ] */
-
     const { label, selectedColor } = this.props
 
     return (
