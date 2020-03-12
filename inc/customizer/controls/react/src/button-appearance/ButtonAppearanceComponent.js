@@ -288,6 +288,27 @@ class ButtonAppearanceComponent extends Component {
     document.addEventListener('neve-changed-customizer-value', (e) => {
       if (!e.detail) return false
       if (e.detail.id !== control.id) return false
+      // Migrate border-radius and border-width
+      const r = e.detail.value.borderRadius
+      if ( r && ( typeof r === 'string' || typeof r === 'number' ) ) {
+        e.detail.value.borderRadius = {
+          top: r,
+          bottom: r,
+          right: r,
+          left: r
+        }
+      }
+
+      const w = e.detail.value.borderWidth
+      if ( w && (typeof w === 'string' || typeof w === 'number') ) {
+        e.detail.value.borderWidth = {
+          top: w,
+          bottom: w,
+          right: w,
+          left: w
+        }
+      }
+
       this.updateValues(e.detail.value)
     })
   }
