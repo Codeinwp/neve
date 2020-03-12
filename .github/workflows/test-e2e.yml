@@ -20,6 +20,7 @@ jobs:
         uses: cypress-io/github-action@v1
         with:
           env: host=localhost,port=8080
+          name: ${{matrix.spec}}
           record: true
           spec: cypress/integration/${{matrix.spec}}/*
   empty-job:
