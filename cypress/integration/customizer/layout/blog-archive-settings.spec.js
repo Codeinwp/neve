@@ -61,9 +61,8 @@ describe( 'Blog/Archive Check', function () {
 		cy.get( '#customize-control-neve_post_excerpt_length' )
 			.find( 'input[type=number]' )
 			.clear({force:true})
-			.type(15 );
+			.type( 15 );
 			saveCustomizer();
-			} );
 		cy.visit( '/' );
 		let count = 5;
 		cy.get( 'article' ).each( function ( el ) {
