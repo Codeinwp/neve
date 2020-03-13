@@ -61,11 +61,12 @@ describe( 'Blog/Archive Check', function () {
 		cy.get( '#customize-control-neve_post_excerpt_length' )
 			.find( 'input[type=number]' )
 			.invoke( 'attr', 'value' ).then( ( val ) => {
-				if ( val !== '15' ) {
+				if ( val != 15 ) {
 					cy.get( '#customize-control-neve_post_excerpt_length' )
 						.find( 'input[type=number]' )
 						.invoke( 'val', 15 )
 						.trigger( 'change' );
+					cy.wait(1000);
 					saveCustomizer();
 				}
 			} );
@@ -243,15 +244,10 @@ describe( 'Blog/Archive Check', function () {
 						.find( '.toggle-display' ).click();
 				}
 			} );
-		cy.get( '#_customize-input-neve_author_avatar' ).invoke( 'attr', 'checked' ).then( ( val ) => {
-			cy.log( val );
-			if ( val !== 'checked' ) {
-				cy.get( '#_customize-input-neve_author_avatar' ).check();
-				saveCustomizer();
-			}
-		} );
-		cy.visit( '/' );
-		cy.get( 'article' ).each( function ( el ) {
+			cy.get( '#customize-control-neve_author_avatar input' ).click();
+			saveCustomizer();
+			cy.visit( '/' );
+			cy.get( 'article' ).each( function ( el ) {
 			cy.get( el ).find( '.meta.author' ).find( '.photo' ).should( 'be.visible' );
 		} );
 	} )
