@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 const {
   Component
 } = wp.element
+
 const {
   ToggleControl
 } = wp.components
@@ -26,12 +27,19 @@ class ToggleComponent extends Component {
 
   render() {
     return (
-      <ToggleControl
-        className='neve-toggle-control neve-white-background-control'
-        checked={this.state.value}
-        label={this.props.control.params.label}
-        onChange={(value) => this.toggleValue( value )}
-      />
+      <div className='neve-white-background-control'>
+        <ToggleControl
+          className='neve-toggle-control'
+          checked={this.state.value}
+          label={this.props.control.params.label}
+          onChange={(value) => this.toggleValue( value )}
+        />
+        <span
+          className='customize-control-description'
+          dangerouslySetInnerHTML={{ __html: this.props.control.params.description }}
+        />
+      </div>
+
     )
   }
 
