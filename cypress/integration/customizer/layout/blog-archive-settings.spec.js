@@ -60,15 +60,9 @@ describe( 'Blog/Archive Check', function () {
 		goToCustomizerSection();
 		cy.get( '#customize-control-neve_post_excerpt_length' )
 			.find( 'input[type=number]' )
-			.invoke( 'attr', 'value' ).then( ( val ) => {
-				if ( val != 15 ) {
-					cy.get( '#customize-control-neve_post_excerpt_length' )
-						.find( 'input[type=number]' )
-						.invoke( 'val', 15 )
-						.trigger( 'change' );
-					cy.wait(1000);
-					saveCustomizer();
-				}
+			.clear({force:true})
+			.type(15 );
+			saveCustomizer();
 			} );
 		cy.visit( '/' );
 		let count = 5;
