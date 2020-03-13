@@ -34,12 +34,14 @@ class ToggleComponent extends Component {
           label={this.props.control.params.label}
           onChange={(value) => this.toggleValue( value )}
         />
-        <span
-          className='customize-control-description'
-          dangerouslySetInnerHTML={{ __html: this.props.control.params.description }}
-        />
+        {
+          this.props.control.params.description &&
+            <span
+              className='customize-control-description'
+              dangerouslySetInnerHTML={{ __html: this.props.control.params.description }}
+            />
+        }
       </div>
-
     )
   }
 
