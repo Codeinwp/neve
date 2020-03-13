@@ -1,5 +1,3 @@
-
-
 .neve-radio-icons {
   display: flex;
   border: 1px solid #999;
@@ -8,7 +6,7 @@
 
   button {
     align-items: center;
-    justify-content: center;
+    justify-content: center !important;
     flex: 1;
     padding: 3px;
 
@@ -34,7 +32,7 @@
 
 .large-buttons {
   .neve-radio-icons button {
-    height: 45px;
+    height: 45px !important;
 
     svg {
       width: 50px;

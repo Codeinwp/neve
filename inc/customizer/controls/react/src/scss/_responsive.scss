@@ -9,9 +9,11 @@
 
   .components-button-group {
     display: flex;
+    border: none;
   }
 
   button {
+    height: auto;
     padding: 3px 4px !important;
 
     svg {

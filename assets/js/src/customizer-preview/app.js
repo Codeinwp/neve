@@ -230,7 +230,7 @@ window.addEventListener('load', function () {
                 `${mainSelector} {
 										background-color: ${bgColor};
 										color: ${txtColor};`
-              if( typeof newValue.borderRadius === 'number' ) {
+              if( typeof newValue.borderRadius !== 'object' ) {
                 style += `border-radius: ${newValue.borderRadius}px;`
               } else {
                 style += `
@@ -242,7 +242,7 @@ window.addEventListener('load', function () {
               }
 
               if (newValue.type === 'outline') {
-                if( typeof newValue.borderWidth === 'number' ) {
+                if( typeof newValue.borderWidth !== 'object' ) {
                   style += `border: ${newValue.borderWidth}px solid ${borderColor};`
                 } else {
                   style += `

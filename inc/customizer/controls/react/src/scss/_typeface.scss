@@ -1,12 +1,12 @@
 .neve-typeface-control {
-
   .font-family-selector-toggle {
     width: 100%;
     height: 35px;
     align-items: center;
     justify-content: center;
     display: flex;
-    border-color: $input-borders;
+    border: 1px solid $input-borders;
+    box-shadow: none;
     background-color: transparent;
 
     .ff-name {

@@ -30,7 +30,8 @@
   }
 
   .control--top-toolbar {
-    .neve-background-type-control button.components-button {
+    .neve-background-type-control button.components-button,
+    .neve-background-type-control button , {
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
     }
@@ -110,24 +111,21 @@
 
 .neve-background-type-control {
   width: 100%;
+  border: none;
+  button {
+    width: 50%;
+    justify-content: center;
+    box-shadow: none !important;
+    border: 1px solid $accent-color !important;
+    color: $accent-color !important;
+    border-color: $accent-color;
+    background-color: #fff;
 
-  .components-button {
     &.is-primary, &:active, &:focus {
       background-color: $accent-color !important;
       color: #fff !important;
       border-color: $accent-color !important;
       box-shadow: none !important;
     }
-
-    &.is-default {
-      color: $accent-color;
-      border-color: $accent-color;
-      background-color: #fff;
-    }
-  }
-
-  button {
-    width: 50%;
-    justify-content: center;
   }
 }

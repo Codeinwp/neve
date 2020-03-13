@@ -18,7 +18,7 @@
 
 .neve-range-control {
 	.components-base-control__field {
-		flex-direction: row;
+		display: flex;
 
 		.components-range-control__slider {
 			width: 70%;

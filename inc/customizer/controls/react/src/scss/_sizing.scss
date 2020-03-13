@@ -33,7 +33,10 @@
     }
 
     &.link {
+      justify-content: center !important;
       border: 1px solid $input-borders !important;
+      padding: 0;
+      min-width: unset;
     }
 
     &.active, &.active:hover, &.active:focus:enabled {
