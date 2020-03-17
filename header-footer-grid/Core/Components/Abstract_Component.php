@@ -301,6 +301,10 @@ abstract class Abstract_Component implements Component {
 	 * @param string $panel Builder panel.
 	 */
 	public function __construct( $panel ) {
+		if ( ! $this->is_active() ) {
+			return;
+		}
+
 		$this->init();
 		$this->maybe_enqueue_fonts();
 		$this->set_property( 'panel', $panel );
@@ -360,7 +364,7 @@ abstract class Abstract_Component implements Component {
 	/**
 	 * Method to set protected properties for class.
 	 *
-	 * @param string $key   The property key name.
+	 * @param string $key The property key name.
 	 * @param string $value The property value.
 	 *
 	 * @return bool
@@ -610,11 +614,11 @@ abstract class Abstract_Component implements Component {
 	 * Write position styles and filter values.
 	 *
 	 * @param string $target CSS target property ( margin | padding ).
-	 * @param string $top    Top value.
-	 * @param string $right  Right value.
+	 * @param string $top Top value.
+	 * @param string $right Right value.
 	 * @param string $bottom Bottom value.
-	 * @param string $left   Left value.
-	 * @param string $unit   Unit to use ( px | em | % ).
+	 * @param string $left Left value.
+	 * @param string $unit Unit to use ( px | em | % ).
 	 *
 	 * @return array
 	 * @since   1.0.1
@@ -639,10 +643,10 @@ abstract class Abstract_Component implements Component {
 	/**
 	 * Method to reuse loop for generating position css.
 	 *
-	 * @param array  $css_array       The css array.
+	 * @param array  $css_array The css array.
 	 * @param array  $position_values The position values array.
-	 * @param string $selector        The item selector.
-	 * @param string $type            The type to generate ( margin | padding ).
+	 * @param string $selector The item selector.
+	 * @param string $type The type to generate ( margin | padding ).
 	 *
 	 * @return mixed
 	 * @since   1.0.1
