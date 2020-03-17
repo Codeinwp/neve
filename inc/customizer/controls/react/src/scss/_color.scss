@@ -30,7 +30,29 @@
       }
     }
   }
+  input {
+    border-color: $input-borders;
+    border-radius: 0;
+    height: 30px;
+    padding: 0 10px;
+  }
+  .components-color-picker__body {
+    padding: 10px;
+  }
 
+  .components-color-picker__inputs-field {
+    margin-bottom: 0 !important;
+  }
+
+  .components-color-picker__inputs-wrapper {
+    padding-top: 10px;
+  }
+
+  .components-color-picker__inputs-toggle button {
+    height: 30px !important;
+    padding: 0 5px;
+    border-radius: 0;
+  }
   .components-tooltip {
     display: none !important;
   }
