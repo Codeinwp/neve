@@ -39,10 +39,11 @@ jobs:
           env:
             MYSQL_ROOT_PASSWORD: root
           ports:
-            - 3306
+            - 3306/tcp
           volumes:
             - $HOME/mysql:/var/lib/mysql
-      steps:
+          options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+        steps:
         - name: Setup PHP version
           uses: shivammathur/setup-php@v1
           with:
@@ -53,7 +54,7 @@ jobs:
           uses: actions/checkout@v2
         - name: Install WordPress Test Suite
           run: |
-            bash bin/install-wp-tests.sh wordpress_test root root 127.0.0.1
+            bash bin/install-wp-tests.sh wordpress_test root root 127.0.0.1:${{ job.services.mysql.ports['3306'] }}
         - name: Get Composer Cache Directory
           id: composer-cache
           run: |
