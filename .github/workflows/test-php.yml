@@ -43,7 +43,7 @@ jobs:
           volumes:
             - $HOME/mysql:/var/lib/mysql
           options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
-        steps:
+      steps:
         - name: Setup PHP version
           uses: shivammathur/setup-php@v1
           with:
