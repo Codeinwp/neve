@@ -24,10 +24,15 @@
 		box-sizing: border-box;
 		line-height: normal;
 	}
-
+	.woocommerce-variation-add-to-cart {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+	}
 	.entry-summary > form.cart {
 		display: flex;
 		align-items: center;
+		flex-wrap: wrap;
 
 		> a, > button {
 			align-self: center;

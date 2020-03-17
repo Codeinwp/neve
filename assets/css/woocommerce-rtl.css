@@ -373,9 +373,16 @@
   line-height: normal;
 }
 
+.woocommerce.single .woocommerce-variation-add-to-cart {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
 .woocommerce.single .entry-summary > form.cart {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .woocommerce.single .entry-summary > form.cart > a, .woocommerce.single .entry-summary > form.cart > button {
