@@ -424,7 +424,8 @@
 }
 
 .single_add_to_cart_button {
-  width: 100%;
+  width: auto;
+  flex-grow: 1;
 }
 
 .product_meta {
@@ -1486,7 +1487,7 @@ body.woocommerce-account .woocommerce-form-login .form-row:not(.woocommerce-form
 
 @media (min-width: 769px) {
   .single_add_to_cart_button {
-    width: auto;
+    flex-grow: 0;
   }
   .variations select {
     width: 75%;

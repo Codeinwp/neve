@@ -75,7 +75,8 @@
 }
 
 .single_add_to_cart_button {
-	width: 100%;
+	width: auto;
+	flex-grow: 1;
 }
 
 .product_meta {
@@ -262,7 +263,7 @@
 
 @mixin product--tablet() {
 	.single_add_to_cart_button {
-		width: auto;
+		flex-grow: 0;
 	}
 	.variations select {
 		width: 75%;
