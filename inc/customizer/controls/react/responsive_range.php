@@ -1,7 +1,6 @@
 <?php
 /**
- * Spacing Control. Handles data passing from args to JS.
- * N
+ * Responsive_Range Control. Handles data passing from args to JS.
  *
  * @package Neve\Customizer\Controls\React
  */
@@ -9,7 +8,7 @@
 namespace Neve\Customizer\Controls\React;
 
 /**
- * Class Spacing
+ * Class Responsive_Range
  *
  * @package Neve\Customizer\Controls\React
  */
@@ -28,18 +27,10 @@ class Responsive_Range extends \WP_Customize_Control {
 	public $input_attrs = [];
 
 	/**
-	 * Default value.
-	 *
-	 * @var array
-	 */
-	public $default = [];
-
-	/**
 	 * Send to JS.
 	 */
 	public function to_json() {
 		parent::to_json();
 		$this->json['input_attrs'] = $this->input_attrs;
-		$this->json['default']     = $this->default;
 	}
 }

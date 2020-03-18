@@ -72,25 +72,24 @@ class Layout_Sidebar extends Base_Customizer {
 		$this->add_control(
 			new Control(
 				'neve_sitewide_content_width',
-				array(
+				[
 					'sanitize_callback' => 'absint',
 					'transport'         => $this->selective_refresh,
 					'default'           => 70,
-				),
-				array(
+				],
+				[
 					'label'           => esc_html__( 'Sitewide Content Width (%)', 'neve' ),
 					'section'         => 'neve_sidebar',
-					'type'            => 'range-value',
-					'step'            => 1,
-					'input_attr'      => array(
-						'min'     => 50,
-						'max'     => 100,
-						'default' => 70,
-					),
+					'type'            => 'neve_range_control',
+					'input_attrs'     => [
+						'min'        => 50,
+						'max'        => 100,
+						'defaultVal' => 70,
+					],
 					'priority'        => 20,
-					'active_callback' => array( $this, 'sidewide_options_active_callback' ),
-				),
-				'Neve\Customizer\Controls\Range'
+					'active_callback' => [ $this, 'sidewide_options_active_callback' ],
+				],
+				'Neve\Customizer\Controls\React\Range'
 			)
 		);
 
@@ -104,10 +103,9 @@ class Layout_Sidebar extends Base_Customizer {
 				array(
 					'label'    => esc_html__( 'Enable Advanced Options', 'neve' ),
 					'section'  => 'neve_sidebar',
-					'type'     => 'checkbox-toggle',
+					'type'     => 'neve_toggle_control',
 					'priority' => 30,
-				),
-				'Neve\Customizer\Controls\Checkbox'
+				)
 			)
 		);
 	}
@@ -248,6 +246,7 @@ class Layout_Sidebar extends Base_Customizer {
 		if ( $control_id === 'neve_single_product_sidebar_layout' ) {
 			return 'full-width';
 		}
+
 		return 'right';
 	}
 
@@ -275,13 +274,14 @@ class Layout_Sidebar extends Base_Customizer {
 
 		/* translators: %s is Notice text */
 		$template = '<div class="notice notice-info"><p>%s</p></div>';
+
 		return sprintf(
 			$template,
 			sprintf(
-				/* translators: %s is edit page link */
+			/* translators: %s is edit page link */
 				esc_html__( 'Note: It seems that the shop page has an individual sidebar layout already set. To be able to control the layout from here, %s your page and set the sidebar to "Customizer Setting".', 'neve' ),
 				sprintf(
-					/* translators: %s is edit label */
+				/* translators: %s is edit label */
 					'<a target="_blank" href="' . get_edit_post_link( $shop_id ) . '">%s</a>',
 					__( 'edit', 'neve' )
 				)
@@ -289,6 +289,7 @@ class Layout_Sidebar extends Base_Customizer {
 		);
 
 	}
+
 	/**
 	 * Add content width controls.
 	 */
@@ -321,17 +322,16 @@ class Layout_Sidebar extends Base_Customizer {
 					array(
 						'label'           => esc_html__( 'Content Width (%)', 'neve' ),
 						'section'         => 'neve_sidebar',
-						'type'            => 'range-value',
-						'step'            => 1,
-						'input_attr'      => array(
-							'min'     => 50,
-							'max'     => 100,
-							'default' => 70,
-						),
+						'type'            => 'neve_range_control',
+						'input_attrs'     => [
+							'min'        => 50,
+							'max'        => 100,
+							'defaultVal' => 70,
+						],
 						'priority'        => $priority,
 						'active_callback' => array( $this, 'advanced_options_active_callback' ),
 					),
-					'Neve\Customizer\Controls\Range'
+					'Neve\Customizer\Controls\React\Range'
 				)
 			);
 			$priority += 30;

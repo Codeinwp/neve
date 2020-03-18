@@ -38,12 +38,12 @@ describe( 'Container Settings', function() {
 		let devices = { 'desktop': 1200, 'tablet': 960, 'mobile': 680 };
 		Object.keys( devices ).map( (device) => {
 			cy.get( '@control' ).
-					find( '.responsive-switchers .preview-' + device ).
+					find( 'button.' + device ).
 					click();
 			cy.get( '@control' ).
-					find( '.control-wrap.' + device + ' .range-slider-value' ).
-					invoke( 'val', devices[device] ).
-					trigger( 'change' );
+					find( 'input[type=number]' ).
+					clear({force: true}).
+					type( devices[device] );
 		} );
 
 		cy.get( '#save' ).click();
@@ -114,10 +114,10 @@ describe( 'Container Settings', function() {
 		let devices = ['desktop', 'tablet', 'mobile'];
 		devices.map( (device) => {
 			cy.get( '@control' ).
-					find( '.responsive-switchers .preview-' + device ).
+					find( 'button.' + device ).
 					click();
 			cy.get( '@control' ).
-					find( '.control-wrap.' + device + ' .range-reset-slider' ).
+					find( '.reset' ).
 					should( 'be.visible' ).
 					click();
 		} );

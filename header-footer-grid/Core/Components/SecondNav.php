@@ -150,10 +150,17 @@ class SecondNav extends Abstract_Component {
 				'tab'                => SettingsManager::TAB_LAYOUT,
 				'section'            => $this->section,
 				'label'              => __( 'Items Spacing (px)', 'neve' ),
-				'type'               => 'neve_range_control',
+				'type'               => 'Neve\Customizer\Controls\React\Range',
 				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
 				'sanitize_callback'  => 'absint',
 				'default'            => 20,
+				'options'            => [
+					'input_attrs' => [
+						'min'        => 1,
+						'max'        => 100,
+						'defaultVal' => 20,
+					],
+				],
 				'conditional_header' => true,
 			]
 		);
@@ -165,10 +172,17 @@ class SecondNav extends Abstract_Component {
 				'tab'                => SettingsManager::TAB_LAYOUT,
 				'section'            => $this->section,
 				'label'              => __( 'Items Height (px)', 'neve' ),
-				'type'               => 'neve_range_control',
+				'type'               => 'Neve\Customizer\Controls\React\Range',
 				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
 				'sanitize_callback'  => 'absint',
 				'default'            => 25,
+				'options'            => [
+					'input_attrs' => [
+						'min'        => 1,
+						'max'        => 100,
+						'defaultVal' => 25,
+					],
+				],
 				'conditional_header' => true,
 			]
 		);

@@ -156,7 +156,7 @@ class Radio_Image extends \WP_Customize_Control {
 		<# } #>
 
 		<# if ( data.description ) { #>
-		<span class="description customize-control-description">{{ data.description }}</span>
+		<span class="description customize-control-description">{{{ data.description }}}</span> <?php // phpcs:ignore WordPressVIPMinimum.Security.Mustache.OutputNotation ?>
 		<# } #>
 		<#}#>
 

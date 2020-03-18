@@ -7,9 +7,9 @@ describe( 'Sidebar/Content Settings', function() {
 		cy.get( '#accordion-section-neve_sidebar' ).click();
 		cy.get( 'label[for="neve_default_sidebar_layout-left"]' ).click();
 		cy.get(
-				'#customize-control-neve_sitewide_content_width .range-slider-value' ).
-				invoke( 'val', 50 ).
-				trigger( 'change' );
+				'#customize-control-neve_sitewide_content_width input[type=number]' ).
+				clear({force: true}).
+				type(50 );
 		cy.get( '#save' ).click();
 		cy.wait( '@customizerSave' ).then( (req) => {
 			expect( req.response.body.success ).to.be.true;
@@ -56,7 +56,7 @@ describe( 'Sidebar/Content Settings', function() {
 		aliasRestRoutes();
 		cy.get( '#accordion-panel-neve_layout' ).click();
 		cy.get( '#accordion-section-neve_sidebar' ).click();
-		cy.get( '#customize-control-neve_advanced_layout_options label' ).click({force: true});
+		cy.get( '#customize-control-neve_advanced_layout_options input' ).click();
 		cy.get( '#save' ).click();
 		cy.wait( '@customizerSave' ).then( (req) => {
 			expect( req.response.body.success ).to.be.true;
@@ -73,21 +73,21 @@ describe( 'Sidebar/Content Settings', function() {
 
 		cy.get( '[for="neve_blog_archive_sidebar_layout-left"]' ).click();
 		cy.get(
-				'#customize-control-neve_blog_archive_content_width .range-slider-value' ).
-				invoke( 'val', 50 ).
-				trigger( 'change' );
+				'#customize-control-neve_blog_archive_content_width input[type=number]' ).
+				clear({force:true} ).
+				type( 50 );
 
 		cy.get( '[for="neve_single_post_sidebar_layout-left"]' ).click();
 		cy.get(
-				'#customize-control-neve_single_post_content_width .range-slider-value' ).
-				invoke( 'val', 50 ).
-				trigger( 'change' );
+				'#customize-control-neve_single_post_content_width input[type=number]' ).
+				clear({force:true} ).
+				type(50 );
 
 		cy.get( '[for="neve_other_pages_sidebar_layout-left"]' ).click();
 		cy.get(
-				'#customize-control-neve_other_pages_content_width .range-slider-value' ).
-				invoke( 'val', 50 ).
-				trigger( 'change' );
+				'#customize-control-neve_other_pages_content_width input[type=number]' ).
+				clear({force:true} ).
+				type( 50 );
 
 		cy.get( '#save' ).click();
 		cy.wait( '@customizerSave' ).then( (req) => {
@@ -144,7 +144,7 @@ describe( 'Sidebar/Content Settings', function() {
 		cy.get( '#accordion-section-neve_sidebar' ).click();
 		cy.get( 'label[for="neve_default_sidebar_layout-right"]' ).click();
 		cy.get(
-				'#customize-control-neve_sitewide_content_width .range-reset-slider' ).
+				'#customize-control-neve_sitewide_content_width .reset' ).
 				click();
 		cy.get( '#save' ).click();
 		cy.wait( '@customizerSave' ).then( (req) => {
