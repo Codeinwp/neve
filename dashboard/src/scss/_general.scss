@@ -1,0 +1,38 @@
+//* {
+//  box-sizing: border-box;
+//}
+
+.container {
+  padding: 0 50px;
+}
+
+.content {
+  display: flex;
+  padding-top: 30px;
+}
+
+.main {
+  flex-grow: 1;
+}
+
+.sidebar {
+  width: 280px;
+  margin-left: 25px;
+  margin-top: 0;
+}
+
+.card {
+  //border: 1px solid $grey;
+  //background: #fff;
+  //box-sizing: border-box;
+}
+
+
+@keyframes spin {
+  from {
+    transform:rotate(0deg);
+  }
+  to {
+    transform:rotate(360deg);
+  }
+}

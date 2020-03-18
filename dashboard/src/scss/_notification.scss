@@ -1,0 +1,82 @@
+.notification {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 10px 10px 10px 20px;
+  box-sizing: border-box;
+  background-color: $blue;
+  border: 1px solid darken($blue, 10%);
+  margin: 0 0 20px;
+  transition: .3s all ease;
+  &.hidden {
+    max-height: 0;
+    overflow: hidden;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-width: 0;
+    opacity: 0;
+  }
+  &.info {
+    background-color: $info;
+    border-color: darken($info, 10%);
+  }
+
+  &.error {
+    background-color: $error;
+    border-color: darken($error, 10%);
+  }
+
+  &.warning {
+    background-color: $warning;
+    border-color: darken($warning, 10%);
+  }
+
+  &.success {
+    background-color: $success;
+    border-color: darken($success, 10%);
+  }
+
+  button {
+    margin-left: auto;
+    background-color: transparent;
+    color: #fff;
+    border: 2px solid #FFFFFF;
+    border-radius: 2px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: normal;
+    padding: 10px 15px;
+    height: auto;
+    span {
+      display: flex;
+      align-items: center;
+
+      svg {
+        margin-right: 5px;
+      }
+    }
+    &.is-loading span svg {
+      animation-name: spin;
+      animation-duration: 2000ms;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+    }
+
+    &[disabled] {
+      text-shadow: none;
+      opacity: .5;
+    }
+  }
+
+  p {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1;
+    margin: 0;
+    svg {
+      margin-right: 5px;
+    }
+  }
+}

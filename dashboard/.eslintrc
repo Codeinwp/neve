@@ -1,0 +1,44 @@
+{
+
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "extends": [
+    "wordpress"
+  ],
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "rules": {
+    "space-before-function-paren": [
+      "off"
+    ],
+    "react/react-in-jsx-scope": [
+      "off"
+    ],
+    "space-in-parens": [
+      "off"
+    ],
+    "computed-property-spacing": [
+      "off"
+    ],
+    "max-len": [
+      "error",
+      {
+        "code": 100,
+        "tabWidth": 4
+      }
+    ]
+  }
+}

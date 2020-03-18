@@ -1,0 +1,8 @@
+@import "scss/vars";
+@import "scss/core-overrides";
+#neve-dashboard {
+  @import "scss/general";
+  @import "scss/header";
+  @import "scss/sidebar";
+  @import "scss/notification";
+}

@@ -1,0 +1,47 @@
+header {
+  background-color: #fff;
+
+  .top {
+    display: flex;
+    align-items: center;
+    padding: 65px 0 50px;
+  }
+
+  .heading {
+    font-size: 45px;
+    margin: 0;
+    line-height: normal;
+    color: $black;
+  }
+
+  .version {
+    font-size: 14px;
+    color: $blue;
+    margin-right: 30px;
+    font-weight: 600;
+    margin-left: auto;
+  }
+
+  .navigation {
+    display: flex;
+    list-style: none;
+    padding-bottom: 20px;
+    font-size: 19px;
+    text-decoration: none;
+    font-weight: 600;
+
+    li:not(:last-child) {
+      margin-right: 50px;
+    }
+
+    a {
+      color: $black;
+      text-decoration: none;
+      cursor: pointer;
+
+      &.active {
+        color: $blue;
+      }
+    }
+  }
+}

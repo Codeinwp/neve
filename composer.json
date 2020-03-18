@@ -21,7 +21,8 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"HFG\\": "header-footer-grid/"
+			"HFG\\": "header-footer-grid/",
+			"Neve_Dash\\": "dashboard/inc/"
 		},
 		"files": [
 			"vendor/codeinwp/themeisle-sdk/load.php",
