@@ -40,8 +40,8 @@ class Checkbox extends \WP_Customize_Control {
 	protected function content_template() {
 		?>
 		<div class="checkbox-toggle-wrap">
-			<span>{{{data.label}}}</span>
-			<input {{{data.link}}} type="checkbox" id="{{{data.id}}}"/><label for="{{{data.id}}}"></label>
+			<span>{{data.label}}</span>
+			<input {{{data.link}}} type="checkbox" id="{{data.id}}"/><label for="{{data.id}}"></label>  <?php // phpcs:ignore WordPressVIPMinimum.Security.Mustache.OutputNotation ?>
 		</div>
 		<?php
 	}

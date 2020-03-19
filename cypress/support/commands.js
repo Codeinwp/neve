@@ -47,6 +47,7 @@ Cypress.Commands.add( 'insertPost',
 			if ( featured ) {
 				addFeaturedImage();
 			}
+			cy.wait(1000);
 			cy.get( '.editor-post-title__input' ).type( title );
 			cy.get(
 					'.editor-default-block-appender textarea.block-editor-default-block-appender__content' ).

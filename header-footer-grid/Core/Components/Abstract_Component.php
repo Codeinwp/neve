@@ -301,6 +301,10 @@ abstract class Abstract_Component implements Component {
 	 * @param string $panel Builder panel.
 	 */
 	public function __construct( $panel ) {
+		if ( ! $this->is_active() ) {
+			return;
+		}
+
 		$this->init();
 		$this->maybe_enqueue_fonts();
 		$this->set_property( 'panel', $panel );
@@ -360,7 +364,7 @@ abstract class Abstract_Component implements Component {
 	/**
 	 * Method to set protected properties for class.
 	 *
-	 * @param string $key   The property key name.
+	 * @param string $key The property key name.
 	 * @param string $value The property value.
 	 *
 	 * @return bool
@@ -580,7 +584,6 @@ abstract class Abstract_Component implements Component {
 			)
 		);
 
-		$wp_customize->register_control_type( '\HFG\Core\Customizer\SpacingControl' );
 		$wp_customize->register_section_type( '\HFG\Core\Customizer\Instructions_Section' );
 
 		Settings\Manager::get_instance()->load( $this->get_id(), $wp_customize );
@@ -611,11 +614,11 @@ abstract class Abstract_Component implements Component {
 	 * Write position styles and filter values.
 	 *
 	 * @param string $target CSS target property ( margin | padding ).
-	 * @param string $top    Top value.
-	 * @param string $right  Right value.
+	 * @param string $top Top value.
+	 * @param string $right Right value.
 	 * @param string $bottom Bottom value.
-	 * @param string $left   Left value.
-	 * @param string $unit   Unit to use ( px | em | % ).
+	 * @param string $left Left value.
+	 * @param string $unit Unit to use ( px | em | % ).
 	 *
 	 * @return array
 	 * @since   1.0.1
@@ -640,10 +643,10 @@ abstract class Abstract_Component implements Component {
 	/**
 	 * Method to reuse loop for generating position css.
 	 *
-	 * @param array  $css_array       The css array.
+	 * @param array  $css_array The css array.
 	 * @param array  $position_values The position values array.
-	 * @param string $selector        The item selector.
-	 * @param string $type            The type to generate ( margin | padding ).
+	 * @param string $selector The item selector.
+	 * @param string $type The type to generate ( margin | padding ).
 	 *
 	 * @return mixed
 	 * @since   1.0.1
@@ -685,10 +688,11 @@ abstract class Abstract_Component implements Component {
 		}
 		if ( $typeface ) {
 			foreach ( $this->media_selectors as $media => $media_query ) {
+				$lh_suffix = isset( $typeface['lineHeight']['suffix'] ) ? $typeface['lineHeight']['suffix'][ $media ] : '';
 				$css_array[ $media_query ][ $this->default_typography_selector ]['font-size']       = $typeface['fontSize'][ $media ] . $typeface['fontSize']['suffix'][ $media ];
 				$css_array[ $media_query ][ $this->default_typography_selector . ' svg' ]['height'] = $typeface['fontSize'][ $media ] . $typeface['fontSize']['suffix'][ $media ];
 				$css_array[ $media_query ][ $this->default_typography_selector . ' svg' ]['width']  = $typeface['fontSize'][ $media ] . $typeface['fontSize']['suffix'][ $media ];
-				$css_array[ $media_query ][ $this->default_typography_selector ]['line-height']     = $typeface['lineHeight'][ $media ];
+				$css_array[ $media_query ][ $this->default_typography_selector ]['line-height']     = $typeface['lineHeight'][ $media ] . $lh_suffix;
 				$css_array[ $media_query ][ $this->default_typography_selector ]['letter-spacing']  = $typeface['letterSpacing'][ $media ] . 'px';
 			}
 			$css_array[ $this->default_typography_selector ]['font-weight']    = $typeface['fontWeight'];

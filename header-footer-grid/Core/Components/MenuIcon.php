@@ -13,8 +13,6 @@ namespace HFG\Core\Components;
 
 use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Main;
-use Neve\Customizer\Controls\Checkbox;
-use WP_Customize_Manager;
 
 /**
  * Class MenuIcon
@@ -148,7 +146,14 @@ class MenuIcon extends Abstract_Component {
 		$appearance = \HFG\component_setting( self::BUTTON_APPEARANCE, null, $this->id );
 
 		if ( isset( $appearance['borderRadius'] ) ) {
-			$css_array[ $this->default_selector ]['border-radius'] = $appearance['borderRadius'] . 'px';
+			if ( is_array( $appearance['borderRadius'] ) ) {
+				$css_array[ $this->default_selector ]['border-top-left-radius']     = $appearance['borderRadius']['top'] . 'px';
+				$css_array[ $this->default_selector ]['border-top-right-radius']    = $appearance['borderRadius']['right'] . 'px';
+				$css_array[ $this->default_selector ]['border-bottom-left-radius']  = $appearance['borderRadius']['left'] . 'px';
+				$css_array[ $this->default_selector ]['border-bottom-right-radius'] = $appearance['borderRadius']['bottom'] . 'px';
+			} else {
+				$css_array[ $this->default_selector ]['border-radius'] = $appearance['borderRadius'] . 'px';
+			}
 		}
 
 		if ( ! empty( $appearance['background'] ) ) {
@@ -164,7 +169,14 @@ class MenuIcon extends Abstract_Component {
 		}
 
 		if ( ! empty( $appearance['borderWidth'] ) && $appearance['type'] === 'outline' ) {
-			$css_array[ $this->default_selector ]['border'] = $appearance['borderWidth'] . 'px solid';
+			if ( is_array( $appearance['borderWidth'] ) ) {
+				$css_array[ $this->default_selector ]['border-style'] = 'solid';
+				foreach ( $appearance['borderWidth'] as $k => $v ) {
+					$css_array[ $this->default_selector ][ 'border-' . $k . '-width' ] = $v . 'px';
+				}
+			} else {
+				$css_array[ $this->default_selector ]['border'] = $appearance['borderWidth'] . 'px solid';
+			}
 		}
 
 		if ( $appearance['type'] !== 'outline' ) {
@@ -186,7 +198,14 @@ class MenuIcon extends Abstract_Component {
 	protected function get_close_button_style( $appearance_array ) {
 		$additional_style = [];
 		if ( isset( $appearance_array['borderRadius'] ) ) {
-			$additional_style[ $this->close_button ]['border-radius'] = $appearance_array['borderRadius'] . 'px';
+			if ( is_array( $appearance_array['borderRadius'] ) ) {
+				$additional_style[ $this->close_button ]['border-top-left-radius']     = $appearance_array['borderRadius']['top'] . 'px';
+				$additional_style[ $this->close_button ]['border-top-right-radius']    = $appearance_array['borderRadius']['right'] . 'px';
+				$additional_style[ $this->close_button ]['border-bottom-right-radius'] = $appearance_array['borderRadius']['bottom'] . 'px';
+				$additional_style[ $this->close_button ]['border-bottom-left-radius']  = $appearance_array['borderRadius']['left'] . 'px';
+			} else {
+				$additional_style[ $this->close_button ]['border-radius'] = $appearance_array['borderRadius'] . 'px';
+			}
 		}
 		if ( ! empty( $appearance_array['background'] ) ) {
 			$additional_style[ $this->close_button ]['background-color'] = $appearance_array['background'];
@@ -199,7 +218,14 @@ class MenuIcon extends Abstract_Component {
 			}
 		}
 		if ( ! empty( $appearance_array['borderWidth'] ) && $appearance_array['type'] === 'outline' ) {
-			$additional_style[ $this->close_button ]['border'] = $appearance_array['borderWidth'] . 'px solid';
+			if ( is_array( $appearance_array['borderWidth'] ) ) {
+				$css_array[ $this->close_button ]['border-style'] = 'solid';
+				foreach ( $appearance_array['borderWidth'] as $k => $v ) {
+					$css_array[ $this->close_button ][ 'border-' . $k . '-width' ] = $v . 'px';
+				}
+			} else {
+				$additional_style[ $this->close_button ]['border'] = $appearance_array['borderWidth'] . 'px solid';
+			}
 		}
 		if ( $appearance_array['type'] !== 'outline' ) {
 			$additional_style[ $this->close_button ]['border'] = 'none';

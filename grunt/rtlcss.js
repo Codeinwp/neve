@@ -1,6 +1,5 @@
 /* jshint node:true */
 // https://github.com/MohammadYounes/grunt-rtlcss
-
 const ext = '-rtl.css';
 const options = {
 	'autoRename': false,

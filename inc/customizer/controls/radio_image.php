@@ -99,9 +99,9 @@ class Radio_Image extends \WP_Customize_Control {
 	/**
 	 * Loads the jQuery UI Button script and custom scripts/styles.
 	 *
+	 * @return void
 	 * @since  1.0.0
 	 * @access public
-	 * @return void
 	 */
 	public function enqueue() {
 		wp_enqueue_script( 'jquery-ui-button' );
@@ -110,9 +110,9 @@ class Radio_Image extends \WP_Customize_Control {
 	/**
 	 * Add custom JSON parameters to use in the JS template.
 	 *
+	 * @return array
 	 * @since  1.0.0
 	 * @access public
-	 * @return array
 	 */
 	public function json() {
 		$json = parent::json();
@@ -139,9 +139,9 @@ class Radio_Image extends \WP_Customize_Control {
 	/**
 	 * Underscore JS template to handle the control's output.
 	 *
+	 * @return void
 	 * @since  1.0.0
 	 * @access public
-	 * @return void
 	 */
 	public function content_template() {
 		?>
@@ -156,7 +156,7 @@ class Radio_Image extends \WP_Customize_Control {
 		<# } #>
 
 		<# if ( data.description ) { #>
-		<span class="description customize-control-description">{{{ data.description }}}</span>
+		<span class="description customize-control-description">{{{ data.description }}}</span> <?php // phpcs:ignore WordPressVIPMinimum.Security.Mustache.OutputNotation ?>
 		<# } #>
 		<#}#>
 
@@ -165,9 +165,10 @@ class Radio_Image extends \WP_Customize_Control {
 			<# for ( key in data.choices ) { #>
 
 			<input <# if( data.is_tab) {#>data-controls="{{data.controls[key]}}"<#}#> type="radio" value="{{ key }}"
-			name="_customize-{{ data.type }}-{{ data.id }}" id="{{ data.id }}-{{ key }}" {{{ data.link }}} <# if ( key
-			=== data.value && ( !data.is_tab || data.is_subtab) ) { #> checked="checked" <# } #> />
-			<label for="{{ data.id }}-{{ key }}" style="width:{{{data.width}}}%">
+			name="_customize-{{ data.type }}-{{ data.id }}" id="{{ data.id }}-{{ key }}" <# if ( key
+			=== data.value && ( !data.is_tab || data.is_subtab) ) { #> checked="checked" <# } #>
+			{{{ data.link }}} /> <?php // phpcs:ignore WordPressVIPMinimum.Security.Mustache.OutputNotation ?>
+			<label for="{{ data.id }}-{{ key }}" style="width:{{data.width}}%">
 				<# if( !data.is_tab) {#>
 				<span class="screen-reader-text">{{ data.choices[ key ]['label'] }}</span>
 				<img src="{{ data.choices[ key ]['url'] }}" alt="{{ data.choices[ key ]['label'] }}"/>

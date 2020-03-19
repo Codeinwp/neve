@@ -1,0 +1,32 @@
+.neve-range-control {
+  .range-wrap {
+	display: flex;
+	align-items: center;
+	justify-items: flex-end;
+	input[type=number] {
+	  border-radius: 0;
+	  border-color: $input-borders;
+	}
+	.components-range-control {
+	  > div {
+		margin-bottom: 0;
+	  }
+	  flex-grow: 1;
+	}
+  }
+}
+
+.neve-range-control {
+	.components-base-control__field {
+		display: flex;
+
+		.components-range-control__slider {
+			width: 70%;
+		}
+
+		.components-range-control__number {
+			width: 25%;
+			margin-left: 5%;
+		}
+	}
+}

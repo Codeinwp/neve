@@ -113,13 +113,12 @@ class Layout_Blog extends Base_Customizer {
 					'default'           => false,
 				),
 				array(
-					'type'            => 'checkbox',
+					'type'            => 'neve_toggle_control',
 					'priority'        => 35,
 					'section'         => 'neve_blog_archive_layout',
 					'label'           => esc_html__( 'Enable Masonry', 'neve' ),
 					'active_callback' => array( $this, 'should_show_masonry' ),
-				),
-				'Neve\Customizer\Controls\Checkbox'
+				)
 			)
 		);
 	}
@@ -136,18 +135,18 @@ class Layout_Blog extends Base_Customizer {
 					'default'           => 25,
 				),
 				array(
-					'label'      => esc_html__( 'Excerpt Length', 'neve' ),
-					'section'    => 'neve_blog_archive_layout',
-					'type'       => 'range-value',
-					'step'       => 5,
-					'input_attr' => array(
-						'min'     => 5,
-						'max'     => 300,
-						'default' => 40,
-					),
-					'priority'   => 35,
+					'label'       => esc_html__( 'Excerpt Length', 'neve' ),
+					'section'     => 'neve_blog_archive_layout',
+					'type'        => 'neve_range_control',
+					'input_attrs' => [
+						'min'        => 5,
+						'max'        => 300,
+						'defaultVal' => 25,
+						'step'       => 5,
+					],
+					'priority'    => 35,
 				),
-				'Neve\Customizer\Controls\Range'
+				'Neve\Customizer\Controls\React\Range'
 			)
 		);
 	}
@@ -230,7 +229,7 @@ class Layout_Blog extends Base_Customizer {
 				'neve_post_content_ordering',
 				array(
 					'sanitize_callback' => array( $this, 'sanitize_post_content_ordering' ),
-					'default'           => json_encode( $order_default_components ),
+					'default'           => wp_json_encode( $order_default_components ),
 				),
 				array(
 					'label'           => esc_html__( 'Post Content Order', 'neve' ),
@@ -252,18 +251,18 @@ class Layout_Blog extends Base_Customizer {
 					'default'           => 0,
 				),
 				array(
-					'label'      => esc_html__( 'Thumbnail Shadow', 'neve' ),
-					'section'    => 'neve_blog_archive_layout',
-					'type'       => 'range-value',
-					'step'       => 1,
-					'input_attr' => array(
-						'min'     => 0,
-						'max'     => 5,
-						'default' => 0,
-					),
-					'priority'   => 50,
+					'label'       => esc_html__( 'Thumbnail Shadow', 'neve' ),
+					'section'     => 'neve_blog_archive_layout',
+					'type'        => 'neve_range_control',
+					'step'        => 1,
+					'input_attrs' => [
+						'min'        => 0,
+						'max'        => 5,
+						'defaultVal' => 0,
+					],
+					'priority'    => 50,
 				),
-				'Neve\Customizer\Controls\Range'
+				'Neve\Customizer\Controls\React\Range'
 			)
 		);
 	}
@@ -293,7 +292,7 @@ class Layout_Blog extends Base_Customizer {
 				'neve_post_meta_ordering',
 				array(
 					'sanitize_callback' => array( $this, 'sanitize_meta_ordering' ),
-					'default'           => json_encode( $order_default_components ),
+					'default'           => wp_json_encode( $order_default_components ),
 				),
 				array(
 					'label'           => esc_html__( 'Meta Order', 'neve' ),
@@ -376,7 +375,7 @@ class Layout_Blog extends Base_Customizer {
 			'title-meta',
 			'excerpt',
 		);
-		$content_order = get_theme_mod( 'neve_post_content_ordering', json_encode( $default ) );
+		$content_order = get_theme_mod( 'neve_post_content_ordering', wp_json_encode( $default ) );
 		$content_order = json_decode( $content_order, true );
 		if ( ! in_array( 'title-meta', $content_order, true ) ) {
 			return false;
@@ -463,10 +462,9 @@ class Layout_Blog extends Base_Customizer {
 				array(
 					'label'    => esc_html__( 'Show Author Avatar', 'neve' ),
 					'section'  => 'neve_blog_archive_layout',
-					'type'     => 'checkbox',
+					'type'     => 'neve_toggle_control',
 					'priority' => 75,
-				),
-				'Neve\Customizer\Controls\Checkbox'
+				)
 			)
 		);
 	}

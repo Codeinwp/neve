@@ -621,7 +621,7 @@ class Admin {
 			array(
 				'icon' => 'dashicons-align-center',
 				'text' => __( 'Header Options', 'neve' ),
-				'link' => add_query_arg( array( 'autofocus[panel]' => 'neve_header' ), admin_url( 'customize.php' ) ),
+				'link' => add_query_arg( array( 'autofocus[panel]' => 'hfg_header' ), admin_url( 'customize.php' ) ),
 			),
 			array(
 				'icon' => 'dashicons-welcome-write-blog',
@@ -631,7 +631,7 @@ class Admin {
 			array(
 				'icon' => 'dashicons-admin-generic',
 				'text' => __( 'Footer Options', 'neve' ),
-				'link' => add_query_arg( array( 'autofocus[panel]' => 'neve_footer' ), admin_url( 'customize.php' ) ),
+				'link' => add_query_arg( array( 'autofocus[panel]' => 'hfg_footer' ), admin_url( 'customize.php' ) ),
 			),
 			array(
 				'icon' => 'dashicons-align-left',
@@ -693,31 +693,7 @@ class Admin {
 	 * @return string Image url.
 	 */
 	private function get_notice_picture() {
-		$previous_theme = get_theme_mod( 'ti_prev_theme' );
-		$onboarding_dir = get_template_directory_uri() . '/onboarding/';
-		switch ( $previous_theme ) {
-			case 'themotion-lite':
-			case 'themotion':
-				return $onboarding_dir . 'neve-themotion/screenshot.jpg';
-			case 'amadeus':
-				return $onboarding_dir . 'neve-amadeus/screenshot.jpg';
-			case 'rokophoto-lite':
-			case 'rokophoto':
-				return $onboarding_dir . 'neve-rokophoto/screenshot.jpg';
-			case 'oblique':
-				return $onboarding_dir . 'neve-oblique/screenshot.jpg';
-			case 'shop-isle':
-			case 'shop-isle-pro':
-				return $onboarding_dir . 'neve-shop/screenshot.jpg';
-			case 'zerif-pro':
-			case 'zerif-lite':
-				return $onboarding_dir . 'neve-zelle/screenshot.jpg';
-			case 'lawyeria-lite':
-			case 'lawyeria':
-				return $onboarding_dir . 'neve-lawyers/screenshot.jpg';
-			default:
-				return get_template_directory_uri() . '/assets/img/sites-list.jpg';
-		}
+		return get_template_directory_uri() . '/assets/img/sites-list.jpg';
 	}
 
 	/**

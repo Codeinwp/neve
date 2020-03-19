@@ -1,0 +1,42 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - master
+jobs:
+  create_tag:
+    runs-on: ubuntu-latest
+    if: "! contains(github.event.head_commit.message, '[skip ci]')"
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+      - uses: actions/checkout@master
+        with:
+          persist-credentials: false
+      - name: Build files using ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Release new version
+        id: release
+        run: |
+          npm ci
+          npm run release
+        env:
+          CI: true
+          GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
+          GIT_AUTHOR_NAME: themeisle[bot]
+          GIT_AUTHOR_EMAIL: ${{ secrets.BOT_EMAIL }}
+          GIT_COMMITTER_NAME: themeisle[bot]
+          GIT_COMMITTER_EMAIL: ${{ secrets.BOT_EMAIL }}
+  empty-job:
+    # if no jobs run, github action considers it a test failure -- which seems like a bug
+    # this makes it so the top-level if statement for the job does not give status failure.
+    runs-on: ubuntu-latest
+    if: success()
+    steps:
+      - name: Meep
+        run: |
+          echo "Nothing to do"

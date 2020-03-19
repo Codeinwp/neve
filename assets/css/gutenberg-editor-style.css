@@ -235,12 +235,12 @@
   font-size: .85em;
 }
 
-#editor .editor-styles-wrapper {
+#editor .editor-styles-wrapper .block-editor-writing-flow {
   margin: 0 auto;
   width: 100%;
 }
 
-#editor .editor-styles-wrapper .wp-block {
+#editor .editor-styles-wrapper .block-editor-writing-flow .wp-block {
   max-width: 100%;
 }
 

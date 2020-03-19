@@ -1,0 +1,63 @@
+.neve-responsive-sizing {
+  display: flex;
+
+  > button {
+    width: 35px !important;
+  }
+
+  .nv-sizing-item {
+    flex-grow: 1;
+    margin-left: -1px;
+
+    > input {
+      border: 1px solid $input-borders;
+      border-radius: 0;
+      padding-right: 0;
+      position: relative;
+      &:focus {
+        z-index: 10;
+      }
+    }
+  }
+
+  button {
+    border-radius: 0;
+    height: 30px;
+    padding: 3px;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    &:hover {
+      box-shadow: none !important;
+    }
+
+    &.link {
+      justify-content: center !important;
+      border: 1px solid $input-borders !important;
+      padding: 0;
+      min-width: unset;
+    }
+
+    &.active, &.active:hover, &.active:focus:enabled {
+      box-shadow: none !important;
+      outline: none !important;
+      background: $accent-color !important;
+      border-color: $accent-color !important;
+      color: #fff !important;
+    }
+    svg {
+      margin-right: 0 !important;
+      width: 17px;
+    }
+  }
+
+  label {
+    text-transform: uppercase;
+    font-size: 9px;
+    text-align: center;
+    display: block;
+    font-weight: 600;
+    color: $accent-color;
+  }
+}

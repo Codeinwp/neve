@@ -1,5 +1,5 @@
 /* jshint esversion: 6 */
-/* global NeveReactCustomize, wp */
+/* global wp */
 import PropTypes from 'prop-types'
 import { maybeParseJson } from '../common/common'
 
@@ -38,28 +38,29 @@ class PresetsSelector extends Component {
     const presets = this.getPresets()
     return (
       <div className='neve-preset-selector'>
-        <div className="search">
+        <div className='search'>
           <input
-            type="search"
+            type='search'
             placeholder={__( 'Search Header Presets...' )}
-            onChange={(e) => {this.setState( { search: e.target.value } )}}/>
+            onChange={(e) => { this.setState( { search: e.target.value } ) }}
+          />
         </div>
         {
           presets.length > 0 ? presets.map( (preset, index) => {
-              return (
-                <Tooltip key={index} text={preset.label}>
-                  <a
-                    onClick={(e) => {
-                      e.preventDefault()
-                      this.replaceSettings( preset.setup )
-                    }}
-                  >
-                    <img src={preset.image} alt={preset.label}/>
-                  </a>
-                </Tooltip>
-              )
-            } ) :
-            <p>{__( 'No header presets found', 'neve' )}</p>
+            return (
+              <Tooltip key={index} text={preset.label}>
+                <button
+                  onClick={(e) => {
+                    e.preventDefault()
+                    this.replaceSettings( preset.setup )
+                  }}
+                >
+                  <img src={preset.image} alt={preset.label} />
+                </button>
+              </Tooltip>
+            )
+          } )
+            : <p>{__( 'No header presets found', 'neve' )}</p>
         }
       </div>
     )

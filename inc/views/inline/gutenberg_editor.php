@@ -97,7 +97,7 @@ class Gutenberg_Editor extends Base_Inline {
 	private function add_container_style() {
 		$container_width = get_theme_mod(
 			'neve_container_width',
-			json_encode(
+			wp_json_encode(
 				[
 					'mobile'  => 748,
 					'tablet'  => 992,
@@ -219,6 +219,7 @@ class Gutenberg_Editor extends Base_Inline {
 				[
 					'css_prop' => 'line-height',
 					'value'    => $value['lineHeight'],
+					'suffix'   => isset( $value['lineHeight']['suffix'] ) ? $value['lineHeight']['suffix'] : '',
 				],
 				[
 					'css_prop' => 'letter-spacing',

@@ -202,7 +202,7 @@ class Nav extends Abstract_Component {
 					'noformat'          => true,
 					'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
 					'sanitize_callback' => array( $this, 'sanitize_last_menu_item' ),
-					'default'           => json_encode( $order_default_components ),
+					'default'           => wp_json_encode( $order_default_components ),
 					'label'             => __( 'Last Menu Item', 'neve' ),
 					'type'              => 'Neve\Customizer\Controls\Ordering',
 					'options'           => [
@@ -237,10 +237,17 @@ class Nav extends Abstract_Component {
 				'tab'                => SettingsManager::TAB_LAYOUT,
 				'section'            => $this->section,
 				'label'              => __( 'Items Spacing (px)', 'neve' ),
-				'type'               => 'neve_range_control',
+				'type'               => 'Neve\Customizer\Controls\React\Range',
 				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
 				'sanitize_callback'  => 'absint',
 				'default'            => 20,
+				'options'            => [
+					'input_attrs' => [
+						'min'        => 1,
+						'max'        => 100,
+						'defaultVal' => 20,
+					],
+				],
 				'conditional_header' => true,
 			]
 		);
@@ -252,10 +259,17 @@ class Nav extends Abstract_Component {
 				'tab'                => SettingsManager::TAB_LAYOUT,
 				'section'            => $this->section,
 				'label'              => __( 'Items Height (px)', 'neve' ),
-				'type'               => 'neve_range_control',
+				'type'               => 'Neve\Customizer\Controls\React\Range',
 				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
 				'sanitize_callback'  => 'absint',
 				'default'            => 25,
+				'options'            => [
+					'input_attrs' => [
+						'min'        => 1,
+						'max'        => 100,
+						'defaultVal' => 25,
+					],
+				],
 				'conditional_header' => true,
 			]
 		);
@@ -276,14 +290,14 @@ class Nav extends Abstract_Component {
 		);
 
 		if ( empty( $value ) ) {
-			return json_encode( $allowed );
+			return wp_json_encode( $allowed );
 		}
 
 		$decoded = json_decode( $value, true );
 
 		foreach ( $decoded as $val ) {
 			if ( ! in_array( $val, $allowed, true ) ) {
-				return json_encode( $allowed );
+				return wp_json_encode( $allowed );
 			}
 		}
 

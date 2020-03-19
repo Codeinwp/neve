@@ -29,6 +29,18 @@ class Buttons extends Base_Inline {
 	private $secondary_button;
 
 	/**
+	 * Map for border radius css property.
+	 *
+	 * @var array
+	 */
+	private $border_radius_map = [
+		'top'    => 'border-top-left-radius',
+		'right'  => 'border-top-right-radius',
+		'bottom' => 'border-bottom-right-radius',
+		'left'   => 'border-bottom-left-radius',
+	];
+
+	/**
 	 * Do all actions necessary.
 	 *
 	 * @return void
@@ -120,13 +132,22 @@ class Buttons extends Base_Inline {
 		}
 
 		if ( isset( $this->primary_setup['borderRadius'] ) ) {
-			$setup = array(
-				array(
+			$setup = [];
+			if ( is_array( $this->primary_setup['borderRadius'] ) ) {
+				foreach ( $this->primary_setup['borderRadius'] as $k => $v ) {
+					$setup[] = [
+						'css_prop' => $this->border_radius_map[ $k ],
+						'value'    => $v,
+						'suffix'   => 'px',
+					];
+				}
+			} else {
+				$setup[] = [
 					'css_prop' => 'border-radius',
 					'value'    => absint( $this->primary_setup['borderRadius'] ),
 					'suffix'   => 'px',
-				),
-			);
+				];
+			}
 			$this->add_style(
 				$setup,
 				apply_filters(
@@ -150,11 +171,25 @@ class Buttons extends Base_Inline {
 			];
 
 			if ( ! empty( $this->primary_setup['borderWidth'] ) ) {
-				$setup[] = [
-					'css_prop' => 'border-width',
-					'value'    => $this->primary_setup['borderWidth'],
-					'suffix'   => 'px',
-				];
+				if ( is_array( $this->primary_setup['borderWidth'] ) ) {
+					$setup[] = [
+						'css_prop' => 'border-style',
+						'value'    => 'solid',
+					];
+					foreach ( $this->primary_setup['borderWidth'] as $k => $v ) {
+						$setup[] = [
+							'css_prop' => 'border-' . $k . '-width',
+							'value'    => $v,
+							'suffix'   => 'px',
+						];
+					}
+				} else {
+					$setup[] = [
+						'css_prop' => 'border-width',
+						'value'    => $this->primary_setup['borderWidth'],
+						'suffix'   => 'px',
+					];
+				}
 			}
 			$this->add_style(
 				$setup,
@@ -226,13 +261,22 @@ class Buttons extends Base_Inline {
 		}
 
 		if ( isset( $this->secondary_button['borderRadius'] ) ) {
-			$setup = array(
-				array(
+			$setup = [];
+			if ( is_array( $this->secondary_button['borderRadius'] ) ) {
+				foreach ( $this->secondary_button['borderRadius'] as $k => $v ) {
+					$setup[] = [
+						'css_prop' => $this->border_radius_map[ $k ],
+						'value'    => $v,
+						'suffix'   => 'px',
+					];
+				}
+			} else {
+				$setup[] = [
 					'css_prop' => 'border-radius',
 					'value'    => absint( $this->secondary_button['borderRadius'] ),
 					'suffix'   => 'px',
-				),
-			);
+				];
+			}
 			$this->add_style(
 				$setup,
 				apply_filters(
@@ -262,11 +306,25 @@ class Buttons extends Base_Inline {
 			];
 
 			if ( ! empty( $this->secondary_button['borderWidth'] ) ) {
-				$setup[] = [
-					'css_prop' => 'border-width',
-					'value'    => $this->secondary_button['borderWidth'],
-					'suffix'   => 'px',
-				];
+				if ( is_array( $this->secondary_button['borderWidth'] ) ) {
+					$setup[] = [
+						'css_prop' => 'border-style',
+						'value'    => 'solid',
+					];
+					foreach ( $this->secondary_button['borderWidth'] as $k => $v ) {
+						$setup[] = [
+							'css_prop' => 'border-' . $k . '-width',
+							'value'    => $v,
+							'suffix'   => 'px',
+						];
+					}
+				} else {
+					$setup[] = [
+						'css_prop' => 'border-width',
+						'value'    => $this->secondary_button['borderWidth'],
+						'suffix'   => 'px',
+					];
+				}
 			}
 			$this->add_style(
 				$setup,

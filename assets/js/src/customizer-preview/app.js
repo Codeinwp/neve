@@ -1,14 +1,14 @@
 /* global neveCustomizePreview */
 /* jshint esversion: 6 */
-import { removeClass, addClass } from '../utils.js'
+import {removeClass, addClass} from '../utils.js'
 
 function addCss(id, content = '') {
-  let style = document.querySelector( '#' + id + '-css-style' )
-  if ( !style ) {
-    style = document.createElement( 'style' )
-    style.setAttribute( 'id', id + '-css-style' )
-    style.setAttribute( 'type', 'text/css' )
-    document.querySelector( 'head' ).appendChild( style )
+  let style = document.querySelector('#' + id + '-css-style')
+  if (!style) {
+    style = document.createElement('style')
+    style.setAttribute('id', id + '-css-style')
+    style.setAttribute('type', 'text/css')
+    document.querySelector('head').appendChild(style)
   }
   style.innerHTML = content
 }
@@ -16,21 +16,21 @@ function addCss(id, content = '') {
 /**
  * Run JS on load.
  */
-window.addEventListener( 'load', function() {
+window.addEventListener('load', function () {
   /**
    * Add action when Header Panel rendered by customizer.
    */
   document.addEventListener(
     'header_builder_panel_changed',
-    function(e) {
-      if ( e.detail.partial_id === 'hfg_header_layout_partial' ) {
+    function (e) {
+      if (e.detail.partial_id === 'hfg_header_layout_partial') {
         window.HFG.init()
-        console.log( 'Reinitialize HFG with sidebar.' )
+        console.log('Reinitialize HFG with sidebar.')
         return false
       }
-      if ( e.detail.partial_id === 'nav-icon_partial' ) {
-        window.HFG.init( true )
-        console.log( 'Reinitialize HFG with skip.' )
+      if (e.detail.partial_id === 'nav-icon_partial') {
+        window.HFG.init(true)
+        console.log('Reinitialize HFG with skip.')
         return false
       }
     }
@@ -38,23 +38,23 @@ window.addEventListener( 'load', function() {
 
   document.addEventListener(
     'customize_control_sidebar',
-    function(e) {
-      if ( e.detail === 'open' ) {
-        window.HFG.toggleMenuSidebar( true )
+    function (e) {
+      if (e.detail === 'open') {
+        window.HFG.toggleMenuSidebar(true)
       }
-      if ( e.detail === 'close' ) {
-        window.HFG.toggleMenuSidebar( false )
+      if (e.detail === 'close') {
+        window.HFG.toggleMenuSidebar(false)
       }
-    }.bind( this )
+    }.bind(this)
   )
 
   document.addEventListener(
     'customize_section_opened',
-    function(e) {
-      if ( e.detail === 'header_sidebar' ) {
-        window.HFG.toggleMenuSidebar( true )
+    function (e) {
+      if (e.detail === 'header_sidebar') {
+        window.HFG.toggleMenuSidebar(true)
       }
-    }.bind( this )
+    }.bind(this)
   )
   let deviceMap = {
     'mobile': 'max-width: 576px',
@@ -62,23 +62,23 @@ window.addEventListener( 'load', function() {
     'desktop': 'min-width: 961px'
   }
 
-  _.each( neveCustomizePreview, function(settings, settingType) {
-    _.each( settings, function(args, settingId) {
-      wp.customize( settingId, function(setting) {
-        setting.bind( function(newValue) {
+  _.each(neveCustomizePreview, function (settings, settingType) {
+    _.each(settings, function (args, settingId) {
+      wp.customize(settingId, function (setting) {
+        setting.bind(function (newValue) {
           let style = ''
           switch (settingType) {
             case 'neve_color_control':
-              _.each( args.additional, (i) => {
+              _.each(args.additional, (i) => {
                 newValue = newValue || i.fallback
                 style += `body ${i.selector} {
                   ${i.prop}: ${newValue} !important;
                 }`
-              } )
-              addCss( settingId, style )
+              })
+              addCss(settingId, style)
               break
             case 'neve_background_control':
-              if ( newValue.type === 'color' ) {
+              if (newValue.type === 'color') {
                 style += 'body ' + args.selector + '{' +
                   'background-image: none !important;}'
                 let color = newValue.colorValue !== 'undefined' ?
@@ -88,11 +88,11 @@ window.addEventListener( 'load', function() {
                   'background-color: ' + color +
                   ' !important; }'
                 style += args.selector + ':before{ content: none !important; }'
-                addCss( settingId, style )
+                addCss(settingId, style)
                 return false
               }
-              if ( newValue.useFeatured &&
-                neveCustomizePreview.currentFeaturedImage ) {
+              if (newValue.useFeatured &&
+                neveCustomizePreview.currentFeaturedImage) {
                 newValue.imageUrl = neveCustomizePreview.currentFeaturedImage
               }
               style += args.selector + '{'
@@ -104,13 +104,13 @@ window.addEventListener( 'load', function() {
                 'background-attachment: fixed !important;' :
                 'background-attachment: initial !important;'
               style += 'background-position:' +
-                ( newValue.focusPoint.x * 100 ).toFixed( 2 ) + '% ' +
-                ( newValue.focusPoint.y * 100 ).toFixed( 2 ) +
+                (newValue.focusPoint.x * 100).toFixed(2) + '% ' +
+                (newValue.focusPoint.y * 100).toFixed(2) +
                 '% !important;'
               style += 'background-size: cover !important;'
-              if ( !document.querySelector( '.header-menu-sidebar' )
-                .classList
-                .contains( 'dropdown' ) ) {
+              if (!document.querySelector('.header-menu-sidebar')
+              .classList
+              .contains('dropdown')) {
                 style += 'position: absolute;'
               }
               style += 'top: 0; bottom: 0; width: 100%; content:"";'
@@ -123,34 +123,34 @@ window.addEventListener( 'load', function() {
                 'position: absolute; top: 0; bottom: 0; width: 100%;' +
                 'background-color: ' + color +
                 ' !important;' +
-                'opacity: ' + ( newValue.overlayOpacity / 100 ) +
+                'opacity: ' + (newValue.overlayOpacity / 100) +
                 '!important;}'
               style += args.selector +
                 '{ background-color: transparent !important; }'
-              addCss( settingId, style )
+              addCss(settingId, style)
               break
             case '\\Neve\\Customizer\\Controls\\React\\Radio_Buttons':
-              if ( args.additional && args.additional.is_for ) {
-                if ( args.additional.is_for === 'row_skin' ) {
-                  let elements = document.querySelectorAll( args.selector )
-                  removeClass( elements, 'dark-mode light-mode' )
-                  addClass( elements, newValue )
+              if (args.additional && args.additional.is_for) {
+                if (args.additional.is_for === 'row_skin') {
+                  let elements = document.querySelectorAll(args.selector)
+                  removeClass(elements, 'dark-mode light-mode')
+                  addClass(elements, newValue)
                   break
                 }
               }
-              let itemInner = document.querySelectorAll( args.selector )
-              _.each( itemInner, function(item) {
-                removeClass( item.parentNode,
-                  'hfg-item-center hfg-item-right hfg-item-left hfg-item-justify' )
-                addClass( item.parentNode, 'hfg-item-' + newValue )
-              } )
+              let itemInner = document.querySelectorAll(args.selector)
+              _.each(itemInner, function (item) {
+                removeClass(item.parentNode,
+                  'hfg-item-center hfg-item-right hfg-item-left hfg-item-justify')
+                addClass(item.parentNode, 'hfg-item-' + newValue)
+              })
               break
             case '\\Neve\\Customizer\\Controls\\Radio_Image':
               break
             case '\\Neve\\Customizer\\Controls\\Range':
             case '\\Neve\\Customizer\\Controls\\React\\Responsive_Range':
-              let value = JSON.parse( newValue )
-              if ( value.mobile > 0 ) {
+              let value = JSON.parse(newValue)
+              if (value.mobile > 0) {
                 style += '@media (max-width: 576px) { body ' + args.selector +
                   '{ ' + args.additional.prop + ':' +
                   value.mobile + args.additional.unit + ';}}'
@@ -158,7 +158,7 @@ window.addEventListener( 'load', function() {
                 style += '@media (max-width: 576px) { body ' + args.selector +
                   '{ ' + args.additional.prop + ':unset;}}'
               }
-              if ( value.tablet > 0 ) {
+              if (value.tablet > 0) {
                 style += '@media (min-width: 576px) { body ' + args.selector +
                   '{ ' + args.additional.prop + ':' +
                   value.tablet + args.additional.unit + ';}}'
@@ -166,7 +166,7 @@ window.addEventListener( 'load', function() {
                 style += '@media (min-width: 576px) { body ' + args.selector +
                   '{ ' + args.additional.prop + ':unset;}}'
               }
-              if ( value.desktop > 0 ) {
+              if (value.desktop > 0) {
                 style += '@media (min-width: 961px) { body ' + args.selector +
                   '{ ' + args.additional.prop + ':' +
                   value.desktop + args.additional.unit + ';}}'
@@ -174,14 +174,14 @@ window.addEventListener( 'load', function() {
                 style += '@media (min-width: 961px) { body ' + args.selector +
                   '{ ' + args.additional.prop + ':unset;}}'
               }
-              addCss( settingId, style )
+              addCss(settingId, style)
               break
             case '\\Neve\\Customizer\\Controls\\React\\Spacing':
-              for ( let device in deviceMap ) {
+              for (let device in deviceMap) {
                 style += '@media (' + deviceMap[device] + ') { body ' +
                   args.selector + '{'
-                for ( let optionType in newValue[device] ) {
-                  if ( newValue[device][optionType] !== '' ) {
+                for (let optionType in newValue[device]) {
+                  if (newValue[device][optionType] !== '') {
                     style += args.additional.prop + '-' + optionType + ':' +
                       newValue[device][optionType] +
                       newValue[device + '-unit'] + ';'
@@ -192,7 +192,7 @@ window.addEventListener( 'load', function() {
                 }
                 style += '}}'
               }
-              addCss( settingId, style )
+              addCss(settingId, style)
               break
             case '\\Neve\\Customizer\\Controls\\React\\Typography':
               style +=
@@ -200,17 +200,17 @@ window.addEventListener( 'load', function() {
 										text-transform: ${newValue.textTransform};
 										font-weight: ${newValue.fontWeight};
 									}`
-              for ( let device in deviceMap ) {
+              for (let device in deviceMap) {
                 style +=
                   `@media (${deviceMap[device]}) {
 											html ${args.selector} {
 												font-size:${newValue.fontSize[device]}${newValue.fontSize.suffix[device]};
 												letter-spacing:${newValue.letterSpacing[device]}px;
-												line-height:${newValue.lineHeight[device]};
+												line-height:${newValue.lineHeight[device]}${newValue.lineHeight.suffix[device] || ''};
 											}
 										}`
               }
-              addCss( settingId, style )
+              addCss(settingId, style)
               break
             case '\\Neve\\Customizer\\Controls\\React\\Button_Appearance':
               let bgColor = newValue.background || 'unset'
@@ -220,21 +220,42 @@ window.addEventListener( 'load', function() {
               let mainSelector = `html ${args.selector}`,
                 colorSelector = `html ${args.selector} .icon-bar`
 
-              if ( args.additional && args.additional.additional_buttons ) {
-                _.each( args.additional.additional_buttons, (button) => {
+              if (args.additional && args.additional.additional_buttons) {
+                _.each(args.additional.additional_buttons, (button) => {
                   mainSelector += ',html ' + button.button
                   colorSelector += ',html ' + button.button + ' ' + button.text
-                } )
+                })
               }
               style +=
                 `${mainSelector} {
 										background-color: ${bgColor};
-										border-radius: ${newValue.borderRadius}px;
 										color: ${txtColor};`
-              if ( newValue.type === 'outline' ) {
-                style += `border: ${newValue.borderWidth}px solid ${borderColor};`
+              if( typeof newValue.borderRadius !== 'object' ) {
+                style += `border-radius: ${newValue.borderRadius}px;`
+              } else {
+                style += `
+                border-top-left-radius: ${newValue.borderRadius.top}px;
+                border-top-right-radius: ${newValue.borderRadius.right}px;
+                border-bottom-right-radius: ${newValue.borderRadius.bottom}px;
+                border-bottom-left-radius: ${newValue.borderRadius.left}px;
+                `;
               }
-              if ( newValue.type === 'fill' ) {
+
+              if (newValue.type === 'outline') {
+                if( typeof newValue.borderWidth !== 'object' ) {
+                  style += `border: ${newValue.borderWidth}px solid ${borderColor};`
+                } else {
+                  style += `
+                  border-style: solid;
+                  border-color: ${borderColor};
+                  border-top-width: ${newValue.borderWidth.top}px;
+                  border-right-width: ${newValue.borderWidth.right}px;
+                  border-bottom-width: ${newValue.borderWidth.bottom}px;
+                  border-left-width: ${newValue.borderWidth.left}px;
+                  `
+                }
+              }
+              if (newValue.type === 'fill') {
                 style += 'border: none;'
               }
               style += '}'
@@ -242,30 +263,31 @@ window.addEventListener( 'load', function() {
 										background-color: ${txtColor};
 										color: ${txtColor};
 									}`
-              addCss( settingId, style )
+              addCss(settingId, style)
               break
             case 'text':
-              let textContainer = document.querySelector( args.selector )
-              if ( newValue === '' ) {
-                textContainer.parentNode.removeChild( textContainer )
+              let textContainer = document.querySelector(args.selector)
+              if (newValue === '') {
+                textContainer.parentNode.removeChild(textContainer)
                 return false
               }
-              if ( textContainer === null ) {
-                let wrap = document.createElement( args.additional.html_tag )
-                wrap.classList.add( args.additional.wrap_class )
-                document.querySelector( args.additional.parent )
-                  .prepend( wrap )
+              if (textContainer === null) {
+                let wrap = document.createElement(args.additional.html_tag)
+                wrap.classList.add(args.additional.wrap_class)
+                document.querySelector(args.additional.parent)
+                .prepend(wrap)
               }
-              document.querySelector( args.selector ).innerHTML = newValue
+              document.querySelector(args.selector).innerHTML = newValue
               break
             case 'neve_range_control':
-              if ( args.additional.type === 'svg-icon-size' ) {
+            case 'Neve\\Customizer\\Controls\\React\\Range':
+              if (args.additional.type === 'svg-icon-size') {
                 style +=
                   `html ${args.selector} {
 											width: ${newValue}px;
 											height: ${newValue}px;
 										}`
-                addCss( settingId, style )
+                addCss(settingId, style)
                 return false
               }
 
@@ -273,26 +295,26 @@ window.addEventListener( 'load', function() {
                 `html ${args.selector} {
 											${args.additional.type}: ${newValue}px;
 										}`
-              addCss( settingId, style )
+              addCss(settingId, style)
 
               break
             case '\\Neve\\Customizer\\Controls\\React\\Color':
-            	console.log( newValue );
+              console.log(newValue);
               let colorValue = newValue === '' ? 'unset' : newValue
               style +=
                 `html ${args.selector} {
 										${args.additional.prop}: ${colorValue};
 									}`
-              addCss( settingId, style )
+              addCss(settingId, style)
               break
             case '\\Neve\\Customizer\\Controls\\React\\Font_Family':
               break
           }
-        } )
-      } )
-    } )
-  } )
-  wp.customize.preview.bind( 'font-selection', function(data) {
+        })
+      })
+    })
+  })
+  wp.customize.preview.bind('font-selection', function (data) {
     let selector = neveCustomizePreview[data.type][data.controlId].selector,
       source = data.source,
       id = data.controlId + '_font_family',
@@ -301,55 +323,55 @@ window.addEventListener( 'load', function() {
         '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif'
 
     // Make selector more specific by adding `html` before.
-    selector = selector.split( ',' )
-    selector = selector.map( function(sel) {
+    selector = selector.split(',')
+    selector = selector.map(function (sel) {
       return 'html ' + sel
-    } ).join( ',' )
-    if ( data.value === false ) {
-      addCss( data.controlId,
-        selector + '{font-family: ' + defaultFontface + ';}' )
+    }).join(',')
+    if (data.value === false) {
+      addCss(data.controlId,
+        selector + '{font-family: ' + defaultFontface + ';}')
     } else {
-      addCss( data.controlId,
-        selector + '{font-family: ' + data.value + ' ;}' )
+      addCss(data.controlId,
+        selector + '{font-family: ' + data.value + ' ;}')
     }
-    if ( source.toLowerCase() === 'google' ) {
-      let linkNode = document.querySelector( '#' + id ),
-        fontValue = data.value.replace( ' ', '+' ),
+    if (source.toLowerCase() === 'google') {
+      let linkNode = document.querySelector('#' + id),
+        fontValue = data.value.replace(' ', '+'),
         url = '//fonts.googleapis.com/css?family=' + fontValue +
           '%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800'
-      if ( linkNode !== null ) {
-        linkNode.setAttribute( 'href', url )
+      if (linkNode !== null) {
+        linkNode.setAttribute('href', url)
         return false
       }
-      let newNode = document.createElement( 'link' )
-      newNode.setAttribute( 'rel', 'stylesheet' )
-      newNode.setAttribute( 'id', id )
-      newNode.setAttribute( 'href', url )
-      newNode.setAttribute( 'type', 'text/css' )
-      newNode.setAttribute( 'media', 'all' )
-      document.querySelector( 'head' ).appendChild( newNode )
+      let newNode = document.createElement('link')
+      newNode.setAttribute('rel', 'stylesheet')
+      newNode.setAttribute('id', id)
+      newNode.setAttribute('href', url)
+      newNode.setAttribute('type', 'text/css')
+      newNode.setAttribute('media', 'all')
+      document.querySelector('head').appendChild(newNode)
     }
-  } )
-} );
+  })
+});
 
-( function($) {
+(function ($) {
   $.neveCustomizeUtilities = {
-    setLiveCss: function(settings, to) {
+    setLiveCss: function (settings, to) {
       'use strict'
       var result = ''
-      var styleClass = $( '.' + settings.styleClass )
-      if ( typeof to !== 'object' ) {
-        $( settings.selectors )
-          .css( settings.cssProperty, to.toString() + settings.propertyUnit )
+      var styleClass = $('.' + settings.styleClass)
+      if (typeof to !== 'object') {
+        $(settings.selectors)
+        .css(settings.cssProperty, to.toString() + settings.propertyUnit)
         return false
       }
-      $.each( to, function(key, value) {
+      $.each(to, function (key, value) {
         var style_to_add
-        if ( key === 'suffix' ) {
+        if (key === 'suffix') {
           return true
         }
         var unit = settings.propertyUnit
-        if ( typeof settings.propertyUnit === 'object' ) {
+        if (typeof settings.propertyUnit === 'object') {
           unit = settings.propertyUnit[key]
         }
         style_to_add = settings.selectors + '{ ' + settings.cssProperty + ':' +
@@ -368,21 +390,21 @@ window.addEventListener( 'load', function() {
             result += '@media (min-width: 576px){' + style_to_add + '}'
             break
         }
-      } )
-      if ( styleClass.length > 0 ) {
-        styleClass.text( result )
+      })
+      if (styleClass.length > 0) {
+        styleClass.text(result)
       } else {
-        $( 'head' ).append(
+        $('head').append(
           '<style type="text/css" class="' + settings.styleClass + '">' +
-          result + '</style>' )
+          result + '</style>')
       }
     }
   }
-} )( jQuery );
+})(jQuery);
 
-( function($) {
+(function ($) {
   $.neveRangesPreview = {
-    init: function() {
+    init: function () {
       this.rangesPreview()
     },
     ranges: {
@@ -393,16 +415,16 @@ window.addEventListener( 'load', function() {
         styleClass: 'container-width-css'
       }
     },
-    rangesPreview: function() {
+    rangesPreview: function () {
       'use strict'
-      _.each( this.ranges, function(args, id) {
-        wp.customize( id, function(value) {
-          value.bind( function(newval) {
-            var values = JSON.parse( newval )
-            if ( !values ) {
+      _.each(this.ranges, function (args, id) {
+        wp.customize(id, function (value) {
+          value.bind(function (newval) {
+            var values = JSON.parse(newval)
+            if (!values) {
               return true
             }
-            if ( typeof values.suffix === 'object' ) {
+            if (typeof values.suffix === 'object') {
               args.unit = values.suffix
             }
             var settings = {
@@ -411,18 +433,18 @@ window.addEventListener( 'load', function() {
               propertyUnit: args.unit ? args.unit : '',
               styleClass: args.styleClass
             }
-            $.neveCustomizeUtilities.setLiveCss( settings, values )
-          } )
-        } )
-      } )
+            $.neveCustomizeUtilities.setLiveCss(settings, values)
+          })
+        })
+      })
     }
   }
-} )( jQuery )
+})(jQuery)
 jQuery.neveRangesPreview.init();
 
-( function($) {
+(function ($) {
   $.neveLayoutPreview = {
-    init: function() {
+    init: function () {
       this.contentWidthsPreview()
       this.containersLivePreview()
     },
@@ -452,18 +474,18 @@ jQuery.neveRangesPreview.init();
         sidebar: 'body:not(.single):not(.archive):not(.blog):not(.search) .nv-sidebar-wrap'
       }
     },
-    contentWidthsPreview: function() {
-      $.each( this.contentWidths, function(id, args) {
-        wp.customize( id, function(value) {
-          value.bind( function(newval) {
+    contentWidthsPreview: function () {
+      $.each(this.contentWidths, function (id, args) {
+        wp.customize(id, function (value) {
+          value.bind(function (newval) {
             let style = ` @media (min-width: 961px) {
 							${args.content} { max-width: ${newval}% !important; }
 							${args.sidebar} { max-width: ${100 - newval}% !important; }
 						}`
-            addCss( id + '-css', style )
-          } )
-        } )
-      } )
+            addCss(id + '-css', style)
+          })
+        })
+      })
     },
     containersLayoutMap: {
       neve_default_container_style: '.page:not(.woocommerce) .single-page-container',
@@ -472,27 +494,27 @@ jQuery.neveRangesPreview.init();
       neve_shop_archive_container_style: '.woocommerce-page.post-type-archive .neve-main > div',
       neve_single_product_container_style: '.single-product .neve-main > div'
     },
-    containersLivePreview: function() {
+    containersLivePreview: function () {
       'use strict'
-      $.each( this.containersLayoutMap, function(controlId, cssSelector) {
+      $.each(this.containersLayoutMap, function (controlId, cssSelector) {
         cssSelector += ':not(.set-in-metabox)'
-        wp.customize( controlId, function(value) {
-          value.bind( function(newval) {
-            if ( newval === 'contained' ) {
-              $( cssSelector )
-                .removeClass( 'container-fluid' )
-                .addClass( 'container' )
+        wp.customize(controlId, function (value) {
+          value.bind(function (newval) {
+            if (newval === 'contained') {
+              $(cssSelector)
+              .removeClass('container-fluid')
+              .addClass('container')
               return false
             }
-            $( cssSelector )
-              .removeClass( 'container' )
-              .addClass( 'container-fluid' )
-          } )
-        } )
-      } )
+            $(cssSelector)
+            .removeClass('container')
+            .addClass('container-fluid')
+          })
+        })
+      })
     }
   }
-} )( jQuery )
+})(jQuery)
 
 jQuery.neveLayoutPreview.init()
 //# sourceMappingURL=customizer-preview.js.map
