@@ -21,8 +21,6 @@ jobs:
           npm run build
           composer install --no-dev --prefer-dist --no-progress --no-suggest
           npm run dist
-          echo "::set-env name=BUILD_NAME::$BUILD_NAME"
-          echo "::set-env name=BUILD_VERSION::$BUILD_VERSION"
       - name: Add SSH Key
         run: |
           mkdir $HOME/.ssh
