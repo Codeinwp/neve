@@ -7,24 +7,13 @@ const {Button, Dashicon} = wp.components;
 
 const Notification = (props) => {
   const [ hidden, setHidden ] = useState(false);
-
-  if (hidden) {
-    return null;
-  }
-
-  if ( done ) {
-    setTimeout( () => {
-      setHidden(true);
-    }, 15000 );
-  }
-
   const {text, cta, type, update} = props.data;
   const [ inProgress, setInProgress ] = useState(false);
   const [ done, setDone ] = useState(false);
   const classes = classnames(
     [
-      props.slug,
       'notification',
+      props.slug,
       type ? type : '',
       {
         'success': done,
@@ -35,7 +24,7 @@ const Notification = (props) => {
 
   return (
     <div className={classes}>
-      {(text && ! done) ? <p>{text}</p> : <p><Dashicon icon="yes"/>{__('Done!', 'neve')}</p>}
+      {! done ? <p>{text}</p> : <p><Dashicon icon="yes"/>{__('Done!', 'neve')}</p>}
       {(cta && ! done) &&
       <Button
         isDefault
@@ -44,53 +33,55 @@ const Notification = (props) => {
         className={classnames({'is-loading': inProgress})}
         onClick={
           () => {
-            setInProgress(true);
             if (update) {
-              updateEntity(update, setDone, setInProgress);
+              updateEntity(update, setDone, setInProgress, setHidden);
             }
           }
         }>
         {
-          inProgress &&
-          <span><Dashicon icon="update"/> {__('In Progress', 'neve') + '...'} </span>
+          inProgress ?
+          <span><Dashicon icon="update"/> {__('In Progress', 'neve') + '...'} </span> :
+            cta
         }
-        {! inProgress && cta}
       </Button>}
     </div>
   );
 };
 
-const updateEntity = (args, setDone, setInProgress) => {
+const updateEntity = (args, setDone, setInProgress, setHidden) => {
   if (! args.type) {
     return false;
   }
 
-  if ('theme' === args.type) {
-    if (! args.slug) {
-      return false;
-    }
-
-    const updateTheme = () => {
-      return new Promise(resolve => {
+  const executeAction = () => {
+    return new Promise(resolve => {
+      if ('theme' === args.type) {
+        if (! args.slug) {
+          return false;
+        }
         wp.updates.ajax('update-theme', {slug: args.slug}).then(() => {
-          resolve();
+          resolve('theme-updated');
         });
-      });
-    };
+      }
 
-    updateTheme().then( () => {
-      setDone(true);
-      setInProgress(false);
-    } );
-  }
+      if ('plugin' === args.type) {
+        if (! args.slug || ! args.path) {
+          return false;
+        }
+        wp.updates.ajax('update-plugin', {slug: args.slug, plugin: args.path}).then(() => {
+          resolve('plugin-updated');
+        });
+      }
+    });
+  };
 
-  if ('plugin' === args.type) {
-    if (! args.slug || ! args.path) {
-      return false;
-    }
-
-    wp.updates.ajax('update-plugin', {slug: args.slug, plugin: args.path});
-  }
+  setInProgress(true);
+  executeAction().then(() => {
+    setDone(true);
+    setInProgress(false);
+    setHidden(true);
+  });
 };
+
 
 export default Notification;

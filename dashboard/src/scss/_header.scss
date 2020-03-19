@@ -1,14 +1,14 @@
 header {
   background-color: #fff;
+  border-bottom: 1px solid $grey;
 
   .top {
     display: flex;
     align-items: center;
-    padding: 65px 0 50px;
+    padding: 10px 0 20px;
   }
 
   .heading {
-    font-size: 45px;
     margin: 0;
     line-height: normal;
     color: $black;
@@ -25,13 +25,16 @@ header {
   .navigation {
     display: flex;
     list-style: none;
-    padding-bottom: 20px;
-    font-size: 19px;
     text-decoration: none;
     font-weight: 600;
+    padding-bottom: 10px;
+    font-size: 15px;
+    line-height: 1.5;
+    flex-wrap: wrap;
 
-    li:not(:last-child) {
-      margin-right: 50px;
+    li {
+      width: 50%;
+      padding: 5px 0;
     }
 
     a {
@@ -41,6 +44,45 @@ header {
 
       &.active {
         color: $blue;
+      }
+    }
+  }
+}
+
+@mixin header--laptop() {
+  header {
+    .top {
+      padding: 65px 0 50px;
+    }
+
+    .heading {
+      font-size: 45px;
+    }
+
+    .navigation {
+      font-size: 17px;
+      padding-bottom: 20px;
+      flex-wrap: nowrap;
+
+      li {
+        width: auto;
+        padding: 0;
+      }
+
+      li:not(:last-child) {
+        margin-right: 35px;
+      }
+    }
+  }
+}
+
+@mixin header--desktop() {
+  header {
+    .navigation {
+      font-size: 19px;
+
+      li:not(:last-child) {
+        margin-right: 50px;
       }
     }
   }

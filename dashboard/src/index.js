@@ -3,11 +3,21 @@ import Header from './Components/Header';
 import TabsContent from './Components/TabsContent';
 import Notifications from './Components/Notifications';
 import Sidebar from './Components/Sidebar';
+import {getTabHash} from './utils/common';
 
-const {render, useState, Fragment} = wp.element;
+const {render, useState, useEffect, Fragment} = wp.element;
 
 const App = () => {
-  const [ currentTab, setTab ] = useState( 'start' );
+  const [ currentTab, setTab ] = useState('start');
+
+  useEffect(() => {
+    document.addEventListener('DOMContentLoaded', () => {
+      const hash = getTabHash();
+      if (null !== hash) {
+        setTab(hash);
+      }
+    });
+  });
 
   return (
     <Fragment>
@@ -15,7 +25,7 @@ const App = () => {
       <div className="container content">
         <div className="main">
           <Notifications/>
-          <TabsContent currentTab={currentTab}/>
+          <TabsContent currentTab={currentTab} setTab={setTab}/>
         </div>
         <Sidebar/>
       </div>
@@ -24,6 +34,7 @@ const App = () => {
 };
 
 render(
-  <App />,
-  document.getElementById( 'neve-dashboard' )
+  <App/>,
+  document.getElementById('neve-dashboard')
 );
+

@@ -1,0 +1,20 @@
+$laptop: '992px';
+$desktop: '1200px';
+
+@media (min-width: #{$laptop}) {
+  @include general--laptop();
+  @include header--laptop();
+  @include sidebar--laptop();
+  @include notifications--laptop();
+  @include start--laptop();
+  @include card--laptop();
+}
+
+
+@media (min-width: #{$desktop}) {
+  @include general--desktop();
+  @include header--desktop();
+  @include start--desktop();
+  @include card--desktop();
+  @include notifications--desktop();
+}
