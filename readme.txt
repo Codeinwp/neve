@@ -21,9 +21,9 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 ##### [Version 2.6.3](https://github.com/Codeinwp/neve/compare/v2.6.2...v2.6.3) (2020-03-19)
 
-[Feat] Refactor customizer UI
-[Fix] Compatibility issues with WP 5.4
-[Fix] Compatibility with WooCommerce Product Addon plugin
+* [Feat] Refactor customizer UI
+* [Fix] Compatibility issues with WP 5.4
+* [Fix] Compatibility with WooCommerce Product Addon plugin
 
 
 
