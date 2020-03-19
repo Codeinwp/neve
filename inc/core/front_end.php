@@ -1048,6 +1048,21 @@ class Front_End {
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/neve-makeup.jpg',
 						'title'      => 'Makeup Artist',
 					),
+					'neve-beaver-running-club'          => array(
+						'url'        => 'https://demo.themeisle.com/neve-running-club-bb/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/02/neve-run.jpg',
+						'title'      => 'Running Club',
+					),
+					'neve-beaver-jewellery-shop'        => array(
+						'url'        => 'https://demo.themeisle.com/neve-jewellery-shop-bb/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/02/neve-jewellery.jpg',
+						'title'      => 'Jewellery Shop',
+					),
+					'neve-beaver-car-service'           => array(
+						'url'        => 'https://demo.themeisle.com/neve-car-service-bb/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/02/neve-car-service.jpg',
+						'title'      => 'Car Vehicle Service',
+					),
 					'neve-beaver-museum'                => array(
 						'url'        => 'https://demo.themeisle.com/neve-museum-bb/',
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/02/neve-museum.jpg',
