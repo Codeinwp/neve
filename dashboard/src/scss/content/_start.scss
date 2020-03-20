@@ -1,8 +1,4 @@
 .start {
-  .col {
-    width: 100%;
-  }
-
   .customizer-quick-links {
     .columns {
       display: flex;
@@ -37,14 +33,4 @@
 }
 
 @mixin start--desktop() {
-  .start {
-    .col {
-      width: 50%;
-      &:not(:last-child) {
-        .card {
-          margin-right: 30px;
-        }
-      }
-    }
-  }
 }

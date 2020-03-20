@@ -16,6 +16,13 @@ class Main {
 	 * @var Rest
 	 */
 	private $server = null;
+
+	/**
+	 * Rest instance.
+	 *
+	 * @var Changelog_Handler
+	 */
+	private $cl_handler = null;
 	/**
 	 * Plugin Helper instance.
 	 *
@@ -58,6 +65,7 @@ class Main {
 		$this->server = new Rest();
 		$this->server->init();
 		$this->plugin_helper = new Plugin_Helper();
+		$this->cl_handler    = new Changelog_Handler();
 		$this->setup_config();
 		$this->run_actions();
 	}
@@ -156,7 +164,8 @@ class Main {
 			],
 			'options'             => [
 				'logger' => get_option( 'neve_logger_flag', 'no' ) === 'yes'
-			]
+			],
+			'changelog'           => $this->cl_handler->get_changelog(),
 		];
 	}
 
@@ -258,8 +267,11 @@ class Main {
 		if ( $available !== false && $hash === $current_hash ) {
 			$available = json_decode( $available, true );;
 			foreach ( $available as $slug => $args ) {
-				$available[ $slug ]['cta'] = $this->plugin_helper->get_plugin_state( $slug );
-				$available[ $slug ]['path'] = $this->plugin_helper->get_plugin_path( $slug );
+				$available[ $slug ]['cta']        = $this->plugin_helper->get_plugin_state( $slug );
+				$available[ $slug ]['path']       = $this->plugin_helper->get_plugin_path( $slug );
+				$available[ $slug ]['activate']   = $this->plugin_helper->get_plugin_action_link( $slug );
+				$available[ $slug ]['deactivate'] = $this->plugin_helper->get_plugin_action_link( $slug, 'deactivate' );
+
 			}
 
 			return $available;
@@ -273,12 +285,14 @@ class Main {
 			}
 			$data[ $slug ] = [
 				'banner'      => $current_plugin->banners['low'],
-				'name'        => $current_plugin->name,
-				'description' => $current_plugin->short_description,
+				'name'        => html_entity_decode( $current_plugin->name ),
+				'description' => html_entity_decode( $current_plugin->short_description ),
 				'version'     => $current_plugin->version,
-				'author'      => strip_tags( $current_plugin->author ),
+				'author'      => html_entity_decode( strip_tags( $current_plugin->author ) ),
 				'cta'         => $this->plugin_helper->get_plugin_state( $slug ),
-				'path'        => $this->plugin_helper->get_plugin_path( $slug )
+				'path'        => $this->plugin_helper->get_plugin_path( $slug ),
+				'activate'    => $this->plugin_helper->get_plugin_action_link( $slug ),
+				'deactivate'  => $this->plugin_helper->get_plugin_action_link( $slug, 'deactivate' ),
 			];
 		}
 

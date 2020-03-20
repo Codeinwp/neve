@@ -13,8 +13,8 @@ const Header = () => {
   return (
     <Fragment>
       {
-        Object.keys( neveDash.plugins ).map( (slug) => {
-          return <PluginCard key={slug} slug={slug} data={neveDash.plugins[slug]}/>;
+        Object.keys( plugins ).map( (slug) => {
+          return <PluginCard key={slug} slug={slug} data={plugins[slug]}/>;
         } )
       }
     </Fragment>

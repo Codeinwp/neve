@@ -17,4 +17,5 @@ $desktop: '1200px';
   @include start--desktop();
   @include card--desktop();
   @include notifications--desktop();
+  @include plugins--desktop();
 }

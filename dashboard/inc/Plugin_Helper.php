@@ -46,6 +46,9 @@ class Plugin_Helper {
 			case 'adblock-notify-by-bweb':
 				return $slug . '/adblock-notify.php';
 				break;
+			case 'feedzy-rss-feeds':
+				return $slug . '/feedzy-rss-feed.php';
+				break;
 			default:
 				return $slug . '/' . $slug . '.php';
 		}
@@ -84,6 +87,23 @@ class Plugin_Helper {
 					'banners'           => true,
 				),
 			)
+		);
+	}
+
+	public function get_plugin_action_link( $slug, $action = 'activate' ) {
+		if ( ! in_array( $action, [ 'activate', 'deactivate' ] ) ) {
+			return '';
+		}
+
+		return add_query_arg(
+			array(
+				'action'        => $action,
+				'plugin'        => rawurlencode( $this->get_plugin_path( $slug ) ),
+				'plugin_status' => 'all',
+				'paged'         => '1',
+				'_wpnonce'      => wp_create_nonce( $action . '-plugin_' . $this->get_plugin_path( $slug ) ),
+			),
+			esc_url( network_admin_url( 'plugins.php' ) )
 		);
 	}
 }

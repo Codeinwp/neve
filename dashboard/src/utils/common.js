@@ -35,7 +35,7 @@ const getTabHash = () => {
 const tabs = {
   'start': {label: 'Getting Started', render: (setTab) => <Start setTab={setTab}/>},
   'plugins': {label: 'Useful Plugins', render: () => <Plugins/>},
-  'help': {label: 'Help & docs', render: () => <Help/>},
+  'help': {label: 'Help & docs', render: (setTab) => <Help setTab={setTab}/>},
   'changelog': {label: 'Changelog', render: () => <Changelog/>},
   'starter-sites': {label: 'Starter Sites', render: () => <StarterSites/>},
   'pro': {label: 'Neve Pro', render: () => <Pro/>}

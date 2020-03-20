@@ -1,16 +1,27 @@
-export const send = (route, data) => {
-  return requestData(route, data);
+export const send = (route, data, rest = true) => {
+  return requestData(route, data, rest);
 };
 
-const requestData = async (route, data) => {
-  const rawResponse = await fetch(`${neveDash.api}/${route}`, {
-    method: 'POST',
+export const get = (route, rest = true, data = {} ) => {
+  return requestData(route, data, rest, 'GET');
+};
+
+const requestData = async (route, data = {}, rest, method = 'POST') => {
+  const options = {
+    method: method,
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
       'x-wp-nonce': neveDash.nonce
-    },
-    body: JSON.stringify(data)
-  });
-  return await rawResponse.json();
+    }
+  };
+
+  if ('POST' === method) {
+    options.body = JSON.stringify(data);
+  }
+
+  const url = rest ? `${neveDash.api}/${route}` : route;
+
+  const rawResponse = await fetch(url, options);
+  return await rest ? rawResponse.json() : rawResponse;
 };

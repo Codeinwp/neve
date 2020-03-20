@@ -2,6 +2,10 @@
   padding: 0 15px;
 }
 
+.col {
+  width: 100%;
+}
+
 @keyframes spin {
   from {
     transform: rotate(0deg);
@@ -35,6 +39,15 @@
 @mixin general--desktop() {
   .container {
     padding: 0 50px;
+  }
+  .col {
+    width: 50%;
+
+    &:not(:last-child) {
+      .card {
+        margin-right: 30px;
+      }
+    }
   }
   .main {
     flex-grow: 1;
