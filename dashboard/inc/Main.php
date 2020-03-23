@@ -7,6 +7,7 @@ namespace Neve_Dash;
 
 /**
  * Class Main
+ *
  * @package Neve_Dash
  */
 class Main {
@@ -55,7 +56,7 @@ class Main {
 		'amp',
 	];
 
-	private $plugins_cache_key = 'neve_dash_useful_plugins';
+	private $plugins_cache_key      = 'neve_dash_useful_plugins';
 	private $plugins_cache_hash_key = 'neve_dash_useful_plugins_hash';
 
 	/**
@@ -104,10 +105,10 @@ class Main {
 		$page_title = $theme['name'] . ' ' . __( 'Options', 'neve' ) . ' ';
 		$menu_name  = $theme['name'] . ' ' . __( 'Options', 'neve' ) . ' ';
 
-//		$required_actions = $this->get_recommended_actions_left();
-//		if ( $required_actions > 0 ) {
-//			$menu_name .= '<span class="badge-action-count update-plugins">' . esc_html( $required_actions ) . '</span>';
-//		}
+		// $required_actions = $this->get_recommended_actions_left();
+		// if ( $required_actions > 0 ) {
+		// $menu_name .= '<span class="badge-action-count update-plugins">' . esc_html( $required_actions ) . '</span>';
+		// }
 
 		$theme_page = ! empty( $theme['template'] ) ? $theme['template'] . '-welcome' : $theme['slug'] . '-welcome';
 		add_theme_page( $page_title, $menu_name, 'activate_plugins', $theme_page, [ $this, 'render' ] );
@@ -140,7 +141,7 @@ class Main {
 
 		$dependencies = [ 'react', 'react-dom', 'wp-i18n', 'wp-api', 'wp-components', 'wp-element' ];
 
-		if ( ! empty ( $this->get_notifications() ) ) {
+		if ( ! empty( $this->get_notifications() ) ) {
 			$dependencies[] = 'updates';
 		}
 
@@ -160,10 +161,10 @@ class Main {
 			'customizerShortcuts' => $this->get_customizer_shortcuts(),
 			'plugins'             => $this->get_useful_plugins(),
 			'strings'             => [
-				'header' => $this->theme_args['name'] . ' ' . __( 'Options', 'neve' )
+				'header' => $this->theme_args['name'] . ' ' . __( 'Options', 'neve' ),
 			],
 			'options'             => [
-				'logger' => get_option( 'neve_logger_flag', 'no' ) === 'yes'
+				'logger' => get_option( 'neve_logger_flag', 'no' ) === 'yes',
 			],
 			'changelog'           => $this->cl_handler->get_changelog(),
 		];
@@ -181,10 +182,10 @@ class Main {
 		if ( isset( $themes_update->response[ $slug ] ) ) {
 			$update                = $themes_update->response[ $slug ];
 			$notifications['neve'] = [
-				'text'   => sprintf( __( 'New theme update for %s! Please update to %s.' ), $this->theme_args['name'], $update['new_version'] ),
+				'text'   => sprintf( __( 'New theme update for %1$s! Please update to %2$s.' ), $this->theme_args['name'], $update['new_version'] ),
 				'update' => [
 					'type' => 'theme',
-					'slug' => $slug
+					'slug' => $slug,
 				],
 				'cta'    => __( 'Update Now', 'neve' ),
 			];
@@ -196,13 +197,13 @@ class Main {
 		if ( isset( $plugins_update->response[ $plugin_path ] ) ) {
 			$update                          = $plugins_update->response[ $plugin_path ];
 			$notifications['neve-pro-addon'] = [
-				'text'   => sprintf( __( 'New plugin update for %s! Please update to %s.' ), 'Neve Pro', $update->new_version ),
+				'text'   => sprintf( __( 'New plugin update for %1$s! Please update to %2$s.' ), 'Neve Pro', $update->new_version ),
 				'update' => [
-					'type' => 'plugin',
-//					'slug' => 'neve-pro-addon',
-					'slug' => 'akismet',
-//					'path' => 'neve-pro-addon/neve-pro-addon.php'
-					'path' => $plugin_path
+					'type'                             => 'plugin',
+					// 'slug' => 'neve-pro-addon',
+												'slug' => 'akismet',
+					// 'path' => 'neve-pro-addon/neve-pro-addon.php'
+												'path' => $plugin_path,
 				],
 				'cta'    => __( 'Update Now', 'neve' ),
 			];
@@ -265,7 +266,8 @@ class Main {
 
 
 		if ( $available !== false && $hash === $current_hash ) {
-			$available = json_decode( $available, true );;
+			$available = json_decode( $available, true );
+
 			foreach ( $available as $slug => $args ) {
 				$available[ $slug ]['cta']        = $this->plugin_helper->get_plugin_state( $slug );
 				$available[ $slug ]['path']       = $this->plugin_helper->get_plugin_path( $slug );

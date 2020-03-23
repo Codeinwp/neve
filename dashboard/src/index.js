@@ -3,21 +3,11 @@ import Header from './Components/Header';
 import TabsContent from './Components/TabsContent';
 import Notifications from './Components/Notifications';
 import Sidebar from './Components/Sidebar';
-import {getTabHash} from './utils/common';
 
-const {render, useState, useEffect, Fragment} = wp.element;
+const {render, useState, Fragment} = wp.element;
 
 const App = () => {
   const [ currentTab, setTab ] = useState('start');
-
-  useEffect(() => {
-    document.addEventListener('DOMContentLoaded', () => {
-      const hash = getTabHash();
-      if (null !== hash) {
-        setTab(hash);
-      }
-    });
-  });
 
   return (
     <Fragment>

@@ -18,4 +18,5 @@ $desktop: '1200px';
   @include card--desktop();
   @include notifications--desktop();
   @include plugins--desktop();
+  @include accordion--desktop();
 }
