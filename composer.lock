@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "codeinwp/themeisle-sdk",
-            "version": "3.2.2",
+            "version": "3.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeinwp/themeisle-sdk.git",
-                "reference": "1b787d10970575780b35f96380c6ef3173b00d18"
+                "reference": "9fb53a254d8eb7490ce51dd613bda765ec6138ce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeinwp/themeisle-sdk/zipball/1b787d10970575780b35f96380c6ef3173b00d18",
-                "reference": "1b787d10970575780b35f96380c6ef3173b00d18",
+                "url": "https://api.github.com/repos/Codeinwp/themeisle-sdk/zipball/9fb53a254d8eb7490ce51dd613bda765ec6138ce",
+                "reference": "9fb53a254d8eb7490ce51dd613bda765ec6138ce",
                 "shasum": ""
             },
             "require-dev": {
@@ -42,7 +42,7 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2020-03-13T15:58:53+00:00"
+            "time": "2020-03-21T13:43:39+00:00"
         },
         {
             "name": "codeinwp/ti-about-page",
