@@ -1,0 +1,43 @@
+.neve-radio-icons {
+  display: flex;
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 3px;
+
+  button {
+    align-items: center;
+    justify-content: center !important;
+    flex: 1;
+    padding: 3px;
+    height: 28px;
+
+    &:not(:first-child) {
+      margin-left: 3px;
+    }
+
+    svg {
+      width: 20px;
+      margin-right: 0 !important;
+    }
+
+    &.active {
+      &, &:hover {
+        background-color: $accent-color !important;
+        border-color: $accent-color !important;
+        color: #fff !important;
+        box-shadow: none !important;
+      }
+    }
+  }
+}
+
+.large-buttons {
+  .neve-radio-icons button {
+    height: 45px !important;
+
+    svg {
+      width: 50px;
+      height: 30px;
+    }
+  }
+}

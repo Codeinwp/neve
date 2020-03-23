@@ -321,7 +321,7 @@ abstract class Abstract_Builder implements Builder {
 					'group'                 => $row_setting_id,
 					'tab'                   => SettingsManager::TAB_STYLE,
 					'section'               => $row_setting_id,
-					'label'                 => __( 'Row height (px)', 'neve' ),
+					'label'                 => __( 'Row height', 'neve' ),
 					'type'                  => '\Neve\Customizer\Controls\React\Responsive_Range',
 					'live_refresh_selector' => $row_class,
 					'live_refresh_css_prop' => array(
@@ -333,6 +333,12 @@ abstract class Abstract_Builder implements Builder {
 							'step'           => 1,
 							'min'            => 0,
 							'max'            => 700,
+							'defaultVal'     => [
+								'mobile'  => 0,
+								'tablet'  => 0,
+								'desktop' => 0,
+							],
+							'units'          => [ 'px' ],
 							'hideResponsive' => true,
 						],
 					],

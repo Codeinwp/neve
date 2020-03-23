@@ -1044,3 +1044,43 @@ Starter Sites screenshots resources:
 * https://mystock.themeisle.com/photo/cityscape-of-new-york-2/
 * https://mystock.themeisle.com/photo/performing-artist-with-cool-projections-behind/
 * https://mystock.themeisle.com/photo/young-boy-attending-a-concert/
+
+- University
+* https://mystock.themeisle.com/photo/bruges-cityview/
+* https://mystock.themeisle.com/photo/front-view-of-magasin-du-nord-copenhagen/
+* https://mystock.themeisle.com/photo/metropolitan-museum/
+
+- Interior Design
+* https://mystock.themeisle.com/photo/couch-with-two-green-pillows/
+* https://mystock.themeisle.com/photo/bathtub-in-the-center-of-the-room/
+
+- Electronics Store
+* https://stocksnap.io/photo/FMGBFTLI2D
+* https://stocksnap.io/photo/6EMBFCXU0J
+* https://stocksnap.io/photo/4CLVYHVZ2L
+* https://stocksnap.io/photo/UHGLILBFLV
+* https://stocksnap.io/photo/PFHFKXTMYD
+* https://stocksnap.io/photo/M6XC5T3JY3
+* https://stocksnap.io/photo/XW2IM1GSYM
+* https://mystock.themeisle.com/photo/headphones/
+* https://mystock.themeisle.com/photo/programming-laptop-2/
+* https://stocksnap.io/photo/V89HFPEFN3
+
+- Print Shop
+* https://stocksnap.io/photo/LYU668ZB5A
+* https://stocksnap.io/photo/VYSZEM4UWE
+
+- City Tour
+* https://mystock.themeisle.com/photo/amsterdam-at-night/
+* https://mystock.themeisle.com/photo/copenhagen-canal-at-sunset/
+* https://mystock.themeisle.com/photo/colorful-buildings-in-copenhagen/
+* https://mystock.themeisle.com/photo/small-boat-on-copenhagen-canals/
+
+- Insurance
+* https://stocksnap.io/photo/FCUDWWBKFV
+* https://stocksnap.io/photo/FZ0NEWUBW5
+
+- Personal Blog
+* https://mystock.themeisle.com/photo/picnic/
+* https://stocksnap.io/photo/MN5CHRVUUR
+* https://mystock.themeisle.com/photo/gift-shops/

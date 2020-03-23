@@ -129,9 +129,6 @@ class Logo extends Abstract_Component {
 				'default'            => 1,
 				'label'              => __( 'Show Site Tagline', 'neve' ),
 				'type'               => 'neve_toggle_control',
-				'options'            => [
-					'type' => 'checkbox-toggle',
-				],
 				'section'            => $this->section,
 				'conditional_header' => true,
 			]
@@ -147,9 +144,6 @@ class Logo extends Abstract_Component {
 				'default'            => 1,
 				'label'              => __( 'Show Site Title', 'neve' ),
 				'type'               => 'neve_toggle_control',
-				'options'            => [
-					'type' => 'checkbox-toggle',
-				],
 				'section'            => $this->section,
 				'conditional_header' => true,
 			]
@@ -163,29 +157,21 @@ class Logo extends Abstract_Component {
 				'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
 				'sanitize_callback' => array( $this, 'sanitize_responsive_int_json' ),
 				'default'           => '{ "mobile": "120", "tablet": "120", "desktop": "120" }',
-				'label'             => __( 'Logo max width (px)', 'neve' ),
-				'type'              => '\Neve\Customizer\Controls\Range',
+				'label'             => __( 'Logo max width', 'neve' ),
+				'type'              => '\Neve\Customizer\Controls\React\Responsive_Range',
 				'options'           => [
 					'priority'                 => 12,
-					'type'                     => 'range-value',
 					'hide_responsive_switches' => true,
 					'media_query'              => true,
 					'step'                     => 1,
-					'input_attr'               => [
-						'mobile'  => [
-							'min'     => 0,
-							'max'     => 350,
-							'default' => 120,
-						],
-						'tablet'  => [
-							'min'     => 0,
-							'max'     => 350,
-							'default' => 120,
-						],
-						'desktop' => [
-							'min'     => 0,
-							'max'     => 350,
-							'default' => 120,
+					'input_attrs'              => [
+						'min'        => 0,
+						'max'        => 350,
+						'units'      => [ 'px' ],
+						'defaultVal' => [
+							'mobile'  => 120,
+							'tablet'  => 120,
+							'desktop' => 120,
 						],
 					],
 				],

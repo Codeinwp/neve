@@ -1,7 +1,4 @@
-/**
- * WordPress dependencies
- */
-/* global NeveReactCustomize */
+/* global wp */
 
 import PropTypes from 'prop-types'
 import VisibilitySensor from 'react-visibility-sensor'
@@ -12,7 +9,7 @@ const {
 
 class FontPreviewLink extends Component {
   constructor(props) {
-    super( props )
+    super(props)
 
     this.state = {
       previewWasRendered: false
@@ -20,7 +17,6 @@ class FontPreviewLink extends Component {
   }
 
   render() {
-    self = this
     const style = { fontFamily: this.props.fontFace + ', sans-serif' }
     return (
       <a onClick={(e) => {
@@ -30,16 +26,16 @@ class FontPreviewLink extends Component {
       >
         <span className='neve-font-family'>{this.props.label || this.props.fontFace}</span>
         <VisibilitySensor onChange={(isVisible) => {
-          if ( isVisible ) {
-            this.setState( { previewWasRendered: true } )
+          if (isVisible) {
+            this.setState({ previewWasRendered: true })
           }
         }}
         >
           {
-            ( this.state.previewWasRendered || this.props.delayLoad ===
-									false ) &&
-  <span className='neve-font-preview' style={style}>Abc</span> ||
-    <span className='neve-font-preview '>...</span>
+            (this.state.previewWasRendered || this.props.delayLoad ===
+              false)
+              ? <span className='neve-font-preview' style={style}>Abc</span>
+              : <span className='neve-font-preview '>...</span>
           }
         </VisibilitySensor>
       </a>

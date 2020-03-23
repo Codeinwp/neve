@@ -1,15 +1,14 @@
 name: E2E Tests
 
 on:
- pull_request:
-   branches:
-     - master
+  pull_request:
 
 env:
   CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
 
 jobs:
   e2e:
+    if: "github.event.fork == false"
     strategy:
       matrix:
         spec: [customizer/hfg, customizer/layout, customizer/typography, editor, plugins-compatibility]
@@ -21,5 +20,15 @@ jobs:
         uses: cypress-io/github-action@v1
         with:
           env: host=localhost,port=8080
+          name: ${{matrix.spec}}
           record: true
           spec: cypress/integration/${{matrix.spec}}/*
+  empty-job:
+    # if no jobs run, github action considers it a test failure -- which seems like a bug
+    # this makes it so the top-level if statement for the job does not give status failure.
+    runs-on: ubuntu-latest
+    if: success()
+    steps:
+      - name: Meep
+        run: |
+          echo "Nothing to do. This is a fork."

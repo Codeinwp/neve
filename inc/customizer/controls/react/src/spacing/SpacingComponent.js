@@ -1,18 +1,17 @@
 /* jshint esversion: 6 */
+/* global wp, lodash */
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import ResponsiveControl from '../common/Responsive.js'
 import SizingControl from '../common/Sizing.js'
-import SVG from '../common/svg.js'
 
-const { __ } = wp.i18n
 const { Component } = wp.element
 const { Button } = wp.components
 const { mapValues } = lodash
 
 class SpacingComponent extends Component {
   constructor(props) {
-    super( props )
+    super(props)
     const value = props.control.setting.get()
     this.state = {
       value,
@@ -20,7 +19,7 @@ class SpacingComponent extends Component {
       currentDevice: 'desktop'
     }
 
-    if ( !this.shouldValuesBeLinked() ) {
+    if (!this.shouldValuesBeLinked()) {
       this.state.linked = false
     }
 
@@ -28,8 +27,7 @@ class SpacingComponent extends Component {
       min: -300,
       max: 300,
       hideResponsiveButtons: false,
-      units: ['px', 'em', '%'],
-      inlineHeader: false
+      units: ['px', 'em', '%']
     }
 
     this.controlParams = props.control.params.input_attrs ? {
@@ -50,10 +48,10 @@ class SpacingComponent extends Component {
       ...props.control.params.default
     } : baseDefault
 
-    this.shouldValuesBeLinked = this.shouldValuesBeLinked.bind( this )
-    this.getButtons = this.getButtons.bind( this )
-    this.updateValue = this.updateValue.bind( this )
-    this.setValue = this.setValue.bind( this )
+    this.shouldValuesBeLinked = this.shouldValuesBeLinked.bind(this)
+    this.getButtons = this.getButtons.bind(this)
+    this.updateValue = this.updateValue.bind(this)
+    this.setValue = this.setValue.bind(this)
   }
 
   render() {
@@ -75,31 +73,30 @@ class SpacingComponent extends Component {
         value: this.state.value[this.state.currentDevice].left
       }
     ]
-    const { inlineHeader, hideResponsiveButtons } = this.controlParams
+    const { hideResponsiveButtons } = this.controlParams
 
-    const wrapClasses = classnames( [
+    const wrapClasses = classnames([
       'neve-white-background-control',
-      'neve-sizing',
-      { 'inline-header': inlineHeader }
-    ] )
+      'neve-sizing'
+    ])
 
     return (
       <div className={wrapClasses}>
         <div className='neve-control-header'>
           {this.props.control.params.label &&
-          <span className='customize-control-title'>
-            {this.props.control.params.label}
-          </span>}
-          <div className='neve-units inline'>
-            {this.getButtons()}
-          </div>
+            <span className='customize-control-title'>
+              {this.props.control.params.label}
+            </span>}
           <ResponsiveControl
             hideResponsive={hideResponsiveButtons}
             onChange={(currentDevice) => {
-              this.setState( { currentDevice } )
-              this.setState( { linked: this.shouldValuesBeLinked() } )
+              this.setState({ currentDevice })
+              this.setState({ linked: this.shouldValuesBeLinked() })
             }}
           />
+          <div className='neve-units'>
+            {this.getButtons()}
+          </div>
         </div>
         <SizingControl
           min={this.controlParams.min}
@@ -109,13 +106,13 @@ class SpacingComponent extends Component {
           options={options}
           defaults={this.defaultValue[this.state.currentDevice]}
           linked={this.state.linked}
-          onLinked={() => this.setState( { linked: !this.state.linked } )}
+          onLinked={() => this.setState({ linked: !this.state.linked })}
           onChange={(optionType, numericValue) => {
-            this.setValue( optionType, numericValue )
+            this.setValue(optionType, numericValue)
           }}
           onReset={() => {
-            this.setState( { value: this.defaultValue } )
-            this.props.control.setting.set( this.defaultValue )
+            this.setState({ value: this.defaultValue })
+            this.props.control.setting.set(this.defaultValue)
           }}
         />
       </div>
@@ -123,49 +120,46 @@ class SpacingComponent extends Component {
   }
 
   getButtons() {
-    const svg = {
-      px: SVG.px,
-      em: SVG.em,
-      '%': SVG.percent
-    }
     const self = this
     const { units } = this.controlParams
 
-    if ( units.length === 1 ) {
-      return <Button isSmall disabled>{units[0]}</Button>
+    if (units.length === 1) {
+      return <Button isSmall disabled className='active alone'>{units[0]}</Button>
     }
-    return units.map( (unit, index) => {
+    return units.map((unit, index) => {
       const buttonClass = classnames(
         {
           active: self.state.value[self.state.currentDevice +
           '-unit'] === unit
         }
       )
-      return <Button
-        key={index}
-        isSmall
-        className={buttonClass}
-        onClick={() => {
-          const value = { ...self.state.value }
-          value[self.state.currentDevice + '-unit'] = unit
-          if ( unit !== 'em' ) {
-            value[self.state.currentDevice] = mapValues(
-              value[self.state.currentDevice],
-              (value) => value ? parseInt( value ) : value )
-          }
-          self.setState( { value } )
-          self.props.control.setting.set( value )
-        }}
-      >{unit}
-      </Button>
-    } )
+      return (
+        <Button
+          key={index}
+          isSmall
+          className={buttonClass}
+          onClick={() => {
+            const value = { ...self.state.value }
+            value[self.state.currentDevice + '-unit'] = unit
+            if (unit !== 'em') {
+              value[self.state.currentDevice] = mapValues(
+                value[self.state.currentDevice],
+                (value) => value ? parseInt(value) : value)
+            }
+            self.setState({ value })
+            self.props.control.setting.set(value)
+          }}
+        >{unit}
+        </Button>
+      )
+    })
   }
 
   setValue(optionType, numericValue) {
     const value = { ...this.state.value }
-    if ( this.state.linked ) {
+    if (this.state.linked) {
       value[this.state.currentDevice] = mapValues(
-        value[this.state.currentDevice], () => numericValue )
+        value[this.state.currentDevice], () => numericValue)
     } else {
       value[this.state.currentDevice] = {
         ...value[this.state.currentDevice],
@@ -173,12 +167,12 @@ class SpacingComponent extends Component {
       }
     }
 
-    this.updateValue( value )
+    this.updateValue(value)
   }
 
   updateValue(value) {
-    this.setState( { value } )
-    this.props.control.setting.set( value )
+    this.setState({ value })
+    this.props.control.setting.set(value)
   }
 
   shouldValuesBeLinked() {
@@ -188,19 +182,19 @@ class SpacingComponent extends Component {
       this.state.value[this.state.currentDevice].bottom,
       this.state.value[this.state.currentDevice].left
     ]
-
-    return values.every( value => value === values[0] )
+    // eslint-disable-next-line eqeqeq
+    return values.every(value => value == values[0])
   }
 
   componentDidMount() {
     const { control } = this.props
 
-    document.addEventListener( 'neve-changed-customizer-value', (e) => {
-      if ( !e.detail ) return false
-      if ( e.detail.id !== control.id ) return false
+    document.addEventListener('neve-changed-customizer-value', (e) => {
+      if (!e.detail) return false
+      if (e.detail.id !== control.id) return false
 
-      this.updateValue( e.detail.value || this.defaultValue )
-    } )
+      this.updateValue(e.detail.value || this.defaultValue)
+    })
   }
 }
 

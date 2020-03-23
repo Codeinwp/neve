@@ -1,5 +1,5 @@
 /* jshint esversion: 6 */
-/* global NeveReactCustomize */
+/* global wp, NeveReactCustomize */
 import PropTypes from 'prop-types'
 
 const { __ } = wp.i18n
@@ -8,8 +8,8 @@ const { DropdownMenu, MenuGroup, MenuItem } = wp.components
 
 class DynamicFieldInserter extends Component {
   constructor(props) {
-    super( props )
-    this.getOptions = this.getOptions.bind( this )
+    super(props)
+    this.getOptions = this.getOptions.bind(this)
   }
 
   getOptions() {
@@ -17,21 +17,22 @@ class DynamicFieldInserter extends Component {
     const allOptions = NeveReactCustomize.dynamicTags.options
 
     const options = []
-    allOptions.forEach( (optionGroup, index) => {
+    allOptions.forEach((optionGroup, index) => {
       const children = []
-      Object.keys( optionGroup.controls )
-        .forEach( (slug, index) => {
-          if ( !allowedOptionsTypes.includes(
-            optionGroup.controls[slug].type ) ) {
+      Object.keys(optionGroup.controls)
+        .forEach((slug, index) => {
+          if (!allowedOptionsTypes.includes(
+            optionGroup.controls[slug].type)) {
             return false
           }
-          children.push( <MenuItem
-            onClick={() => {
-              onSelect( slug, optionGroup.controls[slug].type )
-            }}
-                         >
-            {optionGroup.controls[slug].label}
-                         </MenuItem> )
+          children.push(
+            <MenuItem
+              onClick={() => {
+                onSelect(slug, optionGroup.controls[slug].type)
+              }}
+            >
+              {optionGroup.controls[slug].label}
+            </MenuItem>)
         }
         )
 
@@ -40,7 +41,7 @@ class DynamicFieldInserter extends Component {
           {children}
         </MenuGroup>
       )
-    } )
+    })
     return options
   }
 
@@ -48,7 +49,7 @@ class DynamicFieldInserter extends Component {
     return (
       <DropdownMenu
         icon='image-filter'
-        label={__( 'Insert Dynamic Tag', 'neve' )}
+        label={__('Insert Dynamic Tag', 'neve')}
       >
         {() => (
           <Fragment>
