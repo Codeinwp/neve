@@ -1634,12 +1634,33 @@ class Front_End {
 				'screenshot'       => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/screenshot.jpg',
 				'unsplash_gallery' => 'https://unsplash.com/collections/8116784/wedding/9afa9f6ba14422f348e1c7a49a9d51e9',
 			),
+			'neve-themotion-gutenberg'          => array(
+				'url'              => 'https://demo.themeisle.com/neve-themotion-gb/',
+				'remote_url'       => 'https://s20206.pcdn.co/neve-themotion-gb/',
+				'title'            => 'Video Blog',
+				'screenshot'       => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/screenshot-1.jpg',
+				'unsplash_gallery' => 'https://unsplash.com/collections/8256651/neve-the-motion/79f8c5a63926e7cee4deed75bc6724fc',
+			),
+			'neve-amadeus-gutenberg'            => array(
+				'url'              => 'https://demo.themeisle.com/neve-amadeus-gb/',
+				'remote_url'       => 'https://s20206.pcdn.co/neve-amadeus-gb/',
+				'title'            => 'Music Teacher',
+				'screenshot'       => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/screenshot-2.jpg',
+				'unsplash_gallery' => 'https://unsplash.com/collections/8271695/neve-amadeus/ba699571eb4fc205ad8385c0440ced80',
+			),
 			'neve-lawyers-gutenberg'            => array(
 				'url'              => 'https://demo.themeisle.com/neve-lawyers-gb/',
 				'remote_url'       => 'https://s20206.pcdn.co/neve-lawyers-gb/',
 				'title'            => 'Lawyers',
 				'screenshot'       => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/screenshot-6.jpg',
 				'unsplash_gallery' => 'https://unsplash.com/collections/4587639/neve-lawyers',
+			),
+			'neve-freelancer-gutenberg'         => array(
+				'url'              => 'https://demo.themeisle.com/neve-freelancer-gb/',
+				'remote_url'       => 'https://s20206.pcdn.co/neve-freelancer-gb/',
+				'title'            => 'Freelancer',
+				'screenshot'       => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/screenshot-7.jpg',
+				'unsplash_gallery' => 'https://unsplash.com/collections/4587634/freelancer/920c5eb680fa5f20b9b19a0d84a385eb',
 			),
 			'neve-tattoo-gutenberg'             => array(
 				'url'              => 'https://demo.themeisle.com/neve-tatoo-gb/',
