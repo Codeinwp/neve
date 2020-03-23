@@ -51,7 +51,7 @@
 		"grunt-newer": "^1.3.0",
 		"grunt-rtlcss": "^2.0.2",
 		"grunt-sass": "^3.1.0",
-		"grunt-version": "^1.3.2",
+		"grunt-version": "^2.0.0",
 		"grunt-wp-i18n": "^1.0.3",
 		"husky": "^4.2.1",
 		"load-project-config": "~0.2.1",
