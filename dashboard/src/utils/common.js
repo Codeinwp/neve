@@ -1,3 +1,4 @@
+/* global neveDash */
 import StarterSites from '../Components/Content/StarterSites';
 import Start from '../Components/Content/Start';
 import Pro from '../Components/Content/Pro';
@@ -37,9 +38,12 @@ const tabs = {
   'plugins': {label: 'Useful Plugins', render: () => <Plugins/>},
   'help': {label: 'Help & docs', render: (setTab) => <Help setTab={setTab}/>},
   'changelog': {label: 'Changelog', render: () => <Changelog/>},
-  'starter-sites': {label: 'Starter Sites', render: () => <StarterSites/>},
-  'pro': {label: 'Neve Pro', render: () => <Pro/>}
+  'starter-sites': {label: 'Starter Sites', render: () => <StarterSites/>}
 };
+
+if ( neveDash.pro ) {
+	tabs.pro = {label: 'Neve Pro', render: () => <Pro/>};
+}
 
 
 export {

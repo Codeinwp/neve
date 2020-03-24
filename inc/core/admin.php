@@ -35,9 +35,9 @@ class Admin {
 	 * Admin constructor.
 	 */
 	public function __construct() {
-	    if( class_exists('\Neve_Dash\Main') ) {
-	        new \Neve_Dash\Main();
-        }
+		if ( class_exists( '\Neve_Dash\Main' ) ) {
+			new \Neve_Dash\Main();
+		}
 		add_action(
 			'admin_init',
 			function () {

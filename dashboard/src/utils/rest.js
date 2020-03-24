@@ -1,12 +1,12 @@
-export const send = (route, data, rest = true) => {
-  return requestData(route, data, rest);
+export const send = (route, data) => {
+  return requestData(route, data);
 };
 
-export const get = (route, rest = true, data = {} ) => {
-  return requestData(route, data, rest, 'GET');
+export const get = (route, data = {} ) => {
+  return requestData(route, data, 'GET');
 };
 
-const requestData = async (route, data = {}, rest, method = 'POST') => {
+const requestData = async (route, data = {}, method = 'POST') => {
   const options = {
     method: method,
     headers: {
@@ -20,8 +20,5 @@ const requestData = async (route, data = {}, rest, method = 'POST') => {
     options.body = JSON.stringify(data);
   }
 
-  const url = rest ? `${neveDash.api}/${route}` : route;
-
-  const rawResponse = await fetch(url, options);
-  return await rest ? rawResponse.json() : rawResponse;
+  return await fetch(route, options);
 };

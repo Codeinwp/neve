@@ -63,6 +63,7 @@ class Main {
 	 * Main constructor.
 	 */
 	public function __construct() {
+		define('NEVE_NEW_DASHBOARD', true);
 		$this->server = new Rest();
 		$this->server->init();
 		$this->plugin_helper = new Plugin_Helper();
@@ -139,18 +140,19 @@ class Main {
 			return;
 		}
 
-		$dependencies = [ 'react', 'react-dom', 'wp-i18n', 'wp-api', 'wp-components', 'wp-element' ];
-
-		if ( ! empty( $this->get_notifications() ) ) {
-			$dependencies[] = 'updates';
-		}
+		$dependencies = [ 'react', 'react-dom', 'wp-i18n', 'wp-api', 'wp-components', 'wp-element', 'updates' ];
 
 		wp_enqueue_style( 'neve-dash-style', get_template_directory_uri() . '/dashboard/build/build.css', [ 'wp-components' ], NEVE_VERSION );
 		wp_register_script( 'neve-dash-script', get_template_directory_uri() . '/dashboard/build/build.js', $dependencies, NEVE_VERSION, true );
-		wp_localize_script( 'neve-dash-script', 'neveDash', $this->get_localization() );
+		wp_localize_script( 'neve-dash-script', 'neveDash', apply_filters( 'neve_dashboard_page_data', $this->get_localization() ) );
 		wp_enqueue_script( 'neve-dash-script' );
 	}
 
+	/**
+	 * Get localization data for the dashboard script.
+	 *
+	 * @return array
+	 */
 	private function get_localization() {
 		return [
 			'nonce'               => wp_create_nonce( 'wp_rest' ),

@@ -6,6 +6,7 @@ const {Fragment} = wp.element;
 
 const Changelog = (props) => {
 	const {changelog} = neveDash;
+
 	return (
 		<Fragment>
 			{

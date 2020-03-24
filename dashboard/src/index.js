@@ -17,7 +17,7 @@ const App = () => {
           <Notifications/>
           <TabsContent currentTab={currentTab} setTab={setTab}/>
         </div>
-        <Sidebar/>
+        <Sidebar currentTab={currentTab}/>
       </div>
     </Fragment>
   );
