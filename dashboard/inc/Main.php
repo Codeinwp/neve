@@ -63,7 +63,7 @@ class Main {
 	 * Main constructor.
 	 */
 	public function __construct() {
-		define('NEVE_NEW_DASHBOARD', true);
+		define( 'NEVE_NEW_DASHBOARD', true );
 		$this->server = new Rest();
 		$this->server->init();
 		$this->plugin_helper = new Plugin_Helper();
@@ -105,11 +105,6 @@ class Main {
 
 		$page_title = $theme['name'] . ' ' . __( 'Options', 'neve' ) . ' ';
 		$menu_name  = $theme['name'] . ' ' . __( 'Options', 'neve' ) . ' ';
-
-		// $required_actions = $this->get_recommended_actions_left();
-		// if ( $required_actions > 0 ) {
-		// $menu_name .= '<span class="badge-action-count update-plugins">' . esc_html( $required_actions ) . '</span>';
-		// }
 
 		$theme_page = ! empty( $theme['template'] ) ? $theme['template'] . '-welcome' : $theme['slug'] . '-welcome';
 		add_theme_page( $page_title, $menu_name, 'activate_plugins', $theme_page, [ $this, 'render' ] );
@@ -162,6 +157,7 @@ class Main {
 			'notifications'       => $this->get_notifications(),
 			'customizerShortcuts' => $this->get_customizer_shortcuts(),
 			'plugins'             => $this->get_useful_plugins(),
+			'featureData'         => $this->get_free_pro_features(),
 			'strings'             => [
 				'header' => $this->theme_args['name'] . ' ' . __( 'Options', 'neve' ),
 			],
@@ -201,11 +197,11 @@ class Main {
 			$notifications['neve-pro-addon'] = [
 				'text'   => sprintf( __( 'New plugin update for %1$s! Please update to %2$s.' ), 'Neve Pro', $update->new_version ),
 				'update' => [
-					'type'                             => 'plugin',
+					'type' => 'plugin',
 					// 'slug' => 'neve-pro-addon',
-												'slug' => 'akismet',
+					'slug' => 'akismet',
 					// 'path' => 'neve-pro-addon/neve-pro-addon.php'
-												'path' => $plugin_path,
+					'path' => $plugin_path,
 				],
 				'cta'    => __( 'Update Now', 'neve' ),
 			];
@@ -252,6 +248,71 @@ class Main {
 			[
 				'text' => __( 'Content / Sidebar', 'neve' ),
 				'link' => add_query_arg( [ 'autofocus[section]' => 'neve_sidebar' ], admin_url( 'customize.php' ) ),
+			],
+		];
+	}
+
+	private function get_free_pro_features() {
+		return [
+			[
+				'title'       => __( 'Header/Footer builder', 'neve' ),
+				'description' => __( 'Easily build your header and footer by dragging and dropping all the important elements in the real-time WordPress Customizer. More advanced options are available in PRO.', 'neve' ),
+				'inLite'      => true,
+			],
+			[
+				'title'       => __( 'Page Builder Compatibility', 'neve' ),
+				'description' => __( 'Neve is fully compatible with Gutenberg, the new WordPress editor and for all of you page builder fans, Neve has full compatibility with Elementor, Beaver Builder, and all the other popular page builders.', 'neve' ),
+				'inLite'      => true,
+			],
+			[
+				'title'       => __( 'Header Booster', 'neve' ),
+				'description' => __( 'Take the header builder to a new level with new awesome components: socials, contact, breadcrumbs, language switcher, multiple HTML, sticky and transparent menu, page header builder and many more.', 'neve' ),
+				'inLite'      => false,
+			],
+			[
+				'title'       => __( 'Page Header Builder', 'neve' ),
+				'description' => __( 'The Page Header is the horizontal area that sits directly below the header and contains the page/post title. Easily design an attractive Page Header area using our dedicated builder.', 'neve' ),
+				'inLite'      => false,
+			],
+			[
+				'title'       => __( 'Custom Layouts', 'neve' ),
+				'description' => __( 'Powerful Custom Layouts builder which allows you to easily create your own header, footer or custom content on any of the hook locations available in the theme.', 'neve' ),
+				'inLite'      => false,
+			],
+			[
+				'title'       => __( 'Blog Booster', 'neve' ),
+				'description' => __( 'Give a huge boost to your entire blogging experience with features specially designed for increased user experience.', 'neve' ) . ' ' . __( 'Sharing, custom article sorting, comments integrations, number of minutes needed to read an article and many more.', 'neve' ),
+				'inLite'      => false,
+			],
+			[
+				'title'       => __( 'Elementor Booster', 'neve' ),
+				'description' => __( 'Leverage the true flexibility of Elementor with powerful addons and templates that you can import with just one click.', 'neve' ),
+				'inLite'      => false,
+			],
+			[
+				'title'       => __( 'WooCommerce Booster', 'neve' ),
+				'description' => __( 'Empower your online store with awesome new features, specially designed for a smooth WooCommerce integration.', 'neve' ) . ' ' . __( 'Wishlist, quick view, video products, advanced reviews, multiple dedicated layouts and many more.', 'neve' ),
+				'inLite'      => false,
+			],
+			[
+				'title'       => __( 'LifterLMS Booster', 'neve' ),
+				'description' => __( 'Make your LifterLMS pages look stunning with our PRO design options. Specially created to help you set up your online courses with minimum customizations.', 'neve' ),
+				'inLite'      => false,
+			],
+			[
+				'title'       => __( 'Typekit(Adobe) Fonts', 'neve' ),
+				'description' => __( "The module allows for an easy way of enabling new awesome Adobe (previous Typekit) Fonts in Neve's Typography options.", 'neve' ),
+				'inLite'      => false,
+			],
+			[
+				'title'       => __( 'White Label', 'neve' ),
+				'description' => __( "For any developer or agency out there building websites for their own clients, we've made it easy to present the theme as your own.", 'neve' ),
+				'inLite'      => false,
+			],
+			[
+				'title'       => __( 'Scroll To Top', 'neve' ),
+				'description' => __( 'Simple but effective module to help you navigate back to the top of the really long pages.', 'neve' ),
+				'inLite'      => false,
 			],
 		];
 	}

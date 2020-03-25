@@ -34,7 +34,7 @@ class Changelog_Handler {
 				preg_match( '/[0-9]{4}-[0-9]{1,2}-[0-9]{1,2}/', $changelog_line, $found_d );
 				$release = array(
 					'version' => $found_v[0],
-					'date' => $found_d[0],
+					'date'    => $found_d[0],
 				);
 			} else {
 				if ( preg_match( '/[*|-]?\s?(\[fix]|\[Fix]|fix|Fix)[:]?\s?\b/', $changelog_line ) ) {
@@ -45,11 +45,11 @@ class Changelog_Handler {
 
 				if ( preg_match( '/[*|-]?\s?(\[feat]|\[Feat]|feat|Feat)[:]?\s?\b/', $changelog_line ) ) {
 					$changelog_line        = preg_replace( '/[*|-]?\s?(\[feat]|\[Feat]|feat|Feat)[:]?\s?\b/', '', $changelog_line );
-					$release['features'][] = trim( str_replace( ['*', '-'], '', $changelog_line ) );
+					$release['features'][] = trim( str_replace( [ '*', '-' ], '', $changelog_line ) );
 					continue;
 				}
 
-				$changelog_line = trim( str_replace( ['*', '-'], '', $changelog_line ) );
+				$changelog_line = trim( str_replace( [ '*', '-' ], '', $changelog_line ) );
 
 				if ( empty( $changelog_line ) ) {
 					continue;

@@ -1,3 +1,9 @@
 #wpcontent {
   padding-left: 0 !important;
 }
+
+#wpbody-content > {
+  .error, .info, .notice {
+	display: none !important;
+  }
+}

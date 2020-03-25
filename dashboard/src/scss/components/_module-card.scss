@@ -1,0 +1,31 @@
+.card.module-card {
+  padding: 0;
+
+  .card-header {
+	border-bottom: 1px solid $grey;
+
+	.title {
+	  margin: 0;
+	}
+
+	padding: 20px;
+
+	.toggle-wrap {
+	  margin-left: auto;
+
+	  div {
+		margin-bottom: 0;
+	  }
+	}
+  }
+  .card-content {
+	padding: 20px;
+	.card-description {
+	  margin: 0;
+	  a {
+		text-decoration: none;
+		font-weight: 700;
+	  }
+	}
+  }
+}

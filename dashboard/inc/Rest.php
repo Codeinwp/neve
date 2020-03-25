@@ -52,25 +52,17 @@ class Rest {
 			return new WP_REST_Response(
 				[
 					'success' => true,
-					'message' => __(
-						'Option Enabled',
-						'neve' 
-					),
-				] 
-			);
-		} else {
-			update_option( 'neve_logger_flag', 'no' );
-
-			return new WP_REST_Response(
-				[
-					'success' => true,
-					'message' => __(
-						'Option Disabled',
-						'neve' 
-					),
+					'message' => __( 'Option enabled', 'neve' ),
 				] 
 			);
 		}
+		update_option( 'neve_logger_flag', 'no' );
 
+		return new WP_REST_Response(
+			[
+				'success' => true,
+				'message' => __( 'Option disabled', 'neve' ),
+			] 
+		);
 	}
 }

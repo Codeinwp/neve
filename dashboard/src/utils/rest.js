@@ -2,8 +2,8 @@ export const send = (route, data) => {
   return requestData(route, data);
 };
 
-export const get = (route, data = {} ) => {
-  return requestData(route, data, 'GET');
+export const get = (route) => {
+  return requestData(route, {}, 'GET');
 };
 
 const requestData = async (route, data = {}, method = 'POST') => {
@@ -20,5 +20,5 @@ const requestData = async (route, data = {}, method = 'POST') => {
     options.body = JSON.stringify(data);
   }
 
-  return await fetch(route, options);
+  return await fetch(route, options).then( (response) => response.json() );
 };

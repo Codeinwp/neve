@@ -8,6 +8,7 @@ $desktop: '1200px';
   @include notifications--laptop();
   @include start--laptop();
   @include card--laptop();
+  @include license-card--laptop();
 }
 
 

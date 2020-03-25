@@ -1,0 +1,33 @@
+.toast {
+  background-color: $blue;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  flex-grow: 0;
+  padding: 5px 10px;
+  font-size: 14px;
+  border: 1px solid darken($blue, 5%);
+  margin: 0 !important;
+  &.info {
+	background-color: $info;
+	border-color: darken($info, 10%);
+  }
+
+  &.error {
+	background-color: $error;
+	border-color: darken($error, 10%);
+  }
+
+  &.warning {
+	background-color: $warning;
+	border-color: darken($warning, 10%);
+  }
+
+  &.success {
+	background-color: $success;
+	border-color: darken($success, 10%);
+  }
+  svg {
+	margin-right: 10px;
+  }
+}

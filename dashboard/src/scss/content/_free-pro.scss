@@ -1,0 +1,19 @@
+.tab-content.free-pro {
+  .col {
+	width: 100%;
+	background-color: #fff;
+  }
+
+  .card {
+	padding: 0;
+  }
+
+  .table-header {
+	//display: none;
+	display: flex;
+  }
+
+  .feature-row {
+	border-top: 1px solid $grey;
+  }
+}
