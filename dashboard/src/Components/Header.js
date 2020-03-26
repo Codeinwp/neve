@@ -5,14 +5,13 @@ const {__} = wp.i18n;
 const {useEffect} = wp.element;
 
 const Header = (props) => {
-
 	useEffect(() => {
 		const hash = getTabHash();
 		if (null === hash) {
 			return false;
 		}
 		props.setTab(hash);
-	});
+	}, []);
 
 	return (
 		<header>

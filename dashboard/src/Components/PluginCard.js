@@ -52,7 +52,7 @@ const Card = (props) => {
               });
               return false;
             }
-            get(data[action]).then((r) => {
+            get(data[action], true).then((r) => {
               if (! r.ok) {
 
                 // Todo handle error with toasts?

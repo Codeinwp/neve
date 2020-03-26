@@ -1,24 +1,26 @@
-export const send = (route, data) => {
-  return requestData(route, data);
+export const send = (route, data, simple = false) => {
+	return requestData(route, simple, data );
 };
 
-export const get = (route) => {
-  return requestData(route, {}, 'GET');
+export const get = (route, simple = false) => {
+	return requestData(route, simple, {}, 'GET');
 };
 
-const requestData = async (route, data = {}, method = 'POST') => {
-  const options = {
-    method: method,
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      'x-wp-nonce': neveDash.nonce
-    }
-  };
+const requestData = async (route, simple = false, data = {}, method = 'POST') => {
+	const options = {
+		method: method,
+		headers: {
+			'Accept': 'application/json',
+			'Content-Type': 'application/json',
+			'x-wp-nonce': neveDash.nonce
+		}
+	};
 
-  if ('POST' === method) {
-    options.body = JSON.stringify(data);
-  }
+	if ('POST' === method) {
+		options.body = JSON.stringify(data);
+	}
 
-  return await fetch(route, options).then( (response) => response.json() );
+	return await fetch(route, options).then((response) => {
+		return simple ? response : response.json();
+	});
 };

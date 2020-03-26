@@ -158,6 +158,7 @@ class Main {
 			'customizerShortcuts' => $this->get_customizer_shortcuts(),
 			'plugins'             => $this->get_useful_plugins(),
 			'featureData'         => $this->get_free_pro_features(),
+			'upgradeURL'          => esc_url( apply_filters( 'neve_upgrade_link_from_child_theme_filter', 'https://themeisle.com/themes/neve/upgrade/?utm_medium=aboutneve&utm_source=freevspro&utm_campaign=neve' ) ),
 			'strings'             => [
 				'header' => $this->theme_args['name'] . ' ' . __( 'Options', 'neve' ),
 			],

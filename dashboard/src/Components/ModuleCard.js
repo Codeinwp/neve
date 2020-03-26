@@ -4,7 +4,7 @@ import {send} from '../utils/rest';
 
 const {ToggleControl, Button} = wp.components;
 const {withSelect, withDispatch} = wp.data;
-const {useState, useCallback} = wp.element;
+const {useState} = wp.element;
 const {compose} = wp.compose;
 const {__} = wp.i18n;
 
@@ -20,6 +20,7 @@ const ModuleCard = ({slug, toggleModule, getStatus, tier}) => {
 		required_actions
 	} = neveDash.modules[slug];
 	const {upgradeLinks} = neveDash;
+	const {proApi} = neveDash;
 
 	return (
 		<div className="card module-card">
@@ -37,6 +38,9 @@ const ModuleCard = ({slug, toggleModule, getStatus, tier}) => {
 								checked={getStatus(slug)}
 								onChange={(value) => {
 									toggleModule(slug, value);
+									send( proApi + '/save_options', {slug, value} ).then((r) => {
+										console.log(r);
+									});
 								}}
 							/>
 					}

@@ -7,35 +7,45 @@ import classnames from 'classnames';
 const FeatureRow = ({item}) => {
 	const {title, description, inLite} = item;
 	const [ tooltip, toggleTooltip ] = useState(false);
+	const [ forceToolTip, toggleForceTooltip ] = useState(false);
 
 	return (
-		<div className="feature-row">
-			<div className="large">
-				<h4>{title}</h4>
-				<a onClick={(e) => {
-					e.preventDefault();
-					toggleTooltip(true);
-				}}>
-					<Dashicon icon="info"/>
-				</a>
-				{tooltip &&
-				<OnClickOutside action={() => {
-					if (! tooltip) {
-						return false;
-					}
-					toggleTooltip(false);
-				}}>
-					<div className="tooltip-content"><p>{description}</p></div>
-				</OnClickOutside>
-				}
-			</div>
-			<span className={classnames([ 'indicator', {'error': ! inLite, 'success': inLite} ])}>
-				<Dashicon icon={inLite ? 'yes' : 'no'}/>
-			</span>
-			<span className="indicator success">
-				<Dashicon icon="yes"/>
-			</span>
-		</div>
+		<tr className="feature-row">
+			<td className="large">
+				<div className="feat-wrap">
+					<h4>{title}</h4>
+					<OnClickOutside action={() => {
+						toggleForceTooltip(false);
+					}}> <a
+						onMouseEnter={(e) => {
+							e.preventDefault();
+							toggleTooltip(true);
+						}}
+						onMouseLeave={(e) => {
+							e.preventDefault();
+							toggleTooltip(false);
+						}}
+						onClick={(e) => {
+							e.preventDefault();
+							toggleForceTooltip(true);
+						}}>
+						<Dashicon icon="info"/>
+						{(tooltip || forceToolTip) &&
+						<div className="tooltip-content">
+							<p>{description}</p>
+						</div>
+						}
+					</a>
+					</OnClickOutside>
+				</div>
+			</td>
+			<td className={classnames([ 'indicator', {'error': ! inLite, 'success': inLite} ])}>
+				<Dashicon size={30} icon={inLite ? 'yes' : 'no-alt'}/>
+			</td>
+			<td className="indicator success">
+				<Dashicon size={30} icon="yes"/>
+			</td>
+		</tr>
 	);
 };
 

@@ -9,6 +9,7 @@ $desktop: '1200px';
   @include start--laptop();
   @include card--laptop();
   @include license-card--laptop();
+  @include free-pro--laptop();
 }
 
 
