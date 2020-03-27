@@ -8,7 +8,7 @@ const Changelog = (props) => {
 	const {changelog} = neveDash;
 
 	return (
-		<Fragment>
+		<div className="card">
 			{
 				changelog.map((entry, index) => {
 					const {date, version, tweaks, fixes, features} = entry;
@@ -54,7 +54,7 @@ const Changelog = (props) => {
 					);
 				})
 			}
-		</Fragment>
+		</div>
 	);
 };
 

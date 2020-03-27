@@ -1,3 +1,19 @@
+export const changeOption = (option, value) => {
+	const model = new wp.api.models.Settings({
+		// eslint-disable-next-line camelcase
+		[option]: value
+	});
+
+	model.save().then( response => {
+		console.log(response[option]);
+		console.log(response);
+			// [option]: response[option],
+			// isAPISaving: false
+		// });
+	});
+};
+
+
 export const send = (route, data, simple = false) => {
 	return requestData(route, simple, data );
 };

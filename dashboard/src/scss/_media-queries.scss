@@ -10,6 +10,7 @@ $desktop: '1200px';
   @include card--laptop();
   @include license-card--laptop();
   @include free-pro--laptop();
+  @include mock--laptop();
 }
 
 
@@ -21,4 +22,5 @@ $desktop: '1200px';
   @include notifications--desktop();
   @include plugins--desktop();
   @include accordion--desktop();
+  @include mock--desktop();
 }

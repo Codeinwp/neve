@@ -92,13 +92,17 @@ const LicenseCard = ({isVisible, changeTier}) => {
 						<span className="validity">
 							{'valid' === valid ? __('Valid', 'neve') : __('Expired', 'neve')}
 						</span>
-						-
-						<span className="expires">
+						{expiration &&
+						<Fragment>
+							<span className="separator">-</span>
+							<span className="expires">
 						{('valid' === valid ?
 							__('Expires', 'neve') :
 							__('Expired', 'neve')) + ' ' + expiration
 						}
 						</span>
+						</Fragment>
+						}
 					</Fragment>
 				</div>
 				}

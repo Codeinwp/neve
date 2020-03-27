@@ -1,4 +1,4 @@
 export default {
-	getModuleStatus: (state, slug) => 'enabled' === state.modulesStatus[slug],
+	getModuleStatus: (state, slug) => state.settings['nv_pro_' + slug + '_status'],
 	getLicenseTier: (state) => state.tier
 };

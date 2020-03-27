@@ -1,10 +1,9 @@
 /* global neveDash */
 import Accordion from './Accordion';
-import {send} from '../utils/rest';
+import {changeOption} from '../utils/rest';
 
 const {ToggleControl, Button} = wp.components;
 const {withSelect, withDispatch} = wp.data;
-const {useState} = wp.element;
 const {compose} = wp.compose;
 const {__} = wp.i18n;
 
@@ -25,8 +24,8 @@ const ModuleCard = ({slug, toggleModule, getStatus, tier}) => {
 	return (
 		<div className="card module-card">
 			<div className="card-header">
-				{tier}
-				{availabilityLevel}
+				{/*{tier}*/}
+				{/*{availabilityLevel}*/}
 				<h3 className="title">{nicename}</h3>
 				<div className="toggle-wrap">
 					{
@@ -38,9 +37,11 @@ const ModuleCard = ({slug, toggleModule, getStatus, tier}) => {
 								checked={getStatus(slug)}
 								onChange={(value) => {
 									toggleModule(slug, value);
-									send( proApi + '/save_options', {slug, value} ).then((r) => {
-										console.log(r);
-									});
+									changeOption('nv_pro_' + slug + '_status', value);
+
+									// send( proApi + '/save_options', {slug, value} ).then((r) => {
+									// 	console.log(r);
+									// });
 								}}
 							/>
 					}

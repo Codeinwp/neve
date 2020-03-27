@@ -1,10 +1,7 @@
 import './style.scss';
-import Header from './Components/Header';
-import TabsContent from './Components/TabsContent';
-import Notifications from './Components/Notifications';
-import Sidebar from './Components/Sidebar';
-
-const { registerStore } = wp.data;
+import App from './Components/App';
+const {registerStore} = wp.data;
+const {render} = wp.element;
 
 import actions from './store/actions';
 import reducer from './store/reducer';
@@ -16,27 +13,9 @@ registerStore('neve-dashboard', {
 	selectors
 });
 
-const {render, useState, Fragment} = wp.element;
-
-const App = () => {
-  const [ currentTab, setTab ] = useState('start');
-
-  return (
-    <Fragment>
-      <Header currentTab={currentTab} setTab={setTab}/>
-      <div className="container content">
-        <div className="main">
-          <Notifications/>
-          <TabsContent currentTab={currentTab} setTab={setTab}/>
-        </div>
-        <Sidebar currentTab={currentTab}/>
-      </div>
-    </Fragment>
-  );
-};
-
+const Root = () => <App/>;
 render(
-  <App/>,
-  document.getElementById('neve-dashboard')
+	<Root/>,
+	document.getElementById('neve-dashboard')
 );
 

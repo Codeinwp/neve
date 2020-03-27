@@ -1,4 +1,10 @@
 export default {
+	setSettings(object) {
+		return {
+			type: 'SET_SETTINGS',
+			payload: {object}
+		};
+	},
 	changeModuleStatus(slug, value) {
 		return {
 			type: 'TOGGLE_MODULE',
