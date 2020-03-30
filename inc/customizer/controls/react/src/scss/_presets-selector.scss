@@ -1,0 +1,17 @@
+.neve-preset-selector {
+  button {
+    margin: 10px 0 0;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    display: flex;
+    opacity: .75;
+    transition: .3s ease;
+    cursor: pointer;
+    overflow: hidden;
+    padding: 0;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}

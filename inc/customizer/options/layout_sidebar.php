@@ -62,7 +62,7 @@ class Layout_Sidebar extends Base_Customizer {
 					'label'           => __( 'Sitewide Sidebar Layout', 'neve' ),
 					'section'         => 'neve_sidebar',
 					'priority'        => 10,
-					'choices'         => $this->sidebar_layout_choices(),
+					'choices'         => $this->sidebar_layout_choices( 'neve_default_sidebar_layout' ),
 					'active_callback' => array( $this, 'sidewide_options_active_callback' ),
 				),
 				'Neve\Customizer\Controls\Radio_Image'
@@ -72,25 +72,24 @@ class Layout_Sidebar extends Base_Customizer {
 		$this->add_control(
 			new Control(
 				'neve_sitewide_content_width',
-				array(
+				[
 					'sanitize_callback' => 'absint',
 					'transport'         => $this->selective_refresh,
 					'default'           => 70,
-				),
-				array(
+				],
+				[
 					'label'           => esc_html__( 'Sitewide Content Width (%)', 'neve' ),
 					'section'         => 'neve_sidebar',
-					'type'            => 'range-value',
-					'step'            => 1,
-					'input_attr'      => array(
-						'min'     => 50,
-						'max'     => 100,
-						'default' => 70,
-					),
+					'type'            => 'neve_range_control',
+					'input_attrs'     => [
+						'min'        => 50,
+						'max'        => 100,
+						'defaultVal' => 70,
+					],
 					'priority'        => 20,
-					'active_callback' => array( $this, 'sidewide_options_active_callback' ),
-				),
-				'Neve\Customizer\Controls\Range'
+					'active_callback' => [ $this, 'sidewide_options_active_callback' ],
+				],
+				'Neve\Customizer\Controls\React\Range'
 			)
 		);
 
@@ -104,10 +103,9 @@ class Layout_Sidebar extends Base_Customizer {
 				array(
 					'label'    => esc_html__( 'Enable Advanced Options', 'neve' ),
 					'section'  => 'neve_sidebar',
-					'type'     => 'checkbox-toggle',
+					'type'     => 'neve_toggle_control',
 					'priority' => 30,
-				),
-				'Neve\Customizer\Controls\Checkbox'
+				)
 			)
 		);
 	}
@@ -115,19 +113,25 @@ class Layout_Sidebar extends Base_Customizer {
 	/**
 	 * Get the sidebar layout choices.
 	 *
+	 * @param string $control_id Name of the control.
+	 *
 	 * @return array
 	 */
-	private function sidebar_layout_choices() {
-		return array(
-			'full-width' => array(
-				'url' => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqAQMAAABknzrDAAAABlBMVEX////V1dXUdjOkAAAAPUlEQVRIx2NgGAUkAcb////Y/+d/+P8AdcQoc8vhH/X/5P+j2kG+GA3CCgrwi43aMWrHqB2jdowEO4YpAACyKSE0IzIuBgAAAABJRU5ErkJggg==',
+	private function sidebar_layout_choices( $control_id ) {
+		return apply_filters(
+			'neve_sidebar_layout_choices',
+			array(
+				'full-width' => array(
+					'url' => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqAQMAAABknzrDAAAABlBMVEX////V1dXUdjOkAAAAPUlEQVRIx2NgGAUkAcb////Y/+d/+P8AdcQoc8vhH/X/5P+j2kG+GA3CCgrwi43aMWrHqB2jdowEO4YpAACyKSE0IzIuBgAAAABJRU5ErkJggg==',
+				),
+				'left'       => array(
+					'url' => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqAgMAAAAjP0ATAAAACVBMVEX///8+yP/V1dXG9YqxAAAAWElEQVR42mNgGAXDE4RCQMDAKONaBQINWqtWrWBatQDIaxg8ygYqQIAOYwC6bwHUmYNH2eBPSMhgBQXKRr0w6oVRL4x6YdQLo14Y9cKoF0a9QCO3jYLhBADvmFlNY69qsQAAAABJRU5ErkJggg==',
+				),
+				'right'      => array(
+					'url' => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqAgMAAAAjP0ATAAAACVBMVEX///8+yP/V1dXG9YqxAAAAWUlEQVR42mNgGAUjB4iGgkEIzZStAoEVTECiQWsVkLdiECkboAABOmwBF9BtUGcOImUDEiCkJCQU0ECBslEvjHph1AujXhj1wqgXRr0w6oVRLwyEF0bBUAUAz/FTNXm+R/MAAAAASUVORK5CYII=',
+				),
 			),
-			'left'       => array(
-				'url' => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqAgMAAAAjP0ATAAAACVBMVEX///8+yP/V1dXG9YqxAAAAWElEQVR42mNgGAXDE4RCQMDAKONaBQINWqtWrWBatQDIaxg8ygYqQIAOYwC6bwHUmYNH2eBPSMhgBQXKRr0w6oVRL4x6YdQLo14Y9cKoF0a9QCO3jYLhBADvmFlNY69qsQAAAABJRU5ErkJggg==',
-			),
-			'right'      => array(
-				'url' => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqAgMAAAAjP0ATAAAACVBMVEX///8+yP/V1dXG9YqxAAAAWUlEQVR42mNgGAUjB4iGgkEIzZStAoEVTECiQWsVkLdiECkboAABOmwBF9BtUGcOImUDEiCkJCQU0ECBslEvjHph1AujXhj1wqgXRr0w6oVRLwyEF0bBUAUAz/FTNXm+R/MAAAAASUVORK5CYII=',
-			),
+			$control_id
 		);
 	}
 
@@ -214,13 +218,14 @@ class Layout_Sidebar extends Base_Customizer {
 					$control_id,
 					array(
 						'sanitize_callback' => array( $this, 'sanitize_sidebar_layout' ),
-						'default'           => 'right',
+						'default'           => $this->get_sidebar_control_default_value( $control_id ),
 					),
 					array(
 						'label'           => __( 'Sidebar Layout', 'neve' ),
+						'description'     => $this->get_sidebar_control_description( $control_id ),
 						'section'         => 'neve_sidebar',
 						'priority'        => $priority,
-						'choices'         => $this->sidebar_layout_choices(),
+						'choices'         => $this->sidebar_layout_choices( $control_id ),
 						'active_callback' => array( $this, 'advanced_options_active_callback' ),
 					),
 					'Neve\Customizer\Controls\Radio_Image'
@@ -228,6 +233,61 @@ class Layout_Sidebar extends Base_Customizer {
 			);
 			$priority += 30;
 		}
+	}
+
+	/**
+	 * Get sidebar control default value.
+	 *
+	 * @param string $control_id Control id.
+	 *
+	 * @return string
+	 */
+	private function get_sidebar_control_default_value( $control_id ) {
+		if ( $control_id === 'neve_single_product_sidebar_layout' ) {
+			return 'full-width';
+		}
+
+		return 'right';
+	}
+
+	/**
+	 * Get the description for sidebar position.
+	 *
+	 * @param string $control_id Control id.
+	 *
+	 * @return string
+	 */
+	private function get_sidebar_control_description( $control_id ) {
+		if ( $control_id !== 'neve_shop_archive_sidebar_layout' ) {
+			return '';
+		}
+
+		$shop_id = get_option( 'woocommerce_shop_page_id' );
+		if ( empty( $shop_id ) ) {
+			return '';
+		}
+
+		$meta = get_post_meta( $shop_id, 'neve_meta_sidebar', true );
+		if ( empty( $meta ) ) {
+			return '';
+		}
+
+		/* translators: %s is Notice text */
+		$template = '<div class="notice notice-info"><p>%s</p></div>';
+
+		return sprintf(
+			$template,
+			sprintf(
+			/* translators: %s is edit page link */
+				esc_html__( 'Note: It seems that the shop page has an individual sidebar layout already set. To be able to control the layout from here, %s your page and set the sidebar to "Customizer Setting".', 'neve' ),
+				sprintf(
+				/* translators: %s is edit label */
+					'<a target="_blank" href="' . get_edit_post_link( $shop_id ) . '">%s</a>',
+					__( 'edit', 'neve' )
+				)
+			)
+		);
+
 	}
 
 	/**
@@ -250,7 +310,6 @@ class Layout_Sidebar extends Base_Customizer {
 			);
 		}
 		array_push( $sidebar_layout_controls, 'neve_other_pages_content_width' );
-
 		foreach ( $sidebar_layout_controls as $control_id ) {
 			$this->add_control(
 				new Control(
@@ -263,17 +322,16 @@ class Layout_Sidebar extends Base_Customizer {
 					array(
 						'label'           => esc_html__( 'Content Width (%)', 'neve' ),
 						'section'         => 'neve_sidebar',
-						'type'            => 'range-value',
-						'step'            => 1,
-						'input_attr'      => array(
-							'min'     => 50,
-							'max'     => 100,
-							'default' => 70,
-						),
+						'type'            => 'neve_range_control',
+						'input_attrs'     => [
+							'min'        => 50,
+							'max'        => 100,
+							'defaultVal' => 70,
+						],
 						'priority'        => $priority,
 						'active_callback' => array( $this, 'advanced_options_active_callback' ),
 					),
-					'Neve\Customizer\Controls\Range'
+					'Neve\Customizer\Controls\React\Range'
 				)
 			);
 			$priority += 30;
@@ -288,7 +346,7 @@ class Layout_Sidebar extends Base_Customizer {
 	 * @return bool
 	 */
 	public function sanitize_sidebar_layout( $value ) {
-		$allowed_values = array( 'left', 'right', 'full-width' );
+		$allowed_values = array( 'left', 'right', 'full-width', 'off-canvas' );
 		if ( ! in_array( $value, $allowed_values, true ) ) {
 			return 'right';
 		}

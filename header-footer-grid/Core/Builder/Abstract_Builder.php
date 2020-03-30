@@ -273,21 +273,22 @@ abstract class Abstract_Builder implements Builder {
 		if ( $row_id === 'sidebar' ) {
 			SettingsManager::get_instance()->add(
 				[
-					'id'                => self::LAYOUT_SETTING,
-					'group'             => $row_setting_id,
-					'tab'               => SettingsManager::TAB_LAYOUT,
-					'label'             => __( 'Layout', 'neve' ),
-					'type'              => 'select',
-					'section'           => $row_setting_id,
-					'options'           => [
+					'id'                 => self::LAYOUT_SETTING,
+					'group'              => $row_setting_id,
+					'tab'                => SettingsManager::TAB_LAYOUT,
+					'label'              => __( 'Layout', 'neve' ),
+					'type'               => 'select',
+					'section'            => $row_setting_id,
+					'options'            => [
 						'choices' => [
 							'slide_left' => __( 'Slide from Left', 'neve' ),
 							'dropdown'   => __( 'Toggle Dropdown', 'neve' ),
 						],
 					],
-					'transport'         => 'refresh',
-					'sanitize_callback' => 'wp_filter_nohtml_kses',
-					'default'           => 'slide_left',
+					'conditional_header' => $this->get_id() === 'header',
+					'transport'          => 'refresh',
+					'sanitize_callback'  => 'wp_filter_nohtml_kses',
+					'default'            => 'slide_left',
 				]
 			);
 		}
@@ -295,22 +296,23 @@ abstract class Abstract_Builder implements Builder {
 		if ( $row_id !== 'sidebar' ) {
 			SettingsManager::get_instance()->add(
 				[
-					'id'                => self::LAYOUT_SETTING,
-					'group'             => $row_setting_id,
-					'tab'               => SettingsManager::TAB_LAYOUT,
-					'label'             => __( 'Layout', 'neve' ),
-					'type'              => 'select',
-					'section'           => $row_setting_id,
-					'options'           => [
+					'id'                 => self::LAYOUT_SETTING,
+					'group'              => $row_setting_id,
+					'tab'                => SettingsManager::TAB_LAYOUT,
+					'label'              => __( 'Layout', 'neve' ),
+					'type'               => 'select',
+					'section'            => $row_setting_id,
+					'options'            => [
 						'choices' => [
 							'layout-full-contained' => __( 'Full Width', 'neve' ) . ' - ' . __( 'Contained', 'neve' ),
 							'layout-fullwidth'      => __( 'Full Width', 'neve' ),
 							'layout-contained'      => __( 'Contained', 'neve' ),
 						],
 					],
-					'transport'         => 'post' . $row_setting_id,
-					'sanitize_callback' => 'wp_filter_nohtml_kses',
-					'default'           => 'layout-full-contained',
+					'conditional_header' => $this->get_id() === 'header',
+					'transport'          => 'post' . $row_setting_id,
+					'sanitize_callback'  => 'wp_filter_nohtml_kses',
+					'default'            => 'layout-full-contained',
 				]
 			);
 			SettingsManager::get_instance()->add(
@@ -319,38 +321,31 @@ abstract class Abstract_Builder implements Builder {
 					'group'                 => $row_setting_id,
 					'tab'                   => SettingsManager::TAB_STYLE,
 					'section'               => $row_setting_id,
-					'label'                 => __( 'Row height (px)', 'neve' ),
-					'type'                  => '\Neve\Customizer\Controls\Range',
+					'label'                 => __( 'Row height', 'neve' ),
+					'type'                  => '\Neve\Customizer\Controls\React\Responsive_Range',
 					'live_refresh_selector' => $row_class,
 					'live_refresh_css_prop' => array(
 						'prop' => 'height',
 						'unit' => 'px',
 					),
 					'options'               => [
-						'type'        => 'range-value',
-						'media_query' => true,
-						'step'        => 1,
-						'input_attr'  => [
-							'mobile'  => [
-								'min'     => 0,
-								'max'     => 700,
-								'default' => 0,
+						'input_attrs' => [
+							'step'           => 1,
+							'min'            => 0,
+							'max'            => 700,
+							'defaultVal'     => [
+								'mobile'  => 0,
+								'tablet'  => 0,
+								'desktop' => 0,
 							],
-							'tablet'  => [
-								'min'     => 0,
-								'max'     => 700,
-								'default' => 0,
-							],
-							'desktop' => [
-								'min'     => 0,
-								'max'     => 700,
-								'default' => 0,
-							],
+							'units'          => [ 'px' ],
+							'hideResponsive' => true,
 						],
 					],
 					'transport'             => 'postMessage',
 					'sanitize_callback'     => array( $this, 'sanitize_responsive_int_json' ),
 					'default'               => '{ "mobile": "0", "tablet": "0", "desktop": "0" }',
+					'conditional_header'    => $this->get_id() === 'header',
 				]
 			);
 		}
@@ -384,6 +379,7 @@ abstract class Abstract_Builder implements Builder {
 					'type'       => 'color',
 					'colorValue' => $default_color,
 				],
+				'conditional_header'    => $this->get_id() === 'header',
 			]
 		);
 
@@ -396,21 +392,15 @@ abstract class Abstract_Builder implements Builder {
 				'tab'                   => SettingsManager::TAB_STYLE,
 				'label'                 => __( 'Skin Mode', 'neve' ),
 				'section'               => $row_setting_id,
-				'type'                  => '\Neve\Customizer\Controls\Radio_Image',
+				'conditional_header'    => $this->get_id() === 'header',
+				'type'                  => '\Neve\Customizer\Controls\React\Radio_Buttons',
 				'options'               => [
-					'choices' => [
-						'light-mode' => array(
-							'url'  => Settings\Config::get_url() . '/assets/images/customizer/text_mode_dark.svg',
-							'name' => '',
-						),
-						'dark-mode'  => array(
-							'url'  => Settings\Config::get_url() . '/assets/images/customizer/text_mode_light.svg',
-							'name' => '',
-						),
-					],
+					'is_for'        => 'row_skin',
+					'large_buttons' => true,
 				],
 				'transport'             => 'postMessage',
 				'live_refresh_selector' => $row_class,
+				'live_refresh_css_prop' => [ 'is_for' => 'row_skin' ],
 				'sanitize_callback'     => 'wp_filter_nohtml_kses',
 				'default'               => 'light-mode',
 			]
@@ -656,7 +646,7 @@ abstract class Abstract_Builder implements Builder {
 		self::$current_builder = $this->get_id();
 		if ( is_customize_preview() ) {
 			$style = $this->css_array_to_css( $this->add_style() );
-			echo '<style type="text/css">' . $style . '</style>';// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo '<style type="text/css" id="' . esc_attr( $this->get_id() ) . '-style">' . $style . '</style>';// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
 		foreach ( $layout as $device_name => $device ) {
 			if ( empty( $device ) ) {
@@ -779,9 +769,7 @@ abstract class Abstract_Builder implements Builder {
 			}
 			$css_setup['background-size'] = 'cover';
 
-			if ( ! empty( $background['focusPoint'] ) &&
-				! empty( $background['focusPoint']['x'] ) &&
-				! empty( $background['focusPoint']['y'] ) ) {
+			if ( ! empty( $background['focusPoint'] ) && ! empty( $background['focusPoint']['x'] ) && ! empty( $background['focusPoint']['y'] ) ) {
 				$css_setup['background-position'] = round( $background['focusPoint']['x'] * 100 ) . '% ' . round( $background['focusPoint']['y'] * 100 ) . '%';
 			}
 
@@ -814,7 +802,7 @@ abstract class Abstract_Builder implements Builder {
 	/**
 	 * Render device markup.
 	 *
-	 * @param string $device_name Device id.
+	 * @param string $device_name    Device id.
 	 * @param array  $device_details Device meta.
 	 */
 	public function render_device( $device_name, $device_details ) {
@@ -831,7 +819,7 @@ abstract class Abstract_Builder implements Builder {
 	 * Render components in the row.
 	 *
 	 * @param null|string $device Device id.
-	 * @param null|array  $row Row details.
+	 * @param null|array  $row    Row details.
 	 */
 	public function render_components( $device = null, $row = null ) {
 
@@ -1094,7 +1082,7 @@ abstract class Abstract_Builder implements Builder {
 		}
 		uasort(
 			$components_settings,
-			function( $a, $b ) {
+			function ( $a, $b ) {
 				return $a['name'] > $b['name'];
 			}
 		);

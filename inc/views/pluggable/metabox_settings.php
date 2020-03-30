@@ -247,6 +247,10 @@ class Metabox_Settings {
 			return get_option( 'page_for_posts' );
 		}
 
+		if ( is_search() ) {
+			return false;
+		}
+
 		if ( is_home() ) {
 			return false;
 		}

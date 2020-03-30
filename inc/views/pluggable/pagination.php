@@ -97,7 +97,7 @@ class Pagination extends Base_View {
 		$data['infiniteScroll']         = 'enabled';
 		$data['infiniteScrollMaxPages'] = $max_pages;
 		$data['infiniteScrollEndpoint'] = rest_url( 'nv/v1/posts/page/' );
-		$data['infiniteScrollQuery']    = json_encode( $wp_query->query );
+		$data['infiniteScrollQuery']    = wp_json_encode( $wp_query->query );
 
 		return $data;
 	}
@@ -137,7 +137,7 @@ class Pagination extends Base_View {
 	private function render_single_pagination() {
 		wp_link_pages(
 			array(
-				'before'      => '<div class="page-numbers">',
+				'before'      => '<div class="post-pages-links"><span>' . apply_filters( 'neve_page_link_before', esc_html__( 'Pages:', 'neve' ) ) . '</span>',
 				'after'       => '</div>',
 				'link_before' => '<span>',
 				'link_after'  => '</span>',

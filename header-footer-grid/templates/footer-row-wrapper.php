@@ -23,12 +23,14 @@ $row_classes = [
 ];
 
 $row_classes[] = row_setting( Abstract_Builder::LAYOUT_SETTING );
+$row_classes   = apply_filters( 'hfg_footer_row_classes', $row_classes, $row_index );
 
 $row_wrapper_classes = array(
 	'hfg-grid',
 	'nv-footer-content',
 	'hfg-grid-' . esc_attr( $row_index ),
 	'row--wrapper',
+	'row',
 );
 if ( is_customize_preview() ) {
 	$row_wrapper_classes[] = 'builder-item-focus';

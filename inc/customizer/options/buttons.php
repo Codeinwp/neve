@@ -56,11 +56,9 @@ class Buttons extends Base_Customizer {
 					'tabs'     => array(
 						'button'           => array(
 							'label' => esc_html__( 'Primary', 'neve' ),
-							'icon'  => 'star-filled',
 						),
 						'secondary_button' => array(
 							'label' => esc_html__( 'Secondary', 'neve' ),
-							'icon'  => 'star-empty',
 						),
 					),
 					'controls' => array(
@@ -90,9 +88,10 @@ class Buttons extends Base_Customizer {
 						'default'           => $defaults,
 					],
 					[
-						'label'   => __( 'Button Appearance', 'neve' ),
-						'section' => $this->section_id,
-						'type'    => 'neve_button_appearance',
+						'defaultVals' => $defaults,
+						'label'       => __( 'Button Appearance', 'neve' ),
+						'section'     => $this->section_id,
+						'type'        => 'neve_button_appearance',
 					]
 				)
 			);
@@ -131,8 +130,7 @@ class Buttons extends Base_Customizer {
 						'sanitize_callback' => array( $this, 'sanitize_spacing_array' ),
 						'section'           => $this->section_id,
 						'input_attrs'       => [
-							'units'        => [ 'px' ],
-							'inlineHeader' => true,
+							'units' => [ 'px' ],
 						],
 						'default'           => $default_padding_values,
 					),

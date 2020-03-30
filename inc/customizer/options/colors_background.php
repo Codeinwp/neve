@@ -80,7 +80,7 @@ class Colors_Background extends Base_Customizer {
 						'section'  => 'neve_colors_background_section',
 						'priority' => $control_properties['priority'],
 					),
-					'WP_Customize_Color_Control'
+					'Neve\Customizer\Controls\React\Color'
 				)
 			);
 		}

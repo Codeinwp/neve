@@ -209,7 +209,8 @@
   margin-bottom: 0;
 
   a {
-    &:first-child {
+		align-self: center;
+		&:first-child {
       grid-column-start: 1;
     }
 

@@ -1,45 +1,16 @@
-buildScripts:
+build:
+# Transpile SCSS
 - 'sass'
-- 'concat:customizerStyle'
-- 'uglify:scripts'
-- 'uglify:customizerControls'
+# Concatenate Customizer Controls CSS Files into one || todo: review this on customizer audit
+- 'concat'
+# RTL CSS
 - 'rtlcss'
+# Minify CSS
 - 'cssmin'
-
-check:
-- 'sass:style'
-- 'concat:customizerStyle'
-- 'uglify:scripts'
-- 'uglify:customizerControls'
-#- 'postcss'
-- 'rtlcss'
-- 'cssmin'
-- 'makepot'
-- 'shell:phpcbf'
-- 'newer:addtextdomain:main'
-- 'check:css'
-- 'travis'
-
-travis:
-  descriptions: "Routine testing in CI"
-  tasks: [
-    "shell:phpcs",
-    "jshint",
-    "check:i18n"
-  ]
-
-dist:
+# Add TextDomain to Composer Dependencies.
 - 'addtextdomain:composerDeps'
-- 'clean:wporg'
-- 'mkdir:dist'
-- 'cachebuster:full'
-- 'copy:full'
-
-deploy:
-- 'dist'
-- 'mkdir:artifact'
-- 'compress:full'
-
+# Add TextDomain to PHP Files Dependencies.
+- 'newer:addtextdomain:main'
 
 # Version:
 #         1. grunt version::patch

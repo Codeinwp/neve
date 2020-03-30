@@ -221,11 +221,11 @@ class Manager {
 	/**
 	 * Utility method to define existing controls for component tabs.
 	 *
-	 * @since   1.0.1
-	 * @access  public
-	 *
 	 * @param string $id   The ID for the tab.
 	 * @param array  $tabs List of tab and controls to use.
+	 *
+	 * @since   1.0.1
+	 * @access  public
 	 */
 	public function add_controls_to_tabs( $id, $tabs = array() ) {
 		self::$tabs[ $id ] = array_merge_recursive(
@@ -332,7 +332,7 @@ class Manager {
 					self::TAB_LAYOUT,
 					self::TAB_STYLE,
 				),
-				true 
+				true
 			) ) {
 				if ( ! isset( self::$tabs[ $arguments['group'] ][ $arguments['tab'] ] ) ) {
 					self::$tabs[ $arguments['group'] ][ $arguments['tab'] ] = [];
@@ -347,7 +347,7 @@ class Manager {
 					$array['dynamicTags']['controls'][ $arguments['group'] . '_' . $arguments['id'] ] = $arguments['use_dynamic_fields'];
 
 					return $array;
-				} 
+				}
 			);
 		}
 		if ( isset( $arguments['live_refresh_selector'] ) ) {
@@ -370,6 +370,26 @@ class Manager {
 			);
 		}
 
+		if ( isset( $arguments['conditional_header'] ) && $arguments['conditional_header'] === true ) {
+			add_filter(
+				'neve_react_controls_localization',
+				function ( $array ) use ( $id ) {
+					$array['headerControls'][] = $id;
+
+					return $array;
+				}
+			);
+			if ( defined( 'NEVE_PRO_VERSION' ) ) {
+				add_filter(
+					'neve_pro_react_controls_localization',
+					function ( $array ) use ( $id ) {
+						$array['headerControls'][] = $id;
+
+						return $array;
+					}
+				);
+			}
+		}
 
 		self::$settings[ $id ] = array_merge(
 			$arguments,

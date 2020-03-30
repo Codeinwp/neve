@@ -13,8 +13,6 @@ namespace HFG\Core\Components;
 
 use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Main;
-use Neve\Customizer\Controls\Checkbox;
-use WP_Customize_Manager;
 
 /**
  * Class MenuIcon
@@ -27,6 +25,7 @@ class MenuIcon extends Abstract_Component {
 	const SIDEBAR_TOGGLE    = 'sidebar';
 	const TEXT_ID           = 'menu_label';
 	const BUTTON_APPEARANCE = 'button_appearance';
+	const COMPONENT_SLUG    = 'nav-icon';
 
 	/**
 	 * Padding settings default values.
@@ -59,6 +58,13 @@ class MenuIcon extends Abstract_Component {
 	);
 
 	/**
+	 * Close button target CSS selector.
+	 *
+	 * @var string
+	 */
+	private $close_button = '.header-menu-sidebar .close-sidebar-panel .navbar-toggle';
+
+	/**
 	 * MenuIcon constructor.
 	 *
 	 * @since   1.0.0
@@ -66,7 +72,8 @@ class MenuIcon extends Abstract_Component {
 	 */
 	public function init() {
 		$this->set_property( 'label', __( 'Menu Icon', 'neve' ) );
-		$this->set_property( 'id', 'nav-icon' );
+		$this->set_property( 'id', $this->get_class_const( 'COMPONENT_SLUG' ) );
+		$this->set_property( 'component_slug', self::COMPONENT_SLUG );
 		$this->set_property( 'width', 1 );
 		$this->set_property( 'icon', 'menu' );
 		$this->set_property( 'section', self::COMPONENT_ID );
@@ -97,6 +104,7 @@ class MenuIcon extends Abstract_Component {
 					'wrap_class' => 'nav-toggle-label',
 					'html_tag'   => 'span',
 				),
+				'conditional_header'    => true,
 			]
 		);
 		SettingsManager::get_instance()->add(
@@ -114,6 +122,15 @@ class MenuIcon extends Abstract_Component {
 					'no_hover' => true,
 				],
 				'live_refresh_selector' => $this->default_selector,
+				'live_refresh_css_prop' => array(
+					'additional_buttons' => $this->get_class_const( 'COMPONENT_ID' ) !== 'header_menu_icon' ? [] : [
+						[
+							'button' => $this->close_button,
+							'text'   => '.icon-bar',
+						],
+					],
+				),
+				'conditional_header'    => true,
 			]
 		);
 	}
@@ -129,7 +146,14 @@ class MenuIcon extends Abstract_Component {
 		$appearance = \HFG\component_setting( self::BUTTON_APPEARANCE, null, $this->id );
 
 		if ( isset( $appearance['borderRadius'] ) ) {
-			$css_array[ $this->default_selector ]['border-radius'] = $appearance['borderRadius'] . 'px';
+			if ( is_array( $appearance['borderRadius'] ) ) {
+				$css_array[ $this->default_selector ]['border-top-left-radius']     = $appearance['borderRadius']['top'] . 'px';
+				$css_array[ $this->default_selector ]['border-top-right-radius']    = $appearance['borderRadius']['right'] . 'px';
+				$css_array[ $this->default_selector ]['border-bottom-left-radius']  = $appearance['borderRadius']['left'] . 'px';
+				$css_array[ $this->default_selector ]['border-bottom-right-radius'] = $appearance['borderRadius']['bottom'] . 'px';
+			} else {
+				$css_array[ $this->default_selector ]['border-radius'] = $appearance['borderRadius'] . 'px';
+			}
 		}
 
 		if ( ! empty( $appearance['background'] ) ) {
@@ -145,14 +169,69 @@ class MenuIcon extends Abstract_Component {
 		}
 
 		if ( ! empty( $appearance['borderWidth'] ) && $appearance['type'] === 'outline' ) {
-			$css_array[ $this->default_selector ]['border'] = $appearance['borderWidth'] . 'px solid';
+			if ( is_array( $appearance['borderWidth'] ) ) {
+				$css_array[ $this->default_selector ]['border-style'] = 'solid';
+				foreach ( $appearance['borderWidth'] as $k => $v ) {
+					$css_array[ $this->default_selector ][ 'border-' . $k . '-width' ] = $v . 'px';
+				}
+			} else {
+				$css_array[ $this->default_selector ]['border'] = $appearance['borderWidth'] . 'px solid';
+			}
 		}
 
 		if ( $appearance['type'] !== 'outline' ) {
 			$css_array[ $this->default_selector ]['border'] = 'none';
 		}
 
+		$css_array = array_merge( $css_array, $this->get_close_button_style( $appearance ) );
+
 		return parent::add_style( $css_array );
+	}
+
+	/**
+	 * Add sidebar close button style.
+	 *
+	 * @param array $appearance_array the button appearance control value.
+	 *
+	 * @return array
+	 */
+	protected function get_close_button_style( $appearance_array ) {
+		$additional_style = [];
+		if ( isset( $appearance_array['borderRadius'] ) ) {
+			if ( is_array( $appearance_array['borderRadius'] ) ) {
+				$additional_style[ $this->close_button ]['border-top-left-radius']     = $appearance_array['borderRadius']['top'] . 'px';
+				$additional_style[ $this->close_button ]['border-top-right-radius']    = $appearance_array['borderRadius']['right'] . 'px';
+				$additional_style[ $this->close_button ]['border-bottom-right-radius'] = $appearance_array['borderRadius']['bottom'] . 'px';
+				$additional_style[ $this->close_button ]['border-bottom-left-radius']  = $appearance_array['borderRadius']['left'] . 'px';
+			} else {
+				$additional_style[ $this->close_button ]['border-radius'] = $appearance_array['borderRadius'] . 'px';
+			}
+		}
+		if ( ! empty( $appearance_array['background'] ) ) {
+			$additional_style[ $this->close_button ]['background-color'] = $appearance_array['background'];
+		}
+		if ( ! empty( $appearance_array['text'] ) ) {
+			$additional_style[ $this->close_button ]['color']                           = $appearance_array['text'];
+			$additional_style[ $this->close_button . ' .icon-bar' ]['background-color'] = $appearance_array['text'];
+			if ( $appearance_array['type'] === 'outline' ) {
+				$additional_style[ $this->close_button ]['border-color'] = $appearance_array['text'];
+			}
+		}
+		if ( ! empty( $appearance_array['borderWidth'] ) && $appearance_array['type'] === 'outline' ) {
+			if ( is_array( $appearance_array['borderWidth'] ) ) {
+				$css_array[ $this->close_button ]['border-style'] = 'solid';
+				foreach ( $appearance_array['borderWidth'] as $k => $v ) {
+					$css_array[ $this->close_button ][ 'border-' . $k . '-width' ] = $v . 'px';
+				}
+			} else {
+				$additional_style[ $this->close_button ]['border'] = $appearance_array['borderWidth'] . 'px solid';
+			}
+		}
+		if ( $appearance_array['type'] !== 'outline' ) {
+			$additional_style[ $this->close_button ]['border'] = 'none';
+		}
+
+		return $additional_style;
 	}
 
 	/**

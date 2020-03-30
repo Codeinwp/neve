@@ -12,8 +12,8 @@
 namespace HFG\Core\Components;
 
 use HFG\Core\Settings\Manager as SettingsManager;
-
 use HFG\Main;
+use Neve_Pro\Core\Settings;
 
 /**
  * Class SearchResponsive
@@ -22,10 +22,17 @@ use HFG\Main;
  */
 class CartIcon extends Abstract_Component {
 
-	const COMPONENT_ID   = 'header_cart_icon';
-	const SIZE_ID        = 'icon_size';
-	const COLOR_ID       = 'color';
-	const HOVER_COLOR_ID = 'hover_color';
+	const COMPONENT_ID    = 'header_cart_icon';
+	const SIZE_ID         = 'icon_size';
+	const COLOR_ID        = 'color';
+	const HOVER_COLOR_ID  = 'hover_color';
+	const ICON_SELECTOR   = 'icon_selector';
+	const CART_TOTAL      = 'cart_total';
+	const CART_LABEL      = 'cart_label';
+	const CART_FOCUS      = 'cart_focus';
+	const MINI_CART_STYLE = 'mini_cart_style';
+	const AFTER_CART_HTML = 'after_cart_html';
+	const LABEL_SIZE_ID   = 'label_size';
 
 	/**
 	 * Button constructor.
@@ -66,14 +73,24 @@ class CartIcon extends Abstract_Component {
 				'desktop-unit' => 'px',
 			)
 		);
+
+		if ( function_exists( 'do_blocks' ) ) {
+			add_filter( 'neve_post_content', 'do_blocks' );
+		}
+		add_filter( 'neve_post_content', 'wptexturize' );
+		add_filter( 'neve_post_content', 'convert_smilies' );
+		add_filter( 'neve_post_content', 'convert_chars' );
+		add_filter( 'neve_post_content', 'wpautop' );
+		add_filter( 'neve_post_content', 'shortcode_unautop' );
+		add_filter( 'neve_post_content', 'do_shortcode' );
 	}
 
 	/**
 	 * Method to filter component loading if needed.
 	 *
+	 * @return bool
 	 * @since   1.0.1
 	 * @access  public
-	 * @return bool
 	 */
 	public function is_active() {
 		return class_exists( 'WooCommerce', false );
@@ -83,6 +100,9 @@ class CartIcon extends Abstract_Component {
 	 * Define settings for this component.
 	 */
 	public function add_settings() {
+
+		do_action( 'nv_cart_icon_component_controls' );
+
 		SettingsManager::get_instance()->add(
 			[
 				'id'                    => self::SIZE_ID,
@@ -92,12 +112,20 @@ class CartIcon extends Abstract_Component {
 				'sanitize_callback'     => 'absint',
 				'default'               => 15,
 				'label'                 => __( 'Icon Size', 'neve' ),
-				'type'                  => 'neve_range_control',
+				'type'                  => 'Neve\Customizer\Controls\React\Range',
+				'options'               => [
+					'input_attrs' => [
+						'min'        => 10,
+						'max'        => 100,
+						'defaultVal' => 15,
+					],
+				],
 				'live_refresh_selector' => $this->default_selector . ' svg',
 				'live_refresh_css_prop' => array(
 					'type' => 'svg-icon-size',
 				),
 				'section'               => $this->section,
+				'conditional_header'    => true,
 			]
 		);
 
@@ -109,12 +137,21 @@ class CartIcon extends Abstract_Component {
 				'transport'             => 'postMessage',
 				'sanitize_callback'     => 'sanitize_hex_color',
 				'label'                 => __( 'Color', 'neve' ),
-				'type'                  => '\Neve\Customizer\Controls\React\Color',
+				'type'                  => 'neve_color_control',
 				'section'               => $this->section,
-				'live_refresh_selector' => $this->default_selector . ' svg',
-				'live_refresh_css_prop' => array(
-					'prop' => 'fill',
-				),
+				'live_refresh_selector' => true,
+				'live_refresh_css_prop' => [
+					[
+						'selector' => $this->default_selector . ' svg',
+						'prop'     => 'fill',
+						'fallback' => 'inherit',
+					],
+					[
+						'selector' => $this->default_selector . ' .cart-icon-label',
+						'prop'     => 'color',
+						'fallback' => 'inherit',
+					],
+				],
 			]
 		);
 
@@ -126,15 +163,23 @@ class CartIcon extends Abstract_Component {
 				'transport'             => 'postMessage',
 				'sanitize_callback'     => 'sanitize_hex_color',
 				'label'                 => __( 'Hover Color', 'neve' ),
-				'type'                  => '\Neve\Customizer\Controls\React\Color',
+				'type'                  => 'neve_color_control',
 				'section'               => $this->section,
-				'live_refresh_selector' => $this->default_selector . ':hover svg',
-				'live_refresh_css_prop' => array(
-					'prop' => 'fill',
-				),
+				'live_refresh_selector' => true,
+				'live_refresh_css_prop' => [
+					[
+						'selector' => $this->default_selector . ':hover svg',
+						'prop'     => 'fill',
+						'fallback' => 'inherit',
+					],
+					[
+						'selector' => $this->default_selector . ':hover .cart-icon-label',
+						'prop'     => 'color',
+						'fallback' => 'inherit',
+					],
+				],
 			]
 		);
-
 	}
 
 	/**
@@ -150,6 +195,7 @@ class CartIcon extends Abstract_Component {
 		$size        = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::SIZE_ID );
 		$color       = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::COLOR_ID );
 		$color_hover = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::HOVER_COLOR_ID );
+		$label_size  = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::LABEL_SIZE_ID );
 
 		if ( ! empty( $size ) ) {
 			$css_array[ $this->default_selector . ' svg' ]['width']  = $size . 'px';
@@ -157,11 +203,17 @@ class CartIcon extends Abstract_Component {
 		}
 
 		if ( ! empty( $color ) ) {
-			$css_array[ $this->default_selector . ' svg' ]['fill'] = $color;
+			$css_array[ $this->default_selector . ' svg' ]['fill']               = $color;
+			$css_array[ $this->default_selector . ' .cart-icon-label' ]['color'] = $color;
 		}
 
 		if ( ! empty( $color_hover ) ) {
-			$css_array[ $this->default_selector . ':hover svg' ]['fill'] = $color_hover;
+			$css_array[ $this->default_selector . ':hover svg' ]['fill']               = $color_hover;
+			$css_array[ $this->default_selector . ':hover .cart-icon-label' ]['color'] = $color;
+		}
+
+		if ( ! empty( $label_size ) ) {
+			$css_array[ $this->default_selector . ' .cart-icon-label' ]['font-size'] = $label_size . 'px';
 		}
 
 		return parent::add_style( $css_array );
@@ -175,5 +227,25 @@ class CartIcon extends Abstract_Component {
 	 */
 	public function render_component() {
 		Main::get_instance()->load( 'components/component-cart-icon' );
+	}
+
+	/**
+	 * Check if pro features should load.
+	 *
+	 * @return bool
+	 */
+	static function should_load_pro_features() {
+		if ( ! class_exists( '\Neve_Pro\Modules\Woocommerce_Booster\Customizer\Cart_Icon' ) ) {
+			return false;
+		}
+
+		if ( class_exists( '\Neve_Pro\Core\Settings' ) ) {
+			$settings = new Settings();
+			if ( ! $settings->is_module_active( 'woocommerce_booster' ) || ! class_exists( 'WooCommerce' ) ) {
+				return false;
+			}
+		}
+
+		return true;
 	}
 }

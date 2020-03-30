@@ -6,6 +6,8 @@
  * @package utilities.php
  */
 
+use Neve_Pro\Modules\Header_Footer_Grid\Components\Icons;
+
 /**
  * Check if we're delivering AMP
  *
@@ -62,6 +64,31 @@ function neve_hooks() {
 		),
 	);
 
+	if ( class_exists( 'WooCommerce' ) ) {
+		$hooks['cart']     = array(
+			'woocommerce_after_cart_table',
+			'woocommerce_before_cart_totals',
+			'woocommerce_before_shipping_calculator',
+			'woocommerce_after_shipping_calculator',
+			'woocommerce_cart_totals_before_order_total',
+			'woocommerce_proceed_to_checkout',
+			'woocommerce_after_cart_totals',
+		);
+		$hooks['checkout'] = array(
+			'woocommerce_before_checkout_billing_form',
+			'woocommerce_after_checkout_billing_form',
+			'woocommerce_before_checkout_shipping_form',
+			'woocommerce_after_checkout_shipping_form',
+			'woocommerce_before_order_notes',
+			'woocommerce_after_order_notes',
+			'woocommerce_review_order_before_order_total',
+			'woocommerce_review_order_before_payment',
+			'woocommerce_review_order_before_submit',
+			'woocommerce_review_order_after_submit',
+			'woocommerce_review_order_after_payment',
+		);
+	}
+
 	return apply_filters( 'neve_hooks_list', $hooks );
 }
 
@@ -71,13 +98,20 @@ function neve_hooks() {
  * The changes here might not be visible on front end due to woocommerce cart-fragments.js
  * In that case deactivate and reactivate WooCommerce.
  *
- * @param bool $echo should be echoed.
- * @param int  $size icon size.
+ * @param bool   $echo should be echoed.
+ * @param int    $size icon size.
+ * @param string $cart_icon Cart icon.
  *
  * @return string|null
  */
-function neve_cart_icon( $echo = false, $size = 15 ) {
-	$svg = '<span class="nv-icon nv-cart"><svg width="' . $size . '" height="' . $size . '" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M704 1536q0 52-38 90t-90 38-90-38-38-90 38-90 90-38 90 38 38 90zm896 0q0 52-38 90t-90 38-90-38-38-90 38-90 90-38 90 38 38 90zm128-1088v512q0 24-16.5 42.5t-40.5 21.5l-1044 122q13 60 13 70 0 16-24 64h920q26 0 45 19t19 45-19 45-45 19h-1024q-26 0-45-19t-19-45q0-11 8-31.5t16-36 21.5-40 15.5-29.5l-177-823h-204q-26 0-45-19t-19-45 19-45 45-19h256q16 0 28.5 6.5t19.5 15.5 13 24.5 8 26 5.5 29.5 4.5 26h1201q26 0 45 19t19 45z"/></svg></span>';
+function neve_cart_icon( $echo = false, $size = 15, $cart_icon = '' ) {
+	$icon = '<svg width="' . $size . '" height="' . $size . '" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M704 1536q0 52-38 90t-90 38-90-38-38-90 38-90 90-38 90 38 38 90zm896 0q0 52-38 90t-90 38-90-38-38-90 38-90 90-38 90 38 38 90zm128-1088v512q0 24-16.5 42.5t-40.5 21.5l-1044 122q13 60 13 70 0 16-24 64h920q26 0 45 19t19 45-19 45-45 19h-1024q-26 0-45-19t-19-45q0-11 8-31.5t16-36 21.5-40 15.5-29.5l-177-823h-204q-26 0-45-19t-19-45 19-45 45-19h256q16 0 28.5 6.5t19.5 15.5 13 24.5 8 26 5.5 29.5 4.5 26h1201q26 0 45 19t19 45z"/></svg>';
+	if ( ! empty( $cart_icon ) && class_exists( '\Neve_Pro\Modules\Header_Footer_Grid\Components\Icons' ) ) {
+		$icon_instance = new Icons();
+		$cart_icon_svg = $icon_instance->get_single_icon( $cart_icon );
+		$icon          = ! empty( $cart_icon_svg ) ? $cart_icon_svg : $icon;
+	}
+	$svg = '<span class="nv-icon nv-cart">' . $icon . '</span>';
 	if ( $echo === false ) {
 		return $svg;
 	}

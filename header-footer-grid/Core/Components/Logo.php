@@ -28,6 +28,8 @@ class Logo extends Abstract_Component {
 	const MAX_WIDTH    = 'max_width';
 	const SHOW_TITLE   = 'show_title';
 	const SHOW_TAGLINE = 'show_tagline';
+	const DISABLE_LINK = 'disable_link';
+	const COLOR_ID     = 'color';
 
 	/**
 	 * Default spacing value
@@ -99,54 +101,51 @@ class Logo extends Abstract_Component {
 
 		SettingsManager::get_instance()->add(
 			[
-				'id'                => self::DISPLAY,
-				'group'             => $this->get_class_const( 'COMPONENT_ID' ),
-				'tab'               => SettingsManager::TAB_GENERAL,
-				'transport'         => 'post' . $this->get_builder_id(),
-				'sanitize_callback' => 'wp_filter_nohtml_kses',
-				'default'           => 'default',
-				'label'             => __( 'Display', 'neve' ),
-				'type'              => '\Neve\Customizer\Controls\React\Radio_Buttons',
-				'options'           => [
-					'priority'      => 11,
+				'id'                 => self::DISPLAY,
+				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'                => SettingsManager::TAB_GENERAL,
+				'transport'          => 'post' . $this->get_builder_id(),
+				'sanitize_callback'  => 'wp_filter_nohtml_kses',
+				'default'            => 'default',
+				'label'              => __( 'Display', 'neve' ),
+				'type'               => '\Neve\Customizer\Controls\React\Radio_Buttons',
+				'options'            => [
+					'priority'      => - 1,
 					'is_for'        => 'logo',
 					'large_buttons' => true,
 				],
-				'section'           => $this->section,
+				'section'            => $this->section,
+				'conditional_header' => true,
 			]
 		);
 
 		SettingsManager::get_instance()->add(
 			[
-				'id'                => self::SHOW_TAGLINE,
-				'group'             => $this->get_class_const( 'COMPONENT_ID' ),
-				'tab'               => SettingsManager::TAB_GENERAL,
-				'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
-				'sanitize_callback' => 'absint',
-				'default'           => 1,
-				'label'             => __( 'Show Site Tagline', 'neve' ),
-				'type'              => 'neve_toggle_control',
-				'options'           => [
-					'type' => 'checkbox-toggle',
-				],
-				'section'           => $this->section,
+				'id'                 => self::SHOW_TAGLINE,
+				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'                => SettingsManager::TAB_GENERAL,
+				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
+				'sanitize_callback'  => 'absint',
+				'default'            => 1,
+				'label'              => __( 'Show Site Tagline', 'neve' ),
+				'type'               => 'neve_toggle_control',
+				'section'            => $this->section,
+				'conditional_header' => true,
 			]
 		);
 
 		SettingsManager::get_instance()->add(
 			[
-				'id'                => self::SHOW_TITLE,
-				'group'             => $this->get_class_const( 'COMPONENT_ID' ),
-				'tab'               => SettingsManager::TAB_GENERAL,
-				'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
-				'sanitize_callback' => 'absint',
-				'default'           => 1,
-				'label'             => __( 'Show Site Title', 'neve' ),
-				'type'              => 'neve_toggle_control',
-				'options'           => [
-					'type' => 'checkbox-toggle',
-				],
-				'section'           => $this->section,
+				'id'                 => self::SHOW_TITLE,
+				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'                => SettingsManager::TAB_GENERAL,
+				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
+				'sanitize_callback'  => 'absint',
+				'default'            => 1,
+				'label'              => __( 'Show Site Title', 'neve' ),
+				'type'               => 'neve_toggle_control',
+				'section'            => $this->section,
+				'conditional_header' => true,
 			]
 		);
 
@@ -158,29 +157,21 @@ class Logo extends Abstract_Component {
 				'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
 				'sanitize_callback' => array( $this, 'sanitize_responsive_int_json' ),
 				'default'           => '{ "mobile": "120", "tablet": "120", "desktop": "120" }',
-				'label'             => __( 'Logo max width (px)', 'neve' ),
-				'type'              => '\Neve\Customizer\Controls\Range',
+				'label'             => __( 'Logo max width', 'neve' ),
+				'type'              => '\Neve\Customizer\Controls\React\Responsive_Range',
 				'options'           => [
 					'priority'                 => 12,
-					'type'                     => 'range-value',
 					'hide_responsive_switches' => true,
 					'media_query'              => true,
 					'step'                     => 1,
-					'input_attr'               => [
-						'mobile'  => [
-							'min'     => 0,
-							'max'     => 350,
-							'default' => 120,
-						],
-						'tablet'  => [
-							'min'     => 0,
-							'max'     => 350,
-							'default' => 120,
-						],
-						'desktop' => [
-							'min'     => 0,
-							'max'     => 350,
-							'default' => 120,
+					'input_attrs'              => [
+						'min'        => 0,
+						'max'        => 350,
+						'units'      => [ 'px' ],
+						'defaultVal' => [
+							'mobile'  => 120,
+							'tablet'  => 120,
+							'desktop' => 120,
 						],
 					],
 				],
@@ -188,6 +179,41 @@ class Logo extends Abstract_Component {
 			]
 		);
 
+		SettingsManager::get_instance()->add(
+			[
+				'id'                 => self::DISABLE_LINK,
+				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'                => SettingsManager::TAB_GENERAL,
+				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
+				'sanitize_callback'  => 'absint',
+				'default'            => false,
+				'label'              => __( 'Disable Homepage Link', 'neve' ),
+				'type'               => 'neve_toggle_control',
+				'section'            => $this->section,
+				'conditional_header' => true,
+			]
+		);
+		SettingsManager::get_instance()->add(
+			[
+				'id'                    => self::COLOR_ID,
+				'group'                 => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'                   => SettingsManager::TAB_STYLE,
+				'transport'             => 'postMessage',
+				'sanitize_callback'     => 'sanitize_hex_color',
+				'label'                 => __( 'Text Color', 'neve' ),
+				'type'                  => 'neve_color_control',
+				'section'               => $this->section,
+				'live_refresh_selector' => true,
+				'live_refresh_css_prop' => [
+					[
+						'selector' => $this->default_selector . ' .brand .nv-title-tagline-wrap',
+						'prop'     => 'color',
+						'fallback' => 'inherit',
+					],
+				],
+				'conditional_header'    => true,
+			]
+		);
 	}
 
 	/**
@@ -226,6 +252,11 @@ class Logo extends Abstract_Component {
 			$css_array[' @media (min-width: 961px)'][ $selector ] = array(
 				'max-width' => $logo_max_width['desktop'],
 			);
+		}
+
+		$color = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::COLOR_ID );
+		if ( ! empty( $color ) ) {
+			$css_array[ $this->default_selector . ' .brand .nv-title-tagline-wrap' ] = [ 'color' => sanitize_hex_color( $color ) ];
 		}
 
 		return parent::add_style( $css_array );

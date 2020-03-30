@@ -11,6 +11,7 @@
     color: $body-color;
     width: 100%;
     display: flex;
+    align-items: center;
     position: relative;
   }
 
@@ -19,6 +20,17 @@
     width: 100%;
     display: block;
     position: relative;
+  }
+
+  .amp-caret-wrap {
+    z-index: 1000;
+    right: 0;
+    position: absolute;
+    top: 5px;
+    svg {
+      fill: currentColor;
+      width: 1em
+    }
   }
 
   .amp-desktop-caret-wrap {
@@ -61,47 +73,60 @@
 }
 
 .caret {
-  @include caret();
-  transform: rotate(135deg);
-  color: $gray-color;
-  top: -4px;
-  transition: $transition_med;
+  padding: 5px;
+  display: flex;
+  align-items: center;
 
-  .dropdown-open.caret-wrap > & {
-    transform: rotate(-45deg);
-    top: -2px;
+  svg {
+    fill: currentColor;
+  }
+
+  .dropdown-open.caret-wrap > & svg {
+    transform: rotate(-180deg);
   }
 }
 
 .caret-wrap {
-  position: absolute;
-  top: 0;
-  right: 0;
-  cursor: pointer;
-  border-radius: 3px;
-  border: $muted-border-med;
-  padding: 0 10px;
-  transition: $transition_med;
+  margin-left: auto;
 }
 
 ul[id^="nv-primary-navigation"] .current-menu-item > a {
   color: $link_hover_color;
 }
 
+#secondary-menu {
+  .hfg-item-left &, .hfg-item-center & {
+    li:not(:last-child) {
+      margin-right: $spacing-sm;
+    }
+  }
+
+  .hfg-item-right & {
+    li:not(:first-child) {
+      margin-left: $spacing-sm;
+    }
+  }
+}
+
 @mixin nav-menu--laptop() {
+  .header--row .primary-menu-ul {
+    .hfg-item-left &, .hfg-item-center & {
+      li:not(:last-child) {
+        margin-right: $spacing-sm;
+      }
+    }
+
+    .hfg-item-right & {
+      li:not(:first-child) {
+        margin-left: $spacing-sm;
+      }
+    }
+  }
   .row {
     .nv-nav-wrap {
       flex-direction: row;
       align-items: center;
       padding-bottom: 0;
-    }
-
-    li > .caret-wrap {
-      float: right;
-      position: absolute;
-      top: 50%;
-      right: 0;
-      transform: translateY(-50%);
     }
 
     .primary-menu-ul {
@@ -122,14 +147,11 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
       overflow-y: inherit;
       max-height: inherit;
       margin-left: auto;
-      justify-content: flex-start;
 
       > li {
         width: inherit;
         padding: 10px 0;
-        &:not(:last-child) {
-         padding-right: $spacing-sm;
-        }
+
         > a {
           display: flex;
           align-items: center;
@@ -147,10 +169,6 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
           color: $link_hover_color;
           text-decoration: none;
         }
-
-        > a .caret {
-          color: $link_hover_color;
-        }
       }
 
       .sub-menu {
@@ -166,10 +184,12 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
         z-index: 100;
         opacity: 0;
         visibility: hidden;
+
         &.dropdown-open {
           opacity: 1;
           visibility: visible;
         }
+
         .sub-menu {
           left: 100%;
           right: auto;
@@ -206,10 +226,6 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
           opacity: 1;
         }
 
-        &:last-child {
-          padding-right: $spacing-xs;
-        }
-
         > a {
           display: flex;
           align-items: center;
@@ -224,19 +240,13 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
 
     .caret-wrap {
       position: relative;
-      border: none;
-      top: 2px;
-      width: 10px;
-
-      &.dropdown-open .caret {
-        color: $body-color;
-        transform: rotate(135deg);
-      }
+      font-size: .65em;
+      padding-left: 0;
+      margin-left: 5px;
     }
 
-
-    .menu-item-has-children:last-child .caret-wrap {
-      right: -10px;
+    .menu-item-has-children:last-child .caret {
+      padding-right: 0;
     }
   }
 }

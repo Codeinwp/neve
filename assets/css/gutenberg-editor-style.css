@@ -68,9 +68,20 @@
 
 #editor .editor-styles-wrapper blockquote.wp-block-quote {
   border: none;
-  text-align: center;
   margin: 40px 0;
   padding: 0;
+}
+
+#editor .editor-styles-wrapper blockquote.wp-block-quote.has-text-align-center {
+  text-align: center;
+}
+
+#editor .editor-styles-wrapper blockquote.wp-block-quote.has-text-align-left {
+  text-align: left;
+}
+
+#editor .editor-styles-wrapper blockquote.wp-block-quote.has-text-align-right {
+  text-align: right;
 }
 
 #editor .editor-styles-wrapper blockquote.wp-block-quote p:not(.wp-block-quote__citation) {
@@ -224,16 +235,12 @@
   font-size: .85em;
 }
 
-#editor .edit-post-layout__content .editor-styles-wrapper {
+#editor .editor-styles-wrapper .block-editor-writing-flow {
   margin: 0 auto;
   width: 100%;
 }
 
-#editor .edit-post-layout__content .editor-styles-wrapper .editor-post-title .wp-block {
-  max-width: 100%;
-}
-
-#editor .edit-post-layout__content .editor-styles-wrapper .wp-block {
+#editor .editor-styles-wrapper .block-editor-writing-flow .wp-block {
   max-width: 100%;
 }
 

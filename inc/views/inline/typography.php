@@ -58,6 +58,7 @@ class Typography extends Base_Inline {
 			$style_setup[] = array(
 				'css_prop' => 'line-height',
 				'value'    => $line_height,
+				'suffix'   => isset( $line_height['suffix'] ) ? $line_height['suffix'] : '',
 			);
 		}
 
@@ -211,6 +212,7 @@ class Typography extends Base_Inline {
 						array(
 							'css_prop' => 'line-height',
 							'value'    => $line_height,
+							'suffix'   => isset( $line_height['suffix'] ) ? $line_height['suffix'] : '',
 						),
 					),
 					$selector

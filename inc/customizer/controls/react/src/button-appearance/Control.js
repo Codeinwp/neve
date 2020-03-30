@@ -1,12 +1,14 @@
 /* jshint esversion: 6 */
-import ButtonAppearanceComponent from './ButtonAppearanceComponent.js';
+/* global wp */
+import ButtonAppearanceComponent from './ButtonAppearanceComponent.js'
+const { render } = wp.element
 
 export const ButtonAppearanceControl = wp.customize.Control.extend( {
-	renderContent: function renderContent() {
-		let control = this;
-		ReactDOM.render(
-				<ButtonAppearanceComponent control={control}/>,
-				control.container[0]
-		);
-	}
-} );
+  renderContent: function renderContent() {
+    const control = this
+    render(
+      <ButtonAppearanceComponent control={control} />,
+      control.container[0]
+    )
+  }
+} )

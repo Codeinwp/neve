@@ -71,6 +71,15 @@ class Template_Parts extends Base_View {
 			$markup .= $this->get_title();
 			$markup .= $this->get_meta();
 			$markup .= $this->get_excerpt();
+			$markup .= wp_link_pages(
+				array(
+					'before'      => '<div class="post-pages-links"><span>' . apply_filters( 'neve_page_link_before', esc_html__( 'Pages:', 'neve' ) ) . '</span>',
+					'after'       => '</div>',
+					'link_before' => '<span class="page-link">',
+					'link_after'  => '</span>',
+					'echo'        => false,
+				)
+			);
 			$markup .= '</div>';
 
 			return $markup;
@@ -81,7 +90,7 @@ class Template_Parts extends Base_View {
 			'title-meta',
 			'excerpt',
 		);
-		$order         = get_theme_mod( 'neve_post_content_ordering', json_encode( $default_order ) );
+		$order         = get_theme_mod( 'neve_post_content_ordering', wp_json_encode( $default_order ) );
 		$order         = json_decode( $order, true );
 		foreach ( $order as $content_bit ) {
 			switch ( $content_bit ) {
@@ -100,6 +109,15 @@ class Template_Parts extends Base_View {
 					break;
 				case 'excerpt':
 					$markup .= $this->get_excerpt();
+					$markup .= wp_link_pages(
+						array(
+							'before'      => '<div class="post-pages-links"><span>' . apply_filters( 'neve_page_link_before', esc_html__( 'Pages:', 'neve' ) ) . '</span>',
+							'after'       => '</div>',
+							'link_before' => '<span class="page-link">',
+							'link_after'  => '</span>',
+							'echo'        => false,
+						)
+					);
 					break;
 				default:
 					break;
@@ -174,7 +192,7 @@ class Template_Parts extends Base_View {
 	 * @return string
 	 */
 	private function get_meta() {
-		$default_meta_order = json_encode(
+		$default_meta_order = wp_json_encode(
 			array(
 				'author',
 				'date',

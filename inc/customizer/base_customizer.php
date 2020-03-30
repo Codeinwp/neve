@@ -183,6 +183,17 @@ abstract class Base_Customizer {
 					}
 				);
 			}
+			if ( isset( $control->control_args['conditional_header'] ) && $control->control_args['conditional_header'] ) {
+				$id = $control->id;
+				add_filter(
+					'neve_pro_react_controls_localization',
+					function ( $array ) use ( $id ) {
+						$array['headerControls'][] = $id;
+
+						return $array;
+					} 
+				);
+			}
 			if ( isset( $control->partial ) ) {
 				$this->add_partial( new Partial( $control->id, $control->partial ) );
 			}

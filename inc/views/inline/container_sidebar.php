@@ -63,8 +63,8 @@ class Container_Sidebar extends Base_Inline {
 	private function handle_individual_content_width() {
 		$content_widths = array(
 			'neve_other_pages_content_width'  => array(
-				'content' => 'body:not(.single):not(.archive):not(.blog) .neve-main > .container .col',
-				'sidebar' => 'body:not(.single):not(.archive):not(.blog) .nv-sidebar-wrap',
+				'content' => 'body:not(.single):not(.archive):not(.blog):not(.search) .neve-main > .container .col',
+				'sidebar' => 'body:not(.single):not(.archive):not(.blog):not(.search) .nv-sidebar-wrap',
 			),
 			'neve_blog_archive_content_width' => array(
 				'content' => '.neve-main > .archive-container .nv-index-posts.col',

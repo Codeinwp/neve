@@ -50,6 +50,7 @@ class Admin {
 		add_action( 'wp_ajax_neve_toggle_logger', array( $this, 'toggle_logger' ) );
 		add_filter( 'neve_logger_heading', array( $this, 'add_tracking_policy' ) );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_gutenberg_scripts' ) );
+		add_filter( 'themeisle_sdk_hide_dashboard_widget', '__return_true' );
 	}
 
 	/**
@@ -620,7 +621,7 @@ class Admin {
 			array(
 				'icon' => 'dashicons-align-center',
 				'text' => __( 'Header Options', 'neve' ),
-				'link' => add_query_arg( array( 'autofocus[panel]' => 'neve_header' ), admin_url( 'customize.php' ) ),
+				'link' => add_query_arg( array( 'autofocus[panel]' => 'hfg_header' ), admin_url( 'customize.php' ) ),
 			),
 			array(
 				'icon' => 'dashicons-welcome-write-blog',
@@ -630,7 +631,7 @@ class Admin {
 			array(
 				'icon' => 'dashicons-admin-generic',
 				'text' => __( 'Footer Options', 'neve' ),
-				'link' => add_query_arg( array( 'autofocus[panel]' => 'neve_footer' ), admin_url( 'customize.php' ) ),
+				'link' => add_query_arg( array( 'autofocus[panel]' => 'hfg_footer' ), admin_url( 'customize.php' ) ),
 			),
 			array(
 				'icon' => 'dashicons-align-left',
@@ -692,31 +693,7 @@ class Admin {
 	 * @return string Image url.
 	 */
 	private function get_notice_picture() {
-		$previous_theme = get_theme_mod( 'ti_prev_theme' );
-		$onboarding_dir = get_template_directory_uri() . '/onboarding/';
-		switch ( $previous_theme ) {
-			case 'themotion-lite':
-			case 'themotion':
-				return $onboarding_dir . 'neve-themotion/screenshot.jpg';
-			case 'amadeus':
-				return $onboarding_dir . 'neve-amadeus/screenshot.jpg';
-			case 'rokophoto-lite':
-			case 'rokophoto':
-				return $onboarding_dir . 'neve-rokophoto/screenshot.jpg';
-			case 'oblique':
-				return $onboarding_dir . 'neve-oblique/screenshot.jpg';
-			case 'shop-isle':
-			case 'shop-isle-pro':
-				return $onboarding_dir . 'neve-shop/screenshot.jpg';
-			case 'zerif-pro':
-			case 'zerif-lite':
-				return $onboarding_dir . 'neve-zelle/screenshot.jpg';
-			case 'lawyeria-lite':
-			case 'lawyeria':
-				return $onboarding_dir . 'neve-lawyers/screenshot.jpg';
-			default:
-				return get_template_directory_uri() . '/assets/img/sites-list.jpg';
-		}
+		return get_template_directory_uri() . '/assets/img/sites-list.jpg';
 	}
 
 	/**
@@ -737,7 +714,7 @@ class Admin {
 					<div class="nv-notice-column nv-notice-image">%2$s</div>
 					<div class="nv-notice-column nv-notice-starter-sites">%3$s</div>
 					<div class="nv-notice-column nv-notice-documentation">%4$s</div>
-				</div> 
+				</div>
 			</div>
 			<style>%5$s</style>';
 
@@ -816,7 +793,7 @@ class Admin {
 			border-top: 1px solid #f3f4f5;
 			border-bottom: none;
 		}
-		.nv-notice-column-container h3{	
+		.nv-notice-column-container h3{
 			margin: 17px 0 0;
 			font-size: 16px;
 			line-height: 1.4;
@@ -829,13 +806,13 @@ class Admin {
 	}
 		.nv-notice-column-container .nv-notice-column{
 			 padding-right: 40px;
-		} 
-		.nv-notice-column-container img{ 
+		}
+		.nv-notice-column-container img{
 			margin-top: 23px;
 			width: calc(100% - 40px);
-			border: 1px solid #f3f4f5; 
-		} 
-		.nv-notice-column-container { 
+			border: 1px solid #f3f4f5;
+		}
+		.nv-notice-column-container {
 			display: -ms-grid;
 			display: grid;
 			-ms-grid-columns: 24% 32% 32%;
@@ -851,7 +828,7 @@ class Admin {
 			display: grid;
 			-ms-grid-rows: auto 100px;
 			grid-template-rows: auto 100px;
-		} 
+		}
 		@media screen and (max-width: 1280px) {
 			.nv-notice-wrapper .nv-notice-column-container {
 				-ms-grid-columns: 50% 50%;
@@ -864,9 +841,9 @@ class Admin {
 			.nv-notice-wrapper .nv-notice-image {
 				display: none;
 			}
-		} 
+		}
 		@media screen and (max-width: 870px) {
-			 
+
 			.nv-notice-wrapper .nv-notice-column-container {
 				-ms-grid-columns: 100%;
 				grid-template-columns: 100%;

@@ -45,10 +45,13 @@
 }
 
 .style-full-height {
+  .primary-menu-ul li:hover > a, .row .primary-menu-ul li:focus > a {
+    color: $body-color;
+  }
+
   a {
-    padding-left: 3px;
-    padding-right: 3px;
     position: relative;
+    align-items: center;
     z-index: 1;
 
     &:after {
@@ -74,18 +77,21 @@
   justify-content: flex-start;
 
   li {
-    display: flex;
-    align-items: center;
     position: relative;
     width: inherit;
+
     a {
+      display: flex;
+      position: relative;
+      align-items: center;
       text-align: center;
-      padding: 0 10px;
       font-weight: 500;
     }
+
     &:last-of-type a {
       padding-right: 0;
     }
+
     &:first-of-type a {
       padding-left: 0;
     }

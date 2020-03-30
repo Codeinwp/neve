@@ -1,7 +1,7 @@
 {
 	"name": "neve",
 	"nicename": "Neve",
-	"version": "2.5.4",
+	"version": "2.6.2",
 	"description": "Neve theme by ThemeIsle",
 	"category": "themes",
 	"repository": {
@@ -25,67 +25,92 @@
 		"lasttranslator": "Themeisle Translate Team <friends@themeisle.com>"
 	},
 	"devDependencies": {
-		"@babel/cli": "^7.8.3",
-		"@babel/core": "^7.8.0",
-		"@babel/preset-env": "^7.8.3",
-		"@commitlint/cli": "^8.3.4",
+		"@babel/core": "^7.9.0",
+		"@babel/preset-env": "^7.9.0",
+		"@commitlint/cli": "^8.3.5",
 		"@commitlint/config-conventional": "^8.3.4",
-		"@size-limit/preset-app": "^3.0.0",
-		"babel-loader": "^8.0.6",
-		"core-js": "^3.6.3",
-		"cross-env": "^6.0.3",
-		"cypress": "^3.8.2",
-		"grunt": "^1.0.4",
+		"@rollup/plugin-commonjs": "^11.0.2",
+		"@rollup/plugin-multi-entry": "^3.0.0",
+		"@rollup/plugin-node-resolve": "^7.1.1",
+		"@semantic-release/changelog": "^5.0.0",
+		"@semantic-release/exec": "^5.0.0",
+		"@semantic-release/git": "^9.0.0",
+		"@size-limit/preset-app": "^4.4.0",
+		"@size-limit/webpack": "^4.4.0",
+		"babel-loader": "^8.1.0",
+		"conventional-changelog-simple-preset": "^1.0.13",
+		"core-js": "^3.6.4",
+		"cross-env": "^7.0.2",
+		"cypress": "^4.2.0",
+		"cypress-file-upload": "^4.0.3",
+		"grunt": "^1.1.0",
 		"grunt-cli": "^1.3.2",
-		"grunt-contrib-clean": "^2.0.0",
 		"grunt-contrib-concat": "^1.0.1",
-		"grunt-contrib-copy": "^1.0.0",
 		"grunt-contrib-cssmin": "^3.0.0",
-		"grunt-contrib-uglify": "^4.0.1",
 		"grunt-contrib-watch": "^1.0.0",
+		"grunt-newer": "^1.3.0",
 		"grunt-rtlcss": "^2.0.2",
 		"grunt-sass": "^3.1.0",
-		"grunt-shell": "^3.0.1",
-		"grunt-theme-fleet": "github:codeinwp/grunt-theme-fleet",
-		"grunt-version": "^1.3.2",
-		"husky": "^4.0.7",
+		"grunt-version": "^2.0.0",
+		"grunt-wp-i18n": "^1.0.3",
+		"husky": "^4.2.1",
 		"load-project-config": "~0.2.1",
-		"node-sass": "^4.13.0",
+		"node-sass": "^4.13.1",
 		"npm-run-all": "^4.1.5",
-		"rollup": "^1.29.0",
-		"rollup-plugin-babel": "^4.3.3",
-		"rollup-plugin-commonjs": "^10.1.0",
-		"rollup-plugin-node-resolve": "^5.2.0",
+		"rollup": "^1.32.0",
+		"rollup-plugin-babel": "^4.4.0",
+		"rollup-plugin-terser": "^5.3.0",
 		"rollup-plugin-uglify": "^6.0.4",
-		"webpack": "^4.41.5"
+		"semantic-release": "^17.0.4",
+		"size-limit": "^4.4.0",
+        "webpack": "^4.42.0"
 	},
 	"scripts": {
 		"phpcbf": "composer run-script format || true ",
 		"phpcs": "composer run-script phpcs",
-		"test": "grunt travis",
-		"dist": "grunt dist",
-		"deploy": "grunt wp_readme_to_markdown && grunt deploy",
-		"jshint": "grunt jshint",
-		"build:grunt": "grunt buildScripts",
 		"git:add": "git add *.css assets/**/*.css assets/**/*.js",
+		"build:grunt": "grunt build",
 		"build:rollup": "./node_modules/.bin/rollup -c",
+		"build:makepot": "docker run --rm --user root --volume \"$(pwd):/var/www/html/neve\" wordpress:cli wp i18n make-pot ./neve/ ./neve/languages/neve.pot --allow-root",
 		"watch:rollup": "./node_modules/.bin/rollup -c --watch",
 		"watch:grunt": "grunt watch",
-		"dev": "npm-run-all --parallel watch:rollup watch:grunt",
-		"build": "npm-run-all --parallel build:rollup build:grunt",
+		"dev": "npm-run-all --parallel watch:*",
+		"build": "npm-run-all build:*",
 		"size": "size-limit",
-		"pre-commit": "npm-run-all phpcbf phpcs jshint build size git:add",
+		"pre-commit": "npm-run-all phpcs build size",
 		"cypress:open": "cypress open",
-		"cypress:run": "cd cypress && docker-compose up --exit-code-from cypress"
+		"cypress:run": "cd cypress && docker-compose up --exit-code-from cypress",
+		"release": "npx semantic-release",
+		"dist": "bash ./bin/dist.sh"
 	},
 	"size-limit": [
 		{
 			"gzip": false,
-			"limit": "10 KB",
-			"path": "assets/js/frontend.js"
+			"running": false,
+			"limit": "6 KB",
+			"path": "assets/js/build/modern/frontend.js"
 		},
 		{
 			"gzip": false,
+			"running": false,
+			"limit": "33 KB",
+			"path": "assets/js/build/modern/shop.js"
+		},
+		{
+			"gzip": false,
+			"running": false,
+			"limit": "33 KB",
+			"path": "assets/js/build/all/shop.js"
+		},
+		{
+			"gzip": false,
+			"running": false,
+			"limit": "6 KB",
+			"path": "assets/js/build/all/frontend.js"
+		},
+		{
+			"gzip": false,
+			"running": false,
 			"webpack": false,
 			"limit": "50 KB",
 			"path": "style.min.css"
@@ -98,8 +123,6 @@
 		}
 	},
 	"dependencies": {
-		"@size-limit/webpack": "^3.0.0",
-		"cypress-file-upload": "^3.5.3",
 		"tiny-slider": "^2.9.2"
 	}
 }

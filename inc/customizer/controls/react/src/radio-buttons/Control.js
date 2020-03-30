@@ -1,12 +1,14 @@
 /* jshint esversion: 6 */
-import RadioButtonsComponent from './RadioButtonsComponent.js';
+/* global wp */
+import RadioButtonsComponent from './RadioButtonsComponent.js'
+const { render } = wp.element
 
 export const RadioButtonsControl = wp.customize.Control.extend( {
-	renderContent: function renderContent() {
-		let control = this;
-		ReactDOM.render(
-				<RadioButtonsComponent control={control}/>,
-				control.container[0]
-		);
-	}
-} );
+  renderContent: function renderContent() {
+    const control = this
+    render(
+      <RadioButtonsComponent control={control} />,
+      control.container[0]
+    )
+  }
+} )

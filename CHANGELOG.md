@@ -1,4 +1,40 @@
 
+ ### v2.6.2 - 2020-02-26 
+ **Changes:** 
+ * [Feat] New text color option for the HTML and Copyright components
+* [Feat] New option to Disable Homepage Link in the Logo & Site Identity component
+* [Fix] Issues in AMP when using Google Tag Manager Codeless Injection
+* [Fix] Footer menu alignment
+* [Fix] Mega Menu not working in Edge
+* [Fix] Narrow editor with the new Gutenberg version
+* New Gutenberg and Beaver Builder Starter Sites
+ 
+ ### v2.6.1 - 2020-02-13 
+ **Changes:** 
+ * [Feat] New header presets
+* [Feat] New justify option for the button component
+* [Feat] New menu item spacing and menu item height options
+* [Fix] Style closing menu icon to match menu icon
+* [Fix] Primary and secondary menu alignments
+* [Fix] Made button a mergeable component in the header builder
+* [Fix] Changed the Leave a reply title to H3
+* [Fix] Search form width when merged with mergeable components
+* [Fix] Selective refresh on non-header builders
+* [Fix] Notice from array offset in responsive style method
+* [Fix] Page break pagination not appearing on the blog page
+ 
+ ### v2.6.0 - 2020-02-03 
+ **Changes:** 
+ * [Feat] Adds quantity box back to the product pages 
+* [Feat] Better organize the Woocommerce controls in the customizer
+*  [Fix] Fixed metabox range input style in Firefox 
+* [Fix] Fixed editor alignment for the quote block
+*  [Fix] Fixed sidebar layout not updating on single product pages [Fix] Fixed search results page sidebar when using Elementor
+*  [Fix] Fixed expanded cart positioning
+* New Starter Sites
+*  Web Agency - https://themeisle.com/demo/?theme=Web%20Agency
+*  Blogger -  https://themeisle.com/demo/?theme=Blogger
+ 
  ### v2.5.4 - 2019-12-19 
  **Changes:** 
  * [Feat] New styling options for buttons in the header builder

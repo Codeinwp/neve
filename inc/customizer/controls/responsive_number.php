@@ -77,7 +77,6 @@ class Responsive_Number extends \WP_Customize_Control {
 		return $json;
 	}
 
-
 	/**
 	 * Render the control
 	 *
@@ -105,9 +104,9 @@ class Responsive_Number extends \WP_Customize_Control {
 			<input
 					type="hidden"
 					class="responsive-number-collector"
-					title="{{{data.label}}}"
+					title="{{data.label}}"
 					value="{{data.value}}"
-					{{{data.link}}}
+					{{{data.link}}}  <?php // phpcs:ignore WordPressVIPMinimum.Security.Mustache.OutputNotation ?>
 			>
 		</div>
 		<?php
@@ -167,10 +166,10 @@ class Responsive_Number extends \WP_Customize_Control {
 		?>
 		<# if ( data.label ) { #>
 		<span class="customize-control-title" style="display: inline-block;">
-				<span>{{{ data.label }}}</span>
+				<span>{{ data.label }}</span>
 				<# if ( data.description ) { #>
 					<i class="dashicons dashicons-editor-help" style="vertical-align: text-bottom;"
-							title="{{{ data.description }}}"></i>
+							title="{{ data.description }}"></i>
 				<# } #>
 		</span>
 		<# if( data.responsive === true ) { #>

@@ -59,7 +59,6 @@ class Loader {
 				'Customizer\Options\Layout_Single_Post',
 				'Customizer\Options\Layout_Single_Product',
 				'Customizer\Options\Layout_Sidebar',
-				'Customizer\Options\Top_Bar',
 				'Customizer\Options\Typography',
 				'Customizer\Options\Colors_Background',
 				'Customizer\Options\Buttons',
@@ -80,7 +79,7 @@ class Loader {
 
 		wp_enqueue_script(
 			'neve-customizer-controls',
-			NEVE_ASSETS_URL . 'js/customizer-controls' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.js',
+			NEVE_ASSETS_URL . 'js/build/all/customizer-controls.js',
 			array(
 				'jquery',
 				'wp-color-picker',
@@ -102,11 +101,12 @@ class Loader {
 			apply_filters(
 				'neve_react_controls_localization',
 				array(
-					'dynamicTags' => array(
+					'headerControls' => [ 'hfg_header_layout' ],
+					'dynamicTags'    => array(
 						'controls' => array(),
 						'options'  => array(),
 					),
-					'fonts'       => array(
+					'fonts'          => array(
 						'System' => neve_get_standard_fonts(),
 						'Google' => neve_get_google_fonts(),
 					),
@@ -141,7 +141,7 @@ class Loader {
 		);
 		wp_register_script(
 			'neve-customizer-preview',
-			NEVE_ASSETS_URL . 'js/customizer-preview.js',
+			NEVE_ASSETS_URL . 'js/build/all/customizer-preview.js',
 			array(),
 			NEVE_VERSION,
 			true

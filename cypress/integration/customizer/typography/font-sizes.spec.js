@@ -23,14 +23,14 @@ const setup = {
 function aliasRestRoutes() {
 	let home = Cypress.config().baseUrl;
 	cy.server().
-			route( 'POST', home + '/wp-admin/admin-ajax.php' ).
-			as( 'customizerSave' );
+		route( 'POST', home + '/wp-admin/admin-ajax.php' ).
+		as( 'customizerSave' );
 }
 
-function changeNumberInputValue(input, value) {
+function changeNumberInputValue( input, value ) {
 	cy.get( input ).
-			clear().
-			type( '{leftarrow}' + value + '{rightarrow}{backspace}' );
+		clear( {force: true} ).
+		type( '{leftarrow}' + value + '{rightarrow}{backspace}' );
 }
 
 /**
@@ -39,47 +39,45 @@ function changeNumberInputValue(input, value) {
  * @param controlSelector
  * @param values
  */
-function setTypographyControl(controlSelector, values) {
+function setTypographyControl( controlSelector, values ) {
 	cy.get( controlSelector ).
-			as( 'control' );
+		as( 'control' );
 
 	cy.get( '@control' ).
-			should( 'be.visible' ).
-			and( 'contain', 'Text Transform' ).
-			and( 'contain', 'Font Weight' ).
-			and( 'contain', 'Font Size' ).
-			and( 'contain', 'Line Height' ).
-			and( 'contain', 'Letter Spacing' );
+		should( 'be.visible' ).
+		and( 'contain', 'Transform' ).
+		and( 'contain', 'Weight' ).
+		and( 'contain', 'Font Size' ).
+		and( 'contain', 'Line Height' ).
+		and( 'contain', 'Letter Spacing' );
 
 	// Change text transform.
 	cy.get( '@control' ).
-			find( '.neve-typeface-control button[aria-label="' + values.transform +
-					'"]' ).
-			should( 'be.visible' ).
-			click();
+		find( '.text-transform select' ).
+		select( values.transform );
 
 	// Change font weight.
 	cy.get( '@control' ).
-			find( 'select' ).
-			select( values.weight );
+		find( '.font-weight select' ).
+		select( values.weight );
 
 	let devices = ['desktop', 'tablet', 'mobile'],
-			controls = ['fontSize', 'lineHeight', 'letterSpacing'];
+		controls = ['fontSize', 'lineHeight', 'letterSpacing'];
 
-	devices.map( (device) => {
-		cy.get( '@control' ).find( 'button.' + device ).click();
+	devices.map( ( device ) => {
+		cy.get( '@control' ).find( 'button.' + device ).first().click();
 		// Change font size.
 		cy.get( '@control' ).
-				find( '.font-size input' ).
-				as( 'fontSize' );
+			find( '.font-size input' ).
+			as( 'fontSize' );
 
 		cy.get( '@control' ).
-				find( '.line-height input' ).
-				as( 'lineHeight' );
+			find( '.line-height input' ).
+			as( 'lineHeight' );
 
 		cy.get( '@control' ).
-				find( '.letter-spacing input' ).
-				as( 'letterSpacing' );
+			find( '.letter-spacing input' ).
+			as( 'letterSpacing' );
 
 		controls.map( control => {
 			cy.get( '@' + control ).invoke( 'val' ).then( value => {
@@ -91,9 +89,9 @@ function setTypographyControl(controlSelector, values) {
 				cy.get( '@' + control ).should( 'have.value', values[control][device] );
 				// Reset to old value.
 				cy.get( '@' + control ).
-						closest( '.neve-responsive-sizing' ).
-						find( 'button' ).
-						click();
+					closest( '.neve-responsive-sizing' ).
+					find( 'button' ).
+					click();
 				// Make sure value has been reset.
 				cy.get( '@' + control ).should( 'have.value', value );
 				// Change the value.
@@ -112,10 +110,10 @@ describe( 'Typography Control', function() {
 		cy.get( '.accordion-section' ).contains( 'Typography' ).click();
 		cy.get( '.accordion-section' ).contains( 'General' ).click();
 		setTypographyControl( '#customize-control-neve_typeface_general',
-				setup.general );
+			setup.general );
 		aliasRestRoutes();
 		cy.get( '#save' ).click();
-		cy.wait( '@customizerSave' ).then( (req) => {
+		cy.wait( '@customizerSave' ).then( ( req ) => {
 			expect( req.response.body.success ).to.be.true;
 			expect( req.status ).to.equal( 200 );
 			cy.wait( 2000 );
@@ -127,15 +125,15 @@ describe( 'Typography Control', function() {
 
 		// Test text transform.
 		cy.get( 'body' ).
-				should( 'have.css', 'text-transform' ).
-				and( 'match',
-						new RegExp( setup.general.transform.toLowerCase(), 'g' ) );
+			should( 'have.css', 'text-transform' ).
+			and( 'match',
+				new RegExp( setup.general.transform.toLowerCase(), 'g' ) );
 
 		// Test font weight.
 		cy.get( 'body' ).
-				should( 'have.css', 'font-weight' ).
-				and( 'match',
-						new RegExp( setup.general.weight, 'g' ) );
+			should( 'have.css', 'font-weight' ).
+			and( 'match',
+				new RegExp( setup.general.weight, 'g' ) );
 
 		let deviceMap = {
 			'desktop': {
@@ -155,21 +153,21 @@ describe( 'Typography Control', function() {
 
 			// Test font size.
 			cy.get( 'body' ).
-					should( 'have.css', 'font-size' ).
-					and( 'match',
-							new RegExp( setup.general.fontSize[device] + 'px', 'g' ) );
+				should( 'have.css', 'font-size' ).
+				and( 'match',
+					new RegExp( setup.general.fontSize[device] + 'px', 'g' ) );
 
 			// Test line height.
 			cy.get( 'body' ).
-					should( 'have.css', 'line-height' ).
-					and( 'match',
-							new RegExp( setup.general.lineHeight[device], 'g' ) );
+				should( 'have.css', 'line-height' ).
+				and( 'match',
+					new RegExp( setup.general.lineHeight[device], 'g' ) );
 
 			// Test letter spacing.
 			cy.get( 'body' ).
-					should( 'have.css', 'letter-spacing' ).
-					and( 'match',
-							new RegExp( setup.general.letterSpacing[device], 'g' ) );
+				should( 'have.css', 'letter-spacing' ).
+				and( 'match',
+					new RegExp( setup.general.letterSpacing[device], 'g' ) );
 		} );
 	} );
 
@@ -178,36 +176,36 @@ describe( 'Typography Control', function() {
 		cy.get( '#wp-admin-bar-edit > a' ).click();
 
 		cy.get( '.editor-styles-wrapper .wp-block p' ).
-				first().
-				as( 'editorBody' );
+			first().
+			as( 'editorBody' );
 		// Test text transform.
 		cy.get( '@editorBody' ).
-				should( 'have.css', 'text-transform' ).
-				and( 'match',
-						new RegExp( setup.general.transform.toLowerCase(), 'g' ) );
+			should( 'have.css', 'text-transform' ).
+			and( 'match',
+				new RegExp( setup.general.transform.toLowerCase(), 'g' ) );
 
 		// Test font weight.
 		cy.get( '@editorBody' ).
-				should( 'have.css', 'font-weight' ).
-				and( 'match',
-						new RegExp( setup.general.weight, 'g' ) );
+			should( 'have.css', 'font-weight' ).
+			and( 'match',
+				new RegExp( setup.general.weight, 'g' ) );
 
 		// Test font size.
 		cy.get( '@editorBody' ).
-				should( 'have.css', 'font-size' ).
-				and( 'match',
-						new RegExp( setup.general.fontSize['desktop'] + 'px', 'g' ) );
+			should( 'have.css', 'font-size' ).
+			and( 'match',
+				new RegExp( setup.general.fontSize['desktop'] + 'px', 'g' ) );
 
 		// Test line height.
 		cy.get( '@editorBody' ).
-				should( 'have.css', 'line-height' ).
-				and( 'match',
-						new RegExp( setup.general.lineHeight['desktop'], 'g' ) );
+			should( 'have.css', 'line-height' ).
+			and( 'match',
+				new RegExp( setup.general.lineHeight['desktop'], 'g' ) );
 
 		// Test letter spacing.
 		cy.get( '@editorBody' ).
-				should( 'have.css', 'letter-spacing' ).
-				and( 'match',
-						new RegExp( setup.general.letterSpacing['desktop'], 'g' ) );
+			should( 'have.css', 'letter-spacing' ).
+			and( 'match',
+				new RegExp( setup.general.letterSpacing['desktop'], 'g' ) );
 	} );
 } );

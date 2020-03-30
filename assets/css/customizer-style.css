@@ -10,6 +10,29 @@
 .has-media-queries .control-wrap.active {
 	display: block;
 }
+
+
+.hfg--cb-conditional-header {
+	display: flex;
+	margin: 9px 0 0;
+	float: left;
+}
+
+.hfg--cb-conditional-header.hidden {
+	display: none;
+}
+
+.hfg--cb-conditional-header p {
+	margin: 0;
+}
+
+.hfg--cb-conditional-header .dashicons {
+	margin-right: 5px;
+}
+
+.hfg--cb-conditional-header a {
+	cursor: pointer;
+}
 .nv-button-group {
     display: flex;
     flex-direction: row;
@@ -533,10 +556,6 @@
 
 .customize-control-radio-image label:first-of-type {
 	float: left;
-}
-
-.customize-control-radio-image label:nth-of-type(n + 3) {
-	float: right;
 }
 
 .customize-control-radio-image label:hover {

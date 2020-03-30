@@ -1,0 +1,59 @@
+.neve-color-component {
+  margin: 0;
+  align-items: center;
+  .clear {
+    width: 100%;
+    justify-content: center;
+    border-radius: 0;
+  }
+  > div {
+    margin-left: auto;
+    > button {
+      height: 30px;
+      width: 55px;
+      display: block;
+      border-color: $input-borders !important;
+      &.is-empty, &.is-empty:hover {
+        background-image: linear-gradient(45deg,
+                #fff 0%, #ccc 0%,
+                #ccc 10%, #fff 10%,
+                #fff 20%, #ccc 20%,
+                #ccc 30%, #fff 30%,
+                #fff 40%, #ccc 40%,
+                #ccc 50%, #fff 50%,
+                #fff 60%, #ccc 60%,
+                #ccc 70%, #fff 70%,
+                #fff 80%, #ccc 80%,
+                #ccc 90%, #fff 90%,
+                #fff 100%, #ccc 100%
+        ) !important;
+      }
+    }
+  }
+  input {
+    border-color: $input-borders;
+    border-radius: 0;
+    height: 30px;
+    padding: 0 10px;
+  }
+  .components-color-picker__body {
+    padding: 10px;
+  }
+
+  .components-color-picker__inputs-field {
+    margin-bottom: 0 !important;
+  }
+
+  .components-color-picker__inputs-wrapper {
+    padding-top: 10px;
+  }
+
+  .components-color-picker__inputs-toggle button {
+    height: 30px !important;
+    padding: 0 5px;
+    border-radius: 0;
+  }
+  .components-tooltip {
+    display: none !important;
+  }
+}

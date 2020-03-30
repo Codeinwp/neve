@@ -77,9 +77,7 @@ class Amp {
 			return $input;
 		}
 
-		$body_classes = join( ' ', get_body_class() ) . ' ';
-
-		$input .= ' [class]="\'' . $body_classes . '\' + ( nvAmpMenuExpanded ? \'is-menu-sidebar\' : \'\' )" ';
+		$input .= ' id="neve_body" ';
 
 		return $input;
 	}
@@ -112,7 +110,7 @@ class Amp {
 		if ( ! neve_is_amp() ) {
 			return $input;
 		}
-		$input .= ' on="tap:AMP.setState( { nvAmpMenuExpanded: ! nvAmpMenuExpanded } )" ';
+		$input .= ' on="tap:neve_body.toggleClass(class=\'is-menu-sidebar\'),AMP.setState( { nvAmpMenuExpanded: ! nvAmpMenuExpanded } )" ';
 		$input .= ' role="button" ';
 		$input .= ' tabindex="0" ';
 		$input .= ' aria-expanded="false" ';
@@ -202,16 +200,18 @@ class Amp {
 		$state = 'neveMenuItemExpanded' . $id;
 
 		$attrs = '';
+		$caret = '<span class="caret"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"/></svg></span>';
 
-		$attrs .= '<div class="caret-wrap amp-desktop-caret-wrap"><span class="caret"></span></div></a><amp-state id="' . $state . '"><script type="application/json">false</script></amp-state>';
+		$attrs .= '<div class="caret-wrap amp-desktop-caret-wrap">' . $caret . '</div></a><amp-state id="' . $state . '"><script type="application/json">false</script></amp-state>';
 		$attrs .= '<div class="caret-wrap amp-caret-wrap"';
 		$attrs .= ' [class]="\'caret-wrap amp-caret-wrap\' + ( ' . $state . ' ? \' dropdown-open\' : \'\')" ';
 		$attrs .= ' on="tap:AMP.setState( { ' . $state . ': ! ' . $state . ' } )"';
 		$attrs .= ' role="button" ';
 		$attrs .= ' tabindex="0" ';
 		$attrs .= ' aria-expanded="false" ';
-		$attrs .= ' [aria-expanded]="' . $state . ' ? \'true\' : \'false\'"><span class="caret"></span></div>';
-		$output = str_replace( '<div class="caret-wrap ' . $id . '" tabindex="0"><span class="caret"></span></div></a>', $attrs, $output );
+		$attrs .= ' [aria-expanded]="' . $state . ' ? \'true\' : \'false\'">' . $caret . '</div>';
+		$output = str_replace( '<div class="caret-wrap ' . $id . '" tabindex="0">' . $caret . '</div></a>', $attrs, $output );
+
 		return $output;
 	}
 }

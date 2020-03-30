@@ -50,7 +50,7 @@ class Layout_Single_Product extends Base_Customizer {
 				array(
 					'priority' => 65,
 					'title'    => esc_html__( 'Single Product', 'neve' ),
-					'panel'    => 'neve_layout',
+					'panel'    => 'woocommerce',
 				)
 			)
 		);
