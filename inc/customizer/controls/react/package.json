@@ -35,7 +35,7 @@
     "react-dom": "^16.13.0",
     "react-scripts": "3.4.1",
     "sass-loader": "^8.0.2",
-    "webpack": "^4.42.0",
+    "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3"
   },
