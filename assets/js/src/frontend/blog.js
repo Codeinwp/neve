@@ -1,6 +1,6 @@
 /* jshint esversion: 6 */
 /* global NeveProperties */
-import { httpGetAsync, isInView } from '../utils.js';
+import { httpGetAsync, isInView, neveEach } from '../utils';
 
 let masonryInstance = null,
 		masonryContainer = null,
@@ -28,6 +28,11 @@ const masonry = () => {
 		return false;
 	}
 	masonryContainer = document.querySelector( '.nv-index-posts .posts-wrapper' );
+
+	if ( masonryContainer === null ) {
+		return false;
+	}
+
 	imagesLoaded( masonryContainer, () => {
 		masonryInstance = new Masonry( masonryContainer, {
 			itemSelector: 'article.layout-grid',
@@ -35,7 +40,6 @@ const masonry = () => {
 			percentPosition: true
 		} );
 	} );
-
 };
 
 /**
@@ -45,6 +49,10 @@ const masonry = () => {
  */
 const infiniteScroll = () => {
 	if ( NeveProperties.infiniteScroll !== 'enabled' ) {
+		return false;
+	}
+
+	if ( document.querySelector( '.nv-index-posts .posts-wrapper' ) === null ) {
 		return false;
 	}
 
@@ -81,23 +89,18 @@ const requestMorePosts = () => {
 			NeveProperties.infiniteScrollEndpoint + page );
 	page++;
 
-	httpGetAsync( requestUrl, (response) => {
-		blog.innerHTML += JSON.parse( response );
-		refreshMasonry();
-	}, NeveProperties.infiniteScrollQuery );
-};
-
-/**
- * Refresh masonry
- */
-const refreshMasonry =  () =>  {
-	if ( masonryInstance === null ) {
-		return;
-	}
-	imagesLoaded( masonryContainer ).on( 'progress', (e) => {
-		masonryInstance.layout();
-		masonryInstance.reloadItems();
-	} );
+	httpGetAsync(requestUrl, (response) => {
+		if( NeveProperties.masonry !== 'enabled' ) {
+			blog.innerHTML += JSON.parse( response );
+		} else {
+			const tmp = document.createElement('div');
+			tmp.innerHTML = JSON.parse(response);
+			neveEach(tmp.children, (el) => {
+				masonryContainer.append(el);
+				masonryInstance.appended(el);
+			});
+		}
+	}, NeveProperties.infiniteScrollQuery);
 };
 
 /**
