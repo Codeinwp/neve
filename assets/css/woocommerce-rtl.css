@@ -1683,6 +1683,9 @@ body.woocommerce-account .woocommerce-form-login .form-row:not(.woocommerce-form
   .woocommerce.single .entry-summary > form.cart .wc-forward {
     flex-basis: auto;
   }
+  .variations select {
+    height: 35px;
+  }
   .woocommerce-ordering {
     margin-right: 0;
   }
