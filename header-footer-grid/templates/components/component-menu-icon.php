@@ -19,26 +19,17 @@ $label           = component_setting( MenuIcon::TEXT_ID );
 <div class="menu-mobile-toggle item-button navbar-toggle-wrapper">
 	<button class="navbar-toggle"
 		<?php
-		echo wp_kses(
-			$item_attributes,
-			array(
-				'on'              => true,
-				'role'            => true,
-				'tabindex'        => true,
-				'aria-expanded'   => true,
-				'[aria-expanded]' => true,
-			)
-		);
+		echo ( $item_attributes );// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		?>
 			aria-label="
 			<?php
 			esc_html_e( 'Navigation Menu', 'neve' );
 			?>
 			">
-		<?php 
+		<?php
 		if ( ! empty( $label ) ) {
 			echo '<span class="nav-toggle-label">' . esc_html( $label ) . '</span>';
-		} 
+		}
 		?>
 		<div class="bars">
 			<span class="icon-bar"></span>

@@ -236,7 +236,7 @@ class Magic_Tags {
 	 * @return string
 	 */
 	public function current_year() {
-		return date( 'Y' );
+		return gmdate( 'Y' );
 	}
 
 	/**

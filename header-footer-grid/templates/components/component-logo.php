@@ -54,33 +54,33 @@ $alt_attribute = get_post_meta( $custom_logo_id, '_wp_attachment_image_alt', tru
 ?>
 <div class="site-logo">
 	<?php
-	echo wp_kses_post( $start_tag );
+	echo ( $start_tag ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	if ( $logo_image ) {
 		$image = '<img src="' . esc_url( $logo_image ) . '" alt="' . esc_attr( $alt_attribute ) . '">';
 		switch ( $display_order ) {
 			case 'default':
-				echo wp_kses_post( $image );
+				echo ( $image ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				break;
 			case 'titleLogo':
 				echo '<div class="title-with-logo">';
-				echo wp_kses_post( $title_tagline . $image );
+				echo ( $title_tagline . $image ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				echo '</div>';
 				break;
 			case 'logoTitle':
 				echo '<div class="title-with-logo">';
-				echo wp_kses_post( $image . $title_tagline );
+				echo ( $image . $title_tagline ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				echo '</div>';
 				break;
 			case 'logoTopTitle':
 				echo '<div class="logo-on-top">';
-				echo wp_kses_post( $image . $title_tagline );
+				echo ( $image . $title_tagline ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				echo '</div>';
 				break;
 		}
 	} else {
-		echo wp_kses_post( $title_tagline );
+		echo ( $title_tagline ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
-	echo wp_kses_post( $end_tag )
+	echo ( $end_tag ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	?>
 </div>
 
