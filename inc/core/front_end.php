@@ -1450,6 +1450,31 @@ class Front_End {
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/03/neve-personal-blog.jpg',
 						'title'      => 'Personal Blog',
 					),
+					'neve-travel-blog'           => array(
+						'url'        => 'https://demo.themeisle.com/neve-travel-blog/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/04/neve-travel-blog.jpg',
+						'title'      => 'Travel Blog',
+					),
+					'neve-dj'                    => array(
+						'url'        => 'https://demo.themeisle.com/neve-dj/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/04/neve-dj.jpg',
+						'title'      => 'DJ',
+					),
+					'neve-tech-lab'              => array(
+						'url'        => 'https://demo.themeisle.com/neve-tech-lab/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/04/neve-tech.jpg',
+						'title'      => 'Tech Lab',
+					),
+					'neve-equitation'            => array(
+						'url'        => 'https://demo.themeisle.com/neve-equitation/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/04/neve-horses.jpg',
+						'title'      => 'Equitation',
+					),
+					'neve-restaurant-2'          => array(
+						'url'        => 'https://demo.themeisle.com/neve-restaurant-2/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/04/neve-restaurant-2.jpg',
+						'title'      => 'Restaurant 2',
+					),
 				),
 				'brizy'            => array(
 					'neve-brizy-cafe'                 => array(

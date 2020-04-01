@@ -1101,3 +1101,31 @@ Starter Sites screenshots resources:
 * https://mystock.themeisle.com/photo/picnic/
 * https://stocksnap.io/photo/MN5CHRVUUR
 * https://mystock.themeisle.com/photo/gift-shops/
+
+- Travel Blog
+* https://mystock.themeisle.com/photo/copenhagen-canal-at-sunset/
+* https://mystock.themeisle.com/photo/colorful-boats-at-the-fishing-harbor-of-riomaggiore-cinque-terre-2/
+* https://mystock.themeisle.com/photo/blue-boat-docked-on-an-island-in-maldives/
+
+- DJ
+* https://stocksnap.io/photo/XAOL9EYTV8
+* https://stocksnap.io/photo/NBP6GJVR0M
+* https://mystock.themeisle.com/photo/graffiti-2/
+* https://mystock.themeisle.com/photo/young-boy-attending-a-concert/
+* https://mystock.themeisle.com/photo/bucharest-at-night/
+
+- Tech Lab
+* https://mystock.themeisle.com/photo/programming-laptop/
+* https://stocksnap.io/photo/C5BOQXAZ4N
+* https://stocksnap.io/photo/UEDSDSAWBQ
+* https://stocksnap.io/photo/APSRDPFZSR
+
+- Equitation
+* https://stocksnap.io/photo/AX5GC9QZR5
+* https://stocksnap.io/photo/3EV0OZ7ZJO
+
+- Restaurant 2
+* https://mystock.themeisle.com/photo/remember-the-wedding-gift/
+* https://mystock.themeisle.com/photo/cheesy-hamburger-with-french-fries/
+* https://mystock.themeisle.com/photo/fancy-restaurant/
+* https://mystock.themeisle.com/photo/indian-vegetable-grill-sandwich/
