@@ -108,7 +108,6 @@ class Main {
 	 * @access  public
 	 */
 	public function init() {
-		// add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 		add_filter( 'neve_style_output_neve-generated-style', array( $this, 'append_css_style' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_utils_scripts' ) );
 	}
@@ -187,29 +186,6 @@ class Main {
 		}
 	}
 
-	/**
-	 * Enqueue required files for the module.
-	 *
-	 * @since   1.0.0
-	 * @access  public
-	 */
-	public function enqueue_scripts() {
-		if ( ! $this->should_enqueue_assets() ) {
-			return;
-		}
-
-		// wp_register_style( 'hfg-style', esc_url( Config::get_url() ) . '/assets/css/style.min.css', array(), self::VERSION );
-		// wp_style_add_data( 'hfg-style', 'rtl', 'replace' );
-		// wp_style_add_data( 'hfg-style', 'suffix', '.min' );
-		// wp_enqueue_style( 'hfg-style' );
-		// wp_enqueue_script(
-		// 'hfg-theme-functions',
-		// esc_url( Config::get_url() ) . '/assets/js/theme.min.js',
-		// array(),
-		// self::VERSION,
-		// true
-		// );
-	}
 
 	/**
 	 * Appends css style to neve inline styles.
@@ -233,7 +209,7 @@ class Main {
 	 */
 	public function inline_styles() {
 		if ( is_customize_preview() ) {
-			return;
+			return '';
 		}
 		$css_array = [];
 		/**
@@ -243,7 +219,7 @@ class Main {
 		 */
 		foreach ( $this->get_builders() as $builder ) {
 			$builder_css_array = $builder->add_style( $css_array );
-			$css_array         = $this->array_merge_recursive_distinct( $css_array, $builder_css_array );
+			$css_array         = array_replace_recursive( $css_array, $builder_css_array );
 		}
 
 		return $this->css_array_to_css( $css_array );

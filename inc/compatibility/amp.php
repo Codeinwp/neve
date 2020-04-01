@@ -20,11 +20,11 @@ class Amp {
 	/**
 	 * Run the hooks and filters.
 	 */
-	public function init() {
-		add_filter( 'neve_nav_toggle_data_attrs', array( $this, 'add_nav_toggle_attrs' ) );
+	public function register_hooks() {
+		if ( ! neve_is_amp() ) {
+			return;
+		}
 		add_filter( 'neve_caret_wrap_filter', array( $this, 'amp_dropdowns' ), 10, 2 );
-		add_filter( 'neve_body_data_attrs', array( $this, 'add_body_attributes' ) );
-
 		add_filter(
 			'neve_woocommerce_sidebar_filter_btn_data_attrs',
 			array(
@@ -44,52 +44,30 @@ class Amp {
 		add_filter( 'neve_sidebar_data_attrs', array( $this, 'add_woo_sidebar_attrs' ), 10, 2 );
 		add_filter( 'neve_search_menu_item_filter', array( $this, 'add_search_menu_item_attrs' ), 10 );
 		add_action( 'neve_after_header_hook', array( $this, 'render_amp_states' ) );
+		add_filter( 'neve_nav_toggle_data_attrs', array( $this, 'add_nav_toggle_attrs' ) );
 	}
+
+	/**
+	 * Register amp bootstrap hook.
+	 */
+	public function init() {
+		add_action( 'wp', array( $this, 'register_hooks' ) );
+	}
+
 
 	/**
 	 * Add amp parameters for menu child search icon.
 	 *
-	 * @param string $input Search menu item wrapper markup.
-	 *
 	 * @return string
 	 */
-	public function add_search_menu_item_attrs( $input ) {
-		if ( ! neve_is_amp() ) {
-			return $input;
-		}
-
-		$wrapper = 'class="neve-nav-search-icon" on="tap:nv-menu-item-search.toggleClass(class=\'active\')" ';
-
-		$output = str_replace( 'class="nv-nav-search-icon"', $wrapper, $input );
-
-		return $output;
-	}
-
-	/**
-	 * Add body attributes to make sure sidebar works fine.
-	 *
-	 * @param string $input the incoming string.
-	 *
-	 * @return string
-	 */
-	public function add_body_attributes( $input ) {
-		if ( ! neve_is_amp() ) {
-			return $input;
-		}
-
-		$input .= ' id="neve_body" ';
-
-		return $input;
+	public function add_search_menu_item_attrs( $input = '' ) {
+		return $input . ' on="tap:nv-menu-item-search.toggleClass(class=\'active\')" ';
 	}
 
 	/**
 	 * Add amp states to the dom.
 	 */
 	public function render_amp_states() {
-		if ( ! neve_is_amp() ) {
-			return;
-		}
-
 		echo '<amp-state id="nvAmpMenuExpanded">';
 		echo '<script type="application/json">false</script>';
 		echo '</amp-state>';
@@ -102,15 +80,10 @@ class Amp {
 	/**
 	 * Add the nav toggle data attributes.
 	 *
-	 * @param string $input the data attrs already existing in nav toggle.
-	 *
 	 * @return string
 	 */
-	public function add_nav_toggle_attrs( $input ) {
-		if ( ! neve_is_amp() ) {
-			return $input;
-		}
-		$input .= ' on="tap:neve_body.toggleClass(class=\'is-menu-sidebar\'),AMP.setState( { nvAmpMenuExpanded: ! nvAmpMenuExpanded } )" ';
+	public function add_nav_toggle_attrs( $input = '' ) {
+		$input  = ' on="tap:neve_body.toggleClass(class=\'is-menu-sidebar\'),AMP.setState( { nvAmpMenuExpanded: ! nvAmpMenuExpanded } )" ';
 		$input .= ' role="button" ';
 		$input .= ' tabindex="0" ';
 		$input .= ' aria-expanded="false" ';
@@ -127,9 +100,6 @@ class Amp {
 	 * @return string
 	 */
 	public function add_woo_sidebar_filter_btn_attrs( $input ) {
-		if ( ! neve_is_amp() ) {
-			return $input;
-		}
 
 		$input .= ' on="tap:AMP.setState( { nvAmpWooSidebarExpanded: true } )" ';
 		$input .= ' role="button" ';
@@ -142,14 +112,11 @@ class Amp {
 	 * Add woo sidebar amp attrs.
 	 *
 	 * @param string $input input.
-	 * @param string $slug  sidebar slug.
+	 * @param string $slug sidebar slug.
 	 *
 	 * @return string
 	 */
 	public function add_woo_sidebar_attrs( $input, $slug ) {
-		if ( ! neve_is_amp() ) {
-			return $input;
-		}
 		if ( $slug !== 'shop-sidebar' ) {
 			return $input;
 		}
@@ -164,14 +131,11 @@ class Amp {
 	 * Add amp attributes to sidebar close button.
 	 *
 	 * @param string $input empty string.
-	 * @param string $slug  sidebar slug.
+	 * @param string $slug sidebar slug.
 	 *
 	 * @return string
 	 */
 	public function sidebar_close_button_attrs( $input, $slug ) {
-		if ( ! neve_is_amp() ) {
-			return $input;
-		}
 		if ( $slug !== 'shop-sidebar' ) {
 			return $input;
 		}
@@ -186,15 +150,11 @@ class Amp {
 	 * Implement AMP integration on drop-downs.
 	 *
 	 * @param string $output the output.
-	 * @param string $id     menu item order.
+	 * @param string $id menu item order.
 	 *
 	 * @return mixed
 	 */
 	public function amp_dropdowns( $output, $id ) {
-		// Bail if not AMP.
-		if ( ! neve_is_amp() ) {
-			return $output;
-		}
 
 		// Generate a unique id for drop-down items.
 		$state = 'neveMenuItemExpanded' . $id;
