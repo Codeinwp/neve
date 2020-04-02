@@ -1,3 +1,5 @@
+import {changeOption} from '../utils/rest';
+
 export default {
 	setSettings(object) {
 		return {
@@ -5,16 +7,28 @@ export default {
 			payload: {object}
 		};
 	},
-	changeModuleStatus(slug, value) {
+	changeModuleStatus(moduleSlug, value) {
 		return {
 			type: 'TOGGLE_MODULE',
-			payload: {slug, value}
+			payload: {moduleSlug: 'nv_pro_' + moduleSlug + '_status', value}
+		};
+	},
+	changeModuleOption(optionSlug, optionValue) {
+		return {
+			type: 'CHANGE_MODULE_OPTION',
+			payload: {optionStatus: 'nv_pro_' + optionSlug, optionValue}
 		};
 	},
 	changeLicenseTier(tier) {
 		return {
 			type: 'UPDATE_LICENSE_TIER',
 			payload: {tier}
+		};
+	},
+	setToast(message) {
+		return {
+			type: 'UPDATE_TOAST_MESSAGE',
+			payload: message
 		};
 	}
 };

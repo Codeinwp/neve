@@ -27,7 +27,6 @@ const Notification = (props) => {
       {! done ? <p>{text}</p> : <p><Dashicon icon="yes"/>{__('Done!', 'neve')}</p>}
       {(cta && ! done) &&
       <Button
-        isDefault
         secondary
         disabled={inProgress}
         className={classnames({'is-loading': inProgress})}

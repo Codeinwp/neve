@@ -17,7 +17,6 @@ const Sidebar = ({currentTab}) => {
 			<aside className="sidebar card">
 				<div className="sidebar-section">
 					<h4>{__('Neve Community', 'neve')}</h4>
-					{/* eslint-disable-next-line max-len */}
 					<p>{__('Join the community of Neve users. Get connected, share opinions, ask questions and help each other!')}</p>
 					<a href="https://www.facebook.com/groups/648646435537266/">
 						{__('Join our Facebook Group', 'neve')}
@@ -26,7 +25,6 @@ const Sidebar = ({currentTab}) => {
 				<hr/>
 				<div className="sidebar-section">
 					<h4>{__('Leave us a review', 'neve')}</h4>
-					{/* eslint-disable-next-line max-len */}
 					<p>{__('Are you are enjoying Neve? We would love to hear your feedback.', 'neve')}</p>
 					<a href="https://www.facebook.com/groups/648646435537266/">
 						{__('Join our Facebook Group', 'neve')}
@@ -35,7 +33,6 @@ const Sidebar = ({currentTab}) => {
 				<hr/>
 				<div className="sidebar-section">
 					<h4>{__('Contributing', 'neve')}</h4>
-					{/* eslint-disable-next-line max-len */}
 					<p>{__('Become a contributor by opting in to our anonymous data tracking. We guarantee no sensitive data is collected.', 'neve')}
 						&nbsp;<a href="https://docs.themeisle.com/article/1122-neve-usage-tracking">
 							{__('What do we track?', 'neve')}
@@ -49,7 +46,6 @@ const Sidebar = ({currentTab}) => {
 							send(neveDash.api + '/toggle_tracking', {value}).then((response) => {
 								if (! response.success) {
 									setToastType('error');
-									// eslint-disable-next-line max-len
 									setToast(__('Could not update option. Please try again.', 'neve'));
 									setTracking(! value);
 									return false;

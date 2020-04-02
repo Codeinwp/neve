@@ -7,7 +7,7 @@
 	margin-bottom: 20px;
   }
 
-  button {
+  .accordion-header {
 	cursor: pointer;
 	display: flex;
 	align-items: center;
@@ -23,10 +23,6 @@
 	svg {
 	  color: $dark-grey;
 	  margin-left: auto;
-	}
-
-	.version {
-	  font-weight: 600;
 	}
   }
 
@@ -50,7 +46,7 @@
 	  margin-bottom: 30px;
 	}
 
-	button {
+	.accordion-header {
 	  padding: 20px 40px;
 	}
 

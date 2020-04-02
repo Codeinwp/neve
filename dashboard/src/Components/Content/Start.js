@@ -14,12 +14,11 @@ const Start = (props) => {
         <Card
           icon={neveDash.assets + 'squares.svg'}
           title={__('Starter Sites', 'neve')}
-          /* eslint-disable-next-line max-len */
           description={__('Neve now comes with a sites library with various designs to pick from. Visit our collection of demos that are constantly being added.', 'neve')}
         >
           <Button
-            isDefault
             isPrimary
+						isLarge
             onClick={() => {
               setTab('starter-sites');
             }}
@@ -28,7 +27,6 @@ const Start = (props) => {
         <Card
           icon={neveDash.assets + 'page.svg'}
           title={__('Getting Started? Check help and docs', 'neve')}
-          /* eslint-disable-next-line max-len */
           description={__('Need more details? Please check our full documentation for detailed information on how to use Neve.', 'neve')}
         >
           <Button
@@ -43,7 +41,6 @@ const Start = (props) => {
           classNames="customizer-quick-links"
           icon={neveDash.assets + 'compass.svg'}
           title={__('Customizer quick links', 'neve')}
-          /* eslint-disable-next-line max-len */
           description={__('Join the community of Neve users. Get connected, share opinions, ask questions and help each other!', 'neve')}
         >
           {renderCustomizerLinks()}

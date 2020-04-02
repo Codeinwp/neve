@@ -1,14 +1,17 @@
 /* global neveDash */
 import Accordion from './Accordion';
+import InputForm from './Options/InputForm';
+import Toggle from './Options/Toggle';
 import {changeOption} from '../utils/rest';
 
-const {ToggleControl, Button} = wp.components;
+const {Button, ToggleControl, Dashicon} = wp.components;
 const {withSelect, withDispatch} = wp.data;
-const {Fragment} = wp.element;
+const {Fragment, useState} = wp.element;
 const {compose} = wp.compose;
 const {__} = wp.i18n;
 
-const ModuleCard = ({slug, toggleModule, getStatus, tier}) => {
+const ModuleCard = ({slug, setToast, changeModuleStatus, getModuleStatus, tier}) => {
+	const [ loading, setLoading ] = useState(false);
 	const {
 		nicename,
 		description,
@@ -20,32 +23,34 @@ const ModuleCard = ({slug, toggleModule, getStatus, tier}) => {
 		required_actions
 	} = neveDash.modules[slug];
 	const {upgradeLinks} = neveDash;
-	const {proApi} = neveDash;
 
 	function renderOptionsAccordions() {
 		return options.map((group) => {
 			const {label, options} = group;
 			return (
 				<Accordion title={label}>
-					<form>
+					<div>
 						{Object.keys(options).map((optionSlug) => {
-							const {label, type} = options[optionSlug];
+							const {label, type, placeholder} = options[optionSlug];
 							return (
-								<div className="field-wrap text">
-									{ 'text' === type &&
-										<Fragment>
-											{label && <label for={optionSlug}>{label}</label>}
-											<input type='text' name={optionSlug}/>
-										</Fragment>
+								<Fragment>
+									{'text' === type &&
+									<InputForm
+										label={label}
+										slug={optionSlug}
+										placeholder={placeholder}
+									/>
 									}
 									{'toggle' === type &&
-									<ToggleControl/>
+									<Toggle
+										label={label}
+										slug={optionSlug}
+									/>
 									}
-								</div>
-
+								</Fragment>
 							);
 						})}
-					</form>
+					</div>
 				</Accordion>
 			);
 		});
@@ -54,8 +59,6 @@ const ModuleCard = ({slug, toggleModule, getStatus, tier}) => {
 	return (
 		<div className="card module-card">
 			<div className="card-header">
-				{/*{tier}*/}
-				{/*{availabilityLevel}*/}
 				<h3 className="title">{nicename}</h3>
 				<div className="toggle-wrap">
 					{
@@ -63,13 +66,28 @@ const ModuleCard = ({slug, toggleModule, getStatus, tier}) => {
 							<Button isPrimary href={upgradeLinks[availabilityLevel]}>
 								{__('Upgrade', 'neve')}
 							</Button> :
-							<ToggleControl
-								checked={getStatus(slug)}
-								onChange={(value) => {
-									toggleModule(slug, value);
-									changeOption('nv_pro_' + slug + '_status', value);
-								}}
-							/>
+							<Fragment>
+								{loading && <Dashicon size={18} icon="update" className="is-loading"/>}
+								<ToggleControl
+									checked={getModuleStatus(slug)}
+									onChange={(value) => {
+										setLoading(true);
+										changeOption(slug, value, true).then((r) => {
+											if (r.success) {
+												changeModuleStatus(slug, value);
+												setLoading(false);
+												setToast(
+													(value ?
+														__('Module Activated', 'neve') :
+														__('Module Deactivated.', 'neve')) + ` (${nicename})`);
+												return false;
+											}
+											setLoading(false);
+											setToast(__('Could not activate module. Please try again.', 'neve'));
+										});
+									}}
+								/>
+							</Fragment>
 					}
 				</div>
 			</div>
@@ -77,10 +95,10 @@ const ModuleCard = ({slug, toggleModule, getStatus, tier}) => {
 				<p className="card-description">
 					{description + ' '}
 					{documentation &&
-					<a href={documentation}>{__('Learn More', 'neve')}</a>
+					<a href={documentation.url}>{__('Learn More', 'neve')}</a>
 					}
 				</p>
-				{(0 < options.length && true === getStatus(slug) ) &&
+				{(0 < options.length && true === getModuleStatus(slug)) &&
 				<div className="module-options">
 					{renderOptionsAccordions()}
 				</div>
@@ -94,16 +112,15 @@ export default compose(
 	withSelect((select) => {
 		const {getModuleStatus, getLicenseTier} = select('neve-dashboard');
 		return {
-			getStatus: (slug) => getModuleStatus(slug),
+			getModuleStatus: (slug) => getModuleStatus(slug),
 			tier: getLicenseTier()
 		};
 	}),
 	withDispatch((dispatch) => {
-		const {changeModuleStatus} = dispatch('neve-dashboard');
+		const {changeModuleStatus, setToast} = dispatch('neve-dashboard');
 		return {
-			toggleModule: (slug, value) => {
-				changeModuleStatus(slug, value);
-			}
+			changeModuleStatus: (slug, value) => changeModuleStatus(slug, value),
+			setToast: (message) => setToast(message)
 		};
 	})
 )(ModuleCard);

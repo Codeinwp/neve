@@ -33,7 +33,6 @@ const Card = (props) => {
         </div>
         <Button
           className="plugin-action"
-          isDefault
           isPrimary={[ 'install', 'activate' ].includes(action)}
           isSecondary={'deactivate' === action}
           disabled={inProgress}

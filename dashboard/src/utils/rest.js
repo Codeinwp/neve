@@ -1,21 +1,21 @@
-export const changeOption = (option, value) => {
+export const changeOption = (option, value, module = false) => {
+	option = 'nv_pro_' + option + (module ? '_status' : '');
 	const model = new wp.api.models.Settings({
-		// eslint-disable-next-line camelcase
 		[option]: value
 	});
 
-	model.save().then( response => {
-		console.log(response[option]);
-		console.log(response);
-			// [option]: response[option],
-			// isAPISaving: false
-		// });
+	return new Promise((resolve) => {
+		model.save().then((r) => {
+			if (! r || ! r[option] === value) {
+				resolve({success: false});
+			}
+			resolve({success: true});
+		});
 	});
 };
 
-
 export const send = (route, data, simple = false) => {
-	return requestData(route, simple, data );
+	return requestData(route, simple, data);
 };
 
 export const get = (route, simple = false) => {

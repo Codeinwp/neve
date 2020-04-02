@@ -14,7 +14,6 @@ const Changelog = (props) => {
 					const {date, version, tweaks, fixes, features} = entry;
 					const title =
 						<Fragment>
-							{/* eslint-disable-next-line max-len */}
 							<span className="version">v{version}</span> - <span className="date">{date}</span>
 						</Fragment>;
 

@@ -3,7 +3,8 @@ const {__} = wp.i18n;
 
 const initialState = {
 	settings: {},
-	tier: neveDash.pro ? neveDash.license.tier : 0
+	tier: neveDash.pro ? neveDash.license.tier : 0,
+	toast: null
 };
 const reducer = (state = initialState, action) => {
 	switch (action.type) {
@@ -14,18 +15,32 @@ const reducer = (state = initialState, action) => {
 				settings: object
 			};
 		case 'TOGGLE_MODULE':
-			const {slug, value} = action.payload;
+			const {moduleSlug, value} = action.payload;
 			return {
 				...state,
 				settings: {
 					...state.settings,
-					['nv_pro_' + slug + '_status']: value
+					[moduleSlug]: value
 				}
 			};
+			case 'CHANGE_MODULE_OPTION':
+				let {optionStatus, optionValue} = action.payload;
+				return {
+					...state,
+					settings: {
+						...state.settings,
+						[optionStatus]: optionValue
+					}
+				};
 		case 'UPDATE_LICENSE_TIER':
 			return {
 				...state,
 				tier: action.payload.tier
+			};
+		case 'UPDATE_TOAST_MESSAGE':
+			return {
+				...state,
+				toast: action.payload
 			};
 	}
 	return state;

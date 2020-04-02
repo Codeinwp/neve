@@ -34,7 +34,7 @@
       "off"
     ],
     "max-len": [
-      "error",
+      "off",
       {
         "code": 100,
         "tabWidth": 4

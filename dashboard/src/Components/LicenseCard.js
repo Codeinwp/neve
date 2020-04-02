@@ -40,7 +40,6 @@ const LicenseCard = ({isVisible, changeTier}) => {
 		<aside className="sidebar card license">
 			<div className="sidebar-section">
 				<h4>{__('Neve Pro Addon license', 'neve')}</h4>
-				{/* eslint-disable-next-line max-len */}
 				<p>Enter your license from <a href="https://store.themeisle.com">ThemeIsle</a> purchase history in order to get
 					plugin updates</p>
 				<form className="license-form" onSubmit={(e) => {
@@ -64,6 +63,7 @@ const LicenseCard = ({isVisible, changeTier}) => {
 					/>
 					<Button
 						isPrimary={'valid' !== valid}
+						isSecondary={'valid' === valid}
 						isLarge
 						disabled={status || ! key}
 						type="submit">
@@ -88,7 +88,6 @@ const LicenseCard = ({isVisible, changeTier}) => {
 						}>
 							<Dashicon size={14} icon={'valid' === valid ? 'yes' : 'no'}/>
 						</span>
-						{/* eslint-disable-next-line max-len */}
 						<span className="validity">
 							{'valid' === valid ? __('Valid', 'neve') : __('Expired', 'neve')}
 						</span>
