@@ -15,7 +15,6 @@ const App = ({setSettings, toast}) => {
 	const [ loading, setLoading ] = useState(true);
 	const [ currentTab, setTab ] = useState('start');
 	useEffect(() => {
-		// send('http://localhost:8080/wp-json/wp/v2/settings', {}).then((r)=>console.log(r));
 		const hash = getTabHash();
 		if (null !== hash) {
 			setTab(hash);

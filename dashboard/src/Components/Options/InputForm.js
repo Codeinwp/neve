@@ -15,14 +15,14 @@ const InputForm = ({slug, label, placeholder, getOption, setToast, changeOption}
 				(e) => {
 					e.preventDefault();
 					setLoading(true);
-					changeSetting( slug, value ).then((r) => {
-						if ( r.success ) {
+					changeSetting(slug, value).then((r) => {
+						if (r.success) {
 							changeOption(slug, value);
-							setToast( true );
+							setToast(true);
 							setLoading(false);
 							return false;
 						}
-						setToast( false );
+						setToast(r.message ? r.message : false);
 						setLoading(false);
 					});
 				}
