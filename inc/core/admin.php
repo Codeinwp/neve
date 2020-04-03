@@ -10,6 +10,8 @@
 
 namespace Neve\Core;
 
+use TIOB\Main;
+
 /**
  * Class Admin
  *
@@ -870,8 +872,8 @@ class Admin {
 	 * Load site import module.
 	 */
 	public function load_site_import() {
-		if ( class_exists( '\Themeisle_Onboarding', false ) ) {
-			\Themeisle_Onboarding::instance();
+		if ( class_exists( '\TIOB\Main', false ) ) {
+			Main::instance();
 		}
 	}
 
