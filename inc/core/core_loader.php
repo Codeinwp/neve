@@ -103,7 +103,7 @@ class Core_Loader {
 	 */
 	private function define_hooks() {
 		$admin = new Admin();
-		add_action( 'init', array( $admin, 'load_site_import' ) );
+		add_action( 'admin_init', array( $admin, 'load_site_import' ) );
 		// add_action( 'init', array( $admin, 'do_about_page' ) );
 		add_action( 'ti-about-after-sidebar-content', array( $admin, 'render_logger_toggle' ) );
 
