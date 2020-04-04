@@ -131,7 +131,7 @@ function neve_search_icon( $echo = false, $size = 15, $amp_ready = false ) {
 
 	$amp_state = '';
 	if ( $amp_ready ) {
-		$amp_state = ' on="tap:nv-search-icon-responsive.toggleClass(class=\'active\')" ';
+		$amp_state = ' on="tap:nv-search-icon-responsive.toggleClass(class=\'active\')" role="button" tabindex="0" ';
 	}
 
 	$svg = '<span class="nv-icon nv-search" ' . $amp_state . '>
