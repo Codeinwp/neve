@@ -22,6 +22,8 @@ describe('Single Post Check', function () {
         saveCustomizer();
         cy.visit('/markup-image-alignment/');
         cy.get( '#wp-admin-bar-edit').click();
+
+		cy.clearWelcome();
         cy.get( '.components-panel__body').each((el) =>{
             cy.get(el).invoke('attr','class').then( (className) => {
                 if( ! className.includes('is-opened') ){
@@ -29,7 +31,7 @@ describe('Single Post Check', function () {
                 }
             })
         });
-        cy.get( '.components-checkbox-control__label').contains('Allow Comments').click();
+        cy.get( '.components-checkbox-control__label').contains('Allow comments').parent().find(".components-checkbox-control__input").click();
         cy.get( 'button').contains('Update').click();
         cy.visit('/markup-image-alignment/');
         cy.wrap(status).then((el)=>{
