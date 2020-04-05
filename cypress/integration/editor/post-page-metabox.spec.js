@@ -1,5 +1,4 @@
 describe( 'Page meta box settings', function() {
-	wp.data.select( "core/edit-post" ).isFeatureActive( "welcomeGuide" ) && wp.data.dispatch( "core/edit-post" ).toggleFeature( "welcomeGuide" );
 	const pageSetup = {
 		'title': 'Test Page',
 		'content': 'The Page Content',
@@ -7,6 +6,7 @@ describe( 'Page meta box settings', function() {
 	};
 	it( 'Create new page named "' + pageSetup.title + '".', function() {
 		cy.insertPost( pageSetup.title, pageSetup.content, 'page' );
+
 		cy.get( '.post-publish-panel__postpublish-header a' ).
 				contains( pageSetup.title ).
 				should( 'have.attr', 'href' ).
@@ -35,7 +35,10 @@ describe( 'Page meta box settings', function() {
 
 	it( 'Edit meta box settings "' + pageSetup.title + '".', function() {
 		cy.login( pageSetup.url );
+
 		cy.get( '#wp-admin-bar-edit a' ).click();
+
+		cy.clearWelcome();
 		cy.get( 'label[for="neve_meta_container_full-width"]' ).click();
 		cy.get( 'label[for="neve_meta_sidebar_left"]' ).click();
 		cy.get( 'label[for="neve_meta_disable_title"]' ).click();
@@ -44,12 +47,15 @@ describe( 'Page meta box settings', function() {
 		cy.get( '#neve_meta_content_width-range' ).
 				invoke( 'val', 70 ).
 				trigger( 'change' );
+
+		cy.wait(1000);
 		cy.get( '.editor-post-publish-button' ).contains( 'Update' ).click();
 		cy.get( '.components-snackbar__content' ).contains( 'View Page' );
 	} );
 
 	it( 'Edited meta box settings on front end.', function() {
 		cy.visit( pageSetup.url );
+		cy.reload();
 		cy.get( '.nv-sidebar-wrap' ).
 				should( 'have.class', 'nv-left' ).
 				and( 'be.visible' );
@@ -84,6 +90,7 @@ describe( 'Posts meta box settings', function() {
 
 	it( 'Default meta box settings on front end.', function() {
 		cy.visit( postSetup.url );
+
 		cy.get( '.nv-sidebar-wrap' ).
 				should( 'have.class', 'nv-right' ).
 				and( 'be.visible' );
@@ -113,6 +120,8 @@ describe( 'Posts meta box settings', function() {
 	it( 'Edit meta box settings "' + postSetup.title + '".', function() {
 		cy.login( postSetup.url );
 		cy.get( '#wp-admin-bar-edit a' ).click();
+
+		cy.clearWelcome();
 		cy.get( 'label[for="neve_meta_container_full-width"]' ).click();
 		cy.get( 'label[for="neve_meta_sidebar_left"]' ).click();
 		cy.get( 'label[for="neve_meta_disable_title"]' ).click();
@@ -123,12 +132,16 @@ describe( 'Posts meta box settings', function() {
 		cy.get( '#neve_meta_content_width-range' ).
 				invoke( 'val', 50 ).
 				trigger( 'change' );
+		cy.wait(1000);
 		cy.get( '.editor-post-publish-button' ).contains( 'Update' ).click();
 		cy.get( '.components-snackbar__content' ).contains( 'View Post' );
 	} );
 
 	it( 'Edited meta box settings on front end.', function() {
+
+
 		cy.visit( postSetup.url );
+		cy.reload();
 		cy.get( '.nv-sidebar-wrap' ).
 				should( 'have.class', 'nv-left' ).
 				and( 'be.visible' );
