@@ -6,5 +6,6 @@
   "viewportWidth": 1920,
   "viewportHeight": 1080,
   "user": "admin",
+  "videoUploadOnPasses": false,
   "password": "admin"
 }
