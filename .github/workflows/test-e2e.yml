@@ -8,13 +8,32 @@ env:
 
 jobs:
   e2e:
-    if: "github.event.fork == false"
     strategy:
       matrix:
         spec: [customizer/hfg, customizer/layout, customizer/typography, editor, plugins-compatibility]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/cache@v1
+          with:
+            path: ~/.wp-content
+            key: ${{ runner.os }}-wpcore
+      - uses: actions/cache@v1
+        with:
+          path: ~/.cache/Cypress
+          key: cypress-cache-v2-${{ runner.os }}-${{ hashFiles('**/package.json') }}
+      - uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: |
+          echo "::set-output name=dir::$(composer config cache-files-dir)"
+      - uses: actions/cache@v1
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
       - run: ./bin/run-e2e.sh
       - name: ${{matrix.spec}}
         uses: cypress-io/github-action@v1

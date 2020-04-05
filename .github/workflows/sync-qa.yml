@@ -1,4 +1,4 @@
-name: Deploy
+name: Deploy to QA
 on:
   push:
     branches:
@@ -8,7 +8,7 @@ jobs:
   deploy:
     name: Deploy to QA server
     runs-on: ubuntu-latest
-    if: "github.event.fork == false"
+    if: github.repository == 'Codeinwp/neve'
     env:
       SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
       SSH_KEY: ${{ secrets.SSH_KEY }}
