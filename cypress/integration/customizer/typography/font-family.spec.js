@@ -108,6 +108,7 @@ describe( 'Font Family', function() {
 	it( 'Test Font Family inside the Editor', function() {
 		cy.visit( '/markup-html-tags-and-formatting/' );
 		cy.get( '#wp-admin-bar-edit > a' ).click();
+		cy.clearWelcome();
 		cy.get( '#editor .editor-styles-wrapper .editor-writing-flow' ).
 				as( 'body' );
 		cy.get( '@body' ).should( 'have.css', 'font-family' ).
