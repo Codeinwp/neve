@@ -1,4 +1,5 @@
 describe( 'Page meta box settings', function() {
+	wp.data.select( "core/edit-post" ).isFeatureActive( "welcomeGuide" ) && wp.data.dispatch( "core/edit-post" ).toggleFeature( "welcomeGuide" );
 	const pageSetup = {
 		'title': 'Test Page',
 		'content': 'The Page Content',
