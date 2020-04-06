@@ -5,7 +5,7 @@ const {useState} = wp.element;
 const {Button, Dashicon} = wp.components;
 
 
-const EditorSelector = ({onChange, selected}) => {
+const EditorSelector = ({onChange, onSearch, selected}) => {
 	const map = {
 		'elementor': {
 			icon: 'elementor.png',
@@ -81,8 +81,7 @@ const EditorSelector = ({onChange, selected}) => {
 			<div className="search">
 				<input
 					onChange={(e) => {
-						console.log(e.target.value);
-						onChange(e.target.value);
+						onSearch(e.target.value);
 					}}
 					type="search"
 					placeholder={__('Search for a starter site', 'neve') + '...'}/>

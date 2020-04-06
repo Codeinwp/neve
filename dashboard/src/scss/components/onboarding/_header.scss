@@ -19,18 +19,21 @@
   .search {
 	flex-grow: 1;
 	position: relative;
+	display: flex;
+	margin-left: 10px;
 
 	img {
 	  position: absolute;
 	  top: 50%;
 	  transform: translateY(-50%);
-	  right: 0;
+	  right: 10px;
 	}
   }
 
   input {
-	margin-left: 10px;
-	width: 100%;
+	margin: 0;
+	display: block;
+	flex-grow: 1;
 	border: 1px solid $grey;
 	height: 45px;
 	padding: 5px 50px 5px 30px;

@@ -6,11 +6,11 @@ const StarterSiteCard = ({slug, data, upsell}) => {
 		<div className="card starter-site-card">
 			<div className="top">
 				<div className="fav">
-					<Button icon="star"/>
+					<Button icon="star-filled"/>
 				</div>
 				<div className="actions">
-					<Button>{__('Preview', 'neve')}</Button>
-					<Button>{__('Import', 'neve')}</Button>
+					<Button className="preview">{__('Preview', 'neve')}</Button>
+					<Button className="import">{__('Import', 'neve')}</Button>
 				</div>
 				{data.screenshot &&
 				<div className="image">

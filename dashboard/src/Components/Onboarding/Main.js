@@ -9,15 +9,40 @@ const Onboarding = ({sites, upsells}) => {
 	const [ selectedEditor, selectEditor ] = useState('elementor');
 	const [ searchQuery, setSearchQuery ] = useState('');
 
+	function filterSites(sites) {
+
+		if (! searchQuery) {
+			return sites;
+		}
+		return Object.keys(sites).reduce((results, slug) => {
+			console.log(results);
+			return -1 === sites[slug].title.toLowerCase().indexOf(searchQuery.toLowerCase()) ?
+				results :
+				{
+					...results,
+					[slug]: sites[slug]
+				};
+		}, {});
+	}
+
 	function renderSites() {
-		return Object.keys(sites[selectedEditor]).map((slug) => {
-			return <StarterSiteCard slug={slug} data={sites[selectedEditor][slug]}/>;
+		if (! sites[selectedEditor]) {
+			return null;
+		}
+		const filtered = filterSites(sites[selectedEditor]);
+		return Object.keys(filtered).map((slug) => {
+			return <StarterSiteCard slug={slug} data={filtered[slug]}/>;
 		});
+
 	}
 
 	function renderUpsells() {
-		return Object.keys(upsells[selectedEditor]).map((slug) => {
-			return <StarterSiteCard upsell={true} slug={slug} data={upsells[selectedEditor][slug]}/>;
+		if (! upsells[selectedEditor]) {
+			return null;
+		}
+		const filtered = filterSites(upsells[selectedEditor]);
+		return Object.keys(filtered).map((slug) => {
+			return <StarterSiteCard upsell={true} slug={slug} data={filtered[slug]}/>;
 		});
 	}
 
@@ -32,6 +57,7 @@ const Onboarding = ({sites, upsells}) => {
 					onSearch={(query) => {
 						setSearchQuery(query);
 					}}
+					query={searchQuery}
 					selected={selectedEditor}
 					onChange={(editor) => {
 						selectEditor(editor);
