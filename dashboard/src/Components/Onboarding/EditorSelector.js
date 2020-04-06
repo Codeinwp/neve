@@ -61,7 +61,8 @@ const EditorSelector = ({onChange, onSearch, selected}) => {
 								}
 								return (
 									<li>
-										<a onClick={() => {
+										<a href="#" onClick={(e) => {
+											e.preventDefault();
 											onChange(key);
 											setOpen(false);
 										}}>

@@ -14,8 +14,8 @@ const Onboarding = ({sites, upsells}) => {
 		if (! searchQuery) {
 			return sites;
 		}
+
 		return Object.keys(sites).reduce((results, slug) => {
-			console.log(results);
 			return -1 === sites[slug].title.toLowerCase().indexOf(searchQuery.toLowerCase()) ?
 				results :
 				{
