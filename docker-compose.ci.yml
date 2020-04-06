@@ -9,34 +9,30 @@ services:
       MYSQL_DATABASE: wordpress
       MYSQL_USER: wordpress
       MYSQL_PASSWORD: wordpress
-  blackfire:
-    image: blackfire/blackfire
-    environment:
-      - BLACKFIRE_CLIENT_TOKEN
-      - BLACKFIRE_CLIENT_ID
-      - BLACKFIRE_SERVER_ID
-      - BLACKFIRE_SERVER_TOKEN
   cli:
     privileged: true
     image: wordpress:cli
     restart: always
     volumes:
       - wpcore:/var/www/html
-      - ../dist:/var/www/html/wp-content/themes
+      - ./bin:/var/www/html/bin
+      - ~/.wp-content:/var/www/html/wp-content
+      - ./dist/neve:/var/www/html/wp-content/themes/neve
     depends_on:
       - mysql
       - wordpress
   wordpress:
     privileged: true
     ports:
-      - 8888:80
+      - 8080:80
     depends_on:
       - mysql
-    build: .
+    image: wordpress:latest
     volumes:
       - wpcore:/var/www/html
-      - ../dist:/var/www/html/wp-content/themes
-      - .blackfire.yml:/var/www/html/.blackfire.yml
+      - ./bin:/var/www/html/bin
+      - ~/.wp-content:/var/www/html/wp-content
+      - ./dist/neve:/var/www/html/wp-content/themes/neve
     restart: always
     environment:
       - WORDPRESS_DB_NAME=wordpress
@@ -45,4 +41,4 @@ services:
       - WORDPRESS_DB_ROOT_PASSWORD=wordpress
       - WORDPRESS_DEBUG=1
 volumes:
-   wpcore:
+  wpcore:

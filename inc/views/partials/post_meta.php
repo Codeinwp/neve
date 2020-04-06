@@ -119,22 +119,12 @@ class Post_Meta extends Base_View {
 					$markup .= '</li>';
 					break;
 				case 'default':
-					break;
 				default:
 					break;
 			}
 		}
 		$markup .= '</ul>';
-		echo neve_custom_kses_escape( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-			$markup,
-			array(
-				'time' => array(
-					'class'    => true,
-					'datetime' => true,
-					'content'  => true,
-				),
-			)
-		);
+		echo ( $markup ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 
 	/**
@@ -162,22 +152,23 @@ class Post_Meta extends Base_View {
 
 		return $order;
 	}
-
 	/**
 	 * Get <time> tags.
 	 *
 	 * @return string
 	 */
 	private function get_time_tags() {
-		$time = '<time class="entry-date published" datetime="' . esc_attr( get_the_date( 'c' ) ) . '" content="' . esc_attr( get_the_date( 'Y-m-d' ) ) . '">' . esc_html( get_the_date() ) . '</time>';
-		if ( get_the_time( 'U' ) === get_the_modified_time( 'U' ) ) {
+		$created  = get_the_time( 'U' );
+		$format   = get_option( 'date_format' );
+		$modified = get_the_modified_time( 'U' );
+		$time     = '<time class="entry-date published" datetime="' . esc_attr( date_i18n( 'c', $created ) ) . '" content="' . esc_attr( date_i18n( 'Y-m-d', $created ) ) . '">' . esc_html( date_i18n( $format, $created ) ) . '</time>';
+		if ( $created === $modified ) {
 			return $time;
 		}
-		$time .= '<time class="updated" datetime="' . esc_attr( get_the_modified_date( 'c' ) ) . '">' . esc_html( get_the_modified_date() ) . '</time>';
+		$time .= '<time class="updated" datetime="' . esc_attr( date_i18n( 'c', $modified ) ) . '">' . esc_html( date_i18n( $format, $modified ) ) . '</time>';
 
 		return $time;
 	}
-
 	/**
 	 * Get the comments with a link.
 	 *

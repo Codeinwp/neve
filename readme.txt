@@ -2,7 +2,7 @@
 Contributors: themeisle
 Tags: blog, custom-logo, e-commerce, rtl-language-support, post-formats, grid-layout, one-column, two-columns, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, accessibility-ready, wide-blocks, block-styles, footer-widgets, portfolio, left-sidebar, right-sidebar
 Requires at least: 4.0
-Tested up to: 5.3
+Tested up to: 5.4
 Stable tag: 1.0.23
 Requires PHP: 5.4.0
 License: GPLv2 or later
@@ -1101,3 +1101,31 @@ Starter Sites screenshots resources:
 * https://mystock.themeisle.com/photo/picnic/
 * https://stocksnap.io/photo/MN5CHRVUUR
 * https://mystock.themeisle.com/photo/gift-shops/
+
+- Travel Blog
+* https://mystock.themeisle.com/photo/copenhagen-canal-at-sunset/
+* https://mystock.themeisle.com/photo/colorful-boats-at-the-fishing-harbor-of-riomaggiore-cinque-terre-2/
+* https://mystock.themeisle.com/photo/blue-boat-docked-on-an-island-in-maldives/
+
+- DJ
+* https://stocksnap.io/photo/XAOL9EYTV8
+* https://stocksnap.io/photo/NBP6GJVR0M
+* https://mystock.themeisle.com/photo/graffiti-2/
+* https://mystock.themeisle.com/photo/young-boy-attending-a-concert/
+* https://mystock.themeisle.com/photo/bucharest-at-night/
+
+- Tech Lab
+* https://mystock.themeisle.com/photo/programming-laptop/
+* https://stocksnap.io/photo/C5BOQXAZ4N
+* https://stocksnap.io/photo/UEDSDSAWBQ
+* https://stocksnap.io/photo/APSRDPFZSR
+
+- Equitation
+* https://stocksnap.io/photo/AX5GC9QZR5
+* https://stocksnap.io/photo/3EV0OZ7ZJO
+
+- Restaurant 2
+* https://mystock.themeisle.com/photo/remember-the-wedding-gift/
+* https://mystock.themeisle.com/photo/cheesy-hamburger-with-french-fries/
+* https://mystock.themeisle.com/photo/fancy-restaurant/
+* https://mystock.themeisle.com/photo/indian-vegetable-grill-sandwich/
