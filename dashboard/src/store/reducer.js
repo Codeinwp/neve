@@ -1,13 +1,26 @@
 /* global wp, neveDash  */
-const {__} = wp.i18n;
+import {getTabHash} from '../utils/common';
 
 const initialState = {
 	settings: {},
 	tier: neveDash.pro ? neveDash.license.tier : 0,
-	toast: null
+	toast: null,
+	currentTab: 'start'
 };
+
+const hash = getTabHash();
+if (null !== hash) {
+	initialState.currentTab = hash;
+}
+
 const reducer = (state = initialState, action) => {
 	switch (action.type) {
+		case 'SET_TAB':
+			const {tab} = action.payload;
+			return {
+				...state,
+				currentTab: tab
+			};
 		case 'SET_SETTINGS':
 			const {object} = action.payload;
 			return {
@@ -23,15 +36,15 @@ const reducer = (state = initialState, action) => {
 					[moduleSlug]: value
 				}
 			};
-			case 'CHANGE_MODULE_OPTION':
-				let {optionStatus, optionValue} = action.payload;
-				return {
-					...state,
-					settings: {
-						...state.settings,
-						[optionStatus]: optionValue
-					}
-				};
+		case 'CHANGE_MODULE_OPTION':
+			let {optionStatus, optionValue} = action.payload;
+			return {
+				...state,
+				settings: {
+					...state.settings,
+					[optionStatus]: optionValue
+				}
+			};
 		case 'UPDATE_LICENSE_TIER':
 			return {
 				...state,

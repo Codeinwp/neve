@@ -11,15 +11,9 @@ const {withDispatch, withSelect} = wp.data;
 const {compose} = wp.compose;
 const {useState, Fragment, useEffect} = wp.element;
 
-const App = ({setSettings, toast}) => {
+const App = ({setSettings, toast, currentTab, setTab}) => {
 	const [ loading, setLoading ] = useState(true);
-	const [ currentTab, setTab ] = useState('start');
 	useEffect(() => {
-		const hash = getTabHash();
-		if (null !== hash) {
-			setTab(hash);
-		}
-
 		let settings;
 		wp.api.loadPromise.then(() => {
 			settings = new wp.api.models.Settings();
@@ -38,27 +32,29 @@ const App = ({setSettings, toast}) => {
 			<Header currentTab={currentTab} setTab={setTab}/>
 			<div className="container content">
 				<div className="main">
-					<Notifications/>
+					{'starter-sites' !== currentTab && <Notifications/>}
 					<TabsContent currentTab={currentTab} setTab={setTab}/>
 				</div>
-				<Sidebar currentTab={currentTab}/>
+				{'starter-sites' !== currentTab && <Sidebar currentTab={currentTab}/>}
 			</div>
-			{toast() && <Snackbar/>}
+			{toast && <Snackbar/>}
 		</Fragment>
 	);
 };
 
 export default compose(
 	withDispatch((dispatch) => {
-		const {setSettings} = dispatch('neve-dashboard');
+		const {setSettings, setTab} = dispatch('neve-dashboard');
 		return {
-			setSettings: (object) => setSettings(object)
+			setSettings: (object) => setSettings(object),
+			setTab: (tab) => setTab(tab)
 		};
 	}),
 	withSelect((select) => {
-		const {getToast} = select('neve-dashboard');
+		const {getToast, getTab} = select('neve-dashboard');
 		return {
-			toast: () => getToast()
+			toast: getToast(),
+			currentTab: getTab()
 		};
 	})
 )(App);

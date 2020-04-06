@@ -40,7 +40,6 @@ const renderNavigation = (props) => {
 			{Object.keys(tabs).map((item) => {
 				return (
 					<li><a
-						href="#"
 						className={currentTab === item ? 'active' : ''}
 						onClick={(e) => {
 							e.preventDefault();

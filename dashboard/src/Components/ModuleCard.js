@@ -18,6 +18,7 @@ const ModuleCard = ({slug, setToast, changeModuleStatus, getModuleStatus, tier})
 		availabilityLevel,
 		options,
 		order,
+		links,
 		documentation,
 		// eslint-disable-next-line camelcase
 		required_actions
@@ -98,6 +99,11 @@ const ModuleCard = ({slug, setToast, changeModuleStatus, getModuleStatus, tier})
 					<a href={documentation.url}>{__('Learn More', 'neve')}</a>
 					}
 				</p>
+				{links && getModuleStatus(slug) &&
+				<div className="actions">
+					{links.map((link) => <Button isSecondary href={link.url}>{link.label}</Button>)}
+				</div>
+				}
 				{(0 < options.length && true === getModuleStatus(slug)) &&
 				<div className="module-options">
 					{renderOptionsAccordions()}

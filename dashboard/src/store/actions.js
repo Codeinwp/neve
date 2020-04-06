@@ -1,6 +1,12 @@
 import {changeOption} from '../utils/rest';
 
 export default {
+	setTab(tab) {
+		return {
+			type: 'SET_TAB',
+			payload: {tab}
+		};
+	},
 	setSettings(object) {
 		return {
 			type: 'SET_SETTINGS',

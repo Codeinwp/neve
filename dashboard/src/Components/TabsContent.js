@@ -4,14 +4,12 @@ import classnames from 'classnames';
 
 const {__} = wp.i18n;
 
-const TabsContent = (props) => {
-  const {currentTab, setTab} = props;
-
+const TabsContent = ({currentTab, setTab}) => {
   const classes = classnames([ 'tab-content', 'columns', currentTab ]);
   return (
     <div className={classes}>
       {tabs[currentTab].render(setTab)}
-    </div>
+		</div>
   );
 };
 

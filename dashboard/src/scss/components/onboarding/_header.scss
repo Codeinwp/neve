@@ -1,0 +1,38 @@
+.ob-head {
+  h2 {
+	font-size: 30px;
+	color: $black;
+	margin: 0;
+  }
+
+  p {
+	font-size: 22px;
+	color: $black;
+	margin: 20px 0 50px;
+  }
+}
+
+.header-form {
+  display: flex;
+  align-items: center;
+
+  .search {
+	flex-grow: 1;
+	position: relative;
+
+	img {
+	  position: absolute;
+	  top: 50%;
+	  transform: translateY(-50%);
+	  right: 0;
+	}
+  }
+
+  input {
+	margin-left: 10px;
+	width: 100%;
+	border: 1px solid $grey;
+	height: 45px;
+	padding: 5px 50px 5px 30px;
+  }
+}

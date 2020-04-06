@@ -36,15 +36,15 @@ const getTabHash = () => {
 
 const tabs = {
 	'start': {label: 'Getting Started', render: (setTab) => <Start setTab={setTab}/>},
-	'plugins': {label: 'Useful Plugins', render: () => <Plugins/>},
+	'plugins': {label: 'Useful Plugins', render: (setTab) => <Plugins/>},
 	'help': {label: 'Help & docs', render: (setTab) => <Help setTab={setTab}/>},
-	'changelog': {label: 'Changelog', render: () => <Changelog/>},
-	'starter-sites': {label: 'Starter Sites', render: () => <StarterSites/>},
-	'free-pro': {label: 'Free vs Pro', render: () => <FreePro/>}
+	'changelog': {label: 'Changelog', render: (setTab) => <Changelog/>},
+	'starter-sites': {label: 'Starter Sites', render: (setTab) => <StarterSites/>},
+	'free-pro': {label: 'Free vs Pro', render: (setTab) => <FreePro/>}
 };
 
 if (neveDash.pro) {
-	tabs.pro = {label: 'Neve Pro', render: () => <Pro/>};
+	tabs.pro = {label: 'Neve Pro', render: (setTab) => <Pro/>};
 	delete (tabs['free-pro']);
 }
 
