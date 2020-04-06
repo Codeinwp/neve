@@ -56,6 +56,9 @@ const EditorSelector = ({onChange, selected}) => {
 					{open && <div className="options">
 						<ul>
 							{Object.keys(map).map((key) => {
+								if (key === selected) {
+									return null;
+								}
 								return (
 									<li>
 										<a onClick={() => {
@@ -76,7 +79,13 @@ const EditorSelector = ({onChange, selected}) => {
 				</div>
 			</OnClickOutside>
 			<div className="search">
-				<input type="search" placeholder={__('Search for a starter site', 'neve') + '...'}/>
+				<input
+					onChange={(e) => {
+						console.log(e.target.value);
+						onChange(e.target.value);
+					}}
+					type="search"
+					placeholder={__('Search for a starter site', 'neve') + '...'}/>
 				<img src={neveDash.assets + '/search.svg'} alt={__('Search Icon')}/>
 			</div>
 		</div>

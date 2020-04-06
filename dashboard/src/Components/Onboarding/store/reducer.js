@@ -9,13 +9,13 @@ export default (state = initialState, action) => {
 			const {sites} = action.payload;
 			return {
 				...state,
-				sites: sites
+				sites
 			};
 		case 'SET_UPSELLS':
 			const {upsells} = action.payload;
 			return {
 				...state,
-				sites: upsells
+				upsells
 			};
 	}
 	return state;

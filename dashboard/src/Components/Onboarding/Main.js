@@ -3,17 +3,21 @@ import StarterSiteCard from './StarterSiteCard';
 
 const {useState} = wp.element;
 const {__} = wp.i18n;
+const {withSelect} = wp.data;
 
 const Onboarding = ({sites, upsells}) => {
 	const [ selectedEditor, selectEditor ] = useState('elementor');
+	const [ searchQuery, setSearchQuery ] = useState('');
 
 	function renderSites() {
-
-		if (! sites) {
-			return null;
-		}
 		return Object.keys(sites[selectedEditor]).map((slug) => {
 			return <StarterSiteCard slug={slug} data={sites[selectedEditor][slug]}/>;
+		});
+	}
+
+	function renderUpsells() {
+		return Object.keys(upsells[selectedEditor]).map((slug) => {
+			return <StarterSiteCard upsell={true} slug={slug} data={upsells[selectedEditor][slug]}/>;
 		});
 	}
 
@@ -24,12 +28,18 @@ const Onboarding = ({sites, upsells}) => {
 				<p>{__('With Neve, you can choose from multiple unique demos, specially designed for you, that can be installed with a single click. You just need to choose your favorite, and we will take care of everything else.', 'neve')}</p>
 			</div>
 			<div className="ob-body">
-				<EditorSelector selected={selectedEditor} onChange={(editor) => {
-					selectEditor(editor);
-				}}/>
+				<EditorSelector
+					onSearch={(query) => {
+						setSearchQuery(query);
+					}}
+					selected={selectedEditor}
+					onChange={(editor) => {
+						selectEditor(editor);
+					}}/>
 
 				<div className="ob-sites">
-					{renderSites()}
+					{sites && renderSites()}
+					{upsells && renderUpsells()}
 				</div>
 			</div>
 		</div>
@@ -37,12 +47,10 @@ const Onboarding = ({sites, upsells}) => {
 };
 
 
-export default compose(
-	withSelect((select) => {
-		const {getSites, getUpsells} = select('neve-onboarding');
-		return {
-			sites: getSites(),
-			upsells: getUpsells()
-		};
-	})
-)(Onboarding);
+export default withSelect((select) => {
+	const {getSites, getUpsells} = select('neve-onboarding');
+	return {
+		sites: getSites(),
+		upsells: getUpsells()
+	};
+})(Onboarding);

@@ -1,6 +1,7 @@
 .ob-dropdown {
   display: inline-block;
   position: relative;
+  z-index: 10000;
 
   button {
 	display: flex;

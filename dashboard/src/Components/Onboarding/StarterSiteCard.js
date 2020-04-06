@@ -1,8 +1,7 @@
 const {Button} = wp.components;
-const {withDispatch, withSelect} = wp.data;
-const {compose} = wp.compose;
+const {__} = wp.i18n;
 
-const StarterSiteCard = ({slug, data}) => {
+const StarterSiteCard = ({slug, data, upsell}) => {
 	return (
 		<div className="card starter-site-card">
 			<div className="top">
@@ -20,7 +19,8 @@ const StarterSiteCard = ({slug, data}) => {
 				}
 			</div>
 			<div className="bottom">
-
+				<p className="title">{data.title}</p>
+				{upsell && <span className="pro-badge">{__('Pro', 'neve')}</span>}
 			</div>
 		</div>
 	);

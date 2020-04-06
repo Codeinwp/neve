@@ -19,9 +19,9 @@ const StarterSites = ({sites, setSites, setUpsells}) => {
 				if (! r.success) {
 					setError(true);
 				} else {
-					const {remote, upsells} = r.data;
-					setSites(remote ? remote : null);
-					setUpsells(upsells ? upsells : null);
+					const {remote, upsell} = r.data;
+					setSites(remote);
+					setUpsells(upsell);
 					setLoading(false);
 				}
 			});
