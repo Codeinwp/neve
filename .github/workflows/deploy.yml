@@ -18,8 +18,8 @@ jobs:
       - name: Build & create dist/artifact
         run: |
           npm ci
-          npm run build
           composer install --no-dev --prefer-dist --no-progress --no-suggest
+          npm run build
           npm run dist
       - name: Add SSH Key
         run: |
