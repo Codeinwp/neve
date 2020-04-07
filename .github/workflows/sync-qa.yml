@@ -20,8 +20,8 @@ jobs:
       - name: Build
         run: |
           npm ci
-          npm run build
           composer install --no-dev --prefer-dist --no-progress --no-suggest
+          npm run build
       - name: Add SSH Key
         run: |
           mkdir $HOME/.ssh

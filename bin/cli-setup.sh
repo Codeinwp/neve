@@ -10,7 +10,6 @@ wp --allow-root core update-db
 wp --allow-root option update admin_email_lifespan 1763469022
 #Setup Environment
 
-wp --allow-root theme is-installed neve && wp --allow-root theme update neve ||  wp --allow-root theme install neve
 wp --allow-root plugin is-installed wordpress-importer && wp --allow-root plugin update wordpress-importer ||  wp --allow-root plugin install wordpress-importer
 wp --allow-root plugin is-installed amp && wp --allow-root plugin update amp ||  wp --allow-root plugin install amp
 wp --allow-root plugin activate --all
