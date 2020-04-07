@@ -4,26 +4,27 @@
   margin-left: 14px;
 
   .customize-control-title {
-    margin: 0 0 10px;
+	margin: 0 0 10px;
   }
 
   .components-button-group {
-    display: flex;
-    border: none;
+	display: flex;
+	border: none;
   }
 
   button {
-    height: auto;
-    padding: 3px 4px !important;
+	height: auto;
+	box-shadow: none !important;
+	padding: 3px 4px !important;
 
-    svg {
-      fill: $icon-fill !important;
-      height: 15px;
-      width: 16px;
-    }
+	svg {
+	  fill: $icon-fill !important;
+	  height: 15px;
+	  width: 16px;
+	}
 
-    &.active-device svg {
-      fill: $accent-color !important;
-    }
+	&.active-device svg {
+	  fill: $accent-color !important;
+	}
   }
 }
