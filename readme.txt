@@ -19,6 +19,14 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
 
+##### [Version 2.6.6](https://github.com/Codeinwp/neve/compare/v2.6.5...v2.6.6) (2020-04-07)
+
+- [Fix] Background color for mobile menu
+- [Fix] Last Menu Search icon in AMP
+
+
+
+
 ##### [Version 2.6.5](https://github.com/Codeinwp/neve/compare/v2.6.4...v2.6.5) (2020-04-06)
 
 - [Fix] Infinite scroll with masonry scrolling to the top of page
