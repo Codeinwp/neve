@@ -1,16 +1,38 @@
 const {Button} = wp.components;
 const {__} = wp.i18n;
+const {compose} = wp.compose;
+const {withSelect, withDispatch} = wp.data;
 
-const StarterSiteCard = ({slug, data, upsell}) => {
+const StarterSiteCard = ({data, upsell, setSite, setPreview}) => {
+
 	return (
 		<div className="card starter-site-card">
 			<div className="top">
-				<div className="fav">
+				{/*<div className="fav">
 					<Button icon="star-filled"/>
-				</div>
+				</div>*/}
 				<div className="actions">
-					<Button className="preview">{__('Preview', 'neve')}</Button>
-					<Button className="import">{__('Import', 'neve')}</Button>
+					<Button
+						className="preview"
+						onClick={(e) => {
+							e.preventDefault();
+							setSite(data);
+							setPreview(true);
+						}}
+					>
+						{__('Preview', 'neve')}
+					</Button>
+					{! upsell &&
+					<Button
+						className="import"
+						onClick={(e) => {
+							e.preventDefault();
+							setSite(data);
+						}}
+					>
+						{__('Import', 'neve')}
+					</Button>
+					}
 				</div>
 				{data.screenshot &&
 				<div className="image">
@@ -25,4 +47,12 @@ const StarterSiteCard = ({slug, data, upsell}) => {
 		</div>
 	);
 };
-export default StarterSiteCard;
+
+export default withDispatch((dispatch) => {
+	const {setCurrentSite, setPreviewStatus} = dispatch('neve-onboarding');
+	return {
+		setSite: (data) => setCurrentSite(data),
+		setPreview: (status) => setPreviewStatus(status)
+	};
+})
+(StarterSiteCard);

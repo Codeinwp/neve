@@ -3,9 +3,10 @@ import OnClickOutside from '../Utils/OnClickOutside';
 const {__} = wp.i18n;
 const {useState} = wp.element;
 const {Button, Dashicon} = wp.components;
+const {withDispatch, withSelect} = wp.data;
+const {compose} = wp.compose;
 
-
-const EditorSelector = ({onChange, onSearch, selected}) => {
+const EditorSelector = ({onSearch, editor, setCurrentEditor}) => {
 	const map = {
 		'elementor': {
 			icon: 'elementor.png',
@@ -48,22 +49,22 @@ const EditorSelector = ({onChange, onSearch, selected}) => {
 						className="select">
 						<img
 							className='editor-icon'
-							src={neveDash.assets + 'editor-icons/' + map[selected].icon}
+							src={neveDash.assets + 'editor-icons/' + map[editor].icon}
 							alt={__('Builder Logo', 'neve')}/>
-						<span>{map[selected].niceName}</span>
+						<span>{map[editor].niceName}</span>
 						<Dashicon size={14} icon={open ? 'arrow-up-alt2' : 'arrow-down-alt2'}/>
 					</Button>
 					{open && <div className="options">
 						<ul>
 							{Object.keys(map).map((key) => {
-								if (key === selected) {
+								if (key === editor) {
 									return null;
 								}
 								return (
 									<li>
 										<a href="#" onClick={(e) => {
 											e.preventDefault();
-											onChange(key);
+											setCurrentEditor(key);
 											setOpen(false);
 										}}>
 											<img
@@ -92,4 +93,17 @@ const EditorSelector = ({onChange, onSearch, selected}) => {
 	);
 };
 
-export default EditorSelector;
+export default compose(
+	withSelect((select) => {
+		const {getCurrentEditor} = select('neve-onboarding');
+		return {
+			editor: getCurrentEditor()
+		};
+	}),
+	withDispatch((dispatch) => {
+		const {setCurrentEditor} = dispatch('neve-onboarding');
+		return {
+			setCurrentEditor: (editor) => setCurrentEditor(editor)
+		};
+	})
+)(EditorSelector);

@@ -16,7 +16,9 @@
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-node": "^11.0.0",
     "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1"
+    "eslint-plugin-standard": "^4.0.1",
+    "fuse.js": "^5.1.0",
+    "react-visibility-sensor": "^5.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
