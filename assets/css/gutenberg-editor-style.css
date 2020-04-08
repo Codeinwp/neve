@@ -235,19 +235,6 @@
   font-size: .85em;
 }
 
-#editor .editor-styles-wrapper .block-editor-writing-flow {
-  margin: 0 auto;
-  width: 100%;
-}
-
-#editor .editor-styles-wrapper .block-editor-writing-flow .wp-block {
-  max-width: 100%;
-}
-
-#editor .block-editor-block-preview__container .wp-block {
-  text-align: center;
-}
-
 @media (min-width: 769px) {
   #editor .editor-styles-wrapper {
     font-size: 16px;

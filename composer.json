@@ -17,7 +17,8 @@
 	"require": {
 		"codeinwp/ti-about-page": "master",
 		"codeinwp/themeisle-sdk": "^3.0",
-		"codeinwp/ti-onboarding": "^1.1"
+		"codeinwp/ti-onboarding": "^1.1",
+	    "ext-json": "*"
 	},
 	"autoload": {
 		"psr-4": {

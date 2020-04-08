@@ -108,7 +108,7 @@ class Main {
 	 * @access  public
 	 */
 	public function init() {
-		add_filter( 'neve_style_output_neve-generated-style', array( $this, 'append_css_style' ) );
+		add_filter( 'neve_dynamic_style_output', array( $this, 'append_css_style' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_utils_scripts' ) );
 	}
 

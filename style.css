@@ -713,6 +713,7 @@ blockquote.wp-block-quote.is-style-large cite {
 }
 
 .caret-wrap {
+  border-color: transparent;
   margin-left: auto;
 }
 

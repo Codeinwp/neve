@@ -67,8 +67,7 @@ class Core_Loader {
 				'Views\Pluggable\Masonry',
 				'Views\Pluggable\Metabox_Settings',
 
-				'Views\Inline\Front_End_Style_Manager',
-				'Views\Inline\Gutenberg_Style_Manager',
+				'Core\Dynamic_Css',
 
 				'Compatibility\Generic',
 				'Compatibility\WooCommerce',
