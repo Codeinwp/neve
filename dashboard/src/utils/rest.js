@@ -1,14 +1,5 @@
 const {__} = wp.i18n;
 
-function isValid(option, optionsArray) {
-	if ('nv_pro_typekit_id' === option) {
-		if (! optionsArray['neve_pro_typekit_data']) {
-			return {message: __('Typekit Project ID is invalid', 'neve'), success: false};
-		}
-	}
-	return {success: true};
-}
-
 export const changeOption = (option, value, module = false) => {
 	option = 'nv_pro_' + option + (module ? '_status' : '');
 	const model = new wp.api.models.Settings({
@@ -50,4 +41,13 @@ const requestData = async (route, simple = false, data = {}, method = 'POST') =>
 	return await fetch(route, options).then((response) => {
 		return simple ? response : response.json();
 	});
+};
+
+const isValid = (option, optionsArray) => {
+	if ('nv_pro_typekit_id' === option) {
+		if (! optionsArray['neve_pro_typekit_data']) {
+			return {message: __('Typekit Project ID is invalid', 'neve'), success: false};
+		}
+	}
+	return {success: true};
 };

@@ -4,6 +4,7 @@ const initialState = {
 	upsells: null,
 	editor: 'elementor',
 	previewStatus: false,
+	importModalStatus: false,
 	currentSite: null
 };
 export default (state = initialState, action) => {
@@ -37,6 +38,12 @@ export default (state = initialState, action) => {
 			return {
 				...state,
 				previewStatus
+			};
+	case 'SET_IMPORT_MODAL_STATUS':
+			const {importModalStatus} = action.payload;
+			return {
+				...state,
+				importModalStatus
 			};
 	}
 	return state;

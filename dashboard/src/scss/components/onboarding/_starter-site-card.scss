@@ -52,8 +52,16 @@
 	  line-height: normal;
 	  height: auto;
 	  padding: 8px 15px;
+	  transition: all .3s ease;
+	  &:hover {
+		box-shadow: none;
+		background-color: darken($blue, 10);
+	  }
 	  &.preview {
 		background-color: $light-blue;
+		&:hover {
+		  background-color: darken($light-blue, 10);
+		}
 	  }
 	  &:last-child {
 		margin-left: 10px;

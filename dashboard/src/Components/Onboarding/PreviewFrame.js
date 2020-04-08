@@ -3,7 +3,7 @@ const {compose} = wp.compose;
 const {Button, Dashicon} = wp.components;
 const {__} = wp.i18n;
 
-const PreviewFrame = ({next, prev, siteData, setSite, setPreview}) => {
+const PreviewFrame = ({next, prev, siteData, setSite, setPreview, setModal}) => {
 	return (
 		<div className="ob-preview">
 			<div className="preview">
@@ -24,7 +24,7 @@ const PreviewFrame = ({next, prev, siteData, setSite, setPreview}) => {
 						label={__('Close', 'neve')}
 						icon="no"/>
 
-						{prev && <Button
+					{prev && <Button
 						onClick={(e) => {
 							e.preventDefault();
 							setSite(prev);
@@ -45,11 +45,11 @@ const PreviewFrame = ({next, prev, siteData, setSite, setPreview}) => {
 					/>}
 				</div>
 				<div className="actions">
-					{siteData.in_pro ?
+					{siteData['in_pro'] ?
 						<Button
 							className="upgrade"
 							isLink
-							href={siteData.outbound_link}
+							href={siteData['outbound_link']}
 						>
 							{__('Upgrade', 'neve')}
 						</Button> :
@@ -58,7 +58,7 @@ const PreviewFrame = ({next, prev, siteData, setSite, setPreview}) => {
 							isPrimary
 							onClick={(e) => {
 								e.preventDefault();
-								console.log('Open Modal');
+								setModal(true);
 							}}
 						>
 							{__('Import', 'neve')}
@@ -79,10 +79,11 @@ export default compose(
 		};
 	}),
 	withDispatch(dispatch => {
-		const {setCurrentSite, setPreviewStatus} = dispatch('neve-onboarding');
+		const {setCurrentSite, setPreviewStatus, setImportModalStatus} = dispatch('neve-onboarding');
 		return {
 			setSite: (data) => setCurrentSite(data),
-			setPreview: (status) => setPreviewStatus(status)
+			setPreview: (status) => setPreviewStatus(status),
+			setModal: (status) => setImportModalStatus(status)
 		};
 	})
 )(PreviewFrame);

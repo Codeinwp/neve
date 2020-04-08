@@ -1,6 +1,7 @@
 import EditorSelector from './EditorSelector';
 import StarterSiteCard from './StarterSiteCard';
 import PreviewFrame from './PreviewFrame';
+import ImportModal from './ImportModal';
 import VizSensor from 'react-visibility-sensor';
 import Fuse from 'fuse.js';
 
@@ -8,11 +9,11 @@ const {useState, Fragment} = wp.element;
 const {__} = wp.i18n;
 const {withSelect} = wp.data;
 
-const Onboarding = ({sites, upsells, editor, previewOpen, currentSiteData}) => {
+const Onboarding = ({sites, upsells, editor, previewOpen, currentSiteData, importModal}) => {
 	const [ searchQuery, setSearchQuery ] = useState('');
 	const [ maxShown, setMaxShown ] = useState(9);
 
-	function filterSites(sites) {
+	const filterSites = (sites) => {
 		Object.keys(sites).map((slug) => {
 			sites[slug].slug = slug;
 		});
@@ -29,36 +30,34 @@ const Onboarding = ({sites, upsells, editor, previewOpen, currentSiteData}) => {
 		});
 		const search = fuse.search(searchQuery);
 		return search.map(item => item.item);
-	}
+	};
 
-	function getAllSites() {
+	const getAllSites = () => {
 		const sitesData = sites && sites[editor] ? filterSites(sites[editor]) : [];
 		const upsellsData = upsells && upsells[editor] ? filterSites(upsells[editor]) : [];
 		return [ ...sitesData, ...upsellsData ];
-	}
+	};
 
-	function renderSites() {
+	const renderSites = () => {
 		const allData = getAllSites();
 
 		return allData.slice(0, maxShown).map(site => {
 			return <StarterSiteCard upsell={site['in_pro']} data={site}/>;
 		});
-	}
+	};
 
-	function getSiteNav(prev = false) {
+	const getSiteNav = (prev = false) => {
 		if (null === currentSiteData) {
 			return null;
 		}
 		const allSites = getAllSites();
 		const position = allSites.indexOf(currentSiteData);
 
-		console.log(position);
-
 		if (-1 === position) {
 			return null;
 		}
 
-		if ( 1 === allSites.length  ) {
+		if (1 === allSites.length) {
 			return null;
 		}
 
@@ -71,7 +70,7 @@ const Onboarding = ({sites, upsells, editor, previewOpen, currentSiteData}) => {
 		}
 
 		return allSites[prev ? position - 1 : position + 1];
-	}
+	};
 
 	return (
 		<Fragment>
@@ -99,6 +98,7 @@ const Onboarding = ({sites, upsells, editor, previewOpen, currentSiteData}) => {
 				</div>
 			</div>
 			{(previewOpen && currentSiteData) && <PreviewFrame next={getSiteNav()} prev={getSiteNav(true)}/>}
+			{(importModal && currentSiteData) && <ImportModal/>}
 		</Fragment>
 	);
 };
@@ -110,13 +110,15 @@ export default withSelect((select) => {
 		getUpsells,
 		getCurrentEditor,
 		getPreviewStatus,
-		getCurrentSite
+		getCurrentSite,
+		getImportModalStatus
 	} = select('neve-onboarding');
 	return {
 		sites: getSites(),
 		upsells: getUpsells(),
 		editor: getCurrentEditor(),
 		previewOpen: getPreviewStatus(),
-		currentSiteData: getCurrentSite()
+		currentSiteData: getCurrentSite(),
+		importModal: getImportModalStatus()
 	};
 })(Onboarding);

@@ -25,7 +25,7 @@ const ModuleCard = ({slug, setToast, changeModuleStatus, getModuleStatus, tier})
 	} = neveDash.modules[slug];
 	const {upgradeLinks} = neveDash;
 
-	function renderOptionsAccordions() {
+	const renderOptionsAccordions = () => {
 		return options.map((group) => {
 			const {label, options} = group;
 			return (
@@ -55,7 +55,7 @@ const ModuleCard = ({slug, setToast, changeModuleStatus, getModuleStatus, tier})
 				</Accordion>
 			);
 		});
-	}
+	};
 
 	return (
 		<div className="card module-card">

@@ -2,11 +2,12 @@ const {useRef, useEffect} = wp.element;
 
 const useOutsideClick = (ref, callback) => {
 	useEffect(() => {
-		function handleClickOutside(event) {
+		const handleClickOutside = (event) => {
 			if (ref.current && ! ref.current.contains(event.target)) {
 				callback();
 			}
-		}
+		};
+
 		document.addEventListener('mousedown', handleClickOutside);
 		return () => {
 			document.removeEventListener('mousedown', handleClickOutside);

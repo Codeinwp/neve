@@ -33,5 +33,16 @@ export default {
 			type: 'SET_PREVIEW_STATUS',
 			payload: {previewStatus}
 		};
+	},
+	setImportModalStatus(importModalStatus) {
+		if (importModalStatus) {
+			document.body.classList.add('ob-overflow-off');
+		} else {
+			document.body.classList.remove('ob-overflow-off');
+		}
+		return {
+			type: 'SET_IMPORT_MODAL_STATUS',
+			payload: {importModalStatus}
+		};
 	}
 };

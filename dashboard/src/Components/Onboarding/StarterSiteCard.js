@@ -1,9 +1,8 @@
 const {Button} = wp.components;
 const {__} = wp.i18n;
-const {compose} = wp.compose;
-const {withSelect, withDispatch} = wp.data;
+const {withDispatch} = wp.data;
 
-const StarterSiteCard = ({data, upsell, setSite, setPreview}) => {
+const StarterSiteCard = ({data, upsell, setSite, setPreview, setModal}) => {
 
 	return (
 		<div className="card starter-site-card">
@@ -28,6 +27,7 @@ const StarterSiteCard = ({data, upsell, setSite, setPreview}) => {
 						onClick={(e) => {
 							e.preventDefault();
 							setSite(data);
+							setModal(true);
 						}}
 					>
 						{__('Import', 'neve')}
@@ -49,10 +49,11 @@ const StarterSiteCard = ({data, upsell, setSite, setPreview}) => {
 };
 
 export default withDispatch((dispatch) => {
-	const {setCurrentSite, setPreviewStatus} = dispatch('neve-onboarding');
+	const {setCurrentSite, setPreviewStatus, setImportModalStatus} = dispatch('neve-onboarding');
 	return {
 		setSite: (data) => setCurrentSite(data),
-		setPreview: (status) => setPreviewStatus(status)
+		setPreview: (status) => setPreviewStatus(status),
+		setModal: (status) => setImportModalStatus(status)
 	};
 })
 (StarterSiteCard);
