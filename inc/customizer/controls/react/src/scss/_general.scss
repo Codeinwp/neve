@@ -1,0 +1,106 @@
+.neve-control-header {
+  margin-bottom: 7px;
+}
+
+.neve-white-background-control {
+  .customize-control-description {
+    margin-bottom: 0 !important;
+    margin-top: 10px !important;
+  }
+  input[type=number] {
+    padding-right: 0;
+  }
+  button.reset {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    justify-content: center !important;
+    flex-grow: 0;
+    outline: 0;
+    border-radius: 0;
+	width: 30px;
+    height: 30px;
+    padding: 5px 0 5px 5px;
+    &:hover {
+      box-shadow: none !important;
+      svg {
+        fill: $accent-color;
+      }
+    }
+    svg {
+      margin: 0 !important;
+      width: 17px;
+      fill: $icon-fill;
+    }
+  }
+}
+
+
+@-moz-keyframes neve-spin {
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes neve-spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes neve-spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+
+#sub-accordion-panel-hfg_header #accordion-section-neve_header_presets {
+  display: list-item !important;
+}
+
+.neve-white-background-control {
+  border: 1px solid #ccc;
+  padding: 10px;
+  background: #fff;
+}
+
+
+
+.neve-control-header {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  .customize-control-title {
+    margin: 0;
+  }
+}
+
+
+.neve-radio-icons:not(:last-child), .neve-font-family-control:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.neve-number-control-wrap {
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+}
+
+.neve-toggle-control {
+  > .components-base-control__field, label {
+    margin-bottom: 0 !important;
+  }
+}
+
+
+.components-icon-button, .components-button {
+  .svg-text {
+    fill: #fff;
+  }
+
+  &.active .svg-text {
+    fill: $accent-color;
+  }
+}

@@ -37,8 +37,6 @@ class Main extends Base_Customizer {
 		$this->register_type( 'Neve\Customizer\Controls\Responsive_Number', 'control' );
 		$this->register_type( 'Neve\Customizer\Controls\Tabs', 'control' );
 		$this->register_type( 'Neve\Customizer\Controls\Heading', 'control' );
-		$this->register_type( 'Neve\Customizer\Controls\Multi_Select', 'control' );
-		$this->register_type( 'Neve\Customizer\Controls\Reactive_Control', 'control' );
 		$this->register_type( 'Neve\Customizer\Controls\Checkbox', 'control' );
 		$this->register_type( 'Neve\Customizer\Controls\Upsell_Control', 'control' );
 	}

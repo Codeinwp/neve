@@ -1,4 +1,5 @@
 /* jshint esversion: 6 */
+/* global wp */
 import PropTypes from 'prop-types'
 import FontFamilySelector from './FontFamilySelector.js'
 

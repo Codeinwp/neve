@@ -1,4 +1,38 @@
+##### [Version 2.6.4](https://github.com/Codeinwp/neve/compare/v2.6.3...v2.6.4) (2020-03-23)
 
+- [Fix] Disable admin notice
+- New Gutenberg Starter Sites
+
+##### [Version 2.6.3](https://github.com/Codeinwp/neve/compare/v2.6.2...v2.6.3) (2020-03-19)
+
+ * [Feat] Refactor customizer UI
+* [Fix] Compatibility issues with WP 5.4
+* [Fix] Compatibility with WooCommerce Product Addon plugin
+
+### v2.6.2 - 2020-02-26 
+ **Changes:** 
+ * [Feat] New text color option for the HTML and Copyright components
+* [Feat] New option to Disable Homepage Link in the Logo & Site Identity component
+* [Fix] Issues in AMP when using Google Tag Manager Codeless Injection
+* [Fix] Footer menu alignment
+* [Fix] Mega Menu not working in Edge
+* [Fix] Narrow editor with the new Gutenberg version
+* New Gutenberg and Beaver Builder Starter Sites
+ 
+ ### v2.6.1 - 2020-02-13 
+ **Changes:** 
+ * [Feat] New header presets
+* [Feat] New justify option for the button component
+* [Feat] New menu item spacing and menu item height options
+* [Fix] Style closing menu icon to match menu icon
+* [Fix] Primary and secondary menu alignments
+* [Fix] Made button a mergeable component in the header builder
+* [Fix] Changed the Leave a reply title to H3
+* [Fix] Search form width when merged with mergeable components
+* [Fix] Selective refresh on non-header builders
+* [Fix] Notice from array offset in responsive style method
+* [Fix] Page break pagination not appearing on the blog page
+ 
  ### v2.6.0 - 2020-02-03 
  **Changes:** 
  * [Feat] Adds quantity box back to the product pages 
@@ -494,4 +528,3 @@
  ### v1.0.0 - 2018-09-06 
  **Changes:** 
  * Lowercase file names.
- 

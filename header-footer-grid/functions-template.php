@@ -180,7 +180,7 @@ function media_from_id( $id, $size = 'full' ) {
  * @return bool
  */
 function media_from_url( $url, $size = 'full' ) {
-	$img_id = attachment_url_to_postid( $url );
+	$img_id = function_exists( 'wpcom_vip_attachment_url_to_postid' ) ? wpcom_vip_attachment_url_to_postid( $url ) : attachment_url_to_postid( $url ); //phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.attachment_url_to_postid_attachment_url_to_postid
 	if ( $img_id ) {
 		$image_attributes = wp_get_attachment_image_src( $img_id, $size );
 		if ( ! $image_attributes ) {
@@ -229,7 +229,7 @@ function media_from_array( $array = array(), $size = 'full' ) {
 	if ( ! $media_url ) {
 		$media_url = $value['url'];
 		if ( $media_url ) {
-			$img_id = attachment_url_to_postid( $media_url );
+			$img_id = function_exists( 'wpcom_vip_attachment_url_to_postid' ) ? wpcom_vip_attachment_url_to_postid( $media_url ) : attachment_url_to_postid( $media_url ); //phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.attachment_url_to_postid_attachment_url_to_postid
 			if ( $img_id ) {
 				return wp_get_attachment_url( $img_id );
 			}

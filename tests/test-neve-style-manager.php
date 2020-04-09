@@ -31,7 +31,7 @@ class TestNeveStyleManager extends WP_UnitTestCase {
 	 */
 	private function setUpThemeMods() {
 		set_theme_mod( 'neve_theme_color', '#bada55' );
-		$font_size_setup = json_encode(
+		$font_size_setup = wp_json_encode(
 			array(
 				'desktop' => '20',
 				'tablet'  => '14',

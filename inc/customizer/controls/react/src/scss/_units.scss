@@ -1,0 +1,32 @@
+.neve-units {
+  margin-left: auto;
+  display: flex;
+
+  button.components-button {
+    border: none;
+    color: $accent-color;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 10px;
+    background: none;
+    padding: 2px 3px;
+    line-height: 10px;
+    height: auto;
+    border-radius: 2px;
+    min-width: 20px;
+    margin-left: 3px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+
+    &.active {
+      background: $accent-color;
+      color: #fff;
+      &.alone {
+        background-color: $icon-fill;
+        text-shadow: none;
+      }
+    }
+  }
+}
+

@@ -8,7 +8,7 @@
  * @package Neve
  */
 
-define( 'NEVE_VERSION', '2.6.1' );
+define( 'NEVE_VERSION', '2.6.4' );
 define( 'NEVE_INC_DIR', trailingslashit( get_template_directory() ) . 'inc/' );
 define( 'NEVE_ASSETS_URL', trailingslashit( get_template_directory_uri() ) . 'assets/' );
 
@@ -65,7 +65,7 @@ if ( version_compare( PHP_VERSION, '5.3.29' ) <= 0 ) {
 	 */
 	add_filter( 'template_include', '__return_null', 99 );
 	switch_theme( WP_DEFAULT_THEME );
-	unset( $_GET['activated'] );
+	unset( $_GET['activated'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 	add_action( 'admin_notices', 'neve_php_support' );
 
 	return;

@@ -99,14 +99,13 @@ class Heading extends \WP_Customize_Control {
 	 */
 	protected function content_template() {
 		?>
-		<#
-		var expandButton = '';
-		if(data.accordion) {
-		expandButton = '<span class="accordion-expand-button"></span>';
-		} #>
-		<h4 class="neve-customizer-heading">{{{ data.label }}}{{{expandButton}}}</h4>
-		{{{data.style}}}
-		<?php
+		<h4 class="neve-customizer-heading">{{ data.label }}
+			<# if(data.accordion) { #>
+			<span class="accordion-expand-button"></span>
+			<# } #>
+		</h4>
+		{{{data.style}}} <?php // phpcs:ignore WordPressVIPMinimum.Security.Mustache.OutputNotation ?>
+		<?php 
 	}
 
 	/**

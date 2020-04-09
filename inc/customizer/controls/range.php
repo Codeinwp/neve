@@ -95,10 +95,10 @@ class Range extends \WP_Customize_Control {
 		?>
 		<# if ( data.label ) { #>
 		<span class="customize-control-title">
-				<span>{{{ data.label }}}</span>
+				<span>{{ data.label }}</span>
 				<# if ( data.description ) { #>
 					<i class="dashicons dashicons-editor-help" style="vertical-align: text-bottom;"
-							title="{{{ data.description }}}"></i>
+							title="{{ data.description }}"></i>
 				<# } #>
 		</span>
 		<# if( data.media_query === true && data.hide_responsive_switches === false ) { #>
@@ -165,7 +165,7 @@ class Range extends \WP_Customize_Control {
 			<# } #>
 			class="range-slider-value"
 			type="{{type}}"
-			title="{{{data.label}}}"
+			title="{{data.label}}"
 			min="{{attr.min}}"
 			max="{{attr.max}}"
 			step="{{data.step}}"
@@ -196,9 +196,9 @@ class Range extends \WP_Customize_Control {
 		<input
 				type="hidden"
 				class="range-collector"
-				title="{{{data.label}}}"
+				title="{{data.label}}"
 				value="{{data.value}}"
-				{{{data.link}}}
+				{{{data.link}}}  <?php // phpcs:ignore WordPressVIPMinimum.Security.Mustache.OutputNotation ?>
 		>
 		<?php
 	}

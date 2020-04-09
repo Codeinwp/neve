@@ -18,6 +18,49 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
+
+##### [Version 2.6.4](https://github.com/Codeinwp/neve/compare/v2.6.3...v2.6.4) (2020-03-23)
+
+- [Fix] Disable admin notice
+- New Gutenberg Starter Sites
+
+
+
+
+##### [Version 2.6.3](https://github.com/Codeinwp/neve/compare/v2.6.2...v2.6.3) (2020-03-19)
+
+* [Feat] Refactor customizer UI
+* [Fix] Compatibility issues with WP 5.4
+* [Fix] Compatibility with WooCommerce Product Addon plugin
+
+
+
+### 2.6.2 - 2020-02-26  ###
+
+* [Feat] New text color option for the HTML and Copyright components
+* [Feat] New option to Disable Homepage Link in the Logo & Site Identity component
+* [Fix] Issues in AMP when using Google Tag Manager Codeless Injection
+* [Fix] Footer menu alignment
+* [Fix] Mega Menu not working in Edge
+* [Fix] Narrow editor with the new Gutenberg version
+* New Gutenberg and Beaver Builder Starter Sites
+
+
+### 2.6.1 - 2020-02-13  ###
+
+* [Feat] New header presets
+* [Feat] New justify option for the button component
+* [Feat] New menu item spacing and menu item height options
+* [Fix] Style closing menu icon to match menu icon
+* [Fix] Primary and secondary menu alignments
+* [Fix] Made button a mergeable component in the header builder
+* [Fix] Changed the Leave a reply title to H3
+* [Fix] Search form width when merged with mergeable components
+* [Fix] Selective refresh on non-header builders
+* [Fix] Notice from array offset in responsive style method
+* [Fix] Page break pagination not appearing on the blog page
+
+
 ### 2.6.0 - 2020-02-03  ###
 
 * [Feat] Adds quantity box back to the product pages 
@@ -972,3 +1015,117 @@ Starter Sites screenshots resources:
 
 - Web Agency
 * https://www.pexels.com/photo/landscape-photography-of-mountains-covered-in-snow-691668/
+
+- Scuba Diving
+* https://stocksnap.io/photo/1S3SUI4VRD
+* https://mystock.themeisle.com/photo/group-of-fish-swimming-in-crystal-clear-water/
+
+- Wine Bar
+* https://stocksnap.io/photo/VXU7CK0T65
+
+- Mountain Biking Race
+* https://stocksnap.io/photo/U3Z5GNZUQR
+* https://stocksnap.io/photo/SNIKX3KGKD
+
+- Movie
+* https://mystock.themeisle.com/photo/illuminated-alley-of-a-luxurious-resort-at-sunset/
+* https://mystock.themeisle.com/photo/times-square/
+* https://mystock.themeisle.com/photo/bucharest-at-night/
+
+- Running Club
+* https://mystock.themeisle.com/photo/couple-jogging-together-along-the-river-coas/
+* https://stocksnap.io/photo/X1T5YTO2MB
+* https://stocksnap.io/photo/6X9WTXG24A
+* https://stocksnap.io/photo/X2Q7LBUF6U
+
+- Jewellery Shop
+* https://stocksnap.io/photo/BIR9EBVX6K
+* https://stocksnap.io/photo/VHIX76K7EH
+* https://stocksnap.io/photo/MK72WQXVOE
+* https://stocksnap.io/photo/TDFUZEW0FS
+
+- Car Service
+* https://mystock.themeisle.com/photo/engine/
+* https://mystock.themeisle.com/photo/old-mini-cooper/
+
+- Museum
+* https://mystock.themeisle.com/photo/front-view-of-magasin-du-nord-copenhagen/
+
+- Art Exhibition
+* https://stocksnap.io/photo/TIHPAM0QFG
+* https://stocksnap.io/photo/I0CYW7MWNV
+* https://mystock.themeisle.com/photo/beautiful-painting-of-a-sunny-day-on-a-building/
+* https://mystock.themeisle.com/photo/rain-painting/
+
+- Conference
+* https://mystock.themeisle.com/photo/cityscape-of-new-york-2/
+* https://mystock.themeisle.com/photo/performing-artist-with-cool-projections-behind/
+* https://mystock.themeisle.com/photo/young-boy-attending-a-concert/
+
+- University
+* https://mystock.themeisle.com/photo/bruges-cityview/
+* https://mystock.themeisle.com/photo/front-view-of-magasin-du-nord-copenhagen/
+* https://mystock.themeisle.com/photo/metropolitan-museum/
+
+- Interior Design
+* https://mystock.themeisle.com/photo/couch-with-two-green-pillows/
+* https://mystock.themeisle.com/photo/bathtub-in-the-center-of-the-room/
+
+- Electronics Store
+* https://stocksnap.io/photo/FMGBFTLI2D
+* https://stocksnap.io/photo/6EMBFCXU0J
+* https://stocksnap.io/photo/4CLVYHVZ2L
+* https://stocksnap.io/photo/UHGLILBFLV
+* https://stocksnap.io/photo/PFHFKXTMYD
+* https://stocksnap.io/photo/M6XC5T3JY3
+* https://stocksnap.io/photo/XW2IM1GSYM
+* https://mystock.themeisle.com/photo/headphones/
+* https://mystock.themeisle.com/photo/programming-laptop-2/
+* https://stocksnap.io/photo/V89HFPEFN3
+
+- Print Shop
+* https://stocksnap.io/photo/LYU668ZB5A
+* https://stocksnap.io/photo/VYSZEM4UWE
+
+- City Tour
+* https://mystock.themeisle.com/photo/amsterdam-at-night/
+* https://mystock.themeisle.com/photo/copenhagen-canal-at-sunset/
+* https://mystock.themeisle.com/photo/colorful-buildings-in-copenhagen/
+* https://mystock.themeisle.com/photo/small-boat-on-copenhagen-canals/
+
+- Insurance
+* https://stocksnap.io/photo/FCUDWWBKFV
+* https://stocksnap.io/photo/FZ0NEWUBW5
+
+- Personal Blog
+* https://mystock.themeisle.com/photo/picnic/
+* https://stocksnap.io/photo/MN5CHRVUUR
+* https://mystock.themeisle.com/photo/gift-shops/
+
+- Travel Blog
+* https://mystock.themeisle.com/photo/copenhagen-canal-at-sunset/
+* https://mystock.themeisle.com/photo/colorful-boats-at-the-fishing-harbor-of-riomaggiore-cinque-terre-2/
+* https://mystock.themeisle.com/photo/blue-boat-docked-on-an-island-in-maldives/
+
+- DJ
+* https://stocksnap.io/photo/XAOL9EYTV8
+* https://stocksnap.io/photo/NBP6GJVR0M
+* https://mystock.themeisle.com/photo/graffiti-2/
+* https://mystock.themeisle.com/photo/young-boy-attending-a-concert/
+* https://mystock.themeisle.com/photo/bucharest-at-night/
+
+- Tech Lab
+* https://mystock.themeisle.com/photo/programming-laptop/
+* https://stocksnap.io/photo/C5BOQXAZ4N
+* https://stocksnap.io/photo/UEDSDSAWBQ
+* https://stocksnap.io/photo/APSRDPFZSR
+
+- Equitation
+* https://stocksnap.io/photo/AX5GC9QZR5
+* https://stocksnap.io/photo/3EV0OZ7ZJO
+
+- Restaurant 2
+* https://mystock.themeisle.com/photo/remember-the-wedding-gift/
+* https://mystock.themeisle.com/photo/cheesy-hamburger-with-french-fries/
+* https://mystock.themeisle.com/photo/fancy-restaurant/
+* https://mystock.themeisle.com/photo/indian-vegetable-grill-sandwich/

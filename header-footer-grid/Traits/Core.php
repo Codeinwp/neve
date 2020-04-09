@@ -69,31 +69,6 @@ trait Core {
 		return $css;
 	}
 
-	/**
-	 * Utility method to merge two arrays while keeping overlapping keys.
-	 *
-	 * Order of passed arrays should not matter.
-	 *
-	 * @since   1.0.0
-	 * @access  protected
-	 * @param array $array1 First array.
-	 * @param array $array2 Second array.
-	 *
-	 * @return array
-	 */
-	protected function array_merge_recursive_distinct( array &$array1, array &$array2 ) {
-		$merged = $array1;
-
-		foreach ( $array2 as $key => &$value ) {
-			if ( is_array( $value ) && isset( $merged[ $key ] ) && is_array( $merged[ $key ] ) ) {
-				$merged[ $key ] = $this->array_merge_recursive_distinct( $merged[ $key ], $value );
-				continue;
-			}
-			$merged[ $key ] = $value;
-		}
-
-		return $merged;
-	}
 
 	/**
 	 * Sanitize regular json.
@@ -126,7 +101,7 @@ trait Core {
 		);
 
 		if ( ! is_array( $inputs ) || empty( $inputs ) ) {
-			return json_encode( $filtered );
+			return wp_json_encode( $filtered );
 		}
 
 		foreach ( $inputs as $key => $value ) {
@@ -135,7 +110,7 @@ trait Core {
 			}
 		}
 
-		return json_encode( $filtered );
+		return wp_json_encode( $filtered );
 	}
 
 	/**

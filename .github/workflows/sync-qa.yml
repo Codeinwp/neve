@@ -1,0 +1,41 @@
+name: Deploy to QA
+on:
+  push:
+    branches:
+      - development
+
+jobs:
+  deploy:
+    name: Deploy to QA server
+    runs-on: ubuntu-latest
+    if: github.repository == 'Codeinwp/neve'
+    env:
+      SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
+      SSH_KEY: ${{ secrets.SSH_KEY }}
+      SSH_PORT: ${{ secrets.SSH_PORT }}
+      SSH_HOST: ${{ secrets.SSH_HOST }}
+      QA_ROOT: ${{ secrets.QA_ROOT }}
+    steps:
+      - uses: actions/checkout@master
+      - name: Build
+        run: |
+          npm ci
+          composer install --no-dev --prefer-dist --no-progress --no-suggest
+          npm run build
+      - name: Add SSH Key
+        run: |
+          mkdir $HOME/.ssh
+          echo "$SSH_KEY" > "$HOME/.ssh/key"
+          chmod 600 "$HOME/.ssh/key"
+      - name: Deploy to QA
+        run: |
+          rsync -rc --exclude-from="$GITHUB_WORKSPACE/.distignore" -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no -p $SSH_PORT" "$GITHUB_WORKSPACE/" $SSH_USERNAME@$SSH_HOST:$QA_ROOT
+  empty-job:
+    # if no jobs run, github action considers it a test failure -- which seems like a bug
+    # this makes it so the top-level if statement for the job does not give status failure.
+    runs-on: ubuntu-latest
+    if: success()
+    steps:
+      - name: Meep
+        run: |
+          echo "Nothing to do. This is a fork."

@@ -156,6 +156,7 @@ class Button extends Abstract_Component {
 	 */
 	public function add_style( array $css_array = array() ) {
 		$style = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::STYLE_ID );
+
 		if ( ! empty( $style ) ) {
 			if ( ! empty( $style['background'] ) ) {
 				$css_array[ $this->default_selector ]['background-color'] = $style['background'];
@@ -170,9 +171,15 @@ class Button extends Abstract_Component {
 				$css_array[ $this->default_selector . ':hover' ]['color'] = $style['textHover'];
 			}
 			if ( isset( $style['borderRadius'] ) ) {
-				$css_array[ $this->default_selector ]['border-radius'] = $style['borderRadius'] . 'px';
+				if ( is_array( $style['borderRadius'] ) ) {
+					$css_array[ $this->default_selector ]['border-top-left-radius']     = $style['borderRadius']['top'] . 'px';
+					$css_array[ $this->default_selector ]['border-top-right-radius']    = $style['borderRadius']['right'] . 'px';
+					$css_array[ $this->default_selector ]['border-bottom-right-radius'] = $style['borderRadius']['bottom'] . 'px';
+					$css_array[ $this->default_selector ]['border-bottom-left-radius']  = $style['borderRadius']['left'] . 'px';
+				} else {
+					$css_array[ $this->default_selector ]['border-radius'] = $style['borderRadius'] . 'px';
+				}
 			}
-
 			if ( $style['type'] === 'outline' ) {
 				if ( ! empty( $style['text'] ) ) {
 					$css_array[ $this->default_selector ]['border-color'] = $style['text'];
@@ -181,7 +188,14 @@ class Button extends Abstract_Component {
 					$css_array[ $this->default_selector . ':hover' ]['border-color'] = $style['textHover'];
 				}
 				if ( ! empty( $style['borderWidth'] ) ) {
-					$css_array[ $this->default_selector ]['border'] = $style['borderWidth'] . 'px solid';
+					if ( is_array( $style['borderWidth'] ) ) {
+						$css_array[ $this->default_selector ]['border-style'] = 'solid';
+						foreach ( $style['borderWidth'] as $k => $v ) {
+							$css_array[ $this->default_selector ][ 'border-' . $k . '-width' ] = $v . 'px';
+						}
+					} else {
+						$css_array[ $this->default_selector ]['border'] = $style['borderWidth'] . 'px solid';
+					}
 				}
 			}
 		}

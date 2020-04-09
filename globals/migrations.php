@@ -19,8 +19,18 @@ function neve_get_button_appearance_default( $button = 'button' ) {
 		'backgroundHover' => '',
 		'text'            => '',
 		'textHover'       => '',
-		'borderRadius'    => 3,
-		'borderWidth'     => 1,
+		'borderRadius'    => [
+			'top'     => 3,
+			'right'   => 3,
+			'botttom' => 3,
+			'left'    => 3,
+		],
+		'borderWidth'     => [
+			'top'    => 1,
+			'right'  => 1,
+			'bottom' => 1,
+			'left'   => 1,
+		],
 	];
 	if ( $button === 'secondary_button' ) {
 		$defaults['type']         = 'outline';

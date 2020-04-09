@@ -71,12 +71,12 @@ class Gutenberg_Editor extends Base_Inline {
 		}
 		$this->add_style(
 			$style_setup,
-			'#editor .editor-styles-wrapper .editor-post-title__block .editor-post-title__input, 
-			#editor .editor-styles-wrapper h1, 
-			#editor .editor-styles-wrapper h2, 
-			#editor .editor-styles-wrapper h3, 
-			#editor .editor-styles-wrapper h4, 
-			#editor .editor-styles-wrapper h5, 
+			'#editor .editor-styles-wrapper .editor-post-title__block .editor-post-title__input,
+			#editor .editor-styles-wrapper h1,
+			#editor .editor-styles-wrapper h2,
+			#editor .editor-styles-wrapper h3,
+			#editor .editor-styles-wrapper h4,
+			#editor .editor-styles-wrapper h5,
 			#editor .editor-styles-wrapper h6'
 		);
 
@@ -88,7 +88,7 @@ class Gutenberg_Editor extends Base_Inline {
 			);
 			$this->body_family  = $body_font;
 		}
-		$this->add_style( $body_style_setup, '#editor .editor-styles-wrapper .editor-writing-flow' );
+		$this->add_style( $body_style_setup, '#editor .editor-styles-wrapper' );
 	}
 
 	/**
@@ -97,7 +97,7 @@ class Gutenberg_Editor extends Base_Inline {
 	private function add_container_style() {
 		$container_width = get_theme_mod(
 			'neve_container_width',
-			json_encode(
+			wp_json_encode(
 				[
 					'mobile'  => 748,
 					'tablet'  => 992,
@@ -115,7 +115,7 @@ class Gutenberg_Editor extends Base_Inline {
 		);
 		$this->add_responsive_style(
 			$settings,
-			'.editor-styles-wrapper'
+			'.block-editor-writing-flow'
 		);
 	}
 
@@ -147,20 +147,20 @@ class Gutenberg_Editor extends Base_Inline {
 		$color_settings = array(
 			'background_color'      => array(
 				'css_prop'  => 'background-color',
-				'selectors' => '#editor .editor-styles-wrapper .editor-writing-flow',
+				'selectors' => '#editor .editor-styles-wrapper',
 			),
 			'neve_link_color'       => array(
 				'css_prop'  => 'color',
-				'selectors' => '#editor .editor-styles-wrapper .editor-writing-flow a',
+				'selectors' => '#editor .editor-styles-wrapper a',
 			),
 			'neve_link_hover_color' => array(
 				'css_prop'  => 'color',
-				'selectors' => '#editor .editor-styles-wrapper .editor-writing-flow a:hover',
+				'selectors' => '#editor .editor-styles-wrapper a:hover',
 			),
 			'neve_text_color'       => array(
 				'css_prop'  => 'color',
 				'selectors' => '
-				#editor .editor-styles-wrapper .editor-writing-flow,
+				#editor .editor-styles-wrapper ,
 				#editor .editor-styles-wrapper .editor-post-title__block .editor-post-title__input,
 				#editor .editor-styles-wrapper h1,
 				#editor .editor-styles-wrapper h2,
@@ -182,16 +182,16 @@ class Gutenberg_Editor extends Base_Inline {
 	private function add_typeface_values() {
 		$controls = array(
 			'neve_typeface_general'    => '
-			#editor .editor-styles-wrapper .editor-writing-flow .wp-block,
+			#editor .editor-styles-wrapper  .wp-block,
 			.block-editor-block-list__block[data-type="core/paragraph"] p',
 			'neve_h1_typeface_general' => '
-			#editor .editor-styles-wrapper .editor-writing-flow h1, 
+			#editor .editor-styles-wrapper h1,
 			#editor .editor-styles-wrapper .editor-post-title__block .editor-post-title__input',
-			'neve_h2_typeface_general' => '#editor .editor-styles-wrapper .editor-writing-flow h2',
-			'neve_h3_typeface_general' => '#editor .editor-styles-wrapper .editor-writing-flow h3',
-			'neve_h4_typeface_general' => '#editor .editor-styles-wrapper .editor-writing-flow h4',
-			'neve_h5_typeface_general' => '#editor .editor-styles-wrapper .editor-writing-flow h5',
-			'neve_h6_typeface_general' => '#editor .editor-styles-wrapper .editor-writing-flow h6',
+			'neve_h2_typeface_general' => '#editor .editor-styles-wrapper h2',
+			'neve_h3_typeface_general' => '#editor .editor-styles-wrapper h3',
+			'neve_h4_typeface_general' => '#editor .editor-styles-wrapper h4',
+			'neve_h5_typeface_general' => '#editor .editor-styles-wrapper h5',
+			'neve_h6_typeface_general' => '#editor .editor-styles-wrapper h6',
 		);
 
 		array_walk( $controls, array( $this, 'run_font_settings' ) );
@@ -219,6 +219,7 @@ class Gutenberg_Editor extends Base_Inline {
 				[
 					'css_prop' => 'line-height',
 					'value'    => $value['lineHeight'],
+					'suffix'   => isset( $value['lineHeight']['suffix'] ) ? $value['lineHeight']['suffix'] : '',
 				],
 				[
 					'css_prop' => 'letter-spacing',

@@ -89,7 +89,7 @@ function neve_sanitize_range_value( $input ) {
 	$range_value['tablet']  = ! empty( $range_value['tablet'] ) || $range_value['tablet'] === '0' ? floatval( $range_value['tablet'] ) : '';
 	$range_value['mobile']  = ! empty( $range_value['mobile'] ) || $range_value['mobile'] === '0' ? floatval( $range_value['mobile'] ) : '';
 
-	return json_encode( $range_value );
+	return wp_json_encode( $range_value );
 }
 
 /**

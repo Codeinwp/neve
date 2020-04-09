@@ -32,6 +32,18 @@ abstract class Abstract_Builder implements Builder {
 	const SKIN_SETTING       = 'skin';
 	const BACKGROUND_SETTING = 'background';
 	/**
+	 * Layout config data.
+	 *
+	 * @var array Layout data.
+	 */
+	private $layout_data = [];
+	/**
+	 * Active components ids.
+	 *
+	 * @var array Layout data.
+	 */
+	private $active_components = [];
+	/**
 	 * Internal pointer for current device id.
 	 *
 	 * @var null|string Device id.
@@ -196,7 +208,7 @@ abstract class Abstract_Builder implements Builder {
 	/**
 	 * Method to set protected properties for class.
 	 *
-	 * @param string $key   The property key name.
+	 * @param string $key The property key name.
 	 * @param string $value The property value.
 	 *
 	 * @return bool
@@ -321,7 +333,7 @@ abstract class Abstract_Builder implements Builder {
 					'group'                 => $row_setting_id,
 					'tab'                   => SettingsManager::TAB_STYLE,
 					'section'               => $row_setting_id,
-					'label'                 => __( 'Row height (px)', 'neve' ),
+					'label'                 => __( 'Row height', 'neve' ),
 					'type'                  => '\Neve\Customizer\Controls\React\Responsive_Range',
 					'live_refresh_selector' => $row_class,
 					'live_refresh_css_prop' => array(
@@ -333,6 +345,12 @@ abstract class Abstract_Builder implements Builder {
 							'step'           => 1,
 							'min'            => 0,
 							'max'            => 700,
+							'defaultVal'     => [
+								'mobile'  => 0,
+								'tablet'  => 0,
+								'desktop' => 0,
+							],
+							'units'          => [ 'px' ],
 							'hideResponsive' => true,
 						],
 					],
@@ -364,6 +382,7 @@ abstract class Abstract_Builder implements Builder {
 				'label'                 => __( 'Row Background', 'neve' ),
 				'type'                  => 'neve_background_control',
 				'live_refresh_selector' => $row_id === 'sidebar' ? $row_class . ' .header-menu-sidebar-bg' : $row_class,
+				'live_refresh_css_prop' => [ 'partial' => $row_id === 'sidebar' ? 'hfg_header_layout_partial' : $row_setting_id . '_partial' ],
 				'options'               => [
 					'priority' => 100,
 				],
@@ -658,7 +677,54 @@ abstract class Abstract_Builder implements Builder {
 	 * @return array Builder data.
 	 */
 	public function get_layout_data() {
-		return wp_parse_args( json_decode( SettingsManager::get_instance()->get( 'hfg_' . $this->get_id() . '_layout' ), true ), array_fill_keys( array_keys( $this->devices ), array_fill_keys( array_keys( $this->get_rows() ), [] ) ) );
+		if ( ! empty( $this->layout_data ) ) {
+			return $this->layout_data;
+		}
+		$this->layout_data = wp_parse_args( json_decode( SettingsManager::get_instance()->get( 'hfg_' . $this->get_id() . '_layout' ), true ), array_fill_keys( array_keys( $this->devices ), array_fill_keys( array_keys( $this->get_rows() ), [] ) ) );
+
+		return $this->layout_data;
+	}
+
+	/**
+	 * See if row is populated.
+	 *
+	 * @param string $row_id Row id.
+	 *
+	 * @return bool Is row used?
+	 */
+	public function is_row_used( $row_id ) {
+		foreach ( $this->get_layout_data() as $devices ) {
+			if ( isset( $devices[ $row_id ] ) && ! empty( $devices[ $row_id ] ) ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * Check if component is used in builder.
+	 *
+	 * @param string $component_id Component id.
+	 *
+	 * @return bool Is used?
+	 */
+	public function is_component_active( $component_id ) {
+		if ( empty( $this->active_components ) ) {
+			$components = [];
+			foreach ( $this->get_layout_data() as $devices ) {
+				foreach ( $devices as $row ) {
+					if ( empty( $row ) ) {
+						continue;
+					}
+					$components = array_merge( $components, array_combine( wp_list_pluck( $row, 'id' ), array_fill( 0, count( $row ), true ) ) );
+
+				}
+			}
+			$this->active_components = $components;
+		}
+
+		return isset( $this->active_components[ $component_id ] );
 	}
 
 	/**
@@ -671,11 +737,12 @@ abstract class Abstract_Builder implements Builder {
 	 * @access  public
 	 */
 	public function add_style( array $css_array = array() ) {
-		$rows = $this->get_rows();
-		if ( ! empty( $rows ) ) {
-			foreach ( $rows as $row_index => $row_label ) {
-				$css_array = $this->add_row_style( $row_index, $css_array );
+
+		foreach ( $this->get_rows() as $row_index => $row_label ) {
+			if ( ! $this->is_row_used( $row_index ) ) {
+				continue;
 			}
+			$css_array = $this->add_row_style( $row_index, $css_array );
 		}
 
 		/**
@@ -684,8 +751,11 @@ abstract class Abstract_Builder implements Builder {
 		 * @var Abstract_Component $component
 		 */
 		foreach ( $this->builder_components as $component ) {
+			if ( ! $this->is_component_active( $component->get_id() ) ) {
+				continue;
+			}
 			$component_css_array = $component->add_style( $css_array );
-			$css_array           = $this->array_merge_recursive_distinct( $css_array, $component_css_array );
+			$css_array           = array_replace_recursive( $css_array, $component_css_array );
 		}
 
 		return $css_array;
@@ -788,7 +858,6 @@ abstract class Abstract_Builder implements Builder {
 		}
 
 		$css_array[ $selector . ',' . $selector . '.dark-mode,' . $selector . '.light-mode' ] = $css_setup;
-		$css_array = apply_filters( 'neve_row_style', $css_array, $this->control_id, $this->get_id(), $row_index, $selector );
 
 		return $css_array;
 	}
@@ -796,7 +865,7 @@ abstract class Abstract_Builder implements Builder {
 	/**
 	 * Render device markup.
 	 *
-	 * @param string $device_name    Device id.
+	 * @param string $device_name Device id.
 	 * @param array  $device_details Device meta.
 	 */
 	public function render_device( $device_name, $device_details ) {
@@ -813,7 +882,7 @@ abstract class Abstract_Builder implements Builder {
 	 * Render components in the row.
 	 *
 	 * @param null|string $device Device id.
-	 * @param null|array  $row    Row details.
+	 * @param null|array  $row Row details.
 	 */
 	public function render_components( $device = null, $row = null ) {
 

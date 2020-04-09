@@ -13,23 +13,24 @@
     <exclude-pattern>*.css</exclude-pattern>
     <arg name="extensions" value="php"/>
     <arg value="sp"/>
-    <rule ref="WPThemeReview">
-        <exclude name="WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound"/>
+
+    <rule ref="WordPress-VIP-Go">
+        <exclude name="WordPress.Security.NonceVerification.Recommended"/>
+        <exclude name="WordPress.WP.TimezoneChange.DeprecatedSniff"/>
     </rule>
 	<rule ref="WPThemeReview.Templates.ReservedFileNamePrefix.ReservedTemplatePrefixFound">
 		<exclude-pattern>header.php</exclude-pattern>
 	</rule>
     <rule ref="WordPress-Core">
+
         <exclude name="Squiz.Commenting.FileComment.SpacingAfterComment"/>
         <exclude name="Generic.Arrays.DisallowShortArraySyntax.Found"/>
         <exclude name="Squiz.Commenting.FunctionComment.MissingParamTag"/>
         <exclude name="Squiz.Commenting.InlineComment.InvalidEndChar"/>
         <exclude name="Squiz.Commenting.InlineComment.NotCapital"/>
-        <exclude name="Squiz.PHP.CommentedOutCode.Found"/>
-        <exclude name="Squiz.PHP.Eval.Discouraged"/>
-        <exclude name="Generic.PHP.DisallowShortOpenTag"/>
         <exclude name="WordPress.PHP.YodaConditions.NotYoda"/>
         <exclude name="WordPress.Files.FileName.InvalidClassFileName"/>
+        <exclude name="Squiz.PHP.CommentedOutCode.Found"/>
         <exclude name="WordPress.Files.FileName.NotHyphenatedLowercase"/>
     </rule>
 
@@ -39,5 +40,11 @@
     <rule ref="Squiz.Commenting.FunctionComment.ScalarTypeHintMissing">
         <severity>0</severity>
     </rule>
-
+	<rule ref="WordPress.Security.EscapeOutput">
+		<properties>
+			<property name="customAutoEscapedFunctions" type="array">
+				<element value="$_"/>
+			</property>
+		</properties>
+	</rule>
 </ruleset>

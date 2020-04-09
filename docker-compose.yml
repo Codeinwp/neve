@@ -24,7 +24,7 @@ services:
     volumes:
     - ~/${WP_CORE_STASH:-wp-core}:/var/www/html/
     - .:/var/www/html/wp-content/themes/neve/
-    - ../neve-pro-addon:/var/www/html/wp-content/plugins/neve-pro-addon
+    - ../../plugins/neve-pro-addon:/var/www/html/wp-content/plugins/neve-pro-addon
     restart: always
     environment:
       WORDPRESS_DB_NAME: wordpress

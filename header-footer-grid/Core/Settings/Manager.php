@@ -202,11 +202,6 @@ class Manager {
 				'sanitize_callback' => 'wp_filter_nohtml_kses',
 			)
 		);
-
-		// if ( $group === 'footer-one-widgets' ) {
-		// var_dump(  $group );
-		// var_dump(  $this->get_tabs_group( $group ) );
-		// }
 		$customize_manager->add_control(
 			new Tabs(
 				$customize_manager,
