@@ -10,7 +10,7 @@
 
 namespace Neve\Core;
 
-use TIOB\Main;
+use \TIOB\Main;
 
 /**
  * Class Admin
@@ -68,11 +68,12 @@ class Admin {
 	public function add_tracking_policy( $text ) {
 		return sprintf( '%s <a href="https://docs.themeisle.com/article/1122-neve-usage-tracking" target="_blank">%s</a>', $text, __( 'What do we track?', 'neve' ) );
 	}
+
 	/**
 	 * Add the about page.
 	 */
 	public function do_about_page() {
-		$theme_args       = wp_get_theme();
+		$theme_args = wp_get_theme();
 		$this->theme_name = apply_filters( 'ti_wl_theme_name', $theme_args->__get( 'Name' ) );
 		$this->theme_slug = $theme_args->__get( 'stylesheet' );
 
@@ -220,7 +221,7 @@ class Admin {
 		);
 
 		if ( ! defined( 'NEVE_PRO_VERSION' ) ) {
-			$config_array['custom_tabs']['free_pro'] = array(
+			$config_array[ 'custom_tabs' ][ 'free_pro' ] = array(
 				'title'           => __( 'Free vs PRO', 'neve' ),
 				'render_callback' => array( $this, 'free_pro_render' ),
 			);
@@ -260,11 +261,11 @@ class Admin {
 	public function toggle_logger() {
 		check_ajax_referer( (string) __CLASS__, 'nonce' );
 
-		if ( ! isset( $_POST['value'] ) || ! in_array( $_POST['value'], [ 'yes', 'no' ], true ) ) {
+		if ( ! isset( $_POST[ 'value' ] ) || ! in_array( $_POST[ 'value' ], [ 'yes', 'no' ], true ) ) {
 			wp_send_json( [ 'success' => false ] );
 		}
 
-		$value = sanitize_text_field( wp_unslash( $_POST['value'] ) );
+		$value = sanitize_text_field( wp_unslash( $_POST[ 'value' ] ) );
 
 		update_option( 'neve_logger_flag', $value );
 		wp_send_json( [ 'success' => true ] );
@@ -276,7 +277,7 @@ class Admin {
 	 * @return void
 	 */
 	public function render_logger_toggle() {
-		$strings       = [
+		$strings = [
 			'heading'      => __( 'Contributing', 'neve' ),
 			'content'      => __( 'Become a contributor by opting in to our anonymous data tracking. We guarantee no sensitive data is collected.', 'neve' ),
 			'toggle-label' => __( 'Allow anonymous tracking', 'neve' ),
@@ -287,59 +288,60 @@ class Admin {
 		$logger_status = get_option( 'neve_logger_flag', 'no' ) === 'yes';
 		?>
 		<div class="about-sidebar-item nv-anon">
-			<h4><?php echo esc_html( $strings['heading'] ); ?></h4>
-			<div class="inside"><p><?php echo esc_html( $strings['content'] ); ?></p>
+			<h4><?php echo esc_html( $strings[ 'heading' ] ); ?></h4>
+			<div class="inside"><p><?php echo esc_html( $strings[ 'content' ] ); ?></p>
 				<p>
 					<label for="neve-anonymous-data" class="nv-anon-label">
-						<span class="label"><?php echo esc_html( $strings['toggle-label'] ); ?></span>
+						<span class="label"><?php echo esc_html( $strings[ 'toggle-label' ] ); ?></span>
 						<span class="switch">
-							<input <?php echo( $logger_status === true ? ' checked ' : '' ); ?> id="neve-anonymous-data"
-									type="checkbox">
+							<input <?php echo($logger_status === true ? ' checked ' : ''); ?> id="neve-anonymous-data"
+																							  type="checkbox">
 							<span class="slider round"></span>
 						</span>
 					</label>
 				</p>
-				<a target="_blank" href="https://docs.themeisle.com/article/1122-neve-usage-tracking"><?php echo esc_html( $strings['link-text'] ); ?></a>
-				<p class="error-well"><?php echo esc_html( $strings['error-text'] ); ?></p>
-				<p class="success-well"><?php echo esc_html( $strings['success-text'] ); ?></p>
+				<a target="_blank"
+				   href="https://docs.themeisle.com/article/1122-neve-usage-tracking"><?php echo esc_html( $strings[ 'link-text' ] ); ?></a>
+				<p class="error-well"><?php echo esc_html( $strings[ 'error-text' ] ); ?></p>
+				<p class="success-well"><?php echo esc_html( $strings[ 'success-text' ] ); ?></p>
 			</div>
 		</div>
 		<script type="application/javascript">
-					( function($) {
-						$( '#neve-anonymous-data' ).on( 'change', function(event) {
-							var toggle = this;
-							var value = $( toggle ).prop( 'checked' ) ? 'yes' : 'no';
-							var data = {
-								'action': 'neve_toggle_logger',
-								'nonce': '<?php echo esc_attr( wp_create_nonce( (string) __CLASS__ ) ); ?>',
-								'value': value
-							};
-							var toastHandler = function(selector) {
-								$( selector ).fadeIn();
-								setTimeout( function() {
-									$( selector ).fadeOut();
-								}, 1500 );
-							};
-							$.ajax( {
-								type: 'POST',
-								url: ajaxurl,
-								data: data,
-								success(data) {
-									if ( !data.success ) {
-										toastHandler( '.nv-anon .error-well' );
-										$( toggle ).prop( 'checked', value === 'yes' ? 'no' : 'yes' );
-										return false;
-									}
-									toastHandler( '.nv-anon .success-well' );
-								},
-								error(err) {
-									toastHandler( '.nv-anon .error-well' );
-									$( toggle ).prop( 'checked', value === 'yes' ? 'no' : 'yes' );
-									console.error( err );
-								}
-							} );
-						} );
-					}( jQuery ) );
+			(function ($) {
+				$('#neve-anonymous-data').on('change', function (event) {
+					var toggle = this;
+					var value = $(toggle).prop('checked') ? 'yes' : 'no';
+					var data = {
+						'action': 'neve_toggle_logger',
+						'nonce': '<?php echo esc_attr( wp_create_nonce( (string) __CLASS__ ) ); ?>',
+						'value': value
+					};
+					var toastHandler = function (selector) {
+						$(selector).fadeIn();
+						setTimeout(function () {
+							$(selector).fadeOut();
+						}, 1500);
+					};
+					$.ajax({
+						type: 'POST',
+						url: ajaxurl,
+						data: data,
+						success(data) {
+							if (! data.success) {
+								toastHandler('.nv-anon .error-well');
+								$(toggle).prop('checked', value === 'yes' ? 'no' : 'yes');
+								return false;
+							}
+							toastHandler('.nv-anon .success-well');
+						},
+						error(err) {
+							toastHandler('.nv-anon .error-well');
+							$(toggle).prop('checked', value === 'yes' ? 'no' : 'yes');
+							console.error(err);
+						}
+					});
+				});
+			}(jQuery));
 		</script>
 		<style>
 			.nv-anon .error-well,
@@ -512,58 +514,58 @@ class Admin {
 				),
 			),
 		);
-		$output   = '';
+		$output = '';
 		if ( ! empty( $free_pro ) ) {
-			if ( ! empty( $free_pro['features_type'] ) ) {
+			if ( ! empty( $free_pro[ 'features_type' ] ) ) {
 				echo '<div class="feature-section">';
 				echo '<div id="free_pro" class="ti-about-page-tab-pane ti-about-page-fre-pro">';
-				switch ( $free_pro['features_type'] ) {
+				switch ( $free_pro[ 'features_type' ] ) {
 					case 'image':
-						if ( ! empty( $free_pro['features_img'] ) ) {
-							$output .= '<img src="' . $free_pro['features_img'] . '">';
-							if ( ! empty( $free_pro['pro_theme_link'] ) && ! empty( $free_pro['get_pro_theme_label'] ) ) {
-								$output .= '<a href="' . esc_url( $free_pro['pro_theme_link'] ) . '" target="_blank" class="button button-primary button-hero">' . wp_kses_post( $free_pro['get_pro_theme_label'] ) . '</a>';
+						if ( ! empty( $free_pro[ 'features_img' ] ) ) {
+							$output .= '<img src="' . $free_pro[ 'features_img' ] . '">';
+							if ( ! empty( $free_pro[ 'pro_theme_link' ] ) && ! empty( $free_pro[ 'get_pro_theme_label' ] ) ) {
+								$output .= '<a href="' . esc_url( $free_pro[ 'pro_theme_link' ] ) . '" target="_blank" class="button button-primary button-hero">' . wp_kses_post( $free_pro[ 'get_pro_theme_label' ] ) . '</a>';
 							}
 						}
 						break;
 					case 'table':
-						if ( ! empty( $free_pro['features'] ) ) {
+						if ( ! empty( $free_pro[ 'features' ] ) ) {
 							$output .= '<table class="free-pro-table">';
 							$output .= '<thead>';
 							$output .= '<tr class="ti-about-page-text-right">';
 							$output .= '<th></th>';
-							$output .= '<th>' . esc_html( $free_pro['free_theme_name'] ) . '</th>';
-							$output .= '<th>' . esc_html( $free_pro['pro_theme_name'] ) . '</th>';
+							$output .= '<th>' . esc_html( $free_pro[ 'free_theme_name' ] ) . '</th>';
+							$output .= '<th>' . esc_html( $free_pro[ 'pro_theme_name' ] ) . '</th>';
 							$output .= '</tr>';
 							$output .= '</thead>';
 							$output .= '<tbody>';
-							foreach ( $free_pro['features'] as $feature ) {
+							foreach ( $free_pro[ 'features' ] as $feature ) {
 								$output .= '<tr>';
-								if ( ! empty( $feature['title'] ) || ! empty( $feature['description'] ) ) {
+								if ( ! empty( $feature[ 'title' ] ) || ! empty( $feature[ 'description' ] ) ) {
 									$output .= '<td>';
 									$output .= $this->get_feature_title_and_description( $feature );
 									$output .= '</td>';
 								}
-								if ( ! empty( $feature['is_in_lite'] ) && ( $feature['is_in_lite'] == 'true' ) ) { // phpcs:ignore WordPress.PHP.StrictComparisons.LooseComparison
+								if ( ! empty( $feature[ 'is_in_lite' ] ) && ($feature[ 'is_in_lite' ] == 'true') ) { // phpcs:ignore WordPress.PHP.StrictComparisons.LooseComparison
 									$output .= '<td class="only-lite"><span class="dashicons-before dashicons-yes"></span></td>';
 								} else {
 									$output .= '<td class="only-pro"><span class="dashicons-before dashicons-no-alt"></span></td>';
 								}
-								if ( ! empty( $feature['is_in_pro'] ) && ( $feature['is_in_pro'] == 'true' ) ) {  // phpcs:ignore WordPress.PHP.StrictComparisons.LooseComparison
+								if ( ! empty( $feature[ 'is_in_pro' ] ) && ($feature[ 'is_in_pro' ] == 'true') ) {  // phpcs:ignore WordPress.PHP.StrictComparisons.LooseComparison
 									$output .= '<td class="only-lite"><span class="dashicons-before dashicons-yes"></span></td>';
 								} else {
 									$output .= '<td class="only-pro"><span class="dashicons-before dashicons-no-alt"></span></td>';
 								}
 								echo '</tr>';
 							}
-							if ( ! empty( $free_pro['pro_theme_link'] ) && ! empty( $free_pro['get_pro_theme_label'] ) ) {
+							if ( ! empty( $free_pro[ 'pro_theme_link' ] ) && ! empty( $free_pro[ 'get_pro_theme_label' ] ) ) {
 								$output .= '<tr>';
 								$output .= '<td>';
-								if ( ! empty( $free_pro['banner_link'] ) && ! empty( $free_pro['banner_src'] ) ) {
-									$output .= '<a target="_blank" href="' . $free_pro['banner_link'] . '"><img src="' . $free_pro['banner_src'] . '" class="free_vs_pro_banner"></a>';
+								if ( ! empty( $free_pro[ 'banner_link' ] ) && ! empty( $free_pro[ 'banner_src' ] ) ) {
+									$output .= '<a target="_blank" href="' . $free_pro[ 'banner_link' ] . '"><img src="' . $free_pro[ 'banner_src' ] . '" class="free_vs_pro_banner"></a>';
 								}
 								$output .= '</td>';
-								$output .= '<td colspan="2" class="ti-about-page-text-right"><a href="' . esc_url( $free_pro['pro_theme_link'] ) . '" target="_blank" class="button button-primary button-hero">' . wp_kses_post( $free_pro['get_pro_theme_label'] ) . '</a></td>';
+								$output .= '<td colspan="2" class="ti-about-page-text-right"><a href="' . esc_url( $free_pro[ 'pro_theme_link' ] ) . '" target="_blank" class="button button-primary button-hero">' . wp_kses_post( $free_pro[ 'get_pro_theme_label' ] ) . '</a></td>';
 								$output .= '</tr>';
 							}
 							$output .= '</tbody>';
@@ -585,11 +587,11 @@ class Admin {
 	 */
 	public function get_feature_title_and_description( $feature ) {
 		$output = '';
-		if ( ! empty( $feature['title'] ) ) {
-			$output .= '<h3>' . wp_kses_post( $feature['title'] ) . '</h3>';
+		if ( ! empty( $feature[ 'title' ] ) ) {
+			$output .= '<h3>' . wp_kses_post( $feature[ 'title' ] ) . '</h3>';
 		}
-		if ( ! empty( $feature['description'] ) ) {
-			$output .= '<p>' . wp_kses_post( $feature['description'] ) . '</p>';
+		if ( ! empty( $feature[ 'description' ] ) ) {
+			$output .= '<p>' . wp_kses_post( $feature[ 'description' ] ) . '</p>';
 		}
 
 		return $output;
@@ -601,8 +603,8 @@ class Admin {
 	 * @return string
 	 */
 	private function get_customizer_settings() {
-		$markup  = '<div class="customizer-links-container">';
-		$data    = array(
+		$markup = '<div class="customizer-links-container">';
+		$data = array(
 			array(
 				'icon' => 'dashicons-format-image',
 				'text' => __( 'Upload Logo', 'neve' ),
@@ -652,10 +654,10 @@ class Admin {
 			}
 			$markup .= '
 				<div class="ti-customizer-item ' . esc_attr( $class ) . '">
-				<i class="dashicons ' . esc_attr( $customizer_item['icon'] ) . '"></i><a href="' . esc_url( $customizer_item['link'] ) . '">' . wp_kses_post( $customizer_item['text'] ) . '</a>
+				<i class="dashicons ' . esc_attr( $customizer_item[ 'icon' ] ) . '"></i><a href="' . esc_url( $customizer_item[ 'link' ] ) . '">' . wp_kses_post( $customizer_item[ 'text' ] ) . '</a>
 				</div>
 			';
-			$counter ++;
+			$counter++;
 		}
 		$markup .= '</div>';
 
@@ -706,9 +708,9 @@ class Admin {
 	 */
 	public function welcome_notice_content() {
 		$theme_args = wp_get_theme();
-		$name       = apply_filters( 'ti_wl_theme_name', $theme_args->__get( 'Name' ) );
-		$template   = $theme_args->get( 'Template' );
-		$slug       = $theme_args->__get( 'stylesheet' );
+		$name = apply_filters( 'ti_wl_theme_name', $theme_args->__get( 'Name' ) );
+		$template = $theme_args->get( 'Template' );
+		$slug = $theme_args->__get( 'stylesheet' );
 		$theme_page = ! empty( $template ) ? $template . '-welcome' : $slug . '-welcome';
 
 		$notice_template = '
@@ -728,24 +730,24 @@ class Admin {
 			'<h2>%1$s</h2><p class="about-description">%2$s</p></hr>',
 			esc_html__( 'Congratulations!', 'neve' ),
 			sprintf(
-				/* translators: %s - theme name */
+			/* translators: %s - theme name */
 				esc_html__( '%s is now installed and ready to use. We\'ve assembled some links to get you started.', 'neve' ),
 				$name
 			)
 		);
 		$ob_btn = sprintf(
-			/* translators: 1 - onboarding url, 2 - button text */
+		/* translators: 1 - onboarding url, 2 - button text */
 			'<a href="%1$s" class="button button-primary button-hero install-now" >%2$s</a>',
 			esc_url( admin_url( 'themes.php?page=' . $theme_page . '&onboarding=yes#sites_library' ) ),
 			sprintf( apply_filters( 'ti_onboarding_neve_start_site_cta', esc_html__( 'Try one of our ready to use Starter Sites', 'neve' ) ) )
 		);
 		$ob_return_dashboard = sprintf(
-			/* translators: 1 - button text */
+		/* translators: 1 - button text */
 			'<a href="#" class=" ti-return-dashboard  button button-secondary button-hero install-now" ><span>%1$s</span></a>',
 			__( 'Return to your dashboard', 'neve' )
 		);
 		$options_page_btn = sprintf(
-			/* translators: 1 - options page url, 2 - button text */
+		/* translators: 1 - options page url, 2 - button text */
 			'<a href="%1$s" class="options-page-btn">%2$s</a>',
 			esc_url( admin_url( 'themes.php?page=' . $theme_page ) ),
 			esc_html__( 'or go to the theme settings', 'neve' )
@@ -872,9 +874,7 @@ class Admin {
 	 * Load site import module.
 	 */
 	public function load_site_import() {
-		if ( class_exists( '\TIOB\Main', false ) ) {
-			Main::instance();
-		}
+		Main::instance();
 	}
 
 	/**
@@ -886,7 +886,7 @@ class Admin {
 			return;
 		}
 
-		wp_enqueue_style( 'neve-gutenberg-style', NEVE_ASSETS_URL . 'css/gutenberg-editor-style' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), NEVE_VERSION );
+		wp_enqueue_style( 'neve-gutenberg-style', NEVE_ASSETS_URL . 'css/gutenberg-editor-style' . ((NEVE_DEBUG) ? '' : '.min') . '.css', array(), NEVE_VERSION );
 	}
 
 }

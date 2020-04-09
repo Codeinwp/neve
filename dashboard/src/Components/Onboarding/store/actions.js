@@ -44,5 +44,11 @@ export default {
 			type: 'SET_IMPORT_MODAL_STATUS',
 			payload: {importModalStatus}
 		};
+	},
+	setImporting(status) {
+		return {
+			type: 'SET_IMPORTING_STATUS',
+			payload: {status}
+		};
 	}
 };

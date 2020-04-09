@@ -4,5 +4,6 @@ export default {
 	getCurrentEditor: (state) => state.editor,
 	getCurrentSite: (state) => state.currentSite,
 	getPreviewStatus: (state) => state.previewStatus,
-	getImportModalStatus: (state) => state.importModalStatus
+	getImportModalStatus: (state) => state.importModalStatus,
+	getImportingStatus: (state) => state.importing
 };

@@ -81,8 +81,8 @@ $base-index: 100000;
 	padding: 10px;
 	border: 1px solid $info;
 	border-radius: 3px;
-	background-color: lighten($info, 25);
-
+	background-color: lighten($info, 27);
+	color: $black;
 	ol {
 	  padding: 0;
 	  margin: 20px 0 0 20px;
@@ -114,6 +114,8 @@ $base-index: 100000;
 	  display: flex;
 	  align-items: center;
 	  margin-bottom: 0;
+	  font-size: 15px;
+	  color: $black;
 
 	  &:not(:last-child) {
 		padding-bottom: 15px;
@@ -121,7 +123,7 @@ $base-index: 100000;
 	  }
 
 	  svg {
-		margin-right: 5px;
+		margin-right: 15px;
 		opacity: .5;
 
 		&.active {
@@ -147,7 +149,7 @@ $base-index: 100000;
 	align-items: center;
 	justify-content: flex-end;
 
-	button {
+	button, a {
 	  height: auto;
 	  padding: 5px 25px;
 	  &:last-child {

@@ -560,7 +560,7 @@ class Front_End {
 						'remote_url'       => 'https://s20206.pcdn.co/neve-bb-architecture/',
 						'title'            => 'Architecture',
 						'unsplash_gallery' => 'https://unsplash.com/collections/6802313/architecture/f59e19df059789d86d1066ea80130a87',
-						'screenshot'       => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/06/neve-caffe-new-ss.jpg',
+						'screenshot'       => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/screenshot-4.png',
 					),
 					'neve-beaver-fitness'            => array(
 						'url'              => 'https://demo.themeisle.com/neve-fitness-bb/',

@@ -5,7 +5,8 @@ const initialState = {
 	editor: 'elementor',
 	previewStatus: false,
 	importModalStatus: false,
-	currentSite: null
+	currentSite: null,
+	importing: false
 };
 export default (state = initialState, action) => {
 	switch (action.type) {
@@ -44,6 +45,12 @@ export default (state = initialState, action) => {
 			return {
 				...state,
 				importModalStatus
+			};
+			case 'SET_IMPORTING_STATUS':
+			const {status} = action.payload;
+			return {
+				...state,
+				importing: status
 			};
 	}
 	return state;

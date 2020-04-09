@@ -1,22 +1,27 @@
-import OnClickOutside from '../Utils/OnClickOutside';
-import classnames from 'classnames';
+/*global neveDash*/
 import {installPlugins, importContent, importMods, importWidgets} from '../../utils/site-import';
+import ImportStepper from './ImportStepper';
+import classnames from 'classnames';
 
 const {withSelect, withDispatch} = wp.data;
 const {compose} = wp.compose;
 const {Button, Dashicon, ToggleControl} = wp.components;
-const {useState, useEffect} = wp.element;
+const {useState, useEffect, Fragment} = wp.element;
 const {__} = wp.i18n;
 
-const ImportModal = ({setModal, setSite, editor, siteData}) => {
+const ImportModal = ({setModal, setSite, editor, siteData, importing, setImporting}) => {
 	const [ general, setGeneral ] = useState({
 		content: true,
 		customizer: true,
 		widgets: true
 	});
-
+	const [ pluginsProgress, setPluginsProgress ] = useState(false);
+	const [ contentProgress, setContentProgress ] = useState(false);
+	const [ customizerProgress, setCustomizerProgress ] = useState(false);
+	const [ widgetsProgress, setWidgetsProgress ] = useState(false);
 	const [ pluginOptions, setPluginOptions ] = useState({});
 	const [ frontPageID, setFrontPageID ] = useState(null);
+	const [ currentStep, setCurrentStep ] = useState(null);
 
 	useEffect(() => {
 		const mandatory = {...(siteData['mandatory_plugins'] || {})};
@@ -35,6 +40,7 @@ const ImportModal = ({setModal, setSite, editor, siteData}) => {
 			...mandatory
 		});
 	}, []);
+
 
 	const renderNote = () => {
 		return (
@@ -126,48 +132,23 @@ const ImportModal = ({setModal, setSite, editor, siteData}) => {
 		);
 	};
 
-	const allOptionsOff = Object.keys(general).every(k => false === general[k]);
-
-	const importDone = () => {
-		console.log('[D] Done.');
-	};
-
-	const runImportWidgets = () => {
-		if (! general.widgets) {
-			console.log('[S] Widgets.');
-			importDone();
-		}
-		console.log('[P] Widgets.');
-		importWidgets(siteData.widgets).then(response => {
-			if (! response.success) {
-
-				//Handle Error.
-				return false;
-			}
-			console.log('[D] Widgets.');
-			importDone();
-		});
-	};
-
-	const runImportCustomizer = () => {
-		if (! general.customizer) {
-			console.log('[S] Customizer.');
-			runImportWidgets();
+	const runImport = () => {
+		console.clear();
+		if (! pluginOptions) {
+			console.log('[S] Plugins.');
+			runImportContent();
 			return false;
 		}
-		console.log('[P] Customizer.');
-		importMods({
-			'source_url': siteData['demo_url'],
-			'theme_mods': siteData['theme_mods'],
-			'wp_options': siteData['wp_options']
-		}).then(response => {
+		setCurrentStep('plugins');
+		console.log('[P] Plugins.');
+		installPlugins(pluginOptions).then(response => {
 			if (! response.success) {
-
-				//Handle Error.
+				setPluginOptions('error');
 				return false;
 			}
-			console.log('[D] Customizer.');
-			runImportWidgets();
+			console.log('[D] Plugins.');
+			setPluginsProgress('done');
+			runImportContent();
 		});
 	};
 
@@ -177,6 +158,7 @@ const ImportModal = ({setModal, setSite, editor, siteData}) => {
 			runImportCustomizer();
 			return false;
 		}
+		setCurrentStep('content');
 		console.log('[P] Content.');
 		importContent({
 			contentFile: siteData['content_file'],
@@ -187,94 +169,164 @@ const ImportModal = ({setModal, setSite, editor, siteData}) => {
 			editor
 		}).then(response => {
 			if (! response.success) {
-
-				//Handle Error.
+				setContentProgress('error');
 				return false;
 			}
 			console.log('[D] Content.');
 			if (response['frontpage_id']) {
 				setFrontPageID(response['frontpage_id']);
 			}
+			setContentProgress('done');
 			runImportCustomizer();
 		});
 	};
 
-	const runImport = () => {
-		console.clear();
-		if (! pluginOptions) {
-			console.log('[S] Plugins.');
-			runImportContent();
+	const runImportCustomizer = () => {
+		if (! general.customizer) {
+			console.log('[S] Customizer.');
+			runImportWidgets();
 			return false;
 		}
-
-		console.log('[P] Plugins.');
-		installPlugins(pluginOptions).then(response => {
+		setCurrentStep('customizer');
+		console.log('[P] Customizer.');
+		importMods({
+			'source_url': siteData['demo_url'],
+			'theme_mods': siteData['theme_mods'],
+			'wp_options': siteData['wp_options']
+		}).then(response => {
 			if (! response.success) {
-
-				// Handle Error.
+				setCustomizerProgress('error');
 				return false;
 			}
-			console.log('[D] Plugins.');
-			runImportContent();
+			console.log('[D] Customizer.');
+			setCustomizerProgress('done');
+			runImportWidgets();
 		});
 	};
 
+	const runImportWidgets = () => {
+		if (! general.widgets) {
+			console.log('[S] Widgets.');
+			importDone();
+		}
+		setCurrentStep('widgets');
+		console.log('[P] Widgets.');
+		importWidgets(siteData.widgets).then(response => {
+			if (! response.success) {
+				setWidgetsProgress('error');
+				return false;
+			}
+			console.log('[D] Widgets.');
+			setWidgetsProgress('done');
+			importDone();
+		});
+	};
+
+	const importDone = () => {
+		console.log('[D] Done.');
+		setCurrentStep('done');
+		setImporting(false);
+	};
+
+	const allOptionsOff = Object.keys(general).every(k => false === general[k]);
+	const editLinkMap = {
+		'elementor': `${neveDash.onboarding.homeUrl}/wp-admin/post.php?post=${frontPageID}&action=elementor`,
+		'brizy': `${neveDash.onboarding.homeUrl}/?brizy-edit`,
+		'beaver builder': `${neveDash.onboarding.homeUrl}/?fl_builder`,
+		'thrive architect': `${neveDash.onboarding.homeUrl}/wp-admin/post.php?post=${frontPageID}&action=architect&tve=true`,
+		'divi builder': `${neveDash.onboarding.homeUrl}/?et_fb=1&PageSpeed=off`,
+		'gutenberg': `${neveDash.onboarding.homeUrl}/wp-admin/post.php?post=${frontPageID}&action=edit`
+	};
+
+	const closeModal = () => {
+		if (importing) {
+			return false;
+		} else {
+			setModal(false);
+			setSite(null);
+		}
+	};
+
+	const editLink = editLinkMap[editor];
+	console.log('importing:', importing);
 	return (
 		<div className="ob-import-modal-wrap">
-			<OnClickOutside action={() => {
-				setModal(false);
-				setSite(null);
-			}}>
-				<div className="ob-import-modal">
-					<div className="modal-header" style={{backgroundImage: `url(${siteData.screenshot})`}}>
-						<Button icon="no-alt" onClick={() => {
-							setModal(false);
-							setSite(null);
-						}}/>
-						<h2>{siteData.title}</h2>
-					</div>
-					<div className="modal-body">
-						{renderNote()}
-						<hr/>
-						{renderOptions()}
-						<hr/>
-						{renderPlugins()}
-					</div>
-					<div className="modal-footer">
-						<Button
-							isSecondary
-							onClick={() => {
-								setModal(false);
-								setSite(null);
-							}}>
-							{__('Close', 'neve')}
-						</Button>
-						<Button
-							isPrimary
-							disabled={allOptionsOff}
-							onClick={() => {
-								runImport();
-							}}>
-							{__('Import', 'neve')}
-						</Button>
-					</div>
+			<div className="ob-import-modal">
+				<div className="modal-header" style={{backgroundImage: `url(${siteData.screenshot})`}}>
+					<Button
+						disabled={importing}
+						icon="no-alt"
+						onClick={closeModal}/>
+					<h2>{siteData.title}</h2>
 				</div>
-			</OnClickOutside>
+				<div className="modal-body">
+					{! importing && 'done' !== currentStep ?
+						<Fragment>
+							{renderNote()}
+							<hr/>
+							{renderOptions()}
+							<hr/>
+							{renderPlugins()}
+						</Fragment> :
+						<Fragment>
+							<ImportStepper progress={{
+								plugins: pluginsProgress,
+								content: contentProgress,
+								customizer: customizerProgress,
+								widgets: widgetsProgress
+							}} currentStep={currentStep} willDo={general}/>
+						</Fragment>
+					}
+				</div>
+				{! importing &&
+				<div className="modal-footer">
+					{'done' !== currentStep ?
+						<Fragment>
+							<Button
+								isSecondary
+								onClick={closeModal}>
+								{__('Close', 'neve')}
+							</Button>
+							<Button
+								isPrimary
+								disabled={allOptionsOff}
+								onClick={() => {
+									setImporting(true);
+									runImport();
+								}}>
+								{__('Import', 'neve')}
+							</Button>
+						</Fragment> :
+						<Fragment>
+							<Button
+								isSecondary
+								href={neveDash.onboarding.homeUrl}
+							>{__('View Website', 'neve')}</Button>
+							<Button isPrimary href={editLink}>
+								{__('Add your own content', 'neve')}
+							</Button>
+						</Fragment>
+					}
+				</div>
+				}
+			</div>
 		</div>
 	);
 };
 
 export default compose(
 	withSelect((select) => {
-		const {getCurrentEditor, getCurrentSite} = select('neve-onboarding');
+		const {getCurrentEditor, getCurrentSite, getImportingStatus} = select('neve-onboarding');
 		return {
 			editor: getCurrentEditor(),
-			siteData: getCurrentSite()
+			siteData: getCurrentSite(),
+			importing: getImportingStatus()
 		};
 	}),
 	withDispatch((dispatch) => {
-		const {setImportModalStatus, setCurrentSite} = dispatch('neve-onboarding');
+		const {setImportModalStatus, setCurrentSite, setImporting} = dispatch('neve-onboarding');
 		return {
+			setImporting: (status) => setImporting(status),
 			setModal: (status) => setImportModalStatus(status),
 			setSite: (data) => setCurrentSite(data)
 		};
