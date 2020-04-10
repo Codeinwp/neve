@@ -68,6 +68,10 @@
 	  }
 	}
   }
+  .image {
+	height: 330px;
+	background-color: transparentize($dark-grey, .75);
+  }
   img {
 	width: 100%;
 	display:block;

@@ -1,7 +1,8 @@
 /*global neveDash*/
-import {installPlugins, importContent, importMods, importWidgets} from '../../utils/site-import';
+import {importContent, importMods, importWidgets, installPlugins} from '../../utils/site-import';
 import ImportStepper from './ImportStepper';
 import classnames from 'classnames';
+import OnClickOutside from '../Utils/OnClickOutside';
 
 const {withSelect, withDispatch} = wp.data;
 const {compose} = wp.compose;
@@ -9,7 +10,7 @@ const {Button, Dashicon, ToggleControl} = wp.components;
 const {useState, useEffect, Fragment} = wp.element;
 const {__} = wp.i18n;
 
-const ImportModal = ({setModal, setSite, editor, siteData, importing, setImporting}) => {
+const ImportModal = ({setModal, setSite, editor, siteData}) => {
 	const [ general, setGeneral ] = useState({
 		content: true,
 		customizer: true,
@@ -19,11 +20,11 @@ const ImportModal = ({setModal, setSite, editor, siteData, importing, setImporti
 	const [ contentProgress, setContentProgress ] = useState(false);
 	const [ customizerProgress, setCustomizerProgress ] = useState(false);
 	const [ widgetsProgress, setWidgetsProgress ] = useState(false);
-	const [ pluginOptions, setPluginOptions ] = useState({});
 	const [ frontPageID, setFrontPageID ] = useState(null);
 	const [ currentStep, setCurrentStep ] = useState(null);
+	const [ importing, setImporting ] = useState(false);
 
-	useEffect(() => {
+	function getPluginOptions() {
 		const mandatory = {...(siteData['mandatory_plugins'] || {})};
 		const optional = {...(siteData['recommended_plugins'] || {})};
 		const defaultOff = siteData['default_off_recommended_plugins'] || [];
@@ -35,12 +36,13 @@ const ImportModal = ({setModal, setSite, editor, siteData, importing, setImporti
 			optional[key] = ! defaultOff.includes(key);
 		});
 
-		setPluginOptions({
-			...optional,
-			...mandatory
-		});
-	}, []);
+		return {
+		...optional,
+		...mandatory
+		};
+	}
 
+	const [ pluginOptions, setPluginOptions ] = useState(getPluginOptions());
 
 	const renderNote = () => {
 		return (
@@ -107,6 +109,7 @@ const ImportModal = ({setModal, setSite, editor, siteData, importing, setImporti
 
 		return (
 			<div className="options plugins">
+
 				<h3>{__('Plugins', 'neve')}:</h3>
 				<ul>
 					{Object.keys(allPlugins).map((slug) => {
@@ -132,8 +135,9 @@ const ImportModal = ({setModal, setSite, editor, siteData, importing, setImporti
 		);
 	};
 
-	const runImport = () => {
+	function runImport() {
 		console.clear();
+		setImporting(true);
 		if (! pluginOptions) {
 			console.log('[S] Plugins.');
 			runImportContent();
@@ -150,9 +154,9 @@ const ImportModal = ({setModal, setSite, editor, siteData, importing, setImporti
 			setPluginsProgress('done');
 			runImportContent();
 		});
-	};
+	}
 
-	const runImportContent = () => {
+	function runImportContent() {
 		if (! general.content) {
 			console.log('[S] Content.');
 			runImportCustomizer();
@@ -179,9 +183,9 @@ const ImportModal = ({setModal, setSite, editor, siteData, importing, setImporti
 			setContentProgress('done');
 			runImportCustomizer();
 		});
-	};
+	}
 
-	const runImportCustomizer = () => {
+	function runImportCustomizer() {
 		if (! general.customizer) {
 			console.log('[S] Customizer.');
 			runImportWidgets();
@@ -202,9 +206,9 @@ const ImportModal = ({setModal, setSite, editor, siteData, importing, setImporti
 			setCustomizerProgress('done');
 			runImportWidgets();
 		});
-	};
+	}
 
-	const runImportWidgets = () => {
+	function runImportWidgets() {
 		if (! general.widgets) {
 			console.log('[S] Widgets.');
 			importDone();
@@ -220,13 +224,23 @@ const ImportModal = ({setModal, setSite, editor, siteData, importing, setImporti
 			setWidgetsProgress('done');
 			importDone();
 		});
-	};
+	}
 
-	const importDone = () => {
+	function importDone() {
 		console.log('[D] Done.');
 		setCurrentStep('done');
 		setImporting(false);
-	};
+	}
+
+	function closeModal() {
+		console.log(importing);
+		if (importing) {
+			return false;
+		} else {
+			setModal(false);
+			setSite(null);
+		}
+	}
 
 	const allOptionsOff = Object.keys(general).every(k => false === general[k]);
 	const editLinkMap = {
@@ -237,96 +251,96 @@ const ImportModal = ({setModal, setSite, editor, siteData, importing, setImporti
 		'divi builder': `${neveDash.onboarding.homeUrl}/?et_fb=1&PageSpeed=off`,
 		'gutenberg': `${neveDash.onboarding.homeUrl}/wp-admin/post.php?post=${frontPageID}&action=edit`
 	};
-
-	const closeModal = () => {
-		if (importing) {
-			return false;
-		} else {
-			setModal(false);
-			setSite(null);
-		}
-	};
-
 	const editLink = editLinkMap[editor];
-	console.log('importing:', importing);
+
 	return (
 		<div className="ob-import-modal-wrap">
-			<div className="ob-import-modal">
-				<div className="modal-header" style={{backgroundImage: `url(${siteData.screenshot})`}}>
-					<Button
-						disabled={importing}
-						icon="no-alt"
-						onClick={closeModal}/>
-					<h2>{siteData.title}</h2>
-				</div>
-				<div className="modal-body">
-					{! importing && 'done' !== currentStep ?
-						<Fragment>
-							{renderNote()}
-							<hr/>
-							{renderOptions()}
-							<hr/>
-							{renderPlugins()}
-						</Fragment> :
-						<Fragment>
-							<ImportStepper progress={{
-								plugins: pluginsProgress,
-								content: contentProgress,
-								customizer: customizerProgress,
-								widgets: widgetsProgress
-							}} currentStep={currentStep} willDo={general}/>
-						</Fragment>
+			<OnClickOutside action={() => {
+				closeModal();
+			}}>
+				<div className="ob-import-modal">
+					<div className="modal-header" style={{backgroundImage: `url(${siteData.screenshot})`}}>
+						<Button
+							disabled={importing}
+							icon="no-alt"
+							onClick={closeModal}/>
+						<h2>{siteData.title}</h2>
+					</div>
+					<div className="modal-body">
+						{! importing && 'done' !== currentStep ?
+							<Fragment>
+								{renderNote()}
+								<hr/>
+								{renderOptions()}
+								<hr/>
+								{renderPlugins()}
+							</Fragment> :
+							<Fragment>
+								<ImportStepper progress={{
+									plugins: pluginsProgress,
+									content: contentProgress,
+									customizer: customizerProgress,
+									widgets: widgetsProgress
+								}} currentStep={currentStep} willDo={general}/>
+								{'done' === currentStep &&
+								<Fragment>
+									<hr/>
+									<p className="import-result">
+										<Dashicon icon="heart"/>
+										<span>{__('Content was successfully imported. Enjoy your new site!', 'neve')}</span>
+									</p>
+								</Fragment>
+								}
+							</Fragment>
+						}
+					</div>
+					{! importing &&
+					<div className="modal-footer">
+						{'done' !== currentStep ?
+							<Fragment>
+								<Button
+									isSecondary
+									onClick={closeModal}>
+									{__('Close', 'neve')}
+								</Button>
+								<Button
+									isPrimary
+									disabled={allOptionsOff}
+									onClick={() => {
+										runImport();
+									}}>
+									{__('Import', 'neve')}
+								</Button>
+							</Fragment> :
+							<Fragment>
+								<Button
+									isSecondary
+									href={neveDash.onboarding.homeUrl}
+								>{__('View Website', 'neve')}</Button>
+								<Button isPrimary href={editLink}>
+									{__('Add your own content', 'neve')}
+								</Button>
+							</Fragment>
+						}
+					</div>
 					}
 				</div>
-				{! importing &&
-				<div className="modal-footer">
-					{'done' !== currentStep ?
-						<Fragment>
-							<Button
-								isSecondary
-								onClick={closeModal}>
-								{__('Close', 'neve')}
-							</Button>
-							<Button
-								isPrimary
-								disabled={allOptionsOff}
-								onClick={() => {
-									setImporting(true);
-									runImport();
-								}}>
-								{__('Import', 'neve')}
-							</Button>
-						</Fragment> :
-						<Fragment>
-							<Button
-								isSecondary
-								href={neveDash.onboarding.homeUrl}
-							>{__('View Website', 'neve')}</Button>
-							<Button isPrimary href={editLink}>
-								{__('Add your own content', 'neve')}
-							</Button>
-						</Fragment>
-					}
-				</div>
-				}
-			</div>
+			</OnClickOutside>
 		</div>
 	);
 };
 
 export default compose(
 	withSelect((select) => {
-		const {getCurrentEditor, getCurrentSite, getImportingStatus} = select('neve-onboarding');
+		const {getCurrentEditor, getCurrentSite} = select('neve-onboarding');
 		return {
 			editor: getCurrentEditor(),
-			siteData: getCurrentSite(),
-			importing: getImportingStatus()
+			siteData: getCurrentSite()
 		};
 	}),
 	withDispatch((dispatch) => {
-		const {setImportModalStatus, setCurrentSite, setImporting} = dispatch('neve-onboarding');
+		const {setImportModalStatus, setCurrentSite} = dispatch('neve-onboarding');
 		return {
-			setImporting: (status) => setImporting(status),
 			setModal: (status) => setImportModalStatus(status),
 			setSite: (data) => setCurrentSite(data)
 		};

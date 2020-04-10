@@ -11,19 +11,24 @@
 	  color: #fff;
 	  padding: 5px;
 	  border-radius: 100%;
+
 	  &.success {
 		background-color: $success;
+
 		svg {
 		  right: 1px;
 		  position: relative;
 		}
 	  }
+
 	  &.warning {
 		background-color: $warning;
 	  }
+
 	  &.error {
 		background-color: $error;
 	  }
+
 	  &.loading svg {
 		animation-name: spin;
 		animation-duration: 2000ms;

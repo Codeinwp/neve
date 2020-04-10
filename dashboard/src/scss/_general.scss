@@ -62,6 +62,8 @@ svg.is-loading, button.is-loading svg {
 @mixin general--desktop() {
   .container {
 	padding: 0 50px;
+	max-width: 1300px;
+	margin:0 auto;
   }
   .col {
 	width: 50%;

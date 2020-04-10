@@ -1,6 +1,5 @@
 import classnames from 'classnames';
 
-const {useState} = wp.element;
 const {__} = wp.i18n;
 const {Dashicon} = wp.components;
 const ImportStepper = ({currentStep, progress, willDo}) => {
@@ -27,7 +26,6 @@ const ImportStepper = ({currentStep, progress, willDo}) => {
 			willDo: willDo.widgets
 		}
 	};
-	console.log(stepsMap);
 
 	return (
 		<ul className="stepper">

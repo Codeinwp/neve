@@ -113,7 +113,7 @@ class Main {
 	/**
 	 * Render the application stub.
 	 *
-	 * @return mixed
+	 * @return void
 	 */
 	public function render() {
 		echo '<div id="neve-dashboard"></div>';

@@ -142,6 +142,20 @@ $base-index: 100000;
 	}
   }
 
+  .import-result {
+	display: flex;
+	align-items: center;
+	font-weight: 500;
+	font-size: 15px;
+	margin: 0;
+
+	svg {
+	  fill: $error;
+	  margin-right: 10px;
+	  @include heartpop();
+	}
+  }
+
   .modal-footer {
 	border-top: 1px solid $grey;
 	padding: 10px 20px;

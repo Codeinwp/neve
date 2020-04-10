@@ -34,23 +34,17 @@ export default (state = initialState, action) => {
 				...state,
 				currentSite: siteData
 			};
-	case 'SET_PREVIEW_STATUS':
+		case 'SET_PREVIEW_STATUS':
 			const {previewStatus} = action.payload;
 			return {
 				...state,
 				previewStatus
 			};
-	case 'SET_IMPORT_MODAL_STATUS':
+		case 'SET_IMPORT_MODAL_STATUS':
 			const {importModalStatus} = action.payload;
 			return {
 				...state,
 				importModalStatus
-			};
-			case 'SET_IMPORTING_STATUS':
-			const {status} = action.payload;
-			return {
-				...state,
-				importing: status
 			};
 	}
 	return state;

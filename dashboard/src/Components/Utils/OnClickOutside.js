@@ -1,11 +1,8 @@
 const {useRef, useEffect} = wp.element;
 
-const useOutsideClick = (ref, callback, block = false) => {
+const useOutsideClick = (ref, callback) => {
 	useEffect(() => {
 		const handleClickOutside = (event) => {
-			if (block) {
-				return false;
-			}
 			if (ref.current && ! ref.current.contains(event.target)) {
 				callback();
 			}
@@ -18,9 +15,9 @@ const useOutsideClick = (ref, callback, block = false) => {
 	}, [ ref ]);
 };
 
-const OnClickOutside = ({children, action, block}) => {
+const OnClickOutside = ({children, action}) => {
 	const wrapperRef = useRef(null);
-	useOutsideClick(wrapperRef, action, block);
+	useOutsideClick(wrapperRef, action);
 
 	return <div ref={wrapperRef}>{children}</div>;
 };
