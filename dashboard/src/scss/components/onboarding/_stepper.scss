@@ -1,8 +1,8 @@
-.stepper {
+.ob-import-modal .stepper {
   li {
 	display: flex;
 	align-items: center;
-	margin-bottom: 20px;
+	margin-bottom: 25px;
 	font-size: 15px;
 
 	.icon {
@@ -27,6 +27,10 @@
 
 	  &.error {
 		background-color: $error;
+	  }
+
+	  &.skip {
+		background-color: $grey;
 	  }
 
 	  &.loading svg {

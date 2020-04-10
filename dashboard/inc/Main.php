@@ -135,7 +135,7 @@ class Main {
 			return;
 		}
 
-		$dependencies = [ 'react', 'react-dom', 'wp-i18n', 'wp-api', 'wp-components', 'wp-element', 'updates' ];
+		$dependencies = [ 'react', 'react-dom', 'wp-i18n', 'wp-api', 'wp-api-fetch', 'wp-components', 'wp-element', 'updates' ];
 
 		wp_enqueue_style( 'neve-dash-style', get_template_directory_uri() . '/dashboard/build/build.css', [ 'wp-components' ], NEVE_VERSION );
 		wp_register_script( 'neve-dash-script', get_template_directory_uri() . '/dashboard/build/build.js', $dependencies, NEVE_VERSION, true );

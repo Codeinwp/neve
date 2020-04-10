@@ -1,7 +1,6 @@
 const {Dashicon} = wp.components;
-const {useState, useRef, useEffect} = wp.element;
+const {useState} = wp.element;
 
-import OnClickOutside from './Utils/OnClickOutside';
 import classnames from 'classnames';
 
 const FeatureRow = ({item}) => {
@@ -14,9 +13,7 @@ const FeatureRow = ({item}) => {
 			<td className="large">
 				<div className="feat-wrap">
 					<h4>{title}</h4>
-					<OnClickOutside action={() => {
-						toggleForceTooltip(false);
-					}}> <a
+					<a
 						onMouseEnter={(e) => {
 							e.preventDefault();
 							toggleTooltip(true);
@@ -36,7 +33,6 @@ const FeatureRow = ({item}) => {
 						</div>
 						}
 					</a>
-					</OnClickOutside>
 				</div>
 			</td>
 			<td className={classnames([ 'indicator', {'error': ! inLite, 'success': inLite} ])}>

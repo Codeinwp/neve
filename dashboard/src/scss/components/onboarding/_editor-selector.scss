@@ -26,29 +26,12 @@
   }
 
   .options {
-	box-shadow: 0 0 10px -5px rgba(0,0,0,.5);
-	top: 100%;
-	left: 0;
-	position: absolute;
-	background-color: #fff;
-	display: flex;
-	flex-direction: column;
-	border: 1px solid $grey;
-	margin-top: -1px;
-	right: 0;
-
-	ul {
-	  margin: 0;
-	}
-
+	margin: 0;
 	li {
+	  border-bottom: 1px solid $grey;
+	  padding: 0;
 	  margin: 0;
-
-	  &:not(:last-child) {
-		border-bottom: 1px solid $grey;
-	  }
 	}
-
 	a {
 	  height: 35px;
 	  font-size: 14px;

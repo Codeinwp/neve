@@ -1,71 +1,13 @@
+@import "stepper";
+
 $base-index: 100000;
 
-.ob-import-modal-wrap {
-  background-color: rgba(0, 0, 0, 0.5);
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: $base-index;
-  height: 100vh;
-  margin: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  .ob-import-modal {
-	width: 630px;
-	background-color: #fff;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-
-	.modal-header {
-	  display: flex;
-	  align-items: center;
-	  justify-content: center;
-	  position: relative;
-	  background-position: center -30px;
-	  background-size: cover;
-	  background-repeat: no-repeat;
-	  height: 100px;
-
-	  &:after {
-		position: absolute;
-		background-color: rgba(0, 0, 0, 0.8);
-		content: "";
-		left: 0;
-		right: 0;
-		bottom: 0;
-		top: 0;
-	  }
-
-	  h2 {
-		font-size: 25px;
-		color: #fff;
-		position: relative;
-		z-index: 1;
-		text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
-	  }
-
-	  button {
-		color: #fff;
-		position: absolute;
-		z-index: 1;
-		right: 5px;
-		top: 5px;
-
-		&:hover {
-		  background-color: transparent;
-		  box-shadow: none;
-		  opacity: .75;
-		}
-	  }
-	}
-  }
+.ob-import-modal {
+  width: 630px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 
   .modal-body {
-	padding: 20px;
-
 	h3 {
 	  margin: 0;
 	  display: flex;
@@ -77,12 +19,15 @@ $base-index: 100000;
 	}
   }
 
-  .note {
+  .well {
+	margin: 0;
 	padding: 10px;
-	border: 1px solid $info;
+	border: 1px solid;
 	border-radius: 3px;
-	background-color: lighten($info, 27);
 	color: $black;
+	border-color: $info;
+	background-color: lighten($info, 27);
+
 	ol {
 	  padding: 0;
 	  margin: 20px 0 0 20px;
@@ -95,10 +40,28 @@ $base-index: 100000;
 		}
 	  }
 	}
+
+	ul {
+	  margin: 20px 0 0;
+	  padding: 0;
+	  li {
+		margin-bottom: 10px;
+	  }
+	}
+
+	&.error {
+	  border-color: $error;
+	  background-color: lighten($error, 27);
+	}
+
+	&.warning {
+	  border-color: $warning;
+	  background-color: lighten($warning, 27);
+	}
   }
 
   hr {
-	margin: 20px 0 18px;
+	margin: 25px 0;
 	border: none;
 	border-top: 1px solid $grey;
 	height: 0;
@@ -143,31 +106,27 @@ $base-index: 100000;
   }
 
   .import-result {
-	display: flex;
-	align-items: center;
-	font-weight: 500;
 	font-size: 15px;
-	margin: 0;
-
-	svg {
-	  fill: $error;
-	  margin-right: 10px;
-	  @include heartpop();
-	}
   }
 
   .modal-footer {
-	border-top: 1px solid $grey;
-	padding: 10px 20px;
+	margin-top: 25px;
 	display: flex;
 	align-items: center;
-	justify-content: flex-end;
 
-	button, a {
-	  height: auto;
+	.close {
+	  padding: 0;
+	}
+
+	button:not(.close), a {
+	  margin-left: auto;
 	  padding: 5px 25px;
+
 	  &:last-child {
-		margin-left: 10px;
+		margin-left: 25px;
+		&:only-child {
+		  margin-left: auto;
+		}
 	  }
 	}
   }

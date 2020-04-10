@@ -1,5 +1,7 @@
 @import "scss/vars";
 @import "scss/core-overrides";
+@import "scss/components/onboarding/import-modal";
+
 #neve-dashboard {
   @import "scss/general";
 
@@ -19,7 +21,13 @@
   @import "scss/content/free-pro";
   @import "scss/content/mock";
 
-  @import "scss/components/onboarding/main";
-
+  @import "scss/components/onboarding/general";
+  @import "scss/components/onboarding/header";
+  @import "scss/components/onboarding/editor-selector";
+  @import "scss/components/onboarding/starter-site-card";
+  @import "scss/components/onboarding/preview";
+  @import "scss/components/onboarding/import-modal";
+  @import "scss/components/onboarding/stepper";
+  @import "scss/components/onboarding/mock";
   @import "scss/media-queries";
 }

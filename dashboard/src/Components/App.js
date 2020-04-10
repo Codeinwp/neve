@@ -1,11 +1,12 @@
+/* global neveDash */
 import Header from './Header';
 import Notifications from './Notifications';
 import TabsContent from './TabsContent';
 import Sidebar from './Sidebar';
 import Loading from './Loading';
 import Snackbar from './Snackbar';
-import {getTabHash} from '../utils/common';
-import {get, send} from '../utils/rest';
+import classnames from 'classnames';
+
 
 const {withDispatch, withSelect} = wp.data;
 const {compose} = wp.compose;
@@ -13,6 +14,7 @@ const {useState, Fragment, useEffect} = wp.element;
 
 const App = ({setSettings, toast, currentTab, setTab}) => {
 	const [ loading, setLoading ] = useState(true);
+	const [isOnboarding, setIsOnboarding] = useState(neveDash.onboarding.onboarding === 'yes');
 	useEffect(() => {
 		let settings;
 		wp.api.loadPromise.then(() => {
@@ -26,16 +28,21 @@ const App = ({setSettings, toast, currentTab, setTab}) => {
 	if (loading) {
 		return <Loading/>;
 	}
-
+	const wrapClasses = classnames([ 'content-wrap', {
+		'is-onboarding': isOnboarding && 'starter-sites' === currentTab,
+		'starter-sites': 'starter-sites' === currentTab
+	} ]);
 	return (
 		<Fragment>
 			<Header currentTab={currentTab} setTab={setTab}/>
-			<div className="container content">
-				<div className="main">
-					{'starter-sites' !== currentTab && <Notifications/>}
-					<TabsContent currentTab={currentTab} setTab={setTab}/>
+			<div className={wrapClasses}>
+				<div className="content">
+					<div className="main">
+						{'starter-sites' !== currentTab && <Notifications/>}
+						<TabsContent currentTab={currentTab} setTab={setTab}/>
+					</div>
+					{'starter-sites' !== currentTab && <Sidebar currentTab={currentTab}/>}
 				</div>
-				{'starter-sites' !== currentTab && <Sidebar currentTab={currentTab}/>}
 			</div>
 			{toast && <Snackbar/>}
 		</Fragment>

@@ -78,15 +78,14 @@ const Onboarding = ({sites, upsells, editor, previewOpen, currentSiteData, impor
 				<div className="ob-head">
 					<h2>{__('Ready to use pre-built websites with 1-click installation', 'neve')}</h2>
 					<p>{__('With Neve, you can choose from multiple unique demos, specially designed for you, that can be installed with a single click. You just need to choose your favorite, and we will take care of everything else.', 'neve')}</p>
-				</div>
-				<div className="ob-body">
 					<EditorSelector
 						onSearch={(query) => {
 							setSearchQuery(query);
 							setMaxShown(9);
 						}}
 						query={searchQuery}/>
-
+				</div>
+				<div className="ob-body">
 					<div className="ob-sites">
 						{(sites || upsells) && renderSites()}
 					</div>

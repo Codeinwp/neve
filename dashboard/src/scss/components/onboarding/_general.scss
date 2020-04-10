@@ -1,3 +1,23 @@
+.content-wrap.starter-sites .main {
+  margin-right: 0 !important;
+}
+
+.content-wrap.is-onboarding {
+	position: fixed;
+	top: 0;
+	bottom:0;
+	left: 0;
+	right: 0;
+	background-color: #F1F1F1;
+	z-index: 100000000;
+  .container {
+	padding: 0;
+  }
+  .ob-head {
+	background-color: $purple;
+  }
+}
+
 .ob {
   width: 100%;
 }

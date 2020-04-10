@@ -41,7 +41,8 @@ const ImportStepper = ({currentStep, progress, willDo}) => {
 						'loading': currentStep === key,
 						'warning': currentStep === key,
 						'success': 'done' === status,
-						'error': 'error' === status
+						'error': 'error' === status,
+						'skip': 'skip' === status
 					}
 				]);
 
@@ -54,7 +55,7 @@ const ImportStepper = ({currentStep, progress, willDo}) => {
 					icon = 'yes';
 				}
 
-				if ( 'error' === status ) {
+				if ('error' === status ) {
 					icon = 'no-alt';
 				}
 
@@ -63,7 +64,7 @@ const ImportStepper = ({currentStep, progress, willDo}) => {
 					<span className={classes}>
 						<Dashicon icon={icon} className={currentStep === key ? 'loading' : ''}/>
 					</span>
-					<span>{label}</span>
+						<span>{label}</span>
 					</li>
 				);
 			})}
