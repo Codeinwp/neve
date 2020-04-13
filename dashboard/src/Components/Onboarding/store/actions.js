@@ -11,6 +11,12 @@ export default {
 			payload: {upsells}
 		};
 	},
+	setMigrationData(migrationData) {
+		return {
+			type: 'SET_MIGRATION_DATA',
+			payload: {migrationData}
+		};
+	},
 	setCurrentEditor(editor) {
 		return {
 			type: 'SET_CURRENT_EDITOR',
@@ -43,6 +49,12 @@ export default {
 		return {
 			type: 'SET_IMPORT_MODAL_STATUS',
 			payload: {importModalStatus}
+		};
+	},
+	setOnboardingState(state) {
+		return {
+			type: 'SET_ONBOARDING',
+			payload: {state}
 		};
 	}
 };

@@ -2,10 +2,8 @@
 import {tabs} from '../utils/common';
 import classnames from 'classnames';
 
-const {__} = wp.i18n;
-
 const TabsContent = ({currentTab, setTab}) => {
-  const classes = classnames([ 'container', 'tab-content', 'columns', currentTab ]);
+  const classes = classnames([ 'tab-content', 'columns', currentTab ]);
   return (
     <div className={classes}>
       {tabs[currentTab].render(setTab)}

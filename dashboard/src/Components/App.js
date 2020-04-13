@@ -12,9 +12,8 @@ const {withDispatch, withSelect} = wp.data;
 const {compose} = wp.compose;
 const {useState, Fragment, useEffect} = wp.element;
 
-const App = ({setSettings, toast, currentTab, setTab}) => {
+const App = ({setSettings, toast, currentTab, setTab, isOnboarding}) => {
 	const [ loading, setLoading ] = useState(true);
-	const [isOnboarding, setIsOnboarding] = useState(neveDash.onboarding.onboarding === 'yes');
 	useEffect(() => {
 		let settings;
 		wp.api.loadPromise.then(() => {
@@ -36,7 +35,7 @@ const App = ({setSettings, toast, currentTab, setTab}) => {
 		<Fragment>
 			<Header currentTab={currentTab} setTab={setTab}/>
 			<div className={wrapClasses}>
-				<div className="content">
+				<div className="container content">
 					<div className="main">
 						{'starter-sites' !== currentTab && <Notifications/>}
 						<TabsContent currentTab={currentTab} setTab={setTab}/>
@@ -59,9 +58,11 @@ export default compose(
 	}),
 	withSelect((select) => {
 		const {getToast, getTab} = select('neve-dashboard');
+		const {getOnboardingStatus} = select('neve-onboarding');
 		return {
 			toast: getToast(),
-			currentTab: getTab()
+			currentTab: getTab(),
+			isOnboarding: getOnboardingStatus()
 		};
 	})
 )(App);

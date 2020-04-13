@@ -1,6 +1,4 @@
-import {changeOption} from '../utils/rest';
-
-export default {
+ export default {
 	setTab(tab) {
 		return {
 			type: 'SET_TAB',

@@ -149,7 +149,7 @@ class Main {
 	 * @return array
 	 */
 	private function get_localization() {
-		return [
+		$data = [
 			'nonce'               => wp_create_nonce( 'wp_rest' ),
 			'api'                 => rest_url( REST::API_ROOT ),
 			'version'             => 'v' . NEVE_VERSION,
@@ -165,8 +165,14 @@ class Main {
 			'options'             => [
 				'logger' => get_option( 'neve_logger_flag', 'no' ) === 'yes',
 			],
-			'changelog'           => $this->cl_handler->get_changelog(),
+			'changelog'           => $this->cl_handler->get_changelog( get_template_directory() . '/CHANGELOG.md' ),
 		];
+
+		if ( defined( 'NEVE_PRO_PATH' ) ) {
+			$data[ 'changelogPro' ] = $this->cl_handler->get_changelog( NEVE_PRO_PATH . '/CHANGELOG.md' );
+		}
+
+		return $data;
 	}
 
 	private function get_notifications() {

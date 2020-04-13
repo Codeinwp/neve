@@ -7,7 +7,7 @@ const {useState, useEffect} = wp.element;
 const {withDispatch, withSelect} = wp.data;
 const {compose} = wp.compose;
 
-const StarterSites = ({sites, setSites, setUpsells}) => {
+const StarterSites = ({sites, setSites, setUpsells, setMigrationData}) => {
 	const [ loading, setLoading ] = useState(true);
 	const [ error, setError ] = useState(false);
 	useEffect(() => {
@@ -19,10 +19,11 @@ const StarterSites = ({sites, setSites, setUpsells}) => {
 				if (! r.success) {
 					setError(true);
 				} else {
-					const {remote, upsell} = r.data;
+					console.log(r);
+					const {remote, upsell, migrate_data} = r.data;
 					setSites(remote);
 					setUpsells(upsell);
-					setLoading(false);
+					setMigrationData(migrate_data);
 				}
 			});
 		}
@@ -31,7 +32,6 @@ const StarterSites = ({sites, setSites, setUpsells}) => {
 	if (error) {
 		return <h1>Error.</h1>;
 	}
-
 	return (
 		loading ? <Loading/> : <Onboarding/>
 	);
@@ -39,10 +39,11 @@ const StarterSites = ({sites, setSites, setUpsells}) => {
 
 export default compose(
 	withDispatch((dispatch) => {
-		const {setSites, setUpsells} = dispatch('neve-onboarding');
+		const {setSites, setUpsells, setMigrationData} = dispatch('neve-onboarding');
 		return {
 			setSites: (sites) => setSites(sites),
-			setUpsells: (upsells) => setUpsells(upsells)
+			setUpsells: (upsells) => setUpsells(upsells),
+			setMigrationData: (migrationData) => setMigrationData(migrationData)
 		};
 	}),
 	withSelect((select) => {

@@ -48,7 +48,7 @@ const StarterSiteCard = ({data, upsell, setSite, setPreview, setModal}) => {
 	);
 };
 
-export default withDispatch((dispatch) => {
+export default  withDispatch((dispatch) => {
 	const {setCurrentSite, setPreviewStatus, setImportModalStatus} = dispatch('neve-onboarding');
 	return {
 		setSite: (data) => setCurrentSite(data),

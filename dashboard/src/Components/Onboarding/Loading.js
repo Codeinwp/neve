@@ -1,12 +1,13 @@
-const Loading = () => {
+const {withSelect} = wp.data;
+
+const Loading = ({isOnboarding}) => {
 	return (
 		<div className="ob mock-dash">
 			<div className="ob-head">
 				<h2 className="loading"/>
 				<p className="loading"/>
 				<p className="loading"/>
-			</div>
-			<div className="ob-body">
+				{isOnboarding && <button className="loading components-button is-primary"/>}
 				<div className="header-form">
 					<div>
 						<div className="ob-dropdown">
@@ -22,7 +23,8 @@ const Loading = () => {
 						</button>
 					</div>
 				</div>
-
+			</div>
+			<div className="ob-body">
 				<div className="ob-sites">
 					{[ 1, 2, 3, 4, 5, 6, 7, 8, 9 ].map(() => {
 						return (
@@ -38,9 +40,12 @@ const Loading = () => {
 					})}
 				</div>
 			</div>
+			{isOnboarding && <div className="ob-footer"/>}
 		</div>
 	);
 };
 
-
-export default Loading;
+export default withSelect((select) => {
+	const {getOnboardingStatus} = select('neve-onboarding');
+	return {isOnboarding: getOnboardingStatus()};
+})(Loading);

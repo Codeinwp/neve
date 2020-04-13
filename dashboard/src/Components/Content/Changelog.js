@@ -2,15 +2,35 @@
 import Accordion from '../Accordion';
 
 const {__} = wp.i18n;
-const {Fragment} = wp.element;
+const {Fragment, useState} = wp.element;
 
 const Changelog = (props) => {
-	const {changelog} = neveDash;
+	const {changelog, changelogPro} = neveDash;
+	const [ showForPro, setShowForPro ] = useState(false);
+
 	return (
 		<div className="card">
+			{changelogPro &&
+			<div className="changelog-tabs">
+				<span>{__('Show changelog for', 'neve')}</span>
+				<a
+					className={! showForPro && 'active'}
+					onClick={() => {
+						setShowForPro(false);
+					}}>{__('Neve', 'neve')}</a>
+				<a
+					className={showForPro && 'active'}
+					onClick={() => {
+						setShowForPro(true);
+					}}>{__('Neve Pro', 'neve')}</a>
+			</div>
+			}
 			{
-				changelog.map((entry, index) => {
+				(showForPro ? changelogPro : changelog).map((entry, index) => {
 					const {date, version, tweaks, fixes, features} = entry;
+					if (! tweaks && ! fixes && ! features) {
+						return null;
+					}
 					const title =
 						<Fragment>
 							<span className="version">v{version}</span> - <span className="date">{date}</span>

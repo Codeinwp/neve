@@ -6,7 +6,9 @@ const initialState = {
 	previewStatus: false,
 	importModalStatus: false,
 	currentSite: null,
-	importing: false
+	importing: false,
+	isOnboarding: neveDash.onboarding.onboarding || false,
+	migrationData: null
 };
 export default (state = initialState, action) => {
 	switch (action.type) {
@@ -21,6 +23,12 @@ export default (state = initialState, action) => {
 			return {
 				...state,
 				upsells
+			};
+		case 'SET_MIGRATION_DATA':
+			const {migrationData} = action.payload;
+			return {
+				...state,
+				migrationData
 			};
 		case 'SET_CURRENT_EDITOR':
 			const {editor} = action.payload;
@@ -45,6 +53,12 @@ export default (state = initialState, action) => {
 			return {
 				...state,
 				importModalStatus
+			};
+		case 'SET_ONBOARDING':
+			const {status} = action.payload;
+			return {
+				...state,
+				isOnboarding: status
 			};
 	}
 	return state;

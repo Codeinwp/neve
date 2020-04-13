@@ -1,4 +1,30 @@
-.mock-dash.ob {
+.content-wrap.is-onboarding {
+  .mock-dash.ob {
+  	.ob-head {
+	  h2, p {
+		margin-left: auto;
+		margin-right: auto;
+	  }
+	  h2 {
+		margin-bottom: 33px;
+	  }
+	  p:last-of-type {
+		display: none;
+	  }
+
+	  .header-form {
+		input,button {
+		  border-radius: 3px;
+		}
+	  }
+	  >button {
+		width: 150px;
+		background-color: $blue;
+	  }
+	}
+  }
+}
+  .mock-dash.ob {
   .ob-head {
 	h2 {
 	  height: 30px;
@@ -7,9 +33,6 @@
 
 	p {
 	  height: 20px;
-	  &:not(:last-child) {
-		margin-bottom: 10px;
-	  }
 	}
   }
   .editor-icon {

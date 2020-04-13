@@ -1,13 +1,10 @@
 .card.starter-site-card {
   padding: 0;
-  max-width: 32%;
-  &:hover {
+  max-width: 100%;
+  &:hover, &:focus-within {
 	.actions, .fav {
 	  opacity: 1;
 	}
-  }
-  &:not(:nth-child(3n)) {
-	margin-right: 2%;
   }
   .top {
 	position: relative;
@@ -69,7 +66,7 @@
 	}
   }
   .image {
-	height: 330px;
+	max-height: 330px;
 	background-color: transparentize($dark-grey, .75);
   }
   img {
@@ -98,6 +95,27 @@
 	  align-items: center;
 	  display: flex;
 	  line-height: 1;
+	}
+  }
+}
+
+@mixin ob-starter-site-card--tablet {
+  .card.starter-site-card {
+	max-width: 49%;
+	&:not(:nth-child(2n)) {
+	  margin-right: 2%;
+	}
+  }
+}
+
+@mixin ob-starter-site-card--laptop {
+  .card.starter-site-card {
+	max-width: 32%;
+	&:not(:nth-child(2n)) {
+	  margin-right: 0;
+	}
+	&:not(:nth-child(3n)) {
+	  margin-right: 2%;
 	}
   }
 }

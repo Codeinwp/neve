@@ -278,14 +278,16 @@ const ImportModal = ({setModal, setSite, editor, siteData}) => {
 			setError(error.data ? {message: map[step], code: error.data} : {message: map[step]});
 		}
 
-		const closeModal = () => {
-			console.log(importing);
+		const closeModal = (dismissSiteData = false) => {
 			if (importing) {
 				return false;
 			} else {
 				setModal(false);
-				setSite(null);
+				if (dismissSiteData) {
+					setSite(null);
+				}
 			}
+
 		};
 
 		const allOptionsOff = Object.keys(general).every(k => false === general[k]);
@@ -324,9 +326,11 @@ const ImportModal = ({setModal, setSite, editor, siteData}) => {
 										<li dangerouslySetInnerHTML={{__html: neveDash.onboarding.strings.troubleshooting}}/>
 										<li dangerouslySetInnerHTML={{__html: neveDash.onboarding.strings.support}}/>
 										{error.code && <li>{__('Error code', 'neve')}: <code>{error.code}</code></li>}
-										<li>{__('Error log', 'neve')}: <Button isLink
-																													 href={neveDash.onboarding.logUrl}>{neveDash.onboarding.logUrl}<Dashicon
-											icon="external"/></Button></li>
+										<li>{__('Error log', 'neve')}:
+											<Button
+												isLink
+												href={neveDash.onboarding.logUrl}>{neveDash.onboarding.logUrl}<Dashicon
+												icon="external"/></Button></li>
 									</ul>
 								</div>
 								<hr/>
@@ -372,7 +376,12 @@ const ImportModal = ({setModal, setSite, editor, siteData}) => {
 							}
 						</Fragment> :
 						<Fragment>
-							<Button isLink className="close" onClick={closeModal}>{__('Back to Sites Library', 'neve')}</Button>
+							<Button
+								isLink
+								className="close"
+								onClick={() => {
+									closeModal(true);
+								}}>{__('Back to Sites Library', 'neve')}</Button>
 							<Button
 								isSecondary
 								href={neveDash.onboarding.homeUrl}
