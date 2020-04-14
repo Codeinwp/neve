@@ -126,7 +126,9 @@ export default compose(
 	withDispatch(dispatch => {
 		const {setOnboardingState} = dispatch('neve-onboarding');
 		return {
-			cancelOnboarding: () => setOnboardingState(false)
+			cancelOnboarding: () => {
+				setOnboardingState(false);
+			}
 		};
 	}),
 	withSelect(select => {

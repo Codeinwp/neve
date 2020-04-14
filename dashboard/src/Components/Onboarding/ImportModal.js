@@ -1,7 +1,9 @@
 /*global neveDash*/
 import {importContent, importMods, importWidgets, installPlugins} from '../../utils/site-import';
 import ImportStepper from './ImportStepper';
+import ImportModalNote from './ImportModalNote';
 import classnames from 'classnames';
+import ImportModalError from './ImportModalError';
 
 const {withSelect, withDispatch} = wp.data;
 const {compose} = wp.compose;
@@ -44,37 +46,10 @@ const ImportModal = ({setModal, setSite, editor, siteData}) => {
 		}, []);
 
 		const renderNote = () => {
-			const external = siteData['external_plugins'] || null;
-			const classes = classnames([ 'well', {'warning': external} ]);
-			return (
-				<div className={classes}>
-					<h3>
-						<Dashicon icon="info"/>
-						<span>{external ?
-							__('To import this demo you have to install the following plugins', 'neve') :
-							__('Note', 'neve')}:
-						</span>
-					</h3>
-					<ol>
-						{external ?
-							Object.keys(external).map(slug => <li><Button isLink href={external[slug].url}>{slug}</Button></li>) :
-							<Fragment>
-								<li>{__('We recommend you backup your website content before attempting a full site import.', 'neve')}</li>
-								<li>{__('Some of the demo images will not be imported and will be replaced by placeholder images.', 'neve')}</li>
-								{siteData['unsplash_gallery'] &&
-								<li>
-									<a
-										href={siteData['unsplash_gallery']}>
-										{__('Here is our own collection of related images you can use for your site.', 'neve')}
-									</a>
-								</li>
-								}
-							</Fragment>
-						}
-					</ol>
-				</div>
-			);
+			console.log(siteData);
+			return <ImportModalNote data={siteData}/>;
 		};
+
 		const renderOptions = () => {
 			const map = {
 				content: {
@@ -241,7 +216,6 @@ const ImportModal = ({setModal, setSite, editor, siteData}) => {
 		}
 
 		function handleError(error, step) {
-			console.log(step);
 			setImporting(false);
 			setCurrentStep(null);
 			if ('plugins' === step) {
@@ -287,7 +261,6 @@ const ImportModal = ({setModal, setSite, editor, siteData}) => {
 					setSite(null);
 				}
 			}
-
 		};
 
 		const allOptionsOff = Object.keys(general).every(k => false === general[k]);
@@ -320,19 +293,7 @@ const ImportModal = ({setModal, setSite, editor, siteData}) => {
 						<Fragment>
 							{error &&
 							<Fragment>
-								<div className="well error">
-									{error.message && <h3><Dashicon icon="warning"/><span>{error.message}</span></h3>}
-									<ul>
-										<li dangerouslySetInnerHTML={{__html: neveDash.onboarding.strings.troubleshooting}}/>
-										<li dangerouslySetInnerHTML={{__html: neveDash.onboarding.strings.support}}/>
-										{error.code && <li>{__('Error code', 'neve')}: <code>{error.code}</code></li>}
-										<li>{__('Error log', 'neve')}:
-											<Button
-												isLink
-												href={neveDash.onboarding.logUrl}>{neveDash.onboarding.logUrl}<Dashicon
-												icon="external"/></Button></li>
-									</ul>
-								</div>
+								<ImportModalError message={error.message || null} code={error.code || null}/>
 								<hr/>
 							</Fragment>
 							}

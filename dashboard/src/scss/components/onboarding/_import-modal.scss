@@ -2,8 +2,31 @@
 
 $base-index: 100000;
 
+.migration {
+  .modal-body .loading {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin: 30px auto;
+	width: auto;
+	color: #fff;
+	h3 {
+	  margin: 20px 0 0;
+	}
+	svg {
+	  padding: 10px;
+	  background-color: $warning;
+	  border-radius: 100%;
+	  animation-name: spin;
+	  animation-duration: 2000ms;
+	  animation-iteration-count: infinite;
+	  animation-timing-function: linear;
+	}
+  }
+}
+
 .ob-import-modal {
-  width: 630px;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 

@@ -11,3 +11,9 @@
 .ob-overflow-off {
   overflow: hidden !important;
 }
+
+@media screen and (min-width: #{$tablet}) {
+  .ob-import-modal {
+	width: 630px !important;
+  }
+}

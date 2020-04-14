@@ -1,7 +1,3 @@
-$tablet: '600px';
-$laptop: '992px';
-$desktop: '1200px';
-
 @media (min-width: #{$tablet}) {
   @include ob-starter-site-card--tablet();
   @include ob-header--tablet();

@@ -7,13 +7,6 @@ import Help from '../Components/Content/Help';
 import Changelog from '../Components/Content/Changelog';
 import FreePro from '../Components/Content/FreePro';
 
-const getUrlParam = (param) => {
-	const queryString = window.location.search;
-	const urlParams = new URLSearchParams(queryString);
-
-	return urlParams.get(param);
-};
-
 const addUrlHash = (hash) => {
 	window.location.hash = hash;
 };
@@ -50,7 +43,6 @@ if (neveDash.pro) {
 
 
 export {
-	getUrlParam,
 	addUrlHash,
 	getTabHash,
 	tabs

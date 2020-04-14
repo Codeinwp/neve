@@ -47,5 +47,6 @@ const Loading = ({isOnboarding}) => {
 
 export default withSelect((select) => {
 	const {getOnboardingStatus} = select('neve-onboarding');
-	return {isOnboarding: getOnboardingStatus()};
+	return {isOnboarding: getOnboardingStatus()}
+		;
 })(Loading);

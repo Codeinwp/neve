@@ -19,7 +19,6 @@ const StarterSites = ({sites, setSites, setUpsells, setMigrationData}) => {
 				if (! r.success) {
 					setError(true);
 				} else {
-					console.log(r);
 					const {remote, upsell, migrate_data} = r.data;
 					setSites(remote);
 					setUpsells(upsell);

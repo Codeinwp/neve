@@ -1,4 +1,22 @@
-.ob-head {
+.ob-migration {
+  margin-bottom: 20px;
+  .card.starter-site-card {
+	margin-right: auto !important;
+	margin-left: auto !important;
+  }
+
+  .actions {
+	margin: 30px auto 0;
+	display: flex;
+	justify-content: center;
+  }
+
+  button:last-child {
+	margin-left: 10px;
+  }
+}
+
+.ob-head >, .ob-migration > {
   h2 {
 	font-size: 21px;
 	color: $black;
@@ -21,9 +39,11 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+
   .ob-dropdown {
 	width: 100%;
   }
+
   .search {
 	margin-top: 20px;
 	width: 100%;
@@ -50,19 +70,22 @@
 }
 
 @mixin ob-header--tablet {
-  .ob-head {
+  .ob-head >, .ob-migration > {
 	h2 {
 	  font-size: 30px;
 	}
+
 	p {
 	  font-size: 22px;
 	}
   }
   .header-form {
 	flex-direction: row;
+
 	.ob-dropdown {
 	  width: 200px;
 	}
+
 	.search {
 	  width: auto;
 	  margin-left: 10px;
