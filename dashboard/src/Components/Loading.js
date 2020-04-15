@@ -6,7 +6,9 @@ const Loading = () => {
 					<div className="top">
 						<h1 className="heading loading"/>
 						<span className="version loading">v2.6.2</span>
+						{! neveDash.whiteLabel &&
 						<div className="loading logo"/>
+						}
 					</div>
 					<nav className="navigation">
 						{
@@ -87,6 +89,7 @@ const Loading = () => {
 					</div>
 				</div>
 				<div className="sidebar-wrap">
+					{! neveDash.whiteLabel &&
 					<aside className="sidebar card">
 						<div className="sidebar-section">
 							<h4 className="loading"/>
@@ -109,6 +112,7 @@ const Loading = () => {
 							<span className="loading link"/>
 						</div>
 					</aside>
+					}
 				</div>
 			</div>
 		</div>

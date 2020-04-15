@@ -6,7 +6,7 @@ import classnames from 'classnames';
 const {__} = wp.i18n;
 const {Button, Dashicon} = wp.components;
 const {Fragment, useState} = wp.element;
-const {withSelect, withDispatch} = wp.data;
+const {withDispatch} = wp.data;
 
 const LicenseCard = ({isVisible, changeTier}) => {
 	const {license, proApi} = neveDash;
@@ -36,12 +36,17 @@ const LicenseCard = ({isVisible, changeTier}) => {
 		});
 	};
 
+	if (neveDash.whiteLabel && neveDash.whiteLabel.hideLicense) {
+		return null;
+	}
+
 	return (
 		<aside className="sidebar card license">
 			<div className="sidebar-section">
-				<h4>{__('Neve Pro Addon license', 'neve')}</h4>
-				<p>Enter your license from <a href="https://store.themeisle.com">ThemeIsle</a> purchase history in order to get
-					plugin updates</p>
+				{neveDash.strings.licenseCardHeading && <h4>{neveDash.strings.licenseCardHeading}</h4>}
+				{(! neveDash.whiteLabel && neveDash.strings.licenseCardDescription) &&
+				<p dangerouslySetInnerHTML={{__html: neveDash.strings.licenseCardDescription}}/>
+				}
 				<form className="license-form" onSubmit={(e) => {
 					e.preventDefault();
 					toggleLicense();

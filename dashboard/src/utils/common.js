@@ -37,8 +37,16 @@ const tabs = {
 };
 
 if (neveDash.pro) {
-	tabs.pro = {label: 'Neve Pro', render: (setTab) => <Pro/>};
+	tabs.pro = {label: neveDash.strings.proTabTitle, render: (setTab) => <Pro/>};
 	delete (tabs['free-pro']);
+}
+
+if (neveDash.whiteLabel) {
+	delete (tabs.changelog);
+	delete (tabs.plugins);
+	if (neveDash.whiteLabel.hideStarterSites) {
+		delete (tabs['starter-sites']);
+	}
 }
 
 

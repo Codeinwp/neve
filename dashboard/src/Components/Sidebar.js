@@ -14,6 +14,7 @@ const Sidebar = ({currentTab}) => {
 	return (
 		<div className="sidebar-wrap">
 			{neveDash.pro && <LicenseCard isVisible={'pro' === currentTab}/>}
+			{! neveDash.whiteLabel &&
 			<aside className="sidebar card">
 				<div className="sidebar-section">
 					<h4>{__('Neve Community', 'neve')}</h4>
@@ -60,6 +61,7 @@ const Sidebar = ({currentTab}) => {
 					}
 				</div>
 			</aside>
+			}
 		</div>
 	);
 };

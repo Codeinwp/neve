@@ -1,3 +1,13 @@
+.license.card {
+  h4 {
+	margin-bottom: 20px;
+  }
+
+  p {
+	margin-top: 0;
+  }
+}
+
 .license-form {
   flex-direction: row;
   display: flex;
@@ -39,9 +49,11 @@
 	align-items: center;
 	justify-content: center;
 	padding: 2px 2px 2px 2px;
+
 	&.success {
 	  background-color: $success;
 	}
+
 	&.error {
 	  background-color: $error;
 	}

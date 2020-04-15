@@ -1,6 +1,21 @@
 .card.module-card {
   padding: 0;
-
+  .required {
+	a {
+	  text-decoration: none;
+	  color: $warning;
+	  display: flex;
+	  align-content: center;
+	  line-height: 1.6;
+	  span {
+		display: flex;
+		align-content: center;
+	  }
+	  .dashicons {
+		margin-right: 5px;
+	  }
+	}
+  }
   .card-header {
 	border-bottom: 1px solid $grey;
 

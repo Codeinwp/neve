@@ -68,7 +68,9 @@ const ModuleCard = ({slug, setToast, changeModuleStatus, getModuleStatus, tier})
 								{__('Upgrade', 'neve')}
 							</Button> :
 							<Fragment>
+								{required_actions && <span className="required" dangerouslySetInnerHTML={{__html: required_actions}}/>}
 								{loading && <Dashicon size={18} icon="update" className="is-loading"/>}
+								{! required_actions &&
 								<ToggleControl
 									checked={getModuleStatus(slug)}
 									onChange={(value) => {
@@ -88,6 +90,7 @@ const ModuleCard = ({slug, setToast, changeModuleStatus, getModuleStatus, tier})
 										});
 									}}
 								/>
+								}
 							</Fragment>
 					}
 				</div>
@@ -95,8 +98,9 @@ const ModuleCard = ({slug, setToast, changeModuleStatus, getModuleStatus, tier})
 			<div className="card-content">
 				<p className="card-description">
 					{description + ' '}
-					{documentation &&
-					<a href={documentation.url}>{__('Learn More', 'neve')}</a>
+					{
+						documentation.url &&
+						<a href={documentation.url}>{__('Learn More', 'neve')}</a>
 					}
 				</p>
 				{links && getModuleStatus(slug) &&

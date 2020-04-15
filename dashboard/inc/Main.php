@@ -64,12 +64,13 @@ class Main {
 	 */
 	public function __construct() {
 		define( 'NEVE_NEW_DASHBOARD', true );
+		$this->run_actions();
 		$this->server = new Rest();
 		$this->server->init();
 		$this->plugin_helper = new Plugin_Helper();
 		$this->cl_handler = new Changelog_Handler();
 		$this->setup_config();
-		$this->run_actions();
+		add_action( 'init', [ $this, 'setup_config' ] );
 	}
 
 	/**
@@ -83,7 +84,7 @@ class Main {
 	/**
 	 * Setup the class props based on current theme.
 	 */
-	private function setup_config() {
+	public function setup_config() {
 		$theme = wp_get_theme();
 
 		$this->theme_args[ 'name' ] = apply_filters( 'ti_wl_theme_name', $theme->__get( 'Name' ) );
@@ -149,6 +150,9 @@ class Main {
 	 * @return array
 	 */
 	private function get_localization() {
+		$theme_name = apply_filters( 'ti_wl_theme_name', $this->theme_args[ 'name' ] );
+		$plugin_name = apply_filters( 'ti_wl_plugin_name', __( 'Neve Pro', 'neve' ) );
+		$plugin_name_addon = apply_filters( 'ti_wl_plugin_name', __( 'Neve Pro Addon', 'neve' ) );
 		$data = [
 			'nonce'               => wp_create_nonce( 'wp_rest' ),
 			'api'                 => rest_url( REST::API_ROOT ),
@@ -159,8 +163,25 @@ class Main {
 			'plugins'             => $this->get_useful_plugins(),
 			'featureData'         => $this->get_free_pro_features(),
 			'upgradeURL'          => esc_url( apply_filters( 'neve_upgrade_link_from_child_theme_filter', 'https://themeisle.com/themes/neve/upgrade/?utm_medium=aboutneve&utm_source=freevspro&utm_campaign=neve' ) ),
+			'supportURL'          => esc_url( 'https://wordpress.org/support/theme/neve/' ),
+			'docsURL'             => esc_url( 'https://docs.themeisle.com/article/946-neve-doc' ),
 			'strings'             => [
-				'header' => $this->theme_args[ 'name' ] . ' ' . __( 'Options', 'neve' ),
+				'proTabTitle'                 => esc_html( $plugin_name ),
+				/* translators: %s - Theme name */
+				'header'                      => sprintf( __( '%s Options', 'neve' ), esc_html( $theme_name ) ),
+				/* translators: %s - Theme name */
+				'starterSitesCardDescription' => sprintf( __( '%s now comes with a sites library with various designs to pick from. Visit our collection of demos that are constantly being added.', 'neve' ), esc_html( $theme_name ) ),
+				/* translators: %s - Theme name */
+				'starterSitesTabDescription'  => sprintf( __( 'With %s, you can choose from multiple unique demos, specially designed for you, that can be installed with a single click. You just need to choose your favorite, and we will take care of everything else.', 'neve' ), esc_html( $theme_name ) ),
+				/* translators: %s - Theme name */
+				'supportCardDescription'      => sprintf( __( 'We want to make sure you have the best experience using %1$s, and that is why we have gathered all the necessary information here for you. We hope you will enjoy using %1$s as much as we enjoy creating great products.', 'neve' ), esc_html( $theme_name ) ),
+				/* translators: %s - Theme name */
+				'docsCardDescription'         => sprintf( __( 'Need more details? Please check our full documentation for detailed information on how to use %s.', 'neve' ), esc_html( $theme_name ) ),
+				/* translators: %s - "Neve Pro Addon" */
+				'licenseCardHeading'          => sprintf( __( '%s license', 'neve' ), esc_html( $plugin_name_addon ) ),
+				/* translators: %1$s - Author link - Themeisle */
+				'licenseCardDescription'      => sprintf( __( 'Enter your license from %1$s purchase history in order to get plugin updates', 'neve' ),
+					'<a href="https://store.themeisle.com/">ThemeIsle</a>' ),
 			],
 			'options'             => [
 				'logger' => get_option( 'neve_logger_flag', 'no' ) === 'yes',
@@ -175,7 +196,12 @@ class Main {
 		return $data;
 	}
 
-	private function get_notifications() {
+	/**
+	 * Get the notifications for plugin and theme updates.
+	 *
+	 * @return array
+	 */
+	public function get_notifications() {
 		delete_site_transient( 'update_themes' );
 		delete_site_transient( 'update_plugins' );
 		_maybe_update_themes();
@@ -201,7 +227,11 @@ class Main {
 		if ( isset( $plugins_update->response[ $plugin_path ] ) ) {
 			$update = $plugins_update->response[ $plugin_path ];
 			$notifications[ 'neve-pro-addon' ] = [
-				'text'   => sprintf( __( 'New plugin update for %1$s! Please update to %2$s.' ), 'Neve Pro', $update->new_version ),
+				'text'   => sprintf(
+					__( 'New plugin update for %1$s! Please update to %2$s.' ),
+					apply_filters( 'ti_wl_plugin_name', 'Neve Pro' ),
+					$update->new_version
+				),
 				'update' => [
 					'type' => 'plugin',
 					'slug' => 'neve-pro-addon',
@@ -256,6 +286,11 @@ class Main {
 		];
 	}
 
+	/**
+	 * Get the pro features for the free v pro table.
+	 *
+	 * @return array
+	 */
 	private function get_free_pro_features() {
 		return [
 			[

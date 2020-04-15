@@ -46,7 +46,6 @@ const ImportModal = ({setModal, setSite, editor, siteData}) => {
 		}, []);
 
 		const renderNote = () => {
-			console.log(siteData);
 			return <ImportModalNote data={siteData}/>;
 		};
 

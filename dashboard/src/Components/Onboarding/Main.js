@@ -88,10 +88,7 @@ const Onboarding = ({sites, upsells, editor, previewOpen, currentSiteData, impor
 				{renderMigration()}
 				<div className="ob-head">
 					<h2>{__('Ready to use pre-built websites with 1-click installation', 'neve')}</h2>
-					<p>{isOnboarding ?
-						__('With Neve, you can choose from multiple unique demos, specially designed for you, that can be installed with a single click.', 'neve') :
-						__('With Neve, you can choose from multiple unique demos, specially designed for you, that can be installed with a single click. You just need to choose your favorite, and we will take care of everything else.', 'neve')
-					}</p>
+					<p>{neveDash.strings.starterSitesTabDescription}</p>
 					{isOnboarding &&
 					<Button isPrimary onClick={cancelOnboarding}>{__('Keep the Current Layout', 'neve')}</Button>}
 				</div>
