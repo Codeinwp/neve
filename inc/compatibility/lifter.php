@@ -101,20 +101,62 @@ class Lifter {
 	 */
 	private function add_inline_selectors() {
 
-		add_filter( 'neve_selectors_' . Config::MODS_BUTTON_PRIMARY_STYLE, array( $this, 'add_primary_btns' ), 10, 2 );
-		add_filter( 'neve_selectors_' . Config::MODS_BUTTON_SECONDARY_STYLE, array(
-			$this,
-			'add_secondary_btns'
-		), 10, 2 );
+		add_filter(
+			'neve_selectors_' . Config::CSS_SELECTOR_BTN_PRIMARY_NORMAL,
+			array(
+				$this,
+				'add_primary_btns_normal',
+			),
+			10,
+			1
+		);
+		add_filter(
+			'neve_selectors_' . Config::CSS_SELECTOR_BTN_PRIMARY_HOVER,
+			array(
+				$this,
+				'add_primary_btns_hover',
+			),
+			10,
+			1
+		);
+		add_filter(
+			'neve_selectors_' . Config::CSS_SELECTOR_BTN_PRIMARY_PADDING,
+			array(
+				$this,
+				'add_primary_btns_padding',
+			),
+			10,
+			1
+		);
 
-		add_filter( 'neve_selectors_' . Config::MODS_BUTTON_PRIMARY_PADDING, array(
-			$this,
-			'add_primary_btns_padding'
-		), 10, 2 );
-		add_filter( 'neve_selectors_' . Config::MODS_BUTTON_SECONDARY_PADDING, array(
-			$this,
-			'add_secondary_btns_padding'
-		), 10, 2 );
+
+		add_filter(
+			'neve_selectors_' . Config::CSS_SELECTOR_BTN_SECONDARY_NORMAL,
+			array(
+				$this,
+				'add_secondary_btns_normal',
+			),
+			10,
+			1
+		);
+		add_filter(
+			'neve_selectors_' . Config::CSS_SELECTOR_BTN_SECONDARY_HOVER,
+			array(
+				$this,
+				'add_secondary_btns_hover',
+			),
+			10,
+			1
+		);
+		add_filter(
+			'neve_selectors_' . Config::CSS_SELECTOR_BTN_SECONDARY_PADDING,
+			array(
+				$this,
+				'add_secondary_btns_padding',
+			),
+			10,
+			1
+		);
 
 	}
 
@@ -122,51 +164,46 @@ class Lifter {
 	 * Add primary btn selectors for padding.
 	 *
 	 * @param string $selectors Current CSS selectors.
-	 * @param string $tag Tag name.
 	 *
 	 * @return string
 	 */
-	public function add_primary_btns_padding( $selectors, $tag ) {
-		if ( $tag === Config::CSS_SELECTOR_BTN_PRIMARY_PADDING ) {
-			return ( $selectors . $this->primary_buttons_selectors['default'] );
-		}
+	public function add_primary_btns_padding( $selectors ) {
+		return ( $selectors . $this->primary_buttons_selectors['default'] );
 
-		return $selectors;
 	}
 
 	/**
 	 * Add primary btn selectors for padding.
 	 *
 	 * @param string $selectors Current CSS selectors.
-	 * @param string $tag Tag name.
 	 *
 	 * @return string
 	 */
-	public function add_secondary_btns_padding( $selectors, $tag ) {
-		if ( $tag === Config::CSS_SELECTOR_BTN_SECONDARY_PADDING ) {
-			return ( $selectors . $this->secondary_buttons_selectors['default'] );
-		}
+	public function add_secondary_btns_padding( $selectors ) {
+		return ( $selectors . $this->secondary_buttons_selectors['default'] );
 
-		return $selectors;
 	}
 
 	/**
 	 * Add primary btn selectors.
 	 *
 	 * @param string $selectors Current CSS selectors.
-	 * @param string $tag Tag name.
 	 *
 	 * @return string
 	 */
-	public function add_primary_btns( $selectors, $tag ) {
-		if ( $tag === Config::CSS_SELECTOR_BTN_PRIMARY_NORMAL ) {
-			return ( $selectors . $this->primary_buttons_selectors['default'] );
-		}
-		if ( $tag === Config::CSS_SELECTOR_BTN_PRIMARY_HOVER ) {
-			return ( $selectors . $this->primary_buttons_selectors['hover'] );
-		}
+	public function add_primary_btns_normal( $selectors ) {
+		return ( $selectors . $this->primary_buttons_selectors['default'] );
+	}
 
-		return $selectors;
+	/**
+	 * Add primary btn selectors.
+	 *
+	 * @param string $selectors Current CSS selectors.
+	 *
+	 * @return string
+	 */
+	public function add_primary_btns_hover( $selectors ) {
+		return ( $selectors . $this->primary_buttons_selectors['hover'] );
 	}
 
 
@@ -174,19 +211,24 @@ class Lifter {
 	 * Add secondary btn selectors.
 	 *
 	 * @param string $selectors Current CSS selectors.
-	 * @param string $tag Tag name.
 	 *
 	 * @return string
 	 */
-	public function add_secondary_btns( $selectors, $tag ) {
-		if ( $tag === Config::CSS_SELECTOR_BTN_SECONDARY_NORMAL ) {
-			return ( $selectors . $this->secondary_buttons_selectors['default'] );
-		}
-		if ( $tag === Config::CSS_SELECTOR_BTN_SECONDARY_HOVER ) {
-			return ( $selectors . $this->secondary_buttons_selectors['hover'] );
-		}
+	public function add_secondary_btns_normal( $selectors ) {
+		return ( $selectors . $this->secondary_buttons_selectors['default'] );
 
-		return $selectors;
+	}
+
+
+	/**
+	 * Add secondary btn selectors.
+	 *
+	 * @param string $selectors Current CSS selectors.
+	 *
+	 * @return string
+	 */
+	public function add_secondary_btns_hover( $selectors ) {
+		return ( $selectors . $this->secondary_buttons_selectors['hover'] );
 	}
 
 

@@ -376,19 +376,63 @@ class Woocommerce {
 	 * Add inline selectors for woocommerce.
 	 */
 	private function add_inline_selectors() {
-		add_filter( 'neve_selectors_' . Config::MODS_BUTTON_PRIMARY_STYLE, array( $this, 'add_primary_btns' ), 10, 2 );
-		add_filter( 'neve_selectors_' . Config::MODS_BUTTON_SECONDARY_STYLE, array(
-			$this,
-			'add_secondary_btns'
-		), 10, 2 );
-		add_filter( 'neve_selectors_' . Config::MODS_BUTTON_PRIMARY_PADDING, array(
-			$this,
-			'add_primary_btns_padding'
-		), 10, 2 );
-		add_filter( 'neve_selectors_' . Config::MODS_BUTTON_SECONDARY_PADDING, array(
-			$this,
-			'add_secondary_btns_padding'
-		), 10, 2 );
+
+		add_filter(
+			'neve_selectors_' . Config::CSS_SELECTOR_BTN_PRIMARY_NORMAL,
+			array(
+				$this,
+				'add_primary_btns_normal',
+			),
+			10,
+			1 
+		);
+		add_filter(
+			'neve_selectors_' . Config::CSS_SELECTOR_BTN_PRIMARY_HOVER,
+			array(
+				$this,
+				'add_primary_btns_hover',
+			),
+			10,
+			1 
+		);
+		add_filter(
+			'neve_selectors_' . Config::CSS_SELECTOR_BTN_PRIMARY_PADDING,
+			array(
+				$this,
+				'add_primary_btns_padding',
+			),
+			10,
+			1 
+		);
+
+
+		add_filter(
+			'neve_selectors_' . Config::CSS_SELECTOR_BTN_SECONDARY_NORMAL,
+			array(
+				$this,
+				'add_secondary_btns_normal',
+			),
+			10,
+			1 
+		);
+		add_filter(
+			'neve_selectors_' . Config::CSS_SELECTOR_BTN_SECONDARY_HOVER,
+			array(
+				$this,
+				'add_secondary_btns_hover',
+			),
+			10,
+			1 
+		);
+		add_filter(
+			'neve_selectors_' . Config::CSS_SELECTOR_BTN_SECONDARY_PADDING,
+			array(
+				$this,
+				'add_secondary_btns_padding',
+			),
+			10,
+			1 
+		);
 
 		add_filter( 'neve_body_font_family_selectors', array( $this, 'add_font_families' ) );
 		add_filter( 'neve_headings_typeface_selectors', array( $this, 'add_typeface_selectors' ) );
@@ -398,32 +442,33 @@ class Woocommerce {
 	 * Add primary btn selectors.
 	 *
 	 * @param string $selectors Current CSS selectors.
-	 * @param string $tag Tag name.
 	 *
 	 * @return string
 	 */
-	public function add_primary_btns( $selectors, $tag ) {
-		if ( $tag === Config::CSS_SELECTOR_BTN_PRIMARY_NORMAL ) {
-			return ( $selectors . $this->primary_buttons_selectors['default'] );
-		}
-		if ( $tag === Config::CSS_SELECTOR_BTN_PRIMARY_HOVER ) {
-			return ( $selectors . $this->primary_buttons_selectors['hover'] );
-		}
+	public function add_primary_btns_normal( $selectors ) {
+		return ( $selectors . $this->primary_buttons_selectors['default'] );
+	}
 
-		return $selectors;
+	/**
+	 * Add primary btn selectors.
+	 *
+	 * @param string $selectors Current CSS selectors.
+	 *
+	 * @return string
+	 */
+	public function add_primary_btns_hover( $selectors ) {
+		return ( $selectors . $this->primary_buttons_selectors['hover'] );
 	}
 
 	/**
 	 * Add primary btn selectors for padding.
 	 *
 	 * @param string $selectors Current CSS selectors.
-	 * @param string $tag Tag name.
 	 *
 	 * @return string
 	 */
-	public function add_primary_btns_padding( $selectors, $tag ) {
-		if ( $tag === Config::CSS_SELECTOR_BTN_PRIMARY_PADDING ) {
-			return ( $selectors . ',.woocommerce a.button,
+	public function add_primary_btns_padding( $selectors ) {
+		return ( $selectors . ',.woocommerce a.button,
 			.woocommerce .button,
 			.woocommerce a.button.loading,
 			.woocommerce a.button.alt,
@@ -443,44 +488,43 @@ class Woocommerce {
 			.woocommerce .return-to-shop > .button,
 			.woocommerce .button.woocommerce-form-login__submit,
 			.woocommerce.single .quantity input' );
-		}
-
-		return $selectors;
 	}
 
 	/**
 	 * Add secondary btn selectors.
 	 *
 	 * @param string $selectors Current CSS selectors.
-	 * @param string $tag Tag name.
 	 *
 	 * @return string
 	 */
-	public function add_secondary_btns( $selectors, $tag ) {
-		if ( $tag === Config::CSS_SELECTOR_BTN_SECONDARY_NORMAL ) {
-			return ( $selectors . $this->secondary_buttons_selectors['default'] . $this->secondary_buttons_selectors['no-padding'] );
-		}
-		if ( $tag === Config::CSS_SELECTOR_BTN_SECONDARY_HOVER ) {
-			return ( $selectors . $this->secondary_buttons_selectors['hover'] . $this->secondary_buttons_selectors['no-padding-hover'] );
-		}
+	public function add_secondary_btns_normal( $selectors ) {
 
-		return $selectors;
+		return ( $selectors . $this->secondary_buttons_selectors['default'] . $this->secondary_buttons_selectors['no-padding'] );
+
+	}
+
+	/**
+	 * Add secondary btn selectors.
+	 *
+	 * @param string $selectors Current CSS selectors.
+	 *
+	 * @return string
+	 */
+	public function add_secondary_btns_hover( $selectors ) {
+
+		return ( $selectors . $this->secondary_buttons_selectors['hover'] . $this->secondary_buttons_selectors['no-padding-hover'] );
+
 	}
 
 	/**
 	 * Add secondary btn selectors for padding.
 	 *
 	 * @param string $selectors Current CSS selectors.
-	 * @param string $tag Tag name.
 	 *
 	 * @return string
 	 */
-	public function add_secondary_btns_padding( $selectors, $tag ) {
-		if ( $tag === Config::CSS_SELECTOR_BTN_SECONDARY_PADDING ) {
-			return ( $selectors . $this->secondary_buttons_selectors['default'] . ',.woocommerce a.nv-quick-view-product.top' );
-		}
-
-		return $selectors;
+	public function add_secondary_btns_padding( $selectors ) {
+		return ( $selectors . $this->secondary_buttons_selectors['default'] . ',.woocommerce a.nv-quick-view-product.top' );
 	}
 
 	/**

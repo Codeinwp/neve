@@ -106,8 +106,8 @@ function neve_hooks() {
  * The changes here might not be visible on front end due to woocommerce cart-fragments.js
  * In that case deactivate and reactivate WooCommerce.
  *
- * @param bool $echo should be echoed.
- * @param int $size icon size.
+ * @param bool   $echo should be echoed.
+ * @param int    $size icon size.
  * @param string $cart_icon Cart icon.
  *
  * @return string|null
@@ -129,7 +129,7 @@ function neve_cart_icon( $echo = false, $size = 15, $cart_icon = '' ) {
  * Search Icon
  *
  * @param bool $echo should be echoed.
- * @param int $size icon size.
+ * @param int  $size icon size.
  * @param bool $amp_ready Should we add the AMP binding.
  *
  * @return string
@@ -154,7 +154,7 @@ function neve_search_icon( $echo = false, $size = 15, $amp_ready = false ) {
  *  Escape HTML strings containing SVG.
  *
  * @param string $input the input string.
- * @param array $additional_args additional allowed.
+ * @param array  $additional_args additional allowed.
  *
  * @return string
  */

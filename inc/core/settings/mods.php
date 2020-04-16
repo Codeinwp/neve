@@ -24,6 +24,7 @@ class Mods {
 	 */
 	private static $_cached = [];
 
+
 	/**
 	 * Get theme mod.
 	 *
@@ -33,20 +34,155 @@ class Mods {
 	 * @return mixed Mod value.
 	 */
 	public static function get( $key, $default = false ) {
-		if ( isset( self::$_cached[ $key ] ) ) {
-			return ( self::$_cached[ $key ] );
+		$subkey = false;
+		if ( strpos( $key, '.' ) !== false ) {
+			$key_parts = explode( '.', $key );
+			$key       = $key_parts[0];
+			$subkey    = $key_parts[1];
+		}
+		/**
+		 * If the default is not provided, try to check on the legacy values.
+		 */
+		$default = $default === false ? self::defaults( $key ) : $default;
+
+		if ( ! isset( self::$_cached[ $key ] ) ) {
+			self::$_cached[ $key ] =
+				( $default === false ) ?
+					get_theme_mod( $key ) :
+					get_theme_mod( $key, $default );
+		}
+		// If we have a subkey match, we might need to decode the value.
+		if ( $subkey !== false ) {
+			$value = is_string( self::$_cached[ $key ] ) ? json_decode( self::$_cached[ $key ], true ) : self::$_cached[ $key ];
+			return ( isset( $value[ $subkey ] ) ? $value[ $subkey ] : $default );
 		}
 
-		self::$_cached[ $key ] = ( $default === false ) ? get_theme_mod( $key ) : get_theme_mod( $key, $default );
-
 		return self::$_cached[ $key ];
+	}
+
+	/***
+	 * Forced defaults.
+	 *
+	 * @param string $key Key name.
+	 *
+	 * @return array|bool
+	 */
+	private static function defaults( $key ) {
+		switch ( $key ) {
+			case Config::MODS_BUTTON_PRIMARY_STYLE:
+				return neve_get_button_appearance_default();
+				break;
+			case Config::MODS_BUTTON_SECONDARY_STYLE:
+				return neve_get_button_appearance_default( 'secondary_button' );
+				break;
+			case Config::MODS_TYPEFACE_GENERAL:
+				$defaults  = self::get_typography_defaults(
+					[
+						'line_height'    => 'neve_body_line_height',
+						'letter_spacing' => 'neve_body_letter_spacing',
+						'font_weight'    => 'neve_body_font_weight',
+						'text_transform' => 'neve_body_text_transform',
+					]
+				);
+				$font_size = Mods::to_json( 'neve_body_font_size' );
+				if ( ! empty( $font_size ) ) {
+					$defaults['fontSize'] = $font_size;
+				}
+
+				return $defaults;
+				break;
+			case Config::MODS_TYPEFACE_H1:
+			case Config::MODS_TYPEFACE_H2:
+			case Config::MODS_TYPEFACE_H3:
+			case Config::MODS_TYPEFACE_H4:
+			case Config::MODS_TYPEFACE_H5:
+			case Config::MODS_TYPEFACE_H6:
+				$defaults   = self::get_typography_defaults(
+					[
+						'line_height'    => 'neve_headings_line_height',
+						'letter_spacing' => 'neve_headings_letter_spacing',
+						'font_weight'    => 'neve_headings_font_weight',
+						'text_transform' => 'neve_headings_text_transform',
+					]
+				);
+				$legacy_map = [
+					Config::MODS_TYPEFACE_H6 => [
+						'font_size'   => 'neve_h6_font_size',
+						'line_height' => 'neve_h6_line_height',
+					],
+					Config::MODS_TYPEFACE_H5 => [
+						'font_size'   => 'neve_h5_font_size',
+						'line_height' => 'neve_h5_line_height',
+					],
+					Config::MODS_TYPEFACE_H4 => [
+						'font_size'   => 'neve_h4_font_size',
+						'line_height' => 'neve_h4_line_height',
+					],
+					Config::MODS_TYPEFACE_H3 => [
+						'font_size'   => 'neve_h3_font_size',
+						'line_height' => 'neve_h3_line_height',
+					],
+					Config::MODS_TYPEFACE_H2 => [
+						'font_size'   => 'neve_h2_font_size',
+						'line_height' => 'neve_h2_line_height',
+					],
+					Config::MODS_TYPEFACE_H1 => [
+						'font_size'   => 'neve_h1_font_size',
+						'line_height' => 'neve_h1_line_height',
+					],
+				];
+
+				$font_size = Mods::to_json( $legacy_map[ $key ]['font_size'] );
+				if ( ! empty( $font_size ) ) {
+					$defaults['fontSize'] = $font_size;
+				}
+				$line_height = Mods::to_json( $legacy_map[ $key ]['line_height'] );
+				if ( ! empty( $line_height ) ) {
+					$defaults['lineHeight'] = $line_height;
+				}
+
+				return $defaults;
+				break;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Helper method to get defaults for typography.
+	 *
+	 * @param array $args Legacy mods.
+	 *
+	 * @return array
+	 */
+	private static function get_typography_defaults( $args ) {
+
+		$line_height    = Mods::to_json( $args['line_height'] );
+		$letter_spacing = Mods::get( $args['letter_spacing'] );
+		$font_weight    = Mods::get( $args['font_weight'] );
+		$text_transform = Mods::get( $args['text_transform'] );
+		$defaults       = [];
+		if ( ! empty( $line_height ) ) {
+			$defaults['lineHeight'] = $line_height;
+		}
+		if ( ! empty( $letter_spacing ) ) {
+			$defaults['letterSpacing'] = $letter_spacing;
+		}
+		if ( ! empty( $font_weight ) ) {
+			$defaults['fontWeight'] = $font_weight;
+		}
+		if ( ! empty( $text_transform ) ) {
+			$defaults['textTransform'] = $text_transform;
+		}
+
+		return $defaults;
 	}
 
 	/**
 	 * Setter for the manager.
 	 *
 	 * @param string $key Key.
-	 * @param mixed $value Value
+	 * @param mixed  $value Value.
 	 */
 	public static function set( $key, $value ) {
 		self::$_cached[ $key ] = $value;
@@ -57,7 +193,7 @@ class Mods {
 	 *
 	 * @param string $key Key name.
 	 * @param string $default Default value.
-	 * @param bool $as_array As array or Object?
+	 * @param bool   $as_array As array or Object.
 	 *
 	 * @return mixed
 	 */
