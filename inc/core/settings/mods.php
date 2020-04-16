@@ -24,6 +24,25 @@ class Mods {
 	 */
 	private static $_cached = [];
 
+	/**
+	 * Get mod value with substring.
+	 *
+	 * @param string $key Key name.
+	 * @param string $default Default value.
+	 *
+	 * @return mixed
+	 */
+	private static function get_with_subkey( $key, $default ) {
+		$key_parts = explode( '.', $key );
+		$key       = $key_parts[0];
+		$subkey    = $key_parts[1];
+
+		$value = self::get( $key );
+
+		$value = is_string( $value ) ? json_decode( $value, true ) : $value;
+
+		return ( isset( $value[ $subkey ] ) ? $value[ $subkey ] : $default );
+	}
 
 	/**
 	 * Get theme mod.
@@ -34,12 +53,10 @@ class Mods {
 	 * @return mixed Mod value.
 	 */
 	public static function get( $key, $default = false ) {
-		$subkey = false;
 		if ( strpos( $key, '.' ) !== false ) {
-			$key_parts = explode( '.', $key );
-			$key       = $key_parts[0];
-			$subkey    = $key_parts[1];
+			return self::get_with_subkey( $key, $default );
 		}
+
 		/**
 		 * If the default is not provided, try to check on the legacy values.
 		 */
@@ -51,13 +68,8 @@ class Mods {
 					get_theme_mod( $key ) :
 					get_theme_mod( $key, $default );
 		}
-		// If we have a subkey match, we might need to decode the value.
-		if ( $subkey !== false ) {
-			$value = is_string( self::$_cached[ $key ] ) ? json_decode( self::$_cached[ $key ], true ) : self::$_cached[ $key ];
-			return ( isset( $value[ $subkey ] ) ? $value[ $subkey ] : $default );
-		}
 
-		return self::$_cached[ $key ];
+		return self::$_cached[ $key ] === false ? $default : self::$_cached[ $key ];
 	}
 
 	/***

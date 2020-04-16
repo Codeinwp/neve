@@ -139,7 +139,7 @@ class Dynamic_Selector {
 				$value         = $decoded_value !== false ? $decoded_value : $value;
 			}
 
-			return isset( $value[ $this->get_device() ] ) ? $value[ $this->get_device() ] : $value;
+			return isset( $value[ $this->get_device() ] ) ? $value[ $this->get_device() ] : ( ( is_string( $value ) || is_numeric( $value ) ) ? $value : false );
 		}
 
 		return $value;

@@ -87,7 +87,7 @@ class Css_Prop {
 			case Config::CSS_PROP_LINE_HEIGHT:
 			case Config::CSS_PROP_FONT_SIZE:
 				$all_value = Mods::get( $meta['key'] );
-				$suffix    = isset( $all_value['suffix'] ) ? $all_value['suffix'][ $device ] : ( isset( $value['suffix'] ) ? $value['suffix'] : 'em' );
+				$suffix    = isset( $all_value['suffix'] ) ? $all_value['suffix'][ $device ] : ( isset( $all_value['suffix'] ) ? $all_value['suffix'] : 'em' );
 
 				return sprintf( ' %s: %s%s; ', $css_prop, $value, $suffix );
 				break;
@@ -106,6 +106,10 @@ class Css_Prop {
 				if ( isset( $meta['font'] ) ) {
 					$font = strpos( $meta['font'], 'mods_' ) === 0 ? Mods::get( str_replace( 'mods_', '', $meta['font'] ) ) : $meta['font'];
 					Font_Manager::add_google_font( $font, strval( $value ) );
+
+					var_dump( $meta );
+					var_dump( Mods::get( 'neve_typeface_general' ) );
+					var_dump( $value );
 				}
 
 				return sprintf( ' %s: %s;', $css_prop, intval( $value ) );

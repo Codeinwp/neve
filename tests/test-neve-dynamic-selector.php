@@ -92,7 +92,6 @@ class TestDynamicSelector extends WP_UnitTestCase {
 		] );
 		$css        = '';
 		$css        .= $subscriber;
-
 		$this->assertNotEmpty( $css );
 		$this->assertContains( "929", $css );
 	}
@@ -120,7 +119,7 @@ class TestDynamicSelector extends WP_UnitTestCase {
 		$subscriber  = new \Neve\Core\Styles\Dynamic_Selector( [
 			'.test-selector' => [
 				\Neve\Core\Settings\Config::CSS_PROP_MAX_WIDTH => [
-					'key'     => 'mod_max_size2',
+					'key'     => 'mod_max_size22',
 					'default' => '929'
 				]
 			]
