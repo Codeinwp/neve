@@ -1,8 +1,17 @@
 <?php
-
+/**
+ * Plugin Action Helper
+ *
+ * @package Neve
+ */
 
 namespace Neve_Dash;
 
+/**
+ * Class Plugin_Helper
+ *
+ * @package Neve
+ */
 class Plugin_Helper {
 	/**
 	 * Check plugin state.
@@ -90,6 +99,13 @@ class Plugin_Helper {
 		);
 	}
 
+	/**
+	 * Get Plugin Action link.
+	 *
+	 * @param string $slug plugin slug.
+	 * @param string $action action [activate, deactivate].
+	 * @return string
+	 */
 	public function get_plugin_action_link( $slug, $action = 'activate' ) {
 		if ( ! in_array( $action, [ 'activate', 'deactivate' ] ) ) {
 			return '';

@@ -37,10 +37,10 @@ const Toggle = ({slug, label, getOption, changeOption, setToast}) => {
 export default compose(
 	withSelect((select) => {
 		const {
-			getOption
+			getProOption
 		} = select('neve-dashboard');
 		return {
-			getOption: (slug) => getOption(slug)
+			getOption: (slug) => getProOption(slug)
 		};
 	}),
 	withDispatch((dispatch) => {

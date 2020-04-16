@@ -1,16 +1,16 @@
 /* global neveDash */
-import {send} from '../utils/rest';
+import {changeOption} from '../utils/rest';
 import LicenseCard from './LicenseCard';
-import Toast from './Toast';
 
 const {__} = wp.i18n;
 const {ToggleControl} = wp.components;
 const {useState} = wp.element;
+const {withDispatch, withSelect} = wp.data;
+const {compose} = wp.compose;
 
-const Sidebar = ({currentTab}) => {
-	const [ tracking, setTracking ] = useState(neveDash.options.logger || false);
-	const [ toast, setToast ] = useState('');
-	const [ toastType, setToastType ] = useState('success');
+const Sidebar = ({currentTab, setToast, loggerValue}) => {
+	const [ tracking, setTracking ] = useState('yes' === loggerValue);
+
 	return (
 		<div className="sidebar-wrap">
 			{neveDash.pro && <LicenseCard isVisible={'pro' === currentTab}/>}
@@ -44,21 +44,16 @@ const Sidebar = ({currentTab}) => {
 						label={__('Allow Anonymous Tracking', 'neve')}
 						onChange={(value) => {
 							setTracking(value);
-							send(neveDash.api + '/toggle_tracking', {value}).then((response) => {
-								if (! response.success) {
-									setToastType('error');
+							changeOption('neve_logger_flag', value ? 'yes' : 'no', false, false).then(r => {
+								if (! r.success) {
 									setToast(__('Could not update option. Please try again.', 'neve'));
 									setTracking(! value);
 									return false;
 								}
-								setToastType('success');
-								setToast(response.message);
+								setToast(__('Option Updated', 'neve'));
 							});
 						}}
 					/>
-					{toast &&
-					<Toast dismiss={setToast} message={toast} type={toastType}/>
-					}
 				</div>
 			</aside>
 			}
@@ -66,4 +61,15 @@ const Sidebar = ({currentTab}) => {
 	);
 };
 
-export default Sidebar;
+export default compose(withDispatch(dispatch => {
+		const {setToast} = dispatch('neve-dashboard');
+		return {
+			setToast: (message) => setToast(message)
+		};
+	}), withSelect(select => {
+		const {getOption} = select('neve-dashboard');
+		return {
+			loggerValue: getOption('neve_logger_flag')
+		};
+	})
+)(Sidebar);

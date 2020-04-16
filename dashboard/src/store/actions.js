@@ -17,10 +17,10 @@
 			payload: {moduleSlug: 'nv_pro_' + moduleSlug + '_status', value}
 		};
 	},
-	changeModuleOption(optionSlug, optionValue) {
+	changeModuleOption(optionSlug, optionValue, pro = true) {
 		return {
 			type: 'CHANGE_MODULE_OPTION',
-			payload: {optionStatus: 'nv_pro_' + optionSlug, optionValue}
+			payload: {optionStatus: (pro ? 'nv_pro_' : '') + optionSlug, optionValue}
 		};
 	},
 	changeLicenseTier(tier) {

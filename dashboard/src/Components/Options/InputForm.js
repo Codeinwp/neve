@@ -58,10 +58,10 @@ const InputForm = ({slug, label, placeholder, getOption, setToast, changeOption}
 export default compose(
 	withSelect((select) => {
 		const {
-			getOption
+			getProOption
 		} = select('neve-dashboard');
 		return {
-			getOption: (slug) => getOption(slug)
+			getOption: (slug) => getProOption(slug)
 		};
 	}),
 	withDispatch((dispatch) => {

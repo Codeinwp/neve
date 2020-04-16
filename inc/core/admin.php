@@ -51,16 +51,16 @@ class Admin {
 			new \Neve_Dash\Main();
 		}
 		add_action(
-				'admin_init',
-				function () {
-					if ( get_option( 'themeisle_ob_plugins_installed' ) !== 'yes' ) {
-						return;
-					}
-					update_option( 'themeisle_blocks_settings_redirect', false );
-					delete_transient( 'wpforms_activation_redirect' );
-					update_option( 'themeisle_ob_plugins_installed', 'no' );
-				},
-				0
+			'admin_init',
+			function () {
+				if ( get_option( 'themeisle_ob_plugins_installed' ) !== 'yes' ) {
+					return;
+				}
+				update_option( 'themeisle_blocks_settings_redirect', false );
+				delete_transient( 'wpforms_activation_redirect' );
+				update_option( 'themeisle_ob_plugins_installed', 'no' );
+			},
+			0
 		);
 		add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_gutenberg_scripts' ] );
 		add_filter( 'themeisle_sdk_hide_dashboard_widget', '__return_true' );
@@ -94,30 +94,32 @@ class Admin {
 		$plugin_name = apply_filters( 'ti_wl_plugin_name', 'Neve Pro' );
 
 		$notifications = [];
+		$theme_slug    = 'neve';
 		$themes_update = get_site_transient( 'update_themes' );
-		if ( isset( $themes_update->response[ 'neve' ] ) ) {
-			$update = $themes_update->response[ 'neve' ];
-			$notifications[ 'neve' ] = [
-					'type' => 'theme',
-					'path' => '',
-					/* translators: %s - theme name */
-					'cta'  => sprintf( __( 'Update %1$s to v%2$s', 'neve' ), $this->theme_name, $update[ 'new_version' ] ),
+		if ( isset( $themes_update->response[ $theme_slug ] ) ) {
+			$update                       = $themes_update->response[ $theme_slug ];
+			$notifications[ $theme_slug ] = [
+				'type' => 'theme',
+				'path' => '',
+				/* translators: %s - theme name */
+				'cta'  => sprintf( __( 'Update %1$s to v%2$s', 'neve' ), $this->theme_name, $update['new_version'] ),
 			];
 		}
 
 		$plugins_update = get_site_transient( 'update_plugins' );
-		$plugin_path = 'neve-pro-addon/neve-pro-addon.php';
+		$plugin_path    = 'neve-pro-addon/neve-pro-addon.php';
 		if ( isset( $plugins_update->response[ $plugin_path ] ) ) {
-			$update = $plugins_update->response[ $plugin_path ];
-			$notifications[ 'neve-pro-addon' ] = [
-					'type' => 'plugin',
-					'path' => $plugin_path,
-					/* translators: %s - pro plugin name (Neve Pro) */
-					'cta'  => sprintf( __( 'Update %1$s to v%2$s', 'neve' ), $plugin_name, $update->new_version ),
+			$update                          = $plugins_update->response[ $plugin_path ];
+			$notifications['neve-pro-addon'] = [
+				'type' => 'plugin',
+				'path' => $plugin_path,
+				/* translators: %s - pro plugin name (Neve Pro) */
+				'cta'  => sprintf( __( 'Update %1$s to v%2$s', 'neve' ), $plugin_name, $update->new_version ),
 			];
 		}
-//|| sizeof( $notifications ) > 1
-		if ( empty( $notifications ) || ! is_array( $notifications ) ) {
+
+		// Only show the notice when one version is mismatched.
+		if ( ! is_array( $notifications ) || empty( $notifications ) || sizeof( $notifications ) !== 1 ) {
 			return;
 		}
 
@@ -134,19 +136,34 @@ class Admin {
 						e.preventDefault();
 						var self = $(this);
 						var type = self.data('type');
+						var updatingMessage = self.data('updating-string');
 						var slug = self.data('slug');
+
+						self.addClass('updating-message');
+						self.attr('disabled', 'true');
+
 						if (type === 'theme') {
 							wp.updates.ajax('update-theme', {slug}).then(() => {
-								console.log('theme-updated');
+								dismissNeveIncompatibility(self);
 							});
 						} else {
 							var path = self.data('path');
 							wp.updates.ajax('update-plugin', {slug, plugin: path}).then(() => {
-								console.log('plugin-updated');
+								dismissNeveIncompatibility(self);
 							});
 						}
 					});
 				});
+
+				function dismissNeveIncompatibility(button) {
+					var notice = $('.neve-incompatibility-notice');
+					notice.removeClass('notice-warning').addClass('notice-success');
+					button.removeClass('updating-message').addClass('updated-message');
+					button.children('span').text('<?php echo esc_html__( 'Updated', 'neve' ); ?>');
+					setTimeout(function () {
+						$('.neve-incompatibility-notice').fadeOut();
+					}, 2000);
+				}
 			}
 
 			jQuery(document).ready(function () {
@@ -155,17 +172,17 @@ class Admin {
 		</script>
 		<?php
 
-		$notice .= '<div class="neve-update-notice notice notice-warning">';
+		$notice .= '<div class="neve-incompatibility-notice notice notice-warning">';
 		$notice .= '<h3>' . __( 'Pending updates', 'neve' ) . ':' . '</h3>';
 		$notice .= '<p>' . esc_html( $text ) . '</p>';
 		$notice .= '<p class="actions">';
 		foreach ( $notifications as $slug => $args ) {
 			$notice .= '<button
 			class="neve-update-entity button button-secondary"
-			data-type="' . esc_attr( $args[ 'type' ] ) . '"
-			data-path="' . esc_attr( $args[ 'path' ] ) . '"
+			data-type="' . esc_attr( $args['type'] ) . '"
+			data-path="' . esc_attr( $args['path'] ) . '"
 			data-slug="' . esc_attr( $slug ) . '">';
-			$notice .= esc_html( $args[ 'cta' ] );
+			$notice .= '<span>' . esc_html( $args['cta'] ) . '</span>';
 			$notice .= '</button>';
 		}
 		$notice .= '</p>';
@@ -211,7 +228,7 @@ class Admin {
 		 * Backwards compatibility.
 		 */
 		global $current_user;
-		$user_id = $current_user->ID;
+		$user_id          = $current_user->ID;
 		$dismissed_notice = get_user_meta( $user_id, $this->dismiss_notice_key, true );
 
 		if ( $dismissed_notice === 'dismissed' ) {
@@ -274,9 +291,9 @@ class Admin {
 	 */
 	public function welcome_notice_content() {
 		$theme_args = wp_get_theme();
-		$name = apply_filters( 'ti_wl_theme_name', $theme_args->__get( 'Name' ) );
-		$template = $theme_args->get( 'Template' );
-		$slug = $theme_args->__get( 'stylesheet' );
+		$name       = apply_filters( 'ti_wl_theme_name', $theme_args->__get( 'Name' ) );
+		$template   = $theme_args->get( 'Template' );
+		$slug       = $theme_args->__get( 'stylesheet' );
 		$theme_page = ! empty( $template ) ? $template . '-welcome' : $slug . '-welcome';
 
 		$notice_template = '
@@ -293,54 +310,54 @@ class Admin {
 
 		/* translators: 1 - notice title, 2 - notice message */
 		$notice_header = sprintf(
-				'<h2>%1$s</h2><p class="about-description">%2$s</p></hr>',
-				esc_html__( 'Congratulations!', 'neve' ),
-				sprintf(
+			'<h2>%1$s</h2><p class="about-description">%2$s</p></hr>',
+			esc_html__( 'Congratulations!', 'neve' ),
+			sprintf(
 				/* translators: %s - theme name */
-						esc_html__( '%s is now installed and ready to use. We\'ve assembled some links to get you started.', 'neve' ),
-						$name
-				)
+				esc_html__( '%s is now installed and ready to use. We\'ve assembled some links to get you started.', 'neve' ),
+				$name
+			)
 		);
 		$ob_btn = sprintf(
 		/* translators: 1 - onboarding url, 2 - button text */
-				'<a href="%1$s" class="button button-primary button-hero install-now" >%2$s</a>',
-				esc_url( admin_url( 'themes.php?page=' . $theme_page . '&onboarding=yes#starter-sites' ) ),
-				sprintf( apply_filters( 'ti_onboarding_neve_start_site_cta', esc_html__( 'Try one of our ready to use Starter Sites', 'neve' ) ) )
+			'<a href="%1$s" class="button button-primary button-hero install-now" >%2$s</a>',
+			esc_url( admin_url( 'themes.php?page=' . $theme_page . '&onboarding=yes#starter-sites' ) ),
+			sprintf( apply_filters( 'ti_onboarding_neve_start_site_cta', esc_html__( 'Try one of our ready to use Starter Sites', 'neve' ) ) )
 		);
 		$ob_return_dashboard = sprintf(
 		/* translators: 1 - button text */
-				'<a href="' . esc_url( admin_url() ) . '" class=" ti-return-dashboard  button button-secondary button-hero install-now" ><span>%1$s</span></a>',
-				__( 'Return to your dashboard', 'neve' )
+			'<a href="' . esc_url( admin_url() ) . '" class=" ti-return-dashboard  button button-secondary button-hero install-now" ><span>%1$s</span></a>',
+			__( 'Return to your dashboard', 'neve' )
 		);
 		$options_page_btn = sprintf(
 		/* translators: 1 - options page url, 2 - button text */
-				'<a href="%1$s" class="options-page-btn">%2$s</a>',
-				esc_url( admin_url( 'themes.php?page=' . $theme_page ) ),
-				esc_html__( 'or go to the theme settings', 'neve' )
+			'<a href="%1$s" class="options-page-btn">%2$s</a>',
+			esc_url( admin_url( 'themes.php?page=' . $theme_page ) ),
+			esc_html__( 'or go to the theme settings', 'neve' )
 		);
-		$notice_picture = sprintf(
-				'<picture>
+		$notice_picture    = sprintf(
+			'<picture>
 					<source srcset="about:blank" media="(max-width: 1024px)">
 					<img src="%1$s"/>
 				</picture>',
-				esc_url( $this->get_notice_picture() )
+			esc_url( $this->get_notice_picture() )
 		);
 		$notice_sites_list = sprintf(
-				'<div><h3><span class="dashicons dashicons-images-alt2"></span> %1$s</h3><p>%2$s</p></div><div> <p>%3$s</p><p>%4$s</p> </div>',
-				__( 'Sites Library', 'neve' ),
-				// translators: %s - theme name
+			'<div><h3><span class="dashicons dashicons-images-alt2"></span> %1$s</h3><p>%2$s</p></div><div> <p>%3$s</p><p>%4$s</p> </div>',
+			__( 'Sites Library', 'neve' ),
+			// translators: %s - theme name
 				sprintf( esc_html__( '%s now comes with a sites library with various designs to pick from. Visit our collection of demos that are constantly being added.', 'neve' ), $name ),
-				$ob_btn,
-				$options_page_btn
+			$ob_btn,
+			$options_page_btn
 		);
 		$notice_documentation = sprintf(
-				'<div><h3><span class="dashicons dashicons-format-aside"></span> %1$s</h3><p>%2$s</p><a href="%3$s">%4$s</a></div><div> <p>%5$s</p></div>',
-				__( 'Documentation', 'neve' ),
-				// translators: %s - theme name
+			'<div><h3><span class="dashicons dashicons-format-aside"></span> %1$s</h3><p>%2$s</p><a href="%3$s">%4$s</a></div><div> <p>%5$s</p></div>',
+			__( 'Documentation', 'neve' ),
+			// translators: %s - theme name
 				sprintf( esc_html__( 'Need more details? Please check our full documentation for detailed information on how to use %s.', 'neve' ), $name ),
-				'https://docs.themeisle.com/article/946-neve-doc',
-				esc_html__( 'Read full documentation', 'neve' ),
-				$ob_return_dashboard
+			'https://docs.themeisle.com/article/946-neve-doc',
+			esc_html__( 'Read full documentation', 'neve' ),
+			$ob_return_dashboard
 		);
 		$style = '
 		.nv-notice-wrapper h2{
@@ -425,12 +442,12 @@ class Admin {
 		}
 		';
 		echo sprintf(
-				$notice_template, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-				$notice_header, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-				$notice_picture, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-				$notice_sites_list, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-				$notice_documentation, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-				$style // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			$notice_template, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			$notice_header, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			$notice_picture, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			$notice_sites_list, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			$notice_documentation, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			$style // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		);
 	}
 
@@ -450,7 +467,7 @@ class Admin {
 			return;
 		}
 
-		wp_enqueue_style( 'neve-gutenberg-style', NEVE_ASSETS_URL . 'css/gutenberg-editor-style' . ((NEVE_DEBUG) ? '' : '.min') . '.css', array(), NEVE_VERSION );
+		wp_enqueue_style( 'neve-gutenberg-style', NEVE_ASSETS_URL . 'css/gutenberg-editor-style' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), NEVE_VERSION );
 	}
 
 	/**
@@ -494,10 +511,10 @@ class Admin {
 	 * Remove notice;
 	 */
 	public function remove_notice() {
-		if ( ! isset( $_POST[ 'nonce' ] ) ) {
+		if ( ! isset( $_POST['nonce'] ) ) {
 			return;
 		}
-		if ( ! wp_verify_nonce( $_POST[ 'nonce' ], 'remove_notice_confirmation' ) ) {
+		if ( ! wp_verify_nonce( $_POST['nonce'], 'remove_notice_confirmation' ) ) {
 			return;
 		}
 		update_option( $this->dismiss_notice_key, 'yes' );

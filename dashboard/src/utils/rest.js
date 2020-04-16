@@ -1,7 +1,7 @@
 const {__} = wp.i18n;
 
-export const changeOption = (option, value, module = false) => {
-	option = 'nv_pro_' + option + (module ? '_status' : '');
+export const changeOption = (option, value, module = false, pro = true) => {
+	option = (pro ? 'nv_pro_' : '') + option + (module ? '_status' : '');
 	const model = new wp.api.models.Settings({
 		[option]: value
 	});

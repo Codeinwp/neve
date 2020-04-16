@@ -1,7 +1,17 @@
 <?php
+/**
+ * Changleog Handler
+ *
+ * Handles parsing for Changelog files.
+ */
 
 namespace Neve_Dash;
 
+/**
+ * Class Changelog_Handler
+ *
+ * @package neve
+ */
 class Changelog_Handler {
 	/**
 	 * Get the parsed changelog.
@@ -29,12 +39,12 @@ class Changelog_Handler {
 	private function parse_changelog( $changelog_path ) {
 		WP_Filesystem();
 		global $wp_filesystem;
-		$changelog = $wp_filesystem->get_contents( $changelog_path);
+		$changelog = $wp_filesystem->get_contents( $changelog_path );
 		if ( is_wp_error( $changelog ) ) {
 			$changelog = '';
 		}
 		$changelog = explode( PHP_EOL, $changelog );
-		$releases = [];
+		$releases  = [];
 
 		foreach ( $changelog as $changelog_line ) {
 			if ( strpos( $changelog_line, '**Changes:**' ) !== false || empty( $changelog_line ) ) {
@@ -48,19 +58,19 @@ class Changelog_Handler {
 				preg_match( '/[0-99].[0-99].[0-99]/', $changelog_line, $found_v );
 				preg_match( '/[0-9]{4}-[0-9]{1,2}-[0-9]{1,2}/', $changelog_line, $found_d );
 				$release = array(
-					'version' => $found_v[ 0 ],
-					'date'    => $found_d[ 0 ],
+					'version' => $found_v[0],
+					'date'    => $found_d[0],
 				);
 			} else {
 				if ( preg_match( '/[*|-]?\s?(\[fix]|\[Fix]|fix|Fix)[:]?\s?\b/', $changelog_line ) ) {
-					$changelog_line = preg_replace( '/[*|-]?\s?(\[fix]|\[Fix]|fix|Fix)[:]?\s?\b/', '', $changelog_line );
-					$release[ 'fixes' ][] = trim( str_replace( '*', '', $changelog_line ) );
+					$changelog_line     = preg_replace( '/[*|-]?\s?(\[fix]|\[Fix]|fix|Fix)[:]?\s?\b/', '', $changelog_line );
+					$release['fixes'][] = trim( str_replace( '*', '', $changelog_line ) );
 					continue;
 				}
 
 				if ( preg_match( '/[*|-]?\s?(\[feat]|\[Feat]|feat|Feat)[:]?\s?\b/', $changelog_line ) ) {
-					$changelog_line = preg_replace( '/[*|-]?\s?(\[feat]|\[Feat]|feat|Feat)[:]?\s?\b/', '', $changelog_line );
-					$release[ 'features' ][] = trim( str_replace( [ '*', '-' ], '', $changelog_line ) );
+					$changelog_line        = preg_replace( '/[*|-]?\s?(\[feat]|\[Feat]|feat|Feat)[:]?\s?\b/', '', $changelog_line );
+					$release['features'][] = trim( str_replace( [ '*', '-' ], '', $changelog_line ) );
 					continue;
 				}
 
@@ -70,7 +80,7 @@ class Changelog_Handler {
 					continue;
 				}
 
-				$release[ 'tweaks' ][] = $changelog_line;
+				$release['tweaks'][] = $changelog_line;
 			}
 		}
 		return $releases;

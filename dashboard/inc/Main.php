@@ -1,6 +1,8 @@
 <?php
 /**
  * Main class of the Neve Dashboard
+ *
+ * @package neve
  */
 
 namespace Neve_Dash;
@@ -12,14 +14,7 @@ namespace Neve_Dash;
  */
 class Main {
 	/**
-	 * Rest instance.
-	 *
-	 * @var Rest
-	 */
-	private $server = null;
-
-	/**
-	 * Rest instance.
+	 * Chanfelog Handler..
 	 *
 	 * @var Changelog_Handler
 	 */
@@ -56,19 +51,27 @@ class Main {
 		'amp',
 	];
 
+	/**
+	 * Plugins Cache key.
+	 *
+	 * @var string
+	 */
 	private $plugins_cache_key = 'neve_dash_useful_plugins';
+
+	/**
+	 * Plugins Cache Hash key.
+	 *
+	 * @var string
+	 */
 	private $plugins_cache_hash_key = 'neve_dash_useful_plugins_hash';
 
 	/**
 	 * Main constructor.
 	 */
 	public function __construct() {
-		define( 'NEVE_NEW_DASHBOARD', true );
 		$this->run_actions();
-		$this->server = new Rest();
-		$this->server->init();
 		$this->plugin_helper = new Plugin_Helper();
-		$this->cl_handler = new Changelog_Handler();
+		$this->cl_handler    = new Changelog_Handler();
 		$this->setup_config();
 		add_action( 'init', [ $this, 'setup_config' ] );
 	}
@@ -79,6 +82,22 @@ class Main {
 	private function run_actions() {
 		add_action( 'admin_menu', [ $this, 'register' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue' ] );
+		add_action( 'init', array( $this, 'register_settings' ) );
+	}
+
+	/**
+	 * Register Logger Setting
+	 */
+	public function register_settings() {
+		register_setting(
+			'neve_settings',
+			'neve_logger_flag',
+			[
+				'type'         => 'string',
+				'show_in_rest' => true,
+				'default'      => 'no',
+			]
+		);
 	}
 
 	/**
@@ -87,27 +106,29 @@ class Main {
 	public function setup_config() {
 		$theme = wp_get_theme();
 
-		$this->theme_args[ 'name' ] = apply_filters( 'ti_wl_theme_name', $theme->__get( 'Name' ) );
-		$this->theme_args[ 'template' ] = $theme->get( 'Template' );
-		$this->theme_args[ 'version' ] = $theme->__get( 'Version' );
-		$this->theme_args[ 'description' ] = apply_filters( 'ti_wl_theme_description', $theme->__get( 'Description' ) );
-		$this->theme_args[ 'slug' ] = $theme->__get( 'stylesheet' );
+		$this->theme_args['name']        = apply_filters( 'ti_wl_theme_name', $theme->__get( 'Name' ) );
+		$this->theme_args['template']    = $theme->get( 'Template' );
+		$this->theme_args['version']     = $theme->__get( 'Version' );
+		$this->theme_args['description'] = apply_filters( 'ti_wl_theme_description', $theme->__get( 'Description' ) );
+		$this->theme_args['slug']        = $theme->__get( 'stylesheet' );
 	}
 
 	/**
+	 * Register theme options page.
 	 *
+	 * @return void
 	 */
 	public function register() {
 		$theme = $this->theme_args;
 
-		if ( empty( $theme[ 'name' ] ) || empty( $theme[ 'slug' ] ) ) {
+		if ( empty( $theme['name'] ) || empty( $theme['slug'] ) ) {
 			return;
 		}
 
-		$page_title = $theme[ 'name' ] . ' ' . __( 'Options', 'neve' ) . ' ';
-		$menu_name = $theme[ 'name' ] . ' ' . __( 'Options', 'neve' ) . ' ';
+		$page_title = $theme['name'] . ' ' . __( 'Options', 'neve' ) . ' ';
+		$menu_name  = $theme['name'] . ' ' . __( 'Options', 'neve' ) . ' ';
 
-		$theme_page = ! empty( $theme[ 'template' ] ) ? $theme[ 'template' ] . '-welcome' : $theme[ 'slug' ] . '-welcome';
+		$theme_page = ! empty( $theme['template'] ) ? $theme['template'] . '-welcome' : $theme['slug'] . '-welcome';
 		add_theme_page( $page_title, $menu_name, 'activate_plugins', $theme_page, [ $this, 'render' ] );
 	}
 
@@ -129,8 +150,8 @@ class Main {
 			return;
 		}
 
-		$theme = $this->theme_args;
-		$theme_page = ! empty( $theme[ 'template' ] ) ? $theme[ 'template' ] . '-welcome' : $theme[ 'slug' ] . '-welcome';
+		$theme      = $this->theme_args;
+		$theme_page = ! empty( $theme['template'] ) ? $theme['template'] . '-welcome' : $theme['slug'] . '-welcome';
 
 		if ( $screen->id !== 'appearance_page_' . $theme_page ) {
 			return;
@@ -150,12 +171,11 @@ class Main {
 	 * @return array
 	 */
 	private function get_localization() {
-		$theme_name = apply_filters( 'ti_wl_theme_name', $this->theme_args[ 'name' ] );
-		$plugin_name = apply_filters( 'ti_wl_plugin_name', __( 'Neve Pro', 'neve' ) );
+		$theme_name        = apply_filters( 'ti_wl_theme_name', $this->theme_args['name'] );
+		$plugin_name       = apply_filters( 'ti_wl_plugin_name', __( 'Neve Pro', 'neve' ) );
 		$plugin_name_addon = apply_filters( 'ti_wl_plugin_name', __( 'Neve Pro Addon', 'neve' ) );
-		$data = [
+		$data              = [
 			'nonce'               => wp_create_nonce( 'wp_rest' ),
-			'api'                 => rest_url( REST::API_ROOT ),
 			'version'             => 'v' . NEVE_VERSION,
 			'assets'              => get_template_directory_uri() . '/dashboard/assets/',
 			'notifications'       => $this->get_notifications(),
@@ -180,17 +200,17 @@ class Main {
 				/* translators: %s - "Neve Pro Addon" */
 				'licenseCardHeading'          => sprintf( __( '%s license', 'neve' ), esc_html( $plugin_name_addon ) ),
 				/* translators: %1$s - Author link - Themeisle */
-				'licenseCardDescription'      => sprintf( __( 'Enter your license from %1$s purchase history in order to get plugin updates', 'neve' ),
-					'<a href="https://store.themeisle.com/">ThemeIsle</a>' ),
-			],
-			'options'             => [
-				'logger' => get_option( 'neve_logger_flag', 'no' ) === 'yes',
+				'licenseCardDescription'      => sprintf(
+				// translators: store name (Themeisle)
+					__( 'Enter your license from %1$s purchase history in order to get plugin updates', 'neve' ),
+					'<a href="https://store.themeisle.com/">ThemeIsle</a>'
+				),
 			],
 			'changelog'           => $this->cl_handler->get_changelog( get_template_directory() . '/CHANGELOG.md' ),
 		];
 
 		if ( defined( 'NEVE_PRO_PATH' ) ) {
-			$data[ 'changelogPro' ] = $this->cl_handler->get_changelog( NEVE_PRO_PATH . '/CHANGELOG.md' );
+			$data['changelogPro'] = $this->cl_handler->get_changelog( NEVE_PRO_PATH . '/CHANGELOG.md' );
 		}
 
 		return $data;
@@ -208,12 +228,13 @@ class Main {
 		_maybe_update_plugins();
 
 		$notifications = [];
-		$slug = 'neve';
+		$slug          = 'neve';
 		$themes_update = get_site_transient( 'update_themes' );
 		if ( isset( $themes_update->response[ $slug ] ) ) {
-			$update = $themes_update->response[ $slug ];
-			$notifications[ 'neve' ] = [
-				'text'   => sprintf( __( 'New theme update for %1$s! Please update to %2$s.' ), $this->theme_args[ 'name' ], $update[ 'new_version' ] ),
+			$update                = $themes_update->response[ $slug ];
+			$notifications['neve'] = [
+				// translators: s - theme name (Neve).
+				'text'   => sprintf( __( 'New theme update for %1$s! Please update to %2$s.' ), $this->theme_args['name'], $update['new_version'] ),
 				'update' => [
 					'type' => 'theme',
 					'slug' => $slug,
@@ -223,11 +244,12 @@ class Main {
 		}
 
 		$plugins_update = get_site_transient( 'update_plugins' );
-		$plugin_path = 'neve-pro-addon/neve-pro-addon.php';
+		$plugin_path    = 'neve-pro-addon/neve-pro-addon.php';
 		if ( isset( $plugins_update->response[ $plugin_path ] ) ) {
-			$update = $plugins_update->response[ $plugin_path ];
-			$notifications[ 'neve-pro-addon' ] = [
+			$update                          = $plugins_update->response[ $plugin_path ];
+			$notifications['neve-pro-addon'] = [
 				'text'   => sprintf(
+				// translators: s - Pro plugin name (Neve Pro)
 					__( 'New plugin update for %1$s! Please update to %2$s.' ),
 					apply_filters( 'ti_wl_plugin_name', 'Neve Pro' ),
 					$update->new_version
@@ -362,8 +384,8 @@ class Main {
 	 * @return array
 	 */
 	private function get_useful_plugins() {
-		$available = get_transient( $this->plugins_cache_key );
-		$hash = get_transient( $this->plugins_cache_hash_key );
+		$available    = get_transient( $this->plugins_cache_key );
+		$hash         = get_transient( $this->plugins_cache_hash_key );
 		$current_hash = substr( md5( wp_json_encode( $this->useful_plugins ) ), 0, 5 );
 
 
@@ -371,10 +393,10 @@ class Main {
 			$available = json_decode( $available, true );
 
 			foreach ( $available as $slug => $args ) {
-				$available[ $slug ][ 'cta' ] = $this->plugin_helper->get_plugin_state( $slug );
-				$available[ $slug ][ 'path' ] = $this->plugin_helper->get_plugin_path( $slug );
-				$available[ $slug ][ 'activate' ] = $this->plugin_helper->get_plugin_action_link( $slug );
-				$available[ $slug ][ 'deactivate' ] = $this->plugin_helper->get_plugin_action_link( $slug, 'deactivate' );
+				$available[ $slug ]['cta']        = $this->plugin_helper->get_plugin_state( $slug );
+				$available[ $slug ]['path']       = $this->plugin_helper->get_plugin_path( $slug );
+				$available[ $slug ]['activate']   = $this->plugin_helper->get_plugin_action_link( $slug );
+				$available[ $slug ]['deactivate'] = $this->plugin_helper->get_plugin_action_link( $slug, 'deactivate' );
 
 			}
 
@@ -388,11 +410,11 @@ class Main {
 				continue;
 			}
 			$data[ $slug ] = [
-				'banner'      => $current_plugin->banners[ 'low' ],
+				'banner'      => $current_plugin->banners['low'],
 				'name'        => html_entity_decode( $current_plugin->name ),
 				'description' => html_entity_decode( $current_plugin->short_description ),
 				'version'     => $current_plugin->version,
-				'author'      => html_entity_decode( strip_tags( $current_plugin->author ) ),
+				'author'      => html_entity_decode( wp_strip_all_tags( $current_plugin->author ) ),
 				'cta'         => $this->plugin_helper->get_plugin_state( $slug ),
 				'path'        => $this->plugin_helper->get_plugin_path( $slug ),
 				'activate'    => $this->plugin_helper->get_plugin_action_link( $slug ),
