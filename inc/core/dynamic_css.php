@@ -24,18 +24,47 @@ class Dynamic_Css {
 		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue' ), 100 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ), 100 );
 		$this->generator = new Generator();
+		//Legacy tweak.
+
+	}
+
+	public function legacy_style() {
+		$classes     = apply_filters( 'neve_filter_inline_style_classes', [], 'neve-generated-style' );
+		$mobile_css  = '';
+		$desktop_css = '';
+		$tablet_css  = '';
+		foreach ( $classes as $class ) {
+			$object = new $class();
+			$object->init();
+			$mobile_css  .= $object->get_style( 'mobile' );
+			$desktop_css .= $object->get_style( 'desktop' );
+			$tablet_css  .= $object->get_style( 'tablet' );
+		}
+		$all_css = $mobile_css;
+		if ( ! empty( $tablet_css ) ) {
+			$all_css .= sprintf( '@media(min-width: 576px){ %s }', $tablet_css );
+		}
+		if ( ! empty( $desktop_css ) ) {
+			$all_css .= sprintf( '@media(min-width: 960px){ %s }', $desktop_css );
+		}
+		add_filter( 'neve_dynamic_style_output', function ( $css ) use ( $all_css ) {
+			return $all_css . $css;
+		} );
 	}
 
 	/**
 	 * Load frontend style.
 	 */
 	public function enqueue() {
+		if ( ! class_exists( ' Neve_Pro\Core\Generic_Style', true ) ) {
+			$this->legacy_style();
+		}
 		$is_for_gutenberg = ( current_action() === self::EDITOR_ACTION );
 
 
-		$style            = apply_filters( 'neve_dynamic_style_output', $this->generator->generate( false, $is_for_gutenberg ) );
+		$style = apply_filters( 'neve_dynamic_style_output', $this->generator->generate( false, $is_for_gutenberg ) );
 
-		$style            = preg_replace( '/\s+/', ' ', $style );
+		$style = preg_replace( '/\s+/', ' ', $style );
 
 		wp_add_inline_style( self::HANDLE, $style );
 	}

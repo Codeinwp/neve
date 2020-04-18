@@ -106,10 +106,6 @@ class Css_Prop {
 				if ( isset( $meta['font'] ) ) {
 					$font = strpos( $meta['font'], 'mods_' ) === 0 ? Mods::get( str_replace( 'mods_', '', $meta['font'] ) ) : $meta['font'];
 					Font_Manager::add_google_font( $font, strval( $value ) );
-
-					var_dump( $meta );
-					var_dump( Mods::get( 'neve_typeface_general' ) );
-					var_dump( $value );
 				}
 
 				return sprintf( ' %s: %s;', $css_prop, intval( $value ) );
