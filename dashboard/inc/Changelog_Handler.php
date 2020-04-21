@@ -3,6 +3,8 @@
  * Changleog Handler
  *
  * Handles parsing for Changelog files.
+ *
+ * @package neve
  */
 
 namespace Neve_Dash;

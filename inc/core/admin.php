@@ -32,12 +32,8 @@ class Admin {
 	private $theme_name;
 
 	/**
-	 * Current theme slug.
+	 * Theme Details
 	 *
-	 * @var string $theme_slug Theme slug.
-	 */
-	private $theme_slug;
-	/**
 	 * @var \WP_Theme
 	 */
 	private $theme_args;
@@ -72,10 +68,12 @@ class Admin {
 		}
 	}
 
+	/**
+	 * Setup Class Properties
+	 */
 	public function set_props() {
 		$this->theme_args = wp_get_theme();
 		$this->theme_name = apply_filters( 'ti_wl_theme_name', $this->theme_args->__get( 'Name' ) );
-		$this->theme_slug = $this->theme_args->__get( 'stylesheet' );
 	}
 
 	/**
@@ -188,7 +186,7 @@ class Admin {
 		$notice .= '</p>';
 		$notice .= '</div>';
 
-		echo $notice;
+		echo wp_kses_post( $notice );
 	}
 
 	/**
@@ -278,7 +276,7 @@ class Admin {
 			}
 		';
 
-		echo '<style>' . $style . '</style>';
+		echo '<style>' . wp_kses_post( $style ) . '</style>';
 		$this->dismiss_script();
 		echo '<div class="nv-welcome-notice updated notice ti-about-notice">';
 		echo '<div class="notice-dismiss"></div>';
@@ -290,10 +288,9 @@ class Admin {
 	 * Render welcome notice content
 	 */
 	public function welcome_notice_content() {
-		$theme_args = wp_get_theme();
-		$name       = apply_filters( 'ti_wl_theme_name', $theme_args->__get( 'Name' ) );
-		$template   = $theme_args->get( 'Template' );
-		$slug       = $theme_args->__get( 'stylesheet' );
+		$name       = apply_filters( 'ti_wl_theme_name', $this->theme_args->__get( 'Name' ) );
+		$template   = $this->theme_args->get( 'Template' );
+		$slug       = $this->theme_args->__get( 'stylesheet' );
 		$theme_page = ! empty( $template ) ? $template . '-welcome' : $slug . '-welcome';
 
 		$notice_template = '
@@ -485,7 +482,7 @@ class Admin {
 						$.post(
 								'<?php echo esc_url( admin_url( 'admin-ajax.php' ) ); ?>',
 								{
-									nonce: '<?php echo wp_create_nonce( 'remove_notice_confirmation' ); ?>',
+									nonce: '<?php echo esc_attr( wp_create_nonce( 'remove_notice_confirmation' ) ); ?>',
 									action: 'neve_dismiss_welcome_notice',
 									success: function () {
 										if (typeof redirect !== 'undefined' && window.location.href !== redirect) {
@@ -514,7 +511,7 @@ class Admin {
 		if ( ! isset( $_POST['nonce'] ) ) {
 			return;
 		}
-		if ( ! wp_verify_nonce( $_POST['nonce'], 'remove_notice_confirmation' ) ) {
+		if ( ! wp_verify_nonce( sanitize_text_field( $_POST['nonce'] ), 'remove_notice_confirmation' ) ) {
 			return;
 		}
 		update_option( $this->dismiss_notice_key, 'yes' );
