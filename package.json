@@ -39,7 +39,7 @@
 		"@size-limit/webpack": "^4.4.0",
 		"babel-loader": "^8.1.0",
 		"conventional-changelog-simple-preset": "^1.0.13",
-		"core-js": "^3.6.4",
+		"core-js": "^3.6.5",
 		"cross-env": "^7.0.2",
 		"cypress": "^4.4.0",
 		"cypress-file-upload": "^4.0.3",
