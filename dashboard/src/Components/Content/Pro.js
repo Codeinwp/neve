@@ -1,11 +1,19 @@
 /* global neveDash */
 import ModuleCard from '../ModuleCard';
 
-const {__} = wp.i18n;
-const {Fragment} = wp.element;
-
-const Pro = (props) => {
+const Pro = () => {
 	const {modules} = neveDash;
+
+	if (neveDash.hasOldPro) {
+		return (
+			<div className="col">
+				<div className="card">
+					<h2 dangerouslySetInnerHTML={{__html: neveDash.strings.updateOldPro}}/>
+				</div>
+			</div>
+		);
+	}
+
 	return (
 		<div className="col">
 			{

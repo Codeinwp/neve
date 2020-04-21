@@ -36,7 +36,7 @@ const tabs = {
 	'free-pro': {label: 'Free vs Pro', render: (setTab) => <FreePro/>}
 };
 
-if (neveDash.pro) {
+if (neveDash.pro || neveDash.hasOldPro) {
 	tabs.pro = {label: neveDash.strings.proTabTitle, render: (setTab) => <Pro/>};
 	delete (tabs['free-pro']);
 }

@@ -2,6 +2,7 @@
 import {get} from '../../utils/rest';
 import Loading from '../Onboarding/Loading';
 import Onboarding from '../Onboarding/Main';
+import ImportModalError from '../Onboarding/ImportModalError';
 
 const {useState, useEffect} = wp.element;
 const {withDispatch, withSelect} = wp.data;
@@ -29,7 +30,7 @@ const StarterSites = ({sites, setSites, setUpsells, setMigrationData}) => {
 	}, []);
 
 	if (error) {
-		return <h1>Error.</h1>;
+		return <div className="card"><ImportModalError/></div>;
 	}
 	return (
 		loading ? <Loading/> : <Onboarding/>
