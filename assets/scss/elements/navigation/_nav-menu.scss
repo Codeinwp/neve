@@ -94,21 +94,28 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
   color: $link_hover_color;
 }
 
-#secondary-menu {
-  .hfg-item-left &, .hfg-item-center & {
-    li:not(:last-child) {
-      margin-right: $spacing-sm;
-    }
-  }
-
-  .hfg-item-right & {
-    li:not(:first-child) {
-      margin-left: $spacing-sm;
-    }
-  }
+.header-menu-sidebar .hfg-item-right #secondary-menu {
+  align-items: flex-end;
+}
+.header-menu-sidebar .hfg-item-center #secondary-menu {
+  align-items: center;
 }
 
 @mixin nav-menu--laptop() {
+  #secondary-menu {
+    .hfg-item-left &, .hfg-item-center & {
+      li:not(:last-of-type) {
+        margin-right: $spacing-sm;
+      }
+    }
+
+    .hfg-item-right & {
+      li:not(:first-of-type) {
+        margin-left: $spacing-sm;
+      }
+    }
+  }
+
   .header--row .primary-menu-ul {
     .hfg-item-left &, .hfg-item-center & {
       li:not(:last-child) {
