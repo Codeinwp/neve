@@ -28,6 +28,7 @@ class Config {
 	const MODS_BUTTON_PRIMARY_STYLE       = 'neve_button_appearance';
 	const MODS_BUTTON_SECONDARY_STYLE     = 'neve_secondary_button_appearance';
 	const MODS_BUTTON_PRIMARY_PADDING     = 'neve_button_padding';
+	const MODS_BACKGROUND_COLOR    = 'background_color';
 	const MODS_BUTTON_SECONDARY_PADDING   = 'neve_secondary_button_padding';
 	const MODS_TYPEFACE_GENERAL           = 'neve_typeface_general';
 	const MODS_TYPEFACE_H1                = 'neve_h1_typeface_general';

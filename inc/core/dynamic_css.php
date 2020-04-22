@@ -7,7 +7,8 @@ namespace Neve\Core;
 use Neve\Core\Styles\Generator;
 
 class Dynamic_Css {
-	const HANDLE = 'neve-style';
+	const FRONTEND_HANDLE = 'neve-style';
+	const GUTENBERG_HANDLE = 'neve-gutenberg-style';
 	/**
 	 * Generator object.
 	 *
@@ -56,17 +57,16 @@ class Dynamic_Css {
 	 * Load frontend style.
 	 */
 	public function enqueue() {
+		$is_for_gutenberg = ( current_action() === self::EDITOR_ACTION );
 		if ( ! class_exists( ' Neve_Pro\Core\Generic_Style', true ) ) {
 			$this->legacy_style();
 		}
-		$is_for_gutenberg = ( current_action() === self::EDITOR_ACTION );
-
 
 		$style = apply_filters( 'neve_dynamic_style_output', $this->generator->generate( false, $is_for_gutenberg ) );
 
 		$style = preg_replace( '/\s+/', ' ', $style );
 
-		wp_add_inline_style( self::HANDLE, $style );
+		wp_add_inline_style( $is_for_gutenberg ? self::GUTENBERG_HANDLE : self::FRONTEND_HANDLE, $style );
 	}
 
 }

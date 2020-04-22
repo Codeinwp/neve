@@ -49,6 +49,8 @@ class Css_Prop {
 			case Config::CSS_PROP_BACKGROUND_COLOR:
 			case Config::CSS_PROP_COLOR:
 			case Config::CSS_PROP_BORDER_COLOR:
+				$value = strpos( $value, "#" ) === 0 ? $value : '#' . $value;
+
 				return sprintf( "%s: %s;", ( $css_prop ), sanitize_hex_color( $value ) );
 				break;
 			case Config::CSS_PROP_MAX_WIDTH:

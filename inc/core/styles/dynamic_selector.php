@@ -16,14 +16,21 @@ use Neve\Core\Settings\Mods;
  * @package Neve\Core\Styles
  */
 class Dynamic_Selector {
-	const MOBILE             = 'mobile';
-	const TABLET             = 'tablet';
-	const DESKTOP            = 'desktop';
+	const MOBILE = 'mobile';
+	const TABLET = 'tablet';
+	const DESKTOP = 'desktop';
 	const META_IS_RESPONSIVE = 'is_responsive';
-	const META_SUFFIX        = 'suffix';
-	const META_KEY           = 'key';
-	const META_DEFAULT       = 'default';
-	const META_FILTER        = 'filter';
+	const META_SUFFIX = 'suffix';
+	const META_KEY = 'key';
+	const META_DEFAULT = 'default';
+	const META_FILTER = 'filter';
+
+	const KEY_SELECTOR = 'selectors';
+	const KEY_RULES = 'rules';
+	const KEY_CONTEXT = 'context';
+
+	const CONTEXT_FRONTEND = 'frontend';
+	const CONTEXT_GUTENBERG = 'gutenberg';
 	/**
 	 * Holds CSS selector mapping.
 	 *
@@ -42,14 +49,21 @@ class Dynamic_Selector {
 	 * @var bool Flag shorthand transformation.
 	 */
 	private $is_transformed = false;
+	/**
+	 * Holds current context.
+	 *
+	 * @var string Current context.
+	 */
+	private $current_context = null;
 
 	/**
 	 * Dynamic_Selector constructor.
 	 *
 	 * @param array $mapping CSS selector mapping.
 	 */
-	public function __construct( $mapping ) {
-		$this->mapping = $mapping;
+	public function __construct( $mapping, $context = null ) {
+		$this->current_context = $context;
+		$this->mapping         = $mapping;
 	}
 
 	/**
@@ -86,6 +100,15 @@ class Dynamic_Selector {
 	}
 
 	/**
+	 * Get current context.
+	 *
+	 * @return string Context.
+	 */
+	public function get_context() {
+		return ! empty( $this->current_context ) ? $this->current_context : self::CONTEXT_FRONTEND;
+	}
+
+	/**
 	 * Transform selectors tags into CSS selectors.
 	 *
 	 * @return array Transformed mapping.
@@ -95,16 +118,22 @@ class Dynamic_Selector {
 			return $this->mapping;
 		}
 		$map = [];
-		foreach ( $this->mapping as $selector => $props ) {
+		foreach ( $this->mapping as $key_map => $value_map ) {
+			$selector           = ! isset( $value_map[ self::KEY_SELECTOR ] ) ? $key_map : $value_map[ self::KEY_SELECTOR ];
+			$props              = ! isset( $value_map[ self::KEY_RULES ] ) ? $value_map : $value_map[ self::KEY_RULES ];
+			$context            = isset( $value_map[ self::KEY_CONTEXT ] ) ? $value_map[ self::KEY_CONTEXT ] : [ self::CONTEXT_FRONTEND => true ];
 			$expanded_selectors = $selector;
+			if ( ! isset( $context[ $this->get_context() ] ) ) {
+				continue;
+			}
 			if ( isset( Config::$css_selectors_map[ $expanded_selectors ] ) ) {
 				$expanded_selectors = Config::$css_selectors_map[ $expanded_selectors ];
 			}
-			$expanded_selectors = apply_filters( 'neve_selectors_' . $selector, $expanded_selectors, $this );
+			$expanded_selectors = apply_filters( 'neve_selectors_' . $selector, $expanded_selectors, $context, $this );
 			if ( empty( $expanded_selectors ) ) {
 				continue;
 			}
-			$map[ $expanded_selectors ] = $props;
+			$map[ $expanded_selectors ] = isset( $map[ $expanded_selectors ] ) ? array_merge( $map[ $expanded_selectors ], $props ) : $props;
 		}
 		$this->is_transformed = true;
 		$this->mapping        = $map;
