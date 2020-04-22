@@ -2,27 +2,27 @@
 
 $base-index: 100000;
 
-.migration {
-  .modal-body .loading {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	margin: 30px auto;
-	width: auto;
-	color: #fff;
-	h3 {
-	  margin: 20px 0 0;
-	}
-	svg {
-	  padding: 10px;
-	  background-color: $warning;
-	  border-radius: 100%;
-	  animation-name: spin;
-	  animation-duration: 2000ms;
-	  animation-iteration-count: infinite;
-	  animation-timing-function: linear;
-	}
+.migration .modal-body .loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 30px auto;
+  width: auto;
+  color: #fff;
+
+  h3 {
+	margin: 20px 0 0;
+  }
+
+  svg {
+	padding: 10px;
+	background-color: $warning;
+	border-radius: 100%;
+	animation-name: spin;
+	animation-duration: 2000ms;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
   }
 }
 
@@ -67,6 +67,7 @@ $base-index: 100000;
 	ul {
 	  margin: 20px 0 0;
 	  padding: 0;
+
 	  li {
 		margin-bottom: 10px;
 	  }
@@ -121,7 +122,9 @@ $base-index: 100000;
 
 	.toggle-wrapper {
 	  margin-left: auto;
-
+	  span {
+		margin-right: 0;
+	  }
 	  div {
 		margin-bottom: 0;
 	  }
@@ -147,10 +150,90 @@ $base-index: 100000;
 
 	  &:last-child {
 		margin-left: 25px;
+
 		&:only-child {
 		  margin-left: auto;
 		}
 	  }
+	}
+  }
+}
+
+.ob-import-modal.fetching {
+  pointer-events: none;
+  .title {
+	width: 200px;
+	display: block;
+  }
+  .is-loading {
+	border-radius: 3px;
+	animation: 1.5s loading-placeholder ease-in-out infinite;
+	background-color: $black;
+	height: 20px;
+  }
+  .well {
+	animation: 1.5s loading-placeholder-high-opacity ease-in-out infinite;
+	opacity: 1;
+	height: inherit !important;
+	background-color: inherit !important;
+	h3 {
+	  span {
+		width: 100px;
+	  }
+	}
+	ol {
+	  list-style: square;
+	}
+	li {
+	  border-radius: 3px;
+	  width: 75%;
+	  height: 18px;
+	  margin-top: 0;
+	  background-color: $black;
+	  animation: 1.5s loading-placeholder ease-in-out infinite;
+	  &:nth-child(2) {
+		width: 85%;
+	  }
+	  &:nth-child(3) {
+		width: 95%;
+	  }
+	}
+  }
+  .mock-icon {
+	width: 20px;
+	height: 20px;
+	margin-right: 5px;
+  }
+
+  .options {
+	h3 {
+	  max-width: 100px;
+	}
+	li {
+	  .mock-icon {
+		background-color: $blue;
+		margin-right: 15px;
+	  }
+
+	  span {
+		width: 100px;
+	  }
+
+	  .toggle {
+		width: 40px;
+		background-color: $blue;
+		border-radius: 50px;
+		margin-left: auto;
+	  }
+	}
+  }
+  .modal-footer button {
+	width: 90px;
+	height: 35px;
+	background-color: $dark-grey;
+	border: none !important;
+	&.is-primary {
+	  background-color: $blue;
 	}
   }
 }

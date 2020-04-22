@@ -7,7 +7,7 @@ const PreviewFrame = ({next, prev, siteData, setSite, setPreview, setModal}) => 
 	return (
 		<div className="ob-preview">
 			<div className="preview">
-				<iframe src={siteData['demo_url']} frameborder="0"/>
+				<iframe src={siteData.url} frameborder="0"/>
 				<div className="loading">
 					<Dashicon icon="update" size={50}/>
 				</div>
@@ -45,11 +45,11 @@ const PreviewFrame = ({next, prev, siteData, setSite, setPreview, setModal}) => 
 					/>}
 				</div>
 				<div className="actions">
-					{siteData['in_pro'] ?
+					{siteData.upsell ?
 						<Button
 							className="upgrade"
 							isLink
-							href={siteData['outbound_link']}
+							href={siteData.utmOutboundLink || neveDash.upgradeURL}
 						>
 							{__('Upgrade', 'neve')}
 						</Button> :

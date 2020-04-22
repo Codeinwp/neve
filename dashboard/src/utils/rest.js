@@ -20,19 +20,22 @@ export const send = (route, data, simple = false) => {
 	return requestData(route, simple, data);
 };
 
-export const get = (route, simple = false) => {
-	return requestData(route, simple, {}, 'GET');
+export const get = (route, simple = false, useNonce = true) => {
+	return requestData(route, simple, {}, 'GET', useNonce);
 };
 
-const requestData = async (route, simple = false, data = {}, method = 'POST') => {
+const requestData = async (route, simple = false, data = {}, method = 'POST', useNonce = true) => {
 	const options = {
 		method: method,
 		headers: {
 			'Accept': 'application/json',
-			'Content-Type': 'application/json',
-			'x-wp-nonce': neveDash.nonce
+			'Content-Type': 'application/json'
 		}
 	};
+
+	if (useNonce) {
+		options.headers['x-wp-nonce'] = neveDash.nonce;
+	}
 
 	if ('POST' === method) {
 		options.body = JSON.stringify(data);

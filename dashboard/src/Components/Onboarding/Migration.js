@@ -9,14 +9,20 @@ const {Dashicon, Button, Modal} = wp.components;
 const {useState, Fragment} = wp.element;
 const {withDispatch} = wp.data;
 
-const Migration = ({data, dismissMigration, setToast}) => {
+const Migration = ({data, setToast}) => {
+	const [ dismissed, setDismissed ] = useState(false);
 	const [ modalOpen, setModalOpen ] = useState(false);
 	const [ migrating, setMigrating ] = useState(false);
 	const [ error, setError ] = useState(null);
 	const [ frontPageID, setFrontPageID ] = useState(null);
+
+	if (dismissed) {
+		return null;
+	}
+
 	const closeModal = () => {
 		if ('done' === migrating) {
-			dismissMigration();
+			setDismissed(true);
 		}
 		setModalOpen(false);
 		setError(null);
@@ -178,7 +184,7 @@ const Migration = ({data, dismissMigration, setToast}) => {
 								return false;
 							}
 							setToast(__('Dismissed', 'neve'));
-							dismissMigration();
+							setDismissed(true);
 						});
 					}}
 				>{__('Dismiss', 'neve')}</Button>
@@ -188,12 +194,8 @@ const Migration = ({data, dismissMigration, setToast}) => {
 
 };
 export default withDispatch(dispatch => {
-	const {setMigrationData} = dispatch('neve-onboarding');
 	const {setToast} = dispatch('neve-dashboard');
 	return {
-		dismissMigration: () => {
-			setMigrationData(null);
-		},
 		setToast: (message) => {
 			setToast(message);
 		}

@@ -12,9 +12,11 @@ const {__} = wp.i18n;
 const {withSelect, withDispatch} = wp.data;
 const {compose} = wp.compose;
 
-const Onboarding = ({sites, upsells, editor, previewOpen, currentSiteData, importModal, isOnboarding, cancelOnboarding, migration}) => {
+const Onboarding = ({editor, previewOpen, currentSiteData, importModal, isOnboarding, cancelOnboarding}) => {
 	const [ searchQuery, setSearchQuery ] = useState('');
 	const [ maxShown, setMaxShown ] = useState(9);
+	const {sites, upsells, migration} = neveDash.onboarding.sites || null;
+
 
 	const filterSites = (sites) => {
 		Object.keys(sites).map((slug) => {
@@ -37,15 +39,17 @@ const Onboarding = ({sites, upsells, editor, previewOpen, currentSiteData, impor
 
 	const getAllSites = () => {
 		const sitesData = sites && sites[editor] ? filterSites(sites[editor]) : [];
-		const upsellsData = upsells && upsells[editor] ? filterSites(upsells[editor]) : [];
+		const upsellsData = upsells && upsells[editor] ? filterSites(upsells[editor]).map(i => {
+			i.upsell = true;
+			return i;
+		}) : [];
 		return [ ...sitesData, ...upsellsData ];
 	};
 
 	const renderSites = () => {
 		const allData = getAllSites();
-
 		return allData.slice(0, maxShown).map(site => {
-			return <StarterSiteCard upsell={site['in_pro']} data={site}/>;
+			return <StarterSiteCard data={site}/>;
 		});
 	};
 
@@ -76,7 +80,7 @@ const Onboarding = ({sites, upsells, editor, previewOpen, currentSiteData, impor
 	};
 
 	function renderMigration() {
-		if (! migration) {
+		if (! migration ) {
 			return null;
 		}
 		return <Migration data={migration}/>;
@@ -130,24 +134,18 @@ export default compose(
 	}),
 	withSelect(select => {
 		const {
-			getSites,
-			getUpsells,
 			getCurrentEditor,
 			getPreviewStatus,
 			getCurrentSite,
 			getImportModalStatus,
-			getOnboardingStatus,
-			getMigrationData
+			getOnboardingStatus
 		} = select('neve-onboarding');
 		return {
-			sites: getSites(),
-			upsells: getUpsells(),
 			editor: getCurrentEditor(),
 			previewOpen: getPreviewStatus(),
 			currentSiteData: getCurrentSite(),
 			importModal: getImportModalStatus(),
-			isOnboarding: getOnboardingStatus(),
-			migration: getMigrationData()
+			isOnboarding: getOnboardingStatus()
 		};
 	})
 )(Onboarding);

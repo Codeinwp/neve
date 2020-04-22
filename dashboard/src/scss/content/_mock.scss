@@ -88,20 +88,6 @@
 	background: #444;
 	animation: 1.5s loading-placeholder ease-in-out infinite;
   }
-
-  @keyframes loading-placeholder {
-	0% {
-	  opacity: .1;
-	}
-
-	50% {
-	  opacity: .2;
-	}
-
-	100% {
-	  opacity: .1;
-	}
-  }
 }
 
 @mixin mock--laptop() {
@@ -141,5 +127,33 @@
 		margin-top: 35px;
 	  }
 	}
+  }
+}
+
+@keyframes loading-placeholder {
+  0% {
+	opacity: .1;
+  }
+
+  50% {
+	opacity: .2;
+  }
+
+  100% {
+	opacity: .1;
+  }
+}
+
+@keyframes loading-placeholder-high-opacity {
+  0% {
+	opacity: .7;
+  }
+
+  50% {
+	opacity: .9;
+  }
+
+  100% {
+	opacity: .7;
   }
 }

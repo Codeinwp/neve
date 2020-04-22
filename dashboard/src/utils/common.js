@@ -49,9 +49,12 @@ if (neveDash.whiteLabel) {
 	}
 }
 
+const untrailingSlashIt = (str) => str.replace(/\/$/, '');
+const trailingSlashIt = (str) => untrailingSlashIt(str) + '/';
 
 export {
 	addUrlHash,
 	getTabHash,
+	trailingSlashIt,
 	tabs
 };

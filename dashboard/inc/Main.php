@@ -178,7 +178,7 @@ class Main {
 			'nonce'               => wp_create_nonce( 'wp_rest' ),
 			'version'             => 'v' . NEVE_VERSION,
 			'assets'              => get_template_directory_uri() . '/dashboard/assets/',
-			'hasOldPro'			  => (bool) ( defined( 'NEVE_PRO_VERSION' ) && version_compare( NEVE_PRO_VERSION, '1.1.11', '<' ) ),
+			'hasOldPro'           => (bool) ( defined( 'NEVE_PRO_VERSION' ) && version_compare( NEVE_PRO_VERSION, '1.1.11', '<' ) ),
 			'notifications'       => $this->get_notifications(),
 			'customizerShortcuts' => $this->get_customizer_shortcuts(),
 			'plugins'             => $this->get_useful_plugins(),
@@ -201,14 +201,16 @@ class Main {
 				/* translators: %s - "Neve Pro Addon" */
 				'licenseCardHeading'          => sprintf( __( '%s license', 'neve' ), esc_html( $plugin_name_addon ) ),
 				/* translators: %s - "Neve Pro Addon" */
-				'updateOldPro'          	  => sprintf( __( 'Please update %s to the latest version and then refresh this page to have access to the options.', 'neve' ), esc_html( $plugin_name_addon ) ),
+				'updateOldPro'                => sprintf( __( 'Please update %s to the latest version and then refresh this page to have access to the options.', 'neve' ), esc_html( $plugin_name_addon ) ),
 				/* translators: %1$s - Author link - Themeisle */
 				'licenseCardDescription'      => sprintf(
 				// translators: store name (Themeisle)
 					__( 'Enter your license from %1$s purchase history in order to get plugin updates', 'neve' ),
 					'<a href="https://store.themeisle.com/">ThemeIsle</a>'
-				), ],
+				),
+			],
 			'changelog'           => $this->cl_handler->get_changelog( get_template_directory() . '/CHANGELOG.md' ),
+			'onboarding'          => $this->get_onboarding_data(),
 		];
 
 		if ( defined( 'NEVE_PRO_PATH' ) ) {
@@ -428,5 +430,12 @@ class Main {
 		set_transient( $this->plugins_cache_key, wp_json_encode( $data ) );
 
 		return $data;
+	}
+
+	/**
+	 * Get the onboarding data.
+	 */
+	private function get_onboarding_data() {
+		return array();
 	}
 }

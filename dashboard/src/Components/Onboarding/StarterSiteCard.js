@@ -2,8 +2,8 @@ const {Button} = wp.components;
 const {__} = wp.i18n;
 const {withDispatch} = wp.data;
 
-const StarterSiteCard = ({data, upsell, setSite, setPreview, setModal}) => {
-
+const StarterSiteCard = ({data, setSite, setPreview, setModal}) => {
+	const {upsell} = data;
 	return (
 		<div className="card starter-site-card">
 			<div className="top">

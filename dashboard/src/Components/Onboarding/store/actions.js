@@ -1,22 +1,4 @@
 export default {
-	setSites(sites) {
-		return {
-			type: 'SET_SITES',
-			payload: {sites}
-		};
-	},
-	setUpsells(upsells) {
-		return {
-			type: 'SET_UPSELLS',
-			payload: {upsells}
-		};
-	},
-	setMigrationData(migrationData) {
-		return {
-			type: 'SET_MIGRATION_DATA',
-			payload: {migrationData}
-		};
-	},
 	setCurrentEditor(editor) {
 		return {
 			type: 'SET_CURRENT_EDITOR',
