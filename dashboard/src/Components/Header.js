@@ -1,5 +1,6 @@
 /* global neveDash */
 import {addUrlHash, getTabHash, tabs} from '../utils/common';
+import classnames from 'classnames';
 
 const {__} = wp.i18n;
 const {useEffect} = wp.element;
@@ -43,7 +44,7 @@ const renderNavigation = (props) => {
 				return (
 					<li><a
 						href="#"
-						className={currentTab === item ? 'active' : ''}
+						className={classnames([ item, currentTab === item ? 'active' : '' ])}
 						onClick={(e) => {
 							e.preventDefault();
 							setTab(item);

@@ -3,6 +3,7 @@ import Accordion from './Accordion';
 import InputForm from './Options/InputForm';
 import Toggle from './Options/Toggle';
 import {changeOption} from '../utils/rest';
+import classnames from 'classnames';
 
 const {Button, ToggleControl, Dashicon} = wp.components;
 const {withSelect, withDispatch} = wp.data;
@@ -58,7 +59,7 @@ const ModuleCard = ({slug, setToast, changeModuleStatus, getModuleStatus, tier})
 	};
 
 	return (
-		<div className="card module-card">
+		<div className={classnames( [ 'card', 'module-card', slug ] )}>
 			<div className="card-header">
 				<h3 className="title">{nicename}</h3>
 				<div className="toggle-wrap">
