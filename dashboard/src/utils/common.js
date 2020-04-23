@@ -32,9 +32,12 @@ const tabs = {
 	'plugins': {label: 'Useful Plugins', render: (setTab) => <Plugins/>},
 	'help': {label: 'Help & docs', render: (setTab) => <Help setTab={setTab}/>},
 	'changelog': {label: 'Changelog', render: (setTab) => <Changelog/>},
-	'starter-sites': {label: 'Starter Sites', render: (setTab) => <StarterSites/>},
 	'free-pro': {label: 'Free vs Pro', render: (setTab) => <FreePro/>}
 };
+
+if ( neveDash.onboarding.sites ) {
+	tabs['starter-sites'] = {label: 'Starter Sites', render: (setTab) => <StarterSites/>};
+}
 
 if (neveDash.pro || neveDash.hasOldPro) {
 	tabs.pro = {label: neveDash.strings.proTabTitle, render: (setTab) => <Pro/>};

@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeinwp/themeisle-onboarding.git",
-                "reference": "fcb22f4a623f80e1e60f231b42384dcba2d09826"
+                "reference": "6db119c2aaac7f5cec82ffa3662f233d36c09928"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeinwp/themeisle-onboarding/zipball/fcb22f4a623f80e1e60f231b42384dcba2d09826",
-                "reference": "fcb22f4a623f80e1e60f231b42384dcba2d09826",
+                "url": "https://api.github.com/repos/Codeinwp/themeisle-onboarding/zipball/6db119c2aaac7f5cec82ffa3662f233d36c09928",
+                "reference": "6db119c2aaac7f5cec82ffa3662f233d36c09928",
                 "shasum": ""
             },
             "require-dev": {
@@ -26,6 +26,14 @@
                 "wp-coding-standards/wpcs": "^1.0.0 || ^2.0.0"
             },
             "type": "library",
+            "extra": {
+                "installer-disable": "true"
+            },
+            "autoload": {
+                "psr-4": {
+                    "TIOB\\": "includes/"
+                }
+            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "GPL-3.0-or-later"
@@ -39,7 +47,7 @@
             ],
             "description": "ThemeIsle Onboarding Module.",
             "homepage": "https://github.com/Codeinwp/themeisle-onboarding",
-            "time": "2020-04-03T14:36:25+00:00"
+            "time": "2020-04-23T07:46:56+00:00"
         },
         {
             "name": "codeinwp/themeisle-sdk",
@@ -390,16 +398,16 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.5.4",
+            "version": "3.5.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "dceec07328401de6211037abbb18bda423677e26"
+                "reference": "73e2e7f57d958e7228fce50dc0c61f58f017f9f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/dceec07328401de6211037abbb18bda423677e26",
-                "reference": "dceec07328401de6211037abbb18bda423677e26",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/73e2e7f57d958e7228fce50dc0c61f58f017f9f6",
+                "reference": "73e2e7f57d958e7228fce50dc0c61f58f017f9f6",
                 "shasum": ""
             },
             "require": {
@@ -437,7 +445,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2020-01-30T22:20:29+00:00"
+            "time": "2020-04-17T01:09:41+00:00"
         },
         {
             "name": "wp-coding-standards/wpcs",

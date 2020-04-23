@@ -10,8 +10,6 @@
 
 namespace Neve\Core;
 
-use \TIOB\Main;
-
 /**
  * Class Admin
  *
@@ -202,6 +200,10 @@ class Admin {
 	 * Add notice.
 	 */
 	public function admin_notice() {
+		if ( defined( 'TI_ONBOARDING_DISABLED' ) && TI_ONBOARDING_DISABLED === true ) {
+			return;
+		}
+
 		$current_screen = get_current_screen();
 		if ( $current_screen->id !== 'dashboard' && $current_screen->id !== 'themes' ) {
 			return;
@@ -452,7 +454,9 @@ class Admin {
 	 * Load site import module.
 	 */
 	public function load_site_import() {
-		Main::instance();
+		if ( class_exists( '\TIOB\Main' ) ) {
+			\TIOB\Main::instance();
+		}
 	}
 
 	/**
