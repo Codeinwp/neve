@@ -219,8 +219,12 @@ class SecondNav extends Abstract_Component {
 
 		$item_spacing = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::SPACING );
 		if ( ! empty( $item_spacing ) ) {
-			$css_array['desktop'][ '.hfg-item-right .builder-item--' . $this->get_id() . ' #secondary-menu > li:not(:first-of-type)' ] = [ 'margin-left' => absint( $item_spacing ) . 'px' ];
-			$css_array['desktop'][ '.hfg-item-center .builder-item--' . $this->get_id() . ' #secondary-menu li:not(:last-of-type), .hfg-item-left .builder-item--' . $this->get_id() . ' #secondary-menu > li:not(:last-child)' ] = [ 'margin-right' => absint( $item_spacing ) . 'px' ];
+			$left  = is_rtl() ? 'right' : 'left';
+			$right = is_rtl() ? 'left' : 'right';
+			$first = is_rtl() ? 'last' : 'first';
+			$last  = is_rtl() ? 'first' : 'last';
+			$css_array['@media (min-width: 961px)'][ '.hfg-item-' . $right . ' .builder-item--' . $this->get_id() . ' #secondary-menu > li:not(:' . $first . '-of-type)' ] = [ 'margin-left' => absint( $item_spacing ) . 'px' ];
+			$css_array['@media (min-width: 961px)'][ '.hfg-item-center .builder-item--' . $this->get_id() . ' #secondary-menu li:not(:' . $last . '-of-type), .hfg-item-' . $left . ' .builder-item--' . $this->get_id() . ' #secondary-menu > li:not(:' . $last . '-of-type)' ] = [ 'margin-right' => absint( $item_spacing ) . 'px' ];
 			$css_array[ '.builder-item--' . $this->get_id() . ' .style-full-height #secondary-menu > li > a:after' ]       = [
 				'left'  => - $item_spacing / 2 . 'px',
 				'right' => - $item_spacing / 2 . 'px',
