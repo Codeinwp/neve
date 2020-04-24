@@ -31,9 +31,12 @@ $base-index: 100000;
 	}
   }
   .preview {
+	display: flex;
+	flex-direction: column;
 	position: relative;
 	flex-grow: 1;
 	iframe {
+	  flex-grow: 1;
 	  position: relative;
 	  z-index: $base-index+1;
 	  height: 100%;
