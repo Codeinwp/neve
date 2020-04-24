@@ -175,6 +175,7 @@ describe( 'Typography Control', function() {
 		cy.visit( '/markup-html-tags-and-formatting/' );
 		cy.get( '#wp-admin-bar-edit > a' ).click();
 
+		cy.clearWelcome();
 		cy.get( '.editor-styles-wrapper .wp-block p' ).
 			first().
 			as( 'editorBody' );

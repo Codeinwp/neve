@@ -1446,6 +1446,31 @@ class Front_End {
 						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/03/neve-personal-blog.jpg',
 						'title'      => 'Personal Blog',
 					],
+					'neve-travel-blog'           => [
+						'url'        => 'https://demo.themeisle.com/neve-travel-blog/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/04/neve-travel-blog.jpg',
+						'title'      => 'Travel Blog',
+					],
+					'neve-dj'                    => [
+						'url'        => 'https://demo.themeisle.com/neve-dj/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/04/neve-dj.jpg',
+						'title'      => 'DJ',
+					],
+					'neve-tech-lab'              => [
+						'url'        => 'https://demo.themeisle.com/neve-tech-lab/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/04/neve-tech.jpg',
+						'title'      => 'Tech Lab',
+					],
+					'neve-equitation'            => [
+						'url'        => 'https://demo.themeisle.com/neve-equitation/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/04/neve-horses.jpg',
+						'title'      => 'Equitation',
+					],
+					'neve-restaurant-2'          => [
+						'url'        => 'https://demo.themeisle.com/neve-restaurant-2/',
+						'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/04/neve-restaurant-2.jpg',
+						'title'      => 'Restaurant 2',
+					],
 				],
 				'brizy'            => [
 					'neve-brizy-cafe'                 => [
@@ -1556,117 +1581,178 @@ class Front_End {
 		}
 
 		$this->onboarding_config['editors'][]           = 'gutenberg';
-		$this->onboarding_config['remote']['gutenberg'] = array(
-			'neve-main-gutenberg'               => array(
+		$this->onboarding_config['remote']['gutenberg'] = [
+			'neve-main-gutenberg'               => [
 				'url'        => 'https://demo.themeisle.com/neve-onboarding-gutenberg',
 				'remote_url' => 'https://s20206.pcdn.co/neve-onboarding-gutenberg/',
 				'title'      => 'Original',
 				'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/neve-original.png',
-			),
-			'neve-web-agency-gutenberg'         => array(
+			],
+			'neve-web-agency-gutenberg'         => [
 				'url'        => 'https://demo.themeisle.com/neve-web-agency-gb/',
 				'remote_url' => 'https://s20206.pcdn.co/neve-web-agency-gb/',
 				'title'      => 'Web Agency',
 				'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/02/neve-web-agency-all-new.png',
-			),
-			'neve-blogger-gutenberg'            => array(
+			],
+			'neve-blogger-gutenberg'            => [
 				'url'        => 'https://demo.themeisle.com/neve-blogger-gb/',
 				'remote_url' => 'https://s20206.pcdn.co/neve-blogger-gb/',
 				'title'      => 'Blogger',
 				'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/11/neve-blogger.jpg',
-			),
-			'neve-restaurant-gutenberg'         => array(
+			],
+			'neve-restaurant-gutenberg'         => [
 				'url'              => 'https://demo.themeisle.com/neve-restaurant-gb/',
 				'remote_url'       => 'https://s20206.pcdn.co/neve-restaurant-gb/',
 				'title'            => 'Restaurant',
 				'screenshot'       => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/screenshot.png',
 				'unsplash_gallery' => 'https://unsplash.com/collections/4587624/restaurant',
-			),
-			'neve-vet-center-gutenberg'         => array(
+			],
+			'neve-charity-gutenberg'            => [
+				'url'              => 'https://demo.themeisle.com/neve-charity-gb/',
+				'remote_url'       => 'https://s20206.pcdn.co/neve-charity-gb/',
+				'title'            => 'Charity',
+				'screenshot'       => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/screenshot-1.png',
+				'unsplash_gallery' => 'https://unsplash.com/collections/4587605/charity',
+			],
+			'neve-vet-center-gutenberg'         => [
 				'url'              => 'https://demo.themeisle.com/neve-vet-center-gb/',
 				'remote_url'       => 'https://s20206.pcdn.co/neve-vet-center-gb/',
 				'title'            => 'Vet Center',
 				'screenshot'       => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/screenshot-2.png',
 				'unsplash_gallery' => 'https://unsplash.com/collections/4587611/vet-center',
-			),
-			'neve-doctors-gutenberg'            => array(
+			],
+			'neve-doctors-gutenberg'            => [
 				'url'              => 'https://demo.themeisle.com/neve-doctors-gb/',
 				'remote_url'       => 'https://s20206.pcdn.co/neve-doctors-gb/',
 				'title'            => 'Doctors',
 				'screenshot'       => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/screenshot-3.png',
 				'unsplash_gallery' => 'https://unsplash.com/collections/4587593/doctor',
-			),
-			'neve-architecture-gutenberg'       => array(
+			],
+			'neve-architecture-gutenberg'       => [
 				'url'              => 'https://demo.themeisle.com/neve-architecture-gb/',
 				'remote_url'       => 'https://s20206.pcdn.co/neve-architecture-gb/',
 				'title'            => 'Architecture',
 				'screenshot'       => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/screenshot-4.png',
 				'unsplash_gallery' => 'https://unsplash.com/collections/6802313/architecture/f59e19df059789d86d1066ea80130a87',
-			),
-			'neve-fitness-gutenberg'            => array(
+			],
+			'neve-fitness-gutenberg'            => [
 				'url'              => 'https://demo.themeisle.com/neve-fitness-gb/',
 				'remote_url'       => 'https://s20206.pcdn.co/neve-fitness-gb/',
 				'title'            => 'Fitness',
 				'screenshot'       => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/screenshot-5.png',
 				'unsplash_gallery' => 'https://unsplash.com/collections/6800490/fitness-gym',
-			),
-			'neve-vacation-rental-gutenberg'    => array(
+			],
+			'neve-vacation-rental-gutenberg'    => [
 				'url'              => 'https://demo.themeisle.com/neve-vacation-rental-gb/',
 				'remote_url'       => 'https://s20206.pcdn.co/neve-vacation-rental-gb/',
 				'title'            => 'Vacation Rental',
 				'screenshot'       => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/screenshot-6.png',
 				'unsplash_gallery' => 'https://unsplash.com/collections/7851106/hotel',
-			),
-			'neve-wedding-gutenberg'            => array(
+			],
+			'neve-music-band-gutenberg'         => [
+				'url'              => 'https://demo.themeisle.com/neve-music-band-gb/',
+				'remote_url'       => 'https://s20206.pcdn.co/neve-music-band-gb/',
+				'title'            => 'Music Band',
+				'screenshot'       => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/screenshot-7.png',
+				'unsplash_gallery' => 'https://unsplash.com/collections/7338489/music/746c95e4a72ad242a07001a2ca0fa7cb',
+			],
+			'neve-wedding-gutenberg'            => [
 				'url'              => 'https://demo.themeisle.com/neve-wedding-gb/',
 				'remote_url'       => 'https://s20206.pcdn.co/neve-wedding-gb/',
 				'title'            => 'Wedding',
 				'screenshot'       => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/screenshot.jpg',
 				'unsplash_gallery' => 'https://unsplash.com/collections/8116784/wedding/9afa9f6ba14422f348e1c7a49a9d51e9',
-			),
-			'neve-lawyers-gutenberg'            => array(
+			],
+			'neve-themotion-gutenberg'          => [
+				'url'              => 'https://demo.themeisle.com/neve-themotion-gb/',
+				'remote_url'       => 'https://s20206.pcdn.co/neve-themotion-gb/',
+				'title'            => 'Video Blog',
+				'screenshot'       => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/screenshot-1.jpg',
+				'unsplash_gallery' => 'https://unsplash.com/collections/8256651/neve-the-motion/79f8c5a63926e7cee4deed75bc6724fc',
+			],
+			'neve-amadeus-gutenberg'            => [
+				'url'              => 'https://demo.themeisle.com/neve-amadeus-gb/',
+				'remote_url'       => 'https://s20206.pcdn.co/neve-amadeus-gb/',
+				'title'            => 'Music Teacher',
+				'screenshot'       => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/screenshot-2.jpg',
+				'unsplash_gallery' => 'https://unsplash.com/collections/8271695/neve-amadeus/ba699571eb4fc205ad8385c0440ced80',
+			],
+			'neve-oblique-gutenberg'            => [
+				'url'              => 'https://demo.themeisle.com/neve-oblique-gb/',
+				'remote_url'       => 'https://s20206.pcdn.co/neve-oblique-gb/',
+				'title'            => 'Vintage',
+				'screenshot'       => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/screenshot-3.jpg',
+				'unsplash_gallery' => 'https://unsplash.com/collections/8325788/oblique/7281d963f7b798d5fa7d6327bfd26804',
+			],
+			'neve-rokophoto-gutenberg'          => [
+				'url'              => 'https://demo.themeisle.com/neve-rokophoto-gb/',
+				'remote_url'       => 'https://s20206.pcdn.co/neve-rokophoto-gb/',
+				'title'            => 'Photography',
+				'screenshot'       => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/screenshot-4.jpg',
+				'unsplash_gallery' => 'https://unsplash.com/collections/8311183/rokophoto/ecebabcd40134eacf11cbd3cba504f44',
+			],
+			'neve-energy-panels-gutenberg'      => [
+				'url'              => 'https://demo.themeisle.com/neve-energy-panels-gb/',
+				'remote_url'       => 'https://s20206.pcdn.co/neve-energy-panels-gb/',
+				'title'            => 'Energy Panels',
+				'screenshot'       => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/screenshot-5.jpg',
+				'unsplash_gallery' => 'https://unsplash.com/collections/4587602/energy-panels',
+			],
+			'neve-lawyers-gutenberg'            => [
 				'url'              => 'https://demo.themeisle.com/neve-lawyers-gb/',
 				'remote_url'       => 'https://s20206.pcdn.co/neve-lawyers-gb/',
 				'title'            => 'Lawyers',
 				'screenshot'       => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/screenshot-6.jpg',
 				'unsplash_gallery' => 'https://unsplash.com/collections/4587639/neve-lawyers',
-			),
-			'neve-tattoo-gutenberg'             => array(
+			],
+			'neve-freelancer-gutenberg'         => [
+				'url'              => 'https://demo.themeisle.com/neve-freelancer-gb/',
+				'remote_url'       => 'https://s20206.pcdn.co/neve-freelancer-gb/',
+				'title'            => 'Freelancer',
+				'screenshot'       => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/screenshot-7.jpg',
+				'unsplash_gallery' => 'https://unsplash.com/collections/4587634/freelancer/920c5eb680fa5f20b9b19a0d84a385eb',
+			],
+			'neve-tattoo-gutenberg'             => [
 				'url'              => 'https://demo.themeisle.com/neve-tatoo-gb/',
 				'remote_url'       => 'https://s20206.pcdn.co/neve-tatoo-gb/',
 				'title'            => 'Tattoo',
 				'screenshot'       => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/screenshot-8.jpg',
 				'unsplash_gallery' => 'https://unsplash.com/collections/8459353/tatoo-studio',
-			),
-			'neve-zelle-gutenberg'              => array(
+			],
+			'neve-zelle-gutenberg'              => [
 				'url'              => 'https://demo.themeisle.com/neve-zelle-gb/',
 				'remote_url'       => 'https://s20206.pcdn.co/neve-zelle-gb/',
 				'title'            => 'Travel Agency',
 				'screenshot'       => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/screenshot-9.jpg',
 				'unsplash_gallery' => 'https://unsplash.com/collections/4587771/zelle',
-			),
-			'neve-life-coach-gutenberg'         => array(
+			],
+			'neve-life-coach-gutenberg'         => [
 				'url'              => 'https://demo.themeisle.com/neve-scholar-gb/',
 				'remote_url'       => 'https://s20206.pcdn.co/neve-scholar-gb/',
 				'title'            => 'Life Coach',
 				'screenshot'       => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/screenshot-10.jpg',
 				'unsplash_gallery' => 'https://unsplash.com/collections/8532052/life-coach',
-			),
-			'neve-creative-portfolio-gutenberg' => array(
+			],
+			'neve-creative-portfolio-gutenberg' => [
 				'url'              => 'https://demo.themeisle.com/neve-creative-portofolio-gb/',
 				'remote_url'       => 'https://s20206.pcdn.co/neve-creative-portofolio-gb/',
 				'title'            => 'Creative Portfolio',
 				'screenshot'       => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/screenshot-11.jpg',
 				'unsplash_gallery' => 'https://unsplash.com/collections/8334242/creative-portfolio',
-			),
-		);
-		$this->onboarding_config['upsell']['gutenberg'] = array(
-			'neve-fashion-magazine-gutenberg' => array(
+			],
+		];
+		$this->onboarding_config['upsell']['gutenberg'] = [
+			'neve-cafe-gutenberg'             => [
+				'url'        => 'https://demo.themeisle.com/neve-cafe-gb/',
+				'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/06/neve-caffe-new-ss.jpg',
+				'title'      => 'Coffee Shop',
+			],
+			'neve-fashion-magazine-gutenberg' => [
 				'url'        => 'https://demo.themeisle.com/neve-fashion-magazine-gb/',
 				'title'      => 'Fashion Magazine',
 				'screenshot' => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2019/10/neve-fashion-mag.jpg',
-			),
-		);
+			],
+		];
 	}
 
 	/**

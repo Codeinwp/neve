@@ -19,7 +19,8 @@ const taskMap = {
   rtlcss: 'grunt-rtlcss',
   concat: 'grunt-contrib-concat',
   cssmin: 'grunt-contrib-cssmin',
-  addtextdomain: 'grunt-wp-i18n'
+  addtextdomain: 'grunt-wp-i18n',
+  wp_readme_to_markdown: 'grunt-wp-readme-to-markdown'	
 }
 const files = {
   php: [

@@ -51,6 +51,7 @@ class TypefaceComponent extends Component {
     }
 
     // Added Later. Make sure we have a default value if none is selected.
+    value.lineHeight = value.lineHeight || defaultParams.line_height_default
     value.lineHeight.suffix = value.lineHeight.suffix || defaultParams.line_height_default.suffix
 
     this.controlParams = props.control.params.input_attrs ? {

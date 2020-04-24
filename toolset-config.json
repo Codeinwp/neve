@@ -1,0 +1,203 @@
+{
+  "data": [
+    {
+      "name": "neve_blog_archive_container_style",
+      "type": [
+        "customizer"
+      ],
+      "group": "Layout",
+      "target": [
+        "archive"
+      ],
+      "global_key": "theme_mods_neve",
+      "gui": {
+        "display_name": "Blog / Archive Container Style",
+        "type": "select",
+        "values": [
+          {
+            "text": "Contained",
+            "value": "contained"
+          },
+          {
+            "text": "Full-Width",
+            "value": "full-width"
+          }
+        ]
+      },
+      "default_value": "toolset_use_theme_setting"
+    },
+    {
+      "name": "neve_single_post_container_style",
+      "type": [
+        "customizer"
+      ],
+      "group": "Layout",
+      "target": [
+        "single"
+      ],
+      "global_key": "theme_mods_neve",
+      "gui": {
+        "display_name": "Single Post Container Style",
+        "type": "select",
+        "values": [
+          {
+            "text": "Contained",
+            "value": "contained"
+          },
+          {
+            "text": "Full-Width",
+            "value": "full-width"
+          }
+        ]
+      },
+      "default_value": "toolset_use_theme_setting"
+    },
+    {
+      "name": "neve_default_sidebar_layout",
+      "type": [
+        "customizer"
+      ],
+      "group": "Layout",
+      "target": [
+        "archive",
+        "single"
+      ],
+      "global_key": "theme_mods_neve",
+      "gui": {
+        "display_name": "Sitewide Sidebar Layout",
+        "type": "select",
+        "values": [
+          {
+            "text": "Full-Width",
+            "value": "full-width"
+          },
+          {
+            "text": "Left",
+            "value": "left"
+          },
+          {
+            "text": "Right",
+            "value": "right"
+          }
+        ]
+      },
+      "default_value": "toolset_use_theme_setting"
+    },
+    {
+      "name": "neve_read_more_style",
+      "type": [
+        "customizer"
+      ],
+      "group": "Layout",
+      "target": [
+        "archive"
+      ],
+      "global_key": "theme_mods_neve",
+      "gui": {
+        "display_name": "Read More Style",
+        "type": "select",
+        "values": [
+          {
+            "text": "Text",
+            "value": "text"
+          },
+          {
+            "text": "Primary Button",
+            "value": "primary_button"
+          },
+          {
+            "text": "Secondary Button",
+            "value": "secondary_button"
+          }
+        ]
+      },
+      "default_value": "toolset_use_theme_setting"
+    },
+    {
+      "name": "neve_read_more_text",
+      "type": [
+        "customizer"
+      ],
+      "group": "Layout",
+      "target": [
+        "archive"
+      ],
+      "global_key": "theme_mods_neve",
+      "gui": {
+        "display_name": "Read More Text",
+        "type": "text"
+      },
+      "default_value": "Read More »"
+    },
+    {
+      "name": "neve_comment_section_style",
+      "type": [
+        "customizer"
+      ],
+      "group": "Layout",
+      "target": [
+        "single"
+      ],
+      "global_key": "theme_mods_neve",
+      "gui": {
+        "display_name": "Comment Section Style",
+        "type": "select",
+        "values": [
+          {
+            "text": "Always Show",
+            "value": "always"
+          },
+          {
+            "text": "Show/Hide mechanism",
+            "value": "toggle"
+          }
+        ]
+      },
+      "default_value": "toolset_use_theme_setting"
+    },
+    {
+      "name": "neve_scroll_to_top_side",
+      "type": [
+        "customizer"
+      ],
+      "group": "Layout",
+      "target": [
+        "archive",
+        "single"
+      ],
+      "global_key": "theme_mods_neve",
+      "gui": {
+        "display_name": "Scroll To Top Side",
+        "type": "select",
+        "values": [
+          {
+            "text": "Left",
+            "value": "left"
+          },
+          {
+            "text": "Right",
+            "value": "right"
+          }
+        ]
+      },
+      "default_value": "toolset_use_theme_setting"
+    },
+    {
+      "name": "footer_copyright_content",
+      "type": [
+        "customizer"
+      ],
+      "group": "Footer",
+      "target": [
+        "archive",
+        "single"
+      ],
+      "global_key": "theme_mods_neve",
+      "gui": {
+        "display_name": "Copyright Text",
+        "type": "text"
+      },
+      "default_value": "<p>Original | Powered by <a href='http://wordpress.org' rel='nofollow'>WordPress</a></p>"
+    }
+  ]
+}

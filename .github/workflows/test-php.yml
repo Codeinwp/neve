@@ -29,7 +29,7 @@ jobs:
         run: composer install --prefer-dist --no-progress --no-suggest
       - name: Run PHPCS
         run: composer run lint
- 
+
   phpunit:
       name: PHPUnit
       runs-on: ubuntu-latest
@@ -40,8 +40,6 @@ jobs:
             MYSQL_ROOT_PASSWORD: root
           ports:
             - 3306/tcp
-          volumes:
-            - $HOME/mysql:/var/lib/mysql
           options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
       steps:
         - name: Setup PHP version
@@ -70,5 +68,5 @@ jobs:
           run: composer install --prefer-dist --no-progress --no-suggest --no-dev
         - name: Run phpunit
           run: phpunit
-  
-  
+
+

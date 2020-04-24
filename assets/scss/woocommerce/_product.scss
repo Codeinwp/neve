@@ -147,6 +147,7 @@
 
 .variations select {
 	width: 100%;
+  	height: auto;
 }
 
 //</editor-fold>
@@ -163,6 +164,7 @@
 	}
 
 	&.active {
+	  background-color: transparent;
 		border-bottom: 2px solid;
 	}
 
@@ -291,6 +293,9 @@
 			}
 		}
 	}
+  .variations select {
+  	height: 35px;
+  }
 }
 
 .woocommerce ul.products.exclusive-products li.product,

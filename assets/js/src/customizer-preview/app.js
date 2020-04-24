@@ -79,6 +79,9 @@ window.addEventListener('load', function () {
               break
             case 'neve_background_control':
               if (newValue.type === 'color') {
+              	if(!newValue.colorValue && args.additional.partial ) {
+									wp.customize.selectiveRefresh.partial( args.additional.partial ).refresh();
+								}
                 style += 'body ' + args.selector + '{' +
                   'background-image: none !important;}'
                 let color = newValue.colorValue !== 'undefined' ?

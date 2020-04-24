@@ -142,7 +142,7 @@ abstract class Base_Style_Manager extends Base_View {
 		$style = $this->style . $this->tablet_style . $this->desktop_style;
 		$style = apply_filters( 'neve_style_output_' . $this->style_handle, $style );
 
-		return preg_replace( '!\s+!', ' ', $style );
+		return preg_replace( '/\s+/', ' ', $style );
 	}
 
 	/**

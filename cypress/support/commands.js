@@ -36,21 +36,29 @@ Cypress.Commands.add( 'navigate',
 		(nextRoute = '/') => {
 			cy.visit( nextRoute );
 		} );
-
+Cypress.Commands.add('clearWelcome', ()=>{
+	cy.window()
+		.then(win => {
+			win.wp && win.wp.data.select( "core/edit-post" ).isFeatureActive( "welcomeGuide" ) && win.wp.data.dispatch( "core/edit-post" ).toggleFeature( "welcomeGuide" )
+		});
+});
 Cypress.Commands.add( 'insertPost',
 		(title = 'Test', content = 'Content', type = 'post', featured = false) => {
 			let loginRoute = '/wp-admin/post-new.php';
 			if ( type !== 'post' ) {
 				loginRoute += '?post_type=' + type;
 			}
+
 			cy.login( loginRoute );
+			cy.clearWelcome();
 			if ( featured ) {
 				addFeaturedImage();
 			}
+
 			cy.wait(1000);
 			cy.get( '.editor-post-title__input' ).type( title );
 			cy.get(
-					'.editor-default-block-appender textarea.block-editor-default-block-appender__content' ).
+					' textarea.block-editor-default-block-appender__content' ).
 					click( { force: true } );
 			cy.get( '.block-editor-rich-text__editable' ).type( content );
 			cy.get( '.editor-post-publish-panel__toggle' ).click();
@@ -59,7 +67,7 @@ Cypress.Commands.add( 'insertPost',
 
 function addFeaturedImage() {
 	cy.get( '.components-panel__body-toggle' ).
-			contains( 'Featured Image' ).
+			contains( 'Featured image' ).
 			click();
 	cy.get( '.editor-post-featured-image__toggle' ).click();
 	cy.get( '.media-frame' ).

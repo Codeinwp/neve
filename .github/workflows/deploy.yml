@@ -18,8 +18,8 @@ jobs:
       - name: Build & create dist/artifact
         run: |
           npm ci
-          npm run build
           composer install --no-dev --prefer-dist --no-progress --no-suggest
+          npm run build
           npm run dist
       - name: Add SSH Key
         run: |
@@ -33,13 +33,13 @@ jobs:
         uses: jakejarvis/s3-sync-action@master
         with:
           args: --acl public-read --follow-symlinks --delete
-          env:
-            AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-            AWS_REGION: 'us-west-1'     # optional: defaults to us-east-1
-            SOURCE_DIR: 'artifact'      # optional: defaults to entire repository
-            DEST_DIR: ${{ secrets.AWS_PRODUCTS_FOLDER }}/$BUILD_NAME/latest
+        env:
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: 'us-west-1'     # optional: defaults to us-east-1
+          SOURCE_DIR: 'artifact'      # optional: defaults to entire repository
+          DEST_DIR: ${{ secrets.AWS_PRODUCTS_FOLDER }}/$BUILD_NAME/latest
       - name: Upload Tagged Version to S3
         uses: jakejarvis/s3-sync-action@master
         with:
