@@ -94,13 +94,6 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
   color: $link_hover_color;
 }
 
-.header-menu-sidebar .hfg-item-right #secondary-menu {
-  align-items: flex-end;
-}
-.header-menu-sidebar .hfg-item-center #secondary-menu {
-  align-items: center;
-}
-
 @mixin nav-menu--laptop() {
   #secondary-menu {
     .hfg-item-left &, .hfg-item-center & {

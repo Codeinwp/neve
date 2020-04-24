@@ -724,14 +724,6 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
   color: #0366d6;
 }
 
-.header-menu-sidebar .hfg-item-right #secondary-menu {
-  align-items: flex-end;
-}
-
-.header-menu-sidebar .hfg-item-center #secondary-menu {
-  align-items: center;
-}
-
 ul[id^="nv-primary-navigation"] i {
   font-size: inherit;
   line-height: inherit;
