@@ -8,7 +8,7 @@ const Pro = () => {
 		return (
 			<div className="col">
 				<div className="card">
-					<h2 dangerouslySetInnerHTML={{__html: neveDash.strings.updateOldPro}}/>
+					<h2>{neveDash.strings.updateOldPro}</h2>
 				</div>
 			</div>
 		);

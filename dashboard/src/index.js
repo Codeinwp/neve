@@ -1,6 +1,5 @@
 import './style.scss';
 import App from './Components/App';
-
 const {registerStore} = wp.data;
 const {render} = wp.element;
 

@@ -122,8 +122,8 @@ class Admin {
 		/* translators: 1 - Theme Name (Neve), 2 - Plugin Name (Neve Pro) */
 		$text = sprintf( __( 'It is recommended that both %1$s and %2$s are updated to the latest version to ensure optimal intercompatibility.', 'neve' ), $this->theme_name, $plugin_name );
 
-		$notice = '<style>.neve-update-notice .actions {margin: 15px 0;}</style>';
-
+		$notice = '';
+		echo '<style type="text/css">.neve-update-notice .actions {margin: 15px 0;}</style>';
 		?>
 		<script type="text/javascript">
 			function handleNeveUpdates($) {

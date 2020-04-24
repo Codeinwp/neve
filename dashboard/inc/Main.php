@@ -187,21 +187,21 @@ class Main {
 			'supportURL'          => esc_url( 'https://wordpress.org/support/theme/neve/' ),
 			'docsURL'             => esc_url( 'https://docs.themeisle.com/article/946-neve-doc' ),
 			'strings'             => [
-				'proTabTitle'                 => esc_html( $plugin_name ),
+				'proTabTitle'                 => wp_kses_post( $plugin_name ),
 				/* translators: %s - Theme name */
-				'header'                      => sprintf( __( '%s Options', 'neve' ), esc_html( $theme_name ) ),
+				'header'                      => sprintf( __( '%s Options', 'neve' ), wp_kses_post( $theme_name ) ),
 				/* translators: %s - Theme name */
-				'starterSitesCardDescription' => sprintf( __( '%s now comes with a sites library with various designs to pick from. Visit our collection of demos that are constantly being added.', 'neve' ), esc_html( $theme_name ) ),
+				'starterSitesCardDescription' => sprintf( __( '%s now comes with a sites library with various designs to pick from. Visit our collection of demos that are constantly being added.', 'neve' ), wp_kses_post( $theme_name ) ),
 				/* translators: %s - Theme name */
-				'starterSitesTabDescription'  => sprintf( __( 'With %s, you can choose from multiple unique demos, specially designed for you, that can be installed with a single click. You just need to choose your favorite, and we will take care of everything else.', 'neve' ), esc_html( $theme_name ) ),
+				'starterSitesTabDescription'  => sprintf( __( 'With %s, you can choose from multiple unique demos, specially designed for you, that can be installed with a single click. You just need to choose your favorite, and we will take care of everything else.', 'neve' ), wp_kses_post( $theme_name ) ),
 				/* translators: %s - Theme name */
-				'supportCardDescription'      => sprintf( __( 'We want to make sure you have the best experience using %1$s, and that is why we have gathered all the necessary information here for you. We hope you will enjoy using %1$s as much as we enjoy creating great products.', 'neve' ), esc_html( $theme_name ) ),
+				'supportCardDescription'      => sprintf( __( 'We want to make sure you have the best experience using %1$s, and that is why we have gathered all the necessary information here for you. We hope you will enjoy using %1$s as much as we enjoy creating great products.', 'neve' ), wp_kses_post( $theme_name ) ),
 				/* translators: %s - Theme name */
-				'docsCardDescription'         => sprintf( __( 'Need more details? Please check our full documentation for detailed information on how to use %s.', 'neve' ), esc_html( $theme_name ) ),
+				'docsCardDescription'         => sprintf( __( 'Need more details? Please check our full documentation for detailed information on how to use %s.', 'neve' ), wp_kses_post( $theme_name ) ),
 				/* translators: %s - "Neve Pro Addon" */
-				'licenseCardHeading'          => sprintf( __( '%s license', 'neve' ), esc_html( $plugin_name_addon ) ),
+				'licenseCardHeading'          => sprintf( __( '%s license', 'neve' ), wp_kses_post( $plugin_name_addon ) ),
 				/* translators: %s - "Neve Pro Addon" */
-				'updateOldPro'                => sprintf( __( 'Please update %s to the latest version and then refresh this page to have access to the options.', 'neve' ), esc_html( $plugin_name_addon ) ),
+				'updateOldPro'                => sprintf( __( 'Please update %s to the latest version and then refresh this page to have access to the options.', 'neve' ), wp_kses_post( $plugin_name_addon ) ),
 				/* translators: %1$s - Author link - Themeisle */
 				'licenseCardDescription'      => sprintf(
 				// translators: store name (Themeisle)
@@ -238,7 +238,7 @@ class Main {
 			$update                = $themes_update->response[ $slug ];
 			$notifications['neve'] = [
 				// translators: s - theme name (Neve).
-				'text'   => sprintf( __( 'New theme update for %1$s! Please update to %2$s.' ), $this->theme_args['name'], $update['new_version'] ),
+				'text'   => sprintf( __( 'New theme update for %1$s! Please update to %2$s.' ), wp_kses_post($this->theme_args['name']), wp_kses_post($update['new_version']) ),
 				'update' => [
 					'type' => 'theme',
 					'slug' => $slug,
@@ -255,8 +255,8 @@ class Main {
 				'text'   => sprintf(
 				// translators: s - Pro plugin name (Neve Pro)
 					__( 'New plugin update for %1$s! Please update to %2$s.' ),
-					apply_filters( 'ti_wl_plugin_name', 'Neve Pro' ),
-					$update->new_version
+					wp_kses_post(apply_filters( 'ti_wl_plugin_name', 'Neve Pro' ) ),
+					wp_kses_post($update->new_version)
 				),
 				'update' => [
 					'type' => 'plugin',

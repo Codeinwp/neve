@@ -14,6 +14,41 @@ const Header = (props) => {
 		props.setTab(hash);
 	}, []);
 
+
+	const renderHead = () => {
+		return (
+			<div className="top">
+				<h1 className="heading">{neveDash.strings.header}</h1>
+				<span className="version">{neveDash.version}</span>
+				{! neveDash.whiteLabel &&
+				<img src={neveDash.assets + '/logo.svg'} alt={__('Neve Theme Logo', 'neve')}/>
+				}
+			</div>
+		);
+	};
+
+	const renderNavigation = () => {
+		const {currentTab, setTab} = props;
+		return (
+			<nav className="navigation">
+				{Object.keys(tabs).map((item) => {
+					return (
+						<li><a
+							href="#"
+							className={classnames([ item, currentTab === item ? 'active' : '' ])}
+							onClick={(e) => {
+								e.preventDefault();
+								setTab(item);
+								addUrlHash(item);
+							}}
+						>{tabs[item].label}
+						</a></li>
+					);
+				})}
+			</nav>
+		);
+	};
+
 	return (
 		<header>
 			<div className="container">
@@ -21,40 +56,6 @@ const Header = (props) => {
 				{renderNavigation(props)}
 			</div>
 		</header>
-	);
-};
-
-const renderHead = () => {
-	return (
-		<div className="top">
-			<h1 className="heading">{neveDash.strings.header}</h1>
-			<span className="version">{neveDash.version}</span>
-			{! neveDash.whiteLabel &&
-			<img src={neveDash.assets + '/logo.svg'} alt={__('Neve Theme Logo', 'neve')}/>
-			}
-		</div>
-	);
-};
-
-const renderNavigation = (props) => {
-	const {currentTab, setTab} = props;
-	return (
-		<nav className="navigation">
-			{Object.keys(tabs).map((item) => {
-				return (
-					<li><a
-						href="#"
-						className={classnames([ item, currentTab === item ? 'active' : '' ])}
-						onClick={(e) => {
-							e.preventDefault();
-							setTab(item);
-							addUrlHash(item);
-						}}
-					>{tabs[item].label}
-					</a></li>
-				);
-			})}
-		</nav>
 	);
 };
 

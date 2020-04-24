@@ -36,8 +36,11 @@ const ImportModal = ({setModal, editor, siteData}) => {
 		// const fetchAddress = siteData['remote_url'] || siteData.url;
 		const fetchAddress = siteData.url;
 		get(`${trailingSlashIt(fetchAddress)}wp-json/ti-demo-data/data`, true, false).then(response => {
-			if ( ! response.ok ) {
-				setError({message: __('Something went wrong while loading the site data. Please refresh the page and try again.', 'neve'), code: 'ti__ob_failed_fetch_response'});
+			if (! response.ok) {
+				setError({
+					message: __('Something went wrong while loading the site data. Please refresh the page and try again.', 'neve'),
+					code: 'ti__ob_failed_fetch_response'
+				});
 				setFetching(false);
 			}
 			response.json().then(result => {
@@ -61,7 +64,10 @@ const ImportModal = ({setModal, editor, siteData}) => {
 				setFetching(false);
 			});
 		}).catch(error => {
-			setError({message: __('Something went wrong while loading the site data. Please refresh the page and try again.', 'neve'), code: 'ti__ob_failed_fetch_catch'});
+			setError({
+				message: __('Something went wrong while loading the site data. Please refresh the page and try again.', 'neve'),
+				code: 'ti__ob_failed_fetch_catch'
+			});
 			setFetching(false);
 		});
 	}, []);
@@ -112,7 +118,7 @@ const ImportModal = ({setModal, editor, siteData}) => {
 		);
 	};
 	const renderNote = () => {
-		return <ImportModalNote data={importData}/>;
+		return <ImportModalNote data={importData} externalInstalled={externalPluginsInstalled}/>;
 	};
 
 	const renderOptions = () => {
@@ -328,6 +334,7 @@ const ImportModal = ({setModal, editor, siteData}) => {
 		}
 	};
 
+	const externalPluginsInstalled = siteData['external_plugins'] ?  siteData['external_plugins'].every( (value) => true === value.active ) : true;
 	const allOptionsOff = Object.keys(general).every(k => false === general[k]);
 	const editLinkMap = {
 		'elementor': `${neveDash.onboarding.homeUrl}/wp-admin/post.php?post=${frontPageID}&action=elementor`,
@@ -396,7 +403,7 @@ const ImportModal = ({setModal, editor, siteData}) => {
 								{! error &&
 								<Button
 									isPrimary
-									disabled={allOptionsOff || importData['external_plugins']}
+									disabled={allOptionsOff || ! externalPluginsInstalled}
 									onClick={() => {
 										setImporting(true);
 										runImport();
