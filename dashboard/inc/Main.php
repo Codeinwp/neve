@@ -238,7 +238,7 @@ class Main {
 			$update                = $themes_update->response[ $slug ];
 			$notifications['neve'] = [
 				// translators: s - theme name (Neve).
-				'text'   => sprintf( __( 'New theme update for %1$s! Please update to %2$s.' ), wp_kses_post($this->theme_args['name']), wp_kses_post($update['new_version']) ),
+				'text'   => sprintf( __( 'New theme update for %1$s! Please update to %2$s.' ), wp_kses_post( $this->theme_args['name'] ), wp_kses_post( $update['new_version'] ) ),
 				'update' => [
 					'type' => 'theme',
 					'slug' => $slug,
@@ -255,8 +255,8 @@ class Main {
 				'text'   => sprintf(
 				// translators: s - Pro plugin name (Neve Pro)
 					__( 'New plugin update for %1$s! Please update to %2$s.' ),
-					wp_kses_post(apply_filters( 'ti_wl_plugin_name', 'Neve Pro' ) ),
-					wp_kses_post($update->new_version)
+					wp_kses_post( apply_filters( 'ti_wl_plugin_name', 'Neve Pro' ) ),
+					wp_kses_post( $update->new_version )
 				),
 				'update' => [
 					'type' => 'plugin',
