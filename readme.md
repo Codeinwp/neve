@@ -1129,3 +1129,19 @@ Starter Sites screenshots resources:
 * https://mystock.themeisle.com/photo/cheesy-hamburger-with-french-fries/
 * https://mystock.themeisle.com/photo/fancy-restaurant/
 * https://mystock.themeisle.com/photo/indian-vegetable-grill-sandwich/
+
+- Fitness Trainer
+* https://stocksnap.io/photo/people-hiking-GGQX7WXAAC
+* https://stocksnap.io/photo/00RNNUWGLM
+
+- Music Band 2
+* https://stocksnap.io/photo/people-men-H80Z9EVEGA
+* https://stocksnap.io/photo/events-concert-1ZNLM71V1J
+
+- Perfume Shop
+* https://stocksnap.io/photo/chanel-perfume-KFMR70XLYS
+
+- Jewellery Shop
+* https://stocksnap.io/photo/woman-closeup-BIR9EBVX6K
+* https://stocksnap.io/photo/diamond-ring-V6XSRDWN2G
+* https://stocksnap.io/photo/still-items-NLSP8TGHFM

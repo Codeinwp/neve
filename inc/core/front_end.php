@@ -362,6 +362,34 @@ class Front_End {
 						'screenshot'       => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/01/screenshot-11.jpg',
 						'unsplash_gallery' => 'https://unsplash.com/collections/8334242/creative-portfolio',
 					],
+					'neve-fitness-trainer'    => [
+						'url'              => 'https://demo.themeisle.com/neve-fitness-trainer/',
+						'remote_url'       => 'https://s20206.pcdn.co/neve-fitness-trainer/',
+						'screenshot'       => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/04/neve-trainer.jpg',
+						'title'            => 'Fitness Trainer',
+						'unsplash_gallery' => 'https://unsplash.com/collections/9852165/fitness-trainer',
+					],
+					'neve-band'               => [
+						'url'              => 'https://demo.themeisle.com/neve-band/',
+						'remote_url'       => 'https://s20206.pcdn.co/neve-band/',
+						'screenshot'       => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/04/neve-band.jpg',
+						'title'            => 'Music Band 2',
+						'unsplash_gallery' => 'https://unsplash.com/collections/9846128/music-band',
+					],
+					'neve-perfume-shop'       => [
+						'url'              => 'https://demo.themeisle.com/neve-perfume-shop/',
+						'remote_url'       => 'https://s20206.pcdn.co/neve-perfume-shop/',
+						'screenshot'       => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/04/neve-perfume-big.jpg',
+						'title'            => 'Perfume Shop',
+						'unsplash_gallery' => 'https://unsplash.com/collections/9861326/neve-perfume/2b9b54c5c38cad45cc9d516bc35ff444',
+					],
+					'neve-neve-jewellery-2'   => [
+						'url'              => 'https://demo.themeisle.com/neve-jewellery/',
+						'remote_url'       => 'https://s20206.pcdn.co/neve-jewellery/',
+						'screenshot'       => 'https://demo.themeisle.com/hestia-pro-demo-content/wp-content/uploads/sites/105/2020/04/neve-jewellery-2.jpg',
+						'title'            => 'Jewellery Shop 2',
+						'unsplash_gallery' => 'https://unsplash.com/collections/9394656/neve-jewellery-shop/666f976701a01f90039e2d0ca45f4bbd',
+					],
 				],
 				'brizy'          => [
 					'neve-brizy-main'               => [
