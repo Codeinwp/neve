@@ -72,6 +72,27 @@ function neve_hooks() {
 	);
 
 	if ( class_exists( 'WooCommerce' ) ) {
+		$hooks['product']  = array(
+			'woocommerce_before_single_product',
+			'woocommerce_before_single_product_summary',
+			'woocommerce_single_product_summary',
+			'woocommerce_simple_add_to_cart',
+			'woocommerce_before_add_to_cart_form',
+			'woocommerce_before_variations_form',
+			'woocommerce_before_add_to_cart_quantity',
+			'woocommerce_after_add_to_cart_quantity',
+			'woocommerce_before_add_to_cart_button',
+			'woocommerce_before_single_variation',
+			'woocommerce_single_variation',
+			'woocommerce_after_single_variation',
+			'woocommerce_after_add_to_cart_button',
+			'woocommerce_after_variations_form',
+			'woocommerce_after_add_to_cart_form',
+			'woocommerce_product_meta_start',
+			'woocommerce_product_meta_end',
+			'woocommerce_share',
+			'woocommerce_after_single_product_summary',
+		);
 		$hooks['cart']     = array(
 			'woocommerce_after_cart_table',
 			'woocommerce_before_cart_totals',
