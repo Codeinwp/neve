@@ -43,7 +43,6 @@ class Main {
 		'feedzy-rss-feeds',
 		'otter-blocks',
 		'elementor',
-		'wp-product-review',
 		'weglot',
 		'visualizer',
 		'wpforms-lite',
