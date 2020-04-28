@@ -51,7 +51,7 @@ class Css_Prop {
 			case Config::CSS_PROP_BORDER_COLOR:
 				$value = strpos( $value, "#" ) === 0 ? $value : '#' . $value;
 
-				return sprintf( "%s: %s;", ( $css_prop ), sanitize_hex_color( $value ) );
+				return sprintf( "%s: %s%s;", ( $css_prop ), sanitize_hex_color( $value ), isset( $meta['important'] ) && $meta['important'] ? '!important' : '' );
 				break;
 			case Config::CSS_PROP_MAX_WIDTH:
 			case Config::CSS_PROP_WIDTH:

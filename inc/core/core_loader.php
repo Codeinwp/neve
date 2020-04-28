@@ -10,6 +10,8 @@
 
 namespace Neve\Core;
 
+use Neve\Core\Settings\Mods;
+
 /**
  * The core entry class.
  *
@@ -101,6 +103,10 @@ class Core_Loader {
 	 * @access   private
 	 */
 	private function define_hooks() {
+		//Avoid mods cache on customizer preview.
+		if ( is_customize_preview() ) {
+			Mods::$no_cache = true;
+		}
 		$admin = new Admin();
 		add_action( 'init', array( $admin, 'load_site_import' ) );
 		add_action( 'init', array( $admin, 'do_about_page' ) );

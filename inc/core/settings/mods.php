@@ -24,6 +24,7 @@ class Mods {
 	 */
 	private static $_cached = [];
 
+	public static $no_cache = false;
 
 	/**
 	 * Get theme mod.
@@ -43,7 +44,7 @@ class Mods {
 			$master_default = false;
 		}
 
-		if ( ! isset( self::$_cached[ $key ] ) ) {
+		if ( ! isset( self::$_cached[ $key ] ) || self::$no_cache ) {
 			$master_default        = $master_default === false ? self::defaults( $key ) : $master_default;
 			self::$_cached[ $key ] =
 				( $master_default === false ) ?
@@ -68,6 +69,9 @@ class Mods {
 	 */
 	private static function defaults( $key ) {
 		switch ( $key ) {
+			case Config::MODS_CONTAINER_WIDTH:
+				return '{ "mobile": 748, "tablet": 992, "desktop": 1170 }';
+				break;
 			case Config::MODS_BUTTON_PRIMARY_STYLE:
 				return neve_get_button_appearance_default();
 				break;
@@ -181,7 +185,7 @@ class Mods {
 	 * Setter for the manager.
 	 *
 	 * @param string $key Key.
-	 * @param mixed  $value Value.
+	 * @param mixed $value Value.
 	 */
 	public static function set( $key, $value ) {
 		self::$_cached[ $key ] = $value;
@@ -192,7 +196,7 @@ class Mods {
 	 *
 	 * @param string $key Key name.
 	 * @param string $default Default value.
-	 * @param bool   $as_array As array or Object.
+	 * @param bool $as_array As array or Object.
 	 *
 	 * @return mixed
 	 */

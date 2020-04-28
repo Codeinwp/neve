@@ -19,9 +19,11 @@ class Dynamic_Selector {
 	const MOBILE = 'mobile';
 	const TABLET = 'tablet';
 	const DESKTOP = 'desktop';
+
 	const META_IS_RESPONSIVE = 'is_responsive';
 	const META_SUFFIX = 'suffix';
 	const META_KEY = 'key';
+	const META_IMPORTANT = 'important';
 	const META_DEFAULT = 'default';
 	const META_FILTER = 'filter';
 
@@ -133,6 +135,14 @@ class Dynamic_Selector {
 			if ( empty( $expanded_selectors ) ) {
 				continue;
 			}
+			if ( $this->get_context() === Dynamic_Selector::CONTEXT_GUTENBERG ) {
+				$expanded_selectors = explode( ',', $expanded_selectors );
+				$expanded_selectors = array_map( function ( $value ) {
+					return '#editor .editor-styles-wrapper ' . $value;
+				}, $expanded_selectors );
+				$expanded_selectors = implode( ',', $expanded_selectors );
+			}
+
 			$map[ $expanded_selectors ] = isset( $map[ $expanded_selectors ] ) ? array_merge( $map[ $expanded_selectors ], $props ) : $props;
 		}
 		$this->is_transformed = true;

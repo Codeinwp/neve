@@ -63,6 +63,7 @@ class Admin {
 	public function add_tracking_policy( $text ) {
 		return sprintf( '%s <a href="https://docs.themeisle.com/article/1122-neve-usage-tracking" target="_blank">%s</a>', $text, __( 'What do we track?', 'neve' ) );
 	}
+
 	/**
 	 * Add the about page.
 	 */
@@ -289,52 +290,53 @@ class Admin {
 						<span class="label"><?php echo esc_html( $strings['toggle-label'] ); ?></span>
 						<span class="switch">
 							<input <?php echo( $logger_status === true ? ' checked ' : '' ); ?> id="neve-anonymous-data"
-									type="checkbox">
+							                                                                    type="checkbox">
 							<span class="slider round"></span>
 						</span>
 					</label>
 				</p>
-				<a target="_blank" href="https://docs.themeisle.com/article/1122-neve-usage-tracking"><?php echo esc_html( $strings['link-text'] ); ?></a>
+				<a target="_blank"
+				   href="https://docs.themeisle.com/article/1122-neve-usage-tracking"><?php echo esc_html( $strings['link-text'] ); ?></a>
 				<p class="error-well"><?php echo esc_html( $strings['error-text'] ); ?></p>
 				<p class="success-well"><?php echo esc_html( $strings['success-text'] ); ?></p>
 			</div>
 		</div>
 		<script type="application/javascript">
-					( function($) {
-						$( '#neve-anonymous-data' ).on( 'change', function(event) {
-							var toggle = this;
-							var value = $( toggle ).prop( 'checked' ) ? 'yes' : 'no';
-							var data = {
-								'action': 'neve_toggle_logger',
-								'nonce': '<?php echo esc_attr( wp_create_nonce( (string) __CLASS__ ) ); ?>',
-								'value': value
-							};
-							var toastHandler = function(selector) {
-								$( selector ).fadeIn();
-								setTimeout( function() {
-									$( selector ).fadeOut();
-								}, 1500 );
-							};
-							$.ajax( {
-								type: 'POST',
-								url: ajaxurl,
-								data: data,
-								success(data) {
-									if ( !data.success ) {
-										toastHandler( '.nv-anon .error-well' );
-										$( toggle ).prop( 'checked', value === 'yes' ? 'no' : 'yes' );
-										return false;
-									}
-									toastHandler( '.nv-anon .success-well' );
-								},
-								error(err) {
-									toastHandler( '.nv-anon .error-well' );
-									$( toggle ).prop( 'checked', value === 'yes' ? 'no' : 'yes' );
-									console.error( err );
-								}
-							} );
-						} );
-					}( jQuery ) );
+			(function ($) {
+				$('#neve-anonymous-data').on('change', function (event) {
+					var toggle = this;
+					var value = $(toggle).prop('checked') ? 'yes' : 'no';
+					var data = {
+						'action': 'neve_toggle_logger',
+						'nonce': '<?php echo esc_attr( wp_create_nonce( (string) __CLASS__ ) ); ?>',
+						'value': value
+					};
+					var toastHandler = function (selector) {
+						$(selector).fadeIn();
+						setTimeout(function () {
+							$(selector).fadeOut();
+						}, 1500);
+					};
+					$.ajax({
+						type: 'POST',
+						url: ajaxurl,
+						data: data,
+						success(data) {
+							if (!data.success) {
+								toastHandler('.nv-anon .error-well');
+								$(toggle).prop('checked', value === 'yes' ? 'no' : 'yes');
+								return false;
+							}
+							toastHandler('.nv-anon .success-well');
+						},
+						error(err) {
+							toastHandler('.nv-anon .error-well');
+							$(toggle).prop('checked', value === 'yes' ? 'no' : 'yes');
+							console.error(err);
+						}
+					});
+				});
+			}(jQuery));
 		</script>
 		<style>
 			.nv-anon .error-well,
@@ -719,33 +721,33 @@ class Admin {
 			<style>%5$s</style>';
 
 		/* translators: 1 - notice title, 2 - notice message */
-		$notice_header = sprintf(
+		$notice_header       = sprintf(
 			'<h2>%1$s</h2><p class="about-description">%2$s</p></hr>',
 			esc_html__( 'Congratulations!', 'neve' ),
 			sprintf(
-				/* translators: %s - theme name */
+			/* translators: %s - theme name */
 				esc_html__( '%s is now installed and ready to use. We\'ve assembled some links to get you started.', 'neve' ),
 				$name
 			)
 		);
-		$ob_btn = sprintf(
-			/* translators: 1 - onboarding url, 2 - button text */
+		$ob_btn              = sprintf(
+		/* translators: 1 - onboarding url, 2 - button text */
 			'<a href="%1$s" class="button button-primary button-hero install-now" >%2$s</a>',
 			esc_url( admin_url( 'themes.php?page=' . $theme_page . '&onboarding=yes#sites_library' ) ),
 			sprintf( apply_filters( 'ti_onboarding_neve_start_site_cta', esc_html__( 'Try one of our ready to use Starter Sites', 'neve' ) ) )
 		);
 		$ob_return_dashboard = sprintf(
-			/* translators: 1 - button text */
+		/* translators: 1 - button text */
 			'<a href="#" class=" ti-return-dashboard  button button-secondary button-hero install-now" ><span>%1$s</span></a>',
 			__( 'Return to your dashboard', 'neve' )
 		);
-		$options_page_btn = sprintf(
-			/* translators: 1 - options page url, 2 - button text */
+		$options_page_btn    = sprintf(
+		/* translators: 1 - options page url, 2 - button text */
 			'<a href="%1$s" class="options-page-btn">%2$s</a>',
 			esc_url( admin_url( 'themes.php?page=' . $theme_page ) ),
 			esc_html__( 'or go to the theme settings', 'neve' )
 		);
-		$notice_picture = sprintf(
+		$notice_picture      = sprintf(
 			'<picture>
 					<source srcset="about:blank" media="(max-width: 1024px)">
 					<img src="%1$s">
@@ -771,7 +773,7 @@ class Admin {
 			esc_html__( 'Read full documentation', 'neve' ),
 			$ob_return_dashboard
 		);
-		$style = '
+		$style                = '
 		.nv-notice-wrapper h2{
 			margin: 0;
 			font-size: 21px;
@@ -877,10 +879,14 @@ class Admin {
 	 */
 	public function enqueue_gutenberg_scripts() {
 		$screen = get_current_screen();
-		if ( $screen->post_type !== 'post' && $screen->post_type !== 'page' ) {
+		if ( ! post_type_supports( $screen->post_type, 'editor' ) ) {
 			return;
 		}
-
+		wp_enqueue_script(
+			'neve-gutenberg-script',
+			NEVE_ASSETS_URL . 'js/build/all/gutenberg.js',
+			array('wp-blocks', 'wp-dom' ), NEVE_VERSION,true
+		);
 		wp_enqueue_style( 'neve-gutenberg-style', NEVE_ASSETS_URL . 'css/gutenberg-editor-style' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), NEVE_VERSION );
 	}
 

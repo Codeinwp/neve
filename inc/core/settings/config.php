@@ -39,7 +39,8 @@ class Config {
 	const MODS_TYPEFACE_H6                = 'neve_h6_typeface_general';
 	const MODS_FONT_GENERAL               = 'neve_body_font_family';
 	const MODS_FONT_HEADINGS              = 'neve_headings_font_family';
-
+	const MODS_DEFAULT_CONTAINER_STYLE  = 'neve_default_container_style';
+	const MODS_SINGLE_POST_CONTAINER_STYLE = 'neve_single_post_container_style';
 
 	const CSS_PROP_BORDER_COLOR               = 'border-color';
 	const CSS_PROP_BACKGROUND_COLOR           = 'background-color';
@@ -93,20 +94,20 @@ class Config {
 		self::CSS_SELECTOR_TYPEFACE_H4           => 'h4',
 		self::CSS_SELECTOR_TYPEFACE_H5           => 'h5',
 		self::CSS_SELECTOR_TYPEFACE_H6           => 'h6',
-		self::CSS_SELECTOR_BTN_PRIMARY_PADDING   => '.button.button-primary',
 		self::CSS_SELECTOR_TYPEFACE_GENERAL      => 'body, .site-title',
-		self::CSS_SELECTOR_BTN_SECONDARY_PADDING => '.button.button-secondary, #comments input[type="submit"]',
+		self::CSS_SELECTOR_BTN_PRIMARY_PADDING   => '.button.button-primary,  .wp-block-button.is-style-primary .wp-block-button__link',
+		self::CSS_SELECTOR_BTN_SECONDARY_PADDING => '.button.button-secondary, #comments input[type="submit"],   .wp-block-button.is-style-secondary .wp-block-button__link',
 		self::CSS_SELECTOR_BTN_PRIMARY_NORMAL    => '.button.button-primary,
 				button, input[type=button],
 				.btn, input[type="submit"],
 				/* Buttons in navigation */
 				ul[id^="nv-primary-navigation"] li.button.button-primary > a,
-				.menu li.button.button-primary > a',
+				.menu li.button.button-primary > a,  .wp-block-button.is-style-primary .wp-block-button__link',
 		self::CSS_SELECTOR_BTN_PRIMARY_HOVER     => '.button.button-primary:hover,
 				.nv-tags-list a:hover,
 				ul[id^="nv-primary-navigation"] li.button.button-primary > a:hover,
-				.menu li.button.button-primary > a:hover',
-		self::CSS_SELECTOR_BTN_SECONDARY_NORMAL  => '.button.button-secondary, #comments input[type="submit"], .cart-off-canvas .button.nv-close-cart-sidebar',
-		self::CSS_SELECTOR_BTN_SECONDARY_HOVER   => '.button.button-secondary:hover, #comments input[type="submit"]:hover, .cart-off-canvas .button.nv-close-cart-sidebar:hover',
+				.menu li.button.button-primary > a:hover, .wp-block-button.is-style-primary .wp-block-button__link:hover ',
+		self::CSS_SELECTOR_BTN_SECONDARY_NORMAL  => '.button.button-secondary, #comments input[type="submit"], .cart-off-canvas .button.nv-close-cart-sidebar,  .wp-block-button.is-style-secondary .wp-block-button__link',
+		self::CSS_SELECTOR_BTN_SECONDARY_HOVER   => '.button.button-secondary:hover, #comments input[type="submit"]:hover, .cart-off-canvas .button.nv-close-cart-sidebar:hover,  .wp-block-button.is-style-secondary .wp-block-button__link:hover',
 	];
 }
