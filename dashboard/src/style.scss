@@ -1,0 +1,32 @@
+@import "scss/vars";
+@import "scss/core-overrides";
+@import "scss/components/onboarding/import-modal";
+
+#neve-dashboard {
+  @import "scss/general";
+
+  @import "scss/components/header";
+  @import "scss/components/sidebar";
+  @import "scss/components/notification";
+  @import "scss/components/card";
+  @import "scss/components/accordion";
+  @import "scss/components/toast";
+  @import "scss/components/license-card";
+  @import "scss/components/module-card";
+
+  @import "scss/content/start";
+  @import "scss/content/plugins";
+  @import "scss/content/pro";
+  @import "scss/content/changelog";
+  @import "scss/content/free-pro";
+  @import "scss/content/mock";
+
+  @import "scss/components/onboarding/general";
+  @import "scss/components/onboarding/header";
+  @import "scss/components/onboarding/editor-selector";
+  @import "scss/components/onboarding/starter-site-card";
+  @import "scss/components/onboarding/preview";
+  @import "scss/components/onboarding/stepper";
+  @import "scss/components/onboarding/mock";
+  @import "scss/media-queries";
+}

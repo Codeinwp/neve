@@ -1,0 +1,86 @@
+.license.card {
+  h4 {
+	margin-bottom: 20px;
+  }
+
+  p {
+	margin-top: 0;
+  }
+}
+
+.license-form {
+  flex-direction: row;
+  display: flex;
+
+  input {
+	width: 100%;
+	border-radius: 0;
+	height: 40px;
+	border: 1px solid $grey;
+	font-size: 14px;
+	color: $black;
+
+	&[disabled] {
+	  background-color: #F1F1F1;
+	}
+  }
+
+  button {
+	display: flex;
+	width: auto;
+	margin-left: 20px;
+	justify-content: center;
+	height: 40px;
+	padding: 0 20px;
+	font-weight: 700;
+	line-height: 40px;
+  }
+}
+
+.license-footer {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+
+  .status-icon {
+	margin-right: 5px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 2px 2px 2px 2px;
+
+	&.success {
+	  background-color: $success;
+	}
+
+	&.error {
+	  background-color: $error;
+	}
+  }
+
+  svg {
+	fill: #fff;
+  }
+
+  .validity {
+	margin-right: 5px;
+	text-decoration: underline;
+  }
+
+  .expires {
+	margin-left: 5px;
+  }
+}
+
+@mixin license-card--laptop() {
+  .license-form {
+	flex-direction: column;
+
+	button {
+	  width: 100%;
+	  margin: 10px 0;
+	  padding: 0;
+	}
+  }
+}

@@ -1,0 +1,53 @@
+.ob-dropdown {
+  overflow: visible;
+  display: inline-block;
+  position: relative;
+  z-index: 10000;
+
+  button {
+	display: flex;
+	align-items: center;
+	font-weight: 600;
+	padding: 5px 20px 5px 10px;
+	height: 45px;
+	background: #fff;
+	border: 1px solid $grey;
+	width: 200px;
+	font-size: 14px;
+
+	> svg {
+	  margin-left: auto;
+	}
+  }
+
+  img {
+	margin-right: 5px;
+	max-width: 30px;
+	max-height: 30px;
+  }
+
+  .options {
+	margin: 0;
+	li {
+	  border-bottom: 1px solid $grey;
+	  padding: 0;
+	  margin: 0;
+	}
+	a {
+	  height: 35px;
+	  font-size: 14px;
+	  display: flex;
+	  align-items: center;
+	  font-weight: 600;
+	  color: $black;
+	  cursor: pointer;
+	  padding: 5px 10px;
+	  text-decoration: none;
+
+	  &:hover {
+		background-color: $blue;
+		color: #fff;
+	  }
+	}
+  }
+}
