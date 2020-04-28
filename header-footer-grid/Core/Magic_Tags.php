@@ -249,8 +249,7 @@ class Magic_Tags {
 			return '';
 		}
 		$product = wc_get_product( get_the_ID() );
-
-		return is_singular( 'product' ) ? wc_price( $product->get_price() ) : '';
+		return is_singular( 'product' ) ? $product->get_price_html( $product->get_price() ) : '';
 	}
 
 	/**
