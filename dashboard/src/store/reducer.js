@@ -5,7 +5,8 @@ const initialState = {
 	settings: {},
 	tier: neveDash.pro ? neveDash.license.tier : 0,
 	toast: null,
-	currentTab: 'start'
+	currentTab: 'start',
+	license: neveDash.pro ? neveDash.license : {}
 };
 
 const hash = getTabHash();
@@ -49,6 +50,11 @@ const reducer = (state = initialState, action) => {
 			return {
 				...state,
 				tier: action.payload.tier
+			};
+		case 'UPDATE_LICENSE':
+			return {
+				...state,
+				license: action.payload.licenseData
 			};
 		case 'UPDATE_TOAST_MESSAGE':
 			return {

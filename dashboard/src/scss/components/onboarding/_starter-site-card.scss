@@ -86,15 +86,14 @@
 
 	.pro-badge {
 	  background-color: $success;
+	  height: auto;
 	  color: #fff;
-	  font-weight: 700;
+	  font-weight: 600;
 	  text-transform: uppercase;
 	  padding: 5px 10px;
 	  margin-left: auto;
 	  border-radius: 999px;
-	  align-items: center;
-	  display: flex;
-	  line-height: 1;
+	  line-height: normal;
 	}
   }
 }

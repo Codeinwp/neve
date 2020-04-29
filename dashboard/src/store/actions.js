@@ -1,4 +1,4 @@
- export default {
+export default {
 	setTab(tab) {
 		return {
 			type: 'SET_TAB',
@@ -27,6 +27,12 @@
 		return {
 			type: 'UPDATE_LICENSE_TIER',
 			payload: {tier}
+		};
+	},
+	changeLicense(licenseData) {
+		return {
+			type: 'UPDATE_LICENSE',
+			payload: {licenseData}
 		};
 	},
 	setToast(message) {
