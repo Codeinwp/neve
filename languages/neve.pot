@@ -2,19 +2,21 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Neve 2.6.4\n"
+"Project-Id-Version: Neve 2.6.6\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/neve\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-04-22T15:23:51+00:00\n"
+"POT-Creation-Date: 2020-04-29T19:56:16+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.2.0\n"
 "X-Domain: neve\n"
 
 #. Theme Name of the theme
+#: dashboard/src/Components/Content/FreePro.js:15
+#: dashboard/src/Components/Content/Changelog.js:20
 msgid "Neve"
 msgstr ""
 
@@ -59,435 +61,176 @@ msgstr ""
 msgid "Catalog Sidebar"
 msgstr ""
 
-#: inc/core/front_end.php:76
-#: header-footer-grid/Core/Components/Nav.php:41
-#: header-footer-grid/Core/Components/Nav.php:224
+#: inc/core/front_end.php:78
+#: header-footer-grid/Core/Components/Nav.php:43
+#: header-footer-grid/Core/Components/Nav.php:226
 #: header-footer-grid/templates/components/component-nav.php:25
 msgid "Primary Menu"
 msgstr ""
 
-#: inc/core/front_end.php:77
-#: header-footer-grid/Core/Components/NavFooter.php:39
-#: header-footer-grid/Core/Components/NavFooter.php:136
+#: inc/core/front_end.php:79
+#: header-footer-grid/Core/Components/NavFooter.php:41
+#: header-footer-grid/Core/Components/NavFooter.php:138
 #: header-footer-grid/templates/components/component-nav-footer.php:23
 msgid "Footer Menu"
 msgstr ""
 
-#: inc/core/front_end.php:78
-#: header-footer-grid/Core/Components/SecondNav.php:39
-#: header-footer-grid/Core/Components/SecondNav.php:134
+#: inc/core/front_end.php:80
+#: header-footer-grid/Core/Components/SecondNav.php:41
+#: header-footer-grid/Core/Components/SecondNav.php:136
 #: header-footer-grid/templates/components/component-nav-secondary.php:23
 msgid "Secondary Menu"
 msgstr ""
 
-#: inc/core/front_end.php:1552
-#: inc/core/front_end.php:1562
+#: inc/core/front_end.php:1655
+#: inc/core/front_end.php:1665
 msgid "Want to keep using Zelle's homepage?"
 msgstr ""
 
-#: inc/core/front_end.php:1553
-#: inc/core/front_end.php:1563
+#: inc/core/front_end.php:1656
+#: inc/core/front_end.php:1666
 msgid "Hi! We've noticed you were using Zelle before. To make your transition easier, we can help you keep the same beautiful homepage you had before, by converting it into an Elementor template. This option will also import your homepage content."
 msgstr ""
 
-#: inc/core/front_end.php:1570
-msgid "Ready to use pre-built websites with 1-click installation"
-msgstr ""
-
-#. translators: %s - theme name
-#: inc/core/front_end.php:1572
-msgid "With %s, you can choose from multiple unique demos, specially designed for you, that can be installed with a single click. You just need to choose your favorite, and we will take care of everything else."
-msgstr ""
-
-#: inc/core/front_end.php:1779
-msgid "Black"
-msgstr ""
-
-#: inc/core/front_end.php:1788
-msgid "White"
-msgstr ""
-
-#: inc/core/front_end.php:1797
+#: inc/core/front_end.php:1907
 msgid "Button Color"
 msgstr ""
 
-#: inc/core/front_end.php:1801
+#: inc/core/front_end.php:1911
 #: inc/customizer/options/colors_background.php:56
 msgid "Link Color"
 msgstr ""
 
-#: inc/core/front_end.php:1805
+#: inc/core/front_end.php:1915
 #: inc/customizer/options/colors_background.php:61
 msgid "Link Hover Color"
 msgstr ""
 
-#: inc/core/front_end.php:1809
+#: inc/core/front_end.php:1919
 #: inc/customizer/options/colors_background.php:66
-#: header-footer-grid/Core/Components/CustomHtml.php:157
-#: header-footer-grid/Core/Components/Copyright.php:83
-#: header-footer-grid/Core/Components/Logo.php:203
+#: header-footer-grid/Core/Components/CustomHtml.php:158
+#: header-footer-grid/Core/Components/Copyright.php:84
+#: header-footer-grid/Core/Components/Logo.php:205
 msgid "Text Color"
 msgstr ""
 
-#: inc/core/front_end.php:2113
+#: inc/core/front_end.php:1923
+msgid "Button text color"
+msgstr ""
+
+#: inc/core/front_end.php:1927
+msgid "Button Hover text color"
+msgstr ""
+
+#: inc/core/front_end.php:1931
+msgid "Button Hover Color"
+msgstr ""
+
+#: inc/core/front_end.php:1951
+msgid "Black"
+msgstr ""
+
+#: inc/core/front_end.php:1960
+msgid "White"
+msgstr ""
+
+#: inc/core/front_end.php:2250
 #: inc/admin/metabox/main.php:56
 msgid "Sidebar"
 msgstr ""
 
-#: inc/core/front_end.php:2114
+#: inc/core/front_end.php:2251
 msgid "Shop Sidebar"
 msgstr ""
 
-#: inc/core/front_end.php:2120
+#: inc/core/front_end.php:2257
 #: header-footer-grid/Core/Components/FooterWidgetOne.php:31
 msgid "Footer One"
 msgstr ""
 
-#: inc/core/front_end.php:2121
+#: inc/core/front_end.php:2258
 #: header-footer-grid/Core/Components/FooterWidgetTwo.php:32
 msgid "Footer Two"
 msgstr ""
 
-#: inc/core/front_end.php:2122
+#: inc/core/front_end.php:2259
 #: header-footer-grid/Core/Components/FooterWidgetThree.php:31
 msgid "Footer Three"
 msgstr ""
 
-#: inc/core/front_end.php:2123
+#: inc/core/front_end.php:2260
 #: header-footer-grid/Core/Components/FooterWidgetFour.php:32
 msgid "Footer Four"
 msgstr ""
 
-#: inc/core/admin.php:64
-#: inc/core/admin.php:278
-msgid "What do we track?"
-msgstr ""
-
 #. translators: %s - theme name
-#: inc/core/admin.php:89
-msgid "%s Community"
-msgstr ""
-
-#. translators: %s - theme name
-#: inc/core/admin.php:91
-msgid "Join the community of %s users. Get connected, share opinions, ask questions and help each other!"
-msgstr ""
-
-#. translators: %s - theme name
-#: inc/core/admin.php:92
-msgid "Join our Facebook Group"
-msgstr ""
-
-#: inc/core/admin.php:96
-msgid "Leave us a review"
-msgstr ""
-
-#. translators: %s - theme name
-#: inc/core/admin.php:98
-msgid "Are you are enjoying %s? We would love to hear your feedback."
-msgstr ""
-
-#. translators: %s - theme name
-#: inc/core/admin.php:99
-msgid "Submit a review"
-msgstr ""
-
-#: inc/core/admin.php:106
-msgid "Getting Started"
-msgstr ""
-
-#: inc/core/admin.php:109
-#: inc/core/admin.php:230
-msgid "Recommended actions"
-msgstr ""
-
-#. translators: %s - theme name
-#: inc/core/admin.php:111
-#: inc/core/admin.php:760
-msgid "%s now comes with a sites library with various designs to pick from. Visit our collection of demos that are constantly being added."
-msgstr ""
-
+#. translators: %s - pro plugin name (Neve Pro)
+#: inc/core/admin.php:101
 #: inc/core/admin.php:113
-msgid "See demos"
+msgid "Update %1$s to v%2$s"
 msgstr ""
 
-#: inc/core/admin.php:119
-msgid "Links to Customizer Settings"
+#. translators: 1 - Theme Name (Neve), 2 - Plugin Name (Neve Pro)
+#: inc/core/admin.php:123
+msgid "It is recommended that both %1$s and %2$s are updated to the latest version to ensure optimal intercompatibility."
 msgstr ""
 
-#: inc/core/admin.php:126
-msgid "Useful Plugins"
-msgstr ""
-
-#: inc/core/admin.php:143
 #: inc/core/admin.php:158
-#: inc/core/admin.php:767
-msgid "Documentation"
+msgid "Updated"
 msgstr ""
 
-#: inc/core/admin.php:147
-#: inc/core/admin.php:151
-msgid "Contact Support"
+#: inc/core/admin.php:172
+msgid "Pending updates"
 msgstr ""
 
-#. translators: 1 - theme name, 2 - theme name
-#: inc/core/admin.php:149
-msgid "We want to make sure you have the best experience using %1$s, and that is why we have gathered all the necessary information here for you. We hope you will enjoy using %1$s as much as we enjoy creating great products."
-msgstr ""
-
-#. translators: %s - theme name
-#: inc/core/admin.php:160
-#: inc/core/admin.php:769
-msgid "Need more details? Please check our full documentation for detailed information on how to use %s."
-msgstr ""
-
-#: inc/core/admin.php:162
-#: inc/core/admin.php:771
-#: header-footer-grid/Core/Builder/Header.php:51
-#: header-footer-grid/Core/Builder/Footer.php:47
-msgid "Read full documentation"
-msgstr ""
-
-#: inc/core/admin.php:170
-#: inc/core/admin.php:173
-#: inc/core/admin.php:213
-msgid "Changelog"
-msgstr ""
-
-#: inc/core/admin.php:171
-msgid "Want to get the gist on the latest theme changes? Just consult our changelog below to get a taste of the recent fixes and features implemented."
-msgstr ""
-
-#: inc/core/admin.php:180
-msgid "Create a child theme"
-msgstr ""
-
-#: inc/core/admin.php:182
-msgid "If you want to make changes to the theme's files, those changes are likely to be overwritten when you next update the theme. In order to prevent that from happening, you need to create a child theme. For this, please follow the documentation below."
-msgstr ""
-
-#: inc/core/admin.php:184
-#: inc/core/admin.php:194
-#: inc/core/admin.php:204
-msgid "View how to do this"
-msgstr ""
-
-#: inc/core/admin.php:190
-msgid "Speed up your site"
-msgstr ""
-
-#: inc/core/admin.php:192
-msgid "If you find yourself in a situation where everything on your site is running very slowly, you might consider having a look at the documentation below where you will find the most common issues causing this and possible solutions for each of the issues."
-msgstr ""
-
-#: inc/core/admin.php:200
-msgid "Build a landing page with a drag-and-drop content builder"
-msgstr ""
-
-#: inc/core/admin.php:202
-msgid "In the documentation below you will find an easy way to build a great looking landing page using a drag-and-drop content builder plugin."
-msgstr ""
-
-#: inc/core/admin.php:219
-msgid "Free vs PRO"
-msgstr ""
-
-#. translators: %s: Name of current theme
-#: inc/core/admin.php:236
-msgid "Take the new WordPress editor to the next level by using Otter's blocks that are specially designed for %s."
-msgstr ""
-
-#: inc/core/admin.php:275
-msgid "Contributing"
-msgstr ""
-
-#: inc/core/admin.php:276
-msgid "Become a contributor by opting in to our anonymous data tracking. We guarantee no sensitive data is collected."
-msgstr ""
-
-#: inc/core/admin.php:277
-msgid "Allow anonymous tracking"
-msgstr ""
-
-#: inc/core/admin.php:279
-msgid "Could not update option. Please try again."
-msgstr ""
-
-#: inc/core/admin.php:280
-msgid "Option updated."
-msgstr ""
-
-#. translators: s - theme name
-#: inc/core/admin.php:433
-msgid "Get %s now!"
-msgstr ""
-
-#: inc/core/admin.php:437
-msgid "Header/Footer builder"
-msgstr ""
-
-#: inc/core/admin.php:438
-msgid "Easily build your header and footer by dragging and dropping all the important elements in the real-time WordPress Customizer. More advanced options are available in PRO."
-msgstr ""
-
-#: inc/core/admin.php:443
-msgid "Page Builder Compatibility"
-msgstr ""
-
-#: inc/core/admin.php:444
-msgid "Neve is fully compatible with Gutenberg, the new WordPress editor and for all of you page builder fans, Neve has full compatibility with Elementor, Beaver Builder, and all the other popular page builders."
-msgstr ""
-
-#: inc/core/admin.php:449
-#: inc/customizer/options/upsells.php:89
-msgid "Header Booster"
-msgstr ""
-
-#: inc/core/admin.php:450
-msgid "Take the header builder to a new level with new awesome components: socials, contact, breadcrumbs, language switcher, multiple HTML, sticky and transparent menu, page header builder and many more."
-msgstr ""
-
-#: inc/core/admin.php:455
-msgid "Page Header Builder"
-msgstr ""
-
-#: inc/core/admin.php:456
-msgid "The Page Header is the horizontal area that sits directly below the header and contains the page/post title. Easily design an attractive Page Header area using our dedicated builder."
-msgstr ""
-
-#: inc/core/admin.php:461
-#: inc/customizer/options/upsells.php:92
-msgid "Custom Layouts"
-msgstr ""
-
-#: inc/core/admin.php:462
-msgid "Powerful Custom Layouts builder which allows you to easily create your own header, footer or custom content on any of the hook locations available in the theme."
-msgstr ""
-
-#: inc/core/admin.php:467
-#: inc/customizer/options/upsells.php:90
-msgid "Blog Booster"
-msgstr ""
-
-#: inc/core/admin.php:468
-msgid "Give a huge boost to your entire blogging experience with features specially designed for increased user experience."
-msgstr ""
-
-#: inc/core/admin.php:468
-msgid "Sharing, custom article sorting, comments integrations, number of minutes needed to read an article and many more."
-msgstr ""
-
-#: inc/core/admin.php:473
-#: inc/customizer/options/upsells.php:95
-msgid "Elementor Booster"
-msgstr ""
-
-#: inc/core/admin.php:474
-#: inc/customizer/options/upsells.php:100
-msgid "Leverage the true flexibility of Elementor with powerful addons and templates that you can import with just one click."
-msgstr ""
-
-#: inc/core/admin.php:479
-#: inc/customizer/options/upsells.php:91
-msgid "WooCommerce Booster"
-msgstr ""
-
-#: inc/core/admin.php:480
-msgid "Empower your online store with awesome new features, specially designed for a smooth WooCommerce integration."
-msgstr ""
-
-#: inc/core/admin.php:480
-msgid "Wishlist, quick view, video products, advanced reviews, multiple dedicated layouts and many more."
-msgstr ""
-
-#: inc/core/admin.php:485
-msgid "LifterLMS Booster"
-msgstr ""
-
-#: inc/core/admin.php:486
-msgid "Make your LifterLMS pages look stunning with our PRO design options. Specially created to help you set up your online courses with minimum customizations."
-msgstr ""
-
-#: inc/core/admin.php:491
-msgid "Typekit(Adobe) Fonts"
-msgstr ""
-
-#: inc/core/admin.php:492
-msgid "The module allows for an easy way of enabling new awesome Adobe (previous Typekit) Fonts in Neve's Typography options."
-msgstr ""
-
-#: inc/core/admin.php:497
-msgid "White Label"
-msgstr ""
-
-#: inc/core/admin.php:498
-msgid "For any developer or agency out there building websites for their own clients, we've made it easy to present the theme as your own."
-msgstr ""
-
-#: inc/core/admin.php:503
-msgid "Scroll To Top"
-msgstr ""
-
-#: inc/core/admin.php:504
-msgid "Simple but effective module to help you navigate back to the top of the really long pages."
-msgstr ""
-
-#: inc/core/admin.php:603
-msgid "Upload Logo"
-msgstr ""
-
-#: inc/core/admin.php:608
-msgid "Set Colors"
-msgstr ""
-
-#: inc/core/admin.php:613
-msgid "Customize Fonts"
-msgstr ""
-
-#: inc/core/admin.php:618
-msgid "Layout Options"
-msgstr ""
-
-#: inc/core/admin.php:623
-msgid "Header Options"
-msgstr ""
-
-#: inc/core/admin.php:628
-msgid "Blog Layouts"
-msgstr ""
-
-#: inc/core/admin.php:633
-msgid "Footer Options"
-msgstr ""
-
-#: inc/core/admin.php:638
-#: inc/customizer/options/layout_sidebar.php:43
-msgid "Content / Sidebar"
-msgstr ""
-
-#: inc/core/admin.php:724
+#: inc/core/admin.php:313
 msgid "Congratulations!"
 msgstr ""
 
 #. translators: %s - theme name
-#: inc/core/admin.php:727
+#: inc/core/admin.php:316
 msgid "%s is now installed and ready to use. We've assembled some links to get you started."
 msgstr ""
 
-#: inc/core/admin.php:735
+#: inc/core/admin.php:324
 msgid "Try one of our ready to use Starter Sites"
 msgstr ""
 
-#: inc/core/admin.php:740
+#: inc/core/admin.php:329
 msgid "Return to your dashboard"
 msgstr ""
 
-#: inc/core/admin.php:746
+#: inc/core/admin.php:335
 msgid "or go to the theme settings"
 msgstr ""
 
-#: inc/core/admin.php:758
+#: inc/core/admin.php:346
 msgid "Sites Library"
+msgstr ""
+
+#. translators: %s - theme name
+#. translators: %s - Theme name
+#: inc/core/admin.php:348
+#: dashboard/inc/Main.php:193
+msgid "%s now comes with a sites library with various designs to pick from. Visit our collection of demos that are constantly being added."
+msgstr ""
+
+#: inc/core/admin.php:354
+#: dashboard/src/Components/Content/Help.js:63
+msgid "Documentation"
+msgstr ""
+
+#. translators: %s - theme name
+#. translators: %s - Theme name
+#: inc/core/admin.php:356
+#: dashboard/inc/Main.php:199
+msgid "Need more details? Please check our full documentation for detailed information on how to use %s."
+msgstr ""
+
+#: inc/core/admin.php:358
+#: header-footer-grid/Core/Builder/Header.php:51
+#: header-footer-grid/Core/Builder/Footer.php:47
+msgid "Read full documentation"
 msgstr ""
 
 #: inc/customizer/options/layout_blog.php:47
@@ -501,9 +244,9 @@ msgstr ""
 
 #: inc/customizer/options/layout_blog.php:66
 #: inc/customizer/options/main.php:51
-#: header-footer-grid/Core/Settings/Manager.php:180
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:291
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:314
+#: header-footer-grid/Core/Settings/Manager.php:181
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:295
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:318
 msgid "Layout"
 msgstr ""
 
@@ -571,7 +314,7 @@ msgstr ""
 
 #: inc/customizer/options/layout_blog.php:283
 #: inc/views/partials/post_meta.php:141
-#: header-footer-grid/Core/Magic_Tags.php:435
+#: header-footer-grid/Core/Magic_Tags.php:434
 msgid "Author"
 msgstr ""
 
@@ -605,7 +348,7 @@ msgid "Show Author Avatar"
 msgstr ""
 
 #: inc/customizer/options/main.php:55
-#: header-footer-grid/Core/Components/Abstract_Component.php:752
+#: header-footer-grid/Core/Components/Abstract_Component.php:747
 msgid "Typography"
 msgstr ""
 
@@ -640,15 +383,15 @@ msgstr ""
 
 #: inc/customizer/options/layout_container.php:133
 #: inc/admin/metabox/main.php:38
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:319
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:321
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:323
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:325
 msgid "Contained"
 msgstr ""
 
 #: inc/customizer/options/layout_container.php:134
 #: inc/admin/metabox/main.php:39
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:319
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:320
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:323
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:324
 msgid "Full Width"
 msgstr ""
 
@@ -666,6 +409,26 @@ msgstr ""
 msgid "View PRO Features"
 msgstr ""
 
+#: inc/customizer/options/upsells.php:89
+#: dashboard/inc/Main.php:332
+msgid "Header Booster"
+msgstr ""
+
+#: inc/customizer/options/upsells.php:90
+#: dashboard/inc/Main.php:347
+msgid "Blog Booster"
+msgstr ""
+
+#: inc/customizer/options/upsells.php:91
+#: dashboard/inc/Main.php:357
+msgid "WooCommerce Booster"
+msgstr ""
+
+#: inc/customizer/options/upsells.php:92
+#: dashboard/inc/Main.php:342
+msgid "Custom Layouts"
+msgstr ""
+
 #: inc/customizer/options/upsells.php:93
 msgid "White Label module"
 msgstr ""
@@ -674,12 +437,23 @@ msgstr ""
 msgid "Scroll to Top module"
 msgstr ""
 
+#: inc/customizer/options/upsells.php:95
+#: dashboard/inc/Main.php:352
+msgid "Elementor Booster"
+msgstr ""
+
 #: inc/customizer/options/upsells.php:99
 msgid "Easily create custom headers and footers as well as adding your own custom code or content in any of the hooks locations."
 msgstr ""
 
+#: inc/customizer/options/upsells.php:100
+#: dashboard/inc/Main.php:353
+msgid "Leverage the true flexibility of Elementor with powerful addons and templates that you can import with just one click."
+msgstr ""
+
 #: inc/customizer/options/typography.php:106
-#: header-footer-grid/Core/Settings/Manager.php:176
+#: header-footer-grid/Core/Settings/Manager.php:177
+#: dashboard/src/Components/Onboarding/ImportModal.js:141
 msgid "General"
 msgstr ""
 
@@ -696,6 +470,7 @@ msgid "Buttons"
 msgstr ""
 
 #: inc/customizer/options/buttons.php:58
+#: assets/js/src/gutenberg.js:14
 msgid "Primary"
 msgstr ""
 
@@ -708,12 +483,17 @@ msgid "Button Appearance"
 msgstr ""
 
 #: inc/customizer/options/buttons.php:129
-#: header-footer-grid/Core/Components/Abstract_Component.php:504
+#: header-footer-grid/Core/Components/Abstract_Component.php:513
 msgid "Padding"
 msgstr ""
 
 #: inc/customizer/options/buttons.php:148
 msgid "Border radius"
+msgstr ""
+
+#: inc/customizer/options/layout_sidebar.php:43
+#: dashboard/inc/Main.php:308
+msgid "Content / Sidebar"
 msgstr ""
 
 #: inc/customizer/options/layout_sidebar.php:62
@@ -785,6 +565,7 @@ msgid "Colors & Background"
 msgstr ""
 
 #: inc/customizer/options/layout_single_post.php:69
+#: dashboard/src/Components/Onboarding/ImportModal.js:127
 msgid "Content"
 msgstr ""
 
@@ -861,10 +642,14 @@ msgstr ""
 
 #: inc/admin/plugin_install/main.php:113
 #: inc/admin/plugin_install/main.php:133
+#: dashboard/src/Components/LicenseCard.js:78
+#: dashboard/src/Components/PluginCard.js:17
 msgid "Activate"
 msgstr ""
 
 #: inc/admin/plugin_install/main.php:128
+#: dashboard/src/Components/LicenseCard.js:77
+#: dashboard/src/Components/PluginCard.js:18
 msgid "Deactivate"
 msgstr ""
 
@@ -907,12 +692,15 @@ msgstr ""
 #: header-footer-grid/Core/Customizer.php:273
 #: header-footer-grid/templates/components/component-search-responsive.php:41
 #: header-footer-grid/templates/components/component-cart-icon.php:26
+#: dashboard/src/Components/Onboarding/Migration.js:119
+#: dashboard/src/Components/Onboarding/ImportModal.js:401
+#: dashboard/src/Components/Onboarding/PreviewFrame.js:24
 msgid "Close"
 msgstr ""
 
 #: inc/views/header.php:147
-#: header-footer-grid/Core/Components/Nav.php:185
-#: header-footer-grid/Core/Magic_Tags.php:490
+#: header-footer-grid/Core/Components/Nav.php:187
+#: header-footer-grid/Core/Magic_Tags.php:489
 #: header-footer-grid/templates/components/component-cart-icon.php:50
 msgid "Cart"
 msgstr ""
@@ -950,10 +738,12 @@ msgid "Comments Navigation"
 msgstr ""
 
 #: inc/views/partials/comments.php:79
+#: dashboard/src/Components/Onboarding/PreviewFrame.js:33
 msgid "Previous"
 msgstr ""
 
 #: inc/views/partials/comments.php:82
+#: dashboard/src/Components/Onboarding/PreviewFrame.js:43
 msgid "Next"
 msgstr ""
 
@@ -992,7 +782,165 @@ msgstr[1] ""
 msgid "Search Results for: %s"
 msgstr ""
 
-#: header-footer-grid/Core/Settings/Manager.php:184
+#: dashboard/inc/Main.php:127
+#: dashboard/inc/Main.php:128
+msgid "Options"
+msgstr ""
+
+#: dashboard/inc/Main.php:174
+#: dashboard/src/Components/Content/FreePro.js:16
+#: dashboard/src/Components/Content/Changelog.js:25
+msgid "Neve Pro"
+msgstr ""
+
+#: dashboard/inc/Main.php:175
+msgid "Neve Pro Addon"
+msgstr ""
+
+#. translators: %s - Theme name
+#: dashboard/inc/Main.php:191
+msgid "%s Options"
+msgstr ""
+
+#. translators: %s - Theme name
+#: dashboard/inc/Main.php:195
+msgid "With %s, you can choose from multiple unique demos, specially designed for you, that can be installed with a single click. You just need to choose your favorite, and we will take care of everything else."
+msgstr ""
+
+#. translators: %s - Theme name
+#: dashboard/inc/Main.php:197
+msgid "We want to make sure you have the best experience using %1$s, and that is why we have gathered all the necessary information here for you. We hope you will enjoy using %1$s as much as we enjoy creating great products."
+msgstr ""
+
+#. translators: %s - "Neve Pro Addon"
+#: dashboard/inc/Main.php:201
+msgid "%s license"
+msgstr ""
+
+#. translators: %s - "Neve Pro Addon"
+#: dashboard/inc/Main.php:203
+msgid "Please update %s to the latest version and then refresh this page to have access to the options."
+msgstr ""
+
+#. translators: store name (Themeisle)
+#: dashboard/inc/Main.php:207
+msgid "Enter your license from %1$s purchase history in order to get plugin updates"
+msgstr ""
+
+#: dashboard/inc/Main.php:245
+#: dashboard/inc/Main.php:265
+msgid "Update Now"
+msgstr ""
+
+#: dashboard/inc/Main.php:280
+msgid "Upload Logo"
+msgstr ""
+
+#: dashboard/inc/Main.php:284
+msgid "Set Colors"
+msgstr ""
+
+#: dashboard/inc/Main.php:288
+msgid "Customize Fonts"
+msgstr ""
+
+#: dashboard/inc/Main.php:292
+msgid "Layout Options"
+msgstr ""
+
+#: dashboard/inc/Main.php:296
+msgid "Header Options"
+msgstr ""
+
+#: dashboard/inc/Main.php:300
+msgid "Blog Layouts"
+msgstr ""
+
+#: dashboard/inc/Main.php:304
+msgid "Footer Options"
+msgstr ""
+
+#: dashboard/inc/Main.php:322
+msgid "Header/Footer builder"
+msgstr ""
+
+#: dashboard/inc/Main.php:323
+msgid "Easily build your header and footer by dragging and dropping all the important elements in the real-time WordPress Customizer. More advanced options are available in PRO."
+msgstr ""
+
+#: dashboard/inc/Main.php:327
+msgid "Page Builder Compatibility"
+msgstr ""
+
+#: dashboard/inc/Main.php:328
+msgid "Neve is fully compatible with Gutenberg, the new WordPress editor and for all of you page builder fans, Neve has full compatibility with Elementor, Beaver Builder, and all the other popular page builders."
+msgstr ""
+
+#: dashboard/inc/Main.php:333
+msgid "Take the header builder to a new level with new awesome components: socials, contact, breadcrumbs, language switcher, multiple HTML, sticky and transparent menu, page header builder and many more."
+msgstr ""
+
+#: dashboard/inc/Main.php:337
+msgid "Page Header Builder"
+msgstr ""
+
+#: dashboard/inc/Main.php:338
+msgid "The Page Header is the horizontal area that sits directly below the header and contains the page/post title. Easily design an attractive Page Header area using our dedicated builder."
+msgstr ""
+
+#: dashboard/inc/Main.php:343
+msgid "Powerful Custom Layouts builder which allows you to easily create your own header, footer or custom content on any of the hook locations available in the theme."
+msgstr ""
+
+#: dashboard/inc/Main.php:348
+msgid "Give a huge boost to your entire blogging experience with features specially designed for increased user experience."
+msgstr ""
+
+#: dashboard/inc/Main.php:348
+msgid "Sharing, custom article sorting, comments integrations, number of minutes needed to read an article and many more."
+msgstr ""
+
+#: dashboard/inc/Main.php:358
+msgid "Empower your online store with awesome new features, specially designed for a smooth WooCommerce integration."
+msgstr ""
+
+#: dashboard/inc/Main.php:358
+msgid "Wishlist, quick view, video products, advanced reviews, multiple dedicated layouts and many more."
+msgstr ""
+
+#: dashboard/inc/Main.php:362
+msgid "LifterLMS Booster"
+msgstr ""
+
+#: dashboard/inc/Main.php:363
+msgid "Make your LifterLMS pages look stunning with our PRO design options. Specially created to help you set up your online courses with minimum customizations."
+msgstr ""
+
+#: dashboard/inc/Main.php:367
+msgid "Typekit(Adobe) Fonts"
+msgstr ""
+
+#: dashboard/inc/Main.php:368
+msgid "The module allows for an easy way of enabling new awesome Adobe (previous Typekit) Fonts in Neve's Typography options."
+msgstr ""
+
+#: dashboard/inc/Main.php:372
+msgid "White Label"
+msgstr ""
+
+#: dashboard/inc/Main.php:373
+msgid "For any developer or agency out there building websites for their own clients, we've made it easy to present the theme as your own."
+msgstr ""
+
+#: dashboard/inc/Main.php:377
+msgid "Scroll To Top"
+msgstr ""
+
+#: dashboard/inc/Main.php:378
+msgid "Simple but effective module to help you navigate back to the top of the really long pages."
+msgstr ""
+
+#: header-footer-grid/Core/Settings/Manager.php:185
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:274
 msgid "Style"
 msgstr ""
@@ -1017,82 +965,82 @@ msgstr ""
 msgid "Search Components"
 msgstr ""
 
-#: header-footer-grid/Core/Components/MenuIcon.php:74
+#: header-footer-grid/Core/Components/MenuIcon.php:76
 msgid "Menu Icon"
 msgstr ""
 
-#: header-footer-grid/Core/Components/MenuIcon.php:98
+#: header-footer-grid/Core/Components/MenuIcon.php:100
 msgid "Menu label"
 msgstr ""
 
-#: header-footer-grid/Core/Components/MenuIcon.php:118
-#: header-footer-grid/Core/Components/Button.php:140
+#: header-footer-grid/Core/Components/MenuIcon.php:120
+#: header-footer-grid/Core/Components/Button.php:142
 msgid "Appearance"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Nav.php:93
-#: header-footer-grid/Core/Components/SecondNav.php:66
-#: header-footer-grid/Core/Components/NavFooter.php:66
+#: header-footer-grid/Core/Components/Nav.php:95
+#: header-footer-grid/Core/Components/SecondNav.php:68
+#: header-footer-grid/Core/Components/NavFooter.php:68
 msgid "Hover Skin Mode"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Nav.php:111
-#: header-footer-grid/Core/Components/SecondNav.php:84
-#: header-footer-grid/Core/Components/NavFooter.php:84
+#: header-footer-grid/Core/Components/Nav.php:113
+#: header-footer-grid/Core/Components/SecondNav.php:86
+#: header-footer-grid/Core/Components/NavFooter.php:86
 msgid "Items Color"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Nav.php:133
+#: header-footer-grid/Core/Components/Nav.php:135
 msgid "Active Item Color"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Nav.php:155
-#: header-footer-grid/Core/Components/SecondNav.php:107
-#: header-footer-grid/Core/Components/NavFooter.php:106
+#: header-footer-grid/Core/Components/Nav.php:157
+#: header-footer-grid/Core/Components/SecondNav.php:109
+#: header-footer-grid/Core/Components/NavFooter.php:108
 msgid "Items Hover Color"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Nav.php:180
+#: header-footer-grid/Core/Components/Nav.php:182
 #: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:120
 msgid "Search"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Nav.php:206
+#: header-footer-grid/Core/Components/Nav.php:208
 msgid "Last Menu Item"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Nav.php:239
-#: header-footer-grid/Core/Components/SecondNav.php:152
-#: header-footer-grid/Core/Components/NavFooter.php:149
+#: header-footer-grid/Core/Components/Nav.php:241
+#: header-footer-grid/Core/Components/SecondNav.php:154
+#: header-footer-grid/Core/Components/NavFooter.php:151
 msgid "Items Spacing (px)"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Nav.php:261
-#: header-footer-grid/Core/Components/SecondNav.php:174
-#: header-footer-grid/Core/Components/NavFooter.php:171
+#: header-footer-grid/Core/Components/Nav.php:263
+#: header-footer-grid/Core/Components/SecondNav.php:176
+#: header-footer-grid/Core/Components/NavFooter.php:173
 msgid "Items Height (px)"
 msgstr ""
 
-#: header-footer-grid/Core/Components/CustomHtml.php:34
-#: header-footer-grid/Core/Components/CustomHtml.php:141
+#: header-footer-grid/Core/Components/CustomHtml.php:35
+#: header-footer-grid/Core/Components/CustomHtml.php:142
 msgid "HTML"
 msgstr ""
 
-#: header-footer-grid/Core/Components/CustomHtml.php:142
+#: header-footer-grid/Core/Components/CustomHtml.php:143
 msgid "Arbitrary HTML code. It supports also shortcodes."
 msgstr ""
 
-#: header-footer-grid/Core/Components/SecondNav.php:140
+#: header-footer-grid/Core/Components/SecondNav.php:142
 msgid "Select Menu"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Copyright.php:35
-#: header-footer-grid/Core/Components/Copyright.php:69
+#: header-footer-grid/Core/Components/Copyright.php:36
+#: header-footer-grid/Core/Components/Copyright.php:70
 msgid "Copyright"
 msgstr ""
 
 #. translators: %1$s is Theme Name ( Neve ), %2$s is WordPress
-#: header-footer-grid/Core/Components/Copyright.php:63
+#: header-footer-grid/Core/Components/Copyright.php:64
 msgid "%1$s | Powered by %2$s"
 msgstr ""
 
@@ -1103,251 +1051,251 @@ msgstr ""
 #: header-footer-grid/Core/Components/Search.php:57
 #: header-footer-grid/Core/Components/Search.php:87
 #: header-footer-grid/Core/Components/Search.php:91
-#: header-footer-grid/Core/Components/SearchResponsive.php:86
-#: header-footer-grid/Core/Components/SearchResponsive.php:210
-#: header-footer-grid/Core/Components/SearchResponsive.php:214
+#: header-footer-grid/Core/Components/SearchResponsive.php:88
+#: header-footer-grid/Core/Components/SearchResponsive.php:230
+#: header-footer-grid/Core/Components/SearchResponsive.php:234
 msgid "Search for..."
 msgstr ""
 
 #: header-footer-grid/Core/Components/Search.php:58
-#: header-footer-grid/Core/Components/SearchResponsive.php:87
+#: header-footer-grid/Core/Components/SearchResponsive.php:89
 msgid "Placeholder"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:455
+#: header-footer-grid/Core/Components/Abstract_Component.php:464
 msgid "Left"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:459
+#: header-footer-grid/Core/Components/Abstract_Component.php:468
 msgid "Center"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:463
+#: header-footer-grid/Core/Components/Abstract_Component.php:472
 msgid "Right"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:470
+#: header-footer-grid/Core/Components/Abstract_Component.php:479
 msgid "Justify"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:484
+#: header-footer-grid/Core/Components/Abstract_Component.php:493
 msgid "Alignment"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:530
+#: header-footer-grid/Core/Components/Abstract_Component.php:539
 msgid "Margin"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Logo.php:70
+#: header-footer-grid/Core/Components/Logo.php:72
 msgid "Logo & Site Identity"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Logo.php:71
+#: header-footer-grid/Core/Components/Logo.php:73
 msgid "Display your company logo here or simply use words to describe your business."
 msgstr ""
 
-#: header-footer-grid/Core/Components/Logo.php:110
+#: header-footer-grid/Core/Components/Logo.php:112
 msgid "Display"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Logo.php:130
+#: header-footer-grid/Core/Components/Logo.php:132
 msgid "Show Site Tagline"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Logo.php:145
+#: header-footer-grid/Core/Components/Logo.php:147
 msgid "Show Site Title"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Logo.php:160
+#: header-footer-grid/Core/Components/Logo.php:162
 msgid "Logo max width"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Logo.php:190
+#: header-footer-grid/Core/Components/Logo.php:192
 msgid "Disable Homepage Link"
 msgstr ""
 
-#: header-footer-grid/Core/Components/SearchResponsive.php:37
+#: header-footer-grid/Core/Components/SearchResponsive.php:39
 msgid "Search Icon"
 msgstr ""
 
-#: header-footer-grid/Core/Components/SearchResponsive.php:102
-#: header-footer-grid/Core/Components/CartIcon.php:114
+#: header-footer-grid/Core/Components/SearchResponsive.php:104
+#: header-footer-grid/Core/Components/CartIcon.php:116
 msgid "Icon Size"
 msgstr ""
 
-#: header-footer-grid/Core/Components/SearchResponsive.php:128
-#: header-footer-grid/Core/Components/CartIcon.php:139
+#: header-footer-grid/Core/Components/SearchResponsive.php:130
+#: header-footer-grid/Core/Components/CartIcon.php:141
 #: inc/customizer/controls/react/src/background/BackgroundComponent.js:45
 #: inc/customizer/controls/react/src/background/BackgroundComponent.js:89
 msgid "Color"
 msgstr ""
 
-#: header-footer-grid/Core/Components/SearchResponsive.php:147
-#: header-footer-grid/Core/Components/CartIcon.php:165
+#: header-footer-grid/Core/Components/SearchResponsive.php:149
+#: header-footer-grid/Core/Components/CartIcon.php:167
 msgid "Hover Color"
 msgstr ""
 
-#: header-footer-grid/Core/Components/CartIcon.php:44
+#: header-footer-grid/Core/Components/CartIcon.php:46
 msgid "Cart Icon"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Button.php:75
-#: header-footer-grid/Core/Components/Button.php:113
+#: header-footer-grid/Core/Components/Button.php:77
+#: header-footer-grid/Core/Components/Button.php:115
 msgid "Button"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Button.php:99
+#: header-footer-grid/Core/Components/Button.php:101
 msgid "Link"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Button.php:114
+#: header-footer-grid/Core/Components/Button.php:116
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:182
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:189
 msgid "Text"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:401
+#: header-footer-grid/Core/Magic_Tags.php:400
 msgid "Single"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:404
+#: header-footer-grid/Core/Magic_Tags.php:403
 msgid "Current Single Title"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:408
+#: header-footer-grid/Core/Magic_Tags.php:407
 msgid "Current Single Excerpt"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:412
+#: header-footer-grid/Core/Magic_Tags.php:411
 msgid "Current Single URL"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:418
+#: header-footer-grid/Core/Magic_Tags.php:417
 msgid "Archive"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:421
+#: header-footer-grid/Core/Magic_Tags.php:420
 msgid "Archive Description"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:425
+#: header-footer-grid/Core/Magic_Tags.php:424
 msgid "Archive Title"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:429
+#: header-footer-grid/Core/Magic_Tags.php:428
 msgid "Archive URL"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:438
+#: header-footer-grid/Core/Magic_Tags.php:437
 msgid "Author Bio"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:442
+#: header-footer-grid/Core/Magic_Tags.php:441
 msgid "Author Name"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:446
+#: header-footer-grid/Core/Magic_Tags.php:445
 msgid "Author URL"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:452
+#: header-footer-grid/Core/Magic_Tags.php:451
 msgid "Current User"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:455
+#: header-footer-grid/Core/Magic_Tags.php:454
 msgid "User Nice Name"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:459
+#: header-footer-grid/Core/Magic_Tags.php:458
 msgid "Display Name"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:463
+#: header-footer-grid/Core/Magic_Tags.php:462
 msgid "User Email"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:469
+#: header-footer-grid/Core/Magic_Tags.php:468
 msgid "Global"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:472
+#: header-footer-grid/Core/Magic_Tags.php:471
 msgid "Site Title"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:476
+#: header-footer-grid/Core/Magic_Tags.php:475
 msgid "Site Tagline"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:480
+#: header-footer-grid/Core/Magic_Tags.php:479
 msgid "Home URL"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:484
+#: header-footer-grid/Core/Magic_Tags.php:483
 msgid "Current Year"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:493
+#: header-footer-grid/Core/Magic_Tags.php:492
 msgid "Total + Currency Symbol"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:497
+#: header-footer-grid/Core/Magic_Tags.php:496
 msgid "Total"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:501
+#: header-footer-grid/Core/Magic_Tags.php:500
 msgid "Currency Name"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:505
+#: header-footer-grid/Core/Magic_Tags.php:504
 msgid "Currency Symbol"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:514
+#: header-footer-grid/Core/Magic_Tags.php:513
 msgid "WooCommerce"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:517
+#: header-footer-grid/Core/Magic_Tags.php:516
 msgid "Product Price"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:521
+#: header-footer-grid/Core/Magic_Tags.php:520
 msgid "Product Title"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:525
+#: header-footer-grid/Core/Magic_Tags.php:524
 msgid "Cart URL"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:529
+#: header-footer-grid/Core/Magic_Tags.php:528
 msgid "Checkout URL"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:296
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:300
 msgid "Slide from Left"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:297
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:301
 msgid "Toggle Dropdown"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:336
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:340
 msgid "Row height"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:382
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:386
 msgid "Row Background"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:405
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:410
 msgid "Skin Mode"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:514
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:519
 #: header-footer-grid/Core/Builder/Header.php:38
 msgid "Header"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:602
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:607
 msgid "Section Content"
 msgstr ""
 
@@ -1701,4 +1649,384 @@ msgstr ""
 
 #: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:184
 msgid "Loading..."
+msgstr ""
+
+#: dashboard/src/utils/rest.js:52
+msgid "Typekit Project ID is invalid"
+msgstr ""
+
+#: dashboard/src/Components/ModuleCard.js:69
+#: dashboard/src/Components/Onboarding/PreviewFrame.js:54
+msgid "Upgrade"
+msgstr ""
+
+#: dashboard/src/Components/ModuleCard.js:85
+msgid "Module Activated"
+msgstr ""
+
+#: dashboard/src/Components/ModuleCard.js:86
+msgid "Module Deactivated."
+msgstr ""
+
+#: dashboard/src/Components/ModuleCard.js:90
+msgid "Could not activate module. Please try again."
+msgstr ""
+
+#: dashboard/src/Components/ModuleCard.js:104
+#: dashboard/src/Components/Content/Help.js:54
+#: dashboard/src/Components/Content/Help.js:84
+#: dashboard/src/Components/Content/Help.js:96
+msgid "Learn More"
+msgstr ""
+
+#: dashboard/src/Components/Options/InputForm.js:47
+msgid "Save"
+msgstr ""
+
+#: dashboard/src/Components/Notification.js:27
+msgid "Done!"
+msgstr ""
+
+#: dashboard/src/Components/Notification.js:42
+msgid "In Progress"
+msgstr ""
+
+#: dashboard/src/Components/Snackbar.js:25
+msgid "Could not Update Option. Please try again."
+msgstr ""
+
+#: dashboard/src/Components/Snackbar.js:26
+#: dashboard/src/Components/Sidebar.js:53
+msgid "Option Updated"
+msgstr ""
+
+#: dashboard/src/Components/Sidebar.js:20
+msgid "Neve Community"
+msgstr ""
+
+#: dashboard/src/Components/Sidebar.js:23
+#: dashboard/src/Components/Sidebar.js:31
+msgid "Join our Facebook Group"
+msgstr ""
+
+#: dashboard/src/Components/Sidebar.js:28
+msgid "Leave us a review"
+msgstr ""
+
+#: dashboard/src/Components/Sidebar.js:29
+msgid "Are you are enjoying Neve? We would love to hear your feedback."
+msgstr ""
+
+#: dashboard/src/Components/Sidebar.js:36
+msgid "Contributing"
+msgstr ""
+
+#: dashboard/src/Components/Sidebar.js:37
+msgid "Become a contributor by opting in to our anonymous data tracking. We guarantee no sensitive data is collected."
+msgstr ""
+
+#: dashboard/src/Components/Sidebar.js:39
+msgid "What do we track?"
+msgstr ""
+
+#: dashboard/src/Components/Sidebar.js:44
+msgid "Allow Anonymous Tracking"
+msgstr ""
+
+#: dashboard/src/Components/Sidebar.js:49
+msgid "Could not update option. Please try again."
+msgstr ""
+
+#: dashboard/src/Components/LicenseCard.js:67
+msgid "Enter License Key"
+msgstr ""
+
+#: dashboard/src/Components/LicenseCard.js:81
+#: dashboard/src/Components/PluginCard.js:17
+msgid "Activating"
+msgstr ""
+
+#: dashboard/src/Components/LicenseCard.js:82
+#: dashboard/src/Components/PluginCard.js:18
+msgid "Deactivating"
+msgstr ""
+
+#: dashboard/src/Components/LicenseCard.js:97
+msgid "Valid"
+msgstr ""
+
+#: dashboard/src/Components/LicenseCard.js:97
+#: dashboard/src/Components/LicenseCard.js:105
+msgid "Expired"
+msgstr ""
+
+#: dashboard/src/Components/LicenseCard.js:104
+msgid "Expires"
+msgstr ""
+
+#: dashboard/src/Components/Content/FreePro.js:23
+msgid "Get access to all Pro features and power-up your website"
+msgstr ""
+
+#: dashboard/src/Components/Content/FreePro.js:27
+msgid "Get Neve Pro Now"
+msgstr ""
+
+#: dashboard/src/Components/Content/Start.js:20
+msgid "Starter Sites"
+msgstr ""
+
+#: dashboard/src/Components/Content/Start.js:29
+msgid "Go to Starter Sites"
+msgstr ""
+
+#: dashboard/src/Components/Content/Start.js:35
+msgid "Getting Started? Check help and docs"
+msgstr ""
+
+#: dashboard/src/Components/Content/Start.js:36
+msgid "Need more details? Please check our full documentation for detailed information on how to use Neve."
+msgstr ""
+
+#: dashboard/src/Components/Content/Start.js:41
+#: dashboard/src/Components/Content/Help.js:70
+msgid "Go to docs"
+msgstr ""
+
+#: dashboard/src/Components/Content/Start.js:57
+msgid "Customizer quick links"
+msgstr ""
+
+#: dashboard/src/Components/Content/Help.js:24
+#: dashboard/src/Components/Content/Help.js:31
+msgid "Contact Support"
+msgstr ""
+
+#: dashboard/src/Components/Content/Help.js:37
+msgid "Changelog"
+msgstr ""
+
+#: dashboard/src/Components/Content/Help.js:38
+msgid "Want to get the gist on the latest theme changes? Just consult our changelog below to get a taste of the recent fixes and features implemented."
+msgstr ""
+
+#: dashboard/src/Components/Content/Help.js:43
+msgid "View Changelog"
+msgstr ""
+
+#: dashboard/src/Components/Content/Help.js:48
+msgid "Speed up your site"
+msgstr ""
+
+#: dashboard/src/Components/Content/Help.js:49
+msgid "If you find yourself in a situation where everything on your site is running very slowly, you might consider having a look at the documentation below where you will find the most common issues causing this and possible solutions for each of the issues."
+msgstr ""
+
+#: dashboard/src/Components/Content/Help.js:77
+msgid "Create a child theme"
+msgstr ""
+
+#: dashboard/src/Components/Content/Help.js:78
+msgid "If you want to make changes to the theme's files, those changes are likely to be overwritten when you next update the theme. In order to prevent that from happening, you need to create a child theme. For this, please follow the documentation below."
+msgstr ""
+
+#: dashboard/src/Components/Content/Help.js:89
+msgid "Build a landing page with a drag-and-drop content builder"
+msgstr ""
+
+#: dashboard/src/Components/Content/Help.js:90
+msgid "In the documentation below you will find an easy way to build a great looking landing page using a drag-and-drop content builder plugin."
+msgstr ""
+
+#: dashboard/src/Components/Content/Changelog.js:15
+msgid "Show changelog for"
+msgstr ""
+
+#: dashboard/src/Components/Content/Changelog.js:44
+msgid "Features"
+msgstr ""
+
+#: dashboard/src/Components/Content/Changelog.js:54
+msgid "Bug Fixes"
+msgstr ""
+
+#: dashboard/src/Components/Content/Changelog.js:64
+msgid "Tweaks"
+msgstr ""
+
+#: dashboard/src/Components/Header.js:24
+msgid "Neve Theme Logo"
+msgstr ""
+
+#: dashboard/src/Components/Onboarding/ImportModalNote.js:15
+msgid "To import this demo you have to install the following plugins"
+msgstr ""
+
+#: dashboard/src/Components/Onboarding/ImportModalNote.js:16
+msgid "Note"
+msgstr ""
+
+#: dashboard/src/Components/Onboarding/ImportModalNote.js:23
+msgid "We recommend you backup your website content before attempting a full site import."
+msgstr ""
+
+#: dashboard/src/Components/Onboarding/ImportModalNote.js:24
+msgid "Some of the demo images will not be imported and will be replaced by placeholder images."
+msgstr ""
+
+#: dashboard/src/Components/Onboarding/ImportModalNote.js:29
+msgid "Here is our own collection of related images you can use for your site."
+msgstr ""
+
+#: dashboard/src/Components/Onboarding/EditorSelector.js:46
+#: dashboard/src/Components/Onboarding/EditorSelector.js:67
+msgid "Builder Logo"
+msgstr ""
+
+#: dashboard/src/Components/Onboarding/EditorSelector.js:84
+msgid "Search for a starter site"
+msgstr ""
+
+#: dashboard/src/Components/Onboarding/Migration.js:43
+#: dashboard/src/Components/Onboarding/ImportModal.js:306
+msgid "Something went wrong while installing the necessary plugins."
+msgstr ""
+
+#: dashboard/src/Components/Onboarding/Migration.js:58
+#: dashboard/src/Components/Onboarding/ImportModal.js:307
+msgid "Something went wrong while importing the website content."
+msgstr ""
+
+#: dashboard/src/Components/Onboarding/Migration.js:74
+#: dashboard/src/Components/Onboarding/Migration.js:175
+msgid "Migrate"
+msgstr ""
+
+#: dashboard/src/Components/Onboarding/Migration.js:88
+msgid "The following plugins will be installed"
+msgstr ""
+
+#: dashboard/src/Components/Onboarding/Migration.js:100
+#: dashboard/src/Components/Onboarding/ImportModal.js:386
+msgid "Content was successfully imported. Enjoy your new site!"
+msgstr ""
+
+#: dashboard/src/Components/Onboarding/Migration.js:107
+msgid "Migrating"
+msgstr ""
+
+#: dashboard/src/Components/Onboarding/Migration.js:119
+msgid "Cancel"
+msgstr ""
+
+#: dashboard/src/Components/Onboarding/Migration.js:127
+msgid "Start Migration"
+msgstr ""
+
+#: dashboard/src/Components/Onboarding/Migration.js:134
+msgid "Edit Content"
+msgstr ""
+
+#: dashboard/src/Components/Onboarding/Migration.js:140
+#: dashboard/src/Components/Onboarding/ImportModal.js:424
+msgid "View Website"
+msgstr ""
+
+#: dashboard/src/Components/Onboarding/Migration.js:183
+msgid "Something went wrong. Please reload the page and try again."
+msgstr ""
+
+#: dashboard/src/Components/Onboarding/Migration.js:186
+msgid "Dismissed"
+msgstr ""
+
+#: dashboard/src/Components/Onboarding/Migration.js:190
+msgid "Dismiss"
+msgstr ""
+
+#: dashboard/src/Components/Onboarding/Main.js:94
+msgid "Ready to use pre-built websites with 1-click installation"
+msgstr ""
+
+#: dashboard/src/Components/Onboarding/Main.js:97
+msgid "Keep the Current Layout"
+msgstr ""
+
+#: dashboard/src/Components/Onboarding/ImportStepper.js:9
+msgid "Installing Plugins"
+msgstr ""
+
+#: dashboard/src/Components/Onboarding/ImportStepper.js:14
+msgid "Importing Content"
+msgstr ""
+
+#: dashboard/src/Components/Onboarding/ImportStepper.js:19
+msgid "Importing Customizer Settings"
+msgstr ""
+
+#: dashboard/src/Components/Onboarding/ImportStepper.js:24
+msgid "Importing Widgets"
+msgstr ""
+
+#: dashboard/src/Components/Onboarding/ImportModalError.js:11
+msgid "Error code"
+msgstr ""
+
+#: dashboard/src/Components/Onboarding/ImportModalError.js:12
+msgid "Error log"
+msgstr ""
+
+#: dashboard/src/Components/Onboarding/StarterSiteCard.js:22
+msgid "Preview"
+msgstr ""
+
+#: dashboard/src/Components/Onboarding/StarterSiteCard.js:33
+#: dashboard/src/Components/Onboarding/ImportModal.js:411
+#: dashboard/src/Components/Onboarding/PreviewFrame.js:64
+msgid "Import"
+msgstr ""
+
+#: dashboard/src/Components/Onboarding/StarterSiteCard.js:45
+msgid "Pro"
+msgstr ""
+
+#: dashboard/src/Components/Onboarding/ImportModal.js:41
+#: dashboard/src/Components/Onboarding/ImportModal.js:68
+msgid "Something went wrong while loading the site data. Please refresh the page and try again."
+msgstr ""
+
+#: dashboard/src/Components/Onboarding/ImportModal.js:131
+msgid "Customizer"
+msgstr ""
+
+#: dashboard/src/Components/Onboarding/ImportModal.js:135
+msgid "Widgets"
+msgstr ""
+
+#: dashboard/src/Components/Onboarding/ImportModal.js:172
+msgid "Plugins"
+msgstr ""
+
+#: dashboard/src/Components/Onboarding/ImportModal.js:308
+msgid "Something went wrong while updating the customizer settings."
+msgstr ""
+
+#: dashboard/src/Components/Onboarding/ImportModal.js:309
+msgid "Something went wrong while importing the widgets."
+msgstr ""
+
+#: dashboard/src/Components/Onboarding/ImportModal.js:420
+msgid "Back to Sites Library"
+msgstr ""
+
+#: dashboard/src/Components/Onboarding/ImportModal.js:426
+msgid "Add your own content"
+msgstr ""
+
+#: dashboard/src/Components/PluginCard.js:16
+msgid "Install"
+msgstr ""
+
+#: dashboard/src/Components/PluginCard.js:16
+msgid "Installing"
 msgstr ""
