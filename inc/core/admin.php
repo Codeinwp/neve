@@ -468,11 +468,11 @@ class Admin {
 			return;
 		}
 		wp_enqueue_script(
-				'neve-gutenberg-script',
-				NEVE_ASSETS_URL . 'js/build/all/gutenberg.js',
-				array( 'wp-blocks', 'wp-dom' ),
-				NEVE_VERSION,
-				true
+			'neve-gutenberg-script',
+			NEVE_ASSETS_URL . 'js/build/all/gutenberg.js',
+			array( 'wp-blocks', 'wp-dom' ),
+			NEVE_VERSION,
+			true
 		);
 		wp_enqueue_style( 'neve-gutenberg-style', NEVE_ASSETS_URL . 'css/gutenberg-editor-style' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), NEVE_VERSION );
 	}

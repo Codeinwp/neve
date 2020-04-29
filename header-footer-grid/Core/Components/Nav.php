@@ -392,11 +392,14 @@ class Nav extends Abstract_Component {
 				],
 			],
 		];
-
-
+		$is_rtl      = is_rtl();
+		$left        = $is_rtl ? 'right' : 'left';
+		$right       = $is_rtl ? 'left' : 'right';
+		$first       = $is_rtl ? 'last' : 'first';
+		$last        = $is_rtl ? 'first' : 'last';
 
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => '.header--row .hfg-item-right .builder-item--' . $this->get_id() . ' .primary-menu-ul > li:not(:first-child)',
+			Dynamic_Selector::KEY_SELECTOR => '.header--row .hfg-item-' . $right . ' .builder-item--' . $this->get_id() . ' .primary-menu-ul > li:not(:' . $first . '-of-type)',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_MARGIN_LEFT => [
 					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::SPACING,
@@ -414,7 +417,7 @@ class Nav extends Abstract_Component {
 		];
 
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => '.header--row .hfg-item-center .builder-item--' . $this->get_id() . ' .primary-menu-ul > li:not(:last-child), .header--row .hfg-item-left .builder-item--' . $this->get_id() . ' .primary-menu-ul > li:not(:last-child)',
+			Dynamic_Selector::KEY_SELECTOR => '.header--row .hfg-item-center .builder-item--' . $this->get_id() . ' .primary-menu-ul > li:not(:' . $last . '-of-type), .header--row .hfg-item-' . $left . ' .builder-item--' . $this->get_id() . ' .primary-menu-ul > li:not(:' . $last . '-of-type)',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_MARGIN_RIGHT => [
 					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::SPACING,
@@ -478,6 +481,7 @@ class Nav extends Abstract_Component {
 				],
 			],
 		];
+
 		return parent::add_style( $css_array );
 	}
 }
