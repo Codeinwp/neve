@@ -1,0 +1,116 @@
+.notification {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  box-sizing: border-box;
+  background-color: $blue;
+  border: 1px solid darken($blue, 5%);
+  margin: 0 0 20px;
+  transition: .5s opacity ease, .5s max-height ease, .5s padding ease, .5s border-width ease, .5s margin ease;
+  transition-delay: 1.5s;
+  max-height: 1000px;
+
+  &.hidden {
+    max-height: 0;
+    overflow: hidden;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-width: 0;
+    opacity: 0;
+    margin: 0;
+  }
+
+  &.info {
+    background-color: $info;
+    border-color: darken($info, 10%);
+  }
+
+  &.error {
+    background-color: $error;
+    border-color: darken($error, 10%);
+  }
+
+  &.warning {
+    background-color: $warning;
+    border-color: darken($warning, 10%);
+  }
+
+  &.success {
+    background-color: $success;
+    border-color: darken($success, 10%);
+  }
+
+  button {
+    margin-left: auto;
+    background-color: transparent;
+    color: #fff;
+    border: 2px solid #FFFFFF;
+    border-radius: 2px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: normal;
+    padding: 5px 10px;
+    height: auto;
+    span {
+      display: flex;
+      align-items: center;
+
+      svg {
+        height: 15px;
+        margin-right: 5px;
+      }
+    }
+
+    &.is-loading span svg {
+      animation-name: spin;
+      animation-duration: 2000ms;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+    }
+
+    &[disabled] {
+      text-shadow: none;
+      opacity: .5;
+    }
+  }
+
+  p {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1;
+    margin: 0 10px 0;
+
+    svg {
+      margin-right: 5px;
+    }
+  }
+
+  &:last-child:not(.hidden) {
+    margin-bottom: 20px;
+  }
+}
+
+@mixin notifications--laptop() {
+  .notifications {
+    margin-top: 0;
+  }
+  .notification {
+    button {
+        padding: 10px 15px;
+      }
+      p {
+          padding: 10px 10px 10px 20px;
+        }
+    }
+  }
+
+  @mixin notifications--desktop() {
+    .notification {
+      &:last-child:not(.hidden) {
+        margin-bottom: 30px;
+      }
+    }
+}

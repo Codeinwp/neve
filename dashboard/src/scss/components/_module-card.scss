@@ -1,0 +1,154 @@
+.card.module-card {
+  padding: 0;
+  .required {
+	a {
+	  text-decoration: none;
+	  color: $warning;
+	  display: flex;
+	  align-content: center;
+	  line-height: 1.6;
+	  span {
+		display: flex;
+		align-content: center;
+	  }
+	  .dashicons {
+		margin-right: 5px;
+	  }
+	}
+  }
+  .card-header {
+	border-bottom: 1px solid $grey;
+
+	.title {
+	  margin: 0;
+	}
+
+	padding: 20px;
+
+	.toggle-wrap {
+	  margin-left: auto;
+	  display: flex;
+	  align-items: center;
+
+	  > div {
+		margin-left: 10px;
+	  }
+
+	  div {
+		margin-bottom: 0;
+
+		span {
+		  margin-right: 0;
+		}
+	  }
+	}
+  }
+
+  .card-content {
+	padding: 20px;
+
+	.card-description {
+	  margin: 0;
+
+	  a {
+		text-decoration: none;
+		font-weight: 700;
+	  }
+	}
+
+	> .actions {
+	  margin-top: 10px;
+	  display: flex;
+	  justify-content: flex-end;
+	}
+  }
+
+  .module-options {
+	margin: 0 -21px -21px;
+
+	.accordion {
+	  margin: -1px 0 0;
+
+	  &:first-child {
+		margin-top: 20px;
+	  }
+
+	  &.open .accordion-header {
+		border-bottom-color: transparent;
+		color: $dark-grey;
+
+		svg {
+		  color: $dark-grey;
+		}
+	  }
+
+	  .accordion-header {
+		padding: 15px 20px;
+		font-size: 15px;
+		font-weight: 600;
+		color: $blue;
+
+		svg {
+		  color: $blue;
+		}
+	  }
+	}
+
+	.module-option {
+	  display: flex;
+	  flex-direction: row;
+
+	  > svg {
+		margin-left: 10px;
+	  }
+
+	  &:not(:last-child) {
+		margin-bottom: 25px;
+	  }
+
+	  &.toggle {
+		div {
+		  margin-bottom: 0;
+		}
+	  }
+
+	  &.text {
+		width: 100%;
+
+		label {
+		  margin-bottom: 10px;
+		  display: block;
+		}
+
+		form .input-wrap {
+		  max-width: 300px;
+		  display: flex;
+		  align-items: center;
+		  position: relative;
+
+		  .actions {
+			position: absolute;
+			right: 0;
+			height: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			button {
+			  border-radius: 3px;
+			  height: 100%;
+			}
+		  }
+
+		  input {
+			flex-grow: 1;
+			border-radius: 3px;
+			box-shadow: none;
+			border: 1px solid $grey;
+			padding: 8px 40px 8px 10px;
+		  }
+		}
+	  }
+	}
+  }
+}

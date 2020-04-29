@@ -1,0 +1,30 @@
+@media (min-width: #{$tablet}) {
+  @include ob-starter-site-card--tablet();
+  @include ob-header--tablet();
+}
+
+@media (min-width: #{$laptop}) {
+  @include general--laptop();
+  @include header--laptop();
+  @include sidebar--laptop();
+  @include notifications--laptop();
+  @include start--laptop();
+  @include card--laptop();
+  @include license-card--laptop();
+  @include free-pro--laptop();
+  @include mock--laptop();
+  @include ob-starter-site-card--laptop();
+  @include ob-general--laptop();
+}
+
+
+@media (min-width: #{$desktop}) {
+  @include general--desktop();
+  @include header--desktop();
+  @include start--desktop();
+  @include card--desktop();
+  @include notifications--desktop();
+  @include plugins--desktop();
+  @include accordion--desktop();
+  @include mock--desktop();
+}

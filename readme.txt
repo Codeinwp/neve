@@ -1152,3 +1152,59 @@ Starter Sites screenshots resources:
 * https://mystock.themeisle.com/photo/cheesy-hamburger-with-french-fries/
 * https://mystock.themeisle.com/photo/fancy-restaurant/
 * https://mystock.themeisle.com/photo/indian-vegetable-grill-sandwich/
+
+- Fitness Trainer
+* https://stocksnap.io/photo/people-hiking-GGQX7WXAAC
+* https://stocksnap.io/photo/00RNNUWGLM
+
+- Music Band 2
+* https://stocksnap.io/photo/people-men-H80Z9EVEGA
+* https://stocksnap.io/photo/events-concert-1ZNLM71V1J
+
+- Perfume Shop
+* https://stocksnap.io/photo/chanel-perfume-KFMR70XLYS
+
+- Jewellery Shop 2
+* https://stocksnap.io/photo/woman-closeup-BIR9EBVX6K
+* https://stocksnap.io/photo/diamond-ring-V6XSRDWN2G
+* https://stocksnap.io/photo/still-items-NLSP8TGHFM
+
+- Copywriter
+* https://stocksnap.io/photo/man-smiling-X6BW9YMWXV
+
+- Boat Rental
+* https://stocksnap.io/photo/architecture-buildings-B7260BRVGS
+* https://stocksnap.io/photo/boat-ship-L584FW8XBR
+* https://mystock.themeisle.com/photo/three-boats-at-the-dock/
+* https://mystock.themeisle.com/photo/small-boat-on-copenhagen-canals/
+* https://mystock.themeisle.com/photo/blue-boat-docked-on-an-island-in-maldives/
+
+- Apparel
+* https://mystock.themeisle.com/photo/protest/
+* https://mystock.themeisle.com/photo/shopping-building-in-copenhagen-center/
+* https://mystock.themeisle.com/photo/grooms-suite/
+* https://mystock.themeisle.com/photo/mannequin/
+* https://stocksnap.io/photo/AOOC3CJARN
+* https://stocksnap.io/photo/HKTKMOVXNO
+
+- Pet Shop
+* https://mystock.themeisle.com/photo/buddy/
+* https://mystock.themeisle.com/photo/street-dog-sitting-on-a-beach/
+
+- Doctors 2
+* https://stocksnap.io/photo/city-buildings-VAGYAWK3PE
+* https://stocksnap.io/photo/chair-dentist-3J10QN5PTS
+* https://stocksnap.io/photo/stethoscope-medical-9M1HWW2JFV
+
+- Phychologist
+* https://stocksnap.io/photo/people-girls-Y2AHVPYB51
+* https://mystock.themeisle.com/photo/hammock-placed-between-two-poles-on-a-beach/
+
+- Book Shop
+* https://mystock.themeisle.com/photo/fireplace/
+* https://mystock.themeisle.com/photo/thinking-time/
+* https://mystock.themeisle.com/photo/volkswagen-vanagon/
+* https://mystock.themeisle.com/photo/programming-laptop-2/
+* https://mystock.themeisle.com/photo/temple-2/
+* https://stocksnap.io/photo/UA83K6Z0WY
+* https://stocksnap.io/photo/EB9B6BC1F6

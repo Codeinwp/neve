@@ -1,0 +1,187 @@
+.tab-content.free-pro {
+  .col {
+	width: 100%;
+  }
+
+  .card.table {
+	padding: 0;
+	width: 100%;
+	display: table;
+	border-collapse: collapse;
+
+	.table-head {
+	  background-color: #FBFBFB;
+
+	  th {
+		padding: 30px 25px;
+		font-size: 15px;
+		text-align: center;
+		vertical-align: middle;
+	  }
+	}
+
+	tr {
+	  width: 100%;
+	  border-bottom: 1px solid $grey;
+	}
+
+	.indicator {
+	  text-align: center;
+	  vertical-align: middle;
+	  align-items: center;
+
+	  svg {
+		display: block;
+		max-width: 25px;
+		margin: 0 auto;
+	  }
+
+	  &.success svg {
+		fill: $success;
+	  }
+
+	  &.error svg {
+		fill: $error;
+	  }
+	}
+
+	td {
+	  padding: 15px 10px;
+	}
+
+	.large {
+	  height: 100%;
+	  font-size: 14px;
+	  font-weight: 700;
+	  position: relative;
+
+	  .feat-wrap {
+		display: flex;
+		align-items: center;
+	  }
+
+	  h4 {
+		margin: 0;
+	  }
+
+	  a {
+		display: flex;
+		align-items: center;
+		line-height: 1;
+		padding: 0 0 0 10px;
+		align-items: center;
+		color: $grey;
+		cursor: pointer;
+
+		&:hover {
+		  color: $blue;
+		}
+	  }
+	}
+  }
+
+  .feature-row {
+	position: relative;
+	border-top: 1px solid $grey;
+  }
+
+  .tooltip-content {
+	position: absolute;
+	cursor: default;
+	left: 10px;
+	bottom: 90%;
+	background-color: #fff;
+	border: 1px solid $grey;
+	padding: 20px;
+	box-shadow: 0 0 40px rgba(0, 0, 0, 0.15);
+	width: 335px;
+	box-sizing: border-box;
+
+	&:before {
+	  content: "";
+	  display: block;
+	  position: absolute;
+	  border: 1px solid $grey;
+	  width: 15px;
+	  height: 15px;
+	  transform: rotate(45deg);
+	  border-left: none;
+	  border-top: none;
+	  background-color: #fff;
+	  bottom: -9px;
+	}
+
+	p {
+	  font-weight: 400;
+	  margin: 0;
+	}
+  }
+
+  .upsell.card {
+	padding: 0 0 0 10px;
+	background-color: transparent;
+	border: none;
+	box-shadow: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: 600;
+
+	p {
+	  font-size: 15px;
+	  color: #616161;
+	}
+
+	a {
+	  padding: 10px 20px;
+	  height: auto;
+	  font-size: 15px;
+	}
+  }
+}
+
+@mixin free-pro--laptop() {
+  .tab-content.free-pro {
+	.card.table {
+	  .indicator svg {
+		//max-width: 30px;
+	  }
+
+	  .large {
+		font-size: 15px;
+
+		a {
+		  padding: 0 20px;
+		  position: relative;
+		}
+	  }
+
+	  td {
+		padding: 20px 30px;
+	  }
+	}
+
+	.tooltip-content {
+	  z-index: 1000;
+	  position: absolute;
+	  bottom: 30px;
+	  left: 0;
+	  padding: 20px;
+	  max-width: 500px;
+	  width: 500px;
+	}
+
+	.upsell.card {
+	  padding: 0 0 0 30px;
+	  flex-direction: row;
+
+	  p {
+		margin-right: 10px;
+	  }
+
+	  a {
+		margin-left: auto;
+	  }
+	}
+  }
+}

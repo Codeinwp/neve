@@ -1,0 +1,47 @@
+.card {
+  width: 100%;
+  display: flex;
+  max-width: unset;
+  min-width: unset;
+  border: 1px solid $grey;
+  flex-direction: column;
+  padding: 30px 40px;
+  align-self: flex-start;
+  flex-grow: 0;
+
+  .card-header {
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+    .title {
+      font-size: 18px;
+      line-height: 1;
+    }
+    .icon {
+      margin-right: 10px;
+    }
+  }
+
+  p {
+    font-size: 15px;
+    color: #616161;
+  }
+
+  .card-description {
+    margin: 15px 0 25px;
+  }
+}
+
+@mixin card--laptop() {
+  .card {
+    margin: 0 0 20px;
+  }
+}
+@mixin card--desktop() {
+  .card {
+    margin: 0 0 30px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
