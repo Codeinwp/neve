@@ -30,7 +30,7 @@ abstract class Base_Inline {
 	 * Base_Inline constructor.
 	 */
 	final public function __construct() {
-		_deprecated_file( __FILE__, '1.1.10', '1.2.0', __( 'Please update your Neve Pro plugin to include the latest changes.', 'neve' ) );
+		_deprecated_file( __FILE__, '1.1.10', '1.2.0', __( 'Please update your Neve Pro plugin to include the latest changes.', 'neve' ) ); //phpcs:ignore
 
 		$this->init();
 	}

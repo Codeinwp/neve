@@ -103,7 +103,7 @@ class Core_Loader {
 	 * @access   private
 	 */
 	private function define_hooks() {
-		//Avoid mods cache on customizer preview.
+		// Avoid mods cache on customizer preview.
 		if ( is_customize_preview() ) {
 			Mods::$no_cache = true;
 		}

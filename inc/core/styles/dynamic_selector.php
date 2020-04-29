@@ -16,22 +16,22 @@ use Neve\Core\Settings\Mods;
  * @package Neve\Core\Styles
  */
 class Dynamic_Selector {
-	const MOBILE = 'mobile';
-	const TABLET = 'tablet';
+	const MOBILE  = 'mobile';
+	const TABLET  = 'tablet';
 	const DESKTOP = 'desktop';
 
 	const META_IS_RESPONSIVE = 'is_responsive';
-	const META_SUFFIX = 'suffix';
-	const META_KEY = 'key';
-	const META_IMPORTANT = 'important';
-	const META_DEFAULT = 'default';
-	const META_FILTER = 'filter';
+	const META_SUFFIX        = 'suffix';
+	const META_KEY           = 'key';
+	const META_IMPORTANT     = 'important';
+	const META_DEFAULT       = 'default';
+	const META_FILTER        = 'filter';
 
 	const KEY_SELECTOR = 'selectors';
-	const KEY_RULES = 'rules';
-	const KEY_CONTEXT = 'context';
+	const KEY_RULES    = 'rules';
+	const KEY_CONTEXT  = 'context';
 
-	const CONTEXT_FRONTEND = 'frontend';
+	const CONTEXT_FRONTEND  = 'frontend';
 	const CONTEXT_GUTENBERG = 'gutenberg';
 	/**
 	 * Holds CSS selector mapping.
@@ -137,9 +137,12 @@ class Dynamic_Selector {
 			}
 			if ( $this->get_context() === Dynamic_Selector::CONTEXT_GUTENBERG ) {
 				$expanded_selectors = explode( ',', $expanded_selectors );
-				$expanded_selectors = array_map( function ( $value ) {
-					return '#editor .editor-styles-wrapper ' . $value;
-				}, $expanded_selectors );
+				$expanded_selectors = array_map(
+					function ( $value ) {
+						return '#editor .editor-styles-wrapper ' . $value;
+					},
+					$expanded_selectors 
+				);
 				$expanded_selectors = implode( ',', $expanded_selectors );
 			}
 

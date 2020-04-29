@@ -48,6 +48,7 @@ class Css_Prop {
 		switch ( $css_prop ) {
 			case Config::CSS_PROP_BACKGROUND_COLOR:
 			case Config::CSS_PROP_COLOR:
+			case Config::CSS_PROP_FILL_COLOR:
 			case Config::CSS_PROP_BORDER_COLOR:
 				$value = strpos( $value, "#" ) === 0 ? $value : '#' . $value;
 
@@ -56,32 +57,46 @@ class Css_Prop {
 			case Config::CSS_PROP_MAX_WIDTH:
 			case Config::CSS_PROP_WIDTH:
 			case Config::CSS_PROP_FLEX_BASIS:
+			case Config::CSS_PROP_MARGIN_LEFT:
+			case Config::CSS_PROP_MARGIN_RIGHT:
 			case Config::CSS_PROP_HEIGHT:
+				$suffix = isset( $meta[ Dynamic_Selector::META_SUFFIX ] ) ? $meta[ Dynamic_Selector::META_SUFFIX ] : 'px';
+				if ( $suffix === 'responsive_suffix' ) {
+					$all_value = Mods::get( $meta['key'], isset( $meta[ Dynamic_Selector::META_DEFAULT ] ) ? $meta[ Dynamic_Selector::META_DEFAULT ] : null );
+
+					$suffix = isset( $all_value['suffix'] ) ? $all_value['suffix'][ $device ] : ( isset( $all_value['suffix'] ) ? $all_value['suffix'] : 'px' );;
+				}
+
 				return sprintf( "%s: %s%s;",
 					( $css_prop ),
 					( $value ),
-					isset( $meta[ Dynamic_Selector::META_SUFFIX ] ) ? $meta[ Dynamic_Selector::META_SUFFIX ] : 'px'
+					$suffix
 				);
 				break;
 			case Config::CSS_PROP_BORDER_RADIUS:
 			case Config::CSS_PROP_BORDER_WIDTH:
 			case Config::CSS_PROP_PADDING:
+			case Config::CSS_PROP_MARGIN:
 				$suffix = isset( $meta[ Dynamic_Selector::META_SUFFIX ] ) ? $meta[ Dynamic_Selector::META_SUFFIX ] : 'px';
 				if ( ! is_array( $value ) ) {
 					return sprintf( "%s:%s%s;",
 						$css_prop,
 						absint( $value ), $suffix );
 				}
+				if ( $suffix === 'responsive_unit' ) {
+					$all_value = Mods::get( $meta['key'], isset( $meta[ Dynamic_Selector::META_DEFAULT ] ) ? $meta[ Dynamic_Selector::META_DEFAULT ] : null );
+					$suffix    = isset( $all_value[ $device . '-unit' ] ) ? $all_value[ $device . '-unit' ] : 'px';
+				}
 
 				return sprintf( "%s:%s%s %s%s %s%s %s%s;",
 					$css_prop,
-					absint( $value['top'] ),
+					(int) $value['top'],
 					$suffix,
-					absint( $value['right'] ),
+					(int) $value['right'],
 					$suffix,
-					absint( $value['bottom'] ),
+					(int) $value['bottom'],
 					$suffix,
-					absint( $value['left'] ),
+					(int) $value['left'],
 					$suffix
 				);
 				break;

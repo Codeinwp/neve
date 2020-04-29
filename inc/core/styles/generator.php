@@ -22,10 +22,10 @@ class Generator {
 	 *
 	 * @var array Subscriber list.
 	 */
-	private $_subscribers = [];
-	const SUBSCRIBER_TYPE = 'type';
-	const SUBSCRIBER_MAP = 'map';
-	const SUBSCRIBER_KEY = 'key';
+	protected $_subscribers   = [];
+	const SUBSCRIBER_TYPE     = 'type';
+	const SUBSCRIBER_MAP      = 'map';
+	const SUBSCRIBER_KEY      = 'key';
 	const SUBSCRIBER_DEFAULTS = 'defaults';
 
 	/**
@@ -42,14 +42,15 @@ class Generator {
 		$all_css     = '';
 
 		$this->_subscribers = array_merge( $this->_subscribers, apply_filters( 'neve_style_subscribers', [] ) );
+
 		/**
 		 * Neve try to build the CSS as mobile first.
 		 * Based on this fact, the general CSS is considere the mobile one.
 		 */
 		$dynamic_selectors = new Dynamic_Selector( $this->_subscribers, $for_gutenberg ? Dynamic_Selector::CONTEXT_GUTENBERG : Dynamic_Selector::CONTEXT_FRONTEND );
-		$all_css           .= $dynamic_selectors->for_mobile();
-		$tablet_css        .= $dynamic_selectors->for_tablet();
-		$desktop_css       .= $dynamic_selectors->for_desktop();
+		$all_css          .= $dynamic_selectors->for_mobile();
+		$tablet_css       .= $dynamic_selectors->for_tablet();
+		$desktop_css      .= $dynamic_selectors->for_desktop();
 		if ( ! empty( $tablet_css ) ) {
 			$all_css .= sprintf( '@media(min-width: 576px){ %s }', $tablet_css );
 		}
@@ -67,76 +68,76 @@ class Generator {
 	 */
 	public function __construct() {
 		$this->_subscribers   = [
-			'.container, .container [class*="__inner-container"]'                                                       => [
+			'.container, .container [class*="__inner-container"]' => [
 				Config::CSS_PROP_MAX_WIDTH => [
 					Dynamic_Selector::META_KEY           => Config::MODS_CONTAINER_WIDTH,
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 				],
 			],
-			'a'                                                                => [
+			'a'                                           => [
 				Config::CSS_PROP_COLOR => Config::MODS_LINK_COLOR,
 			],
-			'.nv-loader'                                                       => [
+			'.nv-loader'                                  => [
 				Config::CSS_PROP_BORDER_COLOR => Config::MODS_LINK_COLOR,
 			],
-			'a:hover, a:focus'                                                 => [
+			'a:hover, a:focus'                            => [
 				Config::CSS_PROP_COLOR => Config::MODS_LINK_HOVER_COLOR,
 			],
 			'body, .entry-title a, .entry-title a:hover, .entry-title a:focus' => [
 				Config::CSS_PROP_COLOR => Config::MODS_TEXT_COLOR,
 			],
-			'.has-neve-link-hover-color-color'                  => [
+			'.has-neve-link-hover-color-color'            => [
 				Config::CSS_PROP_COLOR => [
 					Dynamic_Selector::META_KEY       => Config::MODS_LINK_HOVER_COLOR,
-					Dynamic_Selector::META_IMPORTANT => true
-				]
+					Dynamic_Selector::META_IMPORTANT => true,
+				],
 			],
-			'.has-neve-link-color-color'                        => [
+			'.has-neve-link-color-color'                  => [
 				Config::CSS_PROP_COLOR => [
 					Dynamic_Selector::META_KEY       => Config::MODS_LINK_COLOR,
-					Dynamic_Selector::META_IMPORTANT => true
-				]
+					Dynamic_Selector::META_IMPORTANT => true,
+				],
 			],
-			'.has-neve-text-color-color'                        => [
+			'.has-neve-text-color-color'                  => [
 				Config::CSS_PROP_COLOR => [
 					Dynamic_Selector::META_KEY       => Config::MODS_TEXT_COLOR,
-					Dynamic_Selector::META_IMPORTANT => true
-				]
+					Dynamic_Selector::META_IMPORTANT => true,
+				],
 			],
-			'.has-neve-button-color-color'                      => [
+			'.has-neve-button-color-color'                => [
 				Config::CSS_PROP_COLOR => [
 					Dynamic_Selector::META_KEY       => Config::MODS_BUTTON_PRIMARY_STYLE . '.background',
-					Dynamic_Selector::META_IMPORTANT => true
-				]
+					Dynamic_Selector::META_IMPORTANT => true,
+				],
 			],
-			'.has-neve-link-color-background-color'             => [
+			'.has-neve-link-color-background-color'       => [
 				Config::CSS_PROP_BACKGROUND_COLOR => [
 					Dynamic_Selector::META_KEY       => Config::MODS_LINK_COLOR,
-					Dynamic_Selector::META_IMPORTANT => true
-				]
+					Dynamic_Selector::META_IMPORTANT => true,
+				],
 			],
-			'.has-neve-link-hover-color-background-color'       => [
+			'.has-neve-link-hover-color-background-color' => [
 				Config::CSS_PROP_BACKGROUND_COLOR => [
 					Dynamic_Selector::META_KEY       => Config::MODS_LINK_HOVER_COLOR,
-					Dynamic_Selector::META_IMPORTANT => true
-				]
+					Dynamic_Selector::META_IMPORTANT => true,
+				],
 			],
-			'.has-neve-button-color-background-color'           => [
+			'.has-neve-button-color-background-color'     => [
 				Config::CSS_PROP_BACKGROUND_COLOR => [
 					Dynamic_Selector::META_KEY       => Config::MODS_BUTTON_PRIMARY_STYLE . '.background',
-					Dynamic_Selector::META_IMPORTANT => true
-				]
+					Dynamic_Selector::META_IMPORTANT => true,
+				],
 			],
-			'.has-neve-text-color-background-color'             => [
+			'.has-neve-text-color-background-color'       => [
 				Config::CSS_PROP_BACKGROUND_COLOR => [
 					Dynamic_Selector::META_KEY       => Config::MODS_TEXT_COLOR,
-					Dynamic_Selector::META_IMPORTANT => true
-				]
+					Dynamic_Selector::META_IMPORTANT => true,
+				],
 			],
 		];
 		$this->_subscribers[] = [
 			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_COLOR => Config::MODS_TEXT_COLOR
+				Config::CSS_PROP_COLOR => Config::MODS_TEXT_COLOR,
 			],
 			Dynamic_Selector::KEY_SELECTOR => '
 				 .wp-block ,
@@ -148,17 +149,17 @@ class Generator {
 				 h5,
 				 h6',
 			Dynamic_Selector::KEY_CONTEXT  => [
-				Dynamic_Selector::CONTEXT_GUTENBERG => true
-			]
+				Dynamic_Selector::CONTEXT_GUTENBERG => true,
+			],
 		];
 		$this->_subscribers[] = [
 			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_BACKGROUND_COLOR => Config::MODS_BACKGROUND_COLOR
+				Config::CSS_PROP_BACKGROUND_COLOR => Config::MODS_BACKGROUND_COLOR,
 			],
 			Dynamic_Selector::KEY_SELECTOR => ' .wp-block',
 			Dynamic_Selector::KEY_CONTEXT  => [
-				Dynamic_Selector::CONTEXT_GUTENBERG => true
-			]
+				Dynamic_Selector::CONTEXT_GUTENBERG => true,
+			],
 		];
 		$this->_subscribers[] = [
 			Dynamic_Selector::KEY_RULES    => [
@@ -166,8 +167,8 @@ class Generator {
 			],
 			Dynamic_Selector::KEY_SELECTOR => 'a',
 			Dynamic_Selector::KEY_CONTEXT  => [
-				Dynamic_Selector::CONTEXT_GUTENBERG => true
-			]
+				Dynamic_Selector::CONTEXT_GUTENBERG => true,
+			],
 		];
 		$this->_subscribers[] = [
 			Dynamic_Selector::KEY_RULES    => [
@@ -175,8 +176,8 @@ class Generator {
 			],
 			Dynamic_Selector::KEY_SELECTOR => 'a:hover',
 			Dynamic_Selector::KEY_CONTEXT  => [
-				Dynamic_Selector::CONTEXT_GUTENBERG => true
-			]
+				Dynamic_Selector::CONTEXT_GUTENBERG => true,
+			],
 		];
 		$this->setup_layout_subscribers();
 		$this->setup_buttons();
@@ -260,7 +261,7 @@ class Generator {
 			];
 		}
 
-		//Gutenberg Typography.
+		// Gutenberg Typography.
 
 		$this->_subscribers[] = [
 			Dynamic_Selector::KEY_SELECTOR => '.editor-post-title__block .editor-post-title__input,
@@ -274,8 +275,8 @@ class Generator {
 				Config::CSS_PROP_FONT_FAMILY => Config::MODS_FONT_HEADINGS,
 			],
 			Dynamic_Selector::KEY_CONTEXT  => [
-				Dynamic_Selector::CONTEXT_GUTENBERG => true
-			]
+				Dynamic_Selector::CONTEXT_GUTENBERG => true,
+			],
 		];
 		$this->_subscribers[] = [
 			Dynamic_Selector::KEY_SELECTOR => '#editor .editor-styles-wrapper',
@@ -283,8 +284,8 @@ class Generator {
 				Config::CSS_PROP_FONT_FAMILY => Config::MODS_FONT_GENERAL,
 			],
 			Dynamic_Selector::KEY_CONTEXT  => [
-				Dynamic_Selector::CONTEXT_GUTENBERG => true
-			]
+				Dynamic_Selector::CONTEXT_GUTENBERG => true,
+			],
 		];
 
 		$this->_subscribers[] = [
@@ -312,8 +313,8 @@ class Generator {
 				Config::CSS_PROP_FONT_FAMILY    => Config::MODS_FONT_GENERAL,
 			],
 			Dynamic_Selector::KEY_CONTEXT  => [
-				Dynamic_Selector::CONTEXT_GUTENBERG => true
-			]
+				Dynamic_Selector::CONTEXT_GUTENBERG => true,
+			],
 		];
 		foreach (
 			[
@@ -330,16 +331,16 @@ class Generator {
 			$this->_subscribers[] = [
 				Dynamic_Selector::KEY_RULES    => [
 					Config::CSS_PROP_FONT_SIZE      => [
-						Dynamic_Selector::META_KEY           => $heading_mod . '.fontSize',
+						Dynamic_Selector::META_KEY    => $heading_mod . '.fontSize',
 						Dynamic_Selector::META_IS_RESPONSIVE => true,
-						Dynamic_Selector::META_SUFFIX        => 'em',
+						Dynamic_Selector::META_SUFFIX => 'em',
 					],
 					Config::CSS_PROP_LINE_HEIGHT    => [
-						Dynamic_Selector::META_KEY           => $heading_mod . '.lineHeight',
+						Dynamic_Selector::META_KEY => $heading_mod . '.lineHeight',
 						Dynamic_Selector::META_IS_RESPONSIVE => true,
 					],
 					Config::CSS_PROP_LETTER_SPACING => [
-						Dynamic_Selector::META_KEY           => $heading_mod . '.letterSpacing',
+						Dynamic_Selector::META_KEY => $heading_mod . '.letterSpacing',
 						Dynamic_Selector::META_IS_RESPONSIVE => true,
 					],
 					Config::CSS_PROP_FONT_WEIGHT    => [
@@ -351,8 +352,8 @@ class Generator {
 				],
 				Dynamic_Selector::KEY_SELECTOR => $heading_selector,
 				Dynamic_Selector::KEY_CONTEXT  => [
-					Dynamic_Selector::CONTEXT_GUTENBERG => true
-				]
+					Dynamic_Selector::CONTEXT_GUTENBERG => true,
+				],
 			];
 		}
 	}
@@ -373,17 +374,17 @@ class Generator {
 			],
 			Dynamic_Selector::KEY_CONTEXT  => [
 				Dynamic_Selector::CONTEXT_FRONTEND => true,
-			]
+			],
 		];
 		$this->_subscribers[]  = [
 			Dynamic_Selector::KEY_SELECTOR => Config::CSS_SELECTOR_BTN_PRIMARY_HOVER,
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_BACKGROUND_COLOR => Config::MODS_BUTTON_PRIMARY_STYLE . '.backgroundHover',
-				Config::CSS_PROP_COLOR            => Config::MODS_BUTTON_PRIMARY_STYLE . '.textHover'
+				Config::CSS_PROP_COLOR            => Config::MODS_BUTTON_PRIMARY_STYLE . '.textHover',
 			],
 			Dynamic_Selector::KEY_CONTEXT  => [
 				Dynamic_Selector::CONTEXT_FRONTEND => true,
-			]
+			],
 		];
 		$this->_subscribers [] = [
 			Dynamic_Selector::KEY_SELECTOR => Config::CSS_SELECTOR_BTN_SECONDARY_NORMAL,
@@ -392,11 +393,11 @@ class Generator {
 				Config::CSS_PROP_COLOR            => Config::MODS_BUTTON_SECONDARY_STYLE . '.text',
 				Config::CSS_PROP_BORDER_RADIUS    => Config::MODS_BUTTON_SECONDARY_STYLE . '.borderRadius',
 				Config::CSS_PROP_CUSTOM_BTN_TYPE  => Config::MODS_BUTTON_SECONDARY_STYLE . '.type',
-				Config::CSS_PROP_BORDER_WIDTH     => Config::MODS_BUTTON_SECONDARY_STYLE . '.borderWidth'
+				Config::CSS_PROP_BORDER_WIDTH     => Config::MODS_BUTTON_SECONDARY_STYLE . '.borderWidth',
 			],
 			Dynamic_Selector::KEY_CONTEXT  => [
 				Dynamic_Selector::CONTEXT_FRONTEND => true,
-			]
+			],
 		];
 		$this->_subscribers[]  = [
 			Dynamic_Selector::KEY_SELECTOR => Config::CSS_SELECTOR_BTN_SECONDARY_HOVER,
@@ -406,7 +407,7 @@ class Generator {
 			],
 			Dynamic_Selector::KEY_CONTEXT  => [
 				Dynamic_Selector::CONTEXT_FRONTEND => true,
-			]
+			],
 		];
 
 
@@ -420,7 +421,7 @@ class Generator {
 			],
 			Dynamic_Selector::KEY_CONTEXT  => [
 				Dynamic_Selector::CONTEXT_FRONTEND => true,
-			]
+			],
 		];
 		$this->_subscribers[] = [
 			Dynamic_Selector::KEY_SELECTOR => Config::CSS_SELECTOR_BTN_SECONDARY_PADDING,
@@ -432,7 +433,7 @@ class Generator {
 			],
 			Dynamic_Selector::KEY_CONTEXT  => [
 				Dynamic_Selector::CONTEXT_FRONTEND => true,
-			]
+			],
 		];
 
 		$this->_subscribers['.nv-tags-list a:hover'] = [
@@ -455,17 +456,17 @@ class Generator {
 			],
 			Dynamic_Selector::KEY_CONTEXT  => [
 				Dynamic_Selector::CONTEXT_GUTENBERG => true,
-			]
+			],
 		];
 		$this->_subscribers[]  = [
 			Dynamic_Selector::KEY_SELECTOR => '.wp-block-button.is-style-primary .wp-block-button__link:hover',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_BACKGROUND_COLOR => Config::MODS_BUTTON_PRIMARY_STYLE . '.backgroundHover',
-				Config::CSS_PROP_COLOR            => Config::MODS_BUTTON_PRIMARY_STYLE . '.textHover'
+				Config::CSS_PROP_COLOR            => Config::MODS_BUTTON_PRIMARY_STYLE . '.textHover',
 			],
 			Dynamic_Selector::KEY_CONTEXT  => [
 				Dynamic_Selector::CONTEXT_GUTENBERG => true,
-			]
+			],
 		];
 		$this->_subscribers [] = [
 			Dynamic_Selector::KEY_SELECTOR => '.wp-block-button.is-style-secondary .wp-block-button__link',
@@ -474,11 +475,11 @@ class Generator {
 				Config::CSS_PROP_COLOR            => Config::MODS_BUTTON_SECONDARY_STYLE . '.text',
 				Config::CSS_PROP_BORDER_RADIUS    => Config::MODS_BUTTON_SECONDARY_STYLE . '.borderRadius',
 				Config::CSS_PROP_CUSTOM_BTN_TYPE  => Config::MODS_BUTTON_SECONDARY_STYLE . '.type',
-				Config::CSS_PROP_BORDER_WIDTH     => Config::MODS_BUTTON_SECONDARY_STYLE . '.borderWidth'
+				Config::CSS_PROP_BORDER_WIDTH     => Config::MODS_BUTTON_SECONDARY_STYLE . '.borderWidth',
 			],
 			Dynamic_Selector::KEY_CONTEXT  => [
 				Dynamic_Selector::CONTEXT_GUTENBERG => true,
-			]
+			],
 		];
 		$this->_subscribers[]  = [
 			Dynamic_Selector::KEY_SELECTOR => '.wp-block-button.is-style-secondary .wp-block-button__link:hover',
@@ -488,7 +489,7 @@ class Generator {
 			],
 			Dynamic_Selector::KEY_CONTEXT  => [
 				Dynamic_Selector::CONTEXT_GUTENBERG => true,
-			]
+			],
 		];
 
 
@@ -502,7 +503,7 @@ class Generator {
 			],
 			Dynamic_Selector::KEY_CONTEXT  => [
 				Dynamic_Selector::CONTEXT_GUTENBERG => true,
-			]
+			],
 		];
 		$this->_subscribers[] = [
 			Dynamic_Selector::KEY_SELECTOR => '.wp-block-button.is-style-secondary .wp-block-button__link',
@@ -514,7 +515,7 @@ class Generator {
 			],
 			Dynamic_Selector::KEY_CONTEXT  => [
 				Dynamic_Selector::CONTEXT_GUTENBERG => true,
-			]
+			],
 		];
 	}
 
@@ -528,13 +529,13 @@ class Generator {
 		$is_advanced_on = Mods::get( Config::MODS_ADVANCED_LAYOUT_OPTIONS, false );
 		if ( ! $is_advanced_on ) {
 
-			$this->_subscribers['#content .container .col, #content .container-fluid .col, #content .container [class*="__inner-container"] > *:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.is-style-wide)'] = [
+			$this->_subscribers['#content .container .col, #content .container-fluid .col, #content [class*="__inner-container"] > *:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.is-style-wide)'] = [
 				Config::CSS_PROP_MAX_WIDTH => [
 					Dynamic_Selector::META_KEY    => Config::MODS_SITEWIDE_CONTENT_WIDTH,
 					Dynamic_Selector::META_SUFFIX => '%',
 				],
 			];
-			$this->_subscribers['.nv-sidebar-wrap, .nv-sidebar-wrap.shop-sidebar']          = [
+			$this->_subscribers['.nv-sidebar-wrap, .nv-sidebar-wrap.shop-sidebar'] = [
 				Config::CSS_PROP_MAX_WIDTH => [
 					Dynamic_Selector::META_KEY    => Config::MODS_SITEWIDE_CONTENT_WIDTH,
 					Dynamic_Selector::META_FILTER => 'minus_100',
@@ -578,7 +579,7 @@ class Generator {
 				Dynamic_Selector::META_SUFFIX => '%',
 			],
 		];
-		$this->_subscribers['.neve-main > .single-post-container .nv-sidebar-wrap']         = [
+		$this->_subscribers['.neve-main > .single-post-container .nv-sidebar-wrap'] = [
 			Config::CSS_PROP_MAX_WIDTH => [
 				Dynamic_Selector::META_KEY    => Config::MODS_SINGLE_CONTENT_WIDTH,
 				Dynamic_Selector::META_FILTER => 'minus_100',
@@ -606,7 +607,7 @@ class Generator {
 		];
 
 
-		$this->_subscribers['.single-product .neve-main > .shop-container .nv-shop.col, .single-product .neve-main [class*="__inner-container"] > *:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.is-style-wide)']     = [
+		$this->_subscribers['.single-product .neve-main > .shop-container .nv-shop.col, .single-product .neve-main [class*="__inner-container"] > *:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.is-style-wide)'] = [
 			Config::CSS_PROP_MAX_WIDTH => [
 				Dynamic_Selector::META_KEY    => Config::MODS_SHOP_SINGLE_CONTENT_WIDTH,
 				Dynamic_Selector::META_SUFFIX => '%',

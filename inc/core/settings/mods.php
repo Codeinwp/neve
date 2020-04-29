@@ -23,7 +23,11 @@ class Mods {
 	 * @var array Values cached.
 	 */
 	private static $_cached = [];
-
+	/**
+	 * No cache mode.
+	 *
+	 * @var bool Should we avoid cache.
+	 */
 	public static $no_cache = false;
 
 	/**
@@ -185,7 +189,7 @@ class Mods {
 	 * Setter for the manager.
 	 *
 	 * @param string $key Key.
-	 * @param mixed $value Value.
+	 * @param mixed  $value Value.
 	 */
 	public static function set( $key, $value ) {
 		self::$_cached[ $key ] = $value;
@@ -196,7 +200,7 @@ class Mods {
 	 *
 	 * @param string $key Key name.
 	 * @param string $default Default value.
-	 * @param bool $as_array As array or Object.
+	 * @param bool   $as_array As array or Object.
 	 *
 	 * @return mixed
 	 */

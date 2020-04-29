@@ -92,7 +92,7 @@ class Front_End {
 	 *
 	 * @param string $markup embed markup.
 	 * @param string $url embed url.
-	 * @param array $attr embed attributes [width/height].
+	 * @param array  $attr embed attributes [width/height].
 	 *
 	 * @return string
 	 */

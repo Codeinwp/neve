@@ -116,6 +116,11 @@ class Metabox_Settings {
 
 	}
 
+	/**
+	 * Get continer type for current post.
+	 *
+	 * @return mixed|string
+	 */
 	public function get_container_type() {
 
 		$post_id = $this->get_post_id();
@@ -131,11 +136,14 @@ class Metabox_Settings {
 		return $meta_value;
 	}
 
+	/**
+	 * Set editor width.
+	 */
 	public function editor_content_width() {
 		$meta_value = $this->get_content_width();
-		$container = $this->get_container_type();
+		$container  = $this->get_container_type();
 
-		//Check customizer container type based on the context.
+		// Check customizer container type based on the context.
 		if ( empty( $container ) ) {
 			global $post_type;
 			$container = $post_type === 'post' ? Mods::get( Config::MODS_SINGLE_POST_CONTAINER_STYLE, 'contained' ) : Mods::get( Config::MODS_DEFAULT_CONTAINER_STYLE, 'contained' );
@@ -149,25 +157,28 @@ class Metabox_Settings {
 			}
 			$editor_width_normal = round( ( $meta_value / 100 ) * $editor_width ) . 'px';
 		} else {
-			//For full-width container, we use the content percent value.
+			// For full-width container, we use the content percent value.
 			$editor_width_normal = ( empty( $meta_value ) ? 100 : $meta_value ) . '%';
 		}
 
 
 
-		$style = sprintf( "
+		$style = sprintf(
+			'
 			/* Main column width */
 			.wp-block {
 			    max-width: %s;
 			}
 
-			.wp-block[data-align=\"wide\"] {
+			.wp-block[data-align="wide"] {
 			    max-width: 70vw;
 			}
 
-			.wp-block[data-align=\"full\"] {
+			.wp-block[data-align="full"] {
 			    max-width: none;
-			}", $editor_width_normal );
+			}',
+			$editor_width_normal
+		);
 
 
 		wp_add_inline_style( 'neve-gutenberg-style', $style );
@@ -209,7 +220,7 @@ class Metabox_Settings {
 	/**
 	 * Filter components that will be shown.
 	 *
-	 * @param bool $status the status of the component.
+	 * @param bool   $status the status of the component.
 	 * @param string $context context of the filter.
 	 *
 	 * @return bool

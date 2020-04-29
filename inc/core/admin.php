@@ -290,13 +290,12 @@ class Admin {
 						<span class="label"><?php echo esc_html( $strings['toggle-label'] ); ?></span>
 						<span class="switch">
 							<input <?php echo( $logger_status === true ? ' checked ' : '' ); ?> id="neve-anonymous-data"
-							                                                                    type="checkbox">
+																								type="checkbox">
 							<span class="slider round"></span>
 						</span>
 					</label>
 				</p>
-				<a target="_blank"
-				   href="https://docs.themeisle.com/article/1122-neve-usage-tracking"><?php echo esc_html( $strings['link-text'] ); ?></a>
+				<a target="_blank" href="https://docs.themeisle.com/article/1122-neve-usage-tracking"><?php echo esc_html( $strings['link-text'] ); ?></a>
 				<p class="error-well"><?php echo esc_html( $strings['error-text'] ); ?></p>
 				<p class="success-well"><?php echo esc_html( $strings['success-text'] ); ?></p>
 			</div>
@@ -721,7 +720,7 @@ class Admin {
 			<style>%5$s</style>';
 
 		/* translators: 1 - notice title, 2 - notice message */
-		$notice_header       = sprintf(
+		$notice_header = sprintf(
 			'<h2>%1$s</h2><p class="about-description">%2$s</p></hr>',
 			esc_html__( 'Congratulations!', 'neve' ),
 			sprintf(
@@ -730,7 +729,7 @@ class Admin {
 				$name
 			)
 		);
-		$ob_btn              = sprintf(
+		$ob_btn = sprintf(
 		/* translators: 1 - onboarding url, 2 - button text */
 			'<a href="%1$s" class="button button-primary button-hero install-now" >%2$s</a>',
 			esc_url( admin_url( 'themes.php?page=' . $theme_page . '&onboarding=yes#sites_library' ) ),
@@ -741,13 +740,13 @@ class Admin {
 			'<a href="#" class=" ti-return-dashboard  button button-secondary button-hero install-now" ><span>%1$s</span></a>',
 			__( 'Return to your dashboard', 'neve' )
 		);
-		$options_page_btn    = sprintf(
+		$options_page_btn = sprintf(
 		/* translators: 1 - options page url, 2 - button text */
 			'<a href="%1$s" class="options-page-btn">%2$s</a>',
 			esc_url( admin_url( 'themes.php?page=' . $theme_page ) ),
 			esc_html__( 'or go to the theme settings', 'neve' )
 		);
-		$notice_picture      = sprintf(
+		$notice_picture = sprintf(
 			'<picture>
 					<source srcset="about:blank" media="(max-width: 1024px)">
 					<img src="%1$s">
@@ -773,7 +772,7 @@ class Admin {
 			esc_html__( 'Read full documentation', 'neve' ),
 			$ob_return_dashboard
 		);
-		$style                = '
+		$style = '
 		.nv-notice-wrapper h2{
 			margin: 0;
 			font-size: 21px;
@@ -885,7 +884,9 @@ class Admin {
 		wp_enqueue_script(
 			'neve-gutenberg-script',
 			NEVE_ASSETS_URL . 'js/build/all/gutenberg.js',
-			array('wp-blocks', 'wp-dom' ), NEVE_VERSION,true
+			array( 'wp-blocks', 'wp-dom' ),
+			NEVE_VERSION,
+			true
 		);
 		wp_enqueue_style( 'neve-gutenberg-style', NEVE_ASSETS_URL . 'css/gutenberg-editor-style' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), NEVE_VERSION );
 	}

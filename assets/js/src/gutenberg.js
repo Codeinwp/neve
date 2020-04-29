@@ -21,10 +21,5 @@ wp.domReady(() => {
 	});
 
 
-	wp.hooks.addFilter(
-		'blocks.getBlockDefaultClassName',
-		'neve/set-block-custom-class-name',
-		setBlockCustomClassName,
-	);
 });
 
