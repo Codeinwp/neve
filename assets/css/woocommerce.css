@@ -503,6 +503,7 @@
 }
 
 .woocommerce div.product .woocommerce-tabs ul.tabs li.active {
+  background-color: transparent;
   border-bottom: 2px solid;
 }
 
