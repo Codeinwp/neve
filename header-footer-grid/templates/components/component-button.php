@@ -22,4 +22,5 @@ if ( ! empty( $text ) ) {
 	echo '<a href="' . esc_url( $button_link ) . '" class="button button-primary">';
 	echo wp_kses_post( stripcslashes( $text ) );
 	echo '</a>';
+	echo '</div>';
 }
