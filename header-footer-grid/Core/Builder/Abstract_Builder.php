@@ -27,9 +27,11 @@ use WP_Customize_Manager;
  */
 abstract class Abstract_Builder implements Builder {
 	use Core;
+
 	const LAYOUT_SETTING     = 'layout';
 	const HEIGHT_SETTING     = 'height';
 	const SKIN_SETTING       = 'skin';
+	const TEXT_COLOR         = 'new_text_color';
 	const BACKGROUND_SETTING = 'background';
 	/**
 	 * Layout config data.
@@ -362,17 +364,7 @@ abstract class Abstract_Builder implements Builder {
 			);
 		}
 
-		$default_color = '#ffffff';
-		if ( isset( $this->default_colors[ $this->get_id() ][ $row_id ] ) && ! empty( $this->default_colors[ $this->get_id() ][ $row_id ] ) ) {
-			$default_color = $this->default_colors[ $this->get_id() ][ $row_id ];
-		}
-		$old_skin = get_theme_mod( $row_setting_id . '_' . self::SKIN_SETTING );
-		if ( ! empty( $old_skin ) ) {
-			$default_color = $old_skin === 'dark-mode' ? '#24292e' : '#ffffff';
-		}
-		$previous      = get_theme_mod( $row_setting_id . '_color' );
-		$default_color = ! empty( $previous ) ? $previous : $default_color;
-
+		$default_colors = $this->get_default_row_colors( $row_id );
 		SettingsManager::get_instance()->add(
 			[
 				'id'                    => self::BACKGROUND_SETTING,
@@ -390,7 +382,7 @@ abstract class Abstract_Builder implements Builder {
 				'sanitize_callback'     => 'neve_sanitize_background',
 				'default'               => [
 					'type'       => 'color',
-					'colorValue' => $default_color,
+					'colorValue' => $default_colors['background'],
 				],
 				'conditional_header'    => $this->get_id() === 'header',
 			]
@@ -419,6 +411,43 @@ abstract class Abstract_Builder implements Builder {
 			]
 		);
 
+		SettingsManager::get_instance()->add(
+			[
+				'id'                    => self::TEXT_COLOR,
+				'group'                 => $row_setting_id,
+				'tab'                   => SettingsManager::TAB_STYLE,
+				'label'                 => __( 'Text Color', 'neve' ),
+				'section'               => $row_setting_id,
+				'conditional_header'    => $this->get_id() === 'header',
+				'type'                  => 'neve_color_control',
+				'transport'             => 'postMessage',
+				'live_refresh_selector' => $row_class,
+				'live_refresh_css_prop' => [
+					[
+						'selector' => $row_class,
+						'prop'     => 'color',
+						'fallback' => 'inherit',
+					],
+					[
+						'selector' => $row_class . ' .icon-bar',
+						'prop'     => 'background-color',
+						'fallback' => 'inherit',
+					],
+					[
+						'selector' => $row_class . ' .navbar-toggle',
+						'prop'     => 'border-color',
+						'fallback' => 'inherit',
+					],
+					[
+						'selector' => $row_class . ' a:not(.button)',
+						'prop'     => 'color',
+						'fallback' => 'inherit',
+					],
+				],
+				'sanitize_callback'     => 'wp_filter_nohtml_kses',
+				'default'               => $default_colors['text'],
+			]
+		);
 		do_action( 'hfg_row_settings', $this->get_id(), $row_id, $row_setting_id );
 	}
 
@@ -549,7 +578,7 @@ abstract class Abstract_Builder implements Builder {
 					$wp_customize,
 					$this->section . '_quick_links',
 					array(
-						'priority' => - 100,
+						'priority' => -100,
 						'panel'    => $this->panel,
 						'type'     => 'hfg_instructions',
 						'options'  => $this->instructions_array,
@@ -805,18 +834,19 @@ abstract class Abstract_Builder implements Builder {
 		if ( isset( $this->default_colors[ $this->get_id() ][ $row_index ] ) && ! empty( $this->default_colors[ $this->get_id() ][ $row_index ] ) ) {
 			$default_color = $this->default_colors[ $this->get_id() ][ $row_index ];
 		}
-		$previous   = get_theme_mod( $this->control_id . '_' . $row_index . '_color', $default_color );
+		$skin          = $this->get_default_row_colors( $row_index );
+		$default_color = isset( $skin['background'] ) ? $skin['background'] : $default_color;
+
 		$background = get_theme_mod(
 			$this->control_id . '_' . $row_index . '_background',
 			[
 				'type'       => 'color',
-				'colorValue' => ! empty( $previous ) ? $previous : $default_color,
+				'colorValue' => $default_color,
 			]
 		);
+		$css_setup  = [];
 
-		$css_setup = [];
-
-		if ( $background['type'] === 'color' && ! empty( $background['colorValue'] ) && $background['colorValue'] !== $default_color ) {
+		if ( $background['type'] === 'color' && ! empty( $background['colorValue'] ) ) {
 			$css_setup['background-color'] = $background['colorValue'];
 		}
 
@@ -852,13 +882,18 @@ abstract class Abstract_Builder implements Builder {
 					'width'            => '100%',
 				);
 			}
-			$css_array[ $selector . ',' . $selector . '.dark-mode,' . $selector . '.light-mode' ] = array(
+			$css_array[ $selector ] = array(
 				'background-color' => 'transparent',
 			);
 		}
 
-		$css_array[ $selector . ',' . $selector . '.dark-mode,' . $selector . '.light-mode' ] = $css_setup;
+		$css_array[ $selector ] = $css_setup;
 
+		$text = get_theme_mod( $this->control_id . '_' . $row_index . '_' . self::TEXT_COLOR, $skin['text'] );
+		if ( ! empty( $text ) ) {
+			$css_array[ $selector ]['color']                     = $text;
+			$css_array[ $selector . ' a:not(.button)' ]['color'] = $text;
+		}
 		return $css_array;
 	}
 
@@ -903,7 +938,7 @@ abstract class Abstract_Builder implements Builder {
 					return 0;
 				}
 
-				return $item1['x'] < $item2['x'] ? - 1 : 1;
+				return $item1['x'] < $item2['x'] ? -1 : 1;
 			}
 		);
 
@@ -962,15 +997,15 @@ abstract class Abstract_Builder implements Builder {
 
 			// If there is a gap between components, build new group.
 			if ( $last_item !== null && ! $is_near_prev ) {
-				$render_index ++;
+				$render_index++;
 			}
 			// If there are two neighbours and none of them have auto_width, build new group.
 			if ( $is_near_prev && ! $last_item['is_auto_width'] && ! $is_auto_width ) {
-				$render_index ++;
+				$render_index++;
 			}
 			// If there are neighbours prev and next, always group with the next on.
 			if ( $is_near_prev && $is_near_next && ! $last_item['is_auto_width'] && $is_auto_width && ! isset( $render_buffer[ $render_index ] ) ) {
-				$render_index ++;
+				$render_index++;
 			}
 
 			// Use alignment only of non-auto width element.
@@ -1151,5 +1186,119 @@ abstract class Abstract_Builder implements Builder {
 		);
 
 		return $components_settings;
+	}
+
+	/**
+	 * Get the default row colors based on the old settings.
+	 *
+	 * @param string $row_id the row id.
+	 * @return array
+	 */
+	private function get_default_row_colors( $row_id ) {
+		$bg_color_map = [
+			'header'      => [
+				'top'     => [
+					'background' => [
+						'dark-mode'  => '#404248',
+						'light-mode' => '#f0f0f0',
+					],
+					'text'       => [
+						'dark-mode'  => '#ffffff',
+						'light-mode' => '#404248',
+					],
+				],
+				'main'    => [
+					'background' => [
+						'dark-mode'  => '#404248',
+						'light-mode' => '#ffffff',
+					],
+					'text'       => [
+						'dark-mode'  => '#ffffff',
+						'light-mode' => '#404248',
+					],
+				],
+				'bottom'  => [
+					'background' => [
+						'dark-mode'  => '#404248',
+						'light-mode' => '#ffffff',
+					],
+					'text'       => [
+						'dark-mode'  => '#ffffff',
+						'light-mode' => '#404248',
+					],
+				],
+				'sidebar' => [
+					'background' => [
+						'dark-mode'  => '#404248',
+						'light-mode' => '#ffffff',
+					],
+					'text'       => [
+						'dark-mode'  => '#ffffff',
+						'light-mode' => '#404248',
+					],
+				],
+			],
+			'footer'      => [
+				'top'    => [
+					'background' => [
+						'dark-mode'  => '#292929',
+						'light-mode' => '#ffffff',
+					],
+					'text'       => [
+						'dark-mode'  => '#ffffff',
+						'light-mode' => '#404248',
+					],
+				],
+				'bottom' => [
+					'background' => [
+						'dark-mode'  => '#24292e',
+						'light-mode' => '#ededed',
+					],
+					'text'       => [
+						'dark-mode'  => '#ffffff',
+						'light-mode' => '#404248',
+					],
+				],
+			],
+			'page_header' => [
+				'top'    => [
+					'background' => [
+						'dark-mode'  => '#292929',
+						'light-mode' => '#ffffff',
+					],
+					'text'       => [
+						'dark-mode'  => '#ffffff',
+						'light-mode' => '#404248',
+					],
+				],
+				'bottom' => [
+					'background' => [
+						'dark-mode'  => '#404248',
+						'light-mode' => '#ffffff',
+					],
+					'text'       => [
+						'dark-mode'  => '#ffffff',
+						'light-mode' => '#404248',
+					],
+				],
+			],
+		];
+
+		$row_setting_id = $this->control_id . '_' . $row_id;
+		$builder        = $this->get_id();
+
+		$background = $builder === 'footer' && $row_id === 'bottom' ? '#24292e' : '#ffffff';
+		$text       = $builder === 'footer' && $row_id === 'bottom' ? '#ffffff' : '#404248';
+
+		$old_skin = get_theme_mod( $row_setting_id . '_' . self::SKIN_SETTING );
+		if ( ! empty( $old_skin ) ) {
+			$background = isset( $bg_color_map[ $builder ][ $row_id ]['background'][ $old_skin ] ) ? $bg_color_map[ $builder ][ $row_id ]['background'][ $old_skin ] : $background;
+			$text       = isset( $bg_color_map[ $builder ][ $row_id ]['text'][ $old_skin ] ) ? $bg_color_map[ $builder ][ $row_id ]['text'][ $old_skin ] : $text;
+		}
+
+		return [
+			'background' => $background,
+			'text'       => $text,
+		];
 	}
 }

@@ -14,7 +14,6 @@ use HFG\Core\Builder\Abstract_Builder;
 
 $row_index  = current_row();
 $device     = current_device();
-$skin_mode  = row_setting( Abstract_Builder::SKIN_SETTING );
 $section_id = get_builder()->get_property( 'control_id' ) . '_' . $row_index;
 
 $row_classes = [
@@ -41,7 +40,7 @@ $row_wrapper_classes = join( ' ', $row_wrapper_classes );
 	id="cb-row--footer-<?php echo esc_attr( $row_index ); ?>"
 	data-row-id="<?php echo esc_attr( $row_index ); ?>" data-show-on="<?php echo esc_attr( $device ); ?>">
 	<div
-		class="footer--row-inner footer-<?php echo esc_attr( $row_index ); ?>-inner <?php echo esc_attr( $skin_mode ); ?> footer-content-wrap">
+		class="footer--row-inner footer-<?php echo esc_attr( $row_index ); ?>-inner footer-content-wrap">
 		<div class="container">
 			<div
 				class="<?php echo esc_attr( $row_wrapper_classes ); ?> "
