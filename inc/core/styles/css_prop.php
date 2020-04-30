@@ -104,8 +104,10 @@ class Css_Prop {
 			case Config::CSS_PROP_LINE_HEIGHT:
 			case Config::CSS_PROP_FONT_SIZE:
 				$all_value = Mods::get( $meta['key'] );
-				$suffix    = isset( $all_value['suffix'] ) ? $all_value['suffix'][ $device ] : ( isset( $all_value['suffix'] ) ? $all_value['suffix'] : 'em' );
-
+				$suffix = isset( $meta[ Dynamic_Selector::META_SUFFIX ] ) ? $meta[ Dynamic_Selector::META_SUFFIX ] : null;
+				if ( $suffix === null ) {
+					$suffix = isset( $all_value['suffix'][ $device ] ) ? $all_value['suffix'][ $device ] : ( isset( $all_value['suffix'] ) ? $all_value['suffix'] : 'em' );
+				}
 				return sprintf( ' %s: %s%s; ', $css_prop, $value, $suffix );
 				break;
 			//Letter spacing has a legacy value of non-responsive which we need to take into consideration.
