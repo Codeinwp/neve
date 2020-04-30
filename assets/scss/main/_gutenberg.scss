@@ -145,7 +145,8 @@ blockquote.wp-block-quote.is-style-large {
     text-decoration: none !important;
   }
 
-  &.is-style-outline {
+  &.is-style-outline,
+  &.is-style-secondary {
     a.wp-block-button__link {
       @extend %nv-button-secondary;
     }

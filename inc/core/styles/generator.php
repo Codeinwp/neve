@@ -199,6 +199,7 @@ class Generator {
 			Config::CSS_PROP_LINE_HEIGHT    => [
 				Dynamic_Selector::META_KEY           => Config::MODS_TYPEFACE_GENERAL . '.lineHeight',
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_SUFFIX        => '',
 			],
 			Config::CSS_PROP_LETTER_SPACING => [
 				Dynamic_Selector::META_KEY           => Config::MODS_TYPEFACE_GENERAL . '.letterSpacing',
@@ -223,6 +224,7 @@ class Generator {
 				Config::CSS_PROP_LINE_HEIGHT    => [
 					Dynamic_Selector::META_KEY           => $heading_mod . '.lineHeight',
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_SUFFIX        => '',
 				],
 				Config::CSS_PROP_LETTER_SPACING => [
 					Dynamic_Selector::META_KEY           => $heading_mod . '.letterSpacing',
@@ -300,6 +302,7 @@ class Generator {
 				Config::CSS_PROP_LINE_HEIGHT    => [
 					Dynamic_Selector::META_KEY           => Config::MODS_TYPEFACE_GENERAL . '.lineHeight',
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_SUFFIX        => '',
 				],
 				Config::CSS_PROP_LETTER_SPACING => [
 					Dynamic_Selector::META_KEY           => Config::MODS_TYPEFACE_GENERAL . '.letterSpacing',
@@ -336,8 +339,9 @@ class Generator {
 						Dynamic_Selector::META_SUFFIX => 'em',
 					],
 					Config::CSS_PROP_LINE_HEIGHT    => [
-						Dynamic_Selector::META_KEY => $heading_mod . '.lineHeight',
+						Dynamic_Selector::META_KEY    => $heading_mod . '.lineHeight',
 						Dynamic_Selector::META_IS_RESPONSIVE => true,
+						Dynamic_Selector::META_SUFFIX => '',
 					],
 					Config::CSS_PROP_LETTER_SPACING => [
 						Dynamic_Selector::META_KEY => $heading_mod . '.letterSpacing',
