@@ -2,7 +2,8 @@ name: E2E Tests
 
 on:
   pull_request:
-    - '!dependabot/**'
+    branches:
+      - '!dependabot/**'
 
 env:
   CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
