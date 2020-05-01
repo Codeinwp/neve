@@ -1,6 +1,6 @@
 name: PHP Tests
 
-on: [pull_request]
+on: [push]
 
 jobs:
   phplint:

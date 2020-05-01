@@ -1,6 +1,6 @@
 name: NPM Tests
 
-on: [pull_request]
+on: [push]
 
 jobs:
   npm:
