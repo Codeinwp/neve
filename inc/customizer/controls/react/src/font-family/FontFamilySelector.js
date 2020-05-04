@@ -41,6 +41,17 @@ class FontFamilySelector extends Component {
     return result
   }
 
+  static maybe_get_typekit_font(font) {
+    if ( Object.prototype.hasOwnProperty.call( NeveReactCustomize, 'typekitSlugs' ) === false ) {
+      return font
+    }
+    const typekitSlugs = NeveReactCustomize.typekitSlugs
+    if ( Object.prototype.hasOwnProperty.call( typekitSlugs, font ) ) {
+      return typekitSlugs[font]
+    }
+    return font
+  }
+
   getFontList() {
     const fontGroups = this.getFonts()
     const options = []
@@ -64,7 +75,6 @@ class FontFamilySelector extends Component {
         />
       </li>
     )
-
     Object.keys(fontGroups).map((key) => {
       fontGroups[key].length > 0 && options.push(
         <li className='font-group-header'>
@@ -82,7 +92,8 @@ class FontFamilySelector extends Component {
             >
               <FontPreviewLink
                 delayLoad={this.state.delayFontInclusion}
-                fontFace={font} onClick={() => {
+                label={font}
+                fontFace={FontFamilySelector.maybe_get_typekit_font(font)} onClick={() => {
                   this.setState({ isVisible: false })
                   this.props.onFontChoice(key, font)
                 }}
@@ -149,6 +160,7 @@ class FontFamilySelector extends Component {
   render() {
     // eslint-disable-next-line max-len
     const defaultFontface = '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif'
+    const font = FontFamilySelector.maybe_get_typekit_font(this.props.selected)
     return (
       <div className='neve-font-family-control'>
         <span className='customize-control-title'>
@@ -171,7 +183,7 @@ class FontFamilySelector extends Component {
           <span
             className='ff-preview'
             style={{
-              fontFamily: this.props.selected || defaultFontface
+              fontFamily: font || defaultFontface
             }}
           >Abc
           </span>
