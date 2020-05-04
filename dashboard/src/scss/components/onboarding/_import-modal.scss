@@ -29,7 +29,9 @@ $base-index: 100000;
 .ob-import-modal {
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-
+  .components-tooltip {
+	display: none;
+  }
   .modal-body {
 	h3 {
 	  margin: 0;

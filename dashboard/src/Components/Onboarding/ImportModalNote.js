@@ -6,6 +6,7 @@ const {__} = wp.i18n;
 
 const ImportModalNote = ({data, externalInstalled}) => {
 	const external = data['external_plugins'] || null;
+	console.log(external);
 	const classes = classnames([ 'well', {'warning': external && ! externalInstalled } ]);
 	return (
 		<div className={classes}>
@@ -18,13 +19,14 @@ const ImportModalNote = ({data, externalInstalled}) => {
 			</h3>
 			<ol>
 				{external && ! externalInstalled ?
-					external.map(plugin => <li><Button isLink href={plugin.url}>{plugin.name}</Button></li>) :
+					external.map(plugin => <li><Button target="_blank" isLink href={plugin.author_url}>{plugin.name}</Button></li>) :
 					<Fragment>
 						<li>{__('We recommend you backup your website content before attempting a full site import.', 'neve')}</li>
 						<li>{__('Some of the demo images will not be imported and will be replaced by placeholder images.', 'neve')}</li>
 						{data['unsplash_gallery'] &&
 						<li>
 							<a
+								target="_blank"
 								href={data['unsplash_gallery']}>
 								{__('Here is our own collection of related images you can use for your site.', 'neve')}
 							</a>

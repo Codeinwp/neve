@@ -27,8 +27,8 @@ const Sidebar = ({currentTab, setToast, loggerValue}) => {
 				<div className="sidebar-section">
 					<h4>{__('Leave us a review', 'neve')}</h4>
 					<p>{__('Are you are enjoying Neve? We would love to hear your feedback.', 'neve')}</p>
-					<a href="https://www.facebook.com/groups/648646435537266/">
-						{__('Join our Facebook Group', 'neve')}
+					<a href="https://wordpress.org/support/theme/neve/reviews/#new-post">
+						{__('Submit a review', 'neve')}
 					</a>
 				</div>
 				<hr/>
