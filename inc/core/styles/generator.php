@@ -156,7 +156,7 @@ class Generator {
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_BACKGROUND_COLOR => Config::MODS_BACKGROUND_COLOR,
 			],
-			Dynamic_Selector::KEY_SELECTOR => ' .wp-block',
+			Dynamic_Selector::KEY_SELECTOR => ' > *',
 			Dynamic_Selector::KEY_CONTEXT  => [
 				Dynamic_Selector::CONTEXT_GUTENBERG => true,
 			],
