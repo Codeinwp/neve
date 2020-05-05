@@ -51,9 +51,9 @@ class TypefaceComponent extends Component {
 
   updateControl() {
     setTimeout( () => {
-      this.props.control.setting.set( this.state.fontFamily )
+      this.props.control.setting.set( this.maybe_get_typekit_font(this.state.fontFamily) )
       wp.customize.previewer.send( 'font-selection', {
-        value: FontFamilySelector.maybe_get_typekit_font(this.state.fontFamily),
+        value: this.maybe_get_typekit_font(this.state.fontFamily),
         source: this.state.fontFamilySource,
         controlId: this.props.control.id,
         type: '\\Neve\\Customizer\\Controls\\React\\Font_Family',

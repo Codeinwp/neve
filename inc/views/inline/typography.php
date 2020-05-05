@@ -78,7 +78,6 @@ class Typography extends Base_Inline {
 		$font_weight    = isset( $typeface_setup['fontWeight'] ) ? $typeface_setup['fontWeight'] : $old_font_weight;
 		$text_transform = isset( $typeface_setup['textTransform'] ) ? $typeface_setup['textTransform'] : $old_text_transform;
 		$body_font      = get_theme_mod( 'neve_body_font_family', false );
-		$body_font      = $this->maybe_get_typekit_slug( $body_font );
 
 		Font_Manager::add_google_font( $body_font, $font_weight );
 
@@ -114,39 +113,6 @@ class Typography extends Base_Inline {
 			$style_setup,
 			apply_filters( 'neve_body_font_family_selectors', 'body, .site-title' )
 		);
-	}
-
-	/**
-	 * Get typekit slug instead of family name.
-	 *
-	 * @param string|bool $body_font Body font name form customizer.
-	 *
-	 * @return bool|string
-	 */
-	private function maybe_get_typekit_slug( $body_font ) {
-		if ( empty( $body_font ) ) {
-			return $body_font;
-		}
-
-		$typekit_fonts = get_option( 'neve_pro_typekit_data' );
-		if ( empty( $typekit_fonts ) ) {
-			return $body_font;
-		}
-
-		$typekit_fonts = json_decode( $typekit_fonts, true );
-		if ( ! is_array( $typekit_fonts ) ) {
-			return $body_font;
-		}
-
-		if ( ! array_key_exists( $body_font, $typekit_fonts ) ) {
-			return $body_font;
-		}
-
-		if ( ! array_key_exists( 'slug', $typekit_fonts[ $body_font ] ) ) {
-			return $body_font;
-		}
-
-		return $typekit_fonts[ $body_font ]['slug'];
 	}
 
 	/**

@@ -27,6 +27,7 @@ class FontFamilySelector extends Component {
       loadUntil: 20,
       delayFontInclusion: true
     }
+    this.maybe_get_typekit_font = this.maybe_get_typekit_font.bind( this )
   }
 
   getFonts() {
@@ -41,7 +42,7 @@ class FontFamilySelector extends Component {
     return result
   }
 
-  static maybe_get_typekit_font(font) {
+  maybe_get_typekit_font(font) {
     if ( Object.prototype.hasOwnProperty.call( NeveReactCustomize, 'typekitSlugs' ) === false ) {
       return font
     }
@@ -93,7 +94,7 @@ class FontFamilySelector extends Component {
               <FontPreviewLink
                 delayLoad={this.state.delayFontInclusion}
                 label={font}
-                fontFace={FontFamilySelector.maybe_get_typekit_font(font)} onClick={() => {
+                fontFace={this.maybe_get_typekit_font(font)} onClick={() => {
                   this.setState({ isVisible: false })
                   this.props.onFontChoice(key, font)
                 }}
@@ -160,7 +161,7 @@ class FontFamilySelector extends Component {
   render() {
     // eslint-disable-next-line max-len
     const defaultFontface = '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif'
-    const font = FontFamilySelector.maybe_get_typekit_font(this.props.selected)
+    const font = this.maybe_get_typekit_font( this.props.selected )
     return (
       <div className='neve-font-family-control'>
         <span className='customize-control-title'>
