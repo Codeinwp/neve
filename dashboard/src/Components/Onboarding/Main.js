@@ -16,7 +16,13 @@ const Onboarding = ({editor, previewOpen, currentSiteData, importModal, isOnboar
 	const [ searchQuery, setSearchQuery ] = useState('');
 	const [ maxShown, setMaxShown ] = useState(9);
 	const {sites, upsells, migration} = neveDash.onboarding.sites || null;
-
+	const tags = [
+		__('Business', 'neve'),
+		__('Ecommerce', 'neve'),
+		__('Fashion', 'neve'),
+		__('Blogging', 'neve'),
+		__('Photography', 'neve')
+	];
 
 	const filterSites = (sites) => {
 		Object.keys(sites).map((slug) => {
@@ -80,7 +86,7 @@ const Onboarding = ({editor, previewOpen, currentSiteData, importModal, isOnboar
 	};
 
 	function renderMigration() {
-		if (! migration ) {
+		if (! migration) {
 			return null;
 		}
 		return <Migration data={migration}/>;
@@ -102,10 +108,24 @@ const Onboarding = ({editor, previewOpen, currentSiteData, importModal, isOnboar
 							setSearchQuery(query);
 							setMaxShown(9);
 						}}
-						query={searchQuery}/>
-					<div className="ob-sites">
-						{(sites || upsells) && renderSites()}
-					</div>
+						query={searchQuery}
+					/>
+					{0 === getAllSites().length ?
+						<div className="no-results">
+							<p>{__('No results found for', 'neve')} <span> {searchQuery}</span>. {__('You can try a different search or use one of the categories below.', 'neve')}</p>
+							<div className="tags">
+								{tags.map(tag => {
+									return <Button isPrimary className="tag" onClick={(e) => {
+										e.preventDefault();
+										setSearchQuery(tag);
+									}}>{tag}</Button>;
+								})}
+							</div>
+						</div> :
+						<div className="ob-sites">
+							{renderSites()}
+						</div>
+					}
 					<VizSensor onChange={(isVisible) => {
 						if (! isVisible) {
 							return false;

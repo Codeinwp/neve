@@ -1,4 +1,4 @@
-const {Button} = wp.components;
+const {Button, Dashicon} = wp.components;
 const {__} = wp.i18n;
 const {withDispatch} = wp.data;
 
@@ -42,7 +42,10 @@ const StarterSiteCard = ({data, setSite, setPreview, setModal}) => {
 			</div>
 			<div className="bottom">
 				<p className="title">{data.title}</p>
-				{upsell && <span className="pro-badge">{__('Pro', 'neve')}</span>}
+				{upsell && <span className="pro-badge">
+					<Dashicon icon="lock" size={15}/>
+					<span>{__('Premium', 'neve')}</span>
+				</span>}
 			</div>
 		</div>
 	);

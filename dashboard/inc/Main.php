@@ -225,11 +225,6 @@ class Main {
 	 * @return array
 	 */
 	public function get_notifications() {
-		delete_site_transient( 'update_themes' );
-		delete_site_transient( 'update_plugins' );
-		_maybe_update_themes();
-		_maybe_update_plugins();
-
 		$notifications = [];
 		$slug          = 'neve';
 		$themes_update = get_site_transient( 'update_themes' );

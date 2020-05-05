@@ -76,9 +76,10 @@
   .bottom {
 	display: flex;
 	align-items: center;
-	padding: 15px 10px;
+	padding: 15px 10px 15px 30px;
 	border-top: 1px solid $grey;
 	p {
+	  font-size: 16px;
 	  font-weight: 700;
 	  color: $black;
 	  margin: 0;
@@ -86,15 +87,19 @@
 
 	.pro-badge {
 	  background-color: $success;
+	  height: auto;
 	  color: #fff;
-	  font-weight: 700;
+	  font-weight: 600;
 	  text-transform: uppercase;
 	  padding: 5px 10px;
 	  margin-left: auto;
 	  border-radius: 999px;
-	  align-items: center;
+	  line-height: normal;
 	  display: flex;
-	  line-height: 1;
+	  align-items: center;
+	  svg {
+		margin-right: 3px;
+	  }
 	}
   }
 }
