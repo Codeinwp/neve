@@ -2,7 +2,7 @@
 const initialState = {
 	sites: null,
 	upsells: null,
-	editor: 'elementor',
+	editor: localStorage.getItem( 'neve-onboarding-editor') || 'elementor',
 	previewStatus: false,
 	importModalStatus: false,
 	currentSite: null,
@@ -32,6 +32,7 @@ export default (state = initialState, action) => {
 			};
 		case 'SET_CURRENT_EDITOR':
 			const {editor} = action.payload;
+			localStorage.setItem( 'neve-onboarding-editor', editor );
 			return {
 				...state,
 				editor
