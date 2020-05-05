@@ -23,12 +23,6 @@ export default {
 			payload: {optionStatus: (pro ? 'nv_pro_' : '') + optionSlug, optionValue}
 		};
 	},
-	changeLicenseTier(tier) {
-		return {
-			type: 'UPDATE_LICENSE_TIER',
-			payload: {tier}
-		};
-	},
 	changeLicense(licenseData) {
 		return {
 			type: 'UPDATE_LICENSE',

@@ -1,5 +1,6 @@
 /* global wp, neveDash  */
 import {getTabHash} from '../utils/common';
+import {fetchOptions} from '../utils/rest';
 
 const initialState = {
 	settings: {},
@@ -45,11 +46,6 @@ const reducer = (state = initialState, action) => {
 					...state.settings,
 					[optionStatus]: optionValue
 				}
-			};
-		case 'UPDATE_LICENSE_TIER':
-			return {
-				...state,
-				tier: action.payload.tier
 			};
 		case 'UPDATE_LICENSE':
 			return {
