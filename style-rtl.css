@@ -145,6 +145,10 @@ abbr, acronym {
   text-decoration: none;
 }
 
+mark {
+  background-color: transparent;
+}
+
 .container {
   width: 100%;
   padding-left: 15px;
@@ -718,14 +722,6 @@ blockquote.wp-block-quote.is-style-large cite {
 
 ul[id^="nv-primary-navigation"] .current-menu-item > a {
   color: #0366d6;
-}
-
-.hfg-item-left #secondary-menu li:not(:last-child), .hfg-item-center #secondary-menu li:not(:last-child) {
-  margin-left: 20px;
-}
-
-.hfg-item-right #secondary-menu li:not(:first-child) {
-  margin-right: 20px;
 }
 
 ul[id^="nv-primary-navigation"] i {
@@ -2121,6 +2117,12 @@ audio {
   }
   .nv-empty-sidebar .neve-main > .container .col {
     max-width: 100%;
+  }
+  .hfg-item-left #secondary-menu li:not(:last-of-type), .hfg-item-center #secondary-menu li:not(:last-of-type) {
+    margin-left: 20px;
+  }
+  .hfg-item-right #secondary-menu li:not(:first-of-type) {
+    margin-right: 20px;
   }
   .hfg-item-left .header--row .primary-menu-ul li:not(:last-child), .hfg-item-center .header--row .primary-menu-ul li:not(:last-child) {
     margin-left: 20px;
