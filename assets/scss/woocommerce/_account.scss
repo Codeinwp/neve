@@ -5,6 +5,10 @@ body.woocommerce-account {
     padding-top: $spacing-sm;
   }
 
+  form .show-password-input{
+    top: unset;
+  }
+
   .woocommerce-LostPassword {
     font-size: .9em;
     text-align: center;

@@ -155,6 +155,10 @@ class Magic_Tags {
 	 * @return string
 	 */
 	public function archive_title() {
+		if ( get_option( 'show_on_front' ) === 'page' && is_home() ) {
+			$blog_page_id = get_option( 'page_for_posts' );
+			return get_the_title( $blog_page_id );
+		}
 		return html_entity_decode( get_the_archive_title() );
 	}
 

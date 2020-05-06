@@ -1375,6 +1375,10 @@ body.woocommerce-account .nv-content-wrap > .woocommerce {
   padding-top: 20px;
 }
 
+body.woocommerce-account form .show-password-input {
+  top: unset;
+}
+
 body.woocommerce-account .woocommerce-LostPassword {
   font-size: .9em;
   text-align: center;
