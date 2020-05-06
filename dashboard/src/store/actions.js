@@ -11,6 +11,12 @@ export default {
 			payload: {object}
 		};
 	},
+	setPluginState(pluginSlug, pluginState) {
+		return {
+			type: 'SET_PLUGIN_STATE',
+			payload: {pluginSlug, pluginState}
+		};
+	},
 	changeModuleStatus(moduleSlug, value) {
 		return {
 			type: 'TOGGLE_MODULE',

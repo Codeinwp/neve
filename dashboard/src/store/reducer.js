@@ -4,6 +4,7 @@ import {fetchOptions} from '../utils/rest';
 
 const initialState = {
 	settings: {},
+	plugins: neveDash.plugins || {},
 	tier: neveDash.pro ? neveDash.license.tier : 0,
 	toast: null,
 	currentTab: 'start',
@@ -28,6 +29,14 @@ const reducer = (state = initialState, action) => {
 			return {
 				...state,
 				settings: object
+			};
+		case 'SET_PLUGIN_STATE':
+			const {pluginSlug, pluginState} = action.payload;
+			const newPluginState = {...state.plugins[pluginSlug]};
+			newPluginState.cta = pluginState;
+			return {
+				...state,
+				plugins: {...state.plugins, [pluginSlug]: newPluginState }
 			};
 		case 'TOGGLE_MODULE':
 			const {moduleSlug, value} = action.payload;
