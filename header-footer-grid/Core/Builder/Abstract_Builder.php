@@ -826,6 +826,9 @@ abstract class Abstract_Builder implements Builder {
 		$css_setup  = [];
 		if ( $background['type'] === 'color' && ! empty( $background['colorValue'] ) ) {
 			$css_setup['background-color'] = $background['colorValue'];
+			$css_array[ $selector . ' .primary-menu-ul .sub-menu li' ]['background-color'] = $background['colorValue'];
+			$css_array[ $selector . ' .primary-menu-ul .sub-menu li' ]['border-color']     = $background['colorValue'];
+			$css_array[ $selector . ' .primary-menu-ul .sub-menu' ]['border-color']        = $background['colorValue'];
 		}
 
 		if ( $background['type'] === 'image' ) {
@@ -860,6 +863,9 @@ abstract class Abstract_Builder implements Builder {
 					'width'            => '100%',
 				);
 			}
+			$css_array[ $selector . ' .primary-menu-ul .sub-menu li' ]['background-color'] = $background['overlayColorValue'];
+			$css_array[ $selector . ' .primary-menu-ul .sub-menu li' ]['border-color']     = $background['overlayColorValue'];
+			$css_array[ $selector . ' .primary-menu-ul .sub-menu' ]['border-color']        = $background['overlayColorValue'];
 			$css_array[ $selector ] = array(
 				'background-color' => 'transparent',
 			);

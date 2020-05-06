@@ -82,15 +82,11 @@ window.addEventListener('load', function () {
               	if(!newValue.colorValue && args.additional.partial ) {
 									wp.customize.selectiveRefresh.partial( args.additional.partial ).refresh();
 								}
-                style += 'body ' + args.selector + '{' +
-                  'background-image: none !important;}'
-                let color = newValue.colorValue !== 'undefined' ?
-                  newValue.colorValue :
-                  'inherit'
-                style += 'body ' + args.selector + '{' +
-                  'background-color: ' + color +
-                  ' !important; }'
-                style += args.selector + ':before{ content: none !important; }'
+                style += `body ${args.selector}{background-image: none !important;}`;
+                let color = newValue.colorValue !== 'undefined' ? newValue.colorValue : 'inherit'
+                style += `${args.selector}:before{ content: none !important;}`;
+								style += `body ${args.selector}, body ${args.selector} .primary-menu-ul .sub-menu li {background-color: ${color}!important;}`
+								style += `${args.selector} .primary-menu-ul .sub-menu, ${args.selector} .primary-menu-ul .sub-menu li {border-color: ${color}!important;}`;
                 addCss(settingId, style)
                 return false
               }
@@ -121,7 +117,9 @@ window.addEventListener('load', function () {
               let color = newValue.overlayColorValue !== 'undefined' ?
                 newValue.overlayColorValue :
                 'inherit'
-              style += args.selector + ':before { ' +
+							style += `body ${args.selector}, body ${args.selector} .primary-menu-ul .sub-menu li {background-color: ${color}!important;}`
+							style += `${args.selector} .primary-menu-ul .sub-menu, ${args.selector} .primary-menu-ul .sub-menu li {border-color: ${color}!important;}`;
+							style += args.selector + ':before { ' +
                 'content: "";' +
                 'position: absolute; top: 0; bottom: 0; width: 100%;' +
                 'background-color: ' + color +
