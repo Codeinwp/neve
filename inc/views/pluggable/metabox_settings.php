@@ -178,7 +178,7 @@ class Metabox_Settings {
 			    max-width: none;
 			}
 			.wp-block[data-align="wide"] div.innerblocks-wrap,
-			.wp-block[data-align="full"] div.innerblocks-wrap,{
+			.wp-block[data-align="full"] div.innerblocks-wrap{
 			    max-width: %s;
 			    margin:auto;
 			}
