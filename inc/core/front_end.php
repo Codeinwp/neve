@@ -1919,11 +1919,11 @@ class Front_End {
 				'label'   => __( 'Text Color', 'neve' ),
 			),
 			'neve-btn-text'         => array(
-				'setting' => Config::MODS_BUTTON_PRIMARY_STYLE . '.color',
+				'setting' => Config::MODS_BUTTON_PRIMARY_STYLE . '.text',
 				'label'   => __( 'Button text color', 'neve' ),
 			),
 			'neve-btn-text-hover'   => array(
-				'setting' => Config::MODS_BUTTON_PRIMARY_STYLE . '.colorHover',
+				'setting' => Config::MODS_BUTTON_PRIMARY_STYLE . '.textHover',
 				'label'   => __( 'Button Hover text color', 'neve' ),
 			),
 			'neve-btn-bg-hover'     => array(
@@ -1931,9 +1931,11 @@ class Front_End {
 				'label'   => __( 'Button Hover Color', 'neve' ),
 			),
 		);
-
 		foreach ( $color_controls as $control_name => $control_data ) {
-			$color      = Mods::get( $control_data['setting'] );
+			$color = Mods::get( $control_data['setting'] );
+			if ( empty( $color ) ) {
+				continue;
+			}
 			$color_name = $control_data['label'];
 			array_push(
 				$gutenberg_color_palette,
