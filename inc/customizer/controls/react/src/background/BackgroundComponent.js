@@ -187,7 +187,6 @@ class BackgroundComponent extends Component {
   }
 
   componentDidMount() {
-    this.updateSetting(this.state)
     const { control } = this.props
 
     document.addEventListener('neve-changed-customizer-value', (e) => {

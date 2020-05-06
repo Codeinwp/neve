@@ -133,14 +133,6 @@ window.addEventListener('load', function () {
               addCss(settingId, style)
               break
             case '\\Neve\\Customizer\\Controls\\React\\Radio_Buttons':
-              if (args.additional && args.additional.is_for) {
-                if (args.additional.is_for === 'row_skin') {
-                  let elements = document.querySelectorAll(args.selector)
-                  removeClass(elements, 'dark-mode light-mode')
-                  addClass(elements, newValue)
-                  break
-                }
-              }
               let itemInner = document.querySelectorAll(args.selector)
               _.each(itemInner, function (item) {
                 removeClass(item.parentNode,

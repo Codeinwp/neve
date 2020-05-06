@@ -378,38 +378,17 @@ abstract class Abstract_Builder implements Builder {
 				'options'               => [
 					'priority' => 100,
 				],
-				'transport'             => 'postMessage',
-				'sanitize_callback'     => 'neve_sanitize_background',
 				'default'               => [
 					'type'       => 'color',
 					'colorValue' => $default_colors['background'],
 				],
+				'transport'             => 'postMessage',
+				'sanitize_callback'     => 'neve_sanitize_background',
 				'conditional_header'    => $this->get_id() === 'header',
 			]
 		);
 
 		do_action( 'hfg_add_settings_to_rows', SettingsManager::get_instance(), $row_setting_id, $row_id, $this->get_id() );
-
-		SettingsManager::get_instance()->add(
-			[
-				'id'                    => self::SKIN_SETTING,
-				'group'                 => $row_setting_id,
-				'tab'                   => SettingsManager::TAB_STYLE,
-				'label'                 => __( 'Skin Mode', 'neve' ),
-				'section'               => $row_setting_id,
-				'conditional_header'    => $this->get_id() === 'header',
-				'type'                  => '\Neve\Customizer\Controls\React\Radio_Buttons',
-				'options'               => [
-					'is_for'        => 'row_skin',
-					'large_buttons' => true,
-				],
-				'transport'             => 'postMessage',
-				'live_refresh_selector' => $row_class,
-				'live_refresh_css_prop' => [ 'is_for' => 'row_skin' ],
-				'sanitize_callback'     => 'wp_filter_nohtml_kses',
-				'default'               => 'light-mode',
-			]
-		);
 
 		SettingsManager::get_instance()->add(
 			[
@@ -845,7 +824,6 @@ abstract class Abstract_Builder implements Builder {
 			]
 		);
 		$css_setup  = [];
-
 		if ( $background['type'] === 'color' && ! empty( $background['colorValue'] ) ) {
 			$css_setup['background-color'] = $background['colorValue'];
 		}
@@ -888,11 +866,12 @@ abstract class Abstract_Builder implements Builder {
 		}
 
 		$css_array[ $selector ] = $css_setup;
-
-		$text = get_theme_mod( $this->control_id . '_' . $row_index . '_' . self::TEXT_COLOR, $skin['text'] );
+		$text                   = get_theme_mod( $this->control_id . '_' . $row_index . '_' . self::TEXT_COLOR, $skin['text'] );
 		if ( ! empty( $text ) ) {
-			$css_array[ $selector ]['color']                     = $text;
-			$css_array[ $selector . ' a:not(.button)' ]['color'] = $text;
+			$css_array[ $selector ]['color']                            = $text;
+			$css_array[ $selector . ' a:not(.button)' ]['color']        = $text;
+			$css_array[ $selector . ' .icon-bar' ]['background-color']  = $text;
+			$css_array[ $selector . ' .navbar-toggle' ]['border-color'] = $text;
 		}
 		return $css_array;
 	}
@@ -1196,106 +1175,36 @@ abstract class Abstract_Builder implements Builder {
 	 */
 	private function get_default_row_colors( $row_id ) {
 		$bg_color_map = [
-			'header'      => [
-				'top'     => [
-					'background' => [
-						'dark-mode'  => '#404248',
-						'light-mode' => '#f0f0f0',
-					],
-					'text'       => [
-						'dark-mode'  => '#ffffff',
-						'light-mode' => '#404248',
-					],
-				],
-				'main'    => [
-					'background' => [
-						'dark-mode'  => '#404248',
-						'light-mode' => '#ffffff',
-					],
-					'text'       => [
-						'dark-mode'  => '#ffffff',
-						'light-mode' => '#404248',
-					],
-				],
-				'bottom'  => [
-					'background' => [
-						'dark-mode'  => '#404248',
-						'light-mode' => '#ffffff',
-					],
-					'text'       => [
-						'dark-mode'  => '#ffffff',
-						'light-mode' => '#404248',
-					],
-				],
-				'sidebar' => [
-					'background' => [
-						'dark-mode'  => '#404248',
-						'light-mode' => '#ffffff',
-					],
-					'text'       => [
-						'dark-mode'  => '#ffffff',
-						'light-mode' => '#404248',
-					],
-				],
+			'background' => [
+				'dark-mode'  => '#24292e',
+				'light-mode' => '#ffffff',
 			],
-			'footer'      => [
-				'top'    => [
-					'background' => [
-						'dark-mode'  => '#292929',
-						'light-mode' => '#ffffff',
-					],
-					'text'       => [
-						'dark-mode'  => '#ffffff',
-						'light-mode' => '#404248',
-					],
-				],
-				'bottom' => [
-					'background' => [
-						'dark-mode'  => '#24292e',
-						'light-mode' => '#ededed',
-					],
-					'text'       => [
-						'dark-mode'  => '#ffffff',
-						'light-mode' => '#404248',
-					],
-				],
-			],
-			'page_header' => [
-				'top'    => [
-					'background' => [
-						'dark-mode'  => '#292929',
-						'light-mode' => '#ffffff',
-					],
-					'text'       => [
-						'dark-mode'  => '#ffffff',
-						'light-mode' => '#404248',
-					],
-				],
-				'bottom' => [
-					'background' => [
-						'dark-mode'  => '#404248',
-						'light-mode' => '#ffffff',
-					],
-					'text'       => [
-						'dark-mode'  => '#ffffff',
-						'light-mode' => '#404248',
-					],
-				],
+			'text'       => [
+				'dark-mode'  => '#ffffff',
+				'light-mode' => '#404248',
 			],
 		];
 
 		$row_setting_id = $this->control_id . '_' . $row_id;
 		$builder        = $this->get_id();
 
-		$background = $builder === 'footer' && $row_id === 'bottom' ? '#24292e' : '#ffffff';
-		$text       = $builder === 'footer' && $row_id === 'bottom' ? '#ffffff' : '#404248';
+		$background = $bg_color_map['background']['light-mode'];
+		$text       = $bg_color_map['text']['light-mode'];
+
+		if ( $builder === 'footer' && $row_id === 'bottom' ) {
+			$background = $bg_color_map['background']['dark-mode'];
+			$text       = $bg_color_map['text']['dark-mode'];
+		}
+
+		if ( $builder === 'header' && $row_id === 'top' ) {
+			$background = '#f0f0f0';
+		}
 
 		$old_skin = get_theme_mod( $row_setting_id . '_' . self::SKIN_SETTING );
 		if ( ! empty( $old_skin ) ) {
-			$background = isset( $bg_color_map[ $builder ][ $row_id ]['background'][ $old_skin ] ) ? $bg_color_map[ $builder ][ $row_id ]['background'][ $old_skin ] : $background;
-			$text       = isset( $bg_color_map[ $builder ][ $row_id ]['text'][ $old_skin ] ) ? $bg_color_map[ $builder ][ $row_id ]['text'][ $old_skin ] : $text;
+			$background = $bg_color_map['background'][ $old_skin ];
+			$text       = $bg_color_map['text'][ $old_skin ];
 		}
-
 		return [
 			'background' => $background,
 			'text'       => $text,
