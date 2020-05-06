@@ -1,11 +1,13 @@
 /* global wp, neveDash  */
 import {getTabHash} from '../utils/common';
+import {fetchOptions} from '../utils/rest';
 
 const initialState = {
 	settings: {},
 	tier: neveDash.pro ? neveDash.license.tier : 0,
 	toast: null,
-	currentTab: 'start'
+	currentTab: 'start',
+	license: neveDash.pro ? neveDash.license : {}
 };
 
 const hash = getTabHash();
@@ -45,10 +47,10 @@ const reducer = (state = initialState, action) => {
 					[optionStatus]: optionValue
 				}
 			};
-		case 'UPDATE_LICENSE_TIER':
+		case 'UPDATE_LICENSE':
 			return {
 				...state,
-				tier: action.payload.tier
+				license: action.payload.licenseData
 			};
 		case 'UPDATE_TOAST_MESSAGE':
 			return {

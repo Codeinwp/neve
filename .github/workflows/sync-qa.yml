@@ -30,6 +30,9 @@ jobs:
       - name: Deploy to QA
         run: |
           rsync -rc --exclude-from="$GITHUB_WORKSPACE/.distignore" -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no -p $SSH_PORT" "$GITHUB_WORKSPACE/" $SSH_USERNAME@$SSH_HOST:$QA_ROOT
+      - name: Trigger Diffy Job
+        run: |
+          bash bin/diffy.sh $GITHUB_SHA ${{ secrets.DIFFY_API_KEY }} ${{ secrets.DIFFY_PROJECT_ID }}
   empty-job:
     # if no jobs run, github action considers it a test failure -- which seems like a bug
     # this makes it so the top-level if statement for the job does not give status failure.

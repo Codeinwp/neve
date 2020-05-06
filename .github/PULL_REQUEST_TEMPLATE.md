@@ -2,7 +2,7 @@
 <!-- Please describe the changes you made. -->
 
 ### Will affect visual aspect of the product
-<!-- Will eyepatch be affected? -->
+<!-- It includes visual changes? -->
 YES/NO
 
 ### Screenshots <!-- if applicable -->

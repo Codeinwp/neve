@@ -1,4 +1,4 @@
- export default {
+export default {
 	setTab(tab) {
 		return {
 			type: 'SET_TAB',
@@ -23,10 +23,10 @@
 			payload: {optionStatus: (pro ? 'nv_pro_' : '') + optionSlug, optionValue}
 		};
 	},
-	changeLicenseTier(tier) {
+	changeLicense(licenseData) {
 		return {
-			type: 'UPDATE_LICENSE_TIER',
-			payload: {tier}
+			type: 'UPDATE_LICENSE',
+			payload: {licenseData}
 		};
 	},
 	setToast(message) {
