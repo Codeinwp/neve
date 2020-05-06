@@ -102,10 +102,12 @@ window.addEventListener('load', function () {
               style += newValue.fixed === true ?
                 'background-attachment: fixed !important;' :
                 'background-attachment: initial !important;'
-              style += 'background-position:' +
-                (newValue.focusPoint.x * 100).toFixed(2) + '% ' +
-                (newValue.focusPoint.y * 100).toFixed(2) +
-                '% !important;'
+              if( newValue.focusPoint && newValue.focusPoint.x && newValue.focusPoint.y ) {
+								style += 'background-position:' +
+									(newValue.focusPoint.x * 100).toFixed(2) + '% ' +
+									(newValue.focusPoint.y * 100).toFixed(2) +
+									'% !important;'
+							}
               style += 'background-size: cover !important;'
               if (!document.querySelector('.header-menu-sidebar')
               .classList
@@ -124,7 +126,7 @@ window.addEventListener('load', function () {
                 'position: absolute; top: 0; bottom: 0; width: 100%;' +
                 'background-color: ' + color +
                 ' !important;' +
-                'opacity: ' + (newValue.overlayOpacity / 100) +
+                'opacity: ' + ((newValue.overlayOpacity || 50) / 100) +
                 '!important;}'
               style += args.selector +
                 '{ background-color: transparent !important; }'

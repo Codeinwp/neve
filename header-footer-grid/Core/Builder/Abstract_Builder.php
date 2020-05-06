@@ -832,7 +832,7 @@ abstract class Abstract_Builder implements Builder {
 		}
 
 		if ( $background['type'] === 'image' ) {
-			if ( $background['useFeatured'] === true && is_singular() ) {
+			if ( isset($background['useFeatured']) && $background['useFeatured'] === true && is_singular() ) {
 				$featured_image = get_the_post_thumbnail_url();
 				if ( ! empty( $featured_image ) ) {
 					$css_setup['background-image'] = 'url("' . esc_url( $featured_image ) . '")';
@@ -848,7 +848,7 @@ abstract class Abstract_Builder implements Builder {
 				$css_setup['background-position'] = round( $background['focusPoint']['x'] * 100 ) . '% ' . round( $background['focusPoint']['y'] * 100 ) . '%';
 			}
 
-			if ( $background['fixed'] === true ) {
+			if ( isset( $background[ 'fixed' ] ) && $background[ 'fixed' ] === true ) {
 				$css_setup['background-attachment'] = 'fixed';
 			}
 
