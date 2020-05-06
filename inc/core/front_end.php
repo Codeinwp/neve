@@ -1900,6 +1900,23 @@ class Front_End {
 	private function get_gutenberg_color_palette() {
 		$gutenberg_color_palette = array();
 
+		array_push(
+			$gutenberg_color_palette,
+			array(
+				'name'  => __( 'Black', 'neve' ),
+				'slug'  => 'black',
+				'color' => '#000000',
+			)
+		);
+
+		array_push(
+			$gutenberg_color_palette,
+			array(
+				'name'  => __( 'White', 'neve' ),
+				'slug'  => 'white',
+				'color' => '#ffffff',
+			)
+		);
 
 		$color_controls = array(
 			'neve-button-color'     => array(
@@ -1947,23 +1964,6 @@ class Front_End {
 			);
 		}
 
-		array_push(
-			$gutenberg_color_palette,
-			array(
-				'name'  => __( 'Black', 'neve' ),
-				'slug'  => 'black',
-				'color' => '#000000',
-			)
-		);
-
-		array_push(
-			$gutenberg_color_palette,
-			array(
-				'name'  => __( 'White', 'neve' ),
-				'slug'  => 'white',
-				'color' => '#ffffff',
-			)
-		);
 		/**
 		 * Remove duplicate colors.
 		 */
