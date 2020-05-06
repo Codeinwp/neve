@@ -2,6 +2,7 @@
 import {send} from '../utils/rest';
 import Toast from './Toast';
 import classnames from 'classnames';
+import {fetchOptions} from '../utils/rest';
 
 const {__} = wp.i18n;
 const {Button, Dashicon} = wp.components;
@@ -9,7 +10,7 @@ const {Fragment, useState} = wp.element;
 const {withDispatch, withSelect} = wp.data;
 const {compose} = wp.compose;
 
-const LicenseCard = ({isVisible, changeTier, changeLicense, license}) => {
+const LicenseCard = ({isVisible, setSettings, changeLicense, license}) => {
 	const {proApi} = neveDash;
 	const [ key, setKey ] = useState(license && 'valid' === license.valid ? license.key || '' : '');
 	const [ status, setStatus ] = useState(false);
@@ -34,8 +35,10 @@ const LicenseCard = ({isVisible, changeTier, changeLicense, license}) => {
 			setKey('activate' === toDo ? key : '');
 			setToast(response.message);
 			setStatus(false);
-			changeTier(response.tier || 1);
 			changeLicense(response.license);
+			fetchOptions().then(r => {
+				setSettings(r);
+			});
 		});
 	};
 
@@ -117,11 +120,9 @@ const LicenseCard = ({isVisible, changeTier, changeLicense, license}) => {
 
 export default compose(
 	withDispatch(dispatch => {
-		const {changeLicenseTier, changeLicense} = dispatch('neve-dashboard');
+		const {changeLicense, setSettings} = dispatch('neve-dashboard');
 		return {
-			changeTier: newTier => {
-				changeLicenseTier(newTier);
-			},
+			setSettings: (object) => setSettings(object),
 			changeLicense: data => {
 				changeLicense(data);
 			}
