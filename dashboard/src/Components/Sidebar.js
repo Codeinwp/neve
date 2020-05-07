@@ -18,7 +18,7 @@ const Sidebar = ({currentTab, setToast, loggerValue}) => {
 			<aside className="sidebar card">
 				<div className="sidebar-section">
 					<h4>{__('Neve Community', 'neve')}</h4>
-					<p>{__('Join the community of Neve users. Get connected, share opinions, ask questions and help each other!')}</p>
+					<p dangerouslySetInnerHTML={{__html: neveDash.strings.sidebarCommunityDescription}}/>
 					<a href="https://www.facebook.com/groups/648646435537266/">
 						{__('Join our Facebook Group', 'neve')}
 					</a>

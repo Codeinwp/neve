@@ -95,6 +95,7 @@ const Loading = () => {
 							<h4 className="loading"/>
 							<p className="loading card-description"/>
 							<p className="loading card-description"/>
+							<p className="loading card-description"/>
 							<span className="loading link"/>
 						</div>
 						<hr/>
