@@ -13,6 +13,8 @@ namespace HFG\Core\Components;
 
 use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Main;
+use Neve\Core\Settings\Config;
+use Neve\Core\Styles\Dynamic_Selector;
 
 /**
  * Class MenuIcon
@@ -143,95 +145,27 @@ class MenuIcon extends Abstract_Component {
 	 * @return array
 	 */
 	public function add_style( array $css_array = array() ) {
-		$appearance = \HFG\component_setting( self::BUTTON_APPEARANCE, null, $this->id );
+		$id          = $this->get_id() . '_' . self::BUTTON_APPEARANCE;
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => $this->default_selector . ', ' . $this->close_button,
+			Dynamic_Selector::KEY_RULES    => [
+				Config::CSS_PROP_BACKGROUND_COLOR => $id . '.background',
+				Config::CSS_PROP_COLOR            => $id . '.text',
+				Config::CSS_PROP_BORDER_RADIUS    => $id . '.borderRadius',
+				Config::CSS_PROP_CUSTOM_BTN_TYPE  => $id . '.type',
+				Config::CSS_PROP_BORDER_WIDTH     => $id . '.borderWidth',
+			],
+		];
 
-		if ( isset( $appearance['borderRadius'] ) ) {
-			if ( is_array( $appearance['borderRadius'] ) ) {
-				$css_array[ $this->default_selector ]['border-top-left-radius']     = $appearance['borderRadius']['top'] . 'px';
-				$css_array[ $this->default_selector ]['border-top-right-radius']    = $appearance['borderRadius']['right'] . 'px';
-				$css_array[ $this->default_selector ]['border-bottom-left-radius']  = $appearance['borderRadius']['left'] . 'px';
-				$css_array[ $this->default_selector ]['border-bottom-right-radius'] = $appearance['borderRadius']['bottom'] . 'px';
-			} else {
-				$css_array[ $this->default_selector ]['border-radius'] = $appearance['borderRadius'] . 'px';
-			}
-		}
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => $this->default_selector . ' .icon-bar, ' . $this->close_button . ' .icon-bar',
+			Dynamic_Selector::KEY_RULES    => [
+				Config::CSS_PROP_BACKGROUND_COLOR => $id . '.text',
+			],
+		];
 
-		if ( ! empty( $appearance['background'] ) ) {
-			$css_array[ $this->default_selector ]['background-color'] = $appearance['background'];
-		}
-
-		if ( ! empty( $appearance['text'] ) ) {
-			$css_array[ $this->default_selector ]['color']                           = $appearance['text'];
-			$css_array[ $this->default_selector . ' .icon-bar' ]['background-color'] = $appearance['text'];
-			if ( $appearance['type'] === 'outline' ) {
-				$css_array[ $this->default_selector ]['border-color'] = $appearance['text'];
-			}
-		}
-
-		if ( ! empty( $appearance['borderWidth'] ) && $appearance['type'] === 'outline' ) {
-			if ( is_array( $appearance['borderWidth'] ) ) {
-				$css_array[ $this->default_selector ]['border-style'] = 'solid';
-				foreach ( $appearance['borderWidth'] as $k => $v ) {
-					$css_array[ $this->default_selector ][ 'border-' . $k . '-width' ] = $v . 'px';
-				}
-			} else {
-				$css_array[ $this->default_selector ]['border'] = $appearance['borderWidth'] . 'px solid';
-			}
-		}
-
-		if ( $appearance['type'] !== 'outline' ) {
-			$css_array[ $this->default_selector ]['border'] = 'none';
-		}
-
-		$css_array = array_merge( $css_array, $this->get_close_button_style( $appearance ) );
 
 		return parent::add_style( $css_array );
-	}
-
-	/**
-	 * Add sidebar close button style.
-	 *
-	 * @param array $appearance_array the button appearance control value.
-	 *
-	 * @return array
-	 */
-	protected function get_close_button_style( $appearance_array ) {
-		$additional_style = [];
-		if ( isset( $appearance_array['borderRadius'] ) ) {
-			if ( is_array( $appearance_array['borderRadius'] ) ) {
-				$additional_style[ $this->close_button ]['border-top-left-radius']     = $appearance_array['borderRadius']['top'] . 'px';
-				$additional_style[ $this->close_button ]['border-top-right-radius']    = $appearance_array['borderRadius']['right'] . 'px';
-				$additional_style[ $this->close_button ]['border-bottom-right-radius'] = $appearance_array['borderRadius']['bottom'] . 'px';
-				$additional_style[ $this->close_button ]['border-bottom-left-radius']  = $appearance_array['borderRadius']['left'] . 'px';
-			} else {
-				$additional_style[ $this->close_button ]['border-radius'] = $appearance_array['borderRadius'] . 'px';
-			}
-		}
-		if ( ! empty( $appearance_array['background'] ) ) {
-			$additional_style[ $this->close_button ]['background-color'] = $appearance_array['background'];
-		}
-		if ( ! empty( $appearance_array['text'] ) ) {
-			$additional_style[ $this->close_button ]['color']                           = $appearance_array['text'];
-			$additional_style[ $this->close_button . ' .icon-bar' ]['background-color'] = $appearance_array['text'];
-			if ( $appearance_array['type'] === 'outline' ) {
-				$additional_style[ $this->close_button ]['border-color'] = $appearance_array['text'];
-			}
-		}
-		if ( ! empty( $appearance_array['borderWidth'] ) && $appearance_array['type'] === 'outline' ) {
-			if ( is_array( $appearance_array['borderWidth'] ) ) {
-				$css_array[ $this->close_button ]['border-style'] = 'solid';
-				foreach ( $appearance_array['borderWidth'] as $k => $v ) {
-					$css_array[ $this->close_button ][ 'border-' . $k . '-width' ] = $v . 'px';
-				}
-			} else {
-				$additional_style[ $this->close_button ]['border'] = $appearance_array['borderWidth'] . 'px solid';
-			}
-		}
-		if ( $appearance_array['type'] !== 'outline' ) {
-			$additional_style[ $this->close_button ]['border'] = 'none';
-		}
-
-		return $additional_style;
 	}
 
 	/**

@@ -30,7 +30,7 @@
   text-decoration: none;
 }
 
-.nv-content-wrap a.llms-button-primary, .nv-content-wrap a.llms-sd-link, .nv-content-wrap a.llms-loop-link, .nv-content-wrap a.llms-button-secondary {
+#neve_body .nv-content-wrap a.llms-button-primary, #neve_body .nv-content-wrap a.llms-sd-link, #neve_body .nv-content-wrap a.llms-loop-link, #neve_body .nv-content-wrap a.llms-button-secondary {
   text-decoration: none;
 }
 

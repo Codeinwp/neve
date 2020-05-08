@@ -27,16 +27,6 @@
 }
 
 
-// Footer Top
-.footer-top {
-
-  .light-mode {
-    background: #fff;
-  }
-  .dark-mode {
-    background: #292929;
-  }
-}
 
 // Footer Main
 .footer-main {
@@ -45,21 +35,14 @@
     padding-bottom: 2.5em;
   }
 
-  .light-mode {
-    background: #f9f9f9;
-  }
-  .dark-mode {
-    background: #24292e;
-  }
 }
 
-// Footer Bottom
-.footer-bottom {
+.footer--row {
   .light-mode {
-    background: #ededed;
+	background: #f9f9f9;
   }
   .dark-mode {
-    background: #24292e;
+	background: #24292e;
   }
 }
 

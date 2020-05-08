@@ -12,10 +12,12 @@
 namespace HFG;
 
 use HFG\Core\Builder\Abstract_Builder;
+use HFG\Core\Css_Generator;
 use HFG\Core\Customizer;
 use HFG\Core\Settings\Config;
 use HFG\Core\Settings\Manager;
 use HFG\Traits\Core;
+use PHP_CodeSniffer\Tokenizers\CSS;
 
 /**
  * Class Main
@@ -24,6 +26,7 @@ use HFG\Traits\Core;
  */
 class Main {
 	use Core;
+
 	/**
 	 * Template relative directory.
 	 */
@@ -31,7 +34,7 @@ class Main {
 	/**
 	 * Define version constant used for assets.
 	 */
-	const VERSION = '1.0.3';
+	const VERSION = '2.0.0';
 	/**
 	 * Holds the instance of this class.
 	 *
@@ -68,6 +71,13 @@ class Main {
 	 * @var Customizer $settings
 	 */
 	private $customizer;
+	/**
+	 * Dynamic CSS generator.
+	 *
+	 * @since   2.7.0
+	 * @var Css_Generator Dynamic CSS generator.
+	 */
+	private $css_generator;
 
 	/**
 	 * Main Instance
@@ -87,9 +97,10 @@ class Main {
 			}
 			self::$_instance = new self();
 			self::$_instance->init();
-			self::$_instance->settings   = new Manager();
-			self::$_instance->customizer = new Customizer();
-			$default_directories         = [];
+			self::$_instance->settings      = new Manager();
+			self::$_instance->customizer    = new Customizer();
+			self::$_instance->css_generator = new Css_Generator();
+			$default_directories            = [];
 			if ( is_child_theme() ) {
 				$default_directories[] = get_stylesheet_directory() . '/' . self::TEMPLATES_DIRECTORY;
 			}
@@ -108,7 +119,7 @@ class Main {
 	 * @access  public
 	 */
 	public function init() {
-		add_filter( 'neve_style_output_neve-generated-style', array( $this, 'append_css_style' ) );
+		add_filter( 'neve_dynamic_style_output', array( $this, 'append_css_style' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_utils_scripts' ) );
 	}
 
@@ -218,11 +229,12 @@ class Main {
 		 * @var Abstract_Builder $builder
 		 */
 		foreach ( $this->get_builders() as $builder ) {
-			$builder_css_array = $builder->add_style( $css_array );
-			$css_array         = array_replace_recursive( $css_array, $builder_css_array );
+			$css_array = $builder->add_style( $css_array );
 		}
 
-		return $this->css_array_to_css( $css_array );
+		$this->css_generator->set( $css_array );
+
+		return $this->css_generator->generate();
 	}
 
 	/**
