@@ -166,6 +166,7 @@ class Button extends Abstract_Component {
 				Config::CSS_PROP_COLOR            => $id . '.text',
 				Config::CSS_PROP_BORDER_RADIUS    => [
 					Dynamic_Selector::META_KEY     => $id . '.borderRadius',
+					Dynamic_Selector::META_DEFAULT => '3'
 				],
 				Config::CSS_PROP_CUSTOM_BTN_TYPE  => [
 					Dynamic_Selector::META_KEY     => $id . '.type',
