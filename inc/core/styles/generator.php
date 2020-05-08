@@ -537,12 +537,14 @@ class Generator {
 				Config::CSS_PROP_MAX_WIDTH => [
 					Dynamic_Selector::META_KEY    => Config::MODS_SITEWIDE_CONTENT_WIDTH,
 					Dynamic_Selector::META_SUFFIX => '%',
+					Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP
 				],
 			];
 			$this->_subscribers['.nv-sidebar-wrap, .nv-sidebar-wrap.shop-sidebar'] = [
 				Config::CSS_PROP_MAX_WIDTH => [
 					Dynamic_Selector::META_KEY    => Config::MODS_SITEWIDE_CONTENT_WIDTH,
 					Dynamic_Selector::META_FILTER => 'minus_100',
+					Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
 					Dynamic_Selector::META_SUFFIX => '%',
 				],
 			];
@@ -552,12 +554,14 @@ class Generator {
 		$this->_subscribers['body:not(.single):not(.archive):not(.blog):not(.search) .neve-main > .container .col'] = [
 			Config::CSS_PROP_MAX_WIDTH => [
 				Dynamic_Selector::META_KEY    => Config::MODS_OTHERS_CONTENT_WIDTH,
+				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
 				Dynamic_Selector::META_SUFFIX => '%',
 			],
 		];
 		$this->_subscribers['body:not(.single):not(.archive):not(.blog):not(.search) .nv-sidebar-wrap']             = [
 			Config::CSS_PROP_MAX_WIDTH => [
 				Dynamic_Selector::META_KEY    => Config::MODS_OTHERS_CONTENT_WIDTH,
+				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
 				Dynamic_Selector::META_FILTER => 'minus_100',
 				Dynamic_Selector::META_SUFFIX => '%',
 			],
@@ -566,12 +570,14 @@ class Generator {
 		$this->_subscribers['.neve-main > .archive-container .nv-index-posts.col'] = [
 			Config::CSS_PROP_MAX_WIDTH => [
 				Dynamic_Selector::META_KEY    => Config::MODS_ARCHIVE_CONTENT_WIDTH,
+				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
 				Dynamic_Selector::META_SUFFIX => '%',
 			],
 		];
 		$this->_subscribers['.neve-main > .archive-container .nv-sidebar-wrap']    = [
 			Config::CSS_PROP_MAX_WIDTH => [
 				Dynamic_Selector::META_KEY    => Config::MODS_ARCHIVE_CONTENT_WIDTH,
+				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
 				Dynamic_Selector::META_FILTER => 'minus_100',
 				Dynamic_Selector::META_SUFFIX => '%',
 			],
@@ -580,12 +586,14 @@ class Generator {
 		$this->_subscribers['.neve-main > .single-post-container .nv-single-post-wrap.col, .neve-main > .single-post-container [class*="__inner-container"] > *:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.is-style-wide)'] = [
 			Config::CSS_PROP_MAX_WIDTH => [
 				Dynamic_Selector::META_KEY    => Config::MODS_SINGLE_CONTENT_WIDTH,
+				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
 				Dynamic_Selector::META_SUFFIX => '%',
 			],
 		];
 		$this->_subscribers['.neve-main > .single-post-container .nv-sidebar-wrap'] = [
 			Config::CSS_PROP_MAX_WIDTH => [
 				Dynamic_Selector::META_KEY    => Config::MODS_SINGLE_CONTENT_WIDTH,
+				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
 				Dynamic_Selector::META_FILTER => 'minus_100',
 				Dynamic_Selector::META_SUFFIX => '%',
 			],
@@ -599,12 +607,14 @@ class Generator {
 		$this->_subscribers['.archive.woocommerce .neve-main > .shop-container .nv-shop.col']     = [
 			Config::CSS_PROP_MAX_WIDTH => [
 				Dynamic_Selector::META_KEY    => Config::MODS_SHOP_ARCHIVE_CONTENT_WIDTH,
+				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
 				Dynamic_Selector::META_SUFFIX => '%',
 			],
 		];
 		$this->_subscribers['.archive.woocommerce .neve-main > .shop-container .nv-sidebar-wrap'] = [
 			Config::CSS_PROP_MAX_WIDTH => [
 				Dynamic_Selector::META_KEY    => Config::MODS_SHOP_ARCHIVE_CONTENT_WIDTH,
+				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
 				Dynamic_Selector::META_FILTER => 'minus_100',
 				Dynamic_Selector::META_SUFFIX => '%',
 			],
@@ -614,12 +624,14 @@ class Generator {
 		$this->_subscribers['.single-product .neve-main > .shop-container .nv-shop.col, .single-product .neve-main [class*="__inner-container"] > *:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.is-style-wide)'] = [
 			Config::CSS_PROP_MAX_WIDTH => [
 				Dynamic_Selector::META_KEY    => Config::MODS_SHOP_SINGLE_CONTENT_WIDTH,
+				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
 				Dynamic_Selector::META_SUFFIX => '%',
 			],
 		];
 		$this->_subscribers['.single-product .neve-main > .shop-container .nv-sidebar-wrap'] = [
 			Config::CSS_PROP_MAX_WIDTH => [
 				Dynamic_Selector::META_KEY    => Config::MODS_SHOP_SINGLE_CONTENT_WIDTH,
+				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
 				Dynamic_Selector::META_FILTER => 'minus_100',
 				Dynamic_Selector::META_SUFFIX => '%',
 			],
