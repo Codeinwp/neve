@@ -13,6 +13,7 @@ namespace HFG\Core\Components;
 
 use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Main;
+use Neve\Core\Styles\Dynamic_Selector;
 use WP_Customize_Manager;
 
 /**
@@ -106,11 +107,15 @@ class Copyright extends Abstract_Component {
 	 * @access  public
 	 */
 	public function add_style( array $css_array = array() ) {
-		$color = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::COLOR_ID );
-		if ( ! empty( $color ) ) {
-			$css_array[ $this->default_typography_selector ]        = [ 'color' => sanitize_hex_color( $color ) ];
-			$css_array[ $this->default_typography_selector . ' *' ] = [ 'color' => sanitize_hex_color( $color ) ];
-		}
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => $this->default_typography_selector . ', ' . $this->default_typography_selector . ' *',
+			Dynamic_Selector::KEY_RULES    => [
+				\Neve\Core\Settings\Config::CSS_PROP_COLOR => [
+					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::COLOR_ID,
+					Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::COLOR_ID ),
+				],
+			],
+		];
 
 		return parent::add_style( $css_array );
 	}

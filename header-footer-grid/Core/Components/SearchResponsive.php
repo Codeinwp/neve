@@ -13,6 +13,8 @@ namespace HFG\Core\Components;
 
 use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Main;
+use Neve\Core\Settings\Config;
+use Neve\Core\Styles\Dynamic_Selector;
 
 /**
  * Class SearchResponsive
@@ -170,18 +172,36 @@ class SearchResponsive extends Abstract_Component {
 		$color       = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::COLOR_ID );
 		$color_hover = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::HOVER_COLOR_ID );
 
-		if ( ! empty( $size ) ) {
-			$css_array[ $this->default_selector . ' .nv-search > svg' ]['width']  = $size . 'px';
-			$css_array[ $this->default_selector . ' .nv-search > svg' ]['height'] = $size . 'px';
-		}
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => $this->default_selector . ' .nv-search > svg',
+			Dynamic_Selector::KEY_RULES    => [
+				Config::CSS_PROP_WIDTH      => [
+					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::SIZE_ID,
+					Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::SIZE_ID ),
+				],
+				Config::CSS_PROP_HEIGHT     => [
+					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::SIZE_ID,
+					Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::SIZE_ID ),
+				],
+				Config::CSS_PROP_FILL_COLOR => [
+					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::COLOR_ID,
+					Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::COLOR_ID ),
+				],
+			],
+		];
 
-		if ( ! empty( $color ) ) {
-			$css_array[ $this->default_selector . ' .nv-search > svg' ]['fill'] = $color;
-		}
 
-		if ( ! empty( $color_hover ) ) {
-			$css_array[ $this->default_selector . ' .nv-search:hover > svg' ]['fill'] = $color_hover;
-		}
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => $this->default_selector . ' .nv-search:hover > svg',
+			Dynamic_Selector::KEY_RULES    => [
+				Config::CSS_PROP_FILL_COLOR => [
+					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::HOVER_COLOR_ID,
+					Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::HOVER_COLOR_ID ),
+				],
+			],
+		];
+
+
 
 		return parent::add_style( $css_array );
 	}

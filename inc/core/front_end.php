@@ -10,6 +10,9 @@
 
 namespace Neve\Core;
 
+use Neve\Core\Settings\Config;
+use Neve\Core\Settings\Mods;
+
 /**
  * Front end handler class.
  *
@@ -69,7 +72,6 @@ class Front_End {
 		add_filter( 'video_embed_html', array( $this, 'wrap_jetpack_oembeds' ), 10, 1 );
 		add_filter( 'themeisle_gutenberg_templates', array( $this, 'add_gutenberg_templates' ) );
 		$this->add_amp_support();
-
 		$nav_menus_to_register = apply_filters(
 			'neve_register_nav_menus',
 			array(
@@ -89,8 +91,8 @@ class Front_End {
 	 * Wrap embeds.
 	 *
 	 * @param string $markup embed markup.
-	 * @param string $url    embed url.
-	 * @param array  $attr   embed attributes [width/height].
+	 * @param string $url embed url.
+	 * @param array  $attr embed attributes [width/height].
 	 *
 	 * @return string
 	 */
@@ -1917,33 +1919,46 @@ class Front_End {
 		);
 
 		$color_controls = array(
-			'neve_button_color'     => array(
-				'default' => '#0366d6',
+			'neve-button-color'     => array(
+				'setting' => Config::MODS_BUTTON_PRIMARY_STYLE . '.background',
 				'label'   => __( 'Button Color', 'neve' ),
 			),
-			'neve_link_color'       => array(
-				'default' => '#0366d6',
+			'neve-link-color'       => array(
+				'setting' => Config::MODS_LINK_COLOR,
 				'label'   => __( 'Link Color', 'neve' ),
 			),
-			'neve_link_hover_color' => array(
-				'default' => '#0366d6',
+			'neve-link-hover-color' => array(
+				'setting' => Config::MODS_LINK_HOVER_COLOR,
 				'label'   => __( 'Link Hover Color', 'neve' ),
 			),
-			'neve_text_color'       => array(
-				'default' => '#404248',
+			'neve-text-color'       => array(
+				'setting' => Config::MODS_TEXT_COLOR,
 				'label'   => __( 'Text Color', 'neve' ),
 			),
+			'neve-btn-text'         => array(
+				'setting' => Config::MODS_BUTTON_PRIMARY_STYLE . '.text',
+				'label'   => __( 'Button text color', 'neve' ),
+			),
+			'neve-btn-text-hover'   => array(
+				'setting' => Config::MODS_BUTTON_PRIMARY_STYLE . '.textHover',
+				'label'   => __( 'Button Hover text color', 'neve' ),
+			),
+			'neve-btn-bg-hover'     => array(
+				'setting' => Config::MODS_BUTTON_PRIMARY_STYLE . '.backgroundHover',
+				'label'   => __( 'Button Hover Color', 'neve' ),
+			),
 		);
-
 		foreach ( $color_controls as $control_name => $control_data ) {
-			$color      = get_theme_mod( $control_name, $control_data['default'] );
+			$color = Mods::get( $control_data['setting'] );
+			if ( empty( $color ) ) {
+				continue;
+			}
 			$color_name = $control_data['label'];
-			$slug       = preg_replace( '~[^\pL\d]+~u', '-', strtolower( $control_name ) );
 			array_push(
 				$gutenberg_color_palette,
 				array(
 					'name'  => esc_html( $color_name ),
-					'slug'  => esc_html( $slug ),
+					'slug'  => esc_html( $control_name ),
 					'color' => sanitize_hex_color( $color ),
 				)
 			);

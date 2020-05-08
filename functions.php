@@ -8,14 +8,14 @@
  * @package Neve
  */
 
-define( 'NEVE_VERSION', '2.6.4' );
+define( 'NEVE_VERSION', '2.6.6' );
 define( 'NEVE_INC_DIR', trailingslashit( get_template_directory() ) . 'inc/' );
 define( 'NEVE_ASSETS_URL', trailingslashit( get_template_directory_uri() ) . 'assets/' );
 
 if ( ! defined( 'NEVE_DEBUG' ) ) {
 	define( 'NEVE_DEBUG', false );
 }
-
+define( 'NEVE_NEW_DYNAMIC_STYLE', true );
 /**
  * Themeisle SDK filter.
  *
@@ -40,10 +40,10 @@ add_filter( 'themeisle_onboarding_phprequired_text', 'neve_get_php_notice_text' 
  */
 function neve_get_php_notice_text() {
 	$message = sprintf(
-		/* translators: %s message to upgrade PHP to the latest version */
+	/* translators: %s message to upgrade PHP to the latest version */
 		__( "Hey, we've noticed that you're running an outdated version of PHP which is no longer supported. Make sure your site is fast and secure, by %s. Neve's minimal requirement is PHP 5.4.0.", 'neve' ),
 		sprintf(
-			/* translators: %s message to upgrade PHP to the latest version */
+		/* translators: %s message to upgrade PHP to the latest version */
 			'<a href="https://wordpress.org/support/upgrade-php/">%s</a>',
 			__( 'upgrading PHP to the latest version', 'neve' )
 		)
@@ -71,11 +71,11 @@ if ( version_compare( PHP_VERSION, '5.3.29' ) <= 0 ) {
 	return;
 }
 
-require_once get_template_directory() . '/start.php';
-
+require_once 'globals/migrations.php';
 require_once 'globals/utilities.php';
 require_once 'globals/hooks.php';
 require_once 'globals/sanitize-functions.php';
-require_once 'globals/migrations.php';
+require_once get_template_directory() . '/start.php';
+
 
 require_once get_template_directory() . '/header-footer-grid/loader.php';
