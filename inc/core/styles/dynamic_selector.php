@@ -25,6 +25,7 @@ class Dynamic_Selector {
 	const META_KEY           = 'key';
 	const META_IMPORTANT     = 'important';
 	const META_DEFAULT       = 'default';
+	const META_DEVICE_ONLY   = 'device_only';
 	const META_FILTER        = 'filter';
 
 	const KEY_SELECTOR = 'selectors';
@@ -141,7 +142,7 @@ class Dynamic_Selector {
 					function ( $value ) {
 						return '#editor .editor-styles-wrapper ' . $value;
 					},
-					$expanded_selectors 
+					$expanded_selectors
 				);
 				$expanded_selectors = implode( ',', $expanded_selectors );
 			}
@@ -162,7 +163,8 @@ class Dynamic_Selector {
 	 * @return bool|mixed
 	 */
 	public function get_value( $meta ) {
-		if ( ( ! isset( $meta[ self::META_IS_RESPONSIVE ] ) || ! $meta[ self::META_IS_RESPONSIVE ] ) && $this->get_device() !== self::MOBILE ) {
+		// By default the non-responsive settings are shown only on mobile media query. By using the META_DEVICE_ONLY prop we can move this to differen devices.
+		if ( ( ! isset( $meta[ self::META_IS_RESPONSIVE ] ) || ! $meta[ self::META_IS_RESPONSIVE ] ) && $this->get_device() !== ( isset( $meta[ self::META_DEVICE_ONLY ] ) ? $meta[ self::META_DEVICE_ONLY ] : self::MOBILE ) ) {
 			return false;
 		}
 		$key     = is_array( $meta ) ? $meta[ self::META_KEY ] : $meta;
