@@ -86,18 +86,41 @@ class Css_Prop {
 					$all_value = Mods::get( $meta['key'], isset( $meta[ Dynamic_Selector::META_DEFAULT ] ) ? $meta[ Dynamic_Selector::META_DEFAULT ] : null );
 					$suffix    = isset( $all_value[ $device . '-unit' ] ) ? $all_value[ $device . '-unit' ] : 'px';
 				}
+				$non_empty_values = array_filter( $value, 'strlen' );
+				if ( count( $non_empty_values ) === 4 ) {
+					return sprintf( "%s:%s%s %s%s %s%s %s%s;",
+						$css_prop,
+						(int) $value['top'],
+						$suffix,
+						(int) $value['right'],
+						$suffix,
+						(int) $value['bottom'],
+						$suffix,
+						(int) $value['left'],
+						$suffix
+					);
+				}
+				$rule     = '';
+				$patterns = [
+					Config::CSS_PROP_MARGIN        => 'margin-%s',
+					Config::CSS_PROP_PADDING       => 'padding-%s',
+					Config::CSS_PROP_BORDER_WIDTH  => 'border-%s-width',
+					Config::CSS_PROP_BORDER_RADIUS => [
+						'top'    => 'border-top-left-radius',
+						'right'  => 'border-top-right-radius',
+						'bottom' => 'border-bottom-right-radius',
+						'left'   => 'border-bottom-left-radius',
+					],
+				];
+				foreach ( $non_empty_values as $position => $position_value ) {
+					$rule .= sprintf( "%s:%s%s;",
+						sprintf( ( is_array( $patterns[ $css_prop ] ) ? $patterns[ $css_prop ][ $position ] : $patterns[ $css_prop ] ), $position ),
+						(int) $position_value,
+						$suffix
+					);
+				}
 
-				return sprintf( "%s:%s%s %s%s %s%s %s%s;",
-					$css_prop,
-					(int) $value['top'],
-					$suffix,
-					(int) $value['right'],
-					$suffix,
-					(int) $value['bottom'],
-					$suffix,
-					(int) $value['left'],
-					$suffix
-				);
+				return $rule;
 				break;
 			//Line height uses an awkward format saved, and we can't define it as responsive because we would need to use the suffix part.
 			case Config::CSS_PROP_LINE_HEIGHT:
