@@ -45,7 +45,8 @@ class Woocommerce {
 			.woocommerce button#place_order,
 			.woocommerce .return-to-shop > .button,
 			ul[id^="nv-primary-navigation"] .nv-nav-cart a.button.checkout.wc-forward,
-			.button.woocommerce-form-login__submit',
+			.button.woocommerce-form-login__submit,
+			.woocommerce-checkout #neve-checkout-coupon .woocommerce-form-coupon .form-row-last button.button',
 		'hover'   => '
 			,.woocommerce a.button:hover,
 			.woocommerce .button:not(.nv-sidebar-toggle):not(.nv-close-cart-sidebar):hover,
@@ -65,7 +66,8 @@ class Woocommerce {
 			.woocommerce button#place_order:hover,
 			.woocommerce .return-to-shop > .button:hover,
 			ul[id^="nv-primary-navigation"] .nv-nav-cart a.button.checkout.wc-forward:hover,
-			.button.woocommerce-form-login__submit:hover',
+			.button.woocommerce-form-login__submit:hover,
+			.woocommerce-checkout #neve-checkout-coupon .woocommerce-form-coupon .form-row-last button.button:hover',
 	);
 
 	/**
@@ -384,7 +386,7 @@ class Woocommerce {
 				'add_primary_btns_normal',
 			),
 			10,
-			1 
+			1
 		);
 		add_filter(
 			'neve_selectors_' . Config::CSS_SELECTOR_BTN_PRIMARY_HOVER,
@@ -393,7 +395,7 @@ class Woocommerce {
 				'add_primary_btns_hover',
 			),
 			10,
-			1 
+			1
 		);
 		add_filter(
 			'neve_selectors_' . Config::CSS_SELECTOR_BTN_PRIMARY_PADDING,
@@ -402,7 +404,7 @@ class Woocommerce {
 				'add_primary_btns_padding',
 			),
 			10,
-			1 
+			1
 		);
 
 
@@ -413,7 +415,7 @@ class Woocommerce {
 				'add_secondary_btns_normal',
 			),
 			10,
-			1 
+			1
 		);
 		add_filter(
 			'neve_selectors_' . Config::CSS_SELECTOR_BTN_SECONDARY_HOVER,
@@ -422,7 +424,7 @@ class Woocommerce {
 				'add_secondary_btns_hover',
 			),
 			10,
-			1 
+			1
 		);
 		add_filter(
 			'neve_selectors_' . Config::CSS_SELECTOR_BTN_SECONDARY_PADDING,
@@ -431,7 +433,7 @@ class Woocommerce {
 				'add_secondary_btns_padding',
 			),
 			10,
-			1 
+			1
 		);
 
 		add_filter( 'neve_body_font_family_selectors', array( $this, 'add_font_families' ) );
