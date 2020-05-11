@@ -24,9 +24,9 @@ use Neve\Core\Styles\Dynamic_Selector;
 class Button extends Abstract_Component {
 
 	const COMPONENT_ID = 'button_base';
-	const LINK_ID = 'link_setting';
-	const TEXT_ID = 'text_setting';
-	const STYLE_ID = 'style_setting';
+	const LINK_ID      = 'link_setting';
+	const TEXT_ID      = 'text_setting';
+	const STYLE_ID     = 'style_setting';
 
 	/**
 	 * Default spacing value
@@ -166,15 +166,13 @@ class Button extends Abstract_Component {
 				Config::CSS_PROP_COLOR            => $id . '.text',
 				Config::CSS_PROP_BORDER_RADIUS    => [
 					Dynamic_Selector::META_KEY     => $id . '.borderRadius',
-					Dynamic_Selector::META_DEFAULT => 3
+					Dynamic_Selector::META_DEFAULT => '3',
 				],
 				Config::CSS_PROP_CUSTOM_BTN_TYPE  => [
-					Dynamic_Selector::META_KEY     => $id . '.type',
-					Dynamic_Selector::META_DEFAULT => 'fill',
+					Dynamic_Selector::META_KEY => $id . '.type',
 				],
 				Config::CSS_PROP_BORDER_WIDTH     => [
-					Dynamic_Selector::META_KEY     => $id . '.borderWidth',
-					Dynamic_Selector::META_DEFAULT => 1
+					Dynamic_Selector::META_KEY => $id . '.borderWidth',
 				],
 			],
 		];
