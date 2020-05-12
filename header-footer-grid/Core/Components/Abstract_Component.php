@@ -31,11 +31,11 @@ use WP_Customize_Manager;
 abstract class Abstract_Component implements Component {
 	use Core;
 
-	const ALIGNMENT_ID   = 'component_align';
-	const PADDING_ID     = 'component_padding';
-	const MARGIN_ID      = 'component_margin';
+	const ALIGNMENT_ID = 'component_align';
+	const PADDING_ID = 'component_padding';
+	const MARGIN_ID = 'component_margin';
 	const FONT_FAMILY_ID = 'component_font_family';
-	const TYPEFACE_ID    = 'component_typeface';
+	const TYPEFACE_ID = 'component_typeface';
 	/**
 	 * Current id of the component.
 	 *
@@ -638,19 +638,19 @@ abstract class Abstract_Component implements Component {
 						Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::FONT_FAMILY_ID ),
 					],
 					Config::CSS_PROP_FONT_SIZE      => [
-						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::TYPEFACE_ID . '.fontSize',
+						Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::TYPEFACE_ID . '.fontSize',
 						Dynamic_Selector::META_IS_RESPONSIVE => true,
-						Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::TYPEFACE_ID, 'fontSize' ),
+						Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::TYPEFACE_ID, 'fontSize' ),
 					],
 					Config::CSS_PROP_LINE_HEIGHT    => [
-						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::TYPEFACE_ID . '.lineHeight',
+						Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::TYPEFACE_ID . '.lineHeight',
 						Dynamic_Selector::META_IS_RESPONSIVE => true,
-						Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::TYPEFACE_ID, 'lineHeight' ),
+						Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::TYPEFACE_ID, 'lineHeight' ),
 					],
 					Config::CSS_PROP_LETTER_SPACING => [
-						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::TYPEFACE_ID . '.letterSpacing',
+						Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::TYPEFACE_ID . '.letterSpacing',
 						Dynamic_Selector::META_IS_RESPONSIVE => true,
-						Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::TYPEFACE_ID, 'letterSpacing' ),
+						Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::TYPEFACE_ID, 'letterSpacing' ),
 					],
 					Config::CSS_PROP_FONT_WEIGHT    => [
 						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::TYPEFACE_ID . '.fontWeight',
@@ -668,24 +668,48 @@ abstract class Abstract_Component implements Component {
 					Dynamic_Selector::KEY_RULES    =>
 						[
 							Config::CSS_PROP_WIDTH  => [
-								Dynamic_Selector::META_KEY => $this->get_id() . '_' . self::TYPEFACE_ID . '.fontSize',
+								Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::TYPEFACE_ID . '.fontSize',
 								Dynamic_Selector::META_IS_RESPONSIVE => true,
-								Dynamic_Selector::META_SUFFIX => 'responsive_suffix',
-								Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::TYPEFACE_ID, 'fontSize' ),
+								Dynamic_Selector::META_SUFFIX        => 'responsive_suffix',
+								Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::TYPEFACE_ID, 'fontSize' ),
 							],
 							Config::CSS_PROP_HEIGHT => [
-								Dynamic_Selector::META_KEY => $this->get_id() . '_' . self::TYPEFACE_ID . '.fontSize',
+								Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::TYPEFACE_ID . '.fontSize',
 								Dynamic_Selector::META_IS_RESPONSIVE => true,
-								Dynamic_Selector::META_SUFFIX => 'responsive_suffix',
-								Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::TYPEFACE_ID, 'fontSize' ),
+								Dynamic_Selector::META_SUFFIX        => 'responsive_suffix',
+								Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::TYPEFACE_ID, 'fontSize' ),
 							],
 						],
 				];
 		}
+
+		$selector = '.builder-item--' . $this->get_id();
+
 		if ( $this->default_selector !== null ) {
-			$selector = $this->default_selector;
-		} else {
-			$selector = '.builder-item--' . $this->get_id();
+			$css_array[] = [
+				Dynamic_Selector::KEY_SELECTOR => $this->default_selector,
+				Dynamic_Selector::KEY_RULES    => [
+					Config::CSS_PROP_PADDING => [
+						Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::PADDING_ID,
+						Dynamic_Selector::META_IS_RESPONSIVE => true,
+						Dynamic_Selector::META_SUFFIX        => 'responsive_unit',
+						Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::PADDING_ID ),
+					]
+				],
+			];
+			$css_array[] = [
+				Dynamic_Selector::KEY_SELECTOR => $selector,
+				Dynamic_Selector::KEY_RULES    => [
+					Config::CSS_PROP_MARGIN => [
+						Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::MARGIN_ID,
+						Dynamic_Selector::META_IS_RESPONSIVE => true,
+						Dynamic_Selector::META_SUFFIX        => 'responsive_unit',
+						Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::MARGIN_ID ),
+					]
+				],
+			];
+
+			return $css_array;
 		}
 
 		$css_array[] = [
@@ -705,6 +729,7 @@ abstract class Abstract_Component implements Component {
 				],
 			],
 		];
+
 
 		return $css_array;
 	}
