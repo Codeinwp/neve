@@ -842,7 +842,7 @@ abstract class Abstract_Builder implements Builder {
 						Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
 							$background = $value;
 							$style      = '';
-							if ( $background['useFeatured'] === true && is_singular() ) {
+							if ( isset( $background['useFeatured'] ) && $background['useFeatured'] === true && is_singular() ) {
 								$featured_image = get_the_post_thumbnail_url();
 								if ( ! empty( $featured_image ) ) {
 									$style .= sprintf( 'background-image: url("%s");', esc_url( $featured_image ) );
