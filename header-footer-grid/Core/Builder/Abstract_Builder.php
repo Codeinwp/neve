@@ -553,7 +553,7 @@ abstract class Abstract_Builder implements Builder {
 					$wp_customize,
 					$this->section . '_quick_links',
 					array(
-						'priority' => - 100,
+						'priority' => -100,
 						'panel'    => $this->panel,
 						'type'     => 'hfg_instructions',
 						'options'  => $this->instructions_array,
@@ -858,7 +858,7 @@ abstract class Abstract_Builder implements Builder {
 								$style .= 'background-position:' . round( $background['focusPoint']['x'] * 100 ) . '% ' . round( $background['focusPoint']['y'] * 100 ) . '%;';
 							}
 
-							if ( $background['fixed'] === true ) {
+							if ( isset( $background['fixed'] ) && $background['fixed'] === true ) {
 								$style .= 'background-attachment: fixed;';
 							}
 							$style .= 'background-color:transparent;';
@@ -931,7 +931,7 @@ abstract class Abstract_Builder implements Builder {
 					return 0;
 				}
 
-				return $item1['x'] < $item2['x'] ? - 1 : 1;
+				return $item1['x'] < $item2['x'] ? -1 : 1;
 			}
 		);
 
@@ -990,15 +990,15 @@ abstract class Abstract_Builder implements Builder {
 
 			// If there is a gap between components, build new group.
 			if ( $last_item !== null && ! $is_near_prev ) {
-				$render_index ++;
+				$render_index++;
 			}
 			// If there are two neighbours and none of them have auto_width, build new group.
 			if ( $is_near_prev && ! $last_item['is_auto_width'] && ! $is_auto_width ) {
-				$render_index ++;
+				$render_index++;
 			}
 			// If there are neighbours prev and next, always group with the next on.
 			if ( $is_near_prev && $is_near_next && ! $last_item['is_auto_width'] && $is_auto_width && ! isset( $render_buffer[ $render_index ] ) ) {
-				$render_index ++;
+				$render_index++;
 			}
 
 			// Use alignment only of non-auto width element.

@@ -291,7 +291,7 @@ class Main {
 			],
 			[
 				'text' => __( 'Header Options', 'neve' ),
-				'link' => add_query_arg( [ 'autofocus[panel]' => 'neve_header' ], admin_url( 'customize.php' ) ),
+				'link' => add_query_arg( [ 'autofocus[panel]' => 'hfg_header' ], admin_url( 'customize.php' ) ),
 			],
 			[
 				'text' => __( 'Blog Layouts', 'neve' ),
@@ -299,7 +299,7 @@ class Main {
 			],
 			[
 				'text' => __( 'Footer Options', 'neve' ),
-				'link' => add_query_arg( [ 'autofocus[panel]' => 'neve_footer' ], admin_url( 'customize.php' ) ),
+				'link' => add_query_arg( [ 'autofocus[panel]' => 'hfg_footer' ], admin_url( 'customize.php' ) ),
 			],
 			[
 				'text' => __( 'Content / Sidebar', 'neve' ),

@@ -40,5 +40,11 @@ export default {
 			type: 'UPDATE_TOAST_MESSAGE',
 			payload: message
 		};
+	},
+	setLogger(loggerStatus) {
+		return {
+			type: 'SET_LOGGER_STATUS',
+			payload: loggerStatus
+		};
 	}
 };
