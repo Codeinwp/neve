@@ -4,7 +4,6 @@
  *
  * @package Neve
  */
-
 $container_class = apply_filters( 'neve_container_class_filter', 'container', 'blog-archive' );
 
 get_header();

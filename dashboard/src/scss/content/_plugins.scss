@@ -1,0 +1,73 @@
+.card.plugin {
+  padding: 0;
+  max-width: 100%;
+
+  .card-header {
+    img {
+      width: 100%;
+      max-width: 100%;
+      border-bottom: 1px solid $grey;
+    }
+  }
+
+  .card-body {
+    padding: 20px;
+
+    .card-title {
+      margin: 0 0 20px;
+      line-height: 150%;
+    }
+  }
+
+  .card-footer {
+    border-top: 1px solid $grey;
+    padding: 20px 15px 20px 20px;
+    display: flex;
+    align-items: center;
+
+    .plugin-data {
+      font-size: 14px;
+      color: #616161;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .version {
+    margin-right: 5px;
+  }
+
+  .author {
+    margin-left: 5px;
+    max-width: 200px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .plugin-action {
+    margin-left: auto;
+    svg {
+      margin-right: 5px;
+      animation-name: spin;
+      animation-duration: 2000ms;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+    }
+  }
+}
+
+@mixin plugins--desktop() {
+  .plugin.card {
+    flex-grow: 1;
+    height: 100%;
+    max-width: calc(50% - 15px);
+
+    &:nth-child(2n-1) {
+      margin-right: 30px;
+    }
+  }
+  .tab-content.plugins {
+    flex-wrap: wrap;
+  }
+}

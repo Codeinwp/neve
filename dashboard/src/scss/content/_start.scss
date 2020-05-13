@@ -1,0 +1,37 @@
+.start {
+  .customizer-quick-links {
+    .columns {
+      display: flex;
+      margin-top: 30px;
+    }
+
+    .col:not(:last-child) {
+      margin-right: 50px;
+    }
+
+    a {
+      font-size: 14px;
+      font-weight: 600;
+      color: $blue;
+      text-decoration: none;
+
+      &:hover {
+        opacity: .75;
+      }
+    }
+
+    hr {
+      margin: 15px 0;
+      border-top-color: $grey;
+	  border-bottom: 0;
+      border-width: 1px;
+      height: 0;
+    }
+  }
+}
+
+@mixin start--laptop() {
+}
+
+@mixin start--desktop() {
+}

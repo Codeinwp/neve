@@ -14,6 +14,8 @@ namespace HFG\Core\Components;
 use HFG\Core\Settings;
 use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Main;
+use Neve\Core\Settings\Config;
+use Neve\Core\Styles\Dynamic_Selector;
 use WP_Customize_Manager;
 
 /**
@@ -203,35 +205,125 @@ class NavFooter extends Abstract_Component {
 	 * @return array
 	 */
 	public function add_style( array $css_array = array() ) {
-		$color = get_theme_mod( $this->id . '_color' );
-		if ( ! empty( $color ) ) {
-			$css_array['.nav-menu-footer #footer-menu > li > a'] = array( 'color' => sanitize_hex_color( $color ) );
-		}
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => '.nav-menu-footer #footer-menu > li > a',
+			Dynamic_Selector::KEY_RULES    => [
+				Config::CSS_PROP_COLOR => [
+					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::COLOR_ID,
+					Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::COLOR_ID ),
+				],
+			],
+		];
 
-		$hover_color = get_theme_mod( $this->id . '_hover_color' );
-		if ( ! empty( $hover_color ) ) {
-			$css_array['.nav-menu-footer:not(.style-full-height) #footer-menu > li:hover > a'] = array( 'color' => sanitize_hex_color( $hover_color ) );
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => '#footer-menu > li > a:after',
+			Dynamic_Selector::KEY_RULES    => [
+				Config::CSS_PROP_BACKGROUND_COLOR => [
+					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::HOVER_COLOR_ID,
+					Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::HOVER_COLOR_ID ),
+				],
+			],
+		];
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => '.nav-menu-footer:not(.style-full-height) #footer-menu > li:hover > a',
+			Dynamic_Selector::KEY_RULES    => [
+				Config::CSS_PROP_COLOR => [
+					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::HOVER_COLOR_ID,
+					Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::HOVER_COLOR_ID ),
+				],
+			],
+		];
 
-			$css_array['#footer-menu > li > a:after'] = array( 'background-color' => sanitize_hex_color( $hover_color ) );
-		}
 
-		$item_spacing = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::SPACING );
-		if ( ! empty( $item_spacing ) ) {
-			$css_array[ '.hfg-item-right .builder-item--' . $this->get_id() . ' .footer-menu > li:not(:first-child)' ] = [ 'margin-left' => absint( $item_spacing ) . 'px' ];
-			$css_array[ '.hfg-item-center .builder-item--' . $this->get_id() . ' .footer-menu li:not(:last-child), .hfg-item-left .builder-item--' . $this->get_id() . ' .footer-menu > li:not(:last-child)' ] = [ 'margin-right' => absint( $item_spacing ) . 'px' ];
-			$css_array[ '.builder-item--' . $this->get_id() . ' .style-full-height .footer-menu > li > a:after' ]       = [
-				'left'  => - $item_spacing / 2 . 'px !important',
-				'right' => - $item_spacing / 2 . 'px !important',
-			];
-			$css_array[ '.builder-item--' . $this->get_id() . ' .style-full-height .footer-menu > li:hover > a:after' ] = [
-				'width' => 'calc(100% + ' . $item_spacing . 'px) !important;',
-			];
-		}
+		$is_rtl = is_rtl();
+		$left   = $is_rtl ? 'right' : 'left';
+		$right  = $is_rtl ? 'left' : 'right';
+		$first  = $is_rtl ? 'last' : 'first';
+		$last   = $is_rtl ? 'first' : 'last';
 
-		$item_height = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::ITEM_HEIGHT );
-		if ( ! empty( $item_height ) ) {
-			$css_array[ '.builder-item--' . $this->get_id() . ' .footer-menu > li > a' ] = [ 'height' => absint( $item_height ) . 'px' ];
-		}
+
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => '.hfg-item-' . $right . ' .builder-item--' . $this->get_id() . ' #secondary-menu > li:not(:' . $first . '-of-type)',
+			Dynamic_Selector::KEY_RULES    => [
+				Config::CSS_PROP_MARGIN_LEFT => [
+					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::SPACING,
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
+						if ( $device !== Dynamic_Selector::DESKTOP ) {
+							return '';
+						}
+
+						return sprintf( '%s:%s;', $css_prop, absint( $value ) . 'px' );
+					},
+					Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::SPACING ),
+				],
+			],
+		];
+
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => '.hfg-item-center .builder-item--' . $this->get_id() . ' #secondary-menu li:not(:' . $last . '-of-type), .hfg-item-' . $left . ' .builder-item--' . $this->get_id() . ' #secondary-menu > li:not(:' . $last . '-of-type)',
+			Dynamic_Selector::KEY_RULES    => [
+				Config::CSS_PROP_MARGIN_RIGHT => [
+					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::SPACING,
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
+						if ( $device !== Dynamic_Selector::DESKTOP ) {
+							return '';
+						}
+
+						return sprintf( '%s:%s;', $css_prop, absint( $value ) . 'px' );
+					},
+					Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::SPACING ),
+				],
+			],
+		];
+
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .style-full-height .footer-menu > li > a:after',
+			Dynamic_Selector::KEY_RULES    => [
+				'position' => [
+					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::SPACING,
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
+						if ( $device !== Dynamic_Selector::DESKTOP ) {
+							return '';
+						}
+						$value = absint( $value );
+
+						return sprintf( 'left:%s;right:%s', - $value / 2 . 'px', - $value / 2 . 'px' );
+					},
+					Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::SPACING ),
+				],
+			],
+		];
+
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .style-full-height .footer-menu > li:hover > a:after',
+			Dynamic_Selector::KEY_RULES    => [
+				Config::CSS_PROP_WIDTH => [
+					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::SPACING,
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
+						if ( $device !== Dynamic_Selector::DESKTOP ) {
+							return '';
+						}
+
+						return sprintf( 'width: calc(100%% + %s)!important;', absint( $value ) . 'px' );
+					},
+					Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::SPACING ),
+				],
+			],
+		];
+
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .footer-menu > li > a',
+			Dynamic_Selector::KEY_RULES    => [
+				Config::CSS_PROP_HEIGHT => [
+					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::ITEM_HEIGHT,
+					Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::ITEM_HEIGHT ),
+				],
+			],
+		];
 
 		return parent::add_style( $css_array );
 	}

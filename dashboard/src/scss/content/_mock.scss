@@ -1,0 +1,159 @@
+.mock-dash {
+  * {
+	pointer-events: none;
+  }
+  .notification.placeholder {
+	height: 65px;
+	background-color: $blue;
+  }
+  header {
+	.heading {
+	  width: 300px;
+	  height: 35px;
+	}
+
+	.version {
+	  background-color: $blue;
+	  height: 15px;
+	}
+
+	.logo {
+	  background-color: $blue;
+	  width: 60px;
+	  height: 60px;
+	}
+
+	li a {
+	  width: 160px;
+	  height: 20px;
+	  margin-bottom: 2px;
+	  display: block;
+	}
+  }
+
+  .card {
+	padding-bottom: 12px;
+
+	.icon {
+	  width: 32px;
+	  height: 32px;
+	  background-color: $blue;
+	}
+
+	.title {
+	  height: 20px;
+	  width: 300px;
+	}
+
+	.card-description {
+	  height: 15px;
+	  width: 100%;
+	  margin: 0 0 20px;
+	}
+
+	.card-content {
+	  margin: 15px 0 15px;
+	}
+
+	button {
+	  background-color: $blue;
+	  margin-top: 15px;
+	  width: 126px;
+	  height: 28px;
+	}
+
+	.link {
+	  height: 19px;
+	  display: block;
+	  width: 130px;
+	  background-color: $blue;
+	}
+  }
+
+  .sidebar {
+	h4 {
+	  width: 200px;
+	  height: 20px;
+	  margin-bottom: 30px;
+	}
+
+	.link {
+	  margin-top: 30px;
+	}
+  }
+
+
+  .loading {
+	border-radius: 3px;
+	background: #444;
+	animation: 1.5s loading-placeholder ease-in-out infinite;
+  }
+}
+
+@mixin mock--laptop() {
+  .mock-dash {
+	header {
+	  li a {
+		height: 25px;
+		width: 100px;
+	  }
+	}
+  }
+}
+
+@mixin mock--desktop() {
+  .mock-dash {
+	header {
+	  .heading {
+		height: 50px;
+		margin-top: 10px;
+	  }
+
+	  li a {
+		height: 25px;
+		width: 110px;
+	  }
+	}
+	.card {
+	  .title {
+		width: 200px;
+	  }
+	  .link {
+		width: 90px;
+	  }
+	}
+	.sidebar {
+	  .link {
+		margin-top: 35px;
+	  }
+	}
+  }
+}
+
+@keyframes loading-placeholder {
+  0% {
+	opacity: .1;
+  }
+
+  50% {
+	opacity: .2;
+  }
+
+  100% {
+	opacity: .1;
+  }
+}
+
+@keyframes loading-placeholder-high-opacity {
+  0% {
+	opacity: .7;
+  }
+
+  50% {
+	opacity: .9;
+  }
+
+  100% {
+	opacity: .7;
+  }
+}

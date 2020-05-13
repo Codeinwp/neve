@@ -11,6 +11,7 @@ namespace Neve\Views\Inline;
 /**
  * Class Base_Inline
  *
+ * @deprecated Functionality replaced with the subscriber mechanism, we keep it only for compatibility with the pro version.
  * @package Neve\Views\Inline
  */
 abstract class Base_Inline {
@@ -29,6 +30,7 @@ abstract class Base_Inline {
 	 * Base_Inline constructor.
 	 */
 	final public function __construct() {
+
 		$this->init();
 	}
 

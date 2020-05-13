@@ -12,11 +12,14 @@
 namespace HFG\Core\Components;
 
 use HFG\Core\Builder\Abstract_Builder;
+use HFG\Core\Css_Generator;
 use HFG\Core\Interfaces\Component;
 use HFG\Core\Settings;
 use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Main;
 use HFG\Traits\Core;
+use Neve\Core\Settings\Config;
+use Neve\Core\Styles\Dynamic_Selector;
 use Neve\Views\Font_Manager;
 use WP_Customize_Manager;
 
@@ -328,7 +331,13 @@ abstract class Abstract_Component implements Component {
 		if ( ! is_customize_preview() ) {
 			return;
 		}
-		$style = $this->css_array_to_css( $this->add_style() );
+		$css_array = [];
+
+		$css_array = $this->add_style( $css_array );
+		$generator = new Css_Generator();
+		$generator->set( $css_array );
+		$style = $generator->generate();
+
 		echo '<style type="text/css" id="' . esc_attr( $this->get_id() ) . '-style">' . $style . '</style>';  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		self::$should_show_css = false;
 	}
@@ -611,66 +620,6 @@ abstract class Abstract_Component implements Component {
 	}
 
 	/**
-	 * Write position styles and filter values.
-	 *
-	 * @param string $target CSS target property ( margin | padding ).
-	 * @param string $top Top value.
-	 * @param string $right Right value.
-	 * @param string $bottom Bottom value.
-	 * @param string $left Left value.
-	 * @param string $unit Unit to use ( px | em | % ).
-	 *
-	 * @return array
-	 * @since   1.0.1
-	 * @access  protected
-	 */
-	protected function css_position_filter( $target, $top = '', $right = '', $bottom = '', $left = '', $unit = 'px' ) {
-		if ( empty( $target ) && ! in_array( $target, array( 'margin', 'padding' ), true ) ) {
-			return array();
-		}
-
-		$result = array();
-		$params = compact( 'top', 'right', 'bottom', 'left' );
-		foreach ( $params as $pos => $value ) {
-			if ( $value !== '' ) {
-				$result[ $target . '-' . $pos ] = $value . $unit;
-			}
-		}
-
-		return $result;
-	}
-
-	/**
-	 * Method to reuse loop for generating position css.
-	 *
-	 * @param array  $css_array The css array.
-	 * @param array  $position_values The position values array.
-	 * @param string $selector The item selector.
-	 * @param string $type The type to generate ( margin | padding ).
-	 *
-	 * @return mixed
-	 * @since   1.0.1
-	 * @access  protected
-	 */
-	protected function generate_position_css( $css_array, $position_values, $selector, $type = 'margin' ) {
-		foreach ( $this->media_selectors as $device => $media_selector ) {
-			if ( isset( $position_values[ $device ] ) ) {
-				$position_filter = $this->css_position_filter( $type, $position_values[ $device ]['top'], $position_values[ $device ]['right'], $position_values[ $device ]['bottom'], $position_values[ $device ]['left'], $position_values[ $device . '-unit' ] );
-				if ( empty( $position_filter ) ) {
-					continue;
-				}
-				if ( ! isset( $css_array[ $media_selector ][ $selector ] ) || empty( $css_array[ $media_selector ][ $selector ] ) ) {
-					$css_array[ $media_selector ][ $selector ] = $position_filter;
-					continue;
-				}
-				$css_array[ $media_selector ][ $selector ] = array_merge( $css_array[ $media_selector ][ $selector ], $position_filter );
-			}
-		}
-
-		return $css_array;
-	}
-
-	/**
 	 * Method to add Component css styles.
 	 *
 	 * @param array $css_array An array containing css rules.
@@ -680,36 +629,107 @@ abstract class Abstract_Component implements Component {
 	 * @access  public
 	 */
 	public function add_style( array $css_array = array() ) {
-		$layout_padding = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::PADDING_ID, null );
-		$font_family    = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::FONT_FAMILY_ID );
-		$typeface       = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::TYPEFACE_ID );
-		if ( $font_family ) {
-			$css_array[ $this->default_typography_selector ]['font-family'] = $font_family;
+		if ( $this->has_font_family_control || $this->has_typeface_control ) {
+			$css_array[] = [
+				Dynamic_Selector::KEY_SELECTOR => $this->default_typography_selector,
+				Dynamic_Selector::KEY_RULES    => [
+					Config::CSS_PROP_FONT_FAMILY    => [
+						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::FONT_FAMILY_ID,
+						Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::FONT_FAMILY_ID ),
+					],
+					Config::CSS_PROP_FONT_SIZE      => [
+						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::TYPEFACE_ID . '.fontSize',
+						Dynamic_Selector::META_IS_RESPONSIVE => true,
+						Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::TYPEFACE_ID, 'fontSize' ),
+					],
+					Config::CSS_PROP_LINE_HEIGHT    => [
+						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::TYPEFACE_ID . '.lineHeight',
+						Dynamic_Selector::META_IS_RESPONSIVE => true,
+						Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::TYPEFACE_ID, 'lineHeight' ),
+					],
+					Config::CSS_PROP_LETTER_SPACING => [
+						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::TYPEFACE_ID . '.letterSpacing',
+						Dynamic_Selector::META_IS_RESPONSIVE => true,
+						Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::TYPEFACE_ID, 'letterSpacing' ),
+					],
+					Config::CSS_PROP_FONT_WEIGHT    => [
+						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::TYPEFACE_ID . '.fontWeight',
+						Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::TYPEFACE_ID, 'fontWeight' ),
+					],
+					Config::CSS_PROP_TEXT_TRANSFORM => [
+						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::TYPEFACE_ID . '.textTransform',
+						Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::TYPEFACE_ID, 'textTransform' ),
+					],
+				],
+			];
+			$css_array[] =
+				[
+					Dynamic_Selector::KEY_SELECTOR => $this->default_typography_selector . ' svg',
+					Dynamic_Selector::KEY_RULES    =>
+						[
+							Config::CSS_PROP_WIDTH  => [
+								Dynamic_Selector::META_KEY => $this->get_id() . '_' . self::TYPEFACE_ID . '.fontSize',
+								Dynamic_Selector::META_IS_RESPONSIVE => true,
+								Dynamic_Selector::META_SUFFIX => 'responsive_suffix',
+								Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::TYPEFACE_ID, 'fontSize' ),
+							],
+							Config::CSS_PROP_HEIGHT => [
+								Dynamic_Selector::META_KEY => $this->get_id() . '_' . self::TYPEFACE_ID . '.fontSize',
+								Dynamic_Selector::META_IS_RESPONSIVE => true,
+								Dynamic_Selector::META_SUFFIX => 'responsive_suffix',
+								Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::TYPEFACE_ID, 'fontSize' ),
+							],
+						],
+				];
 		}
-		if ( $typeface ) {
-			foreach ( $this->media_selectors as $media => $media_query ) {
-				$lh_suffix = isset( $typeface['lineHeight']['suffix'] ) ? $typeface['lineHeight']['suffix'][ $media ] : '';
-				$css_array[ $media_query ][ $this->default_typography_selector ]['font-size']       = $typeface['fontSize'][ $media ] . $typeface['fontSize']['suffix'][ $media ];
-				$css_array[ $media_query ][ $this->default_typography_selector . ' svg' ]['height'] = $typeface['fontSize'][ $media ] . $typeface['fontSize']['suffix'][ $media ];
-				$css_array[ $media_query ][ $this->default_typography_selector . ' svg' ]['width']  = $typeface['fontSize'][ $media ] . $typeface['fontSize']['suffix'][ $media ];
-				$css_array[ $media_query ][ $this->default_typography_selector ]['line-height']     = $typeface['lineHeight'][ $media ] . $lh_suffix;
-				$css_array[ $media_query ][ $this->default_typography_selector ]['letter-spacing']  = $typeface['letterSpacing'][ $media ] . 'px';
-			}
-			$css_array[ $this->default_typography_selector ]['font-weight']    = $typeface['fontWeight'];
-			$css_array[ $this->default_typography_selector ]['text-transform'] = $typeface['textTransform'];
-		}
+
+		$selector = '.builder-item--' . $this->get_id();
 
 		if ( $this->default_selector !== null ) {
-			$selector = $this->default_selector;
-		} else {
-			$selector = '.builder-item--' . $this->get_id();
+			$css_array[] = [
+				Dynamic_Selector::KEY_SELECTOR => $this->default_selector,
+				Dynamic_Selector::KEY_RULES    => [
+					Config::CSS_PROP_PADDING => [
+						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::PADDING_ID,
+						Dynamic_Selector::META_IS_RESPONSIVE => true,
+						Dynamic_Selector::META_SUFFIX  => 'responsive_unit',
+						Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::PADDING_ID ),
+					],
+				],
+			];
+			$css_array[] = [
+				Dynamic_Selector::KEY_SELECTOR => $selector,
+				Dynamic_Selector::KEY_RULES    => [
+					Config::CSS_PROP_MARGIN => [
+						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::MARGIN_ID,
+						Dynamic_Selector::META_IS_RESPONSIVE => true,
+						Dynamic_Selector::META_SUFFIX  => 'responsive_unit',
+						Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::MARGIN_ID ),
+					],
+				],
+			];
+
+			return $css_array;
 		}
 
-		$css_array = $this->generate_position_css( $css_array, $layout_padding, $selector, 'padding' );
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => $selector,
+			Dynamic_Selector::KEY_RULES    => [
+				Config::CSS_PROP_PADDING => [
+					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::PADDING_ID,
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_SUFFIX        => 'responsive_unit',
+					Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::PADDING_ID ),
+				],
+				Config::CSS_PROP_MARGIN  => [
+					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::MARGIN_ID,
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_SUFFIX        => 'responsive_unit',
+					Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::MARGIN_ID ),
+				],
+			],
+		];
 
-		$layout_margin = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::MARGIN_ID, null );
-		$selector      = '.builder-item--' . $this->get_id();
-		$css_array     = $this->generate_position_css( $css_array, $layout_margin, $selector, 'margin' );
 
 		return $css_array;
 	}

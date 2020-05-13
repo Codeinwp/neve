@@ -14,6 +14,8 @@ namespace HFG\Core\Components;
 use HFG\Core\Settings;
 use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Main;
+use Neve\Core\Settings\Config;
+use Neve\Core\Styles\Dynamic_Selector;
 
 /**
  * Class Nav
@@ -322,45 +324,163 @@ class Nav extends Abstract_Component {
 	 * @return array
 	 */
 	public function add_style( array $css_array = array() ) {
-		$color    = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::COLOR_ID );
 		$selector = '.builder-item--' . $this->get_id() . ' .nav-menu-primary > .primary-menu-ul ';
-		if ( ! empty( $color ) ) {
-			$css_array[ $selector . 'li:not(.woocommerce-mini-cart-item) > a' ] = array( 'color' => sanitize_hex_color( $color ) );
-			$css_array[ $selector . 'li > .amp-caret-wrap svg' ]                = array( 'fill' => sanitize_hex_color( $color ) );
-		}
 
-		$hover_color = SettingsManager::get_instance()->get( $this->get_id() . '_hover_color' );
-		if ( ! empty( $hover_color ) ) {
-			$css_array[ $selector . 'li:not(.woocommerce-mini-cart-item) > a:after' ] = array( 'background-color' => sanitize_hex_color( $hover_color ) );
-			if ( SettingsManager::get_instance()->get( $this->get_id() . '_style' ) !== 'style-full-height' ) {
-				$css_array[ $selector . 'li:not(.woocommerce-mini-cart-item):hover > a' ] = array( 'color' => sanitize_hex_color( $hover_color ) );
-				$css_array[ $selector . 'li:hover > .amp-caret-wrap svg' ]                = array( 'fill' => sanitize_hex_color( $hover_color ) );
-			}
-		}
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => $selector . 'li:not(.woocommerce-mini-cart-item) > a',
+			Dynamic_Selector::KEY_RULES    => [
+				Config::CSS_PROP_COLOR => [
+					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::COLOR_ID,
+					Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::COLOR_ID ),
+				],
+			],
+		];
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => $selector . 'li > .amp-caret-wrap svg',
+			Dynamic_Selector::KEY_RULES    => [
+				Config::CSS_PROP_FILL_COLOR => [
+					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::COLOR_ID,
+					Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::COLOR_ID ),
+				],
+			],
+		];
 
-		$active_color = SettingsManager::get_instance()->get( $this->get_id() . '_active_color' );
-		if ( ! empty( $active_color ) ) {
-			$css_array[ $selector . 'li.current-menu-item > a' ]                   = array( 'color' => sanitize_hex_color( $active_color ) );
-			$css_array[ $selector . 'li.current-menu-item > .amp-caret-wrap svg' ] = array( 'fill' => sanitize_hex_color( $active_color ) );
-		}
-
-		$item_spacing = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::SPACING );
-		if ( ! empty( $item_spacing ) ) {
-			$css_array['@media (min-width: 961px)'][ '.header--row .hfg-item-right .builder-item--' . $this->get_id() . ' .primary-menu-ul > li:not(:first-child)' ] = [ 'margin-left' => absint( $item_spacing ) . 'px' ];
-			$css_array['@media (min-width: 961px)'][ '.header--row .hfg-item-center .builder-item--' . $this->get_id() . ' .primary-menu-ul > li:not(:last-child), .header--row .hfg-item-left .builder-item--' . $this->get_id() . ' .primary-menu-ul > li:not(:last-child)' ] = [ 'margin-right' => absint( $item_spacing ) . 'px' ];
-			$css_array['@media (min-width: 961px)'][ '.builder-item--' . $this->get_id() . ' .style-full-height .primary-menu-ul > li:not(.menu-item-nav-search):not(.menu-item-nav-cart) > a:after' ] = [
-				'left'  => - $item_spacing / 2 . 'px',
-				'right' => - $item_spacing / 2 . 'px',
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => $selector . 'li:not(.woocommerce-mini-cart-item) > a:after',
+			Dynamic_Selector::KEY_RULES    => [
+				Config::CSS_PROP_BACKGROUND_COLOR => [
+					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::HOVER_COLOR_ID,
+					Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::HOVER_COLOR_ID ),
+				],
+			],
+		];
+		if ( SettingsManager::get_instance()->get( $this->get_id() . '_style' ) !== 'style-full-height' ) {
+			$css_array[] = [
+				Dynamic_Selector::KEY_SELECTOR => $selector . 'li:not(.woocommerce-mini-cart-item):hover > a',
+				Dynamic_Selector::KEY_RULES    => [
+					Config::CSS_PROP_COLOR => [
+						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::HOVER_COLOR_ID,
+						Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::HOVER_COLOR_ID ),
+					],
+				],
 			];
-			$css_array['@media (min-width: 961px)'][ '.builder-item--' . $this->get_id() . ' .style-full-height .primary-menu-ul:not(#nv-primary-navigation-sidebar) > li:not(.menu-item-nav-search):not(.menu-item-nav-cart):hover > a:after' ] = [
-				'width' => 'calc(100% + ' . $item_spacing . 'px) !important;',
+			$css_array[] = [
+				Dynamic_Selector::KEY_SELECTOR => $selector . 'li:hover > .amp-caret-wrap svg',
+				Dynamic_Selector::KEY_RULES    => [
+					Config::CSS_PROP_FILL_COLOR => [
+						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::HOVER_COLOR_ID,
+						Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::HOVER_COLOR_ID ),
+					],
+				],
 			];
 		}
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => $selector . 'li.current-menu-item > a',
+			Dynamic_Selector::KEY_RULES    => [
+				Config::CSS_PROP_COLOR => [
+					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::ACTIVE_COLOR_ID,
+					Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::ACTIVE_COLOR_ID ),
+				],
+			],
+		];
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => $selector . 'li.current-menu-item > .amp-caret-wrap svg',
+			Dynamic_Selector::KEY_RULES    => [
+				Config::CSS_PROP_FILL_COLOR => [
+					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::ACTIVE_COLOR_ID,
+					Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::ACTIVE_COLOR_ID ),
+				],
+			],
+		];
+		$is_rtl      = is_rtl();
+		$left        = $is_rtl ? 'right' : 'left';
+		$right       = $is_rtl ? 'left' : 'right';
+		$first       = $is_rtl ? 'last' : 'first';
+		$last        = $is_rtl ? 'first' : 'last';
 
-		$item_height = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::ITEM_HEIGHT );
-		if ( ! empty( $item_height ) ) {
-			$css_array[ '.builder-item--' . $this->get_id() . ' .primary-menu-ul > li > a' ] = [ 'height' => absint( $item_height ) . 'px' ];
-		}
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => '.header--row .hfg-item-' . $right . ' .builder-item--' . $this->get_id() . ' .primary-menu-ul > li:not(:' . $first . '-of-type)',
+			Dynamic_Selector::KEY_RULES    => [
+				Config::CSS_PROP_MARGIN_LEFT => [
+					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::SPACING,
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
+						if ( $device !== Dynamic_Selector::DESKTOP ) {
+							return '';
+						}
+
+						return sprintf( '%s:%s;', $css_prop, absint( $value ) . 'px' );
+					},
+					Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::SPACING ),
+				],
+			],
+		];
+
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => '.header--row .hfg-item-center .builder-item--' . $this->get_id() . ' .primary-menu-ul > li:not(:' . $last . '-of-type), .header--row .hfg-item-' . $left . ' .builder-item--' . $this->get_id() . ' .primary-menu-ul > li:not(:' . $last . '-of-type)',
+			Dynamic_Selector::KEY_RULES    => [
+				Config::CSS_PROP_MARGIN_RIGHT => [
+					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::SPACING,
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
+						if ( $device !== Dynamic_Selector::DESKTOP ) {
+							return '';
+						}
+
+						return sprintf( '%s:%s;', $css_prop, absint( $value ) . 'px' );
+					},
+					Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::SPACING ),
+				],
+			],
+		];
+
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .style-full-height .primary-menu-ul > li:not(.menu-item-nav-search):not(.menu-item-nav-cart) > a:after',
+			Dynamic_Selector::KEY_RULES    => [
+				'position' => [
+					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::SPACING,
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
+						if ( $device !== Dynamic_Selector::DESKTOP ) {
+							return '';
+						}
+						$value = absint( $value );
+
+						return sprintf( 'left:%s;right:%s', - $value / 2 . 'px', - $value / 2 . 'px' );
+					},
+					Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::SPACING ),
+				],
+			],
+		];
+
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .style-full-height .primary-menu-ul:not(#nv-primary-navigation-sidebar) > li:not(.menu-item-nav-search):not(.menu-item-nav-cart):hover > a:after',
+			Dynamic_Selector::KEY_RULES    => [
+				Config::CSS_PROP_WIDTH => [
+					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::SPACING,
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
+						if ( $device !== Dynamic_Selector::DESKTOP ) {
+							return '';
+						}
+
+						return sprintf( 'width: calc(100%% + %s)!important;', absint( $value ) . 'px' );
+					},
+					Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::SPACING ),
+				],
+			],
+		];
+
+
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .primary-menu-ul > li > a',
+			Dynamic_Selector::KEY_RULES    => [
+				Config::CSS_PROP_HEIGHT => [
+					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::ITEM_HEIGHT,
+					Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::ITEM_HEIGHT ),
+				],
+			],
+		];
 
 		return parent::add_style( $css_array );
 	}

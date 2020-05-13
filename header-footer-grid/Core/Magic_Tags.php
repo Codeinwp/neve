@@ -155,6 +155,10 @@ class Magic_Tags {
 	 * @return string
 	 */
 	public function archive_title() {
+		if ( get_option( 'show_on_front' ) === 'page' && is_home() ) {
+			$blog_page_id = get_option( 'page_for_posts' );
+			return get_the_title( $blog_page_id );
+		}
 		return html_entity_decode( get_the_archive_title() );
 	}
 
@@ -249,8 +253,7 @@ class Magic_Tags {
 			return '';
 		}
 		$product = wc_get_product( get_the_ID() );
-
-		return is_singular( 'product' ) ? wc_price( $product->get_price() ) : '';
+		return is_singular( 'product' ) ? $product->get_price_html( $product->get_price() ) : '';
 	}
 
 	/**

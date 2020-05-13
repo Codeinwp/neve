@@ -22,8 +22,9 @@ function neve_is_amp() {
  */
 function neve_body_attrs() {
 	$body_attrs = apply_filters( 'neve_body_data_attrs', 'id="neve_body" ' );
-	echo ( $body_attrs ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	echo( $body_attrs ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 }
+
 /**
  * Get hooks by location
  *
@@ -72,6 +73,27 @@ function neve_hooks() {
 	);
 
 	if ( class_exists( 'WooCommerce' ) ) {
+		$hooks['product']  = array(
+			'woocommerce_before_single_product',
+			'woocommerce_before_single_product_summary',
+			'woocommerce_single_product_summary',
+			'woocommerce_simple_add_to_cart',
+			'woocommerce_before_add_to_cart_form',
+			'woocommerce_before_variations_form',
+			'woocommerce_before_add_to_cart_quantity',
+			'woocommerce_after_add_to_cart_quantity',
+			'woocommerce_before_add_to_cart_button',
+			'woocommerce_before_single_variation',
+			'woocommerce_single_variation',
+			'woocommerce_after_single_variation',
+			'woocommerce_after_add_to_cart_button',
+			'woocommerce_after_variations_form',
+			'woocommerce_after_add_to_cart_form',
+			'woocommerce_product_meta_start',
+			'woocommerce_product_meta_end',
+			'woocommerce_share',
+			'woocommerce_after_single_product_summary',
+		);
 		$hooks['cart']     = array(
 			'woocommerce_after_cart_table',
 			'woocommerce_before_cart_totals',
@@ -121,14 +143,14 @@ function neve_cart_icon( $echo = false, $size = 15, $cart_icon = '' ) {
 	if ( $echo === false ) {
 		return $svg;
 	}
-	echo ( $svg ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	echo( $svg ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 }
 
 /**
  * Search Icon
  *
- * @param bool $echo      should be echoed.
- * @param int  $size      icon size.
+ * @param bool $echo should be echoed.
+ * @param int  $size icon size.
  * @param bool $amp_ready Should we add the AMP binding.
  *
  * @return string
@@ -152,7 +174,7 @@ function neve_search_icon( $echo = false, $size = 15, $amp_ready = false ) {
 /**
  *  Escape HTML strings containing SVG.
  *
- * @param string $input           the input string.
+ * @param string $input the input string.
  * @param array  $additional_args additional allowed.
  *
  * @return string
@@ -1240,12 +1262,12 @@ function neve_get_headings_selectors() {
 	return apply_filters(
 		'neve_headings_typeface_selectors',
 		array(
-			'h1' => 'h1:not(.site-title), .single h1.entry-title',
-			'h2' => 'h2',
-			'h3' => 'h3',
-			'h4' => 'h4',
-			'h5' => 'h5',
-			'h6' => 'h6',
+			'h1' => \Neve\Core\Settings\Config::$css_selectors_map[ \Neve\Core\Settings\Config::CSS_SELECTOR_TYPEFACE_H1 ],
+			'h2' => \Neve\Core\Settings\Config::$css_selectors_map[ \Neve\Core\Settings\Config::CSS_SELECTOR_TYPEFACE_H2 ],
+			'h3' => \Neve\Core\Settings\Config::$css_selectors_map[ \Neve\Core\Settings\Config::CSS_SELECTOR_TYPEFACE_H3 ],
+			'h4' => \Neve\Core\Settings\Config::$css_selectors_map[ \Neve\Core\Settings\Config::CSS_SELECTOR_TYPEFACE_H4 ],
+			'h5' => \Neve\Core\Settings\Config::$css_selectors_map[ \Neve\Core\Settings\Config::CSS_SELECTOR_TYPEFACE_H5 ],
+			'h6' => \Neve\Core\Settings\Config::$css_selectors_map[ \Neve\Core\Settings\Config::CSS_SELECTOR_TYPEFACE_H6 ],
 		)
 	);
 }

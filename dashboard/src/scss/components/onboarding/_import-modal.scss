@@ -1,0 +1,241 @@
+@import "stepper";
+
+$base-index: 100000;
+
+.migration .modal-body .loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 30px auto;
+  width: auto;
+  color: #fff;
+
+  h3 {
+	margin: 20px 0 0;
+  }
+
+  svg {
+	padding: 10px;
+	background-color: $warning;
+	border-radius: 100%;
+	animation-name: spin;
+	animation-duration: 2000ms;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+  }
+}
+
+.ob-import-modal {
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  .components-tooltip {
+	display: none;
+  }
+  .modal-body {
+	h3 {
+	  margin: 0;
+	  display: flex;
+	  align-items: center;
+
+	  svg {
+		margin-right: 5px;
+	  }
+	}
+  }
+
+  .well {
+	margin: 0;
+	padding: 10px;
+	border: 1px solid;
+	border-radius: 3px;
+	color: $black;
+	border-color: $info;
+	background-color: lighten($info, 27);
+
+	ol {
+	  padding: 0;
+	  margin: 20px 0 0 20px;
+
+	  li {
+		margin-bottom: 10px;
+
+		&:last-child {
+		  margin-bottom: 0;
+		}
+	  }
+	}
+
+	ul {
+	  margin: 20px 0 0;
+	  padding: 0;
+
+	  li {
+		margin-bottom: 10px;
+	  }
+	}
+
+	&.error {
+	  border-color: $error;
+	  background-color: lighten($error, 27);
+	}
+
+	&.warning {
+	  border-color: $warning;
+	  background-color: lighten($warning, 27);
+	}
+  }
+
+  hr {
+	margin: 25px 0;
+	border: none;
+	border-top: 1px solid $grey;
+	height: 0;
+  }
+
+  .options {
+	ul {
+	  margin: 10px 0 0 0;
+	}
+
+	li {
+	  padding: 15px 0 0;
+	  display: flex;
+	  align-items: center;
+	  margin-bottom: 0;
+	  font-size: 15px;
+	  color: $black;
+
+	  &:not(:last-child) {
+		padding-bottom: 15px;
+		border-bottom: 1px solid transparentize($grey, .5);
+	  }
+
+	  svg {
+		margin-right: 15px;
+		opacity: .5;
+
+		&.active {
+		  opacity: 1;
+		  color: $blue;
+		}
+	  }
+	}
+
+	.toggle-wrapper {
+	  margin-left: auto;
+	  span {
+		margin-right: 0;
+	  }
+	  div {
+		margin-bottom: 0;
+	  }
+	}
+  }
+
+  .import-result {
+	font-size: 15px;
+  }
+
+  .modal-footer {
+	margin-top: 25px;
+	display: flex;
+	align-items: center;
+
+	.close {
+	  padding: 0;
+	}
+
+	button:not(.close), a {
+	  margin-left: auto;
+	  padding: 5px 25px;
+
+	  &:last-child {
+		margin-left: 25px;
+
+		&:only-child {
+		  margin-left: auto;
+		}
+	  }
+	}
+  }
+}
+
+.ob-import-modal.fetching {
+  pointer-events: none;
+  .title {
+	width: 200px;
+	display: block;
+  }
+  .is-loading {
+	border-radius: 3px;
+	animation: 1.5s loading-placeholder ease-in-out infinite;
+	background-color: $black;
+	height: 20px;
+  }
+  .well {
+	animation: 1.5s loading-placeholder-high-opacity ease-in-out infinite;
+	opacity: 1;
+	height: inherit !important;
+	background-color: inherit !important;
+	h3 {
+	  span {
+		width: 100px;
+	  }
+	}
+	ol {
+	  list-style: square;
+	}
+	li {
+	  border-radius: 3px;
+	  width: 75%;
+	  height: 18px;
+	  margin-top: 0;
+	  background-color: $black;
+	  animation: 1.5s loading-placeholder ease-in-out infinite;
+	  &:nth-child(2) {
+		width: 85%;
+	  }
+	  &:nth-child(3) {
+		width: 95%;
+	  }
+	}
+  }
+  .mock-icon {
+	width: 20px;
+	height: 20px;
+	margin-right: 5px;
+  }
+
+  .options {
+	h3 {
+	  max-width: 100px;
+	}
+	li {
+	  .mock-icon {
+		background-color: $blue;
+		margin-right: 15px;
+	  }
+
+	  span {
+		width: 100px;
+	  }
+
+	  .toggle {
+		width: 40px;
+		background-color: $blue;
+		border-radius: 50px;
+		margin-left: auto;
+	  }
+	}
+  }
+  .modal-footer button {
+	width: 90px;
+	height: 35px;
+	background-color: $dark-grey;
+	border: none !important;
+	&.is-primary {
+	  background-color: $blue;
+	}
+  }
+}

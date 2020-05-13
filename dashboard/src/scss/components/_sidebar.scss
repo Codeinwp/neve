@@ -1,0 +1,33 @@
+.sidebar.card {
+  padding: 30px 20px 15px;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 100%;
+  flex-direction: column;
+  align-self: flex-start;
+  h4 {
+    margin: 0;
+    font-size: 15px;
+    color: $black;
+  }
+  p {
+    color: #616161;
+    margin: 20px 0 30px;
+    font-size: 14px;
+  }
+  hr {
+    margin: 25px -20px;
+  }
+
+  a {
+    color: $blue;
+  }
+}
+
+@mixin sidebar--laptop() {
+  .sidebar.card {
+    margin-top: 0;
+    width: 280px;
+    min-width: 280px;
+  }
+}

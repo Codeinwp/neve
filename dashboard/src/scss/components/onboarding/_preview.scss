@@ -1,0 +1,55 @@
+$base-index: 100000;
+
+.ob-preview {
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: $base-index;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  .loading {
+	bottom: 0;
+	top: 0;
+	left: 0;
+	right: 0;
+	position: absolute;
+	display: flex;
+  	align-items: center;
+	justify-content: center;
+	z-index: $base-index;
+	color: $dark-grey;
+	svg {
+	  animation-name: spin;
+	  animation-duration: 2000ms;
+	  animation-iteration-count: infinite;
+	  animation-timing-function: linear;
+	}
+  }
+  .preview {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	flex-grow: 1;
+	iframe {
+	  flex-grow: 1;
+	  position: relative;
+	  z-index: $base-index+1;
+	  height: 100%;
+	  width: 100%;
+	}
+  }
+  .bottom-bar {
+	border-top: 1px solid $grey;
+	display: flex;
+	padding: 15px 30px;
+	align-items: center;
+	.actions {
+	  margin-left: auto;
+	}
+  }
+}
