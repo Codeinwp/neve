@@ -37,6 +37,35 @@ final class Manager {
 		add_action( 'admin_init', array( $this, 'load_controls' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) );
 		add_action( 'save_post', array( $this, 'save' ) );
+
+		add_action( 'init', array( $this, 'register_meta_sidebar' ) );
+		add_action( 'enqueue_block_editor_assets', array( $this, 'meta_sidebar_script_enqueue' ) );
+	}
+
+	/**
+	 * Register the metabox sidebar in Gutenberg editor
+	 */
+	public function register_meta_sidebar() {
+		wp_register_script(
+			'neve-meta-sidebar',
+			trailingslashit( get_template_directory_uri() ) . 'inc/admin/metabox/bundle/meta-sidebar.js',
+			array( 'wp-plugins', 'wp-edit-post', 'wp-element' )
+		);
+
+		wp_localize_script(
+			'neve-meta-sidebar',
+			'metaSidebar',
+			array(
+				'l10n',
+			)
+		);
+	}
+
+	/**
+	 * Register the metabox sidebar.
+	 */
+	public function meta_sidebar_script_enqueue() {
+		wp_enqueue_script( 'neve-meta-sidebar' );
 	}
 
 	/**
