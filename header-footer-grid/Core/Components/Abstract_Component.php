@@ -682,10 +682,34 @@ abstract class Abstract_Component implements Component {
 						],
 				];
 		}
+
+		$selector = '.builder-item--' . $this->get_id();
+
 		if ( $this->default_selector !== null ) {
-			$selector = $this->default_selector;
-		} else {
-			$selector = '.builder-item--' . $this->get_id();
+			$css_array[] = [
+				Dynamic_Selector::KEY_SELECTOR => $this->default_selector,
+				Dynamic_Selector::KEY_RULES    => [
+					Config::CSS_PROP_PADDING => [
+						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::PADDING_ID,
+						Dynamic_Selector::META_IS_RESPONSIVE => true,
+						Dynamic_Selector::META_SUFFIX  => 'responsive_unit',
+						Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::PADDING_ID ),
+					],
+				],
+			];
+			$css_array[] = [
+				Dynamic_Selector::KEY_SELECTOR => $selector,
+				Dynamic_Selector::KEY_RULES    => [
+					Config::CSS_PROP_MARGIN => [
+						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::MARGIN_ID,
+						Dynamic_Selector::META_IS_RESPONSIVE => true,
+						Dynamic_Selector::META_SUFFIX  => 'responsive_unit',
+						Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::MARGIN_ID ),
+					],
+				],
+			];
+
+			return $css_array;
 		}
 
 		$css_array[] = [
@@ -705,6 +729,7 @@ abstract class Abstract_Component implements Component {
 				],
 			],
 		];
+
 
 		return $css_array;
 	}

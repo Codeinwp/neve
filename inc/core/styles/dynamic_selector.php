@@ -173,7 +173,7 @@ class Dynamic_Selector {
 
 
 		if ( $value === false || $value === null || $value === '' ) {
-			return false;
+			return $default;
 		}
 		if ( isset( $meta[ self::META_IS_RESPONSIVE ] ) && $meta[ self::META_IS_RESPONSIVE ] ) {
 			// If the value is defined as responsive and we don't have a responsive mapped value,
