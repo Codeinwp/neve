@@ -1,6 +1,5 @@
 /* global wp, neveDash  */
 import {getTabHash} from '../utils/common';
-import {fetchOptions} from '../utils/rest';
 
 const initialState = {
 	settings: {},
@@ -65,6 +64,14 @@ const reducer = (state = initialState, action) => {
 			return {
 				...state,
 				toast: action.payload
+			};
+		case 'SET_LOGGER_STATUS':
+			return {
+				...state,
+				settings: {
+					...state.settings,
+					'neve_logger_flag': action.payload
+				}
 			};
 	}
 	return state;
