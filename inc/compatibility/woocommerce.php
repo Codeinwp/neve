@@ -27,7 +27,7 @@ class Woocommerce {
 	private $primary_buttons_selectors = array(
 		'default' => '
 			,.woocommerce a.button,
-			.woocommerce .button:not(.nv-sidebar-toggle):not(.nv-close-cart-sidebar),
+			.woocommerce .button:not(.nv-sidebar-toggle):not(.nv-close-cart-sidebar):not(button[name="apply_coupon"]),
 			.woocommerce a.button.alt,
 			.woocommerce a.button.button-primary,
 			.woocommerce a.button.checkout-button,
@@ -45,11 +45,10 @@ class Woocommerce {
 			.woocommerce button#place_order,
 			.woocommerce .return-to-shop > .button,
 			ul[id^="nv-primary-navigation"] .nv-nav-cart a.button.checkout.wc-forward,
-			.button.woocommerce-form-login__submit,
-			.woocommerce-checkout #neve-checkout-coupon .woocommerce-form-coupon .form-row-last button.button',
+			.button.woocommerce-form-login__submit',
 		'hover'   => '
 			,.woocommerce a.button:hover,
-			.woocommerce .button:not(.nv-sidebar-toggle):not(.nv-close-cart-sidebar):hover,
+			.woocommerce .button:not(.nv-sidebar-toggle):not(.nv-close-cart-sidebar):not(button[name="apply_coupon"]):hover,
 			.woocommerce a.button.alt:hover,
 			.woocommerce a.button.button-primary:hover,
 			.woocommerce a.button.checkout-button:hover,
@@ -66,8 +65,7 @@ class Woocommerce {
 			.woocommerce button#place_order:hover,
 			.woocommerce .return-to-shop > .button:hover,
 			ul[id^="nv-primary-navigation"] .nv-nav-cart a.button.checkout.wc-forward:hover,
-			.button.woocommerce-form-login__submit:hover,
-			.woocommerce-checkout #neve-checkout-coupon .woocommerce-form-coupon .form-row-last button.button:hover',
+			.button.woocommerce-form-login__submit:hover',
 	);
 
 	/**
@@ -85,7 +83,8 @@ class Woocommerce {
 			.woocommerce #review_form #respond input#submit,
 			.woocommerce .price_slider_amount button.button:not(.nv-sidebar-toggle):not(.nv-close-cart-sidebar),
 			.woocommerce .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout),
-			.woocommerce .button.button-secondary.more-details',
+			.woocommerce .button.button-secondary.more-details,
+			.woocommerce-checkout #neve-checkout-coupon .woocommerce-form-coupon .form-row-last button.button',
 		'hover'            => '
 			,#comments input[type=submit]:hover,
 			.woocommerce-cart table.cart td.actions .coupon > .input-text + .button:hover,
@@ -96,7 +95,8 @@ class Woocommerce {
 			.woocommerce #review_form #respond input#submit:hover,
 			.woocommerce .price_slider_amount button.button:hover,
 			.woocommerce .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout):hover,
-			.woocommerce .button.button-secondary.more-details:hover',
+			.woocommerce .button.button-secondary.more-details:hover,
+			.woocommerce-checkout #neve-checkout-coupon .woocommerce-form-coupon .form-row-last button.button:hover',
 		'no-padding'       => '
 			,.woocommerce ul[id^="nv-primary-navigation"] .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout)',
 		'no-padding-hover' => '
