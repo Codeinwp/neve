@@ -64,7 +64,7 @@ class Button extends Abstract_Component {
 	 */
 	public function __construct( $panel ) {
 		parent::__construct( $panel );
-		$this->default_selector = '.builder-item--' . $this->get_id() . ' > .component-wrap > .button';
+		$this->default_selector = '.builder-item--' . $this->get_id() . ' > .component-wrap > a.button';
 	}
 
 	/**
@@ -164,9 +164,16 @@ class Button extends Abstract_Component {
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_BACKGROUND_COLOR => $id . '.background',
 				Config::CSS_PROP_COLOR            => $id . '.text',
-				Config::CSS_PROP_BORDER_RADIUS    => $id . '.borderRadius',
-				Config::CSS_PROP_CUSTOM_BTN_TYPE  => $id . '.type',
-				Config::CSS_PROP_BORDER_WIDTH     => $id . '.borderWidth',
+				Config::CSS_PROP_BORDER_RADIUS    => [
+					Dynamic_Selector::META_KEY     => $id . '.borderRadius',
+					Dynamic_Selector::META_DEFAULT => '3',
+				],
+				Config::CSS_PROP_CUSTOM_BTN_TYPE  => [
+					Dynamic_Selector::META_KEY => $id . '.type',
+				],
+				Config::CSS_PROP_BORDER_WIDTH     => [
+					Dynamic_Selector::META_KEY => $id . '.borderWidth',
+				],
 			],
 		];
 		$css_array[] = [
