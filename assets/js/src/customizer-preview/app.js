@@ -69,7 +69,14 @@ window.addEventListener('load', function () {
           let style = ''
           switch (settingType) {
             case 'neve_color_control':
+							if(args.additional.partial) {
+								wp.customize.selectiveRefresh.partial( args.additional.partial ).refresh();
+								return false;
+							}
               _.each(args.additional, (i) => {
+              	if( ! i.selector ) {
+              		return false;
+								}
                 newValue = newValue || i.fallback
                 style += `body ${i.selector} {
                   ${i.prop}: ${newValue} !important;
@@ -96,8 +103,7 @@ window.addEventListener('load', function () {
               }
               style += args.selector + '{'
               style += newValue.imageUrl ?
-                'background-image: url("' + newValue.imageUrl +
-                '") !important;' :
+                `background-image: url("${newValue.imageUrl}") !important;` :
                 'background-image: none !important;'
               style += newValue.fixed === true ?
                 'background-attachment: fixed !important;' :
@@ -116,20 +122,16 @@ window.addEventListener('load', function () {
               }
               style += 'top: 0; bottom: 0; width: 100%; content:"";'
               style += '}'
-              let color = newValue.overlayColorValue !== 'undefined' ?
-                newValue.overlayColorValue :
-                'inherit'
+              let color = newValue.overlayColorValue || 'unset';
 							style += `body ${args.selector}, body ${args.selector} .primary-menu-ul .sub-menu li {background-color: ${color}!important;}`
 							style += `${args.selector} .primary-menu-ul .sub-menu, ${args.selector} .primary-menu-ul .sub-menu li {border-color: ${color}!important;}`;
 							style += args.selector + ':before { ' +
                 'content: "";' +
                 'position: absolute; top: 0; bottom: 0; width: 100%;' +
-                'background-color: ' + color +
-                ' !important;' +
+                `background-color: ${color}!important;` +
                 'opacity: ' + ((newValue.overlayOpacity || 50) / 100) +
                 '!important;}'
-              style += args.selector +
-                '{ background-color: transparent !important; }'
+              style += args.selector + '{ background-color: transparent !important; }'
               addCss(settingId, style)
               break
             case '\\Neve\\Customizer\\Controls\\React\\Radio_Buttons':

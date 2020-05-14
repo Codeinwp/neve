@@ -402,26 +402,7 @@ abstract class Abstract_Builder implements Builder {
 				'transport'             => 'postMessage',
 				'live_refresh_selector' => $row_class,
 				'live_refresh_css_prop' => [
-					[
-						'selector' => $row_class,
-						'prop'     => 'color',
-						'fallback' => 'inherit',
-					],
-					[
-						'selector' => $row_class . ' .icon-bar',
-						'prop'     => 'background-color',
-						'fallback' => 'inherit',
-					],
-					[
-						'selector' => $row_class . ' .navbar-toggle',
-						'prop'     => 'border-color',
-						'fallback' => 'inherit',
-					],
-					[
-						'selector' => $row_class . ' a:not(.button)',
-						'prop'     => 'color',
-						'fallback' => 'inherit',
-					],
+					'partial' => $row_id === 'sidebar' ? 'hfg_header_layout_partial' : $row_setting_id . '_partial',
 				],
 				'sanitize_callback'     => 'wp_filter_nohtml_kses',
 				'default'               => $default_colors['text'],

@@ -132,7 +132,7 @@ class BackgroundComponent extends Component {
                     isLink
                     onClick={() => {
                       this.updateSetting(
-                        { imageUrl: '', overlayColorValue: '' })
+                        { imageUrl: '' })
                     }}
                   >
                     <Dashicon icon='no' />
