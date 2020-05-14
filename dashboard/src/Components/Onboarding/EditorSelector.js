@@ -4,7 +4,7 @@ const {Button, Dashicon, Popover} = wp.components;
 const {withDispatch, withSelect} = wp.data;
 const {compose} = wp.compose;
 
-const EditorSelector = ({onSearch, editor, setCurrentEditor}) => {
+const EditorSelector = ({onSearch, editor, setCurrentEditor, query}) => {
 	const map = {
 		'elementor': {
 			icon: 'elementor.png',
@@ -81,6 +81,7 @@ const EditorSelector = ({onSearch, editor, setCurrentEditor}) => {
 						onSearch(e.target.value);
 					}}
 					type="search"
+					value={query}
 					placeholder={__('Search for a starter site', 'neve') + '...'}/>
 				<img src={neveDash.assets + '/search.svg'} alt={__('Search Icon')}/>
 			</div>

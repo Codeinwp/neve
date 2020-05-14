@@ -3,9 +3,11 @@ import {getTabHash} from '../utils/common';
 
 const initialState = {
 	settings: {},
+	plugins: neveDash.plugins || {},
 	tier: neveDash.pro ? neveDash.license.tier : 0,
 	toast: null,
-	currentTab: 'start'
+	currentTab: 'start',
+	license: neveDash.pro ? neveDash.license : {}
 };
 
 const hash = getTabHash();
@@ -27,6 +29,14 @@ const reducer = (state = initialState, action) => {
 				...state,
 				settings: object
 			};
+		case 'SET_PLUGIN_STATE':
+			const {pluginSlug, pluginState} = action.payload;
+			const newPluginState = {...state.plugins[pluginSlug]};
+			newPluginState.cta = pluginState;
+			return {
+				...state,
+				plugins: {...state.plugins, [pluginSlug]: newPluginState }
+			};
 		case 'TOGGLE_MODULE':
 			const {moduleSlug, value} = action.payload;
 			return {
@@ -45,15 +55,23 @@ const reducer = (state = initialState, action) => {
 					[optionStatus]: optionValue
 				}
 			};
-		case 'UPDATE_LICENSE_TIER':
+		case 'UPDATE_LICENSE':
 			return {
 				...state,
-				tier: action.payload.tier
+				license: action.payload.licenseData
 			};
 		case 'UPDATE_TOAST_MESSAGE':
 			return {
 				...state,
 				toast: action.payload
+			};
+		case 'SET_LOGGER_STATUS':
+			return {
+				...state,
+				settings: {
+					...state.settings,
+					'neve_logger_flag': action.payload
+				}
 			};
 	}
 	return state;

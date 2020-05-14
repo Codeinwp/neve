@@ -1,7 +1,7 @@
 {
 	"name": "neve",
 	"nicename": "Neve",
-	"version": "2.6.4",
+	"version": "2.7.0",
 	"description": "Neve theme by ThemeIsle",
 	"category": "themes",
 	"repository": {
@@ -38,7 +38,7 @@
 		"@size-limit/preset-app": "^4.4.0",
 		"@size-limit/webpack": "^4.4.0",
 		"babel-loader": "^8.1.0",
-		"conventional-changelog-simple-preset": "^1.0.13",
+		"conventional-changelog-simple-preset": "^1.0.14",
 		"core-js": "^3.6.5",
 		"cross-env": "^7.0.2",
 		"cypress": "^4.5.0",
@@ -73,7 +73,7 @@
 		"git:add": "git add *.css assets/**/*.css assets/**/*.js",
 		"build:grunt": "grunt build",
 		"build:rollup": "./node_modules/.bin/rollup -c",
-		"build:makepot": "docker run --rm --user root --volume \"$(pwd):/var/www/html/neve\" wordpress:cli wp i18n make-pot ./neve/ ./neve/languages/neve.pot --allow-root",
+		"build:makepot": "docker run --user root --rm --volume  \"$(pwd):/var/www/html/neve\" wordpress:cli bash -c 'php -d memory_limit=512M \"$(which wp)\" i18n make-pot ./neve/ ./neve/languages/neve.pot --allow-root '",
 		"watch:rollup": "./node_modules/.bin/rollup -c --watch",
 		"watch:grunt": "grunt watch",
 		"dev": "npm-run-all --parallel watch:*",
@@ -114,7 +114,7 @@
 			"gzip": false,
 			"running": false,
 			"webpack": false,
-			"limit": "50 KB",
+			"limit": "51 KB",
 			"path": "style.min.css"
 		}
 	],

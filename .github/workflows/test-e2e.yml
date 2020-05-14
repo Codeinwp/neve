@@ -44,7 +44,6 @@ jobs:
           browser: chrome
           name: ${{matrix.spec}}
           record: true
-          group: ${{matrix.spec}}
           spec: cypress/integration/${{matrix.spec}}/*
   empty-job:
     # if no jobs run, github action considers it a test failure -- which seems like a bug

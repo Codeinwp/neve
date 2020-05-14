@@ -2,7 +2,7 @@
 **Contributors:** [themeisle](https://profiles.wordpress.org/themeisle)  
 **Tags:** blog, custom-logo, e-commerce, rtl-language-support, post-formats, grid-layout, one-column, two-columns, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, accessibility-ready, wide-blocks, block-styles, footer-widgets, portfolio, left-sidebar, right-sidebar  
 **Requires at least:** 4.0  
-**Tested up to:** 5.3  
+**Tested up to:** 5.4  
 **Stable tag:** 1.0.23  
 **Requires PHP:** 5.4.0  
 **License:** GPLv2 or later  
@@ -18,6 +18,51 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
+
+#### [Version 2.7.0](https://github.com/Codeinwp/neve/compare/v2.6.6...v2.7.0) (2020-05-13)
+
+- [Feat] Improved Neve Options page and onboarding experience
+- [Feat] Integration with the Toolset plugin
+- [Feat] Improved dynamic CSS generation & Gutenberg integration
+- [Fix] Yellow background on the number of products in categories on the Shop page
+- [Fix] Secondary Menu alignment on mobile
+- New starter sites
+- Book Shop - https://themeisle.com/demo/?theme=Book%20Shop
+- Psychologist - https://themeisle.com/demo/?theme=Psychologist
+- Doctors - https://themeisle.com/demo/?theme=Doctors%202
+- Pet Shop - https://themeisle.com/demo/?theme=Pet%20Shop
+- Apparel - https://themeisle.com/demo/?theme=Apparel
+- Boat Rental - https://themeisle.com/demo/?theme=Boat%20Rental
+- Jewellery Shop - https://themeisle.com/demo/?theme=Jewellery%20Shop%202
+- Perfume Shop - https://themeisle.com/demo/?theme=Perfume%20Shop
+- Music Band - https://themeisle.com/demo/?theme=Music%20Band%202
+- Fitness Trainer - https://themeisle.com/demo/?theme=Fitness%20Trainer
+
+
+
+
+##### [Version 2.6.6](https://github.com/Codeinwp/neve/compare/v2.6.5...v2.6.6) (2020-04-07)
+
+- [Fix] Background color for mobile menu
+- [Fix] Last Menu Search icon in AMP
+
+
+
+
+##### [Version 2.6.5](https://github.com/Codeinwp/neve/compare/v2.6.4...v2.6.5) (2020-04-06)
+
+- [Fix] Infinite scroll with masonry scrolling to the top of page
+- [Fix] Variations product select height on iPhone
+- [Fix] JS error regarding customizer typography line-height suffix
+- [Fix] Max Mega Menu alignment
+- [Fix] Firefox Customizer visual bugs
+- [Fix] Compatibility with latest Gutenberg version
+- [Fix] Add missing role=button and tabindex=0 for search icon button for AMP
+- [Fix] Small performance tweaks and optimizations
+- New Gutenberg Starter Sites
+
+
+
 
 ##### [Version 2.6.4](https://github.com/Codeinwp/neve/compare/v2.6.3...v2.6.4) (2020-03-23)
 

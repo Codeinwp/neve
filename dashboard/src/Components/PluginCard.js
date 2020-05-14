@@ -5,11 +5,11 @@ import {get} from '../utils/rest';
 const {__} = wp.i18n;
 const {Button, Dashicon} = wp.components;
 const {useState} = wp.element;
+const {withDispatch} = wp.data;
 
-const Card = (props) => {
-	const {slug, data} = props;
-	const {banner, name, description, version, author} = props.data;
-	const [ action, setAction ] = useState(data.cta);
+const Card = ({slug, data, setPluginState}) => {
+	const {banner, name, description, version, author} = data;
+	const action = data.cta;
 	const [ inProgress, setInProgress ] = useState(false);
 
 	const stringMap = {
@@ -47,7 +47,7 @@ const Card = (props) => {
 									return false;
 								}
 								setInProgress(false);
-								setAction('activate');
+								setPluginState(slug, 'activate');
 							});
 							return false;
 						}
@@ -60,9 +60,9 @@ const Card = (props) => {
 							}
 
 							if ('activate' === action) {
-								setAction('deactivate');
+								setPluginState(slug, 'deactivate');
 							} else {
-								setAction('activate');
+								setPluginState(slug, 'activate');
 							}
 							setInProgress(false);
 						});
@@ -97,4 +97,9 @@ const installPlugin = (slug) => {
 };
 
 
-export default Card;
+export default withDispatch(dispatch => {
+	const {setPluginState} = dispatch('neve-dashboard');
+	return {
+		setPluginState: (slug, newState) => setPluginState(slug, newState)
+	};
+})(Card);

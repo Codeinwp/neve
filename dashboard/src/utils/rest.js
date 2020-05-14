@@ -1,5 +1,13 @@
 const {__} = wp.i18n;
 
+export const fetchOptions = () => {
+	let settings;
+	return wp.api.loadPromise.then(() => {
+		settings = new wp.api.models.Settings();
+		return settings.fetch();
+	});
+};
+
 export const changeOption = (option, value, module = false, pro = true) => {
 	option = (pro ? 'nv_pro_' : '') + option + (module ? '_status' : '');
 	const model = new wp.api.models.Settings({

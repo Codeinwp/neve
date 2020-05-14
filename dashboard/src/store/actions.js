@@ -1,4 +1,4 @@
- export default {
+export default {
 	setTab(tab) {
 		return {
 			type: 'SET_TAB',
@@ -9,6 +9,12 @@
 		return {
 			type: 'SET_SETTINGS',
 			payload: {object}
+		};
+	},
+	setPluginState(pluginSlug, pluginState) {
+		return {
+			type: 'SET_PLUGIN_STATE',
+			payload: {pluginSlug, pluginState}
 		};
 	},
 	changeModuleStatus(moduleSlug, value) {
@@ -23,16 +29,22 @@
 			payload: {optionStatus: (pro ? 'nv_pro_' : '') + optionSlug, optionValue}
 		};
 	},
-	changeLicenseTier(tier) {
+	changeLicense(licenseData) {
 		return {
-			type: 'UPDATE_LICENSE_TIER',
-			payload: {tier}
+			type: 'UPDATE_LICENSE',
+			payload: {licenseData}
 		};
 	},
 	setToast(message) {
 		return {
 			type: 'UPDATE_TOAST_MESSAGE',
 			payload: message
+		};
+	},
+	setLogger(loggerStatus) {
+		return {
+			type: 'SET_LOGGER_STATUS',
+			payload: loggerStatus
 		};
 	}
 };

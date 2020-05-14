@@ -12,12 +12,15 @@
 namespace HFG\Core\Builder;
 
 use HFG\Core\Components\Abstract_Component;
+use HFG\Core\Css_Generator;
 use HFG\Core\Customizer\Instructions_Section;
 use HFG\Core\Interfaces\Builder;
 use HFG\Core\Interfaces\Component;
 use HFG\Core\Settings;
 use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Traits\Core;
+use Neve\Core\Settings\Config;
+use Neve\Core\Styles\Dynamic_Selector;
 use WP_Customize_Manager;
 
 /**
@@ -27,6 +30,7 @@ use WP_Customize_Manager;
  */
 abstract class Abstract_Builder implements Builder {
 	use Core;
+
 	const LAYOUT_SETTING     = 'layout';
 	const HEIGHT_SETTING     = 'height';
 	const SKIN_SETTING       = 'skin';
@@ -549,7 +553,7 @@ abstract class Abstract_Builder implements Builder {
 					$wp_customize,
 					$this->section . '_quick_links',
 					array(
-						'priority' => - 100,
+						'priority' => -100,
 						'panel'    => $this->panel,
 						'type'     => 'hfg_instructions',
 						'options'  => $this->instructions_array,
@@ -658,7 +662,10 @@ abstract class Abstract_Builder implements Builder {
 		$layout                = $this->get_layout_data();
 		self::$current_builder = $this->get_id();
 		if ( is_customize_preview() ) {
-			$style = $this->css_array_to_css( $this->add_style() );
+			$style     = $this->add_style( [] );
+			$generator = new Css_Generator();
+			$generator->set( $style );
+			$style = $generator->generate();
 			echo '<style type="text/css" id="' . esc_attr( $this->get_id() ) . '-style">' . $style . '</style>';// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
 		foreach ( $layout as $device_name => $device ) {
@@ -754,8 +761,7 @@ abstract class Abstract_Builder implements Builder {
 			if ( ! $this->is_component_active( $component->get_id() ) ) {
 				continue;
 			}
-			$component_css_array = $component->add_style( $css_array );
-			$css_array           = array_replace_recursive( $css_array, $component_css_array );
+			$css_array = $component->add_style( $css_array );
 		}
 
 		return $css_array;
@@ -772,26 +778,26 @@ abstract class Abstract_Builder implements Builder {
 	 * @access  private
 	 */
 	private function add_row_style( $row_index, $css_array = array() ) {
-		$layout_height = json_decode( get_theme_mod( $this->control_id . '_' . $row_index . '_height', '{ desktop: 0, tablet: 0, mobile: 0 }' ), true );
-		$selector      = '.' . $this->get_id() . '-' . $row_index . '-inner';
-		if ( isset( $layout_height['mobile'] ) ) {
-			$layout_height['mobile']                              = ( $layout_height['mobile'] > 0 ) ? $layout_height['mobile'] . 'px' : 'auto';
-			$css_array[' @media (max-width: 576px)'][ $selector ] = array(
-				'height' => $layout_height['mobile'],
-			);
-		}
-		if ( isset( $layout_height['tablet'] ) ) {
-			$layout_height['tablet']                              = ( $layout_height['tablet'] > 0 ) ? $layout_height['tablet'] . 'px' : 'auto';
-			$css_array[' @media (min-width: 576px)'][ $selector ] = array(
-				'height' => $layout_height['tablet'],
-			);
-		}
-		if ( isset( $layout_height['desktop'] ) ) {
-			$layout_height['desktop']                             = ( $layout_height['desktop'] > 0 ) ? $layout_height['desktop'] . 'px' : 'auto';
-			$css_array[' @media (min-width: 961px)'][ $selector ] = array(
-				'height' => $layout_height['desktop'],
-			);
-		}
+
+		$selector    = '.' . $this->get_id() . '-' . $row_index . '-inner';
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => $selector,
+			Dynamic_Selector::KEY_RULES    => [
+				Config::CSS_PROP_HEIGHT => [
+					Dynamic_Selector::META_KEY           => $this->control_id . '_' . $row_index . '_height',
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
+						$value = (int) $value;
+						if ( $value > 0 ) {
+							return sprintf( '%s:%s;', $css_prop, $value . 'px' );
+						}
+
+						return '';
+					},
+					Dynamic_Selector::META_DEFAULT       => '{ desktop: 0, tablet: 0, mobile: 0 }',
+				],
+			],
+		];
 
 		if ( $row_index === 'sidebar' ) {
 			$selector = '.header-menu-sidebar .header-menu-sidebar-bg';
@@ -805,60 +811,82 @@ abstract class Abstract_Builder implements Builder {
 		if ( isset( $this->default_colors[ $this->get_id() ][ $row_index ] ) && ! empty( $this->default_colors[ $this->get_id() ][ $row_index ] ) ) {
 			$default_color = $this->default_colors[ $this->get_id() ][ $row_index ];
 		}
-		$previous   = get_theme_mod( $this->control_id . '_' . $row_index . '_color', $default_color );
-		$background = get_theme_mod(
+		$previous = get_theme_mod( $this->control_id . '_' . $row_index . '_color', $default_color );
+
+		$background    = get_theme_mod(
 			$this->control_id . '_' . $row_index . '_background',
 			[
 				'type'       => 'color',
 				'colorValue' => ! empty( $previous ) ? $previous : $default_color,
 			]
 		);
-
-		$css_setup = [];
-
+		$selector_full = $selector . ',' . $selector . '.dark-mode,' . $selector . '.light-mode';
 		if ( $background['type'] === 'color' && ! empty( $background['colorValue'] ) && $background['colorValue'] !== $default_color ) {
-			$css_setup['background-color'] = $background['colorValue'];
+			$css_array[] = [
+				Dynamic_Selector::KEY_SELECTOR => $selector_full,
+				Dynamic_Selector::KEY_RULES    => [
+					Config::CSS_PROP_BACKGROUND_COLOR => [
+						Dynamic_Selector::META_KEY => $this->control_id . '_' . $row_index . '_background' . '.colorValue',
+					],
+				],
+			];
 		}
 
 		if ( $background['type'] === 'image' ) {
-			if ( $background['useFeatured'] === true && is_singular() ) {
-				$featured_image = get_the_post_thumbnail_url();
-				if ( ! empty( $featured_image ) ) {
-					$css_setup['background-image'] = 'url("' . esc_url( $featured_image ) . '")';
-				} else {
-					$css_setup['background-image'] = 'url("' . esc_url( $background['imageUrl'] ) . '")';
-				}
-			} elseif ( ! empty( $background['imageUrl'] ) ) {
-				$css_setup['background-image'] = 'url("' . esc_url( $background['imageUrl'] ) . '")';
-			}
-			$css_setup['background-size'] = 'cover';
 
-			if ( ! empty( $background['focusPoint'] ) && ! empty( $background['focusPoint']['x'] ) && ! empty( $background['focusPoint']['y'] ) ) {
-				$css_setup['background-position'] = round( $background['focusPoint']['x'] * 100 ) . '% ' . round( $background['focusPoint']['y'] * 100 ) . '%';
-			}
+			$css_array[] = [
+				Dynamic_Selector::KEY_SELECTOR => $selector_full,
+				Dynamic_Selector::KEY_RULES    => [
+					Config::CSS_PROP_BACKGROUND_COLOR => [
+						Dynamic_Selector::META_KEY    => $this->control_id . '_' . $row_index . '_background',
+						Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
+							$background = $value;
+							$style      = '';
+							if ( isset( $background['useFeatured'] ) && $background['useFeatured'] === true && is_singular() ) {
+								$featured_image = get_the_post_thumbnail_url();
+								if ( ! empty( $featured_image ) ) {
+									$style .= sprintf( 'background-image: url("%s");', esc_url( $featured_image ) );
+								} else {
+									$style .= sprintf( 'background-image: url("%s");', esc_url( $background['imageUrl'] ) );
+								}
+							} elseif ( ! empty( $background['imageUrl'] ) ) {
+								$style .= sprintf( 'background-image: url("%s");', esc_url( $background['imageUrl'] ) );
+							}
+							$style .= 'background-size:cover;';
 
-			if ( $background['fixed'] === true ) {
-				$css_setup['background-attachment'] = 'fixed';
-			}
+							if ( ! empty( $background['focusPoint'] ) && ! empty( $background['focusPoint']['x'] ) && ! empty( $background['focusPoint']['y'] ) ) {
+								$style .= 'background-position:' . round( $background['focusPoint']['x'] * 100 ) . '% ' . round( $background['focusPoint']['y'] * 100 ) . '%;';
+							}
 
-			if ( ! empty( $background['overlayColorValue'] ) && ! empty( $background['overlayOpacity'] ) ) {
-				$css_array[ $selector . ':before' ] = array(
-					'background-color' => $background['overlayColorValue'],
-					'opacity'          => $background['overlayOpacity'] / 100,
-					'content'          => '""',
-					'position'         => 'absolute',
-					'top'              => '0',
-					'bottom'           => '0',
-					'width'            => '100%',
-				);
-			}
-			$css_array[ $selector . ',' . $selector . '.dark-mode,' . $selector . '.light-mode' ] = array(
-				'background-color' => 'transparent',
-			);
+							if ( isset( $background['fixed'] ) && $background['fixed'] === true ) {
+								$style .= 'background-attachment: fixed;';
+							}
+							$style .= 'background-color:transparent;';
+
+							return $style;
+						},
+					],
+				],
+			];
+
+			$css_array[] = [
+				Dynamic_Selector::KEY_SELECTOR => $selector . ':before',
+				Dynamic_Selector::KEY_RULES    => [
+					Config::CSS_PROP_BACKGROUND_COLOR => [
+						Dynamic_Selector::META_KEY    => $this->control_id . '_' . $row_index . '_background',
+						Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
+							$background = $value;
+							$style      = '';
+							if ( ! empty( $background['overlayColorValue'] ) && ! empty( $background['overlayOpacity'] ) ) {
+								$style = sprintf( 'background-color:%s; opacity: %s; content: ""; position:absolute; top: 0; bottom:0; width:100%%;', $background['overlayColorValue'], ( $background['overlayOpacity'] / 100 ) );
+							}
+
+							return $style;
+						},
+					],
+				],
+			];
 		}
-
-		$css_array[ $selector . ',' . $selector . '.dark-mode,' . $selector . '.light-mode' ] = $css_setup;
-
 		return $css_array;
 	}
 
@@ -903,7 +931,7 @@ abstract class Abstract_Builder implements Builder {
 					return 0;
 				}
 
-				return $item1['x'] < $item2['x'] ? - 1 : 1;
+				return $item1['x'] < $item2['x'] ? -1 : 1;
 			}
 		);
 
@@ -962,15 +990,15 @@ abstract class Abstract_Builder implements Builder {
 
 			// If there is a gap between components, build new group.
 			if ( $last_item !== null && ! $is_near_prev ) {
-				$render_index ++;
+				$render_index++;
 			}
 			// If there are two neighbours and none of them have auto_width, build new group.
 			if ( $is_near_prev && ! $last_item['is_auto_width'] && ! $is_auto_width ) {
-				$render_index ++;
+				$render_index++;
 			}
 			// If there are neighbours prev and next, always group with the next on.
 			if ( $is_near_prev && $is_near_next && ! $last_item['is_auto_width'] && $is_auto_width && ! isset( $render_buffer[ $render_index ] ) ) {
-				$render_index ++;
+				$render_index++;
 			}
 
 			// Use alignment only of non-auto width element.

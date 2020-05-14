@@ -1,5 +1,5 @@
 /* jshint esversion: 6 */
-/* global wp */
+/* global wp, NeveReactCustomize */
 import PropTypes from 'prop-types'
 import FontFamilySelector from './FontFamilySelector.js'
 
@@ -8,7 +8,7 @@ const {
   Fragment
 } = wp.element
 
-class TypefaceComponent extends Component {
+export class TypefaceComponent extends Component {
   constructor(props) {
     super( props )
     const value = props.control.setting.get()
@@ -27,6 +27,17 @@ class TypefaceComponent extends Component {
     } : defaultParams
   }
 
+  maybe_get_typekit_font(font) {
+    if ( Object.prototype.hasOwnProperty.call( NeveReactCustomize, 'typekitSlugs' ) === false ) {
+      return font
+    }
+    const typekitSlugs = NeveReactCustomize.typekitSlugs
+    if ( Object.prototype.hasOwnProperty.call( typekitSlugs, font ) ) {
+      return typekitSlugs[font]
+    }
+    return font
+  }
+
   render() {
     const self = this
     return (
@@ -43,6 +54,7 @@ class TypefaceComponent extends Component {
               self.updateControl()
             }}
             inheritDefault={this.controlParams.default_is_inherit}
+            maybeGetTypekit={this.maybe_get_typekit_font}
           />
         </div>
       </Fragment>
@@ -51,9 +63,9 @@ class TypefaceComponent extends Component {
 
   updateControl() {
     setTimeout( () => {
-      this.props.control.setting.set( this.state.fontFamily )
+      this.props.control.setting.set( this.maybe_get_typekit_font(this.state.fontFamily) )
       wp.customize.previewer.send( 'font-selection', {
-        value: this.state.fontFamily,
+        value: this.maybe_get_typekit_font(this.state.fontFamily),
         source: this.state.fontFamilySource,
         controlId: this.props.control.id,
         type: '\\Neve\\Customizer\\Controls\\React\\Font_Family',

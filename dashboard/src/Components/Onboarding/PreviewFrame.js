@@ -48,10 +48,10 @@ const PreviewFrame = ({next, prev, siteData, setSite, setPreview, setModal}) => 
 					{siteData.upsell ?
 						<Button
 							className="upgrade"
-							isLink
+							isPrimary
 							href={siteData.utmOutboundLink || neveDash.upgradeURL}
 						>
-							{__('Upgrade', 'neve')}
+							{__('Upgrade and Import', 'neve')}
 						</Button> :
 						<Button
 							className="import"

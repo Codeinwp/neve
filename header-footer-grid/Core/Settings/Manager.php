@@ -11,6 +11,7 @@
 namespace HFG\Core\Settings;
 
 use Neve\Customizer\Controls\Tabs;
+use Neve\Core\Settings\Mods;
 
 /**
  * Class Manager
@@ -103,7 +104,7 @@ class Manager {
 	/**
 	 * Load settings/control group in customizer.
 	 *
-	 * @param null                       $group             Group to load.
+	 * @param null                       $group Group to load.
 	 * @param \WP_Customize_Manager|null $customize_manager Manager object.
 	 *
 	 * @return \WP_Customize_Manager Customizer object.
@@ -216,7 +217,7 @@ class Manager {
 	/**
 	 * Utility method to define existing controls for component tabs.
 	 *
-	 * @param string $id   The ID for the tab.
+	 * @param string $id The ID for the tab.
 	 * @param array  $tabs List of tab and controls to use.
 	 *
 	 * @since   1.0.1
@@ -263,7 +264,7 @@ class Manager {
 	 * It's using this format `post<component_id|builder_id|row_id>`.
 	 *
 	 * @param string $transport Transport type.
-	 * @param string $id        Component id.
+	 * @param string $id Component id.
 	 *
 	 * @return string Core transport.
 	 */
@@ -410,22 +411,42 @@ class Manager {
 	}
 
 	/**
+	 * Return registered default.
+	 *
+	 * @param string $id Setting id.
+	 * @param null   $subkey Subkey, if any.
+	 *
+	 * @return mixed|null
+	 */
+	public function get_default( $id, $subkey = null ) {
+		return
+			isset( self::$settings[ $id ]['default'] )
+				? ( $subkey === null
+				? self::$settings[ $id ]['default']
+				: ( isset( self::$settings[ $id ]['default'][ $subkey ] )
+					? self::$settings[ $id ]['default'][ $subkey ]
+					: null
+				) )
+				: null;
+	}
+
+	/**
 	 * Get setting value based on context.
 	 *
-	 * @param string $id      Setting id.
+	 * @param string $id Setting id.
 	 * @param mixed  $default Default value.
 	 *
 	 * @return mixed Mod value.
 	 */
 	public function get( $id, $default = null ) {
 		if ( null !== $default ) {
-			return get_theme_mod( $id, $default );
+			return Mods::get( $id, $default );
 		}
 		if ( isset( self::$settings[ $id ]['preview_default'] ) && is_customize_preview() ) {
-			return get_theme_mod( $id, self::$settings[ $id ]['preview_default'] );
+			return Mods::get( $id, self::$settings[ $id ]['preview_default'] );
 		}
 		if ( isset( self::$settings[ $id ]['default'] ) ) {
-			return get_theme_mod( $id, self::$settings[ $id ]['default'] );
+			return Mods::get( $id, self::$settings[ $id ]['default'] );
 		}
 
 		return get_theme_mod( $id );

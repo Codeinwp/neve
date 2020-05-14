@@ -11,8 +11,10 @@
 
 namespace HFG\Core\Components;
 
+use HFG\Core\Settings\Config;
 use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Main;
+use Neve\Core\Styles\Dynamic_Selector;
 use Neve_Pro\Core\Settings;
 
 /**
@@ -192,29 +194,65 @@ class CartIcon extends Abstract_Component {
 	 * @access  public
 	 */
 	public function add_style( array $css_array = array() ) {
-		$size        = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::SIZE_ID );
-		$color       = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::COLOR_ID );
-		$color_hover = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::HOVER_COLOR_ID );
-		$label_size  = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::LABEL_SIZE_ID );
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => $this->default_selector . ' svg',
+			Dynamic_Selector::KEY_RULES    => [
+				\Neve\Core\Settings\Config::CSS_PROP_WIDTH => [
+					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::SIZE_ID,
+					Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::SIZE_ID ),
+				],
+				\Neve\Core\Settings\Config::CSS_PROP_HEIGHT => [
+					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::SIZE_ID,
+					Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::SIZE_ID ),
+				],
+				\Neve\Core\Settings\Config::CSS_PROP_FILL_COLOR => [
+					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::COLOR_ID,
+					Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::COLOR_ID ),
+				],
+			],
+		];
 
-		if ( ! empty( $size ) ) {
-			$css_array[ $this->default_selector . ' svg' ]['width']  = $size . 'px';
-			$css_array[ $this->default_selector . ' svg' ]['height'] = $size . 'px';
-		}
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => $this->default_selector . ' .cart-icon-label',
+			Dynamic_Selector::KEY_RULES    => [
+				\Neve\Core\Settings\Config::CSS_PROP_COLOR => [
+					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::COLOR_ID,
+					Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::COLOR_ID ),
+				],
+			],
+		];
 
-		if ( ! empty( $color ) ) {
-			$css_array[ $this->default_selector . ' svg' ]['fill']               = $color;
-			$css_array[ $this->default_selector . ' .cart-icon-label' ]['color'] = $color;
-		}
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => $this->default_selector . ':hover svg',
+			Dynamic_Selector::KEY_RULES    => [
+				\Neve\Core\Settings\Config::CSS_PROP_FILL_COLOR => [
+					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::HOVER_COLOR_ID,
+					Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::HOVER_COLOR_ID ),
+				],
+			],
+		];
 
-		if ( ! empty( $color_hover ) ) {
-			$css_array[ $this->default_selector . ':hover svg' ]['fill']               = $color_hover;
-			$css_array[ $this->default_selector . ':hover .cart-icon-label' ]['color'] = $color;
-		}
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => $this->default_selector . ':hover .cart-icon-label',
+			Dynamic_Selector::KEY_RULES    => [
+				\Neve\Core\Settings\Config::CSS_PROP_COLOR => [
+					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::HOVER_COLOR_ID,
+					Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::HOVER_COLOR_ID ),
+				],
+			],
+		];
 
-		if ( ! empty( $label_size ) ) {
-			$css_array[ $this->default_selector . ' .cart-icon-label' ]['font-size'] = $label_size . 'px';
-		}
+
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => $this->default_selector . ' .cart-icon-label',
+			Dynamic_Selector::KEY_RULES    => [
+				\Neve\Core\Settings\Config::CSS_PROP_FONT_SIZE => [
+					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::LABEL_SIZE_ID,
+					Dynamic_Selector::META_SUFFIX  => 'px',
+					Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::LABEL_SIZE_ID ),
+				],
+			],
+		];
 
 		return parent::add_style( $css_array );
 	}
