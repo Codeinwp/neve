@@ -766,8 +766,7 @@ abstract class Abstract_Builder implements Builder {
 	 * @access  private
 	 */
 	private function add_row_style( $row_index, $css_array = array() ) {
-
-		$selector    = '.' . $this->get_id() . '-' . $row_index . '-inner';
+		$selector    = $row_index === 'sidebar' ? '.header-menu-sidebar .header-menu-sidebar-bg' : '.' . $this->get_id() . '-' . $row_index . '-inner';
 		$css_array[] = [
 			Dynamic_Selector::KEY_SELECTOR => $selector,
 			Dynamic_Selector::KEY_RULES    => [
@@ -787,9 +786,26 @@ abstract class Abstract_Builder implements Builder {
 			],
 		];
 
-		if ( $row_index === 'sidebar' ) {
-			$selector = '.header-menu-sidebar .header-menu-sidebar-bg';
-		}
+		$default_colors = $this->get_default_row_colors( $row_index );
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => $selector . ',' . $selector . ' a:not(.button),' . $selector . ' .navbar-toggle',
+			Dynamic_Selector::KEY_RULES    => [
+				Config::CSS_PROP_COLOR => [
+					Dynamic_Selector::META_KEY           => $this->control_id . '_' . $row_index . '_' . self::TEXT_COLOR,
+					Dynamic_Selector::META_DEFAULT       => $default_colors['text'],
+				],
+			],
+		];
+
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => $selector . ' .icon-bar',
+			Dynamic_Selector::KEY_RULES    => [
+				Config::CSS_PROP_BACKGROUND_COLOR => [
+					Dynamic_Selector::META_KEY           => $this->control_id . '_' . $row_index . '_' . self::TEXT_COLOR,
+					Dynamic_Selector::META_DEFAULT       => $default_colors['text'],
+				],
+			],
+		];
 
 		if ( $this->get_id() === 'header' ) {
 			$selector = '.hfg_header ' . $selector;
@@ -799,8 +815,8 @@ abstract class Abstract_Builder implements Builder {
 		if ( isset( $this->default_colors[ $this->get_id() ][ $row_index ] ) && ! empty( $this->default_colors[ $this->get_id() ][ $row_index ] ) ) {
 			$default_color = $this->default_colors[ $this->get_id() ][ $row_index ];
 		}
-		$skin          = $this->get_default_row_colors( $row_index );
-		$default_color = isset( $skin['background'] ) ? $skin['background'] : $default_color;
+		$defaults          = $this->get_default_row_colors( $row_index );
+		$default_color = isset( $defaults['background'] ) ? $defaults['background'] : $default_color;
 
 		$background = get_theme_mod(
 			$this->control_id . '_' . $row_index . '_background',
@@ -810,18 +826,42 @@ abstract class Abstract_Builder implements Builder {
 			]
 		);
 
-		if ( $background['type'] === 'color' && ! empty( $background['colorValue'] ) && $background['colorValue'] !== $default_color ) {
+		if ( $background['type'] === 'color' && ! empty( $background['colorValue'] ) ) {
+			$css_array[] = [
+				Dynamic_Selector::KEY_SELECTOR => $selector . ' .primary-menu-ul .sub-menu li,' . $selector . ' .primary-menu-ul .sub-menu',
+				Dynamic_Selector::KEY_RULES => [
+					Config::CSS_PROP_BACKGROUND_COLOR => [
+						Dynamic_Selector::META_KEY => $this->control_id . '_' . $row_index . '_background' . '.colorValue'
+					],
+					Config::CSS_PROP_BORDER_COLOR => [
+						Dynamic_Selector::META_KEY => $this->control_id . '_' . $row_index . '_background' . '.colorValue'
+					]
+				]
+			];
 			$css_array[] = [
 				Dynamic_Selector::KEY_SELECTOR => $selector,
 				Dynamic_Selector::KEY_RULES    => [
 					Config::CSS_PROP_BACKGROUND_COLOR => [
 						Dynamic_Selector::META_KEY => $this->control_id . '_' . $row_index . '_background' . '.colorValue',
+						Dynamic_Selector::META_DEFAULT => $defaults['background'],
 					],
 				],
 			];
 		}
 
 		if ( $background['type'] === 'image' ) {
+			$css_array[] = [
+				Dynamic_Selector::KEY_SELECTOR => $selector . ' .primary-menu-ul .sub-menu li,' . $selector . ' .primary-menu-ul .sub-menu',
+				Dynamic_Selector::KEY_RULES => [
+					Config::CSS_PROP_BACKGROUND_COLOR => [
+						Dynamic_Selector::META_KEY => $this->control_id . '_' . $row_index . '_background' . '.overlayColorValue'
+					],
+					Config::CSS_PROP_BORDER_COLOR => [
+						Dynamic_Selector::META_KEY => $this->control_id . '_' . $row_index . '_background' . '.overlayColorValue'
+					]
+				]
+			];
+
 			$css_array[] = [
 				Dynamic_Selector::KEY_SELECTOR => $selector,
 				Dynamic_Selector::KEY_RULES    => [
