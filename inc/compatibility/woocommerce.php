@@ -9,6 +9,7 @@
 namespace Neve\Compatibility;
 
 use HFG\Core\Components\CartIcon;
+use Neve\Core\Settings\Config;
 use Neve\Views\Layouts\Layout_Sidebar;
 
 /**
@@ -26,7 +27,7 @@ class Woocommerce {
 	private $primary_buttons_selectors = array(
 		'default' => '
 			,.woocommerce a.button,
-			.woocommerce .button:not(.nv-sidebar-toggle):not(.nv-close-cart-sidebar),
+			.woocommerce .button:not(.nv-sidebar-toggle):not(.nv-close-cart-sidebar):not([name="apply_coupon"]),
 			.woocommerce a.button.alt,
 			.woocommerce a.button.button-primary,
 			.woocommerce a.button.checkout-button,
@@ -47,7 +48,7 @@ class Woocommerce {
 			.button.woocommerce-form-login__submit',
 		'hover'   => '
 			,.woocommerce a.button:hover,
-			.woocommerce .button:not(.nv-sidebar-toggle):not(.nv-close-cart-sidebar):hover,
+			.woocommerce .button:not(.nv-sidebar-toggle):not(.nv-close-cart-sidebar):not([name="apply_coupon"]):hover,
 			.woocommerce a.button.alt:hover,
 			.woocommerce a.button.button-primary:hover,
 			.woocommerce a.button.checkout-button:hover,
@@ -82,7 +83,8 @@ class Woocommerce {
 			.woocommerce #review_form #respond input#submit,
 			.woocommerce .price_slider_amount button.button:not(.nv-sidebar-toggle):not(.nv-close-cart-sidebar),
 			.woocommerce .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout),
-			.woocommerce .button.button-secondary.more-details',
+			.woocommerce .button.button-secondary.more-details,
+			.woocommerce-checkout #neve-checkout-coupon .woocommerce-form-coupon .form-row-last button.button',
 		'hover'            => '
 			,#comments input[type=submit]:hover,
 			.woocommerce-cart table.cart td.actions .coupon > .input-text + .button:hover,
@@ -93,7 +95,8 @@ class Woocommerce {
 			.woocommerce #review_form #respond input#submit:hover,
 			.woocommerce .price_slider_amount button.button:hover,
 			.woocommerce .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout):hover,
-			.woocommerce .button.button-secondary.more-details:hover',
+			.woocommerce .button.button-secondary.more-details:hover,
+			.woocommerce-checkout #neve-checkout-coupon .woocommerce-form-coupon .form-row-last button.button:hover',
 		'no-padding'       => '
 			,.woocommerce ul[id^="nv-primary-navigation"] .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout)',
 		'no-padding-hover' => '
@@ -213,6 +216,7 @@ class Woocommerce {
 			update_post_meta( $page_id, 'neve_meta_content_width', 100 );
 		}
 		update_option( 'neve_update_woo_width', false );
+
 		return true;
 	}
 
@@ -249,7 +253,7 @@ class Woocommerce {
 	 * Remove last breadcrumb on single product.
 	 *
 	 * @param array $crumbs breadcrumbs.
-	 * @param array $args   breadcrumbs args.
+	 * @param array $args breadcrumbs args.
 	 *
 	 * @return array
 	 */
@@ -374,55 +378,155 @@ class Woocommerce {
 	 * Add inline selectors for woocommerce.
 	 */
 	private function add_inline_selectors() {
-		add_filter( 'neve_link_color_filter', array( $this, 'add_link_color' ) );
-		add_filter( 'neve_link_hover_color_filter', array( $this, 'add_link_color' ) );
-		add_filter( 'neve_button_color_filter', array( $this, 'add_button_color' ) );
-		add_filter( 'neve_button_hover_color_filter', array( $this, 'add_button_hover_color' ) );
-		add_filter( 'neve_button_text_color_filter', array( $this, 'add_button_text_color' ) );
-		add_filter( 'neve_button_hover_text_color_filter', array( $this, 'add_button_hover_text_color' ) );
-		add_filter( 'neve_button_border_radius_selectors_filter', array( $this, 'add_button_border_radius' ) );
-		add_filter( 'neve_button_padding_selectors', array( $this, 'add_button_padding_selectors' ), 10, 2 );
 
-		add_filter( 'neve_secondary_button_color_filter', array( $this, 'add_secondary_button_color' ) );
-		add_filter( 'neve_secondary_button_hover_color_filter', array( $this, 'add_secondary_button_hover_color' ) );
 		add_filter(
-			'neve_secondary_button_border_radius_selectors_filter',
+			'neve_selectors_' . Config::CSS_SELECTOR_BTN_PRIMARY_NORMAL,
 			array(
 				$this,
-				'add_secondary_button_border_radius',
-			)
+				'add_primary_btns_normal',
+			),
+			10,
+			1
+		);
+		add_filter(
+			'neve_selectors_' . Config::CSS_SELECTOR_BTN_PRIMARY_HOVER,
+			array(
+				$this,
+				'add_primary_btns_hover',
+			),
+			10,
+			1
+		);
+		add_filter(
+			'neve_selectors_' . Config::CSS_SELECTOR_BTN_PRIMARY_PADDING,
+			array(
+				$this,
+				'add_primary_btns_padding',
+			),
+			10,
+			1
 		);
 
-		add_filter( 'neve_menu_items_color_filter', array( $this, 'add_menu_items_color' ) );
-		add_filter( 'neve_menu_items_hover_color_filter', array( $this, 'add_menu_items_hover_color' ) );
+
+		add_filter(
+			'neve_selectors_' . Config::CSS_SELECTOR_BTN_SECONDARY_NORMAL,
+			array(
+				$this,
+				'add_secondary_btns_normal',
+			),
+			10,
+			1
+		);
+		add_filter(
+			'neve_selectors_' . Config::CSS_SELECTOR_BTN_SECONDARY_HOVER,
+			array(
+				$this,
+				'add_secondary_btns_hover',
+			),
+			10,
+			1
+		);
+		add_filter(
+			'neve_selectors_' . Config::CSS_SELECTOR_BTN_SECONDARY_PADDING,
+			array(
+				$this,
+				'add_secondary_btns_padding',
+			),
+			10,
+			1
+		);
+
 		add_filter( 'neve_body_font_family_selectors', array( $this, 'add_font_families' ) );
 		add_filter( 'neve_headings_typeface_selectors', array( $this, 'add_typeface_selectors' ) );
 	}
 
 	/**
-	 * Add selectors for menu item color.
+	 * Add primary btn selectors.
 	 *
-	 * @param array $color_setup the color setup from Neve\Views\Inline\Colors.
+	 * @param string $selectors Current CSS selectors.
 	 *
-	 * @return mixed
+	 * @return string
 	 */
-	public function add_menu_items_color( $color_setup ) {
-		$color_setup['color']['selectors'] .= ', .menu-item-nav-cart .cart-count';
-
-		return $color_setup;
+	public function add_primary_btns_normal( $selectors ) {
+		return ( $selectors . $this->primary_buttons_selectors['default'] );
 	}
 
 	/**
-	 * Add selectors for menu item hover color.
+	 * Add primary btn selectors.
 	 *
-	 * @param array $color_setup the color setup from Neve\Views\Inline\Colors.
+	 * @param string $selectors Current CSS selectors.
 	 *
-	 * @return mixed
+	 * @return string
 	 */
-	public function add_menu_items_hover_color( $color_setup ) {
-		$color_setup['color']['selectors'] .= ', .menu-item-nav-cart:hover .cart-count';
+	public function add_primary_btns_hover( $selectors ) {
+		return ( $selectors . $this->primary_buttons_selectors['hover'] );
+	}
 
-		return $color_setup;
+	/**
+	 * Add primary btn selectors for padding.
+	 *
+	 * @param string $selectors Current CSS selectors.
+	 *
+	 * @return string
+	 */
+	public function add_primary_btns_padding( $selectors ) {
+		return ( $selectors . ',.woocommerce a.button,
+			.woocommerce .button,
+			.woocommerce a.button.loading,
+			.woocommerce a.button.alt,
+			.woocommerce a.button.button-primary,
+			.woocommerce a.button.checkout-button,
+			.woocommerce button.button:disabled,
+			.woocommerce button.button:disabled[disabled],
+			.woocommerce a.button.add_to_cart,
+			.woocommerce a.product_type_grouped,
+			.woocommerce a.product_type_external,
+			.woocommerce a.product_type_variable,
+			.woocommerce button.button.alt.single_add_to_cart_button.disabled,
+			.woocommerce button.button.alt.single_add_to_cart_button,
+			.woocommerce .actions > button[type=submit],
+			.woocommerce .checkout.wc-forward,
+			.woocommerce button#place_order,
+			.woocommerce .return-to-shop > .button,
+			.woocommerce .button.woocommerce-form-login__submit,
+			.woocommerce.single .quantity input' );
+	}
+
+	/**
+	 * Add secondary btn selectors.
+	 *
+	 * @param string $selectors Current CSS selectors.
+	 *
+	 * @return string
+	 */
+	public function add_secondary_btns_normal( $selectors ) {
+
+		return ( $selectors . $this->secondary_buttons_selectors['default'] . $this->secondary_buttons_selectors['no-padding'] );
+
+	}
+
+	/**
+	 * Add secondary btn selectors.
+	 *
+	 * @param string $selectors Current CSS selectors.
+	 *
+	 * @return string
+	 */
+	public function add_secondary_btns_hover( $selectors ) {
+
+		return ( $selectors . $this->secondary_buttons_selectors['hover'] . $this->secondary_buttons_selectors['no-padding-hover'] );
+
+	}
+
+	/**
+	 * Add secondary btn selectors for padding.
+	 *
+	 * @param string $selectors Current CSS selectors.
+	 *
+	 * @return string
+	 */
+	public function add_secondary_btns_padding( $selectors ) {
+		return ( $selectors . $this->secondary_buttons_selectors['default'] . ',.woocommerce a.nv-quick-view-product.top' );
 	}
 
 	/**
@@ -451,187 +555,6 @@ class Woocommerce {
 		return $selectors;
 	}
 
-	/**
-	 * Add button color colors.
-	 *
-	 * @param array $color_setup the color setup from Neve\Views\Inline\Colors.
-	 *
-	 * @return array
-	 */
-	public function add_button_color( $color_setup ) {
-		$color_setup['background']['selectors'] .= $this->primary_buttons_selectors['default'];
-
-		return $color_setup;
-	}
-
-	/**
-	 * Add button hover color.
-	 *
-	 * @param array $color_setup the color setup from Neve\Views\Inline\Colors.
-	 *
-	 * @return array
-	 */
-	public function add_button_hover_color( $color_setup ) {
-		$color_setup['background']['selectors'] .= $this->primary_buttons_selectors['hover'];
-
-		return $color_setup;
-	}
-
-	/**
-	 * Add secondary button color.
-	 *
-	 * @param array $color_setup the color setup from Neve\Views\Inline\Colors.
-	 *
-	 * @return array
-	 */
-	public function add_secondary_button_color( $color_setup ) {
-		if ( isset( $color_setup['color'] ) ) {
-			$color_setup['color']['selectors'] .= $this->secondary_buttons_selectors['no-padding'];
-			$color_setup['color']['selectors'] .= $this->secondary_buttons_selectors['default'];
-		}
-		if ( isset( $color_setup['background-color'] ) ) {
-			$color_setup['background-color']['selectors'] .= $this->secondary_buttons_selectors['no-padding'];
-			$color_setup['background-color']['selectors'] .= $this->secondary_buttons_selectors['default'];
-		}
-		if ( isset( $color_setup['border-color'] ) ) {
-			$color_setup['border-color']['selectors'] .= $this->secondary_buttons_selectors['no-padding'];
-			$color_setup['border-color']['selectors'] .= $this->secondary_buttons_selectors['default'];
-		}
-
-		return $color_setup;
-	}
-
-	/**
-	 * Add secondary button hover color.
-	 *
-	 * @param array $color_setup the color setup from Neve\Views\Inline\Colors.
-	 *
-	 * @return array
-	 */
-	public function add_secondary_button_hover_color( $color_setup ) {
-		if ( isset( $color_setup['color'] ) ) {
-			$color_setup['color']['selectors'] .= $this->secondary_buttons_selectors['hover'];
-			$color_setup['color']['selectors'] .= $this->secondary_buttons_selectors['no-padding-hover'];
-		}
-		if ( isset( $color_setup['background-color'] ) ) {
-			$color_setup['background-color']['selectors'] .= $this->secondary_buttons_selectors['hover'];
-			$color_setup['background-color']['selectors'] .= $this->secondary_buttons_selectors['no-padding-hover'];
-		}
-		if ( isset( $color_setup['border-color'] ) ) {
-			$color_setup['border-color']['selectors'] .= $this->secondary_buttons_selectors['hover'];
-			$color_setup['border-color']['selectors'] .= $this->secondary_buttons_selectors['no-padding-hover'];
-		}
-
-		return $color_setup;
-	}
-
-	/**
-	 * Add button text color.
-	 *
-	 * @param array $color_setup the color setup from Neve\Views\Inline\Colors.
-	 *
-	 * @return array
-	 */
-	public function add_button_text_color( $color_setup ) {
-		$color_setup['color']['selectors'] .= $this->primary_buttons_selectors['default'];
-
-		return $color_setup;
-	}
-
-	/**
-	 * Add button hover text color.
-	 *
-	 * @param array $color_setup the color setup from Neve\Views\Inline\Colors.
-	 *
-	 * @return array
-	 */
-	public function add_button_hover_text_color( $color_setup ) {
-		$color_setup['color']['selectors'] .= $this->primary_buttons_selectors['hover'];
-
-		return $color_setup;
-	}
-
-	/**
-	 * Add button border radius.
-	 *
-	 * @param string $selectors the color setup from Neve\Views\Inline\Colors.
-	 *
-	 * @return string
-	 */
-	public function add_button_border_radius( $selectors ) {
-		$selectors .= $this->primary_buttons_selectors['default'];
-
-		return $selectors;
-	}
-
-	/**
-	 * Add secondary button border radius.
-	 *
-	 * @param string $selectors the color setup from Neve\Views\Inline\Colors.
-	 *
-	 * @return string
-	 */
-	public function add_secondary_button_border_radius( $selectors ) {
-		$selectors .= $this->secondary_buttons_selectors['default'];
-		$selectors .= $this->secondary_buttons_selectors['no-padding'];
-		$selectors .= ',.woocommerce a.nv-quick-view-product.top';
-
-		return $selectors;
-	}
-
-	/**
-	 * Add buttons paddings.
-	 *
-	 * @param string $selectors css selectors.
-	 * @param string $theme_mod theme mod key.
-	 *
-	 * @return string
-	 */
-	public function add_button_padding_selectors( $selectors, $theme_mod ) {
-		if ( $theme_mod === 'neve_button_padding' ) {
-			$selectors .= '
-			,.woocommerce a.button,
-			.woocommerce .button,
-			.woocommerce a.button.loading,
-			.woocommerce a.button.alt,
-			.woocommerce a.button.button-primary,
-			.woocommerce a.button.checkout-button,
-			.woocommerce button.button:disabled,
-			.woocommerce button.button:disabled[disabled],
-			.woocommerce a.button.add_to_cart,
-			.woocommerce a.product_type_grouped,
-			.woocommerce a.product_type_external,
-			.woocommerce a.product_type_variable,
-			.woocommerce button.button.alt.single_add_to_cart_button.disabled,
-			.woocommerce button.button.alt.single_add_to_cart_button,
-			.woocommerce .actions > button[type=submit],
-			.woocommerce .checkout.wc-forward,
-			.woocommerce button#place_order,
-			.woocommerce .return-to-shop > .button,
-			.woocommerce .button.woocommerce-form-login__submit,
-			.woocommerce.single .quantity input';
-		}
-
-		if ( $theme_mod === 'neve_secondary_button_padding' ) {
-			$selectors .= $this->secondary_buttons_selectors['default'];
-			$selectors .= ',.woocommerce a.nv-quick-view-product.top';
-		}
-
-		return $selectors;
-	}
-
-	/**
-	 * Add link colors.
-	 *
-	 * @param array $color_setup the color setup from Neve\Views\Inline\Colors.
-	 *
-	 * @return array
-	 */
-	public function add_link_color( $color_setup ) {
-		$color_setup['color']['selectors'] .= '';
-
-		return $color_setup;
-	}
 
 	/**
 	 * Adapt the meta-box so it works on the shop page.

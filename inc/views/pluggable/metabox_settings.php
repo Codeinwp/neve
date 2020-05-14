@@ -7,6 +7,9 @@
 
 namespace Neve\Views\Pluggable;
 
+use Neve\Core\Settings\Config;
+use Neve\Core\Settings\Mods;
+
 /**
  * Class Metabox_Settings
  *
@@ -36,6 +39,7 @@ class Metabox_Settings {
 		add_filter( 'neve_container_class_filter', array( $this, 'filter_container_class' ), 100 );
 		add_filter( 'body_class', array( $this, 'body_classes' ) );
 		add_filter( 'neve_filter_toggle_content_parts', array( $this, 'filter_components_toggle' ), 100, 2 );
+		add_action( 'enqueue_block_editor_assets', array( $this, 'editor_content_width' ), 100 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'content_width' ), 999 );
 	}
 
@@ -89,23 +93,105 @@ class Metabox_Settings {
 	}
 
 	/**
-	 * Add content width.
+	 * Get content width, if any.
+	 *
+	 * @return int|bool Content width.
 	 */
-	public function content_width() {
+	public function get_content_width() {
 		$post_id = $this->get_post_id();
 
 		if ( $post_id === false ) {
-			return;
+			return false;
 		}
 
 		$content_width_status = get_post_meta( $post_id, 'neve_meta_enable_content_width', true );
 		$content_width_status = empty( $content_width_status ) ? $this->get_content_width_status_default() : $content_width_status;
 		if ( $content_width_status !== 'on' ) {
-			return;
+			return false;
 		}
 
 		$meta_value = get_post_meta( $post_id, 'neve_meta_content_width', true );
-		$meta_value = empty( $meta_value ) ? $this->get_content_width_default() : $meta_value;
+
+		return empty( $meta_value ) ? $this->get_content_width_default() : $meta_value;
+
+	}
+
+	/**
+	 * Get continer type for current post.
+	 *
+	 * @return mixed|string
+	 */
+	public function get_container_type() {
+
+		$post_id = $this->get_post_id();
+
+		$meta_value = get_post_meta( $post_id, 'neve_meta_container', true );
+
+		if ( empty( $meta_value ) || $meta_value === 'default' ) {
+			return '';
+		}
+		if ( $post_id === false ) {
+			return '';
+		}
+		return $meta_value;
+	}
+
+	/**
+	 * Set editor width.
+	 */
+	public function editor_content_width() {
+		$meta_value = $this->get_content_width();
+		$container  = $this->get_container_type();
+
+		// Check customizer container type based on the context.
+		if ( empty( $container ) ) {
+			global $post_type;
+			$container = $post_type === 'post' ? Mods::get( Config::MODS_SINGLE_POST_CONTAINER_STYLE, 'contained' ) : Mods::get( Config::MODS_DEFAULT_CONTAINER_STYLE, 'contained' );
+		}
+		// If contained, we set the block max-width based on the desktop container width.
+		if ( $container === 'contained' ) {
+			$editor_width = Mods::get( Config::MODS_CONTAINER_WIDTH );
+			$editor_width = isset( $editor_width['desktop'] ) ? (int) $editor_width['desktop'] : 1170;
+			if ( empty( $meta_value ) ) {
+				$meta_value = $this->get_content_width_default();
+			}
+			$editor_width_normal = round( ( $meta_value / 100 ) * $editor_width ) . 'px';
+		} else {
+			// For full-width container, we use the content percent value.
+			$editor_width_normal = ( empty( $meta_value ) ? 100 : $meta_value ) . '%';
+		}
+
+
+
+		$style = sprintf(
+			'
+			/* Main column width */
+			.wp-block {
+			    max-width: %s;
+			}
+
+			.wp-block[data-align="wide"] {
+			    max-width: 70vw;
+			}
+
+			.wp-block[data-align="full"] {
+			    max-width: none;
+			}
+			',
+			$editor_width_normal
+		);
+
+
+		wp_add_inline_style( 'neve-gutenberg-style', $style );
+
+
+	}
+
+	/**
+	 * Add content width.
+	 */
+	public function content_width() {
+		$meta_value = $this->get_content_width();
 
 		if ( empty( $meta_value ) ) {
 			return;
@@ -120,11 +206,12 @@ class Metabox_Settings {
 		}
 
 		$style = '@media(min-width: 960px) {
-			#content.neve-main > .container > .row > .col, 
-			#content.neve-main > .container-fluid > .row > .col { max-width: ' . absint( $meta_value ) . '%' . esc_attr( $important ) . '; } 
-			#content.neve-main > .container > .row > .nv-sidebar-wrap, 
+			#content.neve-main > .container > .row > .col,
+			#content.neve-main > .container-fluid > .row > .col,
+			#content.neve-main [class*="__inner-container"] > *:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.is-style-wide) { max-width: ' . absint( $meta_value ) . '%' . esc_attr( $important ) . '; }
+			#content.neve-main > .container > .row > .nv-sidebar-wrap,
 			#content.neve-main > .container > .row > .nv-sidebar-wrap.shop-sidebar,
-			#content.neve-main > .container-fluid > .row > .nv-sidebar-wrap, 
+			#content.neve-main > .container-fluid > .row > .nv-sidebar-wrap,
 			#content.neve-main > .container-fluid > .row > .nv-sidebar-wrap.shop-sidebar { max-width: ' . absint( $sidebar_width ) . '%' . esc_attr( $important ) . '; }
 		}';
 
@@ -134,7 +221,7 @@ class Metabox_Settings {
 	/**
 	 * Filter components that will be shown.
 	 *
-	 * @param bool   $status  the status of the component.
+	 * @param bool   $status the status of the component.
 	 * @param string $context context of the filter.
 	 *
 	 * @return bool
@@ -210,15 +297,9 @@ class Metabox_Settings {
 			return $class;
 		}
 
-		$post_id = $this->get_post_id();
+		$meta_value = $this->get_container_type();
 
-		if ( $post_id === false ) {
-			return $class;
-		}
-
-		$meta_value = get_post_meta( $post_id, 'neve_meta_container', true );
-
-		if ( empty( $meta_value ) || $meta_value === 'default' ) {
+		if ( empty( $meta_value ) ) {
 			return $class;
 		}
 

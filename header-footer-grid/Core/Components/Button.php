@@ -13,6 +13,8 @@ namespace HFG\Core\Components;
 
 use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Main;
+use Neve\Core\Settings\Config;
+use Neve\Core\Styles\Dynamic_Selector;
 
 /**
  * Class Button
@@ -62,7 +64,7 @@ class Button extends Abstract_Component {
 	 */
 	public function __construct( $panel ) {
 		parent::__construct( $panel );
-		$this->default_selector = '.builder-item--' . $this->get_id() . ' > .component-wrap > .button';
+		$this->default_selector = '.builder-item--' . $this->get_id() . ' > .component-wrap > a.button';
 	}
 
 	/**
@@ -155,50 +157,33 @@ class Button extends Abstract_Component {
 	 * @access  public
 	 */
 	public function add_style( array $css_array = array() ) {
-		$style = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::STYLE_ID );
+		$id = $this->get_id() . '_' . self::STYLE_ID;
 
-		if ( ! empty( $style ) ) {
-			if ( ! empty( $style['background'] ) ) {
-				$css_array[ $this->default_selector ]['background-color'] = $style['background'];
-			}
-			if ( ! empty( $style['backgroundHover'] ) ) {
-				$css_array[ $this->default_selector . ':hover' ]['background-color'] = $style['backgroundHover'];
-			}
-			if ( ! empty( $style['text'] ) ) {
-				$css_array[ $this->default_selector ]['color'] = $style['text'];
-			}
-			if ( ! empty( $style['textHover'] ) ) {
-				$css_array[ $this->default_selector . ':hover' ]['color'] = $style['textHover'];
-			}
-			if ( isset( $style['borderRadius'] ) ) {
-				if ( is_array( $style['borderRadius'] ) ) {
-					$css_array[ $this->default_selector ]['border-top-left-radius']     = $style['borderRadius']['top'] . 'px';
-					$css_array[ $this->default_selector ]['border-top-right-radius']    = $style['borderRadius']['right'] . 'px';
-					$css_array[ $this->default_selector ]['border-bottom-right-radius'] = $style['borderRadius']['bottom'] . 'px';
-					$css_array[ $this->default_selector ]['border-bottom-left-radius']  = $style['borderRadius']['left'] . 'px';
-				} else {
-					$css_array[ $this->default_selector ]['border-radius'] = $style['borderRadius'] . 'px';
-				}
-			}
-			if ( $style['type'] === 'outline' ) {
-				if ( ! empty( $style['text'] ) ) {
-					$css_array[ $this->default_selector ]['border-color'] = $style['text'];
-				}
-				if ( ! empty( $style['textHover'] ) ) {
-					$css_array[ $this->default_selector . ':hover' ]['border-color'] = $style['textHover'];
-				}
-				if ( ! empty( $style['borderWidth'] ) ) {
-					if ( is_array( $style['borderWidth'] ) ) {
-						$css_array[ $this->default_selector ]['border-style'] = 'solid';
-						foreach ( $style['borderWidth'] as $k => $v ) {
-							$css_array[ $this->default_selector ][ 'border-' . $k . '-width' ] = $v . 'px';
-						}
-					} else {
-						$css_array[ $this->default_selector ]['border'] = $style['borderWidth'] . 'px solid';
-					}
-				}
-			}
-		}
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => $this->default_selector,
+			Dynamic_Selector::KEY_RULES    => [
+				Config::CSS_PROP_BACKGROUND_COLOR => $id . '.background',
+				Config::CSS_PROP_COLOR            => $id . '.text',
+				Config::CSS_PROP_BORDER_RADIUS    => [
+					Dynamic_Selector::META_KEY     => $id . '.borderRadius',
+					Dynamic_Selector::META_DEFAULT => '3',
+				],
+				Config::CSS_PROP_CUSTOM_BTN_TYPE  => [
+					Dynamic_Selector::META_KEY => $id . '.type',
+				],
+				Config::CSS_PROP_BORDER_WIDTH     => [
+					Dynamic_Selector::META_KEY => $id . '.borderWidth',
+				],
+			],
+		];
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => $this->default_selector . ':hover',
+			Dynamic_Selector::KEY_RULES    => [
+				Config::CSS_PROP_BACKGROUND_COLOR => $id . '.backgroundHover',
+				Config::CSS_PROP_COLOR            => $id . '.textHover',
+			],
+		];
+
 
 		return parent::add_style( $css_array );
 	}

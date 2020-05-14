@@ -29,7 +29,8 @@
       @include button();
     }
 
-    &.is-style-outline {
+    &.is-style-outline,
+	&.is-style-secondary{
       .wp-block-button__link {
         @include button-secondary();
       }

@@ -191,6 +191,8 @@ class Main {
 				'header'                      => sprintf( __( '%s Options', 'neve' ), wp_kses_post( $theme_name ) ),
 				/* translators: %s - Theme name */
 				'starterSitesCardDescription' => sprintf( __( '%s now comes with a sites library with various designs to pick from. Visit our collection of demos that are constantly being added.', 'neve' ), wp_kses_post( $theme_name ) ),
+				/* translators: %s - "Public roadmap" */
+				'sidebarCommunityDescription' => sprintf( __( 'Share opinions, ask questions and help each other on our Neve community! Keep up with what we’re working on and vote to help us prioritize on our %s.', 'neve' ), wp_kses_post( '<a href="https://neve.nolt.io">' . __( 'public roadmap', 'neve' ) . '</a>' ) ),
 				/* translators: %s - Theme name */
 				'starterSitesTabDescription'  => sprintf( __( 'With %s, you can choose from multiple unique demos, specially designed for you, that can be installed with a single click. You just need to choose your favorite, and we will take care of everything else.', 'neve' ), wp_kses_post( $theme_name ) ),
 				/* translators: %s - Theme name */
@@ -232,7 +234,7 @@ class Main {
 			$update                = $themes_update->response[ $slug ];
 			$notifications['neve'] = [
 				// translators: s - theme name (Neve).
-				'text'   => sprintf( __( 'New theme update for %1$s! Please update to %2$s.' ), wp_kses_post( $this->theme_args['name'] ), wp_kses_post( $update['new_version'] ) ),
+				'text'   => sprintf( __( 'New theme update for %1$s! Please update to %2$s.', 'neve' ), wp_kses_post( $this->theme_args['name'] ), wp_kses_post( $update['new_version'] ) ),
 				'update' => [
 					'type' => 'theme',
 					'slug' => $slug,
@@ -248,7 +250,7 @@ class Main {
 			$notifications['neve-pro-addon'] = [
 				'text'   => sprintf(
 				// translators: s - Pro plugin name (Neve Pro)
-					__( 'New plugin update for %1$s! Please update to %2$s.' ),
+					__( 'New plugin update for %1$s! Please update to %2$s.', 'neve' ),
 					wp_kses_post( apply_filters( 'ti_wl_plugin_name', 'Neve Pro' ) ),
 					wp_kses_post( $update->new_version )
 				),
@@ -289,7 +291,7 @@ class Main {
 			],
 			[
 				'text' => __( 'Header Options', 'neve' ),
-				'link' => add_query_arg( [ 'autofocus[panel]' => 'neve_header' ], admin_url( 'customize.php' ) ),
+				'link' => add_query_arg( [ 'autofocus[panel]' => 'hfg_header' ], admin_url( 'customize.php' ) ),
 			],
 			[
 				'text' => __( 'Blog Layouts', 'neve' ),
@@ -297,7 +299,7 @@ class Main {
 			],
 			[
 				'text' => __( 'Footer Options', 'neve' ),
-				'link' => add_query_arg( [ 'autofocus[panel]' => 'neve_footer' ], admin_url( 'customize.php' ) ),
+				'link' => add_query_arg( [ 'autofocus[panel]' => 'hfg_footer' ], admin_url( 'customize.php' ) ),
 			],
 			[
 				'text' => __( 'Content / Sidebar', 'neve' ),

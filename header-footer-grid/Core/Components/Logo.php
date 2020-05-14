@@ -11,8 +11,10 @@
 
 namespace HFG\Core\Components;
 
+use HFG\Core\Settings\Config;
 use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Main;
+use Neve\Core\Styles\Dynamic_Selector;
 
 /**
  * Class Logo.
@@ -233,31 +235,25 @@ class Logo extends Abstract_Component {
 	 * @access  public
 	 */
 	public function add_style( array $css_array = array() ) {
-		$logo_max_width = json_decode( SettingsManager::get_instance()->get( $this->get_id() . '_' . self::MAX_WIDTH, '{ "mobile": "120", "tablet": "120", "desktop": "120" }' ), true );
-		$selector       = '.builder-item--' . $this->get_id() . ' .site-logo img';
-		if ( isset( $logo_max_width['mobile'] ) ) {
-			$logo_max_width['mobile']                             = ( $logo_max_width['mobile'] > 0 ) ? $logo_max_width['mobile'] . 'px' : 'auto';
-			$css_array[' @media (max-width: 576px)'][ $selector ] = array(
-				'max-width' => $logo_max_width['mobile'],
-			);
-		}
-		if ( isset( $logo_max_width['tablet'] ) ) {
-			$logo_max_width['tablet']                             = ( $logo_max_width['tablet'] > 0 ) ? $logo_max_width['tablet'] . 'px' : 'auto';
-			$css_array[' @media (min-width: 576px)'][ $selector ] = array(
-				'max-width' => $logo_max_width['tablet'],
-			);
-		}
-		if ( isset( $logo_max_width['desktop'] ) ) {
-			$logo_max_width['desktop']                            = ( $logo_max_width['desktop'] > 0 ) ? $logo_max_width['desktop'] . 'px' : 'auto';
-			$css_array[' @media (min-width: 961px)'][ $selector ] = array(
-				'max-width' => $logo_max_width['desktop'],
-			);
-		}
 
-		$color = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::COLOR_ID );
-		if ( ! empty( $color ) ) {
-			$css_array[ $this->default_selector . ' .brand .nv-title-tagline-wrap' ] = [ 'color' => sanitize_hex_color( $color ) ];
-		}
+		$selector = '.builder-item--' . $this->get_id() . ' .site-logo img';
+
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => $selector,
+			Dynamic_Selector::KEY_RULES    => [
+				\Neve\Core\Settings\Config::CSS_PROP_MAX_WIDTH => [
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::MAX_WIDTH,
+					Dynamic_Selector::META_DEFAULT       => '{ "mobile": "120", "tablet": "120", "desktop": "120" }',
+				],
+			],
+		];
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => $this->default_selector . ' .brand .nv-title-tagline-wrap',
+			Dynamic_Selector::KEY_RULES    => [
+				\Neve\Core\Settings\Config::CSS_PROP_COLOR => $this->get_id() . '_' . self::COLOR_ID,
+			],
+		];
 
 		return parent::add_style( $css_array );
 	}

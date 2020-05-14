@@ -8,7 +8,7 @@ const {useState} = wp.element;
 const {withDispatch, withSelect} = wp.data;
 const {compose} = wp.compose;
 
-const Sidebar = ({currentTab, setToast, loggerValue}) => {
+const Sidebar = ({currentTab, setToast, loggerValue, setLogger}) => {
 	const [ tracking, setTracking ] = useState('yes' === loggerValue);
 
 	return (
@@ -18,7 +18,7 @@ const Sidebar = ({currentTab, setToast, loggerValue}) => {
 			<aside className="sidebar card">
 				<div className="sidebar-section">
 					<h4>{__('Neve Community', 'neve')}</h4>
-					<p>{__('Join the community of Neve users. Get connected, share opinions, ask questions and help each other!')}</p>
+					<p dangerouslySetInnerHTML={{__html: neveDash.strings.sidebarCommunityDescription}}/>
 					<a href="https://www.facebook.com/groups/648646435537266/">
 						{__('Join our Facebook Group', 'neve')}
 					</a>
@@ -50,6 +50,7 @@ const Sidebar = ({currentTab, setToast, loggerValue}) => {
 									setTracking(! value);
 									return false;
 								}
+								setLogger(value ? 'yes' : 'no');
 								setToast(__('Option Updated', 'neve'));
 							});
 						}}
@@ -62,9 +63,10 @@ const Sidebar = ({currentTab, setToast, loggerValue}) => {
 };
 
 export default compose(withDispatch(dispatch => {
-		const {setToast} = dispatch('neve-dashboard');
+		const {setToast, setLogger} = dispatch('neve-dashboard');
 		return {
-			setToast: (message) => setToast(message)
+			setToast: (message) => setToast(message),
+			setLogger: (value) => setLogger(value)
 		};
 	}), withSelect(select => {
 		const {getOption} = select('neve-dashboard');

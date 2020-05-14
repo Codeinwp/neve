@@ -109,7 +109,7 @@ describe( 'Font Family', function() {
 		cy.visit( '/markup-html-tags-and-formatting/' );
 		cy.get( '#wp-admin-bar-edit > a' ).click();
 		cy.clearWelcome();
-		cy.get( '#editor .editor-styles-wrapper .block-editor-writing-flow' ).
+		cy.get( '#editor .editor-styles-wrapper .block-editor-writing-flow p' ).
 				as( 'body' );
 		cy.get( '@body' ).should( 'have.css', 'font-family' ).
 				and( 'match', new RegExp( fonts.general, 'g' ) );

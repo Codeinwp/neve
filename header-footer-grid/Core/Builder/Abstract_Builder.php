@@ -12,12 +12,15 @@
 namespace HFG\Core\Builder;
 
 use HFG\Core\Components\Abstract_Component;
+use HFG\Core\Css_Generator;
 use HFG\Core\Customizer\Instructions_Section;
 use HFG\Core\Interfaces\Builder;
 use HFG\Core\Interfaces\Component;
 use HFG\Core\Settings;
 use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Traits\Core;
+use Neve\Core\Settings\Config;
+use Neve\Core\Styles\Dynamic_Selector;
 use WP_Customize_Manager;
 
 /**
@@ -647,7 +650,10 @@ abstract class Abstract_Builder implements Builder {
 		$layout                = $this->get_layout_data();
 		self::$current_builder = $this->get_id();
 		if ( is_customize_preview() ) {
-			$style = $this->css_array_to_css( $this->add_style() );
+			$style     = $this->add_style( [] );
+			$generator = new Css_Generator();
+			$generator->set( $style );
+			$style = $generator->generate();
 			echo '<style type="text/css" id="' . esc_attr( $this->get_id() ) . '-style">' . $style . '</style>';// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
 		foreach ( $layout as $device_name => $device ) {
@@ -743,8 +749,7 @@ abstract class Abstract_Builder implements Builder {
 			if ( ! $this->is_component_active( $component->get_id() ) ) {
 				continue;
 			}
-			$component_css_array = $component->add_style( $css_array );
-			$css_array           = array_replace_recursive( $css_array, $component_css_array );
+			$css_array = $component->add_style( $css_array );
 		}
 
 		return $css_array;
@@ -761,26 +766,26 @@ abstract class Abstract_Builder implements Builder {
 	 * @access  private
 	 */
 	private function add_row_style( $row_index, $css_array = array() ) {
-		$layout_height = json_decode( get_theme_mod( $this->control_id . '_' . $row_index . '_height', '{ desktop: 0, tablet: 0, mobile: 0 }' ), true );
-		$selector      = '.' . $this->get_id() . '-' . $row_index . '-inner';
-		if ( isset( $layout_height['mobile'] ) ) {
-			$layout_height['mobile']                              = ( $layout_height['mobile'] > 0 ) ? $layout_height['mobile'] . 'px' : 'auto';
-			$css_array[' @media (max-width: 576px)'][ $selector ] = array(
-				'height' => $layout_height['mobile'],
-			);
-		}
-		if ( isset( $layout_height['tablet'] ) ) {
-			$layout_height['tablet']                              = ( $layout_height['tablet'] > 0 ) ? $layout_height['tablet'] . 'px' : 'auto';
-			$css_array[' @media (min-width: 576px)'][ $selector ] = array(
-				'height' => $layout_height['tablet'],
-			);
-		}
-		if ( isset( $layout_height['desktop'] ) ) {
-			$layout_height['desktop']                             = ( $layout_height['desktop'] > 0 ) ? $layout_height['desktop'] . 'px' : 'auto';
-			$css_array[' @media (min-width: 961px)'][ $selector ] = array(
-				'height' => $layout_height['desktop'],
-			);
-		}
+
+		$selector    = '.' . $this->get_id() . '-' . $row_index . '-inner';
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => $selector,
+			Dynamic_Selector::KEY_RULES    => [
+				Config::CSS_PROP_HEIGHT => [
+					Dynamic_Selector::META_KEY           => $this->control_id . '_' . $row_index . '_height',
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
+						$value = (int) $value;
+						if ( $value > 0 ) {
+							return sprintf( '%s:%s;', $css_prop, $value . 'px' );
+						}
+
+						return '';
+					},
+					Dynamic_Selector::META_DEFAULT       => '{ desktop: 0, tablet: 0, mobile: 0 }',
+				],
+			],
+		];
 
 		if ( $row_index === 'sidebar' ) {
 			$selector = '.header-menu-sidebar .header-menu-sidebar-bg';
@@ -804,61 +809,71 @@ abstract class Abstract_Builder implements Builder {
 				'colorValue' => $default_color,
 			]
 		);
-		$css_setup  = [];
-		if ( $background['type'] === 'color' && ! empty( $background['colorValue'] ) ) {
-			$css_setup['background-color'] = $background['colorValue'];
-			$css_array[ $selector . ' .primary-menu-ul .sub-menu li' ]['background-color'] = $background['colorValue'];
-			$css_array[ $selector . ' .primary-menu-ul .sub-menu li' ]['border-color']     = $background['colorValue'];
-			$css_array[ $selector . ' .primary-menu-ul .sub-menu' ]['border-color']        = $background['colorValue'];
+
+		if ( $background['type'] === 'color' && ! empty( $background['colorValue'] ) && $background['colorValue'] !== $default_color ) {
+			$css_array[] = [
+				Dynamic_Selector::KEY_SELECTOR => $selector,
+				Dynamic_Selector::KEY_RULES    => [
+					Config::CSS_PROP_BACKGROUND_COLOR => [
+						Dynamic_Selector::META_KEY => $this->control_id . '_' . $row_index . '_background' . '.colorValue',
+					],
+				],
+			];
 		}
 
 		if ( $background['type'] === 'image' ) {
-			if ( isset($background['useFeatured']) && $background['useFeatured'] === true && is_singular() ) {
-				$featured_image = get_the_post_thumbnail_url();
-				if ( ! empty( $featured_image ) ) {
-					$css_setup['background-image'] = 'url("' . esc_url( $featured_image ) . '")';
-				} else {
-					$css_setup['background-image'] = 'url("' . esc_url( $background['imageUrl'] ) . '")';
-				}
-			} elseif ( ! empty( $background['imageUrl'] ) ) {
-				$css_setup['background-image'] = 'url("' . esc_url( $background['imageUrl'] ) . '")';
-			}
-			$css_setup['background-size'] = 'cover';
+			$css_array[] = [
+				Dynamic_Selector::KEY_SELECTOR => $selector,
+				Dynamic_Selector::KEY_RULES    => [
+					Config::CSS_PROP_BACKGROUND_COLOR => [
+						Dynamic_Selector::META_KEY    => $this->control_id . '_' . $row_index . '_background',
+						Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
+							$background = $value;
+							$style      = '';
+							if ( isset( $background['useFeatured'] ) && $background['useFeatured'] === true && is_singular() ) {
+								$featured_image = get_the_post_thumbnail_url();
+								if ( ! empty( $featured_image ) ) {
+									$style .= sprintf( 'background-image: url("%s");', esc_url( $featured_image ) );
+								} else {
+									$style .= sprintf( 'background-image: url("%s");', esc_url( $background['imageUrl'] ) );
+								}
+							} elseif ( ! empty( $background['imageUrl'] ) ) {
+								$style .= sprintf( 'background-image: url("%s");', esc_url( $background['imageUrl'] ) );
+							}
+							$style .= 'background-size:cover;';
 
-			if ( ! empty( $background['focusPoint'] ) && ! empty( $background['focusPoint']['x'] ) && ! empty( $background['focusPoint']['y'] ) ) {
-				$css_setup['background-position'] = round( $background['focusPoint']['x'] * 100 ) . '% ' . round( $background['focusPoint']['y'] * 100 ) . '%';
-			}
+							if ( ! empty( $background['focusPoint'] ) && ! empty( $background['focusPoint']['x'] ) && ! empty( $background['focusPoint']['y'] ) ) {
+								$style .= 'background-position:' . round( $background['focusPoint']['x'] * 100 ) . '% ' . round( $background['focusPoint']['y'] * 100 ) . '%;';
+							}
 
-			if ( isset( $background[ 'fixed' ] ) && $background[ 'fixed' ] === true ) {
-				$css_setup['background-attachment'] = 'fixed';
-			}
+							if ( isset( $background['fixed'] ) && $background['fixed'] === true ) {
+								$style .= 'background-attachment: fixed;';
+							}
+							$style .= 'background-color:transparent;';
 
-			if ( ! empty( $background['overlayColorValue'] ) && ! empty( $background['overlayOpacity'] ) ) {
-				$css_array[ $selector . ':before' ] = array(
-					'background-color' => $background['overlayColorValue'],
-					'opacity'          => $background['overlayOpacity'] / 100,
-					'content'          => '""',
-					'position'         => 'absolute',
-					'top'              => '0',
-					'bottom'           => '0',
-					'width'            => '100%',
-				);
-			}
-			$css_array[ $selector . ' .primary-menu-ul .sub-menu li' ]['background-color'] = $background['overlayColorValue'];
-			$css_array[ $selector . ' .primary-menu-ul .sub-menu li' ]['border-color']     = $background['overlayColorValue'];
-			$css_array[ $selector . ' .primary-menu-ul .sub-menu' ]['border-color']        = $background['overlayColorValue'];
-			$css_array[ $selector ] = array(
-				'background-color' => 'transparent',
-			);
-		}
+							return $style;
+						},
+					],
+				],
+			];
 
-		$css_array[ $selector ] = $css_setup;
-		$text                   = get_theme_mod( $this->control_id . '_' . $row_index . '_' . self::TEXT_COLOR, $skin['text'] );
-		if ( ! empty( $text ) ) {
-			$css_array[ $selector ]['color']                            = $text;
-			$css_array[ $selector . ' a:not(.button)' ]['color']        = $text;
-			$css_array[ $selector . ' .icon-bar' ]['background-color']  = $text;
-			$css_array[ $selector . ' .navbar-toggle' ]['border-color'] = $text;
+			$css_array[] = [
+				Dynamic_Selector::KEY_SELECTOR => $selector . ':before',
+				Dynamic_Selector::KEY_RULES    => [
+					Config::CSS_PROP_BACKGROUND_COLOR => [
+						Dynamic_Selector::META_KEY    => $this->control_id . '_' . $row_index . '_background',
+						Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
+							$background = $value;
+							$style      = '';
+							if ( ! empty( $background['overlayColorValue'] ) && ! empty( $background['overlayOpacity'] ) ) {
+								$style = sprintf( 'background-color:%s; opacity: %s; content: ""; position:absolute; top: 0; bottom:0; width:100%%;', $background['overlayColorValue'], ( $background['overlayOpacity'] / 100 ) );
+							}
+
+							return $style;
+						},
+					],
+				],
+			];
 		}
 		return $css_array;
 	}

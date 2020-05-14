@@ -13,9 +13,6 @@
   }
 }
 
-.wp-block-cover-image .wp-block-cover__inner-container, .wp-block-cover .wp-block-cover__inner-container {
-  max-width: calc(100% - 70px);
-}
 
 blockquote {
   margin: $spacing 0;
@@ -157,8 +154,13 @@ audio {
 }
 
 @mixin content--laptop() {
-  .neve-main > .container .col {
-    max-width: 70%;
+  .neve-main > .container .col{
+	max-width: 70%;
+  }
+  [class*="__inner-container"] > *:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.is-style-wide){
+	margin:auto;
+	max-width: 70%;
+	padding: 0 15px;
   }
   .neve-main > .container > .row {
     flex-wrap: nowrap;

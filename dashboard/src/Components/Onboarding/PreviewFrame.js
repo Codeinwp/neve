@@ -49,7 +49,6 @@ const PreviewFrame = ({next, prev, siteData, setSite, setPreview, setModal}) => 
 						<Button
 							className="upgrade"
 							isPrimary
-							target="_blank"
 							href={siteData.utmOutboundLink || neveDash.upgradeURL}
 						>
 							{__('Upgrade and Import', 'neve')}

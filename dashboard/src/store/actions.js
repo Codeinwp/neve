@@ -11,6 +11,12 @@ export default {
 			payload: {object}
 		};
 	},
+	setPluginState(pluginSlug, pluginState) {
+		return {
+			type: 'SET_PLUGIN_STATE',
+			payload: {pluginSlug, pluginState}
+		};
+	},
 	changeModuleStatus(moduleSlug, value) {
 		return {
 			type: 'TOGGLE_MODULE',
@@ -33,6 +39,12 @@ export default {
 		return {
 			type: 'UPDATE_TOAST_MESSAGE',
 			payload: message
+		};
+	},
+	setLogger(loggerStatus) {
+		return {
+			type: 'SET_LOGGER_STATUS',
+			payload: loggerStatus
 		};
 	}
 };
