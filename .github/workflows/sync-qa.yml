@@ -1,10 +1,10 @@
 name: Deploy to QA
+
 on:
   push:
     branches:
       - development
-    branches-ignore:
-      - master
+      - '!master'
 jobs:
   deploy:
     name: Deploy to QA server
