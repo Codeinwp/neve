@@ -787,12 +787,12 @@ abstract class Abstract_Builder implements Builder {
 		];
 
 		$default_colors = $this->get_default_row_colors( $row_index );
-		$css_array[] = [
+		$css_array[]    = [
 			Dynamic_Selector::KEY_SELECTOR => $selector . ',' . $selector . ' a:not(.button),' . $selector . ' .navbar-toggle',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_COLOR => [
-					Dynamic_Selector::META_KEY           => $this->control_id . '_' . $row_index . '_' . self::TEXT_COLOR,
-					Dynamic_Selector::META_DEFAULT       => $default_colors['text'],
+					Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_' . self::TEXT_COLOR,
+					Dynamic_Selector::META_DEFAULT => $default_colors['text'],
 				],
 			],
 		];
@@ -801,8 +801,8 @@ abstract class Abstract_Builder implements Builder {
 			Dynamic_Selector::KEY_SELECTOR => $selector . ' .icon-bar',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_BACKGROUND_COLOR => [
-					Dynamic_Selector::META_KEY           => $this->control_id . '_' . $row_index . '_' . self::TEXT_COLOR,
-					Dynamic_Selector::META_DEFAULT       => $default_colors['text'],
+					Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_' . self::TEXT_COLOR,
+					Dynamic_Selector::META_DEFAULT => $default_colors['text'],
 				],
 			],
 		];
@@ -815,7 +815,7 @@ abstract class Abstract_Builder implements Builder {
 		if ( isset( $this->default_colors[ $this->get_id() ][ $row_index ] ) && ! empty( $this->default_colors[ $this->get_id() ][ $row_index ] ) ) {
 			$default_color = $this->default_colors[ $this->get_id() ][ $row_index ];
 		}
-		$defaults          = $this->get_default_row_colors( $row_index );
+		$defaults      = $this->get_default_row_colors( $row_index );
 		$default_color = isset( $defaults['background'] ) ? $defaults['background'] : $default_color;
 
 		$background = get_theme_mod(
@@ -829,20 +829,20 @@ abstract class Abstract_Builder implements Builder {
 		if ( $background['type'] === 'color' && ! empty( $background['colorValue'] ) ) {
 			$css_array[] = [
 				Dynamic_Selector::KEY_SELECTOR => $selector . ' .primary-menu-ul .sub-menu li,' . $selector . ' .primary-menu-ul .sub-menu',
-				Dynamic_Selector::KEY_RULES => [
+				Dynamic_Selector::KEY_RULES    => [
 					Config::CSS_PROP_BACKGROUND_COLOR => [
-						Dynamic_Selector::META_KEY => $this->control_id . '_' . $row_index . '_background' . '.colorValue'
+						Dynamic_Selector::META_KEY => $this->control_id . '_' . $row_index . '_background' . '.colorValue',
 					],
-					Config::CSS_PROP_BORDER_COLOR => [
-						Dynamic_Selector::META_KEY => $this->control_id . '_' . $row_index . '_background' . '.colorValue'
-					]
-				]
+					Config::CSS_PROP_BORDER_COLOR     => [
+						Dynamic_Selector::META_KEY => $this->control_id . '_' . $row_index . '_background' . '.colorValue',
+					],
+				],
 			];
 			$css_array[] = [
 				Dynamic_Selector::KEY_SELECTOR => $selector,
 				Dynamic_Selector::KEY_RULES    => [
 					Config::CSS_PROP_BACKGROUND_COLOR => [
-						Dynamic_Selector::META_KEY => $this->control_id . '_' . $row_index . '_background' . '.colorValue',
+						Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_background' . '.colorValue',
 						Dynamic_Selector::META_DEFAULT => $defaults['background'],
 					],
 				],
@@ -852,14 +852,14 @@ abstract class Abstract_Builder implements Builder {
 		if ( $background['type'] === 'image' ) {
 			$css_array[] = [
 				Dynamic_Selector::KEY_SELECTOR => $selector . ' .primary-menu-ul .sub-menu li,' . $selector . ' .primary-menu-ul .sub-menu',
-				Dynamic_Selector::KEY_RULES => [
+				Dynamic_Selector::KEY_RULES    => [
 					Config::CSS_PROP_BACKGROUND_COLOR => [
-						Dynamic_Selector::META_KEY => $this->control_id . '_' . $row_index . '_background' . '.overlayColorValue'
+						Dynamic_Selector::META_KEY => $this->control_id . '_' . $row_index . '_background' . '.overlayColorValue',
 					],
-					Config::CSS_PROP_BORDER_COLOR => [
-						Dynamic_Selector::META_KEY => $this->control_id . '_' . $row_index . '_background' . '.overlayColorValue'
-					]
-				]
+					Config::CSS_PROP_BORDER_COLOR     => [
+						Dynamic_Selector::META_KEY => $this->control_id . '_' . $row_index . '_background' . '.overlayColorValue',
+					],
+				],
 			];
 
 			$css_array[] = [
