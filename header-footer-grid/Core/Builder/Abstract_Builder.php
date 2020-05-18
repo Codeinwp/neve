@@ -798,6 +798,16 @@ abstract class Abstract_Builder implements Builder {
 		];
 
 		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => $selector . ' .nv-icon:not(.nv-search) svg,' . $selector . ' .nv-contact-list svg',
+			Dynamic_Selector::KEY_RULES    => [
+				Config::CSS_PROP_FILL_COLOR => [
+					Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_' . self::TEXT_COLOR,
+					Dynamic_Selector::META_DEFAULT => $default_colors['text'],
+				],
+			],
+		];
+
+		$css_array[] = [
 			Dynamic_Selector::KEY_SELECTOR => $selector . ' .icon-bar',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_BACKGROUND_COLOR => [
@@ -905,8 +915,9 @@ abstract class Abstract_Builder implements Builder {
 						Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
 							$background = $value;
 							$style      = '';
-							if ( ! empty( $background['overlayColorValue'] ) && ! empty( $background['overlayOpacity'] ) ) {
-								$style = sprintf( 'background-color:%s; opacity: %s; content: ""; position:absolute; top: 0; bottom:0; width:100%%;', $background['overlayColorValue'], ( $background['overlayOpacity'] / 100 ) );
+							$opacity    = isset( $background['overlayOpacity'] ) ? $background['overlayOpacity'] : 50;
+							if ( ! empty( $background['overlayColorValue'] ) && ! empty( $opacity ) ) {
+								$style = sprintf( 'background-color:%s; opacity: %s; content: ""; position:absolute; top: 0; bottom:0; width:100%%;', $background['overlayColorValue'], ( $opacity / 100 ) );
 							}
 
 							return $style;
