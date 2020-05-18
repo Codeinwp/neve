@@ -112,9 +112,12 @@ class Core_Loader {
 		add_action( 'ti-about-after-sidebar-content', array( $admin, 'render_logger_toggle' ) );
 
 		$key_lite = str_replace( '-', '_', basename( get_template_directory() ) );
-		add_filter( $key_lite . '_logger_data', function () {
-			return [ 'mods' => array_filter( get_theme_mods() ) ];
-		} );
+		add_filter(
+			$key_lite . '_logger_data',
+			function () {
+				return [ 'mods' => array_filter( get_theme_mods() ) ];
+			} 
+		);
 		$front_end = new Front_End();
 		add_action( 'wp_enqueue_scripts', array( $front_end, 'enqueue_scripts' ) );
 		add_action( 'after_setup_theme', array( $front_end, 'setup_theme' ) );
