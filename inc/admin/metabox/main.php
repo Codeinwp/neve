@@ -38,26 +38,31 @@ class Main extends Controls_Base {
 						'contained'  => __( 'Contained', 'neve' ),
 						'full-width' => __( 'Full Width', 'neve' ),
 					),
+					'icons' => array(
+						'default'    => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqCAYAAABeUaiAAAACPUlEQVR4nO3dSY7aQABAURLlNNz/KvR1iHqBFBGwy6Y+g/q9pfFQtr6NqV70r/P5fD7AZL9dUArCIiEsEsIiISwSwiIhLBLCIiEsEsIiISwSwiIhLBLCIiEsEsIiISwSwiIhLBLCIiEsEsIiISwSwiIhLBLCIiEsEsIiISwSwiIhLBLCIiEsEsIiISwSwiIhLBLCIiEsEsIi8afY6dfX13/Ljsfj3XXvfbb0+egxbq23Z7s9Y1xb79Z2a+O93n7N6Poj49/kPNnpdLq5w63Ll7bbu69H1lna9/dnI+dxvc7IePeOaXQfe/e1ZupX4dKd+7185A579THu7X/W+GeOaabZ5zctrJGTry/Oo8dYO4eli7/02TPCeDcf9/L+yifHK3xqlMnLe+06rne58Jdxrb2gjxrZdtYL+eyAPzKsw8KvnZ/2lbP1fJe+ymf62LD+NesJMWsslzHUT6u943vGcUyQvqFn3hzVO+u0sEYGOGu6obJ2Dj/x191uU2fFdk5ezppUfeUE6Z5lj056vvME6fR3rHt3/Z75oa0TobOeJrf2/4wn1eWYW37pbfkT0Np6M5/I/tk4CS/vJIRFQlgkhEVCWCSERUJYJIRFQlgkhEVCWCSERUJYJIRFQlgkhEVCWCSERUJYJIRFQlgkhEVCWCSERUJYJIRFQlgkhEVCWCSERUJYJIRFQlgkhEVCWCSERUJYJIRFQlgkhEVCWCSERUJYJIRFQlgkhEVCWCSERUJYJIRFQlgkhMV8h8PhLyY1TZyw90ShAAAAAElFTkSuQmCC',
+						'contained'  => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqAQMAAABknzrDAAAABlBMVEX////V1dXUdjOkAAAAPUlEQVRIx2NgGAUkAcb////Y/+d/+P8AdcQoc8vhH/X/5P+j2kG+GA3CCgrwi43aMWrHqB2jdowEO4YpAACyKSE0IzIuBgAAAABJRU5ErkJggg==',
+						'full-width' => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqCAYAAABeUaiAAAABeklEQVR4nO3aUWrCABBF0bR0Ndn/WtxO/C+ItJM7hXLOvwbkMjzFj+u6rgNu9ukDpSAsEsIiISwSwiIhLBLCIiEsEsIiISwSwiIhLBLCIiEsEl+v3vTxeGSf+HmetzzrJ+8zeeb31/Kei0VCWCSERcJfk0m4WCSEReKWnxu2vvYX7/ObZ/Gei0VCWCSERcLPDSRcLBLCIiEsEn/ytxn+j1e/8blYJHwrJOFikRAWCeOdEeOdVcY7CReLhLBIGO+MGO+sMt5JuFgkhEXCeGfEeGeV8U7CxSIhLBLGOyPGO6uMdxIuFglhkTDeGTHeWWW8k3CxSAiLhPHOiPHOKuOdhItFQlgkjHdGjHdWGe8kXCwSwiJhvDNivLPKeCfhYpEQFgnjnRHjnVXGOwkXi4SwSBjvjBjvrDLeSbhYJIRFwnhnxHhnlfFOwsUiISwSxjsjxjurjHcSLhYJYZEQFglhkRAWCWGREBYJYZEQFglhkRAWCWGREBb3O47jCYpgf6PRIsLJAAAAAElFTkSuQmCC',
+					),
 					'label'   => __( 'Container', 'neve' ),
 				)
 			)
 		);
-		$this->add_control(
-			new Controls\Radio(
-				'neve_meta_sidebar',
-				array(
-					'default'  => ( $this->is_new_page() || $this->is_checkout() ) ? 'full-width' : 'default',
-					'choices'  => array(
-						'default'    => __( 'Customizer Setting', 'neve' ),
-						'left'       => __( 'Left Sidebar', 'neve' ),
-						'right'      => __( 'Right Sidebar', 'neve' ),
-						'full-width' => __( 'No Sidebar', 'neve' ),
-					),
-					'label'    => __( 'Sidebar', 'neve' ),
-					'priority' => 15,
-				)
-			)
-		);
+//		$this->add_control(
+//			new Controls\Radio(
+//				'neve_meta_sidebar',
+//				array(
+//					'default'  => ( $this->is_new_page() || $this->is_checkout() ) ? 'full-width' : 'default',
+//					'choices'  => array(
+//						'default'    => __( 'Customizer Setting', 'neve' ),
+//						'left'       => __( 'Left Sidebar', 'neve' ),
+//						'right'      => __( 'Right Sidebar', 'neve' ),
+//						'full-width' => __( 'No Sidebar', 'neve' ),
+//					),
+//					'label'    => __( 'Sidebar', 'neve' ),
+//					'priority' => 15,
+//				)
+//			)
+//		);
 	}
 
 	/**

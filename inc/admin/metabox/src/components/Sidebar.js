@@ -1,24 +1,25 @@
-const { Fragment } = wp.element;
-const { PluginSidebar, PluginSidebarMoreMenuItem } = wp.editPost;
-const { __ } = wp.i18n;
+/* global metaSidebar */
+import { PluginSidebar, PluginSidebarMoreMenuItem } from "@wordpress/edit-post";
+import { __ } from "@wordpress/i18n";
+import { MetaFieldsManager } from "./MetaFieldsManager";
 
 const Sidebar = () => {
 	return (
-		<Fragment>
+		<>
 			<PluginSidebarMoreMenuItem
-				icon = "admin-settings"
-				target ="neve-meta-sidebar"
+				icon="admin-settings"
+				target="neve-meta-sidebar"
 			>
-				{ __( 'Individual settings', 'neve' ) }
+				{__('Individual settings', 'neve')}
 			</PluginSidebarMoreMenuItem>
 			<PluginSidebar
 				icon="admin-settings"
 				name="neve-meta-sidebar"
-				title={ __( 'Individual settings', 'neve' ) }
+				title={__('Individual settings', 'neve')}
 			>
-				Meta Field
+				<MetaFieldsManager/>
 			</PluginSidebar>
-		</Fragment>
+		</>
 	);
 };
 export default Sidebar;

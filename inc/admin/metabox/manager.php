@@ -38,8 +38,39 @@ final class Manager {
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) );
 		add_action( 'save_post', array( $this, 'save' ) );
 
-		add_action( 'init', array( $this, 'register_meta_sidebar' ) );
+		add_action( 'admin_init', array( $this, 'register_meta_sidebar' ) );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'meta_sidebar_script_enqueue' ) );
+
+		add_action('admin_init', array( $this, 'neve_register_meta' ) );
+	}
+
+	public function neve_register_meta(){
+
+		foreach ( $this->controls as $control ) {
+			$options = get_object_vars( $control );
+
+			$type = 'string';
+			if( $options['type'] === 'range' ){
+				$type = 'integer';
+			}
+			if( $options['type'] === 'checkbox' ){
+				$type = 'boolean';
+			}
+			register_meta(
+				'post',
+				$options['id'],
+				array(
+					'show_in_rest'      => true,
+					'type'              => $type,
+					'single'            => true,
+					'sanitize_callback' => 'sanitize_text_field',
+					'auth_callback'     => function () {
+						return current_user_can('edit_posts');
+					}
+				)
+			);
+		}
+
 	}
 
 	/**
@@ -49,16 +80,18 @@ final class Manager {
 		wp_register_script(
 			'neve-meta-sidebar',
 			trailingslashit( get_template_directory_uri() ) . 'inc/admin/metabox/bundle/meta-sidebar.js',
-			array( 'wp-plugins', 'wp-edit-post', 'wp-element' )
+			array( 'wp-plugins', 'wp-edit-post', 'wp-element', 'wp-components', 'wp-data' )
 		);
 
 		wp_localize_script(
 			'neve-meta-sidebar',
 			'metaSidebar',
 			array(
-				'l10n',
+				'controls' => $this->controls
 			)
 		);
+
+
 	}
 
 	/**
