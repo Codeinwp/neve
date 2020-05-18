@@ -34,11 +34,7 @@ const StarterSiteCard = ({data, setSite, setPreview, setModal}) => {
 					</Button>
 					}
 				</div>
-				{data.screenshot &&
-				<div className="image">
-					<img src={data.screenshot} alt={data.title}/>
-				</div>
-				}
+				{data.screenshot && <div className="image" style={{backgroundImage: `url("${data.screenshot}")`}}/>}
 			</div>
 			<div className="bottom">
 				<p className="title">{data.title}</p>
@@ -51,7 +47,7 @@ const StarterSiteCard = ({data, setSite, setPreview, setModal}) => {
 	);
 };
 
-export default  withDispatch((dispatch) => {
+export default withDispatch((dispatch) => {
 	const {setCurrentSite, setPreviewStatus, setImportModalStatus} = dispatch('neve-onboarding');
 	return {
 		setSite: (data) => setCurrentSite(data),
