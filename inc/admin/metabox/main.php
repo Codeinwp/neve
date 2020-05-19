@@ -19,9 +19,9 @@ class Main extends Controls_Base {
 	public function add_controls() {
 		$this->add_layout_controls();
 		$this->add_control( new Controls\Separator( 'neve_meta_separator', array( 'priority' => 20 ) ) );
-//		$this->add_content_toggles();
-//		$this->add_control( new Controls\Separator( 'neve_meta_separator', array( 'priority' => 45 ) ) );
-//		$this->add_content_width();
+		$this->add_content_toggles();
+		$this->add_control( new Controls\Separator( 'neve_meta_separator', array( 'priority' => 45 ) ) );
+		$this->add_content_width();
 	}
 
 	/**
@@ -135,10 +135,11 @@ class Main extends Controls_Base {
 			new Controls\Checkbox(
 				'neve_meta_enable_content_width',
 				array(
-					'default'     => ( $this->is_new_page() || $this->is_checkout() ) ? 'on' : 'off',
-					'label'       => __( 'Content Width', 'neve' ) . ' (%)',
-					'input_label' => __( 'Enable Individual Content Width', 'neve' ),
-					'priority'    => 50,
+					'default'      => ( $this->is_new_page() || $this->is_checkout() ) ? 'on' : 'off',
+					'label'        => __( 'Content Width', 'neve' ) . ' (%)',
+					'input_label'  => __( 'Enable Individual Content Width', 'neve' ),
+					'priority'     => 50,
+					'dependent'    => 'neve_meta_content_width'
 				)
 			)
 		);
@@ -146,12 +147,13 @@ class Main extends Controls_Base {
 			new Controls\Range(
 				'neve_meta_content_width',
 				array(
-					'default'    => ( $this->is_new_page() || $this->is_checkout() ) ? 100 : 70,
-					'min'        => 50,
-					'max'        => 100,
-					'hidden'     => $this->hide_content_width(),
-					'depends_on' => 'neve_meta_enable_content_width',
-					'priority'   => 55,
+					'default'     => ( $this->is_new_page() || $this->is_checkout() ) ? 100 : 70,
+					'min'         => 50,
+					'max'         => 100,
+					'hidden'      => $this->hide_content_width(),
+					'depends_on'  => 'neve_meta_enable_content_width',
+					'priority'    => 55,
+					'it_controls' => '.wp-block',
 				)
 			)
 		);
