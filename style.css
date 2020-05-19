@@ -1154,6 +1154,10 @@ fieldset input[type="text"], fieldset input[type="search"], fieldset input[type=
   line-height: 0;
 }
 
+.search-form .nv-search-icon-wrap .nv-icon svg, .woocommerce-product-search .nv-search-icon-wrap .nv-icon svg {
+  fill: #c9c9c9;
+}
+
 .search-form input[type="search"], .woocommerce-product-search input[type="search"] {
   width: 100%;
   padding: 8px 45px 7px 12px;

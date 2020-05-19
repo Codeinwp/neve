@@ -798,7 +798,7 @@ abstract class Abstract_Builder implements Builder {
 		];
 
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => $selector . ' .nv-icon:not(.nv-search) svg,' . $selector . ' .nv-contact-list svg',
+			Dynamic_Selector::KEY_SELECTOR => $selector . ' .nv-icon svg,' . $selector . ' .nv-contact-list svg',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_FILL_COLOR => [
 					Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_' . self::TEXT_COLOR,
