@@ -51,7 +51,9 @@ final class Manager {
 
 		foreach ( $this->controls as $control ) {
 			$options = get_object_vars( $control );
-
+			if( $options['type'] === 'separator' ) {
+				continue;
+			}
 			$type = 'string';
 			if( $options['type'] === 'range' ){
 				$type = 'integer';

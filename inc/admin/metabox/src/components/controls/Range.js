@@ -7,11 +7,11 @@ export let Range = compose(
 		return {
 			setMetaFieldValue: (value, controllingClass) => {
 				if( controllingClass ){
+					/* TODO: FOLLOW METABOX_SETTINGS.PHP BEHAVIOUR */
 					let elements = document.querySelectorAll(controllingClass);
 					elements.forEach(function( element ) {
 						element.style.maxWidth = value + '%';
 					});
-
 				}
 				dispatch('core/editor').editPost({meta: {[props.id]: value}});
 			}

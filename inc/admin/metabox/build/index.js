@@ -394,6 +394,7 @@ var Range = compose(withDispatch(function (dispatch, props) {
   return {
     setMetaFieldValue: function setMetaFieldValue(value, controllingClass) {
       if (controllingClass) {
+        /* TODO: FOLLOW METABOX_SETTINGS.PHP BEHAVIOUR */
         var elements = document.querySelectorAll(controllingClass);
         elements.forEach(function (element) {
           element.style.maxWidth = value + '%';
