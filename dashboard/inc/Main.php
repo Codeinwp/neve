@@ -94,7 +94,7 @@ class Main {
 			[
 				'type'         => 'string',
 				'show_in_rest' => true,
-				'default'      => 'no',
+				'default'      => '',
 			]
 		);
 	}
