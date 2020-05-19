@@ -78,8 +78,8 @@
 *  [Fix] Fixed sidebar layout not updating on single product pages [Fix] Fixed search results page sidebar when using Elementor
 *  [Fix] Fixed expanded cart positioning
 * New Starter Sites
-*  Web Agency - https://themeisle.com/demo/?theme=Web%20Agency
-*  Blogger -  https://themeisle.com/demo/?theme=Blogger
+* [ Web Agency](https://themeisle.com/demo/?theme=Web%20Agency)
+*  [Blogger](https://themeisle.com/demo/?theme=Blogger)
  
  ### v2.5.4 - 2019-12-19 
  **Changes:** 
