@@ -14,14 +14,6 @@
   &:nth-child(2) {
     margin: 3px 0;
   }
-
-  .light-mode & {
-    background: #404248;
-  }
-
-  .dark-mode & {
-    background: #fff;
-  }
 }
 
 .navbar-toggle-wrapper {
@@ -41,10 +33,6 @@
     box-shadow: none;
     transform: none;
     background: transparent;
-  }
-
-  .light-mode & {
-    color: #404248;
   }
 }
 

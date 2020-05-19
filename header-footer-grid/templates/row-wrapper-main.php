@@ -16,8 +16,6 @@ $row_index  = current_row();
 $device     = current_device();
 $section_id = get_builder()->get_property( 'control_id' ) . '_' . $row_index;
 
-$skin_mode = row_setting( Abstract_Builder::SKIN_SETTING );
-
 $row_visibility = 'hide-on-desktop';
 if ( $device === 'desktop' ) {
 	$row_visibility = 'hide-on-mobile hide-on-tablet';
@@ -48,7 +46,7 @@ $row_wrapper_classes = join( ' ', $row_wrapper_classes );
 	data-row-id="<?php echo esc_attr( $row_index ); ?>" data-show-on="<?php echo esc_attr( $device ); ?>">
 
 	<div
-		class="header--row-inner header-<?php echo esc_attr( $row_index ); ?>-inner <?php echo esc_attr( $skin_mode ); ?>">
+		class="header--row-inner header-<?php echo esc_attr( $row_index ); ?>-inner">
 		<div class="container">
 			<div
 				class="<?php echo esc_attr( $row_wrapper_classes ); ?>"

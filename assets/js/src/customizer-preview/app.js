@@ -69,7 +69,14 @@ window.addEventListener('load', function () {
           let style = ''
           switch (settingType) {
             case 'neve_color_control':
+							if(args.additional.partial) {
+								wp.customize.selectiveRefresh.partial( args.additional.partial ).refresh();
+								return false;
+							}
               _.each(args.additional, (i) => {
+              	if( ! i.selector ) {
+              		return false;
+								}
                 newValue = newValue || i.fallback
                 style += `body ${i.selector} {
                   ${i.prop}: ${newValue} !important;
@@ -82,15 +89,11 @@ window.addEventListener('load', function () {
               	if(!newValue.colorValue && args.additional.partial ) {
 									wp.customize.selectiveRefresh.partial( args.additional.partial ).refresh();
 								}
-                style += 'body ' + args.selector + '{' +
-                  'background-image: none !important;}'
-                let color = newValue.colorValue !== 'undefined' ?
-                  newValue.colorValue :
-                  'inherit'
-                style += 'body ' + args.selector + '{' +
-                  'background-color: ' + color +
-                  ' !important; }'
-                style += args.selector + ':before{ content: none !important; }'
+                style += `body ${args.selector}{background-image: none !important;}`;
+                let color = newValue.colorValue !== 'undefined' ? newValue.colorValue : 'inherit'
+                style += `${args.selector}:before{ content: none !important;}`;
+								style += `body ${args.selector}, body ${args.selector} .primary-menu-ul .sub-menu li {background-color: ${color}!important;}`
+								style += `${args.selector} .primary-menu-ul .sub-menu, ${args.selector} .primary-menu-ul .sub-menu li {border-color: ${color}!important;}`;
                 addCss(settingId, style)
                 return false
               }
@@ -100,16 +103,17 @@ window.addEventListener('load', function () {
               }
               style += args.selector + '{'
               style += newValue.imageUrl ?
-                'background-image: url("' + newValue.imageUrl +
-                '") !important;' :
+                `background-image: url("${newValue.imageUrl}") !important;` :
                 'background-image: none !important;'
               style += newValue.fixed === true ?
                 'background-attachment: fixed !important;' :
                 'background-attachment: initial !important;'
-              style += 'background-position:' +
-                (newValue.focusPoint.x * 100).toFixed(2) + '% ' +
-                (newValue.focusPoint.y * 100).toFixed(2) +
-                '% !important;'
+              if( newValue.focusPoint && newValue.focusPoint.x && newValue.focusPoint.y ) {
+								style += 'background-position:' +
+									(newValue.focusPoint.x * 100).toFixed(2) + '% ' +
+									(newValue.focusPoint.y * 100).toFixed(2) +
+									'% !important;'
+							}
               style += 'background-size: cover !important;'
               if (!document.querySelector('.header-menu-sidebar')
               .classList
@@ -118,29 +122,19 @@ window.addEventListener('load', function () {
               }
               style += 'top: 0; bottom: 0; width: 100%; content:"";'
               style += '}'
-              let color = newValue.overlayColorValue !== 'undefined' ?
-                newValue.overlayColorValue :
-                'inherit'
-              style += args.selector + ':before { ' +
+              let color = newValue.overlayColorValue || 'unset';
+							style += `body ${args.selector}, body ${args.selector} .primary-menu-ul .sub-menu li {background-color: ${color}!important;}`
+							style += `${args.selector} .primary-menu-ul .sub-menu, ${args.selector} .primary-menu-ul .sub-menu li {border-color: ${color}!important;}`;
+							style += args.selector + ':before { ' +
                 'content: "";' +
                 'position: absolute; top: 0; bottom: 0; width: 100%;' +
-                'background-color: ' + color +
-                ' !important;' +
-                'opacity: ' + (newValue.overlayOpacity / 100) +
+                `background-color: ${color}!important;` +
+                'opacity: ' + ((newValue.overlayOpacity || 50) / 100) +
                 '!important;}'
-              style += args.selector +
-                '{ background-color: transparent !important; }'
+              style += args.selector + '{ background-color: transparent !important; }'
               addCss(settingId, style)
               break
             case '\\Neve\\Customizer\\Controls\\React\\Radio_Buttons':
-              if (args.additional && args.additional.is_for) {
-                if (args.additional.is_for === 'row_skin') {
-                  let elements = document.querySelectorAll(args.selector)
-                  removeClass(elements, 'dark-mode light-mode')
-                  addClass(elements, newValue)
-                  break
-                }
-              }
               let itemInner = document.querySelectorAll(args.selector)
               _.each(itemInner, function (item) {
                 removeClass(item.parentNode,

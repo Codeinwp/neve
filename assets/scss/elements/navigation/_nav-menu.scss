@@ -20,6 +20,10 @@
     width: 100%;
     display: block;
     position: relative;
+
+	a .nv-icon svg {
+	   fill: currentColor;
+	}
   }
 
   .amp-caret-wrap {
