@@ -695,6 +695,10 @@ blockquote.wp-block-quote.is-style-large cite {
   position: relative;
 }
 
+.primary-menu-ul li a .nv-icon svg {
+  fill: currentColor;
+}
+
 .primary-menu-ul .amp-caret-wrap {
   z-index: 1000;
   right: 0;
