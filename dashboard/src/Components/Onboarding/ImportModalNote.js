@@ -6,7 +6,6 @@ const {__} = wp.i18n;
 
 const ImportModalNote = ({data, externalInstalled}) => {
 	const external = data['external_plugins'] || null;
-	console.log(external);
 	const classes = classnames([ 'well', {'warning': external && ! externalInstalled } ]);
 	return (
 		<div className={classes}>
