@@ -15,7 +15,7 @@ export let CheckBox = compose(
 						control.style.display = "none";
 					}
 				}
-				dispatch('core/editor').editPost({meta: {[props.id]: value}});
+				dispatch('core/editor').editPost( { meta: { [props.id]: ( value ? 'on' : 'off' ) } } );
 			}
 		};
 	}),
@@ -30,7 +30,7 @@ export let CheckBox = compose(
 		<div className="neve-meta-control neve-meta-checkbox">
 			<CheckboxControl
 				label={input_label}
-				checked={ props.metaFieldValue }
+				checked={ (props.metaFieldValue === 'on') }
 				onChange={ (content) => props.setMetaFieldValue(content, dependent) }
 			/>
 		</div>

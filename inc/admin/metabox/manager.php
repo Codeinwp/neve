@@ -56,9 +56,6 @@ final class Manager {
 			if( $options['type'] === 'range' ){
 				$type = 'integer';
 			}
-			if( $options['type'] === 'checkbox' ){
-				$type = 'boolean';
-			}
 			register_meta(
 				'post',
 				$options['id'],

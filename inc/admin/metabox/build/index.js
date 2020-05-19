@@ -273,7 +273,7 @@ var CheckBox = Object(_wordpress_compose__WEBPACK_IMPORTED_MODULE_2__["compose"]
       }
 
       dispatch('core/editor').editPost({
-        meta: _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()({}, props.id, value)
+        meta: _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()({}, props.id, value ? 'on' : 'off')
       });
     }
   };
@@ -289,7 +289,7 @@ var CheckBox = Object(_wordpress_compose__WEBPACK_IMPORTED_MODULE_2__["compose"]
     className: "neve-meta-control neve-meta-checkbox"
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["CheckboxControl"], {
     label: input_label,
-    checked: props.metaFieldValue,
+    checked: props.metaFieldValue === 'on',
     onChange: function onChange(content) {
       return props.setMetaFieldValue(content, dependent);
     }
