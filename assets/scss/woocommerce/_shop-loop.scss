@@ -21,6 +21,9 @@
   }
   .nv-sidebar-toggle + .woocommerce-ordering {
     margin: 0 0 0 $spacing-xs;
+	select {
+	  max-width: 190px;
+	}
   }
 }
 
@@ -42,5 +45,12 @@
     .nv-sidebar-toggle + .woocommerce-ordering {
       margin: 0;
     }
+  }
+}
+@mixin shop-loop--tablet-sm(){
+  .nv-woo-filters .nv-sidebar-toggle + .woocommerce-ordering {
+	select {
+	  max-width: none;
+	}
   }
 }

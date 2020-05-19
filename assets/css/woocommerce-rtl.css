@@ -340,6 +340,10 @@
   margin: 0 10px 0 0;
 }
 
+.nv-woo-filters .nv-sidebar-toggle + .woocommerce-ordering select {
+  max-width: 190px;
+}
+
 .woocommerce ul.products li.product a.woocommerce-loop-product__link {
   color: #404248;
 }
@@ -1488,6 +1492,9 @@ body.woocommerce-account .woocommerce-form-login .form-row:not(.woocommerce-form
   .woocommerce-notices-wrapper > div .button {
     margin-top: 0;
     width: auto;
+  }
+  .nv-woo-filters .nv-sidebar-toggle + .woocommerce-ordering select {
+    max-width: none;
   }
 }
 
