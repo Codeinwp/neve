@@ -2285,7 +2285,7 @@ class Front_End {
 		$this->reorder_starter_sites();
 		$this->add_gutenberg_starter_sites();
 
-		return apply_filters( 'neve_filter_onboarding_data_v2', $this->onboarding_config );
+		return apply_filters( 'neve_filter_onboarding_sites', $this->onboarding_config );
 	}
 
 	/**
