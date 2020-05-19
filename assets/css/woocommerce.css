@@ -336,12 +336,9 @@
   margin: 0;
 }
 
-.nv-woo-filters .nv-sidebar-toggle + .woocommerce-ordering {
-  margin: 0 0 0 10px;
-}
-
 .nv-woo-filters .nv-sidebar-toggle + .woocommerce-ordering select {
-  max-width: 190px;
+  max-width: 155px;
+  padding: 2px 0;
 }
 
 .woocommerce ul.products li.product a.woocommerce-loop-product__link {
