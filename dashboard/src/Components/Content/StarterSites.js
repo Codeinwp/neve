@@ -8,8 +8,8 @@ const StarterSites = () => {
 	const [ restApiState, setRestApiState ] = useState(true);
 
 	useEffect(() => {
-		get(neveDash.onboarding.root, true).then(r => {
-			if ( ! r.ok || 200 !== r.status ) {
+		get(neveDash.onboarding.root).then(r => {
+			if ( ! r.namespace || 'ti-sites-lib/v1' !== r.namespace ) {
 				setRestApiState(false);
 			}
 		});
