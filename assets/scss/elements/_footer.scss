@@ -1,5 +1,11 @@
 footer {
   background-color: #fff;
+  a:not(.button) {
+	opacity: .79;
+	&:hover {
+	  opacity: 1;
+	}
+  }
 }
 
 .footer-menu {

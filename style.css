@@ -989,6 +989,14 @@ footer {
   background-color: #fff;
 }
 
+footer a:not(.button) {
+  opacity: .79;
+}
+
+footer a:not(.button):hover {
+  opacity: 1;
+}
+
 .footer-menu {
   display: flex;
   flex-wrap: wrap;
