@@ -28,3 +28,9 @@
   @include accordion--desktop();
   @include mock--desktop();
 }
+
+
+@media (min-width: #{$desktop-large}) {
+  @include general--desktop-large();
+  @include card--desktop-large();
+}
