@@ -841,10 +841,12 @@ abstract class Abstract_Builder implements Builder {
 				Dynamic_Selector::KEY_SELECTOR => $selector . ' .primary-menu-ul .sub-menu li,' . $selector . ' .primary-menu-ul .sub-menu',
 				Dynamic_Selector::KEY_RULES    => [
 					Config::CSS_PROP_BACKGROUND_COLOR => [
-						Dynamic_Selector::META_KEY => $this->control_id . '_' . $row_index . '_background' . '.colorValue',
+						Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_background' . '.colorValue',
+						Dynamic_Selector::META_DEFAULT => $default_color,
 					],
 					Config::CSS_PROP_BORDER_COLOR     => [
-						Dynamic_Selector::META_KEY => $this->control_id . '_' . $row_index . '_background' . '.colorValue',
+						Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_background' . '.colorValue',
+						Dynamic_Selector::META_DEFAULT => $default_color,
 					],
 				],
 			];
@@ -853,7 +855,7 @@ abstract class Abstract_Builder implements Builder {
 				Dynamic_Selector::KEY_RULES    => [
 					Config::CSS_PROP_BACKGROUND_COLOR => [
 						Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_background' . '.colorValue',
-						Dynamic_Selector::META_DEFAULT => $defaults['background'],
+						Dynamic_Selector::META_DEFAULT => $default_color,
 					],
 				],
 			];
