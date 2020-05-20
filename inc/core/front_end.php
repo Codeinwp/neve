@@ -2158,7 +2158,7 @@ class Front_End {
 						'keywords'         => [ 'one page', 'minimal' ],
 						'unsplash_gallery' => 'https://unsplash.com/collections/10086441/laundry-services/cbcb238e92c3d628f5ff17343cf71f33',
 					],
-					'neve-craft-beer'      		 => [
+					'neve-craft-beer'            => [
 						'url'              => 'https://demosites.io/craft-beer/',
 						'remote_url'       => 'https://api.themeisle.com/sites/craft-beer/',
 						'screenshot'       => 'https://api.themeisle.com/sites/wp-content/uploads/2020/05/neve-craft-beer.jpg',
@@ -2166,7 +2166,7 @@ class Front_End {
 						'keywords'         => [ 'food', 'ecommerce' ],
 						'unsplash_gallery' => 'https://unsplash.com/collections/10064967/craft-beer/d0feeb4e9b047f25963f93bb6f548003',
 					],
-					'neve-gardening'      		 => [
+					'neve-gardening'             => [
 						'url'              => 'https://demosites.io/gardening/',
 						'remote_url'       => 'https://api.themeisle.com/sites/gardening/',
 						'screenshot'       => 'https://api.themeisle.com/sites/wp-content/uploads/2020/05/neve-gardening.jpg',
@@ -2174,7 +2174,7 @@ class Front_End {
 						'keywords'         => [ 'one page', 'ecommerce' ],
 						'unsplash_gallery' => 'https://unsplash.com/collections/9993072/neve-gardening/d87f7fb075b4df6caa580427e4bf99cd',
 					],
-					'neve-resume-2'      		 => [
+					'neve-resume-2'              => [
 						'url'              => 'https://demosites.io/resume/',
 						'remote_url'       => 'https://api.themeisle.com/sites/resume/',
 						'screenshot'       => 'https://api.themeisle.com/sites/wp-content/uploads/2020/05/neve-resume-2.jpg',

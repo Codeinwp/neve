@@ -15,6 +15,10 @@ const StarterSites = () => {
 		});
 	}, []);
 
+	if ( ! neveDash.hasFileSystem ) {
+		return <div className="no-rest card"><p dangerouslySetInnerHTML={{__html: neveDash.onboarding.i18n.fsDown}}></p></div>;
+	}
+
 	return (
 		restApiState ? <Onboarding/> : <div className="no-rest card"><p dangerouslySetInnerHTML={{__html: neveDash.onboarding.i18n.rest_not_working}}></p></div>
 		);
