@@ -8,27 +8,27 @@ const EditorSelector = ({onSearch, editor, setCurrentEditor, query}) => {
 	const map = {
 		'elementor': {
 			icon: 'elementor.png',
-			niceName: __('Elementor')
+			niceName: 'Elementor'
 		},
 		'brizy': {
 			icon: 'brizy.svg',
-			niceName: __('Brizy')
+			niceName: 'Brizy'
 		},
 		'beaver builder': {
 			icon: 'beaver.png',
-			niceName: __('Beaver Builder')
+			niceName: 'Beaver Builder'
 		},
 		'thrive architect': {
 			icon: 'thrive.png',
-			niceName: __('Thrive Architect')
+			niceName: 'Thrive Architect'
 		},
 		'divi builder': {
 			icon: 'divi.svg',
-			niceName: __('Divi Builder')
+			niceName: 'Divi Builder'
 		},
 		'gutenberg': {
 			icon: 'gutenberg.png',
-			niceName: __('Gutenberg')
+			niceName: 'Gutenberg'
 		}
 	};
 

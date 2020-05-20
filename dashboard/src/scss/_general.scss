@@ -63,20 +63,18 @@ svg.is-loading, button.is-loading svg {
 
 @mixin general--desktop() {
   .container {
-	padding: 0 50px;
-	max-width: 1300px;
 	margin:0 auto;
   }
   .col {
 	width: 50%;
 
 	&:not(:last-child) {
-	  margin-right: 30px;
+	  margin-right: 20px;
 	}
   }
   .main {
 	flex-grow: 1;
-	margin-right: 30px;
+	margin-right: 20px;
   }
   .content {
 	display: flex;
@@ -85,5 +83,20 @@ svg.is-loading, button.is-loading svg {
   .columns {
 	display: flex;
 	flex-direction: row;
+  }
+}
+
+@mixin general--desktop-large() {
+  .container {
+	padding: 0 50px;
+	max-width: 1300px;
+  }
+  .col {
+	&:not(:last-child) {
+	  margin-right: 30px;
+	}
+  }
+  .main {
+	margin-right: 30px;
   }
 }
