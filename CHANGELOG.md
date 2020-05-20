@@ -6,16 +6,16 @@
 - [Fix] Yellow background on the number of products in categories on the Shop page
 - [Fix] Secondary Menu alignment on mobile
 - New starter sites
-- Book Shop - https://themeisle.com/demo/?theme=Book%20Shop
-- Psychologist - https://themeisle.com/demo/?theme=Psychologist
-- Doctors - https://themeisle.com/demo/?theme=Doctors%202
-- Pet Shop - https://themeisle.com/demo/?theme=Pet%20Shop
-- Apparel - https://themeisle.com/demo/?theme=Apparel
-- Boat Rental - https://themeisle.com/demo/?theme=Boat%20Rental
-- Jewellery Shop - https://themeisle.com/demo/?theme=Jewellery%20Shop%202
-- Perfume Shop - https://themeisle.com/demo/?theme=Perfume%20Shop
-- Music Band - https://themeisle.com/demo/?theme=Music%20Band%202
-- Fitness Trainer - https://themeisle.com/demo/?theme=Fitness%20Trainer
+- [Book Shop](https://themeisle.com/demo/?theme=Book%20Shop)
+- [Psychologist](https://themeisle.com/demo/?theme=Psychologist)
+- [Doctors](https://themeisle.com/demo/?theme=Doctors%202)
+- [Pet Shop](https://themeisle.com/demo/?theme=Pet%20Shop)
+- [Apparel](https://themeisle.com/demo/?theme=Apparel)
+- [Boat Rental](https://themeisle.com/demo/?theme=Boat%20Rental)
+- [Jewellery Shop](https://themeisle.com/demo/?theme=Jewellery%20Shop%202)
+- [Perfume Shop](https://themeisle.com/demo/?theme=Perfume%20Shop)
+- [Music Band](https://themeisle.com/demo/?theme=Music%20Band%202)
+- [Fitness Trainer](https://themeisle.com/demo/?theme=Fitness%20Trainer)
 
 ##### [Version 2.6.6](https://github.com/Codeinwp/neve/compare/v2.6.5...v2.6.6) (2020-04-07)
 
@@ -78,8 +78,8 @@
 *  [Fix] Fixed sidebar layout not updating on single product pages [Fix] Fixed search results page sidebar when using Elementor
 *  [Fix] Fixed expanded cart positioning
 * New Starter Sites
-*  Web Agency - https://themeisle.com/demo/?theme=Web%20Agency
-*  Blogger -  https://themeisle.com/demo/?theme=Blogger
+* [ Web Agency](https://themeisle.com/demo/?theme=Web%20Agency)
+*  [Blogger](https://themeisle.com/demo/?theme=Blogger)
  
  ### v2.5.4 - 2019-12-19 
  **Changes:** 
