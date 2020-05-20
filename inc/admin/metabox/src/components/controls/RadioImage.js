@@ -21,18 +21,18 @@ export const RadioImage = compose(
 	} ),
 	withSelect((select, props) => {
 		return {
-			metaValue: select('core/editor').getEditedPostAttribute('meta')[props.id]
+			metaValue: select('core/editor').getEditedPostAttribute('meta')[props.id] || props.data['default']
 		}
 	} ) )( function( props ) {
 
 		const { label } = props.data;
-		const initial = props.data['default'];
+		// const initial = props.data['default'];
 		let options = getOptions(props);
 		return (
 			<div className="neve-meta-control neve-meta-radio-image">
 				{label && <p className="post-attributes-label-wrapper"><span className="post-attributes-label">{label}</span></p>}
 				<RadioControl
-					selected={props.metaValue || initial }
+					selected={props.metaValue}
 					options={options}
 					onChange={(value) => props.setMetaValue(value)}
 				/>

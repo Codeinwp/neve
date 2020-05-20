@@ -7,6 +7,9 @@
 
 namespace Neve\Admin\Metabox;
 
+use Neve\Core\Settings\Config;
+use Neve\Core\Settings\Mods;
+
 /**
  * Class Manager
  *
@@ -85,11 +88,30 @@ final class Manager {
 			array( 'wp-plugins', 'wp-edit-post', 'wp-element', 'wp-components', 'wp-data' )
 		);
 
+	}
+
+	/**
+	 * Register the metabox sidebar.
+	 */
+	public function meta_sidebar_script_enqueue() {
+		wp_enqueue_script( 'neve-meta-sidebar' );
+
+		global $post_type;
+		$container = $post_type === 'post' ? Mods::get( Config::MODS_SINGLE_POST_CONTAINER_STYLE, 'contained' ) : Mods::get( Config::MODS_DEFAULT_CONTAINER_STYLE, 'contained' );
+		$editor_width =  Mods::get( Config::MODS_CONTAINER_WIDTH );
+		$editor_width = isset( $editor_width['desktop'] ) ? (int) $editor_width['desktop'] : 1170;
+
 		wp_localize_script(
 			'neve-meta-sidebar',
 			'metaSidebar',
 			array(
-				'controls' => $this->controls
+				'controls' => $this->controls,
+				'actions'  => array(
+					'neve_meta_content_width' => array(
+						'container' => $container,
+						'editor'    => $editor_width,
+					)
+				)
 			)
 		);
 
@@ -99,13 +121,6 @@ final class Manager {
 			array( 'wp-edit-blocks' )
 		);
 
-	}
-
-	/**
-	 * Register the metabox sidebar.
-	 */
-	public function meta_sidebar_script_enqueue() {
-		wp_enqueue_script( 'neve-meta-sidebar' );
 	}
 
 	/**

@@ -153,7 +153,7 @@ class Main extends Controls_Base {
 					'hidden'      => $this->hide_content_width(),
 					'priority'    => 55,
 					'depends_on'  => 'neve_meta_enable_content_width',
-					'it_controls' => '.wp-block',
+					'it_controls' => '.wp-block:not([data-align="full"])',
 					'container'   => 'neve_meta_container'
 				)
 			)

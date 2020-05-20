@@ -346,11 +346,11 @@ var RadioImage = compose(withDispatch(function (dispatch, props) {
   };
 }), withSelect(function (select, props) {
   return {
-    metaValue: select('core/editor').getEditedPostAttribute('meta')[props.id]
+    metaValue: select('core/editor').getEditedPostAttribute('meta')[props.id] || props.data['default']
   };
 }))(function (props) {
-  var label = props.data.label;
-  var initial = props.data['default'];
+  var label = props.data.label; // const initial = props.data['default'];
+
   var options = getOptions(props);
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
     className: "neve-meta-control neve-meta-radio-image"
@@ -359,7 +359,7 @@ var RadioImage = compose(withDispatch(function (dispatch, props) {
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("span", {
     className: "post-attributes-label"
   }, label)), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(RadioControl, {
-    selected: props.metaValue || initial,
+    selected: props.metaValue,
     options: options,
     onChange: function onChange(value) {
       return props.setMetaValue(value);
@@ -385,6 +385,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
 
 
+
+/* global metaSidebar */
 var compose = wp.compose.compose;
 var _wp$data = wp.data,
     withDispatch = _wp$data.withDispatch,
@@ -392,13 +394,30 @@ var _wp$data = wp.data,
 var RangeControl = wp.components.RangeControl;
 var Range = compose(withDispatch(function (dispatch, props) {
   return {
-    setMetaFieldValue: function setMetaFieldValue(value, controllingClass) {
-      if (controllingClass) {
-        /* TODO: FOLLOW METABOX_SETTINGS.PHP BEHAVIOUR */
-        var elements = document.querySelectorAll(controllingClass);
-        elements.forEach(function (element) {
-          element.style.maxWidth = value + '%';
-        });
+    setMetaFieldValue: function setMetaFieldValue(value) {
+      var id = props.id;
+
+      if (id === 'neve_meta_content_width') {
+        var container = props.data.container;
+        var metaValue = value;
+        var containerMetaValue = wp.data.select('core/editor').getEditedPostAttribute('meta')[container];
+        var containerValue = containerMetaValue || containerMetaValue === 'default' ? containerMetaValue : metaSidebar.actions[id]['container'];
+        var blocKWidth;
+
+        if (containerValue === 'contained') {
+          blocKWidth = Math.round(metaValue / 100 * metaSidebar.actions[id]['editor']) + 'px';
+        } else {
+          blocKWidth = metaValue + '%';
+        }
+
+        var controllingClass = props.data['it_controls'];
+
+        if (controllingClass) {
+          var elements = document.querySelectorAll(controllingClass);
+          elements.forEach(function (element) {
+            element.style.maxWidth = blocKWidth;
+          });
+        }
       }
 
       dispatch('core/editor').editPost({
@@ -408,14 +427,13 @@ var Range = compose(withDispatch(function (dispatch, props) {
   };
 }), withSelect(function (select, props) {
   return {
-    metaFieldValue: select('core/editor').getEditedPostAttribute('meta')[props.id]
+    metaFieldValue: select('core/editor').getEditedPostAttribute('meta')[props.id] || props.data['default']
   };
 }))(function (props) {
   var _props$data = props.data,
       min = _props$data.min,
       max = _props$data.max,
       depends_on = _props$data.depends_on;
-  var initial = props.data['default'];
   var style = {};
 
   if (depends_on) {
@@ -426,16 +444,14 @@ var Range = compose(withDispatch(function (dispatch, props) {
     };
   }
 
-  var controllingClass = props.data['it_controls'];
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
     style: style,
     id: props.id,
     className: "neve-meta-control neve-meta-range"
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(RangeControl, {
     value: props.metaFieldValue,
-    initialPosition: initial,
     onChange: function onChange(content) {
-      return props.setMetaFieldValue(content, controllingClass);
+      return props.setMetaFieldValue(content);
     },
     min: min,
     max: max,
