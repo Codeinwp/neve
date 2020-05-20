@@ -5,7 +5,7 @@ Theme URI:      https://themeisle.com/themes/neve/
 Author:         ThemeIsle
 Author URI:     https://themeisle.com
 Description:    Neve is a super fast, easily customizable, multi-purpose theme. It’s perfect for blogs, small business, startups, agencies, firms, e-commerce shops (WooCommerce storefront) as well as personal portfolio sites and most types of projects. A fully AMP optimized and responsive theme, Neve will load in mere seconds and adapt perfectly on any viewing device. While it is lightweight and has a minimalist design, the theme is highly extendable, it has a highly SEO optimized code, resulting in top rankings in Google search results. Neve works perfectly with Gutenberg and the most popular page builders (Elementor, Brizy, Beaver Builder, Visual Composer, SiteOrigin, Divi). Neve is also WooCommerce ready, responsive, RTL & translation ready. Look no further. Neve is the perfect theme for you!
-Version:        2.6.6
+Version:        2.7.0
 License:        GNU General Public License v2 or later
 License URI:    http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain:    neve
@@ -465,17 +465,22 @@ a.neve-skip-link:focus {
   align-items: flex-end;
 }
 
-body.nv-empty-sidebar .alignfull, body.nv-sidebar-full-width .alignfull {
+.alignfull {
   width: 100vw;
   max-width: 100vw;
   margin-left: calc(50% - 50vw);
   padding: 0 15px;
 }
 
-body.nv-empty-sidebar .alignwide, body.nv-sidebar-full-width .alignwide {
+.alignwide {
   width: 70vw;
   max-width: 70vw;
   margin-left: calc(50% - 35vw);
+}
+
+body.nv-sidebar-left .alignfull, body.nv-sidebar-left .alignwide, body.nv-sidebar-right .alignfull, body.nv-sidebar-right .alignwide {
+  max-width: 100%;
+  margin-left: auto;
 }
 
 .has-neve-body-font-size {
@@ -693,6 +698,10 @@ blockquote.wp-block-quote.is-style-large cite {
   width: 100%;
   display: block;
   position: relative;
+}
+
+.primary-menu-ul li a .nv-icon svg {
+  fill: currentColor;
 }
 
 .primary-menu-ul .amp-caret-wrap {
@@ -1152,6 +1161,10 @@ fieldset input[type="text"], fieldset input[type="search"], fieldset input[type=
   align-items: center;
   justify-content: center;
   line-height: 0;
+}
+
+.search-form .nv-search-icon-wrap .nv-icon svg, .woocommerce-product-search .nv-search-icon-wrap .nv-icon svg {
+  fill: #c9c9c9;
 }
 
 .search-form input[type="search"], .woocommerce-product-search input[type="search"] {
@@ -2499,33 +2512,6 @@ audio {
   margin: 0 auto;
 }
 
-.header-top-inner.light-mode {
-  background-color: #f0f0f0;
-}
-
-.light-mode {
-  background-color: #fff;
-  color: #404248;
-}
-
-.light-mode a:not(.button) {
-  color: #404248;
-}
-
-.header--row-inner.dark-mode, .header--row-inner.dark-mode .sub-menu, .header--row-inner.dark-mode .sub-menu li {
-  border-color: #333;
-  background-color: #24292e;
-  color: #fff;
-}
-
-.header--row-inner.dark-mode a:not(.button) {
-  color: #fff;
-}
-
-.dark-mode .menu-item-nav-search, .dark-mode .menu-item-nav-cart > a {
-  color: #fff;
-}
-
 .hfg_header.site-header {
   -webkit-box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.1);
@@ -2606,90 +2592,6 @@ audio {
 
 .header-menu-sidebar .nav-menu-mobile .nav-toggle-icon:hover, .header-menu-sidebar .nav-menu-mobile .nav-toggle-icon:focus {
   background: rgba(0, 0, 0, 0.01);
-}
-
-.header-menu-sidebar.light-mode .sub-menu a,
-.header-menu-sidebar.light-mode .cart-item-link,
-.header-menu-sidebar.light-mode .item--html a,
-.header-menu-sidebar.light-mode .nav-menu a {
-  color: rgba(0, 0, 0, 0.55);
-}
-
-.header-menu-sidebar.light-mode .sub-menu a:hover,
-.header-menu-sidebar.light-mode .cart-item-link:hover,
-.header-menu-sidebar.light-mode .item--html a:hover,
-.header-menu-sidebar.light-mode .nav-menu a:hover {
-  color: rgba(0, 0, 0, 0.8);
-}
-
-.header-menu-sidebar.light-mode .cart-icon {
-  color: rgba(0, 0, 0, 0.8);
-}
-
-.header-menu-sidebar.light-mode .builder-item-sidebar {
-  border-color: rgba(0, 0, 0, 0.08);
-}
-
-.header-menu-sidebar.light-mode .builder-item-sidebar:before {
-  background: rgba(0, 0, 0, 0.08);
-}
-
-.header-menu-sidebar.light-mode .header-menu-sidebar-bg {
-  background-color: rgba(255, 255, 255, 0.9);
-}
-
-.header-menu-sidebar.light-mode .nav-menu-mobile .menu li a, .header-menu-sidebar.light-mode .sub-menu, .header-menu-sidebar.light-mode .nav-menu-mobile .nav-toggle-icon {
-  border-color: rgba(0, 0, 0, 0.08);
-}
-
-.header-menu-sidebar.light-mode .nav-menu-mobile .nav-toggle-icon:hover, .header-menu-sidebar.light-mode .nav-menu-mobile .nav-toggle-icon:focus {
-  background: rgba(0, 0, 0, 0.01);
-}
-
-.header-menu-sidebar.light-mode .menu li {
-  border-color: rgba(0, 0, 0, 0.08);
-}
-
-.header-menu-sidebar.dark-mode .sub-menu a,
-.header-menu-sidebar.dark-mode .cart-item-link,
-.header-menu-sidebar.dark-mode .item--html a,
-.header-menu-sidebar.dark-mode .nav-menu a, .header-menu-sidebar.dark-mode .nav-menu .nav-toggle-icon {
-  color: rgba(255, 255, 255, 0.79);
-}
-
-.header-menu-sidebar.dark-mode .sub-menu a:hover,
-.header-menu-sidebar.dark-mode .cart-item-link:hover,
-.header-menu-sidebar.dark-mode .item--html a:hover,
-.header-menu-sidebar.dark-mode .nav-menu a:hover, .header-menu-sidebar.dark-mode .nav-menu .nav-toggle-icon:hover {
-  color: rgba(255, 255, 255, 0.99);
-}
-
-.header-menu-sidebar.dark-mode .cart-icon {
-  color: rgba(255, 255, 255, 0.99);
-}
-
-.header-menu-sidebar.dark-mode .builder-item-sidebar {
-  border-color: rgba(255, 255, 255, 0.08);
-}
-
-.header-menu-sidebar.dark-mode .builder-item-sidebar:before {
-  background: rgba(255, 255, 255, 0.08);
-}
-
-.header-menu-sidebar.dark-mode .header-menu-sidebar-bg {
-  background-color: rgba(0, 0, 0, 0.9);
-}
-
-.header-menu-sidebar.dark-mode .nav-menu-mobile .menu li a, .header-menu-sidebar.dark-mode .sub-menu, .header-menu-sidebar.dark-mode .nav-menu-mobile .nav-toggle-icon {
-  border-color: rgba(255, 255, 255, 0.08);
-}
-
-.header-menu-sidebar.dark-mode .nav-menu-mobile .nav-toggle-icon:hover, .header-menu-sidebar.dark-mode .nav-menu-mobile .nav-toggle-icon:focus {
-  background: rgba(0, 0, 0, 0.01);
-}
-
-.header-menu-sidebar.dark-mode .menu li {
-  border-color: rgba(255, 255, 255, 0.08);
 }
 
 .header-menu-sidebar-bg {
@@ -2917,43 +2819,6 @@ body.menu_sidebar_slide_left.menu_sidebar_dropdown:before {
   padding-bottom: 2.5em;
 }
 
-.footer--row .light-mode {
-  background: #f9f9f9;
-}
-
-.footer--row .dark-mode {
-  background: #24292e;
-}
-
-.footer--row-inner.light-mode {
-  color: #404248;
-}
-
-.footer--row-inner.dark-mode {
-  color: rgba(255, 255, 255, 0.99);
-}
-
-.footer--row-inner.dark-mode a:not(.button) {
-  color: rgba(255, 255, 255, 0.79);
-}
-
-.footer--row-inner.dark-mode a:not(.button):hover {
-  color: rgba(255, 255, 255, 0.99);
-}
-
-.footer--row-inner.dark-mode .footer-menu li a {
-  color: inherit;
-}
-
-.footer--row-inner.dark-mode .product_list_widget li {
-  border-color: rgba(255, 255, 255, 0.08);
-}
-
-.footer--row-inner.dark-mode table tbody td,
-.footer--row-inner.dark-mode table th {
-  background: rgba(0, 0, 0, 0.08);
-}
-
 .footer--row.layout-fullwidth .hfg-container {
   max-width: initial;
 }
@@ -3163,14 +3028,6 @@ body.menu_sidebar_slide_left.menu_sidebar_dropdown:before {
   margin: 3px 0;
 }
 
-.light-mode .icon-bar {
-  background: #404248;
-}
-
-.dark-mode .icon-bar {
-  background: #fff;
-}
-
 .navbar-toggle-wrapper {
   align-items: center;
 }
@@ -3189,10 +3046,6 @@ body.menu_sidebar_slide_left.menu_sidebar_dropdown:before {
   box-shadow: none;
   transform: none;
   background: transparent;
-}
-
-.light-mode .navbar-toggle {
-  color: #404248;
 }
 
 .is-menu-sidebar .navbar-toggle .icon-bar:nth-child(1) {

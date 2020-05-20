@@ -163,7 +163,7 @@ class Dynamic_Selector {
 	 * @return bool|mixed
 	 */
 	public function get_value( $meta ) {
-		// By default the non-responsive settings are shown only on mobile media query. By using the META_DEVICE_ONLY prop we can move this to differen devices.
+		// By default the non-responsive settings are shown only on mobile media query. By using the META_DEVICE_ONLY prop we can move this to different devices.
 		if ( ( ! isset( $meta[ self::META_IS_RESPONSIVE ] ) || ! $meta[ self::META_IS_RESPONSIVE ] ) && $this->get_device() !== ( isset( $meta[ self::META_DEVICE_ONLY ] ) ? $meta[ self::META_DEVICE_ONLY ] : self::MOBILE ) ) {
 			return false;
 		}

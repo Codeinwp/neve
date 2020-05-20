@@ -34,6 +34,7 @@ abstract class Abstract_Builder implements Builder {
 	const LAYOUT_SETTING     = 'layout';
 	const HEIGHT_SETTING     = 'height';
 	const SKIN_SETTING       = 'skin';
+	const TEXT_COLOR         = 'new_text_color';
 	const BACKGROUND_SETTING = 'background';
 	/**
 	 * Layout config data.
@@ -366,17 +367,7 @@ abstract class Abstract_Builder implements Builder {
 			);
 		}
 
-		$default_color = '#ffffff';
-		if ( isset( $this->default_colors[ $this->get_id() ][ $row_id ] ) && ! empty( $this->default_colors[ $this->get_id() ][ $row_id ] ) ) {
-			$default_color = $this->default_colors[ $this->get_id() ][ $row_id ];
-		}
-		$old_skin = get_theme_mod( $row_setting_id . '_' . self::SKIN_SETTING );
-		if ( ! empty( $old_skin ) ) {
-			$default_color = $old_skin === 'dark-mode' ? '#24292e' : '#ffffff';
-		}
-		$previous      = get_theme_mod( $row_setting_id . '_color' );
-		$default_color = ! empty( $previous ) ? $previous : $default_color;
-
+		$default_colors = $this->get_default_row_colors( $row_id );
 		SettingsManager::get_instance()->add(
 			[
 				'id'                    => self::BACKGROUND_SETTING,
@@ -390,12 +381,12 @@ abstract class Abstract_Builder implements Builder {
 				'options'               => [
 					'priority' => 100,
 				],
-				'transport'             => 'postMessage',
-				'sanitize_callback'     => 'neve_sanitize_background',
 				'default'               => [
 					'type'       => 'color',
-					'colorValue' => $default_color,
+					'colorValue' => $default_colors['background'],
 				],
+				'transport'             => 'postMessage',
+				'sanitize_callback'     => 'neve_sanitize_background',
 				'conditional_header'    => $this->get_id() === 'header',
 			]
 		);
@@ -404,25 +395,22 @@ abstract class Abstract_Builder implements Builder {
 
 		SettingsManager::get_instance()->add(
 			[
-				'id'                    => self::SKIN_SETTING,
+				'id'                    => self::TEXT_COLOR,
 				'group'                 => $row_setting_id,
 				'tab'                   => SettingsManager::TAB_STYLE,
-				'label'                 => __( 'Skin Mode', 'neve' ),
+				'label'                 => __( 'Text Color', 'neve' ),
 				'section'               => $row_setting_id,
 				'conditional_header'    => $this->get_id() === 'header',
-				'type'                  => '\Neve\Customizer\Controls\React\Radio_Buttons',
-				'options'               => [
-					'is_for'        => 'row_skin',
-					'large_buttons' => true,
-				],
+				'type'                  => 'neve_color_control',
 				'transport'             => 'postMessage',
 				'live_refresh_selector' => $row_class,
-				'live_refresh_css_prop' => [ 'is_for' => 'row_skin' ],
+				'live_refresh_css_prop' => [
+					'partial' => $row_id === 'sidebar' ? 'hfg_header_layout_partial' : $row_setting_id . '_partial',
+				],
 				'sanitize_callback'     => 'wp_filter_nohtml_kses',
-				'default'               => 'light-mode',
+				'default'               => $default_colors['text'],
 			]
 		);
-
 		do_action( 'hfg_row_settings', $this->get_id(), $row_id, $row_setting_id );
 	}
 
@@ -778,8 +766,7 @@ abstract class Abstract_Builder implements Builder {
 	 * @access  private
 	 */
 	private function add_row_style( $row_index, $css_array = array() ) {
-
-		$selector    = '.' . $this->get_id() . '-' . $row_index . '-inner';
+		$selector    = $row_index === 'sidebar' ? '.header-menu-sidebar .header-menu-sidebar-bg' : '.' . $this->get_id() . '-' . $row_index . '-inner';
 		$css_array[] = [
 			Dynamic_Selector::KEY_SELECTOR => $selector,
 			Dynamic_Selector::KEY_RULES    => [
@@ -799,9 +786,36 @@ abstract class Abstract_Builder implements Builder {
 			],
 		];
 
-		if ( $row_index === 'sidebar' ) {
-			$selector = '.header-menu-sidebar .header-menu-sidebar-bg';
-		}
+		$default_colors = $this->get_default_row_colors( $row_index );
+		$css_array[]    = [
+			Dynamic_Selector::KEY_SELECTOR => $selector . ',' . $selector . ' a:not(.button),' . $selector . ' .navbar-toggle',
+			Dynamic_Selector::KEY_RULES    => [
+				Config::CSS_PROP_COLOR => [
+					Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_' . self::TEXT_COLOR,
+					Dynamic_Selector::META_DEFAULT => $default_colors['text'],
+				],
+			],
+		];
+
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => $selector . ' .nv-icon svg,' . $selector . ' .nv-contact-list svg',
+			Dynamic_Selector::KEY_RULES    => [
+				Config::CSS_PROP_FILL_COLOR => [
+					Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_' . self::TEXT_COLOR,
+					Dynamic_Selector::META_DEFAULT => $default_colors['text'],
+				],
+			],
+		];
+
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => $selector . ' .icon-bar',
+			Dynamic_Selector::KEY_RULES    => [
+				Config::CSS_PROP_BACKGROUND_COLOR => [
+					Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_' . self::TEXT_COLOR,
+					Dynamic_Selector::META_DEFAULT => $default_colors['text'],
+				],
+			],
+		];
 
 		if ( $this->get_id() === 'header' ) {
 			$selector = '.hfg_header ' . $selector;
@@ -811,31 +825,55 @@ abstract class Abstract_Builder implements Builder {
 		if ( isset( $this->default_colors[ $this->get_id() ][ $row_index ] ) && ! empty( $this->default_colors[ $this->get_id() ][ $row_index ] ) ) {
 			$default_color = $this->default_colors[ $this->get_id() ][ $row_index ];
 		}
-		$previous = get_theme_mod( $this->control_id . '_' . $row_index . '_color', $default_color );
+		$defaults      = $this->get_default_row_colors( $row_index );
+		$default_color = isset( $defaults['background'] ) ? $defaults['background'] : $default_color;
 
-		$background    = get_theme_mod(
+		$background = get_theme_mod(
 			$this->control_id . '_' . $row_index . '_background',
 			[
 				'type'       => 'color',
-				'colorValue' => ! empty( $previous ) ? $previous : $default_color,
+				'colorValue' => $default_color,
 			]
 		);
-		$selector_full = $selector . ',' . $selector . '.dark-mode,' . $selector . '.light-mode';
-		if ( $background['type'] === 'color' && ! empty( $background['colorValue'] ) && $background['colorValue'] !== $default_color ) {
+
+		if ( $background['type'] === 'color' && ! empty( $background['colorValue'] ) ) {
 			$css_array[] = [
-				Dynamic_Selector::KEY_SELECTOR => $selector_full,
+				Dynamic_Selector::KEY_SELECTOR => $selector . ' .primary-menu-ul .sub-menu li,' . $selector . ' .primary-menu-ul .sub-menu',
 				Dynamic_Selector::KEY_RULES    => [
 					Config::CSS_PROP_BACKGROUND_COLOR => [
 						Dynamic_Selector::META_KEY => $this->control_id . '_' . $row_index . '_background' . '.colorValue',
+					],
+					Config::CSS_PROP_BORDER_COLOR     => [
+						Dynamic_Selector::META_KEY => $this->control_id . '_' . $row_index . '_background' . '.colorValue',
+					],
+				],
+			];
+			$css_array[] = [
+				Dynamic_Selector::KEY_SELECTOR => $selector,
+				Dynamic_Selector::KEY_RULES    => [
+					Config::CSS_PROP_BACKGROUND_COLOR => [
+						Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_background' . '.colorValue',
+						Dynamic_Selector::META_DEFAULT => $defaults['background'],
 					],
 				],
 			];
 		}
 
 		if ( $background['type'] === 'image' ) {
+			$css_array[] = [
+				Dynamic_Selector::KEY_SELECTOR => $selector . ' .primary-menu-ul .sub-menu li,' . $selector . ' .primary-menu-ul .sub-menu',
+				Dynamic_Selector::KEY_RULES    => [
+					Config::CSS_PROP_BACKGROUND_COLOR => [
+						Dynamic_Selector::META_KEY => $this->control_id . '_' . $row_index . '_background' . '.overlayColorValue',
+					],
+					Config::CSS_PROP_BORDER_COLOR     => [
+						Dynamic_Selector::META_KEY => $this->control_id . '_' . $row_index . '_background' . '.overlayColorValue',
+					],
+				],
+			];
 
 			$css_array[] = [
-				Dynamic_Selector::KEY_SELECTOR => $selector_full,
+				Dynamic_Selector::KEY_SELECTOR => $selector,
 				Dynamic_Selector::KEY_RULES    => [
 					Config::CSS_PROP_BACKGROUND_COLOR => [
 						Dynamic_Selector::META_KEY    => $this->control_id . '_' . $row_index . '_background',
@@ -877,8 +915,9 @@ abstract class Abstract_Builder implements Builder {
 						Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
 							$background = $value;
 							$style      = '';
-							if ( ! empty( $background['overlayColorValue'] ) && ! empty( $background['overlayOpacity'] ) ) {
-								$style = sprintf( 'background-color:%s; opacity: %s; content: ""; position:absolute; top: 0; bottom:0; width:100%%;', $background['overlayColorValue'], ( $background['overlayOpacity'] / 100 ) );
+							$opacity    = isset( $background['overlayOpacity'] ) ? $background['overlayOpacity'] : 50;
+							if ( ! empty( $background['overlayColorValue'] ) && ! empty( $opacity ) ) {
+								$style = sprintf( 'background-color:%s; opacity: %s; content: ""; position:absolute; top: 0; bottom:0; width:100%%;', $background['overlayColorValue'], ( $opacity / 100 ) );
 							}
 
 							return $style;
@@ -1179,5 +1218,49 @@ abstract class Abstract_Builder implements Builder {
 		);
 
 		return $components_settings;
+	}
+
+	/**
+	 * Get the default row colors based on the old settings.
+	 *
+	 * @param string $row_id the row id.
+	 * @return array
+	 */
+	private function get_default_row_colors( $row_id ) {
+		$bg_color_map = [
+			'background' => [
+				'dark-mode'  => '#24292e',
+				'light-mode' => '#ffffff',
+			],
+			'text'       => [
+				'dark-mode'  => '#ffffff',
+				'light-mode' => '#404248',
+			],
+		];
+
+		$row_setting_id = $this->control_id . '_' . $row_id;
+		$builder        = $this->get_id();
+
+		$background = $bg_color_map['background']['light-mode'];
+		$text       = $bg_color_map['text']['light-mode'];
+
+		if ( $builder === 'footer' && $row_id === 'bottom' ) {
+			$background = $bg_color_map['background']['dark-mode'];
+			$text       = $bg_color_map['text']['dark-mode'];
+		}
+
+		if ( $builder === 'header' && $row_id === 'top' ) {
+			$background = '#f0f0f0';
+		}
+
+		$old_skin = get_theme_mod( $row_setting_id . '_' . self::SKIN_SETTING );
+		if ( ! empty( $old_skin ) ) {
+			$background = $bg_color_map['background'][ $old_skin ];
+			$text       = $bg_color_map['text'][ $old_skin ];
+		}
+		return [
+			'background' => $background,
+			'text'       => $text,
+		];
 	}
 }

@@ -44,7 +44,7 @@ const Changelog = (props) => {
 									<span className="label success">{__('Features', 'neve')}</span>
 								</div>
 								<ul className="entries">
-									{features.map((feature) => <li>{feature}</li>)}
+									{features.map((feature) => <li dangerouslySetInnerHTML={{__html: feature}}/>)}
 								</ul>
 							</div>
 							}
@@ -54,7 +54,7 @@ const Changelog = (props) => {
 									<span className="label error">{__('Bug Fixes', 'neve')}</span>
 								</div>
 								<ul className="entries">
-									{fixes.map((fix) => <li>{fix}</li>)}
+									{fixes.map((fix) => <li dangerouslySetInnerHTML={{__html: fix}}/>)}
 								</ul>
 							</div>
 							}
@@ -64,7 +64,7 @@ const Changelog = (props) => {
 									<span className="label info">{__('Tweaks', 'neve')}</span>
 								</div>
 								<ul className="entries">
-									{tweaks.map((tweak) => <li>{tweak}</li>)}
+									{tweaks.map((tweak) => <li dangerouslySetInnerHTML={{__html: tweak}}/>)}
 								</ul>
 							</div>
 							}
