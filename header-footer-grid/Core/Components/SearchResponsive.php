@@ -28,6 +28,7 @@ class SearchResponsive extends Abstract_Component {
 	const SIZE_ID        = 'icon_size';
 	const COLOR_ID       = 'color';
 	const HOVER_COLOR_ID = 'hover_color';
+	const OPEN_TYPE 	 = 'open_type';
 
 	/**
 	 * Button constructor.
@@ -156,6 +157,35 @@ class SearchResponsive extends Abstract_Component {
 				'conditional_header'    => true,
 			]
 		);
+
+		SettingsManager::get_instance()->add( [
+			'id' => self::OPEN_TYPE,
+			'group'                 => self::COMPONENT_ID,
+			'tab'                   => SettingsManager::TAB_GENERAL,
+			'transport'             => $this->is_auto_width ? 'post' . $this->get_builder_id() : 'postMessage',
+			'sanitize_callback'     => 'wp_filter_nohtml_kses',
+			'default'               => 'canvas',
+			'label'                 => __( 'Open Behaviour', 'neve' ),
+			'type'                  => '\Neve\Customizer\Controls\React\Radio_Buttons',
+			'options'               => [
+				'choices' => [
+					'canvas'   => [
+						'tooltip' => __( 'Canvas', 'neve' ),
+						'icon'    => 'editor-alignleft',
+					],
+					'minimal' => [
+						'tooltip' => __( 'Minimal', 'neve' ),
+						'icon'    => 'editor-aligncenter',
+					],
+					'floating'  => [
+						'tooltip' => __( 'Header Float', 'neve' ),
+						'icon'    => 'editor-alignright',
+					],
+				]
+			],
+			'section'               => $this->section,
+			'conditional_header'    => true,
+		] );
 	}
 
 	/**

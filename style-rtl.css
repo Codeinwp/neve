@@ -781,6 +781,37 @@ ul[id^="nv-primary-navigation"] i {
   width: 20px;
 }
 
+.menu-item-nav-search.minimal .nv-nav-search {
+  left: auto;
+  right: 0;
+}
+
+.menu-item-nav-search.floating .nv-nav-search {
+  position: fixed;
+  top: -100%;
+  right: 0;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+
+.menu-item-nav-search.floating .search-form {
+  flex-grow: 1;
+  margin-left: 20px;
+}
+
+.menu-item-nav-search.floating .close-container {
+  display: flex;
+}
+
+.menu-item-nav-search.floating.active .nv-nav-search {
+  top: 0;
+}
+
+.menu-item-nav-search.floating .search-form input[type=search] {
+  width: 100%;
+}
+
 .menu-item-nav-search.responsive-nav-search .nv-nav-search {
   position: fixed;
   top: 0;
@@ -790,6 +821,13 @@ ul[id^="nv-primary-navigation"] i {
   justify-content: center;
   align-items: center;
   background-color: #fff;
+}
+
+.menu-item-nav-search.responsive-nav-search .nv-nav-search .close-container {
+  position: absolute;
+  top: 60px;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .menu-item-nav-search.responsive-nav-search .nv-nav-search .search-submit {
@@ -838,13 +876,6 @@ ul[id^="nv-primary-navigation"] i {
 
 .menu-item-nav-search.responsive-nav-search .nv-nav-search form input[type="submit"]:hover {
   background-color: #eee;
-}
-
-.close-container {
-  position: absolute;
-  top: 60px;
-  display: flex;
-  justify-content: flex-end;
 }
 
 .menu-item-nav-search {
