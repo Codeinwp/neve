@@ -1,83 +1,74 @@
-const defaultConfig = require( './node_modules/@wordpress/scripts/config/webpack.config.js' );
-const path = require( 'path' );
-const postcssPresetEnv = require( 'postcss-preset-env' );
-const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
-const IgnoreEmitPlugin = require( 'ignore-emit-webpack-plugin' );
+const webpack = require('webpack');
+const NODE_ENV = process.env.NODE_ENV || 'development';
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const production = process.env.NODE_ENV === '';
-
-module.exports = {
-	...defaultConfig,
-	entry: {
-		index: path.resolve( process.cwd(), 'src', 'index.js' ),
-		editor: path.resolve( process.cwd(), 'src', 'editor.scss' ),
+const config = {
+	mode: NODE_ENV,
+	entry: ['./src/index.js', './src/editor.scss'],
+	externals: {
+		'react': 'React',
+		'react-dom': 'ReactDOM'
 	},
-	optimization: {
-		...defaultConfig.optimization,
-		splitChunks: {
-			cacheGroups: {
-				editor: {
-					name: 'editor',
-					test: /editor\.(sc|sa|c)ss$/,
-					chunks: 'all',
-					enforce: true,
-				},
-				default: false,
-			},
-		},
+	output: {
+		path: __dirname,
+		filename: './build/index.js'
 	},
 	module: {
-		...defaultConfig.module,
 		rules: [
-			...defaultConfig.module.rules,
 			{
-				test: /\.(sc|sa|c)ss$/,
-				exclude: /node_modules/,
-				use: [
-					{
-						loader: MiniCssExtractPlugin.loader,
-					},
-					{
-						loader: 'css-loader',
-						options: {
-							sourceMap: ! production,
-						},
-					},
+				test: /.js?$/,
+				use: [{
+					loader: 'babel-loader',
+					options: {
+						presets: ['@babel/preset-env'],
+						plugins: [
+							'@babel/plugin-transform-async-to-generator',
+							'@babel/plugin-proposal-object-rest-spread',
+							[
+								'@babel/plugin-transform-react-jsx', {
+								'pragma': 'wp.element.createElement'
+							}
+							]
+						]
+					}
+				},
+					'eslint-loader'],
+				exclude: /node_modules/
+			},
+			{
+				test: /\.(css|scss)$/,
+				use: [{
+					loader: MiniCssExtractPlugin.loader
+				},
+					'css-loader',
 					{
 						loader: 'postcss-loader',
 						options: {
-							ident: 'postcss',
-							plugins: () => [
-								postcssPresetEnv( {
-									stage: 3,
-									features: {
-										'custom-media-queries': {
-											preserve: false,
-										},
-										'custom-properties': {
-											preserve: true,
-										},
-										'nesting-rules': true,
-									},
-								} ),
-							],
-						},
+							plugins: [
+								require('autoprefixer')
+							]
+						}
 					},
-					{
-						loader: 'sass-loader',
-						options: {
-							sourceMap: ! production,
-						},
-					},
-				],
+					'sass-loader']
 			},
-		],
+			{
+				test: /\.(png|jpg)$/,
+				loader: 'url-loader'
+			}
+		]
 	},
 	plugins: [
-		...defaultConfig.plugins,
-		new MiniCssExtractPlugin( {
-			filename: '[name].css',
-		} ),
-		new IgnoreEmitPlugin( [ 'editor.js' ] ),
-	],
+		new webpack.DefinePlugin({
+			'process.env.NODE_ENV': JSON.stringify(NODE_ENV)
+		}),
+		new MiniCssExtractPlugin({
+			filename: './build/editor.css'
+		})
+	]
 };
+
+if ('development' === NODE_ENV) {
+	config.devtool = 'inline-source-map';
+}
+
+module.exports = config;

@@ -14,11 +14,11 @@ const Range = compose(
 	}),
 	withSelect((select, props) => {
 		return {
-			metaFieldValue: select('core/editor').getEditedPostAttribute('meta')[props.id] || props.data['default']
+			metaFieldValue: select('core/editor').getEditedPostAttribute('meta')[props.id] || props.data.default
 		};
 	})
 )((props) => {
-	const {min,max} = props.data;
+	const {min, max} = props.data;
 	return (
 		<div id={props.id} className="neve-meta-control neve-meta-range">
 			<RangeControl
@@ -32,4 +32,4 @@ const Range = compose(
 	);
 });
 
-export {Range}
+export {Range};

@@ -2,7 +2,7 @@
 const { PluginSidebar, PluginSidebarMoreMenuItem } = wp.editPost;
 const { __ } = wp.i18n;
 
-import { MetaFieldsManager } from "./MetaFieldsManager";
+import { MetaFieldsManager } from './MetaFieldsManager';
 
 const Sidebar = () => {
 	return (

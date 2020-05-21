@@ -5,7 +5,7 @@ const { CheckboxControl } = wp.components;
 const CheckBox = compose(
 	withDispatch((dispatch) => {
 		return {
-			setMetaFieldValue: (id,value) => {
+			setMetaFieldValue: (id, value) => {
 				dispatch('core/editor').editPost( { meta: { [id]: value } } );
 			}
 		};
@@ -21,7 +21,7 @@ const CheckBox = compose(
 		<div className="neve-meta-control neve-meta-checkbox">
 			<CheckboxControl
 				label={input_label}
-				checked={ (metaFieldValue === 'on') }
+				checked={ ( 'on' === metaFieldValue ) }
 				onChange={ (value) => {
 					stateUpdate( id, ( value ? 'on' : 'off' ) );
 					setMetaFieldValue( id, ( value ? 'on' : 'off' ) );
@@ -32,4 +32,4 @@ const CheckBox = compose(
 	);
 });
 
-export {CheckBox}
+export {CheckBox};

@@ -1,7 +1,7 @@
 /**
  * Internal dependencies
  */
-import { registerPlugin } from "@wordpress/plugins";
+const { registerPlugin } = wp.plugins;
 import Sidebar from './components/Sidebar';
 
 registerPlugin( 'meta-sidebar', {

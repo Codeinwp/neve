@@ -2,20 +2,18 @@ const { RadioControl } = wp.components;
 const {compose} = wp.compose;
 const {withDispatch, withSelect} = wp.data;
 
-
-
 export const RadioImage = compose(
 	withDispatch((dispatch, props) => {
 		return {
 			setMetaValue: (value) => {
-				dispatch('core/editor').editPost({meta: {[props.id]: value}})
+				dispatch('core/editor').editPost({meta: {[props.id]: value}});
 			}
-		}
+		};
 	} ),
 	withSelect((select, props) => {
 		return {
-			metaValue: select('core/editor').getEditedPostAttribute('meta')[props.id] || props.data['default']
-		}
+			metaValue: select('core/editor').getEditedPostAttribute('meta')[props.id] || props.data.default
+		};
 	} ) )( function( props ) {
 
 		const getOptions = function(props) {
@@ -43,6 +41,6 @@ export const RadioImage = compose(
 					} }
 				/>
 			</div>
-		)
+		);
 	}
 );
