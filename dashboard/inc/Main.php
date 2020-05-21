@@ -94,7 +94,7 @@ class Main {
 			[
 				'type'         => 'string',
 				'show_in_rest' => true,
-				'default'      => 'no',
+				'default'      => '',
 			]
 		);
 	}
@@ -211,7 +211,8 @@ class Main {
 				),
 			],
 			'changelog'           => $this->cl_handler->get_changelog( get_template_directory() . '/CHANGELOG.md' ),
-			'onboarding'          => $this->get_onboarding_data(),
+			'onboarding'          => [],
+			'hasFileSystem'       => WP_Filesystem(),
 		];
 
 		if ( defined( 'NEVE_PRO_PATH' ) ) {
@@ -426,12 +427,5 @@ class Main {
 		set_transient( $this->plugins_cache_key, wp_json_encode( $data ) );
 
 		return $data;
-	}
-
-	/**
-	 * Get the onboarding data.
-	 */
-	private function get_onboarding_data() {
-		return array();
 	}
 }

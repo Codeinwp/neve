@@ -39,9 +39,16 @@
 }
 @mixin card--desktop() {
   .card {
-    margin: 0 0 30px;
+	padding: 20px 30px;
+	margin: 0 0 20px;
     &:last-child {
       margin-bottom: 0;
     }
+  }
+}
+@mixin card--desktop-large() {
+  .card {
+	padding: 30px 40px;
+	margin: 0 0 30px;
   }
 }

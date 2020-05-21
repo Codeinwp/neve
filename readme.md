@@ -1230,3 +1230,21 @@ Starter Sites screenshots resources:
 * https://mystock.themeisle.com/photo/temple-2/
 * https://stocksnap.io/photo/UA83K6Z0WY
 * https://stocksnap.io/photo/EB9B6BC1F6
+
+- Laundry Services
+* https://stocksnap.io/photo/laundry-laundromat-4876CF9B9C
+* https://stocksnap.io/photo/laundry-laundromat-611E343F6D
+* https://mystock.themeisle.com/photo/silk-scarfs/
+
+- Craft Beer
+* https://stocksnap.io/photo/beer-bottles-8HS0I30RUK
+* https://stocksnap.io/photo/wine-beer-C2988083A4
+
+- Gardening
+* https://mystock.themeisle.com/photo/distant-view-of-taj-mahal-surounded-by-nature/
+* https://stocksnap.io/photo/green-window-HYEGYZNLA6
+* https://mystock.themeisle.com/photo/trees-carefully-trimmed-into-geometrical-shapes-on-a-beach/
+
+- Resume 2
+* https://mystock.themeisle.com/photo/browser-tabs/
+* https://stocksnap.io/photo/man-interior-BXO1M5UBLM
