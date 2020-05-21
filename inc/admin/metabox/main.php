@@ -139,7 +139,6 @@ class Main extends Controls_Base {
 					'label'        => __( 'Content Width', 'neve' ) . ' (%)',
 					'input_label'  => __( 'Enable Individual Content Width', 'neve' ),
 					'priority'     => 50,
-					'dependent'    => 'neve_meta_content_width'
 				)
 			)
 		);

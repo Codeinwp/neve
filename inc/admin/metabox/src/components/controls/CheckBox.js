@@ -1,39 +1,35 @@
-import {compose} from "@wordpress/compose";
-import {withDispatch, withSelect} from "@wordpress/data";
-import {CheckboxControl} from "@wordpress/components";
+const { compose } = wp.compose;
+const { withDispatch, withSelect } = wp.data;
+const { CheckboxControl } = wp.components;
 
-export let CheckBox = compose(
-	withDispatch((dispatch, props) => {
+const CheckBox = compose(
+	withDispatch((dispatch) => {
 		return {
-			setMetaFieldValue: (value, dependent) => {
-
-				if ( dependent ){
-					let control = document.getElementById(dependent);
-					if( value === true ){
-						control.style.display = "block";
-					} else {
-						control.style.display = "none";
-					}
-				}
-				dispatch('core/editor').editPost( { meta: { [props.id]: ( value ? 'on' : 'off' ) } } );
+			setMetaFieldValue: (id,value) => {
+				dispatch('core/editor').editPost( { meta: { [id]: value } } );
 			}
 		};
 	}),
-	withSelect((select, props) => {
+	withSelect((select, {id}) => {
 		return {
-			metaFieldValue: select('core/editor').getEditedPostAttribute('meta')[props.id]
+			metaFieldValue: select('core/editor').getEditedPostAttribute('meta')[id]
 		};
 	})
-)((props) => {
-	const {input_label, dependent} = props.data;
+)(({id, data, metaFieldValue, setMetaFieldValue, stateUpdate}) => {
+	const {input_label} = data;
 	return (
 		<div className="neve-meta-control neve-meta-checkbox">
 			<CheckboxControl
 				label={input_label}
-				checked={ (props.metaFieldValue === 'on') }
-				onChange={ (content) => props.setMetaFieldValue(content, dependent) }
+				checked={ (metaFieldValue === 'on') }
+				onChange={ (value) => {
+					stateUpdate( id, ( value ? 'on' : 'off' ) );
+					setMetaFieldValue( id, ( value ? 'on' : 'off' ) );
+				} }
 			/>
 		</div>
 
 	);
 });
+
+export {CheckBox}

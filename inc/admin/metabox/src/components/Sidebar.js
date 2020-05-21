@@ -1,6 +1,7 @@
 /* global metaSidebar */
-import { PluginSidebar, PluginSidebarMoreMenuItem } from "@wordpress/edit-post";
-import { __ } from "@wordpress/i18n";
+const { PluginSidebar, PluginSidebarMoreMenuItem } = wp.editPost;
+const { __ } = wp.i18n;
+
 import { MetaFieldsManager } from "./MetaFieldsManager";
 
 const Sidebar = () => {

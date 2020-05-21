@@ -3,18 +3,18 @@ const {compose} = wp.compose;
 const {withDispatch, withSelect} = wp.data;
 const {RangeControl} = wp.components;
 
-export let Range = compose(
+const Range = compose(
 	withDispatch((dispatch, props) => {
 		return {
 			setMetaFieldValue: (value) => {
 
-				let {id} = props;
+				const {id} = props;
 				if ( id === 'neve_meta_content_width' ) {
-					let {container} = props.data;
+					const {container} = props.data;
 
-					let metaValue = value;
-					let containerMetaValue = wp.data.select('core/editor').getEditedPostAttribute('meta')[container];
-					let containerValue = containerMetaValue || containerMetaValue === 'default' ?  containerMetaValue : metaSidebar.actions[id]['container'];
+					const metaValue = value;
+					const containerMetaValue = wp.data.select('core/editor').getEditedPostAttribute('meta')[container];
+					const containerValue = containerMetaValue || containerMetaValue === 'default' ?  containerMetaValue : metaSidebar.actions[id]['container'];
 
 					let blocKWidth;
 					if( containerValue === 'contained' ){
@@ -23,14 +23,15 @@ export let Range = compose(
 						blocKWidth = metaValue + '%';
 					}
 
-					let controllingClass = props.data['it_controls'];
+					const controllingClass = props.data['it_controls'];
 					if( controllingClass ){
-						let elements = document.querySelectorAll(controllingClass);
+						const elements = document.querySelectorAll(controllingClass);
 						elements.forEach(function( element ) {
 							element.style.maxWidth = blocKWidth;
 						});
 					}
 				}
+				props.stateUpdate(props.id, value);
 				dispatch('core/editor').editPost({meta: {[props.id]: value}});
 			}
 		};
@@ -41,13 +42,9 @@ export let Range = compose(
 		};
 	})
 )((props) => {
-	const {min,max,depends_on} = props.data;
-	let style = {};
-	if ( depends_on ){
-		style = wp.data.select('core/editor').getEditedPostAttribute('meta')[depends_on] ? {display:"block"} : {display:"none"};
-	}
+	const {min,max} = props.data;
 	return (
-		<div style={style} id={props.id} className="neve-meta-control neve-meta-range">
+		<div id={props.id} className="neve-meta-control neve-meta-range">
 			<RangeControl
 				value={ props.metaFieldValue }
 				onChange={ (content) => props.setMetaFieldValue(content) }
@@ -58,3 +55,5 @@ export let Range = compose(
 		</div>
 	);
 });
+
+export {Range}
