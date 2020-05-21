@@ -56,12 +56,36 @@ class MetaFieldsManager extends Component {
 				)
 			}
 		}
-	};
+	}
+
+	updateBlockWidth() {
+		if( this.state['neve_meta_enable_content_width'] !== 'on' ){
+			return false;
+		}
+		const containerDefault = metaSidebar.controls.find(obj => obj.id === 'neve_meta_container').settings.default;
+		let containerType = this.state['neve_meta_container'] ? this.state['neve_meta_container'] : containerDefault;
+		containerType = containerType !== 'default' ? containerType : metaSidebar.actions['neve_meta_content_width']['container'];
+
+		const contentWidthDefault = metaSidebar.controls.find(obj => obj.id === 'neve_meta_content_width').settings.default;
+		const contentWidth = this.state['neve_meta_content_width'] ? this.state['neve_meta_content_width'] : contentWidthDefault;
+
+		let blocKWidth;
+		if( containerType === 'contained' ){
+			blocKWidth = Math.round( ( contentWidth / 100 ) * metaSidebar.actions['neve_meta_content_width']['editor'] ) + 'px';
+		} else {
+			blocKWidth = contentWidth + '%';
+		}
+
+		const elements = document.querySelectorAll('.wp-block:not([data-align="full"])');
+		elements.forEach(function( element ) {
+			element.style.maxWidth = blocKWidth;
+		});
+	}
 
 	render() {
-		console.log( this.state );
 		return (
 			<>
+				{this.updateBlockWidth()}
 				{
 					this.componentsGroup.map( ( group, index ) => {
 						const { title, controls } = group;

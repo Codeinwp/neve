@@ -7,30 +7,6 @@ const Range = compose(
 	withDispatch((dispatch, props) => {
 		return {
 			setMetaFieldValue: (value) => {
-
-				const {id} = props;
-				if ( id === 'neve_meta_content_width' ) {
-					const {container} = props.data;
-
-					const metaValue = value;
-					const containerMetaValue = wp.data.select('core/editor').getEditedPostAttribute('meta')[container];
-					const containerValue = containerMetaValue || containerMetaValue === 'default' ?  containerMetaValue : metaSidebar.actions[id]['container'];
-
-					let blocKWidth;
-					if( containerValue === 'contained' ){
-						blocKWidth = Math.round( ( metaValue / 100 ) * metaSidebar.actions[id]['editor'] ) + 'px';
-					} else {
-						blocKWidth = metaValue + '%';
-					}
-
-					const controllingClass = props.data['it_controls'];
-					if( controllingClass ){
-						const elements = document.querySelectorAll(controllingClass);
-						elements.forEach(function( element ) {
-							element.style.maxWidth = blocKWidth;
-						});
-					}
-				}
 				props.stateUpdate(props.id, value);
 				dispatch('core/editor').editPost({meta: {[props.id]: value}});
 			}

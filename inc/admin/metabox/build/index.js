@@ -410,12 +410,40 @@ var MetaFieldsManager = /*#__PURE__*/function (_Component) {
       }
     }
   }, {
+    key: "updateBlockWidth",
+    value: function updateBlockWidth() {
+      if (this.state['neve_meta_enable_content_width'] !== 'on') {
+        return false;
+      }
+
+      var containerDefault = metaSidebar.controls.find(function (obj) {
+        return obj.id === 'neve_meta_container';
+      }).settings.default;
+      var containerType = this.state['neve_meta_container'] ? this.state['neve_meta_container'] : containerDefault;
+      containerType = containerType !== 'default' ? containerType : metaSidebar.actions['neve_meta_content_width']['container'];
+      var contentWidthDefault = metaSidebar.controls.find(function (obj) {
+        return obj.id === 'neve_meta_content_width';
+      }).settings.default;
+      var contentWidth = this.state['neve_meta_content_width'] ? this.state['neve_meta_content_width'] : contentWidthDefault;
+      var blocKWidth;
+
+      if (containerType === 'contained') {
+        blocKWidth = Math.round(contentWidth / 100 * metaSidebar.actions['neve_meta_content_width']['editor']) + 'px';
+      } else {
+        blocKWidth = contentWidth + '%';
+      }
+
+      var elements = document.querySelectorAll('.wp-block:not([data-align="full"])');
+      elements.forEach(function (element) {
+        element.style.maxWidth = blocKWidth;
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
 
-      console.log(this.state);
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["Fragment"], null, this.componentsGroup.map(function (group, index) {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["Fragment"], null, this.updateBlockWidth(), this.componentsGroup.map(function (group, index) {
         var title = group.title,
             controls = group.controls;
         return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(PanelBody, {
@@ -597,7 +625,7 @@ var RadioImage = compose(withDispatch(function (dispatch, props) {
     options: options,
     onChange: function onChange(value) {
       props.setMetaValue(value);
-      props.setMetaFieldValue(id, value);
+      props.stateUpdate(id, value);
     }
   }));
 });
@@ -630,31 +658,6 @@ var RangeControl = wp.components.RangeControl;
 var Range = compose(withDispatch(function (dispatch, props) {
   return {
     setMetaFieldValue: function setMetaFieldValue(value) {
-      var id = props.id;
-
-      if (id === 'neve_meta_content_width') {
-        var container = props.data.container;
-        var metaValue = value;
-        var containerMetaValue = wp.data.select('core/editor').getEditedPostAttribute('meta')[container];
-        var containerValue = containerMetaValue || containerMetaValue === 'default' ? containerMetaValue : metaSidebar.actions[id]['container'];
-        var blocKWidth;
-
-        if (containerValue === 'contained') {
-          blocKWidth = Math.round(metaValue / 100 * metaSidebar.actions[id]['editor']) + 'px';
-        } else {
-          blocKWidth = metaValue + '%';
-        }
-
-        var controllingClass = props.data['it_controls'];
-
-        if (controllingClass) {
-          var elements = document.querySelectorAll(controllingClass);
-          elements.forEach(function (element) {
-            element.style.maxWidth = blocKWidth;
-          });
-        }
-      }
-
       props.stateUpdate(props.id, value);
       dispatch('core/editor').editPost({
         meta: _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()({}, props.id, value)

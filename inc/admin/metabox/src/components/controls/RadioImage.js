@@ -39,7 +39,7 @@ export const RadioImage = compose(
 					options={options}
 					onChange={(value) => {
 						props.setMetaValue(value);
-						props.setMetaFieldValue( id, value );
+						props.stateUpdate( id, value );
 					} }
 				/>
 			</div>
