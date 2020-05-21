@@ -20,7 +20,7 @@ const taskMap = {
   concat: 'grunt-contrib-concat',
   cssmin: 'grunt-contrib-cssmin',
   addtextdomain: 'grunt-wp-i18n',
-  wp_readme_to_markdown: 'grunt-wp-readme-to-markdown'	
+  wp_readme_to_markdown: 'grunt-wp-readme-to-markdown'
 }
 const files = {
   php: [
@@ -75,6 +75,7 @@ const gruntConfig = (grunt) => {
     '!header-footer-grid/assets/js/**/*',
     '!**/rollup.config.js',
     '!inc/customizer/controls/react/**/*',
+    '!inc/admin/metabox/src/**/*',
     '!dist/**/*',
     '!cypress/**/*'
   ] )

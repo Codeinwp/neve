@@ -38,7 +38,7 @@ class Main extends Controls_Base {
 						'contained'  => __( 'Contained', 'neve' ),
 						'full-width' => __( 'Full Width', 'neve' ),
 					),
-					'icons' => array(
+					'icons'   => array(
 						'default'    => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqCAYAAABeUaiAAAACPUlEQVR4nO3dSY7aQABAURLlNNz/KvR1iHqBFBGwy6Y+g/q9pfFQtr6NqV70r/P5fD7AZL9dUArCIiEsEsIiISwSwiIhLBLCIiEsEsIiISwSwiIhLBLCIiEsEsIiISwSwiIhLBLCIiEsEsIiISwSwiIhLBLCIiEsEsIiISwSwiIhLBLCIiEsEsIiISwSwiIhLBLCIiEsEsIi8afY6dfX13/Ljsfj3XXvfbb0+egxbq23Z7s9Y1xb79Z2a+O93n7N6Poj49/kPNnpdLq5w63Ll7bbu69H1lna9/dnI+dxvc7IePeOaXQfe/e1ZupX4dKd+7185A579THu7X/W+GeOaabZ5zctrJGTry/Oo8dYO4eli7/02TPCeDcf9/L+yifHK3xqlMnLe+06rne58Jdxrb2gjxrZdtYL+eyAPzKsw8KvnZ/2lbP1fJe+ymf62LD+NesJMWsslzHUT6u943vGcUyQvqFn3hzVO+u0sEYGOGu6obJ2Dj/x191uU2fFdk5ezppUfeUE6Z5lj056vvME6fR3rHt3/Z75oa0TobOeJrf2/4wn1eWYW37pbfkT0Np6M5/I/tk4CS/vJIRFQlgkhEVCWCSERUJYJIRFQlgkhEVCWCSERUJYJIRFQlgkhEVCWCSERUJYJIRFQlgkhEVCWCSERUJYJIRFQlgkhEVCWCSERUJYJIRFQlgkhEVCWCSERUJYJIRFQlgkhEVCWCSERUJYJIRFQlgkhEVCWCSERUJYJIRFQlgkhMV8h8PhLyY1TZyw90ShAAAAAElFTkSuQmCC',
 						'contained'  => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqAQMAAABknzrDAAAABlBMVEX////V1dXUdjOkAAAAPUlEQVRIx2NgGAUkAcb////Y/+d/+P8AdcQoc8vhH/X/5P+j2kG+GA3CCgrwi43aMWrHqB2jdowEO4YpAACyKSE0IzIuBgAAAABJRU5ErkJggg==',
 						'full-width' => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqCAYAAABeUaiAAAABeklEQVR4nO3aUWrCABBF0bR0Ndn/WtxO/C+ItJM7hXLOvwbkMjzFj+u6rgNu9ukDpSAsEsIiISwSwiIhLBLCIiEsEsIiISwSwiIhLBLCIiEsEl+v3vTxeGSf+HmetzzrJ+8zeeb31/Kei0VCWCSERcJfk0m4WCSEReKWnxu2vvYX7/ObZ/Gei0VCWCSERcLPDSRcLBLCIiEsEn/ytxn+j1e/8blYJHwrJOFikRAWCeOdEeOdVcY7CReLhLBIGO+MGO+sMt5JuFgkhEXCeGfEeGeV8U7CxSIhLBLGOyPGO6uMdxIuFglhkTDeGTHeWWW8k3CxSAiLhPHOiPHOKuOdhItFQlgkjHdGjHdWGe8kXCwSwiJhvDNivLPKeCfhYpEQFgnjnRHjnVXGOwkXi4SwSBjvjBjvrDLeSbhYJIRFwnhnxHhnlfFOwsUiISwSxjsjxjurjHcSLhYJYZEQFglhkRAWCWGREBYJYZEQFglhkRAWCWGREBb3O47jCYpgf6PRIsLJAAAAAElFTkSuQmCC',
@@ -58,7 +58,7 @@ class Main extends Controls_Base {
 						'right'      => __( 'Right Sidebar', 'neve' ),
 						'full-width' => __( 'No Sidebar', 'neve' ),
 					),
-					'icons' => array(
+					'icons'    => array(
 						'default'    => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqCAYAAABeUaiAAAACPUlEQVR4nO3dSY7aQABAURLlNNz/KvR1iHqBFBGwy6Y+g/q9pfFQtr6NqV70r/P5fD7AZL9dUArCIiEsEsIiISwSwiIhLBLCIiEsEsIiISwSwiIhLBLCIiEsEsIiISwSwiIhLBLCIiEsEsIiISwSwiIhLBLCIiEsEsIiISwSwiIhLBLCIiEsEsIiISwSwiIhLBLCIiEsEsIi8afY6dfX13/Ljsfj3XXvfbb0+egxbq23Z7s9Y1xb79Z2a+O93n7N6Poj49/kPNnpdLq5w63Ll7bbu69H1lna9/dnI+dxvc7IePeOaXQfe/e1ZupX4dKd+7185A579THu7X/W+GeOaabZ5zctrJGTry/Oo8dYO4eli7/02TPCeDcf9/L+yifHK3xqlMnLe+06rne58Jdxrb2gjxrZdtYL+eyAPzKsw8KvnZ/2lbP1fJe+ymf62LD+NesJMWsslzHUT6u943vGcUyQvqFn3hzVO+u0sEYGOGu6obJ2Dj/x191uU2fFdk5ezppUfeUE6Z5lj056vvME6fR3rHt3/Z75oa0TobOeJrf2/4wn1eWYW37pbfkT0Np6M5/I/tk4CS/vJIRFQlgkhEVCWCSERUJYJIRFQlgkhEVCWCSERUJYJIRFQlgkhEVCWCSERUJYJIRFQlgkhEVCWCSERUJYJIRFQlgkhEVCWCSERUJYJIRFQlgkhEVCWCSERUJYJIRFQlgkhEVCWCSERUJYJIRFQlgkhEVCWCSERUJYJIRFQlgkhMV8h8PhLyY1TZyw90ShAAAAAElFTkSuQmCC',
 						'left'       => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqAgMAAAAjP0ATAAAACVBMVEX///8+yP/V1dXG9YqxAAAAWElEQVR42mNgGAXDE4RCQMDAKONaBQINWqtWrWBatQDIaxg8ygYqQIAOYwC6bwHUmYNH2eBPSMhgBQXKRr0w6oVRL4x6YdQLo14Y9cKoF0a9QCO3jYLhBADvmFlNY69qsQAAAABJRU5ErkJggg==',
 						'right'      => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqAgMAAAAjP0ATAAAACVBMVEX///8+yP/V1dXG9YqxAAAAWUlEQVR42mNgGAUjB4iGgkEIzZStAoEVTECiQWsVkLdiECkboAABOmwBF9BtUGcOImUDEiCkJCQU0ECBslEvjHph1AujXhj1wqgXRr0w6oVRLwyEF0bBUAUAz/FTNXm+R/MAAAAASUVORK5CYII=',
@@ -135,10 +135,10 @@ class Main extends Controls_Base {
 			new Controls\Checkbox(
 				'neve_meta_enable_content_width',
 				array(
-					'default'      => ( $this->is_new_page() || $this->is_checkout() ) ? 'on' : 'off',
-					'label'        => __( 'Content Width', 'neve' ) . ' (%)',
-					'input_label'  => __( 'Enable Individual Content Width', 'neve' ),
-					'priority'     => 50,
+					'default'     => ( $this->is_new_page() || $this->is_checkout() ) ? 'on' : 'off',
+					'label'       => __( 'Content Width', 'neve' ) . ' (%)',
+					'input_label' => __( 'Enable Individual Content Width', 'neve' ),
+					'priority'    => 50,
 				)
 			)
 		);
@@ -146,13 +146,13 @@ class Main extends Controls_Base {
 			new Controls\Range(
 				'neve_meta_content_width',
 				array(
-					'default'     => ( $this->is_new_page() || $this->is_checkout() ) ? 100 : 70,
-					'min'         => 50,
-					'max'         => 100,
-					'hidden'      => $this->hide_content_width(),
-					'priority'    => 55,
-					'depends_on'  => 'neve_meta_enable_content_width',
-					'container'   => 'neve_meta_container'
+					'default'    => ( $this->is_new_page() || $this->is_checkout() ) ? 100 : 70,
+					'min'        => 50,
+					'max'        => 100,
+					'hidden'     => $this->hide_content_width(),
+					'priority'   => 55,
+					'depends_on' => 'neve_meta_enable_content_width',
+					'container'  => 'neve_meta_container',
 				)
 			)
 		);

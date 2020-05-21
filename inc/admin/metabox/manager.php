@@ -44,21 +44,21 @@ final class Manager {
 		add_action( 'init', array( $this, 'register_meta_sidebar' ) );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'meta_sidebar_script_enqueue' ) );
 
-		add_action('init', array( $this, 'neve_register_meta' ) );
+		add_action( 'init', array( $this, 'neve_register_meta' ) );
 	}
 
 	/**
 	 * Register meta
 	 */
-	public function neve_register_meta(){
+	public function neve_register_meta() {
 
 		foreach ( $this->controls as $control ) {
 			$options = get_object_vars( $control );
-			if( $options['type'] === 'separator' ) {
+			if ( $options['type'] === 'separator' ) {
 				continue;
 			}
 			$type = 'string';
-			if( $options['type'] === 'range' ){
+			if ( $options['type'] === 'range' ) {
 				$type = 'integer';
 			}
 			register_meta(
@@ -70,8 +70,8 @@ final class Manager {
 					'single'            => true,
 					'sanitize_callback' => 'sanitize_text_field',
 					'auth_callback'     => function () {
-						return current_user_can('edit_posts');
-					}
+						return current_user_can( 'edit_posts' );
+					},
 				)
 			);
 		}
@@ -97,8 +97,8 @@ final class Manager {
 		wp_enqueue_script( 'neve-meta-sidebar' );
 
 		global $post_type;
-		$container = $post_type === 'post' ? Mods::get( Config::MODS_SINGLE_POST_CONTAINER_STYLE, 'contained' ) : Mods::get( Config::MODS_DEFAULT_CONTAINER_STYLE, 'contained' );
-		$editor_width =  Mods::get( Config::MODS_CONTAINER_WIDTH );
+		$container    = $post_type === 'post' ? Mods::get( Config::MODS_SINGLE_POST_CONTAINER_STYLE, 'contained' ) : Mods::get( Config::MODS_DEFAULT_CONTAINER_STYLE, 'contained' );
+		$editor_width = Mods::get( Config::MODS_CONTAINER_WIDTH );
 		$editor_width = isset( $editor_width['desktop'] ) ? (int) $editor_width['desktop'] : 1170;
 
 		wp_localize_script(
@@ -110,8 +110,8 @@ final class Manager {
 					'neve_meta_content_width' => array(
 						'container' => $container,
 						'editor'    => $editor_width,
-					)
-				)
+					),
+				),
 			)
 		);
 
@@ -201,7 +201,7 @@ final class Manager {
 			array( 'post', 'page', 'product' ),
 			'side',
 			'default',
-			array('__back_compat_meta_box' => true)
+			array( '__back_compat_meta_box' => true )
 		);
 	}
 

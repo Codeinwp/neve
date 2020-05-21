@@ -3,7 +3,7 @@ import { RadioImage } from './controls/RadioImage';
 import { CheckBox } from './controls/CheckBox';
 import { Range } from './controls/Range';
 
-const { Component, Fragment } = wp.element;
+const { Component } = wp.element;
 const { PanelBody } = wp.components;
 const { __ } = wp.i18n;
 
@@ -84,7 +84,7 @@ class MetaFieldsManager extends Component {
 
 	render() {
 		return (
-			<Fragment>
+			<>
 				{this.updateBlockWidth()}
 				{
 					this.componentsGroup.map( ( group, index ) => {
@@ -108,7 +108,7 @@ class MetaFieldsManager extends Component {
 						);
 					})
 				}
-			</Fragment>
+			</>
 		);
 	}
 }
