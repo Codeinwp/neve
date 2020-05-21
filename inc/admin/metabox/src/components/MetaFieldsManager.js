@@ -59,7 +59,11 @@ class MetaFieldsManager extends Component {
 	}
 
 	updateBlockWidth() {
+		const elements = document.querySelectorAll('.wp-block:not([data-align="full"])');
 		if ( 'on' !== this.state['neve_meta_enable_content_width'] ) {
+			elements.forEach(function( element ) {
+				element.style.removeProperty('max-width');
+			});
 			return false;
 		}
 		const containerDefault = metaSidebar.controls.find(obj => 'neve_meta_container' === obj.id ).settings.default;
@@ -76,7 +80,6 @@ class MetaFieldsManager extends Component {
 			blocKWidth = contentWidth + '%';
 		}
 
-		const elements = document.querySelectorAll('.wp-block:not([data-align="full"])');
 		elements.forEach(function( element ) {
 			element.style.maxWidth = blocKWidth;
 		});
