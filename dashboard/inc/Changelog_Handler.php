@@ -20,12 +20,16 @@ class Changelog_Handler {
 	 *
 	 * @param string $changelog_path the changelog path.
 	 *
-	 * @return array|null
+	 * @return array
 	 */
 	public function get_changelog( $changelog_path ) {
 
 		if ( ! is_file( $changelog_path ) ) {
-			return null;
+			return [];
+		}
+
+		if ( ! WP_Filesystem() ) {
+			return [];
 		}
 
 		return $this->parse_changelog( $changelog_path );

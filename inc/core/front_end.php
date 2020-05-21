@@ -1500,6 +1500,30 @@ class Front_End {
 						'keywords'         => [ 'entertainment', 'education', 'responsive' ],
 						'unsplash_gallery' => 'https://unsplash.com/collections/9236647/neve-conference',
 					],
+					'neve-beaver-electronics-store'     => [
+						'url'              => 'https://demosites.io/electronic-store-bb/',
+						'remote_url'       => 'https://api.themeisle.com/sites/electronic-store-bb/',
+						'screenshot'       => 'https://api.themeisle.com/sites/wp-content/uploads/2020/05/neve-electronics.jpg',
+						'title'            => 'Electronics Shop',
+						'keywords'         => [ 'ecommerce', 'one page' ],
+						'unsplash_gallery' => 'https://unsplash.com/collections/9614226/neve-electronics-store/bc776b1b1a8eeb5e9a91e0bdcefef919',
+					],
+					'neve-beaver-print-shop'            => [
+						'url'              => 'https://demosites.io/print-shop-bb/',
+						'remote_url'       => 'https://api.themeisle.com/sites/print-shop-bb/',
+						'screenshot'       => 'https://api.themeisle.com/sites/wp-content/uploads/2020/05/neve-print.jpg',
+						'title'            => 'Print Shop',
+						'keywords'         => [ 'ecommerce', 'minimal' ],
+						'unsplash_gallery' => 'https://unsplash.com/collections/9581663/neve-print-shop/7e3ada6f4ff6c2ea85e92a31b0a0d308',
+					],
+					'neve-beaver-city-tour'             => [
+						'url'              => 'https://demosites.io/city-tour-bb/',
+						'remote_url'       => 'https://api.themeisle.com/sites/city-tour-bb/',
+						'screenshot'       => 'https://api.themeisle.com/sites/wp-content/uploads/2020/05/neve-city-tour.jpg',
+						'title'            => 'City Tours',
+						'keywords'         => [ 'entertainment', 'responsive', 'blog' ],
+						'unsplash_gallery' => 'https://unsplash.com/collections/9607249/neve-city-tour/8c25fd0bd662a8c0311be4b114be52ac',
+					],
 					'neve-beaver-insurance'             => [
 						'url'              => 'https://demosites.io/insurance-bb/',
 						'remote_url'       => 'https://api.themeisle.com/sites/insurance-bb/',
@@ -2150,6 +2174,38 @@ class Front_End {
 						'keywords'         => [ 'one page', 'blog' ],
 						'unsplash_gallery' => 'https://unsplash.com/collections/10013340/neve-copywriter/fd20236454382b25cb11c4a5ea8b9f67',
 					],
+					'neve-laundry-services'      => [
+						'url'              => 'https://demosites.io/laundry-services/',
+						'remote_url'       => 'https://api.themeisle.com/sites/laundry-services/',
+						'screenshot'       => 'https://api.themeisle.com/sites/wp-content/uploads/2020/05/neve-laundry.jpg',
+						'title'            => 'Laundry Services',
+						'keywords'         => [ 'one page', 'minimal' ],
+						'unsplash_gallery' => 'https://unsplash.com/collections/10086441/laundry-services/cbcb238e92c3d628f5ff17343cf71f33',
+					],
+					'neve-craft-beer'            => [
+						'url'              => 'https://demosites.io/craft-beer/',
+						'remote_url'       => 'https://api.themeisle.com/sites/craft-beer/',
+						'screenshot'       => 'https://api.themeisle.com/sites/wp-content/uploads/2020/05/neve-craft-beer.jpg',
+						'title'            => 'Craft Beer',
+						'keywords'         => [ 'food', 'ecommerce' ],
+						'unsplash_gallery' => 'https://unsplash.com/collections/10064967/craft-beer/d0feeb4e9b047f25963f93bb6f548003',
+					],
+					'neve-gardening'             => [
+						'url'              => 'https://demosites.io/gardening/',
+						'remote_url'       => 'https://api.themeisle.com/sites/gardening/',
+						'screenshot'       => 'https://api.themeisle.com/sites/wp-content/uploads/2020/05/neve-gardening.jpg',
+						'title'            => 'Gardening',
+						'keywords'         => [ 'one page', 'ecommerce' ],
+						'unsplash_gallery' => 'https://unsplash.com/collections/9993072/neve-gardening/d87f7fb075b4df6caa580427e4bf99cd',
+					],
+					'neve-resume-2'              => [
+						'url'              => 'https://demosites.io/resume/',
+						'remote_url'       => 'https://api.themeisle.com/sites/resume/',
+						'screenshot'       => 'https://api.themeisle.com/sites/wp-content/uploads/2020/05/neve-resume-2.jpg',
+						'title'            => 'Resume 2',
+						'keywords'         => [ 'responsive', 'business' ],
+						'unsplash_gallery' => 'https://unsplash.com/collections/10442260/resume/0d0bb885aef689075600517be914fae5',
+					],
 				],
 				'brizy'            => [
 					'neve-brizy-cafe'                 => [
@@ -2501,6 +2557,13 @@ class Front_End {
 				'title'      => 'Fashion',
 				'keywords'   => [ 'fashion', 'responsive' ],
 			],
+			'neve-showcase-gutenberg'         => [
+				'url'              => 'https://demosites.io/showcase-gb/',
+				'screenshot'       => 'https://api.themeisle.com/sites/wp-content/uploads/2020/05/neve-showcase-new.jpg',
+				'title'            => 'Showcase',
+				'keywords'         => [ 'entertainment', 'minimal' ],
+				'unsplash_gallery' => 'https://unsplash.com/collections/4587690/showcase/ed70b13c3a6d1219334f193873aaad61',
+			],
 			'neve-consultants-gutenberg'      => [
 				'url'        => 'https://demosites.io/consultants-gb/',
 				'screenshot' => 'https://api.themeisle.com/sites/wp-content/uploads/2020/05/neve-business-consulting.jpg',
@@ -2512,6 +2575,20 @@ class Front_End {
 				'screenshot' => 'https://api.themeisle.com/sites/wp-content/uploads/2020/05/neve-job-listings.jpg',
 				'title'      => 'Job Listing',
 				'keywords'   => [ 'responsive', 'minimal' ],
+			],
+			'neve-barber-shop-gutenberg'      => [
+				'url'              => 'https://demosites.io/barber-shop-gb/',
+				'screenshot'       => 'https://api.themeisle.com/sites/wp-content/uploads/2020/05/neve-barber-shop.jpg',
+				'title'            => 'Barber Shop',
+				'keywords'         => [ 'ecommerce', 'responsive' ],
+				'unsplash_gallery' => 'https://unsplash.com/collections/8357212/barber-shop',
+			],
+			'neve-personal-trainer-gutenberg' => [
+				'url'              => 'https://demosites.io/personal-trainer-gb/',
+				'screenshot'       => 'https://api.themeisle.com/sites/wp-content/uploads/2020/05/neve-personal-trainer.jpg',
+				'title'            => 'Personal Trainer',
+				'keywords'         => [ 'sports', 'one page' ],
+				'unsplash_gallery' => 'https://unsplash.com/collections/8351250/personal-trainer/4f469c0cb610352567f5233410c61742',
 			],
 			'neve-real-estate-gutenberg'      => [
 				'url'        => 'https://demosites.io/real-estate-gb/',
@@ -2525,12 +2602,34 @@ class Front_End {
 				'title'      => 'Events',
 				'keywords'   => [ 'entertainment', 'business', 'event' ],
 			],
+			'neve-video-agency-gutenberg'     => [
+				'url'              => 'https://demosites.io/video-agency-gb/',
+				'screenshot'       => 'https://api.themeisle.com/sites/wp-content/uploads/2020/05/neve-vide-agency.jpg',
+				'title'            => 'Video Agency',
+				'keywords'         => [ 'photography', 'responsive', 'agency' ],
+				'unsplash_gallery' => 'https://unsplash.com/collections/4770565/video-agency',
+			],
+			'neve-farm-gutenberg'             => [
+				'url'              => 'https://demosites.io/farm-gb/',
+				'screenshot'       => 'https://api.themeisle.com/sites/wp-content/uploads/2020/05/neve-farm.jpg',
+				'title'            => 'Farm',
+				'keywords'         => [ 'food', 'responsive' ],
+				'unsplash_gallery' => 'https://unsplash.com/collections/8509382/farm',
+			],
+			'neve-cake-shop-gutenberg'        => [
+				'url'              => 'https://demosites.io/cakeshop-gb/',
+				'screenshot'       => 'https://api.themeisle.com/sites/wp-content/uploads/2020/05/neve-cake-shop.jpg',
+				'title'            => 'Cake Shop',
+				'keywords'         => [ 'ecommerce', 'food' ],
+				'unsplash_gallery' => 'https://unsplash.com/collections/7772437/cakery-bakery/5f40022a676873e52e1dc76b113c5915',
+			],
 			'neve-fashion-magazine-gutenberg' => [
 				'url'        => 'https://demosites.io/fashion-magazine-gb/',
 				'title'      => 'Fashion Magazine',
 				'screenshot' => 'https://api.themeisle.com/sites/wp-content/uploads/2020/05/neve-fashion-mag.jpg',
 				'keywords'   => [ 'fashion', 'responsive', 'blog' ],
 			],
+
 		];
 	}
 
