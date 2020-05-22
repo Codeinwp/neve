@@ -13,6 +13,7 @@ namespace HFG\Core\Components;
 
 use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Main;
+use HFG\Traits\Core;
 use Neve\Core\Settings\Config;
 use Neve\Core\Styles\Dynamic_Selector;
 
@@ -22,13 +23,20 @@ use Neve\Core\Styles\Dynamic_Selector;
  * @package HFG\Core\Components
  */
 class SearchResponsive extends Abstract_Component {
+	use Core;
 
-	const COMPONENT_ID   = 'header_search_responsive';
+	const COMPONENT_ID = 'header_search_responsive';
 	const PLACEHOLDER_ID = 'placeholder';
-	const SIZE_ID        = 'icon_size';
-	const COLOR_ID       = 'color';
+	const SIZE_ID = 'icon_size';
+	const COLOR_ID = 'color';
 	const HOVER_COLOR_ID = 'hover_color';
-	const OPEN_TYPE 	 = 'open_type';
+	const OPEN_TYPE = 'open_type';
+	const FIELD_HEIGHT = 'field_height';
+	const FIELD_FONT_SIZE = 'field_text_size';
+	const FIELD_BG = 'field_background';
+	const FIELD_TEXT_COLOR = 'field_text_color';
+	const FIELD_BORDER_WIDTH = 'field_border_width';
+	const FIELD_BORDER_RADIUS = 'field_border_radius';
 
 	/**
 	 * Button constructor.
@@ -159,33 +167,228 @@ class SearchResponsive extends Abstract_Component {
 		);
 
 		SettingsManager::get_instance()->add( [
-			'id' => self::OPEN_TYPE,
-			'group'                 => self::COMPONENT_ID,
-			'tab'                   => SettingsManager::TAB_GENERAL,
-			'transport'             => $this->is_auto_width ? 'post' . $this->get_builder_id() : 'postMessage',
-			'sanitize_callback'     => 'wp_filter_nohtml_kses',
-			'default'               => 'canvas',
-			'label'                 => __( 'Open Behaviour', 'neve' ),
-			'type'                  => '\Neve\Customizer\Controls\React\Radio_Buttons',
-			'options'               => [
+			'id'                 => self::OPEN_TYPE,
+			'group'              => self::COMPONENT_ID,
+			'tab'                => SettingsManager::TAB_GENERAL,
+			'transport'          => 'post' . self::COMPONENT_ID,
+			'sanitize_callback'  => 'wp_filter_nohtml_kses',
+			'default'            => 'canvas',
+			'label'              => __( 'Open Behaviour', 'neve' ),
+			'type'               => '\Neve\Customizer\Controls\React\Radio_Buttons',
+			'options'            => [
 				'choices' => [
 					'canvas'   => [
 						'tooltip' => __( 'Canvas', 'neve' ),
 						'icon'    => 'editor-alignleft',
 					],
-					'minimal' => [
+					'minimal'  => [
 						'tooltip' => __( 'Minimal', 'neve' ),
 						'icon'    => 'editor-aligncenter',
 					],
-					'floating'  => [
+					'floating' => [
 						'tooltip' => __( 'Header Float', 'neve' ),
 						'icon'    => 'editor-alignright',
 					],
 				]
 			],
-			'section'               => $this->section,
-			'conditional_header'    => true,
+			'section'            => $this->section,
+			'conditional_header' => true,
 		] );
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'                    => self::FIELD_HEIGHT,
+				'group'                 => self::COMPONENT_ID,
+				'tab'                   => SettingsManager::TAB_STYLE,
+				'section'               => $this->section,
+				'label'                 => __( 'Search Field Height', 'neve' ),
+				'type'                  => '\Neve\Customizer\Controls\React\Responsive_Range',
+				'live_refresh_selector' => $this->default_selector . ' input[type=search]',
+				'live_refresh_css_prop' => array(
+					'prop' => 'height',
+					'unit' => 'px',
+				),
+				'options'               => [
+					'input_attrs' => [
+						'step'       => 1,
+						'min'        => 10,
+						'max'        => 200,
+						'defaultVal' => [
+							'mobile'  => 40,
+							'tablet'  => 40,
+							'desktop' => 40,
+						],
+						'units'      => [ 'px' ],
+					],
+				],
+				'transport'             => 'postMessage',
+				'sanitize_callback'     => array( $this, 'sanitize_responsive_int_json' ),
+				'default'               => [
+					'mobile'  => 40,
+					'tablet'  => 40,
+					'desktop' => 40
+				],
+				'conditional_header'    => true,
+			]
+		);
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'                    => self::FIELD_FONT_SIZE,
+				'group'                 => self::COMPONENT_ID,
+				'tab'                   => SettingsManager::TAB_STYLE,
+				'section'               => $this->section,
+				'label'                 => __( 'Search Field Font Size', 'neve' ),
+				'type'                  => '\Neve\Customizer\Controls\React\Responsive_Range',
+				'live_refresh_selector' => $this->default_selector . ' input[type=search]',
+				'live_refresh_css_prop' => array(
+					'prop' => 'font-size',
+					'unit' => 'px',
+				),
+				'options'               => [
+					'input_attrs' => [
+						'step'       => 1,
+						'min'        => 10,
+						'max'        => 200,
+						'defaultVal' => [
+							'mobile'  => 14,
+							'tablet'  => 14,
+							'desktop' => 14,
+						],
+						'units'      => [ 'px' ],
+					],
+				],
+				'transport'             => 'postMessage',
+				'sanitize_callback'     => array( $this, 'sanitize_responsive_int_json' ),
+				'default'               => [
+					'mobile'  => 14,
+					'tablet'  => 14,
+					'desktop' => 14
+				],
+				'conditional_header'    => true,
+			]
+		);
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'                    => self::FIELD_BG,
+				'group'                 => self::COMPONENT_ID,
+				'tab'                   => SettingsManager::TAB_STYLE,
+				'transport'             => 'postMessage',
+				'sanitize_callback'     => 'sanitize_hex_color',
+				'label'                 => __( 'Field Background Color', 'neve' ),
+				'type'                  => '\Neve\Customizer\Controls\React\Color',
+				'section'               => $this->section,
+				'live_refresh_selector' => $this->default_selector . ' input[type=search]',
+				'live_refresh_css_prop' => array(
+					'prop'     => 'background-color',
+					'fallback' => '#ffffff',
+				),
+				'conditional_header'    => true,
+			]
+		);
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'                    => self::FIELD_TEXT_COLOR,
+				'group'                 => self::COMPONENT_ID,
+				'tab'                   => SettingsManager::TAB_STYLE,
+				'transport'             => 'postMessage',
+				'sanitize_callback'     => 'sanitize_hex_color',
+				'label'                 => __( 'Field Text and Border Color', 'neve' ),
+				'type'                  => 'neve_color_control',
+				'section'               => $this->section,
+				'live_refresh_selector' => true,
+				'live_refresh_css_prop' => [
+					[
+						'selector' => $this->default_selector . ' input[type=search],' . $this->default_selector . ' input::placeholder',
+						'prop'     => 'color',
+						'fallback' => 'inherit',
+					],
+					[
+						'selector' => $this->default_selector . ' input[type=search]',
+						'prop'     => 'border-color',
+						'fallback' => 'inherit',
+					],
+					[
+						'selector' => $this->default_selector . ' .nv-search-icon-wrap .nv-icon svg',
+						'prop'     => 'fill',
+						'fallback' => 'inherit',
+					],
+				],
+				'conditional_header'    => true,
+			]
+		);
+
+		$default_border_width = [
+			'desktop-unit' => 'px',
+			'tablet-unit'  => 'px',
+			'mobile-unit'  => 'px',
+			'desktop'      => [ 'top' => 1, 'right' => 1, 'bottom' => 1, 'left' => 1, ],
+			'tablet'       => [ 'top' => 1, 'right' => 1, 'bottom' => 1, 'left' => 1, ],
+			'mobile'       => [ 'top' => 1, 'right' => 1, 'bottom' => 1, 'left' => 1, ],
+		];
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'                    => self::FIELD_BORDER_WIDTH,
+				'group'                 => $this->get_id(),
+				'tab'                   => SettingsManager::TAB_STYLE,
+				'transport'             => 'postMessage',
+				'sanitize_callback'     => array( $this, 'sanitize_spacing_array' ),
+				'default'               => $default_border_width,
+				'label'                 => __( 'Border Width', 'neve' ),
+				'type'                  => '\Neve\Customizer\Controls\React\Spacing',
+				'options'               => [
+					'input_attrs' => array(
+						'min'   => 0,
+						'max'   => 20,
+						'units' => [ 'px' ]
+					),
+					'default'     => $default_border_width,
+				],
+				'live_refresh_selector' => $this->default_selector . ' input[type=search]',
+				'live_refresh_css_prop' => array(
+					'prop' => 'border-width',
+				),
+				'section'               => $this->section,
+				'conditional_header'    => true,
+			]
+		);
+		$default_border_radius = [
+			'desktop-unit' => 'px',
+			'tablet-unit'  => 'px',
+			'mobile-unit'  => 'px',
+			'desktop'      => [ 'top' => 3, 'right' => 3, 'bottom' => 3, 'left' => 3, ],
+			'tablet'       => [ 'top' => 3, 'right' => 3, 'bottom' => 3, 'left' => 3, ],
+			'mobile'       => [ 'top' => 3, 'right' => 3, 'bottom' => 3, 'left' => 3, ],
+		];
+		SettingsManager::get_instance()->add(
+			[
+				'id'                    => self::FIELD_BORDER_RADIUS,
+				'group'                 => $this->get_id(),
+				'tab'                   => SettingsManager::TAB_STYLE,
+				'transport'             => 'postMessage',
+				'sanitize_callback'     => array( $this, 'sanitize_spacing_array' ),
+				'default'               => $default_border_width,
+				'label'                 => __( 'Border Radius', 'neve' ),
+				'type'                  => '\Neve\Customizer\Controls\React\Spacing',
+				'options'               => [
+					'input_attrs' => array(
+						'min'   => 0,
+						'max'   => 100,
+						'units' => [ 'px' ]
+					),
+					'default'     => $default_border_radius,
+				],
+				'live_refresh_selector' => $this->default_selector . ' input[type=search]',
+				'live_refresh_css_prop' => array(
+					'prop' => 'border-radius',
+				),
+				'section'               => $this->section,
+				'conditional_header'    => true,
+			]
+		);
 	}
 
 	/**
@@ -198,8 +401,8 @@ class SearchResponsive extends Abstract_Component {
 	 * @access  public
 	 */
 	public function add_style( array $css_array = array() ) {
-		$size        = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::SIZE_ID );
-		$color       = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::COLOR_ID );
+		$size = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::SIZE_ID );
+		$color = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::COLOR_ID );
 		$color_hover = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::HOVER_COLOR_ID );
 
 		$css_array[] = [
@@ -232,7 +435,6 @@ class SearchResponsive extends Abstract_Component {
 		];
 
 
-
 		return parent::add_style( $css_array );
 	}
 
@@ -256,7 +458,7 @@ class SearchResponsive extends Abstract_Component {
 	 * @return string
 	 */
 	public function change_placeholder( $form ) {
-		$form        = '';
+		$form = '';
 		$placeholder = get_theme_mod( $this->id . '_placeholder', __( 'Search for...', 'neve' ) );
 
 		$form .= '<form role="search" method="get" class="search-form" action="' . esc_url( home_url( '/' ) ) . '">';

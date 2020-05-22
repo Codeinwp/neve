@@ -76,11 +76,6 @@
 					removeClass( 'hide-on-mobile hide-on-tablet' );
 			$( 'body' ).prepend( search_form );
 		}
-
-		$document.trigger( 'header_builder_panel_changed', [partial_id] );
-		/**
-		 * @since 0.2.6 Add Vanila JS dispatch event.
-		 */
 		dispatchEvent( document, 'header_builder_panel_changed', {
 			bubbles: true,
 			detail: { partial_id: partial_id }
@@ -109,7 +104,6 @@
 
 	api.bind( 'preview-ready', function() {
 		api.preview.bind( 'header_builder_panel_changed', function() {
-
 			dispatchEvent( document, 'header_builder_panel_changed', {
 				bubbles: true,
 				detail: 'open'
@@ -117,7 +111,6 @@
 		} );
 
 		api.preview.bind( 'header_sidebar_open', function() {
-
 			dispatchEvent( document, 'customize_control_sidebar', {
 				bubbles: true,
 				detail: 'open'
@@ -135,10 +128,6 @@
 		console.log( 'header_sidebar_animate -- triggered' );
 		settings.bind( function(to) {
 			header_changed( 'header_builder_panel', false );
-			$document.trigger( 'customize_section_opened', ['header_sidebar'] );
-			/**
-			 * @since 0.2.6 Add Vanila JS dispatch event.
-			 */
 			dispatchEvent( document, 'customize_section_opened', {
 				bubbles: true,
 				detail: 'header_sidebar'
@@ -163,21 +152,11 @@
 		defaultTarget.wp.customize.state( 'expandedSection' ).
 				bind( function(section) {
 					if ( section && !_.isUndefined( section.id ) ) {
-						$document.trigger( 'customize_section_opened', [section.id] );
-						/**
-						 * @since 0.2.6 Add Vanila JS dispatch event.
-						 */
 						dispatchEvent( document, 'customize_section_opened', {
 							bubbles: true,
 							detail: section.id
 						} );
 					} else {
-						$document.trigger( 'customize_section_opened', [
-							'__no_section_selected'
-						] );
-						/**
-						 * @since 0.2.6 Add Vanila JS dispatch event.
-						 */
 						dispatchEvent( document, 'customize_section_opened', {
 							bubbles: true,
 							detail: '__no_section_selected'
@@ -231,20 +210,14 @@
 		// When selective refresh re-rendered content
 		wp.customize.selectiveRefresh.bind( 'partial-content-rendered', function(
 				settings
-		) {
+		)  {
 			console.log( 'settings.partial.id', settings.partial.id );
-			$document.trigger( 'selective-refresh-content-rendered', [
-				settings.partial.id
-			] );
-			/**
-			 * @since 0.2.6 Add Vanila JS dispatch event.
-			 */
 			dispatchEvent( document, 'selective-refresh-content-rendered', {
 				bubbles: true,
 				detail: settings.partial.id
 			} );
 			header_changed( settings.partial.id );
-		} );
+		});
 
 		function setupPreviewNamePosition() {
 			$( '.hfg-grid .has_menu.builder-item-focus' ).each( function() {

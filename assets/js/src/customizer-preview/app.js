@@ -20,21 +20,26 @@ window.addEventListener('load', function () {
   /**
    * Add action when Header Panel rendered by customizer.
    */
-  document.addEventListener(
-    'header_builder_panel_changed',
-    function (e) {
-      if (e.detail.partial_id === 'hfg_header_layout_partial') {
-        window.HFG.init()
-        console.log('Reinitialize HFG with sidebar.')
-        return false
-      }
-      if (e.detail.partial_id === 'nav-icon_partial') {
-        window.HFG.init(true)
-        console.log('Reinitialize HFG with skip.')
-        return false
-      }
-    }
-  )
+	document.addEventListener(
+		'header_builder_panel_changed',
+		function (e) {
+			// if (e.detail.partial_id === 'header_search_responsive_partial') {
+			// 	window.HFG.initSearch();
+			// 	return false;
+			// }
+			if (e.detail.partial_id === 'hfg_header_layout_partial') {
+				window.HFG.init();
+				window.HFG.initSearch();
+				console.log('Reinitialize HFG with sidebar.');
+				return false;
+			}
+			if (e.detail.partial_id === 'nav-icon_partial') {
+				window.HFG.init(true);
+				console.log('Reinitialize HFG with skip.');
+				return false;
+			}
+		}
+	)
 
   document.addEventListener(
     'customize_control_sidebar',
@@ -179,7 +184,20 @@ window.addEventListener('load', function () {
                   args.selector + '{'
                 for (let optionType in newValue[device]) {
                   if (newValue[device][optionType] !== '') {
-                    style += args.additional.prop + '-' + optionType + ':' +
+                  	let cssProp = args.additional.prop + '-' + optionType;
+                  	if( args.additional.prop === 'border-width' ) {
+											cssProp = `border-${optionType}-width`;
+										}
+                  	if( args.additional.prop === 'border-radius' ) {
+											let mapDirectionToCorners = {
+												'top': 'top-left',
+												'right': 'top-right',
+												'bottom': 'bottom-right',
+												'left': 'bottom-left'
+											};
+											cssProp = `border-${mapDirectionToCorners[optionType]}-radius`;
+										}
+                    style +=  cssProp + ':' +
                       newValue[device][optionType] +
                       newValue[device + '-unit'] + ';'
                   } else {
@@ -296,7 +314,6 @@ window.addEventListener('load', function () {
 
               break
             case '\\Neve\\Customizer\\Controls\\React\\Color':
-              console.log(newValue);
               let colorValue = newValue === '' ? 'unset' : newValue
               style +=
                 `html ${args.selector} {

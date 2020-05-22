@@ -795,9 +795,13 @@ ul[id^="nv-primary-navigation"] i {
   align-items: center;
 }
 
-.menu-item-nav-search.floating .search-form {
+.menu-item-nav-search.floating .form-wrap {
   flex-grow: 1;
   margin-left: 20px;
+}
+
+.menu-item-nav-search.floating .form-wrap form {
+  width: 100%;
 }
 
 .menu-item-nav-search.floating .close-container {
@@ -812,7 +816,7 @@ ul[id^="nv-primary-navigation"] i {
   width: 100%;
 }
 
-.menu-item-nav-search.responsive-nav-search .nv-nav-search {
+.menu-item-nav-search.canvas .nv-nav-search {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -823,23 +827,25 @@ ul[id^="nv-primary-navigation"] i {
   background-color: #fff;
 }
 
-.menu-item-nav-search.responsive-nav-search .nv-nav-search .close-container {
+.menu-item-nav-search.canvas .nv-nav-search .close-container {
   position: absolute;
   top: 60px;
-  display: flex;
-  justify-content: flex-end;
+  text-align: left;
 }
 
-.menu-item-nav-search.responsive-nav-search .nv-nav-search .search-submit {
+.menu-item-nav-search.canvas .nv-nav-search .search-submit {
   display: block;
 }
 
-.menu-item-nav-search.responsive-nav-search .nv-nav-search form {
-  position: relative;
-  width: 75%;
+.menu-item-nav-search.canvas .nv-nav-search .form-wrap {
+  position: absolute;
 }
 
-.menu-item-nav-search.responsive-nav-search .nv-nav-search form .nv-search-icon-wrap {
+.menu-item-nav-search.canvas .nv-nav-search form {
+  position: relative;
+}
+
+.menu-item-nav-search.canvas .nv-nav-search form .nv-search-icon-wrap {
   position: absolute;
   top: 0;
   left: 0;
@@ -856,12 +862,12 @@ ul[id^="nv-primary-navigation"] i {
   justify-content: center;
 }
 
-.menu-item-nav-search.responsive-nav-search .nv-nav-search form input[type="search"] {
+.menu-item-nav-search.canvas .nv-nav-search form input[type="search"] {
   width: 100%;
   padding: 8px 12px 7px 45px;
 }
 
-.menu-item-nav-search.responsive-nav-search .nv-nav-search form input[type="submit"] {
+.menu-item-nav-search.canvas .nv-nav-search form input[type="submit"] {
   top: 0;
   left: 0;
   bottom: 0;
@@ -874,7 +880,7 @@ ul[id^="nv-primary-navigation"] i {
   padding: 8px 12px 7px;
 }
 
-.menu-item-nav-search.responsive-nav-search .nv-nav-search form input[type="submit"]:hover {
+.menu-item-nav-search.canvas .nv-nav-search form input[type="submit"]:hover {
   background-color: #eee;
 }
 

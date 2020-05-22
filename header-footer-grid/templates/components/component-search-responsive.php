@@ -14,12 +14,6 @@ use HFG\Core\Components\SearchResponsive;
 $component_styles_array = [];
 $open = component_setting( SearchResponsive::OPEN_TYPE );
 
-$class_map = [
-		'canvas'   => 'responsive-nav-search',
-		'minimal'  => 'minimal',
-		'floating' => 'floating'
-];
-
 $component_styles = '';
 if ( ! empty( $component_styles_array ) ) {
 	$component_styles = ' style="';
@@ -34,13 +28,13 @@ if ( neve_is_amp() ) {
 }
 ?>
 <div class="nv-search-icon-component" <?php echo wp_kses_post( $component_styles ); ?>>
-	<div class="menu-item-nav-search <?php echo esc_attr( $class_map[ $open ] ); ?>" id="nv-search-icon-responsive"
+	<div class="menu-item-nav-search <?php echo esc_attr( $open ); ?>" id="nv-search-icon-responsive"
 		 tabindex="0">
 		<?php neve_search_icon( true, 15, ! empty( $amp_state ) ); ?>
-		<div class="nv-nav-search" tabindex="0" aria-label="search">
+		<div class="nv-nav-search" tabindex="0" aria-label="search" aria-expanded="false">
 			<?php if( $open !== 'minimal' ) { ?>
-				<div class="close-container">
-					<a class="button button-secondary close-responsive-search"
+				<div class="close-container <?php echo $open === 'canvas' ? 'container' : ''; ?>">
+					<span class="button button-secondary close-responsive-search"
 							<?php
 							echo $amp_state; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 							?>
@@ -48,10 +42,12 @@ if ( neve_is_amp() ) {
 						<?php
 						echo __( 'Close', 'neve' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 						?>
-					</a>
+					</span>
 				</div>
 			<?php } ?>
+			<div class="form-wrap <?php echo $open === 'canvas' ? 'container' : ''; ?>">
 				<?php get_search_form(); ?>
+			</div>
 		</div>
 	</div>
 </div>
