@@ -35,10 +35,12 @@ const LicenseCard = ({isVisible, setSettings, changeLicense, license}) => {
 			setKey('activate' === toDo ? key : '');
 			setToast(response.message);
 			setStatus(false);
-			changeLicense(response.license);
-			fetchOptions().then(r => {
-				setSettings(r);
-			});
+			if ( response.license ) {
+				changeLicense(response.license);
+				fetchOptions().then(r => {
+					setSettings(r);
+				});
+			}
 		});
 	};
 
