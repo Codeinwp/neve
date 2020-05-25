@@ -28,8 +28,7 @@ if ( neve_is_amp() ) {
 }
 ?>
 <div class="nv-search-icon-component" <?php echo wp_kses_post( $component_styles ); ?>>
-	<div class="menu-item-nav-search <?php echo esc_attr( $open ); ?>" id="nv-search-icon-responsive"
-		 tabindex="0">
+	<div class="menu-item-nav-search <?php echo esc_attr( $open ); ?>" id="nv-search-icon-responsive" tabindex="0">
 		<?php neve_search_icon( true, 15, ! empty( $amp_state ) ); ?>
 		<div class="nv-nav-search" tabindex="0" aria-label="search" aria-expanded="false">
 			<?php if ( $open !== 'minimal' ) { ?>

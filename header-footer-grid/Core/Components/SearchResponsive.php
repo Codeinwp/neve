@@ -110,21 +110,12 @@ class SearchResponsive extends Abstract_Component {
 				'sanitize_callback'  => 'wp_filter_nohtml_kses',
 				'default'            => 'canvas',
 				'label'              => __( 'Open Behaviour', 'neve' ),
-				'type'               => '\Neve\Customizer\Controls\React\Radio_Buttons',
+				'type'               => 'select',
 				'options'            => [
 					'choices' => [
-						'canvas'   => [
-							'tooltip' => __( 'Canvas', 'neve' ),
-							'icon'    => 'editor-alignleft',
-						],
-						'minimal'  => [
-							'tooltip' => __( 'Minimal', 'neve' ),
-							'icon'    => 'editor-aligncenter',
-						],
-						'floating' => [
-							'tooltip' => __( 'Header Float', 'neve' ),
-							'icon'    => 'editor-alignright',
-						],
+						'canvas'   => __( 'Canvas', 'neve' ),
+						'minimal'  => __( 'Minimal', 'neve' ),
+						'floating' => __( 'Float Above Header', 'neve' ),
 					],
 				],
 				'section'            => $this->section,
