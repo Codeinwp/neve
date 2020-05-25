@@ -781,6 +781,18 @@ ul[id^="nv-primary-navigation"] i {
   width: 20px;
 }
 
+.menu-item-nav-search .search-form .nv-search-icon-wrap {
+  right: 10px;
+}
+
+.menu-item-nav-search .search-form input[type=submit] {
+  right: 10px;
+}
+
+.menu-item-nav-search .search-form input[type=submit]:hover {
+  background-color: transparent;
+}
+
 .menu-item-nav-search.minimal .nv-nav-search {
   right: auto;
   left: 0;
@@ -845,43 +857,8 @@ ul[id^="nv-primary-navigation"] i {
   position: relative;
 }
 
-.menu-item-nav-search.canvas .nv-nav-search form .nv-search-icon-wrap {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  text-align: center;
-  line-height: 35px;
-  width: 45px;
-  z-index: 3;
-  cursor: pointer;
-  pointer-events: none;
-  color: #c9c9c9;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .menu-item-nav-search.canvas .nv-nav-search form input[type="search"] {
   width: 100%;
-  padding: 8px 45px 7px 12px;
-}
-
-.menu-item-nav-search.canvas .nv-nav-search form input[type="submit"] {
-  top: 0;
-  right: 0;
-  bottom: 0;
-  position: absolute;
-  color: transparent;
-  background: 0 0;
-  z-index: 2;
-  width: 45px;
-  border: 0;
-  padding: 8px 12px 7px;
-}
-
-.menu-item-nav-search.canvas .nv-nav-search form input[type="submit"]:hover {
-  background-color: #eee;
 }
 
 .menu-item-nav-search {
@@ -3099,16 +3076,24 @@ body.menu_sidebar_slide_left.menu_sidebar_dropdown:before {
   bottom: 5px;
 }
 
-.builder-item div[class*="builder-item--header_search"]:not(.builder-item--header_search_responsive) {
+.builder-item--header_search {
   line-height: 1;
   flex-grow: 1;
 }
 
-.builder-item div[class*="builder-item--header_search"]:not(.builder-item--header_search_responsive) .widget-search {
+.builder-item--header_search input[type=submit]:hover {
+  background-color: transparent;
+}
+
+.builder-item--header_search .nv-search-icon-wrap, .builder-item--header_search input[type=submit] {
+  right: 10px;
+}
+
+.builder-item--header_search .widget-search {
   width: 100%;
 }
 
-.builder-item div[class*="builder-item--header_search"]:not(.builder-item--header_search_responsive) input[type="search"] {
+.builder-item--header_search input[type="search"] {
   background-color: #fff;
 }
 

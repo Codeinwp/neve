@@ -13,6 +13,47 @@ function addCss(id, content = '') {
   style.innerHTML = content
 }
 
+function addStyle(settingType, id, newValue, args) {
+	const map = {
+		mobile: 'max-width: 576px',
+		tablet: 'min-width: 576px',
+		desktop: 'min-width: 960px'
+	};
+
+	let style = '';
+	if( args.directional ) {
+		if( args.responsive ) {
+			for( let device in map ) {
+				let deviceStyle = args.template;
+				let suffix = newValue[device+'-unit'] || '';
+				_.each( newValue[device], function( value, direction ) {
+					let directionRegex = new RegExp( `{{value.${direction}}}`, 'g' );
+					deviceStyle = deviceStyle.replace( directionRegex, value + suffix );
+				} );
+				style += `@media (${map[device]}) {${deviceStyle}}`;
+			}
+		} else {
+			//meep - no directional unresponsive style
+		}
+		addCss( id, style )
+		return false;
+	}
+
+	const regex = new RegExp('{{value}}', 'g');
+	if (args.responsive) {
+		const template = args.template;
+		const value = JSON.parse(newValue);
+		for( let device in map ) {
+			let suffix = value[device+'-unit'] || '';
+			style += `@media (${map[device]}) {${template.replace(regex, value[device] || 'inherit')}${suffix}}`;
+		}
+	} else {
+		const value = newValue || args.fallback || 'inherit';
+		style += args.template.replace(regex, value.toString());
+	}
+	addCss(id, style);
+}
+
 /**
  * Run JS on load.
  */
@@ -23,10 +64,6 @@ window.addEventListener('load', function () {
 	document.addEventListener(
 		'header_builder_panel_changed',
 		function (e) {
-			// if (e.detail.partial_id === 'header_search_responsive_partial') {
-			// 	window.HFG.initSearch();
-			// 	return false;
-			// }
 			if (e.detail.partial_id === 'hfg_header_layout_partial') {
 				window.HFG.init();
 				window.HFG.initSearch();
@@ -71,6 +108,11 @@ window.addEventListener('load', function () {
     _.each(settings, function (args, settingId) {
       wp.customize(settingId, function (setting) {
         setting.bind(function (newValue) {
+        	// Handles new template selective refresh.
+        	if( args.additional.template ) {
+						addStyle( settingType, settingId, newValue, args.additional );
+        		return false;
+					}
           let style = ''
           switch (settingType) {
             case 'neve_color_control':

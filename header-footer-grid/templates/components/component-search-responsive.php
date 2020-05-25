@@ -12,7 +12,7 @@ namespace HFG;
 use HFG\Core\Components\SearchResponsive;
 
 $component_styles_array = [];
-$open = component_setting( SearchResponsive::OPEN_TYPE );
+$open                   = component_setting( SearchResponsive::OPEN_TYPE );
 
 $component_styles = '';
 if ( ! empty( $component_styles_array ) ) {
@@ -32,7 +32,7 @@ if ( neve_is_amp() ) {
 		 tabindex="0">
 		<?php neve_search_icon( true, 15, ! empty( $amp_state ) ); ?>
 		<div class="nv-nav-search" tabindex="0" aria-label="search" aria-expanded="false">
-			<?php if( $open !== 'minimal' ) { ?>
+			<?php if ( $open !== 'minimal' ) { ?>
 				<div class="close-container <?php echo $open === 'canvas' ? 'container' : ''; ?>">
 					<span class="button button-secondary close-responsive-search"
 							<?php

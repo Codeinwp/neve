@@ -1,13 +1,19 @@
-.builder-item div[class*="builder-item--header_search"]:not(.builder-item--header_search_responsive) {
+.builder-item--header_search {
   line-height: 1;
   flex-grow: 1;
+  input[type=submit]:hover {
+	background-color: transparent;
+  }
+  .nv-search-icon-wrap, input[type=submit] {
+	right: 10px;
+  }
 
   .widget-search {
-    width: 100%;
+	width: 100%;
   }
 
   input[type="search"] {
-    background-color: #fff;
+	background-color: #fff;
   }
 }
 
