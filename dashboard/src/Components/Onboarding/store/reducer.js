@@ -1,5 +1,6 @@
 /* global wp, neveDash  */
 const initialState = {
+	sites: neveDash.onboarding.sites || {},
 	editor: localStorage.getItem( 'neve-onboarding-editor') || 'elementor',
 	previewStatus: false,
 	importModalStatus: false,
@@ -10,6 +11,12 @@ const initialState = {
 };
 export default (state = initialState, action) => {
 	switch (action.type) {
+		case 'REFRESH_SITES':
+			const {sites} = action.payload;
+			return {
+				...state,
+				sites
+			};
 		case 'SET_CURRENT_EDITOR':
 			const {editor} = action.payload;
 			localStorage.setItem( 'neve-onboarding-editor', editor );
