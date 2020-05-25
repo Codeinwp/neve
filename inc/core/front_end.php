@@ -906,7 +906,7 @@ class Front_End {
 					],
 					'neve-divi-speed'        => [
 						'url'              => 'https://demosites.io/speed-dv/',
-						'remote_url'       => 'https://api.themeisle.com/sites/pro-dv/',
+						'remote_url'       => 'https://api.themeisle.com/sites/speed-dv/',
 						'screenshot'       => 'https://api.themeisle.com/sites/wp-content/uploads/2020/05/neve-speed.jpg',
 						'title'            => 'Speed',
 						'keywords'         => [ 'ecommerce', 'business', 'one page', 'responsive', 'blog' ],
@@ -996,7 +996,7 @@ class Front_End {
 					],
 					'neve-thrive-speed'                 => [
 						'url'              => 'https://demosites.io/speed-th/',
-						'remote_url'       => 'https://api.themeisle.com/sites/pro-th/',
+						'remote_url'       => 'https://api.themeisle.com/sites/speed-th/',
 						'screenshot'       => 'https://api.themeisle.com/sites/wp-content/uploads/2020/05/neve-speed.jpg',
 						'title'            => 'Speed',
 						'keywords'         => [ 'ecommerce', 'business', 'one page', 'responsive', 'blog' ],
@@ -1174,7 +1174,7 @@ class Front_End {
 					],
 					'neve-beaver-speed'                 => [
 						'url'              => 'https://demosites.io/speed-bb/',
-						'remote_url'       => 'https://api.themeisle.com/sites/pro-bb/',
+						'remote_url'       => 'https://api.themeisle.com/sites/speed-bb/',
 						'screenshot'       => 'https://api.themeisle.com/sites/wp-content/uploads/2020/05/neve-speed.jpg',
 						'title'            => 'Speed',
 						'keywords'         => [ 'ecommerce', 'business', 'one page', 'responsive', 'blog' ],
@@ -1712,7 +1712,7 @@ class Front_End {
 					],
 					'neve-speed'                 => [
 						'url'              => 'https://demosites.io/speed/',
-						'remote_url'       => 'https://api.themeisle.com/sites/pro/',
+						'remote_url'       => 'https://api.themeisle.com/sites/speed/',
 						'screenshot'       => 'https://api.themeisle.com/sites/wp-content/uploads/2020/05/neve-speed.jpg',
 						'title'            => 'Speed',
 						'keywords'         => [ 'ecommerce', 'business', 'one page', 'responsive', 'blog' ],
