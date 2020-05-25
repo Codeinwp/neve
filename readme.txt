@@ -19,6 +19,19 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
 
+##### [Version 2.7.1](https://github.com/Codeinwp/neve/compare/v2.7.0...v2.7.1) (2020-05-21)
+
+- [Feat] Replaced Skin Mode control with a Text Color control in the header builder rows
+- [Fix] Apply row background color to menu dropdowns
+- [Fix] Filter by price widget button default background-color
+- [Fix] Make the alignment classes more generic to allow overwriting from block specific settings
+- [Fix] Clickable links in the Changelog area
+- [Fix] Neve Options page on lower resolutions
+- [Fix] Check for the Rest API endpoint before allowing users to start an import
+
+
+
+
 #### [Version 2.7.0](https://github.com/Codeinwp/neve/compare/v2.6.6...v2.7.0) (2020-05-13)
 
 - [Feat] Improved Neve Options page and onboarding experience

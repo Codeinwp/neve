@@ -1,6 +1,5 @@
 export default {
 	getSites: (state) => state.sites,
-	getUpsells: (state) => state.upsells,
 	getMigrationData: (state) => state.migrationData,
 	getCurrentEditor: (state) => state.editor,
 	getCurrentSite: (state) => state.currentSite,

@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeinwp/themeisle-onboarding.git",
-                "reference": "eb04ef04434400e6aeddf7699a84f4c945b22086"
+                "reference": "070ba60f2ec08ac29da709c97ee198b1f8bf880e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeinwp/themeisle-onboarding/zipball/eb04ef04434400e6aeddf7699a84f4c945b22086",
-                "reference": "eb04ef04434400e6aeddf7699a84f4c945b22086",
+                "url": "https://api.github.com/repos/Codeinwp/themeisle-onboarding/zipball/070ba60f2ec08ac29da709c97ee198b1f8bf880e",
+                "reference": "070ba60f2ec08ac29da709c97ee198b1f8bf880e",
                 "shasum": ""
             },
             "require-dev": {
@@ -47,7 +47,7 @@
             ],
             "description": "ThemeIsle Onboarding Module.",
             "homepage": "https://github.com/Codeinwp/themeisle-onboarding",
-            "time": "2020-05-20T12:29:19+00:00"
+            "time": "2020-05-25T11:40:05+00:00"
         },
         {
             "name": "codeinwp/themeisle-sdk",
@@ -570,6 +570,5 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": [],
-    "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "platform-dev": []
 }
