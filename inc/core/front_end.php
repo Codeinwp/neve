@@ -2905,10 +2905,7 @@ class Front_End {
 		$woocommerce_settings = apply_filters(
 			'neves_woocommerce_args',
 			array(
-				'single_image_width'            => 600,
-				'thumbnail_image_width'         => 230,
-				'gallery_thumbnail_image_width' => 160,
-				'product_grid'                  => array(
+				'product_grid' => array(
 					'default_columns' => 3,
 					'default_rows'    => 4,
 					'min_columns'     => 1,
