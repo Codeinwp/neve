@@ -781,14 +781,6 @@ ul[id^="nv-primary-navigation"] i {
   width: 20px;
 }
 
-.menu-item-nav-search .search-form .nv-search-icon-wrap {
-  right: 10px;
-}
-
-.menu-item-nav-search .search-form input[type=submit] {
-  right: 10px;
-}
-
 .menu-item-nav-search .search-form input[type=submit]:hover {
   background-color: transparent;
 }
@@ -3083,10 +3075,6 @@ body.menu_sidebar_slide_left.menu_sidebar_dropdown:before {
 
 .builder-item--header_search input[type=submit]:hover {
   background-color: transparent;
-}
-
-.builder-item--header_search .nv-search-icon-wrap, .builder-item--header_search input[type=submit] {
-  right: 10px;
 }
 
 .builder-item--header_search .widget-search {
