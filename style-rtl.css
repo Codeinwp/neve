@@ -1159,6 +1159,7 @@ fieldset input[type="text"], fieldset input[type="search"], fieldset input[type=
   left: 0;
   height: 100%;
   width: 45px;
+  min-width: 45px;
   z-index: 3;
   cursor: pointer;
   pointer-events: none;
