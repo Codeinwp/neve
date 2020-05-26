@@ -556,11 +556,11 @@ class SearchResponsive extends Abstract_Component {
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 					Dynamic_Selector::META_SUFFIX        => 'px',
 					Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::FIELD_FONT_SIZE ),
-					Dynamic_Selector::META_FILTER       => function ( $css_prop, $value, $meta, $device ) {
-						$fs = $value;
-						$style      = '';
-						$padding    = ($fs > 45 ? $fs : 45) + 5;
-						if( ! empty( $fs ) ) {
+					Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
+						$fs      = $value;
+						$style   = '';
+						$padding = ( $fs > 45 ? $fs : 45 ) + 5;
+						if ( ! empty( $fs ) ) {
 							$style = sprintf( 'padding-right:%spx;', $padding );
 						}
 						return $style;
