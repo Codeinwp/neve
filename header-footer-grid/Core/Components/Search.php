@@ -15,7 +15,6 @@ use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Main;
 use Neve\Core\Settings\Config;
 use Neve\Core\Styles\Dynamic_Selector;
-use WP_Customize_Manager;
 
 /**
  * Class Button
@@ -74,7 +73,7 @@ class Search extends Abstract_Component {
 		SettingsManager::get_instance()->add(
 			[
 				'id'                    => self::FIELD_HEIGHT,
-				'group'                 => self::COMPONENT_ID,
+				'group'                 => $this->get_class_const( 'COMPONENT_ID' ),
 				'tab'                   => SettingsManager::TAB_STYLE,
 				'section'               => $this->section,
 				'label'                 => __( 'Height', 'neve' ),
@@ -114,7 +113,7 @@ class Search extends Abstract_Component {
 		SettingsManager::get_instance()->add(
 			[
 				'id'                    => self::FIELD_FONT_SIZE,
-				'group'                 => self::COMPONENT_ID,
+				'group'                 => $this->get_class_const( 'COMPONENT_ID' ),
 				'tab'                   => SettingsManager::TAB_STYLE,
 				'section'               => $this->section,
 				'label'                 => __( 'Font Size', 'neve' ),
@@ -277,7 +276,7 @@ class Search extends Abstract_Component {
 		SettingsManager::get_instance()->add(
 			[
 				'id'                    => self::FIELD_BG,
-				'group'                 => self::COMPONENT_ID,
+				'group'                 => $this->get_class_const( 'COMPONENT_ID' ),
 				'tab'                   => SettingsManager::TAB_STYLE,
 				'transport'             => 'postMessage',
 				'sanitize_callback'     => 'sanitize_hex_color',
@@ -299,7 +298,7 @@ class Search extends Abstract_Component {
 		SettingsManager::get_instance()->add(
 			[
 				'id'                    => self::FIELD_TEXT_COLOR,
-				'group'                 => self::COMPONENT_ID,
+				'group'                 => $this->get_class_const( 'COMPONENT_ID' ),
 				'tab'                   => SettingsManager::TAB_STYLE,
 				'transport'             => 'postMessage',
 				'sanitize_callback'     => 'sanitize_hex_color',

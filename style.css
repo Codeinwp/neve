@@ -781,8 +781,17 @@ ul[id^="nv-primary-navigation"] i {
   width: 20px;
 }
 
+.hfg-item-last .menu-item-nav-search.minimal .nv-nav-search {
+  left: unset;
+  right: 0;
+}
+
 .menu-item-nav-search .search-form input[type=submit]:hover {
   background-color: transparent;
+}
+
+.menu-item-nav-search.minimal {
+  position: relative;
 }
 
 .menu-item-nav-search.minimal .nv-nav-search {
@@ -3069,20 +3078,20 @@ body.menu_sidebar_slide_left.menu_sidebar_dropdown:before {
   bottom: 5px;
 }
 
-.builder-item--header_search {
+.search-field {
   line-height: 1;
   flex-grow: 1;
 }
 
-.builder-item--header_search input[type=submit]:hover {
+.search-field input[type=submit]:hover {
   background-color: transparent;
 }
 
-.builder-item--header_search .widget-search {
+.search-field .widget-search {
   width: 100%;
 }
 
-.builder-item--header_search input[type="search"] {
+.search-field input[type="search"] {
   background-color: #fff;
 }
 
