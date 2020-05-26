@@ -124,7 +124,7 @@ class Search extends Abstract_Component {
 					'template'   =>
 						'body ' . $this->default_selector . ' input[type=search] {
 							font-size: {{value}}px;
-							padding-right: {{value}}px;
+							padding-right: calc({{value}}px + 5px);
 						}
 						body ' . $this->default_selector . ' .nv-search-icon-wrap .nv-icon svg {
 							width: {{value}}px;
@@ -364,6 +364,15 @@ class Search extends Abstract_Component {
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 					Dynamic_Selector::META_SUFFIX        => 'px',
 					Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::FIELD_FONT_SIZE ),
+					Dynamic_Selector::META_FILTER       => function ( $css_prop, $value, $meta, $device ) {
+						$fs = $value;
+						$style      = '';
+						$padding    = $fs > 45 ? $fs : 45;
+						if( ! empty( $fs ) ) {
+							$style = sprintf( 'padding-right:%s;', $padding );
+						}
+						return $style;
+					},
 				],
 
 				Config::CSS_PROP_BORDER_WIDTH     => [
