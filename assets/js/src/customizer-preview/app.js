@@ -109,7 +109,7 @@ window.addEventListener('load', function () {
       wp.customize(settingId, function (setting) {
         setting.bind(function (newValue) {
         	// Handles new template selective refresh.
-        	if( args.additional.template ) {
+        	if( args.additional && args.additional.template ) {
 						addStyle( settingType, settingId, newValue, args.additional );
         		return false;
 					}
