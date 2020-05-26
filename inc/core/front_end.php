@@ -1640,7 +1640,7 @@ class Front_End {
 					],
 					'neve-video-agency'          => [
 						'url'              => 'https://demosites.io/video-agency/',
-						'remote_url'       => 'https://s20206.pcdn.co/video-agency/',
+						'remote_url'       => 'https://api.themeisle.com/sites/video-agency/',
 						'screenshot'       => 'https://api.themeisle.com/sites/wp-content/uploads/2020/05/neve-vide-agency.jpg',
 						'title'            => 'Video Agency',
 						'keywords'         => [ 'photography', 'responsive', 'agency' ],
