@@ -68,7 +68,7 @@ class Generator {
 	 */
 	public function __construct() {
 		$this->_subscribers   = [
-			'.container, .container [class*="__inner-container"]' => [
+			'.container'                                  => [
 				Config::CSS_PROP_MAX_WIDTH => [
 					Dynamic_Selector::META_KEY           => Config::MODS_CONTAINER_WIDTH,
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
@@ -541,11 +541,32 @@ class Generator {
 		$is_advanced_on = Mods::get( Config::MODS_ADVANCED_LAYOUT_OPTIONS, false );
 		if ( ! $is_advanced_on ) {
 
-			$this->_subscribers['#content .container .col, #content .container-fluid .col, #content [class*="__inner-container"] > *:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.is-style-wide)'] = [
+			$this->_subscribers['#content .container .col, #content .container-fluid .col']                             = [
 				Config::CSS_PROP_MAX_WIDTH => [
 					Dynamic_Selector::META_KEY         => Config::MODS_SITEWIDE_CONTENT_WIDTH,
 					Dynamic_Selector::META_SUFFIX      => '%',
 					Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
+				],
+			];
+			$this->_subscribers['.alignfull > [class*="__inner-container"], .alignwide > [class*="__inner-container"]'] = [
+				Config::CSS_PROP_MAX_WIDTH => [
+					Dynamic_Selector::META_KEY           => Config::MODS_SITEWIDE_CONTENT_WIDTH,
+					Dynamic_Selector::META_DEFAULT       => 70,
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
+						$width = Mods::to_json( Config::MODS_CONTAINER_WIDTH );
+						$value = $device !== Dynamic_Selector::DESKTOP ? ( $width[ $device ] - Config::CONTENT_DEFAULT_PADDING ) : round( ( $value / 100 ) * $width[ $device ] - Config::CONTENT_DEFAULT_PADDING );
+						return sprintf( 'max-width:%spx', $value );
+					},
+				],
+			];
+			$this->_subscribers['.container-fluid .alignfull > [class*="__inner-container"], .container-fluid .alignwide > [class*="__inner-container"]'] = [
+				Config::CSS_PROP_MAX_WIDTH => [
+					Dynamic_Selector::META_KEY         => Config::MODS_SITEWIDE_CONTENT_WIDTH,
+					Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
+					Dynamic_Selector::META_FILTER      => function ( $css_prop, $value, $meta, $device ) {
+						return sprintf( 'max-width:calc(%s%% + %spx)', $value, Config::CONTENT_DEFAULT_PADDING / 2 );
+					},
 				],
 			];
 			$this->_subscribers['.nv-sidebar-wrap, .nv-sidebar-wrap.shop-sidebar'] = [
@@ -559,6 +580,7 @@ class Generator {
 
 			return;
 		}
+		// Others content width.
 		$this->_subscribers['body:not(.single):not(.archive):not(.blog):not(.search) .neve-main > .container .col'] = [
 			Config::CSS_PROP_MAX_WIDTH => [
 				Dynamic_Selector::META_KEY         => Config::MODS_OTHERS_CONTENT_WIDTH,
@@ -574,7 +596,7 @@ class Generator {
 				Dynamic_Selector::META_SUFFIX      => '%',
 			],
 		];
-
+		// Archive content width.
 		$this->_subscribers['.neve-main > .archive-container .nv-index-posts.col'] = [
 			Config::CSS_PROP_MAX_WIDTH => [
 				Dynamic_Selector::META_KEY         => Config::MODS_ARCHIVE_CONTENT_WIDTH,
@@ -590,14 +612,37 @@ class Generator {
 				Dynamic_Selector::META_SUFFIX      => '%',
 			],
 		];
-
-		$this->_subscribers['.neve-main > .single-post-container .nv-single-post-wrap.col, .neve-main > .single-post-container [class*="__inner-container"] > *:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.is-style-wide)'] = [
+		// Single content width.
+		$this->_subscribers['.neve-main > .single-post-container .nv-single-post-wrap.col'] = [
 			Config::CSS_PROP_MAX_WIDTH => [
 				Dynamic_Selector::META_KEY         => Config::MODS_SINGLE_CONTENT_WIDTH,
 				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
 				Dynamic_Selector::META_SUFFIX      => '%',
 			],
 		];
+
+		$this->_subscribers['.single-post-container .alignfull > [class*="__inner-container"], .single-post-container .alignwide > [class*="__inner-container"]']                                 = [
+			Config::CSS_PROP_MAX_WIDTH => [
+				Dynamic_Selector::META_KEY           => Config::MODS_SINGLE_CONTENT_WIDTH,
+				Dynamic_Selector::META_DEFAULT       => 70,
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
+					$width = Mods::to_json( Config::MODS_CONTAINER_WIDTH );
+					$value = $device !== Dynamic_Selector::DESKTOP ? ( $width[ $device ] - Config::CONTENT_DEFAULT_PADDING ) : round( ( $value / 100 ) * $width[ $device ] - Config::CONTENT_DEFAULT_PADDING );
+					return sprintf( 'max-width:%spx', $value );
+				},
+			],
+		];
+		$this->_subscribers['.container-fluid.single-post-container .alignfull > [class*="__inner-container"], .container-fluid.single-post-container .alignwide > [class*="__inner-container"]'] = [
+			Config::CSS_PROP_MAX_WIDTH => [
+				Dynamic_Selector::META_KEY         => Config::MODS_SINGLE_CONTENT_WIDTH,
+				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
+				Dynamic_Selector::META_FILTER      => function ( $css_prop, $value, $meta, $device ) {
+					return sprintf( 'max-width:calc(%s%% + %spx)', $value, Config::CONTENT_DEFAULT_PADDING / 2 );
+				},
+			],
+		];
+
 		$this->_subscribers['.neve-main > .single-post-container .nv-sidebar-wrap'] = [
 			Config::CSS_PROP_MAX_WIDTH => [
 				Dynamic_Selector::META_KEY         => Config::MODS_SINGLE_CONTENT_WIDTH,
@@ -629,11 +674,33 @@ class Generator {
 		];
 
 
-		$this->_subscribers['.single-product .neve-main > .shop-container .nv-shop.col, .single-product .neve-main [class*="__inner-container"] > *:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.is-style-wide)'] = [
+		$this->_subscribers['.single-product .neve-main > .shop-container .nv-shop.col'] = [
 			Config::CSS_PROP_MAX_WIDTH => [
 				Dynamic_Selector::META_KEY         => Config::MODS_SHOP_SINGLE_CONTENT_WIDTH,
 				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
 				Dynamic_Selector::META_SUFFIX      => '%',
+			],
+		];
+
+		$this->_subscribers['.single-product .alignfull > [class*="__inner-container"], .single-product .alignwide > [class*="__inner-container"]']                  = [
+			Config::CSS_PROP_MAX_WIDTH => [
+				Dynamic_Selector::META_KEY           => Config::MODS_SHOP_SINGLE_CONTENT_WIDTH,
+				Dynamic_Selector::META_DEFAULT       => 70,
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
+					$width = Mods::to_json( Config::MODS_CONTAINER_WIDTH );
+					$value = $device !== Dynamic_Selector::DESKTOP ? ( $width[ $device ] - Config::CONTENT_DEFAULT_PADDING ) : round( ( $value / 100 ) * $width[ $device ] - Config::CONTENT_DEFAULT_PADDING );
+					return sprintf( 'max-width:%spx', $value );
+				},
+			],
+		];
+		$this->_subscribers['.single-product .container-fluid .alignfull > [class*="__inner-container"], .single-product .alignwide > [class*="__inner-container"]'] = [
+			Config::CSS_PROP_MAX_WIDTH => [
+				Dynamic_Selector::META_KEY         => Config::MODS_SHOP_SINGLE_CONTENT_WIDTH,
+				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
+				Dynamic_Selector::META_FILTER      => function ( $css_prop, $value, $meta, $device ) {
+					return sprintf( 'max-width:calc(%s%% + %spx)', $value, Config::CONTENT_DEFAULT_PADDING / 2 );
+				},
 			],
 		];
 		$this->_subscribers['.single-product .neve-main > .shop-container .nv-sidebar-wrap'] = [
