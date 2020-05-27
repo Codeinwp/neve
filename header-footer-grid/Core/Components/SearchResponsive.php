@@ -473,7 +473,7 @@ class SearchResponsive extends Abstract_Component {
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
 					'template' =>
-						'body ' . $this->default_selector . ' input[type=search], body ' . $this->default_selector . ' input::placeholder {
+						'body ' . $this->default_selector . ' input[type=search], body ' . $this->default_selector . ' input::placeholder,' . $this->default_selector . ' input:-webkit-autofill {
 							color: {{value}};
 						}
 						body ' . $this->default_selector . ' input[type=search] {
@@ -590,7 +590,7 @@ class SearchResponsive extends Abstract_Component {
 		];
 
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => $this->default_selector . ' input[type=search],' . $this->default_selector . ' input::placeholder',
+			Dynamic_Selector::KEY_SELECTOR => $this->default_selector . ' input[type=search],' . $this->default_selector . ' input::placeholder,' . $this->default_selector . ' input:-webkit-autofill',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_COLOR => [
 					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::FIELD_TEXT_COLOR,
