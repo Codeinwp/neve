@@ -55,6 +55,8 @@ class Config {
 	const CSS_PROP_BORDER                     = 'border';
 	const CSS_PROP_FLEX_BASIS                 = 'flex-basis';
 	const CSS_PROP_PADDING                    = 'padding';
+	const CSS_PROP_PADDING_RIGHT              = 'padding-right';
+	const CSS_PROP_PADDING_LEFT               = 'padding-left';
 	const CSS_PROP_MARGIN                     = 'margin';
 	const CSS_PROP_MARGIN_LEFT                = 'margin-left';
 	const CSS_PROP_MARGIN_RIGHT               = 'margin-right';

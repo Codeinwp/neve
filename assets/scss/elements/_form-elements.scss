@@ -34,6 +34,7 @@
     right: 0;
     height: 100%;
     width: 45px;
+    min-width: 45px;
     z-index: 3;
     cursor: pointer;
     pointer-events: none;
@@ -61,6 +62,7 @@
     color: transparent;
     background: 0 0;
     z-index: 2;
+	min-width: 45px;
     width: 45px;
     border: 0;
     padding: 8px 12px 7px;
