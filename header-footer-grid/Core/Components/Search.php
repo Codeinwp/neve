@@ -57,15 +57,16 @@ class Search extends Abstract_Component {
 
 		SettingsManager::get_instance()->add(
 			[
-				'id'                => self::PLACEHOLDER_ID,
-				'group'             => $this->get_class_const( 'COMPONENT_ID' ),
-				'tab'               => SettingsManager::TAB_GENERAL,
-				'transport'         => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
-				'sanitize_callback' => 'wp_filter_nohtml_kses',
-				'default'           => __( 'Search for...', 'neve' ),
-				'label'             => __( 'Placeholder', 'neve' ),
-				'type'              => 'text',
-				'section'           => $this->section,
+				'id'                 => self::PLACEHOLDER_ID,
+				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'                => SettingsManager::TAB_GENERAL,
+				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
+				'sanitize_callback'  => 'wp_filter_nohtml_kses',
+				'default'            => __( 'Search for...', 'neve' ),
+				'label'              => __( 'Placeholder', 'neve' ),
+				'type'               => 'text',
+				'section'            => $this->section,
+				'conditional_header' => true,
 			]
 		);
 
