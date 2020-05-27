@@ -582,10 +582,6 @@ blockquote.wp-block-quote.is-style-large cite {
   background-color: inherit;
 }
 
-.wp-block-button {
-  padding: 0.75em;
-}
-
 .wp-block-button a {
   text-decoration: none !important;
 }
