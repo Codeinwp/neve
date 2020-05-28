@@ -7,6 +7,7 @@
 
 namespace Neve\Views\Pluggable;
 
+use Neve\Core\Dynamic_Css;
 use Neve\Core\Settings\Config;
 use Neve\Core\Settings\Mods;
 use Neve\Core\Styles\Dynamic_Selector;
@@ -254,7 +255,7 @@ class Metabox_Settings {
 		}
 		';
 
-		wp_add_inline_style( 'neve-style', $style );
+		wp_add_inline_style( 'neve-style', Dynamic_Css::minify_css( $style ) );
 	}
 
 	/**
