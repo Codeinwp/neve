@@ -23,13 +23,6 @@ class Admin {
 	 */
 	private $dismiss_notice_key = 'neve_notice_dismissed';
 	/**
-	 * Current theme name
-	 *
-	 * @var string $theme_name Theme name.
-	 */
-	private $theme_name;
-
-	/**
 	 * Theme Details
 	 *
 	 * @var \WP_Theme
@@ -59,6 +52,12 @@ class Admin {
 		add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_gutenberg_scripts' ] );
 		add_filter( 'themeisle_sdk_hide_dashboard_widget', '__return_true' );
 		add_action( 'admin_notices', [ $this, 'incompatibility_notice' ] );
+		add_filter(
+			'neve_pro_addon_hide_license_notices',
+			function () {
+				return ! current_user_can( 'manage_options' );
+			}
+		);
 
 		if ( get_option( $this->dismiss_notice_key ) !== 'yes' ) {
 			add_action( 'admin_notices', [ $this, 'admin_notice' ] );
@@ -71,7 +70,6 @@ class Admin {
 	 */
 	public function set_props() {
 		$this->theme_args = wp_get_theme();
-		$this->theme_name = apply_filters( 'ti_wl_theme_name', $this->theme_args->__get( 'Name' ) );
 	}
 
 	/**
@@ -86,92 +84,120 @@ class Admin {
 		if ( $current_screen->id === 'appearance_page_neve-welcome' ) {
 			return;
 		}
-
+		$theme_name  = apply_filters( 'ti_wl_theme_name', $this->theme_args->__get( 'Name' ) );
 		$plugin_name = apply_filters( 'ti_wl_plugin_name', 'Neve Pro' );
 
 		$notifications = [];
-		$theme_slug    = 'neve';
-		$themes_update = get_site_transient( 'update_themes' );
-		if ( isset( $themes_update->response[ $theme_slug ] ) ) {
-			$update                       = $themes_update->response[ $theme_slug ];
-			$notifications[ $theme_slug ] = [
-				'type' => 'theme',
-				'path' => '',
-				/* translators: %s - theme name */
-				'cta'  => sprintf( __( 'Update %1$s to v%2$s', 'neve' ), $this->theme_name, $update['new_version'] ),
-			];
+		if ( current_user_can( 'update_themes' ) ) {
+			$theme_slug    = 'neve';
+			$themes_update = get_site_transient( 'update_themes' );
+			if ( isset( $themes_update->response[ $theme_slug ] ) ) {
+				$update                       = $themes_update->response[ $theme_slug ];
+				$notifications[ $theme_slug ] = [
+					'type' => 'theme',
+					'path' => '',
+					/* translators: %s - theme name */
+					'cta'  => sprintf( __( 'Update %1$s to v%2$s', 'neve' ), $theme_name, $update['new_version'] ),
+				];
+			}
 		}
 
-		$plugins_update = get_site_transient( 'update_plugins' );
-		$plugin_path    = 'neve-pro-addon/neve-pro-addon.php';
-		if ( isset( $plugins_update->response[ $plugin_path ] ) ) {
-			$update                          = $plugins_update->response[ $plugin_path ];
-			$notifications['neve-pro-addon'] = [
-				'type' => 'plugin',
-				'path' => $plugin_path,
-				/* translators: %s - pro plugin name (Neve Pro) */
-				'cta'  => sprintf( __( 'Update %1$s to v%2$s', 'neve' ), $plugin_name, $update->new_version ),
-			];
-		}
+		$pro_data = get_option( 'neve_pro_addon_license_data' );
+		$valid    = isset( $pro_data->license ) && $pro_data->license === 'valid';
 
+		if ( current_user_can( 'update_plugins' ) && $valid ) {
+			$plugins_update = get_site_transient( 'update_plugins' );
+			$plugin_path    = 'neve-pro-addon/neve-pro-addon.php';
+			if ( isset( $plugins_update->response[ $plugin_path ] ) ) {
+				$update                          = $plugins_update->response[ $plugin_path ];
+				$notifications['neve-pro-addon'] = [
+					'type' => 'plugin',
+					'path' => $plugin_path,
+					/* translators: %s - pro plugin name (Neve Pro) */
+					'cta'  => sprintf( __( 'Update %1$s to v%2$s', 'neve' ), $plugin_name, $update->new_version ),
+				];
+			}
+		}
 		// Only show the notice when one version is mismatched.
 		if ( ! is_array( $notifications ) || empty( $notifications ) || sizeof( $notifications ) !== 1 ) {
 			return;
 		}
 
 		/* translators: 1 - Theme Name (Neve), 2 - Plugin Name (Neve Pro) */
-		$text = sprintf( __( 'It is recommended that both %1$s and %2$s are updated to the latest version to ensure optimal intercompatibility.', 'neve' ), $this->theme_name, $plugin_name );
+		$text = sprintf( __( 'It is recommended that both %1$s and %2$s are updated to the latest version to ensure optimal intercompatibility.', 'neve' ), $theme_name, $plugin_name );
 
 		$notice = '';
-		echo '<style type="text/css">.neve-update-notice .actions {margin: 15px 0;}</style>';
+		echo '<style type="text/css">.neve-incompatibility-notice .actions {display:block;margin:15px 0;}</style>';
 		?>
 		<script type="text/javascript">
 			function handleNeveUpdates($) {
 				$('.neve-update-entity').each(function (index, button) {
 					$(button).on('click', function (e) {
-						e.preventDefault();
-						var self = $(this);
-						var type = self.data('type');
-						var updatingMessage = self.data('updating-string');
-						var slug = self.data('slug');
+						e.preventDefault()
+						var self = $(this)
+						var type = self.data('type')
+						var slug = self.data('slug')
 
-						self.addClass('updating-message');
-						self.attr('disabled', 'true');
+						self.addClass('updating-message')
+						self.attr('disabled', 'true')
 
 						if (type === 'theme') {
-							wp.updates.ajax('update-theme', {slug}).then(() => {
-								dismissNeveIncompatibility(self);
-							});
+							wp.updates.ajax('update-theme', {
+								slug,
+								success: function () {
+									dismissNeveIncompatibility(self)
+								},
+								error: function (err) {
+									handleError(self, err)
+								}
+							})
 						} else {
-							var path = self.data('path');
-							wp.updates.ajax('update-plugin', {slug, plugin: path}).then(() => {
-								dismissNeveIncompatibility(self);
-							});
+							var path = self.data('path')
+							wp.updates.ajax('update-plugin', {
+								slug,
+								plugin: path,
+								success: function () {
+									dismissNeveIncompatibility(self)
+								},
+								error: function (err) {
+									handleError(self, err)
+
+								}
+							})
 						}
-					});
-				});
+					})
+				})
+
+				function handleError(button, error) {
+					var notice = button.closest('.notice')
+					var header = notice.find('h3')
+
+					button.removeClass('updating-message').fadeOut()
+					notice.removeClass('notice-warning').addClass('notice-error')
+					header.text('<?php echo esc_html__( 'An error occured', 'neve' ); ?>: ' + error.errorMessage)
+				}
 
 				function dismissNeveIncompatibility(button) {
-					var notice = $('.neve-incompatibility-notice');
-					notice.removeClass('notice-warning').addClass('notice-success');
-					button.removeClass('updating-message').addClass('updated-message');
-					button.children('span').text('<?php echo esc_html__( 'Updated', 'neve' ); ?>');
+					var notice = $('.neve-incompatibility-notice')
+					notice.removeClass('notice-warning').addClass('notice-success')
+					button.removeClass('updating-message').addClass('updated-message')
+					button.children('span').text('<?php echo esc_html__( 'Updated', 'neve' ); ?>')
 					setTimeout(function () {
-						$('.neve-incompatibility-notice').fadeOut();
-					}, 2000);
+						$('.neve-incompatibility-notice').fadeOut()
+					}, 2000)
 				}
 			}
 
 			jQuery(document).ready(function () {
-				handleNeveUpdates(jQuery);
-			});
+				handleNeveUpdates(jQuery)
+			})
 		</script>
 		<?php
 
 		$notice .= '<div class="neve-incompatibility-notice notice notice-warning">';
 		$notice .= '<h3>' . __( 'Pending updates', 'neve' ) . ':' . '</h3>';
 		$notice .= '<p>' . esc_html( $text ) . '</p>';
-		$notice .= '<p class="actions">';
+		$notice .= '<div class="actions">';
 		foreach ( $notifications as $slug => $args ) {
 			$notice .= '<button
 			class="neve-update-entity button button-secondary"
@@ -181,7 +207,7 @@ class Admin {
 			$notice .= '<span>' . esc_html( $args['cta'] ) . '</span>';
 			$notice .= '</button>';
 		}
-		$notice .= '</p>';
+		$notice .= '</div>';
 		$notice .= '</div>';
 
 		echo wp_kses_post( $notice );
@@ -484,11 +510,11 @@ class Admin {
 		?>
 		<script type="text/javascript">
 			function handleNoticeActions($) {
-				var actions = $('.nv-welcome-notice').find('.notice-dismiss,  .ti-return-dashboard, .install-now, .options-page-btn');
+				var actions = $('.nv-welcome-notice').find('.notice-dismiss,  .ti-return-dashboard, .install-now, .options-page-btn')
 				$.each(actions, function (index, actionButton) {
 					$(actionButton).on('click', function (e) {
-						e.preventDefault();
-						var redirect = $(this).attr('href');
+						e.preventDefault()
+						var redirect = $(this).attr('href')
 						$.post(
 								'<?php echo esc_url( admin_url( 'admin-ajax.php' ) ); ?>',
 								{
@@ -496,20 +522,20 @@ class Admin {
 									action: 'neve_dismiss_welcome_notice',
 									success: function () {
 										if (typeof redirect !== 'undefined' && window.location.href !== redirect) {
-											window.location = redirect;
-											return false;
+											window.location = redirect
+											return false
 										}
-										$('.nv-welcome-notice').fadeOut();
+										$('.nv-welcome-notice').fadeOut()
 									}
 								}
-						);
-					});
-				});
+						)
+					})
+				})
 			}
 
 			jQuery(document).ready(function () {
-				handleNoticeActions(jQuery);
-			});
+				handleNoticeActions(jQuery)
+			})
 		</script>
 		<?php
 	}
