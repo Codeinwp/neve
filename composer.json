@@ -33,7 +33,13 @@
   "scripts": {
 	"format": "phpcbf --standard=phpcs.xml --report-summary --report-source -s  --runtime-set testVersion 5.4- ",
 	"phpcs": "phpcs --standard=phpcs.xml -s --runtime-set testVersion 5.5-",
-	"lint": "composer run-script phpcs"
+	"lint": "composer run-script phpcs",
+	"post-install-cmd": [
+	  "npm run bump-vendor"
+	],
+	"post-update-cmd": [
+	  "npm run bump-vendor"
+	]
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
