@@ -1,7 +1,6 @@
 /* global wp, neveDash  */
 const initialState = {
-	sites: null,
-	upsells: null,
+	sites: neveDash.onboarding.sites || {},
 	editor: localStorage.getItem( 'neve-onboarding-editor') || 'elementor',
 	previewStatus: false,
 	importModalStatus: false,
@@ -12,23 +11,11 @@ const initialState = {
 };
 export default (state = initialState, action) => {
 	switch (action.type) {
-		case 'SET_SITES':
+		case 'REFRESH_SITES':
 			const {sites} = action.payload;
 			return {
 				...state,
 				sites
-			};
-		case 'SET_UPSELLS':
-			const {upsells} = action.payload;
-			return {
-				...state,
-				upsells
-			};
-		case 'SET_MIGRATION_DATA':
-			const {migrationData} = action.payload;
-			return {
-				...state,
-				migrationData
 			};
 		case 'SET_CURRENT_EDITOR':
 			const {editor} = action.payload;

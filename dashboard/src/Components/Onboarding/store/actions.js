@@ -1,4 +1,10 @@
 export default {
+	refreshSites( sites ) {
+		return {
+			type: 'REFRESH_SITES',
+			payload: {sites}
+		};
+	},
 	setCurrentEditor(editor) {
 		return {
 			type: 'SET_CURRENT_EDITOR',

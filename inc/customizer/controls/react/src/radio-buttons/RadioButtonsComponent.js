@@ -69,19 +69,6 @@ class RadioButtonsComponent extends Component {
       }
     }
 
-    if (is_for === 'row_skin') {
-      return {
-        'light-mode': {
-          tooltip: __('Light', 'neve'),
-          icon: SVG.light
-        },
-        'dark-mode': {
-          tooltip: __('Dark', 'neve'),
-          icon: SVG.dark
-        }
-      }
-    }
-
     if (is_for === 'account_component') {
       return {
         user_icon_style1: {

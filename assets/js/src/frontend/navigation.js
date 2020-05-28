@@ -24,6 +24,7 @@ export const initNavigation = ()=> {
 	if ( isIe() === true ) {
 		handleIeDropdowns();
 	}
+	window.HFG.initSearch = function() { handleSearch(); };
 };
 
 /**

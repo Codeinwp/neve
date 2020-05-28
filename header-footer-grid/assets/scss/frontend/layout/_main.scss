@@ -48,43 +48,10 @@ $builder_types: page_header header footer;
 
 //</editor-fold>
 
-
 //<editor-fold desc="Row Styles">
-.header-top-inner.light-mode {
-  background-color: #f0f0f0;
-}
-
-.light-mode {
-  background-color: #fff;
-  color: #404248;
-
-  a:not(.button) {
-    color: #404248;
-  }
-}
-
-.header--row-inner.dark-mode {
-  &, .sub-menu, .sub-menu li {
-    border-color: #333;
-    background-color: #24292e;
-    color: #fff;
-  }
-
-  a:not(.button) {
-    color: #fff;
-  }
-}
-
-.dark-mode {
-  .menu-item-nav-search, .menu-item-nav-cart > a {
-    color: #fff;
-  }
-}
-
 .hfg_header.site-header {
   -webkit-box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.1);
   box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.1);
 }
-
 //</editor-fold>

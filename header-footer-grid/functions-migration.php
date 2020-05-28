@@ -6,6 +6,89 @@
  * @package HFG
  */
 
+/**
+ * Handles migration for skin modes of rows
+ */
+function neve_hfg_migrate_skin_to_bg_color() {
+	$flag = 'neve_migrated_hfg_colors';
+	if ( get_theme_mod( $flag ) ) {
+		return;
+	}
+
+	$defaults = [
+		'header'      => [
+			'top'     => [
+				'bg'           => '#f0f0f0',
+				'other_bg'     => '#24292e',
+				'default_skin' => 'light-mode',
+			],
+			'main'    => [
+				'bg'           => '#ffffff',
+				'other_bg'     => '#24292e',
+				'default_skin' => 'light-mode',
+			],
+			'bottom'  => [
+				'bg'           => '#ffffff',
+				'other_bg'     => '#24292e',
+				'default_skin' => 'light-mode',
+			],
+			'sidebar' => [
+				'bg'           => '#ffffff',
+				'other_bg'     => '#24292e',
+				'default_skin' => 'light-mode',
+			],
+		],
+		'footer'      => [
+			'top'    => [
+				'bg'           => '#ffffff',
+				'other_bg'     => '#24292e',
+				'default_skin' => 'light-mode',
+			],
+			'bottom' => [
+				'bg'           => '#24292e',
+				'other_bg'     => '#ededed',
+				'default_skin' => 'dark-mode',
+			],
+		],
+		'page_header' => [
+			'top'    => [
+				'bg'           => '#ffffff',
+				'other_bg'     => '#24292e',
+				'default_skin' => 'light-mode',
+			],
+			'bottom' => [
+				'bg'           => '#ffffff',
+				'other_bg'     => '#24292e',
+				'default_skin' => 'light-mode',
+			],
+		],
+	];
+	foreach ( $defaults as $builder => $rows ) {
+		foreach ( $rows as $row_id => $arg ) {
+			$skin = get_theme_mod( 'hfg_' . $builder . '_layout_' . $row_id . '_skin' );
+			if ( empty( $skin ) || $skin === $arg['default_skin'] ) {
+				continue;
+			}
+
+			$mod_key    = 'hfg_' . $builder . '_layout_' . $row_id . '_background';
+			$background = get_theme_mod( $mod_key );
+			if ( empty( $background ) ) {
+				continue;
+			}
+
+			if ( $background['type'] !== 'color' || $background['colorValue'] !== $arg['bg'] ) {
+				continue;
+			}
+
+			$background['colorValue'] = $arg['other_bg'];
+			set_theme_mod( $mod_key, $background );
+		}
+	}
+	set_theme_mod( $flag, true );
+}
+
+add_action( 'init', 'neve_hfg_migrate_skin_to_bg_color' );
+
 
 /**
  * Define migration logic for footer.
@@ -27,7 +110,7 @@ function neve_hfg_footer_settings() {
 		'footer-three-widgets',
 		'footer-four-widgets',
 	);
-	for ( $i = 0; $i < $sidebars; $i ++ ) {
+	for ( $i = 0; $i < $sidebars; $i++ ) {
 		$builder['desktop']['top'][ $sidebars_names[ $i ] ] = [
 			'id'    => $sidebars_names[ $i ],
 			'width' => 12 / $sidebars,
@@ -61,6 +144,7 @@ function neve_hfg_footer_settings() {
 		'components' => $components,
 	];
 }
+
 /**
  * Define migration logic for header.
  *

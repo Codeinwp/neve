@@ -1,3 +1,32 @@
+##### [Version 2.7.1](https://github.com/Codeinwp/neve/compare/v2.7.0...v2.7.1) (2020-05-21)
+
+- [Feat] Replaced Skin Mode control with a Text Color control in the header builder rows
+- [Fix] Apply row background color to menu dropdowns
+- [Fix] Filter by price widget button default background-color
+- [Fix] Make the alignment classes more generic to allow overwriting from block specific settings
+- [Fix] Clickable links in the Changelog area
+- [Fix] Neve Options page on lower resolutions
+- [Fix] Check for the Rest API endpoint before allowing users to start an import
+
+#### [Version 2.7.0](https://github.com/Codeinwp/neve/compare/v2.6.6...v2.7.0) (2020-05-13)
+
+- [Feat] Improved Neve Options page and onboarding experience
+- [Feat] Integration with the Toolset plugin
+- [Feat] Improved dynamic CSS generation & Gutenberg integration
+- [Fix] Yellow background on the number of products in categories on the Shop page
+- [Fix] Secondary Menu alignment on mobile
+- New starter sites
+- [Book Shop](https://themeisle.com/demo/?theme=Book%20Shop)
+- [Psychologist](https://themeisle.com/demo/?theme=Psychologist)
+- [Doctors](https://themeisle.com/demo/?theme=Doctors%202)
+- [Pet Shop](https://themeisle.com/demo/?theme=Pet%20Shop)
+- [Apparel](https://themeisle.com/demo/?theme=Apparel)
+- [Boat Rental](https://themeisle.com/demo/?theme=Boat%20Rental)
+- [Jewellery Shop](https://themeisle.com/demo/?theme=Jewellery%20Shop%202)
+- [Perfume Shop](https://themeisle.com/demo/?theme=Perfume%20Shop)
+- [Music Band](https://themeisle.com/demo/?theme=Music%20Band%202)
+- [Fitness Trainer](https://themeisle.com/demo/?theme=Fitness%20Trainer)
+
 ##### [Version 2.6.6](https://github.com/Codeinwp/neve/compare/v2.6.5...v2.6.6) (2020-04-07)
 
 - [Fix] Background color for mobile menu
@@ -59,8 +88,8 @@
 *  [Fix] Fixed sidebar layout not updating on single product pages [Fix] Fixed search results page sidebar when using Elementor
 *  [Fix] Fixed expanded cart positioning
 * New Starter Sites
-*  Web Agency - https://themeisle.com/demo/?theme=Web%20Agency
-*  Blogger -  https://themeisle.com/demo/?theme=Blogger
+* [ Web Agency](https://themeisle.com/demo/?theme=Web%20Agency)
+*  [Blogger](https://themeisle.com/demo/?theme=Blogger)
  
  ### v2.5.4 - 2019-12-19 
  **Changes:** 
@@ -130,4 +159,4 @@
 * New Brizy Starter Sites
 
  ### v1.0.0 - 2018-09-06 
- **Changes:** 
+ **Changes:**

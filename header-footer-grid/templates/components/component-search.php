@@ -24,7 +24,7 @@ if ( ! empty( $component_styles_array ) ) {
 }
 
 ?>
-<div class="component-wrap">
+<div class="component-wrap search-field">
 	<div class="widget widget-search" <?php echo wp_kses_post( $component_styles ); ?> >
 		<?php get_search_form(); ?>
 	</div>
