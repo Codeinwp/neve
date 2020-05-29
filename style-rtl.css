@@ -167,19 +167,11 @@ mark {
   margin-right: auto;
 }
 
-.container-fluid [class*="__inner-container"] {
-  width: 100%;
-}
-
-.container-fluid [class*="__inner-container"] > * {
-  max-width: 100%;
-}
-
 .container-fluid > div {
   margin: 0 -15px;
 }
 
-body.nv-empty-sidebar, body.nv-sidebar-full-width .container-fluid .alignfull {
+body.nv-empty-sidebar {
   width: 100%;
   max-width: 100vw;
   padding: 0;
@@ -2164,11 +2156,6 @@ audio {
 @media (min-width: 960px) {
   .neve-main > .container .col {
     max-width: 70%;
-  }
-  [class*="__inner-container"] > *:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.is-style-wide) {
-    margin: auto;
-    max-width: 70%;
-    padding: 0 15px;
   }
   .neve-main > .container > .row {
     flex-wrap: nowrap;
