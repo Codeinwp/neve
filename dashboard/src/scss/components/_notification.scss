@@ -52,6 +52,7 @@
     line-height: normal;
     padding: 5px 10px;
     height: auto;
+	flex-shrink: 0;
     span {
       display: flex;
       align-items: center;
@@ -80,9 +81,8 @@
     align-items: center;
     font-size: 15px;
     font-weight: 600;
-    line-height: 1;
     margin: 0 10px 0;
-
+	flex-grow: 0;
     svg {
       margin-right: 5px;
     }

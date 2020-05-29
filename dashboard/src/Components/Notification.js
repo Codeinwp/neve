@@ -5,15 +5,15 @@ const {useState} = wp.element;
 const {__} = wp.i18n;
 const {Button, Dashicon} = wp.components;
 
-const Notification = (props) => {
+const Notification = ({ data, slug }) => {
   const [ hidden, setHidden ] = useState(false);
-  const {text, cta, type, update} = props.data;
+  const {text, cta, type, update} = data;
   const [ inProgress, setInProgress ] = useState(false);
   const [ done, setDone ] = useState(false);
   const classes = classnames(
     [
       'notification',
-      props.slug,
+      slug,
       type ? type : '',
       {
         'success': done,
