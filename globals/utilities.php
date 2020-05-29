@@ -365,6 +365,7 @@ function neve_get_google_fonts() {
 			'Bahiana',
 			'Bahianita',
 			'Bai Jamjuree',
+			'Balsamiq Sans',
 			'Baloo',
 			'Baloo 2',
 			'Baloo Bhai',
