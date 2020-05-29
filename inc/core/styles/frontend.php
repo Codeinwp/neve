@@ -297,7 +297,7 @@ class Frontend extends Generator {
 							return sprintf( 'max-width:%spx', round( ( $value / 100 ) * $width[ $device ] - Config::CONTENT_DEFAULT_PADDING ) );
 						}
 						if ( $device === Dynamic_Selector::MOBILE ) {
-							return sprintf( 'max-width:%spx', ( $width[ $device ] - Config::CONTENT_DEFAULT_PADDING ) );
+							return sprintf( 'max-width:%spx;margin:auto', ( $width[ $device ] - Config::CONTENT_DEFAULT_PADDING ) );
 						}
 
 						return '';
