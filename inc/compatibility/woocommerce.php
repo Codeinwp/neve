@@ -158,6 +158,10 @@ class Woocommerce {
 		add_filter( 'woocommerce_product_description_heading', '__return_false' );
 		add_filter( 'woocommerce_product_additional_information_heading', '__return_false' );
 
+		// Add breadcrumbs and results count
+		add_action( 'neve_bc_count', 'woocommerce_breadcrumb' );
+		add_action( 'neve_bc_count', 'woocommerce_result_count' );
+
 		$this->edit_woocommerce_header();
 		$this->move_checkout_coupon();
 		$this->add_inline_selectors();
@@ -294,8 +298,7 @@ class Woocommerce {
 		}
 
 		echo '<div class="nv-bc-count-wrap">';
-		woocommerce_breadcrumb();
-		woocommerce_result_count();
+		do_action( 'neve_bc_count' );
 		echo '</div>';
 
 		if ( is_product() ) {
