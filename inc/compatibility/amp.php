@@ -42,7 +42,7 @@ class Amp {
 			2
 		);
 		add_filter( 'neve_sidebar_data_attrs', array( $this, 'add_woo_sidebar_attrs' ), 10, 2 );
-		add_filter( 'neve_search_menu_item_filter', array( $this, 'add_search_menu_item_attrs' ), 10 );
+		add_filter( 'neve_search_menu_item_filter', array( $this, 'add_search_menu_item_attrs' ), 10, 2 );
 		add_action( 'neve_after_header_hook', array( $this, 'render_amp_states' ) );
 		add_filter( 'neve_nav_toggle_data_attrs', array( $this, 'add_nav_toggle_attrs' ) );
 	}
@@ -58,10 +58,12 @@ class Amp {
 	/**
 	 * Add amp parameters for menu child search icon.
 	 *
+	 * @param string $input input string.
+	 * @param int    $instance instance number of nav menu.
 	 * @return string
 	 */
-	public function add_search_menu_item_attrs( $input = '' ) {
-		return $input . ' on="tap:nv-menu-item-search.toggleClass(class=\'active\')" ';
+	public function add_search_menu_item_attrs( $input, $instance ) {
+		return $input . ' on="tap:nv-menu-item-search-' . $instance . '.toggleClass(class=\'active\')" ';
 	}
 
 	/**

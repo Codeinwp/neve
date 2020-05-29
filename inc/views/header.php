@@ -16,6 +16,12 @@ use HFG\Core\Components\Nav;
  */
 class Header extends Base_View {
 	/**
+	 * Nav instance number
+	 *
+	 * @var int
+	 */
+	static $primary_nav_instance_no = 1;
+	/**
 	 * Add hooks for the front end.
 	 */
 	public function init() {
@@ -105,8 +111,10 @@ class Header extends Base_View {
 		}
 		$search = '';
 
-		$search     .= '<' . esc_attr( $tag ) . ' class="' . esc_attr( $class ) . '" id="nv-menu-item-search" tabindex="0" aria-label="search">';
-		$extra_attrs = apply_filters( 'neve_search_menu_item_filter', '' );
+		$id = 'nv-menu-item-search-' . self::$primary_nav_instance_no;
+
+		$search     .= '<' . esc_attr( $tag ) . ' class="' . esc_attr( $class ) . '" id="' . esc_attr( $id ) . '" tabindex="0" aria-label="search">';
+		$extra_attrs = apply_filters( 'neve_search_menu_item_filter', '', self::$primary_nav_instance_no );
 		$search     .= '<a class="nv-nav-search-icon" ' . $extra_attrs . '>' . neve_search_icon() . '</a>';
 		$search     .= '<div class="nv-nav-search">';
 		if ( $responsive === true ) {
@@ -117,6 +125,8 @@ class Header extends Base_View {
 		$search .= get_search_form( false );
 		$search .= '</div>';
 		$search .= '</' . esc_attr( $tag ) . '>';
+
+		self::$primary_nav_instance_no += 1;
 
 		return $search;
 	}
