@@ -781,9 +781,17 @@ ul[id^="nv-primary-navigation"] i {
   width: 20px;
 }
 
-.hfg-item-last .menu-item-nav-search.minimal .nv-nav-search {
+.nv-search-icon-component {
+  display: flex;
+}
+
+.hfg-item-last:not(.hfg-item-first) .menu-item-nav-search.minimal .nv-nav-search {
   left: unset;
   right: 0;
+}
+
+.menu-item-nav-search {
+  flex-grow: 0;
 }
 
 .menu-item-nav-search .search-form input[type=submit]:hover {
