@@ -171,7 +171,10 @@ class Frontend extends Generator {
 		if ( ! empty( $extra_selectors_body ) ) {
 			$extra_selectors_body                        = ltrim( $extra_selectors_body, ', ' );
 			$this->_subscribers[ $extra_selectors_body ] = [
-				Config::CSS_PROP_LETTER_SPACING => Config::MODS_TYPEFACE_GENERAL . '.letterSpacing',
+				Config::CSS_PROP_LETTER_SPACING => [
+					Dynamic_Selector::META_KEY           => Config::MODS_TYPEFACE_GENERAL . '.letterSpacing',
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+				],
 				Config::CSS_PROP_FONT_WEIGHT    => [
 					Dynamic_Selector::META_KEY => Config::MODS_TYPEFACE_GENERAL . '.fontWeight',
 					'font'                     => 'mods_' . Config::MODS_FONT_GENERAL,
