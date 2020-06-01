@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeinwp/themeisle-onboarding.git",
-                "reference": "6db119c2aaac7f5cec82ffa3662f233d36c09928"
+                "reference": "070ba60f2ec08ac29da709c97ee198b1f8bf880e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeinwp/themeisle-onboarding/zipball/6db119c2aaac7f5cec82ffa3662f233d36c09928",
-                "reference": "6db119c2aaac7f5cec82ffa3662f233d36c09928",
+                "url": "https://api.github.com/repos/Codeinwp/themeisle-onboarding/zipball/070ba60f2ec08ac29da709c97ee198b1f8bf880e",
+                "reference": "070ba60f2ec08ac29da709c97ee198b1f8bf880e",
                 "shasum": ""
             },
             "require-dev": {
@@ -47,20 +47,20 @@
             ],
             "description": "ThemeIsle Onboarding Module.",
             "homepage": "https://github.com/Codeinwp/themeisle-onboarding",
-            "time": "2020-04-23T07:46:56+00:00"
+            "time": "2020-05-25T11:40:05+00:00"
         },
         {
             "name": "codeinwp/themeisle-sdk",
-            "version": "3.2.9",
+            "version": "3.2.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeinwp/themeisle-sdk.git",
-                "reference": "5923b377554028b3e2c2e98a5f752b9bcd23d4da"
+                "reference": "708ba8b6012c2a6411c23557f3b4d0fcd7a270e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeinwp/themeisle-sdk/zipball/5923b377554028b3e2c2e98a5f752b9bcd23d4da",
-                "reference": "5923b377554028b3e2c2e98a5f752b9bcd23d4da",
+                "url": "https://api.github.com/repos/Codeinwp/themeisle-sdk/zipball/708ba8b6012c2a6411c23557f3b4d0fcd7a270e3",
+                "reference": "708ba8b6012c2a6411c23557f3b4d0fcd7a270e3",
                 "shasum": ""
             },
             "require-dev": {
@@ -85,7 +85,7 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2020-05-18T16:59:05+00:00"
+            "time": "2020-05-28T16:39:44+00:00"
         },
         {
             "name": "codeinwp/ti-about-page",
