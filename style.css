@@ -905,10 +905,6 @@ ul[id^="nv-primary-navigation"] i {
   height: 100vh;
 }
 
-ul[id^="nv-primary-navigation"] .menu-item-nav-search:not(.responsive-nav-search) {
-  display: none;
-}
-
 /* Style mega-menu and its children on mobile */
 .nv-nav-wrap .neve-mega-menu > .sub-menu {
   cursor: default;
@@ -2277,9 +2273,6 @@ audio {
   }
   .row .menu-item-has-children:last-child .caret {
     padding-right: 0;
-  }
-  .row ul[id^="nv-primary-navigation"] .menu-item-nav-search:not(.responsive-nav-search) {
-    display: block;
   }
   .layout-default .nv-post-thumbnail-wrap, .layout-alternative .nv-post-thumbnail-wrap {
     margin-bottom: 0;
