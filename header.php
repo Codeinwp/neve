@@ -31,11 +31,11 @@ $header_classes = apply_filters( 'nv_header_classes', 'header' );
 			<?php echo __( 'Skip to content', 'neve' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 		</a>
 		<?php
-		neve_before_header_content_trigger();
+		neve_before_header_wrapper_trigger();
 		if ( apply_filters( 'neve_filter_toggle_content_parts', true, 'header' ) === true ) {
 			do_action( 'neve_do_header' );
 		}
-		neve_after_header_content_trigger();
+		neve_after_header_wrapper_trigger();
 		?>
 	</header>
 	<?php neve_after_header_trigger(); ?>

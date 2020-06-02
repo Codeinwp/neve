@@ -16,8 +16,8 @@ function neve_before_header_trigger() {
 /**
  * Hook at the beginning of header ( navigation ) area
  */
-function neve_before_header_content_trigger() {
-	do_action( 'neve_before_header_content_hook' );
+function neve_before_header_wrapper_trigger() {
+	do_action( 'neve_before_header_wrapper_hook' );
 }
 
 /**
@@ -44,8 +44,8 @@ function neve_after_header_trigger() {
 /**
  * Hook just after the header content ( navigation ) area
  */
-function neve_after_header_content_trigger() {
-	do_action( 'neve_after_header_content_hook' );
+function neve_after_header_wrapper_trigger() {
+	do_action( 'neve_after_header_wrapper_hook' );
 }
 
 /**
