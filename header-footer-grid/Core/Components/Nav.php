@@ -159,7 +159,7 @@ class Nav extends Abstract_Component {
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
 					'template' => '
-					.builder-item--' . $this->get_id() . ' .nav-menu-primary > .primary-menu-ul li:not(.woocommerce-mini-cart-item):hover > a:after {
+					.builder-item--' . $this->get_id() . ' .nav-menu-primary > .primary-menu-ul li:not(.woocommerce-mini-cart-item) > a:after {
 						background-color: {{value}}!important;
 					}
 					.builder-item--' . $this->get_id() . ' .nav-menu-primary:not(.style-full-height) > .primary-menu-ul li:not(.woocommerce-mini-cart-item):hover > a {
@@ -370,7 +370,7 @@ class Nav extends Abstract_Component {
 			];
 		}
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => $selector . 'li.current-menu-item > a',
+			Dynamic_Selector::KEY_SELECTOR => $selector . 'li.current-menu-item > a,' . $selector . 'li.current_page_item > a',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_COLOR => [
 					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::ACTIVE_COLOR_ID,
