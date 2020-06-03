@@ -51,6 +51,17 @@ class Front_End {
 			'default-color' => apply_filters( 'neve_default_background_color', 'ffffff' ),
 		);
 
+		$post_formats = array(
+			'gallery',
+			'image',
+			'link',
+			'quote',
+			'video',
+			'audio',
+			'status',
+			'aside',
+		);
+
 		add_theme_support( 'title-tag' );
 		add_theme_support( 'post-thumbnails' );
 		add_theme_support( 'automatic-feed-links' );
@@ -67,6 +78,7 @@ class Front_End {
 		add_theme_support( 'lifterlms-sidebars' );
 		add_theme_support( 'lifterlms' );
 		add_theme_support( 'service_worker', true );
+		add_theme_support( 'post-formats', $post_formats );
 
 		add_filter( 'embed_oembed_html', array( $this, 'wrap_oembeds' ), 10, 3 );
 		add_filter( 'video_embed_html', array( $this, 'wrap_jetpack_oembeds' ), 10, 1 );
@@ -2205,6 +2217,38 @@ class Front_End {
 						'title'            => 'Resume 2',
 						'keywords'         => [ 'responsive', 'business' ],
 						'unsplash_gallery' => 'https://unsplash.com/collections/10442260/resume/0d0bb885aef689075600517be914fae5',
+					],
+					'neve-leather-shop'			 => [
+						'url'              => 'https://demosites.io/leather-shop/',
+						'remote_url'       => 'https://api.themeisle.com/sites/leather-shop/',
+						'screenshot'       => 'https://api.themeisle.com/sites/wp-content/uploads/2020/06/leather-shop.jpg',
+						'title'            => 'Leather Shop',
+						'keywords'         => [ 'ecommerce', 'responsive' ],
+						'unsplash_gallery' => 'https://unsplash.com/collections/10459252/leather-shop/9d70aab6582456060f696ea810456082',
+					],
+					'neve-public-notary'		 => [
+						'url'              => 'https://demosites.io/public-notary/',
+						'remote_url'       => 'https://api.themeisle.com/sites/public-notary/',
+						'screenshot'       => 'https://api.themeisle.com/sites/wp-content/uploads/2020/06/public-notary.jpg',
+						'title'            => 'Public Notary',
+						'keywords'         => [ 'blog', 'responsive' ],
+						'unsplash_gallery' => 'https://unsplash.com/collections/10572299/public-notary/5be93cb607402234f2bf640acdc98057',
+					],
+					'neve-pharmacy'				 => [
+						'url'              => 'https://demosites.io/pharmacy/',
+						'remote_url'       => 'https://api.themeisle.com/sites/pharmacy/',
+						'screenshot'       => 'https://api.themeisle.com/sites/wp-content/uploads/2020/06/pharmacy.jpg',
+						'title'            => 'Pharmacy',
+						'keywords'         => [ 'ecommerce', 'medical' ],
+						'unsplash_gallery' => 'https://unsplash.com/collections/9266931/neve-pharmacy/2da0901b77e38331b4d80bc260acbc21',
+					],
+					'neve-investment-consulting' => [
+						'url'              => 'https://demosites.io/investment-consulting/',
+						'remote_url'       => 'https://api.themeisle.com/sites/investment-consulting/',
+						'screenshot'       => 'https://api.themeisle.com/sites/wp-content/uploads/2020/06/investment-consulting.jpg',
+						'title'            => 'Investment Consulting',
+						'keywords'         => [ 'responsive', 'business' ],
+						'unsplash_gallery' => 'https://unsplash.com/collections/10511272/investment-consulting/e96078ca62d73cf5420be1da416bcb11',
 					],
 				],
 				'brizy'            => [

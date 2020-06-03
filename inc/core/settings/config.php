@@ -87,7 +87,7 @@ class Config {
 	const CSS_SELECTOR_TYPEFACE_H4           = 'typeface_h4';
 	const CSS_SELECTOR_TYPEFACE_H5           = 'typeface_h5';
 	const CSS_SELECTOR_TYPEFACE_H6           = 'typeface_h6';
-
+	const CONTENT_DEFAULT_PADDING            = 30;
 	/**
 	 * Holds tag->css selector mapper.
 	 *

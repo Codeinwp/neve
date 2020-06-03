@@ -72,6 +72,7 @@
 		"phpcs": "composer run-script phpcs",
 		"git:add": "git add *.css assets/**/*.css assets/**/*.js",
 		"build:grunt": "grunt build",
+		"bump-vendor": "grunt version:packageVersion",
 		"build:rollup": "./node_modules/.bin/rollup -c",
 		"build:makepot": "docker run --user root --rm --volume  \"$(pwd):/var/www/html/neve\" wordpress:cli bash -c 'php -d memory_limit=512M \"$(which wp)\" i18n make-pot ./neve/ ./neve/languages/neve.pot --allow-root '",
 		"watch:rollup": "./node_modules/.bin/rollup -c --watch",
