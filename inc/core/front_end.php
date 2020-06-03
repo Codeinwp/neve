@@ -2218,7 +2218,7 @@ class Front_End {
 						'keywords'         => [ 'responsive', 'business' ],
 						'unsplash_gallery' => 'https://unsplash.com/collections/10442260/resume/0d0bb885aef689075600517be914fae5',
 					],
-					'neve-leather-shop'			 => [
+					'neve-leather-shop'          => [
 						'url'              => 'https://demosites.io/leather-shop/',
 						'remote_url'       => 'https://api.themeisle.com/sites/leather-shop/',
 						'screenshot'       => 'https://api.themeisle.com/sites/wp-content/uploads/2020/06/leather-shop.jpg',
@@ -2226,7 +2226,7 @@ class Front_End {
 						'keywords'         => [ 'ecommerce', 'responsive' ],
 						'unsplash_gallery' => 'https://unsplash.com/collections/10459252/leather-shop/9d70aab6582456060f696ea810456082',
 					],
-					'neve-public-notary'		 => [
+					'neve-public-notary'         => [
 						'url'              => 'https://demosites.io/public-notary/',
 						'remote_url'       => 'https://api.themeisle.com/sites/public-notary/',
 						'screenshot'       => 'https://api.themeisle.com/sites/wp-content/uploads/2020/06/public-notary.jpg',
@@ -2234,7 +2234,7 @@ class Front_End {
 						'keywords'         => [ 'blog', 'responsive' ],
 						'unsplash_gallery' => 'https://unsplash.com/collections/10572299/public-notary/5be93cb607402234f2bf640acdc98057',
 					],
-					'neve-pharmacy'				 => [
+					'neve-pharmacy'              => [
 						'url'              => 'https://demosites.io/pharmacy/',
 						'remote_url'       => 'https://api.themeisle.com/sites/pharmacy/',
 						'screenshot'       => 'https://api.themeisle.com/sites/wp-content/uploads/2020/06/pharmacy.jpg',
