@@ -1512,6 +1512,22 @@ class Front_End {
 						'keywords'         => [ 'entertainment', 'education', 'responsive' ],
 						'unsplash_gallery' => 'https://unsplash.com/collections/9236647/neve-conference',
 					],
+					'neve-beaver-university'            => [
+						'url'              => 'https://demosites.io/university-bb/',
+						'remote_url'       => 'https://api.themeisle.com/sites/university-bb/',
+						'screenshot'       => 'https://api.themeisle.com/sites/wp-content/uploads/2020/05/neve-university.jpg',
+						'title'            => 'University',
+						'keywords'         => [ 'education', 'minimal', 'one page' ],
+						'unsplash_gallery' => 'https://unsplash.com/collections/9683046/neve-university/81b2d9ae33db8a28c087bed619404626',
+					],
+					'neve-beaver-interior-design'       => [
+						'url'              => 'https://demosites.io/interior-design-bb/',
+						'remote_url'       => 'https://api.themeisle.com/sites/interior-design-bb/',
+						'screenshot'       => 'https://api.themeisle.com/sites/wp-content/uploads/2020/05/neve-interior-design-2.jpg',
+						'title'            => 'Interior Design',
+						'keywords'         => [ 'responsive', 'blog', 'minimal' ],
+						'unsplash_gallery' => 'https://unsplash.com/collections/9631913/neve-interior-design/655af3fe67840388345c10f425611721',
+					],
 					'neve-beaver-electronics-store'     => [
 						'url'              => 'https://demosites.io/electronic-store-bb/',
 						'remote_url'       => 'https://api.themeisle.com/sites/electronic-store-bb/',
@@ -1551,6 +1567,14 @@ class Front_End {
 						'title'            => 'Personal Blog',
 						'keywords'         => [ 'blog', 'minimal', 'responsive' ],
 						'unsplash_gallery' => 'https://unsplash.com/collections/9633204/neve-personal-blog/236da7a7ec4aaba3f8de60b4b10ab1a7',
+					],
+					'neve-beaver-equitation'            => [
+						'url'              => 'https://demosites.io/equitation-bb/',
+						'remote_url'       => 'https://api.themeisle.com/sites/equitation-bb/',
+						'screenshot'       => 'https://api.themeisle.com/sites/wp-content/uploads/2020/05/neve-horses.jpg',
+						'title'            => 'Equitation',
+						'keywords'         => [ 'sports', 'responsive', 'horse' ],
+						'unsplash_gallery' => 'https://unsplash.com/collections/9656821/neve-horse-riding/37daf600916343291b06efb64e4d091c',
 					],
 				],
 				'elementor'        => [
@@ -2660,6 +2684,13 @@ class Front_End {
 				'keywords'         => [ 'food', 'responsive' ],
 				'unsplash_gallery' => 'https://unsplash.com/collections/8509382/farm',
 			],
+			'neve-florist-gutenberg'		  => [
+				'url'              => 'https://demosites.io/florist-gb/',
+				'screenshot'       => 'https://api.themeisle.com/sites/wp-content/uploads/2020/05/neve-florist.jpg',
+				'title'            => 'Florist',
+				'keywords'         => [ 'ecommerce', 'flowers', 'blog' ],
+				'unsplash_gallery' => 'https://unsplash.com/collections/8715558/neve-florist/f9106cdfcd1a7309bac7c606760d7918',
+			],
 			'neve-cake-shop-gutenberg'        => [
 				'url'              => 'https://demosites.io/cakeshop-gb/',
 				'screenshot'       => 'https://api.themeisle.com/sites/wp-content/uploads/2020/05/neve-cake-shop.jpg',
@@ -2667,11 +2698,39 @@ class Front_End {
 				'keywords'         => [ 'ecommerce', 'food' ],
 				'unsplash_gallery' => 'https://unsplash.com/collections/7772437/cakery-bakery/5f40022a676873e52e1dc76b113c5915',
 			],
+			'neve-ebook-gutenberg'            => [
+				'url'              => 'https://demosites.io/ebook-gb/',
+				'screenshot'       => 'https://api.themeisle.com/sites/wp-content/uploads/2020/05/neve-ebook.jpg',
+				'title'            => 'eBook',
+				'keywords'         => [ 'education', 'blog', 'minimal' ],
+				'unsplash_gallery' => 'https://unsplash.com/collections/8687501/neve-ebook/53451c76913e4e176e377c0208e2e755',
+			],
+			'neve-food-magazine-gutenberg'    => [
+				'url'              => 'https://demosites.io/food-magazine-gb/',
+				'screenshot'       => 'https://api.themeisle.com/sites/wp-content/uploads/2020/05/neve-food-magazine.jpg',
+				'title'            => 'Food Magazine',
+				'keywords'         => [ 'food', 'blog' ],
+				'unsplash_gallery' => 'https://unsplash.com/collections/8789337/neve-food-magazine',
+			],
+			'neve-yoga-studio-gutenberg'      => [
+				'url'              => 'https://demosites.io/yoga-studio-gb/',
+				'screenshot'       => 'https://api.themeisle.com/sites/wp-content/uploads/2020/05/neve-yoga.jpg',
+				'title'            => 'Yoga Studio',
+				'keywords'         => [ 'wellness', 'responsive', 'minimal' ],
+				'unsplash_gallery' => 'https://unsplash.com/collections/8778361/yoga-studio/fd02983f43e4d1b4f9ea9651d1fd8233',
+			],
 			'neve-fashion-magazine-gutenberg' => [
 				'url'        => 'https://demosites.io/fashion-magazine-gb/',
 				'title'      => 'Fashion Magazine',
 				'screenshot' => 'https://api.themeisle.com/sites/wp-content/uploads/2020/05/neve-fashion-mag.jpg',
 				'keywords'   => [ 'fashion', 'responsive', 'blog' ],
+			],
+			'neve-winery-gutenberg'           => [
+				'url'              => 'https://demosites.io/winery-gb/',
+				'screenshot'       => 'https://api.themeisle.com/sites/wp-content/uploads/2020/05/neve-winery.png',
+				'title'            => 'Winery - Wine Shop',
+				'keywords'         => [ 'food', 'ecommerce' ],
+				'unsplash_gallery' => 'https://unsplash.com/collections/8821407/winery',
 			],
 
 		];
