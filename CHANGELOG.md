@@ -2,7 +2,6 @@
 
 - [Feat] Three layouts for the header builder Search Icon component ( Canvas, Minimal and Float above Header )
 - [Feat] Styling controls for the header builder Search Icon and Search Form components
-- [Feat] Support for post formats
 - [Feat] New neve_before_header_wrapper_hook and neve_after_header_wrapper_hook hooks
 - [Fix] Dismissable notice for contributing to Neve
 - [Fix] Support for Main image width and Thumbnail width options in WooCommerce ( to fix blurred images on the Shop page )
