@@ -1,9 +1,15 @@
-.hfg-item-last .menu-item-nav-search.minimal .nv-nav-search {
+.nv-search-icon-component {
+  display: flex;
+}
+
+.hfg-item-last:not(.hfg-item-first) .menu-item-nav-search.minimal .nv-nav-search {
   left: unset;
   right: 0;
 }
 
 .menu-item-nav-search {
+  flex-grow: 0;
+
   .search-form {
 	input[type=submit] {
 	  &:hover {
@@ -12,8 +18,18 @@
 	}
   }
 
+  .close-responsive-search {
+	background-color: transparent !important;
+	border: none !important;
+	svg {
+	  min-width: 25px;
+	  min-height: 25px;
+	}
+  }
+
   &.minimal {
 	position: relative;
+
 	.nv-nav-search {
 	  right: auto;
 	  left: 0;
@@ -26,8 +42,11 @@
 	  top: -100%;
 	  left: 0;
 	  display: flex;
-	  flex-direction: row-reverse;
 	  align-items: center;
+	}
+
+	.nv-search-icon-wrap {
+	  display: none;
 	}
 
 	.form-wrap {
@@ -39,8 +58,9 @@
 	  }
 	}
 
-	.close-container {
+	.close-responsive-search {
 	  display: flex;
+	  align-items: center;
 	}
 
 	&.active {
@@ -99,7 +119,7 @@
 }
 
 .nv-nav-search {
-  pointer-events: none;
+  visibility: hidden;
   opacity: 0;
   transition: $transition_med;
   position: absolute;
@@ -113,8 +133,8 @@
   @include soft-box-shadow();
 
   .menu-item-nav-search.active & {
-	pointer-events: initial;
 	opacity: 1;
+	visibility: visible;
   }
 
   form {
@@ -132,20 +152,12 @@
   }
 }
 
-a.button.close-responsive-search {
-  @extend %nv-button;
-  @extend %nv-button-secondary;
-}
-
 .nav-clickaway-overlay {
   position: fixed;
   width: 100%;
   left: 0;
   right: 0;
   top: 0;
-  @if ($debug == 'true') {
-	background-color: rebeccapurple;
-  }
   z-index: 90;
   height: 100vh;
 }

@@ -291,7 +291,7 @@ class SearchResponsive extends Abstract_Component {
 							font-size: {{value}}px;
 							padding-right: calc({{value}}px + 5px);
 						}
-						body ' . $this->default_selector . ' .nv-search-icon-wrap .nv-icon svg {
+						body ' . $this->default_selector . ' .nv-search-icon-wrap .nv-icon svg, body ' . $this->default_selector . ' .close-responsive-search svg {
 							width: {{value}}px;
 							height: {{value}}px;
 						}
@@ -498,6 +498,10 @@ class SearchResponsive extends Abstract_Component {
 	 * @access  public
 	 */
 	public function add_style( array $css_array = array() ) {
+		if ( is_admin_bar_showing() ) {
+			wp_add_inline_style( 'neve-style', 'body.admin-bar .floating .nv-nav-search {margin-top: 32px;}' );
+		}
+
 		$css_array[] = [
 			Dynamic_Selector::KEY_SELECTOR => $this->default_selector . ' .nv-search > svg',
 			Dynamic_Selector::KEY_RULES    => [
@@ -613,6 +617,24 @@ class SearchResponsive extends Abstract_Component {
 					Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::FIELD_FONT_SIZE ),
 				],
 				Config::CSS_PROP_HEIGHT     => [
+					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::FIELD_FONT_SIZE,
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_SUFFIX        => 'px',
+					Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::FIELD_FONT_SIZE ),
+				],
+			],
+		];
+
+		$css_array[] = [
+			Dynamic_Selector::KEY_SELECTOR => $this->default_selector . ' .close-responsive-search svg',
+			Dynamic_Selector::KEY_RULES    => [
+				Config::CSS_PROP_WIDTH  => [
+					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::FIELD_FONT_SIZE,
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_SUFFIX        => 'px',
+					Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::FIELD_FONT_SIZE ),
+				],
+				Config::CSS_PROP_HEIGHT => [
 					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::FIELD_FONT_SIZE,
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 					Dynamic_Selector::META_SUFFIX        => 'px',
