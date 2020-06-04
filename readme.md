@@ -19,6 +19,24 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
 
+##### [Version 2.7.2](https://github.com/Codeinwp/neve/compare/v2.7.1...v2.7.2) (2020-06-04)
+
+- [Feat] Three layouts for the header builder Search Icon component ( Canvas, Minimal and Float above Header )
+- [Feat] Styling controls for the header builder Search Icon and Search Form components
+- [Feat] Support for post formats
+- [Feat] New neve_before_header_wrapper_hook and neve_after_header_wrapper_hook hooks
+- [Fix] Dismissable notice for contributing to Neve
+- [Fix] Support for Main image width and Thumbnail width options in WooCommerce ( to fix blurred images on the Shop page )
+- [Fix] Wrong default padding for buttons
+- [Fix] Wrong content width for grouped blocks
+- [Fix] Neve Options page not loading in Microsoft Edge v18
+- [Fix] Update list of Google Fonts
+- [Fix] Google lighthouse reports not unique ID attribute
+- [Fix] Live refresh with the Primary Menu hover skin option
+
+
+
+
 ##### [Version 2.7.1](https://github.com/Codeinwp/neve/compare/v2.7.0...v2.7.1) (2020-05-21)
 
 - [Feat] Replaced Skin Mode control with a Text Color control in the header builder rows
