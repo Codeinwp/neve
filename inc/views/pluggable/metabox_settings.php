@@ -7,8 +7,10 @@
 
 namespace Neve\Views\Pluggable;
 
+use Neve\Core\Dynamic_Css;
 use Neve\Core\Settings\Config;
 use Neve\Core\Settings\Mods;
+use Neve\Core\Styles\Dynamic_Selector;
 
 /**
  * Class Metabox_Settings
@@ -133,7 +135,25 @@ class Metabox_Settings {
 		if ( $post_id === false ) {
 			return '';
 		}
+
 		return $meta_value;
+	}
+
+	/**
+	 * Return container type for the selected post.
+	 *
+	 * @return string
+	 */
+	public function get_current_layout() {
+		$container = $this->get_container_type();
+
+		// Check customizer container type based on the context.
+		if ( empty( $container ) ) {
+			global $post_type;
+			$container = $post_type === 'post' ? Mods::get( Config::MODS_SINGLE_POST_CONTAINER_STYLE, 'contained' ) : Mods::get( Config::MODS_DEFAULT_CONTAINER_STYLE, 'contained' );
+		}
+
+		return $container;
 	}
 
 	/**
@@ -141,13 +161,9 @@ class Metabox_Settings {
 	 */
 	public function editor_content_width() {
 		$meta_value = $this->get_content_width();
-		$container  = $this->get_container_type();
+		$container  = $this->get_current_layout();
 
-		// Check customizer container type based on the context.
-		if ( empty( $container ) ) {
-			global $post_type;
-			$container = $post_type === 'post' ? Mods::get( Config::MODS_SINGLE_POST_CONTAINER_STYLE, 'contained' ) : Mods::get( Config::MODS_DEFAULT_CONTAINER_STYLE, 'contained' );
-		}
+
 		// If contained, we set the block max-width based on the desktop container width.
 		if ( $container === 'contained' ) {
 			$editor_width = Mods::get( Config::MODS_CONTAINER_WIDTH );
@@ -160,7 +176,6 @@ class Metabox_Settings {
 			// For full-width container, we use the content percent value.
 			$editor_width_normal = ( empty( $meta_value ) ? 100 : $meta_value ) . '%';
 		}
-
 
 
 		$style = sprintf(
@@ -191,31 +206,56 @@ class Metabox_Settings {
 	 * Add content width.
 	 */
 	public function content_width() {
-		$meta_value = $this->get_content_width();
+		$meta_value = (int) $this->get_content_width();
 
 		if ( empty( $meta_value ) ) {
 			return;
 		}
 
-		$sidebar_width = 100 - absint( $meta_value );
-
+		$sidebar_width   = 100 - absint( $meta_value );
+		$container       = $this->get_current_layout();
+		$container_class = $container === 'contained' ? ' .container ' : ' .container-fluid ';
 		// Add the `!important` if in customizer, so that the live refresh doesn't affect this.
 		$important = '';
 		if ( is_customize_preview() ) {
 			$important = '!important';
 		}
+		$max_width = Mods::to_json( Config::MODS_CONTAINER_WIDTH );
+		$extra_css = '';
+		if ( $container === 'contained' ) {
+			$extra_css = sprintf(
+				'
+			#content.neve-main .container .alignfull > [class*="__inner-container"],#content.neve-main .alignwide > [class*="__inner-container"]{
+				max-width: %s;
+			}
+			@media(min-width: 576px){
+				#content.neve-main .container .alignfull > [class*="__inner-container"],#content.neve-main .alignwide > [class*="__inner-container"]{
+					max-width: %s;
+				}
+			}
+			',
+				( $max_width[ Dynamic_Selector::MOBILE ] - Config::CONTENT_DEFAULT_PADDING ) . 'px',
+				( $max_width[ Dynamic_Selector::TABLET ] - Config::CONTENT_DEFAULT_PADDING ) . 'px'
+			);
+		}
 
-		$style = '@media(min-width: 960px) {
-			#content.neve-main > .container > .row > .col,
-			#content.neve-main > .container-fluid > .row > .col,
-			#content.neve-main [class*="__inner-container"] > *:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.is-style-wide) { max-width: ' . absint( $meta_value ) . '%' . esc_attr( $important ) . '; }
-			#content.neve-main > .container > .row > .nv-sidebar-wrap,
-			#content.neve-main > .container > .row > .nv-sidebar-wrap.shop-sidebar,
-			#content.neve-main > .container-fluid > .row > .nv-sidebar-wrap,
-			#content.neve-main > .container-fluid > .row > .nv-sidebar-wrap.shop-sidebar { max-width: ' . absint( $sidebar_width ) . '%' . esc_attr( $important ) . '; }
-		}';
+		$desktop_value = $container === 'contained'
+			? round( ( $meta_value / 100 ) * $max_width[ Dynamic_Selector::DESKTOP ] - Config::CONTENT_DEFAULT_PADDING ) . 'px'
+			: 'calc(' . $meta_value . '% + ' . ( Config::CONTENT_DEFAULT_PADDING / 2 ) . 'px)';
 
-		wp_add_inline_style( 'neve-style', $style );
+
+		$style = $extra_css . '
+		@media(min-width: 960px) {
+			#content.neve-main ' . esc_attr( $container_class ) . '.alignfull > [class*="__inner-container"],#content.neve-main ' . esc_attr( $container_class ) . ' .alignwide > [class*="__inner-container"]{
+				max-width: ' . $desktop_value . ';
+			}
+			#content.neve-main > ' . esc_attr( $container_class ) . ' > .row > .col{ max-width: ' . absint( $meta_value ) . '%' . esc_attr( $important ) . '; }
+			#content.neve-main > ' . esc_attr( $container_class ) . ' > .row > .nv-sidebar-wrap,
+			#content.neve-main > ' . esc_attr( $container_class ) . ' > .row > .nv-sidebar-wrap.shop-sidebar { max-width: ' . absint( $sidebar_width ) . '%' . esc_attr( $important ) . '; }
+		}
+		';
+
+		wp_add_inline_style( 'neve-style', Dynamic_Css::minify_css( $style ) );
 	}
 
 	/**

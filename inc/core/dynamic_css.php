@@ -4,7 +4,9 @@
 namespace Neve\Core;
 
 
+use Neve\Core\Styles\Frontend;
 use Neve\Core\Styles\Generator;
+use Neve\Core\Styles\Gutenberg;
 
 class Dynamic_Css {
 	const FRONTEND_HANDLE = 'neve-style';
@@ -24,9 +26,6 @@ class Dynamic_Css {
 	public function init() {
 		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue' ), 100 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ), 100 );
-		$this->generator = new Generator();
-		//Legacy tweak.
-
 	}
 
 	public function legacy_style() {
@@ -62,11 +61,23 @@ class Dynamic_Css {
 			$this->legacy_style();
 		}
 
-		$style = apply_filters( 'neve_dynamic_style_output', $this->generator->generate( false, $is_for_gutenberg ) );
+		$this->generator = $is_for_gutenberg ? new Gutenberg() : new Frontend();
 
-		$style = preg_replace( '/\s+/', ' ', $style );
+		$style = apply_filters( 'neve_dynamic_style_output', $this->generator->generate() );
+
+		$style = self::minify_css( $style );
 
 		wp_add_inline_style( $is_for_gutenberg ? self::GUTENBERG_HANDLE : self::FRONTEND_HANDLE, $style );
 	}
 
+	/**
+	 * Basic CSS minification.
+	 *
+	 * @param $css
+	 *
+	 * @return string
+	 */
+	public static function minify_css( $css ) {
+		return preg_replace( '/\s+/', ' ', $css );
+	}
 }
