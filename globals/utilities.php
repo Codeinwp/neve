@@ -35,7 +35,9 @@ function neve_hooks() {
 	$hooks = array(
 		'header'     => array(
 			'neve_before_header_hook',
+			'neve_before_header_wrapper_hook',
 			'neve_after_header_hook',
+			'neve_after_header_wrapper_hook',
 		),
 		'footer'     => array(
 			'neve_before_footer_hook',
