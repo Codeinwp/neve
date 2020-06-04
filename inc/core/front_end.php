@@ -51,17 +51,6 @@ class Front_End {
 			'default-color' => apply_filters( 'neve_default_background_color', 'ffffff' ),
 		);
 
-		$post_formats = array(
-			'gallery',
-			'image',
-			'link',
-			'quote',
-			'video',
-			'audio',
-			'status',
-			'aside',
-		);
-
 		add_theme_support( 'title-tag' );
 		add_theme_support( 'post-thumbnails' );
 		add_theme_support( 'automatic-feed-links' );
@@ -78,7 +67,6 @@ class Front_End {
 		add_theme_support( 'lifterlms-sidebars' );
 		add_theme_support( 'lifterlms' );
 		add_theme_support( 'service_worker', true );
-		add_theme_support( 'post-formats', $post_formats );
 
 		add_filter( 'embed_oembed_html', array( $this, 'wrap_oembeds' ), 10, 3 );
 		add_filter( 'video_embed_html', array( $this, 'wrap_jetpack_oembeds' ), 10, 1 );
