@@ -778,6 +778,11 @@ ul[id^="nv-primary-navigation"] i {
   left: 0;
 }
 
+.primary-menu-ul li.menu-item-nav-search {
+  display: flex;
+  align-items: center;
+}
+
 .menu-item-nav-search {
   flex-grow: 0;
 }
@@ -803,6 +808,7 @@ ul[id^="nv-primary-navigation"] i {
 .menu-item-nav-search.minimal .nv-nav-search {
   left: auto;
   right: 0;
+  top: 100%;
 }
 
 .menu-item-nav-search.floating .nv-nav-search {

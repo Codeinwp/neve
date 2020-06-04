@@ -111,7 +111,7 @@ class Header extends Base_View {
 	private function get_nav_menu_search( $responsive = false ) {
 		// TODO when HFG is live we should drop this at all as we have a section for icon, or offer a way of disabling it.
 		$tag   = 'li';
-		$class = 'menu-item-nav-search';
+		$class = 'menu-item-nav-search minimal';
 		if ( $responsive === true ) {
 			$tag = 'span';
 
@@ -123,7 +123,7 @@ class Header extends Base_View {
 
 		$search     .= '<' . esc_attr( $tag ) . ' class="' . esc_attr( $class ) . '" id="' . esc_attr( $id ) . '" tabindex="0" aria-label="search">';
 		$extra_attrs = apply_filters( 'neve_search_menu_item_filter', '', self::$primary_nav_instance_no );
-		$search     .= '<a class="nv-nav-search-icon" ' . $extra_attrs . '>' . neve_search_icon() . '</a>';
+		$search     .= '<div class="nv-nav-search-icon" ' . $extra_attrs . '>' . neve_search_icon( true ) . '</div>';
 		$search     .= '<div class="nv-nav-search">';
 		if ( $responsive === true ) {
 			$search .= '<div class="container close-container">';
