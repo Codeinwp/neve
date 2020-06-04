@@ -122,7 +122,8 @@
 }
 
 .menu-item-nav-search > a {
-  display: block;
+  display: flex;
+  align-items: center;
 }
 
 .nv-nav-search {

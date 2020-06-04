@@ -884,7 +884,8 @@ ul[id^="nv-primary-navigation"] i {
 }
 
 .menu-item-nav-search > a {
-  display: block;
+  display: flex;
+  align-items: center;
 }
 
 .nv-nav-search {
