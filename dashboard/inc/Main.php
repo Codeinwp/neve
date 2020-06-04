@@ -251,10 +251,7 @@ class Main {
 
 		if ( $plugin_path ) {
 			$plugins_update = get_site_transient( 'update_plugins' );
-			$option_name    = str_replace( '-', '_', strtolower( trim( $plugin_folder ) ) );
-			$data           = get_option( $option_name . '_license_data' );
-			$valid          = isset( $data->license ) && $data->license === 'valid';
-			if ( is_plugin_active( $plugin_path ) && $valid && isset( $plugins_update->response[ $plugin_path ] ) ) {
+			if ( is_plugin_active( $plugin_path ) && isset( $plugins_update->response[ $plugin_path ] ) ) {
 				$update                          = $plugins_update->response[ $plugin_path ];
 				$notifications['neve-pro-addon'] = [
 					'text'   => sprintf(
