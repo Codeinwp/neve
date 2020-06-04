@@ -2684,7 +2684,7 @@ class Front_End {
 				'keywords'         => [ 'food', 'responsive' ],
 				'unsplash_gallery' => 'https://unsplash.com/collections/8509382/farm',
 			],
-			'neve-florist-gutenberg'		  => [
+			'neve-florist-gutenberg'          => [
 				'url'              => 'https://demosites.io/florist-gb/',
 				'screenshot'       => 'https://api.themeisle.com/sites/wp-content/uploads/2020/05/neve-florist.jpg',
 				'title'            => 'Florist',

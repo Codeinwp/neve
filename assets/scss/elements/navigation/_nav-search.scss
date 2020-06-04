@@ -7,6 +7,11 @@
   right: 0;
 }
 
+.primary-menu-ul li.menu-item-nav-search {
+  display: flex;
+  align-items: center;
+}
+
 .menu-item-nav-search {
   flex-grow: 0;
 
@@ -21,6 +26,7 @@
   .close-responsive-search {
 	background-color: transparent !important;
 	border: none !important;
+
 	svg {
 	  min-width: 25px;
 	  min-height: 25px;
@@ -33,6 +39,7 @@
 	.nv-nav-search {
 	  right: auto;
 	  left: 0;
+	  top: 100%;
 	}
   }
 
