@@ -112,6 +112,14 @@ class Page_Header extends Base_View {
 			);
 		}
 
+		if ( class_exists( 'WooCommerce' ) && function_exists( 'is_wc_endpoint_url' ) && is_wc_endpoint_url() ) {
+			$endpoint       = WC()->query->get_current_endpoint();
+			$endpoint_title = WC()->query->get_endpoint_title( $endpoint );
+			return array(
+				'string' => $endpoint_title,
+			);
+		}
+
 		return array();
 	}
 

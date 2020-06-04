@@ -212,7 +212,7 @@ class Dynamic_Selector {
 			$rules_selector = '';
 			foreach ( $props as $css_prop => $meta ) {
 				$value = $this->get_value( $meta );
-				if ( $value === false ) {
+				if ( $value === false || $value === null || $value === '' ) {
 					continue;
 				}
 				$rules_selector .= Css_Prop::transform( $css_prop, $value, $meta, $this->get_device() );

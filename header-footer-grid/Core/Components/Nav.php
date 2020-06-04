@@ -116,11 +116,10 @@ class Nav extends Abstract_Component {
 				'conditional_header'    => true,
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
-					[
-						'selector' => $this->default_typography_selector,
-						'prop'     => 'color',
-						'fallback' => 'inherit',
-					],
+					'template' =>
+					'.builder-item--' . $this->get_id() . ' .nav-menu-primary > .primary-menu-ul li:not(.current_page_item):not(.woocommerce-mini-cart-item) > a {
+						color: {{value}};
+					}',
 				],
 			]
 		);
@@ -138,11 +137,10 @@ class Nav extends Abstract_Component {
 				'conditional_header'    => true,
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
-					[
-						'selector' => '.builder-item--' . $this->get_id() . ' li.current_page_item > a',
-						'prop'     => 'color',
-						'fallback' => 'inherit',
-					],
+					'template' => '
+					.builder-item--' . $this->get_id() . ' .nav-menu-primary > .primary-menu-ul li.current_page_item > a {
+						color: {{value}}!important;
+					}',
 				],
 			]
 		);
@@ -160,16 +158,13 @@ class Nav extends Abstract_Component {
 				'conditional_header'    => true,
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
-					[
-						'selector' => '.builder-item--' . $this->get_id() . ' .nav-menu-primary > .primary-menu-ul li:not(.woocommerce-mini-cart-item) > a:after',
-						'prop'     => 'background-color',
-						'fallback' => 'inherit',
-					],
-					[
-						'selector' => '.builder-item--' . $this->get_id() . ' .nav-menu-primary:not(.style-full-height) > .primary-menu-ul li:not(.woocommerce-mini-cart-item):hover > a',
-						'prop'     => 'color',
-						'fallback' => 'inherit',
-					],
+					'template' => '
+					.builder-item--' . $this->get_id() . ' .nav-menu-primary > .primary-menu-ul li:not(.woocommerce-mini-cart-item) > a:after {
+						background-color: {{value}}!important;
+					}
+					.builder-item--' . $this->get_id() . ' .nav-menu-primary:not(.style-full-height) > .primary-menu-ul li:not(.woocommerce-mini-cart-item):hover > a {
+						color: {{value}}!important;
+					}',
 				],
 			]
 		);
@@ -356,7 +351,7 @@ class Nav extends Abstract_Component {
 		];
 		if ( SettingsManager::get_instance()->get( $this->get_id() . '_style' ) !== 'style-full-height' ) {
 			$css_array[] = [
-				Dynamic_Selector::KEY_SELECTOR => $selector . 'li:not(.woocommerce-mini-cart-item):hover > a',
+				Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .nav-menu-primary:not(.style-full-height) > .primary-menu-ul li:not(.woocommerce-mini-cart-item):hover > a',
 				Dynamic_Selector::KEY_RULES    => [
 					Config::CSS_PROP_COLOR => [
 						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::HOVER_COLOR_ID,
@@ -375,7 +370,7 @@ class Nav extends Abstract_Component {
 			];
 		}
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => $selector . 'li.current-menu-item > a',
+			Dynamic_Selector::KEY_SELECTOR => $selector . 'li.current-menu-item > a,' . $selector . 'li.current_page_item > a',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_COLOR => [
 					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::ACTIVE_COLOR_ID,

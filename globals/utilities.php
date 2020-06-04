@@ -35,7 +35,9 @@ function neve_hooks() {
 	$hooks = array(
 		'header'     => array(
 			'neve_before_header_hook',
+			'neve_before_header_wrapper_hook',
 			'neve_after_header_hook',
+			'neve_after_header_wrapper_hook',
 		),
 		'footer'     => array(
 			'neve_before_footer_hook',
@@ -149,22 +151,24 @@ function neve_cart_icon( $echo = false, $size = 15, $cart_icon = '' ) {
 /**
  * Search Icon
  *
+ * @param bool $is_link should be wrapped in A tag.
  * @param bool $echo should be echoed.
  * @param int  $size icon size.
  * @param bool $amp_ready Should we add the AMP binding.
  *
  * @return string
  */
-function neve_search_icon( $echo = false, $size = 15, $amp_ready = false ) {
+function neve_search_icon( $is_link = false, $echo = false, $size = 15, $amp_ready = false ) {
 
 	$amp_state = '';
 	if ( $amp_ready ) {
 		$amp_state = ' on="tap:nv-search-icon-responsive.toggleClass(class=\'active\')" role="button" tabindex="0" ';
 	}
-
-	$svg = '<span class="nv-icon nv-search" ' . $amp_state . '>
+	$start_tag = $is_link ? 'a href="#"' : 'div';
+	$end_tag   = $is_link ? 'a' : 'div';
+	$svg       = '<' . $start_tag . ' class="nv-icon nv-search" ' . $amp_state . '>
 				<svg width="' . $size . '" height="' . $size . '" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1216 832q0-185-131.5-316.5t-316.5-131.5-316.5 131.5-131.5 316.5 131.5 316.5 316.5 131.5 316.5-131.5 131.5-316.5zm512 832q0 52-38 90t-90 38q-54 0-90-38l-343-342q-179 124-399 124-143 0-273.5-55.5t-225-150-150-225-55.5-273.5 55.5-273.5 150-225 225-150 273.5-55.5 273.5 55.5 225 150 150 225 55.5 273.5q0 220-124 399l343 343q37 37 37 90z"/></svg>
-			</span>';
+			</' . $end_tag . '>';
 	if ( $echo === false ) {
 		return $svg;
 	}
@@ -365,16 +369,26 @@ function neve_get_google_fonts() {
 			'Bahiana',
 			'Bahianita',
 			'Bai Jamjuree',
+			'Balsamiq Sans',
 			'Baloo',
+			'Baloo 2',
 			'Baloo Bhai',
+			'Baloo Bhai 2',
 			'Baloo Bhaijaan',
 			'Baloo Bhaina',
+			'Baloo Bhaina 2',
 			'Baloo Chettan',
+			'Baloo Chettan 2',
 			'Baloo Da',
+			'Baloo Da 2',
 			'Baloo Paaji',
+			'Baloo Paaji 2',
 			'Baloo Tamma',
+			'Baloo Tamma 2',
 			'Baloo Tammudu',
+			'Baloo Tammudu 2',
 			'Baloo Thambi',
+			'Baloo Thambi 2',
 			'Balthazar',
 			'Bangers',
 			'Barlow',
@@ -392,6 +406,8 @@ function neve_get_google_fonts() {
 			'Belgrano',
 			'Bellefair',
 			'Belleza',
+			'Bellota',
+			'Bellota Text',
 			'BenchNine',
 			'Bentham',
 			'Berkshire Swash',
@@ -435,6 +451,7 @@ function neve_get_google_fonts() {
 			'Caesar Dressing',
 			'Cagliostro',
 			'Cairo',
+			'Caladea',
 			'Calistoga',
 			'Calligraffitti',
 			'Cambay',
@@ -482,6 +499,7 @@ function neve_get_google_fonts() {
 			'Coiny',
 			'Combo',
 			'Comfortaa',
+			'Comic Neue',
 			'Coming Soon',
 			'Concert One',
 			'Condiment',
@@ -498,6 +516,7 @@ function neve_get_google_fonts() {
 			'Cormorant Unicase',
 			'Cormorant Upright',
 			'Courgette',
+			'Courier Prime',
 			'Cousine',
 			'Coustard',
 			'Covered By Your Grace',
@@ -512,6 +531,7 @@ function neve_get_google_fonts() {
 			'Cute Font',
 			'Cutive',
 			'Cutive Mono',
+			'DM Mono',
 			'DM Sans',
 			'DM Serif Display',
 			'DM Serif Text',
@@ -620,6 +640,7 @@ function neve_get_google_fonts() {
 			'Galindo',
 			'Gamja Flower',
 			'Gayathri',
+			'Gelasio',
 			'Gentium Basic',
 			'Gentium Book Basic',
 			'Geo',
@@ -628,6 +649,7 @@ function neve_get_google_fonts() {
 			'Germania One',
 			'Gidugu',
 			'Gilda Display',
+			'Girassol',
 			'Give You Glory',
 			'Glass Antiqua',
 			'Glegoo',
@@ -636,6 +658,7 @@ function neve_get_google_fonts() {
 			'Gochi Hand',
 			'Gorditas',
 			'Gothic A1',
+			'Gotu',
 			'Goudy Bookletter 1911',
 			'Graduate',
 			'Grand Hotel',
@@ -694,6 +717,9 @@ function neve_get_google_fonts() {
 			'Indie Flower',
 			'Inika',
 			'Inknut Antiqua',
+			'Inria Sans',
+			'Inria Serif',
+			'Inter',
 			'Irish Grover',
 			'Istok Web',
 			'Italiana',
@@ -709,6 +735,7 @@ function neve_get_google_fonts() {
 			'Jomolhari',
 			'Josefin Sans',
 			'Josefin Slab',
+			'Jost',
 			'Joti One',
 			'Jua',
 			'Judson',
@@ -823,6 +850,7 @@ function neve_get_google_fonts() {
 			'Mallanna',
 			'Mandali',
 			'Manjari',
+			'Manrope',
 			'Mansalva',
 			'Manuale',
 			'Marcellus',
@@ -955,6 +983,7 @@ function neve_get_google_fonts() {
 			'Overpass',
 			'Overpass Mono',
 			'Ovo',
+			'Oxanium',
 			'Oxygen',
 			'Oxygen Mono',
 			'PT Mono',
@@ -1102,6 +1131,7 @@ function neve_get_google_fonts() {
 			'Secular One',
 			'Sedgwick Ave',
 			'Sedgwick Ave Display',
+			'Sen',
 			'Sevillana',
 			'Seymour One',
 			'Shadows Into Light',
@@ -1141,6 +1171,7 @@ function neve_get_google_fonts() {
 			'Source Sans Pro',
 			'Source Serif Pro',
 			'Space Mono',
+			'Spartan',
 			'Special Elite',
 			'Spectral',
 			'Spectral SC',
@@ -1217,6 +1248,7 @@ function neve_get_google_fonts() {
 			'Varela Round',
 			'Vast Shadow',
 			'Vesper Libre',
+			'Viaoda Libre',
 			'Vibes',
 			'Vibur',
 			'Vidaloka',

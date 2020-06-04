@@ -1261,3 +1261,22 @@ Starter Sites screenshots resources:
 - Resume 2
 * https://mystock.themeisle.com/photo/browser-tabs/
 * https://stocksnap.io/photo/man-interior-BXO1M5UBLM
+
+- Leather Shop
+* https://stocksnap.io/photo/bag-leather-DQCQ6W96UC
+* https://stocksnap.io/photo/brown-leather-9YGBJUD1FY
+* https://stocksnap.io/photo/shoes-shoelace-G2QXOYC0UN
+* https://stocksnap.io/photo/brown-leather-84G6CURMJ3
+* https://stocksnap.io/photo/guy-man-YK0PRWX6MC
+
+- Public Notary
+* https://mystock.themeisle.com/photo/vatican-streets/
+* https://mystock.themeisle.com/photo/scale-model-of-a-modern-building/
+
+- Pharmacy
+* https://stocksnap.io/photo/pills-medicine-I4P7JN8SCN
+* https://mystock.themeisle.com/photo/blox-building-in-copenhagen/
+
+- Investment Consulting
+* https://stocksnap.io/photo/man-outside-HBDZWHMZ6K
+* https://mystock.themeisle.com/photo/writers/

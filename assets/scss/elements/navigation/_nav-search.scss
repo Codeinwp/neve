@@ -1,61 +1,119 @@
-.menu-item-nav-search.responsive-nav-search .nv-nav-search {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  width: 100%;
+.nv-search-icon-component {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #fff;
-  .search-submit {
-    display: block;
-  }
-  form {
-    position: relative;
-    width: 75%;
-    .nv-search-icon-wrap {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      text-align: center;
-      line-height: 35px;
-      width: 45px;
-      z-index: 3;
-      cursor: pointer;
-      pointer-events: none;
-      color: $muted-white-med;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    input[type="search"] {
-      width: 100%;
-      padding: 8px 45px 7px 12px;
-    }
-    input[type="submit"] {
-      top: 0;
-      right: 0;
-      bottom: 0;
-      position: absolute;
-      color: transparent;
-      background: 0 0;
-      z-index: 2;
-      width: 45px;
-      border: 0;
-      padding: 8px 12px 7px;
-      &:hover {
-        background-color: #eee;
-      }
-    }
-  }
 }
 
-.close-container {
-  position: absolute;
-  top: $spacing-lg;
+.hfg-item-last:not(.hfg-item-first) .menu-item-nav-search.minimal .nv-nav-search {
+  left: unset;
+  right: 0;
+}
+
+.primary-menu-ul li.menu-item-nav-search {
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
+}
+
+.menu-item-nav-search {
+  flex-grow: 0;
+
+  .search-form {
+	input[type=submit] {
+	  &:hover {
+		background-color: transparent;
+	  }
+	}
+  }
+
+  .close-responsive-search {
+	background-color: transparent !important;
+	border: none !important;
+
+	svg {
+	  min-width: 25px;
+	  min-height: 25px;
+	}
+  }
+
+  &.minimal {
+	position: relative;
+
+	.nv-nav-search {
+	  right: auto;
+	  left: 0;
+	  top: 100%;
+	}
+  }
+
+  &.floating {
+	.nv-nav-search {
+	  position: fixed;
+	  top: -100%;
+	  left: 0;
+	  display: flex;
+	  align-items: center;
+	}
+
+	.nv-search-icon-wrap {
+	  display: none;
+	}
+
+	.form-wrap {
+	  flex-grow: 1;
+	  margin-right: 20px;
+
+	  form {
+		width: 100%;
+	  }
+	}
+
+	.close-responsive-search {
+	  display: flex;
+	  align-items: center;
+	}
+
+	&.active {
+	  .nv-nav-search {
+		top: 0;
+	  }
+	}
+
+	.search-form input[type=search] {
+	  width: 100%;
+	}
+  }
+
+  &.canvas .nv-nav-search {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #fff;
+
+	.close-container {
+	  position: absolute;
+	  top: $spacing-lg;
+	  text-align: right;
+	}
+
+	.search-submit {
+	  display: block;
+	}
+
+	.form-wrap {
+	  position: absolute;
+	}
+
+	form {
+	  position: relative;
+
+	  input[type="search"] {
+		width: 100%;
+	  }
+	}
+  }
+
 }
 
 .menu-item-nav-search {
@@ -64,11 +122,12 @@
 }
 
 .menu-item-nav-search > a {
-  display: block;
+  display: flex;
+  align-items: center;
 }
 
 .nv-nav-search {
-  pointer-events: none;
+  visibility: hidden;
   opacity: 0;
   transition: $transition_med;
   position: absolute;
@@ -80,26 +139,25 @@
   cursor: default;
   z-index: 100;
   @include soft-box-shadow();
-  .menu-item-nav-search.active & {
-    pointer-events: initial;
-    opacity: 1;
-  }
-  form {
-    display: block;
-    label {
-      display: inline;
-      margin: 0;
-      input {
-        width: 200px;
-        margin: 0;
-      }
-    }
-  }
-}
 
-a.button.close-responsive-search {
-  @extend %nv-button;
-  @extend %nv-button-secondary;
+  .menu-item-nav-search.active & {
+	opacity: 1;
+	visibility: visible;
+  }
+
+  form {
+	display: block;
+
+	label {
+	  display: inline;
+	  margin: 0;
+
+	  input {
+		width: 200px;
+		margin: 0;
+	  }
+	}
+  }
 }
 
 .nav-clickaway-overlay {
@@ -108,20 +166,9 @@ a.button.close-responsive-search {
   left: 0;
   right: 0;
   top: 0;
-  @if ($debug == 'true') {
-    background-color: rebeccapurple;
-  }
   z-index: 90;
   height: 100vh;
 }
 
-ul[id^="nv-primary-navigation"] .menu-item-nav-search:not(.responsive-nav-search) {
-  display: none;
-}
-
 @mixin nav-search--laptop() {
-  .row ul[id^="nv-primary-navigation"] .menu-item-nav-search:not(.responsive-nav-search) {
-    display: block;
-  }
-
 }

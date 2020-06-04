@@ -1,5 +1,5 @@
 /* global neveDash */
-import {send} from '../utils/rest';
+import {send, get} from '../utils/rest';
 import Toast from './Toast';
 import classnames from 'classnames';
 import {fetchOptions} from '../utils/rest';
@@ -10,7 +10,7 @@ const {Fragment, useState} = wp.element;
 const {withDispatch, withSelect} = wp.data;
 const {compose} = wp.compose;
 
-const LicenseCard = ({isVisible, setSettings, changeLicense, license}) => {
+const LicenseCard = ({isVisible, setSettings, changeLicense, license, refreshSites}) => {
 	const {proApi} = neveDash;
 	const [ key, setKey ] = useState(license && 'valid' === license.valid ? license.key || '' : '');
 	const [ status, setStatus ] = useState(false);
@@ -35,10 +35,13 @@ const LicenseCard = ({isVisible, setSettings, changeLicense, license}) => {
 			setKey('activate' === toDo ? key : '');
 			setToast(response.message);
 			setStatus(false);
-			changeLicense(response.license);
-			fetchOptions().then(r => {
-				setSettings(r);
-			});
+			if ( response.license ) {
+				changeLicense(response.license);
+				fetchOptions().then(r => {
+					setSettings(r);
+					refreshSites();
+				});
+			}
 		});
 	};
 
@@ -121,10 +124,19 @@ const LicenseCard = ({isVisible, setSettings, changeLicense, license}) => {
 export default compose(
 	withDispatch(dispatch => {
 		const {changeLicense, setSettings} = dispatch('neve-dashboard');
+		const {refreshSites} = dispatch('neve-onboarding');
 		return {
 			setSettings: (object) => setSettings(object),
 			changeLicense: data => {
 				changeLicense(data);
+			},
+			refreshSites: () => {
+				get( neveDash.onboarding.root + '/refresh_sites_data' ).then( r => {
+					if ( ! r.success || ! r.data ) {
+						return false;
+					}
+					refreshSites(r.data);
+				} );
 			}
 		};
 	}),

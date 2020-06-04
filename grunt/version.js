@@ -25,4 +25,12 @@ module.exports = {
 		},
 		src: 'functions.php'
 	},
+	packageVersion: {
+		options: {
+			pkg: 'vendor/codeinwp/themeisle-sdk/composer.json',
+			release: 'patch',
+			prefix: '\\.*\\$themeisle_sdk_version\.*\\s=\.*\\s\''
+		},
+		src: 'vendor/codeinwp/themeisle-sdk/load.php'
+	}
 };

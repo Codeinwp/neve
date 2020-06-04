@@ -24,6 +24,7 @@ export const initNavigation = ()=> {
 	if ( isIe() === true ) {
 		handleIeDropdowns();
 	}
+	window.HFG.initSearch = function() { handleSearch(); };
 };
 
 /**
@@ -91,12 +92,11 @@ function handleMobileDropdowns() {
 function handleSearch() {
 	let navSearch = document.querySelectorAll( '.nv-nav-search' ),
 			navItem = document.querySelectorAll( '.menu-item-nav-search' ),
-			close = document.querySelectorAll( '.close-responsive-search' ),
-			html = document.querySelector( 'html' );
+			close = document.querySelectorAll( '.close-responsive-search' );
 	// Handle search opening.
 	neveEach( navItem, (searchItem) => {
 		searchItem.addEventListener( 'click', (e) => {
-			e.stopPropagation();
+		  	e.preventDefault();e.stopPropagation();
 			toggleClass( searchItem, 'active' );
 			searchItem.querySelector( '.search-field' ).focus();
 			if ( !isMobile() ) {
@@ -164,7 +164,7 @@ function createNavOverlay(item, classToRemove, multiple = false) {
 
 	navClickaway.addEventListener( 'click',  () => {
 		removeClass( item, classToRemove );
-		navClickaway.parentNode.removeChild( navClickaway );
+	  	navClickaway.parentNode.removeChild( navClickaway );
 	} );
 }
 

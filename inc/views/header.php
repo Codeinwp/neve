@@ -16,11 +16,25 @@ use HFG\Core\Components\Nav;
  */
 class Header extends Base_View {
 	/**
+	 * Nav instance number
+	 *
+	 * @var int
+	 */
+	static $primary_nav_instance_no = 1;
+	/**
 	 * Add hooks for the front end.
 	 */
 	public function init() {
 		add_filter( 'wp_nav_menu_items', array( $this, 'add_last_menu_item' ), 10, 2 );
 		add_filter( 'wp_page_menu', array( $this, 'add_fallback_last_menu_items' ), 10, 2 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'hide_last_menu_item_search_in_sidebar' ) );
+	}
+
+	/**
+	 * Hide last menu item search in mobile sidebar.
+	 */
+	public function hide_last_menu_item_search_in_sidebar() {
+		wp_add_inline_style( 'neve-style', '.header-menu-sidebar-inner li.menu-item-nav-search { display: none; }' );
 	}
 
 	/**
@@ -97,7 +111,7 @@ class Header extends Base_View {
 	private function get_nav_menu_search( $responsive = false ) {
 		// TODO when HFG is live we should drop this at all as we have a section for icon, or offer a way of disabling it.
 		$tag   = 'li';
-		$class = 'menu-item-nav-search';
+		$class = 'menu-item-nav-search minimal';
 		if ( $responsive === true ) {
 			$tag = 'span';
 
@@ -105,9 +119,11 @@ class Header extends Base_View {
 		}
 		$search = '';
 
-		$search     .= '<' . esc_attr( $tag ) . ' class="' . esc_attr( $class ) . '" id="nv-menu-item-search" tabindex="0" aria-label="search">';
-		$extra_attrs = apply_filters( 'neve_search_menu_item_filter', '' );
-		$search     .= '<a class="nv-nav-search-icon" ' . $extra_attrs . '>' . neve_search_icon() . '</a>';
+		$id = 'nv-menu-item-search-' . self::$primary_nav_instance_no;
+
+		$search     .= '<' . esc_attr( $tag ) . ' class="' . esc_attr( $class ) . '" id="' . esc_attr( $id ) . '" tabindex="0" aria-label="search">';
+		$extra_attrs = apply_filters( 'neve_search_menu_item_filter', '', self::$primary_nav_instance_no );
+		$search     .= '<a href="#" class="nv-nav-search-icon" ' . $extra_attrs . '>' . neve_search_icon() . '</a>';
 		$search     .= '<div class="nv-nav-search">';
 		if ( $responsive === true ) {
 			$search .= '<div class="container close-container">';
@@ -117,6 +133,8 @@ class Header extends Base_View {
 		$search .= get_search_form( false );
 		$search .= '</div>';
 		$search .= '</' . esc_attr( $tag ) . '>';
+
+		self::$primary_nav_instance_no += 1;
 
 		return $search;
 	}
