@@ -14,17 +14,73 @@ const Notification = ({ data, slug }) => {
     [
       'notification',
       slug,
-      type ? type : '',
+      type && ! done ? type : '',
       {
-        'success': done,
-        'hidden': done
+        'success hidden': 'done' === done,
+		'error': 'error' === done
       }
     ]
   );
 
+  const updateEntity = () => {
+    if (! update.type) {
+      return false;
+    }
+
+    const executeAction = () => {
+      return new Promise(resolve => {
+        if ('theme' === update.type) {
+          if (! update.slug) {
+            return false;
+          }
+          wp.updates.ajax('update-theme', {
+            slug: update.slug,
+            success: (r) => {
+              resolve({success: true});
+            },
+            error: (err) => {
+              resolve({success: false});
+            }});
+        }
+
+        if ('plugin' === update.type) {
+          if (! update.slug || ! update.path) {
+            return false;
+          }
+          wp.updates.ajax('update-plugin', {
+            slug: update.slug,
+            plugin: update.path,
+            success: (r) => {
+              resolve({success: true});
+            },
+            error: (err) => {
+              resolve({ success: false });
+            }
+          });
+        }
+      });
+    };
+
+    setInProgress(true);
+    executeAction().then((r) => {
+      if ( ! r.success ) {
+		setDone('error');
+		setInProgress(false);
+        return false;
+      }
+      setDone('done');
+      setInProgress(false);
+      setHidden(true);
+
+      delete (neveDash.notifications[update.slug]);
+    });
+  };
+
   return (
     <div className={classes}>
-      {! done ? <p>{text}</p> : <p><Dashicon icon="yes"/>{__('Done!', 'neve')}</p>}
+      { ! done && <p>{text}</p> }
+      { 'done' === done && <p><Dashicon icon="yes"/>{__('Done!', 'neve')}</p>}
+      { 'error' === done && <p><Dashicon icon="no"/>{__('An error occured. Please reload the page and try again.', 'neve')}</p>}
       {(cta && ! done) &&
       <Button
         secondary
@@ -33,7 +89,7 @@ const Notification = ({ data, slug }) => {
         onClick={
           () => {
             if (update) {
-              updateEntity(update, setDone, setInProgress, setHidden);
+              updateEntity();
             }
           }
         }>
@@ -46,41 +102,5 @@ const Notification = ({ data, slug }) => {
     </div>
   );
 };
-
-const updateEntity = (args, setDone, setInProgress, setHidden) => {
-  if (! args.type) {
-    return false;
-  }
-
-  const executeAction = () => {
-    return new Promise(resolve => {
-      if ('theme' === args.type) {
-        if (! args.slug) {
-          return false;
-        }
-        wp.updates.ajax('update-theme', {slug: args.slug}).then(() => {
-          resolve('theme-updated');
-        });
-      }
-
-      if ('plugin' === args.type) {
-        if (! args.slug || ! args.path) {
-          return false;
-        }
-        wp.updates.ajax('update-plugin', {slug: args.slug, plugin: args.path}).then(() => {
-          resolve('plugin-updated');
-        });
-      }
-    });
-  };
-
-  setInProgress(true);
-  executeAction().then(() => {
-    setDone(true);
-    setInProgress(false);
-    setHidden(true);
-  });
-};
-
 
 export default Notification;
