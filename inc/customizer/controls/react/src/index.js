@@ -12,6 +12,7 @@ import { RangeControl } from './range/Control.js'
 import { ResponsiveRangeControl } from './responsive-range/Control.js'
 import { ColorControl } from './color/Control.js'
 import { PresetsSelectorControl } from './presets-selector/Control.js'
+import { MultiSelectControl } from './multiselect/Control.js'
 
 wp.customize.controlConstructor.neve_toggle_control = ToggleControl
 wp.customize.controlConstructor.neve_background_control = BackgroundControl
@@ -24,6 +25,7 @@ wp.customize.controlConstructor.neve_range_control = RangeControl
 wp.customize.controlConstructor.neve_responsive_range_control = ResponsiveRangeControl
 wp.customize.controlConstructor.neve_color_control = ColorControl
 wp.customize.controlConstructor.neve_presets_selector = PresetsSelectorControl
+wp.customize.controlConstructor.neve_multiselect = MultiSelectControl
 
 window.addEventListener( 'load', () => {
   const deviceButtons = document.querySelector(
