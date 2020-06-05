@@ -54,7 +54,7 @@ class Footer extends Abstract_Builder {
 			array(
 				'description' => sprintf(
 					/* translators: %s builder type */
-					esc_html__( 'Welcome to the %1$s builder! Click the “+” button to add a new component or follow the Quick Links.', 'neve' ),
+					esc_html__( 'Welcome to the %1$s builder! Click the "+" button to add a new component or follow the Quick Links.', 'neve' ),
 					$this->get_property( 'title' )
 				),
 				'image'       => esc_url( get_template_directory_uri() . '/header-footer-grid/assets/images/customizer/hfg.mp4' ),

@@ -58,7 +58,6 @@ class Admin {
 		);
 		add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_gutenberg_scripts' ] );
 		add_filter( 'themeisle_sdk_hide_dashboard_widget', '__return_true' );
-		add_action( 'admin_notices', [ $this, 'incompatibility_notice' ] );
 
 		if ( get_option( $this->dismiss_notice_key ) !== 'yes' ) {
 			add_action( 'admin_notices', [ $this, 'admin_notice' ] );
@@ -71,120 +70,6 @@ class Admin {
 	 */
 	public function set_props() {
 		$this->theme_args = wp_get_theme();
-		$this->theme_name = apply_filters( 'ti_wl_theme_name', $this->theme_args->__get( 'Name' ) );
-	}
-
-	/**
-	 * Renders incompatibility notice.
-	 */
-	public function incompatibility_notice() {
-		if ( ! defined( 'NEVE_PRO_VERSION' ) ) {
-			return;
-		}
-
-		$current_screen = get_current_screen();
-		if ( $current_screen->id === 'appearance_page_neve-welcome' ) {
-			return;
-		}
-
-		$plugin_name = apply_filters( 'ti_wl_plugin_name', 'Neve Pro' );
-
-		$notifications = [];
-		$theme_slug    = 'neve';
-		$themes_update = get_site_transient( 'update_themes' );
-		if ( isset( $themes_update->response[ $theme_slug ] ) ) {
-			$update                       = $themes_update->response[ $theme_slug ];
-			$notifications[ $theme_slug ] = [
-				'type' => 'theme',
-				'path' => '',
-				/* translators: %s - theme name */
-				'cta'  => sprintf( __( 'Update %1$s to v%2$s', 'neve' ), $this->theme_name, $update['new_version'] ),
-			];
-		}
-
-		$plugins_update = get_site_transient( 'update_plugins' );
-		$plugin_path    = 'neve-pro-addon/neve-pro-addon.php';
-		if ( isset( $plugins_update->response[ $plugin_path ] ) ) {
-			$update                          = $plugins_update->response[ $plugin_path ];
-			$notifications['neve-pro-addon'] = [
-				'type' => 'plugin',
-				'path' => $plugin_path,
-				/* translators: %s - pro plugin name (Neve Pro) */
-				'cta'  => sprintf( __( 'Update %1$s to v%2$s', 'neve' ), $plugin_name, $update->new_version ),
-			];
-		}
-
-		// Only show the notice when one version is mismatched.
-		if ( ! is_array( $notifications ) || empty( $notifications ) || sizeof( $notifications ) !== 1 ) {
-			return;
-		}
-
-		/* translators: 1 - Theme Name (Neve), 2 - Plugin Name (Neve Pro) */
-		$text = sprintf( __( 'It is recommended that both %1$s and %2$s are updated to the latest version to ensure optimal intercompatibility.', 'neve' ), $this->theme_name, $plugin_name );
-
-		$notice = '';
-		echo '<style type="text/css">.neve-update-notice .actions {margin: 15px 0;}</style>';
-		?>
-		<script type="text/javascript">
-			function handleNeveUpdates($) {
-				$('.neve-update-entity').each(function (index, button) {
-					$(button).on('click', function (e) {
-						e.preventDefault();
-						var self = $(this);
-						var type = self.data('type');
-						var updatingMessage = self.data('updating-string');
-						var slug = self.data('slug');
-
-						self.addClass('updating-message');
-						self.attr('disabled', 'true');
-
-						if (type === 'theme') {
-							wp.updates.ajax('update-theme', {slug}).then(() => {
-								dismissNeveIncompatibility(self);
-							});
-						} else {
-							var path = self.data('path');
-							wp.updates.ajax('update-plugin', {slug, plugin: path}).then(() => {
-								dismissNeveIncompatibility(self);
-							});
-						}
-					});
-				});
-
-				function dismissNeveIncompatibility(button) {
-					var notice = $('.neve-incompatibility-notice');
-					notice.removeClass('notice-warning').addClass('notice-success');
-					button.removeClass('updating-message').addClass('updated-message');
-					button.children('span').text('<?php echo esc_html__( 'Updated', 'neve' ); ?>');
-					setTimeout(function () {
-						$('.neve-incompatibility-notice').fadeOut();
-					}, 2000);
-				}
-			}
-
-			jQuery(document).ready(function () {
-				handleNeveUpdates(jQuery);
-			});
-		</script>
-		<?php
-
-		$notice .= '<div class="neve-incompatibility-notice notice notice-warning">';
-		$notice .= '<h3>' . __( 'Pending updates', 'neve' ) . ':' . '</h3>';
-		$notice .= '<p>' . esc_html( $text ) . '</p>';
-		$notice .= '<p class="actions">';
-		foreach ( $notifications as $slug => $args ) {
-			$notice .= '<button
-			class="neve-update-entity button button-secondary"
-			data-type="' . esc_attr( $args['type'] ) . '"
-			data-path="' . esc_attr( $args['path'] ) . '"
-			data-slug="' . esc_attr( $slug ) . '">';
-			$notice .= '<span>' . esc_html( $args['cta'] ) . '</span>';
-			$notice .= '</button>';
-		}
-		$notice .= '</p>';
-		$notice .= '</div>';
-
-		echo wp_kses_post( $notice );
 	}
 
 	/**

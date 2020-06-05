@@ -231,6 +231,10 @@ class Main {
 		$notifications = [];
 		$slug          = 'neve';
 		$themes_update = get_site_transient( 'update_themes' );
+
+		$plugin_folder = defined( 'NEVE_PRO_BASEFILE' ) ? basename( dirname( NEVE_PRO_BASEFILE ) ) : null;
+		$plugin_path   = $plugin_folder ? $plugin_folder . '/neve-pro-addon.php' : null;
+
 		if ( isset( $themes_update->response[ $slug ] ) ) {
 			$update                = $themes_update->response[ $slug ];
 			$notifications['neve'] = [
@@ -241,27 +245,37 @@ class Main {
 					'slug' => $slug,
 				],
 				'cta'    => __( 'Update Now', 'neve' ),
+				'type'   => ( $plugin_path && is_plugin_active( $plugin_path ) ) ? 'warning' : null,
 			];
 		}
 
-		$plugins_update = get_site_transient( 'update_plugins' );
-		$plugin_path    = 'neve-pro-addon/neve-pro-addon.php';
-		if ( isset( $plugins_update->response[ $plugin_path ] ) ) {
-			$update                          = $plugins_update->response[ $plugin_path ];
-			$notifications['neve-pro-addon'] = [
-				'text'   => sprintf(
-				// translators: s - Pro plugin name (Neve Pro)
-					__( 'New plugin update for %1$s! Please update to %2$s.', 'neve' ),
-					wp_kses_post( apply_filters( 'ti_wl_plugin_name', 'Neve Pro' ) ),
-					wp_kses_post( $update->new_version )
-				),
-				'update' => [
-					'type' => 'plugin',
-					'slug' => 'neve-pro-addon',
-					'path' => $plugin_path,
-				],
-				'cta'    => __( 'Update Now', 'neve' ),
-			];
+		if ( $plugin_path ) {
+			$plugins_update = get_site_transient( 'update_plugins' );
+			if ( is_plugin_active( $plugin_path ) && isset( $plugins_update->response[ $plugin_path ] ) ) {
+				$update                          = $plugins_update->response[ $plugin_path ];
+				$notifications['neve-pro-addon'] = [
+					'text'   => sprintf(
+					// translators: s - Pro plugin name (Neve Pro)
+						__( 'New plugin update for %1$s! Please update to %2$s.', 'neve' ),
+						wp_kses_post( apply_filters( 'ti_wl_plugin_name', 'Neve Pro' ) ),
+						wp_kses_post( $update->new_version )
+					),
+					'update' => [
+						'type' => 'plugin',
+						'slug' => 'neve-pro-addon',
+						'path' => $plugin_path,
+					],
+					'cta'    => __( 'Update Now', 'neve' ),
+					'type'   => 'warning',
+				];
+			}
+		}
+
+		if ( count( $notifications ) === 1 && is_plugin_active( $plugin_path ) ) {
+			foreach ( $notifications as $key => $notification ) {
+				/* translators: 1 - Theme Name (Neve), 2 - Plugin Name (Neve Pro) */
+				$notifications[ $key ]['text'] = sprintf( __( 'We recommend that both %1$s and %2$s are updated to the latest version to ensure optimal intercompatibility.', 'neve' ), wp_kses_post( $this->theme_args['name'] ), apply_filters( 'ti_wl_plugin_name', 'Neve Pro' ) );
+			}
 		}
 
 		return $notifications;

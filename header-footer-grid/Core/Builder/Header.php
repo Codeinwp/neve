@@ -58,7 +58,7 @@ class Header extends Abstract_Builder {
 			array(
 				'description' => sprintf(
 				/* translators: %s builder type */
-					esc_html__( 'Welcome to the %1$s builder! Click the “+” button to add a new component or follow the Quick Links.', 'neve' ),
+					esc_html__( 'Welcome to the %1$s builder! Click the "+" button to add a new component or follow the Quick Links.', 'neve' ),
 					$this->get_property( 'title' )
 				),
 				'image'       => esc_url( get_template_directory_uri() . '/header-footer-grid/assets/images/customizer/hfg.mp4' ),
@@ -221,7 +221,7 @@ class Header extends Abstract_Builder {
 					'image' => NEVE_ASSETS_URL . 'img/header-presets/Spaced.jpg',
 					'setup' => '{"hfg_header_layout": "{\"desktop\":{\"top\":[],\"main\":[{\"x\":0,\"y\":1,\"width\":1,\"height\":1,\"id\":\"header_search_responsive\"},{\"x\":4,\"y\":1,\"width\":4,\"height\":1,\"id\":\"logo\"},{\"x\":11,\"y\":1,\"width\":1,\"height\":1,\"id\":\"nav-icon\"}],\"bottom\":[]},\"mobile\":{\"top\":[],\"main\":[{\"x\":0,\"y\":1,\"width\":8,\"height\":1,\"id\":\"logo\"},{\"x\":8,\"y\":1,\"width\":4,\"height\":1,\"id\":\"nav-icon\"}],\"bottom\":[],\"sidebar\":[{\"x\":0,\"y\":1,\"width\":8,\"height\":1,\"id\":\"primary-menu\"}]}}","nav-icon_component_align": "right","logo_component_align": "center","header_search_responsive_icon_size":"25"}',
 				],
-			] 
+			]
 		);
 	}
 }

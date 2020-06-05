@@ -4,7 +4,7 @@ import PreviewFrame from './PreviewFrame';
 import ImportModal from './ImportModal';
 import Migration from './Migration';
 import VizSensor from 'react-visibility-sensor';
-import Fuse from 'fuse.js';
+import Fuse from 'fuse.js/dist/fuse.min';
 
 const {useState, Fragment} = wp.element;
 const {Button} = wp.components;
