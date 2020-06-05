@@ -58,6 +58,8 @@ class Css_Prop {
 			case Config::CSS_PROP_FLEX_BASIS:
 			case Config::CSS_PROP_MARGIN_LEFT:
 			case Config::CSS_PROP_MARGIN_RIGHT:
+			case Config::CSS_PROP_PADDING_LEFT:
+			case Config::CSS_PROP_PADDING_RIGHT:
 			case Config::CSS_PROP_HEIGHT:
 				$suffix = isset( $meta[ Dynamic_Selector::META_SUFFIX ] ) ? $meta[ Dynamic_Selector::META_SUFFIX ] : 'px';
 				if ( $suffix === 'responsive_suffix' ) {

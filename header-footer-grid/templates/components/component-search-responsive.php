@@ -12,6 +12,7 @@ namespace HFG;
 use HFG\Core\Components\SearchResponsive;
 
 $component_styles_array = [];
+$open                   = component_setting( SearchResponsive::OPEN_TYPE );
 
 $component_styles = '';
 if ( ! empty( $component_styles_array ) ) {
@@ -27,23 +28,23 @@ if ( neve_is_amp() ) {
 }
 ?>
 <div class="nv-search-icon-component" <?php echo wp_kses_post( $component_styles ); ?>>
-	<div class="menu-item-nav-search responsive-nav-search" id="nv-search-icon-responsive" tabindex="0">
-		<?php neve_search_icon( true, 15, ! empty( $amp_state ) ); ?>
-		<div class="nv-nav-search" tabindex="0" aria-label="search">
-			<div class="nv-nav-search">
-				<div class="container close-container">
-					<a class="button button-secondary close-responsive-search"
-					<?php
-					echo $amp_state; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-					?>
-					>
-						<?php
-						echo __( 'Close', 'neve' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-						?>
-					</a>
-				</div>
+	<div class="menu-item-nav-search <?php echo esc_attr( $open ); ?>" id="nv-search-icon-responsive" tabindex="0">
+		<?php neve_search_icon( true, true, 15, ! empty( $amp_state ) ); ?>
+		<div class="nv-nav-search" aria-label="search">
+			<div class="form-wrap <?php echo $open === 'canvas' ? 'container' : ''; ?>">
 				<?php get_search_form(); ?>
 			</div>
+			<?php if ( $open !== 'minimal' ) { ?>
+				<div class="close-container <?php echo $open === 'canvas' ? 'container' : ''; ?>">
+					<button tabindex="0" class="close-responsive-search"
+							<?php
+							echo $amp_state; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+							?>
+					>
+						<svg width="50" height="50" viewBox="0 0 20 20" fill="#555555"><path d="M14.95 6.46L11.41 10l3.54 3.54l-1.41 1.41L10 11.42l-3.53 3.53l-1.42-1.42L8.58 10L5.05 6.47l1.42-1.42L10 8.58l3.54-3.53z"/><rect/></svg>
+					</button>
+				</div>
+			<?php } ?>
 		</div>
 	</div>
 </div>

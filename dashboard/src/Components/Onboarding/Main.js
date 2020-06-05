@@ -4,7 +4,7 @@ import PreviewFrame from './PreviewFrame';
 import ImportModal from './ImportModal';
 import Migration from './Migration';
 import VizSensor from 'react-visibility-sensor';
-import Fuse from 'fuse.js';
+import Fuse from 'fuse.js/dist/fuse.min';
 
 const {useState, Fragment} = wp.element;
 const {Button} = wp.components;
@@ -12,10 +12,10 @@ const {__} = wp.i18n;
 const {withSelect, withDispatch} = wp.data;
 const {compose} = wp.compose;
 
-const Onboarding = ({editor, previewOpen, currentSiteData, importModal, isOnboarding, cancelOnboarding}) => {
+const Onboarding = ({editor, previewOpen, currentSiteData, importModal, isOnboarding, cancelOnboarding, getSites}) => {
 	const [ searchQuery, setSearchQuery ] = useState('');
 	const [ maxShown, setMaxShown ] = useState(9);
-	const {sites, upsells, migration} = neveDash.onboarding.sites || null;
+	const {sites, upsells, migration} = getSites || neveDash.onboarding.sites;
 	const tags = [
 		__('Business', 'neve'),
 		__('Ecommerce', 'neve'),
@@ -158,14 +158,16 @@ export default compose(
 			getPreviewStatus,
 			getCurrentSite,
 			getImportModalStatus,
-			getOnboardingStatus
+			getOnboardingStatus,
+			getSites
 		} = select('neve-onboarding');
 		return {
 			editor: getCurrentEditor(),
 			previewOpen: getPreviewStatus(),
 			currentSiteData: getCurrentSite(),
 			importModal: getImportModalStatus(),
-			isOnboarding: getOnboardingStatus()
+			isOnboarding: getOnboardingStatus(),
+			getSites: getSites()
 		};
 	})
 )(Onboarding);

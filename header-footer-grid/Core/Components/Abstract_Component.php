@@ -473,8 +473,7 @@ abstract class Abstract_Component implements Component {
 				'icon'    => 'editor-alignright',
 			],
 		];
-
-		if ( $this->get_id() === Button::COMPONENT_ID ) {
+		if ( strpos( $this->get_id(), Button::COMPONENT_ID ) > -1 ) {
 			$align_choices['justify'] = [
 				'tooltip' => __( 'Justify', 'neve' ),
 				'icon'    => 'editor-justify',

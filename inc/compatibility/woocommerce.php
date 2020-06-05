@@ -81,7 +81,7 @@ class Woocommerce {
 			.woocommerce a.added_to_cart,
 			.woocommerce .checkout_coupon button.button,
 			.woocommerce #review_form #respond input#submit,
-			.woocommerce .price_slider_amount button.button:not(.nv-sidebar-toggle):not(.nv-close-cart-sidebar),
+			.woocommerce .price_slider_amount button.button,
 			.woocommerce .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout),
 			.woocommerce .button.button-secondary.more-details,
 			.woocommerce-checkout #neve-checkout-coupon .woocommerce-form-coupon .form-row-last button.button',
@@ -157,6 +157,10 @@ class Woocommerce {
 
 		add_filter( 'woocommerce_product_description_heading', '__return_false' );
 		add_filter( 'woocommerce_product_additional_information_heading', '__return_false' );
+
+		// Add breadcrumbs and results count
+		add_action( 'neve_bc_count', 'woocommerce_breadcrumb' );
+		add_action( 'neve_bc_count', 'woocommerce_result_count' );
 
 		$this->edit_woocommerce_header();
 		$this->move_checkout_coupon();
@@ -294,8 +298,7 @@ class Woocommerce {
 		}
 
 		echo '<div class="nv-bc-count-wrap">';
-		woocommerce_breadcrumb();
-		woocommerce_result_count();
+		do_action( 'neve_bc_count' );
 		echo '</div>';
 
 		if ( is_product() ) {

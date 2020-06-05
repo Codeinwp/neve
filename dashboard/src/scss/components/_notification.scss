@@ -24,21 +24,49 @@
   &.info {
     background-color: $info;
     border-color: darken($info, 10%);
+	button {
+	  &:hover{
+		background-color: #ffffff;
+		color: $info;
+	  }
+	}
   }
 
   &.error {
     background-color: $error;
     border-color: darken($error, 10%);
+	button {
+	  &:hover{
+		background-color: #fff;
+		color: $error;
+	  }
+	}
   }
 
   &.warning {
     background-color: $warning;
     border-color: darken($warning, 10%);
+	color: #363636;
+	button {
+	  color: #363636;
+	  border-color: #363636;
+	  &:hover{
+		background-color: #363636;
+		color: $warning;
+		box-shadow: none;
+	  }
+	}
   }
 
   &.success {
     background-color: $success;
     border-color: darken($success, 10%);
+	button {
+	  &:hover{
+		background-color: #fff;
+		color: $success;
+	  }
+	}
   }
 
   button {
@@ -52,6 +80,12 @@
     line-height: normal;
     padding: 5px 10px;
     height: auto;
+	flex-shrink: 0;
+	&:hover {
+	  background-color: #fff;
+	  color: $blue;
+	  box-shadow: none;
+	}
     span {
       display: flex;
       align-items: center;
@@ -80,9 +114,8 @@
     align-items: center;
     font-size: 15px;
     font-weight: 600;
-    line-height: 1;
     margin: 0 10px 0;
-
+	flex-grow: 0;
     svg {
       margin-right: 5px;
     }

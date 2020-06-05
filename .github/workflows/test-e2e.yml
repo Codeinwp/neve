@@ -4,6 +4,7 @@ on:
   push:
     branches-ignore:
       - 'dependabot/**'
+      - 'master'
 
 env:
   CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -12,7 +13,7 @@ jobs:
   e2e:
     strategy:
       matrix:
-        spec: [customizer/hfg, customizer/layout, customizer/typography, editor, plugins-compatibility]
+        spec: [customizer/general, customizer/hfg, customizer/layout, customizer/typography, editor, plugins-compatibility]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

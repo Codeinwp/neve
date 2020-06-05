@@ -33,8 +33,7 @@ const ImportModal = ({setModal, editor, siteData}) => {
 
 	useEffect(function getImportData() {
 
-		// const fetchAddress = siteData['remote_url'] || siteData.url;
-		const fetchAddress = siteData.url;
+		const fetchAddress = siteData['remote_url'] || siteData.url;
 		get(`${trailingSlashIt(fetchAddress)}wp-json/ti-demo-data/data`, true, false).then(response => {
 			if (! response.ok) {
 				setError({

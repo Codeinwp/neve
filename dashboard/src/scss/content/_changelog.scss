@@ -5,6 +5,7 @@
 	font-size: 15px;
 	margin-bottom: 20px;
 	padding-left: 20px;
+
 	span {
 	  margin-right: 30px;
 	  padding: 10px 0;
@@ -25,10 +26,19 @@
 	}
   }
 
+  a {
+	text-decoration: none;
+
+	.dashicons-external {
+	  margin-right: 5px;
+	}
+  }
+
   .card {
 	background-color: transparent;
 	padding: 0;
 	border: 0;
+
 	.version {
 	  font-weight: 600;
 	}

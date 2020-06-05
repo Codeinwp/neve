@@ -12,9 +12,8 @@ namespace HFG;
 use HFG\Core\Builder\Abstract_Builder;
 use HFG\Core\Builder\Header as HeaderBuilder;
 
-$skin_mode        = row_setting( Abstract_Builder::SKIN_SETTING );
 $interaction_type = row_setting( Abstract_Builder::LAYOUT_SETTING );
-$classes          = [ 'header-menu-sidebar', 'menu-sidebar-panel', $skin_mode, $interaction_type ];
+$classes          = [ 'header-menu-sidebar', 'menu-sidebar-panel', $interaction_type ];
 $item_attributes  = apply_filters( 'neve_nav_toggle_data_attrs', '' );
 
 ?>

@@ -336,8 +336,9 @@
   margin: 0;
 }
 
-.nv-woo-filters .nv-sidebar-toggle + .woocommerce-ordering {
-  margin: 0 10px 0 0;
+.nv-woo-filters .nv-sidebar-toggle + .woocommerce-ordering select {
+  max-width: 155px;
+  padding: 2px 0;
 }
 
 .woocommerce ul.products li.product a.woocommerce-loop-product__link {
@@ -1488,6 +1489,9 @@ body.woocommerce-account .woocommerce-form-login .form-row:not(.woocommerce-form
   .woocommerce-notices-wrapper > div .button {
     margin-top: 0;
     width: auto;
+  }
+  .nv-woo-filters .nv-sidebar-toggle + .woocommerce-ordering select {
+    max-width: none;
   }
 }
 

@@ -1,3 +1,27 @@
+##### [Version 2.7.2](https://github.com/Codeinwp/neve/compare/v2.7.1...v2.7.2) (2020-06-04)
+
+- [Feat] Three layouts for the header builder Search Icon component ( Canvas, Minimal and Float above Header )
+- [Feat] Styling controls for the header builder Search Icon and Search Form components
+- [Feat] New neve_before_header_wrapper_hook and neve_after_header_wrapper_hook hooks
+- [Fix] Dismissable notice for contributing to Neve
+- [Fix] Support for Main image width and Thumbnail width options in WooCommerce ( to fix blurred images on the Shop page )
+- [Fix] Wrong default padding for buttons
+- [Fix] Wrong content width for grouped blocks
+- [Fix] Neve Options page not loading in Microsoft Edge v18
+- [Fix] Update list of Google Fonts
+- [Fix] Google lighthouse reports not unique ID attribute
+- [Fix] Live refresh with the Primary Menu hover skin option
+
+##### [Version 2.7.1](https://github.com/Codeinwp/neve/compare/v2.7.0...v2.7.1) (2020-05-21)
+
+- [Feat] Replaced Skin Mode control with a Text Color control in the header builder rows
+- [Fix] Apply row background color to menu dropdowns
+- [Fix] Filter by price widget button default background-color
+- [Fix] Make the alignment classes more generic to allow overwriting from block specific settings
+- [Fix] Clickable links in the Changelog area
+- [Fix] Neve Options page on lower resolutions
+- [Fix] Check for the Rest API endpoint before allowing users to start an import
+
 #### [Version 2.7.0](https://github.com/Codeinwp/neve/compare/v2.6.6...v2.7.0) (2020-05-13)
 
 - [Feat] Improved Neve Options page and onboarding experience
@@ -6,16 +30,16 @@
 - [Fix] Yellow background on the number of products in categories on the Shop page
 - [Fix] Secondary Menu alignment on mobile
 - New starter sites
-- Book Shop - https://themeisle.com/demo/?theme=Book%20Shop
-- Psychologist - https://themeisle.com/demo/?theme=Psychologist
-- Doctors - https://themeisle.com/demo/?theme=Doctors%202
-- Pet Shop - https://themeisle.com/demo/?theme=Pet%20Shop
-- Apparel - https://themeisle.com/demo/?theme=Apparel
-- Boat Rental - https://themeisle.com/demo/?theme=Boat%20Rental
-- Jewellery Shop - https://themeisle.com/demo/?theme=Jewellery%20Shop%202
-- Perfume Shop - https://themeisle.com/demo/?theme=Perfume%20Shop
-- Music Band - https://themeisle.com/demo/?theme=Music%20Band%202
-- Fitness Trainer - https://themeisle.com/demo/?theme=Fitness%20Trainer
+- [Book Shop](https://themeisle.com/demo/?theme=Book%20Shop)
+- [Psychologist](https://themeisle.com/demo/?theme=Psychologist)
+- [Doctors](https://themeisle.com/demo/?theme=Doctors%202)
+- [Pet Shop](https://themeisle.com/demo/?theme=Pet%20Shop)
+- [Apparel](https://themeisle.com/demo/?theme=Apparel)
+- [Boat Rental](https://themeisle.com/demo/?theme=Boat%20Rental)
+- [Jewellery Shop](https://themeisle.com/demo/?theme=Jewellery%20Shop%202)
+- [Perfume Shop](https://themeisle.com/demo/?theme=Perfume%20Shop)
+- [Music Band](https://themeisle.com/demo/?theme=Music%20Band%202)
+- [Fitness Trainer](https://themeisle.com/demo/?theme=Fitness%20Trainer)
 
 ##### [Version 2.6.6](https://github.com/Codeinwp/neve/compare/v2.6.5...v2.6.6) (2020-04-07)
 
@@ -78,8 +102,8 @@
 *  [Fix] Fixed sidebar layout not updating on single product pages [Fix] Fixed search results page sidebar when using Elementor
 *  [Fix] Fixed expanded cart positioning
 * New Starter Sites
-*  Web Agency - https://themeisle.com/demo/?theme=Web%20Agency
-*  Blogger -  https://themeisle.com/demo/?theme=Blogger
+* [ Web Agency](https://themeisle.com/demo/?theme=Web%20Agency)
+*  [Blogger](https://themeisle.com/demo/?theme=Blogger)
  
  ### v2.5.4 - 2019-12-19 
  **Changes:** 

@@ -1,6 +1,9 @@
 name: PHP Tests
 
-on: [push]
+on:
+  push:
+    branches-ignore:
+      - 'master'
 
 jobs:
   phplint:

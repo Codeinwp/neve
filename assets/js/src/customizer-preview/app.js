@@ -13,6 +13,47 @@ function addCss(id, content = '') {
   style.innerHTML = content
 }
 
+function addStyle(settingType, id, newValue, args) {
+	const map = {
+		mobile: 'max-width: 576px',
+		tablet: 'min-width: 576px',
+		desktop: 'min-width: 960px'
+	};
+
+	let style = '';
+	if( args.directional ) {
+		if( args.responsive ) {
+			for( let device in map ) {
+				let deviceStyle = args.template;
+				let suffix = newValue[device+'-unit'] || '';
+				_.each( newValue[device], function( value, direction ) {
+					let directionRegex = new RegExp( `{{value.${direction}}}`, 'g' );
+					deviceStyle = deviceStyle.replace( directionRegex, value + suffix );
+				} );
+				style += `@media (${map[device]}) {${deviceStyle}}`;
+			}
+		} else {
+			//meep - no directional unresponsive style
+		}
+		addCss( id, style )
+		return false;
+	}
+
+	const regex = new RegExp('{{value}}', 'g');
+	if (args.responsive) {
+		const template = args.template;
+		const value = JSON.parse(newValue);
+		for( let device in map ) {
+			let suffix = value[device+'-unit'] || '';
+			style += `@media (${map[device]}) {${template.replace(regex, value[device] || 'inherit')}${suffix}}`;
+		}
+	} else {
+		const value = newValue || args.fallback || 'inherit';
+		style += args.template.replace(regex, value.toString());
+	}
+	addCss(id, style);
+}
+
 /**
  * Run JS on load.
  */
@@ -20,21 +61,22 @@ window.addEventListener('load', function () {
   /**
    * Add action when Header Panel rendered by customizer.
    */
-  document.addEventListener(
-    'header_builder_panel_changed',
-    function (e) {
-      if (e.detail.partial_id === 'hfg_header_layout_partial') {
-        window.HFG.init()
-        console.log('Reinitialize HFG with sidebar.')
-        return false
-      }
-      if (e.detail.partial_id === 'nav-icon_partial') {
-        window.HFG.init(true)
-        console.log('Reinitialize HFG with skip.')
-        return false
-      }
-    }
-  )
+	document.addEventListener(
+		'header_builder_panel_changed',
+		function (e) {
+			if (e.detail.partial_id === 'hfg_header_layout_partial') {
+				window.HFG.init();
+				window.HFG.initSearch();
+				console.log('Reinitialize HFG with sidebar.');
+				return false;
+			}
+			if (e.detail.partial_id === 'nav-icon_partial') {
+				window.HFG.init(true);
+				console.log('Reinitialize HFG with skip.');
+				return false;
+			}
+		}
+	)
 
   document.addEventListener(
     'customize_control_sidebar',
@@ -66,10 +108,22 @@ window.addEventListener('load', function () {
     _.each(settings, function (args, settingId) {
       wp.customize(settingId, function (setting) {
         setting.bind(function (newValue) {
+        	// Handles new template selective refresh.
+        	if( args.additional && args.additional.template ) {
+						addStyle( settingType, settingId, newValue, args.additional );
+        		return false;
+					}
           let style = ''
           switch (settingType) {
             case 'neve_color_control':
+							if(args.additional.partial) {
+								wp.customize.selectiveRefresh.partial( args.additional.partial ).refresh();
+								return false;
+							}
               _.each(args.additional, (i) => {
+              	if( ! i.selector ) {
+              		return false;
+								}
                 newValue = newValue || i.fallback
                 style += `body ${i.selector} {
                   ${i.prop}: ${newValue} !important;
@@ -82,15 +136,11 @@ window.addEventListener('load', function () {
               	if(!newValue.colorValue && args.additional.partial ) {
 									wp.customize.selectiveRefresh.partial( args.additional.partial ).refresh();
 								}
-                style += 'body ' + args.selector + '{' +
-                  'background-image: none !important;}'
-                let color = newValue.colorValue !== 'undefined' ?
-                  newValue.colorValue :
-                  'inherit'
-                style += 'body ' + args.selector + '{' +
-                  'background-color: ' + color +
-                  ' !important; }'
-                style += args.selector + ':before{ content: none !important; }'
+                style += `body ${args.selector}{background-image: none !important;}`;
+                let color = newValue.colorValue !== 'undefined' ? newValue.colorValue : 'inherit'
+                style += `${args.selector}:before{ content: none !important;}`;
+								style += `body ${args.selector}, body ${args.selector} .primary-menu-ul .sub-menu li {background-color: ${color}!important;}`
+								style += `${args.selector} .primary-menu-ul .sub-menu, ${args.selector} .primary-menu-ul .sub-menu li {border-color: ${color}!important;}`;
                 addCss(settingId, style)
                 return false
               }
@@ -100,16 +150,17 @@ window.addEventListener('load', function () {
               }
               style += args.selector + '{'
               style += newValue.imageUrl ?
-                'background-image: url("' + newValue.imageUrl +
-                '") !important;' :
+                `background-image: url("${newValue.imageUrl}") !important;` :
                 'background-image: none !important;'
               style += newValue.fixed === true ?
                 'background-attachment: fixed !important;' :
                 'background-attachment: initial !important;'
-              style += 'background-position:' +
-                (newValue.focusPoint.x * 100).toFixed(2) + '% ' +
-                (newValue.focusPoint.y * 100).toFixed(2) +
-                '% !important;'
+              if( newValue.focusPoint && newValue.focusPoint.x && newValue.focusPoint.y ) {
+								style += 'background-position:' +
+									(newValue.focusPoint.x * 100).toFixed(2) + '% ' +
+									(newValue.focusPoint.y * 100).toFixed(2) +
+									'% !important;'
+							}
               style += 'background-size: cover !important;'
               if (!document.querySelector('.header-menu-sidebar')
               .classList
@@ -118,29 +169,19 @@ window.addEventListener('load', function () {
               }
               style += 'top: 0; bottom: 0; width: 100%; content:"";'
               style += '}'
-              let color = newValue.overlayColorValue !== 'undefined' ?
-                newValue.overlayColorValue :
-                'inherit'
-              style += args.selector + ':before { ' +
+              let color = newValue.overlayColorValue || 'unset';
+							style += `body ${args.selector}, body ${args.selector} .primary-menu-ul .sub-menu li {background-color: ${color}!important;}`
+							style += `${args.selector} .primary-menu-ul .sub-menu, ${args.selector} .primary-menu-ul .sub-menu li {border-color: ${color}!important;}`;
+							style += args.selector + ':before { ' +
                 'content: "";' +
                 'position: absolute; top: 0; bottom: 0; width: 100%;' +
-                'background-color: ' + color +
-                ' !important;' +
-                'opacity: ' + (newValue.overlayOpacity / 100) +
+                `background-color: ${color}!important;` +
+                'opacity: ' + ((newValue.overlayOpacity || 50) / 100) +
                 '!important;}'
-              style += args.selector +
-                '{ background-color: transparent !important; }'
+              style += args.selector + '{ background-color: transparent !important; }'
               addCss(settingId, style)
               break
             case '\\Neve\\Customizer\\Controls\\React\\Radio_Buttons':
-              if (args.additional && args.additional.is_for) {
-                if (args.additional.is_for === 'row_skin') {
-                  let elements = document.querySelectorAll(args.selector)
-                  removeClass(elements, 'dark-mode light-mode')
-                  addClass(elements, newValue)
-                  break
-                }
-              }
               let itemInner = document.querySelectorAll(args.selector)
               _.each(itemInner, function (item) {
                 removeClass(item.parentNode,
@@ -185,7 +226,20 @@ window.addEventListener('load', function () {
                   args.selector + '{'
                 for (let optionType in newValue[device]) {
                   if (newValue[device][optionType] !== '') {
-                    style += args.additional.prop + '-' + optionType + ':' +
+                  	let cssProp = args.additional.prop + '-' + optionType;
+                  	if( args.additional.prop === 'border-width' ) {
+											cssProp = `border-${optionType}-width`;
+										}
+                  	if( args.additional.prop === 'border-radius' ) {
+											let mapDirectionToCorners = {
+												'top': 'top-left',
+												'right': 'top-right',
+												'bottom': 'bottom-right',
+												'left': 'bottom-left'
+											};
+											cssProp = `border-${mapDirectionToCorners[optionType]}-radius`;
+										}
+                    style +=  cssProp + ':' +
                       newValue[device][optionType] +
                       newValue[device + '-unit'] + ';'
                   } else {
@@ -302,7 +356,6 @@ window.addEventListener('load', function () {
 
               break
             case '\\Neve\\Customizer\\Controls\\React\\Color':
-              console.log(newValue);
               let colorValue = newValue === '' ? 'unset' : newValue
               style +=
                 `html ${args.selector} {
