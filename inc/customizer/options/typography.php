@@ -95,6 +95,7 @@ class Typography extends Base_Customizer {
 		$this->sections_typography();
 		$this->controls_typography_general();
 		$this->controls_typography_headings();
+		$this->controls_typography_blog();
 	}
 
 	/**
@@ -109,6 +110,10 @@ class Typography extends Base_Customizer {
 			'neve_typography_headings' => array(
 				'title'    => __( 'Headings', 'neve' ),
 				'priority' => 35,
+			),
+			'neve_typography_blog' => array(
+				'title'    => __( 'Blog', 'neve' ),
+				'priority' => 45,
 			),
 		);
 
@@ -272,6 +277,87 @@ class Typography extends Base_Customizer {
 					'\Neve\Customizer\Controls\React\Typography'
 				)
 			);
+		}
+	}
+
+	/**
+	 * Add controls for blog typography.
+	 */
+	private function controls_typography_blog() {
+
+		$control_headings = array(
+			'neve_archive_typography_post_title' => array(
+				'label'          => __( 'Post title', 'neve' ),
+				'category_label' => __( 'Blog Archive', 'neve' ),
+				'priority'       => 10,
+			),
+			'neve_archive_typography_post_excerpt' => array(
+				'label'    => __( 'Post excerpt', 'neve' ),
+				'priority' => 20,
+			),
+			'neve_archive_typography_post_meta' => array(
+				'label'    => __( 'Post meta', 'neve' ),
+				'priority' => 30,
+			),
+			'neve_single_post_typography_post_title' => array(
+				'label'          => __( 'Post title', 'neve' ),
+				'category_label' => __( 'Single Post', 'neve' ),
+				'priority'       => 40,
+			),
+			'neve_single_post_typography_post_excerpt' => array(
+				'label'    => __( 'Post excerpt', 'neve' ),
+				'priority' => 50,
+			),
+			'neve_single_post_typography_post_meta' => array(
+				'label'    => __( 'Post meta', 'neve' ),
+				'priority' => 60,
+			),
+		);
+
+		foreach ( $control_headings as $control_id => $control_settings ){
+			$settings = array(
+				'label'            => $control_settings['label'],
+				'section'          => 'neve_typography_blog',
+				'priority'         => $control_settings['priority'],
+				'class'            => esc_attr( 'typography-blog-' . $control_id ),
+				'accordion'        => true,
+				'controls_to_wrap' => 1,
+				'expanded'         => false,
+			);
+			if ( array_key_exists( 'category_label', $control_settings ) ){
+				$settings['category_label'] = $control_settings['category_label'];
+			}
+
+			$this->add_control(
+				new Control(
+					$control_id . '_heading',
+					array(
+						'sanitize_callback' => 'sanitize_text_field',
+						'transport'         => $this->selective_refresh,
+					),
+					$settings,
+					'Neve\Customizer\Controls\Heading'
+				)
+			);
+
+//			$this->add_control(
+//				new Control(
+//					$control_id,
+//					[
+//						'transport' => $this->selective_refresh,
+//					],
+//					[
+//						'priority'              => $control_settings['priority'] += 1,
+//						'section'               => 'neve_typography_blog',
+//						'input_attrs'           => array(
+//							'size_units'             => [ 'em', 'px' ],
+//						),
+//						'type'                  => 'neve_typeface_control',
+////						'live_refresh_selector' => $selectors[ $heading_id ],
+//					],
+//					'\Neve\Customizer\Controls\React\Typography'
+//				)
+//			);
 		}
 	}
 
