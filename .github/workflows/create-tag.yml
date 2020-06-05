@@ -23,6 +23,7 @@ jobs:
         id: release
         run: |
           npm ci
+          composer install --no-dev --prefer-dist --no-progress --no-suggest
           npm run release
         env:
           CI: true
