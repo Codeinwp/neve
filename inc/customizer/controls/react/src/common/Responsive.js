@@ -24,7 +24,7 @@ class ResponsiveControl extends Component {
 
   render() {
     const { view } = this.state
-    const deviceMap = {
+    const devices = {
       desktop: {
         tooltip: __('Desktop', 'neve'),
         icon: 'desktop'
@@ -38,46 +38,56 @@ class ResponsiveControl extends Component {
         icon: 'smartphone'
       }
     }
+    const { excluded } = this.props
+    const deviceMap = {}
+    Object.keys(devices).map(key => {
+      if (excluded) {
+        if (excluded.includes(key)) {
+          return false
+        }
+      }
+      deviceMap[key] = devices[key]
+    })
 
     const { controlLabel, hideResponsive } = this.props
 
     return (
       <Fragment>
         <div className='neve-responsive-control-bar'>
-          {controlLabel &&
-            <span
-              className='customize-control-title'
-            >
-              {controlLabel}
-            </span>}
           {
-            !hideResponsive &&
-              <div className='floating-controls'>
-                <ButtonGroup>
-                  {Object.keys(deviceMap).map((device, index) => {
-                    const { tooltip, icon } = deviceMap[device]
-                    return (
-                      <Tooltip text={tooltip} key={index}>
-                        <Button
-                          className={(device === view
-                            ? 'active-device '
-                            : '') + device}
-                          onClick={() => {
-                            const event = new CustomEvent(
-                              'neveChangedRepsonsivePreview', {
-                                detail: device
-                              })
-                            document.dispatchEvent(event)
-                          }}
-                        >
-                          <Dashicon icon={icon} />
-                        </Button>
-                      </Tooltip>
-                    )
-                  })}
-                </ButtonGroup>
-              </div>
+            controlLabel &&
+              <span
+                className='customize-control-title'
+              >
+                {controlLabel}
+              </span>
           }
+          {!hideResponsive &&
+            <div className='floating-controls'>
+              <ButtonGroup>
+                {Object.keys(deviceMap).map((device, index) => {
+                  const { tooltip, icon } = deviceMap[device]
+                  return (
+                    <Tooltip text={tooltip} key={index}>
+                      <Button
+                        className={(device === view
+                          ? 'active-device '
+                          : '') + device}
+                        onClick={() => {
+                          const event = new CustomEvent(
+                            'neveChangedRepsonsivePreview', {
+                              detail: device
+                            })
+                          document.dispatchEvent(event)
+                        }}
+                      >
+                        <Dashicon icon={icon} />
+                      </Button>
+                    </Tooltip>
+                  )
+                })}
+              </ButtonGroup>
+            </div>}
         </div>
         {this.props.children &&
           <div className='neve-responsive-controls-content'>
@@ -105,7 +115,8 @@ ResponsiveControl.propTypes = {
   onChange: PropTypes.func,
   controlLabel: PropTypes.string,
   hideResponsive: PropTypes.bool,
-  children: PropTypes.any
+  children: PropTypes.any,
+  excluded: PropTypes.array
 }
 
 export default ResponsiveControl
