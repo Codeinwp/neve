@@ -84,8 +84,8 @@
             "homepage": "https://github.com/Codeinwp/themeisle-sdk",
             "keywords": [
                 "wordpress"
-            ],
-            "time": "2020-06-04T16:15:18+00:00"
+            ], 
+            "time": "2020-06-04T16:15:18+00:00" 
         },
         {
             "name": "codeinwp/ti-about-page",
