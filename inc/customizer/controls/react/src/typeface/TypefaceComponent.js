@@ -312,13 +312,14 @@ class TypefaceComponent extends Component {
   renderLetterSpacing() {
     const { letter_spacing_default } = this.controlParams
     const { currentDevice, letterSpacing } = this.state
+    console.log( this.state )
     return (
       <NumberControl
         className='letter-spacing'
         label={__('Letter Spacing', 'neve')}
         step={0.1}
         default={letter_spacing_default[currentDevice]}
-        value={letterSpacing[currentDevice]}
+        value={letterSpacing && letterSpacing[currentDevice] ? letterSpacing[currentDevice] : ''}
         max={20}
         min={-5}
         units={['px']}

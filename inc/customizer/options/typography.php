@@ -241,7 +241,6 @@ class Typography extends Base_Customizer {
 						'accordion'        => true,
 						'controls_to_wrap' => 1,
 						'expanded'         => false,
-						// 'expanded'         => ( $priority === 21 ),
 					),
 					'Neve\Customizer\Controls\Heading'
 				)
@@ -287,37 +286,37 @@ class Typography extends Base_Customizer {
 	private function controls_typography_blog() {
 
 		$control_headings = array(
-			'neve_archive_typography_post_title'       => array(
+			'neve_archive_typography_post_title'         => array(
 				'label'                 => __( 'Post title', 'neve' ),
 				'category_label'        => __( 'Blog Archive', 'neve' ),
 				'priority'              => 10,
 				'live_refresh_selector' => '.blog-entry-title',
 			),
-			'neve_archive_typography_post_excerpt'     => array(
+			'neve_archive_typography_post_excerpt'       => array(
 				'label'                 => __( 'Post excerpt', 'neve' ),
 				'priority'              => 20,
-				'live_refresh_selector' => '.entry-summary',
+				'live_refresh_selector' => '.blog .entry-summary, .archive .entry-summary',
 			),
-			'neve_archive_typography_post_meta'        => array(
+			'neve_archive_typography_post_meta'          => array(
 				'label'                 => __( 'Post meta', 'neve' ),
 				'priority'              => 30,
 				'live_refresh_selector' => '.nv-meta-list',
 			),
-			'neve_single_post_typography_post_title'   => array(
+			'neve_single_post_typography_post_title'     => array(
 				'label'                 => __( 'Post title', 'neve' ),
 				'category_label'        => __( 'Single Post', 'neve' ),
 				'priority'              => 40,
-				'live_refresh_selector' => '',
+				'live_refresh_selector' => '.single .entry-title',
 			),
-			'neve_single_post_typography_post_excerpt' => array(
-				'label'                 => __( 'Post excerpt', 'neve' ),
-				'priority'              => 50,
-				'live_refresh_selector' => '',
-			),
-			'neve_single_post_typography_post_meta'    => array(
+			'neve_single_post_typography_post_meta'      => array(
 				'label'                 => __( 'Post meta', 'neve' ),
+				'priority'              => 50,
+				'live_refresh_selector' => '.single .nv-meta-list',
+			),
+			'neve_single_post_typography_comments_title' => array(
+				'label'                 => __( 'Comments reply title', 'neve' ),
 				'priority'              => 60,
-				'live_refresh_selector' => '',
+				'live_refresh_selector' => '.single .comment-reply-title',
 			),
 		);
 

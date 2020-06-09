@@ -42,6 +42,14 @@ class Config {
 	const MODS_DEFAULT_CONTAINER_STYLE     = 'neve_default_container_style';
 	const MODS_SINGLE_POST_CONTAINER_STYLE = 'neve_single_post_container_style';
 
+	const MODS_TYPEFACE_ARCHIVE_POST_TITLE   = 'neve_archive_typography_post_title';
+	const MODS_TYPEFACE_ARCHIVE_POST_EXCERPT = 'neve_archive_typography_post_excerpt';
+	const MODS_TYPEFACE_ARCHIVE_POST_META    = 'neve_archive_typography_post_meta';
+
+	const MODS_TYPEFACE_SINGLE_POST_TITLE         = 'neve_single_post_typography_post_title';
+	const MODS_TYPEFACE_SINGLE_POST_META          = 'neve_single_post_typography_post_meta';
+	const MODS_TYPEFACE_SINGLE_POST_COMMENT_TITLE = 'neve_single_post_typography_comments_title';
+
 	const CSS_PROP_BORDER_COLOR               = 'border-color';
 	const CSS_PROP_BACKGROUND_COLOR           = 'background-color';
 	const CSS_PROP_COLOR                      = 'color';
@@ -87,33 +95,48 @@ class Config {
 	const CSS_SELECTOR_TYPEFACE_H4           = 'typeface_h4';
 	const CSS_SELECTOR_TYPEFACE_H5           = 'typeface_h5';
 	const CSS_SELECTOR_TYPEFACE_H6           = 'typeface_h6';
-	const CONTENT_DEFAULT_PADDING            = 30;
+
+	const CSS_SELECTOR_ARCHIVE_POST_TITLE   = 'archive_entry_title';
+	const CSS_SELECTOR_ARCHIVE_POST_EXCERPT = 'archive_entry_summary';
+	const CSS_SELECTOR_ARCHIVE_POST_META    = 'archive_entry_meta_list';
+
+	const CSS_SELECTOR_SINGLE_POST_TITLE         = 'single_post_entry_title';
+	const CSS_SELECTOR_SINGLE_POST_META          = 'single_post_entry_meta_list';
+	const CSS_SELECTOR_SINGLE_POST_COMMENT_TITLE = 'single_post_comment_title';
+
+	const CONTENT_DEFAULT_PADDING = 30;
 	/**
 	 * Holds tag->css selector mapper.
 	 *
 	 * @var array Mapper.
 	 */
 	public static $css_selectors_map = [
-		self::CSS_SELECTOR_TYPEFACE_H1           => 'h1, .single h1.entry-title',
-		self::CSS_SELECTOR_TYPEFACE_H2           => 'h2',
-		self::CSS_SELECTOR_TYPEFACE_H3           => 'h3',
-		self::CSS_SELECTOR_TYPEFACE_H4           => 'h4',
-		self::CSS_SELECTOR_TYPEFACE_H5           => 'h5',
-		self::CSS_SELECTOR_TYPEFACE_H6           => 'h6',
-		self::CSS_SELECTOR_TYPEFACE_GENERAL      => 'body, .site-title',
-		self::CSS_SELECTOR_BTN_PRIMARY_PADDING   => '.button.button-primary,  .wp-block-button.is-style-primary .wp-block-button__link',
-		self::CSS_SELECTOR_BTN_SECONDARY_PADDING => '.button.button-secondary, #comments input[type="submit"],   .wp-block-button.is-style-secondary .wp-block-button__link',
-		self::CSS_SELECTOR_BTN_PRIMARY_NORMAL    => '.button.button-primary,
+		self::CSS_SELECTOR_TYPEFACE_H1               => 'h1, .single h1.entry-title',
+		self::CSS_SELECTOR_TYPEFACE_H2               => 'h2',
+		self::CSS_SELECTOR_TYPEFACE_H3               => 'h3',
+		self::CSS_SELECTOR_TYPEFACE_H4               => 'h4',
+		self::CSS_SELECTOR_TYPEFACE_H5               => 'h5',
+		self::CSS_SELECTOR_TYPEFACE_H6               => 'h6',
+		self::CSS_SELECTOR_TYPEFACE_GENERAL          => 'body, .site-title',
+		self::CSS_SELECTOR_BTN_PRIMARY_PADDING       => '.button.button-primary,  .wp-block-button.is-style-primary .wp-block-button__link',
+		self::CSS_SELECTOR_BTN_SECONDARY_PADDING     => '.button.button-secondary, #comments input[type="submit"],   .wp-block-button.is-style-secondary .wp-block-button__link',
+		self::CSS_SELECTOR_BTN_PRIMARY_NORMAL        => '.button.button-primary,
 				button, input[type=button],
 				.btn, input[type="submit"],
 				/* Buttons in navigation */
 				ul[id^="nv-primary-navigation"] li.button.button-primary > a,
 				.menu li.button.button-primary > a,  .wp-block-button.is-style-primary .wp-block-button__link',
-		self::CSS_SELECTOR_BTN_PRIMARY_HOVER     => '.button.button-primary:hover,
+		self::CSS_SELECTOR_BTN_PRIMARY_HOVER         => '.button.button-primary:hover,
 				.nv-tags-list a:hover,
 				ul[id^="nv-primary-navigation"] li.button.button-primary > a:hover,
 				.menu li.button.button-primary > a:hover, .wp-block-button.is-style-primary .wp-block-button__link:hover ',
-		self::CSS_SELECTOR_BTN_SECONDARY_NORMAL  => '.button.button-secondary, #comments input[type="submit"], .cart-off-canvas .button.nv-close-cart-sidebar,  .wp-block-button.is-style-secondary .wp-block-button__link',
-		self::CSS_SELECTOR_BTN_SECONDARY_HOVER   => '.button.button-secondary:hover, #comments input[type="submit"]:hover, .cart-off-canvas .button.nv-close-cart-sidebar:hover,  .wp-block-button.is-style-secondary .wp-block-button__link:hover',
+		self::CSS_SELECTOR_BTN_SECONDARY_NORMAL      => '.button.button-secondary, #comments input[type="submit"], .cart-off-canvas .button.nv-close-cart-sidebar,  .wp-block-button.is-style-secondary .wp-block-button__link',
+		self::CSS_SELECTOR_BTN_SECONDARY_HOVER       => '.button.button-secondary:hover, #comments input[type="submit"]:hover, .cart-off-canvas .button.nv-close-cart-sidebar:hover,  .wp-block-button.is-style-secondary .wp-block-button__link:hover',
+		self::CSS_SELECTOR_ARCHIVE_POST_TITLE        => '.blog .blog-entry-title, .archive .blog-entry-title',
+		self::CSS_SELECTOR_ARCHIVE_POST_EXCERPT      => '.blog .entry-summary, .archive .entry-summary',
+		self::CSS_SELECTOR_ARCHIVE_POST_META         => '.blog .nv-meta-list, .archive .nv-meta-list',
+		self::CSS_SELECTOR_SINGLE_POST_TITLE         => '.single .entry-title',
+		self::CSS_SELECTOR_SINGLE_POST_META          => '.single .nv-meta-list',
+		self::CSS_SELECTOR_SINGLE_POST_COMMENT_TITLE => '.single .comment-reply-title',
 	];
 }
