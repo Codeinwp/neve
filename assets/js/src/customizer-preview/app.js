@@ -252,20 +252,29 @@ window.addEventListener('load', function () {
               addCss(settingId, style)
               break
             case '\\Neve\\Customizer\\Controls\\React\\Typography':
-              style +=
-                `html ${args.selector}{
-										text-transform: ${newValue.textTransform};
-										font-weight: ${newValue.fontWeight};
-									}`
+              style += `html ${args.selector}{`
+              if ( newValue.textTransform ){
+                style += `text-transform: ${newValue.textTransform};`
+              }
+              if ( newValue.fontWeight &&  newValue.fontWeight !== 'none' ){
+                style += `font-weight: ${newValue.fontWeight};`
+              }
+              style += `}`
               for (let device in deviceMap) {
                 style +=
                   `@media (${deviceMap[device]}) {
-											html ${args.selector} {
-												font-size:${newValue.fontSize[device]}${newValue.fontSize.suffix[device]};
-												letter-spacing:${newValue.letterSpacing[device]}px;
-												line-height:${newValue.lineHeight[device]}${newValue.lineHeight.suffix[device] || ''};
-											}
-										}`
+											html ${args.selector} {`
+
+                if ( newValue.fontSize && newValue.fontSize[device] ){
+                  style += `font-size:${newValue.fontSize[device]}${newValue.fontSize.suffix[device]};`
+                }
+                if ( newValue.letterSpacing && newValue.letterSpacing[device] ){
+                  style += `letter-spacing:${newValue.letterSpacing[device]}px;`
+                }
+                if ( newValue.lineHeight && newValue.lineHeight[device] ){
+                  style += `line-height:${newValue.lineHeight[device]}${newValue.lineHeight.suffix[device] || ''};`
+                }
+                style += `}}`
               }
               addCss(settingId, style)
               break

@@ -17,8 +17,8 @@ class TypefaceComponent extends Component {
   constructor(props) {
     super(props)
 
-    const value = props.control.setting.get()
-    const defaultParams = {
+    let value = props.control.setting.get()
+    let defaultParams = {
       size_units: ['em', 'px'],
       line_height_units: ['em', 'px'],
       weight_default: 400,
@@ -50,6 +50,11 @@ class TypefaceComponent extends Component {
       }
     }
 
+    if ( !value ) {
+      value = this.getEmptyValue()
+      defaultParams = this.getEmptyDefault()
+    }
+
     // Added Later. Make sure we have a default value if none is selected.
     value.lineHeight = value.lineHeight || defaultParams.line_height_default
     value.lineHeight.suffix = value.lineHeight.suffix || defaultParams.line_height_default.suffix
@@ -79,6 +84,74 @@ class TypefaceComponent extends Component {
     this.renderLineHeight = this.renderLineHeight.bind(this)
     this.renderLetterSpacing = this.renderLetterSpacing.bind(this)
     this.updateValues = this.updateValues.bind(this)
+  }
+
+  getEmptyValue() {
+    return {
+      currentDevice: 'desktop',
+      fontSize: {
+        suffix: {
+          mobile: 'px',
+          tablet: 'px',
+          desktop: 'px'
+        },
+        mobile: '',
+        tablet: '',
+        desktop: ''
+      },
+      lineHeight: {
+        suffix: {
+          mobile: 'em',
+          tablet: 'em',
+          desktop: 'em'
+        },
+        mobile: '',
+        tablet: '',
+        desktop: ''
+      },
+      letterSpacing: {
+        mobile: '',
+        tablet: '',
+        desktop: ''
+      },
+      fontWeight: 'none',
+      textTransform: 'none',
+      flag: false
+    }
+  }
+
+  getEmptyDefault() {
+    return {
+      size_units: ['em', 'px'],
+      line_height_units: ['em', 'px'],
+      weight_default: 'none',
+      text_transform: 'none',
+      size_default: {
+        suffix: {
+          mobile: 'px',
+          tablet: 'px',
+          desktop: 'px'
+        },
+        mobile: '',
+        tablet: '',
+        desktop: ''
+      },
+      line_height_default: {
+        suffix: {
+          mobile: 'em',
+          tablet: 'em',
+          desktop: 'em'
+        },
+        mobile: '',
+        tablet: '',
+        desktop: ''
+      },
+      letter_spacing_default: {
+        mobile: '',
+        tablet: '',
+        desktop: ''
+      }
+    }
   }
 
   render() {
@@ -116,6 +189,7 @@ class TypefaceComponent extends Component {
         <SelectControl
           value={this.state.fontWeight}
           options={[
+            { value: 'none', label: __( 'None', 'neve' ) },
             { value: 100, label: '100' },
             { value: 200, label: '200' },
             { value: 300, label: '300' },
@@ -219,8 +293,6 @@ class TypefaceComponent extends Component {
         onReset={() => {
           const value = lineHeight
           value.suffix = value.suffix || line_height_default.suffix
-          console.log(value.suffix)
-          console.log(line_height_default)
           value.suffix[currentDevice] = line_height_default.suffix[currentDevice]
           value[currentDevice] = line_height_default[currentDevice]
           this.setState({ lineHeight: value })

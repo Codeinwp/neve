@@ -111,7 +111,7 @@ class Typography extends Base_Customizer {
 				'title'    => __( 'Headings', 'neve' ),
 				'priority' => 35,
 			),
-			'neve_typography_blog' => array(
+			'neve_typography_blog'     => array(
 				'title'    => __( 'Blog', 'neve' ),
 				'priority' => 45,
 			),
@@ -246,6 +246,7 @@ class Typography extends Base_Customizer {
 					'Neve\Customizer\Controls\Heading'
 				)
 			);
+
 			$this->add_control(
 				new Control(
 					'neve_' . $heading_id . '_typeface_general',
@@ -286,35 +287,41 @@ class Typography extends Base_Customizer {
 	private function controls_typography_blog() {
 
 		$control_headings = array(
-			'neve_archive_typography_post_title' => array(
-				'label'          => __( 'Post title', 'neve' ),
-				'category_label' => __( 'Blog Archive', 'neve' ),
-				'priority'       => 10,
+			'neve_archive_typography_post_title'       => array(
+				'label'                 => __( 'Post title', 'neve' ),
+				'category_label'        => __( 'Blog Archive', 'neve' ),
+				'priority'              => 10,
+				'live_refresh_selector' => '.blog-entry-title',
 			),
-			'neve_archive_typography_post_excerpt' => array(
-				'label'    => __( 'Post excerpt', 'neve' ),
-				'priority' => 20,
+			'neve_archive_typography_post_excerpt'     => array(
+				'label'                 => __( 'Post excerpt', 'neve' ),
+				'priority'              => 20,
+				'live_refresh_selector' => '.entry-summary',
 			),
-			'neve_archive_typography_post_meta' => array(
-				'label'    => __( 'Post meta', 'neve' ),
-				'priority' => 30,
+			'neve_archive_typography_post_meta'        => array(
+				'label'                 => __( 'Post meta', 'neve' ),
+				'priority'              => 30,
+				'live_refresh_selector' => '.nv-meta-list',
 			),
-			'neve_single_post_typography_post_title' => array(
-				'label'          => __( 'Post title', 'neve' ),
-				'category_label' => __( 'Single Post', 'neve' ),
-				'priority'       => 40,
+			'neve_single_post_typography_post_title'   => array(
+				'label'                 => __( 'Post title', 'neve' ),
+				'category_label'        => __( 'Single Post', 'neve' ),
+				'priority'              => 40,
+				'live_refresh_selector' => '',
 			),
 			'neve_single_post_typography_post_excerpt' => array(
-				'label'    => __( 'Post excerpt', 'neve' ),
-				'priority' => 50,
+				'label'                 => __( 'Post excerpt', 'neve' ),
+				'priority'              => 50,
+				'live_refresh_selector' => '',
 			),
-			'neve_single_post_typography_post_meta' => array(
-				'label'    => __( 'Post meta', 'neve' ),
-				'priority' => 60,
+			'neve_single_post_typography_post_meta'    => array(
+				'label'                 => __( 'Post meta', 'neve' ),
+				'priority'              => 60,
+				'live_refresh_selector' => '',
 			),
 		);
 
-		foreach ( $control_headings as $control_id => $control_settings ){
+		foreach ( $control_headings as $control_id => $control_settings ) {
 			$settings = array(
 				'label'            => $control_settings['label'],
 				'section'          => 'neve_typography_blog',
@@ -324,13 +331,13 @@ class Typography extends Base_Customizer {
 				'controls_to_wrap' => 1,
 				'expanded'         => false,
 			);
-			if ( array_key_exists( 'category_label', $control_settings ) ){
+			if ( array_key_exists( 'category_label', $control_settings ) ) {
 				$settings['category_label'] = $control_settings['category_label'];
 			}
 
 			$this->add_control(
 				new Control(
-					$control_id . '_heading',
+					$control_id . '_accordion_wrap',
 					array(
 						'sanitize_callback' => 'sanitize_text_field',
 						'transport'         => $this->selective_refresh,
@@ -340,25 +347,27 @@ class Typography extends Base_Customizer {
 				)
 			);
 
-//			$this->add_control(
-//				new Control(
-//					$control_id,
-//					[
-//						'transport' => $this->selective_refresh,
-//					],
-//					[
-//						'priority'              => $control_settings['priority'] += 1,
-//						'section'               => 'neve_typography_blog',
-//						'input_attrs'           => array(
-//							'size_units'             => [ 'em', 'px' ],
-//						),
-//						'type'                  => 'neve_typeface_control',
-////						'live_refresh_selector' => $selectors[ $heading_id ],
-//					],
-//					'\Neve\Customizer\Controls\React\Typography'
-//				)
-//			);
+			$this->add_control(
+				new Control(
+					$control_id,
+					[
+						'transport' => $this->selective_refresh,
+					],
+					[
+						'priority'              => $control_settings['priority'] += 1,
+						'section'               => 'neve_typography_blog',
+						'input_attrs'           => array(
+							'size_units' => [ 'em', 'px' ],
+						),
+						'type'                  => 'neve_typeface_control',
+						'live_refresh_selector' => $control_settings['live_refresh_selector'],
+					],
+					'\Neve\Customizer\Controls\React\Typography'
+				)
+			);
 		}
+
+
 	}
 
 	/**
