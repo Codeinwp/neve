@@ -365,8 +365,6 @@ class Typography extends Base_Customizer {
 				)
 			);
 		}
-
-
 	}
 
 	/**
