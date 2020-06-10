@@ -285,7 +285,7 @@ class Typography extends Base_Customizer {
 	 */
 	private function controls_typography_blog() {
 
-		$control_headings = array(
+		$controls = array(
 			'neve_archive_typography_post_title'         => array(
 				'label'                 => __( 'Post title', 'neve' ),
 				'category_label'        => __( 'Blog Archive', 'neve' ),
@@ -320,7 +320,7 @@ class Typography extends Base_Customizer {
 			),
 		);
 
-		foreach ( $control_headings as $control_id => $control_settings ) {
+		foreach ( $controls as $control_id => $control_settings ) {
 			$settings = array(
 				'label'            => $control_settings['label'],
 				'section'          => 'neve_typography_blog',
