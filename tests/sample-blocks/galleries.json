@@ -1,0 +1,95 @@
+<!-- wp:paragraph -->
+<p>Below we have a Gallery Block inserted with two columns and two images.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:gallery {"ids":["13",17],"align":"center"} -->
+<figure class="wp-block-gallery aligncenter columns-2 is-cropped"><ul class="blocks-gallery-grid"><li class="blocks-gallery-item"><figure><img src="http://localhost:10015/wp-content/uploads/2020/05/placeholder-1024x733.jpg" alt="" data-id="13" data-link="http://localhost:10015/?attachment_id=13" class="wp-image-13"/><figcaption class="blocks-gallery-item__caption">This is a caption.</figcaption></figure></li><li class="blocks-gallery-item"><figure><img src="http://localhost:10015/wp-content/uploads/2020/05/placeholder-1-1024x733.jpg" alt="" data-id="17" data-full-url="http://localhost:10015/wp-content/uploads/2020/05/placeholder-1.jpg" data-link="http://localhost:10015/?attachment_id=17" class="wp-image-17"/><figcaption class="blocks-gallery-item__caption">Another <strong>bold</strong> caption</figcaption></figure></li></ul></figure>
+<!-- /wp:gallery -->
+
+<!-- wp:paragraph -->
+<p>Below we have a Gallery Block inserted with three columns and three images.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:gallery {"ids":[17,13,20]} -->
+<figure class="wp-block-gallery columns-3 is-cropped"><ul class="blocks-gallery-grid"><li class="blocks-gallery-item"><figure><img src="http://localhost:10015/wp-content/uploads/2020/05/placeholder-1-1024x733.jpg" alt="" data-id="17" data-link="http://localhost:10015/?attachment_id=17" class="wp-image-17"/></figure></li><li class="blocks-gallery-item"><figure><img src="http://localhost:10015/wp-content/uploads/2020/05/placeholder-1024x733.jpg" alt="" data-id="13" data-link="http://localhost:10015/?attachment_id=13" class="wp-image-13"/></figure></li><li class="blocks-gallery-item"><figure><img src="http://localhost:10015/wp-content/uploads/2020/05/placeholder-2-1024x733.jpg" alt="" data-id="20" data-full-url="http://localhost:10015/wp-content/uploads/2020/05/placeholder-2.jpg" data-link="http://localhost:10015/?attachment_id=20" class="wp-image-20"/></figure></li></ul></figure>
+<!-- /wp:gallery -->
+
+<!-- wp:paragraph -->
+<p>Below we have a Gallery Block inserted with four columns and four images.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:gallery {"ids":[17,13,20,29],"columns":4} -->
+<figure class="wp-block-gallery columns-4 is-cropped"><ul class="blocks-gallery-grid"><li class="blocks-gallery-item"><figure><img src="http://localhost:10015/wp-content/uploads/2020/05/placeholder-1-1024x733.jpg" alt="" data-id="17" data-link="http://localhost:10015/?attachment_id=17" class="wp-image-17"/><figcaption class="blocks-gallery-item__caption">caption one</figcaption></figure></li><li class="blocks-gallery-item"><figure><img src="http://localhost:10015/wp-content/uploads/2020/05/placeholder-1024x733.jpg" alt="" data-id="13" data-link="http://localhost:10015/?attachment_id=13" class="wp-image-13"/><figcaption class="blocks-gallery-item__caption">caption two</figcaption></figure></li><li class="blocks-gallery-item"><figure><img src="http://localhost:10015/wp-content/uploads/2020/05/placeholder-2-1024x733.jpg" alt="" data-id="20" data-link="http://localhost:10015/?attachment_id=20" class="wp-image-20"/><figcaption class="blocks-gallery-item__caption">caption three</figcaption></figure></li><li class="blocks-gallery-item"><figure><img src="http://localhost:10015/wp-content/uploads/2020/05/placeholder-5-1024x733.jpg" alt="" data-id="29" data-full-url="http://localhost:10015/wp-content/uploads/2020/05/placeholder-5.jpg" data-link="http://localhost:10015/?attachment_id=29" class="wp-image-29"/><figcaption class="blocks-gallery-item__caption">caption four</figcaption></figure></li></ul></figure>
+<!-- /wp:gallery -->
+
+<!-- wp:paragraph {"align":"left"} -->
+<p class="has-text-align-left"><strong>Left Aligned Gallery Block</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:gallery {"ids":[17,13,20,29,30],"columns":3,"align":"left"} -->
+<figure class="wp-block-gallery alignleft columns-3 is-cropped"><ul class="blocks-gallery-grid"><li class="blocks-gallery-item"><figure><img src="http://localhost:10015/wp-content/uploads/2020/05/placeholder-1-1024x733.jpg" alt="" data-id="17" data-link="http://localhost:10015/?attachment_id=17" class="wp-image-17"/></figure></li><li class="blocks-gallery-item"><figure><img src="http://localhost:10015/wp-content/uploads/2020/05/placeholder-1024x733.jpg" alt="" data-id="13" data-link="http://localhost:10015/?attachment_id=13" class="wp-image-13"/></figure></li><li class="blocks-gallery-item"><figure><img src="http://localhost:10015/wp-content/uploads/2020/05/placeholder-2-1024x733.jpg" alt="" data-id="20" data-link="http://localhost:10015/?attachment_id=20" class="wp-image-20"/></figure></li><li class="blocks-gallery-item"><figure><img src="http://localhost:10015/wp-content/uploads/2020/05/placeholder-5-1024x733.jpg" alt="" data-id="29" data-link="http://localhost:10015/?attachment_id=29" class="wp-image-29"/><figcaption class="blocks-gallery-item__caption">caption</figcaption></figure></li><li class="blocks-gallery-item"><figure><img src="http://localhost:10015/wp-content/uploads/2020/05/placeholder-6-1024x733.jpg" alt="" data-id="30" data-full-url="http://localhost:10015/wp-content/uploads/2020/05/placeholder-6.jpg" data-link="http://localhost:10015/?attachment_id=30" class="wp-image-30"/><figcaption class="blocks-gallery-item__caption">caption</figcaption></figure></li></ul></figure>
+<!-- /wp:gallery -->
+
+<!-- wp:paragraph {"align":"right"} -->
+<p class="has-text-align-right"><strong>Right Aligned Gallery Block</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:gallery {"ids":[17,13,20,29,30],"columns":4,"align":"right"} -->
+<figure class="wp-block-gallery alignright columns-4 is-cropped"><ul class="blocks-gallery-grid"><li class="blocks-gallery-item"><figure><img src="http://localhost:10015/wp-content/uploads/2020/05/placeholder-1-1024x733.jpg" alt="" data-id="17" data-link="http://localhost:10015/?attachment_id=17" class="wp-image-17"/></figure></li><li class="blocks-gallery-item"><figure><img src="http://localhost:10015/wp-content/uploads/2020/05/placeholder-1024x733.jpg" alt="" data-id="13" data-link="http://localhost:10015/?attachment_id=13" class="wp-image-13"/></figure></li><li class="blocks-gallery-item"><figure><img src="http://localhost:10015/wp-content/uploads/2020/05/placeholder-2-1024x733.jpg" alt="" data-id="20" data-link="http://localhost:10015/?attachment_id=20" class="wp-image-20"/></figure></li><li class="blocks-gallery-item"><figure><img src="http://localhost:10015/wp-content/uploads/2020/05/placeholder-5-1024x733.jpg" alt="" data-id="29" data-link="http://localhost:10015/?attachment_id=29" class="wp-image-29"/></figure></li><li class="blocks-gallery-item"><figure><img src="http://localhost:10015/wp-content/uploads/2020/05/placeholder-6-1024x733.jpg" alt="" data-id="30" data-full-url="http://localhost:10015/wp-content/uploads/2020/05/placeholder-6.jpg" data-link="http://localhost:10015/?attachment_id=30" class="wp-image-30"/></figure></li></ul></figure>
+<!-- /wp:gallery -->
+
+<!-- wp:paragraph -->
+<p>Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Below we have a Gallery Block inserted with five columns and five images.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:gallery {"ids":[17,13,20,29,30],"columns":5,"align":"center"} -->
+<figure class="wp-block-gallery aligncenter columns-5 is-cropped"><ul class="blocks-gallery-grid"><li class="blocks-gallery-item"><figure><img src="http://localhost:10015/wp-content/uploads/2020/05/placeholder-1-1024x733.jpg" alt="" data-id="17" data-link="http://localhost:10015/?attachment_id=17" class="wp-image-17"/></figure></li><li class="blocks-gallery-item"><figure><img src="http://localhost:10015/wp-content/uploads/2020/05/placeholder-1024x733.jpg" alt="" data-id="13" data-link="http://localhost:10015/?attachment_id=13" class="wp-image-13"/></figure></li><li class="blocks-gallery-item"><figure><img src="http://localhost:10015/wp-content/uploads/2020/05/placeholder-2-1024x733.jpg" alt="" data-id="20" data-link="http://localhost:10015/?attachment_id=20" class="wp-image-20"/></figure></li><li class="blocks-gallery-item"><figure><img src="http://localhost:10015/wp-content/uploads/2020/05/placeholder-5-1024x733.jpg" alt="" data-id="29" data-link="http://localhost:10015/?attachment_id=29" class="wp-image-29"/></figure></li><li class="blocks-gallery-item"><figure><img src="http://localhost:10015/wp-content/uploads/2020/05/placeholder-6-1024x733.jpg" alt="" data-id="30" data-full-url="http://localhost:10015/wp-content/uploads/2020/05/placeholder-6.jpg" data-link="http://localhost:10015/?attachment_id=30" class="wp-image-30"/></figure></li></ul></figure>
+<!-- /wp:gallery -->
+
+<!-- wp:heading {"align":"center"} -->
+<h2 class="has-text-align-center">Full-width Gallery Block</h2>
+<!-- /wp:heading -->
+
+<!-- wp:gallery {"ids":[17,13,20],"align":"full"} -->
+<figure class="wp-block-gallery alignfull columns-3 is-cropped"><ul class="blocks-gallery-grid"><li class="blocks-gallery-item"><figure><img src="http://localhost:10015/wp-content/uploads/2020/05/placeholder-1-1024x733.jpg" alt="" data-id="17" data-link="http://localhost:10015/?attachment_id=17" class="wp-image-17"/><figcaption class="blocks-gallery-item__caption"><span style="color:#ff0004" class="has-inline-color">Red</span></figcaption></figure></li><li class="blocks-gallery-item"><figure><img src="http://localhost:10015/wp-content/uploads/2020/05/placeholder-1024x733.jpg" alt="" data-id="13" data-link="http://localhost:10015/?attachment_id=13" class="wp-image-13"/><figcaption class="blocks-gallery-item__caption"><span style="color:#f2ff00" class="has-inline-color">Yellow</span></figcaption></figure></li><li class="blocks-gallery-item"><figure><img src="http://localhost:10015/wp-content/uploads/2020/05/placeholder-2-1024x733.jpg" alt="" data-id="20" data-full-url="http://localhost:10015/wp-content/uploads/2020/05/placeholder-2.jpg" data-link="http://localhost:10015/?attachment_id=20" class="wp-image-20"/><figcaption class="blocks-gallery-item__caption"><span style="color:#1104ff" class="has-inline-color">Blue</span></figcaption></figure></li></ul></figure>
+<!-- /wp:gallery -->
+
+<!-- wp:gallery {"ids":[17,13,20,43],"columns":4,"align":"full"} -->
+<figure class="wp-block-gallery alignfull columns-4 is-cropped"><ul class="blocks-gallery-grid"><li class="blocks-gallery-item"><figure><img src="http://localhost:10015/wp-content/uploads/2020/05/placeholder-1-1024x733.jpg" alt="" data-id="17" data-link="http://localhost:10015/?attachment_id=17" class="wp-image-17"/></figure></li><li class="blocks-gallery-item"><figure><img src="http://localhost:10015/wp-content/uploads/2020/05/placeholder-1024x733.jpg" alt="" data-id="13" data-link="http://localhost:10015/?attachment_id=13" class="wp-image-13"/></figure></li><li class="blocks-gallery-item"><figure><img src="http://localhost:10015/wp-content/uploads/2020/05/placeholder-2-1024x733.jpg" alt="" data-id="20" data-link="http://localhost:10015/?attachment_id=20" class="wp-image-20"/></figure></li><li class="blocks-gallery-item"><figure><img src="http://localhost:10015/wp-content/uploads/2020/05/placeholder-8-1024x733.jpg" alt="" data-id="43" data-full-url="http://localhost:10015/wp-content/uploads/2020/05/placeholder-8.jpg" data-link="http://localhost:10015/?attachment_id=43" class="wp-image-43"/></figure></li></ul></figure>
+<!-- /wp:gallery -->
+
+<!-- wp:heading {"align":"center"} -->
+<h2 class="has-text-align-center">Wide-width Gallery Block</h2>
+<!-- /wp:heading -->
+
+<!-- wp:gallery {"ids":[17,13,20,32],"columns":4,"align":"wide"} -->
+<figure class="wp-block-gallery alignwide columns-4 is-cropped"><ul class="blocks-gallery-grid"><li class="blocks-gallery-item"><figure><img src="http://localhost:10015/wp-content/uploads/2020/05/placeholder-1-1024x733.jpg" alt="" data-id="17" data-link="http://localhost:10015/?attachment_id=17" class="wp-image-17"/></figure></li><li class="blocks-gallery-item"><figure><img src="http://localhost:10015/wp-content/uploads/2020/05/placeholder-1024x733.jpg" alt="" data-id="13" data-link="http://localhost:10015/?attachment_id=13" class="wp-image-13"/></figure></li><li class="blocks-gallery-item"><figure><img src="http://localhost:10015/wp-content/uploads/2020/05/placeholder-2-1024x733.jpg" alt="" data-id="20" data-link="http://localhost:10015/?attachment_id=20" class="wp-image-20"/></figure></li><li class="blocks-gallery-item"><figure><img src="http://localhost:10015/wp-content/uploads/2020/05/placeholder-7-1024x733.jpg" alt="" data-id="32" data-full-url="http://localhost:10015/wp-content/uploads/2020/05/placeholder-7.jpg" data-link="http://localhost:10015/?attachment_id=32" class="wp-image-32"/></figure></li></ul></figure>
+<!-- /wp:gallery -->
+
+<!-- wp:separator -->
+<hr class="wp-block-separator"/>
+<!-- /wp:separator -->
+
+<!-- wp:gallery {"ids":[17,13,20,32,45],"columns":3,"align":"wide"} -->
+<figure class="wp-block-gallery alignwide columns-3 is-cropped"><ul class="blocks-gallery-grid"><li class="blocks-gallery-item"><figure><img src="http://localhost:10015/wp-content/uploads/2020/05/placeholder-1-1024x733.jpg" alt="" data-id="17" data-link="http://localhost:10015/?attachment_id=17" class="wp-image-17"/></figure></li><li class="blocks-gallery-item"><figure><img src="http://localhost:10015/wp-content/uploads/2020/05/placeholder-1024x733.jpg" alt="" data-id="13" data-link="http://localhost:10015/?attachment_id=13" class="wp-image-13"/></figure></li><li class="blocks-gallery-item"><figure><img src="http://localhost:10015/wp-content/uploads/2020/05/placeholder-2-1024x733.jpg" alt="" data-id="20" data-link="http://localhost:10015/?attachment_id=20" class="wp-image-20"/></figure></li><li class="blocks-gallery-item"><figure><img src="http://localhost:10015/wp-content/uploads/2020/05/placeholder-7-1024x733.jpg" alt="" data-id="32" data-link="http://localhost:10015/?attachment_id=32" class="wp-image-32"/></figure></li><li class="blocks-gallery-item"><figure><img src="http://localhost:10015/wp-content/uploads/2020/05/placeholder-9-1024x733.jpg" alt="" data-id="45" data-full-url="http://localhost:10015/wp-content/uploads/2020/05/placeholder-9.jpg" data-link="http://localhost:10015/?attachment_id=45" class="wp-image-45"/></figure></li></ul></figure>
+<!-- /wp:gallery -->
+
+<!-- wp:heading {"align":"center","level":3} -->
+<h3 class="has-text-align-center">Three Column, Four Images</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"align":"center"} -->
+<p class="has-text-align-center">Let us switch things up a bit. Now we have a Gallery Block inserted with three columns and four images.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:gallery {"ids":[17,13,22,23]} -->
+<figure class="wp-block-gallery columns-3 is-cropped"><ul class="blocks-gallery-grid"><li class="blocks-gallery-item"><figure><img src="http://localhost:10015/wp-content/uploads/2020/05/placeholder-1-1024x733.jpg" alt="" data-id="17" data-link="http://localhost:10015/?attachment_id=17" class="wp-image-17"/></figure></li><li class="blocks-gallery-item"><figure><img src="http://localhost:10015/wp-content/uploads/2020/05/placeholder-1024x733.jpg" alt="" data-id="13" data-link="http://localhost:10015/?attachment_id=13" class="wp-image-13"/></figure></li><li class="blocks-gallery-item"><figure><img src="http://localhost:10015/wp-content/uploads/2020/05/placeholder-3-1024x733.jpg" alt="" data-id="22" data-link="http://localhost:10015/?attachment_id=22" class="wp-image-22"/></figure></li><li class="blocks-gallery-item"><figure><img src="http://localhost:10015/wp-content/uploads/2020/05/placeholder-4-1024x733.jpg" alt="" data-id="23" data-full-url="http://localhost:10015/wp-content/uploads/2020/05/placeholder-4.jpg" data-link="http://localhost:10015/?attachment_id=23" class="wp-image-23"/><figcaption class="blocks-gallery-item__caption"><span style="color:#d8ef2b" class="has-inline-color">Big colored caption</span></figcaption></figure></li></ul></figure>
+<!-- /wp:gallery -->
+
+<!-- wp:paragraph -->
+<p></p>
+<!-- /wp:paragraph -->
