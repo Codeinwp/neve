@@ -264,12 +264,20 @@ window.addEventListener('load', function () {
                 style +=
                   `@media (${deviceMap[device]}) {
 											html ${args.selector} {`
-
+                if ( args.live_refresh_default && args.live_refresh_default.size ){
+                  style += `font-size:${args.live_refresh_default.size[device]}${args.live_refresh_default.size.suffix[device]};`
+                }
                 if ( newValue.fontSize && newValue.fontSize[device] ){
                   style += `font-size:${newValue.fontSize[device]}${newValue.fontSize.suffix[device]};`
                 }
+                if ( args.live_refresh_default && args.live_refresh_default.letter_spacing ){
+                  style += `letter-spacing:${args.live_refresh_default.letter_spacing[device]}px;`
+                }
                 if ( newValue.letterSpacing && newValue.letterSpacing[device] ){
                   style += `letter-spacing:${newValue.letterSpacing[device]}px;`
+                }
+                if ( args.live_refresh_default && args.live_refresh_default.line_height ){
+                  style += `line-height:${args.live_refresh_default.line_height[device]}${args.live_refresh_default.line_height.suffix && args.live_refresh_default.line_height.suffix[device] ? args.live_refresh_default.line_height.suffix[device] : ''};`
                 }
                 if ( newValue.lineHeight && newValue.lineHeight[device] ){
                   style += `line-height:${newValue.lineHeight[device]}${newValue.lineHeight.suffix[device] || ''};`

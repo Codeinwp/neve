@@ -16,7 +16,6 @@ const {
 class TypefaceComponent extends Component {
   constructor(props) {
     super(props)
-
     let value = props.control.setting.get()
     let defaultParams = {
       size_units: ['em', 'px'],
@@ -52,7 +51,13 @@ class TypefaceComponent extends Component {
 
     if ( !value ) {
       value = this.getEmptyValue()
-      defaultParams = this.getEmptyDefault()
+    }
+
+    if ( props.control.params.input_attrs.length ) {
+      const input_attrs = JSON.parse(props.control.params.input_attrs)
+      if ( input_attrs.default_is_empty ) {
+        defaultParams = this.getEmptyDefault()
+      }
     }
 
     // Added Later. Make sure we have a default value if none is selected.
@@ -86,8 +91,8 @@ class TypefaceComponent extends Component {
     this.updateValues = this.updateValues.bind(this)
   }
 
-  getEmptyValue() {
-    return {
+  getEmptyValue( prop = '' ) {
+    const emptyValue = {
       currentDevice: 'desktop',
       fontSize: {
         suffix: {
@@ -118,6 +123,10 @@ class TypefaceComponent extends Component {
       textTransform: 'none',
       flag: false
     }
+    if ( prop && emptyValue[prop] ) {
+      return emptyValue[prop]
+    }
+    return emptyValue
   }
 
   getEmptyDefault() {
@@ -233,8 +242,12 @@ class TypefaceComponent extends Component {
   }
 
   renderFontSize() {
-    const { currentDevice, fontSize } = this.state
+    let { fontSize } = this.state
+    const { currentDevice } = this.state
     const { size_default, size_units } = this.controlParams
+    if ( !fontSize ) {
+      fontSize = this.getEmptyValue('fontSize' )
+    }
     return (
       <NumberControl
         className='font-size'
@@ -271,7 +284,11 @@ class TypefaceComponent extends Component {
 
   renderLineHeight() {
     const { line_height_default, line_height_units } = this.controlParams
-    const { lineHeight, currentDevice } = this.state
+    const { currentDevice } = this.state
+    let { lineHeight } = this.state
+    if ( !lineHeight ) {
+      lineHeight = this.getEmptyValue('lineHeight' )
+    }
     return (
       <NumberControl
         className='line-height'
@@ -311,8 +328,11 @@ class TypefaceComponent extends Component {
 
   renderLetterSpacing() {
     const { letter_spacing_default } = this.controlParams
-    const { currentDevice, letterSpacing } = this.state
-    console.log( this.state )
+    const { currentDevice } = this.state
+    let { letterSpacing } = this.state
+    if ( !letterSpacing ) {
+      letterSpacing = this.getEmptyValue('letterSpacing' )
+    }
     return (
       <NumberControl
         className='letter-spacing'

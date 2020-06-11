@@ -171,6 +171,9 @@ abstract class Base_Customizer {
 					'id'       => $control->id,
 					'type'     => $control_type,
 				);
+				if ( array_key_exists( 'live_refresh_default', $control->control_args ) ) {
+					$control_args['live_refresh_default'] = $control->control_args['live_refresh_default'];
+				}
 				add_filter(
 					'neve_customize_preview_localization',
 					function ( $array ) use ( $control_args ) {
@@ -178,7 +181,9 @@ abstract class Base_Customizer {
 							$array[ $control_args['type'] ] = [];
 						}
 						$array[ $control_args['type'] ][ $control_args['id'] ] = [ 'selector' => $control_args['selector'] ];
-
+						if ( array_key_exists( 'live_refresh_default', $control_args ) ) {
+							$array[ $control_args['type'] ][ $control_args['id'] ]['live_refresh_default'] = $control_args['live_refresh_default'];
+						}
 						return $array;
 					}
 				);
@@ -191,7 +196,7 @@ abstract class Base_Customizer {
 						$array['headerControls'][] = $id;
 
 						return $array;
-					} 
+					}
 				);
 			}
 			if ( isset( $control->partial ) ) {

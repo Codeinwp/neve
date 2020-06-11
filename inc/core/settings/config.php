@@ -134,9 +134,9 @@ class Config {
 		self::CSS_SELECTOR_BTN_SECONDARY_HOVER       => '.button.button-secondary:hover, #comments input[type="submit"]:hover, .cart-off-canvas .button.nv-close-cart-sidebar:hover,  .wp-block-button.is-style-secondary .wp-block-button__link:hover',
 		self::CSS_SELECTOR_ARCHIVE_POST_TITLE        => '.blog .blog-entry-title, .archive .blog-entry-title',
 		self::CSS_SELECTOR_ARCHIVE_POST_EXCERPT      => '.blog .entry-summary, .archive .entry-summary',
-		self::CSS_SELECTOR_ARCHIVE_POST_META         => '.blog .nv-meta-list, .archive .nv-meta-list',
-		self::CSS_SELECTOR_SINGLE_POST_TITLE         => '.single .entry-title',
-		self::CSS_SELECTOR_SINGLE_POST_META          => '.single .nv-meta-list',
+		self::CSS_SELECTOR_ARCHIVE_POST_META         => '.blog .nv-meta-list li, .archive .nv-meta-list li',
+		self::CSS_SELECTOR_SINGLE_POST_TITLE         => '.single h1.entry-title',
+		self::CSS_SELECTOR_SINGLE_POST_META          => '.single .nv-meta-list li',
 		self::CSS_SELECTOR_SINGLE_POST_COMMENT_TITLE => '.single .comment-reply-title',
 	];
 }

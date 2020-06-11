@@ -290,33 +290,165 @@ class Typography extends Base_Customizer {
 				'label'                 => __( 'Post title', 'neve' ),
 				'category_label'        => __( 'Blog Archive', 'neve' ),
 				'priority'              => 10,
-				'live_refresh_selector' => '.blog-entry-title',
+				'live_refresh_selector' => '.blog .blog-entry-title, .archive .blog-entry-title',
+				'live_refresh_default'  => [
+					'size'           => [
+						'mobile'  => 1.3,
+						'tablet'  => 1.75,
+						'desktop' => 1.75,
+						'suffix'  => [
+							'mobile'  => 'em',
+							'tablet'  => 'em',
+							'desktop' => 'em',
+						],
+					],
+					'line_height'    => [
+						'mobile'  => '1.68421',
+						'tablet'  => '1.68421',
+						'desktop' => '1.68421',
+					],
+					'letter_spacing' => [
+						'mobile'  => 0,
+						'tablet'  => 0,
+						'desktop' => 0,
+					],
+				],
 			),
 			'neve_archive_typography_post_excerpt'       => array(
 				'label'                 => __( 'Post excerpt', 'neve' ),
 				'priority'              => 20,
 				'live_refresh_selector' => '.blog .entry-summary, .archive .entry-summary',
+				'live_refresh_default'  => [
+					'size'           => [
+						'mobile'  => 16,
+						'tablet'  => 16,
+						'desktop' => 16,
+						'suffix'  => [
+							'mobile'  => 'px',
+							'tablet'  => 'px',
+							'desktop' => 'px',
+						],
+					],
+					'line_height'    => [
+						'mobile'  => '1.68421',
+						'tablet'  => '1.68421',
+						'desktop' => '1.68421',
+					],
+					'letter_spacing' => [
+						'mobile'  => 0,
+						'tablet'  => 0,
+						'desktop' => 0,
+					],
+				],
 			),
 			'neve_archive_typography_post_meta'          => array(
 				'label'                 => __( 'Post meta', 'neve' ),
 				'priority'              => 30,
-				'live_refresh_selector' => '.nv-meta-list',
+				'live_refresh_selector' => '.blog .nv-meta-list li, .archive .nv-meta-list li',
+				'live_refresh_default'  => [
+					'size'           => [
+						'mobile'  => 0.85,
+						'tablet'  => 0.85,
+						'desktop' => 0.85,
+						'suffix'  => [
+							'mobile'  => 'em',
+							'tablet'  => 'em',
+							'desktop' => 'em',
+						],
+					],
+					'line_height'    => [
+						'mobile'  => '1.68421',
+						'tablet'  => '1.68421',
+						'desktop' => '1.68421',
+					],
+					'letter_spacing' => [
+						'mobile'  => 0,
+						'tablet'  => 0,
+						'desktop' => 0,
+					],
+				],
 			),
 			'neve_single_post_typography_post_title'     => array(
 				'label'                 => __( 'Post title', 'neve' ),
 				'category_label'        => __( 'Single Post', 'neve' ),
 				'priority'              => 40,
-				'live_refresh_selector' => '.single .entry-title',
+				'live_refresh_selector' => '.single h1.entry-title',
+				'live_refresh_default'  => [
+					'size'           => [
+						'mobile'  => 1.5,
+						'tablet'  => 2,
+						'desktop' => 2,
+						'suffix'  => [
+							'mobile'  => 'em',
+							'tablet'  => 'em',
+							'desktop' => 'em',
+						],
+					],
+					'line_height'    => [
+						'mobile'  => '1.68421',
+						'tablet'  => '1.68421',
+						'desktop' => '1.68421',
+					],
+					'letter_spacing' => [
+						'mobile'  => 0,
+						'tablet'  => 0,
+						'desktop' => 0,
+					],
+				],
 			),
 			'neve_single_post_typography_post_meta'      => array(
 				'label'                 => __( 'Post meta', 'neve' ),
 				'priority'              => 50,
-				'live_refresh_selector' => '.single .nv-meta-list',
+				'live_refresh_selector' => '.single .nv-meta-list li',
+				'live_refresh_default'  => [
+					'size'           => [
+						'mobile'  => 0.85,
+						'tablet'  => 0.85,
+						'desktop' => 0.85,
+						'suffix'  => [
+							'mobile'  => 'em',
+							'tablet'  => 'em',
+							'desktop' => 'em',
+						],
+					],
+					'line_height'    => [
+						'mobile'  => '1.68421',
+						'tablet'  => '1.68421',
+						'desktop' => '1.68421',
+					],
+					'letter_spacing' => [
+						'mobile'  => 0,
+						'tablet'  => 0,
+						'desktop' => 0,
+					],
+				],
 			),
 			'neve_single_post_typography_comments_title' => array(
 				'label'                 => __( 'Comments reply title', 'neve' ),
 				'priority'              => 60,
 				'live_refresh_selector' => '.single .comment-reply-title',
+				'live_refresh_default'  => [
+					'size'           => [
+						'mobile'  => 1.1,
+						'tablet'  => 1.5,
+						'desktop' => 1.5,
+						'suffix'  => [
+							'mobile'  => 'em',
+							'tablet'  => 'em',
+							'desktop' => 'em',
+						],
+					],
+					'line_height'    => [
+						'mobile'  => '1.68421',
+						'tablet'  => '1.68421',
+						'desktop' => '1.68421',
+					],
+					'letter_spacing' => [
+						'mobile'  => 0,
+						'tablet'  => 0,
+						'desktop' => 0,
+					],
+				],
 			),
 		);
 
@@ -355,11 +487,34 @@ class Typography extends Base_Customizer {
 					[
 						'priority'              => $control_settings['priority'] += 1,
 						'section'               => 'neve_typography_blog',
-						'input_attrs'           => array(
-							'size_units' => [ 'em', 'px' ],
-						),
 						'type'                  => 'neve_typeface_control',
 						'live_refresh_selector' => $control_settings['live_refresh_selector'],
+						'live_refresh_default'  => $control_settings['live_refresh_default'],
+						'input_attrs'           => array(
+							'default_is_empty'       => true,
+							'size_units'             => [ 'px' ],
+							'weight_default'         => 'none',
+							'size_default'           => array(
+								'suffix'  => array(
+									'mobile'  => 'px',
+									'tablet'  => 'px',
+									'desktop' => 'px',
+								),
+								'mobile'  => '',
+								'tablet'  => '',
+								'desktop' => '',
+							),
+							'line_height_default'    => array(
+								'mobile'  => '',
+								'tablet'  => '',
+								'desktop' => '',
+							),
+							'letter_spacing_default' => array(
+								'mobile'  => '',
+								'tablet'  => '',
+								'desktop' => '',
+							),
+						),
 					],
 					'\Neve\Customizer\Controls\React\Typography'
 				)
