@@ -1,0 +1,49 @@
+.neve-multiselect {
+
+  .selected-options {
+	display: flex;
+	border: 1px solid $input-borders;
+	border-radius: 3px;
+	padding: 5px 5px 0 5px;
+	flex-wrap: wrap;
+	.placeholder {
+	  user-select: none;
+	  color: #777;
+	  margin-bottom: 5px;
+	}
+	.token {
+	  &:hover {
+		background-color: #EC7C7C;
+		color: #fff;
+	  }
+	}
+  }
+
+  .available-options {
+	margin-top: 10px;
+	display: flex;
+	flex-wrap: wrap;
+  }
+
+  .token {
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	background-color: #efefef;
+	color: #333;
+	padding: 3px 5px 3px 10px;
+	margin: 0 5px 5px 0;
+	border-radius: 20px;
+	border: none;
+
+	&:hover {
+	  background-color: #6EB77A;
+	  color: #FFF;
+	}
+
+	.title {
+	  height: 100%;
+	  margin-right: 3px;
+	}
+  }
+}
