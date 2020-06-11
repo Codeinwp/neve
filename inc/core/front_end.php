@@ -2442,7 +2442,7 @@ class Front_End {
 					],
 					'neve-brizy-moving-company'       => [
 						'url'              => 'https://demosites.io/moving-company-brizy/',
-						'remote_url'       => 'https://api.themeisle.com/sites/moving-company-briz/',
+						'remote_url'       => 'https://api.themeisle.com/sites/moving-company-brizy/',
 						'screenshot'       => 'https://api.themeisle.com/sites/wp-content/uploads/2020/05/neve-moving-company.jpg',
 						'title'            => 'Moving Company Logistics Services',
 						'keywords'         => [ 'logistics', 'one page', 'responsive' ],
