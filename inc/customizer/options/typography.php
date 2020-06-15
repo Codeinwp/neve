@@ -492,7 +492,7 @@ class Typography extends Base_Customizer {
 						'live_refresh_default'  => $control_settings['live_refresh_default'],
 						'input_attrs'           => array(
 							'default_is_empty'       => true,
-							'size_units'             => [ 'px' ],
+							'size_units'             => [ 'em', 'px' ],
 							'weight_default'         => 'none',
 							'size_default'           => array(
 								'suffix'  => array(
