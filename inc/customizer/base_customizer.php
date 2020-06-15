@@ -172,7 +172,23 @@ abstract class Base_Customizer {
 					'type'     => $control_type,
 				);
 				if ( array_key_exists( 'live_refresh_default', $control->control_args ) ) {
-					$control_args['live_refresh_default'] = $control->control_args['live_refresh_default'];
+					$control_args['live_refresh_default']                   = $control->control_args['live_refresh_default'];
+					$control_args['live_refresh_default']['line_height']    = [
+						'mobile'  => 1.68421,
+						'tablet'  => 1.68421,
+						'desktop' => 1.68421,
+					];
+					$control_args['live_refresh_default']['letter_spacing'] = [
+						'mobile'  => 0,
+						'tablet'  => 0,
+						'desktop' => 0,
+					];
+					if ( array_key_exists( 'line_height', $control->control_args['live_refresh_default'] ) ) {
+						$control_args['live_refresh_default']['line_height'] = $control->control_args['live_refresh_default']['line_height'];
+					}
+					if ( array_key_exists( 'letter_spacing', $control->control_args['live_refresh_default'] ) ) {
+						$control_args['live_refresh_default']['letter_spacing'] = $control->control_args['live_refresh_default']['letter_spacing'];
+					}
 				}
 				add_filter(
 					'neve_customize_preview_localization',
