@@ -1,0 +1,51 @@
+<!-- wp:heading -->
+<h2>Default image</h2>
+<!-- /wp:heading -->
+
+<!-- wp:image {"id":30,"sizeSlug":"large"} -->
+<figure class="wp-block-image size-large"><img src="http://localhost:10015/wp-content/uploads/2020/06/placeholder-1024x733.jpg" alt="" class="wp-image-30"/><figcaption>This is a caption</figcaption></figure>
+<!-- /wp:image -->
+
+<!-- wp:heading {"align":"left"} -->
+<h2 class="has-text-align-left">Left aligned image</h2>
+<!-- /wp:heading -->
+
+<!-- wp:image {"align":"left","id":30,"sizeSlug":"thumbnail","className":"is-style-rounded"} -->
+<div class="wp-block-image is-style-rounded"><figure class="alignleft size-thumbnail"><img src="http://localhost:10015/wp-content/uploads/2020/06/placeholder-150x150.jpg" alt="" class="wp-image-30"/><figcaption>Left aligned image</figcaption></figure></div>
+<!-- /wp:image -->
+
+<!-- wp:image {"align":"right","id":30,"sizeSlug":"thumbnail"} -->
+<div class="wp-block-image"><figure class="alignright size-thumbnail"><img src="http://localhost:10015/wp-content/uploads/2020/06/placeholder-150x150.jpg" alt="" class="wp-image-30"/><figcaption>Right aligned image</figcaption></figure></div>
+<!-- /wp:image -->
+
+<!-- wp:heading {"align":"right"} -->
+<h2 class="has-text-align-right">Right aligned image</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Donec ullamcorper nulla non metus auctor fringilla. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam porta sem malesuada magna mollis euismod. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.Donec ullamcorper nulla non metus auctor fringilla. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam porta sem malesuada magna mollis euismod. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"align":"center"} -->
+<h2 class="has-text-align-center">Centered round image</h2>
+<!-- /wp:heading -->
+
+<!-- wp:image {"align":"center","id":30,"sizeSlug":"thumbnail","className":"is-style-rounded"} -->
+<div class="wp-block-image is-style-rounded"><figure class="aligncenter size-thumbnail"><img src="http://localhost:10015/wp-content/uploads/2020/06/placeholder-150x150.jpg" alt="" class="wp-image-30"/><figcaption>Round image caption</figcaption></figure></div>
+<!-- /wp:image -->
+
+<!-- wp:heading {"align":"center"} -->
+<h2 class="has-text-align-center">Wide Width image</h2>
+<!-- /wp:heading -->
+
+<!-- wp:image {"align":"wide","id":30,"sizeSlug":"medium"} -->
+<figure class="wp-block-image alignwide size-medium"><img src="http://localhost:10015/wp-content/uploads/2020/06/placeholder-300x215.jpg" alt="" class="wp-image-30"/><figcaption>Wide width</figcaption></figure>
+<!-- /wp:image -->
+
+<!-- wp:heading {"align":"center"} -->
+<h2 class="has-text-align-center">Full-Width image</h2>
+<!-- /wp:heading -->
+
+<!-- wp:image {"align":"full","id":30,"sizeSlug":"medium"} -->
+<figure class="wp-block-image alignfull size-medium"><img src="http://localhost:10015/wp-content/uploads/2020/06/placeholder-300x215.jpg" alt="" class="wp-image-30"/><figcaption><strong>Full width image</strong></figcaption></figure>
+<!-- /wp:image -->

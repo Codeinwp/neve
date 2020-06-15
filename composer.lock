@@ -51,16 +51,16 @@
         },
         {
             "name": "codeinwp/themeisle-sdk",
-            "version": "3.2.11",
+            "version": "3.2.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeinwp/themeisle-sdk.git",
-                "reference": "18a519764465be0f7aeb8ea33e6cb41b5956020c"
+                "reference": "992f5e8347836e325ffc50760da1d550b79831c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeinwp/themeisle-sdk/zipball/18a519764465be0f7aeb8ea33e6cb41b5956020c",
-                "reference": "18a519764465be0f7aeb8ea33e6cb41b5956020c",
+                "url": "https://api.github.com/repos/Codeinwp/themeisle-sdk/zipball/992f5e8347836e325ffc50760da1d550b79831c4",
+                "reference": "992f5e8347836e325ffc50760da1d550b79831c4",
                 "shasum": ""
             },
             "require-dev": {
@@ -84,8 +84,8 @@
             "homepage": "https://github.com/Codeinwp/themeisle-sdk",
             "keywords": [
                 "wordpress"
-            ], 
-            "time": "2020-06-04T16:15:18+00:00" 
+            ],
+            "time": "2020-06-10T16:25:09+00:00"
         },
         {
             "name": "codeinwp/ti-about-page",
@@ -498,12 +498,12 @@
             "version": "0.2.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/WPTRT/WPThemeReview.git",
+                "url": "https://github.com/WPTT/WPThemeReview.git",
                 "reference": "462e59020dad9399ed2fe8e61f2a21b5e206e420"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WPTRT/WPThemeReview/zipball/462e59020dad9399ed2fe8e61f2a21b5e206e420",
+                "url": "https://api.github.com/repos/WPTT/WPThemeReview/zipball/462e59020dad9399ed2fe8e61f2a21b5e206e420",
                 "reference": "462e59020dad9399ed2fe8e61f2a21b5e206e420",
                 "shasum": ""
             },

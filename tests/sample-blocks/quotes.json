@@ -1,0 +1,35 @@
+<!-- wp:heading -->
+<h2>Default Style Quotes</h2>
+<!-- /wp:heading -->
+
+<!-- wp:quote -->
+<blockquote class="wp-block-quote"><p><span style="color:#2d26b8" class="has-inline-color">Nulla vitae elit libero, a pharetra augue. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Maecenas sed diam eget risus varius blandit sit amet non magna sed diam ed diam eget risus.</span></p><cite><span style="color:#b61218" class="has-inline-color">Jane Doe</span></cite></blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:quote {"align":"center"} -->
+<blockquote class="wp-block-quote has-text-align-center"><p><strong>Maecenas sed diam eget risus varius blandit sit amet non magna sed diam ed diam eget maecenas sed diam eget risus varius blandit sit amet non magna sed diam ed diam eget risus.</strong></p><cite>Jake Doe</cite></blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:quote {"align":"right","className":"is-style-default"} -->
+<blockquote class="wp-block-quote has-text-align-right is-style-default"><p><s>Nulla vitae elit libero, a pharetra augue.</s> Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Maecenas sed diam eget risus varius blandit sit amet non magna sed diam ed diam eget risus.</p><cite><em><strong>Jane Doe</strong></em></cite></blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:heading -->
+<h2>Large Style Quotes</h2>
+<!-- /wp:heading -->
+
+<!-- wp:quote {"className":"is-style-large"} -->
+<blockquote class="wp-block-quote is-style-large"><p>Maecenas sed diam eget risus varius blandit sit amet non magna sed diam ed diam eget maecenas sed diam eget risus varius blandit sit amet non magna sed diam ed diam eget risus.</p><cite>Jane</cite></blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:quote {"align":"center","className":"is-style-large"} -->
+<blockquote class="wp-block-quote has-text-align-center is-style-large"><p><span style="color:#ba1263" class="has-inline-color">Maecenas sed diam eget risus varius blandit sit amet non magna sed diam ed diam eget maecenas sed diam eget risus varius blandit sit amet non magna sed diam ed diam eget risus</span>.</p><cite>Jane</cite></blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:quote {"align":"right","className":"is-style-large"} -->
+<blockquote class="wp-block-quote has-text-align-right is-style-large"><p><strong>Maecenas sed diam eget risus varius blandit sit amet non magna sed diam ed diam eget maecenas sed diam eget risus varius blandit sit amet non magna sed diam ed diam eget risus.</strong></p><cite>Jane</cite></blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:paragraph -->
+<p></p>
+<!-- /wp:paragraph -->

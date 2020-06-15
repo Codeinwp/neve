@@ -19,8 +19,13 @@
 	vertical-align: inherit;
 	white-space: nowrap;
 	cursor: pointer;
-
+    min-width: 25%;
 	-webkit-appearance: none;
+}
+
+
+.customize-control-radio-image label:nth-of-type(4n+1){
+    clear: both;
 }
 
 .customize-control-radio-image label:first-of-type {
