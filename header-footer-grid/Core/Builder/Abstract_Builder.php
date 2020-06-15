@@ -994,10 +994,11 @@ abstract class Abstract_Builder implements Builder {
 			 *
 			 * @var Abstract_Component $component
 			 */
-			$component = $this->builder_components[ $component_location['id'] ];
-			$x         = intval( $component_location['x'] );
-			$width     = intval( $component_location['width'] );
-			$align     = SettingsManager::get_instance()->get( $component_location['id'] . '_' . Abstract_Component::ALIGNMENT_ID, null );
+			$component      = $this->builder_components[ $component_location['id'] ];
+			$x              = intval( $component_location['x'] );
+			$width          = intval( $component_location['width'] );
+			$align          = SettingsManager::get_instance()->get( $component_location['id'] . '_' . Abstract_Component::ALIGNMENT_ID, null );
+			$vertical_align = SettingsManager::get_instance()->get( $component_location['id'] . '_' . Abstract_Component::VERTICAL_ALIGN_ID, null );
 
 
 			if ( ! $collection->hasNext() && ( $x + $width < $max_columns ) ) {
@@ -1044,7 +1045,8 @@ abstract class Abstract_Builder implements Builder {
 
 			// Use alignment only of non-auto width element.
 			if ( ! $is_auto_width && isset( $render_buffer[ $render_index ] ) ) {
-				$render_buffer[ $render_index ]['align'] = $align;
+				$render_buffer[ $render_index ]['align']          = $align;
+				$render_buffer[ $render_index ]['vertical-align'] = $vertical_align;
 			}
 
 
@@ -1071,10 +1073,11 @@ abstract class Abstract_Builder implements Builder {
 			}
 			if ( ! isset( $render_buffer[ $render_index ] ) ) {
 				$render_buffer[ $render_index ] = [
-					'components' => [],
-					'align'      => $align,
-					'is_first'   => $is_first,
-					'is_last'    => false,
+					'components'     => [],
+					'align'          => $align,
+					'vertical-align' => $vertical_align,
+					'is_first'       => $is_first,
+					'is_last'        => false,
 				];
 			}
 			$render_buffer[ $render_index ]['is_last']      = $is_last;
@@ -1085,13 +1088,15 @@ abstract class Abstract_Builder implements Builder {
 			];
 			$component_location['is_auto_width']            = $is_auto_width;
 			$component_location['align']                    = $align;
+			$component_location['vertical-align']           = $vertical_align;
 			$last_item                                      = $component_location;
 		}
 		foreach ( $render_buffer as $render_groups ) {
-			$width   = array_sum( array_column( $render_groups['components'], 'width' ) );
-			$x       = max( array_column( $render_groups['components'], 'offset' ) );
-			$align   = $render_groups['align'];
-			$classes = [ 'builder-item' ];
+			$width          = array_sum( array_column( $render_groups['components'], 'width' ) );
+			$x              = max( array_column( $render_groups['components'], 'offset' ) );
+			$align          = $render_groups['align'];
+			$vertical_align = $render_groups['vertical-align'];
+			$classes        = [ 'builder-item' ];
 			if ( $render_groups['is_last'] ) {
 				$classes[] = 'hfg-item-last';
 			}
@@ -1100,6 +1105,9 @@ abstract class Abstract_Builder implements Builder {
 			}
 			$classes[] = 'col-' . $width . ' col-md-' . $width . ' col-sm-' . $width;
 			$classes[] = 'hfg-item-' . $align;
+			if ( $vertical_align ) {
+				$classes[] = 'hfg-item-v-' . $vertical_align;
+			}
 
 			if ( $row_index !== 'sidebar' && $x > 0 ) {
 				$classes[] = 'offset-' . $x;

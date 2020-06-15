@@ -182,11 +182,19 @@ window.addEventListener('load', function () {
               addCss(settingId, style)
               break
             case '\\Neve\\Customizer\\Controls\\React\\Radio_Buttons':
+              if( ! args.additional ) return false;
+
+              const classes = args.additional.is_for === 'horizontal' ?
+				'hfg-item-center hfg-item-right hfg-item-left hfg-item-justify' :
+				'hfg-item-v-top hfg-item-v-middle hfg-item-v-bottom'
+              const newClass = args.additional.is_for === 'horizontal' ?
+				'hfg-item-' + newValue:
+				'hfg-item-v-' + newValue;
+
               let itemInner = document.querySelectorAll(args.selector)
               _.each(itemInner, function (item) {
-                removeClass(item.parentNode,
-                  'hfg-item-center hfg-item-right hfg-item-left hfg-item-justify')
-                addClass(item.parentNode, 'hfg-item-' + newValue)
+                removeClass(item.parentNode, classes)
+                addClass(item.parentNode, newClass )
               })
               break
             case '\\Neve\\Customizer\\Controls\\Radio_Image':
