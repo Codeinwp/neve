@@ -2585,6 +2585,14 @@ audio {
   flex-grow: 1;
 }
 
+.hfg-item-v-top {
+  align-self: flex-start;
+}
+
+.hfg-item-v-bottom {
+  align-self: flex-end;
+}
+
 .header-menu-sidebar {
   padding: 0;
   position: fixed;
