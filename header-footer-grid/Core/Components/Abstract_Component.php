@@ -300,13 +300,6 @@ abstract class Abstract_Component implements Component {
 	public $has_typeface_control = false;
 
 	/**
-	 * Should have vertical alignment control.
-	 *
-	 * @var bool
-	 */
-	public $has_vertical_alignment = false;
-
-	/**
 	 * Abstract_Component constructor.
 	 *
 	 * @param string $panel Builder panel.
@@ -857,7 +850,7 @@ abstract class Abstract_Component implements Component {
 	 * Add verical alignment control.
 	 */
 	private function add_vertical_alignment_control() {
-		if ( ! $this->has_vertical_alignment ) {
+		if ( $this->builder_id !== 'footer' ) {
 			return;
 		}
 		$align_choices = [
@@ -867,7 +860,7 @@ abstract class Abstract_Component implements Component {
 			],
 			'middle' => [
 				'tooltip' => __( 'Middle', 'neve' ),
-				'icon'    => 'leftright',
+				'icon'    => 'sort',
 			],
 			'bottom' => [
 				'tooltip' => __( 'Bottom', 'neve' ),

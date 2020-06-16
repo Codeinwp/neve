@@ -22,13 +22,6 @@ use WP_Customize_Manager;
 abstract class Abstract_FooterWidget extends Abstract_Component {
 
 	/**
-	 * Has vertical alignment.
-	 *
-	 * @var bool
-	 */
-	public $has_vertical_alignment = true;
-
-	/**
 	 * Method to show footer widget
 	 *
 	 * @param bool   $active Is active.
