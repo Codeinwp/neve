@@ -181,6 +181,7 @@ class Main {
 			'version'             => 'v' . NEVE_VERSION,
 			'assets'              => get_template_directory_uri() . '/dashboard/assets/',
 			'hasOldPro'           => (bool) ( defined( 'NEVE_PRO_VERSION' ) && version_compare( NEVE_PRO_VERSION, '1.1.11', '<' ) ),
+			'isRTL'               => is_rtl(),
 			'notifications'       => $this->get_notifications(),
 			'customizerShortcuts' => $this->get_customizer_shortcuts(),
 			'plugins'             => $this->get_useful_plugins(),
