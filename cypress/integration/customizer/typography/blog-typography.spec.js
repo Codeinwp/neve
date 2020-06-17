@@ -27,29 +27,29 @@ describe( 'Blog Typography', function() {
     cy.get( '#accordion-panel-neve_typography' ).click();
     cy.get( '#accordion-section-neve_typography_blog' ).click();
 
-    // cy.get( '#customize-control-neve_archive_typography_post_title_accordion_wrap .neve-customizer-heading').click();
-    // cy.setTypographyControl( '#customize-control-neve_archive_typography_post_title', setup.general );
-    // cy.get( '#customize-control-neve_archive_typography_post_title_accordion_wrap .neve-customizer-heading').click();
+    cy.get( '#customize-control-neve_archive_typography_post_title_accordion_wrap .neve-customizer-heading').click();
+    cy.setTypographyControl( '#customize-control-neve_archive_typography_post_title', setup.general );
+    cy.get( '#customize-control-neve_archive_typography_post_title_accordion_wrap .neve-customizer-heading').click();
 
-    // cy.get( '#customize-control-neve_archive_typography_post_excerpt_accordion_wrap .neve-customizer-heading').click();
-    // cy.setTypographyControl( '#customize-control-neve_archive_typography_post_excerpt', setup.general );
-    // cy.get( '#customize-control-neve_archive_typography_post_excerpt_accordion_wrap .neve-customizer-heading').click();
+    cy.get( '#customize-control-neve_archive_typography_post_excerpt_accordion_wrap .neve-customizer-heading').click();
+    cy.setTypographyControl( '#customize-control-neve_archive_typography_post_excerpt', setup.general );
+    cy.get( '#customize-control-neve_archive_typography_post_excerpt_accordion_wrap .neve-customizer-heading').click();
 
-    // cy.get( '#customize-control-neve_archive_typography_post_meta_accordion_wrap .neve-customizer-heading').click();
-    // cy.setTypographyControl( '#customize-control-neve_archive_typography_post_meta', setup.general );
-    // cy.get( '#customize-control-neve_archive_typography_post_meta_accordion_wrap .neve-customizer-heading').click();
+    cy.get( '#customize-control-neve_archive_typography_post_meta_accordion_wrap .neve-customizer-heading').click();
+    cy.setTypographyControl( '#customize-control-neve_archive_typography_post_meta', setup.general );
+    cy.get( '#customize-control-neve_archive_typography_post_meta_accordion_wrap .neve-customizer-heading').click();
 
     cy.get( '#customize-control-neve_single_post_typography_post_title_accordion_wrap .neve-customizer-heading').click();
     cy.setTypographyControl( '#customize-control-neve_single_post_typography_post_title', setup.general );
     cy.get( '#customize-control-neve_single_post_typography_post_title_accordion_wrap .neve-customizer-heading').click();
 
-    // cy.get( '#customize-control-neve_single_post_typography_post_meta_accordion_wrap .neve-customizer-heading').click();
-    // cy.setTypographyControl( '#customize-control-neve_single_post_typography_post_meta', setup.general );
-    // cy.get( '#customize-control-neve_single_post_typography_post_meta_accordion_wrap .neve-customizer-heading').click();
+    cy.get( '#customize-control-neve_single_post_typography_post_meta_accordion_wrap .neve-customizer-heading').click();
+    cy.setTypographyControl( '#customize-control-neve_single_post_typography_post_meta', setup.general );
+    cy.get( '#customize-control-neve_single_post_typography_post_meta_accordion_wrap .neve-customizer-heading').click();
 
-    // cy.get( '#customize-control-neve_single_post_typography_comments_title_accordion_wrap .neve-customizer-heading').click();
-    // cy.setTypographyControl( '#customize-control-neve_single_post_typography_comments_title', setup.general );
-    // cy.get( '#customize-control-neve_single_post_typography_comments_title_accordion_wrap .neve-customizer-heading').click();
+    cy.get( '#customize-control-neve_single_post_typography_comments_title_accordion_wrap .neve-customizer-heading').click();
+    cy.setTypographyControl( '#customize-control-neve_single_post_typography_comments_title', setup.general );
+    cy.get( '#customize-control-neve_single_post_typography_comments_title_accordion_wrap .neve-customizer-heading').click();
 
     aliasRestRoutes();
     cy.get( '#save' ).click();
@@ -60,51 +60,82 @@ describe( 'Blog Typography', function() {
     } );
   } );
 
-  // it( 'Test blog page typography on frontend', function () {
-  //   cy.visit( '/' );
-  //
-  //   cy.get( '.blog-entry-title' ).each( function ( elem ) {
-  //     testTransformAndWeight(elem);
-  //   });
-  //
-  //   cy.get( '.entry-summary' ).each( function ( elem ) {
-  //     testTransformAndWeight(elem);
-  //   });
-  //
-  //   cy.get( '.blog .nv-meta-list li' ).each( function ( elem ) {
-  //     testTransformAndWeight(elem);
-  //   });
-  //
-  //   let deviceMap = {
-  //     'desktop': {
-  //       height: 1080, width: 1920
-  //     },
-  //     'tablet': {
-  //       height: 1024, width: 768
-  //     },
-  //     'mobile': {
-  //       height: 667, width: 375
-  //     }
-  //   };
-  //
-  //   Object.keys( deviceMap ).map( device => {
-  //     // Change viewport.
-  //     cy.viewport( deviceMap[device].width, deviceMap[device].height );
-  //
-  //     cy.get( '.blog-entry-title' ).each( function ( elem ) {
-  //       testSizeLheightSpacing(elem, device);
-  //     });
-  //
-  //     cy.get( '.entry-summary' ).each( function ( elem ) {
-  //       testSizeLheightSpacing(elem, device);
-  //     });
-  //
-  //     cy.get( '.blog .nv-meta-list li' ).each( function ( elem ) {
-  //       testSizeLheightSpacing(elem, device);
-  //     });
-  //
-  //   } );
-  // } )
+  it( 'Test blog page typography on frontend', function () {
+    const settings = [
+      {
+        'pageToVisit' : '/',
+        'titleSelector' : '.blog-entry-title',
+        'metaSelector' : '.blog .nv-meta-list li',
+        'excerptSelector' : '.entry-summary'
+      },
+      {
+        'pageToVisit' : '/template-comments/',
+        'titleSelector' : '.nv-title-meta-wrap .entry-title',
+        'metaSelector' : '.single .nv-meta-list li',
+        'commentsSelector' : '.single .comment-reply-title'
+      }
+    ];
+
+    let deviceMap = {
+      'desktop': {
+        height: 1080, width: 1920
+      },
+      'tablet': {
+        height: 1024, width: 768
+      },
+      'mobile': {
+        height: 667, width: 375
+      }
+    };
+
+    for ( let i in settings ){
+      let currentSettings = settings[i];
+
+      cy.visit(currentSettings.pageToVisit);
+      cy.get( currentSettings.titleSelector ).each( function ( elem ) {
+        testTransformAndWeight(elem);
+      });
+      cy.get( currentSettings.metaSelector ).each( function ( elem ) {
+        testTransformAndWeight(elem);
+      });
+      if ( currentSettings && currentSettings.excerptSelector ) {
+        cy.get( currentSettings.excerptSelector ).each( function ( elem ) {
+          testTransformAndWeight(elem);
+        });
+      }
+      if ( currentSettings && currentSettings.commentsSelector ) {
+        cy.get( currentSettings.commentsSelector ).each( function ( elem ) {
+          testTransformAndWeight(elem);
+        });
+      }
+
+      Object.keys( deviceMap ).map( device => {
+        // Change viewport.
+        cy.viewport( deviceMap[device].width, deviceMap[device].height );
+
+        cy.get( currentSettings.titleSelector ).each( function ( elem ) {
+          testSizeLheightSpacing(elem, device);
+        });
+
+        cy.get( currentSettings.metaSelector ).each( function ( elem ) {
+          testSizeLheightSpacing(elem, device);
+        });
+
+        if ( currentSettings && currentSettings.excerptSelector ) {
+          cy.get( currentSettings.excerptSelector ).each( function ( elem ) {
+            testSizeLheightSpacing(elem, device);
+          });
+        }
+
+        if ( currentSettings && currentSettings.commentsSelector ) {
+          cy.get( currentSettings.commentsSelector ).each( function ( elem ) {
+            testSizeLheightSpacing(elem, device);
+          });
+        }
+      } );
+    }
+
+  } )
 
 } );
 
