@@ -212,7 +212,7 @@ class TypefaceComponent extends Component {
           onChange={(fontWeight) => {
             this.setState({ fontWeight })
             this.updateValues({ fontWeight })
-            if ( fontWeight === 'none' ) {
+            if ( fontWeight === 'none' && this.props.control.params.refresh_on_reset ) {
               wp.customize.previewer.refresh()
             }
           }}
