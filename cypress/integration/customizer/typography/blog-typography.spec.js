@@ -60,7 +60,7 @@ describe( 'Blog Typography', function() {
     } );
   } );
 
-  it( 'Test blog page typography on frontend', function () {
+  it( 'Test blog typography on frontend', function () {
     const settings = [
       {
         'pageToVisit' : '/',
