@@ -21,7 +21,7 @@ function neve_run() {
 			7 => 1,
 			8 => 2,
 			9 => 3,
-		] 
+		]
 	);
 
 	$vendor_file = trailingslashit( get_template_directory() ) . 'vendor/autoload.php';
@@ -54,13 +54,13 @@ function neve_run() {
 					'product_neve_license_status',
 					function ( $v ) use ( $value ) {
 						return isset( $value->license ) ? $value->license : 'free';
-					} 
+					}
 				);
 				add_filter(
 					'product_neve_license_plan',
 					function( $v ) use ( $value ) {
 						return isset( $value->plan ) ? $value->plan : -1;
-					} 
+					}
 				);
 			}
 		}
