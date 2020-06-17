@@ -212,6 +212,9 @@ class TypefaceComponent extends Component {
           onChange={(fontWeight) => {
             this.setState({ fontWeight })
             this.updateValues({ fontWeight })
+            if ( fontWeight === 'none' ) {
+              wp.customize.previewer.refresh()
+            }
           }}
         />
       </div>
@@ -276,6 +279,9 @@ class TypefaceComponent extends Component {
           value[currentDevice] = size_default[currentDevice]
           this.setState({ fontSize: value })
           this.updateValues({ fontSize: value })
+          if ( this.props.control.params.refresh_on_reset ) {
+            wp.customize.previewer.refresh()
+          }
         }}
         onChangedDevice={(currentDevice) => this.setState({ currentDevice })}
       />
@@ -314,6 +320,9 @@ class TypefaceComponent extends Component {
           value[currentDevice] = line_height_default[currentDevice]
           this.setState({ lineHeight: value })
           this.updateValues({ lineHeight: value })
+          if ( this.props.control.params.refresh_on_reset ) {
+            wp.customize.previewer.refresh()
+          }
         }}
         onUnitChange={(val) => {
           const value = lineHeight
@@ -355,6 +364,9 @@ class TypefaceComponent extends Component {
           value[currentDevice] = letter_spacing_default[currentDevice]
           this.setState({ letterSpacing: value })
           this.updateValues({ letterSpacing: value })
+          if ( this.props.control.params.refresh_on_reset ) {
+            wp.customize.previewer.refresh()
+          }
         }}
         onChangedDevice={(currentDevice) => this.setState({ currentDevice })}
       />

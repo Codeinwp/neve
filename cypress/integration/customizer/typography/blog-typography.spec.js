@@ -26,15 +26,30 @@ describe( 'Blog Typography', function() {
     cy.visit( '/wp-admin/customize.php' );
     cy.get( '#accordion-panel-neve_typography' ).click();
     cy.get( '#accordion-section-neve_typography_blog' ).click();
-    cy.get( '.neve-customizer-heading' ).each( function ( elem ) {
-      elem.click()
-    });
-    cy.setTypographyControl( '#customize-control-neve_archive_typography_post_title', setup.general );
-    cy.setTypographyControl( '#customize-control-neve_archive_typography_post_excerpt', setup.general );
-    cy.setTypographyControl( '#customize-control-neve_archive_typography_post_meta', setup.general );
+
+    // cy.get( '#customize-control-neve_archive_typography_post_title_accordion_wrap .neve-customizer-heading').click();
+    // cy.setTypographyControl( '#customize-control-neve_archive_typography_post_title', setup.general );
+    // cy.get( '#customize-control-neve_archive_typography_post_title_accordion_wrap .neve-customizer-heading').click();
+
+    // cy.get( '#customize-control-neve_archive_typography_post_excerpt_accordion_wrap .neve-customizer-heading').click();
+    // cy.setTypographyControl( '#customize-control-neve_archive_typography_post_excerpt', setup.general );
+    // cy.get( '#customize-control-neve_archive_typography_post_excerpt_accordion_wrap .neve-customizer-heading').click();
+
+    // cy.get( '#customize-control-neve_archive_typography_post_meta_accordion_wrap .neve-customizer-heading').click();
+    // cy.setTypographyControl( '#customize-control-neve_archive_typography_post_meta', setup.general );
+    // cy.get( '#customize-control-neve_archive_typography_post_meta_accordion_wrap .neve-customizer-heading').click();
+
+    cy.get( '#customize-control-neve_single_post_typography_post_title_accordion_wrap .neve-customizer-heading').click();
     cy.setTypographyControl( '#customize-control-neve_single_post_typography_post_title', setup.general );
-    cy.setTypographyControl( '#customize-control-neve_single_post_typography_post_meta', setup.general );
-    cy.setTypographyControl( '#customize-control-neve_single_post_typography_comments_title', setup.general );
+    cy.get( '#customize-control-neve_single_post_typography_post_title_accordion_wrap .neve-customizer-heading').click();
+
+    // cy.get( '#customize-control-neve_single_post_typography_post_meta_accordion_wrap .neve-customizer-heading').click();
+    // cy.setTypographyControl( '#customize-control-neve_single_post_typography_post_meta', setup.general );
+    // cy.get( '#customize-control-neve_single_post_typography_post_meta_accordion_wrap .neve-customizer-heading').click();
+
+    // cy.get( '#customize-control-neve_single_post_typography_comments_title_accordion_wrap .neve-customizer-heading').click();
+    // cy.setTypographyControl( '#customize-control-neve_single_post_typography_comments_title', setup.general );
+    // cy.get( '#customize-control-neve_single_post_typography_comments_title_accordion_wrap .neve-customizer-heading').click();
 
     aliasRestRoutes();
     cy.get( '#save' ).click();
