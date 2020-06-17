@@ -1,7 +1,7 @@
 /* global wp, neveDash  */
 const initialState = {
 	sites: neveDash.onboarding.sites || {},
-	editor: localStorage.getItem( 'neve-onboarding-editor') || 'elementor',
+	editor: localStorage.getItem( 'neve-onboarding-editor') || 'gutenberg',
 	previewStatus: false,
 	importModalStatus: false,
 	currentSite: null,
