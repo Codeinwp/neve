@@ -16,9 +16,8 @@ const {
 class TypefaceComponent extends Component {
   constructor(props) {
     super(props)
-
-    const value = props.control.setting.get()
-    const defaultParams = {
+    let value = props.control.setting.get()
+    let defaultParams = {
       size_units: ['em', 'px'],
       line_height_units: ['em', 'px'],
       weight_default: 400,
@@ -47,6 +46,17 @@ class TypefaceComponent extends Component {
         mobile: 0,
         tablet: 0,
         desktop: 0
+      }
+    }
+
+    if ( !value ) {
+      value = this.getEmptyValue()
+    }
+
+    if ( props.control.params.input_attrs.length ) {
+      const input_attrs = JSON.parse(props.control.params.input_attrs)
+      if ( input_attrs.default_is_empty ) {
+        defaultParams = this.getEmptyDefault()
       }
     }
 
@@ -79,6 +89,78 @@ class TypefaceComponent extends Component {
     this.renderLineHeight = this.renderLineHeight.bind(this)
     this.renderLetterSpacing = this.renderLetterSpacing.bind(this)
     this.updateValues = this.updateValues.bind(this)
+  }
+
+  getEmptyValue( prop = '' ) {
+    const emptyValue = {
+      currentDevice: 'desktop',
+      fontSize: {
+        suffix: {
+          mobile: 'px',
+          tablet: 'px',
+          desktop: 'px'
+        },
+        mobile: '',
+        tablet: '',
+        desktop: ''
+      },
+      lineHeight: {
+        suffix: {
+          mobile: 'em',
+          tablet: 'em',
+          desktop: 'em'
+        },
+        mobile: '',
+        tablet: '',
+        desktop: ''
+      },
+      letterSpacing: {
+        mobile: '',
+        tablet: '',
+        desktop: ''
+      },
+      fontWeight: 'none',
+      textTransform: 'none',
+      flag: false
+    }
+    if ( prop && emptyValue[prop] ) {
+      return emptyValue[prop]
+    }
+    return emptyValue
+  }
+
+  getEmptyDefault() {
+    return {
+      size_units: ['em', 'px'],
+      line_height_units: ['em', 'px'],
+      weight_default: 'none',
+      text_transform: 'none',
+      size_default: {
+        suffix: {
+          mobile: 'px',
+          tablet: 'px',
+          desktop: 'px'
+        },
+        mobile: '',
+        tablet: '',
+        desktop: ''
+      },
+      line_height_default: {
+        suffix: {
+          mobile: 'em',
+          tablet: 'em',
+          desktop: 'em'
+        },
+        mobile: '',
+        tablet: '',
+        desktop: ''
+      },
+      letter_spacing_default: {
+        mobile: '',
+        tablet: '',
+        desktop: ''
+      }
+    }
   }
 
   render() {
@@ -116,6 +198,7 @@ class TypefaceComponent extends Component {
         <SelectControl
           value={this.state.fontWeight}
           options={[
+            { value: 'none', label: __( 'None', 'neve' ) },
             { value: 100, label: '100' },
             { value: 200, label: '200' },
             { value: 300, label: '300' },
@@ -129,6 +212,9 @@ class TypefaceComponent extends Component {
           onChange={(fontWeight) => {
             this.setState({ fontWeight })
             this.updateValues({ fontWeight })
+            if ( fontWeight === 'none' && this.props.control.params.refresh_on_reset ) {
+              wp.customize.previewer.refresh()
+            }
           }}
         />
       </div>
@@ -159,8 +245,12 @@ class TypefaceComponent extends Component {
   }
 
   renderFontSize() {
-    const { currentDevice, fontSize } = this.state
+    let { fontSize } = this.state
+    const { currentDevice } = this.state
     const { size_default, size_units } = this.controlParams
+    if ( !fontSize ) {
+      fontSize = this.getEmptyValue('fontSize' )
+    }
     return (
       <NumberControl
         className='font-size'
@@ -189,6 +279,9 @@ class TypefaceComponent extends Component {
           value[currentDevice] = size_default[currentDevice]
           this.setState({ fontSize: value })
           this.updateValues({ fontSize: value })
+          if ( this.props.control.params.refresh_on_reset ) {
+            wp.customize.previewer.refresh()
+          }
         }}
         onChangedDevice={(currentDevice) => this.setState({ currentDevice })}
       />
@@ -197,7 +290,11 @@ class TypefaceComponent extends Component {
 
   renderLineHeight() {
     const { line_height_default, line_height_units } = this.controlParams
-    const { lineHeight, currentDevice } = this.state
+    const { currentDevice } = this.state
+    let { lineHeight } = this.state
+    if ( !lineHeight ) {
+      lineHeight = this.getEmptyValue('lineHeight' )
+    }
     return (
       <NumberControl
         className='line-height'
@@ -219,12 +316,13 @@ class TypefaceComponent extends Component {
         onReset={() => {
           const value = lineHeight
           value.suffix = value.suffix || line_height_default.suffix
-          console.log(value.suffix)
-          console.log(line_height_default)
           value.suffix[currentDevice] = line_height_default.suffix[currentDevice]
           value[currentDevice] = line_height_default[currentDevice]
           this.setState({ lineHeight: value })
           this.updateValues({ lineHeight: value })
+          if ( this.props.control.params.refresh_on_reset ) {
+            wp.customize.previewer.refresh()
+          }
         }}
         onUnitChange={(val) => {
           const value = lineHeight
@@ -239,14 +337,18 @@ class TypefaceComponent extends Component {
 
   renderLetterSpacing() {
     const { letter_spacing_default } = this.controlParams
-    const { currentDevice, letterSpacing } = this.state
+    const { currentDevice } = this.state
+    let { letterSpacing } = this.state
+    if ( !letterSpacing ) {
+      letterSpacing = this.getEmptyValue('letterSpacing' )
+    }
     return (
       <NumberControl
         className='letter-spacing'
         label={__('Letter Spacing', 'neve')}
         step={0.1}
         default={letter_spacing_default[currentDevice]}
-        value={letterSpacing[currentDevice]}
+        value={letterSpacing && letterSpacing[currentDevice] ? letterSpacing[currentDevice] : ''}
         max={20}
         min={-5}
         units={['px']}
@@ -262,6 +364,9 @@ class TypefaceComponent extends Component {
           value[currentDevice] = letter_spacing_default[currentDevice]
           this.setState({ letterSpacing: value })
           this.updateValues({ letterSpacing: value })
+          if ( this.props.control.params.refresh_on_reset ) {
+            wp.customize.previewer.refresh()
+          }
         }}
         onChangedDevice={(currentDevice) => this.setState({ currentDevice })}
       />

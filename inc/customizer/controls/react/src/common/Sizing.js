@@ -101,8 +101,8 @@ SizingControl.propTypes = {
   linked: PropTypes.bool,
   onReset: PropTypes.func,
   noLinking: PropTypes.bool,
-  min: PropTypes.int,
-  max: PropTypes.int,
+  min: PropTypes.number,
+  max: PropTypes.number,
   step: PropTypes.number
 }
 
