@@ -178,7 +178,6 @@ abstract class Base_Customizer {
 							$array[ $control_args['type'] ] = [];
 						}
 						$array[ $control_args['type'] ][ $control_args['id'] ] = [ 'selector' => $control_args['selector'] ];
-
 						return $array;
 					}
 				);
@@ -191,7 +190,7 @@ abstract class Base_Customizer {
 						$array['headerControls'][] = $id;
 
 						return $array;
-					} 
+					}
 				);
 			}
 			if ( isset( $control->partial ) ) {

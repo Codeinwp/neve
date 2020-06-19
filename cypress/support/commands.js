@@ -106,6 +106,10 @@ Cypress.Commands.add('getCustomizerControlValue', (slug) => {
 	return cy.window().then((win) => win.wp.customize.control(slug).setting.get() );
 });
 
+Cypress.Commands.add('setTypographyControl', ( controlSelector, values ) => {
+  setTypographyControl( controlSelector, values )
+});
+
 
 function updatePost() {
 	cy.get('.editor-post-publish-button').click();
@@ -127,4 +131,77 @@ function addFeaturedImage() {
 	cy.get('.media-button-select').click();
 }
 
+/**
+ * Set single typography control.
+ *
+ * @param controlSelector
+ * @param values
+ */
+function setTypographyControl( controlSelector, values ) {
+  cy.get( controlSelector ).
+  as( 'control' );
+
+  cy.get( '@control' ).
+  should( 'be.visible' ).
+  and( 'contain', 'Transform' ).
+  and( 'contain', 'Weight' ).
+  and( 'contain', 'Font Size' ).
+  and( 'contain', 'Line Height' ).
+  and( 'contain', 'Letter Spacing' );
+
+  // Change text transform.
+  cy.get( '@control' ).
+  find( '.text-transform select' ).
+  select( values.transform );
+
+  // Change font weight.
+  cy.get( '@control' ).
+  find( '.font-weight select' ).
+  select( values.weight );
+
+  let devices = ['desktop', 'tablet', 'mobile'],
+    controls = ['fontSize', 'lineHeight', 'letterSpacing'];
+
+  devices.map( ( device ) => {
+    cy.get( '@control' ).find( 'button.' + device ).first().click();
+    // Change font size.
+    cy.get( '@control' ).
+    find( '.font-size input' ).
+    as( 'fontSize' );
+
+    cy.get( '@control' ).
+    find( '.line-height input' ).
+    as( 'lineHeight' );
+
+    cy.get( '@control' ).
+    find( '.letter-spacing input' ).
+    as( 'letterSpacing' );
+
+    controls.map( control => {
+      cy.get( '@' + control ).invoke( 'val' ).then( value => {
+        // Make sure value is default.
+        cy.get( '@' + control ).should( 'have.value', value );
+        // Change the value.
+        changeNumberInputValue( '@' + control, values[control][device] );
+        // Value was changed?
+        cy.get( '@' + control ).should( 'have.value', values[control][device] );
+        // Reset to old value.
+        cy.get( '@' + control ).
+        closest( '.neve-responsive-sizing' ).
+        find( 'button' ).
+        click();
+        // Make sure value has been reset.
+        cy.get( '@' + control ).should( 'have.value', value );
+        // Change the value.
+        changeNumberInputValue( '@' + control, values[control][device] );
+      } );
+    } );
+  } );
+}
+
+function changeNumberInputValue( input, value ) {
+  cy.get( input ).
+  clear( {force: true} ).
+  type( '{leftarrow}' + value + '{rightarrow}{backspace}' );
+}
 
