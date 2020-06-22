@@ -48,11 +48,11 @@ describe('Switcher & Infinite Scroll', () => {
   })
 
   it('Siwtcher', () => {
-	const editors = ['Brizy', 'Beaver Builder', 'Thrive Architect', 'Divi Builder', 'Gutenberg']
-	const ELEMENTOR = 'Elementor'
+	const editors = ['Brizy', 'Beaver Builder', 'Thrive Architect', 'Divi Builder', 'Elementor']
+	const GUTENBERG = 'Gutenberg'
 	const BEAVER = 'Beaver Builder'
 	cy.get('@starterSitesTab').find('button.ob-dropdown').as('editorSelect')
-	cy.get('@editorSelect').should('contain', ELEMENTOR).click()
+	cy.get('@editorSelect').should('contain', GUTENBERG).click()
 	cy.get('@editorSelect').find('.options').should('be.visible')
 	editors.map(editor => {
 	  cy.get('@editorSelect').find('li').contains(editor).should('exist').and('be.visible')
@@ -62,7 +62,7 @@ describe('Switcher & Infinite Scroll', () => {
 	cy.get('@editorSelect').should('contain', BEAVER)
 	cy.reload()
 	cy.get('@editorSelect').should('contain', BEAVER).click()
-	cy.get('@editorSelect').find('li').contains(ELEMENTOR).click()
+	cy.get('@editorSelect').find('li').contains(GUTENBERG).click()
   })
 })
 
