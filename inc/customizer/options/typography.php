@@ -294,7 +294,7 @@ class Typography extends Base_Customizer {
 			'neve_archive_typography_post_excerpt'       => array(
 				'label'                 => __( 'Post excerpt', 'neve' ),
 				'priority'              => 20,
-				'live_refresh_selector' => '.blog .entry-summary, .archive .entry-summary',
+				'live_refresh_selector' => '.blog .entry-summary, .archive .entry-summary, .blog .post-pages-links',
 			),
 			'neve_archive_typography_post_meta'          => array(
 				'label'                 => __( 'Post meta', 'neve' ),
