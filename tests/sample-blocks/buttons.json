@@ -1,0 +1,87 @@
+<!-- wp:buttons -->
+<div class="wp-block-buttons"><!-- wp:button -->
+<div class="wp-block-button"><a class="wp-block-button__link">First Button</a></div>
+<!-- /wp:button -->
+
+<!-- wp:button {"textColor":"black","customBackgroundColor":"#1dafed"} -->
+<div class="wp-block-button"><a class="wp-block-button__link has-text-color has-black-color has-background" style="background-color:#1dafed">second button</a></div>
+<!-- /wp:button -->
+
+<!-- wp:button -->
+<div class="wp-block-button"><a class="wp-block-button__link">third button</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons -->
+
+<!-- wp:paragraph -->
+<p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec ullamcorper nulla non metus auctor fringilla. Maecenas sed diam eget risus varius.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:buttons -->
+<div class="wp-block-buttons"><!-- wp:button {"borderRadius":50} -->
+<div class="wp-block-button"><a class="wp-block-button__link" style="border-radius:50px">Left aligned button</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons -->
+
+<!-- wp:buttons {"align":"center"} -->
+<div class="wp-block-buttons aligncenter"><!-- wp:button -->
+<div class="wp-block-button"><a class="wp-block-button__link">Center aligned button</a></div>
+<!-- /wp:button -->
+
+<!-- wp:button {"textColor":"black","customGradient":"linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 78%)"} -->
+<div class="wp-block-button"><a class="wp-block-button__link has-text-color has-black-color has-background" style="background:linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 78%)">Center button 2</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons -->
+
+<!-- wp:buttons {"align":"right"} -->
+<div class="wp-block-buttons alignright"><!-- wp:button -->
+<div class="wp-block-button"><a class="wp-block-button__link">Right aligned button</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons -->
+
+<!-- wp:paragraph -->
+<p></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec ullamcorper nulla non metus auctor fringilla. Maecenas sed diam eget risus varius.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec ullamcorper nulla non metus auctor fringilla. Maecenas sed diam eget risus varius.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:buttons -->
+<div class="wp-block-buttons"><!-- wp:button -->
+<div class="wp-block-button"><a class="wp-block-button__link">DEFAUlt BUTTON</a></div>
+<!-- /wp:button -->
+
+<!-- wp:button {"className":"is-style-primary"} -->
+<div class="wp-block-button is-style-primary"><a class="wp-block-button__link">primary button</a></div>
+<!-- /wp:button -->
+
+<!-- wp:button {"className":"is-style-secondary"} -->
+<div class="wp-block-button is-style-secondary"><a class="wp-block-button__link">secondary button</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons -->
+
+<!-- wp:separator -->
+<hr class="wp-block-separator"/>
+<!-- /wp:separator -->
+
+<!-- wp:buttons {"align":"center"} -->
+<div class="wp-block-buttons aligncenter"><!-- wp:button {"borderRadius":26} -->
+<div class="wp-block-button"><a class="wp-block-button__link" style="border-radius:26px">default button</a></div>
+<!-- /wp:button -->
+
+<!-- wp:button {"textColor":"black","gradient":"blush-bordeaux","className":"is-style-primary"} -->
+<div class="wp-block-button is-style-primary"><a class="wp-block-button__link has-text-color has-black-color has-background has-blush-bordeaux-gradient-background">primary button</a></div>
+<!-- /wp:button -->
+
+<!-- wp:button {"customBackgroundColor":"#f2179b","customTextColor":"#fcf400","borderRadius":50,"className":"is-style-secondary"} -->
+<div class="wp-block-button is-style-secondary"><a class="wp-block-button__link has-text-color has-background" style="background-color:#f2179b;color:#fcf400;border-radius:50px">secondary button</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons -->
+
+<!-- wp:paragraph -->
+<p></p>
+<!-- /wp:paragraph -->

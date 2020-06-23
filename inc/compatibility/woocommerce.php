@@ -254,24 +254,6 @@ class Woocommerce {
 	}
 
 	/**
-	 * Remove last breadcrumb on single product.
-	 *
-	 * @param array $crumbs breadcrumbs.
-	 * @param array $args breadcrumbs args.
-	 *
-	 * @return array
-	 */
-	public function remove_last_breadcrumb( $crumbs, $args ) {
-		if ( ! is_product() ) {
-			return $crumbs;
-		}
-		$length               = sizeof( $crumbs ) - 1;
-		$crumbs[ $length ][0] = '';
-
-		return $crumbs;
-	}
-
-	/**
 	 * Change functions hooked into woocommerce header.
 	 */
 	private function edit_woocommerce_header() {
@@ -285,7 +267,6 @@ class Woocommerce {
 		add_action( 'neve_before_shop_loop_content', array( $this, 'add_header_bits' ), 0 );
 
 		// Change breadcrumbs.
-		add_filter( 'woocommerce_get_breadcrumb', array( $this, 'remove_last_breadcrumb' ), 10, 2 );
 		add_filter( 'woocommerce_breadcrumb_defaults', array( $this, 'change_breadcrumbs_delimiter' ) );
 	}
 

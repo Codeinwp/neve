@@ -95,6 +95,7 @@ class Typography extends Base_Customizer {
 		$this->sections_typography();
 		$this->controls_typography_general();
 		$this->controls_typography_headings();
+		$this->controls_typography_blog();
 	}
 
 	/**
@@ -109,6 +110,10 @@ class Typography extends Base_Customizer {
 			'neve_typography_headings' => array(
 				'title'    => __( 'Headings', 'neve' ),
 				'priority' => 35,
+			),
+			'neve_typography_blog'     => array(
+				'title'    => __( 'Blog', 'neve' ),
+				'priority' => 45,
 			),
 		);
 
@@ -236,11 +241,11 @@ class Typography extends Base_Customizer {
 						'accordion'        => true,
 						'controls_to_wrap' => 1,
 						'expanded'         => false,
-						// 'expanded'         => ( $priority === 21 ),
 					),
 					'Neve\Customizer\Controls\Heading'
 				)
 			);
+
 			$this->add_control(
 				new Control(
 					'neve_' . $heading_id . '_typeface_general',
@@ -268,6 +273,115 @@ class Typography extends Base_Customizer {
 						),
 						'type'                  => 'neve_typeface_control',
 						'live_refresh_selector' => $selectors[ $heading_id ],
+					],
+					'\Neve\Customizer\Controls\React\Typography'
+				)
+			);
+		}
+	}
+
+	/**
+	 * Add controls for blog typography.
+	 */
+	private function controls_typography_blog() {
+		$controls = array(
+			'neve_archive_typography_post_title'         => array(
+				'label'                 => __( 'Post title', 'neve' ),
+				'category_label'        => __( 'Blog Archive', 'neve' ),
+				'priority'              => 10,
+				'live_refresh_selector' => '.blog .blog-entry-title, .archive .blog-entry-title',
+			),
+			'neve_archive_typography_post_excerpt'       => array(
+				'label'                 => __( 'Post excerpt', 'neve' ),
+				'priority'              => 20,
+				'live_refresh_selector' => '.blog .entry-summary, .archive .entry-summary, .blog .post-pages-links',
+			),
+			'neve_archive_typography_post_meta'          => array(
+				'label'                 => __( 'Post meta', 'neve' ),
+				'priority'              => 30,
+				'live_refresh_selector' => '.blog .nv-meta-list li, .archive .nv-meta-list li',
+			),
+			'neve_single_post_typography_post_title'     => array(
+				'label'                 => __( 'Post title', 'neve' ),
+				'category_label'        => __( 'Single Post', 'neve' ),
+				'priority'              => 40,
+				'live_refresh_selector' => '.single h1.entry-title',
+			),
+			'neve_single_post_typography_post_meta'      => array(
+				'label'                 => __( 'Post meta', 'neve' ),
+				'priority'              => 50,
+				'live_refresh_selector' => '.single .nv-meta-list li',
+			),
+			'neve_single_post_typography_comments_title' => array(
+				'label'                 => __( 'Comments reply title', 'neve' ),
+				'priority'              => 60,
+				'live_refresh_selector' => '.single .comment-reply-title',
+			),
+		);
+
+		foreach ( $controls as $control_id => $control_settings ) {
+			$settings = array(
+				'label'            => $control_settings['label'],
+				'section'          => 'neve_typography_blog',
+				'priority'         => $control_settings['priority'],
+				'class'            => esc_attr( 'typography-blog-' . $control_id ),
+				'accordion'        => true,
+				'controls_to_wrap' => 1,
+				'expanded'         => false,
+			);
+			if ( array_key_exists( 'category_label', $control_settings ) ) {
+				$settings['category_label'] = $control_settings['category_label'];
+			}
+
+			$this->add_control(
+				new Control(
+					$control_id . '_accordion_wrap',
+					array(
+						'sanitize_callback' => 'sanitize_text_field',
+						'transport'         => $this->selective_refresh,
+					),
+					$settings,
+					'Neve\Customizer\Controls\Heading'
+				)
+			);
+
+			$this->add_control(
+				new Control(
+					$control_id,
+					[
+						'transport' => $this->selective_refresh,
+					],
+					[
+						'priority'              => $control_settings['priority'] += 1,
+						'section'               => 'neve_typography_blog',
+						'type'                  => 'neve_typeface_control',
+						'live_refresh_selector' => $control_settings['live_refresh_selector'],
+						'refresh_on_reset'      => true,
+						'input_attrs'           => array(
+							'default_is_empty'       => true,
+							'size_units'             => [ 'em', 'px' ],
+							'weight_default'         => 'none',
+							'size_default'           => array(
+								'suffix'  => array(
+									'mobile'  => 'px',
+									'tablet'  => 'px',
+									'desktop' => 'px',
+								),
+								'mobile'  => '',
+								'tablet'  => '',
+								'desktop' => '',
+							),
+							'line_height_default'    => array(
+								'mobile'  => '',
+								'tablet'  => '',
+								'desktop' => '',
+							),
+							'letter_spacing_default' => array(
+								'mobile'  => '',
+								'tablet'  => '',
+								'desktop' => '',
+							),
+						),
 					],
 					'\Neve\Customizer\Controls\React\Typography'
 				)

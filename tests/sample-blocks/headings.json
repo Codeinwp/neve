@@ -1,0 +1,67 @@
+<!-- wp:heading {"level":1} -->
+<h1>Heading One Left Aligned</h1>
+<!-- /wp:heading -->
+
+<!-- wp:heading -->
+<h2>Heading Two</h2>
+<!-- /wp:heading -->
+
+<!-- wp:heading {"level":3} -->
+<h3><s>Heading Three</s></h3>
+<!-- /wp:heading -->
+
+<!-- wp:heading {"level":4} -->
+<h4><code>Heading Four</code> Inline Code</h4>
+<!-- /wp:heading -->
+
+<!-- wp:heading {"level":5} -->
+<h5>Heading Five</h5>
+<!-- /wp:heading -->
+
+<!-- wp:heading {"level":6} -->
+<h6>Heading Six</h6>
+<!-- /wp:heading -->
+
+<!-- wp:heading {"align":"center","level":1,"textColor":"neve-button-color"} -->
+<h1 class="has-neve-button-color-color has-text-color has-text-align-center">Heading One Centered</h1>
+<!-- /wp:heading -->
+
+<!-- wp:heading {"align":"center","level":4} -->
+<h4 class="has-text-align-center"><strong>Heading Four Centered and Bold</strong></h4>
+<!-- /wp:heading -->
+
+<!-- wp:heading {"align":"center","level":5} -->
+<h5 class="has-text-align-center">Heading Five Centered</h5>
+<!-- /wp:heading -->
+
+<!-- wp:heading {"align":"center","level":6} -->
+<h6 class="has-text-align-center"><em>Heading Six Centered and Italic</em></h6>
+<!-- /wp:heading -->
+
+<!-- wp:heading {"align":"right","level":6,"customTextColor":"#06a5e9"} -->
+<h6 class="has-text-color has-text-align-right" style="color:#06a5e9">Heading Six</h6>
+<!-- /wp:heading -->
+
+<!-- wp:heading {"align":"right","level":5,"customTextColor":"#2d6982"} -->
+<h5 class="has-text-color has-text-align-right" style="color:#2d6982">Heading Five</h5>
+<!-- /wp:heading -->
+
+<!-- wp:heading {"align":"right","level":4,"customTextColor":"#dc1493"} -->
+<h4 class="has-text-color has-text-align-right" style="color:#dc1493">Heading Four</h4>
+<!-- /wp:heading -->
+
+<!-- wp:heading {"align":"right","level":3,"customTextColor":"#a3009d"} -->
+<h3 class="has-text-color has-text-align-right" style="color:#a3009d"><em>Heading Three Right Aligned</em></h3>
+<!-- /wp:heading -->
+
+<!-- wp:heading {"align":"right"} -->
+<h2 class="has-text-align-right">Heading Two Right Aligned</h2>
+<!-- /wp:heading -->
+
+<!-- wp:heading {"align":"right","level":1} -->
+<h1 class="has-text-align-right">Heading One Right Aligned</h1>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p></p>
+<!-- /wp:paragraph -->

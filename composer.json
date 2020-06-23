@@ -15,7 +15,6 @@
 	"source": "https://github.com/Codeinwp/neve"
   },
   "require": {
-	"codeinwp/ti-about-page": "master",
 	"codeinwp/themeisle-sdk": "^3.0",
 	"codeinwp/themeisle-onboarding": "master"
   },
@@ -26,8 +25,7 @@
 	},
 	"files": [
 	  "vendor/codeinwp/themeisle-sdk/load.php",
-	  "vendor/codeinwp/themeisle-onboarding/load.php",
-	  "vendor/codeinwp/ti-about-page/load.php"
+	  "vendor/codeinwp/themeisle-onboarding/load.php"
 	]
   },
   "scripts": {

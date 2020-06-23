@@ -1755,10 +1755,6 @@ body.woocommerce-account .woocommerce-form-login .form-row:not(.woocommerce-form
   padding: 0 5px;
 }
 
-.woocommerce.single .nv-breadcrumb-delimiter:last-of-type {
-  display: none;
-}
-
 .woocommerce .nv-bc-count-wrap {
   display: flex;
   font-size: .85em;

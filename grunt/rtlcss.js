@@ -65,4 +65,12 @@ module.exports = {
 		ext,
 		src: ['style.css']
 	},
+  dashboard: {
+	  options,
+	expand: true,
+	cwd: './dashboard/build/',
+	dest: './dashboard/build/',
+	ext,
+	src: ['build.css']
+  }
 };

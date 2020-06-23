@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import ResponsiveControl from '../common/Responsive.js'
 import SizingControl from '../common/Sizing.js'
+import { mergeDeep } from '../common/common'
 
 const { Component } = wp.element
 const { Button } = wp.components
@@ -12,16 +13,6 @@ const { mapValues } = lodash
 class SpacingComponent extends Component {
   constructor(props) {
     super(props)
-    const value = props.control.setting.get()
-    this.state = {
-      value,
-      linked: true,
-      currentDevice: 'desktop'
-    }
-
-    if (!this.shouldValuesBeLinked()) {
-      this.state.linked = false
-    }
 
     const defaultParams = {
       min: -300,
@@ -47,6 +38,19 @@ class SpacingComponent extends Component {
       ...baseDefault,
       ...props.control.params.default
     } : baseDefault
+
+    const dbVal = props.control.setting.get()
+    const value = mergeDeep(this.defaultValue, dbVal)
+
+    this.state = {
+      value,
+      linked: true,
+      currentDevice: 'desktop'
+    }
+
+    if (!this.shouldValuesBeLinked()) {
+      this.state.linked = false
+    }
 
     this.shouldValuesBeLinked = this.shouldValuesBeLinked.bind(this)
     this.getButtons = this.getButtons.bind(this)

@@ -1,0 +1,55 @@
+<!-- wp:heading -->
+<h2>Default style table</h2>
+<!-- /wp:heading -->
+
+<!-- wp:table {"backgroundColor":"subtle-pale-blue"} -->
+<figure class="wp-block-table"><table class="has-subtle-pale-blue-background-color has-background"><thead><tr><th>Employee</th><th>Salary</th><th>Position</th></tr></thead><tbody><tr><td>Jane Bloggs</td><td>$10k</td><td>Marketing</td></tr><tr><td>Jane Doe</td><td>$100k</td><td>CEO</td></tr><tr><td>John Doe</td><td>$130k</td><td>CTO</td></tr><tr><td>Fred Bloggs</td><td>$100k</td><td>Engineering</td></tr></tbody><tfoot><tr><td>Employee</td><td>Salary</td><td>Position</td></tr></tfoot></table><figcaption>Caption table 1</figcaption></figure>
+<!-- /wp:table -->
+
+<!-- wp:heading -->
+<h2>Stripes style table</h2>
+<!-- /wp:heading -->
+
+<!-- wp:table {"hasFixedLayout":true,"backgroundColor":"subtle-pale-pink","className":"is-style-stripes"} -->
+<figure class="wp-block-table is-style-stripes"><table class="has-subtle-pale-pink-background-color has-fixed-layout has-background"><tbody><tr><td>Jane Bloggs</td><td>$10k</td><td>Marketing</td></tr><tr><td>Jane Doe</td><td>$100k</td><td>CEO</td></tr><tr><td>John Doe</td><td>$130k</td><td>CTO</td></tr><tr><td>Fred Bloggs</td><td>$100k</td><td>Engineering</td></tr></tbody></table><figcaption>Caption table 2</figcaption></figure>
+<!-- /wp:table -->
+
+<!-- wp:heading {"align":"right"} -->
+<h2 class="has-text-align-right">Right aligned columns</h2>
+<!-- /wp:heading -->
+
+<!-- wp:table {"backgroundColor":"subtle-pale-green"} -->
+<figure class="wp-block-table"><table class="has-subtle-pale-green-background-color has-background"><thead><tr><th class="has-text-align-right" data-align="right">Employee</th><th class="has-text-align-right" data-align="right">Salary</th><th class="has-text-align-right" data-align="right">Position</th></tr></thead><tbody><tr><td class="has-text-align-right" data-align="right">Jane Bloggs</td><td class="has-text-align-right" data-align="right">$10k</td><td class="has-text-align-right" data-align="right">Marketing</td></tr><tr><td class="has-text-align-right" data-align="right">Jane Doe</td><td class="has-text-align-right" data-align="right">$100k</td><td class="has-text-align-right" data-align="right">CEO</td></tr><tr><td class="has-text-align-right" data-align="right">John Doe</td><td class="has-text-align-right" data-align="right">$130k</td><td class="has-text-align-right" data-align="right">CTO</td></tr><tr><td class="has-text-align-right" data-align="right">Fred Bloggs</td><td class="has-text-align-right" data-align="right">$100k</td><td class="has-text-align-right" data-align="right">Engineering</td></tr></tbody></table></figure>
+<!-- /wp:table -->
+
+<!-- wp:heading {"align":"center"} -->
+<h2 class="has-text-align-center">Left/Right alignment</h2>
+<!-- /wp:heading -->
+
+<!-- wp:table {"backgroundColor":"subtle-pale-green","align":"left","className":"is-style-stripes"} -->
+<figure class="wp-block-table alignleft is-style-stripes"><table class="has-subtle-pale-green-background-color has-background"><tbody><tr><td>Jane Bloggs</td><td>$10k</td></tr><tr><td>Jane Doe</td><td>$100k</td></tr><tr><td>John Doe</td><td>$130k</td></tr><tr><td>Fred Bloggs</td><td>$100k</td></tr></tbody></table><figcaption><strong>Aligned left table</strong></figcaption></figure>
+<!-- /wp:table -->
+
+<!-- wp:table {"backgroundColor":"subtle-light-gray","align":"right","className":"is-style-stripes"} -->
+<figure class="wp-block-table alignright is-style-stripes"><table class="has-subtle-light-gray-background-color has-background"><thead><tr><th>Name</th><th>Salary</th></tr></thead><tbody><tr><td>Jane Bloggs</td><td>$10k</td></tr><tr><td>Jane Doe</td><td>$100k</td></tr><tr><td>John Doe</td><td>$130k</td></tr><tr><td>Fred Bloggs</td><td>$100k</td></tr></tbody></table><figcaption><strong>Aligned right table</strong></figcaption></figure>
+<!-- /wp:table -->
+
+<!-- wp:paragraph -->
+<p>Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla.Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"align":"center"} -->
+<h2 class="has-text-align-center">Wide width table</h2>
+<!-- /wp:heading -->
+
+<!-- wp:table {"hasFixedLayout":true,"backgroundColor":"subtle-pale-blue","align":"wide"} -->
+<figure class="wp-block-table alignwide"><table class="has-subtle-pale-blue-background-color has-fixed-layout has-background"><thead><tr><th>Employee</th><th>Salary</th><th>Position</th></tr></thead><tbody><tr><td>Jane Bloggs</td><td>$10k</td><td>Marketing</td></tr><tr><td>Jane Doe</td><td>$100k</td><td>CEO</td></tr><tr><td>John Doe</td><td>$130k</td><td>CTO</td></tr><tr><td>Fred Bloggs</td><td>$100k</td><td>Engineering</td></tr></tbody><tfoot><tr><td>Employee</td><td>Salary</td><td>Position</td></tr></tfoot></table><figcaption>Caption table wide width</figcaption></figure>
+<!-- /wp:table -->
+
+<!-- wp:heading {"align":"center"} -->
+<h2 class="has-text-align-center">Full width table</h2>
+<!-- /wp:heading -->
+
+<!-- wp:table {"backgroundColor":"subtle-pale-pink","align":"full","className":"is-style-stripes"} -->
+<figure class="wp-block-table alignfull is-style-stripes"><table class="has-subtle-pale-pink-background-color has-background"><tbody><tr><td>Jane Bloggs</td><td>$10k</td><td>Marketing</td></tr><tr><td>Jane Doe</td><td>$100k</td><td>CEO</td></tr><tr><td>John Doe</td><td>$130k</td><td>CTO</td></tr><tr><td>Fred Bloggs</td><td>$100k</td><td>Engineering</td></tr></tbody></table><figcaption>Caption table full width</figcaption></figure>
+<!-- /wp:table -->
