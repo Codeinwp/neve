@@ -2228,6 +2228,7 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:translation-services-brizy/wp-content/uploads/2020/05/neve-translations.jpg',
 						'title'            => 'Translation and Interpreter Services',
 						'keywords'         => [ 'responsive', 'blog' ],
+					],
 				],
 			],
 			'can_migrate' => [
