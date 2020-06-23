@@ -245,7 +245,7 @@ class Front_End {
 						'remote_url' => 'https://api.themeisle.com/sites/charity/',
 						'title'      => 'Charity',
 						'screenshot' => 'https://api.themeisle.com/sites/images/q:auto/cb:charity/wp-content/uploads/2020/05/screenshot-1.png',
-						'keywords'         => [ 'one page', 'minimal', 'business', 'free' ],
+						'keywords'   => [ 'one page', 'minimal', 'business', 'free' ],
 					],
 					'neve-vet-center'         => [
 						'url'        => 'https://demosites.io/vet-center/',
@@ -1535,11 +1535,11 @@ class Front_End {
 						'keywords'   => [ 'ecommerce', 'responsive' ],
 					],
 					'neve-farm'                  => [
-						'url'         => 'https://demosites.io/farm/',
-						'remote_url'  => 'https://api.themeisle.com/sites/farm/',
-						'screenshot'  => 'https://api.themeisle.com/sites/images/q:auto/cb:farm/wp-content/uploads/2020/05/neve-farm.jpg',
-						'title'       => 'Farm',
-						'keywords'    => [ 'food', 'responsive' ],
+						'url'        => 'https://demosites.io/farm/',
+						'remote_url' => 'https://api.themeisle.com/sites/farm/',
+						'screenshot' => 'https://api.themeisle.com/sites/images/q:auto/cb:farm/wp-content/uploads/2020/05/neve-farm.jpg',
+						'title'      => 'Farm',
+						'keywords'   => [ 'food', 'responsive' ],
 					],
 					'neve-photographer'          => [
 						'url'        => 'https://demosites.io/photography/',
