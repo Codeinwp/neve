@@ -20,7 +20,7 @@ if ( is_active_sidebar( $_id ) ) {
 <?php } elseif ( current_user_can( 'edit_theme_options' ) ) { ?>
 	<div class="widget-area">
 		<section id="placeholder-widget-text" class="widget widget_text">
-			<h4 class="widget-title"><?php echo esc_attr( current_component()->get_property( 'label' ) ); ?></h4>
+			<h4 class="widget-title"><?php echo esc_html( current_component()->get_property( 'label' ) ); ?></h4>
 			<div class="textwidget">
 				<?php
 				echo sprintf(
