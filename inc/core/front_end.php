@@ -224,7 +224,6 @@ class Front_End {
 						'remote_url'       => 'https://api.themeisle.com/sites/web-agency/',
 						'title'            => 'Web Agency',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:web-agency/wp-content/uploads/2020/05/neve-web-agency-all-new.png',
-						'unsplash_gallery' => 'https://unsplash.com/collections/9015394/neve-digital-agency/c794fcd505d0ac7fe2134479c3b8f670',
 						'keywords'         => [ 'business', 'one page', 'minimal', 'blog', 'free', 'agency' ],
 					],
 					'neve-blogger'            => [
@@ -232,7 +231,6 @@ class Front_End {
 						'remote_url'       => 'https://api.themeisle.com/sites/blogger/',
 						'title'            => 'Blogger',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:blogger/wp-content/uploads/2020/05/neve-blogger.jpg',
-						'unsplash_gallery' => 'https://unsplash.com/collections/8936140/minimal-blog',
 						'keywords'         => [ 'minimal', 'one page', 'blog', 'responsive', 'free' ],
 					],
 					'neve-restaurant'         => [
@@ -240,7 +238,6 @@ class Front_End {
 						'remote_url'       => 'https://api.themeisle.com/sites/restaurant/',
 						'title'            => 'Restaurant',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:restaurant/wp-content/uploads/2020/05/screenshot.png',
-						'unsplash_gallery' => 'https://unsplash.com/collections/4587624/restaurant',
 						'keywords'         => [ 'food', 'business', 'responsive', 'free' ],
 					],
 					'neve-charity'            => [
@@ -248,7 +245,6 @@ class Front_End {
 						'remote_url'       => 'https://api.themeisle.com/sites/charity/',
 						'title'            => 'Charity',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:charity/wp-content/uploads/2020/05/screenshot-1.png',
-						'unsplash_gallery' => 'https://unsplash.com/collections/4587605/charity',
 						'keywords'         => [ 'one page', 'minimal', 'business', 'free' ],
 					],
 					'neve-vet-center'         => [
@@ -256,7 +252,6 @@ class Front_End {
 						'remote_url'       => 'https://api.themeisle.com/sites/vet-center/',
 						'title'            => 'Vet Center',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:vet-center/wp-content/uploads/2020/05/screenshot-2.png',
-						'unsplash_gallery' => 'https://unsplash.com/collections/4587611/vet-center',
 						'keywords'         => [ 'medical', 'minimal', 'responsive', 'free' ],
 					],
 					'neve-doctors'            => [
@@ -264,7 +259,6 @@ class Front_End {
 						'remote_url'       => 'https://api.themeisle.com/sites/doctors/',
 						'title'            => 'Doctors',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:doctors/wp-content/uploads/2020/05/screenshot-3.png',
-						'unsplash_gallery' => 'https://unsplash.com/collections/4587593/doctor',
 						'keywords'         => [ 'medical', 'one page', 'minimal', 'responsive', 'free' ],
 					],
 					'neve-architecture'       => [
@@ -272,7 +266,6 @@ class Front_End {
 						'remote_url'       => 'https://api.themeisle.com/sites/architecture/',
 						'title'            => 'Architecture',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:architecture/wp-content/uploads/2020/05/screenshot-4.png',
-						'unsplash_gallery' => 'https://unsplash.com/collections/6802313/architecture/f59e19df059789d86d1066ea80130a87',
 						'keywords'         => [ 'minimal', 'one page', 'business', 'responsive', 'free' ],
 					],
 					'neve-fitness'            => [
@@ -280,7 +273,6 @@ class Front_End {
 						'remote_url'       => 'https://api.themeisle.com/sites/fitness/',
 						'title'            => 'Fitness',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:fitness/wp-content/uploads/2020/05/screenshot-5.png',
-						'unsplash_gallery' => 'https://unsplash.com/collections/6800490/fitness-gym',
 						'keywords'         => [ 'sports', 'one page', 'free' ],
 					],
 					'neve-vacation-rental'    => [
@@ -288,7 +280,6 @@ class Front_End {
 						'remote_url'       => 'https://api.themeisle.com/sites/vacation-rental/',
 						'title'            => 'Vacation Rental',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:vacation-rental/wp-content/uploads/2020/05/screenshot-6.png',
-						'unsplash_gallery' => 'https://unsplash.com/collections/7851106/hotel',
 						'keywords'         => [ 'minimal', 'blog', 'free' ],
 					],
 					'neve-music-band'         => [
@@ -296,7 +287,6 @@ class Front_End {
 						'remote_url'       => 'https://api.themeisle.com/sites/music-band/',
 						'title'            => 'Music Band',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:music-band/wp-content/uploads/2020/05/screenshot-7.png',
-						'unsplash_gallery' => 'https://unsplash.com/collections/7338489/music/746c95e4a72ad242a07001a2ca0fa7cb',
 						'keywords'         => [ 'one page', 'business', 'blog', 'responsive', 'free', 'music' ],
 					],
 					'neve-wedding'            => [
@@ -304,7 +294,6 @@ class Front_End {
 						'remote_url'       => 'https://api.themeisle.com/sites/wedding/',
 						'title'            => 'Wedding',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:wedding/wp-content/uploads/2020/05/screenshot.jpg',
-						'unsplash_gallery' => 'https://unsplash.com/collections/8116784/wedding/9afa9f6ba14422f348e1c7a49a9d51e9',
 						'keywords'         => [ 'business', 'minimal', 'responsive', 'free', 'wedding' ],
 					],
 					'neve-themotion'          => [
@@ -312,7 +301,6 @@ class Front_End {
 						'remote_url'       => 'https://api.themeisle.com/sites/themotion/',
 						'title'            => 'Video Blog',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:themotion/wp-content/uploads/2020/05/screenshot-1.jpg',
-						'unsplash_gallery' => 'https://unsplash.com/collections/8256651/neve-the-motion/79f8c5a63926e7cee4deed75bc6724fc',
 						'keywords'         => [ 'photography', 'blog', 'responsive', 'free' ],
 					],
 					'neve-amadeus'            => [
@@ -320,7 +308,6 @@ class Front_End {
 						'remote_url'       => 'https://api.themeisle.com/sites/amadeus/',
 						'title'            => 'Music Teacher',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:amadeus/wp-content/uploads/2020/05/screenshot-2.jpg',
-						'unsplash_gallery' => 'https://unsplash.com/collections/8271695/neve-amadeus/ba699571eb4fc205ad8385c0440ced80',
 						'keywords'         => [ 'education', 'responsive', 'free', 'music' ],
 					],
 					'neve-oblique'            => [
@@ -328,7 +315,6 @@ class Front_End {
 						'remote_url'       => 'https://api.themeisle.com/sites/oblique/',
 						'title'            => 'Vintage',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:oblique/wp-content/uploads/2020/05/screenshot-3.jpg',
-						'unsplash_gallery' => 'https://unsplash.com/collections/8325788/oblique/7281d963f7b798d5fa7d6327bfd26804',
 						'keywords'         => [ 'photography', 'minimal', 'blog', 'free' ],
 					],
 					'neve-rokophoto'          => [
@@ -336,7 +322,6 @@ class Front_End {
 						'remote_url'       => 'https://api.themeisle.com/sites/rokophoto/',
 						'title'            => 'Photography',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:rokophoto/wp-content/uploads/2020/05/screenshot-4.jpg',
-						'unsplash_gallery' => 'https://unsplash.com/collections/8311183/rokophoto/ecebabcd40134eacf11cbd3cba504f44',
 						'keywords'         => [ 'photography', 'blog', 'responsive', 'free' ],
 					],
 					'neve-energy-panels'      => [
@@ -344,7 +329,6 @@ class Front_End {
 						'remote_url'       => 'https://api.themeisle.com/sites/energy-panels/',
 						'title'            => 'Energy Panels',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:energy-panels/wp-content/uploads/2020/05/screenshot-5.jpg',
-						'unsplash_gallery' => 'https://unsplash.com/collections/4587602/energy-panels',
 						'keywords'         => [ 'business', 'minimal', 'free' ],
 					],
 					'neve-lawyers'            => [
@@ -352,7 +336,6 @@ class Front_End {
 						'remote_url'       => 'https://api.themeisle.com/sites/lawyers/',
 						'title'            => 'Lawyers',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:lawyers/wp-content/uploads/2020/05/screenshot-6.jpg',
-						'unsplash_gallery' => 'https://unsplash.com/collections/4587639/neve-lawyers',
 						'keywords'         => [ 'business', 'blog', 'free' ],
 					],
 					'neve-freelancer'         => [
@@ -360,7 +343,6 @@ class Front_End {
 						'remote_url'       => 'https://api.themeisle.com/sites/freelancer/',
 						'title'            => 'Freelancer',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:freelancer/wp-content/uploads/2020/05/screenshot-7.jpg',
-						'unsplash_gallery' => 'https://unsplash.com/collections/4587634/freelancer/920c5eb680fa5f20b9b19a0d84a385eb',
 						'keywords'         => [ 'education', 'minimal', 'blog', 'free' ],
 					],
 					'neve-shop'               => [
@@ -368,7 +350,6 @@ class Front_End {
 						'remote_url'       => 'https://api.themeisle.com/sites/shop/',
 						'title'            => 'Shop',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:shop/wp-content/uploads/2020/05/screenshot-8.png',
-						'unsplash_gallery' => 'https://unsplash.com/collections/4587704/shop/56488e52ed6e70495219537f7d3846f2',
 						'keywords'         => [ 'fashion', 'business', 'ecommerce', 'free' ],
 					],
 					'neve-tattoo'             => [
@@ -376,7 +357,6 @@ class Front_End {
 						'remote_url'       => 'https://api.themeisle.com/sites/tatoo/',
 						'title'            => 'Tattoo',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:tatoo/wp-content/uploads/2020/05/screenshot-8.jpg',
-						'unsplash_gallery' => 'https://unsplash.com/collections/8459353/tatoo-studio',
 						'keywords'         => [ 'one page', 'responsive', 'free' ],
 					],
 					'neve-zelle'              => [
@@ -384,7 +364,6 @@ class Front_End {
 						'remote_url'       => 'https://api.themeisle.com/sites/zelle/',
 						'title'            => 'Travel Agency',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:zelle/wp-content/uploads/2020/05/screenshot-9.jpg',
-						'unsplash_gallery' => 'https://unsplash.com/collections/4587771/zelle',
 						'keywords'         => [ 'one page', 'business', 'blog', 'free', 'agency' ],
 					],
 					'neve-life-coach'         => [
@@ -392,7 +371,6 @@ class Front_End {
 						'remote_url'       => 'https://api.themeisle.com/sites/scholar/',
 						'title'            => 'Life Coach',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:scholar/wp-content/uploads/2020/05/screenshot-10.jpg',
-						'unsplash_gallery' => 'https://unsplash.com/collections/8532052/life-coach',
 						'keywords'         => [ 'education', 'responsive', 'blog', 'free' ],
 					],
 					'neve-creative-portfolio' => [
@@ -400,7 +378,6 @@ class Front_End {
 						'remote_url'       => 'https://api.themeisle.com/sites/creative-portfolio/',
 						'title'            => 'Creative Portfolio',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:creative-portfolio/wp-content/uploads/2020/05/screenshot-11.jpg',
-						'unsplash_gallery' => 'https://unsplash.com/collections/8334242/creative-portfolio',
 						'keywords'         => [ 'one page', 'minimal', 'business', 'free' ],
 					],
 					'neve-fitness-trainer'    => [
@@ -408,7 +385,6 @@ class Front_End {
 						'remote_url'       => 'https://api.themeisle.com/sites/fitness-trainer/',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:fitness-trainer/wp-content/uploads/2020/05/neve-trainer.jpg',
 						'title'            => 'Fitness Trainer',
-						'unsplash_gallery' => 'https://unsplash.com/collections/9852165/fitness-trainer',
 						'keywords'         => [ 'sports', 'one page', 'business', 'free' ],
 					],
 					'neve-band'               => [
@@ -416,7 +392,6 @@ class Front_End {
 						'remote_url'       => 'https://api.themeisle.com/sites/band/',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:band/wp-content/uploads/2020/05/neve-band.jpg',
 						'title'            => 'Music Band 2',
-						'unsplash_gallery' => 'https://unsplash.com/collections/9846128/music-band',
 						'keywords'         => [ 'one page', 'business', 'free', 'music' ],
 					],
 					'neve-perfume-shop'       => [
@@ -424,7 +399,6 @@ class Front_End {
 						'remote_url'       => 'https://api.themeisle.com/sites/perfume-shop/',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:perfume-shop/wp-content/uploads/2020/05/neve-perfume-big.jpg',
 						'title'            => 'Perfume Shop',
-						'unsplash_gallery' => 'https://unsplash.com/collections/9861326/neve-perfume/2b9b54c5c38cad45cc9d516bc35ff444',
 						'keywords'         => [ 'fashion', 'business', 'responsive', 'ecommerce', 'free' ],
 					],
 					'neve-jewellery-2'        => [
@@ -432,7 +406,6 @@ class Front_End {
 						'remote_url'       => 'https://api.themeisle.com/sites/jewellery/',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:jewellery/wp-content/uploads/2020/05/neve-jewellery-2.jpg',
 						'title'            => 'Jewellery Shop 2',
-						'unsplash_gallery' => 'https://unsplash.com/collections/9394656/neve-jewellery-shop/666f976701a01f90039e2d0ca45f4bbd',
 						'keywords'         => [ 'fashion', 'minimal', 'business', 'ecommerce', 'free' ],
 					],
 					'neve-boat-rental'        => [
@@ -440,7 +413,6 @@ class Front_End {
 						'remote_url'       => 'https://api.themeisle.com/sites/boat-rental/',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:boat-rental/wp-content/uploads/2020/05/neve-boat.jpg',
 						'title'            => 'Boat Rental',
-						'unsplash_gallery' => 'https://unsplash.com/collections/9844589/neve-boat-rental/173e04907bafee611ff844133b45da60',
 						'keywords'         => [ 'travel', 'sports', 'business', 'ecommerce', 'free' ],
 					],
 					'neve-apparel'            => [
@@ -448,7 +420,6 @@ class Front_End {
 						'remote_url'       => 'https://api.themeisle.com/sites/apparel/',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:apparel/wp-content/uploads/2020/05/neve-apparel.jpg',
 						'title'            => 'Apparel',
-						'unsplash_gallery' => 'https://unsplash.com/collections/9816182/neve-apparel/fb6435873d539d4c76084e01b8621d74',
 						'keywords'         => [ 'fashion', 'business', 'ecommerce', 'free' ],
 					],
 					'neve-pet-shop'           => [
@@ -456,7 +427,6 @@ class Front_End {
 						'remote_url'       => 'https://api.themeisle.com/sites/pet-shop/',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:pet-shop/wp-content/uploads/2020/05/neve-pet.jpg',
 						'title'            => 'Pet Shop',
-						'unsplash_gallery' => 'https://unsplash.com/collections/9809183/pet-shop',
 						'keywords'         => [ 'medical', 'minimal', 'ecommerce', 'blog', 'free' ],
 					],
 					'neve-doctor'             => [
@@ -464,7 +434,6 @@ class Front_End {
 						'remote_url'       => 'https://api.themeisle.com/sites/doctor/',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:doctor/wp-content/uploads/2020/05/neve-doctors-2.jpg',
 						'title'            => 'Doctors 2',
-						'unsplash_gallery' => 'https://unsplash.com/collections/9809310/medical',
 						'keywords'         => [ 'medical', 'one page', 'responsive', 'free' ],
 					],
 					'neve-psychologist'       => [
@@ -472,7 +441,6 @@ class Front_End {
 						'remote_url'       => 'https://api.themeisle.com/sites/psychologist/',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:psychologist/wp-content/uploads/2020/05/neve-psychologist.jpg',
 						'title'            => 'Psychologist',
-						'unsplash_gallery' => 'https://unsplash.com/collections/9852234/neve-psychology/8784d7afa417b664cb07c9220343a6e0',
 						'keywords'         => [ 'medical', 'business', 'blog', 'free' ],
 					],
 					'neve-book-shop'          => [
@@ -480,7 +448,6 @@ class Front_End {
 						'remote_url'       => 'https://api.themeisle.com/sites/book-shop/',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:book-shop/wp-content/uploads/2020/05/neve-book.jpg',
 						'title'            => 'Book Shop',
-						'unsplash_gallery' => 'https://unsplash.com/collections/9794162/neve-book-shop/4d24e3716ee5e23fa5b8ca96c485f8fe',
 						'keywords'         => [ 'entertainment', 'education', 'ecommerce', 'blog', 'free' ],
 					],
 				],
@@ -496,7 +463,6 @@ class Front_End {
 						'url'              => 'https://demosites.io/restaurant-brizy/',
 						'remote_url'       => 'https://api.themeisle.com/sites/restaurant-brizy/',
 						'title'            => 'Restaurant',
-						'unsplash_gallery' => 'https://unsplash.com/collections/4587624/restaurant',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:restaurant-brizy/wp-content/uploads/2020/05/screenshot.png',
 						'keywords'         => [ 'food', 'business', 'responsive', 'free' ],
 					],
@@ -504,7 +470,6 @@ class Front_End {
 						'url'              => 'https://demosites.io/charity-brizy/',
 						'remote_url'       => 'https://api.themeisle.com/sites/charity-brizy/',
 						'title'            => 'Charity',
-						'unsplash_gallery' => 'https://unsplash.com/collections/4587605/charity',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:charity-brizy/wp-content/uploads/2020/05/screenshot-1.png',
 						'keywords'         => [ 'one page', 'minimal', 'free' ],
 					],
@@ -512,7 +477,6 @@ class Front_End {
 						'url'              => 'https://demosites.io/vet-center-brizy/',
 						'remote_url'       => 'https://api.themeisle.com/sites/vet-center-brizy/',
 						'title'            => 'Vet Center',
-						'unsplash_gallery' => 'https://unsplash.com/collections/4587611/vet-center',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:vet-center-brizy/wp-content/uploads/2020/05/screenshot-2.png',
 						'keywords'         => [ 'medical', 'minimal', 'responsive', 'free' ],
 					],
@@ -520,7 +484,6 @@ class Front_End {
 						'url'              => 'https://demosites.io/doctors-brizy/',
 						'remote_url'       => 'https://api.themeisle.com/sites/doctors-brizy/',
 						'title'            => 'Doctors',
-						'unsplash_gallery' => 'https://unsplash.com/collections/4587593/doctor',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:doctors-brizy/wp-content/uploads/2020/05/screenshot-3.png',
 						'keywords'         => [ 'medical', 'one page', 'minimal', 'responsive', 'free' ],
 					],
@@ -528,7 +491,6 @@ class Front_End {
 						'url'              => 'https://demosites.io/architecture-brizy/',
 						'remote_url'       => 'https://api.themeisle.com/sites/architecture-brizy/',
 						'title'            => 'Architecture',
-						'unsplash_gallery' => 'https://unsplash.com/collections/6802313/architecture/f59e19df059789d86d1066ea80130a87',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:architecture-brizy/wp-content/uploads/2020/05/neve-caffe-new-ss.png',
 						'keywords'         => [ 'minimal', 'business', 'responsive', 'free' ],
 					],
@@ -536,7 +498,6 @@ class Front_End {
 						'url'              => 'https://demosites.io/fitness-brizy/',
 						'remote_url'       => 'https://api.themeisle.com/sites/fitness-brizy/',
 						'title'            => 'Fitness',
-						'unsplash_gallery' => 'https://unsplash.com/collections/6802313/architecture/f59e19df059789d86d1066ea80130a87',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:fitness-brizy/wp-content/uploads/2020/05/screenshot-5.png',
 						'keywords'         => [ 'sports', 'one page', 'free' ],
 					],
@@ -544,7 +505,6 @@ class Front_End {
 						'url'              => 'https://demosites.io/vacation-rental-brizy/',
 						'remote_url'       => 'https://api.themeisle.com/sites/vacation-rental-brizy/',
 						'title'            => 'Vacation Rental',
-						'unsplash_gallery' => 'https://unsplash.com/collections/7851106/hotel',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:vacation-rental-brizy/wp-content/uploads/2020/05/screenshot-6.png',
 						'keywords'         => [ 'minimal', 'blog', 'free' ],
 					],
@@ -552,7 +512,6 @@ class Front_End {
 						'url'              => 'https://demosites.io/music-band-brizy/',
 						'remote_url'       => 'https://api.themeisle.com/sites/music-band-brizy/',
 						'title'            => 'Music Band',
-						'unsplash_gallery' => 'https://unsplash.com/collections/7338489/music/746c95e4a72ad242a07001a2ca0fa7cb',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:music-band-brizy/wp-content/uploads/2020/05/screenshot-7.png',
 						'keywords'         => [ 'entertainment', 'one page', 'business', 'responsive', 'blog', 'free', 'music' ],
 					],
@@ -561,7 +520,6 @@ class Front_End {
 						'remote_url'       => 'https://api.themeisle.com/sites/wedding-brizy/',
 						'title'            => 'Wedding',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:wedding-brizy/wp-content/uploads/2020/05/screenshot.jpg',
-						'unsplash_gallery' => 'https://unsplash.com/collections/8116784/wedding/9afa9f6ba14422f348e1c7a49a9d51e9',
 						'keywords'         => [ 'business', 'minimal', 'responsive', 'free', 'wedding' ],
 					],
 					'neve-brizy-themotion'          => [
@@ -569,14 +527,12 @@ class Front_End {
 						'remote_url'       => 'https://api.themeisle.com/sites/themotion-brizy/',
 						'title'            => 'Video Blog',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:themotion-brizy/wp-content/uploads/2020/05/screenshot-1.jpg',
-						'unsplash_gallery' => 'https://unsplash.com/collections/8256651/neve-the-motion/79f8c5a63926e7cee4deed75bc6724fc',
 						'keywords'         => [ 'photography', 'blog', 'responsive', 'free' ],
 					],
 					'neve-brizy-amadeus'            => [
 						'url'              => 'https://demosites.io/amadeus-brizy/',
 						'remote_url'       => 'https://api.themeisle.com/sites/amadeus-brizy/',
 						'title'            => 'Music Teacher',
-						'unsplash_gallery' => 'https://unsplash.com/collections/8271695/neve-amadeus/ba699571eb4fc205ad8385c0440ced80',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:amadeus-brizy/wp-content/uploads/2020/05/screenshot-2.jpg',
 						'keywords'         => [ 'education', 'responsive', 'free', 'music' ],
 					],
@@ -584,7 +540,6 @@ class Front_End {
 						'url'              => 'https://demosites.io/oblique-brizy/',
 						'remote_url'       => 'https://api.themeisle.com/sites/oblique-brizy/',
 						'title'            => 'Vintage',
-						'unsplash_gallery' => 'https://unsplash.com/collections/8325788/oblique/7281d963f7b798d5fa7d6327bfd26804',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:oblique-brizy/wp-content/uploads/2020/05/screenshot-3.jpg',
 						'keywords'         => [ 'photography', 'minimal', 'blog', 'free' ],
 					],
@@ -592,7 +547,6 @@ class Front_End {
 						'url'              => 'https://demosites.io/rokophoto-brizy/',
 						'remote_url'       => 'https://api.themeisle.com/sites/rokophoto-brizy/',
 						'title'            => 'Photography',
-						'unsplash_gallery' => 'https://unsplash.com/collections/8311183/rokophoto/ecebabcd40134eacf11cbd3cba504f44',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:rokophoto-brizy/wp-content/uploads/2020/05/screenshot-4.jpg',
 						'keywords'         => [ 'photography', 'business', 'responsive', 'free' ],
 					],
@@ -600,7 +554,6 @@ class Front_End {
 						'url'              => 'https://demosites.io/energy-panels-brizy/',
 						'remote_url'       => 'https://api.themeisle.com/sites/energy-panels-brizy/',
 						'title'            => 'Energy Panels',
-						'unsplash_gallery' => 'https://unsplash.com/collections/4587602/energy-panels',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:energy-panels-brizy/wp-content/uploads/2020/05/screenshot-5.jpg',
 						'keywords'         => [ 'business', 'business', 'minimal', 'free' ],
 					],
@@ -608,7 +561,6 @@ class Front_End {
 						'url'              => 'https://demosites.io/lawyers-brizy/',
 						'remote_url'       => 'https://api.themeisle.com/sites/lawyers-brizy/',
 						'title'            => 'Lawyers',
-						'unsplash_gallery' => 'https://unsplash.com/collections/4587639/neve-lawyers',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:lawyers-brizy/wp-content/uploads/2020/05/neve-lawyers.jpg',
 						'keywords'         => [ 'business', 'blog', 'responsive', 'free' ],
 					],
@@ -616,7 +568,6 @@ class Front_End {
 						'url'              => 'https://demosites.io/freelancer-brizy',
 						'remote_url'       => 'https://api.themeisle.com/sites/freelancer-brizy/',
 						'title'            => 'Freelancer',
-						'unsplash_gallery' => 'https://unsplash.com/collections/4587634/freelancer/920c5eb680fa5f20b9b19a0d84a385eb',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:freelancer-brizy/wp-content/uploads/2020/05/screenshot-7.jpg',
 						'keywords'         => [ 'education', 'education', 'minimal', 'blog', 'free' ],
 					],
@@ -624,7 +575,6 @@ class Front_End {
 						'url'              => 'https://demosites.io/shop-brizy/',
 						'remote_url'       => 'https://api.themeisle.com/sites/shop-brizy/',
 						'title'            => 'Shop',
-						'unsplash_gallery' => 'https://unsplash.com/collections/4587704/shop/56488e52ed6e70495219537f7d3846f2',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:shop-brizy/wp-content/uploads/2020/05/screenshot-8.png',
 						'keywords'         => [ 'fashion', 'business', 'ecommerce', 'free' ],
 					],
@@ -632,7 +582,6 @@ class Front_End {
 						'url'              => 'https://demosites.io/tatoo-brizy/',
 						'remote_url'       => 'https://api.themeisle.com/sites/tatoo-brizy/',
 						'title'            => 'Tattoo',
-						'unsplash_gallery' => 'https://unsplash.com/collections/8459353/tatoo-studio',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:tatoo-brizy/wp-content/uploads/2020/05/screenshot-8.jpg',
 						'keywords'         => [ 'one page', 'responsive', 'free' ],
 					],
@@ -640,7 +589,6 @@ class Front_End {
 						'url'              => 'https://demosites.io/zelle-brizy/',
 						'remote_url'       => 'https://api.themeisle.com/sites/zelle-brizy/',
 						'title'            => 'Travel Agency',
-						'unsplash_gallery' => 'https://unsplash.com/collections/4587771/zelle',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:zelle-brizy/wp-content/uploads/2020/05/screenshot-9.jpg',
 						'keywords'         => [ 'one page', 'ecommerce', 'blog', 'free', 'agency' ],
 					],
@@ -649,7 +597,6 @@ class Front_End {
 						'remote_url'       => 'https://api.themeisle.com/sites/scholar-brizy/',
 						'title'            => 'Life Coach',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:scholar-brizy/wp-content/uploads/2020/05/screenshot-10.jpg',
-						'unsplash_gallery' => 'https://unsplash.com/collections/8532052/life-coach',
 						'keywords'         => [ 'education', 'responsive', 'blog', 'free' ],
 					],
 					'neve-brizy-creative-portfolio' => [
@@ -657,7 +604,6 @@ class Front_End {
 						'remote_url'       => 'https://api.themeisle.com/sites/creative-portfolio-brizy/',
 						'title'            => 'Creative Portfolio',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:creative-portfolio-brizy/wp-content/uploads/2020/05/screenshot-11.jpg',
-						'unsplash_gallery' => 'https://unsplash.com/collections/8334242/creative-portfolio',
 						'keywords'         => [ 'one page', 'minimal', 'business', 'free' ],
 					],
 				],
@@ -674,7 +620,6 @@ class Front_End {
 						'remote_url'       => 'https://api.themeisle.com/sites/web-agency-bb/',
 						'title'            => 'Web Agency',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:web-agency-bb/wp-content/uploads/2020/05/neve-web-agency-all-new.png',
-						'unsplash_gallery' => 'https://unsplash.com/collections/9015394/neve-digital-agency/c794fcd505d0ac7fe2134479c3b8f670',
 						'keywords'         => [ 'business', 'blog', 'responsive', 'free', 'agency' ],
 					],
 					'neve-beaver-blogger'            => [
@@ -688,7 +633,6 @@ class Front_End {
 						'url'              => 'https://demosites.io/bb-restaurant/',
 						'remote_url'       => 'https://api.themeisle.com/sites/bb-restaurant/',
 						'title'            => 'Restaurant',
-						'unsplash_gallery' => 'https://unsplash.com/collections/4587624/restaurant',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:bb-restaurant/wp-content/uploads/2020/05/screenshot.png',
 						'keywords'         => [ 'food', 'business', 'responsive', 'free' ],
 					],
@@ -696,7 +640,6 @@ class Front_End {
 						'url'              => 'https://demosites.io/charity-bb/',
 						'remote_url'       => 'https://api.themeisle.com/sites/charity-bb/',
 						'title'            => 'Charity',
-						'unsplash_gallery' => 'https://unsplash.com/collections/4587605/charity',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:charity-bb/wp-content/uploads/2020/05/screenshot-1.png',
 						'keywords'         => [ 'one page', 'minimal', 'free' ],
 					],
@@ -704,7 +647,6 @@ class Front_End {
 						'url'              => 'https://demosites.io/vet-center-bb/',
 						'remote_url'       => 'https://api.themeisle.com/sites/vet-center-bb/',
 						'title'            => 'Vet Center',
-						'unsplash_gallery' => 'https://unsplash.com/collections/4587611/vet-center',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:vet-center-bb/wp-content/uploads/2020/05/screenshot-2.png',
 						'keywords'         => [ 'medical', 'minimal', 'responsive', 'free' ],
 					],
@@ -712,7 +654,6 @@ class Front_End {
 						'url'              => 'https://demosites.io/bb-doctors/',
 						'remote_url'       => 'https://api.themeisle.com/sites/bb-doctors/',
 						'title'            => 'Doctors',
-						'unsplash_gallery' => 'https://unsplash.com/collections/4587593/doctor',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:bb-doctors/wp-content/uploads/2020/05/screenshot-3.png',
 						'keywords'         => [ 'medical', 'one page', 'minimal', 'responsive', 'free' ],
 					],
@@ -720,7 +661,6 @@ class Front_End {
 						'url'              => 'https://demosites.io/bb-architecture/',
 						'remote_url'       => 'https://api.themeisle.com/sites/bb-architecture/',
 						'title'            => 'Architecture',
-						'unsplash_gallery' => 'https://unsplash.com/collections/6802313/architecture/f59e19df059789d86d1066ea80130a87',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:bb-architecture/wp-content/uploads/2020/05/screenshot-4.png',
 						'keywords'         => [ 'minimal', 'business', 'responsive', 'free' ],
 					],
@@ -728,7 +668,6 @@ class Front_End {
 						'url'              => 'https://demosites.io/fitness-bb/',
 						'remote_url'       => 'https://api.themeisle.com/sites/fitness-bb/',
 						'title'            => 'Fitness',
-						'unsplash_gallery' => 'https://unsplash.com/collections/6800490/fitness-gym',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:fitness-bb/wp-content/uploads/2020/05/screenshot-5.png',
 						'keywords'         => [ 'sports', 'one page', 'free' ],
 					],
@@ -736,7 +675,6 @@ class Front_End {
 						'url'              => 'https://demosites.io/bb-vacantion-rental/',
 						'remote_url'       => 'https://api.themeisle.com/sites/bb-vacantion-rental/',
 						'title'            => 'Vacation Rental',
-						'unsplash_gallery' => 'https://unsplash.com/collections/7851106/hotel',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:bb-vacantion-rental/wp-content/uploads/2020/05/screenshot-6.png',
 						'keywords'         => [ 'minimal', 'blog', 'free' ],
 					],
@@ -744,7 +682,6 @@ class Front_End {
 						'url'              => 'https://demosites.io/bb-music-band/',
 						'remote_url'       => 'https://api.themeisle.com/sites/bb-music-band/',
 						'title'            => 'Music Band',
-						'unsplash_gallery' => 'https://unsplash.com/collections/7338489/music/746c95e4a72ad242a07001a2ca0fa7cb',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:bb-music-band/wp-content/uploads/2020/05/screenshot-7.png',
 						'keywords'         => [ 'entertainment', 'one page', 'business', 'responsive', 'blog', 'free', 'music' ],
 					],
@@ -752,7 +689,6 @@ class Front_End {
 						'url'              => 'https://demosites.io/wedding-bb/',
 						'remote_url'       => 'https://api.themeisle.com/sites/wedding-bb/',
 						'title'            => 'Wedding',
-						'unsplash_gallery' => 'https://unsplash.com/collections/8116784/wedding/9afa9f6ba14422f348e1c7a49a9d51e9',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:wedding-bb/wp-content/uploads/2020/05/screenshot.jpg',
 						'keywords'         => [ 'business', 'blog', 'responsive', 'free', 'wedding' ],
 					],
@@ -760,7 +696,6 @@ class Front_End {
 						'url'              => 'https://demosites.io/themotion-bb/',
 						'remote_url'       => 'https://api.themeisle.com/sites/themotion-bb/',
 						'title'            => 'Video Blog',
-						'unsplash_gallery' => 'https://unsplash.com/collections/8256651/neve-the-motion/79f8c5a63926e7cee4deed75bc6724fc',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:themotion-bb/wp-content/uploads/2020/05/screenshot-1.jpg',
 						'keywords'         => [ 'photography', 'blog', 'responsive', 'free' ],
 					],
@@ -768,7 +703,6 @@ class Front_End {
 						'url'              => 'https://demosites.io/amadeus-bb/',
 						'remote_url'       => 'https://api.themeisle.com/sites/amadeus-bb/',
 						'title'            => 'Music Teacher',
-						'unsplash_gallery' => 'https://unsplash.com/collections/8271695/neve-amadeus/ba699571eb4fc205ad8385c0440ced80',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:amadeus-bb/wp-content/uploads/2020/05/screenshot-2.jpg',
 						'keywords'         => [ 'education', 'responsive', 'free', 'music' ],
 					],
@@ -776,7 +710,6 @@ class Front_End {
 						'url'              => 'https://demosites.io/oblique-bb/',
 						'remote_url'       => 'https://api.themeisle.com/sites/oblique-bb/',
 						'title'            => 'Vintage',
-						'unsplash_gallery' => 'https://unsplash.com/collections/8325788/oblique/7281d963f7b798d5fa7d6327bfd26804',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:oblique-bb/wp-content/uploads/2020/05/screenshot-3.jpg',
 						'keywords'         => [ 'photography', 'minimal', 'blog', 'free' ],
 					],
@@ -784,7 +717,6 @@ class Front_End {
 						'url'              => 'https://demosites.io/rokophoto-bb/',
 						'remote_url'       => 'https://api.themeisle.com/sites/rokophoto-bb/',
 						'title'            => 'Photography',
-						'unsplash_gallery' => 'https://unsplash.com/collections/8311183/rokophoto/ecebabcd40134eacf11cbd3cba504f44',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:rokophoto-bb/wp-content/uploads/2020/05/screenshot-4.jpg',
 						'keywords'         => [ 'photography', 'responsive', 'free' ],
 					],
@@ -792,7 +724,6 @@ class Front_End {
 						'url'              => 'https://demosites.io/energy-panels-bb/',
 						'remote_url'       => 'https://api.themeisle.com/sites/energy-panels-bb/',
 						'title'            => 'Energy Panels',
-						'unsplash_gallery' => 'https://unsplash.com/collections/4587602/energy-panels',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:energy-panels-bb/wp-content/uploads/2020/05/screenshot-5.jpg',
 						'keywords'         => [ 'business', 'blog', 'responsive', 'free' ],
 					],
@@ -800,7 +731,6 @@ class Front_End {
 						'url'              => 'https://demosites.io/shop-bb/',
 						'remote_url'       => 'https://api.themeisle.com/sites/shop-bb/',
 						'title'            => 'Shop',
-						'unsplash_gallery' => 'https://unsplash.com/collections/4587704/shop/56488e52ed6e70495219537f7d3846f2',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:shop-bb/wp-content/uploads/2020/05/screenshot-8.png',
 						'keywords'         => [ 'fashion', 'business', 'ecommerce', 'free' ],
 					],
@@ -808,7 +738,6 @@ class Front_End {
 						'url'              => 'https://demosites.io/bb-freelancer/',
 						'remote_url'       => 'https://api.themeisle.com/sites/bb-freelancer/',
 						'title'            => 'Freelancer',
-						'unsplash_gallery' => 'https://unsplash.com/collections/4587634/freelancer/920c5eb680fa5f20b9b19a0d84a385eb',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:bb-freelancer/wp-content/uploads/2020/05/screenshot-7.jpg',
 						'keywords'         => [ 'education', 'minimal', 'blog', 'free' ],
 					],
@@ -816,7 +745,6 @@ class Front_End {
 						'url'              => 'https://demosites.io/lawyers-bb/',
 						'remote_url'       => 'https://api.themeisle.com/sites/lawyers-bb/',
 						'title'            => 'Lawyers',
-						'unsplash_gallery' => 'https://unsplash.com/collections/4587639/neve-lawyers',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:lawyers-bb/wp-content/uploads/2020/05/neve-lawyers.jpg',
 						'keywords'         => [ 'business', 'blog', 'responsive', 'free' ],
 					],
@@ -824,7 +752,6 @@ class Front_End {
 						'url'              => 'https://demosites.io/tatoo-bb/',
 						'remote_url'       => 'https://api.themeisle.com/sites/tatoo-bb/',
 						'title'            => 'Tattoo',
-						'unsplash_gallery' => 'https://unsplash.com/collections/8459353/tatoo-studio',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:tatoo-bb/wp-content/uploads/2020/05/screenshot-8.jpg',
 						'keywords'         => [ 'one page', 'responsive', 'free' ],
 					],
@@ -832,7 +759,6 @@ class Front_End {
 						'url'              => 'https://demosites.io/zelle-bb/',
 						'remote_url'       => 'https://api.themeisle.com/sites/zelle-b/',
 						'title'            => 'Travel Agency',
-						'unsplash_gallery' => 'https://unsplash.com/collections/4587771/zelle',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:zelle-b/wp-content/uploads/2020/05/screenshot-9.jpg',
 						'keywords'         => [ 'one page', 'business', 'blog', 'free', 'agency' ],
 					],
@@ -840,7 +766,6 @@ class Front_End {
 						'url'              => 'https://demosites.io/scholar-bb/',
 						'remote_url'       => 'https://api.themeisle.com/sites/scholar-bb/',
 						'title'            => 'Life Coach',
-						'unsplash_gallery' => 'https://unsplash.com/collections/8532052/life-coach',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:scholar-bb/wp-content/uploads/2020/05/screenshot-10.jpg',
 						'keywords'         => [ 'education', 'responsive', 'blog', 'free' ],
 					],
@@ -848,7 +773,6 @@ class Front_End {
 						'url'              => 'https://demosites.io/creative-portfolio-bb/',
 						'remote_url'       => 'https://api.themeisle.com/sites/creative-portfolio-bb/',
 						'title'            => 'Creative Portfolio',
-						'unsplash_gallery' => 'https://unsplash.com/collections/8334242/creative-portfolio',
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:creative-portfolio-bb/wp-content/uploads/2020/05/screenshot-11.jpg',
 						'keywords'         => [ 'one page', 'minimal', 'business', 'free' ],
 					],
@@ -1026,7 +950,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:cafe-bb/wp-content/uploads/2020/05/neve-caffe-new-ss.png',
 						'title'            => 'Coffee Shop',
 						'keywords'         => [ 'one page', 'food' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/4587666/cafe',
 					],
 					'neve-beaver-constructions'         => [
 						'url'              => 'https://demosites.io/constructions-bb/',
@@ -1034,7 +957,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:constructions-bb/wp-content/uploads/2020/05/neve-construction-new-screenshot.png',
 						'title'            => 'Constructions Company',
 						'keywords'         => [ 'one page', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/4847783/construction',
 					],
 					'neve-beaver-fashion'               => [
 						'url'              => 'https://demosites.io/bb-fashion/',
@@ -1042,7 +964,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:bb-fashion/wp-content/uploads/2020/05/neve-fashion-demo-screenshot.png',
 						'title'            => 'Fashion',
 						'keywords'         => [ 'fashion', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/4926520/fashion',
 					],
 					'neve-beaver-showcase'              => [
 						'url'              => 'https://demosites.io/showcase-bb/',
@@ -1050,7 +971,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:showcase-bb/wp-content/uploads/2020/05/neve-showcase-new.jpg',
 						'title'            => 'Showcase',
 						'keywords'         => [ 'entertainment', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/4587690/showcase/ed70b13c3a6d1219334f193873aaad61',
 					],
 					'neve-beaver-consultants'           => [
 						'url'              => 'https://demosites.io/consultants-bb/',
@@ -1058,7 +978,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:consultants-bb/wp-content/uploads/2020/05/neve-business-consulting.jpg',
 						'title'            => 'Business Consulting',
 						'keywords'         => [ 'business', 'one page' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8366058/consultants',
 					],
 					'neve-beaver-job-listings'          => [
 						'url'              => 'https://demosites.io/job-listings-bb/',
@@ -1066,7 +985,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:job-listings-bb/wp-content/uploads/2020/05/neve-job-listings.jpg',
 						'title'            => 'Job Listing',
 						'keywords'         => [ 'responsive', 'minimal' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8327271/job-listing',
 					],
 					'neve-beaver-barber-shop'           => [
 						'url'              => 'https://demosites.io/barber-shop-bb/',
@@ -1074,7 +992,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:barber-shop-bb/wp-content/uploads/2020/05/neve-barber-shop.jpg',
 						'title'            => 'Barber Shop',
 						'keywords'         => [ 'ecommerce', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8357212/barber-shop',
 					],
 					'neve-beaver-personal-trainer'      => [
 						'url'              => 'https://demosites.io/personal-trainer-bb/',
@@ -1082,7 +999,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:personal-trainer-bb/wp-content/uploads/2020/05/neve-personal-trainer.jpg',
 						'title'            => 'Personal Trainer',
 						'keywords'         => [ 'sports', 'one page' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8351250/personal-trainer/4f469c0cb610352567f5233410c61742',
 					],
 					'neve-beaver-real-estate'           => [
 						'url'              => 'https://demosites.io/real-estate-bb/',
@@ -1090,7 +1006,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:real-estate-bb/wp-content/uploads/2020/05/neve-real-estate.jpg',
 						'title'            => 'Real Estate',
 						'keywords'         => [ 'one page', 'business', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8280384/real-estate',
 					],
 					'neve-beaver-events'                => [
 						'url'              => 'https://demosites.io/events-bb/',
@@ -1098,7 +1013,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:events-bb/wp-content/uploads/2020/05/neve-events.jpg',
 						'title'            => 'Events',
 						'keywords'         => [ 'entertainment', 'one page', 'event' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8311870/music-events',
 					],
 					'neve-beaver-photography-portfolio' => [
 						'url'              => 'https://demosites.io/photography-portfolio-bb/',
@@ -1106,7 +1020,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:photography-portfolio-bb/wp-content/uploads/2020/05/neve-studio-photography.jpg',
 						'title'            => 'Photography Studio',
 						'keywords'         => [ 'photography', 'blog', 'minimal' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/4587698/photography-portfolio',
 					],
 					'neve-beaver-video-agency'          => [
 						'url'              => 'https://demosites.io/video-agency-bb/',
@@ -1114,7 +1027,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:video-agency-bb/wp-content/uploads/2020/05/neve-vide-agency.jpg',
 						'title'            => 'Video Agency',
 						'keywords'         => [ 'photography', 'responsive', 'agency' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/4770565/video-agency',
 					],
 					'neve-beaver-furniture-shop'        => [
 						'url'              => 'https://demosites.io/furniture-shop-bb/',
@@ -1122,7 +1034,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:furniture-shop-bb/wp-content/uploads/2020/05/neve-furniture-shop.jpg',
 						'title'            => 'Furniture Shop',
 						'keywords'         => [ 'ecommerce', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8527065/furniture-shop',
 					],
 					'neve-beaver-portrait-photography'  => [
 						'url'              => 'https://demosites.io/portrait-photopraphy-bb/',
@@ -1130,7 +1041,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:portrait-photopraphy-bb/wp-content/uploads/2020/05/neve-wedding-photography.jpg',
 						'title'            => 'Wedding Photography',
 						'keywords'         => [ 'photography', 'wedding', 'minimal' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/4587751/portrait-wedding-photography',
 					],
 					'neve-beaver-farm'                  => [
 						'url'              => 'https://demosites.io/farm-bb/',
@@ -1138,7 +1048,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:farm-bb/wp-content/uploads/2020/05/neve-farm.jpg',
 						'title'            => 'Farm',
 						'keywords'         => [ 'food', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8509382/farm',
 					],
 					'neve-beaver-photographer'          => [
 						'url'              => 'https://demosites.io/photography-bb/',
@@ -1146,7 +1055,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:photography-bb/wp-content/uploads/2020/05/neve-photographer.jpg',
 						'title'            => 'Photographer',
 						'keywords'         => [ 'photography', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8676181/neve-photography/d47fed0fbab045ca4c4636a01fe53c0d',
 					],
 					'neve-beaver-kindergarten'          => [
 						'url'              => 'https://demosites.io/kindergarden-bb/',
@@ -1154,7 +1062,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:kindergarden-bb/wp-content/uploads/2020/05/neve-kindergarden.jpg',
 						'title'            => 'Kindergarten',
 						'keywords'         => [ 'education', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8606727/kindergarten',
 					],
 					'neve-beaver-florist'               => [
 						'url'              => 'https://demosites.io/florist-bb/',
@@ -1162,7 +1069,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:florist-bb/wp-content/uploads/2020/05/neve-florist.jpg',
 						'title'            => 'Florist',
 						'keywords'         => [ 'ecommerce', 'flowers', 'blog' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8715558/neve-florist/f9106cdfcd1a7309bac7c606760d7918',
 					],
 					'neve-beaver-cake-shop'             => [
 						'url'              => 'https://demosites.io/cake-shop-bb/',
@@ -1170,7 +1076,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:cake-shop-bb/wp-content/uploads/2020/05/neve-cake-shop.jpg',
 						'title'            => 'Cake Shop',
 						'keywords'         => [ 'ecommerce', 'food' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/7772437/cakery-bakery/5f40022a676873e52e1dc76b113c5915',
 					],
 					'neve-beaver-transport'             => [
 						'url'              => 'https://demosites.io/transport-bb/',
@@ -1178,7 +1083,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:transport-bb/wp-content/uploads/2020/05/neve-transport.jpg',
 						'title'            => 'Transport',
 						'keywords'         => [ 'travel', 'blog', 'minimal' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8333254/logistics',
 					],
 					'neve-beaver-ebook'                 => [
 						'url'              => 'https://demosites.io/ebook-bb/',
@@ -1186,7 +1090,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:ebook-bb/wp-content/uploads/2020/05/neve-ebook.jpg',
 						'title'            => 'eBook',
 						'keywords'         => [ 'education', 'blog', 'minimal' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8687501/neve-ebook/53451c76913e4e176e377c0208e2e755',
 					],
 					'neve-beaver-speed'                 => [
 						'url'              => 'https://demosites.io/speed-bb/',
@@ -1194,7 +1097,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:speed-bb/wp-content/uploads/2020/05/neve-speed.jpg',
 						'title'            => 'Speed',
 						'keywords'         => [ 'ecommerce', 'business', 'one page', 'responsive', 'blog' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8698685/neve-pro',
 					],
 					'neve-beaver-food-magazine'         => [
 						'url'              => 'https://demosites.io/food-magazine-bb/',
@@ -1202,7 +1104,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:food-magazine-bb/wp-content/uploads/2020/05/neve-food-magazine.jpg',
 						'title'            => 'Food Magazine',
 						'keywords'         => [ 'food', 'blog' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8789337/neve-food-magazine',
 					],
 					'neve-beaver-web-design'            => [
 						'url'              => 'https://demosites.io/web-design-bb/',
@@ -1210,7 +1111,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:web-design-bb/wp-content/uploads/2020/05/neve-web-design.jpg',
 						'title'            => 'eCourse - Web Design',
 						'keywords'         => [ 'business', 'blog' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8778651/neve-web-design-course/e3a1b8568395786acef49c20929c5dce',
 					],
 					'neve-beaver-yoga-studio'           => [
 						'url'              => 'https://demosites.io/yoga-studio-bb/',
@@ -1218,7 +1118,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:yoga-studio-bb/wp-content/uploads/2020/05/neve-yoga.jpg',
 						'title'            => 'Yoga Studio',
 						'keywords'         => [ 'wellness', 'responsive', 'minimal' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8778361/yoga-studio/fd02983f43e4d1b4f9ea9651d1fd8233',
 					],
 					'neve-beaver-sales-funnel'          => [
 						'url'              => 'https://demosites.io/sales-funnel-bb/',
@@ -1226,7 +1125,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:sales-funnel-bb/wp-content/uploads/2020/05/neve-sales.jpg',
 						'title'            => 'Sales Funnel',
 						'keywords'         => [ 'ecommerce', 'business' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8758788/sales-funnel-1/ce1d2f6de0dab35699688bab193323d0',
 					],
 					'neve-beaver-church'                => [
 						'url'              => 'https://demosites.io/church-bb/',
@@ -1234,7 +1132,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:church-bb/wp-content/uploads/2020/05/neve-church.jpg',
 						'title'            => 'Church',
 						'keywords'         => [ 'church', 'minimal', 'one page' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8805198/neve-church/58329104fbc1dd6ea065330ee9749198',
 					],
 					'neve-beaver-fashion-magazine'      => [
 						'url'              => 'https://demosites.io/fashion-magazine-bb/',
@@ -1242,7 +1139,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:fashion-magazine-bb/wp-content/uploads/2020/05/neve-fashion-mag.jpg',
 						'title'            => 'Fashion Magazine',
 						'keywords'         => [ 'fashion', 'responsive', 'blog' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8815720/fashion-mag',
 					],
 					'neve-beaver-winery'                => [
 						'url'              => 'https://demosites.io/winery-bb/',
@@ -1250,7 +1146,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:winery-bb/wp-content/uploads/2020/05/neve-winery.png',
 						'title'            => 'Winery - Wine Shop',
 						'keywords'         => [ 'food', 'ecommerce' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8821407/winery',
 					],
 					'neve-beaver-news-magazine'         => [
 						'url'              => 'https://demosites.io/news-magazine-bb/',
@@ -1258,7 +1153,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:news-magazine-bb/wp-content/uploads/2020/05/neve-news.jpg',
 						'title'            => 'News Magazine',
 						'keywords'         => [ 'blog', 'minimal', 'news' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8843126/news-magazine/87e04aee675f7288715a01a4c674d2fc',
 					],
 					'neve-beaver-coworking'             => [
 						'url'              => 'https://demosites.io/coworking-bb/',
@@ -1266,7 +1160,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:coworking-bb/wp-content/uploads/2020/05/neve-coworking.jpg',
 						'title'            => 'Coworking Space',
 						'keywords'         => [ 'blog', 'minimal' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8820504/coworking/f3c1ba01d1177d2e2c4caa75dbf3066d',
 					],
 					'neve-beaver-car-rental'            => [
 						'url'              => 'https://demosites.io/car-rental-bb/',
@@ -1274,7 +1167,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:car-rental-bb/wp-content/uploads/2020/05/neve-cart-rental.jpg',
 						'title'            => 'Car Rental',
 						'keywords'         => [ 'car', 'one page', 'minimal' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8826109/car-rental',
 					],
 					'neve-beaver-moving-company'        => [
 						'url'              => 'https://demosites.io/moving-company-bb/',
@@ -1282,7 +1174,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:moving-company-bb/wp-content/uploads/2020/05/neve-moving-company.jpg',
 						'title'            => 'Moving Company Logistics Services',
 						'keywords'         => [ 'logistics', 'one page', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8907717/moving-company/9274ab9f8d8de88bcdea5d79598e80e4',
 					],
 					'neve-beaver-translation-services'  => [
 						'url'              => 'https://demosites.io/translation-services-bb/',
@@ -1290,7 +1181,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:translation-services-bb/wp-content/uploads/2020/05/neve-translations.jpg',
 						'title'            => 'Translation and Interpreter Services',
 						'keywords'         => [ 'responsive', 'blog' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8903458/translation-services/f2ba08f0cb507af6bb520cd5c9643c5d',
 					],
 					'neve-beaver-coupons'               => [
 						'url'              => 'https://demosites.io/coupons-bb/',
@@ -1298,7 +1188,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:coupons-bb/wp-content/uploads/2020/05/neve-coupons.jpg',
 						'title'            => 'Coupons Discounts and Offers',
 						'keywords'         => [ 'discount', 'coupons', 'blog', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8936046/neve-coupons/2f70b203a4a269b514f5839826d21f61',
 					],
 					'neve-beaver-escape-room'           => [
 						'url'              => 'https://demosites.io/escape-room-bb/',
@@ -1306,7 +1195,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:escape-room-bb/wp-content/uploads/2020/05/neve-escape-room.jpg',
 						'title'            => 'Escape Room',
 						'keywords'         => [ 'entertainment', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8924433/escape-room/c3145a3aca8fafa22251b01b280c1dbf',
 					],
 					'neve-beaver-cv'                    => [
 						'url'              => 'https://demosites.io/cv-bb/',
@@ -1314,7 +1202,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:cv-bb/wp-content/uploads/2020/05/neve-resume.jpg',
 						'title'            => 'Resume',
 						'keywords'         => [ 'blog', 'one page', 'minimal' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8972123/neve-resume-cv/ac3c66b0b032068b43bbd37d8dccbb46',
 					],
 					'neve-beaver-wellness'              => [
 						'url'              => 'https://demosites.io/wellness-bb/',
@@ -1322,7 +1209,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:wellness-bb/wp-content/uploads/2020/05/neve-wellness.jpg',
 						'title'            => 'Wellness Spa',
 						'keywords'         => [ 'wellness', 'responsive', 'minimal' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8924925/wellness-and-spa/8c130f9a4809a74e12a9dfe5d1579af8',
 					],
 					'neve-beaver-courses'               => [
 						'url'              => 'https://demosites.io/courses-bb/',
@@ -1330,7 +1216,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:courses-bb/wp-content/uploads/2020/05/neve-courses.jpg',
 						'title'            => 'Online Courses',
 						'keywords'         => [ 'education', 'blog', 'minimal' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8983337/neve-courses/23700703215f81990fe9ad618b886ae3',
 					],
 					'neve-beaver-model-agency'          => [
 						'url'              => 'https://demosites.io/model-agency-bb/',
@@ -1338,7 +1223,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:model-agency-bb/wp-content/uploads/2020/05/neve-model-agency.jpg',
 						'title'            => 'Fashion Model Agency',
 						'keywords'         => [ 'fashion', 'agency', 'blog' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9037292/fashion-agency',
 					],
 					'neve-beaver-it-company'            => [
 						'url'              => 'https://demosites.io/it-company-bb/',
@@ -1346,7 +1230,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:it-company-bb/wp-content/uploads/2020/05/neve-it-solution.jpg',
 						'title'            => 'IT Technology Agency',
 						'keywords'         => [ 'one page', 'responsive', 'agency' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/4587644/agency',
 					],
 					'neve-beaver-podcast'               => [
 						'url'              => 'https://demosites.io/podcast-bb/',
@@ -1354,7 +1237,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:podcast-bb/wp-content/uploads/2020/05/neve-podcast.jpg',
 						'title'            => 'Podcast',
 						'keywords'         => [ 'blog', 'entertainment', 'education' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8984175/neve-podcast/15ccb231f732a4a157321544c8e771fc',
 					],
 					'neve-beaver-digital-agency'        => [
 						'url'              => 'https://demosites.io/digital-agency-bb/',
@@ -1362,7 +1244,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:digital-agency-bb/wp-content/uploads/2020/05/neve-digital-agency.jpg',
 						'title'            => 'Digital Agency',
 						'keywords'         => [ 'blog', 'business', 'agency' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9015394/neve-digital-agency/c794fcd505d0ac7fe2134479c3b8f670',
 					],
 					'neve-beaver-industrial'            => [
 						'url'              => 'https://demosites.io/industrial-bb/',
@@ -1370,7 +1251,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:industrial-bb/wp-content/uploads/2020/05/neve-industrial.jpg',
 						'title'            => 'Industrial',
 						'keywords'         => [ 'minimal', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9025360/neve-industrial',
 					],
 					'neve-beaver-adventure'             => [
 						'url'              => 'https://demosites.io/adventure-bb/',
@@ -1378,7 +1258,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:adventure-bb/wp-content/uploads/2020/05/neve-adventure.jpg',
 						'title'            => 'Adventure',
 						'keywords'         => [ 'sports', 'one page', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9049522/neve-adventure/760767c5436dbc0b4968749624c496b5',
 					],
 					'neve-beaver-product-launch'        => [
 						'url'              => 'https://demosites.io/product-launch-bb/',
@@ -1386,7 +1265,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:product-launch-bb/wp-content/uploads/2020/05/neve-product-lunch.jpg',
 						'title'            => 'Product Launch',
 						'keywords'         => [ 'business', 'minimal' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9262386/neve-product-launch/bc5aaed5b8b69da0e4ad8046bf381f7f',
 					],
 					'neve-beaver-accounting'            => [
 						'url'              => 'https://demosites.io/accounting-bb/',
@@ -1394,7 +1272,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:accounting-bb/wp-content/uploads/2020/05/neve-accounting.jpg',
 						'title'            => 'Accounting',
 						'keywords'         => [ 'one page', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9333537/neve-accounting',
 					],
 					'neve-beaver-beauty-shop'           => [
 						'url'              => 'https://demosites.io/beauty-shop-bb/',
@@ -1402,7 +1279,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:beauty-shop-bb/wp-content/uploads/2020/05/neve-beauty-shop.jpg',
 						'title'            => 'Beauty Shop',
 						'keywords'         => [ 'ecommerce', 'fashion' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9266980/neve-beauty-shop/a63d896725855f02f51bf970c25b41c7',
 					],
 					'neve-beaver-recruitment'           => [
 						'url'              => 'https://demosites.io/recruitment-bb/',
@@ -1410,7 +1286,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:recruitment-bb/wp-content/uploads/2020/05/neve-recruitment.jpg',
 						'title'            => 'Recruitment Agency',
 						'keywords'         => [ 'minimal', 'agency', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9359902/neve-recruitment',
 					],
 					'neve-beaver-artist'                => [
 						'url'              => 'https://demosites.io/artist-bb/',
@@ -1418,7 +1293,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:artist-bb/wp-content/uploads/2020/05/neve-artist.jpg',
 						'title'            => 'Artist',
 						'keywords'         => [ 'entertainment', 'blog', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9339397/neve-artist',
 					],
 					'neve-beaver-vr-studio'             => [
 						'url'              => 'https://demosites.io/vr-studio-bb/',
@@ -1426,7 +1300,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:vr-studio-bb/wp-content/uploads/2020/05/neve-vr.jpg',
 						'title'            => 'VR Studio',
 						'keywords'         => [ 'entertainment', 'one page' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9354886/neve-vr-studio',
 					],
 					'neve-beaver-makeup-artist'         => [
 						'url'              => 'https://demosites.io/makeup-artist-bb/',
@@ -1434,7 +1307,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:makeup-artist-bb/wp-content/uploads/2020/05/neve-makeup.jpg',
 						'title'            => 'Makeup Artist',
 						'keywords'         => [ 'fashion', 'minimal' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9308448/makeup-artist',
 					],
 					'neve-beaver-diving'                => [
 						'url'              => 'https://demosites.io/diving-bb/',
@@ -1442,7 +1314,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:diving-bb/wp-content/uploads/2020/05/neve-diving.jpg',
 						'title'            => 'Scuba Diving',
 						'keywords'         => [ 'sports', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9568292/neve-diving/fb3b68f89e22f1466d3b95400af3f12d',
 					],
 					'neve-beaver-wine-bar'              => [
 						'url'              => 'https://demosites.io/wine-bar-bb/',
@@ -1450,7 +1321,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:wine-bar-bb/wp-content/uploads/2020/05/wine-bar.jpg',
 						'title'            => 'Wine Bar',
 						'keywords'         => [ 'food', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9519955/wine-bar/e47446ef8f67886ed643acee951c1421',
 					],
 					'neve-beaver-mtb-race'              => [
 						'url'              => 'https://demosites.io/mtb-race-bb/',
@@ -1458,7 +1328,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:mtb-race-bb/wp-content/uploads/2020/05/neve-race.jpg',
 						'title'            => 'Mountain Biking Race',
 						'keywords'         => [ 'sports', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9531208/neve-mtb-race/a58d04599c26e52f5d4f32036374dc32',
 					],
 					'neve-beaver-movie'                 => [
 						'url'              => 'https://demosites.io/movie-bb/',
@@ -1466,7 +1335,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:movie-bb/wp-content/uploads/2020/05/neve-movie.jpg',
 						'title'            => 'Movie Showcase',
 						'keywords'         => [ 'entertainment', 'education', 'minimal' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9520410/neve-movie/eeccbed16a1ffd4d86845d9c115ad480',
 					],
 					'neve-beaver-running-club'          => [
 						'url'              => 'https://demosites.io/running-club-bb/',
@@ -1474,7 +1342,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:running-club-bb/wp-content/uploads/2020/05/neve-run.jpg',
 						'title'            => 'Running Club',
 						'keywords'         => [ 'sports', 'one page' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9463053/neve-running-club/fb0ee6fc8a320a51c737952a5092dde9',
 					],
 					'neve-beaver-jewellery-shop'        => [
 						'url'              => 'https://demosites.io/jewellery-shop-bb/',
@@ -1482,7 +1349,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:jewellery-shop-bb/wp-content/uploads/2020/05/neve-jewellery.jpg',
 						'title'            => 'Jewellery Shop',
 						'keywords'         => [ 'ecommerce', 'minimal' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9394656/neve-jewellery-shop/666f976701a01f90039e2d0ca45f4bbd',
 					],
 					'neve-beaver-car-service'           => [
 						'url'              => 'https://demosites.io/car-service-bb/',
@@ -1490,7 +1356,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:car-service-bb/wp-content/uploads/2020/05/neve-car-service.jpg',
 						'title'            => 'Car Vehicle Service',
 						'keywords'         => [ 'minimal', 'one page' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9487947/car-repair',
 					],
 					'neve-beaver-museum'                => [
 						'url'              => 'https://demosites.io/museum-bb/',
@@ -1498,7 +1363,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:museum-bb/wp-content/uploads/2020/05/neve-museum.jpg',
 						'title'            => 'Museum',
 						'keywords'         => [ 'entertainment', 'education', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9456353/neve-museum/94de9ce18efa4440eb48825deb211d24',
 					],
 					'neve-beaver-exhibition'            => [
 						'url'              => 'https://demosites.io/exhibition-bb/',
@@ -1506,7 +1370,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:exhibition-bb/wp-content/uploads/2020/05/neve-art-expo.jpg',
 						'title'            => 'Art Exhibition',
 						'keywords'         => [ 'entertainment', 'education', 'one page' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9339050/neve-exhibition',
 					],
 					'neve-beaver-conference'            => [
 						'url'              => 'https://demosites.io/conference-bb/',
@@ -1514,7 +1377,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:conference-bb/wp-content/uploads/2020/05/neve-conference.jpg',
 						'title'            => 'Conference',
 						'keywords'         => [ 'entertainment', 'education', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9236647/neve-conference',
 					],
 					'neve-beaver-university'            => [
 						'url'              => 'https://demosites.io/university-bb/',
@@ -1522,7 +1384,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:university-bb/wp-content/uploads/2020/05/neve-university.jpg',
 						'title'            => 'University',
 						'keywords'         => [ 'education', 'minimal', 'one page' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9683046/neve-university/81b2d9ae33db8a28c087bed619404626',
 					],
 					'neve-beaver-interior-design'       => [
 						'url'              => 'https://demosites.io/interior-design-bb/',
@@ -1530,7 +1391,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:interior-design-bb/wp-content/uploads/2020/05/neve-interior-design-2.jpg',
 						'title'            => 'Interior Design',
 						'keywords'         => [ 'responsive', 'blog', 'minimal' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9631913/neve-interior-design/655af3fe67840388345c10f425611721',
 					],
 					'neve-beaver-electronics-store'     => [
 						'url'              => 'https://demosites.io/electronic-store-bb/',
@@ -1538,7 +1398,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:electronic-store-bb/wp-content/uploads/2020/05/neve-electronics.jpg',
 						'title'            => 'Electronics Shop',
 						'keywords'         => [ 'ecommerce', 'one page' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9614226/neve-electronics-store/bc776b1b1a8eeb5e9a91e0bdcefef919',
 					],
 					'neve-beaver-print-shop'            => [
 						'url'              => 'https://demosites.io/print-shop-bb/',
@@ -1546,7 +1405,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:print-shop-bb/wp-content/uploads/2020/05/neve-print.jpg',
 						'title'            => 'Print Shop',
 						'keywords'         => [ 'ecommerce', 'minimal' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9581663/neve-print-shop/7e3ada6f4ff6c2ea85e92a31b0a0d308',
 					],
 					'neve-beaver-city-tour'             => [
 						'url'              => 'https://demosites.io/city-tour-bb/',
@@ -1554,7 +1412,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:city-tour-bb/wp-content/uploads/2020/05/neve-city-tour.jpg',
 						'title'            => 'City Tours',
 						'keywords'         => [ 'entertainment', 'responsive', 'blog' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9607249/neve-city-tour/8c25fd0bd662a8c0311be4b114be52ac',
 					],
 					'neve-beaver-insurance'             => [
 						'url'              => 'https://demosites.io/insurance-bb/',
@@ -1562,7 +1419,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:insurance-bb/wp-content/uploads/2020/05/neve-insurance.jpg',
 						'title'            => 'Insurance',
 						'keywords'         => [ 'business', 'minimal' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9556177/neve-insurance/7133d31d3dfa101e65ec96a865761e9b',
 					],
 					'neve-beaver-personal-blog'         => [
 						'url'              => 'https://demosites.io/personal-blog-bb/',
@@ -1570,7 +1426,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:personal-blog-bb/wp-content/uploads/2020/05/neve-personal-blog.jpg',
 						'title'            => 'Personal Blog',
 						'keywords'         => [ 'blog', 'minimal', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9633204/neve-personal-blog/236da7a7ec4aaba3f8de60b4b10ab1a7',
 					],
 					'neve-beaver-equitation'            => [
 						'url'              => 'https://demosites.io/equitation-bb/',
@@ -1578,7 +1433,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:equitation-bb/wp-content/uploads/2020/05/neve-horses.jpg',
 						'title'            => 'Equitation',
 						'keywords'         => [ 'sports', 'responsive', 'horse' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9656821/neve-horse-riding/37daf600916343291b06efb64e4d091c',
 					],
 				],
 				'elementor'        => [
@@ -1588,7 +1442,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:cafe/wp-content/uploads/2020/05/neve-caffe-new-ss.png',
 						'title'            => 'Coffee Shop',
 						'keywords'         => [ 'food', 'one page' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/4587666/cafe',
 					],
 					'neve-constructions'         => [
 						'url'              => 'https://demosites.io/constructions/',
@@ -1596,7 +1449,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:constructions/wp-content/uploads/2020/05/neve-construction-new-screenshot.png',
 						'title'            => 'Constructions Company',
 						'keywords'         => [ 'one page', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/4847783/construction',
 					],
 					'neve-fashion'               => [
 						'url'              => 'https://demosites.io/fashion/',
@@ -1604,7 +1456,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:fashion/wp-content/uploads/2020/05/neve-fashion-demo-screenshot.png',
 						'title'            => 'Fashion',
 						'keywords'         => [ 'fashion', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/4926520/fashion',
 					],
 					'neve-showcase'              => [
 						'url'              => 'https://demosites.io/showcase/',
@@ -1612,7 +1463,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:showcase/wp-content/uploads/2020/05/neve-showcase-new.jpg',
 						'title'            => 'Showcase',
 						'keywords'         => [ 'entertainment', 'minimal' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/4587690/showcase/ed70b13c3a6d1219334f193873aaad61',
 					],
 					'neve-consultants'           => [
 						'url'              => 'https://demosites.io/consultants/',
@@ -1620,7 +1470,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:consultants/wp-content/uploads/2020/05/neve-business-consulting.jpg',
 						'title'            => 'Business Consulting',
 						'keywords'         => [ 'business', 'one page' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8366058/consultants',
 					],
 					'neve-job-listings'          => [
 						'url'              => 'https://demosites.io/job-listings/',
@@ -1628,7 +1477,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:job-listings/wp-content/uploads/2020/05/neve-job-listings.jpg',
 						'title'            => 'Job Listing',
 						'keywords'         => [ 'responsive', 'minimal' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8327271/job-listing',
 					],
 					'neve-barber-shop'           => [
 						'url'              => 'https://demosites.io/barber-shop/',
@@ -1636,7 +1484,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:barber-shop/wp-content/uploads/2020/05/neve-barber-shop.jpg',
 						'title'            => 'Barber Shop',
 						'keywords'         => [ 'ecommerce', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8357212/barber-shop',
 					],
 					'neve-personal-traner'       => [
 						'url'              => 'https://demosites.io/personal-trainer/',
@@ -1644,7 +1491,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:personal-trainer/wp-content/uploads/2020/05/neve-personal-trainer.jpg',
 						'title'            => 'Personal Trainer',
 						'keywords'         => [ 'sports', 'one page' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8351250/personal-trainer/4f469c0cb610352567f5233410c61742',
 					],
 					'neve-real-estate'           => [
 						'url'              => 'https://demosites.io/real-estate/',
@@ -1652,7 +1498,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:real-estate/wp-content/uploads/2020/05/neve-real-estate.jpg',
 						'title'            => 'Real Estate',
 						'keywords'         => [ 'one page', 'business', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8280384/real-estate',
 					],
 					'neve-events'                => [
 						'url'              => 'https://demosites.io/events/',
@@ -1660,7 +1505,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:events/wp-content/uploads/2020/05/neve-events.jpg',
 						'title'            => 'Events',
 						'keywords'         => [ 'entertainment', 'one page', 'event' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8311870/music-events',
 					],
 					'neve-portrait-photopraphy'  => [
 						'url'              => 'https://demosites.io/portrait-photopraphy/',
@@ -1668,7 +1512,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:portrait-photopraphy/wp-content/uploads/2020/05/neve-wedding-photography.jpg',
 						'title'            => 'Wedding Photography',
 						'keywords'         => [ 'photography', 'wedding', 'minimal' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/4587751/portrait-wedding-photography',
 					],
 					'neve-photography-portfolio' => [
 						'url'              => 'https://demosites.io/photography-portfolio/',
@@ -1676,7 +1519,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:photography-portfolio/wp-content/uploads/2020/05/neve-studio-photography.jpg',
 						'title'            => 'Photography Studio',
 						'keywords'         => [ 'photography', 'blog', 'minimal' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/4587698/photography-portfolio',
 					],
 					'neve-video-agency'          => [
 						'url'              => 'https://demosites.io/video-agency/',
@@ -1684,7 +1526,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:video-agency/wp-content/uploads/2020/05/neve-vide-agency.jpg',
 						'title'            => 'Video Agency',
 						'keywords'         => [ 'photography', 'responsive', 'agency' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/4770565/video-agency',
 					],
 					'neve-furniture-shop'        => [
 						'url'              => 'https://demosites.io/furniture-shop/',
@@ -1692,7 +1533,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:furniture-shop/wp-content/uploads/2020/05/neve-furniture-shop.jpg',
 						'title'            => 'Furniture Shop',
 						'keywords'         => [ 'ecommerce', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8527065/furniture-shop',
 					],
 					'neve-farm'                  => [
 						'url'              => 'https://demosites.io/farm/',
@@ -1700,7 +1540,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:farm/wp-content/uploads/2020/05/neve-farm.jpg',
 						'title'            => 'Farm',
 						'keywords'         => [ 'food', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8509382/farm',
 					],
 					'neve-photographer'          => [
 						'url'              => 'https://demosites.io/photography/',
@@ -1708,7 +1547,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:photography/wp-content/uploads/2020/05/neve-photographer.jpg',
 						'title'            => 'Photographer',
 						'keywords'         => [ 'photography', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8676181/neve-photography/d47fed0fbab045ca4c4636a01fe53c0d',
 					],
 					'neve-kindergarten'          => [
 						'url'              => 'https://demosites.io/kindergarten/',
@@ -1716,7 +1554,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:kindergarten/wp-content/uploads/2020/05/neve-kindergarden.jpg',
 						'title'            => 'Kindergarten',
 						'keywords'         => [ 'education', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8606727/kindergarten',
 					],
 					'neve-florist'               => [
 						'url'              => 'https://demosites.io/florist/',
@@ -1724,7 +1561,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:florist/wp-content/uploads/2020/05/neve-florist.jpg',
 						'title'            => 'Florist',
 						'keywords'         => [ 'ecommerce', 'flowers', 'blog' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8715558/neve-florist/f9106cdfcd1a7309bac7c606760d7918',
 					],
 					'neve-cake-shop'             => [
 						'url'              => 'https://demosites.io/cake-shop/',
@@ -1732,7 +1568,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:cake-shop/wp-content/uploads/2020/05/neve-cake-shop.jpg',
 						'title'            => 'Cake Shop',
 						'keywords'         => [ 'ecommerce', 'food' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/7772437/cakery-bakery/5f40022a676873e52e1dc76b113c5915',
 					],
 					'neve-transport'             => [
 						'url'              => 'https://demosites.io/transport/',
@@ -1740,7 +1575,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:transport/wp-content/uploads/2020/05/neve-transport.jpg',
 						'title'            => 'Transport',
 						'keywords'         => [ 'travel', 'blog', 'minimal' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8333254/logistics',
 					],
 					'neve-ebook'                 => [
 						'url'              => 'https://demosites.io/ebook/',
@@ -1748,7 +1582,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:ebook/wp-content/uploads/2020/05/neve-ebook.jpg',
 						'title'            => 'eBook',
 						'keywords'         => [ 'education', 'blog', 'minimal' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8687501/neve-ebook/53451c76913e4e176e377c0208e2e755',
 					],
 					'neve-speed'                 => [
 						'url'              => 'https://demosites.io/speed/',
@@ -1756,7 +1589,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:speed/wp-content/uploads/2020/05/neve-speed.jpg',
 						'title'            => 'Speed',
 						'keywords'         => [ 'ecommerce', 'business', 'one page', 'responsive', 'blog' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8698685/neve-pro',
 					],
 					'neve-food-magazine'         => [
 						'url'              => 'https://demosites.io/food-magazine/',
@@ -1764,7 +1596,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:food-magazine/wp-content/uploads/2020/05/neve-food-magazine.jpg',
 						'title'            => 'Food Magazine',
 						'keywords'         => [ 'food', 'blog' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8789337/neve-food-magazine',
 					],
 					'neve-web-design'            => [
 						'url'              => 'https://demosites.io/web-design/',
@@ -1772,7 +1603,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:web-design/wp-content/uploads/2020/05/neve-web-design.jpg',
 						'title'            => 'eCourse - Web Design',
 						'keywords'         => [ 'business', 'blog' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8778651/neve-web-design-course/e3a1b8568395786acef49c20929c5dce',
 					],
 					'neve-yoga-studio'           => [
 						'url'              => 'https://demosites.io/yoga-studio/',
@@ -1780,7 +1610,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:yoga-studio/wp-content/uploads/2020/05/neve-yoga.jpg',
 						'title'            => 'Yoga Studio',
 						'keywords'         => [ 'wellness', 'responsive', 'minimal' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8778361/yoga-studio/fd02983f43e4d1b4f9ea9651d1fd8233',
 					],
 					'neve-sales-funnel'          => [
 						'url'              => 'https://demosites.io/sales-funnel/',
@@ -1788,7 +1617,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:sales-funnel/wp-content/uploads/2020/05/neve-sales.jpg',
 						'title'            => 'Sales Funnel',
 						'keywords'         => [ 'ecommerce', 'business' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8758788/sales-funnel-1/ce1d2f6de0dab35699688bab193323d0',
 					],
 					'neve-church'                => [
 						'url'              => 'https://demosites.io/church/',
@@ -1796,7 +1624,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:church/wp-content/uploads/2020/05/neve-church.jpg',
 						'title'            => 'Church',
 						'keywords'         => [ 'church', 'minimal', 'one page' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8805198/neve-church/58329104fbc1dd6ea065330ee9749198',
 					],
 					'neve-fashion-magazine'      => [
 						'url'              => 'https://demosites.io/fashion-magazine/',
@@ -1804,7 +1631,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:fashion-magazine/wp-content/uploads/2020/05/neve-fashion-mag.jpg',
 						'title'            => 'Fashion Magazine',
 						'keywords'         => [ 'fashion', 'responsive', 'blog' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8815720/fashion-mag',
 					],
 					'neve-winery'                => [
 						'url'              => 'https://demosites.io/winery/',
@@ -1812,7 +1638,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:winery/wp-content/uploads/2020/05/neve-winery.png',
 						'title'            => 'Winery - Wine Shop',
 						'keywords'         => [ 'food', 'ecommerce' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8821407/winery',
 					],
 					'neve-news-magazine'         => [
 						'url'              => 'https://demosites.io/news-magazine/',
@@ -1820,7 +1645,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:news-magazine/wp-content/uploads/2020/05/neve-news.jpg',
 						'title'            => 'News Magazine',
 						'keywords'         => [ 'blog', 'minimal', 'news' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8843126/news-magazine/87e04aee675f7288715a01a4c674d2fc',
 					],
 					'neve-coworking'             => [
 						'url'              => 'https://demosites.io/coworking/',
@@ -1828,7 +1652,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:coworking/wp-content/uploads/2020/05/neve-coworking.jpg',
 						'title'            => 'Coworking Space',
 						'keywords'         => [ 'blog', 'minimal' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8820504/coworking/f3c1ba01d1177d2e2c4caa75dbf3066d',
 					],
 					'neve-fishing-club'          => [
 						'url'              => 'https://demosites.io/fishing-club/',
@@ -1836,7 +1659,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:fishing-club/wp-content/uploads/2020/05/neve-fishing.jpg',
 						'title'            => 'Fishing and Hunting Club',
 						'keywords'         => [ 'sports', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8868787/hunting-and-fishing/6f67a5235958b49102a57b3c9364e5cf',
 					],
 					'neve-car-rental'            => [
 						'url'              => 'https://demosites.io/car-rental/',
@@ -1844,7 +1666,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:car-rental/wp-content/uploads/2020/05/neve-cart-rental.jpg',
 						'title'            => 'Car Rental',
 						'keywords'         => [ 'car', 'one page', 'minimal' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8826109/car-rental',
 					],
 					'neve-ski-resort'            => [
 						'url'              => 'https://demosites.io/ski-resort/',
@@ -1852,7 +1673,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:ski-resort/wp-content/uploads/2020/05/sky-resort.jpg',
 						'title'            => 'Ski Resort Winter Hotel',
 						'keywords'         => [ 'travel', 'sports' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8869398/ski-resort/66f972e2406deafd52d439b5a32f76fd',
 					],
 					'neve-digital-product'       => [
 						'url'              => 'https://demosites.io/digital-product-funnel/',
@@ -1860,7 +1680,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:digital-product-funnel/wp-content/uploads/2020/05/neve-digital-product.jpg',
 						'title'            => 'Digital Product Funnel',
 						'keywords'         => [ 'ecommerce', 'business' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8869329/digital-product',
 					],
 					'neve-moving-company'        => [
 						'url'              => 'https://demosites.io/moving-company/',
@@ -1868,7 +1687,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:moving-company/wp-content/uploads/2020/05/neve-moving-company.jpg',
 						'title'            => 'Moving Company Logistics Services',
 						'keywords'         => [ 'logistics', 'one page', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8907717/moving-company/9274ab9f8d8de88bcdea5d79598e80e4',
 					],
 					'neve-translation-services'  => [
 						'url'              => 'https://demosites.io/translation-services/',
@@ -1876,7 +1694,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:translation-services/wp-content/uploads/2020/05/neve-translations.jpg',
 						'title'            => 'Translation and Interpreter Services',
 						'keywords'         => [ 'responsive', 'blog' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8903458/translation-services/f2ba08f0cb507af6bb520cd5c9643c5d',
 					],
 					'neve-coupons'               => [
 						'url'              => 'https://demosites.io/coupons/',
@@ -1884,7 +1701,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:coupons/wp-content/uploads/2020/05/neve-coupons.jpg',
 						'title'            => 'Coupons Discounts and Offers',
 						'keywords'         => [ 'discount', 'coupons', 'blog', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8936046/neve-coupons/2f70b203a4a269b514f5839826d21f61',
 					],
 					'neve-escape-room'           => [
 						'url'              => 'https://demosites.io/escape-room/',
@@ -1892,7 +1708,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:escape-room/wp-content/uploads/2020/05/neve-escape-room.jpg',
 						'title'            => 'Escape Room',
 						'keywords'         => [ 'entertainment', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8924433/escape-room/c3145a3aca8fafa22251b01b280c1dbf',
 					],
 					'neve-cv'                    => [
 						'url'              => 'https://demosites.io/cv/',
@@ -1900,7 +1715,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:cv/wp-content/uploads/2020/05/neve-resume.jpg',
 						'title'            => 'Resume',
 						'keywords'         => [ 'blog', 'one page', 'minimal' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8972123/neve-resume-cv/ac3c66b0b032068b43bbd37d8dccbb46',
 					],
 					'neve-wellness'              => [
 						'url'              => 'https://demosites.io/wellness/',
@@ -1908,7 +1722,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:wellness/wp-content/uploads/2020/05/neve-wellness.jpg',
 						'title'            => 'Wellness Spa',
 						'keywords'         => [ 'wellness', 'responsive', 'minimal' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8924925/wellness-and-spa/8c130f9a4809a74e12a9dfe5d1579af8',
 					],
 					'neve-courses'               => [
 						'url'              => 'https://demosites.io/courses/',
@@ -1916,7 +1729,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:courses/wp-content/uploads/2020/05/neve-courses.jpg',
 						'title'            => 'Online Courses',
 						'keywords'         => [ 'education', 'blog', 'minimal' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8983337/neve-courses/23700703215f81990fe9ad618b886ae3',
 					],
 					'neve-model-agency'          => [
 						'url'              => 'https://demosites.io/model-agency/',
@@ -1924,7 +1736,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:model-agency/wp-content/uploads/2020/05/neve-model-agency.jpg',
 						'title'            => 'Fashion Model Agency',
 						'keywords'         => [ 'fashion', 'agency', 'blog' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9037292/fashion-agency',
 					],
 					'neve-it-company'            => [
 						'url'              => 'https://demosites.io/it-company/',
@@ -1932,7 +1743,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:it-company/wp-content/uploads/2020/05/neve-it-solution.jpg',
 						'title'            => 'IT Technology Agency',
 						'keywords'         => [ 'one page', 'responsive', 'agency' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8907927/it-solutions/5b5c3086b3dcc45a5d3f2c98188e261a',
 					],
 					'neve-christmas-market'      => [
 						'url'              => 'https://demosites.io/christmas-market/',
@@ -1940,7 +1750,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:christmas-market/wp-content/uploads/2020/05/neve-christmas.jpg',
 						'title'            => 'Christmas Market',
 						'keywords'         => [ 'entertainment', 'blog' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8992903/christmas-market/925e60bcf54eed468b3f80adb515008d',
 					],
 					'neve-podcast'               => [
 						'url'              => 'https://demosites.io/podcast/',
@@ -1948,7 +1757,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:podcast/wp-content/uploads/2020/05/neve-podcast.jpg',
 						'title'            => 'Podcast',
 						'keywords'         => [ 'blog', 'entertainment', 'education' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8984175/neve-podcast/15ccb231f732a4a157321544c8e771fc',
 					],
 					'neve-digital-agency'        => [
 						'url'              => 'https://demosites.io/digital-agency/',
@@ -1956,7 +1764,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:digital-agency/wp-content/uploads/2020/05/neve-digital-agency.jpg',
 						'title'            => 'Digital Agency',
 						'keywords'         => [ 'blog', 'business', 'agency' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9015394/neve-digital-agency/c794fcd505d0ac7fe2134479c3b8f670',
 					],
 					'neve-industrial'            => [
 						'url'              => 'https://demosites.io/industrial/',
@@ -1964,7 +1771,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:industrial/wp-content/uploads/2020/05/neve-industrial.jpg',
 						'title'            => 'Industrial',
 						'keywords'         => [ 'minimal', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9025360/neve-industrial',
 					],
 					'neve-adventure'             => [
 						'url'              => 'https://demosites.io/adventure/',
@@ -1972,7 +1778,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:adventure/wp-content/uploads/2020/05/neve-adventure.jpg',
 						'title'            => 'Adventure',
 						'keywords'         => [ 'sports', 'one page', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9049522/neve-adventure/760767c5436dbc0b4968749624c496b5',
 					],
 					'neve-product-launch'        => [
 						'url'              => 'https://demosites.io/product-launch/',
@@ -1980,7 +1785,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:product-launch/wp-content/uploads/2020/05/neve-product-lunch.jpg',
 						'title'            => 'Product Launch',
 						'keywords'         => [ 'business', 'minimal' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9262386/neve-product-launch/bc5aaed5b8b69da0e4ad8046bf381f7f',
 					],
 					'neve-accounting'            => [
 						'url'              => 'https://demosites.io/accounting/',
@@ -1988,7 +1792,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:accounting/wp-content/uploads/2020/05/neve-accounting.jpg',
 						'title'            => 'Accounting',
 						'keywords'         => [ 'one page', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9333537/neve-accounting',
 					],
 					'neve-beauty-shop'           => [
 						'url'              => 'https://demosites.io/beauty-shop/',
@@ -1996,7 +1799,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:beauty-shop/wp-content/uploads/2020/05/neve-beauty-shop.jpg',
 						'title'            => 'Beauty Shop',
 						'keywords'         => [ 'fashion', 'ecommerce' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9266980/neve-beauty-shop/a63d896725855f02f51bf970c25b41c7',
 					],
 					'neve-recruitment'           => [
 						'url'              => 'https://demosites.io/recruitment/',
@@ -2004,7 +1806,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:recruitment/wp-content/uploads/2020/05/neve-recruitment.jpg',
 						'title'            => 'Recruitment Agency',
 						'keywords'         => [ 'minimal', 'agency' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9359902/neve-recruitment',
 					],
 					'neve-artist'                => [
 						'url'              => 'https://demosites.io/artist/',
@@ -2012,7 +1813,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:artist/wp-content/uploads/2020/05/neve-artist.jpg',
 						'title'            => 'Artist',
 						'keywords'         => [ 'entertainment', 'blog', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9339397/neve-artist',
 					],
 					'neve-vr-studio'             => [
 						'url'              => 'https://demosites.io/vr-studio/',
@@ -2020,7 +1820,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:vr-studio/wp-content/uploads/2020/05/neve-vr.jpg',
 						'title'            => 'VR Studio',
 						'keywords'         => [ 'entertainment', 'one page' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9354886/neve-vr-studio',
 					],
 					'neve-makeup-artist'         => [
 						'url'              => 'https://demosites.io/makeup-artist/',
@@ -2028,7 +1827,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:makeup-artist/wp-content/uploads/2020/05/neve-makeup.jpg',
 						'title'            => 'Makeup Artist',
 						'keywords'         => [ 'fashion', 'minimal' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9308448/makeup-artist',
 					],
 					'neve-diving'                => [
 						'url'              => 'https://demosites.io/diving/',
@@ -2036,7 +1834,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:diving/wp-content/uploads/2020/05/neve-diving.jpg',
 						'title'            => 'Scuba Diving',
 						'keywords'         => [ 'sports', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9568292/neve-diving/fb3b68f89e22f1466d3b95400af3f12d',
 					],
 					'neve-wine-bar'              => [
 						'url'              => 'https://demosites.io/wine-bar/',
@@ -2044,7 +1841,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:wine-bar/wp-content/uploads/2020/05/wine-bar.jpg',
 						'title'            => 'Wine Bar',
 						'keywords'         => [ 'food', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9519955/wine-bar/e47446ef8f67886ed643acee951c1421',
 					],
 					'neve-mtb-race'              => [
 						'url'              => 'https://demosites.io/mtb-race/',
@@ -2052,7 +1848,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:mtb-race/wp-content/uploads/2020/05/neve-race.jpg',
 						'title'            => 'Mountain Biking Race',
 						'keywords'         => [ 'sports', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9531208/neve-mtb-race/a58d04599c26e52f5d4f32036374dc32',
 					],
 					'neve-movie'                 => [
 						'url'              => 'https://demosites.io/movie/',
@@ -2060,7 +1855,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:movie/wp-content/uploads/2020/05/neve-movie.jpg',
 						'title'            => 'Movie Showcase',
 						'keywords'         => [ 'entertainment', 'education', 'minimal' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9520410/neve-movie/eeccbed16a1ffd4d86845d9c115ad480',
 					],
 					'neve-running-club'          => [
 						'url'              => 'https://demosites.io/running-club/',
@@ -2068,7 +1862,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:running-club/wp-content/uploads/2020/05/neve-run.jpg',
 						'title'            => 'Running Club',
 						'keywords'         => [ 'sports', 'one page' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9463053/neve-running-club/fb0ee6fc8a320a51c737952a5092dde9',
 					],
 					'neve-jewellery-shop'        => [
 						'url'              => 'https://demosites.io/jewellery-shop/',
@@ -2076,7 +1869,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:jewellery-shop/wp-content/uploads/2020/05/neve-jewellery.jpg',
 						'title'            => 'Jewellery Shop',
 						'keywords'         => [ 'ecommerce', 'minimal' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9394656/neve-jewellery-shop/666f976701a01f90039e2d0ca45f4bbd',
 					],
 					'neve-car-service'           => [
 						'url'              => 'https://demosites.io/car-service/',
@@ -2084,7 +1876,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:car-service/wp-content/uploads/2020/05/neve-car-service.jpg',
 						'title'            => 'Car Vehicle Service',
 						'keywords'         => [ 'responsive', 'minimal' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9487947/car-repair',
 					],
 					'neve-museum'                => [
 						'url'              => 'https://demosites.io/museum/',
@@ -2092,7 +1883,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:museum/wp-content/uploads/2020/05/neve-museum.jpg',
 						'title'            => 'Museum',
 						'keywords'         => [ 'entertainment', 'education', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9456353/neve-museum/94de9ce18efa4440eb48825deb211d24',
 					],
 					'neve-exhibition'            => [
 						'url'              => 'https://demosites.io/exhibition/',
@@ -2100,7 +1890,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:exhibition/wp-content/uploads/2020/05/neve-art-expo.jpg',
 						'title'            => 'Art Exhibition',
 						'keywords'         => [ 'entertainment', 'education', 'one page' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9339050/neve-exhibition',
 					],
 					'neve-conference'            => [
 						'url'              => 'https://demosites.io/conference/',
@@ -2108,7 +1897,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:conference/wp-content/uploads/2020/05/neve-conference.jpg',
 						'title'            => 'Conference',
 						'keywords'         => [ 'entertainment', 'education', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9236647/neve-conference',
 					],
 					'neve-university'            => [
 						'url'              => 'https://demosites.io/university/',
@@ -2116,7 +1904,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:university/wp-content/uploads/2020/05/neve-university.jpg',
 						'title'            => 'University',
 						'keywords'         => [ 'education', 'minimal', 'one page' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9683046/neve-university/81b2d9ae33db8a28c087bed619404626',
 					],
 					'neve-interior-design'       => [
 						'url'              => 'https://demosites.io/interior-design/',
@@ -2124,7 +1911,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:interior-design/wp-content/uploads/2020/05/neve-interior-design-2.jpg',
 						'title'            => 'Interior Design',
 						'keywords'         => [ 'responsive', 'blog', 'minimal' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9631913/neve-interior-design/655af3fe67840388345c10f425611721',
 					],
 					'neve-electronics-store'     => [
 						'url'              => 'https://demosites.io/electronics-store/',
@@ -2132,7 +1918,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:electronics-store/wp-content/uploads/2020/05/neve-electronics.jpg',
 						'title'            => 'Electronics Shop',
 						'keywords'         => [ 'ecommerce', 'one page' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9614226/neve-electronics-store/bc776b1b1a8eeb5e9a91e0bdcefef919',
 					],
 					'neve-print-shop'            => [
 						'url'              => 'https://demosites.io/print-shop/',
@@ -2140,7 +1925,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:print-shop/wp-content/uploads/2020/05/neve-print.jpg',
 						'title'            => 'Print Shop',
 						'keywords'         => [ 'ecommerce', 'minimal' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9581663/neve-print-shop/7e3ada6f4ff6c2ea85e92a31b0a0d308',
 					],
 					'neve-city-tour'             => [
 						'url'              => 'https://demosites.io/city-tour/',
@@ -2148,7 +1932,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:city-tour/wp-content/uploads/2020/05/neve-city-tour.jpg',
 						'title'            => 'City Tours',
 						'keywords'         => [ 'entertainment', 'responsive', 'blog' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9607249/neve-city-tour/8c25fd0bd662a8c0311be4b114be52ac',
 					],
 					'neve-insurance'             => [
 						'url'              => 'https://demosites.io/insurance/',
@@ -2156,7 +1939,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:insurance/wp-content/uploads/2020/05/neve-insurance.jpg',
 						'title'            => 'Insurance',
 						'keywords'         => [ 'business', 'minimal' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9556177/neve-insurance/7133d31d3dfa101e65ec96a865761e9b',
 					],
 					'neve-personal-blog'         => [
 						'url'              => 'https://demosites.io/personal-blog/',
@@ -2164,7 +1946,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:personal-blog/wp-content/uploads/2020/05/neve-personal-blog.jpg',
 						'title'            => 'Personal Blog',
 						'keywords'         => [ 'blog', 'minimal', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9633204/neve-personal-blog/236da7a7ec4aaba3f8de60b4b10ab1a7',
 					],
 					'neve-travel-blog'           => [
 						'url'              => 'https://demosites.io/travel-blog/',
@@ -2172,7 +1953,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:travel-blog/wp-content/uploads/2020/05/neve-travel-blog.jpg',
 						'title'            => 'Travel Blog',
 						'keywords'         => [ 'travel', 'blog', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9768330/neve-travel-blog/c5d2a7747789c057876483a4dff2dc7b',
 					],
 					'neve-dj'                    => [
 						'url'              => 'https://demosites.io/dj/',
@@ -2180,7 +1960,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:dj/wp-content/uploads/2020/05/neve-dj.jpg',
 						'title'            => 'DJ',
 						'keywords'         => [ 'entertainment', 'music' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9723476/neve-dj/0bc2b891c597aed047d6274fc70452e4',
 					],
 					'neve-tech-lab'              => [
 						'url'              => 'https://demosites.io/tech-lab/',
@@ -2188,7 +1967,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:tech-lab/wp-content/uploads/2020/05/neve-tech.jpg',
 						'title'            => 'Tech Lab',
 						'keywords'         => [ 'business', 'responsive', 'minimal' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9706216/tech-lab/6fd056cd21716c9e2257acd99cc107eb',
 					],
 					'neve-equitation'            => [
 						'url'              => 'https://demosites.io/equitation/',
@@ -2196,7 +1974,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:equitation/wp-content/uploads/2020/05/neve-horses.jpg',
 						'title'            => 'Equitation',
 						'keywords'         => [ 'sports', 'responsive', 'horse' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9656821/neve-horse-riding/37daf600916343291b06efb64e4d091c',
 					],
 					'neve-restaurant-2'          => [
 						'url'              => 'https://demosites.io/restaurant-2/',
@@ -2204,7 +1981,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:restaurant-2/wp-content/uploads/2020/05/neve-restaurant-2.jpg',
 						'title'            => 'Restaurant 2',
 						'keywords'         => [ 'food', 'ecommerce', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9681752/neve---restaurant-2',
 					],
 					'neve-copywriter'            => [
 						'url'              => 'https://demosites.io/copywriter/',
@@ -2212,7 +1988,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:copywriter/wp-content/uploads/2020/05/neve-copyright.jpg',
 						'title'            => 'Copywriter',
 						'keywords'         => [ 'one page', 'blog' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/10013340/neve-copywriter/fd20236454382b25cb11c4a5ea8b9f67',
 					],
 					'neve-laundry-services'      => [
 						'url'              => 'https://demosites.io/laundry-services/',
@@ -2220,7 +1995,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:laundry-services/wp-content/uploads/2020/05/neve-laundry.jpg',
 						'title'            => 'Laundry Services',
 						'keywords'         => [ 'one page', 'minimal' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/10086441/laundry-services/cbcb238e92c3d628f5ff17343cf71f33',
 					],
 					'neve-craft-beer'            => [
 						'url'              => 'https://demosites.io/craft-beer/',
@@ -2228,7 +2002,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:craft-beer/wp-content/uploads/2020/05/neve-craft-beer.jpg',
 						'title'            => 'Craft Beer',
 						'keywords'         => [ 'food', 'ecommerce' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/10064967/craft-beer/d0feeb4e9b047f25963f93bb6f548003',
 					],
 					'neve-gardening'             => [
 						'url'              => 'https://demosites.io/gardening/',
@@ -2236,7 +2009,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:gardening/wp-content/uploads/2020/05/neve-gardening.jpg',
 						'title'            => 'Gardening',
 						'keywords'         => [ 'one page', 'ecommerce' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9993072/neve-gardening/d87f7fb075b4df6caa580427e4bf99cd',
 					],
 					'neve-resume-2'              => [
 						'url'              => 'https://demosites.io/resume/',
@@ -2244,7 +2016,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:resume/wp-content/uploads/2020/05/neve-resume-2.jpg',
 						'title'            => 'Resume 2',
 						'keywords'         => [ 'responsive', 'business' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/10442260/resume/0d0bb885aef689075600517be914fae5',
 					],
 					'neve-leather-shop'          => [
 						'url'              => 'https://demosites.io/leather-shop/',
@@ -2252,7 +2023,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:leather-shop/wp-content/uploads/2020/06/leather-shop.jpg',
 						'title'            => 'Leather Shop',
 						'keywords'         => [ 'ecommerce', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/10459252/leather-shop/9d70aab6582456060f696ea810456082',
 					],
 					'neve-public-notary'         => [
 						'url'              => 'https://demosites.io/public-notary/',
@@ -2260,7 +2030,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:public-notary/wp-content/uploads/2020/06/public-notary.jpg',
 						'title'            => 'Public Notary',
 						'keywords'         => [ 'blog', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/10572299/public-notary/5be93cb607402234f2bf640acdc98057',
 					],
 					'neve-pharmacy'              => [
 						'url'              => 'https://demosites.io/pharmacy/',
@@ -2268,7 +2037,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:pharmacy/wp-content/uploads/2020/06/pharmacy.jpg',
 						'title'            => 'Pharmacy',
 						'keywords'         => [ 'ecommerce', 'medical' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/9266931/neve-pharmacy/2da0901b77e38331b4d80bc260acbc21',
 					],
 					'neve-investment-consulting' => [
 						'url'              => 'https://demosites.io/investment-consulting/',
@@ -2276,7 +2044,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:investment-consulting/wp-content/uploads/2020/06/investment-consulting.jpg',
 						'title'            => 'Investment Consulting',
 						'keywords'         => [ 'responsive', 'business' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/10511272/investment-consulting/e96078ca62d73cf5420be1da416bcb11',
 					],
 				],
 				'brizy'            => [
@@ -2286,7 +2053,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:cafe-brizy/wp-content/uploads/2020/05/neve-caffe-new-ss.png',
 						'title'            => 'Coffee Shop',
 						'keywords'         => [ 'food', 'one page' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/4587666/cafe',
 					],
 					'neve-brizy-constructions'        => [
 						'url'              => 'https://demosites.io/constructions-brizy/',
@@ -2294,7 +2060,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:constructions-brizy/wp-content/uploads/2020/05/neve-construction-new-screenshot.png',
 						'title'            => 'Constructions Company',
 						'keywords'         => [ 'one page', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/4847783/construction',
 					],
 					'neve-brizy-fashion'              => [
 						'url'              => 'https://demosites.io/fashion-brizy/',
@@ -2302,7 +2067,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:fashion-brizy/wp-content/uploads/2020/05/neve-fashion-demo-screenshot.png',
 						'title'            => 'Fashion',
 						'keywords'         => [ 'fashion', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/4926520/fashion',
 					],
 					'neve-brizy-showcase'             => [
 						'url'              => 'https://demosites.io/showcase-brizy/',
@@ -2310,7 +2074,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:showcase-brizy/wp-content/uploads/2020/05/neve-showcase-new.jpg',
 						'title'            => 'Showcase',
 						'keywords'         => [ 'entertainment', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/4587690/showcase/ed70b13c3a6d1219334f193873aaad61',
 					],
 					'neve-brizy-consultants'          => [
 						'url'              => 'https://demosites.io/consultants-brizy/',
@@ -2318,7 +2081,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:consultants-brizy/wp-content/uploads/2020/05/neve-business-consulting.jpg',
 						'title'            => 'Business Consulting',
 						'keywords'         => [ 'business', 'one page' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8366058/consultants',
 					],
 					'neve-brizy-job-listings'         => [
 						'url'              => 'https://demosites.io/job-listings-brizy/',
@@ -2326,7 +2088,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:job-listings-brizy/wp-content/uploads/2020/05/neve-job-listings.jpg',
 						'title'            => 'Job Listing',
 						'keywords'         => [ 'responsive', 'minimal' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8327271/job-listing',
 					],
 					'neve-brizy-barber-shop'          => [
 						'url'              => 'https://demosites.io/barber-shop-brizy/',
@@ -2334,7 +2095,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:barber-shop-brizy/wp-content/uploads/2020/05/neve-barber-shop.jpg',
 						'title'            => 'Barber Shop',
 						'keywords'         => [ 'ecommerce', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8357212/barber-shop',
 					],
 					'neve-brizy-personal-trainer'     => [
 						'url'              => 'https://demosites.io/personal-trainer-brizy/',
@@ -2342,7 +2102,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:personal-trainer-brizy/wp-content/uploads/2020/05/neve-personal-trainer.jpg',
 						'title'            => 'Personal Trainer',
 						'keywords'         => [ 'sports', 'one page' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8351250/personal-trainer/4f469c0cb610352567f5233410c61742',
 					],
 					'neve-brizy-real-estate'          => [
 						'url'              => 'https://demosites.io/real-estate-brizy/',
@@ -2350,7 +2109,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:real-estate-brizy/wp-content/uploads/2020/05/neve-real-estate.jpg',
 						'title'            => 'Real Estate',
 						'keywords'         => [ 'one page', 'business', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8280384/real-estate',
 					],
 					'neve-brizy-events'               => [
 						'url'              => 'https://demosites.io/events-brizy/',
@@ -2358,7 +2116,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:events-brizy/wp-content/uploads/2020/05/neve-events.jpg',
 						'title'            => 'Events',
 						'keywords'         => [ 'entertainment', 'one page', 'event' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8311870/music-events',
 					],
 					'neve-brizy-portrait-photopraphy' => [
 						'url'              => 'https://demosites.io/portrait-photography-brizy/',
@@ -2366,7 +2123,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:portrait-photography-brizy/wp-content/uploads/2020/05/neve-wedding-photography.jpg',
 						'title'            => 'Wedding Photography',
 						'keywords'         => [ 'photography', 'wedding', 'minimal' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/4587751/portrait-wedding-photography',
 					],
 					'neve-brizy-furniture-shop'       => [
 						'url'              => 'https://demosites.io/furniture-shop-brizy/',
@@ -2374,7 +2130,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:furniture-shop-brizy/wp-content/uploads/2020/05/neve-furniture-shop.jpg',
 						'title'            => 'Furniture Shop',
 						'keywords'         => [ 'ecommerce', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8527065/furniture-shop',
 					],
 					'neve-brizy-farm'                 => [
 						'url'              => 'https://demosites.io/farm-brizy/',
@@ -2382,7 +2137,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:farm-brizy/wp-content/uploads/2020/05/neve-farm.jpg',
 						'title'            => 'Farm',
 						'keywords'         => [ 'food', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8509382/farm',
 					],
 					'neve-brizy-kindergarten'         => [
 						'url'              => 'https://demosites.io/kindergarten-brizy/',
@@ -2390,7 +2144,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:kindergarten-brizy/wp-content/uploads/2020/05/neve-kindergarden.jpg',
 						'title'            => 'Kindergarten',
 						'keywords'         => [ 'education', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8606727/kindergarten',
 					],
 					'neve-brizy-florist'              => [
 						'url'              => 'hhttps://demosites.io/florist-brizy/',
@@ -2398,7 +2151,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:florist-brizy/wp-content/uploads/2020/05/neve-florist.jpg',
 						'title'            => 'Florist',
 						'keywords'         => [ 'ecommerce', 'flowers', 'blog' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8715558/neve-florist/f9106cdfcd1a7309bac7c606760d7918',
 					],
 					'neve-brizy-cake-shop'            => [
 						'url'              => 'https://demosites.io/cake-shop-brizy/',
@@ -2406,7 +2158,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:cake-shop-brizy/wp-content/uploads/2020/05/neve-cake-shop.jpg',
 						'title'            => 'Cake Shop',
 						'keywords'         => [ 'ecommerce', 'food' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/7772437/cakery-bakery/5f40022a676873e52e1dc76b113c5915',
 					],
 					'neve-brizy-food-magazine'        => [
 						'url'              => 'https://demosites.io/food-magazine-brizy/',
@@ -2414,7 +2165,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:food-magazine-brizy/wp-content/uploads/2020/05/neve-food-magazine.jpg',
 						'title'            => 'Food Magazine',
 						'keywords'         => [ 'food', 'blog' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8789337/neve-food-magazine',
 					],
 					'neve-brizy-web-design'           => [
 						'url'              => 'https://demosites.io/web-design-brizy/',
@@ -2422,7 +2172,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:web-design-brizy/wp-content/uploads/2020/05/neve-web-design.jpg',
 						'title'            => 'eCourse - Web Design',
 						'keywords'         => [ 'business', 'blog' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8778651/neve-web-design-course/e3a1b8568395786acef49c20929c5dce',
 					],
 					'neve-brizy-yoga-studio'          => [
 						'url'              => 'https://demosites.io/yoga-studio-brizy/',
@@ -2430,7 +2179,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:yoga-studio-brizy/wp-content/uploads/2020/05/neve-yoga.jpg',
 						'title'            => 'Yoga Studio',
 						'keywords'         => [ 'wellness', 'responsive', 'minimal' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8778361/yoga-studio/fd02983f43e4d1b4f9ea9651d1fd8233',
 					],
 					'neve-brizy-sales-funnel'         => [
 						'url'              => 'https://demosites.io/sales-funnel-brizy/',
@@ -2438,7 +2186,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:sales-funnel-brizy/wp-content/uploads/2020/05/neve-sales.jpg',
 						'title'            => 'Sales Funnel',
 						'keywords'         => [ 'ecommerce', 'business' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8758788/sales-funnel-1/ce1d2f6de0dab35699688bab193323d0',
 					],
 					'neve-brizy-news-magazine'        => [
 						'url'              => 'https://demosites.io/news-magazine-brizy/',
@@ -2446,7 +2193,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:news-magazine-brizy/wp-content/uploads/2020/05/neve-news.jpg',
 						'title'            => 'News Magazine',
 						'keywords'         => [ 'blog', 'minimal', 'news' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8843126/news-magazine/87e04aee675f7288715a01a4c674d2fc',
 					],
 					'neve-brizy-fishing-club'         => [
 						'url'              => 'https://demosites.io/fishing-club-brizy/',
@@ -2454,7 +2200,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:fishing-club-brizy/wp-content/uploads/2020/05/neve-fishing.jpg',
 						'title'            => 'Fishing and Hunting Club',
 						'keywords'         => [ 'sports', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8868787/hunting-and-fishing/6f67a5235958b49102a57b3c9364e5cf',
 					],
 					'neve-brizy-car-rental'           => [
 						'url'              => 'https://demosites.io/car-rental-brizy/',
@@ -2462,7 +2207,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:car-rental-brizy/wp-content/uploads/2020/05/neve-cart-rental.jpg',
 						'title'            => 'Car Rental',
 						'keywords'         => [ 'car', 'one page', 'minimal' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8826109/car-rental',
 					],
 					'neve-brizy-digital-product'      => [
 						'url'              => 'https://demosites.io/digital-product-funnel-brizy/',
@@ -2470,7 +2214,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:digital-product-funnel-brizy/wp-content/uploads/2020/05/neve-digital-product.jpg',
 						'title'            => 'Digital Product Funnel',
 						'keywords'         => [ 'ecommerce', 'business' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8869329/digital-product',
 					],
 					'neve-brizy-moving-company'       => [
 						'url'              => 'https://demosites.io/moving-company-brizy/',
@@ -2478,7 +2221,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:moving-company-brizy/wp-content/uploads/2020/05/neve-moving-company.jpg',
 						'title'            => 'Moving Company Logistics Services',
 						'keywords'         => [ 'logistics', 'one page', 'responsive' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8907717/moving-company/9274ab9f8d8de88bcdea5d79598e80e4',
 					],
 					'neve-brizy-translation-services' => [
 						'url'              => 'https://demosites.io/translation-services-brizy/',
@@ -2486,8 +2228,6 @@ class Front_End {
 						'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:translation-services-brizy/wp-content/uploads/2020/05/neve-translations.jpg',
 						'title'            => 'Translation and Interpreter Services',
 						'keywords'         => [ 'responsive', 'blog' ],
-						'unsplash_gallery' => 'https://unsplash.com/collections/8903458/translation-services/f2ba08f0cb507af6bb520cd5c9643c5d',
-					],
 				],
 			],
 			'can_migrate' => [
@@ -2558,7 +2298,6 @@ class Front_End {
 				'remote_url'       => 'https://api.themeisle.com/sites/restaurant-gb/',
 				'title'            => 'Restaurant',
 				'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:restaurant-gb/wp-content/uploads/2020/05/screenshot.png',
-				'unsplash_gallery' => 'https://unsplash.com/collections/4587624/restaurant',
 				'keywords'         => [ 'food', 'business', 'responsive', 'free' ],
 			],
 			'neve-charity-gutenberg'            => [
@@ -2566,7 +2305,6 @@ class Front_End {
 				'remote_url'       => 'https://api.themeisle.com/sites/charity-gb/',
 				'title'            => 'Charity',
 				'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:charity-gb/wp-content/uploads/2020/05/screenshot-1.png',
-				'unsplash_gallery' => 'https://unsplash.com/collections/4587605/charity',
 				'keywords'         => [ 'one page', 'minimal', 'business', 'free' ],
 			],
 			'neve-vet-center-gutenberg'         => [
@@ -2574,7 +2312,6 @@ class Front_End {
 				'remote_url'       => 'https://api.themeisle.com/sites/vet-center-gb/',
 				'title'            => 'Vet Center',
 				'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:vet-center-gb/wp-content/uploads/2020/05/screenshot-2.png',
-				'unsplash_gallery' => 'https://unsplash.com/collections/4587611/vet-center',
 				'keywords'         => [ 'medical', 'minimal', 'responsive', 'free' ],
 			],
 			'neve-doctors-gutenberg'            => [
@@ -2582,7 +2319,6 @@ class Front_End {
 				'remote_url'       => 'https://api.themeisle.com/sites/doctors-gb/',
 				'title'            => 'Doctors',
 				'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:doctors-gb/wp-content/uploads/2020/05/screenshot-3.png',
-				'unsplash_gallery' => 'https://unsplash.com/collections/4587593/doctor',
 				'keywords'         => [ 'medical', 'one page', 'minimal', 'responsive', 'free' ],
 			],
 			'neve-architecture-gutenberg'       => [
@@ -2590,7 +2326,6 @@ class Front_End {
 				'remote_url'       => 'https://api.themeisle.com/sites/architecture-gb/',
 				'title'            => 'Architecture',
 				'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:architecture-gb/wp-content/uploads/2020/05/screenshot-4.png',
-				'unsplash_gallery' => 'https://unsplash.com/collections/6802313/architecture/f59e19df059789d86d1066ea80130a87',
 				'keywords'         => [ 'minimal', 'responsive', 'free' ],
 			],
 			'neve-fitness-gutenberg'            => [
@@ -2598,7 +2333,6 @@ class Front_End {
 				'remote_url'       => 'https://api.themeisle.com/sites/fitness-gb/',
 				'title'            => 'Fitness',
 				'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:fitness-gb/wp-content/uploads/2020/05/screenshot-5.png',
-				'unsplash_gallery' => 'https://unsplash.com/collections/6800490/fitness-gym',
 				'keywords'         => [ 'sports', 'one page', 'free' ],
 			],
 			'neve-vacation-rental-gutenberg'    => [
@@ -2606,7 +2340,6 @@ class Front_End {
 				'remote_url'       => 'https://api.themeisle.com/sites/vacation-rental-gb/',
 				'title'            => 'Vacation Rental',
 				'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:vacation-rental-gb/wp-content/uploads/2020/05/screenshot-6.png',
-				'unsplash_gallery' => 'https://unsplash.com/collections/7851106/hotel',
 				'keywords'         => [ 'minimal', 'blog', 'free' ],
 			],
 			'neve-music-band-gutenberg'         => [
@@ -2614,7 +2347,6 @@ class Front_End {
 				'remote_url'       => 'https://api.themeisle.com/sites/music-band-gb/',
 				'title'            => 'Music Band',
 				'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:music-band-gb/wp-content/uploads/2020/05/screenshot-7.png',
-				'unsplash_gallery' => 'https://unsplash.com/collections/7338489/music/746c95e4a72ad242a07001a2ca0fa7cb',
 				'keywords'         => [ 'entertainment', 'one page', 'business', 'responsive', 'blog', 'free', 'music' ],
 			],
 			'neve-wedding-gutenberg'            => [
@@ -2622,7 +2354,6 @@ class Front_End {
 				'remote_url'       => 'https://api.themeisle.com/sites/wedding-gb/',
 				'title'            => 'Wedding',
 				'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:wedding-gb/wp-content/uploads/2020/05/screenshot.jpg',
-				'unsplash_gallery' => 'https://unsplash.com/collections/8116784/wedding/9afa9f6ba14422f348e1c7a49a9d51e9',
 				'keywords'         => [ 'business', 'minimal', 'responsive', 'free', 'wedding' ],
 			],
 			'neve-themotion-gutenberg'          => [
@@ -2630,7 +2361,6 @@ class Front_End {
 				'remote_url'       => 'https://api.themeisle.com/sites/themotion-gb/',
 				'title'            => 'Video Blog',
 				'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:themotion-gb/wp-content/uploads/2020/05/screenshot-1.jpg',
-				'unsplash_gallery' => 'https://unsplash.com/collections/8256651/neve-the-motion/79f8c5a63926e7cee4deed75bc6724fc',
 				'keywords'         => [ 'photography', 'blog', 'responsive', 'free' ],
 			],
 			'neve-amadeus-gutenberg'            => [
@@ -2638,7 +2368,6 @@ class Front_End {
 				'remote_url'       => 'https://api.themeisle.com/sites/amadeus-gb/',
 				'title'            => 'Music Teacher',
 				'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:amadeus-gb/wp-content/uploads/2020/05/screenshot-2.jpg',
-				'unsplash_gallery' => 'https://unsplash.com/collections/8271695/neve-amadeus/ba699571eb4fc205ad8385c0440ced80',
 				'keywords'         => [ 'education', 'responsive', 'free', 'music' ],
 			],
 			'neve-oblique-gutenberg'            => [
@@ -2646,7 +2375,6 @@ class Front_End {
 				'remote_url'       => 'https://api.themeisle.com/sites/oblique-gb/',
 				'title'            => 'Vintage',
 				'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:oblique-gb/wp-content/uploads/2020/05/screenshot-3.jpg',
-				'unsplash_gallery' => 'https://unsplash.com/collections/8325788/oblique/7281d963f7b798d5fa7d6327bfd26804',
 				'keywords'         => [ 'photography', 'minimal', 'blog', 'free' ],
 			],
 			'neve-rokophoto-gutenberg'          => [
@@ -2654,7 +2382,6 @@ class Front_End {
 				'remote_url'       => 'https://api.themeisle.com/sites/rokophoto-gb/',
 				'title'            => 'Photography',
 				'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:rokophoto-gb/wp-content/uploads/2020/05/screenshot-4.jpg',
-				'unsplash_gallery' => 'https://unsplash.com/collections/8311183/rokophoto/ecebabcd40134eacf11cbd3cba504f44',
 				'keywords'         => [ 'photography', 'business', 'responsive', 'free' ],
 			],
 			'neve-energy-panels-gutenberg'      => [
@@ -2662,7 +2389,6 @@ class Front_End {
 				'remote_url'       => 'https://api.themeisle.com/sites/energy-panels-gb/',
 				'title'            => 'Energy Panels',
 				'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:energy-panels-gb/wp-content/uploads/2020/05/screenshot-5.jpg',
-				'unsplash_gallery' => 'https://unsplash.com/collections/4587602/energy-panels',
 				'keywords'         => [ 'business', 'blog', 'minimal', 'free' ],
 			],
 			'neve-lawyers-gutenberg'            => [
@@ -2670,7 +2396,6 @@ class Front_End {
 				'remote_url'       => 'https://api.themeisle.com/sites/lawyers-gb/',
 				'title'            => 'Lawyers',
 				'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:lawyers-gb/wp-content/uploads/2020/05/screenshot-6.jpg',
-				'unsplash_gallery' => 'https://unsplash.com/collections/4587639/neve-lawyers',
 				'keywords'         => [ 'business', 'minimal', 'responsive', 'free' ],
 			],
 			'neve-freelancer-gutenberg'         => [
@@ -2678,7 +2403,6 @@ class Front_End {
 				'remote_url'       => 'https://api.themeisle.com/sites/freelancer-gb/',
 				'title'            => 'Freelancer',
 				'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:freelancer-gb/wp-content/uploads/2020/05/screenshot-7.jpg',
-				'unsplash_gallery' => 'https://unsplash.com/collections/4587634/freelancer/920c5eb680fa5f20b9b19a0d84a385eb',
 				'keywords'         => [ 'education', 'minimal', 'blog', 'free' ],
 			],
 			'neve-tattoo-gutenberg'             => [
@@ -2686,7 +2410,6 @@ class Front_End {
 				'remote_url'       => 'https://api.themeisle.com/sites/tatoo-gb/',
 				'title'            => 'Tattoo',
 				'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:tatoo-gb/wp-content/uploads/2020/05/screenshot-8.jpg',
-				'unsplash_gallery' => 'https://unsplash.com/collections/8459353/tatoo-studio',
 				'keywords'         => [ 'one page', 'responsive', 'free' ],
 			],
 			'neve-zelle-gutenberg'              => [
@@ -2694,7 +2417,6 @@ class Front_End {
 				'remote_url'       => 'https://api.themeisle.com/sites/zelle-gb/',
 				'title'            => 'Travel Agency',
 				'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:zelle-gb/wp-content/uploads/2020/05/screenshot-9.jpg',
-				'unsplash_gallery' => 'https://unsplash.com/collections/4587771/zelle',
 				'keywords'         => [ 'travel', 'one page', 'blog', 'free', 'agency' ],
 			],
 			'neve-life-coach-gutenberg'         => [
@@ -2702,7 +2424,6 @@ class Front_End {
 				'remote_url'       => 'https://api.themeisle.com/sites/scholar-gb/',
 				'title'            => 'Life Coach',
 				'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:scholar-gb/wp-content/uploads/2020/05/screenshot-10.jpg',
-				'unsplash_gallery' => 'https://unsplash.com/collections/8532052/life-coach',
 				'keywords'         => [ 'education', 'responsive', 'blog', 'free' ],
 			],
 			'neve-creative-portfolio-gutenberg' => [
@@ -2710,7 +2431,6 @@ class Front_End {
 				'remote_url'       => 'https://api.themeisle.com/sites/creative-portofolio-gb/',
 				'title'            => 'Creative Portfolio',
 				'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:creative-portofolio-gb/wp-content/uploads/2020/05/screenshot-11.jpg',
-				'unsplash_gallery' => 'https://unsplash.com/collections/8334242/creative-portfolio',
 				'keywords'         => [ 'one page', 'minimal', 'business', 'free' ],
 			],
 		];
@@ -2738,7 +2458,6 @@ class Front_End {
 				'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:showcase-gb/wp-content/uploads/2020/05/neve-showcase-new.jpg',
 				'title'            => 'Showcase',
 				'keywords'         => [ 'entertainment', 'minimal' ],
-				'unsplash_gallery' => 'https://unsplash.com/collections/4587690/showcase/ed70b13c3a6d1219334f193873aaad61',
 			],
 			'neve-consultants-gutenberg'      => [
 				'url'        => 'https://demosites.io/consultants-gb/',
@@ -2757,14 +2476,12 @@ class Front_End {
 				'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:barber-shop-gb/wp-content/uploads/2020/05/neve-barber-shop.jpg',
 				'title'            => 'Barber Shop',
 				'keywords'         => [ 'ecommerce', 'responsive' ],
-				'unsplash_gallery' => 'https://unsplash.com/collections/8357212/barber-shop',
 			],
 			'neve-personal-trainer-gutenberg' => [
 				'url'              => 'https://demosites.io/personal-trainer-gb/',
 				'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:personal-trainer-gb/wp-content/uploads/2020/05/neve-personal-trainer.jpg',
 				'title'            => 'Personal Trainer',
 				'keywords'         => [ 'sports', 'one page' ],
-				'unsplash_gallery' => 'https://unsplash.com/collections/8351250/personal-trainer/4f469c0cb610352567f5233410c61742',
 			],
 			'neve-real-estate-gutenberg'      => [
 				'url'        => 'https://demosites.io/real-estate-gb/',
@@ -2783,49 +2500,42 @@ class Front_End {
 				'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:video-agency-gb/wp-content/uploads/2020/05/neve-vide-agency.jpg',
 				'title'            => 'Video Agency',
 				'keywords'         => [ 'photography', 'responsive', 'agency' ],
-				'unsplash_gallery' => 'https://unsplash.com/collections/4770565/video-agency',
 			],
 			'neve-farm-gutenberg'             => [
 				'url'              => 'https://demosites.io/farm-gb/',
 				'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:farm-gb/wp-content/uploads/2020/05/neve-farm.jpg',
 				'title'            => 'Farm',
 				'keywords'         => [ 'food', 'responsive' ],
-				'unsplash_gallery' => 'https://unsplash.com/collections/8509382/farm',
 			],
 			'neve-florist-gutenberg'          => [
 				'url'              => 'https://demosites.io/florist-gb/',
 				'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:florist-gb/wp-content/uploads/2020/05/neve-florist.jpg',
 				'title'            => 'Florist',
 				'keywords'         => [ 'ecommerce', 'flowers', 'blog' ],
-				'unsplash_gallery' => 'https://unsplash.com/collections/8715558/neve-florist/f9106cdfcd1a7309bac7c606760d7918',
 			],
 			'neve-cake-shop-gutenberg'        => [
 				'url'              => 'https://demosites.io/cakeshop-gb/',
 				'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:cakeshop-gb/wp-content/uploads/2020/05/neve-cake-shop.jpg',
 				'title'            => 'Cake Shop',
 				'keywords'         => [ 'ecommerce', 'food' ],
-				'unsplash_gallery' => 'https://unsplash.com/collections/7772437/cakery-bakery/5f40022a676873e52e1dc76b113c5915',
 			],
 			'neve-ebook-gutenberg'            => [
 				'url'              => 'https://demosites.io/ebook-gb/',
 				'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:ebook-gb/wp-content/uploads/2020/05/neve-ebook.jpg',
 				'title'            => 'eBook',
 				'keywords'         => [ 'education', 'blog', 'minimal' ],
-				'unsplash_gallery' => 'https://unsplash.com/collections/8687501/neve-ebook/53451c76913e4e176e377c0208e2e755',
 			],
 			'neve-food-magazine-gutenberg'    => [
 				'url'              => 'https://demosites.io/food-magazine-gb/',
 				'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:food-magazine-gb/wp-content/uploads/2020/05/neve-food-magazine.jpg',
 				'title'            => 'Food Magazine',
 				'keywords'         => [ 'food', 'blog' ],
-				'unsplash_gallery' => 'https://unsplash.com/collections/8789337/neve-food-magazine',
 			],
 			'neve-yoga-studio-gutenberg'      => [
 				'url'              => 'https://demosites.io/yoga-studio-gb/',
 				'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:yoga-studio-gb/wp-content/uploads/2020/05/neve-yoga.jpg',
 				'title'            => 'Yoga Studio',
 				'keywords'         => [ 'wellness', 'responsive', 'minimal' ],
-				'unsplash_gallery' => 'https://unsplash.com/collections/8778361/yoga-studio/fd02983f43e4d1b4f9ea9651d1fd8233',
 			],
 			'neve-fashion-magazine-gutenberg' => [
 				'url'        => 'https://demosites.io/fashion-magazine-gb/',
@@ -2838,7 +2548,6 @@ class Front_End {
 				'screenshot'       => 'https://api.themeisle.com/sites/images/q:auto/cb:winery-gb/wp-content/uploads/2020/05/neve-winery.png',
 				'title'            => 'Winery - Wine Shop',
 				'keywords'         => [ 'food', 'ecommerce' ],
-				'unsplash_gallery' => 'https://unsplash.com/collections/8821407/winery',
 			],
 
 		];
