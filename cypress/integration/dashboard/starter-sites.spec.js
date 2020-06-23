@@ -7,7 +7,7 @@ const BEFORE = () => {
   })
 
   cy.server()
-  cy.route('https://api.themeisle.com/sites/*/wp-json/ti-demo-data/data').as('loadRemoteData')
+  cy.route('https://api.themeisle.com/sites/*/wp-json/ti-demo-data/data*').as('loadRemoteData')
 
   cy.login()
   cy.visit('/wp-admin/themes.php?page=neve-welcome#starter-sites')
