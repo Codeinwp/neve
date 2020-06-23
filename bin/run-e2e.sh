@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+npm install --prefix ./cypress
 
 # Install dependencies.
 composer install --no-dev

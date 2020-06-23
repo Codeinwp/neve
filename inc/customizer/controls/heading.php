@@ -50,14 +50,22 @@ class Heading extends \WP_Customize_Control {
 	public $controls_to_wrap = 1;
 
 	/**
+	 * Label before the accordion.
+	 *
+	 * @var string
+	 */
+	public $category_label = '';
+
+	/**
 	 * Send data to _s
 	 *
 	 * @return array
 	 */
 	public function json() {
-		$json              = parent::json();
-		$json['classes']   = $this->class;
-		$json['accordion'] = $this->accordion;
+		$json                   = parent::json();
+		$json['classes']        = $this->class;
+		$json['accordion']      = $this->accordion;
+		$json['category_label'] = $this->category_label;
 
 		if ( $this->accordion === true ) {
 			$json['classes'] .= ' accordion';
@@ -99,13 +107,16 @@ class Heading extends \WP_Customize_Control {
 	 */
 	protected function content_template() {
 		?>
+		<# if(data.category_label) {#>
+		<span class="customize-control-title">{{data.category_label}}</span>
+		<# }#>
 		<h4 class="neve-customizer-heading">{{ data.label }}
 			<# if(data.accordion) { #>
 			<span class="accordion-expand-button"></span>
 			<# } #>
 		</h4>
 		{{{data.style}}} <?php // phpcs:ignore WordPressVIPMinimum.Security.Mustache.OutputNotation ?>
-		<?php 
+		<?php
 	}
 
 	/**
