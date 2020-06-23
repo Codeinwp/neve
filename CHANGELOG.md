@@ -1,3 +1,13 @@
+##### [Version 2.7.3](https://github.com/Codeinwp/neve/compare/v2.7.2...v2.7.3) (2020-06-23)
+
+- [Feat] New typography controls for the Blog and Single Post pages
+- [Feat] New vertical alignment controls for the footer builder components
+- [Fix] Neve Options page in RTL mode
+- [Fix] Optimize screenshots in Starter Sites library
+- [Fix] Make sure all keys in values are defined for the Spacing Component
+- [Fix] Add back single product name in breadcrumbs
+- New Brizy Starter Sites
+
 ##### [Version 2.7.2](https://github.com/Codeinwp/neve/compare/v2.7.1...v2.7.2) (2020-06-04)
 
 - [Feat] Three layouts for the header builder Search Icon component ( Canvas, Minimal and Float above Header )
