@@ -17,12 +17,12 @@ const Changelog = (props) => {
 					className={! showForPro && 'active'}
 					onClick={() => {
 						setShowForPro(false);
-					}}>{__('Neve', 'neve')}</a>
+					}}>Neve</a>
 				<a
 					className={showForPro && 'active'}
 					onClick={() => {
 						setShowForPro(true);
-					}}>{__('Neve Pro', 'neve')}</a>
+					}}>Neve Pro</a>
 			</div>
 			}
 			{

@@ -12,8 +12,8 @@ const Pro = (props) => {
 				<tbody className="table-body">
 				<tr className="table-head">
 					<th className="large"/>
-					<th className="indicator">{__('Neve', 'neve')}</th>
-					<th className="indicator">{__('Neve Pro', 'neve')}</th>
+					<th className="indicator">Neve</th>
+					<th className="indicator">Neve Pro</th>
 				</tr>
 				{featureData.map((item) => <FeatureRow item={item}/>)}
 				</tbody>
