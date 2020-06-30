@@ -167,17 +167,22 @@ abstract class Base_Customizer {
 			}
 			if ( isset( $control->control_args['live_refresh_selector'] ) ) {
 				$control_args = array(
-					'selector' => $control->control_args['live_refresh_selector'],
-					'id'       => $control->id,
-					'type'     => $control_type,
+					'selector'   => $control->control_args['live_refresh_selector'],
+					'id'         => $control->id,
+					'type'       => $control_type,
+					'additional' => isset( $control->control_args['live_refresh_css_prop'] ) ? $control->control_args['live_refresh_css_prop'] : false,
 				);
+
 				add_filter(
 					'neve_customize_preview_localization',
 					function ( $array ) use ( $control_args ) {
 						if ( ! isset( $array[ $control_args['type'] ] ) ) {
 							$array[ $control_args['type'] ] = [];
 						}
-						$array[ $control_args['type'] ][ $control_args['id'] ] = [ 'selector' => $control_args['selector'] ];
+						$array[ $control_args['type'] ][ $control_args['id'] ] = [
+							'selector'   => $control_args['selector'],
+							'additional' => $control_args['additional'],
+						];
 						return $array;
 					}
 				);
