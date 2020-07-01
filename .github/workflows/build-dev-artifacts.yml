@@ -82,12 +82,12 @@ jobs:
         with:
           issue-number: ${{ steps.get-pr-number.outputs.num }}
           comment-author: github-actions[bot]
-          body-includes: Download [development build]
+          body-includes: Download [build]
 
       - name: Get comment body
         id: get-comment-body
         run: |
-          body="Plugin builds for ${{ github.event.pull_request.head.sha }} are ready :bellhop_bell:!
+          body="Plugin build for ${{ github.event.pull_request.head.sha }} is ready :bellhop_bell:!
           - Download [build](https://verti-artifacts.s3.amazonaws.com/${{ github.event.pull_request.base.repo.name }}-${{ needs.dev-zip.outputs.branch-name }}-${{ needs.dev-zip.outputs.git-sha-8 }}/neve.zip)"
           body="${body//$'\n'/'%0A'}"
           echo "::set-output name=body::$body"
