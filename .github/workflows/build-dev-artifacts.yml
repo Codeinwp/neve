@@ -46,13 +46,13 @@ jobs:
         id: retrieve-git-sha-8
         run: echo "::set-output name=sha8::$(echo ${GITHUB_SHA} | cut -c1-8)"
       - name: Upload Latest Version to S3
-          uses: jakejarvis/s3-sync-action@master
-          with:
-            args: --acl public-read --follow-symlinks --delete
-          env:
-            AWS_S3_BUCKET: ${{ secrets.AWS_DEV_BUCKET }}
-            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-            SOURCE_DIR: 'artifact'      # optional: defaults to entire repository
-            DEST_DIR: ${GITHUB_REPOSITORY}-${{ needs.dev-zip.outputs.branch-name }}-${{ needs.dev-zip.outputs.git-sha-8 }}.zip
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --acl public-read --follow-symlinks --delete
+        env:
+          AWS_S3_BUCKET: ${{ secrets.AWS_DEV_BUCKET }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          SOURCE_DIR: 'artifact'      # optional: defaults to entire repository
+          DEST_DIR: ${GITHUB_REPOSITORY}-${{ needs.dev-zip.outputs.branch-name }}-${{ needs.dev-zip.outputs.git-sha-8 }}.zip
 
