@@ -182,11 +182,19 @@ window.addEventListener('load', function () {
               addCss(settingId, style)
               break
             case '\\Neve\\Customizer\\Controls\\React\\Radio_Buttons':
+              if( ! args.additional ) return false;
+
+              const classes = args.additional.is_for === 'horizontal' ?
+				'hfg-item-center hfg-item-right hfg-item-left hfg-item-justify' :
+				'hfg-item-v-top hfg-item-v-middle hfg-item-v-bottom'
+              const newClass = args.additional.is_for === 'horizontal' ?
+				'hfg-item-' + newValue:
+				'hfg-item-v-' + newValue;
+
               let itemInner = document.querySelectorAll(args.selector)
               _.each(itemInner, function (item) {
-                removeClass(item.parentNode,
-                  'hfg-item-center hfg-item-right hfg-item-left hfg-item-justify')
-                addClass(item.parentNode, 'hfg-item-' + newValue)
+                removeClass(item.parentNode, classes)
+                addClass(item.parentNode, newClass )
               })
               break
             case '\\Neve\\Customizer\\Controls\\Radio_Image':
@@ -252,20 +260,37 @@ window.addEventListener('load', function () {
               addCss(settingId, style)
               break
             case '\\Neve\\Customizer\\Controls\\React\\Typography':
-              style +=
-                `html ${args.selector}{
-										text-transform: ${newValue.textTransform};
-										font-weight: ${newValue.fontWeight};
-									}`
+              style += `html ${args.selector}{`
+              if ( newValue.textTransform ){
+                style += `text-transform: ${newValue.textTransform};`
+              }
+              if ( newValue.fontWeight &&  newValue.fontWeight !== 'none' ){
+                style += `font-weight: ${newValue.fontWeight};`
+              }
+              style += `}`
               for (let device in deviceMap) {
                 style +=
                   `@media (${deviceMap[device]}) {
-											html ${args.selector} {
-												font-size:${newValue.fontSize[device]}${newValue.fontSize.suffix[device]};
-												letter-spacing:${newValue.letterSpacing[device]}px;
-												line-height:${newValue.lineHeight[device]}${newValue.lineHeight.suffix[device] || ''};
-											}
-										}`
+											html ${args.selector} {`
+                if ( args.live_refresh_default && args.live_refresh_default.size ){
+                  style += `font-size:${args.live_refresh_default.size[device]}${args.live_refresh_default.size.suffix[device]};`
+                }
+                if ( newValue.fontSize && newValue.fontSize[device] ){
+                  style += `font-size:${newValue.fontSize[device]}${newValue.fontSize.suffix[device]};`
+                }
+                if ( args.live_refresh_default && args.live_refresh_default.letter_spacing ){
+                  style += `letter-spacing:${args.live_refresh_default.letter_spacing[device]}px;`
+                }
+                if ( newValue.letterSpacing && newValue.letterSpacing[device] ){
+                  style += `letter-spacing:${newValue.letterSpacing[device]}px;`
+                }
+                if ( args.live_refresh_default && args.live_refresh_default.line_height ){
+                  style += `line-height:${args.live_refresh_default.line_height[device]}${args.live_refresh_default.line_height.suffix && args.live_refresh_default.line_height.suffix[device] ? args.live_refresh_default.line_height.suffix[device] : ''};`
+                }
+                if ( newValue.lineHeight && newValue.lineHeight[device] ){
+                  style += `line-height:${newValue.lineHeight[device]}${newValue.lineHeight.suffix[device] || ''};`
+                }
+                style += `}}`
               }
               addCss(settingId, style)
               break

@@ -22,14 +22,6 @@ const ImportModalNote = ({data, externalInstalled}) => {
 					<Fragment>
 						<li>{__('We recommend you backup your website content before attempting a full site import.', 'neve')}</li>
 						<li>{__('Some of the demo images will not be imported and will be replaced by placeholder images.', 'neve')}</li>
-						{data['unsplash_gallery'] &&
-						<li>
-							<a
-								href={data['unsplash_gallery']}>
-								{__('Here is our own collection of related images you can use for your site.', 'neve')}
-							</a>
-						</li>
-						}
 					</Fragment>
 				}
 			</ol>

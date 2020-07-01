@@ -158,7 +158,10 @@ class Main {
 
 		$dependencies = [ 'react', 'react-dom', 'wp-i18n', 'wp-api', 'wp-api-fetch', 'wp-components', 'wp-element', 'updates' ];
 
-		wp_enqueue_style( 'neve-dash-style', get_template_directory_uri() . '/dashboard/build/build.css', [ 'wp-components' ], NEVE_VERSION );
+		wp_register_style( 'neve-dash-style', get_template_directory_uri() . '/dashboard/build/build.css', [ 'wp-components' ], NEVE_VERSION );
+		wp_style_add_data( 'neve-dash-style', 'rtl', 'replace' );
+		wp_enqueue_style( 'neve-dash-style' );
+
 		wp_register_script( 'neve-dash-script', get_template_directory_uri() . '/dashboard/build/build.js', $dependencies, NEVE_VERSION, true );
 		wp_localize_script( 'neve-dash-script', 'neveDash', apply_filters( 'neve_dashboard_page_data', $this->get_localization() ) );
 		wp_enqueue_script( 'neve-dash-script' );
@@ -171,13 +174,14 @@ class Main {
 	 */
 	private function get_localization() {
 		$theme_name        = apply_filters( 'ti_wl_theme_name', $this->theme_args['name'] );
-		$plugin_name       = apply_filters( 'ti_wl_plugin_name', __( 'Neve Pro', 'neve' ) );
-		$plugin_name_addon = apply_filters( 'ti_wl_plugin_name', __( 'Neve Pro Addon', 'neve' ) );
+		$plugin_name       = apply_filters( 'ti_wl_plugin_name', 'Neve Pro' );
+		$plugin_name_addon = apply_filters( 'ti_wl_plugin_name', 'Neve Pro Addon' );
 		$data              = [
 			'nonce'               => wp_create_nonce( 'wp_rest' ),
 			'version'             => 'v' . NEVE_VERSION,
 			'assets'              => get_template_directory_uri() . '/dashboard/assets/',
 			'hasOldPro'           => (bool) ( defined( 'NEVE_PRO_VERSION' ) && version_compare( NEVE_PRO_VERSION, '1.1.11', '<' ) ),
+			'isRTL'               => is_rtl(),
 			'notifications'       => $this->get_notifications(),
 			'customizerShortcuts' => $this->get_customizer_shortcuts(),
 			'plugins'             => $this->get_useful_plugins(),

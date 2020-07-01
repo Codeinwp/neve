@@ -1,0 +1,71 @@
+<!-- wp:heading {"align":"center"} -->
+<h2 class="has-text-align-center">Default style pullquote</h2>
+<!-- /wp:heading -->
+
+<!-- wp:pullquote -->
+<figure class="wp-block-pullquote"><blockquote><p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere est at lobortis.</p><cite>Jane doe</cite></blockquote></figure>
+<!-- /wp:pullquote -->
+
+<!-- wp:heading {"align":"center"} -->
+<h2 class="has-text-align-center">Solid style pullquote</h2>
+<!-- /wp:heading -->
+
+<!-- wp:pullquote {"className":"is-style-solid-color"} -->
+<figure class="wp-block-pullquote is-style-solid-color"><blockquote><p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere est at lobortis.</p><cite>Jane Doe</cite></blockquote></figure>
+<!-- /wp:pullquote -->
+
+<!-- wp:paragraph -->
+<p>Etiam porta sem malesuada magna mollis euismod. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.Donec ullamcorper nulla non metus auctor fringilla. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam porta sem malesuada magna mollis euismod. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"align":"left"} -->
+<h2 class="has-text-align-left">Pullquote left-aligned</h2>
+<!-- /wp:heading -->
+
+<!-- wp:pullquote {"customMainColor":"#0366d6","customTextColor":"#289ed1","align":"left"} -->
+<figure class="wp-block-pullquote alignleft" style="border-color:#0366d6"><blockquote class="has-text-color" style="color:#289ed1"><p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere est at lobortis.</p><cite>Jane doe</cite></blockquote></figure>
+<!-- /wp:pullquote -->
+
+<!-- wp:paragraph {"align":"left"} -->
+<p class="has-text-align-left">Donec id elit non mi porta gravida at eget metus. Nullam quis risus eget urna mollis ornare vel eu leo. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Cras mattis consectetur purus sit amet fermentum. Vestibulum id ligula porta felis euismod semper.Donec ullamcorper nulla non metus auctor fringilla. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"align":"right"} -->
+<h2 class="has-text-align-right">Pullquote right-aligned</h2>
+<!-- /wp:heading -->
+
+<!-- wp:pullquote {"customMainColor":"#c11f80","customTextColor":"#753467","align":"right"} -->
+<figure class="wp-block-pullquote alignright" style="border-color:#c11f80"><blockquote class="has-text-color" style="color:#753467"><p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere est at lobortis.</p><cite>Jane doe</cite></blockquote></figure>
+<!-- /wp:pullquote -->
+
+<!-- wp:paragraph {"align":"left"} -->
+<p class="has-text-align-left">Donec id elit non mi porta gravida at eget metus. Nullam quis risus eget urna mollis ornare vel eu leo. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Cras mattis consectetur purus sit amet fermentum. Vestibulum id ligula porta felis euismod semper.Donec ullamcorper nulla non metus auctor fringilla. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"align":"left"} -->
+<p class="has-text-align-left">Donec id elit non mi porta gravida at eget metus. Nullam quis risus eget urna mollis ornare vel eu leo. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Cras mattis consectetur purus sit amet fermentum. Vestibulum id ligula porta felis euismod semper.Donec ullamcorper nulla non metus auctor fringilla. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"align":"center"} -->
+<h2 class="has-text-align-center">Pullquote wide width</h2>
+<!-- /wp:heading -->
+
+<!-- wp:pullquote {"align":"wide"} -->
+<figure class="wp-block-pullquote alignwide"><blockquote><p><s><span style="color:#ce2ab8" class="has-inline-color">Aenean eu leo quam.</span> </s>Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere est at lobortis.</p><cite>Jane doe</cite></blockquote></figure>
+<!-- /wp:pullquote -->
+
+<!-- wp:paragraph -->
+<p>Etiam porta sem malesuada magna mollis euismod. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.Donec ullamcorper nulla non metus auctor fringilla. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam porta sem malesuada magna mollis euismod. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"align":"center"} -->
+<h2 class="has-text-align-center">Pullquote full width</h2>
+<!-- /wp:heading -->
+
+<!-- wp:pullquote {"align":"full","className":"is-style-default"} -->
+<figure class="wp-block-pullquote alignfull is-style-default"><blockquote><p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere est at lobortis.</p><cite>Jane doe</cite></blockquote></figure>
+<!-- /wp:pullquote -->
+
+<!-- wp:paragraph -->
+<p></p>
+<!-- /wp:paragraph -->

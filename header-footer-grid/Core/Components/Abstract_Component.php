@@ -31,11 +31,12 @@ use WP_Customize_Manager;
 abstract class Abstract_Component implements Component {
 	use Core;
 
-	const ALIGNMENT_ID   = 'component_align';
-	const PADDING_ID     = 'component_padding';
-	const MARGIN_ID      = 'component_margin';
-	const FONT_FAMILY_ID = 'component_font_family';
-	const TYPEFACE_ID    = 'component_typeface';
+	const ALIGNMENT_ID      = 'component_align';
+	const VERTICAL_ALIGN_ID = 'component_vertical_align';
+	const PADDING_ID        = 'component_padding';
+	const MARGIN_ID         = 'component_margin';
+	const FONT_FAMILY_ID    = 'component_font_family';
+	const TYPEFACE_ID       = 'component_typeface';
 	/**
 	 * Current id of the component.
 	 *
@@ -492,6 +493,9 @@ abstract class Abstract_Component implements Component {
 					'label'                 => __( 'Alignment', 'neve' ),
 					'type'                  => '\Neve\Customizer\Controls\React\Radio_Buttons',
 					'live_refresh_selector' => $this->is_auto_width ? null : $margin_selector,
+					'live_refresh_css_prop' => [
+						'is_for' => 'horizontal',
+					],
 					'options'               => [
 						'choices' => $align_choices,
 					],
@@ -500,6 +504,8 @@ abstract class Abstract_Component implements Component {
 				]
 			);
 		}
+
+		$this->add_vertical_alignment_control();
 
 		SettingsManager::get_instance()->add(
 			[
@@ -838,5 +844,49 @@ abstract class Abstract_Component implements Component {
 		$typography = SettingsManager::get_instance()->get( $this->get_id() . '_' . self::TYPEFACE_ID );
 		$weight     = ! isset( $typography['fontWeight'] ) ? [ '300' ] : $typography['fontWeight'];
 		Font_Manager::add_google_font( $font, $weight );
+	}
+
+	/**
+	 * Add verical alignment control.
+	 */
+	private function add_vertical_alignment_control() {
+		if ( $this->builder_id !== 'footer' ) {
+			return;
+		}
+		$align_choices = [
+			'top'    => [
+				'tooltip' => __( 'Top', 'neve' ),
+				'icon'    => 'arrow-up',
+			],
+			'middle' => [
+				'tooltip' => __( 'Middle', 'neve' ),
+				'icon'    => 'sort',
+			],
+			'bottom' => [
+				'tooltip' => __( 'Bottom', 'neve' ),
+				'icon'    => 'arrow-down',
+			],
+		];
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'                    => self::VERTICAL_ALIGN_ID,
+				'group'                 => $this->get_id(),
+				'tab'                   => SettingsManager::TAB_LAYOUT,
+				'transport'             => 'postMessage',
+				'sanitize_callback'     => 'wp_filter_nohtml_kses',
+				'default'               => 'middle',
+				'label'                 => __( 'Vertical Alignment', 'neve' ),
+				'type'                  => '\Neve\Customizer\Controls\React\Radio_Buttons',
+				'live_refresh_selector' => '.builder-item--' . $this->get_id(),
+				'live_refresh_css_prop' => [
+					'is_for' => 'vertical',
+				],
+				'options'               => [
+					'choices' => $align_choices,
+				],
+				'section'               => $this->section,
+			]
+		);
 	}
 }

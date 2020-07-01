@@ -1,0 +1,51 @@
+<!-- wp:cover {"url":"http://localhost:10015/wp-content/uploads/2020/05/47263733821_ffd85bf882_o-4-scaled.jpg","id":16,"dimRatio":90,"overlayColor":"neve-button-color"} -->
+<div class="wp-block-cover has-background-dim-90 has-neve-button-color-background-color has-background-dim" style="background-image:url(http://localhost:10015/wp-content/uploads/2020/05/47263733821_ffd85bf882_o-4-scaled.jpg)"><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"align":"center","placeholder":"Write title…","fontSize":"large"} -->
+<p class="has-text-align-center has-large-font-size">Cover Image Block</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:cover -->
+
+<!-- wp:cover {"url":"http://localhost:10015/wp-content/uploads/2020/05/47263733821_ffd85bf882_o-4-scaled.jpg","id":16,"dimRatio":70,"overlayColor":"black","align":"wide"} -->
+<div class="wp-block-cover alignwide has-background-dim-70 has-black-background-color has-background-dim" style="background-image:url(http://localhost:10015/wp-content/uploads/2020/05/47263733821_ffd85bf882_o-4-scaled.jpg)"><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"align":"center","placeholder":"Write title…","fontSize":"large"} -->
+<p class="has-text-align-center has-large-font-size">Wide Cover Image Block</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:cover -->
+
+<!-- wp:cover {"overlayColor":"neve-button-color","align":"full"} -->
+<div class="wp-block-cover alignfull has-neve-button-color-background-color has-background-dim"><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"align":"center","placeholder":"Write title…","fontSize":"large"} -->
+<p class="has-text-align-center has-large-font-size">Full Width Cover Block</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:cover -->
+
+<!-- wp:paragraph -->
+<p>Dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Etiam porta sem malesuada magna mollis euismod. Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:cover {"customGradient":"radial-gradient(rgb(122,220,180) 0%,rgb(0,208,130) 71%)","align":"right"} -->
+<div class="wp-block-cover alignright has-background-dim has-background-gradient" style="background:radial-gradient(rgb(122,220,180) 0%,rgb(0,208,130) 71%)"><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"align":"center","placeholder":"Write title…","fontSize":"large"} -->
+<p class="has-text-align-center has-large-font-size">Right Aligned Cover Block</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":16,"sizeSlug":"large"} -->
+<figure class="wp-block-image size-large"><img src="http://localhost:10015/wp-content/uploads/2020/05/47263733821_ffd85bf882_o-4-1024x684.jpg" alt="" class="wp-image-16"/><figcaption>This is a caption</figcaption></figure>
+<!-- /wp:image --></div></div>
+<!-- /wp:cover -->
+
+<!-- wp:cover {"gradient":"luminous-dusk","align":"left"} -->
+<div class="wp-block-cover alignleft has-background-dim has-background-gradient has-luminous-dusk-gradient-background"><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"align":"center","placeholder":"Write title…","fontSize":"large"} -->
+<p class="has-text-align-center has-large-font-size">Left Aligned Cover Block</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetlacinia bibendum nulla sed consectetur. rsus magna, vel scelerisque nisl consectetur et, vel scelerisque nisl consectetur.</p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:cover -->
+
+<!-- wp:paragraph -->
+<p></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:cover {"url":"http://localhost:10015/wp-content/uploads/2020/05/47263733821_ffd85bf882_o-4-scaled.jpg","id":16,"minHeight":300} -->
+<div class="wp-block-cover has-background-dim" style="background-image:url(http://localhost:10015/wp-content/uploads/2020/05/47263733821_ffd85bf882_o-4-scaled.jpg);min-height:300px"><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"align":"center","placeholder":"Write title…","textColor":"black","customBackgroundColor":"#18baff","fontSize":"large"} -->
+<p style="background-color:#18baff" class="has-text-color has-background has-text-align-center has-large-font-size has-black-color"><em><strong>Colored </strong></em><strong><em>Cover Image Block Bold &amp; Italic</em></strong></p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:cover -->

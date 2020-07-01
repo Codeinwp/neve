@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0cbd77eb35588b0d2aeadebdc2791414",
+    "content-hash": "d693b87d27d5de1ee7531826a76e546a",
     "packages": [
         {
             "name": "codeinwp/themeisle-onboarding",
@@ -86,41 +86,6 @@
                 "wordpress"
             ],
             "time": "2020-06-10T16:25:09+00:00"
-        },
-        {
-            "name": "codeinwp/ti-about-page",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Codeinwp/ti-about-page.git",
-                "reference": "8fad0cd7cf9c3b2756c5595428f5ee37b352497f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Codeinwp/ti-about-page/zipball/8fad0cd7cf9c3b2756c5595428f5ee37b352497f",
-                "reference": "8fad0cd7cf9c3b2756c5595428f5ee37b352497f",
-                "shasum": ""
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "load.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-3.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "ThemeIsle team",
-                    "email": "friends@themeisle.com",
-                    "homepage": "https://themeisle.com"
-                }
-            ],
-            "description": "The theme about page for themeisle themes.",
-            "homepage": "https://github.com/Codeinwp/ti-about-page",
-            "time": "2019-10-29T13:36:21+00:00"
         }
     ],
     "packages-dev": [
