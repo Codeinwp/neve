@@ -57,6 +57,6 @@ jobs:
           AWS_S3_BUCKET: ${{ secrets.AWS_DEV_BUCKET }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          SOURCE_DIR: 'artifact'      # optional: defaults to entire repository
-          DEST_DIR: ${GITHUB_REPOSITORY}-${{ needs.dev-zip.outputs.branch-name }}-${{ needs.dev-zip.outputs.git-sha-8 }}.zip
+          SOURCE_DIR: artifact/${{ github.event.pull_request.base.repo.name }}.zip      # optional: defaults to entire repository
+          DEST_DIR: ${{ github.event.pull_request.base.repo.name }}-${{ needs.dev-zip.outputs.branch-name }}-${{ needs.dev-zip.outputs.git-sha-8 }}.zip
 
