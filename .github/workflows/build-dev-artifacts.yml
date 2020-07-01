@@ -58,5 +58,5 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           SOURCE_DIR: artifact/
-          DEST_DIR: ${{ github.event.pull_request.base.repo.name }}-${{ jobs.dev-zip.outputs.branch-name }}-${{ joobs.dev-zip.outputs.git-sha-8 }}/
+          DEST_DIR: ${{ github.event.pull_request.base.repo.name }}-${{ jobs.dev-zip.outputs.branch-name }}-${{ jobs.dev-zip.outputs.git-sha-8 }}/
 
