@@ -27,7 +27,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-composer-
       - name: Install composer deps
-          run: composer install --no-dev --prefer-dist --no-progress --no-suggest
+        run: composer install --no-dev --prefer-dist --no-progress --no-suggest
       - name: Configure npm cache
         uses: actions/cache@v1
         with:
@@ -36,14 +36,12 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
       - name: Install Node dependencies
-        # Prevent malicious scripts from being run with `--ignore-scripts`
         run: npm ci
       - name: Create zip
         run: npm run dist
       - name: Retrieve branch name
         id: retrieve-branch-name
         run: echo "::set-output name=branch_name::$(REF=${GITHUB_HEAD_REF:-$GITHUB_REF} && echo ${REF#refs/heads/} | sed 's/\//-/g')"
-
       - name: Retrieve git SHA-8 string
         id: retrieve-git-sha-8
         run: echo "::set-output name=sha8::$(echo ${GITHUB_SHA} | cut -c1-8)"
