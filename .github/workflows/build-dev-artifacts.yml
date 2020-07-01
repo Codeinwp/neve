@@ -1,0 +1,60 @@
+name: Build dev artifacts
+
+on:
+  pull_request:
+    types: [opened, synchronize, ready_for_review]
+
+jobs:
+  dev-zip:
+    name: Build dev build ZIP and upload to s3
+    if: github.event.pull_request.draft == false && github.event.pull_request.head.repo.full_name == github.event.pull_request.base.repo.full_name
+    runs-on: ubuntu-latest
+    outputs:
+      branch-name: ${{ steps.retrieve-branch-name.outputs.branch_name }}
+      git-sha-8: ${{ steps.retrieve-git-sha-8.outputs.sha8 }}
+    steps:
+      - name: Check out source files
+        uses: actions/checkout@v2
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: |
+          echo "::set-output name=dir::$(composer config cache-files-dir)"
+      - name: Configure Composer cache
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+      - name: Install composer deps
+          run: composer install --no-dev --prefer-dist --no-progress --no-suggest
+      - name: Configure npm cache
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.npm-cache.outputs.dir }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: Install Node dependencies
+        # Prevent malicious scripts from being run with `--ignore-scripts`
+        run: npm ci
+      - name: Create zip
+        run: npm run dist
+      - name: Retrieve branch name
+        id: retrieve-branch-name
+        run: echo "::set-output name=branch_name::$(REF=${GITHUB_HEAD_REF:-$GITHUB_REF} && echo ${REF#refs/heads/} | sed 's/\//-/g')"
+
+      - name: Retrieve git SHA-8 string
+        id: retrieve-git-sha-8
+        run: echo "::set-output name=sha8::$(echo ${GITHUB_SHA} | cut -c1-8)"
+      - name: Upload Latest Version to S3
+          uses: jakejarvis/s3-sync-action@master
+          with:
+            args: --acl public-read --follow-symlinks --delete
+          env:
+            AWS_S3_BUCKET: ${{ secrets.AWS_DEV_BUCKET }}
+            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            SOURCE_DIR: 'artifact'      # optional: defaults to entire repository
+            DEST_DIR: ${GITHUB_REPOSITORY}-${{ needs.dev-zip.outputs.branch-name }}-${{ needs.dev-zip.outputs.git-sha-8 }}.zip
+
