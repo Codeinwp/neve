@@ -28,6 +28,10 @@ jobs:
             ${{ runner.os }}-composer-
       - name: Install composer deps
         run: composer install --no-dev --prefer-dist --no-progress --no-suggest
+      - name: Get npm cache directory
+        id: npm-cache
+        run: |
+          echo "::set-output name=dir::$(npm config get cache)"
       - name: Configure npm cache
         uses: actions/cache@v1
         with:
