@@ -36,36 +36,20 @@
 }
 
 .header-form {
+  margin-top: 20px;
   display: flex;
   align-items: center;
   flex-direction: column;
-
-  .ob-dropdown {
-	width: 100%;
-  }
-
-  .search {
-	margin-top: 20px;
-	width: 100%;
-	flex-grow: 1;
-	position: relative;
-	display: flex;
-
-	img {
-	  position: absolute;
-	  top: 50%;
-	  transform: translateY(-50%);
-	  right: 10px;
-	}
-  }
 
   input {
 	margin: 0;
 	display: block;
 	flex-grow: 1;
 	border: 1px solid $grey;
-	height: 45px;
-	padding: 5px 50px 5px 30px;
+	height: 52px;
+	padding: 5px 30px 5px 50px;
+	font-size: 17px;
+	font-weight: 300;
   }
 }
 
@@ -81,15 +65,11 @@
   }
   .header-form {
 	flex-direction: row;
+  }
+}
 
-	.ob-dropdown {
-	  width: 200px;
-	}
-
-	.search {
-	  width: auto;
-	  margin-left: 10px;
-	  margin-top: 0;
-	}
+@mixin ob-header--laptop {
+  .header-form {
+	margin-top: 50px;
   }
 }
