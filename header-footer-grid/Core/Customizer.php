@@ -312,7 +312,7 @@ class Customizer {
 					<div class="hfg-component-search">
 						<i class="dashicons dashicons-search"></i>
 						<input class="component-search" type="search"
-							placeholder="<?php esc_attr_e( 'Search Components', 'neve' ); ?>..."/>
+							placeholder="<?php esc_html_e( 'Search Components', 'neve' ); ?>..."/>
 					</div>
 					<button class="close button button-link">
 						<i class="dashicons dashicons-no"></i>
