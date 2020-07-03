@@ -85,6 +85,9 @@ class Admin {
 	 * Add notice.
 	 */
 	public function admin_notice() {
+		if ( apply_filters( 'neve_disable_starter_sites_admin_notice', false ) === true ) {
+			return;
+		}
 		if ( defined( 'TI_ONBOARDING_DISABLED' ) && TI_ONBOARDING_DISABLED === true ) {
 			return;
 		}
