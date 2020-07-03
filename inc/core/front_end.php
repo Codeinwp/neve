@@ -392,7 +392,7 @@ class Front_End {
 						'remote_url' => 'https://api.themeisle.com/sites/band/',
 						'screenshot' => 'https://api.themeisle.com/sites/images/q:auto/cb:band/wp-content/uploads/2020/05/neve-band.jpg',
 						'title'      => 'Music Band 2',
-						'keywords'   => [ 'one page', 'business', 'free', 'music' ],
+						'keywords'   => [ 'personal', 'other', 'creative', 'music', 'artist', 'sound' ],
 					],
 					'neve-perfume-shop'       => [
 						'url'        => 'https://demosites.io/perfume-shop/',
@@ -406,7 +406,7 @@ class Front_End {
 						'remote_url' => 'https://api.themeisle.com/sites/jewellery/',
 						'screenshot' => 'https://api.themeisle.com/sites/images/q:auto/cb:jewellery/wp-content/uploads/2020/05/neve-jewellery-2.jpg',
 						'title'      => 'Jewellery Shop 2',
-						'keywords'   => [ 'fashion', 'minimal', 'business', 'ecommerce', 'free' ],
+						'keywords'   => [ 'woocommerce', 'clothing', 'apparel', 'jewellery', 'beauty' ],
 					],
 					'neve-boat-rental'        => [
 						'url'        => 'https://demosites.io/boat-rental/',
@@ -441,7 +441,7 @@ class Front_End {
 						'remote_url' => 'https://api.themeisle.com/sites/psychologist/',
 						'screenshot' => 'https://api.themeisle.com/sites/images/q:auto/cb:psychologist/wp-content/uploads/2020/05/neve-psychologist.jpg',
 						'title'      => 'Psychologist',
-						'keywords'   => [ 'medical', 'business', 'blog', 'free' ],
+						'keywords'   => [ 'other', 'fitness', 'medical', 'consulting', 'health', 'doctor' ],
 					],
 					'neve-book-shop'          => [
 						'url'        => 'https://demosites.io/book-shop/',
@@ -1278,7 +1278,7 @@ class Front_End {
 						'remote_url' => 'https://api.themeisle.com/sites/beauty-shop-bb/',
 						'screenshot' => 'https://api.themeisle.com/sites/images/q:auto/cb:beauty-shop-bb/wp-content/uploads/2020/05/neve-beauty-shop.jpg',
 						'title'      => 'Beauty Shop',
-						'keywords'   => [ 'ecommerce', 'fashion' ],
+						'keywords'   => [ 'woocommerce', 'business' ],
 					],
 					'neve-beaver-recruitment'           => [
 						'url'        => 'https://demosites.io/recruitment-bb/',
@@ -1306,7 +1306,7 @@ class Front_End {
 						'remote_url' => 'https://api.themeisle.com/sites/makeup-artist-bb/',
 						'screenshot' => 'https://api.themeisle.com/sites/images/q:auto/cb:makeup-artist-bb/wp-content/uploads/2020/05/neve-makeup.jpg',
 						'title'      => 'Makeup Artist',
-						'keywords'   => [ 'fashion', 'minimal' ],
+						'keywords'   => [ 'personal', 'other' ],
 					],
 					'neve-beaver-diving'                => [
 						'url'        => 'https://demosites.io/diving-bb/',
@@ -1425,7 +1425,7 @@ class Front_End {
 						'remote_url' => 'https://api.themeisle.com/sites/personal-blog-bb/',
 						'screenshot' => 'https://api.themeisle.com/sites/images/q:auto/cb:personal-blog-bb/wp-content/uploads/2020/05/neve-personal-blog.jpg',
 						'title'      => 'Personal Blog',
-						'keywords'   => [ 'blog', 'minimal', 'responsive' ],
+						'keywords'   => [ 'personal', 'blog' ],
 					],
 					'neve-beaver-equitation'            => [
 						'url'        => 'https://demosites.io/equitation-bb/',
@@ -1798,7 +1798,7 @@ class Front_End {
 						'remote_url' => 'https://api.themeisle.com/sites/beauty-shop/',
 						'screenshot' => 'https://api.themeisle.com/sites/images/q:auto/cb:beauty-shop/wp-content/uploads/2020/05/neve-beauty-shop.jpg',
 						'title'      => 'Beauty Shop',
-						'keywords'   => [ 'fashion', 'ecommerce' ],
+						'keywords'   => [ 'woocommerce', 'business' ],
 					],
 					'neve-recruitment'           => [
 						'url'        => 'https://demosites.io/recruitment/',
@@ -1826,7 +1826,7 @@ class Front_End {
 						'remote_url' => 'https://api.themeisle.com/sites/makeup-artist/',
 						'screenshot' => 'https://api.themeisle.com/sites/images/q:auto/cb:makeup-artist/wp-content/uploads/2020/05/neve-makeup.jpg',
 						'title'      => 'Makeup Artist',
-						'keywords'   => [ 'fashion', 'minimal' ],
+						'keywords'   => [ 'personal', 'other' ],
 					],
 					'neve-diving'                => [
 						'url'        => 'https://demosites.io/diving/',
@@ -1945,14 +1945,14 @@ class Front_End {
 						'remote_url' => 'https://api.themeisle.com/sites/personal-blog/',
 						'screenshot' => 'https://api.themeisle.com/sites/images/q:auto/cb:personal-blog/wp-content/uploads/2020/05/neve-personal-blog.jpg',
 						'title'      => 'Personal Blog',
-						'keywords'   => [ 'blog', 'minimal', 'responsive' ],
+						'keywords'   => [ 'personal', 'blog' ],
 					],
 					'neve-travel-blog'           => [
 						'url'        => 'https://demosites.io/travel-blog/',
 						'remote_url' => 'https://api.themeisle.com/sites/travel-blog/',
 						'screenshot' => 'https://api.themeisle.com/sites/images/q:auto/cb:travel-blog/wp-content/uploads/2020/05/neve-travel-blog.jpg',
 						'title'      => 'Travel Blog',
-						'keywords'   => [ 'travel', 'blog', 'responsive' ],
+						'keywords'   => [ 'blog', 'personal', 'travel', 'fitness', 'sports', 'summer', 'magazine' ],
 					],
 					'neve-dj'                    => [
 						'url'        => 'https://demosites.io/dj/',
@@ -2001,7 +2001,7 @@ class Front_End {
 						'remote_url' => 'https://api.themeisle.com/sites/craft-beer/',
 						'screenshot' => 'https://api.themeisle.com/sites/images/q:auto/cb:craft-beer/wp-content/uploads/2020/05/neve-craft-beer.jpg',
 						'title'      => 'Craft Beer',
-						'keywords'   => [ 'food', 'ecommerce' ],
+						'keywords'   => [ 'business', 'woocommerce', 'product', 'food' ],
 					],
 					'neve-gardening'             => [
 						'url'        => 'https://demosites.io/gardening/',
@@ -2029,7 +2029,7 @@ class Front_End {
 						'remote_url' => 'https://api.themeisle.com/sites/public-notary/',
 						'screenshot' => 'https://api.themeisle.com/sites/images/q:auto/cb:public-notary/wp-content/uploads/2020/06/public-notary.jpg',
 						'title'      => 'Public Notary',
-						'keywords'   => [ 'blog', 'responsive' ],
+						'keywords'   => [ 'business', 'law', 'corporate', 'services' ],
 					],
 					'neve-pharmacy'              => [
 						'url'        => 'https://demosites.io/pharmacy/',
@@ -2044,6 +2044,13 @@ class Front_End {
 						'screenshot' => 'https://api.themeisle.com/sites/images/q:auto/cb:investment-consulting/wp-content/uploads/2020/06/investment-consulting.jpg',
 						'title'      => 'Investment Consulting',
 						'keywords'   => [ 'responsive', 'business' ],
+					],
+					'neve-sports-academy' => [
+						'url'        => 'https://demosites.io/sports-academy/',
+						'remote_url' => 'https://api.themeisle.com/sites/sports-academy/',
+						'screenshot' => 'https://api.themeisle.com/sites/images/q:auto/cb:sports-academy/wp-content/uploads/2020/07/sports-academy.jpg',
+						'title'      => 'Sports Academy',
+						'keywords'   => [ 'business', 'other', 'fitness', 'courses', 'sports' ],
 					],
 				],
 				'brizy'            => [
@@ -2434,6 +2441,27 @@ class Front_End {
 				'screenshot' => 'https://api.themeisle.com/sites/images/q:auto/cb:creative-portofolio-gb/wp-content/uploads/2020/05/screenshot-11.jpg',
 				'keywords'   => [ 'one page', 'minimal', 'business', 'free' ],
 			],
+			'neve-band-gutenberg'               => [
+				'url'        => 'https://demosites.io/band-gb/',
+				'remote_url' => 'https://api.themeisle.com/sites/band-gb/',
+				'screenshot' => 'https://api.themeisle.com/sites/images/q:auto/cb:band-gb/wp-content/uploads/2020/05/neve-band.jpg',
+				'title'      => 'Music Band 2',
+				'keywords'   => [ 'personal', 'other', 'creative', 'music', 'artist', 'sound' ],
+			],
+			'neve-jewellery-2-gutenberg'        => [
+				'url'        => 'https://demosites.io/jewellery-gb/',
+				'remote_url' => 'https://api.themeisle.com/sites/jewellery-gb/',
+				'screenshot' => 'https://api.themeisle.com/sites/images/q:auto/cb:jewellery-gb/wp-content/uploads/2020/05/neve-jewellery-2.jpg',
+				'title'      => 'Jewellery Shop 2',
+				'keywords'   => [ 'woocommerce', 'clothing', 'apparel', 'jewellery', 'beauty' ],
+			],
+			'neve-psychologist-gutenberg'       => [
+				'url'        => 'https://demosites.io/psychologist-gb/',
+				'remote_url' => 'https://api.themeisle.com/sites/psychologist-gb/',
+				'screenshot' => 'https://api.themeisle.com/sites/images/q:auto/cb:psychologist-gb/wp-content/uploads/2020/05/neve-psychologist.jpg',
+				'title'      => 'Psychologist',
+				'keywords'   => [ 'other', 'fitness', 'medical', 'consulting', 'health', 'doctor' ],
+			],
 		];
 		$this->onboarding_config['upsell']['gutenberg'] = [
 			'neve-cafe-gutenberg'             => [
@@ -2549,6 +2577,48 @@ class Front_End {
 				'screenshot' => 'https://api.themeisle.com/sites/images/q:auto/cb:winery-gb/wp-content/uploads/2020/05/neve-winery.png',
 				'title'      => 'Winery - Wine Shop',
 				'keywords'   => [ 'food', 'ecommerce' ],
+			],
+			'neve-public-notary-gutenberg'    => [
+				'url'        => 'https://demosites.io/public-notary-gb/',
+				'screenshot' => 'https://api.themeisle.com/sites/images/q:auto/cb:public-notary-gb/wp-content/uploads/2020/06/public-notary.jpg',
+				'title'      => 'Public Notary',
+				'keywords'   => [ 'business', 'law', 'corporate', 'services' ],
+			],
+			'neve-sports-academy-gutenberg'   => [
+				'url'        => 'https://demosites.io/sports-academy-gb/',
+				'screenshot' => 'https://api.themeisle.com/sites/images/q:auto/cb:sports-academy-gb/wp-content/uploads/2020/07/sports-academy.jpg',
+				'title'      => 'Sports Academy',
+				'keywords'   => [ 'business', 'other', 'fitness', 'courses', 'sports' ],
+			],
+			'neve-craft-beer-gutenberg'       => [
+				'url'        => 'https://demosites.io/craft-beer-gb/',
+				'screenshot' => 'https://api.themeisle.com/sites/images/q:auto/cb:craft-beer-gb/wp-content/uploads/2020/05/neve-craft-beer.jpg',
+				'title'      => 'Craft Beer',
+				'keywords'   => [ 'business', 'woocommerce', 'product', 'food' ],
+			],
+			'neve-travel-blog-gutenberg'      => [
+				'url'        => 'https://demosites.io/travel-blog-gb/',
+				'screenshot' => 'https://api.themeisle.com/sites/images/q:auto/cb:travel-blog-gb/wp-content/uploads/2020/05/neve-travel-blog.jpg',
+				'title'      => 'Travel Blog',
+				'keywords'   => [ 'blog', 'personal', 'travel', 'fitness', 'sports', 'summer', 'magazine' ],
+			],
+			'neve-personal-blog-gutenberg'    => [
+				'url'        => 'https://demosites.io/personal-blog-gb/',
+				'screenshot' => 'https://api.themeisle.com/sites/images/q:auto/cb:personal-blog-gb/wp-content/uploads/2020/05/neve-personal-blog.jpg',
+				'title'      => 'Personal Blog',
+				'keywords'   => [ 'personal', 'blog' ],
+			],
+			'neve-makeup-artist-gutenberg'    => [
+				'url'        => 'https://demosites.io/makeup-artist-gb/',
+				'screenshot' => 'https://api.themeisle.com/sites/images/q:auto/cb:makeup-artist-gb/wp-content/uploads/2020/05/neve-makeup.jpg',
+				'title'      => 'Makeup Artist',
+				'keywords'   => [ 'personal', 'other' ],
+			],
+			'neve-beauty-shop-gutenberg'      => [
+				'url'        => 'https://demosites.io/beauty-shop-gb/',
+				'screenshot' => 'https://api.themeisle.com/sites/images/q:auto/cb:beauty-shop-gb/wp-content/uploads/2020/05/neve-beauty-shop.jpg',
+				'title'      => 'Beauty Shop',
+				'keywords'   => [ 'woocommerce', 'business' ],
 			],
 
 		];
