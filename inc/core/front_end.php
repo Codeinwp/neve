@@ -2045,7 +2045,7 @@ class Front_End {
 						'title'      => 'Investment Consulting',
 						'keywords'   => [ 'responsive', 'business' ],
 					],
-					'neve-sports-academy' => [
+					'neve-sports-academy'        => [
 						'url'        => 'https://demosites.io/sports-academy/',
 						'remote_url' => 'https://api.themeisle.com/sites/sports-academy/',
 						'screenshot' => 'https://api.themeisle.com/sites/images/q:auto/cb:sports-academy/wp-content/uploads/2020/07/sports-academy.jpg',
