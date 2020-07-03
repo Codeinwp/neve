@@ -18,7 +18,7 @@ const Search = ({ count, categories, onSearch, category, setCurrentCategory, que
 						size={14}
 						icon={open ? 'arrow-up-alt2' : 'arrow-down-alt2'}/>
 					{open && (
-						<Popover position="bottom right" onClose={toggleDropdown} noArrow>
+						<Popover position="bottom center" onClose={toggleDropdown} noArrow>
 							{open &&
 							<ul className="options">
 								{Object.keys( categories ).map( (key) => {

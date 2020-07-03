@@ -7,6 +7,7 @@ const {compose} = wp.compose;
 const EditorSelector = ({EDITOR_MAP, count, editor, setCurrentEditor}) => {
 	const [ open, setOpen ] = useState(false);
 	const toggleDropdown = () => setOpen(! open);
+	console.log(count);
 	return (
 			<div className="ob-dropdown editor-selector">
 				<Button
@@ -17,10 +18,10 @@ const EditorSelector = ({EDITOR_MAP, count, editor, setCurrentEditor}) => {
 						src={neveDash.assets + 'editor-icons/' + EDITOR_MAP[editor].icon}
 						alt={__('Builder Logo', 'neve')}/>
 					<span>{EDITOR_MAP[editor].niceName}</span>
-					{count[editor] && <span className="count">{count[editor]}</span>}
+					<span className="count">{count[editor]}</span>
 					<Dashicon size={14} icon={open ? 'arrow-up-alt2' : 'arrow-down-alt2'}/>
 					{open && (
-						<Popover position="bottom right" onClose={toggleDropdown} noArrow>
+						<Popover position="bottom center" onClose={toggleDropdown} noArrow>
 							{open &&
 							<ul className="options">
 								{Object.keys(EDITOR_MAP).map((key) => {
@@ -39,7 +40,7 @@ const EditorSelector = ({EDITOR_MAP, count, editor, setCurrentEditor}) => {
 													src={neveDash.assets + 'editor-icons/' + EDITOR_MAP[key].icon}
 													alt={__('Builder Logo', 'neve')}/>
 												<span>{EDITOR_MAP[key].niceName}</span>
-												{count[key] && <span className="count">{count[key]}</span>}
+												<span className="count">{count[key]}</span>
 											</a>
 										</li>
 									);
