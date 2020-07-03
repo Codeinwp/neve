@@ -104,24 +104,6 @@
 	  color: $black;
 	  margin: 0;
 	}
-
-	.pro-badge {
-	  background-color: $success;
-	  height: auto;
-	  color: #fff;
-	  font-weight: 600;
-	  text-transform: uppercase;
-	  padding: 5px 10px;
-	  margin-left: auto;
-	  border-radius: 999px;
-	  line-height: normal;
-	  display: flex;
-	  align-items: center;
-
-	  svg {
-		margin-right: 3px;
-	  }
-	}
   }
 }
 

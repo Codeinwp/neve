@@ -2,6 +2,7 @@
 const initialState = {
 	sites: neveDash.onboarding.sites || {},
 	editor: localStorage.getItem( 'neve-onboarding-editor') || 'gutenberg',
+	category: 'all',
 	previewStatus: false,
 	importModalStatus: false,
 	currentSite: null,
@@ -23,6 +24,12 @@ export default (state = initialState, action) => {
 			return {
 				...state,
 				editor
+			};
+		case 'SET_CURRENT_CATEGORY':
+			const {category} = action.payload;
+			return {
+				...state,
+				category
 			};
 		case 'SET_FOCUSED_SITE':
 			const {siteData} = action.payload;

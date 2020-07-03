@@ -11,6 +11,12 @@ export default {
 			payload: {editor}
 		};
 	},
+	setCurrentCategory(category) {
+		return {
+			type: 'SET_CURRENT_CATEGORY',
+			payload: {category}
+		};
+	},
 	setCurrentSite(siteData) {
 		return {
 			type: 'SET_FOCUSED_SITE',

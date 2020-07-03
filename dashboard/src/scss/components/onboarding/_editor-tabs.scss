@@ -1,0 +1,81 @@
+.editor-tabs {
+  display: none;
+  margin: 30px 0;
+
+  a {
+	padding: 15px 20px 12px 5px;
+	display: flex;
+	flex-grow: 1;
+	align-items: center;
+	font-weight: 700;
+	text-decoration: none;
+	font-size: 15px;
+	border-bottom: 3px solid transparent;
+	position: relative;
+
+	.pro-badge {
+	  margin-left: auto;
+	  font-size: 11px;
+	}
+
+	&:after {
+	  content: "";
+	  position: absolute;
+	  display: block;
+	  width: 100%;
+	  bottom: -3px;
+	  left: 0;
+	  border-bottom: 1px solid #e0e0e0;
+	  z-index: -1;
+	}
+
+	&.active {
+	  border-bottom: 3px solid $blue;
+	}
+  }
+
+  .editor {
+	color: #616161;
+  }
+
+  .count {
+	color: rgba(97, 97, 97, 0.5);
+	margin-left: 10px;
+  }
+
+  .icon-wrap {
+	margin-right: 10px;
+	width: 34px;
+	height: 34px;
+	border-radius: 100%;
+	display: block;
+	overflow: hidden;
+
+	img {
+	  max-width: 100%;
+	  display: block;
+	}
+  }
+}
+
+@mixin ob-editor-tabs--laptop() {
+  .editor-tabs {
+	display: flex;
+	flex-wrap: wrap;
+	a {
+	  width: 30%;
+	}
+  }
+}
+
+@mixin ob-editor-tabs--desktop-large() {
+  .editor-tabs {
+	flex-wrap: nowrap;
+	a {
+	  width: auto;
+	  &:last-child {
+		padding-right: 0;
+	  }
+	}
+  }
+}
