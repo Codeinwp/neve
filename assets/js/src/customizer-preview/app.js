@@ -419,7 +419,7 @@ window.addEventListener('load', function () {
       let linkNode = document.querySelector('#' + id),
         fontValue = data.value.replace(' ', '+'),
         url = '//fonts.googleapis.com/css?family=' + fontValue +
-          '%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800'
+          '%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800&display=swap"'
       if (linkNode !== null) {
         linkNode.setAttribute('href', url)
         return false
