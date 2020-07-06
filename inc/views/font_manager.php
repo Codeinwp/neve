@@ -95,7 +95,7 @@ class Font_Manager extends Base_View {
 		}
 
 		$query_args = array(
-			'family' => urlencode( $url_string ),
+			'family'  => urlencode( $url_string ),
 			'display' => 'swap',
 		);
 
