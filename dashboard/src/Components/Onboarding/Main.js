@@ -31,7 +31,7 @@ const Onboarding = ({ editor, category, resetCategory, previewOpen, currentSiteD
     'all': __('All Categories'),
     'business': __('Business'),
     'portfolio': __('Portfolio'),
-    'ecommerce': __('WooCommerce'),
+    'woocommerce': __('WooCommerce'),
     'blog': __('Blog'),
     'personal': __('Personal'),
     'other': __('Other')
