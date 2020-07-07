@@ -776,6 +776,13 @@ class Front_End {
 						'screenshot' => 'https://api.themeisle.com/sites/images/q:auto/cb:creative-portfolio-bb/wp-content/uploads/2020/05/screenshot-11.jpg',
 						'keywords'   => [ 'one page', 'minimal', 'business', 'free' ],
 					],
+					'neve-beaver-psychologist'       => [
+						'url'        => 'https://demosites.io/psychologist-bb/',
+						'remote_url' => 'https://api.themeisle.com/sites/psychologist-bb/',
+						'screenshot' => 'https://api.themeisle.com/sites/images/q:auto/cb:psychologist-bb/wp-content/uploads/2020/05/neve-psychologist.jpg',
+						'title'      => 'Psychologist',
+						'keywords'   => [ 'other', 'fitness', 'medical', 'consulting', 'health', 'doctor' ],
+					],
 				],
 			],
 			'upsell'      => [
@@ -1203,6 +1210,13 @@ class Front_End {
 						'title'      => 'Resume',
 						'keywords'   => [ 'blog', 'one page', 'minimal' ],
 					],
+					'neve-beaver-resume-2'              => [
+						'url'        => 'https://demosites.io/resume-bb/',
+						'remote_url' => 'https://api.themeisle.com/sites/resume-bb/',
+						'screenshot' => 'https://api.themeisle.com/sites/images/q:auto/cb:resume-bb/wp-content/uploads/2020/05/neve-resume-2.jpg',
+						'title'      => 'Resume 2',
+						'keywords'   => [ 'personal', 'portfolio', 'resume', 'CV', 'job', 'creative' ],
+					],
 					'neve-beaver-wellness'              => [
 						'url'        => 'https://demosites.io/wellness-bb/',
 						'remote_url' => 'https://api.themeisle.com/sites/wellness-bb/',
@@ -1433,6 +1447,13 @@ class Front_End {
 						'screenshot' => 'https://api.themeisle.com/sites/images/q:auto/cb:equitation-bb/wp-content/uploads/2020/05/neve-horses.jpg',
 						'title'      => 'Equitation',
 						'keywords'   => [ 'sports', 'responsive', 'horse' ],
+					],
+					'neve-beaver-travel-blog'           => [
+						'url'        => 'https://demosites.io/travel-blog-bb/',
+						'remote_url' => 'https://api.themeisle.com/sites/travel-blog-bb/',
+						'screenshot' => 'https://api.themeisle.com/sites/images/q:auto/cb:travel-blog-bb/wp-content/uploads/2020/05/neve-travel-blog.jpg',
+						'title'      => 'Travel Blog',
+						'keywords'   => [ 'blog', 'personal', 'travel', 'fitness', 'sports', 'summer', 'magazine' ],
 					],
 				],
 				'elementor'        => [
@@ -2015,7 +2036,7 @@ class Front_End {
 						'remote_url' => 'https://api.themeisle.com/sites/resume/',
 						'screenshot' => 'https://api.themeisle.com/sites/images/q:auto/cb:resume/wp-content/uploads/2020/05/neve-resume-2.jpg',
 						'title'      => 'Resume 2',
-						'keywords'   => [ 'responsive', 'business' ],
+						'keywords'   => [ 'personal', 'portfolio', 'resume', 'CV', 'job', 'creative' ],
 					],
 					'neve-leather-shop'          => [
 						'url'        => 'https://demosites.io/leather-shop/',
