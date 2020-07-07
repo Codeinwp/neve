@@ -17,7 +17,7 @@ const { compose } = wp.compose;
 const Onboarding = ({ editor, category, resetCategory, previewOpen, currentSiteData, importModal, isOnboarding, cancelOnboarding, getSites }) => {
   const [ searchQuery, setSearchQuery ] = useState('');
   const [ maxShown, setMaxShown ] = useState(9);
-  const { sites = {}, upsells = {}, migration } = getSites;
+  const { sites = {}, migration } = getSites;
 
   const tags = [
     __('Business', 'neve'),
@@ -70,15 +70,7 @@ const Onboarding = ({ editor, category, resetCategory, previewOpen, currentSiteD
 
     builders.map(builder => {
       const sitesData = sites && sites[builder] ? sites[builder] : {};
-      const upsellsData = upsells && upsells[builder] ? upsells[builder] : {};
-      if (upsellsData) {
-        Object.keys(upsellsData).map(key => {
-          upsellsData[key].upsell = true;
-        });
-      }
-      finalData[builder] = [
-        ...Object.values(sitesData),
-        ...Object.values(upsellsData) ];
+      finalData[builder] = [ ...Object.values(sitesData) ];
     });
 
     return finalData;
@@ -190,7 +182,12 @@ const Onboarding = ({ editor, category, resetCategory, previewOpen, currentSiteD
     return <Migration data={migration}/>;
   }
 
-  const onlyProBuilders = getBuilders().filter(builder => ! sites[builder]);
+  const onlyProBuilders = getBuilders().filter(builder => {
+    const upsellSitesCount = Object.keys(sites[builder]).filter(site => true === sites[builder][site].upsell).length;
+    const sitesCount = Object.keys(sites[builder]).length;
+
+    return upsellSitesCount === sitesCount;
+  });
 
   const counted = getCounts();
 
@@ -199,8 +196,7 @@ const Onboarding = ({ editor, category, resetCategory, previewOpen, currentSiteD
       <div className="ob">
         {renderMigration()}
         <div className="ob-head">
-          <h2>{__('Ready to use pre-built websites with 1-click installation',
-            'neve')}</h2>
+          <h2>{__('Ready to use pre-built websites with 1-click installation', 'neve')}</h2>
           <p>{neveDash.strings.starterSitesTabDescription}</p>
           {isOnboarding &&
           <Button isPrimary onClick={cancelOnboarding}>{__(
