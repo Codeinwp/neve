@@ -174,8 +174,8 @@ class Main {
 	 */
 	private function get_localization() {
 		$theme_name        = apply_filters( 'ti_wl_theme_name', $this->theme_args['name'] );
-		$plugin_name       = apply_filters( 'ti_wl_plugin_name', __( 'Neve Pro', 'neve' ) );
-		$plugin_name_addon = apply_filters( 'ti_wl_plugin_name', __( 'Neve Pro Addon', 'neve' ) );
+		$plugin_name       = apply_filters( 'ti_wl_plugin_name', 'Neve Pro' );
+		$plugin_name_addon = apply_filters( 'ti_wl_plugin_name', 'Neve Pro Addon' );
 		$data              = [
 			'nonce'               => wp_create_nonce( 'wp_rest' ),
 			'version'             => 'v' . NEVE_VERSION,

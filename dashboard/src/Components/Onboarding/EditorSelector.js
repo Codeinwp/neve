@@ -4,53 +4,26 @@ const {Button, Dashicon, Popover} = wp.components;
 const {withDispatch, withSelect} = wp.data;
 const {compose} = wp.compose;
 
-const EditorSelector = ({onSearch, editor, setCurrentEditor, query}) => {
-	const map = {
-		'elementor': {
-			icon: 'elementor.png',
-			niceName: 'Elementor'
-		},
-		'brizy': {
-			icon: 'brizy.svg',
-			niceName: 'Brizy'
-		},
-		'beaver builder': {
-			icon: 'beaver.png',
-			niceName: 'Beaver Builder'
-		},
-		'thrive architect': {
-			icon: 'thrive.png',
-			niceName: 'Thrive Architect'
-		},
-		'divi builder': {
-			icon: 'divi.svg',
-			niceName: 'Divi Builder'
-		},
-		'gutenberg': {
-			icon: 'gutenberg.png',
-			niceName: 'Gutenberg'
-		}
-	};
-
+const EditorSelector = ({EDITOR_MAP, count, editor, setCurrentEditor}) => {
 	const [ open, setOpen ] = useState(false);
 	const toggleDropdown = () => setOpen(! open);
 	return (
-		<div className="header-form">
-			<div className="ob-dropdown">
+			<div className="ob-dropdown editor-selector">
 				<Button
 					onClick={toggleDropdown}
 					className="select ob-dropdown">
 					<img
 						className='editor-icon'
-						src={neveDash.assets + 'editor-icons/' + map[editor].icon}
+						src={neveDash.assets + 'editor-icons/' + EDITOR_MAP[editor].icon}
 						alt={__('Builder Logo', 'neve')}/>
-					<span>{map[editor].niceName}</span>
+					<span>{EDITOR_MAP[editor].niceName}</span>
+					<span className="count">{count[editor]}</span>
 					<Dashicon size={14} icon={open ? 'arrow-up-alt2' : 'arrow-down-alt2'}/>
 					{open && (
-						<Popover position="bottom right" onClose={toggleDropdown} noArrow>
+						<Popover position="bottom center" onClose={toggleDropdown} noArrow>
 							{open &&
 							<ul className="options">
-								{Object.keys(map).map((key) => {
+								{Object.keys(EDITOR_MAP).map((key) => {
 									if (key === editor) {
 										return null;
 									}
@@ -63,9 +36,10 @@ const EditorSelector = ({onSearch, editor, setCurrentEditor, query}) => {
 											}}>
 												<img
 													className='editor-icon'
-													src={neveDash.assets + 'editor-icons/' + map[key].icon}
+													src={neveDash.assets + 'editor-icons/' + EDITOR_MAP[key].icon}
 													alt={__('Builder Logo', 'neve')}/>
-												<span>{map[key].niceName}</span>
+												<span>{EDITOR_MAP[key].niceName}</span>
+												<span className="count">{count[key]}</span>
 											</a>
 										</li>
 									);
@@ -75,17 +49,6 @@ const EditorSelector = ({onSearch, editor, setCurrentEditor, query}) => {
 					)}
 				</Button>
 			</div>
-			<div className="search">
-				<input
-					onChange={(e) => {
-						onSearch(e.target.value);
-					}}
-					type="search"
-					value={query}
-					placeholder={__('Search for a starter site', 'neve') + '...'}/>
-				<img src={neveDash.assets + '/search.svg'} alt={__('Search Icon')}/>
-			</div>
-		</div>
 	);
 };
 

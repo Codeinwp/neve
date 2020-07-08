@@ -838,7 +838,7 @@ abstract class Abstract_Builder implements Builder {
 
 		if ( $background['type'] === 'color' && ! empty( $background['colorValue'] ) ) {
 			$css_array[] = [
-				Dynamic_Selector::KEY_SELECTOR => $selector . ' .primary-menu-ul .sub-menu li,' . $selector . ' .primary-menu-ul .sub-menu',
+				Dynamic_Selector::KEY_SELECTOR => $selector . ' .primary-menu-ul .sub-menu li:not(.neve-mm-divider),' . $selector . ' .primary-menu-ul .sub-menu',
 				Dynamic_Selector::KEY_RULES    => [
 					Config::CSS_PROP_BACKGROUND_COLOR => [
 						Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_background' . '.colorValue',

@@ -1311,3 +1311,7 @@ Starter Sites screenshots resources:
 - Investment Consulting
 * https://stocksnap.io/photo/man-outside-HBDZWHMZ6K
 * https://mystock.themeisle.com/photo/writers/
+
+- Sports Academy
+* https://stocksnap.io/photo/football-soccer-MJ7XGR7K4C
+* https://stocksnap.io/photo/soccer-ball-LHHL7FKKVD

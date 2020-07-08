@@ -108,7 +108,7 @@ class Core_Loader {
 			Mods::$no_cache = true;
 		}
 		$admin = new Admin();
-		add_action( 'init', array( $admin, 'load_site_import' ) );
+		add_action( 'init', array( $admin, 'load_site_import' ), 20 );
 		add_action( 'ti-about-after-sidebar-content', array( $admin, 'render_logger_toggle' ) );
 
 		$key_lite = str_replace( '-', '_', basename( get_template_directory() ) );
@@ -116,7 +116,7 @@ class Core_Loader {
 			$key_lite . '_logger_data',
 			function () {
 				return [ 'mods' => array_filter( get_theme_mods() ) ];
-			} 
+			}
 		);
 		$front_end = new Front_End();
 		add_action( 'wp_enqueue_scripts', array( $front_end, 'enqueue_scripts' ) );

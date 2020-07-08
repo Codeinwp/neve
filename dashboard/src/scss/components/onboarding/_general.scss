@@ -77,9 +77,12 @@
   }
 
   .tags {
-	margin-top: 20px;
+	margin-top: 10px;
+	justify-content: center;
+	display: flex;
+	flex-wrap: wrap;
 	.tag {
-	  margin: 0 20px;
+	  margin: 10px 20px;
 	  line-height: normal;
 	  height: auto;
 	  font-weight: 600;
@@ -90,5 +93,22 @@
 		background-color: darken( $blue, 0.5 );
 	  }
 	}
+  }
+}
+.pro-badge {
+  background-color: $success;
+  height: auto;
+  color: #fff;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  margin-left: auto;
+  border-radius: 999px;
+  line-height: normal;
+  display: flex;
+  align-items: center;
+
+  svg {
+	margin-right: 3px;
   }
 }
