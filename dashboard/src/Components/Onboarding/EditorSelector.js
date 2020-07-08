@@ -7,7 +7,6 @@ const {compose} = wp.compose;
 const EditorSelector = ({EDITOR_MAP, count, editor, setCurrentEditor}) => {
 	const [ open, setOpen ] = useState(false);
 	const toggleDropdown = () => setOpen(! open);
-	console.log(count);
 	return (
 			<div className="ob-dropdown editor-selector">
 				<Button

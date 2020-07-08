@@ -17,7 +17,7 @@ const { compose } = wp.compose;
 const Onboarding = ({ editor, category, resetCategory, previewOpen, currentSiteData, importModal, isOnboarding, cancelOnboarding, getSites }) => {
   const [ searchQuery, setSearchQuery ] = useState('');
   const [ maxShown, setMaxShown ] = useState(9);
-  const { sites = {}, upsells = {}, migration } = getSites;
+  const { sites = {}, migration } = getSites;
 
   const tags = [
     __('Business', 'neve'),
@@ -29,9 +29,10 @@ const Onboarding = ({ editor, category, resetCategory, previewOpen, currentSiteD
 
   const CATEGORIES = {
     'all': __('All Categories'),
+    'free': __('Free'),
     'business': __('Business'),
     'portfolio': __('Portfolio'),
-    'ecommerce': __('WooCommerce'),
+    'woocommerce': __('WooCommerce'),
     'blog': __('Blog'),
     'personal': __('Personal'),
     'other': __('Other')
@@ -70,24 +71,21 @@ const Onboarding = ({ editor, category, resetCategory, previewOpen, currentSiteD
 
     builders.map(builder => {
       const sitesData = sites && sites[builder] ? sites[builder] : {};
-      const upsellsData = upsells && upsells[builder] ? upsells[builder] : {};
-      if (upsellsData) {
-        Object.keys(upsellsData).map(key => {
-          upsellsData[key].upsell = true;
-        });
-      }
-      finalData[builder] = [
-        ...Object.values(sitesData),
-        ...Object.values(upsellsData) ];
+      finalData[builder] = [ ...Object.values(sitesData) ];
     });
 
     return finalData;
   };
 
   const filterByCategory = (sites, category) => {
+    if ( 'free' === category ) {
+      return sites.filter(item => ! item.upsell);
+    }
+
     if ('all' !== category) {
       return sites.filter(item => item.keywords.includes(category));
     }
+
     return sites;
   };
 
@@ -125,11 +123,6 @@ const Onboarding = ({ editor, category, resetCategory, previewOpen, currentSiteD
     });
 
     Object.keys(CATEGORIES).map(category => {
-      if ('all' === category) {
-        counts.categories[category] = getSitesForBuilder(editor).length;
-        return false;
-      }
-
       let categoriesFiltered = getSitesForBuilder(editor);
       categoriesFiltered = filterByCategory(categoriesFiltered, category);
       categoriesFiltered = filterBySearch(categoriesFiltered);
@@ -190,7 +183,12 @@ const Onboarding = ({ editor, category, resetCategory, previewOpen, currentSiteD
     return <Migration data={migration}/>;
   }
 
-  const onlyProBuilders = getBuilders().filter(builder => ! sites[builder]);
+  const onlyProBuilders = getBuilders().filter(builder => {
+    const upsellSitesCount = Object.keys(sites[builder]).filter(site => true === sites[builder][site].upsell).length;
+    const sitesCount = Object.keys(sites[builder]).length;
+
+    return upsellSitesCount === sitesCount;
+  });
 
   const counted = getCounts();
 
@@ -199,8 +197,7 @@ const Onboarding = ({ editor, category, resetCategory, previewOpen, currentSiteD
       <div className="ob">
         {renderMigration()}
         <div className="ob-head">
-          <h2>{__('Ready to use pre-built websites with 1-click installation',
-            'neve')}</h2>
+          <h2>{__('Ready to use pre-built websites with 1-click installation', 'neve')}</h2>
           <p>{neveDash.strings.starterSitesTabDescription}</p>
           {isOnboarding &&
           <Button isPrimary onClick={cancelOnboarding}>{__(
