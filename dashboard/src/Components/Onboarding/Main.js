@@ -29,6 +29,7 @@ const Onboarding = ({ editor, category, resetCategory, previewOpen, currentSiteD
 
   const CATEGORIES = {
     'all': __('All Categories'),
+    'free': __('Free'),
     'business': __('Business'),
     'portfolio': __('Portfolio'),
     'woocommerce': __('WooCommerce'),
@@ -77,9 +78,14 @@ const Onboarding = ({ editor, category, resetCategory, previewOpen, currentSiteD
   };
 
   const filterByCategory = (sites, category) => {
+    if ( 'free' === category ) {
+      return sites.filter(item => ! item.upsell);
+    }
+
     if ('all' !== category) {
       return sites.filter(item => item.keywords.includes(category));
     }
+
     return sites;
   };
 
@@ -117,11 +123,6 @@ const Onboarding = ({ editor, category, resetCategory, previewOpen, currentSiteD
     });
 
     Object.keys(CATEGORIES).map(category => {
-      if ('all' === category) {
-        counts.categories[category] = getSitesForBuilder(editor).length;
-        return false;
-      }
-
       let categoriesFiltered = getSitesForBuilder(editor);
       categoriesFiltered = filterByCategory(categoriesFiltered, category);
       categoriesFiltered = filterBySearch(categoriesFiltered);
