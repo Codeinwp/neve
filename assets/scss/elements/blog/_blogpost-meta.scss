@@ -1,15 +1,19 @@
 .nv-meta-list {
   padding-bottom: $spacing-xs;
   width: 100%;
-  li {
+  li, span {
     display: inline;
-    color: $gray-color;
-    font-size: 0.85em;
     &:not(:last-child):after {
       content: '/';
       padding: 0 5px;
-      color: $gray-color;
     }
+  }
+  li {
+	color: $gray-color;
+	font-size: 0.85em;
+	&:not(:last-child):after {
+	  color: $gray-color;
+	}
   }
   a, a:hover {
     color: $gray-color;

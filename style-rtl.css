@@ -1231,15 +1231,21 @@ fieldset input[type="text"], fieldset input[type="search"], fieldset input[type=
   width: 100%;
 }
 
-.nv-meta-list li {
+.nv-meta-list li, .nv-meta-list span {
   display: inline;
+}
+
+.nv-meta-list li:not(:last-child):after, .nv-meta-list span:not(:last-child):after {
+  content: '/';
+  padding: 0 5px;
+}
+
+.nv-meta-list li {
   color: #676767;
   font-size: 0.85em;
 }
 
 .nv-meta-list li:not(:last-child):after {
-  content: '/';
-  padding: 0 5px;
   color: #676767;
 }
 
