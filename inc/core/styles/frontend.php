@@ -61,13 +61,6 @@ class Frontend extends Generator {
 					Dynamic_Selector::META_DEFAULT   => '#404248',
 				],
 			],
-			'.has-neve-button-color-color'                => [
-				Config::CSS_PROP_COLOR => [
-					Dynamic_Selector::META_KEY       => Config::MODS_BUTTON_PRIMARY_STYLE . '.background',
-					Dynamic_Selector::META_IMPORTANT => true,
-					Dynamic_Selector::META_DEFAULT   => '#0366d6',
-				],
-			],
 			'.has-neve-link-color-background-color'       => [
 				Config::CSS_PROP_BACKGROUND_COLOR => [
 					Dynamic_Selector::META_KEY       => Config::MODS_LINK_COLOR,
@@ -82,6 +75,41 @@ class Frontend extends Generator {
 					Dynamic_Selector::META_DEFAULT   => '#0366d6',
 				],
 			],
+			'.has-neve-text-color-background-color'       => [
+				Config::CSS_PROP_BACKGROUND_COLOR => [
+					Dynamic_Selector::META_KEY       => Config::MODS_TEXT_COLOR,
+					Dynamic_Selector::META_IMPORTANT => true,
+					Dynamic_Selector::META_DEFAULT   => '#404248',
+				],
+			],
+			'.has-neve-button-color-color'                => [
+				Config::CSS_PROP_COLOR => [
+					Dynamic_Selector::META_KEY       => Config::MODS_BUTTON_PRIMARY_STYLE . '.background',
+					Dynamic_Selector::META_IMPORTANT => true,
+					Dynamic_Selector::META_DEFAULT   => '#0366d6',
+				],
+			],
+			'.has-neve-btn-bg-hover-color'                => [
+				Config::CSS_PROP_COLOR => [
+					Dynamic_Selector::META_KEY       => Config::MODS_BUTTON_PRIMARY_STYLE . '.backgroundHover',
+					Dynamic_Selector::META_IMPORTANT => true,
+					Dynamic_Selector::META_DEFAULT   => '#0366d6',
+				],
+			],
+			'.has-neve-btn-text-color'                    => [
+				Config::CSS_PROP_COLOR => [
+					Dynamic_Selector::META_KEY       => Config::MODS_BUTTON_PRIMARY_STYLE . '.text',
+					Dynamic_Selector::META_IMPORTANT => true,
+					Dynamic_Selector::META_DEFAULT   => '#ffffff',
+				],
+			],
+			'.has-neve-btn-text-hover-color'              => [
+				Config::CSS_PROP_COLOR => [
+					Dynamic_Selector::META_KEY       => Config::MODS_BUTTON_PRIMARY_STYLE . '.textHover',
+					Dynamic_Selector::META_IMPORTANT => true,
+					Dynamic_Selector::META_DEFAULT   => '#ffffff',
+				],
+			],
 			'.has-neve-button-color-background-color'     => [
 				Config::CSS_PROP_BACKGROUND_COLOR => [
 					Dynamic_Selector::META_KEY       => Config::MODS_BUTTON_PRIMARY_STYLE . '.background',
@@ -89,11 +117,25 @@ class Frontend extends Generator {
 					Dynamic_Selector::META_DEFAULT   => '#0366d6',
 				],
 			],
-			'.has-neve-text-color-background-color'       => [
+			'.has-neve-btn-bg-hover-background-color'     => [
 				Config::CSS_PROP_BACKGROUND_COLOR => [
-					Dynamic_Selector::META_KEY       => Config::MODS_TEXT_COLOR,
+					Dynamic_Selector::META_KEY       => Config::MODS_BUTTON_PRIMARY_STYLE . '.backgroundHover',
 					Dynamic_Selector::META_IMPORTANT => true,
-					Dynamic_Selector::META_DEFAULT   => '#404248',
+					Dynamic_Selector::META_DEFAULT   => '#0366d6',
+				],
+			],
+			'.has-neve-btn-text-background-color'         => [
+				Config::CSS_PROP_BACKGROUND_COLOR => [
+					Dynamic_Selector::META_KEY       => Config::MODS_BUTTON_PRIMARY_STYLE . '.text',
+					Dynamic_Selector::META_IMPORTANT => true,
+					Dynamic_Selector::META_DEFAULT   => '#ffffff',
+				],
+			],
+			'.has-neve-btn-text-hover-background-color'   => [
+				Config::CSS_PROP_BACKGROUND_COLOR => [
+					Dynamic_Selector::META_KEY       => Config::MODS_BUTTON_PRIMARY_STYLE . '.textHover',
+					Dynamic_Selector::META_IMPORTANT => true,
+					Dynamic_Selector::META_DEFAULT   => '#ffffff',
 				],
 			],
 		];
