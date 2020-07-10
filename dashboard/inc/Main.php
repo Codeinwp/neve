@@ -219,10 +219,12 @@ class Main {
 			'hasFileSystem'       => WP_Filesystem(),
 			'pluginsPageUrl'      => esc_url( admin_url( 'plugins.php' ) ),
 		];
-
-		$companion = get_plugin_data( WP_PLUGIN_DIR . '/themeisle-companion/themeisle-companion.php' );
-		if ( isset( $companion['Version'] ) ) {
-			$data['hasNeededCompanionVersion'] = version_compare( $companion['Version'], '2.9.10', '>' );
+		$companion_state   = $this->plugin_helper->get_plugin_state( 'themeisle-companion' );
+		if ( $companion_state === 'deactivate' ) {
+			$companion = get_plugin_data( WP_PLUGIN_DIR . '/themeisle-companion/themeisle-companion.php' );
+			if ( isset( $companion['Version'] ) ) {
+				$data['hasNeededCompanionVersion'] = version_compare( $companion['Version'], '2.9.10', '>' );
+			}
 		}
 
 		if ( defined( 'NEVE_PRO_PATH' ) ) {

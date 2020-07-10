@@ -36,6 +36,38 @@ const StarterSitesUnavailable = () => {
       }
     });
   };
+  const companionActive = 'deactivate' === plugins['themeisle-companion'].cta;
+
+  const renderNoticeContent = () => {
+    if (! companionActive) {
+      return (
+        <>
+          <h1>{__('In order to be able to import any starter sites for Neve you would need to have OrbitFox companion active.')}</h1>
+          <br/>
+          <Button disabled={installing} isPrimary={! installing} isSecondary={installing}
+                  onClick={installPlugin}>{installing ? __('Installing and activating') + '...' : __('Install and Activate')}</Button>
+        </>
+      );
+    }
+
+    if (! hasNeededCompanionVersion) {
+      return (
+        <>
+          <h1>{__('In order to be able to import any starter sites for Neve you would need to have OrbitFox companion updated to the latest version.')}</h1>
+          <br/>
+          <Button href={pluginsPageUrl} isPrimary>{__('Go to plugins page')}</Button>
+        </>
+      );
+    }
+
+	return (
+	  <>
+		<h1>{__('It seems something went wrong. Please make sure that you have OrbitFox companion activated and updated to the latest version.')}</h1>
+		<br/>
+		<Button href={pluginsPageUrl} isPrimary>{__('Go to plugins page')}</Button>
+	  </>
+	);
+  };
 
   return (
     <>
@@ -43,21 +75,7 @@ const StarterSitesUnavailable = () => {
            style={{ backgroundImage: `url(${assets}/starter.jpg)` }}/>
       <div className="content-wrap">
         {! error ?
-          <>
-            {hasNeededCompanionVersion ?
-              <>
-              <h1>{__('In order to be able to import any starter sites for Neve you would need to have OrbitFox companion active.')}</h1>
-              <br/>
-              <Button disabled={installing} isPrimary={! installing} isSecondary={installing}
-                      onClick={installPlugin}>{installing ? __('Installing and activating') + '...' : __('Install and Activate')}</Button>
-              </> : <>
-              <h1>{__('In order to be able to import any starter sites for Neve you would need to have OrbitFox companion updated to the latest version.')}</h1>
-              <br/>
-              <Button href={pluginsPageUrl} isPrimary>{__('Go to plugins page')}</Button>
-            </>
-            }
-          </> :
-          <h1 className='error'>{error}</h1>
+          renderNoticeContent() : <h1 className='error'>{error}</h1>
         }
       </div>
     </>
