@@ -46,12 +46,12 @@ const StarterSitesUnavailable = () => {
           <>
             {hasNeededCompanionVersion ?
               <>
-              <h1>{__('You must install and activate OrbitFox in order to import the Starter Sites')}</h1>
+              <h1>{__('In order to be able to import any starter sites for Neve you would need to have OrbitFox companion active.')}</h1>
               <br/>
               <Button disabled={installing} isPrimary={! installing} isSecondary={installing}
                       onClick={installPlugin}>{installing ? __('Installing and activating') + '...' : __('Install and Activate')}</Button>
               </> : <>
-              <h1>{__('You must update OrbitFox to the latest version in order to import the Starter Sites')}</h1>
+              <h1>{__('In order to be able to import any starter sites for Neve you would need to have OrbitFox companion updated to the latest version.')}</h1>
               <br/>
               <Button href={pluginsPageUrl} isPrimary>{__('Go to plugins page')}</Button>
             </>
