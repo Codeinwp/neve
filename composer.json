@@ -15,8 +15,7 @@
 	"source": "https://github.com/Codeinwp/neve"
   },
   "require": {
-	"codeinwp/themeisle-sdk": "^3.0",
-	"codeinwp/themeisle-onboarding": "master"
+	"codeinwp/themeisle-sdk": "^3.0"
   },
   "autoload": {
 	"psr-4": {
@@ -24,8 +23,7 @@
 	  "Neve_Dash\\": "dashboard/inc/"
 	},
 	"files": [
-	  "vendor/codeinwp/themeisle-sdk/load.php",
-	  "vendor/codeinwp/themeisle-onboarding/load.php"
+	  "vendor/codeinwp/themeisle-sdk/load.php"
 	]
   },
   "scripts": {

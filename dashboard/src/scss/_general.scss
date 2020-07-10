@@ -100,3 +100,36 @@ svg.is-loading, button.is-loading svg {
 	margin-right: 30px;
   }
 }
+
+.columns.starter-sites {
+  position: relative;
+  display: flex;
+  flex-grow: 1;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 50px 30px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  .content-wrap {
+	h1 {
+	  line-height: 1.6;
+	}
+  }
+}
+
+.ss-background {
+  opacity: .25;
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  bottom:0;
+  width: 100%;
+  display: block;
+  background-size: cover;
+  background-position: center center;
+  left: 0;
+  right: 0;
+  height: calc(100vh - 300px);
+  flex-grow: 1;
+}
