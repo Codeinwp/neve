@@ -178,7 +178,6 @@ class Admin {
 	 * Render welcome notice content
 	 */
 	public function welcome_notice_content() {
-		$companion_state = is_plugin_active( 'themeisle-companion/themeisle-companion.php' );
 		$name       = apply_filters( 'ti_wl_theme_name', $this->theme_args->__get( 'Name' ) );
 		$template   = $this->theme_args->get( 'Template' );
 		$slug       = $this->theme_args->__get( 'stylesheet' );
@@ -210,7 +209,7 @@ class Admin {
 		/* translators: 1 - onboarding url, 2 - button text */
 			'<a href="%1$s" class="button button-primary button-hero install-now" >%2$s</a>',
 			esc_url( admin_url( 'themes.php?page=' . $theme_page . '&onboarding=yes#starter-sites' ) ),
-			sprintf( apply_filters( 'ti_onboarding_neve_start_site_cta', ! $companion_state ? esc_html__( 'Install and activate OrbitFox and go to Sites Library', 'neve' ) : esc_html__( 'Try one of our ready to use Starter Sites', 'neve' ) ) )
+			sprintf( apply_filters( 'ti_onboarding_neve_start_site_cta', esc_html__( 'Try one of our ready to use Starter Sites', 'neve' ) ) )
 		);
 		$ob_return_dashboard = sprintf(
 		/* translators: 1 - button text */

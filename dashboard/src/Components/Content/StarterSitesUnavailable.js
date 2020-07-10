@@ -6,7 +6,7 @@ const { useState } = wp.element;
 const { Button } = wp.components;
 
 const StarterSitesUnavailable = () => {
-  const { plugins, assets } = neveDash;
+  const { plugins, assets, hasNeededCompanionVersion, pluginsPageUrl } = neveDash;
   const [ installing, setInstalling ] = useState(false);
   const [ error, setError ] = useState(false);
 
@@ -15,10 +15,6 @@ const StarterSitesUnavailable = () => {
     wp.updates.ajax('install-plugin', {
       slug: 'themeisle-companion',
       success: r => {
-        if (! r.success) {
-          setError(__('Something went wrong while installing the plugin.'));
-          return false;
-        }
         activatePlugin();
       },
       error: e => {
@@ -35,8 +31,8 @@ const StarterSitesUnavailable = () => {
     const activationURL = plugins['themeisle-companion'].activate;
 
     get(activationURL, true).then(r => {
-      if ( r.ok ) {
-          window.location.reload();
+      if (r.ok) {
+        window.location.reload();
       }
     });
   };
@@ -46,13 +42,22 @@ const StarterSitesUnavailable = () => {
       <div className="ss-background"
            style={{ backgroundImage: `url(${assets}/starter.jpg)` }}/>
       <div className="content-wrap">
-        { ! error ? <>
-        <h1>You must install and activate OrbitFox in order to import the Starter Sites</h1>
-        <br/>
-        <Button disabled={installing} isPrimary={! installing} isSecondary={installing}
-                onClick={installPlugin}>{installing ? __('Installing and activating') + '...' : __('Install and Activate')}</Button>
-        </> :
-          <h1 className='error'>{__('Something went wrong while installing the necessary plugins.', 'neve')}</h1>
+        {! error ?
+          <>
+            {hasNeededCompanionVersion ?
+              <>
+              <h1>{__('You must install and activate OrbitFox in order to import the Starter Sites')}</h1>
+              <br/>
+              <Button disabled={installing} isPrimary={! installing} isSecondary={installing}
+                      onClick={installPlugin}>{installing ? __('Installing and activating') + '...' : __('Install and Activate')}</Button>
+              </> : <>
+              <h1>{__('You must update OrbitFox to the latest version in order to import the Starter Sites')}</h1>
+              <br/>
+              <Button href={pluginsPageUrl} isPrimary>{__('Go to plugins page')}</Button>
+            </>
+            }
+          </> :
+          <h1 className='error'>{error}</h1>
         }
       </div>
     </>

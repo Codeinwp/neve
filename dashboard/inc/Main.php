@@ -217,7 +217,13 @@ class Main {
 			'changelog'           => $this->cl_handler->get_changelog( get_template_directory() . '/CHANGELOG.md' ),
 			'onboarding'          => [],
 			'hasFileSystem'       => WP_Filesystem(),
+			'pluginsPageUrl'      => esc_url( admin_url( 'plugins.php' ) ),
 		];
+
+		$companion = get_plugin_data( WP_PLUGIN_DIR . '/themeisle-companion/themeisle-companion.php' );
+		if ( isset( $companion['Version'] ) ) {
+			$data['hasNeededCompanionVersion'] = version_compare( $companion['Version'], '2.9.10', '>' );
+		}
 
 		if ( defined( 'NEVE_PRO_PATH' ) ) {
 			$data['changelogPro'] = $this->cl_handler->get_changelog( NEVE_PRO_PATH . '/CHANGELOG.md' );
