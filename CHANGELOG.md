@@ -1,3 +1,11 @@
+##### [Version 2.7.4](https://github.com/Codeinwp/neve/compare/v2.7.3...v2.7.4) (2020-07-08)
+
+- [Feat] Improved Starter Sites library layout
+- [Feat] Use display:swap for Google Fonts
+- [Fix] Live refresh for spacing controls
+- [Fix] Canvas mode for the search icon in AMP on mobile
+- New Gutenberg Starter Sites
+
 ##### [Version 2.7.3](https://github.com/Codeinwp/neve/compare/v2.7.2...v2.7.3) (2020-06-23)
 
 - [Feat] New typography controls for the Blog and Single Post pages
