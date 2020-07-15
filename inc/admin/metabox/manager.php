@@ -7,6 +7,9 @@
 
 namespace Neve\Admin\Metabox;
 
+use Neve\Core\Settings\Config;
+use Neve\Core\Settings\Mods;
+
 /**
  * Class Manager
  *
@@ -33,10 +36,91 @@ final class Manager {
 	 */
 	public function init() {
 		add_action( 'add_meta_boxes', array( $this, 'add' ) );
-		add_action( 'admin_init', array( $this, 'define_controls' ) );
-		add_action( 'admin_init', array( $this, 'load_controls' ) );
+		add_action( 'init', array( $this, 'define_controls' ) );
+		add_action( 'init', array( $this, 'load_controls' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) );
 		add_action( 'save_post', array( $this, 'save' ) );
+
+		add_action( 'init', array( $this, 'register_meta_sidebar' ) );
+		add_action( 'enqueue_block_editor_assets', array( $this, 'meta_sidebar_script_enqueue' ) );
+
+		add_action( 'init', array( $this, 'neve_register_meta' ) );
+	}
+
+	/**
+	 * Register meta
+	 */
+	public function neve_register_meta() {
+
+		foreach ( $this->controls as $control ) {
+			$options = get_object_vars( $control );
+			if ( $options['type'] === 'separator' ) {
+				continue;
+			}
+			$type = 'string';
+			if ( $options['type'] === 'range' ) {
+				$type = 'integer';
+			}
+			register_meta(
+				'post',
+				$options['id'],
+				array(
+					'show_in_rest'      => true,
+					'type'              => $type,
+					'single'            => true,
+					'sanitize_callback' => 'sanitize_text_field',
+					'auth_callback'     => function () {
+						return current_user_can( 'edit_posts' );
+					},
+				)
+			);
+		}
+
+	}
+
+	/**
+	 * Register the metabox sidebar in Gutenberg editor
+	 */
+	public function register_meta_sidebar() {
+		wp_register_script(
+			'neve-meta-sidebar',
+			trailingslashit( get_template_directory_uri() ) . 'inc/admin/metabox/build/index.js',
+			array( 'wp-plugins', 'wp-edit-post', 'wp-element', 'wp-components', 'wp-data' )
+		);
+
+	}
+
+	/**
+	 * Register the metabox sidebar.
+	 */
+	public function meta_sidebar_script_enqueue() {
+		wp_enqueue_script( 'neve-meta-sidebar' );
+
+		global $post_type;
+		$container    = $post_type === 'post' ? Mods::get( Config::MODS_SINGLE_POST_CONTAINER_STYLE, 'contained' ) : Mods::get( Config::MODS_DEFAULT_CONTAINER_STYLE, 'contained' );
+		$editor_width = Mods::get( Config::MODS_CONTAINER_WIDTH );
+		$editor_width = isset( $editor_width['desktop'] ) ? (int) $editor_width['desktop'] : 1170;
+
+		wp_localize_script(
+			'neve-meta-sidebar',
+			'metaSidebar',
+			array(
+				'controls' => $this->controls,
+				'actions'  => array(
+					'neve_meta_content_width' => array(
+						'container' => $container,
+						'editor'    => $editor_width,
+					),
+				),
+			)
+		);
+
+		wp_enqueue_style(
+			'neve-meta-sidebar-css', // Handle.
+			trailingslashit( get_template_directory_uri() ) . 'inc/admin/metabox/build/editor.css',
+			array( 'wp-edit-blocks' )
+		);
+
 	}
 
 	/**
@@ -115,7 +199,9 @@ final class Manager {
 			),
 			array( $this, 'render_metabox' ),
 			array( 'post', 'page', 'product' ),
-			'side'
+			'side',
+			'default',
+			array( '__back_compat_meta_box' => true )
 		);
 	}
 
