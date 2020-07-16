@@ -18,9 +18,10 @@ export const RadioImage = compose(
 
 		const getOptions = function(props) {
 			const {choices, icons} = props.data;
+			console.log(choices);
 			let controlChoices = [];
 			Object.keys(choices).map((choice) => {
-				controlChoices.push( {label: <img src={icons[choice]}/>, value: choice} );
+				controlChoices.push( {label: <><img src={icons[choice]}/><span className="option-label">{choices[choice]}</span></>, value: choice} );
 			});
 			return controlChoices;
 		};

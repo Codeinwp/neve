@@ -14,8 +14,8 @@ class MetaFieldsManager extends Component {
 		this.state = Object.assign( {}, wp.data.select( 'core/editor' ).getEditedPostAttribute( 'meta' ) );
 		this.componentsGroup = [
 			{
-				'title': __( 'Layout', 'neve' ),
-				'controls': [ 'neve_meta_container', 'neve_meta_sidebar' ]
+				'title': __( 'Page Layout', 'neve' ),
+				'controls': [ 'neve_meta_sidebar', 'neve_meta_container' ]
 			},
 			{
 				'title': __( 'Components', 'neve' ),

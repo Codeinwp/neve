@@ -3,20 +3,21 @@ const { PluginSidebar, PluginSidebarMoreMenuItem } = wp.editPost;
 const { __ } = wp.i18n;
 
 import { MetaFieldsManager } from './MetaFieldsManager';
+import { neveIcon } from '../helpers/icons.js';
 
 const Sidebar = () => {
 	return (
 		<>
 			<PluginSidebarMoreMenuItem
-				icon="admin-settings"
+				icon={neveIcon}
 				target="neve-meta-sidebar"
 			>
-				{__('Individual settings', 'neve')}
+				{__('Neve Options', 'neve')}
 			</PluginSidebarMoreMenuItem>
 			<PluginSidebar
-				icon="admin-settings"
+				icon={neveIcon}
 				name="neve-meta-sidebar"
-				title={__('Individual settings', 'neve')}
+				title={__('Neve options', 'neve')}
 			>
 				<MetaFieldsManager/>
 			</PluginSidebar>
