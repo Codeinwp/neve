@@ -2,6 +2,8 @@
 import { RadioImage } from './controls/RadioImage';
 import { CheckBox } from './controls/CheckBox';
 import { Range } from './controls/Range';
+import { ButtonChoices } from './controls/ButtonChoices';
+import { LayoutBuilder } from './LayoutBuilder';
 
 const { Component } = wp.element;
 const { PanelBody } = wp.components;
@@ -15,15 +17,11 @@ class MetaFieldsManager extends Component {
 		this.componentsGroup = [
 			{
 				'title': __( 'Page Layout', 'neve' ),
-				'controls': [ 'neve_meta_sidebar', 'neve_meta_container' ]
+				'controls': [ 'neve_meta_sidebar', 'neve_meta_container', 'neve_meta_enable_content_width', 'neve_meta_content_width' ]
 			},
 			{
-				'title': __( 'Components', 'neve' ),
-				'controls': [ 'neve_meta_disable_header', 'neve_meta_disable_title', 'neve_meta_disable_featured_image', 'neve_meta_disable_footer' ]
-			},
-			{
-				'title': __( 'Content width', 'neve' ),
-				'controls': [ 'neve_meta_enable_content_width', 'neve_meta_content_width' ]
+				'title': __( 'Page Title', 'neve' ),
+				'controls': []
 			}
 		];
 		this.updateValues = this.updateValues.bind( this );
@@ -41,6 +39,11 @@ class MetaFieldsManager extends Component {
 		if ( 'radio' === type ) {
 			return (
 				<RadioImage stateUpdate={this.updateValues} key={index} id={id} data={settings}/>
+			);
+		}
+		if ( 'button-group' === type ) {
+			return (
+				<ButtonChoices stateUpdate={this.updateValues} key={index} id={id} data={settings}/>
 			);
 		}
 		if ( 'checkbox' === type ) {

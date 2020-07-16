@@ -1,6 +1,6 @@
 const { compose } = wp.compose;
 const { withDispatch, withSelect } = wp.data;
-const { CheckboxControl } = wp.components;
+const { ToggleControl } = wp.components;
 
 const CheckBox = compose(
 	withDispatch((dispatch) => {
@@ -19,7 +19,7 @@ const CheckBox = compose(
 	const {input_label} = data;
 	return (
 		<div className="neve-meta-control neve-meta-checkbox">
-			<CheckboxControl
+			<ToggleControl
 				label={input_label}
 				checked={ ( 'on' === metaFieldValue ) }
 				onChange={ (value) => {

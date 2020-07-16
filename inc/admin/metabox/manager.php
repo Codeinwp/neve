@@ -9,7 +9,6 @@ namespace Neve\Admin\Metabox;
 
 use Neve\Core\Settings\Config;
 use Neve\Core\Settings\Mods;
-
 /**
  * Class Manager
  *
@@ -41,86 +40,12 @@ final class Manager {
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) );
 		add_action( 'save_post', array( $this, 'save' ) );
 
+		/**
+		 * Gtb meta
+		 */
 		add_action( 'init', array( $this, 'register_meta_sidebar' ) );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'meta_sidebar_script_enqueue' ) );
-
-		add_action( 'init', array( $this, 'neve_register_meta' ) );
-	}
-
-	/**
-	 * Register meta
-	 */
-	public function neve_register_meta() {
-
-		foreach ( $this->controls as $control ) {
-			$options = get_object_vars( $control );
-			if ( $options['type'] === 'separator' ) {
-				continue;
-			}
-			$type = 'string';
-			if ( $options['type'] === 'range' ) {
-				$type = 'integer';
-			}
-			register_meta(
-				'post',
-				$options['id'],
-				array(
-					'show_in_rest'      => true,
-					'type'              => $type,
-					'single'            => true,
-					'sanitize_callback' => 'sanitize_text_field',
-					'auth_callback'     => function () {
-						return current_user_can( 'edit_posts' );
-					},
-				)
-			);
-		}
-
-	}
-
-	/**
-	 * Register the metabox sidebar in Gutenberg editor
-	 */
-	public function register_meta_sidebar() {
-		wp_register_script(
-			'neve-meta-sidebar',
-			trailingslashit( get_template_directory_uri() ) . 'inc/admin/metabox/build/index.js',
-			array( 'wp-plugins', 'wp-edit-post', 'wp-element', 'wp-components', 'wp-data' )
-		);
-
-	}
-
-	/**
-	 * Register the metabox sidebar.
-	 */
-	public function meta_sidebar_script_enqueue() {
-		wp_enqueue_script( 'neve-meta-sidebar' );
-
-		global $post_type;
-		$container    = $post_type === 'post' ? Mods::get( Config::MODS_SINGLE_POST_CONTAINER_STYLE, 'contained' ) : Mods::get( Config::MODS_DEFAULT_CONTAINER_STYLE, 'contained' );
-		$editor_width = Mods::get( Config::MODS_CONTAINER_WIDTH );
-		$editor_width = isset( $editor_width['desktop'] ) ? (int) $editor_width['desktop'] : 1170;
-
-		wp_localize_script(
-			'neve-meta-sidebar',
-			'metaSidebar',
-			array(
-				'controls' => $this->controls,
-				'actions'  => array(
-					'neve_meta_content_width' => array(
-						'container' => $container,
-						'editor'    => $editor_width,
-					),
-				),
-			)
-		);
-
-		wp_enqueue_style(
-			'neve-meta-sidebar-css', // Handle.
-			trailingslashit( get_template_directory_uri() ) . 'inc/admin/metabox/build/editor.css',
-			array( 'wp-edit-blocks' )
-		);
-
+		add_action( 'init', array( $this, 'neve_register_meta' ), 11 );
 	}
 
 	/**
@@ -130,6 +55,11 @@ final class Manager {
 		$this->control_classes = array(
 			'Neve\\Admin\\Metabox\\Main',
 		);
+		if ( $this->is_gutenberg_active() ) {
+			$this->control_classes = array(
+				'Neve\\Admin\\Metabox\\Block_Editor_Meta',
+			);
+		}
 
 		$this->control_classes = apply_filters( 'neve_filter_metabox_controls', $this->control_classes );
 	}
@@ -171,6 +101,9 @@ final class Manager {
 	 * @param int $post_id the post id.
 	 */
 	public function save( $post_id ) {
+		if ( $this->is_gutenberg_active() ) {
+			return false;
+		}
 		foreach ( $this->controls as $control ) {
 			$control->save( $post_id );
 		}
@@ -193,7 +126,7 @@ final class Manager {
 		add_meta_box(
 			'neve-page-settings',
 			sprintf(
-				/* translators: %s - post type */
+			/* translators: %s - post type */
 				__( '%s Settings', 'neve' ),
 				$post_type
 			),
@@ -272,6 +205,113 @@ final class Manager {
 			$order[ $key ] = $control_object->priority;
 		}
 		array_multisort( $order, SORT_ASC, $this->controls );
+	}
+
+
+	/**
+	 * Register the metabox sidebar in Gutenberg editor
+	 */
+	public function register_meta_sidebar() {
+		wp_register_script(
+			'neve-meta-sidebar',
+			trailingslashit( get_template_directory_uri() ) . 'inc/admin/metabox/build/index.js',
+			array( 'wp-plugins', 'wp-edit-post', 'wp-element', 'wp-components', 'wp-data' )
+		);
+
+	}
+
+	/**
+	 * Register meta
+	 */
+	public function neve_register_meta() {
+		foreach ( $this->controls as $control ) {
+			$options = get_object_vars( $control );
+			$type    = 'string';
+			if ( $options['type'] === 'range' ) {
+				$type = 'integer';
+			}
+			register_meta(
+				'post',
+				$options['id'],
+				array(
+					'show_in_rest'      => true,
+					'type'              => $type,
+					'single'            => true,
+					'sanitize_callback' => 'sanitize_text_field',
+					'auth_callback'     => function () {
+						return current_user_can( 'edit_posts' );
+					},
+				)
+			);
+		}
+	}
+
+	/**
+	 * Register the metabox sidebar.
+	 */
+	public function meta_sidebar_script_enqueue() {
+		wp_enqueue_script( 'neve-meta-sidebar' );
+
+		global $post_type;
+		$container    = $post_type === 'post' ? Mods::get( Config::MODS_SINGLE_POST_CONTAINER_STYLE, 'contained' ) : Mods::get( Config::MODS_DEFAULT_CONTAINER_STYLE, 'contained' );
+		$editor_width = Mods::get( Config::MODS_CONTAINER_WIDTH );
+		$editor_width = isset( $editor_width['desktop'] ) ? (int) $editor_width['desktop'] : 1170;
+
+		wp_localize_script(
+			'neve-meta-sidebar',
+			'metaSidebar',
+			array(
+				'controls' => $this->controls,
+				'actions'  => array(
+					'neve_meta_content_width' => array(
+						'container' => $container,
+						'editor'    => $editor_width,
+					),
+				),
+			)
+		);
+
+		wp_enqueue_style(
+			'neve-meta-sidebar-css', // Handle.
+			trailingslashit( get_template_directory_uri() ) . 'inc/admin/metabox/build/editor.css',
+			array( 'wp-edit-blocks' )
+		);
+
+	}
+
+	/**
+	 * Check if Gutenberg is active.
+	 * Must be used not earlier than plugins_loaded action fired.
+	 *
+	 * @return bool
+	 */
+	private function is_gutenberg_active() {
+		$gutenberg    = false;
+		$block_editor = false;
+
+		if ( has_filter( 'replace_editor', 'gutenberg_init' ) ) {
+			// Gutenberg is installed and activated.
+			$gutenberg = true;
+		}
+
+		if ( version_compare( $GLOBALS['wp_version'], '5.0-beta', '>' ) ) {
+			// Block editor.
+			$block_editor = true;
+		}
+
+		if ( ! $gutenberg && ! $block_editor ) {
+			return false;
+		}
+
+		include_once ABSPATH . 'wp-admin/includes/plugin.php';
+
+		if ( ! is_plugin_active( 'classic-editor/classic-editor.php' ) ) {
+			return true;
+		}
+
+		$use_block_editor = ( get_option( 'classic-editor-replace' ) === 'no-replace' );
+
+		return $use_block_editor;
 	}
 
 }

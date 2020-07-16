@@ -38,9 +38,9 @@ abstract class Controls_Base {
 	/**
 	 * Add the control.
 	 *
-	 * @param Controls\Control_Base $control the control object.
+	 * @param Controls\Control_Base|Object $control the control object.
 	 */
-	public function add_control( Control_Base $control ) {
+	public function add_control( $control ) {
 		array_push( $this->controls, $control );
 	}
 

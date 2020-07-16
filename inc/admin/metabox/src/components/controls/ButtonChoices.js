@@ -1,8 +1,8 @@
-const { RadioControl } = wp.components;
+const { Button, ButtonGroup } = wp.components;
 const {compose} = wp.compose;
 const {withDispatch, withSelect} = wp.data;
 
-export const RadioImage = compose(
+export const ButtonChoices = compose(
 	withDispatch((dispatch, props) => {
 		return {
 			setMetaValue: (value) => {
@@ -17,10 +17,10 @@ export const RadioImage = compose(
 	} ) )( function( props ) {
 
 		const getOptions = function(props) {
-			const {choices, icons} = props.data;
+			const {choices} = props.data;
 			let controlChoices = [];
 			Object.keys(choices).map((choice) => {
-				controlChoices.push( {label: <><img src={icons[choice]}/><span className="option-label">{choices[choice]}</span></>, value: choice} );
+				controlChoices.push( {label: <>{choices[choice]}</>, value: choice } );
 			});
 			return controlChoices;
 		};
@@ -30,16 +30,25 @@ export const RadioImage = compose(
 		const { id, metaValue } = props;
 
 		return (
-			<div className="neve-meta-control neve-meta-radio-image">
+			<div className="neve-meta-control neve-meta-button-group">
 				{label && <p className="post-attributes-label-wrapper"><span className="post-attributes-label">{label}</span></p>}
-				<RadioControl
-					selected={metaValue}
-					options={options}
-					onChange={(value) => {
-						props.setMetaValue(value);
-						props.stateUpdate( id, value );
-					} }
-				/>
+				<ButtonGroup>
+					{
+						Object.keys(options).map((choice) => {
+							return (
+								<Button
+									key={options[choice].value}
+									isPrimary={ metaValue === options[choice].value }
+									isSecondary={ metaValue !== options[choice].value }
+									onClick={ () => {
+										props.setMetaValue( options[choice].value );
+										props.stateUpdate( id, options[choice].value );
+									} }
+								> {options[choice].label} </Button>
+							);
+						})
+					}
+				</ButtonGroup>
 			</div>
 		);
 	}
