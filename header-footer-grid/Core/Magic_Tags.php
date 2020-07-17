@@ -7,6 +7,9 @@
 
 namespace HFG\Core;
 
+use Neve\Views\Partials\Post_Meta;
+use Neve\Views\Post_Layout;
+
 /**
  * Class Short_Codes
  *
@@ -138,6 +141,66 @@ class Magic_Tags {
 	 */
 	public function current_single_excerpt() {
 		return is_singular() ? get_the_excerpt() : '';
+	}
+
+	/**
+	 * Single Post meta.
+	 *
+	 * @return string.
+	 */
+	public function current_post_meta() {
+		ob_start();
+		Post_Layout::render_post_meta( false );
+		$meta = ob_get_contents();
+		ob_end_clean();
+
+		return $meta;
+	}
+
+	/**
+	 * Meta author.
+	 *
+	 * @return string.
+	 */
+	public function meta_author() {
+		return '<span class="nv-dynamic-author-meta">' . Post_Meta::neve_get_author_meta() . '</span>';
+	}
+
+	/**
+	 * Meta date.
+	 *
+	 * @return string.
+	 */
+	public function meta_date() {
+		return Post_Meta::get_time_tags();
+	}
+
+	/**
+	 * Meta category.
+	 *
+	 * @return string.
+	 */
+	public function meta_category() {
+		return get_the_category_list( ', ', get_the_ID() );
+	}
+
+	/**
+	 * Meta comments.
+	 *
+	 * @return string.
+	 */
+	public function meta_comments() {
+		$comments = Post_Meta::get_comments();
+		return ! empty( $comments ) ? $comments : '';
+	}
+
+	/**
+	 * Meta time.
+	 *
+	 * @return string.
+	 */
+	public function meta_time_to_read() {
+		return apply_filters( 'neve_do_read_time', '' );
 	}
 
 	/**
@@ -414,6 +477,30 @@ class Magic_Tags {
 					'current_single_url'     => [
 						'label' => __( 'Current Single URL', 'neve' ),
 						'type'  => 'url',
+					],
+					'current_post_meta'      => [
+						'label' => __( 'Current Post Meta', 'neve' ),
+						'type'  => 'string',
+					],
+					'meta_author'            => [
+						'label' => __( 'Author meta', 'neve' ),
+						'type'  => 'string',
+					],
+					'meta_date'              => [
+						'label' => __( 'Date meta', 'neve' ),
+						'type'  => 'string',
+					],
+					'meta_category'          => [
+						'label' => __( 'Category meta', 'neve' ),
+						'type'  => 'string',
+					],
+					'meta_comments'          => [
+						'label' => __( 'Comments meta', 'neve' ),
+						'type'  => 'string',
+					],
+					'meta_time_to_read'      => [
+						'label' => __( 'Time to read meta', 'neve' ),
+						'type'  => 'string',
 					],
 				],
 			],
