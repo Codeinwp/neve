@@ -1231,19 +1231,25 @@ fieldset input[type="text"], fieldset input[type="search"], fieldset input[type=
   width: 100%;
 }
 
-.nv-meta-list li {
+.nv-meta-list li, .nv-meta-list span {
   display: inline;
+}
+
+.nv-meta-list li:not(:last-child):after, .nv-meta-list span:not(:last-child):after {
+  content: '/';
+  padding: 0 5px;
+}
+
+.nv-meta-list li {
   color: #676767;
   font-size: 0.85em;
 }
 
 .nv-meta-list li:not(:last-child):after {
-  content: '/';
-  padding: 0 5px;
   color: #676767;
 }
 
-.nv-meta-list a, .nv-meta-list a:hover {
+.nv-meta-list:not(.nv-dynamic-meta) a, .nv-meta-list:not(.nv-dynamic-meta) a:hover {
   color: #676767;
 }
 
@@ -1260,6 +1266,13 @@ fieldset input[type="text"], fieldset input[type="search"], fieldset input[type=
 
 .nv-meta-list .meta.author .author-name {
   margin-left: 3px;
+}
+
+.nv-dynamic-author-meta .photo {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  transform: translateY(30%);
 }
 
 .entry-title {
