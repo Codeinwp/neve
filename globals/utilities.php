@@ -162,7 +162,7 @@ function neve_search_icon( $is_link = false, $echo = false, $size = 15, $amp_rea
 
 	$amp_state = '';
 	if ( $amp_ready ) {
-		$amp_state = ' on="tap:nv-search-icon-responsive.toggleClass(class=\'active\')" role="button" tabindex="0" ';
+		$amp_state = 'on="tap:AMP.setState({visible: !visible})" role="button" tabindex="0" ';
 	}
 	$start_tag = $is_link ? 'a href="#"' : 'div';
 	$end_tag   = $is_link ? 'a' : 'div';

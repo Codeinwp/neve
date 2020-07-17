@@ -5,7 +5,6 @@
   "scripts": {
     "build": "cross-env BABEL_ENV=default NODE_ENV=production webpack --display-modules",
     "lint": "eslint src/**.js",
-    "release": "semantic-release",
     "dev": "cross-env BABEL_ENV=default NODE_ENV=development webpack --watch"
   },
   "author": "ThemeIsle <friends@themeisle.com>",

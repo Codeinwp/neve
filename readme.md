@@ -19,6 +19,24 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
 
+##### [Version 2.7.5](https://github.com/Codeinwp/neve/compare/v2.7.4...v2.7.5) (2020-07-10)
+
+- [Fix] Move Starter Sites library and import process in OrbitFox companion plugin
+
+
+
+
+##### [Version 2.7.4](https://github.com/Codeinwp/neve/compare/v2.7.3...v2.7.4) (2020-07-08)
+
+- [Feat] Improved Starter Sites library layout
+- [Feat] Use display:swap for Google Fonts
+- [Fix] Live refresh for spacing controls
+- [Fix] Canvas mode for the search icon in AMP on mobile
+- New Gutenberg Starter Sites
+
+
+
+
 ##### [Version 2.7.3](https://github.com/Codeinwp/neve/compare/v2.7.2...v2.7.3) (2020-06-23)
 
 - [Feat] New typography controls for the Blog and Single Post pages
@@ -1311,3 +1329,7 @@ Starter Sites screenshots resources:
 - Investment Consulting
 * https://stocksnap.io/photo/man-outside-HBDZWHMZ6K
 * https://mystock.themeisle.com/photo/writers/
+
+- Sports Academy
+* https://stocksnap.io/photo/football-soccer-MJ7XGR7K4C
+* https://stocksnap.io/photo/soccer-ball-LHHL7FKKVD

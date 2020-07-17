@@ -60,7 +60,7 @@ class Admin {
 		add_filter( 'themeisle_sdk_hide_dashboard_widget', '__return_true' );
 
 		if ( get_option( $this->dismiss_notice_key ) !== 'yes' ) {
-			add_action( 'admin_notices', [ $this, 'admin_notice' ] );
+			add_action( 'admin_notices', [ $this, 'admin_notice' ], 0 );
 			add_action( 'wp_ajax_neve_dismiss_welcome_notice', [ $this, 'remove_notice' ] );
 		}
 	}
@@ -85,6 +85,9 @@ class Admin {
 	 * Add notice.
 	 */
 	public function admin_notice() {
+		if ( apply_filters( 'neve_disable_starter_sites_admin_notice', false ) === true ) {
+			return;
+		}
 		if ( defined( 'TI_ONBOARDING_DISABLED' ) && TI_ONBOARDING_DISABLED === true ) {
 			return;
 		}

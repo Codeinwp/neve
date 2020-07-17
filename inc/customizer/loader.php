@@ -123,7 +123,7 @@ class Loader {
 		);
 		wp_enqueue_style(
 			'neve-fonts-control-google-fonts',
-			'https://fonts.googleapis.com/css?family=' . join( '|', neve_get_google_fonts() ) . '&text=Abc',
+			'https://fonts.googleapis.com/css?family=' . join( '|', neve_get_google_fonts() ) . '&text=Abc&display=swap"',
 			[],
 			NEVE_VERSION
 		);
