@@ -61,7 +61,7 @@ class Post_Meta extends Base_View {
 		$order     = $this->sanitize_order_array( $order );
 		$pid       = get_the_ID();
 		$post_type = get_post_type( $pid );
-		$markup    = $as_list === true ? '<ul class="nv-meta-list">' : '<span class="nv-meta-list">';
+		$markup    = $as_list === true ? '<ul class="nv-meta-list">' : '<span class="nv-meta-list nv-dynamic-meta">';
 		$index     = 1;
 		$tag       = $as_list === true ? 'li' : 'span';
 		foreach ( $order as $meta ) {

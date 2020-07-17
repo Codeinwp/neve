@@ -163,7 +163,7 @@ class Magic_Tags {
 	 * @return string.
 	 */
 	public function meta_author() {
-		return Post_Meta::neve_get_author_meta();
+		return '<span class="nv-dynamic-author-meta">' . Post_Meta::neve_get_author_meta() . '</span>';
 	}
 
 	/**

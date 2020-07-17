@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Neve 2.7.3\n"
+"Project-Id-Version: Neve 2.7.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/neve\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-07-09T13:17:33+00:00\n"
+"POT-Creation-Date: 2020-07-17T08:15:43+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -94,165 +94,165 @@ msgid "Enter your license from %1$s purchase history in order to get plugin upda
 msgstr ""
 
 #. translators: s - theme name (Neve).
-#: dashboard/inc/Main.php:246
+#: dashboard/inc/Main.php:254
 msgid "New theme update for %1$s! Please update to %2$s."
 msgstr ""
 
-#: dashboard/inc/Main.php:251
-#: dashboard/inc/Main.php:272
+#: dashboard/inc/Main.php:259
+#: dashboard/inc/Main.php:280
 msgid "Update Now"
 msgstr ""
 
 #. translators: s - Pro plugin name (Neve Pro)
-#: dashboard/inc/Main.php:263
+#: dashboard/inc/Main.php:271
 msgid "New plugin update for %1$s! Please update to %2$s."
 msgstr ""
 
 #. translators: 1 - Theme Name (Neve), 2 - Plugin Name (Neve Pro)
-#: dashboard/inc/Main.php:281
+#: dashboard/inc/Main.php:289
 msgid "We recommend that both %1$s and %2$s are updated to the latest version to ensure optimal intercompatibility."
 msgstr ""
 
-#: dashboard/inc/Main.php:296
+#: dashboard/inc/Main.php:304
 msgid "Upload Logo"
 msgstr ""
 
-#: dashboard/inc/Main.php:300
+#: dashboard/inc/Main.php:308
 msgid "Set Colors"
 msgstr ""
 
-#: dashboard/inc/Main.php:304
+#: dashboard/inc/Main.php:312
 msgid "Customize Fonts"
 msgstr ""
 
-#: dashboard/inc/Main.php:308
+#: dashboard/inc/Main.php:316
 msgid "Layout Options"
 msgstr ""
 
-#: dashboard/inc/Main.php:312
+#: dashboard/inc/Main.php:320
 msgid "Header Options"
 msgstr ""
 
-#: dashboard/inc/Main.php:316
+#: dashboard/inc/Main.php:324
 msgid "Blog Layouts"
 msgstr ""
 
-#: dashboard/inc/Main.php:320
+#: dashboard/inc/Main.php:328
 msgid "Footer Options"
 msgstr ""
 
-#: dashboard/inc/Main.php:324
+#: dashboard/inc/Main.php:332
 #: inc/customizer/options/layout_sidebar.php:43
 msgid "Content / Sidebar"
 msgstr ""
 
-#: dashboard/inc/Main.php:338
+#: dashboard/inc/Main.php:346
 msgid "Header/Footer builder"
 msgstr ""
 
-#: dashboard/inc/Main.php:339
+#: dashboard/inc/Main.php:347
 msgid "Easily build your header and footer by dragging and dropping all the important elements in the real-time WordPress Customizer. More advanced options are available in PRO."
 msgstr ""
 
-#: dashboard/inc/Main.php:343
+#: dashboard/inc/Main.php:351
 msgid "Page Builder Compatibility"
 msgstr ""
 
-#: dashboard/inc/Main.php:344
+#: dashboard/inc/Main.php:352
 msgid "Neve is fully compatible with Gutenberg, the new WordPress editor and for all of you page builder fans, Neve has full compatibility with Elementor, Beaver Builder, and all the other popular page builders."
 msgstr ""
 
-#: dashboard/inc/Main.php:348
+#: dashboard/inc/Main.php:356
 #: inc/customizer/options/upsells.php:89
 msgid "Header Booster"
 msgstr ""
 
-#: dashboard/inc/Main.php:349
+#: dashboard/inc/Main.php:357
 msgid "Take the header builder to a new level with new awesome components: socials, contact, breadcrumbs, language switcher, multiple HTML, sticky and transparent menu, page header builder and many more."
 msgstr ""
 
-#: dashboard/inc/Main.php:353
+#: dashboard/inc/Main.php:361
 msgid "Page Header Builder"
 msgstr ""
 
-#: dashboard/inc/Main.php:354
+#: dashboard/inc/Main.php:362
 msgid "The Page Header is the horizontal area that sits directly below the header and contains the page/post title. Easily design an attractive Page Header area using our dedicated builder."
 msgstr ""
 
-#: dashboard/inc/Main.php:358
+#: dashboard/inc/Main.php:366
 #: inc/customizer/options/upsells.php:92
 msgid "Custom Layouts"
 msgstr ""
 
-#: dashboard/inc/Main.php:359
+#: dashboard/inc/Main.php:367
 msgid "Powerful Custom Layouts builder which allows you to easily create your own header, footer or custom content on any of the hook locations available in the theme."
 msgstr ""
 
-#: dashboard/inc/Main.php:363
+#: dashboard/inc/Main.php:371
 #: inc/customizer/options/upsells.php:90
 msgid "Blog Booster"
 msgstr ""
 
-#: dashboard/inc/Main.php:364
+#: dashboard/inc/Main.php:372
 msgid "Give a huge boost to your entire blogging experience with features specially designed for increased user experience."
 msgstr ""
 
-#: dashboard/inc/Main.php:364
+#: dashboard/inc/Main.php:372
 msgid "Sharing, custom article sorting, comments integrations, number of minutes needed to read an article and many more."
 msgstr ""
 
-#: dashboard/inc/Main.php:368
+#: dashboard/inc/Main.php:376
 #: inc/customizer/options/upsells.php:95
 msgid "Elementor Booster"
 msgstr ""
 
-#: dashboard/inc/Main.php:369
+#: dashboard/inc/Main.php:377
 #: inc/customizer/options/upsells.php:100
 msgid "Leverage the true flexibility of Elementor with powerful addons and templates that you can import with just one click."
 msgstr ""
 
-#: dashboard/inc/Main.php:373
+#: dashboard/inc/Main.php:381
 #: inc/customizer/options/upsells.php:91
 msgid "WooCommerce Booster"
 msgstr ""
 
-#: dashboard/inc/Main.php:374
+#: dashboard/inc/Main.php:382
 msgid "Empower your online store with awesome new features, specially designed for a smooth WooCommerce integration."
 msgstr ""
 
-#: dashboard/inc/Main.php:374
+#: dashboard/inc/Main.php:382
 msgid "Wishlist, quick view, video products, advanced reviews, multiple dedicated layouts and many more."
 msgstr ""
 
-#: dashboard/inc/Main.php:378
+#: dashboard/inc/Main.php:386
 msgid "LifterLMS Booster"
 msgstr ""
 
-#: dashboard/inc/Main.php:379
+#: dashboard/inc/Main.php:387
 msgid "Make your LifterLMS pages look stunning with our PRO design options. Specially created to help you set up your online courses with minimum customizations."
 msgstr ""
 
-#: dashboard/inc/Main.php:383
+#: dashboard/inc/Main.php:391
 msgid "Typekit(Adobe) Fonts"
 msgstr ""
 
-#: dashboard/inc/Main.php:384
+#: dashboard/inc/Main.php:392
 msgid "The module allows for an easy way of enabling new awesome Adobe (previous Typekit) Fonts in Neve's Typography options."
 msgstr ""
 
-#: dashboard/inc/Main.php:388
+#: dashboard/inc/Main.php:396
 msgid "White Label"
 msgstr ""
 
-#: dashboard/inc/Main.php:389
+#: dashboard/inc/Main.php:397
 msgid "For any developer or agency out there building websites for their own clients, we've made it easy to present the theme as your own."
 msgstr ""
 
-#: dashboard/inc/Main.php:393
+#: dashboard/inc/Main.php:401
 msgid "Scroll To Top"
 msgstr ""
 
-#: dashboard/inc/Main.php:394
+#: dashboard/inc/Main.php:402
 msgid "Simple but effective module to help you navigate back to the top of the really long pages."
 msgstr ""
 
@@ -307,7 +307,7 @@ msgstr ""
 #: header-footer-grid/Core/Components/Copyright.php:84
 #: header-footer-grid/Core/Components/CustomHtml.php:158
 #: header-footer-grid/Core/Components/Logo.php:205
-#: inc/core/front_end.php:2981
+#: inc/core/front_end.php:179
 #: inc/customizer/options/colors_background.php:66
 msgid "Text Color"
 msgstr ""
@@ -505,22 +505,22 @@ msgid "Arbitrary HTML code. It supports also shortcodes."
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetFour.php:32
-#: inc/core/front_end.php:3304
+#: inc/core/front_end.php:502
 msgid "Footer Four"
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetOne.php:31
-#: inc/core/front_end.php:3301
+#: inc/core/front_end.php:499
 msgid "Footer One"
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetThree.php:31
-#: inc/core/front_end.php:3303
+#: inc/core/front_end.php:501
 msgid "Footer Three"
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetTwo.php:32
-#: inc/core/front_end.php:3302
+#: inc/core/front_end.php:500
 msgid "Footer Two"
 msgstr ""
 
@@ -563,7 +563,7 @@ msgstr ""
 #: header-footer-grid/Core/Components/Nav.php:43
 #: header-footer-grid/Core/Components/Nav.php:221
 #: header-footer-grid/templates/components/component-nav.php:25
-#: inc/core/front_end.php:77
+#: inc/core/front_end.php:71
 msgid "Primary Menu"
 msgstr ""
 
@@ -620,7 +620,7 @@ msgstr ""
 #: header-footer-grid/Core/Components/NavFooter.php:41
 #: header-footer-grid/Core/Components/NavFooter.php:138
 #: header-footer-grid/templates/components/component-nav-footer.php:23
-#: inc/core/front_end.php:78
+#: inc/core/front_end.php:72
 msgid "Footer Menu"
 msgstr ""
 
@@ -708,7 +708,7 @@ msgstr ""
 #: header-footer-grid/Core/Components/SecondNav.php:41
 #: header-footer-grid/Core/Components/SecondNav.php:136
 #: header-footer-grid/templates/components/component-nav-secondary.php:23
-#: inc/core/front_end.php:79
+#: inc/core/front_end.php:73
 msgid "Secondary Menu"
 msgstr ""
 
@@ -948,7 +948,7 @@ msgid "No Sidebar"
 msgstr ""
 
 #: inc/admin/metabox/main.php:56
-#: inc/core/front_end.php:3294
+#: inc/core/front_end.php:492
 msgid "Sidebar"
 msgstr ""
 
@@ -1056,51 +1056,41 @@ msgstr ""
 msgid "Documentation"
 msgstr ""
 
-#: inc/core/front_end.php:2475
-#: inc/core/front_end.php:2485
-msgid "Want to keep using Zelle's homepage?"
-msgstr ""
-
-#: inc/core/front_end.php:2476
-#: inc/core/front_end.php:2486
-msgid "Hi! We've noticed you were using Zelle before. To make your transition easier, we can help you keep the same beautiful homepage you had before, by converting it into an Elementor template. This option will also import your homepage content."
-msgstr ""
-
-#: inc/core/front_end.php:2951
+#: inc/core/front_end.php:149
 msgid "Black"
 msgstr ""
 
-#: inc/core/front_end.php:2960
+#: inc/core/front_end.php:158
 msgid "White"
 msgstr ""
 
-#: inc/core/front_end.php:2969
+#: inc/core/front_end.php:167
 msgid "Button Color"
 msgstr ""
 
-#: inc/core/front_end.php:2973
+#: inc/core/front_end.php:171
 #: inc/customizer/options/colors_background.php:56
 msgid "Link Color"
 msgstr ""
 
-#: inc/core/front_end.php:2977
+#: inc/core/front_end.php:175
 #: inc/customizer/options/colors_background.php:61
 msgid "Link Hover Color"
 msgstr ""
 
-#: inc/core/front_end.php:2985
+#: inc/core/front_end.php:183
 msgid "Button text color"
 msgstr ""
 
-#: inc/core/front_end.php:2989
+#: inc/core/front_end.php:187
 msgid "Button Hover text color"
 msgstr ""
 
-#: inc/core/front_end.php:2993
+#: inc/core/front_end.php:191
 msgid "Button Hover Color"
 msgstr ""
 
-#: inc/core/front_end.php:3295
+#: inc/core/front_end.php:493
 msgid "Shop Sidebar"
 msgstr ""
 
