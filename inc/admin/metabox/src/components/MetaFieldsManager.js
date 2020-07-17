@@ -3,7 +3,7 @@ import { RadioImage } from './controls/RadioImage';
 import { CheckBox } from './controls/CheckBox';
 import { Range } from './controls/Range';
 import { ButtonChoices } from './controls/ButtonChoices';
-import { LayoutBuilder } from './LayoutBuilder';
+import { SortableItems } from './controls/SortableItems';
 
 const { Component } = wp.element;
 const { PanelBody } = wp.components;
@@ -21,7 +21,7 @@ class MetaFieldsManager extends Component {
 			},
 			{
 				'title': __( 'Page Title', 'neve' ),
-				'controls': []
+				'controls': [ 'neve_meta_header_elements_order' ]
 			}
 		];
 		this.updateValues = this.updateValues.bind( this );
@@ -58,6 +58,12 @@ class MetaFieldsManager extends Component {
 					<Range stateUpdate={this.updateValues} key={index} id={id} data={settings}/>
 				);
 			}
+		}
+
+		if ( 'sortable-list' === type ) {
+			return (
+				<SortableItems/>
+			);
 		}
 	}
 

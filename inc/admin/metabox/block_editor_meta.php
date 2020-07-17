@@ -69,7 +69,7 @@ class Block_Editor_Meta extends Controls_Base {
 					'default'     => ( Main::is_new_page() || Main::is_checkout() ) ? 'on' : 'off',
 					'input_label' => __( 'Custom Content Width', 'neve' ),
 				],
-				'priority' => 15,
+				'priority' => 20,
 			],
 			[
 				'id'       => 'neve_meta_content_width',
@@ -81,8 +81,20 @@ class Block_Editor_Meta extends Controls_Base {
 					'hidden'     => Main::hide_content_width(),
 					'depends_on' => 'neve_meta_enable_content_width',
 				],
-				'priority' => 15,
+				'priority' => 25,
 			],
+			[
+				'id' => 'neve_meta_header_elements_order',
+				'type' => 'sortable-list',
+				'settings' => [
+					'elements' => [
+						'title'          => __( 'Page Title', 'neve' ),
+						'meta'           => __( 'Page Meta', 'neve' ),
+						'featured_image' => __( 'Featured Image', 'neve' ),
+					],
+				],
+				'priority' => 30
+			]
 		];
 		$controls = json_decode( wp_json_encode( $controls ) );
 		foreach ( $controls as $control ) {
