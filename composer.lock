@@ -4,51 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e87ce76ec39dc98f40f0b631015baf86",
+    "content-hash": "4dd9880b22221532fca23754040dbb07",
     "packages": [
-        {
-            "name": "codeinwp/themeisle-onboarding",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Codeinwp/themeisle-onboarding.git",
-                "reference": "e785eee1a9c10ad1aaac6ae5ffae5bd675e7f149"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Codeinwp/themeisle-onboarding/zipball/e785eee1a9c10ad1aaac6ae5ffae5bd675e7f149",
-                "reference": "e785eee1a9c10ad1aaac6ae5ffae5bd675e7f149",
-                "shasum": ""
-            },
-            "require-dev": {
-                "dealerdirect/phpcodesniffer-composer-installer": "^0.4.4 || ^0.5.0 || ^0.6.0",
-                "squizlabs/php_codesniffer": "^3.1",
-                "wp-coding-standards/wpcs": "^1.0.0 || ^2.0.0"
-            },
-            "type": "library",
-            "extra": {
-                "installer-disable": "true"
-            },
-            "autoload": {
-                "psr-4": {
-                    "TIOB\\": "includes/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-3.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "ThemeIsle team",
-                    "email": "friends@themeisle.com",
-                    "homepage": "https://themeisle.com"
-                }
-            ],
-            "description": "ThemeIsle Onboarding Module.",
-            "homepage": "https://github.com/Codeinwp/themeisle-onboarding",
-            "time": "2020-07-07T13:08:51+00:00"
-        },
         {
             "name": "codeinwp/themeisle-sdk",
             "version": "3.2.14",
