@@ -87,6 +87,7 @@ class Block_Editor_Meta extends Controls_Base {
 				'id' => 'neve_meta_header_elements_order',
 				'type' => 'sortable-list',
 				'settings' => [
+					'default'  => json_encode( [ 'title' => true, 'meta' => true, 'featured_image' => true ] ),
 					'elements' => [
 						'title'          => __( 'Page Title', 'neve' ),
 						'meta'           => __( 'Page Meta', 'neve' ),

@@ -3,7 +3,7 @@ import { RadioImage } from './controls/RadioImage';
 import { CheckBox } from './controls/CheckBox';
 import { Range } from './controls/Range';
 import { ButtonChoices } from './controls/ButtonChoices';
-import { SortableItems } from './controls/SortableItems';
+import SortableItems from './controls/SortableItems';
 
 const { Component } = wp.element;
 const { PanelBody } = wp.components;
@@ -62,7 +62,7 @@ class MetaFieldsManager extends Component {
 
 		if ( 'sortable-list' === type ) {
 			return (
-				<SortableItems/>
+				<SortableItems stateUpdate={this.updateValues} key={index} id={id} data={settings}/>
 			);
 		}
 	}

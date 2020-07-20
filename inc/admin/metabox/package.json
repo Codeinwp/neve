@@ -4,11 +4,11 @@
   "description": "Meta controls in Gutenberg sidebar",
   "main": "webpack.config.js",
   "dependencies": {
+    "array-move": "^2.2.2",
     "classnames": "^2.2.6",
     "fuse.js": "^5.1.0",
-    "react-visibility-sensor": "^5.1.1",
     "react-sortable-hoc": "^1.11.0",
-    "array-move": "^2.2.2"
+    "react-visibility-sensor": "^5.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.10.5",
