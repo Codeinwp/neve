@@ -25,7 +25,7 @@ class MetaFieldsManager extends Component {
 			},
 			{
 				'title': __( 'Elements', 'neve' ),
-				'controls': [ 'neve_meta_disable_header', 'neve_meta_disable_footer', 'neve_meta_disable_featured_image', 'neve_meta_comments', 'neve_meta_tags', 'neve_meta_social_icons' ]
+				'controls': [ 'neve_meta_disable_header', 'neve_meta_disable_footer', 'neve_meta_disable_title', 'neve_meta_comments', 'neve_meta_tags', 'neve_meta_social_icons' ]
 			}
 		];
 		this.updateValues = this.updateValues.bind( this );
@@ -114,6 +114,10 @@ class MetaFieldsManager extends Component {
 								{
 									controls.map( (control, index) => {
 										let controlData = metaSidebar.controls.find(obj => obj.id === control);
+										const currentPostType = wp.data.select('core/editor').getCurrentPostType();
+										if ( controlData.hasOwnProperty('post_type') && currentPostType !== controlData['post_type'] ) {
+											return false;
+										}
 										return (
 											this.renderControl( controlData, index )
 										);

@@ -96,9 +96,10 @@ class Block_Editor_Meta extends Controls_Base {
 	private function add_page_title_controls() {
 		$controls = [
 			[
-				'id'       => 'neve_meta_header_elements_order',
-				'type'     => 'sortable-list',
-				'settings' => [
+				'id'        => 'neve_meta_header_elements_order',
+				'type'      => 'sortable-list',
+				'post_type' => 'post',
+				'settings'  => [
 					'default'  => wp_json_encode(
 						[
 							'title'          => true,
@@ -112,7 +113,7 @@ class Block_Editor_Meta extends Controls_Base {
 						'featured_image' => __( 'Featured Image', 'neve' ),
 					],
 				],
-				'priority' => 10,
+				'priority'  => 10,
 			],
 			[
 				'id'       => 'neve_meta_title_alignment',
@@ -130,22 +131,24 @@ class Block_Editor_Meta extends Controls_Base {
 				'priority' => 15,
 			],
 			[
-				'id'       => 'neve_meta_author_avatar',
-				'type'     => 'checkbox',
-				'settings' => [
+				'id'        => 'neve_meta_author_avatar',
+				'post_type' => 'post',
+				'type'      => 'checkbox',
+				'settings'  => [
 					'default'     => 'on',
 					'input_label' => __( 'Author Avatar', 'neve' ),
 				],
-				'priority' => 20,
+				'priority'  => 20,
 			],
 			[
-				'id'       => 'neve_meta_reading_time',
-				'type'     => 'checkbox',
-				'settings' => [
+				'id'        => 'neve_meta_reading_time',
+				'post_type' => 'post',
+				'type'      => 'checkbox',
+				'settings'  => [
 					'default'     => 'on',
 					'input_label' => __( 'Reading Time', 'neve' ),
 				],
-				'priority' => 20,
+				'priority'  => 20,
 			],
 		];
 
@@ -179,13 +182,14 @@ class Block_Editor_Meta extends Controls_Base {
 				'priority' => 20,
 			],
 			[
-				'id'       => 'neve_meta_disable_featured_image',
-				'type'     => 'checkbox',
-				'settings' => [
+				'id'        => 'neve_meta_disable_title',
+				'type'      => 'checkbox',
+				'post_type' => 'page',
+				'settings'  => [
 					'default'     => 'off',
-					'input_label' => __( 'Disable Featured Image', 'neve' ),
+					'input_label' => __( 'Disable Title', 'neve' ),
 				],
-				'priority' => 30,
+				'priority'  => 20,
 			],
 			[
 				'id'       => 'neve_meta_comments',

@@ -19,7 +19,7 @@ export const neveIcon = () => {
 export const alignRightIcon = () => {
 	return (
 		<SVG width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-			<Path d="M16.5 1.25H7.61111M16.5 9H0.5M16.5 16.75H7.61111" stroke-width="1.5"/>
+			<Path d="M16.5 1.25H7.61111M16.5 9H0.5M16.5 16.75H7.61111" strokeWidth="1.5"/>
 		</SVG>
 	);
 };
@@ -27,7 +27,7 @@ export const alignRightIcon = () => {
 export const alignCenterIcon = () => {
 	return (
 		<SVG width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-			<Path d="M12.9444 1.25H4.05556M16.5 9H0.5M12.9444 16.75H4.05556" stroke-width="1.5"/>
+			<Path d="M12.9444 1.25H4.05556M16.5 9H0.5M12.9444 16.75H4.05556" strokeWidth="1.5"/>
 		</SVG>
 	);
 };
@@ -35,7 +35,7 @@ export const alignCenterIcon = () => {
 export const alignLeftIcon = () => {
 	return (
 		<SVG width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-			<Path d="M0.5 1.25H9.38889M0.5 9H16.5M0.5 16.75H9.38889" stroke-width="1.5"/>
+			<Path d="M0.5 1.25H9.38889M0.5 9H16.5M0.5 16.75H9.38889" strokeWidth="1.5"/>
 		</SVG>
 	);
 };

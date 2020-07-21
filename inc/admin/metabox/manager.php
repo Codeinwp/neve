@@ -230,8 +230,13 @@ final class Manager {
 			if ( $options['type'] === 'range' ) {
 				$type = 'integer';
 			}
-			register_meta(
-				'post',
+
+			$post_type = '';
+			if ( array_key_exists( 'post_type', $options ) ) {
+				$post_type = $options['post_type'];
+			}
+			register_post_meta(
+				$post_type,
 				$options['id'],
 				array(
 					'show_in_rest'      => true,
