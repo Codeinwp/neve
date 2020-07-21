@@ -1,4 +1,4 @@
-import {SortableContainer, sortableElement, sortableHandle} from 'react-sortable-hoc';
+import {sortableContainer, sortableElement, sortableHandle} from 'react-sortable-hoc';
 import arrayMove from 'array-move';
 
 const { compose } = wp.compose;
@@ -10,7 +10,7 @@ const { __ } = wp.i18n;
 const DragHandle = sortableHandle( () => {
 	return (
 		<div className="ti-sortable-handle">
-			<span></span>
+			<Button isTertiary icon="menu"/>
 		</div>
 	);
 });
@@ -44,9 +44,9 @@ const SortableItem = sortableElement( ({value, label, isVisible, toggle}) => {
 	);
 } );
 
-const SortableList = SortableContainer(
+const SortableList = sortableContainer(
 	({children}) => {
-		return <div>{children}</div>;
+		return <div className="neve-meta-control neve-meta-sortable-items">{children}</div>;
 	}
 );
 

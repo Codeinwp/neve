@@ -21,7 +21,11 @@ class MetaFieldsManager extends Component {
 			},
 			{
 				'title': __( 'Page Title', 'neve' ),
-				'controls': [ 'neve_meta_header_elements_order' ]
+				'controls': [ 'neve_meta_header_elements_order', 'neve_meta_title_alignment', 'neve_meta_author_avatar', 'neve_meta_reading_time' ]
+			},
+			{
+				'title': __( 'Elements', 'neve' ),
+				'controls': [ 'neve_meta_disable_header', 'neve_meta_disable_footer', 'neve_meta_disable_featured_image', 'neve_meta_comments', 'neve_meta_tags', 'neve_meta_social_icons' ]
 			}
 		];
 		this.updateValues = this.updateValues.bind( this );
@@ -105,7 +109,6 @@ class MetaFieldsManager extends Component {
 							<PanelBody
 								key={index}
 								title={title}
-								icon="admin-post"
 								intialOpen={ true }
 							>
 								{

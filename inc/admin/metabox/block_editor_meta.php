@@ -18,8 +18,8 @@ class Block_Editor_Meta extends Controls_Base {
 	 */
 	public function add_controls() {
 		$this->add_layout_controls();
-		// $this->add_content_toggles();
-		// $this->add_content_width();
+		$this->add_page_title_controls();
+		$this->add_elements_controls();
 	}
 
 	/**
@@ -82,7 +82,19 @@ class Block_Editor_Meta extends Controls_Base {
 					'depends_on' => 'neve_meta_enable_content_width',
 				],
 				'priority' => 25,
-			],
+			]
+		];
+		$controls = json_decode( wp_json_encode( $controls ) );
+		foreach ( $controls as $control ) {
+			$this->add_control( $control );
+		}
+	}
+
+	/**
+	 * Add page title controls.
+	 */
+	private function add_page_title_controls() {
+		$controls = [
 			[
 				'id' => 'neve_meta_header_elements_order',
 				'type' => 'sortable-list',
@@ -94,9 +106,110 @@ class Block_Editor_Meta extends Controls_Base {
 						'featured_image' => __( 'Featured Image', 'neve' ),
 					],
 				],
-				'priority' => 30
-			]
+				'priority' => 10
+			],
+			[
+				'id'       => 'neve_meta_title_alignment',
+				'type'     => 'button-group',
+				'settings' => [
+					'choices' => [
+						'left'   => __( 'Left', 'neve' ),
+						'center' => __( 'Center', 'neve' ),
+						'right'  => __( 'Right', 'neve' ),
+					],
+					'has_icons' => true,
+					'default' => 'left',
+					'label'   => __( 'Title Alignment', 'neve' ),
+				],
+				'priority' => 15,
+			],
+			[
+				'id'       => 'neve_meta_author_avatar',
+				'type'     => 'checkbox',
+				'settings' => [
+					'default'     => 'on',
+					'input_label' => __( 'Author Avatar', 'neve' ),
+				],
+				'priority' => 20,
+			],
+			[
+				'id'       => 'neve_meta_reading_time',
+				'type'     => 'checkbox',
+				'settings' => [
+					'default'     => 'on',
+					'input_label' => __( 'Reading Time', 'neve' ),
+				],
+				'priority' => 20,
+			],
 		];
+
+		$controls = json_decode( wp_json_encode( $controls ) );
+		foreach ( $controls as $control ) {
+			$this->add_control( $control );
+		}
+	}
+
+	/**
+	 * Add elements controls
+	 */
+	private function add_elements_controls() {
+		$controls = [
+			[
+				'id'       => 'neve_meta_disable_header',
+				'type'     => 'checkbox',
+				'settings' => [
+					'default'     => 'off',
+					'input_label' => __( 'Disable Header', 'neve' ),
+				],
+				'priority' => 10,
+			],
+			[
+				'id'       => 'neve_meta_disable_footer',
+				'type'     => 'checkbox',
+				'settings' => [
+					'default'     => 'off',
+					'input_label' => __( 'Disable Footer', 'neve' ),
+				],
+				'priority' => 20,
+			],
+			[
+				'id'       => 'neve_meta_disable_featured_image',
+				'type'     => 'checkbox',
+				'settings' => [
+					'default'     => 'off',
+					'input_label' => __( 'Disable Featured Image', 'neve' ),
+				],
+				'priority' => 30,
+			],
+			[
+				'id'       => 'neve_meta_comments',
+				'type'     => 'checkbox',
+				'settings' => [
+					'default'     => 'on',
+					'input_label' => __( 'Comments', 'neve' ),
+				],
+				'priority' => 40,
+			],
+			[
+				'id'       => 'neve_meta_tags',
+				'type'     => 'checkbox',
+				'settings' => [
+					'default'     => 'on',
+					'input_label' => __( 'Tags', 'neve' ),
+				],
+				'priority' => 50,
+			],
+			[
+				'id'       => 'neve_meta_social_icons',
+				'type'     => 'checkbox',
+				'settings' => [
+					'default'     => 'on',
+					'input_label' => __( 'Social Icons', 'neve' ),
+				],
+				'priority' => 60,
+			],
+		];
+
 		$controls = json_decode( wp_json_encode( $controls ) );
 		foreach ( $controls as $control ) {
 			$this->add_control( $control );

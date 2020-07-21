@@ -2,6 +2,8 @@ const { Button, ButtonGroup } = wp.components;
 const {compose} = wp.compose;
 const {withDispatch, withSelect} = wp.data;
 
+import { alignCenterIcon, alignLeftIcon, alignRightIcon } from '../../helpers/icons.js';
+
 export const ButtonChoices = compose(
 	withDispatch((dispatch, props) => {
 		return {
@@ -25,18 +27,38 @@ export const ButtonChoices = compose(
 			return controlChoices;
 		};
 
+		const getIcon = function (value) {
+			let icon;
+			switch (value) {
+				case 'left':
+					icon = alignLeftIcon;
+					break;
+				case 'right':
+					icon = alignRightIcon;
+					break;
+				case 'center':
+					icon = alignCenterIcon;
+					break;
+				default:
+					icon = false;
+			}
+			return icon;
+		};
+
 		const options = getOptions(props);
 		const { label } = props.data;
+		const hasIcons = props.data['has_icons'];
 		const { id, metaValue } = props;
-
 		return (
 			<div className="neve-meta-control neve-meta-button-group">
 				{label && <p className="post-attributes-label-wrapper"><span className="post-attributes-label">{label}</span></p>}
 				<ButtonGroup>
 					{
 						Object.keys(options).map((choice) => {
+							let icon = getIcon(options[choice].value);
 							return (
 								<Button
+									icon={icon}
 									key={options[choice].value}
 									isPrimary={ metaValue === options[choice].value }
 									isSecondary={ metaValue !== options[choice].value }
@@ -44,7 +66,7 @@ export const ButtonChoices = compose(
 										props.setMetaValue( options[choice].value );
 										props.stateUpdate( id, options[choice].value );
 									} }
-								> {options[choice].label} </Button>
+								> { ! hasIcons ? options[choice].label : '' } </Button>
 							);
 						})
 					}
