@@ -39,6 +39,10 @@ const Onboarding = ({ editor, category, resetCategory, previewOpen, currentSiteD
   };
 
   const EDITOR_MAP = {
+    'gutenberg': {
+      icon: 'gutenberg.jpg',
+      niceName: 'Gutenberg'
+    },
     'elementor': {
       icon: 'elementor.jpg',
       niceName: 'Elementor'
@@ -46,10 +50,6 @@ const Onboarding = ({ editor, category, resetCategory, previewOpen, currentSiteD
     'beaver builder': {
       icon: 'beaver.jpg',
       niceName: ( <>Beaver <span className="long-name">Builder</span></>)
-    },
-    'gutenberg': {
-      icon: 'gutenberg.jpg',
-      niceName: 'Gutenberg'
     },
     'brizy': {
       icon: 'brizy.jpg',
