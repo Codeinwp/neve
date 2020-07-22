@@ -13,7 +13,7 @@ const StarterSitesUnavailable = () => {
   const installPlugin = () => {
     setInstalling(true);
     wp.updates.ajax('install-plugin', {
-      slug: 'themeisle-companion',
+      slug: 'templates-patterns-collection',
       success: r => {
         activatePlugin();
       },
@@ -28,7 +28,7 @@ const StarterSitesUnavailable = () => {
   };
 
   const activatePlugin = () => {
-    const activationURL = plugins['themeisle-companion'].activate;
+    const activationURL = plugins['templates-patterns-collection'].activate;
 
     get(activationURL, true).then(r => {
       if (r.ok) {
@@ -36,13 +36,13 @@ const StarterSitesUnavailable = () => {
       }
     });
   };
-  const companionActive = 'deactivate' === plugins['themeisle-companion'].cta;
+  const companionActive = 'deactivate' === plugins['templates-patterns-collection'].cta;
 
   const renderNoticeContent = () => {
     if (! companionActive) {
       return (
         <>
-          <h1>{__('In order to be able to import any starter sites for Neve you would need to have OrbitFox companion active.')}</h1>
+          <h1>{__('In order to be able to import any starter sites for Neve you would need to have the Templates Patterns Collection plugin active.')}</h1>
           <br/>
           <Button disabled={installing} isPrimary={! installing} isSecondary={installing}
                   onClick={installPlugin}>{installing ? __('Installing and activating') + '...' : __('Install and Activate')}</Button>
@@ -53,20 +53,20 @@ const StarterSitesUnavailable = () => {
     if (! hasNeededCompanionVersion) {
       return (
         <>
-          <h1>{__('In order to be able to import any starter sites for Neve you would need to have OrbitFox companion updated to the latest version.')}</h1>
+          <h1>{__('In order to be able to import any starter sites for Neve you would need to have the Templates Patterns Collection plugin updated to the latest version.')}</h1>
           <br/>
           <Button href={pluginsPageUrl} isPrimary>{__('Go to plugins page')}</Button>
         </>
       );
     }
 
-	return (
-	  <>
-		<h1>{__('It seems something went wrong. Please make sure that you have OrbitFox companion activated and updated to the latest version.')}</h1>
-		<br/>
-		<Button href={pluginsPageUrl} isPrimary>{__('Go to plugins page')}</Button>
-	  </>
-	);
+    return (
+      <>
+        <h1>{__('It seems something went wrong. Please make sure that you have the Templates Patterns Collection plugin activated and updated to the latest version.')}</h1>
+        <br/>
+        <Button href={pluginsPageUrl} isPrimary>{__('Go to plugins page')}</Button>
+      </>
+    );
   };
 
   return (

@@ -39,6 +39,7 @@ class Main {
 	 */
 	private $useful_plugins = [
 		'optimole-wp',
+		'templates-patterns-collection',
 		'themeisle-companion',
 		'feedzy-rss-feeds',
 		'otter-blocks',
@@ -219,12 +220,20 @@ class Main {
 			'hasFileSystem'       => WP_Filesystem(),
 			'pluginsPageUrl'      => esc_url( admin_url( 'plugins.php' ) ),
 		];
-		$companion_state   = $this->plugin_helper->get_plugin_state( 'themeisle-companion' );
+
+		// Account for people that don't have the latest companion but have OrbitFox.
+		$companion_state = $this->plugin_helper->get_plugin_state( 'themeisle-companion' );
 		if ( $companion_state === 'deactivate' ) {
 			$companion = get_plugin_data( WP_PLUGIN_DIR . '/themeisle-companion/themeisle-companion.php' );
 			if ( isset( $companion['Version'] ) ) {
 				$data['hasNeededCompanionVersion'] = version_compare( $companion['Version'], '2.9.10', '>' );
 			}
+		}
+
+		// Check if the companion is installed.
+		$templates_patterns_state = $this->plugin_helper->get_plugin_state( 'templates-patterns-collection' );
+		if ( $templates_patterns_state === 'deactivate' ) {
+			$data['hasNeededCompanionVersion'] = true;
 		}
 
 		if ( defined( 'NEVE_PRO_PATH' ) ) {
@@ -424,7 +433,6 @@ class Main {
 				$available[ $slug ]['path']       = $this->plugin_helper->get_plugin_path( $slug );
 				$available[ $slug ]['activate']   = $this->plugin_helper->get_plugin_action_link( $slug );
 				$available[ $slug ]['deactivate'] = $this->plugin_helper->get_plugin_action_link( $slug, 'deactivate' );
-
 			}
 
 			return $available;
