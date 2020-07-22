@@ -60,13 +60,13 @@ const StarterSitesUnavailable = () => {
       );
     }
 
-	return (
-	  <>
-		<h1>{__('It seems something went wrong. Please make sure that you have OrbitFox companion activated and updated to the latest version.')}</h1>
-		<br/>
-		<Button href={pluginsPageUrl} isPrimary>{__('Go to plugins page')}</Button>
-	  </>
-	);
+    return (
+      <>
+        <h1>{__('It seems something went wrong. Please make sure that you have OrbitFox companion activated and updated to the latest version.')}</h1>
+        <br/>
+        <Button href={pluginsPageUrl} isPrimary>{__('Go to plugins page')}</Button>
+      </>
+    );
   };
 
   return (
