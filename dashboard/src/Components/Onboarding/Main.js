@@ -45,7 +45,7 @@ const Onboarding = ({ editor, category, resetCategory, previewOpen, currentSiteD
     },
     'beaver builder': {
       icon: 'beaver.jpg',
-      niceName: 'Beaver Builder'
+      niceName: ( <>Beaver <span className="long-name">Builder</span></>)
     },
     'gutenberg': {
       icon: 'gutenberg.jpg',
@@ -61,7 +61,7 @@ const Onboarding = ({ editor, category, resetCategory, previewOpen, currentSiteD
     },
     'thrive architect': {
       icon: 'thrive.jpg',
-      niceName: 'Thrive Architect'
+      niceName: (<>Thrive <span className="long-name">Architect</span></>)
     }
   };
 
