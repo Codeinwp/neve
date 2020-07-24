@@ -28,8 +28,6 @@ const Onboarding = ({ editor, category, resetCategory, previewOpen, currentSiteD
     </>;
   }
 
-  console.log(sites);
-
   const tags = [
     __('Business', 'neve'),
     __('Ecommerce', 'neve'),
