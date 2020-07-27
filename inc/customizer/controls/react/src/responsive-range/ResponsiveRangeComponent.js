@@ -3,7 +3,7 @@
 
 import PropTypes from 'prop-types'
 import ResponsiveControl from '../common/Responsive'
-import { maybeParseJson } from '../common/common'
+import { maybeParseJson, getIntValAsResponsive } from '../common/common'
 import classnames from 'classnames'
 
 const { __ } = wp.i18n
@@ -146,13 +146,20 @@ class ResponsiveRangeComponent extends Component {
 
   componentDidMount() {
     const { control } = this.props
+    // If a value is int, make it responsive.
+    const value = getIntValAsResponsive(control.setting.get())
+    if ( this.state.value !== value ) {
+      this.setState({ value: value })
+    }
 
     document.addEventListener('neve-changed-customizer-value', (e) => {
       if (!e.detail) return false
       if (e.detail.id !== control.id) return false
+      // Make sure we translate int values to responsive values.
+      const incomingValue = getIntValAsResponsive(e.detail.value)
 
-      this.setState({ value: maybeParseJson(e.detail.value) })
-      this.props.control.setting.set(JSON.stringify(e.detail.value))
+      this.setState({ value: incomingValue })
+      this.props.control.setting.set(JSON.stringify(incomingValue))
     })
   }
 }

@@ -489,9 +489,13 @@ abstract class Abstract_Component implements Component {
 					'tab'                   => SettingsManager::TAB_LAYOUT,
 					'transport'             => $this->is_auto_width ? 'post' . $this->get_builder_id() : 'postMessage',
 					'sanitize_callback'     => 'wp_filter_nohtml_kses',
-					'default'               => $this->default_align,
+					'default'               => [
+						'desktop' => $this->default_align,
+						'tablet'  => $this->default_align,
+						'mobile'  => $this->default_align,
+					],
 					'label'                 => __( 'Alignment', 'neve' ),
-					'type'                  => '\Neve\Customizer\Controls\React\Radio_Buttons',
+					'type'                  => '\Neve\Customizer\Controls\React\Responsive_Radio_Buttons',
 					'live_refresh_selector' => $this->is_auto_width ? null : $margin_selector,
 					'live_refresh_css_prop' => [
 						'is_for' => 'horizontal',
@@ -887,6 +891,31 @@ abstract class Abstract_Component implements Component {
 				],
 				'section'               => $this->section,
 			]
+		);
+	}
+
+	/**
+	 * Get the item height default.
+	 *
+	 * @return string
+	 */
+	protected function get_default_for_responsive_from_intval( $old_val_const, $default_int_val ) {
+		$old = get_theme_mod( $this->get_id() . '_' . $old_val_const );
+		if ( $old === false ) {
+			return wp_json_encode(
+				[
+					'mobile'  => $default_int_val,
+					'tablet'  => $default_int_val,
+					'desktop' => $default_int_val,
+				] 
+			);
+		}
+		return wp_json_encode(
+			[
+				'mobile'  => $old,
+				'tablet'  => $old,
+				'desktop' => $old,
+			] 
 		);
 	}
 }
