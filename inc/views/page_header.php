@@ -68,6 +68,11 @@ class Page_Header extends Base_View {
 			$title_args['wrap-class'] = 'nv-big-title';
 		}
 
+		if ( $context === 'single-page' ) {
+			$alignment           = apply_filters( 'neve_post_title_alignment', '' );
+			$title_args['class'] = $alignment;
+		}
+
 		if ( $context === 'search' ) {
 			/* translators: search result */
 			$title_args['string']     = sprintf( esc_html__( 'Search Results for: %s', 'neve' ), get_search_query() );

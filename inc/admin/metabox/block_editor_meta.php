@@ -102,15 +102,15 @@ class Block_Editor_Meta extends Controls_Base {
 				'settings'  => [
 					'default'  => wp_json_encode(
 						[
-							'title'          => true,
-							'meta'           => true,
-							'featured_image' => true,
+							'title'     => true,
+							'meta'      => true,
+							'thumbnail' => true,
 						]
 					),
 					'elements' => [
-						'title'          => __( 'Page Title', 'neve' ),
-						'meta'           => __( 'Page Meta', 'neve' ),
-						'featured_image' => __( 'Featured Image', 'neve' ),
+						'title'     => __( 'Page Title', 'neve' ),
+						'meta'      => __( 'Page Meta', 'neve' ),
+						'thumbnail' => __( 'Featured Image', 'neve' ),
 					],
 				],
 				'priority'  => 10,
@@ -140,18 +140,8 @@ class Block_Editor_Meta extends Controls_Base {
 				],
 				'priority'  => 20,
 			],
-			[
-				'id'        => 'neve_meta_reading_time',
-				'post_type' => 'post',
-				'type'      => 'checkbox',
-				'settings'  => [
-					'default'     => 'on',
-					'input_label' => __( 'Reading Time', 'neve' ),
-				],
-				'priority'  => 20,
-			],
 		];
-
+		$controls = apply_filters( 'neve_filter_meta_title_controls', $controls );
 		$controls = json_decode( wp_json_encode( $controls ) );
 		foreach ( $controls as $control ) {
 			$this->add_control( $control );
@@ -189,37 +179,30 @@ class Block_Editor_Meta extends Controls_Base {
 					'default'     => 'off',
 					'input_label' => __( 'Disable Title', 'neve' ),
 				],
-				'priority'  => 20,
+				'priority'  => 30,
 			],
 			[
-				'id'       => 'neve_meta_comments',
-				'type'     => 'checkbox',
-				'settings' => [
+				'id'        => 'neve_meta_disable_comments',
+				'post_type' => 'post',
+				'type'      => 'checkbox',
+				'settings'  => [
 					'default'     => 'on',
-					'input_label' => __( 'Comments', 'neve' ),
+					'input_label' => __( 'Disable Comments', 'neve' ),
 				],
-				'priority' => 40,
+				'priority'  => 40,
 			],
 			[
-				'id'       => 'neve_meta_tags',
-				'type'     => 'checkbox',
-				'settings' => [
+				'id'        => 'neve_meta_disable_tags',
+				'post_type' => 'post',
+				'type'      => 'checkbox',
+				'settings'  => [
 					'default'     => 'on',
-					'input_label' => __( 'Tags', 'neve' ),
+					'input_label' => __( 'Disable Tags', 'neve' ),
 				],
-				'priority' => 50,
-			],
-			[
-				'id'       => 'neve_meta_social_icons',
-				'type'     => 'checkbox',
-				'settings' => [
-					'default'     => 'on',
-					'input_label' => __( 'Social Icons', 'neve' ),
-				],
-				'priority' => 60,
+				'priority'  => 50,
 			],
 		];
-
+		$controls = apply_filters( 'neve_filter_meta_elements_controls', $controls );
 		$controls = json_decode( wp_json_encode( $controls ) );
 		foreach ( $controls as $control ) {
 			$this->add_control( $control );

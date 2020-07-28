@@ -21,11 +21,11 @@ class MetaFieldsManager extends Component {
 			},
 			{
 				'title': __( 'Page Title', 'neve' ),
-				'controls': [ 'neve_meta_header_elements_order', 'neve_meta_title_alignment', 'neve_meta_author_avatar', 'neve_meta_reading_time' ]
+				'controls': [ 'neve_meta_header_elements_order', 'neve_meta_title_alignment', 'neve_meta_author_avatar' ]
 			},
 			{
 				'title': __( 'Elements', 'neve' ),
-				'controls': [ 'neve_meta_disable_header', 'neve_meta_disable_footer', 'neve_meta_disable_title', 'neve_meta_comments', 'neve_meta_tags', 'neve_meta_social_icons' ]
+				'controls': [ 'neve_meta_disable_header', 'neve_meta_disable_footer', 'neve_meta_disable_title', 'neve_meta_disable_comments', 'neve_meta_disable_tags' ]
 			}
 		];
 		this.updateValues = this.updateValues.bind( this );
@@ -117,6 +117,8 @@ class MetaFieldsManager extends Component {
 											this.updateValues( control, null );
 										});
 									} }
+									label={ __( 'Return to customizer settings', 'neve' ) }
+									showTooltip={ true }
 								/>
 								<PanelBody
 									title={title}

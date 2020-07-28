@@ -29,6 +29,8 @@ class Metabox_Settings {
 		'title'          => 'neve_meta_disable_title',
 		'featured-image' => 'neve_meta_disable_featured_image',
 		'footer'         => 'neve_meta_disable_footer',
+		'comments'       => 'neve_meta_disable_comments',
+		'tags'           => 'neve_meta_disable_tags',
 	);
 
 	/**
@@ -43,6 +45,10 @@ class Metabox_Settings {
 		add_filter( 'neve_filter_toggle_content_parts', array( $this, 'filter_components_toggle' ), 100, 2 );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'editor_content_width' ), 100 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'content_width' ), 999 );
+
+		add_filter( 'neve_layout_single_post_elements_order', array( $this, 'filter_post_elements' ) );
+		add_filter( 'neve_post_title_alignment', array( $this, 'filter_title_alignment' ) );
+		add_filter( 'neve_display_author_avatar', array( $this, 'filter_author_avatar_display' ) );
 	}
 
 	/**
@@ -290,6 +296,94 @@ class Metabox_Settings {
 		}
 
 		return true;
+	}
+
+
+	/**
+	 * Post elements order for title components.
+	 *
+	 * @param array $elements_order Elements order before this filter.
+	 *
+	 * @return array
+	 */
+	public function filter_post_elements( $elements_order ) {
+		$post_id = $this->get_post_id();
+
+		if ( $post_id === false ) {
+			return $elements_order;
+		}
+
+		$meta_elements_order = get_post_meta( $post_id, 'neve_meta_header_elements_order', true );
+		if ( empty( $meta_elements_order ) ) {
+			return $elements_order;
+		}
+
+		/**
+		 * Remove title meta and thumbnail from the initial order
+		 */
+		$elements_to_remove = array( 'title-meta', 'thumbnail' );
+		foreach ( $elements_to_remove as $element ) {
+			$key = array_search( $element, $elements_order );
+			if ( $key !== false ) {
+				unset( $elements_order[ $key ] );
+			}
+		}
+
+		$meta_elements_order = json_decode( $meta_elements_order, true );
+		$header_order        = array();
+		foreach ( $meta_elements_order as $element => $is_visible ) {
+			if ( $is_visible ) {
+				$header_order[] = $element;
+			}
+		}
+		$elements_order = array_merge( $header_order, $elements_order );
+
+		return $elements_order;
+	}
+
+
+	/**
+	 * Filter title alignment.
+	 *
+	 * @param string $alignment Title alignment.
+	 *
+	 * @return mixed
+	 */
+	public function filter_title_alignment( $alignment ) {
+		$post_id = $this->get_post_id();
+
+		if ( $post_id === false ) {
+			return $alignment;
+		}
+
+		$title_meta_alignment = get_post_meta( $post_id, 'neve_meta_title_alignment', true );
+		if ( ! empty( $title_meta_alignment ) ) {
+			return 'nv-text-align-' . $title_meta_alignment;
+		}
+		return $alignment;
+	}
+
+	/**
+	 * Filter the display of author avatar
+	 *
+	 * @param bool $show_avatar Display avatar flag.
+	 *
+	 * @return bool
+	 */
+	public function filter_author_avatar_display( $show_avatar ) {
+
+		$post_id = $this->get_post_id();
+
+		if ( $post_id === false ) {
+			return $show_avatar;
+		}
+		$show_author_avatar = get_post_meta( $post_id, 'neve_meta_author_avatar', true );
+
+		if ( ! empty( $show_author_avatar ) ) {
+			return $show_author_avatar === 'on';
+		}
+
+		return $show_avatar;
 	}
 
 	/**

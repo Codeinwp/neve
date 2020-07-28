@@ -24,6 +24,13 @@ final class Manager {
 	private $controls = array();
 
 	/**
+	 * Controls for meta sidebar in Block Editor.
+	 *
+	 * @var array
+	 */
+	private $meta_sidebar_controls = array();
+
+	/**
 	 * Control classes to get controls from.
 	 *
 	 * @var array
@@ -61,12 +68,18 @@ final class Manager {
 
 	/**
 	 * Instantiate the controls and actually load them into the control manager.
+	 *
+	 * @param bool  $is_sidebar Gutenberg sidebar flag.
+	 * @param array $control_classes Controls classes.
 	 */
-	public function load_controls() {
-		if ( empty( $this->control_classes ) ) {
+	public function load_controls( $is_sidebar = false, $control_classes = array() ) {
+		if ( empty( $control_classes ) ) {
+			$control_classes = $this->control_classes;
+		}
+		if ( empty( $control_classes ) ) {
 			return;
 		}
-		foreach ( $this->control_classes as $control_manager ) {
+		foreach ( $control_classes as $control_manager ) {
 			$control_instance = new $control_manager();
 			if ( ! $control_instance instanceof Controls_Base ) {
 				continue;
@@ -74,7 +87,11 @@ final class Manager {
 
 			$control_instance->init();
 
-			$this->controls = array_merge( $this->controls, $control_instance->get_controls() );
+			if ( $is_sidebar ) {
+				$this->meta_sidebar_controls = array_merge( $this->meta_sidebar_controls, $control_instance->get_controls() );
+			} else {
+				$this->controls = array_merge( $this->controls, $control_instance->get_controls() );
+			}       
 		}
 		$this->order_by_priority();
 	}
@@ -86,7 +103,9 @@ final class Manager {
 		global $post;
 
 		foreach ( $this->controls as $control ) {
-			$control->render( $post->ID );
+			if ( method_exists( $control, 'render' ) ) {
+				$control->render( $post->ID );
+			}
 		}
 	}
 
@@ -97,7 +116,9 @@ final class Manager {
 	 */
 	public function save( $post_id ) {
 		foreach ( $this->controls as $control ) {
-			$control->save( $post_id );
+			if ( method_exists( $control, 'save' ) ) {
+				$control->save( $post_id );
+			}
 		}
 	}
 
@@ -205,6 +226,11 @@ final class Manager {
 	 */
 	public function register_meta_sidebar() {
 
+		$control_classes = array(
+			'Neve\\Admin\\Metabox\\Block_Editor_Meta',
+		);
+		$this->load_controls( true, $control_classes );
+
 		wp_register_script(
 			'neve-meta-sidebar',
 			trailingslashit( get_template_directory_uri() ) . 'inc/admin/metabox/build/index.js',
@@ -217,7 +243,7 @@ final class Manager {
 	 * Register meta
 	 */
 	public function neve_register_meta() {
-		foreach ( $this->controls as $control ) {
+		foreach ( $this->meta_sidebar_controls as $control ) {
 			$options = get_object_vars( $control );
 			$type    = 'string';
 			if ( $options['type'] === 'range' ) {
@@ -248,12 +274,6 @@ final class Manager {
 	 * Register the metabox sidebar.
 	 */
 	public function meta_sidebar_script_enqueue() {
-		$this->controls        = array();
-		$this->control_classes = array(
-			'Neve\\Admin\\Metabox\\Block_Editor_Meta',
-		);
-		$this->load_controls();
-
 		wp_enqueue_script( 'neve-meta-sidebar' );
 
 		global $post_type;
@@ -265,7 +285,7 @@ final class Manager {
 			'neve-meta-sidebar',
 			'metaSidebar',
 			array(
-				'controls' => $this->controls,
+				'controls' => $this->meta_sidebar_controls,
 				'actions'  => array(
 					'neve_meta_content_width' => array(
 						'container' => $container,

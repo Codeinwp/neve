@@ -64,9 +64,25 @@ class Post_Layout extends Base_View {
 			}
 		}
 
+		if ( apply_filters( 'neve_filter_toggle_content_parts', true, 'comments' ) !== true ) {
+			$comments_index = array_search( 'comments', $content_order, true );
+			if ( $comments_index !== false ) {
+				unset( $content_order[ $comments_index ] );
+			}
+		}
+
+		if ( apply_filters( 'neve_filter_toggle_content_parts', true, 'tags' ) !== true ) {
+			$tags_index = array_search( 'tags', $content_order, true );
+			if ( $tags_index !== false ) {
+				unset( $content_order[ $tags_index ] );
+			}
+		}
+
 		if ( empty( $content_order ) ) {
 			return;
 		}
+
+		$content_order = apply_filters( 'neve_layout_single_post_elements_order', $content_order );
 
 		foreach ( $content_order as $item ) {
 			switch ( $item ) {
@@ -96,7 +112,8 @@ class Post_Layout extends Base_View {
 					do_action( 'neve_do_tags' );
 					break;
 				case 'title':
-					echo '<h1 class="title entry-title">' . wp_kses_post( get_the_title() ) . '</h1>';
+					$alignment = apply_filters( 'neve_post_title_alignment', '' );
+					echo '<h1 class="title entry-title ' . esc_attr( $alignment ) . '">' . wp_kses_post( get_the_title() ) . '</h1>';
 					break;
 				case 'meta':
 					self::render_post_meta();
@@ -147,7 +164,8 @@ class Post_Layout extends Base_View {
 		echo '<div class="entry-header">';
 		echo '<div class="nv-title-meta-wrap">';
 		do_action( 'neve_before_post_title' );
-		echo '<h1 class="title entry-title">' . wp_kses_post( get_the_title() ) . '</h1>';
+		$alignment = apply_filters( 'neve_post_title_alignment', '' );
+		echo '<h1 class="title entry-title ' . esc_attr( $alignment ) . '">' . wp_kses_post( get_the_title() ) . '</h1>';
 		self::render_post_meta();
 		echo '</div>';
 		echo '</div>';
