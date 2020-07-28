@@ -146,3 +146,16 @@
 	  margin-bottom: 20px;
 	}
 }
+
+.nv-option-category{
+  position: relative;
+  > button {
+	position: absolute;
+	right: 46px;
+	top: 8px;
+	z-index: 2;
+	svg{
+	  width: 13.5px
+	}
+  }
+}

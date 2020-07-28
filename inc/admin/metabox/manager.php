@@ -55,11 +55,6 @@ final class Manager {
 		$this->control_classes = array(
 			'Neve\\Admin\\Metabox\\Main',
 		);
-		if ( $this->is_gutenberg_active() ) {
-			$this->control_classes = array(
-				'Neve\\Admin\\Metabox\\Block_Editor_Meta',
-			);
-		}
 
 		$this->control_classes = apply_filters( 'neve_filter_metabox_controls', $this->control_classes );
 	}
@@ -101,9 +96,6 @@ final class Manager {
 	 * @param int $post_id the post id.
 	 */
 	public function save( $post_id ) {
-		if ( $this->is_gutenberg_active() ) {
-			return false;
-		}
 		foreach ( $this->controls as $control ) {
 			$control->save( $post_id );
 		}
@@ -212,6 +204,7 @@ final class Manager {
 	 * Register the metabox sidebar in Gutenberg editor
 	 */
 	public function register_meta_sidebar() {
+
 		wp_register_script(
 			'neve-meta-sidebar',
 			trailingslashit( get_template_directory_uri() ) . 'inc/admin/metabox/build/index.js',
@@ -255,6 +248,12 @@ final class Manager {
 	 * Register the metabox sidebar.
 	 */
 	public function meta_sidebar_script_enqueue() {
+		$this->controls        = array();
+		$this->control_classes = array(
+			'Neve\\Admin\\Metabox\\Block_Editor_Meta',
+		);
+		$this->load_controls();
+
 		wp_enqueue_script( 'neve-meta-sidebar' );
 
 		global $post_type;
@@ -283,40 +282,4 @@ final class Manager {
 		);
 
 	}
-
-	/**
-	 * Check if Gutenberg is active.
-	 * Must be used not earlier than plugins_loaded action fired.
-	 *
-	 * @return bool
-	 */
-	private function is_gutenberg_active() {
-		$gutenberg    = false;
-		$block_editor = false;
-
-		if ( has_filter( 'replace_editor', 'gutenberg_init' ) ) {
-			// Gutenberg is installed and activated.
-			$gutenberg = true;
-		}
-
-		if ( version_compare( $GLOBALS['wp_version'], '5.0-beta', '>' ) ) {
-			// Block editor.
-			$block_editor = true;
-		}
-
-		if ( ! $gutenberg && ! $block_editor ) {
-			return false;
-		}
-
-		include_once ABSPATH . 'wp-admin/includes/plugin.php';
-
-		if ( ! is_plugin_active( 'classic-editor/classic-editor.php' ) ) {
-			return true;
-		}
-
-		$use_block_editor = ( get_option( 'classic-editor-replace' ) === 'no-replace' );
-
-		return $use_block_editor;
-	}
-
 }

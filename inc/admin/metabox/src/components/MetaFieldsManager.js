@@ -6,7 +6,7 @@ import { ButtonChoices } from './controls/ButtonChoices';
 import SortableItems from './controls/SortableItems';
 
 const { Component } = wp.element;
-const { PanelBody } = wp.components;
+const { PanelBody, Button } = wp.components;
 const { __ } = wp.i18n;
 
 class MetaFieldsManager extends Component {
@@ -106,24 +106,36 @@ class MetaFieldsManager extends Component {
 					this.componentsGroup.map( ( group, index ) => {
 						const { title, controls } = group;
 						return (
-							<PanelBody
-								key={index}
-								title={title}
-								intialOpen={ true }
-							>
-								{
-									controls.map( (control, index) => {
-										let controlData = metaSidebar.controls.find(obj => obj.id === control);
-										const currentPostType = wp.data.select('core/editor').getCurrentPostType();
-										if ( controlData.hasOwnProperty('post_type') && currentPostType !== controlData['post_type'] ) {
-											return false;
-										}
-										return (
-											this.renderControl( controlData, index )
-										);
-									})
-								}
-							</PanelBody>
+							<div key={index} className="nv-option-category">
+								<Button
+									icon="image-rotate"
+									className="nv-reset-meta"
+									onClick={ () => {
+										controls.map( (control, index) => {
+											const { editPost } = wp.data.dispatch( 'core/editor' );
+											editPost({meta: {[control]: null}});
+											this.updateValues( control, null );
+										});
+									} }
+								/>
+								<PanelBody
+									title={title}
+									intialOpen={ true }
+								>
+									{
+										controls.map( (control, index) => {
+											let controlData = metaSidebar.controls.find(obj => obj.id === control);
+											const currentPostType = wp.data.select('core/editor').getCurrentPostType();
+											if ( controlData.hasOwnProperty('post_type') && currentPostType !== controlData['post_type'] ) {
+												return false;
+											}
+											return (
+												this.renderControl( controlData, index )
+											);
+										})
+									}
+								</PanelBody>
+							</div>
 						);
 					})
 				}
