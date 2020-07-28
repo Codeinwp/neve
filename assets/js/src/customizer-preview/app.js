@@ -2,6 +2,24 @@
 /* jshint esversion: 6 */
 import {removeClass, addClass} from '../utils.js'
 
+function handleResponsiveRadioButtons( args, nextValue ) {
+  if( ! args.additional ) return false;
+
+  const items = document.querySelectorAll(args.selector)
+
+  let classesToAdd = []
+
+  Object.keys(nextValue).map( device => {
+	classesToAdd.push(`${device}-align-${nextValue[device]}`);
+  } );
+
+  _.each(items, function (item) {
+	item.parentNode.classList.remove(...args.additional['remove_classes'])
+	item.parentNode.classList.add(...classesToAdd)
+  })
+}
+
+
 function addCss(id, content = '') {
   let style = document.querySelector('#' + id + '-css-style')
   if (!style) {
@@ -181,15 +199,14 @@ window.addEventListener('load', function () {
               style += args.selector + '{ background-color: transparent !important; }'
               addCss(settingId, style)
               break
-            case '\\Neve\\Customizer\\Controls\\React\\Radio_Buttons':
-              if( ! args.additional ) return false;
+			case '\\Neve\\Customizer\\Controls\\React\\Responsive_Radio_Buttons':
+			  handleResponsiveRadioButtons( args, newValue );
+			  break;
+			case '\\Neve\\Customizer\\Controls\\React\\Radio_Buttons':
+              if( ! args.additional) return false
 
-              const classes = args.additional.is_for === 'horizontal' ?
-				'hfg-item-center hfg-item-right hfg-item-left hfg-item-justify' :
-				'hfg-item-v-top hfg-item-v-middle hfg-item-v-bottom'
-              const newClass = args.additional.is_for === 'horizontal' ?
-				'hfg-item-' + newValue:
-				'hfg-item-v-' + newValue;
+			  const classes = 'hfg-item-v-top hfg-item-v-middle hfg-item-v-bottom'
+			  const newClass = 'hfg-item-v-' + newValue
 
               let itemInner = document.querySelectorAll(args.selector)
               _.each(itemInner, function (item) {

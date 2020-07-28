@@ -669,11 +669,11 @@ blockquote.wp-block-quote.is-style-large cite {
   background-color: #fff;
 }
 
-.hfg-item-left .primary-menu-ul > li:not(:last-child), .hfg-item-center .primary-menu-ul > li:not(:last-child) {
+.primary-menu-ul > li:not(:last-child) {
   margin-right: 20px;
 }
 
-.hfg-item-right .primary-menu-ul > li:not(:first-child) {
+.primary-menu-ul > li:not(:first-child) {
   margin-left: 20px;
 }
 
@@ -692,6 +692,7 @@ blockquote.wp-block-quote.is-style-large cite {
   cursor: pointer;
   display: block;
   position: relative;
+  padding: 10px 0;
 }
 
 .primary-menu-ul li:hover > a, .primary-menu-ul li:focus > a {
@@ -700,13 +701,12 @@ blockquote.wp-block-quote.is-style-large cite {
 }
 
 .primary-menu-ul li a {
-  padding: 10px 0;
+  box-sizing: border-box;
   color: #404248;
   width: 100%;
   display: flex;
   position: relative;
   align-items: center;
-  justify-content: center;
   height: 100%;
 }
 
@@ -759,9 +759,10 @@ blockquote.wp-block-quote.is-style-large cite {
   border-top: none;
   min-width: 150px;
   cursor: default;
+  padding: 0;
 }
 
-.primary-menu-ul .sub-menu li a {
+.primary-menu-ul .sub-menu li > a {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -808,23 +809,6 @@ blockquote.wp-block-quote.is-style-large cite {
   display: flex;
 }
 
-/*.primary-menu-ul {
-  .sub-menu {
-	max-height: 0;
-	overflow: hidden;
-	padding-left: 20px;
-	transition: $transition_med;
-	border-left: $muted-border;
-  }
-
-  .caret-wrap.dropdown-open + .sub-menu,
-  .dropdown-open.sub-menu {
-	max-height: 2000px;
-	transition: $transition_med;
-	opacity: 1;
-	visibility: visible;
-  }
-}*/
 .nv-nav-wrap {
   min-height: 1px;
   display: flex;
@@ -880,24 +864,17 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
   visibility: visible;
 }
 
-.header-menu-sidebar-inner .hfg-item-center .nav-menu-primary .sub-menu {
-  padding-left: 0;
-}
-
-.header-menu-sidebar-inner .hfg-item-center .nav-menu-primary li {
+.header-menu-sidebar-inner .mobile-align-center .primary-menu-ul li a {
   padding-right: 40px;
-}
-
-.header-menu-sidebar-inner .hfg-item-center .nav-menu-primary li a {
   justify-content: center;
 }
 
-.header-menu-sidebar-inner .hfg-item-right .nav-menu-primary .sub-menu {
-  padding-left: 0;
-  padding-right: 20px;
+.header-menu-sidebar-inner .mobile-align-left .primary-menu-ul li a {
+  padding-right: 40px;
+  justify-content: flex-start;
 }
 
-.header-menu-sidebar-inner .hfg-item-right .nav-menu-primary li a {
+.header-menu-sidebar-inner .mobile-align-right .primary-menu-ul li a {
   padding-right: 40px;
   justify-content: flex-end;
 }
@@ -914,7 +891,6 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
 }
 
 .header-menu-sidebar-inner .nav-menu-primary li a {
-  justify-content: flex-start;
   width: 100%;
   padding-right: 30px;
   position: relative;
@@ -2187,6 +2163,59 @@ audio {
   color: #676767;
 }
 
+.hfg-is-group {
+  display: flex;
+  align-items: center;
+}
+
+.hfg-is-group.mobile-align-right {
+  justify-content: flex-end;
+}
+
+.mobile-align-right {
+  text-align: right;
+}
+
+.mobile-align-right #secondary-menu, .mobile-align-right .primary-menu-ul, .mobile-align-right .nv-nav-wrap, .mobile-align-right .component-wrap, .mobile-align-right .site-logo, .mobile-align-right .nv-search-icon-component, .mobile-align-right .builder-item--footer-menu {
+  justify-content: flex-end;
+}
+
+.hfg-is-group.mobile-align-left {
+  justify-content: flex-start;
+}
+
+.mobile-align-left {
+  text-align: left;
+}
+
+.mobile-align-left #secondary-menu, .mobile-align-left .primary-menu-ul, .mobile-align-left .nv-nav-wrap, .mobile-align-left .component-wrap, .mobile-align-left .site-logo, .mobile-align-left .nv-search-icon-component, .mobile-align-left .builder-item--footer-menu {
+  justify-content: flex-start;
+}
+
+.hfg-is-group.mobile-align-center {
+  justify-content: center;
+}
+
+.mobile-align-center {
+  text-align: center;
+}
+
+.mobile-align-center #secondary-menu, .mobile-align-center .primary-menu-ul, .mobile-align-center .nv-nav-wrap, .mobile-align-center .component-wrap, .mobile-align-center .site-logo, .mobile-align-center .nv-search-icon-component, .mobile-align-center .builder-item--footer-menu {
+  justify-content: center;
+}
+
+.mobile-align-justify .button {
+  flex-grow: 1;
+}
+
+.hfg-item-v-top {
+  align-self: flex-start;
+}
+
+.hfg-item-v-bottom {
+  align-self: flex-end;
+}
+
 @media (min-width: 576px) {
   .container {
     max-width: 540px;
@@ -2248,6 +2277,48 @@ audio {
   .col-sm-12 {
     flex: 0 0 100%;
     max-width: 100%;
+  }
+  .hfg-is-group.tablet-align-right {
+    justify-content: flex-end;
+  }
+  .tablet-align-right {
+    text-align: right;
+  }
+  .tablet-align-right #secondary-menu, .tablet-align-right .primary-menu-ul, .tablet-align-right .nv-nav-wrap, .tablet-align-right .component-wrap, .tablet-align-right .site-logo, .tablet-align-right .nv-search-icon-component, .tablet-align-right .builder-item--footer-menu {
+    justify-content: flex-end;
+  }
+  .hfg-is-group.tablet-align-left {
+    justify-content: flex-start;
+  }
+  .tablet-align-left {
+    text-align: left;
+  }
+  .tablet-align-left #secondary-menu, .tablet-align-left .primary-menu-ul, .tablet-align-left .nv-nav-wrap, .tablet-align-left .component-wrap, .tablet-align-left .site-logo, .tablet-align-left .nv-search-icon-component, .tablet-align-left .builder-item--footer-menu {
+    justify-content: flex-start;
+  }
+  .hfg-is-group.tablet-align-center {
+    justify-content: center;
+  }
+  .tablet-align-center {
+    text-align: center;
+  }
+  .tablet-align-center #secondary-menu, .tablet-align-center .primary-menu-ul, .tablet-align-center .nv-nav-wrap, .tablet-align-center .component-wrap, .tablet-align-center .site-logo, .tablet-align-center .nv-search-icon-component, .tablet-align-center .builder-item--footer-menu {
+    justify-content: center;
+  }
+  .tablet-align-justify .button {
+    flex-grow: 1;
+  }
+  .header-menu-sidebar-inner .tablet-align-center .primary-menu-ul li a {
+    padding-right: 40px;
+    justify-content: center;
+  }
+  .header-menu-sidebar-inner .tablet-align-left .primary-menu-ul li a {
+    padding-right: 40px;
+    justify-content: flex-start;
+  }
+  .header-menu-sidebar-inner .tablet-align-right .primary-menu-ul li a {
+    padding-right: 40px;
+    justify-content: flex-end;
   }
 }
 
@@ -2385,10 +2456,22 @@ audio {
   .nv-empty-sidebar .neve-main > .container .col {
     max-width: 100%;
   }
-  .hfg-item-left #secondary-menu li:not(:last-of-type), .hfg-item-center #secondary-menu li:not(:last-of-type) {
+  .header-menu-sidebar-inner .desktop-align-center .primary-menu-ul li a {
+    padding-right: 40px;
+    justify-content: center;
+  }
+  .header-menu-sidebar-inner .desktop-align-left .primary-menu-ul li a {
+    padding-right: 40px;
+    justify-content: flex-start;
+  }
+  .header-menu-sidebar-inner .desktop-align-right .primary-menu-ul li a {
+    padding-right: 40px;
+    justify-content: flex-end;
+  }
+  .desktop-align-left #secondary-menu li:not(:last-of-type), .desktop-align-center #secondary-menu li:not(:last-of-type) {
     margin-right: 20px;
   }
-  .hfg-item-right #secondary-menu li:not(:first-of-type) {
+  .desktop-align-right #secondary-menu li:not(:first-of-type) {
     margin-left: 20px;
   }
   .layout-default .nv-post-thumbnail-wrap, .layout-alternative .nv-post-thumbnail-wrap {
@@ -2532,6 +2615,36 @@ audio {
   .show-on-desktop {
     display: initial;
   }
+  .hfg-is-group.desktop-align-right {
+    justify-content: flex-end;
+  }
+  .desktop-align-right {
+    text-align: right;
+  }
+  .desktop-align-right #secondary-menu, .desktop-align-right .primary-menu-ul, .desktop-align-right .nv-nav-wrap, .desktop-align-right .component-wrap, .desktop-align-right .site-logo, .desktop-align-right .nv-search-icon-component, .desktop-align-right .builder-item--footer-menu {
+    justify-content: flex-end;
+  }
+  .hfg-is-group.desktop-align-left {
+    justify-content: flex-start;
+  }
+  .desktop-align-left {
+    text-align: left;
+  }
+  .desktop-align-left #secondary-menu, .desktop-align-left .primary-menu-ul, .desktop-align-left .nv-nav-wrap, .desktop-align-left .component-wrap, .desktop-align-left .site-logo, .desktop-align-left .nv-search-icon-component, .desktop-align-left .builder-item--footer-menu {
+    justify-content: flex-start;
+  }
+  .hfg-is-group.desktop-align-center {
+    justify-content: center;
+  }
+  .desktop-align-center {
+    text-align: center;
+  }
+  .desktop-align-center #secondary-menu, .desktop-align-center .primary-menu-ul, .desktop-align-center .nv-nav-wrap, .desktop-align-center .component-wrap, .desktop-align-center .site-logo, .desktop-align-center .nv-search-icon-component, .desktop-align-center .builder-item--footer-menu {
+    justify-content: center;
+  }
+  .desktop-align-justify .button {
+    flex-grow: 1;
+  }
 }
 
 @media (min-width: 1200px) {
@@ -2626,59 +2739,6 @@ audio {
   -webkit-box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.1);
   box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.hfg-is-group {
-  display: flex;
-  align-items: center;
-}
-
-.hfg-is-group.hfg-item-right {
-  justify-content: flex-end;
-}
-
-.hfg-item-right {
-  text-align: right;
-}
-
-.hfg-item-right #secondary-menu, .hfg-item-right .primary-menu-ul, .hfg-item-right .nv-nav-wrap, .hfg-item-right .component-wrap, .hfg-item-right .site-logo, .hfg-item-right .nv-search-icon-component, .hfg-item-right .builder-item--footer-menu {
-  justify-content: flex-end;
-}
-
-.hfg-is-group.hfg-item-left {
-  justify-content: flex-start;
-}
-
-.hfg-item-left {
-  text-align: left;
-}
-
-.hfg-item-left #secondary-menu, .hfg-item-left .primary-menu-ul, .hfg-item-left .nv-nav-wrap, .hfg-item-left .component-wrap, .hfg-item-left .site-logo, .hfg-item-left .nv-search-icon-component, .hfg-item-left .builder-item--footer-menu {
-  justify-content: flex-start;
-}
-
-.hfg-is-group.hfg-item-center {
-  justify-content: center;
-}
-
-.hfg-item-center {
-  text-align: center;
-}
-
-.hfg-item-center #secondary-menu, .hfg-item-center .primary-menu-ul, .hfg-item-center .nv-nav-wrap, .hfg-item-center .component-wrap, .hfg-item-center .site-logo, .hfg-item-center .nv-search-icon-component, .hfg-item-center .builder-item--footer-menu {
-  justify-content: center;
-}
-
-.hfg-item-justify .button {
-  flex-grow: 1;
-}
-
-.hfg-item-v-top {
-  align-self: flex-start;
-}
-
-.hfg-item-v-bottom {
-  align-self: flex-end;
 }
 
 .header-menu-sidebar {

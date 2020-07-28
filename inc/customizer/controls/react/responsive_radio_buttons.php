@@ -25,13 +25,13 @@ class Responsive_Radio_Buttons extends \WP_Customize_Control {
 	 *
 	 * @var array
 	 */
-	public $input_attrs = [];
+	public $choices = [];
 
 	/**
 	 * Send to JS.
 	 */
 	public function to_json() {
 		parent::to_json();
-		$this->json['input_attrs'] = $this->input_attrs;
+		$this->json['choices'] = $this->choices;
 	}
 }

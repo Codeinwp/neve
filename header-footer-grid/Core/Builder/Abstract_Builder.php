@@ -1000,6 +1000,13 @@ abstract class Abstract_Builder implements Builder {
 			$align          = SettingsManager::get_instance()->get( $component_location['id'] . '_' . Abstract_Component::ALIGNMENT_ID, null );
 			$vertical_align = SettingsManager::get_instance()->get( $component_location['id'] . '_' . Abstract_Component::VERTICAL_ALIGN_ID, null );
 
+			if ( is_string( $align ) ) {
+				$align = [
+					'desktop' => $align,
+					'tablet'  => $align,
+					'mobile'  => $align,
+				];
+			}
 
 			if ( ! $collection->hasNext() && ( $x + $width < $max_columns ) ) {
 				$width += $max_columns - ( $x + $width );
@@ -1104,7 +1111,11 @@ abstract class Abstract_Builder implements Builder {
 				$classes[] = 'hfg-item-first';
 			}
 			$classes[] = 'col-' . $width . ' col-md-' . $width . ' col-sm-' . $width;
-			$classes[] = 'hfg-item-' . $align;
+
+			foreach ( $align as $device => $align ) {
+				$classes[] = $device . '-align-' . $align;
+			}
+
 			if ( $vertical_align ) {
 				$classes[] = 'hfg-item-v-' . $vertical_align;
 			}

@@ -1,0 +1,85 @@
+.hfg-is-group {
+  display: flex;
+  align-items: center;
+}
+$component-alignments: (
+        'right' : flex-end,
+        'left' : flex-start,
+        'center': center,
+);
+
+//<editor-fold desc="Mobile Horizontal Alignments">
+@each $alignment, $flex-setting in $component-alignments {
+  .hfg-is-group.mobile-align-#{$alignment} {
+	justify-content: $flex-setting;
+  }
+  .mobile-align-#{$alignment} {
+	text-align: #{$alignment};
+
+	#secondary-menu, .primary-menu-ul, .nv-nav-wrap, .component-wrap, .site-logo, .nv-search-icon-component, .builder-item--footer-menu {
+	  justify-content: $flex-setting;
+	}
+  }
+}
+
+.mobile-align-justify .button {
+  flex-grow: 1;
+}
+//</editor-fold>
+
+//<editor-fold desc="Tablet Horizontal Alignments">
+@mixin hfg-alignments--tablet-sm() {
+  @each $alignment, $flex-setting in $component-alignments {
+	//mobile-align-right desktop-align-left tablet-align-left
+	.hfg-is-group.tablet-align-#{$alignment} {
+	  justify-content: $flex-setting;
+	}
+	.tablet-align-#{$alignment} {
+	  text-align: #{$alignment};
+
+	  #secondary-menu, .primary-menu-ul, .nv-nav-wrap, .component-wrap, .site-logo, .nv-search-icon-component, .builder-item--footer-menu {
+		justify-content: $flex-setting;
+	  }
+	}
+  }
+
+  .tablet-align-justify .button {
+	flex-grow: 1;
+  }
+}
+//</editor-fold>
+
+//<editor-fold desc="Laptop Horizontal Alignments">
+@mixin hfg-alignments--laptop() {
+  @each $alignment, $flex-setting in $component-alignments {
+	//mobile-align-right desktop-align-left tablet-align-left
+	.hfg-is-group.desktop-align-#{$alignment} {
+	  justify-content: $flex-setting;
+	}
+	.desktop-align-#{$alignment} {
+	  text-align: #{$alignment};
+
+	  #secondary-menu, .primary-menu-ul, .nv-nav-wrap, .component-wrap, .site-logo, .nv-search-icon-component, .builder-item--footer-menu {
+		justify-content: $flex-setting;
+	  }
+	}
+  }
+
+  .desktop-align-justify .button {
+	flex-grow: 1;
+  }
+}
+//</editor-fold>
+
+//<editor-fold desc="Vertical Alignments">
+$component-v-alignments: (
+		'top' : flex-start,
+		'bottom': flex-end,
+);
+
+@each $alignment, $align-self in $component-v-alignments  {
+  .hfg-item-v-#{$alignment} {
+	align-self: $align-self;
+  }
+}
+//</editor-fold>

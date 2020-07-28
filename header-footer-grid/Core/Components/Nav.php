@@ -258,10 +258,10 @@ class Nav extends Abstract_Component {
 				'id'                 => self::ITEM_HEIGHT,
 				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
 				'tab'                => SettingsManager::TAB_LAYOUT,
-				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
-				'sanitize_callback'  => [ $this, 'sanitize_responsive_int_json' ],
-				'default'            => $this->get_default_for_responsive_from_intval( self::ITEM_HEIGHT, 25 ),
 				'label'              => __( 'Items Height (px)', 'neve' ),
+				'sanitize_callback'  => [ $this, 'sanitize_responsive_int_json' ],
+				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
+				'default'            => $this->get_default_for_responsive_from_intval( self::ITEM_HEIGHT, 25 ),
 				'type'               => 'Neve\Customizer\Controls\React\Responsive_Range',
 				'options'            => [
 					'input_attrs' => [
@@ -404,7 +404,7 @@ class Nav extends Abstract_Component {
 		$last        = $is_rtl ? 'first' : 'last';
 
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => '.header--row .hfg-item-' . $right . ' .builder-item--' . $this->get_id() . ' .primary-menu-ul > li:not(:' . $first . '-of-type)',
+			Dynamic_Selector::KEY_SELECTOR => '.header--row .hfg-item-' . $right . ' .builder-item--' . $this->get_id() . ' .primary-menu-ul > li:not(:' . $first . '-of-type),',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_MARGIN_LEFT => [
 					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::SPACING,
@@ -461,7 +461,7 @@ class Nav extends Abstract_Component {
 		];
 
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .primary-menu-ul li a',
+			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .primary-menu-ul > li > a',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_HEIGHT => [
 					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::ITEM_HEIGHT,

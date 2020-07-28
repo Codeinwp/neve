@@ -1,6 +1,8 @@
 @media (min-width: #{$tablet-sm}) {
   @include grid-container--tablet-sm();
   @include grid--tablet-sm();
+  @include hfg-alignments--tablet-sm();
+  @include nav-menu--tablet-sm();
 }
 
 @media (min-width: #{$tablet}) {
@@ -27,6 +29,7 @@
   @include mega-menu--laptop();
   @include hidden-on-tablet--laptop();
   @include show-on-desktop--laptop();
+  @include hfg-alignments--laptop();
 }
 
 @media (min-width: #{$desktop}) {
