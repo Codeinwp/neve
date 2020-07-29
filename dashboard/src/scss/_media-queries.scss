@@ -1,5 +1,6 @@
 @media (min-width: #{$tablet}) {
   @include ob-starter-site-card--tablet();
+  @include ob-editor-tabs--tablet();
   @include ob-header--tablet();
 }
 
@@ -31,6 +32,7 @@
   @include plugins--desktop();
   @include accordion--desktop();
   @include mock--desktop();
+  @include ob-editor-tabs--desktop();
 }
 
 
