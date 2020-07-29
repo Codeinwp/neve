@@ -29,8 +29,6 @@ class Metabox_Settings {
 		'title'          => 'neve_meta_disable_title',
 		'featured-image' => 'neve_meta_disable_featured_image',
 		'footer'         => 'neve_meta_disable_footer',
-		'comments'       => 'neve_meta_disable_comments',
-		'tags'           => 'neve_meta_disable_tags',
 	);
 
 	/**
@@ -45,11 +43,87 @@ class Metabox_Settings {
 		add_filter( 'neve_filter_toggle_content_parts', array( $this, 'filter_components_toggle' ), 100, 2 );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'editor_content_width' ), 100 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'content_width' ), 999 );
-
 		add_filter( 'neve_layout_single_post_elements_order', array( $this, 'filter_post_elements' ) );
+		add_filter( 'neve_layout_single_post_elements_order', array( $this, 'comments_meta_action' ) );
+		add_filter( 'neve_layout_single_post_elements_order', array( $this, 'tags_meta_action' ) );
 		add_filter( 'neve_post_title_alignment', array( $this, 'filter_title_alignment' ) );
 		add_filter( 'neve_display_author_avatar', array( $this, 'filter_author_avatar_display' ) );
 	}
+
+	/**
+	 * Control the comments element from post meta.
+	 *
+	 * @param array $components Post components.
+	 *
+	 * @return array
+	 */
+	public function comments_meta_action( $components ) {
+		$post_id = $this->get_post_id();
+
+		if ( $post_id === false ) {
+			return $components;
+		}
+
+		$comments_status = get_post_meta( $post_id, 'neve_meta_comments', true );
+
+		if ( empty( $comments_status ) ) {
+			return $components;
+		}
+
+		$key = array_search( 'comments', $components, true );
+
+		if ( $comments_status === 'on' ) {
+			if ( $key === false ) {
+				$components[] = 'comments';
+			}
+			return $components;
+		}
+
+		if ( $key !== false ) {
+			unset( $components[ $key ] );
+		}
+
+		return $components;
+	}
+
+	/**
+	 * Control the comments element from post meta.
+	 *
+	 * @param array $components Post components.
+	 *
+	 * @return array
+	 */
+	public function tags_meta_action( $components ) {
+		$post_id = $this->get_post_id();
+
+		if ( $post_id === false ) {
+			return $components;
+		}
+
+		$tags_status = get_post_meta( $post_id, 'neve_meta_tags', true );
+
+		if ( empty( $tags_status ) ) {
+			return $components;
+		}
+
+		$key = array_search( 'tags', $components, true );
+
+		if ( $tags_status === 'on' ) {
+			if ( $key === false ) {
+				$components[] = 'tags';
+			}
+			return $components;
+		}
+
+
+		if ( $key !== false ) {
+			unset( $components[ $key ] );
+		}
+
+		return $components;
+	}
+
+
 
 	/**
 	 * Check if we should account for the meta settings.

@@ -182,22 +182,22 @@ class Block_Editor_Meta extends Controls_Base {
 				'priority'  => 30,
 			],
 			[
-				'id'        => 'neve_meta_disable_comments',
+				'id'        => 'neve_meta_comments',
 				'post_type' => 'post',
 				'type'      => 'checkbox',
 				'settings'  => [
 					'default'     => 'on',
-					'input_label' => __( 'Disable Comments', 'neve' ),
+					'input_label' => __( 'Comments', 'neve' ),
 				],
 				'priority'  => 40,
 			],
 			[
-				'id'        => 'neve_meta_disable_tags',
+				'id'        => 'neve_meta_tags',
 				'post_type' => 'post',
 				'type'      => 'checkbox',
 				'settings'  => [
 					'default'     => 'on',
-					'input_label' => __( 'Disable Tags', 'neve' ),
+					'input_label' => __( 'Tags', 'neve' ),
 				],
 				'priority'  => 50,
 			],

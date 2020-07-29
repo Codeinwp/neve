@@ -21,11 +21,11 @@ class MetaFieldsManager extends Component {
 			},
 			{
 				'title': __( 'Page Title', 'neve' ),
-				'controls': [ 'neve_meta_header_elements_order', 'neve_meta_title_alignment', 'neve_meta_author_avatar' ]
+				'controls': [ 'neve_meta_header_elements_order', 'neve_meta_title_alignment', 'neve_meta_author_avatar', 'neve_meta_reading_time' ]
 			},
 			{
 				'title': __( 'Elements', 'neve' ),
-				'controls': [ 'neve_meta_disable_header', 'neve_meta_disable_footer', 'neve_meta_disable_title', 'neve_meta_disable_comments', 'neve_meta_disable_tags' ]
+				'controls': [ 'neve_meta_disable_header', 'neve_meta_disable_footer', 'neve_meta_disable_title', 'neve_meta_comments', 'neve_meta_tags', 'neve_meta_social_icons' ]
 			}
 		];
 		this.updateValues = this.updateValues.bind( this );
@@ -114,6 +114,9 @@ class MetaFieldsManager extends Component {
 									{
 										controls.map( (control, index) => {
 											let controlData = metaSidebar.controls.find(obj => obj.id === control);
+											if ( ! controlData ) {
+												return false;
+											}
 											const currentPostType = wp.data.select('core/editor').getCurrentPostType();
 											if ( controlData.hasOwnProperty('post_type') && currentPostType !== controlData['post_type'] ) {
 												return false;

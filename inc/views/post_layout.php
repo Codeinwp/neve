@@ -64,20 +64,6 @@ class Post_Layout extends Base_View {
 			}
 		}
 
-		if ( apply_filters( 'neve_filter_toggle_content_parts', true, 'comments' ) !== true ) {
-			$comments_index = array_search( 'comments', $content_order, true );
-			if ( $comments_index !== false ) {
-				unset( $content_order[ $comments_index ] );
-			}
-		}
-
-		if ( apply_filters( 'neve_filter_toggle_content_parts', true, 'tags' ) !== true ) {
-			$tags_index = array_search( 'tags', $content_order, true );
-			if ( $tags_index !== false ) {
-				unset( $content_order[ $tags_index ] );
-			}
-		}
-
 		if ( empty( $content_order ) ) {
 			return;
 		}
@@ -151,7 +137,7 @@ class Post_Layout extends Base_View {
 		);
 
 		$meta_order = get_theme_mod( 'neve_post_meta_ordering', $default_meta_order );
-		$meta_order = json_decode( $meta_order );
+		$meta_order = apply_filters( 'neve_post_meta_ordering_filter', json_decode( $meta_order ) );
 		do_action( 'neve_post_meta_single', $meta_order, $is_list );
 	}
 
