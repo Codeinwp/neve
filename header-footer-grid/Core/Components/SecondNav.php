@@ -218,7 +218,6 @@ class SecondNav extends Abstract_Component {
 	 * @return array
 	 */
 	public function add_style( array $css_array = array() ) {
-
 		$css_array[] = [
 			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' #secondary-menu a',
 			Dynamic_Selector::KEY_RULES    => [
@@ -248,38 +247,13 @@ class SecondNav extends Abstract_Component {
 			],
 		];
 
-
-
-
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => '.hfg-item-right .builder-item--' . $this->get_id() . ' #secondary-menu > li:not(:first-child)',
-			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_MARGIN_LEFT => [
-					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::SPACING,
-					Dynamic_Selector::META_IS_RESPONSIVE => true,
-					Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
-						if ( $device !== Dynamic_Selector::DESKTOP ) {
-							return '';
-						}
-
-						return sprintf( '%s:%s;', $css_prop, absint( $value ) . 'px' );
-					},
-					Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::SPACING ),
-				],
-			],
-		];
-
-		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => '.hfg-item-center .builder-item--' . $this->get_id() . ' #secondary-menu li:not(:last-child), .hfg-item-left .builder-item--' . $this->get_id() . ' #secondary-menu > li:not(:last-child)',
+			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' #secondary-menu li:not(:last-child)',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_MARGIN_RIGHT => [
 					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::SPACING,
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 					Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
-						if ( $device !== Dynamic_Selector::DESKTOP ) {
-							return '';
-						}
-
 						return sprintf( '%s:%s;', $css_prop, absint( $value ) . 'px' );
 					},
 					Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::SPACING ),
@@ -294,11 +268,7 @@ class SecondNav extends Abstract_Component {
 					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::SPACING,
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 					Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
-						if ( $device !== Dynamic_Selector::DESKTOP ) {
-							return '';
-						}
 						$value = absint( $value );
-
 						return sprintf( 'left:%s;right:%s', - $value / 2 . 'px', - $value / 2 . 'px' );
 					},
 					Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::SPACING ),
@@ -328,8 +298,9 @@ class SecondNav extends Abstract_Component {
 			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' #secondary-menu > li > a',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_HEIGHT => [
-					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::ITEM_HEIGHT,
-					Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::ITEM_HEIGHT ),
+					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::ITEM_HEIGHT,
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_DEFAULT       => $this->get_default_for_responsive_from_intval( self::ITEM_HEIGHT, 25 ),
 				],
 			],
 		];

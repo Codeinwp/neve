@@ -669,12 +669,8 @@ blockquote.wp-block-quote.is-style-large cite {
   background-color: #fff;
 }
 
-.primary-menu-ul > li:not(:last-child) {
+#secondary-menu > li:not(:last-child), .primary-menu-ul > li:not(:last-child) {
   margin-left: 20px;
-}
-
-.primary-menu-ul > li:not(:first-child) {
-  margin-right: 20px;
 }
 
 .primary-menu-ul {
@@ -864,18 +860,19 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
   visibility: visible;
 }
 
-.header-menu-sidebar-inner .mobile-align-center .primary-menu-ul li a {
-  padding-left: 40px;
+.header-menu-sidebar-inner #secondary-menu li {
+  margin-left: 0 !important;
+}
+
+.header-menu-sidebar-inner .mobile-align-center #secondary-menu li a, .header-menu-sidebar-inner .mobile-align-center .primary-menu-ul li a {
   justify-content: center;
 }
 
-.header-menu-sidebar-inner .mobile-align-left .primary-menu-ul li a {
-  padding-left: 40px;
+.header-menu-sidebar-inner .mobile-align-left #secondary-menu li a, .header-menu-sidebar-inner .mobile-align-left .primary-menu-ul li a {
   justify-content: flex-start;
 }
 
-.header-menu-sidebar-inner .mobile-align-right .primary-menu-ul li a {
-  padding-left: 40px;
+.header-menu-sidebar-inner .mobile-align-right #secondary-menu li a, .header-menu-sidebar-inner .mobile-align-right .primary-menu-ul li a {
   justify-content: flex-end;
 }
 
@@ -896,12 +893,6 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
   position: relative;
 }
 
-.header-menu-sidebar-inner .nav-menu-primary li .caret-wrap {
-  position: absolute;
-  left: 0;
-  margin-right: auto;
-}
-
 .header-menu-sidebar-inner .nav-menu-primary li .caret-wrap svg {
   width: 16px;
   height: 16px;
@@ -920,7 +911,6 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
   box-shadow: none;
   width: 100%;
   border: none;
-  padding-right: 20px;
 }
 
 ul[id^="nv-primary-navigation"] i {
@@ -2308,16 +2298,13 @@ audio {
   .tablet-align-justify .button {
     flex-grow: 1;
   }
-  .header-menu-sidebar-inner .tablet-align-center .primary-menu-ul li a {
-    padding-left: 40px;
+  .header-menu-sidebar-inner .tablet-align-center #secondary-menu li a, .header-menu-sidebar-inner .tablet-align-center .primary-menu-ul li a {
     justify-content: center;
   }
-  .header-menu-sidebar-inner .tablet-align-left .primary-menu-ul li a {
-    padding-left: 40px;
+  .header-menu-sidebar-inner .tablet-align-left #secondary-menu li a, .header-menu-sidebar-inner .tablet-align-left .primary-menu-ul li a {
     justify-content: flex-start;
   }
-  .header-menu-sidebar-inner .tablet-align-right .primary-menu-ul li a {
-    padding-left: 40px;
+  .header-menu-sidebar-inner .tablet-align-right #secondary-menu li a, .header-menu-sidebar-inner .tablet-align-right .primary-menu-ul li a {
     justify-content: flex-end;
   }
 }
@@ -2456,23 +2443,14 @@ audio {
   .nv-empty-sidebar .neve-main > .container .col {
     max-width: 100%;
   }
-  .header-menu-sidebar-inner .desktop-align-center .primary-menu-ul li a {
-    padding-left: 40px;
+  .header-menu-sidebar-inner .desktop-align-center #secondary-menu li a, .header-menu-sidebar-inner .desktop-align-center .primary-menu-ul li a {
     justify-content: center;
   }
-  .header-menu-sidebar-inner .desktop-align-left .primary-menu-ul li a {
-    padding-left: 40px;
+  .header-menu-sidebar-inner .desktop-align-left #secondary-menu li a, .header-menu-sidebar-inner .desktop-align-left .primary-menu-ul li a {
     justify-content: flex-start;
   }
-  .header-menu-sidebar-inner .desktop-align-right .primary-menu-ul li a {
-    padding-left: 40px;
+  .header-menu-sidebar-inner .desktop-align-right #secondary-menu li a, .header-menu-sidebar-inner .desktop-align-right .primary-menu-ul li a {
     justify-content: flex-end;
-  }
-  .desktop-align-left #secondary-menu li:not(:last-of-type), .desktop-align-center #secondary-menu li:not(:last-of-type) {
-    margin-left: 20px;
-  }
-  .desktop-align-right #secondary-menu li:not(:first-of-type) {
-    margin-right: 20px;
   }
   .layout-default .nv-post-thumbnail-wrap, .layout-alternative .nv-post-thumbnail-wrap {
     margin-bottom: 0;

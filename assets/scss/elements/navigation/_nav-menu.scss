@@ -2,17 +2,11 @@
   background-color: $navbar_background_color;
 }
 
-// Spacing based on alignment.
-.primary-menu-ul {
+#secondary-menu, .primary-menu-ul {
   > li:not(:last-child) {
 	margin-right: $spacing-sm;
   }
-
-  > li:not(:first-child) {
-	margin-left: $spacing-sm;
-  }
 }
-
 
 .primary-menu-ul {
   transition: $transition_med;
@@ -197,7 +191,7 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
   padding-right: 0;
 }
 
-// Primary menu in sidebar.
+// Menus in sidebar.
 .header-menu-sidebar-inner {
   .primary-menu-ul .caret-wrap.dropdown-open + .sub-menu,
   .primary-menu-ul .dropdown-open.sub-menu {
@@ -207,19 +201,34 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
 	visibility: visible;
   }
 
-  .mobile-align-center .primary-menu-ul li a {
-	padding-right: 40px;
-	justify-content: center;
+  #secondary-menu {
+	li {
+	  margin-right: 0 !important;
+	}
   }
 
-  .mobile-align-left .primary-menu-ul li a {
-	padding-right: 40px;
-	justify-content: flex-start;
+  .mobile-align-center {
+	#secondary-menu, .primary-menu-ul {
+	  li a {
+		justify-content: center;
+	  }
+	}
   }
 
-  .mobile-align-right .primary-menu-ul li a {
-	padding-right: 40px;
-	justify-content: flex-end;
+  .mobile-align-left {
+	#secondary-menu, .primary-menu-ul {
+	  li a {
+		justify-content: flex-start;
+	  }
+	}
+  }
+
+  .mobile-align-right {
+	#secondary-menu, .primary-menu-ul {
+	  li a {
+		justify-content: flex-end;
+	  }
+	}
   }
 
   .nav-menu-primary {
@@ -238,10 +247,6 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
 	  }
 
 	  .caret-wrap {
-		position: absolute;
-		right: 0;
-		margin-left: auto;
-
 		svg {
 		  width: 16px;
 		  height: 16px;
@@ -262,58 +267,61 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
 	  box-shadow: none;
 	  width: 100%;
 	  border: none;
-	  padding-left: 20px;
 	}
   }
 }
 
 @mixin nav-menu--tablet-sm() {
   .header-menu-sidebar-inner {
-	.tablet-align-center .primary-menu-ul li a {
-	  padding-right: 40px;
-	  justify-content: center;
+	.tablet-align-center {
+	  #secondary-menu, .primary-menu-ul {
+		li a {
+		  justify-content: center;
+		}
+	  }
 	}
 
-	.tablet-align-left .primary-menu-ul li a {
-	  padding-right: 40px;
-	  justify-content: flex-start;
+	.tablet-align-left {
+	  #secondary-menu, .primary-menu-ul {
+		li a {
+		  justify-content: flex-start;
+		}
+	  }
 	}
 
-	.tablet-align-right .primary-menu-ul  li a {
-	  padding-right: 40px;
-	  justify-content: flex-end;
+	.tablet-align-right {
+	  #secondary-menu, .primary-menu-ul {
+		li a {
+		  justify-content: flex-end;
+		}
+	  }
 	}
   }
 }
 
 @mixin nav-menu--laptop() {
   .header-menu-sidebar-inner {
-	.desktop-align-center .primary-menu-ul li a {
-	  padding-right: 40px;
-	  justify-content: center;
-	}
-
-	.desktop-align-left .primary-menu-ul li a {
-	  padding-right: 40px;
-	  justify-content: flex-start;
-	}
-
-	.desktop-align-right .primary-menu-ul  li a {
-	  padding-right: 40px;
-	  justify-content: flex-end;
-	}
-  }
-
-  #secondary-menu {
-	.desktop-align-left &, .desktop-align-center & {
-	  li:not(:last-of-type) {
-		margin-right: $spacing-sm;
+	.desktop-align-center {
+	  #secondary-menu, .primary-menu-ul {
+		li a {
+		  justify-content: center;
+		}
 	  }
 	}
 
-	.desktop-align-right & {
-	  li:not(:first-of-type) {
-		margin-left: $spacing-sm;
+	.desktop-align-left {
+	  #secondary-menu, .primary-menu-ul {
+		li a {
+		  justify-content: flex-start;
+		}
+	  }
+	}
+
+	.desktop-align-right {
+	  #secondary-menu, .primary-menu-ul {
+		li a {
+		  justify-content: flex-end;
+		}
 	  }
 	}
   }
