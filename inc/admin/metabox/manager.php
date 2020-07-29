@@ -9,6 +9,7 @@ namespace Neve\Admin\Metabox;
 
 use Neve\Core\Settings\Config;
 use Neve\Core\Settings\Mods;
+
 /**
  * Class Manager
  *
@@ -91,7 +92,7 @@ final class Manager {
 				$this->meta_sidebar_controls = array_merge( $this->meta_sidebar_controls, $control_instance->get_controls() );
 			} else {
 				$this->controls = array_merge( $this->controls, $control_instance->get_controls() );
-			}       
+			}
 		}
 		$this->order_by_priority();
 	}
@@ -147,8 +148,37 @@ final class Manager {
 			array( 'post', 'page', 'product' ),
 			'side',
 			'default',
-			array( '__back_compat_meta_box' => true )
+			array(
+				'__back_compat_meta_box' => true,
+			)
 		);
+
+		if ( $this->is_gutenberg_active() ) {
+			add_meta_box(
+				'neve-page-settings-notice',
+				sprintf(
+				/* translators: %s - post type */
+					__( '%s Settings', 'neve' ),
+					$post_type
+				),
+				array( $this, 'render_metabox_notice' ),
+				array( 'post', 'page' ),
+				'side',
+				'default',
+				array(
+					'__back_compat_meta_box' => false,
+				)
+			);
+		}
+	}
+
+	/**
+	 * Detect if is gutenberg editor.
+	 *
+	 * @return bool
+	 */
+	private  function is_gutenberg_active() {
+		return get_current_screen()->is_block_editor();
 	}
 
 	/**
@@ -156,6 +186,33 @@ final class Manager {
 	 */
 	public function render_metabox() {
 		$this->render_controls();
+	}
+
+	/**
+	 * Render the metabox notice.
+	 */
+	public function render_metabox_notice() {
+		?>
+		<script type="text/javascript">
+			function focusSidebar() {
+				var selector = document.querySelector('.components-button.has-icon[aria-label^="Neve"]');
+				if ( ! selector ){
+					selector = document.querySelector('.edit-post-more-menu button');
+				}
+				selector.focus();
+			}
+		</script>
+		<?php
+		echo '<div class="nv-meta-notice-wrapper">';
+		echo '<h4>' . __( 'Page Settings are now accessible from the top bar', 'neve' ) . '</h4>';
+		printf(
+			__( 'Click the %s icon in the top bar to customise the layout settings for this page', 'neve' ),
+			'<svg width="17" height="24" viewBox="0 0 17 24" fill="none" xmlns="http://www.w3.org/2000/svg" onclick="focusSidebar()">
+				<path d="M4.77822 10.2133V19.3287H0.118347V0.802224C0.118347 0.712594 0.145598 0.649854 0.200099 0.614002C0.254601 0.578149 0.354519 0.622964 0.499857 0.748446L12.1359 10.2133V1.04422H16.7958V19.5976C16.7958 19.7051 16.7685 19.7724 16.714 19.7992C16.6595 19.8261 16.5596 19.7768 16.4143 19.6514L4.77822 10.2133Z"/>
+				<rect x="0.118347" y="22.3334" width="16.6774" height="1.51613"/>
+			</svg>'
+		);
+		echo '</div>';
 	}
 
 	/**

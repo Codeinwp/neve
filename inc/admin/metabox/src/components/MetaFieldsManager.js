@@ -107,19 +107,6 @@ class MetaFieldsManager extends Component {
 						const { title, controls } = group;
 						return (
 							<div key={index} className="nv-option-category">
-								<Button
-									icon="image-rotate"
-									className="nv-reset-meta"
-									onClick={ () => {
-										controls.map( (control, index) => {
-											const { editPost } = wp.data.dispatch( 'core/editor' );
-											editPost({meta: {[control]: null}});
-											this.updateValues( control, null );
-										});
-									} }
-									label={ __( 'Return to customizer settings', 'neve' ) }
-									showTooltip={ true }
-								/>
 								<PanelBody
 									title={title}
 									intialOpen={ true }
@@ -141,6 +128,31 @@ class MetaFieldsManager extends Component {
 						);
 					})
 				}
+				<div className="nv-reset-all components-panel__body is-opened">
+					<p>
+						{ __('Reset all options to default', 'neve') }
+					</p>
+					<Button
+						icon="image-rotate"
+						className="nv-reset-meta"
+						onClick={ () => {
+							const {editPost} = wp.data.dispatch('core/editor');
+							this.componentsGroup.map( ( group, index ) => {
+								const { controls } = group;
+								controls.map( (control, index) => {
+									let resetValue = '';
+									if ( 'neve_meta_content_width' === control ) {
+										resetValue = 0;
+									}
+									editPost({meta: {[control]: resetValue }});
+									this.updateValues(control, resetValue);
+								});
+							});
+						} }
+						label={ __( 'Return to customizer settings', 'neve' ) }
+						showTooltip={ true }
+					/>
+				</div>
 			</>
 		);
 	}

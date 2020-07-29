@@ -147,15 +147,39 @@
 	}
 }
 
-.nv-option-category{
-  position: relative;
-  > button {
-	position: absolute;
-	right: 46px;
-	top: 8px;
-	z-index: 2;
-	svg{
-	  width: 13.5px
-	}
+.nv-reset-all{
+  display: flex;
+  p{
+	flex: 1;
+	margin: 0;
+	align-self: center;
+  }
+}
+
+.components-button.has-icon[aria-label^="Neve"]{
+  background: #0073aa;
+  svg *{
+	fill: #ffffff;
+  }
+}
+
+.nv-meta-notice-wrapper{
+  h4{
+	font-family: Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 20px;
+	color: #1E1E1F;
+  }
+  svg{
+	background: #0073aa;
+	padding: 0 3px;
+	fill: #fff;
+	width: 9px;
+	display: inline;
+	vertical-align: middle;
+	border-radius: 2px;
+	cursor: pointer;
+	margin: 0 4px;
   }
 }
