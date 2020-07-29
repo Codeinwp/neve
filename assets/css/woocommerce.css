@@ -1083,6 +1083,11 @@ section.exclusive .tns-visually-hidden {
   width: 100%;
 }
 
+.cart-icon-wrapper {
+  display: flex;
+  align-items: flex-end;
+}
+
 .menu-item-nav-cart:last-child .nv-nav-cart {
   right: 0;
 }

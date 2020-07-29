@@ -181,7 +181,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 		$fallback_args = array(
 			'depth'      => - 1,
 			'menu_id'    => 'nv-primary-navigation' . '-' . \HFG\current_row( \HFG\Core\Builder\Header::BUILDER_NAME ),
-			'menu_class' => 'primary-menu-ul',
+			'menu_class' => 'primary-menu-ul nav-ul',
 			'container'  => 'ul',
 			'before'     => '',
 			'echo'       => false,

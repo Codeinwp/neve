@@ -16,6 +16,8 @@ module.exports = {
 		files: {
 			'assets/css/customizer-style.min.css': ['assets/css/customizer-style.css'],
 			'assets/css/customizer-style-rtl.min.css': ['assets/css/customizer-style-rtl.css'],
+			'assets/css/mega-menu.min.css': ['assets/css/mega-menu.css'],
+			'assets/css/mega-menu-rtl.min.css': ['assets/css/mega-menu-rtl.css'],
 			'style-rtl.min.css': ['style-rtl.css'],
 			'header-footer-grid/assets/css/style-rtl.min.css': ['header-footer-grid/assets/css/style-rtl.css'],
 			'header-footer-grid/assets/css/style.min.css': ['header-footer-grid/assets/css/style.css'],

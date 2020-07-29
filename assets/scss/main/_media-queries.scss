@@ -26,7 +26,6 @@
   @include page--laptop();
   @include sidebar--laptop();
   @include blog-layout--laptop();
-  @include mega-menu--laptop();
   @include hidden-on-tablet--laptop();
   @include show-on-desktop--laptop();
   @include hfg-alignments--laptop();
@@ -34,5 +33,4 @@
 
 @media (min-width: #{$desktop}) {
   @include grid-container--desktop();
-  @include mega-menu--desktop();
 }

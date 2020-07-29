@@ -243,7 +243,7 @@ class NavFooter extends Abstract_Component {
 
 
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => '.hfg-item-' . $right . ' .builder-item--' . $this->get_id() . ' #secondary-menu > li:not(:' . $first . '-of-type)',
+			Dynamic_Selector::KEY_SELECTOR => '.hfg-item-' . $right . ' .builder-item--' . $this->get_id() . ' .nav-ul > li:not(:' . $first . '-of-type)',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_MARGIN_LEFT => [
 					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::SPACING,
@@ -261,7 +261,7 @@ class NavFooter extends Abstract_Component {
 		];
 
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => '.hfg-item-center .builder-item--' . $this->get_id() . ' #secondary-menu li:not(:' . $last . '-of-type), .hfg-item-' . $left . ' .builder-item--' . $this->get_id() . ' #secondary-menu > li:not(:' . $last . '-of-type)',
+			Dynamic_Selector::KEY_SELECTOR => '.hfg-item-center .builder-item--' . $this->get_id() . ' .nav-ul li:not(:' . $last . '-of-type), .hfg-item-' . $left . ' .builder-item--' . $this->get_id() . ' .nav-ul > li:not(:' . $last . '-of-type)',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_MARGIN_RIGHT => [
 					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::SPACING,

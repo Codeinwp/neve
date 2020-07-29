@@ -29,7 +29,7 @@ $menu_id = Nav::NAV_MENU_ID . '-' . current_row( HeaderBuilder::BUILDER_NAME );
 			[
 				'theme_location' => 'primary',
 				'menu_id'        => $menu_id,
-				'menu_class'     => 'primary-menu-ul',
+				'menu_class'     => 'primary-menu-ul nav-ul',
 				'container'      => 'ul',
 				'walker'         => '\Neve\Views\Nav_Walker',
 				'fallback_cb'    => '\Neve\Views\Nav_Walker::fallback',

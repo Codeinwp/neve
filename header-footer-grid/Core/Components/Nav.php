@@ -116,7 +116,7 @@ class Nav extends Abstract_Component {
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
 					'template' =>
-						'.builder-item--' . $this->get_id() . ' .nav-menu-primary > .primary-menu-ul li:not(.current_page_item):not(.woocommerce-mini-cart-item) > a {
+						'.builder-item--' . $this->get_id() . ' .nav-menu-primary > .nav-ul li:not(.current_page_item):not(.woocommerce-mini-cart-item) > a {
 						color: {{value}};
 					}',
 				],
@@ -137,7 +137,7 @@ class Nav extends Abstract_Component {
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
 					'template' => '
-					.builder-item--' . $this->get_id() . ' .nav-menu-primary > .primary-menu-ul li.current_page_item > a {
+					.builder-item--' . $this->get_id() . ' .nav-menu-primary > .nav-ul li.current_page_item > a {
 						color: {{value}}!important;
 					}',
 				],
@@ -158,10 +158,10 @@ class Nav extends Abstract_Component {
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
 					'template' => '
-					.builder-item--' . $this->get_id() . ' .nav-menu-primary > .primary-menu-ul li:not(.woocommerce-mini-cart-item) > a:after {
+					.builder-item--' . $this->get_id() . ' .nav-menu-primary > .nav-ul li:not(.woocommerce-mini-cart-item) > a:after {
 						background-color: {{value}}!important;
 					}
-					.builder-item--' . $this->get_id() . ' .nav-menu-primary:not(.style-full-height) > .primary-menu-ul li:not(.woocommerce-mini-cart-item):hover > a {
+					.builder-item--' . $this->get_id() . ' .nav-menu-primary:not(.style-full-height) > .nav-ul li:not(.woocommerce-mini-cart-item):hover > a {
 						color: {{value}}!important;
 					}',
 				],
@@ -328,7 +328,7 @@ class Nav extends Abstract_Component {
 	 * @return array
 	 */
 	public function add_style( array $css_array = array() ) {
-		$selector = '.builder-item--' . $this->get_id() . ' .nav-menu-primary > .primary-menu-ul ';
+		$selector = '.builder-item--' . $this->get_id() . ' .nav-menu-primary > .nav-ul ';
 
 		$css_array[] = [
 			Dynamic_Selector::KEY_SELECTOR => $selector . 'li:not(.woocommerce-mini-cart-item) > a',
@@ -360,7 +360,7 @@ class Nav extends Abstract_Component {
 		];
 		if ( SettingsManager::get_instance()->get( $this->get_id() . '_style' ) !== 'style-full-height' ) {
 			$css_array[] = [
-				Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .nav-menu-primary:not(.style-full-height) > .primary-menu-ul li:not(.woocommerce-mini-cart-item):hover > a',
+				Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .nav-menu-primary:not(.style-full-height) > .nav-ul li:not(.woocommerce-mini-cart-item):hover > a',
 				Dynamic_Selector::KEY_RULES    => [
 					Config::CSS_PROP_COLOR => [
 						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::HOVER_COLOR_ID,
@@ -398,7 +398,7 @@ class Nav extends Abstract_Component {
 		];
 
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .primary-menu-ul > li:not(:last-of-type)',
+			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .nav-ul > li:not(:last-of-type)',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_MARGIN_RIGHT => [
 					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::SPACING,
@@ -412,12 +412,15 @@ class Nav extends Abstract_Component {
 		];
 
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .style-full-height .primary-menu-ul > li:not(.menu-item-nav-search):not(.menu-item-nav-cart) > a:after',
+			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .style-full-height .nav-ul > li:not(.menu-item-nav-search):not(.menu-item-nav-cart) > a:after',
 			Dynamic_Selector::KEY_RULES    => [
 				'position' => [
 					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::SPACING,
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 					Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
+						if ( $device !== Dynamic_Selector::DESKTOP ) {
+							return '';
+						}
 						$value = absint( $value );
 						return sprintf( 'left:%s;right:%s', -$value / 2 . 'px', -$value / 2 . 'px' );
 					},
@@ -427,7 +430,7 @@ class Nav extends Abstract_Component {
 		];
 
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .style-full-height .primary-menu-ul:not(#nv-primary-navigation-sidebar) > li:not(.menu-item-nav-search):not(.menu-item-nav-cart):hover > a:after',
+			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .style-full-height .nav-ul:not(#nv-primary-navigation-sidebar) > li:not(.menu-item-nav-search):not(.menu-item-nav-cart):hover > a:after',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_WIDTH => [
 					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::SPACING,
@@ -441,7 +444,7 @@ class Nav extends Abstract_Component {
 		];
 
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .primary-menu-ul > li > a, .header-menu-sidebar-inner .primary-menu-ul a',
+			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .nav-ul > li > a, .header-menu-sidebar-inner .nav-ul a',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_HEIGHT => [
 					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::ITEM_HEIGHT,

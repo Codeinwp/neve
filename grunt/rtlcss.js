@@ -57,6 +57,14 @@ module.exports = {
 		ext,
 		src: ['customizer-style.css']
 	},
+	megaMenu: {
+		options,
+		expand: true,
+		cwd: './assets/css/',
+		dest: './assets/css/',
+		ext,
+		src: ['mega-menu.css']
+	},
 	hfg: {
 		options,
 		expand: true,

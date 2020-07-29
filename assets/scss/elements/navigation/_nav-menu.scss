@@ -2,13 +2,17 @@
   background-color: $navbar_background_color;
 }
 
-#secondary-menu, .primary-menu-ul {
+.nav-ul {
   > li:not(:last-child) {
 	margin-right: $spacing-sm;
   }
+
+  > .menu-item-has-children > .sub-menu {
+	right: 0;
+  }
 }
 
-.primary-menu-ul {
+.nav-ul {
   transition: $transition_med;
   margin-bottom: 0;
   display: flex;
@@ -57,11 +61,7 @@
   .sub-menu {
 	@include soft-box-shadow();
 	max-height: inherit;
-	padding: 0;
 	top: 100%;
-	background: $navbar_background_color;
-	border-left: none;
-	border-top: $muted-border;
 	position: absolute;
 	overflow: visible;
 	z-index: 100;
@@ -76,26 +76,18 @@
 	.sub-menu {
 	  left: 100%;
 	  right: auto;
-	  top: -1px;
+	  top: 0;
 	}
 
 	li {
-	  display: flex;
-	  flex-direction: column;
-	  align-items: center;
-	  background-color: $navbar_background_color;
-	  border: $muted-border;
+	  border: 1px solid;
 	  border-top: none;
 	  min-width: 150px;
-	  cursor: default;
 	  padding: 0;
 
 	  > a {
-		display: flex;
 		justify-content: center;
-		align-items: center;
 		white-space: nowrap;
-		width: 100%;
 		padding: 7px 14px;
 	  }
 	}
@@ -108,11 +100,6 @@
 	  display: block;
 	  visibility: visible;
 	  opacity: 1;
-	}
-
-	> a {
-	  display: flex;
-	  align-items: center;
 	}
   }
 
@@ -133,22 +120,6 @@
   }
 }
 
-.site-logo, .navbar-toggle-wrapper {
-  flex: 1 auto;
-}
-
-.navbar-toggle-wrapper {
-  justify-content: flex-end;
-  display: flex;
-}
-
-.nv-nav-wrap {
-  min-height: 1px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
 .caret {
   padding: 5px;
   display: flex;
@@ -165,7 +136,6 @@
 
 .caret-wrap {
   border-color: transparent;
-  position: relative;
   font-size: .65em;
   padding-left: 0;
   margin-left: 5px;
@@ -181,34 +151,36 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
   padding-bottom: 0;
 }
 
-.primary-menu-ul {
-  > .menu-item-has-children > .sub-menu {
-	right: 0;
-  }
-}
-
-.menu-item-has-children:last-child .caret {
-  padding-right: 0;
-}
-
 // Menus in sidebar.
 .header-menu-sidebar-inner {
-  .primary-menu-ul .caret-wrap.dropdown-open + .sub-menu,
-  .primary-menu-ul .dropdown-open.sub-menu {
+  .nav-ul .caret-wrap.dropdown-open + .sub-menu,
+  .nav-ul .dropdown-open.sub-menu {
 	max-height: 2000px;
 	transition: all .3s ease;
 	opacity: 1;
 	visibility: visible;
   }
 
-  #secondary-menu {
+  .nav-ul {
+	flex-direction: column;
+
 	li {
+	  width: 100%;
+	  padding: 3px 0;
 	  margin-right: 0 !important;
+
+	  a {
+		padding: 3px 0;
+	  }
+	}
+
+	.sub-menu {
+	  background-color: transparent;
 	}
   }
 
   .mobile-align-center {
-	#secondary-menu, .primary-menu-ul {
+	.nav-ul {
 	  li a {
 		justify-content: center;
 	  }
@@ -216,7 +188,7 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
   }
 
   .mobile-align-left {
-	#secondary-menu, .primary-menu-ul {
+	.nav-ul {
 	  li a {
 		justify-content: flex-start;
 	  }
@@ -224,16 +196,18 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
   }
 
   .mobile-align-right {
-	#secondary-menu, .primary-menu-ul {
+	.nav-ul {
 	  li a {
 		justify-content: flex-end;
 	  }
 	}
   }
 
-  .nav-menu-primary {
+  .nav-menu-primary, .nav-menu-secondary {
 	width: 100%;
+  }
 
+  .nav-menu-primary {
 	li {
 	  margin-left: 0 !important;
 	  margin-right: 0 !important;
@@ -242,7 +216,6 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
 
 	  a {
 		width: 100%;
-		padding-right: 30px;
 		position: relative;
 	  }
 
@@ -274,7 +247,7 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
 @mixin nav-menu--tablet-sm() {
   .header-menu-sidebar-inner {
 	.tablet-align-center {
-	  #secondary-menu, .primary-menu-ul {
+	  .nav-ul {
 		li a {
 		  justify-content: center;
 		}
@@ -282,7 +255,7 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
 	}
 
 	.tablet-align-left {
-	  #secondary-menu, .primary-menu-ul {
+	  .nav-ul {
 		li a {
 		  justify-content: flex-start;
 		}
@@ -290,7 +263,7 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
 	}
 
 	.tablet-align-right {
-	  #secondary-menu, .primary-menu-ul {
+	  .nav-ul {
 		li a {
 		  justify-content: flex-end;
 		}
@@ -302,7 +275,7 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
 @mixin nav-menu--laptop() {
   .header-menu-sidebar-inner {
 	.desktop-align-center {
-	  #secondary-menu, .primary-menu-ul {
+	  .nav-ul {
 		li a {
 		  justify-content: center;
 		}
@@ -310,7 +283,7 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
 	}
 
 	.desktop-align-left {
-	  #secondary-menu, .primary-menu-ul {
+	  .nav-ul {
 		li a {
 		  justify-content: flex-start;
 		}
@@ -318,7 +291,7 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
 	}
 
 	.desktop-align-right {
-	  #secondary-menu, .primary-menu-ul {
+	  .nav-ul {
 		li a {
 		  justify-content: flex-end;
 		}
