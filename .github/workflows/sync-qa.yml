@@ -29,7 +29,7 @@ jobs:
           echo "$SSH_KEY" > "$HOME/.ssh/key"
           chmod 600 "$HOME/.ssh/key"
       - uses: chrnorm/deployment-action@releases/v1
-        name: Create GitHub deployment
+        name: Create deployment
         id: deployment
         with:
           token: ${{ secrets.BOT_TOKEN }}
