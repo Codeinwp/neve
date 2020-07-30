@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-07-29T13:05:34+00:00\n"
+"POT-Creation-Date: 2020-07-30T07:28:28+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -958,7 +958,7 @@ msgid "Custom Content Width"
 msgstr ""
 
 #: inc/admin/metabox/block_editor_meta.php:111
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:23
+#: inc/admin/metabox/manager.php:350
 msgid "Page Title"
 msgstr ""
 
@@ -995,11 +995,16 @@ msgid "Disable Title"
 msgstr ""
 
 #: inc/admin/metabox/block_editor_meta.php:190
-msgid "Disable Comments"
+#: inc/customizer/options/layout_blog.php:286
+#: inc/customizer/options/layout_single_post.php:72
+#: inc/views/partials/post_meta.php:128
+msgid "Comments"
 msgstr ""
 
 #: inc/admin/metabox/block_editor_meta.php:200
-msgid "Disable Tags"
+#: inc/customizer/options/layout_single_post.php:70
+#: inc/views/partials/post_meta.php:215
+msgid "Tags"
 msgstr ""
 
 #: inc/admin/metabox/main.php:37
@@ -1050,9 +1055,17 @@ msgstr ""
 msgid "Page Settings are now accessible from the top bar"
 msgstr ""
 
-#. translators: %s - svg icon
+#. translators: %1$s - Keyboard shortcut.   %2&s - svg icon
 #: inc/admin/metabox/manager.php:210
-msgid "Click the %s icon in the top bar to customise the layout settings for this page"
+msgid "Click the %1$s icon in the top bar or use the keyboard shortcut ( %2$s ) to customise the layout settings for this page"
+msgstr ""
+
+#: inc/admin/metabox/manager.php:346
+msgid "Page Layout"
+msgstr ""
+
+#: inc/admin/metabox/manager.php:354
+msgid "Elements"
 msgstr ""
 
 #: inc/admin/plugin_install/main.php:109
@@ -1276,12 +1289,6 @@ msgstr ""
 msgid "Date"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:286
-#: inc/customizer/options/layout_single_post.php:72
-#: inc/views/partials/post_meta.php:128
-msgid "Comments"
-msgstr ""
-
 #: inc/customizer/options/layout_blog.php:298
 msgid "Meta Order"
 msgstr ""
@@ -1365,11 +1372,6 @@ msgstr ""
 #: inc/customizer/options/layout_single_post.php:69
 #: dashboard/src/Components/Onboarding/ImportModal.js:128
 msgid "Content"
-msgstr ""
-
-#: inc/customizer/options/layout_single_post.php:70
-#: inc/views/partials/post_meta.php:215
-msgid "Tags"
 msgstr ""
 
 #: inc/customizer/options/layout_single_post.php:71
@@ -1966,27 +1968,23 @@ msgstr ""
 msgid "Typekit Project ID is invalid"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:19
-msgid "Page Layout"
-msgstr ""
-
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:27
-msgid "Elements"
-msgstr ""
-
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:133
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:123
 msgid "Reset all options to default"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:152
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:142
 msgid "Return to customizer settings"
 msgstr ""
 
-#: inc/admin/metabox/src/components/Sidebar.js:13
+#: inc/admin/metabox/src/components/Sidebar.js:15
+msgid "Open Neve meta sidebar"
+msgstr ""
+
+#: inc/admin/metabox/src/components/Sidebar.js:42
 msgid "Neve Options"
 msgstr ""
 
-#: inc/admin/metabox/src/components/Sidebar.js:17
+#: inc/admin/metabox/src/components/Sidebar.js:46
 msgid "Neve options"
 msgstr ""
 
