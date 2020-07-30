@@ -31,6 +31,17 @@ jobs:
       - name: Deploy to QA
         run: |
           rsync -rc --exclude-from="$GITHUB_WORKSPACE/.distignore" -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no -p $SSH_PORT" "$GITHUB_WORKSPACE/" $SSH_USERNAME@$SSH_HOST:$QA_ROOT
+      - name: Rebuild Neve Reference
+        run: |
+          ssh $SSH_USERNAME@$SSH_HOST "bash ~/reset-neve-qa.sh"
+      - name: Update deployment status (success)
+          if: success()
+          uses: chrnorm/deployment-status@releases/v1
+          with:
+            token: ${{ secrets.BOT_TOKEN }}
+            target_url: http://qa-neve.themeisle.com/empty-site
+            state: "success"
+            deployment_id: ${{ steps.deployment.outputs.deployment_id }}
       - name: Trigger Diffy Job
         run: |
           bash bin/diffy.sh $GITHUB_SHA ${{ secrets.DIFFY_API_KEY }} ${{ secrets.DIFFY_PROJECT_ID }}
