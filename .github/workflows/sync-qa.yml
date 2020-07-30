@@ -1,10 +1,9 @@
 name: Deploy to QA
-
 on:
   push:
     branches:
       - development
-      - '!master'
+      - "!master"
 jobs:
   deploy:
     name: Deploy to QA server
@@ -36,25 +35,131 @@ jobs:
           target_url: http://qa-neve.themeisle.com/empty-site
           environment: staging
       - name: Deploy to QA env
-        run: |
-          rsync -rc --exclude-from="$GITHUB_WORKSPACE/.distignore" -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no -p $SSH_PORT" "$GITHUB_WORKSPACE/dist/neve" $SSH_USERNAME@$SSH_HOST:$QA_ROOT
+        run: >
+          rsync -rc --exclude-from="$GITHUB_WORKSPACE/.distignore" -e "ssh -i
+          $HOME/.ssh/key -o StrictHostKeyChecking=no -p $SSH_PORT"
+          "$GITHUB_WORKSPACE/dist/neve" $SSH_USERNAME@$SSH_HOST:$QA_ROOT
       - name: Rebuild Neve Reference
-        run: |
-          ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no $SSH_USERNAME@$SSH_HOST "bash ~/reset-neve-qa.sh"
+        run: >
+          ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no
+          $SSH_USERNAME@$SSH_HOST "bash ~/reset-neve-qa.sh"
       - name: Update deployment status (success)
         if: success()
         uses: chrnorm/deployment-status@releases/v1
         with:
           token: ${{ secrets.BOT_TOKEN }}
           target_url: http://qa-neve.themeisle.com/empty-site
-          state: "success"
+          state: success
           deployment_id: ${{ steps.deployment.outputs.deployment_id }}
-      - name: Trigger Diffy Job
-        run: |
-          bash bin/diffy.sh $GITHUB_SHA ${{ secrets.DIFFY_API_KEY }} ${{ secrets.DIFFY_PROJECT_ID }}
+  run-visual:
+    needs: deploy
+    strategy:
+      matrix:
+        spec:
+          - neve
+          - neve-amp
+          - neve-amp20120107template-sticky
+          - neve-amp20130105markup-title-with-markup
+          - neve-amp20130105title-with-special-characters
+          - neve-amp20130109markup-text-alignment
+          - neve-amp20130110markup-image-alignment
+          - neve-amp20130111markup-html-tags-and-formatting
+          - neve-ampabout
+          - neve-ampaboutclearing-floats
+          - neve-ampaboutpage-image-alignment
+          - neve-ampaboutpage-markup-and-formatting
+          - neve-ampaboutpage-with-comments
+          - neve-ampaboutpage-with-comments-disabled
+          - neve-ampauthorrodica
+          - neve-amppage5
+          - neve-buttons
+          - neve-buttonsneve-blog
+          - neve-buttonssample-page
+          - neve-buttonsshop
+          - neve-child-theme
+          - neve-child-theme20120104template-password-protectedcomment-32
+          - neve-child-theme20190107beatum-inquit
+          - neve-child-themecart
+          - neve-child-themeneve-blog
+          - neve-child-themeproductapple-cucumber-smoothiecomment-34
+          - neve-child-themeshop
+          - neve-elementor-pro
+          - neve-elementor-proneve-blog
+          - neve-elementor-proshop
+          - neve-pro
+          - neve-pro-elementor-booster
+          - neve-pro-elementor-boosteranimations
+          - neve-pro-elementor-boosterbanner
+          - neve-pro-elementor-boostercontent-protection
+          - neve-pro-elementor-boostercontent-switcher
+          - neve-pro-elementor-boostercustom-field
+          - neve-pro-elementor-boosterflip-card
+          - neve-pro-elementor-boosterparticles
+          - neve-pro-elementor-boosterprogress-circle
+          - neve-pro-elementor-boosterreview-box
+          - neve-pro-elementor-boostershare-buttons
+          - neve-pro-elementor-boosterteam-member
+          - neve-pro-elementor-boostertyped-headline
+          - neve-pro-formscontact-form-7
+          - neve-pro-formsform-maker
+          - neve-pro-formsformidable
+          - neve-pro-formsninja-forms
+          - neve-pro-formsvery-simple-contact-form
+          - neve-pro-formswpforms-lite
+          - neve-pro-white-label
+          - neve-pro20190807hello-world
+          - neve-procart
+          - neve-procartcartyes
+          - neve-procheckout
+          - neve-procheckoutcheckoutyes
+          - neve-proelementor-page
+          - neve-promy-account
+          - neve-promy-accountnv-wish-list
+          - neve-proneve-blog
+          - neve-proshop
+          - neve-proshopshop_v2yes
+          - neve-proshopshop_v3yes
+          - neve-proshopshop_v4yes
+          - neve-typography
+          - neve-typography20130111markup-html-tags-and-formatting
+          - neve-typographyneve-blog
+          - neve-typographyproductapple-cucumber-smoothie
+          - neve-typographyshop
+          - neve20130111markup-html-tags-and-formatting
+          - neveaboutpage-image-alignment
+          - neveaboutpage-markup-and-formatting
+          - nevecart
+          - neveelementor-page
+          - nevemy-account
+          - neveneve-blog
+          - neveneve-blogblog-grid-1yes
+          - neveneve-blogblog-grid-2yes
+          - neveneve-blogblog-grid-3yes
+          - neveneve-blogblog-grid-4yes
+          - neveproductlemonade
+          - neveshop
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v2
+        - uses: actions/cache@v1
+          with:
+            path: ~/.wp-content
+            key: ${{ runner.os }}-wpcore
+        - uses: actions/cache@v1
+          with:
+            path: ~/.cache/Cypress
+            key: cypress-cache-v2-${{ runner.os }}-${{ hashFiles('**/package.json') }}
+        - uses: actions/cache@v1
+          with:
+            path: ~/.npm
+            key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        - name: Install deps
+          run: |
+            npm ci
+        - name: Run Visual Diff on ${{matrix.spec}}
+          run: |
+            npm run test-visual-all -- --browser chrome --record --parallel --group visual-diff
   empty-job:
-    # if no jobs run, github action considers it a test failure -- which seems like a bug
-    # this makes it so the top-level if statement for the job does not give status failure.
     runs-on: ubuntu-latest
     if: success()
     steps:
