@@ -14,7 +14,7 @@ const Sidebar = () => {
 		category: 'block',
 		description: __( 'Open Neve meta sidebar', 'neve' ),
 		keyCombination: {
-			modifier: 'ctrlShift',
+			modifier: 'access',
 			character: 'n'
 		}
 	} );
