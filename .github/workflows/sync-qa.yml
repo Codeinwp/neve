@@ -53,6 +53,8 @@ jobs:
           deployment_id: ${{ steps.deployment.outputs.deployment_id }}
   run-visual:
     needs: deploy
+    env:
+      CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
     if: github.repository == 'Codeinwp/neve'
     strategy:
       matrix:
