@@ -10,10 +10,10 @@ $component-alignments: (
 
 //<editor-fold desc="Mobile Horizontal Alignments">
 @each $alignment, $flex-setting in $component-alignments {
-  .hfg-is-group.mobile-align-#{$alignment} {
+  .hfg-is-group.mobile-#{$alignment} {
 	justify-content: $flex-setting;
   }
-  .mobile-align-#{$alignment} {
+  .mobile-#{$alignment} {
 	text-align: #{$alignment};
 
 	.nav-ul, .nv-nav-wrap, .component-wrap, .site-logo, .nv-search-icon-component, .builder-item--footer-menu {
@@ -22,7 +22,7 @@ $component-alignments: (
   }
 }
 
-.mobile-align-justify .button {
+.mobile-justify .button {
   flex-grow: 1;
 }
 //</editor-fold>
@@ -30,11 +30,11 @@ $component-alignments: (
 //<editor-fold desc="Tablet Horizontal Alignments">
 @mixin hfg-alignments--tablet-sm() {
   @each $alignment, $flex-setting in $component-alignments {
-	//mobile-align-right desktop-align-left tablet-align-left
-	.hfg-is-group.tablet-align-#{$alignment} {
+	//mobile-right desktop-left tablet-left
+	.hfg-is-group.tablet-#{$alignment} {
 	  justify-content: $flex-setting;
 	}
-	.tablet-align-#{$alignment} {
+	.tablet-#{$alignment} {
 	  text-align: #{$alignment};
 
 	  .nav-ul, .nv-nav-wrap, .component-wrap, .site-logo, .nv-search-icon-component, .builder-item--footer-menu {
@@ -43,7 +43,7 @@ $component-alignments: (
 	}
   }
 
-  .tablet-align-justify .button {
+  .tablet-justify .button {
 	flex-grow: 1;
   }
 }
@@ -52,11 +52,11 @@ $component-alignments: (
 //<editor-fold desc="Laptop Horizontal Alignments">
 @mixin hfg-alignments--laptop() {
   @each $alignment, $flex-setting in $component-alignments {
-	//mobile-align-right desktop-align-left tablet-align-left
-	.hfg-is-group.desktop-align-#{$alignment} {
+	//mobile-right desktop-left tablet-left
+	.hfg-is-group.desktop-#{$alignment} {
 	  justify-content: $flex-setting;
 	}
-	.desktop-align-#{$alignment} {
+	.desktop-#{$alignment} {
 	  text-align: #{$alignment};
 
 	  .nav-ul, .nv-nav-wrap, .component-wrap, .site-logo, .nv-search-icon-component, .builder-item--footer-menu {
@@ -65,7 +65,7 @@ $component-alignments: (
 	}
   }
 
-  .desktop-align-justify .button {
+  .desktop-justify .button {
 	flex-grow: 1;
   }
 }

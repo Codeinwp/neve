@@ -178,7 +178,7 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
 	}
   }
 
-  .mobile-align-center {
+  .mobile-center {
 	.nav-ul {
 	  li a {
 		justify-content: center;
@@ -186,7 +186,7 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
 	}
   }
 
-  .mobile-align-left {
+  .mobile-left {
 	.nav-ul {
 	  li a {
 		justify-content: flex-start;
@@ -194,7 +194,7 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
 	}
   }
 
-  .mobile-align-right {
+  .mobile-right {
 	.nav-ul {
 	  li a {
 		justify-content: flex-end;
@@ -245,7 +245,7 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
 
 @mixin nav-menu--tablet-sm() {
   .header-menu-sidebar-inner {
-	.tablet-align-center {
+	.tablet-center {
 	  .nav-ul {
 		li a {
 		  justify-content: center;
@@ -253,7 +253,7 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
 	  }
 	}
 
-	.tablet-align-left {
+	.tablet-left {
 	  .nav-ul {
 		li a {
 		  justify-content: flex-start;
@@ -261,7 +261,7 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
 	  }
 	}
 
-	.tablet-align-right {
+	.tablet-right {
 	  .nav-ul {
 		li a {
 		  justify-content: flex-end;
@@ -273,7 +273,7 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
 
 @mixin nav-menu--laptop() {
   .header-menu-sidebar-inner {
-	.desktop-align-center {
+	.desktop-center {
 	  .nav-ul {
 		li a {
 		  justify-content: center;
@@ -281,7 +281,7 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
 	  }
 	}
 
-	.desktop-align-left {
+	.desktop-left {
 	  .nav-ul {
 		li a {
 		  justify-content: flex-start;
@@ -289,7 +289,7 @@ ul[id^="nv-primary-navigation"] .current-menu-item > a {
 	  }
 	}
 
-	.desktop-align-right {
+	.desktop-right {
 	  .nav-ul {
 		li a {
 		  justify-content: flex-end;

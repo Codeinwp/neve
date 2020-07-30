@@ -219,7 +219,7 @@ class SecondNav extends Abstract_Component {
 	 */
 	public function add_style( array $css_array = array() ) {
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .nav-ul a',
+			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .nav-ul#secondary-menu li > a',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_COLOR => [
 					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::COLOR_ID,
@@ -238,7 +238,7 @@ class SecondNav extends Abstract_Component {
 			],
 		];
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .nav-menu-secondary:not(.style-full-height) .nav-ul li:hover > a',
+			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .nav-menu-secondary:not(.style-full-height) .nav-ul#secondary-menu li:hover > a',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_COLOR => [
 					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::HOVER_COLOR_ID,
@@ -280,7 +280,7 @@ class SecondNav extends Abstract_Component {
 		];
 
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .style-full-height .nav-ul > li:hover > a:after',
+			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .style-full-height .nav-ul li:hover > a:after',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_WIDTH => [
 					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::SPACING,

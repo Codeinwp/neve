@@ -1114,7 +1114,7 @@ abstract class Abstract_Builder implements Builder {
 			$classes[] = 'col-' . $width . ' col-md-' . $width . ' col-sm-' . $width;
 
 			foreach ( $align as $device => $align ) {
-				$classes[] = $device . '-align-' . $align;
+				$classes[] = $device . '-' . $align;
 			}
 
 			if ( $vertical_align ) {

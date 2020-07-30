@@ -10,7 +10,7 @@ function handleResponsiveRadioButtons( args, nextValue ) {
   let classesToAdd = []
 
   Object.keys(nextValue).map( device => {
-	classesToAdd.push(`${device}-align-${nextValue[device]}`);
+	classesToAdd.push(`${device}-${nextValue[device]}`);
   } );
 
   _.each(items, function (item) {

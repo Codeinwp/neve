@@ -397,8 +397,11 @@ class Nav extends Abstract_Component {
 			],
 		];
 
+		$is_rtl = is_rtl();
+		$last   = $is_rtl ? 'first' : 'last';
+
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .nav-ul > li:not(:last-of-type)',
+			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .nav-ul > li:not(:' . $last . '-of-type)',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_MARGIN_RIGHT => [
 					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::SPACING,
@@ -412,7 +415,7 @@ class Nav extends Abstract_Component {
 		];
 
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .style-full-height .nav-ul > li:not(.menu-item-nav-search):not(.menu-item-nav-cart) > a:after',
+			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .style-full-height .nav-ul li:not(.menu-item-nav-search):not(.menu-item-nav-cart) > a:after',
 			Dynamic_Selector::KEY_RULES    => [
 				'position' => [
 					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::SPACING,
@@ -430,7 +433,7 @@ class Nav extends Abstract_Component {
 		];
 
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .style-full-height .nav-ul > li:not(.menu-item-nav-search):not(.menu-item-nav-cart):hover > a:after',
+			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .style-full-height .nav-ul li:not(.menu-item-nav-search):not(.menu-item-nav-cart):hover > a:after',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_WIDTH => [
 					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::SPACING,
