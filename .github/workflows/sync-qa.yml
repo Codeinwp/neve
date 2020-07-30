@@ -159,7 +159,7 @@ jobs:
           npm ci
       - name: Run Visual Diff on ${{matrix.spec}}
         run: |
-          npm run test-visual-all -- --browser chrome --record --parallel --group visual-diff
+          npm run test-visual-single -- --spec cypress/integration/visual-regression/qa-pages/${{matrix.spec}}.spec.js  --browser chrome --record --parallel --group visual-diff
   empty-job:
     runs-on: ubuntu-latest
     if: success()

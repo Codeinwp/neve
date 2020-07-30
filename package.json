@@ -86,6 +86,7 @@
 		"pre-commit": "npm-run-all phpcs build size",
 		"cypress:open": "cypress open",
 		"test-visual-all": "npx cypress run --config baseUrl=https://qa-neve.themeisle.com,video=false --spec 'cypress/integration/visual-regression/**/*.spec.js' --headless",
+		"test-visual-single": "npx cypress run --config baseUrl=https://qa-neve.themeisle.com,video=false --headless",
 		"cypress:run": "cd cypress && docker-compose up --exit-code-from cypress",
 		"release": "npx semantic-release",
 		"dist": "bash ./bin/dist.sh"
