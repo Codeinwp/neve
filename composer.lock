@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "codeinwp/themeisle-sdk",
-            "version": "3.2.14",
+            "version": "3.2.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeinwp/themeisle-sdk.git",
-                "reference": "992f5e8347836e325ffc50760da1d550b79831c4"
+                "reference": "95b7447a5f4faba410c281c4bf278fbd740fed71"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeinwp/themeisle-sdk/zipball/992f5e8347836e325ffc50760da1d550b79831c4",
-                "reference": "992f5e8347836e325ffc50760da1d550b79831c4",
+                "url": "https://api.github.com/repos/Codeinwp/themeisle-sdk/zipball/95b7447a5f4faba410c281c4bf278fbd740fed71",
+                "reference": "95b7447a5f4faba410c281c4bf278fbd740fed71",
                 "shasum": ""
             },
             "require-dev": {
@@ -42,7 +42,7 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2020-06-10T16:25:09+00:00"
+            "time": "2020-07-23T15:02:10+00:00"
         }
     ],
     "packages-dev": [
