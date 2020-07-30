@@ -1,5 +1,5 @@
 /* Style mega-menu and its children on mobile */
-.nv-nav-wrap .neve-mega-menu {
+.primary-menu-ul > .neve-mega-menu {
   > .sub-menu {
     cursor: default;
 
@@ -17,7 +17,7 @@
   .neve-mm-col {
     text-align: left;
     cursor: default;
-
+	flex: 1;
     .sub-menu {
       border: none;
       padding-left: 0;
@@ -73,7 +73,6 @@
   }
 }
 
-
 .neve-mm-description {
   font-size: .8em;
   padding: 0 0 7px;
@@ -85,7 +84,7 @@
 
 @mixin mega-menu--laptop() {
   .nv-nav-wrap .primary-menu-ul:not(#nv-primary-navigation-sidebar) {
-    .neve-mega-menu {
+    > .neve-mega-menu {
       position: static;
     }
 
@@ -94,8 +93,6 @@
       position: absolute;
       display: flex;
       padding: 20px;
-      left: 25%;
-      transform: translateX(-50%);
 
       &:not(.dropdown-open) {
         pointer-events: none;
@@ -111,7 +108,7 @@
     }
 
     .neve-mega-menu {
-      li {
+      li > {
         > a, > span {
           padding: 7px 0;
           margin: 0 14px;
@@ -163,7 +160,7 @@
   .nv-nav-wrap .primary-menu-ul:not(#nv-primary-navigation-sidebar) {
     .neve-mega-menu {
       > .sub-menu {
-        width: 1170px;
+		width: 1170px;
       }
 
       position: static;

@@ -4,7 +4,7 @@
 	text-decoration: none;
 
 	&:after {
-	  width: 100% !important;
+	  width: 100%;
 	}
   }
 
@@ -44,10 +44,6 @@
 }
 
 .style-full-height {
-  .nav-ul li:hover > a, .row .nav-ul li:focus > a {
-	color: $body-color;
-  }
-
   a {
 	position: relative;
 	align-items: center;
@@ -64,7 +60,7 @@
   }
 }
 .header-menu-sidebar-inner .style-full-height li:hover > a:after {
-	width: 100% !important;
+	max-width: 100%;
 }
 // Footer nav menu
 .nav-menu-footer {
@@ -95,7 +91,6 @@
 	margin: 0 auto;
 	width: 0;
 	height: 2px;
-	background-color: #0366d6;
 	transition: opacity .3s ease, width .3s ease;
 	right: 0;
 	left: 0;

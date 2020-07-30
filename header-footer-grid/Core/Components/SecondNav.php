@@ -262,16 +262,19 @@ class SecondNav extends Abstract_Component {
 		];
 
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .style-full-height .nav-ul > li > a:after',
+			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .style-full-height #secondary-menu.nav-ul > li > a:after',
 			Dynamic_Selector::KEY_RULES    => [
 				'position' => [
 					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::SPACING,
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 					Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
+						if ( $device !== Dynamic_Selector::DESKTOP ) {
+							return '';
+						}
 						$value = absint( $value );
-						return sprintf( 'left:%s;right:%s', - $value / 2 . 'px', - $value / 2 . 'px' );
+						return sprintf( 'left:%s;right:%s', -$value / 2 . 'px', -$value / 2 . 'px' );
 					},
-					Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::SPACING ),
+					Dynamic_Selector::META_DEFAULT       => $this->get_default_for_responsive_from_intval( self::SPACING, 20 ),
 				],
 			],
 		];
@@ -283,11 +286,7 @@ class SecondNav extends Abstract_Component {
 					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::SPACING,
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 					Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
-						if ( $device !== Dynamic_Selector::DESKTOP ) {
-							return '';
-						}
-
-						return sprintf( 'width: calc(100%% + %s)!important;', absint( $value ) . 'px' );
+						return sprintf( 'width: calc(100%% + %s);', absint( $value ) . 'px' );
 					},
 					Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::SPACING ),
 				],
