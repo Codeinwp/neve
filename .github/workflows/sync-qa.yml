@@ -28,6 +28,13 @@ jobs:
           mkdir $HOME/.ssh
           echo "$SSH_KEY" > "$HOME/.ssh/key"
           chmod 600 "$HOME/.ssh/key"
+      - uses: chrnorm/deployment-action@releases/v1
+        name: Create GitHub deployment
+        id: deployment
+        with:
+          token: ${{ secrets.BOT_TOKEN }}
+          target_url: http://qa-neve.themeisle.com/empty-site
+          environment: production
       - name: Deploy to QA
         run: |
           rsync -rc --exclude-from="$GITHUB_WORKSPACE/.distignore" -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no -p $SSH_PORT" "$GITHUB_WORKSPACE/dist/neve" $SSH_USERNAME@$SSH_HOST:$QA_ROOT
