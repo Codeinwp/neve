@@ -43,8 +43,8 @@ final class Manager {
 	 */
 	public function init() {
 		add_action( 'add_meta_boxes', array( $this, 'add' ) );
-		add_action( 'init', array( $this, 'define_controls' ) );
-		add_action( 'init', array( $this, 'load_controls' ) );
+		add_action( 'admin_init', array( $this, 'define_controls' ) );
+		add_action( 'admin_init', array( $this, 'load_controls' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) );
 		add_action( 'save_post', array( $this, 'save' ) );
 
