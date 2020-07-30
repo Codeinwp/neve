@@ -22,7 +22,7 @@ jobs:
         run: |
           npm ci
           composer install --no-dev --prefer-dist --no-progress --no-suggest
-          npm run build
+          npm run dist
       - name: Add SSH Key
         run: |
           mkdir $HOME/.ssh
@@ -30,7 +30,7 @@ jobs:
           chmod 600 "$HOME/.ssh/key"
       - name: Deploy to QA
         run: |
-          rsync -rc --exclude-from="$GITHUB_WORKSPACE/.distignore" -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no -p $SSH_PORT" "$GITHUB_WORKSPACE/" $SSH_USERNAME@$SSH_HOST:$QA_ROOT
+          rsync -rc --exclude-from="$GITHUB_WORKSPACE/.distignore" -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no -p $SSH_PORT" "$GITHUB_WORKSPACE/dist/neve" $SSH_USERNAME@$SSH_HOST:$QA_ROOT
       - name: Rebuild Neve Reference
         run: |
           ssh $SSH_USERNAME@$SSH_HOST "bash ~/reset-neve-qa.sh"
