@@ -1593,18 +1593,6 @@ article {
   color: #fff;
 }
 
-.nv-text-align-right {
-  text-align: right;
-}
-
-.nv-text-align-left {
-  text-align: left;
-}
-
-.nv-text-align-center {
-  text-align: center;
-}
-
 #comments {
   border-top: 1px solid #f0f0f0;
   margin-top: 10px;

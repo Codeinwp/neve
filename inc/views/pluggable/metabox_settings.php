@@ -563,7 +563,7 @@ class Metabox_Settings {
 
 		$title_meta_alignment = get_post_meta( $post_id, 'neve_meta_title_alignment', true );
 		if ( ! empty( $title_meta_alignment ) ) {
-			return 'nv-text-align-' . $title_meta_alignment;
+			return 'has-text-align-' . $title_meta_alignment;
 		}
 		return $alignment;
 	}
