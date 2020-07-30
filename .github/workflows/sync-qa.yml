@@ -23,7 +23,7 @@ jobs:
           npm ci
           composer install --no-dev --prefer-dist --no-progress --no-suggest
           npm run dist
-      - name: Add SSH Key
+      - name: Authenticate
         run: |
           mkdir $HOME/.ssh
           echo "$SSH_KEY" > "$HOME/.ssh/key"
