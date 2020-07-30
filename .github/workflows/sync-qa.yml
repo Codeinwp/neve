@@ -18,7 +18,7 @@ jobs:
       QA_ROOT: ${{ secrets.QA_ROOT }}
     steps:
       - uses: actions/checkout@master
-      - name: Build
+      - name: Build dist
         run: |
           npm ci
           composer install --no-dev --prefer-dist --no-progress --no-suggest
