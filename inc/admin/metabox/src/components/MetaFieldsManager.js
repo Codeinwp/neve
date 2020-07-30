@@ -14,20 +14,7 @@ class MetaFieldsManager extends Component {
 	constructor(props) {
 		super(props);
 		this.state = Object.assign( {}, wp.data.select( 'core/editor' ).getEditedPostAttribute( 'meta' ) );
-		this.componentsGroup = [
-			{
-				'title': __( 'Page Layout', 'neve' ),
-				'controls': [ 'neve_meta_sidebar', 'neve_meta_container', 'neve_meta_enable_content_width', 'neve_meta_content_width' ]
-			},
-			{
-				'title': __( 'Page Title', 'neve' ),
-				'controls': [ 'neve_meta_header_elements_order', 'neve_meta_title_alignment', 'neve_meta_author_avatar', 'neve_meta_reading_time' ]
-			},
-			{
-				'title': __( 'Elements', 'neve' ),
-				'controls': [ 'neve_meta_disable_header', 'neve_meta_disable_footer', 'neve_meta_disable_title', 'neve_meta_comments', 'neve_meta_tags', 'neve_meta_social_icons' ]
-			}
-		];
+		this.componentsGroup = metaSidebar.component_groups;
 		this.updateValues = this.updateValues.bind( this );
 	}
 
@@ -103,8 +90,8 @@ class MetaFieldsManager extends Component {
 			<>
 				{this.updateBlockWidth()}
 				{
-					this.componentsGroup.map( ( group, index ) => {
-						const { title, controls } = group;
+					Object.keys( this.componentsGroup ).map( ( group, index ) => {
+						const { title, controls } = this.componentsGroup[group];
 						return (
 							<div key={index} className="nv-option-category">
 								<PanelBody

@@ -43,87 +43,14 @@ class Metabox_Settings {
 		add_filter( 'neve_filter_toggle_content_parts', array( $this, 'filter_components_toggle' ), 100, 2 );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'editor_content_width' ), 100 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'content_width' ), 999 );
+
+
 		add_filter( 'neve_layout_single_post_elements_order', array( $this, 'filter_post_elements' ) );
 		add_filter( 'neve_layout_single_post_elements_order', array( $this, 'comments_meta_action' ) );
 		add_filter( 'neve_layout_single_post_elements_order', array( $this, 'tags_meta_action' ) );
 		add_filter( 'neve_post_title_alignment', array( $this, 'filter_title_alignment' ) );
 		add_filter( 'neve_display_author_avatar', array( $this, 'filter_author_avatar_display' ) );
 	}
-
-	/**
-	 * Control the comments element from post meta.
-	 *
-	 * @param array $components Post components.
-	 *
-	 * @return array
-	 */
-	public function comments_meta_action( $components ) {
-		$post_id = $this->get_post_id();
-
-		if ( $post_id === false ) {
-			return $components;
-		}
-
-		$comments_status = get_post_meta( $post_id, 'neve_meta_comments', true );
-
-		if ( empty( $comments_status ) ) {
-			return $components;
-		}
-
-		$key = array_search( 'comments', $components, true );
-
-		if ( $comments_status === 'on' ) {
-			if ( $key === false ) {
-				$components[] = 'comments';
-			}
-			return $components;
-		}
-
-		if ( $key !== false ) {
-			unset( $components[ $key ] );
-		}
-
-		return $components;
-	}
-
-	/**
-	 * Control the comments element from post meta.
-	 *
-	 * @param array $components Post components.
-	 *
-	 * @return array
-	 */
-	public function tags_meta_action( $components ) {
-		$post_id = $this->get_post_id();
-
-		if ( $post_id === false ) {
-			return $components;
-		}
-
-		$tags_status = get_post_meta( $post_id, 'neve_meta_tags', true );
-
-		if ( empty( $tags_status ) ) {
-			return $components;
-		}
-
-		$key = array_search( 'tags', $components, true );
-
-		if ( $tags_status === 'on' ) {
-			if ( $key === false ) {
-				$components[] = 'tags';
-			}
-			return $components;
-		}
-
-
-		if ( $key !== false ) {
-			unset( $components[ $key ] );
-		}
-
-		return $components;
-	}
-
-
 
 	/**
 	 * Check if we should account for the meta settings.
@@ -372,94 +299,6 @@ class Metabox_Settings {
 		return true;
 	}
 
-
-	/**
-	 * Post elements order for title components.
-	 *
-	 * @param array $elements_order Elements order before this filter.
-	 *
-	 * @return array
-	 */
-	public function filter_post_elements( $elements_order ) {
-		$post_id = $this->get_post_id();
-
-		if ( $post_id === false ) {
-			return $elements_order;
-		}
-
-		$meta_elements_order = get_post_meta( $post_id, 'neve_meta_header_elements_order', true );
-		if ( empty( $meta_elements_order ) ) {
-			return $elements_order;
-		}
-
-		/**
-		 * Remove title meta and thumbnail from the initial order
-		 */
-		$elements_to_remove = array( 'title-meta', 'thumbnail' );
-		foreach ( $elements_to_remove as $element ) {
-			$key = array_search( $element, $elements_order );
-			if ( $key !== false ) {
-				unset( $elements_order[ $key ] );
-			}
-		}
-
-		$meta_elements_order = json_decode( $meta_elements_order, true );
-		$header_order        = array();
-		foreach ( $meta_elements_order as $element => $is_visible ) {
-			if ( $is_visible ) {
-				$header_order[] = $element;
-			}
-		}
-		$elements_order = array_merge( $header_order, $elements_order );
-
-		return $elements_order;
-	}
-
-
-	/**
-	 * Filter title alignment.
-	 *
-	 * @param string $alignment Title alignment.
-	 *
-	 * @return mixed
-	 */
-	public function filter_title_alignment( $alignment ) {
-		$post_id = $this->get_post_id();
-
-		if ( $post_id === false ) {
-			return $alignment;
-		}
-
-		$title_meta_alignment = get_post_meta( $post_id, 'neve_meta_title_alignment', true );
-		if ( ! empty( $title_meta_alignment ) ) {
-			return 'nv-text-align-' . $title_meta_alignment;
-		}
-		return $alignment;
-	}
-
-	/**
-	 * Filter the display of author avatar
-	 *
-	 * @param bool $show_avatar Display avatar flag.
-	 *
-	 * @return bool
-	 */
-	public function filter_author_avatar_display( $show_avatar ) {
-
-		$post_id = $this->get_post_id();
-
-		if ( $post_id === false ) {
-			return $show_avatar;
-		}
-		$show_author_avatar = get_post_meta( $post_id, 'neve_meta_author_avatar', true );
-
-		if ( ! empty( $show_author_avatar ) ) {
-			return $show_author_avatar === 'on';
-		}
-
-		return $show_avatar;
-	}
-
 	/**
 	 * Change sidebar position based on meta.
 	 *
@@ -604,5 +443,151 @@ class Metabox_Settings {
 		}
 
 		return '';
+	}
+
+	/**
+	 * Post elements order for title components.
+	 *
+	 * @param array $elements_order Elements order before this filter.
+	 *
+	 * @return array
+	 */
+	public function filter_post_elements( $elements_order ) {
+		$post_id = $this->get_post_id();
+
+		if ( $post_id === false ) {
+			return $elements_order;
+		}
+
+		$meta_elements_order = get_post_meta( $post_id, 'neve_meta_header_elements_order', true );
+		if ( empty( $meta_elements_order ) ) {
+			return $elements_order;
+		}
+
+		/**
+		 * Remove title meta and thumbnail from the initial order
+		 */
+		$elements_to_remove = array( 'title-meta', 'thumbnail' );
+		foreach ( $elements_to_remove as $element ) {
+			$key = array_search( $element, $elements_order );
+			if ( $key !== false ) {
+				unset( $elements_order[ $key ] );
+			}
+		}
+
+		$meta_elements_order = json_decode( $meta_elements_order, true );
+		$header_order        = array();
+		foreach ( $meta_elements_order as $element => $is_visible ) {
+			if ( $is_visible ) {
+				$header_order[] = $element;
+			}
+		}
+		$elements_order = array_merge( $header_order, $elements_order );
+
+		return $elements_order;
+	}
+
+	/**
+	 * Control the visibility of a post component.
+	 *
+	 * @param string $component Component that needs to show or hide.
+	 * @param string $post_meta_name Name of the meta control.
+	 * @param array  $post_components Current post components ordering.
+	 *
+	 * @return array
+	 */
+	private function control_post_component( $component, $post_meta_name, $post_components ) {
+		$post_id = $this->get_post_id();
+
+		if ( $post_id === false ) {
+			return $post_components;
+		}
+
+		$option_status = get_post_meta( $post_id, $post_meta_name, true );
+
+		if ( empty( $option_status ) ) {
+			return $post_components;
+		}
+
+		$key = array_search( $component, $post_components, true );
+
+		if ( $option_status === 'on' ) {
+			if ( $key === false ) {
+				$post_components[] = $component;
+			}
+			return $post_components;
+		}
+
+		if ( $key !== false ) {
+			unset( $post_components[ $key ] );
+		}
+
+		return $post_components;
+	}
+
+	/**
+	 * Control the comments element from post meta.
+	 *
+	 * @param array $components Post components.
+	 *
+	 * @return array
+	 */
+	public function comments_meta_action( $components ) {
+		return $this->control_post_component( 'comments', 'neve_meta_comments', $components );
+	}
+
+	/**
+	 * Control the comments element from post meta.
+	 *
+	 * @param array $components Post components.
+	 *
+	 * @return array
+	 */
+	public function tags_meta_action( $components ) {
+		return $this->control_post_component( 'tags', 'neve_meta_tags', $components );
+	}
+
+	/**
+	 * Filter title alignment.
+	 *
+	 * @param string $alignment Title alignment.
+	 *
+	 * @return mixed
+	 */
+	public function filter_title_alignment( $alignment ) {
+		$post_id = $this->get_post_id();
+
+		if ( $post_id === false ) {
+			return $alignment;
+		}
+
+		$title_meta_alignment = get_post_meta( $post_id, 'neve_meta_title_alignment', true );
+		if ( ! empty( $title_meta_alignment ) ) {
+			return 'nv-text-align-' . $title_meta_alignment;
+		}
+		return $alignment;
+	}
+
+	/**
+	 * Filter the display of author avatar
+	 *
+	 * @param bool $show_avatar Display avatar flag.
+	 *
+	 * @return bool
+	 */
+	public function filter_author_avatar_display( $show_avatar ) {
+
+		$post_id = $this->get_post_id();
+
+		if ( $post_id === false ) {
+			return $show_avatar;
+		}
+		$show_author_avatar = get_post_meta( $post_id, 'neve_meta_author_avatar', true );
+
+		if ( ! empty( $show_author_avatar ) ) {
+			return $show_author_avatar === 'on';
+		}
+
+		return $show_avatar;
 	}
 }

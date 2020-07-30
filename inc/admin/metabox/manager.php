@@ -336,16 +336,33 @@ final class Manager {
 		wp_enqueue_script( 'neve-meta-sidebar' );
 
 		global $post_type;
-		$container    = $post_type === 'post' ? Mods::get( Config::MODS_SINGLE_POST_CONTAINER_STYLE, 'contained' ) : Mods::get( Config::MODS_DEFAULT_CONTAINER_STYLE, 'contained' );
-		$editor_width = Mods::get( Config::MODS_CONTAINER_WIDTH );
-		$editor_width = isset( $editor_width['desktop'] ) ? (int) $editor_width['desktop'] : 1170;
-
+		$container        = $post_type === 'post' ? Mods::get( Config::MODS_SINGLE_POST_CONTAINER_STYLE, 'contained' ) : Mods::get( Config::MODS_DEFAULT_CONTAINER_STYLE, 'contained' );
+		$editor_width     = Mods::get( Config::MODS_CONTAINER_WIDTH );
+		$editor_width     = isset( $editor_width['desktop'] ) ? (int) $editor_width['desktop'] : 1170;
+		$component_groups = apply_filters(
+			'neve_meta_component_groups',
+			[
+				'group_page_layout' => [
+					'title'    => __( 'Page Layout', 'neve' ),
+					'controls' => [ 'neve_meta_sidebar', 'neve_meta_container', 'neve_meta_enable_content_width', 'neve_meta_content_width' ],
+				],
+				'group_page_title'  => [
+					'title'    => __( 'Page Title', 'neve' ),
+					'controls' => [ 'neve_meta_header_elements_order', 'neve_meta_title_alignment', 'neve_meta_author_avatar' ],
+				],
+				'group_elements'    => [
+					'title'    => __( 'Elements', 'neve' ),
+					'controls' => [ 'neve_meta_disable_header', 'neve_meta_disable_footer', 'neve_meta_disable_title', 'neve_meta_comments', 'neve_meta_tags' ],
+				],
+			] 
+		);
 		wp_localize_script(
 			'neve-meta-sidebar',
 			'metaSidebar',
 			array(
-				'controls' => $this->meta_sidebar_controls,
-				'actions'  => array(
+				'component_groups' => $component_groups,
+				'controls'         => $this->meta_sidebar_controls,
+				'actions'          => array(
 					'neve_meta_content_width' => array(
 						'container' => $container,
 						'editor'    => $editor_width,
