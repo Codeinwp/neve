@@ -127,8 +127,8 @@ class MetaFieldsManager extends Component {
 						className="nv-reset-meta"
 						onClick={ () => {
 							const {editPost} = wp.data.dispatch('core/editor');
-							this.componentsGroup.map( ( group, index ) => {
-								const { controls } = group;
+							Object.keys( this.componentsGroup ).map( ( group, index ) => {
+								const { controls } = this.componentsGroup[group];
 								controls.map( (control, index) => {
 									let resetValue = '';
 									if ( 'neve_meta_content_width' === control ) {
