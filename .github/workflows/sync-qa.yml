@@ -33,7 +33,7 @@ jobs:
           rsync -rc --exclude-from="$GITHUB_WORKSPACE/.distignore" -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no -p $SSH_PORT" "$GITHUB_WORKSPACE/dist/neve" $SSH_USERNAME@$SSH_HOST:$QA_ROOT
       - name: Rebuild Neve Reference
         run: |
-          ssh $SSH_USERNAME@$SSH_HOST "bash ~/reset-neve-qa.sh"
+          ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no $SSH_USERNAME@$SSH_HOST "bash ~/reset-neve-qa.sh"
       - name: Update deployment status (success)
         if: success()
         uses: chrnorm/deployment-status@releases/v1
