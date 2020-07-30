@@ -35,7 +35,7 @@ jobs:
           token: ${{ secrets.BOT_TOKEN }}
           target_url: http://qa-neve.themeisle.com/empty-site
           environment: production
-      - name: Deploy to QA
+      - name: Deploy to QA env
         run: |
           rsync -rc --exclude-from="$GITHUB_WORKSPACE/.distignore" -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no -p $SSH_PORT" "$GITHUB_WORKSPACE/dist/neve" $SSH_USERNAME@$SSH_HOST:$QA_ROOT
       - name: Rebuild Neve Reference
