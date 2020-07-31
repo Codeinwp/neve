@@ -70,7 +70,7 @@ jobs:
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-      - name: Install deps and download base
+      - name: Install node deps
         run: |
           npm ci
       - name: Run Visual Diff
