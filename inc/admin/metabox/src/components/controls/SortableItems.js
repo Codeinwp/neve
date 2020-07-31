@@ -83,19 +83,34 @@ export default compose([
 				newElements.map( ( value, index ) => {
 					newMetaValue[value] = metaValue[value];
 				});
+				props.stateUpdate( props.id, JSON.stringify( newMetaValue ) );
 				dispatch('core/editor').editPost({meta: {[props.id]: JSON.stringify( newMetaValue ) }});
 			},
 			toggle: function ( value ) {
 				let metaValue = JSON.parse( select('core/editor').getEditedPostAttribute('meta')[props.id] || props.data.default );
 				metaValue[value] = ! metaValue[value];
+				props.stateUpdate( props.id, JSON.stringify( metaValue ) );
 				dispatch('core/editor').editPost({meta: {[props.id]: JSON.stringify(metaValue) }});
 			}
 		};
 
 	}),
 	withSelect((select, props) => {
+		let metaVal = select('core/editor').getEditedPostAttribute('meta')[props.id];
+		if ( metaVal ) {
+			let metaVal = JSON.parse( select('core/editor').getEditedPostAttribute('meta')[props.id] );
+			let defaultVal = JSON.parse(props.data.default);
+			if (Object.keys(metaVal).length !== Object.keys(defaultVal).length) {
+				for (let key in defaultVal) {
+					if ( ! metaVal.hasOwnProperty(key)) {
+						metaVal[key] = defaultVal[key];
+					}
+				}
+			}
+			metaVal = JSON.stringify( metaVal );
+		}
 		return {
-			metaFieldValue: select('core/editor').getEditedPostAttribute('meta')[props.id] || props.data.default
+			metaFieldValue: metaVal || props.data.default
 		};
 	})
 

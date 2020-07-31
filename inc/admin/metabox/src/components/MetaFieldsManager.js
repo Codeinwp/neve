@@ -27,31 +27,48 @@ class MetaFieldsManager extends Component {
 	renderControl( data, index ) {
 		const {type, id, settings} = data;
 
-		if ( 'radio' === type ) {
+		let shouldShow  = true;
+		const dependsOn = settings['depends_on'];
+		if ( 'undefined' !== typeof dependsOn ) {
+			const dependentControlType = metaSidebar.controls.find( obj => dependsOn === obj.id ).type;
+			if ( 'sortable-list' === dependentControlType ) {
+				shouldShow = false;
+				const dependentControlDefault = metaSidebar.controls.find(obj => dependsOn === obj.id ).settings.default;
+				const defaultData = JSON.parse( dependentControlDefault );
+				const elementsState = '' !== this.state[dependsOn] ? JSON.parse( this.state[dependsOn] ) : false;
+				if ( ( '' === this.state[dependsOn] && true === defaultData.meta ) || ( elementsState.hasOwnProperty('meta') && true === elementsState.meta ) ) {
+					shouldShow = true;
+				}
+			}
+			if ( 'checkbox' === dependentControlType ) {
+				shouldShow = 'on' === this.state[dependsOn];
+			}
+		}
+
+		if ( 'radio' === type && shouldShow ) {
 			return (
 				<RadioImage stateUpdate={this.updateValues} key={index} id={id} data={settings}/>
 			);
 		}
-		if ( 'button-group' === type ) {
+		if ( 'button-group' === type && shouldShow ) {
 			return (
 				<ButtonChoices stateUpdate={this.updateValues} key={index} id={id} data={settings}/>
 			);
 		}
-		if ( 'checkbox' === type ) {
+
+		if ( 'checkbox' === type && shouldShow ) {
 			return (
 				<CheckBox stateUpdate={this.updateValues} key={index} id={id} data={settings}/>
 			);
 		}
-		if ( 'range' === type ) {
-			const dependsOn = settings['depends_on'];
-			if ( 'on' === this.state[dependsOn] ) {
-				return (
-					<Range stateUpdate={this.updateValues} key={index} id={id} data={settings}/>
-				);
-			}
+
+		if ( 'range' === type  && shouldShow ) {
+			return (
+				<Range stateUpdate={this.updateValues} key={index} id={id} data={settings}/>
+			);
 		}
 
-		if ( 'sortable-list' === type ) {
+		if ( 'sortable-list' === type && shouldShow ) {
 			return (
 				<SortableItems stateUpdate={this.updateValues} key={index} id={id} data={settings}/>
 			);

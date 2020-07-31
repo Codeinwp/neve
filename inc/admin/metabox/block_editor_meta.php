@@ -44,7 +44,7 @@ class Block_Editor_Meta extends Controls_Base {
 						'right'      => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAABXCAYAAAC5pDO6AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAFVSURBVHgB7dlBSsNQFEbhWyORSCDYFajYgboH9z9zDerAOrMYCQSCmo498MqjCW3PB9nAIbn/IIv489V+/8QReX4/jxxPq4vFWehfhgGGAYYBhgGGAYYBhgGGAYYBhgGGAYYBhgGGAYYBhgGGAYYBhgGGAYYBhgGGAYYBhgHJ/zLbto2315eY2/XNbVRVFfu200/evu9jbsMwxBSSw9R1HfcPjzG3oihiCju9MWVZxqnw+ALDAMMA5xo418C5Bs418PgCwwDDAOcaONfAuQbONfD4AsMAwwDnGjjXwLkGzjXw+ALDgORPqeu67ZOjaZrJbkSu5DCbzWd8rNeRo7xbbY/4IUgOU1WXcbVcRo5DeVtGyWHGz2B8ToXHFxgGGAYYBhgGGAYYBhgGGAYYBhgGGAYYBhgGGAYYBhgGGAYYBhgGGAYYBhgGGAYYBhgGGAYYBhgG/AIdeUYQlOqQ4AAAAABJRU5ErkJggg==',
 					],
 					'default' => 'default',
-					'label'   => __( 'Container', 'neve' ),
+					'label'   => __( 'Sidebar', 'neve' ),
 				],
 				'priority' => 10,
 			],
@@ -67,7 +67,7 @@ class Block_Editor_Meta extends Controls_Base {
 				'type'     => 'checkbox',
 				'settings' => [
 					'default'     => ( Main::is_new_page() || Main::is_checkout() ) ? 'on' : 'off',
-					'input_label' => __( 'Custom Content Width', 'neve' ),
+					'input_label' => __( 'Custom Content Width (%)', 'neve' ),
 				],
 				'priority' => 20,
 			],
@@ -96,26 +96,6 @@ class Block_Editor_Meta extends Controls_Base {
 	private function add_page_title_controls() {
 		$controls = [
 			[
-				'id'        => 'neve_meta_header_elements_order',
-				'type'      => 'sortable-list',
-				'post_type' => 'post',
-				'settings'  => [
-					'default'  => wp_json_encode(
-						[
-							'title'     => true,
-							'meta'      => true,
-							'thumbnail' => true,
-						]
-					),
-					'elements' => [
-						'title'     => __( 'Page Title', 'neve' ),
-						'meta'      => __( 'Page Meta', 'neve' ),
-						'thumbnail' => __( 'Featured Image', 'neve' ),
-					],
-				],
-				'priority'  => 10,
-			],
-			[
 				'id'       => 'neve_meta_title_alignment',
 				'type'     => 'button-group',
 				'settings' => [
@@ -137,6 +117,7 @@ class Block_Editor_Meta extends Controls_Base {
 				'settings'  => [
 					'default'     => 'on',
 					'input_label' => __( 'Author Avatar', 'neve' ),
+					'depends_on'  => 'neve_post_elements_order',
 				],
 				'priority'  => 20,
 			],
@@ -153,6 +134,27 @@ class Block_Editor_Meta extends Controls_Base {
 	 */
 	private function add_elements_controls() {
 		$controls = [
+			[
+				'id'        => 'neve_post_elements_order',
+				'type'      => 'sortable-list',
+				'post_type' => 'post',
+				'settings'  => [
+					'default'  => $this->get_post_elements_default(),
+					'elements' => apply_filters(
+						'neve_post_elements_meta_control',
+						[
+							'title'           => __( 'Page Title', 'neve' ),
+							'meta'            => __( 'Page Meta', 'neve' ),
+							'thumbnail'       => __( 'Featured Image', 'neve' ),
+							'content'         => __( 'Content', 'neve' ),
+							'tags'            => __( 'Tags', 'neve' ),
+							'comments'        => __( 'Comments', 'neve' ),
+							'post-navigation' => __( 'Post Navigation', 'neve' ),
+						]
+					),
+				],
+				'priority'  => 10,
+			],
 			[
 				'id'       => 'neve_meta_disable_header',
 				'type'     => 'checkbox',
@@ -181,31 +183,65 @@ class Block_Editor_Meta extends Controls_Base {
 				],
 				'priority'  => 30,
 			],
-			[
-				'id'        => 'neve_meta_comments',
-				'post_type' => 'post',
-				'type'      => 'checkbox',
-				'settings'  => [
-					'default'     => 'on',
-					'input_label' => __( 'Comments', 'neve' ),
-				],
-				'priority'  => 40,
-			],
-			[
-				'id'        => 'neve_meta_tags',
-				'post_type' => 'post',
-				'type'      => 'checkbox',
-				'settings'  => [
-					'default'     => 'on',
-					'input_label' => __( 'Tags', 'neve' ),
-				],
-				'priority'  => 50,
-			],
 		];
 		$controls = apply_filters( 'neve_filter_meta_elements_controls', $controls );
 		$controls = json_decode( wp_json_encode( $controls ) );
 		foreach ( $controls as $control ) {
 			$this->add_control( $control );
 		}
+	}
+
+	/**
+	 * Get post elements default value from customizer
+	 *
+	 * @return string
+	 */
+	private function get_post_elements_default() {
+
+		$order          = [];
+		$all_components = apply_filters(
+			'neve_post_all_elements_filter',
+			[
+				'title',
+				'meta',
+				'thumbnail',
+				'content',
+				'tags',
+				'comments',
+				'post-navigation',
+			]
+		);
+
+		$default_order = apply_filters(
+			'neve_single_post_elements_default_order',
+			array(
+				'title-meta',
+				'thumbnail',
+				'content',
+				'tags',
+				'comments',
+			)
+		);
+		$content_order = get_theme_mod( 'neve_layout_single_post_elements_order', wp_json_encode( $default_order ) );
+		if ( ! is_string( $content_order ) ) {
+			$content_order = wp_json_encode( $default_order );
+		}
+		$content_order = json_decode( $content_order, true );
+		foreach ( $content_order as $element ) {
+			if ( $element === 'title-meta' ) {
+				$order['title'] = true;
+				$order['meta']  = true;
+			} else {
+				$order[ $element ] = true;
+			}
+		}
+
+		foreach ( $all_components as $component ) {
+			if ( ! array_key_exists( $component, $order ) ) {
+				$order[ $component ] = false;
+			}
+		}
+
+		return wp_json_encode( $order );
 	}
 }

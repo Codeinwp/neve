@@ -43,7 +43,7 @@ const Sidebar = () => {
 			</PluginSidebarMoreMenuItem>
 			<PluginSidebar
 				name="neve-meta-sidebar"
-				title={__('Neve options', 'neve')}
+				title={__('Neve Options', 'neve')}
 			>
 				<MetaFieldsManager/>
 			</PluginSidebar>

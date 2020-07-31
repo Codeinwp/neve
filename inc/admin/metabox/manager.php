@@ -333,9 +333,12 @@ final class Manager {
 	 * Register the metabox sidebar.
 	 */
 	public function meta_sidebar_script_enqueue() {
+		global $post_type;
+		if ( $post_type !== 'post' && $post_type !== 'page' ) {
+			return false;
+		}
 		wp_enqueue_script( 'neve-meta-sidebar' );
 
-		global $post_type;
 		$container        = $post_type === 'post' ? Mods::get( Config::MODS_SINGLE_POST_CONTAINER_STYLE, 'contained' ) : Mods::get( Config::MODS_DEFAULT_CONTAINER_STYLE, 'contained' );
 		$editor_width     = Mods::get( Config::MODS_CONTAINER_WIDTH );
 		$editor_width     = isset( $editor_width['desktop'] ) ? (int) $editor_width['desktop'] : 1170;
@@ -348,11 +351,11 @@ final class Manager {
 				],
 				'group_page_title'  => [
 					'title'    => __( 'Page Title', 'neve' ),
-					'controls' => [ 'neve_meta_header_elements_order', 'neve_meta_title_alignment', 'neve_meta_author_avatar' ],
+					'controls' => [ 'neve_meta_title_alignment', 'neve_meta_author_avatar' ],
 				],
 				'group_elements'    => [
 					'title'    => __( 'Elements', 'neve' ),
-					'controls' => [ 'neve_meta_disable_header', 'neve_meta_disable_footer', 'neve_meta_disable_title', 'neve_meta_comments', 'neve_meta_tags' ],
+					'controls' => [ 'neve_post_elements_order', 'neve_meta_disable_header', 'neve_meta_disable_footer', 'neve_meta_disable_title' ],
 				],
 			]
 		);

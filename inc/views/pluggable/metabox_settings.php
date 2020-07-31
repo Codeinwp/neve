@@ -46,8 +46,6 @@ class Metabox_Settings {
 
 
 		add_filter( 'neve_layout_single_post_elements_order', array( $this, 'filter_post_elements' ) );
-		add_filter( 'neve_layout_single_post_elements_order', array( $this, 'comments_meta_action' ) );
-		add_filter( 'neve_layout_single_post_elements_order', array( $this, 'tags_meta_action' ) );
 		add_filter( 'neve_post_title_alignment', array( $this, 'filter_title_alignment' ) );
 		add_filter( 'neve_display_author_avatar', array( $this, 'filter_author_avatar_display' ) );
 	}
@@ -459,92 +457,19 @@ class Metabox_Settings {
 			return $elements_order;
 		}
 
-		$meta_elements_order = get_post_meta( $post_id, 'neve_meta_header_elements_order', true );
+		$meta_elements_order = get_post_meta( $post_id, 'neve_post_elements_order', true );
 		if ( empty( $meta_elements_order ) ) {
 			return $elements_order;
 		}
 
-		/**
-		 * Remove title meta and thumbnail from the initial order
-		 */
-		$elements_to_remove = array( 'title-meta', 'thumbnail' );
-		foreach ( $elements_to_remove as $element ) {
-			$key = array_search( $element, $elements_order );
-			if ( $key !== false ) {
-				unset( $elements_order[ $key ] );
-			}
-		}
-
 		$meta_elements_order = json_decode( $meta_elements_order, true );
-		$header_order        = array();
+		$meta_order          = array();
 		foreach ( $meta_elements_order as $element => $is_visible ) {
 			if ( $is_visible ) {
-				$header_order[] = $element;
+				$meta_order[] = $element;
 			}
 		}
-		$elements_order = array_merge( $header_order, $elements_order );
-
-		return $elements_order;
-	}
-
-	/**
-	 * Control the visibility of a post component.
-	 *
-	 * @param string $component Component that needs to show or hide.
-	 * @param string $post_meta_name Name of the meta control.
-	 * @param array  $post_components Current post components ordering.
-	 *
-	 * @return array
-	 */
-	private function control_post_component( $component, $post_meta_name, $post_components ) {
-		$post_id = $this->get_post_id();
-
-		if ( $post_id === false ) {
-			return $post_components;
-		}
-
-		$option_status = get_post_meta( $post_id, $post_meta_name, true );
-
-		if ( empty( $option_status ) ) {
-			return $post_components;
-		}
-
-		$key = array_search( $component, $post_components, true );
-
-		if ( $option_status === 'on' ) {
-			if ( $key === false ) {
-				$post_components[] = $component;
-			}
-			return $post_components;
-		}
-
-		if ( $key !== false ) {
-			unset( $post_components[ $key ] );
-		}
-
-		return $post_components;
-	}
-
-	/**
-	 * Control the comments element from post meta.
-	 *
-	 * @param array $components Post components.
-	 *
-	 * @return array
-	 */
-	public function comments_meta_action( $components ) {
-		return $this->control_post_component( 'comments', 'neve_meta_comments', $components );
-	}
-
-	/**
-	 * Control the comments element from post meta.
-	 *
-	 * @param array $components Post components.
-	 *
-	 * @return array
-	 */
-	public function tags_meta_action( $components ) {
-		return $this->control_post_component( 'tags', 'neve_meta_tags', $components );
+		return $meta_order;
 	}
 
 	/**

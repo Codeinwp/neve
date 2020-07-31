@@ -268,7 +268,7 @@ class Layout_Sidebar extends Base_Customizer {
 		}
 
 		$meta = get_post_meta( $shop_id, 'neve_meta_sidebar', true );
-		if ( empty( $meta ) ) {
+		if ( empty( $meta ) || $meta === 'default' ) {
 			return '';
 		}
 
