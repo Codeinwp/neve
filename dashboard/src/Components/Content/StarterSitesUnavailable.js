@@ -4,16 +4,17 @@ import { get } from '../../utils/rest';
 const { __ } = wp.i18n;
 const { useState } = wp.element;
 const { Button } = wp.components;
+const { withSelect } = wp.data;
 
-const StarterSitesUnavailable = () => {
-  const { plugins, assets, hasNeededCompanionVersion, pluginsPageUrl } = neveDash;
+const StarterSitesUnavailable = ({ templatesPluginData }) => {
+  const { assets } = neveDash;
   const [ installing, setInstalling ] = useState(false);
   const [ error, setError ] = useState(false);
 
   const installPlugin = () => {
     setInstalling(true);
     wp.updates.ajax('install-plugin', {
-      slug: 'themeisle-companion',
+      slug: 'templates-patterns-collection',
       success: r => {
         activatePlugin();
       },
@@ -28,7 +29,7 @@ const StarterSitesUnavailable = () => {
   };
 
   const activatePlugin = () => {
-    const activationURL = plugins['themeisle-companion'].activate;
+    const activationURL = templatesPluginData.activate;
 
     get(activationURL, true).then(r => {
       if (r.ok) {
@@ -36,35 +37,14 @@ const StarterSitesUnavailable = () => {
       }
     });
   };
-  const companionActive = 'deactivate' === plugins['themeisle-companion'].cta;
 
   const renderNoticeContent = () => {
-    if (! companionActive) {
-      return (
-        <>
-          <h1>{__('In order to be able to import any starter sites for Neve you would need to have OrbitFox companion active.')}</h1>
-          <br/>
-          <Button disabled={installing} isPrimary={! installing} isSecondary={installing}
-                  onClick={installPlugin}>{installing ? __('Installing and activating') + '...' : __('Install and Activate')}</Button>
-        </>
-      );
-    }
-
-    if (! hasNeededCompanionVersion) {
-      return (
-        <>
-          <h1>{__('In order to be able to import any starter sites for Neve you would need to have OrbitFox companion updated to the latest version.')}</h1>
-          <br/>
-          <Button href={pluginsPageUrl} isPrimary>{__('Go to plugins page')}</Button>
-        </>
-      );
-    }
-
     return (
       <>
-        <h1>{__('It seems something went wrong. Please make sure that you have OrbitFox companion activated and updated to the latest version.')}</h1>
+        <h1>{__('In order to be able to import any starter sites for Neve you would need to have the Cloud Templates & Patterns Collection plugin active.')}</h1>
         <br/>
-        <Button href={pluginsPageUrl} isPrimary>{__('Go to plugins page')}</Button>
+        <Button disabled={installing} isPrimary={! installing} isSecondary={installing}
+                onClick={installPlugin}>{installing ? __('Installing and activating') + '...' : __('Install and Activate')}</Button>
       </>
     );
   };
@@ -82,4 +62,9 @@ const StarterSitesUnavailable = () => {
   );
 };
 
-export default StarterSitesUnavailable;
+export default withSelect(select => {
+  const { getPlugins } = select('neve-dashboard');
+  return {
+    templatesPluginData: getPlugins()['templates-patterns-collection']
+  };
+})(StarterSitesUnavailable);

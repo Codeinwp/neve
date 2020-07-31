@@ -19,6 +19,15 @@ const Onboarding = ({ editor, category, resetCategory, previewOpen, currentSiteD
   const [ maxShown, setMaxShown ] = useState(9);
   const { sites = {}, migration } = getSites;
 
+  if ( 1 > sites.length ) {
+    return <>
+      <p>{__('Starter sites could not be loaded. Please refresh and try again.', 'neve')}
+		{isOnboarding &&
+		<Button style={{display: 'block', margin: '20px auto'}} isPrimary onClick={cancelOnboarding}>{__('Close', 'neve')}</Button>}
+      </p>
+    </>;
+  }
+
   const tags = [
     __('Business', 'neve'),
     __('Ecommerce', 'neve'),
