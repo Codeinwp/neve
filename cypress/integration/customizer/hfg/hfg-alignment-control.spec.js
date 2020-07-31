@@ -8,7 +8,7 @@ describe( 'Header Builder Alignment Control', function() {
 			expect( req.response.body.success ).to.be.true;
 			expect( req.status ).to.equal( 200 );
 			cy.wait( 2000 );
-			checkAlignCenter();
+		checkAlignCenter();
 		} );
 		setupCustomizer();
 		alignRight();
@@ -61,8 +61,10 @@ function checkAlignCenter() {
 
 	cy.visit( '/' );
 
-	cy.get( '.hfg-item-center' ).
+	cy.get( '.desktop-center' ).
 			should( 'be.visible' ).
+	  		and('have.class', 'mobile-left').
+			and('have.class', 'tablet-left').
 			find( '.site-logo' ).
 			should( 'be.visible' );
 }
@@ -81,8 +83,10 @@ function checkAlignRight() {
 
 	cy.visit( '/' );
 
-	cy.get( '.hfg-item-right' ).
+	cy.get( '.desktop-right' ).
 			should( 'be.visible' ).
+			and('have.class', 'mobile-left').
+			and('have.class', 'tablet-left').
 			find( '.site-logo' ).
 			should( 'be.visible' );
 }
