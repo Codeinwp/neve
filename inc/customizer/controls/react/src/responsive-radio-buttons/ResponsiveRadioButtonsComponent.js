@@ -17,9 +17,16 @@ const ResponsiveRadioButtonsComponent = ({ control }) => {
   }
 
   useEffect(() => {
+    const isMenuAlignment =
+      control.id.indexOf('primary-menu') > -1 ||
+      control.id.indexOf('secondary-menu') > -1
     // Migrate previously string value into responsive.
-    if ( typeof value === 'string') {
-      setValue({ mobile: value, desktop: value, tablet: value })
+    if (typeof value === 'string') {
+      setValue({
+        mobile: isMenuAlignment ? 'left' : value,
+        tablet: isMenuAlignment ? 'left' : value,
+        desktop: value
+      })
     }
 
     document.addEventListener('neve-changed-customizer-value', (e) => {
@@ -28,8 +35,12 @@ const ResponsiveRadioButtonsComponent = ({ control }) => {
 
       let recievedValue = e.detail.value
       // Migrate previously string value into responsive.
-      if ( typeof recievedValue === 'string') {
-        recievedValue = { mobile: recievedValue, desktop: recievedValue, tablet: recievedValue }
+      if (typeof recievedValue === 'string') {
+        recievedValue = {
+          mobile: isMenuAlignment ? 'left' : recievedValue,
+          tablet: isMenuAlignment ? 'left' : recievedValue,
+          desktop: recievedValue
+        }
         setValue(recievedValue)
       }
     })
@@ -45,7 +56,10 @@ const ResponsiveRadioButtonsComponent = ({ control }) => {
         value={value[device]}
         options={choices}
         onChange={(newVal) => {
-          updateValue({ ...value, [device]: newVal })
+          updateValue({
+            ...value,
+            [device]: newVal
+          })
         }}
       />
     </div>
