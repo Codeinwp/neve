@@ -22,6 +22,10 @@
   list-style-type: none;
   margin-left: auto;
 
+  .dropdown-open .caret svg {
+	transform: rotate(-180deg);
+  }
+
   li {
 	cursor: pointer;
 	display: block;
@@ -109,10 +113,6 @@
 
   svg {
 	fill: currentColor;
-  }
-
-  .dropdown-open .caret svg {
-	transform: rotate(-180deg);
   }
 }
 
