@@ -55,6 +55,8 @@ jobs:
     needs: deploy
     env:
       CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     if: github.repository == 'Codeinwp/neve'
     strategy:
       matrix:
@@ -74,12 +76,13 @@ jobs:
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-      - name: Install deps
+      - name: Install deps and download base
         run: |
           npm ci
+          npm run visual:download
       - name: Run Visual Diff
         run: |
-          npm run test-visual-single -- --spec cypress/integration/visual-regression/qa-pages/*.spec.js  --browser chrome --record --parallel --group visual-diff
+          npm run visual:test --  --browser chrome --record --parallel --group visual-diff
   empty-job:
     runs-on: ubuntu-latest
     if: success()

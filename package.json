@@ -66,7 +66,7 @@
 		"rollup-plugin-uglify": "^6.0.4",
 		"semantic-release": "^17.1.1",
 		"size-limit": "^4.4.0",
-		"slugify": "^1.4.5",
+		"url-slug": "^2.3.2",
 		"webpack": "^4.44.0",
 		"yaml": "^1.10.0"
 	},
@@ -85,8 +85,9 @@
 		"size": "size-limit",
 		"pre-commit": "npm-run-all phpcs build size",
 		"cypress:open": "cypress open",
-		"test-visual-all": "npx cypress run --config baseUrl=https://qa-neve.themeisle.com,video=false --spec 'cypress/integration/visual-regression/**/*.spec.js' --headless",
-		"test-visual-single": "npx cypress run --config baseUrl=https://qa-neve.themeisle.com,video=false --headless",
+	  	"visual:upload": "export VISUAL_REGRESSION_ROOT=visual-regression && export VISUAL_REGRESSION_BASELINE=neve_baseline && export VISUAL_REGRESSION_BUCKET=verti-vr-artifacts && bash bin/update-visual-diff.sh",
+	  	"visual:download": "export VISUAL_REGRESSION_ROOT=visual-regression && export VISUAL_REGRESSION_BASELINE=neve_baseline && export VISUAL_REGRESSION_BUCKET=verti-vr-artifacts && bash bin/download-visual-diff.sh",
+		"visual:test": "npx cypress run --config baseUrl=https://qa-neve.themeisle.com,video=false --spec 'cypress/integration/visual-regression/**/*.spec.js' --headless",
 		"cypress:run": "cd cypress && docker-compose up --exit-code-from cypress",
 		"release": "npx semantic-release",
 		"dist": "bash ./bin/dist.sh"
