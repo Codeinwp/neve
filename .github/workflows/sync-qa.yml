@@ -59,6 +59,9 @@ jobs:
       PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     if: github.repository == 'Codeinwp/neve'
+    strategy:
+      matrix:
+        machines: [1, 2, 3, 4]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -70,12 +73,15 @@ jobs:
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-      - name: Install node deps
+      - name: Install deps
         run: |
           npm ci
       - name: Run Visual Diff
+        env:
+          PERCY_PARALLEL_TOTAL: 4
+          PERCY_PARALLEL_NONCE: '${{ github.event_name }}-${{ github.sha }}'
         run: |
-          npm run visual:test --  --browser chrome --record --group visual-diff
+          npm run visual:test --  --browser chrome --record --parallel --group visual-diff
   empty-job:
     runs-on: ubuntu-latest
     if: success()
