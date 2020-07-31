@@ -76,7 +76,6 @@ jobs:
       - name: Install deps and download base
         run: |
           npm ci
-          npm run visual:download
       - name: Run Visual Diff
         run: |
           npm run visual:test --  --browser chrome --record --parallel --group visual-diff

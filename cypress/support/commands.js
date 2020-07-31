@@ -211,7 +211,8 @@ function setTypographyControl( controlSelector, values ) {
  */
 Cypress.Commands.add("captureDocument", (path = 'frontpage') => {
 
-	cy.scrollTo('bottom',{ ensureScrollable: false,easing:"linear" });
+	cy.scrollTo('bottom',{ ensureScrollable: false });
+	cy.wait(1000);
 	cy.percySnapshot();
 });
 /**
