@@ -60,14 +60,10 @@ jobs:
     if: github.repository == 'Codeinwp/neve'
     strategy:
       matrix:
-        machines: [1, 2, 3,4,5,6,7,8,9]
+        machines: [1]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/cache@v1
-        with:
-          path: ~/.wp-content
-          key: ${{ runner.os }}-wpcore
       - uses: actions/cache@v1
         with:
           path: ~/.cache/Cypress
@@ -79,10 +75,12 @@ jobs:
       - name: Install deps and download base
         run: |
           npm ci
-          npm run visual:download
       - name: Run Visual Diff
         run: |
-          npm run visual:test --  --browser chrome --record --parallel --group visual-diff
+          npm run visual:test --  --browser chrome --parallel --group visual-diff
+      - name: Upload base
+        run: |
+          npm run visual:upload
   empty-job:
     runs-on: ubuntu-latest
     if: success()
