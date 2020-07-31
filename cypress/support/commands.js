@@ -1,7 +1,10 @@
 import 'cypress-file-upload';
-import {addMatchImageSnapshotCommand} from 'cypress-image-snapshot/command';
-addMatchImageSnapshotCommand({});
-
+// import {addMatchImageSnapshotCommand} from 'cypress-image-snapshot/command';
+// addMatchImageSnapshotCommand({
+// 	comparisonMethod: 'ssim',
+// 	customDiffConfig: { threshold: 0.3 },
+// });
+import '@percy/cypress';
 Cypress.Cookies.defaults({
 	whitelist: /wordpress_.*/
 });
@@ -208,20 +211,15 @@ function setTypographyControl( controlSelector, values ) {
  */
 Cypress.Commands.add("captureDocument", (path = 'frontpage') => {
 
-	cy.scrollTo('bottom',{ ensureScrollable: false });
-	[
-		{label: 'neve-1440', width: 1366, height: 768},
-	].forEach(viewport => {
-		cy.wait(1000);
-		cy.matchImageSnapshot(`${path}/${viewport.label}`, {timeout: 60000});
-	});
+	cy.scrollTo('bottom',{ ensureScrollable: false,easing:"linear" });
+	cy.percySnapshot();
 });
 /**
  * Capture and compare the fullpage snapshots.
  *
  * @param {string} path The path to store the snapshot.
  */
-Cypress.Commands.add("maskAndClip", (maskSelectors, clipSelectors) => {
+Cypress.Commands.add("maskAndClip", (maskSelectors, clipSelectors, hideElements) => {
 	cy.get('body').then(($body) => {
 		// synchronously query from body
 		// to find which element was created
@@ -235,6 +233,9 @@ Cypress.Commands.add("maskAndClip", (maskSelectors, clipSelectors) => {
 		if ($body.find(clipSelectors).length) {
 			cy.get(clipSelectors).invoke('css', 'display', 'none');
 		}
+		// if ($body.find(hideElements).length) {
+		// 	cy.get(hideElements).invoke('css', 'visibility', 'hidden');
+		// }
 	});
 });
 

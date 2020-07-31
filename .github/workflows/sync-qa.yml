@@ -56,11 +56,12 @@ jobs:
     env:
       CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     if: github.repository == 'Codeinwp/neve'
     strategy:
       matrix:
-        machines: [1, 2, 3,4,5,6,7,8,9]
+        machines: [1, 2, 3, 4]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
