@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Neve 2.7.4\n"
+"Project-Id-Version: Neve 2.7.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/neve\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-07-30T08:10:59+00:00\n"
+"POT-Creation-Date: 2020-07-31T10:29:56+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -398,18 +398,18 @@ msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:465
 #: inc/admin/metabox/block_editor_meta.php:37
-#: inc/admin/metabox/block_editor_meta.php:123
+#: inc/admin/metabox/block_editor_meta.php:103
 msgid "Left"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:469
-#: inc/admin/metabox/block_editor_meta.php:124
+#: inc/admin/metabox/block_editor_meta.php:104
 msgid "Center"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:473
 #: inc/admin/metabox/block_editor_meta.php:38
-#: inc/admin/metabox/block_editor_meta.php:125
+#: inc/admin/metabox/block_editor_meta.php:105
 msgid "Right"
 msgstr ""
 
@@ -947,6 +947,11 @@ msgid "None"
 msgstr ""
 
 #: inc/admin/metabox/block_editor_meta.php:47
+#: inc/admin/metabox/main.php:56
+#: inc/core/front_end.php:492
+msgid "Sidebar"
+msgstr ""
+
 #: inc/admin/metabox/block_editor_meta.php:61
 #: inc/admin/metabox/main.php:41
 #: inc/customizer/options/layout_container.php:43
@@ -954,57 +959,67 @@ msgid "Container"
 msgstr ""
 
 #: inc/admin/metabox/block_editor_meta.php:70
-msgid "Custom Content Width"
+msgid "Custom Content Width (%)"
 msgstr ""
 
-#: inc/admin/metabox/block_editor_meta.php:111
-#: inc/admin/metabox/manager.php:350
-msgid "Page Title"
-msgstr ""
-
-#: inc/admin/metabox/block_editor_meta.php:112
-msgid "Page Meta"
-msgstr ""
-
-#: inc/admin/metabox/block_editor_meta.php:113
-msgid "Featured Image"
-msgstr ""
-
-#: inc/admin/metabox/block_editor_meta.php:129
+#: inc/admin/metabox/block_editor_meta.php:109
 msgid "Title Alignment"
 msgstr ""
 
-#: inc/admin/metabox/block_editor_meta.php:139
+#: inc/admin/metabox/block_editor_meta.php:119
 #: inc/customizer/options/layout_blog.php:444
 msgid "Author Avatar"
 msgstr ""
 
-#: inc/admin/metabox/block_editor_meta.php:161
-#: inc/admin/metabox/main.php:71
-msgid "Disable Header"
+#: inc/admin/metabox/block_editor_meta.php:146
+#: inc/admin/metabox/manager.php:353
+msgid "Page Title"
 msgstr ""
 
-#: inc/admin/metabox/block_editor_meta.php:170
-#: inc/admin/metabox/main.php:88
-msgid "Disable Footer"
+#: inc/admin/metabox/block_editor_meta.php:147
+msgid "Page Meta"
 msgstr ""
 
-#: inc/admin/metabox/block_editor_meta.php:180
-#: inc/admin/metabox/main.php:76
-msgid "Disable Title"
+#: inc/admin/metabox/block_editor_meta.php:148
+msgid "Featured Image"
 msgstr ""
 
-#: inc/admin/metabox/block_editor_meta.php:190
+#: inc/admin/metabox/block_editor_meta.php:149
+#: inc/customizer/options/layout_single_post.php:69
+#: dashboard/src/Components/Onboarding/ImportModal.js:128
+msgid "Content"
+msgstr ""
+
+#: inc/admin/metabox/block_editor_meta.php:150
+#: inc/customizer/options/layout_single_post.php:70
+#: inc/views/partials/post_meta.php:215
+msgid "Tags"
+msgstr ""
+
+#: inc/admin/metabox/block_editor_meta.php:151
 #: inc/customizer/options/layout_blog.php:286
 #: inc/customizer/options/layout_single_post.php:72
 #: inc/views/partials/post_meta.php:128
 msgid "Comments"
 msgstr ""
 
-#: inc/admin/metabox/block_editor_meta.php:200
-#: inc/customizer/options/layout_single_post.php:70
-#: inc/views/partials/post_meta.php:215
-msgid "Tags"
+#: inc/admin/metabox/block_editor_meta.php:152
+msgid "Post Navigation"
+msgstr ""
+
+#: inc/admin/metabox/block_editor_meta.php:163
+#: inc/admin/metabox/main.php:71
+msgid "Disable Header"
+msgstr ""
+
+#: inc/admin/metabox/block_editor_meta.php:172
+#: inc/admin/metabox/main.php:88
+msgid "Disable Footer"
+msgstr ""
+
+#: inc/admin/metabox/block_editor_meta.php:182
+#: inc/admin/metabox/main.php:76
+msgid "Disable Title"
 msgstr ""
 
 #: inc/admin/metabox/main.php:37
@@ -1022,11 +1037,6 @@ msgstr ""
 
 #: inc/admin/metabox/main.php:54
 msgid "No Sidebar"
-msgstr ""
-
-#: inc/admin/metabox/main.php:56
-#: inc/core/front_end.php:492
-msgid "Sidebar"
 msgstr ""
 
 #: inc/admin/metabox/main.php:70
@@ -1064,11 +1074,11 @@ msgstr ""
 msgid "or"
 msgstr ""
 
-#: inc/admin/metabox/manager.php:346
+#: inc/admin/metabox/manager.php:349
 msgid "Page Layout"
 msgstr ""
 
-#: inc/admin/metabox/manager.php:354
+#: inc/admin/metabox/manager.php:357
 msgid "Elements"
 msgstr ""
 
@@ -1371,11 +1381,6 @@ msgstr ""
 
 #: inc/customizer/options/layout_sidebar.php:323
 msgid "Content Width (%)"
-msgstr ""
-
-#: inc/customizer/options/layout_single_post.php:69
-#: dashboard/src/Components/Onboarding/ImportModal.js:128
-msgid "Content"
 msgstr ""
 
 #: inc/customizer/options/layout_single_post.php:71
@@ -1972,11 +1977,11 @@ msgstr ""
 msgid "Typekit Project ID is invalid"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:123
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:140
 msgid "Reset all options to default"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:142
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:159
 msgid "Return to customizer settings"
 msgstr ""
 
@@ -1985,11 +1990,8 @@ msgid "Open Neve meta sidebar"
 msgstr ""
 
 #: inc/admin/metabox/src/components/Sidebar.js:42
-msgid "Neve Options"
-msgstr ""
-
 #: inc/admin/metabox/src/components/Sidebar.js:46
-msgid "Neve options"
+msgid "Neve Options"
 msgstr ""
 
 #: inc/customizer/controls/react/src/background/BackgroundComponent.js:46
