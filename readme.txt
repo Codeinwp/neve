@@ -19,6 +19,13 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
 
+##### [Version 2.7.5](https://github.com/Codeinwp/neve/compare/v2.7.4...v2.7.5) (2020-07-10)
+
+- [Fix] Move Starter Sites library and import process in OrbitFox companion plugin
+
+
+
+
 ##### [Version 2.7.4](https://github.com/Codeinwp/neve/compare/v2.7.3...v2.7.4) (2020-07-08)
 
 - [Feat] Improved Starter Sites library layout

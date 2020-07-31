@@ -66,4 +66,5 @@ dashboard/.eslintrc
 dashboard/package.json
 dashboard/package-lock.json
 dashboard/webpack.config.js
+visual-regressions
 

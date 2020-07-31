@@ -2,20 +2,27 @@
   display: none;
   margin: 30px 0;
 
+  .long-name {
+	display: none;
+  }
+
   a {
-	padding: 15px 20px 12px 5px;
+	padding: 15px 10px 12px 0px;
 	display: flex;
-	flex-grow: 1;
 	align-items: center;
 	font-weight: 700;
 	text-decoration: none;
 	font-size: 15px;
 	border-bottom: 3px solid transparent;
 	position: relative;
+	width: auto;
 
-	.pro-badge {
+	&:last-child {
+	  padding-right: 0;
+	}
+
+	&:not(:first-child) {
 	  margin-left: auto;
-	  font-size: 11px;
 	}
 
 	&:after {
@@ -32,6 +39,11 @@
 	&.active {
 	  border-bottom: 3px solid $blue;
 	}
+
+	.pro-badge {
+	  margin-left: auto;
+	  font-size: 11px;
+	}
   }
 
   .editor {
@@ -40,15 +52,15 @@
 
   .count {
 	color: rgba(97, 97, 97, 0.5);
-	margin-left: 10px;
+	margin: 0 10px;
   }
 
   .icon-wrap {
+	display: none;
 	margin-right: 10px;
 	width: 34px;
 	height: 34px;
 	border-radius: 100%;
-	display: block;
 	overflow: hidden;
 
 	img {
@@ -58,24 +70,36 @@
   }
 }
 
+@mixin ob-editor-tabs--tablet() {
+}
+
 @mixin ob-editor-tabs--laptop() {
   .editor-tabs {
 	display: flex;
-	flex-wrap: wrap;
-	a {
-	  width: 30%;
+  }
+}
+
+@mixin ob-editor-tabs--desktop() {
+  .editor-tabs {
+	.icon-wrap {
+	  display: block;
 	}
   }
 }
 
 @mixin ob-editor-tabs--desktop-large() {
   .editor-tabs {
-	flex-wrap: nowrap;
 	a {
 	  width: auto;
-	  &:last-child {
-		padding-right: 0;
-	  }
+	  padding: 15px 20px 12px 5px;
+	}
+  }
+}
+
+@media (min-width: 1600px) {
+  .editor-tabs {
+	.long-name {
+	  display: inline;
 	}
   }
 }
