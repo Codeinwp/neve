@@ -78,7 +78,7 @@ jobs:
           npm ci
       - name: Run Visual Diff
         run: |
-          npm run visual:test --  --browser chrome --record --parallel --group visual-diff
+          npm run visual:test --  --browser chrome --record --group visual-diff
   empty-job:
     runs-on: ubuntu-latest
     if: success()
