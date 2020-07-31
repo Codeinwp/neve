@@ -58,7 +58,7 @@ jobs:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-    if: github.repository == 'Codeinwp/neve'
+    if: github.repository == 'Codeinwp/neve' && ! contains(github.event.head_commit.message, '[skip visual]')
     strategy:
       matrix:
         machines: [1, 2, 3, 4]
