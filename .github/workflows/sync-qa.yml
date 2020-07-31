@@ -77,7 +77,7 @@ jobs:
           npm ci
       - name: Run Visual Diff
         run: |
-          npm run visual:test --  --browser chrome --parallel --group visual-diff
+          npm run visual:test --  --browser  --record chrome --parallel --group visual-diff
       - name: Upload base
         run: |
           npm run visual:upload
