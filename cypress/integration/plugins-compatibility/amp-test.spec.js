@@ -73,7 +73,7 @@ describe( 'AMP Check', function() {
 
 	it( 'Checks the sidebar menu on mobile', function() {
 		cy.visit( '/?amp' );
-		cy.viewport( 375, 812 );
+		cy.viewport( 'iphone-x' );
 
 		cy.get( '#header-menu-sidebar' ).
 				as( 'navSidebar' ).
@@ -97,32 +97,36 @@ describe( 'AMP Check', function() {
 
 	it( 'Checks the sidebar sub-menu', function() {
 		cy.visit( '/?amp' );
-		cy.viewport( 550, 750 );
+		cy.viewport( 'iphone-x' );
 
 		cy.get( '.menu-mobile-toggle .navbar-toggle' ).click();
 
 		cy.get( '#header-menu-sidebar' ).as( 'navSidebar' ).should( 'be.visible' );
 
 		cy.get( '@navSidebar' ).
-				find( '.amp-caret-wrap' ).
-				first().
-				click().
-				should( 'have.class', 'dropdown-open' );
+		  find( '.amp-caret-wrap' ).
+		  first().
+		  click();
+
+		cy.get('@navSidebar').
+		  find('.has-caret').
+		  first().
+		  should( 'have.class', 'dropdown-open' );
 
 		cy.get( '@navSidebar' ).
-				find( '.amp-caret-wrap' ).
-				first().
-				parent().
-				find( '.sub-menu' ).
-				should( 'be.visible' );
+		  find( '.amp-caret-wrap' ).
+		  first().
+		  closest('li').
+		  find( '.sub-menu' ).
+		  should( 'be.visible' );
 
 		cy.get( '@navSidebar' ).find( '.amp-caret-wrap' ).first().click();
 
 		cy.get( '@navSidebar' ).
-				find( '.amp-caret-wrap' ).
-				first().
-				parent().
-				find( '.sub-menu' ).
-				should( 'not.be.visible' );
+		  find( '.amp-caret-wrap' ).
+		  first().
+		  closest('li').
+		  find( '.sub-menu' ).
+		  should( 'not.be.visible' );
 	} );
 } );

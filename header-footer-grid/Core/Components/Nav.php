@@ -331,7 +331,7 @@ class Nav extends Abstract_Component {
 		$selector = '.builder-item--' . $this->get_id() . ' .nav-menu-primary > .nav-ul ';
 
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => $selector . 'li:not(.woocommerce-mini-cart-item) > a',
+			Dynamic_Selector::KEY_SELECTOR => $selector . 'li:not(.woocommerce-mini-cart-item) > a,' . $selector . '.has-caret > a',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_COLOR => [
 					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::COLOR_ID,
@@ -340,7 +340,7 @@ class Nav extends Abstract_Component {
 			],
 		];
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => $selector . 'li > .amp-caret-wrap svg',
+			Dynamic_Selector::KEY_SELECTOR => $selector . 'li > .has-caret svg',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_FILL_COLOR => [
 					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::COLOR_ID,
@@ -350,7 +350,7 @@ class Nav extends Abstract_Component {
 		];
 
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => $selector . 'li:not(.woocommerce-mini-cart-item) > a:after',
+			Dynamic_Selector::KEY_SELECTOR => $selector . 'li:not(.woocommerce-mini-cart-item) > a:after,' . $selector . 'li > .has-caret > a:after',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_BACKGROUND_COLOR => [
 					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::HOVER_COLOR_ID,
@@ -360,7 +360,7 @@ class Nav extends Abstract_Component {
 		];
 		if ( SettingsManager::get_instance()->get( $this->get_id() . '_style' ) !== 'style-full-height' ) {
 			$css_array[] = [
-				Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .nav-menu-primary:not(.style-full-height) > .nav-ul li:not(.woocommerce-mini-cart-item):hover > a',
+				Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .nav-menu-primary:not(.style-full-height) > .nav-ul li:not(.woocommerce-mini-cart-item):hover > a, .builder-item--' . $this->get_id() . ' .nav-ul li:hover > .has-caret > a,',
 				Dynamic_Selector::KEY_RULES    => [
 					Config::CSS_PROP_COLOR => [
 						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::HOVER_COLOR_ID,
@@ -379,7 +379,7 @@ class Nav extends Abstract_Component {
 			];
 		}
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => $selector . 'li.current-menu-item > a,' . $selector . 'li.current_page_item > a',
+			Dynamic_Selector::KEY_SELECTOR => $selector . 'li.current-menu-item > a,' . $selector . 'li.current_page_item > a,' . $selector . 'li.current_page_item .has-caret > a',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_COLOR => [
 					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::ACTIVE_COLOR_ID,

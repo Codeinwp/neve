@@ -27,8 +27,8 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	 * Nav_Walker constructor.
 	 */
 	public function __construct() {
-		add_filter( 'nav_menu_item_title', array( $this, 'add_caret' ), 10, 4 );
 		add_filter( 'nav_menu_item_args', array( $this, 'tweak_mm_heading' ), 10, 3 );
+		add_filter( 'nav_menu_item_title', array( $this, 'add_caret' ), 10, 4 );
 	}
 
 	/**
@@ -42,6 +42,10 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	 * @return string
 	 */
 	public function add_caret( $title, $item, $args, $depth ) {
+		if ( neve_is_amp() ) {
+			return $title;
+		}
+
 		if ( strpos( $title, 'class="caret"' ) ) {
 			return $title;
 		}
@@ -99,9 +103,6 @@ class Nav_Walker extends \Walker_Nav_Menu {
 		}
 
 		parent::start_el( $output, $item, $depth, $args, $id );
-
-		// Filter that is used for AMP proper event integration.
-		$output = apply_filters( 'neve_caret_wrap_filter', $output, $item->menu_order );
 	}
 
 	/**

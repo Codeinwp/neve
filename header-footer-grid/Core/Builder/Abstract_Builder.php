@@ -1000,12 +1000,14 @@ abstract class Abstract_Builder implements Builder {
 			$align          = SettingsManager::get_instance()->get( $component_location['id'] . '_' . Abstract_Component::ALIGNMENT_ID, null );
 			$vertical_align = SettingsManager::get_instance()->get( $component_location['id'] . '_' . Abstract_Component::VERTICAL_ALIGN_ID, null );
 
-			if ( is_string( $align ) ) {
+			// Make sure we migrate old alignment values.
+			if ( is_string( $align ) || ! is_array( $align ) ) {
 				$is_menu_component = strpos( $component_location['id'], 'primary-menu' ) > -1 || strpos( $component_location['id'], 'secondary-menu' );
+				$tmp_align         = ( is_string( $align ) && in_array( $align, [ 'left', 'right', 'center', 'justify' ] ) ) ? $align : 'left';
 				$align             = [
-					'desktop' => $align,
-					'tablet'  => $is_menu_component ? 'left' : $align,
-					'mobile'  => $is_menu_component ? 'left' : $align,
+					'desktop' => $tmp_align,
+					'tablet'  => $is_menu_component ? 'left' : $tmp_align,
+					'mobile'  => $is_menu_component ? 'left' : $tmp_align,
 				];
 			}
 
@@ -1113,8 +1115,8 @@ abstract class Abstract_Builder implements Builder {
 			}
 			$classes[] = 'col-' . $width . ' col-md-' . $width . ' col-sm-' . $width;
 
-			foreach ( $align as $device => $align ) {
-				$classes[] = $device . '-' . $align;
+			foreach ( $align as $device_slug => $align_slug ) {
+				$classes[] = $device_slug . '-' . $align_slug;
 			}
 
 			if ( $vertical_align ) {
