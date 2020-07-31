@@ -53,7 +53,7 @@ jobs:
           deployment_id: ${{ steps.deployment.outputs.deployment_id }}
   run-visual:
     needs: deploy
-    if: github.repository == 'Codeinwp/neve' && ! contains(github.event.head_commit.message, '[skip visual]')
+    if: "!contains(github.event.head_commit.message, '[skip-visual]')"
     env:
       CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
