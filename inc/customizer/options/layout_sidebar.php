@@ -279,7 +279,7 @@ class Layout_Sidebar extends Base_Customizer {
 			$template,
 			sprintf(
 			/* translators: %s is edit page link */
-				esc_html__( 'Note: It seems that the shop page has an individual sidebar layout already set. To be able to control the layout from here, %s your page and set the sidebar to "Customizer Setting".', 'neve' ),
+				esc_html__( 'Note: It seems that the shop page has an individual sidebar layout already set. To be able to control the layout from here, %s your page and set the sidebar to "Inherit".', 'neve' ),
 				sprintf(
 				/* translators: %s is edit label */
 					'<a target="_blank" href="' . get_edit_post_link( $shop_id ) . '">%s</a>',
