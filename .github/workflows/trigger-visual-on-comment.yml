@@ -1,0 +1,51 @@
+name: Trigger visual on PR comment
+
+on:
+  issue_comment:
+    types: [created]
+jobs:
+  trigger_visual:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: khan/pull-request-comment-trigger@master
+        id: check
+        with:
+          trigger: '@pirate-bot test:visual'
+          reaction: camera
+        env:
+          GITHUB_TOKEN: '${{ secrets.BOT_TOKEN }}'
+      - run: 'echo Found it!'
+        if: steps.check.outputs.triggered == 'true'
+  run-visual:
+    needs: trigger_visual
+    if: needs.trigger_visual.outputs.triggered == 'true'
+    env:
+      CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+      PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+    strategy:
+      matrix:
+        machines: [1, 2, 3, 4]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v1
+        with:
+          path: ~/.cache/Cypress
+          key: cypress-cache-v2-${{ runner.os }}-${{ hashFiles('**/package.json') }}
+      - name: GITHUB CONTEXT
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+#      - uses: actions/cache@v1
+#        with:
+#          path: ~/.npm
+#          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+#      - name: Install deps
+#        run: |
+#          npm ci
+#      - name: Run Visual Diff
+#        env:
+#          PERCY_PARALLEL_TOTAL: 4
+#          PERCY_PARALLEL_NONCE: '${{ github.event_name }}-${{ github.sha }}'
+#        run: |
+#          npm run visual:test --  --browser chrome --record --parallel --group visual-diff
