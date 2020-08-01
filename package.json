@@ -84,7 +84,7 @@
 		"size": "size-limit",
 		"pre-commit": "npm-run-all phpcs build size",
 		"cypress:open": "cypress open",
-		"visual:test": "percy exec -- cypress run --config baseUrl=https://qa-neve.themeisle.com,video=false --spec 'cypress/integration/visual-regression/**/*.spec.js' --headless",
+		"visual:test": "percy exec -- cypress run --config baseUrl=https://qa-neve.themeisle.com,video=false --spec 'cypress/visual-regression/**/*.spec.js' --headless",
 		"cypress:run": "cd cypress && docker-compose up --exit-code-from cypress",
 		"release": "npx semantic-release",
 		"dist": "bash ./bin/dist.sh"
