@@ -3,7 +3,9 @@ name: Build dev artifacts
 on:
   pull_request:
     types: [opened, synchronize, ready_for_review]
-
+    branches-ignore:
+      - 'dependabot/**'
+      - 'master'
 jobs:
   dev-zip:
     name: Build dev build ZIP and upload to s3
@@ -105,3 +107,26 @@ jobs:
           comment-id: ${{ steps.find-comment.outputs.comment-id }}
           edit-mode: replace
           body: ${{ steps.get-comment-body.outputs.body }}
+  e2e:
+    needs: dev-zip
+    strategy:
+      matrix:
+        spec: [dashboard, customizer/general, customizer/hfg, customizer/layout, customizer/typography, editor, plugins-compatibility]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v1
+        with:
+          path: ~/.wp-content
+          key: ${{ runner.os }}-wpcore
+      - run: export ZIP_URL="https://verti-artifacts.s3.amazonaws.com/${{ github.event.pull_request.base.repo.name }}-${{ needs.dev-zip.outputs.branch-name }}-${{ needs.dev-zip.outputs.git-sha-8 }}/neve.zip" && bash ./bin/run-e2e.sh
+      - name: ${{matrix.spec}}
+        uses: cypress-io/github-action@v1
+        with:
+          env: host=localhost,port=8080
+          browser: chrome
+          parallel: true
+          group: e2e-tests
+          name: ${{matrix.spec}}
+          record: true
+          spec: cypress/integration/${{matrix.spec}}/*

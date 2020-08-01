@@ -19,7 +19,6 @@ jobs:
         run: |
           npm ci
           composer install --no-dev --prefer-dist --no-progress --no-suggest
-          npm run build
           npm run dist
       - name: Add SSH Key
         run: |
