@@ -2,7 +2,6 @@
 
 # Install dependencies.
 composer install --no-dev
-yarn install --frozen-lockfile
 yarn run dist
 
 export DOCKER_FILE=docker-compose.ci.yml

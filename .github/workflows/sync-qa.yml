@@ -21,7 +21,6 @@ jobs:
       - uses: actions/checkout@master
       - name: Build dist
         run: |
-          yarn install --frozen-lockfile
           composer install --no-dev --prefer-dist --no-progress --no-suggest
           yarn run dist
       - name: Authenticate

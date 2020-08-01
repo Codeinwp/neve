@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
 if [ ! -n "$ZIP_URL" ]
 then
 	# Install dependencies.

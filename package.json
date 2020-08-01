@@ -123,7 +123,7 @@
 	],
 	"husky": {
 		"hooks": {
-			"pre-commit": "npm run pre-commit",
+			"pre-commit": "yarn run pre-commit",
 			"commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
 		}
 	},
