@@ -18,10 +18,6 @@ jobs:
           reaction: eyes
         env:
           GITHUB_TOKEN: '${{ secrets.BOT_TOKEN }}'
-      - name: GITHUB CONTEXT
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
       - name: Find Pull Request
         uses: juliangruber/find-pull-request-action@v1
         id: find-pull-request
@@ -30,7 +26,12 @@ jobs:
           branch: development
   run-visual:
     needs: trigger_visual
-    if: "needs.trigger_visual.outputs.triggered == 'true' && contains(github.event.comment.html_url,join(needs.trigger_visual.outputs.pr_number,'#'))"
+#    Check if :
+#    * the author of the comment is part of Org
+#    * the comment should trigger the action
+#    * the comment is on the right pr
+#
+    if: "contains('COLLABORATOR,CONTRIBUTOR,MEMBER,OWNER', github.event.comment.author_association) && needs.trigger_visual.outputs.triggered == 'true' && contains(github.event.comment.html_url,join(needs.trigger_visual.outputs.pr_number,'#'))"
     env:
       CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
       PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
