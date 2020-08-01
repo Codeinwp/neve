@@ -18,26 +18,36 @@ jobs:
           GITHUB_TOKEN: '${{ secrets.BOT_TOKEN }}'
       - run: 'echo Found it!'
         if: steps.check.outputs.triggered == 'true'
-  run-visual:
-    needs: trigger_visual
-    if: needs.trigger_visual.outputs.triggered == 'true'
-    env:
-      CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-      PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
-    strategy:
-      matrix:
-        machines: [1, 2, 3, 4]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/cache@v1
-        with:
-          path: ~/.cache/Cypress
-          key: cypress-cache-v2-${{ runner.os }}-${{ hashFiles('**/package.json') }}
-      - name: GITHUB CONTEXT
+      - name: Find Pull Request
+          uses: juliangruber/find-pull-request-action@v1
+          id: find-pull-request
+          with:
+            github-token: ${{ secrets.GITHUB_TOKEN }}
+            branch: development
+      - run: echo "Pull Request ${number} (${sha})"
         env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
+          number: ${{ steps.find-pull-request.outputs.number }}
+          sha: ${{ steps.find-pull-request.outputs.head-sha }}
+#  run-visual:
+#    needs: trigger_visual
+#    if: needs.trigger_visual.outputs.triggered == 'true'
+#    env:
+#      CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+#      PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+#    strategy:
+#      matrix:
+#        machines: [1, 2, 3, 4]
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v2
+#      - uses: actions/cache@v1
+#        with:
+#          path: ~/.cache/Cypress
+#          key: cypress-cache-v2-${{ runner.os }}-${{ hashFiles('**/package.json') }}
+#      - name: GITHUB CONTEXT
+#        env:
+#          GITHUB_CONTEXT: ${{ toJson(github) }}
+#        run: echo "$GITHUB_CONTEXT"
 #      - uses: actions/cache@v1
 #        with:
 #          path: ~/.npm
