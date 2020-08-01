@@ -41,6 +41,7 @@ jobs:
       - name: Install Node dependencies
         env:
           PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
+          CYPRESS_INSTALL_BINARY: 0
         run: npm ci
       - name: Create zip
         run: npm run dist
