@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-07-31T10:29:56+00:00\n"
+"POT-Creation-Date: 2020-08-01T07:38:35+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -972,12 +972,11 @@ msgid "Author Avatar"
 msgstr ""
 
 #: inc/admin/metabox/block_editor_meta.php:146
-#: inc/admin/metabox/manager.php:353
-msgid "Page Title"
+msgid "Post Title"
 msgstr ""
 
 #: inc/admin/metabox/block_editor_meta.php:147
-msgid "Page Meta"
+msgid "Post Meta"
 msgstr ""
 
 #: inc/admin/metabox/block_editor_meta.php:148
@@ -1076,6 +1075,10 @@ msgstr ""
 
 #: inc/admin/metabox/manager.php:349
 msgid "Page Layout"
+msgstr ""
+
+#: inc/admin/metabox/manager.php:353
+msgid "Page Title"
 msgstr ""
 
 #: inc/admin/metabox/manager.php:357
@@ -1372,7 +1375,7 @@ msgstr ""
 
 #. translators: %s is edit page link
 #: inc/customizer/options/layout_sidebar.php:282
-msgid "Note: It seems that the shop page has an individual sidebar layout already set. To be able to control the layout from here, %s your page and set the sidebar to \"Customizer Setting\"."
+msgid "Note: It seems that the shop page has an individual sidebar layout already set. To be able to control the layout from here, %s your page and set the sidebar to \"Inherit\"."
 msgstr ""
 
 #: inc/customizer/options/layout_sidebar.php:286
