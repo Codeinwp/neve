@@ -11,9 +11,6 @@ jobs:
       pr_number: ${{ steps.find-pull-request.outputs.number }}
       commit_sha: ${{ steps.find-pull-request.outputs.head-sha }}
     steps:
-      - name: GITHUB CONTEXT
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
       - uses: khan/pull-request-comment-trigger@master
         id: check
         with:
@@ -21,6 +18,10 @@ jobs:
           reaction: eyes
         env:
           GITHUB_TOKEN: '${{ secrets.BOT_TOKEN }}'
+      - name: GITHUB CONTEXT
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
       - name: Find Pull Request
         uses: juliangruber/find-pull-request-action@v1
         id: find-pull-request
@@ -45,10 +46,6 @@ jobs:
         with:
           path: ~/.cache/Cypress
           key: cypress-cache-v2-${{ runner.os }}-${{ hashFiles('**/package.json') }}
-      - name: GITHUB CONTEXT
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
       - uses: actions/cache@v1
         with:
           path: ~/.npm
