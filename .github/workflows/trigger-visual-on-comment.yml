@@ -11,7 +11,7 @@ jobs:
         id: check
         with:
           trigger: '@pirate-bot test:visual'
-          reaction: rocket
+          reaction: eye
         env:
           GITHUB_TOKEN: '${{ secrets.BOT_TOKEN }}'
       - run: 'echo Found it!'
