@@ -143,8 +143,8 @@ class Block_Editor_Meta extends Controls_Base {
 					'elements' => apply_filters(
 						'neve_post_elements_meta_control',
 						[
-							'title'           => __( 'Page Title', 'neve' ),
-							'meta'            => __( 'Page Meta', 'neve' ),
+							'title'           => __( 'Post Title', 'neve' ),
+							'meta'            => __( 'Post Meta', 'neve' ),
 							'thumbnail'       => __( 'Featured Image', 'neve' ),
 							'content'         => __( 'Content', 'neve' ),
 							'tags'            => __( 'Tags', 'neve' ),

@@ -59,13 +59,19 @@ class SortableItems extends Component {
 
 	render() {
 		const currentValues = JSON.parse( this.props.metaFieldValue );
+		console.log(currentValues);
 		return (
 			<SortableList onSortEnd={this.props.onSortEnd} useDragHandle>
 			{
 				Object.keys( currentValues ).map(
-					(value, index) => (
-						<SortableItem key={`item-${value}`} index={index} value={value} label={this.props.data.elements[value]} isVisible={currentValues[value]} toggle={this.props.toggle} />
-					)
+					(value, index) => {
+						if ( 'undefined' === typeof this.props.data.elements[value] ) {
+							return false;
+						}
+						return (
+							<SortableItem key={`item-${value}`} index={index} value={value} label={this.props.data.elements[value]} isVisible={currentValues[value]} toggle={this.props.toggle}/>
+						);
+					}
 				)
 			}
 			</SortableList>
@@ -108,10 +114,9 @@ export default compose([
 				}
 			}
 			metaVal = JSON.stringify( metaVal );
+			return { metaFieldValue: metaVal };
 		}
-		return {
-			metaFieldValue: metaVal || props.data.default
-		};
+		return { metaFieldValue: props.data.default };
 	})
 
 ])( SortableItems );
