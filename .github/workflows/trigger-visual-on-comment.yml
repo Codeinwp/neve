@@ -6,6 +6,8 @@ on:
 jobs:
   trigger_visual:
     runs-on: ubuntu-latest
+    outputs:
+      triggered: ${{ steps.check.outputs.triggered }}
     steps:
       - uses: khan/pull-request-comment-trigger@master
         id: check
