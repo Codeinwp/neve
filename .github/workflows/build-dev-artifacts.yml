@@ -135,4 +135,4 @@ jobs:
           parallel: true
           group: e2e-tests
           record: true
-          spec: cypress/integration/**/*
+          spec: cypress/integration/customizer/**/*,cypress/integration/dashboard/**/*,cypress/integration/editor/**/*,cypress/integration/plugins-compatibility/**/*,
