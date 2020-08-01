@@ -134,4 +134,4 @@ jobs:
           parallel: true
           group: e2e-tests
           record: true
-          spec: cypress/integration/*
+          spec: cypress/integration/**/*
