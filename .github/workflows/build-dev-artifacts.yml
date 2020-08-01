@@ -39,6 +39,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
       - name: Install Node dependencies
+        env:
+          PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
         run: npm ci
       - name: Create zip
         run: npm run dist
@@ -111,6 +113,8 @@ jobs:
       matrix:
         machines: [1, 2, 3, 4,5,6,7]
     runs-on: ubuntu-latest
+    env:
+      PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
     steps:
       - uses: actions/checkout@v2
       - uses: actions/cache@v1
@@ -125,7 +129,7 @@ jobs:
         env:
           ZIP_URL: "https://verti-artifacts.s3.amazonaws.com/${{ github.event.pull_request.base.repo.name }}-${{ needs.dev-zip.outputs.branch-name }}-${{ needs.dev-zip.outputs.git-sha-8 }}/neve.zip"
         run: bash ./bin/run-e2e.sh
-      - name: ${{matrix.spec}}
+      - name: Run Cypress tests
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
         uses: cypress-io/github-action@v1
