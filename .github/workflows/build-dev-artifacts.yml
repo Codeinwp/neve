@@ -3,9 +3,6 @@ name: Build dev artifacts
 on:
   pull_request:
     types: [opened, synchronize, ready_for_review]
-    branches-ignore:
-      - 'dependabot/**'
-      - 'master'
 jobs:
   dev-zip:
     name: Build dev build ZIP and upload to s3
