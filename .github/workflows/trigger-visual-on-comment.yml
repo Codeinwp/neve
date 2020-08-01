@@ -30,7 +30,7 @@ jobs:
           branch: development
   run-visual:
     needs: trigger_visual
-    if: "needs.trigger_visual.outputs.triggered == 'true' && contains(github.event.comment.html_url,join(needs.trigger_visual.outputs.pr_number,#))"
+    if: "needs.trigger_visual.outputs.triggered == 'true' && contains(github.event.comment.html_url,join(needs.trigger_visual.outputs.pr_number,'#'))"
     env:
       CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
       PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
