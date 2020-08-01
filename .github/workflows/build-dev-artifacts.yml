@@ -42,9 +42,9 @@ jobs:
         env:
           PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
           CYPRESS_INSTALL_BINARY: 0
-        run: npm ci
+        run: yarn install --frozen-lockfile
       - name: Create zip
-        run: npm run dist
+        run: yarn run dist
       - name: Retrieve branch name
         id: retrieve-branch-name
         run: echo "::set-output name=branch_name::$(REF=${GITHUB_HEAD_REF:-$GITHUB_REF} && echo ${REF#refs/heads/} | sed 's/\//-/g')"

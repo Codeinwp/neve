@@ -15,13 +15,15 @@ jobs:
       SSH_PORT: ${{ secrets.SSH_PORT }}
       SSH_HOST: ${{ secrets.SSH_HOST }}
       QA_ROOT: ${{ secrets.QA_ROOT }}
+      PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
+      CYPRESS_INSTALL_BINARY: 0
     steps:
       - uses: actions/checkout@master
       - name: Build dist
         run: |
-          npm ci
+          yarn install --frozen-lockfile
           composer install --no-dev --prefer-dist --no-progress --no-suggest
-          npm run dist
+          yarn run dist
       - name: Authenticate
         run: |
           mkdir $HOME/.ssh

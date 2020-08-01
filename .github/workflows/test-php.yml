@@ -9,6 +9,9 @@ jobs:
   phplint:
     name: PHP Lint
     runs-on: ubuntu-latest
+    env:
+      PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
+      CYPRESS_INSTALL_BINARY: 0
     steps:
       - name: Setup PHP version
         uses: shivammathur/setup-php@v1

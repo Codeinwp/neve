@@ -4,9 +4,8 @@ if [ ! -n "$ZIP_URL" ]
 then
 	# Install dependencies.
 	composer install --no-dev
-	npm ci
-	npm run build
-	npm run dist
+	yarn install --frozen-lockfile
+	yarn run dist
 fi
 export DOCKER_FILE=docker-compose.ci.yml
 
