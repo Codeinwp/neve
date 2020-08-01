@@ -1,9 +1,4 @@
 import 'cypress-file-upload';
-// import {addMatchImageSnapshotCommand} from 'cypress-image-snapshot/command';
-// addMatchImageSnapshotCommand({
-// 	comparisonMethod: 'ssim',
-// 	customDiffConfig: { threshold: 0.3 },
-// });
 import '@percy/cypress';
 Cypress.Cookies.defaults({
 	whitelist: /wordpress_.*/
@@ -207,9 +202,8 @@ function setTypographyControl( controlSelector, values ) {
 /**
  * Capture and compare the fullpage snapshots.
  *
- * @param {string} path The path to store the snapshot.
  */
-Cypress.Commands.add("captureDocument", (path = 'frontpage') => {
+Cypress.Commands.add("captureDocument", () => {
 
 	cy.scrollTo('bottom',{ ensureScrollable: false });
 	cy.wait(1000);

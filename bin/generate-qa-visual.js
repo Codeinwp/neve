@@ -1,6 +1,5 @@
 const path = require("path");
 const fs = require("fs");
-const YAML = require("yaml")
 const UrlSlug = require("url-slug");
 const QA_ROOT_SPECS = path.dirname(path.dirname(require.main.filename)) + '/cypress/integration/visual-regression/qa-pages/';
 let cypressData = require('./../cypress.json');

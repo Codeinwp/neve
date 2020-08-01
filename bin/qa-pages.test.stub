@@ -1,4 +1,3 @@
-const slugify = require('url-slug');
 describe('Visual Regression Testing - {{url}}', () => {
 	let url = "{{url}}";
 	let hideElements = '.products img.attachment-woocommerce_thumbnail';

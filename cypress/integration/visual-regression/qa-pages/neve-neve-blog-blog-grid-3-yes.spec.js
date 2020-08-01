@@ -1,4 +1,3 @@
-const slugify = require('url-slug');
 describe('Visual Regression Testing - https://qa-neve.themeisle.com/neve/neve-blog/?blog-grid-3=yes', () => {
 	let url = "https://qa-neve.themeisle.com/neve/neve-blog/?blog-grid-3=yes";
 	let hideElements = '.products img.attachment-woocommerce_thumbnail';
@@ -8,6 +7,6 @@ describe('Visual Regression Testing - https://qa-neve.themeisle.com/neve/neve-bl
 	it('Should not add any visual change', function () {
 		cy.visit(url);
 		cy.maskAndClip(maskElement, clipElement,hideElements);
-		cy.captureDocument(slugify(url));
+		cy.captureDocument();
 	});
 });
