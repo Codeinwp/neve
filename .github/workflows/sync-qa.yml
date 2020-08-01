@@ -38,7 +38,7 @@ jobs:
         run: >
           rsync -rc --exclude-from="$GITHUB_WORKSPACE/.distignore" -e "ssh -i
           $HOME/.ssh/key -o StrictHostKeyChecking=no -p $SSH_PORT"
-          "$GITHUB_WORKSPACE/dist/neve" $SSH_USERNAME@$SSH_HOST:$QA_ROOT
+          "$GITHUB_WORKSPACE/dist/neve/" $SSH_USERNAME@$SSH_HOST:$QA_ROOT
       - name: Rebuild Neve Reference
         run: >
           ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no
