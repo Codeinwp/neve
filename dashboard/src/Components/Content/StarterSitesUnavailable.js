@@ -50,7 +50,7 @@ const StarterSitesUnavailable = ({ templatesPluginData }) => {
   };
 
   return (
-    <>
+    <div className="unavailable-starter-sites">
       <div className="ss-background"
            style={{ backgroundImage: `url(${assets}/starter.jpg)` }}/>
       <div className="content-wrap">
@@ -58,7 +58,7 @@ const StarterSitesUnavailable = ({ templatesPluginData }) => {
           renderNoticeContent() : <h1 className='error'>{error}</h1>
         }
       </div>
-    </>
+    </div>
   );
 };
 
