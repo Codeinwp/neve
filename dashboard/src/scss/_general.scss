@@ -105,17 +105,6 @@ svg.is-loading, button.is-loading svg {
   position: relative;
   display: flex;
   flex-grow: 1;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  padding: 50px 30px;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  .content-wrap {
-	h1 {
-	  line-height: 1.6;
-	}
-  }
 }
 
 .ss-background {
@@ -132,4 +121,15 @@ svg.is-loading, button.is-loading svg {
   right: 0;
   height: calc(100vh - 300px);
   flex-grow: 1;
+}
+.unavailable-starter-sites {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 50px 30px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  h1 {
+	line-height: 1.6;
+  }
 }

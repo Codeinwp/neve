@@ -106,7 +106,7 @@ const Onboarding = ({ editor, category, resetCategory, previewOpen, currentSiteD
     return allSites[builder];
   };
 
-  const getBuilders = () => Object.keys(EDITOR_MAP);
+  const getBuilders = () => Object.keys(sites);
 
   const getCounts = () => {
     let counts = {
