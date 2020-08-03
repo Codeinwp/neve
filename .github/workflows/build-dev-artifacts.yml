@@ -1,12 +1,11 @@
-name: Build dev artifacts
+name: Build artifact and test
 
 on:
   pull_request:
     types: [opened, synchronize, ready_for_review]
-
 jobs:
   dev-zip:
-    name: Build dev build ZIP and upload to s3
+    name: Build ZIP and upload to s3
     if: github.event.pull_request.draft == false && github.event.pull_request.head.repo.full_name == github.event.pull_request.base.repo.full_name
     runs-on: ubuntu-latest
     outputs:
@@ -28,21 +27,8 @@ jobs:
             ${{ runner.os }}-composer-
       - name: Install composer deps
         run: composer install --no-dev --prefer-dist --no-progress --no-suggest
-      - name: Get npm cache directory
-        id: npm-cache
-        run: |
-          echo "::set-output name=dir::$(npm config get cache)"
-      - name: Configure npm cache
-        uses: actions/cache@v1
-        with:
-          path: ${{ steps.npm-cache.outputs.dir }}
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-      - name: Install Node dependencies
-        run: npm ci
       - name: Create zip
-        run: npm run dist
+        run: yarn run dist
       - name: Retrieve branch name
         id: retrieve-branch-name
         run: echo "::set-output name=branch_name::$(REF=${GITHUB_HEAD_REF:-$GITHUB_REF} && echo ${REF#refs/heads/} | sed 's/\//-/g')"
@@ -105,3 +91,47 @@ jobs:
           comment-id: ${{ steps.find-comment.outputs.comment-id }}
           edit-mode: replace
           body: ${{ steps.get-comment-body.outputs.body }}
+  e2e:
+    name: E2E
+    needs: dev-zip
+    strategy:
+      matrix:
+        machines: [1, 2, 3, 4,5,6,7]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v1
+        with:
+          path: ~/.wp-content
+          key: ${{ runner.os }}-wpcore
+      - uses: actions/cache@v1
+        with:
+          path: ~/.cache/Cypress
+          key: cypress-cache-v2-${{ runner.os }}-${{ hashFiles('**/package.json') }}
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - name: Install E2E env
+        env:
+          ZIP_URL: "https://verti-artifacts.s3.amazonaws.com/${{ github.event.pull_request.base.repo.name }}-${{ needs.dev-zip.outputs.branch-name }}-${{ needs.dev-zip.outputs.git-sha-8 }}/neve.zip"
+        run: bash ./bin/run-e2e.sh
+      - name: Run Cypress tests
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
+        uses: cypress-io/github-action@v1
+        with:
+          env: host=localhost,port=8080
+          browser: chrome
+          parallel: true
+          group: e2e-tests
+          record: true
+          spec: cypress/integration/customizer/**/*,cypress/integration/dashboard/**/*,cypress/integration/editor/**/*,cypress/integration/plugins-compatibility/**/*,

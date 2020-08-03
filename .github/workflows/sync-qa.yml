@@ -15,13 +15,14 @@ jobs:
       SSH_PORT: ${{ secrets.SSH_PORT }}
       SSH_HOST: ${{ secrets.SSH_HOST }}
       QA_ROOT: ${{ secrets.QA_ROOT }}
+      PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
+      CYPRESS_INSTALL_BINARY: 0
     steps:
       - uses: actions/checkout@master
       - name: Build dist
         run: |
-          npm ci
           composer install --no-dev --prefer-dist --no-progress --no-suggest
-          npm run dist
+          yarn run dist
       - name: Authenticate
         run: |
           mkdir $HOME/.ssh
@@ -38,7 +39,7 @@ jobs:
         run: >
           rsync -rc --exclude-from="$GITHUB_WORKSPACE/.distignore" -e "ssh -i
           $HOME/.ssh/key -o StrictHostKeyChecking=no -p $SSH_PORT"
-          "$GITHUB_WORKSPACE/dist/neve" $SSH_USERNAME@$SSH_HOST:$QA_ROOT
+          "$GITHUB_WORKSPACE/dist/neve/" $SSH_USERNAME@$SSH_HOST:$QA_ROOT
       - name: Rebuild Neve Reference
         run: >
           ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no
@@ -51,35 +52,6 @@ jobs:
           target_url: http://qa-neve.themeisle.com/empty-site
           state: success
           deployment_id: ${{ steps.deployment.outputs.deployment_id }}
-  run-visual:
-    needs: deploy
-    env:
-      CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-    if: github.repository == 'Codeinwp/neve'
-    strategy:
-      matrix:
-        machines: [1, 2, 3,4,5,6,7,8,9]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/cache@v1
-        with:
-          path: ~/.wp-content
-          key: ${{ runner.os }}-wpcore
-      - uses: actions/cache@v1
-        with:
-          path: ~/.cache/Cypress
-          key: cypress-cache-v2-${{ runner.os }}-${{ hashFiles('**/package.json') }}
-      - uses: actions/cache@v1
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-      - name: Install deps
-        run: |
-          npm ci
-      - name: Run Visual Diff
-        run: |
-          npm run test-visual-single -- --spec cypress/integration/visual-regression/qa-pages/*.spec.js  --browser chrome --record --parallel --group visual-diff
   empty-job:
     runs-on: ubuntu-latest
     if: success()
