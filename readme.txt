@@ -19,6 +19,16 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
 
+##### [Version 2.7.6](https://github.com/Codeinwp/neve/compare/v2.7.5...v2.7.6) (2020-08-04)
+
+- [Feat] New magic tags for single post pages
+- [Feat] Move Starter Sites library and import process in the Cloud Templates & Patterns collection plugin
+- [Fix] Compatibility with WP 5.5
+- [Fix] Starter sites tab layout on smaller resolutions
+
+
+
+
 ##### [Version 2.7.5](https://github.com/Codeinwp/neve/compare/v2.7.4...v2.7.5) (2020-07-10)
 
 - [Fix] Move Starter Sites library and import process in OrbitFox companion plugin
