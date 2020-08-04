@@ -1,13 +1,18 @@
 /* global wp, neveDash  */
+const { onboarding } = neveDash;
+
+let firstEditor = 'undefined' !== typeof onboarding.sites && 'undefined' !== typeof onboarding.sites.sites ? Object.keys(onboarding.sites.sites)[0] : 'gutenberg';
+let selectedEditor = localStorage.getItem( 'neve-onboarding-editor') || firstEditor;
+
 const initialState = {
-	sites: neveDash.onboarding.sites || {},
-	editor: localStorage.getItem( 'neve-onboarding-editor') || 'gutenberg',
+	sites: onboarding.sites || {},
+	editor: selectedEditor,
 	category: 'all',
 	previewStatus: false,
 	importModalStatus: false,
 	currentSite: null,
 	importing: false,
-	isOnboarding: neveDash.onboarding.onboarding || false,
+	isOnboarding: onboarding.onboarding || false,
 	migrationData: null
 };
 export default (state = initialState, action) => {

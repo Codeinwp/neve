@@ -12,11 +12,6 @@ jobs:
       matrix:
         node-version: [12.x]
     steps:
-      - name: Setup PHP version
-        uses: shivammathur/setup-php@v1
-        with:
-          php-version: '7.1'
-          extensions: simplexml
       - name: Checkout source code
         uses: actions/checkout@v2
       - name: Setup node
@@ -24,9 +19,11 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: Install Dependencies
-        run: npm ci
-      - run: npm run build
+        env:
+          PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
+          CYPRESS_INSTALL_BINARY: 0
+        run: yarn install --frozen-lockfile
       # WORKAROUND FOR SIZE-LIMIT JOB NUMBER
       - env:
           CI_JOB_NUMBER: 1
-        run: npm run-script size
+        run: yarn run size

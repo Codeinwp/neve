@@ -13,11 +13,13 @@ services:
     privileged: true
     image: wordpress:cli
     restart: always
+    environment:
+      - ZIP_URL
     volumes:
       - wpcore:/var/www/html
       - ./bin:/var/www/html/bin
       - ~/.wp-content:/var/www/html/wp-content
-      - ./dist/neve:/var/www/html/wp-content/themes/neve
+      - ./artifact/neve.zip:/var/www/html/wp-content/neve.zip
     depends_on:
       - mysql
       - wordpress
@@ -35,6 +37,7 @@ services:
       - ./dist/neve:/var/www/html/wp-content/themes/neve
     restart: always
     environment:
+      - ZIP_URL
       - WORDPRESS_DB_NAME=wordpress
       - WORDPRESS_DB_USER=wordpress
       - WORDPRESS_DB_PASSWORD=wordpress
