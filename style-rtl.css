@@ -735,7 +735,7 @@ blockquote.wp-block-quote.is-style-large cite {
   padding: 0;
 }
 
-.nav-ul .sub-menu li > a {
+.nav-ul .sub-menu li > a, .nav-ul .sub-menu li .has-caret {
   justify-content: center;
   white-space: nowrap;
   padding: 7px 14px;
@@ -774,7 +774,7 @@ blockquote.wp-block-quote.is-style-large cite {
   padding-bottom: 0;
 }
 
-.header-menu-sidebar-inner .dropdown-open > .caret > svg {
+.header-menu-sidebar-inner .dropdown-open.has-caret > svg, .header-menu-sidebar-inner .dropdown-open > .caret > svg {
   transform: rotate(180deg);
 }
 

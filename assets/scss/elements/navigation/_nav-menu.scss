@@ -22,10 +22,6 @@
   list-style-type: none;
   margin-left: auto;
 
-  .dropdown-open .caret svg {
-	transform: rotate(-180deg);
-  }
-
   li {
 	cursor: pointer;
 	display: block;
@@ -80,7 +76,7 @@
 	  min-width: 150px;
 	  padding: 0;
 
-	  > a {
+	  > a, .has-caret {
 		justify-content: center;
 		white-space: nowrap;
 		padding: 7px 14px;
@@ -128,6 +124,15 @@
 
 // Menus in sidebar.
 .header-menu-sidebar-inner {
+
+  .dropdown-open {
+	&.has-caret, > .caret {
+	  > svg {
+		transform: rotate(-180deg);
+	  }
+	}
+  }
+
   .nav-ul .dropdown-open + .sub-menu,
   .nav-ul .dropdown-open.sub-menu {
 	max-height: 2000px;
