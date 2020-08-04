@@ -3,8 +3,8 @@ name: Build artifact and test
 on:
   pull_request:
     types: [opened, synchronize, ready_for_review]
-  branches-ignore:
-    - 'update_dependencies'
+    branches-ignore:
+      - 'update_dependencies'
 jobs:
   dev-zip:
     name: Build ZIP and upload to s3
