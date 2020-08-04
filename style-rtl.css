@@ -679,10 +679,6 @@ blockquote.wp-block-quote.is-style-large cite {
   margin-right: auto;
 }
 
-.nav-ul .dropdown-open .caret svg {
-  transform: rotate(180deg);
-}
-
 .nav-ul li {
   cursor: pointer;
   display: block;
@@ -776,6 +772,10 @@ blockquote.wp-block-quote.is-style-large cite {
   flex-direction: row;
   align-items: center;
   padding-bottom: 0;
+}
+
+.header-menu-sidebar-inner .dropdown-open > .caret > svg {
+  transform: rotate(180deg);
 }
 
 .header-menu-sidebar-inner .nav-ul .dropdown-open + .sub-menu,

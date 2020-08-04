@@ -113,7 +113,7 @@ export const batchProcess = (element, classNames, method) => {
 	let classes = classNames.split(' ');
 
 	let array = ((element instanceof NodeList) ? element : [element]);
-
+	console.log(array);
 	for (let i = 0; i < array.length; i++) {
 		array[i] && array[i].classList[method].apply(array[i].classList, classes);
 	}

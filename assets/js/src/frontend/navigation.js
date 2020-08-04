@@ -32,17 +32,16 @@ export const initNavigation = ()=> {
  * @returns {boolean}
  */
 export const repositionDropdowns =  () => {
-	if ( isMobile() ) return false;
-
-	let dropDowns = document.querySelectorAll( '.sub-menu .sub-menu' );
+	let dropDowns = document.querySelectorAll( '.sub-menu' );
 	if ( dropDowns.length === 0 ) return false;
-
 	let windowWidth = window.innerWidth;
 	neveEach(dropDowns, (dropDown) => {
 		let bounding = dropDown.getBoundingClientRect(),
-				rightDist = bounding.left;
-		if ( /webkit.*mobile/i.test( navigator.userAgent ) ) {
-			bounding -= window.scrollX;
+			rightDist = bounding.left;
+
+		if( rightDist < 0 ) {
+		  dropDown.style.left = '0';
+		  dropDown.style.right = 'auto';
 		}
 
 		if ( rightDist + bounding.width >= windowWidth ) {
@@ -82,6 +81,7 @@ function handleMobileDropdowns() {
 			let subMenu = caret.parentNode.parentNode.querySelector( '.sub-menu' );
 			toggleClass( caret, 'dropdown-open' );
 			toggleClass( subMenu, 'dropdown-open' );
+		  	createNavOverlay( document.querySelectorAll( '.dropdown-open' ), 'dropdown-open' );
 		} );
 	} );
 }
@@ -150,11 +150,11 @@ window.addEventListener( 'resize', handleMiniCartPosition );
  * @param multiple
  * @returns {boolean}
  */
-function createNavOverlay(item, classToRemove, multiple = false) {
+function createNavOverlay(item, classToRemove) {
 
 	let navClickaway = document.querySelector( '.nav-clickaway-overlay' );
 	if ( navClickaway !== null ) {
-		return false;
+		navClickaway.parentNode.removeChild( navClickaway );
 	}
 	navClickaway = document.createElement( 'div' );
 	addClass( navClickaway, 'nav-clickaway-overlay' );
