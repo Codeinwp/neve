@@ -4,6 +4,7 @@ logs
 dist
 artifact
 vendor
+visual-regression/*
 **/*.js.map
 **/*.css.map
 **/.DS_Store

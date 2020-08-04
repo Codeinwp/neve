@@ -4,7 +4,9 @@ on:
   push:
     branches-ignore:
       - 'master'
-
+env:
+  PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
+  CYPRESS_INSTALL_BINARY: 0
 jobs:
   phplint:
     name: PHP Lint
@@ -82,14 +84,6 @@ jobs:
         with:
           path: ~/.wp-content
           key: ${{ runner.os }}-wpcore
-      - uses: actions/cache@v1
-        with:
-          path: ~/.cache/Cypress
-          key: cypress-cache-v2-${{ runner.os }}-${{ hashFiles('**/package.json') }}
-      - uses: actions/cache@v1
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
       - name: Get Composer Cache Directory
         id: composer-cache
         run: |

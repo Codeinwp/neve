@@ -1,18 +1,24 @@
 .nv-meta-list {
   padding-bottom: $spacing-xs;
   width: 100%;
-  li {
+  li, span {
     display: inline;
-    color: $gray-color;
-    font-size: 0.85em;
     &:not(:last-child):after {
       content: '/';
       padding: 0 5px;
-      color: $gray-color;
     }
   }
-  a, a:hover {
-    color: $gray-color;
+  li {
+	color: $gray-color;
+	font-size: 0.85em;
+	&:not(:last-child):after {
+	  color: $gray-color;
+	}
+  }
+  &:not(.nv-dynamic-meta){
+	a, a:hover {
+	  color: $gray-color;
+	}
   }
   .posted-on .updated {
     display: none;
@@ -27,5 +33,14 @@
     .author-name {
       margin-left: 3px;
     }
+  }
+}
+
+.nv-dynamic-author-meta{
+  .photo {
+	width: $spacing-sm;
+	height: $spacing-sm;
+	border-radius: 50%;
+	transform: translateY(30%);
   }
 }

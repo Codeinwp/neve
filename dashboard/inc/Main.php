@@ -39,6 +39,7 @@ class Main {
 	 */
 	private $useful_plugins = [
 		'optimole-wp',
+		'templates-patterns-collection',
 		'themeisle-companion',
 		'feedzy-rss-feeds',
 		'otter-blocks',
@@ -217,15 +218,7 @@ class Main {
 			'changelog'           => $this->cl_handler->get_changelog( get_template_directory() . '/CHANGELOG.md' ),
 			'onboarding'          => [],
 			'hasFileSystem'       => WP_Filesystem(),
-			'pluginsPageUrl'      => esc_url( admin_url( 'plugins.php' ) ),
 		];
-		$companion_state   = $this->plugin_helper->get_plugin_state( 'themeisle-companion' );
-		if ( $companion_state === 'deactivate' ) {
-			$companion = get_plugin_data( WP_PLUGIN_DIR . '/themeisle-companion/themeisle-companion.php' );
-			if ( isset( $companion['Version'] ) ) {
-				$data['hasNeededCompanionVersion'] = version_compare( $companion['Version'], '2.9.10', '>' );
-			}
-		}
 
 		if ( defined( 'NEVE_PRO_PATH' ) ) {
 			$data['changelogPro'] = $this->cl_handler->get_changelog( NEVE_PRO_PATH . '/CHANGELOG.md' );
@@ -424,7 +417,6 @@ class Main {
 				$available[ $slug ]['path']       = $this->plugin_helper->get_plugin_path( $slug );
 				$available[ $slug ]['activate']   = $this->plugin_helper->get_plugin_action_link( $slug );
 				$available[ $slug ]['deactivate'] = $this->plugin_helper->get_plugin_action_link( $slug, 'deactivate' );
-
 			}
 
 			return $available;
