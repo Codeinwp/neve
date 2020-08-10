@@ -665,7 +665,7 @@ blockquote.wp-block-quote.is-style-large cite {
 }
 
 .nav-ul > .menu-item-has-children > .sub-menu {
-  left: 0;
+  right: 0;
 }
 
 .nav-ul {
