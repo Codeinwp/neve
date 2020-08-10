@@ -2519,13 +2519,17 @@ audio {
   top: 0;
   z-index: 999900;
   visibility: hidden;
+  display: flex;
 }
 
 .header-menu-sidebar-bg {
   position: relative;
+  display: flex;
+  flex-direction: column;
   word-wrap: break-word;
-  min-height: 100%;
-  display: block;
+  max-height: 100vh;
+  width: 100%;
+  overflow: hidden;
 }
 
 .header-menu-sidebar-bg:before {
@@ -2542,10 +2546,10 @@ audio {
 .header-menu-sidebar-inner {
   position: relative;
   word-wrap: break-word;
-  min-height: 100%;
   padding: 1.2em 0;
   display: flex;
   flex-direction: column;
+  overflow: auto;
 }
 
 /* Type: Slide from left */
@@ -2564,7 +2568,6 @@ audio {
   display: block;
   visibility: visible;
   z-index: 999900;
-  overflow: hidden;
 }
 
 .menu_sidebar_dropdown .header-menu-sidebar .close-sidebar-panel {
@@ -2587,14 +2590,9 @@ audio {
 }
 
 /* Showing Menu Sidebar animation. */
-.is-menu-sidebar {
-  overflow-x: hidden;
-}
-
-.is-menu-sidebar .header-menu-sidebar {
-  overflow: auto;
-}
-
+/*.is-menu-sidebar {
+  overflow-y: hidden;
+}*/
 .is-menu-sidebar.menu_sidebar_slide_left {
   width: 100%;
   display: block;

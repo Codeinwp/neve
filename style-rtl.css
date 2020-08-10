@@ -7,7 +7,7 @@ Author URI:     https://themeisle.com
 Tested up to:   5.4
 Requires PHP:   5.4.0
 Description:    Neve is a super fast, easily customizable, multi-purpose theme. It’s perfect for blogs, small business, startups, agencies, firms, e-commerce shops (WooCommerce storefront) as well as personal portfolio sites and most types of projects. A fully AMP optimized and responsive theme, Neve will load in mere seconds and adapt perfectly on any viewing device. While it is lightweight and has a minimalist design, the theme is highly extendable, it has a highly SEO optimized code, resulting in top rankings in Google search results. Neve works perfectly with Gutenberg and the most popular page builders (Elementor, Brizy, Beaver Builder, Visual Composer, SiteOrigin, Divi). Neve is also WooCommerce ready, responsive, RTL & translation ready. Look no further. Neve is the perfect theme for you!
-Version:        2.7.4
+Version:        2.7.5
 License:        GNU General Public License v2 or later
 License URI:    http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain:    neve
@@ -2519,13 +2519,17 @@ audio {
   top: 0;
   z-index: 999900;
   visibility: hidden;
+  display: flex;
 }
 
 .header-menu-sidebar-bg {
   position: relative;
+  display: flex;
+  flex-direction: column;
   word-wrap: break-word;
-  min-height: 100%;
-  display: block;
+  max-height: 100vh;
+  width: 100%;
+  overflow: hidden;
 }
 
 .header-menu-sidebar-bg:before {
@@ -2542,10 +2546,10 @@ audio {
 .header-menu-sidebar-inner {
   position: relative;
   word-wrap: break-word;
-  min-height: 100%;
   padding: 1.2em 0;
   display: flex;
   flex-direction: column;
+  overflow: auto;
 }
 
 /* Type: Slide from left */
@@ -2564,7 +2568,6 @@ audio {
   display: block;
   visibility: visible;
   z-index: 999900;
-  overflow: hidden;
 }
 
 .menu_sidebar_dropdown .header-menu-sidebar .close-sidebar-panel {
@@ -2587,14 +2590,9 @@ audio {
 }
 
 /* Showing Menu Sidebar animation. */
-.is-menu-sidebar {
-  overflow-x: hidden;
-}
-
-.is-menu-sidebar .header-menu-sidebar {
-  overflow: auto;
-}
-
+/*.is-menu-sidebar {
+  overflow-y: hidden;
+}*/
 .is-menu-sidebar.menu_sidebar_slide_left {
   width: 100%;
   display: block;
