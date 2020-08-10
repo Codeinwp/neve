@@ -447,7 +447,7 @@ class Nav extends Abstract_Component {
 		];
 
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .nav-ul > li > a, .header-menu-sidebar-inner .nav-ul a',
+			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .nav-ul > li > a, .header-menu-sidebar-inner .builder-item--' . $this->get_id() . ' .nav-ul a, .builder-item--' . $this->get_id() . ' .neve-mm-heading > span',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_HEIGHT => [
 					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::ITEM_HEIGHT,

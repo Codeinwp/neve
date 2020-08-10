@@ -1,5 +1,5 @@
 /* Style mega-menu and its children on mobile */
-.primary-menu-ul > .neve-mega-menu {
+.nav-ul > .neve-mega-menu {
   > .sub-menu {
 	cursor: default;
 
@@ -35,22 +35,6 @@
 	}
   }
 
-  .neve-mm-heading, .neve-mm-heading > a {
-	opacity: .75;
-	font-size: 1.1em;
-	cursor: default;
-	display: flex;
-
-	a, span {
-	  font-weight: 700;
-	  text-transform: uppercase;
-	}
-
-	i {
-	  margin-right: $spacing-xs;
-	}
-  }
-
   a {
 	display: flex;
 	align-items: center;
@@ -73,6 +57,13 @@
 	text-align: left;
 	justify-content: flex-start;
   }
+
+  .neve-mm-heading > span {
+	padding: 7px 14px;
+	display: flex;
+	height: 100%;
+	cursor: default;
+  }
 }
 
 .neve-mm-description {
@@ -84,31 +75,54 @@
   text-align: center;
 }
 
-.neve-mm-heading {
-  .mobile-center & {
+.neve-mm-heading, .neve-mm-heading > a {
+  opacity: .75;
+  font-size: 1.1em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+
+  a, span {
+	font-weight: 700;
+	text-transform: uppercase;
+  }
+
+  i {
+	margin-right: $spacing-xs;
+  }
+}
+
+.header-menu-sidebar-inner {
+  .nav-ul > .neve-mega-menu .neve-mm-heading {
+	> span {
+	  padding: 3px 0;
+	}
+  }
+
+  .mobile-center .neve-mm-heading > span {
 	justify-content: center;
   }
 
-  .mobile-left & {
+  .mobile-left .neve-mm-heading > span {
 	justify-content: flex-start;
   }
 
-  .mobile-right & {
+  .mobile-right .neve-mm-heading > span {
 	justify-content: flex-end;
   }
 }
 
 @mixin mega-menu--tablet() {
-  .neve-mm-heading {
-	.tablet-center & {
+  .header-menu-sidebar-inner {
+	.tablet-center .neve-mm-heading > span {
 	  justify-content: center;
 	}
 
-	.tablet-left & {
+	.tablet-left .neve-mm-heading > span {
 	  justify-content: flex-start;
 	}
 
-	.tablet-right & {
+	.tablet-right .neve-mm-heading > span {
 	  justify-content: flex-end;
 	}
   }
@@ -187,16 +201,16 @@
 	padding: 0 12px 7px;
   }
 
-  .neve-mm-heading {
-	.desktop-center & {
+  .header-menu-sidebar-inner {
+	.desktop-center .neve-mm-heading > span {
 	  justify-content: center;
 	}
 
-	.desktop-left & {
+	.desktop-left .neve-mm-heading > span {
 	  justify-content: flex-start;
 	}
 
-	.desktop-right & {
+	.desktop-right .neve-mm-heading > span {
 	  justify-content: flex-end;
 	}
   }
