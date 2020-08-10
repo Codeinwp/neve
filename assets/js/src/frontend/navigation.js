@@ -1,3 +1,4 @@
+/* global NeveProperties */
 /* jshint esversion: 6 */
 import {
 	isMobile,
@@ -32,6 +33,7 @@ export const initNavigation = ()=> {
  * @returns {boolean}
  */
 export const repositionDropdowns =  () => {
+  	let {isRTL} = NeveProperties;
 	let dropDowns = document.querySelectorAll( '.sub-menu' );
 	if ( dropDowns.length === 0 ) return false;
 	let windowWidth = window.innerWidth;
@@ -40,13 +42,23 @@ export const repositionDropdowns =  () => {
 			rightDist = bounding.left;
 
 		if( rightDist < 0 ) {
-		  dropDown.style.left = '0';
-		  dropDown.style.right = 'auto';
+		  if( ! isRTL ) {
+			dropDown.style.left = '0';
+			dropDown.style.right = 'auto';
+		  } else {
+			dropDown.style.right = '-100%';
+			dropDown.style.left = 'auto';
+		  }
 		}
 
 		if ( rightDist + bounding.width >= windowWidth ) {
+		  if( ! isRTL ) {
 			dropDown.style.right = '100%';
 			dropDown.style.left = 'auto';
+		  } else {
+			dropDown.style.left = 'auto';
+			dropDown.style.right = '0';
+		  }
 		}
 	} );
 };
