@@ -55,6 +55,7 @@
   .header-menu-sidebar {
     position: relative;
     height: 0;
+	overflow: hidden;
     display: block;
     visibility: visible;
     z-index: $menu_sidebar_active_z_index;

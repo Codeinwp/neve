@@ -2163,6 +2163,10 @@ let hfgPanels = {};
     e.preventDefault()
     e.stopPropagation()
     var control = $( this ).data( 'control-focus' )
+	if( control === 'toggle_sidebar' ) {
+	  toggleMobileMenu(true);
+	  return false;
+	}
     wp.customize.control( control ).focus()
     $( 'label.' + control ).click()
   } )
