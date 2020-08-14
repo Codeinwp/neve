@@ -63,6 +63,11 @@
   display: flex;
   height: 100%;
   cursor: default;
+  align-items: center;
+}
+
+.nav-ul > .neve-mega-menu .neve-mm-heading > span i {
+  margin-left: 10px;
 }
 
 .neve-mm-description {
