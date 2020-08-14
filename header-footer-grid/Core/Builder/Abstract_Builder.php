@@ -36,6 +36,7 @@ abstract class Abstract_Builder implements Builder {
 	const SKIN_SETTING       = 'skin';
 	const TEXT_COLOR         = 'new_text_color';
 	const BACKGROUND_SETTING = 'background';
+	const MIN_WIDTH = 'min_width';
 	/**
 	 * Layout config data.
 	 *
@@ -288,26 +289,7 @@ abstract class Abstract_Builder implements Builder {
 		);
 
 		if ( $row_id === 'sidebar' ) {
-			SettingsManager::get_instance()->add(
-				[
-					'id'                 => self::LAYOUT_SETTING,
-					'group'              => $row_setting_id,
-					'tab'                => SettingsManager::TAB_LAYOUT,
-					'label'              => __( 'Layout', 'neve' ),
-					'type'               => 'select',
-					'section'            => $row_setting_id,
-					'options'            => [
-						'choices' => [
-							'slide_left' => __( 'Slide from Left', 'neve' ),
-							'dropdown'   => __( 'Toggle Dropdown', 'neve' ),
-						],
-					],
-					'conditional_header' => $this->get_id() === 'header',
-					'transport'          => 'refresh',
-					'sanitize_callback'  => 'wp_filter_nohtml_kses',
-					'default'            => 'slide_left',
-				]
-			);
+			$this->add_sidebar_controls($row_setting_id);
 		}
 
 		if ( $row_id !== 'sidebar' ) {
@@ -1286,5 +1268,69 @@ abstract class Abstract_Builder implements Builder {
 			'background' => $background,
 			'text'       => $text,
 		];
+	}
+
+	private function add_sidebar_controls($row_setting_id) {
+		SettingsManager::get_instance()->add(
+			[
+				'id'                 => self::LAYOUT_SETTING,
+				'group'              => $row_setting_id,
+				'tab'                => SettingsManager::TAB_LAYOUT,
+				'label'              => __( 'Open Behaviour', 'neve' ),
+				'type'               => 'select',
+				'section'            => $row_setting_id,
+				'options'            => [
+					'choices' => [
+						'slide_left'  => __( 'Slide from Left', 'neve' ),
+						'slide_right' => __( 'Slide from Right', 'neve' ),
+						'pull_left'	  => __('Pull from Left', 'neve'),
+						'pull_right'	  => __('Pull from Right', 'neve'),
+						'full_canvas' => __( 'Full Canvas', 'neve' )
+//						'dropdown'   => __( 'Toggle Dropdown', 'neve' ),
+					],
+				],
+				'conditional_header' => $this->get_id() === 'header',
+				'transport'          => 'refresh',
+				'sanitize_callback'  => 'wp_filter_nohtml_kses',
+				'default'            => 'slide_left',
+			]
+		);
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'                    => self::MIN_WIDTH,
+				'group'                 => $row_setting_id,
+				'tab'                   => SettingsManager::TAB_LAYOUT,
+				'label'                 => __( 'Sidebar Width', 'neve' ),
+				'transport'             => 'postMessage',
+				'section'               => $row_setting_id,
+				'conditional_header'    => $this->get_id() === 'header',
+				'type'                  => '\Neve\Customizer\Controls\React\Responsive_Range',
+				'options'            => [
+					'input_attrs' => [
+						'min'        => 1,
+						'max'        => 1000,
+						'units'      => [ 'px' ],
+						'defaultVal' => [
+							'mobile'  => 350,
+							'tablet'  => 350,
+							'desktop' => 350,
+						],
+					],
+				],
+				'live_refresh_selector' => true,
+				'live_refresh_css_prop' => [
+					'responsive' => true,
+					'template'   =>
+						'.hfg_header .header-menu-sidebar {
+							width: {{value}}px;
+						}',
+				],
+				'sanitize_callback'     => 'wp_filter_nohtml_kses',
+				'active_callback'       => function () {
+					return in_array( get_theme_mod( $this->panel . '_' . self::LAYOUT_SETTING, 'slide_left' ), [ 'slide_left', 'slide_right', 'pull_left', 'pull_right' ], true );
+				}
+			]
+		);
 	}
 }
