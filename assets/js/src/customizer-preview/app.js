@@ -1,5 +1,6 @@
 /* global neveCustomizePreview */
 /* jshint esversion: 6 */
+import {initNavigation, repositionDropdowns} from '../frontend/navigation'
 import {removeClass, addClass} from '../utils.js'
 
 function handleResponsiveRadioButtons( args, nextValue ) {
@@ -84,14 +85,21 @@ window.addEventListener('load', function () {
 		function (e) {
 			if (e.detail.partial_id === 'hfg_header_layout_partial') {
 				window.HFG.init();
-				window.HFG.initSearch();
-				console.log('Reinitialize HFG with sidebar.');
+			  	window.HFG.initSearch();
+			  	initNavigation();
+			  	console.log('Reinitialize HFG with sidebar.');
 				return false;
 			}
 			if (e.detail.partial_id === 'nav-icon_partial') {
 				window.HFG.init(true);
 				console.log('Reinitialize HFG with skip.');
 				return false;
+			}
+			if( e.detail.partial_id === 'primary-menu_partial' || e.detail.partial_id === 'hfg_header_layout_partial'  ) {
+			  	initNavigation();
+			  	repositionDropdowns();
+			  	console.log('Reinitialize navigation.')
+			  	return false;
 			}
 		}
 	)
@@ -157,7 +165,7 @@ window.addEventListener('load', function () {
                 style += `body ${args.selector}{background-image: none !important;}`;
                 let color = newValue.colorValue !== 'undefined' ? newValue.colorValue : 'inherit'
                 style += `${args.selector}:before{ content: none !important;}`;
-								style += `body ${args.selector}, body ${args.selector} .primary-menu-ul .sub-menu li {background-color: ${color}!important;}`
+								style += `body ${args.selector}, body ${args.selector} .primary-menu-ul .sub-menu {background-color: ${color}!important;}`
 								style += `${args.selector} .primary-menu-ul .sub-menu, ${args.selector} .primary-menu-ul .sub-menu li {border-color: ${color}!important;}`;
                 addCss(settingId, style)
                 return false
@@ -188,7 +196,7 @@ window.addEventListener('load', function () {
               style += 'top: 0; bottom: 0; width: 100%; content:"";'
               style += '}'
               let color = newValue.overlayColorValue || 'unset';
-							style += `body ${args.selector}, body ${args.selector} .primary-menu-ul .sub-menu li {background-color: ${color}!important;}`
+							style += `body ${args.selector}, body ${args.selector} .primary-menu-ul .sub-menu {background-color: ${color}!important;}`
 							style += `${args.selector} .primary-menu-ul .sub-menu, ${args.selector} .primary-menu-ul .sub-menu li {border-color: ${color}!important;}`;
 							style += args.selector + ':before { ' +
                 'content: "";' +

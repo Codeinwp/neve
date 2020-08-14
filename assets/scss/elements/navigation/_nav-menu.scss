@@ -48,6 +48,10 @@
 		fill: currentColor;
 	  }
 	}
+	.menu-item-title-wrap {
+	  display: flex;
+	  align-items: center;
+	}
   }
 
   .sub-menu {
@@ -125,6 +129,15 @@
 
 // Menus in sidebar.
 .header-menu-sidebar-inner {
+  .nav-ul {
+	.sub-menu {
+	  li {
+		> a, .has-caret {
+		  white-space: normal;
+		}
+	  }
+	}
+  }
 
   .dropdown-open {
 	&.has-caret, > .caret {
@@ -293,9 +306,11 @@
 		}
 	  }
 	}
+
 	.amp-desktop-caret-wrap {
 	  display: none;
 	}
+
 	.amp-caret-wrap {
 	  display: block;
 	}

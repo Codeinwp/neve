@@ -20,17 +20,6 @@
 	  .sub-menu {
 		left: 0;
 		top: 100%;
-
-		li {
-		  border-bottom: $muted-border !important;
-		}
-	  }
-	}
-
-	li > .sub-menu {
-	  max-height: 0;
-	  &.dropdown-open {
-		max-height: 3000px;
 	  }
 	}
   }
@@ -40,15 +29,17 @@
 	align-items: center;
 
 	i {
+	  margin-top: 0;
+	  vertical-align: unset;
 	  margin-right: 10px;
 	}
   }
 
-  .neve-mm-divider {
+  li.neve-mm-divider {
 	height: 1px;
 	margin: $spacing-xs auto;
 	width: 100%;
-	background-color: $muted-white-med;
+	background-color: currentColor !important;
 	padding: 0;
 	cursor: default;
   }
@@ -74,18 +65,17 @@
 .neve-mm-description {
   font-size: .8em;
   padding: 0 0 7px;
-  opacity: .9;
   width: 100%;
   display: flex;
   text-align: center;
 }
 
 .neve-mm-heading, .neve-mm-heading > a {
-  opacity: .75;
   font-size: 1.1em;
   cursor: pointer;
   display: flex;
   align-items: center;
+  white-space: normal;
 
   a, span {
 	font-weight: 700;
@@ -98,43 +88,74 @@
 }
 
 .header-menu-sidebar-inner {
+  .sub-menu, .sub-menu li {
+	background-color: transparent !important;
+  }
+
+  .neve-mega-menu .neve-mm-col > .sub-menu {
+	.sub-menu {
+	  max-height: 0;
+	  &.dropdown-open {
+		max-height: 3000px;
+	  }
+	}
+  }
+
   .nav-ul > .neve-mega-menu .neve-mm-heading {
 	> span {
 	  padding: 3px 0;
 	}
   }
 
-  .mobile-center .neve-mm-heading > span {
-	justify-content: center;
-  }
-
-  .mobile-left .neve-mm-heading > span {
-	justify-content: flex-start;
-  }
-
-  .mobile-right .neve-mm-heading > span {
-	justify-content: flex-end;
-  }
-}
-
-@mixin mega-menu--tablet() {
-  .header-menu-sidebar-inner {
-	.tablet-center .neve-mm-heading > span {
+  .mobile-center .neve-mm-heading > {
+	a, span {
+	  text-align: center;
 	  justify-content: center;
 	}
+  }
 
-	.tablet-left .neve-mm-heading > span {
+  .mobile-left .neve-mm-heading > {
+	a, span {
+	  text-align: left;
 	  justify-content: flex-start;
 	}
+  }
 
-	.tablet-right .neve-mm-heading > span {
+  .mobile-right .neve-mm-heading > {
+	a, span {
+	  text-align: right;
 	  justify-content: flex-end;
 	}
   }
 }
 
+@mixin mega-menu--tablet() {
+  .header-menu-sidebar-inner {
+	.tablet-center .neve-mm-heading > {
+	  a, span {
+		text-align: center;
+		justify-content: center;
+	  }
+	}
+
+	.tablet-left .neve-mm-heading > {
+	  a, span {
+		text-align: left;
+		justify-content: flex-start;
+	  }
+	}
+
+	.tablet-right .neve-mm-heading > {
+	  a, span {
+		text-align: right;
+		justify-content: flex-end;
+	  }
+	}
+  }
+}
+
 @mixin mega-menu--laptop() {
-  .nv-nav-wrap .primary-menu-ul:not(#nv-primary-navigation-sidebar) {
+  .header--row .nv-nav-wrap .primary-menu-ul {
 	> .neve-mega-menu {
 	  position: static;
 	}
@@ -144,6 +165,7 @@
 	  position: absolute;
 	  display: flex;
 	  padding: 20px;
+	  top: auto;
 
 	  &:not(.dropdown-open) {
 		pointer-events: none;
@@ -179,10 +201,6 @@
 	  text-align: left;
 	  width: 100%;
 
-	  .sub-menu {
-		max-height: 0 !important;
-	  }
-
 	  a {
 		white-space: normal;
 		justify-content: flex-start;
@@ -196,7 +214,7 @@
 	}
 
 	.neve-mega-menu .neve-mm-col:not(:last-child) {
-	  border-right: $muted-border;
+	  border-right: 1px solid currentColor !important;
 	}
 
 	.neve-mega-menu .neve-mm-col > .sub-menu {
@@ -211,28 +229,40 @@
   }
 
   .header-menu-sidebar-inner {
-	.desktop-center .neve-mm-heading > span {
-	  justify-content: center;
+	.desktop-center .neve-mm-heading > {
+	  a, span {
+		text-align: center;
+		justify-content: center;
+	  }
 	}
 
-	.desktop-left .neve-mm-heading > span {
-	  justify-content: flex-start;
+	.desktop-left .neve-mm-heading > {
+	  a, span {
+		text-align: left;
+		justify-content: flex-start;
+	  }
 	}
 
-	.desktop-right .neve-mm-heading > span {
-	  justify-content: flex-end;
+	.desktop-right .neve-mm-heading > {
+	  a, span {
+		text-align: right;
+		justify-content: flex-end;
+	  }
 	}
   }
 }
 
 @mixin mega-menu--desktop() {
-  .nv-nav-wrap .primary-menu-ul:not(#nv-primary-navigation-sidebar) {
+  .header--row .nv-nav-wrap .primary-menu-ul {
 	.neve-mega-menu {
 	  > .sub-menu {
 		width: 1170px;
 	  }
-
-	  position: static;
 	}
   }
+}
+
+// Make sure the component is static if it's in the main rows and has a navigation.
+.header--row .builder-item.has-nav {
+  position: static;
 }

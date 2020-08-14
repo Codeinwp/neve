@@ -704,6 +704,11 @@ blockquote.wp-block-quote.is-style-large cite {
   fill: currentColor;
 }
 
+.nav-ul li .menu-item-title-wrap {
+  display: flex;
+  align-items: center;
+}
+
 .nav-ul .sub-menu {
   -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -772,6 +777,10 @@ blockquote.wp-block-quote.is-style-large cite {
   flex-direction: row;
   align-items: center;
   padding-bottom: 0;
+}
+
+.header-menu-sidebar-inner .nav-ul .sub-menu li > a, .header-menu-sidebar-inner .nav-ul .sub-menu li .has-caret {
+  white-space: normal;
 }
 
 .header-menu-sidebar-inner .dropdown-open.has-caret > svg, .header-menu-sidebar-inner .dropdown-open > .caret > svg {
@@ -863,7 +872,8 @@ blockquote.wp-block-quote.is-style-large cite {
 ul[id^="nv-primary-navigation"] i {
   font-size: inherit;
   line-height: inherit;
-  width: 20px;
+  width: auto;
+  height: auto;
 }
 
 .nv-search-icon-component {
