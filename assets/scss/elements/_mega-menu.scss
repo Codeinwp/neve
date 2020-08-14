@@ -2,12 +2,6 @@
 .nav-ul > .neve-mega-menu {
   > .sub-menu {
 	cursor: default;
-
-	> .sub-menu {
-	  opacity: 1;
-	  visibility: visible;
-	  cursor: default;
-	}
   }
 
   .sub-menu .sub-menu {
@@ -28,9 +22,15 @@
 		top: 100%;
 
 		li {
-		  padding: 0 12px;
 		  border-bottom: $muted-border !important;
 		}
+	  }
+	}
+
+	li > .sub-menu {
+	  max-height: 0;
+	  &.dropdown-open {
+		max-height: 3000px;
 	  }
 	}
   }
@@ -173,6 +173,10 @@
 	  flex-direction: column;
 	  text-align: left;
 	  width: 100%;
+
+	  .sub-menu {
+		max-height: 0 !important;
+	  }
 
 	  a {
 		white-space: normal;
