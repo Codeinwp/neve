@@ -19,7 +19,7 @@ rm -rf  /var/www/html/wp-content/themes/*
 if [ ! -n "$ZIP_URL" ]
 then
 	echo "Installing Neve theme from local artifact"
-	wp --allow-root theme install --activate /var/www/html/wp-content/neve.zip
+	wp --allow-root theme install --activate /tmp/repo/artifact/neve.zip
 else
 	echo "Installing Neve theme from $ZIP_URL"
 	wp --allow-root theme install --activate $ZIP_URL
