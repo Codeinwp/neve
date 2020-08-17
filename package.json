@@ -67,7 +67,7 @@
 		"semantic-release": "^17.1.1",
 		"size-limit": "^4.4.0",
 		"url-slug": "^2.3.2",
-		"webpack": "^4.44.0"
+		"webpack": "^4.44.1"
 	},
 	"scripts": {
 		"phpcbf": "composer run-script format || true ",
