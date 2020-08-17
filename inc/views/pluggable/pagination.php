@@ -36,8 +36,9 @@ class Pagination extends Base_View {
 			'nv/v1/posts',
 			'/page/(?P<page_number>\d+)/',
 			array(
-				'methods'  => \WP_REST_Server::CREATABLE,
-				'callback' => array( $this, 'get_posts' ),
+				'methods'             => \WP_REST_Server::CREATABLE,
+				'callback'            => array( $this, 'get_posts' ),
+				'permission_callback' => '__return_true',
 			)
 		);
 	}
