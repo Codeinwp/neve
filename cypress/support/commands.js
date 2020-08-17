@@ -67,7 +67,7 @@ Cypress.Commands.add('insertCoverBlock', () => {
 function importCodeContent(text) {
 	cy.get('.edit-post-more-menu').click().get('.components-dropdown-menu__menu button').contains('Code editor').click();
 	cy.get('textarea.editor-post-text-editor').focus().invoke('val', text).type('{enter}');
-	cy.get('.edit-post-text-editor__toolbar button').contains('Exit Code Editor').click();
+	cy.get('.edit-post-text-editor__toolbar button').contains(/Exit Code Editor/i).click();
 }
 
 Cypress.Commands.add('editCurrentPost', editCurrentPost);
