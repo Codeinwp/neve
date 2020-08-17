@@ -4,12 +4,12 @@ const {__} = wp.i18n;
 const {withDispatch, withSelect} = wp.data;
 const {compose} = wp.compose;
 
-const EditorTabs = ({EDITOR_MAP, count, onlyProSites, editor, setCurrentEditor}) => {
-
+const EditorTabs = ({EDITOR_MAP, count, onlyProSites, editor, setCurrentEditor, sites}) => {
+  const editorsOrderedFromAPI = Object.keys( sites );
 	return (
 			<div className="editor-tabs">
 				{
-					Object.keys(EDITOR_MAP).map(key => {
+					editorsOrderedFromAPI.map(key => {
 						const classes = classnames( [ 'tab', key, {'active': key === editor} ] );
 						return (
 							<a
@@ -38,9 +38,10 @@ const EditorTabs = ({EDITOR_MAP, count, onlyProSites, editor, setCurrentEditor})
 
 export default compose(
 	withSelect((select) => {
-		const {getCurrentEditor} = select('neve-onboarding');
+		const {getCurrentEditor, getSites} = select('neve-onboarding');
 		return {
-			editor: getCurrentEditor()
+			editor: getCurrentEditor(),
+			sites: getSites().sites
 		};
 	}),
 	withDispatch((dispatch) => {

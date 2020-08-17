@@ -19,6 +19,15 @@ const Onboarding = ({ editor, category, resetCategory, previewOpen, currentSiteD
   const [ maxShown, setMaxShown ] = useState(9);
   const { sites = {}, migration } = getSites;
 
+  if ( 1 > sites.length ) {
+    return <>
+      <p>{__('Starter sites could not be loaded. Please refresh and try again.', 'neve')}
+		{isOnboarding &&
+		<Button style={{display: 'block', margin: '20px auto'}} isPrimary onClick={cancelOnboarding}>{__('Close', 'neve')}</Button>}
+      </p>
+    </>;
+  }
+
   const tags = [
     __('Business', 'neve'),
     __('Ecommerce', 'neve'),
@@ -39,17 +48,17 @@ const Onboarding = ({ editor, category, resetCategory, previewOpen, currentSiteD
   };
 
   const EDITOR_MAP = {
+    'gutenberg': {
+      icon: 'gutenberg.jpg',
+      niceName: 'Gutenberg'
+    },
     'elementor': {
       icon: 'elementor.jpg',
       niceName: 'Elementor'
     },
     'beaver builder': {
       icon: 'beaver.jpg',
-      niceName: 'Beaver Builder'
-    },
-    'gutenberg': {
-      icon: 'gutenberg.jpg',
-      niceName: 'Gutenberg'
+      niceName: ( <>Beaver <span className="long-name">Builder</span></>)
     },
     'brizy': {
       icon: 'brizy.jpg',
@@ -61,7 +70,7 @@ const Onboarding = ({ editor, category, resetCategory, previewOpen, currentSiteD
     },
     'thrive architect': {
       icon: 'thrive.jpg',
-      niceName: 'Thrive Architect'
+      niceName: (<>Thrive <span className="long-name">Architect</span></>)
     }
   };
 
@@ -106,7 +115,7 @@ const Onboarding = ({ editor, category, resetCategory, previewOpen, currentSiteD
     return allSites[builder];
   };
 
-  const getBuilders = () => Object.keys(EDITOR_MAP);
+  const getBuilders = () => Object.keys(sites);
 
   const getCounts = () => {
     let counts = {

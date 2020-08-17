@@ -1,0 +1,65 @@
+name: Trigger visual on PR comment
+
+on:
+  issue_comment:
+    types: [created]
+jobs:
+  trigger_visual:
+    runs-on: ubuntu-latest
+    outputs:
+      triggered: ${{ steps.check.outputs.triggered }}
+      pr_number: ${{ steps.find-pull-request.outputs.number }}
+      commit_sha: ${{ steps.find-pull-request.outputs.head-sha }}
+    steps:
+      - uses: khan/pull-request-comment-trigger@master
+        id: check
+        with:
+          trigger: '@pirate-bot test:visual'
+          reaction: eyes
+        env:
+          GITHUB_TOKEN: '${{ secrets.BOT_TOKEN }}'
+      - name: Find Pull Request
+        uses: juliangruber/find-pull-request-action@v1
+        id: find-pull-request
+        with:
+          github-token: ${{ secrets.BOT_TOKEN }}
+          branch: development
+  run-visual:
+    needs: trigger_visual
+#    Check if :
+#    * the author of the comment is part of Org
+#    * the comment should trigger the action
+#    * the comment is on the right pr
+#
+    if: "contains('COLLABORATOR,CONTRIBUTOR,MEMBER,OWNER', github.event.comment.author_association) && needs.trigger_visual.outputs.triggered == 'true' && contains(github.event.comment.html_url,join(needs.trigger_visual.outputs.pr_number,'#'))"
+    env:
+      CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+      PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+    strategy:
+      matrix:
+        machines: [1, 2, 3, 4]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ needs.trigger_visual.outputs.commit_sha }}
+      - uses: actions/cache@v1
+        with:
+          path: ~/.cache/Cypress
+          key: cypress-cache-v2-${{ runner.os }}-${{ hashFiles('**/package.json') }}
+      - uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+      - name: Install deps
+        run: |
+          npm ci
+      - name: Run Visual Diff
+        env:
+          PERCY_PARALLEL_TOTAL: 4
+          PERCY_BRANCH: development
+          PERCY_COMMIT: ${{ needs.trigger_visual.outputs.commit_sha }}
+          PERCY_PULL_REQUEST: ${{ needs.trigger_visual.outputs.pr_number }}
+          PERCY_PARALLEL_NONCE: '${{ github.event_name }}-${{ needs.trigger_visual.outputs.commit_sha }}'
+        run: |
+          npm run visual:test --  --browser chrome --record --parallel --group visual-diff

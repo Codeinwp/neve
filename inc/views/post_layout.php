@@ -99,7 +99,7 @@ class Post_Layout extends Base_View {
 					echo '<h1 class="title entry-title">' . wp_kses_post( get_the_title() ) . '</h1>';
 					break;
 				case 'meta':
-					$this->render_post_meta();
+					self::render_post_meta();
 					break;
 				case 'author-biography':
 					do_action( 'neve_layout_single_post_author_biography' );
@@ -121,8 +121,10 @@ class Post_Layout extends Base_View {
 
 	/**
 	 * Render the post meta.
+	 *
+	 * @param bool $is_list Flag to render meta as a list or as a text.
 	 */
-	private function render_post_meta() {
+	public static function render_post_meta( $is_list = true ) {
 		$default_meta_order = wp_json_encode(
 			array(
 				'author',
@@ -133,7 +135,7 @@ class Post_Layout extends Base_View {
 
 		$meta_order = get_theme_mod( 'neve_post_meta_ordering', $default_meta_order );
 		$meta_order = json_decode( $meta_order );
-		do_action( 'neve_post_meta_single', $meta_order );
+		do_action( 'neve_post_meta_single', $meta_order, $is_list );
 	}
 
 	/**
@@ -146,7 +148,7 @@ class Post_Layout extends Base_View {
 		echo '<div class="nv-title-meta-wrap">';
 		do_action( 'neve_before_post_title' );
 		echo '<h1 class="title entry-title">' . wp_kses_post( get_the_title() ) . '</h1>';
-		$this->render_post_meta();
+		self::render_post_meta();
 		echo '</div>';
 		echo '</div>';
 

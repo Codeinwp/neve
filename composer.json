@@ -31,10 +31,10 @@
 	"phpcs": "phpcs --standard=phpcs.xml -s --runtime-set testVersion 5.5-",
 	"lint": "composer run-script phpcs",
 	"post-install-cmd": [
-	  "npm run bump-vendor || true"
+	  "yarn run bump-vendor || true"
 	],
 	"post-update-cmd": [
-	  "npm run bump-vendor || true"
+	  "yarn run bump-vendor || true"
 	]
   },
   "minimum-stability": "dev",

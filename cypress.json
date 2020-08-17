@@ -1,11 +1,36 @@
 {
   "projectId": "d8fiqf",
-  "pluginsFile": false,
+  "pluginsFile": "cypress/plugins/index.js",
   "supportFile": "cypress/support/commands.js",
   "baseUrl": "http://localhost:8080",
-  "viewportWidth": 1920,
-  "viewportHeight": 1080,
+  "viewportWidth": 1366,
+  "viewportHeight": 768,
   "user": "admin",
+  "screenshotsFolder": "visual-regression/screenshots",
   "videoUploadOnPasses": false,
-  "password": "admin"
+  "password": "admin",
+  "env": {
+	"qaUrls": [
+	  "https://qa-neve.themeisle.com/neve/",
+	  "https://qa-neve.themeisle.com/neve/about/page-markup-and-formatting/",
+	  "https://qa-neve.themeisle.com/neve/about/page-image-alignment/",
+	  "https://qa-neve.themeisle.com/neve-amp/",
+	  "https://qa-neve.themeisle.com/neve-buttons/",
+	  "https://qa-neve.themeisle.com/neve-buttons/neve-blog/",
+	  "https://qa-neve.themeisle.com/neve-buttons/sample-page/",
+	  "https://qa-neve.themeisle.com/neve-buttons/shop/",
+	  "https://qa-neve.themeisle.com/neve-child-theme/",
+	  "https://qa-neve.themeisle.com/neve-typography/",
+	  "https://qa-neve.themeisle.com/neve-typography/2013/01/11/markup-html-tags-and-formatting/",
+	  "https://qa-neve.themeisle.com/neve-typography/shop/",
+	  "https://qa-neve.themeisle.com/neve/elementor-page/",
+	  "https://qa-neve.themeisle.com/neve/neve-blog/",
+	  "https://qa-neve.themeisle.com/neve/neve-blog/?blog-grid-1=yes",
+	  "https://qa-neve.themeisle.com/neve/neve-blog/?blog-grid-2=yes",
+	  "https://qa-neve.themeisle.com/neve/neve-blog/?blog-grid-3=yes",
+	  "https://qa-neve.themeisle.com/neve/neve-blog/?blog-grid-4=yes",
+	  "https://qa-neve.themeisle.com/neve/product/lemonade/",
+	  "https://qa-neve.themeisle.com/neve/shop/"
+	]
+  }
 }

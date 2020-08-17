@@ -7,7 +7,7 @@ Author URI:     https://themeisle.com
 Tested up to:   5.4
 Requires PHP:   5.4.0
 Description:    Neve is a super fast, easily customizable, multi-purpose theme. It’s perfect for blogs, small business, startups, agencies, firms, e-commerce shops (WooCommerce storefront) as well as personal portfolio sites and most types of projects. A fully AMP optimized and responsive theme, Neve will load in mere seconds and adapt perfectly on any viewing device. While it is lightweight and has a minimalist design, the theme is highly extendable, it has a highly SEO optimized code, resulting in top rankings in Google search results. Neve works perfectly with Gutenberg and the most popular page builders (Elementor, Brizy, Beaver Builder, Visual Composer, SiteOrigin, Divi). Neve is also WooCommerce ready, responsive, RTL & translation ready. Look no further. Neve is the perfect theme for you!
-Version:        2.7.5
+Version:        2.7.6
 License:        GNU General Public License v2 or later
 License URI:    http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain:    neve
@@ -1231,19 +1231,25 @@ fieldset input[type="text"], fieldset input[type="search"], fieldset input[type=
   width: 100%;
 }
 
-.nv-meta-list li {
+.nv-meta-list li, .nv-meta-list span {
   display: inline;
+}
+
+.nv-meta-list li:not(:last-child):after, .nv-meta-list span:not(:last-child):after {
+  content: '/';
+  padding: 0 5px;
+}
+
+.nv-meta-list li {
   color: #676767;
   font-size: 0.85em;
 }
 
 .nv-meta-list li:not(:last-child):after {
-  content: '/';
-  padding: 0 5px;
   color: #676767;
 }
 
-.nv-meta-list a, .nv-meta-list a:hover {
+.nv-meta-list:not(.nv-dynamic-meta) a, .nv-meta-list:not(.nv-dynamic-meta) a:hover {
   color: #676767;
 }
 
@@ -1260,6 +1266,13 @@ fieldset input[type="text"], fieldset input[type="search"], fieldset input[type=
 
 .nv-meta-list .meta.author .author-name {
   margin-left: 3px;
+}
+
+.nv-dynamic-author-meta .photo {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  transform: translateY(30%);
 }
 
 .entry-title {
