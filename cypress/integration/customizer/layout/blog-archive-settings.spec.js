@@ -60,7 +60,7 @@ describe( 'Blog/Archive Check', function () {
 		goToCustomizerSection();
 		cy.get( '#customize-control-neve_post_excerpt_length' )
 			.find( 'input[type=number]' )
-			.clear({force:true})
+			.type('{selectall}')
 			.type( 15 );
 			saveCustomizer();
 		cy.visit( '/' );

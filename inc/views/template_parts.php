@@ -201,7 +201,8 @@ class Template_Parts extends Base_View {
 		);
 
 		$meta_order = get_theme_mod( 'neve_post_meta_ordering', $default_meta_order );
-		$meta_order = json_decode( $meta_order );
+
+		$meta_order = is_string( $meta_order ) ? json_decode( $meta_order ) : $meta_order;
 
 		ob_start();
 		do_action( 'neve_post_meta_archive', $meta_order );
