@@ -15,22 +15,21 @@ const ResponsiveRangeComponent = ({ control }) => {
   const [value, setValue] = useState(parsedValue)
 
   useEffect(() => {
-	// If a value is int, make it responsive.
-	const responsiveConverted = getIntValAsResponsive(control.setting.get())
-	if ( value !== responsiveConverted ) {
-	  setValue({ responsiveConverted })
-	}
-	document.addEventListener('neve-changed-customizer-value', (e) => {
-	  if (!e.detail) return false
-	  if (e.detail.id !== control.id) return false
-	  // Make sure we translate int values to responsive values.
-	  const incomingValue = getIntValAsResponsive(e.detail.value)
+    // If a value is int, make it responsive.
+    const responsiveConverted = getIntValAsResponsive(control.setting.get())
+    if (value !== responsiveConverted) {
+      setValue({ responsiveConverted })
+    }
+    document.addEventListener('neve-changed-customizer-value', (e) => {
+      if (!e.detail) return false
+      if (e.detail.id !== control.id) return false
+      // Make sure we translate int values to responsive values.
+      const incomingValue = getIntValAsResponsive(e.detail.value)
 
-	  setValue(maybeParseJson(incomingValue))
-	  control.setting.set(JSON.stringify(incomingValue))
-	})
+      setValue(maybeParseJson(incomingValue))
+      control.setting.set(JSON.stringify(incomingValue))
+    })
   }, [])
-
 
   const { label } = control.params
   const { hideResponsive, units, defaultVal, step, min, max } = control.params.input_attrs
