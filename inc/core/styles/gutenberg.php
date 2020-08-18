@@ -96,7 +96,7 @@ class Gutenberg extends Generator {
 			],
 		];
 		$this->_subscribers[] = [
-			Dynamic_Selector::KEY_SELECTOR => '#editor .editor-styles-wrapper',
+			Dynamic_Selector::KEY_SELECTOR => '.editor-styles-wrapper',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_FONT_FAMILY => Config::MODS_FONT_GENERAL,
 			],
