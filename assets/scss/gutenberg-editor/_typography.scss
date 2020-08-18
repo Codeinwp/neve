@@ -16,7 +16,7 @@
 		text-transform: none;
 		font-family: $default-font-family;
 		line-height: $line-height-base;
-		margin: 0 0 $headings-margin-bottom 0;
+		margin-bottom: $headings-margin-bottom;
 		letter-spacing: normal;
 		font-weight: $headings-font-weight;
 		color: $body-color;
@@ -63,7 +63,7 @@
 	//<editor-fold desc="Lists">
 	ul, ol {
 		padding-left: $spacing-sm;
-		margin: $spacing-sm 0;
+		margin: $spacing-sm auto;
 
 		li {
 			margin-bottom: $spacing-xs;
@@ -79,7 +79,7 @@
 	//<editor-fold desc="Blockquote">
 	blockquote.wp-block-quote {
 		border: none;
-		margin: $spacing 0;
+		margin: $spacing auto;
 		padding: 0;
 
         &.has-text-align-center{
