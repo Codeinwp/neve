@@ -346,12 +346,14 @@ final class Manager {
 			'neve_meta_component_groups',
 			[
 				'group_page_layout' => [
-					'title'    => __( 'Page Layout', 'neve' ),
-					'controls' => [ 'neve_meta_sidebar', 'neve_meta_container', 'neve_meta_enable_content_width', 'neve_meta_content_width' ],
+					'title'           => __( 'Page Layout', 'neve' ),
+					'controls'        => [ 'neve_meta_sidebar', 'neve_meta_container', 'neve_meta_enable_content_width', 'neve_meta_content_width' ],
+					'not_in_template' => 'elementor_header_footer',
 				],
 				'group_page_title'  => [
-					'title'    => __( 'Page Title', 'neve' ),
-					'controls' => [ 'neve_meta_title_alignment', 'neve_meta_author_avatar' ],
+					'title'           => __( 'Page Title', 'neve' ),
+					'controls'        => [ 'neve_meta_title_alignment', 'neve_meta_author_avatar' ],
+					'not_in_template' => 'elementor_header_footer',
 				],
 				'group_elements'    => [
 					'title'    => __( 'Elements', 'neve' ),

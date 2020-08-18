@@ -29,6 +29,8 @@ class MetaFieldsManager extends Component {
 
 		let shouldShow  = true;
 		const dependsOn = settings['depends_on'];
+		const not_in_template = settings['not_in_template'];
+
 		if ( 'undefined' !== typeof dependsOn ) {
 			const dependentControlType = metaSidebar.controls.find( obj => dependsOn === obj.id ).type;
 			if ( 'sortable-list' === dependentControlType ) {
@@ -42,6 +44,13 @@ class MetaFieldsManager extends Component {
 			}
 			if ( 'checkbox' === dependentControlType ) {
 				shouldShow = 'on' === this.state[dependsOn];
+			}
+		}
+
+		if ( 'undefined' !== typeof not_in_template ) {
+			let template = wp.data.select('core/editor').getEditedPostAttribute('template');
+			if ( not_in_template === template ) {
+				shouldShow = false;
 			}
 		}
 
@@ -108,7 +117,13 @@ class MetaFieldsManager extends Component {
 				{this.updateBlockWidth()}
 				{
 					Object.keys( this.componentsGroup ).map( ( group, index ) => {
-						const { title, controls } = this.componentsGroup[group];
+						const { title, controls, not_in_template } = this.componentsGroup[group];
+
+						let template = wp.data.select('core/editor').getEditedPostAttribute('template');
+						if ( not_in_template === template ) {
+							return false;
+						}
+
 						return (
 							<div key={index} className="nv-option-category">
 								<PanelBody

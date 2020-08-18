@@ -6,18 +6,26 @@ const { __ } = wp.i18n;
 import { MetaFieldsManager } from './MetaFieldsManager';
 const { useShortcut } = wp.keyboardShortcuts;
 const { useCallback } = wp.element;
+const {compose} = wp.compose;
+const {withDispatch, withSelect} = wp.data;
 
-const Sidebar = () => {
-
-	wp.data.dispatch( 'core/keyboard-shortcuts' ).registerShortcut( {
-		name: 'neve/open-meta-sidebar',
-		category: 'block',
-		description: __( 'Open Neve meta sidebar', 'neve' ),
-		keyCombination: {
-			modifier: 'access',
-			character: 'n'
-		}
-	} );
+const Sidebar = compose(
+	withDispatch((dispatch) => {
+		dispatch( 'core/keyboard-shortcuts' ).registerShortcut( {
+			name: 'neve/open-meta-sidebar',
+			category: 'block',
+			description: __( 'Open Neve meta sidebar', 'neve' ),
+			keyCombination: {
+				modifier: 'access',
+				character: 'n'
+			}
+		} );
+	} ),
+	withSelect((select) => {
+		return {
+			template: select('core/editor').getEditedPostAttribute('template')
+		};
+	} ) )( function( templateData ) {
 
 	useShortcut(
 		'neve/open-meta-sidebar',
@@ -34,6 +42,10 @@ const Sidebar = () => {
 		)
 	);
 
+	if ( 'elementor_canvas' === templateData.template ) {
+		return false;
+	}
+
 	return (
 		<>
 			<PluginSidebarMoreMenuItem
@@ -49,5 +61,5 @@ const Sidebar = () => {
 			</PluginSidebar>
 		</>
 	);
-};
+});
 export default Sidebar;

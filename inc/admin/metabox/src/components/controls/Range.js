@@ -7,6 +7,9 @@ const Range = compose(
 	withDispatch((dispatch, props) => {
 		return {
 			setMetaFieldValue: (value) => {
+				if ( ! value ) {
+					value = props.data.default;
+				}
 				props.stateUpdate(props.id, value);
 				dispatch('core/editor').editPost({meta: {[props.id]: value}});
 			}
@@ -24,6 +27,7 @@ const Range = compose(
 			<RangeControl
 				value={ props.metaFieldValue }
 				onChange={ (content) => props.setMetaFieldValue(content) }
+				allowReset={true}
 				min={min}
 				max={max}
 				step="1"
