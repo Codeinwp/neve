@@ -82,12 +82,12 @@ class Gutenberg extends Generator {
 
 		$this->_subscribers[] = [
 			Dynamic_Selector::KEY_SELECTOR => '.editor-post-title__block .editor-post-title__input,
-			h1, h1.wp-block
-			h2, h2.wp-block
-			h3, h3.wp-block
-			h4, h4.wp-block
-			h5, h5.wp-block
-			h6, h6.wp-block',
+			.wp-block h1, h1.wp-block
+			.wp-block h2, h2.wp-block
+			.wp-block h3, h3.wp-block
+			.wp-block h4, h4.wp-block
+			.wp-block h5, h5.wp-block
+			.wp-block h6, h6.wp-block',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_FONT_FAMILY => Config::MODS_FONT_HEADINGS,
 			],
@@ -137,13 +137,13 @@ class Gutenberg extends Generator {
 		foreach (
 			[
 				'neve_h1_typeface_general' => '
-			 h1, h1.wp-block,
+			 .wp-block h1, h1.wp-block,
 			 .editor-post-title__block .editor-post-title__input',
-				'neve_h2_typeface_general' => ' h2, h2.wp-block',
-				'neve_h3_typeface_general' => ' h3, h3.wp-block',
-				'neve_h4_typeface_general' => ' h4, h4.wp-block',
-				'neve_h5_typeface_general' => ' h5, h5.wp-block',
-				'neve_h6_typeface_general' => ' h6, h6.wp-block',
+				'neve_h2_typeface_general' => ' .wp-block h2, h2.wp-block',
+				'neve_h3_typeface_general' => '.wp-block h3, h3.wp-block',
+				'neve_h4_typeface_general' => '.wp-block h4, h4.wp-block',
+				'neve_h5_typeface_general' => '.wp-block h5, h5.wp-block',
+				'neve_h6_typeface_general' => '.wp-block h6, h6.wp-block',
 			] as $heading_mod => $heading_selector
 		) {
 			$this->_subscribers[] = [
