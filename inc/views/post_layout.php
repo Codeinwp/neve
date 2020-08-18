@@ -98,8 +98,7 @@ class Post_Layout extends Base_View {
 					do_action( 'neve_do_tags' );
 					break;
 				case 'title':
-					$alignment = apply_filters( 'neve_post_title_alignment', '' );
-					echo '<h1 class="title entry-title ' . esc_attr( $alignment ) . '">' . wp_kses_post( get_the_title() ) . '</h1>';
+					echo '<h1 class="title entry-title">' . wp_kses_post( get_the_title() ) . '</h1>';
 					break;
 				case 'meta':
 					self::render_post_meta();
@@ -137,7 +136,8 @@ class Post_Layout extends Base_View {
 		);
 
 		$meta_order = get_theme_mod( 'neve_post_meta_ordering', $default_meta_order );
-		$meta_order = apply_filters( 'neve_post_meta_ordering_filter', json_decode( $meta_order ) );
+		$meta_order = is_string( $meta_order ) ? json_decode( $meta_order ) : $meta_order;
+		$meta_order = apply_filters( 'neve_post_meta_ordering_filter', $meta_order );
 		do_action( 'neve_post_meta_single', $meta_order, $is_list );
 	}
 

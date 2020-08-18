@@ -1,4 +1,4 @@
-.editor-styles-wrapper {
+.wp-block {
 	//<editor-fold desc="Fonts">
 	font-size: 16px;
 	font-weight: normal;
@@ -199,7 +199,7 @@
 }
 
 @mixin gutenberg-typograpgy--tablet() {
-	.editor-styles-wrapper {
+	.wp-block {
 		font-size: $html-font-size;
 
 		.editor-writing-flow h1, .editor-post-title__block .editor-post-title__input {
