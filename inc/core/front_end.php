@@ -85,7 +85,9 @@ class Front_End {
 	 * Register sample block patterns.
 	 */
 	function register_patterns() {
-
+		if ( ! function_exists( 'register_block_pattern' ) ) {
+			return;
+		}
 		register_block_pattern(
 			'neve/3-columns-text',
 			array(
