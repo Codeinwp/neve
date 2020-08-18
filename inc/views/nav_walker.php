@@ -86,7 +86,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 			return;
 		}
 
-		if ( isset( $item->classes ) && in_array( 'neve-mega-menu', $item->classes ) ) {
+		if ( ! self::$mega_menu_enqueued && isset( $item->classes ) && in_array( 'neve-mega-menu', $item->classes ) ) {
 			$this->enqueue_mega_menu_style();
 		}
 
@@ -123,6 +123,9 @@ class Nav_Walker extends \Walker_Nav_Menu {
 		}
 		if ( $depth >= 1 ) {
 			if ( isset( $item->description ) && ! empty( $item->description ) ) {
+				if ( ! self::$mega_menu_enqueued ) {
+					$this->enqueue_mega_menu_style();
+				}
 				$output .= '<span class="neve-mm-description">' . esc_html( $item->description ) . '</span>';
 			}
 		}
