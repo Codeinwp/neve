@@ -109,13 +109,13 @@ describe( 'Font Family', function() {
 		cy.visit( '/markup-html-tags-and-formatting/' );
 		cy.get( '#wp-admin-bar-edit > a' ).click();
 		cy.clearWelcome();
-		cy.get( '#editor .editor-styles-wrapper .block-editor-writing-flow p' ).
+		cy.get( '.editor-styles-wrapper .block-editor-writing-flow p' ).
 				as( 'body' );
 		cy.get( '@body' ).should( 'have.css', 'font-family' ).
 				and( 'match', new RegExp( fonts.general, 'g' ) );
 
 		['h1', 'h2', 'h3', 'h4', 'h5', 'h6'].forEach( function(heading) {
-			cy.get( `#editor .editor-styles-wrapper ${heading}` ).
+			cy.get( `.editor-styles-wrapper ${heading}` ).
 					should( 'have.css', 'font-family' ).
 					and( 'match', new RegExp( fonts.headings, 'g' ) );
 		} );
