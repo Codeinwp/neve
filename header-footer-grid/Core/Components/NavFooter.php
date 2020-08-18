@@ -174,7 +174,7 @@ class NavFooter extends Abstract_Component {
 				'id'                 => self::ITEM_HEIGHT,
 				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
 				'tab'                => SettingsManager::TAB_LAYOUT,
-				'label'              => __( 'Items Minimum Height (px)', 'neve' ),
+				'label'              => __( 'Items Min Height (px)', 'neve' ),
 				'sanitize_callback'  => [ $this, 'sanitize_responsive_int_json' ],
 				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
 				'default'            => $this->get_default_for_responsive_from_intval( self::ITEM_HEIGHT, 25 ),
