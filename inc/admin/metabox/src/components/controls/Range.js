@@ -7,9 +7,6 @@ const Range = compose(
 	withDispatch((dispatch, props) => {
 		return {
 			setMetaFieldValue: (value) => {
-				if ( ! value ) {
-					value = props.data.default;
-				}
 				props.stateUpdate(props.id, value);
 				dispatch('core/editor').editPost({meta: {[props.id]: value}});
 			}
@@ -17,7 +14,7 @@ const Range = compose(
 	}),
 	withSelect((select, props) => {
 		return {
-			metaFieldValue: select('core/editor').getEditedPostAttribute('meta')[props.id] || props.data.default
+			metaFieldValue: select('core/editor').getEditedPostAttribute('meta')[props.id]
 		};
 	})
 )((props) => {

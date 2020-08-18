@@ -4,6 +4,7 @@ describe( 'Page meta box settings', function() {
 		'content': 'The Page Content',
 		'url': null
 	};
+
 	it( 'Create new page named "' + pageSetup.title + '".', function() {
 		cy.insertPost( pageSetup.title, pageSetup.content, 'page' );
 
@@ -44,53 +45,63 @@ describe( 'Page meta box settings', function() {
 		matchContentWidth(defaultWidth);
 	});
 
+	it( 'Activates Classic Editor', function () {
+		cy.visit( 'wp-admin/plugins.php?plugin_status=all' );
+		cy.get( 'tr[data-slug="classic-editor"] .activate' ).click();
+	});
 
-	it( 'Edit meta box content width "' + pageSetup.title + '".', function() {
-		cy.login( pageSetup.url );
+	it( 'Deactivate Classic Editor', function () {
+		cy.visit( 'wp-admin/plugins.php?plugin_status=all' );
+		cy.get( 'tr[data-slug="classic-editor"] .deactivate' ).click();
+	});
 
-		cy.editCurrentPost();
-		cy.get( '#neve_meta_content_width-range' ).
-		invoke( 'val', 70 ).
-		trigger( 'change' );
-		cy.updatePost();
 
-		cy.visit( pageSetup.url );
-		matchContentWidth( (0.7 * 1170));
-	} );
-
-	it( 'Edit meta box settings "' + pageSetup.title + '".', function() {
-		cy.login( pageSetup.url );
-		cy.editCurrentPost();
-		cy.get( 'label[for="neve_meta_container_full-width"]' ).click();
-		cy.get( 'label[for="neve_meta_sidebar_left"]' ).click();
-		cy.get( 'label[for="neve_meta_disable_title"]' ).click();
-		cy.get( 'label[for="neve_meta_disable_header"]' ).click();
-		cy.get( 'label[for="neve_meta_disable_footer"]' ).click();
-		cy.get( '#neve_meta_content_width-range' ).
-		invoke( 'val', 70 ).
-		trigger( 'change' );
-
-		cy.updatePost();
-	} );
-
-	it( 'Edited meta box settings on front end.', function() {
-		cy.visit( pageSetup.url );
-		cy.reload();
-		cy.get( '.nv-sidebar-wrap' ).
-		should( 'have.class', 'nv-left' ).
-		and( 'be.visible' );
-		cy.get( '.single-page-container' ).
-		should( 'have.class', 'container-fluid' ).
-		and( 'be.visible' );
-		cy.get( '.nv-single-page-wrap' ).
-		should( 'have.css', 'max-width' ).
-		and( 'eq', '70%' );
-		cy.get( '.nv-page-title' ).should( 'not.exist' );
-		cy.get( '.hfg_header' ).should( 'not.exist' );
-		cy.get( 'footer.site-footer' ).should( 'not.exist' );
-		cy.get( '.nv-content-wrap' ).should( 'not.contain', pageSetup.content );
-
-	} );
+	// it( 'Edit meta box content width "' + pageSetup.title + '".', function() {
+	// 	cy.login( pageSetup.url );
+	//
+	// 	cy.editCurrentPost();
+	// 	cy.get( '#neve_meta_content_width-range' ).
+	// 	invoke( 'val', 70 ).
+	// 	trigger( 'change' );
+	// 	cy.updatePost();
+	//
+	// 	cy.visit( pageSetup.url );
+	// 	matchContentWidth( (0.7 * 1170));
+	// } );
+	//
+	// it( 'Edit meta box settings "' + pageSetup.title + '".', function() {
+	// 	cy.login( pageSetup.url );
+	// 	cy.editCurrentPost();
+	// 	cy.get( 'label[for="neve_meta_container_full-width"]' ).click();
+	// 	cy.get( 'label[for="neve_meta_sidebar_left"]' ).click();
+	// 	cy.get( 'label[for="neve_meta_disable_title"]' ).click();
+	// 	cy.get( 'label[for="neve_meta_disable_header"]' ).click();
+	// 	cy.get( 'label[for="neve_meta_disable_footer"]' ).click();
+	// 	cy.get( '#neve_meta_content_width-range' ).
+	// 	invoke( 'val', 70 ).
+	// 	trigger( 'change' );
+	//
+	// 	cy.updatePost();
+	// } );
+	//
+	// it( 'Edited meta box settings on front end.', function() {
+	// 	cy.visit( pageSetup.url );
+	// 	cy.reload();
+	// 	cy.get( '.nv-sidebar-wrap' ).
+	// 	should( 'have.class', 'nv-left' ).
+	// 	and( 'be.visible' );
+	// 	cy.get( '.single-page-container' ).
+	// 	should( 'have.class', 'container-fluid' ).
+	// 	and( 'be.visible' );
+	// 	cy.get( '.nv-single-page-wrap' ).
+	// 	should( 'have.css', 'max-width' ).
+	// 	and( 'eq', '70%' );
+	// 	cy.get( '.nv-page-title' ).should( 'not.exist' );
+	// 	cy.get( '.hfg_header' ).should( 'not.exist' );
+	// 	cy.get( 'footer.site-footer' ).should( 'not.exist' );
+	// 	cy.get( '.nv-content-wrap' ).should( 'not.contain', pageSetup.content );
+	//
+	// } );
 } );
 function matchContentWidth(defaultWidth){
 	cy.get('.single-page-container .alignfull [class*="__inner-container"] > *, .single-page-container .alignwide [class*="__inner-container"] > *').invoke("width").should('be.eq',defaultWidth - 30); //we substract the padding.

@@ -14,7 +14,7 @@ export const ButtonChoices = compose(
 	} ),
 	withSelect((select, props) => {
 		return {
-			metaValue: select('core/editor').getEditedPostAttribute('meta')[props.id] || props.data.default
+			metaValue: select('core/editor').getEditedPostAttribute('meta')[props.id]
 		};
 	} ) )( function( props ) {
 

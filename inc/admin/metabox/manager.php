@@ -313,18 +313,28 @@ final class Manager {
 			if ( array_key_exists( 'post_type', $options ) ) {
 				$post_type = $options['post_type'];
 			}
+
+			$meta_settings = array(
+				'show_in_rest'      => true,
+				'type'              => $type,
+				'single'            => true,
+				'sanitize_callback' => 'sanitize_text_field',
+				'auth_callback'     => function () {
+					return current_user_can( 'edit_posts' );
+				}
+			);
+
+			if ( array_key_exists( 'settings', $options ) ){
+				$settings = get_object_vars( $options['settings'] );
+				if ( array_key_exists( 'default', $settings ) ){
+					$meta_settings['default'] = $settings['default'];
+				}
+			}
+
 			register_post_meta(
 				$post_type,
 				$options['id'],
-				array(
-					'show_in_rest'      => true,
-					'type'              => $type,
-					'single'            => true,
-					'sanitize_callback' => 'sanitize_text_field',
-					'auth_callback'     => function () {
-						return current_user_can( 'edit_posts' );
-					},
-				)
+				$meta_settings
 			);
 		}
 	}

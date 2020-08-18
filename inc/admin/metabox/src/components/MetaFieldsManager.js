@@ -43,8 +43,7 @@ class MetaFieldsManager extends Component {
 				}
 			}
 			if ( 'checkbox' === dependentControlType ) {
-				const dependentControlDefault = metaSidebar.controls.find(obj => dependsOn === obj.id ).settings.default;
-				shouldShow = this.state[dependsOn] ? 'on' === this.state[dependsOn] : 'on' === dependentControlDefault;
+				shouldShow = 'on' === this.state[dependsOn];
 			}
 		}
 
@@ -87,20 +86,17 @@ class MetaFieldsManager extends Component {
 
 	updateBlockWidth() {
 		const elements = document.querySelectorAll('.wp-block:not([data-align="full"])');
-		const customContentDefault = metaSidebar.controls.find(obj => 'neve_meta_enable_content_width' === obj.id ).settings.default;
-		let isCustomContentWidth = this.state['neve_meta_enable_content_width'] ? 'on' === this.state['neve_meta_enable_content_width'] : 'on' === customContentDefault ;
+
+		const isCustomContentWidth = this.state['neve_meta_enable_content_width'];
 		if ( ! isCustomContentWidth ) {
 			elements.forEach(function( element ) {
 				element.style.removeProperty('max-width');
 			});
 			return false;
 		}
-		const containerDefault = metaSidebar.controls.find(obj => 'neve_meta_container' === obj.id ).settings.default;
-		let containerType = this.state['neve_meta_container'] ? this.state['neve_meta_container'] : containerDefault;
-		containerType = 'default' !== containerType ? containerType : metaSidebar.actions['neve_meta_content_width'].container;
 
-		const contentWidthDefault = metaSidebar.controls.find( obj => 'neve_meta_content_width' === obj.id ).settings.default;
-		const contentWidth = this.state['neve_meta_content_width'] ? this.state['neve_meta_content_width'] : contentWidthDefault;
+		const containerType = this.state['neve_meta_container'];
+		const contentWidth = this.state['neve_meta_content_width'];
 
 		let blocKWidth;
 		if ( 'contained' === containerType ) {

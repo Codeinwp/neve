@@ -17,13 +17,12 @@ const CheckBox = compose(
 	})
 )(({id, data, metaFieldValue, setMetaFieldValue, stateUpdate}) => {
 	const {input_label} = data;
-	const defaultVal = data.default;
 
 	return (
 		<div className="neve-meta-control neve-meta-checkbox">
 			<ToggleControl
 				label={input_label}
-				checked={ ( metaFieldValue ? 'on' === metaFieldValue : 'on' === defaultVal ) }
+				checked={ ( 'on' === metaFieldValue ) }
 				onChange={ (value) => {
 					stateUpdate( id, ( value ? 'on' : 'off' ) );
 					setMetaFieldValue( id, ( value ? 'on' : 'off' ) );
