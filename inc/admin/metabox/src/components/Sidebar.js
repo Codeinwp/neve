@@ -43,8 +43,10 @@ const Sidebar = compose(
 	);
 
 	if ( 'elementor_canvas' === templateData.template ) {
+		document.getElementById('neve-page-settings-notice').style.display = 'none';
 		return false;
 	}
+	document.getElementById('neve-page-settings-notice').style.display = 'block';
 
 	return (
 		<>
