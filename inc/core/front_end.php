@@ -92,7 +92,7 @@ class Front_End {
 			'neve/3-columns-text',
 			array(
 				'title'       => __( '3 columns service section', 'neve' ),
-				'description' => _x( '3 columns services with title, description and link', 'Block pattern description', 'neve' ),
+				'description' => _x( '3 columns service section with title, description and link', 'Block pattern description', 'neve' ),
 				'categories'  => array( 'columns' ),
 				'content'     => '<!-- wp:columns -->
 <div class="wp-block-columns"><!-- wp:column -->
@@ -105,7 +105,7 @@ class Front_End {
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
-<p><strong><a href="https://demosites.io/blogger-gb/blogger-gb-news/">VIEW POSTS</a></strong></p>
+<p><strong><a href="#">VIEW POSTS</a></strong></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:column -->
 
@@ -119,7 +119,7 @@ class Front_End {
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
-<p><strong><a href="https://demosites.io/blogger-gb/blogger-gb-contact/">Get in Touch</a></strong></p>
+<p><strong><a href="#">Get in Touch</a></strong></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:column -->
 
@@ -133,7 +133,7 @@ class Front_End {
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
-<p><strong><a href="https://demosites.io/blogger-gb/blogger-gb-about/">ABOUT ME</a></strong></p>
+<p><strong><a href="#">ABOUT ME</a></strong></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns -->',
@@ -144,7 +144,7 @@ class Front_End {
 			'neve/2-columns-cover',
 			array(
 				'title'       => __( '2 columns media cover section', 'neve' ),
-				'description' => _x( '2 columns services with text description and one photo', 'Block pattern description', 'neve' ),
+				'description' => _x( '2 columns service section with text,description and one photo', 'Block pattern description', 'neve' ),
 				'categories'  => array( 'columns' ),
 				'content'     => '<!-- wp:cover {"overlayColor":"black","align":"full"} -->
 <div class="wp-block-cover alignfull has-black-background-color has-background-dim"><div class="wp-block-cover__inner-container"><!-- wp:columns -->
@@ -166,7 +166,7 @@ class Front_End {
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
-<p><a href="https://demosites.io/blogger-gb/blogger-gb-news/">Go to blog</a></p>
+<p><a href="#">Go to blog</a></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
@@ -176,7 +176,7 @@ class Front_End {
 
 <!-- wp:column -->
 <div class="wp-block-column"><!-- wp:image {"width":600,"height":600,"sizeSlug":"large"} -->
-<figure class="wp-block-image size-large is-resized"><img src="https://s33834.pcdn.co/blogger/wp-content/uploads/sites/370/elementor/thumbs/neve-minimal-blogger-02-ogw6uxaitnwjxmgfdy8h85o3hcmbv4hfkld42thca8.jpg" alt="" width="600" height="600"/></figure>
+<figure class="wp-block-image size-large is-resized"><img src="https://s.w.org/images/core/5.5/don-quixote-06.jpg" alt="" width="600" height="600"/></figure>
 <!-- /wp:image -->
 </div>
 <!-- /wp:column --></div>
