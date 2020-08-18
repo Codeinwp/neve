@@ -68,20 +68,17 @@
   text-align: center;
 }
 
-.neve-mm-heading, .neve-mm-heading > a {
+.neve-mm-heading > span, .neve-mm-heading > a {
   font-size: 1.1em;
   cursor: pointer;
   display: flex;
   align-items: center;
   white-space: normal;
-}
-
-.neve-mm-heading a, .neve-mm-heading span, .neve-mm-heading > a a, .neve-mm-heading > a span {
   font-weight: 700;
   text-transform: uppercase;
 }
 
-.neve-mm-heading i, .neve-mm-heading > a i {
+.neve-mm-heading i {
   margin-right: 10px;
 }
 

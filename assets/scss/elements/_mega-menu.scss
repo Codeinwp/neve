@@ -70,18 +70,17 @@
   text-align: center;
 }
 
-.neve-mm-heading, .neve-mm-heading > a {
+.neve-mm-heading > span, .neve-mm-heading > a {
   font-size: 1.1em;
   cursor: pointer;
   display: flex;
   align-items: center;
   white-space: normal;
+  font-weight: 700;
+  text-transform: uppercase;
+}
 
-  a, span {
-	font-weight: 700;
-	text-transform: uppercase;
-  }
-
+.neve-mm-heading {
   i {
 	margin-right: $spacing-xs;
   }

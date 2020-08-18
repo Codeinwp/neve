@@ -731,11 +731,10 @@ blockquote.wp-block-quote.is-style-large cite {
 .nav-ul .sub-menu .sub-menu {
   left: 100%;
   right: auto;
-  top: 0;
+  top: 1px;
 }
 
 .nav-ul .sub-menu li {
-  border: 1px solid;
   border-top: none;
   min-width: 150px;
   padding: 0;

@@ -844,10 +844,6 @@ abstract class Abstract_Builder implements Builder {
 						Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_background' . '.colorValue',
 						Dynamic_Selector::META_DEFAULT => $default_color,
 					],
-					Config::CSS_PROP_BORDER_COLOR     => [
-						Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_background' . '.colorValue',
-						Dynamic_Selector::META_DEFAULT => $default_color,
-					],
 				],
 			];
 			$css_array[] = [
