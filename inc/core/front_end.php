@@ -78,6 +78,150 @@ class Front_End {
 		add_image_size( 'neve-blog', 930, 620, true );
 		add_filter( 'wp_nav_menu_args', array( $this, 'nav_walker' ), 1001 );
 		$this->add_woo_support();
+		$this->register_patterns();
+	}
+
+	/**
+	 * Register sample block patterns.
+	 */
+	function register_patterns() {
+
+		register_block_pattern(
+			'neve/3-columns-text',
+			array(
+				'title'       => __( '3 columns service section', 'neve' ),
+				'description' => _x( '3 columns services with title, description and link', 'Block pattern description', 'neve' ),
+				'categories'  => array( 'columns' ),
+				'content'     => '<!-- wp:columns -->
+<div class="wp-block-columns"><!-- wp:column -->
+<div class="wp-block-column"><!-- wp:heading {"level":3} -->
+<h3>Blog Posts</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>I am a fashion photographer and blogger, feel free to read the whole story. Whereas a trend often connotes a very specific aesthetic expression, and often lasting shorter than a season.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong><a href="https://demosites.io/blogger-gb/blogger-gb-news/">VIEW POSTS</a></strong></p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column -->
+
+<!-- wp:column -->
+<div class="wp-block-column"><!-- wp:heading {"level":3} -->
+<h3>Services</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>I am a fashion photographer and blogger, feel free to read the whole story. Whereas a trend often connotes a very specific aesthetic expression, and often lasting shorter than a season.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong><a href="https://demosites.io/blogger-gb/blogger-gb-contact/">Get in Touch</a></strong></p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column -->
+
+<!-- wp:column -->
+<div class="wp-block-column"><!-- wp:heading {"level":3} -->
+<h3>About me</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>I am a fashion photographer and blogger, feel free to read the whole story. Whereas a trend often connotes a very specific aesthetic expression, and often lasting shorter than a season.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong><a href="https://demosites.io/blogger-gb/blogger-gb-about/">ABOUT ME</a></strong></p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns -->',
+			)
+		);
+
+		register_block_pattern(
+			'neve/2-columns-cover',
+			array(
+				'title'       => __( '2 columns media cover section', 'neve' ),
+				'description' => _x( '2 columns services with text description and one photo', 'Block pattern description', 'neve' ),
+				'categories'  => array( 'columns' ),
+				'content'     => '<!-- wp:cover {"overlayColor":"black","align":"full"} -->
+<div class="wp-block-cover alignfull has-black-background-color has-background-dim"><div class="wp-block-cover__inner-container"><!-- wp:columns -->
+<div class="wp-block-columns"><!-- wp:column -->
+<div class="wp-block-column"><!-- wp:heading {"level":6,"textColor":"white"} -->
+<h6 class="has-white-color has-text-color"><strong>MINIMIZED SIMPLICITY</strong></h6>
+<!-- /wp:heading -->
+
+<!-- wp:heading {"textColor":"white"} -->
+<h2 class="has-white-color has-text-color">Welcome friend.</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"textColor":"white"} -->
+<p class="has-white-color has-text-color">I am a fashion photographer and blogger, feel free to read the whole story. Whereas a trend often connotes.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"textColor":"white"} -->
+<p class="has-white-color has-text-color">I am a fashion photographer and blogger, feel free to read the whole story. Whereas a trend often connotes a very specific aesthetic expression, and often lasting shorter than a season.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><a href="https://demosites.io/blogger-gb/blogger-gb-news/">Go to blog</a></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p></p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column -->
+
+<!-- wp:column -->
+<div class="wp-block-column"><!-- wp:image {"width":600,"height":600,"sizeSlug":"large"} -->
+<figure class="wp-block-image size-large is-resized"><img src="https://s33834.pcdn.co/blogger/wp-content/uploads/sites/370/elementor/thumbs/neve-minimal-blogger-02-ogw6uxaitnwjxmgfdy8h85o3hcmbv4hfkld42thca8.jpg" alt="" width="600" height="600"/></figure>
+<!-- /wp:image -->
+</div>
+<!-- /wp:column --></div>
+<!-- /wp:columns -->
+</div></div>
+<!-- /wp:cover -->',
+			)
+		);
+		register_block_pattern(
+			'neve/1-column-about',
+			array(
+				'title'       => __( '1 column about with icons', 'neve' ),
+				'categories'  => array( 'text' ),
+				'description' => _x( '1 column pattern with title, description and social icons', 'Block pattern description', 'neve' ),
+				'content'     => '<!-- wp:columns -->
+<div class="wp-block-columns"><!-- wp:column -->
+<div class="wp-block-column"><!-- wp:paragraph {"align":"center"} -->
+<p class="has-text-align-center"><strong>Minimized simplicity</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"align":"center"} -->
+<h2 class="has-text-align-center">Follow along the journey</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"align":"center"} -->
+<p class="has-text-align-center"><em>Follow me on social and never miss a post from this blog. Only original content and minimalist views, shared daily on social.</em></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:social-links {"align":"center","className":"is-style-pill-shape"} -->
+<ul class="wp-block-social-links aligncenter is-style-pill-shape"><!-- wp:social-link {"url":"https://wordpress.org","service":"wordpress"} /-->
+
+<!-- wp:social-link {"url":"#","service":"facebook"} /-->
+
+<!-- wp:social-link {"url":"#","service":"twitter"} /-->
+
+<!-- wp:social-link {"url":"#","service":"instagram"} /-->
+
+<!-- wp:social-link {"url":"#","service":"linkedin"} /-->
+
+<!-- wp:social-link {"url":"#","service":"youtube"} /-->
+
+<!-- wp:social-link {"url":"#","service":"twitter"} /--></ul>
+<!-- /wp:social-links --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns -->',
+			)
+		);
 	}
 
 	/**
