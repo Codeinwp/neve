@@ -13,6 +13,7 @@ wp --allow-root option update admin_email_lifespan 1763469022
 
 wp --allow-root plugin is-installed wordpress-importer && wp --allow-root plugin update wordpress-importer ||  wp --allow-root plugin install wordpress-importer
 wp --allow-root plugin is-installed amp && wp --allow-root plugin update amp ||  wp --allow-root plugin install amp
+wp --allow-root plugin is-installed classic-editor && wp --allow-root plugin update classic-editor ||  wp --allow-root plugin install classic-editor
 
 rm -rf  /var/www/html/wp-content/themes/*
 
@@ -26,6 +27,7 @@ else
 fi
 
 wp --allow-root plugin activate --all
+wp --allow-root plugin deactivate classic-editor
 
 wp --allow-root option patch update amp-options theme_support 'transitional'
 

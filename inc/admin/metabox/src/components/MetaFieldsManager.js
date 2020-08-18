@@ -43,7 +43,8 @@ class MetaFieldsManager extends Component {
 				}
 			}
 			if ( 'checkbox' === dependentControlType ) {
-				shouldShow = 'on' === this.state[dependsOn];
+				const dependentControlDefault = metaSidebar.controls.find(obj => dependsOn === obj.id ).settings.default;
+				shouldShow = this.state[dependsOn] ? 'on' === this.state[dependsOn] : 'on' === dependentControlDefault;
 			}
 		}
 
@@ -86,7 +87,9 @@ class MetaFieldsManager extends Component {
 
 	updateBlockWidth() {
 		const elements = document.querySelectorAll('.wp-block:not([data-align="full"])');
-		if ( 'on' !== this.state['neve_meta_enable_content_width'] ) {
+		const customContentDefault = metaSidebar.controls.find(obj => 'neve_meta_enable_content_width' === obj.id ).settings.default;
+		let isCustomContentWidth = this.state['neve_meta_enable_content_width'] ? 'on' === this.state['neve_meta_enable_content_width'] : 'on' === customContentDefault ;
+		if ( ! isCustomContentWidth ) {
 			elements.forEach(function( element ) {
 				element.style.removeProperty('max-width');
 			});
@@ -106,9 +109,16 @@ class MetaFieldsManager extends Component {
 			blocKWidth = contentWidth + '%';
 		}
 
-		elements.forEach(function( element ) {
-			element.style.maxWidth = blocKWidth;
-		});
+		if (document.contains(document.getElementById('neve-meta-editor-style'))) {
+			document.getElementById('neve-meta-editor-style').remove();
+		}
+
+		let css = '.wp-block:not([data-align="full"]) { max-width: ' + blocKWidth + '; }';
+		const head = document.head;
+		const style = document.createElement('style');
+		style.setAttribute('id', 'neve-meta-editor-style' );
+		style.innerHTML = css;
+		head.appendChild(style);
 	}
 
 	render() {
