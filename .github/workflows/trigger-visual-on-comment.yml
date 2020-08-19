@@ -24,6 +24,18 @@ jobs:
         with:
           github-token: ${{ secrets.BOT_TOKEN }}
           branch: development
+  debug:
+    needs: trigger_visual
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dump GitHub context
+          env:
+            GITHUB_CONTEXT: ${{ toJson(github) }}
+          run: echo "$GITHUB_CONTEXT"
+      - name: Dump Output
+          env:
+            GITHUB_OUTPUT_STEP: ${{ toJson(needs.trigger_visual.output) }}
+          run: echo "$GITHUB_OUTPUT_STEP"
   run-visual:
     needs: trigger_visual
 #    Check if :
