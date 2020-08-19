@@ -20,6 +20,7 @@ use HFG\Core\Settings;
 use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Traits\Core;
 use Neve\Core\Settings\Config;
+use Neve\Core\Styles\Css_Prop;
 use Neve\Core\Styles\Dynamic_Selector;
 use Neve_Pro\Modules\Blog_Pro\Dynamic_Style;
 use WP_Customize_Manager;
@@ -1345,13 +1346,27 @@ abstract class Abstract_Builder implements Builder {
 
 	private function add_sidebar_styles( $css_array ) {
 		$type = get_theme_mod( $this->control_id . '_sidebar_' . self::LAYOUT_SETTING, 'slide_left' );
-		if( $type === 'pull_left' ) {
+		$default_sidebar_width = '{ "mobile": "360", "tablet": "360", "desktop": "360" }';
+
+		if( ! in_array( $type, ['full_canvas', 'dropdown'], true ) ) {
 			$css_array[] = [
 				Dynamic_Selector::KEY_SELECTOR => '.is-menu-sidebar > .wrapper',
 				Dynamic_Selector::KEY_RULES => [
 					'left' => [
 						Dynamic_Selector::META_KEY => $this->control_id . '_sidebar_' . self::WIDTH,
-						Dynamic_Selector::META_DEFAULT => '{ "mobile": "360", "tablet": "360", "desktop": "360" }',
+						Dynamic_Selector::META_DEFAULT => $default_sidebar_width,
+						Dynamic_Selector::META_IS_RESPONSIVE => true,
+					]
+				]
+			];
+		}
+		if( $type === 'pull_left' ) {
+			$css_array[] = [
+				Dynamic_Selector::KEY_SELECTOR => '.is-menu-sidebar > .wrapper',
+				Dynamic_Selector::KEY_RULES => [
+					Config::CSS_PROP_LEFT => [
+						Dynamic_Selector::META_KEY => $this->control_id . '_sidebar_' . self::WIDTH,
+						Dynamic_Selector::META_DEFAULT => $default_sidebar_width,
 						Dynamic_Selector::META_IS_RESPONSIVE => true,
 					]
 				]
@@ -1363,7 +1378,7 @@ abstract class Abstract_Builder implements Builder {
 				Dynamic_Selector::KEY_RULES => [
 					Config::CSS_PROP_RIGHT => [
 						Dynamic_Selector::META_KEY => $this->control_id . '_sidebar_' . self::WIDTH,
-						Dynamic_Selector::META_DEFAULT => '{ "mobile": "360", "tablet": "360", "desktop": "360" }',
+						Dynamic_Selector::META_DEFAULT => $default_sidebar_width,
 						Dynamic_Selector::META_IS_RESPONSIVE => true,
 					]
 				]
