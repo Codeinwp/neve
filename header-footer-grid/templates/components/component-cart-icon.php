@@ -31,10 +31,10 @@ if ( (bool) $expand_enabled === false ) {
 ?>
 
 <div class="component-wrap">
-	<div class="responsive-nav-cart menu-item-nav-cart 
-	<?php 
+	<div class="responsive-nav-cart menu-item-nav-cart
+	<?php
 	echo esc_attr( $cart_style );
-	echo $cart_is_empty ? ' cart-is-empty' : ''; 
+	echo $cart_is_empty ? ' cart-is-empty' : '';
 	?>
 	">
 		<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="cart-icon-wrapper">
