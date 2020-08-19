@@ -31,11 +31,11 @@ const reducer = (state = initialState, action) => {
 			};
 		case 'SET_PLUGIN_STATE':
 			const {pluginSlug, pluginState} = action.payload;
-			const newPluginState = {...state.plugins[pluginSlug]};
-			newPluginState.cta = pluginState;
+			const nextPlugins = {...state.plugins};
+			nextPlugins[pluginSlug].cta = pluginState;
 			return {
 				...state,
-				plugins: {...state.plugins, [pluginSlug]: newPluginState }
+				plugins: nextPlugins
 			};
 		case 'TOGGLE_MODULE':
 			const {moduleSlug, value} = action.payload;
