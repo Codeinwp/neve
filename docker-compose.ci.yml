@@ -19,7 +19,7 @@ services:
       - wpcore:/var/www/html
       - ./bin:/var/www/html/bin
       - ~/.wp-content:/var/www/html/wp-content
-      - ./artifact/neve.zip:/var/www/html/wp-content/neve.zip
+      - ./:/tmp/repo
     depends_on:
       - mysql
       - wordpress
@@ -34,7 +34,6 @@ services:
       - wpcore:/var/www/html
       - ./bin:/var/www/html/bin
       - ~/.wp-content:/var/www/html/wp-content
-      - ./dist/neve:/var/www/html/wp-content/themes/neve
     restart: always
     environment:
       - ZIP_URL

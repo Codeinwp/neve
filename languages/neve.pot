@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-08-10T08:38:43+00:00\n"
+"POT-Creation-Date: 2020-08-14T14:23:03+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -561,7 +561,7 @@ msgid "Menu label"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Nav.php:43
-#: header-footer-grid/Core/Components/Nav.php:220
+#: header-footer-grid/Core/Components/Nav.php:221
 #: header-footer-grid/templates/components/component-nav.php:25
 #: inc/core/front_end.php:71
 msgid "Primary Menu"
@@ -573,48 +573,48 @@ msgstr ""
 msgid "Hover Skin Mode"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Nav.php:112
+#: header-footer-grid/Core/Components/Nav.php:114
 #: header-footer-grid/Core/Components/NavFooter.php:86
 #: header-footer-grid/Core/Components/SecondNav.php:86
 msgid "Items Color"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Nav.php:133
+#: header-footer-grid/Core/Components/Nav.php:135
 msgid "Active Item Color"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Nav.php:154
+#: header-footer-grid/Core/Components/Nav.php:156
 #: header-footer-grid/Core/Components/NavFooter.php:108
 #: header-footer-grid/Core/Components/SecondNav.php:109
 msgid "Items Hover Color"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Nav.php:176
+#: header-footer-grid/Core/Components/Nav.php:177
 #: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:120
 msgid "Search"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Nav.php:181
+#: header-footer-grid/Core/Components/Nav.php:182
 #: header-footer-grid/Core/Magic_Tags.php:580
 #: header-footer-grid/templates/components/component-cart-icon.php:50
 #: inc/views/header.php:165
 msgid "Cart"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Nav.php:202
+#: header-footer-grid/Core/Components/Nav.php:203
 msgid "Last Menu Item"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Nav.php:235
+#: header-footer-grid/Core/Components/Nav.php:236
 #: header-footer-grid/Core/Components/NavFooter.php:151
 #: header-footer-grid/Core/Components/SecondNav.php:154
 msgid "Items Spacing (px)"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Nav.php:261
+#: header-footer-grid/Core/Components/Nav.php:262
 #: header-footer-grid/Core/Components/NavFooter.php:177
 #: header-footer-grid/Core/Components/SecondNav.php:180
-msgid "Items Height (px)"
+msgid "Items Minimum Height (px)"
 msgstr ""
 
 #: header-footer-grid/Core/Components/NavFooter.php:41

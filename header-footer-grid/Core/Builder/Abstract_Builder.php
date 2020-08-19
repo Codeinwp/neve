@@ -820,13 +820,9 @@ abstract class Abstract_Builder implements Builder {
 
 		if ( $background['type'] === 'color' && ! empty( $background['colorValue'] ) ) {
 			$css_array[] = [
-				Dynamic_Selector::KEY_SELECTOR => $selector . ' .nav-ul .sub-menu li:not(.neve-mm-divider),' . $selector . ' .nav-ul .sub-menu',
+				Dynamic_Selector::KEY_SELECTOR => $selector . ' .nav-ul .sub-menu',
 				Dynamic_Selector::KEY_RULES    => [
 					Config::CSS_PROP_BACKGROUND_COLOR => [
-						Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_background' . '.colorValue',
-						Dynamic_Selector::META_DEFAULT => $default_color,
-					],
-					Config::CSS_PROP_BORDER_COLOR     => [
 						Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_background' . '.colorValue',
 						Dynamic_Selector::META_DEFAULT => $default_color,
 					],
@@ -1072,6 +1068,9 @@ abstract class Abstract_Builder implements Builder {
 					'is_last'        => false,
 				];
 			}
+			if ( strpos( $component_location['id'], 'primary-menu' ) > -1 ) {
+				$render_buffer[ $render_index ]['has_primary_nav'] = true;
+			}
 			$render_buffer[ $render_index ]['is_last']      = $is_last;
 			$render_buffer[ $render_index ]['components'][] = [
 				'component' => $component,
@@ -1089,6 +1088,9 @@ abstract class Abstract_Builder implements Builder {
 			$align          = $render_groups['align'];
 			$vertical_align = $render_groups['vertical-align'];
 			$classes        = [ 'builder-item' ];
+			if ( isset( $render_groups['has_primary_nav'] ) ) {
+				$classes[] = 'has-nav';
+			}
 			if ( $render_groups['is_last'] ) {
 				$classes[] = 'hfg-item-last';
 			}

@@ -4,10 +4,10 @@ Theme Name:     Neve
 Theme URI:      https://themeisle.com/themes/neve/
 Author:         ThemeIsle
 Author URI:     https://themeisle.com
-Tested up to:   5.4
+Tested up to:   5.5
 Requires PHP:   5.4.0
 Description:    Neve is a super fast, easily customizable, multi-purpose theme. It’s perfect for blogs, small business, startups, agencies, firms, e-commerce shops (WooCommerce storefront) as well as personal portfolio sites and most types of projects. A fully AMP optimized and responsive theme, Neve will load in mere seconds and adapt perfectly on any viewing device. While it is lightweight and has a minimalist design, the theme is highly extendable, it has a highly SEO optimized code, resulting in top rankings in Google search results. Neve works perfectly with Gutenberg and the most popular page builders (Elementor, Brizy, Beaver Builder, Visual Composer, SiteOrigin, Divi). Neve is also WooCommerce ready, responsive, RTL & translation ready. Look no further. Neve is the perfect theme for you!
-Version:        2.7.5
+Version:        2.7.6
 License:        GNU General Public License v2 or later
 License URI:    http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain:    neve
@@ -705,6 +705,11 @@ blockquote.wp-block-quote.is-style-large cite {
   fill: currentColor;
 }
 
+.nav-ul li .menu-item-title-wrap {
+  display: flex;
+  align-items: center;
+}
+
 .nav-ul .sub-menu {
   -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -726,11 +731,10 @@ blockquote.wp-block-quote.is-style-large cite {
 .nav-ul .sub-menu .sub-menu {
   left: 100%;
   right: auto;
-  top: 0;
+  top: 1px;
 }
 
 .nav-ul .sub-menu li {
-  border: 1px solid;
   border-top: none;
   min-width: 150px;
   padding: 0;
@@ -773,6 +777,10 @@ blockquote.wp-block-quote.is-style-large cite {
   flex-direction: row;
   align-items: center;
   padding-bottom: 0;
+}
+
+.header-menu-sidebar-inner .nav-ul .sub-menu li > a, .header-menu-sidebar-inner .nav-ul .sub-menu li .has-caret {
+  white-space: normal;
 }
 
 .header-menu-sidebar-inner .dropdown-open.has-caret > svg, .header-menu-sidebar-inner .dropdown-open > .caret > svg {
@@ -864,7 +872,8 @@ blockquote.wp-block-quote.is-style-large cite {
 ul[id^="nv-primary-navigation"] i {
   font-size: inherit;
   line-height: inherit;
-  width: 20px;
+  width: auto;
+  height: auto;
 }
 
 .nv-search-icon-component {

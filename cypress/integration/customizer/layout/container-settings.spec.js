@@ -42,7 +42,7 @@ describe( 'Container Settings', function() {
 					click();
 			cy.get( '@control' ).
 					find( 'input[type=number]' ).
-					clear({force: true}).
+					type('{selectall}').
 					type( devices[device] );
 		} );
 
@@ -117,7 +117,8 @@ describe( 'Container Settings', function() {
 					find( 'button.' + device ).
 					click();
 			cy.get( '@control' ).
-					find( '.reset' ).
+					find( 'button' ).
+					contains('Reset').
 					should( 'be.visible' ).
 					click();
 		} );
