@@ -1,28 +1,24 @@
-.neve-meta-control{
-  margin-bottom: 30px;
-  &.neve-meta-checkbox{
-	margin-bottom: 10px;
-  }
+.components-base-control__label{
+  font-weight: 600;
 }
 
 .neve-meta-radio-image{
   input[type="radio"]{
-    display: none;
-    &:checked+label img{
-      border: 2px solid #0085BA;
-      border-radius: 2px;
-    }
+	display: none;
+	&:checked+label img{
+	  border: 2px solid #0085BA;
+	  border-radius: 2px;
+	}
   }
   .components-base-control__field{
-    display: flex;
+	display: inherit;
   }
   .components-radio-control__option {
-    margin: 0 2.5px;
-    label{
+	margin: 0 2.5px;
+	label{
 	  position: relative;
-      display: inline-flex;
 	  margin-bottom: 26px;
-    }
+	}
 	.option-label{
 	  position: absolute;
 	  top: 100%;
@@ -32,6 +28,35 @@
 	  font-size: 12px;
 	  color: #A8A8A8;
 	  text-align: center;
+	}
+  }
+}
+
+.neve-meta-control{
+  margin-bottom: 35px;
+  &.neve-meta-checkbox{
+	margin-bottom: 20px;
+  }
+}
+
+.neve-meta-button-group .components-button-group{
+  width: 100%;
+  display: flex;
+  .components-button{
+	border-color: #CCCCCC;
+	color: #555555;
+	stroke: #555555;
+	max-height: 30px;
+	flex: 1;
+	justify-content: center;
+	&.is-primary{
+	  color: #ffffff;
+	  stroke: #ffffff;
+	  border-color: #0085BA;
+	}
+	&.is-secondary:not(:disabled):not([aria-disabled="true"]):hover{
+	  color: #555555;
+	  border-color: #CCCCCC;
 	}
   }
 }
@@ -115,28 +140,6 @@
 		  fill: #e5e5e5;
 		}
 	  }
-	}
-  }
-}
-
-.neve-meta-button-group .components-button-group{
-  width: 100%;
-  display: flex;
-  .components-button{
-	border-color: #CCCCCC;
-	color: #555555;
-	stroke: #555555;
-	max-height: 30px;
-	flex: 1;
-	justify-content: center;
-	&.is-primary{
-	  color: #ffffff;
-	  stroke: #ffffff;
-	  border-color: #0085BA;
-	}
-	&.is-secondary:not(:disabled):not([aria-disabled="true"]):hover{
-	  color: #555555;
-	  border-color: #CCCCCC;
 	}
   }
 }

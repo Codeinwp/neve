@@ -1,87 +1,83 @@
 /* global metaSidebar */
-import { RadioImage } from './controls/RadioImage';
-import { CheckBox } from './controls/CheckBox';
-import { Range } from './controls/Range';
-import { ButtonChoices } from './controls/ButtonChoices';
 import SortableItems from './controls/SortableItems';
+import {alignCenterIcon, alignLeftIcon, alignRightIcon} from '../helpers/icons.js';
 
+const { compose } = wp.compose;
+const { withDispatch, withSelect } = wp.data;
 const { Component } = wp.element;
-const { PanelBody, Button } = wp.components;
+const { PanelBody, Button, BaseControl, RadioControl, ButtonGroup, ToggleControl, RangeControl } = wp.components;
 const { __ } = wp.i18n;
 
 class MetaFieldsManager extends Component {
 
 	constructor(props) {
 		super(props);
-		this.state = Object.assign( {}, wp.data.select( 'core/editor' ).getEditedPostAttribute( 'meta' ) );
-		this.componentsGroup = metaSidebar.component_groups;
+		let metaData = wp.data.select( 'core/editor' ).getEditedPostAttribute( 'meta' );
+		console.log( metaData );
+		this.isDefault = this.checkIfDefault(metaData);
+		this.defaultState = {
+			'neve_meta_sidebar': 'default',
+			'neve_meta_container': 'default',
+			'neve_meta_enable_content_width': metaSidebar.new_page_or_checkout ? 'on' : 'off',
+			'neve_meta_content_width': metaSidebar.new_page_or_checkout ? 100 : 70,
+			'neve_meta_title_alignment': 'left',
+			'neve_meta_author_avatar': 'off',
+			'neve_post_elements_order': JSON.stringify(
+				{
+					'title': true,
+					'thumbnail': true,
+					'tags': true,
+					'post-navigation': false,
+					'meta': true,
+					'content': true,
+					'comments': true
+				}
+			),
+			'neve_meta_disable_header': 'off',
+			'neve_meta_disable_footer': 'off',
+			'neve_meta_disable_title': 'off'
+		};
+		if ( this.isDefault ) {
+			this.state = Object.assign( {}, this.defaultState );
+			console.log( this.state );
+			if ( '' !== metaSidebar.new_page_or_checkout ) {
+				this.props.setMetaValue( 'neve_meta_enable_content_width', 'on' );
+				this.props.setMetaValue( 'neve_meta_content_width', 100 );
+			}
+		} else {
+			this.state = Object.assign( {}, metaData );
+		}
+
 		this.updateValues = this.updateValues.bind( this );
+	}
+
+	checkIfDefault(meta) {
+		let isDefault = true;
+		Object.keys( meta ).map( ( control ) => {
+			if ( '' !== meta[control] && 0 !== meta[control] ) {
+				isDefault = false;
+			}
+		});
+		return isDefault;
 	}
 
 	updateValues(id, value) {
 		let state = this.state;
 		state[id] = value;
 		this.setState( state );
+		this.props.setMetaValue( id, value );
 	}
 
-	renderControl( data, index ) {
-		const {type, id, settings} = data;
-
-		let shouldShow  = true;
-		const dependsOn = settings['depends_on'];
-		const not_in_template = settings['not_in_template'];
-
-		if ( 'undefined' !== typeof dependsOn ) {
-			const dependentControlType = metaSidebar.controls.find( obj => dependsOn === obj.id ).type;
-			if ( 'sortable-list' === dependentControlType ) {
-				shouldShow = false;
-				const dependentControlDefault = metaSidebar.controls.find(obj => dependsOn === obj.id ).settings.default;
-				const defaultData = JSON.parse( dependentControlDefault );
-				const elementsState = '' !== this.state[dependsOn] ? JSON.parse( this.state[dependsOn] ) : false;
-				if ( ( '' === this.state[dependsOn] && true === defaultData.meta ) || ( elementsState.hasOwnProperty('meta') && true === elementsState.meta ) ) {
-					shouldShow = true;
-				}
+	resetAll() {
+		const state = this.state;;
+		Object.keys( state ).map( ( control ) => {
+			let emptyValue = '';
+			if ( 'neve_meta_content_width' === control ) {
+				emptyValue = 0;
 			}
-			if ( 'checkbox' === dependentControlType ) {
-				shouldShow = 'on' === this.state[dependsOn];
-			}
-		}
-
-		if ( 'undefined' !== typeof not_in_template ) {
-			let template = wp.data.select('core/editor').getEditedPostAttribute('template');
-			if ( not_in_template === template ) {
-				shouldShow = false;
-			}
-		}
-
-		if ( 'radio' === type && shouldShow ) {
-			return (
-				<RadioImage stateUpdate={this.updateValues} key={index} id={id} data={settings}/>
-			);
-		}
-		if ( 'button-group' === type && shouldShow ) {
-			return (
-				<ButtonChoices stateUpdate={this.updateValues} key={index} id={id} data={settings}/>
-			);
-		}
-
-		if ( 'checkbox' === type && shouldShow ) {
-			return (
-				<CheckBox stateUpdate={this.updateValues} key={index} id={id} data={settings}/>
-			);
-		}
-
-		if ( 'range' === type  && shouldShow ) {
-			return (
-				<Range stateUpdate={this.updateValues} key={index} id={id} data={settings}/>
-			);
-		}
-
-		if ( 'sortable-list' === type && shouldShow ) {
-			return (
-				<SortableItems stateUpdate={this.updateValues} key={index} id={id} data={settings}/>
-			);
-		}
+			this.props.setMetaValue( control, emptyValue );
+		});
+		this.setState( this.defaultState );
 	}
 
 	updateBlockWidth() {
@@ -117,73 +113,299 @@ class MetaFieldsManager extends Component {
 		head.appendChild(style);
 	}
 
+	renderPageLayoutGroup() {
+		const template = wp.data.select('core/editor').getEditedPostAttribute('template');
+		if ( 'elementor_header_footer' === template ) {
+			return false;
+		}
+
+		return (
+			<div className="nv-option-category">
+				<PanelBody
+					title={__('Page Layout', 'neve')}
+					intialOpen={ true }
+				>
+					<BaseControl
+						id="neve_meta_sidebar"
+						label={__('Sidebar', 'neve')}
+						className="neve-meta-control neve-meta-radio-image"
+					>
+						<RadioControl
+							selected={this.state['neve_meta_sidebar']}
+							options={
+								[
+									{label: <><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEQAAABXCAYAAAC9UeOHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAN6SURBVHgB7ZrfThpREMZn1SgUWiwkFi6gtol3mnjhi/QJmj5C36SP1gsvTGir0Rb/Baop20UL3fJtugaH3QXKzlLj90s2G5Rlc37MmTNnFqfreW/9weCDiLMujxjHkSPx/TdO13UPfV82hUDKxyXKuMf6kpB7UIiCQhQUoqAQBYUoKERBIQoKUVCIgkIUFKKgEAWFKChEQSEKClFQiIJCFBSioBAFhSgoREEhCgpRUIiCQhQrsgAGg4F0Om3peZ54wwOvwerqqiwvL8uzUkmKxafB66zJVEi325Xzs9PgHMXt7W1wvr6+Ds7lclleVGuZinF+dF1fjEEEQMTl5aX8C9VqNRBjDX4jYi4E3/rR4ZdgasxDsViUzVevgyllBYSYJlVExudPzbllAEwzfFaYb6wwFdL69vUuL6QBxGLqWWImBKtIp9OZ6Zq1tTVZWUnO88hDcUk5DcyEnJ+dyazs7OzI9vb2xPdZRonJsovoSJoqiIJCoTD2dyy3GxsbsrW1Jc1mM/Z6RAgOJNq0MRHyPWGq1Ot1aTQakgSkXFxc3NUjUUD6gxESt6ogR0BGu92W09PxsK/ValKpVOTk5CRRBnCN8kjqQkZLcU34jUJG1IARGZBxfHwsk8CUxH3SrktSF5JUJ4QluOu6kf8fzRvIMyjdIe7m5ib2XmkLyXS3iwFggP1+f+J7MVAk19JwoxdHmjVOSKabOyRKHCHhShMVMblcLjjHRQewKONTj5Bpd6aQgZoDURAFkivo9Xoy771mIfUICXsaSbkklBFWpXt7e2PvwYqEaIqLkHw+bxIhJlMGDZ6kWmQ0hyCnRMmDiKTVJjcUYoGJkHK5kigEg93f35fd3d0gSg4ODmRWqkb9ERMhqDdwJG3CkEixzE7azEXxfLgcW3XRzJbdaTpcyBGtVktmpWrYPTMTggixaPtZ91hNCzP0QlFtpgVk4DMtMa9U642XqURKFjJAJpUqBoIwR2Nn1nIb10GqxVY/ikweQ4yCtuI0YgpDAaXSejDlLDvto2TyGCIO7+9TO8/7eVeYYeD5/JMgGhbx1G6hQv5HzJ/LPEQoREEhCgpRUIiCQhQUoqAQBYUoKERBIQoKUVCIgkIUFKKgEAWFKChEQSEKClFQiIJCFBSioBAFhSgoREEhCgi5EhLg+3K15P/23/viHMkjBzL6v/x3fwDAqWHdPm8hRQAAAABJRU5ErkJggg=="/>
+									<span className="option-label">{__( 'Inherit', 'neve' )}</span></>, value: 'default' },
+									{label: <><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEUAAABYCAYAAACjxTpsAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAFISURBVHgB7dWxSsNgGEbht6UEgnGpg3HrUGf1DrxTL0yFutXBToFAsK3WoYtnMIVgW84zZwiHl/8btW07i/bKslxMPtfrp2T0GP1ot9vZOPrFKMAowCjAKMAowCjAKMAowCjAKMAowCjAKMAowCjAKMAowCjAKMAowCjAKMAowCjAKGCSnpqmyevLc07JRVVlPr/98/cuBfReSvVd/e7+IefMpQCjAKMAowBPMnApwJMMXAowCjAKMArwJAOXAjzJwKUAowCjAKMATzJwKcCTDFwKMAowCuj9pnRdl9XqI0OYTq9SFEX+20FR3pfLDKGqLk8zyu6nr+s6QziGIDsHRanrm5wzH1pgFGAUYBRgFGAUYBRgFGAUYBRgFGAUYBRgFGAUYBRgFGAUYBRgFGAUYBRgFGAUYBRgFGAUYBQw2WzyNhpnEe19AbO4NutQ2DJ9AAAAAElFTkSuQmCC"/>
+									<span className="option-label">{__( 'None', 'neve' )}</span></>, value: 'full-width' },
+									{label: <><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEUAAABXCAYAAABSk4i5AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAFDSURBVHgB7dUtT8NQFIfxM0ouYkWwUBLMMEMAiu/v+A6AQLH5+jVr9qL3iCZNTrPl+emrnuSe/+zrb7uPET6fd3FN7uv57CZ0xijAKMAowCjAKMAowCjAKMAowCjAKMAowCjAKMAowCjAKMAowCjAKMAowCjAKMAowCjgNhL8/nzH1B6bJprmadDblChd18XU+r4f/DYlytv7R0ytqqrBb1OilFLiknhogVGAUYCTDJxk4CQDJxl4aIFRgFGAkwycZOAkAycZeGiBUYBRgJMMnGTgJAMnGXhogVFAyvdp2zbGOH2/uq4jS0qUzfo/xpgfg6xWr5ElJcrDYhFjlHIXmVKiLJcvcUk8tMAowCjAKMAowCjAKMAowCjAKMAowCjAKMAowCjAKMAowCjAKMAowCjAKMAowCjAKMAowCjAKMAo4ABQ0jKnFSWXOgAAAABJRU5ErkJggg=="/>
+									<span className="option-label">{__( 'Left', 'neve' )}</span></>, value: 'left' },
+									{label: <><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAABXCAYAAAC5pDO6AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAFVSURBVHgB7dlBSsNQFEbhWyORSCDYFajYgboH9z9zDerAOrMYCQSCmo498MqjCW3PB9nAIbn/IIv489V+/8QReX4/jxxPq4vFWehfhgGGAYYBhgGGAYYBhgGGAYYBhgGGAYYBhgGGAYYBhgGGAYYBhgGGAYYBhgGGAYYBhgHJ/zLbto2315eY2/XNbVRVFfu200/evu9jbsMwxBSSw9R1HfcPjzG3oihiCju9MWVZxqnw+ALDAMMA5xo418C5Bs418PgCwwDDAOcaONfAuQbONfD4AsMAwwDnGjjXwLkGzjXw+ALDgORPqeu67ZOjaZrJbkSu5DCbzWd8rNeRo7xbbY/4IUgOU1WXcbVcRo5DeVtGyWHGz2B8ToXHFxgGGAYYBhgGGAYYBhgGGAYYBhgGGAYYBhgGGAYYBhgGGAYYBhgGGAYYBhgGGAYYBhgGGAYYBhgG/AIdeUYQlOqQ4AAAAABJRU5ErkJggg=="/>
+									<span className="option-label">{__( 'Right', 'neve' )}</span></>, value: 'right' }
+								]
+							}
+							onChange={(value) => {
+								this.updateValues( 'neve_meta_sidebar', value );
+							} }
+						/>
+					</BaseControl>
+
+					<BaseControl
+						label={ __('Container', 'neve' ) }
+						id="neve_meta_container"
+						className="neve-meta-control neve-meta-button-group">
+						<ButtonGroup>
+							<Button
+								isPrimary={ 'default' === this.state['neve_meta_container'] }
+								isSecondary={ 'default' !== this.state['neve_meta_container'] }
+								onClick={ () => {
+									this.updateValues( 'neve_meta_container', 'default' );
+								} }
+							> { __( 'Default', 'neve' ) } </Button>
+							<Button
+								isPrimary={ 'contained' === this.state['neve_meta_container'] }
+								isSecondary={ 'contained' !== this.state['neve_meta_container'] }
+								onClick={ () => {
+									this.updateValues( 'neve_meta_container', 'contained' );
+								} }
+							> { __( 'Contained', 'neve' ) } </Button>
+							<Button
+								isPrimary={ 'full-width' === this.state['neve_meta_container'] }
+								isSecondary={ 'full-width' !== this.state['neve_meta_container'] }
+								onClick={ () => {
+									this.updateValues( 'neve_meta_container', 'full-width' );
+								} }
+							> { __( 'Full Width', 'neve' ) } </Button>
+						</ButtonGroup>
+					</BaseControl>
+
+					<BaseControl
+						id="neve_meta_enable_content_width"
+						className="neve-meta-control neve-meta-checkbox" >
+						<ToggleControl
+							label={ __( 'Custom Content Width (%)', 'neve' ) }
+							checked={ ( 'on' === this.state['neve_meta_enable_content_width'] ) }
+							onChange={ (value) => {
+								this.updateValues( 'neve_meta_enable_content_width', ( value ? 'on' : 'off' ) );
+								this.updateValues( 'neve_meta_content_width', this.state['neve_meta_content_width'] );
+							} }
+						/>
+					</BaseControl>
+
+					{
+						'on' === this.state.neve_meta_enable_content_width ?
+							<BaseControl
+								id="neve_meta_content_width"
+								className="neve-meta-control neve-meta-range" >
+								<RangeControl
+									value={ this.state['neve_meta_content_width'] }
+									onChange={ (value) => {
+										this.updateValues( 'neve_meta_content_width', value );
+									} }
+									min={0}
+									max={100}
+									step="1"
+								/>
+							</BaseControl> :
+							''
+					}
+				</PanelBody>
+			</div>
+		);
+	}
+
+	renderPageTitleGroup() {
+		const template = wp.data.select('core/editor').getEditedPostAttribute('template');
+		if ( 'elementor_header_footer' === template ) {
+			return false;
+		}
+		return (
+			<div className="nv-option-category">
+				<PanelBody
+					title={__('Page Title', 'neve')}
+					intialOpen={ true }
+				>
+					<BaseControl
+						label={ __('Title alignment', 'neve' ) }
+						id="neve_meta_title_alignment"
+						className="neve-meta-control neve-meta-button-group">
+						<ButtonGroup>
+							<Button
+								icon={alignLeftIcon}
+								isPrimary={ 'left' === this.state['neve_meta_title_alignment'] }
+								isSecondary={ 'left' !== this.state['neve_meta_title_alignment'] }
+								onClick={ () => {
+									this.updateValues( 'neve_meta_title_alignment', 'left' );
+								} }
+							/>
+							<Button
+								icon={alignCenterIcon}
+								isPrimary={ 'center' === this.state['neve_meta_title_alignment'] }
+								isSecondary={ 'center' !== this.state['neve_meta_title_alignment'] }
+								onClick={ () => {
+									this.updateValues( 'neve_meta_title_alignment', 'center' );
+								} }
+							/>
+							<Button
+								icon={alignRightIcon}
+								isPrimary={ 'right' === this.state['neve_meta_title_alignment'] }
+								isSecondary={ 'right' !== this.state['neve_meta_title_alignment'] }
+								onClick={ () => {
+									this.updateValues( 'neve_meta_title_alignment', 'right' );
+								} }
+							/>
+						</ButtonGroup>
+					</BaseControl>
+
+					<BaseControl
+						id="neve_meta_author_avatar"
+						className="neve-meta-control neve-meta-checkbox" >
+						<ToggleControl
+							label={ __( 'Author Avatar', 'neve' ) }
+							checked={ ( 'on' === this.state['neve_meta_title_alignment'] ) }
+							onChange={ (value) => {
+								this.updateValues( 'neve_meta_author_avatar', ( value ? 'on' : 'off' ) );
+							} }
+						/>
+					</BaseControl>
+				</PanelBody>
+			</div>
+		);
+	}
+
+	renderElementsGroup() {
+		const settings = {
+			default: JSON.stringify(
+				{
+					'title': true,
+					'thumbnail': true,
+					'tags': true,
+					'post-navigation': false,
+					'meta': true,
+					'content': true,
+					'comments': true
+				}
+			),
+			elements: {
+				'title': __( 'Post Title', 'neve' ),
+				'thumbnail': __( 'Featured Image', 'neve'),
+				'tags': __( 'Tags', 'neve'),
+				'post-navigation': __( 'Post Navigation', 'neve'),
+				'meta': __( 'Post Meta', 'neve'),
+				'content': __( 'Content', 'neve'),
+				'comments': __('Comments', 'neve' )
+			}
+		};
+
+		const template = wp.data.select('core/editor').getEditedPostAttribute('template');
+		return (
+			<div className="nv-option-category">
+				<PanelBody
+					title={__('Elements', 'neve')}
+					intialOpen={ true }
+				>
+					{
+						'elementor_header_footer' !== template ?
+							<BaseControl
+								id="neve_post_elements_order"
+								className="neve-meta-control neve-meta-sortable" >
+								<SortableItems stateUpdate={this.updateValues} id="neve_post_elements_order" data={settings}/>
+							</BaseControl> :
+							''
+					}
+
+					<BaseControl
+						id="neve_meta_disable_header"
+						className="neve-meta-control neve-meta-checkbox" >
+						<ToggleControl
+							label={ __( 'Disable Header', 'neve' ) }
+							checked={ ( 'on' === this.props.metaValue('neve_meta_disable_header') ) }
+							onChange={ (value) => {
+								this.updateValues( 'neve_meta_disable_header', ( value ? 'on' : 'off' ) );
+							} }
+						/>
+					</BaseControl>
+
+					<BaseControl
+						id="neve_meta_disable_footer"
+						className="neve-meta-control neve-meta-checkbox" >
+						<ToggleControl
+							label={ __( 'Disable Footer', 'neve' ) }
+							checked={ ( 'on' === this.props.metaValue('neve_meta_disable_footer') ) }
+							onChange={ (value) => {
+								this.updateValues( 'neve_meta_disable_footer', ( value ? 'on' : 'off' ) );
+							} }
+						/>
+					</BaseControl>
+
+					{
+						'elementor_header_footer' !== template ?
+							<BaseControl
+								id="neve_meta_disable_title"
+								className="neve-meta-control neve-meta-checkbox" >
+								<ToggleControl
+									label={ __( 'Disable Title', 'neve' ) }
+									checked={ ( 'on' === this.props.metaValue('neve_meta_disable_title') ) }
+									onChange={ (value) => {
+										this.updateValues( 'neve_meta_disable_title', ( value ? 'on' : 'off' ) );
+									} }
+								/>
+							</BaseControl> :
+							''
+					}
+
+				</PanelBody>
+			</div>
+		);
+	}
+
+	renderResetButton() {
+		return (
+			<BaseControl
+				label={__('Reset all options to default', 'neve')}
+				id="neve_reset_all"
+				className="nv-reset-all components-panel__body is-opened" >
+				<Button
+					icon="image-rotate"
+					className="nv-reset-meta"
+					onClick={ () => {
+						this.resetAll();
+					} }
+					label={ __( 'Return to customizer settings', 'neve' ) }
+					showTooltip={ true }
+				/>
+			</BaseControl>
+		);
+	}
+
 	render() {
 		return (
 			<>
 				{this.updateBlockWidth()}
-				{
-					Object.keys( this.componentsGroup ).map( ( group, index ) => {
-						const { title, controls, not_in_template } = this.componentsGroup[group];
-
-						let template = wp.data.select('core/editor').getEditedPostAttribute('template');
-						if ( not_in_template === template ) {
-							return false;
-						}
-
-						return (
-							<div key={index} className="nv-option-category">
-								<PanelBody
-									title={title}
-									intialOpen={ true }
-								>
-									{
-										controls.map( (control, index) => {
-											let controlData = metaSidebar.controls.find(obj => obj.id === control);
-											if ( ! controlData ) {
-												return false;
-											}
-											const currentPostType = wp.data.select('core/editor').getCurrentPostType();
-											if ( controlData.hasOwnProperty('post_type') && currentPostType !== controlData['post_type'] ) {
-												return false;
-											}
-											return (
-												this.renderControl( controlData, index )
-											);
-										})
-									}
-								</PanelBody>
-							</div>
-						);
-					})
-				}
-				<div className="nv-reset-all components-panel__body is-opened">
-					<p>
-						{ __('Reset all options to default', 'neve') }
-					</p>
-					<Button
-						icon="image-rotate"
-						className="nv-reset-meta"
-						onClick={ () => {
-							const {editPost} = wp.data.dispatch('core/editor');
-							Object.keys( this.componentsGroup ).map( ( group, index ) => {
-								const { controls } = this.componentsGroup[group];
-								controls.map( (control, index) => {
-									let resetValue = '';
-									if ( 'neve_meta_content_width' === control ) {
-										resetValue = 0;
-									}
-									editPost({meta: {[control]: resetValue }});
-									this.updateValues(control, resetValue);
-								});
-							});
-						} }
-						label={ __( 'Return to customizer settings', 'neve' ) }
-						showTooltip={ true }
-					/>
-				</div>
+				{this.renderPageLayoutGroup()}
+				{this.renderPageTitleGroup()}
+				{this.renderElementsGroup()}
+				{this.renderResetButton()}
 			</>
 		);
 	}
 }
 
-export { MetaFieldsManager };
+export default compose([
+
+	withDispatch(( dispatch, props ) => {
+		return {
+			setMetaValue: ( id, value ) => {
+				dispatch('core/editor').editPost({meta: {[id]: value}});
+			}
+		};
+	}),
+	withSelect(( select, props ) => {
+		return {
+			metaValue: (id) => {
+				return select('core/editor').getEditedPostAttribute('meta')[id];
+			}
+		};
+	})
+
+])( MetaFieldsManager );

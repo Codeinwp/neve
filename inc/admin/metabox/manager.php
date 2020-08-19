@@ -327,7 +327,7 @@ final class Manager {
 			if ( array_key_exists( 'settings', $options ) ){
 				$settings = get_object_vars( $options['settings'] );
 				if ( array_key_exists( 'default', $settings ) ){
-					$meta_settings['default'] = $settings['default'];
+//					$meta_settings['default'] = $settings['default'];
 				}
 			}
 
@@ -355,16 +355,8 @@ final class Manager {
 		$component_groups = apply_filters(
 			'neve_meta_component_groups',
 			[
-				'group_page_layout' => [
-					'title'           => __( 'Page Layout', 'neve' ),
-					'controls'        => [ 'neve_meta_sidebar', 'neve_meta_container', 'neve_meta_enable_content_width', 'neve_meta_content_width' ],
-					'not_in_template' => 'elementor_header_footer',
-				],
-				'group_page_title'  => [
-					'title'           => __( 'Page Title', 'neve' ),
-					'controls'        => [ 'neve_meta_title_alignment', 'neve_meta_author_avatar' ],
-					'not_in_template' => 'elementor_header_footer',
-				],
+
+
 				'group_elements'    => [
 					'title'    => __( 'Elements', 'neve' ),
 					'controls' => [ 'neve_post_elements_order', 'neve_meta_disable_header', 'neve_meta_disable_footer', 'neve_meta_disable_title' ],
@@ -375,6 +367,7 @@ final class Manager {
 			'neve-meta-sidebar',
 			'metaSidebar',
 			array(
+				'new_page_or_checkout' => (bool) (Main::is_new_page() || Main::is_checkout()),
 				'component_groups' => $component_groups,
 				'controls'         => $this->meta_sidebar_controls,
 				'actions'          => array(

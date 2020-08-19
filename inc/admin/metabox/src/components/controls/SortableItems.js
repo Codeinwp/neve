@@ -59,7 +59,6 @@ class SortableItems extends Component {
 
 	render() {
 		const currentValues = JSON.parse( this.props.metaFieldValue );
-		console.log(currentValues);
 		return (
 			<SortableList onSortEnd={this.props.onSortEnd} useDragHandle>
 			{
