@@ -68,7 +68,7 @@ class Gutenberg extends Generator {
 		];
 		$this->setup_buttons();
 		$this->setup_typography();
-
+		$this->add_editor_color_palette_styles();
 	}
 
 
@@ -258,4 +258,27 @@ class Gutenberg extends Generator {
 		];
 	}
 
+	/**
+	 * Adds colors from the editor-color-palette theme support.
+	 */
+	private function add_editor_color_palette_styles() {
+		$theme_support = get_theme_support( 'editor-color-palette' );
+		$theme_support = reset( $theme_support );
+		foreach ( $theme_support as $palette_color ) {
+			if ( ! isset( $palette_color['slug'] ) || ! isset( $palette_color['theme_mod'] ) ) {
+				continue;
+			}
+			$selector             = '.has-' . $palette_color['slug'] . '-color';
+			$this->_subscribers[] = [
+				Dynamic_Selector::KEY_SELECTOR => $selector,
+				Dynamic_Selector::KEY_RULES    => [
+					Config::CSS_PROP_COLOR => $palette_color['theme_mod'],
+				],
+				Dynamic_Selector::KEY_CONTEXT  => [
+					Dynamic_Selector::CONTEXT_GUTENBERG => true,
+				],
+
+			];
+		}
+	}
 }
