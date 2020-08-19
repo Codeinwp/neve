@@ -68,7 +68,7 @@ class Gutenberg extends Generator {
 		];
 		$this->setup_buttons();
 		$this->setup_typography();
-
+		$this->add_editor_color_palette_styles();
 	}
 
 
@@ -82,12 +82,12 @@ class Gutenberg extends Generator {
 
 		$this->_subscribers[] = [
 			Dynamic_Selector::KEY_SELECTOR => '.editor-post-title__block .editor-post-title__input,
-			h1,
-			h2,
-			h3,
-			h4,
-			h5,
-			h6',
+			.wp-block h1, h1.wp-block
+			.wp-block h2, h2.wp-block
+			.wp-block h3, h3.wp-block
+			.wp-block h4, h4.wp-block
+			.wp-block h5, h5.wp-block
+			.wp-block h6, h6.wp-block',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_FONT_FAMILY => Config::MODS_FONT_HEADINGS,
 			],
@@ -96,7 +96,7 @@ class Gutenberg extends Generator {
 			],
 		];
 		$this->_subscribers[] = [
-			Dynamic_Selector::KEY_SELECTOR => '#editor .editor-styles-wrapper',
+			Dynamic_Selector::KEY_SELECTOR => '.editor-styles-wrapper',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_FONT_FAMILY => Config::MODS_FONT_GENERAL,
 			],
@@ -137,13 +137,13 @@ class Gutenberg extends Generator {
 		foreach (
 			[
 				'neve_h1_typeface_general' => '
-			 h1,
+			 .wp-block h1, h1.wp-block,
 			 .editor-post-title__block .editor-post-title__input',
-				'neve_h2_typeface_general' => ' h2',
-				'neve_h3_typeface_general' => ' h3',
-				'neve_h4_typeface_general' => ' h4',
-				'neve_h5_typeface_general' => ' h5',
-				'neve_h6_typeface_general' => ' h6',
+				'neve_h2_typeface_general' => ' .wp-block h2, h2.wp-block',
+				'neve_h3_typeface_general' => '.wp-block h3, h3.wp-block',
+				'neve_h4_typeface_general' => '.wp-block h4, h4.wp-block',
+				'neve_h5_typeface_general' => '.wp-block h5, h5.wp-block',
+				'neve_h6_typeface_general' => '.wp-block h6, h6.wp-block',
 			] as $heading_mod => $heading_selector
 		) {
 			$this->_subscribers[] = [
@@ -258,4 +258,27 @@ class Gutenberg extends Generator {
 		];
 	}
 
+	/**
+	 * Adds colors from the editor-color-palette theme support.
+	 */
+	private function add_editor_color_palette_styles() {
+		$theme_support = get_theme_support( 'editor-color-palette' );
+		$theme_support = reset( $theme_support );
+		foreach ( $theme_support as $palette_color ) {
+			if ( ! isset( $palette_color['slug'] ) || ! isset( $palette_color['theme_mod'] ) ) {
+				continue;
+			}
+			$selector             = '.has-' . $palette_color['slug'] . '-color';
+			$this->_subscribers[] = [
+				Dynamic_Selector::KEY_SELECTOR => $selector,
+				Dynamic_Selector::KEY_RULES    => [
+					Config::CSS_PROP_COLOR => $palette_color['theme_mod'],
+				],
+				Dynamic_Selector::KEY_CONTEXT  => [
+					Dynamic_Selector::CONTEXT_GUTENBERG => true,
+				],
+
+			];
+		}
+	}
 }

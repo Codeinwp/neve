@@ -140,7 +140,7 @@ class Dynamic_Selector {
 				$expanded_selectors = explode( ',', $expanded_selectors );
 				$expanded_selectors = array_map(
 					function ( $value ) {
-						return '#editor .editor-styles-wrapper ' . $value;
+						return '.editor-styles-wrapper ' . $value;
 					},
 					$expanded_selectors
 				);
