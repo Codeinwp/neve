@@ -34,7 +34,7 @@ jobs:
         run: echo "$GITHUB_CONTEXT"
       - name: Dump Output
         env:
-          GITHUB_OUTPUT_STEP: ${{ toJson(needs.trigger_visual.output) }}
+          GITHUB_OUTPUT_STEP: ${{ toJson(needs.trigger_visual.outputs) }}
         run: echo "$GITHUB_OUTPUT_STEP"
   run-visual:
     needs: trigger_visual
@@ -65,7 +65,7 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
       - name: Install deps
         run: |
-          npm ci
+          yarn install --frozen-lockfile
       - name: Run Visual Diff
         env:
           PERCY_PARALLEL_TOTAL: 4
@@ -74,4 +74,4 @@ jobs:
           PERCY_PULL_REQUEST: ${{ needs.trigger_visual.outputs.pr_number }}
           PERCY_PARALLEL_NONCE: '${{ github.event_name }}-${{ needs.trigger_visual.outputs.commit_sha }}'
         run: |
-          npm run visual:test --  --browser chrome --record --parallel --group visual-diff
+          yarn run visual:test --  --browser chrome --record --parallel --group visual-diff
