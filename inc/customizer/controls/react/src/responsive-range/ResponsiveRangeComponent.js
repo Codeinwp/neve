@@ -18,7 +18,7 @@ const ResponsiveRangeComponent = ({ control }) => {
     // If a value is int, make it responsive.
     const responsiveConverted = getIntValAsResponsive(control.setting.get())
     if (value !== responsiveConverted) {
-      setValue({ responsiveConverted })
+      setValue( responsiveConverted )
     }
     document.addEventListener('neve-changed-customizer-value', (e) => {
       if (!e.detail) return false
