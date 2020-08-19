@@ -21,6 +21,7 @@ use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Traits\Core;
 use Neve\Core\Settings\Config;
 use Neve\Core\Styles\Dynamic_Selector;
+use Neve_Pro\Modules\Blog_Pro\Dynamic_Style;
 use WP_Customize_Manager;
 
 /**
@@ -36,7 +37,7 @@ abstract class Abstract_Builder implements Builder {
 	const SKIN_SETTING       = 'skin';
 	const TEXT_COLOR         = 'new_text_color';
 	const BACKGROUND_SETTING = 'background';
-	const MIN_WIDTH = 'min_width';
+	const WIDTH              = 'width';
 	/**
 	 * Layout config data.
 	 *
@@ -289,7 +290,7 @@ abstract class Abstract_Builder implements Builder {
 		);
 
 		if ( $row_id === 'sidebar' ) {
-			$this->add_sidebar_controls($row_setting_id);
+			$this->add_sidebar_controls( $row_setting_id );
 		}
 
 		if ( $row_id !== 'sidebar' ) {
@@ -906,6 +907,11 @@ abstract class Abstract_Builder implements Builder {
 				],
 			];
 		}
+
+		if ( $row_index === 'sidebar' ) {
+			$css_array = $this->add_sidebar_styles( $css_array );
+		}
+
 		return $css_array;
 	}
 
@@ -1272,7 +1278,7 @@ abstract class Abstract_Builder implements Builder {
 		];
 	}
 
-	private function add_sidebar_controls($row_setting_id) {
+	private function add_sidebar_controls( $row_setting_id ) {
 		SettingsManager::get_instance()->add(
 			[
 				'id'                 => self::LAYOUT_SETTING,
@@ -1285,10 +1291,10 @@ abstract class Abstract_Builder implements Builder {
 					'choices' => [
 						'slide_left'  => __( 'Slide from Left', 'neve' ),
 						'slide_right' => __( 'Slide from Right', 'neve' ),
-						'pull_left'	  => __('Pull from Left', 'neve'),
-						'pull_right'	  => __('Pull from Right', 'neve'),
-						'full_canvas' => __( 'Full Canvas', 'neve' )
-//						'dropdown'   => __( 'Toggle Dropdown', 'neve' ),
+						'pull_left'   => __( 'Pull from Left', 'neve' ),
+						'pull_right'  => __( 'Pull from Right', 'neve' ),
+						'full_canvas' => __( 'Full Canvas', 'neve' ),
+						'dropdown'    => __( 'Slide Down', 'neve' ),
 					],
 				],
 				'conditional_header' => $this->get_id() === 'header',
@@ -1300,7 +1306,7 @@ abstract class Abstract_Builder implements Builder {
 
 		SettingsManager::get_instance()->add(
 			[
-				'id'                    => self::MIN_WIDTH,
+				'id'                    => self::WIDTH,
 				'group'                 => $row_setting_id,
 				'tab'                   => SettingsManager::TAB_LAYOUT,
 				'label'                 => __( 'Sidebar Width', 'neve' ),
@@ -1308,15 +1314,16 @@ abstract class Abstract_Builder implements Builder {
 				'section'               => $row_setting_id,
 				'conditional_header'    => $this->get_id() === 'header',
 				'type'                  => '\Neve\Customizer\Controls\React\Responsive_Range',
-				'options'            => [
+				'default'               => '{ "mobile": "350", "tablet": "350", "desktop": "350" }',
+				'options'               => [
 					'input_attrs' => [
 						'min'        => 1,
 						'max'        => 1000,
 						'units'      => [ 'px' ],
 						'defaultVal' => [
-							'mobile'  => 350,
-							'tablet'  => 350,
-							'desktop' => 350,
+							'mobile'  => 360,
+							'tablet'  => 360,
+							'desktop' => 360,
 						],
 					],
 				],
@@ -1331,8 +1338,37 @@ abstract class Abstract_Builder implements Builder {
 				'sanitize_callback'     => 'wp_filter_nohtml_kses',
 				'active_callback'       => function () {
 					return in_array( get_theme_mod( $this->panel . '_' . self::LAYOUT_SETTING, 'slide_left' ), [ 'slide_left', 'slide_right', 'pull_left', 'pull_right' ], true );
-				}
+				},
 			]
 		);
+	}
+
+	private function add_sidebar_styles( $css_array ) {
+		$type = get_theme_mod( $this->control_id . '_sidebar_' . self::LAYOUT_SETTING, 'slide_left' );
+		if( $type === 'pull_left' ) {
+			$css_array[] = [
+				Dynamic_Selector::KEY_SELECTOR => '.is-menu-sidebar > .wrapper',
+				Dynamic_Selector::KEY_RULES => [
+					'left' => [
+						Dynamic_Selector::META_KEY => $this->control_id . '_sidebar_' . self::WIDTH,
+						Dynamic_Selector::META_DEFAULT => '{ "mobile": "360", "tablet": "360", "desktop": "360" }',
+						Dynamic_Selector::META_IS_RESPONSIVE => true,
+					]
+				]
+			];
+		}
+		if( $type === 'pull_right' ) {
+			$css_array[] = [
+				Dynamic_Selector::KEY_SELECTOR => '.menu_sidebar_pull_right.is-menu-sidebar > .wrapper',
+				Dynamic_Selector::KEY_RULES => [
+					Config::CSS_PROP_RIGHT => [
+						Dynamic_Selector::META_KEY => $this->control_id . '_sidebar_' . self::WIDTH,
+						Dynamic_Selector::META_DEFAULT => '{ "mobile": "360", "tablet": "360", "desktop": "360" }',
+						Dynamic_Selector::META_IS_RESPONSIVE => true,
+					]
+				]
+			];
+		}
+		return $css_array;
 	}
 }
