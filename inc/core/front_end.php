@@ -200,9 +200,10 @@ class Front_End {
 			array_push(
 				$gutenberg_color_palette,
 				array(
-					'name'  => esc_html( $color_name ),
-					'slug'  => esc_html( $control_name ),
-					'color' => sanitize_hex_color( $color ),
+					'name'      => esc_html( $color_name ),
+					'slug'      => esc_html( $control_name ),
+					'color'     => sanitize_hex_color( $color ),
+					'theme_mod' => esc_attr( $control_data['setting'] ),
 				)
 			);
 		}
