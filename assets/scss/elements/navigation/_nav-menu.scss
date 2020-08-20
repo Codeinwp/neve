@@ -148,6 +148,7 @@
 
   .nav-ul .dropdown-open + .sub-menu,
   .nav-ul .dropdown-open.sub-menu {
+	overflow: visible;
 	max-height: 2000px;
 	transition: all .3s ease;
 	opacity: 1;
