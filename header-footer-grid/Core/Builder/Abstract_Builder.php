@@ -1279,6 +1279,11 @@ abstract class Abstract_Builder implements Builder {
 		];
 	}
 
+	/**
+	 * Adds Sidebar Controls.
+	 *
+	 * @param string $row_setting_id row id.
+	 */
 	private function add_sidebar_controls( $row_setting_id ) {
 		SettingsManager::get_instance()->add(
 			[
@@ -1317,7 +1322,10 @@ abstract class Abstract_Builder implements Builder {
 				'type'                  => '\Neve\Customizer\Controls\React\Responsive_Range',
 				'default'               => '{ "mobile": "350", "tablet": "350", "desktop": "350" }',
 				'options'               => [
-					'input_attrs' => [
+					'active_callback' => function () {
+						return in_array( get_theme_mod( $this->control_id . '_sidebar_' . self::LAYOUT_SETTING, 'slide_left' ), [ 'slide_left', 'slide_right', 'pull_left', 'pull_right' ], true );
+					},
+					'input_attrs'     => [
 						'min'        => 1,
 						'max'        => 1000,
 						'units'      => [ 'px' ],
@@ -1336,52 +1344,55 @@ abstract class Abstract_Builder implements Builder {
 							width: {{value}}px;
 						}',
 				],
-				'sanitize_callback'     => 'wp_filter_nohtml_kses',
-				'active_callback'       => function () {
-					return in_array( get_theme_mod( $this->panel . '_' . self::LAYOUT_SETTING, 'slide_left' ), [ 'slide_left', 'slide_right', 'pull_left', 'pull_right' ], true );
-				},
+				'sanitize_callback'     => array( $this, 'sanitize_responsive_int_json' ),
 			]
 		);
 	}
 
+	/**
+	 * Adds sidebar styles.
+	 *
+	 * @param array $css_array array of styles.
+	 * @return array
+	 */
 	private function add_sidebar_styles( $css_array ) {
-		$type = get_theme_mod( $this->control_id . '_sidebar_' . self::LAYOUT_SETTING, 'slide_left' );
+		$type                  = get_theme_mod( $this->control_id . '_sidebar_' . self::LAYOUT_SETTING, 'slide_left' );
 		$default_sidebar_width = '{ "mobile": "360", "tablet": "360", "desktop": "360" }';
 
-		if( ! in_array( $type, ['full_canvas', 'dropdown'], true ) ) {
+		if ( ! in_array( $type, [ 'full_canvas', 'dropdown' ], true ) ) {
 			$css_array[] = [
-				Dynamic_Selector::KEY_SELECTOR => '.is-menu-sidebar > .wrapper',
-				Dynamic_Selector::KEY_RULES => [
-					'left' => [
-						Dynamic_Selector::META_KEY => $this->control_id . '_sidebar_' . self::WIDTH,
+				Dynamic_Selector::KEY_SELECTOR => '.header-menu-sidebar',
+				Dynamic_Selector::KEY_RULES    => [
+					Config::CSS_PROP_WIDTH => [
+						Dynamic_Selector::META_KEY     => $this->control_id . '_sidebar_' . self::WIDTH,
 						Dynamic_Selector::META_DEFAULT => $default_sidebar_width,
 						Dynamic_Selector::META_IS_RESPONSIVE => true,
-					]
-				]
+					],
+				],
 			];
 		}
-		if( $type === 'pull_left' ) {
+		if ( $type === 'pull_left' ) {
 			$css_array[] = [
 				Dynamic_Selector::KEY_SELECTOR => '.is-menu-sidebar > .wrapper',
-				Dynamic_Selector::KEY_RULES => [
+				Dynamic_Selector::KEY_RULES    => [
 					Config::CSS_PROP_LEFT => [
-						Dynamic_Selector::META_KEY => $this->control_id . '_sidebar_' . self::WIDTH,
+						Dynamic_Selector::META_KEY     => $this->control_id . '_sidebar_' . self::WIDTH,
 						Dynamic_Selector::META_DEFAULT => $default_sidebar_width,
 						Dynamic_Selector::META_IS_RESPONSIVE => true,
-					]
-				]
+					],
+				],
 			];
 		}
-		if( $type === 'pull_right' ) {
+		if ( $type === 'pull_right' ) {
 			$css_array[] = [
 				Dynamic_Selector::KEY_SELECTOR => '.menu_sidebar_pull_right.is-menu-sidebar > .wrapper',
-				Dynamic_Selector::KEY_RULES => [
+				Dynamic_Selector::KEY_RULES    => [
 					Config::CSS_PROP_RIGHT => [
-						Dynamic_Selector::META_KEY => $this->control_id . '_sidebar_' . self::WIDTH,
+						Dynamic_Selector::META_KEY     => $this->control_id . '_sidebar_' . self::WIDTH,
 						Dynamic_Selector::META_DEFAULT => $default_sidebar_width,
 						Dynamic_Selector::META_IS_RESPONSIVE => true,
-					]
-				]
+					],
+				],
 			];
 		}
 		return $css_array;

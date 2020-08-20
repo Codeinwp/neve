@@ -68,7 +68,7 @@ class Config {
 	const CSS_PROP_MARGIN                     = 'margin';
 	const CSS_PROP_MARGIN_LEFT                = 'margin-left';
 	const CSS_PROP_MARGIN_RIGHT               = 'margin-right';
-	const CSS_PROP_RIGHT               		  = 'right';
+	const CSS_PROP_RIGHT                      = 'right';
 	const CSS_PROP_LEFT                       = 'left';
 	const CSS_PROP_WIDTH                      = 'width';
 	const CSS_PROP_HEIGHT                     = 'height';

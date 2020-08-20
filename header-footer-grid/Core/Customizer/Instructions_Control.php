@@ -7,6 +7,8 @@
 
 namespace HFG\Core\Customizer;
 
+use WP_Customize_Manager;
+
 /**
  * Customizer section.
  *
@@ -41,6 +43,13 @@ class Instructions_Control extends \WP_Customize_Control {
 	 */
 	public $options = [];
 
+	/**
+	 * Instructions_Control constructor.
+	 *
+	 * @param WP_Customize_Manager $manager customize manager.
+	 * @param string               $id control ID.
+	 * @param array                $args control args.
+	 */
 	public function __construct( $manager, $id, $args = array() ) {
 		parent::__construct( $manager, $id, $args );
 	}
