@@ -150,9 +150,9 @@
 	}
 }
 
-.nv-reset-all{
+.nv-reset-all .components-base-control__field{
   display: flex;
-  p{
+  label{
 	flex: 1;
 	margin: 0;
 	align-self: center;
