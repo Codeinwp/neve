@@ -12,9 +12,13 @@ class MetaFieldsManager extends Component {
 
 	constructor(props) {
 		super(props);
-		let metaData = wp.data.select( 'core/editor' ).getEditedPostAttribute( 'meta' );
-		console.log( metaData );
-		this.isDefault = this.checkIfDefault(metaData);
+		const metaData = wp.data.select( 'core/editor' ).getEditedPostAttribute( 'meta' );
+
+		let omitEmpty = obj => {
+			Object.keys(obj).filter(k => '' === obj[k] || 0 === obj[k] ).forEach(k => delete (obj[k]));
+			return obj;
+		};
+
 		this.defaultState = {
 			'neve_meta_sidebar': 'default',
 			'neve_meta_container': 'default',
@@ -22,43 +26,25 @@ class MetaFieldsManager extends Component {
 			'neve_meta_content_width': metaSidebar.new_page_or_checkout ? 100 : 70,
 			'neve_meta_title_alignment': 'left',
 			'neve_meta_author_avatar': 'off',
+			'neve_meta_reading_time': 'off',
 			'neve_post_elements_order': JSON.stringify(
-				{
-					'title': true,
-					'thumbnail': true,
-					'tags': true,
-					'post-navigation': false,
-					'meta': true,
-					'content': true,
-					'comments': true
-				}
+				[
+					'title',
+					'thumbnail',
+					'tags',
+					'post-navigation',
+					'meta',
+					'content',
+					'comments'
+				]
 			),
 			'neve_meta_disable_header': 'off',
 			'neve_meta_disable_footer': 'off',
 			'neve_meta_disable_title': 'off'
 		};
-		if ( this.isDefault ) {
-			this.state = Object.assign( {}, this.defaultState );
-			console.log( this.state );
-			if ( '' !== metaSidebar.new_page_or_checkout ) {
-				this.props.setMetaValue( 'neve_meta_enable_content_width', 'on' );
-				this.props.setMetaValue( 'neve_meta_content_width', 100 );
-			}
-		} else {
-			this.state = Object.assign( {}, metaData );
-		}
-
+		const result = { ...omitEmpty(this.defaultState), ...omitEmpty(metaData) };
+		this.state = Object.assign( {}, result );
 		this.updateValues = this.updateValues.bind( this );
-	}
-
-	checkIfDefault(meta) {
-		let isDefault = true;
-		Object.keys( meta ).map( ( control ) => {
-			if ( '' !== meta[control] && 0 !== meta[control] ) {
-				isDefault = false;
-			}
-		});
-		return isDefault;
 	}
 
 	updateValues(id, value) {
@@ -219,6 +205,7 @@ class MetaFieldsManager extends Component {
 		if ( 'elementor_header_footer' === template ) {
 			return false;
 		}
+		const showMetaElements = JSON.parse( this.state.neve_post_elements_order ).includes('meta');
 		return (
 			<div className="nv-option-category">
 				<PanelBody
@@ -257,35 +244,43 @@ class MetaFieldsManager extends Component {
 						</ButtonGroup>
 					</BaseControl>
 
-					<BaseControl
-						id="neve_meta_author_avatar"
-						className="neve-meta-control neve-meta-checkbox" >
-						<ToggleControl
-							label={ __( 'Author Avatar', 'neve' ) }
-							checked={ ( 'on' === this.state['neve_meta_title_alignment'] ) }
-							onChange={ (value) => {
-								this.updateValues( 'neve_meta_author_avatar', ( value ? 'on' : 'off' ) );
-							} }
-						/>
-					</BaseControl>
+					{
+						showMetaElements ?
+							<BaseControl
+								id="neve_meta_author_avatar"
+								className="neve-meta-control neve-meta-checkbox" >
+								<ToggleControl
+									label={ __( 'Author Avatar', 'neve' ) }
+									checked={ ( 'on' === this.state['neve_meta_author_avatar'] ) }
+									onChange={ (value) => {
+										this.updateValues( 'neve_meta_author_avatar', ( value ? 'on' : 'off' ) );
+									} }
+								/>
+							</BaseControl> :
+							''
+					}
+					{
+						metaSidebar.enable_pro && showMetaElements ?
+							<BaseControl
+								id="neve_meta_reading_time"
+								className="neve-meta-control neve-meta-checkbox" >
+								<ToggleControl
+									label={ __( 'Reading Time', 'neve' ) }
+									checked={ ( 'on' === this.state['neve_meta_reading_time'] ) }
+									onChange={ (value) => {
+										this.updateValues( 'neve_meta_reading_time', ( value ? 'on' : 'off' ) );
+									} }
+								/>
+							</BaseControl> :
+							''
+					}
 				</PanelBody>
 			</div>
 		);
 	}
 
 	renderElementsGroup() {
-		const settings = {
-			default: JSON.stringify(
-				{
-					'title': true,
-					'thumbnail': true,
-					'tags': true,
-					'post-navigation': false,
-					'meta': true,
-					'content': true,
-					'comments': true
-				}
-			),
+		let settings = {
 			elements: {
 				'title': __( 'Post Title', 'neve' ),
 				'thumbnail': __( 'Featured Image', 'neve'),
@@ -294,10 +289,27 @@ class MetaFieldsManager extends Component {
 				'meta': __( 'Post Meta', 'neve'),
 				'content': __( 'Content', 'neve'),
 				'comments': __('Comments', 'neve' )
-			}
+			},
+			default: JSON.stringify(
+				[
+					'title',
+					'thumbnail',
+					'tags',
+					'meta',
+					'content',
+					'comments'
+				]
+			)
 		};
 
+		if ( metaSidebar.enable_pro ) {
+			settings.elements['author-biography'] = __( 'Author Biography', 'neve' );
+			settings.elements['related-posts']    = __( 'Related Posts', 'neve' );
+			settings.elements['sharing-icons']    = __( 'Sharing Icons', 'neve' );
+		}
+
 		const template = wp.data.select('core/editor').getEditedPostAttribute('template');
+		const postType = wp.data.select('core/editor').getCurrentPostType();
 		return (
 			<div className="nv-option-category">
 				<PanelBody
@@ -339,7 +351,7 @@ class MetaFieldsManager extends Component {
 					</BaseControl>
 
 					{
-						'elementor_header_footer' !== template ?
+						'elementor_header_footer' !== template &&  'page' === postType ?
 							<BaseControl
 								id="neve_meta_disable_title"
 								className="neve-meta-control neve-meta-checkbox" >

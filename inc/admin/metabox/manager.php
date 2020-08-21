@@ -54,6 +54,8 @@ final class Manager {
 		add_action( 'init', array( $this, 'register_meta_sidebar' ) );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'meta_sidebar_script_enqueue' ) );
 		add_action( 'init', array( $this, 'neve_register_meta' ), 11 );
+
+		add_action( 'save_post', array( $this, 'set_page_width' ), 10, 2 );
 	}
 
 	/**
@@ -302,7 +304,8 @@ final class Manager {
 	 * Register meta
 	 */
 	public function neve_register_meta() {
-		foreach ( $this->meta_sidebar_controls as $control ) {
+		$meta_sidebar_controls = apply_filters( 'neve_sidebar_meta_controls', $this->meta_sidebar_controls );
+		foreach ( $meta_sidebar_controls as $control ) {
 			$options = get_object_vars( $control );
 			$type    = 'string';
 			if ( $options['type'] === 'range' ) {
@@ -321,15 +324,8 @@ final class Manager {
 				'sanitize_callback' => 'sanitize_text_field',
 				'auth_callback'     => function () {
 					return current_user_can( 'edit_posts' );
-				}
+				},
 			);
-
-			if ( array_key_exists( 'settings', $options ) ){
-				$settings = get_object_vars( $options['settings'] );
-				if ( array_key_exists( 'default', $settings ) ){
-//					$meta_settings['default'] = $settings['default'];
-				}
-			}
 
 			register_post_meta(
 				$post_type,
@@ -349,28 +345,16 @@ final class Manager {
 		}
 		wp_enqueue_script( 'neve-meta-sidebar' );
 
-		$container        = $post_type === 'post' ? Mods::get( Config::MODS_SINGLE_POST_CONTAINER_STYLE, 'contained' ) : Mods::get( Config::MODS_DEFAULT_CONTAINER_STYLE, 'contained' );
-		$editor_width     = Mods::get( Config::MODS_CONTAINER_WIDTH );
-		$editor_width     = isset( $editor_width['desktop'] ) ? (int) $editor_width['desktop'] : 1170;
-		$component_groups = apply_filters(
-			'neve_meta_component_groups',
-			[
+		$container    = $post_type === 'post' ? Mods::get( Config::MODS_SINGLE_POST_CONTAINER_STYLE, 'contained' ) : Mods::get( Config::MODS_DEFAULT_CONTAINER_STYLE, 'contained' );
+		$editor_width = Mods::get( Config::MODS_CONTAINER_WIDTH );
+		$editor_width = isset( $editor_width['desktop'] ) ? (int) $editor_width['desktop'] : 1170;
 
-
-				'group_elements'    => [
-					'title'    => __( 'Elements', 'neve' ),
-					'controls' => [ 'neve_post_elements_order', 'neve_meta_disable_header', 'neve_meta_disable_footer', 'neve_meta_disable_title' ],
-				],
-			]
-		);
-		wp_localize_script(
-			'neve-meta-sidebar',
-			'metaSidebar',
+		$localized_data = apply_filters(
+			'neve_meta_sidebar_localize_filter',
 			array(
-				'new_page_or_checkout' => (bool) (Main::is_new_page() || Main::is_checkout()),
-				'component_groups' => $component_groups,
-				'controls'         => $this->meta_sidebar_controls,
-				'actions'          => array(
+				'new_page_or_checkout' => ( Main::is_new_page() || Main::is_checkout() ),
+				'controls'             => $this->meta_sidebar_controls,
+				'actions'              => array(
 					'neve_meta_content_width' => array(
 						'container' => $container,
 						'editor'    => $editor_width,
@@ -378,12 +362,39 @@ final class Manager {
 				),
 			)
 		);
+		wp_localize_script(
+			'neve-meta-sidebar',
+			'metaSidebar',
+			$localized_data
+		);
 
 		wp_enqueue_style(
 			'neve-meta-sidebar-css', // Handle.
 			trailingslashit( get_template_directory_uri() ) . 'inc/admin/metabox/build/editor.css',
 			array( 'wp-edit-blocks' )
 		);
+	}
 
+	/**
+	 * Set page width to 100% if it's a new page.
+	 *
+	 * @param int      $post_id Post id.
+	 * @param \WP_Post $post Post object.
+	 */
+	public function set_page_width( $post_id, $post ) {
+		$parent_id = wp_is_post_revision( $post_id );
+		if ( $parent_id ) {
+			$post_id = $parent_id;
+		}
+
+		// Only set for post_type = page!
+		if ( 'page' !== $post->post_type ) {
+			return;
+		}
+
+		if ( Main::is_new_page() || Main::is_checkout() ) {
+			update_post_meta( $post_id, 'neve_meta_enable_content_width', 'on' );
+			update_post_meta( $post_id, 'neve_meta_content_width', 100 );
+		}
 	}
 }

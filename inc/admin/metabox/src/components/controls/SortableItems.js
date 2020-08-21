@@ -58,17 +58,41 @@ class SortableItems extends Component {
 	}
 
 	render() {
+		const elements = this.props.data.elements;
 		const currentValues = JSON.parse( this.props.metaFieldValue );
 		return (
 			<SortableList onSortEnd={this.props.onSortEnd} useDragHandle>
 			{
-				Object.keys( currentValues ).map(
+				currentValues.map(
 					(value, index) => {
-						if ( 'undefined' === typeof this.props.data.elements[value] ) {
+						return (
+							<SortableItem
+								key={`item-${value}`}
+								index={index}
+								value={value}
+								label={elements[value]}
+								isVisible={true}
+								toggle={this.props.toggle}
+							/>
+						);
+					}
+				)
+			}
+			{
+				Object.keys(elements).map(
+					(value, index) => {
+						if ( currentValues.includes( value ) ) {
 							return false;
 						}
 						return (
-							<SortableItem key={`item-${value}`} index={index} value={value} label={this.props.data.elements[value]} isVisible={currentValues[value]} toggle={this.props.toggle}/>
+							<SortableItem
+								key={`item-${value}`}
+								index={index}
+								value={value}
+								label={elements[value]}
+								isVisible={false}
+								toggle={this.props.toggle}
+							/>
 						);
 					}
 				)
@@ -83,17 +107,17 @@ export default compose([
 		return {
 			onSortEnd: function( {oldIndex, newIndex} ) {
 				const metaValue = JSON.parse( select('core/editor').getEditedPostAttribute('meta')[props.id] );
-				const newElements = arrayMove(Object.keys(metaValue), oldIndex, newIndex);
-				let newMetaValue = {};
-				newElements.map( ( value, index ) => {
-					newMetaValue[value] = metaValue[value];
-				});
-				props.stateUpdate( props.id, JSON.stringify( newMetaValue ) );
-				dispatch('core/editor').editPost({meta: {[props.id]: JSON.stringify( newMetaValue ) }});
+				const newElements = arrayMove(metaValue, oldIndex, newIndex);
+				props.stateUpdate( props.id, JSON.stringify( newElements ) );
+				dispatch('core/editor').editPost({meta: {[props.id]: JSON.stringify( newElements ) }});
 			},
 			toggle: function ( value ) {
 				let metaValue = JSON.parse( select('core/editor').getEditedPostAttribute('meta')[props.id] || props.data.default );
-				metaValue[value] = ! metaValue[value];
+				if ( metaValue.includes( value ) ) {
+					metaValue = metaValue.filter( e => e !== value );
+				} else {
+					metaValue.push( value );
+				}
 				props.stateUpdate( props.id, JSON.stringify( metaValue ) );
 				dispatch('core/editor').editPost({meta: {[props.id]: JSON.stringify(metaValue) }});
 			}
@@ -101,21 +125,8 @@ export default compose([
 
 	}),
 	withSelect((select, props) => {
-		let metaVal = select('core/editor').getEditedPostAttribute('meta')[props.id];
-		if ( metaVal ) {
-			let metaVal = JSON.parse( select('core/editor').getEditedPostAttribute('meta')[props.id] );
-			let defaultVal = JSON.parse(props.data.default);
-			if (Object.keys(metaVal).length !== Object.keys(defaultVal).length) {
-				for (let key in defaultVal) {
-					if ( ! metaVal.hasOwnProperty(key)) {
-						metaVal[key] = defaultVal[key];
-					}
-				}
-			}
-			metaVal = JSON.stringify( metaVal );
-			return { metaFieldValue: metaVal };
-		}
-		return { metaFieldValue: props.data.default };
+		let metaValue  = select('core/editor').getEditedPostAttribute('meta')[props.id];
+		return { metaFieldValue: ( metaValue || props.data.default ) };
 	})
 
 ])( SortableItems );

@@ -31,28 +31,28 @@ class Block_Editor_Meta extends Controls_Base {
 				'id'       => 'neve_meta_sidebar',
 				'type'     => 'radio',
 				'settings' => [
-					'default'         => 'default',
+					'default' => 'default',
 				],
 			],
 			[
 				'id'       => 'neve_meta_container',
 				'type'     => 'button-group',
 				'settings' => [
-					'default'         => 'default',
+					'default' => 'default',
 				],
 			],
 			[
 				'id'       => 'neve_meta_enable_content_width',
 				'type'     => 'checkbox',
 				'settings' => [
-					'default'         => ( Main::is_new_page() || Main::is_checkout() ) ? 'on' : 'off',
+					'default' => ( Main::is_new_page() || Main::is_checkout() ) ? 'on' : 'off',
 				],
 			],
 			[
 				'id'       => 'neve_meta_content_width',
 				'type'     => 'range',
 				'settings' => [
-					'default'         => ( Main::is_new_page() || Main::is_checkout() ) ? 100 : 70
+					'default' => ( Main::is_new_page() || Main::is_checkout() ) ? 100 : 70,
 				],
 			],
 		];
@@ -71,14 +71,14 @@ class Block_Editor_Meta extends Controls_Base {
 				'id'       => 'neve_meta_title_alignment',
 				'type'     => 'button-group',
 				'settings' => [
-					'default'         => 'left'
+					'default' => 'left',
 				],
 			],
 			[
-				'id'        => 'neve_meta_author_avatar',
-				'type'      => 'checkbox',
-				'settings'  => [
-					'default'         => 'on'
+				'id'       => 'neve_meta_author_avatar',
+				'type'     => 'checkbox',
+				'settings' => [
+					'default' => 'on',
 				],
 			],
 		];
@@ -95,31 +95,31 @@ class Block_Editor_Meta extends Controls_Base {
 	private function add_elements_controls() {
 		$controls = [
 			[
-				'id'        => 'neve_post_elements_order',
-				'type'      => 'sortable-list',
-				'settings'  => [
-					'default'         => $this->get_post_elements_default(),
-				]
+				'id'       => 'neve_post_elements_order',
+				'type'     => 'sortable-list',
+				'settings' => [
+					'default' => $this->get_post_elements_default(),
+				],
 			],
 			[
 				'id'       => 'neve_meta_disable_header',
 				'type'     => 'checkbox',
 				'settings' => [
-					'default'     => 'off',
+					'default' => 'off',
 				],
 			],
 			[
 				'id'       => 'neve_meta_disable_footer',
 				'type'     => 'checkbox',
 				'settings' => [
-					'default'     => 'off',
+					'default' => 'off',
 				],
 			],
 			[
-				'id'        => 'neve_meta_disable_title',
-				'type'      => 'checkbox',
-				'settings'  => [
-					'default'         => 'off',
+				'id'       => 'neve_meta_disable_title',
+				'type'     => 'checkbox',
+				'settings' => [
+					'default' => 'off',
 				],
 			],
 		];
@@ -137,20 +137,7 @@ class Block_Editor_Meta extends Controls_Base {
 	 */
 	private function get_post_elements_default() {
 
-		$order          = [];
-		$all_components = apply_filters(
-			'neve_post_all_elements_filter',
-			[
-				'title',
-				'meta',
-				'thumbnail',
-				'content',
-				'tags',
-				'comments',
-				'post-navigation',
-			]
-		);
-
+		$order         = [];
 		$default_order = apply_filters(
 			'neve_single_post_elements_default_order',
 			array(
@@ -168,16 +155,10 @@ class Block_Editor_Meta extends Controls_Base {
 		$content_order = json_decode( $content_order, true );
 		foreach ( $content_order as $element ) {
 			if ( $element === 'title-meta' ) {
-				$order['title'] = true;
-				$order['meta']  = true;
+				$order[] = 'title';
+				$order[] = 'meta';
 			} else {
-				$order[ $element ] = true;
-			}
-		}
-
-		foreach ( $all_components as $component ) {
-			if ( ! array_key_exists( $component, $order ) ) {
-				$order[ $component ] = false;
+				$order[] = $element;
 			}
 		}
 

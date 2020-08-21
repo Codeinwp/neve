@@ -462,14 +462,7 @@ class Metabox_Settings {
 			return $elements_order;
 		}
 
-		$meta_elements_order = json_decode( $meta_elements_order, true );
-		$meta_order          = array();
-		foreach ( $meta_elements_order as $element => $is_visible ) {
-			if ( $is_visible ) {
-				$meta_order[] = $element;
-			}
-		}
-		return $meta_order;
+		return json_decode( $meta_elements_order, true );
 	}
 
 	/**
