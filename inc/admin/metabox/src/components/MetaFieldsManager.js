@@ -22,8 +22,8 @@ class MetaFieldsManager extends Component {
 		this.defaultState = {
 			'neve_meta_sidebar': 'default',
 			'neve_meta_container': 'default',
-			'neve_meta_enable_content_width': metaSidebar.new_page_or_checkout ? 'on' : 'off',
-			'neve_meta_content_width': metaSidebar.new_page_or_checkout ? 100 : 70,
+			'neve_meta_enable_content_width': 'off',
+			'neve_meta_content_width': 70,
 			'neve_meta_title_alignment': 'left',
 			'neve_meta_author_avatar': 'off',
 			'neve_meta_reading_time': 'off',

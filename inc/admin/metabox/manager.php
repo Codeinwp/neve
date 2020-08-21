@@ -25,13 +25,6 @@ final class Manager {
 	private $controls = array();
 
 	/**
-	 * Controls for meta sidebar in Block Editor.
-	 *
-	 * @var array
-	 */
-	private $meta_sidebar_controls = array();
-
-	/**
 	 * Control classes to get controls from.
 	 *
 	 * @var array
@@ -51,9 +44,8 @@ final class Manager {
 		/**
 		 * Gtb meta
 		 */
-		add_action( 'init', array( $this, 'register_meta_sidebar' ) );
+		add_action( 'init', array( $this, 'neve_register_meta' ) );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'meta_sidebar_script_enqueue' ) );
-		add_action( 'init', array( $this, 'neve_register_meta' ), 11 );
 
 		add_action( 'save_post', array( $this, 'set_page_width' ), 10, 2 );
 	}
@@ -71,18 +63,12 @@ final class Manager {
 
 	/**
 	 * Instantiate the controls and actually load them into the control manager.
-	 *
-	 * @param bool  $is_sidebar Gutenberg sidebar flag.
-	 * @param array $control_classes Controls classes.
 	 */
-	public function load_controls( $is_sidebar = false, $control_classes = array() ) {
-		if ( empty( $control_classes ) ) {
-			$control_classes = $this->control_classes;
-		}
-		if ( empty( $control_classes ) ) {
+	public function load_controls() {
+		if ( empty( $this->control_classes ) ) {
 			return;
 		}
-		foreach ( $control_classes as $control_manager ) {
+		foreach ( $this->control_classes as $control_manager ) {
 			$control_instance = new $control_manager();
 			if ( ! $control_instance instanceof Controls_Base ) {
 				continue;
@@ -90,11 +76,7 @@ final class Manager {
 
 			$control_instance->init();
 
-			if ( $is_sidebar ) {
-				$this->meta_sidebar_controls = array_merge( $this->meta_sidebar_controls, $control_instance->get_controls() );
-			} else {
-				$this->controls = array_merge( $this->controls, $control_instance->get_controls() );
-			}
+			$this->controls = array_merge( $this->controls, $control_instance->get_controls() );
 		}
 		$this->order_by_priority();
 	}
@@ -281,40 +263,64 @@ final class Manager {
 		array_multisort( $order, SORT_ASC, $this->controls );
 	}
 
-
-	/**
-	 * Register the metabox sidebar in Gutenberg editor
-	 */
-	public function register_meta_sidebar() {
-
-		$control_classes = array(
-			'Neve\\Admin\\Metabox\\Block_Editor_Meta',
-		);
-		$this->load_controls( true, $control_classes );
-
-		wp_register_script(
-			'neve-meta-sidebar',
-			trailingslashit( get_template_directory_uri() ) . 'inc/admin/metabox/build/index.js',
-			array( 'wp-plugins', 'wp-edit-post', 'wp-element', 'wp-components', 'wp-data', 'wp-keyboard-shortcuts' )
-		);
-
-	}
-
 	/**
 	 * Register meta
 	 */
 	public function neve_register_meta() {
-		$meta_sidebar_controls = apply_filters( 'neve_sidebar_meta_controls', $this->meta_sidebar_controls );
+		$meta_sidebar_controls = apply_filters(
+			'neve_sidebar_meta_controls', 
+			[
+				[
+					'id'   => 'neve_meta_sidebar',
+					'type' => 'radio',
+				],
+				[
+					'id'   => 'neve_meta_container',
+					'type' => 'button-group',
+				],
+				[
+					'id'   => 'neve_meta_enable_content_width',
+					'type' => 'checkbox',
+				],
+				[
+					'id'   => 'neve_meta_content_width',
+					'type' => 'range',
+				],
+				[
+					'id'   => 'neve_meta_title_alignment',
+					'type' => 'button-group',
+				],
+				[
+					'id'   => 'neve_meta_author_avatar',
+					'type' => 'checkbox',
+				],
+				[
+					'id'   => 'neve_post_elements_order',
+					'type' => 'sortable-list',
+				],
+				[
+					'id'   => 'neve_meta_disable_header',
+					'type' => 'checkbox',
+				],
+				[
+					'id'   => 'neve_meta_disable_footer',
+					'type' => 'checkbox',
+				],
+				[
+					'id'   => 'neve_meta_disable_title',
+					'type' => 'checkbox',
+				],
+			]
+		);
 		foreach ( $meta_sidebar_controls as $control ) {
-			$options = get_object_vars( $control );
-			$type    = 'string';
-			if ( $options['type'] === 'range' ) {
+			$type = 'string';
+			if ( $control['type'] === 'range' ) {
 				$type = 'integer';
 			}
 
 			$post_type = '';
-			if ( array_key_exists( 'post_type', $options ) ) {
-				$post_type = $options['post_type'];
+			if ( array_key_exists( 'post_type', $control ) ) {
+				$post_type = $control['post_type'];
 			}
 
 			$meta_settings = array(
@@ -329,7 +335,7 @@ final class Manager {
 
 			register_post_meta(
 				$post_type,
-				$options['id'],
+				$control['id'],
 				$meta_settings
 			);
 		}
@@ -343,7 +349,11 @@ final class Manager {
 		if ( $post_type !== 'post' && $post_type !== 'page' ) {
 			return false;
 		}
-		wp_enqueue_script( 'neve-meta-sidebar' );
+		wp_enqueue_script(
+			'neve-meta-sidebar',
+			trailingslashit( get_template_directory_uri() ) . 'inc/admin/metabox/build/index.js',
+			array( 'wp-plugins', 'wp-edit-post', 'wp-element', 'wp-components', 'wp-data', 'wp-keyboard-shortcuts' )
+		);
 
 		$container    = $post_type === 'post' ? Mods::get( Config::MODS_SINGLE_POST_CONTAINER_STYLE, 'contained' ) : Mods::get( Config::MODS_DEFAULT_CONTAINER_STYLE, 'contained' );
 		$editor_width = Mods::get( Config::MODS_CONTAINER_WIDTH );
@@ -352,9 +362,7 @@ final class Manager {
 		$localized_data = apply_filters(
 			'neve_meta_sidebar_localize_filter',
 			array(
-				'new_page_or_checkout' => ( Main::is_new_page() || Main::is_checkout() ),
-				'controls'             => $this->meta_sidebar_controls,
-				'actions'              => array(
+				'actions' => array(
 					'neve_meta_content_width' => array(
 						'container' => $container,
 						'editor'    => $editor_width,
