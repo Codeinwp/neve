@@ -114,7 +114,7 @@ class MetaFieldsManager extends Component {
 					<BaseControl
 						id="neve_meta_sidebar"
 						label={__('Sidebar', 'neve')}
-						className="neve-meta-control neve-meta-radio-image"
+						className="neve-meta-control neve-meta-radio-image neve_meta_sidebar"
 					>
 						<RadioControl
 							selected={this.state['neve_meta_sidebar']}
@@ -139,7 +139,7 @@ class MetaFieldsManager extends Component {
 					<BaseControl
 						label={ __('Container', 'neve' ) }
 						id="neve_meta_container"
-						className="neve-meta-control neve-meta-button-group">
+						className="neve-meta-control neve-meta-button-group neve_meta_container">
 						<ButtonGroup>
 							<Button
 								isPrimary={ 'default' === this.state['neve_meta_container'] }
@@ -167,7 +167,7 @@ class MetaFieldsManager extends Component {
 
 					<BaseControl
 						id="neve_meta_enable_content_width"
-						className="neve-meta-control neve-meta-checkbox" >
+						className="neve-meta-control neve-meta-checkbox neve_meta_enable_content_width" >
 						<ToggleControl
 							label={ __( 'Custom Content Width (%)', 'neve' ) }
 							checked={ ( 'on' === this.state['neve_meta_enable_content_width'] ) }
@@ -182,7 +182,7 @@ class MetaFieldsManager extends Component {
 						'on' === this.state.neve_meta_enable_content_width ?
 							<BaseControl
 								id="neve_meta_content_width"
-								className="neve-meta-control neve-meta-range" >
+								className="neve-meta-control neve-meta-range neve_meta_content_width" >
 								<RangeControl
 									value={ this.state['neve_meta_content_width'] }
 									onChange={ (value) => {
@@ -215,10 +215,11 @@ class MetaFieldsManager extends Component {
 					<BaseControl
 						label={ __('Title alignment', 'neve' ) }
 						id="neve_meta_title_alignment"
-						className="neve-meta-control neve-meta-button-group">
+						className="neve-meta-control neve-meta-button-group neve_meta_title_alignment">
 						<ButtonGroup>
 							<Button
 								icon={alignLeftIcon}
+								className="nv-align-left"
 								isPrimary={ 'left' === this.state['neve_meta_title_alignment'] }
 								isSecondary={ 'left' !== this.state['neve_meta_title_alignment'] }
 								onClick={ () => {
@@ -227,6 +228,7 @@ class MetaFieldsManager extends Component {
 							/>
 							<Button
 								icon={alignCenterIcon}
+								className="nv-align-center"
 								isPrimary={ 'center' === this.state['neve_meta_title_alignment'] }
 								isSecondary={ 'center' !== this.state['neve_meta_title_alignment'] }
 								onClick={ () => {
@@ -235,6 +237,7 @@ class MetaFieldsManager extends Component {
 							/>
 							<Button
 								icon={alignRightIcon}
+								className="nv-align-right"
 								isPrimary={ 'right' === this.state['neve_meta_title_alignment'] }
 								isSecondary={ 'right' !== this.state['neve_meta_title_alignment'] }
 								onClick={ () => {
@@ -248,7 +251,7 @@ class MetaFieldsManager extends Component {
 						showMetaElements ?
 							<BaseControl
 								id="neve_meta_author_avatar"
-								className="neve-meta-control neve-meta-checkbox" >
+								className="neve-meta-control neve-meta-checkbox neve_meta_author_avatar" >
 								<ToggleControl
 									label={ __( 'Author Avatar', 'neve' ) }
 									checked={ ( 'on' === this.state['neve_meta_author_avatar'] ) }
@@ -263,7 +266,7 @@ class MetaFieldsManager extends Component {
 						metaSidebar.enable_pro && showMetaElements ?
 							<BaseControl
 								id="neve_meta_reading_time"
-								className="neve-meta-control neve-meta-checkbox" >
+								className="neve-meta-control neve-meta-checkbox neve_meta_reading_time" >
 								<ToggleControl
 									label={ __( 'Reading Time', 'neve' ) }
 									checked={ ( 'on' === this.state['neve_meta_reading_time'] ) }
@@ -328,7 +331,7 @@ class MetaFieldsManager extends Component {
 
 					<BaseControl
 						id="neve_meta_disable_header"
-						className="neve-meta-control neve-meta-checkbox" >
+						className="neve-meta-control neve-meta-checkbox neve_meta_disable_header" >
 						<ToggleControl
 							label={ __( 'Disable Header', 'neve' ) }
 							checked={ ( 'on' === this.props.metaValue('neve_meta_disable_header') ) }
@@ -340,7 +343,7 @@ class MetaFieldsManager extends Component {
 
 					<BaseControl
 						id="neve_meta_disable_footer"
-						className="neve-meta-control neve-meta-checkbox" >
+						className="neve-meta-control neve-meta-checkbox neve_meta_disable_footer" >
 						<ToggleControl
 							label={ __( 'Disable Footer', 'neve' ) }
 							checked={ ( 'on' === this.props.metaValue('neve_meta_disable_footer') ) }
@@ -354,7 +357,7 @@ class MetaFieldsManager extends Component {
 						'elementor_header_footer' !== template &&  'page' === postType ?
 							<BaseControl
 								id="neve_meta_disable_title"
-								className="neve-meta-control neve-meta-checkbox" >
+								className="neve-meta-control neve-meta-checkbox neve_meta_disable_title" >
 								<ToggleControl
 									label={ __( 'Disable Title', 'neve' ) }
 									checked={ ( 'on' === this.props.metaValue('neve_meta_disable_title') ) }
