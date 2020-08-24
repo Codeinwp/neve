@@ -268,7 +268,7 @@ final class Manager {
 	 */
 	public function neve_register_meta() {
 		$meta_sidebar_controls = apply_filters(
-			'neve_sidebar_meta_controls', 
+			'neve_sidebar_meta_controls',
 			[
 				[
 					'id'   => 'neve_meta_sidebar',
@@ -401,6 +401,7 @@ final class Manager {
 		}
 
 		if ( Main::is_new_page() || Main::is_checkout() ) {
+			update_post_meta( $post_id, 'neve_meta_sidebar', 'full-width' );
 			update_post_meta( $post_id, 'neve_meta_enable_content_width', 'on' );
 			update_post_meta( $post_id, 'neve_meta_content_width', 100 );
 		}
