@@ -842,17 +842,19 @@ abstract class Abstract_Builder implements Builder {
 		}
 
 		if ( $background['type'] === 'image' ) {
-			$css_array[] = [
-				Dynamic_Selector::KEY_SELECTOR => $selector . ' .nav-ul .sub-menu li,' . $selector . ' .nav-ul .sub-menu',
-				Dynamic_Selector::KEY_RULES    => [
-					Config::CSS_PROP_BACKGROUND_COLOR => [
-						Dynamic_Selector::META_KEY => $this->control_id . '_' . $row_index . '_background' . '.overlayColorValue',
+			if ( $row_index !== 'sidebar' ) {
+				$css_array[] = [
+					Dynamic_Selector::KEY_SELECTOR => $selector . ' .nav-ul .sub-menu li,' . $selector . ' .nav-ul .sub-menu',
+					Dynamic_Selector::KEY_RULES    => [
+						Config::CSS_PROP_BACKGROUND_COLOR => [
+							Dynamic_Selector::META_KEY => $this->control_id . '_' . $row_index . '_background' . '.overlayColorValue',
+						],
+						Config::CSS_PROP_BORDER_COLOR     => [
+							Dynamic_Selector::META_KEY => $this->control_id . '_' . $row_index . '_background' . '.overlayColorValue',
+						],
 					],
-					Config::CSS_PROP_BORDER_COLOR     => [
-						Dynamic_Selector::META_KEY => $this->control_id . '_' . $row_index . '_background' . '.overlayColorValue',
-					],
-				],
-			];
+				];
+			}
 
 			$css_array[] = [
 				Dynamic_Selector::KEY_SELECTOR => $selector,
