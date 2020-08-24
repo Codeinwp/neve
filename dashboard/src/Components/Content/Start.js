@@ -22,7 +22,6 @@ const Start = (props) => {
 				>
 					<Button
 						isPrimary
-						isLarge
 						onClick={() => {
 							setTab('starter-sites');
 						}}
@@ -71,13 +70,13 @@ const renderCustomizerLinks = () => {
 	return (
 		<div className="columns">
 			{
-				parts.map((column) => {
+				parts.map((column, index) => {
 					return (
-						<div className="col">
+						<div className="col" key={index}>
 							{
 								column.map((item, index) => {
 									return (
-										<Fragment>
+										<Fragment key={index}>
 											<Button isLink href={item.link}>{item.text}</Button>
 											{index !== column.length - 1 && <hr/>}
 										</Fragment>

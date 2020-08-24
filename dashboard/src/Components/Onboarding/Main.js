@@ -154,8 +154,8 @@ const Onboarding = ({ editor, category, resetCategory, previewOpen, currentSiteD
 
   const renderSites = () => {
     const allData = getFilteredSites();
-    return allData.slice(0, maxShown).map(site => {
-      return <StarterSiteCard data={site}/>;
+    return allData.slice(0, maxShown).map((site, index) => {
+      return <StarterSiteCard key={index} data={site}/>;
     });
   };
 

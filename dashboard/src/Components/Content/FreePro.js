@@ -15,7 +15,7 @@ const Pro = (props) => {
 					<th className="indicator">Neve</th>
 					<th className="indicator">Neve Pro</th>
 				</tr>
-				{featureData.map((item) => <FeatureRow item={item}/>)}
+				{featureData.map((item, index) => <FeatureRow key={index} item={item}/>)}
 				</tbody>
 			</table>
 
