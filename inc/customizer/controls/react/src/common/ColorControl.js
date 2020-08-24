@@ -24,10 +24,6 @@ class ColorControl extends Component {
             toggle = onToggle
             return (
               <Button
-                focusOnMount={false}
-                popoverProps={{
-                  focusOnMount: false
-                }}
                 className={classnames([
                   'is-secondary is-button',
                   { 'is-empty': !selectedColor }])}
