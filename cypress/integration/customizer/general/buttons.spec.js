@@ -59,7 +59,7 @@ describe('Primary button control ', function () {
 
 		//Goes to homepage and clicks on the last post created
 		cy.visit('/');
-		cy.get('h2.blog-entry-title.entry-title > a').first().click({
+		cy.get('h2.blog-entry-title.entry-title > a').contains('Test primary button').first().click({
 			force: true
 		});
 
@@ -88,7 +88,7 @@ describe('Primary button control ', function () {
 	it('Check button properties in front-end', function () {
 		//Goes to homepage and clicks on the last post created
 		cy.visit('/');
-		cy.get('h2.blog-entry-title.entry-title > a').first().click({
+		cy.get('h2.blog-entry-title.entry-title > a').contains('Test primary button').first().click({
 			force: true
 		});
 
