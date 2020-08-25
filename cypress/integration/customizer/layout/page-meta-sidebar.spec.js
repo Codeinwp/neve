@@ -87,7 +87,7 @@ describe('Single page sidebar', function () {
 		cy.updatePost();
 		cy.visit(pageSetup.url);
 
-		cy.get('#content.neve-main > .container > .row > .col').should('have.css', 'max-width').and('eq', '60%');
+		cy.get('.nv-single-page-wrap').should('have.css', 'max-width').and('eq', '60%');
 	})
 
 	it('Check title alignment', function () {
