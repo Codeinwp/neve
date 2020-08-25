@@ -72,7 +72,7 @@ function importCodeContent(text) {
 
 Cypress.Commands.add('editCurrentPost', editCurrentPost);
 Cypress.Commands.add('insertPost',
-	(title = 'Test', content = 'Content', type = 'post', featured = false) => {
+	(title = 'Test', content = 'Content', type = 'post', featured = false, tags = false) => {
 		let loginRoute = '/wp-admin/post-new.php';
 		if (type !== 'post') {
 			loginRoute += '?post_type=' + type;
@@ -82,6 +82,10 @@ Cypress.Commands.add('insertPost',
 		cy.clearWelcome();
 		if (featured) {
 			addFeaturedImage();
+		}
+
+		if (tags) {
+			addTags();
 		}
 
 		cy.wait(1000);
@@ -129,6 +133,11 @@ function addFeaturedImage() {
 	cy.get('.attachments-browser .attachments > li.attachment').first().click({force: true});
 	cy.wait(2500);
 	cy.get('.media-button-select').click();
+}
+
+function addTags() {
+	cy.get('.components-panel__body-toggle').contains('Tags').click();
+	cy.get('.components-form-token-field__label').contains('Add New Tag').parent().find('input').type( 'test-tag,');
 }
 
 /**

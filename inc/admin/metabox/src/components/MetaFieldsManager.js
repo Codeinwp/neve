@@ -206,6 +206,7 @@ class MetaFieldsManager extends Component {
 			return false;
 		}
 		const showMetaElements = JSON.parse( this.state.neve_post_elements_order ).includes('meta');
+		const postType = wp.data.select('core/editor').getCurrentPostType();
 		return (
 			<div className="nv-option-category">
 				<PanelBody
@@ -248,7 +249,7 @@ class MetaFieldsManager extends Component {
 					</BaseControl>
 
 					{
-						showMetaElements ?
+						showMetaElements && 'post' === postType ?
 							<BaseControl
 								id="neve_meta_author_avatar"
 								className="neve-meta-control neve-meta-checkbox neve_meta_author_avatar" >
@@ -320,7 +321,7 @@ class MetaFieldsManager extends Component {
 					intialOpen={ true }
 				>
 					{
-						'elementor_header_footer' !== template ?
+						'elementor_header_footer' !== template && 'post' === postType ?
 							<BaseControl
 								id="neve_post_elements_order"
 								className="neve-meta-control neve-meta-sortable" >
