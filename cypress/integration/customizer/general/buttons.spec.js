@@ -74,7 +74,7 @@ describe('Primary button control ', function () {
 		clear().
 		type('/button');
 
-		cy.get('button.components-button.components-autocomplete__result.block-editor-autocompleters__block').eq('1').
+		cy.get('button.components-button.components-autocomplete__result.block-editor-autocompleters__block').
 		click();
 
 		//Clicks on the button so it can write content inside
