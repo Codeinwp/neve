@@ -11,6 +11,7 @@
 
 namespace HFG\Core\Components;
 
+use HFG\Core\Builder\Abstract_Builder;
 use HFG\Core\Settings;
 use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Main;
@@ -23,15 +24,16 @@ use Neve\Core\Styles\Dynamic_Selector;
  * @package HFG\Core\Components
  */
 class Nav extends Abstract_Component {
-	const COMPONENT_ID    = 'primary-menu';
-	const STYLE_ID        = 'style';
-	const COLOR_ID        = 'color';
-	const HOVER_COLOR_ID  = 'hover_color';
-	const ACTIVE_COLOR_ID = 'active_color';
-	const LAST_ITEM_ID    = 'neve_last_menu_item';
-	const NAV_MENU_ID     = 'nv-primary-navigation';
-	const ITEM_HEIGHT     = 'item_height';
-	const SPACING         = 'spacing';
+	const COMPONENT_ID     = 'primary-menu';
+	const STYLE_ID         = 'style';
+	const COLOR_ID         = 'color';
+	const HOVER_COLOR_ID   = 'hover_color';
+	const ACTIVE_COLOR_ID  = 'active_color';
+	const LAST_ITEM_ID     = 'neve_last_menu_item';
+	const NAV_MENU_ID      = 'nv-primary-navigation';
+	const ITEM_HEIGHT      = 'item_height';
+	const SPACING          = 'spacing';
+	const EXPAND_DROPDOWNS = 'expand_dropdowns';
 
 	/**
 	 * Nav constructor.
@@ -118,7 +120,7 @@ class Nav extends Abstract_Component {
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
 					'template' =>
-					$selector . ' li:not(.current_page_item):not(.current-menu-item):not(.woocommerce-mini-cart-item) > a,' . $selector . ' li.neve-mm-heading span {
+						$selector . ' li:not(.current_page_item):not(.current-menu-item):not(.woocommerce-mini-cart-item) > a,' . $selector . ' li.neve-mm-heading span {
 						color: {{value}};
 					}',
 				],
@@ -278,6 +280,26 @@ class Nav extends Abstract_Component {
 				],
 				'section'            => $this->section,
 				'conditional_header' => true,
+			]
+		);
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'                 => self::EXPAND_DROPDOWNS,
+				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'                => SettingsManager::TAB_GENERAL,
+				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
+				'sanitize_callback'  => 'absint',
+				'default'            => 0,
+				'label'              => __( 'Expand first level of dropdowns', 'neve' ),
+				'type'               => 'neve_toggle_control',
+				'section'            => $this->section,
+				'conditional_header' => true,
+				'options'            => [
+				// 'active_callback' => function() {
+				// return $this->is_in_sidebar();
+				// }
+				],
 			]
 		);
 	}
@@ -450,5 +472,37 @@ class Nav extends Abstract_Component {
 		];
 
 		return parent::add_style( $css_array );
+	}
+
+	/**
+	 * Check if component is inside the sidebar.
+	 *
+	 * @return bool
+	 */
+	public function is_in_sidebar() {
+		$header_layout = get_theme_mod( 'hfg_header_layout' );
+
+		if ( empty( $header_layout ) ) {
+			return false;
+		}
+
+		$header_layout = json_decode( $header_layout, true );
+		if ( ! isset( $header_layout['mobile'] ) ) {
+			return false;
+		}
+
+		if ( ! isset( $header_layout['mobile']['sidebar'] ) ) {
+			return false;
+		}
+		foreach ( $header_layout['mobile']['sidebar'] as $sidebar_component ) {
+			if ( ! isset( $sidebar_component['id'] ) ) {
+				continue;
+			}
+
+			if ( $sidebar_component['id'] === $this->get_id() ) {
+				return true;
+			}
+		}
+		return false;
 	}
 }
