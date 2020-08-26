@@ -124,11 +124,11 @@ class MenuIcon extends Abstract_Component {
 					'options' => array(
 						'quickLinks' => array(
 							'toggle_sidebar' => array(
-								'label' => esc_html__( 'Show Sidebar Content', 'neve' ),
+								'label' => esc_html__( 'Show Mobile Menu', 'neve' ),
 								'icon'  => 'dashicons-nametag',
 							),
 							'hfg_header_layout_sidebar_layout' => array(
-								'label' => esc_html__( 'Edit Mobile Sidebar Content', 'neve' ),
+								'label' => esc_html__( 'Mobile Menu Options', 'neve' ),
 								'icon'  => 'dashicons-admin-appearance',
 							),
 						),
