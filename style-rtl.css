@@ -692,7 +692,6 @@ blockquote.wp-block-quote.is-style-large cite {
 
 .nav-ul li a, .nav-ul li .has-caret {
   box-sizing: border-box;
-  color: #404248;
   width: 100%;
   display: flex;
   position: relative;
@@ -2536,6 +2535,7 @@ audio {
   transition: all 0.3s cubic-bezier(0.79, 0.14, 0.15, 0.86);
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.4);
   width: 360px;
+  height: 100vh;
 }
 
 .header-menu-sidebar-bg {

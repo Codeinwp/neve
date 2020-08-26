@@ -9,6 +9,7 @@
   transition: all .3s cubic-bezier(.79, .14, .15, .86);
   box-shadow: $menu_sidebar_boxshadow;
   width: $menu_sidebar_width;
+  height: 100vh;
 }
 
 .header-menu-sidebar-bg {
