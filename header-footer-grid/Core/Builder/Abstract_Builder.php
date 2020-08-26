@@ -838,13 +838,9 @@ abstract class Abstract_Builder implements Builder {
 
 		if ( $background['type'] === 'color' && ! empty( $background['colorValue'] ) ) {
 			$css_array[] = [
-				Dynamic_Selector::KEY_SELECTOR => $selector . ' .primary-menu-ul .sub-menu li:not(.neve-mm-divider),' . $selector . ' .primary-menu-ul .sub-menu',
+				Dynamic_Selector::KEY_SELECTOR => $selector . ' .nav-ul .sub-menu',
 				Dynamic_Selector::KEY_RULES    => [
 					Config::CSS_PROP_BACKGROUND_COLOR => [
-						Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_background' . '.colorValue',
-						Dynamic_Selector::META_DEFAULT => $default_color,
-					],
-					Config::CSS_PROP_BORDER_COLOR     => [
 						Dynamic_Selector::META_KEY     => $this->control_id . '_' . $row_index . '_background' . '.colorValue',
 						Dynamic_Selector::META_DEFAULT => $default_color,
 					],
@@ -862,17 +858,19 @@ abstract class Abstract_Builder implements Builder {
 		}
 
 		if ( $background['type'] === 'image' ) {
-			$css_array[] = [
-				Dynamic_Selector::KEY_SELECTOR => $selector . ' .primary-menu-ul .sub-menu li,' . $selector . ' .primary-menu-ul .sub-menu',
-				Dynamic_Selector::KEY_RULES    => [
-					Config::CSS_PROP_BACKGROUND_COLOR => [
-						Dynamic_Selector::META_KEY => $this->control_id . '_' . $row_index . '_background' . '.overlayColorValue',
+			if ( $row_index !== 'sidebar' ) {
+				$css_array[] = [
+					Dynamic_Selector::KEY_SELECTOR => $selector . ' .nav-ul .sub-menu li,' . $selector . ' .nav-ul .sub-menu',
+					Dynamic_Selector::KEY_RULES    => [
+						Config::CSS_PROP_BACKGROUND_COLOR => [
+							Dynamic_Selector::META_KEY => $this->control_id . '_' . $row_index . '_background' . '.overlayColorValue',
+						],
+						Config::CSS_PROP_BORDER_COLOR     => [
+							Dynamic_Selector::META_KEY => $this->control_id . '_' . $row_index . '_background' . '.overlayColorValue',
+						],
 					],
-					Config::CSS_PROP_BORDER_COLOR     => [
-						Dynamic_Selector::META_KEY => $this->control_id . '_' . $row_index . '_background' . '.overlayColorValue',
-					],
-				],
-			];
+				];
+			}
 
 			$css_array[] = [
 				Dynamic_Selector::KEY_SELECTOR => $selector,
@@ -1000,6 +998,16 @@ abstract class Abstract_Builder implements Builder {
 			$align          = SettingsManager::get_instance()->get( $component_location['id'] . '_' . Abstract_Component::ALIGNMENT_ID, null );
 			$vertical_align = SettingsManager::get_instance()->get( $component_location['id'] . '_' . Abstract_Component::VERTICAL_ALIGN_ID, null );
 
+			// Make sure we migrate old alignment values.
+			if ( is_string( $align ) || ! is_array( $align ) ) {
+				$is_menu_component = strpos( $component_location['id'], 'primary-menu' ) > -1 || strpos( $component_location['id'], 'secondary-menu' );
+				$tmp_align         = ( is_string( $align ) && in_array( $align, [ 'left', 'right', 'center', 'justify' ] ) ) ? $align : 'left';
+				$align             = [
+					'desktop' => $tmp_align,
+					'tablet'  => $is_menu_component ? 'left' : $tmp_align,
+					'mobile'  => $is_menu_component ? 'left' : $tmp_align,
+				];
+			}
 
 			if ( ! $collection->hasNext() && ( $x + $width < $max_columns ) ) {
 				$width += $max_columns - ( $x + $width );
@@ -1080,6 +1088,9 @@ abstract class Abstract_Builder implements Builder {
 					'is_last'        => false,
 				];
 			}
+			if ( strpos( $component_location['id'], 'primary-menu' ) > -1 ) {
+				$render_buffer[ $render_index ]['has_primary_nav'] = true;
+			}
 			$render_buffer[ $render_index ]['is_last']      = $is_last;
 			$render_buffer[ $render_index ]['components'][] = [
 				'component' => $component,
@@ -1097,6 +1108,9 @@ abstract class Abstract_Builder implements Builder {
 			$align          = $render_groups['align'];
 			$vertical_align = $render_groups['vertical-align'];
 			$classes        = [ 'builder-item' ];
+			if ( isset( $render_groups['has_primary_nav'] ) ) {
+				$classes[] = 'has-nav';
+			}
 			if ( $render_groups['is_last'] ) {
 				$classes[] = 'hfg-item-last';
 			}
@@ -1104,7 +1118,11 @@ abstract class Abstract_Builder implements Builder {
 				$classes[] = 'hfg-item-first';
 			}
 			$classes[] = 'col-' . $width . ' col-md-' . $width . ' col-sm-' . $width;
-			$classes[] = 'hfg-item-' . $align;
+
+			foreach ( $align as $device_slug => $align_slug ) {
+				$classes[] = $device_slug . '-' . $align_slug;
+			}
+
 			if ( $vertical_align ) {
 				$classes[] = 'hfg-item-v-' . $vertical_align;
 			}

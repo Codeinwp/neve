@@ -6,34 +6,17 @@
   top: 0;
   z-index: $menu_sidebar_active_z_index;
   visibility: hidden;
-
-  .builder-item-sidebar {
-    padding: 1.4em 1.5em;
-    border-bottom: 1px solid transparent;
-
-    &:last-of-type {
-      border-bottom: none;
-    }
-
-    &.mobile-item--primary-menu, &.mobile-item--secondary-menu, &.mobile-item--menu {
-      padding: 0;
-    }
-  }
-
-  .nav-menu-mobile .nav-toggle-icon {
-    color: currentColor;
-
-    &:hover, &:focus {
-      background: rgba(0, 0, 0, 0.01);
-    }
-  }
+  display: flex;
 }
 
 .header-menu-sidebar-bg {
   position: relative;
+  display: flex;
+  flex-direction: column;
   word-wrap: break-word;
-  min-height: 100%;
-  display: block;
+  max-height: 100vh;
+  width: 100%;
+  overflow: hidden;
 
   &:before {
     content: "";
@@ -50,10 +33,10 @@
 .header-menu-sidebar-inner {
   position: relative;
   word-wrap: break-word;
-  min-height: 100%;
   padding: 1.2em 0;
   display: flex;
   flex-direction: column;
+  overflow: auto;
 }
 
 /* Type: Slide from left */
@@ -75,16 +58,10 @@
     display: block;
     visibility: visible;
     z-index: $menu_sidebar_active_z_index;
-    overflow: hidden;
 
     .close-sidebar-panel {
       display: none;
     }
-  }
-
-  .header-menu-sidebar-inner {
-    max-width: $menu_sidebar_content_max_width;
-    margin: 0 auto;
   }
 
   .header-menu-sidebar-bg {
@@ -110,15 +87,11 @@
 }
 
 /* Showing Menu Sidebar animation. */
-.is-menu-sidebar, .is-mobile-form-panel {
-  overflow-x: hidden;
-}
+/*.is-menu-sidebar {
+  overflow-y: hidden;
+}*/
 
 .is-menu-sidebar {
-  .header-menu-sidebar {
-    overflow: auto;
-  }
-
   &.menu_sidebar_slide_left {
     width: 100%;
     display: block;
@@ -192,14 +165,6 @@
     button.navbar-toggle {
       position: relative;
     }
-  }
-}
-
-.is-menu-sidebar, .is-mobile-form-panel {
-  &:before {
-    z-index: 100000;
-    visibility: visible;
-    opacity: 1;
   }
 }
 

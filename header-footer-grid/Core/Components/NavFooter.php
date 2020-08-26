@@ -149,15 +149,20 @@ class NavFooter extends Abstract_Component {
 				'tab'                => SettingsManager::TAB_LAYOUT,
 				'section'            => $this->section,
 				'label'              => __( 'Items Spacing (px)', 'neve' ),
-				'type'               => 'Neve\Customizer\Controls\React\Range',
+				'type'               => 'Neve\Customizer\Controls\React\Responsive_Range',
 				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
-				'sanitize_callback'  => 'absint',
-				'default'            => 20,
+				'sanitize_callback'  => [ $this, 'sanitize_responsive_int_json' ],
+				'default'            => $this->get_default_for_responsive_from_intval( self::SPACING, 20 ),
 				'options'            => [
 					'input_attrs' => [
 						'min'        => 1,
 						'max'        => 100,
-						'defaultVal' => 20,
+						'units'      => [ 'px' ],
+						'defaultVal' => [
+							'mobile'  => 20,
+							'tablet'  => 20,
+							'desktop' => 20,
+						],
 					],
 				],
 				'conditional_header' => true,
@@ -169,19 +174,24 @@ class NavFooter extends Abstract_Component {
 				'id'                 => self::ITEM_HEIGHT,
 				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
 				'tab'                => SettingsManager::TAB_LAYOUT,
-				'section'            => $this->section,
-				'label'              => __( 'Items Height (px)', 'neve' ),
-				'type'               => 'Neve\Customizer\Controls\React\Range',
+				'label'              => __( 'Items Min Height (px)', 'neve' ),
+				'sanitize_callback'  => [ $this, 'sanitize_responsive_int_json' ],
 				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
-				'sanitize_callback'  => 'absint',
-				'default'            => 25,
+				'default'            => $this->get_default_for_responsive_from_intval( self::ITEM_HEIGHT, 25 ),
+				'type'               => 'Neve\Customizer\Controls\React\Responsive_Range',
 				'options'            => [
 					'input_attrs' => [
 						'min'        => 1,
 						'max'        => 100,
-						'defaultVal' => 25,
+						'units'      => [ 'px' ],
+						'defaultVal' => [
+							'mobile'  => 25,
+							'tablet'  => 25,
+							'desktop' => 25,
+						],
 					],
 				],
+				'section'            => $this->section,
 				'conditional_header' => true,
 			]
 		);
@@ -236,41 +246,15 @@ class NavFooter extends Abstract_Component {
 
 
 		$is_rtl = is_rtl();
-		$left   = $is_rtl ? 'right' : 'left';
-		$right  = $is_rtl ? 'left' : 'right';
-		$first  = $is_rtl ? 'last' : 'first';
 		$last   = $is_rtl ? 'first' : 'last';
 
-
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => '.hfg-item-' . $right . ' .builder-item--' . $this->get_id() . ' #secondary-menu > li:not(:' . $first . '-of-type)',
-			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_MARGIN_LEFT => [
-					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::SPACING,
-					Dynamic_Selector::META_IS_RESPONSIVE => true,
-					Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
-						if ( $device !== Dynamic_Selector::DESKTOP ) {
-							return '';
-						}
-
-						return sprintf( '%s:%s;', $css_prop, absint( $value ) . 'px' );
-					},
-					Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::SPACING ),
-				],
-			],
-		];
-
-		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => '.hfg-item-center .builder-item--' . $this->get_id() . ' #secondary-menu li:not(:' . $last . '-of-type), .hfg-item-' . $left . ' .builder-item--' . $this->get_id() . ' #secondary-menu > li:not(:' . $last . '-of-type)',
+			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .nav-ul > li:not(:' . $last . '-of-type)',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_MARGIN_RIGHT => [
 					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::SPACING,
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 					Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
-						if ( $device !== Dynamic_Selector::DESKTOP ) {
-							return '';
-						}
-
 						return sprintf( '%s:%s;', $css_prop, absint( $value ) . 'px' );
 					},
 					Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::SPACING ),
@@ -279,7 +263,7 @@ class NavFooter extends Abstract_Component {
 		];
 
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .style-full-height .footer-menu > li > a:after',
+			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .style-full-height .nav-ul#footer-menu > li > a:after',
 			Dynamic_Selector::KEY_RULES    => [
 				'position' => [
 					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::SPACING,
@@ -298,17 +282,13 @@ class NavFooter extends Abstract_Component {
 		];
 
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .style-full-height .footer-menu > li:hover > a:after',
+			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .style-full-height .nav-ul#footer-menu > li:hover > a:after',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_WIDTH => [
 					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::SPACING,
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 					Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
-						if ( $device !== Dynamic_Selector::DESKTOP ) {
-							return '';
-						}
-
-						return sprintf( 'width: calc(100%% + %s)!important;', absint( $value ) . 'px' );
+						return sprintf( 'width: calc(100%% + %s);', absint( $value ) . 'px' );
 					},
 					Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::SPACING ),
 				],
@@ -316,11 +296,12 @@ class NavFooter extends Abstract_Component {
 		];
 
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .footer-menu > li > a',
+			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .nav-ul a',
 			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_HEIGHT => [
-					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::ITEM_HEIGHT,
-					Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::ITEM_HEIGHT ),
+				Config::CSS_PROP_MIN_HEIGHT => [
+					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::ITEM_HEIGHT,
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::ITEM_HEIGHT ),
 				],
 			],
 		];

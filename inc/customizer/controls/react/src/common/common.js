@@ -1,13 +1,13 @@
 export const maybeParseJson = (input) => {
-  if ( typeof input !== 'string' ) {
+  if (typeof input !== 'string') {
     return input
   }
   try {
-    JSON.parse( input )
-  } catch ( error ) {
+    JSON.parse(input)
+  } catch (error) {
     return input
   }
-  return JSON.parse( input )
+  return JSON.parse(input)
 }
 
 /**
@@ -42,4 +42,24 @@ export const mergeDeep = (target, ...sources) => {
   }
   // Run recursively for multiple.
   return mergeDeep(target, ...sources)
+}
+
+export const getIntValAsResponsive = (value) => {
+  value = maybeParseJson(value)
+  if (typeof value === 'object' &&
+    Object.prototype.hasOwnProperty.call(value, 'desktop') &&
+    Object.prototype.hasOwnProperty.call(value, 'tablet') &&
+    Object.prototype.hasOwnProperty.call(value, 'mobile')) {
+    return value
+  }
+  if (typeof value === 'number') {
+    value = {
+      desktop: value,
+      tablet: value,
+      mobile: value
+    }
+    return value
+  }
+
+  return value
 }

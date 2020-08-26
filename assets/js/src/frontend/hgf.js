@@ -60,7 +60,11 @@ HFG.prototype.toggleMenuSidebar = function(toggle) {
 
 	if ( document.body.classList.contains( 'is-menu-sidebar' ) ||
 			toggle === false ) {
-		addClass( document.body, 'hiding-header-menu-sidebar' );
+	  let navClickaway = document.querySelector( '.nav-clickaway-overlay' );
+	  if( navClickaway !== null ) {
+	    navClickaway.parentNode.removeChild(navClickaway);
+	  }
+	  addClass( document.body, 'hiding-header-menu-sidebar' );
 		removeClass( document.body, 'is-menu-sidebar' );
 		removeClass( buttons, 'is-active' );
 		// Remove the hiding class after 1 second.
