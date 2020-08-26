@@ -97,13 +97,6 @@
 	  opacity: 1;
 	}
   }
-
-  .caret-wrap {
-	svg {
-	  width: 16px;
-	  height: 16px;
-	}
-  }
 }
 
 .caret {
@@ -118,6 +111,7 @@
 
 .caret-wrap {
   margin-left: 5px;
+  font-size: .65em;
 }
 
 .nv-nav-wrap {
@@ -137,7 +131,9 @@
 	  }
 	}
   }
-
+  .caret-wrap {
+	font-size: 1em;
+  }
   .dropdown-open {
 	&.has-caret, > .caret {
 	  > svg {

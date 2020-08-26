@@ -753,11 +753,6 @@ blockquote.wp-block-quote.is-style-large cite {
   opacity: 1;
 }
 
-.nav-ul .caret-wrap svg {
-  width: 16px;
-  height: 16px;
-}
-
 .caret {
   padding: 5px;
   display: flex;
@@ -770,6 +765,7 @@ blockquote.wp-block-quote.is-style-large cite {
 
 .caret-wrap {
   margin-right: 5px;
+  font-size: .65em;
 }
 
 .nv-nav-wrap {
@@ -780,6 +776,10 @@ blockquote.wp-block-quote.is-style-large cite {
 
 .header-menu-sidebar-inner .nav-ul .sub-menu li > a, .header-menu-sidebar-inner .nav-ul .sub-menu li .has-caret {
   white-space: normal;
+}
+
+.header-menu-sidebar-inner .caret-wrap {
+  font-size: 1em;
 }
 
 .header-menu-sidebar-inner .dropdown-open.has-caret > svg, .header-menu-sidebar-inner .dropdown-open > .caret > svg {
