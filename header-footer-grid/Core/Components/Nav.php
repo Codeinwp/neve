@@ -361,7 +361,7 @@ class Nav extends Abstract_Component {
 				],
 			];
 			$css_array[] = [
-				Dynamic_Selector::KEY_SELECTOR => $selector . 'li:hover > .has-caret .amp-caret-wrap svg',
+				Dynamic_Selector::KEY_SELECTOR => $selector . 'li:hover > .has-caret svg',
 				Dynamic_Selector::KEY_RULES    => [
 					Config::CSS_PROP_FILL_COLOR => [
 						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::HOVER_COLOR_ID,
@@ -371,7 +371,7 @@ class Nav extends Abstract_Component {
 			];
 		}
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => $selector . 'li.current-menu-item > a,' . $selector . 'li.current_page_item > a,' . $selector . 'li.current_page_item .has-caret > a',
+			Dynamic_Selector::KEY_SELECTOR => $selector . 'li.current-menu-item > a,' . $selector . 'li.current_page_item > a,' . $selector . 'li.current_page_item > .has-caret > a',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_COLOR => [
 					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::ACTIVE_COLOR_ID,
@@ -380,7 +380,7 @@ class Nav extends Abstract_Component {
 			],
 		];
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => $selector . 'li.current-menu-item > .has-caret .amp-caret-wrap svg',
+			Dynamic_Selector::KEY_SELECTOR => $selector . 'li.current-menu-item > .has-caret svg',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_FILL_COLOR => [
 					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::ACTIVE_COLOR_ID,
