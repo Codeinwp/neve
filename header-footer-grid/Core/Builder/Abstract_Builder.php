@@ -20,7 +20,9 @@ use HFG\Core\Settings;
 use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Traits\Core;
 use Neve\Core\Settings\Config;
+use Neve\Core\Styles\Css_Prop;
 use Neve\Core\Styles\Dynamic_Selector;
+use Neve_Pro\Modules\Blog_Pro\Dynamic_Style;
 use WP_Customize_Manager;
 
 /**
@@ -36,6 +38,7 @@ abstract class Abstract_Builder implements Builder {
 	const SKIN_SETTING       = 'skin';
 	const TEXT_COLOR         = 'new_text_color';
 	const BACKGROUND_SETTING = 'background';
+	const WIDTH              = 'width';
 	/**
 	 * Layout config data.
 	 *
@@ -288,26 +291,7 @@ abstract class Abstract_Builder implements Builder {
 		);
 
 		if ( $row_id === 'sidebar' ) {
-			SettingsManager::get_instance()->add(
-				[
-					'id'                 => self::LAYOUT_SETTING,
-					'group'              => $row_setting_id,
-					'tab'                => SettingsManager::TAB_LAYOUT,
-					'label'              => __( 'Layout', 'neve' ),
-					'type'               => 'select',
-					'section'            => $row_setting_id,
-					'options'            => [
-						'choices' => [
-							'slide_left' => __( 'Slide from Left', 'neve' ),
-							'dropdown'   => __( 'Toggle Dropdown', 'neve' ),
-						],
-					],
-					'conditional_header' => $this->get_id() === 'header',
-					'transport'          => 'refresh',
-					'sanitize_callback'  => 'wp_filter_nohtml_kses',
-					'default'            => 'slide_left',
-				]
-			);
+			$this->add_sidebar_controls( $row_setting_id );
 		}
 
 		if ( $row_id !== 'sidebar' ) {
@@ -926,6 +910,11 @@ abstract class Abstract_Builder implements Builder {
 				],
 			];
 		}
+
+		if ( $row_index === 'sidebar' ) {
+			$css_array = $this->add_sidebar_styles( $css_array );
+		}
+
 		return $css_array;
 	}
 
@@ -1290,5 +1279,124 @@ abstract class Abstract_Builder implements Builder {
 			'background' => $background,
 			'text'       => $text,
 		];
+	}
+
+	/**
+	 * Adds Sidebar Controls.
+	 *
+	 * @param string $row_setting_id row id.
+	 */
+	private function add_sidebar_controls( $row_setting_id ) {
+		SettingsManager::get_instance()->add(
+			[
+				'id'                 => self::LAYOUT_SETTING,
+				'group'              => $row_setting_id,
+				'tab'                => SettingsManager::TAB_LAYOUT,
+				'label'              => __( 'Open Behaviour', 'neve' ),
+				'type'               => 'select',
+				'section'            => $row_setting_id,
+				'options'            => [
+					'choices' => [
+						'slide_left'  => __( 'Slide from Left', 'neve' ),
+						'slide_right' => __( 'Slide from Right', 'neve' ),
+						'pull_left'   => __( 'Pull from Left', 'neve' ),
+						'pull_right'  => __( 'Pull from Right', 'neve' ),
+						'full_canvas' => __( 'Full Canvas', 'neve' ),
+						'dropdown'    => __( 'Slide Down', 'neve' ),
+					],
+				],
+				'conditional_header' => $this->get_id() === 'header',
+				'transport'          => 'refresh',
+				'sanitize_callback'  => 'wp_filter_nohtml_kses',
+				'default'            => 'slide_left',
+			]
+		);
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'                    => self::WIDTH,
+				'group'                 => $row_setting_id,
+				'tab'                   => SettingsManager::TAB_LAYOUT,
+				'label'                 => __( 'Sidebar Width', 'neve' ),
+				'transport'             => 'postMessage',
+				'section'               => $row_setting_id,
+				'conditional_header'    => $this->get_id() === 'header',
+				'type'                  => '\Neve\Customizer\Controls\React\Responsive_Range',
+				'default'               => '{ "mobile": "350", "tablet": "350", "desktop": "350" }',
+				'options'               => [
+					'active_callback' => function () {
+						return in_array( get_theme_mod( $this->control_id . '_sidebar_' . self::LAYOUT_SETTING, 'slide_left' ), [ 'slide_left', 'slide_right', 'pull_left', 'pull_right' ], true );
+					},
+					'input_attrs'     => [
+						'min'        => 1,
+						'max'        => 1000,
+						'units'      => [ 'px' ],
+						'defaultVal' => [
+							'mobile'  => 360,
+							'tablet'  => 360,
+							'desktop' => 360,
+						],
+					],
+				],
+				'live_refresh_selector' => true,
+				'live_refresh_css_prop' => [
+					'responsive' => true,
+					'template'   =>
+						'.hfg_header .header-menu-sidebar {
+							width: {{value}}px;
+						}',
+				],
+				'sanitize_callback'     => array( $this, 'sanitize_responsive_int_json' ),
+			]
+		);
+	}
+
+	/**
+	 * Adds sidebar styles.
+	 *
+	 * @param array $css_array array of styles.
+	 * @return array
+	 */
+	private function add_sidebar_styles( $css_array ) {
+		$type                  = get_theme_mod( $this->control_id . '_sidebar_' . self::LAYOUT_SETTING, 'slide_left' );
+		$default_sidebar_width = '{ "mobile": "360", "tablet": "360", "desktop": "360" }';
+
+		if ( ! in_array( $type, [ 'full_canvas', 'dropdown' ], true ) ) {
+			$css_array[] = [
+				Dynamic_Selector::KEY_SELECTOR => '.header-menu-sidebar',
+				Dynamic_Selector::KEY_RULES    => [
+					Config::CSS_PROP_WIDTH => [
+						Dynamic_Selector::META_KEY     => $this->control_id . '_sidebar_' . self::WIDTH,
+						Dynamic_Selector::META_DEFAULT => $default_sidebar_width,
+						Dynamic_Selector::META_IS_RESPONSIVE => true,
+					],
+				],
+			];
+		}
+		if ( $type === 'pull_left' ) {
+			$css_array[] = [
+				Dynamic_Selector::KEY_SELECTOR => '.is-menu-sidebar > .wrapper',
+				Dynamic_Selector::KEY_RULES    => [
+					Config::CSS_PROP_LEFT => [
+						Dynamic_Selector::META_KEY     => $this->control_id . '_sidebar_' . self::WIDTH,
+						Dynamic_Selector::META_DEFAULT => $default_sidebar_width,
+						Dynamic_Selector::META_IS_RESPONSIVE => true,
+					],
+				],
+			];
+		}
+		if ( $type === 'pull_right' ) {
+			$css_array[] = [
+				Dynamic_Selector::KEY_SELECTOR => '.menu_sidebar_pull_right.is-menu-sidebar > .wrapper',
+				Dynamic_Selector::KEY_RULES    => [
+					Config::CSS_PROP_RIGHT => [
+						Dynamic_Selector::META_KEY     => $this->control_id . '_sidebar_' . self::WIDTH,
+						Dynamic_Selector::META_DEFAULT => $default_sidebar_width,
+						Dynamic_Selector::META_IS_RESPONSIVE => true,
+					],
+				],
+			];
+		}
+		return $css_array;
 	}
 }

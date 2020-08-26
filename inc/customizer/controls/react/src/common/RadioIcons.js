@@ -10,7 +10,6 @@ const {
 
 const {
   Tooltip,
-  IconButton,
   Button
 } = wp.components
 
@@ -52,7 +51,7 @@ class RadioIcons extends Component {
             </Button>}
           {options[type].icon !== 'text' &&
             <Tooltip text={options[type].tooltip} key={index}>
-              <IconButton
+              <Button
                 aria-label={options[type].tooltip}
                 className={classnames(
                   { active: this.props.value === type })}

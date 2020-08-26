@@ -37,7 +37,6 @@
 
 	a, .has-caret {
 	  box-sizing: border-box;
-	  color: $body-color;
 	  width: 100%;
 	  display: flex;
 	  position: relative;
@@ -144,6 +143,7 @@
 
   .nav-ul .dropdown-open + .sub-menu,
   .nav-ul .dropdown-open.sub-menu {
+	overflow: visible;
 	max-height: 2000px;
 	transition: all .3s ease;
 	opacity: 1;
