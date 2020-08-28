@@ -291,15 +291,10 @@ class Nav extends Abstract_Component {
 				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
 				'sanitize_callback'  => 'absint',
 				'default'            => 0,
-				'label'              => __( 'Expand first level of dropdowns', 'neve' ),
+				'label'              => __( 'Expand first level of dropdowns when menu is in mobile sidebar.', 'neve' ),
 				'type'               => 'neve_toggle_control',
 				'section'            => $this->section,
 				'conditional_header' => true,
-				'options'            => [
-				// 'active_callback' => function() {
-				// return $this->is_in_sidebar();
-				// }
-				],
 			]
 		);
 	}
@@ -472,37 +467,5 @@ class Nav extends Abstract_Component {
 		];
 
 		return parent::add_style( $css_array );
-	}
-
-	/**
-	 * Check if component is inside the sidebar.
-	 *
-	 * @return bool
-	 */
-	public function is_in_sidebar() {
-		$header_layout = get_theme_mod( 'hfg_header_layout' );
-
-		if ( empty( $header_layout ) ) {
-			return false;
-		}
-
-		$header_layout = json_decode( $header_layout, true );
-		if ( ! isset( $header_layout['mobile'] ) ) {
-			return false;
-		}
-
-		if ( ! isset( $header_layout['mobile']['sidebar'] ) ) {
-			return false;
-		}
-		foreach ( $header_layout['mobile']['sidebar'] as $sidebar_component ) {
-			if ( ! isset( $sidebar_component['id'] ) ) {
-				continue;
-			}
-
-			if ( $sidebar_component['id'] === $this->get_id() ) {
-				return true;
-			}
-		}
-		return false;
 	}
 }
