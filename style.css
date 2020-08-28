@@ -693,7 +693,6 @@ blockquote.wp-block-quote.is-style-large cite {
 
 .nav-ul li a, .nav-ul li .has-caret {
   box-sizing: border-box;
-  width: 100%;
   display: flex;
   position: relative;
   align-items: center;
