@@ -692,7 +692,6 @@ blockquote.wp-block-quote.is-style-large cite {
 
 .nav-ul li a, .nav-ul li .has-caret {
   box-sizing: border-box;
-  width: 100%;
   display: flex;
   position: relative;
   align-items: center;
@@ -762,7 +761,7 @@ blockquote.wp-block-quote.is-style-large cite {
   fill: currentColor;
 }
 
-.caret-wrap {
+.caret {
   margin-right: 5px;
   font-size: .65em;
 }
@@ -777,7 +776,7 @@ blockquote.wp-block-quote.is-style-large cite {
   white-space: normal;
 }
 
-.header-menu-sidebar-inner .caret-wrap {
+.header-menu-sidebar-inner .caret {
   font-size: 1em;
 }
 
