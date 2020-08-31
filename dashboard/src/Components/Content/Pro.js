@@ -17,9 +17,9 @@ const Pro = () => {
 	return (
 		<div className="col">
 			{
-				Object.keys(modules).map((id) => {
+				Object.keys(modules).map((id, index) => {
 					return (
-						<ModuleCard slug={id}/>
+						<ModuleCard key={index} slug={id}/>
 					);
 				})
 			}

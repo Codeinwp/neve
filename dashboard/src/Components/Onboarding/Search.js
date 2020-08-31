@@ -21,7 +21,7 @@ const Search = ({ count, categories, onSearch, category, setCurrentCategory, que
                         <Popover position="bottom center" onClose={toggleDropdown} noArrow>
                             {open &&
                             <ul className="options">
-                                {Object.keys( categories ).map( (key) => {
+                                {Object.keys( categories ).map( (key, index) => {
                                     if ( key === category ) {
                                         return null;
                                     }
@@ -29,7 +29,7 @@ const Search = ({ count, categories, onSearch, category, setCurrentCategory, que
                                       return null;
                                     }
                                     return (
-                                        <li>
+                                        <li key={index}>
                                             <a href="#" onClick={(e) => {
                                                 e.preventDefault();
                                                 setCurrentCategory( key );

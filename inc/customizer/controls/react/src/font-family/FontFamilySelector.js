@@ -47,9 +47,10 @@ class FontFamilySelector extends Component {
     const self = this
 
     options.push(
-      <li className={'default-value ' + !this.props.selected
-        ? 'selected'
-        : ''}
+      <li
+        key='default' className={'default-value ' + !this.props.selected
+          ? 'selected'
+          : ''}
       >
         <FontPreviewLink
           fontFace='default'
@@ -66,18 +67,19 @@ class FontFamilySelector extends Component {
     )
     Object.keys(fontGroups).map((key) => {
       fontGroups[key].length > 0 && options.push(
-        <li className='font-group-header'>
+        <li className='font-group-header' key={key}>
           {key}
         </li>
       )
       fontGroups[key].map((font, index) => {
         if (index < self.state.loadUntil) {
           options.push(
-            <li className={
-              (
-                font === this.props.selected
-              ) ? 'selected' : ''
-            }
+            <li
+              key={font} className={
+                (
+                  font === this.props.selected
+                ) ? 'selected' : ''
+              }
             >
               <FontPreviewLink
                 delayLoad={this.state.delayFontInclusion}
@@ -94,20 +96,21 @@ class FontFamilySelector extends Component {
     })
     if (this.state.loadUntil < options.length && this.state.search === '') {
       options.push(
-        <li className='load-more'>
-          <VisibilitySensor
-            onChange={(isVisible) => {
-              if (isVisible) {
-                this.setState({
-                  loadUntil: (self.state.loadUntil + 5),
-                  delayFontInclusion: false
-                })
-              }
-            }}
-          >
+        <VisibilitySensor
+          key='load-more'
+          onChange={(isVisible) => {
+            if (isVisible) {
+              this.setState({
+                loadUntil: (self.state.loadUntil + 5),
+                delayFontInclusion: false
+              })
+            }
+          }}
+        >
+          <li className='load-more'>
             <Dashicon icon='image-filter' />
-          </VisibilitySensor>
-        </li>
+          </li>
+        </VisibilitySensor>
       )
     }
 
@@ -126,20 +129,20 @@ class FontFamilySelector extends Component {
                   })
                 }}
               />
-              <Button
+              <a
+                className='close-font-selector'
                 onClick={(e) => {
+                  e.preventDefault()
                   e.stopPropagation()
                   this.setState({ isVisible: false })
                 }}
-                isLink
-                isDestructive
               ><Dashicon icon='no' />
-              </Button>
+              </a>
             </div>
           </div>
           <ul className='neve-fonts-list'>
             {options.length ? options
-              : <li className='no-result'>{__('No results.', 'neve')}</li>}
+              : <li className='no-result' key='no-results'>{__('No results.', 'neve')}</li>}
           </ul>
         </div>
       </Fragment>
@@ -179,7 +182,7 @@ class FontFamilySelector extends Component {
           {this.state.isVisible && (
             <Popover
               position='bottom left'
-              onClickOutside={() => this.setState({ isVisible: false })}
+              onFocusOutside={() => this.setState({ isVisible: false })}
             >
               {this.state.fonts ? this.getFontList()
                 : __('Loading...', 'neve')}
@@ -195,7 +198,7 @@ FontFamilySelector.propTypes = {
   onFontChoice: PropTypes.func.isRequired,
   maybeGetTypekit: PropTypes.func.isRequired,
   inheritDefault: PropTypes.bool.isRequired,
-  selected: PropTypes.string
+  selected: PropTypes.oneOfType([PropTypes.string, PropTypes.bool])
 }
 
 export default FontFamilySelector
