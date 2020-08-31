@@ -11,8 +11,6 @@
 
 namespace HFG\Core\Components;
 
-use HFG\Core\Builder\Abstract_Builder;
-use HFG\Core\Settings;
 use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Main;
 use Neve\Core\Settings\Config;
@@ -291,7 +289,7 @@ class Nav extends Abstract_Component {
 				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
 				'sanitize_callback'  => 'absint',
 				'default'            => 0,
-				'label'              => __( 'Expand first level of dropdowns when menu is in mobile sidebar.', 'neve' ),
+				'label'              => __( 'Expand first level of dropdowns when menu is in mobile menu content.', 'neve' ),
 				'type'               => 'neve_toggle_control',
 				'section'            => $this->section,
 				'conditional_header' => true,
