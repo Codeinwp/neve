@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-08-21T12:01:18+00:00\n"
+"POT-Creation-Date: 2020-08-20T10:54:34+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -265,47 +265,36 @@ msgstr ""
 msgid "upgrading PHP to the latest version"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:296
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:319
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:303
 #: header-footer-grid/Core/Settings/Manager.php:181
 #: inc/customizer/options/layout_blog.php:66
 #: inc/customizer/options/main.php:51
 msgid "Layout"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:301
-msgid "Slide from Left"
-msgstr ""
-
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:302
-msgid "Toggle Dropdown"
-msgstr ""
-
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:324
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:325
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:308
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:309
 #: inc/admin/metabox/main.php:39
 #: inc/customizer/options/layout_container.php:134
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:164
 msgid "Full Width"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:324
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:326
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:308
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:310
 #: inc/admin/metabox/main.php:38
 #: inc/customizer/options/layout_container.php:133
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:157
 msgid "Contained"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:341
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:325
 msgid "Row height"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:377
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:361
 msgid "Row Background"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:401
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:385
 #: header-footer-grid/Core/Components/Copyright.php:84
 #: header-footer-grid/Core/Components/CustomHtml.php:158
 #: header-footer-grid/Core/Components/Logo.php:205
@@ -314,13 +303,46 @@ msgstr ""
 msgid "Text Color"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:507
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:491
 #: header-footer-grid/Core/Builder/Header.php:38
 msgid "Header"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:595
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:579
 msgid "Section Content"
+msgstr ""
+
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1293
+#: header-footer-grid/Core/Components/SearchResponsive.php:113
+msgid "Open Behaviour"
+msgstr ""
+
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1298
+msgid "Slide from Left"
+msgstr ""
+
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1299
+msgid "Slide from Right"
+msgstr ""
+
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1300
+msgid "Pull from Left"
+msgstr ""
+
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1301
+msgid "Pull from Right"
+msgstr ""
+
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1302
+msgid "Full Canvas"
+msgstr ""
+
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1303
+msgid "Slide Down"
+msgstr ""
+
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1318
+msgid "Sidebar Width"
 msgstr ""
 
 #: header-footer-grid/Core/Builder/Footer.php:34
@@ -397,7 +419,6 @@ msgid "Mobile menu content"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:465
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:128
 msgid "Left"
 msgstr ""
 
@@ -406,7 +427,6 @@ msgid "Center"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:473
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:130
 msgid "Right"
 msgstr ""
 
@@ -414,37 +434,37 @@ msgstr ""
 msgid "Justify"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:493
+#: header-footer-grid/Core/Components/Abstract_Component.php:497
 msgid "Alignment"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:518
+#: header-footer-grid/Core/Components/Abstract_Component.php:533
 #: inc/customizer/options/buttons.php:129
 msgid "Padding"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:544
+#: header-footer-grid/Core/Components/Abstract_Component.php:559
 msgid "Margin"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:777
+#: header-footer-grid/Core/Components/Abstract_Component.php:793
 #: inc/customizer/options/main.php:55
 msgid "Typography"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:858
+#: header-footer-grid/Core/Components/Abstract_Component.php:874
 msgid "Top"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:862
+#: header-footer-grid/Core/Components/Abstract_Component.php:878
 msgid "Middle"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:866
+#: header-footer-grid/Core/Components/Abstract_Component.php:882
 msgid "Bottom"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:879
+#: header-footer-grid/Core/Components/Abstract_Component.php:895
 msgid "Vertical Alignment"
 msgstr ""
 
@@ -464,7 +484,7 @@ msgid "Text"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Button.php:142
-#: header-footer-grid/Core/Components/MenuIcon.php:120
+#: header-footer-grid/Core/Components/MenuIcon.php:148
 msgid "Appearance"
 msgstr ""
 
@@ -509,22 +529,22 @@ msgid "Arbitrary HTML code. It supports also shortcodes."
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetFour.php:32
-#: inc/core/front_end.php:503
+#: inc/core/front_end.php:505
 msgid "Footer Four"
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetOne.php:31
-#: inc/core/front_end.php:500
+#: inc/core/front_end.php:502
 msgid "Footer One"
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetThree.php:31
-#: inc/core/front_end.php:502
+#: inc/core/front_end.php:504
 msgid "Footer Three"
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetTwo.php:32
-#: inc/core/front_end.php:501
+#: inc/core/front_end.php:503
 msgid "Footer Two"
 msgstr ""
 
@@ -556,12 +576,20 @@ msgstr ""
 msgid "Disable Homepage Link"
 msgstr ""
 
-#: header-footer-grid/Core/Components/MenuIcon.php:76
+#: header-footer-grid/Core/Components/MenuIcon.php:77
 msgid "Menu Icon"
 msgstr ""
 
-#: header-footer-grid/Core/Components/MenuIcon.php:100
+#: header-footer-grid/Core/Components/MenuIcon.php:101
 msgid "Menu label"
+msgstr ""
+
+#: header-footer-grid/Core/Components/MenuIcon.php:127
+msgid "Show Sidebar Content"
+msgstr ""
+
+#: header-footer-grid/Core/Components/MenuIcon.php:131
+msgid "Edit Mobile Sidebar Content"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Nav.php:43
@@ -577,17 +605,17 @@ msgstr ""
 msgid "Hover Skin Mode"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Nav.php:113
+#: header-footer-grid/Core/Components/Nav.php:114
 #: header-footer-grid/Core/Components/NavFooter.php:86
 #: header-footer-grid/Core/Components/SecondNav.php:86
 msgid "Items Color"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Nav.php:134
+#: header-footer-grid/Core/Components/Nav.php:135
 msgid "Active Item Color"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Nav.php:155
+#: header-footer-grid/Core/Components/Nav.php:156
 #: header-footer-grid/Core/Components/NavFooter.php:108
 #: header-footer-grid/Core/Components/SecondNav.php:109
 msgid "Items Hover Color"
@@ -615,10 +643,10 @@ msgstr ""
 msgid "Items Spacing (px)"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Nav.php:258
-#: header-footer-grid/Core/Components/NavFooter.php:173
-#: header-footer-grid/Core/Components/SecondNav.php:176
-msgid "Items Height (px)"
+#: header-footer-grid/Core/Components/Nav.php:262
+#: header-footer-grid/Core/Components/NavFooter.php:177
+#: header-footer-grid/Core/Components/SecondNav.php:180
+msgid "Items Min Height (px)"
 msgstr ""
 
 #: header-footer-grid/Core/Components/NavFooter.php:41
@@ -685,10 +713,6 @@ msgstr ""
 msgid "Search Icon"
 msgstr ""
 
-#: header-footer-grid/Core/Components/SearchResponsive.php:113
-msgid "Open Behaviour"
-msgstr ""
-
 #: header-footer-grid/Core/Components/SearchResponsive.php:117
 msgid "Canvas"
 msgstr ""
@@ -727,7 +751,6 @@ msgstr ""
 
 #. translators: %s is the header name
 #: header-footer-grid/Core/Customizer.php:265
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:150
 #: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:59
 #: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:169
 msgid "Default"
@@ -748,6 +771,7 @@ msgstr ""
 msgid "Search Components"
 msgstr ""
 
+#: header-footer-grid/Core/Customizer/Instructions_Control.php:78
 #: header-footer-grid/Core/Customizer/Instructions_Section.php:85
 msgid "Quick Links"
 msgstr ""
@@ -910,12 +934,12 @@ msgid "Style"
 msgstr ""
 
 #: header-footer-grid/templates/components/component-menu-icon.php:26
-#: header-footer-grid/templates/row-wrapper-mobile.php:26
+#: header-footer-grid/templates/row-wrapper-mobile.php:28
 msgid "Navigation Menu"
 msgstr ""
 
 #: header-footer-grid/templates/components/component-menu-icon.php:39
-#: header-footer-grid/templates/row-wrapper-mobile.php:36
+#: header-footer-grid/templates/row-wrapper-mobile.php:38
 msgid "Toggle Navigation"
 msgstr ""
 
@@ -938,7 +962,6 @@ msgstr ""
 
 #: inc/admin/metabox/main.php:41
 #: inc/customizer/options/layout_container.php:43
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:140
 msgid "Container"
 msgstr ""
 
@@ -955,8 +978,7 @@ msgid "No Sidebar"
 msgstr ""
 
 #: inc/admin/metabox/main.php:56
-#: inc/core/front_end.php:493
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:116
+#: inc/core/front_end.php:495
 msgid "Sidebar"
 msgstr ""
 
@@ -965,12 +987,10 @@ msgid "Components"
 msgstr ""
 
 #: inc/admin/metabox/main.php:71
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:333
 msgid "Disable Header"
 msgstr ""
 
 #: inc/admin/metabox/main.php:76
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:359
 msgid "Disable Title"
 msgstr ""
 
@@ -979,7 +999,6 @@ msgid "Disable Featured Image"
 msgstr ""
 
 #: inc/admin/metabox/main.php:88
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:345
 msgid "Disable Footer"
 msgstr ""
 
@@ -992,22 +1011,8 @@ msgid "Enable Individual Content Width"
 msgstr ""
 
 #. translators: %s - post type
-#: inc/admin/metabox/manager.php:146
-#: inc/admin/metabox/manager.php:163
+#: inc/admin/metabox/manager.php:113
 msgid "%s Settings"
-msgstr ""
-
-#: inc/admin/metabox/manager.php:209
-msgid "Page Settings are now accessible from the top bar"
-msgstr ""
-
-#. translators: %1$s - Keyboard shortcut.   %2&s - svg icon
-#: inc/admin/metabox/manager.php:212
-msgid "Click the %1$s icon in the top bar or use the keyboard shortcut ( %2$s ) to customise the layout settings for this page"
-msgstr ""
-
-#: inc/admin/metabox/manager.php:217
-msgid "or"
 msgstr ""
 
 #: inc/admin/plugin_install/main.php:109
@@ -1115,7 +1120,7 @@ msgstr ""
 msgid "Button Hover Color"
 msgstr ""
 
-#: inc/core/front_end.php:494
+#: inc/core/front_end.php:496
 msgid "Shop Sidebar"
 msgstr ""
 
@@ -1234,7 +1239,6 @@ msgstr ""
 #: inc/customizer/options/layout_blog.php:286
 #: inc/customizer/options/layout_single_post.php:72
 #: inc/views/partials/post_meta.php:128
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:291
 msgid "Comments"
 msgstr ""
 
@@ -1243,7 +1247,6 @@ msgid "Meta Order"
 msgstr ""
 
 #: inc/customizer/options/layout_blog.php:444
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:253
 msgid "Author Avatar"
 msgstr ""
 
@@ -1312,7 +1315,7 @@ msgstr ""
 
 #. translators: %s is edit page link
 #: inc/customizer/options/layout_sidebar.php:282
-msgid "Note: It seems that the shop page has an individual sidebar layout already set. To be able to control the layout from here, %s your page and set the sidebar to \"Inherit\"."
+msgid "Note: It seems that the shop page has an individual sidebar layout already set. To be able to control the layout from here, %s your page and set the sidebar to \"Customizer Setting\"."
 msgstr ""
 
 #: inc/customizer/options/layout_sidebar.php:286
@@ -1325,13 +1328,11 @@ msgstr ""
 
 #: inc/customizer/options/layout_single_post.php:69
 #: dashboard/src/Components/Onboarding/ImportModal.js:128
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:290
 msgid "Content"
 msgstr ""
 
 #: inc/customizer/options/layout_single_post.php:70
 #: inc/views/partials/post_meta.php:215
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:287
 msgid "Tags"
 msgstr ""
 
@@ -1352,7 +1353,6 @@ msgid "Title"
 msgstr ""
 
 #: inc/customizer/options/layout_single_product.php:124
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:126
 #: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:201
 #: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:233
 msgid "None"
@@ -1436,7 +1436,7 @@ msgid "Sorry, but nothing matched your search terms. Please try again with some 
 msgstr ""
 
 #. translators: search result
-#: inc/views/page_header.php:78
+#: inc/views/page_header.php:73
 msgid "Search Results for: %s"
 msgstr ""
 
@@ -1940,81 +1940,6 @@ msgstr ""
 msgid "Typekit Project ID is invalid"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:111
-msgid "Page Layout"
-msgstr ""
-
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:124
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:58
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:168
-msgid "Inherit"
-msgstr ""
-
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:172
-msgid "Custom Content Width (%)"
-msgstr ""
-
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:212
-msgid "Page Title"
-msgstr ""
-
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:216
-msgid "Title alignment"
-msgstr ""
-
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:268
-msgid "Reading Time"
-msgstr ""
-
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:285
-msgid "Post Title"
-msgstr ""
-
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:286
-msgid "Featured Image"
-msgstr ""
-
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:288
-msgid "Post Navigation"
-msgstr ""
-
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:289
-msgid "Post Meta"
-msgstr ""
-
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:306
-msgid "Author Biography"
-msgstr ""
-
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:307
-msgid "Related Posts"
-msgstr ""
-
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:308
-msgid "Sharing Icons"
-msgstr ""
-
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:316
-msgid "Elements"
-msgstr ""
-
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:377
-msgid "Reset all options to default"
-msgstr ""
-
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:386
-msgid "Return to customizer settings"
-msgstr ""
-
-#: inc/admin/metabox/src/components/Sidebar.js:16
-msgid "Open Neve meta sidebar"
-msgstr ""
-
-#: inc/admin/metabox/src/components/Sidebar.js:55
-#: inc/admin/metabox/src/components/Sidebar.js:59
-msgid "Neve Options"
-msgstr ""
-
 #: inc/customizer/controls/react/src/background/BackgroundComponent.js:46
 #: inc/customizer/controls/react/src/background/BackgroundComponent.js:110
 msgid "Image"
@@ -2078,7 +2003,7 @@ msgstr ""
 msgid "Outline"
 msgstr ""
 
-#: inc/customizer/controls/react/src/common/ColorControl.js:59
+#: inc/customizer/controls/react/src/common/ColorControl.js:55
 msgid "Clear"
 msgstr ""
 
@@ -2112,6 +2037,11 @@ msgstr ""
 
 #: inc/customizer/controls/react/src/dynamic-fields/dynamic-field-inserter.js:52
 msgid "Insert Dynamic Tag"
+msgstr ""
+
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:58
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:168
+msgid "Inherit"
 msgstr ""
 
 #: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:142

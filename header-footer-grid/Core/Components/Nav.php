@@ -11,7 +11,6 @@
 
 namespace HFG\Core\Components;
 
-use HFG\Core\Settings;
 use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Main;
 use Neve\Core\Settings\Config;
@@ -23,15 +22,16 @@ use Neve\Core\Styles\Dynamic_Selector;
  * @package HFG\Core\Components
  */
 class Nav extends Abstract_Component {
-	const COMPONENT_ID    = 'primary-menu';
-	const STYLE_ID        = 'style';
-	const COLOR_ID        = 'color';
-	const HOVER_COLOR_ID  = 'hover_color';
-	const ACTIVE_COLOR_ID = 'active_color';
-	const LAST_ITEM_ID    = 'neve_last_menu_item';
-	const NAV_MENU_ID     = 'nv-primary-navigation';
-	const ITEM_HEIGHT     = 'item_height';
-	const SPACING         = 'spacing';
+	const COMPONENT_ID     = 'primary-menu';
+	const STYLE_ID         = 'style';
+	const COLOR_ID         = 'color';
+	const HOVER_COLOR_ID   = 'hover_color';
+	const ACTIVE_COLOR_ID  = 'active_color';
+	const LAST_ITEM_ID     = 'neve_last_menu_item';
+	const NAV_MENU_ID      = 'nv-primary-navigation';
+	const ITEM_HEIGHT      = 'item_height';
+	const SPACING          = 'spacing';
+	const EXPAND_DROPDOWNS = 'expand_dropdowns';
 
 	/**
 	 * Nav constructor.
@@ -48,7 +48,7 @@ class Nav extends Abstract_Component {
 		$this->set_property( 'section', 'header_menu_primary' );
 		$this->set_property( 'has_font_family_control', true );
 		$this->set_property( 'has_typeface_control', true );
-		$this->set_property( 'default_typography_selector', $this->default_typography_selector . '.builder-item--' . $this->get_id() . ' li > a' );
+		$this->set_property( 'default_typography_selector', $this->default_typography_selector . '.builder-item--' . $this->get_id() );
 		$this->default_align = 'right';
 		add_filter(
 			'neve_last_menu_setting_slug_' . $this->get_class_const( 'COMPONENT_ID' ),
@@ -102,6 +102,7 @@ class Nav extends Abstract_Component {
 			]
 		);
 
+		$selector = '.builder-item--' . $this->get_id() . ' .nav-menu-primary > .nav-ul ';
 		SettingsManager::get_instance()->add(
 			[
 				'id'                    => self::COLOR_ID,
@@ -117,7 +118,7 @@ class Nav extends Abstract_Component {
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
 					'template' =>
-					'.builder-item--' . $this->get_id() . ' .nav-menu-primary > .primary-menu-ul li:not(.current_page_item):not(.woocommerce-mini-cart-item) > a {
+						$selector . ' li:not(.current_page_item):not(.current-menu-item):not(.woocommerce-mini-cart-item) > a,' . $selector . ' li.neve-mm-heading span {
 						color: {{value}};
 					}',
 				],
@@ -137,9 +138,9 @@ class Nav extends Abstract_Component {
 				'conditional_header'    => true,
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
-					'template' => '
-					.builder-item--' . $this->get_id() . ' .nav-menu-primary > .primary-menu-ul li.current_page_item > a {
-						color: {{value}}!important;
+					'template' =>
+						$selector . ' li.current_page_item > a,' . $selector . ' li.current-menu-item > a {
+						color: {{value}} !important;
 					}',
 				],
 			]
@@ -158,17 +159,16 @@ class Nav extends Abstract_Component {
 				'conditional_header'    => true,
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
-					'template' => '
-					.builder-item--' . $this->get_id() . ' .nav-menu-primary > .primary-menu-ul li:not(.woocommerce-mini-cart-item) > a:after {
-						background-color: {{value}}!important;
-					}
-					.builder-item--' . $this->get_id() . ' .nav-menu-primary:not(.style-full-height) > .primary-menu-ul li:not(.woocommerce-mini-cart-item):hover > a {
-						color: {{value}}!important;
-					}',
+					'template' =>
+						'.builder-item--' . $this->get_id() . ' .nav-menu-primary:not(.style-full-height) > .nav-ul li:not(.woocommerce-mini-cart-item):hover > a {
+							 color: {{value}} !important;
+						}' .
+						$selector . ' li:not(.woocommerce-mini-cart-item) > a:after,' . $selector . ' li > .has-caret > a:after {
+							background-color: {{value}} !important;
+						}',
 				],
 			]
 		);
-
 
 		$order_default_components = array(
 			'search',
@@ -234,15 +234,20 @@ class Nav extends Abstract_Component {
 				'tab'                => SettingsManager::TAB_LAYOUT,
 				'section'            => $this->section,
 				'label'              => __( 'Items Spacing (px)', 'neve' ),
-				'type'               => 'Neve\Customizer\Controls\React\Range',
+				'type'               => 'Neve\Customizer\Controls\React\Responsive_Range',
 				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
-				'sanitize_callback'  => 'absint',
-				'default'            => 20,
+				'sanitize_callback'  => [ $this, 'sanitize_responsive_int_json' ],
+				'default'            => $this->get_default_for_responsive_from_intval( self::SPACING, 20 ),
 				'options'            => [
 					'input_attrs' => [
 						'min'        => 1,
 						'max'        => 100,
-						'defaultVal' => 20,
+						'units'      => [ 'px' ],
+						'defaultVal' => [
+							'mobile'  => 20,
+							'tablet'  => 20,
+							'desktop' => 20,
+						],
 					],
 				],
 				'conditional_header' => true,
@@ -254,19 +259,39 @@ class Nav extends Abstract_Component {
 				'id'                 => self::ITEM_HEIGHT,
 				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
 				'tab'                => SettingsManager::TAB_LAYOUT,
-				'section'            => $this->section,
-				'label'              => __( 'Items Height (px)', 'neve' ),
-				'type'               => 'Neve\Customizer\Controls\React\Range',
+				'label'              => __( 'Items Min Height (px)', 'neve' ),
+				'sanitize_callback'  => [ $this, 'sanitize_responsive_int_json' ],
 				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
-				'sanitize_callback'  => 'absint',
-				'default'            => 25,
+				'default'            => $this->get_default_for_responsive_from_intval( self::ITEM_HEIGHT, 25 ),
+				'type'               => 'Neve\Customizer\Controls\React\Responsive_Range',
 				'options'            => [
 					'input_attrs' => [
 						'min'        => 1,
 						'max'        => 100,
-						'defaultVal' => 25,
+						'units'      => [ 'px' ],
+						'defaultVal' => [
+							'mobile'  => 25,
+							'tablet'  => 25,
+							'desktop' => 25,
+						],
 					],
 				],
+				'section'            => $this->section,
+				'conditional_header' => true,
+			]
+		);
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'                 => self::EXPAND_DROPDOWNS,
+				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'                => SettingsManager::TAB_GENERAL,
+				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
+				'sanitize_callback'  => 'absint',
+				'default'            => 0,
+				'label'              => __( 'Expand first level of dropdowns when menu is in mobile menu content.', 'neve' ),
+				'type'               => 'neve_toggle_control',
+				'section'            => $this->section,
 				'conditional_header' => true,
 			]
 		);
@@ -319,10 +344,10 @@ class Nav extends Abstract_Component {
 	 * @return array
 	 */
 	public function add_style( array $css_array = array() ) {
-		$selector = '.builder-item--' . $this->get_id() . ' .nav-menu-primary > .primary-menu-ul ';
+		$selector = '.builder-item--' . $this->get_id() . ' .nav-menu-primary > .nav-ul ';
 
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => $selector . 'li:not(.woocommerce-mini-cart-item) > a',
+			Dynamic_Selector::KEY_SELECTOR => $selector . 'li:not(.woocommerce-mini-cart-item) > a,' . $selector . '.has-caret > a,' . $selector . ' .neve-mm-heading span,' . $selector . ' .has-caret',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_COLOR => [
 					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::COLOR_ID,
@@ -330,18 +355,9 @@ class Nav extends Abstract_Component {
 				],
 			],
 		];
-		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => $selector . 'li > .amp-caret-wrap svg',
-			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_FILL_COLOR => [
-					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::COLOR_ID,
-					Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::COLOR_ID ),
-				],
-			],
-		];
 
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => $selector . 'li:not(.woocommerce-mini-cart-item) > a:after',
+			Dynamic_Selector::KEY_SELECTOR => $selector . ' li:not(.woocommerce-mini-cart-item) > a:after,' . $selector . ' li > .has-caret > a:after',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_BACKGROUND_COLOR => [
 					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::HOVER_COLOR_ID,
@@ -351,7 +367,7 @@ class Nav extends Abstract_Component {
 		];
 		if ( SettingsManager::get_instance()->get( $this->get_id() . '_style' ) !== 'style-full-height' ) {
 			$css_array[] = [
-				Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .nav-menu-primary:not(.style-full-height) > .primary-menu-ul li:not(.woocommerce-mini-cart-item):hover > a',
+				Dynamic_Selector::KEY_SELECTOR => $selector . ' li:not(.woocommerce-mini-cart-item):hover > a,' . $selector . ' li:hover > .has-caret > a,' . $selector . ' li:hover > .has-caret',
 				Dynamic_Selector::KEY_RULES    => [
 					Config::CSS_PROP_COLOR => [
 						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::HOVER_COLOR_ID,
@@ -360,7 +376,7 @@ class Nav extends Abstract_Component {
 				],
 			];
 			$css_array[] = [
-				Dynamic_Selector::KEY_SELECTOR => $selector . 'li:hover > .amp-caret-wrap svg',
+				Dynamic_Selector::KEY_SELECTOR => $selector . 'li:hover > .has-caret svg',
 				Dynamic_Selector::KEY_RULES    => [
 					Config::CSS_PROP_FILL_COLOR => [
 						Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::HOVER_COLOR_ID,
@@ -370,7 +386,7 @@ class Nav extends Abstract_Component {
 			];
 		}
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => $selector . 'li.current-menu-item > a,' . $selector . 'li.current_page_item > a',
+			Dynamic_Selector::KEY_SELECTOR => $selector . 'li.current-menu-item > a,' . $selector . 'li.current_page_item > a,' . $selector . 'li.current_page_item > .has-caret > a',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_COLOR => [
 					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::ACTIVE_COLOR_ID,
@@ -379,7 +395,7 @@ class Nav extends Abstract_Component {
 			],
 		];
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => $selector . 'li.current-menu-item > .amp-caret-wrap svg',
+			Dynamic_Selector::KEY_SELECTOR => $selector . 'li.current-menu-item > .has-caret svg',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_FILL_COLOR => [
 					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::ACTIVE_COLOR_ID,
@@ -387,50 +403,26 @@ class Nav extends Abstract_Component {
 				],
 			],
 		];
-		$is_rtl      = is_rtl();
-		$left        = $is_rtl ? 'right' : 'left';
-		$right       = $is_rtl ? 'left' : 'right';
-		$first       = $is_rtl ? 'last' : 'first';
-		$last        = $is_rtl ? 'first' : 'last';
+
+		$is_rtl = is_rtl();
+		$last   = $is_rtl ? 'first' : 'last';
 
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => '.header--row .hfg-item-' . $right . ' .builder-item--' . $this->get_id() . ' .primary-menu-ul > li:not(:' . $first . '-of-type)',
-			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_MARGIN_LEFT => [
-					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::SPACING,
-					Dynamic_Selector::META_IS_RESPONSIVE => true,
-					Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
-						if ( $device !== Dynamic_Selector::DESKTOP ) {
-							return '';
-						}
-
-						return sprintf( '%s:%s;', $css_prop, absint( $value ) . 'px' );
-					},
-					Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::SPACING ),
-				],
-			],
-		];
-
-		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => '.header--row .hfg-item-center .builder-item--' . $this->get_id() . ' .primary-menu-ul > li:not(:' . $last . '-of-type), .header--row .hfg-item-' . $left . ' .builder-item--' . $this->get_id() . ' .primary-menu-ul > li:not(:' . $last . '-of-type)',
+			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .nav-ul > li:not(:' . $last . '-of-type)',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_MARGIN_RIGHT => [
 					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::SPACING,
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 					Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
-						if ( $device !== Dynamic_Selector::DESKTOP ) {
-							return '';
-						}
-
 						return sprintf( '%s:%s;', $css_prop, absint( $value ) . 'px' );
 					},
-					Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::SPACING ),
+					Dynamic_Selector::META_DEFAULT       => $this->get_default_for_responsive_from_intval( self::SPACING, 20 ),
 				],
 			],
 		];
 
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .style-full-height .primary-menu-ul > li:not(.menu-item-nav-search):not(.menu-item-nav-cart) > a:after',
+			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .style-full-height .nav-ul li:not(.menu-item-nav-search):not(.menu-item-nav-cart) > a:after',
 			Dynamic_Selector::KEY_RULES    => [
 				'position' => [
 					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::SPACING,
@@ -440,39 +432,34 @@ class Nav extends Abstract_Component {
 							return '';
 						}
 						$value = absint( $value );
-
-						return sprintf( 'left:%s;right:%s', - $value / 2 . 'px', - $value / 2 . 'px' );
+						return sprintf( 'left:%s;right:%s', -$value / 2 . 'px', -$value / 2 . 'px' );
 					},
-					Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::SPACING ),
+					Dynamic_Selector::META_DEFAULT       => $this->get_default_for_responsive_from_intval( self::SPACING, 20 ),
 				],
 			],
 		];
 
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .style-full-height .primary-menu-ul:not(#nv-primary-navigation-sidebar) > li:not(.menu-item-nav-search):not(.menu-item-nav-cart):hover > a:after',
+			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .style-full-height .nav-ul li:not(.menu-item-nav-search):not(.menu-item-nav-cart):hover > a:after',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_WIDTH => [
 					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::SPACING,
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 					Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
-						if ( $device !== Dynamic_Selector::DESKTOP ) {
-							return '';
-						}
-
-						return sprintf( 'width: calc(100%% + %s)!important;', absint( $value ) . 'px' );
+						return sprintf( 'width: calc(100%% + %s);', absint( $value ) . 'px' );
 					},
-					Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::SPACING ),
+					Dynamic_Selector::META_DEFAULT       => $this->get_default_for_responsive_from_intval( self::SPACING, 20 ),
 				],
 			],
 		];
 
-
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .primary-menu-ul > li > a',
+			Dynamic_Selector::KEY_SELECTOR => '.builder-item--' . $this->get_id() . ' .nav-ul li a, .builder-item--' . $this->get_id() . ' .neve-mm-heading span',
 			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_HEIGHT => [
-					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::ITEM_HEIGHT,
-					Dynamic_Selector::META_DEFAULT => SettingsManager::get_instance()->get_default( $this->get_id() . '_' . self::ITEM_HEIGHT ),
+				'min-height' => [
+					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::ITEM_HEIGHT,
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_DEFAULT       => $this->get_default_for_responsive_from_intval( self::ITEM_HEIGHT, 25 ),
 				],
 			],
 		];

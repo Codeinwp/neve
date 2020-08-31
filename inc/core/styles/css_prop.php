@@ -61,6 +61,9 @@ class Css_Prop {
 			case Config::CSS_PROP_PADDING_LEFT:
 			case Config::CSS_PROP_PADDING_RIGHT:
 			case Config::CSS_PROP_HEIGHT:
+			case Config::CSS_PROP_MIN_HEIGHT:
+			case Config::CSS_PROP_LEFT:
+			case Config::CSS_PROP_RIGHT:
 				$suffix = isset( $meta[ Dynamic_Selector::META_SUFFIX ] ) ? $meta[ Dynamic_Selector::META_SUFFIX ] : 'px';
 				if ( $suffix === 'responsive_suffix' ) {
 					$all_value = Mods::get( $meta['key'], isset( $meta[ Dynamic_Selector::META_DEFAULT ] ) ? $meta[ Dynamic_Selector::META_DEFAULT ] : null );

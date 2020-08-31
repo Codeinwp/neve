@@ -28,6 +28,7 @@ class MenuIcon extends Abstract_Component {
 	const TEXT_ID           = 'menu_label';
 	const BUTTON_APPEARANCE = 'button_appearance';
 	const COMPONENT_SLUG    = 'nav-icon';
+	const QUICK_LINKS_ID    = 'quick-links';
 
 	/**
 	 * Padding settings default values.
@@ -109,6 +110,33 @@ class MenuIcon extends Abstract_Component {
 				'conditional_header'    => true,
 			]
 		);
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'                => self::QUICK_LINKS_ID,
+				'group'             => $this->get_id(),
+				'transport'         => 'postMessage',
+				'tab'               => SettingsManager::TAB_GENERAL,
+				'sanitize_callback' => 'wp_filter_nohtml_kses',
+				'type'              => '\HFG\Core\Customizer\Instructions_Control',
+				'section'           => $this->section,
+				'options'           => [
+					'options' => array(
+						'quickLinks' => array(
+							'toggle_sidebar' => array(
+								'label' => esc_html__( 'Show Mobile Menu', 'neve' ),
+								'icon'  => 'dashicons-nametag',
+							),
+							'hfg_header_layout_sidebar_layout' => array(
+								'label' => esc_html__( 'Mobile Menu Options', 'neve' ),
+								'icon'  => 'dashicons-admin-appearance',
+							),
+						),
+					),
+				],
+			]
+		);
+
 		SettingsManager::get_instance()->add(
 			[
 				'id'                    => self::BUTTON_APPEARANCE,

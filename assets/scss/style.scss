@@ -29,9 +29,7 @@ Tags: blog, custom-logo, e-commerce, rtl-language-support, grid-layout, one-colu
 @import "main/gutenberg";
 @import "main/utilities";
 
-@import "elements/top-bar";
 @import "elements/navigation";
-@import "elements/mega-menu";
 @import "elements/footer";
 @import "elements/page";
 @import "elements/form-elements";
@@ -40,6 +38,7 @@ Tags: blog, custom-logo, e-commerce, rtl-language-support, grid-layout, one-colu
 @import "elements/gallery";
 @import "elements/sidebar";
 @import "elements/breadcrumbs";
+@import "elements/hfg-alignments";
 
 @import "main/media-queries";
 

@@ -41,6 +41,7 @@ class Amp {
 			10,
 			2
 		);
+		add_filter( 'walker_nav_menu_start_el', array( $this, 'wrap_content' ), 10, 4 );\
 		add_filter( 'neve_sidebar_data_attrs', array( $this, 'add_woo_sidebar_attrs' ), 10, 2 );
 		add_filter( 'neve_search_menu_item_filter', array( $this, 'add_search_menu_item_attrs' ), 10, 2 );
 		add_action( 'neve_after_header_hook', array( $this, 'render_amp_states' ) );
@@ -54,6 +55,46 @@ class Amp {
 		add_action( 'wp', array( $this, 'register_hooks' ) );
 	}
 
+	/**
+	 * Wrap the content of the menu items in case of AMP.
+	 *
+	 * @param string $item_output item markup.
+	 * @param object $item item information.
+	 * @param int    $depth item depth.
+	 * @param object $args menu args.
+	 * @return string
+	 */
+	public function wrap_content( $item_output, $item, $depth, $args ) {
+		if ( ! neve_is_amp() ) {
+			return $item_output;
+		}
+
+		if ( $args->menu_id === 'nv-primary-navigation-sidebar' && $depth === 0 && strpos( $args->menu_class, 'dropdowns-expanded' ) ) {
+			return $item_output;
+		}
+
+		if ( strpos( $args->menu_id, 'nv-primary-navigation' ) === false ) {
+			return $item_output;
+		}
+
+		if ( ! in_array( 'menu-item-has-children', $item->classes, true ) ) {
+			return $item_output;
+		}
+
+		if ( strpos( $item_output, 'has-caret' ) > -1 ) {
+			return $item_output;
+		}
+
+		$caret  = '<div class="caret-wrap ' . $item->menu_order . '">';
+		$caret .= '<span class="caret"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"/></svg></span>';
+		$caret .= '</div>';
+
+		$item_output = '<div class="has-caret">' . $item_output . $caret . '</div>';
+		// Filter that is used for AMP proper event integration.
+		$item_output = apply_filters( 'neve_caret_wrap_filter', $item_output, $item->menu_order );
+
+		return $item_output;
+	}
 
 	/**
 	 * Add amp parameters for menu child search icon.
@@ -161,18 +202,23 @@ class Amp {
 		// Generate a unique id for drop-down items.
 		$state = 'neveMenuItemExpanded' . $id;
 
-		$attrs = '';
-		$caret = '<span class="caret"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"/></svg></span>';
+		$attrs     = '';
+		$amp_caret = '';
+		$caret     = '<span class="caret"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"/></svg></span>';
 
-		$attrs .= '<div class="caret-wrap amp-desktop-caret-wrap">' . $caret . '</div></a><amp-state id="' . $state . '"><script type="application/json">false</script></amp-state>';
-		$attrs .= '<div class="caret-wrap amp-caret-wrap"';
-		$attrs .= ' [class]="\'caret-wrap amp-caret-wrap\' + ( ' . $state . ' ? \' dropdown-open\' : \'\')" ';
-		$attrs .= ' on="tap:AMP.setState( { ' . $state . ': ! ' . $state . ' } )"';
-		$attrs .= ' role="button" ';
-		$attrs .= ' tabindex="0" ';
-		$attrs .= ' aria-expanded="false" ';
-		$attrs .= ' [aria-expanded]="' . $state . ' ? \'true\' : \'false\'">' . $caret . '</div>';
-		$output = str_replace( '<div class="caret-wrap ' . $id . '" tabindex="0">' . $caret . '</div></a>', $attrs, $output );
+		$attrs .= '<div class="has-caret" [class]="\'has-caret\' + ( ' . $state . ' ? \' dropdown-open\' : \'\')">';
+		$attrs .= '<amp-state id="' . $state . '"><script type="application/json">false</script></amp-state>';
+
+		$amp_caret .= '<div class="caret-wrap amp-desktop-caret-wrap">' . $caret . '</div>';
+		$amp_caret .= '<div class="caret-wrap amp-caret-wrap"';
+		$amp_caret .= ' on="tap:AMP.setState( { ' . $state . ': ! ' . $state . ' } )"';
+		$amp_caret .= ' role="button" ';
+		$amp_caret .= ' tabindex="0" ';
+		$amp_caret .= ' aria-expanded="false" ';
+		$amp_caret .= ' [aria-expanded]="' . $state . ' ? \'true\' : \'false\'">' . $caret . '</div>';
+
+		$output = str_replace( '<div class="has-caret">', $attrs, $output );
+		$output = str_replace( $caret, $amp_caret, $output );
 
 		return $output;
 	}
