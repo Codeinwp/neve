@@ -88,8 +88,9 @@ function handleScrollLinks() {
 function handleMobileDropdowns() {
   let carets = document.querySelectorAll('.caret-wrap')
   neveEach(carets, (caret) => {
-	caret.addEventListener('click', (event) => {
-	  event.preventDefault()
+	caret.addEventListener('click', (e) => {
+	  e.preventDefault()
+	  e.stopPropagation()
 	  let subMenu = caret.parentNode.parentNode.querySelector('.sub-menu')
 	  toggleClass(caret, 'dropdown-open')
 	  toggleClass(subMenu, 'dropdown-open')
