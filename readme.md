@@ -742,4 +742,3 @@ All  images are licensed under CC0.
 Screenshot resources:
 
 * https://www.pexels.com/photo/landscape-photography-of-mountains-covered-in-snow-691668/
-* mobile-screenshot.png contains an image sourced by one of our employees
