@@ -9,7 +9,7 @@ const Header = (props) => {
 	useEffect(() => {
 		const hash = getTabHash();
 		if (null === hash) {
-			return false;
+			return;
 		}
 		props.setTab(hash);
 	}, []);
@@ -31,9 +31,9 @@ const Header = (props) => {
 		const {currentTab, setTab} = props;
 		return (
 			<nav className="navigation">
-				{Object.keys(tabs).map((item) => {
+				{Object.keys(tabs).map((item, index) => {
 					return (
-						<li><a
+						<li key={index}><a
 							href="#"
 							className={classnames([ item, currentTab === item ? 'active' : '' ])}
 							onClick={(e) => {

@@ -75,7 +75,6 @@ const LicenseCard = ({isVisible, setSettings, changeLicense, license, refreshSit
 					<Button
 						isPrimary={'valid' !== valid}
 						isSecondary={'valid' === valid}
-						isLarge
 						disabled={status || ! key}
 						type="submit">
 						{! status ?

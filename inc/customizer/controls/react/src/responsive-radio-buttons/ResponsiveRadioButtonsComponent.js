@@ -10,7 +10,6 @@ const ResponsiveRadioButtonsComponent = ({ control }) => {
   const { choices, label } = control.params
   const [value, setValue] = useState(control.setting.get())
   const [device, setDevice] = useState('desktop')
-
   const updateValue = (newValue) => {
     setValue(newValue)
     control.setting.set(newValue)

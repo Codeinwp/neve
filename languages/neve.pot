@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Neve 2.7.5\n"
+"Project-Id-Version: Neve 2.7.6\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/neve\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-08-14T14:23:03+00:00\n"
+"POT-Creation-Date: 2020-08-20T10:54:34+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -265,45 +265,36 @@ msgstr ""
 msgid "upgrading PHP to the latest version"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:296
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:319
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:303
 #: header-footer-grid/Core/Settings/Manager.php:181
 #: inc/customizer/options/layout_blog.php:66
 #: inc/customizer/options/main.php:51
 msgid "Layout"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:301
-msgid "Slide from Left"
-msgstr ""
-
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:302
-msgid "Toggle Dropdown"
-msgstr ""
-
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:324
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:325
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:308
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:309
 #: inc/admin/metabox/main.php:39
 #: inc/customizer/options/layout_container.php:134
 msgid "Full Width"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:324
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:326
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:308
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:310
 #: inc/admin/metabox/main.php:38
 #: inc/customizer/options/layout_container.php:133
 msgid "Contained"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:341
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:325
 msgid "Row height"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:377
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:361
 msgid "Row Background"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:401
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:385
 #: header-footer-grid/Core/Components/Copyright.php:84
 #: header-footer-grid/Core/Components/CustomHtml.php:158
 #: header-footer-grid/Core/Components/Logo.php:205
@@ -312,13 +303,46 @@ msgstr ""
 msgid "Text Color"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:507
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:491
 #: header-footer-grid/Core/Builder/Header.php:38
 msgid "Header"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:595
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:579
 msgid "Section Content"
+msgstr ""
+
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1293
+#: header-footer-grid/Core/Components/SearchResponsive.php:113
+msgid "Open Behaviour"
+msgstr ""
+
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1298
+msgid "Slide from Left"
+msgstr ""
+
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1299
+msgid "Slide from Right"
+msgstr ""
+
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1300
+msgid "Pull from Left"
+msgstr ""
+
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1301
+msgid "Pull from Right"
+msgstr ""
+
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1302
+msgid "Full Canvas"
+msgstr ""
+
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1303
+msgid "Slide Down"
+msgstr ""
+
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1318
+msgid "Sidebar Width"
 msgstr ""
 
 #: header-footer-grid/Core/Builder/Footer.php:34
@@ -423,24 +447,24 @@ msgstr ""
 msgid "Margin"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:792
+#: header-footer-grid/Core/Components/Abstract_Component.php:793
 #: inc/customizer/options/main.php:55
 msgid "Typography"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:873
+#: header-footer-grid/Core/Components/Abstract_Component.php:874
 msgid "Top"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:877
+#: header-footer-grid/Core/Components/Abstract_Component.php:878
 msgid "Middle"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:881
+#: header-footer-grid/Core/Components/Abstract_Component.php:882
 msgid "Bottom"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:894
+#: header-footer-grid/Core/Components/Abstract_Component.php:895
 msgid "Vertical Alignment"
 msgstr ""
 
@@ -460,7 +484,7 @@ msgid "Text"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Button.php:142
-#: header-footer-grid/Core/Components/MenuIcon.php:120
+#: header-footer-grid/Core/Components/MenuIcon.php:148
 msgid "Appearance"
 msgstr ""
 
@@ -505,22 +529,22 @@ msgid "Arbitrary HTML code. It supports also shortcodes."
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetFour.php:32
-#: inc/core/front_end.php:503
+#: inc/core/front_end.php:505
 msgid "Footer Four"
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetOne.php:31
-#: inc/core/front_end.php:500
+#: inc/core/front_end.php:502
 msgid "Footer One"
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetThree.php:31
-#: inc/core/front_end.php:502
+#: inc/core/front_end.php:504
 msgid "Footer Three"
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetTwo.php:32
-#: inc/core/front_end.php:501
+#: inc/core/front_end.php:503
 msgid "Footer Two"
 msgstr ""
 
@@ -552,12 +576,20 @@ msgstr ""
 msgid "Disable Homepage Link"
 msgstr ""
 
-#: header-footer-grid/Core/Components/MenuIcon.php:76
+#: header-footer-grid/Core/Components/MenuIcon.php:77
 msgid "Menu Icon"
 msgstr ""
 
-#: header-footer-grid/Core/Components/MenuIcon.php:100
+#: header-footer-grid/Core/Components/MenuIcon.php:101
 msgid "Menu label"
+msgstr ""
+
+#: header-footer-grid/Core/Components/MenuIcon.php:127
+msgid "Show Sidebar Content"
+msgstr ""
+
+#: header-footer-grid/Core/Components/MenuIcon.php:131
+msgid "Edit Mobile Sidebar Content"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Nav.php:43
@@ -614,7 +646,7 @@ msgstr ""
 #: header-footer-grid/Core/Components/Nav.php:262
 #: header-footer-grid/Core/Components/NavFooter.php:177
 #: header-footer-grid/Core/Components/SecondNav.php:180
-msgid "Items Minimum Height (px)"
+msgid "Items Min Height (px)"
 msgstr ""
 
 #: header-footer-grid/Core/Components/NavFooter.php:41
@@ -681,10 +713,6 @@ msgstr ""
 msgid "Search Icon"
 msgstr ""
 
-#: header-footer-grid/Core/Components/SearchResponsive.php:113
-msgid "Open Behaviour"
-msgstr ""
-
 #: header-footer-grid/Core/Components/SearchResponsive.php:117
 msgid "Canvas"
 msgstr ""
@@ -743,6 +771,7 @@ msgstr ""
 msgid "Search Components"
 msgstr ""
 
+#: header-footer-grid/Core/Customizer/Instructions_Control.php:78
 #: header-footer-grid/Core/Customizer/Instructions_Section.php:85
 msgid "Quick Links"
 msgstr ""
@@ -905,12 +934,12 @@ msgid "Style"
 msgstr ""
 
 #: header-footer-grid/templates/components/component-menu-icon.php:26
-#: header-footer-grid/templates/row-wrapper-mobile.php:26
+#: header-footer-grid/templates/row-wrapper-mobile.php:28
 msgid "Navigation Menu"
 msgstr ""
 
 #: header-footer-grid/templates/components/component-menu-icon.php:39
-#: header-footer-grid/templates/row-wrapper-mobile.php:36
+#: header-footer-grid/templates/row-wrapper-mobile.php:38
 msgid "Toggle Navigation"
 msgstr ""
 
@@ -949,7 +978,7 @@ msgid "No Sidebar"
 msgstr ""
 
 #: inc/admin/metabox/main.php:56
-#: inc/core/front_end.php:493
+#: inc/core/front_end.php:495
 msgid "Sidebar"
 msgstr ""
 
@@ -1091,7 +1120,7 @@ msgstr ""
 msgid "Button Hover Color"
 msgstr ""
 
-#: inc/core/front_end.php:494
+#: inc/core/front_end.php:496
 msgid "Shop Sidebar"
 msgstr ""
 
@@ -1470,21 +1499,21 @@ msgid_plural "%s Comments"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/views/pluggable/pagination.php:140
+#: inc/views/pluggable/pagination.php:141
 #: inc/views/template_parts.php:76
 #: inc/views/template_parts.php:114
 msgid "Pages:"
 msgstr ""
 
-#: inc/views/pluggable/pagination.php:157
+#: inc/views/pluggable/pagination.php:158
 msgid "previous"
 msgstr ""
 
-#: inc/views/pluggable/pagination.php:162
+#: inc/views/pluggable/pagination.php:163
 msgid "next"
 msgstr ""
 
-#: inc/views/template_parts.php:258
+#: inc/views/template_parts.php:259
 msgid "Read More"
 msgstr ""
 
@@ -1974,7 +2003,7 @@ msgstr ""
 msgid "Outline"
 msgstr ""
 
-#: inc/customizer/controls/react/src/common/ColorControl.js:59
+#: inc/customizer/controls/react/src/common/ColorControl.js:55
 msgid "Clear"
 msgstr ""
 
@@ -2003,8 +2032,6 @@ msgid "Reset all Values"
 msgstr ""
 
 #: inc/customizer/controls/react/src/common/Sizing.js:69
-#: inc/customizer/controls/react/src/range/RangeComponent.js:90
-#: inc/customizer/controls/react/src/responsive-range/ResponsiveRangeComponent.js:121
 msgid "Reset Value"
 msgstr ""
 

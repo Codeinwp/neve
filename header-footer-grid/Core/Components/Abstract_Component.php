@@ -614,6 +614,7 @@ abstract class Abstract_Component implements Component {
 		);
 
 		$wp_customize->register_section_type( '\HFG\Core\Customizer\Instructions_Section' );
+		$wp_customize->register_control_type( '\HFG\Core\Customizer\Instructions_Control' );
 
 		Settings\Manager::get_instance()->load( $this->get_id(), $wp_customize );
 

@@ -83,15 +83,15 @@ const ImportModal = ({ setModal, editor, siteData, license }) => {
               <span className="is-loading"/>
             </h3>
             <ol>
-              {[ 1, 2, 3 ].map(() => <li/>)}
+              {[ 1, 2, 3 ].map((i) => <li key={i}/>)}
             </ol>
           </div>
           <hr/>
           <div className="options general">
             <h3 className="is-loading"/>
             <ul>
-              {[ 1, 2, 3 ].map(() => (
-                <li>
+              {[ 1, 2, 3 ].map((i) => (
+                <li key={i}>
                   <div className="mock-icon is-loading"/>
                   <span className="is-loading"/>
                   <div className="toggle is-loading"/>
@@ -102,8 +102,8 @@ const ImportModal = ({ setModal, editor, siteData, license }) => {
           <div className="options plugins">
             <h3 className="is-loading"/>
             <ul>
-              {[ 1, 2 ].map(() => (
-                <li>
+              {[ 1, 2 ].map((i) => (
+                <li key={i}>
                   <div className="mock-icon is-loading"/>
                   <span className="is-loading"/>
                   <div className="toggle is-loading"/>
@@ -141,9 +141,9 @@ const ImportModal = ({ setModal, editor, siteData, license }) => {
       <div className="options general">
         <h3>{__('General', 'neve')}:</h3>
         <ul>
-          {Object.keys(map).map((id) => {
+          {Object.keys(map).map((id, index) => {
             return (
-              <li>
+              <li key={index}>
                 <Dashicon className={classnames({ 'active': general[id] })} icon={map[id].icon}/>
                 <span>{map[id].title}</span>
                 <div className="toggle-wrapper">
@@ -175,9 +175,9 @@ const ImportModal = ({ setModal, editor, siteData, license }) => {
 
         <h3>{__('Plugins', 'neve')}:</h3>
         <ul>
-          {Object.keys(allPlugins).map((slug) => {
+          {Object.keys(allPlugins).map((slug, index) => {
             return (
-              <li>
+              <li key={index}>
                 <Dashicon icon="admin-plugins"
                           className={classnames({ 'active': pluginOptions[slug] })}/>
                 <span dangerouslySetInnerHTML={{ __html: allPlugins[slug] }}/>
