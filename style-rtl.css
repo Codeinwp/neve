@@ -2782,7 +2782,7 @@ audio {
   z-index: 10;
 }
 
-.site-footer .item--inner:not([class*="widgets"]):not([class*=copyright]):not([class*=social]) {
+.site-footer .item--inner.has_menu {
   width: 100%;
   max-width: 100%;
   align-items: center;
