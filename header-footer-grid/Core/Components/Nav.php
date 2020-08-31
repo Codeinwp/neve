@@ -464,6 +464,32 @@ class Nav extends Abstract_Component {
 			],
 		];
 
+		if ( get_theme_mod( $this->get_id() . '_' . self::EXPAND_DROPDOWNS, false ) ) {
+			$selector    = '.header-menu-sidebar-inner  .builder-item--' . $this->get_id() . ' .primary-menu-ul.dropdowns-expanded > li ';
+			$css_array[] = [
+				Dynamic_Selector::KEY_SELECTOR => $selector . ' > .sub-menu',
+				Dynamic_Selector::KEY_RULES    => [
+					'max-height' => [
+						Dynamic_Selector::META_KEY    => $this->get_id() . '_' . self::EXPAND_DROPDOWNS,
+						Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
+							return sprintf( 'max-height: unset;' );
+						},
+					],
+				],
+			];
+			$css_array[] = [
+				Dynamic_Selector::KEY_SELECTOR => $selector . ' > a > .caret-wrap,' . $selector . ' > .has-caret .caret',
+				Dynamic_Selector::KEY_RULES    => [
+					'display' => [
+						Dynamic_Selector::META_KEY    => $this->get_id() . '_' . self::EXPAND_DROPDOWNS,
+						Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
+							return sprintf( 'display: none;' );
+						},
+					],
+				],
+			];
+		}
+
 		return parent::add_style( $css_array );
 	}
 }

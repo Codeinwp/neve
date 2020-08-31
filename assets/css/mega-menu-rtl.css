@@ -116,10 +116,6 @@
   position: static;
 }
 
-.header-menu-sidebar-inner .nav-ul.dropdowns-expanded > .neve-mega-menu ~ .neve-mm-col > .sub-menu {
-  max-height: unset !important;
-}
-
 @media (min-width: 576px) {
   .header-menu-sidebar-inner .tablet-center .neve-mm-heading > a, .header-menu-sidebar-inner .tablet-center .neve-mm-heading > span {
     text-align: center;
