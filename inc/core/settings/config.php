@@ -68,8 +68,11 @@ class Config {
 	const CSS_PROP_MARGIN                     = 'margin';
 	const CSS_PROP_MARGIN_LEFT                = 'margin-left';
 	const CSS_PROP_MARGIN_RIGHT               = 'margin-right';
+	const CSS_PROP_RIGHT                      = 'right';
+	const CSS_PROP_LEFT                       = 'left';
 	const CSS_PROP_WIDTH                      = 'width';
 	const CSS_PROP_HEIGHT                     = 'height';
+	const CSS_PROP_MIN_HEIGHT                 = 'min-height';
 	const CSS_PROP_FONT_SIZE                  = 'font-size';
 	const CSS_PROP_FILL_COLOR                 = 'fill';
 	const CSS_PROP_LETTER_SPACING             = 'letter-spacing';

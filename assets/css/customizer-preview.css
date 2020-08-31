@@ -13,6 +13,14 @@
   transition: opacity .25s;
 }
 
+.customize-previewing .has-nav .builder-item-focus.item--inner {
+  position: unset;
+}
+
+.customize-previewing .has-nav .builder-item-focus.item--inner .item--preview-name {
+  top: unset;
+}
+
 .customize-previewing .builder-item-focus.item--inner, .customize-previewing .builder-item-focus.row--wrapper {
   position: relative;
 }
@@ -75,6 +83,11 @@
 /* Customizer Shortcut */
 #header-menu-sidebar .customize-partial-edit-shortcut {
   display: none;
+}
+
+.header-menu-sidebar-inner .item--preview-name {
+  bottom: 0 !important;
+  top: unset !important;
 }
 
 /*# sourceMappingURL=customizer-preview.css.map */
