@@ -69,6 +69,10 @@ class Amp {
 			return $item_output;
 		}
 
+		if ( $args->menu_id === 'nv-primary-navigation-sidebar' && $depth === 0 && strpos( $args->menu_class, 'dropdowns-expanded' ) ) {
+			return $item_output;
+		}
+
 		if ( strpos( $args->menu_id, 'nv-primary-navigation' ) === false ) {
 			return $item_output;
 		}

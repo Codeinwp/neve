@@ -1,5 +1,6 @@
 /* Style mega-menu and its children on mobile */
 .nav-ul > .neve-mega-menu {
+
   > .sub-menu {
 	cursor: default;
   }
@@ -263,4 +264,8 @@
 // Make sure the component is static if it's in the main rows and has a navigation.
 .header--row .builder-item.has-nav {
   position: static;
+}
+
+.header-menu-sidebar-inner .nav-ul.dropdowns-expanded > .neve-mega-menu ~ .neve-mm-col > .sub-menu {
+	max-height: unset !important;
 }

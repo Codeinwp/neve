@@ -11,7 +11,6 @@
 
 namespace HFG\Core\Components;
 
-use HFG\Core\Settings;
 use HFG\Core\Settings\Manager as SettingsManager;
 use HFG\Main;
 use Neve\Core\Settings\Config;
@@ -23,15 +22,16 @@ use Neve\Core\Styles\Dynamic_Selector;
  * @package HFG\Core\Components
  */
 class Nav extends Abstract_Component {
-	const COMPONENT_ID    = 'primary-menu';
-	const STYLE_ID        = 'style';
-	const COLOR_ID        = 'color';
-	const HOVER_COLOR_ID  = 'hover_color';
-	const ACTIVE_COLOR_ID = 'active_color';
-	const LAST_ITEM_ID    = 'neve_last_menu_item';
-	const NAV_MENU_ID     = 'nv-primary-navigation';
-	const ITEM_HEIGHT     = 'item_height';
-	const SPACING         = 'spacing';
+	const COMPONENT_ID     = 'primary-menu';
+	const STYLE_ID         = 'style';
+	const COLOR_ID         = 'color';
+	const HOVER_COLOR_ID   = 'hover_color';
+	const ACTIVE_COLOR_ID  = 'active_color';
+	const LAST_ITEM_ID     = 'neve_last_menu_item';
+	const NAV_MENU_ID      = 'nv-primary-navigation';
+	const ITEM_HEIGHT      = 'item_height';
+	const SPACING          = 'spacing';
+	const EXPAND_DROPDOWNS = 'expand_dropdowns';
 
 	/**
 	 * Nav constructor.
@@ -118,7 +118,7 @@ class Nav extends Abstract_Component {
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
 					'template' =>
-					$selector . ' li:not(.current_page_item):not(.current-menu-item):not(.woocommerce-mini-cart-item) > a,' . $selector . ' li.neve-mm-heading span {
+						$selector . ' li:not(.current_page_item):not(.current-menu-item):not(.woocommerce-mini-cart-item) > a,' . $selector . ' li.neve-mm-heading span {
 						color: {{value}};
 					}',
 				],
@@ -276,6 +276,21 @@ class Nav extends Abstract_Component {
 						],
 					],
 				],
+				'section'            => $this->section,
+				'conditional_header' => true,
+			]
+		);
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'                 => self::EXPAND_DROPDOWNS,
+				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'                => SettingsManager::TAB_GENERAL,
+				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
+				'sanitize_callback'  => 'absint',
+				'default'            => 0,
+				'label'              => __( 'Expand first level of dropdowns when menu is in mobile menu content.', 'neve' ),
+				'type'               => 'neve_toggle_control',
 				'section'            => $this->section,
 				'conditional_header' => true,
 			]

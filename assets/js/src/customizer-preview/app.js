@@ -83,7 +83,7 @@ window.addEventListener('load', function () {
 	document.addEventListener(
 		'header_builder_panel_changed',
 		function (e) {
-			if (e.detail.partial_id === 'hfg_header_layout_partial') {
+		  if (e.detail.partial_id === 'hfg_header_layout_partial') {
 				window.HFG.init();
 			  	window.HFG.initSearch();
 			  	initNavigation();
