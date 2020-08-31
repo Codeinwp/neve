@@ -46,6 +46,10 @@ class Nav_Walker extends \Walker_Nav_Menu {
 			return $title;
 		}
 
+		if ( $args->menu_id === 'nv-primary-navigation-sidebar' && $depth === 0 && strpos( $args->menu_class, 'dropdowns-expanded' ) ) {
+			return $title;
+		}
+
 		if ( strpos( $title, 'class="caret"' ) ) {
 			return $title;
 		}
