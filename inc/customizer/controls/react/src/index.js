@@ -14,20 +14,24 @@ import { ResponsiveRangeControl } from './responsive-range/Control.js'
 import { ColorControl } from './color/Control.js'
 import { PresetsSelectorControl } from './presets-selector/Control.js'
 import { MultiSelectControl } from './multiselect/Control.js'
+import { ResponsiveRadioButtonsControl } from './responsive-radio-buttons/Control.js'
 
-wp.customize.controlConstructor.neve_toggle_control = ToggleControl
-wp.customize.controlConstructor.neve_responsive_toggle_control = ResponsiveToggleControl
-wp.customize.controlConstructor.neve_background_control = BackgroundControl
-wp.customize.controlConstructor.neve_spacing = SpacingControl
-wp.customize.controlConstructor.neve_typeface_control = TypefaceControl
-wp.customize.controlConstructor.neve_font_family_control = FontFamilyControl
-wp.customize.controlConstructor.neve_radio_buttons_control = RadioButtonsControl
-wp.customize.controlConstructor.neve_button_appearance = ButtonAppearanceControl
-wp.customize.controlConstructor.neve_range_control = RangeControl
-wp.customize.controlConstructor.neve_responsive_range_control = ResponsiveRangeControl
-wp.customize.controlConstructor.neve_color_control = ColorControl
-wp.customize.controlConstructor.neve_presets_selector = PresetsSelectorControl
-wp.customize.controlConstructor.neve_multiselect = MultiSelectControl
+const { controlConstructor } = wp.customize
+
+controlConstructor.neve_toggle_control = ToggleControl
+controlConstructor.neve_responsive_toggle_control = ResponsiveToggleControl
+controlConstructor.neve_background_control = BackgroundControl
+controlConstructor.neve_spacing = SpacingControl
+controlConstructor.neve_typeface_control = TypefaceControl
+controlConstructor.neve_font_family_control = FontFamilyControl
+controlConstructor.neve_radio_buttons_control = RadioButtonsControl
+controlConstructor.neve_button_appearance = ButtonAppearanceControl
+controlConstructor.neve_range_control = RangeControl
+controlConstructor.neve_responsive_range_control = ResponsiveRangeControl
+controlConstructor.neve_color_control = ColorControl
+controlConstructor.neve_presets_selector = PresetsSelectorControl
+controlConstructor.neve_multiselect = MultiSelectControl
+controlConstructor.neve_responsive_radio_buttons_control = ResponsiveRadioButtonsControl
 
 window.addEventListener( 'load', () => {
   const deviceButtons = document.querySelector(

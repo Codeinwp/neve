@@ -157,7 +157,7 @@ class FontFamilySelector extends Component {
         </span>
         <Button
           className='font-family-selector-toggle'
-          isDefault
+          isSecondary
           onClick={() => {
             this.setState({ isVisible: true })
           }}
