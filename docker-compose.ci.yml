@@ -36,7 +36,7 @@ services:
     restart: always
     environment:
       - WORDPRESS_DB_NAME=wordpress
-      - WORDPRESS_DB_USER=wordpress
+      - WORDPRESS_DB_USER=root
       - WORDPRESS_DB_PASSWORD=wordpress
       - WORDPRESS_DB_ROOT_PASSWORD=wordpress
       - WORDPRESS_DEBUG=1
