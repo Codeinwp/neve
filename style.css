@@ -845,6 +845,11 @@ blockquote.wp-block-quote.is-style-large cite {
   position: relative;
 }
 
+.header-menu-sidebar-inner .nav-menu-primary .nav-ul > li > .sub-menu {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
 .header-menu-sidebar-inner .nav-menu-primary .sub-menu {
   max-height: 0;
   overflow: hidden;
