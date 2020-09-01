@@ -1,0 +1,41 @@
+@import "vars";
+
+.neve-radio-image {
+	display: flex;
+	flex-direction: row;
+
+	.option {
+		flex: 1;
+		flex-direction: column;
+		display: flex;
+		text-align: center;
+		padding: 0 5px;
+	}
+
+	label {
+		font-weight: 800;
+		font-size: 9px;
+		line-height: 18px;
+		text-transform: uppercase;
+		color: $accent-color;
+		margin-top: 7px;
+	}
+
+	button {
+		cursor: pointer;
+		border: none;
+		padding: 0;
+
+		&.active {
+			outline: 2px solid $wp-blue;
+		}
+
+		&:hover {
+			filter: saturate(3);
+		}
+
+		img {
+			display: block;
+		}
+	}
+}

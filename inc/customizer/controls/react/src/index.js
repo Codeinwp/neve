@@ -15,6 +15,9 @@ import { ColorControl } from './color/Control.js'
 import { PresetsSelectorControl } from './presets-selector/Control.js'
 import { MultiSelectControl } from './multiselect/Control.js'
 import { ResponsiveRadioButtonsControl } from './responsive-radio-buttons/Control.js'
+import { RadioImageControl } from './radio-image/Control.js'
+
+import './style.scss'
 
 const { controlConstructor } = wp.customize
 
@@ -32,8 +35,11 @@ controlConstructor.neve_color_control = ColorControl
 controlConstructor.neve_presets_selector = PresetsSelectorControl
 controlConstructor.neve_multiselect = MultiSelectControl
 controlConstructor.neve_responsive_radio_buttons_control = ResponsiveRadioButtonsControl
-
+controlConstructor.neve_radio_image_control = RadioImageControl
 window.addEventListener( 'load', () => {
+  // Todo: delete this.
+  wp.customize.section('neve_blog_archive_layout').focus()
+
   const deviceButtons = document.querySelector(
     '#customize-footer-actions .devices, .hfg--cb-devices-switcher a.switch-to' )
   deviceButtons.addEventListener( 'click', function(e) {
