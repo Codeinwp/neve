@@ -33,6 +33,7 @@ const ResponsiveRadioButtonsComponent = ({ control }) => {
       if (e.detail.id !== control.id) return false
 
       let recievedValue = e.detail.value
+
       // Migrate previously string value into responsive.
       if (typeof recievedValue === 'string') {
         recievedValue = {
@@ -40,7 +41,7 @@ const ResponsiveRadioButtonsComponent = ({ control }) => {
           tablet: isMenuAlignment ? 'left' : recievedValue,
           desktop: recievedValue
         }
-        setValue(recievedValue)
+        updateValue(recievedValue)
       }
     })
   }, [])
