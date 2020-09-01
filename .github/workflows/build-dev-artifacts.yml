@@ -94,14 +94,24 @@ jobs:
           edit-mode: replace
           body: ${{ steps.get-comment-body.outputs.body }}
   e2e:
-    name: E2E
+    name: E2E for ${{ matrix.specs }} on ${{ matrix.envs }}
     needs: dev-zip
     strategy:
       matrix:
         include:
+          ## Amp specs needs just one machine
           - machines: 1
             specs: "amp"
             envs: "amp"
+          - machines: 1
+            specs: "dashboard"
+            envs: "default"
+          - machines: 1
+            specs: "editor"
+            envs: "default"
+          - machines: 2
+            specs: "editor"
+            envs: "default"
     runs-on: ubuntu-latest
     env:
       ZIP_URL: "https://verti-artifacts.s3.amazonaws.com/${{ github.event.pull_request.base.repo.name }}-${{ needs.dev-zip.outputs.branch-name }}-${{ needs.dev-zip.outputs.git-sha-8 }}/neve.zip"
