@@ -99,9 +99,9 @@ jobs:
     strategy:
       matrix:
         include:
-        - machines: [1,2,3]
-          specs: "customizer"
-          envs: "sample-data"
+          - machines: 1
+            specs: "amp"
+            env: "amp"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
