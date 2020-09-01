@@ -97,17 +97,17 @@
   padding: 3px 0;
 }
 
-.header-menu-sidebar-inner .mobile-center .neve-mm-heading > a, .header-menu-sidebar-inner .mobile-center .neve-mm-heading > span {
+.header-menu-sidebar-inner .mobile-center .neve-mm-heading > a, .header-menu-sidebar-inner .mobile-center .neve-mm-heading > span, .header-menu-sidebar-inner .mobile-center .neve-mm-description {
   text-align: center;
   justify-content: center;
 }
 
-.header-menu-sidebar-inner .mobile-left .neve-mm-heading > a, .header-menu-sidebar-inner .mobile-left .neve-mm-heading > span {
+.header-menu-sidebar-inner .mobile-left .neve-mm-heading > a, .header-menu-sidebar-inner .mobile-left .neve-mm-heading > span, .header-menu-sidebar-inner .mobile-left .neve-mm-description {
   text-align: left;
   justify-content: flex-start;
 }
 
-.header-menu-sidebar-inner .mobile-right .neve-mm-heading > a, .header-menu-sidebar-inner .mobile-right .neve-mm-heading > span {
+.header-menu-sidebar-inner .mobile-right .neve-mm-heading > a, .header-menu-sidebar-inner .mobile-right .neve-mm-heading > span, .header-menu-sidebar-inner .mobile-right .neve-mm-description {
   text-align: right;
   justify-content: flex-end;
 }
@@ -117,15 +117,15 @@
 }
 
 @media (min-width: 576px) {
-  .header-menu-sidebar-inner .tablet-center .neve-mm-heading > a, .header-menu-sidebar-inner .tablet-center .neve-mm-heading > span {
+  .header-menu-sidebar-inner .tablet-center .neve-mm-heading > a, .header-menu-sidebar-inner .tablet-center .neve-mm-heading > span, .header-menu-sidebar-inner .tablet-center .neve-mm-description {
     text-align: center;
     justify-content: center;
   }
-  .header-menu-sidebar-inner .tablet-left .neve-mm-heading > a, .header-menu-sidebar-inner .tablet-left .neve-mm-heading > span {
+  .header-menu-sidebar-inner .tablet-left .neve-mm-heading > a, .header-menu-sidebar-inner .tablet-left .neve-mm-heading > span, .header-menu-sidebar-inner .tablet-left .neve-mm-description {
     text-align: left;
     justify-content: flex-start;
   }
-  .header-menu-sidebar-inner .tablet-right .neve-mm-heading > a, .header-menu-sidebar-inner .tablet-right .neve-mm-heading > span {
+  .header-menu-sidebar-inner .tablet-right .neve-mm-heading > a, .header-menu-sidebar-inner .tablet-right .neve-mm-heading > span, .header-menu-sidebar-inner .tablet-right .neve-mm-description {
     text-align: right;
     justify-content: flex-end;
   }
@@ -187,15 +187,15 @@
     justify-content: center;
     padding: 0 12px 7px;
   }
-  .header-menu-sidebar-inner .desktop-center .neve-mm-heading > a, .header-menu-sidebar-inner .desktop-center .neve-mm-heading > span {
+  .header-menu-sidebar-inner .desktop-center .neve-mm-heading > a, .header-menu-sidebar-inner .desktop-center .neve-mm-heading > span, .header-menu-sidebar-inner .desktop-center .neve-mm-description {
     text-align: center;
     justify-content: center;
   }
-  .header-menu-sidebar-inner .desktop-left .neve-mm-heading > a, .header-menu-sidebar-inner .desktop-left .neve-mm-heading > span {
+  .header-menu-sidebar-inner .desktop-left .neve-mm-heading > a, .header-menu-sidebar-inner .desktop-left .neve-mm-heading > span, .header-menu-sidebar-inner .desktop-left .neve-mm-description {
     text-align: left;
     justify-content: flex-start;
   }
-  .header-menu-sidebar-inner .desktop-right .neve-mm-heading > a, .header-menu-sidebar-inner .desktop-right .neve-mm-heading > span {
+  .header-menu-sidebar-inner .desktop-right .neve-mm-heading > a, .header-menu-sidebar-inner .desktop-right .neve-mm-heading > span, .header-menu-sidebar-inner .desktop-right .neve-mm-description {
     text-align: right;
     justify-content: flex-end;
   }
