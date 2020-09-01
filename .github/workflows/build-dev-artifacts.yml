@@ -98,7 +98,10 @@ jobs:
     needs: dev-zip
     strategy:
       matrix:
-        machines: [1, 2, 3, 4,5,6,7]
+        include:
+          machines: [1,2,3,4,5,6]
+          specs: "customizer"
+          envs: "sample-data"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -124,7 +127,7 @@ jobs:
       - name: Install E2E env
         env:
           ZIP_URL: "https://verti-artifacts.s3.amazonaws.com/${{ github.event.pull_request.base.repo.name }}-${{ needs.dev-zip.outputs.branch-name }}-${{ needs.dev-zip.outputs.git-sha-8 }}/neve.zip"
-        run: bash ./bin/run-e2e.sh
+        run: bash ./bin/envs/init.sh ${{ matrix.envs }} latest no "$ZIP_URL"
       - name: Run Cypress tests
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -134,6 +137,6 @@ jobs:
           env: host=localhost,port=8080
           browser: chrome
           parallel: true
-          group: e2e-tests
+          group: e2e-${{ matrix.specs }}
           record: true
-          spec: cypress/integration/customizer/**/*,cypress/integration/dashboard/**/*,cypress/integration/editor/**/*,cypress/integration/plugins-compatibility/**/*,
+          spec: cypress/integration/${{ matrix.specs }}/**/*,

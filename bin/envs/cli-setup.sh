@@ -2,16 +2,14 @@ NEVE_LOCATION=$1
 WP_VERSION=$2
 WP_ENV=$3
 WP_CACHED_ENV="/var/www/html/wp-content/${WP_ENV}.sql"
-
-if [ -f $WP_CACHED_ENV ]; then
+SKIP_CACHE=$4
+if [ -f $WP_CACHED_ENV ] && [ $SKIP_CACHE == "no" ]; then
     echo "Database exists."
     wp --allow-root db import  $WP_CACHED_ENV
 		wp --allow-root cache flush
 		wp --allow-root transient delete-all
     exit 0;
 fi
-
-
 
 wp  --allow-root core install --url=http://localhost:8080 --title=SandboxSite --admin_user=admin --admin_password=admin --admin_email=admin@admin.com
 mkdir -p /var/www/html/wp-content/uploads
@@ -32,4 +30,6 @@ bash /var/www/html/bin/envs/$WP_ENV/start.sh
 
 wp --allow-root cache flush
 
-wp --allow-root db export $WP_CACHED_ENV
+if [ $SKIP_CACHE == "no" ]; then
+	wp --allow-root db export $WP_CACHED_ENV
+fi
