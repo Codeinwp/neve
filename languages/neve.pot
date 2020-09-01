@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Neve 2.7.6\n"
+"Project-Id-Version: Neve 2.7.7\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/neve\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-08-31T12:07:36+00:00\n"
+"POT-Creation-Date: 2020-09-01T08:46:24+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -626,7 +626,7 @@ msgid "Items Hover Color"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Nav.php:177
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:120
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:123
 msgid "Search"
 msgstr ""
 
@@ -760,8 +760,8 @@ msgstr ""
 #. translators: %s is the header name
 #: header-footer-grid/Core/Customizer.php:265
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:150
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:59
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:169
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:60
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:172
 msgid "Default"
 msgstr ""
 
@@ -1049,13 +1049,13 @@ msgstr ""
 
 #: inc/admin/plugin_install/main.php:113
 #: inc/admin/plugin_install/main.php:133
-#: dashboard/src/Components/LicenseCard.js:84
+#: dashboard/src/Components/LicenseCard.js:83
 #: dashboard/src/Components/PluginCard.js:17
 msgid "Activate"
 msgstr ""
 
 #: inc/admin/plugin_install/main.php:128
-#: dashboard/src/Components/LicenseCard.js:83
+#: dashboard/src/Components/LicenseCard.js:82
 #: dashboard/src/Components/PluginCard.js:18
 msgid "Deactivate"
 msgstr ""
@@ -1110,7 +1110,7 @@ msgid "Sites Library"
 msgstr ""
 
 #: inc/core/admin.php:242
-#: dashboard/src/Components/Content/Help.js:63
+#: dashboard/src/Components/Content/Help.js:62
 msgid "Documentation"
 msgstr ""
 
@@ -1554,19 +1554,19 @@ msgstr ""
 msgid "Page Builder Full Width (Neve)"
 msgstr ""
 
-#: dashboard/src/Components/Content/Changelog.js:15
+#: dashboard/src/Components/Content/Changelog.js:16
 msgid "Show changelog for"
 msgstr ""
 
-#: dashboard/src/Components/Content/Changelog.js:44
+#: dashboard/src/Components/Content/Changelog.js:45
 msgid "Features"
 msgstr ""
 
-#: dashboard/src/Components/Content/Changelog.js:54
+#: dashboard/src/Components/Content/Changelog.js:55
 msgid "Bug Fixes"
 msgstr ""
 
-#: dashboard/src/Components/Content/Changelog.js:64
+#: dashboard/src/Components/Content/Changelog.js:65
 msgid "Tweaks"
 msgstr ""
 
@@ -1579,55 +1579,55 @@ msgid "Get Neve Pro Now"
 msgstr ""
 
 #: dashboard/src/Components/Content/Help.js:24
-#: dashboard/src/Components/Content/Help.js:31
+#: dashboard/src/Components/Content/Help.js:30
 msgid "Contact Support"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:37
+#: dashboard/src/Components/Content/Help.js:36
 msgid "Changelog"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:38
+#: dashboard/src/Components/Content/Help.js:37
 msgid "Want to get the gist on the latest theme changes? Just consult our changelog below to get a taste of the recent fixes and features implemented."
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:43
+#: dashboard/src/Components/Content/Help.js:42
 msgid "View Changelog"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:48
+#: dashboard/src/Components/Content/Help.js:47
 msgid "Speed up your site"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:49
+#: dashboard/src/Components/Content/Help.js:48
 msgid "If you find yourself in a situation where everything on your site is running very slowly, you might consider having a look at the documentation below where you will find the most common issues causing this and possible solutions for each of the issues."
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:54
-#: dashboard/src/Components/Content/Help.js:84
-#: dashboard/src/Components/Content/Help.js:96
+#: dashboard/src/Components/Content/Help.js:53
+#: dashboard/src/Components/Content/Help.js:83
+#: dashboard/src/Components/Content/Help.js:95
 #: dashboard/src/Components/ModuleCard.js:104
 msgid "Learn More"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:70
-#: dashboard/src/Components/Content/Start.js:41
+#: dashboard/src/Components/Content/Help.js:69
+#: dashboard/src/Components/Content/Start.js:40
 msgid "Go to docs"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:77
+#: dashboard/src/Components/Content/Help.js:76
 msgid "Create a child theme"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:78
+#: dashboard/src/Components/Content/Help.js:77
 msgid "If you want to make changes to the theme's files, those changes are likely to be overwritten when you next update the theme. In order to prevent that from happening, you need to create a child theme. For this, please follow the documentation below."
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:89
+#: dashboard/src/Components/Content/Help.js:88
 msgid "Build a landing page with a drag-and-drop content builder"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:90
+#: dashboard/src/Components/Content/Help.js:89
 msgid "In the documentation below you will find an easy way to build a great looking landing page using a drag-and-drop content builder plugin."
 msgstr ""
 
@@ -1635,19 +1635,19 @@ msgstr ""
 msgid "Starter Sites"
 msgstr ""
 
-#: dashboard/src/Components/Content/Start.js:29
+#: dashboard/src/Components/Content/Start.js:28
 msgid "Go to Starter Sites"
 msgstr ""
 
-#: dashboard/src/Components/Content/Start.js:35
+#: dashboard/src/Components/Content/Start.js:34
 msgid "Getting Started? Check help and docs"
 msgstr ""
 
-#: dashboard/src/Components/Content/Start.js:36
+#: dashboard/src/Components/Content/Start.js:35
 msgid "Need more details? Please check our full documentation for detailed information on how to use Neve."
 msgstr ""
 
-#: dashboard/src/Components/Content/Start.js:57
+#: dashboard/src/Components/Content/Start.js:56
 msgid "Customizer quick links"
 msgstr ""
 
@@ -1659,26 +1659,26 @@ msgstr ""
 msgid "Enter License Key"
 msgstr ""
 
-#: dashboard/src/Components/LicenseCard.js:87
+#: dashboard/src/Components/LicenseCard.js:86
 #: dashboard/src/Components/PluginCard.js:17
 msgid "Activating"
 msgstr ""
 
-#: dashboard/src/Components/LicenseCard.js:88
+#: dashboard/src/Components/LicenseCard.js:87
 #: dashboard/src/Components/PluginCard.js:18
 msgid "Deactivating"
 msgstr ""
 
-#: dashboard/src/Components/LicenseCard.js:103
+#: dashboard/src/Components/LicenseCard.js:102
 msgid "Valid"
 msgstr ""
 
-#: dashboard/src/Components/LicenseCard.js:103
-#: dashboard/src/Components/LicenseCard.js:111
+#: dashboard/src/Components/LicenseCard.js:102
+#: dashboard/src/Components/LicenseCard.js:110
 msgid "Expired"
 msgstr ""
 
-#: dashboard/src/Components/LicenseCard.js:110
+#: dashboard/src/Components/LicenseCard.js:109
 msgid "Expires"
 msgstr ""
 
@@ -1712,7 +1712,7 @@ msgstr ""
 
 #: dashboard/src/Components/Onboarding/EditorSelector.js:19
 #: dashboard/src/Components/Onboarding/EditorSelector.js:41
-#: dashboard/src/Components/Onboarding/EditorTabs.js:26
+#: dashboard/src/Components/Onboarding/EditorTabs.js:27
 msgid "Builder Logo"
 msgstr ""
 
@@ -1978,8 +1978,8 @@ msgid "Page Layout"
 msgstr ""
 
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:124
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:58
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:168
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:59
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:171
 msgid "Inherit"
 msgstr ""
 
@@ -2147,15 +2147,15 @@ msgstr ""
 msgid "Insert Dynamic Tag"
 msgstr ""
 
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:142
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:145
 msgid "No results."
 msgstr ""
 
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:156
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:159
 msgid "Font Family"
 msgstr ""
 
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:185
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:188
 msgid "Loading..."
 msgstr ""
 
