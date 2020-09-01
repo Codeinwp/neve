@@ -27,6 +27,7 @@ export const initNavigation = () => {
   }
   window.HFG.initSearch = function () {
 	handleSearch()
+	handleMobileDropdowns()
   }
 }
 

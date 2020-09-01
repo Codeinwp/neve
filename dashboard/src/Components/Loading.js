@@ -12,8 +12,8 @@ const Loading = () => {
 					</div>
 					<nav className="navigation">
 						{
-							Array.from(Array(6)).map(() => {
-								return <li><a className="loading"/></li>;
+							Array.from(Array(6)).map((item, index) => {
+								return <li key={index}><a className="loading"/></li>;
 							})
 						}
 					</nav>
@@ -24,8 +24,8 @@ const Loading = () => {
 					{
 						neveDash.notifications &&
 						<div className="notifications">
-							{Object.keys(neveDash.notifications).map(() => {
-								return <div className="notification loading placeholder"/>;
+							{Object.keys(neveDash.notifications).map((notification, index) => {
+								return <div key={index} className="notification loading placeholder"/>;
 							})}
 						</div>
 					}
@@ -96,7 +96,7 @@ const Loading = () => {
 							<p className="loading card-description"/>
 							<p className="loading card-description"/>
 							<p className="loading card-description"/>
-							<span className="loading link"/>
+							<span className="loading link components-button is-primary"/>
 						</div>
 						<hr/>
 						<div className="sidebar-section">

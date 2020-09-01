@@ -2,9 +2,11 @@
   * {
 	pointer-events: none;
   }
+
   .notification.placeholder {
 	height: 65px;
   }
+
   header {
 	.heading {
 	  width: 300px;
@@ -79,6 +81,11 @@
 	.link {
 	  margin-top: 30px;
 	}
+
+	.components-button {
+	  width: 100% !important;
+	  height: 35px;
+	}
   }
 
 
@@ -113,14 +120,17 @@
 		width: 110px;
 	  }
 	}
+
 	.card {
 	  .title {
 		width: 200px;
 	  }
+
 	  .link {
 		width: 90px;
 	  }
 	}
+
 	.sidebar {
 	  .link {
 		margin-top: 35px;

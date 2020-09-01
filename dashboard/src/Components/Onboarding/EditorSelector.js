@@ -24,12 +24,12 @@ const EditorSelector = ({EDITOR_MAP, count, editor, setCurrentEditor, sites}) =>
                         <Popover position="bottom center" onClose={toggleDropdown} noArrow>
                             {open &&
                             <ul className="options">
-                                {editorsOrderedFromAPI.map((key) => {
+                                {editorsOrderedFromAPI.map((key, index) => {
                                     if (key === editor) {
                                         return null;
                                     }
                                     return (
-                                        <li>
+                                        <li key={index}>
                                             <a href="#" onClick={(e) => {
                                                 e.preventDefault();
                                                 setCurrentEditor(key);
