@@ -18,10 +18,7 @@ export DOCKER_FILE=docker-compose.ci.yml
 # Bring stack up.
 docker-compose -f $DOCKER_FILE up -d
 
-# Wait for mysql container to be ready.
-while ! docker-compose exec mysql mysql  --user=root --password=wordpress -e "SELECT 1" >/dev/null 2>&1; do
-    sleep 1
-done
+docker-compose exec mysql mysql  --user=root --password=wordpress -e "SELECT 1"
 
 
 
