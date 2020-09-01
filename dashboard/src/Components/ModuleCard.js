@@ -27,15 +27,15 @@ const ModuleCard = ({slug, setToast, changeModuleStatus, getModuleStatus, tier})
 	const {upgradeLinks} = neveDash;
 
 	const renderOptionsAccordions = () => {
-		return options.map((group) => {
+		return options.map((group, index) => {
 			const {label, options} = group;
 			return (
-				<Accordion title={label}>
+				<Accordion key={index} title={label}>
 					<div>
-						{Object.keys(options).map((optionSlug) => {
+						{Object.keys(options).map((optionSlug, index) => {
 							const {label, type, placeholder} = options[optionSlug];
 							return (
-								<Fragment>
+								<Fragment key={index}>
 									{'text' === type &&
 									<InputForm
 										label={label}
@@ -106,10 +106,10 @@ const ModuleCard = ({slug, setToast, changeModuleStatus, getModuleStatus, tier})
 				</p>
 				{links && getModuleStatus(slug) &&
 				<div className="actions">
-					{links.map((link) => <Button isSecondary href={link.url}>{link.label}</Button>)}
+					{links.map((link, index) => <Button key={index} isSecondary href={link.url}>{link.label}</Button>)}
 				</div>
 				}
-				{(0 < options.length && true === getModuleStatus(slug)) &&
+				{(0 < options.length && true === getModuleStatus(slug) && -1 < tier) &&
 				<div className="module-options">
 					{renderOptionsAccordions()}
 				</div>

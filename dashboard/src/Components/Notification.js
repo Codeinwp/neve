@@ -87,7 +87,7 @@ const Notification = ({ data, slug }) => {
       {'error' === done && <p><Dashicon icon="no"/>{errorMessage || __('An error occured. Please reload the page and try again.', 'neve')}</p>}
       {(cta && ! done) &&
       <Button
-        secondary
+        isSecondary
         disabled={inProgress}
         className={classnames({ 'is-loading': inProgress })}
         onClick={

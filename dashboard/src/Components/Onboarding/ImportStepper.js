@@ -29,7 +29,7 @@ const ImportStepper = ({currentStep, progress, willDo}) => {
 
 	return (
 		<ul className="stepper">
-			{Object.keys(stepsMap).map(key => {
+			{Object.keys(stepsMap).map((key, index) => {
 				const {label, status, willDo} = stepsMap[key];
 
 				if (! willDo) {
@@ -60,7 +60,7 @@ const ImportStepper = ({currentStep, progress, willDo}) => {
 				}
 
 				return (
-					<li>
+					<li key={index}>
 					<span className={classes}>
 						<Dashicon icon={icon} className={currentStep === key ? 'loading' : ''}/>
 					</span>
