@@ -1,3 +1,14 @@
+##### [Version 2.7.7](https://github.com/Codeinwp/neve/compare/v2.7.6...v2.7.7) (2020-08-19)
+
+- [Fix] Permissions callback for REST route in WP 5.5
+- [Fix] Color not working for the Cart Icon component
+- [Fix] Headings and lists alignment in the editor
+- [Fix] Warnings in the Music Band 2 Starter Site
+- [Fix] Range controls controlled from the keyboard
+- [Fix] Previewing templates from Otter Blocks
+- [Fix] Inline text-color not applying in the editor
+- New Gutenberg Starter Sites
+
 ##### [Version 2.7.6](https://github.com/Codeinwp/neve/compare/v2.7.5...v2.7.6) (2020-08-04)
 
 - [Feat] New magic tags for single post pages

@@ -46,10 +46,6 @@ class Nav_Walker extends \Walker_Nav_Menu {
 			return $title;
 		}
 
-		if ( $args->menu_id === 'nv-primary-navigation-sidebar' && $depth === 0 && strpos( $args->menu_class, 'dropdowns-expanded' ) ) {
-			return $title;
-		}
-
 		if ( strpos( $title, 'class="caret"' ) ) {
 			return $title;
 		}
@@ -221,33 +217,5 @@ class Nav_Walker extends \Walker_Nav_Menu {
 		wp_style_add_data( 'neve-mega-menu', 'suffix', '.min' );
 		wp_enqueue_style( 'neve-mega-menu' );
 		self::$mega_menu_enqueued = true;
-	}
-
-	/**
-	 * Dropdowns start
-	 *
-	 * @param string         $output Used to append additional content (passed by reference).
-	 * @param int            $depth  Depth of menu item. Used for padding.
-	 * @param \stdClass|null $args  An object of wp_nav_menu() arguments.
-	 */
-	public function start_lvl( &$output, $depth = 0, $args = null ) {
-		if ( $args->menu_id === 'nv-primary-navigation-sidebar' && $depth === 0 && strpos( $args->menu_class, 'dropdowns-expanded' ) ) {
-			return;
-		}
-		parent::start_lvl( $output, $depth, $args );
-	}
-
-	/**
-	 * Dropdowns end
-	 *
-	 * @param string         $output Used to append additional content (passed by reference).
-	 * @param int            $depth  Depth of menu item. Used for padding.
-	 * @param \stdClass|null $args  An object of wp_nav_menu() arguments.
-	 */
-	public function end_lvl( &$output, $depth = 0, $args = null ) {
-		if ( $args->menu_id === 'nv-primary-navigation-sidebar' && $depth === 0 && strpos( $args->menu_class, 'dropdowns-expanded' ) ) {
-			return;
-		}
-		parent::end_lvl( $output, $depth, $args );
 	}
 }
