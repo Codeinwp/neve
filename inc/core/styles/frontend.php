@@ -226,7 +226,7 @@ class Frontend extends Generator {
 	 */
 	public function setup_buttons() {
 		// Primary button config.
-		$this->_subscribers[]  = [
+		$this->_subscribers[] = [
 			Dynamic_Selector::KEY_SELECTOR => Config::CSS_SELECTOR_BTN_PRIMARY_NORMAL,
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_BACKGROUND_COLOR => Config::MODS_BUTTON_PRIMARY_STYLE . '.background',
@@ -239,6 +239,32 @@ class Frontend extends Generator {
 				Dynamic_Selector::CONTEXT_FRONTEND => true,
 			],
 		];
+
+		$this->_subscribers[] = [
+			Dynamic_Selector::KEY_SELECTOR => Config::CSS_SELECTOR_BTN_PRIMARY_NORMAL,
+			Dynamic_Selector::KEY_RULES    => [
+				Config::CSS_PROP_FONT_SIZE      => [
+					Dynamic_Selector::META_KEY           => Config::MODS_BUTTON_TYPEFACE . '.fontSize',
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_SUFFIX        => 'em',
+				],
+				Config::CSS_PROP_LINE_HEIGHT    => [
+					Dynamic_Selector::META_KEY           => Config::MODS_BUTTON_TYPEFACE . '.lineHeight',
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_SUFFIX        => '',
+				],
+				Config::CSS_PROP_LETTER_SPACING => [
+					Dynamic_Selector::META_KEY           => Config::MODS_BUTTON_TYPEFACE . '.letterSpacing',
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+				],
+				Config::CSS_PROP_FONT_WEIGHT    => [
+					Dynamic_Selector::META_KEY => Config::MODS_BUTTON_TYPEFACE . '.fontWeight',
+					'font'                     => 'mods_' . Config::MODS_FONT_GENERAL,
+				],
+				Config::CSS_PROP_TEXT_TRANSFORM => Config::MODS_BUTTON_TYPEFACE . '.textTransform',
+			],
+		];
+
 		$this->_subscribers[]  = [
 			Dynamic_Selector::KEY_SELECTOR => Config::CSS_SELECTOR_BTN_PRIMARY_HOVER,
 			Dynamic_Selector::KEY_RULES    => [
@@ -262,7 +288,32 @@ class Frontend extends Generator {
 				Dynamic_Selector::CONTEXT_FRONTEND => true,
 			],
 		];
-		$this->_subscribers[]  = [
+
+		$this->_subscribers[] = [
+			Dynamic_Selector::KEY_SELECTOR => Config::CSS_SELECTOR_BTN_SECONDARY_NORMAL,
+			Dynamic_Selector::KEY_RULES    => [
+				Config::CSS_PROP_FONT_SIZE      => [
+					Dynamic_Selector::META_KEY           => Config::MODS_SECONDARY_BUTTON_TYPEFACE . '.fontSize',
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_SUFFIX        => 'em',
+				],
+				Config::CSS_PROP_LINE_HEIGHT    => [
+					Dynamic_Selector::META_KEY           => Config::MODS_SECONDARY_BUTTON_TYPEFACE . '.lineHeight',
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_SUFFIX        => '',
+				],
+				Config::CSS_PROP_LETTER_SPACING => [
+					Dynamic_Selector::META_KEY           => Config::MODS_SECONDARY_BUTTON_TYPEFACE . '.letterSpacing',
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+				],
+				Config::CSS_PROP_FONT_WEIGHT    => [
+					Dynamic_Selector::META_KEY => Config::MODS_SECONDARY_BUTTON_TYPEFACE . '.fontWeight',
+					'font'                     => 'mods_' . Config::MODS_FONT_GENERAL,
+				],
+				Config::CSS_PROP_TEXT_TRANSFORM => Config::MODS_SECONDARY_BUTTON_TYPEFACE . '.textTransform',
+			],
+		];
+		$this->_subscribers[] = [
 			Dynamic_Selector::KEY_SELECTOR => Config::CSS_SELECTOR_BTN_SECONDARY_HOVER,
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_BACKGROUND_COLOR => Config::MODS_BUTTON_SECONDARY_STYLE . '.backgroundHover',

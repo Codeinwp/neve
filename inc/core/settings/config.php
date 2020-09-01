@@ -42,6 +42,9 @@ class Config {
 	const MODS_DEFAULT_CONTAINER_STYLE     = 'neve_default_container_style';
 	const MODS_SINGLE_POST_CONTAINER_STYLE = 'neve_single_post_container_style';
 
+	const MODS_BUTTON_TYPEFACE           = 'neve_button_typeface';
+	const MODS_SECONDARY_BUTTON_TYPEFACE = 'neve_secondary_button_typeface';
+
 	const MODS_TYPEFACE_ARCHIVE_POST_TITLE   = 'neve_archive_typography_post_title';
 	const MODS_TYPEFACE_ARCHIVE_POST_EXCERPT = 'neve_archive_typography_post_excerpt';
 	const MODS_TYPEFACE_ARCHIVE_POST_META    = 'neve_archive_typography_post_meta';
@@ -126,6 +129,7 @@ class Config {
 		self::CSS_SELECTOR_BTN_PRIMARY_NORMAL        => '.button.button-primary,
 				button, input[type=button],
 				.btn, input[type="submit"],
+				#comments input[type=submit],
 				/* Buttons in navigation */
 				ul[id^="nv-primary-navigation"] li.button.button-primary > a,
 				.menu li.button.button-primary > a,  .wp-block-button.is-style-primary .wp-block-button__link',
