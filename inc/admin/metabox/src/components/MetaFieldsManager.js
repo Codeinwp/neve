@@ -80,11 +80,9 @@ class MetaFieldsManager extends Component {
 		const containerType = this.state['neve_meta_container'];
 		const contentWidth = this.state['neve_meta_content_width'];
 
-		let blocKWidth;
+		let blocKWidth = contentWidth + '%';
 		if ( 'contained' === containerType ) {
 			blocKWidth = Math.round( ( contentWidth / 100 ) * metaSidebar.actions['neve_meta_content_width'].editor ) + 'px';
-		} else {
-			blocKWidth = contentWidth + '%';
 		}
 
 		if (document.contains(document.getElementById('neve-meta-editor-style'))) {

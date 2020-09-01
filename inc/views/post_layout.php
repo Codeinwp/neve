@@ -98,7 +98,8 @@ class Post_Layout extends Base_View {
 					do_action( 'neve_do_tags' );
 					break;
 				case 'title':
-					echo '<h1 class="title entry-title">' . wp_kses_post( get_the_title() ) . '</h1>';
+					$alignment = apply_filters( 'neve_post_title_alignment', '' );
+					echo '<h1 class="title entry-title ' . esc_attr( $alignment ) . '">' . wp_kses_post( get_the_title() ) . '</h1>';
 					break;
 				case 'meta':
 					self::render_post_meta();

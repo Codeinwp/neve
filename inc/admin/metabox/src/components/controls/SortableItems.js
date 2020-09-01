@@ -106,7 +106,7 @@ export default compose([
 	withDispatch(( dispatch, props, {select} ) => {
 		return {
 			onSortEnd: function( {oldIndex, newIndex} ) {
-				const metaValue = JSON.parse( select('core/editor').getEditedPostAttribute('meta')[props.id] );
+				const metaValue = JSON.parse( select('core/editor').getEditedPostAttribute('meta')[props.id] || props.data.default );
 				const newElements = arrayMove(metaValue, oldIndex, newIndex);
 				props.stateUpdate( props.id, JSON.stringify( newElements ) );
 				dispatch('core/editor').editPost({meta: {[props.id]: JSON.stringify( newElements ) }});
