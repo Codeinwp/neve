@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-08-20T10:54:34+00:00\n"
+"POT-Creation-Date: 2020-09-01T07:55:34+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -312,36 +312,36 @@ msgstr ""
 msgid "Section Content"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1293
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1295
 #: header-footer-grid/Core/Components/SearchResponsive.php:113
 msgid "Open Behaviour"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1298
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1300
 msgid "Slide from Left"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1299
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1301
 msgid "Slide from Right"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1300
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1302
 msgid "Pull from Left"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1301
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1303
 msgid "Pull from Right"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1302
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1304
 msgid "Full Canvas"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1303
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1305
 msgid "Slide Down"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1318
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1320
 msgid "Sidebar Width"
 msgstr ""
 
@@ -439,7 +439,7 @@ msgid "Alignment"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:533
-#: inc/customizer/options/buttons.php:129
+#: inc/customizer/options/buttons.php:135
 msgid "Padding"
 msgstr ""
 
@@ -585,16 +585,16 @@ msgid "Menu label"
 msgstr ""
 
 #: header-footer-grid/Core/Components/MenuIcon.php:127
-msgid "Show Sidebar Content"
+msgid "Show Mobile Menu"
 msgstr ""
 
 #: header-footer-grid/Core/Components/MenuIcon.php:131
-msgid "Edit Mobile Sidebar Content"
+msgid "Mobile Menu Options"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Nav.php:43
 #: header-footer-grid/Core/Components/Nav.php:221
-#: header-footer-grid/templates/components/component-nav.php:25
+#: header-footer-grid/templates/components/component-nav.php:26
 #: inc/core/front_end.php:71
 msgid "Primary Menu"
 msgstr ""
@@ -622,7 +622,7 @@ msgid "Items Hover Color"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Nav.php:177
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:120
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:123
 msgid "Search"
 msgstr ""
 
@@ -647,6 +647,10 @@ msgstr ""
 #: header-footer-grid/Core/Components/NavFooter.php:177
 #: header-footer-grid/Core/Components/SecondNav.php:180
 msgid "Items Min Height (px)"
+msgstr ""
+
+#: header-footer-grid/Core/Components/Nav.php:292
+msgid "Expand first level of dropdowns when menu is in mobile menu content."
 msgstr ""
 
 #: header-footer-grid/Core/Components/NavFooter.php:41
@@ -751,8 +755,8 @@ msgstr ""
 
 #. translators: %s is the header name
 #: header-footer-grid/Core/Customizer.php:265
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:59
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:169
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:60
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:172
 msgid "Default"
 msgstr ""
 
@@ -771,7 +775,7 @@ msgstr ""
 msgid "Search Components"
 msgstr ""
 
-#: header-footer-grid/Core/Customizer/Instructions_Control.php:78
+#: header-footer-grid/Core/Customizer/Instructions_Control.php:87
 #: header-footer-grid/Core/Customizer/Instructions_Section.php:85
 msgid "Quick Links"
 msgstr ""
@@ -1021,13 +1025,13 @@ msgstr ""
 
 #: inc/admin/plugin_install/main.php:113
 #: inc/admin/plugin_install/main.php:133
-#: dashboard/src/Components/LicenseCard.js:84
+#: dashboard/src/Components/LicenseCard.js:83
 #: dashboard/src/Components/PluginCard.js:17
 msgid "Activate"
 msgstr ""
 
 #: inc/admin/plugin_install/main.php:128
-#: dashboard/src/Components/LicenseCard.js:83
+#: dashboard/src/Components/LicenseCard.js:82
 #: dashboard/src/Components/PluginCard.js:18
 msgid "Deactivate"
 msgstr ""
@@ -1082,7 +1086,7 @@ msgid "Sites Library"
 msgstr ""
 
 #: inc/core/admin.php:242
-#: dashboard/src/Components/Content/Help.js:63
+#: dashboard/src/Components/Content/Help.js:62
 msgid "Documentation"
 msgstr ""
 
@@ -1128,25 +1132,29 @@ msgstr ""
 msgid "PRO"
 msgstr ""
 
-#: inc/customizer/options/buttons.php:42
+#: inc/customizer/options/buttons.php:43
 msgid "Buttons"
 msgstr ""
 
-#: inc/customizer/options/buttons.php:58
+#: inc/customizer/options/buttons.php:59
 #: assets/js/src/gutenberg.js:14
 msgid "Primary"
 msgstr ""
 
-#: inc/customizer/options/buttons.php:61
+#: inc/customizer/options/buttons.php:62
 msgid "Secondary"
 msgstr ""
 
-#: inc/customizer/options/buttons.php:92
+#: inc/customizer/options/buttons.php:98
 msgid "Button Appearance"
 msgstr ""
 
-#: inc/customizer/options/buttons.php:148
+#: inc/customizer/options/buttons.php:154
 msgid "Border radius"
+msgstr ""
+
+#: inc/customizer/options/buttons.php:175
+msgid "Button text"
 msgstr ""
 
 #: inc/customizer/options/colors_background.php:42
@@ -1521,19 +1529,19 @@ msgstr ""
 msgid "Page Builder Full Width (Neve)"
 msgstr ""
 
-#: dashboard/src/Components/Content/Changelog.js:15
+#: dashboard/src/Components/Content/Changelog.js:16
 msgid "Show changelog for"
 msgstr ""
 
-#: dashboard/src/Components/Content/Changelog.js:44
+#: dashboard/src/Components/Content/Changelog.js:45
 msgid "Features"
 msgstr ""
 
-#: dashboard/src/Components/Content/Changelog.js:54
+#: dashboard/src/Components/Content/Changelog.js:55
 msgid "Bug Fixes"
 msgstr ""
 
-#: dashboard/src/Components/Content/Changelog.js:64
+#: dashboard/src/Components/Content/Changelog.js:65
 msgid "Tweaks"
 msgstr ""
 
@@ -1546,55 +1554,55 @@ msgid "Get Neve Pro Now"
 msgstr ""
 
 #: dashboard/src/Components/Content/Help.js:24
-#: dashboard/src/Components/Content/Help.js:31
+#: dashboard/src/Components/Content/Help.js:30
 msgid "Contact Support"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:37
+#: dashboard/src/Components/Content/Help.js:36
 msgid "Changelog"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:38
+#: dashboard/src/Components/Content/Help.js:37
 msgid "Want to get the gist on the latest theme changes? Just consult our changelog below to get a taste of the recent fixes and features implemented."
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:43
+#: dashboard/src/Components/Content/Help.js:42
 msgid "View Changelog"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:48
+#: dashboard/src/Components/Content/Help.js:47
 msgid "Speed up your site"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:49
+#: dashboard/src/Components/Content/Help.js:48
 msgid "If you find yourself in a situation where everything on your site is running very slowly, you might consider having a look at the documentation below where you will find the most common issues causing this and possible solutions for each of the issues."
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:54
-#: dashboard/src/Components/Content/Help.js:84
-#: dashboard/src/Components/Content/Help.js:96
+#: dashboard/src/Components/Content/Help.js:53
+#: dashboard/src/Components/Content/Help.js:83
+#: dashboard/src/Components/Content/Help.js:95
 #: dashboard/src/Components/ModuleCard.js:104
 msgid "Learn More"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:70
-#: dashboard/src/Components/Content/Start.js:41
+#: dashboard/src/Components/Content/Help.js:69
+#: dashboard/src/Components/Content/Start.js:40
 msgid "Go to docs"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:77
+#: dashboard/src/Components/Content/Help.js:76
 msgid "Create a child theme"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:78
+#: dashboard/src/Components/Content/Help.js:77
 msgid "If you want to make changes to the theme's files, those changes are likely to be overwritten when you next update the theme. In order to prevent that from happening, you need to create a child theme. For this, please follow the documentation below."
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:89
+#: dashboard/src/Components/Content/Help.js:88
 msgid "Build a landing page with a drag-and-drop content builder"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:90
+#: dashboard/src/Components/Content/Help.js:89
 msgid "In the documentation below you will find an easy way to build a great looking landing page using a drag-and-drop content builder plugin."
 msgstr ""
 
@@ -1602,19 +1610,19 @@ msgstr ""
 msgid "Starter Sites"
 msgstr ""
 
-#: dashboard/src/Components/Content/Start.js:29
+#: dashboard/src/Components/Content/Start.js:28
 msgid "Go to Starter Sites"
 msgstr ""
 
-#: dashboard/src/Components/Content/Start.js:35
+#: dashboard/src/Components/Content/Start.js:34
 msgid "Getting Started? Check help and docs"
 msgstr ""
 
-#: dashboard/src/Components/Content/Start.js:36
+#: dashboard/src/Components/Content/Start.js:35
 msgid "Need more details? Please check our full documentation for detailed information on how to use Neve."
 msgstr ""
 
-#: dashboard/src/Components/Content/Start.js:57
+#: dashboard/src/Components/Content/Start.js:56
 msgid "Customizer quick links"
 msgstr ""
 
@@ -1626,26 +1634,26 @@ msgstr ""
 msgid "Enter License Key"
 msgstr ""
 
-#: dashboard/src/Components/LicenseCard.js:87
+#: dashboard/src/Components/LicenseCard.js:86
 #: dashboard/src/Components/PluginCard.js:17
 msgid "Activating"
 msgstr ""
 
-#: dashboard/src/Components/LicenseCard.js:88
+#: dashboard/src/Components/LicenseCard.js:87
 #: dashboard/src/Components/PluginCard.js:18
 msgid "Deactivating"
 msgstr ""
 
-#: dashboard/src/Components/LicenseCard.js:103
+#: dashboard/src/Components/LicenseCard.js:102
 msgid "Valid"
 msgstr ""
 
-#: dashboard/src/Components/LicenseCard.js:103
-#: dashboard/src/Components/LicenseCard.js:111
+#: dashboard/src/Components/LicenseCard.js:102
+#: dashboard/src/Components/LicenseCard.js:110
 msgid "Expired"
 msgstr ""
 
-#: dashboard/src/Components/LicenseCard.js:110
+#: dashboard/src/Components/LicenseCard.js:109
 msgid "Expires"
 msgstr ""
 
@@ -1679,7 +1687,7 @@ msgstr ""
 
 #: dashboard/src/Components/Onboarding/EditorSelector.js:19
 #: dashboard/src/Components/Onboarding/EditorSelector.js:41
-#: dashboard/src/Components/Onboarding/EditorTabs.js:26
+#: dashboard/src/Components/Onboarding/EditorTabs.js:27
 msgid "Builder Logo"
 msgstr ""
 
@@ -2039,20 +2047,20 @@ msgstr ""
 msgid "Insert Dynamic Tag"
 msgstr ""
 
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:58
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:168
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:59
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:171
 msgid "Inherit"
 msgstr ""
 
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:142
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:145
 msgid "No results."
 msgstr ""
 
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:156
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:159
 msgid "Font Family"
 msgstr ""
 
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:185
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:188
 msgid "Loading..."
 msgstr ""
 
