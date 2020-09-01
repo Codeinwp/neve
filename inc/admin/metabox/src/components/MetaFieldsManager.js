@@ -77,9 +77,12 @@ class MetaFieldsManager extends Component {
 			return false;
 		}
 
-		const containerType = this.state['neve_meta_container'];
-		const contentWidth = this.state['neve_meta_content_width'];
+		let containerType = this.state['neve_meta_container'];
+		if ( 'default' === containerType ) {
+			containerType = metaSidebar.actions['neve_meta_content_width'].container;
+		}
 
+		const contentWidth = this.state['neve_meta_content_width'];
 		let blocKWidth = contentWidth + '%';
 		if ( 'contained' === containerType ) {
 			blocKWidth = Math.round( ( contentWidth / 100 ) * metaSidebar.actions['neve_meta_content_width'].editor ) + 'px';
