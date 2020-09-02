@@ -38,18 +38,23 @@ const SortableItem = sortableElement( ({value, label, isVisible, toggle}) => {
 				} }
 			/>
 			<div className="ti-sortable-item-label">{label}</div>
-			<DragHandle />
+			{
+				isVisible ?
+					<DragHandle /> :
+					''
+			}
 		</div>
 		</div>
 	);
 } );
 
+let container;
+
 const SortableList = sortableContainer(
 	({children}) => {
-		return <div className="neve-meta-control neve-meta-sortable-items">{children}</div>;
+		return <div className="neve-meta-control neve-meta-sortable-items" ref={el => container = el}>{children}</div>;
 	}
 );
-
 
 class SortableItems extends Component {
 
@@ -57,11 +62,20 @@ class SortableItems extends Component {
 		super(props);
 	}
 
+	onSortStart() {
+		container.classList.add('dragging');
+	}
+
 	render() {
 		const elements = this.props.data.elements;
 		const currentValues = JSON.parse( this.props.metaFieldValue );
 		return (
-			<SortableList onSortEnd={this.props.onSortEnd} useDragHandle>
+			<SortableList
+				onSortEnd={this.props.onSortEnd}
+				hideSortableGhost={false}
+				useDragHandle
+				onSortStart={this.props.onSortStart}
+			>
 			{
 				currentValues.map(
 					(value, index) => {
@@ -105,11 +119,17 @@ class SortableItems extends Component {
 export default compose([
 	withDispatch(( dispatch, props, {select} ) => {
 		return {
+			onSortStart: function( {index} ) {
+				document.querySelector('.ti-sortable-item-area:nth-of-type(' + ( index + 1 ) + ')' ).style.opacity = '0';
+				document.querySelector('.ti-sortable-item-area:nth-of-type(' + ( index + 1 ) + ')' ).style.visibility = 'hidden';
+			},
 			onSortEnd: function( {oldIndex, newIndex} ) {
 				const metaValue = JSON.parse( select('core/editor').getEditedPostAttribute('meta')[props.id] || props.data.default );
 				const newElements = arrayMove(metaValue, oldIndex, newIndex);
 				props.stateUpdate( props.id, JSON.stringify( newElements ) );
 				dispatch('core/editor').editPost({meta: {[props.id]: JSON.stringify( newElements ) }});
+				document.querySelector('.ti-sortable-item-area:nth-of-type(' + ( newIndex + 1 ) + ')' ).style.opacity = null;
+				document.querySelector('.ti-sortable-item-area:nth-of-type(' + ( newIndex + 1 ) + ')' ).style.visibility = null;
 			},
 			toggle: function ( value ) {
 				let metaValue = JSON.parse( select('core/editor').getEditedPostAttribute('meta')[props.id] || props.data.default );
