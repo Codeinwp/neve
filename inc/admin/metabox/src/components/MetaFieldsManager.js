@@ -30,12 +30,12 @@ class MetaFieldsManager extends Component {
 			'neve_post_elements_order': JSON.stringify(
 				[
 					'title',
-					'thumbnail',
-					'tags',
-					'post-navigation',
 					'meta',
+					'thumbnail',
 					'content',
-					'comments'
+					'tags',
+					'comments',
+					'post-navigation'
 				]
 			),
 			'neve_meta_disable_header': 'off',
@@ -288,20 +288,20 @@ class MetaFieldsManager extends Component {
 		let settings = {
 			elements: {
 				'title': __( 'Post Title', 'neve' ),
-				'thumbnail': __( 'Featured Image', 'neve'),
-				'tags': __( 'Tags', 'neve'),
-				'post-navigation': __( 'Post Navigation', 'neve'),
 				'meta': __( 'Post Meta', 'neve'),
+				'thumbnail': __( 'Featured Image', 'neve'),
 				'content': __( 'Content', 'neve'),
-				'comments': __('Comments', 'neve' )
+				'tags': __( 'Tags', 'neve'),
+				'comments': __('Comments', 'neve' ),
+				'post-navigation': __( 'Post Navigation', 'neve')
 			},
 			default: JSON.stringify(
 				[
 					'title',
-					'thumbnail',
-					'tags',
 					'meta',
+					'thumbnail',
 					'content',
+					'tags',
 					'comments'
 				]
 			)
