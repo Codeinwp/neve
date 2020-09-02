@@ -141,6 +141,16 @@ describe('Single post meta sidebar', function () {
 
 		openNeveSidebar();
 
+		cy.get('.ti-sortable-item-label').each(function (el, index ) {
+			const shouldContain = [ 'Post Title', 'Post Meta', 'Featured Image', 'Content', 'Tags', 'Comments', 'Post Navigation']
+			expect( el).to.contain(shouldContain[index]);
+			if ( index === 6 ){
+				cy.get(el).parent().should('have.class', 'hidden');
+			} else {
+				cy.get(el).parent().should('not.have.class', 'hidden');
+			}
+		})
+
 		toggleElements(false);
 		cy.get('.components-toggle-control__label').contains('Author Avatar').should('not.exist');
 		cy.updatePost();
@@ -182,7 +192,6 @@ describe('Single post meta sidebar', function () {
 		cy.updatePost();
 		cy.visit(postSetup.url);
 		cy.get('footer.site-footer').should('not.exist');
-
 	});
 
 })
