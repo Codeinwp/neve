@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Neve 2.7.6\n"
+"Project-Id-Version: Neve 2.7.7\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/neve\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-08-20T10:54:34+00:00\n"
+"POT-Creation-Date: 2020-09-02T12:30:08+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -267,7 +267,7 @@ msgstr ""
 
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:303
 #: header-footer-grid/Core/Settings/Manager.php:181
-#: inc/customizer/options/layout_blog.php:66
+#: inc/customizer/options/layout_blog.php:84
 #: inc/customizer/options/main.php:51
 msgid "Layout"
 msgstr ""
@@ -312,36 +312,36 @@ msgstr ""
 msgid "Section Content"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1293
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1295
 #: header-footer-grid/Core/Components/SearchResponsive.php:113
 msgid "Open Behaviour"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1298
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1300
 msgid "Slide from Left"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1299
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1301
 msgid "Slide from Right"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1300
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1302
 msgid "Pull from Left"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1301
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1303
 msgid "Pull from Right"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1302
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1304
 msgid "Full Canvas"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1303
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1305
 msgid "Slide Down"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1318
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1320
 msgid "Sidebar Width"
 msgstr ""
 
@@ -419,6 +419,7 @@ msgid "Mobile menu content"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:465
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:138
 msgid "Left"
 msgstr ""
 
@@ -427,6 +428,7 @@ msgid "Center"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:473
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:146
 msgid "Right"
 msgstr ""
 
@@ -585,16 +587,16 @@ msgid "Menu label"
 msgstr ""
 
 #: header-footer-grid/Core/Components/MenuIcon.php:127
-msgid "Show Sidebar Content"
+msgid "Show Mobile Menu"
 msgstr ""
 
 #: header-footer-grid/Core/Components/MenuIcon.php:131
-msgid "Edit Mobile Sidebar Content"
+msgid "Mobile Menu Options"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Nav.php:43
 #: header-footer-grid/Core/Components/Nav.php:221
-#: header-footer-grid/templates/components/component-nav.php:25
+#: header-footer-grid/templates/components/component-nav.php:26
 #: inc/core/front_end.php:71
 msgid "Primary Menu"
 msgstr ""
@@ -622,7 +624,7 @@ msgid "Items Hover Color"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Nav.php:177
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:120
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:123
 msgid "Search"
 msgstr ""
 
@@ -647,6 +649,10 @@ msgstr ""
 #: header-footer-grid/Core/Components/NavFooter.php:177
 #: header-footer-grid/Core/Components/SecondNav.php:180
 msgid "Items Min Height (px)"
+msgstr ""
+
+#: header-footer-grid/Core/Components/Nav.php:292
+msgid "Expand first level of dropdowns when menu is in mobile menu content."
 msgstr ""
 
 #: header-footer-grid/Core/Components/NavFooter.php:41
@@ -751,8 +757,8 @@ msgstr ""
 
 #. translators: %s is the header name
 #: header-footer-grid/Core/Customizer.php:265
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:59
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:169
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:60
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:172
 msgid "Default"
 msgstr ""
 
@@ -771,7 +777,7 @@ msgstr ""
 msgid "Search Components"
 msgstr ""
 
-#: header-footer-grid/Core/Customizer/Instructions_Control.php:78
+#: header-footer-grid/Core/Customizer/Instructions_Control.php:87
 #: header-footer-grid/Core/Customizer/Instructions_Section.php:85
 msgid "Quick Links"
 msgstr ""
@@ -833,7 +839,7 @@ msgid "Archive URL"
 msgstr ""
 
 #: header-footer-grid/Core/Magic_Tags.php:525
-#: inc/customizer/options/layout_blog.php:283
+#: inc/customizer/options/layout_blog.php:323
 #: inc/views/partials/post_meta.php:125
 msgid "Author"
 msgstr ""
@@ -1021,13 +1027,13 @@ msgstr ""
 
 #: inc/admin/plugin_install/main.php:113
 #: inc/admin/plugin_install/main.php:133
-#: dashboard/src/Components/LicenseCard.js:84
+#: dashboard/src/Components/LicenseCard.js:83
 #: dashboard/src/Components/PluginCard.js:17
 msgid "Activate"
 msgstr ""
 
 #: inc/admin/plugin_install/main.php:128
-#: dashboard/src/Components/LicenseCard.js:83
+#: dashboard/src/Components/LicenseCard.js:82
 #: dashboard/src/Components/PluginCard.js:18
 msgid "Deactivate"
 msgstr ""
@@ -1082,7 +1088,7 @@ msgid "Sites Library"
 msgstr ""
 
 #: inc/core/admin.php:242
-#: dashboard/src/Components/Content/Help.js:63
+#: dashboard/src/Components/Content/Help.js:62
 msgid "Documentation"
 msgstr ""
 
@@ -1158,99 +1164,119 @@ msgstr ""
 msgid "Blog / Archive"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:66
+#: inc/customizer/options/layout_blog.php:65
+msgid "Blog Layout"
+msgstr ""
+
+#: inc/customizer/options/layout_blog.php:84
 #: inc/customizer/options/typography.php:115
 msgid "Blog"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:95
-msgid "Grid Layout"
+#: inc/customizer/options/layout_blog.php:89
+msgid "List"
+msgstr ""
+
+#: inc/customizer/options/layout_blog.php:93
+msgid "Covers"
 msgstr ""
 
 #: inc/customizer/options/layout_blog.php:97
+msgid "Grid"
+msgstr ""
+
+#: inc/customizer/options/layout_blog.php:116
+msgid "Layout Columns"
+msgstr ""
+
+#: inc/customizer/options/layout_blog.php:118
 msgid "1 Column"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:98
+#: inc/customizer/options/layout_blog.php:119
 msgid "2 Columns"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:99
+#: inc/customizer/options/layout_blog.php:120
 msgid "3 Columns"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:100
+#: inc/customizer/options/layout_blog.php:121
 msgid "4 Columns"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:119
+#: inc/customizer/options/layout_blog.php:140
+msgid "Alternating layout"
+msgstr ""
+
+#: inc/customizer/options/layout_blog.php:159
 msgid "Enable Masonry"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:138
+#: inc/customizer/options/layout_blog.php:178
 msgid "Excerpt Length"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:166
+#: inc/customizer/options/layout_blog.php:206
 msgid "Post Pagination"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:171
+#: inc/customizer/options/layout_blog.php:211
 msgid "Number"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:172
+#: inc/customizer/options/layout_blog.php:212
 msgid "Infinite Scroll"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:222
+#: inc/customizer/options/layout_blog.php:262
 #: inc/customizer/options/layout_single_post.php:68
 msgid "Thumbnail"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:223
+#: inc/customizer/options/layout_blog.php:263
 #: inc/customizer/options/layout_single_post.php:67
 msgid "Title & Meta"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:224
+#: inc/customizer/options/layout_blog.php:264
 msgid "Excerpt"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:235
+#: inc/customizer/options/layout_blog.php:275
 msgid "Post Content Order"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:254
+#: inc/customizer/options/layout_blog.php:294
 msgid "Thumbnail Shadow"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:284
+#: inc/customizer/options/layout_blog.php:324
 #: inc/customizer/options/layout_single_product.php:107
 #: inc/views/partials/post_meta.php:126
 msgid "Category"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:285
+#: inc/customizer/options/layout_blog.php:325
 #: inc/views/partials/post_meta.php:127
 msgid "Date"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:286
+#: inc/customizer/options/layout_blog.php:326
 #: inc/customizer/options/layout_single_post.php:72
 #: inc/views/partials/post_meta.php:128
 msgid "Comments"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:298
+#: inc/customizer/options/layout_blog.php:338
 msgid "Meta Order"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:444
+#: inc/customizer/options/layout_blog.php:481
 msgid "Author Avatar"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:463
+#: inc/customizer/options/layout_blog.php:500
 msgid "Show Author Avatar"
 msgstr ""
 
@@ -1521,19 +1547,19 @@ msgstr ""
 msgid "Page Builder Full Width (Neve)"
 msgstr ""
 
-#: dashboard/src/Components/Content/Changelog.js:15
+#: dashboard/src/Components/Content/Changelog.js:16
 msgid "Show changelog for"
 msgstr ""
 
-#: dashboard/src/Components/Content/Changelog.js:44
+#: dashboard/src/Components/Content/Changelog.js:45
 msgid "Features"
 msgstr ""
 
-#: dashboard/src/Components/Content/Changelog.js:54
+#: dashboard/src/Components/Content/Changelog.js:55
 msgid "Bug Fixes"
 msgstr ""
 
-#: dashboard/src/Components/Content/Changelog.js:64
+#: dashboard/src/Components/Content/Changelog.js:65
 msgid "Tweaks"
 msgstr ""
 
@@ -1546,55 +1572,55 @@ msgid "Get Neve Pro Now"
 msgstr ""
 
 #: dashboard/src/Components/Content/Help.js:24
-#: dashboard/src/Components/Content/Help.js:31
+#: dashboard/src/Components/Content/Help.js:30
 msgid "Contact Support"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:37
+#: dashboard/src/Components/Content/Help.js:36
 msgid "Changelog"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:38
+#: dashboard/src/Components/Content/Help.js:37
 msgid "Want to get the gist on the latest theme changes? Just consult our changelog below to get a taste of the recent fixes and features implemented."
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:43
+#: dashboard/src/Components/Content/Help.js:42
 msgid "View Changelog"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:48
+#: dashboard/src/Components/Content/Help.js:47
 msgid "Speed up your site"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:49
+#: dashboard/src/Components/Content/Help.js:48
 msgid "If you find yourself in a situation where everything on your site is running very slowly, you might consider having a look at the documentation below where you will find the most common issues causing this and possible solutions for each of the issues."
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:54
-#: dashboard/src/Components/Content/Help.js:84
-#: dashboard/src/Components/Content/Help.js:96
+#: dashboard/src/Components/Content/Help.js:53
+#: dashboard/src/Components/Content/Help.js:83
+#: dashboard/src/Components/Content/Help.js:95
 #: dashboard/src/Components/ModuleCard.js:104
 msgid "Learn More"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:70
-#: dashboard/src/Components/Content/Start.js:41
+#: dashboard/src/Components/Content/Help.js:69
+#: dashboard/src/Components/Content/Start.js:40
 msgid "Go to docs"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:77
+#: dashboard/src/Components/Content/Help.js:76
 msgid "Create a child theme"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:78
+#: dashboard/src/Components/Content/Help.js:77
 msgid "If you want to make changes to the theme's files, those changes are likely to be overwritten when you next update the theme. In order to prevent that from happening, you need to create a child theme. For this, please follow the documentation below."
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:89
+#: dashboard/src/Components/Content/Help.js:88
 msgid "Build a landing page with a drag-and-drop content builder"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:90
+#: dashboard/src/Components/Content/Help.js:89
 msgid "In the documentation below you will find an easy way to build a great looking landing page using a drag-and-drop content builder plugin."
 msgstr ""
 
@@ -1602,19 +1628,19 @@ msgstr ""
 msgid "Starter Sites"
 msgstr ""
 
-#: dashboard/src/Components/Content/Start.js:29
+#: dashboard/src/Components/Content/Start.js:28
 msgid "Go to Starter Sites"
 msgstr ""
 
-#: dashboard/src/Components/Content/Start.js:35
+#: dashboard/src/Components/Content/Start.js:34
 msgid "Getting Started? Check help and docs"
 msgstr ""
 
-#: dashboard/src/Components/Content/Start.js:36
+#: dashboard/src/Components/Content/Start.js:35
 msgid "Need more details? Please check our full documentation for detailed information on how to use Neve."
 msgstr ""
 
-#: dashboard/src/Components/Content/Start.js:57
+#: dashboard/src/Components/Content/Start.js:56
 msgid "Customizer quick links"
 msgstr ""
 
@@ -1626,26 +1652,26 @@ msgstr ""
 msgid "Enter License Key"
 msgstr ""
 
-#: dashboard/src/Components/LicenseCard.js:87
+#: dashboard/src/Components/LicenseCard.js:86
 #: dashboard/src/Components/PluginCard.js:17
 msgid "Activating"
 msgstr ""
 
-#: dashboard/src/Components/LicenseCard.js:88
+#: dashboard/src/Components/LicenseCard.js:87
 #: dashboard/src/Components/PluginCard.js:18
 msgid "Deactivating"
 msgstr ""
 
-#: dashboard/src/Components/LicenseCard.js:103
+#: dashboard/src/Components/LicenseCard.js:102
 msgid "Valid"
 msgstr ""
 
-#: dashboard/src/Components/LicenseCard.js:103
-#: dashboard/src/Components/LicenseCard.js:111
+#: dashboard/src/Components/LicenseCard.js:102
+#: dashboard/src/Components/LicenseCard.js:110
 msgid "Expired"
 msgstr ""
 
-#: dashboard/src/Components/LicenseCard.js:110
+#: dashboard/src/Components/LicenseCard.js:109
 msgid "Expires"
 msgstr ""
 
@@ -1679,7 +1705,7 @@ msgstr ""
 
 #: dashboard/src/Components/Onboarding/EditorSelector.js:19
 #: dashboard/src/Components/Onboarding/EditorSelector.js:41
-#: dashboard/src/Components/Onboarding/EditorTabs.js:26
+#: dashboard/src/Components/Onboarding/EditorTabs.js:27
 msgid "Builder Logo"
 msgstr ""
 
@@ -1987,7 +2013,7 @@ msgstr ""
 
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:181
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:188
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:58
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:61
 msgid "Background"
 msgstr ""
 
@@ -2039,20 +2065,20 @@ msgstr ""
 msgid "Insert Dynamic Tag"
 msgstr ""
 
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:58
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:168
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:59
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:171
 msgid "Inherit"
 msgstr ""
 
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:142
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:145
 msgid "No results."
 msgstr ""
 
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:156
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:159
 msgid "Font Family"
 msgstr ""
 
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:185
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:188
 msgid "Loading..."
 msgstr ""
 
@@ -2076,88 +2102,92 @@ msgstr ""
 msgid "No header presets found"
 msgstr ""
 
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:33
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:38
 msgid "Logo Only"
 msgstr ""
 
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:37
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:42
 msgid "Logo - Title & Tagline"
 msgstr ""
 
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:41
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:46
 msgid "Title & Tagline - Logo"
 msgstr ""
 
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:45
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:50
 msgid "Logo on Top"
 msgstr ""
 
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:54
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:57
 msgid "Plain"
 msgstr ""
 
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:62
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:65
 msgid "Bottom Border"
 msgstr ""
 
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:66
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:69
 msgid "Top Border"
 msgstr ""
 
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:75
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:76
 msgid "Icon Style 2"
 msgstr ""
 
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:79
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:80
 msgid "Icon Style 1"
 msgstr ""
 
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:83
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:84
 msgid "Icon Style 3"
 msgstr ""
 
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:87
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:88
 msgid "Icon Style 4"
 msgstr ""
 
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:91
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:92
 msgid "Icon Style 5"
 msgstr ""
 
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:95
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:96
 msgid "Icon Style 6"
 msgstr ""
 
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:99
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:100
 msgid "WordPress Avatar"
 msgstr ""
 
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:103
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:104
 msgid "No Icon"
 msgstr ""
 
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:112
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:111
 msgid "Style 1"
 msgstr ""
 
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:116
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:115
 msgid "Style 2"
 msgstr ""
 
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:120
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:119
 msgid "Style 3"
 msgstr ""
 
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:124
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:123
 msgid "Style 4"
 msgstr ""
 
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:128
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:127
 msgid "Style 5"
 msgstr ""
 
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:132
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:131
 msgid "Style 6"
+msgstr ""
+
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:142
+msgid "No image"
 msgstr ""
 
 #: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:196

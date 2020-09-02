@@ -11,6 +11,7 @@ const RadioImageComponent = ({ control }) => {
 
   const updateValue = (newVal) => {
     setValue(newVal)
+    control.setting.set(newVal)
   }
 
   const renderOptions = () => Object.keys(choices).map((choice, index) => {

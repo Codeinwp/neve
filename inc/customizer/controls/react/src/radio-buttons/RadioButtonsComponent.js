@@ -132,9 +132,24 @@ const RadioButtonsComponent = ({ control }) => {
             icon: SVG.cartIconStyle6
           }
         }
+      case 'blog_image_position':
+        return {
+          left: {
+            tooltip: __('Left', 'neve'),
+            icon: SVG.mediaAlignLeft
+          },
+          no: {
+            tooltip: __('No image', 'neve'),
+            icon: SVG.cartIconStyle5
+          },
+          right: {
+            tooltip: __('Right', 'neve'),
+            icon: SVG.mediaAlignRight
+          }
+        }
     }
   }
-  const { label, large_buttons } = control.params
+  const { label, large_buttons, showLabels } = control.params
   const wrapClasses = classnames(
     ['neve-white-background-control', { 'large-buttons': large_buttons === true }]
   )
@@ -143,6 +158,7 @@ const RadioButtonsComponent = ({ control }) => {
     <div className={wrapClasses}>
       {label && <span className='customize-control-title'>{label}</span>}
       <RadioIcons
+        showLabels={showLabels}
         value={value}
         options={getChoices()}
         onChange={updateValue}

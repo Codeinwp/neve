@@ -48,3 +48,23 @@ function neve_get_button_appearance_default( $button = 'button' ) {
 
 	return $defaults;
 }
+
+/**
+ * Migrate the old value for the blog layout to the new values.
+ */
+function neve_migrate_blog_layout() {
+	$flag = 'neve_migrated_blog_layout';
+	if ( get_theme_mod( $flag ) ) {
+		return;
+	}
+
+	$old_value = get_theme_mod( 'neve_blog_archive_layout' );
+	if ( ! empty( $old_value && $old_value === 'alternative' ) ) {
+		set_theme_mod( 'neve_blog_archive_layout', 'default' );
+		set_theme_mod( 'neve_blog_list_alternative_layout', true );
+	}
+
+	set_theme_mod( $flag, true );
+}
+
+add_action( 'init', 'neve_migrate_blog_layout' );

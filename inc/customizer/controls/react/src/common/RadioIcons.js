@@ -3,9 +3,9 @@
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-const { Tooltip, Button } = wp.components
+const { Button } = wp.components
 
-const RadioIcons = ({ options, onChange, value }) => {
+const RadioIcons = ({ options, onChange, value, showLabels }) => {
   const getButtons = () => {
     return Object.keys(options).map((type, index) => {
       if (options[type].icon === 'text') {
@@ -22,7 +22,7 @@ const RadioIcons = ({ options, onChange, value }) => {
         )
       }
       return (
-        <Tooltip text={options[type].tooltip} key={index}>
+        <span key={index}>
           <Button
             aria-label={options[type].tooltip}
             className={classnames({ active: value === type })}
@@ -31,7 +31,8 @@ const RadioIcons = ({ options, onChange, value }) => {
               onChange(type)
             }}
           />
-        </Tooltip>
+          {showLabels && <label>{options[type].tooltip}</label>}
+        </span>
       )
     })
   }
@@ -46,7 +47,8 @@ const RadioIcons = ({ options, onChange, value }) => {
 RadioIcons.propTypes = {
   options: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
-  value: PropTypes.string.isRequired
+  value: PropTypes.string.isRequired,
+  showLabels: PropTypes.bool
 }
 
 export default RadioIcons

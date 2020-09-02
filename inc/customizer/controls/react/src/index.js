@@ -17,8 +17,6 @@ import { MultiSelectControl } from './multiselect/Control.js'
 import { ResponsiveRadioButtonsControl } from './responsive-radio-buttons/Control.js'
 import { RadioImageControl } from './radio-image/Control.js'
 
-import './style.scss'
-
 const { controlConstructor } = wp.customize
 
 controlConstructor.neve_toggle_control = ToggleControl
