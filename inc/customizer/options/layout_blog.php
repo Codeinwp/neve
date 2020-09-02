@@ -27,12 +27,9 @@ class Layout_Blog extends Base_Customizer {
 	 */
 	public function add_controls() {
 		$this->section_blog();
-		$this->control_blog_layout();
-		$this->control_excerpt();
-		$this->control_pagination_type();
-		$this->control_content_order();
-		$this->control_meta_order();
-		$this->control_author_avatar();
+		$this->add_layout_controls();
+		$this->add_content_ordering_controls();
+		$this->add_post_meta_controls();
 	}
 
 	/**
@@ -51,10 +48,7 @@ class Layout_Blog extends Base_Customizer {
 		);
 	}
 
-	/**
-	 * Add blog layout controls
-	 */
-	private function control_blog_layout() {
+	private function add_layout_controls() {
 		$this->add_control(
 			new Control(
 				'neve_blog_layout_heading',
@@ -67,7 +61,7 @@ class Layout_Blog extends Base_Customizer {
 					'priority'         => 10,
 					'class'            => 'blog-layout-accordion',
 					'accordion'        => true,
-					'controls_to_wrap' => 2,
+					'controls_to_wrap' => 4,
 				),
 				'Neve\Customizer\Controls\Heading'
 			)
@@ -121,7 +115,7 @@ class Layout_Blog extends Base_Customizer {
 						'4' => esc_html__( '4 Columns', 'neve' ),
 					),
 					'type'            => 'select',
-					'active_callback' => array( $this, 'should_show_grid_cols' ),
+					'active_callback' => array( $this, 'is_column_layout' ),
 				)
 			)
 		);
@@ -163,38 +157,25 @@ class Layout_Blog extends Base_Customizer {
 		);
 	}
 
-	/**
-	 * Add excerpt control
-	 */
-	private function control_excerpt() {
+	private function add_content_ordering_controls() {
 		$this->add_control(
 			new Control(
-				'neve_post_excerpt_length',
+				'neve_blog_ordering_content_heading',
 				array(
-					'sanitize_callback' => 'neve_sanitize_range_value',
-					'default'           => 25,
+					'sanitize_callback' => 'sanitize_text_field',
 				),
 				array(
-					'label'       => esc_html__( 'Excerpt Length', 'neve' ),
-					'section'     => 'neve_blog_archive_layout',
-					'type'        => 'neve_range_control',
-					'input_attrs' => [
-						'min'        => 5,
-						'max'        => 300,
-						'defaultVal' => 25,
-						'step'       => 5,
-					],
-					'priority'    => 35,
+					'label'            => esc_html__( 'Ordering and Content', 'neve' ),
+					'section'          => 'neve_blog_archive_layout',
+					'priority'         => 50,
+					'class'            => 'blog-layout-ordering-content-accordion',
+					'accordion'        => true,
+					'controls_to_wrap' => 4,
 				),
-				'Neve\Customizer\Controls\React\Range'
+				'Neve\Customizer\Controls\Heading'
 			)
 		);
-	}
 
-	/**
-	 * Add infinite scroll control
-	 */
-	private function control_pagination_type() {
 		$this->add_control(
 			new Control(
 				'neve_pagination_type',
@@ -205,7 +186,7 @@ class Layout_Blog extends Base_Customizer {
 				array(
 					'label'    => esc_html__( 'Post Pagination', 'neve' ),
 					'section'  => 'neve_blog_archive_layout',
-					'priority' => 40,
+					'priority' => 53,
 					'type'     => 'select',
 					'choices'  => array(
 						'number'   => esc_html__( 'Number', 'neve' ),
@@ -214,44 +195,7 @@ class Layout_Blog extends Base_Customizer {
 				)
 			)
 		);
-	}
 
-	/**
-	 * Sanitize the container layout value
-	 *
-	 * @param string $value value from the control.
-	 *
-	 * @return bool
-	 */
-	public function sanitize_blog_layout( $value ) {
-		$allowed_values = array( 'default', 'covers', 'grid' );
-		if ( ! in_array( $value, $allowed_values, true ) ) {
-			return 'grid';
-		}
-
-		return esc_html( $value );
-	}
-
-	/**
-	 * Sanitize the pagination type
-	 *
-	 * @param string $value value from the control.
-	 *
-	 * @return bool
-	 */
-	public function sanitize_pagination_type( $value ) {
-		$allowed_values = array( 'number', 'infinite' );
-		if ( ! in_array( $value, $allowed_values, true ) ) {
-			return 'number';
-		}
-
-		return esc_html( $value );
-	}
-
-	/**
-	 * Add content order control.
-	 */
-	private function control_content_order() {
 		$order_default_components = array(
 			'thumbnail',
 			'title-meta',
@@ -276,10 +220,33 @@ class Layout_Blog extends Base_Customizer {
 					'section'         => 'neve_blog_archive_layout',
 					'type'            => 'ordering',
 					'components'      => $components,
-					'priority'        => 45,
+					'priority'        => 55,
 					'active_callback' => array( $this, 'should_show_content_ordering' ),
 				),
 				'Neve\Customizer\Controls\Ordering'
+			)
+		);
+
+		$this->add_control(
+			new Control(
+				'neve_post_excerpt_length',
+				array(
+					'sanitize_callback' => 'neve_sanitize_range_value',
+					'default'           => 25,
+				),
+				array(
+					'label'       => esc_html__( 'Excerpt Length', 'neve' ),
+					'section'     => 'neve_blog_archive_layout',
+					'type'        => 'neve_range_control',
+					'input_attrs' => [
+						'min'        => 5,
+						'max'        => 300,
+						'defaultVal' => 25,
+						'step'       => 5,
+					],
+					'priority'    => 58,
+				),
+				'Neve\Customizer\Controls\React\Range'
 			)
 		);
 
@@ -300,17 +267,33 @@ class Layout_Blog extends Base_Customizer {
 						'max'        => 5,
 						'defaultVal' => 0,
 					],
-					'priority'    => 50,
+					'priority'    => 59,
 				),
 				'Neve\Customizer\Controls\React\Range'
 			)
 		);
 	}
 
-	/**
-	 * Add meta order control.
-	 */
-	private function control_meta_order() {
+	private function add_post_meta_controls() {
+		$this->add_control(
+			new Control(
+				'neve_blog_post_meta_heading',
+				array(
+					'sanitize_callback' => 'sanitize_text_field',
+				),
+				array(
+					'label'            => esc_html__( 'Post Meta', 'neve' ),
+					'section'          => 'neve_blog_archive_layout',
+					'priority'         => 70,
+					'class'            => 'blog-layout-post-meta-accordion',
+					'accordion'        => true,
+					'controls_to_wrap' => 2,
+				),
+				'Neve\Customizer\Controls\Heading'
+			)
+		);
+
+
 		$order_default_components = array(
 			'author',
 			'date',
@@ -339,12 +322,61 @@ class Layout_Blog extends Base_Customizer {
 					'section'         => 'neve_blog_archive_layout',
 					'type'            => 'ordering',
 					'components'      => $components,
-					'priority'        => 60,
+					'priority'        => 75,
 					'active_callback' => array( $this, 'should_show_meta_order' ),
 				),
 				'Neve\Customizer\Controls\Ordering'
 			)
 		);
+
+		$this->add_control(
+			new Control(
+				'neve_author_avatar',
+				array(
+					'sanitize_callback' => 'neve_sanitize_checkbox',
+					'default'           => false,
+				),
+				array(
+					'label'    => esc_html__( 'Show Author Avatar', 'neve' ),
+					'section'  => 'neve_blog_archive_layout',
+					'type'     => 'neve_toggle_control',
+					'priority' => 80,
+				)
+			)
+		);
+
+	}
+
+	/**
+	 * Sanitize the container layout value
+	 *
+	 * @param string $value value from the control.
+	 *
+	 * @return bool
+	 */
+	public function sanitize_blog_layout( $value ) {
+		$allowed_values = array( 'default', 'covers', 'grid' );
+		if ( ! in_array( $value, $allowed_values, true ) ) {
+			return 'grid';
+		}
+
+		return sanitize_text_field( $value );
+	}
+
+	/**
+	 * Sanitize the pagination type
+	 *
+	 * @param string $value value from the control.
+	 *
+	 * @return bool
+	 */
+	public function sanitize_pagination_type( $value ) {
+		$allowed_values = array( 'number', 'infinite' );
+		if ( ! in_array( $value, $allowed_values, true ) ) {
+			return 'number';
+		}
+
+		return esc_html( $value );
 	}
 
 	/**
@@ -410,7 +442,7 @@ class Layout_Blog extends Base_Customizer {
 			return true;
 		}
 
-		$default       = array(
+		$default = array(
 			'thumbnail',
 			'title-meta',
 			'excerpt',
@@ -443,7 +475,7 @@ class Layout_Blog extends Base_Customizer {
 	 *
 	 * @return bool
 	 */
-	public function should_show_grid_cols() {
+	public function is_column_layout() {
 		$blog_layout = get_theme_mod( 'neve_blog_archive_layout', 'grid' );
 
 		return in_array( $blog_layout, [ 'grid', 'covers' ], true );
@@ -455,54 +487,13 @@ class Layout_Blog extends Base_Customizer {
 	 * @return bool
 	 */
 	public function should_show_masonry() {
-		$blog_layout = get_theme_mod( 'neve_blog_archive_layout', 'grid' );
-		$columns     = (int) get_theme_mod( 'neve_grid_layout', 1 );
-		if ( $blog_layout !== 'grid' ) {
+		if( ! $this->is_column_layout() ) {
 			return false;
 		}
-		if ( $columns === 1 ) {
+		if( (int) get_theme_mod( 'neve_grid_layout', 1 ) === 1 ) {
 			return false;
 		}
 
 		return true;
-	}
-
-	/**
-	 * Author avatar options
-	 */
-	private function control_author_avatar() {
-		$this->add_control(
-			new Control(
-				'neve_author_avatar_options',
-				array(
-					'sanitize_callback' => 'sanitize_text_field',
-				),
-				array(
-					'label'            => esc_html__( 'Author Avatar', 'neve' ),
-					'section'          => 'neve_blog_archive_layout',
-					'priority'         => 70,
-					'class'            => 'advanced-sidebar-accordion',
-					'accordion'        => false,
-					'controls_to_wrap' => 2,
-				),
-				'Neve\Customizer\Controls\Heading'
-			)
-		);
-
-		$this->add_control(
-			new Control(
-				'neve_author_avatar',
-				array(
-					'sanitize_callback' => 'neve_sanitize_checkbox',
-					'default'           => false,
-				),
-				array(
-					'label'    => esc_html__( 'Show Author Avatar', 'neve' ),
-					'section'  => 'neve_blog_archive_layout',
-					'type'     => 'neve_toggle_control',
-					'priority' => 75,
-				)
-			)
-		);
 	}
 }
