@@ -1,7 +1,7 @@
 import 'cypress-file-upload';
 import '@percy/cypress';
 Cypress.Cookies.defaults({
-	whitelist: /wordpress_.*/
+	preserve: /wordpress_.*/
 });
 Cypress.Commands.add('login', (nextRoute = null) => {
 	//console.log(cy.getCookies());
