@@ -6,6 +6,7 @@
   "viewportWidth": 1366,
   "viewportHeight": 768,
   "user": "admin",
+  "retries": 2,
   "screenshotsFolder": "visual-regression/screenshots",
   "videoUploadOnPasses": false,
   "password": "admin",
