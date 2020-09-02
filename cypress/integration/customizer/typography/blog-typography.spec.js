@@ -1,56 +1,33 @@
 const setup = {
-  general: {
-    transform: 'Lowercase',
-    weight: '100',
-    fontSize: {
-      desktop: '12',
-      tablet: '11',
-      mobile: '10'
-    },
-    lineHeight: {
-      desktop: '2',
-      tablet: '3',
-      mobile: '4'
-    },
-    letterSpacing: {
-      desktop: '1',
-      tablet: '2',
-      mobile: '3'
-    }
-  }
+	"textTransform": "lowercase",
+	"fontWeight": "100",
+	"fontSize": {
+		"suffix": {"mobile": "px", "tablet": "px", "desktop": "px"},
+		"mobile": "10",
+		"tablet": "11",
+		"desktop": "12"
+	},
+	"lineHeight": {
+		"suffix": {"mobile": "em", "tablet": "em", "desktop": "em"},
+		"mobile": "4",
+		"tablet": "3",
+		"desktop": "2"
+	},
+	"letterSpacing": {"mobile": "3", "tablet": "2", "desktop": "1"}
 };
 
 describe( 'Blog Typography', function() {
   it( 'Sets up blog typography in customizer', function() {
     cy.login();
     cy.visit( '/wp-admin/customize.php' );
-    cy.get( '#accordion-panel-neve_typography' ).click();
-    cy.get( '#accordion-section-neve_typography_blog' ).click();
-
-    cy.get( '#customize-control-neve_archive_typography_post_title_accordion_wrap .neve-customizer-heading').click();
-    cy.setTypographyControl( '#customize-control-neve_archive_typography_post_title', setup.general );
-    cy.get( '#customize-control-neve_archive_typography_post_title_accordion_wrap .neve-customizer-heading').click();
-
-    cy.get( '#customize-control-neve_archive_typography_post_excerpt_accordion_wrap .neve-customizer-heading').click();
-    cy.setTypographyControl( '#customize-control-neve_archive_typography_post_excerpt', setup.general );
-    cy.get( '#customize-control-neve_archive_typography_post_excerpt_accordion_wrap .neve-customizer-heading').click();
-
-    cy.get( '#customize-control-neve_archive_typography_post_meta_accordion_wrap .neve-customizer-heading').click();
-    cy.setTypographyControl( '#customize-control-neve_archive_typography_post_meta', setup.general );
-    cy.get( '#customize-control-neve_archive_typography_post_meta_accordion_wrap .neve-customizer-heading').click();
-
-    cy.get( '#customize-control-neve_single_post_typography_post_title_accordion_wrap .neve-customizer-heading').click();
-    cy.setTypographyControl( '#customize-control-neve_single_post_typography_post_title', setup.general );
-    cy.get( '#customize-control-neve_single_post_typography_post_title_accordion_wrap .neve-customizer-heading').click();
-
-    cy.get( '#customize-control-neve_single_post_typography_post_meta_accordion_wrap .neve-customizer-heading').click();
-    cy.setTypographyControl( '#customize-control-neve_single_post_typography_post_meta', setup.general );
-    cy.get( '#customize-control-neve_single_post_typography_post_meta_accordion_wrap .neve-customizer-heading').click();
-
-    cy.get( '#customize-control-neve_single_post_typography_comments_title_accordion_wrap .neve-customizer-heading').click();
-    cy.setTypographyControl( '#customize-control-neve_single_post_typography_comments_title', setup.general );
-    cy.get( '#customize-control-neve_single_post_typography_comments_title_accordion_wrap .neve-customizer-heading').click();
-
+    cy.window().then(win => {
+    	win.wp.customize.control( 'neve_archive_typography_post_title' ).setting.set(setup);
+    	win.wp.customize.control( 'neve_archive_typography_post_excerpt' ).setting.set(setup);
+    	win.wp.customize.control( 'neve_archive_typography_post_meta' ).setting.set(setup);
+    	win.wp.customize.control( 'neve_single_post_typography_post_title' ).setting.set(setup);
+    	win.wp.customize.control( 'neve_single_post_typography_post_meta' ).setting.set(setup);
+    	win.wp.customize.control( 'neve_single_post_typography_comments_title' ).setting.set(setup);
+	});
     aliasRestRoutes();
     cy.get( '#save' ).click();
     cy.wait( '@customizerSave' ).then( ( req ) => {
@@ -148,12 +125,12 @@ function testTransformAndWeight(elem) {
   // Test text transform.
   cy.get(elem).should( 'have.css', 'text-transform' ).
   and( 'match',
-    new RegExp( setup.general.transform.toLowerCase(), 'g' ) );
+    new RegExp( setup.textTransform.toLowerCase(), 'g' ) );
 
   // Test font weight
   cy.get(elem).should( 'have.css', 'font-weight' ).
   and( 'match',
-    new RegExp( setup.general.weight, 'g' ) );
+    new RegExp( setup.fontWeight, 'g' ) );
 }
 
 /**
@@ -167,19 +144,19 @@ function testSizeLheightSpacing(elem, device) {
   cy.get( elem ).
   should( 'have.css', 'font-size' ).
   and( 'match',
-    new RegExp( setup.general.fontSize[device] + 'px', 'g' ) );
+    new RegExp( setup.fontSize[device] + 'px', 'g' ) );
 
   // Test line height.
   cy.get( elem ).
   should( 'have.css', 'line-height' ).
   and( 'match',
-    new RegExp( setup.general.lineHeight[device], 'g' ) );
+    new RegExp( setup.lineHeight[device], 'g' ) );
 
   // Test letter spacing.
   cy.get( elem ).
   should( 'have.css', 'letter-spacing' ).
   and( 'match',
-    new RegExp( setup.general.letterSpacing[device], 'g' ) );
+    new RegExp( setup.letterSpacing[device], 'g' ) );
 }
 
 /**
