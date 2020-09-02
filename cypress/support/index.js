@@ -1,3 +1,3 @@
 Cypress.Cookies.defaults({
-	whitelist: /wordpress_.*/
+	preserve: /wordpress_.*/
 })
