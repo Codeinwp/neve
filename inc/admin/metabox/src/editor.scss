@@ -184,3 +184,14 @@
 	margin: 0 4px;
   }
 }
+
+.neve-meta-sortable-items{
+  margin-bottom: 0;
+}
+
+.disabled-items{
+  .ti-sortable-item {
+	margin-top: -1px;
+	margin-bottom: -1px;
+  }
+}

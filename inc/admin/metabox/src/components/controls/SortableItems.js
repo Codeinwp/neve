@@ -48,11 +48,9 @@ const SortableItem = sortableElement( ({value, label, isVisible, toggle}) => {
 	);
 } );
 
-let container;
-
 const SortableList = sortableContainer(
 	({children}) => {
-		return <div className="neve-meta-control neve-meta-sortable-items" ref={el => container = el}>{children}</div>;
+		return <div className="neve-meta-control neve-meta-sortable-items">{children}</div>;
 	}
 );
 
@@ -62,56 +60,64 @@ class SortableItems extends Component {
 		super(props);
 	}
 
-	onSortStart() {
-		container.classList.add('dragging');
-	}
-
 	render() {
 		const elements = this.props.data.elements;
 		const currentValues = JSON.parse( this.props.metaFieldValue );
 		return (
-			<SortableList
-				onSortEnd={this.props.onSortEnd}
-				hideSortableGhost={false}
-				useDragHandle
-				onSortStart={this.props.onSortStart}
-			>
-			{
-				currentValues.map(
-					(value, index) => {
-						return (
-							<SortableItem
-								key={`item-${value}`}
-								index={index}
-								value={value}
-								label={elements[value]}
-								isVisible={true}
-								toggle={this.props.toggle}
-							/>
-						);
-					}
-				)
-			}
-			{
-				Object.keys(elements).map(
-					(value, index) => {
-						if ( currentValues.includes( value ) ) {
-							return false;
+			<div>
+				<SortableList
+					onSortEnd={this.props.onSortEnd}
+					lockAxis='y'
+					useDragHandle
+					hideSortableGhost={false}
+					onSortStart={this.props.onSortStart}
+				>
+				{
+					currentValues.map(
+						(value, index) => {
+							return (
+								<SortableItem
+									key={`item-${value}`}
+									index={index}
+									value={value}
+									label={elements[value]}
+									isVisible={true}
+									toggle={this.props.toggle}
+								/>
+							);
 						}
-						return (
-							<SortableItem
-								key={`item-${value}`}
-								index={index}
-								value={value}
-								label={elements[value]}
-								isVisible={false}
-								toggle={this.props.toggle}
-							/>
-						);
-					}
-				)
-			}
-			</SortableList>
+					)
+				}
+				</SortableList>
+				<div className="disabled-items neve-meta-control">
+				{
+					Object.keys(elements).map(
+						(value, index) => {
+							if ( currentValues.includes( value ) ) {
+								return false;
+							}
+							return (
+								<div className='ti-sortable-item-area'>
+								<div className='ti-sortable-item hidden'>
+									<Button
+										isTertiary
+										icon='hidden'
+										label={ __( `Hide ${ elements[value] }`, 'neve' ) }
+										showTooltip={ true }
+										className="ti-sortable-item-toggle"
+										onClick={ () => {
+											this.props.toggle(value);
+										} }
+									/>
+									<div className="ti-sortable-item-label">{elements[value]}</div>
+								</div>
+								</div>
+							);
+						}
+					)
+				}
+				</div>
+			</div>
 		);
 	}
 }
@@ -120,16 +126,14 @@ export default compose([
 	withDispatch(( dispatch, props, {select} ) => {
 		return {
 			onSortStart: function( {index} ) {
-				document.querySelector('.ti-sortable-item-area:nth-of-type(' + ( index + 1 ) + ')' ).style.opacity = '0';
-				document.querySelector('.ti-sortable-item-area:nth-of-type(' + ( index + 1 ) + ')' ).style.visibility = 'hidden';
+				document.querySelector('.ti-sortable-item-area:nth-of-type(' + ( index + 1 ) + ')' ).style.color = '#ccc';
 			},
 			onSortEnd: function( {oldIndex, newIndex} ) {
 				const metaValue = JSON.parse( select('core/editor').getEditedPostAttribute('meta')[props.id] || props.data.default );
 				const newElements = arrayMove(metaValue, oldIndex, newIndex);
 				props.stateUpdate( props.id, JSON.stringify( newElements ) );
 				dispatch('core/editor').editPost({meta: {[props.id]: JSON.stringify( newElements ) }});
-				document.querySelector('.ti-sortable-item-area:nth-of-type(' + ( newIndex + 1 ) + ')' ).style.opacity = null;
-				document.querySelector('.ti-sortable-item-area:nth-of-type(' + ( newIndex + 1 ) + ')' ).style.visibility = null;
+				document.querySelector('.ti-sortable-item-area:nth-of-type(' + ( newIndex + 1 ) + ')' ).style.color = null;
 			},
 			toggle: function ( value ) {
 				let metaValue = JSON.parse( select('core/editor').getEditedPostAttribute('meta')[props.id] || props.data.default );
