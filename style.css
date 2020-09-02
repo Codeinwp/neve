@@ -2545,6 +2545,7 @@ audio {
 }
 
 .header-menu-sidebar-bg {
+  position: relative;
   display: flex;
   flex-direction: column;
   word-wrap: break-word;
