@@ -3,9 +3,23 @@ WP_VERSION=$2
 WP_ENV=$3
 WP_CACHED_ENV="/var/www/html/wp-content/${WP_ENV}.sql"
 SKIP_CACHE=$4
+
+init_environment(){
+	#Setup core
+	wp --allow-root core update --version=$WP_VERSION
+	wp --allow-root core update-db
+
+	rm -rf  /var/www/html/wp-content/themes/*
+
+	echo "Installing Neve theme from $NEVE_LOCATION"
+	wp --allow-root theme install --activate $NEVE_LOCATION
+}
+
+
 if [ -f $WP_CACHED_ENV ] && [ $SKIP_CACHE == "no" ]; then
     echo "Database exists."
     wp --allow-root db import  $WP_CACHED_ENV
+    init_environment
 		wp --allow-root cache flush
 		wp --allow-root transient delete-all
     exit 0;
@@ -16,15 +30,8 @@ mkdir -p /var/www/html/wp-content/uploads
 chmod 0777 -R /var/www/html/wp-content/
 rm -rf /var/www/html/wp-content/plugins/akismet
 
+init_environment
 
-#Setup core
-wp --allow-root core update --version=$WP_VERSION
-wp --allow-root core update-db
-
-rm -rf  /var/www/html/wp-content/themes/*
-
-echo "Installing Neve theme from $NEVE_LOCATION"
-wp --allow-root theme install --activate $NEVE_LOCATION
 
 bash /var/www/html/bin/envs/$WP_ENV/start.sh
 
