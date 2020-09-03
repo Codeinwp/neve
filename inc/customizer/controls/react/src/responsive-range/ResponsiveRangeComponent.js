@@ -4,25 +4,32 @@
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import ResponsiveControl from '../common/Responsive'
-import { maybeParseJson } from '../common/common'
+import { maybeParseJson, getIntValAsResponsive } from '../common/common'
 
 const { RangeControl, Button } = wp.components
 const { useState, useEffect } = wp.element
 
 const ResponsiveRangeComponent = ({ control }) => {
-  useEffect(() => {
-    document.addEventListener('neve-changed-customizer-value', (e) => {
-      if (!e.detail) return false
-      if (e.detail.id !== control.id) return false
-
-      setValue(maybeParseJson(e.detail.value))
-      control.setting.set(JSON.stringify(e.detail.value))
-    })
-  }, [])
-
   const parsedValue = maybeParseJson(control.setting.get())
   const [currentDevice, setCurrentDevice] = useState('desktop')
   const [value, setValue] = useState(parsedValue)
+
+  useEffect(() => {
+    // If a value is int, make it responsive.
+    const responsiveConverted = getIntValAsResponsive(control.setting.get())
+    if (value !== responsiveConverted) {
+      setValue( responsiveConverted )
+    }
+    document.addEventListener('neve-changed-customizer-value', (e) => {
+      if (!e.detail) return false
+      if (e.detail.id !== control.id) return false
+      // Make sure we translate int values to responsive values.
+      const incomingValue = getIntValAsResponsive(e.detail.value)
+
+      setValue(maybeParseJson(incomingValue))
+      control.setting.set(JSON.stringify(incomingValue))
+    })
+  }, [])
 
   const { label } = control.params
   const { hideResponsive, units, defaultVal, step, min, max } = control.params.input_attrs

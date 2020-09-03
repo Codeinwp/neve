@@ -277,11 +277,8 @@ class CartIcon extends Abstract_Component {
 			return false;
 		}
 
-		if ( class_exists( '\Neve_Pro\Core\Settings' ) ) {
-			$settings = new Settings();
-			if ( ! $settings->is_module_active( 'woocommerce_booster' ) || ! class_exists( 'WooCommerce' ) ) {
-				return false;
-			}
+		if ( ! apply_filters( 'nv_pro_woocommerce_booster_status', false ) || ! class_exists( 'WooCommerce' ) ) {
+			return false;
 		}
 
 		return true;

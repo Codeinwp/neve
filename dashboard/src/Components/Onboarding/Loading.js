@@ -26,9 +26,9 @@ const Loading = ({isOnboarding}) => {
 			</div>
 			<div className="ob-body">
 				<div className="ob-sites">
-					{[ 1, 2, 3, 4, 5, 6, 7, 8, 9 ].map(() => {
+					{[ 1, 2, 3, 4, 5, 6, 7, 8, 9 ].map((i) => {
 						return (
-							<div className="card starter-site-card">
+							<div key={i} className="card starter-site-card">
 								<div className="top">
 									<div className="image loading"/>
 								</div>

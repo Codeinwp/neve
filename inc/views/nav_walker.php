@@ -16,26 +16,36 @@ namespace Neve\Views;
  * @package Neve\Views
  */
 class Nav_Walker extends \Walker_Nav_Menu {
+	/**
+	 * Flag to check if the mega menu CSS was already enqueued.
+	 *
+	 * @var bool
+	 */
+	public static $mega_menu_enqueued = false;
 
 	/**
 	 * Nav_Walker constructor.
 	 */
 	public function __construct() {
-		add_filter( 'nav_menu_item_title', array( $this, 'add_caret' ), 10, 4 );
 		add_filter( 'nav_menu_item_args', array( $this, 'tweak_mm_heading' ), 10, 3 );
+		add_filter( 'nav_menu_item_title', array( $this, 'add_caret' ), 10, 4 );
 	}
 
 	/**
 	 * Add the caret inside the menu item link.
 	 *
 	 * @param string $title menu item title.
-	 * @param object $item  menu item object.
-	 * @param object $args  menu args.
+	 * @param object $item menu item object.
+	 * @param object $args menu args.
 	 * @param int    $depth the menu item depth.
 	 *
 	 * @return string
 	 */
 	public function add_caret( $title, $item, $args, $depth ) {
+		if ( neve_is_amp() ) {
+			return $title;
+		}
+
 		if ( strpos( $title, 'class="caret"' ) ) {
 			return $title;
 		}
@@ -62,18 +72,22 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	/**
 	 * Start_el
 	 *
-	 * @see   Walker::start_el()
+	 * @param string   $output Output.
+	 * @param \WP_Post $item Item.
+	 * @param int      $depth Depth.
+	 * @param array    $args Args.
+	 * @param int      $id id.
 	 * @since 3.0.0
 	 *
-	 * @param string   $output Output.
-	 * @param \WP_Post $item   Item.
-	 * @param int      $depth  Depth.
-	 * @param array    $args   Args.
-	 * @param int      $id     id.
+	 * @see   Walker::start_el()
 	 */
 	public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
 		if ( ! is_object( $args ) ) {
 			return;
+		}
+
+		if ( ! self::$mega_menu_enqueued && isset( $item->classes ) && in_array( 'neve-mega-menu', $item->classes ) ) {
+			$this->enqueue_mega_menu_style();
 		}
 
 		if ( isset( $item->title ) && $item->title === 'divider' ) {
@@ -89,18 +103,15 @@ class Nav_Walker extends \Walker_Nav_Menu {
 		}
 
 		parent::start_el( $output, $item, $depth, $args, $id );
-
-		// Filter that is used for AMP proper event integration.
-		$output = apply_filters( 'neve_caret_wrap_filter', $output, $item->menu_order );
 	}
 
 	/**
 	 * Ends the element output, if needed.
 	 *
 	 * @param string   $output the end el string.
-	 * @param \WP_Post $item   item.
-	 * @param int      $depth  item depth.
-	 * @param array    $args   item args.
+	 * @param \WP_Post $item item.
+	 * @param int      $depth item depth.
+	 * @param array    $args item args.
 	 */
 	public function end_el( &$output, $item, $depth = 0, $args = array() ) {
 		if ( isset( $args->item_spacing ) && 'discard' === $args->item_spacing ) {
@@ -112,6 +123,9 @@ class Nav_Walker extends \Walker_Nav_Menu {
 		}
 		if ( $depth >= 1 ) {
 			if ( isset( $item->description ) && ! empty( $item->description ) ) {
+				if ( ! self::$mega_menu_enqueued ) {
+					$this->enqueue_mega_menu_style();
+				}
 				$output .= '<span class="neve-mm-description">' . esc_html( $item->description ) . '</span>';
 			}
 		}
@@ -122,8 +136,8 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	/**
 	 * Tweak the mega menu heading markup.
 	 *
-	 * @param array    $args  the menu item args.
-	 * @param \WP_Post $item  the menu item.
+	 * @param array    $args the menu item args.
+	 * @param \WP_Post $item the menu item.
 	 * @param int      $depth the depth of the menu item.
 	 *
 	 * @return mixed
@@ -179,9 +193,9 @@ class Nav_Walker extends \Walker_Nav_Menu {
 	 */
 	public static function fallback() {
 		$fallback_args = array(
-			'depth'      => - 1,
+			'depth'      => -1,
 			'menu_id'    => 'nv-primary-navigation' . '-' . \HFG\current_row( \HFG\Core\Builder\Header::BUILDER_NAME ),
-			'menu_class' => 'primary-menu-ul',
+			'menu_class' => 'primary-menu-ul nav-ul',
 			'container'  => 'ul',
 			'before'     => '',
 			'echo'       => false,
@@ -189,5 +203,19 @@ class Nav_Walker extends \Walker_Nav_Menu {
 		);
 
 		return wp_page_menu( $fallback_args );
+	}
+
+	/**
+	 * Enqueue mega menu style
+	 */
+	public function enqueue_mega_menu_style() {
+		if ( self::$mega_menu_enqueued ) {
+			return;
+		}
+		wp_register_style( 'neve-mega-menu', get_template_directory_uri() . '/assets/css/mega-menu' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'neve_version_filter', NEVE_VERSION ) );
+		wp_style_add_data( 'neve-mega-menu', 'rtl', 'replace' );
+		wp_style_add_data( 'neve-mega-menu', 'suffix', '.min' );
+		wp_enqueue_style( 'neve-mega-menu' );
+		self::$mega_menu_enqueued = true;
 	}
 }

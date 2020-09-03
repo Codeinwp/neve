@@ -4,6 +4,7 @@ describe( 'Page meta box settings', function() {
 		'content': 'The Page Content',
 		'url': null
 	};
+
 	it( 'Create new page named "' + pageSetup.title + '".', function() {
 		cy.insertPost( pageSetup.title, pageSetup.content, 'page' );
 
@@ -44,23 +45,27 @@ describe( 'Page meta box settings', function() {
 		matchContentWidth(defaultWidth);
 	});
 
+	it( 'Activates Classic Editor', function () {
+		cy.visit( 'wp-admin/plugins.php?plugin_status=all' );
+		cy.get( 'tr[data-slug="classic-editor"] .activate' ).click();
+	});
 
 	it( 'Edit meta box content width "' + pageSetup.title + '".', function() {
 		cy.login( pageSetup.url );
 
-		cy.editCurrentPost();
+		cy.get('#wp-admin-bar-edit a').click();
 		cy.get( '#neve_meta_content_width-range' ).
 		invoke( 'val', 70 ).
 		trigger( 'change' );
-		cy.updatePost();
+		cy.get( '#publish' ).contains( 'Update' ).click();
 
 		cy.visit( pageSetup.url );
-		matchContentWidth( (0.7 * 1170));
+		cy.get('.single-page-container .nv-content-wrap').invoke("width").should('be.eq',(0.7 * 1170) - 30); //we substract the padding.
 	} );
 
 	it( 'Edit meta box settings "' + pageSetup.title + '".', function() {
 		cy.login( pageSetup.url );
-		cy.editCurrentPost();
+		cy.get( '#wp-admin-bar-edit a' ).click();
 		cy.get( 'label[for="neve_meta_container_full-width"]' ).click();
 		cy.get( 'label[for="neve_meta_sidebar_left"]' ).click();
 		cy.get( 'label[for="neve_meta_disable_title"]' ).click();
@@ -70,7 +75,7 @@ describe( 'Page meta box settings', function() {
 		invoke( 'val', 70 ).
 		trigger( 'change' );
 
-		cy.updatePost();
+		cy.get( '#publish' ).contains( 'Update' ).click();
 	} );
 
 	it( 'Edited meta box settings on front end.', function() {
@@ -91,6 +96,11 @@ describe( 'Page meta box settings', function() {
 		cy.get( '.nv-content-wrap' ).should( 'not.contain', pageSetup.content );
 
 	} );
+
+	it( 'Deactivate Classic Editor', function () {
+		cy.visit( 'wp-admin/plugins.php?plugin_status=all' );
+		cy.get( 'tr[data-slug="classic-editor"] .deactivate' ).click();
+	});
 } );
 function matchContentWidth(defaultWidth){
 	cy.get('.single-page-container .alignfull [class*="__inner-container"] > *, .single-page-container .alignwide [class*="__inner-container"] > *').invoke("width").should('be.eq',defaultWidth - 30); //we substract the padding.

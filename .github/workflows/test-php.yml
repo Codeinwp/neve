@@ -92,5 +92,5 @@ jobs:
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-      - run: ./bin/run-theme-check.sh
+      - run: ./bin/envs/init.sh theme-check latest yes
 
