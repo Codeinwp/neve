@@ -39,7 +39,7 @@ Cypress.Commands.add('navigate',
 Cypress.Commands.add('clearWelcome', () => {
 	cy.window()
 		.then(win => {
-			win.wp && win.wp.data.select('core/edit-post').isFeatureActive('welcomeGuide') && win.wp.data.dispatch('core/edit-post').toggleFeature('welcomeGuide');
+			win.wp && win.wp.data &&  win.wp.data.select('core/edit-post').isFeatureActive('welcomeGuide') && win.wp.data.dispatch('core/edit-post').toggleFeature('welcomeGuide');
 		});
 });
 Cypress.Commands.add('insertCoverBlock', () => {
