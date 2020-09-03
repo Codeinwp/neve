@@ -4,6 +4,7 @@
   "dependencies": {
     "classnames": "^2.2.6",
     "prop-types": "^15.7.2",
+    "react-sortable-hoc": "^1.11.0",
     "react-visibility-sensor": "^5.1.1"
   },
   "devDependencies": {
