@@ -149,7 +149,7 @@ jobs:
         name: Restore WP environment cache
         with:
           path: ~/.wp-content
-          key: ${{ runner.os }}-wpcore-${{ hashFiles('bin/envs/**/*.sh') }}
+          key: ${{ runner.os }}-wpcore-${{ hashFiles('bin/envs/**/*.sh') }}-${{ matrix.envs }}
       - uses: actions/cache@v1
         name: Restore Cypress cached binary
         with:
