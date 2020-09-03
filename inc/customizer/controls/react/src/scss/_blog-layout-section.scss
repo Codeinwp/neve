@@ -3,23 +3,16 @@ $excluded: ':not(#customize-control-neve_blog_archive_layout):not(.customize-con
 #sub-accordion-section-neve_blog_archive_layout {
 	.customize-control#{$excluded} {
 		margin-bottom: -1px !important;
-		border-right: 1px solid #ccc;
-		border-left: 1px solid #ccc;
 		background-color: #fff;
-		padding: 10px 7px;
-		margin-left: -7px;
-		//&:before {
-		//	content: "";
-		//	display: block;
-		//	height: 1px;
-		//	width: 100%;
-		//	background-color: #ccc;
-		//	position: absolute;
-		//	top:0;
-		//}
+		padding: 12px 15px;
+		margin-left: -15px;
+		position: relative;
 	}
 	.customize-control-customizer-heading {
 		margin-top: 12px;
+	}
+	.customize-section-description-container + .customize-control-customizer-heading{
+		margin-top: 0;
 	}
 	.neve-white-background-control {
 		border: none !important;

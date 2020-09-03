@@ -1,0 +1,25 @@
+$overlay: rgba( 0,0,0, 0.75 );
+.layout-covers {
+	.content {
+		border: none;
+		padding-bottom: 0;
+	}
+}
+.cover-post {
+	position: relative;
+	.inner {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		width: 100%;
+		padding: 25px 25px 10px;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		background-color: $overlay;
+		color: #fff;
+		a, a:hover, a:focus, li {
+			color: #fff;
+		}
+	}
+}

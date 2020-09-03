@@ -122,6 +122,33 @@ class Layout_Blog extends Base_Customizer {
 
 		$this->add_control(
 			new Control(
+				'neve_blog_covers_text_color',
+				array(
+					'sanitize_callback' => 'neve_sanitize_colors',
+					'default'           => '#ffffff',
+					'transport'         => 'postMessage',
+				),
+				array(
+					'label'                 => esc_html__( 'Text Color', 'neve' ),
+					'section'               => 'neve_blog_archive_layout',
+					'priority'              => 15,
+					'active_callback'       => function () {
+						return get_theme_mod( 'neve_blog_archive_layout' ) === 'covers';
+					},
+					'live_refresh_selector' => true,
+					'live_refresh_css_prop' => [
+						'template'   =>
+							'.cover .inner, .cover .inner a, .cover .inner a:hover, .cover .inner a:focus, .cover .inner li {
+							color: {{value}};
+						}',
+					],
+				),
+				'Neve\Customizer\Controls\React\Color'
+			)
+		);
+
+		$this->add_control(
+			new Control(
 				'neve_blog_list_alternative_layout',
 				array(
 					'sanitize_callback' => 'neve_sanitize_checkbox',
@@ -218,12 +245,11 @@ class Layout_Blog extends Base_Customizer {
 				array(
 					'label'           => esc_html__( 'Post Content Order', 'neve' ),
 					'section'         => 'neve_blog_archive_layout',
-					'type'            => 'ordering',
 					'components'      => $components,
 					'priority'        => 55,
 					'active_callback' => array( $this, 'should_show_content_ordering' ),
 				),
-				'Neve\Customizer\Controls\Ordering'
+				'Neve\Customizer\Controls\React\Ordering'
 			)
 		);
 
@@ -254,7 +280,7 @@ class Layout_Blog extends Base_Customizer {
 			new Control(
 				'neve_post_thumbnail_box_shadow',
 				array(
-					'sanitize_callback' => 'neve_sanitize_range_value',
+					'sanitize_callback' => 'absint',
 					'default'           => 0,
 				),
 				array(
@@ -320,12 +346,11 @@ class Layout_Blog extends Base_Customizer {
 				array(
 					'label'           => esc_html__( 'Meta Order', 'neve' ),
 					'section'         => 'neve_blog_archive_layout',
-					'type'            => 'ordering',
 					'components'      => $components,
 					'priority'        => 75,
 					'active_callback' => array( $this, 'should_show_meta_order' ),
 				),
-				'Neve\Customizer\Controls\Ordering'
+				'Neve\Customizer\Controls\React\Ordering'
 			)
 		);
 
@@ -487,10 +512,10 @@ class Layout_Blog extends Base_Customizer {
 	 * @return bool
 	 */
 	public function should_show_masonry() {
-		if( ! $this->is_column_layout() ) {
+		if ( ! $this->is_column_layout() ) {
 			return false;
 		}
-		if( (int) get_theme_mod( 'neve_grid_layout', 1 ) === 1 ) {
+		if ( (int) get_theme_mod( 'neve_grid_layout', 1 ) === 1 ) {
 			return false;
 		}
 

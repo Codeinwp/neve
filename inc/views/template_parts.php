@@ -43,13 +43,13 @@ class Template_Parts extends Base_View {
 	 */
 	private function post_class() {
 		$class = join( ' ', get_post_class() );
-
+		$layout = $this->get_layout();
 		$box_shadow = (int) $this->get_box_shadow();
 		if ( $box_shadow !== 0 ) {
 			$class .= ' nv-shadow-' . $box_shadow;
 		}
-		$class .= ' col-12 layout-' . $this->get_layout();
-		if ( $this->get_layout() === 'grid' ) {
+		$class .= ' col-12 layout-' . $layout;
+		if ( in_array( $layout, ['grid', 'covers'], true ) ) {
 			$class .= ' ' . $this->get_grid_columns_class();
 		} else {
 			$class .= ' nv-non-grid-article';
@@ -65,9 +65,11 @@ class Template_Parts extends Base_View {
 	private function get_article_inner_content() {
 		$markup = '';
 
-		if ( $this->get_layout() !== 'grid' ) {
+		$layout = $this->get_layout();
+
+		if ( in_array( $layout, ['alternative', 'default'] ) ) {
 			$markup .= $this->get_post_thumbnail();
-			$markup .= '<div class="non-grid-content ' . esc_attr( $this->get_layout() ) . '-layout-content">';
+			$markup .= '<div class="non-grid-content ' . esc_attr( $layout ) . '-layout-content">';
 			$markup .= $this->get_title();
 			$markup .= $this->get_meta();
 			$markup .= $this->get_excerpt();
@@ -85,13 +87,37 @@ class Template_Parts extends Base_View {
 			return $markup;
 		}
 
+		if( $layout === 'covers' ) {
+			$thumbnail = get_the_post_thumbnail_url( get_the_ID(), 'neve-blog' );
+
+			$markup .= '<div class="cover-post">';
+			$markup .= '<div class="background">'. $this->get_post_thumbnail() .'</div>';
+			$markup .= '<div class="inner">';
+			$markup .= $this->get_title();
+			$markup .= $this->get_meta();
+			$markup .= $this->get_excerpt();
+			$markup .= wp_link_pages(
+				array(
+					'before'      => '<div class="post-pages-links"><span>' . apply_filters( 'neve_page_link_before', esc_html__( 'Pages:', 'neve' ) ) . '</span>',
+					'after'       => '</div>',
+					'link_before' => '<span class="page-link">',
+					'link_after'  => '</span>',
+					'echo'        => false,
+				)
+			);
+			$markup .= '</div>';
+			$markup .= '</div>';
+
+			return $markup;
+		}
+
 		$default_order = array(
 			'thumbnail',
 			'title-meta',
 			'excerpt',
 		);
-		$order         = get_theme_mod( 'neve_post_content_ordering', wp_json_encode( $default_order ) );
-		$order         = json_decode( $order, true );
+		$order = get_theme_mod( 'neve_post_content_ordering', wp_json_encode( $default_order ) );
+		$order = json_decode( $order, true );
 		foreach ( $order as $content_bit ) {
 			switch ( $content_bit ) {
 				case 'thumbnail':
@@ -139,10 +165,10 @@ class Template_Parts extends Base_View {
 		$markup = '<div class="nv-post-thumbnail-wrap">';
 
 		$markup .= '<a href="' . esc_url( get_the_permalink() ) . '" rel="bookmark" title="' . the_title_attribute(
-			array(
-				'echo' => false,
-			)
-		) . '">';
+				array(
+					'echo' => false,
+				)
+			) . '">';
 		$markup .= get_the_post_thumbnail(
 			get_the_ID(),
 			'neve-blog'
@@ -166,7 +192,17 @@ class Template_Parts extends Base_View {
 	 * @return string
 	 */
 	private function get_layout() {
-		return get_theme_mod( 'neve_blog_archive_layout', 'grid' );
+		$layout = get_theme_mod( 'neve_blog_archive_layout', 'grid' );
+
+		if ( $layout !== 'default' ) {
+			return $layout;
+		}
+
+		if ( get_theme_mod( 'neve_blog_list_alternative_layout', false ) === true ) {
+			$layout = 'alternative';
+		}
+
+		return $layout;
 	}
 
 	/**
@@ -235,7 +271,7 @@ class Template_Parts extends Base_View {
 			$column_numbers = 1;
 		}
 
-		return 'col-sm-' . ( 12 / absint( $column_numbers ) );
+		return 'col-sm-' . (12 / absint( $column_numbers ));
 	}
 
 	/**
@@ -249,7 +285,7 @@ class Template_Parts extends Base_View {
 
 		$new_moretag = '&hellip;&nbsp;';
 
-		if ( isset( $moretag ) && ( $moretag !== ' [&hellip;]' ) ) {
+		if ( isset( $moretag ) && ($moretag !== ' [&hellip;]') ) {
 			$new_moretag = '';
 		}
 
@@ -261,14 +297,14 @@ class Template_Parts extends Base_View {
 			)
 		);
 
-		$markup  = '<a href="' . esc_url( get_the_permalink() ) . '"';
-		$markup .= ' class="' . esc_attr( $read_more_args['classes'] ) . '"';
+		$markup = '<a href="' . esc_url( get_the_permalink() ) . '"';
+		$markup .= ' class="' . esc_attr( $read_more_args[ 'classes' ] ) . '"';
 		$markup .= ' rel="bookmark">';
-		$markup .= esc_html( $read_more_args['text'] );
+		$markup .= esc_html( $read_more_args[ 'text' ] );
 		$markup .= '<span class="screen-reader-text">' . get_the_title() . '</span>';
 		$markup .= '</a>';
 
-		if ( ! empty( $read_more_args['classes'] ) ) {
+		if ( ! empty( $read_more_args[ 'classes' ] ) ) {
 			$markup = '<div class="read-more-wrapper" style="padding: 10px 0 0;">' . $markup . '</div>';
 		}
 
