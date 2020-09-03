@@ -107,12 +107,19 @@ jobs:
           - machines: 1
             specs: "dashboard"
             envs: "default"
-          ## 2 machines for editor tests
+          ## 2 machines for classic editor tests
           - machines: 1
-            specs: "editor"
+            specs: "editor/classic"
+            envs: "classic-editor"
+          - machines: 2
+            specs: "editor/classic"
+            envs: "classic-editor"
+          ## 2 machines for modern editor (Gutenberg)
+          - machines: 1
+            specs: "editor/modern"
             envs: "default"
           - machines: 2
-            specs: "editor"
+            specs: "editor/modern"
             envs: "default"
           ## 6 machines for customizer tests
           - machines: 1
