@@ -137,8 +137,8 @@ class Layout_Blog extends Base_Customizer {
 					},
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
-						'template'   =>
-							'.cover .inner, .cover .inner a, .cover .inner a:hover, .cover .inner a:focus, .cover .inner li {
+						'template' =>
+							'.cover-post .inner, .cover-post .inner a, .cover-post .inner a:hover, .cover-post .inner a:focus, .cover-post .inner li {
 							color: {{value}};
 						}',
 					],
@@ -243,11 +243,10 @@ class Layout_Blog extends Base_Customizer {
 					'default'           => wp_json_encode( $order_default_components ),
 				),
 				array(
-					'label'           => esc_html__( 'Post Content Order', 'neve' ),
-					'section'         => 'neve_blog_archive_layout',
-					'components'      => $components,
-					'priority'        => 55,
-					'active_callback' => array( $this, 'should_show_content_ordering' ),
+					'label'      => esc_html__( 'Post Content Order', 'neve' ),
+					'section'    => 'neve_blog_archive_layout',
+					'components' => $components,
+					'priority'   => 55,
 				),
 				'Neve\Customizer\Controls\React\Ordering'
 			)
@@ -462,12 +461,7 @@ class Layout_Blog extends Base_Customizer {
 	 * @return bool
 	 */
 	public function should_show_meta_order() {
-		$layout = get_theme_mod( 'neve_blog_archive_layout', 'grid' );
-		if ( $layout !== 'grid' ) {
-			return true;
-		}
-
-		$default = array(
+		$default       = array(
 			'thumbnail',
 			'title-meta',
 			'excerpt',
@@ -475,20 +469,6 @@ class Layout_Blog extends Base_Customizer {
 		$content_order = get_theme_mod( 'neve_post_content_ordering', wp_json_encode( $default ) );
 		$content_order = json_decode( $content_order, true );
 		if ( ! in_array( 'title-meta', $content_order, true ) ) {
-			return false;
-		}
-
-		return true;
-	}
-
-	/**
-	 * Callback for post content ordering control.
-	 *
-	 * @return bool
-	 */
-	public function should_show_content_ordering() {
-		$layout = get_theme_mod( 'neve_blog_archive_layout', 'grid' );
-		if ( $layout !== 'grid' ) {
 			return false;
 		}
 

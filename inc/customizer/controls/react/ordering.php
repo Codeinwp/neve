@@ -40,7 +40,7 @@ class Ordering extends \WP_Customize_Control {
 	 */
 	public function to_json() {
 		parent::to_json();
-		$this->json[ 'components' ] = $this->components;
-		$this->json[ 'defaultOrder' ] = $this->default_order;
+		$this->json['components']   = $this->components;
+		$this->json['defaultOrder'] = $this->default_order;
 	}
 }

@@ -1495,7 +1495,6 @@ article {
 }
 
 .cover-post .inner {
-  overflow: hidden;
   position: absolute;
   top: 0;
   bottom: 0;

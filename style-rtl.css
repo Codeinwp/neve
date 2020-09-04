@@ -1484,6 +1484,32 @@ article {
   margin-bottom: 10px;
 }
 
+.layout-covers .content {
+  border: none;
+  padding-bottom: 0;
+}
+
+.cover-post {
+  position: relative;
+}
+
+.cover-post .inner {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 25px 25px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: #fff;
+}
+
+.cover-post .inner a, .cover-post .inner a:hover, .cover-post .inner a:focus, .cover-post .inner li {
+  color: #fff;
+}
+
 .page .nv-page-title-wrap {
   margin-top: 30px;
 }
