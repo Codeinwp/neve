@@ -23,10 +23,11 @@ export const initBlog = () => {
  * @returns {boolean}
  */
 const masonry = () => {
-	if ( NeveProperties.masonry !== 'enabled' || NeveProperties.masonryColumns <
-			2 ) {
-		return false;
-	}
+  	const { masonry, masonryColumns, blogLayout } = NeveProperties
+
+  if (masonry !== 'enabled' || masonryColumns < 2) {
+	return false
+  }
 	masonryContainer = document.querySelector( '.nv-index-posts .posts-wrapper' );
 
 	if ( masonryContainer === null ) {
@@ -35,8 +36,8 @@ const masonry = () => {
 
 	imagesLoaded( masonryContainer, () => {
 		masonryInstance = new Masonry( masonryContainer, {
-			itemSelector: 'article.layout-grid',
-			columnWidth: 'article.layout-grid',
+			itemSelector: `article.layout-${blogLayout}`,
+			columnWidth: `article.layout-${blogLayout}`,
 			percentPosition: true
 		} );
 	} );

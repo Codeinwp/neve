@@ -101,7 +101,19 @@ class Frontend extends Generator {
 		$this->setup_buttons();
 		$this->setup_typography();
 		$this->setup_blog_typography();
+		$this->setup_blog_colors();
 
+	}
+
+	/**
+	 * Add css for blog colors.
+	 */
+	public function setup_blog_colors() {
+		$this->_subscribers['.cover-post .inner, .cover-post .inner a, .cover-post .inner a:hover, .cover-post .inner a:focus, .cover-post .inner li'] = [
+			Config::CSS_PROP_COLOR => [
+				Dynamic_Selector::META_KEY => 'neve_blog_covers_text_color',
+			],
+		];
 	}
 
 	/**

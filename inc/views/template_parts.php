@@ -48,11 +48,11 @@ class Template_Parts extends Base_View {
 		if ( $box_shadow !== 0 ) {
 			$class .= ' nv-shadow-' . $box_shadow;
 		}
-		$class .= ' col-12 layout-' . $layout;
+		$class .= ' layout-' . $layout;
 		if ( in_array( $layout, [ 'grid', 'covers' ], true ) ) {
 			$class .= ' ' . $this->get_grid_columns_class();
 		} else {
-			$class .= ' nv-non-grid-article';
+			$class .= ' col-12 nv-non-grid-article';
 		}
 		return $class;
 	}
@@ -77,9 +77,13 @@ class Template_Parts extends Base_View {
 		}
 
 		if ( $layout === 'covers' ) {
-			$markup .= '<div class="cover-post">';
-			$markup .= '<div class="background">' . $this->get_post_thumbnail() . '</div>';
+			$thumb = get_the_post_thumbnail_url();
+			$style = ! empty( $thumb ) ? 'background-image: url(' . esc_url( $thumb ) . ')' : '';
+
+			$markup .= '<div class="cover-post nv-post-thumbnail-wrap" style="' . esc_attr( $style ) . '">';
+			// $markup .= '<div class="background">' . $this->get_post_thumbnail() . '</div>';
 			$markup .= '<div class="inner">';
+			// $markup .= '<div class="inner">';
 			$markup .= $this->get_ordered_content_parts( true );
 			$markup .= '</div>';
 			$markup .= '</div>';
@@ -203,12 +207,32 @@ class Template_Parts extends Base_View {
 	 * @return string
 	 */
 	private function get_grid_columns_class() {
-		$column_numbers = get_theme_mod( 'neve_grid_layout', 1 );
-		if ( $column_numbers === 0 ) {
-			$column_numbers = 1;
+		$classes    = '';
+		$columns    = get_theme_mod(
+			'neve_grid_layout',
+			wp_json_encode(
+				[
+					'desktop' => 1,
+					'tablet'  => 1,
+					'mobile'  => 1,
+				]
+			)
+		);
+		$columns    = json_decode( $columns, true );
+		$device_map = [
+			'desktop' => 'md',
+			'tablet'  => 'sm',
+			'mobile'  => '',
+		];
+
+		foreach ( $columns as $device => $column_number ) {
+			if ( $column_number === 0 || empty( $column_number ) ) {
+				$column_number = 1;
+			}
+			$classes .= ' col-' . ( $device !== 'mobile' ? $device_map[ $device ] . '-' : '' ) . ( 12 / absint( $column_number ) );
 		}
 
-		return 'col-sm-' . ( 12 / absint( $column_numbers ) );
+		return $classes;
 	}
 
 	/**
@@ -251,6 +275,8 @@ class Template_Parts extends Base_View {
 	}
 
 	/**
+	 * Get ordered content parts.
+	 *
 	 * @param bool $exclude_thumbnail exclude thumbnail from order.
 	 * @return string
 	 */

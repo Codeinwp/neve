@@ -1,24 +1,44 @@
-$overlay: rgba( 0,0,0, 0.75 );
+$overlay: rgba(0, 0, 0, 0.75);
 .layout-covers {
+	.article-content-col, .content, .cover-post {
+		height: 100%;
+	}
+
 	.content {
 		border: none;
 		padding-bottom: 0;
 	}
 }
+
 .cover-post {
 	position: relative;
-	.inner {
+	background-size: cover;
+	display: flex;
+	background-position: center;
+
+	&:after {
+		background-color: $overlay;
+		content: '';
 		position: absolute;
+		left: 0;
+		right: 0;
 		top: 0;
 		bottom: 0;
-		width: 100%;
+	}
+
+	.inner {
+		min-height: 350px;
+		position: relative;
+		z-index: 10;
 		padding: 25px 25px 10px;
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-end;
-		background-color: $overlay;
 		color: #fff;
+		flex-grow: 1;
+
 		a, a:hover, a:focus, li {
+
 			color: #fff;
 		}
 	}

@@ -48,6 +48,9 @@ class Layout_Blog extends Base_Customizer {
 		);
 	}
 
+	/**
+	 * Add blog layout controls.
+	 */
 	private function add_layout_controls() {
 		$this->add_control(
 			new Control(
@@ -101,22 +104,35 @@ class Layout_Blog extends Base_Customizer {
 			new Control(
 				'neve_grid_layout',
 				array(
-					'sanitize_callback' => 'absint',
-					'default'           => '1',
+					'sanitize_callback' => 'neve_sanitize_range_value',
+					'default'           => wp_json_encode(
+						array(
+							'desktop' => 1,
+							'tablet'  => 1,
+							'mobile'  => 1,
+						)
+					),
 				),
 				array(
-					'priority'        => 11,
+					'label'           => esc_html__( 'Columns', 'neve' ),
 					'section'         => 'neve_blog_archive_layout',
-					'label'           => esc_html__( 'Layout Columns', 'neve' ),
-					'choices'         => array(
-						'1' => esc_html__( '1 Column', 'neve' ),
-						'2' => esc_html__( '2 Columns', 'neve' ),
-						'3' => esc_html__( '3 Columns', 'neve' ),
-						'4' => esc_html__( '4 Columns', 'neve' ),
+					'units'           => array(
+						'items',
 					),
-					'type'            => 'select',
+					'input_attrs'     => [
+						'step'       => 1,
+						'min'        => 1,
+						'max'        => 4,
+						'defaultVal' => [
+							'mobile'  => 1,
+							'tablet'  => 1,
+							'desktop' => 1,
+						],
+					],
+					'priority'        => 11,
 					'active_callback' => array( $this, 'is_column_layout' ),
-				)
+				),
+				'Neve\Customizer\Controls\React\Responsive_Range'
 			)
 		);
 
@@ -184,6 +200,9 @@ class Layout_Blog extends Base_Customizer {
 		);
 	}
 
+	/**
+	 * Add content ordering and controls.
+	 */
 	private function add_content_ordering_controls() {
 		$this->add_control(
 			new Control(
@@ -299,6 +318,9 @@ class Layout_Blog extends Base_Customizer {
 		);
 	}
 
+	/**
+	 * Add controls for post meta.
+	 */
 	private function add_post_meta_controls() {
 		$this->add_control(
 			new Control(
@@ -495,7 +517,16 @@ class Layout_Blog extends Base_Customizer {
 		if ( ! $this->is_column_layout() ) {
 			return false;
 		}
-		if ( (int) get_theme_mod( 'neve_grid_layout', 1 ) === 1 ) {
+
+		$columns = json_decode( get_theme_mod( 'neve_grid_layout', '{"desktop":1,"tablet":1,"mobile":1}' ), true );
+		$columns = array_filter(
+			array_values( $columns ),
+			function ( $value ) {
+				return $value > 1;
+			}
+		);
+
+		if ( empty( $columns ) ) {
 			return false;
 		}
 

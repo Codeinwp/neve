@@ -58,10 +58,26 @@ function neve_migrate_blog_layout() {
 		return;
 	}
 
+	// Layout Setting
 	$old_value = get_theme_mod( 'neve_blog_archive_layout' );
 	if ( ! empty( $old_value && $old_value === 'alternative' ) ) {
 		set_theme_mod( 'neve_blog_archive_layout', 'default' );
 		set_theme_mod( 'neve_blog_list_alternative_layout', true );
+	}
+
+	// Column Setting - Previously mobile was forced to 1.
+	$old = get_theme_mod( 'neve_grid_layout' );
+	if ( ! empty( $old ) && is_numeric( $old ) ) {
+		set_theme_mod(
+			'neve_grid_layout',
+			wp_json_encode(
+				array(
+					'desktop' => $old,
+					'tablet'  => $old,
+					'mobile'  => 1,
+				) 
+			) 
+		);
 	}
 
 	set_theme_mod( $flag, true );

@@ -38,11 +38,11 @@ class Radio_Buttons extends \WP_Customize_Control {
 	 */
 	public $large_buttons = false;
 	/**
-	 * Should have larger buttons.
+	 * Show the labels.
 	 *
 	 * @var array
 	 */
-	public $showLabels = false;
+	public $show_labels = false;
 
 	/**
 	 * Send to JS.
@@ -52,6 +52,6 @@ class Radio_Buttons extends \WP_Customize_Control {
 		$this->json['choices']       = $this->choices;
 		$this->json['is_for']        = $this->is_for;
 		$this->json['large_buttons'] = $this->large_buttons;
-		$this->json['showLabels']    = $this->showLabels;
+		$this->json['showLabels']    = $this->show_labels;
 	}
 }

@@ -1484,6 +1484,10 @@ article {
   margin-bottom: 10px;
 }
 
+.layout-covers .article-content-col, .layout-covers .content, .layout-covers .cover-post {
+  height: 100%;
+}
+
 .layout-covers .content {
   border: none;
   padding-bottom: 0;
@@ -1491,19 +1495,31 @@ article {
 
 .cover-post {
   position: relative;
+  background-size: cover;
+  display: flex;
+  background-position: center;
+}
+
+.cover-post:after {
+  background-color: rgba(0, 0, 0, 0.75);
+  content: '';
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
 }
 
 .cover-post .inner {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 100%;
+  min-height: 350px;
+  position: relative;
+  z-index: 10;
   padding: 25px 25px 10px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  background-color: rgba(0, 0, 0, 0.75);
   color: #fff;
+  flex-grow: 1;
 }
 
 .cover-post .inner a, .cover-post .inner a:hover, .cover-post .inner a:focus, .cover-post .inner li {
