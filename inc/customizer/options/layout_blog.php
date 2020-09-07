@@ -217,6 +217,7 @@ class Layout_Blog extends Base_Customizer {
 					'priority'         => 50,
 					'class'            => 'blog-layout-ordering-content-accordion',
 					'accordion'        => true,
+					'expanded'        => false,
 					'controls_to_wrap' => 4,
 				),
 				'Neve\Customizer\Controls\Heading'
@@ -336,11 +337,11 @@ class Layout_Blog extends Base_Customizer {
 					'class'            => 'blog-layout-post-meta-accordion',
 					'accordion'        => true,
 					'controls_to_wrap' => 2,
+					'expanded'        => false,
 				),
 				'Neve\Customizer\Controls\Heading'
 			)
 		);
-
 
 		$order_default_components = array(
 			'author',
