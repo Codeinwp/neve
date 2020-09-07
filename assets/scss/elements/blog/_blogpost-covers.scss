@@ -15,6 +15,7 @@ $overlay: rgba(0, 0, 0, 0.75);
 	background-size: cover;
 	display: flex;
 	background-position: center;
+	overflow: hidden;
 
 	&:after {
 		background-color: $overlay;

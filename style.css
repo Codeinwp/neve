@@ -1499,6 +1499,7 @@ article {
   background-size: cover;
   display: flex;
   background-position: center;
+  overflow: hidden;
 }
 
 .cover-post:after {
