@@ -8,9 +8,8 @@ init_environment(){
 	#Setup core
 	wp --allow-root core update --version=$WP_VERSION
 	wp --allow-root core update-db
-
 	rm -rf  /var/www/html/wp-content/themes/*
-
+	chmod 0777 -R /var/www/html/wp-content/
 	echo "Installing Neve theme from $NEVE_LOCATION"
 	wp --allow-root theme install --activate $NEVE_LOCATION
 }
@@ -27,7 +26,6 @@ fi
 
 wp  --allow-root core install --url=http://localhost:8080 --title=SandboxSite --admin_user=admin --admin_password=admin --admin_email=admin@admin.com
 mkdir -p /var/www/html/wp-content/uploads
-chmod 0777 -R /var/www/html/wp-content/
 rm -rf /var/www/html/wp-content/plugins/akismet
 
 init_environment

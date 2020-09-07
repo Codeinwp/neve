@@ -310,3 +310,22 @@ add_filter(
 	}
 );
 
+
+/**
+ * Add class to page header menu.
+ *
+ * @param array $args Nav menu args.
+ *
+ * @return array
+ */
+function neve_add_page_header_menu_classes( $args ) {
+	if ( $args['theme_location'] !== 'page-header' ) {
+		return $args;
+	}
+
+	$args['menu_class'] .= ' nav-ul';
+
+	return $args;
+}
+
+add_filter( 'wp_nav_menu_args', 'neve_add_page_header_menu_classes', 10, 4 );
