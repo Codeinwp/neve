@@ -129,7 +129,6 @@ class Config {
 		self::CSS_SELECTOR_BTN_PRIMARY_NORMAL        => '.button.button-primary,
 				button, input[type=button],
 				.btn, input[type="submit"],
-				#comments input[type=submit],
 				/* Buttons in navigation */
 				ul[id^="nv-primary-navigation"] li.button.button-primary > a,
 				.menu li.button.button-primary > a,  .wp-block-button.is-style-primary .wp-block-button__link',
@@ -137,7 +136,7 @@ class Config {
 				.nv-tags-list a:hover,
 				ul[id^="nv-primary-navigation"] li.button.button-primary > a:hover,
 				.menu li.button.button-primary > a:hover, .wp-block-button.is-style-primary .wp-block-button__link:hover ',
-		self::CSS_SELECTOR_BTN_SECONDARY_NORMAL      => '.button.button-secondary, #comments input[type="submit"], .cart-off-canvas .button.nv-close-cart-sidebar,  .wp-block-button.is-style-secondary .wp-block-button__link',
+		self::CSS_SELECTOR_BTN_SECONDARY_NORMAL      => '.button.button-secondary, #comments input[type="submit"], #comments input[type=submit], .cart-off-canvas .button.nv-close-cart-sidebar,  .wp-block-button.is-style-secondary .wp-block-button__link',
 		self::CSS_SELECTOR_BTN_SECONDARY_HOVER       => '.button.button-secondary:hover, #comments input[type="submit"]:hover, .cart-off-canvas .button.nv-close-cart-sidebar:hover,  .wp-block-button.is-style-secondary .wp-block-button__link:hover',
 		self::CSS_SELECTOR_ARCHIVE_POST_TITLE        => '.blog .blog-entry-title, .archive .blog-entry-title',
 		self::CSS_SELECTOR_ARCHIVE_POST_EXCERPT      => '.blog .entry-summary, .archive .entry-summary, .blog .post-pages-links',
