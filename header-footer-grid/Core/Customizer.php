@@ -151,7 +151,6 @@ class Customizer {
 			)
 		);
 		wp_enqueue_script( 'hfg-layout-builder' );
-		wp_script_add_data( 'hfg-layout-builder', 'async', true );
 
 		/**
 		 * A Builder Class instance.
@@ -222,7 +221,6 @@ class Customizer {
 			Main::VERSION,
 			true
 		);
-		wp_script_add_data( 'hfg-customizer', 'async', true );
 
 	}
 

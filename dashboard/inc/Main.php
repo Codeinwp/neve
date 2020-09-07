@@ -166,7 +166,6 @@ class Main {
 		wp_register_script( 'neve-dash-script', get_template_directory_uri() . '/dashboard/build/build.js', $dependencies, NEVE_VERSION, true );
 		wp_localize_script( 'neve-dash-script', 'neveDash', apply_filters( 'neve_dashboard_page_data', $this->get_localization() ) );
 		wp_enqueue_script( 'neve-dash-script' );
-		wp_script_add_data( 'neve-dash-script', 'async', true );
 	}
 
 	/**

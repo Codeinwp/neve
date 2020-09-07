@@ -241,7 +241,6 @@ final class Manager {
 
 		wp_enqueue_script( 'neve-metabox' );
 
-		wp_script_add_data( 'neve-metabox', 'async', true );
 	}
 
 	/**
@@ -356,8 +355,6 @@ final class Manager {
 			trailingslashit( get_template_directory_uri() ) . 'inc/admin/metabox/build/index.js',
 			array( 'wp-plugins', 'wp-edit-post', 'wp-element', 'wp-components', 'wp-data', 'wp-keyboard-shortcuts' )
 		);
-
-		wp_script_add_data( 'neve-meta-sidebar', 'async', true );
 
 		$container    = $post_type === 'post' ? Mods::get( Config::MODS_SINGLE_POST_CONTAINER_STYLE, 'contained' ) : Mods::get( Config::MODS_DEFAULT_CONTAINER_STYLE, 'contained' );
 		$editor_width = Mods::get( Config::MODS_CONTAINER_WIDTH );

@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-09-01T08:46:24+00:00\n"
+"POT-Creation-Date: 2020-09-07T10:34:19+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -276,7 +276,7 @@ msgstr ""
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:309
 #: inc/admin/metabox/main.php:39
 #: inc/customizer/options/layout_container.php:134
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:164
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:165
 msgid "Full Width"
 msgstr ""
 
@@ -284,7 +284,7 @@ msgstr ""
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:310
 #: inc/admin/metabox/main.php:38
 #: inc/customizer/options/layout_container.php:133
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:157
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:158
 msgid "Contained"
 msgstr ""
 
@@ -300,7 +300,7 @@ msgstr ""
 #: header-footer-grid/Core/Components/Copyright.php:84
 #: header-footer-grid/Core/Components/CustomHtml.php:158
 #: header-footer-grid/Core/Components/Logo.php:205
-#: inc/core/front_end.php:179
+#: inc/core/front_end.php:206
 #: inc/customizer/options/colors_background.php:66
 msgid "Text Color"
 msgstr ""
@@ -421,7 +421,7 @@ msgid "Mobile menu content"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:465
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:128
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:129
 msgid "Left"
 msgstr ""
 
@@ -430,7 +430,7 @@ msgid "Center"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:473
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:130
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:131
 msgid "Right"
 msgstr ""
 
@@ -533,22 +533,22 @@ msgid "Arbitrary HTML code. It supports also shortcodes."
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetFour.php:32
-#: inc/core/front_end.php:505
+#: inc/core/front_end.php:534
 msgid "Footer Four"
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetOne.php:31
-#: inc/core/front_end.php:502
+#: inc/core/front_end.php:531
 msgid "Footer One"
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetThree.php:31
-#: inc/core/front_end.php:504
+#: inc/core/front_end.php:533
 msgid "Footer Three"
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetTwo.php:32
-#: inc/core/front_end.php:503
+#: inc/core/front_end.php:532
 msgid "Footer Two"
 msgstr ""
 
@@ -599,7 +599,7 @@ msgstr ""
 #: header-footer-grid/Core/Components/Nav.php:43
 #: header-footer-grid/Core/Components/Nav.php:221
 #: header-footer-grid/templates/components/component-nav.php:26
-#: inc/core/front_end.php:71
+#: inc/core/front_end.php:72
 msgid "Primary Menu"
 msgstr ""
 
@@ -660,7 +660,7 @@ msgstr ""
 #: header-footer-grid/Core/Components/NavFooter.php:41
 #: header-footer-grid/Core/Components/NavFooter.php:138
 #: header-footer-grid/templates/components/component-nav-footer.php:23
-#: inc/core/front_end.php:72
+#: inc/core/front_end.php:73
 msgid "Footer Menu"
 msgstr ""
 
@@ -744,7 +744,7 @@ msgstr ""
 #: header-footer-grid/Core/Components/SecondNav.php:41
 #: header-footer-grid/Core/Components/SecondNav.php:136
 #: header-footer-grid/templates/components/component-nav-secondary.php:23
-#: inc/core/front_end.php:73
+#: inc/core/front_end.php:74
 msgid "Secondary Menu"
 msgstr ""
 
@@ -759,7 +759,7 @@ msgstr ""
 
 #. translators: %s is the header name
 #: header-footer-grid/Core/Customizer.php:265
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:150
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:151
 #: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:60
 #: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:172
 msgid "Default"
@@ -971,7 +971,7 @@ msgstr ""
 
 #: inc/admin/metabox/main.php:41
 #: inc/customizer/options/layout_container.php:43
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:140
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:141
 msgid "Container"
 msgstr ""
 
@@ -988,8 +988,8 @@ msgid "No Sidebar"
 msgstr ""
 
 #: inc/admin/metabox/main.php:56
-#: inc/core/front_end.php:495
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:116
+#: inc/core/front_end.php:524
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:117
 msgid "Sidebar"
 msgstr ""
 
@@ -998,12 +998,12 @@ msgid "Components"
 msgstr ""
 
 #: inc/admin/metabox/main.php:71
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:337
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:338
 msgid "Disable Header"
 msgstr ""
 
 #: inc/admin/metabox/main.php:76
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:363
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:364
 msgid "Disable Title"
 msgstr ""
 
@@ -1012,7 +1012,7 @@ msgid "Disable Featured Image"
 msgstr ""
 
 #: inc/admin/metabox/main.php:88
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:349
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:350
 msgid "Disable Footer"
 msgstr ""
 
@@ -1114,41 +1114,41 @@ msgstr ""
 msgid "Documentation"
 msgstr ""
 
-#: inc/core/front_end.php:149
+#: inc/core/front_end.php:176
 msgid "Black"
 msgstr ""
 
-#: inc/core/front_end.php:158
+#: inc/core/front_end.php:185
 msgid "White"
 msgstr ""
 
-#: inc/core/front_end.php:167
+#: inc/core/front_end.php:194
 msgid "Button Color"
 msgstr ""
 
-#: inc/core/front_end.php:171
+#: inc/core/front_end.php:198
 #: inc/customizer/options/colors_background.php:56
 msgid "Link Color"
 msgstr ""
 
-#: inc/core/front_end.php:175
+#: inc/core/front_end.php:202
 #: inc/customizer/options/colors_background.php:61
 msgid "Link Hover Color"
 msgstr ""
 
-#: inc/core/front_end.php:183
+#: inc/core/front_end.php:210
 msgid "Button text color"
 msgstr ""
 
-#: inc/core/front_end.php:187
+#: inc/core/front_end.php:214
 msgid "Button Hover text color"
 msgstr ""
 
-#: inc/core/front_end.php:191
+#: inc/core/front_end.php:218
 msgid "Button Hover Color"
 msgstr ""
 
-#: inc/core/front_end.php:496
+#: inc/core/front_end.php:525
 msgid "Shop Sidebar"
 msgstr ""
 
@@ -1276,7 +1276,7 @@ msgid "Meta Order"
 msgstr ""
 
 #: inc/customizer/options/layout_blog.php:444
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:257
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:258
 msgid "Author Avatar"
 msgstr ""
 
@@ -1358,13 +1358,13 @@ msgstr ""
 
 #: inc/customizer/options/layout_single_post.php:69
 #: dashboard/src/Components/Onboarding/ImportModal.js:128
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:294
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:293
 msgid "Content"
 msgstr ""
 
 #: inc/customizer/options/layout_single_post.php:70
 #: inc/views/partials/post_meta.php:215
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:291
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:294
 msgid "Tags"
 msgstr ""
 
@@ -1385,7 +1385,7 @@ msgid "Title"
 msgstr ""
 
 #: inc/customizer/options/layout_single_product.php:124
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:126
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:127
 #: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:201
 #: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:233
 msgid "None"
@@ -1973,69 +1973,69 @@ msgstr ""
 msgid "Typekit Project ID is invalid"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:111
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:112
 msgid "Page Layout"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:124
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:125
 #: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:59
 #: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:171
 msgid "Inherit"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:172
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:173
 msgid "Custom Content Width (%)"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:213
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:214
 msgid "Page Title"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:217
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:218
 msgid "Title alignment"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:272
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:273
 msgid "Reading Time"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:289
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:290
 msgid "Post Title"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:290
-msgid "Featured Image"
-msgstr ""
-
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:292
-msgid "Post Navigation"
-msgstr ""
-
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:293
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:291
 msgid "Post Meta"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:310
-msgid "Author Biography"
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:292
+msgid "Featured Image"
+msgstr ""
+
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:296
+msgid "Post Navigation"
 msgstr ""
 
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:311
-msgid "Related Posts"
+msgid "Author Biography"
 msgstr ""
 
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:312
+msgid "Related Posts"
+msgstr ""
+
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:313
 msgid "Sharing Icons"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:320
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:321
 msgid "Elements"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:381
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:382
 msgid "Reset all options to default"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:390
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:391
 msgid "Return to customizer settings"
 msgstr ""
 
