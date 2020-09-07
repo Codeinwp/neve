@@ -362,6 +362,7 @@ class Admin {
 			NEVE_VERSION,
 			true
 		);
+		wp_script_add_data( 'neve-gutenberg-script', 'async', true );
 		wp_enqueue_style( 'neve-gutenberg-style', NEVE_ASSETS_URL . 'css/gutenberg-editor-style' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), NEVE_VERSION );
 	}
 

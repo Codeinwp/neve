@@ -180,5 +180,6 @@ class Main {
 		wp_enqueue_script( 'plugin-install' );
 		wp_enqueue_script( 'updates' );
 		wp_enqueue_script( 'neve-plugin-install' );
+		wp_script_add_data( 'neve-plugin-install', 'async', true );
 	}
 }

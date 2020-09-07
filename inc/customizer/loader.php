@@ -87,6 +87,7 @@ class Loader {
 			NEVE_VERSION,
 			true
 		);
+		wp_script_add_data( 'neve-customizer-controls', 'async', true );
 
 		$editor_dependencies = array(
 			'wp-i18n',
@@ -114,6 +115,7 @@ class Loader {
 			)
 		);
 		wp_enqueue_script( 'react-controls' );
+		wp_script_add_data( 'react-controls', 'async', true );
 		wp_enqueue_style(
 			'react-controls',
 			get_template_directory_uri() .
@@ -158,6 +160,7 @@ class Loader {
 			)
 		);
 		wp_enqueue_script( 'neve-customizer-preview' );
+		wp_script_add_data( 'neve-customizer-preview', 'async', true );
 	}
 
 	/**
