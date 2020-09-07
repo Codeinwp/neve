@@ -49,9 +49,11 @@ class Css_Prop {
 			case Config::CSS_PROP_COLOR:
 			case Config::CSS_PROP_FILL_COLOR:
 			case Config::CSS_PROP_BORDER_COLOR:
-				$value = strpos( $value, "#" ) === 0 ? $value : '#' . $value;
-
-				return sprintf( "%s: %s%s;", ( $css_prop ), sanitize_hex_color( $value ), isset( $meta['important'] ) && $meta['important'] ? '!important' : '' );
+				$mode = (false === strpos( $value, 'rgba' )) ? 'hex' : 'rgba';
+				if ( $mode === 'hex' ) {
+					$value = strpos( $value, "#" ) === 0 ? $value : '#' . $value;
+				}
+				return sprintf( "%s: %s%s;", ($css_prop), neve_sanitize_colors( $value ), isset( $meta[ 'important' ] ) && $meta[ 'important' ] ? '!important' : '' );
 				break;
 			case Config::CSS_PROP_MAX_WIDTH:
 			case Config::CSS_PROP_WIDTH:

@@ -148,6 +148,7 @@ class Layout_Blog extends Base_Customizer {
 					'label'                 => esc_html__( 'Text Color', 'neve' ),
 					'section'               => 'neve_blog_archive_layout',
 					'priority'              => 15,
+					'default'               => '#ffffff',
 					'active_callback'       => function () {
 						return get_theme_mod( 'neve_blog_archive_layout' ) === 'covers';
 					},
