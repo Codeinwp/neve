@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-09-04T15:19:13+00:00\n"
+"POT-Creation-Date: 2020-09-08T12:00:49+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -267,7 +267,7 @@ msgstr ""
 
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:303
 #: header-footer-grid/Core/Settings/Manager.php:181
-#: inc/customizer/options/layout_blog.php:78
+#: inc/customizer/options/layout_blog.php:81
 #: inc/customizer/options/main.php:51
 msgid "Layout"
 msgstr ""
@@ -300,7 +300,7 @@ msgstr ""
 #: header-footer-grid/Core/Components/Logo.php:205
 #: inc/core/front_end.php:179
 #: inc/customizer/options/colors_background.php:66
-#: inc/customizer/options/layout_blog.php:139
+#: inc/customizer/options/layout_blog.php:148
 msgid "Text Color"
 msgstr ""
 
@@ -840,7 +840,7 @@ msgid "Archive URL"
 msgstr ""
 
 #: header-footer-grid/Core/Magic_Tags.php:525
-#: inc/customizer/options/layout_blog.php:338
+#: inc/customizer/options/layout_blog.php:355
 #: inc/views/partials/post_meta.php:125
 msgid "Author"
 msgstr ""
@@ -1165,107 +1165,107 @@ msgstr ""
 msgid "Blog / Archive"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:59
+#: inc/customizer/options/layout_blog.php:62
 msgid "Blog Layout"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:78
+#: inc/customizer/options/layout_blog.php:81
 #: inc/customizer/options/typography.php:115
 msgid "Blog"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:83
+#: inc/customizer/options/layout_blog.php:86
 msgid "List"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:87
+#: inc/customizer/options/layout_blog.php:90
 msgid "Covers"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:91
+#: inc/customizer/options/layout_blog.php:94
 msgid "Grid"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:108
+#: inc/customizer/options/layout_blog.php:117
 msgid "Columns"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:168
+#: inc/customizer/options/layout_blog.php:178
 msgid "Alternating layout"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:187
+#: inc/customizer/options/layout_blog.php:197
 msgid "Enable Masonry"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:202
+#: inc/customizer/options/layout_blog.php:215
 msgid "Ordering and Content"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:221
+#: inc/customizer/options/layout_blog.php:235
 msgid "Post Pagination"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:226
+#: inc/customizer/options/layout_blog.php:240
 msgid "Number"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:227
+#: inc/customizer/options/layout_blog.php:241
 msgid "Infinite Scroll"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:240
+#: inc/customizer/options/layout_blog.php:254
 #: inc/customizer/options/layout_single_post.php:68
 msgid "Thumbnail"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:241
+#: inc/customizer/options/layout_blog.php:255
 #: inc/customizer/options/layout_single_post.php:67
 msgid "Title & Meta"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:242
+#: inc/customizer/options/layout_blog.php:256
 msgid "Excerpt"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:253
+#: inc/customizer/options/layout_blog.php:267
 msgid "Post Content Order"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:270
+#: inc/customizer/options/layout_blog.php:284
 msgid "Excerpt Length"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:293
+#: inc/customizer/options/layout_blog.php:307
 msgid "Thumbnail Shadow"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:317
+#: inc/customizer/options/layout_blog.php:334
 msgid "Post Meta"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:339
+#: inc/customizer/options/layout_blog.php:356
 #: inc/customizer/options/layout_single_product.php:107
 #: inc/views/partials/post_meta.php:126
 msgid "Category"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:340
+#: inc/customizer/options/layout_blog.php:357
 #: inc/views/partials/post_meta.php:127
 msgid "Date"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:341
+#: inc/customizer/options/layout_blog.php:358
 #: inc/customizer/options/layout_single_post.php:72
 #: inc/views/partials/post_meta.php:128
 msgid "Comments"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:353
+#: inc/customizer/options/layout_blog.php:370
 msgid "Meta Order"
 msgstr ""
 
-#: inc/customizer/options/layout_blog.php:371
+#: inc/customizer/options/layout_blog.php:388
 msgid "Show Author Avatar"
 msgstr ""
 
@@ -1515,7 +1515,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: inc/views/pluggable/pagination.php:141
-#: inc/views/template_parts.php:299
+#: inc/views/template_parts.php:312
 msgid "Pages:"
 msgstr ""
 
@@ -1527,7 +1527,7 @@ msgstr ""
 msgid "next"
 msgstr ""
 
-#: inc/views/template_parts.php:243
+#: inc/views/template_parts.php:254
 msgid "Read More"
 msgstr ""
 
@@ -2017,7 +2017,7 @@ msgstr ""
 msgid "Outline"
 msgstr ""
 
-#: inc/customizer/controls/react/src/common/ColorControl.js:55
+#: inc/customizer/controls/react/src/common/ColorControl.js:60
 msgid "Clear"
 msgstr ""
 

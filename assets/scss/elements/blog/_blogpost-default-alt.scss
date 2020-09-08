@@ -50,7 +50,7 @@
   article.layout-alternative:nth-child(even) .article-content-col .content {
     flex-direction: row;
     .nv-post-thumbnail-wrap ~ .alternative-layout-content {
-      padding: 0 0 0 $spacing;
+      padding: 0 0 0 $spacing-sm;
     }
   }
 }

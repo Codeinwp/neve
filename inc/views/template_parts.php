@@ -81,9 +81,7 @@ class Template_Parts extends Base_View {
 			$style = ! empty( $thumb ) ? 'background-image: url(' . esc_url( $thumb ) . ')' : '';
 
 			$markup .= '<div class="cover-post nv-post-thumbnail-wrap" style="' . esc_attr( $style ) . '">';
-			// $markup .= '<div class="background">' . $this->get_post_thumbnail() . '</div>';
 			$markup .= '<div class="inner">';
-			// $markup .= '<div class="inner">';
 			$markup .= $this->get_ordered_content_parts( true );
 			$markup .= '</div>';
 			$markup .= '</div>';
@@ -117,7 +115,7 @@ class Template_Parts extends Base_View {
 		$markup .= '</a>';
 		$markup .= '</div>';
 
-		return $markup;
+		return apply_filters( 'neve_blog_post_thumbnail_markup', $markup );
 	}
 
 	/**

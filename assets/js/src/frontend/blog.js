@@ -2,9 +2,8 @@
 /* global NeveProperties */
 import { httpGetAsync, isInView, neveEach } from '../utils';
 
-let masonryInstance = null,
-		masonryContainer = null,
-		page = 2;
+let masonryContainer = null,
+	page = 2;
 
 /**
  * Initialize blog JS.
@@ -35,7 +34,7 @@ const masonry = () => {
 	}
 
 	imagesLoaded( masonryContainer, () => {
-		masonryInstance = new Masonry( masonryContainer, {
+		window.nvMasonry = new Masonry( masonryContainer, {
 			itemSelector: `article.layout-${blogLayout}`,
 			columnWidth: `article.layout-${blogLayout}`,
 			percentPosition: true
@@ -98,7 +97,7 @@ const requestMorePosts = () => {
 			tmp.innerHTML = JSON.parse(response);
 			neveEach(tmp.children, (el) => {
 				masonryContainer.append(el);
-				masonryInstance.appended(el);
+			 	window.nvMasonry.appended(el);
 			});
 		}
 	}, NeveProperties.infiniteScrollQuery);
