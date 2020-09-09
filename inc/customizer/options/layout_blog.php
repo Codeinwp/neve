@@ -30,6 +30,41 @@ class Layout_Blog extends Base_Customizer {
 		$this->add_layout_controls();
 		$this->add_content_ordering_controls();
 		$this->add_post_meta_controls();
+
+		add_action( 'customize_register', [ $this, 'adapt_old_pro' ], PHP_INT_MAX );
+	}
+
+	/**
+	 * Adapting old pro versions to make them still usable with the old theme version.
+	 */
+	public function adapt_old_pro() {
+		if ( ! defined( 'NEVE_PRO_VERSION' ) ) {
+			return;
+		}
+
+		if ( version_compare( NEVE_PRO_VERSION, '1.2.8', '>' ) ) {
+			return;
+		}
+
+		$changes = [
+			'neve_posts_order'                   => [ 'priority' => 51 ],
+			'neve_post_content_ordering'         => [ 'active_callback' => '__return_true' ],
+			'neve_blog_ordering_content_heading' => [ 'controls_to_wrap' => 6 ],
+			'neve_blog_post_meta_heading'        => [ 'controls_to_wrap' => 3 ],
+			'neve_read_more_options'             => [
+				'accordion' => true,
+				'expanded'  => false,
+				'class'     => 'read-more-options-accordion',
+			],
+		];
+
+		foreach ( $changes as $control_slug => $props ) {
+			foreach ( $props as $prop => $new_value ) {
+				$this->change_customizer_object( 'control', $control_slug, $prop, $new_value );
+			}
+		}
+
+		$this->wpc->remove_control( 'neve_metadata_options' );
 	}
 
 	/**
@@ -64,7 +99,7 @@ class Layout_Blog extends Base_Customizer {
 					'priority'         => 10,
 					'class'            => 'blog-layout-accordion',
 					'accordion'        => true,
-					'controls_to_wrap' => 4,
+					'controls_to_wrap' => 5,
 				),
 				'Neve\Customizer\Controls\Heading'
 			)
