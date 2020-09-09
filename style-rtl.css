@@ -1255,10 +1255,6 @@ fieldset input[type="text"], fieldset input[type="search"], fieldset input[type=
   font-size: 0.85em;
 }
 
-.nv-meta-list li:not(:last-child):after {
-  color: #676767;
-}
-
 .nv-meta-list:not(.nv-dynamic-meta) a, .nv-meta-list:not(.nv-dynamic-meta) a:hover {
   color: #676767;
 }

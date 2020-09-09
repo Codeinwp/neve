@@ -93,11 +93,6 @@ const ResponsiveRangeComponent = ({ control }) => {
 
   let displayValue = parseInt(value[currentDevice])
   displayValue = displayValue === 0 ? 0 : (displayValue || '')
-  if (control.id === 'neve_blog_covers_min_height') {
-    console.log('VAL:', control.setting.get())
-    console.log('PARSED:', parsedValue)
-    console.log('==========================')
-  }
 
   return (
     <div className='neve-white-background-control neve-range-control'>

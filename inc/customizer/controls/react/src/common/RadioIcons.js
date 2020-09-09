@@ -2,6 +2,7 @@
 /* jshint esversion: 6 */
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
+import SVG from './svg'
 
 const { Button } = wp.components
 
@@ -21,12 +22,13 @@ const RadioIcons = ({ options, onChange, value, showLabels }) => {
           </Button>
         )
       }
+      const icon = SVG[options[type].icon] || options[type].icon
       return (
         <span key={index}>
           <Button
             aria-label={options[type].tooltip}
             className={classnames({ active: value === type })}
-            icon={options[type].icon}
+            icon={icon}
             onClick={() => {
               onChange(type)
             }}

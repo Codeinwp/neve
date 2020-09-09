@@ -309,6 +309,18 @@ const SVG = {
 	<path fillRule="evenodd" clipRule="evenodd" d="M4.5 15.75H11.5V17.25H4.5V15.75Z"/>
 	<path fillRule="evenodd" clipRule="evenodd" d="M4.5 11.75H11.5V13.25H4.5V11.75Z"/>
 	<path fillRule="evenodd" clipRule="evenodd" d="M4.5 7.75H11.5V9.25H4.5V7.75Z"/>
+  </svg>,
+  verticalBottom: <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+	<rect x="0.5" y="0.5" width="10" height="5" transform="matrix(-4.37114e-08 1 1 4.37114e-08 9.5 4.5)"/>
+	<path fillRule="evenodd" clipRule="evenodd" d="M20.5 19L4.5 19L4.5 20.5L20.5 20.5L20.5 19Z"/>
+  </svg>,
+  verticalMiddle: <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+	<rect x="0.5" y="0.5" width="15" height="5" transform="matrix(-4.37114e-08 1 1 4.37114e-08 9.5 4.5)"/>
+	<path fillRule="evenodd" clipRule="evenodd" d="M20.5 11.5L4.5 11.5L4.5 13L20.5 13L20.5 11.5Z"/>
+  </svg>,
+  verticalTop: <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+	<rect x="10" y="20" width="10" height="5" transform="rotate(-90 10 20)"/>
+	<path fillRule="evenodd" clipRule="evenodd" d="M20.5 6L4.5 6L4.5 4.5L20.5 4.5L20.5 6Z"/>
   </svg>
 }
 
