@@ -18,14 +18,18 @@ describe('Primary button control ', function () {
 		type('2');
 
 		//Changes the background color
-		cy.get('#customize-control-neve_button_appearance > .neve-button-appearance-control > .neve-white-background-control > .components-panel > .is-opened > :nth-child(2) > .neve-control-header > .components-dropdown > .components-button').
+		cy.get('button.components-button.is-secondary.is-button').
+		filter(":visible").
+		eq(0).
 		click();
 		cy.get('input.components-text-control__input').click({
 			force: true
 		}).clear().type(colors.hexaBackground);
 
 		//Changes text color
-		cy.get('#customize-control-neve_button_appearance > .neve-button-appearance-control > .neve-white-background-control > .components-panel > .is-opened > :nth-child(3) > .neve-control-header > .components-dropdown > .components-button').
+		cy.get('button.components-button.is-secondary.is-button').
+		filter(":visible").
+		eq(1).
 		click();
 		cy.get('input.components-text-control__input').click({
 			force: true
