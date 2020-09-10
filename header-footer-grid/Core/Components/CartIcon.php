@@ -122,9 +122,10 @@ class CartIcon extends Abstract_Component {
 						'defaultVal' => 15,
 					],
 				],
-				'live_refresh_selector' => $this->default_selector . ' svg',
+				'live_refresh_selector' => $this->default_selector . ' .nv-cart svg',
 				'live_refresh_css_prop' => array(
-					'type' => 'svg-icon-size',
+					'type'    => 'svg-icon-size',
+					'default' => 15,
 				),
 				'section'               => $this->section,
 				'conditional_header'    => true,
