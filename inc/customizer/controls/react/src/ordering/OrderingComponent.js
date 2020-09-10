@@ -79,13 +79,14 @@ const OrderingComponent = ({ control }) => {
         onSortEnd={handleSortEnd}
       >
         {value.map((slug, index) =>
-          <SortableItem
-            key={index}
-            label={components[slug]}
-            index={index}
-            slug={slug}
-            onToggle={handleToggle}
-          />
+          Object.keys(components).includes(slug) &&
+            <SortableItem
+              key={index}
+              label={components[slug]}
+              index={index}
+              slug={slug}
+              onToggle={handleToggle}
+            />
         )}
 
         {disabled.map((slug, index) => (

@@ -49,7 +49,7 @@ const RadioIcons = ({ options, onChange, value, showLabels }) => {
 RadioIcons.propTypes = {
   options: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string,
   showLabels: PropTypes.bool
 }
 

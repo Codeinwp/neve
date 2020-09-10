@@ -30,6 +30,7 @@ class Layout_Blog extends Base_Customizer {
 		$this->add_layout_controls();
 		$this->add_content_ordering_controls();
 		$this->add_post_meta_controls();
+		$this->add_typography_shortcut();
 
 		add_action( 'customize_register', [ $this, 'adapt_old_pro' ], PHP_INT_MAX );
 	}
@@ -568,5 +569,31 @@ class Layout_Blog extends Base_Customizer {
 		}
 
 		return true;
+	}
+
+	/**
+	 * Add typography shortcut.
+	 */
+	private function add_typography_shortcut() {
+		$this->add_control(
+			new Control(
+				'neve_blog_typography_shortcut',
+				array(
+					'sanitize_callback' => 'neve_sanitize_text_field',
+				),
+				array(
+					'button_class'     => 'nv-top-bar-menu-shortcut',
+					'text_before'      => __( 'Customize Typography for the Archive page', 'neve' ),
+					'text_after'       => '.',
+					'button_text'      => __( 'here', 'neve' ),
+					'is_button'        => false,
+					'control_to_focus' => 'neve_archive_typography_post_title_accordion_wrap',
+					'shortcut'         => true,
+					'section'          => 'neve_blog_archive_layout',
+					'priority'         => 1000,
+				),
+				'\Neve\Customizer\Controls\Button'
+			)
+		);
 	}
 }

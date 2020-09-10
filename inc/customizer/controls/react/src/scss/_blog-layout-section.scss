@@ -1,5 +1,17 @@
 $excluded: ':not(#customize-control-neve_blog_archive_layout):not(.customize-control-customizer-heading)';
 
+#customize-control-neve_blog_typography_shortcut {
+	background-color: transparent !important;
+	p {
+		font-size: 12px;
+		font-weight: 600;
+		margin: 0;
+	}
+	a {
+		cursor: pointer;
+	}
+}
+
 #sub-accordion-section-neve_blog_archive_layout {
 	.customize-control#{$excluded} {
 		margin-bottom: -1px !important;
