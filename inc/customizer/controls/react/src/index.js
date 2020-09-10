@@ -38,9 +38,6 @@ controlConstructor.neve_radio_image_control = RadioImageControl
 controlConstructor.neve_ordering_control = OrderingControl
 
 window.addEventListener( 'load', () => {
-  // Todo: delete this.
-  wp.customize.section('neve_blog_archive_layout').focus()
-
   const deviceButtons = document.querySelector(
     '#customize-footer-actions .devices, .hfg--cb-devices-switcher a.switch-to' )
   deviceButtons.addEventListener( 'click', function(e) {
