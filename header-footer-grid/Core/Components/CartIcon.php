@@ -196,7 +196,7 @@ class CartIcon extends Abstract_Component {
 	 */
 	public function add_style( array $css_array = array() ) {
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => $this->default_selector . ' .nv-cart svg',
+			Dynamic_Selector::KEY_SELECTOR => $this->default_selector . ' span.nv-icon.nv-cart svg',
 			Dynamic_Selector::KEY_RULES    => [
 				\Neve\Core\Settings\Config::CSS_PROP_WIDTH => [
 					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::SIZE_ID,
@@ -224,7 +224,7 @@ class CartIcon extends Abstract_Component {
 		];
 
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => $this->default_selector . ':hover svg',
+			Dynamic_Selector::KEY_SELECTOR => $this->default_selector . ':hover span.nv-icon.nv-cart svg',
 			Dynamic_Selector::KEY_RULES    => [
 				\Neve\Core\Settings\Config::CSS_PROP_FILL_COLOR => [
 					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::HOVER_COLOR_ID,
