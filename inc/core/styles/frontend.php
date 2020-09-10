@@ -114,6 +114,29 @@ class Frontend extends Generator {
 				Dynamic_Selector::META_KEY => 'neve_blog_covers_text_color',
 			],
 		];
+
+		$this->_subscribers['.nv-post-thumbnail-wrap'] = [
+			Config::CSS_PROP_BOX_SHADOW => [
+				Dynamic_Selector::META_KEY    => 'neve_post_thumbnail_box_shadow',
+				Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
+					if ( $value === 0 ) {
+						return '';
+					}
+					$map = [
+						1 => '0 1px 3px -2px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.1)',
+						2 => '0 3px 6px -5px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.1)',
+						3 => '0 10px 20px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.1)',
+						4 => '0 14px 28px rgba(0, 0, 0, 0.12), 0 10px 10px rgba(0, 0, 0, 0.12)',
+						5 => '0 16px 38px -12px rgba(0,0,0,0.56), 0 4px 25px 0 rgba(0,0,0,0.12), 0 8px 10px -5px rgba(0,0,0,0.2)',
+					];
+
+					if ( ! array_key_exists( $value, $map ) ) {
+						return '';
+					}
+					return sprintf( '%s:%s;', $css_prop, $map[ $value ] );
+				},
+			],
+		];
 	}
 
 	/**

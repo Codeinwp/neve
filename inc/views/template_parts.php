@@ -42,12 +42,8 @@ class Template_Parts extends Base_View {
 	 * Echo the post class.
 	 */
 	private function post_class() {
-		$class      = join( ' ', get_post_class() );
-		$layout     = $this->get_layout();
-		$box_shadow = (int) $this->get_box_shadow();
-		if ( $box_shadow !== 0 ) {
-			$class .= ' nv-shadow-' . $box_shadow;
-		}
+		$class  = join( ' ', get_post_class() );
+		$layout = $this->get_layout();
 		$class .= ' layout-' . $layout;
 		if ( in_array( $layout, [ 'grid', 'covers' ], true ) ) {
 			$class .= ' ' . $this->get_grid_columns_class();
@@ -116,13 +112,6 @@ class Template_Parts extends Base_View {
 		$markup .= '</div>';
 
 		return apply_filters( 'neve_blog_post_thumbnail_markup', $markup );
-	}
-
-	/**
-	 * Get box shadow type.
-	 */
-	private function get_box_shadow() {
-		return get_theme_mod( 'neve_post_thumbnail_box_shadow', 0 );
 	}
 
 	/**

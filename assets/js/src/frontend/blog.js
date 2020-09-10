@@ -3,7 +3,8 @@
 import { httpGetAsync, isInView, neveEach } from '../utils';
 
 let masonryContainer = null,
-	page = 2;
+	page = 2,
+	postWrapSelector = '.nv-index-posts .posts-wrapper'
 
 /**
  * Initialize blog JS.
@@ -27,7 +28,7 @@ const masonry = () => {
   if (masonry !== 'enabled' || masonryColumns < 2) {
 	return false
   }
-	masonryContainer = document.querySelector( '.nv-index-posts .posts-wrapper' );
+	masonryContainer = document.querySelector( postWrapSelector );
 
 	if ( masonryContainer === null ) {
 		return false;
@@ -52,7 +53,7 @@ const infiniteScroll = () => {
 		return false;
 	}
 
-	if ( document.querySelector( '.nv-index-posts .posts-wrapper' ) === null ) {
+	if ( document.querySelector( postWrapSelector ) === null ) {
 		return false;
 	}
 
@@ -84,7 +85,7 @@ const requestMorePosts = () => {
 		return false;
 	}
 
-	let blog = document.querySelector( '.nv-index-posts .posts-wrapper' );
+	let blog = document.querySelector( postWrapSelector );
 	let requestUrl = maybeParseUrlForCustomizer(
 			NeveProperties.infiniteScrollEndpoint + page );
 	page++;

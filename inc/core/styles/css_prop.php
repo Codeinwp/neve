@@ -170,11 +170,10 @@ class Css_Prop {
 				return sprintf( ' %s: %s; ', $css_prop, $value );
 
 				break;
-				break;
 			case Config::CSS_PROP_TEXT_TRANSFORM:
+			case Config::CSS_PROP_BOX_SHADOW:
 				return sprintf( ' %s: %s; ', $css_prop, $value );
 				break;
-
 		}
 
 		return '';
