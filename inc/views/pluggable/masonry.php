@@ -88,7 +88,7 @@ class Masonry extends Base_View {
 			return $classes;
 		}
 
-		$classes[] = 'neve-is-masonry';
+		$classes[] = 'nv-masonry';
 		return $classes;
 	}
 }
