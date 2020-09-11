@@ -9,6 +9,7 @@
   "retries": 1,
   "screenshotsFolder": "visual-regression/screenshots",
   "videoUploadOnPasses": false,
+  "numTestsKeptInMemory": 0,
   "password": "admin",
   "env": {
 	"qaUrls": [
