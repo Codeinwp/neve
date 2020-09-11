@@ -1477,7 +1477,7 @@ article {
   }
 }
 
-.layout-grid > .article-content-col, .layout-grid > .article-content-col .content {
+body:not(.neve-is-masonry) .layout-grid > .article-content-col, .layout-grid > .article-content-col .content {
   height: 100%;
 }
 

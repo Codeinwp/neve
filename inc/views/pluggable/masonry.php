@@ -26,6 +26,7 @@ class Masonry extends Base_View {
 	public function init() {
 		add_filter( 'neve_filter_main_script_localization', array( $this, 'filter_localization' ) );
 		add_filter( 'neve_filter_main_script_dependencies', array( $this, 'filter_dependencies' ) );
+		add_filter( 'body_class', array( $this, 'add_masonry_class' ) );
 	}
 
 	/**
@@ -73,5 +74,21 @@ class Masonry extends Base_View {
 		}
 
 		return get_theme_mod( 'neve_enable_masonry', false );
+	}
+
+	/**
+	 * Add masonry class on body.
+	 *
+	 * @param array $classes Body classes.
+	 *
+	 * @return array
+	 */
+	public function add_masonry_class( $classes ) {
+		if ( ! $this->is_masonry_enabled() ) {
+			return $classes;
+		}
+
+		$classes[] = 'neve-is-masonry';
+		return $classes;
 	}
 }
