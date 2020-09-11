@@ -273,7 +273,7 @@ class Layout_Sidebar extends Base_Customizer {
 		}
 
 		/* translators: %s is Notice text */
-		$template = '<div class="notice notice-info"><p>%s</p></div>';
+		$template = '<p class="notice notice-info">%s</p>';
 
 		return sprintf(
 			$template,
