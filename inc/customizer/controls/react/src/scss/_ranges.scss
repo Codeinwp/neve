@@ -1,17 +1,25 @@
 .neve-range-control {
-  .range-wrap {
-	display: flex;
-	align-items: center;
-	justify-items: flex-end;
-	input[type=number] {
-	  border-radius: 0;
-	  border-color: $input-borders;
+	.range-wrap {
+		display: flex;
+		align-items: center;
+		justify-items: flex-end;
+
+		.components-number-control {
+			width: 25%;
+		}
+
+		input[type=number] {
+			border-radius: 0;
+			border-color: $input-borders;
+			width: auto;
+		}
+
+		.components-range-control {
+			> div {
+				margin-bottom: 0;
+			}
+
+			flex-grow: 1;
+		}
 	}
-	.components-range-control {
-	  > div {
-		margin-bottom: 0;
-	  }
-	  flex-grow: 1;
-	}
-  }
 }
