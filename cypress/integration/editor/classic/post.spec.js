@@ -44,11 +44,17 @@ describe( 'Posts meta box default settings', function() {
 		cy.get( '.nv-content-wrap' ).should( 'contain', postSetup.content );
 	} );
 
+	it( 'Activates Classic Editor', function () {
+		cy.login( '/wp-admin/plugins.php');
+		cy.get( '#activate-classic-editor' ).contains('Activate').click();
+		cy.get( '#deactivate-classic-editor' ).should( 'exist' );
+	});
+
 	it( 'Edit meta box settings "' + postSetup.title + '".', function() {
 		cy.login( postSetup.url );
 		cy.get( '#wp-admin-bar-edit a' ).click();
 
-		cy.clearWelcome();
+
 		cy.get( 'label[for="neve_meta_container_full-width"]' ).click();
 		cy.get( 'label[for="neve_meta_sidebar_left"]' ).click();
 		cy.get( 'label[for="neve_meta_disable_title"]' ).click();
@@ -60,8 +66,7 @@ describe( 'Posts meta box default settings', function() {
 				invoke( 'val', 50 ).
 				trigger( 'change' );
 		cy.wait(1000);
-		cy.get( '.editor-post-publish-button' ).contains( 'Update' ).click();
-		cy.get( '.components-snackbar__content' ).contains( 'View Post' );
+		cy.get( '#publish' ).contains( 'Update' ).click();
 	} );
 
 	it( 'Edited meta box settings on front end.', function() {
@@ -84,4 +89,10 @@ describe( 'Posts meta box default settings', function() {
 		cy.get( '.nv-thumb-wrap' ).should( 'not.exist' );
 		cy.get( '.nv-content-wrap' ).should( 'contain', postSetup.content );
 	} );
+
+	it( 'Deactivates Classic Editor', function () {
+		cy.login( '/wp-admin/plugins.php');
+		cy.get( '#deactivate-classic-editor' ).contains('Deactivate').click();
+		cy.get( '#activate-classic-editor' ).should( 'exist' );
+	});
 } );

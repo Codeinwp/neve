@@ -88,7 +88,7 @@ const Migration = ({data, setToast}) => {
 								<h3>{__('The following plugins will be installed', 'neve')}:</h3>
 								<ul>
 									{
-										Object.keys(data.mandatory_plugins).map(k => <li>- {data.mandatory_plugins[k]}</li>)
+										Object.keys(data.mandatory_plugins).map((k, index) => <li key={index}>- {data.mandatory_plugins[k]}</li>)
 									}
 								</ul>
 							</Fragment>

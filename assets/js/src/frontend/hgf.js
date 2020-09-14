@@ -1,3 +1,4 @@
+/* global NeveProperties */
 /* jshint esversion: 6 */
 import {
 	addEvent,
@@ -16,37 +17,27 @@ export let HFG = function() {
 /**
  * Init mobile sidebar.
  */
-HFG.prototype.init = function(skipSidebar = false) {
+HFG.prototype.init = function (skipSidebar = false) {
+  if (skipSidebar === false) {
+	let closeButtons = document.querySelectorAll('.close-sidebar-panel .navbar-toggle')
+	addEvent(closeButtons, 'click', () => {
+	  this.toggleMenuSidebar(false)
+	})
+  }
 
-	let selector = '.menu-mobile-toggle';
+  let menuMobileToggleButtons = document.querySelectorAll('.menu-mobile-toggle')
+  addEvent(menuMobileToggleButtons, 'click', () => {
+	this.toggleMenuSidebar(true)
+  })
 
-	if ( skipSidebar === false ) {
-		selector += ', #header-menu-sidebar .close-panel, .close-sidebar-panel';
-	}
-
-	let menuMobileToggleButtons = document.querySelectorAll( selector );
-	let handleToggle = function(e) {
-		e.preventDefault();
-		this.toggleMenuSidebar();
-	};
-
-	/**
-	 * When click to toggle buttons.
-	 */
-	neveEach(menuMobileToggleButtons, function(item) {
-		item.removeEventListener( 'click', handleToggle.bind( this ) );
-	}.bind( this ) );
-
-	addEvent( menuMobileToggleButtons, 'click', handleToggle.bind( this ) );
-
-	/**
-	 * When click to outside of menu sidebar.
-	 */
-	let overlay = document.querySelector( '.header-menu-sidebar-overlay' );
-	addEvent( overlay, 'click', function() {
-				this.toggleMenuSidebar( false );
-			}.bind( this )
-	);
+  /**
+   * When click to outside of menu sidebar.
+   */
+  let overlay = document.querySelector('.header-menu-sidebar-overlay')
+  addEvent(overlay, 'click', function () {
+	  this.toggleMenuSidebar(false)
+	}.bind(this)
+  )
 };
 
 /**
@@ -58,9 +49,12 @@ HFG.prototype.toggleMenuSidebar = function(toggle) {
 	let buttons = document.querySelectorAll( '.menu-mobile-toggle' );
 	removeClass( document.body, 'hiding-header-menu-sidebar' );
 
-	if ( document.body.classList.contains( 'is-menu-sidebar' ) ||
-			toggle === false ) {
-		addClass( document.body, 'hiding-header-menu-sidebar' );
+	if ( (! NeveProperties.isCustomize && document.body.classList.contains( 'is-menu-sidebar' )) || toggle === false ) {
+	  let navClickaway = document.querySelector( '.nav-clickaway-overlay' );
+	  if( navClickaway !== null ) {
+	    navClickaway.parentNode.removeChild(navClickaway);
+	  }
+	  addClass( document.body, 'hiding-header-menu-sidebar' );
 		removeClass( document.body, 'is-menu-sidebar' );
 		removeClass( buttons, 'is-active' );
 		// Remove the hiding class after 1 second.

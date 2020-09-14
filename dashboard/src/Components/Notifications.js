@@ -12,9 +12,9 @@ const Notifications = () => {
   return (
     <div className="notifications">
       {
-        Object.keys(neveDash.notifications).map((slug) => {
+        Object.keys(neveDash.notifications).map((slug, index) => {
           return (
-            <Notification data={neveDash.notifications[slug]} slug={slug}/>
+            <Notification key={index} data={neveDash.notifications[slug]} slug={slug}/>
           );
         })
       }

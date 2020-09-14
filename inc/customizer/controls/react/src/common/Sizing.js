@@ -5,7 +5,7 @@ import classnames from 'classnames'
 
 const { __ } = wp.i18n
 const {
-  IconButton,
+  Button,
   Tooltip
 } = wp.components
 const { Component } = wp.element
@@ -26,7 +26,7 @@ class SizingControl extends Component {
         key='tooltip-link'
         text={this.props.linked ? __('Unlink Values', 'neve') : __('Link Values', 'neve')}
       >
-        <IconButton
+        <Button
           key='link-icon'
           icon={this.props.linked ? 'admin-links' : 'editor-unlink'}
           onClick={() => this.props.onLinked()}
@@ -69,7 +69,7 @@ class SizingControl extends Component {
                 ? __('Reset all Values', 'neve') : __('Reset Value', 'neve')
             }
           >
-            <IconButton
+            <Button
               key='reset-icon'
               icon='image-rotate'
               className='reset'

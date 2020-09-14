@@ -1,20 +1,13 @@
 footer {
   background-color: #fff;
 }
-
-.footer-menu {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  .hfg-item-left &, .hfg-item-center & {
-    li:not(:last-child) {
-      margin-right: $spacing-sm;
-    }
-  }
-
-  .hfg-item-right & {
-    li:not(:first-child) {
-      margin-left: $spacing-sm;
-    }
-  }
-}
+//
+//.footer-menu {
+//  display: flex;
+//  flex-wrap: wrap;
+//  justify-content: center;
+//
+//  li:not(:last-child) {
+//	margin-right: $spacing-sm;
+//  }
+//}

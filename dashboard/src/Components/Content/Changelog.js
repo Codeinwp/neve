@@ -1,5 +1,6 @@
 /* global neveDash */
 import Accordion from '../Accordion';
+import classnames from 'classnames';
 
 const {__} = wp.i18n;
 const {Fragment, useState} = wp.element;
@@ -14,12 +15,12 @@ const Changelog = (props) => {
 			<div className="changelog-tabs">
 				<span>{__('Show changelog for', 'neve')}</span>
 				<a
-					className={! showForPro && 'active'}
+					className={classnames([ {'active': ! showForPro } ])}
 					onClick={() => {
 						setShowForPro(false);
 					}}>Neve</a>
 				<a
-					className={showForPro && 'active'}
+					className={classnames([ {'active': showForPro } ])}
 					onClick={() => {
 						setShowForPro(true);
 					}}>Neve Pro</a>
@@ -37,14 +38,14 @@ const Changelog = (props) => {
 						</Fragment>;
 
 					return (
-						<Accordion isOpen={0 === index} title={title}>
+						<Accordion key={index} isOpen={0 === index} title={title}>
 							{features &&
 							<div className="features changelog-category">
 								<div className="label-wrap">
 									<span className="label success">{__('Features', 'neve')}</span>
 								</div>
 								<ul className="entries">
-									{features.map((feature) => <li dangerouslySetInnerHTML={{__html: feature}}/>)}
+									{features.map((feature, index) => <li key={index} dangerouslySetInnerHTML={{__html: feature}}/>)}
 								</ul>
 							</div>
 							}
@@ -54,7 +55,7 @@ const Changelog = (props) => {
 									<span className="label error">{__('Bug Fixes', 'neve')}</span>
 								</div>
 								<ul className="entries">
-									{fixes.map((fix) => <li dangerouslySetInnerHTML={{__html: fix}}/>)}
+									{fixes.map((fix, index) => <li key={index} dangerouslySetInnerHTML={{__html: fix}}/>)}
 								</ul>
 							</div>
 							}
@@ -64,7 +65,7 @@ const Changelog = (props) => {
 									<span className="label info">{__('Tweaks', 'neve')}</span>
 								</div>
 								<ul className="entries">
-									{tweaks.map((tweak) => <li dangerouslySetInnerHTML={{__html: tweak}}/>)}
+									{tweaks.map((tweak, index) => <li key={index} dangerouslySetInnerHTML={{__html: tweak}}/>)}
 								</ul>
 							</div>
 							}

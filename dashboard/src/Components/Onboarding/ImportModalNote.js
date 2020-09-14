@@ -18,7 +18,7 @@ const ImportModalNote = ({data, externalInstalled}) => {
 			</h3>
 			<ol>
 				{external && ! externalInstalled ?
-					external.map(plugin => <li><Button isLink href={plugin.author_url}>{plugin.name}</Button></li>) :
+					external.map((plugin, index) => <li key={index}><Button isLink href={plugin.author_url}>{plugin.name}</Button></li>) :
 					<Fragment>
 						<li>{__('We recommend you backup your website content before attempting a full site import.', 'neve')}</li>
 						<li>{__('Some of the demo images will not be imported and will be replaced by placeholder images.', 'neve')}</li>
