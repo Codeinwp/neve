@@ -16,6 +16,9 @@ export const init = function () {
   NeveReactCustomize.fieldSelection = {}
   Object.keys(controls).forEach(function (controlId, index) {
     const control = wp.customize.control(controlId)
+    if ( typeof control === 'undefined' ) {
+      return false
+    }
     const container = control.container[0]
     const dynamicControlWrap = document.createElement('div')
 
