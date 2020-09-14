@@ -1473,8 +1473,8 @@ article {
   }
 }
 
-.layout-grid > .article-content-col, .layout-grid > .article-content-col .content {
-  height: 100%;
+body .layout-grid > .article-content-col, .layout-grid {
+  display: flex;
 }
 
 .layout-default, .layout-alternative {
