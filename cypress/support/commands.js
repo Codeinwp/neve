@@ -212,8 +212,12 @@ function setTypographyControl( controlSelector, values ) {
  * Capture and compare the fullpage snapshots.
  *
  */
-Cypress.Commands.add("captureDocument", () => {
-
+Cypress.Commands.add("captureDocument", (generalMaskAndClip = true) => {
+	if(generalMaskAndClip){
+		let maskElement = '.elementor-element-31b9e15, .pikaday__display--pikaday, .elementor-widget-video, label[for="vscf_captcha"],.elementor-widget-google_maps,.pikaday__display,.elementor-video-iframe';
+		let clipElement = '.widget_top_rated_products, .wpcf7-quiz-label, .eaw-typed-text,.product .related.products,.captcha_img,.elementor-element-38f7ff1e,.elementor-widget-container[style*="will-change"], .particles-js-canvas-el,.product_list_widget li + li, .exclusive.products';
+		cy.maskAndClip(maskElement,clipElement);
+	}
 	cy.scrollTo('bottom',{ ensureScrollable: false });
 	cy.wait(1000);
 	cy.percySnapshot();
@@ -237,9 +241,9 @@ Cypress.Commands.add("maskAndClip", (maskSelectors, clipSelectors, hideElements)
 		if ($body.find(clipSelectors).length) {
 			cy.get(clipSelectors).invoke('css', 'display', 'none');
 		}
-		// if ($body.find(hideElements).length) {
-		// 	cy.get(hideElements).invoke('css', 'visibility', 'hidden');
-		// }
+		if ($body.find(hideElements).length) {
+			cy.get(hideElements).invoke('css', 'visibility', 'hidden');
+		}
 	});
 });
 
