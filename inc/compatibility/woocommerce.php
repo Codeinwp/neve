@@ -77,7 +77,7 @@ class Woocommerce {
 		'default'          => '
 			,.woocommerce-cart table.cart td.actions .coupon > .input-text + .button,
 			.woocommerce-checkout #neve-checkout-coupon .woocommerce-form-coupon .form-row-last button,
-			.woocommerce button.button,
+			.woocommerce button.button:not(.single_add_to_cart_button),
 			.woocommerce a.added_to_cart,
 			.woocommerce .checkout_coupon button.button,
 			.woocommerce #review_form #respond input#submit,
@@ -89,7 +89,7 @@ class Woocommerce {
 			,#comments input[type=submit]:hover,
 			.woocommerce-cart table.cart td.actions .coupon > .input-text + .button:hover,
 			.woocommerce-checkout #neve-checkout-coupon .woocommerce-form-coupon .form-row-last button:hover,
-			.woocommerce button.button:hover,
+			.woocommerce button.button:not(.single_add_to_cart_button):hover,
 			.woocommerce a.added_to_cart:hover,
 			.woocommerce .checkout_coupon button.button:hover,
 			.woocommerce #review_form #respond input#submit:hover,
