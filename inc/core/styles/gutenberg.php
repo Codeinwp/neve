@@ -52,7 +52,7 @@ class Gutenberg extends Generator {
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_COLOR => Config::MODS_LINK_COLOR,
 			],
-			Dynamic_Selector::KEY_SELECTOR => 'a',
+			Dynamic_Selector::KEY_SELECTOR => 'a, .wp-block a',
 			Dynamic_Selector::KEY_CONTEXT  => [
 				Dynamic_Selector::CONTEXT_GUTENBERG => true,
 			],
@@ -61,7 +61,7 @@ class Gutenberg extends Generator {
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_COLOR => Config::MODS_LINK_HOVER_COLOR,
 			],
-			Dynamic_Selector::KEY_SELECTOR => 'a:hover',
+			Dynamic_Selector::KEY_SELECTOR => 'a:hover, .wp-block a:hover',
 			Dynamic_Selector::KEY_CONTEXT  => [
 				Dynamic_Selector::CONTEXT_GUTENBERG => true,
 			],
