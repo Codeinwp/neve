@@ -29,12 +29,12 @@ class Gutenberg extends Generator {
 			Dynamic_Selector::KEY_SELECTOR => '
 				 .wp-block ,
 				 .editor-post-title__block .editor-post-title__input,
-				 h1,
-				 h2,
-				 h3,
-				 h4,
-				 h5,
-				 h6',
+				 h1.wp-block,
+				 h2.wp-block,
+				 h3.wp-block,
+				 h4.wp-block,
+				 h5.wp-block,
+				 h6.wp-block',
 			Dynamic_Selector::KEY_CONTEXT  => [
 				Dynamic_Selector::CONTEXT_GUTENBERG => true,
 			],
@@ -235,10 +235,29 @@ class Gutenberg extends Generator {
 		$this->_subscribers[] = [
 			Dynamic_Selector::KEY_SELECTOR => '.wp-block-button.is-style-primary .wp-block-button__link',
 			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_PADDING => [
+				Config::CSS_PROP_PADDING        => [
 					Dynamic_Selector::META_KEY           => Config::MODS_BUTTON_PRIMARY_PADDING,
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 				],
+				Config::CSS_PROP_FONT_SIZE      => [
+					Dynamic_Selector::META_KEY           => Config::MODS_BUTTON_TYPEFACE . '.fontSize',
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_SUFFIX        => 'em',
+				],
+				Config::CSS_PROP_LINE_HEIGHT    => [
+					Dynamic_Selector::META_KEY           => Config::MODS_BUTTON_TYPEFACE . '.lineHeight',
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_SUFFIX        => '',
+				],
+				Config::CSS_PROP_LETTER_SPACING => [
+					Dynamic_Selector::META_KEY           => Config::MODS_BUTTON_TYPEFACE . '.letterSpacing',
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+				],
+				Config::CSS_PROP_FONT_WEIGHT    => [
+					Dynamic_Selector::META_KEY => Config::MODS_BUTTON_TYPEFACE . '.fontWeight',
+					'font'                     => 'mods_' . Config::MODS_FONT_GENERAL,
+				],
+				Config::CSS_PROP_TEXT_TRANSFORM => Config::MODS_BUTTON_TYPEFACE . '.textTransform',
 			],
 			Dynamic_Selector::KEY_CONTEXT  => [
 				Dynamic_Selector::CONTEXT_GUTENBERG => true,
@@ -247,10 +266,29 @@ class Gutenberg extends Generator {
 		$this->_subscribers[] = [
 			Dynamic_Selector::KEY_SELECTOR => '.wp-block-button.is-style-secondary .wp-block-button__link',
 			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_PADDING => [
+				Config::CSS_PROP_PADDING        => [
 					Dynamic_Selector::META_KEY           => Config::MODS_BUTTON_SECONDARY_PADDING,
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 				],
+				Config::CSS_PROP_FONT_SIZE      => [
+					Dynamic_Selector::META_KEY           => Config::MODS_SECONDARY_BUTTON_TYPEFACE . '.fontSize',
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_SUFFIX        => 'em',
+				],
+				Config::CSS_PROP_LINE_HEIGHT    => [
+					Dynamic_Selector::META_KEY           => Config::MODS_SECONDARY_BUTTON_TYPEFACE . '.lineHeight',
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_SUFFIX        => '',
+				],
+				Config::CSS_PROP_LETTER_SPACING => [
+					Dynamic_Selector::META_KEY           => Config::MODS_SECONDARY_BUTTON_TYPEFACE . '.letterSpacing',
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+				],
+				Config::CSS_PROP_FONT_WEIGHT    => [
+					Dynamic_Selector::META_KEY => Config::MODS_SECONDARY_BUTTON_TYPEFACE . '.fontWeight',
+					'font'                     => 'mods_' . Config::MODS_FONT_GENERAL,
+				],
+				Config::CSS_PROP_TEXT_TRANSFORM => Config::MODS_SECONDARY_BUTTON_TYPEFACE . '.textTransform',
 			],
 			Dynamic_Selector::KEY_CONTEXT  => [
 				Dynamic_Selector::CONTEXT_GUTENBERG => true,
