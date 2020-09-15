@@ -7,7 +7,7 @@
 
 return array(
 	'title'      => __( 'Dark header with centered content', 'neve' ),
-	'content'    => '<!-- wp:cover {"url":"' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-8.jpg","id":403,"dimRatio":26,"focalPoint":{"x":"0.50","y":"0.50"},"minHeight":700,"align":"full"} -->
+	'content'    => '<!-- wp:cover {"url":"' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-8.jpg","dimRatio":26,"focalPoint":{"x":"0.50","y":"0.50"},"minHeight":700,"align":"full"} -->
 <div class="wp-block-cover alignfull has-background-dim-30 has-background-dim" style="background-image:url(' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-8.jpg);background-position:50% 50%;min-height:700px"><div class="wp-block-cover__inner-container"><!-- wp:heading {"align":"center","level":1,"textColor":"white"} -->
 <h1 class="has-text-align-center has-white-color has-text-color">Welcome to Neve.This is a hero section. </h1>
 <!-- /wp:heading -->

@@ -9,14 +9,14 @@ return array(
 	'title'      => __( 'Three columns with images and text', 'neve' ),
 	'content'    => '<!-- wp:columns -->
 <div class="wp-block-columns"><!-- wp:column -->
-<div class="wp-block-column"><!-- wp:image {"id":411,"sizeSlug":"large"} -->
-<figure class="wp-block-image size-large"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-12.jpg" alt="" class="wp-image-411"/></figure>
+<div class="wp-block-column"><!-- wp:image {} -->
+<figure class="wp-block-image"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-12.jpg" alt="" /></figure>
 <!-- /wp:image --></div>
 <!-- /wp:column -->
 
 <!-- wp:column -->
-<div class="wp-block-column"><!-- wp:image {"id":416,"sizeSlug":"large"} -->
-<figure class="wp-block-image size-large"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-17.jpg" alt="" class="wp-image-416"/></figure>
+<div class="wp-block-column"><!-- wp:image {} -->
+<figure class="wp-block-image "><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-17.jpg" alt="" /></figure>
 <!-- /wp:image --></div>
 <!-- /wp:column -->
 

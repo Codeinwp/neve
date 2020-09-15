@@ -7,7 +7,7 @@
 
 return array(
 	'title'      => __( 'Light header with left-aligned content', 'neve' ),
-	'content'    => '<!-- wp:cover {"url":"' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-18.jpg","id":417,"dimRatio":73,"overlayColor":"white","minHeight":500,"align":"full"} -->
+	'content'    => '<!-- wp:cover {"url":"' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-18.jpg","dimRatio":73,"overlayColor":"white","minHeight":500,"align":"full"} -->
 <div class="wp-block-cover alignfull has-background-dim-70 has-white-background-color has-background-dim" style="background-image:url(' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-18.jpg);min-height:500px"><div class="wp-block-cover__inner-container"><!-- wp:columns {"align":"wide"} -->
 <div class="wp-block-columns alignwide"><!-- wp:column {"verticalAlignment":"center","width":66.66} -->
 <div class="wp-block-column is-vertically-aligned-center" style="flex-basis:66.66%"><!-- wp:heading {"align":"left","level":1,"textColor":"black"} -->

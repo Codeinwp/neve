@@ -9,8 +9,8 @@ return array(
 	'title'      => __( 'Two Columns with image and text', 'neve' ),
 	'content'    => '<!-- wp:columns -->
 <div class="wp-block-columns"><!-- wp:column -->
-<div class="wp-block-column"><!-- wp:image {"id":401,"sizeSlug":"large"} -->
-<figure class="wp-block-image size-large"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-6.jpg" alt="" class="wp-image-401"/></figure>
+<div class="wp-block-column"><!-- wp:image {} -->
+<figure class="wp-block-image"><img src="' . trailingslashit( get_template_directory_uri() ) . 'assets/img/patterns/neve-patterns-6.jpg" alt="" /></figure>
 <!-- /wp:image --></div>
 <!-- /wp:column -->
 
