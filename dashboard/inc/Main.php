@@ -174,6 +174,7 @@ class Main {
 	 * @return array
 	 */
 	private function get_localization() {
+		$old_about_config  = apply_filters( 'ti_about_config_filter', [ 'useful_plugins' => true ] );
 		$theme_name        = apply_filters( 'ti_wl_theme_name', $this->theme_args['name'] );
 		$plugin_name       = apply_filters( 'ti_wl_plugin_name', 'Neve Pro' );
 		$plugin_name_addon = apply_filters( 'ti_wl_plugin_name', 'Neve Pro Addon' );
@@ -218,6 +219,7 @@ class Main {
 			'changelog'           => $this->cl_handler->get_changelog( get_template_directory() . '/CHANGELOG.md' ),
 			'onboarding'          => [],
 			'hasFileSystem'       => WP_Filesystem(),
+			'hidePluginsTab'      => apply_filters( 'neve_hide_useful_plugins', ! array_key_exists( 'useful_plugins', $old_about_config ) ),
 		];
 
 		if ( defined( 'NEVE_PRO_PATH' ) ) {
