@@ -363,10 +363,6 @@ a:hover, a:focus {
   color: #0366d6;
 }
 
-.screen-reader-text {
-  display: none;
-}
-
 ins {
   text-decoration: none;
 }
@@ -418,17 +414,17 @@ h6 {
 }
 
 a.neve-skip-link {
-  background-color: #24292e;
-  color: #fff;
   padding: 10px 20px;
-}
-
-a.neve-skip-link:focus {
-  color: #fff;
-}
-
-.admin-bar a.neve-skip-link {
   top: 32px;
+}
+
+.screen-reader-text {
+  position: absolute;
+  right: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }
 
 .nv-content-wrap a:not(.button):not(.wp-block-file__button), .nv-comment-content a {

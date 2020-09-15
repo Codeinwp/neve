@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-09-03T08:33:50+00:00\n"
+"POT-Creation-Date: 2020-09-07T09:28:40+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -443,7 +443,7 @@ msgid "Alignment"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:533
-#: inc/customizer/options/buttons.php:135
+#: inc/customizer/options/buttons.php:129
 msgid "Padding"
 msgstr ""
 
@@ -1156,29 +1156,25 @@ msgstr ""
 msgid "PRO"
 msgstr ""
 
-#: inc/customizer/options/buttons.php:43
+#: inc/customizer/options/buttons.php:42
 msgid "Buttons"
 msgstr ""
 
-#: inc/customizer/options/buttons.php:59
+#: inc/customizer/options/buttons.php:58
 #: assets/js/src/gutenberg.js:14
 msgid "Primary"
 msgstr ""
 
-#: inc/customizer/options/buttons.php:62
+#: inc/customizer/options/buttons.php:61
 msgid "Secondary"
 msgstr ""
 
-#: inc/customizer/options/buttons.php:98
+#: inc/customizer/options/buttons.php:92
 msgid "Button Appearance"
 msgstr ""
 
-#: inc/customizer/options/buttons.php:154
+#: inc/customizer/options/buttons.php:148
 msgid "Border radius"
-msgstr ""
-
-#: inc/customizer/options/buttons.php:175
-msgid "Button text"
 msgstr ""
 
 #: inc/customizer/options/colors_background.php:42

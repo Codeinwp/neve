@@ -29,12 +29,12 @@ class Gutenberg extends Generator {
 			Dynamic_Selector::KEY_SELECTOR => '
 				 .wp-block ,
 				 .editor-post-title__block .editor-post-title__input,
-				 h1,
-				 h2,
-				 h3,
-				 h4,
-				 h5,
-				 h6',
+				 h1.wp-block,
+				 h2.wp-block,
+				 h3.wp-block,
+				 h4.wp-block,
+				 h5.wp-block,
+				 h6.wp-block',
 			Dynamic_Selector::KEY_CONTEXT  => [
 				Dynamic_Selector::CONTEXT_GUTENBERG => true,
 			],
@@ -52,7 +52,7 @@ class Gutenberg extends Generator {
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_COLOR => Config::MODS_LINK_COLOR,
 			],
-			Dynamic_Selector::KEY_SELECTOR => 'a',
+			Dynamic_Selector::KEY_SELECTOR => 'a, .wp-block a',
 			Dynamic_Selector::KEY_CONTEXT  => [
 				Dynamic_Selector::CONTEXT_GUTENBERG => true,
 			],
@@ -61,7 +61,7 @@ class Gutenberg extends Generator {
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_COLOR => Config::MODS_LINK_HOVER_COLOR,
 			],
-			Dynamic_Selector::KEY_SELECTOR => 'a:hover',
+			Dynamic_Selector::KEY_SELECTOR => 'a:hover, .wp-block a:hover',
 			Dynamic_Selector::KEY_CONTEXT  => [
 				Dynamic_Selector::CONTEXT_GUTENBERG => true,
 			],
