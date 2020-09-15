@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-09-15T13:31:35+00:00\n"
+"POT-Creation-Date: 2020-09-15T14:00:36+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -40,219 +40,219 @@ msgid "Options"
 msgstr ""
 
 #. translators: %s - Theme name
-#: dashboard/inc/Main.php:196
+#: dashboard/inc/Main.php:197
 msgid "%s Options"
 msgstr ""
 
 #. translators: %s - Theme name
 #. translators: %s - theme name
-#: dashboard/inc/Main.php:198
+#: dashboard/inc/Main.php:199
 #: inc/core/admin.php:236
 msgid "%s now comes with a sites library with various designs to pick from. Visit our collection of demos that are constantly being added."
 msgstr ""
 
 #. translators: %s - "Public roadmap"
-#: dashboard/inc/Main.php:200
+#: dashboard/inc/Main.php:201
 msgid "Share opinions, ask questions and help each other on our Neve community! Keep up with what we’re working on and vote to help us prioritize on our %s."
 msgstr ""
 
 #. translators: %s - "Public roadmap"
-#: dashboard/inc/Main.php:200
+#: dashboard/inc/Main.php:201
 msgid "public roadmap"
 msgstr ""
 
 #. translators: %s - Theme name
-#: dashboard/inc/Main.php:202
+#: dashboard/inc/Main.php:203
 msgid "With %s, you can choose from multiple unique demos, specially designed for you, that can be installed with a single click. You just need to choose your favorite, and we will take care of everything else."
 msgstr ""
 
 #. translators: %s - Theme name
-#: dashboard/inc/Main.php:204
+#: dashboard/inc/Main.php:205
 msgid "We want to make sure you have the best experience using %1$s, and that is why we have gathered all the necessary information here for you. We hope you will enjoy using %1$s as much as we enjoy creating great products."
 msgstr ""
 
 #. translators: %s - Theme name
 #. translators: %s - theme name
-#: dashboard/inc/Main.php:206
+#: dashboard/inc/Main.php:207
 #: inc/core/admin.php:244
 msgid "Need more details? Please check our full documentation for detailed information on how to use %s."
 msgstr ""
 
 #. translators: %s - "Neve Pro Addon"
-#: dashboard/inc/Main.php:208
+#: dashboard/inc/Main.php:209
 msgid "%s license"
 msgstr ""
 
 #. translators: %s - "Neve Pro Addon"
-#: dashboard/inc/Main.php:210
+#: dashboard/inc/Main.php:211
 msgid "Please update %s to the latest version and then refresh this page to have access to the options."
 msgstr ""
 
 #. translators: store name (Themeisle)
-#: dashboard/inc/Main.php:214
+#: dashboard/inc/Main.php:215
 msgid "Enter your license from %1$s purchase history in order to get plugin updates"
 msgstr ""
 
 #. translators: s - theme name (Neve).
-#: dashboard/inc/Main.php:247
+#: dashboard/inc/Main.php:249
 msgid "New theme update for %1$s! Please update to %2$s."
 msgstr ""
 
-#: dashboard/inc/Main.php:252
-#: dashboard/inc/Main.php:273
+#: dashboard/inc/Main.php:254
+#: dashboard/inc/Main.php:275
 msgid "Update Now"
 msgstr ""
 
 #. translators: s - Pro plugin name (Neve Pro)
-#: dashboard/inc/Main.php:264
+#: dashboard/inc/Main.php:266
 msgid "New plugin update for %1$s! Please update to %2$s."
 msgstr ""
 
 #. translators: 1 - Theme Name (Neve), 2 - Plugin Name (Neve Pro)
-#: dashboard/inc/Main.php:282
+#: dashboard/inc/Main.php:284
 msgid "We recommend that both %1$s and %2$s are updated to the latest version to ensure optimal intercompatibility."
 msgstr ""
 
-#: dashboard/inc/Main.php:297
+#: dashboard/inc/Main.php:299
 msgid "Upload Logo"
 msgstr ""
 
-#: dashboard/inc/Main.php:301
+#: dashboard/inc/Main.php:303
 msgid "Set Colors"
 msgstr ""
 
-#: dashboard/inc/Main.php:305
+#: dashboard/inc/Main.php:307
 msgid "Customize Fonts"
 msgstr ""
 
-#: dashboard/inc/Main.php:309
+#: dashboard/inc/Main.php:311
 msgid "Layout Options"
 msgstr ""
 
-#: dashboard/inc/Main.php:313
+#: dashboard/inc/Main.php:315
 msgid "Header Options"
 msgstr ""
 
-#: dashboard/inc/Main.php:317
+#: dashboard/inc/Main.php:319
 msgid "Blog Layouts"
 msgstr ""
 
-#: dashboard/inc/Main.php:321
+#: dashboard/inc/Main.php:323
 msgid "Footer Options"
 msgstr ""
 
-#: dashboard/inc/Main.php:325
+#: dashboard/inc/Main.php:327
 #: inc/customizer/options/layout_sidebar.php:43
 msgid "Content / Sidebar"
 msgstr ""
 
-#: dashboard/inc/Main.php:339
+#: dashboard/inc/Main.php:341
 msgid "Header/Footer builder"
 msgstr ""
 
-#: dashboard/inc/Main.php:340
+#: dashboard/inc/Main.php:342
 msgid "Easily build your header and footer by dragging and dropping all the important elements in the real-time WordPress Customizer. More advanced options are available in PRO."
 msgstr ""
 
-#: dashboard/inc/Main.php:344
+#: dashboard/inc/Main.php:346
 msgid "Page Builder Compatibility"
 msgstr ""
 
-#: dashboard/inc/Main.php:345
+#: dashboard/inc/Main.php:347
 msgid "Neve is fully compatible with Gutenberg, the new WordPress editor and for all of you page builder fans, Neve has full compatibility with Elementor, Beaver Builder, and all the other popular page builders."
 msgstr ""
 
-#: dashboard/inc/Main.php:349
+#: dashboard/inc/Main.php:351
 #: inc/customizer/options/upsells.php:89
 msgid "Header Booster"
 msgstr ""
 
-#: dashboard/inc/Main.php:350
+#: dashboard/inc/Main.php:352
 msgid "Take the header builder to a new level with new awesome components: socials, contact, breadcrumbs, language switcher, multiple HTML, sticky and transparent menu, page header builder and many more."
 msgstr ""
 
-#: dashboard/inc/Main.php:354
+#: dashboard/inc/Main.php:356
 msgid "Page Header Builder"
 msgstr ""
 
-#: dashboard/inc/Main.php:355
+#: dashboard/inc/Main.php:357
 msgid "The Page Header is the horizontal area that sits directly below the header and contains the page/post title. Easily design an attractive Page Header area using our dedicated builder."
 msgstr ""
 
-#: dashboard/inc/Main.php:359
+#: dashboard/inc/Main.php:361
 #: inc/customizer/options/upsells.php:92
 msgid "Custom Layouts"
 msgstr ""
 
-#: dashboard/inc/Main.php:360
+#: dashboard/inc/Main.php:362
 msgid "Powerful Custom Layouts builder which allows you to easily create your own header, footer or custom content on any of the hook locations available in the theme."
 msgstr ""
 
-#: dashboard/inc/Main.php:364
+#: dashboard/inc/Main.php:366
 #: inc/customizer/options/upsells.php:90
 msgid "Blog Booster"
 msgstr ""
 
-#: dashboard/inc/Main.php:365
+#: dashboard/inc/Main.php:367
 msgid "Give a huge boost to your entire blogging experience with features specially designed for increased user experience."
 msgstr ""
 
-#: dashboard/inc/Main.php:365
+#: dashboard/inc/Main.php:367
 msgid "Sharing, custom article sorting, comments integrations, number of minutes needed to read an article and many more."
 msgstr ""
 
-#: dashboard/inc/Main.php:369
+#: dashboard/inc/Main.php:371
 #: inc/customizer/options/upsells.php:95
 msgid "Elementor Booster"
 msgstr ""
 
-#: dashboard/inc/Main.php:370
+#: dashboard/inc/Main.php:372
 #: inc/customizer/options/upsells.php:100
 msgid "Leverage the true flexibility of Elementor with powerful addons and templates that you can import with just one click."
 msgstr ""
 
-#: dashboard/inc/Main.php:374
+#: dashboard/inc/Main.php:376
 #: inc/customizer/options/upsells.php:91
 msgid "WooCommerce Booster"
 msgstr ""
 
-#: dashboard/inc/Main.php:375
+#: dashboard/inc/Main.php:377
 msgid "Empower your online store with awesome new features, specially designed for a smooth WooCommerce integration."
 msgstr ""
 
-#: dashboard/inc/Main.php:375
+#: dashboard/inc/Main.php:377
 msgid "Wishlist, quick view, video products, advanced reviews, multiple dedicated layouts and many more."
 msgstr ""
 
-#: dashboard/inc/Main.php:379
+#: dashboard/inc/Main.php:381
 msgid "LifterLMS Booster"
 msgstr ""
 
-#: dashboard/inc/Main.php:380
+#: dashboard/inc/Main.php:382
 msgid "Make your LifterLMS pages look stunning with our PRO design options. Specially created to help you set up your online courses with minimum customizations."
 msgstr ""
 
-#: dashboard/inc/Main.php:384
+#: dashboard/inc/Main.php:386
 msgid "Typekit(Adobe) Fonts"
 msgstr ""
 
-#: dashboard/inc/Main.php:385
+#: dashboard/inc/Main.php:387
 msgid "The module allows for an easy way of enabling new awesome Adobe (previous Typekit) Fonts in Neve's Typography options."
 msgstr ""
 
-#: dashboard/inc/Main.php:389
+#: dashboard/inc/Main.php:391
 msgid "White Label"
 msgstr ""
 
-#: dashboard/inc/Main.php:390
+#: dashboard/inc/Main.php:392
 msgid "For any developer or agency out there building websites for their own clients, we've made it easy to present the theme as your own."
 msgstr ""
 
-#: dashboard/inc/Main.php:394
+#: dashboard/inc/Main.php:396
 msgid "Scroll To Top"
 msgstr ""
 
-#: dashboard/inc/Main.php:395
+#: dashboard/inc/Main.php:397
 msgid "Simple but effective module to help you navigate back to the top of the really long pages."
 msgstr ""
 
@@ -1066,6 +1066,50 @@ msgstr ""
 
 #: inc/admin/plugin_install/main.php:176
 msgid "Activating "
+msgstr ""
+
+#: inc/compatibility/block-patterns/dark-header-centered-content.php:9
+msgid "Dark header with centered content"
+msgstr ""
+
+#: inc/compatibility/block-patterns/four-columns-team-members.php:9
+msgid "Four columns with team members"
+msgstr ""
+
+#: inc/compatibility/block-patterns/gallery-grid-buttons.php:9
+msgid "Gallery grid with buttons"
+msgstr ""
+
+#: inc/compatibility/block-patterns/gallery-title-buttons.php:9
+msgid "Gallery with title and button"
+msgstr ""
+
+#: inc/compatibility/block-patterns/light-header-left-aligned-content.php:9
+msgid "Light header with left-aligned content"
+msgstr ""
+
+#: inc/compatibility/block-patterns/testimonials-columns.php:9
+msgid "Testimonial columns"
+msgstr ""
+
+#: inc/compatibility/block-patterns/three-columns-images-text.php:9
+msgid "Three columns with images and text"
+msgstr ""
+
+#: inc/compatibility/block-patterns/three-columns-images-texts-content.php:9
+msgid "Three columns with images, content and buttons"
+msgstr ""
+
+#: inc/compatibility/block-patterns/two-columns-centered-content.php:9
+msgid "Two columns with centered content"
+msgstr ""
+
+#: inc/compatibility/block-patterns/two-columns-image-text.php:9
+msgid "Two Columns with image and text"
+msgstr ""
+
+#: inc/compatibility/block-patterns/two-columns-with-text.php:9
+msgid "Two columns with text"
 msgstr ""
 
 #: inc/compatibility/lifter.php:314
