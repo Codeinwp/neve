@@ -219,7 +219,7 @@ Cypress.Commands.add("captureDocument", (generalMaskAndClip = true) => {
 		cy.maskAndClip(maskElement,clipElement);
 	}
 	cy.scrollTo('bottom',{ ensureScrollable: false });
-	cy.wait(1000);
+	cy.wait(2000);
 	cy.percySnapshot();
 });
 /**
@@ -241,7 +241,7 @@ Cypress.Commands.add("maskAndClip", (maskSelectors, clipSelectors, hideElements)
 		if ($body.find(clipSelectors).length) {
 			cy.get(clipSelectors).invoke('css', 'display', 'none');
 		}
-		if ($body.find(hideElements).length) {
+		if (hideElements.length > 0 && $body.find(hideElements).length) {
 			cy.get(hideElements).invoke('css', 'visibility', 'hidden');
 		}
 	});
