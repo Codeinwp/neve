@@ -241,7 +241,7 @@ Cypress.Commands.add("maskAndClip", (maskSelectors, clipSelectors, hideElements)
 		if ($body.find(clipSelectors).length) {
 			cy.get(clipSelectors).invoke('css', 'display', 'none');
 		}
-		if (hideElements.length > 0 && $body.find(hideElements).length) {
+		if (hideElements && hideElements.length > 0 && $body.find(hideElements).length) {
 			cy.get(hideElements).invoke('css', 'visibility', 'hidden');
 		}
 	});
