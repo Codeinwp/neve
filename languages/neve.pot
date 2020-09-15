@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-09-07T09:28:40+00:00\n"
+"POT-Creation-Date: 2020-09-15T13:31:35+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -300,7 +300,7 @@ msgstr ""
 #: header-footer-grid/Core/Components/Copyright.php:84
 #: header-footer-grid/Core/Components/CustomHtml.php:158
 #: header-footer-grid/Core/Components/Logo.php:205
-#: inc/core/front_end.php:179
+#: inc/core/front_end.php:206
 #: inc/customizer/options/colors_background.php:66
 msgid "Text Color"
 msgstr ""
@@ -443,7 +443,7 @@ msgid "Alignment"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:533
-#: inc/customizer/options/buttons.php:129
+#: inc/customizer/options/buttons.php:135
 msgid "Padding"
 msgstr ""
 
@@ -501,14 +501,14 @@ msgstr ""
 msgid "Icon Size"
 msgstr ""
 
-#: header-footer-grid/Core/Components/CartIcon.php:141
+#: header-footer-grid/Core/Components/CartIcon.php:142
 #: header-footer-grid/Core/Components/SearchResponsive.php:184
 #: inc/customizer/controls/react/src/background/BackgroundComponent.js:45
 #: inc/customizer/controls/react/src/background/BackgroundComponent.js:89
 msgid "Color"
 msgstr ""
 
-#: header-footer-grid/Core/Components/CartIcon.php:167
+#: header-footer-grid/Core/Components/CartIcon.php:168
 #: header-footer-grid/Core/Components/SearchResponsive.php:205
 msgid "Hover Color"
 msgstr ""
@@ -533,22 +533,22 @@ msgid "Arbitrary HTML code. It supports also shortcodes."
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetFour.php:32
-#: inc/core/front_end.php:505
+#: inc/core/front_end.php:535
 msgid "Footer Four"
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetOne.php:31
-#: inc/core/front_end.php:502
+#: inc/core/front_end.php:532
 msgid "Footer One"
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetThree.php:31
-#: inc/core/front_end.php:504
+#: inc/core/front_end.php:534
 msgid "Footer Three"
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetTwo.php:32
-#: inc/core/front_end.php:503
+#: inc/core/front_end.php:533
 msgid "Footer Two"
 msgstr ""
 
@@ -599,7 +599,7 @@ msgstr ""
 #: header-footer-grid/Core/Components/Nav.php:43
 #: header-footer-grid/Core/Components/Nav.php:221
 #: header-footer-grid/templates/components/component-nav.php:26
-#: inc/core/front_end.php:71
+#: inc/core/front_end.php:72
 msgid "Primary Menu"
 msgstr ""
 
@@ -660,7 +660,7 @@ msgstr ""
 #: header-footer-grid/Core/Components/NavFooter.php:41
 #: header-footer-grid/Core/Components/NavFooter.php:138
 #: header-footer-grid/templates/components/component-nav-footer.php:23
-#: inc/core/front_end.php:72
+#: inc/core/front_end.php:73
 msgid "Footer Menu"
 msgstr ""
 
@@ -744,7 +744,7 @@ msgstr ""
 #: header-footer-grid/Core/Components/SecondNav.php:41
 #: header-footer-grid/Core/Components/SecondNav.php:136
 #: header-footer-grid/templates/components/component-nav-secondary.php:23
-#: inc/core/front_end.php:73
+#: inc/core/front_end.php:74
 msgid "Secondary Menu"
 msgstr ""
 
@@ -988,7 +988,7 @@ msgid "No Sidebar"
 msgstr ""
 
 #: inc/admin/metabox/main.php:56
-#: inc/core/front_end.php:495
+#: inc/core/front_end.php:525
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:117
 msgid "Sidebar"
 msgstr ""
@@ -1114,41 +1114,41 @@ msgstr ""
 msgid "Documentation"
 msgstr ""
 
-#: inc/core/front_end.php:149
+#: inc/core/front_end.php:176
 msgid "Black"
 msgstr ""
 
-#: inc/core/front_end.php:158
+#: inc/core/front_end.php:185
 msgid "White"
 msgstr ""
 
-#: inc/core/front_end.php:167
+#: inc/core/front_end.php:194
 msgid "Button Color"
 msgstr ""
 
-#: inc/core/front_end.php:171
+#: inc/core/front_end.php:198
 #: inc/customizer/options/colors_background.php:56
 msgid "Link Color"
 msgstr ""
 
-#: inc/core/front_end.php:175
+#: inc/core/front_end.php:202
 #: inc/customizer/options/colors_background.php:61
 msgid "Link Hover Color"
 msgstr ""
 
-#: inc/core/front_end.php:183
+#: inc/core/front_end.php:210
 msgid "Button text color"
 msgstr ""
 
-#: inc/core/front_end.php:187
+#: inc/core/front_end.php:214
 msgid "Button Hover text color"
 msgstr ""
 
-#: inc/core/front_end.php:191
+#: inc/core/front_end.php:218
 msgid "Button Hover Color"
 msgstr ""
 
-#: inc/core/front_end.php:496
+#: inc/core/front_end.php:526
 msgid "Shop Sidebar"
 msgstr ""
 
@@ -1156,25 +1156,29 @@ msgstr ""
 msgid "PRO"
 msgstr ""
 
-#: inc/customizer/options/buttons.php:42
+#: inc/customizer/options/buttons.php:43
 msgid "Buttons"
 msgstr ""
 
-#: inc/customizer/options/buttons.php:58
+#: inc/customizer/options/buttons.php:59
 #: assets/js/src/gutenberg.js:14
 msgid "Primary"
 msgstr ""
 
-#: inc/customizer/options/buttons.php:61
+#: inc/customizer/options/buttons.php:62
 msgid "Secondary"
 msgstr ""
 
-#: inc/customizer/options/buttons.php:92
+#: inc/customizer/options/buttons.php:98
 msgid "Button Appearance"
 msgstr ""
 
-#: inc/customizer/options/buttons.php:148
+#: inc/customizer/options/buttons.php:154
 msgid "Border radius"
+msgstr ""
+
+#: inc/customizer/options/buttons.php:175
+msgid "Button text"
 msgstr ""
 
 #: inc/customizer/options/colors_background.php:42
