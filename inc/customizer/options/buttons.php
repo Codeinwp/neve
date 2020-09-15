@@ -172,7 +172,7 @@ class Buttons extends Base_Customizer {
 						'transport' => $this->selective_refresh,
 					],
 					[
-						'label'                 => esc_html__( 'Button text', 'neve' ),
+						'label'                 => esc_html__( 'Button Text', 'neve' ),
 						'section'               => $this->section_id,
 						'input_attrs'           => array(
 							'size_units'             => [ 'px' ],

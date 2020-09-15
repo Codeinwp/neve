@@ -6,7 +6,7 @@
  */
 
 return array(
-	'title'      => __( 'Two Columns with image and text', 'neve' ),
+	'title'      => __( 'Two columns with image and text', 'neve' ),
 	'content'    => '<!-- wp:columns -->
 <div class="wp-block-columns"><!-- wp:column -->
 <div class="wp-block-column"><!-- wp:image {} -->
