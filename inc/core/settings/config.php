@@ -42,6 +42,9 @@ class Config {
 	const MODS_DEFAULT_CONTAINER_STYLE     = 'neve_default_container_style';
 	const MODS_SINGLE_POST_CONTAINER_STYLE = 'neve_single_post_container_style';
 
+	const MODS_BUTTON_TYPEFACE           = 'neve_button_typeface';
+	const MODS_SECONDARY_BUTTON_TYPEFACE = 'neve_secondary_button_typeface';
+
 	const MODS_TYPEFACE_ARCHIVE_POST_TITLE   = 'neve_archive_typography_post_title';
 	const MODS_TYPEFACE_ARCHIVE_POST_EXCERPT = 'neve_archive_typography_post_excerpt';
 	const MODS_TYPEFACE_ARCHIVE_POST_META    = 'neve_archive_typography_post_meta';
@@ -133,7 +136,7 @@ class Config {
 				.nv-tags-list a:hover,
 				ul[id^="nv-primary-navigation"] li.button.button-primary > a:hover,
 				.menu li.button.button-primary > a:hover, .wp-block-button.is-style-primary .wp-block-button__link:hover ',
-		self::CSS_SELECTOR_BTN_SECONDARY_NORMAL      => '.button.button-secondary, #comments input[type="submit"], .cart-off-canvas .button.nv-close-cart-sidebar,  .wp-block-button.is-style-secondary .wp-block-button__link',
+		self::CSS_SELECTOR_BTN_SECONDARY_NORMAL      => '.button.button-secondary, #comments input[type="submit"], #comments input[type=submit], .cart-off-canvas .button.nv-close-cart-sidebar,  .wp-block-button.is-style-secondary .wp-block-button__link',
 		self::CSS_SELECTOR_BTN_SECONDARY_HOVER       => '.button.button-secondary:hover, #comments input[type="submit"]:hover, .cart-off-canvas .button.nv-close-cart-sidebar:hover,  .wp-block-button.is-style-secondary .wp-block-button__link:hover',
 		self::CSS_SELECTOR_ARCHIVE_POST_TITLE        => '.blog .blog-entry-title, .archive .blog-entry-title',
 		self::CSS_SELECTOR_ARCHIVE_POST_EXCERPT      => '.blog .entry-summary, .archive .entry-summary, .blog .post-pages-links',

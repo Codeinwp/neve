@@ -79,6 +79,7 @@ class Core_Loader {
 				'Compatibility\Header_Footer_Beaver',
 				'Compatibility\Beaver',
 				'Compatibility\Lifter',
+				'Compatibility\Patterns',
 				'Compatibility\PWA',
 
 				'Admin\Metabox\Manager',
