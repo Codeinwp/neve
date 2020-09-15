@@ -28,7 +28,7 @@ $container_classes[] = 'nav-menu-footer';
 				'theme_location' => 'footer',
 				'depth'          => 1,
 				'container'      => 'ul',
-				'menu_class'     => 'footer-menu',
+				'menu_class'     => 'footer-menu nav-ul',
 				'menu_id'        => 'footer-menu',
 			)
 		);

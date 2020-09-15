@@ -95,13 +95,9 @@
     padding: 2px $spacing-xs;
     transition: $transition_med;
     border-radius: 3px;
-    margin-bottom: $spacing-xs;
-    margin-right: $spacing-xs;
-    border: 1px solid $button_color;
-    color: $button_color;
+	margin: 0 $spacing-xs $spacing-xs 0;
+    border: 1px solid;
     &:hover {
-      background: $button_color;
-      border-color: $button-color;
       color: #fff;
     }
   }

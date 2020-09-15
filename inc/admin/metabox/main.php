@@ -46,7 +46,7 @@ class Main extends Controls_Base {
 			new Controls\Radio(
 				'neve_meta_sidebar',
 				array(
-					'default'  => ( $this->is_new_page() || $this->is_checkout() ) ? 'full-width' : 'default',
+					'default'  => ( self::is_new_page() || self::is_checkout() ) ? 'full-width' : 'default',
 					'choices'  => array(
 						'default'    => __( 'Customizer Setting', 'neve' ),
 						'left'       => __( 'Left Sidebar', 'neve' ),
@@ -124,7 +124,7 @@ class Main extends Controls_Base {
 			new Controls\Checkbox(
 				'neve_meta_enable_content_width',
 				array(
-					'default'     => ( $this->is_new_page() || $this->is_checkout() ) ? 'on' : 'off',
+					'default'     => ( self::is_new_page() || self::is_checkout() ) ? 'on' : 'off',
 					'label'       => __( 'Content Width', 'neve' ) . ' (%)',
 					'input_label' => __( 'Enable Individual Content Width', 'neve' ),
 					'priority'    => 50,
@@ -135,10 +135,10 @@ class Main extends Controls_Base {
 			new Controls\Range(
 				'neve_meta_content_width',
 				array(
-					'default'    => ( $this->is_new_page() || $this->is_checkout() ) ? 100 : 70,
+					'default'    => ( self::is_new_page() || self::is_checkout() ) ? 100 : 70,
 					'min'        => 50,
 					'max'        => 100,
-					'hidden'     => $this->hide_content_width(),
+					'hidden'     => self::hide_content_width(),
 					'depends_on' => 'neve_meta_enable_content_width',
 					'priority'   => 55,
 				)
@@ -151,8 +151,8 @@ class Main extends Controls_Base {
 	 *
 	 * @return bool
 	 */
-	public function hide_content_width() {
-		if ( $this->is_new_page() ) {
+	public static function hide_content_width() {
+		if ( self::is_new_page() ) {
 			return false;
 		}
 
@@ -162,7 +162,7 @@ class Main extends Controls_Base {
 
 		$meta = get_post_meta( (int) $_GET['post'], 'neve_meta_enable_content_width', true );
 
-		if ( empty( $meta ) && $this->is_checkout() ) {
+		if ( empty( $meta ) && self::is_checkout() ) {
 			return false;
 		}
 
@@ -224,7 +224,7 @@ class Main extends Controls_Base {
 	 *
 	 * @return bool
 	 */
-	private function is_new_page() {
+	public static function is_new_page() {
 		global $pagenow;
 
 		if ( $pagenow !== 'post-new.php' ) {
@@ -244,7 +244,7 @@ class Main extends Controls_Base {
 	/**
 	 * Check if is checkout.
 	 */
-	private function is_checkout() {
+	public static function is_checkout() {
 		if ( ! class_exists( 'WooCommerce', false ) ) {
 			return false;
 		}

@@ -14,6 +14,8 @@ use HFG\Core\Builder\Header as HeaderBuilder;
 
 $interaction_type = row_setting( Abstract_Builder::LAYOUT_SETTING );
 $classes          = [ 'header-menu-sidebar', 'menu-sidebar-panel', $interaction_type ];
+$is_contained     = in_array( $interaction_type, [ 'full_canvas', 'dropdown' ], true );
+$inner_classes    = 'header-menu-sidebar-inner ' . ( $is_contained ? ' container' : '' );
 $item_attributes  = apply_filters( 'neve_nav_toggle_data_attrs', '' );
 
 ?>
@@ -38,7 +40,7 @@ $item_attributes  = apply_filters( 'neve_nav_toggle_data_attrs', '' );
 					</span>
 			</button>
 		</div>
-		<div id="header-menu-sidebar-inner" class="header-menu-sidebar-inner">
+		<div id="header-menu-sidebar-inner" class="<?php echo esc_attr( $inner_classes ); ?>">
 			<?php render_components( HeaderBuilder::BUILDER_NAME ); ?>
 		</div>
 	</div>

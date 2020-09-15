@@ -1,0 +1,20 @@
+describe( 'Starter Sites VR - {{site}}', () => {
+    let pages = [];
+    it( 'Check frontpage', () => {
+        cy.visit( "{{site}}" );
+		cy.captureDocument();
+        cy.get( '#nv-primary-navigation-main' ).then( $headerMenu => {
+            [ ...$headerMenu.find( '.menu-item a' ) ].forEach( $url => {
+                pages.push( $url.href );
+            } );
+        } );
+    } );
+
+    it( 'Check additional pages', () => {
+        pages.forEach( page => {
+            cy.visit( page );
+            cy.captureDocument();
+        } );
+    } );
+
+} );

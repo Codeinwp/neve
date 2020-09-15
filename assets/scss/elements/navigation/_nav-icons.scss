@@ -1,7 +1,9 @@
-ul[id^="nv-primary-navigation"] {
-  i {
+.nv-nav-wrap ul.primary-menu-ul > {
+  li i {
+	margin-top: 0;
     font-size: inherit;
     line-height: inherit;
-    width: 20px;
+    width: auto;
+    height: auto;
   }
 }

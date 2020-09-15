@@ -6,10 +6,14 @@
   "viewportWidth": 1366,
   "viewportHeight": 768,
   "user": "admin",
+  "retries": 1,
   "screenshotsFolder": "visual-regression/screenshots",
   "videoUploadOnPasses": false,
   "password": "admin",
   "env": {
+	"ssSites": [
+	  "https://demosites.io/original/"
+	],
 	"qaUrls": [
 	  "https://qa-neve.themeisle.com/neve/",
 	  "https://qa-neve.themeisle.com/neve/about/page-markup-and-formatting/",

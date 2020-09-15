@@ -268,18 +268,18 @@ class Layout_Sidebar extends Base_Customizer {
 		}
 
 		$meta = get_post_meta( $shop_id, 'neve_meta_sidebar', true );
-		if ( empty( $meta ) ) {
+		if ( empty( $meta ) || $meta === 'default' ) {
 			return '';
 		}
 
 		/* translators: %s is Notice text */
-		$template = '<div class="notice notice-info"><p>%s</p></div>';
+		$template = '<p class="notice notice-info">%s</p>';
 
 		return sprintf(
 			$template,
 			sprintf(
 			/* translators: %s is edit page link */
-				esc_html__( 'Note: It seems that the shop page has an individual sidebar layout already set. To be able to control the layout from here, %s your page and set the sidebar to "Customizer Setting".', 'neve' ),
+				esc_html__( 'Note: It seems that the shop page has an individual sidebar layout already set. To be able to control the layout from here, %s your page and set the sidebar to "Inherit".', 'neve' ),
 				sprintf(
 				/* translators: %s is edit label */
 					'<a target="_blank" href="' . get_edit_post_link( $shop_id ) . '">%s</a>',

@@ -26,7 +26,6 @@ const Help = (props) => {
 				>
 					<Button
 						isPrimary
-						isLarge
 						href={supportURL}
 					>{__('Contact Support', 'neve')}</Button>
 				</Card>
