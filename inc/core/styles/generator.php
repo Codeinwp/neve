@@ -46,7 +46,6 @@ class Generator {
 		$tablet_css  = '';
 		$all_css     = '';
 
-		$this->_subscribers = array_merge( $this->_subscribers, apply_filters( 'neve_style_subscribers', [] ) );
 		if ( $this->context === null ) {
 			$this->context = Dynamic_Selector::CONTEXT_FRONTEND;
 		}
@@ -68,5 +67,23 @@ class Generator {
 			return $all_css;
 		}
 		echo $all_css; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	}
+
+	/**
+	 * Set new subscribers.
+	 *
+	 * @param array $subscribers New generator list.
+	 */
+	public function set( $subscribers ) {
+		$this->_subscribers = $subscribers;
+	}
+
+	/**
+	 * Return current subscribers.
+	 *
+	 * @return array
+	 */
+	public function get() {
+		return $this->_subscribers;
 	}
 }
