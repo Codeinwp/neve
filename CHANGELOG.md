@@ -1,3 +1,14 @@
+#### [Version 2.8.0](https://github.com/Codeinwp/neve/compare/v2.7.7...v2.8.0) (2020-09-03)
+
+- [Feat] Compatibility with AMP 2.0
+- [Feat] New opening behaviors for the mobile menu (Slide from Left/Right, Pull from Left/Right, Full Canvas, Slide Down)
+- [Feat] New option to automatically expand first level dropdowns on mobile
+- [Feat] Single post/page customization options for Gutenberg editor
+- [Fix] Primary Menu and Secondary Menu alignment on mobile
+- [Fix] Scrollbar in the Primary Menu on mobile for larger font size
+- [Fix] Items spacing for Primary Menu on mobile
+- [Fix] Range controls lagging
+
 ##### [Version 2.7.7](https://github.com/Codeinwp/neve/compare/v2.7.6...v2.7.7) (2020-08-19)
 
 - [Fix] Permissions callback for REST route in WP 5.5

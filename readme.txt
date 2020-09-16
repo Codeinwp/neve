@@ -1,6 +1,6 @@
 === Neve ===
 Contributors: themeisle
-Tags: blog, custom-logo, e-commerce, rtl-language-support, grid-layout, one-column, two-columns, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, accessibility-ready, wide-blocks, block-styles, footer-widgets, portfolio, left-sidebar, right-sidebar
+Tags: blog,block-patterns, custom-logo, e-commerce, rtl-language-support, grid-layout, one-column, two-columns, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, accessibility-ready, wide-blocks, block-styles, footer-widgets, portfolio, left-sidebar, right-sidebar
 Requires at least: 4.0
 Tested up to: 5.5
 Stable tag: 1.0.23
@@ -18,6 +18,20 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
+
+#### [Version 2.8.0](https://github.com/Codeinwp/neve/compare/v2.7.7...v2.8.0) (2020-09-03)
+
+- [Feat] Compatibility with AMP 2.0
+- [Feat] New opening behaviors for the mobile menu (Slide from Left/Right, Pull from Left/Right, Full Canvas, Slide Down)
+- [Feat] New option to automatically expand first level dropdowns on mobile
+- [Feat] Single post/page customization options for Gutenberg editor
+- [Fix] Primary Menu and Secondary Menu alignment on mobile
+- [Fix] Scrollbar in the Primary Menu on mobile for larger font size
+- [Fix] Items spacing for Primary Menu on mobile
+- [Fix] Range controls lagging
+
+
+
 
 ##### [Version 2.7.7](https://github.com/Codeinwp/neve/compare/v2.7.6...v2.7.7) (2020-08-19)
 

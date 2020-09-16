@@ -12,6 +12,9 @@
   "numTestsKeptInMemory": 0,
   "password": "admin",
   "env": {
+	"ssSites": [
+	  "https://demosites.io/original/"
+	],
 	"qaUrls": [
 	  "https://qa-neve.themeisle.com/neve/",
 	  "https://qa-neve.themeisle.com/neve/about/page-markup-and-formatting/",

@@ -12,11 +12,15 @@ describe('Useful Plugins Tab - Install Optimole', () => {
 
   it('Installs Plugins', () => {
 	cy.get('@pluginsTab').find('.plugin.card').should('have.length.greaterThan', 4)
-	cy.get('@pluginsTab').find('.plugin.optimole-wp button').contains('Install').click()
-	cy.wait('@adminAjax').then((req) => {
-	  expect(req.status).to.equal(200)
-	  expect(req.response.body.success).to.equal(true)
-	})
+	cy.get('@pluginsTab').find('.plugin.optimole-wp button').then((btn)=> {
+		if(btn.text().includes('Install')){
+			btn.trigger("click");
+			cy.wait('@adminAjax').then((req) => {
+				expect(req.status).to.equal(200)
+				expect(req.response.body.success).to.equal(true)
+			})
+		}
+	});
   })
 
   it('Activates Plugins', () => {

@@ -39,7 +39,6 @@ const tabs = {
     'starter-sites': {label: 'Starter Sites', render: (setTab) => ( sites && sites.sites && sites.sites.hasOwnProperty('elementor') ) ? <StarterSites/> : <StarterSitesUnavailable/>}
 };
 
-
 if (neveDash.pro || neveDash.hasOldPro) {
     tabs.pro = {label: neveDash.strings.proTabTitle, render: (setTab) => <Pro/>};
     delete (tabs['free-pro']);
@@ -51,6 +50,10 @@ if (neveDash.whiteLabel) {
     if (neveDash.whiteLabel.hideStarterSites) {
         delete (tabs['starter-sites']);
     }
+}
+
+if ( neveDash.hidePluginsTab ) {
+   delete (tabs.plugins);
 }
 
 const untrailingSlashIt = (str) => str.replace(/\/$/, '');
