@@ -63,7 +63,7 @@ class Dynamic_Css {
 
 		$this->generator = $is_for_gutenberg ? new Gutenberg() : new Frontend();
 
-		$style = apply_filters( 'neve_dynamic_style_output', $this->generator->generate() );
+		$style = apply_filters( 'neve_dynamic_style_output', $this->generator->generate(), $is_for_gutenberg ? 'gutenberg' : 'frontend' );
 
 		$style = self::minify_css( $style );
 
