@@ -122,7 +122,18 @@ class Magic_Tags {
 			return '';
 		}
 
-		return wp_kses_post( call_user_func( [ $this, $tag ] ) );
+		$allowed_tags = wp_kses_allowed_html();
+		if ( $tag === 'current_post_meta' ) {
+			$allowed_tags['span'] = [
+				'class' => [],
+			];
+			$allowed_tags['time'] = [
+				'class'    => [],
+				'datetime' => [],
+				'content'  => [],
+			];
+		}
+		return wp_kses( call_user_func( [ $this, $tag ] ), $allowed_tags );
 	}
 
 	/**
