@@ -119,7 +119,7 @@ class Main {
 	 * @access  public
 	 */
 	public function init() {
-		add_filter( 'neve_dynamic_style_output', array( $this, 'append_css_style' ) );
+		add_filter( 'neve_style_subscribers', array( $this, 'inline_styles' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_utils_scripts' ) );
 	}
 
@@ -199,28 +199,17 @@ class Main {
 
 
 	/**
-	 * Appends css style to neve inline styles.
-	 *
-	 * @param string $style CSS rules.
-	 *
-	 * @return string
-	 * @since   1.0.0
-	 * @access  public
-	 */
-	public function append_css_style( $style ) {
-		return $style . $this->inline_styles();
-	}
-
-	/**
 	 * Generate inline style CSS from array.
 	 *
-	 * @return string
+	 * @param array $subscribers Subscribers list.
+	 *
+	 * @return array
 	 * @since   1.0.0
 	 * @access  public
 	 */
-	public function inline_styles() {
+	public function inline_styles( $subscribers ) {
 		if ( is_customize_preview() ) {
-			return '';
+			return $subscribers;
 		}
 		$css_array = [];
 		/**
@@ -232,9 +221,7 @@ class Main {
 			$css_array = $builder->add_style( $css_array );
 		}
 
-		$this->css_generator->set( $css_array );
-
-		return $this->css_generator->generate();
+		return array_merge( $subscribers, $css_array );
 	}
 
 	/**
