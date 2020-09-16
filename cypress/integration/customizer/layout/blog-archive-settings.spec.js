@@ -97,7 +97,7 @@ describe('Blog/Archive 1 / Default Layout', () => {
 
   it('Thumbnail Shadow', () => {
 	cy.visit('/')
-	cy.get('.nv-post-thumbnail-wrap').each(el => {
+	cy.get('.nv-post-thumbnail-wrap img').each(el => {
 	  cy.get(el).should('have.css', 'box-shadow', 'rgba(0, 0, 0, 0.12) 0px 14px 28px 0px, rgba(0, 0, 0, 0.12) 0px 10px 10px 0px')
 	})
   })
@@ -224,9 +224,10 @@ describe('Blog/Archive 3 / Covers Layout', () => {
   it('Thumbnail Box Shadow', () => {
 	cy.visit('/')
 	cy.get('article').each(el => {
-	  cy.get(el).find('.cover-post.nv-post-thumbnail-wrap').should('have.css', 'box-shadow', 'rgba(0, 0, 0, 0.12) 0px 14px 28px 0px, rgba(0, 0, 0, 0.12) 0px 10px 10px 0px')
+	  cy.get(el).find('.cover-post.nv-post-thumbnail-wrap img').should('have.css', 'box-shadow', 'rgba(0, 0, 0, 0.12) 0px 14px 28px 0px, rgba(0, 0, 0, 0.12) 0px 10px 10px 0px')
 	})
   })
+
   it('Post Content Order', () => {
 	cy.visit('/')
 	cy.get('article').each(el => {
