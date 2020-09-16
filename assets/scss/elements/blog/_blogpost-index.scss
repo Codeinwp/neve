@@ -111,11 +111,10 @@
     &:first-child {
       margin-top: 0;
     }
-
-    &.nv-meta-list {
-      margin-top: 0;
-    }
   }
+	.nv-meta-list {
+		margin-top: 5px;
+	}
 	.excerpt-wrap > *:last-child{
 		margin-bottom: 0;
 	}
@@ -132,11 +131,11 @@
       &:last-child {
         margin-bottom: 0;
       }
-
-      &.nv-meta-list {
-        margin-top: 0;
-      }
     }
+
+		.nv-meta-list {
+			margin-top: 5px;
+		}
 
     .blog-entry-title {
       margin-bottom: 0;
