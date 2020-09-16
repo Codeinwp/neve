@@ -53,34 +53,36 @@ function neve_get_button_appearance_default( $button = 'button' ) {
  * Migrate the old value for the blog layout to the new values.
  */
 function neve_migrate_blog_layout() {
-	$flag = 'neve_migrated_blog_layout';
-	if ( get_theme_mod( $flag ) ) {
+	// Layout Setting
+	$old_value = get_theme_mod( 'neve_blog_archive_layout' );
+	if ( $old_value !== 'alternative' ) {
 		return;
 	}
 
-	// Layout Setting
-	$old_value = get_theme_mod( 'neve_blog_archive_layout' );
-	if ( ! empty( $old_value && $old_value === 'alternative' ) ) {
-		set_theme_mod( 'neve_blog_archive_layout', 'default' );
-		set_theme_mod( 'neve_blog_list_alternative_layout', true );
-	}
+	set_theme_mod( 'neve_blog_archive_layout', 'default' );
+	set_theme_mod( 'neve_blog_list_alternative_layout', true );
+}
 
+/**
+ * Migrate blog columns.
+ */
+function neve_migrate_blog_columns() {
 	// Column Setting - Previously mobile was forced to 1.
 	$old = get_theme_mod( 'neve_grid_layout' );
-	if ( ! empty( $old ) && is_numeric( $old ) ) {
-		set_theme_mod(
-			'neve_grid_layout',
-			wp_json_encode(
-				array(
-					'desktop' => $old,
-					'tablet'  => $old,
-					'mobile'  => 1,
-				) 
-			) 
-		);
+	if ( ! is_numeric( $old ) ) {
+		return;
 	}
-
-	set_theme_mod( $flag, true );
+	set_theme_mod(
+		'neve_grid_layout',
+		wp_json_encode(
+			array(
+				'desktop' => $old,
+				'tablet'  => $old,
+				'mobile'  => 1,
+			)
+		)
+	);
 }
 
 add_action( 'init', 'neve_migrate_blog_layout' );
+add_action( 'init', 'neve_migrate_blog_columns' );

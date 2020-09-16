@@ -4,6 +4,7 @@ import { SortableContainer, SortableElement, SortableHandle } from 'react-sortab
 import classnames from 'classnames'
 import PropTypes from 'prop-types'
 import arrayMove from 'array-move'
+import { maybeParseJson } from '../common/common'
 
 const { __ } = wp.i18n
 const { useState } = wp.element
@@ -43,7 +44,7 @@ const Item = ({ label, slug, onToggle, className, disabled = false }) => {
 const SortableItem = SortableElement(Item)
 
 const OrderingComponent = ({ control }) => {
-  const [value, setValue] = useState(JSON.parse(control.setting.get()))
+  const [value, setValue] = useState(maybeParseJson(control.setting.get()))
   const { components, label } = control.params
   const disabled = Object.keys(components).filter(item => !value.includes(item))
 

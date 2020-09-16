@@ -22,74 +22,74 @@ class Frontend extends Generator {
 	 */
 	public function __construct() {
 		$this->_subscribers = [
-			'.container'                                                       => [
+			'.container'                                  => [
 				Config::CSS_PROP_MAX_WIDTH => [
 					Dynamic_Selector::META_KEY           => Config::MODS_CONTAINER_WIDTH,
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 				],
 			],
-			'a'                                                                => [
+			'a'                                           => [
 				Config::CSS_PROP_COLOR => Config::MODS_LINK_COLOR,
 			],
-			'.nv-loader'                                                       => [
+			'.nv-loader'                                  => [
 				Config::CSS_PROP_BORDER_COLOR => Config::MODS_LINK_COLOR,
 			],
-			'a:hover, a:focus'                                                 => [
+			'a:hover, a:focus'                            => [
 				Config::CSS_PROP_COLOR => Config::MODS_LINK_HOVER_COLOR,
 			],
 			'body, .entry-title a, .entry-title a:hover, .entry-title a:focus' => [
 				Config::CSS_PROP_COLOR => Config::MODS_TEXT_COLOR,
 			],
-			'.has-neve-link-hover-color-color'                                 => [
+			'.has-neve-link-hover-color-color'            => [
 				Config::CSS_PROP_COLOR => [
 					Dynamic_Selector::META_KEY       => Config::MODS_LINK_HOVER_COLOR,
 					Dynamic_Selector::META_IMPORTANT => true,
 					Dynamic_Selector::META_DEFAULT   => '#0366d6',
 				],
 			],
-			'.has-neve-link-color-color'                                       => [
+			'.has-neve-link-color-color'                  => [
 				Config::CSS_PROP_COLOR => [
 					Dynamic_Selector::META_KEY       => Config::MODS_LINK_COLOR,
 					Dynamic_Selector::META_IMPORTANT => true,
 					Dynamic_Selector::META_DEFAULT   => '#0366d6',
 				],
 			],
-			'.has-neve-text-color-color'                                       => [
+			'.has-neve-text-color-color'                  => [
 				Config::CSS_PROP_COLOR => [
 					Dynamic_Selector::META_KEY       => Config::MODS_TEXT_COLOR,
 					Dynamic_Selector::META_IMPORTANT => true,
 					Dynamic_Selector::META_DEFAULT   => '#404248',
 				],
 			],
-			'.has-neve-button-color-color'                                     => [
+			'.has-neve-button-color-color'                => [
 				Config::CSS_PROP_COLOR => [
 					Dynamic_Selector::META_KEY       => Config::MODS_BUTTON_PRIMARY_STYLE . '.background',
 					Dynamic_Selector::META_IMPORTANT => true,
 					Dynamic_Selector::META_DEFAULT   => '#0366d6',
 				],
 			],
-			'.has-neve-link-color-background-color'                            => [
+			'.has-neve-link-color-background-color'       => [
 				Config::CSS_PROP_BACKGROUND_COLOR => [
 					Dynamic_Selector::META_KEY       => Config::MODS_LINK_COLOR,
 					Dynamic_Selector::META_IMPORTANT => true,
 					Dynamic_Selector::META_DEFAULT   => '#0366d6',
 				],
 			],
-			'.has-neve-link-hover-color-background-color'                      => [
+			'.has-neve-link-hover-color-background-color' => [
 				Config::CSS_PROP_BACKGROUND_COLOR => [
 					Dynamic_Selector::META_KEY       => Config::MODS_LINK_HOVER_COLOR,
 					Dynamic_Selector::META_IMPORTANT => true,
 					Dynamic_Selector::META_DEFAULT   => '#0366d6',
 				],
 			],
-			'.has-neve-button-color-background-color'                          => [
+			'.has-neve-button-color-background-color'     => [
 				Config::CSS_PROP_BACKGROUND_COLOR => [
 					Dynamic_Selector::META_KEY       => Config::MODS_BUTTON_PRIMARY_STYLE . '.background',
 					Dynamic_Selector::META_IMPORTANT => true,
 					Dynamic_Selector::META_DEFAULT   => '#0366d6',
 				],
 			],
-			'.has-neve-text-color-background-color'                            => [
+			'.has-neve-text-color-background-color'       => [
 				Config::CSS_PROP_BACKGROUND_COLOR => [
 					Dynamic_Selector::META_KEY       => Config::MODS_TEXT_COLOR,
 					Dynamic_Selector::META_IMPORTANT => true,
@@ -109,13 +109,13 @@ class Frontend extends Generator {
 	 * Add css for blog colors.
 	 */
 	public function setup_blog_colors() {
-		$this->_subscribers[ '.cover-post .inner, .cover-post .inner a, .cover-post .inner a:hover, .cover-post .inner a:focus, .cover-post .inner li' ] = [
+		$this->_subscribers['.cover-post .inner, .cover-post .inner a, .cover-post .inner a:hover, .cover-post .inner a:focus, .cover-post .inner li'] = [
 			Config::CSS_PROP_COLOR => [
 				Dynamic_Selector::META_KEY => 'neve_blog_covers_text_color',
 			],
 		];
 
-		$this->_subscribers[ '.nv-post-thumbnail-wrap img' ] = [
+		$this->_subscribers['.nv-post-thumbnail-wrap img'] = [
 			Config::CSS_PROP_BOX_SHADOW => [
 				Dynamic_Selector::META_KEY    => 'neve_post_thumbnail_box_shadow',
 				Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
@@ -202,7 +202,7 @@ class Frontend extends Generator {
 		];
 		foreach ( neve_get_headings_selectors() as $id => $heading_selector
 		) {
-			$heading_mod = sprintf( 'neve_%s_typeface_general', $id );
+			$heading_mod                             = sprintf( 'neve_%s_typeface_general', $id );
 			$this->_subscribers[ $heading_selector ] = [
 				Config::CSS_PROP_FONT_SIZE      => [
 					Dynamic_Selector::META_KEY           => $heading_mod . '.fontSize',
@@ -230,7 +230,7 @@ class Frontend extends Generator {
 		// Legacy filters.
 		$extra_selectors_heading = apply_filters( 'neve_headings_font_family_selectors', '' );
 		if ( ! empty( $extra_selectors_heading ) ) {
-			$extra_selectors_heading = ltrim( $extra_selectors_heading, ', ' );
+			$extra_selectors_heading                        = ltrim( $extra_selectors_heading, ', ' );
 			$this->_subscribers[ $extra_selectors_heading ] = [
 				Config::CSS_PROP_FONT_FAMILY => Config::MODS_FONT_HEADINGS,
 			];
@@ -239,7 +239,7 @@ class Frontend extends Generator {
 
 		$extra_selectors_body = apply_filters( 'neve_body_font_family_selectors', '' );
 		if ( ! empty( $extra_selectors_body ) ) {
-			$extra_selectors_body = ltrim( $extra_selectors_body, ', ' );
+			$extra_selectors_body                        = ltrim( $extra_selectors_body, ', ' );
 			$this->_subscribers[ $extra_selectors_body ] = [
 				Config::CSS_PROP_LETTER_SPACING => [
 					Dynamic_Selector::META_KEY           => Config::MODS_TYPEFACE_GENERAL . '.letterSpacing',
@@ -260,7 +260,7 @@ class Frontend extends Generator {
 	 */
 	public function setup_buttons() {
 		// Primary button config.
-		$this->_subscribers[] = [
+		$this->_subscribers[]  = [
 			Dynamic_Selector::KEY_SELECTOR => Config::CSS_SELECTOR_BTN_PRIMARY_NORMAL,
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_BACKGROUND_COLOR => Config::MODS_BUTTON_PRIMARY_STYLE . '.background',
@@ -273,7 +273,7 @@ class Frontend extends Generator {
 				Dynamic_Selector::CONTEXT_FRONTEND => true,
 			],
 		];
-		$this->_subscribers[] = [
+		$this->_subscribers[]  = [
 			Dynamic_Selector::KEY_SELECTOR => Config::CSS_SELECTOR_BTN_PRIMARY_HOVER,
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_BACKGROUND_COLOR => Config::MODS_BUTTON_PRIMARY_STYLE . '.backgroundHover',
@@ -296,7 +296,7 @@ class Frontend extends Generator {
 				Dynamic_Selector::CONTEXT_FRONTEND => true,
 			],
 		];
-		$this->_subscribers[] = [
+		$this->_subscribers[]  = [
 			Dynamic_Selector::KEY_SELECTOR => Config::CSS_SELECTOR_BTN_SECONDARY_HOVER,
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_BACKGROUND_COLOR => Config::MODS_BUTTON_SECONDARY_STYLE . '.backgroundHover',
@@ -333,10 +333,10 @@ class Frontend extends Generator {
 			],
 		];
 
-		$this->_subscribers[ '.nv-tags-list a:hover' ] = [
+		$this->_subscribers['.nv-tags-list a:hover'] = [
 			Config::CSS_PROP_BACKGROUND_COLOR => Config::MODS_BUTTON_PRIMARY_STYLE . '.backgroundHover',
 		];
-		$this->_subscribers[ '.nv-tags-list a' ] = [
+		$this->_subscribers['.nv-tags-list a']       = [
 			Config::CSS_PROP_COLOR        => Config::MODS_BUTTON_PRIMARY_STYLE . '.background',
 			Config::CSS_PROP_BORDER_COLOR => Config::MODS_BUTTON_PRIMARY_STYLE . '.background',
 		];
@@ -352,14 +352,14 @@ class Frontend extends Generator {
 		$is_advanced_on = Mods::get( Config::MODS_ADVANCED_LAYOUT_OPTIONS, false );
 		if ( ! $is_advanced_on ) {
 
-			$this->_subscribers[ '#content .container .col, #content .container-fluid .col' ] = [
+			$this->_subscribers['#content .container .col, #content .container-fluid .col']                             = [
 				Config::CSS_PROP_MAX_WIDTH => [
 					Dynamic_Selector::META_KEY         => Config::MODS_SITEWIDE_CONTENT_WIDTH,
 					Dynamic_Selector::META_SUFFIX      => '%',
 					Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
 				],
 			];
-			$this->_subscribers[ '.alignfull > [class*="__inner-container"], .alignwide > [class*="__inner-container"]' ] = [
+			$this->_subscribers['.alignfull > [class*="__inner-container"], .alignwide > [class*="__inner-container"]'] = [
 				Config::CSS_PROP_MAX_WIDTH => [
 					Dynamic_Selector::META_KEY           => Config::MODS_SITEWIDE_CONTENT_WIDTH,
 					Dynamic_Selector::META_DEFAULT       => 70,
@@ -367,17 +367,17 @@ class Frontend extends Generator {
 					Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
 						$width = Mods::to_json( Config::MODS_CONTAINER_WIDTH );
 						if ( $device === Dynamic_Selector::DESKTOP ) {
-							return sprintf( 'max-width:%spx', round( ($value / 100) * $width[ $device ] - Config::CONTENT_DEFAULT_PADDING ) );
+							return sprintf( 'max-width:%spx', round( ( $value / 100 ) * $width[ $device ] - Config::CONTENT_DEFAULT_PADDING ) );
 						}
 						if ( $device === Dynamic_Selector::MOBILE ) {
-							return sprintf( 'max-width:%spx;margin:auto', ($width[ $device ] - Config::CONTENT_DEFAULT_PADDING) );
+							return sprintf( 'max-width:%spx;margin:auto', ( $width[ $device ] - Config::CONTENT_DEFAULT_PADDING ) );
 						}
 
 						return '';
 					},
 				],
 			];
-			$this->_subscribers[ '.container-fluid .alignfull > [class*="__inner-container"], .container-fluid .alignwide > [class*="__inner-container"]' ] = [
+			$this->_subscribers['.container-fluid .alignfull > [class*="__inner-container"], .container-fluid .alignwide > [class*="__inner-container"]'] = [
 				Config::CSS_PROP_MAX_WIDTH => [
 					Dynamic_Selector::META_KEY         => Config::MODS_SITEWIDE_CONTENT_WIDTH,
 					Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
@@ -386,7 +386,7 @@ class Frontend extends Generator {
 					},
 				],
 			];
-			$this->_subscribers[ '.nv-sidebar-wrap, .nv-sidebar-wrap.shop-sidebar' ] = [
+			$this->_subscribers['.nv-sidebar-wrap, .nv-sidebar-wrap.shop-sidebar'] = [
 				Config::CSS_PROP_MAX_WIDTH => [
 					Dynamic_Selector::META_KEY         => Config::MODS_SITEWIDE_CONTENT_WIDTH,
 					Dynamic_Selector::META_FILTER      => 'minus_100',
@@ -398,14 +398,14 @@ class Frontend extends Generator {
 			return;
 		}
 		// Others content width.
-		$this->_subscribers[ 'body:not(.single):not(.archive):not(.blog):not(.search) .neve-main > .container .col' ] = [
+		$this->_subscribers['body:not(.single):not(.archive):not(.blog):not(.search) .neve-main > .container .col'] = [
 			Config::CSS_PROP_MAX_WIDTH => [
 				Dynamic_Selector::META_KEY         => Config::MODS_OTHERS_CONTENT_WIDTH,
 				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
 				Dynamic_Selector::META_SUFFIX      => '%',
 			],
 		];
-		$this->_subscribers[ 'body:not(.single):not(.archive):not(.blog):not(.search) .nv-sidebar-wrap' ] = [
+		$this->_subscribers['body:not(.single):not(.archive):not(.blog):not(.search) .nv-sidebar-wrap']             = [
 			Config::CSS_PROP_MAX_WIDTH => [
 				Dynamic_Selector::META_KEY         => Config::MODS_OTHERS_CONTENT_WIDTH,
 				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
@@ -414,14 +414,14 @@ class Frontend extends Generator {
 			],
 		];
 		// Archive content width.
-		$this->_subscribers[ '.neve-main > .archive-container .nv-index-posts.col' ] = [
+		$this->_subscribers['.neve-main > .archive-container .nv-index-posts.col'] = [
 			Config::CSS_PROP_MAX_WIDTH => [
 				Dynamic_Selector::META_KEY         => Config::MODS_ARCHIVE_CONTENT_WIDTH,
 				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
 				Dynamic_Selector::META_SUFFIX      => '%',
 			],
 		];
-		$this->_subscribers[ '.neve-main > .archive-container .nv-sidebar-wrap' ] = [
+		$this->_subscribers['.neve-main > .archive-container .nv-sidebar-wrap']    = [
 			Config::CSS_PROP_MAX_WIDTH => [
 				Dynamic_Selector::META_KEY         => Config::MODS_ARCHIVE_CONTENT_WIDTH,
 				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
@@ -430,7 +430,7 @@ class Frontend extends Generator {
 			],
 		];
 		// Single content width.
-		$this->_subscribers[ '.neve-main > .single-post-container .nv-single-post-wrap.col' ] = [
+		$this->_subscribers['.neve-main > .single-post-container .nv-single-post-wrap.col'] = [
 			Config::CSS_PROP_MAX_WIDTH => [
 				Dynamic_Selector::META_KEY         => Config::MODS_SINGLE_CONTENT_WIDTH,
 				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
@@ -438,20 +438,20 @@ class Frontend extends Generator {
 			],
 		];
 
-		$this->_subscribers[ '.single-post-container .alignfull > [class*="__inner-container"], .single-post-container .alignwide > [class*="__inner-container"]' ] = [
+		$this->_subscribers['.single-post-container .alignfull > [class*="__inner-container"], .single-post-container .alignwide > [class*="__inner-container"]']                                 = [
 			Config::CSS_PROP_MAX_WIDTH => [
 				Dynamic_Selector::META_KEY           => Config::MODS_SINGLE_CONTENT_WIDTH,
 				Dynamic_Selector::META_DEFAULT       => 70,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
 					$width = Mods::to_json( Config::MODS_CONTAINER_WIDTH );
-					$value = $device !== Dynamic_Selector::DESKTOP ? ($width[ $device ] - Config::CONTENT_DEFAULT_PADDING) : round( ($value / 100) * $width[ $device ] - Config::CONTENT_DEFAULT_PADDING );
+					$value = $device !== Dynamic_Selector::DESKTOP ? ( $width[ $device ] - Config::CONTENT_DEFAULT_PADDING ) : round( ( $value / 100 ) * $width[ $device ] - Config::CONTENT_DEFAULT_PADDING );
 
 					return sprintf( 'max-width:%spx', $value );
 				},
 			],
 		];
-		$this->_subscribers[ '.container-fluid.single-post-container .alignfull > [class*="__inner-container"], .container-fluid.single-post-container .alignwide > [class*="__inner-container"]' ] = [
+		$this->_subscribers['.container-fluid.single-post-container .alignfull > [class*="__inner-container"], .container-fluid.single-post-container .alignwide > [class*="__inner-container"]'] = [
 			Config::CSS_PROP_MAX_WIDTH => [
 				Dynamic_Selector::META_KEY         => Config::MODS_SINGLE_CONTENT_WIDTH,
 				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
@@ -461,7 +461,7 @@ class Frontend extends Generator {
 			],
 		];
 
-		$this->_subscribers[ '.neve-main > .single-post-container .nv-sidebar-wrap' ] = [
+		$this->_subscribers['.neve-main > .single-post-container .nv-sidebar-wrap'] = [
 			Config::CSS_PROP_MAX_WIDTH => [
 				Dynamic_Selector::META_KEY         => Config::MODS_SINGLE_CONTENT_WIDTH,
 				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
@@ -475,14 +475,14 @@ class Frontend extends Generator {
 			return;
 		}
 
-		$this->_subscribers[ '.archive.woocommerce .neve-main > .shop-container .nv-shop.col' ] = [
+		$this->_subscribers['.archive.woocommerce .neve-main > .shop-container .nv-shop.col']     = [
 			Config::CSS_PROP_MAX_WIDTH => [
 				Dynamic_Selector::META_KEY         => Config::MODS_SHOP_ARCHIVE_CONTENT_WIDTH,
 				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
 				Dynamic_Selector::META_SUFFIX      => '%',
 			],
 		];
-		$this->_subscribers[ '.archive.woocommerce .neve-main > .shop-container .nv-sidebar-wrap' ] = [
+		$this->_subscribers['.archive.woocommerce .neve-main > .shop-container .nv-sidebar-wrap'] = [
 			Config::CSS_PROP_MAX_WIDTH => [
 				Dynamic_Selector::META_KEY         => Config::MODS_SHOP_ARCHIVE_CONTENT_WIDTH,
 				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
@@ -492,7 +492,7 @@ class Frontend extends Generator {
 		];
 
 
-		$this->_subscribers[ '.single-product .neve-main > .shop-container .nv-shop.col' ] = [
+		$this->_subscribers['.single-product .neve-main > .shop-container .nv-shop.col'] = [
 			Config::CSS_PROP_MAX_WIDTH => [
 				Dynamic_Selector::META_KEY         => Config::MODS_SHOP_SINGLE_CONTENT_WIDTH,
 				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
@@ -500,20 +500,20 @@ class Frontend extends Generator {
 			],
 		];
 
-		$this->_subscribers[ '.single-product .alignfull > [class*="__inner-container"], .single-product .alignwide > [class*="__inner-container"]' ] = [
+		$this->_subscribers['.single-product .alignfull > [class*="__inner-container"], .single-product .alignwide > [class*="__inner-container"]']                  = [
 			Config::CSS_PROP_MAX_WIDTH => [
 				Dynamic_Selector::META_KEY           => Config::MODS_SHOP_SINGLE_CONTENT_WIDTH,
 				Dynamic_Selector::META_DEFAULT       => 70,
 				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_FILTER        => function ( $css_prop, $value, $meta, $device ) {
 					$width = Mods::to_json( Config::MODS_CONTAINER_WIDTH );
-					$value = $device !== Dynamic_Selector::DESKTOP ? ($width[ $device ] - Config::CONTENT_DEFAULT_PADDING) : round( ($value / 100) * $width[ $device ] - Config::CONTENT_DEFAULT_PADDING );
+					$value = $device !== Dynamic_Selector::DESKTOP ? ( $width[ $device ] - Config::CONTENT_DEFAULT_PADDING ) : round( ( $value / 100 ) * $width[ $device ] - Config::CONTENT_DEFAULT_PADDING );
 
 					return sprintf( 'max-width:%spx', $value );
 				},
 			],
 		];
-		$this->_subscribers[ '.single-product .container-fluid .alignfull > [class*="__inner-container"], .single-product .alignwide > [class*="__inner-container"]' ] = [
+		$this->_subscribers['.single-product .container-fluid .alignfull > [class*="__inner-container"], .single-product .alignwide > [class*="__inner-container"]'] = [
 			Config::CSS_PROP_MAX_WIDTH => [
 				Dynamic_Selector::META_KEY         => Config::MODS_SHOP_SINGLE_CONTENT_WIDTH,
 				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
@@ -522,7 +522,7 @@ class Frontend extends Generator {
 				},
 			],
 		];
-		$this->_subscribers[ '.single-product .neve-main > .shop-container .nv-sidebar-wrap' ] = [
+		$this->_subscribers['.single-product .neve-main > .shop-container .nv-sidebar-wrap'] = [
 			Config::CSS_PROP_MAX_WIDTH => [
 				Dynamic_Selector::META_KEY         => Config::MODS_SHOP_SINGLE_CONTENT_WIDTH,
 				Dynamic_Selector::META_DEVICE_ONLY => Dynamic_Selector::DESKTOP,
