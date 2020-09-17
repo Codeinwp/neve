@@ -7,7 +7,7 @@ Author URI:     https://themeisle.com
 Tested up to:   5.5
 Requires PHP:   5.4.0
 Description:    Neve is a super fast, easily customizable, multi-purpose theme. It’s perfect for blogs, small business, startups, agencies, firms, e-commerce shops (WooCommerce storefront) as well as personal portfolio sites and most types of projects. A fully AMP optimized and responsive theme, Neve will load in mere seconds and adapt perfectly on any viewing device. While it is lightweight and has a minimalist design, the theme is highly extendable, it has a highly SEO optimized code, resulting in top rankings in Google search results. Neve works perfectly with Gutenberg and the most popular page builders (Elementor, Brizy, Beaver Builder, Visual Composer, SiteOrigin, Divi). Neve is also WooCommerce ready, responsive, RTL & translation ready. Look no further. Neve is the perfect theme for you!
-Version:        2.7.7
+Version:        2.8.0
 License:        GNU General Public License v2 or later
 License URI:    http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain:    neve
@@ -38,6 +38,10 @@ Tags: blog, custom-logo, e-commerce, rtl-language-support, grid-layout, one-colu
 }
 
 .wp-block-button.is-style-outline .wp-block-button__link, .wp-block-button.is-style-secondary .wp-block-button__link, .button.button-secondary, #comments input[type=submit] {
+  letter-spacing: 0;
+  line-height: 1;
+  text-transform: uppercase;
+  font-size: .8em;
   border: 1px solid;
   background-color: transparent;
   font-weight: 600;
@@ -363,10 +367,6 @@ a:hover, a:focus {
   color: #0366d6;
 }
 
-.screen-reader-text {
-  display: none;
-}
-
 ins {
   text-decoration: none;
 }
@@ -418,17 +418,17 @@ h6 {
 }
 
 a.neve-skip-link {
-  background-color: #24292e;
-  color: #fff;
   padding: 10px 20px;
-}
-
-a.neve-skip-link:focus {
-  color: #fff;
-}
-
-.admin-bar a.neve-skip-link {
   top: 32px;
+}
+
+.screen-reader-text {
+  position: absolute;
+  right: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }
 
 .nv-content-wrap a:not(.button):not(.wp-block-file__button), .nv-comment-content a {
@@ -1109,7 +1109,6 @@ textarea {
   display: inline-block;
   font-size: 14px;
   padding: 7px 12px;
-  background-color: transparent;
   color: #333;
   border: 1px solid #dddddd;
   border-radius: 3px;
@@ -1407,8 +1406,8 @@ fieldset input[type="text"], fieldset input[type="search"], fieldset input[type=
   margin-top: 0;
 }
 
-.layout-grid .content > *.nv-meta-list {
-  margin-top: 0;
+.layout-grid .content .nv-meta-list {
+  margin-top: 5px;
 }
 
 .layout-grid .content .excerpt-wrap > *:last-child {
@@ -1428,8 +1427,8 @@ fieldset input[type="text"], fieldset input[type="search"], fieldset input[type=
   margin-bottom: 0;
 }
 
-.nv-non-grid-article .non-grid-content > *.nv-meta-list {
-  margin-top: 0;
+.nv-non-grid-article .non-grid-content .nv-meta-list {
+  margin-top: 5px;
 }
 
 .nv-non-grid-article .non-grid-content .blog-entry-title {
@@ -1476,8 +1475,8 @@ article {
   }
 }
 
-.layout-grid > .article-content-col, .layout-grid > .article-content-col .content {
-  height: 100%;
+body .layout-grid > .article-content-col, .layout-grid {
+  display: flex;
 }
 
 .layout-default, .layout-alternative {

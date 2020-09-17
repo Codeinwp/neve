@@ -9,8 +9,9 @@ const { withSelect } = wp.data;
 const StarterSitesUnavailable = ({ templatesPluginData }) => {
   const { assets } = neveDash;
   const [ installing, setInstalling ] = useState(false);
+  const [ activating, setActivating ] = useState(false);
   const [ error, setError ] = useState(false);
-
+  const [ currentState, setCurrentState ] = useState(templatesPluginData.cta);
   const installPlugin = () => {
     setInstalling(true);
     wp.updates.ajax('install-plugin', {
@@ -29,6 +30,9 @@ const StarterSitesUnavailable = ({ templatesPluginData }) => {
   };
 
   const activatePlugin = () => {
+    setInstalling(false);
+    setActivating(true);
+    setCurrentState('activate');
     const activationURL = templatesPluginData.activate;
 
     get(activationURL, true).then(r => {
@@ -43,8 +47,28 @@ const StarterSitesUnavailable = ({ templatesPluginData }) => {
       <>
         <h1>{__('In order to be able to import any starter sites for Neve you would need to have the Cloud Templates & Patterns Collection plugin active.')}</h1>
         <br/>
-        <Button disabled={installing} isPrimary={! installing} isSecondary={installing}
-                onClick={installPlugin}>{installing ? __('Installing and activating') + '...' : __('Install and Activate')}</Button>
+        {'install' === currentState &&
+        <Button
+          disabled={installing}
+          isPrimary={! installing}
+          isSecondary={installing}
+          className={installing && 'is-loading'}
+          icon={installing && 'update'}
+          onClick={installPlugin}>
+          {installing ? __('Installing') + '...' : __('Install and Activate')}
+        </Button>
+        }
+        {'activate' === currentState &&
+        <Button
+          disabled={activating}
+          isPrimary={! activating}
+          isSecondary={activating}
+          className={activating && 'is-loading'}
+          icon={activating && 'update'}
+          onClick={activatePlugin}>
+          {activating ? __('Activating') + '...' : __('Activate')}
+        </Button>
+        }
       </>
     );
   };
