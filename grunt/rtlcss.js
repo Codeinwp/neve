@@ -2,34 +2,34 @@
 // https://github.com/MohammadYounes/grunt-rtlcss
 const ext = '-rtl.css';
 const options = {
-	'autoRename': false,
-	'autoRenameStrict': false,
-	'blacklist': {},
-	'clean': true,
-	'greedy': false,
-	'processUrls': false,
-	'stringMap': [
+	autoRename: false,
+	autoRenameStrict: false,
+	blacklist: {},
+	clean: true,
+	greedy: false,
+	processUrls: false,
+	stringMap: [
 		{
-			'name': 'left-right',
-			'priority': 100,
-			'search': ['left', 'Left', 'LEFT'],
-			'replace': ['right', 'Right', 'RIGHT'],
-			'options': {
-				'scope': '*',
-				'ignoreCase': false
-			}
+			name: 'left-right',
+			priority: 100,
+			search: [ 'left', 'Left', 'LEFT' ],
+			replace: [ 'right', 'Right', 'RIGHT' ],
+			options: {
+				scope: '*',
+				ignoreCase: false,
+			},
 		},
 		{
-			'name': 'ltr-rtl',
-			'priority': 100,
-			'search': ['ltr', 'Ltr', 'LTR'],
-			'replace': ['rtl', 'Rtl', 'RTL'],
-			'options': {
-				'scope': '*',
-				'ignoreCase': false
-			}
-		}
-	]
+			name: 'ltr-rtl',
+			priority: 100,
+			search: [ 'ltr', 'Ltr', 'LTR' ],
+			replace: [ 'rtl', 'Rtl', 'RTL' ],
+			options: {
+				scope: '*',
+				ignoreCase: false,
+			},
+		},
+	],
 };
 
 module.exports = {
@@ -39,7 +39,7 @@ module.exports = {
 		cwd: './',
 		dest: './',
 		ext,
-		src: ['style.css']
+		src: [ 'style.css' ],
 	},
 	woocommerce: {
 		options,
@@ -47,7 +47,7 @@ module.exports = {
 		cwd: './assets/css/',
 		dest: './assets/css/',
 		ext,
-		src: ['woocommerce.css']
+		src: [ 'woocommerce.css' ],
 	},
 	customizerStyle: {
 		options,
@@ -55,7 +55,7 @@ module.exports = {
 		cwd: './assets/css/',
 		dest: './assets/css/',
 		ext,
-		src: ['customizer-style.css']
+		src: [ 'customizer-style.css' ],
 	},
 	megaMenu: {
 		options,
@@ -63,7 +63,7 @@ module.exports = {
 		cwd: './assets/css/',
 		dest: './assets/css/',
 		ext,
-		src: ['mega-menu.css']
+		src: [ 'mega-menu.css' ],
 	},
 	hfg: {
 		options,
@@ -71,14 +71,14 @@ module.exports = {
 		cwd: './header-footer-grid/assets/css/',
 		dest: './header-footer-grid/assets/css/',
 		ext,
-		src: ['style.css']
+		src: [ 'style.css' ],
 	},
-  dashboard: {
-	  options,
-	expand: true,
-	cwd: './dashboard/build/',
-	dest: './dashboard/build/',
-	ext,
-	src: ['build.css']
-  }
+	dashboard: {
+		options,
+		expand: true,
+		cwd: './dashboard/build/',
+		dest: './dashboard/build/',
+		ext,
+		src: [ 'style-dashboard.css' ],
+	},
 };

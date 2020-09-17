@@ -1,74 +1,80 @@
+import { __ } from '@wordpress/i18n';
+import { Dashicon } from '@wordpress/components';
 import classnames from 'classnames';
 
-const {__} = wp.i18n;
-const {Dashicon} = wp.components;
-const ImportStepper = ({currentStep, progress, willDo}) => {
-
+const ImportStepper = ( { currentStep, progress, willDo } ) => {
 	const stepsMap = {
 		plugins: {
-			label: __('Installing Plugins', 'neve'),
+			label: __( 'Installing Plugins', 'neve' ),
 			status: progress.plugins,
-			willDo: true
+			willDo: true,
 		},
 		content: {
-			label: __('Importing Content', 'neve'),
+			label: __( 'Importing Content', 'neve' ),
 			status: progress.content,
-			willDo: willDo.content
+			willDo: willDo.content,
 		},
 		customizer: {
-			label: __('Importing Customizer Settings', 'neve'),
+			label: __( 'Importing Customizer Settings', 'neve' ),
 			status: progress.customizer,
-			willDo: willDo.customizer
+			willDo: willDo.customizer,
 		},
 		widgets: {
-			label: __('Importing Widgets', 'neve'),
+			label: __( 'Importing Widgets', 'neve' ),
 			status: progress.widgets,
-			willDo: willDo.widgets
-		}
+			willDo: willDo.widgets,
+		},
 	};
 
 	return (
 		<ul className="stepper">
-			{Object.keys(stepsMap).map((key, index) => {
-				const {label, status, willDo} = stepsMap[key];
+			{ Object.keys( stepsMap ).map( ( key, index ) => {
+				const { label, status, willDo } = stepsMap[ key ];
 
-				if (! willDo) {
+				if ( ! willDo ) {
 					return null;
 				}
 
-				const classes = classnames([
-					'icon', {
-						'loading': currentStep === key,
-						'warning': currentStep === key,
-						'success': 'done' === status,
-						'error': 'error' === status,
-						'skip': 'skip' === status
-					}
-				]);
+				const classes = classnames( [
+					'icon',
+					{
+						loading: currentStep === key,
+						warning: currentStep === key,
+						success: 'done' === status,
+						error: 'error' === status,
+						skip: 'skip' === status,
+					},
+				] );
 
 				let icon = 'clock';
-				if (currentStep === key) {
+				if ( currentStep === key ) {
 					icon = 'update';
 				}
 
-				if ('done' === status) {
+				if ( 'done' === status ) {
 					icon = 'yes';
 				}
 
-				if ('error' === status ) {
+				if ( 'error' === status ) {
 					icon = 'no-alt';
 				}
 
 				return (
-					<li key={index}>
-					<span className={classes}>
-						<Dashicon icon={icon} className={currentStep === key ? 'loading' : ''}/>
-					</span>
-						<span>{label}</span>
+					<li key={ index }>
+						<span className={ classes }>
+							<Dashicon
+								icon={ icon }
+								className={
+									currentStep === key ? 'loading' : ''
+								}
+							/>
+						</span>
+						<span>{ label }</span>
 					</li>
 				);
-			})}
-		</ul>);
+			} ) }
+		</ul>
+	);
 };
 
 export default ImportStepper;

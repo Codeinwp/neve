@@ -1,26 +1,30 @@
 import classnames from 'classnames';
+import { useEffect } from '@wordpress/element';
+import { Dashicon } from '@wordpress/components';
 
-const {useEffect} = wp.element;
-const {Dashicon} = wp.components;
-
-const Toast = ({message, dismiss, time, type = 'info'}) => {
-	useEffect(() => {
-		const timeout = setTimeout(() => {
-			dismiss('');
+const Toast = ( { message, dismiss, time, type = 'info' } ) => {
+	useEffect( () => {
+		const timeout = setTimeout( () => {
+			dismiss( '' );
 			clearTimeout( timeout );
-		}, time || 2000);
-	});
+		}, time || 2000 );
+	} );
 	const iconMap = {
-		'info': 'info',
-		'error': 'no',
-		'success': 'yes',
-		'warning': 'warning'
+		info: 'info',
+		error: 'no',
+		success: 'yes',
+		warning: 'warning',
 	};
-	const classes = classnames([ 'toast', 'components-animate__appear', 'is-from-middle', type ]);
+	const classes = classnames( [
+		'toast',
+		'components-animate__appear',
+		'is-from-middle',
+		type,
+	] );
 	return (
-		<div className={classes}>
-			<Dashicon icon={iconMap[type]}/>
-			<span>{message}</span>
+		<div className={ classes }>
+			<Dashicon icon={ iconMap[ type ] } />
+			<span>{ message }</span>
 		</div>
 	);
 };
