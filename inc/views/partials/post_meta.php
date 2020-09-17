@@ -143,7 +143,12 @@ class Post_Meta extends Base_View {
 	 * @return string
 	 */
 	public static function neve_get_author_meta() {
-		$author_email   = get_the_author_meta( 'user_email' );
+		global $post;
+
+		$author_id      = $post->post_author;
+		$user_nicename  = get_the_author_meta( 'user_nicename', $author_id );
+		$display_name   = get_the_author_meta( 'display_name', $author_id );
+		$author_email   = get_the_author_meta( 'user_email', $author_id );
 		$gravatar_args  = apply_filters(
 			'neve_gravatar_args',
 			array(
@@ -162,7 +167,18 @@ class Post_Meta extends Base_View {
 		if ( ! $display_avatar ) {
 			$markup .= __( 'by', 'neve' ) . ' ';
 		}
-		$markup .= wp_kses_post( get_the_author_posts_link() ) . '</span>';
+
+		$link = sprintf(
+			'<a href="%1$s" title="%2$s" rel="author">%3$s</a>',
+			esc_url( get_author_posts_url( $author_id, $user_nicename ) ),
+			/* translators: %s: Author's display name. */
+			esc_attr( sprintf( __( 'Posts by %s' ), $display_name ) ),
+			$display_name
+		);
+
+		$link = apply_filters( 'the_author_posts_link', $link );
+
+		$markup .= wp_kses_post( $link ) . '</span>';
 
 		return $markup;
 	}
