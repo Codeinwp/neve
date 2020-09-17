@@ -19,6 +19,25 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
 
+##### [Version 2.8.1](https://github.com/Codeinwp/neve/compare/v2.8.0...v2.8.1) (2020-09-17)
+
+- [Feat] New options for styling buttons ( text-transform, weight, font size, line height, and letter spacing )
+- [Feat] New block patterns
+- [Feat] Async/defer loading of the JS scripts
+- [Fix] Masonry not working in Safari
+- [Fix] Range controls in older versions of WordPress
+- [Fix] Links and headings not inheriting Customizer colors inside the editor
+- [Fix] Do not parse HTML tags inside the search heading
+- [Fix] Cart Icon size and color options not working properly
+- [Fix] Accessibility issues with form labels
+- [Fix] Update list of Google Fonts
+- [Fix] Button state management in the Starter Sites notice
+- [Fix] Inputs text color on a dark background
+- New Gutenberg Starter Sites
+
+
+
+
 #### [Version 2.8.0](https://github.com/Codeinwp/neve/compare/v2.7.7...v2.8.0) (2020-09-03)
 
 - [Feat] Compatibility with AMP 2.0
