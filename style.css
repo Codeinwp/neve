@@ -1106,7 +1106,6 @@ textarea {
   display: inline-block;
   font-size: 14px;
   padding: 7px 12px;
-  background-color: transparent;
   color: #333;
   border: 1px solid #dddddd;
   border-radius: 3px;
@@ -1404,8 +1403,8 @@ fieldset input[type="text"], fieldset input[type="search"], fieldset input[type=
   margin-top: 0;
 }
 
-.layout-grid .content > *.nv-meta-list {
-  margin-top: 0;
+.layout-grid .content .nv-meta-list {
+  margin-top: 5px;
 }
 
 .layout-grid .content .excerpt-wrap > *:last-child {
@@ -1425,8 +1424,8 @@ fieldset input[type="text"], fieldset input[type="search"], fieldset input[type=
   margin-bottom: 0;
 }
 
-.nv-non-grid-article .non-grid-content > *.nv-meta-list {
-  margin-top: 0;
+.nv-non-grid-article .non-grid-content .nv-meta-list {
+  margin-top: 5px;
 }
 
 .nv-non-grid-article .non-grid-content .blog-entry-title {
