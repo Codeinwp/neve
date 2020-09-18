@@ -1,146 +1,150 @@
-import {sortableContainer, sortableElement, sortableHandle} from 'react-sortable-hoc';
+import { withDispatch, withSelect } from '@wordpress/data';
+import { Button } from '@wordpress/components';
+import { compose } from '@wordpress/compose';
+import { __ } from '@wordpress/i18n';
+import classnames from 'classnames';
 import arrayMove from 'array-move';
+import {
+	SortableContainer,
+	SortableElement,
+	SortableHandle,
+} from 'react-sortable-hoc';
 
-const { compose } = wp.compose;
-const { withDispatch, withSelect } = wp.data;
-const { Component } = wp.element;
-const { Button } = wp.components;
-const { __ } = wp.i18n;
-
-const DragHandle = sortableHandle( () => {
+const DragHandle = SortableHandle( () => {
 	return (
 		<div className="ti-sortable-handle">
-			<Button isTertiary icon="menu"/>
-		</div>
-	);
-});
-
-const SortableItem = sortableElement( ({value, label, toggle}) => {
-	const icon = 'visibility';
-	const message = __( `Hide ${ label }`, 'neve' );
-
-	return (
-		<div className={`ti-sortable-item-area ti-sortable-item-area-${value}`} >
-		<div key={value} className='ti-sortable-item'>
-			<Button
-				isTertiary
-				icon={ icon }
-				label={ message }
-				showTooltip={ true }
-				className="ti-sortable-item-toggle"
-				onClick={ () => {
-					toggle(value);
-				} }
-			/>
-			<div className="ti-sortable-item-label">{label}</div>
-			<DragHandle />
-		</div>
+			<Button isTertiary icon="menu" />
 		</div>
 	);
 } );
 
-const SortableList = sortableContainer(
-	({children}) => {
-		return <div className="neve-meta-control neve-meta-sortable-items">{children}</div>;
-	}
-);
+const SortableList = SortableContainer( ( { children } ) => {
+	return (
+		<div className="neve-meta-control neve-meta-sortable-items">
+			{ children }
+		</div>
+	);
+} );
 
-class SortableItems extends Component {
-
-	constructor(props) {
-		super(props);
-	}
-
-	render() {
-		const elements = this.props.data.elements;
-		const currentValues = JSON.parse( this.props.metaFieldValue );
-		return (
-			<div>
-				<SortableList
-					onSortEnd={this.props.onSortEnd}
-					lockAxis='y'
-					useDragHandle
-					hideSortableGhost={false}
-					onSortStart={this.props.onSortStart}
-				>
-				{
-					currentValues.map(
-						(value, index) => {
-							return (
-								<SortableItem
-									key={`item-${value}`}
-									index={index}
-									value={value}
-									label={elements[value]}
-									toggle={this.props.toggle}
-								/>
-							);
-						}
-					)
-				}
-				</SortableList>
-				<div className="disabled-items neve-meta-control">
-				{
-					Object.keys(elements).map(
-						(value, index) => {
-							if ( currentValues.includes( value ) ) {
-								return false;
-							}
-							return (
-								<div className='ti-sortable-item-area'>
-								<div className='ti-sortable-item hidden'>
-									<Button
-										isTertiary
-										icon='hidden'
-										label={ __( `Display ${ elements[value] }`, 'neve' ) }
-										showTooltip={ true }
-										className="ti-sortable-item-toggle"
-										onClick={ () => {
-											this.props.toggle(value);
-										} }
-									/>
-									<div className="ti-sortable-item-label">{elements[value]}</div>
-								</div>
-								</div>
-							);
-						}
-					)
-				}
-				</div>
+const Item = ( { value, label, toggle, disabled = false } ) => {
+	const itemClass = classnames( [
+		`ti-sortable-item-area`,
+		`ti-sortable-item-area-${ value }`,
+	] );
+	const innerClass = classnames( [
+		'ti-sortable-item',
+		{ hidden: disabled },
+	] );
+	return (
+		<div className={ itemClass }>
+			<div key={ value } className={ innerClass }>
+				<Button
+					icon={ disabled ? 'hidden' : 'visibility' }
+					showTooltip={ true }
+					onClick={ toggle }
+					className="ti-sortable-item-toggle"
+					isTertiary
+					label={
+						disabled ? __( 'Show', 'neve' ) : __( 'Hide', 'neve' )
+					}
+				/>
+				<div className="ti-sortable-item-label">{ label }</div>
+				{ ! disabled && <DragHandle /> }
 			</div>
-		);
-	}
-}
+		</div>
+	);
+};
 
-export default compose([
-	withDispatch(( dispatch, props, {select} ) => {
+const SortableItem = SortableElement( Item );
+
+const SortableItems = ( {
+	data,
+	metaFieldValue,
+	addItem,
+	removeItem,
+	onSortEnd,
+} ) => {
+	const { elements, defaults } = data;
+	const currentValues = JSON.parse( metaFieldValue || defaults );
+	return (
+		<div>
+			<SortableList onSortEnd={ onSortEnd } lockAxis="y" useDragHandle>
+				{ currentValues.map( ( value, index ) => {
+					return (
+						<SortableItem
+							key={ `item-${ value }` }
+							index={ index }
+							value={ value }
+							label={ elements[ value ] }
+							toggle={ () => removeItem( value ) }
+						/>
+					);
+				} ) }
+			</SortableList>
+			<div className="disabled-items neve-meta-control">
+				{ Object.keys( elements ).map( ( value, index ) => {
+					if ( currentValues.includes( value ) ) {
+						return false;
+					}
+					return (
+						<div key={ index } className="ti-sortable-item-area">
+							<Item
+								disabled={ true }
+								label={ elements[ value ] }
+								value={ value }
+								toggle={ () => addItem( value ) }
+							/>
+						</div>
+					);
+				} ) }
+			</div>
+		</div>
+	);
+};
+
+export default compose( [
+	withDispatch( ( dispatch, props, { select } ) => {
+		const { getEditedPostAttribute } = select( 'core/editor' );
+		const { editPost } = dispatch( 'core/editor' );
+		const { defaults } = props.data;
+		const { id, updateValue } = props;
 		return {
-			onSortStart: function( {index} ) {
-				document.querySelector('.ti-sortable-item-area:nth-of-type(' + ( index + 1 ) + ')' ).style.color = '#ccc';
+			onSortEnd: ( { oldIndex, newIndex } ) => {
+				const metaValue = JSON.parse(
+					getEditedPostAttribute( 'meta' )[ id ] || defaults
+				);
+				const newElements = arrayMove( metaValue, oldIndex, newIndex );
+
+				updateValue( id, JSON.stringify( newElements ) );
+				editPost( {
+					meta: { [ id ]: JSON.stringify( newElements ) },
+				} );
 			},
-			onSortEnd: function( {oldIndex, newIndex} ) {
-				const metaValue = JSON.parse( select('core/editor').getEditedPostAttribute('meta')[props.id] || props.data.default );
-				const newElements = arrayMove(metaValue, oldIndex, newIndex);
-				props.stateUpdate( props.id, JSON.stringify( newElements ) );
-				dispatch('core/editor').editPost({meta: {[props.id]: JSON.stringify( newElements ) }});
-				document.querySelector('.ti-sortable-item-area:nth-of-type(' + ( newIndex + 1 ) + ')' ).style.color = null;
+			removeItem: ( value ) => {
+				let metaValue = JSON.parse(
+					getEditedPostAttribute( 'meta' )[ id ] || defaults
+				);
+				metaValue = metaValue.filter( ( e ) => e !== value );
+				editPost( {
+					meta: { [ id ]: JSON.stringify( metaValue ) },
+				} );
 			},
-			toggle: function ( value ) {
-				let metaValue = JSON.parse( select('core/editor').getEditedPostAttribute('meta')[props.id] || props.data.default );
-				if ( metaValue.includes( value ) ) {
-					metaValue = metaValue.filter( e => e !== value );
-				} else {
-					metaValue.push( value );
-				}
-				props.stateUpdate( props.id, JSON.stringify( metaValue ) );
-				dispatch('core/editor').editPost({meta: {[props.id]: JSON.stringify(metaValue) }});
-			}
+			addItem: ( value ) => {
+				const metaValue = JSON.parse(
+					getEditedPostAttribute( 'meta' )[ id ] || defaults
+				);
+				metaValue.push( value );
+				editPost( {
+					meta: { [ id ]: JSON.stringify( metaValue ) },
+				} );
+			},
 		};
-
-	}),
-	withSelect((select, props) => {
-		let metaValue  = select('core/editor').getEditedPostAttribute('meta')[props.id];
-		return { metaFieldValue: ( metaValue || props.data.default ) };
-	})
-
-])( SortableItems );
+	} ),
+	withSelect( ( select, props ) => {
+		const { getEditedPostAttribute } = select( 'core/editor' );
+		const { id } = props;
+		return {
+			metaFieldValue: getEditedPostAttribute( 'meta' )[ id ],
+		};
+	} ),
+] )( SortableItems );

@@ -1,3 +1,5 @@
+$disabled: #b5b5b5;
+
 .components-base-control__label {
 	font-weight: 600;
 }
@@ -131,25 +133,25 @@
 
 		&.hidden {
 			display: flex;
-			color: #e5e5e5;
+			color: $disabled;
 
 			.ti-sortable-handle {
 				.components-button {
-					color: #e5e5e5;
+					color: $disabled;
 
 					&:hover, &:focus {
-						color: #e5e5e5;
+						color: $disabled;
 					}
 				}
 			}
 
 			.ti-sortable-item-label {
-				color: #e5e5e5;
+				color: $disabled;
 			}
 
 			.ti-sortable-item-toggle {
 				svg {
-					fill: #e5e5e5;
+					fill: $disabled;
 				}
 			}
 		}

@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-09-18T11:05:11+00:00\n"
+"POT-Creation-Date: 2020-09-21T13:26:50+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -276,7 +276,8 @@ msgstr ""
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:309
 #: inc/admin/metabox/main.php:39
 #: inc/customizer/options/layout_container.php:134
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:165
+#: inc/admin/metabox/build/metabox.js:1
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:206
 msgid "Full Width"
 msgstr ""
 
@@ -284,7 +285,8 @@ msgstr ""
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:310
 #: inc/admin/metabox/main.php:38
 #: inc/customizer/options/layout_container.php:133
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:158
+#: inc/admin/metabox/build/metabox.js:1
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:194
 msgid "Contained"
 msgstr ""
 
@@ -421,7 +423,8 @@ msgid "Mobile menu content"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:465
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:129
+#: inc/admin/metabox/build/metabox.js:1
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:142
 msgid "Left"
 msgstr ""
 
@@ -430,7 +433,8 @@ msgid "Center"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:473
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:131
+#: inc/admin/metabox/build/metabox.js:1
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:153
 msgid "Right"
 msgstr ""
 
@@ -766,7 +770,8 @@ msgstr ""
 
 #. translators: %s is the header name
 #: header-footer-grid/Core/Customizer.php:265
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:151
+#: inc/admin/metabox/build/metabox.js:1
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:182
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:53
 #: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:177
@@ -964,10 +969,14 @@ msgid "Toggle Navigation"
 msgstr ""
 
 #: header-footer-grid/templates/rows.php:76
+#: inc/admin/metabox/build/metabox.js:1
+#: inc/admin/metabox/src/components/controls/SortableItems.js:48
 msgid "Show"
 msgstr ""
 
 #: header-footer-grid/templates/rows.php:77
+#: inc/admin/metabox/build/metabox.js:1
+#: inc/admin/metabox/src/components/controls/SortableItems.js:48
 msgid "Hide"
 msgstr ""
 
@@ -982,7 +991,8 @@ msgstr ""
 
 #: inc/admin/metabox/main.php:41
 #: inc/customizer/options/layout_container.php:43
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:141
+#: inc/admin/metabox/build/metabox.js:1
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:167
 msgid "Container"
 msgstr ""
 
@@ -1000,7 +1010,8 @@ msgstr ""
 
 #: inc/admin/metabox/main.php:56
 #: inc/core/front_end.php:525
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:117
+#: inc/admin/metabox/build/metabox.js:1
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:109
 msgid "Sidebar"
 msgstr ""
 
@@ -1009,12 +1020,14 @@ msgid "Components"
 msgstr ""
 
 #: inc/admin/metabox/main.php:71
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:338
+#: inc/admin/metabox/build/metabox.js:1
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:415
 msgid "Disable Header"
 msgstr ""
 
 #: inc/admin/metabox/main.php:76
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:364
+#: inc/admin/metabox/build/metabox.js:1
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:449
 msgid "Disable Title"
 msgstr ""
 
@@ -1023,7 +1036,8 @@ msgid "Disable Featured Image"
 msgstr ""
 
 #: inc/admin/metabox/main.php:88
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:350
+#: inc/admin/metabox/build/metabox.js:1
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:431
 msgid "Disable Footer"
 msgstr ""
 
@@ -1329,7 +1343,8 @@ msgstr ""
 #: inc/customizer/options/layout_blog.php:286
 #: inc/customizer/options/layout_single_post.php:72
 #: inc/views/partials/post_meta.php:128
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:295
+#: inc/admin/metabox/build/metabox.js:1
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:362
 msgid "Comments"
 msgstr ""
 
@@ -1338,7 +1353,8 @@ msgid "Meta Order"
 msgstr ""
 
 #: inc/customizer/options/layout_blog.php:444
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:258
+#: inc/admin/metabox/build/metabox.js:1
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:321
 msgid "Author Avatar"
 msgstr ""
 
@@ -1421,13 +1437,15 @@ msgstr ""
 #: inc/customizer/options/layout_single_post.php:69
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Onboarding/ImportModal.js:156
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:293
+#: inc/admin/metabox/build/metabox.js:1
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:360
 msgid "Content"
 msgstr ""
 
 #: inc/customizer/options/layout_single_post.php:70
 #: inc/views/partials/post_meta.php:215
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:294
+#: inc/admin/metabox/build/metabox.js:1
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:361
 msgid "Tags"
 msgstr ""
 
@@ -1448,7 +1466,8 @@ msgid "Title"
 msgstr ""
 
 #: inc/customizer/options/layout_single_product.php:124
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:127
+#: inc/admin/metabox/build/metabox.js:1
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:131
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:200
 #: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:235
@@ -2139,79 +2158,97 @@ msgstr ""
 msgid "Could not Update Option. Please try again."
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:112
+#: inc/admin/metabox/build/metabox.js:1
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:104
 msgid "Page Layout"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:125
+#: inc/admin/metabox/build/metabox.js:1
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:120
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:52
 #: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:176
 msgid "Inherit"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:173
+#: inc/admin/metabox/build/metabox.js:1
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:216
 msgid "Custom Content Width (%)"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:214
+#: inc/admin/metabox/build/metabox.js:1
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:267
 msgid "Page Title"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:218
+#: inc/admin/metabox/build/metabox.js:1
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:271
 msgid "Title alignment"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:273
+#: inc/admin/metabox/build/metabox.js:1
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:338
 msgid "Reading Time"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:290
+#: inc/admin/metabox/build/metabox.js:1
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:357
 msgid "Post Title"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:291
+#: inc/admin/metabox/build/metabox.js:1
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:358
 msgid "Post Meta"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:292
+#: inc/admin/metabox/build/metabox.js:1
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:359
 msgid "Featured Image"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:296
+#: inc/admin/metabox/build/metabox.js:1
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:363
 msgid "Post Navigation"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:311
+#: inc/admin/metabox/build/metabox.js:1
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:376
 msgid "Author Biography"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:312
+#: inc/admin/metabox/build/metabox.js:1
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:380
 msgid "Related Posts"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:313
+#: inc/admin/metabox/build/metabox.js:1
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:384
 msgid "Sharing Icons"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:321
+#: inc/admin/metabox/build/metabox.js:1
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:394
 msgid "Elements"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:382
+#: inc/admin/metabox/build/metabox.js:1
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:468
 msgid "Reset all options to default"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:391
+#: inc/admin/metabox/build/metabox.js:1
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:477
 msgid "Return to customizer settings"
 msgstr ""
 
-#: inc/admin/metabox/src/components/Sidebar.js:16
+#: inc/admin/metabox/build/metabox.js:1
+#: inc/admin/metabox/src/components/Sidebar.js:59
 msgid "Open Neve meta sidebar"
 msgstr ""
 
-#: inc/admin/metabox/src/components/Sidebar.js:55
-#: inc/admin/metabox/src/components/Sidebar.js:59
+#: inc/admin/metabox/build/metabox.js:1
+#: inc/admin/metabox/src/components/Sidebar.js:37
+#: inc/admin/metabox/src/components/Sidebar.js:41
 msgid "Neve Options"
 msgstr ""
 
