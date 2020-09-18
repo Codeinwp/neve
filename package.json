@@ -79,10 +79,12 @@
 		"bump-vendor": "grunt version:packageVersion",
 		"build:rollup": "./node_modules/.bin/rollup -c",
 		"build:wp-scripts-dash": "wp-scripts build dashboard/src/dashboard.js --output-path=dashboard/build",
+		"build:wp-scripts-customizer-controls": "wp-scripts build inc/customizer/controls/react/src/controls.js --output-path=inc/customizer/controls/react/bundle",
 		"build:makepot": "docker run --user root --rm --volume  \"$(pwd):/var/www/html/neve\" wordpress:cli bash -c 'php -d memory_limit=512M \"$(which wp)\" i18n make-pot ./neve/ ./neve/languages/neve.pot --allow-root '",
 		"watch:rollup": "./node_modules/.bin/rollup -c --watch",
 		"watch:grunt": "grunt watch",
 		"watch:wp-scripts-dash": "wp-scripts start dashboard/src/dashboard.js --output-path=dashboard/build",
+		"watch:wp-scripts-customizer-controls": "wp-scripts start inc/customizer/controls/react/src/controls.js --output-path=inc/customizer/controls/react/bundle",
 		"dev": "npm-run-all --parallel watch:*",
 		"build": "npm-run-all build:*",
 		"size": "size-limit",
@@ -135,6 +137,7 @@
 	"dependencies": {
 		"classnames": "^2.2.6",
 		"fuse.js": "^6.4.1",
+		"prop-types": "^15.7.2",
 		"react-visibility-sensor": "^5.1.1",
 		"tiny-slider": "^2.9.2"
 	}

@@ -77,24 +77,11 @@ class Loader {
 		wp_style_add_data( 'neve-customizer-style', 'suffix', '.min' );
 		wp_enqueue_style( 'neve-customizer-style' );
 
-		wp_enqueue_script(
-			'neve-customizer-controls',
-			NEVE_ASSETS_URL . 'js/build/all/customizer-controls.js',
-			array(
-				'jquery',
-				'wp-color-picker',
-			),
-			NEVE_VERSION,
-			true
-		);
+		wp_enqueue_script( 'neve-customizer-controls', NEVE_ASSETS_URL . 'js/build/all/customizer-controls.js', array( 'jquery', 'wp-color-picker' ), NEVE_VERSION, true );
 
-		$editor_dependencies = array(
-			'wp-i18n',
-			'wp-components',
-			'wp-edit-post',
-			'wp-element',
-		);
-		wp_register_script( 'react-controls', get_template_directory_uri() . '/inc/customizer/controls/react/bundle/controls.js', $editor_dependencies, NEVE_VERSION, true );
+		$bundle_path  = get_template_directory_uri() . '/inc/customizer/controls/react/bundle/';
+		$dependencies = ( include get_template_directory() . '/inc/customizer/controls/react/bundle/controls.asset.php' );
+		wp_register_script( 'react-controls', $bundle_path . 'controls.js', $dependencies['dependencies'], $dependencies['version'], true );
 		wp_localize_script(
 			'react-controls',
 			'NeveReactCustomize',
@@ -114,13 +101,7 @@ class Loader {
 			)
 		);
 		wp_enqueue_script( 'react-controls' );
-		wp_enqueue_style(
-			'react-controls',
-			get_template_directory_uri() .
-			'/inc/customizer/controls/react/bundle/controls.css',
-			array( 'wp-components' ),
-			NEVE_VERSION
-		);
+		wp_enqueue_style( 'react-controls', $bundle_path . 'style-controls.css', [ 'wp-components' ], $dependencies['version'] );
 		wp_enqueue_style(
 			'neve-fonts-control-google-fonts',
 			'https://fonts.googleapis.com/css?family=' . join( '|', neve_get_google_fonts() ) . '&text=Abc&display=swap"',

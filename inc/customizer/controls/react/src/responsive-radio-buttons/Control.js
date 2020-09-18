@@ -1,14 +1,13 @@
 /* jshint esversion: 6 */
-/* global wp */
-import ResponsiveRadioButtonsComponent from './ResponsiveRadioButtonsComponent.js'
-const { render } = wp.element
+import { render } from '@wordpress/element';
+import ResponsiveRadioButtonsComponent from './ResponsiveRadioButtonsComponent.js';
 
 export const ResponsiveRadioButtonsControl = wp.customize.Control.extend( {
-  renderContent: function renderContent() {
-    const control = this
-    render(
-      <ResponsiveRadioButtonsComponent control={control} />,
-      control.container[0]
-    )
-  }
-} )
+	renderContent: function renderContent() {
+		const control = this;
+		render(
+			<ResponsiveRadioButtonsComponent control={ control } />,
+			control.container[ 0 ]
+		);
+	},
+} );

@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-09-17T10:40:08+00:00\n"
+"POT-Creation-Date: 2020-09-18T11:05:11+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -40,219 +40,219 @@ msgid "Options"
 msgstr ""
 
 #. translators: %s - Theme name
-#: dashboard/inc/Main.php:199
+#: dashboard/inc/Main.php:197
 msgid "%s Options"
 msgstr ""
 
 #. translators: %s - Theme name
 #. translators: %s - theme name
-#: dashboard/inc/Main.php:201
+#: dashboard/inc/Main.php:199
 #: inc/core/admin.php:236
 msgid "%s now comes with a sites library with various designs to pick from. Visit our collection of demos that are constantly being added."
 msgstr ""
 
 #. translators: %s - "Public roadmap"
-#: dashboard/inc/Main.php:203
+#: dashboard/inc/Main.php:201
 msgid "Share opinions, ask questions and help each other on our Neve community! Keep up with what we’re working on and vote to help us prioritize on our %s."
 msgstr ""
 
 #. translators: %s - "Public roadmap"
-#: dashboard/inc/Main.php:203
+#: dashboard/inc/Main.php:201
 msgid "public roadmap"
 msgstr ""
 
 #. translators: %s - Theme name
-#: dashboard/inc/Main.php:205
+#: dashboard/inc/Main.php:203
 msgid "With %s, you can choose from multiple unique demos, specially designed for you, that can be installed with a single click. You just need to choose your favorite, and we will take care of everything else."
 msgstr ""
 
 #. translators: %s - Theme name
-#: dashboard/inc/Main.php:207
+#: dashboard/inc/Main.php:205
 msgid "We want to make sure you have the best experience using %1$s, and that is why we have gathered all the necessary information here for you. We hope you will enjoy using %1$s as much as we enjoy creating great products."
 msgstr ""
 
 #. translators: %s - Theme name
 #. translators: %s - theme name
-#: dashboard/inc/Main.php:209
+#: dashboard/inc/Main.php:207
 #: inc/core/admin.php:244
 msgid "Need more details? Please check our full documentation for detailed information on how to use %s."
 msgstr ""
 
 #. translators: %s - "Neve Pro Addon"
-#: dashboard/inc/Main.php:211
+#: dashboard/inc/Main.php:209
 msgid "%s license"
 msgstr ""
 
 #. translators: %s - "Neve Pro Addon"
-#: dashboard/inc/Main.php:213
+#: dashboard/inc/Main.php:211
 msgid "Please update %s to the latest version and then refresh this page to have access to the options."
 msgstr ""
 
 #. translators: store name (Themeisle)
-#: dashboard/inc/Main.php:217
+#: dashboard/inc/Main.php:215
 msgid "Enter your license from %1$s purchase history in order to get plugin updates"
 msgstr ""
 
 #. translators: s - theme name (Neve).
-#: dashboard/inc/Main.php:251
+#: dashboard/inc/Main.php:249
 msgid "New theme update for %1$s! Please update to %2$s."
 msgstr ""
 
-#: dashboard/inc/Main.php:256
-#: dashboard/inc/Main.php:277
+#: dashboard/inc/Main.php:254
+#: dashboard/inc/Main.php:275
 msgid "Update Now"
 msgstr ""
 
 #. translators: s - Pro plugin name (Neve Pro)
-#: dashboard/inc/Main.php:268
+#: dashboard/inc/Main.php:266
 msgid "New plugin update for %1$s! Please update to %2$s."
 msgstr ""
 
 #. translators: 1 - Theme Name (Neve), 2 - Plugin Name (Neve Pro)
-#: dashboard/inc/Main.php:286
+#: dashboard/inc/Main.php:284
 msgid "We recommend that both %1$s and %2$s are updated to the latest version to ensure optimal intercompatibility."
 msgstr ""
 
-#: dashboard/inc/Main.php:301
+#: dashboard/inc/Main.php:299
 msgid "Upload Logo"
 msgstr ""
 
-#: dashboard/inc/Main.php:305
+#: dashboard/inc/Main.php:303
 msgid "Set Colors"
 msgstr ""
 
-#: dashboard/inc/Main.php:309
+#: dashboard/inc/Main.php:307
 msgid "Customize Fonts"
 msgstr ""
 
-#: dashboard/inc/Main.php:313
+#: dashboard/inc/Main.php:311
 msgid "Layout Options"
 msgstr ""
 
-#: dashboard/inc/Main.php:317
+#: dashboard/inc/Main.php:315
 msgid "Header Options"
 msgstr ""
 
-#: dashboard/inc/Main.php:321
+#: dashboard/inc/Main.php:319
 msgid "Blog Layouts"
 msgstr ""
 
-#: dashboard/inc/Main.php:325
+#: dashboard/inc/Main.php:323
 msgid "Footer Options"
 msgstr ""
 
-#: dashboard/inc/Main.php:329
+#: dashboard/inc/Main.php:327
 #: inc/customizer/options/layout_sidebar.php:43
 msgid "Content / Sidebar"
 msgstr ""
 
-#: dashboard/inc/Main.php:343
+#: dashboard/inc/Main.php:341
 msgid "Header/Footer builder"
 msgstr ""
 
-#: dashboard/inc/Main.php:344
+#: dashboard/inc/Main.php:342
 msgid "Easily build your header and footer by dragging and dropping all the important elements in the real-time WordPress Customizer. More advanced options are available in PRO."
 msgstr ""
 
-#: dashboard/inc/Main.php:348
+#: dashboard/inc/Main.php:346
 msgid "Page Builder Compatibility"
 msgstr ""
 
-#: dashboard/inc/Main.php:349
+#: dashboard/inc/Main.php:347
 msgid "Neve is fully compatible with Gutenberg, the new WordPress editor and for all of you page builder fans, Neve has full compatibility with Elementor, Beaver Builder, and all the other popular page builders."
 msgstr ""
 
-#: dashboard/inc/Main.php:353
+#: dashboard/inc/Main.php:351
 #: inc/customizer/options/upsells.php:89
 msgid "Header Booster"
 msgstr ""
 
-#: dashboard/inc/Main.php:354
+#: dashboard/inc/Main.php:352
 msgid "Take the header builder to a new level with new awesome components: socials, contact, breadcrumbs, language switcher, multiple HTML, sticky and transparent menu, page header builder and many more."
 msgstr ""
 
-#: dashboard/inc/Main.php:358
+#: dashboard/inc/Main.php:356
 msgid "Page Header Builder"
 msgstr ""
 
-#: dashboard/inc/Main.php:359
+#: dashboard/inc/Main.php:357
 msgid "The Page Header is the horizontal area that sits directly below the header and contains the page/post title. Easily design an attractive Page Header area using our dedicated builder."
 msgstr ""
 
-#: dashboard/inc/Main.php:363
+#: dashboard/inc/Main.php:361
 #: inc/customizer/options/upsells.php:92
 msgid "Custom Layouts"
 msgstr ""
 
-#: dashboard/inc/Main.php:364
+#: dashboard/inc/Main.php:362
 msgid "Powerful Custom Layouts builder which allows you to easily create your own header, footer or custom content on any of the hook locations available in the theme."
 msgstr ""
 
-#: dashboard/inc/Main.php:368
+#: dashboard/inc/Main.php:366
 #: inc/customizer/options/upsells.php:90
 msgid "Blog Booster"
 msgstr ""
 
-#: dashboard/inc/Main.php:369
+#: dashboard/inc/Main.php:367
 msgid "Give a huge boost to your entire blogging experience with features specially designed for increased user experience."
 msgstr ""
 
-#: dashboard/inc/Main.php:369
+#: dashboard/inc/Main.php:367
 msgid "Sharing, custom article sorting, comments integrations, number of minutes needed to read an article and many more."
 msgstr ""
 
-#: dashboard/inc/Main.php:373
+#: dashboard/inc/Main.php:371
 #: inc/customizer/options/upsells.php:95
 msgid "Elementor Booster"
 msgstr ""
 
-#: dashboard/inc/Main.php:374
+#: dashboard/inc/Main.php:372
 #: inc/customizer/options/upsells.php:100
 msgid "Leverage the true flexibility of Elementor with powerful addons and templates that you can import with just one click."
 msgstr ""
 
-#: dashboard/inc/Main.php:378
+#: dashboard/inc/Main.php:376
 #: inc/customizer/options/upsells.php:91
 msgid "WooCommerce Booster"
 msgstr ""
 
-#: dashboard/inc/Main.php:379
+#: dashboard/inc/Main.php:377
 msgid "Empower your online store with awesome new features, specially designed for a smooth WooCommerce integration."
 msgstr ""
 
-#: dashboard/inc/Main.php:379
+#: dashboard/inc/Main.php:377
 msgid "Wishlist, quick view, video products, advanced reviews, multiple dedicated layouts and many more."
 msgstr ""
 
-#: dashboard/inc/Main.php:383
+#: dashboard/inc/Main.php:381
 msgid "LifterLMS Booster"
 msgstr ""
 
-#: dashboard/inc/Main.php:384
+#: dashboard/inc/Main.php:382
 msgid "Make your LifterLMS pages look stunning with our PRO design options. Specially created to help you set up your online courses with minimum customizations."
 msgstr ""
 
-#: dashboard/inc/Main.php:388
+#: dashboard/inc/Main.php:386
 msgid "Typekit(Adobe) Fonts"
 msgstr ""
 
-#: dashboard/inc/Main.php:389
+#: dashboard/inc/Main.php:387
 msgid "The module allows for an easy way of enabling new awesome Adobe (previous Typekit) Fonts in Neve's Typography options."
 msgstr ""
 
-#: dashboard/inc/Main.php:393
+#: dashboard/inc/Main.php:391
 msgid "White Label"
 msgstr ""
 
-#: dashboard/inc/Main.php:394
+#: dashboard/inc/Main.php:392
 msgid "For any developer or agency out there building websites for their own clients, we've made it easy to present the theme as your own."
 msgstr ""
 
-#: dashboard/inc/Main.php:398
+#: dashboard/inc/Main.php:396
 msgid "Scroll To Top"
 msgstr ""
 
-#: dashboard/inc/Main.php:399
+#: dashboard/inc/Main.php:397
 msgid "Simple but effective module to help you navigate back to the top of the really long pages."
 msgstr ""
 
@@ -482,8 +482,9 @@ msgid "Link"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Button.php:116
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:182
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:189
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:217
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:227
 msgid "Text"
 msgstr ""
 
@@ -503,8 +504,9 @@ msgstr ""
 
 #: header-footer-grid/Core/Components/CartIcon.php:142
 #: header-footer-grid/Core/Components/SearchResponsive.php:184
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:45
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:89
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/background/BackgroundComponent.js:38
+#: inc/customizer/controls/react/src/background/BackgroundComponent.js:86
 msgid "Color"
 msgstr ""
 
@@ -626,7 +628,8 @@ msgid "Items Hover Color"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Nav.php:177
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:123
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:121
 msgid "Search"
 msgstr ""
 
@@ -689,19 +692,22 @@ msgstr ""
 
 #: header-footer-grid/Core/Components/Search.php:120
 #: header-footer-grid/Core/Components/SearchResponsive.php:284
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:257
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:268
 msgid "Font Size"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Search.php:194
 #: header-footer-grid/Core/Components/SearchResponsive.php:358
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:144
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:162
 msgid "Border Width"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Search.php:251
 #: header-footer-grid/Core/Components/SearchResponsive.php:415
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:118
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:120
 msgid "Border Radius"
 msgstr ""
 
@@ -712,8 +718,9 @@ msgstr ""
 
 #: header-footer-grid/Core/Components/Search.php:306
 #: header-footer-grid/Core/Components/SearchResponsive.php:470
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:182
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:189
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:218
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:228
 msgid "Text and Border"
 msgstr ""
 
@@ -760,8 +767,9 @@ msgstr ""
 #. translators: %s is the header name
 #: header-footer-grid/Core/Customizer.php:265
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:151
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:60
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:172
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:53
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:177
 msgid "Default"
 msgstr ""
 
@@ -940,7 +948,8 @@ msgid "General"
 msgstr ""
 
 #: header-footer-grid/Core/Settings/Manager.php:185
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:274
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:328
 msgid "Style"
 msgstr ""
 
@@ -1440,8 +1449,9 @@ msgstr ""
 
 #: inc/customizer/options/layout_single_product.php:124
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:127
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:201
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:233
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:200
+#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:235
 msgid "None"
 msgstr ""
 
@@ -2134,8 +2144,9 @@ msgid "Page Layout"
 msgstr ""
 
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:125
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:59
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:171
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:52
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:176
 msgid "Inherit"
 msgstr ""
 
@@ -2204,245 +2215,305 @@ msgstr ""
 msgid "Neve Options"
 msgstr ""
 
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:46
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:110
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/dynamic-fields/dynamicFieldInserter.js:55
+msgid "Insert Dynamic Tag"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/common/Responsive.js:20
+msgid "Desktop"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/common/Responsive.js:24
+msgid "Tablet"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/common/Responsive.js:28
+msgid "Mobile"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/common/ColorControl.js:52
+msgid "Clear"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/background/BackgroundComponent.js:39
+#: inc/customizer/controls/react/src/background/BackgroundComponent.js:113
 msgid "Image"
 msgstr ""
 
+#: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/background/BackgroundComponent.js:99
 msgid "Use Featured Image"
 msgstr ""
 
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:109
-msgid "Fallback Image"
-msgstr ""
-
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:113
-msgid "Select from the Media Library or upload a new image"
-msgstr ""
-
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:123
-msgid "Add Image"
-msgstr ""
-
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:140
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/background/BackgroundComponent.js:153
 msgid "Remove Fallback Image"
 msgstr ""
 
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:141
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/background/BackgroundComponent.js:157
 msgid "Remove Image"
 msgstr ""
 
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:156
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/background/BackgroundComponent.js:112
+msgid "Fallback Image"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/background/BackgroundComponent.js:117
+msgid "Select from the Media Library or upload a new image"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/background/BackgroundComponent.js:134
+msgid "Add Image"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/background/BackgroundComponent.js:179
 msgid "Fixed Background"
 msgstr ""
 
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:168
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/background/BackgroundComponent.js:192
 msgid "Overlay Color"
 msgstr ""
 
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:175
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/background/BackgroundComponent.js:202
 msgid "Overlay Opacity"
 msgstr ""
 
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:179
-msgid "Normal"
-msgstr ""
-
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:181
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:188
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:58
-msgid "Background"
-msgstr ""
-
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:186
-msgid "Hover"
-msgstr ""
-
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:243
-msgid "Filled"
-msgstr ""
-
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:249
-msgid "Outline"
-msgstr ""
-
-#: inc/customizer/controls/react/src/common/ColorControl.js:55
-msgid "Clear"
-msgstr ""
-
-#: inc/customizer/controls/react/src/common/Responsive.js:29
-msgid "Desktop"
-msgstr ""
-
-#: inc/customizer/controls/react/src/common/Responsive.js:33
-msgid "Tablet"
-msgstr ""
-
-#: inc/customizer/controls/react/src/common/Responsive.js:37
-msgid "Mobile"
-msgstr ""
-
-#: inc/customizer/controls/react/src/common/Sizing.js:27
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/common/Sizing.js:25
 msgid "Unlink Values"
 msgstr ""
 
-#: inc/customizer/controls/react/src/common/Sizing.js:27
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/common/Sizing.js:26
 msgid "Link Values"
 msgstr ""
 
-#: inc/customizer/controls/react/src/common/Sizing.js:69
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/common/Sizing.js:72
 msgid "Reset all Values"
 msgstr ""
 
-#: inc/customizer/controls/react/src/common/Sizing.js:69
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/common/Sizing.js:73
 msgid "Reset Value"
 msgstr ""
 
-#: inc/customizer/controls/react/src/dynamic-fields/dynamic-field-inserter.js:52
-msgid "Insert Dynamic Tag"
-msgstr ""
-
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:145
-msgid "No results."
-msgstr ""
-
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:159
-msgid "Font Family"
-msgstr ""
-
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:188
-msgid "Loading..."
-msgstr ""
-
-#: inc/customizer/controls/react/src/multiselect/MultiSelect.js:14
-msgid "Add item"
-msgstr ""
-
-#: inc/customizer/controls/react/src/multiselect/MultiSelect.js:32
-msgid "Remove Item"
-msgstr ""
-
-#: inc/customizer/controls/react/src/multiselect/MultiSelect.js:56
-msgid "Add items by clicking the ones below."
-msgstr ""
-
-#: inc/customizer/controls/react/src/multiselect/MultiSelect.js:63
-msgid "All items are already selected."
-msgstr ""
-
-#: inc/customizer/controls/react/src/presets-selector/PresetsSelector.js:63
-msgid "No header presets found"
-msgstr ""
-
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:33
-msgid "Logo Only"
-msgstr ""
-
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:37
-msgid "Logo - Title & Tagline"
-msgstr ""
-
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:41
-msgid "Title & Tagline - Logo"
-msgstr ""
-
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:45
-msgid "Logo on Top"
-msgstr ""
-
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:54
-msgid "Plain"
-msgstr ""
-
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:62
-msgid "Bottom Border"
-msgstr ""
-
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:66
-msgid "Top Border"
-msgstr ""
-
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:75
-msgid "Icon Style 2"
-msgstr ""
-
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:79
-msgid "Icon Style 1"
-msgstr ""
-
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:83
-msgid "Icon Style 3"
-msgstr ""
-
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:87
-msgid "Icon Style 4"
-msgstr ""
-
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:91
-msgid "Icon Style 5"
-msgstr ""
-
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:95
-msgid "Icon Style 6"
-msgstr ""
-
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:99
-msgid "WordPress Avatar"
-msgstr ""
-
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:103
-msgid "No Icon"
-msgstr ""
-
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:112
-msgid "Style 1"
-msgstr ""
-
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:116
-msgid "Style 2"
-msgstr ""
-
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:120
-msgid "Style 3"
-msgstr ""
-
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:124
-msgid "Style 4"
-msgstr ""
-
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:128
-msgid "Style 5"
-msgstr ""
-
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:132
-msgid "Style 6"
-msgstr ""
-
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:196
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:195
 msgid "Weight"
 msgstr ""
 
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:228
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:230
 msgid "Transform"
 msgstr ""
 
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:234
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:238
 msgid "Capitalize"
 msgstr ""
 
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:235
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:242
 msgid "Lowercase"
 msgstr ""
 
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:236
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:246
 msgid "Uppercase"
 msgstr ""
 
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:301
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:315
 msgid "Line Height"
 msgstr ""
 
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:348
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:366
 msgid "Letter Spacing"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:147
+msgid "No results."
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:164
+msgid "Font Family"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:196
+msgid "Loading…"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:30
+msgid "Logo Only"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:34
+msgid "Logo - Title & Tagline"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:38
+msgid "Title & Tagline - Logo"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:42
+msgid "Logo on Top"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:51
+msgid "Plain"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:214
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:224
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:55
+msgid "Background"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:59
+msgid "Bottom Border"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:63
+msgid "Top Border"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:72
+msgid "Icon Style 2"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:76
+msgid "Icon Style 1"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:80
+msgid "Icon Style 3"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:84
+msgid "Icon Style 4"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:88
+msgid "Icon Style 5"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:92
+msgid "Icon Style 6"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:96
+msgid "WordPress Avatar"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:100
+msgid "No Icon"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:109
+msgid "Style 1"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:113
+msgid "Style 2"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:117
+msgid "Style 3"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:121
+msgid "Style 4"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:125
+msgid "Style 5"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:129
+msgid "Style 6"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:212
+msgid "Normal"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:222
+msgid "Hover"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:297
+msgid "Filled"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:302
+msgid "Outline"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/presets-selector/PresetsSelector.js:67
+msgid "No header presets found"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/multiselect/MultiSelect.js:15
+msgid "Add item"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/multiselect/MultiSelect.js:35
+msgid "Remove Item"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/multiselect/MultiSelect.js:64
+msgid "Add items by clicking the ones below."
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/multiselect/MultiSelect.js:76
+msgid "All items are already selected."
 msgstr ""
