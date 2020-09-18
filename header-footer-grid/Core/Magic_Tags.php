@@ -123,7 +123,7 @@ class Magic_Tags {
 		}
 
 		$allowed_tags = wp_kses_allowed_html();
-		if ( $tag === 'current_post_meta' ) {
+		if ( $tag === 'current_post_meta' || $tag === 'meta_date' ) {
 			$allowed_tags['span'] = [
 				'class' => [],
 			];
@@ -133,6 +133,7 @@ class Magic_Tags {
 				'content'  => [],
 			];
 		}
+
 		return wp_kses( call_user_func( [ $this, $tag ] ), $allowed_tags );
 	}
 
@@ -183,7 +184,12 @@ class Magic_Tags {
 	 * @return string.
 	 */
 	public function meta_date() {
-		return Post_Meta::get_time_tags();
+		ob_start();
+		do_action( 'neve_post_meta_single', array( 'date' ), false );
+		$meta = ob_get_contents();
+		ob_end_clean();
+
+		return $meta;
 	}
 
 	/**
