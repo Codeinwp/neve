@@ -12,7 +12,7 @@
   "password": "admin",
   "env": {
 	"ssSites": [
-	  "https://demosites.io/original/"
+	  "https://staging.demosites.io/onboarding/"
 	],
 	"qaUrls": [
 	  "https://qa-neve.themeisle.com/neve/",
