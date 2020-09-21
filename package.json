@@ -64,7 +64,7 @@
 		"rollup-plugin-babel": "^4.4.0",
 		"rollup-plugin-terser": "^5.3.1",
 		"rollup-plugin-uglify": "^6.0.4",
-		"semantic-release": "^17.1.1",
+		"semantic-release": "^17.1.2",
 		"size-limit": "^4.6.0",
 		"url-slug": "^2.3.2",
 		"webpack": "^4.44.0"
