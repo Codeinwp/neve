@@ -191,7 +191,7 @@ class Layout_Blog extends Base_Customizer {
 					'live_refresh_selector' => true,
 					'live_refresh_css_prop' => [
 						'template' =>
-							'.cover-post .inner, .cover-post .inner a, .cover-post .inner a:hover, .cover-post .inner a:focus, .cover-post .inner li {
+							'.cover-post .inner, .cover-post .inner a:not(.button), .cover-post .inner a:not(.button):hover, .cover-post .inner a:not(.button):focus, .cover-post .inner li {
 							color: {{value}};
 						}',
 					],

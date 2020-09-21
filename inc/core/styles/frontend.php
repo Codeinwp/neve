@@ -109,13 +109,15 @@ class Frontend extends Generator {
 	 * Add css for blog colors.
 	 */
 	public function setup_blog_colors() {
-		$this->_subscribers['.cover-post .inner, .cover-post .inner a, .cover-post .inner a:hover, .cover-post .inner a:focus, .cover-post .inner li'] = [
+		$this->_subscribers['.cover-post .inner, .cover-post .inner a:not(.button), .cover-post .inner a:not(.button):hover, .cover-post .inner a:not(.button):focus, .cover-post .inner li'] = [
 			Config::CSS_PROP_COLOR => [
 				Dynamic_Selector::META_KEY => 'neve_blog_covers_text_color',
 			],
 		];
 
-		$this->_subscribers['.nv-post-thumbnail-wrap img'] = [
+		$selector = get_theme_mod( 'neve_blog_archive_layout', 'grid' ) === 'covers' ? '.cover-post.nv-post-thumbnail-wrap' : '.nv-post-thumbnail-wrap img';
+
+		$this->_subscribers[ $selector ] = [
 			Config::CSS_PROP_BOX_SHADOW => [
 				Dynamic_Selector::META_KEY    => 'neve_post_thumbnail_box_shadow',
 				Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
