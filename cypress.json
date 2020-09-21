@@ -13,7 +13,16 @@
   "password": "admin",
   "env": {
 	"ssSites": [
-	  "https://demosites.io/original/"
+	  "https://staging.demosites.io/onboarding/",
+	  "https://staging.demosites.io/web-agency/",
+	  "https://staging.demosites.io/web-agency-gb/",
+	  "https://staging.demosites.io/shop/",
+	  "https://staging.demosites.io/onboarding-gutenberg/",
+	  "https://staging.demosites.io/fitness/",
+	  "https://staging.demosites.io/blogger/",
+	  "https://staging.demosites.io/zelle/",
+	  "https://staging.demosites.io/freelancer/",
+	  "https://staging.demosites.io/blogger-gb/"
 	],
 	"qaUrls": [
 	  "https://qa-neve.themeisle.com/neve/",

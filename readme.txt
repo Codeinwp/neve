@@ -19,6 +19,25 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 == Changelog ==
 
+##### [Version 2.8.1](https://github.com/Codeinwp/neve/compare/v2.8.0...v2.8.1) (2020-09-17)
+
+- [Feat] New options for styling buttons ( text-transform, weight, font size, line height, and letter spacing )
+- [Feat] New block patterns
+- [Feat] Async/defer loading of the JS scripts
+- [Fix] Masonry not working in Safari
+- [Fix] Range controls in older versions of WordPress
+- [Fix] Links and headings not inheriting Customizer colors inside the editor
+- [Fix] Do not parse HTML tags inside the search heading
+- [Fix] Cart Icon size and color options not working properly
+- [Fix] Accessibility issues with form labels
+- [Fix] Update list of Google Fonts
+- [Fix] Button state management in the Starter Sites notice
+- [Fix] Inputs text color on a dark background
+- New Gutenberg Starter Sites
+
+
+
+
 #### [Version 2.8.0](https://github.com/Codeinwp/neve/compare/v2.7.7...v2.8.0) (2020-09-03)
 
 - [Feat] Compatibility with AMP 2.0
@@ -765,8 +784,30 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 == Resources ==
 * Neve Icons based on Font Awesome Icons licensed under CC BY 4.0 License (https://creativecommons.org/licenses/by/4.0/).
 
-All  images are licensed under CC0.
+All images are licensed under CC0.
 
 Screenshot resources:
 
 * https://www.pexels.com/photo/landscape-photography-of-mountains-covered-in-snow-691668/
+
+Patterns resources:
+
+* neve-patterns-1.jpg - https://pxhere.com/el/photo/1434027
+* neve-patterns-2.jpg - https://pxhere.com/el/photo/1458707
+* neve-patterns-3.jpg - https://pxhere.com/el/photo/764654
+* neve-patterns-4.jpg - https://pxhere.com/el/photo/762278
+* neve-patterns-6.jpg - https://pxhere.com/el/photo/1433753
+* neve-patterns-8.jpg - https://pxhere.com/el/photo/1594712
+* neve-patterns-10.jpg - https://pxhere.com/el/photo/1431575
+* neve-patterns-11.jpg - https://pxhere.com/el/photo/1451429
+* neve-patterns-12.jpg - https://pxhere.com/el/photo/1229843
+* neve-patterns-15.jpg - https://pxhere.com/el/photo/1432963
+* neve-patterns-16.jpg - https://pxhere.com/el/photo/1575315
+* neve-patterns-17.jpg - https://pxhere.com/el/photo/706582
+* neve-patterns-18.jpg - https://pxhere.com/el/photo/1391834
+* neve-patterns-19.jpg - https://pxhere.com/el/photo/1555639
+* neve-patterns-20.jpg - https://pxhere.com/el/photo/1561935
+* neve-patterns-21.jpg - https://pxhere.com/el/photo/1567113
+* neve-patterns-22.jpg - https://pxhere.com/el/photo/1545615
+* otter-blocks-img-02.png - https://pxhere.com/en/photo/1416385
+* otter-blocks-img-03.png - https://pxhere.com/en/photo/1175501
