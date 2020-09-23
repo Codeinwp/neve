@@ -73,9 +73,17 @@ class Template_Parts extends Base_View {
 		}
 
 		if ( $layout === 'covers' ) {
-			$thumb = get_the_post_thumbnail_url();
-			$style = ! empty( $thumb ) ? 'background-image: url(' . esc_url( $thumb ) . ')' : '';
-
+			$default_order = array(
+				'thumbnail',
+				'title-meta',
+				'excerpt',
+			);
+			$order         = json_decode( get_theme_mod( 'neve_post_content_ordering', wp_json_encode( $default_order ) ) );
+			$style         = '';
+			if ( in_array( 'thumbnail', $order, true ) ) {
+				$thumb  = get_the_post_thumbnail_url();
+				$style .= ! empty( $thumb ) ? 'background-image: url(' . esc_url( $thumb ) . ')' : '';
+			}
 			$markup .= '<div class="cover-post nv-post-thumbnail-wrap" style="' . esc_attr( $style ) . '">';
 			$markup .= '<div class="inner">';
 			$markup .= $this->get_ordered_content_parts( true );
