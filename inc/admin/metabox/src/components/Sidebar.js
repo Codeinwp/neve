@@ -1,9 +1,11 @@
-import { PluginSidebar, PluginSidebarMoreMenuItem } from '@wordpress/edit-post';
-import { useShortcut } from '@wordpress/keyboard-shortcuts';
-import { withDispatch, withSelect } from '@wordpress/data';
-import { useCallback, useEffect } from '@wordpress/element';
-import { compose } from '@wordpress/compose';
-import { __ } from '@wordpress/i18n';
+/* global neveSidebarData */
+
+import {PluginSidebar, PluginSidebarMoreMenuItem} from '@wordpress/edit-post';
+import {useShortcut} from '@wordpress/keyboard-shortcuts';
+import {withDispatch, withSelect} from '@wordpress/data';
+import {useCallback, useEffect} from '@wordpress/element';
+import {compose} from '@wordpress/compose';
+import {__} from '@wordpress/i18n';
 
 import MetaFieldsManager from './MetaFieldsManager';
 
@@ -31,14 +33,21 @@ const Sidebar = ( { template, isSidebarOpen, closeSidebar, openSidebar } ) => {
 		return null;
 	}
 
+	const sidebarLabel =
+		neveSidebarData.whiteLabeled && neveSidebarData.whiteLabelThemeName
+			? neveSidebarData.whiteLabelThemeName +
+			  ' ' +
+			  __( 'Options', 'neve' )
+			: __( 'Neve Options', 'neve' );
+
 	return (
 		<>
 			<PluginSidebarMoreMenuItem target="neve-meta-sidebar">
-				{ __( 'Neve Options', 'neve' ) }
+				{ sidebarLabel }
 			</PluginSidebarMoreMenuItem>
 			<PluginSidebar
 				name="neve-meta-sidebar"
-				title={ __( 'Neve Options', 'neve' ) }
+				title={ sidebarLabel }
 			>
 				<MetaFieldsManager />
 			</PluginSidebar>
