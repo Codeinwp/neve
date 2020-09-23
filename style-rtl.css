@@ -1492,6 +1492,7 @@ body .layout-grid > .article-content-col, .layout-grid {
 }
 
 .cover-post .inner {
+  max-width: 100%;
   min-height: 350px;
   position: relative;
   z-index: 10;
