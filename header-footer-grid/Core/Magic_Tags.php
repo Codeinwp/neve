@@ -515,10 +515,6 @@ class Magic_Tags {
 						'label' => __( 'Comments meta', 'neve' ),
 						'type'  => 'string',
 					],
-					'meta_time_to_read'      => [
-						'label' => __( 'Time to read meta', 'neve' ),
-						'type'  => 'string',
-					],
 				],
 			],
 			[
@@ -639,6 +635,8 @@ class Magic_Tags {
 				],
 			];
 		}
+
+		$this->options = apply_filters( 'neve_magic_tags_config', $this->options );
 
 		foreach ( $this->options as $magic_tag_group => $args ) {
 			foreach ( $args['controls'] as $tag => $tag_args ) {
