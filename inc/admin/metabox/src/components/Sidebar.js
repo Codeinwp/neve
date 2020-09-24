@@ -47,10 +47,10 @@ const Sidebar = compose(
 	}
 	document.getElementById('neve-page-settings-notice').style.display = 'block';
 
-	const sidebarLabel =
-		metaSidebar.whiteLabeled && metaSidebar.whiteLabelThemeName ?
-			metaSidebar.whiteLabelThemeName + ' ' + __( 'Options', 'neve' ) :
-			__( 'Neve Options', 'neve' );
+	let sidebarLabel = __( 'Neve Options', 'neve' );
+	if ( metaSidebar.whiteLabeled ) {
+		sidebarLabel = metaSidebar.whiteLabelThemeName ? metaSidebar.whiteLabelThemeName + ' ' + __( 'Options', 'neve' ) : __( 'Options', 'neve' );
+	}
 
 	return (
 		<>
