@@ -176,71 +176,20 @@ final class Manager {
 	 * Render the metabox notice.
 	 */
 	public function render_metabox_notice() {
-		?>
-		<script type="text/javascript">
-			function focusSidebar() {
-				var selector = document.querySelector('.components-button.has-icon[aria-label*="Options"]');
-				if ( ! selector ){
-					selector = document.querySelector('.edit-post-more-menu button');
-				}
-				selector.focus();
-			}
-		</script>
-		<?php
 		echo '<div class="nv-meta-notice-wrapper">';
 		echo '<h4>' . esc_html__( 'Page Settings are now accessible from the top bar', 'neve' ) . '</h4>';
 		printf(
 			/* translators: %1$s - Keyboard shortcut.   %2&s - svg icon */
 			esc_html__( 'Click the %1$s icon in the top bar or use the keyboard shortcut ( %2$s ) to customise the layout settings for this page', 'neve' ),
-			$this->is_white_labeled() ?
-			'<span class="dashicons dashicons-hammer" onclick="focusSidebar()" style="cursor: pointer;"></span>' :
-			'<svg width="17" height="24" viewBox="0 0 17 24" fill="none" xmlns="http://www.w3.org/2000/svg" onclick="focusSidebar()">
+			apply_filters( 'ti_wl_theme_is_localized', false ) ?
+			'<span class="dashicons dashicons-hammer"/>' :
+			'<svg width="17" height="24" viewBox="0 0 17 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 				<path d="M4.77822 10.2133V19.3287H0.118347V0.802224C0.118347 0.712594 0.145598 0.649854 0.200099 0.614002C0.254601 0.578149 0.354519 0.622964 0.499857 0.748446L12.1359 10.2133V1.04422H16.7958V19.5976C16.7958 19.7051 16.7685 19.7724 16.714 19.7992C16.6595 19.8261 16.5596 19.7768 16.4143 19.6514L4.77822 10.2133Z"/>
 				<rect x="0.118347" y="22.3334" width="16.6774" height="1.51613"/>
 				</svg>',
 			'<strong>CTRL + ALT + N</strong> ' . esc_html__( 'or', 'neve' ) . ' <strong>control + option + N</strong>'
 		);
 		echo '</div>';
-	}
-
-	/**
-	 * Get white label data.
-	 *
-	 * @param bool|string $option Desired option from white label settings.
-	 *
-	 * @return string|array|bool
-	 */
-	private function get_white_label_data( $option = false ) {
-		$white_label_settings = get_option( 'ti_white_label_inputs' );
-		$white_label_settings = json_decode( $white_label_settings, true );
-		if ( $option ) {
-			if ( array_key_exists( $option, $white_label_settings ) ) {
-				return $white_label_settings[ $option ];
-			}
-			return false;
-		}
-		return $white_label_settings;
-	}
-
-	/**
-	 * Check if the theme is white labeled.
-	 *
-	 * @return bool
-	 */
-	private function is_white_labeled() {
-		$white_label_settings = $this->get_white_label_data();
-		if ( ! empty( $white_label_settings ) ) {
-			if ( array_key_exists( 'theme_name', $white_label_settings ) && $white_label_settings['theme_name'] !== '' ) {
-				return true;
-			}
-			if ( array_key_exists( 'theme_description', $white_label_settings ) && $white_label_settings['theme_description'] !== '' ) {
-				return true;
-			}
-			if ( array_key_exists( 'screenshot_url', $white_label_settings ) && $white_label_settings['screenshot_url'] !== '' ) {
-				return true;
-			}
-		}
-		return false;
 	}
 
 	/**
@@ -404,14 +353,12 @@ final class Manager {
 		$localized_data = apply_filters(
 			'neve_meta_sidebar_localize_filter',
 			array(
-				'actions'             => array(
+				'actions' => array(
 					'neve_meta_content_width' => array(
 						'container' => $container,
 						'editor'    => $editor_width,
 					),
 				),
-				'whiteLabeled'        => $this->is_white_labeled(),
-				'whiteLabelThemeName' => $this->get_white_label_data( 'theme_name' ),
 			)
 		);
 		wp_localize_script(
