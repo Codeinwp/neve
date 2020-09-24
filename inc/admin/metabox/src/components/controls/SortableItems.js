@@ -87,7 +87,7 @@ class SortableItems extends Component {
 								return false;
 							}
 							return (
-								<div className='ti-sortable-item-area'>
+								<div className='ti-sortable-item-area' key={index}>
 								<div className='ti-sortable-item hidden'>
 									<Button
 										isTertiary
