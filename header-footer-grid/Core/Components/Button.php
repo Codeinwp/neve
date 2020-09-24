@@ -123,7 +123,6 @@ class Button extends Abstract_Component {
 
 
 		$defaults = [
-			'type'            => 'fill',
 			'background'      => '',
 			'backgroundHover' => '',
 			'text'            => '',
