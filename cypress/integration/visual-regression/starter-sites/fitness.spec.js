@@ -1,4 +1,4 @@
-describe( 'Starter Sites VR - https://staging.demosites.io/fitness/', () => {
+describe( 'Starter Sites VR - https://staging.demosites.io/fitness/ ', () => {
     let pages = [];
     it( 'Check frontpage', () => {
     	let frontpage = "https://staging.demosites.io/fitness/"
