@@ -21,7 +21,7 @@ describe( 'Starter Sites VR - https://staging.demosites.io/blogger-gb/', () => {
     it( 'Check additional pages', () => {
         pages.forEach( page => {
             cy.visit( page );
-            cy.captureDocument("Check additional - " + page);
+            cy.captureDocument(true, "Check additional - " + page);
         } );
     } );
 
