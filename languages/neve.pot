@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Neve 2.7.7\n"
+"Project-Id-Version: Neve 2.8.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/neve\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-09-15T14:00:36+00:00\n"
+"POT-Creation-Date: 2020-09-25T11:13:15+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -298,7 +298,7 @@ msgstr ""
 
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:385
 #: header-footer-grid/Core/Components/Copyright.php:84
-#: header-footer-grid/Core/Components/CustomHtml.php:158
+#: header-footer-grid/Core/Components/CustomHtml.php:163
 #: header-footer-grid/Core/Components/Logo.php:205
 #: inc/core/front_end.php:206
 #: inc/customizer/options/colors_background.php:66
@@ -524,11 +524,11 @@ msgid "%1$s | Powered by %2$s"
 msgstr ""
 
 #: header-footer-grid/Core/Components/CustomHtml.php:35
-#: header-footer-grid/Core/Components/CustomHtml.php:142
+#: header-footer-grid/Core/Components/CustomHtml.php:147
 msgid "HTML"
 msgstr ""
 
-#: header-footer-grid/Core/Components/CustomHtml.php:143
+#: header-footer-grid/Core/Components/CustomHtml.php:148
 msgid "Arbitrary HTML code. It supports also shortcodes."
 msgstr ""
 
@@ -631,7 +631,7 @@ msgid "Search"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Nav.php:182
-#: header-footer-grid/Core/Magic_Tags.php:580
+#: header-footer-grid/Core/Magic_Tags.php:593
 #: header-footer-grid/templates/components/component-cart-icon.php:50
 #: inc/views/header.php:165
 msgid "Cart"
@@ -785,149 +785,145 @@ msgstr ""
 msgid "Quick Links"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:467
+#: header-footer-grid/Core/Magic_Tags.php:484
 msgid "Single"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:470
+#: header-footer-grid/Core/Magic_Tags.php:487
 msgid "Current Single Title"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:474
+#: header-footer-grid/Core/Magic_Tags.php:491
 msgid "Current Single Excerpt"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:478
+#: header-footer-grid/Core/Magic_Tags.php:495
 msgid "Current Single URL"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:482
+#: header-footer-grid/Core/Magic_Tags.php:499
 msgid "Current Post Meta"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:486
+#: header-footer-grid/Core/Magic_Tags.php:503
 msgid "Author meta"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:490
+#: header-footer-grid/Core/Magic_Tags.php:507
 msgid "Date meta"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:494
+#: header-footer-grid/Core/Magic_Tags.php:511
 msgid "Category meta"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:498
+#: header-footer-grid/Core/Magic_Tags.php:515
 msgid "Comments meta"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:502
-msgid "Time to read meta"
-msgstr ""
-
-#: header-footer-grid/Core/Magic_Tags.php:508
+#: header-footer-grid/Core/Magic_Tags.php:521
 msgid "Archive"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:511
+#: header-footer-grid/Core/Magic_Tags.php:524
 msgid "Archive Description"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:515
+#: header-footer-grid/Core/Magic_Tags.php:528
 msgid "Archive Title"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:519
+#: header-footer-grid/Core/Magic_Tags.php:532
 msgid "Archive URL"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:525
+#: header-footer-grid/Core/Magic_Tags.php:538
 #: inc/customizer/options/layout_blog.php:283
-#: inc/views/partials/post_meta.php:125
+#: inc/views/partials/post_meta.php:129
 msgid "Author"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:528
+#: header-footer-grid/Core/Magic_Tags.php:541
 msgid "Author Bio"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:532
+#: header-footer-grid/Core/Magic_Tags.php:545
 msgid "Author Name"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:536
+#: header-footer-grid/Core/Magic_Tags.php:549
 msgid "Author URL"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:542
+#: header-footer-grid/Core/Magic_Tags.php:555
 msgid "Current User"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:545
+#: header-footer-grid/Core/Magic_Tags.php:558
 msgid "User Nice Name"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:549
+#: header-footer-grid/Core/Magic_Tags.php:562
 msgid "Display Name"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:553
+#: header-footer-grid/Core/Magic_Tags.php:566
 msgid "User Email"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:559
+#: header-footer-grid/Core/Magic_Tags.php:572
 msgid "Global"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:562
+#: header-footer-grid/Core/Magic_Tags.php:575
 msgid "Site Title"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:566
+#: header-footer-grid/Core/Magic_Tags.php:579
 msgid "Site Tagline"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:570
+#: header-footer-grid/Core/Magic_Tags.php:583
 msgid "Home URL"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:574
+#: header-footer-grid/Core/Magic_Tags.php:587
 msgid "Current Year"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:583
+#: header-footer-grid/Core/Magic_Tags.php:596
 msgid "Total + Currency Symbol"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:587
+#: header-footer-grid/Core/Magic_Tags.php:600
 msgid "Total"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:591
+#: header-footer-grid/Core/Magic_Tags.php:604
 msgid "Currency Name"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:595
+#: header-footer-grid/Core/Magic_Tags.php:608
 msgid "Currency Symbol"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:604
+#: header-footer-grid/Core/Magic_Tags.php:617
 msgid "WooCommerce"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:607
+#: header-footer-grid/Core/Magic_Tags.php:620
 msgid "Product Price"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:611
+#: header-footer-grid/Core/Magic_Tags.php:624
 msgid "Product Title"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:615
+#: header-footer-grid/Core/Magic_Tags.php:628
 msgid "Cart URL"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:619
+#: header-footer-grid/Core/Magic_Tags.php:632
 msgid "Checkout URL"
 msgstr ""
 
@@ -1105,7 +1101,7 @@ msgid "Two columns with centered content"
 msgstr ""
 
 #: inc/compatibility/block-patterns/two-columns-image-text.php:9
-msgid "Two Columns with image and text"
+msgid "Two columns with image and text"
 msgstr ""
 
 #: inc/compatibility/block-patterns/two-columns-with-text.php:9
@@ -1222,7 +1218,7 @@ msgid "Border radius"
 msgstr ""
 
 #: inc/customizer/options/buttons.php:175
-msgid "Button text"
+msgid "Button Text"
 msgstr ""
 
 #: inc/customizer/options/colors_background.php:42
@@ -1303,18 +1299,18 @@ msgstr ""
 
 #: inc/customizer/options/layout_blog.php:284
 #: inc/customizer/options/layout_single_product.php:107
-#: inc/views/partials/post_meta.php:126
+#: inc/views/partials/post_meta.php:130
 msgid "Category"
 msgstr ""
 
 #: inc/customizer/options/layout_blog.php:285
-#: inc/views/partials/post_meta.php:127
+#: inc/views/partials/post_meta.php:131
 msgid "Date"
 msgstr ""
 
 #: inc/customizer/options/layout_blog.php:286
 #: inc/customizer/options/layout_single_post.php:72
-#: inc/views/partials/post_meta.php:128
+#: inc/views/partials/post_meta.php:132
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:295
 msgid "Comments"
 msgstr ""
@@ -1411,7 +1407,7 @@ msgid "Content"
 msgstr ""
 
 #: inc/customizer/options/layout_single_post.php:70
-#: inc/views/partials/post_meta.php:215
+#: inc/views/partials/post_meta.php:235
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:294
 msgid "Tags"
 msgstr ""
@@ -1569,12 +1565,12 @@ msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/views/partials/post_meta.php:163
+#: inc/views/partials/post_meta.php:172
 msgid "by"
 msgstr ""
 
 #. translators: %s: number of comments
-#: inc/views/partials/post_meta.php:201
+#: inc/views/partials/post_meta.php:221
 msgid "%s Comment"
 msgid_plural "%s Comments"
 msgstr[0] ""
@@ -2019,6 +2015,11 @@ msgstr ""
 
 #: dashboard/src/utils/rest.js:60
 msgid "Typekit Project ID is invalid"
+msgstr ""
+
+#: inc/admin/metabox/src/components/controls/SortableItems.js:27
+#: inc/admin/metabox/src/components/controls/SortableItems.js:94
+msgid "Toggle"
 msgstr ""
 
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:112
