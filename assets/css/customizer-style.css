@@ -389,24 +389,27 @@
 	background: #fff;
 }
 .neve-customizer-heading {
-	display: block;
+	color: #555d66;
+	background-color: #fff;
+	border-bottom: 1px solid #ddd;
+	border-top: 1px solid #ddd;
+	border-left: 4px solid #fff;
+	transition: .15s color ease-in-out, .15s background-color ease-in-out, .15s border-color ease-in-out;
+	font-size: 14px;
+	border-right: none;
+	padding: 10px 30px 11px 14px;
+	line-height: 1.55;
 	position: relative;
 	margin: 0 -12px;
-	padding: 13px 12px;
-	border: 1px solid #ddd;
-	border-right: 0;
-	border-left: 0;
-	color: #555;
-	background-color: #fff;
-	font-size: 11px;
-	font-weight: 600;
-	line-height: 1;
-	letter-spacing: 2px;
-	text-transform: uppercase;
 }
 
-.customize-control-customizer-heading.accordion .neve-customizer-heading:hover {
+.customize-control.accordion .neve-customizer-heading {
 	cursor: pointer;
+}
+.customize-control.accordion .neve-customizer-heading:hover {
+	color: #0073aa;
+	background: #f3f3f5;
+	border-left-color: #0073aa;
 }
 
 .accordion-expand-button {
@@ -415,31 +418,26 @@
 	top: 0;
 	right: 0;
 	padding: 10px;
-	border: 1px solid transparent;
-	border-left-color: #ddd;
-	font-family: Dashicons;
+	font-family: "Dashicons";
+
 }
 
-.accordion-expand-button:before {
+.accordion-expand-button:after {
 	display: block;
 	position: relative;
 	top: 1px;
 	left: 1px;
-	font-size: 16px;
 	content: "\f347";
 	-webkit-transition: 0.1s ease-in-out;
 	transition: 0.1s ease-in-out;
+	font-size: 16px;
+	speak: none;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-decoration: none;
 }
 
-.customize-control-customizer-heading.accordion .neve-customizer-heading:hover .accordion-expand-button {
-	color: #fff;
-	background: #3ec8ff;
-}
-
-.accordion.expanded .accordion-expand-button:before {
-	top: 0;
-	-webkit-transform: rotate(180deg);
-	-ms-transform: rotate(180deg);
+.customize-control-customizer-heading.expanded .accordion-expand-button:after {
 	transform: rotate(180deg);
 }
 .ti-order-sortable li {
