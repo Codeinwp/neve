@@ -149,7 +149,7 @@ class CustomHtml extends Abstract_Component {
 				'type'               => 'textarea',
 				'section'            => $this->section,
 				'use_dynamic_fields' => array( 'string', 'url' ),
-				'conditional_header' => true,
+				'conditional_header' => $this->get_builder_id() === 'header',
 			]
 		);
 
