@@ -178,13 +178,6 @@ mark {
   margin: 0 -15px;
 }
 
-body.nv-empty-sidebar {
-  width: 100%;
-  max-width: 100vw;
-  padding: 0;
-  margin: auto;
-}
-
 .row {
   display: flex;
   flex-wrap: wrap;
@@ -1762,6 +1755,11 @@ body .layout-grid > .article-content-col, .layout-grid {
   height: 100%;
 }
 
+figcaption {
+  font-size: .8em;
+  opacity: .75;
+}
+
 blockquote {
   margin: 40px 0;
 }
@@ -1823,7 +1821,7 @@ pre {
   border: 1px solid #f0f0f0;
   margin: 20px 0;
   white-space: pre-wrap;
-  font-size: 0.9em;
+  font-size: .9em;
   line-height: 2em;
 }
 
@@ -1876,7 +1874,7 @@ pre {
 
 .wp-caption-text {
   text-align: center;
-  font-size: 0.8em;
+  font-size: .8em;
   font-weight: 500;
 }
 
@@ -2302,9 +2300,6 @@ audio {
   }
   .neve-main > .container > .row {
     flex-wrap: nowrap;
-  }
-  .nv-empty-sidebar .neve-main > .container .col {
-    max-width: 100%;
   }
   .amp-desktop-caret-wrap {
     display: block;

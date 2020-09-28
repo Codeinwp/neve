@@ -97,8 +97,12 @@ class Post_Meta extends Base_View {
 					if ( $post_type !== 'post' ) {
 						break;
 					}
+					$reading_time = apply_filters( 'neve_do_read_time', '' );
+					if ( empty( $reading_time ) ) {
+						break;
+					}
 					$markup .= '<' . $tag . ' class="meta reading-time">';
-					$markup .= apply_filters( 'neve_do_read_time', '' );
+					$markup .= $reading_time;
 					$markup .= '</' . $tag . '>';
 					break;
 				case 'default':

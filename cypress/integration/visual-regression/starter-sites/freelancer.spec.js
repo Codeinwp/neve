@@ -21,7 +21,7 @@ describe( 'Starter Sites VR - https://staging.demosites.io/freelancer/', () => {
     it( 'Check additional pages', () => {
         pages.forEach( page => {
             cy.visit( page );
-            cy.captureDocument();
+            cy.captureDocument(true, "Check additional - " + page);
         } );
     } );
 

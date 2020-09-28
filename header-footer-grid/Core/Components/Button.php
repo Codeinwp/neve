@@ -102,7 +102,7 @@ class Button extends Abstract_Component {
 				'type'               => 'text',
 				'section'            => $this->section,
 				'use_dynamic_fields' => array( 'url' ),
-				'conditional_header' => true,
+				'conditional_header' => $this->get_builder_id() === 'header',
 			]
 		);
 		SettingsManager::get_instance()->add(
@@ -117,7 +117,7 @@ class Button extends Abstract_Component {
 				'type'               => 'text',
 				'section'            => $this->section,
 				'use_dynamic_fields' => array( 'string' ),
-				'conditional_header' => true,
+				'conditional_header' => $this->get_builder_id() === 'header',
 			]
 		);
 
@@ -142,7 +142,7 @@ class Button extends Abstract_Component {
 				'label'              => __( 'Appearance', 'neve' ),
 				'type'               => 'neve_button_appearance',
 				'section'            => $this->section,
-				'conditional_header' => true,
+				'conditional_header' => $this->get_builder_id() === 'header',
 			]
 		);
 	}
