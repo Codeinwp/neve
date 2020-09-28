@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Neve 2.8.0\n"
+"Project-Id-Version: Neve 2.8.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/neve\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-09-18T11:05:11+00:00\n"
+"POT-Creation-Date: 2020-09-28T08:29:15+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -47,7 +47,7 @@ msgstr ""
 #. translators: %s - Theme name
 #. translators: %s - theme name
 #: dashboard/inc/Main.php:199
-#: inc/core/admin.php:236
+#: inc/core/admin.php:257
 msgid "%s now comes with a sites library with various designs to pick from. Visit our collection of demos that are constantly being added."
 msgstr ""
 
@@ -74,7 +74,7 @@ msgstr ""
 #. translators: %s - Theme name
 #. translators: %s - theme name
 #: dashboard/inc/Main.php:207
-#: inc/core/admin.php:244
+#: inc/core/admin.php:265
 msgid "Need more details? Please check our full documentation for detailed information on how to use %s."
 msgstr ""
 
@@ -298,7 +298,7 @@ msgstr ""
 
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:385
 #: header-footer-grid/Core/Components/Copyright.php:84
-#: header-footer-grid/Core/Components/CustomHtml.php:158
+#: header-footer-grid/Core/Components/CustomHtml.php:163
 #: header-footer-grid/Core/Components/Logo.php:205
 #: inc/core/front_end.php:206
 #: inc/customizer/options/colors_background.php:66
@@ -360,7 +360,7 @@ msgstr ""
 
 #: header-footer-grid/Core/Builder/Footer.php:47
 #: header-footer-grid/Core/Builder/Header.php:51
-#: inc/core/admin.php:246
+#: inc/core/admin.php:267
 msgid "Read full documentation"
 msgstr ""
 
@@ -447,28 +447,28 @@ msgstr ""
 msgid "Padding"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:559
+#: header-footer-grid/Core/Components/Abstract_Component.php:558
 msgid "Margin"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:793
+#: header-footer-grid/Core/Components/Abstract_Component.php:787
 #: inc/customizer/options/main.php:55
 msgid "Typography"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:874
+#: header-footer-grid/Core/Components/Abstract_Component.php:868
 msgid "Top"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:878
+#: header-footer-grid/Core/Components/Abstract_Component.php:872
 msgid "Middle"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:882
+#: header-footer-grid/Core/Components/Abstract_Component.php:876
 msgid "Bottom"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Abstract_Component.php:895
+#: header-footer-grid/Core/Components/Abstract_Component.php:889
 msgid "Vertical Alignment"
 msgstr ""
 
@@ -505,8 +505,8 @@ msgstr ""
 #: header-footer-grid/Core/Components/CartIcon.php:142
 #: header-footer-grid/Core/Components/SearchResponsive.php:184
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:38
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:86
+#: inc/customizer/controls/react/src/background/BackgroundComponent.js:45
+#: inc/customizer/controls/react/src/background/BackgroundComponent.js:77
 msgid "Color"
 msgstr ""
 
@@ -526,11 +526,11 @@ msgid "%1$s | Powered by %2$s"
 msgstr ""
 
 #: header-footer-grid/Core/Components/CustomHtml.php:35
-#: header-footer-grid/Core/Components/CustomHtml.php:142
+#: header-footer-grid/Core/Components/CustomHtml.php:147
 msgid "HTML"
 msgstr ""
 
-#: header-footer-grid/Core/Components/CustomHtml.php:143
+#: header-footer-grid/Core/Components/CustomHtml.php:148
 msgid "Arbitrary HTML code. It supports also shortcodes."
 msgstr ""
 
@@ -634,7 +634,7 @@ msgid "Search"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Nav.php:182
-#: header-footer-grid/Core/Magic_Tags.php:580
+#: header-footer-grid/Core/Magic_Tags.php:593
 #: header-footer-grid/templates/components/component-cart-icon.php:50
 #: inc/views/header.php:165
 msgid "Cart"
@@ -776,7 +776,7 @@ msgstr ""
 #: header-footer-grid/Core/Customizer.php:273
 #: header-footer-grid/templates/components/component-cart-icon.php:26
 #: inc/views/header.php:130
-#: inc/views/layouts/layout_sidebar.php:148
+#: inc/views/layouts/layout_sidebar.php:144
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Onboarding/ImportModal.js:502
 #: dashboard/src/Components/Onboarding/Main.js:46
@@ -794,149 +794,145 @@ msgstr ""
 msgid "Quick Links"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:467
+#: header-footer-grid/Core/Magic_Tags.php:484
 msgid "Single"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:470
+#: header-footer-grid/Core/Magic_Tags.php:487
 msgid "Current Single Title"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:474
+#: header-footer-grid/Core/Magic_Tags.php:491
 msgid "Current Single Excerpt"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:478
+#: header-footer-grid/Core/Magic_Tags.php:495
 msgid "Current Single URL"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:482
+#: header-footer-grid/Core/Magic_Tags.php:499
 msgid "Current Post Meta"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:486
+#: header-footer-grid/Core/Magic_Tags.php:503
 msgid "Author meta"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:490
+#: header-footer-grid/Core/Magic_Tags.php:507
 msgid "Date meta"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:494
+#: header-footer-grid/Core/Magic_Tags.php:511
 msgid "Category meta"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:498
+#: header-footer-grid/Core/Magic_Tags.php:515
 msgid "Comments meta"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:502
-msgid "Time to read meta"
-msgstr ""
-
-#: header-footer-grid/Core/Magic_Tags.php:508
+#: header-footer-grid/Core/Magic_Tags.php:521
 msgid "Archive"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:511
+#: header-footer-grid/Core/Magic_Tags.php:524
 msgid "Archive Description"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:515
+#: header-footer-grid/Core/Magic_Tags.php:528
 msgid "Archive Title"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:519
+#: header-footer-grid/Core/Magic_Tags.php:532
 msgid "Archive URL"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:525
+#: header-footer-grid/Core/Magic_Tags.php:538
 #: inc/customizer/options/layout_blog.php:283
-#: inc/views/partials/post_meta.php:125
+#: inc/views/partials/post_meta.php:129
 msgid "Author"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:528
+#: header-footer-grid/Core/Magic_Tags.php:541
 msgid "Author Bio"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:532
+#: header-footer-grid/Core/Magic_Tags.php:545
 msgid "Author Name"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:536
+#: header-footer-grid/Core/Magic_Tags.php:549
 msgid "Author URL"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:542
+#: header-footer-grid/Core/Magic_Tags.php:555
 msgid "Current User"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:545
+#: header-footer-grid/Core/Magic_Tags.php:558
 msgid "User Nice Name"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:549
+#: header-footer-grid/Core/Magic_Tags.php:562
 msgid "Display Name"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:553
+#: header-footer-grid/Core/Magic_Tags.php:566
 msgid "User Email"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:559
+#: header-footer-grid/Core/Magic_Tags.php:572
 msgid "Global"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:562
+#: header-footer-grid/Core/Magic_Tags.php:575
 msgid "Site Title"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:566
+#: header-footer-grid/Core/Magic_Tags.php:579
 msgid "Site Tagline"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:570
+#: header-footer-grid/Core/Magic_Tags.php:583
 msgid "Home URL"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:574
+#: header-footer-grid/Core/Magic_Tags.php:587
 msgid "Current Year"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:583
+#: header-footer-grid/Core/Magic_Tags.php:596
 msgid "Total + Currency Symbol"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:587
+#: header-footer-grid/Core/Magic_Tags.php:600
 msgid "Total"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:591
+#: header-footer-grid/Core/Magic_Tags.php:604
 msgid "Currency Name"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:595
+#: header-footer-grid/Core/Magic_Tags.php:608
 msgid "Currency Symbol"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:604
+#: header-footer-grid/Core/Magic_Tags.php:617
 msgid "WooCommerce"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:607
+#: header-footer-grid/Core/Magic_Tags.php:620
 msgid "Product Price"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:611
+#: header-footer-grid/Core/Magic_Tags.php:624
 msgid "Product Title"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:615
+#: header-footer-grid/Core/Magic_Tags.php:628
 msgid "Cart URL"
 msgstr ""
 
-#: header-footer-grid/Core/Magic_Tags.php:619
+#: header-footer-grid/Core/Magic_Tags.php:632
 msgid "Checkout URL"
 msgstr ""
 
@@ -1141,32 +1137,32 @@ msgstr ""
 msgid "Filter"
 msgstr ""
 
-#: inc/core/admin.php:201
+#: inc/core/admin.php:222
 msgid "Congratulations!"
 msgstr ""
 
 #. translators: %s - theme name
-#: inc/core/admin.php:204
+#: inc/core/admin.php:225
 msgid "%s is now installed and ready to use. We've assembled some links to get you started."
 msgstr ""
 
-#: inc/core/admin.php:212
+#: inc/core/admin.php:233
 msgid "Try one of our ready to use Starter Sites"
 msgstr ""
 
-#: inc/core/admin.php:217
+#: inc/core/admin.php:238
 msgid "Return to your dashboard"
 msgstr ""
 
-#: inc/core/admin.php:223
+#: inc/core/admin.php:244
 msgid "or go to the theme settings"
 msgstr ""
 
-#: inc/core/admin.php:234
+#: inc/core/admin.php:255
 msgid "Sites Library"
 msgstr ""
 
-#: inc/core/admin.php:242
+#: inc/core/admin.php:263
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Help.js:67
 msgid "Documentation"
@@ -1317,18 +1313,18 @@ msgstr ""
 
 #: inc/customizer/options/layout_blog.php:284
 #: inc/customizer/options/layout_single_product.php:107
-#: inc/views/partials/post_meta.php:126
+#: inc/views/partials/post_meta.php:130
 msgid "Category"
 msgstr ""
 
 #: inc/customizer/options/layout_blog.php:285
-#: inc/views/partials/post_meta.php:127
+#: inc/views/partials/post_meta.php:131
 msgid "Date"
 msgstr ""
 
 #: inc/customizer/options/layout_blog.php:286
 #: inc/customizer/options/layout_single_post.php:72
-#: inc/views/partials/post_meta.php:128
+#: inc/views/partials/post_meta.php:132
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:295
 msgid "Comments"
 msgstr ""
@@ -1426,7 +1422,7 @@ msgid "Content"
 msgstr ""
 
 #: inc/customizer/options/layout_single_post.php:70
-#: inc/views/partials/post_meta.php:215
+#: inc/views/partials/post_meta.php:235
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:294
 msgid "Tags"
 msgstr ""
@@ -1587,12 +1583,12 @@ msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/views/partials/post_meta.php:163
+#: inc/views/partials/post_meta.php:172
 msgid "by"
 msgstr ""
 
 #. translators: %s: number of comments
-#: inc/views/partials/post_meta.php:201
+#: inc/views/partials/post_meta.php:221
 msgid "%s Comment"
 msgid_plural "%s Comments"
 msgstr[0] ""
@@ -2139,6 +2135,11 @@ msgstr ""
 msgid "Could not Update Option. Please try again."
 msgstr ""
 
+#: inc/admin/metabox/src/components/controls/SortableItems.js:27
+#: inc/admin/metabox/src/components/controls/SortableItems.js:94
+msgid "Toggle"
+msgstr ""
+
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:112
 msgid "Page Layout"
 msgstr ""
@@ -2241,53 +2242,53 @@ msgid "Clear"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:39
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:113
+#: inc/customizer/controls/react/src/background/BackgroundComponent.js:46
+#: inc/customizer/controls/react/src/background/BackgroundComponent.js:103
 msgid "Image"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:99
+#: inc/customizer/controls/react/src/background/BackgroundComponent.js:89
 msgid "Use Featured Image"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:153
+#: inc/customizer/controls/react/src/background/BackgroundComponent.js:140
 msgid "Remove Fallback Image"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:157
+#: inc/customizer/controls/react/src/background/BackgroundComponent.js:141
 msgid "Remove Image"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:112
+#: inc/customizer/controls/react/src/background/BackgroundComponent.js:102
 msgid "Fallback Image"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:117
+#: inc/customizer/controls/react/src/background/BackgroundComponent.js:107
 msgid "Select from the Media Library or upload a new image"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:134
+#: inc/customizer/controls/react/src/background/BackgroundComponent.js:115
 msgid "Add Image"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:179
+#: inc/customizer/controls/react/src/background/BackgroundComponent.js:159
 msgid "Fixed Background"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:192
+#: inc/customizer/controls/react/src/background/BackgroundComponent.js:166
 msgid "Overlay Color"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:202
+#: inc/customizer/controls/react/src/background/BackgroundComponent.js:181
 msgid "Overlay Opacity"
 msgstr ""
 
