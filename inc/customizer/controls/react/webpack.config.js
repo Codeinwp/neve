@@ -2,8 +2,8 @@ const config = {
   entry: ['./src/index.js', './src/style.scss'],
   devtool: 'inline-source-map',
   externals: {
-	'react': 'React',
-	'react-dom': 'ReactDOM'
+    react: 'React',
+    'react-dom': 'ReactDOM'
   },
   output: {
     path: __dirname + '/bundle',
@@ -50,4 +50,3 @@ module.exports = (env, argv) => {
   }
   return config
 }
-

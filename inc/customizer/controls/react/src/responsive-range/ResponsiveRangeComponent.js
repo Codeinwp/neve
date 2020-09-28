@@ -18,7 +18,7 @@ const ResponsiveRangeComponent = ({ control }) => {
     // If a value is int, make it responsive.
     const responsiveConverted = getIntValAsResponsive(control.setting.get())
     if (value !== responsiveConverted) {
-      setValue( responsiveConverted )
+      setValue(responsiveConverted)
     }
     document.addEventListener('neve-changed-customizer-value', (e) => {
       if (!e.detail) return false
@@ -91,14 +91,16 @@ const ResponsiveRangeComponent = ({ control }) => {
     control.setting.set(JSON.stringify(nextValue))
   }
 
-  const displayValue = parseInt(value[currentDevice])
+  let displayValue = parseInt(value[currentDevice])
+  displayValue = displayValue === 0 ? 0 : (displayValue || '')
+
   return (
     <div className='neve-white-background-control neve-range-control'>
       {controlHeader()}
       <div className='range-wrap'>
         <RangeControl
           resetFallbackValue={defaultVal[currentDevice]}
-          value={displayValue || ''}
+          value={displayValue}
           min={min < 0 ? min : 0}
           max={max || 100}
           step={step || 1}

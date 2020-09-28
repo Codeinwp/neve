@@ -1,71 +1,76 @@
 /* global wp */
 import PropTypes from 'prop-types'
-import classnames from 'classnames'
 
 const { ColorPicker, Button, Dropdown } = wp.components
-const { Component, Fragment } = wp.element
 const { __ } = wp.i18n
 
-class ColorControl extends Component {
-  render () {
-    const { label, selectedColor } = this.props
-    let toggle = null
-    return (
-      <div className='neve-control-header neve-color-component'>
-        {
-          label &&
-            <span className='customize-control-title'>
-              {label}
-            </span>
-        }
+const ColorControl = ({ label, selectedColor, onChange, defaultValue }) => {
+  let toggle = null
 
-        <Dropdown
-          renderToggle={({ isOpen, onToggle }) => {
-            toggle = onToggle
-            return (
-              <Button
-                className={classnames([
-                  'is-secondary is-button',
-                  { 'is-empty': !selectedColor }])}
-                onClick={onToggle}
-                aria-expanded={isOpen}
-                style={{ backgroundColor: selectedColor }}
-              />
-            )
-          }}
-          renderContent={() => (
-            <Fragment>
-              <a href='#' />
-              <ColorPicker
-                color={selectedColor}
-                onChangeComplete={(value) => {
-                  this.props.onChange(value.hex)
-                }}
-                disableAlpha
-              />
-              {selectedColor &&
-                <Button
-                  className='clear'
-                  isPrimary
-                  onClick={() => {
-                    this.props.onChange('')
-                    toggle()
-                  }}
-                >
-                  {__('Clear', 'neve')}
-                </Button>}
-            </Fragment>
-          )}
-        />
-      </div>
-    )
+  const handleChange = (value) => {
+    const { r, g, b, a } = value.rgb
+    if (a < 1) {
+      onChange(`rgba(${r}, ${g}, ${b}, ${a})`)
+      return false
+    }
+    onChange(value.hex)
   }
+
+  const handleClear = () => {
+    onChange(defaultValue || '')
+    toggle()
+  }
+
+  return (
+    <div className='neve-control-header neve-color-component'>
+      {
+        label &&
+          <span className='customize-control-title'>
+            {label}
+          </span>
+      }
+
+      <Dropdown
+        renderToggle={({ isOpen, onToggle }) => {
+          toggle = onToggle
+          return (
+            <Button
+              isSecondary
+              onClick={onToggle}
+              aria-expanded={isOpen}
+            >
+              <span className='color' style={{ backgroundColor: selectedColor }} />
+              <span className='gradient' />
+            </Button>
+          )
+        }}
+        renderContent={() => (
+          <>
+            <a href='#' />
+            <ColorPicker
+              color={selectedColor}
+              onChangeComplete={handleChange}
+            />
+            {selectedColor &&
+              <Button
+                className='clear'
+                isPrimary
+                onClick={handleClear}
+              >
+                {__('Clear', 'neve')}
+              </Button>}
+          </>
+        )}
+      />
+    </div>
+  )
 }
 
 ColorControl.propTypes = {
   label: PropTypes.string,
   onChange: PropTypes.func.isRequired,
-  selectedColor: PropTypes.string.isRequired
+  selectedColor: PropTypes.string.isRequired,
+  defaultValue: PropTypes.string
 }
 
 export default ColorControl

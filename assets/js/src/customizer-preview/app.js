@@ -44,7 +44,7 @@ function addStyle(settingType, id, newValue, args) {
 		if( args.responsive ) {
 			for( let device in map ) {
 				let deviceStyle = args.template;
-				let suffix = newValue[device+'-unit'] || '';
+				let suffix = newValue[device+'-unit'];
 				_.each( newValue[device], function( value, direction ) {
 					let directionRegex = new RegExp( `{{value.${direction}}}`, 'g' );
 					deviceStyle = deviceStyle.replace( directionRegex, value + suffix );
@@ -64,11 +64,19 @@ function addStyle(settingType, id, newValue, args) {
 		const value = JSON.parse(newValue);
 		for( let device in map ) {
 			let suffix = value[device+'-unit'] || '';
-			style += `@media (${map[device]}) {${template.replace(regex, value[device] || 'inherit')}${suffix}}`;
+			if ( value[device] === 0 || value[device] === '0' ) {
+			  style += `@media (${map[device]}) {${template.replace(regex, '0')}${suffix}}`;
+			} else {
+			  style += `@media (${map[device]}) {${template.replace(regex, value[device] || 'inherit')}${suffix}}`;
+			}
 		}
 	} else {
+	  if( newValue === 0 || newValue === '0' ) {
+		style += args.template.replace(regex, '0');
+	  } else {
 		const value = newValue || args.fallback || 'inherit';
 		style += args.template.replace(regex, value.toString());
+	  }
 	}
 	addCss(id, style);
 }
