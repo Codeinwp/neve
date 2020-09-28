@@ -165,56 +165,57 @@ window.addEventListener('load', function () {
               })
               addCss(settingId, style)
               break
-            case 'neve_background_control':
-              if (newValue.type === 'color') {
-              	if(!newValue.colorValue && args.additional.partial ) {
-									wp.customize.selectiveRefresh.partial( args.additional.partial ).refresh();
-								}
-                style += `body ${args.selector}{background-image: none !important;}`;
-                let color = newValue.colorValue !== 'undefined' ? newValue.colorValue : 'inherit'
-                style += `${args.selector}:before{ content: none !important;}`;
-								style += `body ${args.selector}, body ${args.selector} .primary-menu-ul .sub-menu {background-color: ${color}!important;}`
-								style += `${args.selector} .primary-menu-ul .sub-menu, ${args.selector} .primary-menu-ul .sub-menu li {border-color: ${color}!important;}`;
-                addCss(settingId, style)
-                return false
-              }
-              if (newValue.useFeatured &&
-                neveCustomizePreview.currentFeaturedImage) {
-                newValue.imageUrl = neveCustomizePreview.currentFeaturedImage
-              }
-              style += args.selector + '{'
-              style += newValue.imageUrl ?
-                `background-image: url("${newValue.imageUrl}") !important;` :
-                'background-image: none !important;'
-              style += newValue.fixed === true ?
-                'background-attachment: fixed !important;' :
-                'background-attachment: initial !important;'
-              if( newValue.focusPoint && newValue.focusPoint.x && newValue.focusPoint.y ) {
-								style += 'background-position:' +
-									(newValue.focusPoint.x * 100).toFixed(2) + '% ' +
-									(newValue.focusPoint.y * 100).toFixed(2) +
-									'% !important;'
-							}
-              style += 'background-size: cover !important;'
-              if (!document.querySelector('.header-menu-sidebar')
-              .classList
-              .contains('dropdown')) {
-                style += 'position: absolute;'
-              }
-              style += 'top: 0; bottom: 0; width: 100%; content:"";'
-              style += '}'
-              let color = newValue.overlayColorValue || 'unset';
-							style += `body ${args.selector}, body ${args.selector} .primary-menu-ul .sub-menu {background-color: ${color}!important;}`
-							style += `${args.selector} .primary-menu-ul .sub-menu, ${args.selector} .primary-menu-ul .sub-menu li {border-color: ${color}!important;}`;
-							style += args.selector + ':before { ' +
-                'content: "";' +
-                'position: absolute; top: 0; bottom: 0; width: 100%;' +
-                `background-color: ${color}!important;` +
-                'opacity: ' + ((newValue.overlayOpacity || 50) / 100) +
-                '!important;}'
-              style += args.selector + '{ background-color: transparent !important; }'
-              addCss(settingId, style)
-              break
+			case 'neve_background_control':
+			  if (newValue.type === 'color') {
+				if (!newValue.colorValue && args.additional.partial) {
+				  wp.customize.selectiveRefresh.partial(args.additional.partial).refresh()
+				}
+				style += `body ${args.selector}{background-image: none !important;}`
+				let color = newValue.colorValue !== 'undefined' ? newValue.colorValue : 'inherit'
+				style += `${args.selector}:before{ content: none !important;}`
+				style += `body ${args.selector}, body ${args.selector} .primary-menu-ul .sub-menu {background-color: ${color}!important;}`
+				style += `${args.selector} .primary-menu-ul .sub-menu, ${args.selector} .primary-menu-ul .sub-menu li {border-color: ${color}!important;}`
+				addCss(settingId, style)
+				return false
+			  }
+			  if (newValue.useFeatured &&
+				neveCustomizePreview.currentFeaturedImage) {
+				newValue.imageUrl = neveCustomizePreview.currentFeaturedImage
+			  }
+			  style += args.selector + '{'
+			  style += newValue.imageUrl ?
+				`background-image: url("${newValue.imageUrl}") !important;` :
+				'background-image: none !important;'
+			  style += newValue.fixed === true ?
+				'background-attachment: fixed !important;' :
+				'background-attachment: initial !important;'
+			  if (newValue.focusPoint && newValue.focusPoint.x && newValue.focusPoint.y) {
+				style += 'background-position:' +
+				  (newValue.focusPoint.x * 100).toFixed(2) + '% ' +
+				  (newValue.focusPoint.y * 100).toFixed(2) +
+				  '% !important;'
+			  }
+			  style += 'background-size: cover !important;'
+			  if (!document.querySelector('.header-menu-sidebar')
+				.classList
+				.contains('dropdown')) {
+				style += 'position: absolute;'
+			  }
+			  style += 'top: 0; bottom: 0; width: 100%; content:"";'
+			  style += '}'
+			  let color = newValue.overlayColorValue || 'unset'
+			  let overlay = newValue.overlayOpacity === 0 ? 0 : (newValue.overlayOpacity || 50)
+			  style += `body ${args.selector}, body ${args.selector} .primary-menu-ul .sub-menu {background-color: ${color}!important;}`
+			  style += `${args.selector} .primary-menu-ul .sub-menu, ${args.selector} .primary-menu-ul .sub-menu li {border-color: ${color}!important;}`
+			  style += args.selector + ':before { ' +
+				'content: "";' +
+				'position: absolute; top: 0; bottom: 0; width: 100%;' +
+				`background-color: ${color}!important;` +
+				'opacity: ' + ((overlay) / 100) +
+				'!important;}'
+			  style += args.selector + '{ background-color: transparent !important; }'
+			  addCss(settingId, style)
+			  break
 			case '\\Neve\\Customizer\\Controls\\React\\Responsive_Radio_Buttons':
 			  handleResponsiveRadioButtons( args, newValue );
 			  break;

@@ -17,7 +17,6 @@ const DragHandle = sortableHandle( () => {
 
 const SortableItem = sortableElement( ({value, label, toggle}) => {
 	const icon = 'visibility';
-	const message = __( `Hide ${ label }`, 'neve' );
 
 	return (
 		<div className={`ti-sortable-item-area ti-sortable-item-area-${value}`} >
@@ -25,7 +24,7 @@ const SortableItem = sortableElement( ({value, label, toggle}) => {
 			<Button
 				isTertiary
 				icon={ icon }
-				label={ message }
+				label={ __( 'Toggle', 'neve' ) }
 				showTooltip={ true }
 				className="ti-sortable-item-toggle"
 				onClick={ () => {
@@ -92,7 +91,7 @@ class SortableItems extends Component {
 									<Button
 										isTertiary
 										icon='hidden'
-										label={ __( `Display ${ elements[value] }`, 'neve' ) }
+										label={ __( 'Toggle', 'neve' ) }
 										showTooltip={ true }
 										className="ti-sortable-item-toggle"
 										onClick={ () => {
