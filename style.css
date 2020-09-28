@@ -1458,7 +1458,12 @@ body .layout-grid > .article-content-col, .layout-grid {
   margin-bottom: 10px;
 }
 
-.layout-covers .article-content-col, .layout-covers .content, .layout-covers .cover-post {
+.layout-covers {
+  display: flex;
+}
+
+.layout-covers .content,
+.layout-covers .cover-post {
   height: 100%;
 }
 

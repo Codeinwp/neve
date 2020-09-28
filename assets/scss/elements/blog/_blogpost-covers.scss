@@ -1,6 +1,8 @@
 $overlay: rgba(0, 0, 0, 0.75);
 .layout-covers {
-	.article-content-col, .content, .cover-post {
+	display: flex;
+	.content,
+	.cover-post {
 		height: 100%;
 	}
 
