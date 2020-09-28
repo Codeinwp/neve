@@ -47,16 +47,21 @@ const Sidebar = compose(
 	}
 	document.getElementById('neve-page-settings-notice').style.display = 'block';
 
+	let sidebarLabel = __( 'Neve Options', 'neve' );
+	if ( metaSidebar.whiteLabeled ) {
+		sidebarLabel = metaSidebar.whiteLabelThemeName ? metaSidebar.whiteLabelThemeName + ' ' + __( 'Options', 'neve' ) : __( 'Options', 'neve' );
+	}
+
 	return (
 		<>
 			<PluginSidebarMoreMenuItem
 				target="neve-meta-sidebar"
 			>
-				{__('Neve Options', 'neve')}
+				{ sidebarLabel }
 			</PluginSidebarMoreMenuItem>
 			<PluginSidebar
 				name="neve-meta-sidebar"
-				title={__('Neve Options', 'neve')}
+				title={ sidebarLabel }
 			>
 				<MetaFieldsManager/>
 			</PluginSidebar>
