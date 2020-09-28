@@ -7,7 +7,7 @@ Author URI:     https://themeisle.com
 Tested up to:   5.5
 Requires PHP:   5.4.0
 Description:    Neve is a super fast, easily customizable, multi-purpose theme. It’s perfect for blogs, small business, startups, agencies, firms, e-commerce shops (WooCommerce storefront) as well as personal portfolio sites and most types of projects. A fully AMP optimized and responsive theme, Neve will load in mere seconds and adapt perfectly on any viewing device. While it is lightweight and has a minimalist design, the theme is highly extendable, it has a highly SEO optimized code, resulting in top rankings in Google search results. Neve works perfectly with Gutenberg and the most popular page builders (Elementor, Brizy, Beaver Builder, Visual Composer, SiteOrigin, Divi). Neve is also WooCommerce ready, responsive, RTL & translation ready. Look no further. Neve is the perfect theme for you!
-Version:        2.8.0
+Version:        2.8.1
 License:        GNU General Public License v2 or later
 License URI:    http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain:    neve
@@ -176,13 +176,6 @@ mark {
 
 .container-fluid > div {
   margin: 0 -15px;
-}
-
-body.nv-empty-sidebar {
-  width: 100%;
-  max-width: 100vw;
-  padding: 0;
-  margin: auto;
 }
 
 .row {
@@ -1259,10 +1252,6 @@ fieldset input[type="text"], fieldset input[type="search"], fieldset input[type=
   font-size: 0.85em;
 }
 
-.nv-meta-list li:not(:last-child):after {
-  color: #676767;
-}
-
 .nv-meta-list:not(.nv-dynamic-meta) a, .nv-meta-list:not(.nv-dynamic-meta) a:hover {
   color: #676767;
 }
@@ -1300,26 +1289,6 @@ fieldset input[type="text"], fieldset input[type="search"], fieldset input[type=
 .entry-title a:hover, .entry-title a:focus {
   opacity: .9;
   color: #404248;
-}
-
-.nv-shadow-1 .nv-post-thumbnail-wrap {
-  box-shadow: 0 1px 3px -2px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.1);
-}
-
-.nv-shadow-2 .nv-post-thumbnail-wrap {
-  box-shadow: 0 3px 6px -5px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.nv-shadow-3 .nv-post-thumbnail-wrap {
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.nv-shadow-4 .nv-post-thumbnail-wrap {
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.12), 0 10px 10px rgba(0, 0, 0, 0.12);
-}
-
-.nv-shadow-5 .nv-post-thumbnail-wrap {
-  box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
 }
 
 .nv-post-thumbnail-wrap amp-img {
@@ -1486,6 +1455,55 @@ body .layout-grid > .article-content-col, .layout-grid {
 
 .layout-default .nv-post-thumbnail-wrap, .layout-alternative .nv-post-thumbnail-wrap {
   margin-bottom: 10px;
+}
+
+.layout-covers {
+  display: flex;
+}
+
+.layout-covers .content,
+.layout-covers .cover-post {
+  height: 100%;
+}
+
+.layout-covers .content {
+  border: none;
+  padding-bottom: 0;
+}
+
+.cover-post {
+  position: relative;
+  background-size: cover;
+  display: flex;
+  background-position: center;
+  overflow: hidden;
+}
+
+.cover-post:after {
+  background-color: rgba(0, 0, 0, 0.75);
+  content: '';
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.cover-post .inner {
+  max-width: 100%;
+  min-height: 350px;
+  position: relative;
+  z-index: 10;
+  padding: 25px 25px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: #fff;
+  flex-grow: 1;
+}
+
+.cover-post .inner a:not(.button), .cover-post .inner a:not(.button):hover, .cover-post .inner a:not(.button):focus, .cover-post .inner li {
+  color: #fff;
 }
 
 .page .nv-page-title-wrap {
@@ -1761,6 +1779,11 @@ body .layout-grid > .article-content-col, .layout-grid {
   height: 100%;
 }
 
+figcaption {
+  font-size: .8em;
+  opacity: .75;
+}
+
 blockquote {
   margin: 40px 0;
 }
@@ -1822,7 +1845,7 @@ pre {
   border: 1px solid #f0f0f0;
   margin: 20px 0;
   white-space: pre-wrap;
-  font-size: 0.9em;
+  font-size: .9em;
   line-height: 2em;
 }
 
@@ -1875,7 +1898,7 @@ pre {
 
 .wp-caption-text {
   text-align: center;
-  font-size: 0.8em;
+  font-size: .8em;
   font-weight: 500;
 }
 
@@ -2302,9 +2325,6 @@ audio {
   .neve-main > .container > .row {
     flex-wrap: nowrap;
   }
-  .nv-empty-sidebar .neve-main > .container .col {
-    max-width: 100%;
-  }
   .amp-desktop-caret-wrap {
     display: block;
   }
@@ -2356,11 +2376,11 @@ audio {
   .layout-default .nv-post-thumbnail-wrap, .layout-alternative .nv-post-thumbnail-wrap {
     max-width: 40%;
   }
-  article.layout-alternative:nth-child(even) .article-content-col .content {
+  .layout-alternative:nth-child(even) .content {
     flex-direction: row;
   }
-  article.layout-alternative:nth-child(even) .article-content-col .content .nv-post-thumbnail-wrap ~ .alternative-layout-content {
-    padding: 0 40px 0 0;
+  .layout-alternative:nth-child(even) .nv-post-thumbnail-wrap ~ .alternative-layout-content {
+    padding: 0 20px 0 0;
   }
   .non-grid-content > .entry-title {
     margin-top: 0;

@@ -11,9 +11,6 @@
   li {
 	color: $gray-color;
 	font-size: 0.85em;
-	&:not(:last-child):after {
-	  color: $gray-color;
-	}
   }
   &:not(.nv-dynamic-meta){
 	a, a:hover {

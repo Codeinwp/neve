@@ -2,75 +2,55 @@
 /* jshint esversion: 6 */
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
+import SVG from './svg'
 
-const {
-  Component,
-  Fragment
-} = wp.element
+const { Button } = wp.components
 
-const {
-  Tooltip,
-  Button
-} = wp.components
-
-class RadioIcons extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      value: 'none'
-    }
-
-    this.getButtons = this.getButtons.bind(this)
-  }
-
-  render() {
-    return (
-      <div className='neve-radio-icons'>
-        {this.getButtons()}
-      </div>
-    )
-  }
-
-  getButtons() {
-    const { options } = this.props
-
+const RadioIcons = ({ options, onChange, value, showLabels }) => {
+  const getButtons = () => {
     return Object.keys(options).map((type, index) => {
+      if (options[type].icon === 'text') {
+        return (
+          <Button
+            key={index}
+            className={classnames([{ active: value === type }, 'is-text'])}
+            onClick={() => {
+              onChange(type)
+            }}
+          >
+            {options[type].tooltip}
+          </Button>
+        )
+      }
+      const icon = SVG[options[type].icon] || options[type].icon
       return (
-        <Fragment key={index}>
-          {options[type].icon === 'text' &&
-            <Button
-              key={index}
-              className={classnames(
-                [{ active: this.props.value === type }, 'is-text'])}
-              onClick={() => {
-                this.props.onChange(type)
-              }}
-            >
-              {options[type].tooltip}
-            </Button>}
-          {options[type].icon !== 'text' &&
-            <Tooltip text={options[type].tooltip} key={index}>
-              <Button
-                aria-label={options[type].tooltip}
-                className={classnames(
-                  { active: this.props.value === type })}
-                icon={options[type].icon}
-                onClick={() => {
-                  this.props.onChange(type)
-                }}
-              />
-            </Tooltip>}
-        </Fragment>
+        <span key={index}>
+          <Button
+            aria-label={options[type].tooltip}
+            className={classnames({ active: value === type })}
+            icon={icon}
+            onClick={() => {
+              onChange(type)
+            }}
+          />
+          {showLabels && <label>{options[type].tooltip}</label>}
+        </span>
       )
     })
   }
+
+  return (
+    <div className='neve-radio-icons'>
+      {getButtons()}
+    </div>
+  )
 }
 
 RadioIcons.propTypes = {
   options: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
-  value: PropTypes.string.isRequired
+  value: PropTypes.string,
+  showLabels: PropTypes.bool
 }
 
 export default RadioIcons

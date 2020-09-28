@@ -39,6 +39,31 @@ class Button extends \WP_Customize_Control {
 	 * @var mixed|string
 	 */
 	public $button_text = '';
+
+	/**
+	 * Text before.
+	 *
+	 * @var mixed|string
+	 */
+	public $text_before = '';
+
+
+	/**
+	 * Text after.
+	 *
+	 * @var mixed|string
+	 */
+	public $text_after = '';
+
+
+	/**
+	 * Is Button.
+	 *
+	 * @var bool
+	 */
+	public $is_button = true;
+
+
 	/**
 	 * Control to focus.
 	 *
@@ -73,16 +98,26 @@ class Button extends \WP_Customize_Control {
 		if ( empty( $this->button_text ) ) {
 			return;
 		}
-		$control = '';
-
-		$control .= '<button ';
+		$control = $this->is_button ? '' : '<p>';
+		if ( ! empty( $this->text_before ) ) {
+			$control .= wp_kses_post( $this->text_before ) . ' ';
+		}
+		$control .= $this->is_button ? '<button ' : '<a ';
 		if ( $this->control_to_focus ) {
 			$control .= 'data-control-to-focus="' . esc_attr( $this->control_to_focus ) . '"';
 		}
-		$control .= ' class="' . esc_attr( $this->get_button_classes() ) . '" style="display: flex; align-items: center;">';
+		$control .= ' class="' . esc_attr( $this->get_button_classes() ) . '"';
+		$control .= $this->is_button ? ' style="display: flex; align-items: center;"' : '';
+		$control .= '>';
 		$control .= $this->get_icon();
 		$control .= esc_html( $this->button_text );
-		$control .= '</button>';
+		$control .= $this->is_button ? '</button>' : '</a>';
+		if ( ! empty( $this->text_after ) ) {
+			$control .= wp_kses_post( $this->text_after );
+		}
+		if ( $this->is_button ) {
+			$control .= '</p>';
+		}
 
 		echo $control;  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
@@ -106,7 +141,11 @@ class Button extends \WP_Customize_Control {
 	 * @return string
 	 */
 	private function get_button_classes() {
-		$classes = 'button button-secondary';
+		$classes = '';
+
+		if ( $this->is_button ) {
+			$classes .= 'button button-secondary';
+		}
 		if ( $this->shortcut ) {
 			$classes .= ' menu-shortcut ';
 		}

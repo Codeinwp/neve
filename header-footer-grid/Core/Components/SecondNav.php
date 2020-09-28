@@ -64,7 +64,7 @@ class SecondNav extends Abstract_Component {
 				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
 				'sanitize_callback'  => 'wp_filter_nohtml_kses',
 				'default'            => 'style-plain',
-				'conditional_header' => true,
+				'conditional_header' => $this->get_builder_id() === 'header',
 				'label'              => __( 'Hover Skin Mode', 'neve' ),
 				'type'               => '\Neve\Customizer\Controls\React\Radio_Buttons',
 				'section'            => $this->section,
@@ -81,12 +81,12 @@ class SecondNav extends Abstract_Component {
 				'group'                 => $this->get_class_const( 'COMPONENT_ID' ),
 				'tab'                   => SettingsManager::TAB_STYLE,
 				'transport'             => 'postMessage',
-				'sanitize_callback'     => 'sanitize_hex_color',
+				'sanitize_callback'     => 'neve_sanitize_colors',
 				'default'               => '#404248',
 				'label'                 => __( 'Items Color', 'neve' ),
 				'type'                  => 'neve_color_control',
 				'section'               => $this->section,
-				'conditional_header'    => true,
+				'conditional_header'    => $this->get_builder_id() === 'header',
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
 					[
@@ -104,12 +104,12 @@ class SecondNav extends Abstract_Component {
 				'group'                 => $this->get_class_const( 'COMPONENT_ID' ),
 				'tab'                   => SettingsManager::TAB_STYLE,
 				'transport'             => 'postMessage',
-				'sanitize_callback'     => 'sanitize_hex_color',
+				'sanitize_callback'     => 'neve_sanitize_colors',
 				'default'               => '#0366d6',
 				'label'                 => __( 'Items Hover Color', 'neve' ),
 				'type'                  => 'neve_color_control',
 				'section'               => $this->section,
-				'conditional_header'    => true,
+				'conditional_header'    => $this->get_builder_id() === 'header',
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
 					[
@@ -168,7 +168,7 @@ class SecondNav extends Abstract_Component {
 						],
 					],
 				],
-				'conditional_header' => true,
+				'conditional_header' => $this->get_builder_id() === 'header',
 			]
 		);
 
@@ -195,7 +195,7 @@ class SecondNav extends Abstract_Component {
 					],
 				],
 				'section'            => $this->section,
-				'conditional_header' => true,
+				'conditional_header' => $this->get_builder_id() === 'header',
 			]
 		);
 	}
