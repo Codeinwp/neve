@@ -1504,7 +1504,7 @@ body .layout-grid > .article-content-col, .layout-grid {
   flex-grow: 1;
 }
 
-.cover-post .inner a, .cover-post .inner a:hover, .cover-post .inner a:focus, .cover-post .inner li {
+.cover-post .inner a:not(.button), .cover-post .inner a:not(.button):hover, .cover-post .inner a:not(.button):focus, .cover-post .inner li {
   color: #fff;
 }
 

@@ -39,8 +39,7 @@ $overlay: rgba(0, 0, 0, 0.75);
 		color: #fff;
 		flex-grow: 1;
 
-		a, a:hover, a:focus, li {
-
+		a:not(.button), a:not(.button):hover, a:not(.button):focus, li {
 			color: #fff;
 		}
 	}
