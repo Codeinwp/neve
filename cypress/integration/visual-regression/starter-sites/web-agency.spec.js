@@ -1,7 +1,7 @@
-describe( 'Starter Sites VR - https://demosites.io/original/', () => {
+describe( 'Starter Sites VR - https://staging.demosites.io/web-agency/', () => {
     let pages = [];
     it( 'Check frontpage', () => {
-    	let frontpage = "https://demosites.io/original/"
+    	let frontpage = "https://staging.demosites.io/web-agency/"
 	    cy.visit(frontpage );
 		cy.captureDocument();
         cy.get( '#nv-primary-navigation-main' ).then( $headerMenu => {
@@ -21,7 +21,7 @@ describe( 'Starter Sites VR - https://demosites.io/original/', () => {
     it( 'Check additional pages', () => {
         pages.forEach( page => {
             cy.visit( page );
-            cy.captureDocument();
+            cy.captureDocument(true, "Check additional - " + page);
         } );
     } );
 

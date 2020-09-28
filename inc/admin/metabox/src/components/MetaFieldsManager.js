@@ -265,7 +265,7 @@ class MetaFieldsManager extends Component {
 							''
 					}
 					{
-						metaSidebar.enable_pro && showMetaElements ?
+						metaSidebar.enable_pro && showMetaElements && 'post' === postType ?
 							<BaseControl
 								id="neve_meta_reading_time"
 								className="neve-meta-control neve-meta-checkbox neve_meta_reading_time" >

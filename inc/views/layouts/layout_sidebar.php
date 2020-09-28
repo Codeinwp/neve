@@ -69,10 +69,6 @@ class Layout_Sidebar extends Base_View {
 
 		$classes[] = 'nv-sidebar-' . $theme_mod;
 
-		if ( ! $sidebar_setup['has_widgets'] && $theme_mod !== 'full-width' ) {
-			$classes[] = 'nv-empty-sidebar';
-		}
-
 		return $classes;
 	}
 

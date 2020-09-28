@@ -122,7 +122,19 @@ class Magic_Tags {
 			return '';
 		}
 
-		return wp_kses_post( call_user_func( [ $this, $tag ] ) );
+		$allowed_tags = wp_kses_allowed_html();
+		if ( $tag === 'current_post_meta' || $tag === 'meta_date' ) {
+			$allowed_tags['span'] = [
+				'class' => [],
+			];
+			$allowed_tags['time'] = [
+				'class'    => [],
+				'datetime' => [],
+				'content'  => [],
+			];
+		}
+
+		return wp_kses( call_user_func( [ $this, $tag ] ), $allowed_tags );
 	}
 
 	/**
@@ -172,7 +184,12 @@ class Magic_Tags {
 	 * @return string.
 	 */
 	public function meta_date() {
-		return Post_Meta::get_time_tags();
+		ob_start();
+		do_action( 'neve_post_meta_single', array( 'date' ), false );
+		$meta = ob_get_contents();
+		ob_end_clean();
+
+		return $meta;
 	}
 
 	/**
@@ -498,10 +515,6 @@ class Magic_Tags {
 						'label' => __( 'Comments meta', 'neve' ),
 						'type'  => 'string',
 					],
-					'meta_time_to_read'      => [
-						'label' => __( 'Time to read meta', 'neve' ),
-						'type'  => 'string',
-					],
 				],
 			],
 			[
@@ -622,6 +635,8 @@ class Magic_Tags {
 				],
 			];
 		}
+
+		$this->options = apply_filters( 'neve_magic_tags_config', $this->options );
 
 		foreach ( $this->options as $magic_tag_group => $args ) {
 			foreach ( $args['controls'] as $tag => $tag_args ) {

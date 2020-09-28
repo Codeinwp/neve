@@ -7,7 +7,7 @@ Author URI:     https://themeisle.com
 Tested up to:   5.5
 Requires PHP:   5.4.0
 Description:    Neve is a super fast, easily customizable, multi-purpose theme. It’s perfect for blogs, small business, startups, agencies, firms, e-commerce shops (WooCommerce storefront) as well as personal portfolio sites and most types of projects. A fully AMP optimized and responsive theme, Neve will load in mere seconds and adapt perfectly on any viewing device. While it is lightweight and has a minimalist design, the theme is highly extendable, it has a highly SEO optimized code, resulting in top rankings in Google search results. Neve works perfectly with Gutenberg and the most popular page builders (Elementor, Brizy, Beaver Builder, Visual Composer, SiteOrigin, Divi). Neve is also WooCommerce ready, responsive, RTL & translation ready. Look no further. Neve is the perfect theme for you!
-Version:        2.8.0
+Version:        2.8.1
 License:        GNU General Public License v2 or later
 License URI:    http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain:    neve
@@ -176,13 +176,6 @@ mark {
 
 .container-fluid > div {
   margin: 0 -15px;
-}
-
-body.nv-empty-sidebar {
-  width: 100%;
-  max-width: 100vw;
-  padding: 0;
-  margin: auto;
 }
 
 .row {
@@ -1762,6 +1755,11 @@ body .layout-grid > .article-content-col, .layout-grid {
   height: 100%;
 }
 
+figcaption {
+  font-size: .8em;
+  opacity: .75;
+}
+
 blockquote {
   margin: 40px 0;
 }
@@ -1823,7 +1821,7 @@ pre {
   border: 1px solid #f0f0f0;
   margin: 20px 0;
   white-space: pre-wrap;
-  font-size: 0.9em;
+  font-size: .9em;
   line-height: 2em;
 }
 
@@ -1876,7 +1874,7 @@ pre {
 
 .wp-caption-text {
   text-align: center;
-  font-size: 0.8em;
+  font-size: .8em;
   font-weight: 500;
 }
 
@@ -2302,9 +2300,6 @@ audio {
   }
   .neve-main > .container > .row {
     flex-wrap: nowrap;
-  }
-  .nv-empty-sidebar .neve-main > .container .col {
-    max-width: 100%;
   }
   .amp-desktop-caret-wrap {
     display: block;

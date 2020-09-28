@@ -63,6 +63,27 @@ class Admin {
 			add_action( 'admin_notices', [ $this, 'admin_notice' ], 0 );
 			add_action( 'wp_ajax_neve_dismiss_welcome_notice', [ $this, 'remove_notice' ] );
 		}
+
+		add_action( 'admin_menu', [ $this, 'remove_background_submenu' ], 110 );
+	}
+
+	/**
+	 * Drop `Background` submenu item.
+	 */
+	public function remove_background_submenu() {
+		global $submenu;
+
+		if ( ! isset( $submenu['themes.php'] ) ) {
+			return false;
+		}
+
+		foreach ( $submenu['themes.php'] as $index => $submenu_args ) {
+			foreach ( $submenu_args as $arg_index => $arg ) {
+				if ( preg_match( '/customize\.php.+autofocus%5Bcontrol%5D=background_image/', $arg ) === 1 ) {
+					unset( $submenu['themes.php'][ $index ] );
+				}
+			}
+		}
 	}
 
 	/**
@@ -372,11 +393,11 @@ class Admin {
 		?>
 		<script type="text/javascript">
 			function handleNoticeActions($) {
-				var actions = $('.nv-welcome-notice').find('.notice-dismiss,  .ti-return-dashboard, .install-now, .options-page-btn');
+				var actions = $('.nv-welcome-notice').find('.notice-dismiss,  .ti-return-dashboard, .install-now, .options-page-btn')
 				$.each(actions, function (index, actionButton) {
 					$(actionButton).on('click', function (e) {
-						e.preventDefault();
-						var redirect = $(this).attr('href');
+						e.preventDefault()
+						var redirect = $(this).attr('href')
 						$.post(
 								'<?php echo esc_url( admin_url( 'admin-ajax.php' ) ); ?>',
 								{
@@ -384,20 +405,20 @@ class Admin {
 									action: 'neve_dismiss_welcome_notice',
 									success: function () {
 										if (typeof redirect !== 'undefined' && window.location.href !== redirect) {
-											window.location = redirect;
-											return false;
+											window.location = redirect
+											return false
 										}
-										$('.nv-welcome-notice').fadeOut();
+										$('.nv-welcome-notice').fadeOut()
 									}
 								}
-						);
-					});
-				});
+						)
+					})
+				})
 			}
 
 			jQuery(document).ready(function () {
-				handleNoticeActions(jQuery);
-			});
+				handleNoticeActions(jQuery)
+			})
 		</script>
 		<?php
 	}
