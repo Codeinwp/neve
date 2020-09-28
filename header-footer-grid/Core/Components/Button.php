@@ -121,22 +121,12 @@ class Button extends Abstract_Component {
 			]
 		);
 
-
-		$defaults = [
-			'background'      => '',
-			'backgroundHover' => '',
-			'text'            => '',
-			'textHover'       => '',
-			'borderRadius'    => 3,
-			'borderWidth'     => 1,
-		];
 		SettingsManager::get_instance()->add(
 			[
 				'id'                 => self::STYLE_ID,
 				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
 				'tab'                => SettingsManager::TAB_STYLE,
 				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
-				'default'            => $defaults,
 				'sanitize_callback'  => 'neve_sanitize_button_appearance',
 				'label'              => __( 'Appearance', 'neve' ),
 				'type'               => 'neve_button_appearance',
@@ -164,8 +154,8 @@ class Button extends Abstract_Component {
 				Config::CSS_PROP_BACKGROUND_COLOR => $id . '.background',
 				Config::CSS_PROP_COLOR            => $id . '.text',
 				Config::CSS_PROP_BORDER_RADIUS    => [
-					Dynamic_Selector::META_KEY     => $id . '.borderRadius',
-					Dynamic_Selector::META_DEFAULT => '3',
+					Dynamic_Selector::META_KEY => $id . '.borderRadius',
+		// Dynamic_Selector::META_DEFAULT => '3',
 				],
 				Config::CSS_PROP_CUSTOM_BTN_TYPE  => [
 					Dynamic_Selector::META_KEY => $id . '.type',
