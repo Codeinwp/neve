@@ -54,7 +54,7 @@ class ButtonAppearanceComponent extends Component {
     } : defaultsFromControl
 
     this.state = {
-      type: value.type || 'filled',
+      type: value.type,
       background: value.background || '',
       backgroundHover: value.backgroundHover || '',
       text: value.text || '',
@@ -170,10 +170,11 @@ class ButtonAppearanceComponent extends Component {
     )
   }
 
-  oldBorder() {
-  }
-
   renderColors() {
+    console.log(this.state.type)
+    if ( !this.state.type ) {
+      return null
+    }
     const settings = {
       normal: {
         label: __('Normal', 'neve'),
