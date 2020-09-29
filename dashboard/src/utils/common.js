@@ -47,11 +47,11 @@ const tabs = {
 	render: (setTab) => <FreePro/>
   },
   'plugins': {
-    label: __('Useful Plugins', 'neve'),
+    label: __('Plugins', 'neve'),
     render: (setTab) => <Plugins/>
   },
   'help': {
-    label: __('Help & docs', 'neve'),
+    label: __('Help', 'neve'),
     render: (setTab) => <Help setTab={setTab}/>
   },
   'changelog': {
