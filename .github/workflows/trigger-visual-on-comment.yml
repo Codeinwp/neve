@@ -72,6 +72,6 @@ jobs:
           PERCY_BRANCH: development
           PERCY_COMMIT: ${{ needs.trigger_visual.outputs.commit_sha }}
           PERCY_PULL_REQUEST: ${{ needs.trigger_visual.outputs.pr_number }}
-          PERCY_PARALLEL_NONCE: '${{ github.event_name }}-${{ needs.trigger_visual.outputs.commit_sha }}'
+          PERCY_PARALLEL_NONCE: '${{ github.run_id }}-${{ needs.trigger_visual.outputs.commit_sha }}'
         run: |
           yarn run visual:test --  --browser chrome --record --parallel --group visual-diff

@@ -64,7 +64,7 @@ class Button extends Abstract_Component {
 	 */
 	public function __construct( $panel ) {
 		parent::__construct( $panel );
-		$this->default_selector = '.builder-item--' . $this->get_id() . ' > .component-wrap > a.button';
+		$this->default_selector = '.builder-item > .item--inner.builder-item--' . $this->get_id() . ' > .component-wrap > a.button.button-primary';
 	}
 
 	/**
@@ -102,7 +102,7 @@ class Button extends Abstract_Component {
 				'type'               => 'text',
 				'section'            => $this->section,
 				'use_dynamic_fields' => array( 'url' ),
-				'conditional_header' => true,
+				'conditional_header' => $this->get_builder_id() === 'header',
 			]
 		);
 		SettingsManager::get_instance()->add(
@@ -117,32 +117,21 @@ class Button extends Abstract_Component {
 				'type'               => 'text',
 				'section'            => $this->section,
 				'use_dynamic_fields' => array( 'string' ),
-				'conditional_header' => true,
+				'conditional_header' => $this->get_builder_id() === 'header',
 			]
 		);
 
-
-		$defaults = [
-			'type'            => 'fill',
-			'background'      => '',
-			'backgroundHover' => '',
-			'text'            => '',
-			'textHover'       => '',
-			'borderRadius'    => 3,
-			'borderWidth'     => 1,
-		];
 		SettingsManager::get_instance()->add(
 			[
 				'id'                 => self::STYLE_ID,
 				'group'              => $this->get_class_const( 'COMPONENT_ID' ),
 				'tab'                => SettingsManager::TAB_STYLE,
 				'transport'          => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
-				'default'            => $defaults,
 				'sanitize_callback'  => 'neve_sanitize_button_appearance',
 				'label'              => __( 'Appearance', 'neve' ),
 				'type'               => 'neve_button_appearance',
 				'section'            => $this->section,
-				'conditional_header' => true,
+				'conditional_header' => $this->get_builder_id() === 'header',
 			]
 		);
 	}
@@ -165,8 +154,8 @@ class Button extends Abstract_Component {
 				Config::CSS_PROP_BACKGROUND_COLOR => $id . '.background',
 				Config::CSS_PROP_COLOR            => $id . '.text',
 				Config::CSS_PROP_BORDER_RADIUS    => [
-					Dynamic_Selector::META_KEY     => $id . '.borderRadius',
-					Dynamic_Selector::META_DEFAULT => '3',
+					Dynamic_Selector::META_KEY => $id . '.borderRadius',
+		// Dynamic_Selector::META_DEFAULT => '3',
 				],
 				Config::CSS_PROP_CUSTOM_BTN_TYPE  => [
 					Dynamic_Selector::META_KEY => $id . '.type',

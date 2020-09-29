@@ -72,7 +72,7 @@ class Loader {
 	 * Enqueue customizer controls script.
 	 */
 	public function enqueue_customizer_controls() {
-		wp_register_style( 'neve-customizer-style', NEVE_ASSETS_URL . 'css/customizer-style' . ( ( NEVE_DEBUG ) ? '' : '.min' ) . '.css', array(), NEVE_VERSION );
+		wp_register_style( 'neve-customizer-style', NEVE_ASSETS_URL . 'css/customizer-style.min.css', array(), NEVE_VERSION );
 		wp_style_add_data( 'neve-customizer-style', 'rtl', 'replace' );
 		wp_style_add_data( 'neve-customizer-style', 'suffix', '.min' );
 		wp_enqueue_style( 'neve-customizer-style' );
@@ -121,6 +121,7 @@ class Loader {
 			array( 'wp-components' ),
 			NEVE_VERSION
 		);
+		wp_style_add_data( 'react-controls', 'rtl', 'replace' );
 		wp_enqueue_style(
 			'neve-fonts-control-google-fonts',
 			'https://fonts.googleapis.com/css?family=' . join( '|', neve_get_google_fonts() ) . '&text=Abc&display=swap"',
