@@ -64,7 +64,7 @@ class Button extends Abstract_Component {
 	 */
 	public function __construct( $panel ) {
 		parent::__construct( $panel );
-		$this->default_selector = '.builder-item--' . $this->get_id() . ' > .component-wrap > a.button';
+		$this->default_selector = '.builder-item > .item--inner.builder-item--' . $this->get_id() . ' > .component-wrap > a.button.button-primary';
 	}
 
 	/**
