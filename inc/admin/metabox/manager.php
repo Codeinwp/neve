@@ -350,15 +350,18 @@ final class Manager {
 		$editor_width = Mods::get( Config::MODS_CONTAINER_WIDTH );
 		$editor_width = isset( $editor_width['desktop'] ) ? (int) $editor_width['desktop'] : 1170;
 
+		$post_elements_default_order = $this->get_post_elements_default_order();
+
 		$localized_data = apply_filters(
 			'neve_meta_sidebar_localize_filter',
 			array(
-				'actions' => array(
+				'actions'              => array(
 					'neve_meta_content_width' => array(
 						'container' => $container,
 						'editor'    => $editor_width,
 					),
 				),
+				'elementsDefaultOrder' => $post_elements_default_order,
 			)
 		);
 		wp_localize_script(
@@ -372,6 +375,42 @@ final class Manager {
 			trailingslashit( get_template_directory_uri() ) . 'inc/admin/metabox/build/editor.css',
 			array( 'wp-edit-blocks' )
 		);
+	}
+
+	/**
+	 * Get the value of elements order from customizer.
+	 *
+	 * @return string
+	 */
+	private function get_post_elements_default_order() {
+		$default_order = apply_filters(
+			'neve_single_post_elements_default_order',
+			array(
+				'title-meta',
+				'thumbnail',
+				'content',
+				'tags',
+				'comments',
+			)
+		);
+
+		$content_order = get_theme_mod( 'neve_layout_single_post_elements_order', wp_json_encode( $default_order ) );
+		if ( ! is_string( $content_order ) ) {
+			$content_order = wp_json_encode( $default_order );
+		}
+		$content_order = json_decode( $content_order, true );
+		if ( empty( $content_order ) ) {
+			return wp_json_encode( $content_order );
+		}
+
+		$title_meta_index = array_search( 'title-meta', $content_order );
+		if ( $title_meta_index !== false ) {
+			$content_order[ $title_meta_index ] = 'title';
+			$next_index                         = $title_meta_index + 1;
+			$content_order                      = array_merge( array_slice( $content_order, 0, $next_index, true ), array( 'meta' ), array_slice( $content_order, $next_index, null, true ) );
+		}
+
+		return wp_json_encode( $content_order );
 	}
 
 	/**
