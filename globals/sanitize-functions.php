@@ -64,10 +64,10 @@ function neve_sanitize_checkbox( $value ) {
 /**
  * Check if a string is in json format
  *
- * @param  string $string Input.
+ * @param string $string Input.
  *
- * @since 1.1.38
  * @return bool
+ * @since 1.1.38
  */
 function neve_is_json( $string ) {
 	return is_string( $string ) && is_array( json_decode( $string, true ) );
@@ -85,10 +85,9 @@ function neve_sanitize_range_value( $input ) {
 		return floatval( $input );
 	}
 	$range_value            = json_decode( $input, true );
-	$range_value['desktop'] = ! empty( $range_value['desktop'] ) || $range_value['desktop'] === '0' ? floatval( $range_value['desktop'] ) : '';
-	$range_value['tablet']  = ! empty( $range_value['tablet'] ) || $range_value['tablet'] === '0' ? floatval( $range_value['tablet'] ) : '';
-	$range_value['mobile']  = ! empty( $range_value['mobile'] ) || $range_value['mobile'] === '0' ? floatval( $range_value['mobile'] ) : '';
-
+	$range_value['desktop'] = is_numeric( $range_value['desktop'] ) ? floatval( $range_value['desktop'] ) : '';
+	$range_value['tablet']  = is_numeric( $range_value['tablet'] ) ? floatval( $range_value['tablet'] ) : '';
+	$range_value['mobile']  = is_numeric( $range_value['mobile'] ) ? floatval( $range_value['mobile'] ) : '';
 	return wp_json_encode( $range_value );
 }
 

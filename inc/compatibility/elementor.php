@@ -49,7 +49,7 @@ class Elementor extends Page_Builder_Base {
 		add_action( 'neve_do_top_bar', array( $this, 'do_header' ), 0 );
 		add_action( 'neve_do_header', array( $this, 'do_header' ), 0 );
 		add_action( 'neve_do_footer', array( $this, 'do_footer' ), 0 );
-		add_action( 'neve_do_content_none', array( $this, 'do_content_none' ), 0 );
+		add_action( 'neve_do_404', array( $this, 'do_404' ), 0 );
 		add_action( 'neve_do_single_post', array( $this, 'do_single_post' ), 0 );
 		add_action( 'neve_do_single_page', array( $this, 'do_single_page' ), 0 );
 		add_action( 'neve_page_header', array( $this, 'remove_header_on_page' ), 0 );
@@ -90,13 +90,13 @@ class Elementor extends Page_Builder_Base {
 	/**
 	 * Remove actions for elementor 404 to act properly.
 	 */
-	public function do_content_none() {
+	public function do_404() {
 		if ( ! is_404() ) {
 			return;
 		}
 		$did_location = $this->elementor_location_manager->do_location( 'single' );
 		if ( $did_location ) {
-			remove_all_actions( 'neve_do_content_none' );
+			remove_all_actions( 'neve_do_404' );
 		}
 	}
 

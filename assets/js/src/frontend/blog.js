@@ -2,9 +2,9 @@
 /* global NeveProperties */
 import { httpGetAsync, isInView, neveEach } from '../utils';
 
-let masonryInstance = null,
-		masonryContainer = null,
-		page = 2;
+let masonryContainer = null,
+	page = 2,
+	postWrapSelector = '.nv-index-posts .posts-wrapper'
 
 /**
  * Initialize blog JS.
@@ -23,20 +23,21 @@ export const initBlog = () => {
  * @returns {boolean}
  */
 const masonry = () => {
-	if ( NeveProperties.masonry !== 'enabled' || NeveProperties.masonryColumns <
-			2 ) {
-		return false;
-	}
-	masonryContainer = document.querySelector( '.nv-index-posts .posts-wrapper' );
+  	const { masonry, masonryColumns, blogLayout } = NeveProperties
+
+  if (masonry !== 'enabled' || masonryColumns < 2) {
+	return false
+  }
+	masonryContainer = document.querySelector( postWrapSelector );
 
 	if ( masonryContainer === null ) {
 		return false;
 	}
 
 	imagesLoaded( masonryContainer, () => {
-		masonryInstance = new Masonry( masonryContainer, {
-			itemSelector: 'article.layout-grid',
-			columnWidth: 'article.layout-grid',
+		window.nvMasonry = new Masonry( masonryContainer, {
+			itemSelector: `article.layout-${blogLayout}`,
+			columnWidth: `article.layout-${blogLayout}`,
 			percentPosition: true
 		} );
 	} );
@@ -52,7 +53,7 @@ const infiniteScroll = () => {
 		return false;
 	}
 
-	if ( document.querySelector( '.nv-index-posts .posts-wrapper' ) === null ) {
+	if ( document.querySelector( postWrapSelector ) === null ) {
 		return false;
 	}
 
@@ -84,7 +85,7 @@ const requestMorePosts = () => {
 		return false;
 	}
 
-	let blog = document.querySelector( '.nv-index-posts .posts-wrapper' );
+	let blog = document.querySelector( postWrapSelector );
 	let requestUrl = maybeParseUrlForCustomizer(
 			NeveProperties.infiniteScrollEndpoint + page );
 	page++;
@@ -97,7 +98,7 @@ const requestMorePosts = () => {
 			tmp.innerHTML = JSON.parse(response);
 			neveEach(tmp.children, (el) => {
 				masonryContainer.append(el);
-				masonryInstance.appended(el);
+			 	window.nvMasonry.appended(el);
 			});
 		}
 	}, NeveProperties.infiniteScrollQuery);
