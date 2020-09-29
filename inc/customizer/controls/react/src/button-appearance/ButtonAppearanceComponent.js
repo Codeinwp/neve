@@ -171,7 +171,6 @@ class ButtonAppearanceComponent extends Component {
   }
 
   renderColors() {
-    console.log(this.state.type)
     if ( !this.state.type ) {
       return null
     }
