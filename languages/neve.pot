@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-09-29T14:54:03+00:00\n"
+"POT-Creation-Date: 2020-09-29T14:57:23+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -36,7 +36,7 @@ msgstr ""
 
 #: dashboard/inc/Main.php:128
 #: dashboard/inc/Main.php:129
-#: inc/admin/metabox/src/components/Sidebar.js:52
+#: inc/admin/metabox/src/components/Sidebar.js:55
 msgid "Options"
 msgstr ""
 
@@ -489,7 +489,7 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
-#: header-footer-grid/Core/Components/Button.php:142
+#: header-footer-grid/Core/Components/Button.php:131
 #: header-footer-grid/Core/Components/MenuIcon.php:148
 msgid "Appearance"
 msgstr ""
@@ -2144,7 +2144,7 @@ msgstr ""
 msgid "Open Neve meta sidebar"
 msgstr ""
 
-#: inc/admin/metabox/src/components/Sidebar.js:50
+#: inc/admin/metabox/src/components/Sidebar.js:53
 msgid "Neve Options"
 msgstr ""
 
