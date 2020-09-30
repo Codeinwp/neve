@@ -295,16 +295,7 @@ class MetaFieldsManager extends Component {
 				'comments': __('Comments', 'neve' ),
 				'post-navigation': __( 'Post Navigation', 'neve')
 			},
-			default: JSON.stringify(
-				[
-					'title',
-					'meta',
-					'thumbnail',
-					'content',
-					'tags',
-					'comments'
-				]
-			)
+			default: metaSidebar.elementsDefaultOrder
 		};
 
 		if ( metaSidebar.enable_pro ) {

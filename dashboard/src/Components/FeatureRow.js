@@ -1,10 +1,10 @@
-const {Dashicon} = wp.components;
-const {useState} = wp.element;
-
+const { Dashicon } = wp.components;
+const { useState, createInterpolateElement } = wp.element;
+const { __, sprintf } = wp.i18n;
 import classnames from 'classnames';
 
-const FeatureRow = ({item}) => {
-  const {title, description, inLite} = item;
+const FeatureRow = ({ item }) => {
+  const { title, description, inLite, docsLink } = item;
   const [ tooltip, toggleTooltip ] = useState(false);
 
   const showTooltip = () => toggleTooltip(true);
@@ -15,7 +15,7 @@ const FeatureRow = ({item}) => {
       <td className="large">
         <div className="feat-wrap">
           <h4>{title}</h4>
-          <a href="#"
+          <span
              onMouseEnter={(e) => {
                e.preventDefault();
                showTooltip();
@@ -32,20 +32,28 @@ const FeatureRow = ({item}) => {
                e.preventDefault();
                hideTooltip();
              }}
-             onClick={(e) => {
-               e.preventDefault();
-             }}
           >
             <Dashicon icon="info"/>
             {tooltip &&
             <div className="tooltip-content">
-              <p>{description}</p>
+              <div className="tooltip-inner">
+                <p>
+                  {description + ' '}
+                  {docsLink && createInterpolateElement( __('More details <a>here</a>.', 'neve'), {
+                    a: <a href={docsLink}/>
+                  })}
+                </p>
+
+              </div>
             </div>
             }
-          </a>
+          </span>
         </div>
       </td>
-      <td className={classnames([ 'indicator', {'error': ! inLite, 'success': inLite} ])}>
+      <td className={classnames([ 'indicator', {
+        'error': ! inLite,
+        'success': inLite
+      } ])}>
         <Dashicon size={30} icon={inLite ? 'yes' : 'no-alt'}/>
       </td>
       <td className="indicator success">

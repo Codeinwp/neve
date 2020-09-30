@@ -1,0 +1,49 @@
+$fb-blue: #3b5998;
+
+.facebook-badge {
+	display: flex;
+	align-items: center;
+	background-color: $fb-blue;
+	padding: 10px 20px 10px 15px;
+	margin: 20px 0 0 !important;
+	color: #fff;
+	line-height: normal;
+	text-decoration: none;
+	box-shadow: 0 0 0 0 $fb-blue;
+	transition: .3s ease;
+	border-radius: 2px;
+	svg {
+		transform: scale(1);
+		transition: .3s ease;
+	}
+	&:hover {
+		box-shadow: 0 0 15px -5px $fb-blue;
+		svg {
+			transform: scale(1.1);
+		}
+	}
+
+	span {
+		margin-left: 10px;
+		display: block;
+		font-weight: 700;
+		margin-top: 3px;
+		color: #fff;
+
+	}
+}
+
+@mixin help--desktop() {
+	.tab-content.help {
+		flex-wrap: wrap;
+
+		.card {
+			align-self: unset;
+			width: calc(50% - 15px);
+
+			&:nth-child(even) {
+				margin-left: 30px;
+			}
+		}
+	}
+}
