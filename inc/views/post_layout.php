@@ -64,11 +64,11 @@ class Post_Layout extends Base_View {
 			}
 		}
 
+		$content_order = apply_filters( 'neve_layout_single_post_elements_order', $content_order );
+
 		if ( empty( $content_order ) ) {
 			return;
 		}
-
-		$content_order = apply_filters( 'neve_layout_single_post_elements_order', $content_order );
 
 		foreach ( $content_order as $item ) {
 			switch ( $item ) {
