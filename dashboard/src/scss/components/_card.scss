@@ -15,12 +15,26 @@
     align-items: center;
     .title {
       font-size: 18px;
-      line-height: 1;
+      line-height: 1.5;
     }
     .icon {
       margin-right: 10px;
+			&.dashicon {
+				width: 33px;
+				height: 33px;
+				fill: $blue;
+			}
     }
   }
+	.card-content {
+		display: flex;
+		flex-direction: column;
+		flex-grow: 1;
+		a, button {
+			align-self: flex-start;
+			margin-top: auto;
+		}
+	}
 
   p {
     font-size: 15px;
@@ -41,9 +55,6 @@
   .card {
 	padding: 20px 30px;
 	margin: 0 0 20px;
-    &:last-child {
-      margin-bottom: 0;
-    }
   }
 }
 @mixin card--desktop-large() {
