@@ -1,5 +1,4 @@
 .tab-content.start {
-	flex-wrap: wrap;
 	.customizer-quick-links {
     .columns {
       display: flex;
@@ -32,6 +31,10 @@
 }
 
 @mixin start--laptop() {
+
+}
+
+@mixin start--desktop() {
 	.tab-content.start {
 		flex-wrap: wrap;
 
@@ -44,7 +47,4 @@
 			}
 		}
 	}
-}
-
-@mixin start--desktop() {
 }
