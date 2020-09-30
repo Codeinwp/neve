@@ -1,19 +1,35 @@
 .neve-radio-icons {
   display: flex;
-  border: 1px solid #999;
-  border-radius: 3px;
   padding: 3px;
+	span {
+		display: flex;
+		flex-direction: column;
+		flex: 1;
+	}
 
+	label {
+		text-align: center;
+		font-weight: 800;
+		font-size: 9px;
+		line-height: 18px;
+		text-transform: uppercase;
+		color: #555d66;
+		margin-top: 7px;
+	}
+	> span {
+		&:not(:first-child) {
+			margin-left: -1px;
+		}
+	}
   button {
     align-items: center;
     justify-content: center !important;
     flex: 1;
     padding: 3px;
     height: 28px;
+		border: 1px solid $input-borders;
+		border-radius: 0;
 
-    &:not(:first-child) {
-      margin-left: 3px;
-    }
 
     svg {
       width: 20px;

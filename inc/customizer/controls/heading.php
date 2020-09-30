@@ -134,7 +134,7 @@ class Heading extends \WP_Customize_Control {
 				$style .= ',';
 			}
 		}
-		$style .= '{max-height: 0;opacity: 0;margin: 0; overflow: hidden;}';
+		$style .= '{max-height: 0;opacity: 0;margin: 0; overflow: hidden; padding:0 !important;}';
 		$style .= '</style>';
 
 		return $style;

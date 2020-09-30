@@ -37,9 +37,7 @@ const RangeComponent = ({ control }) => {
           max={max || 100}
           step={step || 1}
           allowReset
-          onChange={(nextValue) => {
-            updateValues(nextValue)
-          }}
+          onChange={updateValues}
         />
       </div>
     </div>

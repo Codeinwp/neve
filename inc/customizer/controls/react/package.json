@@ -4,6 +4,7 @@
   "dependencies": {
     "classnames": "^2.2.6",
     "prop-types": "^15.7.2",
+    "react-sortable-hoc": "^1.11.0",
     "react-visibility-sensor": "^5.1.1"
   },
   "devDependencies": {
@@ -13,6 +14,7 @@
     "@babel/plugin-transform-react-jsx": "^7.10.4",
     "@babel/preset-env": "^7.11.0",
     "@babel/preset-react": "^7.10.4",
+    "array-move": "^3.0.1",
     "babel-eslint": "^10.1.0",
     "core-js": "^3.6.5",
     "cross-env": "^7.0.2",

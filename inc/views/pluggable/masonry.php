@@ -39,7 +39,10 @@ class Masonry extends Base_View {
 		if ( ! $this->is_masonry_enabled() ) {
 			return $data;
 		}
-		$data['masonry'] = 'enabled';
+		$layout = get_theme_mod( 'neve_blog_archive_layout', 'grid' );
+
+		$data['masonry']    = 'enabled';
+		$data['blogLayout'] = esc_html( $layout );
 		return $data;
 	}
 
@@ -66,9 +69,9 @@ class Masonry extends Base_View {
 	 */
 	public function is_masonry_enabled() {
 		$blog_layout = get_theme_mod( 'neve_blog_archive_layout', 'grid' );
-		$columns     = get_theme_mod( 'neve_grid_layout', '1' );
+		$columns     = get_theme_mod( 'neve_grid_layout', '{mobile:1, tablet:1, desktop:1}' );
 
-		if ( $blog_layout !== 'grid' || $columns === 1 ) {
+		if ( ! in_array( $blog_layout, [ 'grid', 'covers' ], true ) || $columns === 1 ) {
 			return false;
 		}
 
