@@ -70,9 +70,10 @@
 //<editor-fold [AJAX add-to-cart loading]>
 .woocommerce {
 	#respond input#submit.loading, a.button.loading, button.button.loading, input.button.loading {
-		display: flex;
+		display: inline-flex;
 		align-items: center;
 		column-gap: 4px;
+	  	padding-right: inherit;
 		&::after {
 			position: initial;
 		}
