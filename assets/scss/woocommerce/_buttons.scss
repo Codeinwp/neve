@@ -70,12 +70,12 @@
 //<editor-fold [AJAX add-to-cart loading]>
 .woocommerce {
 	#respond input#submit.loading, a.button.loading, button.button.loading, input.button.loading {
+		display: inline-flex;
+		align-items: center;
+		column-gap: 4px;
+	  	padding-right: inherit;
 		&::after {
-			display: block;
 			position: initial;
-			float: right;
-			margin-left: 5px;
-			margin-top: 1px;
 		}
 	}
 }
