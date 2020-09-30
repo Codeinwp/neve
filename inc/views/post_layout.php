@@ -102,8 +102,7 @@ class Post_Layout extends Base_View {
 						$this->render_entry_header();
 						break;
 					}
-					$alignment = apply_filters( 'neve_post_title_alignment', '' );
-					echo '<h1 class="title entry-title ' . esc_attr( $alignment ) . '">' . wp_kses_post( get_the_title() ) . '</h1>';
+					$this->render_entry_header( false );
 					break;
 				case 'meta':
 					if ( $index !== 0 && $content_order[ $index - 1 ] === 'title' ) {
@@ -152,15 +151,18 @@ class Post_Layout extends Base_View {
 	/**
 	 * Render post header
 	 *
+	 * @param bool $render_meta Render meta flag.
 	 * @return void
 	 */
-	private function render_entry_header() {
+	private function render_entry_header( $render_meta = true ) {
 		echo '<div class="entry-header">';
 		echo '<div class="nv-title-meta-wrap">';
 		do_action( 'neve_before_post_title' );
 		$alignment = apply_filters( 'neve_post_title_alignment', '' );
 		echo '<h1 class="title entry-title ' . esc_attr( $alignment ) . '">' . wp_kses_post( get_the_title() ) . '</h1>';
-		self::render_post_meta();
+		if ( $render_meta ) {
+			self::render_post_meta();
+		}
 		echo '</div>';
 		echo '</div>';
 
