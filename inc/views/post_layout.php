@@ -68,8 +68,8 @@ class Post_Layout extends Base_View {
 			return;
 		}
 
-		$content_order = apply_filters( 'neve_layout_single_post_elements_order', $content_order );
-
+		$content_order        = apply_filters( 'neve_layout_single_post_elements_order', $content_order );
+		$content_order_length = count( $content_order );
 		foreach ( $content_order as $index => $item ) {
 			switch ( $item ) {
 				case 'title-meta':
@@ -98,11 +98,12 @@ class Post_Layout extends Base_View {
 					do_action( 'neve_do_tags' );
 					break;
 				case 'title':
-					if ( $content_order[ $index + 1 ] === 'meta' ) {
+					if ( $index !== $content_order_length - 1 && $content_order[ $index + 1 ] === 'meta' ) {
 						$this->render_entry_header();
 						break;
 					}
-					$this->render_entry_header( false );
+					$alignment = apply_filters( 'neve_post_title_alignment', '' );
+					echo '<h1 class="title entry-title ' . esc_attr( $alignment ) . '">' . wp_kses_post( get_the_title() ) . '</h1>';
 					break;
 				case 'meta':
 					if ( $index !== 0 && $content_order[ $index - 1 ] === 'title' ) {
@@ -151,18 +152,15 @@ class Post_Layout extends Base_View {
 	/**
 	 * Render post header
 	 *
-	 * @param bool $render_meta Render meta flag.
 	 * @return void
 	 */
-	private function render_entry_header( $render_meta = true ) {
+	private function render_entry_header() {
 		echo '<div class="entry-header">';
 		echo '<div class="nv-title-meta-wrap">';
 		do_action( 'neve_before_post_title' );
 		$alignment = apply_filters( 'neve_post_title_alignment', '' );
 		echo '<h1 class="title entry-title ' . esc_attr( $alignment ) . '">' . wp_kses_post( get_the_title() ) . '</h1>';
-		if ( $render_meta ) {
-			self::render_post_meta();
-		}
+		self::render_post_meta();
 		echo '</div>';
 		echo '</div>';
 
