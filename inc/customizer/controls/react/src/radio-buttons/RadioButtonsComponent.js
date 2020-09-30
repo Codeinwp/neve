@@ -15,7 +15,7 @@ const RadioButtonsComponent = ({ control }) => {
     document.addEventListener('neve-changed-customizer-value', (e) => {
       if (!e.detail) return false
       if (e.detail.id !== control.id) return false
-      this.updateValue(e.detail.value)
+      updateValue(e.detail.value)
     })
   }, [])
 
