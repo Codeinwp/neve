@@ -32,7 +32,7 @@ const RangeComponent = ({ control }) => {
       <div className='range-wrap'>
         <RangeControl
           resetFallbackValue={defaultVal || ''}
-          value={value === 0 ? 0 : (value || '')}
+          value={parseInt(value) === 0 ? 0 : (value || '')}
           min={min < 0 ? min : 0}
           max={max || 100}
           step={step || 1}
