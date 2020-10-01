@@ -1,5 +1,6 @@
 import 'cypress-file-upload';
 import '@percy/cypress';
+let scrollToBottom = require("scroll-to-bottomjs");
 Cypress.Cookies.defaults({
 	preserve: /wordpress_.*/
 });
@@ -212,15 +213,15 @@ function setTypographyControl( controlSelector, values ) {
  * Capture and compare the fullpage snapshots.
  *
  */
-Cypress.Commands.add("captureDocument", (generalMaskAndClip = true) => {
+Cypress.Commands.add("captureDocument", (generalMaskAndClip = true, screenShotName = false) => {
 	if(generalMaskAndClip){
 		let maskElement = '.elementor-element-31b9e15, .pikaday__display--pikaday, .elementor-widget-video, label[for="vscf_captcha"],.elementor-widget-google_maps,.pikaday__display,.elementor-video-iframe';
 		let clipElement = '.widget_top_rated_products, .wpcf7-quiz-label, .eaw-typed-text,.product .related.products,.captcha_img,.elementor-element-38f7ff1e,.elementor-widget-container[style*="will-change"], .particles-js-canvas-el,.product_list_widget li + li, .exclusive.products';
 		cy.maskAndClip(maskElement,clipElement);
 	}
-	cy.scrollTo('bottom',{ ensureScrollable: false });
-	cy.wait(2000);
-	cy.percySnapshot();
+	cy.window().then(cyWindow => scrollToBottom({ remoteWindow: cyWindow }));
+	cy.wait(5000);
+	cy.percySnapshot(screenShotName);
 });
 /**
  * Capture and compare the fullpage snapshots.

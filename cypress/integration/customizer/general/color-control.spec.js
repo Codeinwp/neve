@@ -12,8 +12,6 @@ describe('Color Control', function () {
 		cy.get('@control').find('button').click();
 		// Clear the color.
 		cy.get('@control').find('button.clear').click();
-		// Color button should have class 'is-empty'
-		cy.get('@control').find('button').should('have.class', 'is-empty');
 		// Open the picker.
 		cy.get('@control').find('button').click();
 		// Popover should exist and be visible.
@@ -29,7 +27,7 @@ describe('Color Control', function () {
 		// Popover should not exist after click outside.
 		cy.get('@control').find('.components-popover').should('not.exist');
 		// Button should have a background color and it should be the color translated to RGB.
-		cy.get('@control').find('button').should('have.css', 'background-color').and('eq', rgbColor);
+		cy.get('@control').find('button .color').should('have.css', 'background-color').and('eq', rgbColor);
 		// Check the actual value of the control set through the API.
 		cy.getCustomizerControlValue(controlSlug).should('eq', color);
 		// Save the customizer.

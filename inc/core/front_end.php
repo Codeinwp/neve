@@ -229,7 +229,7 @@ class Front_End {
 				array(
 					'name'      => esc_html( $color_name ),
 					'slug'      => esc_html( $control_name ),
-					'color'     => sanitize_hex_color( $color ),
+					'color'     => neve_sanitize_colors( $color ),
 					'theme_mod' => esc_attr( $control_data['setting'] ),
 				)
 			);

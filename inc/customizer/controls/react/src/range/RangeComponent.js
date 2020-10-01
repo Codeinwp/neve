@@ -14,12 +14,7 @@ const RangeComponent = ({ control }) => {
   }, [])
 
   const [value, setValue] = useState( control.setting.get() )
-  const defaults = {
-    min: 0,
-    max: 100,
-    defaultVal: 15,
-    step: 1
-  }
+  const defaults = { min: 0, max: 100, defaultVal: 15, step: 1 }
   const controlProps = { ...defaults, ...(control.params.input_attrs || {}) }
   const { label } = control.params
   const { defaultVal, min, max, step } = controlProps
@@ -36,15 +31,13 @@ const RangeComponent = ({ control }) => {
       </div>
       <div className='range-wrap'>
         <RangeControl
-          resetFallbackValue={defaultVal || ''}
-          value={value || ''}
+          resetFallbackValue={defaultVal === 0 ? 0 : (defaultVal || '')}
+          value={parseInt(value) === 0 ? 0 : (value || '')}
           min={min < 0 ? min : 0}
           max={max || 100}
           step={step || 1}
           allowReset
-          onChange={(nextValue) => {
-            updateValues(nextValue)
-          }}
+          onChange={updateValues}
         />
       </div>
     </div>

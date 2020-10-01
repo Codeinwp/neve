@@ -12,6 +12,8 @@
 			border-radius: 0;
 			border-color: $input-borders;
 			width: auto;
+			max-width: 100%;
+			padding-right: 0;
 		}
 
 		.components-range-control {

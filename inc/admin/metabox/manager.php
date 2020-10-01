@@ -176,27 +176,18 @@ final class Manager {
 	 * Render the metabox notice.
 	 */
 	public function render_metabox_notice() {
-		?>
-		<script type="text/javascript">
-			function focusSidebar() {
-				var selector = document.querySelector('.components-button.has-icon[aria-label^="Neve"]');
-				if ( ! selector ){
-					selector = document.querySelector('.edit-post-more-menu button');
-				}
-				selector.focus();
-			}
-		</script>
-		<?php
 		echo '<div class="nv-meta-notice-wrapper">';
 		echo '<h4>' . esc_html__( 'Page Settings are now accessible from the top bar', 'neve' ) . '</h4>';
 		printf(
 			/* translators: %1$s - Keyboard shortcut.   %2&s - svg icon */
 			esc_html__( 'Click the %1$s icon in the top bar or use the keyboard shortcut ( %2$s ) to customise the layout settings for this page', 'neve' ),
-			'<svg width="17" height="24" viewBox="0 0 17 24" fill="none" xmlns="http://www.w3.org/2000/svg" onclick="focusSidebar()">
+			apply_filters( 'ti_wl_theme_is_localized', false ) ?
+			'<span class="dashicons dashicons-hammer"/>' :
+			'<svg width="17" height="24" viewBox="0 0 17 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 				<path d="M4.77822 10.2133V19.3287H0.118347V0.802224C0.118347 0.712594 0.145598 0.649854 0.200099 0.614002C0.254601 0.578149 0.354519 0.622964 0.499857 0.748446L12.1359 10.2133V1.04422H16.7958V19.5976C16.7958 19.7051 16.7685 19.7724 16.714 19.7992C16.6595 19.8261 16.5596 19.7768 16.4143 19.6514L4.77822 10.2133Z"/>
 				<rect x="0.118347" y="22.3334" width="16.6774" height="1.51613"/>
 				</svg>',
-			'<strong>CTRL + ALT + N</strong> ' . esc_html__( 'or', 'neve' ) . ' <strong>control + option + N</strong>'
+			'<strong>SHIFT + ALT + S</strong> ' . esc_html__( 'or', 'neve' ) . ' <strong>control + option + S</strong>'
 		);
 		echo '</div>';
 	}
@@ -359,15 +350,18 @@ final class Manager {
 		$editor_width = Mods::get( Config::MODS_CONTAINER_WIDTH );
 		$editor_width = isset( $editor_width['desktop'] ) ? (int) $editor_width['desktop'] : 1170;
 
+		$post_elements_default_order = $this->get_post_elements_default_order();
+
 		$localized_data = apply_filters(
 			'neve_meta_sidebar_localize_filter',
 			array(
-				'actions' => array(
+				'actions'              => array(
 					'neve_meta_content_width' => array(
 						'container' => $container,
 						'editor'    => $editor_width,
 					),
 				),
+				'elementsDefaultOrder' => $post_elements_default_order,
 			)
 		);
 		wp_localize_script(
@@ -381,6 +375,42 @@ final class Manager {
 			trailingslashit( get_template_directory_uri() ) . 'inc/admin/metabox/build/editor.css',
 			array( 'wp-edit-blocks' )
 		);
+	}
+
+	/**
+	 * Get the value of elements order from customizer.
+	 *
+	 * @return string
+	 */
+	private function get_post_elements_default_order() {
+		$default_order = apply_filters(
+			'neve_single_post_elements_default_order',
+			array(
+				'title-meta',
+				'thumbnail',
+				'content',
+				'tags',
+				'comments',
+			)
+		);
+
+		$content_order = get_theme_mod( 'neve_layout_single_post_elements_order', wp_json_encode( $default_order ) );
+		if ( ! is_string( $content_order ) ) {
+			$content_order = wp_json_encode( $default_order );
+		}
+		$content_order = json_decode( $content_order, true );
+		if ( empty( $content_order ) ) {
+			return wp_json_encode( $content_order );
+		}
+
+		$title_meta_index = array_search( 'title-meta', $content_order );
+		if ( $title_meta_index !== false ) {
+			$content_order[ $title_meta_index ] = 'title';
+			$next_index                         = $title_meta_index + 1;
+			$content_order                      = array_merge( array_slice( $content_order, 0, $next_index, true ), array( 'meta' ), array_slice( $content_order, $next_index, null, true ) );
+		}
+
+		return wp_json_encode( $content_order );
 	}
 
 	/**

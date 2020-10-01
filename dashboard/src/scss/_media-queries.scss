@@ -30,6 +30,7 @@
   @include card--desktop();
   @include notifications--desktop();
   @include plugins--desktop();
+  @include help--desktop();
   @include accordion--desktop();
   @include mock--desktop();
   @include ob-editor-tabs--desktop();

@@ -17,15 +17,13 @@ const DragHandle = sortableHandle( () => {
 
 const SortableItem = sortableElement( ({value, label, toggle}) => {
 	const icon = 'visibility';
-	const message = __( `Hide ${ label }`, 'neve' );
-
 	return (
 		<div className={`ti-sortable-item-area ti-sortable-item-area-${value}`} >
 		<div key={value} className='ti-sortable-item'>
 			<Button
 				isTertiary
 				icon={ icon }
-				label={ message }
+				label={ __( 'Toggle', 'neve' ) }
 				showTooltip={ true }
 				className="ti-sortable-item-toggle"
 				onClick={ () => {
@@ -66,6 +64,9 @@ class SortableItems extends Component {
 				{
 					currentValues.map(
 						(value, index) => {
+							if ( undefined === elements[value] ) {
+								return false;
+							}
 							return (
 								<SortableItem
 									key={`item-${value}`}
@@ -87,12 +88,12 @@ class SortableItems extends Component {
 								return false;
 							}
 							return (
-								<div className='ti-sortable-item-area'>
+								<div className='ti-sortable-item-area' key={index}>
 								<div className='ti-sortable-item hidden'>
 									<Button
 										isTertiary
 										icon='hidden'
-										label={ __( `Display ${ elements[value] }`, 'neve' ) }
+										label={ __( 'Toggle', 'neve' ) }
 										showTooltip={ true }
 										className="ti-sortable-item-toggle"
 										onClick={ () => {

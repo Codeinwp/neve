@@ -119,6 +119,11 @@ class CustomHtml extends Abstract_Component {
 
 		$tags['input'] = array_merge( $input_attributes, $global_attributes );
 		$tags['form']  = array_merge( $form_attributes, $global_attributes );
+		$tags['span']  = array_merge( array(), $global_attributes );
+		$tags['time']  = array(
+			'datetime' => true,
+			'class'    => true,
+		);
 
 		return $tags;
 	}
@@ -144,7 +149,7 @@ class CustomHtml extends Abstract_Component {
 				'type'               => 'textarea',
 				'section'            => $this->section,
 				'use_dynamic_fields' => array( 'string', 'url' ),
-				'conditional_header' => true,
+				'conditional_header' => $this->get_builder_id() === 'header',
 			]
 		);
 
@@ -154,7 +159,7 @@ class CustomHtml extends Abstract_Component {
 				'group'                 => $this->get_class_const( 'COMPONENT_ID' ),
 				'tab'                   => SettingsManager::TAB_STYLE,
 				'transport'             => 'postMessage',
-				'sanitize_callback'     => 'sanitize_hex_color',
+				'sanitize_callback'     => 'neve_sanitize_colors',
 				'label'                 => __( 'Text Color', 'neve' ),
 				'type'                  => 'neve_color_control',
 				'section'               => $this->section,

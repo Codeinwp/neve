@@ -16,7 +16,7 @@ const Sidebar = compose(
 			description: __( 'Open Neve meta sidebar', 'neve' ),
 			keyCombination: {
 				modifier: 'access',
-				character: 'n'
+				character: 's'
 			}
 		} );
 	} ),
@@ -30,9 +30,12 @@ const Sidebar = compose(
 		'neve/open-meta-sidebar',
 		useCallback(
 			() => {
-				const sidebarStatus = wp.data.select( 'core/edit-post' ).isPluginSidebarOpened( 'meta-sidebar/neve-meta-sidebar' );
-				if ( true === sidebarStatus ) {
-					wp.data.dispatch( 'core/edit-post' ).closeGeneralSidebar( 'meta-sidebar/neve-meta-sidebar' );
+				const currentActiveSidebar = wp.data.select( 'core/edit-post' ).getActiveGeneralSidebarName();
+				if ( currentActiveSidebar ) {
+					wp.data.dispatch( 'core/edit-post' ).closeGeneralSidebar( currentActiveSidebar );
+					if ( 'meta-sidebar/neve-meta-sidebar' !== currentActiveSidebar ) {
+						wp.data.dispatch( 'core/edit-post' ).openGeneralSidebar( 'meta-sidebar/neve-meta-sidebar' );
+					}
 				} else {
 					wp.data.dispatch( 'core/edit-post' ).openGeneralSidebar( 'meta-sidebar/neve-meta-sidebar' );
 				}
@@ -47,16 +50,21 @@ const Sidebar = compose(
 	}
 	document.getElementById('neve-page-settings-notice').style.display = 'block';
 
+	let sidebarLabel = __( 'Neve Options', 'neve' );
+	if ( metaSidebar.whiteLabeled ) {
+		sidebarLabel = metaSidebar.whiteLabelThemeName ? metaSidebar.whiteLabelThemeName + ' ' + __( 'Options', 'neve' ) : __( 'Options', 'neve' );
+	}
+
 	return (
 		<>
 			<PluginSidebarMoreMenuItem
 				target="neve-meta-sidebar"
 			>
-				{__('Neve Options', 'neve')}
+				{ sidebarLabel }
 			</PluginSidebarMoreMenuItem>
 			<PluginSidebar
 				name="neve-meta-sidebar"
-				title={__('Neve Options', 'neve')}
+				title={ sidebarLabel }
 			>
 				<MetaFieldsManager/>
 			</PluginSidebar>

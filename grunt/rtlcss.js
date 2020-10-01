@@ -57,6 +57,14 @@ module.exports = {
 		ext,
 		src: ['customizer-style.css']
 	},
+	reactControls: {
+		options,
+		expand: true,
+		cwd: './inc/customizer/controls/react/bundle',
+		dest: './inc/customizer/controls/react/bundle',
+		ext,
+		src: ['controls.css']
+	},
 	megaMenu: {
 		options,
 		expand: true,

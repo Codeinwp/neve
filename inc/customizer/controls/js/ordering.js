@@ -12,7 +12,7 @@
 		},
 		setupSorting: function () {
 			var self = this;
-			$( '.ti-order-sortable' ).each( function () {                                  
+			$( '.ti-order-sortable' ).each( function () {
 				$( this ).sortable( {
 					revert: true,
 					axis: 'y',
@@ -29,6 +29,9 @@
 			$( items ).each( function () {
 				value.push( $( this ).data( 'id' ) );
 			} );
+			value = value.filter(function( element ) {
+				return element !== undefined;
+			});
 			$( control ).next().val( JSON.stringify( value ) );
 			$( control ).next().trigger( 'change' );
 		},
