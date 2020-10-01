@@ -17,7 +17,6 @@ const DragHandle = sortableHandle( () => {
 
 const SortableItem = sortableElement( ({value, label, toggle}) => {
 	const icon = 'visibility';
-
 	return (
 		<div className={`ti-sortable-item-area ti-sortable-item-area-${value}`} >
 		<div key={value} className='ti-sortable-item'>
@@ -65,6 +64,9 @@ class SortableItems extends Component {
 				{
 					currentValues.map(
 						(value, index) => {
+							if ( undefined === elements[value] ) {
+								return false;
+							}
 							return (
 								<SortableItem
 									key={`item-${value}`}
