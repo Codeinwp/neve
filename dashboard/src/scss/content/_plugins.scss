@@ -24,6 +24,7 @@
     padding: 20px 15px 20px 20px;
     display: flex;
     align-items: center;
+		margin-top: auto;
 
     .plugin-data {
       font-size: 14px;
@@ -60,8 +61,8 @@
 @mixin plugins--desktop() {
   .plugin.card {
     flex-grow: 1;
-    height: 100%;
     max-width: calc(50% - 15px);
+		align-self: unset;
 
     &:nth-child(2n-1) {
       margin-right: 30px;

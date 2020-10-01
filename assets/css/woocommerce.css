@@ -973,12 +973,15 @@ section.exclusive .tns-visually-hidden {
   white-space: normal;
 }
 
+.woocommerce #respond input#submit.loading, .woocommerce a.button.loading, .woocommerce button.button.loading, .woocommerce input.button.loading {
+  display: inline-flex;
+  align-items: center;
+  column-gap: 4px;
+  padding-right: inherit;
+}
+
 .woocommerce #respond input#submit.loading::after, .woocommerce a.button.loading::after, .woocommerce button.button.loading::after, .woocommerce input.button.loading::after {
-  display: block;
   position: initial;
-  float: right;
-  margin-left: 5px;
-  margin-top: 1px;
 }
 
 .nv-sidebar-wrap.shop-sidebar {
