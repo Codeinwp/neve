@@ -19,6 +19,21 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 
 ## Changelog ##
 
+##### [Version 2.8.2](https://github.com/Codeinwp/neve/compare/v2.8.1...v2.8.2) (2020-10-01)
+
+- [Feat] New Blog Layout options
+- [Feat] New Header Builder presets
+- [Feat] Support for Alpha RGBa Color Picker
+- [Feat] Enhancements to the Neve Options page
+- [Fix] Updated date layout in magic tags {current_post_meta} {meta_date}
+- [Fix] Compatibility with Elementor PRO 404 templates pages
+- [Fix] Style captions
+- [Fix] Button component style options overlapping with general button options
+- [Fix] Default meta elements order
+
+
+
+
 ##### [Version 2.8.1](https://github.com/Codeinwp/neve/compare/v2.8.0...v2.8.1) (2020-09-17)
 
 - [Feat] New options for styling buttons ( text-transform, weight, font size, line height, and letter spacing )
