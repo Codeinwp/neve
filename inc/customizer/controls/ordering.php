@@ -103,6 +103,9 @@ class Ordering extends \WP_Customize_Control {
 
 		echo '<ul class="ti-order-sortable">';
 		foreach ( $this->components as $component => $name ) {
+			if ( $component === $name ) {
+				continue;
+			}
 			echo '<li class="ui-state-default order-component' . esc_attr( $this->get_component_status_class( $component ) ) . '" data-id="' . esc_attr( $component ) . '">';
 			echo '<span class="toggle-display"></span>';
 			echo '<p>' . esc_html( $name ) . '</p>';
