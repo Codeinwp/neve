@@ -17,6 +17,7 @@ import { MultiSelectControl } from './multiselect/Control.js'
 import { ResponsiveRadioButtonsControl } from './responsive-radio-buttons/Control.js'
 import { RadioImageControl } from './radio-image/Control.js'
 import { OrderingControl } from './ordering/Control.js'
+import { UiControl } from './ui/Control.js'
 
 const { controlConstructor } = wp.customize
 
@@ -36,26 +37,27 @@ controlConstructor.neve_multiselect = MultiSelectControl
 controlConstructor.neve_responsive_radio_buttons_control = ResponsiveRadioButtonsControl
 controlConstructor.neve_radio_image_control = RadioImageControl
 controlConstructor.neve_ordering_control = OrderingControl
+controlConstructor.neve_ui_control = UiControl
 
-window.addEventListener( 'load', () => {
+window.addEventListener('load', () => {
   const deviceButtons = document.querySelector(
-    '#customize-footer-actions .devices, .hfg--cb-devices-switcher a.switch-to' )
-  deviceButtons.addEventListener( 'click', function(e) {
-    const event = new CustomEvent( 'neveChangedRepsonsivePreview', {
+    '#customize-footer-actions .devices, .hfg--cb-devices-switcher a.switch-to')
+  deviceButtons.addEventListener('click', function (e) {
+    const event = new CustomEvent('neveChangedRepsonsivePreview', {
       detail: e.target.dataset.device
-    } )
-    document.dispatchEvent( event )
-  } )
+    })
+    document.dispatchEvent(event)
+  })
   initDynamicFields()
-} )
+})
 
 window.HFG = {
   getSettings: () => {
     const usedSettings = {}
-    NeveReactCustomize.headerControls.map( (item) => {
-      if ( !wp.customize.control( item ) ) return false
-      usedSettings[item] = wp.customize.control( item ).setting.get()
-    } )
-    return JSON.stringify( usedSettings )
+    NeveReactCustomize.headerControls.map((item) => {
+      if (!wp.customize.control(item)) return false
+      usedSettings[item] = wp.customize.control(item).setting.get()
+    })
+    return JSON.stringify(usedSettings)
   }
 }

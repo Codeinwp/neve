@@ -58,7 +58,6 @@ class Footer extends Abstract_Builder {
 					$this->get_property( 'title' ),
 					'+'
 				),
-				'image'       => esc_url( get_template_directory_uri() . '/header-footer-grid/assets/images/customizer/hfg.mp4' ),
 				'quickLinks'  => array(
 					'footer_copyright_content'            => array(
 						'label' => esc_html__( 'Change Copyright', 'neve' ),

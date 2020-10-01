@@ -118,3 +118,18 @@
 	fill: $accent-color;
   }
 }
+
+.components-modal__screen-overlay {
+	z-index: 1000000;
+}
+
+.neve-ui-modal-wrap {
+	.components-tooltip {
+		display: none;
+	}
+
+	img {
+		display: block;
+		width: 100%;
+	}
+}

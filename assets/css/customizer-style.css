@@ -12,26 +12,31 @@
 }
 
 
-.hfg--cb-conditional-header {
+.hfg--cb-conditional-header, .hfg--cb-notice {
 	display: flex;
 	margin: 9px 0 0;
 	float: left;
 }
 
-.hfg--cb-conditional-header.hidden {
+.hfg--cb-conditional-header.hidden, .hfg--cb-notice.hidden {
 	display: none;
 }
 
-.hfg--cb-conditional-header p {
+.hfg--cb-notice p, .hfg--cb-conditional-header p {
 	margin: 0;
 }
 
-.hfg--cb-conditional-header .dashicons {
-	margin-right: 5px;
+.hfg--cb-notice a, .hfg--cb-conditional-header a {
+	cursor: pointer;
+	text-decoration: none;
+}
+.hfg--cb-notice h4 {
+	margin: 0 5px 0;
+	line-height: 1.5;
 }
 
-.hfg--cb-conditional-header a {
-	cursor: pointer;
+.hfg--cb-notice.welcome-notice a {
+	margin-left: 5px;
 }
 .nv-button-group {
     display: flex;

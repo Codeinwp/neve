@@ -56,13 +56,7 @@ class Header extends Abstract_Builder {
 		$this->set_property(
 			'instructions_array',
 			array(
-				'description' => sprintf(
-				/* translators: 1: builder, 2: builder symbol */
-					esc_attr__( 'Welcome to the %1$s builder! Click the %2$s button to add a new component or follow the Quick Links.', 'neve' ),
-					$this->get_property( 'title' ),
-					'+'
-				),
-				'image'       => esc_url( get_template_directory_uri() . '/header-footer-grid/assets/images/customizer/hfg.mp4' ),
+				'description' => __( 'Build your own header or choose from preset options.', 'neve' ),
 				'quickLinks'  => array(
 					'custom_logo'                       => array(
 						'label' => esc_html__( 'Change Logo', 'neve' ),
