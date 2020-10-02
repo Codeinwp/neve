@@ -163,7 +163,7 @@ class Main {
 		wp_register_style( 'neve-dash-style', $build_path . 'style-dashboard.css', [ 'wp-components' ], $dependencies['version'] );
 		wp_style_add_data( 'neve-dash-style', 'rtl', 'replace' );
 		wp_enqueue_style( 'neve-dash-style' );
-		wp_register_script( 'neve-dash-script', $build_path . '/dashboard.js', array_merge( $dependencies['dependencies'] ), $dependencies['version'], true );
+		wp_register_script( 'neve-dash-script', $build_path . '/dashboard.js', array_merge( $dependencies['dependencies'], [ 'updates' ] ), $dependencies['version'], true );
 		wp_localize_script( 'neve-dash-script', 'neveDash', apply_filters( 'neve_dashboard_page_data', $this->get_localization() ) );
 		wp_enqueue_script( 'neve-dash-script' );
 	}
