@@ -45,7 +45,7 @@ const StarterSitesUnavailable = ({ templatesPluginData }) => {
   const renderNoticeContent = () => {
     return (
       <>
-        <h1>{__('In order to be able to import any starter sites for Neve you would need to have the Cloud Templates & Patterns Collection plugin active.')}</h1>
+        <h1>{neveDash.strings.starterSitesUnavailable}</h1>
         <br/>
         {'install' === currentState &&
         <Button
