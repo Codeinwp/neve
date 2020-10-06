@@ -1,49 +1,49 @@
 /* jshint esversion: 6 */
-/* global wp */
-import PropTypes from 'prop-types'
-import classnames from 'classnames'
 
-const { useState } = wp.element
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
-const RadioImageComponent = ({ control }) => {
-  const [value, setValue] = useState(control.setting.get())
-  const { choices } = control.params
+import { useState } from '@wordpress/element';
 
-  const updateValue = (newVal) => {
-    setValue(newVal)
-    control.setting.set(newVal)
-  }
+const RadioImageComponent = ( { control } ) => {
+	const [ value, setValue ] = useState( control.setting.get() );
+	const { choices } = control.params;
 
-  const renderOptions = () => Object.keys(choices).map((choice, index) => {
-    const { name, image } = choices[choice]
-    const buttonClass = classnames([{ active: choice === value }])
-    return (
-      <div className='option' key={index}>
-        <label>
-          <button
-            className={buttonClass}
-            onClick={(e) => {
-              e.preventDefault()
-              updateValue(choice)
-            }}
-          >
-            <img src={image} alt={name || `Option ${choice}`} />
-          </button>
-          {name && <span>{name}</span>}
-        </label>
-      </div>
-    )
-  })
+	const updateValue = ( newVal ) => {
+		setValue( newVal );
+		control.setting.set( newVal );
+	};
 
-  return (
-    <div className='neve-radio-image'>
-      {renderOptions()}
-    </div>
-  )
-}
+	const renderOptions = () =>
+		Object.keys( choices ).map( ( choice, index ) => {
+			const { name, image } = choices[ choice ];
+			const buttonClass = classnames( [ { active: choice === value } ] );
+			return (
+				<div className="option" key={ index }>
+					<label>
+						<button
+							className={ buttonClass }
+							onClick={ ( e ) => {
+								e.preventDefault();
+								updateValue( choice );
+							} }
+						>
+							<img
+								src={ image }
+								alt={ name || `Option ${ choice }` }
+							/>
+						</button>
+						{ name && <span>{ name }</span> }
+					</label>
+				</div>
+			);
+		} );
+
+	return <div className="neve-radio-image">{ renderOptions() }</div>;
+};
 
 RadioImageComponent.propTypes = {
-  control: PropTypes.object.isRequired
-}
+	control: PropTypes.object.isRequired,
+};
 
-export default RadioImageComponent
+export default RadioImageComponent;

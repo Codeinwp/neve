@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-09-30T13:00:28+00:00\n"
+"POT-Creation-Date: 2020-10-02T08:09:00+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -484,8 +484,9 @@ msgid "Link"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Button.php:116
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:182
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:189
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:218
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:228
 msgid "Text"
 msgstr ""
 
@@ -505,8 +506,9 @@ msgstr ""
 
 #: header-footer-grid/Core/Components/CartIcon.php:142
 #: header-footer-grid/Core/Components/SearchResponsive.php:184
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:45
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:89
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/background/BackgroundComponent.js:43
+#: inc/customizer/controls/react/src/background/BackgroundComponent.js:91
 msgid "Color"
 msgstr ""
 
@@ -628,7 +630,8 @@ msgid "Items Hover Color"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Nav.php:177
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:123
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:122
 msgid "Search"
 msgstr ""
 
@@ -691,19 +694,22 @@ msgstr ""
 
 #: header-footer-grid/Core/Components/Search.php:120
 #: header-footer-grid/Core/Components/SearchResponsive.php:284
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:257
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:270
 msgid "Font Size"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Search.php:194
 #: header-footer-grid/Core/Components/SearchResponsive.php:358
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:144
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:162
 msgid "Border Width"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Search.php:251
 #: header-footer-grid/Core/Components/SearchResponsive.php:415
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:118
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:120
 msgid "Border Radius"
 msgstr ""
 
@@ -714,8 +720,9 @@ msgstr ""
 
 #: header-footer-grid/Core/Components/Search.php:306
 #: header-footer-grid/Core/Components/SearchResponsive.php:470
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:182
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:189
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:219
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:229
 msgid "Text and Border"
 msgstr ""
 
@@ -762,8 +769,9 @@ msgstr ""
 #. translators: %s is the header name
 #: header-footer-grid/Core/Customizer.php:265
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:151
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:60
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:172
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:54
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:178
 msgid "Default"
 msgstr ""
 
@@ -771,10 +779,11 @@ msgstr ""
 #: header-footer-grid/templates/components/component-cart-icon.php:26
 #: inc/views/header.php:130
 #: inc/views/layouts/layout_sidebar.php:144
-#: dashboard/src/Components/Onboarding/ImportModal.js:412
-#: dashboard/src/Components/Onboarding/Main.js:26
-#: dashboard/src/Components/Onboarding/Migration.js:119
-#: dashboard/src/Components/Onboarding/PreviewFrame.js:26
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Onboarding/ImportModal.js:502
+#: dashboard/src/Components/Onboarding/Main.js:46
+#: dashboard/src/Components/Onboarding/Migration.js:151
+#: dashboard/src/Components/Onboarding/PreviewFrame.js:33
 msgid "Close"
 msgstr ""
 
@@ -931,12 +940,14 @@ msgstr ""
 
 #: header-footer-grid/Core/Settings/Manager.php:177
 #: inc/customizer/options/typography.php:107
-#: dashboard/src/Components/Onboarding/ImportModal.js:142
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Onboarding/ImportModal.js:170
 msgid "General"
 msgstr ""
 
 #: header-footer-grid/Core/Settings/Manager.php:185
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:274
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:329
 msgid "Style"
 msgstr ""
 
@@ -1047,14 +1058,16 @@ msgstr ""
 
 #: inc/admin/plugin_install/main.php:113
 #: inc/admin/plugin_install/main.php:133
-#: dashboard/src/Components/LicenseCard.js:83
-#: dashboard/src/Components/PluginCard.js:17
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/LicenseCard.js:105
+#: dashboard/src/Components/PluginCard.js:21
 msgid "Activate"
 msgstr ""
 
 #: inc/admin/plugin_install/main.php:128
-#: dashboard/src/Components/LicenseCard.js:82
-#: dashboard/src/Components/PluginCard.js:18
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/LicenseCard.js:104
+#: dashboard/src/Components/PluginCard.js:25
 msgid "Deactivate"
 msgstr ""
 
@@ -1152,7 +1165,8 @@ msgid "Sites Library"
 msgstr ""
 
 #: inc/core/admin.php:263
-#: dashboard/src/Components/Content/Help.js:37
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Content/Help.js:43
 msgid "Documentation"
 msgstr ""
 
@@ -1419,7 +1433,8 @@ msgid "Content Width (%)"
 msgstr ""
 
 #: inc/customizer/options/layout_single_post.php:69
-#: dashboard/src/Components/Onboarding/ImportModal.js:128
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Onboarding/ImportModal.js:156
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:293
 msgid "Content"
 msgstr ""
@@ -1448,8 +1463,9 @@ msgstr ""
 
 #: inc/customizer/options/layout_single_product.php:124
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:127
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:201
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:233
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:202
+#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:237
 msgid "None"
 msgstr ""
 
@@ -1544,12 +1560,14 @@ msgid "Comments Navigation"
 msgstr ""
 
 #: inc/views/partials/comments.php:79
-#: dashboard/src/Components/Onboarding/PreviewFrame.js:35
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Onboarding/PreviewFrame.js:44
 msgid "Previous"
 msgstr ""
 
 #: inc/views/partials/comments.php:82
-#: dashboard/src/Components/Onboarding/PreviewFrame.js:45
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Onboarding/PreviewFrame.js:58
 msgid "Next"
 msgstr ""
 
@@ -1615,459 +1633,566 @@ msgstr ""
 msgid "Page Builder Full Width (Neve)"
 msgstr ""
 
-#: dashboard/src/Components/Content/Changelog.js:16
-msgid "Show changelog for"
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Onboarding/Search.js:98
+msgid "Search for a starter site"
 msgstr ""
 
-#: dashboard/src/Components/Content/Changelog.js:45
-msgid "Features"
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Onboarding/StarterSiteCard.js:34
+msgid "Preview"
 msgstr ""
 
-#: dashboard/src/Components/Content/Changelog.js:55
-msgid "Bug Fixes"
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Onboarding/ImportModal.js:516
+#: dashboard/src/Components/Onboarding/PreviewFrame.js:85
+#: dashboard/src/Components/Onboarding/StarterSiteCard.js:45
+msgid "Import"
 msgstr ""
 
-#: dashboard/src/Components/Content/Changelog.js:65
-msgid "Tweaks"
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Onboarding/StarterSiteCard.js:63
+msgid "Premium"
 msgstr ""
 
-#: dashboard/src/Components/Content/FreePro.js:23
-msgid "Get access to all Pro features and power-up your website"
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Onboarding/PreviewFrame.js:74
+msgid "Upgrade and Import"
 msgstr ""
 
-#: dashboard/src/Components/Content/FreePro.js:27
-msgid "Get Neve Pro Now"
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/utils/rest.js:68
+msgid "Typekit Project ID is invalid"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:24
-msgid "Build a landing page with a drag-and-drop content builder"
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Onboarding/ImportStepper.js:8
+msgid "Installing Plugins"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:25
-msgid "In the documentation below you will find an easy way to build a great looking landing page using a drag-and-drop content builder plugin."
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Onboarding/ImportStepper.js:13
+msgid "Importing Content"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:31
-#: dashboard/src/Components/Content/Help.js:66
-#: dashboard/src/Components/Content/Help.js:91
-#: dashboard/src/Components/ModuleCard.js:104
-msgid "Learn More"
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Onboarding/ImportStepper.js:18
+msgid "Importing Customizer Settings"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:44
-#: dashboard/src/Components/Content/Start.js:76
-msgid "Go to docs"
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Onboarding/ImportStepper.js:23
+msgid "Importing Widgets"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:50
-#: dashboard/src/Components/Sidebar.js:23
-msgid "Join our Facebook Group"
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Onboarding/ImportModalNote.js:19
+msgid "To import this demo you have to install the following plugins"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:59
-msgid "Create a child theme"
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Onboarding/ImportModalNote.js:23
+msgid "Note"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:60
-msgid "If you want to make changes to the theme's files, those changes are likely to be overwritten when you next update the theme. In order to prevent that from happening, you need to create a child theme. For this, please follow the documentation below."
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Onboarding/ImportModalNote.js:39
+msgid "We recommend you backup your website content before attempting a full site import."
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:73
-#: dashboard/src/Components/Content/Help.js:79
-msgid "Contact Support"
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Onboarding/ImportModalNote.js:45
+msgid "Some of the demo images will not be imported and will be replaced by placeholder images."
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:85
-msgid "Speed up your site"
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Onboarding/ImportModalError.js:26
+msgid "Error code"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:86
-msgid "If you find yourself in a situation where everything on your site is running very slowly, you might consider having a look at the documentation below where you will find the most common issues causing this and possible solutions for each of the issues."
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Onboarding/ImportModalError.js:30
+msgid "Error log"
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:99
-#: dashboard/src/utils/common.js:58
-msgid "Changelog"
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Onboarding/ImportModal.js:49
+#: dashboard/src/Components/Onboarding/ImportModal.js:85
+msgid "Something went wrong while loading the site data. Please refresh the page and try again."
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:100
-msgid "Want to get the gist on the latest theme changes? Just consult our changelog below to get a taste of the recent fixes and features implemented."
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Onboarding/ImportModal.js:367
+#: dashboard/src/Components/Onboarding/Migration.js:47
+msgid "Something went wrong while installing the necessary plugins."
 msgstr ""
 
-#: dashboard/src/Components/Content/Help.js:105
-msgid "View Changelog"
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Onboarding/ImportModal.js:371
+#: dashboard/src/Components/Onboarding/Migration.js:63
+msgid "Something went wrong while importing the website content."
 msgstr ""
 
-#: dashboard/src/Components/Content/Start.js:47
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Onboarding/ImportModal.js:375
+msgid "Something went wrong while updating the customizer settings."
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Onboarding/ImportModal.js:379
+msgid "Something went wrong while importing the widgets."
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Onboarding/ImportModal.js:486
+#: dashboard/src/Components/Onboarding/Migration.js:127
+msgid "Content was successfully imported. Enjoy your new site!"
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Onboarding/ImportModal.js:160
+msgid "Customizer"
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Onboarding/ImportModal.js:164
+msgid "Widgets"
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Onboarding/ImportModal.js:211
+#: dashboard/src/utils/common.js:56
+msgid "Plugins"
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Onboarding/ImportModal.js:527
+msgid "Back to Sites Library"
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Onboarding/ImportModal.js:536
+#: dashboard/src/Components/Onboarding/Migration.js:175
+msgid "View Website"
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Onboarding/ImportModal.js:539
+msgid "Add your own content"
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Onboarding/Migration.js:81
+#: dashboard/src/Components/Onboarding/Migration.js:214
+msgid "Migrate"
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Onboarding/Migration.js:101
+msgid "The following plugins will be installed"
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Onboarding/Migration.js:136
+msgid "Migrating"
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Onboarding/Migration.js:152
+msgid "Cancel"
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Onboarding/Migration.js:169
+msgid "Edit Content"
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Onboarding/Migration.js:161
+msgid "Start Migration"
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Onboarding/Migration.js:224
+msgid "Something went wrong. Please reload the page and try again."
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Onboarding/Migration.js:231
+msgid "Dismissed"
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Onboarding/Migration.js:236
+msgid "Dismiss"
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Onboarding/EditorSelector.js:27
+#: dashboard/src/Components/Onboarding/EditorSelector.js:64
+#: dashboard/src/Components/Onboarding/EditorTabs.js:42
+msgid "Builder Logo"
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Onboarding/Main.js:36
+msgid "Starter sites could not be loaded. Please refresh and try again."
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Onboarding/Main.js:55
+msgid "Business"
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Onboarding/Main.js:56
+msgid "Ecommerce"
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Onboarding/Main.js:57
+msgid "Fashion"
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Onboarding/Main.js:58
+msgid "Blogging"
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Onboarding/Main.js:59
+msgid "Photography"
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Onboarding/Main.js:250
+msgid "Ready to use pre-built websites with 1-click installation"
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Onboarding/Main.js:258
+msgid "Keep the Current Layout"
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Onboarding/Main.js:284
+msgid "No results found"
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Onboarding/Main.js:285
+msgid "You can try a different search or use one of the categories below."
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Content/Start.js:54
 #: dashboard/src/utils/common.js:41
 msgid "Starter Sites"
 msgstr ""
 
-#: dashboard/src/Components/Content/Start.js:55
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Content/Start.js:63
 msgid "Go to Starter Sites"
 msgstr ""
 
-#: dashboard/src/Components/Content/Start.js:62
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Content/Start.js:71
 msgid "Customizer quick links"
 msgstr ""
 
-#: dashboard/src/Components/Content/Start.js:70
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Content/Start.js:79
 msgid "Getting Started? Check help and docs"
 msgstr ""
 
-#: dashboard/src/Components/Content/Start.js:71
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Content/Start.js:83
 msgid "Need more details? Please check our full documentation for detailed information on how to use Neve."
 msgstr ""
 
-#: dashboard/src/Components/Content/Start.js:85
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Content/Help.js:47
+#: dashboard/src/Components/Content/Start.js:89
+msgid "Go to docs"
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Content/Start.js:98
 msgid "Feedback"
 msgstr ""
 
-#: dashboard/src/Components/Content/Start.js:86
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Content/Start.js:99
 msgid "Share your feedback for Neve and get the chance to win the pro version."
 msgstr ""
 
-#: dashboard/src/Components/Content/Start.js:89
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Content/Start.js:108
 msgid "Leave Feedback"
 msgstr ""
 
-#: dashboard/src/Components/FeatureRow.js:42
-msgid "More details <a>here</a>."
-msgstr ""
-
-#: dashboard/src/Components/Header.js:24
-msgid "Neve Theme Logo"
-msgstr ""
-
-#: dashboard/src/Components/LicenseCard.js:73
-msgid "Enter License Key"
-msgstr ""
-
-#: dashboard/src/Components/LicenseCard.js:86
-#: dashboard/src/Components/PluginCard.js:17
-msgid "Activating"
-msgstr ""
-
-#: dashboard/src/Components/LicenseCard.js:87
-#: dashboard/src/Components/PluginCard.js:18
-msgid "Deactivating"
-msgstr ""
-
-#: dashboard/src/Components/LicenseCard.js:102
-msgid "Valid"
-msgstr ""
-
-#: dashboard/src/Components/LicenseCard.js:102
-#: dashboard/src/Components/LicenseCard.js:110
-msgid "Expired"
-msgstr ""
-
-#: dashboard/src/Components/LicenseCard.js:109
-msgid "Expires"
-msgstr ""
-
-#: dashboard/src/Components/ModuleCard.js:69
-msgid "Upgrade"
-msgstr ""
-
-#: dashboard/src/Components/ModuleCard.js:85
-msgid "Module Activated"
-msgstr ""
-
-#: dashboard/src/Components/ModuleCard.js:86
-msgid "Module Deactivated."
-msgstr ""
-
-#: dashboard/src/Components/ModuleCard.js:90
-msgid "Could not activate module. Please try again."
-msgstr ""
-
-#: dashboard/src/Components/Notification.js:86
-msgid "Done!"
-msgstr ""
-
-#: dashboard/src/Components/Notification.js:87
-msgid "An error occured. Please reload the page and try again."
-msgstr ""
-
-#: dashboard/src/Components/Notification.js:102
-msgid "In Progress"
-msgstr ""
-
-#: dashboard/src/Components/Onboarding/EditorSelector.js:19
-#: dashboard/src/Components/Onboarding/EditorSelector.js:41
-#: dashboard/src/Components/Onboarding/EditorTabs.js:27
-msgid "Builder Logo"
-msgstr ""
-
-#: dashboard/src/Components/Onboarding/ImportModal.js:42
-#: dashboard/src/Components/Onboarding/ImportModal.js:69
-msgid "Something went wrong while loading the site data. Please refresh the page and try again."
-msgstr ""
-
-#: dashboard/src/Components/Onboarding/ImportModal.js:132
-msgid "Customizer"
-msgstr ""
-
-#: dashboard/src/Components/Onboarding/ImportModal.js:136
-msgid "Widgets"
-msgstr ""
-
-#: dashboard/src/Components/Onboarding/ImportModal.js:176
-#: dashboard/src/utils/common.js:50
-msgid "Plugins"
-msgstr ""
-
-#: dashboard/src/Components/Onboarding/ImportModal.js:314
-#: dashboard/src/Components/Onboarding/Migration.js:43
-msgid "Something went wrong while installing the necessary plugins."
-msgstr ""
-
-#: dashboard/src/Components/Onboarding/ImportModal.js:315
-#: dashboard/src/Components/Onboarding/Migration.js:58
-msgid "Something went wrong while importing the website content."
-msgstr ""
-
-#: dashboard/src/Components/Onboarding/ImportModal.js:316
-msgid "Something went wrong while updating the customizer settings."
-msgstr ""
-
-#: dashboard/src/Components/Onboarding/ImportModal.js:317
-msgid "Something went wrong while importing the widgets."
-msgstr ""
-
-#: dashboard/src/Components/Onboarding/ImportModal.js:397
-#: dashboard/src/Components/Onboarding/Migration.js:100
-msgid "Content was successfully imported. Enjoy your new site!"
-msgstr ""
-
-#: dashboard/src/Components/Onboarding/ImportModal.js:422
-#: dashboard/src/Components/Onboarding/PreviewFrame.js:66
-#: dashboard/src/Components/Onboarding/StarterSiteCard.js:41
-msgid "Import"
-msgstr ""
-
-#: dashboard/src/Components/Onboarding/ImportModal.js:431
-msgid "Back to Sites Library"
-msgstr ""
-
-#: dashboard/src/Components/Onboarding/ImportModal.js:435
-#: dashboard/src/Components/Onboarding/Migration.js:140
-msgid "View Website"
-msgstr ""
-
-#: dashboard/src/Components/Onboarding/ImportModal.js:437
-msgid "Add your own content"
-msgstr ""
-
-#: dashboard/src/Components/Onboarding/ImportModalError.js:11
-msgid "Error code"
-msgstr ""
-
-#: dashboard/src/Components/Onboarding/ImportModalError.js:12
-msgid "Error log"
-msgstr ""
-
-#: dashboard/src/Components/Onboarding/ImportModalNote.js:15
-msgid "To import this demo you have to install the following plugins"
-msgstr ""
-
-#: dashboard/src/Components/Onboarding/ImportModalNote.js:16
-msgid "Note"
-msgstr ""
-
-#: dashboard/src/Components/Onboarding/ImportModalNote.js:23
-msgid "We recommend you backup your website content before attempting a full site import."
-msgstr ""
-
-#: dashboard/src/Components/Onboarding/ImportModalNote.js:24
-msgid "Some of the demo images will not be imported and will be replaced by placeholder images."
-msgstr ""
-
-#: dashboard/src/Components/Onboarding/ImportStepper.js:9
-msgid "Installing Plugins"
-msgstr ""
-
-#: dashboard/src/Components/Onboarding/ImportStepper.js:14
-msgid "Importing Content"
-msgstr ""
-
-#: dashboard/src/Components/Onboarding/ImportStepper.js:19
-msgid "Importing Customizer Settings"
-msgstr ""
-
-#: dashboard/src/Components/Onboarding/ImportStepper.js:24
-msgid "Importing Widgets"
-msgstr ""
-
-#: dashboard/src/Components/Onboarding/Main.js:24
-msgid "Starter sites could not be loaded. Please refresh and try again."
-msgstr ""
-
-#: dashboard/src/Components/Onboarding/Main.js:32
-msgid "Business"
-msgstr ""
-
-#: dashboard/src/Components/Onboarding/Main.js:33
-msgid "Ecommerce"
-msgstr ""
-
-#: dashboard/src/Components/Onboarding/Main.js:34
-msgid "Fashion"
-msgstr ""
-
-#: dashboard/src/Components/Onboarding/Main.js:35
-msgid "Blogging"
-msgstr ""
-
-#: dashboard/src/Components/Onboarding/Main.js:36
-msgid "Photography"
-msgstr ""
-
-#: dashboard/src/Components/Onboarding/Main.js:209
-msgid "Ready to use pre-built websites with 1-click installation"
-msgstr ""
-
-#: dashboard/src/Components/Onboarding/Main.js:212
-msgid "Keep the Current Layout"
-msgstr ""
-
-#: dashboard/src/Components/Onboarding/Main.js:233
-msgid "No results found"
-msgstr ""
-
-#: dashboard/src/Components/Onboarding/Main.js:234
-msgid "You can try a different search or use one of the categories below."
-msgstr ""
-
-#: dashboard/src/Components/Onboarding/Migration.js:74
-#: dashboard/src/Components/Onboarding/Migration.js:175
-msgid "Migrate"
-msgstr ""
-
-#: dashboard/src/Components/Onboarding/Migration.js:88
-msgid "The following plugins will be installed"
-msgstr ""
-
-#: dashboard/src/Components/Onboarding/Migration.js:107
-msgid "Migrating"
-msgstr ""
-
-#: dashboard/src/Components/Onboarding/Migration.js:119
-msgid "Cancel"
-msgstr ""
-
-#: dashboard/src/Components/Onboarding/Migration.js:127
-msgid "Start Migration"
-msgstr ""
-
-#: dashboard/src/Components/Onboarding/Migration.js:134
-msgid "Edit Content"
-msgstr ""
-
-#: dashboard/src/Components/Onboarding/Migration.js:183
-msgid "Something went wrong. Please reload the page and try again."
-msgstr ""
-
-#: dashboard/src/Components/Onboarding/Migration.js:186
-msgid "Dismissed"
-msgstr ""
-
-#: dashboard/src/Components/Onboarding/Migration.js:190
-msgid "Dismiss"
-msgstr ""
-
-#: dashboard/src/Components/Onboarding/PreviewFrame.js:56
-msgid "Upgrade and Import"
-msgstr ""
-
-#: dashboard/src/Components/Onboarding/Search.js:62
-msgid "Search for a starter site"
-msgstr ""
-
-#: dashboard/src/Components/Onboarding/StarterSiteCard.js:30
-msgid "Preview"
-msgstr ""
-
-#: dashboard/src/Components/Onboarding/StarterSiteCard.js:52
-msgid "Premium"
-msgstr ""
-
-#: dashboard/src/Components/Options/InputForm.js:47
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Options/InputForm.js:52
 msgid "Save"
 msgstr ""
 
-#: dashboard/src/Components/PluginCard.js:16
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/ModuleCard.js:79
+msgid "Upgrade"
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/ModuleCard.js:113
+msgid "Module Activated"
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/ModuleCard.js:117
+msgid "Module Deactivated."
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/ModuleCard.js:127
+msgid "Could not activate module. Please try again."
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Content/Help.js:37
+#: dashboard/src/Components/Content/Help.js:73
+#: dashboard/src/Components/Content/Help.js:101
+#: dashboard/src/Components/ModuleCard.js:146
+msgid "Learn More"
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/PluginCard.js:17
 msgid "Install"
 msgstr ""
 
-#: dashboard/src/Components/PluginCard.js:16
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/PluginCard.js:18
 msgid "Installing"
 msgstr ""
 
-#: dashboard/src/Components/Sidebar.js:20
-msgid "Neve Community"
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/LicenseCard.js:107
+#: dashboard/src/Components/PluginCard.js:22
+msgid "Activating"
 msgstr ""
 
-#: dashboard/src/Components/Sidebar.js:28
-msgid "Leave us a review"
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/LicenseCard.js:108
+#: dashboard/src/Components/PluginCard.js:26
+msgid "Deactivating"
 msgstr ""
 
-#: dashboard/src/Components/Sidebar.js:29
-msgid "Are you are enjoying Neve? We would love to hear your feedback."
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Content/Help.js:24
+msgid "Build a landing page with a drag-and-drop content builder"
 msgstr ""
 
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Content/Help.js:28
+msgid "In the documentation below you will find an easy way to build a great looking landing page using a drag-and-drop content builder plugin."
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Content/Help.js:55
 #: dashboard/src/Components/Sidebar.js:31
-msgid "Submit a review"
+msgid "Join our Facebook Group"
 msgstr ""
 
-#: dashboard/src/Components/Sidebar.js:36
-msgid "Contributing"
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Content/Help.js:63
+msgid "Create a child theme"
 msgstr ""
 
-#: dashboard/src/Components/Sidebar.js:37
-msgid "Become a contributor by opting in to our anonymous data tracking. We guarantee no sensitive data is collected."
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Content/Help.js:64
+msgid "If you want to make changes to the theme's files, those changes are likely to be overwritten when you next update the theme. In order to prevent that from happening, you need to create a child theme. For this, please follow the documentation below."
 msgstr ""
 
-#: dashboard/src/Components/Sidebar.js:39
-msgid "What do we track?"
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Content/Help.js:80
+#: dashboard/src/Components/Content/Help.js:84
+msgid "Contact Support"
 msgstr ""
 
-#: dashboard/src/Components/Sidebar.js:44
-msgid "Allow Anonymous Tracking"
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Content/Help.js:91
+msgid "Speed up your site"
 msgstr ""
 
-#: dashboard/src/Components/Sidebar.js:49
-msgid "Could not update option. Please try again."
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Content/Help.js:92
+msgid "If you find yourself in a situation where everything on your site is running very slowly, you might consider having a look at the documentation below where you will find the most common issues causing this and possible solutions for each of the issues."
 msgstr ""
 
-#: dashboard/src/Components/Sidebar.js:54
-#: dashboard/src/Components/Snackbar.js:26
-msgid "Option Updated"
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Content/Help.js:108
+#: dashboard/src/utils/common.js:64
+msgid "Changelog"
 msgstr ""
 
-#: dashboard/src/Components/Snackbar.js:25
-msgid "Could not Update Option. Please try again."
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Content/Help.js:109
+msgid "Want to get the gist on the latest theme changes? Just consult our changelog below to get a taste of the recent fixes and features implemented."
 msgstr ""
 
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Content/Help.js:115
+msgid "View Changelog"
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Content/Changelog.js:16
+msgid "Show changelog for"
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Content/Changelog.js:58
+msgid "Features"
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Content/Changelog.js:77
+msgid "Bug Fixes"
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Content/Changelog.js:96
+msgid "Tweaks"
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/FeatureRow.js:44
+msgid "More details <a>here</a>."
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Content/FreePro.js:26
+msgid "Get access to all Pro features and power-up your website"
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Content/FreePro.js:32
+msgid "Get Neve Pro Now"
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
 #: dashboard/src/utils/common.js:37
 msgid "Welcome"
 msgstr ""
 
-#: dashboard/src/utils/common.js:46
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/utils/common.js:52
 msgid "Free vs Pro"
 msgstr ""
 
-#: dashboard/src/utils/common.js:54
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/utils/common.js:60
 msgid "Help"
 msgstr ""
 
-#: dashboard/src/utils/rest.js:60
-msgid "Typekit Project ID is invalid"
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Header.js:25
+msgid "Neve Theme Logo"
 msgstr ""
 
-#: inc/admin/metabox/src/components/controls/SortableItems.js:27
-#: inc/admin/metabox/src/components/controls/SortableItems.js:94
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Notification.js:87
+msgid "Done!"
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Notification.js:94
+msgid "An error occured. Please reload the page and try again."
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Notification.js:114
+msgid "In Progress"
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/LicenseCard.js:94
+msgid "Enter License Key"
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/LicenseCard.js:137
+msgid "Valid"
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/LicenseCard.js:138
+#: dashboard/src/Components/LicenseCard.js:146
+msgid "Expired"
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/LicenseCard.js:145
+msgid "Expires"
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Sidebar.js:22
+msgid "Neve Community"
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Sidebar.js:36
+msgid "Leave us a review"
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Sidebar.js:38
+msgid "Are you are enjoying Neve? We would love to hear your feedback."
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Sidebar.js:44
+msgid "Submit a review"
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Sidebar.js:49
+msgid "Contributing"
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Sidebar.js:51
+msgid "Become a contributor by opting in to our anonymous data tracking. We guarantee no sensitive data is collected."
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Sidebar.js:57
+msgid "What do we track?"
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Sidebar.js:62
+msgid "Allow Anonymous Tracking"
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Sidebar.js:73
+msgid "Could not update option. Please try again."
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Sidebar.js:82
+#: dashboard/src/Components/Snackbar.js:27
+msgid "Option Updated"
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Snackbar.js:23
+msgid "Could not Update Option. Please try again."
+msgstr ""
+
+#: inc/admin/metabox/src/components/controls/SortableItems.js:26
+#: inc/admin/metabox/src/components/controls/SortableItems.js:96
 msgid "Toggle"
 msgstr ""
 
@@ -2076,8 +2201,9 @@ msgid "Page Layout"
 msgstr ""
 
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:125
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:59
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:171
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:53
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:177
 msgid "Inherit"
 msgstr ""
 
@@ -2145,253 +2271,315 @@ msgstr ""
 msgid "Neve Options"
 msgstr ""
 
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:46
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:110
-msgid "Image"
-msgstr ""
-
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:99
-msgid "Use Featured Image"
-msgstr ""
-
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:109
-msgid "Fallback Image"
-msgstr ""
-
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:113
-msgid "Select from the Media Library or upload a new image"
-msgstr ""
-
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:123
-msgid "Add Image"
-msgstr ""
-
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:140
-msgid "Remove Fallback Image"
-msgstr ""
-
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:141
-msgid "Remove Image"
-msgstr ""
-
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:156
-msgid "Fixed Background"
-msgstr ""
-
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:168
-msgid "Overlay Color"
-msgstr ""
-
-#: inc/customizer/controls/react/src/background/BackgroundComponent.js:175
-msgid "Overlay Opacity"
-msgstr ""
-
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:179
-msgid "Normal"
-msgstr ""
-
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:181
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:188
-#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:61
-msgid "Background"
-msgstr ""
-
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:186
-msgid "Hover"
-msgstr ""
-
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:243
-msgid "Filled"
-msgstr ""
-
-#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:249
-msgid "Outline"
-msgstr ""
-
-#: inc/customizer/controls/react/src/common/ColorControl.js:60
-msgid "Clear"
-msgstr ""
-
-#: inc/customizer/controls/react/src/common/Responsive.js:29
-msgid "Desktop"
-msgstr ""
-
-#: inc/customizer/controls/react/src/common/Responsive.js:33
-msgid "Tablet"
-msgstr ""
-
-#: inc/customizer/controls/react/src/common/Responsive.js:37
-msgid "Mobile"
-msgstr ""
-
-#: inc/customizer/controls/react/src/common/Sizing.js:27
-msgid "Unlink Values"
-msgstr ""
-
-#: inc/customizer/controls/react/src/common/Sizing.js:27
-msgid "Link Values"
-msgstr ""
-
-#: inc/customizer/controls/react/src/common/Sizing.js:69
-msgid "Reset all Values"
-msgstr ""
-
-#: inc/customizer/controls/react/src/common/Sizing.js:69
-msgid "Reset Value"
-msgstr ""
-
+#: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/dynamic-fields/dynamic-field-inserter.js:52
 msgid "Insert Dynamic Tag"
 msgstr ""
 
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:145
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/common/Responsive.js:20
+msgid "Desktop"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/common/Responsive.js:24
+msgid "Tablet"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/common/Responsive.js:28
+msgid "Mobile"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/common/ColorControl.js:59
+msgid "Clear"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/background/BackgroundComponent.js:44
+#: inc/customizer/controls/react/src/background/BackgroundComponent.js:118
+msgid "Image"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/background/BackgroundComponent.js:104
+msgid "Use Featured Image"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/background/BackgroundComponent.js:158
+msgid "Remove Fallback Image"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/background/BackgroundComponent.js:162
+msgid "Remove Image"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/background/BackgroundComponent.js:117
+msgid "Fallback Image"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/background/BackgroundComponent.js:122
+msgid "Select from the Media Library or upload a new image"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/background/BackgroundComponent.js:139
+msgid "Add Image"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/background/BackgroundComponent.js:184
+msgid "Fixed Background"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/background/BackgroundComponent.js:197
+msgid "Overlay Color"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/background/BackgroundComponent.js:207
+msgid "Overlay Opacity"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/common/Sizing.js:25
+msgid "Unlink Values"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/common/Sizing.js:26
+msgid "Link Values"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/common/Sizing.js:72
+msgid "Reset all Values"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/common/Sizing.js:73
+msgid "Reset Value"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:197
+msgid "Weight"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:232
+msgid "Transform"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:240
+msgid "Capitalize"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:244
+msgid "Lowercase"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:248
+msgid "Uppercase"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:317
+msgid "Line Height"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:368
+msgid "Letter Spacing"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:148
 msgid "No results."
 msgstr ""
 
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:159
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:165
 msgid "Font Family"
 msgstr ""
 
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:188
-msgid "Loading..."
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:197
+msgid "Loading…"
 msgstr ""
 
-#: inc/customizer/controls/react/src/multiselect/MultiSelect.js:14
-msgid "Add item"
-msgstr ""
-
-#: inc/customizer/controls/react/src/multiselect/MultiSelect.js:32
-msgid "Remove Item"
-msgstr ""
-
-#: inc/customizer/controls/react/src/multiselect/MultiSelect.js:56
-msgid "Add items by clicking the ones below."
-msgstr ""
-
-#: inc/customizer/controls/react/src/multiselect/MultiSelect.js:63
-msgid "All items are already selected."
-msgstr ""
-
-#: inc/customizer/controls/react/src/ordering/OrderingComponent.js:16
-msgid "Drag to Reorder"
-msgstr ""
-
-#: inc/customizer/controls/react/src/ordering/OrderingComponent.js:26
-msgid "Toggle Visibility"
-msgstr ""
-
-#: inc/customizer/controls/react/src/presets-selector/PresetsSelector.js:63
-msgid "No header presets found"
-msgstr ""
-
+#: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:38
 msgid "Logo Only"
 msgstr ""
 
+#: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:42
 msgid "Logo - Title & Tagline"
 msgstr ""
 
+#: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:46
 msgid "Title & Tagline - Logo"
 msgstr ""
 
+#: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:50
 msgid "Logo on Top"
 msgstr ""
 
+#: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:57
 msgid "Plain"
 msgstr ""
 
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:215
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:225
+#: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:61
+msgid "Background"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:65
 msgid "Bottom Border"
 msgstr ""
 
+#: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:69
 msgid "Top Border"
 msgstr ""
 
+#: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:76
 msgid "Icon Style 2"
 msgstr ""
 
+#: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:80
 msgid "Icon Style 1"
 msgstr ""
 
+#: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:84
 msgid "Icon Style 3"
 msgstr ""
 
+#: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:88
 msgid "Icon Style 4"
 msgstr ""
 
+#: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:92
 msgid "Icon Style 5"
 msgstr ""
 
+#: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:96
 msgid "Icon Style 6"
 msgstr ""
 
+#: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:100
 msgid "WordPress Avatar"
 msgstr ""
 
+#: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:104
 msgid "No Icon"
 msgstr ""
 
+#: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:111
 msgid "Style 1"
 msgstr ""
 
+#: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:115
 msgid "Style 2"
 msgstr ""
 
+#: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:119
 msgid "Style 3"
 msgstr ""
 
+#: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:123
 msgid "Style 4"
 msgstr ""
 
+#: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:127
 msgid "Style 5"
 msgstr ""
 
+#: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:131
 msgid "Style 6"
 msgstr ""
 
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:196
-msgid "Weight"
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:213
+msgid "Normal"
 msgstr ""
 
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:228
-msgid "Transform"
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:223
+msgid "Hover"
 msgstr ""
 
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:234
-msgid "Capitalize"
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:298
+msgid "Filled"
 msgstr ""
 
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:235
-msgid "Lowercase"
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:303
+msgid "Outline"
 msgstr ""
 
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:236
-msgid "Uppercase"
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/presets-selector/PresetsSelector.js:70
+msgid "No header presets found"
 msgstr ""
 
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:301
-msgid "Line Height"
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/multiselect/MultiSelect.js:15
+msgid "Add item"
 msgstr ""
 
-#: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:348
-msgid "Letter Spacing"
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/multiselect/MultiSelect.js:35
+msgid "Remove Item"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/multiselect/MultiSelect.js:64
+msgid "Add items by clicking the ones below."
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/multiselect/MultiSelect.js:76
+msgid "All items are already selected."
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/ordering/OrderingComponent.js:21
+msgid "Drag to Reorder"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/ordering/OrderingComponent.js:35
+msgid "Toggle Visibility"
 msgstr ""

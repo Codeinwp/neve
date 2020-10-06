@@ -157,13 +157,13 @@ class Main {
 			return;
 		}
 
-		$dependencies = [ 'react', 'react-dom', 'wp-i18n', 'wp-api', 'wp-api-fetch', 'wp-components', 'wp-element', 'updates' ];
+		$build_path   = get_template_directory_uri() . '/dashboard/build/';
+		$dependencies = ( include  get_template_directory() . '/dashboard/build/dashboard.asset.php' );
 
-		wp_register_style( 'neve-dash-style', get_template_directory_uri() . '/dashboard/build/build.css', [ 'wp-components' ], NEVE_VERSION );
+		wp_register_style( 'neve-dash-style', $build_path . 'style-dashboard.css', [ 'wp-components' ], $dependencies['version'] );
 		wp_style_add_data( 'neve-dash-style', 'rtl', 'replace' );
 		wp_enqueue_style( 'neve-dash-style' );
-
-		wp_register_script( 'neve-dash-script', get_template_directory_uri() . '/dashboard/build/build.js', $dependencies, NEVE_VERSION, true );
+		wp_register_script( 'neve-dash-script', $build_path . '/dashboard.js', array_merge( $dependencies['dependencies'], [ 'updates' ] ), $dependencies['version'], true );
 		wp_localize_script( 'neve-dash-script', 'neveDash', apply_filters( 'neve_dashboard_page_data', $this->get_localization() ) );
 		wp_enqueue_script( 'neve-dash-script' );
 	}

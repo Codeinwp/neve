@@ -1,15 +1,14 @@
 /* jshint esversion: 6 */
-/* global wp */
 
-import FontFamilyComponent from './FontFamilyComponent.js'
-const { render } = wp.element
+import FontFamilyComponent from './FontFamilyComponent.js';
+import { render } from '@wordpress/element';
 
-export const FontFamilyControl = wp.customize.Control.extend({
-  renderContent: function renderContent() {
-    const control = this
-    render(
-      <FontFamilyComponent control={control} />,
-      control.container[0]
-    )
-  }
-})
+export const FontFamilyControl = wp.customize.Control.extend( {
+	renderContent: function renderContent() {
+		const control = this;
+		render(
+			<FontFamilyComponent control={ control } />,
+			control.container[ 0 ]
+		);
+	},
+} );

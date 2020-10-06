@@ -1,8 +1,13 @@
-/* global wp, neveDash  */
+/* global neveDash  */
 const { onboarding } = neveDash;
 
-let firstEditor = 'undefined' !== typeof onboarding.sites && 'undefined' !== typeof onboarding.sites.sites ? Object.keys(onboarding.sites.sites)[0] : 'gutenberg';
-let selectedEditor = localStorage.getItem( 'neve-onboarding-editor') || firstEditor;
+const firstEditor =
+	'undefined' !== typeof onboarding.sites &&
+	'undefined' !== typeof onboarding.sites.sites
+		? Object.keys( onboarding.sites.sites )[ 0 ]
+		: 'gutenberg';
+const selectedEditor =
+	localStorage.getItem( 'neve-onboarding-editor' ) || firstEditor;
 
 const initialState = {
 	sites: onboarding.sites || {},
@@ -13,52 +18,52 @@ const initialState = {
 	currentSite: null,
 	importing: false,
 	isOnboarding: onboarding.onboarding || false,
-	migrationData: null
+	migrationData: null,
 };
-export default (state = initialState, action) => {
-	switch (action.type) {
+export default ( state = initialState, action ) => {
+	switch ( action.type ) {
 		case 'REFRESH_SITES':
-			const {sites} = action.payload;
+			const { sites } = action.payload;
 			return {
 				...state,
-				sites
+				sites,
 			};
 		case 'SET_CURRENT_EDITOR':
-			const {editor} = action.payload;
+			const { editor } = action.payload;
 			localStorage.setItem( 'neve-onboarding-editor', editor );
 			return {
 				...state,
-				editor
+				editor,
 			};
 		case 'SET_CURRENT_CATEGORY':
-			const {category} = action.payload;
+			const { category } = action.payload;
 			return {
 				...state,
-				category
+				category,
 			};
 		case 'SET_FOCUSED_SITE':
-			const {siteData} = action.payload;
+			const { siteData } = action.payload;
 			return {
 				...state,
-				currentSite: siteData
+				currentSite: siteData,
 			};
 		case 'SET_PREVIEW_STATUS':
-			const {previewStatus} = action.payload;
+			const { previewStatus } = action.payload;
 			return {
 				...state,
-				previewStatus
+				previewStatus,
 			};
 		case 'SET_IMPORT_MODAL_STATUS':
-			const {importModalStatus} = action.payload;
+			const { importModalStatus } = action.payload;
 			return {
 				...state,
-				importModalStatus
+				importModalStatus,
 			};
 		case 'SET_ONBOARDING':
-			const {status} = action.payload;
+			const { status } = action.payload;
 			return {
 				...state,
-				isOnboarding: status
+				isOnboarding: status,
 			};
 	}
 	return state;
