@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-10-07T08:11:00+00:00\n"
+"POT-Creation-Date: 2020-10-07T13:46:29+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -269,7 +269,7 @@ msgstr ""
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:303
 #: header-footer-grid/Core/Settings/Manager.php:181
 #: inc/customizer/options/layout_blog.php:117
-#: inc/customizer/options/main.php:51
+#: inc/customizer/options/main.php:53
 msgid "Layout"
 msgstr ""
 
@@ -312,45 +312,45 @@ msgstr ""
 msgid "Header"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:579
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:574
 msgid "Section Content"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1295
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1290
 #: header-footer-grid/Core/Components/SearchResponsive.php:113
 msgid "Open Behaviour"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1300
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1295
 msgid "Slide from Left"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1301
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1296
 msgid "Slide from Right"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1302
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1297
 msgid "Pull from Left"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1303
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1298
 msgid "Pull from Right"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1304
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1299
 msgid "Full Canvas"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1305
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1300
 msgid "Slide Down"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1320
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1315
 msgid "Sidebar Width"
 msgstr ""
 
 #: header-footer-grid/Core/Builder/Footer.php:34
-#: header-footer-grid/Core/Builder/Footer.php:75
+#: header-footer-grid/Core/Builder/Footer.php:74
 msgid "Footer"
 msgstr ""
 
@@ -368,56 +368,59 @@ msgstr ""
 
 #. translators: 1: builder, 2: builder symbol
 #: header-footer-grid/Core/Builder/Footer.php:57
-#: header-footer-grid/Core/Builder/Header.php:61
 msgid "Welcome to the %1$s builder! Click the %2$s button to add a new component or follow the Quick Links."
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Footer.php:64
+#: header-footer-grid/Core/Builder/Footer.php:63
 msgid "Change Copyright"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Footer.php:68
+#: header-footer-grid/Core/Builder/Footer.php:67
 msgid "Change Footer Color"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Footer.php:121
+#: header-footer-grid/Core/Builder/Footer.php:120
 msgid "Footer Top"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Footer.php:125
+#: header-footer-grid/Core/Builder/Footer.php:124
 msgid "Footer Bottom"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Header.php:68
+#: header-footer-grid/Core/Builder/Header.php:59
+msgid "Build your own header or choose from preset options."
+msgstr ""
+
+#: header-footer-grid/Core/Builder/Header.php:62
 msgid "Change Logo"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Header.php:72
+#: header-footer-grid/Core/Builder/Header.php:66
 msgid "Change Header Color"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Header.php:76
+#: header-footer-grid/Core/Builder/Header.php:70
 msgid "Change Menu"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Header.php:97
-#: header-footer-grid/Core/Builder/Header.php:107
+#: header-footer-grid/Core/Builder/Header.php:91
+#: header-footer-grid/Core/Builder/Header.php:101
 msgid "Header Presets"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Header.php:177
+#: header-footer-grid/Core/Builder/Header.php:171
 msgid "Header Top"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Header.php:181
+#: header-footer-grid/Core/Builder/Header.php:175
 msgid "Header Main"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Header.php:185
+#: header-footer-grid/Core/Builder/Header.php:179
 msgid "Header Bottom"
 msgstr ""
 
-#: header-footer-grid/Core/Builder/Header.php:189
+#: header-footer-grid/Core/Builder/Header.php:183
 #: header-footer-grid/templates/rows.php:73
 msgid "Mobile menu content"
 msgstr ""
@@ -454,7 +457,7 @@ msgid "Margin"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:787
-#: inc/customizer/options/main.php:55
+#: inc/customizer/options/main.php:57
 msgid "Typography"
 msgstr ""
 
@@ -762,12 +765,12 @@ msgid "Select Menu"
 msgstr ""
 
 #. translators: %s is the header name
-#: header-footer-grid/Core/Customizer.php:265
+#: header-footer-grid/Core/Customizer.php:266
 msgid "You are customizing the %s Header"
 msgstr ""
 
 #. translators: %s is the header name
-#: header-footer-grid/Core/Customizer.php:265
+#: header-footer-grid/Core/Customizer.php:266
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:151
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:54
@@ -775,7 +778,12 @@ msgstr ""
 msgid "Default"
 msgstr ""
 
-#: header-footer-grid/Core/Customizer.php:273
+#. translators: %s is the header name
+#: header-footer-grid/Core/Customizer.php:277
+msgid "Click on any empty space to add header components, or existing components to adjust settings."
+msgstr ""
+
+#: header-footer-grid/Core/Customizer.php:286
 #: header-footer-grid/templates/components/component-cart-icon.php:26
 #: inc/views/header.php:130
 #: inc/views/layouts/layout_sidebar.php:144
@@ -787,7 +795,7 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: header-footer-grid/Core/Customizer.php:315
+#: header-footer-grid/Core/Customizer.php:328
 msgid "Search Components"
 msgstr ""
 
