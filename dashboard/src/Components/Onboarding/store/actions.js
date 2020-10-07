@@ -2,53 +2,53 @@ export default {
 	refreshSites( sites ) {
 		return {
 			type: 'REFRESH_SITES',
-			payload: {sites}
+			payload: { sites },
 		};
 	},
-	setCurrentEditor(editor) {
+	setCurrentEditor( editor ) {
 		return {
 			type: 'SET_CURRENT_EDITOR',
-			payload: {editor}
+			payload: { editor },
 		};
 	},
-	setCurrentCategory(category) {
+	setCurrentCategory( category ) {
 		return {
 			type: 'SET_CURRENT_CATEGORY',
-			payload: {category}
+			payload: { category },
 		};
 	},
-	setCurrentSite(siteData) {
+	setCurrentSite( siteData ) {
 		return {
 			type: 'SET_FOCUSED_SITE',
-			payload: {siteData}
+			payload: { siteData },
 		};
 	},
-	setPreviewStatus(previewStatus) {
-		if (previewStatus) {
-			document.body.classList.add('ob-overflow-off');
+	setPreviewStatus( previewStatus ) {
+		if ( previewStatus ) {
+			document.body.classList.add( 'ob-overflow-off' );
 		} else {
-			document.body.classList.remove('ob-overflow-off');
+			document.body.classList.remove( 'ob-overflow-off' );
 		}
 		return {
 			type: 'SET_PREVIEW_STATUS',
-			payload: {previewStatus}
+			payload: { previewStatus },
 		};
 	},
-	setImportModalStatus(importModalStatus) {
-		if (importModalStatus) {
-			document.body.classList.add('ob-overflow-off');
+	setImportModalStatus( importModalStatus ) {
+		if ( importModalStatus ) {
+			document.body.classList.add( 'ob-overflow-off' );
 		} else {
-			document.body.classList.remove('ob-overflow-off');
+			document.body.classList.remove( 'ob-overflow-off' );
 		}
 		return {
 			type: 'SET_IMPORT_MODAL_STATUS',
-			payload: {importModalStatus}
+			payload: { importModalStatus },
 		};
 	},
-	setOnboardingState(state) {
+	setOnboardingState( state ) {
 		return {
 			type: 'SET_ONBOARDING',
-			payload: {state}
+			payload: { state },
 		};
-	}
+	},
 };

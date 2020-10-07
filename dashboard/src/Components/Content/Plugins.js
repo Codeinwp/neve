@@ -1,28 +1,32 @@
 /* global neveDash */
 import PluginCard from '../PluginCard';
 
-const {withSelect} = wp.data;
-const {Fragment} = wp.element;
+import { withSelect } from '@wordpress/data';
+import { Fragment } from '@wordpress/element';
 
-const Header = ({plugins}) => {
-	if (! plugins) {
+const Header = ( { plugins } ) => {
+	if ( ! plugins ) {
 		return null;
 	}
 
 	return (
 		<Fragment>
-			{
-				Object.keys(plugins).map((slug) => {
-					return <PluginCard key={slug} slug={slug} data={plugins[slug]}/>;
-				})
-			}
+			{ Object.keys( plugins ).map( ( slug ) => {
+				return (
+					<PluginCard
+						key={ slug }
+						slug={ slug }
+						data={ plugins[ slug ] }
+					/>
+				);
+			} ) }
 		</Fragment>
 	);
 };
 
-export default withSelect(select => {
-	const {getPlugins} = select('neve-dashboard');
+export default withSelect( ( select ) => {
+	const { getPlugins } = select( 'neve-dashboard' );
 	return {
-		plugins: getPlugins()
+		plugins: getPlugins(),
 	};
-})(Header);
+} )( Header );

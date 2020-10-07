@@ -1,14 +1,14 @@
 /* jshint esversion: 6 */
-/* global wp */
-import SpacingComponent from './SpacingComponent.js'
-const { render } = wp.element
+
+import SpacingComponent from './SpacingComponent.js';
+import { render } from '@wordpress/element';
 
 export const SpacingControl = wp.customize.Control.extend( {
-  renderContent: function renderContent() {
-    const control = this
-    render(
-      <SpacingComponent control={control} />,
-      control.container[0]
-    )
-  }
-} )
+	renderContent: function renderContent() {
+		const control = this;
+		render(
+			<SpacingComponent control={ control } />,
+			control.container[ 0 ]
+		);
+	},
+} );
