@@ -11,7 +11,8 @@
     <exclude-pattern>*.min.css</exclude-pattern>
     <exclude-pattern>*.js</exclude-pattern>
     <exclude-pattern>*.css</exclude-pattern>
-    <arg name="extensions" value="php"/>
+	<exclude-pattern>*.asset.php</exclude-pattern>
+	<arg name="extensions" value="php"/>
     <arg value="sp"/>
 
     <rule ref="WordPress-VIP-Go">

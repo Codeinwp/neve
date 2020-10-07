@@ -307,6 +307,11 @@
 section.exclusive {
 	margin-bottom: $spacing;
 
+  	.nv-card-content-wrapper {
+		position: relative;
+		width: 100%;
+  	}
+
 	.dots-nav {
 		display: flex;
 		align-items: center;
@@ -330,6 +335,9 @@ section.exclusive {
 	}
 
 	.tns-outer {
+	  	/* rtl:begin:ignore */
+	 	direction: ltr;
+	 	/* rtl:end:ignore */
 		overflow: hidden;
 		position: relative;
 		padding: 5px 10px 0 10px;
