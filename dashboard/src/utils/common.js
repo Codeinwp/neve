@@ -1,5 +1,6 @@
 /* global neveDash */
-import StarterSites from '../Components/Content/StarterSites';
+import compareVersions from 'compare-versions';
+
 import StarterSitesUnavailable from '../Components/Content/StarterSitesUnavailable';
 import Start from '../Components/Content/Start';
 import Pro from '../Components/Content/Pro';
@@ -7,7 +8,6 @@ import Plugins from '../Components/Content/Plugins';
 import Help from '../Components/Content/Help';
 import Changelog from '../Components/Content/Changelog';
 import FreePro from '../Components/Content/FreePro';
-
 import { __ } from '@wordpress/i18n';
 
 const addUrlHash = ( hash ) => {
@@ -30,8 +30,6 @@ const getTabHash = () => {
 	return hash;
 };
 
-const { sites } = neveDash.onboarding;
-
 const tabs = {
 	start: {
 		label: __( 'Welcome', 'neve' ),
@@ -39,14 +37,7 @@ const tabs = {
 	},
 	'starter-sites': {
 		label: __( 'Starter Sites', 'neve' ),
-		render: ( setTab ) =>
-			sites &&
-			sites.sites &&
-			sites.sites.hasOwnProperty( 'elementor' ) ? (
-				<StarterSites />
-			) : (
-				<StarterSitesUnavailable />
-			),
+		render: ( setTab ) => <StarterSitesUnavailable />,
 	},
 	'free-pro': {
 		label: __( 'Free vs Pro', 'neve' ),
@@ -65,6 +56,19 @@ const tabs = {
 		render: ( setTab ) => <Changelog />,
 	},
 };
+
+const { plugins } = neveDash;
+const activeTPC =
+	plugins[ 'templates-patterns-collection' ].cta === 'deactivate';
+const properTPC =
+	compareVersions(
+		plugins[ 'templates-patterns-collection' ].version,
+		'1.0.10'
+	) === 1;
+
+if ( activeTPC && properTPC ) {
+	delete tabs[ 'starter-sites' ];
+}
 
 if ( neveDash.pro || neveDash.hasOldPro ) {
 	tabs.pro = {
@@ -89,4 +93,4 @@ if ( neveDash.hidePluginsTab ) {
 const untrailingSlashIt = ( str ) => str.replace( /\/$/, '' );
 const trailingSlashIt = ( str ) => untrailingSlashIt( str ) + '/';
 
-export { addUrlHash, getTabHash, trailingSlashIt, tabs };
+export { addUrlHash, getTabHash, trailingSlashIt, untrailingSlashIt, tabs };

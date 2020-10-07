@@ -1,15 +1,16 @@
 /* global neveDash */
 import { get } from '../../utils/rest';
-
+import { untrailingSlashIt } from '../../utils/common';
 import { __ } from '@wordpress/i18n';
 import { useState } from '@wordpress/element';
 import { Button } from '@wordpress/components';
 import { withSelect } from '@wordpress/data';
 
 const StarterSitesUnavailable = ( { templatesPluginData } ) => {
-	const { assets } = neveDash;
+	const { assets, tpcPath, tpcAdminURL } = neveDash;
 	const [ installing, setInstalling ] = useState( false );
 	const [ activating, setActivating ] = useState( false );
+	const [ updating, setUpdating ] = useState( false );
 	const [ error, setError ] = useState( false );
 	const [ currentState, setCurrentState ] = useState(
 		templatesPluginData.cta
@@ -24,11 +25,15 @@ const StarterSitesUnavailable = ( { templatesPluginData } ) => {
 			error: ( e ) => {
 				if ( 'folder_exists' === e.errorCode ) {
 					activatePlugin();
-					return false;
+				} else {
+					setError(
+						e.errorMessage
+							? e.errorMessage
+							: __(
+									'Something went wrong while installing the plugin.'
+							  )
+					);
 				}
-				setError(
-					__( 'Something went wrong while installing the plugin.' )
-				);
 			},
 		} );
 	};
@@ -41,48 +46,89 @@ const StarterSitesUnavailable = ( { templatesPluginData } ) => {
 
 		get( activationURL, true ).then( ( r ) => {
 			if ( r.ok ) {
-				window.location.reload();
+				window.location.href = tpcAdminURL;
+			} else {
+				setError( __( 'Could not activate plugin.' ) );
 			}
 		} );
 	};
 
+	const updatePlugin = () => {
+		setUpdating( true );
+		wp.updates.ajax( 'update-plugin', {
+			slug: 'templates-patterns-collection',
+			plugin: untrailingSlashIt( tpcPath ),
+			success: ( r ) => {
+				window.location.href = tpcAdminURL;
+			},
+			error: ( e ) => {
+				setError(
+					e.errorMessage
+						? e.errorMessage
+						: __(
+								'Something went wrong while updating the plugin.'
+						  )
+				);
+			},
+		} );
+	};
+
 	const renderNoticeContent = () => {
+		const buttonMap = {
+			install: (
+				<Button
+					disabled={ installing }
+					isPrimary={ ! installing }
+					isSecondary={ installing }
+					className={ installing && 'is-loading' }
+					icon={ installing && 'update' }
+					onClick={ installPlugin }
+				>
+					{ installing
+						? __( 'Installing' ) + '...'
+						: __( 'Install and Activate' ) }
+				</Button>
+			),
+			activate: (
+				<Button
+					disabled={ activating }
+					isPrimary={ ! activating }
+					isSecondary={ activating }
+					className={ activating && 'is-loading' }
+					icon={ activating && 'update' }
+					onClick={ activatePlugin }
+				>
+					{ activating
+						? __( 'Activating' ) + '...'
+						: __( 'Activate' ) }
+				</Button>
+			),
+			deactivate: (
+				<Button
+					disabled={ updating }
+					isPrimary={ ! updating }
+					isSecondary={ updating }
+					className={ updating && 'is-loading' }
+					icon={ updating && 'update' }
+					onClick={ updatePlugin }
+				>
+					{ updating ? __( 'Updating' ) + '...' : __( 'Update' ) }
+				</Button>
+			),
+		};
 		return (
 			<>
 				<h1>
-					{ __(
-						'In order to be able to import any starter sites for Neve you would need to have the Cloud Templates & Patterns Collection plugin active.'
-					) }
+					{ 'deactivate' === currentState
+						? __(
+								'In order to be able to import any starter sites for Neve you would need to have the Cloud Templates & Patterns Collection updated to the latest version.'
+						  )
+						: __(
+								'In order to be able to import any starter sites for Neve you would need to have the Cloud Templates & Patterns Collection plugin active.'
+						  ) }
 				</h1>
 				<br />
-				{ 'install' === currentState && (
-					<Button
-						disabled={ installing }
-						isPrimary={ ! installing }
-						isSecondary={ installing }
-						className={ installing && 'is-loading' }
-						icon={ installing && 'update' }
-						onClick={ installPlugin }
-					>
-						{ installing
-							? __( 'Installing' ) + '...'
-							: __( 'Install and Activate' ) }
-					</Button>
-				) }
-				{ 'activate' === currentState && (
-					<Button
-						disabled={ activating }
-						isPrimary={ ! activating }
-						isSecondary={ activating }
-						className={ activating && 'is-loading' }
-						icon={ activating && 'update' }
-						onClick={ activatePlugin }
-					>
-						{ activating
-							? __( 'Activating' ) + '...'
-							: __( 'Activate' ) }
-					</Button>
-				) }
+				{ buttonMap[ currentState ] }
 			</>
 		);
 	};
