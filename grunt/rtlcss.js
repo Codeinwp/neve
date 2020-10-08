@@ -63,7 +63,7 @@ module.exports = {
 		cwd: './inc/customizer/controls/react/bundle',
 		dest: './inc/customizer/controls/react/bundle',
 		ext,
-		src: [ 'controls.css' ],
+		src: [ 'style-controls.css' ],
 	},
 	megaMenu: {
 		options,
@@ -87,6 +87,6 @@ module.exports = {
 		cwd: './dashboard/build/',
 		dest: './dashboard/build/',
 		ext,
-		src: [ 'build.css' ],
+		src: [ 'style-dashboard.css' ],
 	},
 };

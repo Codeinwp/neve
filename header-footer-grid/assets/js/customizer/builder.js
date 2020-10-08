@@ -1373,6 +1373,8 @@ let hfgPanels = {};
             $( '.hfg--cb-devices-switcher', that.container )
           )
         }
+		$(that.container).find('.welcome-notice').removeClass('hidden');
+		$(that.container).find('.conditional-header').addClass('hidden');
       },
       addItem: function(node, index) {
         let template = this.getTemplate()

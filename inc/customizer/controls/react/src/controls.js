@@ -1,21 +1,22 @@
 /* jshint esversion: 6 */
-import { init as initDynamicFields } from './dynamic-fields/index.js';
-import { ToggleControl } from './toggle/Control.js';
-import { ResponsiveToggleControl } from './responsive-toggle/Control.js';
-import { BackgroundControl } from './background/Control.js';
-import { SpacingControl } from './spacing/Control.js';
-import { TypefaceControl } from './typeface/Control.js';
-import { FontFamilyControl } from './font-family/Control.js';
-import { RadioButtonsControl } from './radio-buttons/Control.js';
-import { ButtonAppearanceControl } from './button-appearance/Control.js';
-import { RangeControl } from './range/Control.js';
-import { ResponsiveRangeControl } from './responsive-range/Control.js';
-import { ColorControl } from './color/Control.js';
-import { PresetsSelectorControl } from './presets-selector/Control.js';
-import { MultiSelectControl } from './multiselect/Control.js';
-import { ResponsiveRadioButtonsControl } from './responsive-radio-buttons/Control.js';
-import { RadioImageControl } from './radio-image/Control.js';
-import { OrderingControl } from './ordering/Control.js';
+import { init as initDynamicFields } from './dynamic-fields/index';
+import { ToggleControl } from './toggle/Control';
+import { ResponsiveToggleControl } from './responsive-toggle/Control';
+import { BackgroundControl } from './background/Control';
+import { SpacingControl } from './spacing/Control';
+import { TypefaceControl } from './typeface/Control';
+import { FontFamilyControl } from './font-family/Control';
+import { RadioButtonsControl } from './radio-buttons/Control';
+import { ButtonAppearanceControl } from './button-appearance/Control';
+import { RangeControl } from './range/Control';
+import { ResponsiveRangeControl } from './responsive-range/Control';
+import { ColorControl } from './color/Control';
+import { PresetsSelectorControl } from './presets-selector/Control';
+import { MultiSelectControl } from './multiselect/Control';
+import { ResponsiveRadioButtonsControl } from './responsive-radio-buttons/Control';
+import { RadioImageControl } from './radio-image/Control';
+import { OrderingControl } from './ordering/Control';
+import { UiControl } from './ui/Control';
 
 import './style.scss';
 
@@ -37,6 +38,7 @@ controlConstructor.neve_multiselect = MultiSelectControl;
 controlConstructor.neve_responsive_radio_buttons_control = ResponsiveRadioButtonsControl;
 controlConstructor.neve_radio_image_control = RadioImageControl;
 controlConstructor.neve_ordering_control = OrderingControl;
+controlConstructor.neve_ui_control = UiControl;
 
 window.addEventListener( 'load', () => {
 	const deviceButtons = document.querySelector(

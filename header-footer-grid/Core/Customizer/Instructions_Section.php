@@ -76,7 +76,7 @@ class Instructions_Section extends \WP_Customize_Section {
 		<li id="accordion-section-{{ data.id }}"
 				class="hfg-instructions-section control-section control-section-{{ data.type }}">
 
-			<# if( data.options.image ) { #>
+			<# if( data.options.description ) { #>
 			<p>{{data.options.description}}</p>
 			<# } #>
 			<hr>
