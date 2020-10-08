@@ -88,7 +88,7 @@
 		"watch:wp-scripts-dash": "wp-scripts start dashboard/src/dashboard.js --output-path=dashboard/build",
 		"watch:wp-scripts-customizer-controls": "wp-scripts start inc/customizer/controls/react/src/controls.js --output-path=inc/customizer/controls/react/bundle",
 		"dev": "npm-run-all --parallel watch:*",
-		"build": "npm-run-all build:*",
+		"build": "npm-run-all -s build:* && grunt rtlcss",
 		"size": "size-limit",
 		"pre-commit": "npm-run-all phpcs build size",
 		"cypress:open": "cypress open",
