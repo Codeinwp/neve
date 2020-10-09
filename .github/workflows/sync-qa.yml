@@ -1,4 +1,4 @@
-name: Deploy to QA
+name: Deploy to stagings
 on:
   push:
     branches:
@@ -40,6 +40,11 @@ jobs:
           rsync -rc --exclude-from="$GITHUB_WORKSPACE/.distignore" -e "ssh -i
           $HOME/.ssh/key -o StrictHostKeyChecking=no -p $SSH_PORT"
           "$GITHUB_WORKSPACE/dist/neve/" $SSH_USERNAME@$SSH_HOST:$QA_ROOT
+      - name: Deploy to staging of demosites.io env
+        run: >
+          rsync -rc --exclude-from="$GITHUB_WORKSPACE/.distignore" -e "ssh -i
+          $HOME/.ssh/key -o StrictHostKeyChecking=no -p $SSH_PORT"
+          "$GITHUB_WORKSPACE/dist/neve/" "${SSH_USERNAME}@${SSH_HOST}:${STG_DEMOSITES_ROOT}themes/neve/"
       - name: Rebuild Neve Reference
         run: >
           ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no
