@@ -65,6 +65,7 @@ class Admin {
 		}
 
 		add_action( 'admin_menu', [ $this, 'remove_background_submenu' ], 110 );
+		add_action( 'after_switch_theme', [ $this, 'get_previous_theme' ] );
 	}
 
 	/**
@@ -421,6 +422,14 @@ class Admin {
 			})
 		</script>
 		<?php
+	}
+
+	/**
+	 * Memorize the previous theme to later display the import template for it.
+	 */
+	public function get_previous_theme() {
+		$previous_theme = strtolower( get_option( 'theme_switched' ) );
+		set_theme_mod( 'ti_prev_theme', $previous_theme );
 	}
 
 	/**

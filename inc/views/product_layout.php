@@ -23,6 +23,34 @@ class Product_Layout extends Base_View {
 		}
 		add_action( 'woocommerce_after_single_product_summary', array( $this, 'render_exclusive_products_section' ), 20 );
 		add_filter( 'body_class', array( $this, 'body_classes' ) );
+		add_action( 'woocommerce_before_shop_loop_item_title', array( $this, 'card_content_wrapper' ), 7 );
+		add_action( 'woocommerce_before_shop_loop_item_title', array( $this, 'wrapper_close_div' ), 14 );
+	}
+
+	/**
+	 * Wrapper for card content.
+	 */
+	public function card_content_wrapper() {
+		$card_attributes = apply_filters(
+			'nv_product_card_wrapper_attributes',
+			[
+				'class' => 'nv-card-content-wrapper',
+			]
+		);
+
+		$attributes = '';
+		foreach ( $card_attributes as $attr => $val ) {
+			$attributes .= ' ' . $attr . '="' . $val . '"';
+		}
+
+		echo wp_kses_post( '<div ' . $attributes . '>' );
+	}
+
+	/**
+	 * Closing tag
+	 */
+	public function wrapper_close_div() {
+		echo '</div>';
 	}
 
 	/**

@@ -1,15 +1,15 @@
 /* jshint esversion: 6 */
-/* global wp */
-import TypefaceComponent from './TypefaceComponent.js'
 
-const { render } = wp.element
+import TypefaceComponent from './TypefaceComponent.js';
 
-export const TypefaceControl = wp.customize.Control.extend({
-  renderContent: function renderContent() {
-    const control = this
-    render(
-      <TypefaceComponent control={control} />,
-      control.container[0]
-    )
-  }
-})
+import { render } from '@wordpress/element';
+
+export const TypefaceControl = wp.customize.Control.extend( {
+	renderContent: function renderContent() {
+		const control = this;
+		render(
+			<TypefaceComponent control={ control } />,
+			control.container[ 0 ]
+		);
+	},
+} );
