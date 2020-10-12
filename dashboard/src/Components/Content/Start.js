@@ -13,6 +13,7 @@ const Start = ( props ) => {
 		pro,
 		whiteLabel,
 		customizerShortcuts,
+		tpcAdminURL,
 	} = neveDash;
 	const starterSitesHidden = whiteLabel && whiteLabel.hideStarterSites;
 
@@ -48,20 +49,26 @@ const Start = ( props ) => {
 
 	return (
 		<>
-			{ tabs[ 'starter-sites' ] && ! starterSitesHidden && (
+			{ ! starterSitesHidden && (
 				<Card
 					icon={ neveDash.assets + 'squares.svg' }
 					title={ __( 'Starter Sites', 'neve' ) }
 					description={ neveDash.strings.starterSitesCardDescription }
 				>
-					<Button
-						isPrimary
-						onClick={ () => {
-							setTab( 'starter-sites' );
-						} }
-					>
-						{ __( 'Go to Starter Sites', 'neve' ) }
-					</Button>
+					{ tabs[ 'starter-sites' ] ? (
+						<Button
+							isPrimary
+							onClick={ () => {
+								setTab( 'starter-sites' );
+							} }
+						>
+							{ __( 'Go to Starter Sites', 'neve' ) }
+						</Button>
+					) : (
+						<Button href={ tpcAdminURL } isPrimary>
+							{ __( 'Go to Starter Sites', 'neve' ) }
+						</Button>
+					) }
 				</Card>
 			) }
 

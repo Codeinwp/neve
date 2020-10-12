@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-10-09T10:39:22+00:00\n"
+"POT-Creation-Date: 2020-10-12T07:32:36+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -95,165 +95,165 @@ msgid "Enter your license from %1$s purchase history in order to get plugin upda
 msgstr ""
 
 #. translators: s - theme name (Neve).
-#: dashboard/inc/Main.php:250
+#: dashboard/inc/Main.php:252
 msgid "New theme update for %1$s! Please update to %2$s."
 msgstr ""
 
-#: dashboard/inc/Main.php:255
-#: dashboard/inc/Main.php:276
+#: dashboard/inc/Main.php:257
+#: dashboard/inc/Main.php:278
 msgid "Update Now"
 msgstr ""
 
 #. translators: s - Pro plugin name (Neve Pro)
-#: dashboard/inc/Main.php:267
+#: dashboard/inc/Main.php:269
 msgid "New plugin update for %1$s! Please update to %2$s."
 msgstr ""
 
 #. translators: 1 - Theme Name (Neve), 2 - Plugin Name (Neve Pro)
-#: dashboard/inc/Main.php:285
+#: dashboard/inc/Main.php:287
 msgid "We recommend that both %1$s and %2$s are updated to the latest version to ensure optimal intercompatibility."
 msgstr ""
 
-#: dashboard/inc/Main.php:300
+#: dashboard/inc/Main.php:302
 msgid "Upload Logo"
 msgstr ""
 
-#: dashboard/inc/Main.php:304
+#: dashboard/inc/Main.php:306
 msgid "Set Colors"
 msgstr ""
 
-#: dashboard/inc/Main.php:308
+#: dashboard/inc/Main.php:310
 msgid "Customize Fonts"
 msgstr ""
 
-#: dashboard/inc/Main.php:312
+#: dashboard/inc/Main.php:314
 msgid "Layout Options"
 msgstr ""
 
-#: dashboard/inc/Main.php:316
+#: dashboard/inc/Main.php:318
 msgid "Header Options"
 msgstr ""
 
-#: dashboard/inc/Main.php:320
+#: dashboard/inc/Main.php:322
 msgid "Blog Layouts"
 msgstr ""
 
-#: dashboard/inc/Main.php:324
+#: dashboard/inc/Main.php:326
 msgid "Footer Options"
 msgstr ""
 
-#: dashboard/inc/Main.php:328
+#: dashboard/inc/Main.php:330
 #: inc/customizer/options/layout_sidebar.php:43
 msgid "Content / Sidebar"
 msgstr ""
 
-#: dashboard/inc/Main.php:347
+#: dashboard/inc/Main.php:349
 msgid "Header/Footer builder"
 msgstr ""
 
-#: dashboard/inc/Main.php:348
+#: dashboard/inc/Main.php:350
 msgid "Easily build your header and footer by dragging and dropping all the important elements in the real-time WordPress Customizer. More advanced options are available in PRO."
 msgstr ""
 
-#: dashboard/inc/Main.php:353
+#: dashboard/inc/Main.php:355
 msgid "Page Builder Compatibility"
 msgstr ""
 
-#: dashboard/inc/Main.php:354
+#: dashboard/inc/Main.php:356
 msgid "Neve is fully compatible with Gutenberg, the new WordPress editor and for all of you page builder fans, Neve has full compatibility with Elementor, Beaver Builder, and all the other popular page builders."
 msgstr ""
 
-#: dashboard/inc/Main.php:359
+#: dashboard/inc/Main.php:361
 #: inc/customizer/options/upsells.php:89
 msgid "Header Booster"
 msgstr ""
 
-#: dashboard/inc/Main.php:360
+#: dashboard/inc/Main.php:362
 msgid "Take the header builder to a new level with new awesome components: socials, contact, breadcrumbs, language switcher, multiple HTML, sticky and transparent menu, page header builder and many more."
 msgstr ""
 
-#: dashboard/inc/Main.php:365
+#: dashboard/inc/Main.php:367
 msgid "Page Header Builder"
 msgstr ""
 
-#: dashboard/inc/Main.php:366
+#: dashboard/inc/Main.php:368
 msgid "The Page Header is the horizontal area that sits directly below the header and contains the page/post title. Easily design an attractive Page Header area using our dedicated builder."
 msgstr ""
 
-#: dashboard/inc/Main.php:371
+#: dashboard/inc/Main.php:373
 #: inc/customizer/options/upsells.php:92
 msgid "Custom Layouts"
 msgstr ""
 
-#: dashboard/inc/Main.php:372
+#: dashboard/inc/Main.php:374
 msgid "Powerful Custom Layouts builder which allows you to easily create your own header, footer or custom content on any of the hook locations available in the theme."
 msgstr ""
 
-#: dashboard/inc/Main.php:377
+#: dashboard/inc/Main.php:379
 #: inc/customizer/options/upsells.php:90
 msgid "Blog Booster"
 msgstr ""
 
-#: dashboard/inc/Main.php:378
+#: dashboard/inc/Main.php:380
 msgid "Give a huge boost to your entire blogging experience with features specially designed for increased user experience."
 msgstr ""
 
-#: dashboard/inc/Main.php:378
+#: dashboard/inc/Main.php:380
 msgid "Sharing, custom article sorting, comments integrations, number of minutes needed to read an article and many more."
 msgstr ""
 
-#: dashboard/inc/Main.php:383
+#: dashboard/inc/Main.php:385
 #: inc/customizer/options/upsells.php:95
 msgid "Elementor Booster"
 msgstr ""
 
-#: dashboard/inc/Main.php:384
+#: dashboard/inc/Main.php:386
 #: inc/customizer/options/upsells.php:100
 msgid "Leverage the true flexibility of Elementor with powerful addons and templates that you can import with just one click."
 msgstr ""
 
-#: dashboard/inc/Main.php:389
+#: dashboard/inc/Main.php:391
 #: inc/customizer/options/upsells.php:91
 msgid "WooCommerce Booster"
 msgstr ""
 
-#: dashboard/inc/Main.php:390
+#: dashboard/inc/Main.php:392
 msgid "Empower your online store with awesome new features, specially designed for a smooth WooCommerce integration."
 msgstr ""
 
-#: dashboard/inc/Main.php:390
+#: dashboard/inc/Main.php:392
 msgid "Wishlist, quick view, video products, advanced reviews, multiple dedicated layouts and many more."
 msgstr ""
 
-#: dashboard/inc/Main.php:395
+#: dashboard/inc/Main.php:397
 msgid "LifterLMS Booster"
 msgstr ""
 
-#: dashboard/inc/Main.php:396
+#: dashboard/inc/Main.php:398
 msgid "Make your LifterLMS pages look stunning with our PRO design options. Specially created to help you set up your online courses with minimum customizations."
 msgstr ""
 
-#: dashboard/inc/Main.php:401
+#: dashboard/inc/Main.php:403
 msgid "Typekit(Adobe) Fonts"
 msgstr ""
 
-#: dashboard/inc/Main.php:402
+#: dashboard/inc/Main.php:404
 msgid "The module allows for an easy way of enabling new awesome Adobe (previous Typekit) Fonts in Neve's Typography options."
 msgstr ""
 
-#: dashboard/inc/Main.php:407
+#: dashboard/inc/Main.php:409
 msgid "White Label"
 msgstr ""
 
-#: dashboard/inc/Main.php:408
+#: dashboard/inc/Main.php:410
 msgid "For any developer or agency out there building websites for their own clients, we've made it easy to present the theme as your own."
 msgstr ""
 
-#: dashboard/inc/Main.php:413
+#: dashboard/inc/Main.php:415
 msgid "Scroll To Top"
 msgstr ""
 
-#: dashboard/inc/Main.php:414
+#: dashboard/inc/Main.php:416
 msgid "Simple but effective module to help you navigate back to the top of the really long pages."
 msgstr ""
 
@@ -787,11 +787,6 @@ msgstr ""
 #: header-footer-grid/templates/components/component-cart-icon.php:26
 #: inc/views/header.php:130
 #: inc/views/layouts/layout_sidebar.php:144
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Onboarding/ImportModal.js:502
-#: dashboard/src/Components/Onboarding/Main.js:46
-#: dashboard/src/Components/Onboarding/Migration.js:151
-#: dashboard/src/Components/Onboarding/PreviewFrame.js:33
 msgid "Close"
 msgstr ""
 
@@ -948,8 +943,6 @@ msgstr ""
 
 #: header-footer-grid/Core/Settings/Manager.php:177
 #: inc/customizer/options/typography.php:107
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Onboarding/ImportModal.js:170
 msgid "General"
 msgstr ""
 
@@ -1067,14 +1060,14 @@ msgstr ""
 #: inc/admin/plugin_install/main.php:113
 #: inc/admin/plugin_install/main.php:133
 #: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/LicenseCard.js:105
+#: dashboard/src/Components/LicenseCard.js:98
 #: dashboard/src/Components/PluginCard.js:21
 msgid "Activate"
 msgstr ""
 
 #: inc/admin/plugin_install/main.php:128
 #: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/LicenseCard.js:104
+#: dashboard/src/Components/LicenseCard.js:97
 #: dashboard/src/Components/PluginCard.js:25
 msgid "Deactivate"
 msgstr ""
@@ -1441,8 +1434,6 @@ msgid "Content Width (%)"
 msgstr ""
 
 #: inc/customizer/options/layout_single_post.php:69
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Onboarding/ImportModal.js:156
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:293
 msgid "Content"
 msgstr ""
@@ -1568,14 +1559,10 @@ msgid "Comments Navigation"
 msgstr ""
 
 #: inc/views/partials/comments.php:79
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Onboarding/PreviewFrame.js:44
 msgid "Previous"
 msgstr ""
 
 #: inc/views/partials/comments.php:82
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Onboarding/PreviewFrame.js:58
 msgid "Next"
 msgstr ""
 
@@ -1642,300 +1629,55 @@ msgid "Page Builder Full Width (Neve)"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Onboarding/Search.js:98
-msgid "Search for a starter site"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Onboarding/StarterSiteCard.js:34
-msgid "Preview"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Onboarding/ImportModal.js:516
-#: dashboard/src/Components/Onboarding/PreviewFrame.js:85
-#: dashboard/src/Components/Onboarding/StarterSiteCard.js:45
-msgid "Import"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Onboarding/StarterSiteCard.js:63
-msgid "Premium"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Onboarding/PreviewFrame.js:74
-msgid "Upgrade and Import"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
 #: dashboard/src/utils/rest.js:68
 msgid "Typekit Project ID is invalid"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Onboarding/ImportStepper.js:8
-msgid "Installing Plugins"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Onboarding/ImportStepper.js:13
-msgid "Importing Content"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Onboarding/ImportStepper.js:18
-msgid "Importing Customizer Settings"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Onboarding/ImportStepper.js:23
-msgid "Importing Widgets"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Onboarding/ImportModalNote.js:19
-msgid "To import this demo you have to install the following plugins"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Onboarding/ImportModalNote.js:23
-msgid "Note"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Onboarding/ImportModalNote.js:39
-msgid "We recommend you backup your website content before attempting a full site import."
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Onboarding/ImportModalNote.js:45
-msgid "Some of the demo images will not be imported and will be replaced by placeholder images."
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Onboarding/ImportModalError.js:26
-msgid "Error code"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Onboarding/ImportModalError.js:30
-msgid "Error log"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Onboarding/ImportModal.js:49
-#: dashboard/src/Components/Onboarding/ImportModal.js:85
-msgid "Something went wrong while loading the site data. Please refresh the page and try again."
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Onboarding/ImportModal.js:367
-#: dashboard/src/Components/Onboarding/Migration.js:47
-msgid "Something went wrong while installing the necessary plugins."
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Onboarding/ImportModal.js:371
-#: dashboard/src/Components/Onboarding/Migration.js:63
-msgid "Something went wrong while importing the website content."
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Onboarding/ImportModal.js:375
-msgid "Something went wrong while updating the customizer settings."
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Onboarding/ImportModal.js:379
-msgid "Something went wrong while importing the widgets."
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Onboarding/ImportModal.js:486
-#: dashboard/src/Components/Onboarding/Migration.js:127
-msgid "Content was successfully imported. Enjoy your new site!"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Onboarding/ImportModal.js:160
-msgid "Customizer"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Onboarding/ImportModal.js:164
-msgid "Widgets"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Onboarding/ImportModal.js:211
-#: dashboard/src/utils/common.js:56
-msgid "Plugins"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Onboarding/ImportModal.js:527
-msgid "Back to Sites Library"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Onboarding/ImportModal.js:536
-#: dashboard/src/Components/Onboarding/Migration.js:175
-msgid "View Website"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Onboarding/ImportModal.js:539
-msgid "Add your own content"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Onboarding/Migration.js:81
-#: dashboard/src/Components/Onboarding/Migration.js:214
-msgid "Migrate"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Onboarding/Migration.js:101
-msgid "The following plugins will be installed"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Onboarding/Migration.js:136
-msgid "Migrating"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Onboarding/Migration.js:152
-msgid "Cancel"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Onboarding/Migration.js:169
-msgid "Edit Content"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Onboarding/Migration.js:161
-msgid "Start Migration"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Onboarding/Migration.js:224
-msgid "Something went wrong. Please reload the page and try again."
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Onboarding/Migration.js:231
-msgid "Dismissed"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Onboarding/Migration.js:236
-msgid "Dismiss"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Onboarding/EditorSelector.js:27
-#: dashboard/src/Components/Onboarding/EditorSelector.js:64
-#: dashboard/src/Components/Onboarding/EditorTabs.js:42
-msgid "Builder Logo"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Onboarding/Main.js:36
-msgid "Starter sites could not be loaded. Please refresh and try again."
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Onboarding/Main.js:55
-msgid "Business"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Onboarding/Main.js:56
-msgid "Ecommerce"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Onboarding/Main.js:57
-msgid "Fashion"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Onboarding/Main.js:58
-msgid "Blogging"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Onboarding/Main.js:59
-msgid "Photography"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Onboarding/Main.js:250
-msgid "Ready to use pre-built websites with 1-click installation"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Onboarding/Main.js:258
-msgid "Keep the Current Layout"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Onboarding/Main.js:284
-msgid "No results found"
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Onboarding/Main.js:285
-msgid "You can try a different search or use one of the categories below."
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Content/Start.js:54
-#: dashboard/src/utils/common.js:41
+#: dashboard/src/Components/Content/Start.js:55
+#: dashboard/src/utils/common.js:39
 msgid "Starter Sites"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Content/Start.js:63
+#: dashboard/src/Components/Content/Start.js:65
+#: dashboard/src/Components/Content/Start.js:69
 msgid "Go to Starter Sites"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Content/Start.js:71
+#: dashboard/src/Components/Content/Start.js:78
 msgid "Customizer quick links"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Content/Start.js:79
+#: dashboard/src/Components/Content/Start.js:86
 msgid "Getting Started? Check help and docs"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Content/Start.js:83
+#: dashboard/src/Components/Content/Start.js:90
 msgid "Need more details? Please check our full documentation for detailed information on how to use Neve."
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Help.js:47
-#: dashboard/src/Components/Content/Start.js:89
+#: dashboard/src/Components/Content/Start.js:96
 msgid "Go to docs"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Content/Start.js:98
+#: dashboard/src/Components/Content/Start.js:105
 msgid "Feedback"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Content/Start.js:99
+#: dashboard/src/Components/Content/Start.js:106
 msgid "Share your feedback for Neve and get the chance to win the pro version."
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Content/Start.js:108
+#: dashboard/src/Components/Content/Start.js:115
 msgid "Leave Feedback"
 msgstr ""
 
@@ -1983,13 +1725,13 @@ msgid "Installing"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/LicenseCard.js:107
+#: dashboard/src/Components/LicenseCard.js:100
 #: dashboard/src/Components/PluginCard.js:22
 msgid "Activating"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/LicenseCard.js:108
+#: dashboard/src/Components/LicenseCard.js:101
 #: dashboard/src/Components/PluginCard.js:26
 msgid "Deactivating"
 msgstr ""
@@ -2038,7 +1780,7 @@ msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Help.js:108
-#: dashboard/src/utils/common.js:64
+#: dashboard/src/utils/common.js:55
 msgid "Changelog"
 msgstr ""
 
@@ -2088,17 +1830,22 @@ msgid "Get Neve Pro Now"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
-#: dashboard/src/utils/common.js:37
+#: dashboard/src/utils/common.js:35
 msgid "Welcome"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
-#: dashboard/src/utils/common.js:52
+#: dashboard/src/utils/common.js:43
 msgid "Free vs Pro"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
-#: dashboard/src/utils/common.js:60
+#: dashboard/src/utils/common.js:47
+msgid "Plugins"
+msgstr ""
+
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/utils/common.js:51
 msgid "Help"
 msgstr ""
 
@@ -2123,23 +1870,23 @@ msgid "In Progress"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/LicenseCard.js:94
+#: dashboard/src/Components/LicenseCard.js:87
 msgid "Enter License Key"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/LicenseCard.js:137
+#: dashboard/src/Components/LicenseCard.js:130
 msgid "Valid"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/LicenseCard.js:138
-#: dashboard/src/Components/LicenseCard.js:146
+#: dashboard/src/Components/LicenseCard.js:131
+#: dashboard/src/Components/LicenseCard.js:139
 msgid "Expired"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/LicenseCard.js:145
+#: dashboard/src/Components/LicenseCard.js:138
 msgid "Expires"
 msgstr ""
 
