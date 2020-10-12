@@ -10,13 +10,7 @@ import { Fragment, useState } from '@wordpress/element';
 import { withDispatch, withSelect } from '@wordpress/data';
 import { compose } from '@wordpress/compose';
 
-const LicenseCard = ( {
-	isVisible,
-	setSettings,
-	changeLicense,
-	license,
-	refreshSites,
-} ) => {
+const LicenseCard = ( { isVisible, setSettings, changeLicense, license } ) => {
 	const { proApi } = neveDash;
 	const [ key, setKey ] = useState(
 		license && 'valid' === license.valid ? license.key || '' : ''
@@ -47,7 +41,6 @@ const LicenseCard = ( {
 					changeLicense( response.license );
 					fetchOptions().then( ( r ) => {
 						setSettings( r );
-						refreshSites();
 					} );
 				}
 			}
@@ -160,24 +153,10 @@ const LicenseCard = ( {
 export default compose(
 	withDispatch( ( dispatch ) => {
 		const { changeLicense, setSettings } = dispatch( 'neve-dashboard' );
-		const { refreshSites } = dispatch( 'neve-onboarding' );
 		return {
 			setSettings: ( object ) => setSettings( object ),
 			changeLicense: ( data ) => {
 				changeLicense( data );
-			},
-			refreshSites: () => {
-				if ( 0 === neveDash.onboarding.length ) {
-					return false;
-				}
-				get( neveDash.onboarding.root + '/refresh_sites_data' ).then(
-					( r ) => {
-						if ( ! r.success || ! r.data ) {
-							return false;
-						}
-						refreshSites( r.data );
-					}
-				);
 			},
 		};
 	} ),
