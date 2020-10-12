@@ -15,6 +15,7 @@ jobs:
       SSH_PORT: ${{ secrets.SSH_PORT }}
       SSH_HOST: ${{ secrets.SSH_HOST }}
       QA_ROOT: ${{ secrets.QA_ROOT }}
+      STG_DEMOSITES_ROOT: ${{ secrets.STG_DEMOSITES_ROOT }}
       PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
       CYPRESS_INSTALL_BINARY: 0
     steps:
@@ -37,12 +38,12 @@ jobs:
           environment: staging
       - name: Deploy to QA env
         run: >
-          rsync -rc --exclude-from="$GITHUB_WORKSPACE/.distignore" -e "ssh -i
+          rsync -rc --delete --exclude-from="$GITHUB_WORKSPACE/.distignore" -e "ssh -i
           $HOME/.ssh/key -o StrictHostKeyChecking=no -p $SSH_PORT"
           "$GITHUB_WORKSPACE/dist/neve/" $SSH_USERNAME@$SSH_HOST:$QA_ROOT
       - name: Deploy to staging of demosites.io env
         run: >
-          rsync -rc --exclude-from="$GITHUB_WORKSPACE/.distignore" -e "ssh -i
+          rsync -rc --delete --exclude-from="$GITHUB_WORKSPACE/.distignore" -e "ssh -i
           $HOME/.ssh/key -o StrictHostKeyChecking=no -p $SSH_PORT"
           "$GITHUB_WORKSPACE/dist/neve/" "${SSH_USERNAME}@${SSH_HOST}:${STG_DEMOSITES_ROOT}themes/neve/"
       - name: Rebuild Neve Reference
