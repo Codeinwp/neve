@@ -227,10 +227,11 @@ class Admin {
 				$name
 			)
 		);
-		$ob_btn = sprintf(
+		$ob_btn_link = admin_url( defined( 'TIOB_PATH' ) ? 'themes.php?page=tiob-starter-sites&onboarding=yes' : 'themes.php?page=' . $theme_page . '&onboarding=yes#starter-sites' );
+		$ob_btn      = sprintf(
 		/* translators: 1 - onboarding url, 2 - button text */
 			'<a href="%1$s" class="button button-primary button-hero install-now" >%2$s</a>',
-			esc_url( admin_url( 'themes.php?page=' . $theme_page . '&onboarding=yes#starter-sites' ) ),
+			esc_url( $ob_btn_link ),
 			sprintf( apply_filters( 'ti_onboarding_neve_start_site_cta', esc_html__( 'Try one of our ready to use Starter Sites', 'neve' ) ) )
 		);
 		$ob_return_dashboard = sprintf(

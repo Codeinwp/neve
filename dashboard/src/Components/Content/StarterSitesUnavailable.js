@@ -7,7 +7,8 @@ import { Button } from '@wordpress/components';
 import { withSelect } from '@wordpress/data';
 
 const StarterSitesUnavailable = ( { templatesPluginData } ) => {
-	const { assets, tpcPath, tpcAdminURL } = neveDash;
+	const { assets, tpcPath, tpcAdminURL, isOnboarding } = neveDash;
+	const tpcRedirect = tpcAdminURL + ( isOnboarding ? '&onboarding=yes' : '' );
 	const [ installing, setInstalling ] = useState( false );
 	const [ activating, setActivating ] = useState( false );
 	const [ updating, setUpdating ] = useState( false );
@@ -46,7 +47,7 @@ const StarterSitesUnavailable = ( { templatesPluginData } ) => {
 
 		get( activationURL, true ).then( ( r ) => {
 			if ( r.ok ) {
-				window.location.href = tpcAdminURL;
+				window.location.href = tpcRedirect;
 			} else {
 				setError( __( 'Could not activate plugin.' ) );
 			}
@@ -59,7 +60,7 @@ const StarterSitesUnavailable = ( { templatesPluginData } ) => {
 			slug: 'templates-patterns-collection',
 			plugin: untrailingSlashIt( tpcPath ),
 			success: ( r ) => {
-				window.location.href = tpcAdminURL;
+				window.location.href = tpcRedirect;
 			},
 			error: ( e ) => {
 				setError(
