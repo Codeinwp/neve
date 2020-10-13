@@ -45,6 +45,11 @@ class MetaFieldsManager extends Component {
         const result = { ...omitEmpty(this.defaultState), ...omitEmpty(metaData) };
         this.state = Object.assign( {}, result );
         this.updateValues = this.updateValues.bind( this );
+        this.updateBlockWidth = this.updateBlockWidth.bind( this );
+    }
+
+    componentDidUpdate(prevProps, prevState, snapShot) {
+      this.updateBlockWidth();
     }
 
     updateValues(id, value) {
@@ -74,16 +79,19 @@ class MetaFieldsManager extends Component {
         }
 
         const contentWidth = this.state['neve_meta_content_width'];
+        let contentWidthDefault = metaSidebar.actions['neve_meta_content_width'].content;
+        let blockWidthDefault = contentWidthDefault + '%';
         let blocKWidth = contentWidth + '%';
         if ( 'contained' === containerType ) {
+            blockWidthDefault = Math.round((contentWidthDefault / 100) * metaSidebar.actions['neve_meta_content_width'].editor) + 'px';
             blocKWidth = Math.round( ( contentWidth / 100 ) * metaSidebar.actions['neve_meta_content_width'].editor ) + 'px';
         }
 
         if (document.contains(document.getElementById('neve-meta-editor-style'))) {
             document.getElementById('neve-meta-editor-style').remove();
         }
+        let css = '.wp-block:not([data-align="full"]) { max-width: ' + ('on' === isCustomContentWidth ? blocKWidth : blockWidthDefault) + '; }';
 
-        let css = 'on' === isCustomContentWidth ? '.wp-block:not([data-align="full"]) { max-width: ' + blocKWidth + '; }' : '';
         const head = document.head;
         const style = document.createElement('style');
         style.setAttribute('id', 'neve-meta-editor-style' );
@@ -380,7 +388,6 @@ class MetaFieldsManager extends Component {
     render() {
         return (
             <>
-                {this.updateBlockWidth()}
                 {this.renderPageLayoutGroup()}
                 {this.renderPageTitleGroup()}
                 {this.renderElementsGroup()}
