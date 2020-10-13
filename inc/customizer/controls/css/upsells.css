@@ -70,3 +70,35 @@
 #customize-controls #accordion-section-neve_upsells_section.control-section .accordion-section-title:hover:after {
     color: #fff;
 }
+
+.customize-control-nv_simple_upsell {
+	background: transparent !important;
+}
+.nv-simple-upsell {
+	display: flex;
+	border-top: 1px solid #ccc;
+	padding-top: 10px;
+	align-items: center;
+}
+.nv-simple-upsell p {
+	margin: 0 10px 0 0;
+	font-weight: 600;
+	font-size: 12px;
+}
+
+.nv-simple-upsell a.button {
+	font-weight: 600;
+	font-size: 12px;
+	line-height: normal;
+	min-height: unset;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 6px 12px 7px;
+	flex-grow: 0;
+}
+
+
+.control-section-nv_simple_upsell_section {
+	padding: 12px 15px;
+}

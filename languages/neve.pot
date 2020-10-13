@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-10-13T08:48:40+00:00\n"
+"POT-Creation-Date: 2020-10-13T13:25:19+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -164,7 +164,7 @@ msgid "Neve is fully compatible with Gutenberg, the new WordPress editor and for
 msgstr ""
 
 #: dashboard/inc/Main.php:365
-#: inc/customizer/options/upsells.php:89
+#: inc/customizer/options/upsells.php:91
 msgid "Header Booster"
 msgstr ""
 
@@ -181,7 +181,7 @@ msgid "The Page Header is the horizontal area that sits directly below the heade
 msgstr ""
 
 #: dashboard/inc/Main.php:377
-#: inc/customizer/options/upsells.php:92
+#: inc/customizer/options/upsells.php:94
 msgid "Custom Layouts"
 msgstr ""
 
@@ -190,7 +190,7 @@ msgid "Powerful Custom Layouts builder which allows you to easily create your ow
 msgstr ""
 
 #: dashboard/inc/Main.php:383
-#: inc/customizer/options/upsells.php:90
+#: inc/customizer/options/upsells.php:92
 msgid "Blog Booster"
 msgstr ""
 
@@ -203,17 +203,17 @@ msgid "Sharing, custom article sorting, comments integrations, number of minutes
 msgstr ""
 
 #: dashboard/inc/Main.php:389
-#: inc/customizer/options/upsells.php:95
+#: inc/customizer/options/upsells.php:97
 msgid "Elementor Booster"
 msgstr ""
 
 #: dashboard/inc/Main.php:390
-#: inc/customizer/options/upsells.php:100
+#: inc/customizer/options/upsells.php:102
 msgid "Leverage the true flexibility of Elementor with powerful addons and templates that you can import with just one click."
 msgstr ""
 
 #: dashboard/inc/Main.php:395
-#: inc/customizer/options/upsells.php:91
+#: inc/customizer/options/upsells.php:93
 msgid "WooCommerce Booster"
 msgstr ""
 
@@ -1503,29 +1503,67 @@ msgid "Comments reply title"
 msgstr ""
 
 #: inc/customizer/options/upsells.php:45
-#: inc/customizer/options/upsells.php:103
+#: inc/customizer/options/upsells.php:105
 msgid "Get the PRO version!"
 msgstr ""
 
 #: inc/customizer/options/upsells.php:46
-#: inc/customizer/options/upsells.php:98
-msgid "Add new awesome header components, sticky and transparent menu, socials, and many more."
+#: inc/customizer/options/upsells.php:100
+msgid "Extend your header with more components and settings, build sticky/transparent headers or display them conditionally."
 msgstr ""
 
-#: inc/customizer/options/upsells.php:69
+#: inc/customizer/options/upsells.php:71
 msgid "View PRO Features"
 msgstr ""
 
-#: inc/customizer/options/upsells.php:93
+#: inc/customizer/options/upsells.php:95
 msgid "White Label module"
 msgstr ""
 
-#: inc/customizer/options/upsells.php:94
+#: inc/customizer/options/upsells.php:96
 msgid "Scroll to Top module"
 msgstr ""
 
-#: inc/customizer/options/upsells.php:99
+#: inc/customizer/options/upsells.php:101
 msgid "Easily create custom headers and footers as well as adding your own custom code or content in any of the hooks locations."
+msgstr ""
+
+#: inc/customizer/options/upsells.php:113
+msgid "More blog layout customization options available in PRO"
+msgstr ""
+
+#: inc/customizer/options/upsells.php:114
+#: inc/customizer/options/upsells.php:119
+#: inc/customizer/options/upsells.php:128
+#: inc/customizer/options/upsells.php:133
+#: inc/customizer/options/upsells.php:138
+#: inc/customizer/options/upsells.php:143
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Content/Help.js:37
+#: dashboard/src/Components/Content/Help.js:73
+#: dashboard/src/Components/Content/Help.js:101
+#: dashboard/src/Components/ModuleCard.js:146
+msgid "Learn More"
+msgstr ""
+
+#: inc/customizer/options/upsells.php:118
+msgid "More single post components available in PRO"
+msgstr ""
+
+#: inc/customizer/options/upsells.php:127
+msgid "More product catalog options available in PRO"
+msgstr ""
+
+#: inc/customizer/options/upsells.php:132
+msgid "More checkout options available in PRO"
+msgstr ""
+
+#: inc/customizer/options/upsells.php:137
+msgid "More single product options available in PRO"
+msgstr ""
+
+#: inc/customizer/options/upsells.php:142
+msgid "WooCommerce typography options available in PRO"
 msgstr ""
 
 #: inc/views/content_404.php:37
@@ -1704,14 +1742,6 @@ msgstr ""
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/ModuleCard.js:127
 msgid "Could not activate module. Please try again."
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Content/Help.js:37
-#: dashboard/src/Components/Content/Help.js:73
-#: dashboard/src/Components/Content/Help.js:101
-#: dashboard/src/Components/ModuleCard.js:146
-msgid "Learn More"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
