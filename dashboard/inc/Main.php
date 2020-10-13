@@ -229,6 +229,10 @@ class Main {
 			$data['changelogPro'] = $this->cl_handler->get_changelog( NEVE_PRO_PATH . '/CHANGELOG.md' );
 		}
 
+		if ( isset( $_GET['onboarding'] ) && $_GET['onboarding'] === 'yes' ) {
+			$data['isOnboarding'] = true;
+		}
+
 		return $data;
 	}
 
