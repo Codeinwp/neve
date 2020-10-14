@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Neve 2.8.1\n"
+"Project-Id-Version: Neve 2.8.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/neve\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-10-13T13:25:19+00:00\n"
+"POT-Creation-Date: 2020-10-14T09:59:52+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -164,7 +164,7 @@ msgid "Neve is fully compatible with Gutenberg, the new WordPress editor and for
 msgstr ""
 
 #: dashboard/inc/Main.php:365
-#: inc/customizer/options/upsells.php:91
+#: inc/customizer/options/upsells.php:90
 msgid "Header Booster"
 msgstr ""
 
@@ -181,7 +181,7 @@ msgid "The Page Header is the horizontal area that sits directly below the heade
 msgstr ""
 
 #: dashboard/inc/Main.php:377
-#: inc/customizer/options/upsells.php:94
+#: inc/customizer/options/upsells.php:93
 msgid "Custom Layouts"
 msgstr ""
 
@@ -190,7 +190,7 @@ msgid "Powerful Custom Layouts builder which allows you to easily create your ow
 msgstr ""
 
 #: dashboard/inc/Main.php:383
-#: inc/customizer/options/upsells.php:92
+#: inc/customizer/options/upsells.php:91
 msgid "Blog Booster"
 msgstr ""
 
@@ -203,17 +203,17 @@ msgid "Sharing, custom article sorting, comments integrations, number of minutes
 msgstr ""
 
 #: dashboard/inc/Main.php:389
-#: inc/customizer/options/upsells.php:97
+#: inc/customizer/options/upsells.php:96
 msgid "Elementor Booster"
 msgstr ""
 
 #: dashboard/inc/Main.php:390
-#: inc/customizer/options/upsells.php:102
+#: inc/customizer/options/upsells.php:101
 msgid "Leverage the true flexibility of Elementor with powerful addons and templates that you can import with just one click."
 msgstr ""
 
 #: dashboard/inc/Main.php:395
-#: inc/customizer/options/upsells.php:93
+#: inc/customizer/options/upsells.php:92
 msgid "WooCommerce Booster"
 msgstr ""
 
@@ -277,7 +277,7 @@ msgstr ""
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:309
 #: inc/admin/metabox/main.php:39
 #: inc/customizer/options/layout_container.php:134
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:165
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:164
 msgid "Full Width"
 msgstr ""
 
@@ -285,7 +285,7 @@ msgstr ""
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:310
 #: inc/admin/metabox/main.php:38
 #: inc/customizer/options/layout_container.php:133
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:158
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:157
 msgid "Contained"
 msgstr ""
 
@@ -426,7 +426,7 @@ msgid "Mobile menu content"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:465
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:129
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:128
 msgid "Left"
 msgstr ""
 
@@ -435,7 +435,7 @@ msgid "Center"
 msgstr ""
 
 #: header-footer-grid/Core/Components/Abstract_Component.php:473
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:131
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:130
 msgid "Right"
 msgstr ""
 
@@ -771,7 +771,7 @@ msgstr ""
 
 #. translators: %s is the header name
 #: header-footer-grid/Core/Customizer.php:266
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:151
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:150
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:54
 #: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:178
@@ -981,7 +981,7 @@ msgstr ""
 
 #: inc/admin/metabox/main.php:41
 #: inc/customizer/options/layout_container.php:43
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:141
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:140
 msgid "Container"
 msgstr ""
 
@@ -999,7 +999,7 @@ msgstr ""
 
 #: inc/admin/metabox/main.php:56
 #: inc/core/front_end.php:525
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:117
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:116
 msgid "Sidebar"
 msgstr ""
 
@@ -1008,12 +1008,12 @@ msgid "Components"
 msgstr ""
 
 #: inc/admin/metabox/main.php:71
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:329
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:328
 msgid "Disable Header"
 msgstr ""
 
 #: inc/admin/metabox/main.php:76
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:355
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:354
 msgid "Disable Title"
 msgstr ""
 
@@ -1022,7 +1022,7 @@ msgid "Disable Featured Image"
 msgstr ""
 
 #: inc/admin/metabox/main.php:88
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:341
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:340
 msgid "Disable Footer"
 msgstr ""
 
@@ -1323,7 +1323,7 @@ msgid "Thumbnail Shadow"
 msgstr ""
 
 #: inc/customizer/options/layout_blog.php:370
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:291
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:290
 msgid "Post Meta"
 msgstr ""
 
@@ -1341,7 +1341,7 @@ msgstr ""
 #: inc/customizer/options/layout_blog.php:394
 #: inc/customizer/options/layout_single_post.php:72
 #: inc/views/partials/post_meta.php:132
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:295
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:294
 msgid "Comments"
 msgstr ""
 
@@ -1434,13 +1434,13 @@ msgid "Content Width (%)"
 msgstr ""
 
 #: inc/customizer/options/layout_single_post.php:69
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:293
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:292
 msgid "Content"
 msgstr ""
 
 #: inc/customizer/options/layout_single_post.php:70
 #: inc/views/partials/post_meta.php:235
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:294
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:293
 msgid "Tags"
 msgstr ""
 
@@ -1461,7 +1461,7 @@ msgid "Title"
 msgstr ""
 
 #: inc/customizer/options/layout_single_product.php:124
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:127
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:126
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:202
 #: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:237
@@ -1502,42 +1502,42 @@ msgstr ""
 msgid "Comments reply title"
 msgstr ""
 
-#: inc/customizer/options/upsells.php:45
-#: inc/customizer/options/upsells.php:105
+#: inc/customizer/options/upsells.php:44
+#: inc/customizer/options/upsells.php:104
 msgid "Get the PRO version!"
 msgstr ""
 
-#: inc/customizer/options/upsells.php:46
-#: inc/customizer/options/upsells.php:100
+#: inc/customizer/options/upsells.php:45
+#: inc/customizer/options/upsells.php:99
 msgid "Extend your header with more components and settings, build sticky/transparent headers or display them conditionally."
 msgstr ""
 
-#: inc/customizer/options/upsells.php:71
+#: inc/customizer/options/upsells.php:70
 msgid "View PRO Features"
 msgstr ""
 
-#: inc/customizer/options/upsells.php:95
+#: inc/customizer/options/upsells.php:94
 msgid "White Label module"
 msgstr ""
 
-#: inc/customizer/options/upsells.php:96
+#: inc/customizer/options/upsells.php:95
 msgid "Scroll to Top module"
 msgstr ""
 
-#: inc/customizer/options/upsells.php:101
+#: inc/customizer/options/upsells.php:100
 msgid "Easily create custom headers and footers as well as adding your own custom code or content in any of the hooks locations."
 msgstr ""
 
-#: inc/customizer/options/upsells.php:113
+#: inc/customizer/options/upsells.php:112
 msgid "More blog layout customization options available in PRO"
 msgstr ""
 
-#: inc/customizer/options/upsells.php:114
-#: inc/customizer/options/upsells.php:119
-#: inc/customizer/options/upsells.php:128
-#: inc/customizer/options/upsells.php:133
-#: inc/customizer/options/upsells.php:138
-#: inc/customizer/options/upsells.php:143
+#: inc/customizer/options/upsells.php:113
+#: inc/customizer/options/upsells.php:118
+#: inc/customizer/options/upsells.php:127
+#: inc/customizer/options/upsells.php:132
+#: inc/customizer/options/upsells.php:137
+#: inc/customizer/options/upsells.php:142
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Help.js:37
 #: dashboard/src/Components/Content/Help.js:73
@@ -1546,23 +1546,23 @@ msgstr ""
 msgid "Learn More"
 msgstr ""
 
-#: inc/customizer/options/upsells.php:118
+#: inc/customizer/options/upsells.php:117
 msgid "More single post components available in PRO"
 msgstr ""
 
-#: inc/customizer/options/upsells.php:127
+#: inc/customizer/options/upsells.php:126
 msgid "More product catalog options available in PRO"
 msgstr ""
 
-#: inc/customizer/options/upsells.php:132
+#: inc/customizer/options/upsells.php:131
 msgid "More checkout options available in PRO"
 msgstr ""
 
-#: inc/customizer/options/upsells.php:137
+#: inc/customizer/options/upsells.php:136
 msgid "More single product options available in PRO"
 msgstr ""
 
-#: inc/customizer/options/upsells.php:142
+#: inc/customizer/options/upsells.php:141
 msgid "WooCommerce typography options available in PRO"
 msgstr ""
 
@@ -1981,70 +1981,70 @@ msgstr ""
 msgid "Toggle"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:112
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:111
 msgid "Page Layout"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:125
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:124
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:53
 #: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:177
 msgid "Inherit"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:173
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:172
 msgid "Custom Content Width (%)"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:214
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:213
 msgid "Page Title"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:218
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:217
 msgid "Title alignment"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:258
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:257
 msgid "Author Avatar"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:273
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:272
 msgid "Reading Time"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:290
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:289
 msgid "Post Title"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:292
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:291
 msgid "Featured Image"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:296
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:295
 msgid "Post Navigation"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:302
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:301
 msgid "Author Biography"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:303
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:302
 msgid "Related Posts"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:304
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:303
 msgid "Sharing Icons"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:312
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:311
 msgid "Elements"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:373
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:372
 msgid "Reset all options to default"
 msgstr ""
 
-#: inc/admin/metabox/src/components/MetaFieldsManager.js:382
+#: inc/admin/metabox/src/components/MetaFieldsManager.js:381
 msgid "Return to customizer settings"
 msgstr ""
 
