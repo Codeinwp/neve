@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-10-12T10:01:46+00:00\n"
+"POT-Creation-Date: 2020-10-13T13:25:19+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -48,7 +48,7 @@ msgstr ""
 #. translators: %s - Theme name
 #. translators: %s - theme name
 #: dashboard/inc/Main.php:200
-#: inc/core/admin.php:258
+#: inc/core/admin.php:259
 msgid "%s now comes with a sites library with various designs to pick from. Visit our collection of demos that are constantly being added."
 msgstr ""
 
@@ -75,7 +75,7 @@ msgstr ""
 #. translators: %s - Theme name
 #. translators: %s - theme name
 #: dashboard/inc/Main.php:208
-#: inc/core/admin.php:266
+#: inc/core/admin.php:267
 msgid "Need more details? Please check our full documentation for detailed information on how to use %s."
 msgstr ""
 
@@ -95,165 +95,165 @@ msgid "Enter your license from %1$s purchase history in order to get plugin upda
 msgstr ""
 
 #. translators: s - theme name (Neve).
-#: dashboard/inc/Main.php:252
+#: dashboard/inc/Main.php:256
 msgid "New theme update for %1$s! Please update to %2$s."
 msgstr ""
 
-#: dashboard/inc/Main.php:257
-#: dashboard/inc/Main.php:278
+#: dashboard/inc/Main.php:261
+#: dashboard/inc/Main.php:282
 msgid "Update Now"
 msgstr ""
 
 #. translators: s - Pro plugin name (Neve Pro)
-#: dashboard/inc/Main.php:269
+#: dashboard/inc/Main.php:273
 msgid "New plugin update for %1$s! Please update to %2$s."
 msgstr ""
 
 #. translators: 1 - Theme Name (Neve), 2 - Plugin Name (Neve Pro)
-#: dashboard/inc/Main.php:287
+#: dashboard/inc/Main.php:291
 msgid "We recommend that both %1$s and %2$s are updated to the latest version to ensure optimal intercompatibility."
 msgstr ""
 
-#: dashboard/inc/Main.php:302
+#: dashboard/inc/Main.php:306
 msgid "Upload Logo"
 msgstr ""
 
-#: dashboard/inc/Main.php:306
+#: dashboard/inc/Main.php:310
 msgid "Set Colors"
 msgstr ""
 
-#: dashboard/inc/Main.php:310
+#: dashboard/inc/Main.php:314
 msgid "Customize Fonts"
 msgstr ""
 
-#: dashboard/inc/Main.php:314
+#: dashboard/inc/Main.php:318
 msgid "Layout Options"
 msgstr ""
 
-#: dashboard/inc/Main.php:318
+#: dashboard/inc/Main.php:322
 msgid "Header Options"
 msgstr ""
 
-#: dashboard/inc/Main.php:322
+#: dashboard/inc/Main.php:326
 msgid "Blog Layouts"
 msgstr ""
 
-#: dashboard/inc/Main.php:326
+#: dashboard/inc/Main.php:330
 msgid "Footer Options"
 msgstr ""
 
-#: dashboard/inc/Main.php:330
+#: dashboard/inc/Main.php:334
 #: inc/customizer/options/layout_sidebar.php:43
 msgid "Content / Sidebar"
 msgstr ""
 
-#: dashboard/inc/Main.php:349
+#: dashboard/inc/Main.php:353
 msgid "Header/Footer builder"
 msgstr ""
 
-#: dashboard/inc/Main.php:350
+#: dashboard/inc/Main.php:354
 msgid "Easily build your header and footer by dragging and dropping all the important elements in the real-time WordPress Customizer. More advanced options are available in PRO."
 msgstr ""
 
-#: dashboard/inc/Main.php:355
+#: dashboard/inc/Main.php:359
 msgid "Page Builder Compatibility"
 msgstr ""
 
-#: dashboard/inc/Main.php:356
+#: dashboard/inc/Main.php:360
 msgid "Neve is fully compatible with Gutenberg, the new WordPress editor and for all of you page builder fans, Neve has full compatibility with Elementor, Beaver Builder, and all the other popular page builders."
 msgstr ""
 
-#: dashboard/inc/Main.php:361
-#: inc/customizer/options/upsells.php:89
+#: dashboard/inc/Main.php:365
+#: inc/customizer/options/upsells.php:91
 msgid "Header Booster"
 msgstr ""
 
-#: dashboard/inc/Main.php:362
+#: dashboard/inc/Main.php:366
 msgid "Take the header builder to a new level with new awesome components: socials, contact, breadcrumbs, language switcher, multiple HTML, sticky and transparent menu, page header builder and many more."
 msgstr ""
 
-#: dashboard/inc/Main.php:367
+#: dashboard/inc/Main.php:371
 msgid "Page Header Builder"
 msgstr ""
 
-#: dashboard/inc/Main.php:368
+#: dashboard/inc/Main.php:372
 msgid "The Page Header is the horizontal area that sits directly below the header and contains the page/post title. Easily design an attractive Page Header area using our dedicated builder."
 msgstr ""
 
-#: dashboard/inc/Main.php:373
-#: inc/customizer/options/upsells.php:92
+#: dashboard/inc/Main.php:377
+#: inc/customizer/options/upsells.php:94
 msgid "Custom Layouts"
 msgstr ""
 
-#: dashboard/inc/Main.php:374
+#: dashboard/inc/Main.php:378
 msgid "Powerful Custom Layouts builder which allows you to easily create your own header, footer or custom content on any of the hook locations available in the theme."
 msgstr ""
 
-#: dashboard/inc/Main.php:379
-#: inc/customizer/options/upsells.php:90
+#: dashboard/inc/Main.php:383
+#: inc/customizer/options/upsells.php:92
 msgid "Blog Booster"
 msgstr ""
 
-#: dashboard/inc/Main.php:380
+#: dashboard/inc/Main.php:384
 msgid "Give a huge boost to your entire blogging experience with features specially designed for increased user experience."
 msgstr ""
 
-#: dashboard/inc/Main.php:380
+#: dashboard/inc/Main.php:384
 msgid "Sharing, custom article sorting, comments integrations, number of minutes needed to read an article and many more."
 msgstr ""
 
-#: dashboard/inc/Main.php:385
-#: inc/customizer/options/upsells.php:95
+#: dashboard/inc/Main.php:389
+#: inc/customizer/options/upsells.php:97
 msgid "Elementor Booster"
 msgstr ""
 
-#: dashboard/inc/Main.php:386
-#: inc/customizer/options/upsells.php:100
+#: dashboard/inc/Main.php:390
+#: inc/customizer/options/upsells.php:102
 msgid "Leverage the true flexibility of Elementor with powerful addons and templates that you can import with just one click."
 msgstr ""
 
-#: dashboard/inc/Main.php:391
-#: inc/customizer/options/upsells.php:91
+#: dashboard/inc/Main.php:395
+#: inc/customizer/options/upsells.php:93
 msgid "WooCommerce Booster"
 msgstr ""
 
-#: dashboard/inc/Main.php:392
+#: dashboard/inc/Main.php:396
 msgid "Empower your online store with awesome new features, specially designed for a smooth WooCommerce integration."
 msgstr ""
 
-#: dashboard/inc/Main.php:392
+#: dashboard/inc/Main.php:396
 msgid "Wishlist, quick view, video products, advanced reviews, multiple dedicated layouts and many more."
 msgstr ""
 
-#: dashboard/inc/Main.php:397
+#: dashboard/inc/Main.php:401
 msgid "LifterLMS Booster"
 msgstr ""
 
-#: dashboard/inc/Main.php:398
+#: dashboard/inc/Main.php:402
 msgid "Make your LifterLMS pages look stunning with our PRO design options. Specially created to help you set up your online courses with minimum customizations."
 msgstr ""
 
-#: dashboard/inc/Main.php:403
+#: dashboard/inc/Main.php:407
 msgid "Typekit(Adobe) Fonts"
 msgstr ""
 
-#: dashboard/inc/Main.php:404
+#: dashboard/inc/Main.php:408
 msgid "The module allows for an easy way of enabling new awesome Adobe (previous Typekit) Fonts in Neve's Typography options."
 msgstr ""
 
-#: dashboard/inc/Main.php:409
+#: dashboard/inc/Main.php:413
 msgid "White Label"
 msgstr ""
 
-#: dashboard/inc/Main.php:410
+#: dashboard/inc/Main.php:414
 msgid "For any developer or agency out there building websites for their own clients, we've made it easy to present the theme as your own."
 msgstr ""
 
-#: dashboard/inc/Main.php:415
+#: dashboard/inc/Main.php:419
 msgid "Scroll To Top"
 msgstr ""
 
-#: dashboard/inc/Main.php:416
+#: dashboard/inc/Main.php:420
 msgid "Simple but effective module to help you navigate back to the top of the really long pages."
 msgstr ""
 
@@ -362,7 +362,7 @@ msgstr ""
 
 #: header-footer-grid/Core/Builder/Footer.php:47
 #: header-footer-grid/Core/Builder/Header.php:51
-#: inc/core/admin.php:268
+#: inc/core/admin.php:269
 msgid "Read full documentation"
 msgstr ""
 
@@ -1149,23 +1149,23 @@ msgstr ""
 msgid "%s is now installed and ready to use. We've assembled some links to get you started."
 msgstr ""
 
-#: inc/core/admin.php:234
+#: inc/core/admin.php:235
 msgid "Try one of our ready to use Starter Sites"
 msgstr ""
 
-#: inc/core/admin.php:239
+#: inc/core/admin.php:240
 msgid "Return to your dashboard"
 msgstr ""
 
-#: inc/core/admin.php:245
+#: inc/core/admin.php:246
 msgid "or go to the theme settings"
 msgstr ""
 
-#: inc/core/admin.php:256
+#: inc/core/admin.php:257
 msgid "Sites Library"
 msgstr ""
 
-#: inc/core/admin.php:264
+#: inc/core/admin.php:265
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Help.js:43
 msgid "Documentation"
@@ -1503,29 +1503,67 @@ msgid "Comments reply title"
 msgstr ""
 
 #: inc/customizer/options/upsells.php:45
-#: inc/customizer/options/upsells.php:103
+#: inc/customizer/options/upsells.php:105
 msgid "Get the PRO version!"
 msgstr ""
 
 #: inc/customizer/options/upsells.php:46
-#: inc/customizer/options/upsells.php:98
-msgid "Add new awesome header components, sticky and transparent menu, socials, and many more."
+#: inc/customizer/options/upsells.php:100
+msgid "Extend your header with more components and settings, build sticky/transparent headers or display them conditionally."
 msgstr ""
 
-#: inc/customizer/options/upsells.php:69
+#: inc/customizer/options/upsells.php:71
 msgid "View PRO Features"
 msgstr ""
 
-#: inc/customizer/options/upsells.php:93
+#: inc/customizer/options/upsells.php:95
 msgid "White Label module"
 msgstr ""
 
-#: inc/customizer/options/upsells.php:94
+#: inc/customizer/options/upsells.php:96
 msgid "Scroll to Top module"
 msgstr ""
 
-#: inc/customizer/options/upsells.php:99
+#: inc/customizer/options/upsells.php:101
 msgid "Easily create custom headers and footers as well as adding your own custom code or content in any of the hooks locations."
+msgstr ""
+
+#: inc/customizer/options/upsells.php:113
+msgid "More blog layout customization options available in PRO"
+msgstr ""
+
+#: inc/customizer/options/upsells.php:114
+#: inc/customizer/options/upsells.php:119
+#: inc/customizer/options/upsells.php:128
+#: inc/customizer/options/upsells.php:133
+#: inc/customizer/options/upsells.php:138
+#: inc/customizer/options/upsells.php:143
+#: dashboard/build/dashboard.js:1
+#: dashboard/src/Components/Content/Help.js:37
+#: dashboard/src/Components/Content/Help.js:73
+#: dashboard/src/Components/Content/Help.js:101
+#: dashboard/src/Components/ModuleCard.js:146
+msgid "Learn More"
+msgstr ""
+
+#: inc/customizer/options/upsells.php:118
+msgid "More single post components available in PRO"
+msgstr ""
+
+#: inc/customizer/options/upsells.php:127
+msgid "More product catalog options available in PRO"
+msgstr ""
+
+#: inc/customizer/options/upsells.php:132
+msgid "More checkout options available in PRO"
+msgstr ""
+
+#: inc/customizer/options/upsells.php:137
+msgid "More single product options available in PRO"
+msgstr ""
+
+#: inc/customizer/options/upsells.php:142
+msgid "WooCommerce typography options available in PRO"
 msgstr ""
 
 #: inc/views/content_404.php:37
@@ -1704,14 +1742,6 @@ msgstr ""
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/ModuleCard.js:127
 msgid "Could not activate module. Please try again."
-msgstr ""
-
-#: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/Content/Help.js:37
-#: dashboard/src/Components/Content/Help.js:73
-#: dashboard/src/Components/Content/Help.js:101
-#: dashboard/src/Components/ModuleCard.js:146
-msgid "Learn More"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
