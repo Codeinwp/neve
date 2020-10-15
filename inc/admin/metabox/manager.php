@@ -436,10 +436,14 @@ final class Manager {
 			return;
 		}
 
-		if ( Main::is_new_page() || Main::is_checkout() ) {
+		$checkout_was_updated = get_post_meta( $post_id, 'neve_checkout_updated', 'no' );
+		if ( Main::is_new_page() || ( Main::is_checkout() && $checkout_was_updated === 'no' ) ) {
 			update_post_meta( $post_id, 'neve_meta_sidebar', 'full-width' );
 			update_post_meta( $post_id, 'neve_meta_enable_content_width', 'on' );
 			update_post_meta( $post_id, 'neve_meta_content_width', 100 );
+			if ( Main::is_checkout() ) {
+				update_post_meta( $post_id, 'neve_checkout_updated', 'yes' );
+			}
 		}
 	}
 }
