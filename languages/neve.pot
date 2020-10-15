@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-10-15T07:14:13+00:00\n"
+"POT-Creation-Date: 2020-10-15T07:06:50+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -69,191 +69,201 @@ msgstr ""
 
 #. translators: %s - Theme name
 #: dashboard/inc/Main.php:206
+msgid "In order to be able to import any starter sites for %s you would need to have the Cloud Templates & Patterns Collection plugin active."
+msgstr ""
+
+#. translators: %s - Theme name
+#: dashboard/inc/Main.php:208
+msgid "In order to be able to import any starter sites for %s you would need to have the Cloud Templates & Patterns Collection plugin updated to the latest version."
+msgstr ""
+
+#. translators: %s - Theme name
+#: dashboard/inc/Main.php:210
 msgid "We want to make sure you have the best experience using %1$s, and that is why we have gathered all the necessary information here for you. We hope you will enjoy using %1$s as much as we enjoy creating great products."
 msgstr ""
 
 #. translators: %s - Theme name
 #. translators: %s - theme name
-#: dashboard/inc/Main.php:208
+#: dashboard/inc/Main.php:212
 #: inc/core/admin.php:267
 msgid "Need more details? Please check our full documentation for detailed information on how to use %s."
 msgstr ""
 
 #. translators: %s - "Neve Pro Addon"
-#: dashboard/inc/Main.php:210
+#: dashboard/inc/Main.php:214
 msgid "%s license"
 msgstr ""
 
 #. translators: %s - "Neve Pro Addon"
-#: dashboard/inc/Main.php:212
+#: dashboard/inc/Main.php:216
 msgid "Please update %s to the latest version and then refresh this page to have access to the options."
 msgstr ""
 
 #. translators: store name (Themeisle)
-#: dashboard/inc/Main.php:216
+#: dashboard/inc/Main.php:220
 msgid "Enter your license from %1$s purchase history in order to get plugin updates"
 msgstr ""
 
 #. translators: s - theme name (Neve).
-#: dashboard/inc/Main.php:256
+#: dashboard/inc/Main.php:260
 msgid "New theme update for %1$s! Please update to %2$s."
 msgstr ""
 
-#: dashboard/inc/Main.php:261
-#: dashboard/inc/Main.php:282
+#: dashboard/inc/Main.php:265
+#: dashboard/inc/Main.php:286
 msgid "Update Now"
 msgstr ""
 
 #. translators: s - Pro plugin name (Neve Pro)
-#: dashboard/inc/Main.php:273
+#: dashboard/inc/Main.php:277
 msgid "New plugin update for %1$s! Please update to %2$s."
 msgstr ""
 
 #. translators: 1 - Theme Name (Neve), 2 - Plugin Name (Neve Pro)
-#: dashboard/inc/Main.php:291
+#: dashboard/inc/Main.php:295
 msgid "We recommend that both %1$s and %2$s are updated to the latest version to ensure optimal intercompatibility."
 msgstr ""
 
-#: dashboard/inc/Main.php:306
+#: dashboard/inc/Main.php:310
 msgid "Upload Logo"
 msgstr ""
 
-#: dashboard/inc/Main.php:310
+#: dashboard/inc/Main.php:314
 msgid "Set Colors"
 msgstr ""
 
-#: dashboard/inc/Main.php:314
+#: dashboard/inc/Main.php:318
 msgid "Customize Fonts"
 msgstr ""
 
-#: dashboard/inc/Main.php:318
+#: dashboard/inc/Main.php:322
 msgid "Layout Options"
 msgstr ""
 
-#: dashboard/inc/Main.php:322
+#: dashboard/inc/Main.php:326
 msgid "Header Options"
 msgstr ""
 
-#: dashboard/inc/Main.php:326
+#: dashboard/inc/Main.php:330
 msgid "Blog Layouts"
 msgstr ""
 
-#: dashboard/inc/Main.php:330
+#: dashboard/inc/Main.php:334
 msgid "Footer Options"
 msgstr ""
 
-#: dashboard/inc/Main.php:334
+#: dashboard/inc/Main.php:338
 #: inc/customizer/options/layout_sidebar.php:43
 msgid "Content / Sidebar"
 msgstr ""
 
-#: dashboard/inc/Main.php:353
+#: dashboard/inc/Main.php:357
 msgid "Header/Footer builder"
 msgstr ""
 
-#: dashboard/inc/Main.php:354
+#: dashboard/inc/Main.php:358
 msgid "Easily build your header and footer by dragging and dropping all the important elements in the real-time WordPress Customizer. More advanced options are available in PRO."
 msgstr ""
 
-#: dashboard/inc/Main.php:359
+#: dashboard/inc/Main.php:363
 msgid "Page Builder Compatibility"
 msgstr ""
 
-#: dashboard/inc/Main.php:360
+#: dashboard/inc/Main.php:364
 msgid "Neve is fully compatible with Gutenberg, the new WordPress editor and for all of you page builder fans, Neve has full compatibility with Elementor, Beaver Builder, and all the other popular page builders."
 msgstr ""
 
-#: dashboard/inc/Main.php:365
+#: dashboard/inc/Main.php:369
 #: inc/customizer/options/upsells.php:90
 msgid "Header Booster"
 msgstr ""
 
-#: dashboard/inc/Main.php:366
+#: dashboard/inc/Main.php:370
 msgid "Take the header builder to a new level with new awesome components: socials, contact, breadcrumbs, language switcher, multiple HTML, sticky and transparent menu, page header builder and many more."
 msgstr ""
 
-#: dashboard/inc/Main.php:371
+#: dashboard/inc/Main.php:375
 msgid "Page Header Builder"
 msgstr ""
 
-#: dashboard/inc/Main.php:372
+#: dashboard/inc/Main.php:376
 msgid "The Page Header is the horizontal area that sits directly below the header and contains the page/post title. Easily design an attractive Page Header area using our dedicated builder."
 msgstr ""
 
-#: dashboard/inc/Main.php:377
+#: dashboard/inc/Main.php:381
 #: inc/customizer/options/upsells.php:93
 msgid "Custom Layouts"
 msgstr ""
 
-#: dashboard/inc/Main.php:378
+#: dashboard/inc/Main.php:382
 msgid "Powerful Custom Layouts builder which allows you to easily create your own header, footer or custom content on any of the hook locations available in the theme."
 msgstr ""
 
-#: dashboard/inc/Main.php:383
+#: dashboard/inc/Main.php:387
 #: inc/customizer/options/upsells.php:91
 msgid "Blog Booster"
 msgstr ""
 
-#: dashboard/inc/Main.php:384
+#: dashboard/inc/Main.php:388
 msgid "Give a huge boost to your entire blogging experience with features specially designed for increased user experience."
 msgstr ""
 
-#: dashboard/inc/Main.php:384
+#: dashboard/inc/Main.php:388
 msgid "Sharing, custom article sorting, comments integrations, number of minutes needed to read an article and many more."
 msgstr ""
 
-#: dashboard/inc/Main.php:389
+#: dashboard/inc/Main.php:393
 #: inc/customizer/options/upsells.php:96
 msgid "Elementor Booster"
 msgstr ""
 
-#: dashboard/inc/Main.php:390
+#: dashboard/inc/Main.php:394
 #: inc/customizer/options/upsells.php:101
 msgid "Leverage the true flexibility of Elementor with powerful addons and templates that you can import with just one click."
 msgstr ""
 
-#: dashboard/inc/Main.php:395
+#: dashboard/inc/Main.php:399
 #: inc/customizer/options/upsells.php:92
 msgid "WooCommerce Booster"
 msgstr ""
 
-#: dashboard/inc/Main.php:396
+#: dashboard/inc/Main.php:400
 msgid "Empower your online store with awesome new features, specially designed for a smooth WooCommerce integration."
 msgstr ""
 
-#: dashboard/inc/Main.php:396
+#: dashboard/inc/Main.php:400
 msgid "Wishlist, quick view, video products, advanced reviews, multiple dedicated layouts and many more."
 msgstr ""
 
-#: dashboard/inc/Main.php:401
+#: dashboard/inc/Main.php:405
 msgid "LifterLMS Booster"
 msgstr ""
 
-#: dashboard/inc/Main.php:402
+#: dashboard/inc/Main.php:406
 msgid "Make your LifterLMS pages look stunning with our PRO design options. Specially created to help you set up your online courses with minimum customizations."
 msgstr ""
 
-#: dashboard/inc/Main.php:407
+#: dashboard/inc/Main.php:411
 msgid "Typekit(Adobe) Fonts"
 msgstr ""
 
-#: dashboard/inc/Main.php:408
+#: dashboard/inc/Main.php:412
 msgid "The module allows for an easy way of enabling new awesome Adobe (previous Typekit) Fonts in Neve's Typography options."
 msgstr ""
 
-#: dashboard/inc/Main.php:413
+#: dashboard/inc/Main.php:417
 msgid "White Label"
 msgstr ""
 
-#: dashboard/inc/Main.php:414
+#: dashboard/inc/Main.php:418
 msgid "For any developer or agency out there building websites for their own clients, we've made it easy to present the theme as your own."
 msgstr ""
 
-#: dashboard/inc/Main.php:419
+#: dashboard/inc/Main.php:423
 msgid "Scroll To Top"
 msgstr ""
 
-#: dashboard/inc/Main.php:420
+#: dashboard/inc/Main.php:424
 msgid "Simple but effective module to help you navigate back to the top of the really long pages."
 msgstr ""
 
