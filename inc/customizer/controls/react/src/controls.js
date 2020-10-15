@@ -19,6 +19,7 @@ import { ResponsiveRadioButtonsControl } from './responsive-radio-buttons/Contro
 import { RadioImageControl } from './radio-image/Control';
 import { OrderingControl } from './ordering/Control';
 import { UiControl } from './ui/Control';
+import { GlobalColorsControl } from './global-colors/Control';
 
 import './style.scss';
 
@@ -41,6 +42,7 @@ controlConstructor.neve_responsive_radio_buttons_control = ResponsiveRadioButton
 controlConstructor.neve_radio_image_control = RadioImageControl;
 controlConstructor.neve_ordering_control = OrderingControl;
 controlConstructor.neve_ui_control = UiControl;
+controlConstructor.neve_global_colors = GlobalColorsControl;
 
 const initDeviceSwitchers = () => {
 	const deviceButtons = document.querySelector(
@@ -73,6 +75,7 @@ const initBlogPageFocus = () => {
 };
 
 domReady( () => {
+	wp.customize.section( 'neve_colors_background_section' ).focus();
 	initDeviceSwitchers();
 	initDynamicFields();
 	initBlogPageFocus();
