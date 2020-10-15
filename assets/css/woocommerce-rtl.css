@@ -603,6 +603,11 @@ section.exclusive {
   margin-bottom: 40px;
 }
 
+section.exclusive .nv-card-content-wrapper {
+  position: relative;
+  width: 100%;
+}
+
 section.exclusive .dots-nav {
   display: flex;
   align-items: center;
@@ -626,6 +631,7 @@ section.exclusive .dots-nav .dot.tns-nav-active {
 }
 
 section.exclusive .tns-outer {
+  direction: ltr;
   overflow: hidden;
   position: relative;
   padding: 5px 10px 0 10px;

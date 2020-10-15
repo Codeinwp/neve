@@ -1,41 +1,41 @@
 /* jshint esversion: 6 */
-/* global wp */
-import PropTypes from 'prop-types'
-import ColorControl from '../common/ColorControl.js'
 
-const { useState, useEffect } = wp.element
+import PropTypes from 'prop-types';
+import ColorControl from '../common/ColorControl.js';
 
-const ColorComponent = ({ control }) => {
-  const [value, setValue] = useState(control.setting.get())
+import { useState, useEffect } from '@wordpress/element';
 
-  const updateValues = (newVal) => {
-    setValue(newVal)
-    control.setting.set(newVal)
-  }
+const ColorComponent = ( { control } ) => {
+	const [ value, setValue ] = useState( control.setting.get() );
 
-  useEffect(() => {
-    document.addEventListener('neve-changed-customizer-value', (e) => {
-      if (!e.detail) return false
-      if (e.detail.id !== control.id) return false
-      updateValues(e.detail.value)
-    })
-  }, [])
+	const updateValues = ( newVal ) => {
+		setValue( newVal );
+		control.setting.set( newVal );
+	};
 
-  return (
-    <div className='neve-white-background-control neve-color-control'>
-      <ColorControl
-        label={control.params.label}
-        selectedColor={value}
-        defaultValue={control.params.default}
-        alphaDisabled={control.params.disableAlpha}
-        onChange={updateValues}
-      />
-    </div>
-  )
-}
+	useEffect( () => {
+		document.addEventListener( 'neve-changed-customizer-value', ( e ) => {
+			if ( ! e.detail ) return false;
+			if ( e.detail.id !== control.id ) return false;
+			updateValues( e.detail.value );
+		} );
+	}, [] );
+
+	return (
+		<div className="neve-white-background-control neve-color-control">
+			<ColorControl
+				label={ control.params.label }
+				selectedColor={ value }
+				defaultValue={ control.params.default }
+				alphaDisabled={ control.params.disableAlpha }
+				onChange={ updateValues }
+			/>
+		</div>
+	);
+};
 
 ColorComponent.propTypes = {
-  control: PropTypes.object.isRequired
-}
+	control: PropTypes.object.isRequired,
+};
 
-export default ColorComponent
+export default ColorComponent;

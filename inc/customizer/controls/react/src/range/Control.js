@@ -1,15 +1,14 @@
 /* jshint esversion: 6 */
-/* global wp */
 
-import RangeComponent from './RangeComponent.js'
-const { render } = wp.element
+import RangeComponent from './RangeComponent.js';
+import { render } from '@wordpress/element';
 
 export const RangeControl = wp.customize.Control.extend( {
-  renderContent: function renderContent() {
-    const control = this
-    render(
-      <RangeComponent control={control} />,
-      control.container[0]
-    )
-  }
-} )
+	renderContent: function renderContent() {
+		const control = this;
+		render(
+			<RangeComponent control={ control } />,
+			control.container[ 0 ]
+		);
+	},
+} );

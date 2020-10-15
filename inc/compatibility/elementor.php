@@ -29,7 +29,7 @@ class Elementor extends Page_Builder_Base {
 		if ( ! defined( 'ELEMENTOR_VERSION' ) ) {
 			return;
 		}
-
+		add_action( 'neve_dynamic_style_output', array( $this, 'fix_links' ), 99, 2 );
 		add_action( 'wp', array( $this, 'add_theme_builder_hooks' ) );
 		add_action( 'elementor/editor/before_enqueue_scripts', array( $this, 'maybe_set_page_template' ), 1 );
 	}
@@ -146,5 +146,23 @@ class Elementor extends Page_Builder_Base {
 		}
 
 		return false;
+	}
+
+	/**
+	 * Fix the underline of links added by neve.
+	 *
+	 * @param string $css     Current css.
+	 * @param string $context Context.
+	 *
+	 * @return string
+	 */
+	public function fix_links( $css, $context = 'frontend' ) {
+		if ( $context !== 'frontend' ) {
+			return $css;
+		}
+
+		return $css . '.nv-content-wrap .elementor a:not(.button):not(.wp-block-file__button){
+				text-decoration: none;
+			}';
 	}
 }

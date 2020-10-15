@@ -515,11 +515,6 @@ abstract class Abstract_Builder implements Builder {
 		);
 
 		if ( ! empty( $this->instructions_array ) ) {
-			if ( get_theme_mod( $this->panel . '_layout', false ) !== false ) {
-				$this->instructions_array['image']       = false;
-				$this->instructions_array['description'] = false;
-			}
-
 			$wp_customize->add_section(
 				new Instructions_Section(
 					$wp_customize,

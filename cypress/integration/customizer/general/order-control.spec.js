@@ -12,7 +12,26 @@ describe('Ordering Control', function () {
 	cy.get(CONTROL_ID).as('control')
   }
 
+  const BEFORE = () => {
+	cy.login('/wp-admin/customize.php')
+	cy.window().then(win => {
+	  const defaultValue = JSON.stringify(["thumbnail","title-meta","excerpt"]);
+	  const currentValue = win.wp.customize.control('neve_post_content_ordering').setting();
+	  if( currentValue !== defaultValue) {
+	    win.wp.customize.control('neve_post_content_ordering').setting.set(defaultValue);
+		aliasRestRoutes();
+		cy.get( '#save' ).click();
+		cy.wait( '@customizerSave' ).then( ( req ) => {
+		  expect( req.response.body.success ).to.be.true;
+		  expect( req.status ).to.equal( 200 );
+		  cy.wait( 2000 );
+		} );
+	  }
+	})
+  }
+
   beforeEach(() => BEFORE_EACH())
+  before(() => BEFORE())
 
   it('Test Ordering', function () {
 	cy.get('@control').find('.handle').should('have.length', 3)
@@ -59,4 +78,14 @@ function dropElAfter(selector, moveFrom, moveTo) {
 	cy.wait(200)
 	cy.document().trigger('mouseup')
   })
+}
+
+/**
+ * Alias routes
+ */
+function aliasRestRoutes() {
+  let home = Cypress.config().baseUrl;
+  cy.server().
+  route( 'POST', home + '/wp-admin/admin-ajax.php' ).
+  as( 'customizerSave' );
 }

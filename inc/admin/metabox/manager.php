@@ -348,6 +348,11 @@ final class Manager {
 
 		$container    = $post_type === 'post' ? Mods::get( Config::MODS_SINGLE_POST_CONTAINER_STYLE, 'contained' ) : Mods::get( Config::MODS_DEFAULT_CONTAINER_STYLE, 'contained' );
 		$editor_width = Mods::get( Config::MODS_CONTAINER_WIDTH );
+
+		$advanced_layout = Mods::get( Config::MODS_ADVANCED_LAYOUT_OPTIONS );
+		$single_width    = $post_type === 'post' ? Mods::get( Config::MODS_SINGLE_CONTENT_WIDTH, 70 ) : Mods::get( Config::MODS_OTHERS_CONTENT_WIDTH, 70 );
+		$content_width   = $advanced_layout ? $single_width : Mods::get( Config::MODS_SITEWIDE_CONTENT_WIDTH, 70 );
+
 		$editor_width = isset( $editor_width['desktop'] ) ? (int) $editor_width['desktop'] : 1170;
 
 		$post_elements_default_order = $this->get_post_elements_default_order();
@@ -359,6 +364,7 @@ final class Manager {
 					'neve_meta_content_width' => array(
 						'container' => $container,
 						'editor'    => $editor_width,
+						'content'   => $content_width,
 					),
 				),
 				'elementsDefaultOrder' => $post_elements_default_order,
