@@ -163,7 +163,7 @@ class SearchResponsive extends Abstract_Component {
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
 					'template' =>
-						'body ' . $this->default_selector . ' .nv-search.nv-icon > svg {
+						'body ' . $this->default_selector . ' a.nv-search.nv-icon > svg {
 							width: {{value}}px;
 							height: {{value}}px;
 						}',
@@ -187,7 +187,7 @@ class SearchResponsive extends Abstract_Component {
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
 					'template' =>
-						'body ' . $this->default_selector . ' .nv-search.nv-icon > svg {
+						'body ' . $this->default_selector . ' a.nv-search.nv-icon > svg {
 							fill: {{value}};
 						}',
 				],
@@ -208,7 +208,7 @@ class SearchResponsive extends Abstract_Component {
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
 					'template' =>
-						'body ' . $this->default_selector . ' .nv-search.nv-icon:hover > svg {
+						'body ' . $this->default_selector . ' a.nv-search.nv-icon:hover > svg {
 							fill: {{value}};
 						}',
 				],
@@ -503,7 +503,7 @@ class SearchResponsive extends Abstract_Component {
 		}
 
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => $this->default_selector . ' .nv-search.nv-icon > svg',
+			Dynamic_Selector::KEY_SELECTOR => $this->default_selector . ' a.nv-search.nv-icon > svg',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_WIDTH      => [
 					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::SIZE_ID,
@@ -521,7 +521,7 @@ class SearchResponsive extends Abstract_Component {
 		];
 
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => $this->default_selector . ' .nv-search:hover > svg',
+			Dynamic_Selector::KEY_SELECTOR => $this->default_selector . ' a.nv-search.nv-icon:hover > svg',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_FILL_COLOR => [
 					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::HOVER_COLOR_ID,
