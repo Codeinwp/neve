@@ -8,7 +8,7 @@
  * @package Neve
  */
 
-define( 'NEVE_VERSION', '2.8.1' );
+define( 'NEVE_VERSION', '2.8.2' );
 define( 'NEVE_INC_DIR', trailingslashit( get_template_directory() ) . 'inc/' );
 define( 'NEVE_ASSETS_URL', trailingslashit( get_template_directory_uri() ) . 'assets/' );
 
