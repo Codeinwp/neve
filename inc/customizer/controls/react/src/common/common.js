@@ -21,32 +21,25 @@ export const isObject = ( item ) => {
 };
 
 /**
- * Deep merge two objects.
- *
- * @param target
- * @param {...any} sources
+ * Deep merge objects.
  */
-export const mergeDeep = ( target, ...sources ) => {
-	if ( ! sources.length ) return target;
-	// Use first object we want to merge with and remove it from the start.
-	const source = sources.shift();
-
-	if ( isObject( target ) && isObject( source ) ) {
-		// Loop over each key in one source.
-		for ( const key in source ) {
-			if ( isObject( source[ key ] ) ) {
-				// Merge inside keys if we have an object.
-				if ( ! target[ key ] ) Object.assign( target, { [ key ]: {} } );
-				mergeDeep( target[ key ], source[ key ] );
-			} else {
-				// Reassign with source.
-				Object.assign( target, { [ key ]: source[ key ] } );
-			}
-		}
-	}
-	// Run recursively for multiple.
-	return mergeDeep( target, ...sources );
-};
+export const mergeDeep = (...objects) => {
+  const isObject = obj => obj && typeof obj === 'object'
+  return objects.reduce((prev, obj) => {
+    Object.keys(obj).forEach(key => {
+      const pVal = prev[key]
+      const oVal = obj[key]
+      if (Array.isArray(pVal) && Array.isArray(oVal)) {
+        prev[key] = pVal.concat(...oVal)
+      } else if (isObject(pVal) && isObject(oVal)) {
+        prev[key] = mergeDeep(pVal, oVal)
+      } else {
+        prev[key] = oVal
+      }
+    })
+    return prev
+  }, {})
+}
 
 export const getIntValAsResponsive = ( value ) => {
 	value = maybeParseJson( value );
