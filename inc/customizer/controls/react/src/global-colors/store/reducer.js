@@ -17,6 +17,12 @@ const reducer = ( state = initialState, action ) => {
 				...state,
 				activePalette: paletteId,
 			};
+		case 'UPDATE_PALETTES':
+			const { nextPalettes } = action.payload;
+			return {
+				...state,
+				palettes: { ...nextPalettes },
+			};
 	}
 	return state;
 };

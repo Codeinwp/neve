@@ -11,4 +11,10 @@ export default {
 			payload: { paletteId },
 		};
 	},
+	updatePalettes( nextPalettes ) {
+		return {
+			type: 'UPDATE_PALETTES',
+			payload: { nextPalettes },
+		};
+	},
 };

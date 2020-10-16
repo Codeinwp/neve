@@ -3,7 +3,14 @@ import PropTypes from 'prop-types';
 import { ColorPicker, Button, Dropdown } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
-const ColorControl = ( { label, selectedColor, onChange, defaultValue } ) => {
+const ColorControl = ( {
+	label,
+	selectedColor,
+	onChange,
+	defaultValue,
+	deletable,
+	onDelete,
+} ) => {
 	let toggle = null;
 
 	const handleChange = ( value ) => {
@@ -25,7 +32,9 @@ const ColorControl = ( { label, selectedColor, onChange, defaultValue } ) => {
 			{ label && (
 				<span className="customize-control-title">{ label }</span>
 			) }
-
+			{ deletable && (
+				<Button className="delete" icon="trash" onClick={ onDelete } />
+			) }
 			<Dropdown
 				renderToggle={ ( { isOpen, onToggle } ) => {
 					toggle = onToggle;
@@ -71,6 +80,8 @@ ColorControl.propTypes = {
 	onChange: PropTypes.func.isRequired,
 	selectedColor: PropTypes.string.isRequired,
 	defaultValue: PropTypes.string,
+	onDelete: PropTypes.func,
+	deletable: PropTypes.bool,
 };
 
 export default ColorControl;

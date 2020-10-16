@@ -1,7 +1,17 @@
 .neve-color-component {
 	margin: 0;
 	align-items: center;
-
+	.delete {
+		margin-left: auto;
+		color: #DCDCDC;
+		transition: .3s ease;
+		&:hover {
+			color: $wp-blue;
+		}
+		& + div {
+			margin-left: 0;
+		}
+	}
 	.clear {
 		width: 100%;
 		justify-content: center;

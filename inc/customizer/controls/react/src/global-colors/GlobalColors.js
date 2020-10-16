@@ -1,6 +1,5 @@
-import { withSelect, withDispatch } from '@wordpress/data';
+import { withDispatch } from '@wordpress/data';
 import { useState, useEffect } from '@wordpress/element';
-import { compose } from '@wordpress/compose';
 import domReady from '@wordpress/dom-ready';
 
 import PaletteSelector from './PaletteSelector';
@@ -22,7 +21,7 @@ const GlobalColors = ( { control, updateValues } ) => {
 		return 'Loading...';
 	}
 
-	const { label } = control.params;
+	const { label, defaultValues } = control.params;
 
 	return (
 		<div className="neve-global-colors-wrap">
@@ -31,7 +30,7 @@ const GlobalColors = ( { control, updateValues } ) => {
 			) }
 
 			<PaletteSelector />
-			<PaletteColors />
+			<PaletteColors defaults={ defaultValues } />
 		</div>
 	);
 };

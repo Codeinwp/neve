@@ -24,10 +24,10 @@ const PaletteSelector = ( { palettes, setActivePalette, active } ) => {
 					>
 						{ Object.values( colors )
 							.splice( 0, 4 )
-							.map( ( color ) => (
+							.map( ( color, index ) => (
 								<div
 									className="color"
-									key={ color }
+									key={ index }
 									style={ { backgroundColor: color } }
 								/>
 							) ) }
