@@ -120,14 +120,14 @@ class Colors_Background extends Base_Customizer {
 				'neve_global_colors',
 				[
 					'sanitize_callback' => [ $this, 'sanitize_global_colors' ],
-					'default'           => $this->get_global_colors_default(),
+					'default'           => $defaults,
 				],
 				[
 					'label'          => __( 'Global Colors', 'neve' ),
 					'priority'       => 10,
 					'section'        => 'neve_colors_background_section',
 					'type'           => 'neve_global_colors',
-					'default_values' => $this->get_global_colors_default(),
+					'default_values' => $defaults,
 				],
 				'Neve\Customizer\Controls\React\Global_Colors'
 			)
@@ -171,5 +171,13 @@ class Colors_Background extends Base_Customizer {
 				],
 			],
 		];
+	}
+
+	/**
+	 * @param $value
+	 * @return mixed
+	 */
+	public function sanitize_global_colors( $value ) {
+		return $value;
 	}
 }

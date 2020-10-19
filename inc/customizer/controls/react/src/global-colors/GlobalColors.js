@@ -1,9 +1,11 @@
 import { withDispatch } from '@wordpress/data';
 import { useState, useEffect } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
 import domReady from '@wordpress/dom-ready';
 
 import PaletteSelector from './PaletteSelector';
 import PaletteColors from './PaletteColors';
+import PaletteForm from './PaletteForm';
 
 const GlobalColors = ( { control, updateValues } ) => {
 	const [ loading, setLoading ] = useState( true );
@@ -30,7 +32,11 @@ const GlobalColors = ( { control, updateValues } ) => {
 			) }
 
 			<PaletteSelector />
+			<PaletteForm />
 			<PaletteColors defaults={ defaultValues } />
+			<p>
+				<a href="#">{ __( 'How the color system works', 'neve' ) }</a>
+			</p>
 		</div>
 	);
 };

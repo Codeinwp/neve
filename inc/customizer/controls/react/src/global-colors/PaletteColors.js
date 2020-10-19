@@ -3,6 +3,7 @@ import { withSelect, withDispatch } from '@wordpress/data';
 import { Button, Icon } from '@wordpress/components';
 import { compose } from '@wordpress/compose';
 import { __, sprintf } from '@wordpress/i18n';
+import { uniqueId } from 'lodash';
 import ColorControl from '../common/ColorControl.js';
 
 const PaletteColors = ( {
@@ -12,7 +13,7 @@ const PaletteColors = ( {
 	palettes,
 	updatePalettes,
 } ) => {
-	const { colors, customColors, isDeleteable } = palette;
+	const { colors, customColors, allowDeletion } = palette;
 
 	const labelMap = {
 		primaryAccent: __( 'Primary Accent', 'neve' ),
@@ -24,9 +25,11 @@ const PaletteColors = ( {
 		textDarkBackground: __( 'Text Dark Background', 'neve' ),
 	};
 
-	const defaultPaletteColors = {
-		...defaults.palettes[ activePalette ].colors,
-	};
+	const defaultPaletteColors = defaults.palettes[ activePalette ]
+		? {
+				...defaults.palettes[ activePalette ].colors,
+		  }
+		: {};
 
 	const updateColorInPalette = ( colorSlug, val ) => {
 		const newPalettes = { ...palettes };
@@ -34,21 +37,25 @@ const PaletteColors = ( {
 		updatePalettes( newPalettes );
 	};
 
-	const updateCustomColorInPalette = ( colorIndex, val ) => {
+	const updateCustomColorInPalette = ( id, val ) => {
 		const newPalettes = { ...palettes };
-		newPalettes[ activePalette ].customColors[ colorIndex ] = val;
+		newPalettes[ activePalette ].customColors[ id ] = val;
 		updatePalettes( newPalettes );
 	};
 
 	const addNewCustomColor = () => {
 		const newPalettes = { ...palettes };
-		newPalettes[ activePalette ].customColors.push( '#ffffff' );
+		const id = uniqueId( 'color-' );
+		newPalettes[ activePalette ].customColors = {
+			...newPalettes[ activePalette ].customColors,
+			[ id ]: '#ffffff',
+		};
 		updatePalettes( newPalettes );
 	};
 
-	const deleteCustomColor = ( index ) => {
+	const deleteCustomColor = ( id ) => {
 		const newPalettes = { ...palettes };
-		newPalettes[ activePalette ].customColors.splice( index, 1 );
+		delete newPalettes[ activePalette ].customColors[ id ];
 		updatePalettes( newPalettes );
 	};
 
@@ -73,7 +80,9 @@ const PaletteColors = ( {
 							label={ labelMap[ slug ] }
 							selectedColor={ colors[ slug ] }
 							defaultValue={
-								defaults.palettes[ activePalette ][ slug ]
+								defaults.palettes[ activePalette ]
+									? defaults.palettes[ activePalette ][ slug ]
+									: '#FFFFFF'
 							}
 							onChange={ ( value ) => {
 								updateColorInPalette( slug, value );
@@ -83,12 +92,12 @@ const PaletteColors = ( {
 				} ) }
 				<hr />
 				{ customColors &&
-					customColors.map( ( color, index ) => {
+					Object.keys( customColors ).map( ( id, index ) => {
 						return (
 							<ColorControl
 								deletable={ true }
 								onDelete={ () => {
-									deleteCustomColor( index );
+									deleteCustomColor( id );
 								} }
 								label={ sprintf(
 									/* translators: %d index of custom color [1,2,3...] */
@@ -97,10 +106,10 @@ const PaletteColors = ( {
 								) }
 								key={ index }
 								selectedColor={
-									customColors[ index ] || '#FFFFFF'
+									customColors[ id ] || '#FFFFFF'
 								}
 								onChange={ ( value ) =>
-									updateCustomColorInPalette( index, value )
+									updateCustomColorInPalette( id, value )
 								}
 							/>
 						);
@@ -108,12 +117,12 @@ const PaletteColors = ( {
 				<Button
 					isLink
 					className="add-custom-color"
-					disabled={ palette.customColors.length > 7 }
+					disabled={ Object.keys( palette.customColors ).length > 7 }
 					onClick={ addNewCustomColor }
 				>
 					{ __( 'Add a global color' ) } <Icon icon="plus-alt" />
 				</Button>
-				{ ! isDeleteable && (
+				{ ! allowDeletion && (
 					<>
 						<hr />
 						<Button
@@ -147,7 +156,7 @@ export default compose(
 			activePalette,
 		};
 	} ),
-	withDispatch( ( dispatch, props ) => {
+	withDispatch( ( dispatch ) => {
 		const { updatePalettes } = dispatch( 'neve-global-colors' );
 
 		return {
