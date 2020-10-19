@@ -152,6 +152,10 @@ abbr, acronym {
   text-decoration: none;
 }
 
+mark {
+  background-color: transparent;
+}
+
 .container {
   width: 100%;
   padding-right: 15px;
