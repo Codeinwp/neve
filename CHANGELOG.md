@@ -1,3 +1,13 @@
+##### [Version 2.8.3](https://github.com/Codeinwp/neve/compare/v2.8.2...v2.8.3) (2020-10-19)
+
+- [Fix] Exclusive products section in RTL mode
+- [Fix] Font Family dropdown layout in RTL mode
+- [Fix] Migrate from Zelle theme
+- [Fix] Default values for the spacing and custom content width controls
+- [Fix] Default line-height for buttons
+- [Fix] Search icon color in the mobile header builder
+- New Gutenberg Starter Sites
+
 ##### [Version 2.8.2](https://github.com/Codeinwp/neve/compare/v2.8.1...v2.8.2) (2020-10-01)
 
 - [Feat] New Blog Layout options
