@@ -182,7 +182,7 @@ final class Manager {
 			/* translators: %1$s - Keyboard shortcut.   %2&s - svg icon */
 			esc_html__( 'Click the %1$s icon in the top bar or use the keyboard shortcut ( %2$s ) to customise the layout settings for this page', 'neve' ),
 			apply_filters( 'ti_wl_theme_is_localized', false ) ?
-			'<span class="dashicons dashicons-hammer"/>' :
+			'<span class="dashicons dashicons-hammer"></span>' :
 			'<svg width="17" height="24" viewBox="0 0 17 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 				<path d="M4.77822 10.2133V19.3287H0.118347V0.802224C0.118347 0.712594 0.145598 0.649854 0.200099 0.614002C0.254601 0.578149 0.354519 0.622964 0.499857 0.748446L12.1359 10.2133V1.04422H16.7958V19.5976C16.7958 19.7051 16.7685 19.7724 16.714 19.7992C16.6595 19.8261 16.5596 19.7768 16.4143 19.6514L4.77822 10.2133Z"/>
 				<rect x="0.118347" y="22.3334" width="16.6774" height="1.51613"/>
@@ -348,6 +348,11 @@ final class Manager {
 
 		$container    = $post_type === 'post' ? Mods::get( Config::MODS_SINGLE_POST_CONTAINER_STYLE, 'contained' ) : Mods::get( Config::MODS_DEFAULT_CONTAINER_STYLE, 'contained' );
 		$editor_width = Mods::get( Config::MODS_CONTAINER_WIDTH );
+
+		$advanced_layout = Mods::get( Config::MODS_ADVANCED_LAYOUT_OPTIONS );
+		$single_width    = $post_type === 'post' ? Mods::get( Config::MODS_SINGLE_CONTENT_WIDTH, 70 ) : Mods::get( Config::MODS_OTHERS_CONTENT_WIDTH, 70 );
+		$content_width   = $advanced_layout ? $single_width : Mods::get( Config::MODS_SITEWIDE_CONTENT_WIDTH, 70 );
+
 		$editor_width = isset( $editor_width['desktop'] ) ? (int) $editor_width['desktop'] : 1170;
 
 		$post_elements_default_order = $this->get_post_elements_default_order();
@@ -359,6 +364,7 @@ final class Manager {
 					'neve_meta_content_width' => array(
 						'container' => $container,
 						'editor'    => $editor_width,
+						'content'   => $content_width,
 					),
 				),
 				'elementsDefaultOrder' => $post_elements_default_order,
@@ -430,10 +436,14 @@ final class Manager {
 			return;
 		}
 
-		if ( Main::is_new_page() || Main::is_checkout() ) {
+		$checkout_was_updated = get_post_meta( $post_id, 'neve_checkout_updated', 'no' );
+		if ( Main::is_new_page() || ( Main::is_checkout() && $checkout_was_updated === 'no' ) ) {
 			update_post_meta( $post_id, 'neve_meta_sidebar', 'full-width' );
 			update_post_meta( $post_id, 'neve_meta_enable_content_width', 'on' );
 			update_post_meta( $post_id, 'neve_meta_content_width', 100 );
+			if ( Main::is_checkout() ) {
+				update_post_meta( $post_id, 'neve_checkout_updated', 'yes' );
+			}
 		}
 	}
 }
