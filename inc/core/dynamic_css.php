@@ -26,6 +26,14 @@ class Dynamic_Css {
 	public function init() {
 		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue' ), 100 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ), 100 );
+
+		if ( is_customize_preview() ) {
+			add_action( 'wp_head', [ $this, 'add_customize_vars_tag' ] );
+		} else {
+			wp_add_inline_style( 'neve-style', $this->get_css_vars() );
+		}
+
+		add_action( 'customize_controls_enqueue_scripts', [ $this, 'add_customize_vars_tag' ] );
 	}
 
 	public function legacy_style() {
@@ -84,5 +92,47 @@ class Dynamic_Css {
 	 */
 	public static function minify_css( $css ) {
 		return preg_replace( '/\s+/', ' ', $css );
+	}
+
+	/**
+	 * Adds customizer CSS tag for CSS vars.
+	 */
+	public function add_customize_vars_tag() {
+		echo '<style id="nv-css-vars">' . esc_attr( $this->get_css_vars() ) . '</style>';
+	}
+
+	/**
+	 * Returns CSS vars style.
+	 *
+	 * @return string
+	 */
+	private function get_css_vars() {
+		$global_colors = get_theme_mod( 'neve_global_colors', neve_get_global_colors_default() );
+
+		if ( empty( $global_colors ) ) {
+			return '';
+		}
+
+		if ( ! isset( $global_colors[ 'activePalette' ] ) ) {
+			return '';
+		}
+
+		if ( ! isset( $global_colors[ 'palettes' ][ $global_colors[ 'activePalette' ] ] ) ) {
+			return '';
+		}
+
+		$palette = $global_colors[ 'palettes' ][ $global_colors[ 'activePalette' ] ];
+
+		$all_colors = array_merge( $palette[ 'colors' ], $palette[ 'customColors' ] );
+
+		$css = ':root{';
+
+		foreach ( $all_colors as $slug => $color ) {
+			$css .= '--nv-' . $slug . ':' . $color . ';';
+		}
+
+		$css .= '}';
+
+		return self::minify_css($css);
 	}
 }

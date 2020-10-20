@@ -16,13 +16,13 @@ const PaletteColors = ( {
 	const { colors, customColors, allowDeletion } = palette;
 
 	const labelMap = {
-		primaryAccent: __( 'Primary Accent', 'neve' ),
-		secondaryAccent: __( 'Secondary Accent', 'neve' ),
-		siteBackground: __( 'Site Background', 'neve' ),
-		lightBackground: __( 'Light Background', 'neve' ),
-		darkBackground: __( 'Dark Background', 'neve' ),
-		textColor: __( 'Text Color', 'neve' ),
-		textDarkBackground: __( 'Text Dark Background', 'neve' ),
+		'primary-accent': __( 'Primary Accent', 'neve' ),
+		'secondary-accent': __( 'Secondary Accent', 'neve' ),
+		'site-bg': __( 'Site Background', 'neve' ),
+		'light-bg': __( 'Light Background', 'neve' ),
+		'dark-bg': __( 'Dark Background', 'neve' ),
+		'text-color': __( 'Text Color', 'neve' ),
+		'text-dark-bg': __( 'Text Dark Background', 'neve' ),
 	};
 
 	const defaultPaletteColors = defaults.palettes[ activePalette ]
@@ -76,6 +76,7 @@ const PaletteColors = ( {
 				{ Object.keys( labelMap ).map( ( slug ) => {
 					return (
 						<ColorControl
+							disableGlobal
 							key={ slug }
 							label={ labelMap[ slug ] }
 							selectedColor={ colors[ slug ] }
@@ -95,6 +96,7 @@ const PaletteColors = ( {
 					Object.keys( customColors ).map( ( id, index ) => {
 						return (
 							<ColorControl
+								disableGlobal
 								deletable={ true }
 								onDelete={ () => {
 									deleteCustomColor( id );

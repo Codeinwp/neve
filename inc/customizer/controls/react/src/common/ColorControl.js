@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
-
+import GlobalColorsPicker from '../common/GlobalColorsPicker';
 import { ColorPicker, Button, Dropdown } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
+import classnames from 'classnames';
 
 const ColorControl = ( {
 	label,
@@ -10,6 +11,7 @@ const ColorControl = ( {
 	defaultValue,
 	deletable,
 	onDelete,
+	disableGlobal,
 } ) => {
 	let toggle = null;
 
@@ -27,14 +29,21 @@ const ColorControl = ( {
 		toggle();
 	};
 
+	const wrapClasses = classnames( [
+		'neve-control-header',
+		'neve-color-component',
+		{ 'allows-global': ! disableGlobal },
+	] );
+
 	return (
-		<div className="neve-control-header neve-color-component">
+		<div className={ wrapClasses }>
 			{ label && (
 				<span className="customize-control-title">{ label }</span>
 			) }
 			{ deletable && (
 				<Button className="delete" icon="trash" onClick={ onDelete } />
 			) }
+			{ ! disableGlobal && <GlobalColorsPicker onChange={ onChange } /> }
 			<Dropdown
 				renderToggle={ ( { isOpen, onToggle } ) => {
 					toggle = onToggle;
@@ -75,6 +84,10 @@ const ColorControl = ( {
 	);
 };
 
+ColorControl.defaultProps = {
+	disableGlobal: false,
+};
+
 ColorControl.propTypes = {
 	label: PropTypes.string,
 	onChange: PropTypes.func.isRequired,
@@ -82,6 +95,7 @@ ColorControl.propTypes = {
 	defaultValue: PropTypes.string,
 	onDelete: PropTypes.func,
 	deletable: PropTypes.bool,
+	disableGlobal: PropTypes.bool,
 };
 
 export default ColorControl;

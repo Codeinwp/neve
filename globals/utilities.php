@@ -1316,3 +1316,44 @@ function neve_get_headings_selectors() {
 		)
 	);
 }
+
+/**
+ * Get Global Colors Default
+ *
+ * @return array
+ */
+function neve_get_global_colors_default() {
+	return [
+		'activePalette' => 'base',
+		'palettes'      => [
+			'base'     => [
+				'name'          => __( 'Base', 'neve' ),
+				'allowDeletion' => false,
+				'customColors'  => [],
+				'colors'        => [
+					'primary-accent'   => '#357BE3',
+					'secondary-accent' => '#1F519D',
+					'site-bg'          => '#FFFFFF',
+					'light-bg'         => '#EDEDED',
+					'dark-bg'          => '#14171C',
+					'text-color'       => '#393939',
+					'text-dark-bg'     => '#FFFFFF',
+				],
+			],
+			'darkMode' => [
+				'name'          => __( 'Dark Mode', 'neve' ),
+				'allowDeletion' => false,
+				'customColors'  => [],
+				'colors'        => [
+					'primary-accent'   => '#4BB68F',
+					'secondary-accent' => '#FFCF52',
+					'site-bg'          => '#000000',
+					'light-bg'         => '#282828',
+					'dark-bg'          => '#000000',
+					'text-color'       => '#FFFFFF',
+					'text-dark-bg'     => '#FFFFFF',
+				],
+			],
+		],
+	];
+}

@@ -1,0 +1,35 @@
+.nv-custom-palette-wrap {
+	padding: 10px;
+
+	.header {
+		display: flex;
+		align-items: center;
+		margin-bottom: 10px;
+
+		button {
+			margin-left: auto;
+		}
+	}
+}
+.nv-custom-palette-inner {
+	display: flex;
+	.nv-custom-palette-colors {
+		height: 32px;
+		width: 32px;
+		border-radius: 50%;
+		border: 1px solid #ccc;
+		&:not(:last-child) {
+			margin-right: 10px;
+		}
+	}
+}
+
+.global-color-picker {
+	svg {
+		margin-right: 0 !important;
+	}
+
+	span {
+
+	}
+}

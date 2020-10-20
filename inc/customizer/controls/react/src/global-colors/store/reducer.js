@@ -6,6 +6,28 @@ const initialState = {
 const saveCustomizeSetting = ( data ) => {
 	const control = wp.customize.control( 'neve_global_colors' );
 	control.setting.set( {} ).set( data );
+
+	const cssTag = document.querySelector( '#nv-css-vars' );
+	const { activePalette, palettes } = data;
+	const currentPalette = palettes[ activePalette ];
+	const { colors, customColors } = currentPalette;
+
+	let style = ':root{';
+
+	Object.keys( colors ).map( ( slug ) => {
+		style += `--nv-${ slug }:${ colors[ slug ] }!important;`;
+		return false;
+	} );
+	Object.keys( customColors ).map( ( slug ) => {
+		style += `--nv-${ slug }:${ customColors[ slug ] }!important;`;
+		return false;
+	} );
+
+	style += '}';
+
+	console.log( style );
+
+	cssTag.innerHTML = style;
 };
 
 const reducer = ( state = initialState, action ) => {

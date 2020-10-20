@@ -114,63 +114,26 @@ class Colors_Background extends Base_Customizer {
 	 * Add global colors.
 	 */
 	private function add_global_colors() {
-		$defaults = $this->get_global_colors_default();
+		$defaults = neve_get_global_colors_default();
 		$this->add_control(
 			new Control(
 				'neve_global_colors',
 				[
 					'sanitize_callback' => [ $this, 'sanitize_global_colors' ],
 					'default'           => $defaults,
+					'transport'         => 'postMessage',
 				],
 				[
-					'label'          => __( 'Global Colors', 'neve' ),
-					'priority'       => 10,
-					'section'        => 'neve_colors_background_section',
-					'type'           => 'neve_global_colors',
-					'default_values' => $defaults,
+					'label'                 => __( 'Global Colors', 'neve' ),
+					'priority'              => 10,
+					'section'               => 'neve_colors_background_section',
+					'type'                  => 'neve_global_colors',
+					'default_values'        => $defaults,
+					'live_refresh_selector' => true,
 				],
 				'Neve\Customizer\Controls\React\Global_Colors'
 			)
 		);
-	}
-
-	/**
-	 * Get global colors default.
-	 */
-	public function get_global_colors_default() {
-		return [
-			'activePalette' => 'base',
-			'palettes'      => [
-				'base'     => [
-					'name'          => __( 'Base', 'neve' ),
-					'allowDeletion' => false,
-					'customColors'  => [],
-					'colors'        => [
-						'primaryAccent'      => '#357BE3',
-						'secondaryAccent'    => '#1F519D',
-						'siteBackground'     => '#FFFFFF',
-						'lightBackground'    => '#EDEDED',
-						'darkBackground'     => '#14171C',
-						'textColor'          => '#393939',
-						'textDarkBackground' => '#FFFFFF',
-					],
-				],
-				'darkMode' => [
-					'name'          => __( 'Dark Mode', 'neve' ),
-					'allowDeletion' => false,
-					'customColors'  => [],
-					'colors'        => [
-						'primaryAccent'      => '#4BB68F',
-						'secondaryAccent'    => '#FFCF52',
-						'siteBackground'     => '#000000',
-						'lightBackground'    => '#282828',
-						'darkBackground'     => '#000000',
-						'textColor'          => '#FFFFFF',
-						'textDarkBackground' => '#FFFFFF',
-					],
-				],
-			],
-		];
 	}
 
 	/**
