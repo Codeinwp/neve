@@ -3,7 +3,7 @@ import { withSelect, withDispatch } from '@wordpress/data';
 import { Button, Icon } from '@wordpress/components';
 import { compose } from '@wordpress/compose';
 import { __, sprintf } from '@wordpress/i18n';
-import { uniqueId } from 'lodash';
+import { debounce, uniqueId } from 'lodash';
 import ColorControl from '../common/ColorControl.js';
 
 const PaletteColors = ( {
@@ -85,9 +85,9 @@ const PaletteColors = ( {
 									? defaults.palettes[ activePalette ][ slug ]
 									: '#FFFFFF'
 							}
-							onChange={ ( value ) => {
+							onChange={ debounce( ( value ) => {
 								updateColorInPalette( slug, value );
-							} }
+							}, 100 ) }
 						/>
 					);
 				} ) }
@@ -110,9 +110,11 @@ const PaletteColors = ( {
 								selectedColor={
 									customColors[ id ] || '#FFFFFF'
 								}
-								onChange={ ( value ) =>
-									updateCustomColorInPalette( id, value )
-								}
+								onChange={ debounce(
+									( value ) =>
+										updateCustomColorInPalette( id, value ),
+									100
+								) }
 							/>
 						);
 					} ) }

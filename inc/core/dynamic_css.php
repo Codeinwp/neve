@@ -26,14 +26,11 @@ class Dynamic_Css {
 	public function init() {
 		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue' ), 100 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ), 100 );
+		add_action( 'customize_controls_enqueue_scripts', [ $this, 'add_customize_vars_tag' ] );
 
 		if ( is_customize_preview() ) {
 			add_action( 'wp_head', [ $this, 'add_customize_vars_tag' ] );
-		} else {
-			wp_add_inline_style( 'neve-style', $this->get_css_vars() );
 		}
-
-		add_action( 'customize_controls_enqueue_scripts', [ $this, 'add_customize_vars_tag' ] );
 	}
 
 	public function legacy_style() {
@@ -78,6 +75,8 @@ class Dynamic_Css {
 
 		$style = apply_filters( 'neve_dynamic_style_output', $this->generator->generate(), $is_for_gutenberg ? 'gutenberg' : 'frontend' );
 
+		$style .= $this->get_css_vars();
+
 		$style = self::minify_css( $style );
 
 		wp_add_inline_style( $is_for_gutenberg ? self::GUTENBERG_HANDLE : self::FRONTEND_HANDLE, $style );
@@ -98,7 +97,7 @@ class Dynamic_Css {
 	 * Adds customizer CSS tag for CSS vars.
 	 */
 	public function add_customize_vars_tag() {
-		echo '<style id="nv-css-vars">' . esc_attr( $this->get_css_vars() ) . '</style>';
+		echo '<style id="nv-css-vars" type="text/css">' . esc_attr( $this->get_css_vars() ) . '</style>';
 	}
 
 	/**

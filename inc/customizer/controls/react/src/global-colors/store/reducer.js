@@ -5,7 +5,12 @@ const initialState = {
 
 const saveCustomizeSetting = ( data ) => {
 	const control = wp.customize.control( 'neve_global_colors' );
-	control.setting.set( {} ).set( data );
+	if ( data.flag ) {
+		delete data.flag;
+	} else {
+		data.flag = true;
+	}
+	control.setting.set( data );
 
 	const cssTag = document.querySelector( '#nv-css-vars' );
 	const { activePalette, palettes } = data;
@@ -15,17 +20,15 @@ const saveCustomizeSetting = ( data ) => {
 	let style = ':root{';
 
 	Object.keys( colors ).map( ( slug ) => {
-		style += `--nv-${ slug }:${ colors[ slug ] }!important;`;
+		style += `--nv-${ slug }:${ colors[ slug ] };`;
 		return false;
 	} );
 	Object.keys( customColors ).map( ( slug ) => {
-		style += `--nv-${ slug }:${ customColors[ slug ] }!important;`;
+		style += `--nv-${ slug }:${ customColors[ slug ] };`;
 		return false;
 	} );
 
 	style += '}';
-
-	console.log( style );
 
 	cssTag.innerHTML = style;
 };

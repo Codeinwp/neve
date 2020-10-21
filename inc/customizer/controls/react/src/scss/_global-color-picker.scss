@@ -21,15 +21,18 @@
 		&:not(:last-child) {
 			margin-right: 10px;
 		}
+		&.active {
+			outline: 2px solid $wp-blue;
+		}
 	}
 }
 
 .global-color-picker {
+	border: 1px solid #ccc;
 	svg {
 		margin-right: 0 !important;
 	}
-
-	span {
-
+	&.active {
+		color: $wp-blue;
 	}
 }

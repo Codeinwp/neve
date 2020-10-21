@@ -1,36 +1,49 @@
-import { useState } from '@wordpress/element';
-import { Popover, Icon } from '@wordpress/components';
+import { Dropdown, Button, Icon } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { withSelect } from '@wordpress/data';
 import CustomPalette from './CustomPalette';
+import classnames from 'classnames';
 
-const GlobalColorsPicker = ( { colors, customColors, onChange } ) => {
-	const [ open, setOpen ] = useState( false );
-
-	const closePopover = () => setOpen( false );
-	const openPopover = () => setOpen( true );
+const GlobalColorsPicker = ( {
+	colors,
+	customColors,
+	onChange,
+	activeColor,
+	isGlobal,
+} ) => {
+	const buttonClasses = classnames( [
+		'global-color-picker',
+		{ active: isGlobal },
+	] );
 
 	return (
-		<span
-			role="button"
-			className="global-color-picker"
-			onClick={ openPopover }
-		>
-			<Icon icon="admin-site-alt3" />
-			{ open && (
-				<Popover onFocusOutside={ closePopover } position="top center">
+		<Dropdown
+			renderToggle={ ( { isOpen, onToggle } ) => (
+				<Button
+					onClick={ onToggle }
+					aria-expanded={ isOpen }
+					role="button"
+					className={ buttonClasses }
+					icon="admin-site-alt3"
+				/>
+			) }
+			renderContent={ () => (
+				<>
 					<CustomPalette
 						onChange={ onChange }
 						colors={ colors }
 						title={ __( 'Global Colors', 'neve' ) }
+						activeColor={ activeColor }
 					/>
 					<CustomPalette
+						disableShortcut
 						onChange={ onChange }
 						colors={ customColors }
+						activeColor={ activeColor }
 					/>
-				</Popover>
+				</>
 			) }
-		</span>
+		/>
 	);
 };
 

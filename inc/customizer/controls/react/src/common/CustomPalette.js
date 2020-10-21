@@ -1,7 +1,14 @@
 import { __ } from '@wordpress/i18n';
 import { Button } from '@wordpress/components';
+import classnames from 'classnames';
 
-const CustomPalette = ( { title, colors, onChange } ) => {
+const CustomPalette = ( {
+	title,
+	colors,
+	onChange,
+	activeColor,
+	disableShortcut,
+} ) => {
 	const handleChange = ( color ) => {
 		onChange( color );
 	};
@@ -16,19 +23,24 @@ const CustomPalette = ( { title, colors, onChange } ) => {
 				{ title && (
 					<span className="customize-control-title">{ title }</span>
 				) }
-				<Button isLink onClick={ focusGlobalColors }>
-					{ __( 'Edit', 'neve' ) }
-				</Button>
+				{ ! disableShortcut && (
+					<Button isLink onClick={ focusGlobalColors }>
+						{ __( 'Edit', 'neve' ) }
+					</Button>
+				) }
 			</div>
 			<div className="nv-custom-palette-inner">
 				{ Object.keys( colors ).map( ( slug ) => {
 					const style = { backgroundColor: colors[ slug ] };
-
+					const buttonClasses = classnames( [
+						'nv-custom-palette-colors',
+						{ active: activeColor },
+					] );
 					return (
 						<Button
 							key={ slug }
 							style={ style }
-							className="nv-custom-palette-colors"
+							className={ buttonClasses }
 							onClick={ () => {
 								handleChange( `var(--nv-${ slug })` );
 							} }

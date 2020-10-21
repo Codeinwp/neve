@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import GlobalColorsPicker from '../common/GlobalColorsPicker';
 import { ColorPicker, Button, Dropdown } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
+import { debounce } from 'lodash';
 import classnames from 'classnames';
 
 const ColorControl = ( {
@@ -24,6 +25,8 @@ const ColorControl = ( {
 		onChange( value.hex );
 	};
 
+	const isGlobal = selectedColor.indexOf( 'var' ) > -1;
+
 	const handleClear = () => {
 		onChange( defaultValue || '' );
 		toggle();
@@ -43,7 +46,13 @@ const ColorControl = ( {
 			{ deletable && (
 				<Button className="delete" icon="trash" onClick={ onDelete } />
 			) }
-			{ ! disableGlobal && <GlobalColorsPicker onChange={ onChange } /> }
+			{ ! disableGlobal && (
+				<GlobalColorsPicker
+					isGlobal={ isGlobal }
+					activeColor={ selectedColor }
+					onChange={ onChange }
+				/>
+			) }
 			<Dropdown
 				renderToggle={ ( { isOpen, onToggle } ) => {
 					toggle = onToggle;
@@ -66,7 +75,7 @@ const ColorControl = ( {
 						<a href="#" />
 						<ColorPicker
 							color={ selectedColor }
-							onChangeComplete={ handleChange }
+							onChangeComplete={ debounce( handleChange, 50 ) }
 						/>
 						{ selectedColor && (
 							<Button
