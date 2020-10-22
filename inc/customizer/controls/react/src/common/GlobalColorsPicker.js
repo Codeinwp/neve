@@ -4,13 +4,7 @@ import { withSelect } from '@wordpress/data';
 import CustomPalette from './CustomPalette';
 import classnames from 'classnames';
 
-const GlobalColorsPicker = ( {
-	colors,
-	customColors,
-	onChange,
-	activeColor,
-	isGlobal,
-} ) => {
+const GlobalColorsPicker = ( { colors, onChange, activeColor, isGlobal } ) => {
 	const buttonClasses = classnames( [
 		'global-color-picker',
 		{ active: isGlobal },
@@ -24,8 +18,9 @@ const GlobalColorsPicker = ( {
 					aria-expanded={ isOpen }
 					role="button"
 					className={ buttonClasses }
-					icon="admin-site-alt3"
-				/>
+				>
+					<Icon size={ 16 } icon="admin-site-alt3" />
+				</Button>
 			) }
 			renderContent={ () => (
 				<>
@@ -33,12 +28,6 @@ const GlobalColorsPicker = ( {
 						onChange={ onChange }
 						colors={ colors }
 						title={ __( 'Global Colors', 'neve' ) }
-						activeColor={ activeColor }
-					/>
-					<CustomPalette
-						disableShortcut
-						onChange={ onChange }
-						colors={ customColors }
 						activeColor={ activeColor }
 					/>
 				</>
@@ -55,6 +44,5 @@ export default withSelect( ( select ) => {
 
 	return {
 		colors: activeNow.colors,
-		customColors: activeNow.customColors,
 	};
 } )( GlobalColorsPicker );

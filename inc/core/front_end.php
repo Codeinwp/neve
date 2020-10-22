@@ -88,7 +88,7 @@ class Front_End {
 	 *
 	 * @link https://core.trac.wordpress.org/ticket/12009
 	 *
-	 * @param string $tag    The script tag.
+	 * @param string $tag The script tag.
 	 * @param string $handle The script handle.
 	 * @return string Script HTML string.
 	 */
@@ -188,32 +188,53 @@ class Front_End {
 			)
 		);
 
+		$palette = get_theme_mod( 'neve_global_colors', neve_get_global_colors_default( true ) );
+		$active  = $palette['activePalette'];
+
+		$link_color = $palette['palettes'][ $active ]['colors']['primary-accent'];
+		$link_hover = $palette['palettes'][ $active ]['colors']['secondary-accent'];
+		$text_color = $palette['palettes'][ $active ]['colors']['text-color'];
+
+		$from_global_colors = [
+			'neve-link-color'       => array(
+				'val'   => $link_color,
+				'label' => __( 'Link Color', 'neve' ),
+			),
+			'neve-link-hover-color' => array(
+				'val'   => $link_hover,
+				'label' => __( 'Link Hover Color', 'neve' ),
+			),
+			'neve-text-color'       => array(
+				'val'   => $text_color,
+				'label' => __( 'Text Color', 'neve' ),
+			),
+		];
+
+		foreach ( $from_global_colors as $slug => $args ) {
+			array_push(
+				$gutenberg_color_palette,
+				array(
+					'name'  => esc_html( $args['label'] ),
+					'slug'  => esc_html( $slug ),
+					'color' => neve_sanitize_colors( $args['val'] ),
+				)
+			);
+		}
+
 		$color_controls = array(
-			'neve-button-color'     => array(
+			'neve-button-color'   => array(
 				'setting' => Config::MODS_BUTTON_PRIMARY_STYLE . '.background',
 				'label'   => __( 'Button Color', 'neve' ),
 			),
-			'neve-link-color'       => array(
-				'setting' => Config::MODS_LINK_COLOR,
-				'label'   => __( 'Link Color', 'neve' ),
-			),
-			'neve-link-hover-color' => array(
-				'setting' => Config::MODS_LINK_HOVER_COLOR,
-				'label'   => __( 'Link Hover Color', 'neve' ),
-			),
-			'neve-text-color'       => array(
-				'setting' => Config::MODS_TEXT_COLOR,
-				'label'   => __( 'Text Color', 'neve' ),
-			),
-			'neve-btn-text'         => array(
+			'neve-btn-text'       => array(
 				'setting' => Config::MODS_BUTTON_PRIMARY_STYLE . '.text',
 				'label'   => __( 'Button text color', 'neve' ),
 			),
-			'neve-btn-text-hover'   => array(
+			'neve-btn-text-hover' => array(
 				'setting' => Config::MODS_BUTTON_PRIMARY_STYLE . '.textHover',
 				'label'   => __( 'Button Hover text color', 'neve' ),
 			),
-			'neve-btn-bg-hover'     => array(
+			'neve-btn-bg-hover'   => array(
 				'setting' => Config::MODS_BUTTON_PRIMARY_STYLE . '.backgroundHover',
 				'label'   => __( 'Button Hover Color', 'neve' ),
 			),

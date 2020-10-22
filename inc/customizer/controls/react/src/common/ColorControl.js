@@ -10,8 +10,6 @@ const ColorControl = ( {
 	selectedColor,
 	onChange,
 	defaultValue,
-	deletable,
-	onDelete,
 	disableGlobal,
 } ) => {
 	let toggle = null;
@@ -42,9 +40,6 @@ const ColorControl = ( {
 		<div className={ wrapClasses }>
 			{ label && (
 				<span className="customize-control-title">{ label }</span>
-			) }
-			{ deletable && (
-				<Button className="delete" icon="trash" onClick={ onDelete } />
 			) }
 			{ ! disableGlobal && (
 				<GlobalColorsPicker
@@ -102,8 +97,6 @@ ColorControl.propTypes = {
 	onChange: PropTypes.func.isRequired,
 	selectedColor: PropTypes.string.isRequired,
 	defaultValue: PropTypes.string,
-	onDelete: PropTypes.func,
-	deletable: PropTypes.bool,
 	disableGlobal: PropTypes.bool,
 };
 

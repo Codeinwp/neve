@@ -324,11 +324,11 @@ html {
 
 body {
   font-family: Graphik, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
-  color: #404248;
+  color: var(--nv-text-color);
   line-height: 1.68421;
   overflow-x: hidden;
   direction: ltr;
-  background-color: #fff;
+  background-color: var(--nv-site-bg);
 }
 
 h1,
@@ -351,13 +351,13 @@ p {
 
 a {
   cursor: pointer;
-  color: #0366d6;
+  color: var(--nv-primary-accent);
   text-decoration: none;
 }
 
 a:hover, a:focus {
   text-decoration: underline;
-  color: #0366d6;
+  color: var(--nv-secondary-accent);
 }
 
 ins {
@@ -587,6 +587,30 @@ blockquote.wp-block-quote.is-style-large cite {
 
 .has-black-background-color {
   background-color: #000 !important;
+}
+
+.has-neve-link-color-color {
+  color: var(--nv-primary-accent);
+}
+
+.has-neve-link-color-background-color {
+  background-color: var(--nv-primary-accent);
+}
+
+.has-neve-link-hover-color-color {
+  color: var(--nv-secondary-accent);
+}
+
+.has-neve-link-hover-color-background-color {
+  background-color: var(--nv-secondary-accent);
+}
+
+.has-neve-text-color-color {
+  color: var(--nv-text-color);
+}
+
+.has-neve-text-color-background-color {
+  background-color: var(--nv-text-color);
 }
 
 .hidden-on-mobile {
@@ -1284,12 +1308,12 @@ fieldset input[type="text"], fieldset input[type="search"], fieldset input[type=
 }
 
 .entry-title a {
-  color: #404248;
+  color: var(--nv-text-color);
 }
 
 .entry-title a:hover, .entry-title a:focus {
   opacity: .9;
-  color: #404248;
+  color: var(--nv-text-color);
 }
 
 .nv-post-thumbnail-wrap amp-img {
@@ -1417,7 +1441,7 @@ article {
   height: 50px;
   width: 50px;
   border-radius: 50%;
-  border: 2px solid #0366d6;
+  border: 2px solid var(--nv-primary-accent);
   border-left: 1px solid transparent !important;
   -webkit-animation: spin 1s ease infinite;
   -moz-animation: spin 1s ease infinite;
@@ -1841,7 +1865,7 @@ p code {
 pre {
   display: block;
   padding: 20px;
-  background: #fbfbfb;
+  background: rgba(255, 255, 255, 0.75);
   border-radius: 5px;
   border: 1px solid #f0f0f0;
   margin: 20px 0;

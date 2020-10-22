@@ -1,6 +1,4 @@
 .nv-custom-palette-wrap {
-	padding: 10px;
-
 	.header {
 		display: flex;
 		align-items: center;
@@ -11,27 +9,34 @@
 		}
 	}
 }
+
 .nv-custom-palette-inner {
 	display: flex;
-	.nv-custom-palette-colors {
+	.nv-custom-palette-color {
 		height: 32px;
 		width: 32px;
 		border-radius: 50%;
 		border: 1px solid #ccc;
+		margin-bottom: 10px;
+
 		&:not(:last-child) {
 			margin-right: 10px;
 		}
+
 		&.active {
-			outline: 2px solid $wp-blue;
+			box-shadow: 0 0 0 2px $wp-blue;
+			border-color: $wp-blue;
 		}
 	}
 }
 
 .global-color-picker {
 	border: 1px solid #ccc;
+
 	svg {
 		margin-right: 0 !important;
 	}
+
 	&.active {
 		color: $wp-blue;
 	}

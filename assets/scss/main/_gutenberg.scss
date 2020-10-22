@@ -200,3 +200,24 @@ blockquote.wp-block-quote.is-style-large {
 .has-black-background-color{
   background-color:#000 !important;;
 }
+
+.has-neve-link-color-color {
+	color: var(--nv-primary-accent);
+}
+.has-neve-link-color-background-color {
+	background-color: var(--nv-primary-accent);
+}
+
+.has-neve-link-hover-color-color  {
+	color: var(--nv-secondary-accent);
+}
+.has-neve-link-hover-color-background-color {
+	background-color: var(--nv-secondary-accent);
+}
+
+.has-neve-text-color-color {
+	color: var(--nv-text-color);
+}
+.has-neve-text-color-background-color {
+	background-color: var(--nv-text-color);
+}

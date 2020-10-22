@@ -1,17 +1,21 @@
 .neve-color-component {
 	margin: 0;
 	align-items: center;
+
 	.delete {
 		margin-left: auto;
-		color: #DCDCDC;
+		color: #dcdcdc;
 		transition: .3s ease;
+
 		&:hover {
 			color: $wp-blue;
 		}
+
 		& + div {
 			margin-left: 0;
 		}
 	}
+
 	.clear {
 		width: 100%;
 		justify-content: center;
@@ -25,19 +29,22 @@
 			height: 30px;
 			width: 55px;
 			display: block;
-			border-color: $input-borders !important;
+			border: 1px solid $input-borders !important;
 			position: relative;
+
 			.color, .gradient {
 				display: block;
-				top: 1px;
-				bottom: 1px;
-				right: 1px;
-				left: 1px;
+				top: 0;
+				bottom: 0;
+				right: 0;
+				left: 0;
 				position: absolute;
 			}
+
 			.color {
 				z-index: 1;
 			}
+
 			.gradient {
 				background-image: linear-gradient(45deg,
 								#fff 0%, #ccc 0%,
@@ -83,5 +90,41 @@
 
 	.components-tooltip {
 		display: none !important;
+	}
+
+
+	&.allows-global {
+		> div:last-child {
+			margin-left: 0;
+		}
+
+		> div > button {
+			width: 27px !important;
+			padding: 0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			border: 1px solid #b7c0cc;
+			box-shadow: none;
+
+			> .dashicons {
+				width: 10px;
+			}
+		}
+
+		.global-color-picker {
+			color: #b7c0cc;
+			margin-right: -1px;
+			border-top-right-radius: 0;
+			border-bottom-right-radius: 0;
+
+			&:hover {
+				color: #b7c0cc;
+			}
+
+			&.active {
+				color: $wp-blue;
+			}
+		}
 	}
 }

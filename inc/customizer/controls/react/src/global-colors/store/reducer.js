@@ -15,7 +15,7 @@ const saveCustomizeSetting = ( data ) => {
 	const cssTag = document.querySelector( '#nv-css-vars' );
 	const { activePalette, palettes } = data;
 	const currentPalette = palettes[ activePalette ];
-	const { colors, customColors } = currentPalette;
+	const { colors } = currentPalette;
 
 	let style = ':root{';
 
@@ -23,11 +23,6 @@ const saveCustomizeSetting = ( data ) => {
 		style += `--nv-${ slug }:${ colors[ slug ] };`;
 		return false;
 	} );
-	Object.keys( customColors ).map( ( slug ) => {
-		style += `--nv-${ slug }:${ customColors[ slug ] };`;
-		return false;
-	} );
-
 	style += '}';
 
 	cssTag.innerHTML = style;

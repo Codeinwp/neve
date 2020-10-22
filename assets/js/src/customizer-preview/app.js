@@ -588,21 +588,14 @@ window.addEventListener( 'load', function () {
 						case '\\Neve\\Customizer\\Controls\\React\\Font_Family':
 							break;
 						case 'Neve\\Customizer\\Controls\\React\\Global_Colors':
-							console.log( newValue );
 							const cssTag = document.querySelector(
 								'#nv-css-vars'
 							);
 							const { palettes, activePalette } = newValue;
-							const { colors, customColors } = palettes[
-								activePalette
-							];
+							const { colors } = palettes[ activePalette ];
 							let globalColorsCSS = ':root{';
 							Object.keys( colors ).map( ( slug ) => {
 								globalColorsCSS += `--nv-${ slug }:${ colors[ slug ] };`;
-								return false;
-							} );
-							Object.keys( customColors ).map( ( slug ) => {
-								globalColorsCSS += `--nv-${ slug }:${ customColors[ slug ] };`;
 								return false;
 							} );
 							globalColorsCSS += '}';

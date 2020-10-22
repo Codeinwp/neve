@@ -106,7 +106,7 @@ class Dynamic_Css {
 	 * @return string
 	 */
 	private function get_css_vars() {
-		$global_colors = get_theme_mod( 'neve_global_colors', neve_get_global_colors_default() );
+		$global_colors = get_theme_mod( 'neve_global_colors', neve_get_global_colors_default(true) );
 
 		if ( empty( $global_colors ) ) {
 			return '';
@@ -116,17 +116,21 @@ class Dynamic_Css {
 			return '';
 		}
 
-		if ( ! isset( $global_colors[ 'palettes' ][ $global_colors[ 'activePalette' ] ] ) ) {
+		$active = $global_colors['activePalette'];
+
+		if ( ! isset( $global_colors[ 'palettes' ][ $active ] ) ) {
 			return '';
 		}
 
-		$palette = $global_colors[ 'palettes' ][ $global_colors[ 'activePalette' ] ];
+		$palette = $global_colors[ 'palettes' ][ $active ];
 
-		$all_colors = array_merge( $palette[ 'colors' ], $palette[ 'customColors' ] );
+		if( ! isset( $palette['colors'] ) ) {
+			return '';
+		}
 
 		$css = ':root{';
 
-		foreach ( $all_colors as $slug => $color ) {
+		foreach ( $palette[ 'colors' ] as $slug => $color ) {
 			$css .= '--nv-' . $slug . ':' . $color . ';';
 		}
 

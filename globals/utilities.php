@@ -1320,30 +1320,37 @@ function neve_get_headings_selectors() {
 /**
  * Get Global Colors Default
  *
+ * @param bool $migrated get with migrated colors.
  * @return array
  */
-function neve_get_global_colors_default() {
+function neve_get_global_colors_default( $migrated = false ) {
+
+	$old_link_color       = get_theme_mod( 'neve_link_color', '#0366d6' );
+	$old_link_hover_color = get_theme_mod( 'neve_link_hover_color', '#0366d6' );
+	$old_text_color       = get_theme_mod( 'neve_text_color', '#404248' );
+	$old_bg_color         = '#' . get_theme_mod( 'background_color', 'ffffff' );
+
 	return [
 		'activePalette' => 'base',
 		'palettes'      => [
 			'base'     => [
 				'name'          => __( 'Base', 'neve' ),
 				'allowDeletion' => false,
-				'customColors'  => [],
 				'colors'        => [
-					'primary-accent'   => '#357BE3',
-					'secondary-accent' => '#1F519D',
-					'site-bg'          => '#FFFFFF',
+					'primary-accent'   => $old_link_color,
+					'secondary-accent' => $old_link_hover_color,
+					'site-bg'          => $old_bg_color,
 					'light-bg'         => '#EDEDED',
 					'dark-bg'          => '#14171C',
-					'text-color'       => '#393939',
+					'text-color'       => $old_text_color,
 					'text-dark-bg'     => '#FFFFFF',
+					'custom-color-1'   => '#FFFFFF',
+					'custom-color-2'   => '#FFFFFF',
 				],
 			],
 			'darkMode' => [
 				'name'          => __( 'Dark Mode', 'neve' ),
 				'allowDeletion' => false,
-				'customColors'  => [],
 				'colors'        => [
 					'primary-accent'   => '#4BB68F',
 					'secondary-accent' => '#FFCF52',
@@ -1352,6 +1359,8 @@ function neve_get_global_colors_default() {
 					'dark-bg'          => '#000000',
 					'text-color'       => '#FFFFFF',
 					'text-dark-bg'     => '#FFFFFF',
+					'custom-color-1'   => '#FFFFFF',
+					'custom-color-2'   => '#FFFFFF',
 				],
 			],
 		],

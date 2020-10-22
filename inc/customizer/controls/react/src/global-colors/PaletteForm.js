@@ -32,9 +32,6 @@ const PaletteForm = ( { palettes, setActivePalette, updatePalettes } ) => {
 			name: newPaletteName,
 			allowDeletion: true,
 			colors: { ...newPalettes[ paletteFrom ].colors },
-			customColors: newPalettes[ paletteFrom ].customColors
-				? { ...newPalettes[ paletteFrom ].customColors }
-				: {},
 		};
 		updatePalettes( newPalettes );
 		setActivePalette( paletteSlug );
