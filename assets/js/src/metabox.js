@@ -32,6 +32,6 @@
 	};
 })( jQuery );
 
-jQuery( window ).load( function () {
+jQuery( window ).on( 'load', function () {
 	jQuery.neveMetabox.init();
 } );

@@ -121,12 +121,9 @@ const StarterSitesUnavailable = ( { templatesPluginData } ) => {
 			<>
 				<h1>
 					{ 'deactivate' === currentState
-						? __(
-								'In order to be able to import any starter sites for Neve you would need to have the Cloud Templates & Patterns Collection updated to the latest version.'
-						  )
-						: __(
-								'In order to be able to import any starter sites for Neve you would need to have the Cloud Templates & Patterns Collection plugin active.'
-						  ) }
+						? neveDash.strings.starterSitesUnavailableUpdate
+						: neveDash.strings.starterSitesUnavailableActive
+					}
 				</h1>
 				<br />
 				{ buttonMap[ currentState ] }
