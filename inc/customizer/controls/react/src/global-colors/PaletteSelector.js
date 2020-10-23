@@ -1,29 +1,30 @@
-import { withSelect, withDispatch } from '@wordpress/data';
 import { Button, Modal } from '@wordpress/components';
 import { useState } from '@wordpress/element';
-import { compose } from '@wordpress/compose';
 import { __, sprintf } from '@wordpress/i18n';
 import classnames from 'classnames';
 
-const PaletteSelector = ( {
-	palettes,
-	updatePalettes,
-	active,
-	setActivePalette,
-} ) => {
+const PaletteSelector = ( { values, save } ) => {
+	const { palettes, activePalette } = values;
+
 	const [ isOpenModal, setIsOpenModal ] = useState( false );
 	const [ willDelete, setWillDelete ] = useState( '' );
 
 	const deletePalette = () => {
-		if ( active === willDelete ) {
-			setActivePalette( 'base' );
+		const nextValues = { ...values };
+		if ( activePalette === willDelete ) {
+			nextValues.activePalette = 'base';
 		}
-
-		const newPalettes = { ...palettes };
-		delete newPalettes[ willDelete ];
+		delete nextValues.palettes[ willDelete ];
 		setIsOpenModal( false );
 		setWillDelete( '' );
-		updatePalettes( newPalettes );
+		save( nextValues );
+	};
+
+	const setActivePalette = ( id ) => {
+		const nextValues = { ...values };
+		nextValues.activePalette = id;
+
+		save( nextValues );
 	};
 
 	return (
@@ -33,7 +34,7 @@ const PaletteSelector = ( {
 				const paletteClasses = classnames( [
 					'neve-global-color-palette-inner',
 					{
-						active: active === id,
+						active: activePalette === id,
 					},
 				] );
 				return (
@@ -117,25 +118,4 @@ const PaletteSelector = ( {
 	);
 };
 
-export default compose(
-	withSelect( ( select ) => {
-		const { getPalettes, getActivePalette } = select(
-			'neve-global-colors'
-		);
-
-		return {
-			palettes: getPalettes(),
-			active: getActivePalette(),
-		};
-	} ),
-	withDispatch( ( dispatch ) => {
-		const { setActivePalette, updatePalettes } = dispatch(
-			'neve-global-colors'
-		);
-
-		return {
-			setActivePalette: ( id ) => setActivePalette( id ),
-			updatePalettes,
-		};
-	} )
-)( PaletteSelector );
+export default PaletteSelector;

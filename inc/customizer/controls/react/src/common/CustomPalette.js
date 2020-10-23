@@ -1,9 +1,9 @@
 import { __ } from '@wordpress/i18n';
 import { Button } from '@wordpress/components';
-import { Fragment } from '@wordpress/element';
 import classnames from 'classnames';
+import { globalPaletteColors } from '../common/common';
 
-const CustomPalette = ( { title, colors, onChange, activeColor } ) => {
+const CustomPalette = ( { title, onChange, activeColor } ) => {
 	const handleChange = ( color ) => {
 		onChange( color );
 	};
@@ -18,28 +18,42 @@ const CustomPalette = ( { title, colors, onChange, activeColor } ) => {
 				{ title && (
 					<span className="customize-control-title">{ title }</span>
 				) }
-
 				<Button isLink onClick={ focusGlobalColors }>
 					{ __( 'Edit', 'neve' ) }
 				</Button>
 			</div>
 			<div className="nv-custom-palette-inner">
-				{ Object.keys( colors ).map( ( slug, index ) => {
-					const style = { backgroundColor: colors[ slug ] };
-					const buttonClasses = classnames( [
-						'nv-custom-palette-color',
-						{ active: activeColor === `var(--nv-${ slug })` },
-					] );
+				{ globalPaletteColors.map( ( group, index ) => {
 					return (
-						<Fragment key={ slug }>
-							<Button
-								style={ style }
-								className={ buttonClasses }
-								onClick={ () => {
-									handleChange( `var(--nv-${ slug })` );
-								} }
-							/>
-						</Fragment>
+						<div className="row" key={ index }>
+							{ Object.keys( group ).map( ( slug ) => {
+								const style = {
+									backgroundColor: `var(--nv-${ slug })`,
+								};
+								const buttonClasses = classnames( [
+									'nv-custom-palette-color',
+									{
+										active:
+											activeColor ===
+											`var(--nv-${ slug })`,
+									},
+								] );
+
+								return (
+									<Button
+										title={ group[ slug ] }
+										key={ slug }
+										style={ style }
+										className={ buttonClasses }
+										onClick={ () => {
+											handleChange(
+												`var(--nv-${ slug })`
+											);
+										} }
+									/>
+								);
+							} ) }
+						</div>
 					);
 				} ) }
 			</div>

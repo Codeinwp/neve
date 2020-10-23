@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-10-22T14:18:25+00:00\n"
+"POT-Creation-Date: 2020-10-23T09:10:23+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -321,8 +321,8 @@ msgstr ""
 #: header-footer-grid/Core/Components/Logo.php:205
 #: inc/core/front_end.php:209
 #: inc/customizer/options/layout_blog.php:184
-#: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/PaletteColors.js:25
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/common/common.js:77
 msgid "Text Color"
 msgstr ""
 
@@ -1261,7 +1261,7 @@ msgstr ""
 
 #: inc/customizer/options/colors_background.php:91
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/common/GlobalColorsPicker.js:30
+#: inc/customizer/controls/react/src/common/GlobalColorsPicker.js:28
 msgid "Global Colors"
 msgstr ""
 
@@ -1634,7 +1634,7 @@ msgstr ""
 #: inc/views/partials/comments.php:107
 #: inc/views/partials/comments.php:138
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/common/CustomPalette.js:23
+#: inc/customizer/controls/react/src/common/CustomPalette.js:22
 msgid "Edit"
 msgstr ""
 
@@ -2102,7 +2102,47 @@ msgid "Mobile"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/common/ColorControl.js:81
+#: inc/customizer/controls/react/src/common/common.js:72
+msgid "Primary Accent"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/common/common.js:73
+msgid "Secondary Accent"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/common/common.js:74
+msgid "Site Background"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/common/common.js:75
+msgid "Light Background"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/common/common.js:76
+msgid "Dark Background"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/common/common.js:78
+msgid "Text Dark Background"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/common/common.js:81
+msgid "Custom Color 1"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/common/common.js:82
+msgid "Custom Color 2"
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/common/ColorControl.js:80
 msgid "Clear"
 msgstr ""
 
@@ -2395,30 +2435,30 @@ msgid "Toggle Visibility"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:47
+#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:48
 msgid "Remove Palette"
 msgstr ""
 
 #. translators: %s - name of palette that will be deleted.
 #: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:59
+#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:60
 msgid "Are you sure you want to delete the %s palette?"
 msgstr ""
 
 #. translators: %s - name of palette that will be deleted.
 #: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:67
+#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:68
 msgid "If this is the currently active palette, the current palette will be switched to the Base one."
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:78
+#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:79
 msgid "Delete"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/PaletteForm.js:89
-#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:87
+#: inc/customizer/controls/react/src/global-colors/PaletteForm.js:88
+#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:88
 msgid "Cancel"
 msgstr ""
 
@@ -2428,66 +2468,26 @@ msgid "Palette Colors"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/PaletteColors.js:20
-msgid "Primary Accent"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/PaletteColors.js:21
-msgid "Secondary Accent"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/PaletteColors.js:22
-msgid "Site Background"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/PaletteColors.js:23
-msgid "Light Background"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/PaletteColors.js:24
-msgid "Dark Background"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/PaletteColors.js:26
-msgid "Text Dark Background"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/PaletteColors.js:27
-msgid "Custom Color 1"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/PaletteColors.js:28
-msgid "Custom Color 2"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/PaletteColors.js:89
+#: inc/customizer/controls/react/src/global-colors/PaletteColors.js:77
 msgid "Reset all to default"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/PaletteForm.js:61
-msgid "Palette Name"
+#: inc/customizer/controls/react/src/global-colors/PaletteForm.js:60
+msgid "Palette Title"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/PaletteForm.js:67
+#: inc/customizer/controls/react/src/global-colors/PaletteForm.js:66
 msgid "Extend from:"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/PaletteForm.js:98
+#: inc/customizer/controls/react/src/global-colors/PaletteForm.js:97
 msgid "Add"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/GlobalColors.js:38
+#: inc/customizer/controls/react/src/global-colors/GlobalColors.js:55
 msgid "How the color system works"
 msgstr ""

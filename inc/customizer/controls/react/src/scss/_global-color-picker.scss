@@ -11,14 +11,17 @@
 }
 
 .nv-custom-palette-inner {
-	display: flex;
+	.row {
+		display: flex;
+		&:not(:last-child) {
+			margin-bottom: 15px;
+		}
+	}
 	.nv-custom-palette-color {
 		height: 32px;
 		width: 32px;
 		border-radius: 50%;
 		border: 1px solid #ccc;
-		margin-bottom: 10px;
-
 		&:not(:last-child) {
 			margin-right: 10px;
 		}

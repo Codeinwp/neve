@@ -75,7 +75,6 @@ const initBlogPageFocus = () => {
 };
 
 domReady( () => {
-	wp.customize.section( 'neve_colors_background_section' ).focus();
 	initDeviceSwitchers();
 	initDynamicFields();
 	initBlogPageFocus();

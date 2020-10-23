@@ -1,29 +1,42 @@
-import { withDispatch } from '@wordpress/data';
-import { useState, useEffect } from '@wordpress/element';
+import { useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
-import domReady from '@wordpress/dom-ready';
 
 import PaletteSelector from './PaletteSelector';
 import PaletteColors from './PaletteColors';
 import PaletteForm from './PaletteForm';
 
-const GlobalColors = ( { control, updateValues } ) => {
-	const [ loading, setLoading ] = useState( true );
-
-	useEffect( () => {
-		domReady( () => {
-			updateValues(
-				wp.customize.control( 'neve_global_colors' ).setting()
-			);
-			setLoading( false );
-		} );
-	}, [] );
-
-	if ( loading ) {
-		return 'Loading...';
-	}
-
+const GlobalColors = ( { control } ) => {
 	const { label, defaultValues } = control.params;
+	const [ values, setValues ] = useState( control.setting.get() );
+
+	const saveCustomizeSetting = ( data ) => {
+		if ( data.flag ) {
+			delete data.flag;
+		} else {
+			data.flag = true;
+		}
+		control.setting.set( data );
+
+		const cssTag = document.querySelector( '#nv-css-vars' );
+		const { activePalette, palettes } = data;
+		const currentPalette = palettes[ activePalette ];
+		const { colors } = currentPalette;
+
+		let style = ':root{';
+
+		Object.keys( colors ).map( ( slug ) => {
+			style += `--nv-${ slug }:${ colors[ slug ] };`;
+			return false;
+		} );
+		style += '}';
+
+		cssTag.innerHTML = style;
+	};
+
+	const updateValues = ( newValue ) => {
+		setValues( newValue );
+		saveCustomizeSetting( newValue );
+	};
 
 	return (
 		<div className="neve-global-colors-wrap">
@@ -31,9 +44,13 @@ const GlobalColors = ( { control, updateValues } ) => {
 				<span className="customize-control-title">{ label }</span>
 			) }
 
-			<PaletteSelector />
-			<PaletteForm />
-			<PaletteColors defaults={ defaultValues } />
+			<PaletteSelector values={ values } save={ updateValues } />
+			<PaletteForm values={ values } save={ updateValues } />
+			<PaletteColors
+				values={ values }
+				save={ updateValues }
+				defaults={ defaultValues }
+			/>
 			<p>
 				<a href="#">{ __( 'How the color system works', 'neve' ) }</a>
 			</p>
@@ -41,10 +58,4 @@ const GlobalColors = ( { control, updateValues } ) => {
 	);
 };
 
-export default withDispatch( ( dispatch ) => {
-	const { initValues } = dispatch( 'neve-global-colors' );
-
-	return {
-		updateValues: ( newValues ) => initValues( newValues ),
-	};
-} )( GlobalColors );
+export default GlobalColors;

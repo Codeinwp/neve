@@ -1,10 +1,9 @@
 import { Dropdown, Button, Icon } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import { withSelect } from '@wordpress/data';
 import CustomPalette from './CustomPalette';
 import classnames from 'classnames';
 
-const GlobalColorsPicker = ( { colors, onChange, activeColor, isGlobal } ) => {
+const GlobalColorsPicker = ( { onChange, activeColor, isGlobal } ) => {
 	const buttonClasses = classnames( [
 		'global-color-picker',
 		{ active: isGlobal },
@@ -26,7 +25,6 @@ const GlobalColorsPicker = ( { colors, onChange, activeColor, isGlobal } ) => {
 				<>
 					<CustomPalette
 						onChange={ onChange }
-						colors={ colors }
 						title={ __( 'Global Colors', 'neve' ) }
 						activeColor={ activeColor }
 					/>
@@ -35,14 +33,4 @@ const GlobalColorsPicker = ( { colors, onChange, activeColor, isGlobal } ) => {
 		/>
 	);
 };
-
-export default withSelect( ( select ) => {
-	const { getPalettes, getActivePalette } = select( 'neve-global-colors' );
-	const palettes = getPalettes();
-	const active = getActivePalette();
-	const activeNow = palettes[ active ];
-
-	return {
-		colors: activeNow.colors,
-	};
-} )( GlobalColorsPicker );
+export default GlobalColorsPicker;

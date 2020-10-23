@@ -1,11 +1,10 @@
-import { withSelect, withDispatch } from '@wordpress/data';
 import { useState } from '@wordpress/element';
-import { compose } from '@wordpress/compose';
 import { Button } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { camelCase } from 'lodash';
 
-const PaletteForm = ( { palettes, setActivePalette, updatePalettes } ) => {
+const PaletteForm = ( { values, save } ) => {
+	const { palettes } = values;
 	const [ isAdding, setIsAdding ] = useState( false );
 	const [ newPaletteName, setNewPaletteName ] = useState( '' );
 	const [ paletteFrom, setPaletteFrom ] = useState( 'base' );
@@ -26,15 +25,15 @@ const PaletteForm = ( { palettes, setActivePalette, updatePalettes } ) => {
 
 	const addNewPalette = ( e ) => {
 		e.preventDefault();
+		const nextValue = { ...values };
 		const paletteSlug = camelCase( newPaletteName );
-		const newPalettes = { ...palettes };
-		newPalettes[ paletteSlug ] = {
+		nextValue.palettes[ paletteSlug ] = {
 			name: newPaletteName,
 			allowDeletion: true,
-			colors: { ...newPalettes[ paletteFrom ].colors },
+			colors: { ...nextValue.palettes[ paletteFrom ].colors },
 		};
-		updatePalettes( newPalettes );
-		setActivePalette( paletteSlug );
+		nextValue.activePalette = paletteSlug;
+		save( nextValue );
 		toggleAdding();
 	};
 
@@ -58,7 +57,7 @@ const PaletteForm = ( { palettes, setActivePalette, updatePalettes } ) => {
 		<div className="add-palette-form">
 			<input
 				type="text"
-				placeholder={ __( 'Palette Name', 'neve' ) }
+				placeholder={ __( 'Palette Title', 'neve' ) }
 				onChange={ ( e ) => {
 					setNewPaletteName( e.target.value );
 				} }
@@ -102,24 +101,4 @@ const PaletteForm = ( { palettes, setActivePalette, updatePalettes } ) => {
 	);
 };
 
-export default compose(
-	withSelect( ( select ) => {
-		const { getPalettes } = select( 'neve-global-colors' );
-
-		const palettes = getPalettes();
-
-		return {
-			palettes,
-		};
-	} ),
-	withDispatch( ( dispatch ) => {
-		const { setActivePalette, updatePalettes } = dispatch(
-			'neve-global-colors'
-		);
-
-		return {
-			setActivePalette: ( id ) => setActivePalette( id ),
-			updatePalettes,
-		};
-	} )
-)( PaletteForm );
+export default PaletteForm;

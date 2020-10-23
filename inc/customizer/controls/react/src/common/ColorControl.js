@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import GlobalColorsPicker from '../common/GlobalColorsPicker';
 import { ColorPicker, Button, Dropdown } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import { debounce } from 'lodash';
 import classnames from 'classnames';
 
 const ColorControl = ( {
@@ -70,7 +69,7 @@ const ColorControl = ( {
 						<a href="#" />
 						<ColorPicker
 							color={ selectedColor }
-							onChangeComplete={ debounce( handleChange, 50 ) }
+							onChangeComplete={ handleChange }
 						/>
 						{ selectedColor && (
 							<Button
