@@ -19,7 +19,7 @@ describe('Ordering Control', function () {
 	  const currentValue = win.wp.customize.control('neve_post_content_ordering').setting();
 	  if( currentValue !== defaultValue) {
 	    win.wp.customize.control('neve_post_content_ordering').setting.set(defaultValue);
-		aliasRestRoutes();
+		cy.aliasRestRoutes();
 		cy.get( '#save' ).click();
 		cy.wait( '@customizerSave' ).then( ( req ) => {
 		  expect( req.response.body.success ).to.be.true;
@@ -78,14 +78,4 @@ function dropElAfter(selector, moveFrom, moveTo) {
 	cy.wait(200)
 	cy.document().trigger('mouseup')
   })
-}
-
-/**
- * Alias routes
- */
-function aliasRestRoutes() {
-  let home = Cypress.config().baseUrl;
-  cy.server().
-  route( 'POST', home + '/wp-admin/admin-ajax.php' ).
-  as( 'customizerSave' );
 }

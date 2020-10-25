@@ -2,7 +2,7 @@ describe( 'Sidebar/Content Settings', function() {
 
 	it( 'Setup customizer site wide Sidebar settings.', function() {
 		cy.login( '/wp-admin/customize.php' );
-		aliasRestRoutes();
+		cy.aliasRestRoutes();
 		cy.get( '#accordion-panel-neve_layout' ).click();
 		cy.get( '#accordion-section-neve_sidebar' ).click();
 		cy.get( 'label[for="neve_default_sidebar_layout-left"]' ).click();
@@ -53,7 +53,7 @@ describe( 'Sidebar/Content Settings', function() {
 
 	it( 'Setup customizer site wide Sidebar settings.', function() {
 		cy.login( '/wp-admin/customize.php' );
-		aliasRestRoutes();
+		cy.aliasRestRoutes();
 		cy.get( '#accordion-panel-neve_layout' ).click();
 		cy.get( '#accordion-section-neve_sidebar' ).click();
 		cy.get( '#customize-control-neve_advanced_layout_options input' ).click();
@@ -132,7 +132,7 @@ describe( 'Sidebar/Content Settings', function() {
 
 	it( 'Go back to defaults.', function() {
 		cy.login( '/wp-admin/customize.php' );
-		aliasRestRoutes();
+		cy.aliasRestRoutes();
 		cy.get( '#customize-control-neve_advanced_layout_options label' ).click({force: true});
 		cy.get( '#save' ).click();
 		cy.wait( '@customizerSave' ).then( (req) => {
@@ -154,10 +154,3 @@ describe( 'Sidebar/Content Settings', function() {
 		} );
 	} );
 } );
-
-function aliasRestRoutes() {
-	let home = Cypress.config().baseUrl;
-	cy.server().
-			route( 'POST', home + '/wp-admin/admin-ajax.php' ).
-			as( 'customizerSave' );
-}

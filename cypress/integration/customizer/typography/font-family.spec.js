@@ -3,13 +3,6 @@ const fonts = {
 	headings: 'Allerta Stencil'
 };
 
-function aliasRestRoutes() {
-	let home = Cypress.config().baseUrl;
-	cy.server().
-			route( 'POST', home + '/wp-admin/admin-ajax.php' ).
-			as( 'customizerSave' );
-}
-
 /**
  * Set font family inside i
  * @param controlSelector
@@ -84,7 +77,7 @@ describe( 'Font Family', function() {
 		setFontFamilyControl( '#customize-control-neve_headings_font_family',
 				fonts.headings );
 
-		aliasRestRoutes();
+		cy.aliasRestRoutes();
 		cy.get( '#save' ).click();
 		cy.wait( '@customizerSave' ).then( (req) => {
 			expect( req.response.body.success ).to.be.true;

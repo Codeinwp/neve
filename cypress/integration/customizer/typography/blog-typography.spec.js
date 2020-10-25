@@ -27,8 +27,8 @@ describe( 'Blog Typography', function() {
     	win.wp.customize.control( 'neve_single_post_typography_post_title' ).setting.set(setup);
     	win.wp.customize.control( 'neve_single_post_typography_post_meta' ).setting.set(setup);
     	win.wp.customize.control( 'neve_single_post_typography_comments_title' ).setting.set(setup);
-	});
-    aliasRestRoutes();
+	  });
+    cy.aliasRestRoutes();
     cy.get( '#save' ).click();
     cy.wait( '@customizerSave' ).then( ( req ) => {
       expect( req.response.body.success ).to.be.true;
@@ -157,14 +157,4 @@ function testSizeLheightSpacing(elem, device) {
   should( 'have.css', 'letter-spacing' ).
   and( 'match',
     new RegExp( setup.letterSpacing[device], 'g' ) );
-}
-
-/**
- * Alias routes
- */
-function aliasRestRoutes() {
-  let home = Cypress.config().baseUrl;
-  cy.server().
-  route( 'POST', home + '/wp-admin/admin-ajax.php' ).
-  as( 'customizerSave' );
 }

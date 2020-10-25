@@ -1,7 +1,7 @@
 describe( 'Header Builder Alignment Control', function() {
 	it( 'Sets up alignment for the Primary Menu to Center', function() {
 		cy.login();
-		aliasRestRoutes();
+		cy.aliasRestRoutes();
 		setupCustomizer();
 		alignCenter();
 		cy.wait( '@customizerSave' ).then( (req) => {
@@ -20,13 +20,6 @@ describe( 'Header Builder Alignment Control', function() {
 		} );
 	} );
 } );
-
-function aliasRestRoutes() {
-	let home = Cypress.config().baseUrl;
-	cy.server().
-			route( 'POST', home + '/wp-admin/admin-ajax.php' ).
-			as( 'customizerSave' );
-}
 
 function setupCustomizer() {
 	// Login to wp and redirect to customizer.

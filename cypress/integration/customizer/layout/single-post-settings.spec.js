@@ -1,9 +1,11 @@
 describe('Single Post Check', function () {
-    it('Post Elements Visibility', function () {
+    beforeEach(() => {
         cy.login();
-        aliasRestRoutes();
+        cy.aliasRestRoutes();
         goToCustomizerSection();
+    });
 
+    it('Post Elements Visibility', function () {
         let status = {'title-meta': 'not.have.descendants', 'thumbnail': 'not.have.descendants', 'content': 'not.have.descendants', 'tags': 'not.have.descendants', 'comments': 'not.have.descendants', 'post-navigation': 'not.have.descendants'};
         let classes = {'title-meta': '.entry-header', 'thumbnail': '.nv-thumb-wrap', 'content': '.entry-content', 'tags': '.nv-tags-list', 'comments': '.comments-area', 'post-navigation': '.nv-post-navigation'};
         cy.get('#customize-control-neve_layout_single_post_elements_order')
@@ -42,9 +44,6 @@ describe('Single Post Check', function () {
     });
 
     it('Post Elements Order', function () {
-        cy.login();
-        aliasRestRoutes();
-        goToCustomizerSection();
         setOrderElementsVisible('#customize-control-neve_layout_single_post_elements_order');
         dropElAfter('#customize-control-neve_layout_single_post_elements_order .ti-order-sortable li', 0, 3);
         cy.wait(1000);
@@ -99,14 +98,6 @@ function setOrderElementsVisible(selector) {
                 })
             });
         });
-}
-
-/**
- * Alias Rest Routes
- */
-function aliasRestRoutes() {
-    let home = Cypress.config().baseUrl;
-    cy.server().route('POST', home + '/wp-admin/admin-ajax.php').as('customizerSave');
 }
 
 /**

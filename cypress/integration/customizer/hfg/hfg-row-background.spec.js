@@ -52,7 +52,7 @@ describe( 'Header Row Background Control', function() {
 		cy.get( '@bgCtrl' ).
 				find( '.components-form-toggle__input' ).
 				click( { multiple: true } );
-		aliasRestRoutes();
+		cy.aliasRestRoutes();
 		cy.get( '#save' ).click();
 		cy.wait( '@customizerSave' ).then( (req) => {
 			expect( req.response.body.success ).to.be.true;
@@ -76,10 +76,3 @@ describe( 'Header Row Background Control', function() {
 				and( 'contain', 'wp-content/uploads' );
 	} );
 } );
-
-function aliasRestRoutes() {
-	let home = Cypress.config().baseUrl;
-	cy.server().
-			route( 'POST', home + '/wp-admin/admin-ajax.php' ).
-			as( 'customizerSave' );
-}

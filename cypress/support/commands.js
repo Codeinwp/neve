@@ -253,3 +253,12 @@ function changeNumberInputValue(input, value) {
 	cy.get(input).clear({force: true}).type('{leftarrow}' + value + '{rightarrow}{backspace}');
 }
 
+/**
+ * Alias rest routes
+ */
+Cypress.Commands.add("aliasRestRoutes", () => {
+	let home = Cypress.config().baseUrl;
+	cy.server().
+			route( 'POST', home + '/wp-admin/admin-ajax.php' ).
+			as( 'customizerSave' );
+});

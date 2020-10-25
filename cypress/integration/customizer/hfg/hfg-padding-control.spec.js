@@ -1,7 +1,7 @@
 describe( 'Header Builder Padding Control', function() {
 	it( 'Sets up Padding for the Logo Component', function() {
 		cy.login();
-		aliasRestRoutes();
+		cy.aliasRestRoutes();
 		setupCustomizer();
 		cy.wait( '@customizerSave' ).then( (req) => {
 			expect( req.response.body.success ).to.be.true;
@@ -11,13 +11,6 @@ describe( 'Header Builder Padding Control', function() {
 		} );
 	} );
 } );
-
-function aliasRestRoutes() {
-	let home = Cypress.config().baseUrl;
-	cy.server().
-			route( 'POST', home + '/wp-admin/admin-ajax.php' ).
-			as( 'customizerSave' );
-}
 
 function setupCustomizer() {
 	// Login to wp and redirect to customizer.

@@ -1,14 +1,7 @@
-function aliasRestRoutes() {
-	let home = Cypress.config().baseUrl;
-	cy.server().
-			route( 'POST', home + '/wp-admin/admin-ajax.php' ).
-			as( 'customizerSave' );
-}
-
 describe( 'AMP Check', function() {
 	it( 'Sets up serach icon on menu top row', function() {
 		cy.login( '/wp-admin/customize.php' );
-		aliasRestRoutes();
+		cy.aliasRestRoutes();
 
 		cy.get( '#accordion-panel-hfg_header' ).should( 'be.visible' ).
 				click();

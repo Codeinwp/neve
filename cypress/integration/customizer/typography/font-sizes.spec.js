@@ -20,13 +20,6 @@ const setup = {
 	}
 };
 
-function aliasRestRoutes() {
-	let home = Cypress.config().baseUrl;
-	cy.server().
-		route( 'POST', home + '/wp-admin/admin-ajax.php' ).
-		as( 'customizerSave' );
-}
-
 describe( 'Typography Control', function() {
 	it( 'Sets up customizer Typography', function() {
 		cy.login();
@@ -37,7 +30,7 @@ describe( 'Typography Control', function() {
 		cy.get( '.accordion-section' ).contains( 'General' ).click();
 		cy.setTypographyControl( '#customize-control-neve_typeface_general',
 			setup.general );
-		aliasRestRoutes();
+		cy.aliasRestRoutes();
 		cy.get( '#save' ).click();
 		cy.wait( '@customizerSave' ).then( ( req ) => {
 			expect( req.response.body.success ).to.be.true;

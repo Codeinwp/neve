@@ -30,7 +30,7 @@ describe( 'Container Settings', function() {
 
 	it( 'Setup customizer container width.', function() {
 		cy.login( '/wp-admin/customize.php' );
-		aliasRestRoutes();
+		cy.aliasRestRoutes();
 		cy.get( '#accordion-panel-neve_layout' ).click();
 		cy.get( '#accordion-section-neve_container' ).click();
 		cy.get( '#customize-control-neve_container_width' ).as( 'control' );
@@ -70,7 +70,7 @@ describe( 'Container Settings', function() {
 
 	it( 'Setup customizer container style.', function() {
 		cy.login( '/wp-admin/customize.php' );
-		aliasRestRoutes();
+		cy.aliasRestRoutes();
 		cy.get( '#accordion-panel-neve_layout' ).click();
 		cy.get( '#accordion-section-neve_container' ).click();
 		cy.get( '#_customize-input-neve_default_container_style' ).
@@ -98,7 +98,7 @@ describe( 'Container Settings', function() {
 
 	it( 'Go back to defaults.', function() {
 		cy.login( '/wp-admin/customize.php' );
-		aliasRestRoutes();
+		cy.aliasRestRoutes();
 		cy.get( '#accordion-panel-neve_layout' ).click();
 		cy.get( '#accordion-section-neve_container' ).click();
 		cy.get( '#customize-control-neve_container_width' ).as( 'control' );
@@ -130,10 +130,3 @@ describe( 'Container Settings', function() {
 	} );
 } );
 
-
-function aliasRestRoutes() {
-	let home = Cypress.config().baseUrl;
-	cy.server().
-			route( 'POST', home + '/wp-admin/admin-ajax.php' ).
-			as( 'customizerSave' );
-}
