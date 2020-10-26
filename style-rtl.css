@@ -613,6 +613,54 @@ blockquote.wp-block-quote.is-style-large cite {
   background-color: var(--nv-text-color);
 }
 
+.has-nv-site-bg-color {
+  color: var(--nv-site-bg);
+}
+
+.has-nv-site-bg-background-color {
+  background-color: var(--nv-site-bg);
+}
+
+.has-nv-light-bg-color {
+  color: var(--nv-light-bg);
+}
+
+.has-nv-light-bg-background-color {
+  background-color: var(--nv-light-bg);
+}
+
+.has-nv-dark-bg-color {
+  color: var(--nv-dark-bg);
+}
+
+.has-nv-dark-bg-background-color {
+  background-color: var(--nv-dark-bg);
+}
+
+.has-nv-text-dark-bg-color {
+  color: var(--nv-text-dark-bg);
+}
+
+.has-nv-text-dark-bg-background-color {
+  background-color: var(--nv-text-dark-bg);
+}
+
+.has-nv-custom-color-1-color {
+  color: var(--nv-custom-color-1);
+}
+
+.has-nv-custom-color-1-background-color {
+  background-color: var(--nv-custom-color-1);
+}
+
+.has-nv-custom-color-2-color {
+  color: var(--nv-custom-color-2);
+}
+
+.has-nv-custom-color-2-background-color {
+  background-color: var(--nv-custom-color-2);
+}
+
 .hidden-on-mobile {
   display: none;
 }

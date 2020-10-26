@@ -28,14 +28,13 @@ const CustomPalette = ( { title, onChange, activeColor } ) => {
 						<div className="row" key={ index }>
 							{ Object.keys( group ).map( ( slug ) => {
 								const style = {
-									backgroundColor: `var(--nv-${ slug })`,
+									backgroundColor: `var(--${ slug })`,
 								};
 								const buttonClasses = classnames( [
 									'nv-custom-palette-color',
 									{
 										active:
-											activeColor ===
-											`var(--nv-${ slug })`,
+											activeColor === `var(--${ slug })`,
 									},
 								] );
 
@@ -46,9 +45,7 @@ const CustomPalette = ( { title, onChange, activeColor } ) => {
 										style={ style }
 										className={ buttonClasses }
 										onClick={ () => {
-											handleChange(
-												`var(--nv-${ slug })`
-											);
+											handleChange( `var(--${ slug })` );
 										} }
 									/>
 								);

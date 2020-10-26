@@ -589,13 +589,22 @@ window.addEventListener( 'load', function () {
 							break;
 						case 'Neve\\Customizer\\Controls\\React\\Global_Colors':
 							const cssTag = document.querySelector(
-								'#nv-css-vars'
+								'#nv-css-vars-inline-css'
 							);
+
 							const { palettes, activePalette } = newValue;
 							const { colors } = palettes[ activePalette ];
 							let globalColorsCSS = ':root{';
 							Object.keys( colors ).map( ( slug ) => {
-								globalColorsCSS += `--nv-${ slug }:${ colors[ slug ] };`;
+								globalColorsCSS += `--${ slug }:${ colors[ slug ] };`;
+								if (
+									typeof elementorFrontend !== 'undefined'
+								) {
+									globalColorsCSS += `--e-global-color-${ slug.replaceAll(
+										'-',
+										''
+									) }:${ colors[ slug ] };`;
+								}
 								return false;
 							} );
 							globalColorsCSS += '}';

@@ -17,7 +17,7 @@ const GlobalColors = ( { control } ) => {
 		}
 		control.setting.set( data );
 
-		const cssTag = document.querySelector( '#nv-css-vars' );
+		const cssTag = document.querySelector( '#nv-css-vars-inline-css' );
 		const { activePalette, palettes } = data;
 		const currentPalette = palettes[ activePalette ];
 		const { colors } = currentPalette;
@@ -25,7 +25,7 @@ const GlobalColors = ( { control } ) => {
 		let style = ':root{';
 
 		Object.keys( colors ).map( ( slug ) => {
-			style += `--nv-${ slug }:${ colors[ slug ] };`;
+			style += `--${ slug }:${ colors[ slug ] };`;
 			return false;
 		} );
 		style += '}';

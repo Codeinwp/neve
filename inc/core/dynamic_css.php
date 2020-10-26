@@ -34,16 +34,16 @@ class Dynamic_Css {
 	}
 
 	public function legacy_style() {
-		$classes     = apply_filters( 'neve_filter_inline_style_classes', [], 'neve-generated-style' );
-		$mobile_css  = '';
+		$classes = apply_filters( 'neve_filter_inline_style_classes', [], 'neve-generated-style' );
+		$mobile_css = '';
 		$desktop_css = '';
-		$tablet_css  = '';
+		$tablet_css = '';
 		foreach ( $classes as $class ) {
 			$object = new $class();
 			$object->init();
-			$mobile_css  .= $object->get_style( 'mobile' );
+			$mobile_css .= $object->get_style( 'mobile' );
 			$desktop_css .= $object->get_style( 'desktop' );
-			$tablet_css  .= $object->get_style( 'tablet' );
+			$tablet_css .= $object->get_style( 'tablet' );
 		}
 		$all_css = $mobile_css;
 		if ( ! empty( $tablet_css ) ) {
@@ -61,7 +61,7 @@ class Dynamic_Css {
 	 * Load frontend style.
 	 */
 	public function enqueue() {
-		$is_for_gutenberg = ( current_action() === self::EDITOR_ACTION );
+		$is_for_gutenberg = (current_action() === self::EDITOR_ACTION);
 		if ( ! class_exists( ' Neve_Pro\Core\Generic_Style', true ) ) {
 			$this->legacy_style();
 		}
@@ -97,7 +97,9 @@ class Dynamic_Css {
 	 * Adds customizer CSS tag for CSS vars.
 	 */
 	public function add_customize_vars_tag() {
-		echo '<style id="nv-css-vars">' . esc_attr( $this->get_css_vars() ) . '</style>';
+		wp_register_style( 'nv-css-vars', false );
+		wp_enqueue_style( 'nv-css-vars' );
+		wp_add_inline_style( 'nv-css-vars', $this->get_css_vars() );
 	}
 
 	/**
@@ -106,7 +108,7 @@ class Dynamic_Css {
 	 * @return string
 	 */
 	private function get_css_vars() {
-		$global_colors = get_theme_mod( 'neve_global_colors', neve_get_global_colors_default(true) );
+		$global_colors = get_theme_mod( 'neve_global_colors', neve_get_global_colors_default( true ) );
 
 		if ( empty( $global_colors ) ) {
 			return '';
@@ -116,7 +118,7 @@ class Dynamic_Css {
 			return '';
 		}
 
-		$active = $global_colors['activePalette'];
+		$active = $global_colors[ 'activePalette' ];
 
 		if ( ! isset( $global_colors[ 'palettes' ][ $active ] ) ) {
 			return '';
@@ -124,7 +126,7 @@ class Dynamic_Css {
 
 		$palette = $global_colors[ 'palettes' ][ $active ];
 
-		if( ! isset( $palette['colors'] ) ) {
+		if ( ! isset( $palette[ 'colors' ] ) ) {
 			return '';
 		}
 
@@ -136,6 +138,6 @@ class Dynamic_Css {
 
 		$css .= '}';
 
-		return self::minify_css($css);
+		return self::minify_css( $css );
 	}
 }

@@ -190,23 +190,44 @@ class Front_End {
 
 		$palette = get_theme_mod( 'neve_global_colors', neve_get_global_colors_default( true ) );
 		$active  = $palette['activePalette'];
-
-		$link_color = $palette['palettes'][ $active ]['colors']['nv-primary-accent'];
-		$link_hover = $palette['palettes'][ $active ]['colors']['nv-secondary-accent'];
-		$text_color = $palette['palettes'][ $active ]['colors']['nv-text-color'];
+		$colors  = $palette['palettes'][ $active ]['colors'];
 
 		$from_global_colors = [
 			'neve-link-color'       => array(
-				'val'   => $link_color,
-				'label' => __( 'Link Color', 'neve' ),
+				'val'   => $colors['nv-primary-accent'],
+				'label' => __( 'Neve - Primary Accent', 'neve' ),
 			),
 			'neve-link-hover-color' => array(
-				'val'   => $link_hover,
-				'label' => __( 'Link Hover Color', 'neve' ),
+				'val'   => $colors['nv-secondary-accent'],
+				'label' => __( 'Neve - Secondary Accent', 'neve' ),
+			),
+			'nv-site-bg'            => array(
+				'val'   => $colors['nv-site-bg'],
+				'label' => __( 'Neve - Site Background', 'neve' ),
+			),
+			'nv-light-bg'           => array(
+				'val'   => $colors['nv-light-bg'],
+				'label' => __( 'Neve - Light Background', 'neve' ),
+			),
+			'nv-dark-bg'            => array(
+				'val'   => $colors['nv-dark-bg'],
+				'label' => __( 'Neve - Dark Background', 'neve' ),
 			),
 			'neve-text-color'       => array(
-				'val'   => $text_color,
-				'label' => __( 'Text Color', 'neve' ),
+				'val'   => $colors['nv-text-color'],
+				'label' => __( 'Neve - Text Color', 'neve' ),
+			),
+			'nv-text-dark-bg'       => array(
+				'val'   => $colors['nv-text-dark-bg'],
+				'label' => __( 'Neve - Text Dark Background', 'neve' ),
+			),
+			'nv-custom-color-1'     => array(
+				'val'   => $colors['nv-custom-color-1'],
+				'label' => __( 'Neve - Custom Color 1', 'neve' ),
+			),
+			'nv-custom-color-2'     => array(
+				'val'   => $colors['nv-custom-color-2'],
+				'label' => __( 'Neve - Custom Color 2', 'neve' ),
 			),
 		];
 
