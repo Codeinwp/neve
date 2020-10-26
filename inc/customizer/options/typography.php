@@ -217,7 +217,7 @@ class Typography extends Base_Customizer {
 					'section'               => 'neve_typography_headings',
 					'priority'              => 10,
 					'type'                  => 'neve_font_family_control',
-					'live_refresh_selector' => apply_filters( 'neve_headings_font_family_selectors', 'h1:not(.site-title), .single h1.entry-title, h2, h3, h4, h5, h6' ),
+					'live_refresh_selector' => apply_filters( 'neve_headings_font_family_selectors', 'h1:not(.site-title), .single h1.entry-title, h2, h3, .woocommerce-checkout h3, h4, h5, h6' ),
 				),
 				'\Neve\Customizer\Controls\React\Font_Family'
 			)
