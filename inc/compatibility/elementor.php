@@ -8,6 +8,8 @@
 
 namespace Neve\Compatibility;
 
+use Neve\Core\Dynamic_Css;
+
 /**
  * Class Elementor
  *
@@ -32,6 +34,106 @@ class Elementor extends Page_Builder_Base {
 		add_action( 'neve_dynamic_style_output', array( $this, 'fix_links' ), 99, 2 );
 		add_action( 'wp', array( $this, 'add_theme_builder_hooks' ) );
 		add_action( 'elementor/editor/before_enqueue_scripts', array( $this, 'maybe_set_page_template' ), 1 );
+		add_filter( 'rest_request_after_callbacks', [ $this, 'alter_global_colors_in_picker' ], 999, 3 );
+		add_filter( 'rest_request_after_callbacks', [ $this, 'alter_global_colors_front_end' ], 999, 3 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ), 100 );
+	}
+
+	/**
+	 * Enqueue Global Colors
+	 */
+	public function enqueue() {
+		$colors = $this->get_current_palette_colors();
+		$css    = ':root{';
+		foreach ( $colors as $slug => $color ) {
+			$css .= '--e-global-color-' . str_replace( '-', '', $slug ) . ':' . $color . ';';
+		}
+		$css .= '}';
+		$css  = Dynamic_Css::minify_css( $css );
+		wp_add_inline_style( 'neve-style', $css );
+	}
+
+	/**
+	 * Filter rest responses to add Neve Palette Colors to pages using Elementor.
+	 *
+	 * @param \WP_REST_Response $response request response.
+	 * @param array             $handler request handler.
+	 * @param \WP_REST_Request  $request rest request.
+	 * @return \WP_REST_Response
+	 */
+	public function alter_global_colors_front_end( $response, $handler, \WP_REST_Request $request ) {
+		$route         = $request->get_route();
+		$rest_to_slugs = [
+			'nvprimaryaccent'   => 'nv-primary-accent',
+			'nvsecondaryaccent' => 'nv-secondary-accent',
+			'nvsitebg'          => 'nv-site-bg',
+			'nvlightbg'         => 'nv-light-bg',
+			'nvdarkbg'          => 'nv-dark-bg',
+			'nvtextcolor'       => 'nv-text-color',
+			'nvtextdarkbg'      => 'nv-text-dark-bg',
+			'nvcustomcolor1'    => 'nv-custom-color-1',
+			'nvcustomcolor2'    => 'nv-custom-color-2',
+		];
+
+		$rest_id = substr( $route, strrpos( $route, '/' ) + 1 );
+
+		if ( ! in_array( $rest_id, array_keys( $rest_to_slugs ), true ) ) {
+			return $response;
+		}
+
+		$colors   = $this->get_current_palette_colors();
+		$response = new \WP_REST_Response(
+			[
+				'id'    => esc_attr( $rest_id ),
+				'title' => 'Neve - ' . esc_html( $rest_to_slugs[ $rest_id ] ),
+				'value' => neve_sanitize_colors( $colors[ $rest_to_slugs[ $rest_id ] ] ),
+			]
+		);
+		return $response;
+	}
+
+	/**
+	 * Filter rest responses to add Neve Palette Colors to Elementor.
+	 *
+	 * @param \WP_REST_Response $response request response.
+	 * @param array             $handler request handler.
+	 * @param \WP_REST_Request  $request rest request.
+	 * @return \WP_REST_Response
+	 */
+	public function alter_global_colors_in_picker( $response, $handler, \WP_REST_Request $request ) {
+		$route = $request->get_route();
+
+		if ( $route !== '/elementor/v1/globals' ) {
+			return $response;
+		}
+
+		$label_map = [
+			'nv-primary-accent'   => __( 'Primary Accent', 'neve' ),
+			'nv-secondary-accent' => __( 'Secondary Accent', 'neve' ),
+			'nv-site-bg'          => __( 'Site Background', 'neve' ),
+			'nv-light-bg'         => __( 'Light Background', 'neve' ),
+			'nv-dark-bg'          => __( 'Dark Background', 'neve' ),
+			'nv-text-color'       => __( 'Text Color', 'neve' ),
+			'nv-text-dark-bg'     => __( 'Text Dark Background', 'neve' ),
+			'nv-custom-color-1'   => __( 'Custom Color 1', 'neve' ),
+			'nv-custom-color-2'   => __( 'Custom Color 2', 'neve' ),
+		];
+
+		$colors = $this->get_current_palette_colors();
+		$data   = $response->get_data();
+
+		foreach ( $colors as $slug => $color_value ) {
+			$no_hyphens                    = str_replace( '-', '', $slug );
+			$data['colors'][ $no_hyphens ] = [
+				'id'    => esc_attr( $no_hyphens ),
+				'title' => 'Neve - ' . esc_html( $label_map[ $slug ] ),
+				'value' => neve_sanitize_colors( $color_value ),
+			];
+		}
+
+		$response->set_data( $data );
+
+		return $response;
 	}
 
 	/**
@@ -151,7 +253,7 @@ class Elementor extends Page_Builder_Base {
 	/**
 	 * Fix the underline of links added by neve.
 	 *
-	 * @param string $css     Current css.
+	 * @param string $css Current css.
 	 * @param string $context Context.
 	 *
 	 * @return string
@@ -164,5 +266,19 @@ class Elementor extends Page_Builder_Base {
 		return $css . '.nv-content-wrap .elementor a:not(.button):not(.wp-block-file__button){
 				text-decoration: none;
 			}';
+	}
+
+	/**
+	 * Get current palette colors.
+	 *
+	 * @return array
+	 */
+	private function get_current_palette_colors() {
+		$customizer = get_theme_mod( 'neve_global_colors', neve_get_global_colors_default() );
+		$active     = $customizer['activePalette'];
+		$palettes   = $customizer['palettes'];
+		$palette    = $palettes[ $active ];
+
+		return $palette['colors'];
 	}
 }

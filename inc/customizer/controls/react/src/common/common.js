@@ -69,16 +69,16 @@ export const getIntValAsResponsive = ( value ) => {
 
 export const globalPaletteColors = [
 	{
-		'primary-accent': __( 'Primary Accent', 'neve' ),
-		'secondary-accent': __( 'Secondary Accent', 'neve' ),
-		'site-bg': __( 'Site Background', 'neve' ),
-		'light-bg': __( 'Light Background', 'neve' ),
-		'dark-bg': __( 'Dark Background', 'neve' ),
-		'text-color': __( 'Text Color', 'neve' ),
-		'text-dark-bg': __( 'Text Dark Background', 'neve' ),
+		'nv-primary-accent': __( 'Primary Accent', 'neve' ),
+		'nv-secondary-accent': __( 'Secondary Accent', 'neve' ),
+		'nv-site-bg': __( 'Site Background', 'neve' ),
+		'nv-light-bg': __( 'Light Background', 'neve' ),
+		'nv-dark-bg': __( 'Dark Background', 'neve' ),
+		'nv-text-color': __( 'Text Color', 'neve' ),
+		'nv-text-dark-bg': __( 'Text Dark Background', 'neve' ),
 	},
 	{
-		'custom-color-1': __( 'Custom Color 1', 'neve' ),
-		'custom-color-2': __( 'Custom Color 2', 'neve' ),
+		'nv-custom-color-1': __( 'Custom Color 1', 'neve' ),
+		'nv-custom-color-2': __( 'Custom Color 2', 'neve' ),
 	},
 ];

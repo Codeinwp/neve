@@ -191,9 +191,9 @@ class Front_End {
 		$palette = get_theme_mod( 'neve_global_colors', neve_get_global_colors_default( true ) );
 		$active  = $palette['activePalette'];
 
-		$link_color = $palette['palettes'][ $active ]['colors']['primary-accent'];
-		$link_hover = $palette['palettes'][ $active ]['colors']['secondary-accent'];
-		$text_color = $palette['palettes'][ $active ]['colors']['text-color'];
+		$link_color = $palette['palettes'][ $active ]['colors']['nv-primary-accent'];
+		$link_hover = $palette['palettes'][ $active ]['colors']['nv-secondary-accent'];
+		$text_color = $palette['palettes'][ $active ]['colors']['nv-text-color'];
 
 		$from_global_colors = [
 			'neve-link-color'       => array(

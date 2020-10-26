@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-10-23T09:10:23+00:00\n"
+"POT-Creation-Date: 2020-10-26T12:04:18+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -319,6 +319,7 @@ msgstr ""
 #: header-footer-grid/Core/Components/Copyright.php:84
 #: header-footer-grid/Core/Components/CustomHtml.php:163
 #: header-footer-grid/Core/Components/Logo.php:205
+#: inc/compatibility/elementor.php:78
 #: inc/core/front_end.php:209
 #: inc/customizer/options/layout_blog.php:184
 #: inc/customizer/controls/react/bundle/controls.js:1
@@ -1141,6 +1142,54 @@ msgstr ""
 
 #: inc/compatibility/block-patterns/two-columns-with-text.php:9
 msgid "Two columns with text"
+msgstr ""
+
+#: inc/compatibility/elementor.php:73
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/common/common.js:72
+msgid "Primary Accent"
+msgstr ""
+
+#: inc/compatibility/elementor.php:74
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/common/common.js:73
+msgid "Secondary Accent"
+msgstr ""
+
+#: inc/compatibility/elementor.php:75
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/common/common.js:74
+msgid "Site Background"
+msgstr ""
+
+#: inc/compatibility/elementor.php:76
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/common/common.js:75
+msgid "Light Background"
+msgstr ""
+
+#: inc/compatibility/elementor.php:77
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/common/common.js:76
+msgid "Dark Background"
+msgstr ""
+
+#: inc/compatibility/elementor.php:79
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/common/common.js:78
+msgid "Text Dark Background"
+msgstr ""
+
+#: inc/compatibility/elementor.php:80
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/common/common.js:81
+msgid "Custom Color 1"
+msgstr ""
+
+#: inc/compatibility/elementor.php:81
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/common/common.js:82
+msgid "Custom Color 2"
 msgstr ""
 
 #: inc/compatibility/lifter.php:314
@@ -2099,46 +2148,6 @@ msgstr ""
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/common/Responsive.js:28
 msgid "Mobile"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/common/common.js:72
-msgid "Primary Accent"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/common/common.js:73
-msgid "Secondary Accent"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/common/common.js:74
-msgid "Site Background"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/common/common.js:75
-msgid "Light Background"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/common/common.js:76
-msgid "Dark Background"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/common/common.js:78
-msgid "Text Dark Background"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/common/common.js:81
-msgid "Custom Color 1"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/common/common.js:82
-msgid "Custom Color 2"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1

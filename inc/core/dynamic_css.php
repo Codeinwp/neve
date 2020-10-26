@@ -97,7 +97,7 @@ class Dynamic_Css {
 	 * Adds customizer CSS tag for CSS vars.
 	 */
 	public function add_customize_vars_tag() {
-		echo '<style id="nv-css-vars" type="text/css">' . esc_attr( $this->get_css_vars() ) . '</style>';
+		echo '<style id="nv-css-vars">' . esc_attr( $this->get_css_vars() ) . '</style>';
 	}
 
 	/**
@@ -131,7 +131,7 @@ class Dynamic_Css {
 		$css = ':root{';
 
 		foreach ( $palette[ 'colors' ] as $slug => $color ) {
-			$css .= '--nv-' . $slug . ':' . $color . ';';
+			$css .= '--' . $slug . ':' . $color . ';';
 		}
 
 		$css .= '}';
