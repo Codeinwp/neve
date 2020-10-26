@@ -955,6 +955,21 @@ section.exclusive .tns-visually-hidden {
   max-width: 50%;
 }
 
+.woocommerce-checkout .select2,
+.woocommerce-checkout .select2-results__option,
+.woocommerce-checkout form.woocommerce-checkout .form-row label.checkbox {
+  font-family: Arial;
+  font-size: 14px;
+  line-height: 1;
+  letter-spacing: 0;
+  font-weight: 400;
+  text-transform: none;
+}
+
+.woocommerce-checkout #order_review {
+  word-break: break-word;
+}
+
 .place-order noscript {
   padding: 10px 0;
 }
