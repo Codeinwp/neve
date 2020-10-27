@@ -269,8 +269,8 @@ class Customizer {
 						</div>
 						<# } #>
 						<div class="hfg--cb-notice welcome-notice {{data.id}} hidden">
-							<?php /* translators: %s is the type of builder */ ?>
 							<p>
+								<?php /* translators: %s is the type of builder */ ?>
 								<span><?php echo sprintf( esc_html__( '%s Builder:' ), '{{data.title}}' ); ?></span>
 							<?php
 								/* translators: %s is the header name */
