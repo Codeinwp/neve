@@ -147,7 +147,7 @@ class Customizer {
 			array(
 				'footer_moved_widgets_text' => '',
 				'builders'                  => $this->get_builders_data(),
-				'is_rtl'                    => is_rtl(),
+				'isRTL'                     => is_rtl(),
 			)
 		);
 		wp_enqueue_script( 'hfg-layout-builder' );
