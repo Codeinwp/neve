@@ -169,28 +169,9 @@ class Front_End {
 	 */
 	private function get_gutenberg_color_palette() {
 		$gutenberg_color_palette = array();
-
-		array_push(
-			$gutenberg_color_palette,
-			array(
-				'name'  => __( 'Black', 'neve' ),
-				'slug'  => 'black',
-				'color' => '#000000',
-			)
-		);
-
-		array_push(
-			$gutenberg_color_palette,
-			array(
-				'name'  => __( 'White', 'neve' ),
-				'slug'  => 'white',
-				'color' => '#ffffff',
-			)
-		);
-
-		$palette = get_theme_mod( 'neve_global_colors', neve_get_global_colors_default( true ) );
-		$active  = $palette['activePalette'];
-		$colors  = $palette['palettes'][ $active ]['colors'];
+		$palette                 = get_theme_mod( 'neve_global_colors', neve_get_global_colors_default( true ) );
+		$active                  = $palette['activePalette'];
+		$colors                  = $palette['palettes'][ $active ]['colors'];
 
 		$from_global_colors = [
 			'neve-link-color'       => array(
@@ -242,56 +223,7 @@ class Front_End {
 			);
 		}
 
-		$color_controls = array(
-			'neve-button-color'   => array(
-				'setting' => Config::MODS_BUTTON_PRIMARY_STYLE . '.background',
-				'label'   => __( 'Button Color', 'neve' ),
-			),
-			'neve-btn-text'       => array(
-				'setting' => Config::MODS_BUTTON_PRIMARY_STYLE . '.text',
-				'label'   => __( 'Button text color', 'neve' ),
-			),
-			'neve-btn-text-hover' => array(
-				'setting' => Config::MODS_BUTTON_PRIMARY_STYLE . '.textHover',
-				'label'   => __( 'Button Hover text color', 'neve' ),
-			),
-			'neve-btn-bg-hover'   => array(
-				'setting' => Config::MODS_BUTTON_PRIMARY_STYLE . '.backgroundHover',
-				'label'   => __( 'Button Hover Color', 'neve' ),
-			),
-		);
-		foreach ( $color_controls as $control_name => $control_data ) {
-			$color = Mods::get( $control_data['setting'] );
-			if ( empty( $color ) ) {
-				continue;
-			}
-			$color_name = $control_data['label'];
-			array_push(
-				$gutenberg_color_palette,
-				array(
-					'name'      => esc_html( $color_name ),
-					'slug'      => esc_html( $control_name ),
-					'color'     => neve_sanitize_colors( $color ),
-					'theme_mod' => esc_attr( $control_data['setting'] ),
-				)
-			);
-		}
-
-		/**
-		 * Remove duplicate colors.
-		 */
-		$temp_arr = array_unique(
-			array_map(
-				function ( $el ) {
-					return $el['color'];
-				},
-				$gutenberg_color_palette
-			)
-		);
-
-		$colors = array_intersect_key( $gutenberg_color_palette, $temp_arr );
-
-		return array_values( $colors );
+		return array_values( $gutenberg_color_palette );
 	}
 
 	/**
