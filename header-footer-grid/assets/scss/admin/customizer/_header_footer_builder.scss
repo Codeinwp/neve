@@ -157,6 +157,11 @@ $cb_padding: 20px;
 				margin-top: -20px;
 				margin-bottom: 4px;
 				margin-left: 25px;
+
+				@include rtl() {
+					margin-right: 25px;
+					margin-left: unset;
+				}
 			}
 
 			.hfg--cb-row {
@@ -240,7 +245,9 @@ $cb_padding: 20px;
 		margin-top: -1px;
 		margin-left: auto;
 
-		a {
+		@include rtl() {
+			margin-right: auto;
+			margin-left: unset;
 		}
 
 		.builder-version-change {
@@ -311,8 +318,8 @@ $cb_padding: 20px;
 		align-items: center;
 		justify-content: center;
 		@include rtl() {
-			border-right: 0 none;
-			border-left: 1px solid #ddd;
+			left: unset;
+			right: -20px;
 		}
 		text-decoration: none;
 		width: 20px;
@@ -927,9 +934,18 @@ $animation_speed: 0.3s !default;
 
 .hfg--cb-notice {
 	margin: 0 5px;
+	@include rtl() {
+		p {
+			display: flex;
+		}
+	}
 	&.welcome-notice {
 		a {
 			margin-left: 5px;
+			@include rtl() {
+				margin-left: 0;
+				margin-right: 5px;
+			}
 		}
 	}
 

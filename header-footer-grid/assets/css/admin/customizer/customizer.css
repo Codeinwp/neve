@@ -1426,6 +1426,9 @@
       margin-top: -20px;
       margin-bottom: 4px;
       margin-left: 25px; }
+      html[dir="rtl"] .hfg--device-panel.hfg--panel-mobile .hfg--cp-sidebar h4 {
+        margin-right: 25px;
+        margin-left: unset; }
     .hfg--device-panel.hfg--panel-mobile .hfg--cp-sidebar .hfg--cb-row {
       height: 100%;
       min-height: 160px; }
@@ -1484,6 +1487,9 @@
     align-items: center;
     margin-top: -1px;
     margin-left: auto; }
+    html[dir="rtl"] .hfg--cb-header .hfg--cb-actions {
+      margin-right: auto;
+      margin-left: unset; }
     .hfg--cb-header .hfg--cb-actions .builder-version-change {
       text-transform: uppercase; }
 
@@ -1541,8 +1547,8 @@
     text-align: center;
     color: #444444; }
     html[dir="rtl"] .hfg--cb-row .hfg--cb-row-settings {
-      border-right: 0 none;
-      border-left: 1px solid #ddd; }
+      left: unset;
+      right: -20px; }
     .hfg--cb-row .hfg--cb-row-settings:focus {
       box-shadow: none; }
     .hfg--cb-row .hfg--cb-row-settings:before {
@@ -2697,8 +2703,13 @@
 
 .hfg--cb-notice {
   margin: 0 5px; }
+  html[dir="rtl"] .hfg--cb-notice p {
+    display: flex; }
   .hfg--cb-notice.welcome-notice a {
     margin-left: 5px; }
+    html[dir="rtl"] .hfg--cb-notice.welcome-notice a {
+      margin-left: 0;
+      margin-right: 5px; }
   .hfg--cb-notice span {
     font-weight: 600; }
 
@@ -3238,6 +3249,9 @@ body.hfg--widgets-open .wp-full-overlay:after {
     padding: 2px 10px;
     font-weight: 600;
     text-decoration: none; }
+    html[dir="rtl"] .hfg--cp-sidebar .toggle {
+      right: unset;
+      left: -1px; }
     .hfg--cp-sidebar .toggle span.hide {
       display: none; }
     .hfg--cp-sidebar .toggle.active span.hide {
