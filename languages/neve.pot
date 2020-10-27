@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-10-08T05:58:19+00:00\n"
+"POT-Creation-Date: 2020-10-27T12:08:46+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -780,7 +780,7 @@ msgstr ""
 
 #. translators: %s is the header name
 #: header-footer-grid/Core/Customizer.php:277
-msgid "Click on any empty space to add header components, or existing components to adjust settings."
+msgid "Click on any empty space to add components, or existing components to adjust settings."
 msgstr ""
 
 #: header-footer-grid/Core/Customizer.php:286

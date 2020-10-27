@@ -270,14 +270,14 @@ class Customizer {
 						<# } #>
 						<div class="hfg--cb-notice welcome-notice {{data.id}} hidden">
 							<?php /* translators: %s is the type of builder */ ?>
-							<h4><?php echo sprintf( esc_html__( '%s Builder:' ), '{{data.title}}' ); ?></h4>
 							<p>
+								<span><?php echo sprintf( esc_html__( '%s Builder:' ), '{{data.title}}' ); ?></span>
 							<?php
 								/* translators: %s is the header name */
-								echo esc_html__( 'Click on any empty space to add header components, or existing components to adjust settings.', 'neve' );
+								echo esc_html__( 'Click on any empty space to add components, or existing components to adjust settings.', 'neve' );
 							?>
-								</p>
 							<a href="#" data-open-nv-modal="hfg-instructional"><i class="dashicons dashicons-info"/></a>
+							</p>
 						</div>
 						<div class="hfg--cb-actions">
 							<?php do_action( 'hfg_builder_panel_actions_buttons' ); ?>
