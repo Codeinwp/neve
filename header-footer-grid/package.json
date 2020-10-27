@@ -21,7 +21,7 @@
     "@babel/preset-env": "^7.12.1",
     "core-js": "^3.6.5",
     "cssnano": "^4.1.10",
-    "eslint": "^7.11.0",
+    "eslint": "^7.12.0",
     "eslint-config-standard": "^15.0.0",
     "node-sass": "^4.14.1",
     "npm-run-all": "^4.1.5",
