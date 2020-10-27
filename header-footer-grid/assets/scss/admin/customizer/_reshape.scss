@@ -414,6 +414,11 @@ body.hfg--widgets-open .wp-full-overlay:after {
     font-weight: 600;
     text-decoration: none;
 
+		@include rtl() {
+			right: unset;
+			left: -1px;
+		}
+
     span.hide {
       display: none;
     }
