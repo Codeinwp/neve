@@ -1,4 +1,6 @@
 /* jshint esversion: 6 */
+import domReady from '@wordpress/dom-ready';
+
 import { init as initDynamicFields } from './dynamic-fields/index';
 import { ToggleControl } from './toggle/Control';
 import { ResponsiveToggleControl } from './responsive-toggle/Control';
@@ -40,7 +42,7 @@ controlConstructor.neve_radio_image_control = RadioImageControl;
 controlConstructor.neve_ordering_control = OrderingControl;
 controlConstructor.neve_ui_control = UiControl;
 
-window.addEventListener( 'load', () => {
+const initDeviceSwitchers = () => {
 	const deviceButtons = document.querySelector(
 		'#customize-footer-actions .devices, .hfg--cb-devices-switcher a.switch-to'
 	);
@@ -50,7 +52,30 @@ window.addEventListener( 'load', () => {
 		} );
 		document.dispatchEvent( event );
 	} );
+};
+
+const initBlogPageFocus = () => {
+	wp.customize.section( 'neve_blog_archive_layout', ( section ) => {
+		section.expanded.bind( ( isExpanded ) => {
+			const front = wp.customize.control( 'show_on_front' ).setting();
+			let pageId = '';
+			if ( front === 'page' ) {
+				pageId = wp.customize.control( 'page_for_posts' ).setting();
+			}
+
+			if ( isExpanded ) {
+				wp.customize.previewer.previewUrl.set(
+					pageId ? `/?page_id=${ pageId }` : '/'
+				);
+			}
+		} );
+	} );
+};
+
+domReady( () => {
+	initDeviceSwitchers();
 	initDynamicFields();
+	initBlogPageFocus();
 } );
 
 window.HFG = {

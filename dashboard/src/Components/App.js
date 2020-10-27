@@ -12,7 +12,7 @@ import { withDispatch, withSelect } from '@wordpress/data';
 import { compose } from '@wordpress/compose';
 import { useState, Fragment, useEffect } from '@wordpress/element';
 
-const App = ( { setSettings, toast, currentTab, setTab, isOnboarding } ) => {
+const App = ( { setSettings, toast, currentTab, setTab } ) => {
 	const [ loading, setLoading ] = useState( true );
 	useEffect( () => {
 		fetchOptions().then( ( r ) => {
@@ -23,17 +23,10 @@ const App = ( { setSettings, toast, currentTab, setTab, isOnboarding } ) => {
 	if ( loading ) {
 		return <Loading />;
 	}
-	const wrapClasses = classnames( [
-		'content-wrap',
-		{
-			'is-onboarding': isOnboarding && 'starter-sites' === currentTab,
-			'starter-sites': 'starter-sites' === currentTab,
-		},
-	] );
 	return (
 		<Fragment>
 			<Header currentTab={ currentTab } setTab={ setTab } />
-			<div className={ wrapClasses }>
+			<div className="content-wrap">
 				<div className="container content">
 					<div className="main">
 						{ 'starter-sites' !== currentTab && <Notifications /> }
@@ -62,11 +55,9 @@ export default compose(
 	} ),
 	withSelect( ( select ) => {
 		const { getToast, getTab } = select( 'neve-dashboard' );
-		const { getOnboardingStatus } = select( 'neve-onboarding' );
 		return {
 			toast: getToast(),
 			currentTab: getTab(),
-			isOnboarding: getOnboardingStatus(),
 		};
 	} )
 )( App );

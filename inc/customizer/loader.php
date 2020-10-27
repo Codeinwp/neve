@@ -102,7 +102,11 @@ class Loader {
 			)
 		);
 		wp_enqueue_script( 'react-controls' );
-		wp_enqueue_style( 'react-controls', $bundle_path . 'style-controls.css', [ 'wp-components' ], $dependencies['version'] );
+
+		wp_register_style( 'react-controls', $bundle_path . 'style-controls.css', [ 'wp-components' ], $dependencies['version'] );
+		wp_style_add_data( 'react-controls', 'rtl', 'replace' );
+		wp_enqueue_style( 'react-controls' );
+
 		wp_enqueue_style(
 			'neve-fonts-control-google-fonts',
 			'https://fonts.googleapis.com/css?family=' . join( '|', neve_get_google_fonts() ) . '&text=Abc&display=swap"',

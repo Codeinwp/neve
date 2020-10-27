@@ -158,7 +158,7 @@ class Main {
 		}
 
 		$build_path   = get_template_directory_uri() . '/dashboard/build/';
-		$dependencies = ( include  get_template_directory() . '/dashboard/build/dashboard.asset.php' );
+		$dependencies = ( include get_template_directory() . '/dashboard/build/dashboard.asset.php' );
 
 		wp_register_style( 'neve-dash-style', $build_path . 'style-dashboard.css', [ 'wp-components' ], $dependencies['version'] );
 		wp_style_add_data( 'neve-dash-style', 'rtl', 'replace' );
@@ -193,25 +193,29 @@ class Main {
 			'supportURL'          => esc_url( 'https://wordpress.org/support/theme/neve/' ),
 			'docsURL'             => esc_url( 'https://docs.themeisle.com/article/946-neve-doc' ),
 			'strings'             => [
-				'proTabTitle'                 => wp_kses_post( $plugin_name ),
+				'proTabTitle'                   => wp_kses_post( $plugin_name ),
 				/* translators: %s - Theme name */
-				'header'                      => sprintf( __( '%s Options', 'neve' ), wp_kses_post( $theme_name ) ),
+				'header'                        => sprintf( __( '%s Options', 'neve' ), wp_kses_post( $theme_name ) ),
 				/* translators: %s - Theme name */
-				'starterSitesCardDescription' => sprintf( __( '%s now comes with a sites library with various designs to pick from. Visit our collection of demos that are constantly being added.', 'neve' ), wp_kses_post( $theme_name ) ),
+				'starterSitesCardDescription'   => sprintf( __( '%s now comes with a sites library with various designs to pick from. Visit our collection of demos that are constantly being added.', 'neve' ), wp_kses_post( $theme_name ) ),
 				/* translators: %s - "Public roadmap" */
-				'sidebarCommunityDescription' => sprintf( __( 'Share opinions, ask questions and help each other on our Neve community! Keep up with what we’re working on and vote to help us prioritize on our %s.', 'neve' ), wp_kses_post( '<a href="https://neve.nolt.io">' . __( 'public roadmap', 'neve' ) . '</a>' ) ),
+				'sidebarCommunityDescription'   => sprintf( __( 'Share opinions, ask questions and help each other on our Neve community! Keep up with what we’re working on and vote to help us prioritize on our %s.', 'neve' ), wp_kses_post( '<a href="https://neve.nolt.io">' . __( 'public roadmap', 'neve' ) . '</a>' ) ),
 				/* translators: %s - Theme name */
-				'starterSitesTabDescription'  => sprintf( __( 'With %s, you can choose from multiple unique demos, specially designed for you, that can be installed with a single click. You just need to choose your favorite, and we will take care of everything else.', 'neve' ), wp_kses_post( $theme_name ) ),
+				'starterSitesTabDescription'    => sprintf( __( 'With %s, you can choose from multiple unique demos, specially designed for you, that can be installed with a single click. You just need to choose your favorite, and we will take care of everything else.', 'neve' ), wp_kses_post( $theme_name ) ),
 				/* translators: %s - Theme name */
-				'supportCardDescription'      => sprintf( __( 'We want to make sure you have the best experience using %1$s, and that is why we have gathered all the necessary information here for you. We hope you will enjoy using %1$s as much as we enjoy creating great products.', 'neve' ), wp_kses_post( $theme_name ) ),
+				'starterSitesUnavailableActive' => sprintf( __( 'In order to be able to import any starter sites for %s you would need to have the Cloud Templates & Patterns Collection plugin active.', 'neve' ), wp_kses_post( $theme_name ) ),
 				/* translators: %s - Theme name */
-				'docsCardDescription'         => sprintf( __( 'Need more details? Please check our full documentation for detailed information on how to use %s.', 'neve' ), wp_kses_post( $theme_name ) ),
+				'starterSitesUnavailableUpdate' => sprintf( __( 'In order to be able to import any starter sites for %s you would need to have the Cloud Templates & Patterns Collection plugin updated to the latest version.', 'neve' ), wp_kses_post( $theme_name ) ),
+				/* translators: %s - Theme name */
+				'supportCardDescription'        => sprintf( __( 'We want to make sure you have the best experience using %1$s, and that is why we have gathered all the necessary information here for you. We hope you will enjoy using %1$s as much as we enjoy creating great products.', 'neve' ), wp_kses_post( $theme_name ) ),
+				/* translators: %s - Theme name */
+				'docsCardDescription'           => sprintf( __( 'Need more details? Please check our full documentation for detailed information on how to use %s.', 'neve' ), wp_kses_post( $theme_name ) ),
 				/* translators: %s - "Neve Pro Addon" */
-				'licenseCardHeading'          => sprintf( __( '%s license', 'neve' ), wp_kses_post( $plugin_name_addon ) ),
+				'licenseCardHeading'            => sprintf( __( '%s license', 'neve' ), wp_kses_post( $plugin_name_addon ) ),
 				/* translators: %s - "Neve Pro Addon" */
-				'updateOldPro'                => sprintf( __( 'Please update %s to the latest version and then refresh this page to have access to the options.', 'neve' ), wp_kses_post( $plugin_name_addon ) ),
+				'updateOldPro'                  => sprintf( __( 'Please update %s to the latest version and then refresh this page to have access to the options.', 'neve' ), wp_kses_post( $plugin_name_addon ) ),
 				/* translators: %1$s - Author link - Themeisle */
-				'licenseCardDescription'      => sprintf(
+				'licenseCardDescription'        => sprintf(
 				// translators: store name (Themeisle)
 					__( 'Enter your license from %1$s purchase history in order to get plugin updates', 'neve' ),
 					'<a href="https://store.themeisle.com/">ThemeIsle</a>'
@@ -221,10 +225,16 @@ class Main {
 			'onboarding'          => [],
 			'hasFileSystem'       => WP_Filesystem(),
 			'hidePluginsTab'      => apply_filters( 'neve_hide_useful_plugins', ! array_key_exists( 'useful_plugins', $old_about_config ) ),
+			'tpcPath'             => defined( 'TIOB_PATH' ) ? TIOB_PATH . 'template-patterns-collection.php' : 'template-patterns-collection/template-patterns-collection.php',
+			'tpcAdminURL'         => admin_url( 'themes.php?page=tiob-starter-sites' ),
 		];
 
 		if ( defined( 'NEVE_PRO_PATH' ) ) {
 			$data['changelogPro'] = $this->cl_handler->get_changelog( NEVE_PRO_PATH . '/CHANGELOG.md' );
+		}
+
+		if ( isset( $_GET['onboarding'] ) && $_GET['onboarding'] === 'yes' ) {
+			$data['isOnboarding'] = true;
 		}
 
 		return $data;

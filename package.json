@@ -1,7 +1,7 @@
 {
 	"name": "neve",
 	"nicename": "Neve",
-	"version": "2.8.1",
+	"version": "2.8.3",
 	"description": "Neve theme by ThemeIsle",
 	"category": "themes",
 	"repository": {
@@ -41,6 +41,7 @@
 		"@wordpress/eslint-plugin": "@7.1.0",
 		"@wordpress/scripts": "^12.2.0",
 		"babel-loader": "^8.1.0",
+		"compare-versions": "^3.6.0",
 		"conventional-changelog-simple-preset": "^1.0.14",
 		"core-js": "^3.6.5",
 		"cross-env": "^7.0.2",
@@ -88,7 +89,7 @@
 		"watch:wp-scripts-dash": "wp-scripts start dashboard/src/dashboard.js --output-path=dashboard/build",
 		"watch:wp-scripts-customizer-controls": "wp-scripts start inc/customizer/controls/react/src/controls.js --output-path=inc/customizer/controls/react/bundle",
 		"dev": "npm-run-all --parallel watch:*",
-		"build": "npm-run-all build:*",
+		"build": "npm-run-all -s build:* && grunt rtlcss",
 		"size": "size-limit",
 		"pre-commit": "npm-run-all phpcs build size",
 		"cypress:open": "cypress open",

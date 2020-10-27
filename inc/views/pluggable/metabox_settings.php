@@ -117,9 +117,7 @@ class Metabox_Settings {
 			return false;
 		}
 
-		$meta_value = get_post_meta( $post_id, 'neve_meta_content_width', true );
-
-		return empty( $meta_value ) ? $this->get_content_width_default() : $meta_value;
+		return get_post_meta( $post_id, 'neve_meta_content_width', true );
 
 	}
 
@@ -320,7 +318,6 @@ class Metabox_Settings {
 		}
 
 		$meta_value = get_post_meta( $post_id, 'neve_meta_sidebar', true );
-		$meta_value = empty( $meta_value ) ? $this->get_sidebar_default() : $meta_value;
 		if ( empty( $meta_value ) || $meta_value === 'default' ) {
 			return $position;
 		}
@@ -428,19 +425,6 @@ class Metabox_Settings {
 		}
 
 		return 70;
-	}
-
-	/**
-	 * Get sidebar default.
-	 *
-	 * @return string
-	 */
-	private function get_sidebar_default() {
-		if ( (int) $this->get_post_id() === (int) get_option( 'woocommerce_checkout_page_id' ) ) {
-			return 'full-width';
-		}
-
-		return '';
 	}
 
 	/**

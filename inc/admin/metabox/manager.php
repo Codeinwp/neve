@@ -214,16 +214,23 @@ final class Manager {
 
 	/**
 	 * Enqueue scripts and styles.
+	 *
+	 * @return bool
 	 */
 	public function enqueue() {
+
+		if ( $this->is_gutenberg_active() ) {
+			return false;
+		}
 
 		$screen = get_current_screen();
 
 		if ( ! is_object( $screen ) ) {
-			return;
+			return false;
 		}
+
 		if ( $screen->base !== 'post' ) {
-			return;
+			return false;
 		}
 
 		wp_register_script( 'neve-metabox', NEVE_ASSETS_URL . 'js/build/all/metabox.js', array( 'jquery' ), NEVE_VERSION, true );
@@ -231,6 +238,8 @@ final class Manager {
 		wp_localize_script( 'neve-metabox', 'neveMetabox', $this->get_localization() );
 
 		wp_enqueue_script( 'neve-metabox' );
+
+		return true;
 	}
 
 	/**
@@ -348,6 +357,11 @@ final class Manager {
 
 		$container    = $post_type === 'post' ? Mods::get( Config::MODS_SINGLE_POST_CONTAINER_STYLE, 'contained' ) : Mods::get( Config::MODS_DEFAULT_CONTAINER_STYLE, 'contained' );
 		$editor_width = Mods::get( Config::MODS_CONTAINER_WIDTH );
+
+		$advanced_layout = Mods::get( Config::MODS_ADVANCED_LAYOUT_OPTIONS );
+		$single_width    = $post_type === 'post' ? Mods::get( Config::MODS_SINGLE_CONTENT_WIDTH, 70 ) : Mods::get( Config::MODS_OTHERS_CONTENT_WIDTH, 70 );
+		$content_width   = $advanced_layout ? $single_width : Mods::get( Config::MODS_SITEWIDE_CONTENT_WIDTH, 70 );
+
 		$editor_width = isset( $editor_width['desktop'] ) ? (int) $editor_width['desktop'] : 1170;
 
 		$post_elements_default_order = $this->get_post_elements_default_order();
@@ -359,6 +373,7 @@ final class Manager {
 					'neve_meta_content_width' => array(
 						'container' => $container,
 						'editor'    => $editor_width,
+						'content'   => $content_width,
 					),
 				),
 				'elementsDefaultOrder' => $post_elements_default_order,
@@ -430,10 +445,14 @@ final class Manager {
 			return;
 		}
 
-		if ( Main::is_new_page() || Main::is_checkout() ) {
+		$checkout_was_updated = get_post_meta( $post_id, 'neve_checkout_updated', 'no' );
+		if ( Main::is_new_page() || ( Main::is_checkout() && $checkout_was_updated === 'no' ) ) {
 			update_post_meta( $post_id, 'neve_meta_sidebar', 'full-width' );
 			update_post_meta( $post_id, 'neve_meta_enable_content_width', 'on' );
 			update_post_meta( $post_id, 'neve_meta_content_width', 100 );
+			if ( Main::is_checkout() ) {
+				update_post_meta( $post_id, 'neve_checkout_updated', 'yes' );
+			}
 		}
 	}
 }
