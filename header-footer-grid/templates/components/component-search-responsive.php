@@ -14,6 +14,10 @@ use HFG\Core\Components\SearchResponsive;
 $component_styles_array = [];
 $open                   = component_setting( SearchResponsive::OPEN_TYPE );
 
+if ( current_row() === 'sidebar' ) {
+	$open = 'floating';
+}
+
 $component_styles = '';
 if ( ! empty( $component_styles_array ) ) {
 	$component_styles = ' style="';
