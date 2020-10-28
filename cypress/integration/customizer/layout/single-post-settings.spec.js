@@ -7,16 +7,14 @@ describe('Single Post Check', function () {
         let status = {'title-meta': 'not.have.descendants', 'thumbnail': 'not.have.descendants', 'content': 'not.have.descendants', 'tags': 'not.have.descendants', 'comments': 'not.have.descendants', 'post-navigation': 'not.have.descendants'};
         let classes = {'title-meta': '.entry-header', 'thumbnail': '.nv-thumb-wrap', 'content': '.entry-content', 'tags': '.nv-tags-list', 'comments': '.comments-area', 'post-navigation': '.nv-post-navigation'};
         cy.get('#customize-control-neve_layout_single_post_elements_order')
-            .find('li.order-component')
+            .find('li.neve-sortable-item')
             .each(function (el) {
-                cy.get(el).find('.toggle-display').click();
-                cy.get(el).invoke('attr', 'data-id').then(function (meta) {
-                    cy.get(el).invoke('attr', 'class').then((val) => {
-                        if (val.includes('enabled')) {
-                            status[meta] = 'have.descendants';
-                        }
-                    })
-                });
+                cy.get(el).find('.toggle').click();
+                cy.get(el).invoke('attr', 'class').then((val) => {
+                	if (!val.includes('disabled')) {
+                		status[meta] = 'have.descendants';
+                	}
+                })
             });
 
         saveCustomizer();
@@ -89,15 +87,13 @@ function dropElAfter(selector, dragItem, dropItem) {
  */
 function setOrderElementsVisible(selector) {
     cy.get(selector)
-        .find('li.order-component')
+        .find('li.neve-sortable-item')
         .each(function (el) {
-            cy.get(el).invoke('attr', 'data-id').then(function () {
-                cy.get(el).invoke('attr', 'class').then((val) => {
-                    if (!val.includes('enabled')) {
-                        cy.get(el).find('.toggle-display').click();
-                    }
-                })
-            });
+        	cy.get(el).invoke('attr', 'class').then((val) => {
+        		if (val.includes('disabled')) {
+        			cy.get(el).find('.toggle').click();
+        		}
+        	})
         });
 }
 
