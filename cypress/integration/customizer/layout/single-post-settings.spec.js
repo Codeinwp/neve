@@ -2,7 +2,7 @@ describe( 'Single Post Check', () => {
 	const CONTROL = 'neve_layout_single_post_elements_order';
 	const DEFAULT = '["title-meta","thumbnail","content","tags","comments"]';
 	const REORDERED =
-		'["post-navigation","tags","comments","author-biography","related-posts","sharing-icons","title-meta","content","thumbnail"]';
+		'["post-navigation","tags","content","comments","title-meta","thumbnail"]';
 
 	const BEFORE = () => {
 		cy.login();
