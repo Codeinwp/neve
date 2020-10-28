@@ -76,12 +76,9 @@ describe( 'Single Post Check', () => {
 		const ORDER = [
 			'nv-post-navigation',
 			'nv-tags-list',
-			'comments-area',
-			'nv-author-biography',
-			'nv-related-posts',
-			'nv-post-share',
-			'entry-header',
 			'nv-content-wrap',
+			'comments-area',
+			'entry-header',
 			'nv-thumb-wrap',
 		];
 
@@ -95,29 +92,6 @@ describe( 'Single Post Check', () => {
 		} );
 	} );
 } );
-
-/**
- * Enable all ordering items.
- *
- * @param selector
- */
-function setOrderElementsVisible( selector ) {
-	cy.get( selector )
-		.find( 'li.order-component' )
-		.each( function ( el ) {
-			cy.get( el )
-				.invoke( 'attr', 'data-id' )
-				.then( function () {
-					cy.get( el )
-						.invoke( 'attr', 'class' )
-						.then( ( val ) => {
-							if ( ! val.includes( 'enabled' ) ) {
-								cy.get( el ).find( '.toggle-display' ).click();
-							}
-						} );
-				} );
-		} );
-}
 
 /**
  * Alias Rest Routes
