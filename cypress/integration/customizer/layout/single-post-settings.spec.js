@@ -5,6 +5,7 @@ describe( 'Single Post Check', () => {
 		'["post-navigation","tags","comments","author-biography","related-posts","sharing-icons","title-meta","content","thumbnail"]';
 
 	const BEFORE = () => {
+		cy.login();
 		cy.visit( '/markup-image-alignment/' );
 		cy.get( '#wp-admin-bar-edit' ).click();
 
