@@ -85,8 +85,15 @@ class Main extends Base_Customizer {
 					'section' => 'static_front_page',
 					'type'    => 'neve_ui_control',
 				]
-			) 
+			)
 		);
+	}
+
+	/**
+	 * Change controls
+	 */
+	protected function change_controls() {
+		$this->change_customizer_object( 'section', 'static_front_page', 'panel', 'neve_layout' );
 	}
 
 }
