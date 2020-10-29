@@ -916,6 +916,10 @@ blockquote.wp-block-quote.is-style-large cite {
   top: 100%;
 }
 
+.header-menu-sidebar .menu-item-nav-search.floating .nv-nav-search {
+  position: absolute;
+}
+
 .menu-item-nav-search.floating .nv-nav-search {
   position: fixed;
   top: -100%;
@@ -2759,13 +2763,11 @@ audio {
 /* - Item showing animation  */
 .header-menu-sidebar .item--inner {
   transition: transform .3s, opacity .3s;
-  transform: translateY(45px);
   opacity: 0;
 }
 
 .is-menu-sidebar .header-menu-sidebar .item--inner {
   opacity: 1;
-  transform: translateY(0);
 }
 
 .header-menu-sidebar-overlay {

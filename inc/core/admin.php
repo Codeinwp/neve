@@ -66,6 +66,8 @@ class Admin {
 
 		add_action( 'admin_menu', [ $this, 'remove_background_submenu' ], 110 );
 		add_action( 'after_switch_theme', [ $this, 'get_previous_theme' ] );
+
+		add_filter( 'all_plugins', array( $this, 'change_plugin_names' ) );
 	}
 
 	/**
@@ -445,5 +447,18 @@ class Admin {
 		}
 		update_option( $this->dismiss_notice_key, 'yes' );
 		wp_die();
+	}
+
+	/**
+	 * Change Orbit Fox and Otter plugin names to make clear where they are from.
+	 */
+	public function change_plugin_names( $plugins ) {
+		if ( array_key_exists( 'themeisle-companion/themeisle-companion.php', $plugins ) ) {
+			$plugins['themeisle-companion/themeisle-companion.php']['Name'] = 'Orbit Fox Companion by Neve theme';
+		}
+		if ( array_key_exists( 'otter-blocks/otter-blocks.php', $plugins ) ) {
+			$plugins['otter-blocks/otter-blocks.php']['Name'] = 'Gutenberg Blocks and Template Library by Neve theme';
+		}
+		return $plugins;
 	}
 }

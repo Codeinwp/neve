@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-10-28T09:39:02+00:00\n"
+"POT-Creation-Date: 2020-10-29T10:56:38+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -341,6 +341,14 @@ msgstr ""
 msgid "upgrading PHP to the latest version"
 msgstr ""
 
+#: dist/neve/globals/utilities.php:1337
+msgid "Base"
+msgstr ""
+
+#: dist/neve/globals/utilities.php:1352
+msgid "Dark Mode"
+msgstr ""
+
 #: dist/neve/header-footer-grid/Core/Builder/Abstract_Builder.php:303
 #: dist/neve/header-footer-grid/Core/Settings/Manager.php:181
 #: dist/neve/inc/customizer/options/layout_blog.php:117
@@ -392,8 +400,7 @@ msgstr ""
 #: dist/neve/header-footer-grid/Core/Components/Copyright.php:84
 #: dist/neve/header-footer-grid/Core/Components/CustomHtml.php:163
 #: dist/neve/header-footer-grid/Core/Components/Logo.php:205
-#: dist/neve/inc/core/front_end.php:206
-#: dist/neve/inc/customizer/options/colors_background.php:66
+#: dist/neve/inc/compatibility/elementor.php:116
 #: dist/neve/inc/customizer/options/layout_blog.php:184
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:385
 #: header-footer-grid/Core/Components/Copyright.php:84
@@ -402,6 +409,8 @@ msgstr ""
 #: inc/core/front_end.php:206
 #: inc/customizer/options/colors_background.php:66
 #: inc/customizer/options/layout_blog.php:184
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/common/common.js:77
 msgid "Text Color"
 msgstr ""
 
@@ -714,28 +723,28 @@ msgid "Arbitrary HTML code. It supports also shortcodes."
 msgstr ""
 
 #: dist/neve/header-footer-grid/Core/Components/FooterWidgetFour.php:32
-#: dist/neve/inc/core/front_end.php:535
+#: dist/neve/inc/core/front_end.php:509
 #: header-footer-grid/Core/Components/FooterWidgetFour.php:32
 #: inc/core/front_end.php:535
 msgid "Footer Four"
 msgstr ""
 
 #: dist/neve/header-footer-grid/Core/Components/FooterWidgetOne.php:31
-#: dist/neve/inc/core/front_end.php:532
+#: dist/neve/inc/core/front_end.php:506
 #: header-footer-grid/Core/Components/FooterWidgetOne.php:31
 #: inc/core/front_end.php:532
 msgid "Footer One"
 msgstr ""
 
 #: dist/neve/header-footer-grid/Core/Components/FooterWidgetThree.php:31
-#: dist/neve/inc/core/front_end.php:534
+#: dist/neve/inc/core/front_end.php:508
 #: header-footer-grid/Core/Components/FooterWidgetThree.php:31
 #: inc/core/front_end.php:534
 msgid "Footer Three"
 msgstr ""
 
 #: dist/neve/header-footer-grid/Core/Components/FooterWidgetTwo.php:32
-#: dist/neve/inc/core/front_end.php:533
+#: dist/neve/inc/core/front_end.php:507
 #: header-footer-grid/Core/Components/FooterWidgetTwo.php:32
 #: inc/core/front_end.php:533
 msgid "Footer Two"
@@ -1053,7 +1062,6 @@ msgstr ""
 
 #. translators: %s is the header name
 #: dist/neve/header-footer-grid/Core/Customizer.php:277
-#: header-footer-grid/Core/Customizer.php:277
 msgid "Click on any empty space to add header components, or existing components to adjust settings."
 msgstr ""
 
@@ -1336,7 +1344,7 @@ msgid "No Sidebar"
 msgstr ""
 
 #: dist/neve/inc/admin/metabox/main.php:56
-#: dist/neve/inc/core/front_end.php:525
+#: dist/neve/inc/core/front_end.php:499
 #: inc/admin/metabox/main.php:56
 #: inc/core/front_end.php:525
 #: dist/neve/inc/admin/metabox/src/components/MetaFieldsManager.js:116
@@ -1421,7 +1429,8 @@ msgstr ""
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/LicenseCard.js:98
 #: dashboard/src/Components/PluginCard.js:21
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:1344
+#: dist/neve/dashboard/build/dashboard.js:2180
 msgid "Activate"
 msgstr ""
 
@@ -1430,7 +1439,8 @@ msgstr ""
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/LicenseCard.js:97
 #: dashboard/src/Components/PluginCard.js:25
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:1344
+#: dist/neve/dashboard/build/dashboard.js:2184
 msgid "Deactivate"
 msgstr ""
 
@@ -1499,6 +1509,54 @@ msgstr ""
 msgid "Two columns with text"
 msgstr ""
 
+#: dist/neve/inc/compatibility/elementor.php:111
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/common/common.js:72
+msgid "Primary Accent"
+msgstr ""
+
+#: dist/neve/inc/compatibility/elementor.php:112
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/common/common.js:73
+msgid "Secondary Accent"
+msgstr ""
+
+#: dist/neve/inc/compatibility/elementor.php:113
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/common/common.js:74
+msgid "Site Background"
+msgstr ""
+
+#: dist/neve/inc/compatibility/elementor.php:114
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/common/common.js:75
+msgid "Light Background"
+msgstr ""
+
+#: dist/neve/inc/compatibility/elementor.php:115
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/common/common.js:76
+msgid "Dark Background"
+msgstr ""
+
+#: dist/neve/inc/compatibility/elementor.php:117
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/common/common.js:78
+msgid "Text Dark Background"
+msgstr ""
+
+#: dist/neve/inc/compatibility/elementor.php:118
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/common/common.js:81
+msgid "Custom Color 1"
+msgstr ""
+
+#: dist/neve/inc/compatibility/elementor.php:119
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/common/common.js:82
+msgid "Custom Color 2"
+msgstr ""
+
 #: dist/neve/inc/compatibility/lifter.php:314
 #: inc/compatibility/lifter.php:314
 msgid "Catalog Sidebar"
@@ -1554,55 +1612,47 @@ msgstr ""
 #: inc/core/admin.php:265
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Help.js:43
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:630
 msgid "Documentation"
 msgstr ""
 
-#: dist/neve/inc/core/front_end.php:176
-#: inc/core/front_end.php:176
-msgid "Black"
+#: dist/neve/inc/core/front_end.php:179
+msgid "Neve - Primary Accent"
 msgstr ""
 
-#: dist/neve/inc/core/front_end.php:185
-#: inc/core/front_end.php:185
-msgid "White"
+#: dist/neve/inc/core/front_end.php:183
+msgid "Neve - Secondary Accent"
 msgstr ""
 
-#: dist/neve/inc/core/front_end.php:194
-#: inc/core/front_end.php:194
-msgid "Button Color"
+#: dist/neve/inc/core/front_end.php:187
+msgid "Neve - Site Background"
 msgstr ""
 
-#: dist/neve/inc/core/front_end.php:198
-#: dist/neve/inc/customizer/options/colors_background.php:56
-#: inc/core/front_end.php:198
-#: inc/customizer/options/colors_background.php:56
-msgid "Link Color"
+#: dist/neve/inc/core/front_end.php:191
+msgid "Neve - Light Background"
 msgstr ""
 
-#: dist/neve/inc/core/front_end.php:202
-#: dist/neve/inc/customizer/options/colors_background.php:61
-#: inc/core/front_end.php:202
-#: inc/customizer/options/colors_background.php:61
-msgid "Link Hover Color"
+#: dist/neve/inc/core/front_end.php:195
+msgid "Neve - Dark Background"
 msgstr ""
 
-#: dist/neve/inc/core/front_end.php:210
-#: inc/core/front_end.php:210
-msgid "Button text color"
+#: dist/neve/inc/core/front_end.php:199
+msgid "Neve - Text Color"
 msgstr ""
 
-#: dist/neve/inc/core/front_end.php:214
-#: inc/core/front_end.php:214
-msgid "Button Hover text color"
+#: dist/neve/inc/core/front_end.php:203
+msgid "Neve - Text Dark Background"
 msgstr ""
 
-#: dist/neve/inc/core/front_end.php:218
-#: inc/core/front_end.php:218
-msgid "Button Hover Color"
+#: dist/neve/inc/core/front_end.php:207
+msgid "Neve - Custom Color 1"
 msgstr ""
 
-#: dist/neve/inc/core/front_end.php:526
+#: dist/neve/inc/core/front_end.php:211
+msgid "Neve - Custom Color 2"
+msgstr ""
+
+#: dist/neve/inc/core/front_end.php:500
 #: inc/core/front_end.php:526
 msgid "Shop Sidebar"
 msgstr ""
@@ -1644,9 +1694,15 @@ msgstr ""
 msgid "Button Text"
 msgstr ""
 
-#: dist/neve/inc/customizer/options/colors_background.php:42
+#: dist/neve/inc/customizer/options/colors_background.php:43
 #: inc/customizer/options/colors_background.php:42
 msgid "Colors & Background"
+msgstr ""
+
+#: dist/neve/inc/customizer/options/colors_background.php:91
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/common/GlobalColorsPicker.js:28
+msgid "Global Colors"
 msgstr ""
 
 #: dist/neve/inc/customizer/options/layout_blog.php:80
@@ -2047,7 +2103,10 @@ msgstr ""
 #: dashboard/src/Components/Content/Help.js:73
 #: dashboard/src/Components/Content/Help.js:101
 #: dashboard/src/Components/ModuleCard.js:146
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:628
+#: dist/neve/dashboard/build/dashboard.js:647
+#: dist/neve/dashboard/build/dashboard.js:661
+#: dist/neve/dashboard/build/dashboard.js:1681
 msgid "Learn More"
 msgstr ""
 
@@ -2132,6 +2191,8 @@ msgstr ""
 #: dist/neve/inc/views/partials/comments.php:138
 #: inc/views/partials/comments.php:107
 #: inc/views/partials/comments.php:138
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/common/CustomPalette.js:22
 msgid "Edit"
 msgstr ""
 
@@ -2199,373 +2260,422 @@ msgstr ""
 msgid "Page Builder Full Width (Neve)"
 msgstr ""
 
+#. translators: %s is the header name
+#: header-footer-grid/Core/Customizer.php:277
+msgid "Click on any empty space to add components, or existing components to adjust settings."
+msgstr ""
+
+#: inc/core/front_end.php:176
+msgid "Black"
+msgstr ""
+
+#: inc/core/front_end.php:185
+msgid "White"
+msgstr ""
+
+#: inc/core/front_end.php:194
+msgid "Button Color"
+msgstr ""
+
+#: inc/core/front_end.php:198
+#: inc/customizer/options/colors_background.php:56
+msgid "Link Color"
+msgstr ""
+
+#: inc/core/front_end.php:202
+#: inc/customizer/options/colors_background.php:61
+msgid "Link Hover Color"
+msgstr ""
+
+#: inc/core/front_end.php:210
+msgid "Button text color"
+msgstr ""
+
+#: inc/core/front_end.php:214
+msgid "Button Hover text color"
+msgstr ""
+
+#: inc/core/front_end.php:218
+msgid "Button Hover Color"
+msgstr ""
+
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/utils/rest.js:68
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:3080
 msgid "Typekit Project ID is invalid"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Start.js:55
 #: dashboard/src/utils/common.js:39
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:828
+#: dist/neve/dashboard/build/dashboard.js:2885
 msgid "Starter Sites"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Start.js:65
 #: dashboard/src/Components/Content/Start.js:69
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:835
+#: dist/neve/dashboard/build/dashboard.js:838
 msgid "Go to Starter Sites"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Start.js:78
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:841
 msgid "Customizer quick links"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Start.js:86
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:844
 msgid "Getting Started? Check help and docs"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Start.js:90
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:845
 msgid "Need more details? Please check our full documentation for detailed information on how to use Neve."
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Help.js:47
 #: dashboard/src/Components/Content/Start.js:96
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:635
+#: dist/neve/dashboard/build/dashboard.js:851
 msgid "Go to docs"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Start.js:105
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:855
 msgid "Feedback"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Start.js:106
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:856
 msgid "Share your feedback for Neve and get the chance to win the pro version."
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Start.js:115
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:860
 msgid "Leave Feedback"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Options/InputForm.js:52
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:2002
 msgid "Save"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/ModuleCard.js:79
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:1650
 msgid "Upgrade"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/ModuleCard.js:113
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:1667
 msgid "Module Activated"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/ModuleCard.js:117
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:1667
 msgid "Module Deactivated."
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/ModuleCard.js:127
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:1672
 msgid "Could not activate module. Please try again."
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/PluginCard.js:17
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:2176
 msgid "Install"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/PluginCard.js:18
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:2177
 msgid "Installing"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/LicenseCard.js:100
 #: dashboard/src/Components/PluginCard.js:22
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:1344
+#: dist/neve/dashboard/build/dashboard.js:2181
 msgid "Activating"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/LicenseCard.js:101
 #: dashboard/src/Components/PluginCard.js:26
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:1344
+#: dist/neve/dashboard/build/dashboard.js:2185
 msgid "Deactivating"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Help.js:24
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:623
 msgid "Build a landing page with a drag-and-drop content builder"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Help.js:28
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:624
 msgid "In the documentation below you will find an easy way to build a great looking landing page using a drag-and-drop content builder plugin."
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Help.js:55
 #: dashboard/src/Components/Sidebar.js:31
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:640
+#: dist/neve/dashboard/build/dashboard.js:2353
 msgid "Join our Facebook Group"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Help.js:63
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:642
 msgid "Create a child theme"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Help.js:64
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:643
 msgid "If you want to make changes to the theme's files, those changes are likely to be overwritten when you next update the theme. In order to prevent that from happening, you need to create a child theme. For this, please follow the documentation below."
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Help.js:80
 #: dashboard/src/Components/Content/Help.js:84
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:649
+#: dist/neve/dashboard/build/dashboard.js:654
 msgid "Contact Support"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Help.js:91
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:656
 msgid "Speed up your site"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Help.js:92
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:657
 msgid "If you find yourself in a situation where everything on your site is running very slowly, you might consider having a look at the documentation below where you will find the most common issues causing this and possible solutions for each of the issues."
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Help.js:108
 #: dashboard/src/utils/common.js:55
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:663
+#: dist/neve/dashboard/build/dashboard.js:2911
 msgid "Changelog"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Help.js:109
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:664
 msgid "Want to get the gist on the latest theme changes? Just consult our changelog below to get a taste of the recent fixes and features implemented."
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Help.js:115
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:670
 msgid "View Changelog"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Changelog.js:16
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:437
 msgid "Show changelog for"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Changelog.js:58
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:477
 msgid "Features"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Changelog.js:77
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:492
 msgid "Bug Fixes"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Changelog.js:96
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:507
 msgid "Tweaks"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/FeatureRow.js:44
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:1108
 msgid "More details <a>here</a>."
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/FreePro.js:26
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:571
 msgid "Get access to all Pro features and power-up your website"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/FreePro.js:32
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:574
 msgid "Get Neve Pro Now"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/utils/common.js:35
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:2877
 msgid "Welcome"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/utils/common.js:43
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:2891
 msgid "Free vs Pro"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/utils/common.js:47
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:2897
 msgid "Plugins"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/utils/common.js:51
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:2903
 msgid "Help"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Header.js:25
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:1176
 msgid "Neve Theme Logo"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Notification.js:87
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:1855
 msgid "Done!"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Notification.js:94
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:1857
 msgid "An error occured. Please reload the page and try again."
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Notification.js:114
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:1870
 msgid "In Progress"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/LicenseCard.js:87
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:1338
 msgid "Enter License Key"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/LicenseCard.js:130
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:1357
 msgid "Valid"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/LicenseCard.js:131
 #: dashboard/src/Components/LicenseCard.js:139
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:1357
+#: dist/neve/dashboard/build/dashboard.js:1361
 msgid "Expired"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/LicenseCard.js:138
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:1361
 msgid "Expires"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Sidebar.js:22
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:2347
 msgid "Neve Community"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Sidebar.js:36
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:2355
 msgid "Leave us a review"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Sidebar.js:38
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:2355
 msgid "Are you are enjoying Neve? We would love to hear your feedback."
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Sidebar.js:44
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:2357
 msgid "Submit a review"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Sidebar.js:49
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:2359
 msgid "Contributing"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Sidebar.js:51
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:2359
 msgid "Become a contributor by opting in to our anonymous data tracking. We guarantee no sensitive data is collected."
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Sidebar.js:57
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:2361
 msgid "What do we track?"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Sidebar.js:62
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:2363
 msgid "Allow Anonymous Tracking"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Sidebar.js:73
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:2368
 msgid "Could not update option. Please try again."
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Sidebar.js:82
 #: dashboard/src/Components/Snackbar.js:27
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:2374
+#: dist/neve/dashboard/build/dashboard.js:2446
 msgid "Option Updated"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Snackbar.js:23
-#: dist/neve/dashboard/build/dashboard.js:1
+#: dist/neve/dashboard/build/dashboard.js:2446
 msgid "Could not Update Option. Please try again."
 msgstr ""
 
@@ -2701,7 +2811,7 @@ msgid "Mobile"
 msgstr ""
 
 #: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
-#: dist/neve/inc/customizer/controls/react/src/common/ColorControl.js:59
+#: dist/neve/inc/customizer/controls/react/src/common/ColorControl.js:80
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/common/ColorControl.js:59
 msgid "Clear"
@@ -3110,4 +3220,62 @@ msgstr ""
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/ordering/OrderingComponent.js:35
 msgid "Toggle Visibility"
+msgstr ""
+
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/global-colors/PaletteSelector.js:48
+msgid "Remove Palette"
+msgstr ""
+
+#. translators: %s - name of palette that will be deleted.
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:2
+#: dist/neve/inc/customizer/controls/react/src/global-colors/PaletteSelector.js:60
+msgid "Are you sure you want to delete the %s palette?"
+msgstr ""
+
+#. translators: %s - name of palette that will be deleted.
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:2
+#: dist/neve/inc/customizer/controls/react/src/global-colors/PaletteSelector.js:68
+msgid "If this is the currently active palette, the current palette will be switched to the Base one."
+msgstr ""
+
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:2
+#: dist/neve/inc/customizer/controls/react/src/global-colors/PaletteSelector.js:79
+msgid "Delete"
+msgstr ""
+
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:2
+#: dist/neve/inc/customizer/controls/react/src/global-colors/PaletteForm.js:88
+#: dist/neve/inc/customizer/controls/react/src/global-colors/PaletteSelector.js:88
+msgid "Cancel"
+msgstr ""
+
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:2
+#: dist/neve/inc/customizer/controls/react/src/global-colors/Accordion.js:18
+msgid "Palette Colors"
+msgstr ""
+
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:2
+#: dist/neve/inc/customizer/controls/react/src/global-colors/PaletteColors.js:77
+msgid "Reset all to default"
+msgstr ""
+
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:2
+#: dist/neve/inc/customizer/controls/react/src/global-colors/PaletteForm.js:60
+msgid "Palette Title"
+msgstr ""
+
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:2
+#: dist/neve/inc/customizer/controls/react/src/global-colors/PaletteForm.js:66
+msgid "Extend from:"
+msgstr ""
+
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:2
+#: dist/neve/inc/customizer/controls/react/src/global-colors/PaletteForm.js:97
+msgid "Add"
+msgstr ""
+
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:2
+#: dist/neve/inc/customizer/controls/react/src/global-colors/GlobalColors.js:55
+msgid "How the color system works"
 msgstr ""
