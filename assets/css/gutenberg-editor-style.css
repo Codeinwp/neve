@@ -157,11 +157,11 @@
   color: var(--nv-text-color);
 }
 
-.editor-styles-wrapper .wp-block a {
+.editor-styles-wrapper .wp-block a:not(.wp-block-button__link) {
   color: var(--nv-primary-accent);
 }
 
-.editor-styles-wrapper .wp-block a:hover {
+.editor-styles-wrapper .wp-block a:not(.wp-block-button__link):hover {
   color: var(--nv-secondary-accent);
   text-decoration: none;
 }
