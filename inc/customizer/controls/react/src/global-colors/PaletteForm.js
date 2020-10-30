@@ -3,7 +3,7 @@ import { Button } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { camelCase } from 'lodash';
 
-const PaletteForm = ( { values, save } ) => {
+const PaletteForm = ( { values, save, disabled } ) => {
 	const { palettes } = values;
 	const [ isAdding, setIsAdding ] = useState( false );
 	const [ newPaletteName, setNewPaletteName ] = useState( '' );
@@ -41,6 +41,7 @@ const PaletteForm = ( { values, save } ) => {
 		return (
 			<div className="add-palette-form">
 				<Button
+					disabled={ disabled }
 					style={ { alignSelf: 'flex-start' } }
 					isSmall
 					isSecondary

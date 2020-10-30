@@ -21,33 +21,47 @@ class Frontend extends Generator {
 	 */
 	public function __construct() {
 		$this->_subscribers = [
-			'.container'                              => [
+			'.container' => [
 				Config::CSS_PROP_MAX_WIDTH => [
 					Dynamic_Selector::META_KEY           => Config::MODS_CONTAINER_WIDTH,
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 				],
 			],
-			'.has-neve-button-color-color'            => [
-				Config::CSS_PROP_COLOR => [
-					Dynamic_Selector::META_KEY       => Config::MODS_BUTTON_PRIMARY_STYLE . '.background',
-					Dynamic_Selector::META_IMPORTANT => true,
-					Dynamic_Selector::META_DEFAULT   => '#0366d6',
-				],
-			],
-			'.has-neve-button-color-background-color' => [
-				Config::CSS_PROP_BACKGROUND_COLOR => [
-					Dynamic_Selector::META_KEY       => Config::MODS_BUTTON_PRIMARY_STYLE . '.background',
-					Dynamic_Selector::META_IMPORTANT => true,
-					Dynamic_Selector::META_DEFAULT   => '#0366d6',
-				],
-			],
 		];
+		$this->setup_legacy_gutenberg_palette();
 		$this->setup_layout_subscribers();
 		$this->setup_buttons();
 		$this->setup_typography();
 		$this->setup_blog_typography();
 		$this->setup_blog_colors();
 
+	}
+
+	/**
+	 * Setup legacy gutenberg palette for old users.
+	 */
+	private function setup_legacy_gutenberg_palette() {
+		$is_new_user           = get_option( 'neve_new_user' );
+		$imported_starter_site = get_option( 'neve_imported_demo' );
+
+		if ( $is_new_user === 'yes' && $imported_starter_site !== 'yes' ) {
+			return;
+		}
+
+		$this->_subscribers['.has-neve-button-color-color']            = [
+			Config::CSS_PROP_COLOR => [
+				Dynamic_Selector::META_KEY       => Config::MODS_BUTTON_PRIMARY_STYLE . '.background',
+				Dynamic_Selector::META_IMPORTANT => true,
+				Dynamic_Selector::META_DEFAULT   => '#0366d6',
+			],
+		];
+		$this->_subscribers['.has-neve-button-color-background-color'] = [
+			Config::CSS_PROP_BACKGROUND_COLOR => [
+				Dynamic_Selector::META_KEY       => Config::MODS_BUTTON_PRIMARY_STYLE . '.background',
+				Dynamic_Selector::META_IMPORTANT => true,
+				Dynamic_Selector::META_DEFAULT   => '#0366d6',
+			],
+		];
 	}
 
 	/**

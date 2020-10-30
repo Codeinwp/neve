@@ -573,22 +573,6 @@ blockquote.wp-block-quote.is-style-large cite {
   padding: 0;
 }
 
-.has-white-color {
-  color: #fff !important;
-}
-
-.has-black-color {
-  color: #000 !important;
-}
-
-.has-white-background-color {
-  background-color: #fff !important;
-}
-
-.has-black-background-color {
-  background-color: #000 !important;
-}
-
 .has-neve-link-color-color {
   color: var(--nv-primary-accent);
 }
@@ -645,20 +629,20 @@ blockquote.wp-block-quote.is-style-large cite {
   background-color: var(--nv-text-dark-bg);
 }
 
-.has-nv-custom-color-1-color {
-  color: var(--nv-custom-color-1);
+.has-nv-c-1-color {
+  color: var(--nv-c-1);
 }
 
-.has-nv-custom-color-1-background-color {
-  background-color: var(--nv-custom-color-1);
+.has-nv-c-1-background-color {
+  background-color: var(--nv-c-1);
 }
 
-.has-nv-custom-color-2-color {
-  color: var(--nv-custom-color-2);
+.has-nv-c-2-color {
+  color: var(--nv-c-2);
 }
 
-.has-nv-custom-color-2-background-color {
-  background-color: var(--nv-custom-color-2);
+.has-nv-c-2-background-color {
+  background-color: var(--nv-c-2);
 }
 
 .hidden-on-mobile {
@@ -1321,12 +1305,13 @@ fieldset input[type="text"], fieldset input[type="search"], fieldset input[type=
 }
 
 .nv-meta-list li {
-  color: #676767;
+  color: var(--nv-text-color);
+  opacity: .7;
   font-size: 0.85em;
 }
 
 .nv-meta-list:not(.nv-dynamic-meta) a, .nv-meta-list:not(.nv-dynamic-meta) a:hover {
-  color: #676767;
+  color: var(--nv-text-color);
 }
 
 .nv-meta-list .posted-on .updated {

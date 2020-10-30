@@ -45,7 +45,11 @@ const GlobalColors = ( { control } ) => {
 			) }
 
 			<PaletteSelector values={ values } save={ updateValues } />
-			<PaletteForm values={ values } save={ updateValues } />
+			<PaletteForm
+				values={ values }
+				save={ updateValues }
+				disabled={ Object.keys( values.palettes ).length > 5 }
+			/>
 			<PaletteColors
 				values={ values }
 				save={ updateValues }

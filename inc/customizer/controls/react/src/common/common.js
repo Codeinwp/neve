@@ -76,9 +76,7 @@ export const globalPaletteColors = [
 		'nv-dark-bg': __( 'Dark Background', 'neve' ),
 		'nv-text-color': __( 'Text Color', 'neve' ),
 		'nv-text-dark-bg': __( 'Text Dark Background', 'neve' ),
-	},
-	{
-		'nv-custom-color-1': __( 'Custom Color 1', 'neve' ),
-		'nv-custom-color-2': __( 'Custom Color 2', 'neve' ),
+		'nv-c-1': __( 'Extra Color 1', 'neve' ),
+		'nv-c-2': __( 'Extra Color 2', 'neve' ),
 	},
 ];

@@ -71,8 +71,8 @@ class Elementor extends Page_Builder_Base {
 			'nvdarkbg'          => 'nv-dark-bg',
 			'nvtextcolor'       => 'nv-text-color',
 			'nvtextdarkbg'      => 'nv-text-dark-bg',
-			'nvcustomcolor1'    => 'nv-custom-color-1',
-			'nvcustomcolor2'    => 'nv-custom-color-2',
+			'nvc1'              => 'nv-c-1',
+			'nvc2'              => 'nv-c-2',
 		];
 
 		$rest_id = substr( $route, strrpos( $route, '/' ) + 1 );
@@ -115,8 +115,8 @@ class Elementor extends Page_Builder_Base {
 			'nv-dark-bg'          => __( 'Dark Background', 'neve' ),
 			'nv-text-color'       => __( 'Text Color', 'neve' ),
 			'nv-text-dark-bg'     => __( 'Text Dark Background', 'neve' ),
-			'nv-custom-color-1'   => __( 'Custom Color 1', 'neve' ),
-			'nv-custom-color-2'   => __( 'Custom Color 2', 'neve' ),
+			'nv-c-1'              => __( 'Extra Color 1', 'neve' ),
+			'nv-c-2'              => __( 'Extra Color 2', 'neve' ),
 		];
 
 		$colors = $this->get_current_palette_colors();

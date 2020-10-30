@@ -195,22 +195,6 @@ blockquote.wp-block-quote.is-style-large {
 	}
 }
 
-.has-white-color {
-	color: #fff !important;
-}
-
-.has-black-color {
-	color: #000 !important;;
-}
-
-.has-white-background-color {
-	background-color: #fff !important;;
-}
-
-.has-black-background-color {
-	background-color: #000 !important;;
-}
-
 .has-neve-link-color-color {
 	color: var(--nv-primary-accent);
 }
@@ -267,18 +251,18 @@ blockquote.wp-block-quote.is-style-large {
 	background-color: var(--nv-text-dark-bg);
 }
 
-.has-nv-custom-color-1-color {
-	color: var(--nv-custom-color-1)
+.has-nv-c-1-color {
+	color: var(--nv-c-1)
 }
 
-.has-nv-custom-color-1-background-color {
-	background-color: var(--nv-custom-color-1);
+.has-nv-c-1-background-color {
+	background-color: var(--nv-c-1);
 }
 
-.has-nv-custom-color-2-color {
-	color: var(--nv-custom-color-2)
+.has-nv-c-2-color {
+	color: var(--nv-c-2)
 }
 
-.has-nv-custom-color-2-background-color {
-	background-color: var(--nv-custom-color-2);
+.has-nv-c-2-background-color {
+	background-color: var(--nv-c-2);
 }

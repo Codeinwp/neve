@@ -202,13 +202,13 @@ class Front_End {
 				'val'   => $colors['nv-text-dark-bg'],
 				'label' => __( 'Neve - Text Dark Background', 'neve' ),
 			),
-			'nv-custom-color-1'     => array(
-				'val'   => $colors['nv-custom-color-1'],
-				'label' => __( 'Neve - Custom Color 1', 'neve' ),
+			'nv-c-1'                => array(
+				'val'   => $colors['nv-c-1'],
+				'label' => __( 'Neve - Extra Color 1', 'neve' ),
 			),
-			'nv-custom-color-2'     => array(
-				'val'   => $colors['nv-custom-color-2'],
-				'label' => __( 'Neve - Custom Color 2', 'neve' ),
+			'nv-c-2'                => array(
+				'val'   => $colors['nv-c-2'],
+				'label' => __( 'Neve - Extra Color 2', 'neve' ),
 			),
 		];
 

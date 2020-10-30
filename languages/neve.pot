@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-10-26T15:09:48+00:00\n"
+"POT-Creation-Date: 2020-10-30T14:32:56+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -559,22 +559,22 @@ msgid "Arbitrary HTML code. It supports also shortcodes."
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetFour.php:32
-#: inc/core/front_end.php:577
+#: inc/core/front_end.php:509
 msgid "Footer Four"
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetOne.php:31
-#: inc/core/front_end.php:574
+#: inc/core/front_end.php:506
 msgid "Footer One"
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetThree.php:31
-#: inc/core/front_end.php:576
+#: inc/core/front_end.php:508
 msgid "Footer Three"
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetTwo.php:32
-#: inc/core/front_end.php:575
+#: inc/core/front_end.php:507
 msgid "Footer Two"
 msgstr ""
 
@@ -1017,7 +1017,7 @@ msgid "No Sidebar"
 msgstr ""
 
 #: inc/admin/metabox/main.php:56
-#: inc/core/front_end.php:567
+#: inc/core/front_end.php:499
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:116
 msgid "Sidebar"
 msgstr ""
@@ -1181,14 +1181,14 @@ msgstr ""
 
 #: inc/compatibility/elementor.php:118
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/common/common.js:81
-msgid "Custom Color 1"
+#: inc/customizer/controls/react/src/common/common.js:79
+msgid "Extra Color 1"
 msgstr ""
 
 #: inc/compatibility/elementor.php:119
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/common/common.js:82
-msgid "Custom Color 2"
+#: inc/customizer/controls/react/src/common/common.js:80
+msgid "Extra Color 2"
 msgstr ""
 
 #: inc/compatibility/lifter.php:314
@@ -1238,67 +1238,43 @@ msgstr ""
 msgid "Documentation"
 msgstr ""
 
-#: inc/core/front_end.php:176
-msgid "Black"
-msgstr ""
-
-#: inc/core/front_end.php:185
-msgid "White"
-msgstr ""
-
-#: inc/core/front_end.php:198
+#: inc/core/front_end.php:179
 msgid "Neve - Primary Accent"
 msgstr ""
 
-#: inc/core/front_end.php:202
+#: inc/core/front_end.php:183
 msgid "Neve - Secondary Accent"
 msgstr ""
 
-#: inc/core/front_end.php:206
+#: inc/core/front_end.php:187
 msgid "Neve - Site Background"
 msgstr ""
 
-#: inc/core/front_end.php:210
+#: inc/core/front_end.php:191
 msgid "Neve - Light Background"
 msgstr ""
 
-#: inc/core/front_end.php:214
+#: inc/core/front_end.php:195
 msgid "Neve - Dark Background"
 msgstr ""
 
-#: inc/core/front_end.php:218
+#: inc/core/front_end.php:199
 msgid "Neve - Text Color"
 msgstr ""
 
-#: inc/core/front_end.php:222
+#: inc/core/front_end.php:203
 msgid "Neve - Text Dark Background"
 msgstr ""
 
-#: inc/core/front_end.php:226
-msgid "Neve - Custom Color 1"
+#: inc/core/front_end.php:207
+msgid "Neve - Extra Color 1"
 msgstr ""
 
-#: inc/core/front_end.php:230
-msgid "Neve - Custom Color 2"
+#: inc/core/front_end.php:211
+msgid "Neve - Extra Color 2"
 msgstr ""
 
-#: inc/core/front_end.php:248
-msgid "Button Color"
-msgstr ""
-
-#: inc/core/front_end.php:252
-msgid "Button text color"
-msgstr ""
-
-#: inc/core/front_end.php:256
-msgid "Button Hover text color"
-msgstr ""
-
-#: inc/core/front_end.php:260
-msgid "Button Hover Color"
-msgstr ""
-
-#: inc/core/front_end.php:568
+#: inc/core/front_end.php:500
 msgid "Shop Sidebar"
 msgstr ""
 
@@ -2493,7 +2469,7 @@ msgid "Delete"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/PaletteForm.js:88
+#: inc/customizer/controls/react/src/global-colors/PaletteForm.js:89
 #: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:88
 msgid "Cancel"
 msgstr ""
@@ -2509,21 +2485,21 @@ msgid "Reset all to default"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/PaletteForm.js:60
+#: inc/customizer/controls/react/src/global-colors/PaletteForm.js:61
 msgid "Palette Title"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/PaletteForm.js:66
+#: inc/customizer/controls/react/src/global-colors/PaletteForm.js:67
 msgid "Extend from:"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/PaletteForm.js:97
+#: inc/customizer/controls/react/src/global-colors/PaletteForm.js:98
 msgid "Add"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/GlobalColors.js:55
+#: inc/customizer/controls/react/src/global-colors/GlobalColors.js:59
 msgid "How the color system works"
 msgstr ""
