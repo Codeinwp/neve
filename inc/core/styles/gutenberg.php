@@ -185,7 +185,7 @@ class Gutenberg extends Generator {
 
 		// Gutenberg
 		$this->_subscribers[]  = [
-			Dynamic_Selector::KEY_SELECTOR => '.wp-block-button.is-style-primary .wp-block-button__link',
+			Dynamic_Selector::KEY_SELECTOR => '.wp-block-button.is-style-primary .wp-block-button__link, .wc-block-grid .wp-block-button .wp-block-button__link, .wc-block-featured-category__link .wp-block-button .wp-block-button__link, .wc-block-featured-product__link .wp-block-button .wp-block-button__link',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_BACKGROUND_COLOR => Config::MODS_BUTTON_PRIMARY_STYLE . '.background',
 				Config::CSS_PROP_COLOR            => Config::MODS_BUTTON_PRIMARY_STYLE . '.text',
@@ -198,7 +198,7 @@ class Gutenberg extends Generator {
 			],
 		];
 		$this->_subscribers[]  = [
-			Dynamic_Selector::KEY_SELECTOR => '.wp-block-button.is-style-primary .wp-block-button__link:hover',
+			Dynamic_Selector::KEY_SELECTOR => '.wp-block-button.is-style-primary .wp-block-button__link:hover, .wc-block-grid .wp-block-button .wp-block-button__link:hover, .wc-block-featured-category__link .wp-block-button .wp-block-button__link:hover, .wc-block-featured-product__link .wp-block-button .wp-block-button__link:hover',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_BACKGROUND_COLOR => Config::MODS_BUTTON_PRIMARY_STYLE . '.backgroundHover',
 				Config::CSS_PROP_COLOR            => Config::MODS_BUTTON_PRIMARY_STYLE . '.textHover',
@@ -233,7 +233,7 @@ class Gutenberg extends Generator {
 
 
 		$this->_subscribers[] = [
-			Dynamic_Selector::KEY_SELECTOR => '.wp-block-button.is-style-primary .wp-block-button__link',
+			Dynamic_Selector::KEY_SELECTOR => '.wp-block-button.is-style-primary .wp-block-button__link,  .wc-block-grid .wp-block-button .wp-block-button__link, .wc-block-featured-category__link .wp-block-button .wp-block-button__link, .wc-block-featured-product__link .wp-block-button .wp-block-button__link',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_PADDING        => [
 					Dynamic_Selector::META_KEY           => Config::MODS_BUTTON_PRIMARY_PADDING,

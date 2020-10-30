@@ -1,7 +1,7 @@
 {
 	"name": "neve",
 	"nicename": "Neve",
-	"version": "2.8.2",
+	"version": "2.8.3",
 	"description": "Neve theme by ThemeIsle",
 	"category": "themes",
 	"repository": {
@@ -120,7 +120,7 @@
 		{
 			"gzip": false,
 			"running": false,
-			"limit": "6 KB",
+			"limit": "6.5 KB",
 			"path": "assets/js/build/all/frontend.js"
 		},
 		{

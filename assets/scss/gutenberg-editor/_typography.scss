@@ -190,7 +190,7 @@ h6 {
 	//</editor-fold>
 
 	//<editor-fold desc="Link">
-	a {
+	a:not(.wp-block-button__link) {
 		color: var(--nv-primary-accent);
 
 		&:hover {
