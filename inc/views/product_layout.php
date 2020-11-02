@@ -23,8 +23,8 @@ class Product_Layout extends Base_View {
 		}
 		add_action( 'woocommerce_after_single_product_summary', array( $this, 'render_exclusive_products_section' ), 20 );
 		add_filter( 'body_class', array( $this, 'body_classes' ) );
-		add_action( 'woocommerce_before_shop_loop_item_title', array( $this, 'card_content_wrapper' ), 7 );
-		add_action( 'woocommerce_before_shop_loop_item_title', array( $this, 'wrapper_close_div' ), 14 );
+		add_action( 'woocommerce_before_shop_loop_item', array( $this, 'card_content_wrapper' ), 1 );
+		add_action( 'woocommerce_after_shop_loop_item', array( $this, 'wrapper_close_div' ), 100 );
 	}
 
 	/**
