@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-10-30T14:41:11+00:00\n"
+"POT-Creation-Date: 2020-11-02T12:04:27+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -36,254 +36,325 @@ msgstr ""
 
 #: dashboard/inc/Main.php:128
 #: dashboard/inc/Main.php:129
+#: dist/neve/dashboard/inc/Main.php:128
+#: dist/neve/dashboard/inc/Main.php:129
+#: dist/neve/inc/admin/metabox/src/components/Sidebar.js:55
 #: inc/admin/metabox/src/components/Sidebar.js:55
 msgid "Options"
 msgstr ""
 
 #. translators: %s - Theme name
 #: dashboard/inc/Main.php:198
+#: dist/neve/dashboard/inc/Main.php:198
 msgid "%s Options"
 msgstr ""
 
 #. translators: %s - Theme name
 #. translators: %s - theme name
 #: dashboard/inc/Main.php:200
+#: dist/neve/dashboard/inc/Main.php:200
+#: dist/neve/inc/core/admin.php:261
 #: inc/core/admin.php:261
 msgid "%s now comes with a sites library with various designs to pick from. Visit our collection of demos that are constantly being added."
 msgstr ""
 
 #. translators: %s - "Public roadmap"
 #: dashboard/inc/Main.php:202
+#: dist/neve/dashboard/inc/Main.php:202
 msgid "Share opinions, ask questions and help each other on our Neve community! Keep up with what we’re working on and vote to help us prioritize on our %s."
 msgstr ""
 
 #. translators: %s - "Public roadmap"
 #: dashboard/inc/Main.php:202
+#: dist/neve/dashboard/inc/Main.php:202
 msgid "public roadmap"
 msgstr ""
 
 #. translators: %s - Theme name
 #: dashboard/inc/Main.php:204
+#: dist/neve/dashboard/inc/Main.php:204
 msgid "With %s, you can choose from multiple unique demos, specially designed for you, that can be installed with a single click. You just need to choose your favorite, and we will take care of everything else."
 msgstr ""
 
 #. translators: %s - Theme name
 #: dashboard/inc/Main.php:206
+#: dist/neve/dashboard/inc/Main.php:206
 msgid "In order to be able to import any starter sites for %s you would need to have the Cloud Templates & Patterns Collection plugin active."
 msgstr ""
 
 #. translators: %s - Theme name
 #: dashboard/inc/Main.php:208
+#: dist/neve/dashboard/inc/Main.php:208
 msgid "In order to be able to import any starter sites for %s you would need to have the Cloud Templates & Patterns Collection plugin updated to the latest version."
 msgstr ""
 
 #. translators: %s - Theme name
 #: dashboard/inc/Main.php:210
+#: dist/neve/dashboard/inc/Main.php:210
 msgid "We want to make sure you have the best experience using %1$s, and that is why we have gathered all the necessary information here for you. We hope you will enjoy using %1$s as much as we enjoy creating great products."
 msgstr ""
 
 #. translators: %s - Theme name
 #. translators: %s - theme name
 #: dashboard/inc/Main.php:212
+#: dist/neve/dashboard/inc/Main.php:212
+#: dist/neve/inc/core/admin.php:269
 #: inc/core/admin.php:269
 msgid "Need more details? Please check our full documentation for detailed information on how to use %s."
 msgstr ""
 
 #. translators: %s - "Neve Pro Addon"
 #: dashboard/inc/Main.php:214
+#: dist/neve/dashboard/inc/Main.php:214
 msgid "%s license"
 msgstr ""
 
 #. translators: %s - "Neve Pro Addon"
 #: dashboard/inc/Main.php:216
+#: dist/neve/dashboard/inc/Main.php:216
 msgid "Please update %s to the latest version and then refresh this page to have access to the options."
 msgstr ""
 
 #. translators: store name (Themeisle)
 #: dashboard/inc/Main.php:220
+#: dist/neve/dashboard/inc/Main.php:220
 msgid "Enter your license from %1$s purchase history in order to get plugin updates"
 msgstr ""
 
 #. translators: s - theme name (Neve).
 #: dashboard/inc/Main.php:260
+#: dist/neve/dashboard/inc/Main.php:260
 msgid "New theme update for %1$s! Please update to %2$s."
 msgstr ""
 
 #: dashboard/inc/Main.php:265
 #: dashboard/inc/Main.php:286
+#: dist/neve/dashboard/inc/Main.php:265
+#: dist/neve/dashboard/inc/Main.php:286
 msgid "Update Now"
 msgstr ""
 
 #. translators: s - Pro plugin name (Neve Pro)
 #: dashboard/inc/Main.php:277
+#: dist/neve/dashboard/inc/Main.php:277
 msgid "New plugin update for %1$s! Please update to %2$s."
 msgstr ""
 
 #. translators: 1 - Theme Name (Neve), 2 - Plugin Name (Neve Pro)
 #: dashboard/inc/Main.php:295
+#: dist/neve/dashboard/inc/Main.php:295
 msgid "We recommend that both %1$s and %2$s are updated to the latest version to ensure optimal intercompatibility."
 msgstr ""
 
 #: dashboard/inc/Main.php:310
+#: dist/neve/dashboard/inc/Main.php:310
 msgid "Upload Logo"
 msgstr ""
 
 #: dashboard/inc/Main.php:314
+#: dist/neve/dashboard/inc/Main.php:314
 msgid "Set Colors"
 msgstr ""
 
 #: dashboard/inc/Main.php:318
+#: dist/neve/dashboard/inc/Main.php:318
 msgid "Customize Fonts"
 msgstr ""
 
 #: dashboard/inc/Main.php:322
+#: dist/neve/dashboard/inc/Main.php:322
 msgid "Layout Options"
 msgstr ""
 
 #: dashboard/inc/Main.php:326
+#: dist/neve/dashboard/inc/Main.php:326
 msgid "Header Options"
 msgstr ""
 
 #: dashboard/inc/Main.php:330
+#: dist/neve/dashboard/inc/Main.php:330
 msgid "Blog Layouts"
 msgstr ""
 
 #: dashboard/inc/Main.php:334
+#: dist/neve/dashboard/inc/Main.php:334
 msgid "Footer Options"
 msgstr ""
 
 #: dashboard/inc/Main.php:338
+#: dist/neve/dashboard/inc/Main.php:338
+#: dist/neve/inc/customizer/options/layout_sidebar.php:43
 #: inc/customizer/options/layout_sidebar.php:43
 msgid "Content / Sidebar"
 msgstr ""
 
 #: dashboard/inc/Main.php:357
+#: dist/neve/dashboard/inc/Main.php:357
 msgid "Header/Footer builder"
 msgstr ""
 
 #: dashboard/inc/Main.php:358
+#: dist/neve/dashboard/inc/Main.php:358
 msgid "Easily build your header and footer by dragging and dropping all the important elements in the real-time WordPress Customizer. More advanced options are available in PRO."
 msgstr ""
 
 #: dashboard/inc/Main.php:363
+#: dist/neve/dashboard/inc/Main.php:363
 msgid "Page Builder Compatibility"
 msgstr ""
 
 #: dashboard/inc/Main.php:364
+#: dist/neve/dashboard/inc/Main.php:364
 msgid "Neve is fully compatible with Gutenberg, the new WordPress editor and for all of you page builder fans, Neve has full compatibility with Elementor, Beaver Builder, and all the other popular page builders."
 msgstr ""
 
 #: dashboard/inc/Main.php:369
+#: dist/neve/dashboard/inc/Main.php:369
+#: dist/neve/inc/customizer/options/upsells.php:90
 #: inc/customizer/options/upsells.php:90
 msgid "Header Booster"
 msgstr ""
 
 #: dashboard/inc/Main.php:370
+#: dist/neve/dashboard/inc/Main.php:370
 msgid "Take the header builder to a new level with new awesome components: socials, contact, breadcrumbs, language switcher, multiple HTML, sticky and transparent menu, page header builder and many more."
 msgstr ""
 
 #: dashboard/inc/Main.php:375
+#: dist/neve/dashboard/inc/Main.php:375
 msgid "Page Header Builder"
 msgstr ""
 
 #: dashboard/inc/Main.php:376
+#: dist/neve/dashboard/inc/Main.php:376
 msgid "The Page Header is the horizontal area that sits directly below the header and contains the page/post title. Easily design an attractive Page Header area using our dedicated builder."
 msgstr ""
 
 #: dashboard/inc/Main.php:381
+#: dist/neve/dashboard/inc/Main.php:381
+#: dist/neve/inc/customizer/options/upsells.php:93
 #: inc/customizer/options/upsells.php:93
 msgid "Custom Layouts"
 msgstr ""
 
 #: dashboard/inc/Main.php:382
+#: dist/neve/dashboard/inc/Main.php:382
 msgid "Powerful Custom Layouts builder which allows you to easily create your own header, footer or custom content on any of the hook locations available in the theme."
 msgstr ""
 
 #: dashboard/inc/Main.php:387
+#: dist/neve/dashboard/inc/Main.php:387
+#: dist/neve/inc/customizer/options/upsells.php:91
 #: inc/customizer/options/upsells.php:91
 msgid "Blog Booster"
 msgstr ""
 
 #: dashboard/inc/Main.php:388
+#: dist/neve/dashboard/inc/Main.php:388
 msgid "Give a huge boost to your entire blogging experience with features specially designed for increased user experience."
 msgstr ""
 
 #: dashboard/inc/Main.php:388
+#: dist/neve/dashboard/inc/Main.php:388
 msgid "Sharing, custom article sorting, comments integrations, number of minutes needed to read an article and many more."
 msgstr ""
 
 #: dashboard/inc/Main.php:393
+#: dist/neve/dashboard/inc/Main.php:393
+#: dist/neve/inc/customizer/options/upsells.php:96
 #: inc/customizer/options/upsells.php:96
 msgid "Elementor Booster"
 msgstr ""
 
 #: dashboard/inc/Main.php:394
+#: dist/neve/dashboard/inc/Main.php:394
+#: dist/neve/inc/customizer/options/upsells.php:101
 #: inc/customizer/options/upsells.php:101
 msgid "Leverage the true flexibility of Elementor with powerful addons and templates that you can import with just one click."
 msgstr ""
 
 #: dashboard/inc/Main.php:399
+#: dist/neve/dashboard/inc/Main.php:399
+#: dist/neve/inc/customizer/options/upsells.php:92
 #: inc/customizer/options/upsells.php:92
 msgid "WooCommerce Booster"
 msgstr ""
 
 #: dashboard/inc/Main.php:400
+#: dist/neve/dashboard/inc/Main.php:400
 msgid "Empower your online store with awesome new features, specially designed for a smooth WooCommerce integration."
 msgstr ""
 
 #: dashboard/inc/Main.php:400
+#: dist/neve/dashboard/inc/Main.php:400
 msgid "Wishlist, quick view, video products, advanced reviews, multiple dedicated layouts and many more."
 msgstr ""
 
 #: dashboard/inc/Main.php:405
+#: dist/neve/dashboard/inc/Main.php:405
 msgid "LifterLMS Booster"
 msgstr ""
 
 #: dashboard/inc/Main.php:406
+#: dist/neve/dashboard/inc/Main.php:406
 msgid "Make your LifterLMS pages look stunning with our PRO design options. Specially created to help you set up your online courses with minimum customizations."
 msgstr ""
 
 #: dashboard/inc/Main.php:411
+#: dist/neve/dashboard/inc/Main.php:411
 msgid "Typekit(Adobe) Fonts"
 msgstr ""
 
 #: dashboard/inc/Main.php:412
+#: dist/neve/dashboard/inc/Main.php:412
 msgid "The module allows for an easy way of enabling new awesome Adobe (previous Typekit) Fonts in Neve's Typography options."
 msgstr ""
 
 #: dashboard/inc/Main.php:417
+#: dist/neve/dashboard/inc/Main.php:417
 msgid "White Label"
 msgstr ""
 
 #: dashboard/inc/Main.php:418
+#: dist/neve/dashboard/inc/Main.php:418
 msgid "For any developer or agency out there building websites for their own clients, we've made it easy to present the theme as your own."
 msgstr ""
 
 #: dashboard/inc/Main.php:423
+#: dist/neve/dashboard/inc/Main.php:423
 msgid "Scroll To Top"
 msgstr ""
 
 #: dashboard/inc/Main.php:424
+#: dist/neve/dashboard/inc/Main.php:424
 msgid "Simple but effective module to help you navigate back to the top of the really long pages."
 msgstr ""
 
 #. translators: %s message to upgrade PHP to the latest version
+#: dist/neve/functions.php:44
 #: functions.php:44
 msgid "Hey, we've noticed that you're running an outdated version of PHP which is no longer supported. Make sure your site is fast and secure, by %s. Neve's minimal requirement is PHP 5.4.0."
 msgstr ""
 
+#: dist/neve/functions.php:48
 #: functions.php:48
 msgid "upgrading PHP to the latest version"
 msgstr ""
 
+#: dist/neve/globals/utilities.php:1337
 #: globals/utilities.php:1337
 msgid "Base"
 msgstr ""
 
+#: dist/neve/globals/utilities.php:1352
 #: globals/utilities.php:1352
 msgid "Dark Mode"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Builder/Abstract_Builder.php:303
+#: dist/neve/header-footer-grid/Core/Settings/Manager.php:181
+#: dist/neve/inc/customizer/options/layout_blog.php:117
+#: dist/neve/inc/customizer/options/main.php:53
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:303
 #: header-footer-grid/Core/Settings/Manager.php:181
 #: inc/customizer/options/layout_blog.php:117
@@ -291,94 +362,133 @@ msgstr ""
 msgid "Layout"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Builder/Abstract_Builder.php:308
+#: dist/neve/header-footer-grid/Core/Builder/Abstract_Builder.php:309
+#: dist/neve/inc/admin/metabox/main.php:39
+#: dist/neve/inc/customizer/options/layout_container.php:134
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:308
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:309
 #: inc/admin/metabox/main.php:39
 #: inc/customizer/options/layout_container.php:134
+#: dist/neve/inc/admin/metabox/src/components/MetaFieldsManager.js:164
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:164
 msgid "Full Width"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Builder/Abstract_Builder.php:308
+#: dist/neve/header-footer-grid/Core/Builder/Abstract_Builder.php:310
+#: dist/neve/inc/admin/metabox/main.php:38
+#: dist/neve/inc/customizer/options/layout_container.php:133
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:308
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:310
 #: inc/admin/metabox/main.php:38
 #: inc/customizer/options/layout_container.php:133
+#: dist/neve/inc/admin/metabox/src/components/MetaFieldsManager.js:157
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:157
 msgid "Contained"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Builder/Abstract_Builder.php:325
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:325
 msgid "Row height"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Builder/Abstract_Builder.php:361
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:361
 msgid "Row Background"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Builder/Abstract_Builder.php:385
+#: dist/neve/header-footer-grid/Core/Components/Copyright.php:84
+#: dist/neve/header-footer-grid/Core/Components/CustomHtml.php:163
+#: dist/neve/header-footer-grid/Core/Components/Logo.php:205
+#: dist/neve/inc/compatibility/elementor.php:116
+#: dist/neve/inc/customizer/options/layout_blog.php:184
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:385
 #: header-footer-grid/Core/Components/Copyright.php:84
 #: header-footer-grid/Core/Components/CustomHtml.php:163
 #: header-footer-grid/Core/Components/Logo.php:205
 #: inc/compatibility/elementor.php:116
 #: inc/customizer/options/layout_blog.php:184
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/common/common.js:77
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/common/common.js:77
 msgid "Text Color"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Builder/Abstract_Builder.php:491
+#: dist/neve/header-footer-grid/Core/Builder/Header.php:38
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:491
 #: header-footer-grid/Core/Builder/Header.php:38
 msgid "Header"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Builder/Abstract_Builder.php:574
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:574
 msgid "Section Content"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Builder/Abstract_Builder.php:1290
+#: dist/neve/header-footer-grid/Core/Components/SearchResponsive.php:113
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:1290
 #: header-footer-grid/Core/Components/SearchResponsive.php:113
 msgid "Open Behaviour"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Builder/Abstract_Builder.php:1295
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:1295
 msgid "Slide from Left"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Builder/Abstract_Builder.php:1296
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:1296
 msgid "Slide from Right"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Builder/Abstract_Builder.php:1297
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:1297
 msgid "Pull from Left"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Builder/Abstract_Builder.php:1298
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:1298
 msgid "Pull from Right"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Builder/Abstract_Builder.php:1299
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:1299
 msgid "Full Canvas"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Builder/Abstract_Builder.php:1300
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:1300
 msgid "Slide Down"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Builder/Abstract_Builder.php:1315
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:1315
 msgid "Sidebar Width"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Builder/Footer.php:34
+#: dist/neve/header-footer-grid/Core/Builder/Footer.php:74
 #: header-footer-grid/Core/Builder/Footer.php:34
 #: header-footer-grid/Core/Builder/Footer.php:74
 msgid "Footer"
 msgstr ""
 
 #. translators: %s link to documentation
+#: dist/neve/header-footer-grid/Core/Builder/Footer.php:41
+#: dist/neve/header-footer-grid/Core/Builder/Header.php:45
 #: header-footer-grid/Core/Builder/Footer.php:41
 #: header-footer-grid/Core/Builder/Header.php:45
 msgid "Design your %1$s by dragging, dropping and resizing all the elements in real-time. %2$s."
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Builder/Footer.php:47
+#: dist/neve/header-footer-grid/Core/Builder/Header.php:51
+#: dist/neve/inc/core/admin.php:271
 #: header-footer-grid/Core/Builder/Footer.php:47
 #: header-footer-grid/Core/Builder/Header.php:51
 #: inc/core/admin.php:271
@@ -386,242 +496,322 @@ msgid "Read full documentation"
 msgstr ""
 
 #. translators: 1: builder, 2: builder symbol
+#: dist/neve/header-footer-grid/Core/Builder/Footer.php:57
 #: header-footer-grid/Core/Builder/Footer.php:57
 msgid "Welcome to the %1$s builder! Click the %2$s button to add a new component or follow the Quick Links."
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Builder/Footer.php:63
 #: header-footer-grid/Core/Builder/Footer.php:63
 msgid "Change Copyright"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Builder/Footer.php:67
 #: header-footer-grid/Core/Builder/Footer.php:67
 msgid "Change Footer Color"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Builder/Footer.php:120
 #: header-footer-grid/Core/Builder/Footer.php:120
 msgid "Footer Top"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Builder/Footer.php:124
 #: header-footer-grid/Core/Builder/Footer.php:124
 msgid "Footer Bottom"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Builder/Header.php:59
 #: header-footer-grid/Core/Builder/Header.php:59
 msgid "Build your own header or choose from preset options."
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Builder/Header.php:62
 #: header-footer-grid/Core/Builder/Header.php:62
 msgid "Change Logo"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Builder/Header.php:66
 #: header-footer-grid/Core/Builder/Header.php:66
 msgid "Change Header Color"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Builder/Header.php:70
 #: header-footer-grid/Core/Builder/Header.php:70
 msgid "Change Menu"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Builder/Header.php:91
+#: dist/neve/header-footer-grid/Core/Builder/Header.php:101
 #: header-footer-grid/Core/Builder/Header.php:91
 #: header-footer-grid/Core/Builder/Header.php:101
 msgid "Header Presets"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Builder/Header.php:171
 #: header-footer-grid/Core/Builder/Header.php:171
 msgid "Header Top"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Builder/Header.php:175
 #: header-footer-grid/Core/Builder/Header.php:175
 msgid "Header Main"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Builder/Header.php:179
 #: header-footer-grid/Core/Builder/Header.php:179
 msgid "Header Bottom"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Builder/Header.php:183
+#: dist/neve/header-footer-grid/templates/rows.php:73
 #: header-footer-grid/Core/Builder/Header.php:183
 #: header-footer-grid/templates/rows.php:73
 msgid "Mobile menu content"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/Abstract_Component.php:465
 #: header-footer-grid/Core/Components/Abstract_Component.php:465
+#: dist/neve/inc/admin/metabox/src/components/MetaFieldsManager.js:128
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:128
 msgid "Left"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/Abstract_Component.php:469
 #: header-footer-grid/Core/Components/Abstract_Component.php:469
 msgid "Center"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/Abstract_Component.php:473
 #: header-footer-grid/Core/Components/Abstract_Component.php:473
+#: dist/neve/inc/admin/metabox/src/components/MetaFieldsManager.js:130
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:130
 msgid "Right"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/Abstract_Component.php:479
 #: header-footer-grid/Core/Components/Abstract_Component.php:479
 msgid "Justify"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/Abstract_Component.php:497
 #: header-footer-grid/Core/Components/Abstract_Component.php:497
 msgid "Alignment"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/Abstract_Component.php:533
+#: dist/neve/inc/customizer/options/buttons.php:135
 #: header-footer-grid/Core/Components/Abstract_Component.php:533
 #: inc/customizer/options/buttons.php:135
 msgid "Padding"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/Abstract_Component.php:558
 #: header-footer-grid/Core/Components/Abstract_Component.php:558
 msgid "Margin"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/Abstract_Component.php:787
+#: dist/neve/inc/customizer/options/main.php:57
 #: header-footer-grid/Core/Components/Abstract_Component.php:787
 #: inc/customizer/options/main.php:57
 msgid "Typography"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/Abstract_Component.php:868
 #: header-footer-grid/Core/Components/Abstract_Component.php:868
 msgid "Top"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/Abstract_Component.php:872
 #: header-footer-grid/Core/Components/Abstract_Component.php:872
 msgid "Middle"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/Abstract_Component.php:876
 #: header-footer-grid/Core/Components/Abstract_Component.php:876
 msgid "Bottom"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/Abstract_Component.php:889
 #: header-footer-grid/Core/Components/Abstract_Component.php:889
 msgid "Vertical Alignment"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/Button.php:77
+#: dist/neve/header-footer-grid/Core/Components/Button.php:115
 #: header-footer-grid/Core/Components/Button.php:77
 #: header-footer-grid/Core/Components/Button.php:115
 msgid "Button"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/Button.php:101
 #: header-footer-grid/Core/Components/Button.php:101
 msgid "Link"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/Button.php:116
 #: header-footer-grid/Core/Components/Button.php:116
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:218
+#: dist/neve/inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:228
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:218
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:228
 msgid "Text"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/Button.php:131
+#: dist/neve/header-footer-grid/Core/Components/MenuIcon.php:148
 #: header-footer-grid/Core/Components/Button.php:131
 #: header-footer-grid/Core/Components/MenuIcon.php:148
 msgid "Appearance"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/CartIcon.php:46
 #: header-footer-grid/Core/Components/CartIcon.php:46
 msgid "Cart Icon"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/CartIcon.php:116
+#: dist/neve/header-footer-grid/Core/Components/SearchResponsive.php:154
 #: header-footer-grid/Core/Components/CartIcon.php:116
 #: header-footer-grid/Core/Components/SearchResponsive.php:154
 msgid "Icon Size"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/CartIcon.php:142
+#: dist/neve/header-footer-grid/Core/Components/SearchResponsive.php:184
 #: header-footer-grid/Core/Components/CartIcon.php:142
 #: header-footer-grid/Core/Components/SearchResponsive.php:184
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/background/BackgroundComponent.js:43
+#: dist/neve/inc/customizer/controls/react/src/background/BackgroundComponent.js:91
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/background/BackgroundComponent.js:43
 #: inc/customizer/controls/react/src/background/BackgroundComponent.js:91
 msgid "Color"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/CartIcon.php:168
+#: dist/neve/header-footer-grid/Core/Components/SearchResponsive.php:205
 #: header-footer-grid/Core/Components/CartIcon.php:168
 #: header-footer-grid/Core/Components/SearchResponsive.php:205
 msgid "Hover Color"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/Copyright.php:36
+#: dist/neve/header-footer-grid/Core/Components/Copyright.php:70
 #: header-footer-grid/Core/Components/Copyright.php:36
 #: header-footer-grid/Core/Components/Copyright.php:70
 msgid "Copyright"
 msgstr ""
 
 #. translators: %1$s is Theme Name ( Neve ), %2$s is WordPress
+#: dist/neve/header-footer-grid/Core/Components/Copyright.php:64
 #: header-footer-grid/Core/Components/Copyright.php:64
 msgid "%1$s | Powered by %2$s"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/CustomHtml.php:35
+#: dist/neve/header-footer-grid/Core/Components/CustomHtml.php:147
 #: header-footer-grid/Core/Components/CustomHtml.php:35
 #: header-footer-grid/Core/Components/CustomHtml.php:147
 msgid "HTML"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/CustomHtml.php:148
 #: header-footer-grid/Core/Components/CustomHtml.php:148
 msgid "Arbitrary HTML code. It supports also shortcodes."
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/FooterWidgetFour.php:32
+#: dist/neve/inc/core/front_end.php:509
 #: header-footer-grid/Core/Components/FooterWidgetFour.php:32
 #: inc/core/front_end.php:509
 msgid "Footer Four"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/FooterWidgetOne.php:31
+#: dist/neve/inc/core/front_end.php:506
 #: header-footer-grid/Core/Components/FooterWidgetOne.php:31
 #: inc/core/front_end.php:506
 msgid "Footer One"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/FooterWidgetThree.php:31
+#: dist/neve/inc/core/front_end.php:508
 #: header-footer-grid/Core/Components/FooterWidgetThree.php:31
 #: inc/core/front_end.php:508
 msgid "Footer Three"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/FooterWidgetTwo.php:32
+#: dist/neve/inc/core/front_end.php:507
 #: header-footer-grid/Core/Components/FooterWidgetTwo.php:32
 #: inc/core/front_end.php:507
 msgid "Footer Two"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/Logo.php:72
 #: header-footer-grid/Core/Components/Logo.php:72
 msgid "Logo & Site Identity"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/Logo.php:73
 #: header-footer-grid/Core/Components/Logo.php:73
 msgid "Display your company logo here or simply use words to describe your business."
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/Logo.php:112
 #: header-footer-grid/Core/Components/Logo.php:112
 msgid "Display"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/Logo.php:132
 #: header-footer-grid/Core/Components/Logo.php:132
 msgid "Show Site Tagline"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/Logo.php:147
 #: header-footer-grid/Core/Components/Logo.php:147
 msgid "Show Site Title"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/Logo.php:162
 #: header-footer-grid/Core/Components/Logo.php:162
 msgid "Logo max width"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/Logo.php:192
 #: header-footer-grid/Core/Components/Logo.php:192
 msgid "Disable Homepage Link"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/MenuIcon.php:77
 #: header-footer-grid/Core/Components/MenuIcon.php:77
 msgid "Menu Icon"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/MenuIcon.php:101
 #: header-footer-grid/Core/Components/MenuIcon.php:101
 msgid "Menu label"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/MenuIcon.php:127
 #: header-footer-grid/Core/Components/MenuIcon.php:127
 msgid "Show Mobile Menu"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/MenuIcon.php:131
 #: header-footer-grid/Core/Components/MenuIcon.php:131
 msgid "Mobile Menu Options"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/Nav.php:43
+#: dist/neve/header-footer-grid/Core/Components/Nav.php:221
+#: dist/neve/header-footer-grid/templates/components/component-nav.php:26
+#: dist/neve/inc/core/front_end.php:72
 #: header-footer-grid/Core/Components/Nav.php:43
 #: header-footer-grid/Core/Components/Nav.php:221
 #: header-footer-grid/templates/components/component-nav.php:26
@@ -629,34 +819,51 @@ msgstr ""
 msgid "Primary Menu"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/Nav.php:95
+#: dist/neve/header-footer-grid/Core/Components/NavFooter.php:68
+#: dist/neve/header-footer-grid/Core/Components/SecondNav.php:68
 #: header-footer-grid/Core/Components/Nav.php:95
 #: header-footer-grid/Core/Components/NavFooter.php:68
 #: header-footer-grid/Core/Components/SecondNav.php:68
 msgid "Hover Skin Mode"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/Nav.php:114
+#: dist/neve/header-footer-grid/Core/Components/NavFooter.php:86
+#: dist/neve/header-footer-grid/Core/Components/SecondNav.php:86
 #: header-footer-grid/Core/Components/Nav.php:114
 #: header-footer-grid/Core/Components/NavFooter.php:86
 #: header-footer-grid/Core/Components/SecondNav.php:86
 msgid "Items Color"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/Nav.php:135
 #: header-footer-grid/Core/Components/Nav.php:135
 msgid "Active Item Color"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/Nav.php:156
+#: dist/neve/header-footer-grid/Core/Components/NavFooter.php:108
+#: dist/neve/header-footer-grid/Core/Components/SecondNav.php:109
 #: header-footer-grid/Core/Components/Nav.php:156
 #: header-footer-grid/Core/Components/NavFooter.php:108
 #: header-footer-grid/Core/Components/SecondNav.php:109
 msgid "Items Hover Color"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/Nav.php:177
 #: header-footer-grid/Core/Components/Nav.php:177
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/font-family/FontFamilySelector.js:122
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:122
 msgid "Search"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/Nav.php:182
+#: dist/neve/header-footer-grid/Core/Magic_Tags.php:598
+#: dist/neve/header-footer-grid/templates/components/component-cart-icon.php:50
+#: dist/neve/inc/views/header.php:165
 #: header-footer-grid/Core/Components/Nav.php:182
 #: header-footer-grid/Core/Magic_Tags.php:598
 #: header-footer-grid/templates/components/component-cart-icon.php:50
@@ -664,26 +871,38 @@ msgstr ""
 msgid "Cart"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/Nav.php:203
 #: header-footer-grid/Core/Components/Nav.php:203
 msgid "Last Menu Item"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/Nav.php:236
+#: dist/neve/header-footer-grid/Core/Components/NavFooter.php:151
+#: dist/neve/header-footer-grid/Core/Components/SecondNav.php:154
 #: header-footer-grid/Core/Components/Nav.php:236
 #: header-footer-grid/Core/Components/NavFooter.php:151
 #: header-footer-grid/Core/Components/SecondNav.php:154
 msgid "Items Spacing (px)"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/Nav.php:262
+#: dist/neve/header-footer-grid/Core/Components/NavFooter.php:177
+#: dist/neve/header-footer-grid/Core/Components/SecondNav.php:180
 #: header-footer-grid/Core/Components/Nav.php:262
 #: header-footer-grid/Core/Components/NavFooter.php:177
 #: header-footer-grid/Core/Components/SecondNav.php:180
 msgid "Items Min Height (px)"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/Nav.php:292
 #: header-footer-grid/Core/Components/Nav.php:292
 msgid "Expand first level of dropdowns when menu is in mobile menu content."
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/NavFooter.php:41
+#: dist/neve/header-footer-grid/Core/Components/NavFooter.php:138
+#: dist/neve/header-footer-grid/templates/components/component-nav-footer.php:23
+#: dist/neve/inc/core/front_end.php:73
 #: header-footer-grid/Core/Components/NavFooter.php:41
 #: header-footer-grid/Core/Components/NavFooter.php:138
 #: header-footer-grid/templates/components/component-nav-footer.php:23
@@ -691,10 +910,17 @@ msgstr ""
 msgid "Footer Menu"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/Search.php:42
 #: header-footer-grid/Core/Components/Search.php:42
 msgid "Search Form"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/Search.php:65
+#: dist/neve/header-footer-grid/Core/Components/Search.php:456
+#: dist/neve/header-footer-grid/Core/Components/Search.php:460
+#: dist/neve/header-footer-grid/Core/Components/SearchResponsive.php:97
+#: dist/neve/header-footer-grid/Core/Components/SearchResponsive.php:670
+#: dist/neve/header-footer-grid/Core/Components/SearchResponsive.php:674
 #: header-footer-grid/Core/Components/Search.php:65
 #: header-footer-grid/Core/Components/Search.php:456
 #: header-footer-grid/Core/Components/Search.php:460
@@ -704,74 +930,107 @@ msgstr ""
 msgid "Search for..."
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/Search.php:66
+#: dist/neve/header-footer-grid/Core/Components/SearchResponsive.php:98
 #: header-footer-grid/Core/Components/Search.php:66
 #: header-footer-grid/Core/Components/SearchResponsive.php:98
 msgid "Placeholder"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/Search.php:80
+#: dist/neve/header-footer-grid/Core/Components/SearchResponsive.php:244
 #: header-footer-grid/Core/Components/Search.php:80
 #: header-footer-grid/Core/Components/SearchResponsive.php:244
 msgid "Height"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/Search.php:120
+#: dist/neve/header-footer-grid/Core/Components/SearchResponsive.php:284
 #: header-footer-grid/Core/Components/Search.php:120
 #: header-footer-grid/Core/Components/SearchResponsive.php:284
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/typeface/TypefaceComponent.js:270
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:270
 msgid "Font Size"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/Search.php:194
+#: dist/neve/header-footer-grid/Core/Components/SearchResponsive.php:358
 #: header-footer-grid/Core/Components/Search.php:194
 #: header-footer-grid/Core/Components/SearchResponsive.php:358
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:162
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:162
 msgid "Border Width"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/Search.php:251
+#: dist/neve/header-footer-grid/Core/Components/SearchResponsive.php:415
 #: header-footer-grid/Core/Components/Search.php:251
 #: header-footer-grid/Core/Components/SearchResponsive.php:415
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:120
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:120
 msgid "Border Radius"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/Search.php:284
+#: dist/neve/header-footer-grid/Core/Components/SearchResponsive.php:448
 #: header-footer-grid/Core/Components/Search.php:284
 #: header-footer-grid/Core/Components/SearchResponsive.php:448
 msgid "Background Color"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/Search.php:306
+#: dist/neve/header-footer-grid/Core/Components/SearchResponsive.php:470
 #: header-footer-grid/Core/Components/Search.php:306
 #: header-footer-grid/Core/Components/SearchResponsive.php:470
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:219
+#: dist/neve/inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:229
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:219
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:229
 msgid "Text and Border"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/SearchResponsive.php:48
 #: header-footer-grid/Core/Components/SearchResponsive.php:48
 msgid "Search Icon"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/SearchResponsive.php:117
 #: header-footer-grid/Core/Components/SearchResponsive.php:117
 msgid "Canvas"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/SearchResponsive.php:118
 #: header-footer-grid/Core/Components/SearchResponsive.php:118
 msgid "Minimal"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/SearchResponsive.php:119
 #: header-footer-grid/Core/Components/SearchResponsive.php:119
 msgid "Float Above Header"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/SearchResponsive.php:135
 #: header-footer-grid/Core/Components/SearchResponsive.php:135
 msgid "Icon"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/SearchResponsive.php:227
 #: header-footer-grid/Core/Components/SearchResponsive.php:227
 msgid "Search Field"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/SecondNav.php:41
+#: dist/neve/header-footer-grid/Core/Components/SecondNav.php:136
+#: dist/neve/header-footer-grid/templates/components/component-nav-secondary.php:23
+#: dist/neve/inc/core/front_end.php:74
 #: header-footer-grid/Core/Components/SecondNav.php:41
 #: header-footer-grid/Core/Components/SecondNav.php:136
 #: header-footer-grid/templates/components/component-nav-secondary.php:23
@@ -779,17 +1038,24 @@ msgstr ""
 msgid "Secondary Menu"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Components/SecondNav.php:142
 #: header-footer-grid/Core/Components/SecondNav.php:142
 msgid "Select Menu"
 msgstr ""
 
 #. translators: %s is the header name
+#: dist/neve/header-footer-grid/Core/Customizer.php:266
 #: header-footer-grid/Core/Customizer.php:266
 msgid "You are customizing the %s Header"
 msgstr ""
 
 #. translators: %s is the header name
+#: dist/neve/header-footer-grid/Core/Customizer.php:266
 #: header-footer-grid/Core/Customizer.php:266
+#: dist/neve/inc/admin/metabox/src/components/MetaFieldsManager.js:150
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/font-family/FontFamilySelector.js:54
+#: dist/neve/inc/customizer/controls/react/src/font-family/FontFamilySelector.js:178
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:150
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:54
@@ -798,10 +1064,15 @@ msgid "Default"
 msgstr ""
 
 #. translators: %s is the header name
+#: dist/neve/header-footer-grid/Core/Customizer.php:277
 #: header-footer-grid/Core/Customizer.php:277
 msgid "Click on any empty space to add components, or existing components to adjust settings."
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Customizer.php:286
+#: dist/neve/header-footer-grid/templates/components/component-cart-icon.php:26
+#: dist/neve/inc/views/header.php:130
+#: dist/neve/inc/views/layouts/layout_sidebar.php:144
 #: header-footer-grid/Core/Customizer.php:286
 #: header-footer-grid/templates/components/component-cart-icon.php:26
 #: inc/views/header.php:130
@@ -809,733 +1080,960 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Customizer.php:328
 #: header-footer-grid/Core/Customizer.php:328
 msgid "Search Components"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Customizer/Instructions_Control.php:87
+#: dist/neve/header-footer-grid/Core/Customizer/Instructions_Section.php:85
 #: header-footer-grid/Core/Customizer/Instructions_Control.php:87
 #: header-footer-grid/Core/Customizer/Instructions_Section.php:85
 msgid "Quick Links"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Magic_Tags.php:489
 #: header-footer-grid/Core/Magic_Tags.php:489
 msgid "Single"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Magic_Tags.php:492
 #: header-footer-grid/Core/Magic_Tags.php:492
 msgid "Current Single Title"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Magic_Tags.php:496
 #: header-footer-grid/Core/Magic_Tags.php:496
 msgid "Current Single Excerpt"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Magic_Tags.php:500
 #: header-footer-grid/Core/Magic_Tags.php:500
 msgid "Current Single URL"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Magic_Tags.php:504
 #: header-footer-grid/Core/Magic_Tags.php:504
 msgid "Current Post Meta"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Magic_Tags.php:508
 #: header-footer-grid/Core/Magic_Tags.php:508
 msgid "Author meta"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Magic_Tags.php:512
 #: header-footer-grid/Core/Magic_Tags.php:512
 msgid "Date meta"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Magic_Tags.php:516
 #: header-footer-grid/Core/Magic_Tags.php:516
 msgid "Category meta"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Magic_Tags.php:520
 #: header-footer-grid/Core/Magic_Tags.php:520
 msgid "Comments meta"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Magic_Tags.php:526
 #: header-footer-grid/Core/Magic_Tags.php:526
 msgid "Archive"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Magic_Tags.php:529
 #: header-footer-grid/Core/Magic_Tags.php:529
 msgid "Archive Description"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Magic_Tags.php:533
 #: header-footer-grid/Core/Magic_Tags.php:533
 msgid "Archive Title"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Magic_Tags.php:537
 #: header-footer-grid/Core/Magic_Tags.php:537
 msgid "Archive URL"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Magic_Tags.php:543
+#: dist/neve/inc/customizer/options/layout_blog.php:391
+#: dist/neve/inc/views/partials/post_meta.php:129
 #: header-footer-grid/Core/Magic_Tags.php:543
 #: inc/customizer/options/layout_blog.php:391
 #: inc/views/partials/post_meta.php:129
 msgid "Author"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Magic_Tags.php:546
 #: header-footer-grid/Core/Magic_Tags.php:546
 msgid "Author Bio"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Magic_Tags.php:550
 #: header-footer-grid/Core/Magic_Tags.php:550
 msgid "Author Name"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Magic_Tags.php:554
 #: header-footer-grid/Core/Magic_Tags.php:554
 msgid "Author URL"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Magic_Tags.php:560
 #: header-footer-grid/Core/Magic_Tags.php:560
 msgid "Current User"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Magic_Tags.php:563
 #: header-footer-grid/Core/Magic_Tags.php:563
 msgid "User Nice Name"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Magic_Tags.php:567
 #: header-footer-grid/Core/Magic_Tags.php:567
 msgid "Display Name"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Magic_Tags.php:571
 #: header-footer-grid/Core/Magic_Tags.php:571
 msgid "User Email"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Magic_Tags.php:577
 #: header-footer-grid/Core/Magic_Tags.php:577
 msgid "Global"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Magic_Tags.php:580
 #: header-footer-grid/Core/Magic_Tags.php:580
 msgid "Site Title"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Magic_Tags.php:584
 #: header-footer-grid/Core/Magic_Tags.php:584
 msgid "Site Tagline"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Magic_Tags.php:588
 #: header-footer-grid/Core/Magic_Tags.php:588
 msgid "Home URL"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Magic_Tags.php:592
 #: header-footer-grid/Core/Magic_Tags.php:592
 msgid "Current Year"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Magic_Tags.php:601
 #: header-footer-grid/Core/Magic_Tags.php:601
 msgid "Total + Currency Symbol"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Magic_Tags.php:605
 #: header-footer-grid/Core/Magic_Tags.php:605
 msgid "Total"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Magic_Tags.php:609
 #: header-footer-grid/Core/Magic_Tags.php:609
 msgid "Currency Name"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Magic_Tags.php:613
 #: header-footer-grid/Core/Magic_Tags.php:613
 msgid "Currency Symbol"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Magic_Tags.php:622
 #: header-footer-grid/Core/Magic_Tags.php:622
 msgid "WooCommerce"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Magic_Tags.php:625
 #: header-footer-grid/Core/Magic_Tags.php:625
 msgid "Product Price"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Magic_Tags.php:629
 #: header-footer-grid/Core/Magic_Tags.php:629
 msgid "Product Title"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Magic_Tags.php:633
 #: header-footer-grid/Core/Magic_Tags.php:633
 msgid "Cart URL"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Magic_Tags.php:637
 #: header-footer-grid/Core/Magic_Tags.php:637
 msgid "Checkout URL"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Settings/Manager.php:177
+#: dist/neve/inc/customizer/options/typography.php:107
 #: header-footer-grid/Core/Settings/Manager.php:177
 #: inc/customizer/options/typography.php:107
 msgid "General"
 msgstr ""
 
+#: dist/neve/header-footer-grid/Core/Settings/Manager.php:185
 #: header-footer-grid/Core/Settings/Manager.php:185
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:329
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:329
 msgid "Style"
 msgstr ""
 
+#: dist/neve/header-footer-grid/templates/components/component-menu-icon.php:26
+#: dist/neve/header-footer-grid/templates/row-wrapper-mobile.php:28
 #: header-footer-grid/templates/components/component-menu-icon.php:26
 #: header-footer-grid/templates/row-wrapper-mobile.php:28
 msgid "Navigation Menu"
 msgstr ""
 
+#: dist/neve/header-footer-grid/templates/components/component-menu-icon.php:39
+#: dist/neve/header-footer-grid/templates/row-wrapper-mobile.php:38
 #: header-footer-grid/templates/components/component-menu-icon.php:39
 #: header-footer-grid/templates/row-wrapper-mobile.php:38
 msgid "Toggle Navigation"
 msgstr ""
 
+#: dist/neve/header-footer-grid/templates/rows.php:76
 #: header-footer-grid/templates/rows.php:76
 msgid "Show"
 msgstr ""
 
+#: dist/neve/header-footer-grid/templates/rows.php:77
 #: header-footer-grid/templates/rows.php:77
 msgid "Hide"
 msgstr ""
 
+#: dist/neve/header.php:31
 #: header.php:31
 msgid "Skip to content"
 msgstr ""
 
+#: dist/neve/inc/admin/metabox/main.php:37
+#: dist/neve/inc/admin/metabox/main.php:51
 #: inc/admin/metabox/main.php:37
 #: inc/admin/metabox/main.php:51
 msgid "Customizer Setting"
 msgstr ""
 
+#: dist/neve/inc/admin/metabox/main.php:41
+#: dist/neve/inc/customizer/options/layout_container.php:43
 #: inc/admin/metabox/main.php:41
 #: inc/customizer/options/layout_container.php:43
+#: dist/neve/inc/admin/metabox/src/components/MetaFieldsManager.js:140
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:140
 msgid "Container"
 msgstr ""
 
+#: dist/neve/inc/admin/metabox/main.php:52
 #: inc/admin/metabox/main.php:52
 msgid "Left Sidebar"
 msgstr ""
 
+#: dist/neve/inc/admin/metabox/main.php:53
 #: inc/admin/metabox/main.php:53
 msgid "Right Sidebar"
 msgstr ""
 
+#: dist/neve/inc/admin/metabox/main.php:54
 #: inc/admin/metabox/main.php:54
 msgid "No Sidebar"
 msgstr ""
 
+#: dist/neve/inc/admin/metabox/main.php:56
+#: dist/neve/inc/core/front_end.php:499
 #: inc/admin/metabox/main.php:56
 #: inc/core/front_end.php:499
+#: dist/neve/inc/admin/metabox/src/components/MetaFieldsManager.js:116
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:116
 msgid "Sidebar"
 msgstr ""
 
+#: dist/neve/inc/admin/metabox/main.php:70
 #: inc/admin/metabox/main.php:70
 msgid "Components"
 msgstr ""
 
+#: dist/neve/inc/admin/metabox/main.php:71
 #: inc/admin/metabox/main.php:71
+#: dist/neve/inc/admin/metabox/src/components/MetaFieldsManager.js:328
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:328
 msgid "Disable Header"
 msgstr ""
 
+#: dist/neve/inc/admin/metabox/main.php:76
 #: inc/admin/metabox/main.php:76
+#: dist/neve/inc/admin/metabox/src/components/MetaFieldsManager.js:354
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:354
 msgid "Disable Title"
 msgstr ""
 
+#: dist/neve/inc/admin/metabox/main.php:82
 #: inc/admin/metabox/main.php:82
 msgid "Disable Featured Image"
 msgstr ""
 
+#: dist/neve/inc/admin/metabox/main.php:88
 #: inc/admin/metabox/main.php:88
+#: dist/neve/inc/admin/metabox/src/components/MetaFieldsManager.js:340
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:340
 msgid "Disable Footer"
 msgstr ""
 
+#: dist/neve/inc/admin/metabox/main.php:128
 #: inc/admin/metabox/main.php:128
 msgid "Content Width"
 msgstr ""
 
+#: dist/neve/inc/admin/metabox/main.php:129
 #: inc/admin/metabox/main.php:129
 msgid "Enable Individual Content Width"
 msgstr ""
 
 #. translators: %s - post type
+#: dist/neve/inc/admin/metabox/manager.php:128
+#: dist/neve/inc/admin/metabox/manager.php:145
 #: inc/admin/metabox/manager.php:128
 #: inc/admin/metabox/manager.php:145
 msgid "%s Settings"
 msgstr ""
 
+#: dist/neve/inc/admin/metabox/manager.php:180
 #: inc/admin/metabox/manager.php:180
 msgid "Page Settings are now accessible from the top bar"
 msgstr ""
 
 #. translators: %1$s - Keyboard shortcut.   %2&s - svg icon
+#: dist/neve/inc/admin/metabox/manager.php:183
 #: inc/admin/metabox/manager.php:183
 msgid "Click the %1$s icon in the top bar or use the keyboard shortcut ( %2$s ) to customise the layout settings for this page"
 msgstr ""
 
+#: dist/neve/inc/admin/metabox/manager.php:190
 #: inc/admin/metabox/manager.php:190
 msgid "or"
 msgstr ""
 
+#: dist/neve/inc/admin/plugin_install/main.php:109
 #: inc/admin/plugin_install/main.php:109
 msgid "Install and activate"
 msgstr ""
 
+#: dist/neve/inc/admin/plugin_install/main.php:113
+#: dist/neve/inc/admin/plugin_install/main.php:133
 #: inc/admin/plugin_install/main.php:113
 #: inc/admin/plugin_install/main.php:133
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/LicenseCard.js:98
 #: dashboard/src/Components/PluginCard.js:21
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Activate"
 msgstr ""
 
+#: dist/neve/inc/admin/plugin_install/main.php:128
 #: inc/admin/plugin_install/main.php:128
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/LicenseCard.js:97
 #: dashboard/src/Components/PluginCard.js:25
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Deactivate"
 msgstr ""
 
+#: dist/neve/inc/admin/plugin_install/main.php:133
 #: inc/admin/plugin_install/main.php:133
 msgid "Jetpack Portfolio"
 msgstr ""
 
+#: dist/neve/inc/admin/plugin_install/main.php:176
 #: inc/admin/plugin_install/main.php:176
 msgid "Activating "
 msgstr ""
 
+#: dist/neve/inc/compatibility/block-patterns/dark-header-centered-content.php:9
 #: inc/compatibility/block-patterns/dark-header-centered-content.php:9
 msgid "Dark header with centered content"
 msgstr ""
 
+#: dist/neve/inc/compatibility/block-patterns/four-columns-team-members.php:9
 #: inc/compatibility/block-patterns/four-columns-team-members.php:9
 msgid "Four columns with team members"
 msgstr ""
 
+#: dist/neve/inc/compatibility/block-patterns/gallery-grid-buttons.php:9
 #: inc/compatibility/block-patterns/gallery-grid-buttons.php:9
 msgid "Gallery grid with buttons"
 msgstr ""
 
+#: dist/neve/inc/compatibility/block-patterns/gallery-title-buttons.php:9
 #: inc/compatibility/block-patterns/gallery-title-buttons.php:9
 msgid "Gallery with title and button"
 msgstr ""
 
+#: dist/neve/inc/compatibility/block-patterns/light-header-left-aligned-content.php:9
 #: inc/compatibility/block-patterns/light-header-left-aligned-content.php:9
 msgid "Light header with left-aligned content"
 msgstr ""
 
+#: dist/neve/inc/compatibility/block-patterns/testimonials-columns.php:9
 #: inc/compatibility/block-patterns/testimonials-columns.php:9
 msgid "Testimonial columns"
 msgstr ""
 
+#: dist/neve/inc/compatibility/block-patterns/three-columns-images-text.php:9
 #: inc/compatibility/block-patterns/three-columns-images-text.php:9
 msgid "Three columns with images and text"
 msgstr ""
 
+#: dist/neve/inc/compatibility/block-patterns/three-columns-images-texts-content.php:9
 #: inc/compatibility/block-patterns/three-columns-images-texts-content.php:9
 msgid "Three columns with images, content and buttons"
 msgstr ""
 
+#: dist/neve/inc/compatibility/block-patterns/two-columns-centered-content.php:9
 #: inc/compatibility/block-patterns/two-columns-centered-content.php:9
 msgid "Two columns with centered content"
 msgstr ""
 
+#: dist/neve/inc/compatibility/block-patterns/two-columns-image-text.php:9
 #: inc/compatibility/block-patterns/two-columns-image-text.php:9
 msgid "Two columns with image and text"
 msgstr ""
 
+#: dist/neve/inc/compatibility/block-patterns/two-columns-with-text.php:9
 #: inc/compatibility/block-patterns/two-columns-with-text.php:9
 msgid "Two columns with text"
 msgstr ""
 
+#: dist/neve/inc/compatibility/elementor.php:111
 #: inc/compatibility/elementor.php:111
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/common/common.js:72
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/common/common.js:72
 msgid "Primary Accent"
 msgstr ""
 
+#: dist/neve/inc/compatibility/elementor.php:112
 #: inc/compatibility/elementor.php:112
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/common/common.js:73
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/common/common.js:73
 msgid "Secondary Accent"
 msgstr ""
 
+#: dist/neve/inc/compatibility/elementor.php:113
 #: inc/compatibility/elementor.php:113
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/common/common.js:74
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/common/common.js:74
 msgid "Site Background"
 msgstr ""
 
+#: dist/neve/inc/compatibility/elementor.php:114
 #: inc/compatibility/elementor.php:114
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/common/common.js:75
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/common/common.js:75
 msgid "Light Background"
 msgstr ""
 
+#: dist/neve/inc/compatibility/elementor.php:115
 #: inc/compatibility/elementor.php:115
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/common/common.js:76
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/common/common.js:76
 msgid "Dark Background"
 msgstr ""
 
+#: dist/neve/inc/compatibility/elementor.php:117
 #: inc/compatibility/elementor.php:117
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/common/common.js:78
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/common/common.js:78
 msgid "Text Dark Background"
 msgstr ""
 
+#: dist/neve/inc/compatibility/elementor.php:118
 #: inc/compatibility/elementor.php:118
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/common/common.js:79
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/common/common.js:79
 msgid "Extra Color 1"
 msgstr ""
 
+#: dist/neve/inc/compatibility/elementor.php:119
 #: inc/compatibility/elementor.php:119
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/common/common.js:80
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/common/common.js:80
 msgid "Extra Color 2"
 msgstr ""
 
+#: dist/neve/inc/compatibility/lifter.php:314
 #: inc/compatibility/lifter.php:314
 msgid "Catalog Sidebar"
 msgstr ""
 
+#: dist/neve/inc/compatibility/pwa.php:50
 #: inc/compatibility/pwa.php:50
 msgid "Oops! It looks like you&#8217;re offline."
 msgstr ""
 
+#: dist/neve/inc/compatibility/pwa.php:63
 #: inc/compatibility/pwa.php:63
 msgid "Oops! Something went wrong."
 msgstr ""
 
+#: dist/neve/inc/compatibility/woocommerce.php:356
 #: inc/compatibility/woocommerce.php:356
 msgid "Filter"
 msgstr ""
 
+#: dist/neve/inc/core/admin.php:225
 #: inc/core/admin.php:225
 msgid "Congratulations!"
 msgstr ""
 
 #. translators: %s - theme name
+#: dist/neve/inc/core/admin.php:228
 #: inc/core/admin.php:228
 msgid "%s is now installed and ready to use. We've assembled some links to get you started."
 msgstr ""
 
+#: dist/neve/inc/core/admin.php:237
 #: inc/core/admin.php:237
 msgid "Try one of our ready to use Starter Sites"
 msgstr ""
 
+#: dist/neve/inc/core/admin.php:242
 #: inc/core/admin.php:242
 msgid "Return to your dashboard"
 msgstr ""
 
+#: dist/neve/inc/core/admin.php:248
 #: inc/core/admin.php:248
 msgid "or go to the theme settings"
 msgstr ""
 
+#: dist/neve/inc/core/admin.php:259
 #: inc/core/admin.php:259
 msgid "Sites Library"
 msgstr ""
 
+#: dist/neve/inc/core/admin.php:267
 #: inc/core/admin.php:267
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Help.js:43
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Documentation"
 msgstr ""
 
+#: dist/neve/inc/core/front_end.php:179
 #: inc/core/front_end.php:179
 msgid "Neve - Primary Accent"
 msgstr ""
 
+#: dist/neve/inc/core/front_end.php:183
 #: inc/core/front_end.php:183
 msgid "Neve - Secondary Accent"
 msgstr ""
 
+#: dist/neve/inc/core/front_end.php:187
 #: inc/core/front_end.php:187
 msgid "Neve - Site Background"
 msgstr ""
 
+#: dist/neve/inc/core/front_end.php:191
 #: inc/core/front_end.php:191
 msgid "Neve - Light Background"
 msgstr ""
 
+#: dist/neve/inc/core/front_end.php:195
 #: inc/core/front_end.php:195
 msgid "Neve - Dark Background"
 msgstr ""
 
+#: dist/neve/inc/core/front_end.php:199
 #: inc/core/front_end.php:199
 msgid "Neve - Text Color"
 msgstr ""
 
+#: dist/neve/inc/core/front_end.php:203
 #: inc/core/front_end.php:203
 msgid "Neve - Text Dark Background"
 msgstr ""
 
+#: dist/neve/inc/core/front_end.php:207
 #: inc/core/front_end.php:207
 msgid "Neve - Extra Color 1"
 msgstr ""
 
+#: dist/neve/inc/core/front_end.php:211
 #: inc/core/front_end.php:211
 msgid "Neve - Extra Color 2"
 msgstr ""
 
+#: dist/neve/inc/core/front_end.php:500
 #: inc/core/front_end.php:500
 msgid "Shop Sidebar"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/upsell_control.php:88
 #: inc/customizer/controls/upsell_control.php:88
 msgid "PRO"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/buttons.php:43
 #: inc/customizer/options/buttons.php:43
 msgid "Buttons"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/buttons.php:59
 #: inc/customizer/options/buttons.php:59
 #: assets/js/src/gutenberg.js:14
+#: dist/neve/assets/js/src/gutenberg.js:14
 msgid "Primary"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/buttons.php:62
 #: inc/customizer/options/buttons.php:62
 msgid "Secondary"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/buttons.php:98
 #: inc/customizer/options/buttons.php:98
 msgid "Button Appearance"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/buttons.php:154
 #: inc/customizer/options/buttons.php:154
 msgid "Border radius"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/buttons.php:175
 #: inc/customizer/options/buttons.php:175
 msgid "Button Text"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/colors_background.php:43
 #: inc/customizer/options/colors_background.php:43
 msgid "Colors & Background"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/colors_background.php:91
 #: inc/customizer/options/colors_background.php:91
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/common/GlobalColorsPicker.js:28
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/common/GlobalColorsPicker.js:28
 msgid "Global Colors"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/layout_blog.php:80
+#: dist/neve/inc/customizer/options/layout_sidebar.php:152
 #: inc/customizer/options/layout_blog.php:80
 #: inc/customizer/options/layout_sidebar.php:152
 msgid "Blog / Archive"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/layout_blog.php:98
 #: inc/customizer/options/layout_blog.php:98
 msgid "Blog Layout"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/layout_blog.php:117
+#: dist/neve/inc/customizer/options/typography.php:115
 #: inc/customizer/options/layout_blog.php:117
 #: inc/customizer/options/typography.php:115
 msgid "Blog"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/layout_blog.php:122
 #: inc/customizer/options/layout_blog.php:122
 msgid "List"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/layout_blog.php:126
 #: inc/customizer/options/layout_blog.php:126
 msgid "Covers"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/layout_blog.php:130
 #: inc/customizer/options/layout_blog.php:130
 msgid "Grid"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/layout_blog.php:153
 #: inc/customizer/options/layout_blog.php:153
 msgid "Columns"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/layout_blog.php:214
 #: inc/customizer/options/layout_blog.php:214
 msgid "Alternating layout"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/layout_blog.php:233
 #: inc/customizer/options/layout_blog.php:233
 msgid "Enable Masonry"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/layout_blog.php:251
 #: inc/customizer/options/layout_blog.php:251
 msgid "Ordering and Content"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/layout_blog.php:271
 #: inc/customizer/options/layout_blog.php:271
 msgid "Post Pagination"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/layout_blog.php:276
 #: inc/customizer/options/layout_blog.php:276
 msgid "Number"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/layout_blog.php:277
 #: inc/customizer/options/layout_blog.php:277
 msgid "Infinite Scroll"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/layout_blog.php:290
+#: dist/neve/inc/customizer/options/layout_single_post.php:68
 #: inc/customizer/options/layout_blog.php:290
 #: inc/customizer/options/layout_single_post.php:68
 msgid "Thumbnail"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/layout_blog.php:291
+#: dist/neve/inc/customizer/options/layout_single_post.php:67
 #: inc/customizer/options/layout_blog.php:291
 #: inc/customizer/options/layout_single_post.php:67
 msgid "Title & Meta"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/layout_blog.php:292
 #: inc/customizer/options/layout_blog.php:292
 msgid "Excerpt"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/layout_blog.php:303
 #: inc/customizer/options/layout_blog.php:303
 msgid "Post Content Order"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/layout_blog.php:320
 #: inc/customizer/options/layout_blog.php:320
 msgid "Excerpt Length"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/layout_blog.php:343
 #: inc/customizer/options/layout_blog.php:343
 msgid "Thumbnail Shadow"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/layout_blog.php:370
 #: inc/customizer/options/layout_blog.php:370
+#: dist/neve/inc/admin/metabox/src/components/MetaFieldsManager.js:290
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:290
 msgid "Post Meta"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/layout_blog.php:392
+#: dist/neve/inc/customizer/options/layout_single_product.php:107
+#: dist/neve/inc/views/partials/post_meta.php:130
 #: inc/customizer/options/layout_blog.php:392
 #: inc/customizer/options/layout_single_product.php:107
 #: inc/views/partials/post_meta.php:130
 msgid "Category"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/layout_blog.php:393
+#: dist/neve/inc/views/partials/post_meta.php:131
 #: inc/customizer/options/layout_blog.php:393
 #: inc/views/partials/post_meta.php:131
 msgid "Date"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/layout_blog.php:394
+#: dist/neve/inc/customizer/options/layout_single_post.php:72
+#: dist/neve/inc/views/partials/post_meta.php:132
 #: inc/customizer/options/layout_blog.php:394
 #: inc/customizer/options/layout_single_post.php:72
 #: inc/views/partials/post_meta.php:132
+#: dist/neve/inc/admin/metabox/src/components/MetaFieldsManager.js:294
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:294
 msgid "Comments"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/layout_blog.php:406
 #: inc/customizer/options/layout_blog.php:406
 msgid "Meta Order"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/layout_blog.php:424
 #: inc/customizer/options/layout_blog.php:424
 msgid "Show Author Avatar"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/layout_blog.php:586
 #: inc/customizer/options/layout_blog.php:586
 msgid "Customize Typography for the Archive page"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/layout_blog.php:588
 #: inc/customizer/options/layout_blog.php:588
 msgid "here"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/layout_container.php:63
 #: inc/customizer/options/layout_container.php:63
 msgid "Container width"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/layout_container.php:90
 #: inc/customizer/options/layout_container.php:90
 msgid "Default Container Style"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/layout_container.php:94
 #: inc/customizer/options/layout_container.php:94
 msgid "Blog / Archive Container Style"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/layout_container.php:98
 #: inc/customizer/options/layout_container.php:98
 msgid "Single Post Container Style"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/layout_container.php:108
 #: inc/customizer/options/layout_container.php:108
 msgid "Shop / Archive Container Style"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/layout_container.php:112
 #: inc/customizer/options/layout_container.php:112
 msgid "Single Product Container Style"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/layout_sidebar.php:62
 #: inc/customizer/options/layout_sidebar.php:62
 msgid "Sitewide Sidebar Layout"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/layout_sidebar.php:81
 #: inc/customizer/options/layout_sidebar.php:81
 msgid "Sitewide Content Width (%)"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/layout_sidebar.php:104
 #: inc/customizer/options/layout_sidebar.php:104
 msgid "Enable Advanced Options"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/layout_sidebar.php:153
+#: dist/neve/inc/customizer/options/layout_single_post.php:42
+#: dist/neve/inc/customizer/options/typography.php:306
 #: inc/customizer/options/layout_sidebar.php:153
 #: inc/customizer/options/layout_single_post.php:42
 #: inc/customizer/options/typography.php:306
 msgid "Single Post"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/layout_sidebar.php:160
 #: inc/customizer/options/layout_sidebar.php:160
 msgid "Shop / Archive"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/layout_sidebar.php:161
+#: dist/neve/inc/customizer/options/layout_single_product.php:52
 #: inc/customizer/options/layout_sidebar.php:161
 #: inc/customizer/options/layout_single_product.php:52
 msgid "Single Product"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/layout_sidebar.php:165
 #: inc/customizer/options/layout_sidebar.php:165
 msgid "Others"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/layout_sidebar.php:224
 #: inc/customizer/options/layout_sidebar.php:224
 msgid "Sidebar Layout"
 msgstr ""
 
 #. translators: %s is edit page link
+#: dist/neve/inc/customizer/options/layout_sidebar.php:282
 #: inc/customizer/options/layout_sidebar.php:282
 msgid "Note: It seems that the shop page has an individual sidebar layout already set. To be able to control the layout from here, %s your page and set the sidebar to \"Inherit\"."
 msgstr ""
 
+#: dist/neve/inc/customizer/options/layout_sidebar.php:286
 #: inc/customizer/options/layout_sidebar.php:286
 msgid "edit"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/layout_sidebar.php:323
 #: inc/customizer/options/layout_sidebar.php:323
 msgid "Content Width (%)"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/layout_single_post.php:69
 #: inc/customizer/options/layout_single_post.php:69
+#: dist/neve/inc/admin/metabox/src/components/MetaFieldsManager.js:292
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:292
 msgid "Content"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/layout_single_post.php:70
+#: dist/neve/inc/views/partials/post_meta.php:235
 #: inc/customizer/options/layout_single_post.php:70
 #: inc/views/partials/post_meta.php:235
+#: dist/neve/inc/admin/metabox/src/components/MetaFieldsManager.js:293
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:293
 msgid "Tags"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/layout_single_post.php:71
 #: inc/customizer/options/layout_single_post.php:71
 msgid "Post navigation"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/layout_single_post.php:84
 #: inc/customizer/options/layout_single_post.php:84
 msgid "Elements Order"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/layout_single_product.php:71
 #: inc/customizer/options/layout_single_product.php:71
 msgid "Exclusive Products"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/layout_single_product.php:92
 #: inc/customizer/options/layout_single_product.php:92
 msgid "Title"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/layout_single_product.php:124
 #: inc/customizer/options/layout_single_product.php:124
+#: dist/neve/inc/admin/metabox/src/components/MetaFieldsManager.js:126
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/typeface/TypefaceComponent.js:202
+#: dist/neve/inc/customizer/controls/react/src/typeface/TypefaceComponent.js:237
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:126
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:202
@@ -1543,70 +2041,95 @@ msgstr ""
 msgid "None"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/layout_single_product.php:125
 #: inc/customizer/options/layout_single_product.php:125
 msgid "All"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/typography.php:111
 #: inc/customizer/options/typography.php:111
 msgid "Headings"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/typography.php:150
 #: inc/customizer/options/typography.php:150
 msgid "Body"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/typography.php:289
+#: dist/neve/inc/customizer/options/typography.php:305
 #: inc/customizer/options/typography.php:289
 #: inc/customizer/options/typography.php:305
 msgid "Post title"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/typography.php:290
 #: inc/customizer/options/typography.php:290
 msgid "Blog Archive"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/typography.php:295
 #: inc/customizer/options/typography.php:295
 msgid "Post excerpt"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/typography.php:300
+#: dist/neve/inc/customizer/options/typography.php:311
 #: inc/customizer/options/typography.php:300
 #: inc/customizer/options/typography.php:311
 msgid "Post meta"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/typography.php:316
 #: inc/customizer/options/typography.php:316
 msgid "Comments reply title"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/upsells.php:44
+#: dist/neve/inc/customizer/options/upsells.php:104
 #: inc/customizer/options/upsells.php:44
 #: inc/customizer/options/upsells.php:104
 msgid "Get the PRO version!"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/upsells.php:45
+#: dist/neve/inc/customizer/options/upsells.php:99
 #: inc/customizer/options/upsells.php:45
 #: inc/customizer/options/upsells.php:99
 msgid "Extend your header with more components and settings, build sticky/transparent headers or display them conditionally."
 msgstr ""
 
+#: dist/neve/inc/customizer/options/upsells.php:70
 #: inc/customizer/options/upsells.php:70
 msgid "View PRO Features"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/upsells.php:94
 #: inc/customizer/options/upsells.php:94
 msgid "White Label module"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/upsells.php:95
 #: inc/customizer/options/upsells.php:95
 msgid "Scroll to Top module"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/upsells.php:100
 #: inc/customizer/options/upsells.php:100
 msgid "Easily create custom headers and footers as well as adding your own custom code or content in any of the hooks locations."
 msgstr ""
 
+#: dist/neve/inc/customizer/options/upsells.php:112
 #: inc/customizer/options/upsells.php:112
 msgid "More blog layout customization options available in PRO"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/upsells.php:113
+#: dist/neve/inc/customizer/options/upsells.php:118
+#: dist/neve/inc/customizer/options/upsells.php:127
+#: dist/neve/inc/customizer/options/upsells.php:132
+#: dist/neve/inc/customizer/options/upsells.php:137
+#: dist/neve/inc/customizer/options/upsells.php:142
 #: inc/customizer/options/upsells.php:113
 #: inc/customizer/options/upsells.php:118
 #: inc/customizer/options/upsells.php:127
@@ -1618,92 +2141,116 @@ msgstr ""
 #: dashboard/src/Components/Content/Help.js:73
 #: dashboard/src/Components/Content/Help.js:101
 #: dashboard/src/Components/ModuleCard.js:146
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Learn More"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/upsells.php:117
 #: inc/customizer/options/upsells.php:117
 msgid "More single post components available in PRO"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/upsells.php:126
 #: inc/customizer/options/upsells.php:126
 msgid "More product catalog options available in PRO"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/upsells.php:131
 #: inc/customizer/options/upsells.php:131
 msgid "More checkout options available in PRO"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/upsells.php:136
 #: inc/customizer/options/upsells.php:136
 msgid "More single product options available in PRO"
 msgstr ""
 
+#: dist/neve/inc/customizer/options/upsells.php:141
 #: inc/customizer/options/upsells.php:141
 msgid "WooCommerce typography options available in PRO"
 msgstr ""
 
+#: dist/neve/inc/views/content_404.php:37
 #: inc/views/content_404.php:37
 msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
 msgstr ""
 
 #. translators: %s is Link to new post
+#: dist/neve/inc/views/content_none.php:34
 #: inc/views/content_none.php:34
 msgid "Ready to publish your first post? %s."
 msgstr ""
 
+#: dist/neve/inc/views/content_none.php:39
 #: inc/views/content_none.php:39
 msgid "Get started here"
 msgstr ""
 
+#: dist/neve/inc/views/content_none.php:57
 #: inc/views/content_none.php:57
 msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
 msgstr ""
 
 #. translators: search result
+#: dist/neve/inc/views/page_header.php:78
 #: inc/views/page_header.php:78
 msgid "Search Results for: %s"
 msgstr ""
 
+#: dist/neve/inc/views/partials/comments.php:57
 #: inc/views/partials/comments.php:57
 msgid "Comments are closed."
 msgstr ""
 
+#: dist/neve/inc/views/partials/comments.php:74
 #: inc/views/partials/comments.php:74
 msgid "Comments Navigation"
 msgstr ""
 
+#: dist/neve/inc/views/partials/comments.php:79
 #: inc/views/partials/comments.php:79
 msgid "Previous"
 msgstr ""
 
+#: dist/neve/inc/views/partials/comments.php:82
 #: inc/views/partials/comments.php:82
 msgid "Next"
 msgstr ""
 
+#: dist/neve/inc/views/partials/comments.php:105
 #: inc/views/partials/comments.php:105
 msgid "Pingback:"
 msgstr ""
 
+#: dist/neve/inc/views/partials/comments.php:107
+#: dist/neve/inc/views/partials/comments.php:138
 #: inc/views/partials/comments.php:107
 #: inc/views/partials/comments.php:138
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/common/CustomPalette.js:22
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/common/CustomPalette.js:22
 msgid "Edit"
 msgstr ""
 
 #. translators: 1: date, 2: time
+#: dist/neve/inc/views/partials/comments.php:129
 #: inc/views/partials/comments.php:129
 msgid "%1$s at %2$s"
 msgstr ""
 
+#: dist/neve/inc/views/partials/comments.php:144
 #: inc/views/partials/comments.php:144
 msgid "Reply"
 msgstr ""
 
+#: dist/neve/inc/views/partials/comments.php:157
 #: inc/views/partials/comments.php:157
 msgid "Comment awaiting moderation."
 msgstr ""
 
 #. translators: number of comments
+#: dist/neve/inc/views/partials/comments.php:178
 #: inc/views/partials/comments.php:178
 msgctxt "comments title"
 msgid "%1$s thought on &ldquo;%2$s&rdquo;"
@@ -1711,30 +2258,37 @@ msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
 msgstr[0] ""
 msgstr[1] ""
 
+#: dist/neve/inc/views/partials/post_meta.php:172
 #: inc/views/partials/post_meta.php:172
 msgid "by"
 msgstr ""
 
 #. translators: %s: number of comments
+#: dist/neve/inc/views/partials/post_meta.php:221
 #: inc/views/partials/post_meta.php:221
 msgid "%s Comment"
 msgid_plural "%s Comments"
 msgstr[0] ""
 msgstr[1] ""
 
+#: dist/neve/inc/views/pluggable/pagination.php:141
+#: dist/neve/inc/views/template_parts.php:309
 #: inc/views/pluggable/pagination.php:141
 #: inc/views/template_parts.php:309
 msgid "Pages:"
 msgstr ""
 
+#: dist/neve/inc/views/pluggable/pagination.php:158
 #: inc/views/pluggable/pagination.php:158
 msgid "previous"
 msgstr ""
 
+#: dist/neve/inc/views/pluggable/pagination.php:163
 #: inc/views/pluggable/pagination.php:163
 msgid "next"
 msgstr ""
 
+#: dist/neve/inc/views/template_parts.php:251
 #: inc/views/template_parts.php:251
 msgid "Read More"
 msgstr ""
@@ -1745,323 +2299,390 @@ msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/utils/rest.js:68
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Typekit Project ID is invalid"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Start.js:55
 #: dashboard/src/utils/common.js:39
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Starter Sites"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Start.js:65
 #: dashboard/src/Components/Content/Start.js:69
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Go to Starter Sites"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Start.js:78
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Customizer quick links"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Start.js:86
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Getting Started? Check help and docs"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Start.js:90
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Need more details? Please check our full documentation for detailed information on how to use Neve."
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Help.js:47
 #: dashboard/src/Components/Content/Start.js:96
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Go to docs"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Start.js:105
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Feedback"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Start.js:106
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Share your feedback for Neve and get the chance to win the pro version."
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Start.js:115
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Leave Feedback"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Options/InputForm.js:52
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Save"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/ModuleCard.js:79
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Upgrade"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/ModuleCard.js:113
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Module Activated"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/ModuleCard.js:117
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Module Deactivated."
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/ModuleCard.js:127
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Could not activate module. Please try again."
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/PluginCard.js:17
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Install"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/PluginCard.js:18
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Installing"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/LicenseCard.js:100
 #: dashboard/src/Components/PluginCard.js:22
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Activating"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/LicenseCard.js:101
 #: dashboard/src/Components/PluginCard.js:26
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Deactivating"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Help.js:24
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Build a landing page with a drag-and-drop content builder"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Help.js:28
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "In the documentation below you will find an easy way to build a great looking landing page using a drag-and-drop content builder plugin."
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Help.js:55
 #: dashboard/src/Components/Sidebar.js:31
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Join our Facebook Group"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Help.js:63
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Create a child theme"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Help.js:64
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "If you want to make changes to the theme's files, those changes are likely to be overwritten when you next update the theme. In order to prevent that from happening, you need to create a child theme. For this, please follow the documentation below."
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Help.js:80
 #: dashboard/src/Components/Content/Help.js:84
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Contact Support"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Help.js:91
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Speed up your site"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Help.js:92
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "If you find yourself in a situation where everything on your site is running very slowly, you might consider having a look at the documentation below where you will find the most common issues causing this and possible solutions for each of the issues."
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Help.js:108
 #: dashboard/src/utils/common.js:55
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Changelog"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Help.js:109
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Want to get the gist on the latest theme changes? Just consult our changelog below to get a taste of the recent fixes and features implemented."
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Help.js:115
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "View Changelog"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Changelog.js:16
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Show changelog for"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Changelog.js:58
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Features"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Changelog.js:77
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Bug Fixes"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Changelog.js:96
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Tweaks"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/FeatureRow.js:44
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "More details <a>here</a>."
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/FreePro.js:26
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Get access to all Pro features and power-up your website"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/FreePro.js:32
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Get Neve Pro Now"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/utils/common.js:35
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Welcome"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/utils/common.js:43
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Free vs Pro"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/utils/common.js:47
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Plugins"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/utils/common.js:51
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Help"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Header.js:25
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Neve Theme Logo"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Notification.js:87
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Done!"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Notification.js:94
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "An error occured. Please reload the page and try again."
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Notification.js:114
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "In Progress"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/LicenseCard.js:87
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Enter License Key"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/LicenseCard.js:130
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Valid"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/LicenseCard.js:131
 #: dashboard/src/Components/LicenseCard.js:139
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Expired"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/LicenseCard.js:138
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Expires"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Sidebar.js:22
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Neve Community"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Sidebar.js:36
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Leave us a review"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Sidebar.js:38
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Are you are enjoying Neve? We would love to hear your feedback."
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Sidebar.js:44
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Submit a review"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Sidebar.js:49
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Contributing"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Sidebar.js:51
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Become a contributor by opting in to our anonymous data tracking. We guarantee no sensitive data is collected."
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Sidebar.js:57
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "What do we track?"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Sidebar.js:62
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Allow Anonymous Tracking"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Sidebar.js:73
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Could not update option. Please try again."
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Sidebar.js:82
 #: dashboard/src/Components/Snackbar.js:27
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Option Updated"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Snackbar.js:23
+#: dist/neve/dashboard/build/dashboard.js:1
 msgid "Could not Update Option. Please try again."
 msgstr ""
 
+#: dist/neve/inc/admin/metabox/src/components/controls/SortableItems.js:26
+#: dist/neve/inc/admin/metabox/src/components/controls/SortableItems.js:96
 #: inc/admin/metabox/src/components/controls/SortableItems.js:26
 #: inc/admin/metabox/src/components/controls/SortableItems.js:96
 msgid "Toggle"
 msgstr ""
 
+#: dist/neve/inc/admin/metabox/src/components/MetaFieldsManager.js:111
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:111
 msgid "Page Layout"
 msgstr ""
 
+#: dist/neve/inc/admin/metabox/src/components/MetaFieldsManager.js:124
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/font-family/FontFamilySelector.js:53
+#: dist/neve/inc/customizer/controls/react/src/font-family/FontFamilySelector.js:177
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:124
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:53
@@ -2069,241 +2690,330 @@ msgstr ""
 msgid "Inherit"
 msgstr ""
 
+#: dist/neve/inc/admin/metabox/src/components/MetaFieldsManager.js:172
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:172
 msgid "Custom Content Width (%)"
 msgstr ""
 
+#: dist/neve/inc/admin/metabox/src/components/MetaFieldsManager.js:213
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:213
 msgid "Page Title"
 msgstr ""
 
+#: dist/neve/inc/admin/metabox/src/components/MetaFieldsManager.js:217
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:217
 msgid "Title alignment"
 msgstr ""
 
+#: dist/neve/inc/admin/metabox/src/components/MetaFieldsManager.js:257
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:257
 msgid "Author Avatar"
 msgstr ""
 
+#: dist/neve/inc/admin/metabox/src/components/MetaFieldsManager.js:272
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:272
 msgid "Reading Time"
 msgstr ""
 
+#: dist/neve/inc/admin/metabox/src/components/MetaFieldsManager.js:289
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:289
 msgid "Post Title"
 msgstr ""
 
+#: dist/neve/inc/admin/metabox/src/components/MetaFieldsManager.js:291
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:291
 msgid "Featured Image"
 msgstr ""
 
+#: dist/neve/inc/admin/metabox/src/components/MetaFieldsManager.js:295
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:295
 msgid "Post Navigation"
 msgstr ""
 
+#: dist/neve/inc/admin/metabox/src/components/MetaFieldsManager.js:301
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:301
 msgid "Author Biography"
 msgstr ""
 
+#: dist/neve/inc/admin/metabox/src/components/MetaFieldsManager.js:302
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:302
 msgid "Related Posts"
 msgstr ""
 
+#: dist/neve/inc/admin/metabox/src/components/MetaFieldsManager.js:303
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:303
 msgid "Sharing Icons"
 msgstr ""
 
+#: dist/neve/inc/admin/metabox/src/components/MetaFieldsManager.js:311
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:311
 msgid "Elements"
 msgstr ""
 
+#: dist/neve/inc/admin/metabox/src/components/MetaFieldsManager.js:372
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:372
 msgid "Reset all options to default"
 msgstr ""
 
+#: dist/neve/inc/admin/metabox/src/components/MetaFieldsManager.js:381
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:381
 msgid "Return to customizer settings"
 msgstr ""
 
+#: dist/neve/inc/admin/metabox/src/components/Sidebar.js:16
 #: inc/admin/metabox/src/components/Sidebar.js:16
 msgid "Open Neve meta sidebar"
 msgstr ""
 
+#: dist/neve/inc/admin/metabox/src/components/Sidebar.js:53
 #: inc/admin/metabox/src/components/Sidebar.js:53
 msgid "Neve Options"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/dynamic-fields/dynamic-field-inserter.js:52
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/dynamic-fields/dynamic-field-inserter.js:52
 msgid "Insert Dynamic Tag"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/common/Responsive.js:20
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/common/Responsive.js:20
 msgid "Desktop"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/common/Responsive.js:24
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/common/Responsive.js:24
 msgid "Tablet"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/common/Responsive.js:28
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/common/Responsive.js:28
 msgid "Mobile"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/common/ColorControl.js:80
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/common/ColorControl.js:80
 msgid "Clear"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/background/BackgroundComponent.js:44
+#: dist/neve/inc/customizer/controls/react/src/background/BackgroundComponent.js:118
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/background/BackgroundComponent.js:44
 #: inc/customizer/controls/react/src/background/BackgroundComponent.js:118
 msgid "Image"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/background/BackgroundComponent.js:104
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/background/BackgroundComponent.js:104
 msgid "Use Featured Image"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/background/BackgroundComponent.js:158
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/background/BackgroundComponent.js:158
 msgid "Remove Fallback Image"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/background/BackgroundComponent.js:162
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/background/BackgroundComponent.js:162
 msgid "Remove Image"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/background/BackgroundComponent.js:117
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/background/BackgroundComponent.js:117
 msgid "Fallback Image"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/background/BackgroundComponent.js:122
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/background/BackgroundComponent.js:122
 msgid "Select from the Media Library or upload a new image"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/background/BackgroundComponent.js:139
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/background/BackgroundComponent.js:139
 msgid "Add Image"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/background/BackgroundComponent.js:184
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/background/BackgroundComponent.js:184
 msgid "Fixed Background"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/background/BackgroundComponent.js:197
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/background/BackgroundComponent.js:197
 msgid "Overlay Color"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/background/BackgroundComponent.js:207
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/background/BackgroundComponent.js:207
 msgid "Overlay Opacity"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/common/Sizing.js:25
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/common/Sizing.js:25
 msgid "Unlink Values"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/common/Sizing.js:26
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/common/Sizing.js:26
 msgid "Link Values"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/common/Sizing.js:72
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/common/Sizing.js:72
 msgid "Reset all Values"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/common/Sizing.js:73
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/common/Sizing.js:73
 msgid "Reset Value"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/typeface/TypefaceComponent.js:197
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:197
 msgid "Weight"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/typeface/TypefaceComponent.js:232
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:232
 msgid "Transform"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/typeface/TypefaceComponent.js:240
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:240
 msgid "Capitalize"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/typeface/TypefaceComponent.js:244
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:244
 msgid "Lowercase"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/typeface/TypefaceComponent.js:248
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:248
 msgid "Uppercase"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/typeface/TypefaceComponent.js:317
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:317
 msgid "Line Height"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/typeface/TypefaceComponent.js:368
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/typeface/TypefaceComponent.js:368
 msgid "Letter Spacing"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/font-family/FontFamilySelector.js:148
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:148
 msgid "No results."
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/font-family/FontFamilySelector.js:165
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:165
 msgid "Font Family"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/font-family/FontFamilySelector.js:197
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:197
 msgid "Loading…"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:38
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:38
 msgid "Logo Only"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:42
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:42
 msgid "Logo - Title & Tagline"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:46
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:46
 msgid "Title & Tagline - Logo"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:50
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:50
 msgid "Logo on Top"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:57
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:57
 msgid "Plain"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:215
+#: dist/neve/inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:225
+#: dist/neve/inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:61
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:215
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:225
@@ -2311,194 +3021,271 @@ msgstr ""
 msgid "Background"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:65
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:65
 msgid "Bottom Border"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:69
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:69
 msgid "Top Border"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:76
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:76
 msgid "Icon Style 2"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:80
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:80
 msgid "Icon Style 1"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:84
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:84
 msgid "Icon Style 3"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:88
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:88
 msgid "Icon Style 4"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:92
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:92
 msgid "Icon Style 5"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:96
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:96
 msgid "Icon Style 6"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:100
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:100
 msgid "WordPress Avatar"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:104
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:104
 msgid "No Icon"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:111
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:111
 msgid "Style 1"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:115
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:115
 msgid "Style 2"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:119
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:119
 msgid "Style 3"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:123
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:123
 msgid "Style 4"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:127
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:127
 msgid "Style 5"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:131
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/radio-buttons/RadioButtonsComponent.js:131
 msgid "Style 6"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:213
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:213
 msgid "Normal"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:223
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:223
 msgid "Hover"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:298
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:298
 msgid "Filled"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:303
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/button-appearance/ButtonAppearanceComponent.js:303
 msgid "Outline"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/presets-selector/PresetsSelector.js:70
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/presets-selector/PresetsSelector.js:70
 msgid "No header presets found"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/multiselect/MultiSelect.js:15
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/multiselect/MultiSelect.js:15
 msgid "Add item"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/multiselect/MultiSelect.js:35
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/multiselect/MultiSelect.js:35
 msgid "Remove Item"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/multiselect/MultiSelect.js:64
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/multiselect/MultiSelect.js:64
 msgid "Add items by clicking the ones below."
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/multiselect/MultiSelect.js:76
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/multiselect/MultiSelect.js:76
 msgid "All items are already selected."
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/ordering/OrderingComponent.js:21
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/ordering/OrderingComponent.js:21
 msgid "Drag to Reorder"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/ordering/OrderingComponent.js:35
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/ordering/OrderingComponent.js:35
 msgid "Toggle Visibility"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/global-colors/PaletteSelector.js:48
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:48
 msgid "Remove Palette"
 msgstr ""
 
 #. translators: %s - name of palette that will be deleted.
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:2
+#: dist/neve/inc/customizer/controls/react/src/global-colors/PaletteSelector.js:60
 #: inc/customizer/controls/react/bundle/controls.js:2
 #: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:60
 msgid "Are you sure you want to delete the %s palette?"
 msgstr ""
 
 #. translators: %s - name of palette that will be deleted.
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:2
+#: dist/neve/inc/customizer/controls/react/src/global-colors/PaletteSelector.js:68
 #: inc/customizer/controls/react/bundle/controls.js:2
 #: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:68
 msgid "If this is the currently active palette, the current palette will be switched to the Base one."
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:2
+#: dist/neve/inc/customizer/controls/react/src/global-colors/PaletteSelector.js:79
 #: inc/customizer/controls/react/bundle/controls.js:2
 #: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:79
 msgid "Delete"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:2
+#: dist/neve/inc/customizer/controls/react/src/global-colors/PaletteForm.js:89
+#: dist/neve/inc/customizer/controls/react/src/global-colors/PaletteSelector.js:88
 #: inc/customizer/controls/react/bundle/controls.js:2
 #: inc/customizer/controls/react/src/global-colors/PaletteForm.js:89
 #: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:88
 msgid "Cancel"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:2
+#: dist/neve/inc/customizer/controls/react/src/global-colors/Accordion.js:18
 #: inc/customizer/controls/react/bundle/controls.js:2
 #: inc/customizer/controls/react/src/global-colors/Accordion.js:18
 msgid "Palette Colors"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:2
+#: dist/neve/inc/customizer/controls/react/src/global-colors/PaletteColors.js:77
 #: inc/customizer/controls/react/bundle/controls.js:2
 #: inc/customizer/controls/react/src/global-colors/PaletteColors.js:77
 msgid "Reset all to default"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:2
+#: dist/neve/inc/customizer/controls/react/src/global-colors/PaletteForm.js:61
 #: inc/customizer/controls/react/bundle/controls.js:2
 #: inc/customizer/controls/react/src/global-colors/PaletteForm.js:61
 msgid "Palette Title"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:2
+#: dist/neve/inc/customizer/controls/react/src/global-colors/PaletteForm.js:67
 #: inc/customizer/controls/react/bundle/controls.js:2
 #: inc/customizer/controls/react/src/global-colors/PaletteForm.js:67
 msgid "Extend from:"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:2
+#: dist/neve/inc/customizer/controls/react/src/global-colors/PaletteForm.js:98
 #: inc/customizer/controls/react/bundle/controls.js:2
 #: inc/customizer/controls/react/src/global-colors/PaletteForm.js:98
 msgid "Add"
 msgstr ""
 
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:2
+#: dist/neve/inc/customizer/controls/react/src/global-colors/GlobalColors.js:59
 #: inc/customizer/controls/react/bundle/controls.js:2
 #: inc/customizer/controls/react/src/global-colors/GlobalColors.js:59
 msgid "How the color system works"
