@@ -17,7 +17,7 @@ WordPress Available:  yes
 Requires License:     no
 Tags: blog, custom-logo, e-commerce, rtl-language-support, grid-layout, one-column, two-columns, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, accessibility-ready, wide-blocks, block-styles, footer-widgets, portfolio, left-sidebar, right-sidebar
 */
-.wp-block-button a, .button, button, input[type=button], .btn, input[type="submit"] {
+.wp-block-button a, .button, button, input[type=button], .btn, input[type="submit"], .add_to_cart_button {
   font-size: .8em;
   font-weight: 600;
   padding: 8px 12px;
@@ -32,7 +32,7 @@ Tags: blog, custom-logo, e-commerce, rtl-language-support, grid-layout, one-colu
   font-family: inherit;
 }
 
-.wp-block-button a:hover, .button:hover, button:hover, input:hover[type=button], .btn:hover, input:hover[type="submit"] {
+.wp-block-button a:hover, .button:hover, button:hover, input:hover[type=button], .btn:hover, input:hover[type="submit"], .add_to_cart_button:hover {
   text-decoration: none;
   opacity: .9;
 }
@@ -52,12 +52,12 @@ Tags: blog, custom-logo, e-commerce, rtl-language-support, grid-layout, one-colu
   background: transparent;
 }
 
-.button.button-primary, button, input[type=button], .btn, input[type="submit"] {
+.button.button-primary, button, input[type=button], .btn, input[type="submit"], .add_to_cart_button {
   background-color: #0366d6;
   color: #fff;
 }
 
-.button.button-primary:hover, button:hover, input:hover[type=button], .btn:hover, input:hover[type="submit"] {
+.button.button-primary:hover, button:hover, input:hover[type=button], .btn:hover, input:hover[type="submit"], .add_to_cart_button:hover {
   text-decoration: none;
   background-color: #0366d6;
   color: #fff;

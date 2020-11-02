@@ -13,7 +13,7 @@
   }
 }
 
-button, input[type=button], .btn, input[type="submit"] {
+button, input[type=button], .btn, input[type="submit"], .add_to_cart_button {
   //noinspection SassScssResolvedByNameOnly
   @extend %nv-button;
   //noinspection SassScssResolvedByNameOnly
