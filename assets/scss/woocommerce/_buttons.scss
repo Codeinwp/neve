@@ -94,3 +94,8 @@ ul[id^="nv-primary-navigation"] .nv-nav-cart {
 		@extend %nv-woo-button-primary;
 	}
 }
+
+.wc-block-components-product-button .wp-block-button__link.add_to_cart_button {
+  @extend %nv-woo-button;
+  @extend %nv-woo-button-primary;
+}
