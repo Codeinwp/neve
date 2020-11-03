@@ -169,45 +169,41 @@ class Front_End {
 	 */
 	private function get_gutenberg_color_palette() {
 		$gutenberg_color_palette = array();
-		$palette                 = get_theme_mod( 'neve_global_colors', neve_get_global_colors_default( true ) );
-		$active                  = $palette['activePalette'];
-		$colors                  = $palette['palettes'][ $active ]['colors'];
-
-		$from_global_colors = [
+		$from_global_colors      = [
 			'neve-link-color'       => array(
-				'val'   => $colors['nv-primary-accent'],
+				'val'   => 'var(--nv-primary-accent)',
 				'label' => __( 'Neve - Primary Accent', 'neve' ),
 			),
 			'neve-link-hover-color' => array(
-				'val'   => $colors['nv-secondary-accent'],
+				'val'   => 'var(--nv-secondary-accent)',
 				'label' => __( 'Neve - Secondary Accent', 'neve' ),
 			),
 			'nv-site-bg'            => array(
-				'val'   => $colors['nv-site-bg'],
+				'val'   => 'var(--nv-site-bg)',
 				'label' => __( 'Neve - Site Background', 'neve' ),
 			),
 			'nv-light-bg'           => array(
-				'val'   => $colors['nv-light-bg'],
+				'val'   => 'var(--nv-light-bg)',
 				'label' => __( 'Neve - Light Background', 'neve' ),
 			),
 			'nv-dark-bg'            => array(
-				'val'   => $colors['nv-dark-bg'],
+				'val'   => 'var(--nv-dark-bg)',
 				'label' => __( 'Neve - Dark Background', 'neve' ),
 			),
 			'neve-text-color'       => array(
-				'val'   => $colors['nv-text-color'],
+				'val'   => 'var(--nv-text-color)',
 				'label' => __( 'Neve - Text Color', 'neve' ),
 			),
 			'nv-text-dark-bg'       => array(
-				'val'   => $colors['nv-text-dark-bg'],
+				'val'   => 'var(--nv-text-dark-bg)',
 				'label' => __( 'Neve - Text Dark Background', 'neve' ),
 			),
 			'nv-c-1'                => array(
-				'val'   => $colors['nv-c-1'],
+				'val'   => 'var(--nv-c-1)',
 				'label' => __( 'Neve - Extra Color 1', 'neve' ),
 			),
 			'nv-c-2'                => array(
-				'val'   => $colors['nv-c-2'],
+				'val'   => 'var(--nv-c-2)',
 				'label' => __( 'Neve - Extra Color 2', 'neve' ),
 			),
 		];
