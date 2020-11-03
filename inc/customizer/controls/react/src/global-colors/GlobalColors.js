@@ -44,7 +44,11 @@ const GlobalColors = ( { control } ) => {
 				<span className="customize-control-title">{ label }</span>
 			) }
 
-			<PaletteSelector values={ values } save={ updateValues } />
+			<PaletteSelector
+				control={ control }
+				values={ values }
+				save={ updateValues }
+			/>
 			<PaletteForm
 				values={ values }
 				save={ updateValues }

@@ -27,9 +27,19 @@ const PaletteSelector = ( { values, save } ) => {
 		save( nextValues );
 	};
 
+	// Reorder the palette keys so we always have first positions used by defaults.
+	const orderedPaletteKeys = [
+		...Object.keys( values.palettes ).filter(
+			( paletteSlug ) => ! palettes[ paletteSlug ].allowDeletion
+		),
+		...Object.keys( values.palettes ).filter(
+			( paletteSlug ) => palettes[ paletteSlug ].allowDeletion
+		),
+	];
+
 	return (
 		<div className="neve-palettes-wrap">
-			{ Object.keys( palettes ).map( ( id ) => {
+			{ orderedPaletteKeys.map( ( id ) => {
 				const { colors, allowDeletion, name } = palettes[ id ];
 				const paletteClasses = classnames( [
 					'neve-global-color-palette-inner',
