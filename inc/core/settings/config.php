@@ -119,7 +119,7 @@ class Config {
 	public static $css_selectors_map = [
 		self::CSS_SELECTOR_TYPEFACE_H1               => 'h1, .single h1.entry-title',
 		self::CSS_SELECTOR_TYPEFACE_H2               => 'h2',
-		self::CSS_SELECTOR_TYPEFACE_H3               => 'h3',
+		self::CSS_SELECTOR_TYPEFACE_H3               => 'h3, .woocommerce-checkout h3',
 		self::CSS_SELECTOR_TYPEFACE_H4               => 'h4',
 		self::CSS_SELECTOR_TYPEFACE_H5               => 'h5',
 		self::CSS_SELECTOR_TYPEFACE_H6               => 'h6',
