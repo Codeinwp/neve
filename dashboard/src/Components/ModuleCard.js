@@ -1,6 +1,7 @@
 /* global neveDash */
 import Accordion from './Accordion';
 import InputForm from './Options/InputForm';
+import Select from './Options/Select';
 import Toggle from './Options/Toggle';
 import { changeOption } from '../utils/rest';
 import classnames from 'classnames';
@@ -24,7 +25,6 @@ const ModuleCard = ( {
 		description,
 		availabilityLevel,
 		options,
-		order,
 		links,
 		documentation,
 		// eslint-disable-next-line camelcase
@@ -39,7 +39,7 @@ const ModuleCard = ( {
 				<Accordion key={ index } title={ label }>
 					<div>
 						{ Object.keys( options ).map( ( optionSlug, index ) => {
-							const { label, type, placeholder } = options[
+							const { label, type, placeholder, choices } = options[
 								optionSlug
 							];
 							return (
@@ -55,6 +55,13 @@ const ModuleCard = ( {
 										<Toggle
 											label={ label }
 											slug={ optionSlug }
+										/>
+									) }
+									{ 'select' === type && (
+										<Select
+											label={ label }
+											slug={ optionSlug }
+											choices={ choices }
 										/>
 									) }
 								</Fragment>

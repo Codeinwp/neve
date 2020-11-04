@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-11-02T11:35:50+00:00\n"
+"POT-Creation-Date: 2020-11-04T10:08:03+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -2045,7 +2045,7 @@ msgstr ""
 #: dashboard/src/Components/Content/Help.js:37
 #: dashboard/src/Components/Content/Help.js:73
 #: dashboard/src/Components/Content/Help.js:101
-#: dashboard/src/Components/ModuleCard.js:146
+#: dashboard/src/Components/ModuleCard.js:153
 #: dist/neve/dashboard/build/dashboard.js:1
 msgid "Learn More"
 msgstr ""
@@ -2273,25 +2273,25 @@ msgid "Save"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/ModuleCard.js:79
+#: dashboard/src/Components/ModuleCard.js:86
 #: dist/neve/dashboard/build/dashboard.js:1
 msgid "Upgrade"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/ModuleCard.js:113
+#: dashboard/src/Components/ModuleCard.js:120
 #: dist/neve/dashboard/build/dashboard.js:1
 msgid "Module Activated"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/ModuleCard.js:117
+#: dashboard/src/Components/ModuleCard.js:124
 #: dist/neve/dashboard/build/dashboard.js:1
 msgid "Module Deactivated."
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/ModuleCard.js:127
+#: dashboard/src/Components/ModuleCard.js:134
 #: dist/neve/dashboard/build/dashboard.js:1
 msgid "Could not activate module. Please try again."
 msgstr ""
