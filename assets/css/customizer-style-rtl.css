@@ -10,34 +10,6 @@
 .has-media-queries .control-wrap.active {
 	display: block;
 }
-
-
-.hfg--cb-conditional-header, .hfg--cb-notice {
-	display: flex;
-	margin: 9px 0 0;
-	float: right;
-}
-
-.hfg--cb-conditional-header.hidden, .hfg--cb-notice.hidden {
-	display: none;
-}
-
-.hfg--cb-notice p, .hfg--cb-conditional-header p {
-	margin: 0;
-}
-
-.hfg--cb-notice a, .hfg--cb-conditional-header a {
-	cursor: pointer;
-	text-decoration: none;
-}
-.hfg--cb-notice h4 {
-	margin: 0 5px 0;
-	line-height: 1.5;
-}
-
-.hfg--cb-notice.welcome-notice a {
-	margin-right: 5px;
-}
 .nv-button-group {
     display: flex;
     flex-direction: row;

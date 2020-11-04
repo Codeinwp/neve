@@ -15,9 +15,22 @@ Neve is a super fast, easily customizable, multi-purpose theme. It’s perfect f
 
 == Copyright ==
 Neve WordPress theme, Copyright 2018 Themeisle
-Neve is distributed under the terms of the GNU GPLv2 or later
+Neve is distributed under the terms of the GNU GPLv2 or later 
 
 == Changelog ==
+
+##### [Version 2.8.3](https://github.com/Codeinwp/neve/compare/v2.8.2...v2.8.3) (2020-10-19)
+
+- [Fix] Exclusive products section in RTL mode
+- [Fix] Font Family dropdown layout in RTL mode
+- [Fix] Migrate from Zelle theme
+- [Fix] Default values for the spacing and custom content width controls
+- [Fix] Default line-height for buttons
+- [Fix] Search icon color in the mobile header builder
+- New Gutenberg Starter Sites
+
+
+
 
 ##### [Version 2.8.2](https://github.com/Codeinwp/neve/compare/v2.8.1...v2.8.2) (2020-10-01)
 
