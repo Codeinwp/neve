@@ -101,19 +101,10 @@ window.addEventListener( 'load', function () {
 		if ( e.detail.partial_id === 'hfg_header_layout_partial' ) {
 			window.HFG.init();
 			window.HFG.initSearch();
-			initNavigation();
 			console.log( 'Reinitialize HFG with sidebar.' );
 			return false;
 		}
-		if ( e.detail.partial_id === 'nav-icon_partial' ) {
-			window.HFG.init( true );
-			console.log( 'Reinitialize HFG with skip.' );
-			return false;
-		}
-		if (
-			e.detail.partial_id === 'primary-menu_partial' ||
-			e.detail.partial_id === 'hfg_header_layout_partial'
-		) {
+		if ( e.detail.partial_id === 'primary-menu_partial' ) {
 			initNavigation();
 			repositionDropdowns();
 			console.log( 'Reinitialize navigation.' );
