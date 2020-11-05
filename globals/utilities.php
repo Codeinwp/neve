@@ -1326,8 +1326,8 @@ function neve_get_headings_selectors() {
 function neve_get_global_colors_default( $migrated = false ) {
 
 	$old_link_color       = get_theme_mod( 'neve_link_color', '#0366d6' );
-	$old_link_hover_color = get_theme_mod( 'neve_link_hover_color', '#0366d6' );
-	$old_text_color       = get_theme_mod( 'neve_text_color', '#404248' );
+	$old_link_hover_color = get_theme_mod( 'neve_link_hover_color', '#0e509a' );
+	$old_text_color       = get_theme_mod( 'neve_text_color', '#393939' );
 	$old_bg_color         = '#' . get_theme_mod( 'background_color', 'ffffff' );
 
 	return [
@@ -1340,10 +1340,10 @@ function neve_get_global_colors_default( $migrated = false ) {
 					'nv-primary-accent'   => $old_link_color,
 					'nv-secondary-accent' => $old_link_hover_color,
 					'nv-site-bg'          => $old_bg_color,
-					'nv-light-bg'         => '#EDEDED',
-					'nv-dark-bg'          => '#14171C',
+					'nv-light-bg'         => '#ededed',
+					'nv-dark-bg'          => '#14171c',
 					'nv-text-color'       => $old_text_color,
-					'nv-text-dark-bg'     => '#FFFFFF',
+					'nv-text-dark-bg'     => '#ffffff',
 					'nv-c-1'              => '#77b978',
 					'nv-c-2'              => '#f37262',
 				],
@@ -1352,13 +1352,13 @@ function neve_get_global_colors_default( $migrated = false ) {
 				'name'          => __( 'Dark Mode', 'neve' ),
 				'allowDeletion' => false,
 				'colors'        => [
-					'nv-primary-accent'   => '#4BB68F',
-					'nv-secondary-accent' => '#FFCF52',
-					'nv-site-bg'          => '#000000',
-					'nv-light-bg'         => '#282828',
-					'nv-dark-bg'          => '#000000',
-					'nv-text-color'       => '#FFFFFF',
-					'nv-text-dark-bg'     => '#FFFFFF',
+					'nv-primary-accent'   => '#26bcdb',
+					'nv-secondary-accent' => '#1f90a6',
+					'nv-site-bg'          => '#121212',
+					'nv-light-bg'         => '#1a1a1a',
+					'nv-dark-bg'          => '#1a1a1a',
+					'nv-text-color'       => '#ffffff',
+					'nv-text-dark-bg'     => 'rgba(255, 255, 255, 0.81)',
 					'nv-c-1'              => '#77b978',
 					'nv-c-2'              => '#f37262',
 				],
