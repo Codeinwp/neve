@@ -717,6 +717,11 @@ section.exclusive .tns-visually-hidden {
   float: right;
 }
 
+.woocommerce-checkout #neve-checkout-coupon .woocommerce-info a:focus {
+  opacity: 1;
+  color: transparent;
+}
+
 .woocommerce-checkout #neve-checkout-coupon .woocommerce-form-login, .woocommerce-checkout #neve-checkout-coupon .woocommerce-form-coupon {
   margin-top: -20px;
   border-radius: 0;
@@ -1791,6 +1796,10 @@ body.woocommerce-account .woocommerce-form-login .form-row:not(.woocommerce-form
 
 .nv-woo-title-breadcrumb h1 {
   margin: 0;
+}
+
+.woocommerce form .form-row input[type=color]:focus, .woocommerce form .form-row input[type=date]:focus, .woocommerce form .form-row input[type=datetime-local]:focus, .woocommerce form .form-row input[type=datetime]:focus, .woocommerce form .form-row input[type=email]:focus, .woocommerce form .form-row input[type=month]:focus, .woocommerce form .form-row input[type=number]:focus, .woocommerce form .form-row input[type=password]:focus, .woocommerce form .form-row input[type=search]:focus, .woocommerce form .form-row input[type=tel]:focus, .woocommerce form .form-row input[type=text]:focus, .woocommerce form .form-row input[type=time]:focus, .woocommerce form .form-row input[type=url]:focus, .woocommerce form .form-row input[type=week]:focus, .woocommerce form .form-row textarea:focus {
+  outline: auto;
 }
 
 /*# sourceMappingURL=woocommerce.css.map */

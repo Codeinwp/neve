@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-10-27T13:41:07+00:00\n"
+"POT-Creation-Date: 2020-11-05T16:44:30+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -48,7 +48,7 @@ msgstr ""
 #. translators: %s - Theme name
 #. translators: %s - theme name
 #: dashboard/inc/Main.php:200
-#: inc/core/admin.php:259
+#: inc/core/admin.php:261
 msgid "%s now comes with a sites library with various designs to pick from. Visit our collection of demos that are constantly being added."
 msgstr ""
 
@@ -85,7 +85,7 @@ msgstr ""
 #. translators: %s - Theme name
 #. translators: %s - theme name
 #: dashboard/inc/Main.php:212
-#: inc/core/admin.php:267
+#: inc/core/admin.php:269
 msgid "Need more details? Please check our full documentation for detailed information on how to use %s."
 msgstr ""
 
@@ -372,7 +372,7 @@ msgstr ""
 
 #: header-footer-grid/Core/Builder/Footer.php:47
 #: header-footer-grid/Core/Builder/Header.php:51
-#: inc/core/admin.php:269
+#: inc/core/admin.php:271
 msgid "Read full documentation"
 msgstr ""
 
@@ -1150,32 +1150,32 @@ msgstr ""
 msgid "Filter"
 msgstr ""
 
-#: inc/core/admin.php:223
+#: inc/core/admin.php:225
 msgid "Congratulations!"
 msgstr ""
 
 #. translators: %s - theme name
-#: inc/core/admin.php:226
+#: inc/core/admin.php:228
 msgid "%s is now installed and ready to use. We've assembled some links to get you started."
 msgstr ""
 
-#: inc/core/admin.php:235
+#: inc/core/admin.php:237
 msgid "Try one of our ready to use Starter Sites"
 msgstr ""
 
-#: inc/core/admin.php:240
+#: inc/core/admin.php:242
 msgid "Return to your dashboard"
 msgstr ""
 
-#: inc/core/admin.php:246
+#: inc/core/admin.php:248
 msgid "or go to the theme settings"
 msgstr ""
 
-#: inc/core/admin.php:257
+#: inc/core/admin.php:259
 msgid "Sites Library"
 msgstr ""
 
-#: inc/core/admin.php:265
+#: inc/core/admin.php:267
 #: dashboard/build/dashboard.js:1
 #: dashboard/src/Components/Content/Help.js:43
 msgid "Documentation"
