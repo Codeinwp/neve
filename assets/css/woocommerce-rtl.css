@@ -25,7 +25,7 @@
 .woocommerce a.added_to_cart,
 .woocommerce .checkout_coupon button.button,
 .woocommerce #review_form #respond input#submit, .woocommerce ul[id^="nv-primary-navigation"] .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout),
-.woocommerce .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout), ul[id^="nv-primary-navigation"] .nv-nav-cart a.button.wc-forward:not(.checkout), ul[id^="nv-primary-navigation"] .nv-nav-cart a.button.checkout.wc-forward {
+.woocommerce .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout), ul[id^="nv-primary-navigation"] .nv-nav-cart a.button.wc-forward:not(.checkout), ul[id^="nv-primary-navigation"] .nv-nav-cart a.button.checkout.wc-forward, .wc-block-components-product-button .wp-block-button__link.add_to_cart_button {
   font-size: .8em;
   font-weight: 600;
   padding: 8px 12px;
@@ -57,7 +57,7 @@
 .woocommerce a.added_to_cart:hover,
 .woocommerce .checkout_coupon button.button:hover,
 .woocommerce #review_form #respond input#submit:hover, .woocommerce ul[id^="nv-primary-navigation"] .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:hover:not(.checkout),
-.woocommerce .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:hover:not(.checkout), ul[id^="nv-primary-navigation"] .nv-nav-cart a.button.wc-forward:hover:not(.checkout), ul[id^="nv-primary-navigation"] .nv-nav-cart a.button.checkout.wc-forward:hover {
+.woocommerce .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:hover:not(.checkout), ul[id^="nv-primary-navigation"] .nv-nav-cart a.button.wc-forward:hover:not(.checkout), ul[id^="nv-primary-navigation"] .nv-nav-cart a.button.checkout.wc-forward:hover, .wc-block-components-product-button .wp-block-button__link.add_to_cart_button:hover {
   text-decoration: none;
   opacity: .9;
 }
@@ -100,7 +100,7 @@
 .woocommerce a.product_type_external,
 .woocommerce a.product_type_variable,
 .woocommerce .return-to-shop > .button,
-.woocommerce .button.woocommerce-form-login__submit, ul[id^="nv-primary-navigation"] .nv-nav-cart a.button.checkout.wc-forward {
+.woocommerce .button.woocommerce-form-login__submit, ul[id^="nv-primary-navigation"] .nv-nav-cart a.button.checkout.wc-forward, .wc-block-components-product-button .wp-block-button__link.add_to_cart_button {
   background-color: #0366d6;
   color: #fff;
 }
@@ -118,7 +118,7 @@
 .woocommerce a.product_type_external:hover,
 .woocommerce a.product_type_variable:hover,
 .woocommerce .return-to-shop > .button:hover,
-.woocommerce .button.woocommerce-form-login__submit:hover, ul[id^="nv-primary-navigation"] .nv-nav-cart a.button.checkout.wc-forward:hover {
+.woocommerce .button.woocommerce-form-login__submit:hover, ul[id^="nv-primary-navigation"] .nv-nav-cart a.button.checkout.wc-forward:hover, .wc-block-components-product-button .wp-block-button__link.add_to_cart_button:hover {
   text-decoration: none;
   background-color: #0366d6;
   color: #fff;
@@ -956,6 +956,21 @@ section.exclusive .tns-visually-hidden {
 
 .woocommerce-checkout .woocommerce-columns--addresses .woocommerce-column {
   max-width: 50%;
+}
+
+.woocommerce-checkout .select2,
+.woocommerce-checkout .select2-results__option,
+.woocommerce-checkout form.woocommerce-checkout .form-row label.checkbox {
+  font-family: Arial;
+  font-size: 14px;
+  line-height: 1;
+  letter-spacing: 0;
+  font-weight: 400;
+  text-transform: none;
+}
+
+.woocommerce-checkout #order_review {
+  word-break: break-word;
 }
 
 .place-order noscript {

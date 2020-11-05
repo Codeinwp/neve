@@ -522,6 +522,7 @@ class Woocommerce {
 	 */
 	public function add_typeface_selectors( $array ) {
 		$array['h1'] = $array['h1'] . ', .woocommerce.single .product_title';
+		$array['h3'] = $array['h3'] . ', .woocommerce-billing-fields > h3, .woocommerce-shipping-fields > h3';
 
 		return $array;
 	}
@@ -534,7 +535,7 @@ class Woocommerce {
 	 * @return string
 	 */
 	public function add_font_families( $selectors ) {
-		$selectors .= ',.cart_totals > h2, .cross-sells > h2, .woocommerce-billing-fields > h3, #order_review_heading, .woocommerce-shipping-fields > h3';
+		$selectors .= ',.cart_totals > h2, .cross-sells > h2, #order_review_heading';
 
 		return $selectors;
 	}

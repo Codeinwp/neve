@@ -304,6 +304,21 @@
       max-width: 50%;
     }
   }
+
+  .select2,
+  .select2-results__option,
+  form.woocommerce-checkout .form-row label.checkbox{
+	font-family: Arial;
+	font-size: 14px;
+	line-height: 1;
+	letter-spacing: 0;
+	font-weight: 400;
+	text-transform: none;
+  }
+
+  #order_review {
+	word-break: break-word;
+  }
 }
 
 @mixin checkout--laptop() {

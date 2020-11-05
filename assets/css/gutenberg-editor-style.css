@@ -153,11 +153,11 @@
   color: #404248;
 }
 
-.editor-styles-wrapper .wp-block a {
+.editor-styles-wrapper .wp-block a:not(.wp-block-button__link) {
   color: #0366d6;
 }
 
-.editor-styles-wrapper .wp-block a:hover {
+.editor-styles-wrapper .wp-block a:not(.wp-block-button__link):hover {
   color: #0366d6;
   text-decoration: none;
 }
