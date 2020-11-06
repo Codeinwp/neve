@@ -40,8 +40,8 @@ function neve_get_button_appearance_default( $button = 'button' ) {
 
 		return $defaults;
 	}
-	$defaults['background']      = get_theme_mod( 'neve_button_color' ) ? get_theme_mod( 'neve_button_color' ) : '#0366d6';
-	$defaults['backgroundHover'] = get_theme_mod( 'neve_button_hover_color' ) ? get_theme_mod( 'neve_button_hover_color' ) : '#0366d6';
+	$defaults['background']      = get_theme_mod( 'neve_button_color' ) ? get_theme_mod( 'neve_button_color' ) : 'var(--nv-primary-accent)';
+	$defaults['backgroundHover'] = get_theme_mod( 'neve_button_hover_color' ) ? get_theme_mod( 'neve_button_hover_color' ) : 'var(--nv-primary-accent)';
 	$defaults['text']            = get_theme_mod( 'neve_button_text_color' ) ? get_theme_mod( 'neve_button_text_color' ) : '#ffffff';
 	$defaults['textHover']       = get_theme_mod( 'neve_button_hover_text_color' ) ? get_theme_mod( 'neve_button_hover_text_color' ) : '#ffffff';
 	$defaults['borderRadius']    = get_theme_mod( 'neve_button_border_radius' ) ? get_theme_mod( 'neve_button_border_radius' ) : 3;
