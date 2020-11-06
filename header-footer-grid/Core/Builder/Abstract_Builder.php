@@ -1251,15 +1251,8 @@ abstract class Abstract_Builder implements Builder {
 		];
 
 		$row_setting_id = $this->control_id . '_' . $row_id;
-		$builder        = $this->get_id();
-
-		$background = $bg_color_map['background']['light-mode'];
-		$text       = $bg_color_map['text']['light-mode'];
-
-		if ( $builder === 'footer' && $row_id === 'bottom' ) {
-			$background = $bg_color_map['background']['dark-mode'];
-			$text       = $bg_color_map['text']['dark-mode'];
-		}
+		$background     = $bg_color_map['background']['light-mode'];
+		$text           = $bg_color_map['text']['light-mode'];
 
 		$old_skin = get_theme_mod( $row_setting_id . '_' . self::SKIN_SETTING );
 		if ( ! empty( $old_skin ) ) {
