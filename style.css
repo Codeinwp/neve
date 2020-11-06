@@ -1672,11 +1672,8 @@ body .layout-grid > .article-content-col, .layout-grid {
   transition: all 0.3s ease;
   border-radius: 3px;
   margin: 0 10px 10px 0;
-  border: 1px solid;
-}
-
-.nv-tags-list a:hover {
-  color: #fff;
+  color: var(--nv-primary-accent);
+  border: 1px solid var(--nv-primary-accent);
 }
 
 #comments {

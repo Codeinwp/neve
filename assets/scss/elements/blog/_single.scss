@@ -95,11 +95,9 @@
     padding: 2px $spacing-xs;
     transition: $transition_med;
     border-radius: 3px;
-	margin: 0 $spacing-xs $spacing-xs 0;
-    border: 1px solid;
-    &:hover {
-      color: #fff;
-    }
+		margin: 0 $spacing-xs $spacing-xs 0;
+		color: var(--nv-primary-accent);
+    border: 1px solid var(--nv-primary-accent);
   }
 }
 
