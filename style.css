@@ -706,10 +706,6 @@ blockquote.wp-block-quote.is-style-large cite {
   opacity: .9;
 }
 
-.nv-navbar {
-  background-color: #fff;
-}
-
 .nav-ul > li:not(:last-child) {
   margin-right: 20px;
 }
