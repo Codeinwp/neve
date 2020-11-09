@@ -19,7 +19,7 @@
   "devDependencies": {
     "@babel/core": "^7.12.3",
     "@babel/preset-env": "^7.12.1",
-    "core-js": "^3.6.5",
+    "core-js": "^3.7.0",
     "cssnano": "^4.1.10",
     "eslint": "^7.12.1",
     "eslint-config-standard": "^15.0.0",
