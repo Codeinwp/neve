@@ -19,7 +19,7 @@
     "css-loader": "^5.0.1",
     "eslint": "^7.12.1",
     "eslint-config-react": "^1.1.7",
-    "eslint-config-standard": "^14.1.1",
+    "eslint-config-standard": "^16.0.1",
     "eslint-config-standard-react": "^9.2.0",
     "eslint-loader": "^4.0.2",
     "eslint-plugin-html": "^6.1.0",
