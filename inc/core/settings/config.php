@@ -13,22 +13,36 @@ namespace Neve\Core\Settings;
  * @package Neve\Core\Settings
  */
 class Config {
-
-	const MODS_LINK_COLOR                  = 'neve_link_color';
-	const MODS_LINK_HOVER_COLOR            = 'neve_link_hover_color';
-	const MODS_GLOBAL_COLORS               = 'neve_global_colors';
-	const MODS_TEXT_COLOR                  = 'neve_text_color';
-	const MODS_CONTAINER_WIDTH             = 'neve_container_width';
-	const MODS_SITEWIDE_CONTENT_WIDTH      = 'neve_sitewide_content_width';
-	const MODS_OTHERS_CONTENT_WIDTH        = 'neve_other_pages_content_width';
-	const MODS_ARCHIVE_CONTENT_WIDTH       = 'neve_blog_archive_content_width';
-	const MODS_SINGLE_CONTENT_WIDTH        = 'neve_single_post_content_width';
-	const MODS_SHOP_ARCHIVE_CONTENT_WIDTH  = 'neve_shop_archive_content_width';
-	const MODS_SHOP_SINGLE_CONTENT_WIDTH   = 'neve_single_product_content_width';
-	const MODS_ADVANCED_LAYOUT_OPTIONS     = 'neve_advanced_layout_options';
-	const MODS_BUTTON_PRIMARY_STYLE        = 'neve_button_appearance';
-	const MODS_BUTTON_SECONDARY_STYLE      = 'neve_secondary_button_appearance';
-	const MODS_BUTTON_PRIMARY_PADDING      = 'neve_button_padding';
+	/**
+	 * Link color - deprecated.
+	 *
+	 * @deprecated
+	 */
+	const MODS_LINK_COLOR = 'neve_link_color';
+	/**
+	 * Link hover color - deprecated.
+	 *
+	 * @deprecated
+	 */
+	const MODS_LINK_HOVER_COLOR           = 'neve_link_hover_color';
+	const MODS_GLOBAL_COLORS              = 'neve_global_colors';
+	const MODS_TEXT_COLOR                 = 'neve_text_color';
+	const MODS_CONTAINER_WIDTH            = 'neve_container_width';
+	const MODS_SITEWIDE_CONTENT_WIDTH     = 'neve_sitewide_content_width';
+	const MODS_OTHERS_CONTENT_WIDTH       = 'neve_other_pages_content_width';
+	const MODS_ARCHIVE_CONTENT_WIDTH      = 'neve_blog_archive_content_width';
+	const MODS_SINGLE_CONTENT_WIDTH       = 'neve_single_post_content_width';
+	const MODS_SHOP_ARCHIVE_CONTENT_WIDTH = 'neve_shop_archive_content_width';
+	const MODS_SHOP_SINGLE_CONTENT_WIDTH  = 'neve_single_product_content_width';
+	const MODS_ADVANCED_LAYOUT_OPTIONS    = 'neve_advanced_layout_options';
+	const MODS_BUTTON_PRIMARY_STYLE       = 'neve_button_appearance';
+	const MODS_BUTTON_SECONDARY_STYLE     = 'neve_secondary_button_appearance';
+	const MODS_BUTTON_PRIMARY_PADDING     = 'neve_button_padding';
+	/**
+	 * Background color - deprecated.
+	 *
+	 * @deprecated
+	 */
 	const MODS_BACKGROUND_COLOR            = 'background_color';
 	const MODS_BUTTON_SECONDARY_PADDING    = 'neve_secondary_button_padding';
 	const MODS_TYPEFACE_GENERAL            = 'neve_typeface_general';
