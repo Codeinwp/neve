@@ -300,23 +300,31 @@ class Gutenberg extends Generator {
 	 * Adds colors from the editor-color-palette theme support.
 	 */
 	private function add_editor_color_palette_styles() {
-		$theme_support = get_theme_support( 'editor-color-palette' );
-		$theme_support = reset( $theme_support );
-		foreach ( $theme_support as $palette_color ) {
-			if ( ! isset( $palette_color['slug'] ) || ! isset( $palette_color['theme_mod'] ) ) {
-				continue;
-			}
-			$selector             = '.has-' . $palette_color['slug'] . '-color';
-			$this->_subscribers[] = [
-				Dynamic_Selector::KEY_SELECTOR => $selector,
-				Dynamic_Selector::KEY_RULES    => [
-					Config::CSS_PROP_COLOR => $palette_color['theme_mod'],
-				],
-				Dynamic_Selector::KEY_CONTEXT  => [
+		$is_new_user           = get_option( 'neve_new_user' );
+		$imported_starter_site = get_option( 'neve_imported_demo' );
+		if ( $is_new_user === 'yes' && $imported_starter_site !== 'yes' ) {
+			return;
+		}
+
+		$this->_subscribers['.has-neve-button-color-color']            = [
+			Config::CSS_PROP_COLOR => [
+				Dynamic_Selector::META_KEY       => Config::MODS_BUTTON_PRIMARY_STYLE . '.background',
+				Dynamic_Selector::META_IMPORTANT => true,
+				Dynamic_Selector::META_DEFAULT   => '#0366d6',
+				Dynamic_Selector::KEY_CONTEXT    => [
 					Dynamic_Selector::CONTEXT_GUTENBERG => true,
 				],
-
-			];
-		}
+			],
+		];
+		$this->_subscribers['.has-neve-button-color-background-color'] = [
+			Config::CSS_PROP_BACKGROUND_COLOR => [
+				Dynamic_Selector::META_KEY       => Config::MODS_BUTTON_PRIMARY_STYLE . '.background',
+				Dynamic_Selector::META_IMPORTANT => true,
+				Dynamic_Selector::META_DEFAULT   => '#0366d6',
+				Dynamic_Selector::KEY_CONTEXT    => [
+					Dynamic_Selector::CONTEXT_GUTENBERG => true,
+				],
+			],
+		];
 	}
 }

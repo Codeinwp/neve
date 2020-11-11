@@ -8,11 +8,11 @@ html {
 
 body {
   font-family: $default-font-family;
-  color: $body-color;
+  color: var(--nv-text-color);
   line-height: $line-height-base;
   overflow-x: hidden;
   direction: ltr;
-  background-color: #fff;
+  background-color: var(--nv-site-bg);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -30,12 +30,12 @@ p {
 
 a {
   cursor: pointer;
-  color: $link_color;
+  color: var(--nv-primary-accent);
   text-decoration: none;
   &:hover,
   &:focus {
     text-decoration: underline;
-    color: $link_hover_color;
+    color: var(--nv-secondary-accent);
   }
 }
 

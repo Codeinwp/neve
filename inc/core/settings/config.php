@@ -16,6 +16,7 @@ class Config {
 
 	const MODS_LINK_COLOR                  = 'neve_link_color';
 	const MODS_LINK_HOVER_COLOR            = 'neve_link_hover_color';
+	const MODS_GLOBAL_COLORS               = 'neve_global_colors';
 	const MODS_TEXT_COLOR                  = 'neve_text_color';
 	const MODS_CONTAINER_WIDTH             = 'neve_container_width';
 	const MODS_SITEWIDE_CONTENT_WIDTH      = 'neve_sitewide_content_width';
@@ -133,7 +134,6 @@ class Config {
 				ul[id^="nv-primary-navigation"] li.button.button-primary > a,
 				.menu li.button.button-primary > a,  .wp-block-button.is-style-primary .wp-block-button__link,  .wc-block-grid .wp-block-button .wp-block-button__link',
 		self::CSS_SELECTOR_BTN_PRIMARY_HOVER         => '.button.button-primary:hover,
-				.nv-tags-list a:hover,
 				ul[id^="nv-primary-navigation"] li.button.button-primary > a:hover,
 				.menu li.button.button-primary > a:hover, .wp-block-button.is-style-primary .wp-block-button__link:hover,  .wc-block-grid .wp-block-button .wp-block-button__link:hover',
 		self::CSS_SELECTOR_BTN_SECONDARY_NORMAL      => '.button.button-secondary, #comments input[type="submit"], #comments input[type=submit], .cart-off-canvas .button.nv-close-cart-sidebar,  .wp-block-button.is-style-secondary .wp-block-button__link',
