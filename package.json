@@ -1,7 +1,7 @@
 {
 	"name": "neve",
 	"nicename": "Neve",
-	"version": "2.8.3",
+	"version": "2.8.4",
 	"description": "Neve theme by ThemeIsle",
 	"category": "themes",
 	"repository": {
@@ -127,7 +127,7 @@
 			"gzip": false,
 			"running": false,
 			"webpack": false,
-			"limit": "45 KB",
+			"limit": "46.5 KB",
 			"path": "style.min.css"
 		}
 	],

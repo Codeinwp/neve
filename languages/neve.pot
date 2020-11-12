@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-11-05T13:34:13+00:00\n"
+"POT-Creation-Date: 2020-11-10T07:17:47+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -341,6 +341,16 @@ msgstr ""
 msgid "upgrading PHP to the latest version"
 msgstr ""
 
+#: dist/neve/globals/utilities.php:1337
+#: globals/utilities.php:1337
+msgid "Base"
+msgstr ""
+
+#: dist/neve/globals/utilities.php:1352
+#: globals/utilities.php:1352
+msgid "Dark Mode"
+msgstr ""
+
 #: dist/neve/header-footer-grid/Core/Builder/Abstract_Builder.php:303
 #: dist/neve/header-footer-grid/Core/Settings/Manager.php:181
 #: dist/neve/inc/customizer/options/layout_blog.php:117
@@ -392,16 +402,18 @@ msgstr ""
 #: dist/neve/header-footer-grid/Core/Components/Copyright.php:84
 #: dist/neve/header-footer-grid/Core/Components/CustomHtml.php:163
 #: dist/neve/header-footer-grid/Core/Components/Logo.php:205
-#: dist/neve/inc/core/front_end.php:206
-#: dist/neve/inc/customizer/options/colors_background.php:66
+#: dist/neve/inc/compatibility/elementor.php:116
 #: dist/neve/inc/customizer/options/layout_blog.php:184
 #: header-footer-grid/Core/Builder/Abstract_Builder.php:385
 #: header-footer-grid/Core/Components/Copyright.php:84
 #: header-footer-grid/Core/Components/CustomHtml.php:163
 #: header-footer-grid/Core/Components/Logo.php:205
-#: inc/core/front_end.php:206
-#: inc/customizer/options/colors_background.php:66
+#: inc/compatibility/elementor.php:116
 #: inc/customizer/options/layout_blog.php:184
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/common/common.js:77
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/common/common.js:77
 msgid "Text Color"
 msgstr ""
 
@@ -417,45 +429,45 @@ msgstr ""
 msgid "Section Content"
 msgstr ""
 
-#: dist/neve/header-footer-grid/Core/Builder/Abstract_Builder.php:1290
+#: dist/neve/header-footer-grid/Core/Builder/Abstract_Builder.php:1279
 #: dist/neve/header-footer-grid/Core/Components/SearchResponsive.php:113
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1290
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1279
 #: header-footer-grid/Core/Components/SearchResponsive.php:113
 msgid "Open Behaviour"
 msgstr ""
 
-#: dist/neve/header-footer-grid/Core/Builder/Abstract_Builder.php:1295
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1295
+#: dist/neve/header-footer-grid/Core/Builder/Abstract_Builder.php:1284
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1284
 msgid "Slide from Left"
 msgstr ""
 
-#: dist/neve/header-footer-grid/Core/Builder/Abstract_Builder.php:1296
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1296
+#: dist/neve/header-footer-grid/Core/Builder/Abstract_Builder.php:1285
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1285
 msgid "Slide from Right"
 msgstr ""
 
-#: dist/neve/header-footer-grid/Core/Builder/Abstract_Builder.php:1297
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1297
+#: dist/neve/header-footer-grid/Core/Builder/Abstract_Builder.php:1286
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1286
 msgid "Pull from Left"
 msgstr ""
 
-#: dist/neve/header-footer-grid/Core/Builder/Abstract_Builder.php:1298
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1298
+#: dist/neve/header-footer-grid/Core/Builder/Abstract_Builder.php:1287
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1287
 msgid "Pull from Right"
 msgstr ""
 
-#: dist/neve/header-footer-grid/Core/Builder/Abstract_Builder.php:1299
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1299
+#: dist/neve/header-footer-grid/Core/Builder/Abstract_Builder.php:1288
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1288
 msgid "Full Canvas"
 msgstr ""
 
-#: dist/neve/header-footer-grid/Core/Builder/Abstract_Builder.php:1300
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1300
+#: dist/neve/header-footer-grid/Core/Builder/Abstract_Builder.php:1289
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1289
 msgid "Slide Down"
 msgstr ""
 
-#: dist/neve/header-footer-grid/Core/Builder/Abstract_Builder.php:1315
-#: header-footer-grid/Core/Builder/Abstract_Builder.php:1315
+#: dist/neve/header-footer-grid/Core/Builder/Abstract_Builder.php:1304
+#: header-footer-grid/Core/Builder/Abstract_Builder.php:1304
 msgid "Sidebar Width"
 msgstr ""
 
@@ -714,30 +726,30 @@ msgid "Arbitrary HTML code. It supports also shortcodes."
 msgstr ""
 
 #: dist/neve/header-footer-grid/Core/Components/FooterWidgetFour.php:32
-#: dist/neve/inc/core/front_end.php:535
+#: dist/neve/inc/core/front_end.php:505
 #: header-footer-grid/Core/Components/FooterWidgetFour.php:32
-#: inc/core/front_end.php:535
+#: inc/core/front_end.php:505
 msgid "Footer Four"
 msgstr ""
 
 #: dist/neve/header-footer-grid/Core/Components/FooterWidgetOne.php:31
-#: dist/neve/inc/core/front_end.php:532
+#: dist/neve/inc/core/front_end.php:502
 #: header-footer-grid/Core/Components/FooterWidgetOne.php:31
-#: inc/core/front_end.php:532
+#: inc/core/front_end.php:502
 msgid "Footer One"
 msgstr ""
 
 #: dist/neve/header-footer-grid/Core/Components/FooterWidgetThree.php:31
-#: dist/neve/inc/core/front_end.php:534
+#: dist/neve/inc/core/front_end.php:504
 #: header-footer-grid/Core/Components/FooterWidgetThree.php:31
-#: inc/core/front_end.php:534
+#: inc/core/front_end.php:504
 msgid "Footer Three"
 msgstr ""
 
 #: dist/neve/header-footer-grid/Core/Components/FooterWidgetTwo.php:32
-#: dist/neve/inc/core/front_end.php:533
+#: dist/neve/inc/core/front_end.php:503
 #: header-footer-grid/Core/Components/FooterWidgetTwo.php:32
-#: inc/core/front_end.php:533
+#: inc/core/front_end.php:503
 msgid "Footer Two"
 msgstr ""
 
@@ -1336,9 +1348,9 @@ msgid "No Sidebar"
 msgstr ""
 
 #: dist/neve/inc/admin/metabox/main.php:56
-#: dist/neve/inc/core/front_end.php:525
+#: dist/neve/inc/core/front_end.php:495
 #: inc/admin/metabox/main.php:56
-#: inc/core/front_end.php:525
+#: inc/core/front_end.php:495
 #: dist/neve/inc/admin/metabox/src/components/MetaFieldsManager.js:116
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:116
 msgid "Sidebar"
@@ -1499,6 +1511,78 @@ msgstr ""
 msgid "Two columns with text"
 msgstr ""
 
+#: dist/neve/inc/compatibility/elementor.php:111
+#: inc/compatibility/elementor.php:111
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/common/common.js:72
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/common/common.js:72
+msgid "Primary Accent"
+msgstr ""
+
+#: dist/neve/inc/compatibility/elementor.php:112
+#: inc/compatibility/elementor.php:112
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/common/common.js:73
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/common/common.js:73
+msgid "Secondary Accent"
+msgstr ""
+
+#: dist/neve/inc/compatibility/elementor.php:113
+#: inc/compatibility/elementor.php:113
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/common/common.js:74
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/common/common.js:74
+msgid "Site Background"
+msgstr ""
+
+#: dist/neve/inc/compatibility/elementor.php:114
+#: inc/compatibility/elementor.php:114
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/common/common.js:75
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/common/common.js:75
+msgid "Light Background"
+msgstr ""
+
+#: dist/neve/inc/compatibility/elementor.php:115
+#: inc/compatibility/elementor.php:115
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/common/common.js:76
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/common/common.js:76
+msgid "Dark Background"
+msgstr ""
+
+#: dist/neve/inc/compatibility/elementor.php:117
+#: inc/compatibility/elementor.php:117
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/common/common.js:78
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/common/common.js:78
+msgid "Text Dark Background"
+msgstr ""
+
+#: dist/neve/inc/compatibility/elementor.php:118
+#: inc/compatibility/elementor.php:118
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/common/common.js:79
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/common/common.js:79
+msgid "Extra Color 1"
+msgstr ""
+
+#: dist/neve/inc/compatibility/elementor.php:119
+#: inc/compatibility/elementor.php:119
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/common/common.js:80
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/common/common.js:80
+msgid "Extra Color 2"
+msgstr ""
+
 #: dist/neve/inc/compatibility/lifter.php:314
 #: inc/compatibility/lifter.php:314
 msgid "Catalog Sidebar"
@@ -1558,52 +1642,53 @@ msgstr ""
 msgid "Documentation"
 msgstr ""
 
-#: dist/neve/inc/core/front_end.php:176
-#: inc/core/front_end.php:176
-msgid "Black"
+#: dist/neve/inc/core/front_end.php:175
+#: inc/core/front_end.php:175
+msgid "Neve - Primary Accent"
 msgstr ""
 
-#: dist/neve/inc/core/front_end.php:185
-#: inc/core/front_end.php:185
-msgid "White"
+#: dist/neve/inc/core/front_end.php:179
+#: inc/core/front_end.php:179
+msgid "Neve - Secondary Accent"
 msgstr ""
 
-#: dist/neve/inc/core/front_end.php:194
-#: inc/core/front_end.php:194
-msgid "Button Color"
+#: dist/neve/inc/core/front_end.php:183
+#: inc/core/front_end.php:183
+msgid "Neve - Site Background"
 msgstr ""
 
-#: dist/neve/inc/core/front_end.php:198
-#: dist/neve/inc/customizer/options/colors_background.php:56
-#: inc/core/front_end.php:198
-#: inc/customizer/options/colors_background.php:56
-msgid "Link Color"
+#: dist/neve/inc/core/front_end.php:187
+#: inc/core/front_end.php:187
+msgid "Neve - Light Background"
 msgstr ""
 
-#: dist/neve/inc/core/front_end.php:202
-#: dist/neve/inc/customizer/options/colors_background.php:61
-#: inc/core/front_end.php:202
-#: inc/customizer/options/colors_background.php:61
-msgid "Link Hover Color"
+#: dist/neve/inc/core/front_end.php:191
+#: inc/core/front_end.php:191
+msgid "Neve - Dark Background"
 msgstr ""
 
-#: dist/neve/inc/core/front_end.php:210
-#: inc/core/front_end.php:210
-msgid "Button text color"
+#: dist/neve/inc/core/front_end.php:195
+#: inc/core/front_end.php:195
+msgid "Neve - Text Color"
 msgstr ""
 
-#: dist/neve/inc/core/front_end.php:214
-#: inc/core/front_end.php:214
-msgid "Button Hover text color"
+#: dist/neve/inc/core/front_end.php:199
+#: inc/core/front_end.php:199
+msgid "Neve - Text Dark Background"
 msgstr ""
 
-#: dist/neve/inc/core/front_end.php:218
-#: inc/core/front_end.php:218
-msgid "Button Hover Color"
+#: dist/neve/inc/core/front_end.php:203
+#: inc/core/front_end.php:203
+msgid "Neve - Extra Color 1"
 msgstr ""
 
-#: dist/neve/inc/core/front_end.php:526
-#: inc/core/front_end.php:526
+#: dist/neve/inc/core/front_end.php:207
+#: inc/core/front_end.php:207
+msgid "Neve - Extra Color 2"
+msgstr ""
+
+#: dist/neve/inc/core/front_end.php:496
+#: inc/core/front_end.php:496
 msgid "Shop Sidebar"
 msgstr ""
 
@@ -1644,9 +1729,18 @@ msgstr ""
 msgid "Button Text"
 msgstr ""
 
-#: dist/neve/inc/customizer/options/colors_background.php:42
-#: inc/customizer/options/colors_background.php:42
+#: dist/neve/inc/customizer/options/colors_background.php:43
+#: inc/customizer/options/colors_background.php:43
 msgid "Colors & Background"
+msgstr ""
+
+#: dist/neve/inc/customizer/options/colors_background.php:91
+#: inc/customizer/options/colors_background.php:91
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/common/GlobalColorsPicker.js:28
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/common/GlobalColorsPicker.js:28
+msgid "Global Colors"
 msgstr ""
 
 #: dist/neve/inc/customizer/options/layout_blog.php:80
@@ -2046,7 +2140,7 @@ msgstr ""
 #: dashboard/src/Components/Content/Help.js:37
 #: dashboard/src/Components/Content/Help.js:73
 #: dashboard/src/Components/Content/Help.js:101
-#: dashboard/src/Components/ModuleCard.js:153
+#: dashboard/src/Components/ModuleCard.js:146
 #: dist/neve/dashboard/build/dashboard.js:1
 msgid "Learn More"
 msgstr ""
@@ -2132,6 +2226,10 @@ msgstr ""
 #: dist/neve/inc/views/partials/comments.php:138
 #: inc/views/partials/comments.php:107
 #: inc/views/partials/comments.php:138
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/common/CustomPalette.js:22
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/common/CustomPalette.js:22
 msgid "Edit"
 msgstr ""
 
@@ -2269,25 +2367,25 @@ msgid "Save"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/ModuleCard.js:86
+#: dashboard/src/Components/ModuleCard.js:79
 #: dist/neve/dashboard/build/dashboard.js:1
 msgid "Upgrade"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/ModuleCard.js:120
+#: dashboard/src/Components/ModuleCard.js:113
 #: dist/neve/dashboard/build/dashboard.js:1
 msgid "Module Activated"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/ModuleCard.js:124
+#: dashboard/src/Components/ModuleCard.js:117
 #: dist/neve/dashboard/build/dashboard.js:1
 msgid "Module Deactivated."
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/ModuleCard.js:134
+#: dashboard/src/Components/ModuleCard.js:127
 #: dist/neve/dashboard/build/dashboard.js:1
 msgid "Could not activate module. Please try again."
 msgstr ""
@@ -2701,9 +2799,9 @@ msgid "Mobile"
 msgstr ""
 
 #: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
-#: dist/neve/inc/customizer/controls/react/src/common/ColorControl.js:59
+#: dist/neve/inc/customizer/controls/react/src/common/ColorControl.js:80
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/common/ColorControl.js:59
+#: inc/customizer/controls/react/src/common/ColorControl.js:80
 msgid "Clear"
 msgstr ""
 
@@ -3110,4 +3208,85 @@ msgstr ""
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/ordering/OrderingComponent.js:35
 msgid "Toggle Visibility"
+msgstr ""
+
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
+#: dist/neve/inc/customizer/controls/react/src/global-colors/PaletteSelector.js:58
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:58
+msgid "Remove Palette"
+msgstr ""
+
+#. translators: %s - name of palette that will be deleted.
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:2
+#: dist/neve/inc/customizer/controls/react/src/global-colors/PaletteSelector.js:70
+#: inc/customizer/controls/react/bundle/controls.js:2
+#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:70
+msgid "Are you sure you want to delete the %s palette?"
+msgstr ""
+
+#. translators: %s - name of palette that will be deleted.
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:2
+#: dist/neve/inc/customizer/controls/react/src/global-colors/PaletteSelector.js:78
+#: inc/customizer/controls/react/bundle/controls.js:2
+#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:78
+msgid "If this is the currently active palette, the current palette will be switched to the Base one."
+msgstr ""
+
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:2
+#: dist/neve/inc/customizer/controls/react/src/global-colors/PaletteSelector.js:89
+#: inc/customizer/controls/react/bundle/controls.js:2
+#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:89
+msgid "Delete"
+msgstr ""
+
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:2
+#: dist/neve/inc/customizer/controls/react/src/global-colors/PaletteForm.js:89
+#: dist/neve/inc/customizer/controls/react/src/global-colors/PaletteSelector.js:98
+#: inc/customizer/controls/react/bundle/controls.js:2
+#: inc/customizer/controls/react/src/global-colors/PaletteForm.js:89
+#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:98
+msgid "Cancel"
+msgstr ""
+
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:2
+#: dist/neve/inc/customizer/controls/react/src/global-colors/Accordion.js:18
+#: inc/customizer/controls/react/bundle/controls.js:2
+#: inc/customizer/controls/react/src/global-colors/Accordion.js:18
+msgid "Palette Colors"
+msgstr ""
+
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:2
+#: dist/neve/inc/customizer/controls/react/src/global-colors/PaletteColors.js:77
+#: inc/customizer/controls/react/bundle/controls.js:2
+#: inc/customizer/controls/react/src/global-colors/PaletteColors.js:77
+msgid "Reset all to default"
+msgstr ""
+
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:2
+#: dist/neve/inc/customizer/controls/react/src/global-colors/PaletteForm.js:61
+#: inc/customizer/controls/react/bundle/controls.js:2
+#: inc/customizer/controls/react/src/global-colors/PaletteForm.js:61
+msgid "Palette Title"
+msgstr ""
+
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:2
+#: dist/neve/inc/customizer/controls/react/src/global-colors/PaletteForm.js:67
+#: inc/customizer/controls/react/bundle/controls.js:2
+#: inc/customizer/controls/react/src/global-colors/PaletteForm.js:67
+msgid "Extend from:"
+msgstr ""
+
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:2
+#: dist/neve/inc/customizer/controls/react/src/global-colors/PaletteForm.js:98
+#: inc/customizer/controls/react/bundle/controls.js:2
+#: inc/customizer/controls/react/src/global-colors/PaletteForm.js:98
+msgid "Add"
+msgstr ""
+
+#: dist/neve/inc/customizer/controls/react/bundle/controls.js:2
+#: dist/neve/inc/customizer/controls/react/src/global-colors/GlobalColors.js:63
+#: inc/customizer/controls/react/bundle/controls.js:2
+#: inc/customizer/controls/react/src/global-colors/GlobalColors.js:63
+msgid "How the color system works"
 msgstr ""

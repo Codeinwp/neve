@@ -1,9 +1,16 @@
 import PropTypes from 'prop-types';
-
+import GlobalColorsPicker from '../common/GlobalColorsPicker';
 import { ColorPicker, Button, Dropdown } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
+import classnames from 'classnames';
 
-const ColorControl = ( { label, selectedColor, onChange, defaultValue } ) => {
+const ColorControl = ( {
+	label,
+	selectedColor,
+	onChange,
+	defaultValue,
+	disableGlobal,
+} ) => {
 	let toggle = null;
 
 	const handleChange = ( value ) => {
@@ -15,17 +22,31 @@ const ColorControl = ( { label, selectedColor, onChange, defaultValue } ) => {
 		onChange( value.hex );
 	};
 
+	const isGlobal = selectedColor.indexOf( 'var' ) > -1;
+
 	const handleClear = () => {
 		onChange( defaultValue || '' );
 		toggle();
 	};
 
+	const wrapClasses = classnames( [
+		'neve-control-header',
+		'neve-color-component',
+		{ 'allows-global': ! disableGlobal },
+	] );
+
 	return (
-		<div className="neve-control-header neve-color-component">
+		<div className={ wrapClasses }>
 			{ label && (
 				<span className="customize-control-title">{ label }</span>
 			) }
-
+			{ ! disableGlobal && (
+				<GlobalColorsPicker
+					isGlobal={ isGlobal }
+					activeColor={ selectedColor }
+					onChange={ onChange }
+				/>
+			) }
 			<Dropdown
 				renderToggle={ ( { isOpen, onToggle } ) => {
 					toggle = onToggle;
@@ -66,11 +87,16 @@ const ColorControl = ( { label, selectedColor, onChange, defaultValue } ) => {
 	);
 };
 
+ColorControl.defaultProps = {
+	disableGlobal: false,
+};
+
 ColorControl.propTypes = {
 	label: PropTypes.string,
 	onChange: PropTypes.func.isRequired,
 	selectedColor: PropTypes.string.isRequired,
 	defaultValue: PropTypes.string,
+	disableGlobal: PropTypes.bool,
 };
 
 export default ColorControl;

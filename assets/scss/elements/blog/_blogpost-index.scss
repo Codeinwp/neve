@@ -2,12 +2,12 @@
   word-wrap: break-word;
 
   a {
-    color: $body-color;
+    color: var(--nv-text-color);
 
     &:hover,
     &:focus {
       opacity: .9;
-      color: $body-color;
+      color: var(--nv-text-color);
     }
   }
 }

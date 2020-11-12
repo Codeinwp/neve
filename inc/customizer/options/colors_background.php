@@ -26,6 +26,7 @@ class Colors_Background extends Base_Customizer {
 	 * @return void
 	 */
 	public function add_controls() {
+		$this->wpc->remove_control( 'background_color' );
 		$this->section_colors_background();
 		$this->controls_colors();
 	}
@@ -49,41 +50,7 @@ class Colors_Background extends Base_Customizer {
 	 * Add colors controls.
 	 */
 	private function controls_colors() {
-		$color_controls = array(
-			'neve_link_color'       => array(
-				'default'  => '#0366d6',
-				'priority' => 15,
-				'label'    => __( 'Link Color', 'neve' ),
-			),
-			'neve_link_hover_color' => array(
-				'default'  => '#0366d6',
-				'priority' => 20,
-				'label'    => __( 'Link Hover Color', 'neve' ),
-			),
-			'neve_text_color'       => array(
-				'default'  => '#404248',
-				'priority' => 25,
-				'label'    => __( 'Text Color', 'neve' ),
-			),
-		);
-
-		foreach ( $color_controls as $control_id => $control_properties ) {
-			$this->add_control(
-				new Control(
-					$control_id,
-					array(
-						'sanitize_callback' => 'neve_sanitize_colors',
-						'default'           => $control_properties['default'],
-					),
-					array(
-						'label'    => $control_properties['label'],
-						'section'  => 'neve_colors_background_section',
-						'priority' => $control_properties['priority'],
-					),
-					'Neve\Customizer\Controls\React\Color'
-				)
-			);
-		}
+		$this->add_global_colors();
 	}
 
 	/**
@@ -92,7 +59,6 @@ class Colors_Background extends Base_Customizer {
 	public function change_controls() {
 		$priority         = 30;
 		$controls_to_move = array(
-			'background_color',
 			'background_image',
 			'background_preset',
 			'background_position',
@@ -107,5 +73,56 @@ class Colors_Background extends Base_Customizer {
 			$control->section  = 'neve_colors_background_section';
 			$priority         += 5;
 		}
+	}
+
+	/**
+	 * Add global colors.
+	 */
+	private function add_global_colors() {
+		$this->add_control(
+			new Control(
+				'neve_global_colors',
+				[
+					'sanitize_callback' => [ $this, 'sanitize_global_colors' ],
+					'default'           => neve_get_global_colors_default( true ),
+					'transport'         => 'postMessage',
+				],
+				[
+					'label'                 => __( 'Global Colors', 'neve' ),
+					'priority'              => 10,
+					'section'               => 'neve_colors_background_section',
+					'type'                  => 'neve_global_colors',
+					'default_values'        => neve_get_global_colors_default(),
+					'live_refresh_selector' => true,
+				],
+				'Neve\Customizer\Controls\React\Global_Colors'
+			)
+		);
+	}
+
+	/**
+	 * Sanitize Global Colors Setting
+	 *
+	 * @param array $value recieved value.
+	 * @return array
+	 */
+	public function sanitize_global_colors( $value ) {
+		// `flag` key is used to trigger setting change on deep state changes inside the palettes.
+		if ( isset( $value['flag'] ) ) {
+			unset( $value['flag'] );
+		}
+
+		$default = neve_get_global_colors_default();
+		if ( ! isset( $value['activePalette'] ) || ! isset( $value['palettes'] ) ) {
+			return $default;
+		}
+
+		foreach ( $value['palettes'] as $slug => $args ) {
+			foreach ( $args['colors'] as $key => $color_val ) {
+				$value['palettes'][ $slug ]['colors'][ $key ] = neve_sanitize_colors( $color_val );
+			}
+		}
+
+		return $value;
 	}
 }

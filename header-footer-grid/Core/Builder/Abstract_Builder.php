@@ -1241,29 +1241,18 @@ abstract class Abstract_Builder implements Builder {
 	private function get_default_row_colors( $row_id ) {
 		$bg_color_map = [
 			'background' => [
-				'dark-mode'  => '#24292e',
-				'light-mode' => '#ffffff',
+				'dark-mode'  => 'var(--nv-dark-bg)',
+				'light-mode' => 'var(--nv-site-bg)',
 			],
 			'text'       => [
-				'dark-mode'  => '#ffffff',
-				'light-mode' => '#404248',
+				'dark-mode'  => 'var(--nv-text-dark-bg)',
+				'light-mode' => 'var(--nv-text-color)',
 			],
 		];
 
 		$row_setting_id = $this->control_id . '_' . $row_id;
-		$builder        = $this->get_id();
-
-		$background = $bg_color_map['background']['light-mode'];
-		$text       = $bg_color_map['text']['light-mode'];
-
-		if ( $builder === 'footer' && $row_id === 'bottom' ) {
-			$background = $bg_color_map['background']['dark-mode'];
-			$text       = $bg_color_map['text']['dark-mode'];
-		}
-
-		if ( $builder === 'header' && $row_id === 'top' ) {
-			$background = '#f0f0f0';
-		}
+		$background     = $bg_color_map['background']['light-mode'];
+		$text           = $bg_color_map['text']['light-mode'];
 
 		$old_skin = get_theme_mod( $row_setting_id . '_' . self::SKIN_SETTING );
 		if ( ! empty( $old_skin ) ) {
