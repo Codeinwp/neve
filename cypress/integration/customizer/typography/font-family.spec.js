@@ -61,28 +61,30 @@ function setFontFamilyControl(controlSelector, fontFamily) {
 			find( '.neve-fonts-list li a' ).
 			contains( fontFamily ).
 			click();
-
-	cy.get( '@control' ).
-			closest( '.accordion-section-content' ).
-			find( '.customize-section-back' ).
-			should( 'be.visible' ).
-			click();
-
 }
 
 describe( 'Font Family', function() {
+	const typographyPanel = 'neve_typography'
+	const generalSection = 'neve_typography_general'
+	const headingsSection = 'neve_typography_headings'
+
 	it( 'Sets up customizer Font Family', function() {
 		cy.login();
 		cy.visit( '/wp-admin/customize.php' );
 
 		// Setup general.
-		cy.get( '.accordion-section' ).contains( 'Typography' ).click();
-		cy.get( '.accordion-section' ).contains( 'General' ).click();
-		setFontFamilyControl( '#customize-control-neve_body_font_family',
-				fonts.general );
-		cy.get( '.accordion-section' ).contains( 'Headings' ).click();
-		setFontFamilyControl( '#customize-control-neve_headings_font_family',
-				fonts.headings );
+		cy.window().then((win) => {
+			win.wp.customize.panel(typographyPanel).focus()
+			win.wp.customize.section(generalSection).focus()
+		});
+		setFontFamilyControl( '#customize-control-neve_body_font_family', fonts.general );
+
+
+		cy.window().then((win) => {
+			win.wp.customize.panel(typographyPanel).focus()
+			win.wp.customize.section(headingsSection).focus()
+		});
+		setFontFamilyControl( '#customize-control-neve_headings_font_family', fonts.headings );
 
 		aliasRestRoutes();
 		cy.get( '#save' ).click();
