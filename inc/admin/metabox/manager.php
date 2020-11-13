@@ -162,7 +162,11 @@ final class Manager {
 	 * @return bool
 	 */
 	private  function is_gutenberg_active() {
-		return get_current_screen()->is_block_editor();
+		global $current_screen;
+		if ( method_exists( $current_screen, 'is_block_editor' ) ) {
+			return $current_screen->is_block_editor();
+		}
+		return false;
 	}
 
 	/**
