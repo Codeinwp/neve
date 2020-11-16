@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Neve 2.8.3\n"
+"Project-Id-Version: Neve 2.8.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/neve\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-11-16T08:20:49+00:00\n"
+"POT-Creation-Date: 2020-11-16T09:22:56+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -1059,16 +1059,16 @@ msgstr ""
 msgid "%s Settings"
 msgstr ""
 
-#: inc/admin/metabox/manager.php:180
+#: inc/admin/metabox/manager.php:184
 msgid "Page Settings are now accessible from the top bar"
 msgstr ""
 
 #. translators: %1$s - Keyboard shortcut.   %2&s - svg icon
-#: inc/admin/metabox/manager.php:183
+#: inc/admin/metabox/manager.php:187
 msgid "Click the %1$s icon in the top bar or use the keyboard shortcut ( %2$s ) to customise the layout settings for this page"
 msgstr ""
 
-#: inc/admin/metabox/manager.php:190
+#: inc/admin/metabox/manager.php:194
 msgid "or"
 msgstr ""
 
@@ -1617,7 +1617,7 @@ msgstr ""
 #: dashboard/src/Components/Content/Help.js:37
 #: dashboard/src/Components/Content/Help.js:73
 #: dashboard/src/Components/Content/Help.js:101
-#: dashboard/src/Components/ModuleCard.js:146
+#: dashboard/src/Components/ModuleCard.js:153
 msgid "Learn More"
 msgstr ""
 
@@ -1802,22 +1802,22 @@ msgid "Save"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/ModuleCard.js:79
+#: dashboard/src/Components/ModuleCard.js:86
 msgid "Upgrade"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/ModuleCard.js:113
+#: dashboard/src/Components/ModuleCard.js:120
 msgid "Module Activated"
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/ModuleCard.js:117
+#: dashboard/src/Components/ModuleCard.js:124
 msgid "Module Deactivated."
 msgstr ""
 
 #: dashboard/build/dashboard.js:1
-#: dashboard/src/Components/ModuleCard.js:127
+#: dashboard/src/Components/ModuleCard.js:134
 msgid "Could not activate module. Please try again."
 msgstr ""
 
