@@ -38,7 +38,7 @@
 		"@semantic-release/git": "^9.0.0",
 		"@size-limit/preset-app": "^4.7.0",
 		"@size-limit/webpack": "^4.7.0",
-		"babel-loader": "^8.1.0",
+		"babel-loader": "^8.2.1",
 		"conventional-changelog-simple-preset": "^1.0.14",
 		"core-js": "^3.7.0",
 		"cross-env": "^7.0.2",
