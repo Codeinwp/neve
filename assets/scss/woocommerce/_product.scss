@@ -83,7 +83,8 @@
 	font-size: .85em;
 
 	a {
-		color: $gray-color;
+		color: var(--nv-text-color);
+		opacity: .7;
 	}
 
 	> span {
@@ -101,7 +102,7 @@
 	ul.products li.product .price,
 	div.product span.price,
 	div.product p.price {
-		color: $body-color;
+		color: var(--nv-text-color);
 		font-weight: 700;
 
 		del {
@@ -169,7 +170,11 @@
 	}
 
 	a {
-		color: $gray-color;
+		color: var(--nv-text-color);
+		&:hover {
+			color: var(--nv-text-color);
+			opacity: .75;
+		}
 	}
 }
 
@@ -188,7 +193,6 @@
 	}
 
 	.woocommerce-noreviews {
-		background: $muted-white;
 		padding: $spacing-xs;
 		border: $muted-border-med;
 		border-radius: 3px;

@@ -134,7 +134,7 @@
   line-height: 1.68421;
   border: none;
   padding: 10px;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--nv-light-bg);
 }
 
 .editor-styles-wrapper .wp-block table .wp-block-table__cell-content {
