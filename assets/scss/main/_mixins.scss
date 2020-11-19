@@ -76,7 +76,7 @@
 
 @mixin cart-widget() {
   .widget_shopping_cart {
-    color: #404248;
+    color: var(--nv-text-color);
   }
   .widget_shopping_cart > .widget_shopping_cart_content > ul.woocommerce-mini-cart.cart_list.product_list_widget {
     max-height: 290px;
