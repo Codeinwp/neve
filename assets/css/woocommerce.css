@@ -1086,7 +1086,7 @@ section.exclusive .tns-visually-hidden {
 }
 
 .woocommerce .widget_price_filter .ui-slider .ui-slider-handle {
-  background: #0366d6;
+  background: var(--nv-primary-accent);
   border: 1px solid #fff;
   top: -5px;
 }
@@ -1096,7 +1096,7 @@ section.exclusive .tns-visually-hidden {
 }
 
 .woocommerce .widget_price_filter .ui-slider .ui-slider-range {
-  background-color: #0366d6;
+  background-color: var(--nv-primary-accent);
 }
 
 .woocommerce .widget_price_filter .price_slider_amount {
