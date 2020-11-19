@@ -1036,7 +1036,8 @@ section.exclusive .tns-visually-hidden {
 .nv-sidebar-wrap.shop-sidebar.sidebar-open {
   opacity: 1;
   pointer-events: all;
-  background-color: #fff;
+  margin-top: 0;
+  background-color: var(--nv-site-bg);
 }
 
 .sidebar-header {
