@@ -271,7 +271,7 @@ class Customizer {
 						<div class="hfg--cb-notice welcome-notice {{data.id}} hidden">
 							<p>
 								<?php /* translators: %s is the type of builder */ ?>
-								<span><?php echo sprintf( esc_html__( '%s Builder:' ), '{{data.title}}' ); ?></span>
+								<span><?php echo sprintf( esc_html__( '%s Builder:', 'neve' ), '{{data.title}}' ); ?></span>
 							<?php
 								/* translators: %s is the header name */
 								echo esc_html__( 'Click on any empty space to add components, or existing components to adjust settings.', 'neve' );
