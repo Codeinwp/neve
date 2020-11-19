@@ -151,6 +151,7 @@
 .woocommerce nav.woocommerce-pagination ul li a:hover,
 .woocommerce nav.woocommerce-pagination ul li span.current {
   background: none;
+  color: var(--nv-text-color);
 }
 
 .woocommerce nav.woocommerce-pagination ul {
@@ -538,7 +539,7 @@
 
 .woocommerce .woocommerce-noreviews {
   padding: 10px;
-  border: 1px solid #c9c9c9;
+  border: 1px solid var(--nv-light-bg);
   border-radius: 3px;
 }
 
