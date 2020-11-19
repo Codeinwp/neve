@@ -274,7 +274,7 @@ class Elementor extends Page_Builder_Base {
 	 * @return array
 	 */
 	private function get_current_palette_colors() {
-		$customizer = get_theme_mod( 'neve_global_colors', neve_get_global_colors_default() );
+		$customizer = get_theme_mod( 'neve_global_colors', neve_get_global_colors_default( true ) );
 		$active     = $customizer['activePalette'];
 		$palettes   = $customizer['palettes'];
 		$palette    = $palettes[ $active ];
