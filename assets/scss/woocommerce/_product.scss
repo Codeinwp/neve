@@ -190,6 +190,14 @@
 .woocommerce {
 	#comments {
 		border: none;
+
+		.meta {
+			color: var(--nv-text-color) !important;
+		}
+
+		.comment-text {
+			border-color: var(--nv-light-bg) !important;
+		}
 	}
 
 	.woocommerce-noreviews {
