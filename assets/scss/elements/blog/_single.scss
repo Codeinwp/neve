@@ -43,7 +43,7 @@
       }
     }
     .nav-direction {
-      color: $gray-color;
+			color: var(--nv-text-color);
       display: flex;
       flex-direction: column;
       font-size: 0.8em;
