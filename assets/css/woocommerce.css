@@ -545,6 +545,14 @@
   border: none;
 }
 
+.woocommerce #comments .meta {
+  color: var(--nv-text-color) !important;
+}
+
+.woocommerce #comments .comment-text {
+  border-color: var(--nv-light-bg) !important;
+}
+
 .woocommerce .woocommerce-noreviews {
   padding: 10px;
   border: 1px solid var(--nv-light-bg);
