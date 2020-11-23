@@ -9,7 +9,6 @@ namespace Neve\Core\Styles;
 
 use Neve\Core\Settings\Config;
 use Neve\Core\Settings\Mods;
-use PHPUnit\Util\Type;
 
 /**
  * Class Generator for Frontend.
@@ -22,86 +21,82 @@ class Frontend extends Generator {
 	 */
 	public function __construct() {
 		$this->_subscribers = [
-			'.container'                                  => [
+			'.container' => [
 				Config::CSS_PROP_MAX_WIDTH => [
 					Dynamic_Selector::META_KEY           => Config::MODS_CONTAINER_WIDTH,
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 				],
 			],
-			'a'                                           => [
-				Config::CSS_PROP_COLOR => Config::MODS_LINK_COLOR,
-			],
-			'.nv-loader'                                  => [
-				Config::CSS_PROP_BORDER_COLOR => Config::MODS_LINK_COLOR,
-			],
-			'a:hover, a:focus'                            => [
-				Config::CSS_PROP_COLOR => Config::MODS_LINK_HOVER_COLOR,
-			],
-			'body, .entry-title a, .entry-title a:hover, .entry-title a:focus' => [
-				Config::CSS_PROP_COLOR => Config::MODS_TEXT_COLOR,
-			],
-			'.has-neve-link-hover-color-color'            => [
-				Config::CSS_PROP_COLOR => [
-					Dynamic_Selector::META_KEY       => Config::MODS_LINK_HOVER_COLOR,
-					Dynamic_Selector::META_IMPORTANT => true,
-					Dynamic_Selector::META_DEFAULT   => '#0366d6',
-				],
-			],
-			'.has-neve-link-color-color'                  => [
-				Config::CSS_PROP_COLOR => [
-					Dynamic_Selector::META_KEY       => Config::MODS_LINK_COLOR,
-					Dynamic_Selector::META_IMPORTANT => true,
-					Dynamic_Selector::META_DEFAULT   => '#0366d6',
-				],
-			],
-			'.has-neve-text-color-color'                  => [
-				Config::CSS_PROP_COLOR => [
-					Dynamic_Selector::META_KEY       => Config::MODS_TEXT_COLOR,
-					Dynamic_Selector::META_IMPORTANT => true,
-					Dynamic_Selector::META_DEFAULT   => '#404248',
-				],
-			],
-			'.has-neve-button-color-color'                => [
-				Config::CSS_PROP_COLOR => [
-					Dynamic_Selector::META_KEY       => Config::MODS_BUTTON_PRIMARY_STYLE . '.background',
-					Dynamic_Selector::META_IMPORTANT => true,
-					Dynamic_Selector::META_DEFAULT   => '#0366d6',
-				],
-			],
-			'.has-neve-link-color-background-color'       => [
-				Config::CSS_PROP_BACKGROUND_COLOR => [
-					Dynamic_Selector::META_KEY       => Config::MODS_LINK_COLOR,
-					Dynamic_Selector::META_IMPORTANT => true,
-					Dynamic_Selector::META_DEFAULT   => '#0366d6',
-				],
-			],
-			'.has-neve-link-hover-color-background-color' => [
-				Config::CSS_PROP_BACKGROUND_COLOR => [
-					Dynamic_Selector::META_KEY       => Config::MODS_LINK_HOVER_COLOR,
-					Dynamic_Selector::META_IMPORTANT => true,
-					Dynamic_Selector::META_DEFAULT   => '#0366d6',
-				],
-			],
-			'.has-neve-button-color-background-color'     => [
-				Config::CSS_PROP_BACKGROUND_COLOR => [
-					Dynamic_Selector::META_KEY       => Config::MODS_BUTTON_PRIMARY_STYLE . '.background',
-					Dynamic_Selector::META_IMPORTANT => true,
-					Dynamic_Selector::META_DEFAULT   => '#0366d6',
-				],
-			],
-			'.has-neve-text-color-background-color'       => [
-				Config::CSS_PROP_BACKGROUND_COLOR => [
-					Dynamic_Selector::META_KEY       => Config::MODS_TEXT_COLOR,
-					Dynamic_Selector::META_IMPORTANT => true,
-					Dynamic_Selector::META_DEFAULT   => '#404248',
-				],
-			],
 		];
+		$this->setup_legacy_gutenberg_palette();
 		$this->setup_layout_subscribers();
 		$this->setup_buttons();
 		$this->setup_typography();
 		$this->setup_blog_typography();
+		$this->setup_blog_colors();
 
+	}
+
+	/**
+	 * Setup legacy gutenberg palette for old users.
+	 */
+	private function setup_legacy_gutenberg_palette() {
+		$is_new_user           = get_option( 'neve_new_user' );
+		$imported_starter_site = get_option( 'neve_imported_demo' );
+
+		if ( $is_new_user === 'yes' && $imported_starter_site !== 'yes' ) {
+			return;
+		}
+
+		$this->_subscribers['.has-neve-button-color-color']            = [
+			Config::CSS_PROP_COLOR => [
+				Dynamic_Selector::META_KEY       => Config::MODS_BUTTON_PRIMARY_STYLE . '.background',
+				Dynamic_Selector::META_IMPORTANT => true,
+				Dynamic_Selector::META_DEFAULT   => '#0366d6',
+			],
+		];
+		$this->_subscribers['.has-neve-button-color-background-color'] = [
+			Config::CSS_PROP_BACKGROUND_COLOR => [
+				Dynamic_Selector::META_KEY       => Config::MODS_BUTTON_PRIMARY_STYLE . '.background',
+				Dynamic_Selector::META_IMPORTANT => true,
+				Dynamic_Selector::META_DEFAULT   => '#0366d6',
+			],
+		];
+	}
+
+	/**
+	 * Add css for blog colors.
+	 */
+	public function setup_blog_colors() {
+		$this->_subscribers['.cover-post .inner, .cover-post .inner a:not(.button), .cover-post .inner a:not(.button):hover, .cover-post .inner a:not(.button):focus, .cover-post .inner li'] = [
+			Config::CSS_PROP_COLOR => [
+				Dynamic_Selector::META_KEY => 'neve_blog_covers_text_color',
+			],
+		];
+
+		$selector = get_theme_mod( 'neve_blog_archive_layout', 'grid' ) === 'covers' ? '.cover-post.nv-post-thumbnail-wrap' : '.nv-post-thumbnail-wrap img';
+
+		$this->_subscribers[ $selector ] = [
+			Config::CSS_PROP_BOX_SHADOW => [
+				Dynamic_Selector::META_KEY    => 'neve_post_thumbnail_box_shadow',
+				Dynamic_Selector::META_FILTER => function ( $css_prop, $value, $meta, $device ) {
+					if ( absint( $value ) === 0 ) {
+						return '';
+					}
+					$map = [
+						1 => '0 1px 3px -2px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.1)',
+						2 => '0 3px 6px -5px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.1)',
+						3 => '0 10px 20px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.1)',
+						4 => '0 14px 28px rgba(0, 0, 0, 0.12), 0 10px 10px rgba(0, 0, 0, 0.12)',
+						5 => '0 16px 38px -12px rgba(0,0,0,0.56), 0 4px 25px 0 rgba(0,0,0,0.12), 0 8px 10px -5px rgba(0,0,0,0.2)',
+					];
+					if ( ! array_key_exists( absint( $value ), $map ) ) {
+						return '';
+					}
+					return sprintf( '%s:%s;', $css_prop, $map[ $value ] );
+				},
+			],
+		];
 	}
 
 	/**
@@ -226,10 +221,13 @@ class Frontend extends Generator {
 	 */
 	public function setup_buttons() {
 		// Primary button config.
-		$this->_subscribers[]  = [
+		$this->_subscribers[] = [
 			Dynamic_Selector::KEY_SELECTOR => Config::CSS_SELECTOR_BTN_PRIMARY_NORMAL,
 			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_BACKGROUND_COLOR => Config::MODS_BUTTON_PRIMARY_STYLE . '.background',
+				Config::CSS_PROP_BACKGROUND_COLOR => [
+					Dynamic_Selector::META_KEY     => Config::MODS_BUTTON_PRIMARY_STYLE . '.background',
+					Dynamic_Selector::META_DEFAULT => 'var(--nv-primary-accent)',
+				],
 				Config::CSS_PROP_COLOR            => Config::MODS_BUTTON_PRIMARY_STYLE . '.text',
 				Config::CSS_PROP_BORDER_RADIUS    => Config::MODS_BUTTON_PRIMARY_STYLE . '.borderRadius',
 				Config::CSS_PROP_CUSTOM_BTN_TYPE  => Config::MODS_BUTTON_PRIMARY_STYLE . '.type',
@@ -239,6 +237,32 @@ class Frontend extends Generator {
 				Dynamic_Selector::CONTEXT_FRONTEND => true,
 			],
 		];
+
+		$this->_subscribers[] = [
+			Dynamic_Selector::KEY_SELECTOR => Config::CSS_SELECTOR_BTN_PRIMARY_NORMAL,
+			Dynamic_Selector::KEY_RULES    => [
+				Config::CSS_PROP_FONT_SIZE      => [
+					Dynamic_Selector::META_KEY           => Config::MODS_BUTTON_TYPEFACE . '.fontSize',
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_SUFFIX        => 'em',
+				],
+				Config::CSS_PROP_LINE_HEIGHT    => [
+					Dynamic_Selector::META_KEY           => Config::MODS_BUTTON_TYPEFACE . '.lineHeight',
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_SUFFIX        => '',
+				],
+				Config::CSS_PROP_LETTER_SPACING => [
+					Dynamic_Selector::META_KEY           => Config::MODS_BUTTON_TYPEFACE . '.letterSpacing',
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+				],
+				Config::CSS_PROP_FONT_WEIGHT    => [
+					Dynamic_Selector::META_KEY => Config::MODS_BUTTON_TYPEFACE . '.fontWeight',
+					'font'                     => 'mods_' . Config::MODS_FONT_GENERAL,
+				],
+				Config::CSS_PROP_TEXT_TRANSFORM => Config::MODS_BUTTON_TYPEFACE . '.textTransform',
+			],
+		];
+
 		$this->_subscribers[]  = [
 			Dynamic_Selector::KEY_SELECTOR => Config::CSS_SELECTOR_BTN_PRIMARY_HOVER,
 			Dynamic_Selector::KEY_RULES    => [
@@ -253,7 +277,10 @@ class Frontend extends Generator {
 			Dynamic_Selector::KEY_SELECTOR => Config::CSS_SELECTOR_BTN_SECONDARY_NORMAL,
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_BACKGROUND_COLOR => Config::MODS_BUTTON_SECONDARY_STYLE . '.background',
-				Config::CSS_PROP_COLOR            => Config::MODS_BUTTON_SECONDARY_STYLE . '.text',
+				Config::CSS_PROP_COLOR            => [
+					Dynamic_Selector::META_KEY     => Config::MODS_BUTTON_SECONDARY_STYLE . '.text',
+					Dynamic_Selector::META_DEFAULT => 'var(--nv-text-color)',
+				],
 				Config::CSS_PROP_BORDER_RADIUS    => Config::MODS_BUTTON_SECONDARY_STYLE . '.borderRadius',
 				Config::CSS_PROP_CUSTOM_BTN_TYPE  => Config::MODS_BUTTON_SECONDARY_STYLE . '.type',
 				Config::CSS_PROP_BORDER_WIDTH     => Config::MODS_BUTTON_SECONDARY_STYLE . '.borderWidth',
@@ -262,11 +289,39 @@ class Frontend extends Generator {
 				Dynamic_Selector::CONTEXT_FRONTEND => true,
 			],
 		];
-		$this->_subscribers[]  = [
+
+		$this->_subscribers[] = [
+			Dynamic_Selector::KEY_SELECTOR => Config::CSS_SELECTOR_BTN_SECONDARY_NORMAL,
+			Dynamic_Selector::KEY_RULES    => [
+				Config::CSS_PROP_FONT_SIZE      => [
+					Dynamic_Selector::META_KEY           => Config::MODS_SECONDARY_BUTTON_TYPEFACE . '.fontSize',
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_SUFFIX        => 'em',
+				],
+				Config::CSS_PROP_LINE_HEIGHT    => [
+					Dynamic_Selector::META_KEY           => Config::MODS_SECONDARY_BUTTON_TYPEFACE . '.lineHeight',
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_SUFFIX        => '',
+				],
+				Config::CSS_PROP_LETTER_SPACING => [
+					Dynamic_Selector::META_KEY           => Config::MODS_SECONDARY_BUTTON_TYPEFACE . '.letterSpacing',
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+				],
+				Config::CSS_PROP_FONT_WEIGHT    => [
+					Dynamic_Selector::META_KEY => Config::MODS_SECONDARY_BUTTON_TYPEFACE . '.fontWeight',
+					'font'                     => 'mods_' . Config::MODS_FONT_GENERAL,
+				],
+				Config::CSS_PROP_TEXT_TRANSFORM => Config::MODS_SECONDARY_BUTTON_TYPEFACE . '.textTransform',
+			],
+		];
+		$this->_subscribers[] = [
 			Dynamic_Selector::KEY_SELECTOR => Config::CSS_SELECTOR_BTN_SECONDARY_HOVER,
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_BACKGROUND_COLOR => Config::MODS_BUTTON_SECONDARY_STYLE . '.backgroundHover',
-				Config::CSS_PROP_COLOR            => Config::MODS_BUTTON_SECONDARY_STYLE . '.textHover',
+				Config::CSS_PROP_COLOR            => [
+					Dynamic_Selector::META_KEY     => Config::MODS_BUTTON_SECONDARY_STYLE . '.textHover',
+					Dynamic_Selector::META_DEFAULT => 'var(--nv-text-color)',
+				],
 			],
 			Dynamic_Selector::KEY_CONTEXT  => [
 				Dynamic_Selector::CONTEXT_FRONTEND => true,
@@ -297,14 +352,6 @@ class Frontend extends Generator {
 			Dynamic_Selector::KEY_CONTEXT  => [
 				Dynamic_Selector::CONTEXT_FRONTEND => true,
 			],
-		];
-
-		$this->_subscribers['.nv-tags-list a:hover'] = [
-			Config::CSS_PROP_BACKGROUND_COLOR => Config::MODS_BUTTON_PRIMARY_STYLE . '.backgroundHover',
-		];
-		$this->_subscribers['.nv-tags-list a']       = [
-			Config::CSS_PROP_COLOR        => Config::MODS_BUTTON_PRIMARY_STYLE . '.background',
-			Config::CSS_PROP_BORDER_COLOR => Config::MODS_BUTTON_PRIMARY_STYLE . '.background',
 		];
 	}
 

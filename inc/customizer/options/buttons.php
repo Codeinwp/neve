@@ -10,6 +10,7 @@
 
 namespace Neve\Customizer\Options;
 
+use Neve\Core\Settings\Config;
 use Neve\Customizer\Base_Customizer;
 use Neve\Customizer\Types\Control;
 use Neve\Customizer\Types\Section;
@@ -65,10 +66,12 @@ class Buttons extends Base_Customizer {
 						'button'           => array(
 							'neve_button_appearance' => array(),
 							'neve_button_padding'    => array(),
+							'neve_button_typeface'   => array(),
 						),
 						'secondary_button' => array(
 							'neve_secondary_button_appearance' => array(),
 							'neve_secondary_button_padding'    => array(),
+							'neve_secondary_button_typeface'   => array(),
 						),
 					),
 				),
@@ -76,8 +79,11 @@ class Buttons extends Base_Customizer {
 			)
 		);
 
-		$buttons = [ 'button', 'secondary_button' ];
-
+		$buttons                = [ 'button', 'secondary_button' ];
+		$live_refresh_selectors = [
+			'button'           => apply_filters( 'neve_selectors_' . Config::CSS_SELECTOR_BTN_PRIMARY_NORMAL, Config::$css_selectors_map[ Config::CSS_SELECTOR_BTN_PRIMARY_NORMAL ] ),
+			'secondary_button' => apply_filters( 'neve_selectors_' . Config::CSS_SELECTOR_BTN_SECONDARY_NORMAL, Config::$css_selectors_map[ Config::CSS_SELECTOR_BTN_SECONDARY_NORMAL ] ),
+		];
 		foreach ( $buttons as $button ) {
 			$defaults = neve_get_button_appearance_default( $button );
 			$this->add_control(
@@ -156,6 +162,46 @@ class Buttons extends Base_Customizer {
 						),
 					),
 					'Neve\Customizer\Controls\Range'
+				)
+			);
+
+			$this->add_control(
+				new Control(
+					'neve_' . $button . '_typeface',
+					[
+						'transport' => $this->selective_refresh,
+					],
+					[
+						'label'                 => esc_html__( 'Button Text', 'neve' ),
+						'section'               => $this->section_id,
+						'input_attrs'           => array(
+							'size_units'             => [ 'px' ],
+							'weight_default'         => 400,
+							'size_default'           => array(
+								'suffix'  => array(
+									'mobile'  => 'px',
+									'tablet'  => 'px',
+									'desktop' => 'px',
+								),
+								'mobile'  => 15,
+								'tablet'  => 16,
+								'desktop' => 16,
+							),
+							'line_height_default'    => array(
+								'mobile'  => 1.6,
+								'tablet'  => 1.6,
+								'desktop' => 1.6,
+							),
+							'letter_spacing_default' => array(
+								'mobile'  => 0,
+								'tablet'  => 0,
+								'desktop' => 0,
+							),
+						),
+						'type'                  => 'neve_typeface_control',
+						'live_refresh_selector' => $live_refresh_selectors[ $button ],
+					],
+					'\Neve\Customizer\Controls\React\Typography'
 				)
 			);
 		}

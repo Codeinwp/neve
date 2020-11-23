@@ -24,6 +24,18 @@ jobs:
         with:
           github-token: ${{ secrets.BOT_TOKEN }}
           branch: development
+  debug:
+    needs: trigger_visual
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+      - name: Dump Output
+        env:
+          GITHUB_OUTPUT_STEP: ${{ toJson(needs.trigger_visual.outputs) }}
+        run: echo "$GITHUB_OUTPUT_STEP"
   run-visual:
     needs: trigger_visual
 #    Check if :
@@ -53,13 +65,13 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
       - name: Install deps
         run: |
-          npm ci
+          yarn install --frozen-lockfile
       - name: Run Visual Diff
         env:
           PERCY_PARALLEL_TOTAL: 4
           PERCY_BRANCH: development
           PERCY_COMMIT: ${{ needs.trigger_visual.outputs.commit_sha }}
           PERCY_PULL_REQUEST: ${{ needs.trigger_visual.outputs.pr_number }}
-          PERCY_PARALLEL_NONCE: '${{ github.event_name }}-${{ needs.trigger_visual.outputs.commit_sha }}'
+          PERCY_PARALLEL_NONCE: '${{ github.run_id }}-${{ needs.trigger_visual.outputs.commit_sha }}'
         run: |
-          npm run visual:test --  --browser chrome --record --parallel --group visual-diff
+          yarn run visual:test --  --browser chrome --record --parallel --group visual-diff

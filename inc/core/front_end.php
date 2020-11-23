@@ -61,6 +61,7 @@ class Front_End {
 		add_theme_support( 'lifterlms' );
 		add_theme_support( 'service_worker', true );
 
+		add_filter( 'script_loader_tag', array( $this, 'filter_script_loader_tag' ), 10, 2 );
 		add_filter( 'embed_oembed_html', array( $this, 'wrap_oembeds' ), 10, 3 );
 		add_filter( 'video_embed_html', array( $this, 'wrap_jetpack_oembeds' ), 10, 1 );
 		add_filter( 'themeisle_gutenberg_templates', array( $this, 'add_gutenberg_templates' ) );
@@ -78,6 +79,32 @@ class Front_End {
 		add_image_size( 'neve-blog', 930, 620, true );
 		add_filter( 'wp_nav_menu_args', array( $this, 'nav_walker' ), 1001 );
 		$this->add_woo_support();
+	}
+
+	/**
+	 * Adds async/defer attributes to enqueued / registered scripts.
+	 *
+	 * If #12009 lands in WordPress, this function can no-op since it would be handled in core.
+	 *
+	 * @link https://core.trac.wordpress.org/ticket/12009
+	 *
+	 * @param string $tag The script tag.
+	 * @param string $handle The script handle.
+	 * @return string Script HTML string.
+	 */
+	public function filter_script_loader_tag( $tag, $handle ) {
+		foreach ( array( 'async', 'defer' ) as $attr ) {
+			if ( ! wp_scripts()->get_data( $handle, $attr ) ) {
+				continue;
+			}
+			// Prevent adding attribute when already added in #12009.
+			if ( ! preg_match( ":\s$attr(=|>|\s):", $tag ) ) {
+				$tag = preg_replace( ':(?=></script>):', " $attr", $tag, 1 );
+			}
+			// Only allow async or defer, not both.
+			break;
+		}
+		return $tag;
 	}
 
 	/**
@@ -142,86 +169,57 @@ class Front_End {
 	 */
 	private function get_gutenberg_color_palette() {
 		$gutenberg_color_palette = array();
-
-		array_push(
-			$gutenberg_color_palette,
-			array(
-				'name'  => __( 'Black', 'neve' ),
-				'slug'  => 'black',
-				'color' => '#000000',
-			)
-		);
-
-		array_push(
-			$gutenberg_color_palette,
-			array(
-				'name'  => __( 'White', 'neve' ),
-				'slug'  => 'white',
-				'color' => '#ffffff',
-			)
-		);
-
-		$color_controls = array(
-			'neve-button-color'     => array(
-				'setting' => Config::MODS_BUTTON_PRIMARY_STYLE . '.background',
-				'label'   => __( 'Button Color', 'neve' ),
-			),
+		$from_global_colors      = [
 			'neve-link-color'       => array(
-				'setting' => Config::MODS_LINK_COLOR,
-				'label'   => __( 'Link Color', 'neve' ),
+				'val'   => 'var(--nv-primary-accent)',
+				'label' => __( 'Neve - Primary Accent', 'neve' ),
 			),
 			'neve-link-hover-color' => array(
-				'setting' => Config::MODS_LINK_HOVER_COLOR,
-				'label'   => __( 'Link Hover Color', 'neve' ),
+				'val'   => 'var(--nv-secondary-accent)',
+				'label' => __( 'Neve - Secondary Accent', 'neve' ),
+			),
+			'nv-site-bg'            => array(
+				'val'   => 'var(--nv-site-bg)',
+				'label' => __( 'Neve - Site Background', 'neve' ),
+			),
+			'nv-light-bg'           => array(
+				'val'   => 'var(--nv-light-bg)',
+				'label' => __( 'Neve - Light Background', 'neve' ),
+			),
+			'nv-dark-bg'            => array(
+				'val'   => 'var(--nv-dark-bg)',
+				'label' => __( 'Neve - Dark Background', 'neve' ),
 			),
 			'neve-text-color'       => array(
-				'setting' => Config::MODS_TEXT_COLOR,
-				'label'   => __( 'Text Color', 'neve' ),
+				'val'   => 'var(--nv-text-color)',
+				'label' => __( 'Neve - Text Color', 'neve' ),
 			),
-			'neve-btn-text'         => array(
-				'setting' => Config::MODS_BUTTON_PRIMARY_STYLE . '.text',
-				'label'   => __( 'Button text color', 'neve' ),
+			'nv-text-dark-bg'       => array(
+				'val'   => 'var(--nv-text-dark-bg)',
+				'label' => __( 'Neve - Text Dark Background', 'neve' ),
 			),
-			'neve-btn-text-hover'   => array(
-				'setting' => Config::MODS_BUTTON_PRIMARY_STYLE . '.textHover',
-				'label'   => __( 'Button Hover text color', 'neve' ),
+			'nv-c-1'                => array(
+				'val'   => 'var(--nv-c-1)',
+				'label' => __( 'Neve - Extra Color 1', 'neve' ),
 			),
-			'neve-btn-bg-hover'     => array(
-				'setting' => Config::MODS_BUTTON_PRIMARY_STYLE . '.backgroundHover',
-				'label'   => __( 'Button Hover Color', 'neve' ),
+			'nv-c-2'                => array(
+				'val'   => 'var(--nv-c-2)',
+				'label' => __( 'Neve - Extra Color 2', 'neve' ),
 			),
-		);
-		foreach ( $color_controls as $control_name => $control_data ) {
-			$color = Mods::get( $control_data['setting'] );
-			if ( empty( $color ) ) {
-				continue;
-			}
-			$color_name = $control_data['label'];
+		];
+
+		foreach ( $from_global_colors as $slug => $args ) {
 			array_push(
 				$gutenberg_color_palette,
 				array(
-					'name'  => esc_html( $color_name ),
-					'slug'  => esc_html( $control_name ),
-					'color' => sanitize_hex_color( $color ),
+					'name'  => esc_html( $args['label'] ),
+					'slug'  => esc_html( $slug ),
+					'color' => neve_sanitize_colors( $args['val'] ),
 				)
 			);
 		}
 
-		/**
-		 * Remove duplicate colors.
-		 */
-		$temp_arr = array_unique(
-			array_map(
-				function ( $el ) {
-					return $el['color'];
-				},
-				$gutenberg_color_palette
-			)
-		);
-
-		$colors = array_intersect_key( $gutenberg_color_palette, $temp_arr );
-
-		return array_values( $colors );
+		return array_values( $gutenberg_color_palette );
 	}
 
 	/**
@@ -465,15 +463,20 @@ class Front_End {
 			apply_filters(
 				'neve_filter_main_script_localization',
 				array(
-					'ajaxurl' => esc_url( admin_url( 'admin-ajax.php' ) ),
-					'nonce'   => wp_create_nonce( 'wp_rest' ),
+					'ajaxurl'     => esc_url( admin_url( 'admin-ajax.php' ) ),
+					'nonce'       => wp_create_nonce( 'wp_rest' ),
+					'isRTL'       => is_rtl(),
+					'isCustomize' => is_customize_preview(),
 				)
 			)
 		);
 		wp_enqueue_script( 'neve-script' );
+		wp_script_add_data( 'neve-script', 'async', true );
+
 		if ( class_exists( 'WooCommerce', false ) && is_woocommerce() ) {
 			wp_register_script( 'neve-shop-script', NEVE_ASSETS_URL . 'js/build/modern/shop.js', array(), NEVE_VERSION, true );
 			wp_enqueue_script( 'neve-shop-script' );
+			wp_script_add_data( 'neve-shop-script', 'async', true );
 		}
 
 

@@ -83,7 +83,8 @@
 	font-size: .85em;
 
 	a {
-		color: $gray-color;
+		color: var(--nv-text-color);
+		opacity: .7;
 	}
 
 	> span {
@@ -101,7 +102,7 @@
 	ul.products li.product .price,
 	div.product span.price,
 	div.product p.price {
-		color: $body-color;
+		color: var(--nv-text-color);
 		font-weight: 700;
 
 		del {
@@ -169,7 +170,11 @@
 	}
 
 	a {
-		color: $gray-color;
+		color: var(--nv-text-color);
+		&:hover {
+			color: var(--nv-text-color);
+			opacity: .75;
+		}
 	}
 }
 
@@ -185,12 +190,19 @@
 .woocommerce {
 	#comments {
 		border: none;
+
+		.meta {
+			color: var(--nv-text-color) !important;
+		}
+
+		.comment-text {
+			border-color: var(--nv-light-bg) !important;
+		}
 	}
 
 	.woocommerce-noreviews {
-		background: $muted-white;
 		padding: $spacing-xs;
-		border: $muted-border-med;
+		border: $muted-border;
 		border-radius: 3px;
 	}
 
@@ -307,6 +319,11 @@
 section.exclusive {
 	margin-bottom: $spacing;
 
+  	.nv-card-content-wrapper {
+		position: relative;
+		width: 100%;
+  	}
+
 	.dots-nav {
 		display: flex;
 		align-items: center;
@@ -330,6 +347,9 @@ section.exclusive {
 	}
 
 	.tns-outer {
+	  	/* rtl:begin:ignore */
+	 	direction: ltr;
+	 	/* rtl:end:ignore */
 		overflow: hidden;
 		position: relative;
 		padding: 5px 10px 0 10px;

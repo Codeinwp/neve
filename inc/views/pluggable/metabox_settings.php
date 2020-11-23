@@ -43,6 +43,11 @@ class Metabox_Settings {
 		add_filter( 'neve_filter_toggle_content_parts', array( $this, 'filter_components_toggle' ), 100, 2 );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'editor_content_width' ), 100 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'content_width' ), 999 );
+
+
+		add_filter( 'neve_layout_single_post_elements_order', array( $this, 'filter_post_elements' ) );
+		add_filter( 'neve_post_title_alignment', array( $this, 'filter_title_alignment' ) );
+		add_filter( 'neve_display_author_avatar', array( $this, 'filter_author_avatar_display' ) );
 	}
 
 	/**
@@ -112,9 +117,7 @@ class Metabox_Settings {
 			return false;
 		}
 
-		$meta_value = get_post_meta( $post_id, 'neve_meta_content_width', true );
-
-		return empty( $meta_value ) ? $this->get_content_width_default() : $meta_value;
+		return get_post_meta( $post_id, 'neve_meta_content_width', true );
 
 	}
 
@@ -315,7 +318,6 @@ class Metabox_Settings {
 		}
 
 		$meta_value = get_post_meta( $post_id, 'neve_meta_sidebar', true );
-		$meta_value = empty( $meta_value ) ? $this->get_sidebar_default() : $meta_value;
 		if ( empty( $meta_value ) || $meta_value === 'default' ) {
 			return $position;
 		}
@@ -426,15 +428,68 @@ class Metabox_Settings {
 	}
 
 	/**
-	 * Get sidebar default.
+	 * Post elements order for title components.
 	 *
-	 * @return string
+	 * @param array $elements_order Elements order before this filter.
+	 *
+	 * @return array
 	 */
-	private function get_sidebar_default() {
-		if ( (int) $this->get_post_id() === (int) get_option( 'woocommerce_checkout_page_id' ) ) {
-			return 'full-width';
+	public function filter_post_elements( $elements_order ) {
+		$post_id = $this->get_post_id();
+
+		if ( $post_id === false ) {
+			return $elements_order;
 		}
 
-		return '';
+		$meta_elements_order = get_post_meta( $post_id, 'neve_post_elements_order', true );
+		if ( empty( $meta_elements_order ) ) {
+			return $elements_order;
+		}
+
+		return json_decode( $meta_elements_order, true );
+	}
+
+	/**
+	 * Filter title alignment.
+	 *
+	 * @param string $alignment Title alignment.
+	 *
+	 * @return mixed
+	 */
+	public function filter_title_alignment( $alignment ) {
+		$post_id = $this->get_post_id();
+
+		if ( $post_id === false ) {
+			return $alignment;
+		}
+
+		$title_meta_alignment = get_post_meta( $post_id, 'neve_meta_title_alignment', true );
+		if ( ! empty( $title_meta_alignment ) ) {
+			return 'has-text-align-' . $title_meta_alignment;
+		}
+		return $alignment;
+	}
+
+	/**
+	 * Filter the display of author avatar
+	 *
+	 * @param bool $show_avatar Display avatar flag.
+	 *
+	 * @return bool
+	 */
+	public function filter_author_avatar_display( $show_avatar ) {
+
+		$post_id = $this->get_post_id();
+
+		if ( $post_id === false ) {
+			return $show_avatar;
+		}
+		$show_author_avatar = get_post_meta( $post_id, 'neve_meta_author_avatar', true );
+
+		if ( ! empty( $show_author_avatar ) ) {
+			return $show_author_avatar === 'on';
+		}
+
+		return $show_avatar;
 	}
 }

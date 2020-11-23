@@ -1,8 +1,8 @@
 # Neve #
 **Contributors:** [themeisle](https://profiles.wordpress.org/themeisle)  
-**Tags:** blog, custom-logo, e-commerce, rtl-language-support, grid-layout, one-column, two-columns, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, accessibility-ready, wide-blocks, block-styles, footer-widgets, portfolio, left-sidebar, right-sidebar  
+**Tags:** blog,block-patterns, custom-logo, e-commerce, rtl-language-support, grid-layout, one-column, two-columns, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, accessibility-ready, wide-blocks, block-styles, footer-widgets, portfolio, left-sidebar, right-sidebar  
 **Requires at least:** 4.0  
-**Tested up to:** 5.4  
+**Tested up to:** 5.5  
 **Stable tag:** 1.0.23  
 **Requires PHP:** 5.4.0  
 **License:** GPLv2 or later  
@@ -15,9 +15,96 @@ Neve is a super fast, easily customizable, multi-purpose theme. It’s perfect f
 
 ## Copyright ##
 Neve WordPress theme, Copyright 2018 Themeisle
-Neve is distributed under the terms of the GNU GPLv2 or later
+Neve is distributed under the terms of the GNU GPLv2 or later 
 
 ## Changelog ##
+
+##### [Version 2.8.4](https://github.com/Codeinwp/neve/compare/v2.8.3...v2.8.4) (2020-11-02)
+
+- [Fix] Warning jQuery .load() function is deprecated
+- [Fix] Header builder responsive instructions notifications
+- [Fix] Search icon component going out of the window when right-aligned
+- [Fix] Search icon opening behavior on mobile
+- [Fix] Button styling for WooCommerce blocks
+- [Fix] Move Customizer homepage settings to the Layout panel
+
+
+
+
+##### [Version 2.8.3](https://github.com/Codeinwp/neve/compare/v2.8.2...v2.8.3) (2020-10-19)
+
+- [Fix] Exclusive products section in RTL mode
+- [Fix] Font Family dropdown layout in RTL mode
+- [Fix] Migrate from Zelle theme
+- [Fix] Default values for the spacing and custom content width controls
+- [Fix] Default line-height for buttons
+- [Fix] Search icon color in the mobile header builder
+- New Gutenberg Starter Sites
+
+
+
+
+##### [Version 2.8.2](https://github.com/Codeinwp/neve/compare/v2.8.1...v2.8.2) (2020-10-01)
+
+- [Feat] New Blog Layout options
+- [Feat] New Header Builder presets
+- [Feat] Support for Alpha RGBa Color Picker
+- [Feat] Enhancements to the Neve Options page
+- [Fix] Updated date layout in magic tags {current_post_meta} {meta_date}
+- [Fix] Compatibility with Elementor PRO 404 templates pages
+- [Fix] Style captions
+- [Fix] Button component style options overlapping with general button options
+- [Fix] Default meta elements order
+
+
+
+
+##### [Version 2.8.1](https://github.com/Codeinwp/neve/compare/v2.8.0...v2.8.1) (2020-09-17)
+
+- [Feat] New options for styling buttons ( text-transform, weight, font size, line height, and letter spacing )
+- [Feat] New block patterns
+- [Feat] Async/defer loading of the JS scripts
+- [Fix] Masonry not working in Safari
+- [Fix] Range controls in older versions of WordPress
+- [Fix] Links and headings not inheriting Customizer colors inside the editor
+- [Fix] Do not parse HTML tags inside the search heading
+- [Fix] Cart Icon size and color options not working properly
+- [Fix] Accessibility issues with form labels
+- [Fix] Update list of Google Fonts
+- [Fix] Button state management in the Starter Sites notice
+- [Fix] Inputs text color on a dark background
+- New Gutenberg Starter Sites
+
+
+
+
+#### [Version 2.8.0](https://github.com/Codeinwp/neve/compare/v2.7.7...v2.8.0) (2020-09-03)
+
+- [Feat] Compatibility with AMP 2.0
+- [Feat] New opening behaviors for the mobile menu (Slide from Left/Right, Pull from Left/Right, Full Canvas, Slide Down)
+- [Feat] New option to automatically expand first level dropdowns on mobile
+- [Feat] Single post/page customization options for Gutenberg editor
+- [Fix] Primary Menu and Secondary Menu alignment on mobile
+- [Fix] Scrollbar in the Primary Menu on mobile for larger font size
+- [Fix] Items spacing for Primary Menu on mobile
+- [Fix] Range controls lagging
+
+
+
+
+##### [Version 2.7.7](https://github.com/Codeinwp/neve/compare/v2.7.6...v2.7.7) (2020-08-19)
+
+- [Fix] Permissions callback for REST route in WP 5.5
+- [Fix] Color not working for the Cart Icon component
+- [Fix] Headings and lists alignment in the editor
+- [Fix] Warnings in the Music Band 2 Starter Site
+- [Fix] Range controls controlled from the keyboard
+- [Fix] Previewing templates from Otter Blocks
+- [Fix] Inline text-color not applying in the editor
+- New Gutenberg Starter Sites
+
+
+
 
 ##### [Version 2.7.6](https://github.com/Codeinwp/neve/compare/v2.7.5...v2.7.6) (2020-08-04)
 
@@ -737,609 +824,30 @@ Neve is distributed under the terms of the GNU GPLv2 or later
 ## Resources ##
 * Neve Icons based on Font Awesome Icons licensed under CC BY 4.0 License (https://creativecommons.org/licenses/by/4.0/).
 
-All  images are licensed under CC0.
+All images are licensed under CC0.
 
 Screenshot resources:
 
 * https://www.pexels.com/photo/landscape-photography-of-mountains-covered-in-snow-691668/
 
-Starter Sites screenshots resources:
-
-- Original
-* http://mystock.themeisle.com/photo/statue-2/
-* https://mystock.themeisle.com/photo/path/
-
-- Restaurant
-* https://stocksnap.io/photo/3IRQDGCL7J
-* https://stocksnap.io/photo/ZPMWWMHBDE
-* https://stocksnap.io/photo/2HEQC6X2DF
-
-- Charity
-* https://stocksnap.io/photo/AEENLCARXY
-
-- Vet Center
-* https://mystock.themeisle.com/photo/street-dog-sitting-on-a-beach/
-* https://mystock.themeisle.com/photo/dog-4/
-
-- Doctors
-* https://stocksnap.io/photo/GSBJXWRSDV
-
-- Energy Panels
-* http://mystock.themeisle.com/photo/sunny-rome/
-* http://mystock.themeisle.com/photo/tour-eiffel/
-
-- Lawyers
-* http://mystock.themeisle.com/photo/architecture-3/
-* http://mystock.themeisle.com/photo/architecture-2/
-
-- Freelancer
-* http://mystock.themeisle.com/photo/programming-laptop/
-* http://mystock.themeisle.com/photo/code-in-wp/
-
-- Shop
-* https://stocksnap.io/photo/SS2GVMJTWH
-* https://stocksnap.io/photo/KQECHSBAOC
-* https://stocksnap.io/photo/1CXI0CSPE5
-* https://stocksnap.io/photo/JBCWCLO4JI
-* https://stocksnap.io/photo/AEENLCARXY
-
-- Travel Agency
-* https://mystock.themeisle.com/photo/amsterdam/
-
-- Coffee Shop
-* https://stocksnap.io/photo/HOHJK6B7TD
-* https://stocksnap.io/photo/DTKOOFPC06
-
-- Constructions
-* https://stocksnap.io/photo/T78VYSKHFS
-* https://stocksnap.io/photo/ZWTCO4R3G6
-* https://stocksnap.io/photo/6EAB6C3900
-* https://stocksnap.io/photo/BZ4FJO6KZE
-
-- Showcase
-* http://mystock.themeisle.com/photo/mountain/
-* http://mystock.themeisle.com/photo/mountain-at-sunset/
-* http://mystock.themeisle.com/photo/forest-landscape/
-
-- Business Consulting
-* http://mystock.themeisle.com/photo/photographer-2/
-* http://mystock.themeisle.com/photo/cameras/
-
-- Architecture
-* http://mystock.themeisle.com/photo/wind/
-* http://mystock.themeisle.com/photo/architectural-ceiling/
-* http://mystock.themeisle.com/photo/glass-building/
-* http://mystock.themeisle.com/photo/city-view/
-* http://mystock.themeisle.com/photo/trump-tower/
-* http://mystock.themeisle.com/photo/white-building/
-
-- Fashion
-* https://stocksnap.io/photo/K00RNBNJGC
-* https://stocksnap.io/photo/TFK0XBHMRE
-* https://stocksnap.io/photo/BRDLQ22VO4
-* https://stocksnap.io/photo/HZBJUNAK7H
-* https://stocksnap.io/photo/Y7WNWJC6NA
-
-- Fitness
-* https://stocksnap.io/photo/M5791YB6J9
-* https://stocksnap.io/photo/SRWV8BAHE6
-
-- Vacation Rental
-* http://mystock.themeisle.com/photo/pool/
-
-- Music Band
-* https://stocksnap.io/photo/G22LER7CJQ
-* https://stocksnap.io/photo/E9E65D3D04
-* https://stocksnap.io/photo/V2TT0P34KE
-* https://stocksnap.io/photo/BG80NXTTHY
-* https://stocksnap.io/photo/NV1FLKIE9U
-* https://stocksnap.io/photo/IUFVZUDPO5
-
-- Wedding
-* https://stocksnap.io/photo/3RI84R6CYH
-* https://stocksnap.io/photo/GEVAEIZQH1
-* https://stocksnap.io/photo/UXZ782X55D
-
-- TheMotion
-* http://mystock.themeisle.com/photo/code-in-wp/
-* http://mystock.themeisle.com/photo/empty-beach-2/
-* http://mystock.themeisle.com/photo/traffic-sign/
-* http://mystock.themeisle.com/photo/android/
-
-- Life Coach
-* http://mystock.themeisle.com/photo/city-park-night/
-* http://mystock.themeisle.com/photo/temple-2/
-
-- Tattoo
-* http://mystock.themeisle.com/photo/unconventional-store-with-unicorn-in-the-window/
-* http://mystock.themeisle.com/photo/street-at-night/
-
-- Job Listing
-* http://mystock.themeisle.com/photo/registration/
-* http://mystock.themeisle.com/photo/stockholm-street/
-
-- Barber Shop
-* https://stocksnap.io/photo/R9YRHH2JQY
-* http://mystock.themeisle.com/photo/fancy-restaurant/
-
-- Personal Trainer
-* http://mystock.themeisle.com/photo/street-vendor-selling-fruits-on-his-fruit-cart/
-* http://mystock.themeisle.com/photo/yoga-2/
-* http://mystock.themeisle.com/photo/mac-and-cheese-pizza/
-* http://mystock.themeisle.com/photo/hotel-with-terrace-on-the-sea/
-* http://mystock.themeisle.com/photo/indian-restaurant-dishes/
-
-- Creative Portfolio
-* http://mystock.themeisle.com/photo/rocking-chair-on-a-blue-carpet/
-* http://mystock.themeisle.com/photo/vintage-framed-photo-of-desserts/
-* http://mystock.themeisle.com/photo/bathtub-in-the-center-of-the-room/
-* http://mystock.themeisle.com/photo/registration/
-* http://mystock.themeisle.com/photo/big-ben/
-* http://mystock.themeisle.com/photo/glass-building/
-
-- Real Estate
-* http://mystock.themeisle.com/photo/city/
-* http://mystock.themeisle.com/photo/glass-building-2/
-
-- Events
-* http://mystock.themeisle.com/photo/young-boy-attending-a-concert/
-* http://mystock.themeisle.com/photo/performing-artist-with-cool-projections-behind/
-* http://mystock.themeisle.com/photo/drummer-plays-drums-kit/
-* http://mystock.themeisle.com/photo/concert/
-* http://mystock.themeisle.com/photo/rock-on/
-
-- Wedding Photography
-* http://mystock.themeisle.com/photo/wedding-flower-decorations/
-* http://mystock.themeisle.com/photo/bride-and-groom-table-decorated-with-flowers-2/
-* http://mystock.themeisle.com/photo/bride-and-groom/
-
-- Photography Studio
-* https://stocksnap.io/photo/3IJLXXN9OY
-* https://stocksnap.io/photo/83PSG6Y1FM
-
-- Video Agency
-* http://mystock.themeisle.com/photo/cameras/
-* http://mystock.themeisle.com/photo/protest/
-* http://mystock.themeisle.com/photo/selfie/
-* http://mystock.themeisle.com/photo/flatiron-2/
-
-- Furniture Shop
-* http://mystock.themeisle.com/photo/bathtub-in-the-center-of-the-room/
-* http://mystock.themeisle.com/photo/resort-premium-room/
-* http://mystock.themeisle.com/photo/rocking-chair-on-a-blue-carpet/
-* http://mystock.themeisle.com/photo/resort-room-with-a-view/
-* http://mystock.themeisle.com/photo/couch-with-two-green-pillows/
-
-- Farm
-* http://mystock.themeisle.com/photo/yellow-and-green/
-* http://mystock.themeisle.com/photo/oranges/
-* http://mystock.themeisle.com/photo/swamp/
-* http://mystock.themeisle.com/photo/strawberries-and-oranges-for-sale-in-baskets/
-* http://mystock.themeisle.com/photo/rosehip/
-
-- Photographer
-* http://mystock.themeisle.com/photo/old-casino/
-* http://mystock.themeisle.com/photo/photographer-3/
-* http://mystock.themeisle.com/photo/sea-breeze/
-* http://mystock.themeisle.com/photo/church/
-* http://mystock.themeisle.com/photo/flatiron-2/
-
-- Kindergarten
-* https://stocksnap.io/photo/NY963ZH6T2
-* https://stocksnap.io/photo/PBHFF6RJPH
-
-- Florist
-* https://stocksnap.io/photo/01SN8V4M9O
-* http://mystock.themeisle.com/photo/wedding-bouquet/
-* http://mystock.themeisle.com/photo/wedding-flower-decorations/
-
-- Cake Shop
-* https://stocksnap.io/photo/F6DNP46F78
-* https://stocksnap.io/photo/7G24TFZEKU
-
-- Transport
-* http://mystock.themeisle.com/photo/docks/
-* http://mystock.themeisle.com/photo/industrial-boat/
-
-- eBook
-* http://mystock.themeisle.com/photo/the-statue-of-liberty-at-sunset/
-* http://mystock.themeisle.com/photo/brasov-old-city/
-* http://mystock.themeisle.com/photo/mysterious-man-2/
-
-- Speed
-* http://mystock.themeisle.com/photo/couch-with-two-green-pillows/
-* http://mystock.themeisle.com/photo/mannequin/
-* http://mystock.themeisle.com/photo/grooms-suite/
-* http://mystock.themeisle.com/photo/luggage-tag-label-on-suitcase-or-bag-with-the-sea-behind-it/
-
-- Food Magazine
-* https://mystock.themeisle.com/photo/caesar-salad/
-* https://mystock.themeisle.com/photo/indian-restaurant-dishes/
-* https://mystock.themeisle.com/photo/mac-and-cheese-pizza/
-* https://mystock.themeisle.com/photo/delicious-morning-breakfast-served-on-a-tray/
-
-- Web Design
-* https://mystock.themeisle.com/photo/programming-laptop/
-* https://mystock.themeisle.com/photo/ipad/
-
-- Yoga Studio
-* https://stocksnap.io/photo/OYD9ZOOCCQ
-* https://stocksnap.io/photo/TL7LKEE0HR
-* https://stocksnap.io/photo/W23EUNXBCG
-* https://stocksnap.io/photo/MM6OVJGYRU
-* https://mystock.themeisle.com/photo/floor-pattern/
-
-- Sales Funnel
-* https://mystock.themeisle.com/photo/cityscape-of-new-york-2/
-
-- Church
-* https://mystock.themeisle.com/photo/vatican-streets/
-* https://stocksnap.io/photo/M2XAYFTTEN
-* https://stocksnap.io/photo/MOUVID40QD
-* https://stocksnap.io/photo/AM7OQR2274
-
-- Fashion Magazine
-* https://stocksnap.io/photo/F08ZV0M412
-* https://stocksnap.io/photo/V5A73VEOJO
-* https://stocksnap.io/photo/AOOC3CJARN
-* https://stocksnap.io/photo/HKTKMOVXNO
-
-- Winery
-* https://stocksnap.io/photo/CM4WVU6WO0
-
-- News Magazine
-* https://mystock.themeisle.com/photo/man-sitting-under-a-tree/
-* https://mystock.themeisle.com/photo/smartphone/
-* https://mystock.themeisle.com/photo/protest/
-* https://mystock.themeisle.com/photo/indian-food-bhel-puri-2/
-* https://mystock.themeisle.com/photo/skiers/
-* https://mystock.themeisle.com/photo/new-york-skyscrapers-on-a-cloudy-wheather/
-* https://mystock.themeisle.com/photo/metropolitan-museum/
-
-- Coworking
-* https://mystock.themeisle.com/photo/hotel-lobby/
-* https://mystock.themeisle.com/photo/code-in-wp/
-
-- Fishing
-* https://mystock.themeisle.com/photo/boat-on-a-volcanic-green-lake-surrounded-of-a-forest-2/
-
-- Car Rental
-* https://stocksnap.io/photo/5XRZI55HKV
-* https://stocksnap.io/photo/Q1KQCULDV5
-* https://stocksnap.io/photo/OYLXO1QZ5K
-
-- Ski Resort
-* https://stocksnap.io/photo/Z5WEX57EKA
-* https://mystock.themeisle.com/photo/mountain/
-* https://mystock.themeisle.com/photo/gondola-2/
-* https://stocksnap.io/photo/QT3VEK73I5
-* https://stocksnap.io/photo/JJE5DPU0U9
-* https://stocksnap.io/photo/KRXK7LH6XL
-
-- Digital Product
-* https://mystock.themeisle.com/photo/cityscape-of-new-york-2/
-
-- Moving Company
-* https://stocksnap.io/photo/YF3WGBL0AK
-
-- Translation Services
-* https://mystock.themeisle.com/photo/metropolitan-museum/
-
-- Blogger
-* https://mystock.themeisle.com/photo/passing-girl/
-
-- Coupons
-* https://mystock.themeisle.com/photo/gift-shop-in-punjim/
-* https://mystock.themeisle.com/photo/teddy/
-* https://mystock.themeisle.com/photo/couch-with-two-green-pillows/
-* https://mystock.themeisle.com/photo/luggage-tag-label-on-suitcase-or-bag-with-the-sea-behind-it/
-
-- Escape Room
-* https://mystock.themeisle.com/photo/scary-nymph-group-holding-hands-2/
-* https://mystock.themeisle.com/photo/mannequin/
-* https://mystock.themeisle.com/photo/light-carpet/
-* https://mystock.themeisle.com/photo/mannequin-with-unicorn-mask-standing-in-the-window/
-
-- Resume
-* https://mystock.themeisle.com/photo/programming-laptop-2/
-* https://mystock.themeisle.com/photo/thinking-time/
-
-- Wellness Spa
-* https://mystock.themeisle.com/photo/bathtub-in-the-center-of-the-room/
-* https://mystock.themeisle.com/photo/hotel-with-terrace-on-the-sea/
-* https://mystock.themeisle.com/photo/exotic-beach-in-maldives/
-
-- Courses
-* https://stocksnap.io/photo/SCC00WCQ3I
-* https://mystock.themeisle.com/photo/code-in-wp/
-* https://mystock.themeisle.com/photo/photographer-2/
-* https://mystock.themeisle.com/photo/browser-tabs/
-
-- Fashion Model Agency
-* https://mystock.themeisle.com/photo/thinking-time/
-* https://mystock.themeisle.com/photo/bride-and-groom/
-* https://mystock.themeisle.com/photo/mannequin/
-* https://stocksnap.io/photo/WB9WHQU68Q
-* https://stocksnap.io/photo/F08ZV0M412
-* https://stocksnap.io/photo/Q8FQMQWYKB
-* https://stocksnap.io/photo/D626O6RC44
-
-- IT Technology Agency
-* https://mystock.themeisle.com/photo/programming-laptop-2/
-* https://mystock.themeisle.com/photo/couple-jogging-together-along-the-river-coas/
-* https://mystock.themeisle.com/photo/new-york-skyscrapers-on-a-cloudy-wheather/
-
-- Christmas Market
-* https://stocksnap.io/photo/A8CFE9WADG
-* https://mystock.themeisle.com/photo/young-boy-attending-a-concert/
-* https://mystock.themeisle.com/photo/pool-party/
-
-- Podcast
-* https://mystock.themeisle.com/photo/tour-eiffel/
-* https://mystock.themeisle.com/photo/new-york-skyscrapers-on-a-cloudy-wheather/
-* https://mystock.themeisle.com/photo/harbour-air-seaplanes-docked-in-maldives-2/
-* https://mystock.themeisle.com/photo/fancy-restaurant/
-* https://mystock.themeisle.com/photo/registration/
-
-- Digital Agency
-* https://stocksnap.io/photo/RCFX768X06
-* https://mystock.themeisle.com/photo/bucharest-at-night/
-* https://mystock.themeisle.com/photo/browser-tabs/
-* https://mystock.themeisle.com/photo/code-in-wp/
-* https://mystock.themeisle.com/photo/tourists/
-
-- Industrial
-* https://mystock.themeisle.com/photo/bucharest-at-night/
-* https://mystock.themeisle.com/photo/two-fast-trains-in-a-train-station/
-* https://mystock.themeisle.com/photo/fishing-boats-2/
-* https://mystock.themeisle.com/photo/engine/
-
-- Adventure
-* https://mystock.themeisle.com/photo/mountain/
-* https://mystock.themeisle.com/photo/mountain-path/
-* https://mystock.themeisle.com/photo/skiers/
-* https://mystock.themeisle.com/photo/picnic-2/
-
-- Product Launch
-* https://mystock.themeisle.com/photo/harley-davidson-motorcycle-with-a-field-of-wheat-behind-it-3/
-* https://stocksnap.io/photo/AJAA85Y0SH
-
-- Accounting
-* https://mystock.themeisle.com/photo/shopping-building-in-copenhagen-center/
-
-- Beauty Shop
-* https://stocksnap.io/photo/JVZSMMHS8J
-* https://stocksnap.io/photo/LHMA01FPBE
-* https://stocksnap.io/photo/V2JTH0ST4Y
-* https://stocksnap.io/photo/S6RLOBPAOZ
-
-- Recruitment Agency
-* https://stocksnap.io/photo/GVUWVKUHZE
-
-- Artist
-* https://mystock.themeisle.com/photo/graffiti/
-* https://stocksnap.io/photo/OZCMRCGRX9
-* https://stocksnap.io/photo/1PY0DYZSDT
-
-- VR Studio
-* https://stocksnap.io/photo/PFHFKXTMYD
-* https://mystock.themeisle.com/photo/scale-model-of-a-street/
-
-- Makeup Artist
-* https://stocksnap.io/photo/F08ZV0M412
-* https://stocksnap.io/photo/G40JKFC5I5
-* https://stocksnap.io/photo/SSSLXNZ1RQ
-
-- Web Agency
-* https://www.pexels.com/photo/landscape-photography-of-mountains-covered-in-snow-691668/
-
-- Scuba Diving
-* https://stocksnap.io/photo/1S3SUI4VRD
-* https://mystock.themeisle.com/photo/group-of-fish-swimming-in-crystal-clear-water/
-
-- Wine Bar
-* https://stocksnap.io/photo/VXU7CK0T65
-
-- Mountain Biking Race
-* https://stocksnap.io/photo/U3Z5GNZUQR
-* https://stocksnap.io/photo/SNIKX3KGKD
-
-- Movie
-* https://mystock.themeisle.com/photo/illuminated-alley-of-a-luxurious-resort-at-sunset/
-* https://mystock.themeisle.com/photo/times-square/
-* https://mystock.themeisle.com/photo/bucharest-at-night/
-
-- Running Club
-* https://mystock.themeisle.com/photo/couple-jogging-together-along-the-river-coas/
-* https://stocksnap.io/photo/X1T5YTO2MB
-* https://stocksnap.io/photo/6X9WTXG24A
-* https://stocksnap.io/photo/X2Q7LBUF6U
-
-- Jewellery Shop
-* https://stocksnap.io/photo/BIR9EBVX6K
-* https://stocksnap.io/photo/VHIX76K7EH
-* https://stocksnap.io/photo/MK72WQXVOE
-* https://stocksnap.io/photo/TDFUZEW0FS
-
-- Car Service
-* https://mystock.themeisle.com/photo/engine/
-* https://mystock.themeisle.com/photo/old-mini-cooper/
-
-- Museum
-* https://mystock.themeisle.com/photo/front-view-of-magasin-du-nord-copenhagen/
-
-- Art Exhibition
-* https://stocksnap.io/photo/TIHPAM0QFG
-* https://stocksnap.io/photo/I0CYW7MWNV
-* https://mystock.themeisle.com/photo/beautiful-painting-of-a-sunny-day-on-a-building/
-* https://mystock.themeisle.com/photo/rain-painting/
-
-- Conference
-* https://mystock.themeisle.com/photo/cityscape-of-new-york-2/
-* https://mystock.themeisle.com/photo/performing-artist-with-cool-projections-behind/
-* https://mystock.themeisle.com/photo/young-boy-attending-a-concert/
-
-- University
-* https://mystock.themeisle.com/photo/bruges-cityview/
-* https://mystock.themeisle.com/photo/front-view-of-magasin-du-nord-copenhagen/
-* https://mystock.themeisle.com/photo/metropolitan-museum/
-
-- Interior Design
-* https://mystock.themeisle.com/photo/couch-with-two-green-pillows/
-* https://mystock.themeisle.com/photo/bathtub-in-the-center-of-the-room/
-
-- Electronics Store
-* https://stocksnap.io/photo/FMGBFTLI2D
-* https://stocksnap.io/photo/6EMBFCXU0J
-* https://stocksnap.io/photo/4CLVYHVZ2L
-* https://stocksnap.io/photo/UHGLILBFLV
-* https://stocksnap.io/photo/PFHFKXTMYD
-* https://stocksnap.io/photo/M6XC5T3JY3
-* https://stocksnap.io/photo/XW2IM1GSYM
-* https://mystock.themeisle.com/photo/headphones/
-* https://mystock.themeisle.com/photo/programming-laptop-2/
-* https://stocksnap.io/photo/V89HFPEFN3
-
-- Print Shop
-* https://stocksnap.io/photo/LYU668ZB5A
-* https://stocksnap.io/photo/VYSZEM4UWE
-
-- City Tour
-* https://mystock.themeisle.com/photo/amsterdam-at-night/
-* https://mystock.themeisle.com/photo/copenhagen-canal-at-sunset/
-* https://mystock.themeisle.com/photo/colorful-buildings-in-copenhagen/
-* https://mystock.themeisle.com/photo/small-boat-on-copenhagen-canals/
-
-- Insurance
-* https://stocksnap.io/photo/FCUDWWBKFV
-* https://stocksnap.io/photo/FZ0NEWUBW5
-
-- Personal Blog
-* https://mystock.themeisle.com/photo/picnic/
-* https://stocksnap.io/photo/MN5CHRVUUR
-* https://mystock.themeisle.com/photo/gift-shops/
-
-- Travel Blog
-* https://mystock.themeisle.com/photo/copenhagen-canal-at-sunset/
-* https://mystock.themeisle.com/photo/colorful-boats-at-the-fishing-harbor-of-riomaggiore-cinque-terre-2/
-* https://mystock.themeisle.com/photo/blue-boat-docked-on-an-island-in-maldives/
-
-- DJ
-* https://stocksnap.io/photo/XAOL9EYTV8
-* https://stocksnap.io/photo/NBP6GJVR0M
-* https://mystock.themeisle.com/photo/graffiti-2/
-* https://mystock.themeisle.com/photo/young-boy-attending-a-concert/
-* https://mystock.themeisle.com/photo/bucharest-at-night/
-
-- Tech Lab
-* https://mystock.themeisle.com/photo/programming-laptop/
-* https://stocksnap.io/photo/C5BOQXAZ4N
-* https://stocksnap.io/photo/UEDSDSAWBQ
-* https://stocksnap.io/photo/APSRDPFZSR
-
-- Equitation
-* https://stocksnap.io/photo/AX5GC9QZR5
-* https://stocksnap.io/photo/3EV0OZ7ZJO
-
-- Restaurant 2
-* https://mystock.themeisle.com/photo/remember-the-wedding-gift/
-* https://mystock.themeisle.com/photo/cheesy-hamburger-with-french-fries/
-* https://mystock.themeisle.com/photo/fancy-restaurant/
-* https://mystock.themeisle.com/photo/indian-vegetable-grill-sandwich/
-
-- Fitness Trainer
-* https://stocksnap.io/photo/people-hiking-GGQX7WXAAC
-* https://stocksnap.io/photo/00RNNUWGLM
-
-- Music Band 2
-* https://stocksnap.io/photo/people-men-H80Z9EVEGA
-* https://stocksnap.io/photo/events-concert-1ZNLM71V1J
-
-- Perfume Shop
-* https://stocksnap.io/photo/chanel-perfume-KFMR70XLYS
-
-- Jewellery Shop 2
-* https://stocksnap.io/photo/woman-closeup-BIR9EBVX6K
-* https://stocksnap.io/photo/diamond-ring-V6XSRDWN2G
-* https://stocksnap.io/photo/still-items-NLSP8TGHFM
-
-- Copywriter
-* https://stocksnap.io/photo/man-smiling-X6BW9YMWXV
-
-- Boat Rental
-* https://stocksnap.io/photo/architecture-buildings-B7260BRVGS
-* https://stocksnap.io/photo/boat-ship-L584FW8XBR
-* https://mystock.themeisle.com/photo/three-boats-at-the-dock/
-* https://mystock.themeisle.com/photo/small-boat-on-copenhagen-canals/
-* https://mystock.themeisle.com/photo/blue-boat-docked-on-an-island-in-maldives/
-
-- Apparel
-* https://mystock.themeisle.com/photo/protest/
-* https://mystock.themeisle.com/photo/shopping-building-in-copenhagen-center/
-* https://mystock.themeisle.com/photo/grooms-suite/
-* https://mystock.themeisle.com/photo/mannequin/
-* https://stocksnap.io/photo/AOOC3CJARN
-* https://stocksnap.io/photo/HKTKMOVXNO
-
-- Pet Shop
-* https://mystock.themeisle.com/photo/buddy/
-* https://mystock.themeisle.com/photo/street-dog-sitting-on-a-beach/
-
-- Doctors 2
-* https://stocksnap.io/photo/city-buildings-VAGYAWK3PE
-* https://stocksnap.io/photo/chair-dentist-3J10QN5PTS
-* https://stocksnap.io/photo/stethoscope-medical-9M1HWW2JFV
-
-- Phychologist
-* https://stocksnap.io/photo/people-girls-Y2AHVPYB51
-* https://mystock.themeisle.com/photo/hammock-placed-between-two-poles-on-a-beach/
-
-- Book Shop
-* https://mystock.themeisle.com/photo/fireplace/
-* https://mystock.themeisle.com/photo/thinking-time/
-* https://mystock.themeisle.com/photo/volkswagen-vanagon/
-* https://mystock.themeisle.com/photo/programming-laptop-2/
-* https://mystock.themeisle.com/photo/temple-2/
-* https://stocksnap.io/photo/UA83K6Z0WY
-* https://stocksnap.io/photo/EB9B6BC1F6
-
-- Laundry Services
-* https://stocksnap.io/photo/laundry-laundromat-4876CF9B9C
-* https://stocksnap.io/photo/laundry-laundromat-611E343F6D
-* https://mystock.themeisle.com/photo/silk-scarfs/
-
-- Craft Beer
-* https://stocksnap.io/photo/beer-bottles-8HS0I30RUK
-* https://stocksnap.io/photo/wine-beer-C2988083A4
-
-- Gardening
-* https://mystock.themeisle.com/photo/distant-view-of-taj-mahal-surounded-by-nature/
-* https://stocksnap.io/photo/green-window-HYEGYZNLA6
-* https://mystock.themeisle.com/photo/trees-carefully-trimmed-into-geometrical-shapes-on-a-beach/
-
-- Resume 2
-* https://mystock.themeisle.com/photo/browser-tabs/
-* https://stocksnap.io/photo/man-interior-BXO1M5UBLM
-
-- Leather Shop
-* https://stocksnap.io/photo/bag-leather-DQCQ6W96UC
-* https://stocksnap.io/photo/brown-leather-9YGBJUD1FY
-* https://stocksnap.io/photo/shoes-shoelace-G2QXOYC0UN
-* https://stocksnap.io/photo/brown-leather-84G6CURMJ3
-* https://stocksnap.io/photo/guy-man-YK0PRWX6MC
-
-- Public Notary
-* https://mystock.themeisle.com/photo/vatican-streets/
-* https://mystock.themeisle.com/photo/scale-model-of-a-modern-building/
-
-- Pharmacy
-* https://stocksnap.io/photo/pills-medicine-I4P7JN8SCN
-* https://mystock.themeisle.com/photo/blox-building-in-copenhagen/
-
-- Investment Consulting
-* https://stocksnap.io/photo/man-outside-HBDZWHMZ6K
-* https://mystock.themeisle.com/photo/writers/
-
-- Sports Academy
-* https://stocksnap.io/photo/football-soccer-MJ7XGR7K4C
-* https://stocksnap.io/photo/soccer-ball-LHHL7FKKVD
+Patterns resources:
+
+* neve-patterns-1.jpg - https://pxhere.com/el/photo/1434027
+* neve-patterns-2.jpg - https://pxhere.com/el/photo/1458707
+* neve-patterns-3.jpg - https://pxhere.com/el/photo/764654
+* neve-patterns-4.jpg - https://pxhere.com/el/photo/762278
+* neve-patterns-6.jpg - https://pxhere.com/el/photo/1433753
+* neve-patterns-8.jpg - https://pxhere.com/el/photo/1594712
+* neve-patterns-10.jpg - https://pxhere.com/el/photo/1431575
+* neve-patterns-11.jpg - https://pxhere.com/el/photo/1451429
+* neve-patterns-12.jpg - https://pxhere.com/el/photo/1229843
+* neve-patterns-15.jpg - https://pxhere.com/el/photo/1432963
+* neve-patterns-16.jpg - https://pxhere.com/el/photo/1575315
+* neve-patterns-17.jpg - https://pxhere.com/el/photo/706582
+* neve-patterns-18.jpg - https://pxhere.com/el/photo/1391834
+* neve-patterns-19.jpg - https://pxhere.com/el/photo/1555639
+* neve-patterns-20.jpg - https://pxhere.com/el/photo/1561935
+* neve-patterns-21.jpg - https://pxhere.com/el/photo/1567113
+* neve-patterns-22.jpg - https://pxhere.com/el/photo/1545615
+* otter-blocks-img-02.png - https://pxhere.com/en/photo/1416385
+* otter-blocks-img-03.png - https://pxhere.com/en/photo/1175501

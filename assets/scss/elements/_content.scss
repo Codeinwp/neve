@@ -13,6 +13,10 @@
   }
 }
 
+figcaption {
+	font-size: .8em;
+	opacity: .75;
+}
 
 blockquote {
   margin: $spacing 0;
@@ -70,12 +74,12 @@ p code {
 pre {
   display: block;
   padding: $spacing-sm;
-  background: #fbfbfb;
+  background: rgba(255,255,255,0.75);
   border-radius: 5px;
   border: $muted-border;
   margin: $spacing-sm 0;
   white-space: pre-wrap;
-  font-size: 0.9em;
+  font-size: .9em;
   line-height: 2em;
 }
 
@@ -130,7 +134,7 @@ pre {
 
 .wp-caption-text {
   text-align: center;
-  font-size: 0.8em;
+  font-size: .8em;
   font-weight: 500;
 }
 
@@ -159,9 +163,5 @@ audio {
   }
   .neve-main > .container > .row {
     flex-wrap: nowrap;
-  }
-
-  .nv-empty-sidebar .neve-main > .container .col {
-    max-width: 100%;
   }
 }

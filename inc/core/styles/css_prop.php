@@ -14,8 +14,8 @@ class Css_Prop {
 	 */
 	public static function minus_100( $css_prop, $value, $meta, $device ) {
 		return sprintf( "%s: %s%s;",
-			( $css_prop ),
-			( 100 - $value ),
+			($css_prop),
+			(100 - $value),
 			isset( $meta[ Dynamic_Selector::META_SUFFIX ] ) ? $meta[ Dynamic_Selector::META_SUFFIX ] : 'px'
 		);
 	}
@@ -32,12 +32,12 @@ class Css_Prop {
 	 */
 	public static function transform( $css_prop, $value, $meta, $device ) {
 		//If we have a custom filter, let's call it.
-		if ( isset( $meta['filter'] ) ) {
-			if ( is_callable( $meta['filter'] ) ) {
-				return call_user_func_array( $meta['filter'], [ $css_prop, $value, $meta, $device ] );
+		if ( isset( $meta[ 'filter' ] ) ) {
+			if ( is_callable( $meta[ 'filter' ] ) ) {
+				return call_user_func_array( $meta[ 'filter' ], [ $css_prop, $value, $meta, $device ] );
 			}
-			if ( method_exists( __CLASS__, $meta['filter'] ) ) {
-				return call_user_func_array( [ __CLASS__, $meta['filter'] ], [ $css_prop, $value, $meta, $device ] );
+			if ( method_exists( __CLASS__, $meta[ 'filter' ] ) ) {
+				return call_user_func_array( [ __CLASS__, $meta[ 'filter' ] ], [ $css_prop, $value, $meta, $device ] );
 			}
 
 			return '';
@@ -49,9 +49,14 @@ class Css_Prop {
 			case Config::CSS_PROP_COLOR:
 			case Config::CSS_PROP_FILL_COLOR:
 			case Config::CSS_PROP_BORDER_COLOR:
-				$value = strpos( $value, "#" ) === 0 ? $value : '#' . $value;
+				$mode = (false === strpos( $value, 'rgba' )) ? 'hex' : 'rgba';
+				$is_var = (strpos( $value, 'var' ) !== false);
 
-				return sprintf( "%s: %s%s;", ( $css_prop ), sanitize_hex_color( $value ), isset( $meta['important'] ) && $meta['important'] ? '!important' : '' );
+				if ( $mode === 'hex' && ! $is_var ) {
+					$value = strpos( $value, "#" ) === 0 ? $value : '#' . $value;
+				}
+
+				return sprintf( "%s: %s%s;", ($css_prop), neve_sanitize_colors( $value ), isset( $meta[ 'important' ] ) && $meta[ 'important' ] ? '!important' : '' );
 				break;
 			case Config::CSS_PROP_MAX_WIDTH:
 			case Config::CSS_PROP_WIDTH:
@@ -61,16 +66,19 @@ class Css_Prop {
 			case Config::CSS_PROP_PADDING_LEFT:
 			case Config::CSS_PROP_PADDING_RIGHT:
 			case Config::CSS_PROP_HEIGHT:
+			case Config::CSS_PROP_MIN_HEIGHT:
+			case Config::CSS_PROP_LEFT:
+			case Config::CSS_PROP_RIGHT:
 				$suffix = isset( $meta[ Dynamic_Selector::META_SUFFIX ] ) ? $meta[ Dynamic_Selector::META_SUFFIX ] : 'px';
 				if ( $suffix === 'responsive_suffix' ) {
-					$all_value = Mods::get( $meta['key'], isset( $meta[ Dynamic_Selector::META_DEFAULT ] ) ? $meta[ Dynamic_Selector::META_DEFAULT ] : null );
+					$all_value = Mods::get( $meta[ 'key' ], isset( $meta[ Dynamic_Selector::META_DEFAULT ] ) ? $meta[ Dynamic_Selector::META_DEFAULT ] : null );
 
-					$suffix = isset( $all_value['suffix'] ) ? $all_value['suffix'][ $device ] : ( isset( $all_value['suffix'] ) ? $all_value['suffix'] : 'px' );;
+					$suffix = isset( $all_value[ 'suffix' ] ) ? $all_value[ 'suffix' ][ $device ] : (isset( $all_value[ 'suffix' ] ) ? $all_value[ 'suffix' ] : 'px');;
 				}
 
 				return sprintf( "%s: %s%s;",
-					( $css_prop ),
-					( $value ),
+					($css_prop),
+					($value),
 					$suffix
 				);
 				break;
@@ -85,24 +93,24 @@ class Css_Prop {
 						absint( $value ), $suffix );
 				}
 				if ( $suffix === 'responsive_unit' ) {
-					$all_value = Mods::get( $meta['key'], isset( $meta[ Dynamic_Selector::META_DEFAULT ] ) ? $meta[ Dynamic_Selector::META_DEFAULT ] : null );
-					$suffix    = isset( $all_value[ $device . '-unit' ] ) ? $all_value[ $device . '-unit' ] : 'px';
+					$all_value = Mods::get( $meta[ 'key' ], isset( $meta[ Dynamic_Selector::META_DEFAULT ] ) ? $meta[ Dynamic_Selector::META_DEFAULT ] : null );
+					$suffix = isset( $all_value[ $device . '-unit' ] ) ? $all_value[ $device . '-unit' ] : 'px';
 				}
 				$non_empty_values = array_filter( $value, 'strlen' );
 				if ( count( $non_empty_values ) === 4 ) {
 					return sprintf( "%s:%s%s %s%s %s%s %s%s;",
 						$css_prop,
-						(int) $value['top'],
+						(int) $value[ 'top' ],
 						$suffix,
-						(int) $value['right'],
+						(int) $value[ 'right' ],
 						$suffix,
-						(int) $value['bottom'],
+						(int) $value[ 'bottom' ],
 						$suffix,
-						(int) $value['left'],
+						(int) $value[ 'left' ],
 						$suffix
 					);
 				}
-				$rule     = '';
+				$rule = '';
 				$patterns = [
 					Config::CSS_PROP_MARGIN        => 'margin-%s',
 					Config::CSS_PROP_PADDING       => 'padding-%s',
@@ -116,7 +124,7 @@ class Css_Prop {
 				];
 				foreach ( $non_empty_values as $position => $position_value ) {
 					$rule .= sprintf( "%s:%s%s;",
-						sprintf( ( is_array( $patterns[ $css_prop ] ) ? $patterns[ $css_prop ][ $position ] : $patterns[ $css_prop ] ), $position ),
+						sprintf( (is_array( $patterns[ $css_prop ] ) ? $patterns[ $css_prop ][ $position ] : $patterns[ $css_prop ]), $position ),
 						(int) $position_value,
 						$suffix
 					);
@@ -131,8 +139,8 @@ class Css_Prop {
 				$suffix = isset( $meta[ Dynamic_Selector::META_SUFFIX ] ) ? $meta[ Dynamic_Selector::META_SUFFIX ] : 'em';
 				// We consider the provided suffix as default, in case that we have a responsive setting with responsive suffix.
 				if ( isset( $meta[ Dynamic_Selector::META_IS_RESPONSIVE ] ) && $meta[ Dynamic_Selector::META_IS_RESPONSIVE ] ) {
-					$all_value = Mods::get( $meta['key'] );
-					$suffix    = isset( $all_value['suffix'][ $device ] ) ? $all_value['suffix'][ $device ] : ( isset( $all_value['suffix'] ) ? $all_value['suffix'] : $suffix );
+					$all_value = Mods::get( $meta[ 'key' ] );
+					$suffix = isset( $all_value[ 'suffix' ][ $device ] ) ? $all_value[ 'suffix' ][ $device ] : (isset( $all_value[ 'suffix' ] ) ? $all_value[ 'suffix' ] : $suffix);
 				}
 
 				return sprintf( ' %s: %s%s; ', $css_prop, $value, $suffix );
@@ -149,8 +157,8 @@ class Css_Prop {
 				return "border:1px solid;";
 				break;
 			case Config::CSS_PROP_FONT_WEIGHT:
-				if ( isset( $meta['font'] ) ) {
-					$font = strpos( $meta['font'], 'mods_' ) === 0 ? Mods::get( str_replace( 'mods_', '', $meta['font'] ) ) : $meta['font'];
+				if ( isset( $meta[ 'font' ] ) ) {
+					$font = strpos( $meta[ 'font' ], 'mods_' ) === 0 ? Mods::get( str_replace( 'mods_', '', $meta[ 'font' ] ) ) : $meta[ 'font' ];
 					Font_Manager::add_google_font( $font, strval( $value ) );
 				}
 
@@ -165,11 +173,10 @@ class Css_Prop {
 				return sprintf( ' %s: %s; ', $css_prop, $value );
 
 				break;
-				break;
 			case Config::CSS_PROP_TEXT_TRANSFORM:
+			case Config::CSS_PROP_BOX_SHADOW:
 				return sprintf( ' %s: %s; ', $css_prop, $value );
 				break;
-
 		}
 
 		return '';

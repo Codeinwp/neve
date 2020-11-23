@@ -163,7 +163,7 @@ class SearchResponsive extends Abstract_Component {
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
 					'template' =>
-						'body ' . $this->default_selector . ' .nv-search > svg {
+						'body ' . $this->default_selector . ' a.nv-search.nv-icon > svg {
 							width: {{value}}px;
 							height: {{value}}px;
 						}',
@@ -180,14 +180,14 @@ class SearchResponsive extends Abstract_Component {
 				'group'                 => self::COMPONENT_ID,
 				'tab'                   => SettingsManager::TAB_STYLE,
 				'transport'             => 'postMessage',
-				'sanitize_callback'     => 'sanitize_hex_color',
+				'sanitize_callback'     => 'neve_sanitize_colors',
 				'label'                 => __( 'Color', 'neve' ),
 				'type'                  => '\Neve\Customizer\Controls\React\Color',
 				'section'               => $this->section,
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
 					'template' =>
-						'body ' . $this->default_selector . ' .nv-search svg {
+						'body ' . $this->default_selector . ' a.nv-search.nv-icon > svg {
 							fill: {{value}};
 						}',
 				],
@@ -201,14 +201,14 @@ class SearchResponsive extends Abstract_Component {
 				'group'                 => self::COMPONENT_ID,
 				'tab'                   => SettingsManager::TAB_STYLE,
 				'transport'             => 'postMessage',
-				'sanitize_callback'     => 'sanitize_hex_color',
+				'sanitize_callback'     => 'neve_sanitize_colors',
 				'label'                 => __( 'Hover Color', 'neve' ),
 				'type'                  => '\Neve\Customizer\Controls\React\Color',
 				'section'               => $this->section,
 				'live_refresh_selector' => true,
 				'live_refresh_css_prop' => [
 					'template' =>
-						'body ' . $this->default_selector . ' .nv-search:hover svg {
+						'body ' . $this->default_selector . ' a.nv-search.nv-icon:hover > svg {
 							fill: {{value}};
 						}',
 				],
@@ -444,7 +444,7 @@ class SearchResponsive extends Abstract_Component {
 				'group'                 => self::COMPONENT_ID,
 				'tab'                   => SettingsManager::TAB_STYLE,
 				'transport'             => 'postMessage',
-				'sanitize_callback'     => 'sanitize_hex_color',
+				'sanitize_callback'     => 'neve_sanitize_colors',
 				'label'                 => __( 'Background Color', 'neve' ),
 				'type'                  => '\Neve\Customizer\Controls\React\Color',
 				'section'               => $this->section,
@@ -466,7 +466,7 @@ class SearchResponsive extends Abstract_Component {
 				'group'                 => self::COMPONENT_ID,
 				'tab'                   => SettingsManager::TAB_STYLE,
 				'transport'             => 'postMessage',
-				'sanitize_callback'     => 'sanitize_hex_color',
+				'sanitize_callback'     => 'neve_sanitize_colors',
 				'label'                 => __( 'Text and Border', 'neve' ),
 				'type'                  => 'neve_color_control',
 				'section'               => $this->section,
@@ -503,7 +503,7 @@ class SearchResponsive extends Abstract_Component {
 		}
 
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => $this->default_selector . ' .nv-search > svg',
+			Dynamic_Selector::KEY_SELECTOR => $this->default_selector . ' a.nv-search.nv-icon > svg',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_WIDTH      => [
 					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::SIZE_ID,
@@ -521,7 +521,7 @@ class SearchResponsive extends Abstract_Component {
 		];
 
 		$css_array[] = [
-			Dynamic_Selector::KEY_SELECTOR => $this->default_selector . ' .nv-search:hover > svg',
+			Dynamic_Selector::KEY_SELECTOR => $this->default_selector . ' a.nv-search.nv-icon:hover > svg',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_FILL_COLOR => [
 					Dynamic_Selector::META_KEY     => $this->get_id() . '_' . self::HOVER_COLOR_ID,

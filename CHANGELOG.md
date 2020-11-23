@@ -1,3 +1,72 @@
+##### [Version 2.8.4](https://github.com/Codeinwp/neve/compare/v2.8.3...v2.8.4) (2020-11-02)
+
+- [Fix] Warning jQuery .load() function is deprecated
+- [Fix] Header builder responsive instructions notifications
+- [Fix] Search icon component going out of the window when right-aligned
+- [Fix] Search icon opening behavior on mobile
+- [Fix] Button styling for WooCommerce blocks
+- [Fix] Move Customizer homepage settings to the Layout panel
+
+##### [Version 2.8.3](https://github.com/Codeinwp/neve/compare/v2.8.2...v2.8.3) (2020-10-19)
+
+- [Fix] Exclusive products section in RTL mode
+- [Fix] Font Family dropdown layout in RTL mode
+- [Fix] Migrate from Zelle theme
+- [Fix] Default values for the spacing and custom content width controls
+- [Fix] Default line-height for buttons
+- [Fix] Search icon color in the mobile header builder
+- New Gutenberg Starter Sites
+
+##### [Version 2.8.2](https://github.com/Codeinwp/neve/compare/v2.8.1...v2.8.2) (2020-10-01)
+
+- [Feat] New Blog Layout options
+- [Feat] New Header Builder presets
+- [Feat] Support for Alpha RGBa Color Picker
+- [Feat] Enhancements to the Neve Options page
+- [Fix] Updated date layout in magic tags {current_post_meta} {meta_date}
+- [Fix] Compatibility with Elementor PRO 404 templates pages
+- [Fix] Style captions
+- [Fix] Button component style options overlapping with general button options
+- [Fix] Default meta elements order
+
+##### [Version 2.8.1](https://github.com/Codeinwp/neve/compare/v2.8.0...v2.8.1) (2020-09-17)
+
+- [Feat] New options for styling buttons ( text-transform, weight, font size, line height, and letter spacing )
+- [Feat] New block patterns
+- [Feat] Async/defer loading of the JS scripts
+- [Fix] Masonry not working in Safari
+- [Fix] Range controls in older versions of WordPress
+- [Fix] Links and headings not inheriting Customizer colors inside the editor
+- [Fix] Do not parse HTML tags inside the search heading
+- [Fix] Cart Icon size and color options not working properly
+- [Fix] Accessibility issues with form labels
+- [Fix] Update list of Google Fonts
+- [Fix] Button state management in the Starter Sites notice
+- [Fix] Inputs text color on a dark background
+- New Gutenberg Starter Sites
+
+#### [Version 2.8.0](https://github.com/Codeinwp/neve/compare/v2.7.7...v2.8.0) (2020-09-03)
+
+- [Feat] Compatibility with AMP 2.0
+- [Feat] New opening behaviors for the mobile menu (Slide from Left/Right, Pull from Left/Right, Full Canvas, Slide Down)
+- [Feat] New option to automatically expand first level dropdowns on mobile
+- [Feat] Single post/page customization options for Gutenberg editor
+- [Fix] Primary Menu and Secondary Menu alignment on mobile
+- [Fix] Scrollbar in the Primary Menu on mobile for larger font size
+- [Fix] Items spacing for Primary Menu on mobile
+- [Fix] Range controls lagging
+
+##### [Version 2.7.7](https://github.com/Codeinwp/neve/compare/v2.7.6...v2.7.7) (2020-08-19)
+
+- [Fix] Permissions callback for REST route in WP 5.5
+- [Fix] Color not working for the Cart Icon component
+- [Fix] Headings and lists alignment in the editor
+- [Fix] Warnings in the Music Band 2 Starter Site
+- [Fix] Range controls controlled from the keyboard
+- [Fix] Previewing templates from Otter Blocks
+- [Fix] Inline text-color not applying in the editor
+- New Gutenberg Starter Sites
+
 ##### [Version 2.7.6](https://github.com/Codeinwp/neve/compare/v2.7.5...v2.7.6) (2020-08-04)
 
 - [Feat] New magic tags for single post pages

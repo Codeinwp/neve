@@ -1,7 +1,8 @@
 import 'cypress-file-upload';
 import '@percy/cypress';
+let scrollToBottom = require("scroll-to-bottomjs");
 Cypress.Cookies.defaults({
-	whitelist: /wordpress_.*/
+	preserve: /wordpress_.*/
 });
 Cypress.Commands.add('login', (nextRoute = null) => {
 	//console.log(cy.getCookies());
@@ -39,7 +40,7 @@ Cypress.Commands.add('navigate',
 Cypress.Commands.add('clearWelcome', () => {
 	cy.window()
 		.then(win => {
-			win.wp && win.wp.data.select('core/edit-post').isFeatureActive('welcomeGuide') && win.wp.data.dispatch('core/edit-post').toggleFeature('welcomeGuide');
+			win.wp && win.wp.data &&  win.wp.data.select('core/edit-post').isFeatureActive('welcomeGuide') && win.wp.data.dispatch('core/edit-post').toggleFeature('welcomeGuide');
 		});
 });
 Cypress.Commands.add('insertCoverBlock', () => {
@@ -72,7 +73,7 @@ function importCodeContent(text) {
 
 Cypress.Commands.add('editCurrentPost', editCurrentPost);
 Cypress.Commands.add('insertPost',
-	(title = 'Test', content = 'Content', type = 'post', featured = false) => {
+	(title = 'Test', content = 'Content', type = 'post', featured = false, tags = false) => {
 		let loginRoute = '/wp-admin/post-new.php';
 		if (type !== 'post') {
 			loginRoute += '?post_type=' + type;
@@ -82,6 +83,10 @@ Cypress.Commands.add('insertPost',
 		cy.clearWelcome();
 		if (featured) {
 			addFeaturedImage();
+		}
+
+		if (tags) {
+			addTags();
 		}
 
 		cy.wait(1000);
@@ -129,6 +134,11 @@ function addFeaturedImage() {
 	cy.get('.attachments-browser .attachments > li.attachment').first().click({force: true});
 	cy.wait(2500);
 	cy.get('.media-button-select').click();
+}
+
+function addTags() {
+	cy.get('.components-panel__body-toggle').contains('Tags').click();
+	cy.get('.components-form-token-field__label').contains('Add New Tag').parent().find('input').type( 'test-tag,');
 }
 
 /**
@@ -203,11 +213,15 @@ function setTypographyControl( controlSelector, values ) {
  * Capture and compare the fullpage snapshots.
  *
  */
-Cypress.Commands.add("captureDocument", () => {
-
-	cy.scrollTo('bottom',{ ensureScrollable: false });
-	cy.wait(1000);
-	cy.percySnapshot();
+Cypress.Commands.add("captureDocument", (generalMaskAndClip = true, screenShotName = false) => {
+	if(generalMaskAndClip){
+		let maskElement = '.elementor-element-31b9e15, .pikaday__display--pikaday, .elementor-widget-video, label[for="vscf_captcha"],.elementor-widget-google_maps,.pikaday__display,.elementor-video-iframe';
+		let clipElement = '.widget_top_rated_products, .wpcf7-quiz-label, .eaw-typed-text,.product .related.products,.captcha_img,.elementor-element-38f7ff1e,.elementor-widget-container[style*="will-change"], .particles-js-canvas-el,.product_list_widget li + li, .exclusive.products';
+		cy.maskAndClip(maskElement,clipElement);
+	}
+	cy.window().then(cyWindow => scrollToBottom({ remoteWindow: cyWindow }));
+	cy.wait(5000);
+	cy.percySnapshot(screenShotName);
 });
 /**
  * Capture and compare the fullpage snapshots.
@@ -228,9 +242,9 @@ Cypress.Commands.add("maskAndClip", (maskSelectors, clipSelectors, hideElements)
 		if ($body.find(clipSelectors).length) {
 			cy.get(clipSelectors).invoke('css', 'display', 'none');
 		}
-		// if ($body.find(hideElements).length) {
-		// 	cy.get(hideElements).invoke('css', 'visibility', 'hidden');
-		// }
+		if (hideElements && hideElements.length > 0 && $body.find(hideElements).length) {
+			cy.get(hideElements).invoke('css', 'visibility', 'hidden');
+		}
 	});
 });
 

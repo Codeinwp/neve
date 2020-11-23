@@ -21,54 +21,10 @@ class Gutenberg extends Generator {
 	 * Generator constructor.
 	 */
 	public function __construct() {
-		$this->context        = Dynamic_Selector::CONTEXT_GUTENBERG;
-		$this->_subscribers[] = [
-			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_COLOR => Config::MODS_TEXT_COLOR,
-			],
-			Dynamic_Selector::KEY_SELECTOR => '
-				 .wp-block ,
-				 .editor-post-title__block .editor-post-title__input,
-				 h1,
-				 h2,
-				 h3,
-				 h4,
-				 h5,
-				 h6',
-			Dynamic_Selector::KEY_CONTEXT  => [
-				Dynamic_Selector::CONTEXT_GUTENBERG => true,
-			],
-		];
-		$this->_subscribers[] = [
-			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_BACKGROUND_COLOR => Config::MODS_BACKGROUND_COLOR,
-			],
-			Dynamic_Selector::KEY_SELECTOR => ' > *',
-			Dynamic_Selector::KEY_CONTEXT  => [
-				Dynamic_Selector::CONTEXT_GUTENBERG => true,
-			],
-		];
-		$this->_subscribers[] = [
-			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_COLOR => Config::MODS_LINK_COLOR,
-			],
-			Dynamic_Selector::KEY_SELECTOR => 'a',
-			Dynamic_Selector::KEY_CONTEXT  => [
-				Dynamic_Selector::CONTEXT_GUTENBERG => true,
-			],
-		];
-		$this->_subscribers[] = [
-			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_COLOR => Config::MODS_LINK_HOVER_COLOR,
-			],
-			Dynamic_Selector::KEY_SELECTOR => 'a:hover',
-			Dynamic_Selector::KEY_CONTEXT  => [
-				Dynamic_Selector::CONTEXT_GUTENBERG => true,
-			],
-		];
+		$this->context = Dynamic_Selector::CONTEXT_GUTENBERG;
 		$this->setup_buttons();
 		$this->setup_typography();
-
+		$this->add_editor_color_palette_styles();
 	}
 
 
@@ -82,12 +38,12 @@ class Gutenberg extends Generator {
 
 		$this->_subscribers[] = [
 			Dynamic_Selector::KEY_SELECTOR => '.editor-post-title__block .editor-post-title__input,
-			h1,
-			h2,
-			h3,
-			h4,
-			h5,
-			h6',
+			.wp-block h1, h1.wp-block
+			.wp-block h2, h2.wp-block
+			.wp-block h3, h3.wp-block
+			.wp-block h4, h4.wp-block
+			.wp-block h5, h5.wp-block
+			.wp-block h6, h6.wp-block',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_FONT_FAMILY => Config::MODS_FONT_HEADINGS,
 			],
@@ -96,7 +52,7 @@ class Gutenberg extends Generator {
 			],
 		];
 		$this->_subscribers[] = [
-			Dynamic_Selector::KEY_SELECTOR => '#editor .editor-styles-wrapper',
+			Dynamic_Selector::KEY_SELECTOR => '.editor-styles-wrapper',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_FONT_FAMILY => Config::MODS_FONT_GENERAL,
 			],
@@ -137,13 +93,13 @@ class Gutenberg extends Generator {
 		foreach (
 			[
 				'neve_h1_typeface_general' => '
-			 h1,
+			 .wp-block h1, h1.wp-block,
 			 .editor-post-title__block .editor-post-title__input',
-				'neve_h2_typeface_general' => ' h2',
-				'neve_h3_typeface_general' => ' h3',
-				'neve_h4_typeface_general' => ' h4',
-				'neve_h5_typeface_general' => ' h5',
-				'neve_h6_typeface_general' => ' h6',
+				'neve_h2_typeface_general' => ' .wp-block h2, h2.wp-block',
+				'neve_h3_typeface_general' => '.wp-block h3, h3.wp-block',
+				'neve_h4_typeface_general' => '.wp-block h4, h4.wp-block',
+				'neve_h5_typeface_general' => '.wp-block h5, h5.wp-block',
+				'neve_h6_typeface_general' => '.wp-block h6, h6.wp-block',
 			] as $heading_mod => $heading_selector
 		) {
 			$this->_subscribers[] = [
@@ -185,7 +141,7 @@ class Gutenberg extends Generator {
 
 		// Gutenberg
 		$this->_subscribers[]  = [
-			Dynamic_Selector::KEY_SELECTOR => '.wp-block-button.is-style-primary .wp-block-button__link',
+			Dynamic_Selector::KEY_SELECTOR => '.wp-block-button.is-style-primary .wp-block-button__link, .wc-block-grid .wp-block-button .wp-block-button__link',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_BACKGROUND_COLOR => Config::MODS_BUTTON_PRIMARY_STYLE . '.background',
 				Config::CSS_PROP_COLOR            => Config::MODS_BUTTON_PRIMARY_STYLE . '.text',
@@ -198,7 +154,7 @@ class Gutenberg extends Generator {
 			],
 		];
 		$this->_subscribers[]  = [
-			Dynamic_Selector::KEY_SELECTOR => '.wp-block-button.is-style-primary .wp-block-button__link:hover',
+			Dynamic_Selector::KEY_SELECTOR => '.wp-block-button.is-style-primary .wp-block-button__link:hover, .wc-block-grid .wp-block-button .wp-block-button__link:hover',
 			Dynamic_Selector::KEY_RULES    => [
 				Config::CSS_PROP_BACKGROUND_COLOR => Config::MODS_BUTTON_PRIMARY_STYLE . '.backgroundHover',
 				Config::CSS_PROP_COLOR            => Config::MODS_BUTTON_PRIMARY_STYLE . '.textHover',
@@ -233,12 +189,31 @@ class Gutenberg extends Generator {
 
 
 		$this->_subscribers[] = [
-			Dynamic_Selector::KEY_SELECTOR => '.wp-block-button.is-style-primary .wp-block-button__link',
+			Dynamic_Selector::KEY_SELECTOR => '.wp-block-button.is-style-primary .wp-block-button__link,  .wc-block-grid .wp-block-button .wp-block-button__link',
 			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_PADDING => [
+				Config::CSS_PROP_PADDING        => [
 					Dynamic_Selector::META_KEY           => Config::MODS_BUTTON_PRIMARY_PADDING,
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 				],
+				Config::CSS_PROP_FONT_SIZE      => [
+					Dynamic_Selector::META_KEY           => Config::MODS_BUTTON_TYPEFACE . '.fontSize',
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_SUFFIX        => 'em',
+				],
+				Config::CSS_PROP_LINE_HEIGHT    => [
+					Dynamic_Selector::META_KEY           => Config::MODS_BUTTON_TYPEFACE . '.lineHeight',
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_SUFFIX        => '',
+				],
+				Config::CSS_PROP_LETTER_SPACING => [
+					Dynamic_Selector::META_KEY           => Config::MODS_BUTTON_TYPEFACE . '.letterSpacing',
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+				],
+				Config::CSS_PROP_FONT_WEIGHT    => [
+					Dynamic_Selector::META_KEY => Config::MODS_BUTTON_TYPEFACE . '.fontWeight',
+					'font'                     => 'mods_' . Config::MODS_FONT_GENERAL,
+				],
+				Config::CSS_PROP_TEXT_TRANSFORM => Config::MODS_BUTTON_TYPEFACE . '.textTransform',
 			],
 			Dynamic_Selector::KEY_CONTEXT  => [
 				Dynamic_Selector::CONTEXT_GUTENBERG => true,
@@ -247,10 +222,29 @@ class Gutenberg extends Generator {
 		$this->_subscribers[] = [
 			Dynamic_Selector::KEY_SELECTOR => '.wp-block-button.is-style-secondary .wp-block-button__link',
 			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_PADDING => [
+				Config::CSS_PROP_PADDING        => [
 					Dynamic_Selector::META_KEY           => Config::MODS_BUTTON_SECONDARY_PADDING,
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 				],
+				Config::CSS_PROP_FONT_SIZE      => [
+					Dynamic_Selector::META_KEY           => Config::MODS_SECONDARY_BUTTON_TYPEFACE . '.fontSize',
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_SUFFIX        => 'em',
+				],
+				Config::CSS_PROP_LINE_HEIGHT    => [
+					Dynamic_Selector::META_KEY           => Config::MODS_SECONDARY_BUTTON_TYPEFACE . '.lineHeight',
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+					Dynamic_Selector::META_SUFFIX        => '',
+				],
+				Config::CSS_PROP_LETTER_SPACING => [
+					Dynamic_Selector::META_KEY           => Config::MODS_SECONDARY_BUTTON_TYPEFACE . '.letterSpacing',
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+				],
+				Config::CSS_PROP_FONT_WEIGHT    => [
+					Dynamic_Selector::META_KEY => Config::MODS_SECONDARY_BUTTON_TYPEFACE . '.fontWeight',
+					'font'                     => 'mods_' . Config::MODS_FONT_GENERAL,
+				],
+				Config::CSS_PROP_TEXT_TRANSFORM => Config::MODS_SECONDARY_BUTTON_TYPEFACE . '.textTransform',
 			],
 			Dynamic_Selector::KEY_CONTEXT  => [
 				Dynamic_Selector::CONTEXT_GUTENBERG => true,
@@ -258,4 +252,35 @@ class Gutenberg extends Generator {
 		];
 	}
 
+	/**
+	 * Adds colors from the editor-color-palette theme support.
+	 */
+	private function add_editor_color_palette_styles() {
+		$is_new_user           = get_option( 'neve_new_user' );
+		$imported_starter_site = get_option( 'neve_imported_demo' );
+		if ( $is_new_user === 'yes' && $imported_starter_site !== 'yes' ) {
+			return;
+		}
+
+		$this->_subscribers['.has-neve-button-color-color']            = [
+			Config::CSS_PROP_COLOR => [
+				Dynamic_Selector::META_KEY       => Config::MODS_BUTTON_PRIMARY_STYLE . '.background',
+				Dynamic_Selector::META_IMPORTANT => true,
+				Dynamic_Selector::META_DEFAULT   => 'var(--nv-primary-accent)',
+				Dynamic_Selector::KEY_CONTEXT    => [
+					Dynamic_Selector::CONTEXT_GUTENBERG => true,
+				],
+			],
+		];
+		$this->_subscribers['.has-neve-button-color-background-color'] = [
+			Config::CSS_PROP_BACKGROUND_COLOR => [
+				Dynamic_Selector::META_KEY       => Config::MODS_BUTTON_PRIMARY_STYLE . '.background',
+				Dynamic_Selector::META_IMPORTANT => true,
+				Dynamic_Selector::META_DEFAULT   => 'var(--nv-primary-accent)',
+				Dynamic_Selector::KEY_CONTEXT    => [
+					Dynamic_Selector::CONTEXT_GUTENBERG => true,
+				],
+			],
+		];
+	}
 }

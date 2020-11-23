@@ -32,9 +32,50 @@ class Core_Loader {
 	 * @access public
 	 */
 	public function __construct() {
+		add_action( 'after_switch_theme', [ $this, 'check_new_user' ] );
+		add_action( 'themeisle_ob_after_xml_import', [ $this, 'update_content_import_flag' ] );
 		$this->define_hooks();
 		$this->define_modules();
 		$this->load_modules();
+	}
+
+	/**
+	 * Update content import flag.
+	 */
+	public function update_content_import_flag() {
+		update_option( 'neve_imported_demo', 'yes' );
+	}
+
+	/**
+	 * Checks that the user is new.
+	 *
+	 * @return bool
+	 */
+	public function check_new_user() {
+		$new = get_option( 'neve_new_user' );
+		if ( $new === 'yes' ) {
+			return true;
+		}
+
+		$install_time = get_option( 'neve_install' );
+		$now          = get_option( 'neve_user_check_time' );
+
+		if ( empty( $now ) ) {
+			$now = time();
+			update_option( 'neve_user_check_time', $now );
+		}
+
+		if ( empty( $install_time ) || empty( $now ) ) {
+			return false;
+		}
+
+		if ( ( $now - $install_time ) <= 60 ) {
+			update_option( 'neve_new_user', 'yes' );
+			return true;
+		}
+
+		update_option( 'neve_new_user', 'no' );
+		return false;
 	}
 
 	/**
@@ -79,6 +120,7 @@ class Core_Loader {
 				'Compatibility\Header_Footer_Beaver',
 				'Compatibility\Beaver',
 				'Compatibility\Lifter',
+				'Compatibility\Patterns',
 				'Compatibility\PWA',
 
 				'Admin\Metabox\Manager',

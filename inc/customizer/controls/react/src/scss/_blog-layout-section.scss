@@ -1,0 +1,33 @@
+$excluded: ':not(#customize-control-neve_blog_archive_layout):not(.customize-control-customizer-heading)';
+
+#customize-control-neve_blog_typography_shortcut {
+	background-color: transparent !important;
+	p {
+		font-size: 12px;
+		font-weight: 600;
+		margin: 0;
+	}
+	a {
+		cursor: pointer;
+	}
+}
+
+#sub-accordion-section-neve_blog_archive_layout {
+	.customize-control#{$excluded} {
+		margin-bottom: -1px !important;
+		background-color: #fff;
+		padding: 12px 15px;
+		margin-left: -15px;
+		position: relative;
+	}
+	.customize-control-customizer-heading {
+		margin-top: 12px;
+	}
+	.customize-section-description-container + .customize-control-customizer-heading{
+		margin-top: 0;
+	}
+	.neve-white-background-control {
+		border: none !important;
+		padding: 0;
+	}
+}

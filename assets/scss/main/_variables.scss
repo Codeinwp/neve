@@ -39,18 +39,18 @@ $link_hover_color: #0366d6;
 $navbar_background_color: #fff;
 $muted-white: #f0f0f0;
 $muted-white-med: #c9c9c9;
-$body-color: #404248;
+$body-color: var(--nv-text-color);
 $gray-color: #676767; //rgba(0,0,0,.54);
 $git-black: #24292e;
-$success: #2dce89;
+$success: var(--nv-c-1);
 $info: #11cdef;
-$error: #f5365c;
+$error: var(--nv-c-2);
 
 $transition_default: all .1s ease;
 $transition_med: all .3s ease;
 $transition_long: all .6s ease;
 
-$muted-border: 1px solid #f0f0f0;
+$muted-border: 1px solid var(--nv-light-bg);
 $muted-border-med: 1px solid #c9c9c9;
 
 $tablet-sm: "576px";

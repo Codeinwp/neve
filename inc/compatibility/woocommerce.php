@@ -27,7 +27,7 @@ class Woocommerce {
 	private $primary_buttons_selectors = array(
 		'default' => '
 			,.woocommerce a.button,
-			.woocommerce .button:not(.nv-sidebar-toggle):not(.nv-close-cart-sidebar):not([name="apply_coupon"]),
+			.woocommerce .button:not(.nv-sidebar-toggle):not(.nv-close-cart-sidebar):not([name="apply_coupon"]):not(.more-details),
 			.woocommerce a.button.alt,
 			.woocommerce a.button.button-primary,
 			.woocommerce a.button.checkout-button,
@@ -48,7 +48,7 @@ class Woocommerce {
 			.button.woocommerce-form-login__submit',
 		'hover'   => '
 			,.woocommerce a.button:hover,
-			.woocommerce .button:not(.nv-sidebar-toggle):not(.nv-close-cart-sidebar):not([name="apply_coupon"]):hover,
+			.woocommerce .button:not(.nv-sidebar-toggle):not(.nv-close-cart-sidebar):not([name="apply_coupon"]):not(.more-details):hover,
 			.woocommerce a.button.alt:hover,
 			.woocommerce a.button.button-primary:hover,
 			.woocommerce a.button.checkout-button:hover,
@@ -77,7 +77,7 @@ class Woocommerce {
 		'default'          => '
 			,.woocommerce-cart table.cart td.actions .coupon > .input-text + .button,
 			.woocommerce-checkout #neve-checkout-coupon .woocommerce-form-coupon .form-row-last button,
-			.woocommerce button.button,
+			.woocommerce button.button:not(.single_add_to_cart_button),
 			.woocommerce a.added_to_cart,
 			.woocommerce .checkout_coupon button.button,
 			.woocommerce #review_form #respond input#submit,
@@ -89,7 +89,7 @@ class Woocommerce {
 			,#comments input[type=submit]:hover,
 			.woocommerce-cart table.cart td.actions .coupon > .input-text + .button:hover,
 			.woocommerce-checkout #neve-checkout-coupon .woocommerce-form-coupon .form-row-last button:hover,
-			.woocommerce button.button:hover,
+			.woocommerce button.button:not(.single_add_to_cart_button):hover,
 			.woocommerce a.added_to_cart:hover,
 			.woocommerce .checkout_coupon button.button:hover,
 			.woocommerce #review_form #respond input#submit:hover,
@@ -522,6 +522,7 @@ class Woocommerce {
 	 */
 	public function add_typeface_selectors( $array ) {
 		$array['h1'] = $array['h1'] . ', .woocommerce.single .product_title';
+		$array['h3'] = $array['h3'] . ', .woocommerce-billing-fields > h3, .woocommerce-shipping-fields > h3';
 
 		return $array;
 	}
@@ -534,7 +535,7 @@ class Woocommerce {
 	 * @return string
 	 */
 	public function add_font_families( $selectors ) {
-		$selectors .= ',.cart_totals > h2, .cross-sells > h2, .woocommerce-billing-fields > h3, #order_review_heading, .woocommerce-shipping-fields > h3';
+		$selectors .= ',.cart_totals > h2, .cross-sells > h2, #order_review_heading';
 
 		return $selectors;
 	}

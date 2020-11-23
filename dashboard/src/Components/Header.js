@@ -1,50 +1,58 @@
 /* global neveDash */
-import {addUrlHash, getTabHash, tabs} from '../utils/common';
+import { addUrlHash, getTabHash, tabs } from '../utils/common';
 import classnames from 'classnames';
 
-const {__} = wp.i18n;
-const {useEffect} = wp.element;
+import { __ } from '@wordpress/i18n';
+import { useEffect } from '@wordpress/element';
 
-const Header = (props) => {
-	useEffect(() => {
+const Header = ( props ) => {
+	useEffect( () => {
 		const hash = getTabHash();
-		if (null === hash) {
-			return false;
+		if ( null === hash ) {
+			return;
 		}
-		props.setTab(hash);
-	}, []);
-
+		props.setTab( hash );
+	}, [] );
 
 	const renderHead = () => {
 		return (
 			<div className="top">
-				<h1 className="heading">{neveDash.strings.header}</h1>
-				<span className="version">{neveDash.version}</span>
-				{! neveDash.whiteLabel &&
-				<img src={neveDash.assets + '/logo.svg'} alt={__('Neve Theme Logo', 'neve')}/>
-				}
+				<h1 className="heading">{ neveDash.strings.header }</h1>
+				<span className="version">{ neveDash.version }</span>
+				{ ! neveDash.whiteLabel && (
+					<img
+						src={ neveDash.assets + '/logo.svg' }
+						alt={ __( 'Neve Theme Logo', 'neve' ) }
+					/>
+				) }
 			</div>
 		);
 	};
 
 	const renderNavigation = () => {
-		const {currentTab, setTab} = props;
+		const { currentTab, setTab } = props;
 		return (
 			<nav className="navigation">
-				{Object.keys(tabs).map((item) => {
+				{ Object.keys( tabs ).map( ( item, index ) => {
 					return (
-						<li><a
-							href="#"
-							className={classnames([ item, currentTab === item ? 'active' : '' ])}
-							onClick={(e) => {
-								e.preventDefault();
-								setTab(item);
-								addUrlHash(item);
-							}}
-						>{tabs[item].label}
-						</a></li>
+						<li key={ index }>
+							<a
+								href="#"
+								className={ classnames( [
+									item,
+									currentTab === item ? 'active' : '',
+								] ) }
+								onClick={ ( e ) => {
+									e.preventDefault();
+									setTab( item );
+									addUrlHash( item );
+								} }
+							>
+								{ tabs[ item ].label }
+							</a>
+						</li>
 					);
-				})}
+				} ) }
 			</nav>
 		);
 	};
@@ -52,8 +60,8 @@ const Header = (props) => {
 	return (
 		<header>
 			<div className="container">
-				{renderHead()}
-				{renderNavigation(props)}
+				{ renderHead() }
+				{ renderNavigation( props ) }
 			</div>
 		</header>
 	);

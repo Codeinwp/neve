@@ -56,13 +56,7 @@ class Header extends Abstract_Builder {
 		$this->set_property(
 			'instructions_array',
 			array(
-				'description' => sprintf(
-				/* translators: 1: builder, 2: builder symbol */
-					esc_attr__( 'Welcome to the %1$s builder! Click the %2$s button to add a new component or follow the Quick Links.', 'neve' ),
-					$this->get_property( 'title' ),
-					'+'
-				),
-				'image'       => esc_url( get_template_directory_uri() . '/header-footer-grid/assets/images/customizer/hfg.mp4' ),
+				'description' => __( 'Build your own header or choose from preset options.', 'neve' ),
 				'quickLinks'  => array(
 					'custom_logo'                       => array(
 						'label' => esc_html__( 'Change Logo', 'neve' ),
@@ -221,6 +215,21 @@ class Header extends Abstract_Builder {
 					'label' => 'Spaced',
 					'image' => NEVE_ASSETS_URL . 'img/header-presets/Spaced.jpg',
 					'setup' => '{"hfg_header_layout": "{\"desktop\":{\"top\":[],\"main\":[{\"x\":0,\"y\":1,\"width\":1,\"height\":1,\"id\":\"header_search_responsive\"},{\"x\":4,\"y\":1,\"width\":4,\"height\":1,\"id\":\"logo\"},{\"x\":11,\"y\":1,\"width\":1,\"height\":1,\"id\":\"nav-icon\"}],\"bottom\":[]},\"mobile\":{\"top\":[],\"main\":[{\"x\":0,\"y\":1,\"width\":8,\"height\":1,\"id\":\"logo\"},{\"x\":8,\"y\":1,\"width\":4,\"height\":1,\"id\":\"nav-icon\"}],\"bottom\":[],\"sidebar\":[{\"x\":0,\"y\":1,\"width\":8,\"height\":1,\"id\":\"primary-menu\"}]}}","nav-icon_component_align": "right","logo_component_align": "center","header_search_responsive_icon_size":"25"}',
+				],
+				[
+					'label' => 'Collapsed',
+					'image' => NEVE_ASSETS_URL . 'img/header-presets/ClassicCollapsed.jpg',
+					'setup' => '{"hfg_header_layout":"{\"desktop\":{\"top\":[],\"main\":[{\"x\":0,\"y\":1,\"width\":4,\"height\":1,\"id\":\"logo\"},{\"x\":10,\"y\":1,\"width\":1,\"height\":1,\"id\":\"header_search_responsive\"},{\"x\":11,\"y\":1,\"width\":1,\"height\":1,\"id\":\"nav-icon\"}],\"bottom\":[]},\"mobile\":{\"top\":[],\"main\":[{\"x\":0,\"y\":1,\"width\":6,\"height\":1,\"id\":\"logo\"},{\"x\":8,\"y\":1,\"width\":1,\"height\":1,\"id\":\"header_search_responsive\"},{\"x\":9,\"y\":1,\"width\":3,\"height\":1,\"id\":\"nav-icon\"}],\"bottom\":[],\"sidebar\":[{\"x\":0,\"y\":1,\"width\":8,\"height\":1,\"id\":\"primary-menu\"}]}}","nav-icon_component_align":"right"}',
+				],
+				[
+					'label' => 'Search Field',
+					'image' => NEVE_ASSETS_URL . 'img/header-presets/SearchField.jpg',
+					'setup' => '{"hfg_header_layout":"{\"desktop\":{\"top\":[],\"main\":[{\"x\":0,\"y\":1,\"width\":3,\"height\":1,\"id\":\"logo\"},{\"x\":3,\"y\":1,\"width\":6,\"height\":1,\"id\":\"primary-menu\"},{\"x\":9,\"y\":1,\"width\":3,\"height\":1,\"id\":\"header_search\"}],\"bottom\":[]},\"mobile\":{\"top\":[],\"main\":[{\"x\":0,\"y\":1,\"width\":8,\"height\":1,\"id\":\"logo\"},{\"x\":8,\"y\":1,\"width\":4,\"height\":1,\"id\":\"nav-icon\"}],\"bottom\":[],\"sidebar\":[{\"x\":0,\"y\":1,\"width\":8,\"height\":1,\"id\":\"primary-menu\"}]}}","primary-menu_component_align":"left"}',
+				],
+				[
+					'label' => 'Button Item',
+					'image' => NEVE_ASSETS_URL . 'img/header-presets/ButtonItem.jpg',
+					'setup' => '{"hfg_header_layout":"{\"desktop\":{\"top\":[],\"main\":[{\"x\":0,\"y\":1,\"width\":4,\"height\":1,\"id\":\"logo\"},{\"x\":4,\"y\":1,\"width\":6,\"height\":1,\"id\":\"primary-menu\"},{\"x\":10,\"y\":1,\"width\":2,\"height\":1,\"id\":\"button_base\"}],\"bottom\":[]},\"mobile\":{\"top\":[],\"main\":[{\"x\":0,\"y\":1,\"width\":8,\"height\":1,\"id\":\"logo\"},{\"x\":8,\"y\":1,\"width\":4,\"height\":1,\"id\":\"nav-icon\"}],\"bottom\":[],\"sidebar\":[{\"x\":0,\"y\":1,\"width\":8,\"height\":1,\"id\":\"primary-menu\"}]}}", "primary-menu_component_align":"right"}',
 				],
 			]
 		);

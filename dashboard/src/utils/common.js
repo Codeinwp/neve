@@ -1,5 +1,6 @@
 /* global neveDash */
-import StarterSites from '../Components/Content/StarterSites';
+import compareVersions from 'compare-versions';
+
 import StarterSitesUnavailable from '../Components/Content/StarterSitesUnavailable';
 import Start from '../Components/Content/Start';
 import Pro from '../Components/Content/Pro';
@@ -7,58 +8,89 @@ import Plugins from '../Components/Content/Plugins';
 import Help from '../Components/Content/Help';
 import Changelog from '../Components/Content/Changelog';
 import FreePro from '../Components/Content/FreePro';
+import { __ } from '@wordpress/i18n';
 
-const addUrlHash = (hash) => {
-    window.location.hash = hash;
+const addUrlHash = ( hash ) => {
+	window.location.hash = hash;
 };
 
 const getTabHash = () => {
-    let hash = window.location.hash;
+	let hash = window.location.hash;
 
-    if ('string' !== typeof window.location.hash) {
-        return null;
-    }
+	if ( 'string' !== typeof window.location.hash ) {
+		return null;
+	}
 
-    hash = hash.substring(1);
+	hash = hash.substring( 1 );
 
-    if (! Object.keys(tabs).includes(hash)) {
-        return null;
-    }
+	if ( ! Object.keys( tabs ).includes( hash ) ) {
+		return null;
+	}
 
-    return hash;
+	return hash;
 };
-
-const { sites } = neveDash.onboarding;
 
 const tabs = {
-    'start': {label: 'Getting Started', render: (setTab) => <Start setTab={setTab}/>},
-    'plugins': {label: 'Useful Plugins', render: (setTab) => <Plugins/>},
-    'help': {label: 'Help & docs', render: (setTab) => <Help setTab={setTab}/>},
-    'changelog': {label: 'Changelog', render: (setTab) => <Changelog/>},
-    'free-pro': {label: 'Free vs Pro', render: (setTab) => <FreePro/>},
-    'starter-sites': {label: 'Starter Sites', render: (setTab) => ( sites && sites.sites && sites.sites.hasOwnProperty('elementor') ) ? <StarterSites/> : <StarterSitesUnavailable/>}
+	start: {
+		label: __( 'Welcome', 'neve' ),
+		render: ( setTab ) => <Start setTab={ setTab } />,
+	},
+	'starter-sites': {
+		label: __( 'Starter Sites', 'neve' ),
+		render: ( setTab ) => <StarterSitesUnavailable />,
+	},
+	'free-pro': {
+		label: __( 'Free vs Pro', 'neve' ),
+		render: ( setTab ) => <FreePro />,
+	},
+	plugins: {
+		label: __( 'Plugins', 'neve' ),
+		render: ( setTab ) => <Plugins />,
+	},
+	help: {
+		label: __( 'Help', 'neve' ),
+		render: ( setTab ) => <Help setTab={ setTab } />,
+	},
+	changelog: {
+		label: __( 'Changelog', 'neve' ),
+		render: ( setTab ) => <Changelog />,
+	},
 };
 
+const { plugins } = neveDash;
+const activeTPC =
+	plugins[ 'templates-patterns-collection' ].cta === 'deactivate';
+const properTPC =
+	compareVersions(
+		plugins[ 'templates-patterns-collection' ].version,
+		'1.0.10'
+	) === 1;
 
-if (neveDash.pro || neveDash.hasOldPro) {
-    tabs.pro = {label: neveDash.strings.proTabTitle, render: (setTab) => <Pro/>};
-    delete (tabs['free-pro']);
+if ( activeTPC && properTPC ) {
+	delete tabs[ 'starter-sites' ];
 }
 
-if (neveDash.whiteLabel) {
-    delete (tabs.changelog);
-    delete (tabs.plugins);
-    if (neveDash.whiteLabel.hideStarterSites) {
-        delete (tabs['starter-sites']);
-    }
+if ( neveDash.pro || neveDash.hasOldPro ) {
+	tabs.pro = {
+		label: neveDash.strings.proTabTitle,
+		render: ( setTab ) => <Pro />,
+	};
+	delete tabs[ 'free-pro' ];
 }
 
-const untrailingSlashIt = (str) => str.replace(/\/$/, '');
-const trailingSlashIt = (str) => untrailingSlashIt(str) + '/';
+if ( neveDash.whiteLabel ) {
+	delete tabs.changelog;
+	delete tabs.plugins;
+	if ( neveDash.whiteLabel.hideStarterSites ) {
+		delete tabs[ 'starter-sites' ];
+	}
+}
 
-export {
-    addUrlHash,
-    getTabHash,
-    trailingSlashIt,
-    tabs
-};
+if ( neveDash.hidePluginsTab ) {
+	delete tabs.plugins;
+}
+
+const untrailingSlashIt = ( str ) => str.replace( /\/$/, '' );
+const trailingSlashIt = ( str ) => untrailingSlashIt( str ) + '/';
+
+export { addUrlHash, getTabHash, trailingSlashIt, untrailingSlashIt, tabs };

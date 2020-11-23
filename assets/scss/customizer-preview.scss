@@ -12,6 +12,14 @@
     transition: opacity .25s;
   }
 
+  .has-nav .builder-item-focus.item--inner {
+	position: unset;
+
+	.item--preview-name {
+	  top: unset;
+	}
+  }
+
   .builder-item-focus {
     &.item--inner, &.row--wrapper {
       position: relative;
@@ -94,4 +102,12 @@
   .customize-partial-edit-shortcut {
     display: none;
   }
+}
+
+
+.header-menu-sidebar-inner {
+  	.item--preview-name {
+	  bottom:0 !important;
+	  top:unset !important;
+	}
 }

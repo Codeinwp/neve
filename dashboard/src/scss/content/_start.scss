@@ -1,5 +1,5 @@
-.start {
-  .customizer-quick-links {
+.tab-content.start {
+	.customizer-quick-links {
     .columns {
       display: flex;
       margin-top: 30px;
@@ -31,7 +31,20 @@
 }
 
 @mixin start--laptop() {
+
 }
 
 @mixin start--desktop() {
+	.tab-content.start {
+		flex-wrap: wrap;
+
+		.card {
+			align-self: unset;
+			width: calc(50% - 15px);
+
+			&:nth-child(even) {
+				margin-left: 30px;
+			}
+		}
+	}
 }

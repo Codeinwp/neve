@@ -12,9 +12,10 @@ namespace HFG;
 use HFG\Core\Components\Nav;
 use HFG\Core\Builder\Header as HeaderBuilder;
 
-$style = component_setting( Nav::STYLE_ID );
-
-$container_classes = [ $style ];
+$style                 = component_setting( Nav::STYLE_ID );
+$dropdowns_expanded    = component_setting( Nav::EXPAND_DROPDOWNS );
+$additional_menu_class = $dropdowns_expanded ? ' dropdowns-expanded' : '';
+$container_classes     = [ $style ];
 
 $container_classes[] = 'nav-menu-primary';
 
@@ -29,7 +30,7 @@ $menu_id = Nav::NAV_MENU_ID . '-' . current_row( HeaderBuilder::BUILDER_NAME );
 			[
 				'theme_location' => 'primary',
 				'menu_id'        => $menu_id,
-				'menu_class'     => 'primary-menu-ul',
+				'menu_class'     => 'primary-menu-ul nav-ul' . $additional_menu_class,
 				'container'      => 'ul',
 				'walker'         => '\Neve\Views\Nav_Walker',
 				'fallback_cb'    => '\Neve\Views\Nav_Walker::fallback',

@@ -1,15 +1,14 @@
 /* jshint esversion: 6 */
-/* global wp */
 
-import ColorComponent from './ColorComponent'
-const { render } = wp.element
+import ColorComponent from './ColorComponent';
+import { render } from '@wordpress/element';
 
 export const ColorControl = wp.customize.Control.extend( {
-  renderContent: function renderContent() {
-    const control = this
-    render(
-      <ColorComponent control={control} />,
-      control.container[0]
-    )
-  }
-} )
+	renderContent: function renderContent() {
+		const control = this;
+		render(
+			<ColorComponent control={ control } />,
+			control.container[ 0 ]
+		);
+	},
+} );

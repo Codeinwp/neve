@@ -63,6 +63,30 @@ class Admin {
 			add_action( 'admin_notices', [ $this, 'admin_notice' ], 0 );
 			add_action( 'wp_ajax_neve_dismiss_welcome_notice', [ $this, 'remove_notice' ] );
 		}
+
+		add_action( 'admin_menu', [ $this, 'remove_background_submenu' ], 110 );
+		add_action( 'after_switch_theme', [ $this, 'get_previous_theme' ] );
+
+		add_filter( 'all_plugins', array( $this, 'change_plugin_names' ) );
+	}
+
+	/**
+	 * Drop `Background` submenu item.
+	 */
+	public function remove_background_submenu() {
+		global $submenu;
+
+		if ( ! isset( $submenu['themes.php'] ) ) {
+			return false;
+		}
+
+		foreach ( $submenu['themes.php'] as $index => $submenu_args ) {
+			foreach ( $submenu_args as $arg_index => $arg ) {
+				if ( preg_match( '/customize\.php.+autofocus%5Bcontrol%5D=background_image/', $arg ) === 1 ) {
+					unset( $submenu['themes.php'][ $index ] );
+				}
+			}
+		}
 	}
 
 	/**
@@ -205,10 +229,11 @@ class Admin {
 				$name
 			)
 		);
-		$ob_btn = sprintf(
+		$ob_btn_link = admin_url( defined( 'TIOB_PATH' ) ? 'themes.php?page=tiob-starter-sites&onboarding=yes' : 'themes.php?page=' . $theme_page . '&onboarding=yes#starter-sites' );
+		$ob_btn      = sprintf(
 		/* translators: 1 - onboarding url, 2 - button text */
 			'<a href="%1$s" class="button button-primary button-hero install-now" >%2$s</a>',
-			esc_url( admin_url( 'themes.php?page=' . $theme_page . '&onboarding=yes#starter-sites' ) ),
+			esc_url( $ob_btn_link ),
 			sprintf( apply_filters( 'ti_onboarding_neve_start_site_cta', esc_html__( 'Try one of our ready to use Starter Sites', 'neve' ) ) )
 		);
 		$ob_return_dashboard = sprintf(
@@ -372,11 +397,11 @@ class Admin {
 		?>
 		<script type="text/javascript">
 			function handleNoticeActions($) {
-				var actions = $('.nv-welcome-notice').find('.notice-dismiss,  .ti-return-dashboard, .install-now, .options-page-btn');
+				var actions = $('.nv-welcome-notice').find('.notice-dismiss,  .ti-return-dashboard, .install-now, .options-page-btn')
 				$.each(actions, function (index, actionButton) {
 					$(actionButton).on('click', function (e) {
-						e.preventDefault();
-						var redirect = $(this).attr('href');
+						e.preventDefault()
+						var redirect = $(this).attr('href')
 						$.post(
 								'<?php echo esc_url( admin_url( 'admin-ajax.php' ) ); ?>',
 								{
@@ -384,22 +409,30 @@ class Admin {
 									action: 'neve_dismiss_welcome_notice',
 									success: function () {
 										if (typeof redirect !== 'undefined' && window.location.href !== redirect) {
-											window.location = redirect;
-											return false;
+											window.location = redirect
+											return false
 										}
-										$('.nv-welcome-notice').fadeOut();
+										$('.nv-welcome-notice').fadeOut()
 									}
 								}
-						);
-					});
-				});
+						)
+					})
+				})
 			}
 
 			jQuery(document).ready(function () {
-				handleNoticeActions(jQuery);
-			});
+				handleNoticeActions(jQuery)
+			})
 		</script>
 		<?php
+	}
+
+	/**
+	 * Memorize the previous theme to later display the import template for it.
+	 */
+	public function get_previous_theme() {
+		$previous_theme = strtolower( get_option( 'theme_switched' ) );
+		set_theme_mod( 'ti_prev_theme', $previous_theme );
 	}
 
 	/**
@@ -414,5 +447,18 @@ class Admin {
 		}
 		update_option( $this->dismiss_notice_key, 'yes' );
 		wp_die();
+	}
+
+	/**
+	 * Change Orbit Fox and Otter plugin names to make clear where they are from.
+	 */
+	public function change_plugin_names( $plugins ) {
+		if ( array_key_exists( 'themeisle-companion/themeisle-companion.php', $plugins ) ) {
+			$plugins['themeisle-companion/themeisle-companion.php']['Name'] = 'Orbit Fox Companion by Neve theme';
+		}
+		if ( array_key_exists( 'otter-blocks/otter-blocks.php', $plugins ) ) {
+			$plugins['otter-blocks/otter-blocks.php']['Name'] = 'Gutenberg Blocks and Template Library by Neve theme';
+		}
+		return $plugins;
 	}
 }

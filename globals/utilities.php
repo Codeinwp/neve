@@ -275,7 +275,7 @@ function neve_get_standard_fonts() {
 function neve_get_google_fonts() {
 	return apply_filters(
 		'neve_google_fonts_array',
-		// Updated on 02/12/19
+		// Updated on 15/09/20
 		array(
 			'ABeeZee',
 			'Abel',
@@ -586,6 +586,7 @@ function neve_get_google_fonts() {
 			'Engagement',
 			'Englebert',
 			'Enriqueta',
+			'Epilogue',
 			'Erica One',
 			'Esteban',
 			'Euphoria Script',
@@ -662,9 +663,11 @@ function neve_get_google_fonts() {
 			'Goudy Bookletter 1911',
 			'Graduate',
 			'Grand Hotel',
+			'Grandstander',
 			'Gravitas One',
 			'Great Vibes',
 			'Grenze',
+			'Grenze Gotisch',
 			'Griffy',
 			'Gruppo',
 			'Gudea',
@@ -778,9 +781,11 @@ function neve_get_google_fonts() {
 			'Kristi',
 			'Krona One',
 			'Krub',
+			'Kufam',
 			'Kulim Park',
 			'Kumar One',
 			'Kumar One Outline',
+			'Kumbh Sans',
 			'Kurale',
 			'La Belle Aurore',
 			'Lacquer',
@@ -919,6 +924,8 @@ function neve_get_google_fonts() {
 			'Mukta Malar',
 			'Mukta Vaani',
 			'Muli',
+			'Mulish',
+			'MuseoModerno',
 			'Mystery Quest',
 			'NTR',
 			'Nanum Brush Script',
@@ -1069,8 +1076,10 @@ function neve_get_google_fonts() {
 			'Rasa',
 			'Rationale',
 			'Ravi Prakash',
+			'Recursive',
 			'Red Hat Display',
 			'Red Hat Text',
+			'Red Rose',
 			'Redressed',
 			'Reem Kufi',
 			'Reenie Beanie',
@@ -1092,6 +1101,7 @@ function neve_get_google_fonts() {
 			'Rosario',
 			'Rosarivo',
 			'Rouge Script',
+			'Rowdies',
 			'Rozha One',
 			'Rubik',
 			'Rubik Mono One',
@@ -1166,6 +1176,7 @@ function neve_get_google_fonts() {
 			'Solway',
 			'Song Myung',
 			'Sonsie One',
+			'Sora',
 			'Sorts Mill Goudy',
 			'Source Code Pro',
 			'Source Sans Pro',
@@ -1204,6 +1215,7 @@ function neve_get_google_fonts() {
 			'Suwannaphum',
 			'Swanky and Moo Moo',
 			'Syncopate',
+			'Syne',
 			'Tajawal',
 			'Tangerine',
 			'Taprom',
@@ -1246,6 +1258,7 @@ function neve_get_google_fonts() {
 			'Vampiro One',
 			'Varela',
 			'Varela Round',
+			'Varta',
 			'Vast Shadow',
 			'Vesper Libre',
 			'Viaoda Libre',
@@ -1302,4 +1315,54 @@ function neve_get_headings_selectors() {
 			'h6' => \Neve\Core\Settings\Config::$css_selectors_map[ \Neve\Core\Settings\Config::CSS_SELECTOR_TYPEFACE_H6 ],
 		)
 	);
+}
+
+/**
+ * Get Global Colors Default
+ *
+ * @param bool $migrated get with migrated colors.
+ * @return array
+ */
+function neve_get_global_colors_default( $migrated = false ) {
+
+	$old_link_color       = get_theme_mod( 'neve_link_color', '#0366d6' );
+	$old_link_hover_color = get_theme_mod( 'neve_link_hover_color', '#0e509a' );
+	$old_text_color       = get_theme_mod( 'neve_text_color', '#393939' );
+	$old_bg_color         = '#' . get_theme_mod( 'background_color', 'ffffff' );
+
+	return [
+		'activePalette' => 'base',
+		'palettes'      => [
+			'base'     => [
+				'name'          => __( 'Base', 'neve' ),
+				'allowDeletion' => false,
+				'colors'        => [
+					'nv-primary-accent'   => $migrated ? $old_link_color : '#0366d6',
+					'nv-secondary-accent' => $migrated ? $old_link_hover_color : '#0e509a',
+					'nv-site-bg'          => $migrated ? $old_bg_color : '#ffffff',
+					'nv-light-bg'         => '#ededed',
+					'nv-dark-bg'          => '#14171c',
+					'nv-text-color'       => $migrated ? $old_text_color : '#393939',
+					'nv-text-dark-bg'     => '#ffffff',
+					'nv-c-1'              => '#77b978',
+					'nv-c-2'              => '#f37262',
+				],
+			],
+			'darkMode' => [
+				'name'          => __( 'Dark Mode', 'neve' ),
+				'allowDeletion' => false,
+				'colors'        => [
+					'nv-primary-accent'   => '#26bcdb',
+					'nv-secondary-accent' => '#1f90a6',
+					'nv-site-bg'          => '#121212',
+					'nv-light-bg'         => '#1a1a1a',
+					'nv-dark-bg'          => '#1a1a1a',
+					'nv-text-color'       => '#ffffff',
+					'nv-text-dark-bg'     => 'rgba(255, 255, 255, 0.81)',
+					'nv-c-1'              => '#77b978',
+					'nv-c-2'              => '#f37262',
+				],
+			],
+		],
+	];
 }

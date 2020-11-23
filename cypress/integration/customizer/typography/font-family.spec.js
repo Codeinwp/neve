@@ -61,28 +61,30 @@ function setFontFamilyControl(controlSelector, fontFamily) {
 			find( '.neve-fonts-list li a' ).
 			contains( fontFamily ).
 			click();
-
-	cy.get( '@control' ).
-			closest( '.accordion-section-content' ).
-			find( '.customize-section-back' ).
-			should( 'be.visible' ).
-			click();
-
 }
 
 describe( 'Font Family', function() {
+	const typographyPanel = 'neve_typography'
+	const generalSection = 'neve_typography_general'
+	const headingsSection = 'neve_typography_headings'
+
 	it( 'Sets up customizer Font Family', function() {
 		cy.login();
 		cy.visit( '/wp-admin/customize.php' );
 
 		// Setup general.
-		cy.get( '.accordion-section' ).contains( 'Typography' ).click();
-		cy.get( '.accordion-section' ).contains( 'General' ).click();
-		setFontFamilyControl( '#customize-control-neve_body_font_family',
-				fonts.general );
-		cy.get( '.accordion-section' ).contains( 'Headings' ).click();
-		setFontFamilyControl( '#customize-control-neve_headings_font_family',
-				fonts.headings );
+		cy.window().then((win) => {
+			win.wp.customize.panel(typographyPanel).focus()
+			win.wp.customize.section(generalSection).focus()
+		});
+		setFontFamilyControl( '#customize-control-neve_body_font_family', fonts.general );
+
+
+		cy.window().then((win) => {
+			win.wp.customize.panel(typographyPanel).focus()
+			win.wp.customize.section(headingsSection).focus()
+		});
+		setFontFamilyControl( '#customize-control-neve_headings_font_family', fonts.headings );
 
 		aliasRestRoutes();
 		cy.get( '#save' ).click();
@@ -109,13 +111,13 @@ describe( 'Font Family', function() {
 		cy.visit( '/markup-html-tags-and-formatting/' );
 		cy.get( '#wp-admin-bar-edit > a' ).click();
 		cy.clearWelcome();
-		cy.get( '#editor .editor-styles-wrapper .block-editor-writing-flow p' ).
+		cy.get( '.editor-styles-wrapper .block-editor-writing-flow p' ).
 				as( 'body' );
 		cy.get( '@body' ).should( 'have.css', 'font-family' ).
 				and( 'match', new RegExp( fonts.general, 'g' ) );
 
 		['h1', 'h2', 'h3', 'h4', 'h5', 'h6'].forEach( function(heading) {
-			cy.get( `#editor .editor-styles-wrapper ${heading}` ).
+			cy.get( `.editor-styles-wrapper ${heading}` ).
 					should( 'have.css', 'font-family' ).
 					and( 'match', new RegExp( fonts.headings, 'g' ) );
 		} );

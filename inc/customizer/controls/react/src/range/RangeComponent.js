@@ -1,107 +1,58 @@
 /* jshint esversion: 6 */
-/* global wp */
-import PropTypes from 'prop-types'
 
-const { __ } = wp.i18n
+import PropTypes from 'prop-types';
+import { RangeControl } from '@wordpress/components';
+import { useState, useEffect } from '@wordpress/element';
 
-const { RangeControl, Tooltip, IconButton } = wp.components
+const RangeComponent = ( { control } ) => {
+	useEffect( () => {
+		document.addEventListener( 'neve-changed-customizer-value', ( e ) => {
+			if ( ! e.detail ) return false;
+			if ( e.detail.id !== control.id ) return false;
+			updateValues( e.detail.value );
+		} );
+	}, [] );
 
-const {
-  Component
-} = wp.element
+	const [ value, setValue ] = useState( control.setting.get() );
+	const defaults = { min: 0, max: 100, defaultVal: 15, step: 1 };
+	const controlProps = {
+		...defaults,
+		...( control.params.input_attrs || {} ),
+	};
+	const { label } = control.params;
+	const { defaultVal, min, max, step } = controlProps;
 
-class RangeComponent extends Component {
-  constructor(props) {
-    super(props)
-    const value = props.control.setting.get()
-    this.state = {
-      value
-    }
-    const defaults = {
-      min: 0,
-      max: 100,
-      defaultVal: 15,
-      step: 1
-    }
+	const updateValues = ( newVal ) => {
+		setValue( newVal );
+		control.setting.set( newVal );
+	};
 
-    this.controlProps = {
-      ...defaults,
-      ...(props.control.params.input_attrs || {})
-    }
-
-    this.updateValues = this.updateValues.bind(this)
-    this.renderReset = this.renderReset.bind(this)
-  }
-
-  render() {
-    const { label } = this.props.control.params
-    const { defaultVal, min, max, step } = this.controlProps
-    const { value } = this.state
-    return (
-      <div className='neve-white-background-control neve-range-control'>
-        <div className='neve-control-header'>
-          {label && <span className='customize-control-title'>{label}</span>}
-        </div>
-        <div className='range-wrap'>
-          <RangeControl
-            value={value}
-            initialPosition={defaultVal}
-            onChange={(value) => {
-              this.updateValues(value)
-            }}
-            min={min}
-            max={max}
-            step={step}
-          />
-          {this.renderReset()}
-        </div>
-      </div>
-    )
-  }
-
-  updateValues(value) {
-    this.setState({ value })
-    this.props.control.setting.set(value)
-  }
-
-  componentDidMount() {
-    const { control } = this.props
-    document.addEventListener('neve-changed-customizer-value', (e) => {
-      if (!e.detail) return false
-      if (e.detail.id !== control.id) return false
-      this.updateValues(e.detail.value)
-    })
-  }
-
-  renderReset() {
-    const { defaultVal } = this.controlProps
-    const { value } = this.state
-    if (!defaultVal && defaultVal !== 0) {
-      return null
-    }
-
-    if (defaultVal === value) {
-      return null
-    }
-
-    return (
-      <Tooltip
-        key='tooltip-reset'
-        text={__('Reset Value', 'neve')}
-      >
-        <IconButton
-          key='reset-icon'
-          icon='image-rotate'
-          className='reset'
-          onClick={() => this.updateValues(defaultVal)}
-        />
-      </Tooltip>
-    )
-  }
-}
+	return (
+		<div className="neve-white-background-control neve-range-control">
+			<div className="neve-control-header">
+				{ label && (
+					<span className="customize-control-title">{ label }</span>
+				) }
+			</div>
+			<div className="range-wrap">
+				<RangeControl
+					resetFallbackValue={
+						defaultVal === 0 ? 0 : defaultVal || ''
+					}
+					value={ parseInt( value ) === 0 ? 0 : value || '' }
+					min={ min < 0 ? min : 0 }
+					max={ max || 100 }
+					step={ step || 1 }
+					allowReset
+					onChange={ updateValues }
+				/>
+			</div>
+		</div>
+	);
+};
 
 RangeComponent.propTypes = {
-  control: PropTypes.object.isRequired
-}
+	control: PropTypes.object.isRequired,
+};
 
-export default RangeComponent
+export default RangeComponent;

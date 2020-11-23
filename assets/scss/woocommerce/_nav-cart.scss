@@ -1,3 +1,8 @@
+.cart-icon-wrapper {
+  display: flex;
+  align-items: flex-end;
+}
+
 .menu-item-nav-cart {
   &:last-child{
     .nv-nav-cart{
@@ -84,7 +89,7 @@ ul[id^="nv-primary-navigation"] a.button {
     z-index: 100;
     right: 0;
     width: 350px;
-    background: $navbar_background_color;
+    background: var(--nv-site-bg);
     @include cart-widget();
   }
   ul[id^="nv-primary-navigation"] .widget_shopping_cart li.mini_cart_item,
@@ -98,17 +103,12 @@ ul[id^="nv-primary-navigation"] a.button {
     width: 350px;
     margin: 0;
 
-    &:hover {
-      background: #f9f9f9;
-    }
-
     > *:not(.remove) {
       padding-right: 60px;
     }
 
     > a {
       padding: 0;
-      display: inline;
       grid-column: span 10;
       grid-row-start: 1;
       grid-column-end: -1;

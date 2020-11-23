@@ -1373,6 +1373,8 @@ let hfgPanels = {};
             $( '.hfg--cb-devices-switcher', that.container )
           )
         }
+		$(that.container).find('.welcome-notice').removeClass('hidden');
+		$(that.container).find('.conditional-header').addClass('hidden');
       },
       addItem: function(node, index) {
         let template = this.getTemplate()
@@ -2163,6 +2165,10 @@ let hfgPanels = {};
     e.preventDefault()
     e.stopPropagation()
     var control = $( this ).data( 'control-focus' )
+	if( control === 'toggle_sidebar' ) {
+	  toggleMobileMenu(true);
+	  return false;
+	}
     wp.customize.control( control ).focus()
     $( 'label.' + control ).click()
   } )
