@@ -82,7 +82,6 @@ class Woocommerce {
 			.woocommerce .checkout_coupon button.button,
 			.woocommerce #review_form #respond input#submit,
 			.woocommerce .price_slider_amount button.button,
-			.woocommerce .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout),
 			.woocommerce .button.button-secondary.more-details,
 			.woocommerce-checkout #neve-checkout-coupon .woocommerce-form-coupon .form-row-last button.button',
 		'hover'            => '
@@ -94,13 +93,14 @@ class Woocommerce {
 			.woocommerce .checkout_coupon button.button:hover,
 			.woocommerce #review_form #respond input#submit:hover,
 			.woocommerce .price_slider_amount button.button:hover,
-			.woocommerce .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout):hover,
 			.woocommerce .button.button-secondary.more-details:hover,
 			.woocommerce-checkout #neve-checkout-coupon .woocommerce-form-coupon .form-row-last button.button:hover',
 		'no-padding'       => '
-			,.woocommerce ul[id^="nv-primary-navigation"] .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout)',
+			,.woocommerce ul[id^="nv-primary-navigation"] .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout)
+			,.woocommerce .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout)',
 		'no-padding-hover' => '
-			,.woocommerce ul[id^="nv-primary-navigation"] .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout):hover',
+			,.woocommerce ul[id^="nv-primary-navigation"] .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout):hover
+			,.woocommerce .woocommerce-mini-cart__buttons.buttons a.button.wc-forward:not(.checkout):hover,',
 	);
 	/**
 	 * Sidebar manager.
@@ -454,8 +454,8 @@ class Woocommerce {
 	 * @return string
 	 */
 	public function add_primary_btns_padding( $selectors ) {
-		return ( $selectors . ',.woocommerce a.button,
-			.woocommerce .button,
+		return ( $selectors . ',.woocommerce *:not(.woocommerce-mini-cart__buttons) > a.button,
+			.woocommerce *:not(.woocommerce-mini-cart__buttons) > .button,
 			.woocommerce a.button.loading,
 			.woocommerce a.button.alt,
 			.woocommerce a.button.button-primary,
@@ -469,7 +469,7 @@ class Woocommerce {
 			.woocommerce button.button.alt.single_add_to_cart_button.disabled,
 			.woocommerce button.button.alt.single_add_to_cart_button,
 			.woocommerce .actions > button[type=submit],
-			.woocommerce .checkout.wc-forward,
+			.woocommerce *:not(.woocommerce-mini-cart__buttons) > .checkout.wc-forward,
 			.woocommerce button#place_order,
 			.woocommerce .return-to-shop > .button,
 			.woocommerce .button.woocommerce-form-login__submit,
