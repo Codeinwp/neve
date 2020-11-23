@@ -1064,11 +1064,6 @@ section.exclusive .tns-visually-hidden {
   background-color: transparent;
 }
 
-.woocommerce .nv-sidebar-wrap ul.cart_list li, .woocommerce ul.product_list_widget li {
-  margin-top: 10px;
-  padding-bottom: 10px;
-}
-
 .woocommerce .widget_price_filter .price_slider_wrapper .ui-widget-content {
   background-color: #ccc;
 }
@@ -1154,7 +1149,8 @@ section.exclusive .tns-visually-hidden {
 }
 
 .woocommerce .widget_shopping_cart li.mini_cart_item {
-  padding: 10px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--nv-light-bg);
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   align-items: baseline;
@@ -1163,8 +1159,20 @@ section.exclusive .tns-visually-hidden {
   margin: 0;
 }
 
+.woocommerce .widget_shopping_cart li.mini_cart_item:last-child {
+  border: none;
+}
+
 .woocommerce .widget_shopping_cart li.mini_cart_item > *:not(.remove) {
   padding-right: 60px;
+}
+
+.woocommerce .widget_shopping_cart li.mini_cart_item img {
+  position: absolute;
+  right: 30px;
+  width: 60px;
+  top: 15px;
+  margin-right: 0;
 }
 
 .woocommerce .widget_shopping_cart li.mini_cart_item > a {
@@ -1181,13 +1189,17 @@ section.exclusive .tns-visually-hidden {
   text-decoration: underline;
 }
 
+.woocommerce .widget_shopping_cart li.mini_cart_item > a:not(.remove) {
+  margin-right: 20px;
+}
+
 .woocommerce .widget_shopping_cart li.mini_cart_item a.remove {
   grid-column: 1;
   width: 20px;
   height: 20px;
   padding: 0;
   top: 50%;
-  transform: translateY(-15px);
+  transform: translateY(-20px);
   text-align: center;
 }
 
@@ -1200,6 +1212,7 @@ section.exclusive .tns-visually-hidden {
   grid-column-start: span 11;
   grid-column-end: -1;
   text-align: right;
+  margin-right: 20px;
 }
 
 .woocommerce .widget_shopping_cart li.mini_cart_item dl.variation {
@@ -1240,10 +1253,31 @@ section.exclusive .tns-visually-hidden {
   font-weight: normal;
 }
 
-.woocommerce-mini-cart__buttons a.button {
-  margin: 0 !important;
+.woocommerce-mini-cart__buttons {
+  display: grid;
+  grid-template-columns: 8fr 1fr 8fr;
+  margin-bottom: 0;
+}
+
+.woocommerce-mini-cart__buttons a {
   padding-top: 16px !important;
   padding-bottom: 16px !important;
+  align-self: center;
+  margin: 0 !important;
+}
+
+.woocommerce-mini-cart__buttons a:first-child {
+  grid-column-start: 1;
+}
+
+.woocommerce-mini-cart__buttons a:nth-child(2) {
+  grid-column-start: 3;
+}
+
+.woocommerce-mini-cart__buttons a:nth-child(3) {
+  grid-column: span 3;
+  text-align: center;
+  margin-top: 10px;
 }
 
 .woocommerce-cart.nv-without-title .neve-main {
@@ -1428,50 +1462,6 @@ section.exclusive .tns-visually-hidden {
 
 .woocommerce table.shop_table.cart td.actions {
   border-bottom: 0;
-}
-
-.woocommerce .widget_shopping_cart .cart_list li {
-  font-size: .85em;
-  border-bottom: 1px solid var(--nv-light-bg);
-  position: relative;
-  padding: 0;
-}
-
-.woocommerce .widget_shopping_cart .cart_list li img {
-  position: absolute;
-  right: 40px;
-  width: 45px;
-  top: 50%;
-  transform: translateY(-50%);
-  margin-right: 0;
-}
-
-.woocommerce .widget_shopping_cart .cart_list li:last-child {
-  border: none;
-}
-
-.woocommerce-mini-cart__buttons {
-  display: grid;
-  grid-template-columns: 8fr 1fr 8fr;
-  margin-bottom: 0;
-}
-
-.woocommerce-mini-cart__buttons a {
-  align-self: center;
-}
-
-.woocommerce-mini-cart__buttons a:first-child {
-  grid-column-start: 1;
-}
-
-.woocommerce-mini-cart__buttons a:nth-child(2) {
-  grid-column-start: 3;
-}
-
-.woocommerce-mini-cart__buttons a:nth-child(3) {
-  grid-column: span 3;
-  text-align: center;
-  margin-top: 10px;
 }
 
 .woocommerce td.product-name a {
@@ -1672,6 +1662,12 @@ body.woocommerce-account .woocommerce-form-login .form-row:not(.woocommerce-form
     text-align: center;
     margin-bottom: 0;
     padding: 10px 0;
+  }
+  .nv-nav-cart .widget_shopping_cart_content li.mini_cart_item {
+    padding: 20px;
+  }
+  .nv-nav-cart .widget_shopping_cart_content li.mini_cart_item img {
+    right: 50px;
   }
   .nv-nav-cart .widget_shopping_cart_content .woocommerce-mini-cart__buttons {
     padding: 0 20px 20px;

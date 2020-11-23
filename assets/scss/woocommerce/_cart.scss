@@ -186,64 +186,12 @@
 
   td {
     border-top: 0;
-
-    a.remove {
-      //margin: 0;
-    }
   }
 
   td.actions {
     border-bottom: 0;
   }
 }
-
-
-//<editor-fold desc="Cart widget">
-
-.woocommerce .widget_shopping_cart {
-  .cart_list li{
-	font-size: .85em;
-	border-bottom: $muted-border;
-	position: relative;
-	padding:0;
-	img {
-	  position: absolute;
-	  left: 40px;
-	  width: 45px;
-	  top: 50%;
-	  transform: translateY(-50%);
-	  margin-left: 0;
-	}
-	&:last-child {
-	  border: none;
-	}
-  }
-}
-
-.woocommerce-mini-cart__buttons {
-  display: grid;
-  grid-template-columns: 8fr 1fr 8fr;
-  margin-bottom: 0;
-
-  a {
-		align-self: center;
-		&:first-child {
-      grid-column-start: 1;
-    }
-
-    &:nth-child(2) {
-      grid-column-start: 3;
-    }
-
-    &:nth-child(3) {
-      grid-column: span 3;
-      text-align: center;
-      margin-top: $spacing-xs;
-    }
-  }
-}
-
-//</editor-fold>
 
 .woocommerce td.product-name {
 	a {
@@ -275,10 +223,6 @@
 
     tbody tr:first-child {
       border-top: none;
-    }
-
-    .product-remove a.remove {
-      //margin: 0 auto;
     }
   }
   .woocommerce-cart table.cart td.actions .coupon {

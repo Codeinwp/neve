@@ -36,11 +36,6 @@
   background-color: transparent;
 }
 
-.woocommerce .nv-sidebar-wrap ul.cart_list li, .woocommerce ul.product_list_widget li {
-  margin-top: $spacing-xs;
-  padding-bottom: $spacing-xs;
-}
-
 @mixin shop-sidebar--laptop() {
   .nv-sidebar-toggle {
     display: none;

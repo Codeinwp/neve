@@ -91,7 +91,12 @@
 		margin-bottom: 0;
 		padding: 10px 0;
 	  }
-
+	  li.mini_cart_item {
+		padding: $spacing-sm;
+		img{
+		  left: 50px;
+		}
+	  }
 	  .woocommerce-mini-cart__buttons {
 		padding: 0 $spacing-sm $spacing-sm;
 	  }
