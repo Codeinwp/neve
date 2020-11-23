@@ -199,11 +199,25 @@
 
 
 //<editor-fold desc="Cart widget">
-.woocommerce .widget_shopping_cart .total {
-  border-top: $muted-border;
-  text-align: center;
-  margin-top: $spacing-xs;
-  padding-top: $spacing-xs;
+
+.woocommerce .widget_shopping_cart {
+  .cart_list li{
+	font-size: .85em;
+	border-bottom: $muted-border;
+	position: relative;
+	padding:0;
+	img {
+	  position: absolute;
+	  left: 40px;
+	  width: 45px;
+	  top: 50%;
+	  transform: translateY(-50%);
+	  margin-left: 0;
+	}
+	&:last-child {
+	  border: none;
+	}
+  }
 }
 
 .woocommerce-mini-cart__buttons {

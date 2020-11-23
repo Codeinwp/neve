@@ -76,28 +76,97 @@
 
 @mixin cart-widget() {
   .widget_shopping_cart {
-    color: var(--nv-text-color);
+	color: var(--nv-text-color);
   }
-  .widget_shopping_cart > .widget_shopping_cart_content > ul.woocommerce-mini-cart.cart_list.product_list_widget {
-    max-height: 290px;
-    overflow-y: scroll;
-    overflow-x: hidden;
+
+  .woocommerce .widget_shopping_cart {
+	li.mini_cart_item {
+	  padding: $spacing-xs;
+	  display: grid;
+	  grid-template-columns: repeat(12, 1fr);
+	  align-items: baseline;
+	  font-size: .85em;
+	  position: relative;
+	  margin: 0;
+
+	  > *:not(.remove) {
+		padding-left: 60px;
+	  }
+
+	  > a {
+		padding: 0;
+		grid-column: span 11;
+		grid-row-start: 1;
+		grid-column-end: -1;
+		color: $body-color;
+		text-align: left;
+		font-weight: normal;
+		&:hover {
+		  text-decoration: underline;
+		}
+	  }
+
+	  a.remove {
+		grid-column: 1;
+		width: 20px;
+		height: 20px;
+		padding: 0;
+		top: 50%;
+		transform: translateY(-15px);
+		text-align: center;
+		&:hover {
+		  text-decoration: none;
+		}
+	  }
+
+	  span.quantity {
+		grid-row-start: 2;
+		grid-column-start: span 11;
+		grid-column-end: -1;
+		text-align: left;
+	  }
+
+	  dl.variation {
+		border: none;
+		grid-row-start: 3;
+		grid-column-start: 2;
+		grid-column-end: span 9;
+		padding: 0;
+		text-align: right;
+
+		dt::before {
+		  width: 100%;
+		  content: "\A";
+		  white-space: pre-wrap;
+		  display: block;
+		  height: 0;
+		}
+
+		dt {
+		  margin-left: auto;
+		}
+
+		dt, dd {
+		  line-height: 1.2em;
+		  margin-bottom: 3px;
+		}
+	  }
+  	}
   }
-  .woocommerce-mini-cart__empty-message {
-    text-align: center;
-    margin-bottom: 0;
-    padding: 10px 0;
-  }
+
   .woocommerce.widget_shopping_cart .total {
     border-top: $muted-border;
-    border-bottom: $muted-border;
-    padding-bottom: $spacing-xs;
-    margin: 0 auto $spacing-xs;
-    text-align: center;
-
+    margin: 0;
+    text-align: left;
+	padding-top: $spacing-sm;
+	padding-bottom: $spacing-sm;
+	strong{
+	  font-weight: normal;
+	}
   }
-  .woocommerce-mini-cart__buttons {
-    margin-bottom: $spacing-xs;
-    padding: $spacing-xs $spacing-sm 0;
+  .woocommerce-mini-cart__buttons a.button{
+  	margin: 0!important;
+	padding-top: 16px!important;
+	padding-bottom: 16px!important;
   }
 }

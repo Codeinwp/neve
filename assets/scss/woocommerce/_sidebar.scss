@@ -36,23 +36,6 @@
   background-color: transparent;
 }
 
-.woocommerce .widget_shopping_cart .cart_list li, .woocommerce.widget_shopping_cart .cart_list li {
-  font-size: .85em;
-  border-bottom: $muted-border;
-  position: relative;
-  img {
-    position: absolute;
-    right: 0;
-    width: 45px;
-  }
-  &:last-child {
-    border: none;
-  }
-  a:not(.remove) {
-    padding-right: 61px;
-  }
-}
-
 .woocommerce .nv-sidebar-wrap ul.cart_list li, .woocommerce ul.product_list_widget li {
   margin-top: $spacing-xs;
   padding-bottom: $spacing-xs;
