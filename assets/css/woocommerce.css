@@ -1197,8 +1197,6 @@ section.exclusive .tns-visually-hidden {
 
 .woocommerce .widget_shopping_cart li.mini_cart_item a.remove {
   grid-column: 1;
-  width: 20px;
-  height: 20px;
   padding: 0;
   top: 50%;
   transform: translateY(-20px);
