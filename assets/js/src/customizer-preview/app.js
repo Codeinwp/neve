@@ -1,4 +1,4 @@
-/* global neveCustomizePreview */
+/* global neveCustomizePreview, _ */
 /* jshint esversion: 6 */
 import { initNavigation, repositionDropdowns } from '../frontend/navigation';
 import { removeClass, addClass } from '../utils.js';
@@ -100,19 +100,11 @@ window.addEventListener( 'load', function () {
 	document.addEventListener( 'header_builder_panel_changed', function ( e ) {
 		if ( e.detail.partial_id === 'hfg_header_layout_partial' ) {
 			window.HFG.init();
-			initNavigation();
+			window.HFG.initSearch();
 			console.log( 'Reinitialize HFG with sidebar.' );
 			return false;
 		}
-		if ( e.detail.partial_id === 'nav-icon_partial' ) {
-			window.HFG.init( true );
-			console.log( 'Reinitialize HFG with skip.' );
-			return false;
-		}
-		if (
-			e.detail.partial_id === 'primary-menu_partial' ||
-			e.detail.partial_id === 'hfg_header_layout_partial'
-		) {
+		if ( e.detail.partial_id === 'primary-menu_partial' ) {
 			initNavigation();
 			repositionDropdowns();
 			console.log( 'Reinitialize navigation.' );
@@ -586,6 +578,29 @@ window.addEventListener( 'load', function () {
 							break;
 						case '\\Neve\\Customizer\\Controls\\React\\Font_Family':
 							break;
+						case 'Neve\\Customizer\\Controls\\React\\Global_Colors':
+							const cssTag = document.querySelector(
+								'#nv-css-vars-inline-css'
+							);
+
+							const { palettes, activePalette } = newValue;
+							const { colors } = palettes[ activePalette ];
+							let globalColorsCSS = ':root{';
+							Object.keys( colors ).map( ( slug ) => {
+								globalColorsCSS += `--${ slug }:${ colors[ slug ] };`;
+								if (
+									typeof elementorFrontend !== 'undefined'
+								) {
+									globalColorsCSS += `--e-global-color-${ slug.replaceAll(
+										'-',
+										''
+									) }:${ colors[ slug ] };`;
+								}
+								return false;
+							} );
+							globalColorsCSS += '}';
+							cssTag.innerHTML = globalColorsCSS;
+							break;
 					}
 				} );
 			} );
@@ -637,6 +652,15 @@ window.addEventListener( 'load', function () {
 			newNode.setAttribute( 'media', 'all' );
 			document.querySelector( 'head' ).appendChild( newNode );
 		}
+	} );
+	wp.customize( 'background_image', function ( value ) {
+		value.bind( function ( newval ) {
+			if ( ! newval ) {
+				document
+					.querySelector( 'body' )
+					.classList.remove( 'custom-background' );
+			}
+		} );
 	} );
 } );
 

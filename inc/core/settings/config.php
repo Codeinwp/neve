@@ -13,21 +13,36 @@ namespace Neve\Core\Settings;
  * @package Neve\Core\Settings
  */
 class Config {
-
-	const MODS_LINK_COLOR                  = 'neve_link_color';
-	const MODS_LINK_HOVER_COLOR            = 'neve_link_hover_color';
-	const MODS_TEXT_COLOR                  = 'neve_text_color';
-	const MODS_CONTAINER_WIDTH             = 'neve_container_width';
-	const MODS_SITEWIDE_CONTENT_WIDTH      = 'neve_sitewide_content_width';
-	const MODS_OTHERS_CONTENT_WIDTH        = 'neve_other_pages_content_width';
-	const MODS_ARCHIVE_CONTENT_WIDTH       = 'neve_blog_archive_content_width';
-	const MODS_SINGLE_CONTENT_WIDTH        = 'neve_single_post_content_width';
-	const MODS_SHOP_ARCHIVE_CONTENT_WIDTH  = 'neve_shop_archive_content_width';
-	const MODS_SHOP_SINGLE_CONTENT_WIDTH   = 'neve_single_product_content_width';
-	const MODS_ADVANCED_LAYOUT_OPTIONS     = 'neve_advanced_layout_options';
-	const MODS_BUTTON_PRIMARY_STYLE        = 'neve_button_appearance';
-	const MODS_BUTTON_SECONDARY_STYLE      = 'neve_secondary_button_appearance';
-	const MODS_BUTTON_PRIMARY_PADDING      = 'neve_button_padding';
+	/**
+	 * Link color - deprecated.
+	 *
+	 * @deprecated
+	 */
+	const MODS_LINK_COLOR = 'neve_link_color';
+	/**
+	 * Link hover color - deprecated.
+	 *
+	 * @deprecated
+	 */
+	const MODS_LINK_HOVER_COLOR           = 'neve_link_hover_color';
+	const MODS_GLOBAL_COLORS              = 'neve_global_colors';
+	const MODS_TEXT_COLOR                 = 'neve_text_color';
+	const MODS_CONTAINER_WIDTH            = 'neve_container_width';
+	const MODS_SITEWIDE_CONTENT_WIDTH     = 'neve_sitewide_content_width';
+	const MODS_OTHERS_CONTENT_WIDTH       = 'neve_other_pages_content_width';
+	const MODS_ARCHIVE_CONTENT_WIDTH      = 'neve_blog_archive_content_width';
+	const MODS_SINGLE_CONTENT_WIDTH       = 'neve_single_post_content_width';
+	const MODS_SHOP_ARCHIVE_CONTENT_WIDTH = 'neve_shop_archive_content_width';
+	const MODS_SHOP_SINGLE_CONTENT_WIDTH  = 'neve_single_product_content_width';
+	const MODS_ADVANCED_LAYOUT_OPTIONS    = 'neve_advanced_layout_options';
+	const MODS_BUTTON_PRIMARY_STYLE       = 'neve_button_appearance';
+	const MODS_BUTTON_SECONDARY_STYLE     = 'neve_secondary_button_appearance';
+	const MODS_BUTTON_PRIMARY_PADDING     = 'neve_button_padding';
+	/**
+	 * Background color - deprecated.
+	 *
+	 * @deprecated
+	 */
 	const MODS_BACKGROUND_COLOR            = 'background_color';
 	const MODS_BUTTON_SECONDARY_PADDING    = 'neve_secondary_button_padding';
 	const MODS_TYPEFACE_GENERAL            = 'neve_typeface_general';
@@ -119,7 +134,7 @@ class Config {
 	public static $css_selectors_map = [
 		self::CSS_SELECTOR_TYPEFACE_H1               => 'h1, .single h1.entry-title',
 		self::CSS_SELECTOR_TYPEFACE_H2               => 'h2',
-		self::CSS_SELECTOR_TYPEFACE_H3               => 'h3',
+		self::CSS_SELECTOR_TYPEFACE_H3               => 'h3, .woocommerce-checkout h3',
 		self::CSS_SELECTOR_TYPEFACE_H4               => 'h4',
 		self::CSS_SELECTOR_TYPEFACE_H5               => 'h5',
 		self::CSS_SELECTOR_TYPEFACE_H6               => 'h6',
@@ -133,7 +148,6 @@ class Config {
 				ul[id^="nv-primary-navigation"] li.button.button-primary > a,
 				.menu li.button.button-primary > a,  .wp-block-button.is-style-primary .wp-block-button__link,  .wc-block-grid .wp-block-button .wp-block-button__link',
 		self::CSS_SELECTOR_BTN_PRIMARY_HOVER         => '.button.button-primary:hover,
-				.nv-tags-list a:hover,
 				ul[id^="nv-primary-navigation"] li.button.button-primary > a:hover,
 				.menu li.button.button-primary > a:hover, .wp-block-button.is-style-primary .wp-block-button__link:hover,  .wc-block-grid .wp-block-button .wp-block-button__link:hover',
 		self::CSS_SELECTOR_BTN_SECONDARY_NORMAL      => '.button.button-secondary, #comments input[type="submit"], #comments input[type=submit], .cart-off-canvas .button.nv-close-cart-sidebar,  .wp-block-button.is-style-secondary .wp-block-button__link',

@@ -176,7 +176,7 @@ class Post_Meta extends Base_View {
 			'<a href="%1$s" title="%2$s" rel="author">%3$s</a>',
 			esc_url( get_author_posts_url( $author_id, $user_nicename ) ),
 			/* translators: %s: Author's display name. */
-			esc_attr( sprintf( __( 'Posts by %s' ), $display_name ) ),
+			esc_attr( sprintf( __( 'Posts by %s', 'neve' ), $display_name ) ),
 			$display_name
 		);
 

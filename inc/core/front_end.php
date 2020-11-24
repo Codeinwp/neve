@@ -88,7 +88,7 @@ class Front_End {
 	 *
 	 * @link https://core.trac.wordpress.org/ticket/12009
 	 *
-	 * @param string $tag    The script tag.
+	 * @param string $tag The script tag.
 	 * @param string $handle The script handle.
 	 * @return string Script HTML string.
 	 */
@@ -169,87 +169,57 @@ class Front_End {
 	 */
 	private function get_gutenberg_color_palette() {
 		$gutenberg_color_palette = array();
-
-		array_push(
-			$gutenberg_color_palette,
-			array(
-				'name'  => __( 'Black', 'neve' ),
-				'slug'  => 'black',
-				'color' => '#000000',
-			)
-		);
-
-		array_push(
-			$gutenberg_color_palette,
-			array(
-				'name'  => __( 'White', 'neve' ),
-				'slug'  => 'white',
-				'color' => '#ffffff',
-			)
-		);
-
-		$color_controls = array(
-			'neve-button-color'     => array(
-				'setting' => Config::MODS_BUTTON_PRIMARY_STYLE . '.background',
-				'label'   => __( 'Button Color', 'neve' ),
-			),
+		$from_global_colors      = [
 			'neve-link-color'       => array(
-				'setting' => Config::MODS_LINK_COLOR,
-				'label'   => __( 'Link Color', 'neve' ),
+				'val'   => 'var(--nv-primary-accent)',
+				'label' => __( 'Neve - Primary Accent', 'neve' ),
 			),
 			'neve-link-hover-color' => array(
-				'setting' => Config::MODS_LINK_HOVER_COLOR,
-				'label'   => __( 'Link Hover Color', 'neve' ),
+				'val'   => 'var(--nv-secondary-accent)',
+				'label' => __( 'Neve - Secondary Accent', 'neve' ),
+			),
+			'nv-site-bg'            => array(
+				'val'   => 'var(--nv-site-bg)',
+				'label' => __( 'Neve - Site Background', 'neve' ),
+			),
+			'nv-light-bg'           => array(
+				'val'   => 'var(--nv-light-bg)',
+				'label' => __( 'Neve - Light Background', 'neve' ),
+			),
+			'nv-dark-bg'            => array(
+				'val'   => 'var(--nv-dark-bg)',
+				'label' => __( 'Neve - Dark Background', 'neve' ),
 			),
 			'neve-text-color'       => array(
-				'setting' => Config::MODS_TEXT_COLOR,
-				'label'   => __( 'Text Color', 'neve' ),
+				'val'   => 'var(--nv-text-color)',
+				'label' => __( 'Neve - Text Color', 'neve' ),
 			),
-			'neve-btn-text'         => array(
-				'setting' => Config::MODS_BUTTON_PRIMARY_STYLE . '.text',
-				'label'   => __( 'Button text color', 'neve' ),
+			'nv-text-dark-bg'       => array(
+				'val'   => 'var(--nv-text-dark-bg)',
+				'label' => __( 'Neve - Text Dark Background', 'neve' ),
 			),
-			'neve-btn-text-hover'   => array(
-				'setting' => Config::MODS_BUTTON_PRIMARY_STYLE . '.textHover',
-				'label'   => __( 'Button Hover text color', 'neve' ),
+			'nv-c-1'                => array(
+				'val'   => 'var(--nv-c-1)',
+				'label' => __( 'Neve - Extra Color 1', 'neve' ),
 			),
-			'neve-btn-bg-hover'     => array(
-				'setting' => Config::MODS_BUTTON_PRIMARY_STYLE . '.backgroundHover',
-				'label'   => __( 'Button Hover Color', 'neve' ),
+			'nv-c-2'                => array(
+				'val'   => 'var(--nv-c-2)',
+				'label' => __( 'Neve - Extra Color 2', 'neve' ),
 			),
-		);
-		foreach ( $color_controls as $control_name => $control_data ) {
-			$color = Mods::get( $control_data['setting'] );
-			if ( empty( $color ) ) {
-				continue;
-			}
-			$color_name = $control_data['label'];
+		];
+
+		foreach ( $from_global_colors as $slug => $args ) {
 			array_push(
 				$gutenberg_color_palette,
 				array(
-					'name'      => esc_html( $color_name ),
-					'slug'      => esc_html( $control_name ),
-					'color'     => neve_sanitize_colors( $color ),
-					'theme_mod' => esc_attr( $control_data['setting'] ),
+					'name'  => esc_html( $args['label'] ),
+					'slug'  => esc_html( $slug ),
+					'color' => neve_sanitize_colors( $args['val'] ),
 				)
 			);
 		}
 
-		/**
-		 * Remove duplicate colors.
-		 */
-		$temp_arr = array_unique(
-			array_map(
-				function ( $el ) {
-					return $el['color'];
-				},
-				$gutenberg_color_palette
-			)
-		);
-
-		$colors = array_intersect_key( $gutenberg_color_palette, $temp_arr );
-
-		return array_values( $colors );
+		return array_values( $gutenberg_color_palette );
 	}
 
 	/**

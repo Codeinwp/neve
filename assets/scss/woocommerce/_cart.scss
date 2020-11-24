@@ -14,6 +14,10 @@
   height: 20px;
   width: 20px;
   line-height: 18px;
+	text-decoration: none !important;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 
   &:hover {
     background-color: $error !important;
@@ -90,7 +94,7 @@
     margin-bottom: 0;
     font-size: 1em;
     padding: 9px 12px;
-    background-color: #f7f7f7;
+    background-color: var(--nv-light-bg);
   }
 
   table.shop_table {
@@ -155,7 +159,7 @@
     margin-bottom: 0;
     font-size: 1em;
     padding: 9px 12px;
-    background-color: #f7f7f7;
+    background-color: var(--nv-light-bg);
   }
 
   ul.products {
@@ -173,7 +177,7 @@
   border: $muted-border;
 
   thead {
-    background-color: #f7f7f7;
+    background-color: var(--nv-light-bg);
   }
 
   tr:not(:first-child) {
@@ -181,11 +185,10 @@
   }
 
   td {
-    background: #fff !important;
     border-top: 0;
 
     a.remove {
-      margin: 0;
+      //margin: 0;
     }
   }
 
@@ -261,7 +264,7 @@
     }
 
     .product-remove a.remove {
-      margin: 0 auto;
+      //margin: 0 auto;
     }
   }
   .woocommerce-cart table.cart td.actions .coupon {

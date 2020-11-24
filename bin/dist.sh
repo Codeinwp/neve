@@ -5,8 +5,9 @@ export BUILD_VERSION
 BUILD_NAME=$(node -pe "require('./package.json').name")
 export BUILD_NAME
 
-echo "::set-env name=BUILD_NAME::$BUILD_NAME"
-echo "::set-env name=BUILD_VERSION::$BUILD_VERSION"
+
+echo "BUILD_NAME=$BUILD_NAME"  >> $GITHUB_ENV
+echo "BUILD_VERSION=$BUILD_VERSION"  >> $GITHUB_ENV
 
 if [ ! -d "dist" ]; then
   mkdir "dist"

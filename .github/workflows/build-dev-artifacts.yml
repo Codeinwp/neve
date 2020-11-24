@@ -172,7 +172,7 @@ jobs:
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
-        uses: cypress-io/github-action@v1
+        uses: cypress-io/github-action@v2
         with:
           env: host=localhost,port=8080
           browser: chrome

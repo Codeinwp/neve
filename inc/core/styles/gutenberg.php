@@ -21,51 +21,7 @@ class Gutenberg extends Generator {
 	 * Generator constructor.
 	 */
 	public function __construct() {
-		$this->context        = Dynamic_Selector::CONTEXT_GUTENBERG;
-		$this->_subscribers[] = [
-			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_COLOR => Config::MODS_TEXT_COLOR,
-			],
-			Dynamic_Selector::KEY_SELECTOR => '
-				 .wp-block ,
-				 .editor-post-title__block .editor-post-title__input,
-				 h1.wp-block,
-				 h2.wp-block,
-				 h3.wp-block,
-				 h4.wp-block,
-				 h5.wp-block,
-				 h6.wp-block',
-			Dynamic_Selector::KEY_CONTEXT  => [
-				Dynamic_Selector::CONTEXT_GUTENBERG => true,
-			],
-		];
-		$this->_subscribers[] = [
-			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_BACKGROUND_COLOR => Config::MODS_BACKGROUND_COLOR,
-			],
-			Dynamic_Selector::KEY_SELECTOR => ' > *',
-			Dynamic_Selector::KEY_CONTEXT  => [
-				Dynamic_Selector::CONTEXT_GUTENBERG => true,
-			],
-		];
-		$this->_subscribers[] = [
-			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_COLOR => Config::MODS_LINK_COLOR,
-			],
-			Dynamic_Selector::KEY_SELECTOR => 'a, .wp-block a',
-			Dynamic_Selector::KEY_CONTEXT  => [
-				Dynamic_Selector::CONTEXT_GUTENBERG => true,
-			],
-		];
-		$this->_subscribers[] = [
-			Dynamic_Selector::KEY_RULES    => [
-				Config::CSS_PROP_COLOR => Config::MODS_LINK_HOVER_COLOR,
-			],
-			Dynamic_Selector::KEY_SELECTOR => 'a:hover, .wp-block a:hover',
-			Dynamic_Selector::KEY_CONTEXT  => [
-				Dynamic_Selector::CONTEXT_GUTENBERG => true,
-			],
-		];
+		$this->context = Dynamic_Selector::CONTEXT_GUTENBERG;
 		$this->setup_buttons();
 		$this->setup_typography();
 		$this->add_editor_color_palette_styles();
@@ -300,23 +256,31 @@ class Gutenberg extends Generator {
 	 * Adds colors from the editor-color-palette theme support.
 	 */
 	private function add_editor_color_palette_styles() {
-		$theme_support = get_theme_support( 'editor-color-palette' );
-		$theme_support = reset( $theme_support );
-		foreach ( $theme_support as $palette_color ) {
-			if ( ! isset( $palette_color['slug'] ) || ! isset( $palette_color['theme_mod'] ) ) {
-				continue;
-			}
-			$selector             = '.has-' . $palette_color['slug'] . '-color';
-			$this->_subscribers[] = [
-				Dynamic_Selector::KEY_SELECTOR => $selector,
-				Dynamic_Selector::KEY_RULES    => [
-					Config::CSS_PROP_COLOR => $palette_color['theme_mod'],
-				],
-				Dynamic_Selector::KEY_CONTEXT  => [
+		$is_new_user           = get_option( 'neve_new_user' );
+		$imported_starter_site = get_option( 'neve_imported_demo' );
+		if ( $is_new_user === 'yes' && $imported_starter_site !== 'yes' ) {
+			return;
+		}
+
+		$this->_subscribers['.has-neve-button-color-color']            = [
+			Config::CSS_PROP_COLOR => [
+				Dynamic_Selector::META_KEY       => Config::MODS_BUTTON_PRIMARY_STYLE . '.background',
+				Dynamic_Selector::META_IMPORTANT => true,
+				Dynamic_Selector::META_DEFAULT   => 'var(--nv-primary-accent)',
+				Dynamic_Selector::KEY_CONTEXT    => [
 					Dynamic_Selector::CONTEXT_GUTENBERG => true,
 				],
-
-			];
-		}
+			],
+		];
+		$this->_subscribers['.has-neve-button-color-background-color'] = [
+			Config::CSS_PROP_BACKGROUND_COLOR => [
+				Dynamic_Selector::META_KEY       => Config::MODS_BUTTON_PRIMARY_STYLE . '.background',
+				Dynamic_Selector::META_IMPORTANT => true,
+				Dynamic_Selector::META_DEFAULT   => 'var(--nv-primary-accent)',
+				Dynamic_Selector::KEY_CONTEXT    => [
+					Dynamic_Selector::CONTEXT_GUTENBERG => true,
+				],
+			],
+		];
 	}
 }

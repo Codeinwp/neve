@@ -17,6 +17,12 @@
  * @return string
  */
 function neve_sanitize_colors( $value ) {
+	$is_var = ( strpos( $value, 'var' ) !== false );
+
+	if ( $is_var ) {
+		return sanitize_text_field( $value );
+	}
+
 	// Is this an rgba color or a hex?
 	$mode = ( false === strpos( $value, 'rgba' ) ) ? 'hex' : 'rgba';
 

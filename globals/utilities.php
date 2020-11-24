@@ -1316,3 +1316,53 @@ function neve_get_headings_selectors() {
 		)
 	);
 }
+
+/**
+ * Get Global Colors Default
+ *
+ * @param bool $migrated get with migrated colors.
+ * @return array
+ */
+function neve_get_global_colors_default( $migrated = false ) {
+
+	$old_link_color       = get_theme_mod( 'neve_link_color', '#0366d6' );
+	$old_link_hover_color = get_theme_mod( 'neve_link_hover_color', '#0e509a' );
+	$old_text_color       = get_theme_mod( 'neve_text_color', '#393939' );
+	$old_bg_color         = '#' . get_theme_mod( 'background_color', 'ffffff' );
+
+	return [
+		'activePalette' => 'base',
+		'palettes'      => [
+			'base'     => [
+				'name'          => __( 'Base', 'neve' ),
+				'allowDeletion' => false,
+				'colors'        => [
+					'nv-primary-accent'   => $migrated ? $old_link_color : '#0366d6',
+					'nv-secondary-accent' => $migrated ? $old_link_hover_color : '#0e509a',
+					'nv-site-bg'          => $migrated ? $old_bg_color : '#ffffff',
+					'nv-light-bg'         => '#ededed',
+					'nv-dark-bg'          => '#14171c',
+					'nv-text-color'       => $migrated ? $old_text_color : '#393939',
+					'nv-text-dark-bg'     => '#ffffff',
+					'nv-c-1'              => '#77b978',
+					'nv-c-2'              => '#f37262',
+				],
+			],
+			'darkMode' => [
+				'name'          => __( 'Dark Mode', 'neve' ),
+				'allowDeletion' => false,
+				'colors'        => [
+					'nv-primary-accent'   => '#26bcdb',
+					'nv-secondary-accent' => '#1f90a6',
+					'nv-site-bg'          => '#121212',
+					'nv-light-bg'         => '#1a1a1a',
+					'nv-dark-bg'          => '#1a1a1a',
+					'nv-text-color'       => '#ffffff',
+					'nv-text-dark-bg'     => 'rgba(255, 255, 255, 0.81)',
+					'nv-c-1'              => '#77b978',
+					'nv-c-2'              => '#f37262',
+				],
+			],
+		],
+	];
+}
