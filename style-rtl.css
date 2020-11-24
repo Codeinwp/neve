@@ -1612,7 +1612,7 @@ body .layout-grid > .article-content-col, .layout-grid {
 
 .nv-post-navigation .previous .nav-direction,
 .nv-post-navigation .next .nav-direction {
-  color: #676767;
+  color: var(--nv-text-color);
   display: flex;
   flex-direction: column;
   font-size: 0.8em;
