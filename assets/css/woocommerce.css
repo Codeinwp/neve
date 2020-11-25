@@ -503,10 +503,6 @@
   height: auto;
 }
 
-.variations select option {
-  color: var(--nv-site-bg);
-}
-
 .woocommerce div.product .woocommerce-tabs ul.tabs li {
   background: transparent;
   border: 0;
