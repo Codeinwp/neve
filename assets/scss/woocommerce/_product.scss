@@ -151,6 +151,9 @@
 	color: var(--nv-text-color);
 	width: 100%;
 	height: auto;
+	option {
+		background-color: var(--nv-site-bg);
+	}
 }
 
 //</editor-fold>
