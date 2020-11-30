@@ -40,7 +40,7 @@
 		"@size-limit/webpack": "^4.5.6",
 		"@wordpress/eslint-plugin": "@7.3.0",
 		"@wordpress/scripts": "^12.5.0",
-		"babel-loader": "^8.1.0",
+		"babel-loader": "^8.2.2",
 		"compare-versions": "^3.6.0",
 		"conventional-changelog-simple-preset": "^1.0.14",
 		"core-js": "^3.6.5",
