@@ -40,27 +40,31 @@ const FontFamilySelector = ( {
 		const groups = getFonts();
 		const options = [];
 
-		options.push(
-			<li
-				key="default"
-				className={ 'default-value ' + ! selected ? 'selected' : '' }
-			>
-				<FontPreviewLink
-					fontFace="default"
-					delayLoad={ false }
-					onClick={ () => {
-						setVisible( false );
-						setSearch( '' );
-						onFontChoice( 'system', false );
-					} }
-					label={
-						inheritDefault
-							? __( 'Inherit', 'neve' )
-							: __( 'Default', 'neve' )
+		if ( ! systemFonts ) {
+			options.push(
+				<li
+					key="default"
+					className={
+						'default-value ' + ! selected ? 'selected' : ''
 					}
-				/>
-			</li>
-		);
+				>
+					<FontPreviewLink
+						fontFace="default"
+						delayLoad={ false }
+						onClick={ () => {
+							setVisible( false );
+							setSearch( '' );
+							onFontChoice( 'system', false );
+						} }
+						label={
+							inheritDefault
+								? __( 'Inherit', 'neve' )
+								: __( 'Default', 'neve' )
+						}
+					/>
+				</li>
+			);
+		}
 
 		Object.keys( groups ).map( ( key ) => {
 			if ( systemFonts && key !== 'System' ) {
