@@ -75,7 +75,7 @@ class Dynamic_Css {
 
 		$style = apply_filters( 'neve_dynamic_style_output', $this->generator->generate(), $is_for_gutenberg ? 'gutenberg' : 'frontend' );
 
-		$style .= $this->get_css_vars();
+		$style .= $this->get_root_css();
 
 		$style = self::minify_css( $style );
 
@@ -99,7 +99,34 @@ class Dynamic_Css {
 	public function add_customize_vars_tag() {
 		wp_register_style( 'nv-css-vars', false );
 		wp_enqueue_style( 'nv-css-vars' );
-		wp_add_inline_style( 'nv-css-vars', $this->get_css_vars() );
+		wp_add_inline_style( 'nv-css-vars', self::minify_css(':root{' . $this->get_css_vars() . '}' ) );
+	}
+
+	/**
+	 * Get root style (css variables)
+	 *
+	 * @return string
+	 */
+	public function get_root_css() {
+		$css = ':root{';
+
+		$css .= $this->get_css_vars();
+		$css .= $this->get_fallback_font();
+
+		$css .= '}';
+
+		return self::minify_css($css);
+	}
+
+	/**
+	 * Get the fallback font.
+	 *
+	 * @return string
+	 */
+	public function get_fallback_font() {
+		$fallback = get_theme_mod( 'neve_fallback_font_family', 'Arial, Helvetica, sans-serif' );
+
+		return '--nv-fallback-ff:' . $fallback . ';';
 	}
 
 	/**
@@ -130,14 +157,12 @@ class Dynamic_Css {
 			return '';
 		}
 
-		$css = ':root{';
+		$css = '';
 
 		foreach ( $palette[ 'colors' ] as $slug => $color ) {
 			$css .= '--' . $slug . ':' . $color . ';';
 		}
 
-		$css .= '}';
-
-		return self::minify_css( $css );
+		return $css;
 	}
 }
