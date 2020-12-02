@@ -41,17 +41,13 @@ class Front_End {
 			'width'       => 200,
 		);
 
-		$custom_background_settings = array(
-			'default-color' => apply_filters( 'neve_default_background_color', 'ffffff' ),
-		);
-
 		add_theme_support( 'title-tag' );
 		add_theme_support( 'post-thumbnails' );
 		add_theme_support( 'automatic-feed-links' );
 		add_theme_support( 'custom-logo', $logo_settings );
 		add_theme_support( 'html5', array( 'search-form' ) );
 		add_theme_support( 'customize-selective-refresh-widgets' );
-		add_theme_support( 'custom-background', $custom_background_settings );
+		add_theme_support( 'custom-background', [] );
 		add_theme_support( 'align-wide' );
 		add_theme_support( 'editor-color-palette', $this->get_gutenberg_color_palette() );
 		add_theme_support( 'fl-theme-builder-headers' );
@@ -65,6 +61,8 @@ class Front_End {
 		add_filter( 'embed_oembed_html', array( $this, 'wrap_oembeds' ), 10, 3 );
 		add_filter( 'video_embed_html', array( $this, 'wrap_jetpack_oembeds' ), 10, 1 );
 		add_filter( 'themeisle_gutenberg_templates', array( $this, 'add_gutenberg_templates' ) );
+		add_filter( 'theme_mod_background_color', '__return_empty_string' );
+
 		$this->add_amp_support();
 		$nav_menus_to_register = apply_filters(
 			'neve_register_nav_menus',
