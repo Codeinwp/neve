@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-12-02T11:10:31+00:00\n"
+"POT-Creation-Date: 2020-12-02T15:16:58+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -653,7 +653,7 @@ msgstr ""
 
 #: header-footer-grid/Core/Components/Nav.php:177
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:122
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:126
 msgid "Search"
 msgstr ""
 
@@ -792,8 +792,8 @@ msgstr ""
 #: header-footer-grid/Core/Customizer.php:266
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:175
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:54
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:178
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:62
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:180
 msgid "Default"
 msgstr ""
 
@@ -1479,7 +1479,7 @@ msgstr ""
 
 #: inc/customizer/options/layout_sidebar.php:153
 #: inc/customizer/options/layout_single_post.php:42
-#: inc/customizer/options/typography.php:306
+#: inc/customizer/options/typography.php:335
 msgid "Single Post"
 msgstr ""
 
@@ -1560,25 +1560,33 @@ msgstr ""
 msgid "Body"
 msgstr ""
 
-#: inc/customizer/options/typography.php:289
-#: inc/customizer/options/typography.php:305
+#: inc/customizer/options/typography.php:213
+msgid "Fallback Font"
+msgstr ""
+
+#: inc/customizer/options/typography.php:220
+msgid "Learn more about fallback fonts"
+msgstr ""
+
+#: inc/customizer/options/typography.php:318
+#: inc/customizer/options/typography.php:334
 msgid "Post title"
 msgstr ""
 
-#: inc/customizer/options/typography.php:290
+#: inc/customizer/options/typography.php:319
 msgid "Blog Archive"
 msgstr ""
 
-#: inc/customizer/options/typography.php:295
+#: inc/customizer/options/typography.php:324
 msgid "Post excerpt"
 msgstr ""
 
-#: inc/customizer/options/typography.php:300
-#: inc/customizer/options/typography.php:311
+#: inc/customizer/options/typography.php:329
+#: inc/customizer/options/typography.php:340
 msgid "Post meta"
 msgstr ""
 
-#: inc/customizer/options/typography.php:316
+#: inc/customizer/options/typography.php:345
 msgid "Comments reply title"
 msgstr ""
 
@@ -2074,8 +2082,8 @@ msgstr ""
 
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:149
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:53
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:177
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:61
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:179
 msgid "Inherit"
 msgstr ""
 
@@ -2275,17 +2283,17 @@ msgid "Letter Spacing"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:148
-msgid "No results."
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:165
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:167
 msgid "Font Family"
 msgstr ""
 
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:197
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:151
+msgid "No results."
+msgstr ""
+
+#: inc/customizer/controls/react/bundle/controls.js:1
+#: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:198
 msgid "Loading…"
 msgstr ""
 
