@@ -216,6 +216,10 @@ class Typography extends Base_Customizer {
 					'type'        => 'neve_font_family_control',
 					'input_attrs' => [
 						'system' => true,
+						'link'   => [
+							'string' => __( 'Learn more about fallback fonts', 'neve' ),
+							'url'    => esc_url( 'https://docs.themeisle.com/article/1319-fallback-fonts' ),
+						],
 					],
 				],
 				'\Neve\Customizer\Controls\React\Font_Family'

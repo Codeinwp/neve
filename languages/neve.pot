@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-12-02T14:10:34+00:00\n"
+"POT-Creation-Date: 2020-12-02T15:16:58+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -1479,7 +1479,7 @@ msgstr ""
 
 #: inc/customizer/options/layout_sidebar.php:153
 #: inc/customizer/options/layout_single_post.php:42
-#: inc/customizer/options/typography.php:331
+#: inc/customizer/options/typography.php:335
 msgid "Single Post"
 msgstr ""
 
@@ -1564,25 +1564,29 @@ msgstr ""
 msgid "Fallback Font"
 msgstr ""
 
-#: inc/customizer/options/typography.php:314
-#: inc/customizer/options/typography.php:330
+#: inc/customizer/options/typography.php:220
+msgid "Learn more about fallback fonts"
+msgstr ""
+
+#: inc/customizer/options/typography.php:318
+#: inc/customizer/options/typography.php:334
 msgid "Post title"
 msgstr ""
 
-#: inc/customizer/options/typography.php:315
+#: inc/customizer/options/typography.php:319
 msgid "Blog Archive"
 msgstr ""
 
-#: inc/customizer/options/typography.php:320
+#: inc/customizer/options/typography.php:324
 msgid "Post excerpt"
 msgstr ""
 
-#: inc/customizer/options/typography.php:325
-#: inc/customizer/options/typography.php:336
+#: inc/customizer/options/typography.php:329
+#: inc/customizer/options/typography.php:340
 msgid "Post meta"
 msgstr ""
 
-#: inc/customizer/options/typography.php:341
+#: inc/customizer/options/typography.php:345
 msgid "Comments reply title"
 msgstr ""
 
