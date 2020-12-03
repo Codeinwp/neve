@@ -93,6 +93,12 @@ class Colors_Background extends Base_Customizer {
 					'section'               => 'neve_colors_background_section',
 					'type'                  => 'neve_global_colors',
 					'default_values'        => neve_get_global_colors_default(),
+					'input_attrs'           => [
+						'link' => [
+							'url'    => esc_url( 'https://docs.themeisle.com/article/1314-global-colors-in-neve' ),
+							'string' => esc_html__( 'How the color system works', 'neve' ),
+						],
+					],
 					'live_refresh_selector' => true,
 				],
 				'Neve\Customizer\Controls\React\Global_Colors'

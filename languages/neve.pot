@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-12-02T15:16:58+00:00\n"
+"POT-Creation-Date: 2020-12-03T13:37:56+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -1322,6 +1322,10 @@ msgstr ""
 msgid "Global Colors"
 msgstr ""
 
+#: inc/customizer/options/colors_background.php:99
+msgid "How the color system works"
+msgstr ""
+
 #: inc/customizer/options/layout_blog.php:80
 #: inc/customizer/options/layout_sidebar.php:152
 msgid "Blog / Archive"
@@ -2515,9 +2519,4 @@ msgstr ""
 #: inc/customizer/controls/react/bundle/controls.js:2
 #: inc/customizer/controls/react/src/global-colors/PaletteForm.js:98
 msgid "Add"
-msgstr ""
-
-#: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/GlobalColors.js:64
-msgid "How the color system works"
 msgstr ""
