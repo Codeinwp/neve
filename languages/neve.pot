@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-12-02T15:16:58+00:00\n"
+"POT-Creation-Date: 2020-12-03T13:54:41+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: neve\n"
@@ -276,11 +276,11 @@ msgstr ""
 msgid "upgrading PHP to the latest version"
 msgstr ""
 
-#: globals/utilities.php:1337
+#: globals/utilities.php:1339
 msgid "Base"
 msgstr ""
 
-#: globals/utilities.php:1352
+#: globals/utilities.php:1354
 msgid "Dark Mode"
 msgstr ""
 
@@ -559,22 +559,22 @@ msgid "Arbitrary HTML code. It supports also shortcodes."
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetFour.php:32
-#: inc/core/front_end.php:505
+#: inc/core/front_end.php:502
 msgid "Footer Four"
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetOne.php:31
-#: inc/core/front_end.php:502
+#: inc/core/front_end.php:499
 msgid "Footer One"
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetThree.php:31
-#: inc/core/front_end.php:504
+#: inc/core/front_end.php:501
 msgid "Footer Three"
 msgstr ""
 
 #: header-footer-grid/Core/Components/FooterWidgetTwo.php:32
-#: inc/core/front_end.php:503
+#: inc/core/front_end.php:500
 msgid "Footer Two"
 msgstr ""
 
@@ -625,7 +625,7 @@ msgstr ""
 #: header-footer-grid/Core/Components/Nav.php:43
 #: header-footer-grid/Core/Components/Nav.php:221
 #: header-footer-grid/templates/components/component-nav.php:26
-#: inc/core/front_end.php:72
+#: inc/core/front_end.php:69
 msgid "Primary Menu"
 msgstr ""
 
@@ -687,7 +687,7 @@ msgstr ""
 #: header-footer-grid/Core/Components/NavFooter.php:41
 #: header-footer-grid/Core/Components/NavFooter.php:138
 #: header-footer-grid/templates/components/component-nav-footer.php:23
-#: inc/core/front_end.php:73
+#: inc/core/front_end.php:70
 msgid "Footer Menu"
 msgstr ""
 
@@ -775,7 +775,7 @@ msgstr ""
 #: header-footer-grid/Core/Components/SecondNav.php:41
 #: header-footer-grid/Core/Components/SecondNav.php:136
 #: header-footer-grid/templates/components/component-nav-secondary.php:23
-#: inc/core/front_end.php:74
+#: inc/core/front_end.php:71
 msgid "Secondary Menu"
 msgstr ""
 
@@ -784,12 +784,12 @@ msgid "Select Menu"
 msgstr ""
 
 #. translators: %s is the header name
-#: header-footer-grid/Core/Customizer.php:266
+#: header-footer-grid/Core/Customizer.php:267
 msgid "You are customizing the %s Header"
 msgstr ""
 
 #. translators: %s is the header name
-#: header-footer-grid/Core/Customizer.php:266
+#: header-footer-grid/Core/Customizer.php:267
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:175
 #: inc/customizer/controls/react/bundle/controls.js:1
 #: inc/customizer/controls/react/src/font-family/FontFamilySelector.js:62
@@ -798,23 +798,23 @@ msgid "Default"
 msgstr ""
 
 #. translators: %s is the type of builder
-#: header-footer-grid/Core/Customizer.php:274
+#: header-footer-grid/Core/Customizer.php:275
 msgid "%s Builder:"
 msgstr ""
 
 #. translators: %s is the header name
-#: header-footer-grid/Core/Customizer.php:277
+#: header-footer-grid/Core/Customizer.php:278
 msgid "Click on any empty space to add components, or existing components to adjust settings."
 msgstr ""
 
-#: header-footer-grid/Core/Customizer.php:286
+#: header-footer-grid/Core/Customizer.php:287
 #: header-footer-grid/templates/components/component-cart-icon.php:26
 #: inc/views/header.php:130
 #: inc/views/layouts/layout_sidebar.php:144
 msgid "Close"
 msgstr ""
 
-#: header-footer-grid/Core/Customizer.php:328
+#: header-footer-grid/Core/Customizer.php:329
 msgid "Search Components"
 msgstr ""
 
@@ -1022,7 +1022,7 @@ msgid "No Sidebar"
 msgstr ""
 
 #: inc/admin/metabox/main.php:56
-#: inc/core/front_end.php:495
+#: inc/core/front_end.php:492
 #: inc/admin/metabox/src/components/MetaFieldsManager.js:141
 msgid "Sidebar"
 msgstr ""
@@ -1243,43 +1243,43 @@ msgstr ""
 msgid "Documentation"
 msgstr ""
 
-#: inc/core/front_end.php:175
+#: inc/core/front_end.php:172
 msgid "Neve - Primary Accent"
 msgstr ""
 
-#: inc/core/front_end.php:179
+#: inc/core/front_end.php:176
 msgid "Neve - Secondary Accent"
 msgstr ""
 
-#: inc/core/front_end.php:183
+#: inc/core/front_end.php:180
 msgid "Neve - Site Background"
 msgstr ""
 
-#: inc/core/front_end.php:187
+#: inc/core/front_end.php:184
 msgid "Neve - Light Background"
 msgstr ""
 
-#: inc/core/front_end.php:191
+#: inc/core/front_end.php:188
 msgid "Neve - Dark Background"
 msgstr ""
 
-#: inc/core/front_end.php:195
+#: inc/core/front_end.php:192
 msgid "Neve - Text Color"
 msgstr ""
 
-#: inc/core/front_end.php:199
+#: inc/core/front_end.php:196
 msgid "Neve - Text Dark Background"
 msgstr ""
 
-#: inc/core/front_end.php:203
+#: inc/core/front_end.php:200
 msgid "Neve - Extra Color 1"
 msgstr ""
 
-#: inc/core/front_end.php:207
+#: inc/core/front_end.php:204
 msgid "Neve - Extra Color 2"
 msgstr ""
 
-#: inc/core/front_end.php:496
+#: inc/core/front_end.php:493
 msgid "Shop Sidebar"
 msgstr ""
 
