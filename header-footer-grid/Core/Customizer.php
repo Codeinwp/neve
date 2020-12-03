@@ -260,7 +260,8 @@ class Customizer {
 						</div>
 						<# if(data.id === 'hfg_header_layout') { #>
 						<div class="hfg--cb-notice conditional-header hidden">
-							<i class="dashicons dashicons-info"/><p>
+							<i class="dashicons dashicons-info"></i>
+							<p>
 							<?php
 								/* translators: %s is the header name */
 								echo wp_kses_post( sprintf( __( 'You are customizing the %s Header', 'neve' ), ' <a>' . __( 'Default', 'neve' ) . '</a> ' ) );
@@ -276,7 +277,7 @@ class Customizer {
 								/* translators: %s is the header name */
 								echo esc_html__( 'Click on any empty space to add components, or existing components to adjust settings.', 'neve' );
 							?>
-							<a href="#" data-open-nv-modal="hfg-instructional"><i class="dashicons dashicons-info"/></a>
+								<a href="#" data-open-nv-modal="hfg-instructional"><i class="dashicons dashicons-info"></i></a>
 							</p>
 						</div>
 						<div class="hfg--cb-actions">
