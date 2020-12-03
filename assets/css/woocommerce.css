@@ -504,7 +504,7 @@
 }
 
 .variations select option {
-  color: var(--nv-site-bg);
+  background-color: var(--nv-site-bg);
 }
 
 .woocommerce div.product .woocommerce-tabs ul.tabs li {
