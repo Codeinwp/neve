@@ -3231,7 +3231,7 @@ msgstr ""
 #: dist/neve/inc/customizer/controls/react/bundle/controls.js:1
 #: dist/neve/inc/customizer/controls/react/src/global-colors/PaletteSelector.js:58
 #: inc/customizer/controls/react/bundle/controls.js:1
-#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:58
+#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:65
 msgid "Remove Palette"
 msgstr ""
 
@@ -3239,7 +3239,7 @@ msgstr ""
 #: dist/neve/inc/customizer/controls/react/bundle/controls.js:2
 #: dist/neve/inc/customizer/controls/react/src/global-colors/PaletteSelector.js:70
 #: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:70
+#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:77
 msgid "Are you sure you want to delete the %s palette?"
 msgstr ""
 
@@ -3247,14 +3247,14 @@ msgstr ""
 #: dist/neve/inc/customizer/controls/react/bundle/controls.js:2
 #: dist/neve/inc/customizer/controls/react/src/global-colors/PaletteSelector.js:78
 #: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:78
+#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:85
 msgid "If this is the currently active palette, the current palette will be switched to the Base one."
 msgstr ""
 
 #: dist/neve/inc/customizer/controls/react/bundle/controls.js:2
 #: dist/neve/inc/customizer/controls/react/src/global-colors/PaletteSelector.js:89
 #: inc/customizer/controls/react/bundle/controls.js:2
-#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:89
+#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:96
 msgid "Delete"
 msgstr ""
 
@@ -3263,7 +3263,7 @@ msgstr ""
 #: dist/neve/inc/customizer/controls/react/src/global-colors/PaletteSelector.js:98
 #: inc/customizer/controls/react/bundle/controls.js:2
 #: inc/customizer/controls/react/src/global-colors/PaletteForm.js:89
-#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:98
+#: inc/customizer/controls/react/src/global-colors/PaletteSelector.js:105
 msgid "Cancel"
 msgstr ""
 
