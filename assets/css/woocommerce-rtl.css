@@ -1113,7 +1113,6 @@ section.exclusive .tns-visually-hidden {
 .cart-icon-wrapper {
   display: flex;
   align-items: flex-end;
-  color: #24292e;
 }
 
 .cart-icon-wrapper .nv-cart {
@@ -1135,7 +1134,6 @@ section.exclusive .tns-visually-hidden {
 
 .nv-nav-cart,
 .header-menu-sidebar li.menu-item-nav-cart {
-  display: none;
   opacity: 0;
   visibility: hidden;
 }

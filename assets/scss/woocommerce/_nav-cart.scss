@@ -2,7 +2,6 @@
 .cart-icon-wrapper {
   display: flex;
   align-items: flex-end;
-  color: $git-black;
 
   .nv-cart {
 	display: flex;
@@ -26,7 +25,6 @@
 //<editor-fold desc="Hide menu cart icon and minicart on mobile">
 .nv-nav-cart,
 .header-menu-sidebar li.menu-item-nav-cart {
-  display: none;
   opacity: 0;
   visibility: hidden;
 }
@@ -46,14 +44,6 @@
 //</editor-fold>
 
 @include cart-widget();
-
-
-
-
-
-//ul[id^="nv-primary-navigation"] a.button {
-//  padding: 8px 12px;
-//}
 
 @mixin nav-cart--laptop() {
   //<editor-fold desc="Show menu cart icon and mini cart on desktop">
