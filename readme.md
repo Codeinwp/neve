@@ -2,7 +2,7 @@
 **Contributors:** [themeisle](https://profiles.wordpress.org/themeisle)  
 **Tags:** blog,block-patterns, custom-logo, e-commerce, rtl-language-support, grid-layout, one-column, two-columns, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, flexible-header, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, accessibility-ready, wide-blocks, block-styles, footer-widgets, portfolio, left-sidebar, right-sidebar  
 **Requires at least:** 4.0  
-**Tested up to:** 5.5  
+**Tested up to:** 5.6  
 **Stable tag:** 1.0.23  
 **Requires PHP:** 5.4.0  
 **License:** GPLv2 or later  
@@ -18,6 +18,17 @@ Neve WordPress theme, Copyright 2018 Themeisle
 Neve is distributed under the terms of the GNU GPLv2 or later 
 
 ## Changelog ##
+
+#### [Version 2.9.0](https://github.com/Codeinwp/neve/compare/v2.8.4...v2.9.0) (2020-11-24)
+
+- [Feat] Globally linked Color Palettes
+- [Feat] Compatibility with Template Cloud and single page templates import
+- [Feat] Adds compatibility for more Checkout styles
+- [Fix] Compatibility with the Visualizer plugin
+- New Gutenberg Starter Sites
+
+
+
 
 ##### [Version 2.8.4](https://github.com/Codeinwp/neve/compare/v2.8.3...v2.8.4) (2020-11-02)
 

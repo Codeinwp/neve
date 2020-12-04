@@ -1,5 +1,5 @@
 /* global upsellConfig */
-document.addEventListener( 'DOMContentLoaded', function ( event ) {
+wp.customize.bind( 'ready', function () {
 	if ( typeof upsellConfig !== 'undefined' ) {
 		const markup =
 			'<div class="nv-upsell"><div class="nv-upsell-content">' +
