@@ -347,11 +347,11 @@
   padding: 2px 0;
 }
 
-.woocommerce ul.products li.product a {
+.woocommerce ul.products li.product a:not(.nv-quick-view-product) {
   color: var(--nv-text-color);
 }
 
-.woocommerce ul.products li.product a:hover h2 {
+.woocommerce ul.products li.product a:not(.nv-quick-view-product):hover h2 {
   color: var(--nv-text-color);
   text-decoration: underline;
 }
